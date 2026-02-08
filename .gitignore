@@ -1,0 +1,51 @@
+# macOS
+.DS_Store
+
+# Build output
+bin/
+obj/
+out/
+artifacts/
+
+# .NET user files
+*.user
+*.rsuser
+*.suo
+*.userprefs
+*.sln.docstates
+
+# Logs and diagnostics
+*.log
+*.tmp
+*.pid
+*.seed
+TestResult*/
+TestResults/
+*.trx
+
+# Coverage
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuget.props
+*.nuget.targets
+packages/
+
+# Visual Studio
+.vs/
+Generated\ Files/
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# JetBrains (Rider, IntelliJ platform)
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+
