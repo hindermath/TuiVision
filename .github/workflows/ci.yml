@@ -5,7 +5,11 @@ on:
     branches:
       - main
       - master
-      - "codex/**"
+      - codex/**
+      - claude/**
+      - gemini/**
+      - copilot/**
+      - opencode/**
   pull_request:
   workflow_dispatch:
 
