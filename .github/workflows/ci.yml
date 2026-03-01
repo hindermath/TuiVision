@@ -32,8 +32,10 @@ jobs:
         run: |
           set -euo pipefail
 
-          mapfile -t sln_targets < <(find . -type f -name '*.sln' -not -path './tv203s/*' | sort)
-          mapfile -t csproj_targets < <(find . -type f -name '*.csproj' -not -path './tv203s/*' -not -path '*/bin/*' -not -path '*/obj/*' | sort)
+          sln_targets=()
+          while IFS= read -r line; do sln_targets+=("$line"); done < <(find . -type f -name '*.sln' -not -path './tv203s/*' | sort)
+          csproj_targets=()
+          while IFS= read -r line; do csproj_targets+=("$line"); done < <(find . -type f -name '*.csproj' -not -path './tv203s/*' -not -path '*/bin/*' -not -path '*/obj/*' | sort)
 
           mode=""
           targets=()

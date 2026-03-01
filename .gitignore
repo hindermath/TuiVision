@@ -52,7 +52,6 @@ _ReSharper*/
 .claude
 .codex
 .gemini
-.github
 .opencode
 
 # Created by https://www.toptal.com/developers/gitignore/api/dotnetcore,csharp,rider,jetbrains,jetbrains+iml,jetbrains+all,visualstudiocode,visualstudio
