@@ -1,10 +1,24 @@
-﻿using TuiVision.Core;
+using TuiVision.Core;
 
 namespace TuiVision.Core.Tests;
 
+/// <summary>
+/// Porttests für die Kerntypen <see cref="TPoint"/>, <see cref="TRect"/>,
+/// <see cref="TObject"/> und <see cref="TEvent"/>.
+///
+/// Port tests for the core types <see cref="TPoint"/>, <see cref="TRect"/>,
+/// <see cref="TObject"/>, and <see cref="TEvent"/>.
+/// </summary>
 [TestClass]
 public sealed class CorePortTests
 {
+    /// <summary>
+    /// Prüft, dass <see cref="TPoint"/> die arithmetischen Operatoren <c>+</c> und <c>-</c>
+    /// komponentenweise ausführt und dass die Gleichheitsoperatoren korrekt funktionieren.
+    ///
+    /// Verifies that <see cref="TPoint"/> performs the <c>+</c> and <c>-</c> operators
+    /// component-wise and that the equality operators work correctly.
+    /// </summary>
     [TestMethod]
     public void TPoint_Operators_AddAndSubtractCoordinates()
     {
@@ -16,6 +30,13 @@ public sealed class CorePortTests
         Assert.AreNotEqual(a, b);
     }
 
+    /// <summary>
+    /// Prüft, dass <see cref="TRect.Contains"/> die obere linke Ecke inklusiv
+    /// und die untere rechte Ecke exklusiv behandelt.
+    ///
+    /// Verifies that <see cref="TRect.Contains"/> treats the top-left corner as inclusive
+    /// and the bottom-right corner as exclusive.
+    /// </summary>
     [TestMethod]
     public void TRect_Contains_UsesTopLeftInclusiveBottomRightExclusive()
     {
@@ -27,6 +48,13 @@ public sealed class CorePortTests
         Assert.IsFalse(rect.Contains(new TPoint(3, 4)));
     }
 
+    /// <summary>
+    /// Prüft, dass <see cref="TRect.Intersect"/> und <see cref="TRect.Union"/>
+    /// die Semantik des originalen Turbo-Vision-Codes korrekt abbilden.
+    ///
+    /// Verifies that <see cref="TRect.Intersect"/> and <see cref="TRect.Union"/>
+    /// correctly replicate the semantics of the original Turbo Vision code.
+    /// </summary>
     [TestMethod]
     public void TRect_IntersectAndUnion_FollowTurboVisionSemantics()
     {
@@ -42,6 +70,13 @@ public sealed class CorePortTests
         Assert.AreEqual(new TRect(0, 0, 8, 8), united);
     }
 
+    /// <summary>
+    /// Prüft, dass <see cref="TObject.Destroy"/> sowohl <c>ShutDown</c> als auch
+    /// <c>Dispose</c> aufruft, wenn das Objekt <see cref="IDisposable"/> implementiert.
+    ///
+    /// Verifies that <see cref="TObject.Destroy"/> calls both <c>ShutDown</c> and
+    /// <c>Dispose</c> when the object implements <see cref="IDisposable"/>.
+    /// </summary>
     [TestMethod]
     public void TObject_Destroy_CallsShutdownAndDispose()
     {
@@ -53,6 +88,13 @@ public sealed class CorePortTests
         Assert.AreEqual(1, probe.DisposeCalls);
     }
 
+    /// <summary>
+    /// Prüft, dass <see cref="TEvent"/> nach dem Erstellen die richtigen Nutzdaten enthält
+    /// und nach dem Aufruf von <see cref="TEvent.Clear"/> auf <see cref="TEventKind.Nothing"/> zurückgesetzt wird.
+    ///
+    /// Verifies that <see cref="TEvent"/> holds the correct payload after creation
+    /// and resets to <see cref="TEventKind.Nothing"/> after <see cref="TEvent.Clear"/> is called.
+    /// </summary>
     [TestMethod]
     public void TEvent_CreateAndClear_UpdatesEventChannels()
     {
@@ -67,6 +109,13 @@ public sealed class CorePortTests
         Assert.AreEqual((ushort)0, command.Message.Command);
     }
 
+    /// <summary>
+    /// Prüft, dass <see cref="TEvent.CreateMouse"/> eine <see cref="ArgumentOutOfRangeException"/>
+    /// auslöst, wenn ein Nicht-Maus-Ereignistyp übergeben wird.
+    ///
+    /// Verifies that <see cref="TEvent.CreateMouse"/> throws an <see cref="ArgumentOutOfRangeException"/>
+    /// when a non-mouse event type is passed.
+    /// </summary>
     [TestMethod]
     public void TEvent_CreateMouse_RejectsNonMouseEventKind()
     {
@@ -74,14 +123,31 @@ public sealed class CorePortTests
             () => TEvent.CreateMouse(TEventKind.Command, TMouseButtons.Left, false, new TPoint(0, 0)));
     }
 
+    /// <summary>
+    /// Test-Hilfsobjekt, das Aufrufe von <c>ShutDown</c> und <c>Dispose</c> zählt.
+    ///
+    /// Test helper object that counts calls to <c>ShutDown</c> and <c>Dispose</c>.
+    /// </summary>
     private sealed class LifecycleProbe : TObject, IDisposable
     {
+        /// <summary>
+        /// Die Anzahl der bisherigen <c>ShutDown</c>-Aufrufe.
+        ///
+        /// The number of <c>ShutDown</c> calls so far.
+        /// </summary>
         public int ShutDownCalls { get; private set; }
 
+        /// <summary>
+        /// Die Anzahl der bisherigen <c>Dispose</c>-Aufrufe.
+        ///
+        /// The number of <c>Dispose</c> calls so far.
+        /// </summary>
         public int DisposeCalls { get; private set; }
 
+        /// <summary>Erhöht den <see cref="ShutDownCalls"/>-Zähler. / Increments the <see cref="ShutDownCalls"/> counter.</summary>
         public override void ShutDown() => ShutDownCalls++;
 
+        /// <summary>Erhöht den <see cref="DisposeCalls"/>-Zähler. / Increments the <see cref="DisposeCalls"/> counter.</summary>
         public void Dispose() => DisposeCalls++;
     }
 }

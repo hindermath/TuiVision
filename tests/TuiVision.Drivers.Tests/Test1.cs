@@ -1,10 +1,24 @@
-﻿using TuiVision.Drivers.Console;
+using TuiVision.Drivers.Console;
 
 namespace TuiVision.Drivers.Tests;
 
+/// <summary>
+/// Tests für <see cref="TConsoleBuffer"/> und <see cref="TConsoleDriver"/>:
+/// Zeichenoperationen, Pufferverwaltung und das Presenter-Pattern.
+///
+/// Tests for <see cref="TConsoleBuffer"/> and <see cref="TConsoleDriver"/>:
+/// drawing operations, buffer management, and the presenter pattern.
+/// </summary>
 [TestClass]
 public sealed class ConsoleDriverTests
 {
+    /// <summary>
+    /// Prüft, dass <see cref="TConsoleBuffer.WriteText"/> Zeichen, die links außerhalb
+    /// des Puffers beginnen, korrekt abschneidet (Clipping).
+    ///
+    /// Verifies that <see cref="TConsoleBuffer.WriteText"/> correctly clips characters
+    /// that start to the left outside the buffer boundary.
+    /// </summary>
     [TestMethod]
     public void Buffer_WriteText_ClipsHorizontally()
     {
@@ -19,6 +33,13 @@ public sealed class ConsoleDriverTests
         Assert.AreEqual('.', buffer[3, 1].Glyph);
     }
 
+    /// <summary>
+    /// Prüft, dass <see cref="TConsoleDriver.Resize"/> den sichtbaren Schnittbereich des
+    /// alten Puffers in den neuen Puffer kopiert und neue Zellen leer lässt.
+    ///
+    /// Verifies that <see cref="TConsoleDriver.Resize"/> copies the visible intersection
+    /// of the old buffer into the new buffer and leaves new cells empty.
+    /// </summary>
     [TestMethod]
     public void Driver_Resize_PreservesVisibleIntersection()
     {
@@ -34,6 +55,14 @@ public sealed class ConsoleDriverTests
         Assert.AreEqual(TConsoleCell.Empty, driver.BackBuffer.GetCell(2, 2));
     }
 
+    /// <summary>
+    /// Prüft, dass <see cref="TConsoleDriver.Present"/> dem Presenter einen Schnappschuss
+    /// und nicht den Live-Puffer übergibt, sodass spätere Änderungen am Puffer den Frame
+    /// nicht mehr beeinflussen.
+    ///
+    /// Verifies that <see cref="TConsoleDriver.Present"/> passes a snapshot to the presenter
+    /// rather than the live buffer, so that subsequent buffer changes do not affect the frame.
+    /// </summary>
     [TestMethod]
     public void Driver_Present_PublishesSnapshotInsteadOfLiveBuffer()
     {
@@ -48,6 +77,13 @@ public sealed class ConsoleDriverTests
         Assert.AreEqual('A', presenter.LastFrame!.GetCell(0, 0).Glyph);
     }
 
+    /// <summary>
+    /// Prüft, dass <see cref="TConsoleBuffer"/> eine <see cref="ArgumentOutOfRangeException"/>
+    /// auslöst, wenn Breite oder Höhe nicht positiv ist.
+    ///
+    /// Verifies that <see cref="TConsoleBuffer"/> throws an <see cref="ArgumentOutOfRangeException"/>
+    /// when the width or height is not positive.
+    /// </summary>
     [TestMethod]
     public void Buffer_RejectsNonPositiveSize()
     {
@@ -55,10 +91,22 @@ public sealed class ConsoleDriverTests
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => new TConsoleBuffer(1, 0));
     }
 
+    /// <summary>
+    /// Test-Presenter, der den zuletzt empfangenen Frame für Assertions speichert.
+    ///
+    /// Test presenter that stores the last received frame for assertions.
+    /// </summary>
     private sealed class CapturingPresenter : IConsolePresenter
     {
+        /// <summary>
+        /// Der zuletzt empfangene Frame oder <c>null</c>, wenn noch kein Frame übergeben wurde.
+        ///
+        /// The last received frame, or <c>null</c> if no frame has been passed yet.
+        /// </summary>
         public TConsoleBuffer? LastFrame { get; private set; }
 
+        /// <summary>Speichert den Frame für spätere Prüfungen. / Stores the frame for later assertions.</summary>
+        /// <param name="frame">Der empfangene Frame. / The received frame.</param>
         public void Present(TConsoleBuffer frame) => LastFrame = frame;
     }
 }
