@@ -27,7 +27,7 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 ### Zentrale Befehle
 *   **Bauen:** `dotnet build`
 *   **Testen:** `dotnet test`
-*   **Dokumentation:** `docfx docs/docfx.json` (sofern konfiguriert)
+*   **Dokumentation:** `docfx docfx.json` (wenn im Projektwurzelverzeichnis vorhanden)
 *   **Formatierung:** `dotnet format`
 
 ### Arbeitsumgebung
@@ -39,6 +39,8 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 
 1.  **Code-Stil:** Modernes C# (File-scoped Namespaces, Expression-bodied Members, Nullable Reference Types).
 2.  **Dokumentation (MUSS):**
+    *   Dokumentationsblöcke zweisprachig: erst Deutsch, dann Englisch.
+    *   Beide Sprachfassungen auf CEFR-B2-Niveau.
     *   Vollständige XML-Kommentare für alle öffentlichen APIs (`summary`, `param`, `returns`, `remarks`).
     *   Didaktischer Stil: Erklärt das *Warum* und bietet Beispiele für Lernende.
     *   Aktualisierung der Dokumentation erfolgt zeitgleich mit Codeänderungen.

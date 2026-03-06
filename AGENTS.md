@@ -26,6 +26,9 @@ dotnet build --no-restore --verbosity quiet
 
 # Check for style issues (if configured)
 dotnet format --verify-no-changes
+
+# Regenerate docs when API/XML comments change and root config exists
+docfx docfx.json
 ```
 
 ## Code Style Guidelines
@@ -69,6 +72,12 @@ dotnet format --verify-no-changes
 - Use interfaces for contracts and abstractions
 - Use `static` for utility methods that don't depend on instance state
 - Use `sealed` classes when inheritance is not intended
+
+### Documentation Guidelines
+- Explanatory documentation blocks must be bilingual: German first, English second
+- German and English documentation should target CEFR-B2 readability
+- Public APIs must include complete XML documentation (`summary`, `param`, `returns`, `exception` where needed)
+- Update documentation in the same change when API signatures or XML comments change
 
 ## Testing Guidelines
 - All test files should be in `tests/` directory with corresponding project structure

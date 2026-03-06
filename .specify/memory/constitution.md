@@ -1,31 +1,28 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version change: (unversioned template) → 1.0.0
-  Bump rationale: MAJOR — initial ratification; complete replacement of all placeholder tokens.
+  Version change: 1.0.0 → 1.1.0
+  Bump rationale: MINOR — Principle III materially expanded with mandatory bilingual
+  (German-first + English) documentation rules, CEFR-B2 language target, and explicit
+  documentation compliance review and docfx execution requirements.
 
-  Modified principles: N/A (first creation)
+  Modified principles:
+    - III. Didactic Documentation → III. Didactic and Linguistic Clarity
 
   Added sections:
-    - Core Principles (6 principles: I–VI)
-    - Technology Stack & Quality Gates
-    - Development Workflow
-    - Governance
+    - Documentation Compliance Review (under Development Workflow)
 
-  Removed sections: N/A (template placeholders replaced)
+  Removed sections:
+    - None
 
   Templates requiring updates:
-    - .specify/templates/plan-template.md ✅ aligned — Constitution Check section is generic
-      and will automatically reflect these principles when filled by /speckit.plan.
-    - .specify/templates/spec-template.md ✅ aligned — user stories and acceptance scenarios
-      match the test-first discipline defined in Principle II.
-    - .specify/templates/tasks-template.md ✅ aligned — tasks-template already mandates
-      "Tests MUST be written and FAIL before implementation", consistent with Principle II.
-    - .claude/commands/*.md ✅ no outdated agent-specific references found that conflict.
+    - .specify/templates/plan-template.md ✅ updated
+    - .specify/templates/spec-template.md ✅ updated
+    - .specify/templates/tasks-template.md ✅ updated
+    - .specify/templates/commands/*.md ✅ not present (no updates required)
 
   Follow-up TODOs:
-    - None. All fields resolved from project documents (Lasten_Heft.md, Pflichtenheft.md,
-      README.md, CLAUDE.md, AGENTS.md, GEMINI.md, docs/guides/multi-mac-workflow.md).
+    - None
 -->
 
 # TuiVision Constitution
@@ -57,7 +54,7 @@ Additional constraints:
 - Minimum line coverage: **70%** in `TuiVision.Core`, `TuiVision.Controls`, and
   `TuiVision.Serialization`. This is measured and enforced in CI.
 - Every ported core component MUST have at least one positive test and one
-  negative/error-case test (where fachlich sinnvoll / technically meaningful).
+  negative/error-case test where technically meaningful.
 - Integration tests MUST cover: event loop, focus transitions, menu execution,
   and dialog interaction.
 - Smoke tests MUST be present for all 25 ported example programs and run in CI.
@@ -68,28 +65,37 @@ Additional constraints:
 project. Failures are caught at the earliest possible moment rather than
 discovered in integration (Pflichtenheft M-07, M-19, section 9).
 
-### III. Didactic Documentation (NON-NEGOTIABLE)
+### III. Didactic and Linguistic Clarity (NON-NEGOTIABLE)
 
-All documentation — code, API reference, guides, and examples — MUST serve as
-learning material for IT application-development specialists (Fachinformatiker
-Anwendungsentwicklung):
+All documentation — code comments, XML documentation, API reference, guides,
+and examples — MUST serve as learning material for IT application-development
+specialists (Fachinformatiker Anwendungsentwicklung).
 
-- Every `public` type, member, parameter, and return value MUST carry complete
-  XML documentation (`<summary>`, `<param>`, `<returns>`, and `<exception>` where
-  applicable; `<remarks>` and `<example>` where instructive).
-- Comments explain the **why** (decision, trade-off, constraint), not only the what.
-- Non-trivial logic (multiple branches, complex state changes) MUST carry inline
-  explanatory comments.
-- Portation decisions that deviate from Turbo Vision 2.0.3 behaviour MUST be
-  documented at the point of deviation with a rationale.
+Mandatory language and structure rules:
+
+- Explanatory documentation blocks MUST be bilingual: German block first,
+  English block second.
+- German and English text MUST target CEFR level B2 readability.
+- Explanatory comments MUST describe the why (decision, trade-off, constraint),
+  not only the what.
+
+Mandatory source documentation rules:
+
+- Every class, interface, struct, enum, method, constructor, property, field,
+  parameter, and return value in project-owned source code MUST be documented.
+- Public APIs MUST use complete XML documentation (`<summary>`, `<param>`,
+  `<returns>`, and `<exception>` where applicable; `<remarks>` and `<example>`
+  where instructive).
+- Non-public code elements that cannot reasonably carry XML docs MUST include
+  concise bilingual block or line comments where intent is not self-evident.
 - Missing XML documentation for public API members is treated as a build error
   (CS1591 MUST NOT be suppressed globally).
-- When API signatures or XML comments change, the docfx output MUST be regenerated
-  in the same commit/PR.
+- When API signatures or XML comments change, documentation output MUST be
+  regenerated in the same commit/PR.
 
-**Rationale**: The explicit purpose of TuiVision is as a showcase and learning
-reference for Agentic-AI modernisation workflows (Pflichtenheft M-15, M-16, M-18,
-section 10.1–10.5).
+**Rationale**: The project is an educational modernization showcase and must be
+understandable for native and non-native German-speaking trainees with at least
+intermediate language proficiency (Pflichtenheft M-15, M-16, M-18, section 10.1–10.5).
 
 ### IV. Modular Architecture
 
@@ -135,35 +141,35 @@ be useful on any developer machine (Pflichtenheft M-11, section 11).
 - License headers in new source files MUST be added where required by the chosen
   MIT boilerplate.
 
-**Rationale**: The historical Turbo Vision source carries mixed licensing (Pflichtenheft
-section 11 risk register). A clear, visible disclaimer protects the project and
-its contributors (Pflichtenheft M-12).
+**Rationale**: The historical Turbo Vision source carries mixed licensing
+(Pflichtenheft section 11 risk register). A clear, visible disclaimer protects
+the project and its contributors (Pflichtenheft M-12).
 
 ## Technology Stack & Quality Gates
 
 ### Mandated Technology
 
-| Concern | Choice                                                                                                                                    |
-|---|-------------------------------------------------------------------------------------------------------------------------------------------|
-| Language | C# (LangVersion: latest, targeting C# 14 features)                                                                                        |
-| Runtime | .NET 10 (`net10.0`), managed code only                                                                                                    |
-| Test framework | MSTest                                                                                                                                    |
-| Documentation generator | docfx (installed as .NET global tool)                                                                                                     |
-| CI platform | GitHub Actions                                                                                                                            |
-| Version control | Git; remote: `https://github.com/hindermath/TuiVision.git`                                                                                |
-| Primary IDEs | JetBrains Rider (primary), VS Code (secondary)                                                                                            |
-| Dev tooling | `gh` (GitHub CLI), `codex` (Codex CLI), `claude` (Claude CLI), `gemini` (Gemini CLI), `opencode` (openCode CLI), `copilot` (Copilot CLI), |
+| Concern | Choice |
+|---|---|
+| Language | C# (LangVersion: latest, targeting C# 14 features) |
+| Runtime | .NET 10 (`net10.0`), managed code only |
+| Test framework | MSTest |
+| Documentation generator | docfx (external command `docfx`) |
+| CI platform | GitHub Actions |
+| Version control | Git; remote: `https://github.com/hindermath/TuiVision.git` |
+| Primary IDEs | JetBrains Rider (primary), VS Code (secondary) |
+| Dev tooling | `gh`, `codex`, `claude`, `gemini`, `opencode`, `copilot` |
 
 ### Mandatory Quality Gates (all MUST pass before merge to `main`)
 
 1. `dotnet build --configuration Release` exits with code 0 and zero warnings
    treated as errors.
-2. `dotnet test` — all MUSS-Tests pass (see Pflichtenheft section 9.4).
+2. `dotnet test` — all required tests pass (see Pflichtenheft section 9.4).
 3. Line coverage ≥ 70% in Core, Controls, Serialization.
 4. `dotnet format --verify-no-changes` — no formatting violations.
 5. No CS1591 suppressions added without documented justification.
-6. docfx build succeeds whenever `docs/docfx.json` is present and any public
-   API or XML comment has changed.
+6. If `docfx.json` exists in the repository root and public API/XML docs changed,
+   `docfx docfx.json` MUST succeed in the same change.
 7. Smoke tests pass for all currently-ported example programs.
 
 ### Global Build Settings
@@ -184,7 +190,8 @@ All projects share settings via `Directory.Build.props`:
 - `main` is the integration branch; direct pushes to `main` are only permitted
   for administrative changes (not code).
 - Feature branches follow the pattern: `codex/<short-description>`.
-- CI runs on pushes to `main`, `master`, `codex/**`, `claude/**`, `gemini/**`, `opencode/**` and `copilot/**`.
+- CI runs on pushes to `main`, `master`, `codex/**`, `claude/**`, `gemini/**`,
+  `opencode/**` and `copilot/**`.
 
 ### Daily Development Loop
 
@@ -193,21 +200,34 @@ git checkout main && git pull --ff-only origin main
 dotnet restore
 dotnet build
 dotnet test
-# When API or XML comments change:
-docfx docs/docfx.json
+# If docfx.json exists at repository root and docs/API changed:
+docfx docfx.json
 ```
+
+### Documentation Compliance Review
+
+Each PR that changes source code, API signatures, comments, or guides MUST
+include an explicit documentation compliance check:
+
+1. Verify bilingual (German first, English second) B2-level documentation blocks
+   were added or updated where required.
+2. Verify XML documentation coverage for changed members.
+3. Regenerate docfx output when `docfx.json` is present and documentation-related
+   inputs changed.
+4. Close all identified gaps in the same PR; deferred documentation is prohibited.
 
 ### Multi-Mac Workflow
 
 The documented workflow in `docs/guides/multi-mac-workflow.md` is the canonical
 reference for development on **MacBook Air M2** and **Mac mini M4 Pro**. It MUST
-be kept current with any tooling or workflow changes. Prerequisites (`gh`, `codex`, `claude`, `gemini`, `opencode`, `copilot`, `docfx`,
-.NET 10 SDK) MUST be documented with version check commands.
+be kept current with any tooling or workflow changes. Prerequisites (`gh`,
+`codex`, `claude`, `gemini`, `opencode`, `copilot`, `docfx`, `.NET 10 SDK`)
+MUST be documented with version check commands.
 
 ### Portation Sequence
 
-New classes are ported following the inkrementell (incremental) sequence defined
-in Pflichtenheft section 8.1:
+New classes are ported following the incremental sequence defined in
+Pflichtenheft section 8.1:
 
 1. Base infrastructure (solution, build, test, docs pipeline)
 2. Core objects (`TObject`, collections, geometry, events)
@@ -239,10 +259,11 @@ Amendments require:
    in the same PR (see steps 4–5 of the `speckit.constitution` command).
 
 All PRs and code reviews MUST verify compliance with principles I–VI.
-Complexity beyond what the architecture principle IV defines MUST be justified
-in writing in the relevant plan document.
+Complexity beyond what architecture principle IV defines MUST be justified in
+writing in the relevant plan document.
 
-Use `CLAUDE.md`, `GEMINI.md`, `copilot-instructions.md` and `AGENTS.md` for runtime agent-specific development guidance.
+Use `CLAUDE.md`, `GEMINI.md`, `copilot-instructions.md`, and `AGENTS.md` for
+runtime agent-specific development guidance.
 Use `docs/guides/multi-mac-workflow.md` for local multi-machine workflow details.
 
-**Version**: 1.0.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-01
+**Version**: 1.1.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-06

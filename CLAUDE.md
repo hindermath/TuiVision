@@ -49,6 +49,12 @@ All projects share: `net10.0`, `LangVersion: latest`, `Nullable: enable`, `Impli
 
 Tests use MSTest. Test projects mirror source projects (e.g., `TuiVision.Core.Tests` → `TuiVision.Core`). `TuiVision.Examples.SmokeTests` is for integration-level tests of ported example programs.
 
+### Documentation
+
+- Explanatory documentation must be bilingual (German first, English second) with CEFR-B2 readability.
+- Public API changes must include complete XML documentation updates.
+- Run `docfx docfx.json` when root config exists and API/XML docs changed.
+
 ### Reference Source
 
 `tv203s/contrib/tvision/` contains the original Turbo Vision 2.0.3 C/C++ source. Consult it when porting new classes or understanding original behavior. Do not modify files in `tv203s/`.

@@ -31,7 +31,13 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- [ ] Managed-only runtime preserved (`src/` has no native/PInvoke dependencies).
+- [ ] TDD plan is explicit: tests defined first and expected to fail before implementation.
+- [ ] Documentation plan includes bilingual blocks (German first, English second) at CEFR-B2 level.
+- [ ] XML documentation impact identified for changed classes/methods/properties/fields.
+- [ ] `docfx docfx.json` execution included when root `docfx.json` exists and API/docs change.
+- [ ] Module boundaries remain within Core/Controls/Drivers.Console/Serialization/Compatibility.
+- [ ] Cross-platform impact assessed for macOS, Linux, and Windows.
 
 ## Project Structure
 

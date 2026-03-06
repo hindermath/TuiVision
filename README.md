@@ -17,12 +17,18 @@ Agentic-AI workflows. It is not an official Turbo Vision continuation.
 - Multi-Mac workflow (MacBook Air M2 + Mac mini M4 Pro) with `gh` and `codex`:
   [`docs/guides/multi-mac-workflow.md`](docs/guides/multi-mac-workflow.md)
 
+## Documentation Policy
+
+- Documentation changes MUST be bilingual with German text first and English text second.
+- Explanatory text MUST target CEFR-B2 readability for both languages.
+- Public API changes MUST include complete XML documentation updates in the same change.
+
 ## CI
 
 - GitHub Actions workflow:
   [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 - The workflow validates restore/build/test and generates docfx documentation
-  when `docs/docfx.json` is present.
+  when `docfx.json` is present at repository root.
 - The workflow intentionally fails if no `.sln` or `.csproj` exists yet, to
   prevent false-green CI results.
 
