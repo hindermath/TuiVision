@@ -1,24 +1,28 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version change: 1.0.0 → 1.1.0
-  Bump rationale: MINOR — Principle III materially expanded with mandatory bilingual
-  (German-first + English) documentation rules, CEFR-B2 language target, and explicit
-  documentation compliance review and docfx execution requirements.
+  Version change: 1.1.0 → 1.2.0
+  Bump rationale: MINOR — Principle II materially expanded with explicit pedagogical
+  rationale for TDD (Red-Green as a teaching tool for trainees). Principle III
+  materially expanded: XML documentation now mandatory for ALL code members
+  (not only public), and additional bilingual block/line comments permitted
+  for didactically important locations.
 
   Modified principles:
-    - III. Didactic Documentation → III. Didactic and Linguistic Clarity
+    - II. Test-First Development — TDD: added explicit pedagogical dimension
+    - III. Didactic and Linguistic Clarity: XML docs extended to all members;
+      additional block/line comment rule added
 
   Added sections:
-    - Documentation Compliance Review (under Development Workflow)
+    - None
 
   Removed sections:
     - None
 
   Templates requiring updates:
-    - .specify/templates/plan-template.md ✅ updated
-    - .specify/templates/spec-template.md ✅ updated
-    - .specify/templates/tasks-template.md ✅ updated
+    - .specify/templates/plan-template.md ✅ already aligned (Constitution Check covers TDD + XML docs)
+    - .specify/templates/spec-template.md ✅ already aligned (FR-006, FR-007 unchanged)
+    - .specify/templates/tasks-template.md ✅ already aligned (TDD Red-Green tasks pattern present)
     - .specify/templates/commands/*.md ✅ not present (no updates required)
 
   Follow-up TODOs:
@@ -61,9 +65,22 @@ Additional constraints:
 - No commit that removes or skips an existing passing test is permitted without
   explicit documentation of the rationale.
 
+Pedagogical obligation:
+
+- For every new feature, tests MUST be written and compiled first so that the
+  test suite is verifiably red before any implementation begins.
+- The Red (failing) → Green (passing) → Refactor sequence MUST be preserved and
+  visible in the commit history so that trainees can follow the TDD workflow
+  step-by-step as a learning example.
+- Agents and contributors MUST NOT shortcut this sequence (e.g., writing
+  implementation and tests in the same commit).
+
 **Rationale**: TDD enforces correctness-by-construction on a complex porting
 project. Failures are caught at the earliest possible moment rather than
-discovered in integration (Pflichtenheft M-07, M-19, section 9).
+discovered in integration (Pflichtenheft M-07, M-19, section 9). The explicit
+Red-Green commit sequence also serves as a live teaching example: trainees can
+read the git log and understand how Test-Driven Development is applied in
+professional practice.
 
 ### III. Didactic and Linguistic Clarity (NON-NEGOTIABLE)
 
@@ -82,12 +99,18 @@ Mandatory language and structure rules:
 Mandatory source documentation rules:
 
 - Every class, interface, struct, enum, method, constructor, property, field,
-  parameter, and return value in project-owned source code MUST be documented.
+  parameter, and return value in project-owned source code MUST be documented —
+  regardless of access level (public, internal, protected, private).
 - Public APIs MUST use complete XML documentation (`<summary>`, `<param>`,
   `<returns>`, and `<exception>` where applicable; `<remarks>` and `<example>`
   where instructive).
-- Non-public code elements that cannot reasonably carry XML docs MUST include
-  concise bilingual block or line comments where intent is not self-evident.
+- Non-public code elements MUST also use XML documentation (`<summary>` at
+  minimum) so that IDE tooling and documentation generators can surface
+  explanations at every level of the code.
+- In addition to XML documentation, block or line comments MAY be placed at
+  didactically important locations to highlight key learning points, design
+  decisions, or porting trade-offs. These additional comments MUST also be
+  bilingual (German first, English second) at CEFR-B2 level.
 - Missing XML documentation for public API members is treated as a build error
   (CS1591 MUST NOT be suppressed globally).
 - When API signatures or XML comments change, documentation output MUST be
@@ -95,7 +118,10 @@ Mandatory source documentation rules:
 
 **Rationale**: The project is an educational modernization showcase and must be
 understandable for native and non-native German-speaking trainees with at least
-intermediate language proficiency (Pflichtenheft M-15, M-16, M-18, section 10.1–10.5).
+intermediate language proficiency (Pflichtenheft M-15, M-16, M-18,
+section 10.1–10.5). Requiring XML docs at every access level — not only on
+public surfaces — ensures that trainees exploring the full source code always
+find clear, machine-readable explanations.
 
 ### IV. Modular Architecture
 
@@ -211,7 +237,7 @@ include an explicit documentation compliance check:
 
 1. Verify bilingual (German first, English second) B2-level documentation blocks
    were added or updated where required.
-2. Verify XML documentation coverage for changed members.
+2. Verify XML documentation coverage for all changed members (public and non-public).
 3. Regenerate docfx output when `docfx.json` is present and documentation-related
    inputs changed.
 4. Close all identified gaps in the same PR; deferred documentation is prohibited.
@@ -266,4 +292,4 @@ Use `CLAUDE.md`, `GEMINI.md`, `copilot-instructions.md`, and `AGENTS.md` for
 runtime agent-specific development guidance.
 Use `docs/guides/multi-mac-workflow.md` for local multi-machine workflow details.
 
-**Version**: 1.1.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-06
+**Version**: 1.2.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-06
