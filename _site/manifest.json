@@ -1,0 +1,474 @@
+{
+  "source_base_path": "/Users/thorstenhindermann/RiderProjects/TuiVision",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": ".github/workflows/ci.yml",
+      "output": {
+        "resource": {
+          "relative_path": ".github/workflows/ci.yml"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "LICENSE",
+      "output": {
+        "resource": {
+          "relative_path": "LICENSE"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Compatibility.TKeyCodeTranslator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Compatibility.TKeyCodeTranslator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Compatibility.TKeyCodeTranslator",
+      "Summary": "<p sourcefile=\"api/TuiVision.Compatibility.TKeyCodeTranslator.yml\" sourcestartlinenumber=\"1\">Helpers for mapping .NET console input to Turbo Vision compatible key values.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Compatibility.TShiftState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Compatibility.TShiftState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Compatibility.TShiftState",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Compatibility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Compatibility.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Compatibility",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TView.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TView",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TView.yml\" sourcestartlinenumber=\"1\">Base visual element ported from Turbo Vision's TView.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TViewOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TViewOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TViewOptions",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TViewOptions.yml\" sourcestartlinenumber=\"1\">Option mask for view behavior.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TViewState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TViewState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TViewState",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TViewState.yml\" sourcestartlinenumber=\"1\">State mask for a view.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TEvent",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TEvent.yml\" sourcestartlinenumber=\"1\">Mutable event object that carries one payload channel (mouse, key, message).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TEventKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TEventKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TEventKind",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TEventKind.yml\" sourcestartlinenumber=\"1\">Event kind values ported from Turbo Vision event codes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TKeyDownEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TKeyDownEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TKeyDownEvent",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TKeyDownEvent.yml\" sourcestartlinenumber=\"1\">Key-down payload.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TMessageEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TMessageEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TMessageEvent",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TMessageEvent.yml\" sourcestartlinenumber=\"1\">Command/broadcast payload.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TMouseButtons.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TMouseButtons.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TMouseButtons",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TMouseButtons.yml\" sourcestartlinenumber=\"1\">Mouse button flags.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TMouseEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TMouseEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TMouseEvent",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TMouseEvent.yml\" sourcestartlinenumber=\"1\">Mouse event payload.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TObject",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TObject.yml\" sourcestartlinenumber=\"1\">Base object for ported Turbo Vision types.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TPoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TPoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TPoint",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TPoint.yml\" sourcestartlinenumber=\"1\">2D point type matching Turbo Vision coordinate semantics.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TRect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TRect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TRect",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TRect.yml\" sourcestartlinenumber=\"1\">Rectangular region represented as top-left inclusive and bottom-right exclusive.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Drivers.Console.IConsolePresenter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Drivers.Console.IConsolePresenter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Drivers.Console.IConsolePresenter",
+      "Summary": "<p sourcefile=\"api/TuiVision.Drivers.Console.IConsolePresenter.yml\" sourcestartlinenumber=\"1\">Receives a rendered frame from <xref href=\"TuiVision.Drivers.Console.TConsoleDriver\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Drivers.Console.TConsoleBuffer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Drivers.Console.TConsoleBuffer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Drivers.Console.TConsoleBuffer",
+      "Summary": "<p sourcefile=\"api/TuiVision.Drivers.Console.TConsoleBuffer.yml\" sourcestartlinenumber=\"1\">Mutable 2D character buffer with clipping helpers.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Drivers.Console.TConsoleCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Drivers.Console.TConsoleCell.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Drivers.Console.TConsoleCell",
+      "Summary": "<p sourcefile=\"api/TuiVision.Drivers.Console.TConsoleCell.yml\" sourcestartlinenumber=\"1\">Character cell model for the managed console driver.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Drivers.Console.TConsoleDriver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Drivers.Console.TConsoleDriver.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Drivers.Console.TConsoleDriver",
+      "Summary": "<p sourcefile=\"api/TuiVision.Drivers.Console.TConsoleDriver.yml\" sourcestartlinenumber=\"1\">Keeps the active back buffer and publishes immutable frame snapshots.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Drivers.Console.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Drivers.Console.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Drivers.Console",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.ITStreamSerializable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.ITStreamSerializable.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.ITStreamSerializable",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.ITStreamSerializable.yml\" sourcestartlinenumber=\"1\">Contract for stream-based serialization used by ported Turbo Vision record types.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.TBinaryArchiveReader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.TBinaryArchiveReader.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.TBinaryArchiveReader",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveReader.yml\" sourcestartlinenumber=\"1\">Small binary reader abstraction matching <xref href=\"TuiVision.Serialization.TBinaryArchiveWriter\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.TBinaryArchiveWriter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.TBinaryArchiveWriter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.TBinaryArchiveWriter",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveWriter.yml\" sourcestartlinenumber=\"1\">Small binary writer abstraction for deterministic payload creation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.TRecordRegistry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.TRecordRegistry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.TRecordRegistry",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TRecordRegistry.yml\" sourcestartlinenumber=\"1\">Registry that maps stable type identifiers to factory delegates.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.TRecordSerializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.TRecordSerializer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.TRecordSerializer",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TRecordSerializer.yml\" sourcestartlinenumber=\"1\">Envelope serializer using type id + payload bytes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/multi-mac-workflow.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/multi-mac-workflow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "examples/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "examples/README.html"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>TuiVision | TuiVision Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="TuiVision | TuiVision Documentation ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="">
+      <meta name="docfx:tocrel" content="">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/main/README.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="TuiVision">
+            TuiVision
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="tuivision">TuiVision</h1>
+
+<p>TuiVision is an example project that ports Turbo Vision concepts to C#/.NET 10
+(<code>net10.0</code>, .NET Core).</p>
+<p>The project is intended as a learning and modernization showcase using
+Agentic-AI workflows. It is not an official Turbo Vision continuation.</p>
+<h2 id="scope">Scope</h2>
+<ul>
+<li>Target framework: .NET 10 (<code>net10.0</code>)</li>
+<li>Runtime model: managed .NET Core code</li>
+<li>Goal: example port and reference implementation</li>
+</ul>
+<h2 id="development-guides">Development Guides</h2>
+<ul>
+<li>Multi-Mac workflow (MacBook Air M2 + Mac mini M4 Pro) with <code>gh</code> and <code>codex</code>:
+<a href="docs/guides/multi-mac-workflow.html"><code>docs/guides/multi-mac-workflow.md</code></a></li>
+</ul>
+<h2 id="documentation-policy">Documentation Policy</h2>
+<ul>
+<li>Documentation changes MUST be bilingual with German text first and English text second.</li>
+<li>Explanatory text MUST target CEFR-B2 readability for both languages.</li>
+<li>Public API changes MUST include complete XML documentation updates in the same change.</li>
+</ul>
+<h2 id="ci">CI</h2>
+<ul>
+<li>GitHub Actions workflow:
+<a href=".github/workflows/ci.yml"><code>.github/workflows/ci.yml</code></a></li>
+<li>The workflow validates restore/build/test and generates docfx documentation
+when <code>docfx.json</code> is present at repository root.</li>
+<li>The workflow intentionally fails if no <code>.sln</code> or <code>.csproj</code> exists yet, to
+prevent false-green CI results.</li>
+</ul>
+<h2 id="legal-and-license-notice">Legal and License Notice</h2>
+<ul>
+<li>TuiVision is an educational example project.</li>
+<li>The project is not intended to violate rights or licenses of Turbo Vision.</li>
+<li>The project is not intended to compete with Turbo Vision.</li>
+<li>TuiVision is not affiliated with, endorsed by, or officially connected to
+Turbo Vision rightsholders.</li>
+</ul>
+<h2 id="licensing-model">Licensing Model</h2>
+<ul>
+<li>Original TuiVision code in this repository is licensed under MIT
+(see <a href="LICENSE"><code>LICENSE</code></a>).</li>
+<li>Third-party source material (for example under <code>tv203s/</code>) remains under its
+own original license terms and notices.</li>
+<li>Third-party license terms take precedence for third-party files.</li>
+</ul>
+<h2 id="third-party-source-base">Third-Party Source Base</h2>
+<p>The historical Turbo Vision source tree used as input is located in:</p>
+<ul>
+<li><code>tv203s/</code></li>
+</ul>
+<p>Use and redistribution of these files must follow their original licensing and
+copyright notices.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/hindermath/TuiVision/blob/main/README.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

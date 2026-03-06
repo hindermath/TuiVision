@@ -1,0 +1,96 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Serialization.ITStreamSerializable
+  commentId: T:TuiVision.Serialization.ITStreamSerializable
+  id: ITStreamSerializable
+  parent: TuiVision.Serialization
+  children:
+  - TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  langs:
+  - csharp
+  - vb
+  name: ITStreamSerializable
+  nameWithType: ITStreamSerializable
+  fullName: TuiVision.Serialization.ITStreamSerializable
+  type: Interface
+  source:
+    remote:
+      path: src/TuiVision.Serialization/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: ITStreamSerializable
+    path: src/TuiVision.Serialization/Class1.cs
+    startLine: 7
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: Contract for stream-based serialization used by ported Turbo Vision record types.
+  example: []
+  syntax:
+    content: public interface ITStreamSerializable
+    content.vb: Public Interface ITStreamSerializable
+- uid: TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  commentId: M:TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  id: SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  parent: TuiVision.Serialization.ITStreamSerializable
+  langs:
+  - csharp
+  - vb
+  name: SaveTo(TBinaryArchiveWriter)
+  nameWithType: ITStreamSerializable.SaveTo(TBinaryArchiveWriter)
+  fullName: TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SaveTo
+    path: src/TuiVision.Serialization/Class1.cs
+    startLine: 9
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  syntax:
+    content: void SaveTo(TBinaryArchiveWriter writer)
+    parameters:
+    - id: writer
+      type: TuiVision.Serialization.TBinaryArchiveWriter
+    content.vb: Sub SaveTo(writer As TBinaryArchiveWriter)
+  overload: TuiVision.Serialization.ITStreamSerializable.SaveTo*
+references:
+- uid: TuiVision.Serialization
+  commentId: N:TuiVision.Serialization
+  href: TuiVision.html
+  name: TuiVision.Serialization
+  nameWithType: TuiVision.Serialization
+  fullName: TuiVision.Serialization
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Serialization
+    name: Serialization
+    href: TuiVision.Serialization.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Serialization
+    name: Serialization
+    href: TuiVision.Serialization.html
+- uid: TuiVision.Serialization.ITStreamSerializable.SaveTo*
+  commentId: Overload:TuiVision.Serialization.ITStreamSerializable.SaveTo
+  href: TuiVision.Serialization.ITStreamSerializable.html#TuiVision_Serialization_ITStreamSerializable_SaveTo_TuiVision_Serialization_TBinaryArchiveWriter_
+  name: SaveTo
+  nameWithType: ITStreamSerializable.SaveTo
+  fullName: TuiVision.Serialization.ITStreamSerializable.SaveTo
+- uid: TuiVision.Serialization.TBinaryArchiveWriter
+  commentId: T:TuiVision.Serialization.TBinaryArchiveWriter
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TBinaryArchiveWriter.html
+  name: TBinaryArchiveWriter
+  nameWithType: TBinaryArchiveWriter
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter

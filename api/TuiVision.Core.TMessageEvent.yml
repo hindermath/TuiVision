@@ -1,0 +1,469 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Core.TMessageEvent
+  commentId: T:TuiVision.Core.TMessageEvent
+  id: TMessageEvent
+  parent: TuiVision.Core
+  children:
+  - TuiVision.Core.TMessageEvent.#ctor(System.UInt16,System.Object)
+  - TuiVision.Core.TMessageEvent.Command
+  - TuiVision.Core.TMessageEvent.Info
+  langs:
+  - csharp
+  - vb
+  name: TMessageEvent
+  nameWithType: TMessageEvent
+  fullName: TuiVision.Core.TMessageEvent
+  type: Struct
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TMessageEvent
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 48
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: Command/broadcast payload.
+  example: []
+  syntax:
+    content: 'public readonly record struct TMessageEvent : IEquatable<TMessageEvent>'
+    content.vb: Public Structure TMessageEvent Implements IEquatable(Of TMessageEvent)
+  implements:
+  - System.IEquatable{TuiVision.Core.TMessageEvent}
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: TuiVision.Core.TMessageEvent.#ctor(System.UInt16,System.Object)
+  commentId: M:TuiVision.Core.TMessageEvent.#ctor(System.UInt16,System.Object)
+  id: '#ctor(System.UInt16,System.Object)'
+  parent: TuiVision.Core.TMessageEvent
+  langs:
+  - csharp
+  - vb
+  name: TMessageEvent(ushort, object?)
+  nameWithType: TMessageEvent.TMessageEvent(ushort, object?)
+  fullName: TuiVision.Core.TMessageEvent.TMessageEvent(ushort, object?)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 48
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: Command/broadcast payload.
+  example: []
+  syntax:
+    content: public TMessageEvent(ushort Command, object? Info)
+    parameters:
+    - id: Command
+      type: System.UInt16
+    - id: Info
+      type: System.Object
+    content.vb: Public Sub New(Command As UShort, Info As Object)
+  overload: TuiVision.Core.TMessageEvent.#ctor*
+  nameWithType.vb: TMessageEvent.New(UShort, Object)
+  fullName.vb: TuiVision.Core.TMessageEvent.New(UShort, Object)
+  name.vb: New(UShort, Object)
+- uid: TuiVision.Core.TMessageEvent.Command
+  commentId: P:TuiVision.Core.TMessageEvent.Command
+  id: Command
+  parent: TuiVision.Core.TMessageEvent
+  langs:
+  - csharp
+  - vb
+  name: Command
+  nameWithType: TMessageEvent.Command
+  fullName: TuiVision.Core.TMessageEvent.Command
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Command
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 48
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: public ushort Command { get; init; }
+    parameters: []
+    return:
+      type: System.UInt16
+    content.vb: Public Property Command As UShort
+  overload: TuiVision.Core.TMessageEvent.Command*
+- uid: TuiVision.Core.TMessageEvent.Info
+  commentId: P:TuiVision.Core.TMessageEvent.Info
+  id: Info
+  parent: TuiVision.Core.TMessageEvent
+  langs:
+  - csharp
+  - vb
+  name: Info
+  nameWithType: TMessageEvent.Info
+  fullName: TuiVision.Core.TMessageEvent.Info
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Info
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 48
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: public object? Info { get; init; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property Info As Object
+  overload: TuiVision.Core.TMessageEvent.Info*
+references:
+- uid: TuiVision.Core
+  commentId: N:TuiVision.Core
+  href: TuiVision.html
+  name: TuiVision.Core
+  nameWithType: TuiVision.Core
+  fullName: TuiVision.Core
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+- uid: System.IEquatable{TuiVision.Core.TMessageEvent}
+  commentId: T:System.IEquatable{TuiVision.Core.TMessageEvent}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<TMessageEvent>
+  nameWithType: IEquatable<TMessageEvent>
+  fullName: System.IEquatable<TuiVision.Core.TMessageEvent>
+  nameWithType.vb: IEquatable(Of TMessageEvent)
+  fullName.vb: System.IEquatable(Of TuiVision.Core.TMessageEvent)
+  name.vb: IEquatable(Of TMessageEvent)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: TuiVision.Core.TMessageEvent
+    name: TMessageEvent
+    href: TuiVision.Core.TMessageEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Core.TMessageEvent
+    name: TMessageEvent
+    href: TuiVision.Core.TMessageEvent.html
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TuiVision.Core.TMessageEvent.#ctor*
+  commentId: Overload:TuiVision.Core.TMessageEvent.#ctor
+  href: TuiVision.Core.TMessageEvent.html#TuiVision_Core_TMessageEvent__ctor_System_UInt16_System_Object_
+  name: TMessageEvent
+  nameWithType: TMessageEvent.TMessageEvent
+  fullName: TuiVision.Core.TMessageEvent.TMessageEvent
+  nameWithType.vb: TMessageEvent.New
+  fullName.vb: TuiVision.Core.TMessageEvent.New
+  name.vb: New
+- uid: System.UInt16
+  commentId: T:System.UInt16
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint16
+  name: ushort
+  nameWithType: ushort
+  fullName: ushort
+  nameWithType.vb: UShort
+  fullName.vb: UShort
+  name.vb: UShort
+- uid: TuiVision.Core.TMessageEvent.Command*
+  commentId: Overload:TuiVision.Core.TMessageEvent.Command
+  href: TuiVision.Core.TMessageEvent.html#TuiVision_Core_TMessageEvent_Command
+  name: Command
+  nameWithType: TMessageEvent.Command
+  fullName: TuiVision.Core.TMessageEvent.Command
+- uid: TuiVision.Core.TMessageEvent.Info*
+  commentId: Overload:TuiVision.Core.TMessageEvent.Info
+  href: TuiVision.Core.TMessageEvent.html#TuiVision_Core_TMessageEvent_Info
+  name: Info
+  nameWithType: TMessageEvent.Info
+  fullName: TuiVision.Core.TMessageEvent.Info

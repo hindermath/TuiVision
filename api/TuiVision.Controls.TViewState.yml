@@ -1,0 +1,394 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.TViewState
+  commentId: T:TuiVision.Controls.TViewState
+  id: TViewState
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.TViewState.Active
+  - TuiVision.Controls.TViewState.CursorInsert
+  - TuiVision.Controls.TViewState.CursorVisible
+  - TuiVision.Controls.TViewState.Default
+  - TuiVision.Controls.TViewState.Disabled
+  - TuiVision.Controls.TViewState.Dragging
+  - TuiVision.Controls.TViewState.Exposed
+  - TuiVision.Controls.TViewState.Focused
+  - TuiVision.Controls.TViewState.Modal
+  - TuiVision.Controls.TViewState.Selected
+  - TuiVision.Controls.TViewState.Shadow
+  - TuiVision.Controls.TViewState.Visible
+  langs:
+  - csharp
+  - vb
+  name: TViewState
+  nameWithType: TViewState
+  fullName: TuiVision.Controls.TViewState
+  type: Enum
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TViewState
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 7
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: State mask for a view.
+  example: []
+  syntax:
+    content: >-
+      [Flags]
+
+      public enum TViewState : ushort
+    content.vb: >-
+      <Flags>
+
+      Public Enum TViewState As UShort
+  attributes:
+  - type: System.FlagsAttribute
+    ctor: System.FlagsAttribute.#ctor
+    arguments: []
+- uid: TuiVision.Controls.TViewState.Visible
+  commentId: F:TuiVision.Controls.TViewState.Visible
+  id: Visible
+  parent: TuiVision.Controls.TViewState
+  langs:
+  - csharp
+  - vb
+  name: Visible
+  nameWithType: TViewState.Visible
+  fullName: TuiVision.Controls.TViewState.Visible
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Visible
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 10
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: Visible = 1
+    return:
+      type: TuiVision.Controls.TViewState
+- uid: TuiVision.Controls.TViewState.CursorVisible
+  commentId: F:TuiVision.Controls.TViewState.CursorVisible
+  id: CursorVisible
+  parent: TuiVision.Controls.TViewState
+  langs:
+  - csharp
+  - vb
+  name: CursorVisible
+  nameWithType: TViewState.CursorVisible
+  fullName: TuiVision.Controls.TViewState.CursorVisible
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: CursorVisible
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 11
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: CursorVisible = 2
+    return:
+      type: TuiVision.Controls.TViewState
+- uid: TuiVision.Controls.TViewState.CursorInsert
+  commentId: F:TuiVision.Controls.TViewState.CursorInsert
+  id: CursorInsert
+  parent: TuiVision.Controls.TViewState
+  langs:
+  - csharp
+  - vb
+  name: CursorInsert
+  nameWithType: TViewState.CursorInsert
+  fullName: TuiVision.Controls.TViewState.CursorInsert
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: CursorInsert
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 12
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: CursorInsert = 4
+    return:
+      type: TuiVision.Controls.TViewState
+- uid: TuiVision.Controls.TViewState.Shadow
+  commentId: F:TuiVision.Controls.TViewState.Shadow
+  id: Shadow
+  parent: TuiVision.Controls.TViewState
+  langs:
+  - csharp
+  - vb
+  name: Shadow
+  nameWithType: TViewState.Shadow
+  fullName: TuiVision.Controls.TViewState.Shadow
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Shadow
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 13
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: Shadow = 8
+    return:
+      type: TuiVision.Controls.TViewState
+- uid: TuiVision.Controls.TViewState.Active
+  commentId: F:TuiVision.Controls.TViewState.Active
+  id: Active
+  parent: TuiVision.Controls.TViewState
+  langs:
+  - csharp
+  - vb
+  name: Active
+  nameWithType: TViewState.Active
+  fullName: TuiVision.Controls.TViewState.Active
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Active
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 14
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: Active = 16
+    return:
+      type: TuiVision.Controls.TViewState
+- uid: TuiVision.Controls.TViewState.Selected
+  commentId: F:TuiVision.Controls.TViewState.Selected
+  id: Selected
+  parent: TuiVision.Controls.TViewState
+  langs:
+  - csharp
+  - vb
+  name: Selected
+  nameWithType: TViewState.Selected
+  fullName: TuiVision.Controls.TViewState.Selected
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Selected
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 15
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: Selected = 32
+    return:
+      type: TuiVision.Controls.TViewState
+- uid: TuiVision.Controls.TViewState.Focused
+  commentId: F:TuiVision.Controls.TViewState.Focused
+  id: Focused
+  parent: TuiVision.Controls.TViewState
+  langs:
+  - csharp
+  - vb
+  name: Focused
+  nameWithType: TViewState.Focused
+  fullName: TuiVision.Controls.TViewState.Focused
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Focused
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 16
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: Focused = 64
+    return:
+      type: TuiVision.Controls.TViewState
+- uid: TuiVision.Controls.TViewState.Dragging
+  commentId: F:TuiVision.Controls.TViewState.Dragging
+  id: Dragging
+  parent: TuiVision.Controls.TViewState
+  langs:
+  - csharp
+  - vb
+  name: Dragging
+  nameWithType: TViewState.Dragging
+  fullName: TuiVision.Controls.TViewState.Dragging
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Dragging
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 17
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: Dragging = 128
+    return:
+      type: TuiVision.Controls.TViewState
+- uid: TuiVision.Controls.TViewState.Disabled
+  commentId: F:TuiVision.Controls.TViewState.Disabled
+  id: Disabled
+  parent: TuiVision.Controls.TViewState
+  langs:
+  - csharp
+  - vb
+  name: Disabled
+  nameWithType: TViewState.Disabled
+  fullName: TuiVision.Controls.TViewState.Disabled
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Disabled
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 18
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: Disabled = 256
+    return:
+      type: TuiVision.Controls.TViewState
+- uid: TuiVision.Controls.TViewState.Modal
+  commentId: F:TuiVision.Controls.TViewState.Modal
+  id: Modal
+  parent: TuiVision.Controls.TViewState
+  langs:
+  - csharp
+  - vb
+  name: Modal
+  nameWithType: TViewState.Modal
+  fullName: TuiVision.Controls.TViewState.Modal
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Modal
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 19
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: Modal = 512
+    return:
+      type: TuiVision.Controls.TViewState
+- uid: TuiVision.Controls.TViewState.Default
+  commentId: F:TuiVision.Controls.TViewState.Default
+  id: Default
+  parent: TuiVision.Controls.TViewState
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: TViewState.Default
+  fullName: TuiVision.Controls.TViewState.Default
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Default
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 20
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: Default = 1024
+    return:
+      type: TuiVision.Controls.TViewState
+- uid: TuiVision.Controls.TViewState.Exposed
+  commentId: F:TuiVision.Controls.TViewState.Exposed
+  id: Exposed
+  parent: TuiVision.Controls.TViewState
+  langs:
+  - csharp
+  - vb
+  name: Exposed
+  nameWithType: TViewState.Exposed
+  fullName: TuiVision.Controls.TViewState.Exposed
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Exposed
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 21
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: Exposed = 2048
+    return:
+      type: TuiVision.Controls.TViewState
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: TuiVision.Controls.TViewState
+  commentId: T:TuiVision.Controls.TViewState
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TViewState.html
+  name: TViewState
+  nameWithType: TViewState
+  fullName: TuiVision.Controls.TViewState

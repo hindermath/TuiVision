@@ -1,0 +1,110 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Core
+  commentId: N:TuiVision.Core
+  id: TuiVision.Core
+  children:
+  - TuiVision.Core.TEvent
+  - TuiVision.Core.TEventKind
+  - TuiVision.Core.TKeyDownEvent
+  - TuiVision.Core.TMessageEvent
+  - TuiVision.Core.TMouseButtons
+  - TuiVision.Core.TMouseEvent
+  - TuiVision.Core.TObject
+  - TuiVision.Core.TPoint
+  - TuiVision.Core.TRect
+  langs:
+  - csharp
+  - vb
+  name: TuiVision.Core
+  nameWithType: TuiVision.Core
+  fullName: TuiVision.Core
+  type: Namespace
+  assemblies:
+  - TuiVision.Core
+references:
+- uid: TuiVision.Core.TEventKind
+  commentId: T:TuiVision.Core.TEventKind
+  parent: TuiVision.Core
+  href: TuiVision.Core.TEventKind.html
+  name: TEventKind
+  nameWithType: TEventKind
+  fullName: TuiVision.Core.TEventKind
+- uid: TuiVision.Core.TMouseButtons
+  commentId: T:TuiVision.Core.TMouseButtons
+  parent: TuiVision.Core
+  href: TuiVision.Core.TMouseButtons.html
+  name: TMouseButtons
+  nameWithType: TMouseButtons
+  fullName: TuiVision.Core.TMouseButtons
+- uid: TuiVision.Core.TMouseEvent
+  commentId: T:TuiVision.Core.TMouseEvent
+  parent: TuiVision.Core
+  href: TuiVision.Core.TMouseEvent.html
+  name: TMouseEvent
+  nameWithType: TMouseEvent
+  fullName: TuiVision.Core.TMouseEvent
+- uid: TuiVision.Core.TKeyDownEvent
+  commentId: T:TuiVision.Core.TKeyDownEvent
+  parent: TuiVision.Core
+  href: TuiVision.Core.TKeyDownEvent.html
+  name: TKeyDownEvent
+  nameWithType: TKeyDownEvent
+  fullName: TuiVision.Core.TKeyDownEvent
+- uid: TuiVision.Core.TMessageEvent
+  commentId: T:TuiVision.Core.TMessageEvent
+  parent: TuiVision.Core
+  href: TuiVision.Core.TMessageEvent.html
+  name: TMessageEvent
+  nameWithType: TMessageEvent
+  fullName: TuiVision.Core.TMessageEvent
+- uid: TuiVision.Core.TEvent
+  commentId: T:TuiVision.Core.TEvent
+  parent: TuiVision.Core
+  href: TuiVision.Core.TEvent.html
+  name: TEvent
+  nameWithType: TEvent
+  fullName: TuiVision.Core.TEvent
+- uid: TuiVision.Core.TObject
+  commentId: T:TuiVision.Core.TObject
+  parent: TuiVision.Core
+  href: TuiVision.Core.TObject.html
+  name: TObject
+  nameWithType: TObject
+  fullName: TuiVision.Core.TObject
+- uid: TuiVision.Core.TPoint
+  commentId: T:TuiVision.Core.TPoint
+  parent: TuiVision.Core
+  href: TuiVision.Core.TPoint.html
+  name: TPoint
+  nameWithType: TPoint
+  fullName: TuiVision.Core.TPoint
+- uid: TuiVision.Core.TRect
+  commentId: T:TuiVision.Core.TRect
+  parent: TuiVision.Core
+  href: TuiVision.Core.TRect.html
+  name: TRect
+  nameWithType: TRect
+  fullName: TuiVision.Core.TRect
+- uid: TuiVision.Core
+  commentId: N:TuiVision.Core
+  href: TuiVision.html
+  name: TuiVision.Core
+  nameWithType: TuiVision.Core
+  fullName: TuiVision.Core
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html

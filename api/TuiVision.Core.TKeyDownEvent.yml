@@ -1,0 +1,605 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Core.TKeyDownEvent
+  commentId: T:TuiVision.Core.TKeyDownEvent
+  id: TKeyDownEvent
+  parent: TuiVision.Core
+  children:
+  - TuiVision.Core.TKeyDownEvent.#ctor(System.Char,System.Byte,System.UInt16,System.UInt16,System.Byte)
+  - TuiVision.Core.TKeyDownEvent.CharCode
+  - TuiVision.Core.TKeyDownEvent.KeyCode
+  - TuiVision.Core.TKeyDownEvent.RawScanCode
+  - TuiVision.Core.TKeyDownEvent.ScanCode
+  - TuiVision.Core.TKeyDownEvent.ShiftState
+  langs:
+  - csharp
+  - vb
+  name: TKeyDownEvent
+  nameWithType: TKeyDownEvent
+  fullName: TuiVision.Core.TKeyDownEvent
+  type: Struct
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TKeyDownEvent
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 43
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: Key-down payload.
+  example: []
+  syntax:
+    content: 'public readonly record struct TKeyDownEvent : IEquatable<TKeyDownEvent>'
+    content.vb: Public Structure TKeyDownEvent Implements IEquatable(Of TKeyDownEvent)
+  implements:
+  - System.IEquatable{TuiVision.Core.TKeyDownEvent}
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: TuiVision.Core.TKeyDownEvent.#ctor(System.Char,System.Byte,System.UInt16,System.UInt16,System.Byte)
+  commentId: M:TuiVision.Core.TKeyDownEvent.#ctor(System.Char,System.Byte,System.UInt16,System.UInt16,System.Byte)
+  id: '#ctor(System.Char,System.Byte,System.UInt16,System.UInt16,System.Byte)'
+  parent: TuiVision.Core.TKeyDownEvent
+  langs:
+  - csharp
+  - vb
+  name: TKeyDownEvent(char, byte, ushort, ushort, byte)
+  nameWithType: TKeyDownEvent.TKeyDownEvent(char, byte, ushort, ushort, byte)
+  fullName: TuiVision.Core.TKeyDownEvent.TKeyDownEvent(char, byte, ushort, ushort, byte)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 43
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: Key-down payload.
+  example: []
+  syntax:
+    content: public TKeyDownEvent(char CharCode, byte ScanCode, ushort KeyCode, ushort ShiftState, byte RawScanCode)
+    parameters:
+    - id: CharCode
+      type: System.Char
+    - id: ScanCode
+      type: System.Byte
+    - id: KeyCode
+      type: System.UInt16
+    - id: ShiftState
+      type: System.UInt16
+    - id: RawScanCode
+      type: System.Byte
+    content.vb: Public Sub New(CharCode As Char, ScanCode As Byte, KeyCode As UShort, ShiftState As UShort, RawScanCode As Byte)
+  overload: TuiVision.Core.TKeyDownEvent.#ctor*
+  nameWithType.vb: TKeyDownEvent.New(Char, Byte, UShort, UShort, Byte)
+  fullName.vb: TuiVision.Core.TKeyDownEvent.New(Char, Byte, UShort, UShort, Byte)
+  name.vb: New(Char, Byte, UShort, UShort, Byte)
+- uid: TuiVision.Core.TKeyDownEvent.CharCode
+  commentId: P:TuiVision.Core.TKeyDownEvent.CharCode
+  id: CharCode
+  parent: TuiVision.Core.TKeyDownEvent
+  langs:
+  - csharp
+  - vb
+  name: CharCode
+  nameWithType: TKeyDownEvent.CharCode
+  fullName: TuiVision.Core.TKeyDownEvent.CharCode
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: CharCode
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 43
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: public char CharCode { get; init; }
+    parameters: []
+    return:
+      type: System.Char
+    content.vb: Public Property CharCode As Char
+  overload: TuiVision.Core.TKeyDownEvent.CharCode*
+- uid: TuiVision.Core.TKeyDownEvent.ScanCode
+  commentId: P:TuiVision.Core.TKeyDownEvent.ScanCode
+  id: ScanCode
+  parent: TuiVision.Core.TKeyDownEvent
+  langs:
+  - csharp
+  - vb
+  name: ScanCode
+  nameWithType: TKeyDownEvent.ScanCode
+  fullName: TuiVision.Core.TKeyDownEvent.ScanCode
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: ScanCode
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 43
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: public byte ScanCode { get; init; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public Property ScanCode As Byte
+  overload: TuiVision.Core.TKeyDownEvent.ScanCode*
+- uid: TuiVision.Core.TKeyDownEvent.KeyCode
+  commentId: P:TuiVision.Core.TKeyDownEvent.KeyCode
+  id: KeyCode
+  parent: TuiVision.Core.TKeyDownEvent
+  langs:
+  - csharp
+  - vb
+  name: KeyCode
+  nameWithType: TKeyDownEvent.KeyCode
+  fullName: TuiVision.Core.TKeyDownEvent.KeyCode
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: KeyCode
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 43
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: public ushort KeyCode { get; init; }
+    parameters: []
+    return:
+      type: System.UInt16
+    content.vb: Public Property KeyCode As UShort
+  overload: TuiVision.Core.TKeyDownEvent.KeyCode*
+- uid: TuiVision.Core.TKeyDownEvent.ShiftState
+  commentId: P:TuiVision.Core.TKeyDownEvent.ShiftState
+  id: ShiftState
+  parent: TuiVision.Core.TKeyDownEvent
+  langs:
+  - csharp
+  - vb
+  name: ShiftState
+  nameWithType: TKeyDownEvent.ShiftState
+  fullName: TuiVision.Core.TKeyDownEvent.ShiftState
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: ShiftState
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 43
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: public ushort ShiftState { get; init; }
+    parameters: []
+    return:
+      type: System.UInt16
+    content.vb: Public Property ShiftState As UShort
+  overload: TuiVision.Core.TKeyDownEvent.ShiftState*
+- uid: TuiVision.Core.TKeyDownEvent.RawScanCode
+  commentId: P:TuiVision.Core.TKeyDownEvent.RawScanCode
+  id: RawScanCode
+  parent: TuiVision.Core.TKeyDownEvent
+  langs:
+  - csharp
+  - vb
+  name: RawScanCode
+  nameWithType: TKeyDownEvent.RawScanCode
+  fullName: TuiVision.Core.TKeyDownEvent.RawScanCode
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: RawScanCode
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 43
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: public byte RawScanCode { get; init; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public Property RawScanCode As Byte
+  overload: TuiVision.Core.TKeyDownEvent.RawScanCode*
+references:
+- uid: TuiVision.Core
+  commentId: N:TuiVision.Core
+  href: TuiVision.html
+  name: TuiVision.Core
+  nameWithType: TuiVision.Core
+  fullName: TuiVision.Core
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+- uid: System.IEquatable{TuiVision.Core.TKeyDownEvent}
+  commentId: T:System.IEquatable{TuiVision.Core.TKeyDownEvent}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<TKeyDownEvent>
+  nameWithType: IEquatable<TKeyDownEvent>
+  fullName: System.IEquatable<TuiVision.Core.TKeyDownEvent>
+  nameWithType.vb: IEquatable(Of TKeyDownEvent)
+  fullName.vb: System.IEquatable(Of TuiVision.Core.TKeyDownEvent)
+  name.vb: IEquatable(Of TKeyDownEvent)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: TuiVision.Core.TKeyDownEvent
+    name: TKeyDownEvent
+    href: TuiVision.Core.TKeyDownEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Core.TKeyDownEvent
+    name: TKeyDownEvent
+    href: TuiVision.Core.TKeyDownEvent.html
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TuiVision.Core.TKeyDownEvent.#ctor*
+  commentId: Overload:TuiVision.Core.TKeyDownEvent.#ctor
+  href: TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent__ctor_System_Char_System_Byte_System_UInt16_System_UInt16_System_Byte_
+  name: TKeyDownEvent
+  nameWithType: TKeyDownEvent.TKeyDownEvent
+  fullName: TuiVision.Core.TKeyDownEvent.TKeyDownEvent
+  nameWithType.vb: TKeyDownEvent.New
+  fullName.vb: TuiVision.Core.TKeyDownEvent.New
+  name.vb: New
+- uid: System.Char
+  commentId: T:System.Char
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.char
+  name: char
+  nameWithType: char
+  fullName: char
+  nameWithType.vb: Char
+  fullName.vb: Char
+  name.vb: Char
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: System.UInt16
+  commentId: T:System.UInt16
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint16
+  name: ushort
+  nameWithType: ushort
+  fullName: ushort
+  nameWithType.vb: UShort
+  fullName.vb: UShort
+  name.vb: UShort
+- uid: TuiVision.Core.TKeyDownEvent.CharCode*
+  commentId: Overload:TuiVision.Core.TKeyDownEvent.CharCode
+  href: TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_CharCode
+  name: CharCode
+  nameWithType: TKeyDownEvent.CharCode
+  fullName: TuiVision.Core.TKeyDownEvent.CharCode
+- uid: TuiVision.Core.TKeyDownEvent.ScanCode*
+  commentId: Overload:TuiVision.Core.TKeyDownEvent.ScanCode
+  href: TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_ScanCode
+  name: ScanCode
+  nameWithType: TKeyDownEvent.ScanCode
+  fullName: TuiVision.Core.TKeyDownEvent.ScanCode
+- uid: TuiVision.Core.TKeyDownEvent.KeyCode*
+  commentId: Overload:TuiVision.Core.TKeyDownEvent.KeyCode
+  href: TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_KeyCode
+  name: KeyCode
+  nameWithType: TKeyDownEvent.KeyCode
+  fullName: TuiVision.Core.TKeyDownEvent.KeyCode
+- uid: TuiVision.Core.TKeyDownEvent.ShiftState*
+  commentId: Overload:TuiVision.Core.TKeyDownEvent.ShiftState
+  href: TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_ShiftState
+  name: ShiftState
+  nameWithType: TKeyDownEvent.ShiftState
+  fullName: TuiVision.Core.TKeyDownEvent.ShiftState
+- uid: TuiVision.Core.TKeyDownEvent.RawScanCode*
+  commentId: Overload:TuiVision.Core.TKeyDownEvent.RawScanCode
+  href: TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_RawScanCode
+  name: RawScanCode
+  nameWithType: TKeyDownEvent.RawScanCode
+  fullName: TuiVision.Core.TKeyDownEvent.RawScanCode

@@ -1,0 +1,869 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Core.TPoint
+  commentId: T:TuiVision.Core.TPoint
+  id: TPoint
+  parent: TuiVision.Core
+  children:
+  - TuiVision.Core.TPoint.#ctor(System.Int32,System.Int32)
+  - TuiVision.Core.TPoint.Equals(System.Object)
+  - TuiVision.Core.TPoint.Equals(TuiVision.Core.TPoint)
+  - TuiVision.Core.TPoint.GetHashCode
+  - TuiVision.Core.TPoint.X
+  - TuiVision.Core.TPoint.Y
+  - TuiVision.Core.TPoint.op_Addition(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  - TuiVision.Core.TPoint.op_Equality(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  - TuiVision.Core.TPoint.op_Inequality(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  - TuiVision.Core.TPoint.op_Subtraction(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  langs:
+  - csharp
+  - vb
+  name: TPoint
+  nameWithType: TPoint
+  fullName: TuiVision.Core.TPoint
+  type: Struct
+  source:
+    remote:
+      path: src/TuiVision.Core/TPoint.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TPoint
+    path: src/TuiVision.Core/TPoint.cs
+    startLine: 5
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: 2D point type matching Turbo Vision coordinate semantics.
+  example: []
+  syntax:
+    content: 'public struct TPoint : IEquatable<TPoint>'
+    content.vb: Public Structure TPoint Implements IEquatable(Of TPoint)
+  implements:
+  - System.IEquatable{TuiVision.Core.TPoint}
+  inheritedMembers:
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: TuiVision.Core.TPoint.#ctor(System.Int32,System.Int32)
+  commentId: M:TuiVision.Core.TPoint.#ctor(System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32)'
+  parent: TuiVision.Core.TPoint
+  langs:
+  - csharp
+  - vb
+  name: TPoint(int, int)
+  nameWithType: TPoint.TPoint(int, int)
+  fullName: TuiVision.Core.TPoint.TPoint(int, int)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Core/TPoint.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Core/TPoint.cs
+    startLine: 7
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: public TPoint(int x, int y)
+    parameters:
+    - id: x
+      type: System.Int32
+    - id: y
+      type: System.Int32
+    content.vb: Public Sub New(x As Integer, y As Integer)
+  overload: TuiVision.Core.TPoint.#ctor*
+  nameWithType.vb: TPoint.New(Integer, Integer)
+  fullName.vb: TuiVision.Core.TPoint.New(Integer, Integer)
+  name.vb: New(Integer, Integer)
+- uid: TuiVision.Core.TPoint.X
+  commentId: P:TuiVision.Core.TPoint.X
+  id: X
+  parent: TuiVision.Core.TPoint
+  langs:
+  - csharp
+  - vb
+  name: X
+  nameWithType: TPoint.X
+  fullName: TuiVision.Core.TPoint.X
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Core/TPoint.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: X
+    path: src/TuiVision.Core/TPoint.cs
+    startLine: 13
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: public int X { readonly get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property X As Integer
+  overload: TuiVision.Core.TPoint.X*
+- uid: TuiVision.Core.TPoint.Y
+  commentId: P:TuiVision.Core.TPoint.Y
+  id: Y
+  parent: TuiVision.Core.TPoint
+  langs:
+  - csharp
+  - vb
+  name: Y
+  nameWithType: TPoint.Y
+  fullName: TuiVision.Core.TPoint.Y
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Core/TPoint.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Y
+    path: src/TuiVision.Core/TPoint.cs
+    startLine: 15
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: public int Y { readonly get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Y As Integer
+  overload: TuiVision.Core.TPoint.Y*
+- uid: TuiVision.Core.TPoint.op_Addition(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  commentId: M:TuiVision.Core.TPoint.op_Addition(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  id: op_Addition(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  parent: TuiVision.Core.TPoint
+  langs:
+  - csharp
+  - vb
+  name: operator +(TPoint, TPoint)
+  nameWithType: TPoint.operator +(TPoint, TPoint)
+  fullName: TuiVision.Core.TPoint.operator +(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  type: Operator
+  source:
+    remote:
+      path: src/TuiVision.Core/TPoint.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: op_Addition
+    path: src/TuiVision.Core/TPoint.cs
+    startLine: 17
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: public static TPoint operator +(TPoint one, TPoint two)
+    parameters:
+    - id: one
+      type: TuiVision.Core.TPoint
+    - id: two
+      type: TuiVision.Core.TPoint
+    return:
+      type: TuiVision.Core.TPoint
+    content.vb: Public Shared Operator +(one As TPoint, two As TPoint) As TPoint
+  overload: TuiVision.Core.TPoint.op_Addition*
+  nameWithType.vb: TPoint.+(TPoint, TPoint)
+  fullName.vb: TuiVision.Core.TPoint.+(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  name.vb: +(TPoint, TPoint)
+- uid: TuiVision.Core.TPoint.op_Subtraction(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  commentId: M:TuiVision.Core.TPoint.op_Subtraction(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  id: op_Subtraction(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  parent: TuiVision.Core.TPoint
+  langs:
+  - csharp
+  - vb
+  name: operator -(TPoint, TPoint)
+  nameWithType: TPoint.operator -(TPoint, TPoint)
+  fullName: TuiVision.Core.TPoint.operator -(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  type: Operator
+  source:
+    remote:
+      path: src/TuiVision.Core/TPoint.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: op_Subtraction
+    path: src/TuiVision.Core/TPoint.cs
+    startLine: 20
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: public static TPoint operator -(TPoint one, TPoint two)
+    parameters:
+    - id: one
+      type: TuiVision.Core.TPoint
+    - id: two
+      type: TuiVision.Core.TPoint
+    return:
+      type: TuiVision.Core.TPoint
+    content.vb: Public Shared Operator -(one As TPoint, two As TPoint) As TPoint
+  overload: TuiVision.Core.TPoint.op_Subtraction*
+  nameWithType.vb: TPoint.-(TPoint, TPoint)
+  fullName.vb: TuiVision.Core.TPoint.-(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  name.vb: -(TPoint, TPoint)
+- uid: TuiVision.Core.TPoint.op_Equality(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  commentId: M:TuiVision.Core.TPoint.op_Equality(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  id: op_Equality(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  parent: TuiVision.Core.TPoint
+  langs:
+  - csharp
+  - vb
+  name: operator ==(TPoint, TPoint)
+  nameWithType: TPoint.operator ==(TPoint, TPoint)
+  fullName: TuiVision.Core.TPoint.operator ==(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  type: Operator
+  source:
+    remote:
+      path: src/TuiVision.Core/TPoint.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: op_Equality
+    path: src/TuiVision.Core/TPoint.cs
+    startLine: 23
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: public static bool operator ==(TPoint left, TPoint right)
+    parameters:
+    - id: left
+      type: TuiVision.Core.TPoint
+    - id: right
+      type: TuiVision.Core.TPoint
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator =(left As TPoint, right As TPoint) As Boolean
+  overload: TuiVision.Core.TPoint.op_Equality*
+  nameWithType.vb: TPoint.=(TPoint, TPoint)
+  fullName.vb: TuiVision.Core.TPoint.=(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  name.vb: =(TPoint, TPoint)
+- uid: TuiVision.Core.TPoint.op_Inequality(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  commentId: M:TuiVision.Core.TPoint.op_Inequality(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  id: op_Inequality(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  parent: TuiVision.Core.TPoint
+  langs:
+  - csharp
+  - vb
+  name: operator !=(TPoint, TPoint)
+  nameWithType: TPoint.operator !=(TPoint, TPoint)
+  fullName: TuiVision.Core.TPoint.operator !=(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  type: Operator
+  source:
+    remote:
+      path: src/TuiVision.Core/TPoint.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: op_Inequality
+    path: src/TuiVision.Core/TPoint.cs
+    startLine: 25
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: public static bool operator !=(TPoint left, TPoint right)
+    parameters:
+    - id: left
+      type: TuiVision.Core.TPoint
+    - id: right
+      type: TuiVision.Core.TPoint
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator <>(left As TPoint, right As TPoint) As Boolean
+  overload: TuiVision.Core.TPoint.op_Inequality*
+  nameWithType.vb: TPoint.<>(TPoint, TPoint)
+  fullName.vb: TuiVision.Core.TPoint.<>(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  name.vb: <>(TPoint, TPoint)
+- uid: TuiVision.Core.TPoint.Equals(TuiVision.Core.TPoint)
+  commentId: M:TuiVision.Core.TPoint.Equals(TuiVision.Core.TPoint)
+  id: Equals(TuiVision.Core.TPoint)
+  parent: TuiVision.Core.TPoint
+  langs:
+  - csharp
+  - vb
+  name: Equals(TPoint)
+  nameWithType: TPoint.Equals(TPoint)
+  fullName: TuiVision.Core.TPoint.Equals(TuiVision.Core.TPoint)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Core/TPoint.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Equals
+    path: src/TuiVision.Core/TPoint.cs
+    startLine: 27
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: Indicates whether the current object is equal to another object of the same type.
+  example: []
+  syntax:
+    content: public readonly bool Equals(TPoint other)
+    parameters:
+    - id: other
+      type: TuiVision.Core.TPoint
+      description: An object to compare with this object.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Function Equals(other As TPoint) As Boolean
+  overload: TuiVision.Core.TPoint.Equals*
+  implements:
+  - System.IEquatable{TuiVision.Core.TPoint}.Equals(TuiVision.Core.TPoint)
+- uid: TuiVision.Core.TPoint.Equals(System.Object)
+  commentId: M:TuiVision.Core.TPoint.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: TuiVision.Core.TPoint
+  langs:
+  - csharp
+  - vb
+  name: Equals(object?)
+  nameWithType: TPoint.Equals(object?)
+  fullName: TuiVision.Core.TPoint.Equals(object?)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Core/TPoint.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Equals
+    path: src/TuiVision.Core/TPoint.cs
+    startLine: 29
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: Indicates whether this instance and a specified object are equal.
+  example: []
+  syntax:
+    content: public override readonly bool Equals(object? obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to compare with the current instance.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.ValueType.Equals(System.Object)
+  overload: TuiVision.Core.TPoint.Equals*
+  nameWithType.vb: TPoint.Equals(Object)
+  fullName.vb: TuiVision.Core.TPoint.Equals(Object)
+  name.vb: Equals(Object)
+- uid: TuiVision.Core.TPoint.GetHashCode
+  commentId: M:TuiVision.Core.TPoint.GetHashCode
+  id: GetHashCode
+  parent: TuiVision.Core.TPoint
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: TPoint.GetHashCode()
+  fullName: TuiVision.Core.TPoint.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Core/TPoint.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: GetHashCode
+    path: src/TuiVision.Core/TPoint.cs
+    startLine: 31
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: Returns the hash code for this instance.
+  example: []
+  syntax:
+    content: public override readonly int GetHashCode()
+    return:
+      type: System.Int32
+      description: A 32-bit signed integer that is the hash code for this instance.
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.ValueType.GetHashCode
+  overload: TuiVision.Core.TPoint.GetHashCode*
+references:
+- uid: TuiVision.Core
+  commentId: N:TuiVision.Core
+  href: TuiVision.html
+  name: TuiVision.Core
+  nameWithType: TuiVision.Core
+  fullName: TuiVision.Core
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+- uid: System.IEquatable{TuiVision.Core.TPoint}
+  commentId: T:System.IEquatable{TuiVision.Core.TPoint}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<TPoint>
+  nameWithType: IEquatable<TPoint>
+  fullName: System.IEquatable<TuiVision.Core.TPoint>
+  nameWithType.vb: IEquatable(Of TPoint)
+  fullName.vb: System.IEquatable(Of TuiVision.Core.TPoint)
+  name.vb: IEquatable(Of TPoint)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TuiVision.Core.TPoint.#ctor*
+  commentId: Overload:TuiVision.Core.TPoint.#ctor
+  href: TuiVision.Core.TPoint.html#TuiVision_Core_TPoint__ctor_System_Int32_System_Int32_
+  name: TPoint
+  nameWithType: TPoint.TPoint
+  fullName: TuiVision.Core.TPoint.TPoint
+  nameWithType.vb: TPoint.New
+  fullName.vb: TuiVision.Core.TPoint.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: TuiVision.Core.TPoint.X*
+  commentId: Overload:TuiVision.Core.TPoint.X
+  href: TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_X
+  name: X
+  nameWithType: TPoint.X
+  fullName: TuiVision.Core.TPoint.X
+- uid: TuiVision.Core.TPoint.Y*
+  commentId: Overload:TuiVision.Core.TPoint.Y
+  href: TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_Y
+  name: Y
+  nameWithType: TPoint.Y
+  fullName: TuiVision.Core.TPoint.Y
+- uid: TuiVision.Core.TPoint.op_Addition*
+  commentId: Overload:TuiVision.Core.TPoint.op_Addition
+  href: TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_op_Addition_TuiVision_Core_TPoint_TuiVision_Core_TPoint_
+  name: operator +
+  nameWithType: TPoint.operator +
+  fullName: TuiVision.Core.TPoint.operator +
+  nameWithType.vb: TPoint.+
+  fullName.vb: TuiVision.Core.TPoint.+
+  name.vb: +
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: TuiVision.Core.TPoint.op_Addition*
+    name: +
+    href: TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_op_Addition_TuiVision_Core_TPoint_TuiVision_Core_TPoint_
+- uid: TuiVision.Core.TPoint
+  commentId: T:TuiVision.Core.TPoint
+  parent: TuiVision.Core
+  href: TuiVision.Core.TPoint.html
+  name: TPoint
+  nameWithType: TPoint
+  fullName: TuiVision.Core.TPoint
+- uid: TuiVision.Core.TPoint.op_Subtraction*
+  commentId: Overload:TuiVision.Core.TPoint.op_Subtraction
+  href: TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_op_Subtraction_TuiVision_Core_TPoint_TuiVision_Core_TPoint_
+  name: operator -
+  nameWithType: TPoint.operator -
+  fullName: TuiVision.Core.TPoint.operator -
+  nameWithType.vb: TPoint.-
+  fullName.vb: TuiVision.Core.TPoint.-
+  name.vb: '-'
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: TuiVision.Core.TPoint.op_Subtraction*
+    name: '-'
+    href: TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_op_Subtraction_TuiVision_Core_TPoint_TuiVision_Core_TPoint_
+- uid: TuiVision.Core.TPoint.op_Equality*
+  commentId: Overload:TuiVision.Core.TPoint.op_Equality
+  href: TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_op_Equality_TuiVision_Core_TPoint_TuiVision_Core_TPoint_
+  name: operator ==
+  nameWithType: TPoint.operator ==
+  fullName: TuiVision.Core.TPoint.operator ==
+  nameWithType.vb: TPoint.=
+  fullName.vb: TuiVision.Core.TPoint.=
+  name.vb: =
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: TuiVision.Core.TPoint.op_Equality*
+    name: ==
+    href: TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_op_Equality_TuiVision_Core_TPoint_TuiVision_Core_TPoint_
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: TuiVision.Core.TPoint.op_Inequality*
+  commentId: Overload:TuiVision.Core.TPoint.op_Inequality
+  href: TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_op_Inequality_TuiVision_Core_TPoint_TuiVision_Core_TPoint_
+  name: operator !=
+  nameWithType: TPoint.operator !=
+  fullName: TuiVision.Core.TPoint.operator !=
+  nameWithType.vb: TPoint.<>
+  fullName.vb: TuiVision.Core.TPoint.<>
+  name.vb: <>
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: TuiVision.Core.TPoint.op_Inequality*
+    name: '!='
+    href: TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_op_Inequality_TuiVision_Core_TPoint_TuiVision_Core_TPoint_
+- uid: TuiVision.Core.TPoint.Equals*
+  commentId: Overload:TuiVision.Core.TPoint.Equals
+  href: TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_Equals_TuiVision_Core_TPoint_
+  name: Equals
+  nameWithType: TPoint.Equals
+  fullName: TuiVision.Core.TPoint.Equals
+- uid: System.IEquatable{TuiVision.Core.TPoint}.Equals(TuiVision.Core.TPoint)
+  commentId: M:System.IEquatable{TuiVision.Core.TPoint}.Equals(TuiVision.Core.TPoint)
+  parent: System.IEquatable{TuiVision.Core.TPoint}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(TPoint)
+  nameWithType: IEquatable<TPoint>.Equals(TPoint)
+  fullName: System.IEquatable<TuiVision.Core.TPoint>.Equals(TuiVision.Core.TPoint)
+  nameWithType.vb: IEquatable(Of TPoint).Equals(TPoint)
+  fullName.vb: System.IEquatable(Of TuiVision.Core.TPoint).Equals(TuiVision.Core.TPoint)
+  spec.csharp:
+  - uid: System.IEquatable{TuiVision.Core.TPoint}.Equals(TuiVision.Core.TPoint)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{TuiVision.Core.TPoint}.Equals(TuiVision.Core.TPoint)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: TuiVision.Core.TPoint.GetHashCode*
+  commentId: Overload:TuiVision.Core.TPoint.GetHashCode
+  href: TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_GetHashCode
+  name: GetHashCode
+  nameWithType: TPoint.GetHashCode
+  fullName: TuiVision.Core.TPoint.GetHashCode

@@ -1,0 +1,103 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - codex/**
+      - claude/**
+      - gemini/**
+      - copilot/**
+      - opencode/**
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-test:
+    name: Build and Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore, Build, Test
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          sln_targets=()
+          while IFS= read -r line; do sln_targets+=("$line"); done < <(find . -type f -name '*.sln' -not -path './tv203s/*' | sort)
+          csproj_targets=()
+          while IFS= read -r line; do csproj_targets+=("$line"); done < <(find . -type f -name '*.csproj' -not -path './tv203s/*' -not -path '*/bin/*' -not -path '*/obj/*' | sort)
+
+          mode=""
+          targets=()
+
+          if (( ${#sln_targets[@]} > 0 )); then
+            mode="sln"
+            targets=("${sln_targets[@]}")
+          elif (( ${#csproj_targets[@]} > 0 )); then
+            mode="csproj"
+            targets=("${csproj_targets[@]}")
+          else
+            echo "::error::No .sln or .csproj found in repository root (excluding tv203s/)."
+            exit 1
+          fi
+
+          echo "Build mode: $mode"
+          printf 'Targets:\n%s\n' "${targets[@]}"
+
+          for target in "${targets[@]}"; do
+            echo "Restoring $target"
+            dotnet restore "$target"
+          done
+
+          for target in "${targets[@]}"; do
+            echo "Building $target"
+            dotnet build "$target" --configuration Release --no-restore
+          done
+
+          if [[ "$mode" == "sln" ]]; then
+            for target in "${targets[@]}"; do
+              echo "Testing $target"
+              dotnet test "$target" --configuration Release --no-build --verbosity normal
+            done
+          else
+            test_found=0
+            for target in "${targets[@]}"; do
+              lower="$(echo "$target" | tr '[:upper:]' '[:lower:]')"
+              if [[ "$lower" == *test* ]]; then
+                test_found=1
+                echo "Testing $target"
+                dotnet test "$target" --configuration Release --no-build --verbosity normal
+              fi
+            done
+
+            if (( test_found == 0 )); then
+              echo "::warning::No test project detected in *.csproj targets (name does not include 'test')."
+            fi
+          fi
+
+      - name: Build DocFX Documentation (if configured)
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ -f "docs/docfx.json" ]]; then
+            dotnet tool update --global docfx || dotnet tool install --global docfx
+            export PATH="$PATH:$HOME/.dotnet/tools"
+            docfx docs/docfx.json
+          else
+            echo "::notice::docs/docfx.json not found. Skipping docfx build."
+          fi

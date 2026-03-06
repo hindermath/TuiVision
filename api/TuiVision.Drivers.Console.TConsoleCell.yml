@@ -1,0 +1,558 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Drivers.Console.TConsoleCell
+  commentId: T:TuiVision.Drivers.Console.TConsoleCell
+  id: TConsoleCell
+  parent: TuiVision.Drivers.Console
+  children:
+  - TuiVision.Drivers.Console.TConsoleCell.#ctor(System.Char,System.ConsoleColor,System.ConsoleColor)
+  - TuiVision.Drivers.Console.TConsoleCell.Background
+  - TuiVision.Drivers.Console.TConsoleCell.Empty
+  - TuiVision.Drivers.Console.TConsoleCell.Foreground
+  - TuiVision.Drivers.Console.TConsoleCell.Glyph
+  langs:
+  - csharp
+  - vb
+  name: TConsoleCell
+  nameWithType: TConsoleCell
+  fullName: TuiVision.Drivers.Console.TConsoleCell
+  type: Struct
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TConsoleCell
+    path: src/TuiVision.Drivers.Console/Class1.cs
+    startLine: 5
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  summary: Character cell model for the managed console driver.
+  example: []
+  syntax:
+    content: 'public readonly record struct TConsoleCell : IEquatable<TConsoleCell>'
+    content.vb: Public Structure TConsoleCell Implements IEquatable(Of TConsoleCell)
+  implements:
+  - System.IEquatable{TuiVision.Drivers.Console.TConsoleCell}
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: TuiVision.Drivers.Console.TConsoleCell.#ctor(System.Char,System.ConsoleColor,System.ConsoleColor)
+  commentId: M:TuiVision.Drivers.Console.TConsoleCell.#ctor(System.Char,System.ConsoleColor,System.ConsoleColor)
+  id: '#ctor(System.Char,System.ConsoleColor,System.ConsoleColor)'
+  parent: TuiVision.Drivers.Console.TConsoleCell
+  langs:
+  - csharp
+  - vb
+  name: TConsoleCell(char, ConsoleColor, ConsoleColor)
+  nameWithType: TConsoleCell.TConsoleCell(char, ConsoleColor, ConsoleColor)
+  fullName: TuiVision.Drivers.Console.TConsoleCell.TConsoleCell(char, System.ConsoleColor, System.ConsoleColor)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Drivers.Console/Class1.cs
+    startLine: 5
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  summary: Character cell model for the managed console driver.
+  example: []
+  syntax:
+    content: public TConsoleCell(char Glyph, ConsoleColor Foreground, ConsoleColor Background)
+    parameters:
+    - id: Glyph
+      type: System.Char
+    - id: Foreground
+      type: System.ConsoleColor
+    - id: Background
+      type: System.ConsoleColor
+    content.vb: Public Sub New(Glyph As Char, Foreground As ConsoleColor, Background As ConsoleColor)
+  overload: TuiVision.Drivers.Console.TConsoleCell.#ctor*
+  nameWithType.vb: TConsoleCell.New(Char, ConsoleColor, ConsoleColor)
+  fullName.vb: TuiVision.Drivers.Console.TConsoleCell.New(Char, System.ConsoleColor, System.ConsoleColor)
+  name.vb: New(Char, ConsoleColor, ConsoleColor)
+- uid: TuiVision.Drivers.Console.TConsoleCell.Glyph
+  commentId: P:TuiVision.Drivers.Console.TConsoleCell.Glyph
+  id: Glyph
+  parent: TuiVision.Drivers.Console.TConsoleCell
+  langs:
+  - csharp
+  - vb
+  name: Glyph
+  nameWithType: TConsoleCell.Glyph
+  fullName: TuiVision.Drivers.Console.TConsoleCell.Glyph
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Glyph
+    path: src/TuiVision.Drivers.Console/Class1.cs
+    startLine: 5
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  syntax:
+    content: public char Glyph { get; init; }
+    parameters: []
+    return:
+      type: System.Char
+    content.vb: Public Property Glyph As Char
+  overload: TuiVision.Drivers.Console.TConsoleCell.Glyph*
+- uid: TuiVision.Drivers.Console.TConsoleCell.Foreground
+  commentId: P:TuiVision.Drivers.Console.TConsoleCell.Foreground
+  id: Foreground
+  parent: TuiVision.Drivers.Console.TConsoleCell
+  langs:
+  - csharp
+  - vb
+  name: Foreground
+  nameWithType: TConsoleCell.Foreground
+  fullName: TuiVision.Drivers.Console.TConsoleCell.Foreground
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Foreground
+    path: src/TuiVision.Drivers.Console/Class1.cs
+    startLine: 5
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  syntax:
+    content: public ConsoleColor Foreground { get; init; }
+    parameters: []
+    return:
+      type: System.ConsoleColor
+    content.vb: Public Property Foreground As ConsoleColor
+  overload: TuiVision.Drivers.Console.TConsoleCell.Foreground*
+- uid: TuiVision.Drivers.Console.TConsoleCell.Background
+  commentId: P:TuiVision.Drivers.Console.TConsoleCell.Background
+  id: Background
+  parent: TuiVision.Drivers.Console.TConsoleCell
+  langs:
+  - csharp
+  - vb
+  name: Background
+  nameWithType: TConsoleCell.Background
+  fullName: TuiVision.Drivers.Console.TConsoleCell.Background
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Background
+    path: src/TuiVision.Drivers.Console/Class1.cs
+    startLine: 5
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  syntax:
+    content: public ConsoleColor Background { get; init; }
+    parameters: []
+    return:
+      type: System.ConsoleColor
+    content.vb: Public Property Background As ConsoleColor
+  overload: TuiVision.Drivers.Console.TConsoleCell.Background*
+- uid: TuiVision.Drivers.Console.TConsoleCell.Empty
+  commentId: F:TuiVision.Drivers.Console.TConsoleCell.Empty
+  id: Empty
+  parent: TuiVision.Drivers.Console.TConsoleCell
+  langs:
+  - csharp
+  - vb
+  name: Empty
+  nameWithType: TConsoleCell.Empty
+  fullName: TuiVision.Drivers.Console.TConsoleCell.Empty
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Empty
+    path: src/TuiVision.Drivers.Console/Class1.cs
+    startLine: 7
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  syntax:
+    content: public static readonly TConsoleCell Empty
+    return:
+      type: TuiVision.Drivers.Console.TConsoleCell
+    content.vb: Public Shared ReadOnly Empty As TConsoleCell
+references:
+- uid: TuiVision.Drivers.Console
+  commentId: N:TuiVision.Drivers.Console
+  href: TuiVision.html
+  name: TuiVision.Drivers.Console
+  nameWithType: TuiVision.Drivers.Console
+  fullName: TuiVision.Drivers.Console
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Drivers
+    name: Drivers
+    href: TuiVision.Drivers.html
+  - name: .
+  - uid: TuiVision.Drivers.Console
+    name: Console
+    href: TuiVision.Drivers.Console.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Drivers
+    name: Drivers
+    href: TuiVision.Drivers.html
+  - name: .
+  - uid: TuiVision.Drivers.Console
+    name: Console
+    href: TuiVision.Drivers.Console.html
+- uid: System.IEquatable{TuiVision.Drivers.Console.TConsoleCell}
+  commentId: T:System.IEquatable{TuiVision.Drivers.Console.TConsoleCell}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<TConsoleCell>
+  nameWithType: IEquatable<TConsoleCell>
+  fullName: System.IEquatable<TuiVision.Drivers.Console.TConsoleCell>
+  nameWithType.vb: IEquatable(Of TConsoleCell)
+  fullName.vb: System.IEquatable(Of TuiVision.Drivers.Console.TConsoleCell)
+  name.vb: IEquatable(Of TConsoleCell)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: TuiVision.Drivers.Console.TConsoleCell
+    name: TConsoleCell
+    href: TuiVision.Drivers.Console.TConsoleCell.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Drivers.Console.TConsoleCell
+    name: TConsoleCell
+    href: TuiVision.Drivers.Console.TConsoleCell.html
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TuiVision.Drivers.Console.TConsoleCell.#ctor*
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleCell.#ctor
+  href: TuiVision.Drivers.Console.TConsoleCell.html#TuiVision_Drivers_Console_TConsoleCell__ctor_System_Char_System_ConsoleColor_System_ConsoleColor_
+  name: TConsoleCell
+  nameWithType: TConsoleCell.TConsoleCell
+  fullName: TuiVision.Drivers.Console.TConsoleCell.TConsoleCell
+  nameWithType.vb: TConsoleCell.New
+  fullName.vb: TuiVision.Drivers.Console.TConsoleCell.New
+  name.vb: New
+- uid: System.Char
+  commentId: T:System.Char
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.char
+  name: char
+  nameWithType: char
+  fullName: char
+  nameWithType.vb: Char
+  fullName.vb: Char
+  name.vb: Char
+- uid: System.ConsoleColor
+  commentId: T:System.ConsoleColor
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.consolecolor
+  name: ConsoleColor
+  nameWithType: ConsoleColor
+  fullName: System.ConsoleColor
+- uid: TuiVision.Drivers.Console.TConsoleCell.Glyph*
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleCell.Glyph
+  href: TuiVision.Drivers.Console.TConsoleCell.html#TuiVision_Drivers_Console_TConsoleCell_Glyph
+  name: Glyph
+  nameWithType: TConsoleCell.Glyph
+  fullName: TuiVision.Drivers.Console.TConsoleCell.Glyph
+- uid: TuiVision.Drivers.Console.TConsoleCell.Foreground*
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleCell.Foreground
+  href: TuiVision.Drivers.Console.TConsoleCell.html#TuiVision_Drivers_Console_TConsoleCell_Foreground
+  name: Foreground
+  nameWithType: TConsoleCell.Foreground
+  fullName: TuiVision.Drivers.Console.TConsoleCell.Foreground
+- uid: TuiVision.Drivers.Console.TConsoleCell.Background*
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleCell.Background
+  href: TuiVision.Drivers.Console.TConsoleCell.html#TuiVision_Drivers_Console_TConsoleCell_Background
+  name: Background
+  nameWithType: TConsoleCell.Background
+  fullName: TuiVision.Drivers.Console.TConsoleCell.Background
+- uid: TuiVision.Drivers.Console.TConsoleCell
+  commentId: T:TuiVision.Drivers.Console.TConsoleCell
+  parent: TuiVision.Drivers.Console
+  href: TuiVision.Drivers.Console.TConsoleCell.html
+  name: TConsoleCell
+  nameWithType: TConsoleCell
+  fullName: TuiVision.Drivers.Console.TConsoleCell

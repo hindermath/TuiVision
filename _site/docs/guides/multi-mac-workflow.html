@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Multi-Mac Workflow (MacBook Air M2 + Mac mini M4 Pro) | TuiVision Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Multi-Mac Workflow (MacBook Air M2 + Mac mini M4 Pro) | TuiVision Documentation ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="">
+      <meta name="docfx:tocrel" content="">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/main/docs/guides/multi-mac-workflow.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="TuiVision">
+            TuiVision
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="multi-mac-workflow-macbook-air-m2--mac-mini-m4-pro">Multi-Mac Workflow (MacBook Air M2 + Mac mini M4 Pro)</h1>
+
+<h2 id="zweck">Zweck</h2>
+<p>Dieser Guide beschreibt einen reproduzierbaren Entwicklungsablauf fuer TuiVision
+auf zwei macOS-Systemen:</p>
+<ul>
+<li>MacBook Air M2</li>
+<li>Mac mini M4 Pro</li>
+</ul>
+<p>Verwendete Tools:</p>
+<ul>
+<li><code>gh</code> (GitHub CLI, authentifiziert)</li>
+<li><code>codex</code> (Codex CLI, authentifiziert)</li>
+</ul>
+<h2 id="voraussetzungen">Voraussetzungen</h2>
+<ol>
+<li>Repository ist lokal auf beiden Systemen ausgecheckt.</li>
+<li>Auf beiden Systemen sind <code>gh</code> und <code>codex</code> installiert und authentifiziert.</li>
+<li>GitHub-Remote <code>origin</code> zeigt auf <code>https://github.com/hindermath/TuiVision.git</code>.</li>
+<li>.NET SDK 10 ist auf beiden Systemen verfuegbar (<code>dotnet --info</code>).</li>
+</ol>
+<h2 id="einmaliger-check-pro-system">Einmaliger Check pro System</h2>
+<pre><code class="lang-bash">gh auth status
+gh --version
+codex --version || codex --help
+codex --help
+git remote -v
+dotnet --info
+</code></pre>
+<p>Erwartung:</p>
+<ul>
+<li><code>gh auth status</code> zeigt einen aktiven Login.</li>
+<li><code>gh --version</code> liefert eine gueltige Versionsausgabe.</li>
+<li><code>codex --version</code> (oder alternativ <code>codex --help</code>) liefert eine gueltige Ausgabe.</li>
+<li><code>codex --help</code> liefert die CLI-Hilfe ohne Fehler.</li>
+<li><code>git remote -v</code> zeigt <code>origin</code> auf das TuiVision-Repository.</li>
+<li><code>dotnet --info</code> zeigt eine installierte .NET-10-Umgebung.</li>
+</ul>
+<h2 id="start-eines-arbeitstags-egal-auf-welchem-mac">Start eines Arbeitstags (egal auf welchem Mac)</h2>
+<pre><code class="lang-bash">git checkout main
+git pull --ff-only origin main
+dotnet --info
+</code></pre>
+<p>Wenn an einem Feature gearbeitet wird:</p>
+<pre><code class="lang-bash">git checkout -b codex/&lt;kurze-beschreibung&gt;
+</code></pre>
+<h2 id="entwicklungsschleife">Entwicklungsschleife</h2>
+<pre><code class="lang-bash">dotnet restore
+dotnet build
+dotnet test
+</code></pre>
+<p>Wenn sich oeffentliche API oder XML-Kommentare geaendert haben, danach docfx neu erzeugen:</p>
+<pre><code class="lang-bash">if [[ -f &quot;docs/docfx.json&quot; ]]; then
+  dotnet tool update --global docfx || dotnet tool install --global docfx
+  export PATH=&quot;$PATH:$HOME/.dotnet/tools&quot;
+  docfx docs/docfx.json
+else
+  echo &quot;docs/docfx.json nicht gefunden - docfx-Schritt uebersprungen.&quot;
+fi
+</code></pre>
+<p>Dokumentation aktualisieren, wenn Code angepasst wurde:</p>
+<ul>
+<li>API-/XML-Kommentare</li>
+<li>Guides unter <code>docs/guides/</code></li>
+<li>Beispiel-Guides unter <code>docs/guides/examples/</code></li>
+</ul>
+<h2 id="codex-workflow-lokal">Codex-Workflow (lokal)</h2>
+<p>Beispielaufruf:</p>
+<pre><code class="lang-bash">codex
+</code></pre>
+<p>Empfehlung fuer Sessions:</p>
+<ol>
+<li>Vor Session-Beginn <code>git status</code> pruefen.</li>
+<li>Aufgabenbezug klar in der Session formulieren (Datei/Abschnitt/Testziel).</li>
+<li>Nach Session: <code>dotnet build</code> und <code>dotnet test</code> ausfuehren.</li>
+<li>Wenn API-/XML-Kommentare geaendert wurden: den obigen docfx-Schritt ausfuehren.</li>
+<li>Ergebnis + Doku in denselben Commit aufnehmen.</li>
+</ol>
+<h2 id="commit-und-push">Commit und Push</h2>
+<pre><code class="lang-bash">git status
+git add -A
+git commit -m &quot;Kurzbeschreibung der Aenderung&quot;
+git push -u origin codex/&lt;kurze-beschreibung&gt;
+</code></pre>
+<h2 id="pull-request-mit-gh">Pull Request mit gh</h2>
+<pre><code class="lang-bash">gh pr create --fill
+gh pr view --web
+</code></pre>
+<p>Nach Review-Anpassungen:</p>
+<pre><code class="lang-bash">git add -A
+git commit -m &quot;Review-Feedback umgesetzt&quot;
+git push
+</code></pre>
+<h2 id="wechsel-zwischen-den-beiden-macs">Wechsel zwischen den beiden Macs</h2>
+<p>Vor dem Wechsel (auf System A):</p>
+<pre><code class="lang-bash">git status
+git push
+</code></pre>
+<p>Nach dem Wechsel (auf System B):</p>
+<pre><code class="lang-bash">git fetch origin
+git checkout codex/&lt;kurze-beschreibung&gt;
+git pull --ff-only origin codex/&lt;kurze-beschreibung&gt;
+</code></pre>
+<h2 id="abschluss-einer-aufgabe">Abschluss einer Aufgabe</h2>
+<ol>
+<li><code>dotnet build</code> erfolgreich.</li>
+<li><code>dotnet test</code> erfolgreich.</li>
+<li>Bei API-/XML-Kommentar-Aenderungen: docfx-Schritt erfolgreich (falls <code>docs/docfx.json</code> vorhanden).</li>
+<li>Doku aktualisiert (API, Guides, Beispiel-Guide, falls betroffen).</li>
+<li>PR erstellt oder aktualisiert.</li>
+<li>Branch ist auf <code>origin</code> gepusht.</li>
+</ol>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="gh-auth-status-zeigt-kein-login"><code>gh auth status</code> zeigt kein Login</h3>
+<pre><code class="lang-bash">gh auth login
+</code></pre>
+<h3 id="docfx-wird-nicht-gefunden"><code>docfx</code> wird nicht gefunden</h3>
+<pre><code class="lang-bash">if [[ -f &quot;docs/docfx.json&quot; ]]; then
+  dotnet tool update --global docfx || dotnet tool install --global docfx
+  export PATH=&quot;$PATH:$HOME/.dotnet/tools&quot;
+  docfx docs/docfx.json
+else
+  echo &quot;docs/docfx.json nicht gefunden.&quot;
+fi
+</code></pre>
+<h3 id="branch-ist-auf-beiden-macs-unterschiedlich">Branch ist auf beiden Macs unterschiedlich</h3>
+<pre><code class="lang-bash">git fetch origin
+git status
+git pull --ff-only
+</code></pre>
+<h3 id="unerwartete-lokale-aenderungen">Unerwartete lokale Aenderungen</h3>
+<pre><code class="lang-bash">git status
+git diff
+</code></pre>
+<p>Dann bewusst entscheiden: committen, stashen oder verwerfen.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/hindermath/TuiVision/blob/main/docs/guides/multi-mac-workflow.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,452 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Serialization.TRecordRegistry
+  commentId: T:TuiVision.Serialization.TRecordRegistry
+  id: TRecordRegistry
+  parent: TuiVision.Serialization
+  children:
+  - TuiVision.Serialization.TRecordRegistry.Create(System.String,TuiVision.Serialization.TBinaryArchiveReader)
+  - TuiVision.Serialization.TRecordRegistry.Register``1(System.String,System.Func{TuiVision.Serialization.TBinaryArchiveReader,``0})
+  langs:
+  - csharp
+  - vb
+  name: TRecordRegistry
+  nameWithType: TRecordRegistry
+  fullName: TuiVision.Serialization.TRecordRegistry
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Serialization/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TRecordRegistry
+    path: src/TuiVision.Serialization/Class1.cs
+    startLine: 121
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: Registry that maps stable type identifiers to factory delegates.
+  example: []
+  syntax:
+    content: public sealed class TRecordRegistry
+    content.vb: Public NotInheritable Class TRecordRegistry
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Serialization.TRecordRegistry.Register``1(System.String,System.Func{TuiVision.Serialization.TBinaryArchiveReader,``0})
+  commentId: M:TuiVision.Serialization.TRecordRegistry.Register``1(System.String,System.Func{TuiVision.Serialization.TBinaryArchiveReader,``0})
+  id: Register``1(System.String,System.Func{TuiVision.Serialization.TBinaryArchiveReader,``0})
+  parent: TuiVision.Serialization.TRecordRegistry
+  langs:
+  - csharp
+  - vb
+  name: Register<T>(string, Func<TBinaryArchiveReader, T>)
+  nameWithType: TRecordRegistry.Register<T>(string, Func<TBinaryArchiveReader, T>)
+  fullName: TuiVision.Serialization.TRecordRegistry.Register<T>(string, System.Func<TuiVision.Serialization.TBinaryArchiveReader, T>)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Register
+    path: src/TuiVision.Serialization/Class1.cs
+    startLine: 125
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  syntax:
+    content: 'public void Register<T>(string typeId, Func<TBinaryArchiveReader, T> factory) where T : notnull'
+    parameters:
+    - id: typeId
+      type: System.String
+    - id: factory
+      type: System.Func{TuiVision.Serialization.TBinaryArchiveReader,{T}}
+    typeParameters:
+    - id: T
+    content.vb: Public Sub Register(Of T)(typeId As String, factory As Func(Of TBinaryArchiveReader, T))
+  overload: TuiVision.Serialization.TRecordRegistry.Register*
+  nameWithType.vb: TRecordRegistry.Register(Of T)(String, Func(Of TBinaryArchiveReader, T))
+  fullName.vb: TuiVision.Serialization.TRecordRegistry.Register(Of T)(String, System.Func(Of TuiVision.Serialization.TBinaryArchiveReader, T))
+  name.vb: Register(Of T)(String, Func(Of TBinaryArchiveReader, T))
+- uid: TuiVision.Serialization.TRecordRegistry.Create(System.String,TuiVision.Serialization.TBinaryArchiveReader)
+  commentId: M:TuiVision.Serialization.TRecordRegistry.Create(System.String,TuiVision.Serialization.TBinaryArchiveReader)
+  id: Create(System.String,TuiVision.Serialization.TBinaryArchiveReader)
+  parent: TuiVision.Serialization.TRecordRegistry
+  langs:
+  - csharp
+  - vb
+  name: Create(string, TBinaryArchiveReader)
+  nameWithType: TRecordRegistry.Create(string, TBinaryArchiveReader)
+  fullName: TuiVision.Serialization.TRecordRegistry.Create(string, TuiVision.Serialization.TBinaryArchiveReader)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Create
+    path: src/TuiVision.Serialization/Class1.cs
+    startLine: 136
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  syntax:
+    content: public object Create(string typeId, TBinaryArchiveReader reader)
+    parameters:
+    - id: typeId
+      type: System.String
+    - id: reader
+      type: TuiVision.Serialization.TBinaryArchiveReader
+    return:
+      type: System.Object
+    content.vb: Public Function Create(typeId As String, reader As TBinaryArchiveReader) As Object
+  overload: TuiVision.Serialization.TRecordRegistry.Create*
+  nameWithType.vb: TRecordRegistry.Create(String, TBinaryArchiveReader)
+  fullName.vb: TuiVision.Serialization.TRecordRegistry.Create(String, TuiVision.Serialization.TBinaryArchiveReader)
+  name.vb: Create(String, TBinaryArchiveReader)
+references:
+- uid: TuiVision.Serialization
+  commentId: N:TuiVision.Serialization
+  href: TuiVision.html
+  name: TuiVision.Serialization
+  nameWithType: TuiVision.Serialization
+  fullName: TuiVision.Serialization
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Serialization
+    name: Serialization
+    href: TuiVision.Serialization.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Serialization
+    name: Serialization
+    href: TuiVision.Serialization.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Serialization.TRecordRegistry.Register*
+  commentId: Overload:TuiVision.Serialization.TRecordRegistry.Register
+  href: TuiVision.Serialization.TRecordRegistry.html#TuiVision_Serialization_TRecordRegistry_Register__1_System_String_System_Func_TuiVision_Serialization_TBinaryArchiveReader___0__
+  name: Register
+  nameWithType: TRecordRegistry.Register
+  fullName: TuiVision.Serialization.TRecordRegistry.Register
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Func{TuiVision.Serialization.TBinaryArchiveReader,{T}}
+  commentId: T:System.Func{TuiVision.Serialization.TBinaryArchiveReader,``0}
+  parent: System
+  definition: System.Func`2
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<TBinaryArchiveReader, T>
+  nameWithType: Func<TBinaryArchiveReader, T>
+  fullName: System.Func<TuiVision.Serialization.TBinaryArchiveReader, T>
+  nameWithType.vb: Func(Of TBinaryArchiveReader, T)
+  fullName.vb: System.Func(Of TuiVision.Serialization.TBinaryArchiveReader, T)
+  name.vb: Func(Of TBinaryArchiveReader, T)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: TuiVision.Serialization.TBinaryArchiveReader
+    name: TBinaryArchiveReader
+    href: TuiVision.Serialization.TBinaryArchiveReader.html
+  - name: ','
+  - name: " "
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Serialization.TBinaryArchiveReader
+    name: TBinaryArchiveReader
+    href: TuiVision.Serialization.TBinaryArchiveReader.html
+  - name: ','
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: TuiVision.Serialization.TRecordRegistry.Create*
+  commentId: Overload:TuiVision.Serialization.TRecordRegistry.Create
+  href: TuiVision.Serialization.TRecordRegistry.html#TuiVision_Serialization_TRecordRegistry_Create_System_String_TuiVision_Serialization_TBinaryArchiveReader_
+  name: Create
+  nameWithType: TRecordRegistry.Create
+  fullName: TuiVision.Serialization.TRecordRegistry.Create
+- uid: TuiVision.Serialization.TBinaryArchiveReader
+  commentId: T:TuiVision.Serialization.TBinaryArchiveReader
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TBinaryArchiveReader.html
+  name: TBinaryArchiveReader
+  nameWithType: TBinaryArchiveReader
+  fullName: TuiVision.Serialization.TBinaryArchiveReader

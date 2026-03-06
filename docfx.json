@@ -1,0 +1,57 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "src/**/*.csproj"
+          ],
+          "exclude": [
+            "**/bin/**",
+            "**/obj/**"
+          ]
+        }
+      ],
+      "dest": "api",
+      "properties": {
+        "TargetFramework": "net10.0"
+      }
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "api/**.yml",
+          "api/index.md"
+        ]
+      },
+      {
+        "files": [
+          "README.md",
+          "docs/**/*.md",
+          "examples/README.md"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "docs/**/images/**",
+          "LICENSE",
+          ".github/workflows/ci.yml"
+        ]
+      }
+    ],
+    "dest": "_site",
+    "template": [
+      "default",
+      "modern"
+    ],
+    "globalMetadata": {
+      "_appName": "TuiVision",
+      "_appTitle": "TuiVision Documentation",
+      "_enableSearch": true
+    }
+  }
+}

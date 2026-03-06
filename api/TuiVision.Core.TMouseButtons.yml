@@ -1,0 +1,232 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Core.TMouseButtons
+  commentId: T:TuiVision.Core.TMouseButtons
+  id: TMouseButtons
+  parent: TuiVision.Core
+  children:
+  - TuiVision.Core.TMouseButtons.Button4
+  - TuiVision.Core.TMouseButtons.Button5
+  - TuiVision.Core.TMouseButtons.Left
+  - TuiVision.Core.TMouseButtons.Middle
+  - TuiVision.Core.TMouseButtons.None
+  - TuiVision.Core.TMouseButtons.Right
+  langs:
+  - csharp
+  - vb
+  name: TMouseButtons
+  nameWithType: TMouseButtons
+  fullName: TuiVision.Core.TMouseButtons
+  type: Enum
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TMouseButtons
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 24
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: Mouse button flags.
+  example: []
+  syntax:
+    content: >-
+      [Flags]
+
+      public enum TMouseButtons : ushort
+    content.vb: >-
+      <Flags>
+
+      Public Enum TMouseButtons As UShort
+  attributes:
+  - type: System.FlagsAttribute
+    ctor: System.FlagsAttribute.#ctor
+    arguments: []
+- uid: TuiVision.Core.TMouseButtons.None
+  commentId: F:TuiVision.Core.TMouseButtons.None
+  id: None
+  parent: TuiVision.Core.TMouseButtons
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: TMouseButtons.None
+  fullName: TuiVision.Core.TMouseButtons.None
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: None
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 27
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: None = 0
+    return:
+      type: TuiVision.Core.TMouseButtons
+- uid: TuiVision.Core.TMouseButtons.Left
+  commentId: F:TuiVision.Core.TMouseButtons.Left
+  id: Left
+  parent: TuiVision.Core.TMouseButtons
+  langs:
+  - csharp
+  - vb
+  name: Left
+  nameWithType: TMouseButtons.Left
+  fullName: TuiVision.Core.TMouseButtons.Left
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Left
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 28
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: Left = 1
+    return:
+      type: TuiVision.Core.TMouseButtons
+- uid: TuiVision.Core.TMouseButtons.Middle
+  commentId: F:TuiVision.Core.TMouseButtons.Middle
+  id: Middle
+  parent: TuiVision.Core.TMouseButtons
+  langs:
+  - csharp
+  - vb
+  name: Middle
+  nameWithType: TMouseButtons.Middle
+  fullName: TuiVision.Core.TMouseButtons.Middle
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Middle
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 29
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: Middle = 2
+    return:
+      type: TuiVision.Core.TMouseButtons
+- uid: TuiVision.Core.TMouseButtons.Right
+  commentId: F:TuiVision.Core.TMouseButtons.Right
+  id: Right
+  parent: TuiVision.Core.TMouseButtons
+  langs:
+  - csharp
+  - vb
+  name: Right
+  nameWithType: TMouseButtons.Right
+  fullName: TuiVision.Core.TMouseButtons.Right
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Right
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 30
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: Right = 4
+    return:
+      type: TuiVision.Core.TMouseButtons
+- uid: TuiVision.Core.TMouseButtons.Button4
+  commentId: F:TuiVision.Core.TMouseButtons.Button4
+  id: Button4
+  parent: TuiVision.Core.TMouseButtons
+  langs:
+  - csharp
+  - vb
+  name: Button4
+  nameWithType: TMouseButtons.Button4
+  fullName: TuiVision.Core.TMouseButtons.Button4
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Button4
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 31
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: Button4 = 8
+    return:
+      type: TuiVision.Core.TMouseButtons
+- uid: TuiVision.Core.TMouseButtons.Button5
+  commentId: F:TuiVision.Core.TMouseButtons.Button5
+  id: Button5
+  parent: TuiVision.Core.TMouseButtons
+  langs:
+  - csharp
+  - vb
+  name: Button5
+  nameWithType: TMouseButtons.Button5
+  fullName: TuiVision.Core.TMouseButtons.Button5
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Core/TEvent.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Button5
+    path: src/TuiVision.Core/TEvent.cs
+    startLine: 32
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  syntax:
+    content: Button5 = 16
+    return:
+      type: TuiVision.Core.TMouseButtons
+references:
+- uid: TuiVision.Core
+  commentId: N:TuiVision.Core
+  href: TuiVision.html
+  name: TuiVision.Core
+  nameWithType: TuiVision.Core
+  fullName: TuiVision.Core
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+- uid: TuiVision.Core.TMouseButtons
+  commentId: T:TuiVision.Core.TMouseButtons
+  parent: TuiVision.Core
+  href: TuiVision.Core.TMouseButtons.html
+  name: TMouseButtons
+  nameWithType: TMouseButtons
+  fullName: TuiVision.Core.TMouseButtons

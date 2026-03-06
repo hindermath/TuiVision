@@ -1,0 +1,422 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.TViewOptions
+  commentId: T:TuiVision.Controls.TViewOptions
+  id: TViewOptions
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.TViewOptions.Buffered
+  - TuiVision.Controls.TViewOptions.CenterX
+  - TuiVision.Controls.TViewOptions.CenterY
+  - TuiVision.Controls.TViewOptions.Centered
+  - TuiVision.Controls.TViewOptions.FirstClick
+  - TuiVision.Controls.TViewOptions.Framed
+  - TuiVision.Controls.TViewOptions.None
+  - TuiVision.Controls.TViewOptions.PostProcess
+  - TuiVision.Controls.TViewOptions.PreProcess
+  - TuiVision.Controls.TViewOptions.Selectable
+  - TuiVision.Controls.TViewOptions.Tileable
+  - TuiVision.Controls.TViewOptions.TopSelect
+  - TuiVision.Controls.TViewOptions.Verbose
+  langs:
+  - csharp
+  - vb
+  name: TViewOptions
+  nameWithType: TViewOptions
+  fullName: TuiVision.Controls.TViewOptions
+  type: Enum
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TViewOptions
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 27
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Option mask for view behavior.
+  example: []
+  syntax:
+    content: >-
+      [Flags]
+
+      public enum TViewOptions : ushort
+    content.vb: >-
+      <Flags>
+
+      Public Enum TViewOptions As UShort
+  attributes:
+  - type: System.FlagsAttribute
+    ctor: System.FlagsAttribute.#ctor
+    arguments: []
+- uid: TuiVision.Controls.TViewOptions.None
+  commentId: F:TuiVision.Controls.TViewOptions.None
+  id: None
+  parent: TuiVision.Controls.TViewOptions
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: TViewOptions.None
+  fullName: TuiVision.Controls.TViewOptions.None
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: None
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 30
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: None = 0
+    return:
+      type: TuiVision.Controls.TViewOptions
+- uid: TuiVision.Controls.TViewOptions.Selectable
+  commentId: F:TuiVision.Controls.TViewOptions.Selectable
+  id: Selectable
+  parent: TuiVision.Controls.TViewOptions
+  langs:
+  - csharp
+  - vb
+  name: Selectable
+  nameWithType: TViewOptions.Selectable
+  fullName: TuiVision.Controls.TViewOptions.Selectable
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Selectable
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 31
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: Selectable = 1
+    return:
+      type: TuiVision.Controls.TViewOptions
+- uid: TuiVision.Controls.TViewOptions.TopSelect
+  commentId: F:TuiVision.Controls.TViewOptions.TopSelect
+  id: TopSelect
+  parent: TuiVision.Controls.TViewOptions
+  langs:
+  - csharp
+  - vb
+  name: TopSelect
+  nameWithType: TViewOptions.TopSelect
+  fullName: TuiVision.Controls.TViewOptions.TopSelect
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TopSelect
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 32
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: TopSelect = 2
+    return:
+      type: TuiVision.Controls.TViewOptions
+- uid: TuiVision.Controls.TViewOptions.FirstClick
+  commentId: F:TuiVision.Controls.TViewOptions.FirstClick
+  id: FirstClick
+  parent: TuiVision.Controls.TViewOptions
+  langs:
+  - csharp
+  - vb
+  name: FirstClick
+  nameWithType: TViewOptions.FirstClick
+  fullName: TuiVision.Controls.TViewOptions.FirstClick
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: FirstClick
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 33
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: FirstClick = 4
+    return:
+      type: TuiVision.Controls.TViewOptions
+- uid: TuiVision.Controls.TViewOptions.Framed
+  commentId: F:TuiVision.Controls.TViewOptions.Framed
+  id: Framed
+  parent: TuiVision.Controls.TViewOptions
+  langs:
+  - csharp
+  - vb
+  name: Framed
+  nameWithType: TViewOptions.Framed
+  fullName: TuiVision.Controls.TViewOptions.Framed
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Framed
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 34
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: Framed = 8
+    return:
+      type: TuiVision.Controls.TViewOptions
+- uid: TuiVision.Controls.TViewOptions.PreProcess
+  commentId: F:TuiVision.Controls.TViewOptions.PreProcess
+  id: PreProcess
+  parent: TuiVision.Controls.TViewOptions
+  langs:
+  - csharp
+  - vb
+  name: PreProcess
+  nameWithType: TViewOptions.PreProcess
+  fullName: TuiVision.Controls.TViewOptions.PreProcess
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: PreProcess
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 35
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: PreProcess = 16
+    return:
+      type: TuiVision.Controls.TViewOptions
+- uid: TuiVision.Controls.TViewOptions.PostProcess
+  commentId: F:TuiVision.Controls.TViewOptions.PostProcess
+  id: PostProcess
+  parent: TuiVision.Controls.TViewOptions
+  langs:
+  - csharp
+  - vb
+  name: PostProcess
+  nameWithType: TViewOptions.PostProcess
+  fullName: TuiVision.Controls.TViewOptions.PostProcess
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: PostProcess
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 36
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: PostProcess = 32
+    return:
+      type: TuiVision.Controls.TViewOptions
+- uid: TuiVision.Controls.TViewOptions.Buffered
+  commentId: F:TuiVision.Controls.TViewOptions.Buffered
+  id: Buffered
+  parent: TuiVision.Controls.TViewOptions
+  langs:
+  - csharp
+  - vb
+  name: Buffered
+  nameWithType: TViewOptions.Buffered
+  fullName: TuiVision.Controls.TViewOptions.Buffered
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Buffered
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 37
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: Buffered = 64
+    return:
+      type: TuiVision.Controls.TViewOptions
+- uid: TuiVision.Controls.TViewOptions.Tileable
+  commentId: F:TuiVision.Controls.TViewOptions.Tileable
+  id: Tileable
+  parent: TuiVision.Controls.TViewOptions
+  langs:
+  - csharp
+  - vb
+  name: Tileable
+  nameWithType: TViewOptions.Tileable
+  fullName: TuiVision.Controls.TViewOptions.Tileable
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Tileable
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 38
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: Tileable = 128
+    return:
+      type: TuiVision.Controls.TViewOptions
+- uid: TuiVision.Controls.TViewOptions.CenterX
+  commentId: F:TuiVision.Controls.TViewOptions.CenterX
+  id: CenterX
+  parent: TuiVision.Controls.TViewOptions
+  langs:
+  - csharp
+  - vb
+  name: CenterX
+  nameWithType: TViewOptions.CenterX
+  fullName: TuiVision.Controls.TViewOptions.CenterX
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: CenterX
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 39
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: CenterX = 256
+    return:
+      type: TuiVision.Controls.TViewOptions
+- uid: TuiVision.Controls.TViewOptions.CenterY
+  commentId: F:TuiVision.Controls.TViewOptions.CenterY
+  id: CenterY
+  parent: TuiVision.Controls.TViewOptions
+  langs:
+  - csharp
+  - vb
+  name: CenterY
+  nameWithType: TViewOptions.CenterY
+  fullName: TuiVision.Controls.TViewOptions.CenterY
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: CenterY
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 40
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: CenterY = 512
+    return:
+      type: TuiVision.Controls.TViewOptions
+- uid: TuiVision.Controls.TViewOptions.Centered
+  commentId: F:TuiVision.Controls.TViewOptions.Centered
+  id: Centered
+  parent: TuiVision.Controls.TViewOptions
+  langs:
+  - csharp
+  - vb
+  name: Centered
+  nameWithType: TViewOptions.Centered
+  fullName: TuiVision.Controls.TViewOptions.Centered
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Centered
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 41
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: Centered = CenterX | CenterY
+    return:
+      type: TuiVision.Controls.TViewOptions
+    content.vb: Centered = CenterX Or CenterY
+- uid: TuiVision.Controls.TViewOptions.Verbose
+  commentId: F:TuiVision.Controls.TViewOptions.Verbose
+  id: Verbose
+  parent: TuiVision.Controls.TViewOptions
+  langs:
+  - csharp
+  - vb
+  name: Verbose
+  nameWithType: TViewOptions.Verbose
+  fullName: TuiVision.Controls.TViewOptions.Verbose
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Verbose
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 42
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  syntax:
+    content: Verbose = 1024
+    return:
+      type: TuiVision.Controls.TViewOptions
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: TuiVision.Controls.TViewOptions
+  commentId: T:TuiVision.Controls.TViewOptions
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TViewOptions.html
+  name: TViewOptions
+  nameWithType: TViewOptions
+  fullName: TuiVision.Controls.TViewOptions

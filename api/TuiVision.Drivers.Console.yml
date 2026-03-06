@@ -1,0 +1,77 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Drivers.Console
+  commentId: N:TuiVision.Drivers.Console
+  id: TuiVision.Drivers.Console
+  children:
+  - TuiVision.Drivers.Console.IConsolePresenter
+  - TuiVision.Drivers.Console.TConsoleBuffer
+  - TuiVision.Drivers.Console.TConsoleCell
+  - TuiVision.Drivers.Console.TConsoleDriver
+  langs:
+  - csharp
+  - vb
+  name: TuiVision.Drivers.Console
+  nameWithType: TuiVision.Drivers.Console
+  fullName: TuiVision.Drivers.Console
+  type: Namespace
+  assemblies:
+  - TuiVision.Drivers.Console
+references:
+- uid: TuiVision.Drivers.Console.TConsoleCell
+  commentId: T:TuiVision.Drivers.Console.TConsoleCell
+  parent: TuiVision.Drivers.Console
+  href: TuiVision.Drivers.Console.TConsoleCell.html
+  name: TConsoleCell
+  nameWithType: TConsoleCell
+  fullName: TuiVision.Drivers.Console.TConsoleCell
+- uid: TuiVision.Drivers.Console.IConsolePresenter
+  commentId: T:TuiVision.Drivers.Console.IConsolePresenter
+  parent: TuiVision.Drivers.Console
+  href: TuiVision.Drivers.Console.IConsolePresenter.html
+  name: IConsolePresenter
+  nameWithType: IConsolePresenter
+  fullName: TuiVision.Drivers.Console.IConsolePresenter
+- uid: TuiVision.Drivers.Console.TConsoleBuffer
+  commentId: T:TuiVision.Drivers.Console.TConsoleBuffer
+  parent: TuiVision.Drivers.Console
+  href: TuiVision.Drivers.Console.TConsoleBuffer.html
+  name: TConsoleBuffer
+  nameWithType: TConsoleBuffer
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer
+- uid: TuiVision.Drivers.Console.TConsoleDriver
+  commentId: T:TuiVision.Drivers.Console.TConsoleDriver
+  href: TuiVision.Drivers.Console.TConsoleDriver.html
+  name: TConsoleDriver
+  nameWithType: TConsoleDriver
+  fullName: TuiVision.Drivers.Console.TConsoleDriver
+- uid: TuiVision.Drivers.Console
+  commentId: N:TuiVision.Drivers.Console
+  href: TuiVision.html
+  name: TuiVision.Drivers.Console
+  nameWithType: TuiVision.Drivers.Console
+  fullName: TuiVision.Drivers.Console
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Drivers
+    name: Drivers
+    href: TuiVision.Drivers.html
+  - name: .
+  - uid: TuiVision.Drivers.Console
+    name: Console
+    href: TuiVision.Drivers.Console.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Drivers
+    name: Drivers
+    href: TuiVision.Drivers.html
+  - name: .
+  - uid: TuiVision.Drivers.Console
+    name: Console
+    href: TuiVision.Drivers.Console.html

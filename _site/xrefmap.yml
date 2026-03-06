@@ -1,0 +1,2199 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: TuiVision.Compatibility
+  name: TuiVision.Compatibility
+  href: api/TuiVision.Compatibility.html
+  commentId: N:TuiVision.Compatibility
+  fullName: TuiVision.Compatibility
+  nameWithType: TuiVision.Compatibility
+- uid: TuiVision.Compatibility.TKeyCodeTranslator
+  name: TKeyCodeTranslator
+  href: api/TuiVision.Compatibility.TKeyCodeTranslator.html
+  commentId: T:TuiVision.Compatibility.TKeyCodeTranslator
+  fullName: TuiVision.Compatibility.TKeyCodeTranslator
+  nameWithType: TKeyCodeTranslator
+- uid: TuiVision.Compatibility.TKeyCodeTranslator.ComposeKeyCode(System.Char,System.Byte)
+  name: ComposeKeyCode(char, byte)
+  href: api/TuiVision.Compatibility.TKeyCodeTranslator.html#TuiVision_Compatibility_TKeyCodeTranslator_ComposeKeyCode_System_Char_System_Byte_
+  commentId: M:TuiVision.Compatibility.TKeyCodeTranslator.ComposeKeyCode(System.Char,System.Byte)
+  name.vb: ComposeKeyCode(Char, Byte)
+  fullName: TuiVision.Compatibility.TKeyCodeTranslator.ComposeKeyCode(char, byte)
+  fullName.vb: TuiVision.Compatibility.TKeyCodeTranslator.ComposeKeyCode(Char, Byte)
+  nameWithType: TKeyCodeTranslator.ComposeKeyCode(char, byte)
+  nameWithType.vb: TKeyCodeTranslator.ComposeKeyCode(Char, Byte)
+- uid: TuiVision.Compatibility.TKeyCodeTranslator.ComposeKeyCode*
+  name: ComposeKeyCode
+  href: api/TuiVision.Compatibility.TKeyCodeTranslator.html#TuiVision_Compatibility_TKeyCodeTranslator_ComposeKeyCode_
+  commentId: Overload:TuiVision.Compatibility.TKeyCodeTranslator.ComposeKeyCode
+  isSpec: "True"
+  fullName: TuiVision.Compatibility.TKeyCodeTranslator.ComposeKeyCode
+  nameWithType: TKeyCodeTranslator.ComposeKeyCode
+- uid: TuiVision.Compatibility.TKeyCodeTranslator.FromConsoleKey(System.ConsoleKeyInfo)
+  name: FromConsoleKey(ConsoleKeyInfo)
+  href: api/TuiVision.Compatibility.TKeyCodeTranslator.html#TuiVision_Compatibility_TKeyCodeTranslator_FromConsoleKey_System_ConsoleKeyInfo_
+  commentId: M:TuiVision.Compatibility.TKeyCodeTranslator.FromConsoleKey(System.ConsoleKeyInfo)
+  fullName: TuiVision.Compatibility.TKeyCodeTranslator.FromConsoleKey(System.ConsoleKeyInfo)
+  nameWithType: TKeyCodeTranslator.FromConsoleKey(ConsoleKeyInfo)
+- uid: TuiVision.Compatibility.TKeyCodeTranslator.FromConsoleKey*
+  name: FromConsoleKey
+  href: api/TuiVision.Compatibility.TKeyCodeTranslator.html#TuiVision_Compatibility_TKeyCodeTranslator_FromConsoleKey_
+  commentId: Overload:TuiVision.Compatibility.TKeyCodeTranslator.FromConsoleKey
+  isSpec: "True"
+  fullName: TuiVision.Compatibility.TKeyCodeTranslator.FromConsoleKey
+  nameWithType: TKeyCodeTranslator.FromConsoleKey
+- uid: TuiVision.Compatibility.TKeyCodeTranslator.IsPrintable(TuiVision.Core.TKeyDownEvent)
+  name: IsPrintable(TKeyDownEvent)
+  href: api/TuiVision.Compatibility.TKeyCodeTranslator.html#TuiVision_Compatibility_TKeyCodeTranslator_IsPrintable_TuiVision_Core_TKeyDownEvent_
+  commentId: M:TuiVision.Compatibility.TKeyCodeTranslator.IsPrintable(TuiVision.Core.TKeyDownEvent)
+  fullName: TuiVision.Compatibility.TKeyCodeTranslator.IsPrintable(TuiVision.Core.TKeyDownEvent)
+  nameWithType: TKeyCodeTranslator.IsPrintable(TKeyDownEvent)
+- uid: TuiVision.Compatibility.TKeyCodeTranslator.IsPrintable*
+  name: IsPrintable
+  href: api/TuiVision.Compatibility.TKeyCodeTranslator.html#TuiVision_Compatibility_TKeyCodeTranslator_IsPrintable_
+  commentId: Overload:TuiVision.Compatibility.TKeyCodeTranslator.IsPrintable
+  isSpec: "True"
+  fullName: TuiVision.Compatibility.TKeyCodeTranslator.IsPrintable
+  nameWithType: TKeyCodeTranslator.IsPrintable
+- uid: TuiVision.Compatibility.TKeyCodeTranslator.KeyBackspace
+  name: KeyBackspace
+  href: api/TuiVision.Compatibility.TKeyCodeTranslator.html#TuiVision_Compatibility_TKeyCodeTranslator_KeyBackspace
+  commentId: F:TuiVision.Compatibility.TKeyCodeTranslator.KeyBackspace
+  fullName: TuiVision.Compatibility.TKeyCodeTranslator.KeyBackspace
+  nameWithType: TKeyCodeTranslator.KeyBackspace
+- uid: TuiVision.Compatibility.TKeyCodeTranslator.KeyEnter
+  name: KeyEnter
+  href: api/TuiVision.Compatibility.TKeyCodeTranslator.html#TuiVision_Compatibility_TKeyCodeTranslator_KeyEnter
+  commentId: F:TuiVision.Compatibility.TKeyCodeTranslator.KeyEnter
+  fullName: TuiVision.Compatibility.TKeyCodeTranslator.KeyEnter
+  nameWithType: TKeyCodeTranslator.KeyEnter
+- uid: TuiVision.Compatibility.TKeyCodeTranslator.KeyEscape
+  name: KeyEscape
+  href: api/TuiVision.Compatibility.TKeyCodeTranslator.html#TuiVision_Compatibility_TKeyCodeTranslator_KeyEscape
+  commentId: F:TuiVision.Compatibility.TKeyCodeTranslator.KeyEscape
+  fullName: TuiVision.Compatibility.TKeyCodeTranslator.KeyEscape
+  nameWithType: TKeyCodeTranslator.KeyEscape
+- uid: TuiVision.Compatibility.TKeyCodeTranslator.KeyTab
+  name: KeyTab
+  href: api/TuiVision.Compatibility.TKeyCodeTranslator.html#TuiVision_Compatibility_TKeyCodeTranslator_KeyTab
+  commentId: F:TuiVision.Compatibility.TKeyCodeTranslator.KeyTab
+  fullName: TuiVision.Compatibility.TKeyCodeTranslator.KeyTab
+  nameWithType: TKeyCodeTranslator.KeyTab
+- uid: TuiVision.Compatibility.TShiftState
+  name: TShiftState
+  href: api/TuiVision.Compatibility.TShiftState.html
+  commentId: T:TuiVision.Compatibility.TShiftState
+  fullName: TuiVision.Compatibility.TShiftState
+  nameWithType: TShiftState
+- uid: TuiVision.Compatibility.TShiftState.Alt
+  name: Alt
+  href: api/TuiVision.Compatibility.TShiftState.html#TuiVision_Compatibility_TShiftState_Alt
+  commentId: F:TuiVision.Compatibility.TShiftState.Alt
+  fullName: TuiVision.Compatibility.TShiftState.Alt
+  nameWithType: TShiftState.Alt
+- uid: TuiVision.Compatibility.TShiftState.Ctrl
+  name: Ctrl
+  href: api/TuiVision.Compatibility.TShiftState.html#TuiVision_Compatibility_TShiftState_Ctrl
+  commentId: F:TuiVision.Compatibility.TShiftState.Ctrl
+  fullName: TuiVision.Compatibility.TShiftState.Ctrl
+  nameWithType: TShiftState.Ctrl
+- uid: TuiVision.Compatibility.TShiftState.None
+  name: None
+  href: api/TuiVision.Compatibility.TShiftState.html#TuiVision_Compatibility_TShiftState_None
+  commentId: F:TuiVision.Compatibility.TShiftState.None
+  fullName: TuiVision.Compatibility.TShiftState.None
+  nameWithType: TShiftState.None
+- uid: TuiVision.Compatibility.TShiftState.Shift
+  name: Shift
+  href: api/TuiVision.Compatibility.TShiftState.html#TuiVision_Compatibility_TShiftState_Shift
+  commentId: F:TuiVision.Compatibility.TShiftState.Shift
+  fullName: TuiVision.Compatibility.TShiftState.Shift
+  nameWithType: TShiftState.Shift
+- uid: TuiVision.Controls
+  name: TuiVision.Controls
+  href: api/TuiVision.Controls.html
+  commentId: N:TuiVision.Controls
+  fullName: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+- uid: TuiVision.Controls.TView
+  name: TView
+  href: api/TuiVision.Controls.TView.html
+  commentId: T:TuiVision.Controls.TView
+  fullName: TuiVision.Controls.TView
+  nameWithType: TView
+- uid: TuiVision.Controls.TView.#ctor(TuiVision.Core.TRect)
+  name: TView(TRect)
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView__ctor_TuiVision_Core_TRect_
+  commentId: M:TuiVision.Controls.TView.#ctor(TuiVision.Core.TRect)
+  name.vb: New(TRect)
+  fullName: TuiVision.Controls.TView.TView(TuiVision.Core.TRect)
+  fullName.vb: TuiVision.Controls.TView.New(TuiVision.Core.TRect)
+  nameWithType: TView.TView(TRect)
+  nameWithType.vb: TView.New(TRect)
+- uid: TuiVision.Controls.TView.#ctor*
+  name: TView
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView__ctor_
+  commentId: Overload:TuiVision.Controls.TView.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TView.TView
+  fullName.vb: TuiVision.Controls.TView.New
+  nameWithType: TView.TView
+  nameWithType.vb: TView.New
+- uid: TuiVision.Controls.TView.EventMask
+  name: EventMask
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_EventMask
+  commentId: P:TuiVision.Controls.TView.EventMask
+  fullName: TuiVision.Controls.TView.EventMask
+  nameWithType: TView.EventMask
+- uid: TuiVision.Controls.TView.EventMask*
+  name: EventMask
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_EventMask_
+  commentId: Overload:TuiVision.Controls.TView.EventMask
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.EventMask
+  nameWithType: TView.EventMask
+- uid: TuiVision.Controls.TView.GetBounds
+  name: GetBounds()
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetBounds
+  commentId: M:TuiVision.Controls.TView.GetBounds
+  fullName: TuiVision.Controls.TView.GetBounds()
+  nameWithType: TView.GetBounds()
+- uid: TuiVision.Controls.TView.GetBounds*
+  name: GetBounds
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetBounds_
+  commentId: Overload:TuiVision.Controls.TView.GetBounds
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.GetBounds
+  nameWithType: TView.GetBounds
+- uid: TuiVision.Controls.TView.GetExtent
+  name: GetExtent()
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetExtent
+  commentId: M:TuiVision.Controls.TView.GetExtent
+  fullName: TuiVision.Controls.TView.GetExtent()
+  nameWithType: TView.GetExtent()
+- uid: TuiVision.Controls.TView.GetExtent*
+  name: GetExtent
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetExtent_
+  commentId: Overload:TuiVision.Controls.TView.GetExtent
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.GetExtent
+  nameWithType: TView.GetExtent
+- uid: TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)
+  name: GetState(TViewState)
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetState_TuiVision_Controls_TViewState_
+  commentId: M:TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)
+  fullName: TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)
+  nameWithType: TView.GetState(TViewState)
+- uid: TuiVision.Controls.TView.GetState*
+  name: GetState
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetState_
+  commentId: Overload:TuiVision.Controls.TView.GetState
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.GetState
+  nameWithType: TView.GetState
+- uid: TuiVision.Controls.TView.GrowTo(System.Int32,System.Int32)
+  name: GrowTo(int, int)
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_GrowTo_System_Int32_System_Int32_
+  commentId: M:TuiVision.Controls.TView.GrowTo(System.Int32,System.Int32)
+  name.vb: GrowTo(Integer, Integer)
+  fullName: TuiVision.Controls.TView.GrowTo(int, int)
+  fullName.vb: TuiVision.Controls.TView.GrowTo(Integer, Integer)
+  nameWithType: TView.GrowTo(int, int)
+  nameWithType.vb: TView.GrowTo(Integer, Integer)
+- uid: TuiVision.Controls.TView.GrowTo*
+  name: GrowTo
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_GrowTo_
+  commentId: Overload:TuiVision.Controls.TView.GrowTo
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.GrowTo
+  nameWithType: TView.GrowTo
+- uid: TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)
+  name: HandleEvent(TEvent)
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_HandleEvent_TuiVision_Core_TEvent_
+  commentId: M:TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)
+  fullName: TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)
+  nameWithType: TView.HandleEvent(TEvent)
+- uid: TuiVision.Controls.TView.HandleEvent*
+  name: HandleEvent
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_HandleEvent_
+  commentId: Overload:TuiVision.Controls.TView.HandleEvent
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.HandleEvent
+  nameWithType: TView.HandleEvent
+- uid: TuiVision.Controls.TView.Hide
+  name: Hide()
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_Hide
+  commentId: M:TuiVision.Controls.TView.Hide
+  fullName: TuiVision.Controls.TView.Hide()
+  nameWithType: TView.Hide()
+- uid: TuiVision.Controls.TView.Hide*
+  name: Hide
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_Hide_
+  commentId: Overload:TuiVision.Controls.TView.Hide
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.Hide
+  nameWithType: TView.Hide
+- uid: TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)
+  name: Locate(TRect)
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_
+  commentId: M:TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)
+  fullName: TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)
+  nameWithType: TView.Locate(TRect)
+- uid: TuiVision.Controls.TView.Locate*
+  name: Locate
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_Locate_
+  commentId: Overload:TuiVision.Controls.TView.Locate
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.Locate
+  nameWithType: TView.Locate
+- uid: TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
+  name: MakeGlobal(TPoint)
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeGlobal_TuiVision_Core_TPoint_
+  commentId: M:TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
+  fullName: TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
+  nameWithType: TView.MakeGlobal(TPoint)
+- uid: TuiVision.Controls.TView.MakeGlobal*
+  name: MakeGlobal
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeGlobal_
+  commentId: Overload:TuiVision.Controls.TView.MakeGlobal
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.MakeGlobal
+  nameWithType: TView.MakeGlobal
+- uid: TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
+  name: MakeLocal(TPoint)
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeLocal_TuiVision_Core_TPoint_
+  commentId: M:TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
+  fullName: TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
+  nameWithType: TView.MakeLocal(TPoint)
+- uid: TuiVision.Controls.TView.MakeLocal*
+  name: MakeLocal
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeLocal_
+  commentId: Overload:TuiVision.Controls.TView.MakeLocal
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.MakeLocal
+  nameWithType: TView.MakeLocal
+- uid: TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
+  name: MouseInView(TPoint)
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_MouseInView_TuiVision_Core_TPoint_
+  commentId: M:TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
+  fullName: TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
+  nameWithType: TView.MouseInView(TPoint)
+- uid: TuiVision.Controls.TView.MouseInView*
+  name: MouseInView
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_MouseInView_
+  commentId: Overload:TuiVision.Controls.TView.MouseInView
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.MouseInView
+  nameWithType: TView.MouseInView
+- uid: TuiVision.Controls.TView.MoveTo(System.Int32,System.Int32)
+  name: MoveTo(int, int)
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_MoveTo_System_Int32_System_Int32_
+  commentId: M:TuiVision.Controls.TView.MoveTo(System.Int32,System.Int32)
+  name.vb: MoveTo(Integer, Integer)
+  fullName: TuiVision.Controls.TView.MoveTo(int, int)
+  fullName.vb: TuiVision.Controls.TView.MoveTo(Integer, Integer)
+  nameWithType: TView.MoveTo(int, int)
+  nameWithType.vb: TView.MoveTo(Integer, Integer)
+- uid: TuiVision.Controls.TView.MoveTo*
+  name: MoveTo
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_MoveTo_
+  commentId: Overload:TuiVision.Controls.TView.MoveTo
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.MoveTo
+  nameWithType: TView.MoveTo
+- uid: TuiVision.Controls.TView.OnBoundsChanged
+  name: OnBoundsChanged()
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_OnBoundsChanged
+  commentId: M:TuiVision.Controls.TView.OnBoundsChanged
+  fullName: TuiVision.Controls.TView.OnBoundsChanged()
+  nameWithType: TView.OnBoundsChanged()
+- uid: TuiVision.Controls.TView.OnBoundsChanged*
+  name: OnBoundsChanged
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_OnBoundsChanged_
+  commentId: Overload:TuiVision.Controls.TView.OnBoundsChanged
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.OnBoundsChanged
+  nameWithType: TView.OnBoundsChanged
+- uid: TuiVision.Controls.TView.Options
+  name: Options
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_Options
+  commentId: P:TuiVision.Controls.TView.Options
+  fullName: TuiVision.Controls.TView.Options
+  nameWithType: TView.Options
+- uid: TuiVision.Controls.TView.Options*
+  name: Options
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_Options_
+  commentId: Overload:TuiVision.Controls.TView.Options
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.Options
+  nameWithType: TView.Options
+- uid: TuiVision.Controls.TView.Origin
+  name: Origin
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_Origin
+  commentId: P:TuiVision.Controls.TView.Origin
+  fullName: TuiVision.Controls.TView.Origin
+  nameWithType: TView.Origin
+- uid: TuiVision.Controls.TView.Origin*
+  name: Origin
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_Origin_
+  commentId: Overload:TuiVision.Controls.TView.Origin
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.Origin
+  nameWithType: TView.Origin
+- uid: TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)
+  name: SetBounds(TRect)
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetBounds_TuiVision_Core_TRect_
+  commentId: M:TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)
+  fullName: TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)
+  nameWithType: TView.SetBounds(TRect)
+- uid: TuiVision.Controls.TView.SetBounds*
+  name: SetBounds
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetBounds_
+  commentId: Overload:TuiVision.Controls.TView.SetBounds
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.SetBounds
+  nameWithType: TView.SetBounds
+- uid: TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState,System.Boolean)
+  name: SetState(TViewState, bool)
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetState_TuiVision_Controls_TViewState_System_Boolean_
+  commentId: M:TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState,System.Boolean)
+  name.vb: SetState(TViewState, Boolean)
+  fullName: TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState, bool)
+  fullName.vb: TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState, Boolean)
+  nameWithType: TView.SetState(TViewState, bool)
+  nameWithType.vb: TView.SetState(TViewState, Boolean)
+- uid: TuiVision.Controls.TView.SetState*
+  name: SetState
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetState_
+  commentId: Overload:TuiVision.Controls.TView.SetState
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.SetState
+  nameWithType: TView.SetState
+- uid: TuiVision.Controls.TView.Show
+  name: Show()
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_Show
+  commentId: M:TuiVision.Controls.TView.Show
+  fullName: TuiVision.Controls.TView.Show()
+  nameWithType: TView.Show()
+- uid: TuiVision.Controls.TView.Show*
+  name: Show
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_Show_
+  commentId: Overload:TuiVision.Controls.TView.Show
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.Show
+  nameWithType: TView.Show
+- uid: TuiVision.Controls.TView.Size
+  name: Size
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_Size
+  commentId: P:TuiVision.Controls.TView.Size
+  fullName: TuiVision.Controls.TView.Size
+  nameWithType: TView.Size
+- uid: TuiVision.Controls.TView.Size*
+  name: Size
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_Size_
+  commentId: Overload:TuiVision.Controls.TView.Size
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.Size
+  nameWithType: TView.Size
+- uid: TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint@,TuiVision.Core.TPoint@)
+  name: SizeLimits(out TPoint, out TPoint)
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_SizeLimits_TuiVision_Core_TPoint__TuiVision_Core_TPoint__
+  commentId: M:TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint@,TuiVision.Core.TPoint@)
+  name.vb: SizeLimits(TPoint, TPoint)
+  fullName: TuiVision.Controls.TView.SizeLimits(out TuiVision.Core.TPoint, out TuiVision.Core.TPoint)
+  fullName.vb: TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  nameWithType: TView.SizeLimits(out TPoint, out TPoint)
+  nameWithType.vb: TView.SizeLimits(TPoint, TPoint)
+- uid: TuiVision.Controls.TView.SizeLimits*
+  name: SizeLimits
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_SizeLimits_
+  commentId: Overload:TuiVision.Controls.TView.SizeLimits
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.SizeLimits
+  nameWithType: TView.SizeLimits
+- uid: TuiVision.Controls.TView.State
+  name: State
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_State
+  commentId: P:TuiVision.Controls.TView.State
+  fullName: TuiVision.Controls.TView.State
+  nameWithType: TView.State
+- uid: TuiVision.Controls.TView.State*
+  name: State
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_State_
+  commentId: Overload:TuiVision.Controls.TView.State
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.State
+  nameWithType: TView.State
+- uid: TuiVision.Controls.TViewOptions
+  name: TViewOptions
+  href: api/TuiVision.Controls.TViewOptions.html
+  commentId: T:TuiVision.Controls.TViewOptions
+  fullName: TuiVision.Controls.TViewOptions
+  nameWithType: TViewOptions
+- uid: TuiVision.Controls.TViewOptions.Buffered
+  name: Buffered
+  href: api/TuiVision.Controls.TViewOptions.html#TuiVision_Controls_TViewOptions_Buffered
+  commentId: F:TuiVision.Controls.TViewOptions.Buffered
+  fullName: TuiVision.Controls.TViewOptions.Buffered
+  nameWithType: TViewOptions.Buffered
+- uid: TuiVision.Controls.TViewOptions.CenterX
+  name: CenterX
+  href: api/TuiVision.Controls.TViewOptions.html#TuiVision_Controls_TViewOptions_CenterX
+  commentId: F:TuiVision.Controls.TViewOptions.CenterX
+  fullName: TuiVision.Controls.TViewOptions.CenterX
+  nameWithType: TViewOptions.CenterX
+- uid: TuiVision.Controls.TViewOptions.CenterY
+  name: CenterY
+  href: api/TuiVision.Controls.TViewOptions.html#TuiVision_Controls_TViewOptions_CenterY
+  commentId: F:TuiVision.Controls.TViewOptions.CenterY
+  fullName: TuiVision.Controls.TViewOptions.CenterY
+  nameWithType: TViewOptions.CenterY
+- uid: TuiVision.Controls.TViewOptions.Centered
+  name: Centered
+  href: api/TuiVision.Controls.TViewOptions.html#TuiVision_Controls_TViewOptions_Centered
+  commentId: F:TuiVision.Controls.TViewOptions.Centered
+  fullName: TuiVision.Controls.TViewOptions.Centered
+  nameWithType: TViewOptions.Centered
+- uid: TuiVision.Controls.TViewOptions.FirstClick
+  name: FirstClick
+  href: api/TuiVision.Controls.TViewOptions.html#TuiVision_Controls_TViewOptions_FirstClick
+  commentId: F:TuiVision.Controls.TViewOptions.FirstClick
+  fullName: TuiVision.Controls.TViewOptions.FirstClick
+  nameWithType: TViewOptions.FirstClick
+- uid: TuiVision.Controls.TViewOptions.Framed
+  name: Framed
+  href: api/TuiVision.Controls.TViewOptions.html#TuiVision_Controls_TViewOptions_Framed
+  commentId: F:TuiVision.Controls.TViewOptions.Framed
+  fullName: TuiVision.Controls.TViewOptions.Framed
+  nameWithType: TViewOptions.Framed
+- uid: TuiVision.Controls.TViewOptions.None
+  name: None
+  href: api/TuiVision.Controls.TViewOptions.html#TuiVision_Controls_TViewOptions_None
+  commentId: F:TuiVision.Controls.TViewOptions.None
+  fullName: TuiVision.Controls.TViewOptions.None
+  nameWithType: TViewOptions.None
+- uid: TuiVision.Controls.TViewOptions.PostProcess
+  name: PostProcess
+  href: api/TuiVision.Controls.TViewOptions.html#TuiVision_Controls_TViewOptions_PostProcess
+  commentId: F:TuiVision.Controls.TViewOptions.PostProcess
+  fullName: TuiVision.Controls.TViewOptions.PostProcess
+  nameWithType: TViewOptions.PostProcess
+- uid: TuiVision.Controls.TViewOptions.PreProcess
+  name: PreProcess
+  href: api/TuiVision.Controls.TViewOptions.html#TuiVision_Controls_TViewOptions_PreProcess
+  commentId: F:TuiVision.Controls.TViewOptions.PreProcess
+  fullName: TuiVision.Controls.TViewOptions.PreProcess
+  nameWithType: TViewOptions.PreProcess
+- uid: TuiVision.Controls.TViewOptions.Selectable
+  name: Selectable
+  href: api/TuiVision.Controls.TViewOptions.html#TuiVision_Controls_TViewOptions_Selectable
+  commentId: F:TuiVision.Controls.TViewOptions.Selectable
+  fullName: TuiVision.Controls.TViewOptions.Selectable
+  nameWithType: TViewOptions.Selectable
+- uid: TuiVision.Controls.TViewOptions.Tileable
+  name: Tileable
+  href: api/TuiVision.Controls.TViewOptions.html#TuiVision_Controls_TViewOptions_Tileable
+  commentId: F:TuiVision.Controls.TViewOptions.Tileable
+  fullName: TuiVision.Controls.TViewOptions.Tileable
+  nameWithType: TViewOptions.Tileable
+- uid: TuiVision.Controls.TViewOptions.TopSelect
+  name: TopSelect
+  href: api/TuiVision.Controls.TViewOptions.html#TuiVision_Controls_TViewOptions_TopSelect
+  commentId: F:TuiVision.Controls.TViewOptions.TopSelect
+  fullName: TuiVision.Controls.TViewOptions.TopSelect
+  nameWithType: TViewOptions.TopSelect
+- uid: TuiVision.Controls.TViewOptions.Verbose
+  name: Verbose
+  href: api/TuiVision.Controls.TViewOptions.html#TuiVision_Controls_TViewOptions_Verbose
+  commentId: F:TuiVision.Controls.TViewOptions.Verbose
+  fullName: TuiVision.Controls.TViewOptions.Verbose
+  nameWithType: TViewOptions.Verbose
+- uid: TuiVision.Controls.TViewState
+  name: TViewState
+  href: api/TuiVision.Controls.TViewState.html
+  commentId: T:TuiVision.Controls.TViewState
+  fullName: TuiVision.Controls.TViewState
+  nameWithType: TViewState
+- uid: TuiVision.Controls.TViewState.Active
+  name: Active
+  href: api/TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Active
+  commentId: F:TuiVision.Controls.TViewState.Active
+  fullName: TuiVision.Controls.TViewState.Active
+  nameWithType: TViewState.Active
+- uid: TuiVision.Controls.TViewState.CursorInsert
+  name: CursorInsert
+  href: api/TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_CursorInsert
+  commentId: F:TuiVision.Controls.TViewState.CursorInsert
+  fullName: TuiVision.Controls.TViewState.CursorInsert
+  nameWithType: TViewState.CursorInsert
+- uid: TuiVision.Controls.TViewState.CursorVisible
+  name: CursorVisible
+  href: api/TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_CursorVisible
+  commentId: F:TuiVision.Controls.TViewState.CursorVisible
+  fullName: TuiVision.Controls.TViewState.CursorVisible
+  nameWithType: TViewState.CursorVisible
+- uid: TuiVision.Controls.TViewState.Default
+  name: Default
+  href: api/TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Default
+  commentId: F:TuiVision.Controls.TViewState.Default
+  fullName: TuiVision.Controls.TViewState.Default
+  nameWithType: TViewState.Default
+- uid: TuiVision.Controls.TViewState.Disabled
+  name: Disabled
+  href: api/TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Disabled
+  commentId: F:TuiVision.Controls.TViewState.Disabled
+  fullName: TuiVision.Controls.TViewState.Disabled
+  nameWithType: TViewState.Disabled
+- uid: TuiVision.Controls.TViewState.Dragging
+  name: Dragging
+  href: api/TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Dragging
+  commentId: F:TuiVision.Controls.TViewState.Dragging
+  fullName: TuiVision.Controls.TViewState.Dragging
+  nameWithType: TViewState.Dragging
+- uid: TuiVision.Controls.TViewState.Exposed
+  name: Exposed
+  href: api/TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Exposed
+  commentId: F:TuiVision.Controls.TViewState.Exposed
+  fullName: TuiVision.Controls.TViewState.Exposed
+  nameWithType: TViewState.Exposed
+- uid: TuiVision.Controls.TViewState.Focused
+  name: Focused
+  href: api/TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Focused
+  commentId: F:TuiVision.Controls.TViewState.Focused
+  fullName: TuiVision.Controls.TViewState.Focused
+  nameWithType: TViewState.Focused
+- uid: TuiVision.Controls.TViewState.Modal
+  name: Modal
+  href: api/TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Modal
+  commentId: F:TuiVision.Controls.TViewState.Modal
+  fullName: TuiVision.Controls.TViewState.Modal
+  nameWithType: TViewState.Modal
+- uid: TuiVision.Controls.TViewState.Selected
+  name: Selected
+  href: api/TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Selected
+  commentId: F:TuiVision.Controls.TViewState.Selected
+  fullName: TuiVision.Controls.TViewState.Selected
+  nameWithType: TViewState.Selected
+- uid: TuiVision.Controls.TViewState.Shadow
+  name: Shadow
+  href: api/TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Shadow
+  commentId: F:TuiVision.Controls.TViewState.Shadow
+  fullName: TuiVision.Controls.TViewState.Shadow
+  nameWithType: TViewState.Shadow
+- uid: TuiVision.Controls.TViewState.Visible
+  name: Visible
+  href: api/TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Visible
+  commentId: F:TuiVision.Controls.TViewState.Visible
+  fullName: TuiVision.Controls.TViewState.Visible
+  nameWithType: TViewState.Visible
+- uid: TuiVision.Core
+  name: TuiVision.Core
+  href: api/TuiVision.Core.html
+  commentId: N:TuiVision.Core
+  fullName: TuiVision.Core
+  nameWithType: TuiVision.Core
+- uid: TuiVision.Core.TEvent
+  name: TEvent
+  href: api/TuiVision.Core.TEvent.html
+  commentId: T:TuiVision.Core.TEvent
+  fullName: TuiVision.Core.TEvent
+  nameWithType: TEvent
+- uid: TuiVision.Core.TEvent.Clear(TuiVision.Core.TObject)
+  name: Clear(TObject?)
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_Clear_TuiVision_Core_TObject_
+  commentId: M:TuiVision.Core.TEvent.Clear(TuiVision.Core.TObject)
+  name.vb: Clear(TObject)
+  fullName: TuiVision.Core.TEvent.Clear(TuiVision.Core.TObject?)
+  fullName.vb: TuiVision.Core.TEvent.Clear(TuiVision.Core.TObject)
+  nameWithType: TEvent.Clear(TObject?)
+  nameWithType.vb: TEvent.Clear(TObject)
+- uid: TuiVision.Core.TEvent.Clear*
+  name: Clear
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_Clear_
+  commentId: Overload:TuiVision.Core.TEvent.Clear
+  isSpec: "True"
+  fullName: TuiVision.Core.TEvent.Clear
+  nameWithType: TEvent.Clear
+- uid: TuiVision.Core.TEvent.CreateBroadcast(System.UInt16,System.Object)
+  name: CreateBroadcast(ushort, object?)
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_CreateBroadcast_System_UInt16_System_Object_
+  commentId: M:TuiVision.Core.TEvent.CreateBroadcast(System.UInt16,System.Object)
+  name.vb: CreateBroadcast(UShort, Object)
+  fullName: TuiVision.Core.TEvent.CreateBroadcast(ushort, object?)
+  fullName.vb: TuiVision.Core.TEvent.CreateBroadcast(UShort, Object)
+  nameWithType: TEvent.CreateBroadcast(ushort, object?)
+  nameWithType.vb: TEvent.CreateBroadcast(UShort, Object)
+- uid: TuiVision.Core.TEvent.CreateBroadcast*
+  name: CreateBroadcast
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_CreateBroadcast_
+  commentId: Overload:TuiVision.Core.TEvent.CreateBroadcast
+  isSpec: "True"
+  fullName: TuiVision.Core.TEvent.CreateBroadcast
+  nameWithType: TEvent.CreateBroadcast
+- uid: TuiVision.Core.TEvent.CreateCommand(System.UInt16,System.Object)
+  name: CreateCommand(ushort, object?)
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_CreateCommand_System_UInt16_System_Object_
+  commentId: M:TuiVision.Core.TEvent.CreateCommand(System.UInt16,System.Object)
+  name.vb: CreateCommand(UShort, Object)
+  fullName: TuiVision.Core.TEvent.CreateCommand(ushort, object?)
+  fullName.vb: TuiVision.Core.TEvent.CreateCommand(UShort, Object)
+  nameWithType: TEvent.CreateCommand(ushort, object?)
+  nameWithType.vb: TEvent.CreateCommand(UShort, Object)
+- uid: TuiVision.Core.TEvent.CreateCommand*
+  name: CreateCommand
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_CreateCommand_
+  commentId: Overload:TuiVision.Core.TEvent.CreateCommand
+  isSpec: "True"
+  fullName: TuiVision.Core.TEvent.CreateCommand
+  nameWithType: TEvent.CreateCommand
+- uid: TuiVision.Core.TEvent.CreateKeyDown(TuiVision.Core.TKeyDownEvent)
+  name: CreateKeyDown(TKeyDownEvent)
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_CreateKeyDown_TuiVision_Core_TKeyDownEvent_
+  commentId: M:TuiVision.Core.TEvent.CreateKeyDown(TuiVision.Core.TKeyDownEvent)
+  fullName: TuiVision.Core.TEvent.CreateKeyDown(TuiVision.Core.TKeyDownEvent)
+  nameWithType: TEvent.CreateKeyDown(TKeyDownEvent)
+- uid: TuiVision.Core.TEvent.CreateKeyDown*
+  name: CreateKeyDown
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_CreateKeyDown_
+  commentId: Overload:TuiVision.Core.TEvent.CreateKeyDown
+  isSpec: "True"
+  fullName: TuiVision.Core.TEvent.CreateKeyDown
+  nameWithType: TEvent.CreateKeyDown
+- uid: TuiVision.Core.TEvent.CreateMouse(TuiVision.Core.TEventKind,TuiVision.Core.TMouseButtons,System.Boolean,TuiVision.Core.TPoint)
+  name: CreateMouse(TEventKind, TMouseButtons, bool, TPoint)
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_CreateMouse_TuiVision_Core_TEventKind_TuiVision_Core_TMouseButtons_System_Boolean_TuiVision_Core_TPoint_
+  commentId: M:TuiVision.Core.TEvent.CreateMouse(TuiVision.Core.TEventKind,TuiVision.Core.TMouseButtons,System.Boolean,TuiVision.Core.TPoint)
+  name.vb: CreateMouse(TEventKind, TMouseButtons, Boolean, TPoint)
+  fullName: TuiVision.Core.TEvent.CreateMouse(TuiVision.Core.TEventKind, TuiVision.Core.TMouseButtons, bool, TuiVision.Core.TPoint)
+  fullName.vb: TuiVision.Core.TEvent.CreateMouse(TuiVision.Core.TEventKind, TuiVision.Core.TMouseButtons, Boolean, TuiVision.Core.TPoint)
+  nameWithType: TEvent.CreateMouse(TEventKind, TMouseButtons, bool, TPoint)
+  nameWithType.vb: TEvent.CreateMouse(TEventKind, TMouseButtons, Boolean, TPoint)
+- uid: TuiVision.Core.TEvent.CreateMouse*
+  name: CreateMouse
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_CreateMouse_
+  commentId: Overload:TuiVision.Core.TEvent.CreateMouse
+  isSpec: "True"
+  fullName: TuiVision.Core.TEvent.CreateMouse
+  nameWithType: TEvent.CreateMouse
+- uid: TuiVision.Core.TEvent.CreateNone(TuiVision.Core.TObject)
+  name: CreateNone(TObject?)
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_CreateNone_TuiVision_Core_TObject_
+  commentId: M:TuiVision.Core.TEvent.CreateNone(TuiVision.Core.TObject)
+  name.vb: CreateNone(TObject)
+  fullName: TuiVision.Core.TEvent.CreateNone(TuiVision.Core.TObject?)
+  fullName.vb: TuiVision.Core.TEvent.CreateNone(TuiVision.Core.TObject)
+  nameWithType: TEvent.CreateNone(TObject?)
+  nameWithType.vb: TEvent.CreateNone(TObject)
+- uid: TuiVision.Core.TEvent.CreateNone*
+  name: CreateNone
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_CreateNone_
+  commentId: Overload:TuiVision.Core.TEvent.CreateNone
+  isSpec: "True"
+  fullName: TuiVision.Core.TEvent.CreateNone
+  nameWithType: TEvent.CreateNone
+- uid: TuiVision.Core.TEvent.KeyDown
+  name: KeyDown
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_KeyDown
+  commentId: P:TuiVision.Core.TEvent.KeyDown
+  fullName: TuiVision.Core.TEvent.KeyDown
+  nameWithType: TEvent.KeyDown
+- uid: TuiVision.Core.TEvent.KeyDown*
+  name: KeyDown
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_KeyDown_
+  commentId: Overload:TuiVision.Core.TEvent.KeyDown
+  isSpec: "True"
+  fullName: TuiVision.Core.TEvent.KeyDown
+  nameWithType: TEvent.KeyDown
+- uid: TuiVision.Core.TEvent.Message
+  name: Message
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_Message
+  commentId: P:TuiVision.Core.TEvent.Message
+  fullName: TuiVision.Core.TEvent.Message
+  nameWithType: TEvent.Message
+- uid: TuiVision.Core.TEvent.Message*
+  name: Message
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_Message_
+  commentId: Overload:TuiVision.Core.TEvent.Message
+  isSpec: "True"
+  fullName: TuiVision.Core.TEvent.Message
+  nameWithType: TEvent.Message
+- uid: TuiVision.Core.TEvent.Mouse
+  name: Mouse
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_Mouse
+  commentId: P:TuiVision.Core.TEvent.Mouse
+  fullName: TuiVision.Core.TEvent.Mouse
+  nameWithType: TEvent.Mouse
+- uid: TuiVision.Core.TEvent.Mouse*
+  name: Mouse
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_Mouse_
+  commentId: Overload:TuiVision.Core.TEvent.Mouse
+  isSpec: "True"
+  fullName: TuiVision.Core.TEvent.Mouse
+  nameWithType: TEvent.Mouse
+- uid: TuiVision.Core.TEvent.What
+  name: What
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_What
+  commentId: P:TuiVision.Core.TEvent.What
+  fullName: TuiVision.Core.TEvent.What
+  nameWithType: TEvent.What
+- uid: TuiVision.Core.TEvent.What*
+  name: What
+  href: api/TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_What_
+  commentId: Overload:TuiVision.Core.TEvent.What
+  isSpec: "True"
+  fullName: TuiVision.Core.TEvent.What
+  nameWithType: TEvent.What
+- uid: TuiVision.Core.TEventKind
+  name: TEventKind
+  href: api/TuiVision.Core.TEventKind.html
+  commentId: T:TuiVision.Core.TEventKind
+  fullName: TuiVision.Core.TEventKind
+  nameWithType: TEventKind
+- uid: TuiVision.Core.TEventKind.Broadcast
+  name: Broadcast
+  href: api/TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Broadcast
+  commentId: F:TuiVision.Core.TEventKind.Broadcast
+  fullName: TuiVision.Core.TEventKind.Broadcast
+  nameWithType: TEventKind.Broadcast
+- uid: TuiVision.Core.TEventKind.Command
+  name: Command
+  href: api/TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Command
+  commentId: F:TuiVision.Core.TEventKind.Command
+  fullName: TuiVision.Core.TEventKind.Command
+  nameWithType: TEventKind.Command
+- uid: TuiVision.Core.TEventKind.KeyDown
+  name: KeyDown
+  href: api/TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_KeyDown
+  commentId: F:TuiVision.Core.TEventKind.KeyDown
+  fullName: TuiVision.Core.TEventKind.KeyDown
+  nameWithType: TEventKind.KeyDown
+- uid: TuiVision.Core.TEventKind.Keyboard
+  name: Keyboard
+  href: api/TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Keyboard
+  commentId: F:TuiVision.Core.TEventKind.Keyboard
+  fullName: TuiVision.Core.TEventKind.Keyboard
+  nameWithType: TEventKind.Keyboard
+- uid: TuiVision.Core.TEventKind.Message
+  name: Message
+  href: api/TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Message
+  commentId: F:TuiVision.Core.TEventKind.Message
+  fullName: TuiVision.Core.TEventKind.Message
+  nameWithType: TEventKind.Message
+- uid: TuiVision.Core.TEventKind.Mouse
+  name: Mouse
+  href: api/TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Mouse
+  commentId: F:TuiVision.Core.TEventKind.Mouse
+  fullName: TuiVision.Core.TEventKind.Mouse
+  nameWithType: TEventKind.Mouse
+- uid: TuiVision.Core.TEventKind.MouseAuto
+  name: MouseAuto
+  href: api/TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_MouseAuto
+  commentId: F:TuiVision.Core.TEventKind.MouseAuto
+  fullName: TuiVision.Core.TEventKind.MouseAuto
+  nameWithType: TEventKind.MouseAuto
+- uid: TuiVision.Core.TEventKind.MouseDown
+  name: MouseDown
+  href: api/TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_MouseDown
+  commentId: F:TuiVision.Core.TEventKind.MouseDown
+  fullName: TuiVision.Core.TEventKind.MouseDown
+  nameWithType: TEventKind.MouseDown
+- uid: TuiVision.Core.TEventKind.MouseMove
+  name: MouseMove
+  href: api/TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_MouseMove
+  commentId: F:TuiVision.Core.TEventKind.MouseMove
+  fullName: TuiVision.Core.TEventKind.MouseMove
+  nameWithType: TEventKind.MouseMove
+- uid: TuiVision.Core.TEventKind.MouseUp
+  name: MouseUp
+  href: api/TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_MouseUp
+  commentId: F:TuiVision.Core.TEventKind.MouseUp
+  fullName: TuiVision.Core.TEventKind.MouseUp
+  nameWithType: TEventKind.MouseUp
+- uid: TuiVision.Core.TEventKind.Nothing
+  name: Nothing
+  href: api/TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Nothing
+  commentId: F:TuiVision.Core.TEventKind.Nothing
+  fullName: TuiVision.Core.TEventKind.Nothing
+  nameWithType: TEventKind.Nothing
+- uid: TuiVision.Core.TKeyDownEvent
+  name: TKeyDownEvent
+  href: api/TuiVision.Core.TKeyDownEvent.html
+  commentId: T:TuiVision.Core.TKeyDownEvent
+  fullName: TuiVision.Core.TKeyDownEvent
+  nameWithType: TKeyDownEvent
+- uid: TuiVision.Core.TKeyDownEvent.#ctor(System.Char,System.Byte,System.UInt16,System.UInt16,System.Byte)
+  name: TKeyDownEvent(char, byte, ushort, ushort, byte)
+  href: api/TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent__ctor_System_Char_System_Byte_System_UInt16_System_UInt16_System_Byte_
+  commentId: M:TuiVision.Core.TKeyDownEvent.#ctor(System.Char,System.Byte,System.UInt16,System.UInt16,System.Byte)
+  name.vb: New(Char, Byte, UShort, UShort, Byte)
+  fullName: TuiVision.Core.TKeyDownEvent.TKeyDownEvent(char, byte, ushort, ushort, byte)
+  fullName.vb: TuiVision.Core.TKeyDownEvent.New(Char, Byte, UShort, UShort, Byte)
+  nameWithType: TKeyDownEvent.TKeyDownEvent(char, byte, ushort, ushort, byte)
+  nameWithType.vb: TKeyDownEvent.New(Char, Byte, UShort, UShort, Byte)
+- uid: TuiVision.Core.TKeyDownEvent.#ctor*
+  name: TKeyDownEvent
+  href: api/TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent__ctor_
+  commentId: Overload:TuiVision.Core.TKeyDownEvent.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Core.TKeyDownEvent.TKeyDownEvent
+  fullName.vb: TuiVision.Core.TKeyDownEvent.New
+  nameWithType: TKeyDownEvent.TKeyDownEvent
+  nameWithType.vb: TKeyDownEvent.New
+- uid: TuiVision.Core.TKeyDownEvent.CharCode
+  name: CharCode
+  href: api/TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_CharCode
+  commentId: P:TuiVision.Core.TKeyDownEvent.CharCode
+  fullName: TuiVision.Core.TKeyDownEvent.CharCode
+  nameWithType: TKeyDownEvent.CharCode
+- uid: TuiVision.Core.TKeyDownEvent.CharCode*
+  name: CharCode
+  href: api/TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_CharCode_
+  commentId: Overload:TuiVision.Core.TKeyDownEvent.CharCode
+  isSpec: "True"
+  fullName: TuiVision.Core.TKeyDownEvent.CharCode
+  nameWithType: TKeyDownEvent.CharCode
+- uid: TuiVision.Core.TKeyDownEvent.KeyCode
+  name: KeyCode
+  href: api/TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_KeyCode
+  commentId: P:TuiVision.Core.TKeyDownEvent.KeyCode
+  fullName: TuiVision.Core.TKeyDownEvent.KeyCode
+  nameWithType: TKeyDownEvent.KeyCode
+- uid: TuiVision.Core.TKeyDownEvent.KeyCode*
+  name: KeyCode
+  href: api/TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_KeyCode_
+  commentId: Overload:TuiVision.Core.TKeyDownEvent.KeyCode
+  isSpec: "True"
+  fullName: TuiVision.Core.TKeyDownEvent.KeyCode
+  nameWithType: TKeyDownEvent.KeyCode
+- uid: TuiVision.Core.TKeyDownEvent.RawScanCode
+  name: RawScanCode
+  href: api/TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_RawScanCode
+  commentId: P:TuiVision.Core.TKeyDownEvent.RawScanCode
+  fullName: TuiVision.Core.TKeyDownEvent.RawScanCode
+  nameWithType: TKeyDownEvent.RawScanCode
+- uid: TuiVision.Core.TKeyDownEvent.RawScanCode*
+  name: RawScanCode
+  href: api/TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_RawScanCode_
+  commentId: Overload:TuiVision.Core.TKeyDownEvent.RawScanCode
+  isSpec: "True"
+  fullName: TuiVision.Core.TKeyDownEvent.RawScanCode
+  nameWithType: TKeyDownEvent.RawScanCode
+- uid: TuiVision.Core.TKeyDownEvent.ScanCode
+  name: ScanCode
+  href: api/TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_ScanCode
+  commentId: P:TuiVision.Core.TKeyDownEvent.ScanCode
+  fullName: TuiVision.Core.TKeyDownEvent.ScanCode
+  nameWithType: TKeyDownEvent.ScanCode
+- uid: TuiVision.Core.TKeyDownEvent.ScanCode*
+  name: ScanCode
+  href: api/TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_ScanCode_
+  commentId: Overload:TuiVision.Core.TKeyDownEvent.ScanCode
+  isSpec: "True"
+  fullName: TuiVision.Core.TKeyDownEvent.ScanCode
+  nameWithType: TKeyDownEvent.ScanCode
+- uid: TuiVision.Core.TKeyDownEvent.ShiftState
+  name: ShiftState
+  href: api/TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_ShiftState
+  commentId: P:TuiVision.Core.TKeyDownEvent.ShiftState
+  fullName: TuiVision.Core.TKeyDownEvent.ShiftState
+  nameWithType: TKeyDownEvent.ShiftState
+- uid: TuiVision.Core.TKeyDownEvent.ShiftState*
+  name: ShiftState
+  href: api/TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_ShiftState_
+  commentId: Overload:TuiVision.Core.TKeyDownEvent.ShiftState
+  isSpec: "True"
+  fullName: TuiVision.Core.TKeyDownEvent.ShiftState
+  nameWithType: TKeyDownEvent.ShiftState
+- uid: TuiVision.Core.TMessageEvent
+  name: TMessageEvent
+  href: api/TuiVision.Core.TMessageEvent.html
+  commentId: T:TuiVision.Core.TMessageEvent
+  fullName: TuiVision.Core.TMessageEvent
+  nameWithType: TMessageEvent
+- uid: TuiVision.Core.TMessageEvent.#ctor(System.UInt16,System.Object)
+  name: TMessageEvent(ushort, object?)
+  href: api/TuiVision.Core.TMessageEvent.html#TuiVision_Core_TMessageEvent__ctor_System_UInt16_System_Object_
+  commentId: M:TuiVision.Core.TMessageEvent.#ctor(System.UInt16,System.Object)
+  name.vb: New(UShort, Object)
+  fullName: TuiVision.Core.TMessageEvent.TMessageEvent(ushort, object?)
+  fullName.vb: TuiVision.Core.TMessageEvent.New(UShort, Object)
+  nameWithType: TMessageEvent.TMessageEvent(ushort, object?)
+  nameWithType.vb: TMessageEvent.New(UShort, Object)
+- uid: TuiVision.Core.TMessageEvent.#ctor*
+  name: TMessageEvent
+  href: api/TuiVision.Core.TMessageEvent.html#TuiVision_Core_TMessageEvent__ctor_
+  commentId: Overload:TuiVision.Core.TMessageEvent.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Core.TMessageEvent.TMessageEvent
+  fullName.vb: TuiVision.Core.TMessageEvent.New
+  nameWithType: TMessageEvent.TMessageEvent
+  nameWithType.vb: TMessageEvent.New
+- uid: TuiVision.Core.TMessageEvent.Command
+  name: Command
+  href: api/TuiVision.Core.TMessageEvent.html#TuiVision_Core_TMessageEvent_Command
+  commentId: P:TuiVision.Core.TMessageEvent.Command
+  fullName: TuiVision.Core.TMessageEvent.Command
+  nameWithType: TMessageEvent.Command
+- uid: TuiVision.Core.TMessageEvent.Command*
+  name: Command
+  href: api/TuiVision.Core.TMessageEvent.html#TuiVision_Core_TMessageEvent_Command_
+  commentId: Overload:TuiVision.Core.TMessageEvent.Command
+  isSpec: "True"
+  fullName: TuiVision.Core.TMessageEvent.Command
+  nameWithType: TMessageEvent.Command
+- uid: TuiVision.Core.TMessageEvent.Info
+  name: Info
+  href: api/TuiVision.Core.TMessageEvent.html#TuiVision_Core_TMessageEvent_Info
+  commentId: P:TuiVision.Core.TMessageEvent.Info
+  fullName: TuiVision.Core.TMessageEvent.Info
+  nameWithType: TMessageEvent.Info
+- uid: TuiVision.Core.TMessageEvent.Info*
+  name: Info
+  href: api/TuiVision.Core.TMessageEvent.html#TuiVision_Core_TMessageEvent_Info_
+  commentId: Overload:TuiVision.Core.TMessageEvent.Info
+  isSpec: "True"
+  fullName: TuiVision.Core.TMessageEvent.Info
+  nameWithType: TMessageEvent.Info
+- uid: TuiVision.Core.TMouseButtons
+  name: TMouseButtons
+  href: api/TuiVision.Core.TMouseButtons.html
+  commentId: T:TuiVision.Core.TMouseButtons
+  fullName: TuiVision.Core.TMouseButtons
+  nameWithType: TMouseButtons
+- uid: TuiVision.Core.TMouseButtons.Button4
+  name: Button4
+  href: api/TuiVision.Core.TMouseButtons.html#TuiVision_Core_TMouseButtons_Button4
+  commentId: F:TuiVision.Core.TMouseButtons.Button4
+  fullName: TuiVision.Core.TMouseButtons.Button4
+  nameWithType: TMouseButtons.Button4
+- uid: TuiVision.Core.TMouseButtons.Button5
+  name: Button5
+  href: api/TuiVision.Core.TMouseButtons.html#TuiVision_Core_TMouseButtons_Button5
+  commentId: F:TuiVision.Core.TMouseButtons.Button5
+  fullName: TuiVision.Core.TMouseButtons.Button5
+  nameWithType: TMouseButtons.Button5
+- uid: TuiVision.Core.TMouseButtons.Left
+  name: Left
+  href: api/TuiVision.Core.TMouseButtons.html#TuiVision_Core_TMouseButtons_Left
+  commentId: F:TuiVision.Core.TMouseButtons.Left
+  fullName: TuiVision.Core.TMouseButtons.Left
+  nameWithType: TMouseButtons.Left
+- uid: TuiVision.Core.TMouseButtons.Middle
+  name: Middle
+  href: api/TuiVision.Core.TMouseButtons.html#TuiVision_Core_TMouseButtons_Middle
+  commentId: F:TuiVision.Core.TMouseButtons.Middle
+  fullName: TuiVision.Core.TMouseButtons.Middle
+  nameWithType: TMouseButtons.Middle
+- uid: TuiVision.Core.TMouseButtons.None
+  name: None
+  href: api/TuiVision.Core.TMouseButtons.html#TuiVision_Core_TMouseButtons_None
+  commentId: F:TuiVision.Core.TMouseButtons.None
+  fullName: TuiVision.Core.TMouseButtons.None
+  nameWithType: TMouseButtons.None
+- uid: TuiVision.Core.TMouseButtons.Right
+  name: Right
+  href: api/TuiVision.Core.TMouseButtons.html#TuiVision_Core_TMouseButtons_Right
+  commentId: F:TuiVision.Core.TMouseButtons.Right
+  fullName: TuiVision.Core.TMouseButtons.Right
+  nameWithType: TMouseButtons.Right
+- uid: TuiVision.Core.TMouseEvent
+  name: TMouseEvent
+  href: api/TuiVision.Core.TMouseEvent.html
+  commentId: T:TuiVision.Core.TMouseEvent
+  fullName: TuiVision.Core.TMouseEvent
+  nameWithType: TMouseEvent
+- uid: TuiVision.Core.TMouseEvent.#ctor(TuiVision.Core.TMouseButtons,System.Boolean,TuiVision.Core.TPoint)
+  name: TMouseEvent(TMouseButtons, bool, TPoint)
+  href: api/TuiVision.Core.TMouseEvent.html#TuiVision_Core_TMouseEvent__ctor_TuiVision_Core_TMouseButtons_System_Boolean_TuiVision_Core_TPoint_
+  commentId: M:TuiVision.Core.TMouseEvent.#ctor(TuiVision.Core.TMouseButtons,System.Boolean,TuiVision.Core.TPoint)
+  name.vb: New(TMouseButtons, Boolean, TPoint)
+  fullName: TuiVision.Core.TMouseEvent.TMouseEvent(TuiVision.Core.TMouseButtons, bool, TuiVision.Core.TPoint)
+  fullName.vb: TuiVision.Core.TMouseEvent.New(TuiVision.Core.TMouseButtons, Boolean, TuiVision.Core.TPoint)
+  nameWithType: TMouseEvent.TMouseEvent(TMouseButtons, bool, TPoint)
+  nameWithType.vb: TMouseEvent.New(TMouseButtons, Boolean, TPoint)
+- uid: TuiVision.Core.TMouseEvent.#ctor*
+  name: TMouseEvent
+  href: api/TuiVision.Core.TMouseEvent.html#TuiVision_Core_TMouseEvent__ctor_
+  commentId: Overload:TuiVision.Core.TMouseEvent.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Core.TMouseEvent.TMouseEvent
+  fullName.vb: TuiVision.Core.TMouseEvent.New
+  nameWithType: TMouseEvent.TMouseEvent
+  nameWithType.vb: TMouseEvent.New
+- uid: TuiVision.Core.TMouseEvent.Buttons
+  name: Buttons
+  href: api/TuiVision.Core.TMouseEvent.html#TuiVision_Core_TMouseEvent_Buttons
+  commentId: P:TuiVision.Core.TMouseEvent.Buttons
+  fullName: TuiVision.Core.TMouseEvent.Buttons
+  nameWithType: TMouseEvent.Buttons
+- uid: TuiVision.Core.TMouseEvent.Buttons*
+  name: Buttons
+  href: api/TuiVision.Core.TMouseEvent.html#TuiVision_Core_TMouseEvent_Buttons_
+  commentId: Overload:TuiVision.Core.TMouseEvent.Buttons
+  isSpec: "True"
+  fullName: TuiVision.Core.TMouseEvent.Buttons
+  nameWithType: TMouseEvent.Buttons
+- uid: TuiVision.Core.TMouseEvent.DoubleClick
+  name: DoubleClick
+  href: api/TuiVision.Core.TMouseEvent.html#TuiVision_Core_TMouseEvent_DoubleClick
+  commentId: P:TuiVision.Core.TMouseEvent.DoubleClick
+  fullName: TuiVision.Core.TMouseEvent.DoubleClick
+  nameWithType: TMouseEvent.DoubleClick
+- uid: TuiVision.Core.TMouseEvent.DoubleClick*
+  name: DoubleClick
+  href: api/TuiVision.Core.TMouseEvent.html#TuiVision_Core_TMouseEvent_DoubleClick_
+  commentId: Overload:TuiVision.Core.TMouseEvent.DoubleClick
+  isSpec: "True"
+  fullName: TuiVision.Core.TMouseEvent.DoubleClick
+  nameWithType: TMouseEvent.DoubleClick
+- uid: TuiVision.Core.TMouseEvent.Where
+  name: Where
+  href: api/TuiVision.Core.TMouseEvent.html#TuiVision_Core_TMouseEvent_Where
+  commentId: P:TuiVision.Core.TMouseEvent.Where
+  fullName: TuiVision.Core.TMouseEvent.Where
+  nameWithType: TMouseEvent.Where
+- uid: TuiVision.Core.TMouseEvent.Where*
+  name: Where
+  href: api/TuiVision.Core.TMouseEvent.html#TuiVision_Core_TMouseEvent_Where_
+  commentId: Overload:TuiVision.Core.TMouseEvent.Where
+  isSpec: "True"
+  fullName: TuiVision.Core.TMouseEvent.Where
+  nameWithType: TMouseEvent.Where
+- uid: TuiVision.Core.TObject
+  name: TObject
+  href: api/TuiVision.Core.TObject.html
+  commentId: T:TuiVision.Core.TObject
+  fullName: TuiVision.Core.TObject
+  nameWithType: TObject
+- uid: TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
+  name: Destroy(TObject?)
+  href: api/TuiVision.Core.TObject.html#TuiVision_Core_TObject_Destroy_TuiVision_Core_TObject_
+  commentId: M:TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
+  name.vb: Destroy(TObject)
+  fullName: TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject?)
+  fullName.vb: TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
+  nameWithType: TObject.Destroy(TObject?)
+  nameWithType.vb: TObject.Destroy(TObject)
+- uid: TuiVision.Core.TObject.Destroy*
+  name: Destroy
+  href: api/TuiVision.Core.TObject.html#TuiVision_Core_TObject_Destroy_
+  commentId: Overload:TuiVision.Core.TObject.Destroy
+  isSpec: "True"
+  fullName: TuiVision.Core.TObject.Destroy
+  nameWithType: TObject.Destroy
+- uid: TuiVision.Core.TObject.ShutDown
+  name: ShutDown()
+  href: api/TuiVision.Core.TObject.html#TuiVision_Core_TObject_ShutDown
+  commentId: M:TuiVision.Core.TObject.ShutDown
+  fullName: TuiVision.Core.TObject.ShutDown()
+  nameWithType: TObject.ShutDown()
+- uid: TuiVision.Core.TObject.ShutDown*
+  name: ShutDown
+  href: api/TuiVision.Core.TObject.html#TuiVision_Core_TObject_ShutDown_
+  commentId: Overload:TuiVision.Core.TObject.ShutDown
+  isSpec: "True"
+  fullName: TuiVision.Core.TObject.ShutDown
+  nameWithType: TObject.ShutDown
+- uid: TuiVision.Core.TPoint
+  name: TPoint
+  href: api/TuiVision.Core.TPoint.html
+  commentId: T:TuiVision.Core.TPoint
+  fullName: TuiVision.Core.TPoint
+  nameWithType: TPoint
+- uid: TuiVision.Core.TPoint.#ctor(System.Int32,System.Int32)
+  name: TPoint(int, int)
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint__ctor_System_Int32_System_Int32_
+  commentId: M:TuiVision.Core.TPoint.#ctor(System.Int32,System.Int32)
+  name.vb: New(Integer, Integer)
+  fullName: TuiVision.Core.TPoint.TPoint(int, int)
+  fullName.vb: TuiVision.Core.TPoint.New(Integer, Integer)
+  nameWithType: TPoint.TPoint(int, int)
+  nameWithType.vb: TPoint.New(Integer, Integer)
+- uid: TuiVision.Core.TPoint.#ctor*
+  name: TPoint
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint__ctor_
+  commentId: Overload:TuiVision.Core.TPoint.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Core.TPoint.TPoint
+  fullName.vb: TuiVision.Core.TPoint.New
+  nameWithType: TPoint.TPoint
+  nameWithType.vb: TPoint.New
+- uid: TuiVision.Core.TPoint.Equals(System.Object)
+  name: Equals(object?)
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_Equals_System_Object_
+  commentId: M:TuiVision.Core.TPoint.Equals(System.Object)
+  name.vb: Equals(Object)
+  fullName: TuiVision.Core.TPoint.Equals(object?)
+  fullName.vb: TuiVision.Core.TPoint.Equals(Object)
+  nameWithType: TPoint.Equals(object?)
+  nameWithType.vb: TPoint.Equals(Object)
+- uid: TuiVision.Core.TPoint.Equals(TuiVision.Core.TPoint)
+  name: Equals(TPoint)
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_Equals_TuiVision_Core_TPoint_
+  commentId: M:TuiVision.Core.TPoint.Equals(TuiVision.Core.TPoint)
+  fullName: TuiVision.Core.TPoint.Equals(TuiVision.Core.TPoint)
+  nameWithType: TPoint.Equals(TPoint)
+- uid: TuiVision.Core.TPoint.Equals*
+  name: Equals
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_Equals_
+  commentId: Overload:TuiVision.Core.TPoint.Equals
+  isSpec: "True"
+  fullName: TuiVision.Core.TPoint.Equals
+  nameWithType: TPoint.Equals
+- uid: TuiVision.Core.TPoint.GetHashCode
+  name: GetHashCode()
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_GetHashCode
+  commentId: M:TuiVision.Core.TPoint.GetHashCode
+  fullName: TuiVision.Core.TPoint.GetHashCode()
+  nameWithType: TPoint.GetHashCode()
+- uid: TuiVision.Core.TPoint.GetHashCode*
+  name: GetHashCode
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_GetHashCode_
+  commentId: Overload:TuiVision.Core.TPoint.GetHashCode
+  isSpec: "True"
+  fullName: TuiVision.Core.TPoint.GetHashCode
+  nameWithType: TPoint.GetHashCode
+- uid: TuiVision.Core.TPoint.X
+  name: X
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_X
+  commentId: P:TuiVision.Core.TPoint.X
+  fullName: TuiVision.Core.TPoint.X
+  nameWithType: TPoint.X
+- uid: TuiVision.Core.TPoint.X*
+  name: X
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_X_
+  commentId: Overload:TuiVision.Core.TPoint.X
+  isSpec: "True"
+  fullName: TuiVision.Core.TPoint.X
+  nameWithType: TPoint.X
+- uid: TuiVision.Core.TPoint.Y
+  name: Y
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_Y
+  commentId: P:TuiVision.Core.TPoint.Y
+  fullName: TuiVision.Core.TPoint.Y
+  nameWithType: TPoint.Y
+- uid: TuiVision.Core.TPoint.Y*
+  name: Y
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_Y_
+  commentId: Overload:TuiVision.Core.TPoint.Y
+  isSpec: "True"
+  fullName: TuiVision.Core.TPoint.Y
+  nameWithType: TPoint.Y
+- uid: TuiVision.Core.TPoint.op_Addition(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  name: operator +(TPoint, TPoint)
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_op_Addition_TuiVision_Core_TPoint_TuiVision_Core_TPoint_
+  commentId: M:TuiVision.Core.TPoint.op_Addition(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  name.vb: +(TPoint, TPoint)
+  fullName: TuiVision.Core.TPoint.operator +(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  fullName.vb: TuiVision.Core.TPoint.+(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  nameWithType: TPoint.operator +(TPoint, TPoint)
+  nameWithType.vb: TPoint.+(TPoint, TPoint)
+- uid: TuiVision.Core.TPoint.op_Addition*
+  name: operator +
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_op_Addition_
+  commentId: Overload:TuiVision.Core.TPoint.op_Addition
+  isSpec: "True"
+  name.vb: +
+  fullName: TuiVision.Core.TPoint.operator +
+  fullName.vb: TuiVision.Core.TPoint.+
+  nameWithType: TPoint.operator +
+  nameWithType.vb: TPoint.+
+- uid: TuiVision.Core.TPoint.op_Equality(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  name: operator ==(TPoint, TPoint)
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_op_Equality_TuiVision_Core_TPoint_TuiVision_Core_TPoint_
+  commentId: M:TuiVision.Core.TPoint.op_Equality(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  name.vb: =(TPoint, TPoint)
+  fullName: TuiVision.Core.TPoint.operator ==(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  fullName.vb: TuiVision.Core.TPoint.=(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  nameWithType: TPoint.operator ==(TPoint, TPoint)
+  nameWithType.vb: TPoint.=(TPoint, TPoint)
+- uid: TuiVision.Core.TPoint.op_Equality*
+  name: operator ==
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_op_Equality_
+  commentId: Overload:TuiVision.Core.TPoint.op_Equality
+  isSpec: "True"
+  name.vb: =
+  fullName: TuiVision.Core.TPoint.operator ==
+  fullName.vb: TuiVision.Core.TPoint.=
+  nameWithType: TPoint.operator ==
+  nameWithType.vb: TPoint.=
+- uid: TuiVision.Core.TPoint.op_Inequality(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  name: operator !=(TPoint, TPoint)
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_op_Inequality_TuiVision_Core_TPoint_TuiVision_Core_TPoint_
+  commentId: M:TuiVision.Core.TPoint.op_Inequality(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  name.vb: <>(TPoint, TPoint)
+  fullName: TuiVision.Core.TPoint.operator !=(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  fullName.vb: TuiVision.Core.TPoint.<>(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  nameWithType: TPoint.operator !=(TPoint, TPoint)
+  nameWithType.vb: TPoint.<>(TPoint, TPoint)
+- uid: TuiVision.Core.TPoint.op_Inequality*
+  name: operator !=
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_op_Inequality_
+  commentId: Overload:TuiVision.Core.TPoint.op_Inequality
+  isSpec: "True"
+  name.vb: <>
+  fullName: TuiVision.Core.TPoint.operator !=
+  fullName.vb: TuiVision.Core.TPoint.<>
+  nameWithType: TPoint.operator !=
+  nameWithType.vb: TPoint.<>
+- uid: TuiVision.Core.TPoint.op_Subtraction(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  name: operator -(TPoint, TPoint)
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_op_Subtraction_TuiVision_Core_TPoint_TuiVision_Core_TPoint_
+  commentId: M:TuiVision.Core.TPoint.op_Subtraction(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  name.vb: -(TPoint, TPoint)
+  fullName: TuiVision.Core.TPoint.operator -(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  fullName.vb: TuiVision.Core.TPoint.-(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  nameWithType: TPoint.operator -(TPoint, TPoint)
+  nameWithType.vb: TPoint.-(TPoint, TPoint)
+- uid: TuiVision.Core.TPoint.op_Subtraction*
+  name: operator -
+  href: api/TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_op_Subtraction_
+  commentId: Overload:TuiVision.Core.TPoint.op_Subtraction
+  isSpec: "True"
+  name.vb: '-'
+  fullName: TuiVision.Core.TPoint.operator -
+  fullName.vb: TuiVision.Core.TPoint.-
+  nameWithType: TPoint.operator -
+  nameWithType.vb: TPoint.-
+- uid: TuiVision.Core.TRect
+  name: TRect
+  href: api/TuiVision.Core.TRect.html
+  commentId: T:TuiVision.Core.TRect
+  fullName: TuiVision.Core.TRect
+  nameWithType: TRect
+- uid: TuiVision.Core.TRect.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)
+  name: TRect(int, int, int, int)
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect__ctor_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:TuiVision.Core.TRect.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)
+  name.vb: New(Integer, Integer, Integer, Integer)
+  fullName: TuiVision.Core.TRect.TRect(int, int, int, int)
+  fullName.vb: TuiVision.Core.TRect.New(Integer, Integer, Integer, Integer)
+  nameWithType: TRect.TRect(int, int, int, int)
+  nameWithType.vb: TRect.New(Integer, Integer, Integer, Integer)
+- uid: TuiVision.Core.TRect.#ctor(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  name: TRect(TPoint, TPoint)
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect__ctor_TuiVision_Core_TPoint_TuiVision_Core_TPoint_
+  commentId: M:TuiVision.Core.TRect.#ctor(TuiVision.Core.TPoint,TuiVision.Core.TPoint)
+  name.vb: New(TPoint, TPoint)
+  fullName: TuiVision.Core.TRect.TRect(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  fullName.vb: TuiVision.Core.TRect.New(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  nameWithType: TRect.TRect(TPoint, TPoint)
+  nameWithType.vb: TRect.New(TPoint, TPoint)
+- uid: TuiVision.Core.TRect.#ctor*
+  name: TRect
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect__ctor_
+  commentId: Overload:TuiVision.Core.TRect.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Core.TRect.TRect
+  fullName.vb: TuiVision.Core.TRect.New
+  nameWithType: TRect.TRect
+  nameWithType.vb: TRect.New
+- uid: TuiVision.Core.TRect.A
+  name: A
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_A
+  commentId: P:TuiVision.Core.TRect.A
+  fullName: TuiVision.Core.TRect.A
+  nameWithType: TRect.A
+- uid: TuiVision.Core.TRect.A*
+  name: A
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_A_
+  commentId: Overload:TuiVision.Core.TRect.A
+  isSpec: "True"
+  fullName: TuiVision.Core.TRect.A
+  nameWithType: TRect.A
+- uid: TuiVision.Core.TRect.B
+  name: B
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_B
+  commentId: P:TuiVision.Core.TRect.B
+  fullName: TuiVision.Core.TRect.B
+  nameWithType: TRect.B
+- uid: TuiVision.Core.TRect.B*
+  name: B
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_B_
+  commentId: Overload:TuiVision.Core.TRect.B
+  isSpec: "True"
+  fullName: TuiVision.Core.TRect.B
+  nameWithType: TRect.B
+- uid: TuiVision.Core.TRect.Contains(TuiVision.Core.TPoint)
+  name: Contains(TPoint)
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Contains_TuiVision_Core_TPoint_
+  commentId: M:TuiVision.Core.TRect.Contains(TuiVision.Core.TPoint)
+  fullName: TuiVision.Core.TRect.Contains(TuiVision.Core.TPoint)
+  nameWithType: TRect.Contains(TPoint)
+- uid: TuiVision.Core.TRect.Contains*
+  name: Contains
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Contains_
+  commentId: Overload:TuiVision.Core.TRect.Contains
+  isSpec: "True"
+  fullName: TuiVision.Core.TRect.Contains
+  nameWithType: TRect.Contains
+- uid: TuiVision.Core.TRect.Equals(System.Object)
+  name: Equals(object?)
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Equals_System_Object_
+  commentId: M:TuiVision.Core.TRect.Equals(System.Object)
+  name.vb: Equals(Object)
+  fullName: TuiVision.Core.TRect.Equals(object?)
+  fullName.vb: TuiVision.Core.TRect.Equals(Object)
+  nameWithType: TRect.Equals(object?)
+  nameWithType.vb: TRect.Equals(Object)
+- uid: TuiVision.Core.TRect.Equals(TuiVision.Core.TRect)
+  name: Equals(TRect)
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Equals_TuiVision_Core_TRect_
+  commentId: M:TuiVision.Core.TRect.Equals(TuiVision.Core.TRect)
+  fullName: TuiVision.Core.TRect.Equals(TuiVision.Core.TRect)
+  nameWithType: TRect.Equals(TRect)
+- uid: TuiVision.Core.TRect.Equals*
+  name: Equals
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Equals_
+  commentId: Overload:TuiVision.Core.TRect.Equals
+  isSpec: "True"
+  fullName: TuiVision.Core.TRect.Equals
+  nameWithType: TRect.Equals
+- uid: TuiVision.Core.TRect.GetHashCode
+  name: GetHashCode()
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_GetHashCode
+  commentId: M:TuiVision.Core.TRect.GetHashCode
+  fullName: TuiVision.Core.TRect.GetHashCode()
+  nameWithType: TRect.GetHashCode()
+- uid: TuiVision.Core.TRect.GetHashCode*
+  name: GetHashCode
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_GetHashCode_
+  commentId: Overload:TuiVision.Core.TRect.GetHashCode
+  isSpec: "True"
+  fullName: TuiVision.Core.TRect.GetHashCode
+  nameWithType: TRect.GetHashCode
+- uid: TuiVision.Core.TRect.Grow(System.Int32,System.Int32)
+  name: Grow(int, int)
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Grow_System_Int32_System_Int32_
+  commentId: M:TuiVision.Core.TRect.Grow(System.Int32,System.Int32)
+  name.vb: Grow(Integer, Integer)
+  fullName: TuiVision.Core.TRect.Grow(int, int)
+  fullName.vb: TuiVision.Core.TRect.Grow(Integer, Integer)
+  nameWithType: TRect.Grow(int, int)
+  nameWithType.vb: TRect.Grow(Integer, Integer)
+- uid: TuiVision.Core.TRect.Grow*
+  name: Grow
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Grow_
+  commentId: Overload:TuiVision.Core.TRect.Grow
+  isSpec: "True"
+  fullName: TuiVision.Core.TRect.Grow
+  nameWithType: TRect.Grow
+- uid: TuiVision.Core.TRect.Height
+  name: Height
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Height
+  commentId: P:TuiVision.Core.TRect.Height
+  fullName: TuiVision.Core.TRect.Height
+  nameWithType: TRect.Height
+- uid: TuiVision.Core.TRect.Height*
+  name: Height
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Height_
+  commentId: Overload:TuiVision.Core.TRect.Height
+  isSpec: "True"
+  fullName: TuiVision.Core.TRect.Height
+  nameWithType: TRect.Height
+- uid: TuiVision.Core.TRect.Intersect(TuiVision.Core.TRect)
+  name: Intersect(TRect)
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Intersect_TuiVision_Core_TRect_
+  commentId: M:TuiVision.Core.TRect.Intersect(TuiVision.Core.TRect)
+  fullName: TuiVision.Core.TRect.Intersect(TuiVision.Core.TRect)
+  nameWithType: TRect.Intersect(TRect)
+- uid: TuiVision.Core.TRect.Intersect*
+  name: Intersect
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Intersect_
+  commentId: Overload:TuiVision.Core.TRect.Intersect
+  isSpec: "True"
+  fullName: TuiVision.Core.TRect.Intersect
+  nameWithType: TRect.Intersect
+- uid: TuiVision.Core.TRect.IsEmpty
+  name: IsEmpty()
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_IsEmpty
+  commentId: M:TuiVision.Core.TRect.IsEmpty
+  fullName: TuiVision.Core.TRect.IsEmpty()
+  nameWithType: TRect.IsEmpty()
+- uid: TuiVision.Core.TRect.IsEmpty*
+  name: IsEmpty
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_IsEmpty_
+  commentId: Overload:TuiVision.Core.TRect.IsEmpty
+  isSpec: "True"
+  fullName: TuiVision.Core.TRect.IsEmpty
+  nameWithType: TRect.IsEmpty
+- uid: TuiVision.Core.TRect.Move(System.Int32,System.Int32)
+  name: Move(int, int)
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Move_System_Int32_System_Int32_
+  commentId: M:TuiVision.Core.TRect.Move(System.Int32,System.Int32)
+  name.vb: Move(Integer, Integer)
+  fullName: TuiVision.Core.TRect.Move(int, int)
+  fullName.vb: TuiVision.Core.TRect.Move(Integer, Integer)
+  nameWithType: TRect.Move(int, int)
+  nameWithType.vb: TRect.Move(Integer, Integer)
+- uid: TuiVision.Core.TRect.Move*
+  name: Move
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Move_
+  commentId: Overload:TuiVision.Core.TRect.Move
+  isSpec: "True"
+  fullName: TuiVision.Core.TRect.Move
+  nameWithType: TRect.Move
+- uid: TuiVision.Core.TRect.Union(TuiVision.Core.TRect)
+  name: Union(TRect)
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Union_TuiVision_Core_TRect_
+  commentId: M:TuiVision.Core.TRect.Union(TuiVision.Core.TRect)
+  fullName: TuiVision.Core.TRect.Union(TuiVision.Core.TRect)
+  nameWithType: TRect.Union(TRect)
+- uid: TuiVision.Core.TRect.Union*
+  name: Union
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Union_
+  commentId: Overload:TuiVision.Core.TRect.Union
+  isSpec: "True"
+  fullName: TuiVision.Core.TRect.Union
+  nameWithType: TRect.Union
+- uid: TuiVision.Core.TRect.Width
+  name: Width
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Width
+  commentId: P:TuiVision.Core.TRect.Width
+  fullName: TuiVision.Core.TRect.Width
+  nameWithType: TRect.Width
+- uid: TuiVision.Core.TRect.Width*
+  name: Width
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_Width_
+  commentId: Overload:TuiVision.Core.TRect.Width
+  isSpec: "True"
+  fullName: TuiVision.Core.TRect.Width
+  nameWithType: TRect.Width
+- uid: TuiVision.Core.TRect.op_Equality(TuiVision.Core.TRect,TuiVision.Core.TRect)
+  name: operator ==(TRect, TRect)
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_op_Equality_TuiVision_Core_TRect_TuiVision_Core_TRect_
+  commentId: M:TuiVision.Core.TRect.op_Equality(TuiVision.Core.TRect,TuiVision.Core.TRect)
+  name.vb: =(TRect, TRect)
+  fullName: TuiVision.Core.TRect.operator ==(TuiVision.Core.TRect, TuiVision.Core.TRect)
+  fullName.vb: TuiVision.Core.TRect.=(TuiVision.Core.TRect, TuiVision.Core.TRect)
+  nameWithType: TRect.operator ==(TRect, TRect)
+  nameWithType.vb: TRect.=(TRect, TRect)
+- uid: TuiVision.Core.TRect.op_Equality*
+  name: operator ==
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_op_Equality_
+  commentId: Overload:TuiVision.Core.TRect.op_Equality
+  isSpec: "True"
+  name.vb: =
+  fullName: TuiVision.Core.TRect.operator ==
+  fullName.vb: TuiVision.Core.TRect.=
+  nameWithType: TRect.operator ==
+  nameWithType.vb: TRect.=
+- uid: TuiVision.Core.TRect.op_Inequality(TuiVision.Core.TRect,TuiVision.Core.TRect)
+  name: operator !=(TRect, TRect)
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_op_Inequality_TuiVision_Core_TRect_TuiVision_Core_TRect_
+  commentId: M:TuiVision.Core.TRect.op_Inequality(TuiVision.Core.TRect,TuiVision.Core.TRect)
+  name.vb: <>(TRect, TRect)
+  fullName: TuiVision.Core.TRect.operator !=(TuiVision.Core.TRect, TuiVision.Core.TRect)
+  fullName.vb: TuiVision.Core.TRect.<>(TuiVision.Core.TRect, TuiVision.Core.TRect)
+  nameWithType: TRect.operator !=(TRect, TRect)
+  nameWithType.vb: TRect.<>(TRect, TRect)
+- uid: TuiVision.Core.TRect.op_Inequality*
+  name: operator !=
+  href: api/TuiVision.Core.TRect.html#TuiVision_Core_TRect_op_Inequality_
+  commentId: Overload:TuiVision.Core.TRect.op_Inequality
+  isSpec: "True"
+  name.vb: <>
+  fullName: TuiVision.Core.TRect.operator !=
+  fullName.vb: TuiVision.Core.TRect.<>
+  nameWithType: TRect.operator !=
+  nameWithType.vb: TRect.<>
+- uid: TuiVision.Drivers.Console
+  name: TuiVision.Drivers.Console
+  href: api/TuiVision.Drivers.Console.html
+  commentId: N:TuiVision.Drivers.Console
+  fullName: TuiVision.Drivers.Console
+  nameWithType: TuiVision.Drivers.Console
+- uid: TuiVision.Drivers.Console.IConsolePresenter
+  name: IConsolePresenter
+  href: api/TuiVision.Drivers.Console.IConsolePresenter.html
+  commentId: T:TuiVision.Drivers.Console.IConsolePresenter
+  fullName: TuiVision.Drivers.Console.IConsolePresenter
+  nameWithType: IConsolePresenter
+- uid: TuiVision.Drivers.Console.IConsolePresenter.Present(TuiVision.Drivers.Console.TConsoleBuffer)
+  name: Present(TConsoleBuffer)
+  href: api/TuiVision.Drivers.Console.IConsolePresenter.html#TuiVision_Drivers_Console_IConsolePresenter_Present_TuiVision_Drivers_Console_TConsoleBuffer_
+  commentId: M:TuiVision.Drivers.Console.IConsolePresenter.Present(TuiVision.Drivers.Console.TConsoleBuffer)
+  fullName: TuiVision.Drivers.Console.IConsolePresenter.Present(TuiVision.Drivers.Console.TConsoleBuffer)
+  nameWithType: IConsolePresenter.Present(TConsoleBuffer)
+- uid: TuiVision.Drivers.Console.IConsolePresenter.Present*
+  name: Present
+  href: api/TuiVision.Drivers.Console.IConsolePresenter.html#TuiVision_Drivers_Console_IConsolePresenter_Present_
+  commentId: Overload:TuiVision.Drivers.Console.IConsolePresenter.Present
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.IConsolePresenter.Present
+  nameWithType: IConsolePresenter.Present
+- uid: TuiVision.Drivers.Console.TConsoleBuffer
+  name: TConsoleBuffer
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html
+  commentId: T:TuiVision.Drivers.Console.TConsoleBuffer
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer
+  nameWithType: TConsoleBuffer
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.#ctor(System.Int32,System.Int32)
+  name: TConsoleBuffer(int, int)
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer__ctor_System_Int32_System_Int32_
+  commentId: M:TuiVision.Drivers.Console.TConsoleBuffer.#ctor(System.Int32,System.Int32)
+  name.vb: New(Integer, Integer)
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.TConsoleBuffer(int, int)
+  fullName.vb: TuiVision.Drivers.Console.TConsoleBuffer.New(Integer, Integer)
+  nameWithType: TConsoleBuffer.TConsoleBuffer(int, int)
+  nameWithType.vb: TConsoleBuffer.New(Integer, Integer)
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.#ctor*
+  name: TConsoleBuffer
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer__ctor_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleBuffer.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.TConsoleBuffer
+  fullName.vb: TuiVision.Drivers.Console.TConsoleBuffer.New
+  nameWithType: TConsoleBuffer.TConsoleBuffer
+  nameWithType.vb: TConsoleBuffer.New
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.Clear
+  name: Clear()
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_Clear
+  commentId: M:TuiVision.Drivers.Console.TConsoleBuffer.Clear
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.Clear()
+  nameWithType: TConsoleBuffer.Clear()
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.Clear(TuiVision.Drivers.Console.TConsoleCell)
+  name: Clear(TConsoleCell)
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_Clear_TuiVision_Drivers_Console_TConsoleCell_
+  commentId: M:TuiVision.Drivers.Console.TConsoleBuffer.Clear(TuiVision.Drivers.Console.TConsoleCell)
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.Clear(TuiVision.Drivers.Console.TConsoleCell)
+  nameWithType: TConsoleBuffer.Clear(TConsoleCell)
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.Clear*
+  name: Clear
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_Clear_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleBuffer.Clear
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.Clear
+  nameWithType: TConsoleBuffer.Clear
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.Clone
+  name: Clone()
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_Clone
+  commentId: M:TuiVision.Drivers.Console.TConsoleBuffer.Clone
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.Clone()
+  nameWithType: TConsoleBuffer.Clone()
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.Clone*
+  name: Clone
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_Clone_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleBuffer.Clone
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.Clone
+  nameWithType: TConsoleBuffer.Clone
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.GetCell(System.Int32,System.Int32)
+  name: GetCell(int, int)
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_GetCell_System_Int32_System_Int32_
+  commentId: M:TuiVision.Drivers.Console.TConsoleBuffer.GetCell(System.Int32,System.Int32)
+  name.vb: GetCell(Integer, Integer)
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.GetCell(int, int)
+  fullName.vb: TuiVision.Drivers.Console.TConsoleBuffer.GetCell(Integer, Integer)
+  nameWithType: TConsoleBuffer.GetCell(int, int)
+  nameWithType.vb: TConsoleBuffer.GetCell(Integer, Integer)
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.GetCell*
+  name: GetCell
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_GetCell_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleBuffer.GetCell
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.GetCell
+  nameWithType: TConsoleBuffer.GetCell
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.Height
+  name: Height
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_Height
+  commentId: P:TuiVision.Drivers.Console.TConsoleBuffer.Height
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.Height
+  nameWithType: TConsoleBuffer.Height
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.Height*
+  name: Height
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_Height_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleBuffer.Height
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.Height
+  nameWithType: TConsoleBuffer.Height
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.Item(System.Int32,System.Int32)
+  name: this[int, int]
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_Item_System_Int32_System_Int32_
+  commentId: P:TuiVision.Drivers.Console.TConsoleBuffer.Item(System.Int32,System.Int32)
+  name.vb: this[](Integer, Integer)
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.this[int, int]
+  fullName.vb: TuiVision.Drivers.Console.TConsoleBuffer.this[](Integer, Integer)
+  nameWithType: TConsoleBuffer.this[int, int]
+  nameWithType.vb: TConsoleBuffer.this[](Integer, Integer)
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.Item*
+  name: this
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_Item_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleBuffer.Item
+  isSpec: "True"
+  name.vb: this[]
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.this
+  fullName.vb: TuiVision.Drivers.Console.TConsoleBuffer.this[]
+  nameWithType: TConsoleBuffer.this
+  nameWithType.vb: TConsoleBuffer.this[]
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.SetCell(System.Int32,System.Int32,TuiVision.Drivers.Console.TConsoleCell)
+  name: SetCell(int, int, TConsoleCell)
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_SetCell_System_Int32_System_Int32_TuiVision_Drivers_Console_TConsoleCell_
+  commentId: M:TuiVision.Drivers.Console.TConsoleBuffer.SetCell(System.Int32,System.Int32,TuiVision.Drivers.Console.TConsoleCell)
+  name.vb: SetCell(Integer, Integer, TConsoleCell)
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.SetCell(int, int, TuiVision.Drivers.Console.TConsoleCell)
+  fullName.vb: TuiVision.Drivers.Console.TConsoleBuffer.SetCell(Integer, Integer, TuiVision.Drivers.Console.TConsoleCell)
+  nameWithType: TConsoleBuffer.SetCell(int, int, TConsoleCell)
+  nameWithType.vb: TConsoleBuffer.SetCell(Integer, Integer, TConsoleCell)
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.SetCell*
+  name: SetCell
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_SetCell_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleBuffer.SetCell
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.SetCell
+  nameWithType: TConsoleBuffer.SetCell
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.TrySetCell(System.Int32,System.Int32,TuiVision.Drivers.Console.TConsoleCell)
+  name: TrySetCell(int, int, TConsoleCell)
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_TrySetCell_System_Int32_System_Int32_TuiVision_Drivers_Console_TConsoleCell_
+  commentId: M:TuiVision.Drivers.Console.TConsoleBuffer.TrySetCell(System.Int32,System.Int32,TuiVision.Drivers.Console.TConsoleCell)
+  name.vb: TrySetCell(Integer, Integer, TConsoleCell)
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.TrySetCell(int, int, TuiVision.Drivers.Console.TConsoleCell)
+  fullName.vb: TuiVision.Drivers.Console.TConsoleBuffer.TrySetCell(Integer, Integer, TuiVision.Drivers.Console.TConsoleCell)
+  nameWithType: TConsoleBuffer.TrySetCell(int, int, TConsoleCell)
+  nameWithType.vb: TConsoleBuffer.TrySetCell(Integer, Integer, TConsoleCell)
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.TrySetCell*
+  name: TrySetCell
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_TrySetCell_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleBuffer.TrySetCell
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.TrySetCell
+  nameWithType: TConsoleBuffer.TrySetCell
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.Width
+  name: Width
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_Width
+  commentId: P:TuiVision.Drivers.Console.TConsoleBuffer.Width
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.Width
+  nameWithType: TConsoleBuffer.Width
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.Width*
+  name: Width
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_Width_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleBuffer.Width
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.Width
+  nameWithType: TConsoleBuffer.Width
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.WriteText(System.Int32,System.Int32,System.ReadOnlySpan{System.Char},System.ConsoleColor,System.ConsoleColor)
+  name: WriteText(int, int, ReadOnlySpan<char>, ConsoleColor, ConsoleColor)
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_WriteText_System_Int32_System_Int32_System_ReadOnlySpan_System_Char__System_ConsoleColor_System_ConsoleColor_
+  commentId: M:TuiVision.Drivers.Console.TConsoleBuffer.WriteText(System.Int32,System.Int32,System.ReadOnlySpan{System.Char},System.ConsoleColor,System.ConsoleColor)
+  name.vb: WriteText(Integer, Integer, ReadOnlySpan(Of Char), ConsoleColor, ConsoleColor)
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.WriteText(int, int, System.ReadOnlySpan<char>, System.ConsoleColor, System.ConsoleColor)
+  fullName.vb: TuiVision.Drivers.Console.TConsoleBuffer.WriteText(Integer, Integer, System.ReadOnlySpan(Of Char), System.ConsoleColor, System.ConsoleColor)
+  nameWithType: TConsoleBuffer.WriteText(int, int, ReadOnlySpan<char>, ConsoleColor, ConsoleColor)
+  nameWithType.vb: TConsoleBuffer.WriteText(Integer, Integer, ReadOnlySpan(Of Char), ConsoleColor, ConsoleColor)
+- uid: TuiVision.Drivers.Console.TConsoleBuffer.WriteText*
+  name: WriteText
+  href: api/TuiVision.Drivers.Console.TConsoleBuffer.html#TuiVision_Drivers_Console_TConsoleBuffer_WriteText_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleBuffer.WriteText
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer.WriteText
+  nameWithType: TConsoleBuffer.WriteText
+- uid: TuiVision.Drivers.Console.TConsoleCell
+  name: TConsoleCell
+  href: api/TuiVision.Drivers.Console.TConsoleCell.html
+  commentId: T:TuiVision.Drivers.Console.TConsoleCell
+  fullName: TuiVision.Drivers.Console.TConsoleCell
+  nameWithType: TConsoleCell
+- uid: TuiVision.Drivers.Console.TConsoleCell.#ctor(System.Char,System.ConsoleColor,System.ConsoleColor)
+  name: TConsoleCell(char, ConsoleColor, ConsoleColor)
+  href: api/TuiVision.Drivers.Console.TConsoleCell.html#TuiVision_Drivers_Console_TConsoleCell__ctor_System_Char_System_ConsoleColor_System_ConsoleColor_
+  commentId: M:TuiVision.Drivers.Console.TConsoleCell.#ctor(System.Char,System.ConsoleColor,System.ConsoleColor)
+  name.vb: New(Char, ConsoleColor, ConsoleColor)
+  fullName: TuiVision.Drivers.Console.TConsoleCell.TConsoleCell(char, System.ConsoleColor, System.ConsoleColor)
+  fullName.vb: TuiVision.Drivers.Console.TConsoleCell.New(Char, System.ConsoleColor, System.ConsoleColor)
+  nameWithType: TConsoleCell.TConsoleCell(char, ConsoleColor, ConsoleColor)
+  nameWithType.vb: TConsoleCell.New(Char, ConsoleColor, ConsoleColor)
+- uid: TuiVision.Drivers.Console.TConsoleCell.#ctor*
+  name: TConsoleCell
+  href: api/TuiVision.Drivers.Console.TConsoleCell.html#TuiVision_Drivers_Console_TConsoleCell__ctor_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleCell.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Drivers.Console.TConsoleCell.TConsoleCell
+  fullName.vb: TuiVision.Drivers.Console.TConsoleCell.New
+  nameWithType: TConsoleCell.TConsoleCell
+  nameWithType.vb: TConsoleCell.New
+- uid: TuiVision.Drivers.Console.TConsoleCell.Background
+  name: Background
+  href: api/TuiVision.Drivers.Console.TConsoleCell.html#TuiVision_Drivers_Console_TConsoleCell_Background
+  commentId: P:TuiVision.Drivers.Console.TConsoleCell.Background
+  fullName: TuiVision.Drivers.Console.TConsoleCell.Background
+  nameWithType: TConsoleCell.Background
+- uid: TuiVision.Drivers.Console.TConsoleCell.Background*
+  name: Background
+  href: api/TuiVision.Drivers.Console.TConsoleCell.html#TuiVision_Drivers_Console_TConsoleCell_Background_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleCell.Background
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.TConsoleCell.Background
+  nameWithType: TConsoleCell.Background
+- uid: TuiVision.Drivers.Console.TConsoleCell.Empty
+  name: Empty
+  href: api/TuiVision.Drivers.Console.TConsoleCell.html#TuiVision_Drivers_Console_TConsoleCell_Empty
+  commentId: F:TuiVision.Drivers.Console.TConsoleCell.Empty
+  fullName: TuiVision.Drivers.Console.TConsoleCell.Empty
+  nameWithType: TConsoleCell.Empty
+- uid: TuiVision.Drivers.Console.TConsoleCell.Foreground
+  name: Foreground
+  href: api/TuiVision.Drivers.Console.TConsoleCell.html#TuiVision_Drivers_Console_TConsoleCell_Foreground
+  commentId: P:TuiVision.Drivers.Console.TConsoleCell.Foreground
+  fullName: TuiVision.Drivers.Console.TConsoleCell.Foreground
+  nameWithType: TConsoleCell.Foreground
+- uid: TuiVision.Drivers.Console.TConsoleCell.Foreground*
+  name: Foreground
+  href: api/TuiVision.Drivers.Console.TConsoleCell.html#TuiVision_Drivers_Console_TConsoleCell_Foreground_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleCell.Foreground
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.TConsoleCell.Foreground
+  nameWithType: TConsoleCell.Foreground
+- uid: TuiVision.Drivers.Console.TConsoleCell.Glyph
+  name: Glyph
+  href: api/TuiVision.Drivers.Console.TConsoleCell.html#TuiVision_Drivers_Console_TConsoleCell_Glyph
+  commentId: P:TuiVision.Drivers.Console.TConsoleCell.Glyph
+  fullName: TuiVision.Drivers.Console.TConsoleCell.Glyph
+  nameWithType: TConsoleCell.Glyph
+- uid: TuiVision.Drivers.Console.TConsoleCell.Glyph*
+  name: Glyph
+  href: api/TuiVision.Drivers.Console.TConsoleCell.html#TuiVision_Drivers_Console_TConsoleCell_Glyph_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleCell.Glyph
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.TConsoleCell.Glyph
+  nameWithType: TConsoleCell.Glyph
+- uid: TuiVision.Drivers.Console.TConsoleDriver
+  name: TConsoleDriver
+  href: api/TuiVision.Drivers.Console.TConsoleDriver.html
+  commentId: T:TuiVision.Drivers.Console.TConsoleDriver
+  fullName: TuiVision.Drivers.Console.TConsoleDriver
+  nameWithType: TConsoleDriver
+- uid: TuiVision.Drivers.Console.TConsoleDriver.#ctor(System.Int32,System.Int32)
+  name: TConsoleDriver(int, int)
+  href: api/TuiVision.Drivers.Console.TConsoleDriver.html#TuiVision_Drivers_Console_TConsoleDriver__ctor_System_Int32_System_Int32_
+  commentId: M:TuiVision.Drivers.Console.TConsoleDriver.#ctor(System.Int32,System.Int32)
+  name.vb: New(Integer, Integer)
+  fullName: TuiVision.Drivers.Console.TConsoleDriver.TConsoleDriver(int, int)
+  fullName.vb: TuiVision.Drivers.Console.TConsoleDriver.New(Integer, Integer)
+  nameWithType: TConsoleDriver.TConsoleDriver(int, int)
+  nameWithType.vb: TConsoleDriver.New(Integer, Integer)
+- uid: TuiVision.Drivers.Console.TConsoleDriver.#ctor*
+  name: TConsoleDriver
+  href: api/TuiVision.Drivers.Console.TConsoleDriver.html#TuiVision_Drivers_Console_TConsoleDriver__ctor_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleDriver.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Drivers.Console.TConsoleDriver.TConsoleDriver
+  fullName.vb: TuiVision.Drivers.Console.TConsoleDriver.New
+  nameWithType: TConsoleDriver.TConsoleDriver
+  nameWithType.vb: TConsoleDriver.New
+- uid: TuiVision.Drivers.Console.TConsoleDriver.BackBuffer
+  name: BackBuffer
+  href: api/TuiVision.Drivers.Console.TConsoleDriver.html#TuiVision_Drivers_Console_TConsoleDriver_BackBuffer
+  commentId: P:TuiVision.Drivers.Console.TConsoleDriver.BackBuffer
+  fullName: TuiVision.Drivers.Console.TConsoleDriver.BackBuffer
+  nameWithType: TConsoleDriver.BackBuffer
+- uid: TuiVision.Drivers.Console.TConsoleDriver.BackBuffer*
+  name: BackBuffer
+  href: api/TuiVision.Drivers.Console.TConsoleDriver.html#TuiVision_Drivers_Console_TConsoleDriver_BackBuffer_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleDriver.BackBuffer
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.TConsoleDriver.BackBuffer
+  nameWithType: TConsoleDriver.BackBuffer
+- uid: TuiVision.Drivers.Console.TConsoleDriver.Present(TuiVision.Drivers.Console.IConsolePresenter)
+  name: Present(IConsolePresenter)
+  href: api/TuiVision.Drivers.Console.TConsoleDriver.html#TuiVision_Drivers_Console_TConsoleDriver_Present_TuiVision_Drivers_Console_IConsolePresenter_
+  commentId: M:TuiVision.Drivers.Console.TConsoleDriver.Present(TuiVision.Drivers.Console.IConsolePresenter)
+  fullName: TuiVision.Drivers.Console.TConsoleDriver.Present(TuiVision.Drivers.Console.IConsolePresenter)
+  nameWithType: TConsoleDriver.Present(IConsolePresenter)
+- uid: TuiVision.Drivers.Console.TConsoleDriver.Present*
+  name: Present
+  href: api/TuiVision.Drivers.Console.TConsoleDriver.html#TuiVision_Drivers_Console_TConsoleDriver_Present_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleDriver.Present
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.TConsoleDriver.Present
+  nameWithType: TConsoleDriver.Present
+- uid: TuiVision.Drivers.Console.TConsoleDriver.Resize(System.Int32,System.Int32)
+  name: Resize(int, int)
+  href: api/TuiVision.Drivers.Console.TConsoleDriver.html#TuiVision_Drivers_Console_TConsoleDriver_Resize_System_Int32_System_Int32_
+  commentId: M:TuiVision.Drivers.Console.TConsoleDriver.Resize(System.Int32,System.Int32)
+  name.vb: Resize(Integer, Integer)
+  fullName: TuiVision.Drivers.Console.TConsoleDriver.Resize(int, int)
+  fullName.vb: TuiVision.Drivers.Console.TConsoleDriver.Resize(Integer, Integer)
+  nameWithType: TConsoleDriver.Resize(int, int)
+  nameWithType.vb: TConsoleDriver.Resize(Integer, Integer)
+- uid: TuiVision.Drivers.Console.TConsoleDriver.Resize*
+  name: Resize
+  href: api/TuiVision.Drivers.Console.TConsoleDriver.html#TuiVision_Drivers_Console_TConsoleDriver_Resize_
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleDriver.Resize
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.TConsoleDriver.Resize
+  nameWithType: TConsoleDriver.Resize
+- uid: TuiVision.Serialization
+  name: TuiVision.Serialization
+  href: api/TuiVision.Serialization.html
+  commentId: N:TuiVision.Serialization
+  fullName: TuiVision.Serialization
+  nameWithType: TuiVision.Serialization
+- uid: TuiVision.Serialization.ITStreamSerializable
+  name: ITStreamSerializable
+  href: api/TuiVision.Serialization.ITStreamSerializable.html
+  commentId: T:TuiVision.Serialization.ITStreamSerializable
+  fullName: TuiVision.Serialization.ITStreamSerializable
+  nameWithType: ITStreamSerializable
+- uid: TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  name: SaveTo(TBinaryArchiveWriter)
+  href: api/TuiVision.Serialization.ITStreamSerializable.html#TuiVision_Serialization_ITStreamSerializable_SaveTo_TuiVision_Serialization_TBinaryArchiveWriter_
+  commentId: M:TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  fullName: TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  nameWithType: ITStreamSerializable.SaveTo(TBinaryArchiveWriter)
+- uid: TuiVision.Serialization.ITStreamSerializable.SaveTo*
+  name: SaveTo
+  href: api/TuiVision.Serialization.ITStreamSerializable.html#TuiVision_Serialization_ITStreamSerializable_SaveTo_
+  commentId: Overload:TuiVision.Serialization.ITStreamSerializable.SaveTo
+  isSpec: "True"
+  fullName: TuiVision.Serialization.ITStreamSerializable.SaveTo
+  nameWithType: ITStreamSerializable.SaveTo
+- uid: TuiVision.Serialization.TBinaryArchiveReader
+  name: TBinaryArchiveReader
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html
+  commentId: T:TuiVision.Serialization.TBinaryArchiveReader
+  fullName: TuiVision.Serialization.TBinaryArchiveReader
+  nameWithType: TBinaryArchiveReader
+- uid: TuiVision.Serialization.TBinaryArchiveReader.#ctor(System.IO.Stream,System.Boolean)
+  name: TBinaryArchiveReader(Stream, bool)
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader__ctor_System_IO_Stream_System_Boolean_
+  commentId: M:TuiVision.Serialization.TBinaryArchiveReader.#ctor(System.IO.Stream,System.Boolean)
+  name.vb: New(Stream, Boolean)
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.TBinaryArchiveReader(System.IO.Stream, bool)
+  fullName.vb: TuiVision.Serialization.TBinaryArchiveReader.New(System.IO.Stream, Boolean)
+  nameWithType: TBinaryArchiveReader.TBinaryArchiveReader(Stream, bool)
+  nameWithType.vb: TBinaryArchiveReader.New(Stream, Boolean)
+- uid: TuiVision.Serialization.TBinaryArchiveReader.#ctor*
+  name: TBinaryArchiveReader
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader__ctor_
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveReader.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.TBinaryArchiveReader
+  fullName.vb: TuiVision.Serialization.TBinaryArchiveReader.New
+  nameWithType: TBinaryArchiveReader.TBinaryArchiveReader
+  nameWithType.vb: TBinaryArchiveReader.New
+- uid: TuiVision.Serialization.TBinaryArchiveReader.Dispose
+  name: Dispose()
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_Dispose
+  commentId: M:TuiVision.Serialization.TBinaryArchiveReader.Dispose
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.Dispose()
+  nameWithType: TBinaryArchiveReader.Dispose()
+- uid: TuiVision.Serialization.TBinaryArchiveReader.Dispose*
+  name: Dispose
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_Dispose_
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveReader.Dispose
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.Dispose
+  nameWithType: TBinaryArchiveReader.Dispose
+- uid: TuiVision.Serialization.TBinaryArchiveReader.EnsureFullyConsumed
+  name: EnsureFullyConsumed()
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_EnsureFullyConsumed
+  commentId: M:TuiVision.Serialization.TBinaryArchiveReader.EnsureFullyConsumed
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.EnsureFullyConsumed()
+  nameWithType: TBinaryArchiveReader.EnsureFullyConsumed()
+- uid: TuiVision.Serialization.TBinaryArchiveReader.EnsureFullyConsumed*
+  name: EnsureFullyConsumed
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_EnsureFullyConsumed_
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveReader.EnsureFullyConsumed
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.EnsureFullyConsumed
+  nameWithType: TBinaryArchiveReader.EnsureFullyConsumed
+- uid: TuiVision.Serialization.TBinaryArchiveReader.ReadBoolean
+  name: ReadBoolean()
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_ReadBoolean
+  commentId: M:TuiVision.Serialization.TBinaryArchiveReader.ReadBoolean
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.ReadBoolean()
+  nameWithType: TBinaryArchiveReader.ReadBoolean()
+- uid: TuiVision.Serialization.TBinaryArchiveReader.ReadBoolean*
+  name: ReadBoolean
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_ReadBoolean_
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveReader.ReadBoolean
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.ReadBoolean
+  nameWithType: TBinaryArchiveReader.ReadBoolean
+- uid: TuiVision.Serialization.TBinaryArchiveReader.ReadBytes(System.Int32)
+  name: ReadBytes(int)
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_ReadBytes_System_Int32_
+  commentId: M:TuiVision.Serialization.TBinaryArchiveReader.ReadBytes(System.Int32)
+  name.vb: ReadBytes(Integer)
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.ReadBytes(int)
+  fullName.vb: TuiVision.Serialization.TBinaryArchiveReader.ReadBytes(Integer)
+  nameWithType: TBinaryArchiveReader.ReadBytes(int)
+  nameWithType.vb: TBinaryArchiveReader.ReadBytes(Integer)
+- uid: TuiVision.Serialization.TBinaryArchiveReader.ReadBytes*
+  name: ReadBytes
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_ReadBytes_
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveReader.ReadBytes
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.ReadBytes
+  nameWithType: TBinaryArchiveReader.ReadBytes
+- uid: TuiVision.Serialization.TBinaryArchiveReader.ReadInt32
+  name: ReadInt32()
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_ReadInt32
+  commentId: M:TuiVision.Serialization.TBinaryArchiveReader.ReadInt32
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.ReadInt32()
+  nameWithType: TBinaryArchiveReader.ReadInt32()
+- uid: TuiVision.Serialization.TBinaryArchiveReader.ReadInt32*
+  name: ReadInt32
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_ReadInt32_
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveReader.ReadInt32
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.ReadInt32
+  nameWithType: TBinaryArchiveReader.ReadInt32
+- uid: TuiVision.Serialization.TBinaryArchiveReader.ReadString
+  name: ReadString()
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_ReadString
+  commentId: M:TuiVision.Serialization.TBinaryArchiveReader.ReadString
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.ReadString()
+  nameWithType: TBinaryArchiveReader.ReadString()
+- uid: TuiVision.Serialization.TBinaryArchiveReader.ReadString*
+  name: ReadString
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_ReadString_
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveReader.ReadString
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.ReadString
+  nameWithType: TBinaryArchiveReader.ReadString
+- uid: TuiVision.Serialization.TBinaryArchiveReader.ReadUInt16
+  name: ReadUInt16()
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_ReadUInt16
+  commentId: M:TuiVision.Serialization.TBinaryArchiveReader.ReadUInt16
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.ReadUInt16()
+  nameWithType: TBinaryArchiveReader.ReadUInt16()
+- uid: TuiVision.Serialization.TBinaryArchiveReader.ReadUInt16*
+  name: ReadUInt16
+  href: api/TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_ReadUInt16_
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveReader.ReadUInt16
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.ReadUInt16
+  nameWithType: TBinaryArchiveReader.ReadUInt16
+- uid: TuiVision.Serialization.TBinaryArchiveWriter
+  name: TBinaryArchiveWriter
+  href: api/TuiVision.Serialization.TBinaryArchiveWriter.html
+  commentId: T:TuiVision.Serialization.TBinaryArchiveWriter
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter
+  nameWithType: TBinaryArchiveWriter
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.#ctor(System.IO.Stream,System.Boolean)
+  name: TBinaryArchiveWriter(Stream, bool)
+  href: api/TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter__ctor_System_IO_Stream_System_Boolean_
+  commentId: M:TuiVision.Serialization.TBinaryArchiveWriter.#ctor(System.IO.Stream,System.Boolean)
+  name.vb: New(Stream, Boolean)
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.TBinaryArchiveWriter(System.IO.Stream, bool)
+  fullName.vb: TuiVision.Serialization.TBinaryArchiveWriter.New(System.IO.Stream, Boolean)
+  nameWithType: TBinaryArchiveWriter.TBinaryArchiveWriter(Stream, bool)
+  nameWithType.vb: TBinaryArchiveWriter.New(Stream, Boolean)
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.#ctor*
+  name: TBinaryArchiveWriter
+  href: api/TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter__ctor_
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveWriter.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.TBinaryArchiveWriter
+  fullName.vb: TuiVision.Serialization.TBinaryArchiveWriter.New
+  nameWithType: TBinaryArchiveWriter.TBinaryArchiveWriter
+  nameWithType.vb: TBinaryArchiveWriter.New
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.Dispose
+  name: Dispose()
+  href: api/TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter_Dispose
+  commentId: M:TuiVision.Serialization.TBinaryArchiveWriter.Dispose
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.Dispose()
+  nameWithType: TBinaryArchiveWriter.Dispose()
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.Dispose*
+  name: Dispose
+  href: api/TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter_Dispose_
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveWriter.Dispose
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.Dispose
+  nameWithType: TBinaryArchiveWriter.Dispose
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteBoolean(System.Boolean)
+  name: WriteBoolean(bool)
+  href: api/TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter_WriteBoolean_System_Boolean_
+  commentId: M:TuiVision.Serialization.TBinaryArchiveWriter.WriteBoolean(System.Boolean)
+  name.vb: WriteBoolean(Boolean)
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.WriteBoolean(bool)
+  fullName.vb: TuiVision.Serialization.TBinaryArchiveWriter.WriteBoolean(Boolean)
+  nameWithType: TBinaryArchiveWriter.WriteBoolean(bool)
+  nameWithType.vb: TBinaryArchiveWriter.WriteBoolean(Boolean)
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteBoolean*
+  name: WriteBoolean
+  href: api/TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter_WriteBoolean_
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveWriter.WriteBoolean
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.WriteBoolean
+  nameWithType: TBinaryArchiveWriter.WriteBoolean
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteBytes(System.ReadOnlySpan{System.Byte})
+  name: WriteBytes(ReadOnlySpan<byte>)
+  href: api/TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter_WriteBytes_System_ReadOnlySpan_System_Byte__
+  commentId: M:TuiVision.Serialization.TBinaryArchiveWriter.WriteBytes(System.ReadOnlySpan{System.Byte})
+  name.vb: WriteBytes(ReadOnlySpan(Of Byte))
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.WriteBytes(System.ReadOnlySpan<byte>)
+  fullName.vb: TuiVision.Serialization.TBinaryArchiveWriter.WriteBytes(System.ReadOnlySpan(Of Byte))
+  nameWithType: TBinaryArchiveWriter.WriteBytes(ReadOnlySpan<byte>)
+  nameWithType.vb: TBinaryArchiveWriter.WriteBytes(ReadOnlySpan(Of Byte))
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteBytes*
+  name: WriteBytes
+  href: api/TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter_WriteBytes_
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveWriter.WriteBytes
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.WriteBytes
+  nameWithType: TBinaryArchiveWriter.WriteBytes
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteInt32(System.Int32)
+  name: WriteInt32(int)
+  href: api/TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter_WriteInt32_System_Int32_
+  commentId: M:TuiVision.Serialization.TBinaryArchiveWriter.WriteInt32(System.Int32)
+  name.vb: WriteInt32(Integer)
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.WriteInt32(int)
+  fullName.vb: TuiVision.Serialization.TBinaryArchiveWriter.WriteInt32(Integer)
+  nameWithType: TBinaryArchiveWriter.WriteInt32(int)
+  nameWithType.vb: TBinaryArchiveWriter.WriteInt32(Integer)
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteInt32*
+  name: WriteInt32
+  href: api/TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter_WriteInt32_
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveWriter.WriteInt32
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.WriteInt32
+  nameWithType: TBinaryArchiveWriter.WriteInt32
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteString(System.String)
+  name: WriteString(string)
+  href: api/TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter_WriteString_System_String_
+  commentId: M:TuiVision.Serialization.TBinaryArchiveWriter.WriteString(System.String)
+  name.vb: WriteString(String)
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.WriteString(string)
+  fullName.vb: TuiVision.Serialization.TBinaryArchiveWriter.WriteString(String)
+  nameWithType: TBinaryArchiveWriter.WriteString(string)
+  nameWithType.vb: TBinaryArchiveWriter.WriteString(String)
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteString*
+  name: WriteString
+  href: api/TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter_WriteString_
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveWriter.WriteString
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.WriteString
+  nameWithType: TBinaryArchiveWriter.WriteString
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteUInt16(System.UInt16)
+  name: WriteUInt16(ushort)
+  href: api/TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter_WriteUInt16_System_UInt16_
+  commentId: M:TuiVision.Serialization.TBinaryArchiveWriter.WriteUInt16(System.UInt16)
+  name.vb: WriteUInt16(UShort)
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.WriteUInt16(ushort)
+  fullName.vb: TuiVision.Serialization.TBinaryArchiveWriter.WriteUInt16(UShort)
+  nameWithType: TBinaryArchiveWriter.WriteUInt16(ushort)
+  nameWithType.vb: TBinaryArchiveWriter.WriteUInt16(UShort)
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteUInt16*
+  name: WriteUInt16
+  href: api/TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter_WriteUInt16_
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveWriter.WriteUInt16
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.WriteUInt16
+  nameWithType: TBinaryArchiveWriter.WriteUInt16
+- uid: TuiVision.Serialization.TRecordRegistry
+  name: TRecordRegistry
+  href: api/TuiVision.Serialization.TRecordRegistry.html
+  commentId: T:TuiVision.Serialization.TRecordRegistry
+  fullName: TuiVision.Serialization.TRecordRegistry
+  nameWithType: TRecordRegistry
+- uid: TuiVision.Serialization.TRecordRegistry.Create(System.String,TuiVision.Serialization.TBinaryArchiveReader)
+  name: Create(string, TBinaryArchiveReader)
+  href: api/TuiVision.Serialization.TRecordRegistry.html#TuiVision_Serialization_TRecordRegistry_Create_System_String_TuiVision_Serialization_TBinaryArchiveReader_
+  commentId: M:TuiVision.Serialization.TRecordRegistry.Create(System.String,TuiVision.Serialization.TBinaryArchiveReader)
+  name.vb: Create(String, TBinaryArchiveReader)
+  fullName: TuiVision.Serialization.TRecordRegistry.Create(string, TuiVision.Serialization.TBinaryArchiveReader)
+  fullName.vb: TuiVision.Serialization.TRecordRegistry.Create(String, TuiVision.Serialization.TBinaryArchiveReader)
+  nameWithType: TRecordRegistry.Create(string, TBinaryArchiveReader)
+  nameWithType.vb: TRecordRegistry.Create(String, TBinaryArchiveReader)
+- uid: TuiVision.Serialization.TRecordRegistry.Create*
+  name: Create
+  href: api/TuiVision.Serialization.TRecordRegistry.html#TuiVision_Serialization_TRecordRegistry_Create_
+  commentId: Overload:TuiVision.Serialization.TRecordRegistry.Create
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TRecordRegistry.Create
+  nameWithType: TRecordRegistry.Create
+- uid: TuiVision.Serialization.TRecordRegistry.Register*
+  name: Register
+  href: api/TuiVision.Serialization.TRecordRegistry.html#TuiVision_Serialization_TRecordRegistry_Register_
+  commentId: Overload:TuiVision.Serialization.TRecordRegistry.Register
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TRecordRegistry.Register
+  nameWithType: TRecordRegistry.Register
+- uid: TuiVision.Serialization.TRecordRegistry.Register``1(System.String,System.Func{TuiVision.Serialization.TBinaryArchiveReader,``0})
+  name: Register<T>(string, Func<TBinaryArchiveReader, T>)
+  href: api/TuiVision.Serialization.TRecordRegistry.html#TuiVision_Serialization_TRecordRegistry_Register__1_System_String_System_Func_TuiVision_Serialization_TBinaryArchiveReader___0__
+  commentId: M:TuiVision.Serialization.TRecordRegistry.Register``1(System.String,System.Func{TuiVision.Serialization.TBinaryArchiveReader,``0})
+  name.vb: Register(Of T)(String, Func(Of TBinaryArchiveReader, T))
+  fullName: TuiVision.Serialization.TRecordRegistry.Register<T>(string, System.Func<TuiVision.Serialization.TBinaryArchiveReader, T>)
+  fullName.vb: TuiVision.Serialization.TRecordRegistry.Register(Of T)(String, System.Func(Of TuiVision.Serialization.TBinaryArchiveReader, T))
+  nameWithType: TRecordRegistry.Register<T>(string, Func<TBinaryArchiveReader, T>)
+  nameWithType.vb: TRecordRegistry.Register(Of T)(String, Func(Of TBinaryArchiveReader, T))
+- uid: TuiVision.Serialization.TRecordSerializer
+  name: TRecordSerializer
+  href: api/TuiVision.Serialization.TRecordSerializer.html
+  commentId: T:TuiVision.Serialization.TRecordSerializer
+  fullName: TuiVision.Serialization.TRecordSerializer
+  nameWithType: TRecordSerializer
+- uid: TuiVision.Serialization.TRecordSerializer.#ctor(TuiVision.Serialization.TRecordRegistry)
+  name: TRecordSerializer(TRecordRegistry)
+  href: api/TuiVision.Serialization.TRecordSerializer.html#TuiVision_Serialization_TRecordSerializer__ctor_TuiVision_Serialization_TRecordRegistry_
+  commentId: M:TuiVision.Serialization.TRecordSerializer.#ctor(TuiVision.Serialization.TRecordRegistry)
+  name.vb: New(TRecordRegistry)
+  fullName: TuiVision.Serialization.TRecordSerializer.TRecordSerializer(TuiVision.Serialization.TRecordRegistry)
+  fullName.vb: TuiVision.Serialization.TRecordSerializer.New(TuiVision.Serialization.TRecordRegistry)
+  nameWithType: TRecordSerializer.TRecordSerializer(TRecordRegistry)
+  nameWithType.vb: TRecordSerializer.New(TRecordRegistry)
+- uid: TuiVision.Serialization.TRecordSerializer.#ctor*
+  name: TRecordSerializer
+  href: api/TuiVision.Serialization.TRecordSerializer.html#TuiVision_Serialization_TRecordSerializer__ctor_
+  commentId: Overload:TuiVision.Serialization.TRecordSerializer.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Serialization.TRecordSerializer.TRecordSerializer
+  fullName.vb: TuiVision.Serialization.TRecordSerializer.New
+  nameWithType: TRecordSerializer.TRecordSerializer
+  nameWithType.vb: TRecordSerializer.New
+- uid: TuiVision.Serialization.TRecordSerializer.Deserialize(System.ReadOnlySpan{System.Byte})
+  name: Deserialize(ReadOnlySpan<byte>)
+  href: api/TuiVision.Serialization.TRecordSerializer.html#TuiVision_Serialization_TRecordSerializer_Deserialize_System_ReadOnlySpan_System_Byte__
+  commentId: M:TuiVision.Serialization.TRecordSerializer.Deserialize(System.ReadOnlySpan{System.Byte})
+  name.vb: Deserialize(ReadOnlySpan(Of Byte))
+  fullName: TuiVision.Serialization.TRecordSerializer.Deserialize(System.ReadOnlySpan<byte>)
+  fullName.vb: TuiVision.Serialization.TRecordSerializer.Deserialize(System.ReadOnlySpan(Of Byte))
+  nameWithType: TRecordSerializer.Deserialize(ReadOnlySpan<byte>)
+  nameWithType.vb: TRecordSerializer.Deserialize(ReadOnlySpan(Of Byte))
+- uid: TuiVision.Serialization.TRecordSerializer.Deserialize*
+  name: Deserialize
+  href: api/TuiVision.Serialization.TRecordSerializer.html#TuiVision_Serialization_TRecordSerializer_Deserialize_
+  commentId: Overload:TuiVision.Serialization.TRecordSerializer.Deserialize
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TRecordSerializer.Deserialize
+  nameWithType: TRecordSerializer.Deserialize
+- uid: TuiVision.Serialization.TRecordSerializer.Deserialize``1(System.ReadOnlySpan{System.Byte})
+  name: Deserialize<T>(ReadOnlySpan<byte>)
+  href: api/TuiVision.Serialization.TRecordSerializer.html#TuiVision_Serialization_TRecordSerializer_Deserialize__1_System_ReadOnlySpan_System_Byte__
+  commentId: M:TuiVision.Serialization.TRecordSerializer.Deserialize``1(System.ReadOnlySpan{System.Byte})
+  name.vb: Deserialize(Of T)(ReadOnlySpan(Of Byte))
+  fullName: TuiVision.Serialization.TRecordSerializer.Deserialize<T>(System.ReadOnlySpan<byte>)
+  fullName.vb: TuiVision.Serialization.TRecordSerializer.Deserialize(Of T)(System.ReadOnlySpan(Of Byte))
+  nameWithType: TRecordSerializer.Deserialize<T>(ReadOnlySpan<byte>)
+  nameWithType.vb: TRecordSerializer.Deserialize(Of T)(ReadOnlySpan(Of Byte))
+- uid: TuiVision.Serialization.TRecordSerializer.Serialize(System.String,TuiVision.Serialization.ITStreamSerializable)
+  name: Serialize(string, ITStreamSerializable)
+  href: api/TuiVision.Serialization.TRecordSerializer.html#TuiVision_Serialization_TRecordSerializer_Serialize_System_String_TuiVision_Serialization_ITStreamSerializable_
+  commentId: M:TuiVision.Serialization.TRecordSerializer.Serialize(System.String,TuiVision.Serialization.ITStreamSerializable)
+  name.vb: Serialize(String, ITStreamSerializable)
+  fullName: TuiVision.Serialization.TRecordSerializer.Serialize(string, TuiVision.Serialization.ITStreamSerializable)
+  fullName.vb: TuiVision.Serialization.TRecordSerializer.Serialize(String, TuiVision.Serialization.ITStreamSerializable)
+  nameWithType: TRecordSerializer.Serialize(string, ITStreamSerializable)
+  nameWithType.vb: TRecordSerializer.Serialize(String, ITStreamSerializable)
+- uid: TuiVision.Serialization.TRecordSerializer.Serialize*
+  name: Serialize
+  href: api/TuiVision.Serialization.TRecordSerializer.html#TuiVision_Serialization_TRecordSerializer_Serialize_
+  commentId: Overload:TuiVision.Serialization.TRecordSerializer.Serialize
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TRecordSerializer.Serialize
+  nameWithType: TRecordSerializer.Serialize

@@ -1,0 +1,61 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  id: TuiVision.Controls
+  children:
+  - TuiVision.Controls.TView
+  - TuiVision.Controls.TViewOptions
+  - TuiVision.Controls.TViewState
+  langs:
+  - csharp
+  - vb
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  type: Namespace
+  assemblies:
+  - TuiVision.Controls
+references:
+- uid: TuiVision.Controls.TViewState
+  commentId: T:TuiVision.Controls.TViewState
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TViewState.html
+  name: TViewState
+  nameWithType: TViewState
+  fullName: TuiVision.Controls.TViewState
+- uid: TuiVision.Controls.TViewOptions
+  commentId: T:TuiVision.Controls.TViewOptions
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TViewOptions.html
+  name: TViewOptions
+  nameWithType: TViewOptions
+  fullName: TuiVision.Controls.TViewOptions
+- uid: TuiVision.Controls.TView
+  commentId: T:TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html
+  name: TView
+  nameWithType: TView
+  fullName: TuiVision.Controls.TView
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html

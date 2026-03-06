@@ -1,0 +1,110 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Drivers.Console.IConsolePresenter
+  commentId: T:TuiVision.Drivers.Console.IConsolePresenter
+  id: IConsolePresenter
+  parent: TuiVision.Drivers.Console
+  children:
+  - TuiVision.Drivers.Console.IConsolePresenter.Present(TuiVision.Drivers.Console.TConsoleBuffer)
+  langs:
+  - csharp
+  - vb
+  name: IConsolePresenter
+  nameWithType: IConsolePresenter
+  fullName: TuiVision.Drivers.Console.IConsolePresenter
+  type: Interface
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: IConsolePresenter
+    path: src/TuiVision.Drivers.Console/Class1.cs
+    startLine: 13
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  summary: Receives a rendered frame from <xref href="TuiVision.Drivers.Console.TConsoleDriver" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public interface IConsolePresenter
+    content.vb: Public Interface IConsolePresenter
+- uid: TuiVision.Drivers.Console.IConsolePresenter.Present(TuiVision.Drivers.Console.TConsoleBuffer)
+  commentId: M:TuiVision.Drivers.Console.IConsolePresenter.Present(TuiVision.Drivers.Console.TConsoleBuffer)
+  id: Present(TuiVision.Drivers.Console.TConsoleBuffer)
+  parent: TuiVision.Drivers.Console.IConsolePresenter
+  langs:
+  - csharp
+  - vb
+  name: Present(TConsoleBuffer)
+  nameWithType: IConsolePresenter.Present(TConsoleBuffer)
+  fullName: TuiVision.Drivers.Console.IConsolePresenter.Present(TuiVision.Drivers.Console.TConsoleBuffer)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Present
+    path: src/TuiVision.Drivers.Console/Class1.cs
+    startLine: 15
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  syntax:
+    content: void Present(TConsoleBuffer frame)
+    parameters:
+    - id: frame
+      type: TuiVision.Drivers.Console.TConsoleBuffer
+    content.vb: Sub Present(frame As TConsoleBuffer)
+  overload: TuiVision.Drivers.Console.IConsolePresenter.Present*
+references:
+- uid: TuiVision.Drivers.Console.TConsoleDriver
+  commentId: T:TuiVision.Drivers.Console.TConsoleDriver
+  href: TuiVision.Drivers.Console.TConsoleDriver.html
+  name: TConsoleDriver
+  nameWithType: TConsoleDriver
+  fullName: TuiVision.Drivers.Console.TConsoleDriver
+- uid: TuiVision.Drivers.Console
+  commentId: N:TuiVision.Drivers.Console
+  href: TuiVision.html
+  name: TuiVision.Drivers.Console
+  nameWithType: TuiVision.Drivers.Console
+  fullName: TuiVision.Drivers.Console
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Drivers
+    name: Drivers
+    href: TuiVision.Drivers.html
+  - name: .
+  - uid: TuiVision.Drivers.Console
+    name: Console
+    href: TuiVision.Drivers.Console.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Drivers
+    name: Drivers
+    href: TuiVision.Drivers.html
+  - name: .
+  - uid: TuiVision.Drivers.Console
+    name: Console
+    href: TuiVision.Drivers.Console.html
+- uid: TuiVision.Drivers.Console.IConsolePresenter.Present*
+  commentId: Overload:TuiVision.Drivers.Console.IConsolePresenter.Present
+  href: TuiVision.Drivers.Console.IConsolePresenter.html#TuiVision_Drivers_Console_IConsolePresenter_Present_TuiVision_Drivers_Console_TConsoleBuffer_
+  name: Present
+  nameWithType: IConsolePresenter.Present
+  fullName: TuiVision.Drivers.Console.IConsolePresenter.Present
+- uid: TuiVision.Drivers.Console.TConsoleBuffer
+  commentId: T:TuiVision.Drivers.Console.TConsoleBuffer
+  parent: TuiVision.Drivers.Console
+  href: TuiVision.Drivers.Console.TConsoleBuffer.html
+  name: TConsoleBuffer
+  nameWithType: TConsoleBuffer
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer

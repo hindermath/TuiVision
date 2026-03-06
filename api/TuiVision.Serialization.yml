@@ -1,0 +1,77 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Serialization
+  commentId: N:TuiVision.Serialization
+  id: TuiVision.Serialization
+  children:
+  - TuiVision.Serialization.ITStreamSerializable
+  - TuiVision.Serialization.TBinaryArchiveReader
+  - TuiVision.Serialization.TBinaryArchiveWriter
+  - TuiVision.Serialization.TRecordRegistry
+  - TuiVision.Serialization.TRecordSerializer
+  langs:
+  - csharp
+  - vb
+  name: TuiVision.Serialization
+  nameWithType: TuiVision.Serialization
+  fullName: TuiVision.Serialization
+  type: Namespace
+  assemblies:
+  - TuiVision.Serialization
+references:
+- uid: TuiVision.Serialization.ITStreamSerializable
+  commentId: T:TuiVision.Serialization.ITStreamSerializable
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.ITStreamSerializable.html
+  name: ITStreamSerializable
+  nameWithType: ITStreamSerializable
+  fullName: TuiVision.Serialization.ITStreamSerializable
+- uid: TuiVision.Serialization.TBinaryArchiveWriter
+  commentId: T:TuiVision.Serialization.TBinaryArchiveWriter
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TBinaryArchiveWriter.html
+  name: TBinaryArchiveWriter
+  nameWithType: TBinaryArchiveWriter
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter
+- uid: TuiVision.Serialization.TBinaryArchiveReader
+  commentId: T:TuiVision.Serialization.TBinaryArchiveReader
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TBinaryArchiveReader.html
+  name: TBinaryArchiveReader
+  nameWithType: TBinaryArchiveReader
+  fullName: TuiVision.Serialization.TBinaryArchiveReader
+- uid: TuiVision.Serialization.TRecordRegistry
+  commentId: T:TuiVision.Serialization.TRecordRegistry
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TRecordRegistry.html
+  name: TRecordRegistry
+  nameWithType: TRecordRegistry
+  fullName: TuiVision.Serialization.TRecordRegistry
+- uid: TuiVision.Serialization.TRecordSerializer
+  commentId: T:TuiVision.Serialization.TRecordSerializer
+  href: TuiVision.Serialization.TRecordSerializer.html
+  name: TRecordSerializer
+  nameWithType: TRecordSerializer
+  fullName: TuiVision.Serialization.TRecordSerializer
+- uid: TuiVision.Serialization
+  commentId: N:TuiVision.Serialization
+  href: TuiVision.html
+  name: TuiVision.Serialization
+  nameWithType: TuiVision.Serialization
+  fullName: TuiVision.Serialization
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Serialization
+    name: Serialization
+    href: TuiVision.Serialization.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Serialization
+    name: Serialization
+    href: TuiVision.Serialization.html

@@ -1,0 +1,465 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Drivers.Console.TConsoleDriver
+  commentId: T:TuiVision.Drivers.Console.TConsoleDriver
+  id: TConsoleDriver
+  parent: TuiVision.Drivers.Console
+  children:
+  - TuiVision.Drivers.Console.TConsoleDriver.#ctor(System.Int32,System.Int32)
+  - TuiVision.Drivers.Console.TConsoleDriver.BackBuffer
+  - TuiVision.Drivers.Console.TConsoleDriver.Present(TuiVision.Drivers.Console.IConsolePresenter)
+  - TuiVision.Drivers.Console.TConsoleDriver.Resize(System.Int32,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: TConsoleDriver
+  nameWithType: TConsoleDriver
+  fullName: TuiVision.Drivers.Console.TConsoleDriver
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TConsoleDriver
+    path: src/TuiVision.Drivers.Console/Class1.cs
+    startLine: 133
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  summary: Keeps the active back buffer and publishes immutable frame snapshots.
+  example: []
+  syntax:
+    content: public sealed class TConsoleDriver
+    content.vb: Public NotInheritable Class TConsoleDriver
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Drivers.Console.TConsoleDriver.#ctor(System.Int32,System.Int32)
+  commentId: M:TuiVision.Drivers.Console.TConsoleDriver.#ctor(System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32)'
+  parent: TuiVision.Drivers.Console.TConsoleDriver
+  langs:
+  - csharp
+  - vb
+  name: TConsoleDriver(int, int)
+  nameWithType: TConsoleDriver.TConsoleDriver(int, int)
+  fullName: TuiVision.Drivers.Console.TConsoleDriver.TConsoleDriver(int, int)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Drivers.Console/Class1.cs
+    startLine: 135
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  syntax:
+    content: public TConsoleDriver(int width, int height)
+    parameters:
+    - id: width
+      type: System.Int32
+    - id: height
+      type: System.Int32
+    content.vb: Public Sub New(width As Integer, height As Integer)
+  overload: TuiVision.Drivers.Console.TConsoleDriver.#ctor*
+  nameWithType.vb: TConsoleDriver.New(Integer, Integer)
+  fullName.vb: TuiVision.Drivers.Console.TConsoleDriver.New(Integer, Integer)
+  name.vb: New(Integer, Integer)
+- uid: TuiVision.Drivers.Console.TConsoleDriver.BackBuffer
+  commentId: P:TuiVision.Drivers.Console.TConsoleDriver.BackBuffer
+  id: BackBuffer
+  parent: TuiVision.Drivers.Console.TConsoleDriver
+  langs:
+  - csharp
+  - vb
+  name: BackBuffer
+  nameWithType: TConsoleDriver.BackBuffer
+  fullName: TuiVision.Drivers.Console.TConsoleDriver.BackBuffer
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: BackBuffer
+    path: src/TuiVision.Drivers.Console/Class1.cs
+    startLine: 140
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  syntax:
+    content: public TConsoleBuffer BackBuffer { get; }
+    parameters: []
+    return:
+      type: TuiVision.Drivers.Console.TConsoleBuffer
+    content.vb: Public Property BackBuffer As TConsoleBuffer
+  overload: TuiVision.Drivers.Console.TConsoleDriver.BackBuffer*
+- uid: TuiVision.Drivers.Console.TConsoleDriver.Resize(System.Int32,System.Int32)
+  commentId: M:TuiVision.Drivers.Console.TConsoleDriver.Resize(System.Int32,System.Int32)
+  id: Resize(System.Int32,System.Int32)
+  parent: TuiVision.Drivers.Console.TConsoleDriver
+  langs:
+  - csharp
+  - vb
+  name: Resize(int, int)
+  nameWithType: TConsoleDriver.Resize(int, int)
+  fullName: TuiVision.Drivers.Console.TConsoleDriver.Resize(int, int)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Resize
+    path: src/TuiVision.Drivers.Console/Class1.cs
+    startLine: 142
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  syntax:
+    content: public void Resize(int width, int height)
+    parameters:
+    - id: width
+      type: System.Int32
+    - id: height
+      type: System.Int32
+    content.vb: Public Sub Resize(width As Integer, height As Integer)
+  overload: TuiVision.Drivers.Console.TConsoleDriver.Resize*
+  nameWithType.vb: TConsoleDriver.Resize(Integer, Integer)
+  fullName.vb: TuiVision.Drivers.Console.TConsoleDriver.Resize(Integer, Integer)
+  name.vb: Resize(Integer, Integer)
+- uid: TuiVision.Drivers.Console.TConsoleDriver.Present(TuiVision.Drivers.Console.IConsolePresenter)
+  commentId: M:TuiVision.Drivers.Console.TConsoleDriver.Present(TuiVision.Drivers.Console.IConsolePresenter)
+  id: Present(TuiVision.Drivers.Console.IConsolePresenter)
+  parent: TuiVision.Drivers.Console.TConsoleDriver
+  langs:
+  - csharp
+  - vb
+  name: Present(IConsolePresenter)
+  nameWithType: TConsoleDriver.Present(IConsolePresenter)
+  fullName: TuiVision.Drivers.Console.TConsoleDriver.Present(TuiVision.Drivers.Console.IConsolePresenter)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/Class1.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Present
+    path: src/TuiVision.Drivers.Console/Class1.cs
+    startLine: 159
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  syntax:
+    content: public void Present(IConsolePresenter presenter)
+    parameters:
+    - id: presenter
+      type: TuiVision.Drivers.Console.IConsolePresenter
+    content.vb: Public Sub Present(presenter As IConsolePresenter)
+  overload: TuiVision.Drivers.Console.TConsoleDriver.Present*
+references:
+- uid: TuiVision.Drivers.Console
+  commentId: N:TuiVision.Drivers.Console
+  href: TuiVision.html
+  name: TuiVision.Drivers.Console
+  nameWithType: TuiVision.Drivers.Console
+  fullName: TuiVision.Drivers.Console
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Drivers
+    name: Drivers
+    href: TuiVision.Drivers.html
+  - name: .
+  - uid: TuiVision.Drivers.Console
+    name: Console
+    href: TuiVision.Drivers.Console.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Drivers
+    name: Drivers
+    href: TuiVision.Drivers.html
+  - name: .
+  - uid: TuiVision.Drivers.Console
+    name: Console
+    href: TuiVision.Drivers.Console.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Drivers.Console.TConsoleDriver.#ctor*
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleDriver.#ctor
+  href: TuiVision.Drivers.Console.TConsoleDriver.html#TuiVision_Drivers_Console_TConsoleDriver__ctor_System_Int32_System_Int32_
+  name: TConsoleDriver
+  nameWithType: TConsoleDriver.TConsoleDriver
+  fullName: TuiVision.Drivers.Console.TConsoleDriver.TConsoleDriver
+  nameWithType.vb: TConsoleDriver.New
+  fullName.vb: TuiVision.Drivers.Console.TConsoleDriver.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: TuiVision.Drivers.Console.TConsoleDriver.BackBuffer*
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleDriver.BackBuffer
+  href: TuiVision.Drivers.Console.TConsoleDriver.html#TuiVision_Drivers_Console_TConsoleDriver_BackBuffer
+  name: BackBuffer
+  nameWithType: TConsoleDriver.BackBuffer
+  fullName: TuiVision.Drivers.Console.TConsoleDriver.BackBuffer
+- uid: TuiVision.Drivers.Console.TConsoleBuffer
+  commentId: T:TuiVision.Drivers.Console.TConsoleBuffer
+  parent: TuiVision.Drivers.Console
+  href: TuiVision.Drivers.Console.TConsoleBuffer.html
+  name: TConsoleBuffer
+  nameWithType: TConsoleBuffer
+  fullName: TuiVision.Drivers.Console.TConsoleBuffer
+- uid: TuiVision.Drivers.Console.TConsoleDriver.Resize*
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleDriver.Resize
+  href: TuiVision.Drivers.Console.TConsoleDriver.html#TuiVision_Drivers_Console_TConsoleDriver_Resize_System_Int32_System_Int32_
+  name: Resize
+  nameWithType: TConsoleDriver.Resize
+  fullName: TuiVision.Drivers.Console.TConsoleDriver.Resize
+- uid: TuiVision.Drivers.Console.TConsoleDriver.Present*
+  commentId: Overload:TuiVision.Drivers.Console.TConsoleDriver.Present
+  href: TuiVision.Drivers.Console.TConsoleDriver.html#TuiVision_Drivers_Console_TConsoleDriver_Present_TuiVision_Drivers_Console_IConsolePresenter_
+  name: Present
+  nameWithType: TConsoleDriver.Present
+  fullName: TuiVision.Drivers.Console.TConsoleDriver.Present
+- uid: TuiVision.Drivers.Console.IConsolePresenter
+  commentId: T:TuiVision.Drivers.Console.IConsolePresenter
+  parent: TuiVision.Drivers.Console
+  href: TuiVision.Drivers.Console.IConsolePresenter.html
+  name: IConsolePresenter
+  nameWithType: IConsolePresenter
+  fullName: TuiVision.Drivers.Console.IConsolePresenter
