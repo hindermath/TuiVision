@@ -1,19 +1,18 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version change: 1.2.0 → 1.3.0
-  Bump rationale: MINOR — New "Code Style & Naming Conventions" section added to
-  Development Workflow, codifying test naming pattern (ClassName_MethodName_Behavior)
-  and C# type-choice rules (readonly record struct vs mutable struct) found in
-  copilot-instructions.md and AGENTS.md but previously absent from the constitution.
+  Version change: 1.3.0 → 1.3.1
+  Bump rationale: PATCH — Clarified principle III by adding an explicit B2
+  readability rationale and a documentation rule for local variables, which
+  cannot carry XML documentation in C#.
   Full project scan performed (AGENTS.md, GEMINI.md, CLAUDE.md,
   copilot-instructions.md, Pflichtenheft.md, README.md, all templates).
 
   Modified principles:
-    - None
+    - III. Didactic and Linguistic Clarity
 
   Added sections:
-    - "Code Style & Naming Conventions" under Development Workflow
+    - "B2 Readability Rationale" under principle III
 
   Removed sections:
     - None
@@ -114,6 +113,11 @@ Mandatory source documentation rules:
 - Non-public code elements MUST also use XML documentation (`<summary>` at
   minimum) so that IDE tooling and documentation generators can surface
   explanations at every level of the code.
+- Local variables cannot be documented with XML comments in C#. When their
+  purpose, invariant, or didactic role is not obvious from naming and nearby
+  code, they MUST be explained with a nearby block or line comment. These
+  comments MUST also be bilingual (German first, English second) at CEFR-B2
+  level.
 - In addition to XML documentation, block or line comments MAY be placed at
   didactically important locations to highlight key learning points, design
   decisions, or porting trade-offs. These additional comments MUST also be
@@ -122,6 +126,17 @@ Mandatory source documentation rules:
   (CS1591 MUST NOT be suppressed globally).
 - When API signatures or XML comments change, documentation output MUST be
   regenerated in the same commit/PR.
+
+B2 Readability Rationale:
+
+- CEFR-B1 may be sufficient for entering vocational training, but this project
+  sets B2 as the documentation baseline because trainees must understand
+  technical texts, write project documentation, follow exam-style tasks, and
+  communicate clearly in team and customer contexts.
+- The bilingual German-first/English-second structure is required because the
+  project is used by native and non-native German-speaking trainees who must be
+  able to understand the full source code and documentation without relying on
+  expert mediation.
 
 **Rationale**: The project is an educational modernization showcase and must be
 understandable for native and non-native German-speaking trainees with at least
@@ -323,4 +338,4 @@ Use `CLAUDE.md`, `GEMINI.md`, `copilot-instructions.md`, and `AGENTS.md` for
 runtime agent-specific development guidance.
 Use `docs/guides/multi-mac-workflow.md` for local multi-machine workflow details.
 
-**Version**: 1.3.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-16
+**Version**: 1.3.1 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-16
