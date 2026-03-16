@@ -17,8 +17,8 @@ TuiVision ist dabei ausdruecklich als **Beispielprojekt** zur Modernisierung mit
   - 105 Implementierungsdateien im Kernbereich `classes`
   - 9 plattformspezifische Treiberordner: `dos`, `linux`, `qnx4`, `qnxrtp`, `unix`, `win32`, `wingr`, `winnt`, `x11`
   - 25 Beispielprogramme in `examples`
-- Im aktuellen Arbeitsverzeichnis ist noch kein initialisiertes Git-Repository vorhanden.
-- Es sind noch keine C#-Quelldateien vorhanden.
+- Das Git-Repository ist initialisiert; grundlegende C#-Projektstruktur (`TuiVision.sln`, Kernmodule in `src/`) ist bereits vorhanden.
+- Portierung befindet sich in frueherer Phase; noch nicht alle Klassen und Beispiele sind portiert.
 
 ## 3. Zielprodukt
 Bereitgestellt wird ein **reines .NET-Core-Framework** (Managed Code), das die zentralen Turbo-Vision-Konzepte fuer Text-UI in C# abbildet:
@@ -54,20 +54,21 @@ Der Lieferumfang umfasst:
 | M-04 | Verwendung von C#/.NET 10 (.NET Core) | SDK-Target `net10.0` in allen Projekten | `dotnet build` laeuft ohne Target-Konflikte |
 | M-05 | Projektstruktur nach .NET-Best-Practices | Trennung in `src`, `tests`, `examples`, `docs` | Struktur ist konsistent, Build reproduzierbar |
 | M-06 | Portierung des Framework-Kerns aus `tv203s` | API- und Verhaltensport in C# | Definierte Kernmodule sind funktional und testbar |
-| M-07 | Unit-Tests fuer portierte Klassen/Methoden mit MSTest | Testprojekte pro Modul, CI-faehig | Tests laufen lokal und in CI stabil durch |
-| M-08 | API-Dokumentation mit docfx | docfx-Konfiguration, API-Generierung und erneute Doku-Erstellung bei API-/XML-Kommentar-Aenderungen | Doku erzeugbar, verlinkt alle Kern-Namespaces und ist nach API-/XML-Aenderungen aktualisiert |
-| M-09 | Portierung der vorhandenen Beispiele | Alle 25 Beispiele als .NET-Beispiele abbilden | Beispiele bauen; definierte Smoke-Tests bestehen |
-| M-10 | Qualitaetssicherung zusaetzlich zu Unit-Tests | Analyzer, Format- und Build-Gates | Qualitaets-Gates sind dokumentiert und aktiv |
-| M-11 | Keine nativen OS-Abhaengigkeiten | Keine P/Invoke-/Native-Library-Pflicht, keine OS-spezifischen Zusatzpakete | Build/Tests laufen mit .NET 10 Runtime ohne native Zusatzinstallation |
-| M-12 | Lizenz-Disclaimer fuer Beispielcharakter | Sichtbarer Hinweis in `LICENSE`/`README` | Hinweis beschreibt: Beispielprojekt, keine Konkurrenzabsicht, keine beabsichtigte Lizenzverletzung |
-| M-13 | CI/CD mit GitHub Actions | Build-/Test-Workflow unter `.github/workflows` | Automatischer Build und Testlauf pro Push/PR ist aktiv |
-| M-14 | Nutzerdokumentation | Leitfaeden, Einstieg und Nutzung unter `docs/guides` | Dokumentation ist vorhanden, nachvollziehbar und aktuell zum Stand der Portierung |
-| M-15 | Vollstaendige XML-Kommentierung der oeffentlichen API | Alle `public` Typen, Member, Parameter, Rueckgabewerte und Ausnahmen mit XML-Dokumentation | API ist durchgaengig und didaktisch ausfuehrlich kommentiert; docfx erzeugt daraus vollstaendige Referenzseiten |
-| M-16 | Einheitlicher didaktischer Dokumentationsstil | Alle Dokumentationsartefakte folgen einem verbindlichen Lehr-/Beispielstandard fuer Fachinformatiker (Anwendungsentwicklung) | Struktur, Detailtiefe und Beispiele sind ueber alle Dokuarten konsistent und nachvollziehbar |
-| M-17 | Ausfuehrliche Dokumentation der Beispielprogramme | Pro Beispielprogramm eigener Guide mit Lernziel, Voraussetzungen, Start, Bedienung, Architekturhinweisen und Uebungen | Alle portierten Beispiele sind didaktisch nachvollziehbar dokumentiert und reproduzierbar ausfuehrbar |
-| M-18 | Ausreichende Quellcode-Dokumentation im gesamten TuiVision-Code | Nicht-triviale Logik, Architekturentscheidungen und interne Zusammenhaenge werden im Code nachvollziehbar kommentiert | Der Quellcode erfuellt die pruefbaren Kriterien aus Abschnitt 10.5 und ist fuer Fachinformatiker (Anwendungsentwicklung) lern- und wartbar |
-| M-19 | Messbarer Mindest-Testumfang (MUSS-Tests) | Definierte Mindestabdeckung, Pflichttestfaelle und vollstaendige Smoke-Tests gemaess Abschnitt 9.4 | Die in Abschnitt 9.4 definierten Kennzahlen und Testumfaenge sind vollstaendig erreicht |
-| M-20 | Reproduzierbarer Multi-Mac-Entwicklungsworkflow | Build-, Test-, GitHub- und Codex-Arbeitsablaeufe sind fuer `MacBook Air M2` und `Mac mini M4 Pro` mit `gh` und `codex` dokumentiert | Die dokumentierten Schluesselablaeufe funktionieren auf beiden Systemen mit den dokumentierten Voraussetzungen und ggf. automatisierter Tool-Bereitstellung (z. B. DocFX als .NET-Tool) |
+| M-07 | Portierung der Implementierungsdateien aus `tv203s/contrib/tvision/classes` | Alle `.cc`-Dateien aus dem Ordner `tv203s/contrib/tvision/classes` (z. B. `tview.cc`, `tgroup.cc`, `tapplica.cc`, `teditor.cc` u. v. m.) dienen als direkte C/C++-Vorlage fuer M-06; jede Datei wird gemaess Modulmapping (Abschnitt 7.2) einem Zielmodul (`TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization` oder `TuiVision.Drivers.Console`) zugeordnet und portiert | Alle identifizierten `.cc`-Quelldateien aus `tv203s/contrib/tvision/classes` (einschliesslich der plattformspezifischen Unterordner fuer `TuiVision.Drivers.Console`) sind in den entsprechenden C#-Zielmodulen nachweisbar abgebildet und durch Unit-Tests abgesichert |
+| M-08 | Unit-Tests fuer portierte Klassen/Methoden mit MSTest | Testprojekte pro Modul, CI-faehig | Tests laufen lokal und in CI stabil durch |
+| M-09 | API-Dokumentation mit docfx | docfx-Konfiguration, API-Generierung und erneute Doku-Erstellung bei API-/XML-Kommentar-Aenderungen | Doku erzeugbar, verlinkt alle Kern-Namespaces und ist nach API-/XML-Aenderungen aktualisiert |
+| M-10 | Portierung der vorhandenen Beispiele | Alle 25 Beispiele als .NET-Beispiele abbilden | Beispiele bauen; definierte Smoke-Tests bestehen |
+| M-11 | Qualitaetssicherung zusaetzlich zu Unit-Tests | Analyzer, Format- und Build-Gates | Qualitaets-Gates sind dokumentiert und aktiv |
+| M-12 | Keine nativen OS-Abhaengigkeiten | Keine P/Invoke-/Native-Library-Pflicht, keine OS-spezifischen Zusatzpakete | Build/Tests laufen mit .NET 10 Runtime ohne native Zusatzinstallation |
+| M-13 | Lizenz-Disclaimer fuer Beispielcharakter | Sichtbarer Hinweis in `LICENSE`/`README` | Hinweis beschreibt: Beispielprojekt, keine Konkurrenzabsicht, keine beabsichtigte Lizenzverletzung |
+| M-14 | CI/CD mit GitHub Actions | Build-/Test-Workflow unter `.github/workflows` | Automatischer Build und Testlauf pro Push/PR ist aktiv |
+| M-15 | Nutzerdokumentation | Leitfaeden, Einstieg und Nutzung unter `docs/guides` | Dokumentation ist vorhanden, nachvollziehbar und aktuell zum Stand der Portierung |
+| M-16 | Vollstaendige XML-Kommentierung der oeffentlichen API | Alle `public` Typen, Member, Parameter, Rueckgabewerte und Ausnahmen mit XML-Dokumentation | API ist durchgaengig und didaktisch ausfuehrlich kommentiert; docfx erzeugt daraus vollstaendige Referenzseiten |
+| M-17 | Einheitlicher didaktischer Dokumentationsstil | Alle Dokumentationsartefakte folgen einem verbindlichen Lehr-/Beispielstandard fuer Fachinformatiker (Anwendungsentwicklung) | Struktur, Detailtiefe und Beispiele sind ueber alle Dokuarten konsistent und nachvollziehbar |
+| M-18 | Ausfuehrliche Dokumentation der Beispielprogramme | Pro Beispielprogramm eigener Guide mit Lernziel, Voraussetzungen, Start, Bedienung, Architekturhinweisen und Uebungen | Alle portierten Beispiele sind didaktisch nachvollziehbar dokumentiert und reproduzierbar ausfuehrbar |
+| M-19 | Ausreichende Quellcode-Dokumentation im gesamten TuiVision-Code | Nicht-triviale Logik, Architekturentscheidungen und interne Zusammenhaenge werden im Code nachvollziehbar kommentiert | Der Quellcode erfuellt die pruefbaren Kriterien aus Abschnitt 10.5 und ist fuer Fachinformatiker (Anwendungsentwicklung) lern- und wartbar |
+| M-20 | Messbarer Mindest-Testumfang (MUSS-Tests) | Definierte Mindestabdeckung, Pflichttestfaelle und vollstaendige Smoke-Tests gemaess Abschnitt 9.4 | Die in Abschnitt 9.4 definierten Kennzahlen und Testumfaenge sind vollstaendig erreicht |
+| M-21 | Reproduzierbarer Multi-Mac-Entwicklungsworkflow | Build-, Test-, GitHub- und Codex-Arbeitsablaeufe sind fuer `MacBook Air M2` und `Mac mini M4 Pro` mit `gh` und `codex` dokumentiert | Die dokumentierten Schluesselablaeufe funktionieren auf beiden Systemen mit den dokumentierten Voraussetzungen und ggf. automatisierter Tool-Bereitstellung (z. B. DocFX als .NET-Tool) |
 
 ## 6. Optionale Anforderungen (KANN / Pruefauftraege)
 
@@ -237,15 +238,15 @@ Fuer die Arbeitsumgebungen `MacBook Air M2` und `Mac mini M4 Pro` gilt:
 
 | Risiko | Bewertung | Gegenmassnahme |
 |---|---|---|
-| Lizenzlage der historischen Quellen (Borland/Inprise + spaetere GPL/BSD-Anteile) | mittel/hoch | Klarer Disclaimer (M-12), saubere Trennung eigener und uebernommener Inhalte, juristisch-technische Klaerung |
+| Lizenzlage der historischen Quellen (Borland/Inprise + spaetere GPL/BSD-Anteile) | mittel/hoch | Klarer Disclaimer (M-13), saubere Trennung eigener und uebernommener Inhalte, juristisch-technische Klaerung |
 | API-/Verhaltensunterschiede zwischen Original und Port | mittel | Golden-Tests mit Beispielprogrammen, dokumentierte Abweichungen |
 | Konsolidierung vieler historischer Treiber auf einen Managed-.NET-Treiber | mittel | Funktionale Priorisierung nach Kernfeatures, Regressionstests |
 | Umfang der Beispielportierung | mittel | Inkrementelle Wellen, pro Beispiel Smoke-Test |
-| Vermeidung nativer Abhaengigkeiten bei zugleich hoher Funktionsnahe | mittel | Architekturregeln (M-11) und Build-Checks ohne Native-Payload |
+| Vermeidung nativer Abhaengigkeiten bei zugleich hoher Funktionsnahe | mittel | Architekturregeln (M-12) und Build-Checks ohne Native-Payload |
 
 ## 12. Abnahmekriterien
 Die Abnahme gilt als bestanden, wenn:
-1. Alle MUSS-Anforderungen M-01 bis M-20 nachweisbar erfuellt sind.
+1. Alle MUSS-Anforderungen M-01 bis M-21 nachweisbar erfuellt sind.
 2. Das Framework in C#/.NET 10 (net10.0) buildbar ist und die definierten Tests durchlaufen.
 3. Die API-Dokumentation mit docfx erzeugt wird.
 4. Alle 25 identifizierten Beispielprogramme in portierter Form vorliegen und mindestens per Smoke-Test validiert sind.
