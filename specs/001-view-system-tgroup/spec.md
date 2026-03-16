@@ -1,0 +1,221 @@
+# Feature Specification: View-System Phase 3 — TGroup, Zeichenpuffer, Fokus/States
+
+**Feature Branch**: `001-view-system-tgroup`
+**Created**: 2026-03-16
+**Status**: Draft
+**Pflichtenheft**: Abschnitt 8.1 Nr. 3 — View-System
+
+---
+
+## Kontext / Context
+
+Phase 3 der Portierungsstrategie (Pflichtenheft Abschnitt 8.1) vervollständigt das View-System.
+`TView` ist bereits portiert und testbar. Diese Phase ergänzt die fehlenden Teile:
+`TGroup` als Container aller Kind-Ansichten, die Zeichenpuffer-Integration und das vollständige Fokus-/State-Management.
+
+Phase 3 of the porting strategy completes the View-System.
+`TView` is already ported and testable. This phase adds the missing pieces:
+`TGroup` as container for all child views, drawing-buffer integration, and complete focus/state management.
+
+---
+
+## User Scenarios & Testing *(mandatory)*
+
+### User Story 1 — TGroup als Container-View (Priority: P1)
+
+Ein Entwickler, der eine TUI-Anwendung mit TuiVision aufbaut, möchte mehrere Ansichten
+(z. B. eine Menüleiste und einen Desktop-Bereich) in einem gemeinsamen Container zusammenfassen,
+damit Ereignisse, Fokus und Neuzeichnen zentral verwaltet werden.
+
+A developer building a TUI application with TuiVision wants to combine multiple views
+(e.g. a menu bar and a desktop area) into a shared container so that events, focus, and
+repainting are managed centrally.
+
+**Why this priority**: Alle nachfolgenden Portierungsphasen (TProgram, TDialog, TWindow etc.)
+erben von `TGroup`. Ohne `TGroup` können keine zusammengesetzten Oberflächen existieren.
+
+**Independent Test**: Eine `TGroup` kann erstellt werden, zwei Kind-`TView`-Instanzen aufnehmen,
+und ein Tastaturereignis wird an die fokussierte Kind-Ansicht weitergeleitet.
+
+**Acceptance Scenarios**:
+
+1. **Given** eine `TGroup` mit zwei Kind-Views, **When** `Insert(view)` aufgerufen wird, **Then** ist die View Teil der internen Kind-Liste und ihr `Owner` zeigt auf die Gruppe.
+2. **Given** eine `TGroup` mit einer sichtbaren Kind-View, **When** `Remove(view)` aufgerufen wird, **Then** ist die View nicht mehr in der Kind-Liste und `Owner` ist `null`.
+3. **Given** eine `TGroup` mit zwei Kind-Views, **When** `HandleEvent` mit einem Tastaturereignis aufgerufen wird, **Then** empfängt nur die fokussierte Kind-View das Ereignis.
+4. **Given** eine `TGroup`, **When** `ShutDown()` aufgerufen wird, **Then** werden alle Kind-Views rekursiv heruntergefahren und die Kind-Liste ist leer.
+
+---
+
+### User Story 2 — Fokus-Management (Priority: P2)
+
+Ein Entwickler möchte mit `Tab`/`Shift+Tab` oder per Mausklick den Eingabefokus zwischen
+auswählbaren Kind-Views einer Gruppe wechseln, damit die aktive View visuell hervorgehoben
+wird und Tastatureingaben empfängt.
+
+A developer wants to move input focus between selectable child views of a group using
+`Tab`/`Shift+Tab` or mouse click, so that the active view is visually highlighted and
+receives keyboard input.
+
+**Why this priority**: Fokus-Management ist Voraussetzung für jede interaktive Oberfläche.
+Ohne Fokuswechsel sind Dialoge und Eingabefelder (Phase 5) nicht nutzbar.
+
+**Independent Test**: Eine Gruppe mit drei auswählbaren Views wechselt den Fokus korrekt
+durch alle Views bei wiederholten `SelectNext(true)`-Aufrufen.
+
+**Acceptance Scenarios**:
+
+1. **Given** eine `TGroup` mit drei auswählbaren Kind-Views, **When** `SelectNext(forward: true)` aufgerufen wird, **Then** hat die nächste auswählbare View den Zustand `Focused`.
+2. **Given** eine fokussierte Kind-View in einer Gruppe, **When** `SetFocus(otherView)` aufgerufen wird, **Then** verliert die bisherige View den `Focused`-State und die neue View erhält ihn.
+3. **Given** eine `TGroup` mit einer deaktivierten View zwischen zwei auswählbaren Views, **When** `SelectNext` aufgerufen wird, **Then** wird die deaktivierte View übersprungen.
+4. **Given** eine Gruppe ohne auswählbare Kind-Views, **When** `SelectNext` aufgerufen wird, **Then** bleibt der Fokus-State unverändert (kein Absturz, kein endloser Loop).
+
+---
+
+### User Story 3 — Draw-Integration / Zeichenpuffer (Priority: P3)
+
+Ein Entwickler, der eine eigene View-Klasse ableitet, möchte `Draw()` überschreiben und
+den Zeichenpuffer (`TConsoleBuffer`) beschreiben, damit der Inhalt der View auf dem
+Bildschirm erscheint, wenn die Gruppe neu gezeichnet wird.
+
+A developer deriving a custom view class wants to override `Draw()` and write to the
+drawing buffer (`TConsoleBuffer`) so that the view's content appears on screen when the
+group repaints.
+
+**Why this priority**: Ohne `Draw()` können keine Inhalte dargestellt werden.
+Alle sichtbaren Elemente (Rahmen, Text, Buttons) hängen davon ab.
+
+**Independent Test**: Eine abgeleitete `TView`-Klasse mit überschriebenem `Draw()` wird
+in eine `TGroup` eingefügt; nach `DrawView()` enthält der Puffer den erwarteten Text.
+
+**Acceptance Scenarios**:
+
+1. **Given** eine abgeleitete View mit überschriebenem `Draw()`, **When** `DrawView()` aufgerufen wird, **Then** wird `Draw()` genau einmal aufgerufen und der Puffer enthält die gesetzten Zeichen.
+2. **Given** eine sichtbare und eine unsichtbare Kind-View in einer Gruppe, **When** `DrawView()` auf der Gruppe aufgerufen wird, **Then** wird nur die sichtbare View neu gezeichnet.
+3. **Given** eine `TGroup` mit aktiviertem Puffer-Modus, **When** die Größe der Gruppe geändert wird, **Then** wird der Puffer neu allokiert und anschließend alle Kind-Views neu gezeichnet.
+4. **Given** ein gesperrter Zeichenpuffer (`LockDraw()`), **When** `DrawView()` aufgerufen wird, **Then** wird kein Neuzeichnen durchgeführt, bis `UnlockDraw()` aufgerufen wird.
+
+---
+
+### User Story 4 — State-Propagation in der Gruppen-Hierarchie (Priority: P4)
+
+Ein Entwickler möchte, dass das Aktivieren oder Deaktivieren einer `TGroup` automatisch
+alle Kind-Views betrifft, damit z. B. ein modaler Dialog die restliche Oberfläche sperrt.
+
+A developer wants activating or deactivating a `TGroup` to automatically affect all child
+views, so that e.g. a modal dialog locks the rest of the interface.
+
+**Why this priority**: State-Propagation ist nötig für modale Dialoge (Phase 5) und
+das Aktiv/Inaktiv-Feedback für den Benutzer.
+
+**Independent Test**: `SetState(TViewState.Active, true)` auf einer Gruppe setzt den
+`Active`-State auch bei allen direkten Kind-Views.
+
+**Acceptance Scenarios**:
+
+1. **Given** eine `TGroup` mit zwei Kind-Views, **When** `SetState(Active, true)` aufgerufen wird, **Then** haben alle Kind-Views ebenfalls den `Active`-State.
+2. **Given** eine Gruppe im `Disabled`-State, **When** ein Maus- oder Tastaturereignis eingeht, **Then** wird das Ereignis von allen Kind-Views ignoriert.
+3. **Given** eine `TGroup` im `Modal`-State, **When** ein Ereignis ausserhalb der Gruppe auftritt, **Then** wird das Ereignis nicht an Views ausserhalb der Gruppe weitergeleitet.
+
+---
+
+### Edge Cases
+
+- Was passiert, wenn `Insert` dieselbe View zweimal aufgerufen wird? → Wirft `ArgumentException`; doppeltes Insert ist ein Vertragsfehler.
+- Was passiert, wenn `Draw()` einer Kind-View eine Exception wirft? → Exception propagiert; kein stilles Schlucken.
+- Was passiert, wenn `SelectNext` auf einer Gruppe mit genau einer auswählbaren View aufgerufen wird? → Die View bleibt fokussiert, kein Loop.
+- Was passiert bei verschachtelten Gruppen (Gruppe in Gruppe)? → Ereignis-Dispatching und Focus-Traversal gelten nur für direkte Kind-Views; verschachtelte Gruppen verwalten ihren eigenen Fokus.
+- Was passiert, wenn `GrowTo` auf einer Gruppe aufgerufen wird? → Kind-Views behalten ihre absolute Position; Größenänderung betrifft nur den Container selbst (GrowMode ist optionale Erweiterung dieser Phase).
+
+---
+
+## Requirements *(mandatory)*
+
+### Functional Requirements
+
+**TGroup — Lebenszyklus und Kind-Verwaltung**
+
+- **FR-001**: Das System MUSS eine `TGroup`-Klasse bereitstellen, die von `TView` erbt und eine geordnete Liste von Kind-Views verwaltet.
+- **FR-002**: `TGroup.Insert(view)` MUSS eine Kind-View in die interne Liste aufnehmen und deren `Owner`-Eigenschaft auf die Gruppe setzen. Wird dieselbe View-Instanz ein zweites Mal übergeben, MUSS eine `ArgumentException` geworfen werden.
+- **FR-003**: `TGroup.Remove(view)` MUSS eine Kind-View aus der Liste entfernen und deren `Owner`-Eigenschaft auf `null` setzen. Wird eine View übergeben, die nicht zur Gruppe gehört, MUSS eine `ArgumentException` geworfen werden.
+- **FR-004**: `TGroup.ShutDown()` MUSS alle Kind-Views rekursiv herunterfahren und die Kind-Liste leeren, bevor `TView.ShutDown()` aufgerufen wird.
+- **FR-005**: `TView` MUSS eine `Owner`-Eigenschaft vom Typ `TGroup?` besitzen, die die übergeordnete Gruppe referenziert.
+
+**TGroup — Ereignis-Dispatching**
+
+- **FR-006**: `TGroup.HandleEvent(event)` MUSS Ereignisse in drei Phasen verteilen: Pre-Process (Views mit `PreProcess`-Option), Focused-Phase (fokussierte View), Post-Process (Views mit `PostProcess`-Option).
+- **FR-007**: Das System MUSS sicherstellen, dass ein von einer Kind-View auf `TEventKind.Nothing` gesetztes Ereignis nicht an weitere Views weitergeleitet wird.
+
+**TGroup — Fokus-Management**
+
+- **FR-008**: `TGroup` MUSS eine `Current`-Eigenschaft vom Typ `TView?` besitzen, die die aktuell fokussierte Kind-View referenziert.
+- **FR-009**: `TGroup.SelectNext(bool forward)` MUSS den Fokus zur nächsten (oder vorherigen) auswählbaren, sichtbaren und nicht deaktivierten Kind-View verschieben. Die Traversal ist zirkulär: nach der letzten View wird zur ersten gewechselt und umgekehrt.
+- **FR-010**: Beim Fokuswechsel MUSS die bisher fokussierte View den `Focused`-State verlieren und die neue View ihn erhalten.
+- **FR-018**: `TGroup` MUSS eine öffentliche Methode `SetFocus(TView view)` bereitstellen, die den Fokus direkt auf eine bestimmte Kind-View setzt. `SelectNext` verwendet `SetFocus` intern. Wird eine View übergeben, die nicht zur Gruppe gehört, MUSS eine `ArgumentException` geworfen werden.
+
+**TView — Draw-Protokoll**
+
+- **FR-011**: `TView` MUSS eine parameterfreie virtuelle `Draw()`-Methode (`void Draw()`) besitzen, die von abgeleiteten Klassen überschrieben wird; die Basis-Implementierung ist eine No-Op. Eine View, die zeichnen möchte, greift intern über die `Owner`-Eigenschaft auf den Zeichenpuffer der übergeordneten `TGroup` zu (analog zum C++-Original).
+- **FR-012**: `TView` MUSS eine `DrawView()`-Methode besitzen, die `Draw()` aufruft, sofern die View sichtbar und nicht gesperrt ist.
+- **FR-013**: `TGroup.Draw()` MUSS alle sichtbaren Kind-Views in Z-Reihenfolge neu zeichnen.
+
+**TGroup — Zeichenpuffer**
+
+- **FR-014**: `TGroup` MUSS einen optionalen internen Zeichenpuffer (`TConsoleBuffer`) unterstützen, der bei `TViewOptions.Buffered` genutzt wird.
+- **FR-015**: Bei einer Grössenänderung der Gruppe MUSS der Zeichenpuffer neu allokiert werden.
+- **FR-016**: `TGroup.LockDraw()` MUSS das Neuzeichnen temporär sperren; `TGroup.UnlockDraw()` MUSS das Neuzeichnen freigeben und alle ausstehenden `DrawView()`-Aufrufe nachholen.
+
+**State-Propagation**
+
+- **FR-017**: `TGroup.SetState(state, enable)` MUSS für die States `Active`, `Focused` und `Disabled` die Änderung an alle direkten Kind-Views weitergeben.
+
+### Key Entities
+
+- **TGroup**: Direkt abgeleitete Klasse von `TView`; verwaltet eine doppelt-verlinkte zirkuläre Liste von Kind-Views; besitzt `Current` (fokussierte View), optionalen Zeichenpuffer und Lock-Zähler.
+- **TView.Owner**: Rückwärts-Referenz einer Kind-View auf ihre übergeordnete `TGroup`; nullable.
+- **DrawPhase**: Interner Aufzählungstyp der Gruppe, der steuert, in welcher Phase des Dispatching eine View ein Ereignis empfängt (Focused, PreProcess, PostProcess).
+
+---
+
+## Success Criteria *(mandatory)*
+
+### Measurable Outcomes
+
+- **SC-001**: Alle 18 funktionalen Anforderungen (FR-001 bis FR-018) sind durch mindestens einen Positiv- und — wo fachlich sinnvoll — einen Negativtest abgedeckt.
+- **SC-002**: `dotnet test` läuft in CI ohne Fehler; alle bestehenden 19 Tests bleiben grün.
+- **SC-003**: Die Testabdeckung (Line Coverage) für `TuiVision.Controls` erreicht mindestens 70 % (Pflichtenheft Abschnitt 9.4 Nr. 1).
+- **SC-004**: Ein Entwickler kann eine `TGroup` mit zwei Kind-Views erstellen, Fokus wechseln und ein Tastaturereignis erfolgreich an die fokussierte View dispatchen — nachweisbar durch einen Integrationstest.
+- **SC-005**: Das Neuzeichnen einer Gruppe mit drei Kind-Views (eine davon unsichtbar) beschreibt den Puffer nur für sichtbare Views — nachweisbar durch einen Snapshot-Test gegen den `TConsoleBuffer`.
+- **SC-006**: Die vollständige öffentliche API von `TGroup` und die neuen `TView`-Mitglieder (`Owner`, `Draw`, `DrawView`) sind mit bilingualen XML-Kommentaren (Deutsch zuerst, Englisch danach) dokumentiert und durch `docfx` fehlerfrei verarbeitbar.
+
+---
+
+## Assumptions
+
+- `TGroup` verwendet zunächst eine einfache doppelt-verlinkte Kreisliste (analog zum C++-Original mit `prev`/`next`) statt einer generischen .NET-Collection, um das Original-Verhalten exakt abzubilden.
+- `GrowMode`-Unterstützung für Kind-Views (automatisches Mitskalieren) wird in dieser Phase als optionale Erweiterung behandelt, da sie nicht zum Kern-Fokus gehört.
+- Das Zeichenprotokoll nutzt den bestehenden `TConsoleBuffer` aus `TuiVision.Drivers.Console`; eine direkte Kopplung der Treiberschicht an `TGroup` wird durch ein Interface oder Parameter-Übergabe vermieden.
+- Phase 3 liefert keine sichtbare Benutzeroberfläche — nur die Infrastruktur. Sichtbare Ergebnisse entstehen erst ab Phase 4 (TProgram/TApplication).
+
+---
+
+## Clarifications
+
+### Session 2026-03-16
+
+- Q: Signatur von `TView.Draw()` — parameterfrei oder mit Puffer-Parameter? → A: Parameterfrei (`void Draw()`); View greift intern über `Owner` auf den Puffer der Eigentümer-Gruppe zu (Option A, konform zum C++-Original).
+- Q: Verhalten bei doppeltem `Insert` derselben View? → A: Wirft `ArgumentException` (Option A); doppeltes Insert ist ein Vertragsfehler, der sofort sichtbar sein muss.
+- Q: `SelectNext` an der Listengrenze — zirkulär oder stopp? → A: Zirkulär (Option A); nach der letzten View wird zur ersten gewechselt, konform zum C++-Original und TUI-Tab-Konvention.
+
+### Session 2026-03-16 (Fortsetzung)
+
+- Q: `SetFocus` — eigenständige öffentliche Methode oder nur interner Mechanismus von `SelectNext`? → A: Eigenständige öffentliche Methode (Option A); `SelectNext` ruft `SetFocus` intern auf; bei Übergabe einer Nicht-Kind-View → `ArgumentException` (FR-018 ergänzt).
+- Q: `Remove(view)` mit nicht-enthaltener View — ignorieren oder Exception? → A: Wirft `ArgumentException` (Option A); konsistenter Vertrag mit Insert und SetFocus (FR-003 aktualisiert).
+
+---
+
+## Dependencies
+
+- `TuiVision.Core`: `TPoint`, `TRect`, `TEvent`, `TObject` — vollständig portiert (Phase 2 abgeschlossen).
+- `TuiVision.Controls`: `TView` — vollständig portiert, Tests grün.
+- `TuiVision.Drivers.Console`: `TConsoleBuffer` — vorhanden; für FR-014 bis FR-016 referenziert.
+- Referenz-Quellcode: `tv203s/contrib/tvision/classes/tgroup.cc`, `tview.cc` (nicht verändern).
