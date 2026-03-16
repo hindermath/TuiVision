@@ -84,8 +84,19 @@ Dokumentation aktualisieren, wenn Code angepasst wurde:
 Beispielaufruf:
 
 ```bash
+direnv allow
 codex
 ```
+
+Projektlokale Einstellung:
+`CODEX_HOME` wird in diesem Repository ueber `.envrc` auf `./.codex` gesetzt.
+Wenn `direnv` nicht verwendet wird, starte Codex stattdessen ueber
+`./scripts/codex-local.sh`.
+
+Project-local setting:
+`CODEX_HOME` is set in this repository via `.envrc` to `./.codex`.
+If `direnv` is not in use, start Codex through `./scripts/codex-local.sh`
+instead.
 
 Empfehlung fuer Sessions:
 
