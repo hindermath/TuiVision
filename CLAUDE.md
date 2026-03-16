@@ -61,4 +61,4 @@ Tests use MSTest. Test projects mirror source projects (e.g., `TuiVision.Core.Te
 
 ## Branching Convention
 
-Feature branches use the pattern `codex/<feature-description>`. CI runs on pushes to `main`, `master`, and `codex/**` branches.
+Feature branches use the pattern `codex/<feature-description>`. CI runs on pushes to `main`, `master`, `codex/**`, `claude/**`, `gemini/**`, `opencode/**`, and `copilot/**` branches.

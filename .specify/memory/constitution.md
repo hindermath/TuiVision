@@ -1,32 +1,39 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version change: 1.1.0 → 1.2.0
-  Bump rationale: MINOR — Principle II materially expanded with explicit pedagogical
-  rationale for TDD (Red-Green as a teaching tool for trainees). Principle III
-  materially expanded: XML documentation now mandatory for ALL code members
-  (not only public), and additional bilingual block/line comments permitted
-  for didactically important locations.
+  Version change: 1.2.0 → 1.3.0
+  Bump rationale: MINOR — New "Code Style & Naming Conventions" section added to
+  Development Workflow, codifying test naming pattern (ClassName_MethodName_Behavior)
+  and C# type-choice rules (readonly record struct vs mutable struct) found in
+  copilot-instructions.md and AGENTS.md but previously absent from the constitution.
+  Full project scan performed (AGENTS.md, GEMINI.md, CLAUDE.md,
+  copilot-instructions.md, Pflichtenheft.md, README.md, all templates).
 
   Modified principles:
-    - II. Test-First Development — TDD: added explicit pedagogical dimension
-    - III. Didactic and Linguistic Clarity: XML docs extended to all members;
-      additional block/line comment rule added
+    - None
 
   Added sections:
-    - None
+    - "Code Style & Naming Conventions" under Development Workflow
 
   Removed sections:
     - None
 
   Templates requiring updates:
-    - .specify/templates/plan-template.md ✅ already aligned (Constitution Check covers TDD + XML docs)
-    - .specify/templates/spec-template.md ✅ already aligned (FR-006, FR-007 unchanged)
-    - .specify/templates/tasks-template.md ✅ already aligned (TDD Red-Green tasks pattern present)
-    - .specify/templates/commands/*.md ✅ not present (no updates required)
+    - .specify/templates/plan-template.md  ✅ aligned (generic, no project refs)
+    - .specify/templates/spec-template.md  ✅ aligned (generic, no project refs)
+    - .specify/templates/tasks-template.md ✅ aligned (TDD Red-Green pattern present)
+
+  Agent files reviewed:
+    - AGENTS.md             ✅ aligned
+    - GEMINI.md             ✅ aligned
+    - .github/copilot-instructions.md ✅ aligned (source of new naming convention)
+    - CLAUDE.md             ⚠️ pending — CI branch list only says `codex/**`;
+      should list all AI-agent patterns: codex/**, claude/**, gemini/**,
+      opencode/**, copilot/**. Update CLAUDE.md manually or in a follow-up PR.
 
   Follow-up TODOs:
-    - None
+    - Update CLAUDE.md "Branching Convention" section to reflect all CI-trigger
+      branch patterns (currently only mentions codex/**).
 -->
 
 # TuiVision Constitution
@@ -230,6 +237,30 @@ dotnet test
 docfx docfx.json
 ```
 
+### Code Style & Naming Conventions
+
+The following conventions apply to all new and ported C# code:
+
+- **Identifiers**: Types, methods, and properties use **PascalCase**; local
+  variables and parameters use **camelCase**.
+- **Value types**:
+  - `readonly record struct` for immutable payload types
+    (e.g., `TMouseEvent`, `TKeyDownEvent`).
+  - Plain `struct` (mutable) for geometry types that mirror original Turbo Vision
+    mutation semantics (e.g., `TPoint`, `TRect`).
+- **Enumerations**: Use `[Flags]` enums with bitmask values matching original
+  Turbo Vision constants (e.g., `TEventKind`, `TViewState`, `TViewOptions`).
+- **Class design**: Prefer `sealed class` where inheritance is not intended;
+  use interfaces for contracts and abstractions.
+- **`var`**: Permitted when the inferred type is unambiguous from context.
+- **Test method naming**: `ClassName_MethodName_ExpectedBehavior`
+  (e.g., `TRect_Contains_UsesTopLeftInclusiveBottomRightExclusive`).
+- **Magic numbers**: MUST NOT appear in production code — use named constants
+  or enums instead.
+
+These conventions MUST be consistent across all modules and are checked by
+`dotnet format --verify-no-changes` and code review.
+
 ### Documentation Compliance Review
 
 Each PR that changes source code, API signatures, comments, or guides MUST
@@ -292,4 +323,4 @@ Use `CLAUDE.md`, `GEMINI.md`, `copilot-instructions.md`, and `AGENTS.md` for
 runtime agent-specific development guidance.
 Use `docs/guides/multi-mac-workflow.md` for local multi-machine workflow details.
 
-**Version**: 1.2.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-06
+**Version**: 1.3.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-16
