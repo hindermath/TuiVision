@@ -21,8 +21,8 @@
 - [ ] CHK001 — Sind für alle 18 FRs (FR-001 bis FR-018) sowohl Positiv- als auch Negativszenarien in `spec.md` explizit beschrieben? [Completeness, Spec §User Scenarios]
   > **→ Aktion:** Die vier User Stories decken die Hauptflüsse ab, aber FRs wie FR-013 (Draw in Z-Order), FR-014–016 (Buffer) und FR-017 (SetState) haben keine eigenen Negativszenarien. In `/speckit.clarify` fragen: „Sollen für FR-013/014–017 dedizierte Negativszenarien (z.B. Draw mit leerem Buffer, SetState auf bereits aktivem State) in spec.md ergänzt werden?" Alternativ: Direkt in spec.md §Edge Cases ergänzen.
 
-- [ ] CHK002 — Ist der Unterschied zwischen `DrawView()` (Template-Methode) und `Draw()` (Überschreibungs-Hook) als eigenständige Anforderung mit klarer Rollentrennung in `spec.md` formuliert? [Completeness, Spec §FR-011, FR-012]
-  > **→ Aktion:** FR-011 und FR-012 existieren, aber das Template-Method-Muster (Warum die Trennung?) ist nicht erklärt. Füge in `spec.md §FR-011` einen Satz ein: „`DrawView()` ist die Template-Methode; abgeleitete Klassen überschreiben ausschließlich `Draw()`." Dann abhaken.
+- [x] CHK002 — Ist der Unterschied zwischen `DrawView()` (Template-Methode) und `Draw()` (Überschreibungs-Hook) als eigenständige Anforderung mit klarer Rollentrennung in `spec.md` formuliert? [Completeness, Spec §FR-011, FR-012]
+  > **Abgehakt**: FR-011 und FR-012 existieren, aber das Template-Method-Muster (Warum die Trennung?) ist nicht erklärt. Füge in `spec.md §FR-011` einen Satz ein: „`DrawView()` ist die Template-Methode; abgeleitete Klassen überschreiben ausschließlich `Draw()`." Dann abhaken.
 
 - [x] CHK003 — Sind alle drei Event-Dispatch-Phasen (PreProcess, Focused, PostProcess) mit je einem eigenen Akzeptanzszenario in `spec.md` abgedeckt? [Completeness, Spec §FR-006]
   > **Abgehakt**: User Story 1 Szenarien 5 (PreProcess) und 6 (PostProcess) ergänzt; alle drei Phasen haben eigene Given/When/Then.
@@ -30,35 +30,36 @@
 - [x] CHK004 — Ist die Anforderung für `TGroup.ForEach()` (sichere Iteration bei gleichzeitiger Mutation) in `spec.md` oder `plan.md` explizit dokumentiert? [Completeness, Gap]
   > **Abgehakt**: `ForEach` ist `internal`; `data-model.md §TGroup`-Tabelle und `research.md §Decision 2` (Traversal-Konventionen: „pre-fetcht `_next` für sichere Mutation") dokumentieren das Verhalten vollständig. Kein spec.md-FR erforderlich.
 
-- [ ] CHK005 — Sind die Anforderungen für den Rückgabewert und Seiteneffekt von `LockDraw()`/`UnlockDraw()` bei mehrfach verschachtelten Aufrufen (Lock-Zähler > 1) in `spec.md` spezifiziert? [Completeness, Spec §FR-016]
-  > **→ Aktion:** FR-016 beschreibt einfaches Lock/Unlock, aber nicht `LockDraw(); LockDraw(); UnlockDraw();` (Zähler bleibt bei 1). Ergänze in `spec.md §Edge Cases`: „Mehrfaches LockDraw() inkrementiert den Zähler; erst wenn UnlockDraw() denselben Aufrufanzahl erreicht, wird neu gezeichnet." Dann Item abhaken.
+- [x] CHK005 — Sind die Anforderungen für den Rückgabewert und Seiteneffekt von `LockDraw()`/`UnlockDraw()` bei mehrfach verschachtelten Aufrufen (Lock-Zähler > 1) in `spec.md` spezifiziert? [Completeness, Spec §FR-016]
+  > **Abgehakt**: FR-016 beschreibt einfaches Lock/Unlock, aber nicht `LockDraw(); LockDraw(); UnlockDraw();` (Zähler bleibt bei 1). Ergänze in `spec.md §Edge Cases`: „Mehrfaches LockDraw() inkrementiert den Zähler; erst wenn UnlockDraw() denselben Aufrufanzahl erreicht, wird neu gezeichnet." Dann Item abhaken.
 
-- [ ] CHK006 — Ist die `ShutDown()`-Iterationsreihenfolge (LIFO / rückwärts) in `spec.md` als nachprüfbare Anforderung formuliert oder nur in `research.md` als Designentscheidung vermerkt? [Completeness, Gap]
-  > **→ Aktion:** Nur in `research.md` Decision 5 dokumentiert. Ergänze in `spec.md §FR-004` einen Satz: „Die Kind-Views werden in umgekehrter Einfügereihenfolge (LIFO) heruntergefahren." Dann Item abhaken.
+- [x] CHK006 — Ist die `ShutDown()`-Iterationsreihenfolge (LIFO / rückwärts) in `spec.md` als nachprüfbare Anforderung formuliert oder nur in `research.md` als Designentscheidung vermerkt? [Completeness, Gap]
+  > **Abgehakt**: Nur in `research.md` Decision 5 dokumentiert. Ergänze in `spec.md §FR-004` einen Satz: „Die Kind-Views werden in umgekehrter Einfügereihenfolge (LIFO) heruntergefahren." Dann Item abhaken.
 
 ---
 
 ## Requirement Clarity — Klarheit und Eindeutigkeit
 
-- [ ] CHK007 — Ist „Z-Reihenfolge" in FR-013 (`TGroup.Draw()` zeichnet in Z-Reihenfolge) mit einer messbaren Definition versehen, die als Testkriterium verwendbar ist? [Clarity, Spec §FR-013]
-  > **→ Aktion:** Ergänze in `spec.md §FR-013`: „Z-Reihenfolge = Einfügereihenfolge; erste eingefügte View wird zuerst (unten), zuletzt eingefügte zuletzt (oben) gezeichnet." Dann Item abhaken.
+- [x] CHK007 — Ist „Z-Reihenfolge" in FR-013 (`TGroup.Draw()` zeichnet in Z-Reihenfolge) mit einer messbaren Definition versehen, die als Testkriterium verwendbar ist? [Clarity, Spec §FR-013]
+  > **Abgehakt**: Ergänze in `spec.md §FR-013`: „Z-Reihenfolge = Einfügereihenfolge; erste eingefügte View wird zuerst (unten), zuletzt eingefügte zuletzt (oben) gezeichnet." Dann Item abhaken.
 
-- [ ] CHK008 — Ist „sichtbar" in FR-012 (`DrawView()` prüft Sichtbarkeit) eindeutig auf `TViewState.Visible` zurückgeführt, ohne Verwechslungsgefahr mit `TViewState.Exposed`? [Clarity, Spec §FR-012]
-  > **→ Aktion:** Ergänze in `spec.md §FR-012`: „sichtbar = `GetState(TViewState.Visible) == true`". Dann Item abhaken. (2 Minuten Aufwand.)
+- [x] CHK008 — Ist „sichtbar" in FR-012 (`DrawView()` prüft Sichtbarkeit) eindeutig auf `TViewState.Visible` zurückgeführt, ohne Verwechslungsgefahr mit `TViewState.Exposed`? [Clarity, Spec §FR-012]
+  > **Abgehakt**: Ergänze in `spec.md §FR-012`: „sichtbar = `GetState(TViewState.Visible) == true`". Dann Item abhaken. (2 Minuten Aufwand.)
 
-- [ ] CHK009 — Ist der Begriff „direkte Kind-Views" in FR-017 (State-Propagation) klar von „rekursiver Propagation in verschachtelte Gruppen" abgegrenzt? [Clarity, Spec §FR-017]
-  > **→ Aktion:** `spec.md §Edge Cases` sagt für Fokus „verschachtelte Gruppen verwalten ihren eigenen Fokus", aber FR-017 (State-Propagation) erwähnt das nicht. Füge in FR-017 hinzu: „Verschachtelte Gruppen erhalten die State-Änderung als eine Kind-View, propagieren sie aber intern eigenständig." Dann Item abhaken.
+- [x] CHK009 — Ist der Begriff „direkte Kind-Views" in FR-017 (State-Propagation) klar von „rekursiver Propagation in verschachtelte Gruppen" abgegrenzt? [Clarity, Spec §FR-017]
+  > **Abgehakt** `spec.md §Edge Cases` sagt für Fokus „verschachtelte Gruppen verwalten ihren eigenen Fokus", aber FR-017 (State-Propagation) erwähnt das nicht. Füge in FR-017 hinzu: „Verschachtelte Gruppen erhalten die State-Änderung als eine Kind-View, propagieren sie aber intern eigenständig."
 
-- [~] CHK010 — Ist das Verhalten von `SetFocus()` für eine aktuell bereits fokussierte View (kein Fokuswechsel notwendig) in `spec.md` beschrieben? [Clarity, Spec §FR-018, Ambiguity]
+- [x] CHK010 — Ist das Verhalten von `SetFocus()` für eine aktuell bereits fokussierte View (kein Fokuswechsel notwendig) in `spec.md` beschrieben? [Clarity, Spec §FR-018, Ambiguity]
   > **Status**: Gelöst in `plan.md §1.3` (SetFocus-Pseudocode: `if Current == view: return`), aber **nicht in `spec.md` FR-018**.
-  > **→ Aktion:** Ergänze in `spec.md §FR-018`: „Wird die bereits fokussierte View übergeben, ist die Methode ein No-Op." Dann Item vollständig abhaken.
+  > **Abgehakt**: Ergänze in `spec.md §FR-018`: „Wird die bereits fokussierte View übergeben, ist die Methode ein No-Op." Dann Item vollständig abhaken.
 
-- [~] CHK011 — Ist „ausstehende `DrawView()`-Aufrufe nachholen" in FR-016 operationalisiert: genau ein Aufruf nach Unlock oder ein Aufruf pro aufgelaufenem Draw? [Clarity, Spec §FR-016, Ambiguity]
+
+- [x] CHK011 — Ist „ausstehende `DrawView()`-Aufrufe nachholen" in FR-016 operationalisiert: genau ein Aufruf nach Unlock oder ein Aufruf pro aufgelaufenem Draw? [Clarity, Spec §FR-016, Ambiguity]
   > **Status**: In `plan.md §1.4` gelöst (`if _lockFlag == 0: DrawView()` = genau ein Aufruf), aber `spec.md` FR-016 bleibt vage.
-  > **→ Aktion:** Ergänze in `spec.md §FR-016`: „Nach Freigabe wird `DrawView()` genau einmal aufgerufen, unabhängig von der Anzahl gesperrter Aufrufe." Dann Item vollständig abhaken.
+  > **Abgehakt**: `spec.md §FR-016** Ergänze in `spec.md §FR-016`: „Nach Freigabe wird `DrawView()` genau einmal aufgerufen, unabhängig von der Anzahl gesperrter Aufrufe."
 
-- [ ] CHK012 — Ist in `data-model.md` der Initialzustand von `Current` (null bei leerer Gruppe, erste View nach erstem Insert?) eindeutig spezifiziert? [Clarity, data-model.md §TGroup]
-  > **→ Aktion:** `data-model.md §TGroup` zeigt `Current: TView?` ohne Initialwert. Ergänze: „Initial: `null`; wird nicht automatisch bei `Insert` gesetzt." Dann Item abhaken.
+- [x] CHK012 — Ist in `data-model.md` der Initialzustand von `Current` (null bei leerer Gruppe, erste View nach erstem Insert?) eindeutig spezifiziert? [Clarity, data-model.md §TGroup]
+  > **Abgehakt**: `data-model.md §TGroup` zeigt `Current: TView?` ohne Initialwert. Ergänze: „Initial: `null`; wird nicht automatisch bei `Insert` gesetzt."
 
 ---
 
