@@ -24,11 +24,11 @@
 - [ ] CHK002 — Ist der Unterschied zwischen `DrawView()` (Template-Methode) und `Draw()` (Überschreibungs-Hook) als eigenständige Anforderung mit klarer Rollentrennung in `spec.md` formuliert? [Completeness, Spec §FR-011, FR-012]
   > **→ Aktion:** FR-011 und FR-012 existieren, aber das Template-Method-Muster (Warum die Trennung?) ist nicht erklärt. Füge in `spec.md §FR-011` einen Satz ein: „`DrawView()` ist die Template-Methode; abgeleitete Klassen überschreiben ausschließlich `Draw()`." Dann abhaken.
 
-- [ ] CHK003 — Sind alle drei Event-Dispatch-Phasen (PreProcess, Focused, PostProcess) mit je einem eigenen Akzeptanzszenario in `spec.md` abgedeckt? [Completeness, Spec §FR-006]
-  > **→ Aktion:** User Story 1 Szenario 3 deckt nur die Focused-Phase ab. PreProcess und PostProcess fehlen als Szenarien. Ergänze in User Story 1 zwei weitere Given/When/Then für PreProcess- und PostProcess-Views, dann abhaken.
+- [x] CHK003 — Sind alle drei Event-Dispatch-Phasen (PreProcess, Focused, PostProcess) mit je einem eigenen Akzeptanzszenario in `spec.md` abgedeckt? [Completeness, Spec §FR-006]
+  > **Abgehakt**: User Story 1 Szenarien 5 (PreProcess) und 6 (PostProcess) ergänzt; alle drei Phasen haben eigene Given/When/Then.
 
-- [ ] CHK004 — Ist die Anforderung für `TGroup.ForEach()` (sichere Iteration bei gleichzeitiger Mutation) in `spec.md` oder `plan.md` explizit dokumentiert? [Completeness, Gap]
-  > **→ Aktion:** `ForEach` ist in `plan.md §1.3` als interne Methode beschrieben, aber nicht als FR in `spec.md`. Da ForEach internal ist, reicht die Dokumentation in `plan.md`. Prüfe: Ist `ForEach` aus Nutzersicht relevant? Wenn nein → `plan.md`-Eintrag genügt → Item abhaken.
+- [x] CHK004 — Ist die Anforderung für `TGroup.ForEach()` (sichere Iteration bei gleichzeitiger Mutation) in `spec.md` oder `plan.md` explizit dokumentiert? [Completeness, Gap]
+  > **Abgehakt**: `ForEach` ist `internal`; `data-model.md §TGroup`-Tabelle und `research.md §Decision 2` (Traversal-Konventionen: „pre-fetcht `_next` für sichere Mutation") dokumentieren das Verhalten vollständig. Kein spec.md-FR erforderlich.
 
 - [ ] CHK005 — Sind die Anforderungen für den Rückgabewert und Seiteneffekt von `LockDraw()`/`UnlockDraw()` bei mehrfach verschachtelten Aufrufen (Lock-Zähler > 1) in `spec.md` spezifiziert? [Completeness, Spec §FR-016]
   > **→ Aktion:** FR-016 beschreibt einfaches Lock/Unlock, aber nicht `LockDraw(); LockDraw(); UnlockDraw();` (Zähler bleibt bei 1). Ergänze in `spec.md §Edge Cases`: „Mehrfaches LockDraw() inkrementiert den Zähler; erst wenn UnlockDraw() denselben Aufrufanzahl erreicht, wird neu gezeichnet." Dann Item abhaken.
@@ -99,15 +99,14 @@
 
 ## TDD Traceability — Nachvollziehbarkeit der Red→Green-Sequenz
 
-- [~] CHK022 — Ist für jede der 15 Commit-Stufen aus `plan.md §TDD-Commit-Plan` eine eindeutige Zuordnung zu mindestens einem FR (FR-001–FR-018) dokumentiert? [Traceability, plan.md §TDD-Commit-Plan]
-  > **Status**: Die meisten Commits haben FR-Bezug, aber die ersten zwei Commits (TConsoleBuffer nach Core verschieben) referenzieren kein FR — sie sind Infrastruktur-Commits.
-  > **→ Aktion:** Ergänze in `plan.md §TDD-Commit-Plan` die Tabelle um eine „FR-Referenz"-Spalte. Für die Infra-Commits genügt „Vorbedingung für FR-014/015/016".
+- [x] CHK022 — Ist für jede der 15 Commit-Stufen aus `plan.md §TDD-Commit-Plan` eine eindeutige Zuordnung zu mindestens einem FR (FR-001–FR-018) dokumentiert? [Traceability, plan.md §TDD-Commit-Plan]
+  > **Abgehakt**: `research.md §TDD Commit-Sequenz` hat eine vollständige Tabelle (Commit → FR-Bezug im „Inhalt"-Feld), inkl. Infra-Commits mit „Vorbedingung für FR-014–016". Die FR-Traceability ist artefaktübergreifend vollständig dokumentiert.
 
 - [ ] CHK023 — Ist der „Red"-Commit (test(red)) so beschrieben, dass ein Lernender exakt weiß, welche Tests er schreiben muss, bevor er mit der Implementierung beginnt? [Clarity, Didactic, plan.md §TDD-Commit-Plan]
   > **→ Aktion:** Erfordert `/speckit.tasks` — dort werden konkrete Test-Aufgaben pro Commit definiert. Dieses Item ist ein Blocking-Gate für `/speckit.tasks`. Nach Task-Generierung erneut prüfen.
 
-- [ ] CHK024 — Existiert für FR-005 (`TView.Owner`), FR-011 (`Draw()`), FR-012 (`DrawView()`) jeweils ein eigenständiger Red-Commit-Eintrag, oder sind diese in einem Sammel-Commit zusammengefasst? [Completeness, Didactic, plan.md §TDD-Commit-Plan]
-  > **→ Aktion:** Aktuell in einem Sammel-Commit zusammengefasst. Für didaktischen Wert: Überlege, ob FR-005, FR-011 und FR-012 in drei eigene Red-Commits aufgeteilt werden sollen. Entscheide in einem `/speckit.clarify`-Lauf oder direkt in `plan.md §TDD-Commit-Plan`.
+- [x] CHK024 — Existiert für FR-005 (`TView.Owner`), FR-011 (`Draw()`), FR-012 (`DrawView()`) jeweils ein eigenständiger Red-Commit-Eintrag, oder sind diese in einem Sammel-Commit zusammengefasst? [Completeness, Didactic, plan.md §TDD-Commit-Plan]
+  > **Abgehakt**: Explizit entschieden in `/speckit.clarify` (Option B): Sammel-Commit ist korrekt — `Owner`/`Draw()`/`DrawView()` sind funktional abhängig; Aufteilung würde Lernende verwirren. Entscheidung in `spec.md §Clarifications` dokumentiert.
 
 - [x] CHK025 — Ist in `spec.md` oder `plan.md` explizit geregelt, dass kein Implementierungs-Commit ohne vorangehenden Red-Commit erlaubt ist? [Clarity, Didactic, Constitution §II]
   > **Abgehakt**: `plan.md §TDD-Commit-Plan`: „Gemäß Constitution II (NON-NEGOTIABLE): Jeder Implementierungs-Commit MUSS einem vorangehenden Red-Commit folgen."
@@ -122,8 +121,8 @@
 - [ ] CHK027 — Ist Prinzip III (bilingual DE/EN, CEFR B2) in `spec.md` als nachprüfbares Erfolgskriterium (SC) abgebildet — und nicht nur als allgemeine Anforderung in SC-006 vergraben? [Completeness, Spec §SC-006, Constitution §III]
   > **→ Aktion:** SC-006 deckt bilinguales XML ab, aber kein SC prüft CEFR-B2-Lesbarkeit der Kommentare. Ergänze in `spec.md §SC-006`: „Nachweis: Peer-Review der XML-Kommentare gegen CEFR-B2-Kriterien." Realistisch als manuelles Review-Kriterium formulieren.
 
-- [ ] CHK028 — Sind die Auswirkungen von Prinzip V (Cross-Platform: kein `#if` in Core/Controls) auf die verschobenen Klassen `TConsoleCell` und `TConsoleBuffer` in `plan.md` oder `research.md` explizit adressiert? [Coverage, Constitution §V, Gap]
-  > **→ Aktion:** Ergänze in `plan.md §1.1` einen Satz: „`TConsoleCell` und `TConsoleBuffer` enthalten kein plattformspezifisches `#if`; `ConsoleColor` ist ein managed .NET-Typ ohne OS-Abhängigkeit."
+- [x] CHK028 — Sind die Auswirkungen von Prinzip V (Cross-Platform: kein `#if` in Core/Controls) auf die verschobenen Klassen `TConsoleCell` und `TConsoleBuffer` in `plan.md` oder `research.md` explizit adressiert? [Coverage, Constitution §V, Gap]
+  > **Abgehakt**: `plan.md §1.1` ergänzt: „`TConsoleCell`/`TConsoleBuffer` enthalten kein plattformspezifisches `#if`; `ConsoleColor` ist managed .NET ohne OS-Abhängigkeit (Constitution §V)."
 
 - [ ] CHK029 — Ist Prinzip II (TDD NON-NEGOTIABLE) in `spec.md` als eigenständige Anforderung oder Annahme aufgeführt? [Consistency, Constitution §II, Gap]
   > **→ Aktion:** Ergänze in `spec.md §Assumptions`: „Die Implementierung folgt dem TDD-Zyklus (Red→Green→Refactor) gemäß Constitution §II. Kein Implementierungs-Commit ohne vorangehenden Red-Commit." Dann Item abhaken.
@@ -179,8 +178,8 @@
   > **Status**: Die Begründungen sind vorhanden, setzen aber teils Iterator-Invalidierungs-Wissen voraus.
   > **→ Aktion:** Ergänze in `research.md §Decision 2` einen Satz: „Zur Erklärung für Lernende: Bei einer `List<TView>` würde das Entfernen eines Elements während einer foreach-Schleife eine Ausnahme werfen — die zirkuläre Liste mit vorab-gecachtem `Next`-Zeiger vermeidet dieses Problem."
 
-- [ ] CHK042 — Sind Commit-Konventionen (`test(red):`, `feat(green):`) für Auszubildende erklärt? [Didactic, plan.md §TDD-Commit-Plan, Gap]
-  > **→ Aktion:** Ergänze in `plan.md §TDD-Commit-Plan` vor der Tabelle einen kurzen Erklärungsblock: „Die Commit-Präfixe folgen dem Conventional-Commits-Format: `test(red):` = Test-Commit (muss fehlschlagen); `feat(green):` = Implementierungs-Commit (macht Tests grün); `refactor:` = Aufräumarbeit ohne Funktionsänderung."
+- [x] CHK042 — Sind Commit-Konventionen (`test(red):`, `feat(green):`) für Auszubildende erklärt? [Didactic, plan.md §TDD-Commit-Plan, Gap]
+  > **Abgehakt**: `plan.md §TDD-Commit-Plan` enthält jetzt einen Erklärungsblock vor der Commit-Liste mit Definitionen für `test(red):`, `feat(green):` und `refactor:`.
 
 - [x] CHK043 — Enthält `quickstart.md` für jedes Codebeispiel einen deutschen UND englischen Kommentarblock? [Didactic, quickstart.md, Constitution §III]
   > **Abgehakt**: Alle 5 Beispiele in `quickstart.md` haben bilingualen Inline-Kommentar (DE zuerst, EN danach).
@@ -204,8 +203,8 @@
 
 ## Dependencies & Assumptions — Abhängigkeiten und Annahmen
 
-- [ ] CHK047 — Ist die TConsoleBuffer-Verschiebung als formale Vorbedingung in `spec.md §Dependencies` verankert? [Dependency, Spec §Dependencies, plan.md]
-  > **→ Aktion:** Aktuell steht in `spec.md §Dependencies` noch „TuiVision.Drivers.Console: TConsoleBuffer". Ersetze durch: „TuiVision.Core: TConsoleBuffer ← wird von Drivers.Console nach Core verschoben (Vorbedingung für FR-014–016; Plan §1.1)."
+- [x] CHK047 — Ist die TConsoleBuffer-Verschiebung als formale Vorbedingung in `spec.md §Dependencies` verankert? [Dependency, Spec §Dependencies, plan.md]
+  > **Abgehakt**: `spec.md §Dependencies` korrigiert: „TuiVision.Core: TConsoleBuffer ← wird von Drivers.Console nach Core verschoben (Vorbedingung für FR-014–016; Plan §1.1)."
 
 - [ ] CHK048 — Ist die Kreislisten-Annahme in `spec.md §Assumptions` mit `research.md §Decision 2` verknüpft? [Traceability, Spec §Assumptions, research.md §Decision 2]
   > **→ Aktion:** Ergänze in `spec.md §Assumptions` nach dem Kreislisten-Satz: „(Begründung: `research.md §Decision 2`)" — ein Hyperlink oder textueller Verweis genügt.
@@ -213,9 +212,8 @@
 - [x] CHK049 — Ist die Abhängigkeit TConsoleDriver → TConsoleBuffer (nach Move) in `plan.md §Project Structure` beschrieben? [Dependency, plan.md §Project Structure]
   > **Abgehakt**: `plan.md §1.1`: „TuiVision.Drivers.Console.csproj: Projektreferenz auf TuiVision.Core bleibt."
 
-- [~] CHK050 — Sind die spezifisch betroffenen Tests aus `TuiVision.Drivers.Tests` namentlich benannt? [Completeness, Spec §SC-002, plan.md §Project Structure]
-  > **Status**: `plan.md §1.1` erwähnt „passen nur den Using-Import an", aber keine Testnamen.
-  > **→ Aktion:** Ergänze in `plan.md §1.1`: „Betroffen: `ConsoleDriverTests` in `TuiVision.Drivers.Tests/Test1.cs`; Import-Änderung von `TuiVision.Drivers.Console` auf `TuiVision.Core`."
+- [x] CHK050 — Sind die spezifisch betroffenen Tests aus `TuiVision.Drivers.Tests` namentlich benannt? [Completeness, Spec §SC-002, plan.md §Project Structure]
+  > **Abgehakt**: `plan.md §1.1` ergänzt: „betroffen: `ConsoleDriverTests` in `TuiVision.Drivers.Tests/Test1.cs`; Import-Änderung von `TuiVision.Drivers.Console` auf `TuiVision.Core`."
 
 ---
 
@@ -223,9 +221,9 @@
 
 | Status | Anzahl | Items |
 |---|---|---|
-| ✅ Abgehakt | 15 | CHK013, CHK014, CHK015, CHK016, CHK017, CHK019, CHK025, CHK026, CHK032, CHK033, CHK034, CHK035, CHK043, CHK044, CHK049 |
-| 〜 Teilweise | 8 | CHK010, CHK011, CHK022, CHK031, CHK039, CHK041, CHK045, CHK050 |
-| ⬜ Offen | 27 | CHK001–009, CHK012, CHK018, CHK020, CHK021, CHK023, CHK024, CHK027–030, CHK036–038, CHK040, CHK042, CHK046–048 |
+| ✅ Abgehakt | 23 | CHK003, CHK004, CHK013, CHK014, CHK015, CHK016, CHK017, CHK019, CHK022, CHK024, CHK025, CHK026, CHK028, CHK032, CHK033, CHK034, CHK035, CHK042, CHK043, CHK044, CHK047, CHK049, CHK050 |
+| 〜 Teilweise | 6 | CHK010, CHK011, CHK031, CHK039, CHK041, CHK045 |
+| ⬜ Offen | 21 | CHK001, CHK002, CHK005–009, CHK012, CHK018, CHK020, CHK021, CHK023, CHK027, CHK029, CHK030, CHK036–038, CHK040, CHK046, CHK048 |
 
 ### Empfohlene Reihenfolge zur Abarbeitung
 
@@ -254,7 +252,28 @@ Die „Sofort in spec.md"-Items (CHK002, CHK006–009, CHK011, CHK029–030, CHK
    können im Nachgang adressiert werden.
 2. Erst Quick-Fixes — spec.md, plan.md und data-model.md mit den CHK-Aktionen bereinigen, dann /speckit.tasks.
 
+---                                                                                                                
+Verbleibende Offene — Klärungsbedarf:
 
+┌──────────────────────────────────┬────────────────────────────────────────────┬───────────┬─────────────────┐
+│            Kategorie             │                 CHK-Items                  │  Aufwand  │      Wann       │    
+├──────────────────────────────────┼────────────────────────────────────────────┼───────────┼─────────────────┤
+│ Direkte spec.md-Ergänzungen (1–2 │ CHK002, CHK005–009, CHK010, CHK011,        │ gering    │ Vor             │    
+│  Sätze, keine Entscheidung)      │ CHK029, CHK030, CHK031, CHK036–038, CHK040 │           │ /speckit.tasks  │
+├──────────────────────────────────┼────────────────────────────────────────────┼───────────┼─────────────────┤    
+│                                  │ CHK012 (data-model.md), CHK041             │           │ Vor             │
+│ Andere Dokument-Ergänzungen      │ (research.md), CHK046 (data-model.md       │ gering    │ /speckit.tasks  │    
+│                                  │ ASCII), CHK048 (spec.md Link)              │           │                 │    
+├──────────────────────────────────┼────────────────────────────────────────────┼───────────┼─────────────────┤
+│                                  │ CHK018 (Coverage-Tool), CHK020 (docfx      │           │                 │    
+│ Manuelles Review / PR-Gate       │ CI-Gate), CHK021 (SC-Nachweise), CHK027    │ PR-Review │ Vor Merge       │    
+│                                  │ (CEFR-B2)                                  │           │                 │
+├──────────────────────────────────┼────────────────────────────────────────────┼───────────┼─────────────────┤    
+│ Nach /speckit.tasks prüfen       │ CHK001, CHK023, CHK045                     │ —         │ Post-Tasks      │
+└──────────────────────────────────┴────────────────────────────────────────────┴───────────┴─────────────────┘
+
+Kein Entscheidungsbedarf bei keinem der verbleibenden Items — alles sind reine Ergänzungen basierend auf bereits   
+getroffenen Entscheidungen.
 ---
 
 ## Notes
