@@ -253,24 +253,12 @@ Die „Sofort in spec.md"-Items (CHK002, CHK006–009, CHK011, CHK029–030, CHK
 2. Erst Quick-Fixes — spec.md, plan.md und data-model.md mit den CHK-Aktionen bereinigen, dann /speckit.tasks.
 
 ---                                                                                                                
-Verbleibende Offene — Klärungsbedarf:
-
-┌──────────────────────────────────┬────────────────────────────────────────────┬───────────┬─────────────────┐
-│            Kategorie             │                 CHK-Items                  │  Aufwand  │      Wann       │    
-├──────────────────────────────────┼────────────────────────────────────────────┼───────────┼─────────────────┤
-│ Direkte spec.md-Ergänzungen (1–2 │ CHK002, CHK005–009, CHK010, CHK011,        │ gering    │ Vor             │    
-│  Sätze, keine Entscheidung)      │ CHK029, CHK030, CHK031, CHK036–038, CHK040 │           │ /speckit.tasks  │
-├──────────────────────────────────┼────────────────────────────────────────────┼───────────┼─────────────────┤    
-│                                  │ CHK012 (data-model.md), CHK041             │           │ Vor             │
-│ Andere Dokument-Ergänzungen      │ (research.md), CHK046 (data-model.md       │ gering    │ /speckit.tasks  │    
-│                                  │ ASCII), CHK048 (spec.md Link)              │           │                 │    
-├──────────────────────────────────┼────────────────────────────────────────────┼───────────┼─────────────────┤
-│                                  │ CHK018 (Coverage-Tool), CHK020 (docfx      │           │                 │    
-│ Manuelles Review / PR-Gate       │ CI-Gate), CHK021 (SC-Nachweise), CHK027    │ PR-Review │ Vor Merge       │    
-│                                  │ (CEFR-B2)                                  │           │                 │
-├──────────────────────────────────┼────────────────────────────────────────────┼───────────┼─────────────────┤    
-│ Nach /speckit.tasks prüfen       │ CHK001, CHK023, CHK045                     │ —         │ Post-Tasks      │
-└──────────────────────────────────┴────────────────────────────────────────────┴───────────┴─────────────────┘
+| Kategorie | CHK-Items | Aufwand | Wann |
+|---|---|---|---|
+| Direkte spec.md-Ergänzungen (1–2 Sätze, keine Entscheidung) | CHK002, CHK005–009, CHK010, CHK011, CHK029, CHK030, CHK031, CHK036–038, CHK040, CHK012 (data-model.md), CHK041 | gering | Vor `/speckit.tasks` |
+| Andere Dokument-Ergänzungen | (research.md), CHK046 (data-model.md ASCII), CHK048 (spec.md Link) | gering | `/speckit.tasks` |
+| Manuelles Review / PR-Gate | CHK018 (Coverage-Tool), CHK020 (docfx CI-Gate), CHK021 (SC-Nachweise), CHK027 (CEFR-B2) | PR-Review | Vor Merge |
+| Nach `/speckit.tasks` prüfen | CHK001, CHK023, CHK045 | — | Post-Tasks |
 
 Kein Entscheidungsbedarf bei keinem der verbleibenden Items — alles sind reine Ergänzungen basierend auf bereits   
 getroffenen Entscheidungen.
