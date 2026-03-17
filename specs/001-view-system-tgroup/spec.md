@@ -185,10 +185,10 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 
 - **SC-001**: Alle 18 funktionalen Anforderungen (FR-001 bis FR-018) sind durch mindestens einen Positiv- und — wo fachlich sinnvoll — einen Negativtest abgedeckt.
 - **SC-002**: `dotnet test` läuft in CI ohne Fehler; alle bestehenden 19 Tests bleiben grün.
-- **SC-003**: Die Testabdeckung (Line Coverage) für `TuiVision.Controls` erreicht mindestens 70 % (Pflichtenheft Abschnitt 9.4 Nr. 1).
+- **SC-003**: Die Testabdeckung (Line Coverage) für `TuiVision.Controls` erreicht mindestens 70 % (Pflichtenheft Abschnitt 9.4 Nr. 1). Gemessen mit `dotnet-coverage`; Metrik: Line Coverage. AGENTS.md und CLAUDE.md ergänzen, falls dort noch nicht vorhanden.
 - **SC-004**: Ein Entwickler kann eine `TGroup` mit zwei Kind-Views erstellen, Fokus wechseln und ein Tastaturereignis erfolgreich an die fokussierte View dispatchen — nachweisbar durch einen Integrationstest.
 - **SC-005**: Das Neuzeichnen einer Gruppe mit drei Kind-Views (eine davon unsichtbar) beschreibt den Puffer nur für sichtbare Views — nachweisbar durch einen Snapshot-Test gegen den `TConsoleBuffer`.
-- **SC-006**: Die vollständige öffentliche API von `TGroup` und die neuen `TView`-Mitglieder (`Owner`, `Draw`, `DrawView`) sind mit bilingualen XML-Kommentaren (Deutsch zuerst, Englisch danach) dokumentiert und durch `docfx` fehlerfrei verarbeitbar.
+- **SC-006**: Die vollständige öffentliche API von `TGroup` und die neuen `TView`-Mitglieder (`Owner`, `Draw`, `DrawView`) sind mit bilingualen XML-Kommentaren (Deutsch zuerst, Englisch danach) dokumentiert und durch `docfx` fehlerfrei verarbeitbar. Gate: `docfx docfx.json` im CI-Workflow muss mit Exit-Code 0 abschließen.
 
 ---
 
