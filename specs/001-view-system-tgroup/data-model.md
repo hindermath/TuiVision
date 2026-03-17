@@ -71,10 +71,10 @@
 
 #### Eigenschaften / Properties
 
-| Eigenschaft | Typ | Beschreibung / Description |
-|---|---|---|
-| `Current` | `TView?` | Aktuell fokussierte Kind-View / Currently focused child view |
-| `Phase` | `DrawPhase` | Interne Dispatch-Phase / Internal dispatch phase |
+| Eigenschaft | Typ | Beschreibung / Description                                    |
+|---|---|---------------------------------------------------------------|
+| `Current` | `TView?` | Aktuell fokussierte Kind-View.Initial: `null`; wird nicht automatisch bei `Insert` gesetzt. / Currently focused child view |
+| `Phase` | `DrawPhase` | Interne Dispatch-Phase / Internal dispatch phase              |
 
 #### Methoden / Methods
 
