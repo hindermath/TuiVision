@@ -122,6 +122,7 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 
 - Was passiert, wenn `Insert` dieselbe View zweimal aufgerufen wird? → Wirft `ArgumentException`; doppeltes Insert ist ein Vertragsfehler.
 - Was passiert, wenn `Draw()` einer Kind-View eine Exception wirft? → Exception propagiert; kein stilles Schlucken.
+- Was passiert, wenn `SelectNext` auf einer leeren Gruppe (keine Kind-Views) aufgerufen wird? → No-Op; kein Fehler, kein Fokus-Wechsel.
 - Was passiert, wenn `SelectNext` auf einer Gruppe mit genau einer auswählbaren View aufgerufen wird? → Die View bleibt fokussiert, kein Loop.
 - Was passiert bei verschachtelten Gruppen (Gruppe in Gruppe)? → Ereignis-Dispatching und Focus-Traversal gelten nur für direkte Kind-Views; verschachtelte Gruppen verwalten ihren eigenen Fokus.
 - Was passiert, wenn `GrowTo` auf einer Gruppe aufgerufen wird? → Kind-Views behalten ihre absolute Position; Größenänderung betrifft nur den Container selbst (GrowMode ist optionale Erweiterung dieser Phase).
@@ -135,8 +136,8 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 **TGroup — Lebenszyklus und Kind-Verwaltung**
 
 - **FR-001**: Das System MUSS eine `TGroup`-Klasse bereitstellen, die von `TView` erbt und eine geordnete Liste von Kind-Views verwaltet.
-- **FR-002**: `TGroup.Insert(view)` MUSS eine Kind-View in die interne Liste aufnehmen und deren `Owner`-Eigenschaft auf die Gruppe setzen. Wird dieselbe View-Instanz ein zweites Mal übergeben, MUSS eine `ArgumentException` geworfen werden.
-- **FR-003**: `TGroup.Remove(view)` MUSS eine Kind-View aus der Liste entfernen und deren `Owner`-Eigenschaft auf `null` setzen. Wird eine View übergeben, die nicht zur Gruppe gehört, MUSS eine `ArgumentException` geworfen werden.
+- **FR-002**: `TGroup.Insert(view)` MUSS eine Kind-View in die interne Liste aufnehmen und deren `Owner`-Eigenschaft auf die Gruppe setzen. Wird `null` übergeben, MUSS eine `ArgumentNullException` geworfen werden. Wird dieselbe View-Instanz ein zweites Mal übergeben, MUSS eine `ArgumentException` geworfen werden.
+- **FR-003**: `TGroup.Remove(view)` MUSS eine Kind-View aus der Liste entfernen und deren `Owner`-Eigenschaft auf `null` setzen. Wird `null` übergeben, MUSS eine `ArgumentNullException` geworfen werden. Wird eine View übergeben, die nicht zur Gruppe gehört, MUSS eine `ArgumentException` geworfen werden.
 - **FR-004**: `TGroup.ShutDown()` MUSS alle Kind-Views rekursiv herunterfahren und die Kind-Liste leeren, bevor `TView.ShutDown()` aufgerufen wird.
 - **FR-005**: `TView` MUSS eine `Owner`-Eigenschaft vom Typ `TGroup?` besitzen, die die übergeordnete Gruppe referenziert.
 
@@ -148,9 +149,9 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 **TGroup — Fokus-Management**
 
 - **FR-008**: `TGroup` MUSS eine `Current`-Eigenschaft vom Typ `TView?` besitzen, die die aktuell fokussierte Kind-View referenziert.
-- **FR-009**: `TGroup.SelectNext(bool forward)` MUSS den Fokus zur nächsten (oder vorherigen) auswählbaren, sichtbaren und nicht deaktivierten Kind-View verschieben. Die Traversal ist zirkulär: nach der letzten View wird zur ersten gewechselt und umgekehrt.
+- **FR-009**: `TGroup.SelectNext(bool forward)` MUSS den Fokus zur nächsten (oder vorherigen) auswählbaren, sichtbaren und nicht deaktivierten Kind-View verschieben. Die Traversal ist zirkulär: nach der letzten View wird zur ersten gewechselt und umgekehrt. Bei leerer Gruppe (keine Kind-Views) ist die Methode ein No-Op — kein Fehler, kein Fokus-Wechsel.
 - **FR-010**: Beim Fokuswechsel MUSS die bisher fokussierte View den `Focused`-State verlieren und die neue View ihn erhalten.
-- **FR-018**: `TGroup` MUSS eine öffentliche Methode `SetFocus(TView view)` bereitstellen, die den Fokus direkt auf eine bestimmte Kind-View setzt. `SelectNext` verwendet `SetFocus` intern. Wird eine View übergeben, die nicht zur Gruppe gehört, MUSS eine `ArgumentException` geworfen werden.
+- **FR-018**: `TGroup` MUSS eine öffentliche Methode `SetFocus(TView view)` bereitstellen, die den Fokus direkt auf eine bestimmte Kind-View setzt. `SelectNext` verwendet `SetFocus` intern. Wird `null` übergeben, MUSS eine `ArgumentNullException` geworfen werden. Wird eine View übergeben, die nicht zur Gruppe gehört, MUSS eine `ArgumentException` geworfen werden.
 
 **TView — Draw-Protokoll**
 
@@ -210,6 +211,11 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 
 - Q: `SetFocus` — eigenständige öffentliche Methode oder nur interner Mechanismus von `SelectNext`? → A: Eigenständige öffentliche Methode (Option A); `SelectNext` ruft `SetFocus` intern auf; bei Übergabe einer Nicht-Kind-View → `ArgumentException` (FR-018 ergänzt).
 - Q: `Remove(view)` mit nicht-enthaltener View — ignorieren oder Exception? → A: Wirft `ArgumentException` (Option A); konsistenter Vertrag mit Insert und SetFocus (FR-003 aktualisiert).
+
+### Session 2026-03-17
+
+- Q: `null`-Übergabe an `Insert`, `Remove`, `SetFocus` — `ArgumentNullException` oder `ArgumentException`? → A: `ArgumentNullException` (Option A); .NET-konform, `ArgumentNullException.ThrowIfNull()` nutzbar; trennbar von anderen Vertragsfehlern (FR-002, FR-003, FR-018 aktualisiert).
+- Q: `SelectNext` bei leerer Gruppe (keine Kind-Views) — No-Op oder Exception? → A: No-Op (Option A); kein Fehler, kein Fokus-Wechsel; konform zum C++-Original (`last == 0` → keine Iteration). FR-009 und Edge Cases aktualisiert.
 
 ---
 
