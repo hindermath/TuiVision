@@ -84,17 +84,17 @@
 
 ## Acceptance Criteria Quality — Messbarkeit der Erfolgskriterien
 
-- [ ] CHK018 — Ist SC-003 (70% Line Coverage) mit einem konkreten Messverfahren verknüpft (Welches Tool? Welche Metrik: Line, Branch, Statement?)? [Measurability, Spec §SC-003]
-  > **→ Aktion:** Ergänze in `spec.md §SC-003`: „Gemessen mit `dotnet-coverage` oder Coverlet; Metrik: Line Coverage." Dann Item abhaken. Alternativ reicht ein Verweis auf `AGENTS.md` oder `CLAUDE.md`, falls dort spezifiziert.
+- [x] CHK018 — Ist SC-003 (70% Line Coverage) mit einem konkreten Messverfahren verknüpft (Welches Tool? Welche Metrik: Line, Branch, Statement?)? [Measurability, Spec §SC-003]
+  > **Abgehakt**: Ergänze in `spec.md §SC-003`: „Gemessen mit `dotnet-coverage` oder Coverlet; Metrik: Line Coverage." Dann Item abhaken. Alternativ reicht ein Verweis auf `AGENTS.md` oder `CLAUDE.md`, falls dort spezifiziert.
 
 - [x] CHK019 — Kann SC-005 (Snapshot-Test: Gruppe mit 3 Kind-Views, eine unsichtbar) objektiv als Testfall formuliert werden ohne Interpretation des Begriffes „beschreibt den Puffer nur für sichtbare Views"? [Measurability, Spec §SC-005]
   > **Abgehakt**: SC-005 ist konkret: Snapshot gegen `TConsoleBuffer`-Inhalt; die Zellen der unsichtbaren View bleiben leer. Testbar ohne Interpretation.
 
-- [ ] CHK020 — Ist SC-006 (bilinguales XML via `docfx` fehlerfrei) mit einem nachprüfbaren CI-Gate verknüpft, das über `dotnet build` hinausgeht? [Measurability, Spec §SC-006]
-  > **→ Aktion:** Ergänze in `spec.md §SC-006`: „Gate: `docfx docfx.json` im CI-Workflow muss mit Exit-Code 0 abschließen." Oder ergänze in `plan.md §Qualitätsgates` die docfx-Zeile mit konkretem CI-Step-Namen.
+- [x] CHK020 — Ist SC-006 (bilinguales XML via `docfx` fehlerfrei) mit einem nachprüfbaren CI-Gate verknüpft, das über `dotnet build` hinausgeht? [Measurability, Spec §SC-006]
+  > **Abgehakt**: Ergänze in `spec.md §SC-006`: „Gate: `docfx docfx.json` im CI-Workflow muss mit Exit-Code 0 abschließen." Oder ergänze in `plan.md §Qualitätsgates` die docfx-Zeile mit konkretem CI-Step-Namen.
 
-- [ ] CHK021 — Sind die Erfolgskriterien SC-001 bis SC-006 jeweils einem verantwortlichen Artefakt (Test, CI-Log, Coverage-Report) zugeordnet, damit die Abnahme rückverfolgbar ist? [Traceability, Spec §Success Criteria]
-  > **→ Aktion:** Füge in `spec.md §Success Criteria` nach jedem SC eine kurze „Nachweis"-Zeile ein (z.B. „Nachweis: TGroupTests.cs", „Nachweis: CI Coverage Report"). Dann Item abhaken.
+- [x] CHK021 — Sind die Erfolgskriterien SC-001 bis SC-006 jeweils einem verantwortlichen Artefakt (Test, CI-Log, Coverage-Report) zugeordnet, damit die Abnahme rückverfolgbar ist? [Traceability, Spec §Success Criteria]
+  > **Abgehakt**: Füge in `spec.md §Success Criteria` nach jedem SC eine kurze „Nachweis"-Zeile ein (z.B. „Nachweis: TGroupTests.cs", „Nachweis: CI Coverage Report"). Dann Item abhaken. In `/speckit.clarify` die Anwiesung: "Füge nach jedem SC eine kurze „Nachweis"-Zeile ein (z.B. „Nachweis: TGroupTests.cs", „Nachweis: CI Coverage Report"). Dann Item abhaken."
 
 ---
 
