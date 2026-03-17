@@ -43,6 +43,8 @@ und ein Tastaturereignis wird an die fokussierte Kind-Ansicht weitergeleitet.
 2. **Given** eine `TGroup` mit einer sichtbaren Kind-View, **When** `Remove(view)` aufgerufen wird, **Then** ist die View nicht mehr in der Kind-Liste und `Owner` ist `null`.
 3. **Given** eine `TGroup` mit zwei Kind-Views, **When** `HandleEvent` mit einem Tastaturereignis aufgerufen wird, **Then** empfängt nur die fokussierte Kind-View das Ereignis.
 4. **Given** eine `TGroup`, **When** `ShutDown()` aufgerufen wird, **Then** werden alle Kind-Views rekursiv heruntergefahren und die Kind-Liste ist leer.
+5. **Given** eine `TGroup` mit einer Kind-View mit gesetzter `PreProcess`-Option und einer fokussierten Kind-View, **When** `HandleEvent` mit einem Tastaturereignis aufgerufen wird, **Then** empfängt die PreProcess-View das Ereignis vor der fokussierten View (Phase 1 vor Phase 2).
+6. **Given** eine `TGroup` mit einer Kind-View mit gesetzter `PostProcess`-Option und einer fokussierten Kind-View, **When** `HandleEvent` mit einem Tastaturereignis aufgerufen wird und die fokussierte View das Ereignis nicht auf `Nothing` setzt, **Then** empfängt die PostProcess-View das Ereignis nach der fokussierten View (Phase 3 nach Phase 2).
 
 ---
 
@@ -194,7 +196,7 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 
 - `TGroup` verwendet zunächst eine einfache doppelt-verlinkte Kreisliste (analog zum C++-Original mit `prev`/`next`) statt einer generischen .NET-Collection, um das Original-Verhalten exakt abzubilden.
 - `GrowMode`-Unterstützung für Kind-Views (automatisches Mitskalieren) wird in dieser Phase als optionale Erweiterung behandelt, da sie nicht zum Kern-Fokus gehört.
-- Das Zeichenprotokoll nutzt den bestehenden `TConsoleBuffer` aus `TuiVision.Drivers.Console`; eine direkte Kopplung der Treiberschicht an `TGroup` wird durch ein Interface oder Parameter-Übergabe vermieden.
+- Das Zeichenprotokoll nutzt `TConsoleBuffer` aus `TuiVision.Core` (nach Verschiebung aus `TuiVision.Drivers.Console`; Begründung: `research.md §Decision 1`); eine direkte Kopplung der Treiberschicht an `TGroup` entfällt damit.
 - Phase 3 liefert keine sichtbare Benutzeroberfläche — nur die Infrastruktur. Sichtbare Ergebnisse entstehen erst ab Phase 4 (TProgram/TApplication).
 
 ---
@@ -217,11 +219,16 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 - Q: `null`-Übergabe an `Insert`, `Remove`, `SetFocus` — `ArgumentNullException` oder `ArgumentException`? → A: `ArgumentNullException` (Option A); .NET-konform, `ArgumentNullException.ThrowIfNull()` nutzbar; trennbar von anderen Vertragsfehlern (FR-002, FR-003, FR-018 aktualisiert).
 - Q: `SelectNext` bei leerer Gruppe (keine Kind-Views) — No-Op oder Exception? → A: No-Op (Option A); kein Fehler, kein Fokus-Wechsel; konform zum C++-Original (`last == 0` → keine Iteration). FR-009 und Edge Cases aktualisiert.
 
+### Session 2026-03-17 (Fortsetzung)
+
+- Q: Sollen für FR-006 (Drei-Phasen-Dispatch) eigene Given/When/Then-Szenarien für PreProcess- und PostProcess-Phase ergänzt werden? → A: Ja, beide (Option A); PreProcess-View empfängt Event vor fokussierter View (Phase 1), PostProcess-View danach (Phase 3); User Story 1 Szenarien 5 und 6 ergänzt.
+- Q: TDD-Commit-Granularität für FR-005/011/012 — aufteilen oder Sammel-Commit beibehalten? → A: Sammel-Commit beibehalten (Option B); Owner/Draw/DrawView sind funktional abhängig und bilden eine logische Implementierungseinheit; plan.md §TDD-Commit-Plan unverändert.
+
 ---
 
 ## Dependencies
 
 - `TuiVision.Core`: `TPoint`, `TRect`, `TEvent`, `TObject` — vollständig portiert (Phase 2 abgeschlossen).
 - `TuiVision.Controls`: `TView` — vollständig portiert, Tests grün.
-- `TuiVision.Drivers.Console`: `TConsoleBuffer` — vorhanden; für FR-014 bis FR-016 referenziert.
+- `TuiVision.Core`: `TConsoleBuffer` ← wird von `TuiVision.Drivers.Console` nach `TuiVision.Core` verschoben (Vorbedingung für FR-014–016; Plan §1.1).
 - Referenz-Quellcode: `tv203s/contrib/tvision/classes/tgroup.cc`, `tview.cc` (nicht verändern).
