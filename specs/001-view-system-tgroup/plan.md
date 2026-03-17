@@ -126,7 +126,8 @@ in `research.md`. Zusammenfassung:
 - Neue Dateien `TConsoleCell.cs` und `TConsoleBuffer.cs` in `TuiVision.Core/`
 - `TuiVision.Drivers.Console/Class1.cs` → zwei neue Dateien: `TConsoleDriver.cs` (nur Treiber)
 - `TuiVision.Drivers.Console.csproj`: Projektreferenz auf `TuiVision.Core` bleibt
-- Alle bestehenden Tests in `TuiVision.Drivers.Tests` passen nur den Using-Import an
+- Alle bestehenden Tests in `TuiVision.Drivers.Tests` passen nur den Using-Import an; betroffen: `ConsoleDriverTests` in `TuiVision.Drivers.Tests/Test1.cs` — Import-Änderung von `TuiVision.Drivers.Console` auf `TuiVision.Core`
+- `TConsoleCell` und `TConsoleBuffer` enthalten kein plattformspezifisches `#if`; `ConsoleColor` ist ein managed .NET-Typ ohne OS-Abhängigkeit (Constitution §V).
 
 ### 1.2 TView — Neue Mitglieder
 
@@ -262,7 +263,12 @@ UnlockDraw():
 ## TDD-Commit-Plan
 
 Gemäß Constitution II (NON-NEGOTIABLE): Jeder Implementierungs-Commit MUSS einem
-vorangehenden Red-Commit folgen. Reihenfolge verbindlich:
+vorangehenden Red-Commit folgen. Reihenfolge verbindlich.
+
+**Commit-Präfixe (Conventional Commits — für Lernende):**
+- `test(red):` — Test-Commit, der fehlschlagen MUSS (Red-Phase). Kein Produktionscode.
+- `feat(green):` — Implementierungs-Commit, der die Red-Tests grün macht. Kein Refactoring.
+- `refactor:` — Aufräumarbeit ohne Funktionsänderung; alle Tests bleiben grün.
 
 ```
 1. test(red): move TConsoleBuffer to Core — failing imports
