@@ -1,0 +1,265 @@
+# Didaktische Gesamtprüfung: View-System Phase 3 — TGroup, Zeichenpuffer, Fokus/States
+
+**Purpose**: Cross-Artifact-Qualitätsprüfung aller Spezifikations- und Planungsartefakte unter didaktischen, TDD-, Constitution- und API-Vertrags-Gesichtspunkten für Lernmaterial (Fachinformatiker Anwendungsentwicklung)
+**Created**: 2026-03-16 | **Last reviewed**: 2026-03-17
+**Feature**: [spec.md](../spec.md) | [plan.md](../plan.md) | [research.md](../research.md) | [data-model.md](../data-model.md)
+**Scope**: Alle vier Artefakte (Q1=C) | Didaktische Qualität (Q2=C) | TDD + Constitution + API-Verträge (Q3=C)
+
+---
+
+## Legende / Legend
+
+- `[x]` — Abgehakt: Anforderung ist in den Artefakten vollständig und eindeutig spezifiziert.
+- `[~]` — Teilweise: Anforderung ist in einem Artefakt gelöst, in einem anderen noch offen.
+- `[ ]` — Offen: Anforderung fehlt oder ist unzureichend spezifiziert.
+- **→ Aktion:** Hinweis, wie das Item im nächsten `/speckit.clarify` oder direkt bearbeitet wird.
+
+---
+
+## Requirement Completeness — Vollständigkeit der Anforderungen
+
+- [ ] CHK001 — Sind für alle 18 FRs (FR-001 bis FR-018) sowohl Positiv- als auch Negativszenarien in `spec.md` explizit beschrieben? [Completeness, Spec §User Scenarios]
+  > **→ Aktion:** Die vier User Stories decken die Hauptflüsse ab, aber FRs wie FR-013 (Draw in Z-Order), FR-014–016 (Buffer) und FR-017 (SetState) haben keine eigenen Negativszenarien. In `/speckit.clarify` fragen: „Sollen für FR-013/014–017 dedizierte Negativszenarien (z.B. Draw mit leerem Buffer, SetState auf bereits aktivem State) in spec.md ergänzt werden?" Alternativ: Direkt in spec.md §Edge Cases ergänzen.
+
+- [ ] CHK002 — Ist der Unterschied zwischen `DrawView()` (Template-Methode) und `Draw()` (Überschreibungs-Hook) als eigenständige Anforderung mit klarer Rollentrennung in `spec.md` formuliert? [Completeness, Spec §FR-011, FR-012]
+  > **→ Aktion:** FR-011 und FR-012 existieren, aber das Template-Method-Muster (Warum die Trennung?) ist nicht erklärt. Füge in `spec.md §FR-011` einen Satz ein: „`DrawView()` ist die Template-Methode; abgeleitete Klassen überschreiben ausschließlich `Draw()`." Dann abhaken.
+
+- [ ] CHK003 — Sind alle drei Event-Dispatch-Phasen (PreProcess, Focused, PostProcess) mit je einem eigenen Akzeptanzszenario in `spec.md` abgedeckt? [Completeness, Spec §FR-006]
+  > **→ Aktion:** User Story 1 Szenario 3 deckt nur die Focused-Phase ab. PreProcess und PostProcess fehlen als Szenarien. Ergänze in User Story 1 zwei weitere Given/When/Then für PreProcess- und PostProcess-Views, dann abhaken.
+
+- [ ] CHK004 — Ist die Anforderung für `TGroup.ForEach()` (sichere Iteration bei gleichzeitiger Mutation) in `spec.md` oder `plan.md` explizit dokumentiert? [Completeness, Gap]
+  > **→ Aktion:** `ForEach` ist in `plan.md §1.3` als interne Methode beschrieben, aber nicht als FR in `spec.md`. Da ForEach internal ist, reicht die Dokumentation in `plan.md`. Prüfe: Ist `ForEach` aus Nutzersicht relevant? Wenn nein → `plan.md`-Eintrag genügt → Item abhaken.
+
+- [ ] CHK005 — Sind die Anforderungen für den Rückgabewert und Seiteneffekt von `LockDraw()`/`UnlockDraw()` bei mehrfach verschachtelten Aufrufen (Lock-Zähler > 1) in `spec.md` spezifiziert? [Completeness, Spec §FR-016]
+  > **→ Aktion:** FR-016 beschreibt einfaches Lock/Unlock, aber nicht `LockDraw(); LockDraw(); UnlockDraw();` (Zähler bleibt bei 1). Ergänze in `spec.md §Edge Cases`: „Mehrfaches LockDraw() inkrementiert den Zähler; erst wenn UnlockDraw() denselben Aufrufanzahl erreicht, wird neu gezeichnet." Dann Item abhaken.
+
+- [ ] CHK006 — Ist die `ShutDown()`-Iterationsreihenfolge (LIFO / rückwärts) in `spec.md` als nachprüfbare Anforderung formuliert oder nur in `research.md` als Designentscheidung vermerkt? [Completeness, Gap]
+  > **→ Aktion:** Nur in `research.md` Decision 5 dokumentiert. Ergänze in `spec.md §FR-004` einen Satz: „Die Kind-Views werden in umgekehrter Einfügereihenfolge (LIFO) heruntergefahren." Dann Item abhaken.
+
+---
+
+## Requirement Clarity — Klarheit und Eindeutigkeit
+
+- [ ] CHK007 — Ist „Z-Reihenfolge" in FR-013 (`TGroup.Draw()` zeichnet in Z-Reihenfolge) mit einer messbaren Definition versehen, die als Testkriterium verwendbar ist? [Clarity, Spec §FR-013]
+  > **→ Aktion:** Ergänze in `spec.md §FR-013`: „Z-Reihenfolge = Einfügereihenfolge; erste eingefügte View wird zuerst (unten), zuletzt eingefügte zuletzt (oben) gezeichnet." Dann Item abhaken.
+
+- [ ] CHK008 — Ist „sichtbar" in FR-012 (`DrawView()` prüft Sichtbarkeit) eindeutig auf `TViewState.Visible` zurückgeführt, ohne Verwechslungsgefahr mit `TViewState.Exposed`? [Clarity, Spec §FR-012]
+  > **→ Aktion:** Ergänze in `spec.md §FR-012`: „sichtbar = `GetState(TViewState.Visible) == true`". Dann Item abhaken. (2 Minuten Aufwand.)
+
+- [ ] CHK009 — Ist der Begriff „direkte Kind-Views" in FR-017 (State-Propagation) klar von „rekursiver Propagation in verschachtelte Gruppen" abgegrenzt? [Clarity, Spec §FR-017]
+  > **→ Aktion:** `spec.md §Edge Cases` sagt für Fokus „verschachtelte Gruppen verwalten ihren eigenen Fokus", aber FR-017 (State-Propagation) erwähnt das nicht. Füge in FR-017 hinzu: „Verschachtelte Gruppen erhalten die State-Änderung als eine Kind-View, propagieren sie aber intern eigenständig." Dann Item abhaken.
+
+- [~] CHK010 — Ist das Verhalten von `SetFocus()` für eine aktuell bereits fokussierte View (kein Fokuswechsel notwendig) in `spec.md` beschrieben? [Clarity, Spec §FR-018, Ambiguity]
+  > **Status**: Gelöst in `plan.md §1.3` (SetFocus-Pseudocode: `if Current == view: return`), aber **nicht in `spec.md` FR-018**.
+  > **→ Aktion:** Ergänze in `spec.md §FR-018`: „Wird die bereits fokussierte View übergeben, ist die Methode ein No-Op." Dann Item vollständig abhaken.
+
+- [~] CHK011 — Ist „ausstehende `DrawView()`-Aufrufe nachholen" in FR-016 operationalisiert: genau ein Aufruf nach Unlock oder ein Aufruf pro aufgelaufenem Draw? [Clarity, Spec §FR-016, Ambiguity]
+  > **Status**: In `plan.md §1.4` gelöst (`if _lockFlag == 0: DrawView()` = genau ein Aufruf), aber `spec.md` FR-016 bleibt vage.
+  > **→ Aktion:** Ergänze in `spec.md §FR-016`: „Nach Freigabe wird `DrawView()` genau einmal aufgerufen, unabhängig von der Anzahl gesperrter Aufrufe." Dann Item vollständig abhaken.
+
+- [ ] CHK012 — Ist in `data-model.md` der Initialzustand von `Current` (null bei leerer Gruppe, erste View nach erstem Insert?) eindeutig spezifiziert? [Clarity, data-model.md §TGroup]
+  > **→ Aktion:** `data-model.md §TGroup` zeigt `Current: TView?` ohne Initialwert. Ergänze: „Initial: `null`; wird nicht automatisch bei `Insert` gesetzt." Dann Item abhaken.
+
+---
+
+## Requirement Consistency — Konsistenz zwischen Artefakten
+
+- [x] CHK013 — Stimmt die Anzahl der Functional Requirements in SC-001 (`spec.md`: „FR-001 bis FR-018") mit der tatsächlichen Liste der FRs im Requirements-Abschnitt überein? [Consistency, Spec §SC-001]
+  > **Abgehakt**: FR-001–FR-018 = 18 FRs; SC-001 referenziert korrekt „FR-001 bis FR-018".
+
+- [x] CHK014 — Ist die in `research.md` Decision 2 dokumentierte Traversal-Konvention (`First() = _last?.Next`) konsistent mit der `SelectNext`-Beschreibung in `plan.md §1.3`? [Consistency, research.md §Decision 2, plan.md §1.3]
+  > **Abgehakt**: `research.md` „First() → _last?._next" und `plan.md §1.3` „start = Current ?? First()" sind konsistent.
+
+- [x] CHK015 — Stimmt die `DrawView()`-Lock-Prüflogik aus `plan.md §1.2` (`Owner?.IsLocked ?? false`) mit FR-012 in `spec.md` überein, die Lock als Eigenschaft der Gruppe, nicht der View, beschreibt? [Consistency, Spec §FR-012, plan.md §1.2]
+  > **Abgehakt**: Beide Stellen beschreiben Lock als Eigenschaft der Gruppe; Prüfung via `Owner`.
+
+- [x] CHK016 — Ist der in `research.md` Decision 4 beschriebene `internal`-Sichtbarkeitsgrad für `TView.Next` konsistent mit der Aussage in `data-model.md`, die ebenfalls `internal` für `Next` angibt? [Consistency, research.md §Decision 4, data-model.md §TView]
+  > **Abgehakt**: `research.md` Decision 4 und `data-model.md §TView` stimmen überein: `internal TView? Next`.
+
+- [x] CHK017 — Spiegeln die Dateipfade in `data-model.md §Dateistruktur` die Entscheidungen aus `plan.md §Project Structure` widerspruchsfrei wider (insbesondere: `Class1.cs` → `TConsoleDriver.cs`)? [Consistency, data-model.md, plan.md §Project Structure]
+  > **Abgehakt**: Beide Artefakte nennen `TConsoleDriver.cs` als Zieldatei.
+
+---
+
+## Acceptance Criteria Quality — Messbarkeit der Erfolgskriterien
+
+- [ ] CHK018 — Ist SC-003 (70% Line Coverage) mit einem konkreten Messverfahren verknüpft (Welches Tool? Welche Metrik: Line, Branch, Statement?)? [Measurability, Spec §SC-003]
+  > **→ Aktion:** Ergänze in `spec.md §SC-003`: „Gemessen mit `dotnet-coverage` oder Coverlet; Metrik: Line Coverage." Dann Item abhaken. Alternativ reicht ein Verweis auf `AGENTS.md` oder `CLAUDE.md`, falls dort spezifiziert.
+
+- [x] CHK019 — Kann SC-005 (Snapshot-Test: Gruppe mit 3 Kind-Views, eine unsichtbar) objektiv als Testfall formuliert werden ohne Interpretation des Begriffes „beschreibt den Puffer nur für sichtbare Views"? [Measurability, Spec §SC-005]
+  > **Abgehakt**: SC-005 ist konkret: Snapshot gegen `TConsoleBuffer`-Inhalt; die Zellen der unsichtbaren View bleiben leer. Testbar ohne Interpretation.
+
+- [ ] CHK020 — Ist SC-006 (bilinguales XML via `docfx` fehlerfrei) mit einem nachprüfbaren CI-Gate verknüpft, das über `dotnet build` hinausgeht? [Measurability, Spec §SC-006]
+  > **→ Aktion:** Ergänze in `spec.md §SC-006`: „Gate: `docfx docfx.json` im CI-Workflow muss mit Exit-Code 0 abschließen." Oder ergänze in `plan.md §Qualitätsgates` die docfx-Zeile mit konkretem CI-Step-Namen.
+
+- [ ] CHK021 — Sind die Erfolgskriterien SC-001 bis SC-006 jeweils einem verantwortlichen Artefakt (Test, CI-Log, Coverage-Report) zugeordnet, damit die Abnahme rückverfolgbar ist? [Traceability, Spec §Success Criteria]
+  > **→ Aktion:** Füge in `spec.md §Success Criteria` nach jedem SC eine kurze „Nachweis"-Zeile ein (z.B. „Nachweis: TGroupTests.cs", „Nachweis: CI Coverage Report"). Dann Item abhaken.
+
+---
+
+## TDD Traceability — Nachvollziehbarkeit der Red→Green-Sequenz
+
+- [~] CHK022 — Ist für jede der 15 Commit-Stufen aus `plan.md §TDD-Commit-Plan` eine eindeutige Zuordnung zu mindestens einem FR (FR-001–FR-018) dokumentiert? [Traceability, plan.md §TDD-Commit-Plan]
+  > **Status**: Die meisten Commits haben FR-Bezug, aber die ersten zwei Commits (TConsoleBuffer nach Core verschieben) referenzieren kein FR — sie sind Infrastruktur-Commits.
+  > **→ Aktion:** Ergänze in `plan.md §TDD-Commit-Plan` die Tabelle um eine „FR-Referenz"-Spalte. Für die Infra-Commits genügt „Vorbedingung für FR-014/015/016".
+
+- [ ] CHK023 — Ist der „Red"-Commit (test(red)) so beschrieben, dass ein Lernender exakt weiß, welche Tests er schreiben muss, bevor er mit der Implementierung beginnt? [Clarity, Didactic, plan.md §TDD-Commit-Plan]
+  > **→ Aktion:** Erfordert `/speckit.tasks` — dort werden konkrete Test-Aufgaben pro Commit definiert. Dieses Item ist ein Blocking-Gate für `/speckit.tasks`. Nach Task-Generierung erneut prüfen.
+
+- [ ] CHK024 — Existiert für FR-005 (`TView.Owner`), FR-011 (`Draw()`), FR-012 (`DrawView()`) jeweils ein eigenständiger Red-Commit-Eintrag, oder sind diese in einem Sammel-Commit zusammengefasst? [Completeness, Didactic, plan.md §TDD-Commit-Plan]
+  > **→ Aktion:** Aktuell in einem Sammel-Commit zusammengefasst. Für didaktischen Wert: Überlege, ob FR-005, FR-011 und FR-012 in drei eigene Red-Commits aufgeteilt werden sollen. Entscheide in einem `/speckit.clarify`-Lauf oder direkt in `plan.md §TDD-Commit-Plan`.
+
+- [x] CHK025 — Ist in `spec.md` oder `plan.md` explizit geregelt, dass kein Implementierungs-Commit ohne vorangehenden Red-Commit erlaubt ist? [Clarity, Didactic, Constitution §II]
+  > **Abgehakt**: `plan.md §TDD-Commit-Plan`: „Gemäß Constitution II (NON-NEGOTIABLE): Jeder Implementierungs-Commit MUSS einem vorangehenden Red-Commit folgen."
+
+---
+
+## Constitution Compliance — Konformität mit den 6 Prinzipien
+
+- [x] CHK026 — Ist die Auflösung der Constitution-IV-Verletzung mit dem genauen Migrations-Artefakt (Dateinamen) verknüpft? [Consistency, plan.md §Constitution Check, research.md §Decision 1]
+  > **Abgehakt**: `plan.md §Project Structure` nennt `TConsoleCell.cs` und `TConsoleBuffer.cs` als Zieldateien; `plan.md §Constitution Check` tabellarisch begründet.
+
+- [ ] CHK027 — Ist Prinzip III (bilingual DE/EN, CEFR B2) in `spec.md` als nachprüfbares Erfolgskriterium (SC) abgebildet — und nicht nur als allgemeine Anforderung in SC-006 vergraben? [Completeness, Spec §SC-006, Constitution §III]
+  > **→ Aktion:** SC-006 deckt bilinguales XML ab, aber kein SC prüft CEFR-B2-Lesbarkeit der Kommentare. Ergänze in `spec.md §SC-006`: „Nachweis: Peer-Review der XML-Kommentare gegen CEFR-B2-Kriterien." Realistisch als manuelles Review-Kriterium formulieren.
+
+- [ ] CHK028 — Sind die Auswirkungen von Prinzip V (Cross-Platform: kein `#if` in Core/Controls) auf die verschobenen Klassen `TConsoleCell` und `TConsoleBuffer` in `plan.md` oder `research.md` explizit adressiert? [Coverage, Constitution §V, Gap]
+  > **→ Aktion:** Ergänze in `plan.md §1.1` einen Satz: „`TConsoleCell` und `TConsoleBuffer` enthalten kein plattformspezifisches `#if`; `ConsoleColor` ist ein managed .NET-Typ ohne OS-Abhängigkeit."
+
+- [ ] CHK029 — Ist Prinzip II (TDD NON-NEGOTIABLE) in `spec.md` als eigenständige Anforderung oder Annahme aufgeführt? [Consistency, Constitution §II, Gap]
+  > **→ Aktion:** Ergänze in `spec.md §Assumptions`: „Die Implementierung folgt dem TDD-Zyklus (Red→Green→Refactor) gemäß Constitution §II. Kein Implementierungs-Commit ohne vorangehenden Red-Commit." Dann Item abhaken.
+
+- [ ] CHK030 — Ist Prinzip I (Managed-Only) in `spec.md §Dependencies` mit einem konkreten prüfbaren Kriterium versehen? [Measurability, Constitution §I, Spec §Dependencies]
+  > **→ Aktion:** Ergänze in `spec.md §Dependencies`: „Constitution §I: Alle neuen Dateien in `TuiVision.Core` und `TuiVision.Controls` dürfen kein `DllImport`/P-Invoke enthalten. Prüfung: `dotnet build` mit Roslyn-Analyzer oder manuelles Code-Review."
+
+---
+
+## API Contract Quality — Qualität der Methodenverträge
+
+- [~] CHK031 — Sind Vorbedingungen und Nachbedingungen für `Insert(view)` vollständig spezifiziert: Was gilt, wenn `view == null`? Wenn `view == this`? [Completeness, Spec §FR-002, Gap]
+  > **Status**: `view == null` → `ArgumentNullException` ✅ in FR-002. `view == this` (Selbst-Insert) nur in `plan.md §1.3`-Pseudocode, **nicht** in `spec.md` FR-002.
+  > **→ Aktion:** Ergänze in `spec.md §FR-002`: „Wird die Gruppe selbst übergeben (`view == this`), MUSS eine `ArgumentException` geworfen werden." Dann vollständig abhaken.
+
+- [x] CHK032 — Ist der Vertrag von `Remove(view)` bei `view == null` in `spec.md` oder `plan.md` explizit beschrieben? [Completeness, Spec §FR-003, Gap]
+  > **Abgehakt**: FR-003 enthält „Wird `null` übergeben, MUSS eine `ArgumentNullException` geworfen werden."
+
+- [x] CHK033 — Ist das Verhalten von `SetFocus(view)` konsistent formuliert: null → welche Exception? [Clarity, Spec §FR-018, Ambiguity]
+  > **Abgehakt**: FR-018 unterscheidet klar: null → `ArgumentNullException`; Nicht-Kind → `ArgumentException`.
+
+- [x] CHK034 — Ist das Exception-Verhalten aller drei mutativen Methoden konsistent normiert? [Consistency, Spec §FR-002, FR-003, FR-018]
+  > **Abgehakt**: Alle drei: null → `ArgumentNullException`; andere Vertragsverletzungen → `ArgumentException`. Konsistent und in `plan.md §1.3` durch Pseudocode belegt.
+
+- [x] CHK035 — Ist `SelectNext()` bei leerer Gruppe (keine Kind-Views) spezifiziert? [Completeness, Spec §FR-009, Edge Case]
+  > **Abgehakt**: FR-009 und `spec.md §Edge Cases` spezifizieren No-Op bei leerer Gruppe.
+
+- [ ] CHK036 — Ist das Verhalten von `ShutDown()` bei einer bereits leeren Gruppe in `spec.md` beschrieben (idempotent oder Exception)? [Completeness, Spec §FR-004, Edge Case]
+  > **→ Aktion:** Ergänze in `spec.md §Edge Cases`: „`ShutDown()` auf einer bereits leeren Gruppe ist idempotent — kein Fehler, kein Effekt." Dann abhaken.
+
+---
+
+## Scenario Coverage — Abdeckung aller Szenarien
+
+- [ ] CHK037 — Gibt es ein explizites Akzeptanzszenario für doppeltes LockDraw (Zähler = 2) und einmaliges UnlockDraw? [Coverage, Spec §FR-016, Edge Case]
+  > **→ Aktion:** Ergänze in `spec.md §Edge Cases`: „`LockDraw()` zweimal + `UnlockDraw()` einmal → Zähler ist 1, kein Neuzeichnen." Dann abhaken.
+
+- [ ] CHK038 — Ist das Szenario „Owner = null bei View, die Draw() aufruft" in `spec.md` oder `plan.md` spezifiziert? [Coverage, Spec §FR-011, Gap]
+  > **→ Aktion:** `quickstart.md` zeigt bereits `if (Owner?._buffer is not { } buffer) return;`. Ergänze in `spec.md §FR-011`: „Ruft eine View `Draw()` ohne Eigentümer-Gruppe auf, ist die Methode ein No-Op." Dann abhaken.
+
+- [~] CHK039 — Ist das Szenario für verschachtelte Gruppen vollständig (Fokus-Traversal, State-Propagation UND Event-Dispatching)? [Coverage, Spec §Edge Cases]
+  > **Status**: `spec.md §Edge Cases` deckt Fokus-Traversal und Event-Dispatching ab. State-Propagation (FR-017) für verschachtelte Gruppen fehlt.
+  > **→ Aktion:** Ergänze in `spec.md §Edge Cases`: „FR-017 State-Propagation bei verschachtelten Gruppen: Die innere Gruppe erhält den State als Kind-View, propagiert ihn aber eigenständig an ihre eigenen Kinder."
+
+- [ ] CHK040 — Ist das Recovery-Szenario nach einer Exception in `Insert()` (View-State nach Rollback) in `spec.md` definiert? [Coverage, Exception Flow, Gap]
+  > **→ Aktion:** Niedriger Risikowert — wenn `ArgumentException` oder `ArgumentNullException` geworfen wird, hat `Insert()` noch nichts an der Liste geändert (Guard vor Mutation). Ergänze in `spec.md §Edge Cases`: „Eine Exception in `Insert()` lässt die Kind-Liste unverändert; der View-State ist nach der Exception konsistent." Dann abhaken.
+
+---
+
+## Didactic Quality — Lernbarkeit für Fachinformatiker
+
+- [~] CHK041 — Erklärt `research.md` das „Warum" ohne Turbo-Vision-Vorwissen? [Didactic, research.md §All Decisions]
+  > **Status**: Die Begründungen sind vorhanden, setzen aber teils Iterator-Invalidierungs-Wissen voraus.
+  > **→ Aktion:** Ergänze in `research.md §Decision 2` einen Satz: „Zur Erklärung für Lernende: Bei einer `List<TView>` würde das Entfernen eines Elements während einer foreach-Schleife eine Ausnahme werfen — die zirkuläre Liste mit vorab-gecachtem `Next`-Zeiger vermeidet dieses Problem."
+
+- [ ] CHK042 — Sind Commit-Konventionen (`test(red):`, `feat(green):`) für Auszubildende erklärt? [Didactic, plan.md §TDD-Commit-Plan, Gap]
+  > **→ Aktion:** Ergänze in `plan.md §TDD-Commit-Plan` vor der Tabelle einen kurzen Erklärungsblock: „Die Commit-Präfixe folgen dem Conventional-Commits-Format: `test(red):` = Test-Commit (muss fehlschlagen); `feat(green):` = Implementierungs-Commit (macht Tests grün); `refactor:` = Aufräumarbeit ohne Funktionsänderung."
+
+- [x] CHK043 — Enthält `quickstart.md` für jedes Codebeispiel einen deutschen UND englischen Kommentarblock? [Didactic, quickstart.md, Constitution §III]
+  > **Abgehakt**: Alle 5 Beispiele in `quickstart.md` haben bilingualen Inline-Kommentar (DE zuerst, EN danach).
+
+- [x] CHK044 — Ist in `spec.md §Kontext` ausreichend erklärt, warum Phase 3 auf Phase 2 aufbaut? [Didactic, Spec §Kontext]
+  > **Abgehakt**: `spec.md §Kontext` erklärt: „TView ist bereits portiert und testbar. Diese Phase ergänzt die fehlenden Teile."
+
+- [~] CHK045 — Sind die Given/When/Then-Szenarien so konkret, dass ein Auszubildender daraus MSTest-Tests ableiten kann? [Didactic, Measurability, Spec §User Scenarios]
+  > **Status**: Szenarien wie „When `Insert(view)` aufgerufen wird" sind konkret. Abstrakter sind Szenarien wie „When ein Tastaturereignis eingeht" ohne Angabe des konkreten `TEvent`-Aufrufs.
+  > **→ Aktion:** Nach `/speckit.tasks` erneut prüfen — Tasks werden Given/When/Then in konkrete Testmethoden übersetzen. Wenn die Tasks klar sind, gilt dieses Item als erfüllt.
+
+- [ ] CHK046 — Enthält `data-model.md` eine visuelle Erklärung der zirkulären Listen-Struktur für Lernende? [Didactic, data-model.md §TGroup, Gap]
+  > **→ Aktion:** Ergänze in `data-model.md §TGroup` ein ASCII-Diagramm. Beispiel:
+  > ```
+  > _last ──► [ViewC] ──► [ViewA] ──► [ViewB] ──► [ViewC] (zirkulär)
+  > First() = _last.Next = ViewA
+  > ```
+  > Dann Item abhaken.
+
+---
+
+## Dependencies & Assumptions — Abhängigkeiten und Annahmen
+
+- [ ] CHK047 — Ist die TConsoleBuffer-Verschiebung als formale Vorbedingung in `spec.md §Dependencies` verankert? [Dependency, Spec §Dependencies, plan.md]
+  > **→ Aktion:** Aktuell steht in `spec.md §Dependencies` noch „TuiVision.Drivers.Console: TConsoleBuffer". Ersetze durch: „TuiVision.Core: TConsoleBuffer ← wird von Drivers.Console nach Core verschoben (Vorbedingung für FR-014–016; Plan §1.1)."
+
+- [ ] CHK048 — Ist die Kreislisten-Annahme in `spec.md §Assumptions` mit `research.md §Decision 2` verknüpft? [Traceability, Spec §Assumptions, research.md §Decision 2]
+  > **→ Aktion:** Ergänze in `spec.md §Assumptions` nach dem Kreislisten-Satz: „(Begründung: `research.md §Decision 2`)" — ein Hyperlink oder textueller Verweis genügt.
+
+- [x] CHK049 — Ist die Abhängigkeit TConsoleDriver → TConsoleBuffer (nach Move) in `plan.md §Project Structure` beschrieben? [Dependency, plan.md §Project Structure]
+  > **Abgehakt**: `plan.md §1.1`: „TuiVision.Drivers.Console.csproj: Projektreferenz auf TuiVision.Core bleibt."
+
+- [~] CHK050 — Sind die spezifisch betroffenen Tests aus `TuiVision.Drivers.Tests` namentlich benannt? [Completeness, Spec §SC-002, plan.md §Project Structure]
+  > **Status**: `plan.md §1.1` erwähnt „passen nur den Using-Import an", aber keine Testnamen.
+  > **→ Aktion:** Ergänze in `plan.md §1.1`: „Betroffen: `ConsoleDriverTests` in `TuiVision.Drivers.Tests/Test1.cs`; Import-Änderung von `TuiVision.Drivers.Console` auf `TuiVision.Core`."
+
+---
+
+## Abschluss-Auswertung / Summary
+
+| Status | Anzahl | Items |
+|---|---|---|
+| ✅ Abgehakt | 15 | CHK013, CHK014, CHK015, CHK016, CHK017, CHK019, CHK025, CHK026, CHK032, CHK033, CHK034, CHK035, CHK043, CHK044, CHK049 |
+| 〜 Teilweise | 8 | CHK010, CHK011, CHK022, CHK031, CHK039, CHK041, CHK045, CHK050 |
+| ⬜ Offen | 27 | CHK001–009, CHK012, CHK018, CHK020, CHK021, CHK023, CHK024, CHK027–030, CHK036–038, CHK040, CHK042, CHK046–048 |
+
+### Empfohlene Reihenfolge zur Abarbeitung
+
+**Sofort in `spec.md` ergänzen** (je 1–2 Sätze, kein Clarify nötig):
+CHK002, CHK006, CHK007, CHK008, CHK009, CHK011, CHK029, CHK030, CHK036, CHK037, CHK038, CHK040
+
+**In `plan.md` / `research.md` / `data-model.md` ergänzen**:
+CHK012, CHK022, CHK028, CHK031, CHK042, CHK046, CHK047, CHK048, CHK050
+
+**Im nächsten `/speckit.clarify`-Lauf klären** (Entscheidungsbedarf):
+CHK003 (PreProcess/PostProcess-Szenarien), CHK005 (LockDraw-Zähler), CHK024 (Commit-Granularität)
+
+**Nach `/speckit.tasks` erneut prüfen**:
+CHK001, CHK021, CHK023, CHK045
+
+**Manuelles Review / PR-Gate**:
+CHK018 (Coverage-Tool), CHK020 (docfx CI-Gate), CHK027 (CEFR-B2 Review)
+
+---
+### Empfohlenes Vorgehen vor /speckit.tasks:
+
+Die „Sofort in spec.md"-Items (CHK002, CHK006–009, CHK011, CHK029–030, CHK036–038, CHK040) sind je
+1–2-Satz-Ergänzungen — kein Clarify nötig. Optionen:
+
+1. Direkt weiter zu /speckit.tasks — Tasks werden auf dem aktuellen Artefakt-Stand generiert; die offenen CHK-Items
+   können im Nachgang adressiert werden.
+2. Erst Quick-Fixes — spec.md, plan.md und data-model.md mit den CHK-Aktionen bereinigen, dann /speckit.tasks.
+
+
+---
+
+## Notes
+
+- Checklist-Items mit `[Gap]` sind potenzielle Lücken in den Artefakten — sie erfordern keine sofortige Korrektur, sondern explizite Klärung vor `/speckit.tasks`.
+- Items mit `[Ambiguity]` sollten in einem weiteren `/speckit.clarify`-Durchlauf oder direkt in der Spec aufgelöst werden.
+- Items markiert `[Didactic]` sind für den Lehrwert des Projekts kritisch und sollten priorisiert werden.
+- TDD-NON-NEGOTIABLE-Items (CHK022–CHK025) sind Blocking-Gates gemäß Constitution §II.
