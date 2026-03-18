@@ -119,25 +119,25 @@
 - [x] CHK026 — Ist die Auflösung der Constitution-IV-Verletzung mit dem genauen Migrations-Artefakt (Dateinamen) verknüpft? [Consistency, plan.md §Constitution Check, research.md §Decision 1]
   > **Abgehakt**: `plan.md §Project Structure` nennt `TConsoleCell.cs` und `TConsoleBuffer.cs` als Zieldateien; `plan.md §Constitution Check` tabellarisch begründet.
 
-- [ ] CHK027 — Ist Prinzip III (bilingual DE/EN, CEFR B2) in `spec.md` als nachprüfbares Erfolgskriterium (SC) abgebildet — und nicht nur als allgemeine Anforderung in SC-006 vergraben? [Completeness, Spec §SC-006, Constitution §III]
-  > **→ Aktion:** SC-006 deckt bilinguales XML ab, aber kein SC prüft CEFR-B2-Lesbarkeit der Kommentare. Ergänze in `spec.md §SC-006`: „Nachweis: Peer-Review der XML-Kommentare gegen CEFR-B2-Kriterien." Realistisch als manuelles Review-Kriterium formulieren.
+- [x] CHK027 — Ist Prinzip III (bilingual DE/EN, CEFR B2) in `spec.md` als nachprüfbares Erfolgskriterium (SC) abgebildet — und nicht nur als allgemeine Anforderung in SC-006 vergraben? [Completeness, Spec §SC-006, Constitution §III]
+  > **Abgehakt** SC-006 deckt bilinguales XML ab, aber kein SC prüft CEFR-B2-Lesbarkeit der Kommentare. Ergänze in `spec.md §SC-006`: „Nachweis: Peer-Review der XML-Kommentare gegen CEFR-B2-Kriterien." Realistisch als manuelles Review-Kriterium formulieren.
 
 - [x] CHK028 — Sind die Auswirkungen von Prinzip V (Cross-Platform: kein `#if` in Core/Controls) auf die verschobenen Klassen `TConsoleCell` und `TConsoleBuffer` in `plan.md` oder `research.md` explizit adressiert? [Coverage, Constitution §V, Gap]
   > **Abgehakt**: `plan.md §1.1` ergänzt: „`TConsoleCell`/`TConsoleBuffer` enthalten kein plattformspezifisches `#if`; `ConsoleColor` ist managed .NET ohne OS-Abhängigkeit (Constitution §V)."
 
-- [ ] CHK029 — Ist Prinzip II (TDD NON-NEGOTIABLE) in `spec.md` als eigenständige Anforderung oder Annahme aufgeführt? [Consistency, Constitution §II, Gap]
-  > **→ Aktion:** Ergänze in `spec.md §Assumptions`: „Die Implementierung folgt dem TDD-Zyklus (Red→Green→Refactor) gemäß Constitution §II. Kein Implementierungs-Commit ohne vorangehenden Red-Commit." Dann Item abhaken.
+- [x] CHK029 — Ist Prinzip II (TDD NON-NEGOTIABLE) in `spec.md` als eigenständige Anforderung oder Annahme aufgeführt? [Consistency, Constitution §II, Gap]
+  > **Abgehakt** Ergänze in `spec.md §Assumptions`: „Die Implementierung folgt dem TDD-Zyklus (Red→Green→Refactor) gemäß Constitution §II. Kein Implementierungs-Commit ohne vorangehenden Red-Commit."
 
-- [ ] CHK030 — Ist Prinzip I (Managed-Only) in `spec.md §Dependencies` mit einem konkreten prüfbaren Kriterium versehen? [Measurability, Constitution §I, Spec §Dependencies]
-  > **→ Aktion:** Ergänze in `spec.md §Dependencies`: „Constitution §I: Alle neuen Dateien in `TuiVision.Core` und `TuiVision.Controls` dürfen kein `DllImport`/P-Invoke enthalten. Prüfung: `dotnet build` mit Roslyn-Analyzer oder manuelles Code-Review."
+- [x] CHK030 — Ist Prinzip I (Managed-Only) in `spec.md §Dependencies` mit einem konkreten prüfbaren Kriterium versehen? [Measurability, Constitution §I, Spec §Dependencies]
+  > **Abgehakt** Ergänze in `spec.md §Dependencies`: „Constitution §I: Alle neuen Dateien in `TuiVision.Core` und `TuiVision.Controls` dürfen kein `DllImport`/P-Invoke enthalten. Prüfung: `dotnet build` mit Roslyn-Analyzer oder manuelles Code-Review."
 
 ---
 
 ## API Contract Quality — Qualität der Methodenverträge
 
-- [~] CHK031 — Sind Vorbedingungen und Nachbedingungen für `Insert(view)` vollständig spezifiziert: Was gilt, wenn `view == null`? Wenn `view == this`? [Completeness, Spec §FR-002, Gap]
+- [x] CHK031 — Sind Vorbedingungen und Nachbedingungen für `Insert(view)` vollständig spezifiziert: Was gilt, wenn `view == null`? Wenn `view == this`? [Completeness, Spec §FR-002, Gap]
   > **Status**: `view == null` → `ArgumentNullException` ✅ in FR-002. `view == this` (Selbst-Insert) nur in `plan.md §1.3`-Pseudocode, **nicht** in `spec.md` FR-002.
-  > **→ Aktion:** Ergänze in `spec.md §FR-002`: „Wird die Gruppe selbst übergeben (`view == this`), MUSS eine `ArgumentException` geworfen werden." Dann vollständig abhaken.
+  > **Abgehakt** Ergänze in `spec.md §FR-002`: „Wird die Gruppe selbst übergeben (`view == this`), MUSS eine `ArgumentException` geworfen werden."
 
 - [x] CHK032 — Ist der Vertrag von `Remove(view)` bei `view == null` in `spec.md` oder `plan.md` explizit beschrieben? [Completeness, Spec §FR-003, Gap]
   > **Abgehakt**: FR-003 enthält „Wird `null` übergeben, MUSS eine `ArgumentNullException` geworfen werden."
@@ -151,33 +151,34 @@
 - [x] CHK035 — Ist `SelectNext()` bei leerer Gruppe (keine Kind-Views) spezifiziert? [Completeness, Spec §FR-009, Edge Case]
   > **Abgehakt**: FR-009 und `spec.md §Edge Cases` spezifizieren No-Op bei leerer Gruppe.
 
-- [ ] CHK036 — Ist das Verhalten von `ShutDown()` bei einer bereits leeren Gruppe in `spec.md` beschrieben (idempotent oder Exception)? [Completeness, Spec §FR-004, Edge Case]
-  > **→ Aktion:** Ergänze in `spec.md §Edge Cases`: „`ShutDown()` auf einer bereits leeren Gruppe ist idempotent — kein Fehler, kein Effekt." Dann abhaken.
+- [x] CHK036 — Ist das Verhalten von `ShutDown()` bei einer bereits leeren Gruppe in `spec.md` beschrieben (idempotent oder Exception)? [Completeness, Spec §FR-004, Edge Case]
+  > **Abgehakt**: CHK036 — Ist das Verhalten von `ShutDown()` bei einer bereits leeren Gruppe in `spec.md` beschrieben (idempotent oder Exception)? [Completeness, Spec §FR-004, Edge Case]
+  > **Abgehakt**: Ergänze in `spec.md §Edge Cases`: „`ShutDown()` auf einer bereits leeren Gruppe ist idempotent — kein Fehler, kein Effekt."
 
 ---
 
 ## Scenario Coverage — Abdeckung aller Szenarien
 
-- [ ] CHK037 — Gibt es ein explizites Akzeptanzszenario für doppeltes LockDraw (Zähler = 2) und einmaliges UnlockDraw? [Coverage, Spec §FR-016, Edge Case]
-  > **→ Aktion:** Ergänze in `spec.md §Edge Cases`: „`LockDraw()` zweimal + `UnlockDraw()` einmal → Zähler ist 1, kein Neuzeichnen." Dann abhaken.
+- [x] CHK037 — Gibt es ein explizites Akzeptanzszenario für doppeltes LockDraw (Zähler = 2) und einmaliges UnlockDraw? [Coverage, Spec §FR-016, Edge Case]
+  > **Abgehakt** Ergänze in `spec.md §Edge Cases`: „`LockDraw()` zweimal + `UnlockDraw()` einmal → Zähler ist 1, kein Neuzeichnen."
 
-- [ ] CHK038 — Ist das Szenario „Owner = null bei View, die Draw() aufruft" in `spec.md` oder `plan.md` spezifiziert? [Coverage, Spec §FR-011, Gap]
-  > **→ Aktion:** `quickstart.md` zeigt bereits `if (Owner?._buffer is not { } buffer) return;`. Ergänze in `spec.md §FR-011`: „Ruft eine View `Draw()` ohne Eigentümer-Gruppe auf, ist die Methode ein No-Op." Dann abhaken.
+- [x] CHK038 — Ist das Szenario „Owner = null bei View, die Draw() aufruft" in `spec.md` oder `plan.md` spezifiziert? [Coverage, Spec §FR-011, Gap]
+  > **Abgehakt** `quickstart.md` zeigt bereits `if (Owner?._buffer is not { } buffer) return;`. Ergänze in `spec.md §FR-011`: „Ruft eine View `Draw()` ohne Eigentümer-Gruppe auf, ist die Methode ein No-Op."
 
-- [~] CHK039 — Ist das Szenario für verschachtelte Gruppen vollständig (Fokus-Traversal, State-Propagation UND Event-Dispatching)? [Coverage, Spec §Edge Cases]
+- [x] CHK039 — Ist das Szenario für verschachtelte Gruppen vollständig (Fokus-Traversal, State-Propagation UND Event-Dispatching)? [Coverage, Spec §Edge Cases]
   > **Status**: `spec.md §Edge Cases` deckt Fokus-Traversal und Event-Dispatching ab. State-Propagation (FR-017) für verschachtelte Gruppen fehlt.
-  > **→ Aktion:** Ergänze in `spec.md §Edge Cases`: „FR-017 State-Propagation bei verschachtelten Gruppen: Die innere Gruppe erhält den State als Kind-View, propagiert ihn aber eigenständig an ihre eigenen Kinder."
+  > **Abgehakt** Ergänze in `spec.md §Edge Cases`: „FR-017 State-Propagation bei verschachtelten Gruppen: Die innere Gruppe erhält den State als Kind-View, propagiert ihn aber eigenständig an ihre eigenen Kinder."
 
-- [ ] CHK040 — Ist das Recovery-Szenario nach einer Exception in `Insert()` (View-State nach Rollback) in `spec.md` definiert? [Coverage, Exception Flow, Gap]
-  > **→ Aktion:** Niedriger Risikowert — wenn `ArgumentException` oder `ArgumentNullException` geworfen wird, hat `Insert()` noch nichts an der Liste geändert (Guard vor Mutation). Ergänze in `spec.md §Edge Cases`: „Eine Exception in `Insert()` lässt die Kind-Liste unverändert; der View-State ist nach der Exception konsistent." Dann abhaken.
+- [x] CHK040 — Ist das Recovery-Szenario nach einer Exception in `Insert()` (View-State nach Rollback) in `spec.md` definiert? [Coverage, Exception Flow, Gap]
+  > **Abgehakt** Niedriger Risikowert — wenn `ArgumentException` oder `ArgumentNullException` geworfen wird, hat `Insert()` noch nichts an der Liste geändert (Guard vor Mutation). Ergänze in `spec.md §Edge Cases`: „Eine Exception in `Insert()` lässt die Kind-Liste unverändert; der View-State ist nach der Exception konsistent."
 
 ---
 
 ## Didactic Quality — Lernbarkeit für Fachinformatiker
 
-- [~] CHK041 — Erklärt `research.md` das „Warum" ohne Turbo-Vision-Vorwissen? [Didactic, research.md §All Decisions]
+- [x] CHK041 — Erklärt `research.md` das „Warum" ohne Turbo-Vision-Vorwissen? [Didactic, research.md §All Decisions]
   > **Status**: Die Begründungen sind vorhanden, setzen aber teils Iterator-Invalidierungs-Wissen voraus.
-  > **→ Aktion:** Ergänze in `research.md §Decision 2` einen Satz: „Zur Erklärung für Lernende: Bei einer `List<TView>` würde das Entfernen eines Elements während einer foreach-Schleife eine Ausnahme werfen — die zirkuläre Liste mit vorab-gecachtem `Next`-Zeiger vermeidet dieses Problem."
+  > **Abgehakt** Ergänze in `research.md §Decision 2` einen Satz: „Zur Erklärung für Lernende: Bei einer `List<TView>` würde das Entfernen eines Elements während einer foreach-Schleife eine Ausnahme werfen — die zirkuläre Liste mit vorab-gecachtem `Next`-Zeiger vermeidet dieses Problem."
 
 - [x] CHK042 — Sind Commit-Konventionen (`test(red):`, `feat(green):`) für Auszubildende erklärt? [Didactic, plan.md §TDD-Commit-Plan, Gap]
   > **Abgehakt**: `plan.md §TDD-Commit-Plan` enthält jetzt einen Erklärungsblock vor der Commit-Liste mit Definitionen für `test(red):`, `feat(green):` und `refactor:`.
@@ -192,13 +193,12 @@
   > **Status**: Szenarien wie „When `Insert(view)` aufgerufen wird" sind konkret. Abstrakter sind Szenarien wie „When ein Tastaturereignis eingeht" ohne Angabe des konkreten `TEvent`-Aufrufs.
   > **→ Aktion:** Nach `/speckit.tasks` erneut prüfen — Tasks werden Given/When/Then in konkrete Testmethoden übersetzen. Wenn die Tasks klar sind, gilt dieses Item als erfüllt.
 
-- [ ] CHK046 — Enthält `data-model.md` eine visuelle Erklärung der zirkulären Listen-Struktur für Lernende? [Didactic, data-model.md §TGroup, Gap]
-  > **→ Aktion:** Ergänze in `data-model.md §TGroup` ein ASCII-Diagramm. Beispiel:
+- [x] CHK046 — Enthält `data-model.md` eine visuelle Erklärung der zirkulären Listen-Struktur für Lernende? [Didactic, data-model.md §TGroup, Gap]
+  > **Abgehakt** Ergänze in `data-model.md §TGroup` ein ASCII-Diagramm. Beispiel:
   > ```
   > _last ──► [ViewC] ──► [ViewA] ──► [ViewB] ──► [ViewC] (zirkulär)
   > First() = _last.Next = ViewA
   > ```
-  > Dann Item abhaken.
 
 ---
 
@@ -207,8 +207,8 @@
 - [x] CHK047 — Ist die TConsoleBuffer-Verschiebung als formale Vorbedingung in `spec.md §Dependencies` verankert? [Dependency, Spec §Dependencies, plan.md]
   > **Abgehakt**: `spec.md §Dependencies` korrigiert: „TuiVision.Core: TConsoleBuffer ← wird von Drivers.Console nach Core verschoben (Vorbedingung für FR-014–016; Plan §1.1)."
 
-- [ ] CHK048 — Ist die Kreislisten-Annahme in `spec.md §Assumptions` mit `research.md §Decision 2` verknüpft? [Traceability, Spec §Assumptions, research.md §Decision 2]
-  > **→ Aktion:** Ergänze in `spec.md §Assumptions` nach dem Kreislisten-Satz: „(Begründung: `research.md §Decision 2`)" — ein Hyperlink oder textueller Verweis genügt.
+- [x] CHK048 — Ist die Kreislisten-Annahme in `spec.md §Assumptions` mit `research.md §Decision 2` verknüpft? [Traceability, Spec §Assumptions, research.md §Decision 2]
+  > **Abgehakt** Ergänze in `spec.md §Assumptions` nach dem Kreislisten-Satz: „(Begründung: `research.md §Decision 2`)" — ein Hyperlink oder textueller Verweis genügt.
 
 - [x] CHK049 — Ist die Abhängigkeit TConsoleDriver → TConsoleBuffer (nach Move) in `plan.md §Project Structure` beschrieben? [Dependency, plan.md §Project Structure]
   > **Abgehakt**: `plan.md §1.1`: „TuiVision.Drivers.Console.csproj: Projektreferenz auf TuiVision.Core bleibt."
