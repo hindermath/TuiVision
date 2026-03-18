@@ -129,6 +129,10 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 - Was passiert bei verschachtelten Gruppen (Gruppe in Gruppe)? → Ereignis-Dispatching und Focus-Traversal gelten nur für direkte Kind-Views; verschachtelte Gruppen verwalten ihren eigenen Fokus.
 - Was passiert, wenn `GrowTo` auf einer Gruppe aufgerufen wird? → Kind-Views behalten ihre absolute Position; Größenänderung betrifft nur den Container selbst (GrowMode ist optionale Erweiterung dieser Phase).
 - Mehrfaches LockDraw() inkrementiert den Zähler; erst wenn UnlockDraw() denselben Aufrufanzahl erreicht, wird neu gezeichnet.
+- `ShutDown()` auf einer bereits leeren Gruppe ist idempotent — kein Fehler, kein Effekt.
+- `LockDraw()` zweimal + `UnlockDraw()` einmal → Zähler ist 1, kein Neuzeichnen.
+- FR-017 State-Propagation bei verschachtelten Gruppen: Die innere Gruppe erhält den State als Kind-View, propagiert ihn aber eigenständig an ihre eigenen Kinder.
+- Eine Exception in `Insert()` lässt die Kind-Liste unverändert; der View-State ist nach der Exception konsistent.
 ---
 
 ## Requirements *(mandatory)*
@@ -138,7 +142,7 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 **TGroup — Lebenszyklus und Kind-Verwaltung**
 
 - **FR-001**: Das System MUSS eine `TGroup`-Klasse bereitstellen, die von `TView` erbt und eine geordnete Liste von Kind-Views verwaltet.
-- **FR-002**: `TGroup.Insert(view)` MUSS eine Kind-View in die interne Liste aufnehmen und deren `Owner`-Eigenschaft auf die Gruppe setzen. Wird `null` übergeben, MUSS eine `ArgumentNullException` geworfen werden. Wird dieselbe View-Instanz ein zweites Mal übergeben, MUSS eine `ArgumentException` geworfen werden.
+- **FR-002**: `TGroup.Insert(view)` MUSS eine Kind-View in die interne Liste aufnehmen und deren `Owner`-Eigenschaft auf die Gruppe setzen. Wird `null` übergeben, MUSS eine `ArgumentNullException` geworfen werden. Wird dieselbe View-Instanz ein zweites Mal übergeben, MUSS eine `ArgumentException` geworfen werden. Wird die Gruppe selbst übergeben (`view == this`), MUSS eine `ArgumentException` geworfen werden.
 - **FR-003**: `TGroup.Remove(view)` MUSS eine Kind-View aus der Liste entfernen und deren `Owner`-Eigenschaft auf `null` setzen. Wird `null` übergeben, MUSS eine `ArgumentNullException` geworfen werden. Wird eine View übergeben, die nicht zur Gruppe gehört, MUSS eine `ArgumentException` geworfen werden.
 - **FR-004**: `TGroup.ShutDown()` MUSS alle Kind-Views rekursiv herunterfahren und die Kind-Liste leeren, bevor `TView.ShutDown()` aufgerufen wird. Die Kind-Views werden in umgekehrter Einfügereihenfolge (LIFO) heruntergefahren.
 - **FR-005**: `TView` MUSS eine `Owner`-Eigenschaft vom Typ `TGroup?` besitzen, die die übergeordnete Gruppe referenziert.
@@ -157,7 +161,7 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 
 **TView — Draw-Protokoll**
 
-- **FR-011**: `TView` MUSS eine parameterfreie virtuelle `Draw()`-Methode (`void Draw()`) besitzen, die von abgeleiteten Klassen überschrieben wird; die Basis-Implementierung ist eine No-Op. Eine View, die zeichnen möchte, greift intern über die `Owner`-Eigenschaft auf den Zeichenpuffer der übergeordneten `TGroup` zu (analog zum C++-Original). `DrawView()` ist die Template-Methode; abgeleitete Klassen überschreiben ausschließlich `Draw()`.
+- **FR-011**: `TView` MUSS eine parameterfreie virtuelle `Draw()`-Methode (`void Draw()`) besitzen, die von abgeleiteten Klassen überschrieben wird; die Basis-Implementierung ist eine No-Op. Eine View, die zeichnen möchte, greift intern über die `Owner`-Eigenschaft auf den Zeichenpuffer der übergeordneten `TGroup` zu (analog zum C++-Original). `DrawView()` ist die Template-Methode; abgeleitete Klassen überschreiben ausschließlich `Draw()`. Ruft eine View `Draw()` ohne Eigentümer-Gruppe auf, ist die Methode ein No-Op.
 - **FR-012**: `TView` MUSS eine `DrawView()`-Methode besitzen, die `Draw()` aufruft, sofern die View sichtbar und nicht gesperrt ist. sichtbar = `GetState(TViewState.Visible) == true`
 - **FR-013**: `TGroup.Draw()` MUSS alle sichtbaren Kind-Views in Z-Reihenfolge neu zeichnen. Z-Reihenfolge = Einfügereihenfolge; erste eingefügte View wird zuerst (unten), zuletzt eingefügte zuletzt (oben) gezeichnet.
 
@@ -188,17 +192,17 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 - **SC-003**: Die Testabdeckung (Line Coverage) für `TuiVision.Controls` erreicht mindestens 70 % (Pflichtenheft Abschnitt 9.4 Nr. 1). Gemessen mit `dotnet-coverage`; Metrik: Line Coverage. AGENTS.md und CLAUDE.md ergänzen, falls dort noch nicht vorhanden.
 - **SC-004**: Ein Entwickler kann eine `TGroup` mit zwei Kind-Views erstellen, Fokus wechseln und ein Tastaturereignis erfolgreich an die fokussierte View dispatchen — nachweisbar durch einen Integrationstest.
 - **SC-005**: Das Neuzeichnen einer Gruppe mit drei Kind-Views (eine davon unsichtbar) beschreibt den Puffer nur für sichtbare Views — nachweisbar durch einen Snapshot-Test gegen den `TConsoleBuffer`.
-- **SC-006**: Die vollständige öffentliche API von `TGroup` und die neuen `TView`-Mitglieder (`Owner`, `Draw`, `DrawView`) sind mit bilingualen XML-Kommentaren (Deutsch zuerst, Englisch danach) dokumentiert und durch `docfx` fehlerfrei verarbeitbar. Gate: `docfx docfx.json` im CI-Workflow muss mit Exit-Code 0 abschließen.
+- **SC-006**: Die vollständige öffentliche API von `TGroup` und die neuen `TView`-Mitglieder (`Owner`, `Draw`, `DrawView`) sind mit bilingualen XML-Kommentaren (Deutsch zuerst, Englisch danach) dokumentiert und durch `docfx` fehlerfrei verarbeitbar. Gate: `docfx docfx.json` im CI-Workflow muss mit Exit-Code 0 abschließen. Nachweis: Peer-Review der XML-Kommentare gegen CEFR-B2-Kriterien.
 
 ---
 
 ## Assumptions
 
-- `TGroup` verwendet zunächst eine einfache doppelt-verlinkte Kreisliste (analog zum C++-Original mit `prev`/`next`) statt einer generischen .NET-Collection, um das Original-Verhalten exakt abzubilden.
+- `TGroup` verwendet zunächst eine einfache doppelt-verlinkte Kreisliste (analog zum C++-Original mit `prev`/`next`) statt einer generischen .NET-Collection, um das Original-Verhalten exakt abzubilden. (Begründung: `research.md §Decision 2`)" — ein Hyperlink oder textueller Verweis genügt
 - `GrowMode`-Unterstützung für Kind-Views (automatisches Mitskalieren) wird in dieser Phase als optionale Erweiterung behandelt, da sie nicht zum Kern-Fokus gehört.
 - Das Zeichenprotokoll nutzt `TConsoleBuffer` aus `TuiVision.Core` (nach Verschiebung aus `TuiVision.Drivers.Console`; Begründung: `research.md §Decision 1`); eine direkte Kopplung der Treiberschicht an `TGroup` entfällt damit.
 - Phase 3 liefert keine sichtbare Benutzeroberfläche — nur die Infrastruktur. Sichtbare Ergebnisse entstehen erst ab Phase 4 (TProgram/TApplication).
-
+- Die Implementierung folgt dem TDD-Zyklus (Red→Green→Refactor) gemäß Constitution §II. Kein Implementierungs-Commit ohne vorangehenden Red-Commit.
 ---
 
 ## Clarifications
@@ -232,3 +236,4 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 - `TuiVision.Controls`: `TView` — vollständig portiert, Tests grün.
 - `TuiVision.Core`: `TConsoleBuffer` ← wird von `TuiVision.Drivers.Console` nach `TuiVision.Core` verschoben (Vorbedingung für FR-014–016; Plan §1.1).
 - Referenz-Quellcode: `tv203s/contrib/tvision/classes/tgroup.cc`, `tview.cc` (nicht verändern).
+- Constitution §I: Alle neuen Dateien in `TuiVision.Core` und `TuiVision.Controls` dürfen kein `DllImport`/P-Invoke enthalten. Prüfung: `dotnet build` mit Roslyn-Analyzer oder manuelles Code-Review.
