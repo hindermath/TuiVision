@@ -45,7 +45,9 @@ Das Anker-Feld in `TGroup` ist `_last` (nullable; `null` = leere Gruppe).
 (forEach, selectNext, insertBefore, drawSubViews). Eine 1:1-Übernahme sichert
 Verhaltenskonformität und macht Port-Entscheidungen im Commit-Log nachvollziehbar.
 Eine `List<TView>` hätte andere Iterator-Invalidierungs-Semantik und würde
-den didaktischen Vergleich zum Original erschweren.
+den didaktischen Vergleich zum Original erschweren. 
+
+Zur Erklärung für Lernende: Bei einer `List<TView>` würde das Entfernen eines Elements während einer foreach-Schleife eine Ausnahme werfen — die zirkuläre Liste mit vorab-gecachtem `Next`-Zeiger vermeidet dieses Problem.
 
 **Alternatives Considered**:
 - `List<TView>` → einfacher, aber abweichend vom Original; Index-basiertes Lookup ändert Semantik.
