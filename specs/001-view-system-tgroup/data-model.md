@@ -95,6 +95,13 @@
 | ShutDown | `override void ShutDown()` | Rückwärts-Traversal, alle Kinder herunterfahren |
 | OnBoundsChanged | `override void OnBoundsChanged()` | Puffer neu allokieren |
 
+#### ASCII-Diagram
+```
+_last ──► [ViewC] ──► [ViewA] ──► [ViewB] ──► [ViewC] (zirkulär) 
+First() = _last.Next = ViewA
+```
+
+
 ---
 
 ### 5. DrawPhase (NEU — internal enum, TuiVision.Controls)
@@ -111,7 +118,7 @@
 
 ```
 TObject
-  └── TView  ────────────────────────────────────┐
+  └── TView  ─────────────────────────────────────┐
         ├── Owner: TGroup? (nullable)             │
         ├── Next: TView? (internal, circular list)│
         ├── Draw(): virtual                       │
