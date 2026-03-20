@@ -59,9 +59,17 @@ public sealed class TStatusLineTests
         TRect bounds = new(0, 24, 80, 25);
         TStatusLine statusLine = new(bounds);
 
-        bool isVisible = true;
-        bool canExecute = false;
-        // Da die Logik noch fehlt, ist dies ein Platzhalter
-        Assert.IsTrue(isVisible && !canExecute, "Disabled status item visibility or execution logic incorrect.");
+        // Deaktivierten Status-Eintrag erstellen und per Fokus-Broadcast propagieren.
+        // Create a disabled status item and propagate it via focus broadcast.
+        TStatusItem disabledHint = new("~F2~ Deaktiviert", ShellCommandIds.cmQuit) { Disabled = true };
+        ViewWithHints focusedView = new(new TRect(0, 1, 80, 24), disabledHint);
+
+        TEvent focusEvent = TEvent.CreateBroadcast(ShellCommandIds.cmFocusChanged, focusedView);
+        statusLine.HandleEvent(focusEvent);
+
+        // Eintrag muss sichtbar sein (Items != null) und als deaktiviert markiert sein.
+        // Item must be visible (Items != null) and marked as disabled.
+        Assert.IsNotNull(statusLine.Items, "Disabled status item must still appear in the status line.");
+        Assert.IsTrue(statusLine.Items.Disabled, "Disabled status item must have Disabled == true.");
     }
 }
