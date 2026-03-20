@@ -116,7 +116,7 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 
 1. **Given** eine `TGroup` mit zwei Kind-Views, **When** `SetState(Active, true)` aufgerufen wird, **Then** haben alle Kind-Views ebenfalls den `Active`-State.
 2. **Given** eine Gruppe im `Disabled`-State, **When** ein Maus- oder Tastaturereignis eingeht, **Then** wird das Ereignis von allen Kind-Views ignoriert.
-3. **Given** eine `TGroup` im `Modal`-State, **When** ein Ereignis ausserhalb der Gruppe auftritt, **Then** wird das Ereignis nicht an Views ausserhalb der Gruppe weitergeleitet.
+3. *(Deferred — Phase 4)* **Given** eine `TGroup` im `Modal`-State, **When** ein Ereignis ausserhalb der Gruppe auftritt, **Then** wird das Ereignis nicht an Views ausserhalb der Gruppe weitergeleitet. — Dieses Verhalten erfordert `TProgram`/`TApplication` als Event-Router (Phase 4); `TGroup` selbst implementiert kein globales Event-Gating. Kein FR und keine Task in dieser Phase.
 
 ---
 
@@ -198,7 +198,7 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 
 ## Assumptions
 
-- `TGroup` verwendet zunächst eine einfache doppelt-verlinkte Kreisliste (analog zum C++-Original mit `prev`/`next`) statt einer generischen .NET-Collection, um das Original-Verhalten exakt abzubilden. (Begründung: `research.md §Decision 2`)" — ein Hyperlink oder textueller Verweis genügt
+- `TGroup` verwendet zunächst eine einfache doppelt-verlinkte Kreisliste (analog zum C++-Original mit `prev`/`next`) statt einer generischen .NET-Collection, um das Original-Verhalten exakt abzubilden. (Begründung: `research.md §Decision 2`)
 - `GrowMode`-Unterstützung für Kind-Views (automatisches Mitskalieren) wird in dieser Phase als optionale Erweiterung behandelt, da sie nicht zum Kern-Fokus gehört.
 - Das Zeichenprotokoll nutzt `TConsoleBuffer` aus `TuiVision.Core` (nach Verschiebung aus `TuiVision.Drivers.Console`; Begründung: `research.md §Decision 1`); eine direkte Kopplung der Treiberschicht an `TGroup` entfällt damit.
 - Phase 3 liefert keine sichtbare Benutzeroberfläche — nur die Infrastruktur. Sichtbare Ergebnisse entstehen erst ab Phase 4 (TProgram/TApplication).
