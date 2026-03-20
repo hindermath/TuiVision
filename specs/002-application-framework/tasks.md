@@ -17,8 +17,8 @@
 
 **Purpose**: Prepare reusable test scaffolding for shell implementation without committing production behavior before Red tests exist.
 
-- [ ] T001 Create shell test support helpers in `tests/TuiVision.Controls.Tests/ShellTestSupport.cs`
-- [ ] T002 [P] Create shell presenter and resize test doubles in `tests/TuiVision.Controls.Tests/ShellPresenterSpy.cs`
+- [x] T001 Create shell test support helpers in `tests/TuiVision.Controls.Tests/ShellTestSupport.cs`
+- [x] T002 [P] Create shell presenter and resize test doubles in `tests/TuiVision.Controls.Tests/ShellPresenterSpy.cs`
 
 ---
 
@@ -28,13 +28,13 @@
 
 **⚠️ CRITICAL**: No user story work should begin until these tasks are complete.
 
-- [ ] T003 Write failing shared command-ID and shell action model tests in `tests/TuiVision.Controls.Tests/TProgramTests.cs`
-- [ ] T004 [P] Write failing status-hint declaration and propagation tests in `tests/TuiVision.Controls.Tests/TStatusLineTests.cs`
-- [ ] T005 Implement shared integer command constants in `src/TuiVision.Controls/ShellCommandIds.cs`
-- [ ] T006 [P] Implement nested menu action model in `src/TuiVision.Controls/TMenuItem.cs`
-- [ ] T007 [P] Implement status action and status-hint model in `src/TuiVision.Controls/TStatusItem.cs`
-- [ ] T008 Implement virtual `GetStatusHints()` in `src/TuiVision.Controls/TView.cs` for status-hint declarations
-- [ ] T009 Add shell extension hooks for focus/change propagation in `src/TuiVision.Controls/TGroup.cs`
+- [x] T003 Write failing shared command-ID and shell action model tests in `tests/TuiVision.Controls.Tests/TProgramTests.cs`
+- [x] T004 [P] Write failing status-hint declaration and propagation tests in `tests/TuiVision.Controls.Tests/TStatusLineTests.cs`
+- [x] T005 Implement shared integer command constants in `src/TuiVision.Controls/ShellCommandIds.cs`
+- [x] T006 [P] Implement nested menu action model in `src/TuiVision.Controls/TMenuItem.cs`
+- [x] T007 [P] Implement status action and status-hint model in `src/TuiVision.Controls/TStatusItem.cs`
+- [x] T008 Implement virtual `GetStatusHints()` in `src/TuiVision.Controls/TView.cs` for status-hint declarations
+- [x] T009 Add shell extension hooks for focus/change propagation in `src/TuiVision.Controls/TGroup.cs`
 
 **Checkpoint**: Shared shell primitives, command IDs, and test scaffolding are ready. User story implementation can proceed.
 
@@ -50,16 +50,16 @@
 
 > **NOTE: Write these tests FIRST and ensure they FAIL before implementation.**
 
-- [ ] T010 [P] [US1] Write failing default shell composition and fixed-layout tests in `tests/TuiVision.Controls.Tests/TApplicationTests.cs`
-- [ ] T011 [P] [US1] Write failing shell lifecycle and controlled-shutdown tests in `tests/TuiVision.Controls.Tests/TProgramTests.cs`
+- [x] T010 [P] [US1] Write failing default shell composition and fixed-layout tests in `tests/TuiVision.Controls.Tests/TApplicationTests.cs`
+- [x] T011 [P] [US1] Write failing shell lifecycle and controlled-shutdown tests in `tests/TuiVision.Controls.Tests/TProgramTests.cs`
 
 ### Implementation for User Story 1
 
-- [ ] T012 [P] [US1] Implement empty-workspace shell container in `src/TuiVision.Controls/TDesktop.cs`
-- [ ] T013 [P] [US1] Implement fixed-height shell region view for default menu presentation in `src/TuiVision.Controls/TMenuBar.cs`
-- [ ] T014 [P] [US1] Implement fixed-height shell region view for default status presentation in `src/TuiVision.Controls/TStatusLine.cs`
-- [ ] T015 [US1] Implement shell lifecycle, region ownership, startup, and controlled shutdown orchestration in `src/TuiVision.Controls/TProgram.cs`
-- [ ] T016 [US1] Implement default shell assembly and customization seams in `src/TuiVision.Controls/TApplication.cs`
+- [x] T012 [P] [US1] Implement empty-workspace shell container in `src/TuiVision.Controls/TDesktop.cs`
+- [x] T013 [P] [US1] Implement fixed-height shell region view for default menu presentation in `src/TuiVision.Controls/TMenuBar.cs`
+- [x] T014 [P] [US1] Implement fixed-height shell region view for default status presentation in `src/TuiVision.Controls/TStatusLine.cs`
+- [x] T015 [US1] Implement shell lifecycle, region ownership, startup, and controlled shutdown orchestration in `src/TuiVision.Controls/TProgram.cs`
+- [x] T016 [US1] Implement default shell assembly and customization seams in `src/TuiVision.Controls/TApplication.cs`
 
 **Checkpoint**: User Story 1 is independently functional as the MVP shell.
 
@@ -73,16 +73,16 @@
 
 ### Tests for User Story 2 ⚠️
 
-- [ ] T017 [P] [US2] Write failing menu activation, arrow-key navigation, and nested submenu tests in `tests/TuiVision.Controls.Tests/TMenuBarTests.cs`
-- [ ] T018 [P] [US2] Write failing shared command-routing and single-execution tests in `tests/TuiVision.Controls.Tests/TProgramTests.cs`
-- [ ] T019 [P] [US2] Write failing status-line hint refresh and disabled-visibility tests in `tests/TuiVision.Controls.Tests/TStatusLineTests.cs`
+- [x] T017 [P] [US2] Write failing menu activation, arrow-key navigation, and nested submenu tests in `tests/TuiVision.Controls.Tests/TMenuBarTests.cs`
+- [x] T018 [P] [US2] Write failing shared command-routing and single-execution tests in `tests/TuiVision.Controls.Tests/TProgramTests.cs`
+- [x] T019 [P] [US2] Write failing status-line hint refresh and disabled-visibility tests in `tests/TuiVision.Controls.Tests/TStatusLineTests.cs`
 
 ### Implementation for User Story 2
 
-- [ ] T020 [US2] Implement shared integer Command ID routing and disabled-command guards in `src/TuiVision.Controls/TProgram.cs`
-- [ ] T021 [US2] Implement F10/Alt activation, arrow-key navigation, and nested submenu traversal in `src/TuiVision.Controls/TMenuBar.cs`
-- [ ] T022 [US2] Implement focus-driven status hint refresh and disabled-action rendering in `src/TuiVision.Controls/TStatusLine.cs`
-- [ ] T023 [P] [US2] Wire command binding and visibility rules in `src/TuiVision.Controls/TMenuItem.cs` and `src/TuiVision.Controls/TStatusItem.cs`
+- [x] T020 [US2] Implement shared integer Command ID routing and disabled-command guards in `src/TuiVision.Controls/TProgram.cs`
+- [x] T021 [US2] Implement F10/Alt activation, arrow-key navigation, and nested submenu traversal in `src/TuiVision.Controls/TMenuBar.cs`
+- [x] T022 [US2] Implement focus-driven status hint refresh and disabled-action rendering in `src/TuiVision.Controls/TStatusLine.cs`
+- [x] T023 [P] [US2] Wire command binding and visibility rules in `src/TuiVision.Controls/TMenuItem.cs` and `src/TuiVision.Controls/TStatusItem.cs`
 
 **Checkpoint**: User Story 2 is independently functional on top of the MVP shell.
 
@@ -96,13 +96,13 @@
 
 ### Tests for User Story 3 ⚠️
 
-- [ ] T024 [P] [US3] Write failing desktop child activation and focus fallback tests in `tests/TuiVision.Controls.Tests/TDesktopTests.cs`
-- [ ] T025 [P] [US3] Write failing zero-child startup and active-child removal integration tests in `tests/TuiVision.Controls.Tests/TApplicationTests.cs`
+- [x] T024 [P] [US3] Write failing desktop child activation and focus fallback tests in `tests/TuiVision.Controls.Tests/TDesktopTests.cs`
+- [x] T025 [P] [US3] Write failing zero-child startup and active-child removal integration tests in `tests/TuiVision.Controls.Tests/TApplicationTests.cs`
 
 ### Implementation for User Story 3
 
-- [ ] T026 [US3] Implement desktop child activation, removal handling, and next-eligible fallback in `src/TuiVision.Controls/TDesktop.cs`
-- [ ] T027 [US3] Integrate desktop focus notifications and empty-workspace fallback into `src/TuiVision.Controls/TProgram.cs` and `src/TuiVision.Controls/TApplication.cs`
+- [x] T026 [US3] Implement desktop child activation, removal handling, and next-eligible fallback in `src/TuiVision.Controls/TDesktop.cs`
+- [x] T027 [US3] Integrate desktop focus notifications and empty-workspace fallback into `src/TuiVision.Controls/TProgram.cs` and `src/TuiVision.Controls/TApplication.cs`
 
 **Checkpoint**: User Story 3 is independently functional on top of the MVP shell.
 
@@ -112,11 +112,11 @@
 
 **Purpose**: Complete functional edge cases, documentation, and repository-wide validation.
 
-- [ ] T028 Write failing terminal resize re-layout tests in `tests/TuiVision.Controls.Tests/TProgramTests.cs` and `tests/TuiVision.Controls.Tests/TApplicationTests.cs`
-- [ ] T029 Implement runtime terminal resize detection and shell re-layout in `src/TuiVision.Controls/TProgram.cs` and `src/TuiVision.Controls/TApplication.cs`
-- [ ] T030 [P] Update bilingual XML documentation in `src/TuiVision.Controls/TProgram.cs`, `src/TuiVision.Controls/TApplication.cs`, `src/TuiVision.Controls/TDesktop.cs`, `src/TuiVision.Controls/TMenuBar.cs`, `src/TuiVision.Controls/TStatusLine.cs`, `src/TuiVision.Controls/TMenuItem.cs`, `src/TuiVision.Controls/TStatusItem.cs`, `src/TuiVision.Controls/ShellCommandIds.cs`, `src/TuiVision.Controls/TView.cs`, and `src/TuiVision.Controls/TGroup.cs`
-- [ ] T031 [P] Align feature-facing documentation with the implemented API in `specs/002-application-framework/quickstart.md` and `specs/002-application-framework/contracts/application-shell-api.md`
-- [ ] T032 Run full validation and coverage gate from repository root with `dotnet build --configuration Release`, `dotnet test`, `dotnet format --verify-no-changes`, `dotnet test tests/TuiVision.Controls.Tests/ --collect:"XPlat Code Coverage"`, and `docfx docfx.json`
+- [x] T028 Write failing terminal resize re-layout tests in `tests/TuiVision.Controls.Tests/TProgramTests.cs` and `tests/TuiVision.Controls.Tests/TApplicationTests.cs`
+- [x] T029 Implement runtime terminal resize detection and shell re-layout in `src/TuiVision.Controls/TProgram.cs` and `src/TuiVision.Controls/TApplication.cs`
+- [x] T030 [P] Update bilingual XML documentation in `src/TuiVision.Controls/TProgram.cs`, `src/TuiVision.Controls/TApplication.cs`, `src/TuiVision.Controls/TDesktop.cs`, `src/TuiVision.Controls/TMenuBar.cs`, `src/TuiVision.Controls/TStatusLine.cs`, `src/TuiVision.Controls/TMenuItem.cs`, `src/TuiVision.Controls/TStatusItem.cs`, `src/TuiVision.Controls/ShellCommandIds.cs`, `src/TuiVision.Controls/TView.cs`, and `src/TuiVision.Controls/TGroup.cs`
+- [x] T031 [P] Align feature-facing documentation with the implemented API in `specs/002-application-framework/quickstart.md` and `specs/002-application-framework/contracts/application-shell-api.md`
+- [x] T032 Run full validation and coverage gate from repository root with `dotnet build --configuration Release`, `dotnet test`, `dotnet format --verify-no-changes`, `dotnet test tests/TuiVision.Controls.Tests/ --collect:"XPlat Code Coverage"`, and `docfx docfx.json`
 
 ---
 
