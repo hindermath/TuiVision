@@ -160,6 +160,24 @@ public class TView : TObject
     }
 
     /// <summary>
+    /// Die Eigentümer-Gruppe dieser Ansicht, oder <c>null</c>, wenn die Ansicht keiner Gruppe angehört.
+    /// Wird von <see cref="TGroup"/> beim Einfügen gesetzt und beim Entfernen auf <c>null</c> zurückgesetzt.
+    ///
+    /// The owner group of this view, or <c>null</c> if the view does not belong to any group.
+    /// Set by <see cref="TGroup"/> on insertion and reset to <c>null</c> on removal.
+    /// </summary>
+    public TGroup? Owner { get; internal set; }
+
+    /// <summary>
+    /// Zeiger auf die nächste Ansicht in der zirkulären Kind-Liste der Eigentümer-Gruppe.
+    /// Nur für <see cref="TGroup"/> zugänglich; <c>null</c>, wenn die Ansicht keiner Gruppe angehört.
+    ///
+    /// Pointer to the next view in the owner group's circular child list.
+    /// Accessible only to <see cref="TGroup"/>; <c>null</c> when the view does not belong to a group.
+    /// </summary>
+    internal TView? Next { get; set; }
+
+    /// <summary>
     /// Die Verhaltensoptionen dieser Ansicht.
     ///
     /// The behavior options of this view.
@@ -384,6 +402,42 @@ public class TView : TObject
     }
 
     /// <summary>
+    /// Zeichnet den Inhalt dieser Ansicht.
+    /// Die Basisimplementierung ist ein No-Op; abgeleitete Klassen überschreiben diese Methode,
+    /// um ihren Inhalt in den Puffer der Eigentümer-Gruppe zu schreiben.
+    /// <see cref="DrawView"/> ist die Template-Methode; abgeleitete Klassen überschreiben
+    /// ausschließlich <see cref="Draw"/>.
+    ///
+    /// Draws the content of this view.
+    /// The base implementation is a no-op; derived classes override this method
+    /// to write their content into the owner group's buffer.
+    /// <see cref="DrawView"/> is the template method; derived classes override
+    /// only <see cref="Draw"/>.
+    /// </summary>
+    public virtual void Draw() { }
+
+    /// <summary>
+    /// Template-Methode: Prüft Sichtbarkeit und Lock-Status der Eigentümer-Gruppe,
+    /// bevor sie <see cref="Draw"/> aufruft.
+    /// Sichtbar = <see cref="GetState"/>(<see cref="TViewState.Visible"/>) == <c>true</c>.
+    /// Ist <see cref="Owner"/> nicht <c>null</c> und gesperrt (<c>IsLocked</c>), wird nicht gezeichnet.
+    ///
+    /// Template method: checks visibility and the owner group's lock status
+    /// before calling <see cref="Draw"/>.
+    /// Visible = <see cref="GetState"/>(<see cref="TViewState.Visible"/>) == <c>true</c>.
+    /// If <see cref="Owner"/> is not <c>null</c> and locked (<c>IsLocked</c>), drawing is skipped.
+    /// </summary>
+    public void DrawView()
+    {
+        if (!GetState(TViewState.Visible) || (Owner?.IsLocked ?? false))
+        {
+            return;
+        }
+
+        Draw();
+    }
+
+    /// <summary>
     /// Verarbeitet ein eingehendes Ereignis.
     /// Beim Drücken der Maustaste wird die Ansicht ausgewählt, sofern sie auswählbar ist.
     /// Abgeleitete Klassen überschreiben diese Methode, um weitere Ereignistypen zu behandeln.
@@ -395,6 +449,13 @@ public class TView : TObject
     /// <param name="event">Das zu verarbeitende Ereignis. / The event to process.</param>
     public virtual void HandleEvent(TEvent @event)
     {
+        // FR-019: Deaktivierte Ansichten ignorieren alle Ereignisse (konform zum C++-Original).
+        // FR-019: Disabled views ignore all events (conforming to the C++ original).
+        if (GetState(TViewState.Disabled))
+        {
+            return;
+        }
+
         if (@event.What != TEventKind.MouseDown)
         {
             return;
