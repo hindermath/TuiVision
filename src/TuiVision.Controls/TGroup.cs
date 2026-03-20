@@ -311,6 +311,18 @@ public class TGroup : TView
         Current?.SetState(TViewState.Focused, false);
         Current = view;
         Current.SetState(TViewState.Focused, true);
+        CurrentChanged();
+    }
+
+    /// <summary>
+    /// Wird aufgerufen, wenn sich die aktuell fokussierte Ansicht (<see cref="Current"/>) ändert.
+    /// Abgeleitete Klassen können diese Methode überschreiben, um auf Fokuswechsel zu reagieren.
+    ///
+    /// Called when the currently focused view (<see cref="Current"/>) changes.
+    /// Derived classes can override this method to react to focus changes.
+    /// </summary>
+    protected virtual void CurrentChanged()
+    {
     }
 
     /// <summary>
@@ -630,7 +642,11 @@ public class TGroup : TView
     /// Resets <see cref="Current"/> to <c>null</c>.
     /// Called when the currently focused view is removed.
     /// </summary>
-    private void ResetCurrent() => Current = null;
+    private void ResetCurrent()
+    {
+        Current = null;
+        CurrentChanged();
+    }
 
     /// <summary>
     /// Zählt die Anzahl der Kind-Views in der zirkulären Liste.
