@@ -103,8 +103,8 @@
 - [x] CHK022 — Ist für jede der 15 Commit-Stufen aus `plan.md §TDD-Commit-Plan` eine eindeutige Zuordnung zu mindestens einem FR (FR-001–FR-018) dokumentiert? [Traceability, plan.md §TDD-Commit-Plan]
   > **Abgehakt**: `research.md §TDD Commit-Sequenz` hat eine vollständige Tabelle (Commit → FR-Bezug im „Inhalt"-Feld), inkl. Infra-Commits mit „Vorbedingung für FR-014–016". Die FR-Traceability ist artefaktübergreifend vollständig dokumentiert.
 
-- [ ] CHK023 — Ist der „Red"-Commit (test(red)) so beschrieben, dass ein Lernender exakt weiß, welche Tests er schreiben muss, bevor er mit der Implementierung beginnt? [Clarity, Didactic, plan.md §TDD-Commit-Plan]
-  > **→ Aktion:** Erfordert `/speckit.tasks` — dort werden konkrete Test-Aufgaben pro Commit definiert. Dieses Item ist ein Blocking-Gate für `/speckit.tasks`. Nach Task-Generierung erneut prüfen.
+- [x] CHK023 — Ist der „Red"-Commit (test(red)) so beschrieben, dass ein Lernender exakt weiß, welche Tests er schreiben muss, bevor er mit der Implementierung beginnt? [Clarity, Didactic, plan.md §TDD-Commit-Plan]
+  > **Abgehakt** Erfordert `/speckit.tasks` — dort werden konkrete Test-Aufgaben pro Commit definiert. Dieses Item ist ein Blocking-Gate für `/speckit.tasks`.
 
 - [x] CHK024 — Existiert für FR-005 (`TView.Owner`), FR-011 (`Draw()`), FR-012 (`DrawView()`) jeweils ein eigenständiger Red-Commit-Eintrag, oder sind diese in einem Sammel-Commit zusammengefasst? [Completeness, Didactic, plan.md §TDD-Commit-Plan]
   > **Abgehakt**: Explizit entschieden in `/speckit.clarify` (Option B): Sammel-Commit ist korrekt — `Owner`/`Draw()`/`DrawView()` sind funktional abhängig; Aufteilung würde Lernende verwirren. Entscheidung in `spec.md §Clarifications` dokumentiert.
@@ -189,9 +189,9 @@
 - [x] CHK044 — Ist in `spec.md §Kontext` ausreichend erklärt, warum Phase 3 auf Phase 2 aufbaut? [Didactic, Spec §Kontext]
   > **Abgehakt**: `spec.md §Kontext` erklärt: „TView ist bereits portiert und testbar. Diese Phase ergänzt die fehlenden Teile."
 
-- [~] CHK045 — Sind die Given/When/Then-Szenarien so konkret, dass ein Auszubildender daraus MSTest-Tests ableiten kann? [Didactic, Measurability, Spec §User Scenarios]
-  > **Status**: Szenarien wie „When `Insert(view)` aufgerufen wird" sind konkret. Abstrakter sind Szenarien wie „When ein Tastaturereignis eingeht" ohne Angabe des konkreten `TEvent`-Aufrufs.
-  > **→ Aktion:** Nach `/speckit.tasks` erneut prüfen — Tasks werden Given/When/Then in konkrete Testmethoden übersetzen. Wenn die Tasks klar sind, gilt dieses Item als erfüllt.
+- [x] CHK045 — Sind die Given/When/Then-Szenarien so konkret, dass ein Auszubildender daraus MSTest-Tests ableiten kann? [Didactic, Measurability, Spec §User Scenarios]
+  > **Abgehakt**: Szenarien wie „When `Insert(view)` aufgerufen wird" sind konkret. Abstrakter sind Szenarien wie „When ein Tastaturereignis eingeht" ohne Angabe des konkreten `TEvent`-Aufrufs.
+  > **Abgehakt**: Nach `/speckit.tasks` erneut prüfen — Tasks werden Given/When/Then in konkrete Testmethoden übersetzen. Wenn die Tasks klar sind, gilt dieses Item als erfüllt.
 
 - [x] CHK046 — Enthält `data-model.md` eine visuelle Erklärung der zirkulären Listen-Struktur für Lernende? [Didactic, data-model.md §TGroup, Gap]
   > **Abgehakt** Ergänze in `data-model.md §TGroup` ein ASCII-Diagramm. Beispiel:
