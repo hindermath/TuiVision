@@ -37,6 +37,8 @@ docfx docfx.json
 
 ## Representative Usage Sketch
 
+**Interpretation note**: The example below is illustrative only. It demonstrates the kind of customization seam the plan must support, but it does not lock the final public API to these exact method names or signatures.
+
 ```csharp
 using TuiVision.Controls;
 using TuiVision.Core;
@@ -65,3 +67,4 @@ public sealed class DemoApplication : TApplication
 - The same global command behaves identically from menu and status line.
 - Disabled actions remain visible and cannot execute.
 - Removing the active desktop child leaves the shell in a valid interactive state.
+- If no eligible desktop child remains, focus falls back to the desktop workspace itself.
