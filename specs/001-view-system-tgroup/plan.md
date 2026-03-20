@@ -61,7 +61,7 @@ specs/001-view-system-tgroup/
 ├── research.md          ← Phase 0: 5 Architektur-Entscheidungen
 ├── data-model.md        ← Phase 1: Entitäten und Beziehungen
 ├── quickstart.md        ← Phase 1: Nutzungsbeispiele
-└── tasks.md             ← Phase 2 (/speckit.tasks — noch nicht erstellt)
+└── tasks.md             ← generiert 2026-03-20 (/speckit.tasks)
 ```
 
 ### Quellcode (Repository Root)
@@ -136,9 +136,9 @@ in `research.md`. Zusammenfassung:
 | `Owner` | `public TGroup? Owner { get; internal set; }` — öffentlich lesbar, intern schreibbar |
 | `Next` | `internal TView? Next { get; set; }` — nur für TGroup zugänglich |
 | `Draw()` | `public virtual void Draw()` — leere Basis; kein `base.Draw()` nötig |
-| `DrawView()` | `public void Draw­View()` — ruft `Draw()` wenn `GetState(TViewState.Visible) && !IsDrawLocked()` |
+| `DrawView()` | `public void DrawView()` — ruft `Draw()` wenn `GetState(TViewState.Visible) && !(Owner?.IsLocked ?? false)` |
 
-*Hinweis*: `IsDrawLocked()` wird intern über `Owner?.IsLocked ?? false` implementiert.
+*Hinweis*: Der Lock-Check nutzt die Property `Owner?.IsLocked` (Property `internal bool IsLocked => _lockFlag > 0` in TGroup, siehe §1.3).
 `DrawView()` prüft also den Lock der Eigentümer-Gruppe, bevor es `Draw()` aufruft.
 
 ### 1.3 TGroup — Implementierungsdetails
