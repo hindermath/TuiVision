@@ -43,4 +43,49 @@ public sealed class TApplicationTests
         bool desktopIsVisible = app.Desktop != null;
         Assert.IsTrue(desktopIsVisible, "Desktop should be present on startup.");
     }
+
+    /// <summary>
+    /// Prüft, ob der initiale Fokus nach dem Konstruktor auf dem Desktop liegt (FR-006,
+    /// data-model §Shell Lifecycle: initialized → interactive requires valid focus target).
+    ///
+    /// Verifies that initial focus is on the desktop after construction (FR-006,
+    /// data-model §Shell Lifecycle: initialized → interactive requires valid focus target).
+    /// </summary>
+    [TestMethod]
+    public void TApplication_Constructor_SetsFocusToDesktop()
+    {
+        TRect bounds = ShellTestSupport.CreateStandardBounds();
+        TApplication app = new(bounds);
+
+        Assert.AreEqual(app.Desktop, app.Current, "Initial focus must be on Desktop after construction.");
+    }
+
+    /// <summary>
+    /// Prüft, ob InitMenuBar, InitDesktop und InitStatusLine durch Unterklassen
+    /// ersetzt werden können (FR-010, plan.md §Customization Boundary).
+    ///
+    /// Verifies that InitMenuBar, InitDesktop, and InitStatusLine can be replaced
+    /// by subclasses (FR-010, plan.md §Customization Boundary).
+    /// </summary>
+    [TestMethod]
+    public void TApplication_InitMethods_AllowRegionReplacement()
+    {
+        TRect bounds = ShellTestSupport.CreateStandardBounds();
+        CustomApplication app = new(bounds);
+
+        Assert.IsInstanceOfType<CustomMenuBar>(app.MenuBar, "InitMenuBar should return the custom menu bar.");
+        Assert.IsInstanceOfType<CustomDesktop>(app.Desktop, "InitDesktop should return the custom desktop.");
+        Assert.IsInstanceOfType<CustomStatusLine>(app.StatusLine, "InitStatusLine should return the custom status line.");
+    }
+
+    private sealed class CustomMenuBar(TRect bounds) : TMenuBar(bounds);
+    private sealed class CustomDesktop(TRect bounds) : TDesktop(bounds);
+    private sealed class CustomStatusLine(TRect bounds) : TStatusLine(bounds);
+
+    private sealed class CustomApplication(TRect bounds) : TApplication(bounds)
+    {
+        protected override TMenuBar InitMenuBar(TRect b) => new CustomMenuBar(b);
+        protected override TDesktop InitDesktop(TRect b) => new CustomDesktop(b);
+        protected override TStatusLine InitStatusLine(TRect b) => new CustomStatusLine(b);
+    }
 }
