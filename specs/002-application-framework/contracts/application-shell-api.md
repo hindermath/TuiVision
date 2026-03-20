@@ -4,6 +4,8 @@
 
 Define the behavioral contract for the new application-shell public surface introduced by this feature. This contract describes required responsibilities and observable guarantees, not final internal implementation details.
 
+This contract intentionally fixes behavior and responsibility boundaries more strongly than exact signatures. Example code or planned file names may illustrate likely seams, but they do not automatically define final public member names unless that commitment is stated here.
+
 ## Public Surface Contract
 
 ### `TProgram`
@@ -13,6 +15,7 @@ Define the behavioral contract for the new application-shell public surface intr
 - Starts in a non-interactive state and transitions to an interactive state only after a valid focus target exists.
 - Accepts global commands and routes them exactly once per user invocation.
 - Shuts down the shell in a controlled order when an exit action is requested.
+- Does not own menu-item rendering details or workspace-child hosting rules directly when those responsibilities belong to specialized shell views.
 
 ### `TApplication`
 
@@ -22,12 +25,14 @@ Define the behavioral contract for the new application-shell public surface intr
   - desktop workspace
   - status line
 - Allows consumers to customize or replace those shell regions without rebuilding the whole application frame model.
+- The exact customization API shape remains open during planning; acceptable designs include overridable methods, builders, or other narrow extension seams as long as the default-shell and customization guarantees are preserved.
 
 ### `TDesktop`
 
 - Hosts zero or more child views or window-like workspace items.
 - Maintains or restores a valid focus target when children are inserted, activated, removed, or closed.
 - Remains usable even when no child items are present.
+- When the active child is removed, tries to activate the next eligible child first and falls back to the desktop itself only if no eligible child remains.
 
 ### `TMenuBar`
 
@@ -35,12 +40,14 @@ Define the behavioral contract for the new application-shell public surface intr
 - Can expose enabled and disabled actions.
 - Keeps disabled actions visible while preventing their execution.
 - Routes chosen actions through the shared shell command path rather than a separate execution path.
+- Owns action presentation, not independent business execution.
 
 ### `TStatusLine`
 
 - Displays shortcut-oriented global actions and context hints.
 - Mirrors shared shell command behavior with the menu bar.
 - Keeps disabled actions visible while preventing their execution.
+- Owns shortcut/context presentation, not an alternative execution path.
 
 ## Behavioral Guarantees
 
