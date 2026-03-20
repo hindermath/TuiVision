@@ -39,35 +39,44 @@ This feature has no persistent storage model. Its data model is an in-memory int
 
 - **Purpose**: Provides visible global navigation and command entry points.
 - **Key attributes**:
-  - Ordered collection of `MenuAction`
+  - Ordered collection of top-level menu items; each item may reference a nested `TMenu` or `TSubMenu`, forming a `TMenuBar → TMenu → TSubMenu` hierarchy
   - Visibility state
   - Current highlighted item (if applicable to interaction model)
+- **Menu hierarchy and keyboard navigation**:
+  - Left/right arrow keys move between top-level menu bar items
+  - Down arrow (or Enter) on a top-level item opens its menu
+  - Up/down arrow keys move between items within an open menu
+  - Right arrow (or Enter) on a submenu item opens the next nesting level
+  - Escape or left arrow closes the current submenu level and returns to the parent
+  - Nesting depth is not bounded by this increment; practical usage follows the original Turbo Vision convention of 2–3 levels
 - **Relationships**:
   - Belongs to exactly one `ApplicationShell`
-  - References zero to many `MenuAction` entries
+  - References zero to many `MenuAction` entries, which may themselves contain nested `TMenu`/`TSubMenu` structures
 - **Validation rules**:
-  - Visible actions must preserve order
-  - Disabled actions remain visible but non-executable
+  - Visible actions must preserve order at every nesting level
+  - Disabled actions remain visible but non-executable at any nesting level
 
 ### StatusLine
 
-- **Purpose**: Exposes shortcut-oriented global actions and current context hints.
+- **Purpose**: Exposes shortcut-oriented global actions and current context hints; automatically reflects the focused view's declared hints on each focus change.
 - **Key attributes**:
   - Ordered collection of `StatusAction`
   - Visibility state
   - Current context label or shortcut set
+- **Focus-notification mechanism**: `TStatusLine` receives focus-change notifications through the shell's existing event dispatch path. When `TProgram` processes a focus-change event, it propagates a focus-updated notification to `TStatusLine`, which then re-reads the newly focused view's declared status hints and replaces its current shortcut set. No polling or separate observer registration is required; the notification travels through the same event routing that all shell views use for `TEvent` handling.
 - **Relationships**:
   - Belongs to exactly one `ApplicationShell`
-  - References zero to many `StatusAction` entries
+  - References zero to many `StatusAction` entries derived from the focused view's current hints
 - **Validation rules**:
   - Disabled actions remain visible but non-executable
   - Shared commands must align with menu-defined behavior
+  - Status hints must be refreshed synchronously with each focus change before the next interactive frame
 
 ### CommandBinding
 
 - **Purpose**: Describes a shared shell command that may be surfaced through menu, status line, or keyboard interaction.
 - **Key attributes**:
-  - Command identifier
+  - Command identifier: a `const int cmXxx` integer constant defined in `ShellCommandIds`; all routing, availability checks, and binding comparisons use integer equality
   - User-visible label
   - Availability state
   - Optional shortcut representation

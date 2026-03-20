@@ -41,6 +41,7 @@ This contract intentionally fixes behavior and responsibility boundaries more st
 - Keeps disabled actions visible while preventing their execution.
 - Routes chosen actions through the shared shell command path rather than a separate execution path.
 - Owns action presentation, not independent business execution.
+- Supports nested submenus via a `TMenuBar → TMenu → TSubMenu` hierarchy. Keyboard navigation contract: F10 or Alt activates the menu bar; left/right arrow moves between top-level items; down arrow opens a menu; up/down arrow moves within an open menu; right arrow or Enter on a submenu item opens the next level; Escape or left arrow closes the current level and returns to the parent.
 
 ### `TStatusLine`
 
@@ -48,6 +49,7 @@ This contract intentionally fixes behavior and responsibility boundaries more st
 - Mirrors shared shell command behavior with the menu bar.
 - Keeps disabled actions visible while preventing their execution.
 - Owns shortcut/context presentation, not an alternative execution path.
+- Receives focus-change notifications through the shell's `TEvent` dispatch path; on each focus-change event, re-reads the newly focused view's declared status hints and updates its visible shortcut set synchronously before the next rendered frame. No polling or separate observer wiring is required.
 
 ## Behavioral Guarantees
 

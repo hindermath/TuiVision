@@ -85,9 +85,41 @@
 - [x] CHK026 - Does the planning set establish a sufficiently explicit traceability path from spec requirements to plan sections and related artifacts, or is an additional ID/linking scheme still needed? [Traceability, Gap, Spec §FR-001-§FR-011, Plan, Research, Data Model, Contract]
   Durchführungshinweis: Versuche stichprobenartig mehrere `FR-*`-Punkte aus der Spec den Plan-Artefakten zuzuordnen. Wenn diese Zuordnung nur mit viel Interpretationsleistung gelingt, ist zusätzliche Traceability wahrscheinlich nötig.
 
+## Requirement Completeness (plan.md delta — 2026-03-20 update)
+
+- [x] CHK027 - Does the plan now document terminal resize detection responsibility (FR-012) with explicit artifact-level coverage in both the scenario matrix and the testing strategy, matching the depth given to other FR-level requirements such as disabled-command visibility and focus recovery? [Completeness, FR-012, Plan §Scenario Matrix, §Testing Strategy]
+  Durchführungshinweis: Prüfe, ob FR-012 im Szenario-Matrix eine eigene Zeile mit Spec-Bezug und Planungsartefakt-Zuordnung hat, und ob die Testing Strategy mindestens einen konkreten Testtyp (Unit oder Integration) für Resize-Verhalten nennt.
+- [x] CHK028 - Are the expanded reviewer readiness criteria — including terminal resize re-layout and status line focus-driven update — documented as mandatory written-artifact requirements before task generation, alongside the original four behaviors? [Completeness, Plan §Reviewer Readiness Criteria]
+  Durchführungshinweis: Lies die Reviewer-Readiness-Liste direkt und prüfe, ob alle sechs Verhaltensklassen (default shell creation, shared command routing, disabled-but-visible, focus fallback, terminal resize, status line focus-update) als Pflichtpunkte aufgeführt sind.
+
+## Requirement Clarity (plan.md delta — 2026-03-20 update)
+
+- [x] CHK029 - Is the integer command constant model (`const int cmXxx` in `ShellCommandIds`) specified clearly enough in the plan's Terminology section and Phase 0 research decisions to prevent implementers from choosing an alternative identification scheme (string keys, enum, or delegate identity)? [Clarity, FR-004, Plan §Terminology, §Phase 0 Research Summary]
+  Durchführungshinweis: Lies Terminology-Definition zu „Command ID" und Research-Entscheidung 4 hintereinander. Prüfe, ob beide explizit `const int` und Integer-Vergleich nennen, oder ob eine der Passagen noch offen lässt, ob Strings oder Enums möglich wären.
+- [x] CHK030 - Are the nested submenu requirements (TMenuBar → TMenu → TSubMenu hierarchy matching Turbo Vision) documented in plan artifacts with enough depth to determine keyboard navigation behavior per nesting level and any nesting depth limits? [Clarity, FR-002, Plan §Phase 1 Design Overview, §TMenuBar responsibilities]
+  Durchführungshinweis: Prüfe, ob Plan, Data Model oder Contract beschreiben, wie Tastaturnavigation bei mehrstufigen Untermenüs aussieht (z. B. Pfeil-rechts zum Öffnen, Escape zum Schließen) und ob eine maximale Schachtelungstiefe definiert oder bewusst offen gelassen wird.
+- [x] CHK031 - Is the mechanism by which `TStatusLine` receives focus-change notifications documented clearly enough in planning artifacts — distinguishing event subscription, observer pattern, or direct call — that the update path can be implemented and validated without reinterpretation? [Clarity, FR-003, Plan §TStatusLine responsibilities]
+  Durchführungshinweis: Lies alle TStatusLine-Passagen im Plan und in `contracts/application-shell-api.md`. Wenn nur „reads the focused view's hints" steht, ohne den Auslösemechanismus (event, poll, callback) zu benennen, ist die Anforderung unklar genug, um Implementierungsunterschiede zu riskieren.
+
+## Requirement Consistency (plan.md delta — 2026-03-20 update)
+
+- [x] CHK032 - Is the integer Command ID model referenced consistently across the plan's Terminology definitions, Phase 0 research decisions, Phase 1 design overview, responsibility boundaries, and the data model, without any section implying a string-keyed or enum-based alternative? [Consistency, FR-004, Plan §Terminology, §Phase 0, §Phase 1 Design Overview, Data Model §CommandBinding]
+  Durchführungshinweis: Suche in allen genannten Abschnitten nach dem Begriff „Command ID" oder „command identifier". Wenn irgendwo alternative Formulierungen wie „name", „key" oder „enum value" auftauchen, ohne dass der Integer-Vorzug klargestellt wird, als Inkonsistenz markieren.
+
+## Non-Functional Requirements (plan.md delta — 2026-03-20 update)
+
+- [x] CHK033 - Is the ≥70% line coverage gate (SC-005) documented consistently across the plan's Technical Context constraints, Testing Strategy coverage gate section, and success-criteria traceability matrix — including the specific Coverlet measurement command — so the gate is unambiguous for task writers? [Non-Functional, SC-005, Plan §Technical Context, §Testing Strategy, §Success-Criteria Traceability]
+  Durchführungshinweis: Prüfe, ob alle drei Stellen (Technical Context, Testing Strategy, Traceability) denselben Schwellenwert (70%) und denselben Coverlet-Befehl nennen. Wenn einer der Abschnitte den Wert weglässt oder einen anderen Befehl impliziert, liegt eine Inkonsistenz vor.
+
+## Traceability (plan.md delta — 2026-03-20 update)
+
+- [x] CHK034 - Does the plan's traceability matrix now include entries for all spec requirements including FR-012 (terminal resize) and SC-005 (≥70% coverage gate), so that every requirement from the updated specification has at least one documented planning hook? [Traceability, FR-012, SC-005, Plan §Traceability Matrix]
+  Durchführungshinweis: Vergleiche die Requirement-IDs in `spec.md` (FR-001 bis FR-012, FR-001a, FR-009a, SC-001 bis SC-005) mit den Zeilen der Traceability-Matrix in `plan.md`. Jede ID muss entweder direkt oder als zusammengefasstes Paar (z. B. FR-009/FR-009a) vertreten sein.
+
 ## Notes
 
 - Use this checklist during author review or PR review before `/speckit.tasks`.
 - Items marked with `[Gap]`, `[Ambiguity]`, `[Conflict]`, `[Assumption]`, or `[Dependency]` indicate likely refinement targets in the planning artifacts.
 - This checklist complements `checklists/requirements.md`; it does not replace the specification-quality checklist.
 - 2026-03-20 review pass: all items were rechecked against `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, and `contracts/application-shell-api.md`; open gaps were resolved in those artifacts before items were marked complete.
+- 2026-03-20 delta pass: CHK027–CHK034 added to cover plan.md additions: terminal resize (FR-012), integer Command ID model, nested submenu hierarchy, status line focus-driven update, SC-005 coverage gate, and expanded traceability matrix coverage.
