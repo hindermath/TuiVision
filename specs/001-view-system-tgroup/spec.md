@@ -161,8 +161,8 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 
 **TView — Draw-Protokoll**
 
-- **FR-011**: `TView` MUSS eine parameterfreie virtuelle `Draw()`-Methode (`void Draw()`) besitzen, die von abgeleiteten Klassen überschrieben wird; die Basis-Implementierung ist eine No-Op. Eine View, die zeichnen möchte, greift intern über die `Owner`-Eigenschaft auf den Zeichenpuffer der übergeordneten `TGroup` zu (analog zum C++-Original). `DrawView()` ist die Template-Methode; abgeleitete Klassen überschreiben ausschließlich `Draw()`. Ruft eine View `Draw()` ohne Eigentümer-Gruppe auf, ist die Methode ein No-Op.
-- **FR-012**: `TView` MUSS eine `DrawView()`-Methode besitzen, die `Draw()` aufruft, sofern die View sichtbar und nicht gesperrt ist. sichtbar = `GetState(TViewState.Visible) == true`
+- **FR-011**: `TView` MUSS eine parameterfreie virtuelle `Draw()`-Methode (`void Draw()`) besitzen, die von abgeleiteten Klassen überschrieben wird; die Basis-Implementierung ist eine No-Op. Eine View, die zeichnen möchte, greift intern über die `Owner`-Eigenschaft auf den Zeichenpuffer der übergeordneten `TGroup` zu (analog zum C++-Original). `DrawView()` ist die Template-Methode; abgeleitete Klassen überschreiben ausschließlich `Draw()`. Abgeleitete Klassen, die auf den Zeichenpuffer zugreifen möchten, MÜSSEN `Owner != null` prüfen; ohne Eigentümer-Gruppe ist die Zeichenoperation ein No-Op.
+- **FR-012**: `TView` MUSS eine `DrawView()`-Methode besitzen, die `Draw()` aufruft, sofern die View sichtbar und nicht gesperrt ist. sichtbar = `GetState(TViewState.Visible) == true`; gesperrt = `Owner?.IsLocked == true` (Property `IsLocked` der Eigentümer-Gruppe; bei `Owner == null` gilt die View als nicht gesperrt).
 
 **TView — Ereignis-Verarbeitung**
 
@@ -199,7 +199,7 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 - **SC-003**: Die Testabdeckung (Line Coverage) für `TuiVision.Controls` erreicht mindestens 70 % (Pflichtenheft Abschnitt 9.4 Nr. 1). Gemessen mit `dotnet-coverage`; Metrik: Line Coverage. AGENTS.md und CLAUDE.md ergänzen, falls dort noch nicht vorhanden.
 - **SC-004**: Ein Entwickler kann eine `TGroup` mit zwei Kind-Views erstellen, Fokus wechseln und ein Tastaturereignis erfolgreich an die fokussierte View dispatchen — nachweisbar durch einen Integrationstest.
 - **SC-005**: Das Neuzeichnen einer Gruppe mit drei Kind-Views (eine davon unsichtbar) beschreibt den Puffer nur für sichtbare Views — nachweisbar durch einen Snapshot-Test gegen den `TConsoleBuffer`.
-- **SC-006**: Die vollständige öffentliche API von `TGroup` und die neuen `TView`-Mitglieder (`Owner`, `Draw`, `DrawView`) sind mit bilingualen XML-Kommentaren (Deutsch zuerst, Englisch danach) dokumentiert und durch `docfx` fehlerfrei verarbeitbar. Gate: `docfx docfx.json` im CI-Workflow muss mit Exit-Code 0 abschließen. Nachweis: Peer-Review der XML-Kommentare gegen CEFR-B2-Kriterien.
+- **SC-006**: Die vollständige öffentliche API von `TGroup` und die neuen `TView`-Mitglieder (`Owner`, `Draw`, `DrawView`) sind mit bilingualen XML-Kommentaren (Deutsch zuerst, Englisch danach) dokumentiert und durch `docfx` fehlerfrei verarbeitbar. Darüber hinaus besitzen alle internen und privaten Members (Felder, Hilfsmethoden) mindestens einen bilingualen `<summary>`-Block gemäß Constitution §III. Gate: `docfx docfx.json` im CI-Workflow muss mit Exit-Code 0 abschließen. Nachweis: Peer-Review der XML-Kommentare gegen CEFR-B2-Kriterien.
 
 ---
 
