@@ -286,7 +286,7 @@ public sealed class TGroupTests
         TEvent keyDown = TEvent.CreateKeyDown(new TKeyDownEvent('a', 30, (ushort)ConsoleKey.A, 0, 30));
         group.HandleEvent(keyDown);
 
-        Assert.IsTrue(receiveOrder.IndexOf("pre") < receiveOrder.IndexOf("focused"),
+        Assert.IsLessThan(receiveOrder.IndexOf("focused"), receiveOrder.IndexOf("pre"),
             $"PreProcess view must receive event before focused view. Actual order: [{string.Join(", ", receiveOrder)}]");
     }
 
@@ -315,7 +315,7 @@ public sealed class TGroupTests
         TEvent keyDown = TEvent.CreateKeyDown(new TKeyDownEvent('a', 30, (ushort)ConsoleKey.A, 0, 30));
         group.HandleEvent(keyDown);
 
-        Assert.IsTrue(receiveOrder.IndexOf("focused") < receiveOrder.IndexOf("post"),
+        Assert.IsLessThan(receiveOrder.IndexOf("post"), receiveOrder.IndexOf("focused"),
             $"PostProcess view must receive event after focused view. Actual order: [{string.Join(", ", receiveOrder)}]");
     }
 

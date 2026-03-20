@@ -31,6 +31,11 @@ dotnet format --verify-no-changes
 docfx docfx.json
 ```
 
+### Coverage Gate (SC-003)
+- **Minimum**: ≥ 70 % Line Coverage in `TuiVision.Controls` (Pflichtenheft §9.4 Nr. 1)
+- **Measurement**: Coverlet (`coverlet.collector` package) via `dotnet test --collect:"XPlat Code Coverage"`
+- Merging into `main` without passing the coverage gate is NOT permitted.
+
 ## Code Style Guidelines
 
 ### Imports and Using Statements

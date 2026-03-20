@@ -49,6 +49,8 @@ All projects share: `net10.0`, `LangVersion: latest`, `Nullable: enable`, `Impli
 
 Tests use MSTest. Test projects mirror source projects (e.g., `TuiVision.Core.Tests` → `TuiVision.Core`). `TuiVision.Examples.SmokeTests` is for integration-level tests of ported example programs.
 
+**Coverage Gate (SC-003)**: `TuiVision.Controls` must achieve ≥ 70 % Line Coverage (Pflichtenheft §9.4 Nr. 1). Measured with Coverlet (`coverlet.collector`): `dotnet test tests/TuiVision.Controls.Tests/ --collect:"XPlat Code Coverage"`. Do not merge to `main` without passing this gate.
+
 ### Documentation
 
 - Explanatory documentation must be bilingual (German first, English second) with CEFR-B2 readability.
