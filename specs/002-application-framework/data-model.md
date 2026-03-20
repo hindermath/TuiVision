@@ -33,6 +33,7 @@ This feature has no persistent storage model. Its data model is an in-memory int
 - **Validation rules**:
   - Must remain valid even with zero children
   - Must always provide a valid focus target after child activation or removal
+  - On active-child removal, fallback order is: next eligible child first, desktop workspace second
 
 ### MenuBar
 
@@ -78,6 +79,7 @@ This feature has no persistent storage model. Its data model is an in-memory int
 - **Validation rules**:
   - A single user invocation maps to one command execution
   - Disabled commands cannot execute
+  - Menu, status line, and equivalent keyboard entry points resolve through the same conceptual command binding
 
 ### ActiveWorkspaceItem
 
@@ -99,9 +101,9 @@ This feature has no persistent storage model. Its data model is an in-memory int
 `created` → `initialized` → `interactive` → `shutting-down` → `terminated`
 
 - `created` to `initialized`: shell regions are created and inserted.
-- `initialized` to `interactive`: the shell has a valid focus target and accepts global commands.
+- `initialized` to `interactive`: the shell has a valid focus target and accepts global commands without requiring additional user setup steps.
 - `interactive` to `shutting-down`: an exit command is accepted.
-- `shutting-down` to `terminated`: resources are released in controlled order.
+- `shutting-down` to `terminated`: resources are released in controlled order, and shell-owned region references are cleared.
 
 ### Command Availability
 
@@ -117,4 +119,5 @@ This feature has no persistent storage model. Its data model is an in-memory int
 
 - Startup may begin in `no-active-child`.
 - Inserting and activating a child moves to `child-active`.
-- Closing the active child either activates the next eligible child or returns to `no-active-child` with desktop fallback focus.
+- Closing the active child first attempts to activate the next eligible child in workspace order.
+- If no eligible child remains, the workspace returns to `no-active-child` and the desktop itself becomes the valid focus target.
