@@ -94,3 +94,10 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 
 ---
 *Hinweis: Dieses Dokument wurde automatisch von Gemini CLI generiert und dient als Instruktionsbasis.*
+
+## Active Technologies
+- C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core` (TView, TGroup, TEvent, TObject, TPoint, TRect, (003-dialog-control-layer)
+- N/A — in-memory UI state only; keine Persistenz in Phase 5 (003-dialog-control-layer)
+
+## Recent Changes
+- 003-dialog-control-layer: Added C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core` (TView, TGroup, TEvent, TObject, TPoint, TRect,

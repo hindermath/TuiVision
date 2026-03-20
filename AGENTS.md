@@ -124,3 +124,10 @@ docfx docfx.json
   - `.github/copilot-instructions.md`
 - Partial synchronization is not acceptable when shared guidance has changed.
 - If one file intentionally diverges for agent-specific reasons, that divergence MUST be explicit and documented in the same change.
+
+## Active Technologies
+- C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core` (TView, TGroup, TEvent, TObject, TPoint, TRect, (003-dialog-control-layer)
+- N/A — in-memory UI state only; keine Persistenz in Phase 5 (003-dialog-control-layer)
+
+## Recent Changes
+- 003-dialog-control-layer: Added C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core` (TView, TGroup, TEvent, TObject, TPoint, TRect,

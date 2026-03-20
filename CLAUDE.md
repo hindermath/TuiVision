@@ -69,6 +69,8 @@ Feature branches use the pattern `codex/<feature-description>`. CI runs on pushe
 - C# `latest` (C# 14) / .NET 10 (`net10.0`) + TuiVision.Core (TPoint, TRect, TEvent, TObject, TConsoleBuffer ← verschoben) (001-view-system-tgroup)
 - C# `latest` on .NET 10 (`net10.0`) + Existing project modules `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`; MSTest for tests; docfx for API documentation validation (002-application-framework)
 - N/A (in-memory UI state only) (002-application-framework)
+- C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core` (TView, TGroup, TEvent, TObject, TPoint, TRect, (003-dialog-control-layer)
+- N/A — in-memory UI state only; keine Persistenz in Phase 5 (003-dialog-control-layer)
 
 ## Recent Changes
 - 001-view-system-tgroup: Added C# `latest` (C# 14) / .NET 10 (`net10.0`) + TuiVision.Core (TPoint, TRect, TEvent, TObject, TConsoleBuffer ← verschoben)

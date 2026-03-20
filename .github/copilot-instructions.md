@@ -60,6 +60,18 @@ All projects target `net10.0` with `Nullable: enable`, `ImplicitUsings: enable`,
 
 ## Active Feature Context
 
+### 003-dialog-control-layer
+- Align active work with `specs/003-dialog-control-layer/plan.md`
+- Implement 13 new classes in `src/TuiVision.Controls` in dependency order: `TStringList` → `TScrollBar` → `TScroller` → `TStaticText` → `TCluster` → `TCheckBoxes` → `TRadioButtons` → `TLabel` → `TListViewer` → `TListBox` → `TButton` → `TInputLine` → `TDialog`
+- `TDialog.Run()` is synchronously blocking (inner event loop); it returns a `ushort` command ID
+- Tab/Shift-Tab focus navigation in `TDialog` is wrap-around (circular child list inherited from `TGroup`)
+- `TButton` supports `TButtonFlags.bfDefault` — activated by Enter when the focused control does not consume Enter; sets `TViewState.Default` (0x400)
+- `TScrollBar` is optional (nullable) for `TListBox` and `TListViewer`
+- `TCluster` is abstract; `TCheckBoxes` uses a bitmask `uint Value`; `TRadioButtons` uses an index `uint Value`
+- All 13 classes require complete bilingual XML documentation (German first, English second, CEFR-B2) for every member including non-public ones
+- Follow TDD Red-Green-Refactor with separate commits: test (Red) before implementation (Green)
+- Coverage gate: `TuiVision.Controls` ≥ 70% line coverage after all 13 classes are added
+
 ### 002-application-framework
 - Align active work with `specs/002-application-framework/plan.md`
 - Implement the shell increment in `src/TuiVision.Controls`, centered on `TProgram`, `TApplication`, `TDesktop`, `TMenuBar`, `TStatusLine`, and shared shell command identifiers
