@@ -18,8 +18,8 @@
 
 ## Requirement Completeness — Vollständigkeit der Anforderungen
 
-- [ ] CHK001 — Sind für alle 18 FRs (FR-001 bis FR-018) sowohl Positiv- als auch Negativszenarien in `spec.md` explizit beschrieben? [Completeness, Spec §User Scenarios]
-  > **→ Aktion:** Die vier User Stories decken die Hauptflüsse ab, aber FRs wie FR-013 (Draw in Z-Order), FR-014–016 (Buffer) und FR-017 (SetState) haben keine eigenen Negativszenarien. In `/speckit.clarify` fragen: „Sollen für FR-013/014–017 dedizierte Negativszenarien (z.B. Draw mit leerem Buffer, SetState auf bereits aktivem State) in spec.md ergänzt werden?" Alternativ: Direkt in spec.md §Edge Cases ergänzen.
+- [x] CHK001 — Sind für alle 18 FRs (FR-001 bis FR-018) sowohl Positiv- als auch Negativszenarien in `spec.md` explizit beschrieben? [Completeness, Spec §User Scenarios]
+  > **Abgehakt**: Entschieden (Option B): SC-001 „wo fachlich sinnvoll" gilt als hinreichend. Exception-Verträge sind vollständig im FR-Text (FR-002/003/018). Edge Cases decken alle Grenzbedingungen ab. Keine weiteren formalen GWT-Negativszenarien erforderlich.
 
 - [x] CHK002 — Ist der Unterschied zwischen `DrawView()` (Template-Methode) und `Draw()` (Überschreibungs-Hook) als eigenständige Anforderung mit klarer Rollentrennung in `spec.md` formuliert? [Completeness, Spec §FR-011, FR-012]
   > **Abgehakt**: FR-011 und FR-012 existieren, aber das Template-Method-Muster (Warum die Trennung?) ist nicht erklärt. Füge in `spec.md §FR-011` einen Satz ein: „`DrawView()` ist die Template-Methode; abgeleitete Klassen überschreiben ausschließlich `Draw()`." Dann abhaken.
@@ -222,26 +222,21 @@
 
 | Status | Anzahl | Items |
 |---|---|---|
-| ✅ Abgehakt | 23 | CHK003, CHK004, CHK013, CHK014, CHK015, CHK016, CHK017, CHK019, CHK022, CHK024, CHK025, CHK026, CHK028, CHK032, CHK033, CHK034, CHK035, CHK042, CHK043, CHK044, CHK047, CHK049, CHK050 |
-| 〜 Teilweise | 6 | CHK010, CHK011, CHK031, CHK039, CHK041, CHK045 |
-| ⬜ Offen | 21 | CHK001, CHK002, CHK005–009, CHK012, CHK018, CHK020, CHK021, CHK023, CHK027, CHK029, CHK030, CHK036–038, CHK040, CHK046, CHK048 |
+| ✅ Abgehakt | 47 | CHK001–CHK022, CHK024–CHK050 (alle außer CHK023 und CHK045) |
+| 〜 Teilweise | 1 | CHK045 |
+| ⬜ Offen | 2 | CHK023, CHK045 |
+
+> **Stand 2026-03-20**: Fast alle 50 Items sind abgehakt. CHK023 und CHK045 sind explizit nach `/speckit.tasks` zu prüfen.
 
 ### Empfohlene Reihenfolge zur Abarbeitung
 
-**Sofort in `spec.md` ergänzen** (je 1–2 Sätze, kein Clarify nötig):
-CHK002, CHK006, CHK007, CHK008, CHK009, CHK011, CHK029, CHK030, CHK036, CHK037, CHK038, CHK040
-
-**In `plan.md` / `research.md` / `data-model.md` ergänzen**:
-CHK012, CHK022, CHK028, CHK031, CHK042, CHK046, CHK047, CHK048, CHK050
-
-**Im nächsten `/speckit.clarify`-Lauf klären** (Entscheidungsbedarf):
-CHK003 (PreProcess/PostProcess-Szenarien), CHK005 (LockDraw-Zähler), CHK024 (Commit-Granularität)
-
 **Nach `/speckit.tasks` erneut prüfen**:
-CHK001, CHK021, CHK023, CHK045
+- CHK023 — Sind Red-Commits präzise genug für Lernende? → Wird durch konkrete Test-Aufgaben in tasks.md aufgelöst.
+- CHK045 — Sind Given/When/Then konkret genug für MSTest? → Wird durch tasks.md-Übersetzung der Szenarien aufgelöst.
 
-**Manuelles Review / PR-Gate**:
-CHK018 (Coverage-Tool), CHK020 (docfx CI-Gate), CHK027 (CEFR-B2 Review)
+**Manuelles Review / PR-Gate** (vor Merge):
+- CHK021 (SC-Nachweis-Zeilen)
+- CHK027 (CEFR-B2 Peer-Review)
 
 ---
 ### Empfohlenes Vorgehen vor /speckit.tasks:

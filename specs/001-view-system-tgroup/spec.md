@@ -228,6 +228,10 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 - Q: Sollen für FR-006 (Drei-Phasen-Dispatch) eigene Given/When/Then-Szenarien für PreProcess- und PostProcess-Phase ergänzt werden? → A: Ja, beide (Option A); PreProcess-View empfängt Event vor fokussierter View (Phase 1), PostProcess-View danach (Phase 3); User Story 1 Szenarien 5 und 6 ergänzt.
 - Q: TDD-Commit-Granularität für FR-005/011/012 — aufteilen oder Sammel-Commit beibehalten? → A: Sammel-Commit beibehalten (Option B); Owner/Draw/DrawView sind funktional abhängig und bilden eine logische Implementierungseinheit; plan.md §TDD-Commit-Plan unverändert.
 
+### Session 2026-03-20
+
+- Q: Sollen für FR-002/003/007/013–014 dedizierte `Given/When/Then`-Negativszenarien in den User Stories ergänzt werden (SC-001-Abdeckung)? → A: Nein (Option B); Exception-Verträge sind im FR-Text vollständig spezifiziert; Edge Cases decken die Grenzbedingungen ab; SC-001 „wo fachlich sinnvoll" gilt als hinreichend — keine weiteren formalen GWT-Negative nötig.
+
 ---
 
 ## Dependencies
