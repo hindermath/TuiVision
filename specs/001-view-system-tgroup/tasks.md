@@ -80,7 +80,7 @@
   - `TView_DrawView_SkipsDraw_WhenInvisible()` — `SetState(Visible, false)` verhindert Aufruf
   - `TView_DrawView_WithNullOwner_IsNoOp()` — kein Fehler wenn `Owner == null` (FR-011 Edge Case)
   - `TView_HandleEvent_Disabled_IgnoresAllEvents()` — **FR-019**: Disabled-View ignoriert jedes Ereignis; prüft, dass `HandleEvent` sofort zurückkehrt ohne Seiteneffekte (Session 2026-03-20)
-  - Build MUSS fehlschlagen (Owner/Draw/DrawView existieren noch nicht)
+  - **Wichtig für Lernende**: Tests 1–5 sind **build-red** (Compiler-Fehler, da `Owner`/`Draw()`/`DrawView()` noch nicht existieren). Test 6 (FR-019) ist **runtime-red** — `HandleEvent` existiert bereits, enthält aber den Disabled-Guard noch nicht; der Build gelingt, der Test schlägt zur Laufzeit fehl.
 
 - [ ] T009 **[feat(green)]** Erweitere `src/TuiVision.Controls/TView.cs`:
   - Füge hinzu: `public TGroup? Owner { get; internal set; }` (oben in der Klasse, nach vorhandenen Properties)
@@ -230,7 +230,7 @@
 
 - [ ] T021 [P] Ergänze vollständige bilingualen DE/EN CEFR-B2 XML-Dokumentation (`<summary>`, `<param>`, `<returns>`, `<exception>`, `<remarks>`) für **alle Members (public, internal, private)** von `src/TuiVision.Core/TConsoleCell.cs` — Constitution §III: kein Access Level ausgenommen
 - [ ] T022 [P] Ergänze vollständige bilingualen DE/EN CEFR-B2 XML-Dokumentation für **alle Members (public, internal, private inkl. interne Felder/Hilfsmethoden)** von `src/TuiVision.Core/TConsoleBuffer.cs` — Constitution §III
-- [ ] T023 [P] Ergänze vollständige bilingualen DE/EN CEFR-B2 XML-Dokumentation für `Owner`, `Next`, `Draw()`, `DrawView()` in `src/TuiVision.Controls/TView.cs`
+- [ ] T023 [P] Ergänze vollständige bilingualen DE/EN CEFR-B2 XML-Dokumentation für `Owner`, `Next`, `Draw()`, `DrawView()` und `HandleEvent(TEvent event)` (FR-019 Disabled-Guard) in `src/TuiVision.Controls/TView.cs`
 - [ ] T024 [P] Ergänze bilingualen DE/EN XML-Dokumentation für alle Werte des internen `DrawPhase`-Enum in `src/TuiVision.Controls/DrawPhase.cs`
 - [ ] T025 [P] Ergänze vollständige bilingualen DE/EN CEFR-B2 XML-Dokumentation inkl. `<example>`-Blöcken für **alle Members** von `src/TuiVision.Controls/TGroup.cs`:
   - public/internal: alle Methoden, Properties, Konstruktor (`<summary>`, `<param>`, `<returns>`, `<exception>`, `<remarks>`)

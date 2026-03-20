@@ -163,7 +163,13 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 
 - **FR-011**: `TView` MUSS eine parameterfreie virtuelle `Draw()`-Methode (`void Draw()`) besitzen, die von abgeleiteten Klassen überschrieben wird; die Basis-Implementierung ist eine No-Op. Eine View, die zeichnen möchte, greift intern über die `Owner`-Eigenschaft auf den Zeichenpuffer der übergeordneten `TGroup` zu (analog zum C++-Original). `DrawView()` ist die Template-Methode; abgeleitete Klassen überschreiben ausschließlich `Draw()`. Ruft eine View `Draw()` ohne Eigentümer-Gruppe auf, ist die Methode ein No-Op.
 - **FR-012**: `TView` MUSS eine `DrawView()`-Methode besitzen, die `Draw()` aufruft, sofern die View sichtbar und nicht gesperrt ist. sichtbar = `GetState(TViewState.Visible) == true`
+
+**TView — Ereignis-Verarbeitung**
+
 - **FR-019**: `TView.HandleEvent(event)` MUSS als erste Operation prüfen, ob die View deaktiviert ist (`GetState(TViewState.Disabled)`); ist dies der Fall, MUSS die Methode sofort zurückkehren ohne das Ereignis zu verarbeiten oder weiterzuleiten. Konform zum C++-Original: `if (state & sfDisabled) return;` war die erste Zeile von `TView::handleEvent`. Zusammen mit FR-017 (Disabled-Propagation) deckt dies US4 Szenario 2 ab.
+
+**TGroup — Draw**
+
 - **FR-013**: `TGroup.Draw()` MUSS alle sichtbaren Kind-Views in Z-Reihenfolge neu zeichnen. Z-Reihenfolge = Einfügereihenfolge; erste eingefügte View wird zuerst (unten), zuletzt eingefügte zuletzt (oben) gezeichnet.
 
 **TGroup — Zeichenpuffer**
