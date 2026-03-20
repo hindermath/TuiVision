@@ -51,9 +51,11 @@ public class TMenuBar : TView
 
         if (@event.What == TEventKind.KeyDown)
         {
-            // F10 (ScanCode 0x44) aktiviert/deaktiviert die Menüleiste.
-            // F10 (ScanCode 0x44) toggles menu bar activation.
-            if (@event.KeyDown.ScanCode == 0x44)
+            // F10 (ScanCode 0x44) oder Alt-Taste (ShiftState-Bit 0x0004) aktiviert die Menüleiste.
+            // F10 (ScanCode 0x44) or Alt key (ShiftState bit 0x0004) toggles menu bar activation.
+            bool isF10 = @event.KeyDown.ScanCode == 0x44;
+            bool isAlt = (@event.KeyDown.ShiftState & 0x0004) != 0;
+            if (isF10 || isAlt)
             {
                 IsMenuActive = !IsMenuActive;
                 @event.Clear();

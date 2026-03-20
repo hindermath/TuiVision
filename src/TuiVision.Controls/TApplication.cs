@@ -7,60 +7,83 @@ namespace TuiVision.Controls;
 
 /// <summary>
 /// Die Standardklasse für TuiVision-Anwendungen.
-/// Sie erstellt automatisch eine Shell mit Menüleiste, Desktop und Statuszeile.
+/// Sie erstellt automatisch eine Shell mit Menüleiste, Desktop und Statuszeile
+/// und bietet virtuelle Initialisierungsmethoden zur Anpassung dieser Regionen.
 ///
 /// The standard class for TuiVision applications.
-/// It automatically creates a shell with a menu bar, desktop, and status line.
+/// It automatically creates a shell with a menu bar, desktop, and status line,
+/// and exposes virtual initialization methods for customizing those regions.
 /// </summary>
 public class TApplication : TProgram
 {
     /// <summary>
     /// Initialisiert eine neue Instanz der <see cref="TApplication"/>-Klasse.
-    /// Erstellt das Standard-Layout mit Menüleiste, Desktop und Statuszeile.
+    /// Erstellt das Standard-Layout mit Menüleiste, Desktop und Statuszeile
+    /// und setzt den initialen Fokus auf den Desktop (FR-006).
     ///
     /// Initializes a new instance of the <see cref="TApplication"/> class.
-    /// Creates the default layout with menu bar, desktop, and status line.
+    /// Creates the default layout with menu bar, desktop, and status line,
+    /// and sets the initial focus to the desktop (FR-006).
     /// </summary>
     /// <param name="bounds">Die Grenzen der Anwendung. / The bounds of the application.</param>
     public TApplication(TRect bounds) : base(bounds)
     {
-        // 1. Menüleiste (Höhe 1, oben)
+        // 1. Menüleiste (Höhe 1, oben) / Menu bar (height 1, top)
         TRect menuBounds = new(bounds.A.X, bounds.A.Y, bounds.B.X, bounds.A.Y + 1);
-        MenuBar = new TMenuBar(menuBounds);
-        BuildMenuBar();
+        MenuBar = InitMenuBar(menuBounds);
         Insert(MenuBar);
 
-        // 2. Statuszeile (Höhe 1, unten)
+        // 2. Statuszeile (Höhe 1, unten) / Status line (height 1, bottom)
         TRect statusBounds = new(bounds.A.X, bounds.B.Y - 1, bounds.B.X, bounds.B.Y);
-        StatusLine = new TStatusLine(statusBounds);
-        BuildStatusLine();
+        StatusLine = InitStatusLine(statusBounds);
         Insert(StatusLine);
 
-        // 3. Desktop (Füllt den Rest aus)
+        // 3. Desktop (füllt den Rest) / Desktop (fills remaining rows)
         TRect desktopBounds = new(bounds.A.X, bounds.A.Y + 1, bounds.B.X, bounds.B.Y - 1);
-        Desktop = new TDesktop(desktopBounds);
+        Desktop = InitDesktop(desktopBounds);
         Insert(Desktop);
+
+        // Initialen Fokus auf Desktop setzen (data-model §Shell Lifecycle: initialized → interactive).
+        // Set initial focus to desktop (data-model §Shell Lifecycle: initialized → interactive).
+        SetFocus(Desktop);
     }
 
     /// <summary>
-    /// Wird während der Initialisierung aufgerufen, um die Menüleiste zu konfigurieren.
-    /// Abgeleitete Klassen können diese Methode überschreiben, um Menüpunkte hinzuzufügen.
+    /// Erstellt die Menüleiste für die Standardshell.
+    /// Abgeleitete Klassen können diese Methode überschreiben, um eine andere
+    /// <see cref="TMenuBar"/>-Instanz oder -Unterklasse zurückzugeben.
     ///
-    /// Called during initialization to configure the menu bar.
-    /// Derived classes can override this method to add menu items.
+    /// Creates the menu bar for the default shell.
+    /// Derived classes can override this method to return a different
+    /// <see cref="TMenuBar"/> instance or subclass.
     /// </summary>
-    protected virtual void BuildMenuBar()
-    {
-    }
+    /// <param name="bounds">Die Grenzen der Menüleiste. / The bounds of the menu bar.</param>
+    /// <returns>Die zu verwendende Menüleisten-Instanz. / The menu bar instance to use.</returns>
+    protected virtual TMenuBar InitMenuBar(TRect bounds) => new(bounds);
 
     /// <summary>
-    /// Wird während der Initialisierung aufgerufen, um die Statuszeile zu konfigurieren.
-    /// Abgeleitete Klassen können diese Methode überschreiben, um Status-Einträge hinzuzufügen.
+    /// Erstellt den Desktop-Arbeitsbereich für die Standardshell.
+    /// Abgeleitete Klassen können diese Methode überschreiben, um einen anderen
+    /// <see cref="TDesktop"/>-Typ zurückzugeben.
     ///
-    /// Called during initialization to configure the status line.
-    /// Derived classes can override this method to add status items.
+    /// Creates the desktop workspace for the default shell.
+    /// Derived classes can override this method to return a different
+    /// <see cref="TDesktop"/> type.
     /// </summary>
-    protected virtual void BuildStatusLine()
-    {
-    }
+    /// <param name="bounds">Die Grenzen des Desktops. / The bounds of the desktop.</param>
+    /// <returns>Die zu verwendende Desktop-Instanz. / The desktop instance to use.</returns>
+    protected virtual TDesktop InitDesktop(TRect bounds) => new(bounds);
+
+    /// <summary>
+    /// Erstellt die Statuszeile für die Standardshell.
+    /// Abgeleitete Klassen können diese Methode überschreiben, um eine andere
+    /// <see cref="TStatusLine"/>-Instanz oder -Unterklasse zurückzugeben.
+    ///
+    /// Creates the status line for the default shell.
+    /// Derived classes can override this method to return a different
+    /// <see cref="TStatusLine"/> instance or subclass.
+    /// </summary>
+    /// <param name="bounds">Die Grenzen der Statuszeile. / The bounds of the status line.</param>
+    /// <returns>Die zu verwendende Statuszeilen-Instanz. / The status line instance to use.</returns>
+    protected virtual TStatusLine InitStatusLine(TRect bounds) => new(bounds);
 }

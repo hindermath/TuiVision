@@ -76,8 +76,14 @@ public class TProgram : TGroup
             // In dieser Phase noch minimal
         }
 
-        // Shutdown-Orchestrierung
-        // TODO: Benachrichtigung der Kind-Views
+        // Shutdown-Orchestrierung: alle Kind-Views in LIFO-Reihenfolge herunterfahren
+        // (FR-007), danach Shell-Referenzen freigeben (data-model §Shell Lifecycle).
+        // Shutdown orchestration: shut down all child views in LIFO order (FR-007),
+        // then clear shell-owned references (data-model §Shell Lifecycle).
+        ShutDown();
+        MenuBar = null;
+        Desktop = null;
+        StatusLine = null;
     }
 
     /// <summary>
