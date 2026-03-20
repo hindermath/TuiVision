@@ -1,3 +1,4 @@
+using TuiVision.Core;
 using TuiVision.Drivers.Console;
 
 namespace TuiVision.Drivers.Tests;
