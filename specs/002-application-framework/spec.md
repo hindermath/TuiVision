@@ -5,6 +5,14 @@
 **Status**: Ready for Planning  
 **Input**: User description: "Bitte setze aus der Datei Pflichtenheft.md in Abschnitt 8.1 Nr. 4 Anwendungsrahmen: `TProgram`, `TApplication`, Menues, Statuszeile, Desktop um."
 
+## Clarifications
+
+### Session 2026-03-20
+
+- Q: Which shell initialization model should the specification require for `TApplication`? → A: `TApplication` creates a complete default shell with desktop, menu bar, and status line.
+- Q: How should currently unavailable global actions be presented? → A: Unavailable menu and status-line actions remain visible but are shown as disabled.
+- Q: What is the scope boundary for this feature? → A: This feature is limited to shell infrastructure; concrete dialogs, controls, and specialized window types are out of scope.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Launch a complete application shell (Priority: P1)
@@ -53,16 +61,18 @@ As an end user, I want the desktop area to host and manage application content s
 ### Edge Cases
 
 - The application starts with an empty desktop and must still provide a usable shell.
-- A command is visible in the menu system or status line but is not currently available in the active context.
+- A command is visible in the menu system or status line but is not currently available in the active context, and it must remain visible while being shown as disabled.
 - Different entry points reference the same command, and the action must not execute twice for a single user invocation.
 - The active desktop item closes while it owns focus, and the shell must recover to another valid focus target.
 - The available screen area is constrained, and the shell must still keep the menu, desktop, and status line logically separated.
+- The shell infrastructure must remain usable even when no concrete dialog, control, or specialized window type has been implemented yet.
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
 - **FR-001**: The system MUST provide a top-level application shell for `TProgram` and `TApplication` that organizes the interface into menu bar, desktop area, and status line.
+- **FR-001a**: The system MUST define `TApplication` startup so that a usable default shell is created automatically, including desktop workspace, menu bar, and status line, while still allowing application authors to customize or replace those regions afterward.
 - **FR-002**: The system MUST allow application authors to define application-level menus that expose labeled actions to end users.
 - **FR-003**: The system MUST provide a status line that can expose context-relevant actions and shortcuts to end users.
 - **FR-004**: The system MUST route application-level commands consistently, regardless of whether the user invokes them from menus, status-line actions, or equivalent keyboard interactions.
@@ -71,7 +81,9 @@ As an end user, I want the desktop area to host and manage application content s
 - **FR-007**: The system MUST allow the application shell to start, remain interactive until an exit action is requested, and then shut down in a controlled manner.
 - **FR-008**: The system MUST support applications that start with zero desktop children and still remain fully navigable through global shell actions.
 - **FR-009**: The system MUST represent commands that are not currently available in a way that prevents accidental execution while preserving user orientation.
+- **FR-009a**: The system MUST keep unavailable global actions visible in both the menu system and status line and present them as disabled rather than hiding them.
 - **FR-010**: The system MUST allow framework consumers to customize the shell composition at startup, including menu content, desktop content, and status line content, without redefining the overall application frame model.
+- **FR-011**: The system MUST keep this feature scoped to application-shell infrastructure, including global command routing and desktop hosting behavior, without requiring concrete dialog classes, control widgets, or specialized window types to be delivered as part of this increment.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -85,8 +97,10 @@ As an end user, I want the desktop area to host and manage application content s
 
 - The feature targets single-user interactive text applications that run in a local terminal session.
 - A standard application shell always includes menu bar, desktop, and status line, even if one of those regions contains only minimal content at startup.
-- Commands may be temporarily unavailable depending on application context, but users should still be able to understand which actions exist.
+- `TApplication` is the convenience entry point that creates the full default shell automatically rather than requiring authors to assemble the initial frame from scratch.
+- Commands may be temporarily unavailable depending on application context, but users should still be able to understand which actions exist because unavailable actions remain visible as disabled entries.
 - The desktop workspace may contain zero, one, or many child windows or views over the lifetime of the application.
+- Concrete dialogs, control widgets, and specialized window types belong to later increments and are not required for acceptance of this feature.
 
 ## Success Criteria *(mandatory)*
 
