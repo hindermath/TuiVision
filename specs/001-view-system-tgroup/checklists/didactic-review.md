@@ -222,11 +222,11 @@
 
 | Status | Anzahl | Items |
 |---|---|---|
-| ✅ Abgehakt | 47 | CHK001–CHK022, CHK024–CHK050 (alle außer CHK023 und CHK045) |
-| 〜 Teilweise | 1 | CHK045 |
-| ⬜ Offen | 2 | CHK023, CHK045 |
+| ✅ Abgehakt | 50 | CHK001–CHK050 (alle) |
+| 〜 Teilweise | 0 | — |
+| ⬜ Offen | 0 | — |
 
-> **Stand 2026-03-20**: Fast alle 50 Items sind abgehakt. CHK023 und CHK045 sind explizit nach `/speckit.tasks` zu prüfen.
+> **Stand 2026-03-20 (post-tasks)**: Alle 50 Items sind abgehakt. CHK023 und CHK045 wurden nach `/speckit.tasks` bestätigt (konkrete Testmethoden in tasks.md vorhanden). CHK021 und CHK027 bleiben als manuelle PR-Gate-Items vor dem Merge zu prüfen.
 
 ### Empfohlene Reihenfolge zur Abarbeitung
 
