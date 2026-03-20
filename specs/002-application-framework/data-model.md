@@ -58,15 +58,16 @@ This feature has no persistent storage model. Its data model is an in-memory int
 
 ### StatusLine
 
-- **Purpose**: Exposes shortcut-oriented global actions and current context hints; automatically reflects the focused view's declared hints on each focus change.
+- **Purpose**: Exposes shortcut-oriented global actions and context hints; automatically reflects the focused view's declared hints on each focus change.
 - **Key attributes**:
-  - Ordered collection of `StatusAction`
+  - Ordered collection of `TStatusItem`
   - Visibility state
   - Current context label or shortcut set
 - **Focus-notification mechanism**: `TStatusLine` receives focus-change notifications through the shell's existing event dispatch path. When `TProgram` processes a focus-change event, it propagates a focus-updated notification to `TStatusLine`, which then re-reads the newly focused view's declared status hints and replaces its current shortcut set. No polling or separate observer registration is required; the notification travels through the same event routing that all shell views use for `TEvent` handling.
+- **Status-hint declaration**: A `TView` declares its available status hints by implementing a virtual `GetStatusHints()` method that returns an ordered collection of `TStatusItem` descriptors. `TStatusLine` invokes this method on the currently focused view to determine its content.
 - **Relationships**:
   - Belongs to exactly one `ApplicationShell`
-  - References zero to many `StatusAction` entries derived from the focused view's current hints
+  - References zero to many `TStatusItem` entries derived from the focused view's current hints
 - **Validation rules**:
   - Disabled actions remain visible but non-executable
   - Shared commands must align with menu-defined behavior
@@ -82,8 +83,8 @@ This feature has no persistent storage model. Its data model is an in-memory int
   - Optional shortcut representation
   - Optional routing target / handler information
 - **Relationships**:
-  - May be referenced by one or many `MenuAction`
-  - May be referenced by one or many `StatusAction`
+  - May be referenced by one or many `TMenuItem`
+  - May be referenced by one or many `TStatusItem`
   - Is executed through `ApplicationShell`
 - **Validation rules**:
   - A single user invocation maps to one command execution

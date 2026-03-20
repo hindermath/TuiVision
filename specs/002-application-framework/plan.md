@@ -138,7 +138,7 @@ See `research.md` for full detail. Key planning decisions:
 ### Customization Boundary for This Increment
 
 - This increment must support customization or replacement of menu bar, desktop, and status line regions after default shell creation.
-- The contract requires the availability of customization seams, but the exact API form remains intentionally undecided during planning.
+- The customization API for `TApplication` MUST use virtual initialization methods (`InitMenuBar`, `InitDesktop`, `InitStatusLine`) that return the respective shell region views. This allows subclasses to customize or replace these regions during the `TApplication` constructor/startup sequence while preserving the default layout.
 - Concrete dialogs, control widgets, and specialized window classes remain out of scope even if later customization points may host them.
 
 ## Implementation Strategy
