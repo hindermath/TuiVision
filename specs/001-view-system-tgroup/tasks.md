@@ -240,6 +240,8 @@
 - [ ] T026 Führe `dotnet build --configuration Release` aus und behebe alle Warnungen (CS1591 für fehlende XML-Docs; Build muss 0 Fehler / 0 Warnungen ergeben)
 - [ ] T027 Führe `dotnet test` aus; stelle sicher, dass alle Tests grün sind; messe Line Coverage mit `dotnet-coverage collect "dotnet test" --output coverage.xml` → TuiVision.Controls ≥ 70 %
 - [ ] T028 Führe `dotnet format --verify-no-changes` aus und behebe alle Formatierungsverstöße in den neuen Dateien
+- [ ] T029 **[Constitution §VI — Lizenz-Header]** Prüfe alle in dieser Phase neu erstellten Quelldateien auf MIT-Lizenz-Header und füge ihn ein, wo er fehlt: `src/TuiVision.Core/TConsoleCell.cs`, `src/TuiVision.Core/TConsoleBuffer.cs`, `src/TuiVision.Drivers.Console/TConsoleDriver.cs`, `src/TuiVision.Controls/DrawPhase.cs`, `src/TuiVision.Controls/TGroup.cs` — Format gemäß vorhandenen Dateien im Repository; kein neuer Commit nötig, falls in T026-Commit integrierbar
+- [ ] T030 **[SC-003 — AGENTS.md / CLAUDE.md]** Prüfe `AGENTS.md` und `CLAUDE.md` auf Vorhandensein des Coverage-Gates (≥ 70 % Line Coverage in TuiVision.Controls); ergänze den Hinweis in beiden Dateien falls fehlend. Commit: `chore: document 70% line coverage gate in AGENTS.md and CLAUDE.md (SC-003)`
 
 ---
 
@@ -267,7 +269,9 @@ Phase 1 (T001–T002–T002a)
                                                   ├── T021–T025 [P] parallel
                                                   ├── T026 (nach T021–T025)
                                                   ├── T027 (nach T026)
-                                                  └── T028 (nach T026)
+                                                  ├── T028 (nach T026)
+                                                  ├── T029 (nach T021–T025, parallel zu T026–T028)
+                                                  └── T030 (unabhängig, parallel ab Phase 7)
 ```
 
 **US2, US3, US4 können nach Abschluss von US1 parallel implementiert werden** (unterschiedliche Methoden in TGroup.cs, aber Vorsicht bei gleichzeitigen Edits derselben Datei).

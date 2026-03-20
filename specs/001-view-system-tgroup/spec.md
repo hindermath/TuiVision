@@ -142,14 +142,14 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 **TGroup — Lebenszyklus und Kind-Verwaltung**
 
 - **FR-001**: Das System MUSS eine `TGroup`-Klasse bereitstellen, die von `TView` erbt und eine geordnete Liste von Kind-Views verwaltet.
-- **FR-002**: `TGroup.Insert(view)` MUSS eine Kind-View in die interne Liste aufnehmen und deren `Owner`-Eigenschaft auf die Gruppe setzen. Wird `null` übergeben, MUSS eine `ArgumentNullException` geworfen werden. Wird dieselbe View-Instanz ein zweites Mal übergeben, MUSS eine `ArgumentException` geworfen werden. Wird die Gruppe selbst übergeben (`view == this`), MUSS eine `ArgumentException` geworfen werden.
+- **FR-002**: `TGroup.Insert(view)` MUSS eine Kind-View in die interne Liste aufnehmen und deren `Owner`-Eigenschaft auf die Gruppe setzen. Wird `null` übergeben, MUSS eine `ArgumentNullException` geworfen werden. Wird eine View übergeben, deren `Owner` bereits gesetzt ist (egal ob durch diese oder eine andere Gruppe), MUSS eine `ArgumentException` geworfen werden. Wird die Gruppe selbst übergeben (`view == this`), MUSS eine `ArgumentException` geworfen werden.
 - **FR-003**: `TGroup.Remove(view)` MUSS eine Kind-View aus der Liste entfernen und deren `Owner`-Eigenschaft auf `null` setzen. Wird `null` übergeben, MUSS eine `ArgumentNullException` geworfen werden. Wird eine View übergeben, die nicht zur Gruppe gehört, MUSS eine `ArgumentException` geworfen werden.
 - **FR-004**: `TGroup.ShutDown()` MUSS alle Kind-Views rekursiv herunterfahren und die Kind-Liste leeren, bevor `TView.ShutDown()` aufgerufen wird. Die Kind-Views werden in umgekehrter Einfügereihenfolge (LIFO) heruntergefahren.
 - **FR-005**: `TView` MUSS eine `Owner`-Eigenschaft vom Typ `TGroup?` besitzen, die die übergeordnete Gruppe referenziert.
 
 **TGroup — Ereignis-Dispatching**
 
-- **FR-006**: `TGroup.HandleEvent(event)` MUSS Ereignisse in drei Phasen verteilen: Pre-Process (Views mit `PreProcess`-Option), Focused-Phase (fokussierte View), Post-Process (Views mit `PostProcess`-Option).
+- **FR-006**: `TGroup.HandleEvent(event)` MUSS Ereignisse in drei Phasen verteilen: Pre-Process (Views mit `PreProcess`-Option), Focused-Phase (fokussierte View), Post-Process (Views mit `PostProcess`-Option). In der Focused-Phase werden Tastaturereignisse an `Current` weitergeleitet; Maus-Positional-Routing (Ereignis an die View unter dem Mauszeiger) ist in dieser Phase auf die direkte Weiterleitung an `Current` beschränkt und wird in Phase 4 (TProgram) vollständig ausgebaut. / In the Focused phase, keyboard events are routed to `Current`; full mouse positional routing (event dispatched to the view under the cursor) is limited to forwarding to `Current` in this phase and will be fully implemented in Phase 4 (TProgram).
 - **FR-007**: Das System MUSS sicherstellen, dass ein von einer Kind-View auf `TEventKind.Nothing` gesetztes Ereignis nicht an weitere Views weitergeleitet wird.
 
 **TGroup — Fokus-Management**
@@ -176,7 +176,7 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 
 - **FR-014**: `TGroup` MUSS einen optionalen internen Zeichenpuffer (`TConsoleBuffer`) unterstützen, der bei `TViewOptions.Buffered` genutzt wird.
 - **FR-015**: Bei einer Grössenänderung der Gruppe MUSS der Zeichenpuffer neu allokiert werden.
-- **FR-016**: `TGroup.LockDraw()` MUSS das Neuzeichnen temporär sperren; `TGroup.UnlockDraw()` MUSS das Neuzeichnen freigeben und alle ausstehenden `DrawView()`-Aufrufe nachholen. Nach Freigabe wird `DrawView()` genau einmal aufgerufen, unabhängig von der Anzahl gesperrter Aufrufe.
+- **FR-016**: `TGroup.LockDraw()` MUSS das Neuzeichnen temporär sperren; `TGroup.UnlockDraw()` MUSS das Neuzeichnen freigeben. Nach Freigabe wird `DrawView()` **genau einmal** aufgerufen, unabhängig von der Anzahl vorangegangener `LockDraw()`-Aufrufe.
 
 **State-Propagation**
 
