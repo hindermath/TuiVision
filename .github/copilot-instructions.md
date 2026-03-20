@@ -57,3 +57,25 @@ All projects target `net10.0` with `Nullable: enable`, `ImplicitUsings: enable`,
 - **Test naming**: `ClassName_MethodName_Behavior` (e.g., `TRect_Contains_UsesTopLeftInclusiveBottomRightExclusive`).
 - **Branch naming**: Feature branches follow `codex/<feature-description>`.
 - **Porting guidance**: Consult `tv203s/contrib/tvision/` for original behavior when porting new classes. The C# port modernizes idioms — it does not translate line-for-line.
+
+## Active Feature Context
+
+### 002-application-framework
+- Align active work with `specs/002-application-framework/plan.md`
+- Implement the shell increment in `src/TuiVision.Controls`, centered on `TProgram`, `TApplication`, `TDesktop`, `TMenuBar`, `TStatusLine`, and shared shell command identifiers
+- Preserve the existing module hierarchy; do **not** introduce a new shell assembly
+- Reuse existing `TView`/`TGroup` semantics for ownership, focus, and event dispatch
+- `TApplication` must create a default shell automatically: menu bar, desktop workspace, and status line
+- Unavailable global actions must remain visible in both menu and status line, but be disabled
+- Keep this increment scoped to shell infrastructure only; dialogs, controls, and specialized window classes belong to later steps
+- Add or extend MSTest coverage in `tests/TuiVision.Controls.Tests/` before production code to preserve the repository's TDD-first workflow
+
+## Agent File Synchronization Policy
+
+- When active feature context, plan-derived implementation guidance, or other shared AI-agent instructions change, review and update these files together when affected:
+  - `AGENTS.md`
+  - `CLAUDE.md`
+  - `GEMINI.md`
+  - `.github/copilot-instructions.md`
+- Shared guidance must not be updated in only one of these files.
+- Any intentional agent-specific divergence must be called out explicitly in the same change.

@@ -438,9 +438,20 @@ public class TView : TObject
     }
 
     /// <summary>
+    /// Gibt die Status-Hinweise für diese Ansicht zurück.
+    ///
+    /// Returns the status hints for this view.
+    /// </summary>
+    /// <returns>Eine Kette von <see cref="TStatusItem"/>s oder <c>null</c>. / A chain of <see cref="TStatusItem"/>s or <c>null</c>.</returns>
+    public virtual TStatusItem? GetStatusHints()
+    {
+        return null;
+    }
+
+    /// <summary>
     /// Verarbeitet ein eingehendes Ereignis.
-    /// Beim Drücken der Maustaste wird die Ansicht ausgewählt, sofern sie auswählbar ist.
-    /// Abgeleitete Klassen überschreiben diese Methode, um weitere Ereignistypen zu behandeln.
+    /// Bei Mausklick wird die Ansicht ausgewählt, wenn sie selektierbar ist.
+    /// Abgeleitete Klassen überschreiben diese Methode, um zusätzliche Ereignistypen zu verarbeiten.
     ///
     /// Processes an incoming event.
     /// On mouse button press, the view is selected if it is selectable.

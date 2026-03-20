@@ -102,3 +102,25 @@ docfx docfx.json
 - Uses .NET 10 SDK
 - Tests are run using `dotnet test` command with Release configuration
 - Build and test validation is mandatory for all code changes
+
+## Active Feature Context
+
+### 002-application-framework
+- Current planning target: implement the application shell increment from `specs/002-application-framework/spec.md` and `specs/002-application-framework/plan.md`
+- Scope is limited to shell infrastructure in `src/TuiVision.Controls`: `TProgram`, `TApplication`, `TDesktop`, `TMenuBar`, `TStatusLine`, lightweight action items, and shared shell command identifiers
+- Out of scope for this increment: concrete dialogs, control widgets, and specialized window types
+- `TApplication` must auto-create a default shell with menu bar, desktop workspace, and status line
+- Unavailable global actions must remain visible in menu and status line, but be disabled
+- Reuse existing `TView`/`TGroup` ownership, focus, and event-dispatch behavior instead of introducing a new shell module
+- Add focused MSTest coverage in `tests/TuiVision.Controls.Tests/` for default shell creation, shared command routing, disabled-action visibility, and desktop focus recovery
+- Follow visible Red-Green-Refactor TDD sequencing for this feature before production code is added
+
+## Agent File Synchronization Policy
+
+- When active feature context, implementation plans, or project-wide agent guidance changes, the following AI-agent files MUST be reviewed and updated together in the same work item if they are affected:
+  - `AGENTS.md`
+  - `CLAUDE.md`
+  - `GEMINI.md`
+  - `.github/copilot-instructions.md`
+- Partial synchronization is not acceptable when shared guidance has changed.
+- If one file intentionally diverges for agent-specific reasons, that divergence MUST be explicit and documented in the same change.
