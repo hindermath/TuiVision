@@ -26,6 +26,7 @@
 
 - [ ] T001 Lese `src/TuiVision.Drivers.Console/Class1.cs` und erfasse vollständige Implementierung von `TConsoleCell` und `TConsoleBuffer` (Felder, Methoden, Signaturen) als Vorbereitung für Migration
 - [ ] T002 Lese `src/TuiVision.Controls/TView.cs` und `tests/TuiVision.Controls.Tests/Test1.cs` und erfasse existierende TView-Struktur (States, Options, Methoden) und Testmuster (Namespace, TestClass, TestMethod-Konventionen)
+- [ ] T002a Prüfe `Directory.Build.props`: Stelle sicher, dass `<WarningsAsErrors Condition="'$(Configuration)' == 'Release'">CS1591</WarningsAsErrors>` vorhanden ist; füge es hinzu falls fehlend. Führe `dotnet build --configuration Release` aus — muss 0 Fehler ergeben (da noch kein neuer Code ohne Docs vorhanden). Commit: `chore: enforce CS1591 as Release build error (Constitution §III)`
 
 ---
 
@@ -33,6 +34,8 @@
 
 **Zweck**: Architektur-Vorbedingung (Constitution IV) und neue TView-Mitglieder.
 **Muss vollständig abgeschlossen sein, bevor US1–US4 beginnen.**
+
+> **CS1591-Hinweis**: Jeder `feat(green)`-Commit, der neue public/internal API einführt, MUSS für jedes neue Member mindestens einen `<summary>`-Stub enthalten, damit `dotnet build --configuration Release` (CS1591 als Error in Release) besteht. Vollständige bilingualen Docs folgen in Phase 7 (T021–T025).
 
 ### Commits 1–2: TConsoleBuffer nach Core verschieben
 
@@ -75,6 +78,7 @@
   - `TView_Draw_BaseImplementation_IsNoOp()` — kein Fehler beim Aufruf
   - `TView_DrawView_CallsDraw_WhenVisible()` — überschriebenes `Draw()` wird aufgerufen
   - `TView_DrawView_SkipsDraw_WhenInvisible()` — `SetState(Visible, false)` verhindert Aufruf
+  - `TView_DrawView_WithNullOwner_IsNoOp()` — kein Fehler wenn `Owner == null` (FR-011 Edge Case)
   - Build MUSS fehlschlagen (Owner/Draw/DrawView existieren noch nicht)
 
 - [ ] T009 **[feat(green)]** Erweitere `src/TuiVision.Controls/TView.cs`:
@@ -132,6 +136,7 @@
   - `TGroup_HandleEvent_PostProcess_ReceivesAfterFocused_WhenNotConsumed()`
   - `TGroup_HandleEvent_PostProcess_Skipped_WhenEventConsumedInFocusedPhase()`
   - `TGroup_HandleEvent_PreProcess_ConsumedEvent_StopsAllSubsequentPhases()`
+  - `TGroup_Integration_TwoChildren_FocusSwitch_KeyboardDispatch()` — **SC-004**: kombiniert Insert, SetFocus und HandleEvent in einem einzigen Test; deckt das Akzeptanzszenario aus spec.md SC-004 vollständig ab
 
 - [ ] T014 [US1] **[feat(green)]** Implementiere `override void HandleEvent(TEvent @event)` in `src/TuiVision.Controls/TGroup.cs` nach Pseudocode in plan.md §1.3:
   - Phase = PreProcess: `ForEach(v => { if (v.Options.HasFlag(PreProcess) && (v.EventMask & event.What) != 0) v.HandleEvent(event); })`
@@ -184,7 +189,7 @@
   - `TGroup_LockDraw_PreventsDrawView()`
   - `TGroup_UnlockDraw_TriggersExactlyOneDrawView()`
   - `TGroup_LockDraw_Nested_CounterMustReachZero_BeforeRedraw()` — LockDraw×2 + UnlockDraw×1 → kein Neuzeichnen; erst UnlockDraw×2 → Neuzeichnen
-  - `TView_DrawView_WithNullOwner_IsNoOp()` — kein Fehler wenn Owner==null
+  - `TGroup_Draw_VisibleChild_WritesExpectedCellsToBuffer()` — **SC-005**: Snapshot-Test; prüft konkrete `TConsoleCell`-Werte an erwarteten Koordinaten im `TConsoleBuffer` nach `DrawView()`; eine sichtbare und eine unsichtbare Kind-View; Puffer enthält nur Zellen der sichtbaren View
 
 - [ ] T018 [US3] **[feat(green)]** Implementiere in `src/TuiVision.Controls/TGroup.cs` nach plan.md §1.4:
   - `override void Draw()`: Puffer-Allokation wenn `_buffer == null && Options.HasFlag(Buffered) && GetState(Exposed)`; `ForEach(v => { if (v.GetState(TViewState.Visible)) v.DrawView(); })`
@@ -221,11 +226,15 @@
 **Zweck**: Bilinguales DE/EN CEFR-B2 XML, Formatierung, Coverage-Nachweis.
 **Commit 15**: `refactor: documentation pass (bilingual XML, remarks, examples)`
 
-- [ ] T021 [P] Ergänze vollständige bilingualen DE/EN CEFR-B2 XML-Dokumentation (`<summary>`, `<param>`, `<returns>`, `<exception>`, `<remarks>`) für alle public Members von `src/TuiVision.Core/TConsoleCell.cs`
-- [ ] T022 [P] Ergänze vollständige bilingualen DE/EN CEFR-B2 XML-Dokumentation für alle public Members von `src/TuiVision.Core/TConsoleBuffer.cs`
+- [ ] T021 [P] Ergänze vollständige bilingualen DE/EN CEFR-B2 XML-Dokumentation (`<summary>`, `<param>`, `<returns>`, `<exception>`, `<remarks>`) für **alle Members (public, internal, private)** von `src/TuiVision.Core/TConsoleCell.cs` — Constitution §III: kein Access Level ausgenommen
+- [ ] T022 [P] Ergänze vollständige bilingualen DE/EN CEFR-B2 XML-Dokumentation für **alle Members (public, internal, private inkl. interne Felder/Hilfsmethoden)** von `src/TuiVision.Core/TConsoleBuffer.cs` — Constitution §III
 - [ ] T023 [P] Ergänze vollständige bilingualen DE/EN CEFR-B2 XML-Dokumentation für `Owner`, `Next`, `Draw()`, `DrawView()` in `src/TuiVision.Controls/TView.cs`
 - [ ] T024 [P] Ergänze bilingualen DE/EN XML-Dokumentation für alle Werte des internen `DrawPhase`-Enum in `src/TuiVision.Controls/DrawPhase.cs`
-- [ ] T025 [P] Ergänze vollständige bilingualen DE/EN CEFR-B2 XML-Dokumentation inkl. `<example>`-Blöcken für alle public und internal Members von `src/TuiVision.Controls/TGroup.cs`
+- [ ] T025 [P] Ergänze vollständige bilingualen DE/EN CEFR-B2 XML-Dokumentation inkl. `<example>`-Blöcken für **alle Members** von `src/TuiVision.Controls/TGroup.cs`:
+  - public/internal: alle Methoden, Properties, Konstruktor (`<summary>`, `<param>`, `<returns>`, `<exception>`, `<remarks>`)
+  - private Felder: `_last`, `_lockFlag`, `_buffer`, `_clip` — je `<summary>` bilingual (Zweck + Invariante)
+  - private Methoden: `First()`, `ForEach()`, `FindPrev()`, `ResetCurrent()` — je `<summary>` + `<param>` bilingual
+  - Algorithmus-kritische Stellen (Insert, Remove, SelectNext) erhalten zusätzliche bilingualen Block-Kommentare (Constitution §III)
 - [ ] T026 Führe `dotnet build --configuration Release` aus und behebe alle Warnungen (CS1591 für fehlende XML-Docs; Build muss 0 Fehler / 0 Warnungen ergeben)
 - [ ] T027 Führe `dotnet test` aus; stelle sicher, dass alle Tests grün sind; messe Line Coverage mit `dotnet-coverage collect "dotnet test" --output coverage.xml` → TuiVision.Controls ≥ 70 %
 - [ ] T028 Führe `dotnet format --verify-no-changes` aus und behebe alle Formatierungsverstöße in den neuen Dateien
