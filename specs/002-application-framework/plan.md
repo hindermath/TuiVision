@@ -9,6 +9,14 @@
 
 Implement the first complete application shell on top of the existing `TView`/`TGroup` foundation. The design will add a default `TApplication` shell that composes a menu bar, desktop workspace, and status line, routes commands consistently across menu/status/keyboard entry points, and keeps focus valid during startup and desktop child changes. The implementation stays inside the existing module hierarchy, relies on the managed console driver abstraction for rendering, and is validated primarily through new MSTest coverage in `tests/TuiVision.Controls.Tests` plus a focused shell-level integration slice.
 
+## Terminology & Operational Definitions
+
+- **Controlled shutdown**: The shell accepts an exit action, stops accepting new application commands, releases shell-owned views in a documented order, and leaves no orphaned shell region references.
+- **Valid focus target**: At every interactive point, focus belongs either to an eligible desktop child or to the desktop workspace itself when no eligible child exists.
+- **Effectively immediate**: For this local single-user terminal increment, shell startup, focus changes, and global command dispatch are expected to complete within the same interaction cycle and without introducing extra user-visible setup steps or deferred confirmation phases.
+- **Customize or replace shell regions**: This increment must expose at least one supported customization seam for menu bar, desktop, and status line composition, but it does not yet commit to a final API mechanism such as overridable methods versus injected builders.
+- **Illustrative API sketch**: Example code in planning artifacts may show likely extension seams, but examples do not freeze exact public member names or signatures unless the contract states them explicitly.
+
 ## Technical Context
 
 **Language/Version**: C# `latest` on .NET 10 (`net10.0`)  
@@ -88,6 +96,12 @@ tests/
 
 **Structure Decision**: Keep the feature entirely within the existing single-repository, multi-project library structure. Shell behavior belongs in `src/TuiVision.Controls` because it composes views, groups, focus, and event routing. No new assembly is justified under Constitution principle IV.
 
+### Planned Artifact Status
+
+- `TProgram`, `TApplication`, `TDesktop`, `TMenuBar`, and `TStatusLine` are required shell deliverables for this increment because they map directly to the feature scope in the specification.
+- `TMenuItem`, `TStatusItem`, and `ShellCommandIds` are required planning artifacts as lightweight internal design placeholders for shared command routing and visible action state; they are not automatically commitments to a large public API surface.
+- Exact member signatures for customization seams remain intentionally open until implementation, but the presence of customization support itself is mandatory for this increment.
+
 ## Phase 0 Research Summary
 
 See `research.md` for full detail. Key planning decisions:
@@ -106,6 +120,20 @@ See `research.md` for full detail. Key planning decisions:
 - Disabled commands remain visible in both surfaces and are prevented from executing.
 - Contracts document behavioral expectations for the public shell API without overcommitting to premature internal signatures.
 
+### Responsibility Boundaries
+
+- `TProgram` owns shell lifecycle, root-level command routing, frame-level coordination, and the transition from initialized to interactive to shutting down.
+- `TApplication` owns default shell creation and default wiring of menu bar, desktop workspace, and status line. It specializes convenience, not the core command-routing contract.
+- `TDesktop` owns workspace hosting, active-child tracking, and focus fallback. When the active child closes, `TDesktop` must prefer the next eligible child and fall back to the desktop itself only when no eligible child remains.
+- `TMenuBar` owns visible menu action presentation and selection semantics, but does not own business execution logic.
+- `TStatusLine` owns visible shortcut/context presentation and disabled-state visibility, but routes execution through the same shared command path as the menu bar.
+
+### Customization Boundary for This Increment
+
+- This increment must support customization or replacement of menu bar, desktop, and status line regions after default shell creation.
+- The contract requires the availability of customization seams, but the exact API form remains intentionally undecided during planning.
+- Concrete dialogs, control widgets, and specialized window classes remain out of scope even if later customization points may host them.
+
 ## Implementation Strategy
 
 1. Add failing tests for shell construction, default composition, disabled command presentation, command routing, and focus recovery.
@@ -116,12 +144,74 @@ See `research.md` for full detail. Key planning decisions:
 6. Refactor names, helper methods, and documentation once tests pass and behavior is stable.
 7. Run build, test, format, and doc generation checks required by the constitution when public APIs change.
 
+## Scenario & Edge-Case Coverage
+
+### Scenario Matrix
+
+| Scenario class | Covered in spec | Planned artifact coverage |
+|---|---|---|
+| Primary startup flow | User Story 1 | `plan.md` summary, `quickstart.md`, `contracts/application-shell-api.md` |
+| Shared global action flow | User Story 2 | `research.md`, `data-model.md` command model, `contracts/application-shell-api.md`, `quickstart.md` |
+| Desktop child activation flow | User Story 3 | `plan.md` design overview, `data-model.md`, `contracts/application-shell-api.md` |
+| Empty desktop startup | Edge Cases | `data-model.md` desktop focus state, `quickstart.md` expected outcomes |
+| Disabled command visibility | Edge Cases | `research.md`, `data-model.md`, `contracts/application-shell-api.md`, test strategy |
+| Active-child closure recovery | Edge Cases | `data-model.md` desktop focus transitions, `contracts/application-shell-api.md`, shell integration tests |
+| Constrained screen area | Edge Cases | layout responsibility boundary, follow-up tasking required in implementation planning |
+
+### Reviewer Readiness Criteria
+
+- Reviewers must be able to point to a written artifact for each of these shell behaviors before tasks are generated:
+  - default shell creation
+  - shared command routing
+  - disabled-but-visible global actions
+  - focus fallback after active-child removal
+- If any of those behaviors are only implied and not explicitly described in at least one planning artifact plus one validation-oriented artifact, the plan is not review-ready.
+
 ## Testing Strategy
 
 - **Unit tests**: Child insertion/removal, menu/status availability rules, command dispatch single-execution guarantee, and focus fallback behavior.
 - **Shell integration tests**: Default `TApplication` startup produces menu/desktop/status layout, global commands route identically from menu and status line, and desktop child closure recovers focus.
 - **Regression tests**: Preserve existing `TView` and `TGroup` behavior by extending rather than replacing current ownership and dispatch patterns.
 - **Validation commands**: `dotnet build --configuration Release`, `dotnet test`, `dotnet format --verify-no-changes`, and `docfx docfx.json` if public API/XML docs change.
+
+### Success-Criteria Traceability
+
+| Success criterion | Planning hook |
+|---|---|
+| `SC-001` usable default shell on first interactive screen | default shell creation in design overview, shell integration tests, quickstart expected outcomes |
+| `SC-002` primary action from menu or status line within limited interactions | shared command routing model, menu/status command consistency tests, contract shared-command guarantee |
+| `SC-003` usable state after desktop-management actions | desktop focus transitions in data model, focus recovery guarantee in contract, shell integration tests |
+| `SC-004` startup-to-exit demonstration in under five minutes | quickstart workflow, validation commands, controlled-shutdown definition |
+
+## Non-Functional Operationalization
+
+- **Portability**: All shell logic remains in `TuiVision.Controls`; no OS-specific behavior is introduced there.
+- **Documentation completeness**: New public and non-public members introduced for shell composition require bilingual documentation in the same change as implementation.
+- **TDD discipline**: Tasks must be ordered so failing tests appear first for shell creation, command routing, disabled visibility, and focus recovery.
+- **Performance interpretation**: "First interactive shell frame" means the default shell reaches an interactable state during initial startup without additional user configuration, modal setup steps, or deferred region construction after launch.
+- **No persistence**: The shell increment manages runtime UI state only; it must not add persistence, serialization duties, or file-backed shell preferences as part of this feature.
+
+## Dependencies & Assumptions
+
+- The plan depends on the current `TView`/`TGroup` ownership and event-dispatch model being extensible enough for desktop hosting and focus fallback.
+- The relationship to `TuiVision.Drivers.Console` is intentionally indirect: shell types may rely on rendering abstractions already available to views, but must not absorb driver responsibilities.
+- Lightweight menu/status action models and shared command identifiers are assumed sufficient for this increment; a broader command framework is intentionally deferred.
+- If implementation discovers that `TGroup` semantics are insufficient for deterministic focus fallback, that gap must be recorded before expanding scope.
+
+## Traceability Matrix
+
+| Spec reference | Planned coverage |
+|---|---|
+| `FR-001` | summary, design overview, contract `TProgram` and `TApplication` |
+| `FR-001a` | terminology definitions, customization boundary, contract `TApplication`, quickstart note |
+| `FR-002` / `FR-003` | project structure, `TMenuBar` / `TStatusLine` responsibilities, data model action entities |
+| `FR-004` | research decision 3, command binding model, contract shared-command guarantee |
+| `FR-005` / `FR-006` | `TDesktop` responsibilities, desktop focus state transitions, integration-test strategy |
+| `FR-007` | controlled-shutdown definition, shell lifecycle state model, `TProgram` contract |
+| `FR-008` | scenario matrix empty-desktop startup, quickstart expected outcomes |
+| `FR-009` / `FR-009a` | disabled command visibility in design overview, command availability state model, contract visibility guarantee |
+| `FR-010` | customization boundary, quickstart illustrative customization seam |
+| `FR-011` | note, scope boundary, contract scope guarantee, reviewer readiness criteria |
 
 ## Risks & Mitigations
 
