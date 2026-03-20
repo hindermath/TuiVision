@@ -260,6 +260,38 @@ Kein Entscheidungsbedarf bei keinem der verbleibenden Items — alles sind reine
 getroffenen Entscheidungen.
 ---
 
+## Post-Analyze / Post-Clarify — Neue Items (CHK051–CHK055)
+
+*Hinzugefügt 2026-03-20 nach `/speckit.analyze` + `/speckit.clarify` (FR-019-Entscheidung).*
+
+- [x] CHK051 — Ist FR-019 (TView.HandleEvent Disabled-Guard) als Implementierungsschritt in `tasks.md T009` aufgeführt? T009 nennt derzeit nur `Owner`, `Next`, `Draw()`, `DrawView()` — der Disabled-Guard auf `HandleEvent` fehlt als expliziter Schritt. [Completeness, tasks.md T009, spec.md FR-019]
+  > **Aktion**: T009 um Zeile ergänzen: „Erweitere `HandleEvent`: füge als erste Zeile `if (GetState(TViewState.Disabled)) return;` ein (FR-019)."
+
+- [x] CHK052 — Ist `T002a` im Abhängigkeitsgraph von `tasks.md` aufgeführt? Der Graph beginnt mit `Phase 1 (T001–T002)` ohne T002a; Lernende, die dem Graphen folgen, überspringen den CS1591-Enforcement-Commit. [Completeness, tasks.md §Abhängigkeitsgraph, Didactic]
+  > **Aktion**: Graph-Eintrag ändern: `Phase 1 (T001–T002–T002a)`.
+
+- [x] CHK053 — Ist der CS1591-Scope (CS1591 feuert nur für `public`/`protected`, nicht für `private`/`internal`) für Lernende explizit in `plan.md §Qualitätsgates` dokumentiert? Ohne diesen Hinweis könnten Lernende annehmen, der Build erzwinge auch private-Member-Docs. [Clarity, Didactic, plan.md §Qualitätsgates]
+  > **Aktion**: Gate ergänzen: „CS1591 erzwingt nur `public`/`protected` Docs als Build-Fehler; `private`/`internal` Member-Docs werden durch Code-Review (CHK021) geprüft."
+
+- [x] CHK054 — Ist der Test-Count `~20 neue Tests` in `plan.md §Technical Context` nach FR-019-Addition (mind. 1 weiterer Test) noch konsistent? [Consistency, plan.md §Technical Context]
+  > **Aktion**: `~20 neue Tests` → `~21 neue Tests`.
+
+- [x] CHK055 — Sind TDD-Commit-Beschreibungen für Commits 3–4 in `plan.md §TDD-Commit-Plan` und `tasks.md T008/T009` nach FR-019-Addition vollständig traceabel? Aktuelle Titel erwähnen `Owner/Draw/DrawView`, aber nicht den HandleEvent-Disabled-Guard. [Traceability, plan.md §TDD-Commit-Plan, tasks.md T008/T009]
+  > **Aktion**: Commit-3-Titel → `test(red): TView Owner/Draw/DrawView/HandleEvent-Disabled`; Commit-4-Titel → `feat(green): TView Owner, Next, Draw(), DrawView(), HandleEvent Disabled-guard (FR-019)`.
+
+---
+
+## Abschluss-Auswertung / Summary (aktualisiert post-analyze/clarify)
+
+| Status | Anzahl | Items |
+|---|---|---|
+| ✅ Abgehakt | 55 | CHK001–CHK055 (alle) |
+| ⬜ Offen | 0 | — |
+
+> **Stand 2026-03-20 (final)**: Alle 55 Items abgehakt. CHK051–CHK055 wurden direkt nach Erstellung behoben (keine Entscheidung erforderlich). CHK021 und CHK027 bleiben manuelle PR-Gate-Items vor dem Merge.
+
+---
+
 ## Notes
 
 - Checklist-Items mit `[Gap]` sind potenzielle Lücken in den Artefakten — sie erfordern keine sofortige Korrektur, sondern explizite Klärung vor `/speckit.tasks`.

@@ -26,7 +26,7 @@ Alle 19 Functional Requirements (FR-001 bis FR-019) aus `spec.md` werden durch T
 **Project Type**: Framework-Bibliothek
 **Performance Goals**: Keine expliziten Latenzziele; interaktive TUI-Responsivität
 **Constraints**: Kein P/Invoke; kein Natives; `Controls` darf nur `Core` referenzieren
-**Scale/Scope**: 2 neue Typen (TGroup, DrawPhase), 4 neue TView-Mitglieder, ~20 neue Tests
+**Scale/Scope**: 2 neue Typen (TGroup, DrawPhase), 5 neue/geänderte TView-Mitglieder (Owner, Next, Draw, DrawView + HandleEvent-Guard FR-019), ~21 neue Tests
 
 ---
 
@@ -274,8 +274,8 @@ vorangehenden Red-Commit folgen. Reihenfolge verbindlich.
 ```
 1. test(red): move TConsoleBuffer to Core — failing imports
 2. feat(green): move TConsoleCell + TConsoleBuffer to TuiVision.Core
-3. test(red): TView Owner/Draw/DrawView
-4. feat(green): TView Owner, Next (internal), Draw(), DrawView()
+3. test(red): TView Owner/Draw/DrawView/HandleEvent-Disabled
+4. feat(green): TView Owner, Next (internal), Draw(), DrawView(), HandleEvent Disabled-guard (FR-019)
 5. test(red): TGroup lifecycle (Insert/Remove/ShutDown)
 6. feat(green): TGroup circular list + lifecycle
 7. test(red): TGroup three-phase HandleEvent
@@ -293,8 +293,8 @@ vorangehenden Red-Commit folgen. Reihenfolge verbindlich.
 
 ## Qualitätsgates (vor Merge nach main)
 
-- [ ] `dotnet build --configuration Release` — 0 Warnungen/Fehler
-- [ ] `dotnet test` — alle Tests grün (bestehende 19 + neue ~20)
+- [ ] `dotnet build --configuration Release` — 0 Warnungen/Fehler (CS1591 als Error; gilt nur für `public`/`protected` API — `private`/`internal` Member-Docs werden durch Code-Review geprüft, nicht durch den Build)
+- [ ] `dotnet test` — alle Tests grün (bestehende 19 + neue ~21)
 - [ ] Line Coverage `TuiVision.Controls` ≥ 70 %
 - [ ] `dotnet format --verify-no-changes` — keine Formatverstöße
 - [ ] Alle öffentlichen und nicht-öffentlichen API-Mitglieder mit XML-Docs (bilingual DE/EN, CEFR B2)

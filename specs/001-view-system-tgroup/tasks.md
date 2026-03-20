@@ -87,7 +87,8 @@
   - Füge hinzu: `internal TView? Next { get; set; }` (nach Owner)
   - Füge hinzu: `public virtual void Draw() { }` (No-Op Basis)
   - Füge hinzu: `public void DrawView()` — Rumpf: `if (!GetState(TViewState.Visible) || (Owner?.IsLocked ?? false)) return; Draw();`
-  - Commit: `feat(green): add Owner, Draw(), DrawView() to TView`
+  - Erweitere `HandleEvent(TEvent @event)`: füge als **erste Zeile** `if (GetState(TViewState.Disabled)) return;` ein (FR-019; konform zum C++-Original)
+  - Commit: `feat(green): add Owner, Draw(), DrawView(), HandleEvent Disabled-guard (FR-019) to TView`
 
 ---
 
@@ -245,7 +246,7 @@
 ## Abhängigkeitsgraph
 
 ```
-Phase 1 (T001–T002)
+Phase 1 (T001–T002–T002a)
   └── Phase 2 Commits 1-2 (T003–T007)
         ├── T003 [test(red)]
         ├── T004 [P] + T005 [P]    ← parallel möglich
