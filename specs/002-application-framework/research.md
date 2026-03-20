@@ -12,6 +12,7 @@
 
 - **Decision**: Model the desktop workspace as a specialized `TGroup` derivative.
 - **Rationale**: `TGroup` already provides child ownership, circular child storage, event dispatch phases, and focus management hooks. Reusing it reduces risk and keeps the shell aligned with current view semantics.
+- **Reuse boundary**: This reuse assumption is valid only if `TGroup` can support deterministic focus fallback after active-child removal without introducing shell-specific driver coupling.
 - **Alternatives considered**:
   - Create an unrelated desktop container from scratch: rejected because it would duplicate group behavior and increase maintenance cost.
   - Use plain `TView` for desktop: rejected because desktop must host and coordinate child views.
@@ -51,6 +52,7 @@
 
 - **Decision**: Document API contracts around shell responsibilities and interaction guarantees without locking the plan to unnecessary internal signatures.
 - **Rationale**: The repository is still in an incremental porting phase. Behavioral contracts support planning and tasks while leaving room for idiomatic C# API design during implementation.
+- **Planning consequence**: Concrete file names for lightweight action models and command identifiers are required planning placeholders, but they do not by themselves commit the project to a broad public API.
 - **Alternatives considered**:
   - Fully specify every method signature now: rejected because it overcommits before tests shape the design.
   - Skip contracts entirely: rejected because the feature exposes a new library surface to consumers.
