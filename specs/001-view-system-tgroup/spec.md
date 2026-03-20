@@ -163,6 +163,7 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 
 - **FR-011**: `TView` MUSS eine parameterfreie virtuelle `Draw()`-Methode (`void Draw()`) besitzen, die von abgeleiteten Klassen überschrieben wird; die Basis-Implementierung ist eine No-Op. Eine View, die zeichnen möchte, greift intern über die `Owner`-Eigenschaft auf den Zeichenpuffer der übergeordneten `TGroup` zu (analog zum C++-Original). `DrawView()` ist die Template-Methode; abgeleitete Klassen überschreiben ausschließlich `Draw()`. Ruft eine View `Draw()` ohne Eigentümer-Gruppe auf, ist die Methode ein No-Op.
 - **FR-012**: `TView` MUSS eine `DrawView()`-Methode besitzen, die `Draw()` aufruft, sofern die View sichtbar und nicht gesperrt ist. sichtbar = `GetState(TViewState.Visible) == true`
+- **FR-019**: `TView.HandleEvent(event)` MUSS als erste Operation prüfen, ob die View deaktiviert ist (`GetState(TViewState.Disabled)`); ist dies der Fall, MUSS die Methode sofort zurückkehren ohne das Ereignis zu verarbeiten oder weiterzuleiten. Konform zum C++-Original: `if (state & sfDisabled) return;` war die erste Zeile von `TView::handleEvent`. Zusammen mit FR-017 (Disabled-Propagation) deckt dies US4 Szenario 2 ab.
 - **FR-013**: `TGroup.Draw()` MUSS alle sichtbaren Kind-Views in Z-Reihenfolge neu zeichnen. Z-Reihenfolge = Einfügereihenfolge; erste eingefügte View wird zuerst (unten), zuletzt eingefügte zuletzt (oben) gezeichnet.
 
 **TGroup — Zeichenpuffer**
@@ -187,7 +188,7 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 
 ### Measurable Outcomes
 
-- **SC-001**: Alle 18 funktionalen Anforderungen (FR-001 bis FR-018) sind durch mindestens einen Positiv- und — wo fachlich sinnvoll — einen Negativtest abgedeckt.
+- **SC-001**: Alle 19 funktionalen Anforderungen (FR-001 bis FR-019) sind durch mindestens einen Positiv- und — wo fachlich sinnvoll — einen Negativtest abgedeckt.
 - **SC-002**: `dotnet test` läuft in CI ohne Fehler; alle bestehenden 19 Tests bleiben grün.
 - **SC-003**: Die Testabdeckung (Line Coverage) für `TuiVision.Controls` erreicht mindestens 70 % (Pflichtenheft Abschnitt 9.4 Nr. 1). Gemessen mit `dotnet-coverage`; Metrik: Line Coverage. AGENTS.md und CLAUDE.md ergänzen, falls dort noch nicht vorhanden.
 - **SC-004**: Ein Entwickler kann eine `TGroup` mit zwei Kind-Views erstellen, Fokus wechseln und ein Tastaturereignis erfolgreich an die fokussierte View dispatchen — nachweisbar durch einen Integrationstest.
@@ -231,6 +232,7 @@ das Aktiv/Inaktiv-Feedback für den Benutzer.
 ### Session 2026-03-20
 
 - Q: Sollen für FR-002/003/007/013–014 dedizierte `Given/When/Then`-Negativszenarien in den User Stories ergänzt werden (SC-001-Abdeckung)? → A: Nein (Option B); Exception-Verträge sind im FR-Text vollständig spezifiziert; Edge Cases decken die Grenzbedingungen ab; SC-001 „wo fachlich sinnvoll" gilt als hinreichend — keine weiteren formalen GWT-Negative nötig.
+- Q: Wo soll der Disabled-Guard für Event-Suppression verankert werden — in `TView.HandleEvent` oder `TGroup.HandleEvent`? → A: In `TView.HandleEvent` (Option A); konform zum C++-Original (`if (state & sfDisabled) return;` als erste Operation); FR-019 ergänzt; Test `TView_HandleEvent_Disabled_IgnoresAllEvents()` in T008 (TViewExtendedTests).
 
 ---
 

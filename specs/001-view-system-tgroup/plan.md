@@ -12,7 +12,7 @@ Diese Phase vervollständigt das View-System (Pflichtenheft §8.1 Nr. 3) durch:
 2. **Erweitern** von `TView` um `Owner`, `Next` (internal), `Draw()` und `DrawView()`.
 3. **Implementieren** von `TGroup` als zirkuläre Kind-Listen-Container-Klasse mit Drei-Phasen-Event-Dispatching, Fokus-Management, Zeichenpuffer und State-Propagation.
 
-Alle 18 Functional Requirements (FR-001 bis FR-018) aus `spec.md` werden durch TDD abgedeckt.
+Alle 19 Functional Requirements (FR-001 bis FR-019) aus `spec.md` werden durch TDD abgedeckt.
 
 ---
 
@@ -137,6 +137,7 @@ in `research.md`. Zusammenfassung:
 | `Next` | `internal TView? Next { get; set; }` — nur für TGroup zugänglich |
 | `Draw()` | `public virtual void Draw()` — leere Basis; kein `base.Draw()` nötig |
 | `DrawView()` | `public void DrawView()` — ruft `Draw()` wenn `GetState(TViewState.Visible) && !(Owner?.IsLocked ?? false)` |
+| `HandleEvent()` | `override void HandleEvent(TEvent event)` — **erweitert**: fügt `if (GetState(TViewState.Disabled)) return;` als erste Guard-Zeile hinzu (FR-019; konform C++-Original) |
 
 *Hinweis*: Der Lock-Check nutzt die Property `Owner?.IsLocked` (Property `internal bool IsLocked => _lockFlag > 0` in TGroup, siehe §1.3).
 `DrawView()` prüft also den Lock der Eigentümer-Gruppe, bevor es `Draw()` aufruft.

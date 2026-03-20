@@ -79,6 +79,7 @@
   - `TView_DrawView_CallsDraw_WhenVisible()` — überschriebenes `Draw()` wird aufgerufen
   - `TView_DrawView_SkipsDraw_WhenInvisible()` — `SetState(Visible, false)` verhindert Aufruf
   - `TView_DrawView_WithNullOwner_IsNoOp()` — kein Fehler wenn `Owner == null` (FR-011 Edge Case)
+  - `TView_HandleEvent_Disabled_IgnoresAllEvents()` — **FR-019**: Disabled-View ignoriert jedes Ereignis; prüft, dass `HandleEvent` sofort zurückkehrt ohne Seiteneffekte (Session 2026-03-20)
   - Build MUSS fehlschlagen (Owner/Draw/DrawView existieren noch nicht)
 
 - [ ] T009 **[feat(green)]** Erweitere `src/TuiVision.Controls/TView.cs`:
