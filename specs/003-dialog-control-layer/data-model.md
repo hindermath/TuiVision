@@ -230,10 +230,12 @@ Konkrete Listenansicht; erbt von `TListViewer`.
 | Feld / Field | Typ / Type | Beschreibung / Description |
 |---|---|---|
 | `List` | `TStringList?` | Datenquelle (null = leere Liste) |
-| `Selection` | `int` | Index des zuletzt bestätigten Eintrags (nach Doppelklick/Enter) |
+| `Selection` | `int` | Index des zuletzt bestätigten Eintrags (nach expliziter Auswahlbestätigung im Control, z. B. per Doppelklick) |
 
 - `GetNumItems()`: gibt `List?.Count ?? 0` zurück.
 - `GetText(i, max)`: gibt `List?[i][..max]` zurück.
+- Doppelklick auf einen sichtbaren Eintrag setzt `Selection` auf den angeklickten
+  Index und bestätigt die Auswahl ohne separates zusätzliches Command-Ereignis.
 
 ---
 
@@ -263,4 +265,5 @@ Modales Dialogfenster; erbt von `TGroup`.
 - `CloseDialog(ushort cmd)`: setzt `_result = cmd`, beendet Event-Loop.
 - Tab-Navigation: delegiert an `TGroup.HandleEvent()` (Wrap-around durch zirkuläre Kind-Liste).
 - Default-Button: sucht bei unverarbeiteten Enter-Events nach Kind-View mit `TViewState.Default`.
-- Escape: ruft `CloseDialog(cmCancel)` auf.
+- Escape: ruft `CloseDialog(cmCancel)` auf, sofern kein Kind-Control das
+  Escape-Ereignis vorher konsumiert.

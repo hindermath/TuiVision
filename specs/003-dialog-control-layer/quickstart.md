@@ -47,6 +47,10 @@ dotnet test tests/TuiVision.Controls.Tests/ \
 
 # Einzelnen Test ausführen / Run a single test
 dotnet test --filter "FullyQualifiedName~TDialog_Run_ReturnsCommandIdOnClose"
+
+# Spezifische Verhaltensfälle aus der Clarify-Session prüfen / Check clarified behaviors
+dotnet test --filter "FullyQualifiedName~TDialog_HandleEvent_EscapeClosesWithCmCancel"
+dotnet test --filter "FullyQualifiedName~TListBox_HandleEvent_DoubleClickConfirmsSelectionWithoutCommand"
 ```
 
 ---

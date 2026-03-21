@@ -288,6 +288,10 @@ public class TListBox : TListViewer
 }
 ```
 
+**Vertragsregel / Contract rule**: Ein Doppelklick bestätigt den angeklickten
+Eintrag als Auswahl, führt aber innerhalb dieses Feature-Umfangs nicht zu einem
+separaten zusätzlichen Command-Ereignis.
+
 ---
 
 ## TDialog
@@ -304,9 +308,13 @@ public class TDialog : TGroup
     /// <summary>
     /// Öffnet den Dialog modal und blockiert synchron bis zum Schließen.
     /// Gibt die Command-ID zurück, mit der der Dialog geschlossen wurde.
+    /// Die Escape-Taste schließt den Dialog standardmäßig mit <c>cmCancel</c>,
+    /// sofern kein Kind-Control das Escape-Ereignis vorher konsumiert.
     ///
     /// Opens the dialog modally and blocks synchronously until closed.
     /// Returns the command ID with which the dialog was closed.
+    /// The Escape key closes the dialog with <c>cmCancel</c> by default unless
+    /// a child control consumes the Escape event first.
     /// </summary>
     public ushort Run();
 

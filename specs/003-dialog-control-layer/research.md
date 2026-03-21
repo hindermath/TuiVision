@@ -194,3 +194,46 @@ können Unit-Tests den Consolenbuffer direkt inspizieren:
 
 Testklassen-Namenskonvention (Constitution §"Code Style"):
 `TDialog_Run_ReturnsCommandIdOnClose`, `TButton_HandleEvent_ActivatesOnEnter`, etc.
+
+---
+
+### R-011: TDialog — Escape-Standardwert
+
+**Decision**: Die Escape-Taste schließt `TDialog` standardmäßig mit `cmCancel`.
+Dieses Verhalten gilt, wenn kein enthaltenes Control das Escape-Ereignis vorher
+selbst konsumiert.
+
+**Decision (EN)**: The Escape key closes `TDialog` with `cmCancel` by default.
+This applies when no child control consumes the Escape event first.
+
+**Rationale**: Die Spec verwendet bereits den Dialogbegriff "Abbrechen", und
+`cmCancel` ist als gemeinsame Shell-Command-ID vorgesehen. Dadurch wird das
+Schließverhalten eindeutig testbar und konsistent mit klassischen Dialogmustern.
+
+**Alternatives considered**:
+- Rückgabewert `0`: rejected — zu implizit und schlechter testbar.
+- Separates `cmAbort`/`cmClose`: rejected — unnötige zusätzliche Command-ID
+  außerhalb des aktuellen Feature-Umfangs.
+
+---
+
+### R-012: TListBox — Bedeutung von Doppelklick
+
+**Decision**: Ein Doppelklick in `TListBox` bestätigt den angeklickten Eintrag
+als Auswahl, löst aber innerhalb dieses Feature-Umfangs kein separates
+zusätzliches Command-Ereignis aus.
+
+**Decision (EN)**: A double-click in `TListBox` confirms the clicked item as the
+selection but does not emit a separate additional command event within this
+feature scope.
+
+**Rationale**: Die aktuelle Spec definiert Auswahlverhalten, aber keine eigene
+Aktivierungs-API für Listen. Diese Auslegung hält die Oberfläche klein und
+verhindert, dass das Feature implizit ein zusätzliches Command-Modell einführt.
+
+**Alternatives considered**:
+- Dediziertes Aktivierungs-Command an den Owner senden: rejected — würde eine
+  neue Vertragsfläche erfordern, die in der Spec nicht beschrieben ist.
+- Doppelklick schließt immer den umgebenden Dialog mit `cmOK`: rejected —
+  zu stark an einen Dialogkontext gekoppelt; `TListBox` ist auch außerhalb eines
+  modalen Dialogs nutzbar.

@@ -11,13 +11,18 @@ Portierung der Dialog-/Control-Schicht von Turbo Vision 2.0.3 (C++) nach C#/.NET
 13 neue Klassen werden in `TuiVision.Controls` implementiert, beginnend mit unabhängigen
 Basisklassen (`TStringList`, `TScrollBar`) und endend mit dem Dialog-Koordinator (`TDialog`).
 Alle Klassen folgen dem TDD Red-Green-Refactor-Zyklus mit MSTest, erreichen ≥ 70 % Line Coverage
-und tragen vollständige zweisprachige XML-Dokumentation.
+und tragen vollständige zweisprachige XML-Dokumentation. Die Spec präzisiert zusätzlich,
+dass Escape `TDialog` standardmäßig mit `cmCancel` schließt und dass ein Doppelklick in
+`TListBox` die aktuelle Auswahl bestätigt, ohne ein separates zusätzliches Command-Ereignis
+auszulösen.
 
 Porting of the dialog/control layer from Turbo Vision 2.0.3 (C++) to C#/.NET 10.
 13 new classes are implemented in `TuiVision.Controls`, starting with independent base
 classes (`TStringList`, `TScrollBar`) and finishing with the dialog coordinator (`TDialog`).
 All classes follow the TDD Red-Green-Refactor cycle with MSTest, achieve ≥ 70% line coverage,
-and carry complete bilingual XML documentation.
+and carry complete bilingual XML documentation. The spec now additionally clarifies that
+Escape closes `TDialog` with `cmCancel` by default and that a double-click in `TListBox`
+confirms the current selection without emitting a separate additional command event.
 
 ---
 
@@ -146,6 +151,7 @@ Alle Unbekannten wurden aufgelöst. Details: [research.md](research.md)
 | Dialog-Ausführungsmodell | Synchron blockierend (`TDialog.Run()`) | Clarify Q1 + R-001 |
 | Fokus-Wrap in TDialog | Wrap-around (zirkuläre TGroup-Kindliste) | Clarify Q2 + R-003 |
 | Default-Button-Flag | `TButtonFlags.bfDefault` + `TViewState.Default` | Clarify Q3 + R-002 |
+| Escape-Standardwert | `cmCancel` | Clarify Q4 + R-011 |
 | TScrollBar-Kopplung | Optional (nullable) für TListBox | R-004 |
 | CommandID-Typ | `ushort` (konsistent mit TEvent.Command) | R-005 |
 | TStringList-Modell | `List<string>` (managed, ohne Serialisierung) | R-006 |
@@ -153,6 +159,7 @@ Alle Unbekannten wurden aufgelöst. Details: [research.md](research.md)
 | Render-Zustände | Normal/Focused/Disabled/Selected via TViewState | R-008 |
 | Implementierungsreihenfolge | 13 Schritte nach Abhängigkeitsgraph | R-009 |
 | TDD-Strategie | Buffer-Inspektion + Event-Injection + Negativ-Tests | R-010 |
+| TListBox-Doppelklick | Bestätigt Auswahl ohne separates Command | Clarify Q5 + R-012 |
 
 ---
 
@@ -168,6 +175,8 @@ Vollständige Entitätsdefinitionen mit State Transitions: [data-model.md](data-
 - `TListViewer` ist abstrakt; `TListBox` konkret aber nicht `sealed` (für Phase 6 erweiterbar durch `TDirListBox`).
 - `TDialog` erbt von `TGroup` (nicht von `TWindow`) — entspricht dem Original.
 - `TButtonFlags.bfDefault` setzt zusätzlich `TViewState.Default` (0x400) — nutzt bestehenden State.
+- Escape schließt `TDialog` standardmäßig mit `cmCancel`.
+- `TListBox` bestätigt per Doppelklick nur die aktuelle Auswahl und sendet kein separates zusätzliches Command-Ereignis.
 
 ### Interface Contracts
 
@@ -208,6 +217,9 @@ Pro Klasse mindestens: 1 Positiv-Test + 1 Negativ-/Grenzfall-Test.
 | `TListViewer` (abstract) | `TListViewerTests` | `tlistvie.cc` | TScrollBar |
 | `TListBox` | `TListBoxTests` | `tlistbox.cc` | TListViewer, TStringList |
 
+Für `TListBoxTests` zusätzlich absichern: Doppelklick bestätigt die angeklickte Auswahl,
+löst aber kein separates zusätzliches Command-Ereignis aus.
+
 ### Schritt 11–12: Eingabe-Controls
 
 | Klasse | Testklasse | C++-Quelle |
@@ -220,6 +232,9 @@ Pro Klasse mindestens: 1 Positiv-Test + 1 Negativ-/Grenzfall-Test.
 | Klasse | Testklasse | C++-Quelle | Abhängigkeiten |
 |---|---|---|---|
 | `TDialog` | `TDialogTests` | `tdialog.cc` | TGroup (existing) + alle 12 vorherigen |
+
+`TDialogTests` müssen explizit absichern, dass Escape den Dialog mit `cmCancel`
+schließt, sofern kein Kind-Control das Ereignis vorher konsumiert.
 
 ### Ergänzung: CommandIDs
 
@@ -235,7 +250,7 @@ Pro Klasse mindestens: 1 Positiv-Test + 1 Negativ-/Grenzfall-Test.
 | SC-001: Vollständiger Dialog ohne nativen Code lauffähig | Integrations-Test: TDialog.Run() mit allen 5 Pflicht-Controls |
 | SC-002: Alle 13 Klassen vorhanden und buildbar | `dotnet build` + Klassen-Existenzprüfung |
 | SC-003: Line Coverage ≥ 70 % | `dotnet test --collect:"XPlat Code Coverage"` → Coverlet-Report |
-| SC-004: Korrekte Tastatur-Navigation | TDialogTests: Tab-Wrap, Escape, Enter-Default-Button |
+| SC-004: Korrekte Tastatur-Navigation | TDialogTests: Tab-Wrap, Escape → `cmCancel`, Enter-Default-Button; TListBoxTests: Doppelklick bestätigt Auswahl ohne separates Command |
 | SC-005: Korrekte visuelle Zustandsdarstellung | Snapshot-Tests auf TConsoleBuffer-Inhalt |
 | SC-006: Vollständige zweisprachige XML-Doku | `dotnet build` ohne CS1591-Fehler; `docfx docfx.json` erfolgreich |
 

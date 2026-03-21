@@ -40,7 +40,7 @@ window, and closed via Enter — fully independent of other controls.
 1. **Given** eine laufende TuiVision-Anwendung, **When** ein `TDialog` mit zwei `TButton`-Instanzen ("OK" und "Abbrechen") geöffnet wird, **Then** erscheint das Dialogfenster mit Rahmen und Titel, beide Schaltflächen sind sichtbar, und der Fokus liegt auf dem ersten Button.
 2. **Given** ein offener Dialog, **When** der Nutzer Tab drückt, **Then** wechselt der Fokus zyklisch (Wrap-around) zwischen allen fokussierbaren Controls: nach dem letzten Control springt der Fokus zurück zum ersten; Shift-Tab läuft in umgekehrter Richtung mit demselben Wrap-around.
 3. **Given** ein offener Dialog mit einem fokussierten "Abbrechen"-Button, **When** der Nutzer Enter drückt, **Then** schließt der Dialog und gibt den zugehörigen Rückgabewert (Command-ID) an die aufrufende Schicht zurück.
-4. **Given** ein offener Dialog, **When** der Nutzer Escape drückt, **Then** schließt der Dialog mit dem Standardwert für "Abgebrochen".
+4. **Given** ein offener Dialog, **When** der Nutzer Escape drückt, **Then** schließt der Dialog mit `cmCancel` als Standardwert für "Abgebrochen".
 
 ---
 
@@ -94,7 +94,7 @@ bedient werden. Die Scrollbar aktualisiert ihre Position synchron.
 1. **Given** eine `TListBox` mit 20 Einträgen in einem fünf Zeilen hohen Control, **When** der Nutzer Pfeil-Ab drückt, **Then** bewegt sich die Markierung zum nächsten Eintrag; eine gekoppelte `TScrollBar` aktualisiert ihre Position.
 2. **Given** eine `TListBox` am letzten sichtbaren Eintrag, **When** der Nutzer Pfeil-Ab drückt, **Then** scrollt die Liste um eine Zeile nach unten und zeigt den nächsten Eintrag.
 3. **Given** eine leere `TListBox`, **When** sie angezeigt wird, **Then** erscheint ein leeres Rechteck ohne Absturz oder visuellen Artefakt.
-4. **Given** eine `TListBox` mit Einträgen, **When** der Nutzer auf einen sichtbaren Eintrag klickt, **Then** wird dieser Eintrag markiert; ein Doppelklick aktiviert ihn.
+4. **Given** eine `TListBox` mit Einträgen, **When** der Nutzer auf einen sichtbaren Eintrag klickt, **Then** wird dieser Eintrag markiert; ein Doppelklick bestätigt dieselbe Auswahl ohne separates zusätzliches Command-Ereignis.
 
 ---
 
@@ -184,11 +184,11 @@ Alt+Kürzel den Fokus an das verknüpfte Feld weiter.
 
 ### Functional Requirements
 
-- **FR-001**: Das Framework MUSS eine `TDialog`-Klasse bereitstellen, die ein gerahmtes Dialogfenster mit Titel darstellt, modale Ausführung per **synchron blockierendem Event-Loop** (analog zu `TGroup.ExecView()` im Original) unterstützt und den Fokus automatisch unter allen enthaltenen fokussierbaren Controls verwaltet. `TDialog.Run()` kehrt erst zurück, wenn der Dialog über eine Command-ID geschlossen wird. *(The framework MUST provide a `TDialog` class that displays a bordered, titled dialog window, supports modal execution via a **synchronously blocking event loop** (analogous to `TGroup.execView()` in the original), and automatically manages focus across all focusable controls. `TDialog.Run()` returns only when the dialog is closed with a command ID.)*
+- **FR-001**: Das Framework MUSS eine `TDialog`-Klasse bereitstellen, die ein gerahmtes Dialogfenster mit Titel darstellt, modale Ausführung per **synchron blockierendem Event-Loop** (analog zu `TGroup.ExecView()` im Original) unterstützt und den Fokus automatisch unter allen enthaltenen fokussierbaren Controls verwaltet. `TDialog.Run()` kehrt erst zurück, wenn der Dialog über eine Command-ID geschlossen wird. Die Escape-Taste MUSS den Dialog standardmäßig mit `cmCancel` schließen. *(The framework MUST provide a `TDialog` class that displays a bordered, titled dialog window, supports modal execution via a **synchronously blocking event loop** (analogous to `TGroup.execView()` in the original), and automatically manages focus across all focusable controls. `TDialog.Run()` returns only when the dialog is closed with a command ID. The Escape key MUST close the dialog with `cmCancel` by default.)*
 
 - **FR-002**: Das Framework MUSS eine `TInputLine`-Klasse bereitstellen, die einzeilige Texteingabe mit konfigurierbarer Maximallänge, Cursor-Bewegung (Pos1, Ende, Pfeiltasten), Einfüge-/Überschreibmodus und zeichenweisem Löschen (Backspace, Delete) unterstützt. *(The framework MUST provide a `TInputLine` class supporting single-line text input with configurable maximum length, cursor movement, insert/overwrite mode, and character deletion.)*
 
-- **FR-003**: Das Framework MUSS eine abstrakte `TListViewer`-Basisklasse und eine konkrete `TListBox`-Klasse bereitstellen, die scrollbare String-Kollektionen anzeigt und Einzel-Itemauswahl per Tastatur (Pfeiltasten, PgUp, PgDn, Pos1, Ende) und Mausklick/-doppelklick unterstützt. *(The framework MUST provide an abstract `TListViewer` base class and a concrete `TListBox` class that displays scrollable string collections with item selection via keyboard and mouse.)*
+- **FR-003**: Das Framework MUSS eine abstrakte `TListViewer`-Basisklasse und eine konkrete `TListBox`-Klasse bereitstellen, die scrollbare String-Kollektionen anzeigt und Einzel-Itemauswahl per Tastatur (Pfeiltasten, PgUp, PgDn, Pos1, Ende) und Mausklick/-doppelklick unterstützt. Ein Doppelklick bestätigt den angeklickten Eintrag als Auswahl, löst aber innerhalb dieses Feature-Umfangs kein separates zusätzliches Command-Ereignis aus. *(The framework MUST provide an abstract `TListViewer` base class and a concrete `TListBox` class that displays scrollable string collections with item selection via keyboard and mouse. A double-click confirms the clicked item as the selected item but does not emit a separate additional command event within this feature scope.)*
 
 - **FR-004**: Das Framework MUSS eine `TScrollBar`-Klasse bereitstellen, die horizontale oder vertikale Scroll-Position visuell anzeigt und Scroll-Ereignisse an die verknüpfte scrollbare View weiterleitet. *(The framework MUST provide a `TScrollBar` class that displays scroll position and forwards scroll events to the linked scrollable view.)*
 
@@ -275,3 +275,5 @@ Alt+Kürzel den Fokus an das verknüpfte Feld weiter.
 - Q: Wie soll das modale Ausführungsmodell von `TDialog` gestaltet sein — synchron blockierend oder event-getrieben nicht-blockierend? → A: Synchron blockierend: `TDialog.Run()` blockiert den aufrufenden Code bis zum Dialog-Schluss, analog zu `TGroup.execView()` im Turbo Vision Original.
 - Q: Fokus-Wrap-Verhalten in `TDialog`: springt Tab am letzten Control zum ersten (Wrap-around) oder stoppt an der Grenze? → A: Wrap-around: Tab am letzten Control → springt zum ersten; Shift-Tab am ersten → springt zum letzten.
 - Q: Soll `TButton` ein Default-Button-Flag (`bfDefault`) unterstützen, das Enter-Aktivierung auch ohne direkten Fokus erlaubt? → A: Ja — Default-Button-Flag unterstützen; Enter aktiviert den Default-Button, wenn das fokussierte Control Enter nicht selbst konsumiert.
+- Q: Welchen Standard-Rückgabewert soll Escape für `TDialog` liefern? → A: `cmCancel`.
+- Q: Was bedeutet Doppelklick in `TListBox` genau? → A: Doppelklick bestätigt die angeklickte Auswahl, löst aber kein separates zusätzliches Command-Ereignis aus.
