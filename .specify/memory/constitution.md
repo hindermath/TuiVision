@@ -1,10 +1,10 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version change: 1.3.1 → 1.4.0
-  Bump rationale: MINOR — Expanded the mandated technology guidance with a
-  project-wide JSON-library decision (`System.Text.Json`) and an exception rule
-  for introducing `Newtonsoft.Json`.
+  Version change: 1.4.0 → 1.5.0
+  Bump rationale: MINOR — Added a mandatory project-statistics ledger and
+  defined update triggers, required metrics, and the conservative manual-effort
+  baseline for AI-assisted/spec-driven delivery.
   Full project scan performed (AGENTS.md, GEMINI.md, CLAUDE.md,
   copilot-instructions.md, constitution templates, and core spec templates).
 
@@ -12,15 +12,15 @@
     - None
 
   Added sections:
-    - None
+    - Development Workflow → Statistical Documentation
 
   Removed sections:
     - None
 
   Templates requiring updates:
-    - .specify/templates/plan-template.md  ✅ reviewed; no change required
+    - .specify/templates/plan-template.md  ✅ updated
     - .specify/templates/spec-template.md  ✅ reviewed; no change required
-    - .specify/templates/tasks-template.md ✅ reviewed; no change required
+    - .specify/templates/tasks-template.md ✅ updated
     - .specify/templates/constitution-template.md ✅ reviewed; no change required
 
   Agent files reviewed:
@@ -300,6 +300,31 @@ be kept current with any tooling or workflow changes. Prerequisites (`gh`,
 `codex`, `claude`, `gemini`, `opencode`, `copilot`, `docfx`, `.NET 10 SDK`)
 MUST be documented with version check commands.
 
+### Statistical Documentation
+
+`docs/project-statistics.md` is the mandatory, living statistical ledger for the
+repository. It MUST be updated whenever one of the following happens:
+
+1. A Spec-Kit implementation phase is completed or materially re-scoped.
+2. An agent-driven work package changes repository content (code, tests, specs,
+   plans, tasks, governance, or operational docs).
+3. A contributor explicitly requests a statistics refresh.
+
+Every update MUST record, at minimum:
+
+- branch or phase identifier and current status,
+- observable git-based work window (first/last date, commit days where possible),
+- current or change-based counts for production code, test code, and
+  documentation,
+- the main work packages or delivered artefacts,
+- whether the numbers come from committed history, the working tree, or both,
+- a conservative manual-effort baseline using **80 code lines per day** for an
+  experienced developer.
+
+Manual-effort estimates for a small team MAY be derived from that baseline, but
+the formula and assumptions MUST be stated explicitly. Documentation effort is
+tracked separately and MUST NOT be hidden inside the code-line estimate.
+
 ### Portation Sequence
 
 New classes are ported following the incremental sequence defined in
@@ -341,5 +366,7 @@ writing in the relevant plan document.
 Use `CLAUDE.md`, `GEMINI.md`, `copilot-instructions.md`, and `AGENTS.md` for
 runtime agent-specific development guidance.
 Use `docs/guides/multi-mac-workflow.md` for local multi-machine workflow details.
+Use `docs/project-statistics.md` for the living project-statistics ledger and
+manual-effort baseline tracking.
 
-**Version**: 1.4.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-21
+**Version**: 1.5.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-21

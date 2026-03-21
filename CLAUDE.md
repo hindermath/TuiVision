@@ -87,3 +87,9 @@ Feature branches use the pattern `codex/<feature-description>`. CI runs on pushe
   - `.github/copilot-instructions.md`
 - Do not leave shared guidance synchronized in only one of these files.
 - If an agent-specific file needs intentional divergence, document the reason in the same change.
+
+## Project Statistics
+
+- Maintain `docs/project-statistics.md` as the living statistics ledger for the repository.
+- Update the file after each completed Spec-Kit implementation phase, after each agent-driven repository change, or when a refresh is explicitly requested.
+- Each update must capture branch/phase, observable work window, production/test/documentation line counts, main work packages, and the conservative manual baseline of 80 code lines per day for an experienced developer.

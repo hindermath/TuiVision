@@ -93,6 +93,12 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 *   Eine nur teilweise Synchronisierung ist nicht zulässig, wenn sich gemeinsame Vorgaben geändert haben.
 *   Falls eine Datei absichtlich agentenspezifisch abweicht, muss diese Abweichung im selben Change ausdrücklich dokumentiert werden.
 
+## 📊 Projektstatistik
+
+*   `docs/project-statistics.md` ist das fortlaufende Statistik-Register des Repositories.
+*   Die Datei muss nach jeder abgeschlossenen Spec-Kit-Implementierungsphase, nach jeder agentischen Änderung am Repository und auf explizite Anforderung aktualisiert werden.
+*   Jeder Eintrag muss Branch oder Phase, beobachtbares Arbeitsfenster, Produktions-, Test- und Doku-Zeilen, die wesentlichen Arbeitspakete sowie die konservative Handarbeits-Basis von 80 Codezeilen pro Tag für einen erfahrenen Entwickler enthalten.
+
 ---
 *Hinweis: Dieses Dokument wurde automatisch von Gemini CLI generiert und dient als Instruktionsbasis.*
 
