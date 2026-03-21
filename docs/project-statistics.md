@@ -39,9 +39,9 @@ fortgeschrieben.
 | Git-Aktivtage | 9 |
 | Produktionscode aktuell | 34 Dateien / 5710 Zeilen |
 | Testcode aktuell | 35 Dateien / 3881 Zeilen |
-| Dokumentation aktuell | 70 Dateien / 9893 Zeilen |
-| Davon Spec-Kit-Artefakte | 42 Dateien / 6948 Zeilen |
-| Davon Governance/Agent-Dateien | 5 Dateien / 625 Zeilen |
+| Dokumentation aktuell | 71 Dateien / 10039 Zeilen |
+| Davon Spec-Kit-Artefakte | 43 Dateien / 7043 Zeilen |
+| Davon Governance/Agent-Dateien | 5 Dateien / 627 Zeilen |
 | Codebasis fuer Handschaetzung | 9591 Zeilen |
 | Erfahrener Entwickler, konservative Untergrenze | 119.9 Arbeitstage |
 | Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 48.0 Arbeitstage |
@@ -134,12 +134,16 @@ fortgeschrieben.
     Hilfe-, Stream- und Ressourcenkomponenten
   - Planungsartefakte `plan.md`, `research.md`, `data-model.md`,
     `quickstart.md` und `contracts/public-api.md`
+  - zusaetzliche Plan-Review-Checkliste mit Durchfuehrungshinweisen
+  - nachgezogene Klarstellungen fuer Artefaktrollen, Safe-Close vs.
+    Overwrite-Konflikt, Coverage-Gate-Interpretation, nicht-funktionale
+    Abgrenzung und Szenarioabdeckung; Checkliste danach vollstaendig abgehakt
   - Synchronisation der gemeinsam genutzten Agent-Dateien auf den
     Post-Plan-Stand des aktiven Features
 - Aktueller Working-Tree-Zuwachs:
   - Produktionscode: +0 / -0 / netto +0
   - Testcode: +0 / -0 / netto +0
-  - Dokumentation: +844 / -21 / netto +823
+  - Dokumentation: +938 / -32 / netto +906
 - Konservative Handarbeits-Basis fuer Code:
   - 0 Codezeilen netto
   - 0.0 Arbeitstage fuer einen erfahrenen Entwickler
@@ -174,3 +178,5 @@ fortgeschrieben.
 | 2026-03-21 | Erstanlage | Basisstatistik fuer `main`, `001-view-system-tgroup`, `002-application-framework` und den aktuellen Stand von `003-dialog-control-layer` erzeugt; Constitution, Templates und Agent-Dateien auf Pflegepflicht synchronisiert. |
 | 2026-03-21 | Branch `004-editor-file-help-streams` | Dokumentationsstand nach neuer Phase-6-Spezifikation, Requirements-Checklist und synchronisierten Agent-Dateien fortgeschrieben; kein Code- oder Testzuwachs in diesem Arbeitsschritt. |
 | 2026-03-21 | `/speckit-plan` fuer `004-editor-file-help-streams` | Planungsstand mit `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, `contracts/public-api.md` und synchronisierten Agent-Dateien fortgeschrieben; weiterhin kein Produktions- oder Testcodezuwachs in diesem Arbeitsschritt. |
+| 2026-03-21 | `/speckit-checklist` fuer `004-editor-file-help-streams` | Zusaetzliche Plan-Review-Checkliste `checklists/planning.md` mit Durchfuehrungshinweisen aufgenommen und den Dokumentationsstand fuer Branch `004-editor-file-help-streams` erneut fortgeschrieben. |
+| 2026-03-21 | Review der Plan-Checkliste | Planungsartefakte anhand von `checklists/planning.md` nachgeschaerft, Safe-Close- und Coverage-Klarstellungen eingepflegt und anschliessend alle 30 Review-Punkte in der Checkliste abgehakt. |
