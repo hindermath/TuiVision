@@ -39,9 +39,9 @@ fortgeschrieben.
 | Git-Aktivtage | 9 |
 | Produktionscode aktuell | 34 Dateien / 5710 Zeilen |
 | Testcode aktuell | 35 Dateien / 3881 Zeilen |
-| Dokumentation aktuell | 71 Dateien / 10046 Zeilen |
-| Davon Spec-Kit-Artefakte | 43 Dateien / 7043 Zeilen |
-| Davon Governance/Agent-Dateien | 5 Dateien / 634 Zeilen |
+| Dokumentation aktuell | 72 Dateien / 10309 Zeilen |
+| Davon Spec-Kit-Artefakte | 44 Dateien / 7305 Zeilen |
+| Davon Governance/Agent-Dateien | 5 Dateien / 635 Zeilen |
 | Codebasis fuer Handschaetzung | 9591 Zeilen |
 | Erfahrener Entwickler, konservative Untergrenze | 119.9 Arbeitstage |
 | Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 48.0 Arbeitstage |
@@ -125,7 +125,8 @@ fortgeschrieben.
 ### 4. `004-editor-file-help-streams`
 
 - Status: Spezifikation, Checkliste und Planungsartefakte auf Branch
-  `004-editor-file-help-streams` angelegt; bereit fuer `/speckit.tasks`
+  `004-editor-file-help-streams` angelegt; `tasks.md` erstellt und bereit fuer
+  den naechsten Implementierungsschritt
 - Beobachtbarer Zeitraum: 2026-03-21 bis 2026-03-21
 - Commit-Bild: 0 Commits an 0 Git-Aktivtagen; aktueller Stand liegt vollstaendig
   im Working Tree
@@ -135,6 +136,8 @@ fortgeschrieben.
   - Planungsartefakte `plan.md`, `research.md`, `data-model.md`,
     `quickstart.md` und `contracts/public-api.md`
   - zusaetzliche Plan-Review-Checkliste mit Durchfuehrungshinweisen
+  - neue umsetzbare Aufgabenliste `tasks.md` mit Setup-, Foundation-,
+    User-Story- und Polish-Phasen
   - nachgezogene Klarstellungen fuer Artefaktrollen, Safe-Close vs.
     Overwrite-Konflikt, Coverage-Gate-Interpretation, nicht-funktionale
     Abgrenzung und Szenarioabdeckung; Checkliste danach vollstaendig abgehakt
@@ -143,7 +146,7 @@ fortgeschrieben.
 - Aktueller Working-Tree-Zuwachs:
   - Produktionscode: +0 / -0 / netto +0
   - Testcode: +0 / -0 / netto +0
-  - Dokumentation: +945 / -32 / netto +913
+  - Dokumentation: +262 / -0 / netto +262
 - Konservative Handarbeits-Basis fuer Code:
   - 0 Codezeilen netto
   - 0.0 Arbeitstage fuer einen erfahrenen Entwickler
@@ -181,3 +184,4 @@ fortgeschrieben.
 | 2026-03-21 | `/speckit-checklist` fuer `004-editor-file-help-streams` | Zusaetzliche Plan-Review-Checkliste `checklists/planning.md` mit Durchfuehrungshinweisen aufgenommen und den Dokumentationsstand fuer Branch `004-editor-file-help-streams` erneut fortgeschrieben. |
 | 2026-03-21 | Review der Plan-Checkliste | Planungsartefakte anhand von `checklists/planning.md` nachgeschaerft, Safe-Close- und Coverage-Klarstellungen eingepflegt und anschliessend alle 30 Review-Punkte in der Checkliste abgehakt. |
 | 2026-03-21 | Nachpruefung `/speckit-plan` | Keine weitere fachliche Plananpassung erforderlich; versehentlich ueberschriebener Working-Tree-Plan wiederhergestellt und gemeinsame Agent-Dateien auf den Post-Review-Planstand synchronisiert. |
+| 2026-03-21 | `/speckit-tasks` fuer `004-editor-file-help-streams` | Umsetzbare `tasks.md` mit 43 Aufgaben aus Plan, Datenmodell, Vertrag, Research und Quickstart erstellt; Branch damit vom Planungs- in den Ausfuehrungszustand ueberfuehrt. |
