@@ -129,6 +129,12 @@ docfx docfx.json
 - Partial synchronization is not acceptable when shared guidance has changed.
 - If one file intentionally diverges for agent-specific reasons, that divergence MUST be explicit and documented in the same change.
 
+## Project Statistics
+
+- Maintain `docs/project-statistics.md` as the living statistics ledger for the repository.
+- Update the file after each completed Spec-Kit implementation phase, after each agent-driven repository change, or when a refresh is explicitly requested.
+- Each update must record the relevant branch/phase, observable work window, production/test/documentation line counts, main work packages, and the conservative manual baseline of 80 code lines per day for an experienced developer.
+
 ## Active Technologies
 - C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core` (TView, TGroup, TEvent, TObject, TPoint, TRect, (003-dialog-control-layer)
 - N/A — in-memory UI state only; keine Persistenz in Phase 5 (003-dialog-control-layer)
