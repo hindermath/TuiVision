@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-03-21
+Stand: 2026-03-22
 
 ## Zweck und Pflege
 
@@ -33,7 +33,7 @@ fortgeschrieben.
 
 | Kennzahl | Wert |
 |---|---:|
-| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-21 |
+| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-22 |
 | Git-Commits gesamt | 125 |
 | Autoren laut Git | 1 |
 | Git-Aktivtage | 9 |
@@ -125,9 +125,9 @@ fortgeschrieben.
 ### 4. `004-editor-file-help-streams`
 
 - Status: Spezifikation, Checkliste und Planungsartefakte auf Branch
-  `004-editor-file-help-streams` angelegt; `tasks.md` erstellt und bereit fuer
-  den naechsten Implementierungsschritt
-- Beobachtbarer Zeitraum: 2026-03-21 bis 2026-03-21
+  `004-editor-file-help-streams` angelegt; `tasks.md` erstellt und nach
+  Analyse-Remediation bereit fuer den naechsten Implementierungsschritt
+- Beobachtbarer Zeitraum: 2026-03-21 bis 2026-03-22
 - Commit-Bild: 0 Commits an 0 Git-Aktivtagen; aktueller Stand liegt vollstaendig
   im Working Tree
 - Grundlegende Arbeiten:
@@ -141,12 +141,19 @@ fortgeschrieben.
   - nachgezogene Klarstellungen fuer Artefaktrollen, Safe-Close vs.
     Overwrite-Konflikt, Coverage-Gate-Interpretation, nicht-funktionale
     Abgrenzung und Szenarioabdeckung; Checkliste danach vollstaendig abgehakt
-  - Synchronisation der gemeinsam genutzten Agent-Dateien auf den
-    Post-Review-Planstand des aktiven Features
+  - Analyse-Remediation fuer die Phase-6-Artefakte: explizite Insert/Overwrite-
+    und Clipboard-Abdeckung, Datei-Metadaten-Synchronisation in Dialogen,
+    Shell-Menue-/Status-Routing sowie das volle Coverage-Gate fuer Core,
+    Controls und Serialization
+  - zweite Analyse-Remediation: explizite Benennung von Event-Loop-Verhalten,
+    Fokuswechseln, Menueausfuehrung und Dialoginteraktion in Spec, Plan,
+    Quickstart, Tasks und synchronisierten Agent-Dateien
+  - Synchronisation der gemeinsam genutzten Agent-Dateien auf den aktuellen
+    Analyse- und Remediation-Stand des aktiven Features
 - Aktueller Working-Tree-Zuwachs:
   - Produktionscode: +0 / -0 / netto +0
   - Testcode: +0 / -0 / netto +0
-  - Dokumentation: +262 / -0 / netto +262
+  - Dokumentation: +319 / -0 / netto +319
 - Konservative Handarbeits-Basis fuer Code:
   - 0 Codezeilen netto
   - 0.0 Arbeitstage fuer einen erfahrenen Entwickler
@@ -185,3 +192,5 @@ fortgeschrieben.
 | 2026-03-21 | Review der Plan-Checkliste | Planungsartefakte anhand von `checklists/planning.md` nachgeschaerft, Safe-Close- und Coverage-Klarstellungen eingepflegt und anschliessend alle 30 Review-Punkte in der Checkliste abgehakt. |
 | 2026-03-21 | Nachpruefung `/speckit-plan` | Keine weitere fachliche Plananpassung erforderlich; versehentlich ueberschriebener Working-Tree-Plan wiederhergestellt und gemeinsame Agent-Dateien auf den Post-Review-Planstand synchronisiert. |
 | 2026-03-21 | `/speckit-tasks` fuer `004-editor-file-help-streams` | Umsetzbare `tasks.md` mit 43 Aufgaben aus Plan, Datenmodell, Vertrag, Research und Quickstart erstellt; Branch damit vom Planungs- in den Ausfuehrungszustand ueberfuehrt. |
+| 2026-03-22 | Analyse-Remediation fuer `004-editor-file-help-streams` | Spec-, Plan-, Datenmodell-, Vertrags-, Quickstart- und Task-Artefakte sowie die gemeinsamen Agent-Dateien nach Analysefunden geschaerft: explizite Insert/Overwrite- und Clipboard-Abdeckung, synchronisierte Datei-Metadaten, Shell-Menue-/Status-Routing und das volle Coverage-Gate fuer `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization`. |
+| 2026-03-22 | Zweite Analyse-Remediation fuer `004-editor-file-help-streams` | Die letzten offenen Analysepunkte ausgeraumt: Event-Loop-Verhalten, Fokuswechsel, Menueausfuehrung und explizite Dialoginteraktion nun direkt in `spec.md`, `plan.md`, `quickstart.md`, `tasks.md` und den synchronisierten Agent-Dateien benannt; Story-Tests in der Spezifikation an den nachgeschaerften FR-Stand angeglichen. |
