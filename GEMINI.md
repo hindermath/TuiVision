@@ -61,7 +61,7 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 
 ### `004-editor-file-help-streams`
 *   Spezifikationsquelle: `specs/004-editor-file-help-streams/spec.md`
-*   Ziel dieses Inkrements: Editor-, Datei-, Hilfe-, Stream- und Ressourcenbausteine als wiederverwendbare Framework-Komponenten definieren und für die Planung vorbereiten
+*   Umsetzungsgrundlage dieses Inkrements: `specs/004-editor-file-help-streams/spec.md` und `specs/004-editor-file-help-streams/plan.md`
 *   Geplanter Umfang in `src/TuiVision.Controls` und `src/TuiVision.Serialization`:
     *   `TEditor`, `TMemo`, `TFileEditor`, `TEditWindow`
     *   Datei-/Verzeichnisdialoge, Pfad-History und zugehörige Hilfskomponenten
@@ -72,6 +72,12 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
     *   Datei-Flows müssen Dateiliste, Verzeichnisnavigation, manuelle Pfadeingabe und History-Rückruf synchron halten
     *   Hilfe-Flows müssen kontextbezogene Topics, Querverweise und Fallback-Inhalte für fehlende Kontexte unterstützen
     *   Stream-/Ressourcen-Flows müssen benannte Ablage und explizite Fehlerbehandlung bei defekten Persistenzdaten abdecken
+*   Festgezogene Planungsentscheidungen:
+    *   Runtime-Hilfe kommt aus dedizierten Help-Dateien
+    *   Shared References bleiben erhalten, zyklische Objektgraphen sind nicht Teil der Abnahme
+    *   Resource-Keys sind exakt case-sensitive
+    *   Neue Dateien verwenden `LF`; geladene Dateien behalten ihr Zeilenendformat
+    *   Externe Dateiaenderungen erfordern vor dem Ueberschreiben eine explizite Entscheidung
 *   Explizit nicht Teil dieses Schritts:
     *   Beispielprogramme wie `tvedit`, `bhelp` und `helpdemo`
     *   Treiberkonsolidierung
@@ -98,8 +104,9 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 *Hinweis: Dieses Dokument wurde automatisch von Gemini CLI generiert und dient als Instruktionsbasis.*
 
 ## Active Technologies
-- C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Core`, `TuiVision.Drivers.Console` (004-editor-file-help-streams)
-- Lokales Dateisystem und persistente Ressourcen-Streams; keine Datenbank in diesem Inkrement (004-editor-file-help-streams)
+- C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, MSTest, Coverlet, docfx (004-editor-file-help-streams)
+- Lokales Dateisystem sowie persistente binaere Help-/Ressourcen-Streams; keine Datenbank in diesem Inkrement (004-editor-file-help-streams)
 
 ## Recent Changes
 - 004-editor-file-help-streams: Spezifikation und Requirements-Checklist fuer Phase 6 (Editor/Datei/Hilfe/Streams) angelegt.
+- 004-editor-file-help-streams: Planartefakte (`plan.md`, `research.md`, `data-model.md`, `quickstart.md`, `contracts/public-api.md`) erstellt und gemeinsame Agent-Hinweise auf den Post-Plan-Stand synchronisiert.

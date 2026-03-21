@@ -62,12 +62,13 @@ All projects target `net10.0` with `Nullable: enable`, `ImplicitUsings: enable`,
 ## Active Feature Context
 
 ### 004-editor-file-help-streams
-- Align active work with `specs/004-editor-file-help-streams/spec.md` until planning artifacts exist
+- Align active work with `specs/004-editor-file-help-streams/spec.md` and the planning artifacts in `specs/004-editor-file-help-streams/`
 - Scope is limited to reusable framework components in `src/TuiVision.Controls` and `src/TuiVision.Serialization`: `TEditor`, `TMemo`, `TFileEditor`, `TEditWindow`, file/dialog/history helpers, help topics/viewers/windows, stream primitives, and named resource containers
 - Editor flows must cover text editing, search/replace, modified-state handling, and explicit decisions before unsaved changes are discarded
 - File flows must keep directory navigation, file lists, manual path entry, and history recall synchronized inside reusable dialogs
 - Help flows must support context-based topic lookup, cross-reference navigation, and fallback content for missing contexts
 - Stream/resource flows must preserve named lookup semantics and reject malformed persisted input explicitly
+- Planning decisions now fixed for this feature: dedicated runtime help files, shared-reference preservation without cyclic-graph support, exact case-sensitive resource keys, `LF` default for new files, preserved line endings for loaded files, and explicit overwrite decisions after external file changes
 - Keep this increment scoped to reusable framework components only; example applications such as `tvedit`, `bhelp`, and `helpdemo`, as well as driver consolidation and calculator/macros/OS-shell integrations, are out of scope
 
 ## Agent File Synchronization Policy

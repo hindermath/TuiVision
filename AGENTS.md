@@ -110,13 +110,14 @@ docfx docfx.json
 ## Active Feature Context
 
 ### 004-editor-file-help-streams
-- Current planning target: define and prepare the phase-6 increment from `specs/004-editor-file-help-streams/spec.md`
+- Current implementation baseline: execute the phase-6 increment from `specs/004-editor-file-help-streams/spec.md` and `specs/004-editor-file-help-streams/plan.md`
 - Scope is limited to reusable framework components in `src/TuiVision.Controls` and `src/TuiVision.Serialization`: `TEditor`, `TMemo`, `TFileEditor`, `TEditWindow`, file/dialog/history helpers, help topics/viewers/windows, stream primitives, and named resource containers
 - Out of scope for this increment: example applications such as `tvedit`, `bhelp`, and `helpdemo`; driver consolidation; calculator/macros/OS-shell integrations; and unrelated specialized widgets
 - Editor flows must cover text editing, search/replace, modified-state handling, and explicit decisions before unsaved changes are discarded
 - File flows must keep directory navigation, file lists, manual path entry, and history recall synchronized inside reusable dialogs
 - Help flows must support context-based topic lookup, cross-reference navigation, and fallback content for missing contexts
 - Stream/resource flows must preserve named lookup semantics and reject malformed persisted input explicitly
+- Planning decisions now fixed for this feature: dedicated runtime help files, shared-reference preservation without cyclic-graph support, exact case-sensitive resource keys, `LF` default for new files, preserved line endings for loaded files, and explicit overwrite decisions after external file changes
 
 ## Agent File Synchronization Policy
 
@@ -135,8 +136,9 @@ docfx docfx.json
 - Each update must record the relevant branch/phase, observable work window, production/test/documentation line counts, main work packages, and the conservative manual baseline of 80 code lines per day for an experienced developer.
 
 ## Active Technologies
-- C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Core`, `TuiVision.Drivers.Console` (004-editor-file-help-streams)
-- Local file-system interaction and persisted resource streams; no database layer in this increment (004-editor-file-help-streams)
+- C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, MSTest, Coverlet, docfx (004-editor-file-help-streams)
+- Real local file-system interaction plus persisted binary help/resource files; no database layer in this increment (004-editor-file-help-streams)
 
 ## Recent Changes
 - 004-editor-file-help-streams: Added the phase-6 specification and requirements checklist for editor, file, help, stream, and resource components.
+- 004-editor-file-help-streams: Added `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, and `contracts/public-api.md`; synchronized shared agent guidance to the post-plan baseline.

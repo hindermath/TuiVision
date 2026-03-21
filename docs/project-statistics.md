@@ -39,9 +39,9 @@ fortgeschrieben.
 | Git-Aktivtage | 9 |
 | Produktionscode aktuell | 34 Dateien / 5710 Zeilen |
 | Testcode aktuell | 35 Dateien / 3881 Zeilen |
-| Dokumentation aktuell | 65 Dateien / 8982 Zeilen |
-| Davon Spec-Kit-Artefakte | 37 Dateien / 6104 Zeilen |
-| Davon Governance/Agent-Dateien | 5 Dateien / 809 Zeilen |
+| Dokumentation aktuell | 70 Dateien / 9893 Zeilen |
+| Davon Spec-Kit-Artefakte | 42 Dateien / 6948 Zeilen |
+| Davon Governance/Agent-Dateien | 5 Dateien / 625 Zeilen |
 | Codebasis fuer Handschaetzung | 9591 Zeilen |
 | Erfahrener Entwickler, konservative Untergrenze | 119.9 Arbeitstage |
 | Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 48.0 Arbeitstage |
@@ -124,21 +124,22 @@ fortgeschrieben.
 
 ### 4. `004-editor-file-help-streams`
 
-- Status: Spezifikation und Checkliste auf Branch `004-editor-file-help-streams`
-  angelegt; bereit fuer `/speckit.plan`
+- Status: Spezifikation, Checkliste und Planungsartefakte auf Branch
+  `004-editor-file-help-streams` angelegt; bereit fuer `/speckit.tasks`
 - Beobachtbarer Zeitraum: 2026-03-21 bis 2026-03-21
 - Commit-Bild: 0 Commits an 0 Git-Aktivtagen; aktueller Stand liegt vollstaendig
   im Working Tree
 - Grundlegende Arbeiten:
-  - neue Phase-6-Spezifikation fuer Editor-, Datei-, Hilfe-, Stream- und
-    Ressourcenkomponenten
-  - Requirements-Checklist fuer die Spezifikationsqualitaet
-  - Synchronisation der gemeinsam genutzten Agent-Dateien auf den neuen
-    aktiven Feature-Kontext
+  - neue Phase-6-Spezifikation und Requirements-Checklist fuer Editor-, Datei-,
+    Hilfe-, Stream- und Ressourcenkomponenten
+  - Planungsartefakte `plan.md`, `research.md`, `data-model.md`,
+    `quickstart.md` und `contracts/public-api.md`
+  - Synchronisation der gemeinsam genutzten Agent-Dateien auf den
+    Post-Plan-Stand des aktiven Features
 - Aktueller Working-Tree-Zuwachs:
   - Produktionscode: +0 / -0 / netto +0
   - Testcode: +0 / -0 / netto +0
-  - Dokumentation: +246 / -67 / netto +179
+  - Dokumentation: +844 / -21 / netto +823
 - Konservative Handarbeits-Basis fuer Code:
   - 0 Codezeilen netto
   - 0.0 Arbeitstage fuer einen erfahrenen Entwickler
@@ -172,3 +173,4 @@ fortgeschrieben.
 |---|---|---|
 | 2026-03-21 | Erstanlage | Basisstatistik fuer `main`, `001-view-system-tgroup`, `002-application-framework` und den aktuellen Stand von `003-dialog-control-layer` erzeugt; Constitution, Templates und Agent-Dateien auf Pflegepflicht synchronisiert. |
 | 2026-03-21 | Branch `004-editor-file-help-streams` | Dokumentationsstand nach neuer Phase-6-Spezifikation, Requirements-Checklist und synchronisierten Agent-Dateien fortgeschrieben; kein Code- oder Testzuwachs in diesem Arbeitsschritt. |
+| 2026-03-21 | `/speckit-plan` fuer `004-editor-file-help-streams` | Planungsstand mit `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, `contracts/public-api.md` und synchronisierten Agent-Dateien fortgeschrieben; weiterhin kein Produktions- oder Testcodezuwachs in diesem Arbeitsschritt. |
