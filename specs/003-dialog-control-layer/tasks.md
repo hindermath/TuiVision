@@ -1,11 +1,11 @@
 # Tasks: Dialog-/Control-Schicht (Dialog and Control Layer)
 
 **Input**: Design documents from `/specs/003-dialog-control-layer/`
-**Prerequisites**: [plan.md](plan.md) (required), [spec.md](spec.md) (required), [research.md](research.md), [data-model.md](data-model.md), [contracts/public-api.md](contracts/public-api.md), [quickstart.md](quickstart.md)
+**Prerequisites**: [plan.md](plan.md), [spec.md](spec.md), [research.md](research.md), [data-model.md](data-model.md), [contracts/public-api.md](contracts/public-api.md), [quickstart.md](quickstart.md)
 
-**Tests**: Tests are mandatory for this feature. Every control class needs MSTest coverage with at least one positive and one negative/boundary case, and the implementation must follow visible Red-Green-Refactor sequencing.
+**Tests**: Tests are mandatory for this feature. Every control class needs MSTest coverage with at least one positive and one negative/boundary case, and all implementation must follow visible Red-Green-Refactor sequencing.
 
-**Organization**: Tasks are grouped by user story so each increment stays independently testable. Shared setup and blocking prerequisites are separated into Phase 1 and Phase 2.
+**Organization**: Story labels preserve traceability to the spec, but the execution order of phases follows the technical class dependency sequence from [plan.md](plan.md) so that `TDialog` remains the final coordinator step.
 
 ## Format: `[ID] [P?] [Story] Description`
 
@@ -26,154 +26,102 @@
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
-**Purpose**: Establish shared command IDs and reusable test utilities before user-story work starts.
+**Purpose**: Establish shared command IDs and reusable test utilities before any control porting starts.
 
-**⚠️ CRITICAL**: No user story work should begin until this phase is complete.
+**⚠️ CRITICAL**: No implementation work should begin until this phase is complete.
 
 - [ ] T003 Extend shared dialog command identifiers (`cmOK`, `cmCancel`, `cmYes`, `cmNo`) in `src/TuiVision.Controls/ShellCommandIds.cs`
-- [ ] T004 [P] Add reusable keyboard/mouse/command event builders in `tests/TuiVision.Controls.Tests/ControlEventFactory.cs`
+- [ ] T004 [P] Add reusable keyboard, mouse, and command event builders in `tests/TuiVision.Controls.Tests/ControlEventFactory.cs`
 - [ ] T005 [P] Add reusable console-buffer assertion helpers in `tests/TuiVision.Controls.Tests/ControlBufferAssert.cs`
 
-**Checkpoint**: Shared command IDs and common control-test helpers are ready.
+**Checkpoint**: Shared command IDs and control-test helpers are ready.
 
 ---
 
-## Phase 3: User Story 1 - Interaktiver Dialog mit Steuerelementen (Priority: P1) 🎯 MVP
+## Phase 3: Technical Base Controls
 
-**Goal**: Deliver a modal `TDialog` that can host focusable controls, render frame/title, cycle focus with wrap-around, and close via button command or Escape.
+**Purpose**: Implement the plan's earliest technical base classes before dependent controls.
 
-**Independent Test**: Instantiate a dialog with two buttons, verify initial focus on the first button, wrap-around with Tab/Shift-Tab, Enter on the focused cancel button returns its command, and Escape closes with `cmCancel`.
+- [ ] T006 [P] [US3] Add red tests for indexed collection behavior and out-of-range access in `tests/TuiVision.Controls.Tests/TStringListTests.cs`
+- [ ] T007 [P] [US3] Add red tests for clamp behavior, page/arrow steps, and scrollbar bounds in `tests/TuiVision.Controls.Tests/TScrollBarTests.cs`
+- [ ] T008 [P] [US6] Add red tests for non-focusable multi-line text rendering in `tests/TuiVision.Controls.Tests/TStaticTextTests.cs`
+- [ ] T009 [P] [US3] Implement `TStringList` with index validation and bilingual XML docs in `src/TuiVision.Controls/TStringList.cs`
+- [ ] T010 [P] [US3] Implement `TScrollBar` parameter handling, clamping, owner event forwarding, and bilingual XML docs in `src/TuiVision.Controls/TScrollBar.cs`
+- [ ] T011 [US3] Add red tests for coordinated delta updates and scrollbar synchronization in `tests/TuiVision.Controls.Tests/TScrollerTests.cs`
+- [ ] T012 [US3] Implement abstract `TScroller` coordinated scroll logic and bilingual XML docs in `src/TuiVision.Controls/TScroller.cs`
+- [ ] T013 [US6] Implement `TStaticText` rendering, non-focusable behavior, and bilingual XML docs in `src/TuiVision.Controls/TStaticText.cs`
 
-### Tests for User Story 1
-
-> **NOTE**: Write these tests first and verify that they fail before implementing the production code.
-
-- [ ] T006 [P] [US1] Add red tests for baseline button activation and command dispatch in `tests/TuiVision.Controls.Tests/TButtonTests.cs`
-- [ ] T007 [P] [US1] Add red tests for modal run loop, frame/title rendering, focus wrap-around, and Escape → `cmCancel` in `tests/TuiVision.Controls.Tests/TDialogTests.cs`
-
-### Implementation for User Story 1
-
-- [ ] T008 [US1] Implement baseline `TButton`/`TButtonFlags` activation, rendering, and bilingual XML docs in `src/TuiVision.Controls/TButton.cs`
-- [ ] T009 [US1] Implement `TDialog` modal run loop, frame/title drawing, focus delegation to `TGroup`, and default Escape → `cmCancel` semantics with bilingual XML docs in `src/TuiVision.Controls/TDialog.cs`
-
-**Checkpoint**: User Story 1 is functional and independently testable as the MVP dialog workflow.
+**Checkpoint**: Base classes from plan steps 1-4 are available for dependent controls.
 
 ---
 
-## Phase 4: User Story 2 - Einzeilige Texteingabe (Priority: P2)
+## Phase 4: Selection and Label Controls
 
-**Goal**: Deliver `TInputLine` with single-line editing, cursor movement, insert/overwrite mode, and bounded input length.
+**Purpose**: Implement grouped selection controls and linked labels from the next dependency layer.
 
-**Independent Test**: Place one `TInputLine` in a dialog, type and delete text, move the cursor with Home/End/arrow keys, and verify `MaxLen` and `MaxLen = 0` boundary handling.
+- [ ] T014 [P] [US5] Add red tests for abstract cluster navigation, selection tracking, and disabled behavior in `tests/TuiVision.Controls.Tests/TClusterTests.cs`
+- [ ] T015 [P] [US5] Add red tests for checkbox bitmask toggling in `tests/TuiVision.Controls.Tests/TCheckBoxesTests.cs`
+- [ ] T016 [P] [US5] Add red tests for radio-button exclusivity, single-option rendering, and reselection rules in `tests/TuiVision.Controls.Tests/TRadioButtonsTests.cs`
+- [ ] T017 [US5] Implement abstract `TCluster` drawing, navigation, state handling, and bilingual XML docs in `src/TuiVision.Controls/TCluster.cs`
+- [ ] T018 [US5] Implement `TCheckBoxes` bitmask semantics and XML docs in `src/TuiVision.Controls/TCheckBoxes.cs`
+- [ ] T019 [US5] Implement `TRadioButtons` single-selection semantics and XML docs in `src/TuiVision.Controls/TRadioButtons.cs`
+- [ ] T020 [US6] Add red tests for label hotkey parsing, light-state rendering, and linked-focus transfer in `tests/TuiVision.Controls.Tests/TLabelTests.cs`
+- [ ] T021 [US6] Implement `TLabel` hotkey handling, peer-focus transfer, visual highlighting, and bilingual XML docs in `src/TuiVision.Controls/TLabel.cs`
 
-### Tests for User Story 2
-
-- [ ] T010 [US2] Add red tests for text entry, cursor movement, insert/overwrite mode, delete/backspace, horizontal scrolling, and `MaxLen = 0` in `tests/TuiVision.Controls.Tests/TInputLineTests.cs`
-
-### Implementation for User Story 2
-
-- [ ] T011 [US2] Implement `TInputLine` editing behavior, viewport scrolling, boundary handling, and bilingual XML docs in `src/TuiVision.Controls/TInputLine.cs`
-
-**Checkpoint**: User Story 2 is functional and independently testable with one dialog-hosted text field.
-
----
-
-## Phase 5: User Story 3 - Scrollbare Listenauswahl (Priority: P3)
-
-**Goal**: Deliver the list-selection stack with `TStringList`, `TScrollBar`, `TScroller`, `TListViewer`, and `TListBox`, including empty-list handling and double-click confirmation without an extra command event.
-
-**Independent Test**: Show a `TListBox` with 20 items and a vertical `TScrollBar`, move through the list with keyboard input, observe synchronized scrollbar updates, verify empty-list rendering, and confirm that a double-click only confirms selection.
-
-### Tests for User Story 3
-
-- [ ] T012 [P] [US3] Add red tests for indexed collection behavior and out-of-range access in `tests/TuiVision.Controls.Tests/TStringListTests.cs`
-- [ ] T013 [P] [US3] Add red tests for clamp behavior, page/arrow steps, and bounds handling in `tests/TuiVision.Controls.Tests/TScrollBarTests.cs`
-- [ ] T014 [P] [US3] Add red tests for coordinated delta updates and scrollbar synchronization in `tests/TuiVision.Controls.Tests/TScrollerTests.cs`
-- [ ] T015 [P] [US3] Add red tests for `TopItem`/`FocusedItem` coordination and optional scrollbar usage in `tests/TuiVision.Controls.Tests/TListViewerTests.cs`
-- [ ] T016 [P] [US3] Add red tests for empty-list rendering, click selection, keyboard navigation, and double-click confirmation without a separate command in `tests/TuiVision.Controls.Tests/TListBoxTests.cs`
-
-### Implementation for User Story 3
-
-- [ ] T017 [P] [US3] Implement `TStringList` with index validation and bilingual XML docs in `src/TuiVision.Controls/TStringList.cs`
-- [ ] T018 [P] [US3] Implement `TScrollBar` parameter handling, clamping, owner event forwarding, and bilingual XML docs in `src/TuiVision.Controls/TScrollBar.cs`
-- [ ] T019 [US3] Implement abstract `TScroller` coordinated scroll logic and bilingual XML docs in `src/TuiVision.Controls/TScroller.cs`
-- [ ] T020 [US3] Implement abstract `TListViewer` viewport/focus synchronization, optional scrollbar integration, and bilingual XML docs in `src/TuiVision.Controls/TListViewer.cs`
-- [ ] T021 [US3] Implement `TListBox` data binding, empty rendering, click selection, and double-click confirmation-without-command semantics with bilingual XML docs in `src/TuiVision.Controls/TListBox.cs`
-
-**Checkpoint**: User Story 3 is functional and independently testable as a complete list-selection workflow.
+**Checkpoint**: Selection groups and labels are ready for later dialog composition.
 
 ---
 
-## Phase 6: User Story 4 - Schaltflächen (Priority: P4)
+## Phase 5: List Controls
 
-**Goal**: Complete advanced button behavior with hotkeys, disabled-state focus handling, and default-button activation through dialog Enter routing.
+**Purpose**: Complete the list stack on top of the earlier base controls.
 
-**Independent Test**: Use a dialog with a default OK button, a cancel button, and an input field; verify Alt-hotkey activation, disabled button skip in focus traversal, and Enter activating the default button when the focused control does not consume Enter.
+- [ ] T022 [P] [US3] Add red tests for `TopItem`/`FocusedItem` coordination and optional scrollbar usage in `tests/TuiVision.Controls.Tests/TListViewerTests.cs`
+- [ ] T023 [P] [US3] Add red tests for empty-list rendering, click selection, keyboard navigation, and double-click confirmation without a separate command in `tests/TuiVision.Controls.Tests/TListBoxTests.cs`
+- [ ] T024 [US3] Implement abstract `TListViewer` viewport/focus synchronization, optional scrollbar integration, and bilingual XML docs in `src/TuiVision.Controls/TListViewer.cs`
+- [ ] T025 [US3] Implement `TListBox` data binding, empty rendering, click selection, and double-click confirmation-without-command semantics with bilingual XML docs in `src/TuiVision.Controls/TListBox.cs`
 
-### Tests for User Story 4
-
-- [ ] T022 [US4] Add red tests for Alt-hotkeys, disabled-state focus skipping, and default-button behavior in `tests/TuiVision.Controls.Tests/TButtonTests.cs`
-- [ ] T023 [US4] Add red dialog-integration tests for default-button activation when a focused control does not consume Enter in `tests/TuiVision.Controls.Tests/TDialogTests.cs`
-
-### Implementation for User Story 4
-
-- [ ] T024 [US4] Extend `TButton` hotkey parsing, default-state rendering, disabled behavior, and XML docs in `src/TuiVision.Controls/TButton.cs`
-- [ ] T025 [US4] Extend `TDialog` Enter routing for `bfDefault` while preserving child-control event consumption rules in `src/TuiVision.Controls/TDialog.cs`
-
-**Checkpoint**: User Story 4 is functional and independently testable as the complete button interaction model.
+**Checkpoint**: The list-selection workflow is independently testable and aligned with the clarified double-click semantics.
 
 ---
 
-## Phase 7: User Story 5 - Auswahlgruppen: Checkboxen und Radiobuttons (Priority: P5)
+## Phase 6: Input Controls
 
-**Goal**: Deliver grouped selection controls based on `TCluster` for multi-select and mutually exclusive single-select interaction.
+**Purpose**: Implement the direct user-input controls that the dialog coordinator depends on.
 
-**Independent Test**: Place one `TCheckBoxes` or `TRadioButtons` control in a dialog, navigate with arrow keys, toggle/select items with space, and verify disabled-state behavior.
+- [ ] T026 [US4] Add red tests for baseline button activation and command dispatch in `tests/TuiVision.Controls.Tests/TButtonTests.cs`
+- [ ] T027 [US4] Add red tests for Alt-hotkeys, disabled-state focus skipping, and default-button behavior in `tests/TuiVision.Controls.Tests/TButtonTests.cs`
+- [ ] T028 [US4] Implement `TButton`/`TButtonFlags` activation, hotkey parsing, default-state rendering, disabled behavior, and bilingual XML docs in `src/TuiVision.Controls/TButton.cs`
+- [ ] T029 [US2] Add red tests for text entry, cursor movement, insert/overwrite mode, delete/backspace, horizontal scrolling, and `MaxLen = 0` in `tests/TuiVision.Controls.Tests/TInputLineTests.cs`
+- [ ] T030 [US2] Implement `TInputLine` editing behavior, viewport scrolling, boundary handling, and bilingual XML docs in `src/TuiVision.Controls/TInputLine.cs`
 
-### Tests for User Story 5
-
-- [ ] T026 [P] [US5] Add red tests for abstract cluster navigation, selection tracking, and disabled behavior in `tests/TuiVision.Controls.Tests/TClusterTests.cs`
-- [ ] T027 [P] [US5] Add red tests for checkbox bitmask toggling in `tests/TuiVision.Controls.Tests/TCheckBoxesTests.cs`
-- [ ] T028 [P] [US5] Add red tests for radio-button exclusivity and reselection rules in `tests/TuiVision.Controls.Tests/TRadioButtonsTests.cs`
-
-### Implementation for User Story 5
-
-- [ ] T029 [US5] Implement abstract `TCluster` drawing, navigation, state handling, and bilingual XML docs in `src/TuiVision.Controls/TCluster.cs`
-- [ ] T030 [US5] Implement `TCheckBoxes` bitmask semantics and XML docs in `src/TuiVision.Controls/TCheckBoxes.cs`
-- [ ] T031 [US5] Implement `TRadioButtons` single-selection semantics and XML docs in `src/TuiVision.Controls/TRadioButtons.cs`
-
-**Checkpoint**: User Story 5 is functional and independently testable for grouped option selection.
+**Checkpoint**: Buttons and input lines are ready for the final dialog coordinator step.
 
 ---
 
-## Phase 8: User Story 6 - Statische Anzeige: Beschriftungen und Texte (Priority: P6)
+## Phase 7: Dialog Coordinator
 
-**Goal**: Deliver non-interactive text display and label-to-peer focus transfer for structured dialogs.
+**Purpose**: Implement `TDialog` last, as required by the plan, after all dependent controls exist.
 
-**Independent Test**: Render static text in a dialog without focus participation and verify that a `TLabel` hotkey moves focus to its linked peer control.
+- [ ] T031 [US1] Add red tests for modal run loop, frame/title rendering, focus wrap-around, Escape → `cmCancel`, behavior without a focusable child control, and ignoring mouse events outside an open modal dialog in `tests/TuiVision.Controls.Tests/TDialogTests.cs`
+- [ ] T032 [US1] Add red integration tests for cancel-button return values, default-button activation, and child-control event consumption rules in `tests/TuiVision.Controls.Tests/TDialogTests.cs`
+- [ ] T033 [P] [US1] Add a red composite dialog integration scenario covering `TInputLine`, `TListBox`, `TButton`, `TCheckBoxes`, and `TRadioButtons` in `tests/TuiVision.Controls.Tests/TDialogCompositeTests.cs`
+- [ ] T034 [US1] Implement `TDialog` modal coordination, frame/title drawing, command routing, focus delegation to `TGroup`, and boundary handling with bilingual XML docs in `src/TuiVision.Controls/TDialog.cs`
 
-### Tests for User Story 6
-
-- [ ] T032 [P] [US6] Add red tests for non-focusable multi-line text rendering in `tests/TuiVision.Controls.Tests/TStaticTextTests.cs`
-- [ ] T033 [P] [US6] Add red tests for label hotkey parsing, light-state rendering, and linked-focus transfer in `tests/TuiVision.Controls.Tests/TLabelTests.cs`
-
-### Implementation for User Story 6
-
-- [ ] T034 [US6] Implement `TStaticText` rendering, non-focusable behavior, and bilingual XML docs in `src/TuiVision.Controls/TStaticText.cs`
-- [ ] T035 [US6] Implement `TLabel` hotkey handling, peer-focus transfer, visual highlighting, and bilingual XML docs in `src/TuiVision.Controls/TLabel.cs`
-
-**Checkpoint**: User Story 6 is functional and independently testable for static dialog text and labels.
+**Checkpoint**: The dialog layer is complete and the feature's highest-priority user workflow is testable end-to-end.
 
 ---
 
-## Phase 9: Polish & Cross-Cutting Concerns
+## Phase 8: Polish & Mandatory Quality Gates
 
-**Purpose**: Finish coverage, integration proof, and documentation/verification across all stories.
+**Purpose**: Close cross-cutting coverage gaps and satisfy the Constitution's merge gates.
 
-- [ ] T036 [P] Add a composite dialog integration scenario covering `TInputLine`, `TListBox`, `TButton`, `TCheckBoxes`, and `TRadioButtons` in `tests/TuiVision.Controls.Tests/TDialogCompositeTests.cs`
-- [ ] T037 [P] Add cross-cutting negative/render coverage to close the ≥70% gate in `tests/TuiVision.Controls.Tests/ControlCoverageSweepTests.cs`
-- [ ] T038 Resolve any remaining XML documentation and docfx-facing API gaps across `src/TuiVision.Controls/*.cs`
-- [ ] T039 Update final verification commands and feature-specific test filters in `specs/003-dialog-control-layer/quickstart.md`
+- [ ] T035 [P] Add cross-cutting negative/render coverage for visual states and remaining edge cases in `tests/TuiVision.Controls.Tests/ControlCoverageSweepTests.cs`
+- [ ] T036 Update the final control-layer verification checklist and command filters in `specs/003-dialog-control-layer/quickstart.md`
+- [ ] T037 Run and record `dotnet build --configuration Release` plus `dotnet test` using the checklist in `specs/003-dialog-control-layer/quickstart.md`
+- [ ] T038 Run and record the `TuiVision.Controls` coverage gate validation using the checklist in `specs/003-dialog-control-layer/quickstart.md`
+- [ ] T039 Run and record `dotnet format --verify-no-changes` plus `docfx docfx.json` validation against `docfx.json`
+- [ ] T040 Run and record the example smoke-test project validation against `tests/TuiVision.Examples.SmokeTests/TuiVision.Examples.SmokeTests.csproj`
 
 ---
 
@@ -182,96 +130,95 @@
 ### Phase Dependencies
 
 - **Setup (Phase 1)**: No dependencies; can start immediately.
-- **Foundational (Phase 2)**: Depends on Setup; blocks all user stories.
-- **User Stories (Phase 3+)**: Depend on Foundational completion.
-- **Polish (Phase 9)**: Depends on the completion of all desired user stories.
+- **Foundational (Phase 2)**: Depends on Setup; blocks all later work.
+- **Technical Base Controls (Phase 3)**: Depends on Foundational.
+- **Selection and Label Controls (Phase 4)**: Depends on Phase 3.
+- **List Controls (Phase 5)**: Depends on Phase 3 and the shared helpers from Phase 2.
+- **Input Controls (Phase 6)**: Depends on Phase 5 for plan-aligned sequencing.
+- **Dialog Coordinator (Phase 7)**: Depends on all prior technical phases.
+- **Polish & Mandatory Quality Gates (Phase 8)**: Depends on the completion of all implementation phases.
 
-### User Story Dependencies
+### Story Dependencies
 
-- **US1 (P1)**: Starts after Foundational; no dependency on other user stories.
-- **US2 (P2)**: Starts after Foundational; no dependency on other user stories.
-- **US3 (P3)**: Starts after Foundational; no dependency on other user stories.
-- **US4 (P4)**: Depends on US1 because it extends the baseline `TButton`/`TDialog` behavior delivered for the MVP dialog workflow.
-- **US5 (P5)**: Starts after Foundational; no dependency on other user stories.
-- **US6 (P6)**: Starts after Foundational; no dependency on other user stories.
+- **US3 (P3)**: Starts earliest because its technical base classes (`TStringList`, `TScrollBar`, `TScroller`) are plan prerequisites for later list behavior.
+- **US5 (P5)**: Follows the plan's cluster hierarchy before dialog composition.
+- **US6 (P6)**: `TStaticText` starts early; `TLabel` follows after the selection controls layer.
+- **US4 (P4)**: Starts only after the list stack is complete so `TButton` stays in plan step 11.
+- **US2 (P2)**: Starts after `TButton` so `TInputLine` remains in plan step 12.
+- **US1 (P1)**: Finishes last because `TDialog` is the final coordinator in plan step 13, even though it remains the highest-priority end-user workflow.
 
-### Within Each User Story
+### Within Each Phase
 
-- Test tasks must be written and fail before the corresponding implementation tasks start.
-- Base abstractions and data models come before dependent concrete controls.
-- Rendering, event handling, and bilingual XML documentation are part of the production-code task, not deferred clean-up.
-- Boundary cases from the plan must be covered explicitly: empty `TListBox`, `TInputLine` with `MaxLen = 0`, `TScrollBar` clamp/bounds, `TDialog` without a focusable child control, and mouse input outside a modal dialog.
+- Tests must be written and fail before the corresponding implementation tasks start.
+- Every implementation task includes bilingual XML documentation updates for the touched production file.
+- Boundary cases from the spec and plan must be covered explicitly: empty `TListBox`, `TInputLine` with `MaxLen = 0`, `TDialog` without a focusable child control, `TScrollBar` at bounds, `TRadioButtons` with a single option, and mouse input outside a modal dialog.
+- No task may introduce `Newtonsoft.Json`; if feature-owned JSON becomes necessary, it must use `System.Text.Json`.
 
 ### Parallel Opportunities
 
 - `T004` and `T005` can run in parallel after `T003`.
-- In US1, `T006` and `T007` can run in parallel.
-- In US3, `T012`–`T016` can run in parallel, followed by `T017` and `T018` in parallel.
-- In US5, `T026`–`T028` can run in parallel.
-- In US6, `T032` and `T033` can run in parallel.
-- In Phase 9, `T036` and `T037` can run in parallel.
+- In Phase 3, `T006`, `T007`, and `T008` can run in parallel; `T009` and `T010` can then run in parallel.
+- In Phase 4, `T014`, `T015`, and `T016` can run in parallel.
+- In Phase 5, `T022` and `T023` can run in parallel.
+- In Phase 7, `T033` can run in parallel with `T031`/`T032` because it uses a separate test file.
+- In Phase 8, `T035`, `T039`, and `T040` can run in parallel after `T036`.
 
 ---
 
-## Parallel Example: User Story 1
-
-```bash
-Task: "Add red tests for baseline button activation and command dispatch in tests/TuiVision.Controls.Tests/TButtonTests.cs"
-Task: "Add red tests for modal run loop, frame/title rendering, focus wrap-around, and Escape → cmCancel in tests/TuiVision.Controls.Tests/TDialogTests.cs"
-```
-
-## Parallel Example: User Story 3
+## Parallel Example: Phase 3
 
 ```bash
 Task: "Add red tests for indexed collection behavior and out-of-range access in tests/TuiVision.Controls.Tests/TStringListTests.cs"
-Task: "Add red tests for clamp behavior, page/arrow steps, and bounds handling in tests/TuiVision.Controls.Tests/TScrollBarTests.cs"
-Task: "Add red tests for coordinated delta updates and scrollbar synchronization in tests/TuiVision.Controls.Tests/TScrollerTests.cs"
-Task: "Add red tests for TopItem/FocusedItem coordination and optional scrollbar usage in tests/TuiVision.Controls.Tests/TListViewerTests.cs"
-Task: "Add red tests for empty-list rendering, click selection, keyboard navigation, and double-click confirmation without a separate command in tests/TuiVision.Controls.Tests/TListBoxTests.cs"
+Task: "Add red tests for clamp behavior, page/arrow steps, and scrollbar bounds in tests/TuiVision.Controls.Tests/TScrollBarTests.cs"
+Task: "Add red tests for non-focusable multi-line text rendering in tests/TuiVision.Controls.Tests/TStaticTextTests.cs"
 ```
 
-## Parallel Example: User Story 5
+## Parallel Example: Phase 4
 
 ```bash
 Task: "Add red tests for abstract cluster navigation, selection tracking, and disabled behavior in tests/TuiVision.Controls.Tests/TClusterTests.cs"
 Task: "Add red tests for checkbox bitmask toggling in tests/TuiVision.Controls.Tests/TCheckBoxesTests.cs"
-Task: "Add red tests for radio-button exclusivity and reselection rules in tests/TuiVision.Controls.Tests/TRadioButtonsTests.cs"
+Task: "Add red tests for radio-button exclusivity, single-option rendering, and reselection rules in tests/TuiVision.Controls.Tests/TRadioButtonsTests.cs"
+```
+
+## Parallel Example: Phase 8
+
+```bash
+Task: "Add cross-cutting negative/render coverage for visual states and remaining edge cases in tests/TuiVision.Controls.Tests/ControlCoverageSweepTests.cs"
+Task: "Run and record dotnet format --verify-no-changes plus docfx docfx.json validation against docfx.json"
+Task: "Run and record the example smoke-test project validation against tests/TuiVision.Examples.SmokeTests/TuiVision.Examples.SmokeTests.csproj"
 ```
 
 ---
 
 ## Implementation Strategy
 
-### MVP First (User Story 1 Only)
+### Plan-Aligned Delivery
 
-1. Complete Phase 1: Setup.
-2. Complete Phase 2: Foundational.
-3. Complete Phase 3: User Story 1.
-4. Validate the dialog MVP independently before continuing.
+1. Complete Setup and Foundational once.
+2. Follow the technical class sequence from [plan.md](plan.md): base classes → selection/labels → lists → input controls → dialog coordinator.
+3. Use the story labels to verify that each spec story remains covered even though execution order follows class dependencies.
 
-### Incremental Delivery
+### End-User Validation Order
 
-1. Finish Setup + Foundational once.
-2. Deliver US1 as the first runnable dialog increment.
-3. Add US2 and US3 for text and list interaction.
-4. Add US4, US5, and US6 as focused capability increments.
-5. Finish with Phase 9 coverage/documentation validation.
+1. Validate the list workflow after Phase 5.
+2. Validate button and input behavior after Phase 6.
+3. Validate the full dialog workflow after Phase 7.
+4. Close mandatory build, coverage, formatting, docfx, and smoke-test gates in Phase 8.
 
-### Parallel Team Strategy
+### Team Strategy
 
-1. One developer closes Phase 1 and Phase 2.
-2. After Foundation:
-   - Developer A: US1 / later US4
-   - Developer B: US2 / US6
-   - Developer C: US3
-   - Developer D: US5
-3. Integrate all stories, then run Phase 9 together.
+1. One developer completes Phase 1 and Phase 2.
+2. After that:
+   - Developer A: Phase 3 base classes
+   - Developer B: Phase 4 selection controls
+   - Developer C: Phase 5 list controls
+3. Merge into Phase 6 and Phase 7 sequentially to preserve the plan's dependency order.
 
 ---
 
 ## Notes
 
 - All tasks follow the required checklist format.
-- Tests are intentionally first-class because the spec and constitution require MSTest and visible TDD sequencing.
-- `Newtonsoft.Json` must not be introduced while implementing this feature; if any helper/test JSON becomes necessary, it must use `System.Text.Json`.
-- `TDirListBox`, `TFileDialog`, and other file/editor-layer controls remain out of scope for this feature.
+- The original Turbo Vision files under `tv203s/` remain reference-only and must not be modified.
+- The Constitution's mandatory quality gates are represented explicitly in Phase 8.
