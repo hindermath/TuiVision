@@ -19,14 +19,24 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: TShiftState
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 4
+    startLine: 11
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
+  summary: >-
+    Bitmaske für aktive Umschalttasten beim Tastaturereignis.
+
+    Die Werte entsprechen den <code>kbXxx</code>-Shift-Flags aus dem originalen Turbo-Vision-C++-Code.
+
+
+    Bit mask for active modifier keys during a keyboard event.
+
+    The values correspond to the <code>kbXxx</code> shift flags from the original Turbo Vision C++ code.
+  example: []
   syntax:
     content: >-
       [Flags]
@@ -54,14 +64,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: None
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 7
+    startLine: 15
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
+  summary: Keine Umschalttaste aktiv. / No modifier key active.
+  example: []
   syntax:
     content: None = 0
     return:
@@ -80,14 +92,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Shift
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 8
+    startLine: 18
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
+  summary: Die Shift-Taste ist gedrückt. / The Shift key is pressed.
+  example: []
   syntax:
     content: Shift = 1
     return:
@@ -106,14 +120,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Ctrl
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 9
+    startLine: 21
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
+  summary: Die Strg-Taste (Ctrl) ist gedrückt. / The Ctrl key is pressed.
+  example: []
   syntax:
     content: Ctrl = 2
     return:
@@ -132,14 +148,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Alt
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 10
+    startLine: 24
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
+  summary: Die Alt-Taste ist gedrückt. / The Alt key is pressed.
+  example: []
   syntax:
     content: Alt = 4
     return:

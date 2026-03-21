@@ -19,15 +19,19 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: TMouseEvent
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 38
+    startLine: 90
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Mouse event payload.
+  summary: >-
+    Nutzdaten eines Mausereignisses.
+
+
+    Payload of a mouse event.
   example: []
   syntax:
     content: 'public readonly record struct TMouseEvent : IEquatable<TMouseEvent>'
@@ -55,25 +59,41 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 38
+    startLine: 90
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Mouse event payload.
+  summary: >-
+    Nutzdaten eines Mausereignisses.
+
+
+    Payload of a mouse event.
   example: []
   syntax:
     content: public TMouseEvent(TMouseButtons Buttons, bool DoubleClick, TPoint Where)
     parameters:
     - id: Buttons
       type: TuiVision.Core.TMouseButtons
+      description: >-
+        Die gedrückten Maustasten.
+
+        The pressed mouse buttons.
     - id: DoubleClick
       type: System.Boolean
+      description: >-
+        Gibt an, ob ein Doppelklick erkannt wurde.
+
+        Indicates whether a double-click was detected.
     - id: Where
       type: TuiVision.Core.TPoint
+      description: >-
+        Die Mausposition in globalen Bildschirmkoordinaten.
+
+        The mouse position in global screen coordinates.
     content.vb: Public Sub New(Buttons As TMouseButtons, DoubleClick As Boolean, Where As TPoint)
   overload: TuiVision.Core.TMouseEvent.#ctor*
   nameWithType.vb: TMouseEvent.New(TMouseButtons, Boolean, TPoint)
@@ -93,14 +113,19 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Buttons
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 38
+    startLine: 90
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Die gedrückten Maustasten.
+
+    The pressed mouse buttons.
+  example: []
   syntax:
     content: public TMouseButtons Buttons { get; init; }
     parameters: []
@@ -122,14 +147,19 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: DoubleClick
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 38
+    startLine: 90
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Gibt an, ob ein Doppelklick erkannt wurde.
+
+    Indicates whether a double-click was detected.
+  example: []
   syntax:
     content: public bool DoubleClick { get; init; }
     parameters: []
@@ -151,14 +181,19 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Where
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 38
+    startLine: 90
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Die Mausposition in globalen Bildschirmkoordinaten.
+
+    The mouse position in global screen coordinates.
+  example: []
   syntax:
     content: public TPoint Where { get; init; }
     parameters: []

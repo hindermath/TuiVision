@@ -21,15 +21,19 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: TMouseButtons
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 24
+    startLine: 51
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Mouse button flags.
+  summary: >-
+    Bitmaske für gedrückte Maustasten.
+
+
+    Bit mask for pressed mouse buttons.
   example: []
   syntax:
     content: >-
@@ -58,14 +62,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: None
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 27
+    startLine: 55
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Keine Taste gedrückt. / No button pressed.
+  example: []
   syntax:
     content: None = 0
     return:
@@ -84,14 +90,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Left
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 28
+    startLine: 58
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Linke Maustaste. / Left mouse button.
+  example: []
   syntax:
     content: Left = 1
     return:
@@ -110,14 +118,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Middle
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 29
+    startLine: 61
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Mittlere Maustaste (Mausrad). / Middle mouse button (scroll wheel).
+  example: []
   syntax:
     content: Middle = 2
     return:
@@ -136,14 +146,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Right
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 30
+    startLine: 64
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Rechte Maustaste. / Right mouse button.
+  example: []
   syntax:
     content: Right = 4
     return:
@@ -162,14 +174,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Button4
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 31
+    startLine: 67
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Vierte Maustaste. / Fourth mouse button.
+  example: []
   syntax:
     content: Button4 = 8
     return:
@@ -188,14 +202,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Button5
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 32
+    startLine: 70
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Fünfte Maustaste. / Fifth mouse button.
+  example: []
   syntax:
     content: Button5 = 16
     return:

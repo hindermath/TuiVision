@@ -32,15 +32,27 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: TRect
     path: src/TuiVision.Core/TRect.cs
-    startLine: 5
+    startLine: 11
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Rectangular region represented as top-left inclusive and bottom-right exclusive.
+  summary: >-
+    Rechteckiger Bereich, beschrieben durch eine inklusive obere linke Ecke (<xref href="TuiVision.Core.TRect.A" data-throw-if-not-resolved="false"></xref>)
+
+    und eine exklusive untere rechte Ecke (<xref href="TuiVision.Core.TRect.B" data-throw-if-not-resolved="false"></xref>).
+
+    Dieses Koordinatensystem entspricht dem Original von Turbo Vision.
+
+
+    Rectangular region described by an inclusive top-left corner (<xref href="TuiVision.Core.TRect.A" data-throw-if-not-resolved="false"></xref>)
+
+    and an exclusive bottom-right corner (<xref href="TuiVision.Core.TRect.B" data-throw-if-not-resolved="false"></xref>).
+
+    This coordinate system matches the original Turbo Vision convention.
   example: []
   syntax:
     content: 'public struct TRect : IEquatable<TRect>'
@@ -66,25 +78,35 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TRect.cs
-    startLine: 7
+    startLine: 22
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Erstellt ein neues Rechteck aus vier Integer-Koordinaten.
+
+
+    Creates a new rectangle from four integer coordinates.
+  example: []
   syntax:
     content: public TRect(int ax, int ay, int bx, int by)
     parameters:
     - id: ax
       type: System.Int32
+      description: X-Koordinate der oberen linken Ecke (inklusiv). / X coordinate of the top-left corner (inclusive).
     - id: ay
       type: System.Int32
+      description: Y-Koordinate der oberen linken Ecke (inklusiv). / Y coordinate of the top-left corner (inclusive).
     - id: bx
       type: System.Int32
+      description: X-Koordinate der unteren rechten Ecke (exklusiv). / X coordinate of the bottom-right corner (exclusive).
     - id: by
       type: System.Int32
+      description: Y-Koordinate der unteren rechten Ecke (exklusiv). / Y coordinate of the bottom-right corner (exclusive).
     content.vb: Public Sub New(ax As Integer, ay As Integer, bx As Integer, by As Integer)
   overload: TuiVision.Core.TRect.#ctor*
   nameWithType.vb: TRect.New(Integer, Integer, Integer, Integer)
@@ -104,21 +126,29 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TRect.cs
-    startLine: 12
+    startLine: 34
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Erstellt ein neues Rechteck aus zwei Punkten.
+
+
+    Creates a new rectangle from two points.
+  example: []
   syntax:
     content: public TRect(TPoint a, TPoint b)
     parameters:
     - id: a
       type: TuiVision.Core.TPoint
+      description: Die inklusive obere linke Ecke. / The inclusive top-left corner.
     - id: b
       type: TuiVision.Core.TPoint
+      description: Die exklusive untere rechte Ecke. / The exclusive bottom-right corner.
     content.vb: Public Sub New(a As TPoint, b As TPoint)
   overload: TuiVision.Core.TRect.#ctor*
   nameWithType.vb: TRect.New(TPoint, TPoint)
@@ -138,14 +168,20 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: A
     path: src/TuiVision.Core/TRect.cs
-    startLine: 18
+    startLine: 45
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Die inklusive obere linke Ecke des Rechtecks.
+
+
+    The inclusive top-left corner of the rectangle.
+  example: []
   syntax:
     content: public TPoint A { readonly get; set; }
     parameters: []
@@ -167,14 +203,20 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: B
     path: src/TuiVision.Core/TRect.cs
-    startLine: 20
+    startLine: 52
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Die exklusive untere rechte Ecke des Rechtecks.
+
+
+    The exclusive bottom-right corner of the rectangle.
+  example: []
   syntax:
     content: public TPoint B { readonly get; set; }
     parameters: []
@@ -196,14 +238,20 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Width
     path: src/TuiVision.Core/TRect.cs
-    startLine: 22
+    startLine: 59
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Die Breite des Rechtecks in Zeichen (Anzahl der Spalten).
+
+
+    The width of the rectangle in characters (number of columns).
+  example: []
   syntax:
     content: public int Width { get; }
     parameters: []
@@ -225,14 +273,20 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Height
     path: src/TuiVision.Core/TRect.cs
-    startLine: 24
+    startLine: 66
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Die Höhe des Rechtecks in Zeichen (Anzahl der Zeilen).
+
+
+    The height of the rectangle in characters (number of rows).
+  example: []
   syntax:
     content: public int Height { get; }
     parameters: []
@@ -254,18 +308,28 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: IsEmpty
     path: src/TuiVision.Core/TRect.cs
-    startLine: 26
+    startLine: 77
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Gibt an, ob das Rechteck leer ist (Breite oder Höhe ist null oder negativ).
+
+
+    Returns whether the rectangle is empty (width or height is zero or negative).
+  example: []
   syntax:
     content: public readonly bool IsEmpty()
     return:
       type: System.Boolean
+      description: >-
+        <code>true</code>, wenn das Rechteck leer ist; andernfalls <code>false</code>.
+
+        <code>true</code> if the rectangle is empty; otherwise <code>false</code>.
     content.vb: Public Function IsEmpty() As Boolean
   overload: TuiVision.Core.TRect.IsEmpty*
 - uid: TuiVision.Core.TRect.Contains(TuiVision.Core.TPoint)
@@ -282,21 +346,36 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Contains
     path: src/TuiVision.Core/TRect.cs
-    startLine: 28
+    startLine: 91
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Prüft, ob ein Punkt innerhalb dieses Rechtecks liegt.
+
+    Die obere linke Ecke ist inklusiv, die untere rechte Ecke ist exklusiv.
+
+
+    Checks whether a point lies inside this rectangle.
+
+    The top-left corner is inclusive; the bottom-right corner is exclusive.
+  example: []
   syntax:
     content: public readonly bool Contains(TPoint point)
     parameters:
     - id: point
       type: TuiVision.Core.TPoint
+      description: Der zu prüfende Punkt. / The point to check.
     return:
       type: System.Boolean
+      description: >-
+        <code>true</code>, wenn der Punkt innerhalb des Rechtecks liegt; andernfalls <code>false</code>.
+
+        <code>true</code> if the point is inside the rectangle; otherwise <code>false</code>.
     content.vb: Public Function Contains(point As TPoint) As Boolean
   overload: TuiVision.Core.TRect.Contains*
 - uid: TuiVision.Core.TRect.Move(System.Int32,System.Int32)
@@ -313,21 +392,29 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Move
     path: src/TuiVision.Core/TRect.cs
-    startLine: 32
+    startLine: 102
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Verschiebt das Rechteck um den angegebenen Versatz.
+
+
+    Moves the rectangle by the given offset.
+  example: []
   syntax:
     content: public void Move(int deltaX, int deltaY)
     parameters:
     - id: deltaX
       type: System.Int32
+      description: Der horizontale Versatz. / The horizontal offset.
     - id: deltaY
       type: System.Int32
+      description: Der vertikale Versatz. / The vertical offset.
     content.vb: Public Sub Move(deltaX As Integer, deltaY As Integer)
   overload: TuiVision.Core.TRect.Move*
   nameWithType.vb: TRect.Move(Integer, Integer)
@@ -347,21 +434,33 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Grow
     path: src/TuiVision.Core/TRect.cs
-    startLine: 38
+    startLine: 117
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Vergrößert oder verkleinert das Rechteck gleichmäßig an allen Seiten.
+
+    Ein positiver Wert vergrößert, ein negativer Wert verkleinert das Rechteck.
+
+
+    Expands or shrinks the rectangle equally on all sides.
+
+    A positive value expands; a negative value shrinks the rectangle.
+  example: []
   syntax:
     content: public void Grow(int deltaX, int deltaY)
     parameters:
     - id: deltaX
       type: System.Int32
+      description: Die horizontale Änderung pro Seite. / The horizontal change per side.
     - id: deltaY
       type: System.Int32
+      description: Die vertikale Änderung pro Seite. / The vertical change per side.
     content.vb: Public Sub Grow(deltaX As Integer, deltaY As Integer)
   overload: TuiVision.Core.TRect.Grow*
   nameWithType.vb: TRect.Grow(Integer, Integer)
@@ -381,19 +480,30 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Intersect
     path: src/TuiVision.Core/TRect.cs
-    startLine: 44
+    startLine: 131
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Schneidet dieses Rechteck mit einem anderen und speichert den Schnittbereich.
+
+    Falls die Rechtecke sich nicht überschneiden, wird das Ergebnis leer (siehe <xref href="TuiVision.Core.TRect.IsEmpty" data-throw-if-not-resolved="false"></xref>).
+
+
+    Intersects this rectangle with another and stores the overlapping region.
+
+    If the rectangles do not overlap, the result is empty (see <xref href="TuiVision.Core.TRect.IsEmpty" data-throw-if-not-resolved="false"></xref>).
+  example: []
   syntax:
     content: public void Intersect(TRect other)
     parameters:
     - id: other
       type: TuiVision.Core.TRect
+      description: Das Rechteck, mit dem der Schnitt berechnet wird. / The rectangle to intersect with.
     content.vb: Public Sub Intersect(other As TRect)
   overload: TuiVision.Core.TRect.Intersect*
 - uid: TuiVision.Core.TRect.Union(TuiVision.Core.TRect)
@@ -410,19 +520,26 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Union
     path: src/TuiVision.Core/TRect.cs
-    startLine: 50
+    startLine: 143
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Berechnet das umschließende Rechteck (Vereinigung) dieses und eines anderen Rechtecks.
+
+
+    Computes the bounding rectangle (union) of this and another rectangle.
+  example: []
   syntax:
     content: public void Union(TRect other)
     parameters:
     - id: other
       type: TuiVision.Core.TRect
+      description: Das Rechteck, mit dem die Vereinigung berechnet wird. / The rectangle to unite with.
     content.vb: Public Sub Union(other As TRect)
   overload: TuiVision.Core.TRect.Union*
 - uid: TuiVision.Core.TRect.op_Equality(TuiVision.Core.TRect,TuiVision.Core.TRect)
@@ -439,23 +556,35 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Equality
     path: src/TuiVision.Core/TRect.cs
-    startLine: 56
+    startLine: 160
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Prüft, ob zwei Rechtecke gleich sind.
+
+
+    Checks whether two rectangles are equal.
+  example: []
   syntax:
     content: public static bool operator ==(TRect left, TRect right)
     parameters:
     - id: left
       type: TuiVision.Core.TRect
+      description: Das linke Rechteck. / The left rectangle.
     - id: right
       type: TuiVision.Core.TRect
+      description: Das rechte Rechteck. / The right rectangle.
     return:
       type: System.Boolean
+      description: >-
+        <code>true</code>, wenn beide Rechtecke gleich sind; andernfalls <code>false</code>.
+
+        <code>true</code> if both rectangles are equal; otherwise <code>false</code>.
     content.vb: Public Shared Operator =(left As TRect, right As TRect) As Boolean
   overload: TuiVision.Core.TRect.op_Equality*
   nameWithType.vb: TRect.=(TRect, TRect)
@@ -475,23 +604,35 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Inequality
     path: src/TuiVision.Core/TRect.cs
-    startLine: 58
+    startLine: 173
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Prüft, ob zwei Rechtecke ungleich sind.
+
+
+    Checks whether two rectangles are not equal.
+  example: []
   syntax:
     content: public static bool operator !=(TRect left, TRect right)
     parameters:
     - id: left
       type: TuiVision.Core.TRect
+      description: Das linke Rechteck. / The left rectangle.
     - id: right
       type: TuiVision.Core.TRect
+      description: Das rechte Rechteck. / The right rectangle.
     return:
       type: System.Boolean
+      description: >-
+        <code>true</code>, wenn die Rechtecke ungleich sind; andernfalls <code>false</code>.
+
+        <code>true</code> if the rectangles are not equal; otherwise <code>false</code>.
     content.vb: Public Shared Operator <>(left As TRect, right As TRect) As Boolean
   overload: TuiVision.Core.TRect.op_Inequality*
   nameWithType.vb: TRect.<>(TRect, TRect)
@@ -511,25 +652,32 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Equals
     path: src/TuiVision.Core/TRect.cs
-    startLine: 60
+    startLine: 185
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Indicates whether the current object is equal to another object of the same type.
+  summary: >-
+    Vergleicht dieses Rechteck mit einem anderen <xref href="TuiVision.Core.TRect" data-throw-if-not-resolved="false"></xref>.
+
+
+    Compares this rectangle to another <xref href="TuiVision.Core.TRect" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
     content: public readonly bool Equals(TRect other)
     parameters:
     - id: other
       type: TuiVision.Core.TRect
-      description: An object to compare with this object.
+      description: Das Vergleichsrechteck. / The rectangle to compare with.
     return:
       type: System.Boolean
-      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+      description: >-
+        <code>true</code>, wenn beide Eckpunkte übereinstimmen; andernfalls <code>false</code>.
+
+        <code>true</code> if both corner points match; otherwise <code>false</code>.
     content.vb: Public Function Equals(other As TRect) As Boolean
   overload: TuiVision.Core.TRect.Equals*
   implements:
@@ -548,25 +696,32 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Equals
     path: src/TuiVision.Core/TRect.cs
-    startLine: 62
+    startLine: 197
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Indicates whether this instance and a specified object are equal.
+  summary: >-
+    Vergleicht dieses Rechteck mit einem beliebigen Objekt.
+
+
+    Compares this rectangle to an arbitrary object.
   example: []
   syntax:
     content: public override readonly bool Equals(object? obj)
     parameters:
     - id: obj
       type: System.Object
-      description: The object to compare with the current instance.
+      description: Das zu vergleichende Objekt. / The object to compare with.
     return:
       type: System.Boolean
-      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+      description: >-
+        <code>true</code>, wenn <code class="paramref">obj</code> ein <xref href="TuiVision.Core.TRect" data-throw-if-not-resolved="false"></xref> mit denselben Eckpunkten ist.
+
+        <code>true</code> if <code class="paramref">obj</code> is a <xref href="TuiVision.Core.TRect" data-throw-if-not-resolved="false"></xref> with the same corner points.
     content.vb: Public Overrides Function Equals(obj As Object) As Boolean
   overridden: System.ValueType.Equals(System.Object)
   overload: TuiVision.Core.TRect.Equals*
@@ -587,25 +742,44 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: GetHashCode
     path: src/TuiVision.Core/TRect.cs
-    startLine: 64
+    startLine: 208
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Returns the hash code for this instance.
+  summary: >-
+    Berechnet den Hash-Code für dieses Rechteck.
+
+
+    Computes the hash code for this rectangle.
   example: []
   syntax:
     content: public override readonly int GetHashCode()
     return:
       type: System.Int32
-      description: A 32-bit signed integer that is the hash code for this instance.
+      description: >-
+        Ein Hash-Code, der aus den Eckpunkten <xref href="TuiVision.Core.TRect.A" data-throw-if-not-resolved="false"></xref> und <xref href="TuiVision.Core.TRect.B" data-throw-if-not-resolved="false"></xref> kombiniert wird.
+
+        A hash code combined from the corner points <xref href="TuiVision.Core.TRect.A" data-throw-if-not-resolved="false"></xref> and <xref href="TuiVision.Core.TRect.B" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Overrides Function GetHashCode() As Integer
   overridden: System.ValueType.GetHashCode
   overload: TuiVision.Core.TRect.GetHashCode*
 references:
+- uid: TuiVision.Core.TRect.A
+  commentId: P:TuiVision.Core.TRect.A
+  href: TuiVision.Core.TRect.html#TuiVision_Core_TRect_A
+  name: A
+  nameWithType: TRect.A
+  fullName: TuiVision.Core.TRect.A
+- uid: TuiVision.Core.TRect.B
+  commentId: P:TuiVision.Core.TRect.B
+  href: TuiVision.Core.TRect.html#TuiVision_Core_TRect_B
+  name: B
+  nameWithType: TRect.B
+  fullName: TuiVision.Core.TRect.B
 - uid: TuiVision.Core
   commentId: N:TuiVision.Core
   href: TuiVision.html
@@ -937,6 +1111,24 @@ references:
   name: Grow
   nameWithType: TRect.Grow
   fullName: TuiVision.Core.TRect.Grow
+- uid: TuiVision.Core.TRect.IsEmpty
+  commentId: M:TuiVision.Core.TRect.IsEmpty
+  href: TuiVision.Core.TRect.html#TuiVision_Core_TRect_IsEmpty
+  name: IsEmpty()
+  nameWithType: TRect.IsEmpty()
+  fullName: TuiVision.Core.TRect.IsEmpty()
+  spec.csharp:
+  - uid: TuiVision.Core.TRect.IsEmpty
+    name: IsEmpty
+    href: TuiVision.Core.TRect.html#TuiVision_Core_TRect_IsEmpty
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Core.TRect.IsEmpty
+    name: IsEmpty
+    href: TuiVision.Core.TRect.html#TuiVision_Core_TRect_IsEmpty
+  - name: (
+  - name: )
 - uid: TuiVision.Core.TRect.Intersect*
   commentId: Overload:TuiVision.Core.TRect.Intersect
   href: TuiVision.Core.TRect.html#TuiVision_Core_TRect_Intersect_TuiVision_Core_TRect_

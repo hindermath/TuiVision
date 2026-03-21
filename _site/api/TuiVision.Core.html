@@ -95,41 +95,81 @@
 Classes
 </h3>
     <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Core.TConsoleBuffer.html">TConsoleBuffer</a></dt>
+      <dd><p>Veränderbarer zweidimensionaler Zeichenpuffer mit Clipping-Hilfsmethoden.
+Jede Zelle des Puffers enthält ein Zeichen sowie Vordergrund- und Hintergrundfarbe.
+Der Puffer ist die zentrale Datenstruktur für das Rendering aller <code>TView</code>-Unterklassen.</p>
+<p>Mutable two-dimensional character buffer with clipping helper methods.
+Each cell of the buffer contains a character as well as foreground and background color.
+The buffer is the central data structure for rendering all <code>TView</code> subclasses.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a></dt>
-      <dd><p>Mutable event object that carries one payload channel (mouse, key, message).</p>
+      <dd><p>Veränderbares Ereignisobjekt, das genau einen Nutzdatenkanal trägt: Maus, Tastatur oder Nachricht.
+Statische Factory-Methoden erstellen fertig initialisierte Ereignisse; der direkte
+Aufruf des Konstruktors ist nicht möglich.</p>
+<p>Mutable event object that carries exactly one payload channel: mouse, keyboard, or message.
+Static factory methods create fully initialized events; direct constructor calls are not possible.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Core.TObject.html">TObject</a></dt>
-      <dd><p>Base object for ported Turbo Vision types.</p>
+      <dd><p>Basisklasse für alle portierten Turbo-Vision-Typen.
+Sie legt den grundlegenden Lebenszyklus-Vertrag fest: explizites Herunterfahren
+und optionale Ressourcenfreigabe über <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a>.</p>
+<p>Base class for all ported Turbo Vision types.
+It defines the fundamental lifecycle contract: explicit shutdown
+and optional resource release via <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a>.</p>
 </dd>
     </dl>
     <h3 id="structs">
 Structs
 </h3>
     <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Core.TConsoleCell.html">TConsoleCell</a></dt>
+      <dd><p>Zeichenzelle des verwalteten Konsolentreibers mit Zeichen, Vordergrund- und Hintergrundfarbe.
+Eine Zelle repräsentiert genau ein sichtbares Zeichen an einer Bildschirmposition.</p>
+<p>Character cell of the managed console driver, carrying a glyph, foreground, and background color.
+A cell represents exactly one visible character at a screen position.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Core.TKeyDownEvent.html">TKeyDownEvent</a></dt>
-      <dd><p>Key-down payload.</p>
+      <dd><p>Nutzdaten eines Tastenereignisses.</p>
+<p>Payload of a key-down event.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Core.TMessageEvent.html">TMessageEvent</a></dt>
-      <dd><p>Command/broadcast payload.</p>
+      <dd><p>Nutzdaten einer Befehls- oder Rundfunknachricht.</p>
+<p>Payload of a command or broadcast message.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Core.TMouseEvent.html">TMouseEvent</a></dt>
-      <dd><p>Mouse event payload.</p>
+      <dd><p>Nutzdaten eines Mausereignisses.</p>
+<p>Payload of a mouse event.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-      <dd><p>2D point type matching Turbo Vision coordinate semantics.</p>
+      <dd><p>Zweidimensionaler Punkt, der die Koordinatensemantik von Turbo Vision abbildet.
+Die Felder <a class="xref" href="TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_X">X</a> und <a class="xref" href="TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_Y">Y</a> entsprechen den originalen
+C++-Feldern <code>x</code> und <code>y</code> in <code>TPoint</code>.</p>
+<p>Two-dimensional point that mirrors the coordinate semantics of Turbo Vision.
+The fields <a class="xref" href="TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_X">X</a> and <a class="xref" href="TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_Y">Y</a> correspond to the original
+C++ fields <code>x</code> and <code>y</code> in <code>TPoint</code>.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Core.TRect.html">TRect</a></dt>
-      <dd><p>Rectangular region represented as top-left inclusive and bottom-right exclusive.</p>
+      <dd><p>Rechteckiger Bereich, beschrieben durch eine inklusive obere linke Ecke (<a class="xref" href="TuiVision.Core.TRect.html#TuiVision_Core_TRect_A">A</a>)
+und eine exklusive untere rechte Ecke (<a class="xref" href="TuiVision.Core.TRect.html#TuiVision_Core_TRect_B">B</a>).
+Dieses Koordinatensystem entspricht dem Original von Turbo Vision.</p>
+<p>Rectangular region described by an inclusive top-left corner (<a class="xref" href="TuiVision.Core.TRect.html#TuiVision_Core_TRect_A">A</a>)
+and an exclusive bottom-right corner (<a class="xref" href="TuiVision.Core.TRect.html#TuiVision_Core_TRect_B">B</a>).
+This coordinate system matches the original Turbo Vision convention.</p>
 </dd>
     </dl>
     <h3 id="enums">
@@ -137,12 +177,16 @@ Enums
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Core.TEventKind.html">TEventKind</a></dt>
-      <dd><p>Event kind values ported from Turbo Vision event codes.</p>
+      <dd><p>Ereignistypen aus dem Turbo-Vision-Eventsystem.
+Die Werte entsprechen den originalen <code>evXxx</code>-Konstanten aus dem C++-Quellcode.</p>
+<p>Event type values from the Turbo Vision event system.
+The values correspond to the original <code>evXxx</code> constants from the C++ source code.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Core.TMouseButtons.html">TMouseButtons</a></dt>
-      <dd><p>Mouse button flags.</p>
+      <dd><p>Bitmaske für gedrückte Maustasten.</p>
+<p>Bit mask for pressed mouse buttons.</p>
 </dd>
     </dl>
 

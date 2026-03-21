@@ -25,15 +25,25 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: TEvent
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 53
+    startLine: 142
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Mutable event object that carries one payload channel (mouse, key, message).
+  summary: >-
+    Veränderbares Ereignisobjekt, das genau einen Nutzdatenkanal trägt: Maus, Tastatur oder Nachricht.
+
+    Statische Factory-Methoden erstellen fertig initialisierte Ereignisse; der direkte
+
+    Aufruf des Konstruktors ist nicht möglich.
+
+
+    Mutable event object that carries exactly one payload channel: mouse, keyboard, or message.
+
+    Static factory methods create fully initialized events; direct constructor calls are not possible.
   example: []
   syntax:
     content: public sealed class TEvent
@@ -61,14 +71,20 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: What
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 61
+    startLine: 164
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Der Typ dieses Ereignisses. Bestimmt, welcher Nutzdatenkanal gültig ist.
+
+
+    The type of this event. Determines which payload channel is valid.
+  example: []
   syntax:
     content: public TEventKind What { get; }
     parameters: []
@@ -90,14 +106,20 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Mouse
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 63
+    startLine: 171
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Die Maus-Nutzdaten. Nur gültig, wenn <xref href="TuiVision.Core.TEvent.What" data-throw-if-not-resolved="false"></xref> ein Mausereignis-Flag enthält.
+
+
+    The mouse payload. Valid only when <xref href="TuiVision.Core.TEvent.What" data-throw-if-not-resolved="false"></xref> contains a mouse event flag.
+  example: []
   syntax:
     content: public TMouseEvent Mouse { get; }
     parameters: []
@@ -119,14 +141,20 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: KeyDown
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 65
+    startLine: 178
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Die Tastatur-Nutzdaten. Nur gültig, wenn <xref href="TuiVision.Core.TEvent.What" data-throw-if-not-resolved="false"></xref> gleich <xref href="TuiVision.Core.TEventKind.KeyDown" data-throw-if-not-resolved="false"></xref> ist.
+
+
+    The keyboard payload. Valid only when <xref href="TuiVision.Core.TEvent.What" data-throw-if-not-resolved="false"></xref> equals <xref href="TuiVision.Core.TEventKind.KeyDown" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public TKeyDownEvent KeyDown { get; }
     parameters: []
@@ -148,14 +176,20 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Message
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 67
+    startLine: 185
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Die Nachrichten-Nutzdaten. Nur gültig, wenn <xref href="TuiVision.Core.TEvent.What" data-throw-if-not-resolved="false"></xref> ein Nachrichten-Flag enthält.
+
+
+    The message payload. Valid only when <xref href="TuiVision.Core.TEvent.What" data-throw-if-not-resolved="false"></xref> contains a message flag.
+  example: []
   syntax:
     content: public TMessageEvent Message { get; }
     parameters: []
@@ -177,29 +211,53 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: CreateMouse
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 69
+    startLine: 207
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Erstellt ein Mausereignis mit den angegebenen Nutzdaten.
+
+
+    Creates a mouse event with the specified payload.
+  example: []
   syntax:
     content: public static TEvent CreateMouse(TEventKind kind, TMouseButtons buttons, bool doubleClick, TPoint where)
     parameters:
     - id: kind
       type: TuiVision.Core.TEventKind
+      description: >-
+        Der Mausereignistyp. Muss ein Maus-Flag enthalten (siehe <xref href="TuiVision.Core.TEventKind.Mouse" data-throw-if-not-resolved="false"></xref>).
+
+        The mouse event type. Must contain a mouse flag (see <xref href="TuiVision.Core.TEventKind.Mouse" data-throw-if-not-resolved="false"></xref>).
     - id: buttons
       type: TuiVision.Core.TMouseButtons
+      description: Die gedrückten Maustasten. / The pressed mouse buttons.
     - id: doubleClick
       type: System.Boolean
+      description: Gibt an, ob ein Doppelklick vorliegt. / Indicates whether this is a double-click.
     - id: where
       type: TuiVision.Core.TPoint
+      description: Die Mausposition in globalen Koordinaten. / The mouse position in global coordinates.
     return:
       type: TuiVision.Core.TEvent
+      description: >-
+        Ein neues <xref href="TuiVision.Core.TEvent" data-throw-if-not-resolved="false"></xref> mit den angegebenen Maus-Nutzdaten.
+
+        A new <xref href="TuiVision.Core.TEvent" data-throw-if-not-resolved="false"></xref> with the specified mouse payload.
     content.vb: Public Shared Function CreateMouse(kind As TEventKind, buttons As TMouseButtons, doubleClick As Boolean, where As TPoint) As TEvent
   overload: TuiVision.Core.TEvent.CreateMouse*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: >-
+      Wird ausgelöst, wenn <code class="paramref">kind</code> kein Mausereignis-Flag enthält.
+
+      Thrown when <code class="paramref">kind</code> does not contain a mouse event flag.
   nameWithType.vb: TEvent.CreateMouse(TEventKind, TMouseButtons, Boolean, TPoint)
   fullName.vb: TuiVision.Core.TEvent.CreateMouse(TuiVision.Core.TEventKind, TuiVision.Core.TMouseButtons, Boolean, TuiVision.Core.TPoint)
   name.vb: CreateMouse(TEventKind, TMouseButtons, Boolean, TPoint)
@@ -217,21 +275,32 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: CreateKeyDown
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 83
+    startLine: 231
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Erstellt ein Tastaturereignis aus den angegebenen Nutzdaten.
+
+
+    Creates a keyboard event from the specified payload.
+  example: []
   syntax:
     content: public static TEvent CreateKeyDown(TKeyDownEvent keyDown)
     parameters:
     - id: keyDown
       type: TuiVision.Core.TKeyDownEvent
+      description: Die Tastatur-Nutzdaten. / The keyboard payload.
     return:
       type: TuiVision.Core.TEvent
+      description: >-
+        Ein neues <xref href="TuiVision.Core.TEvent" data-throw-if-not-resolved="false"></xref> vom Typ <xref href="TuiVision.Core.TEventKind.KeyDown" data-throw-if-not-resolved="false"></xref>.
+
+        A new <xref href="TuiVision.Core.TEvent" data-throw-if-not-resolved="false"></xref> of type <xref href="TuiVision.Core.TEventKind.KeyDown" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Shared Function CreateKeyDown(keyDown As TKeyDownEvent) As TEvent
   overload: TuiVision.Core.TEvent.CreateKeyDown*
 - uid: TuiVision.Core.TEvent.CreateCommand(System.UInt16,System.Object)
@@ -248,23 +317,35 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: CreateCommand
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 90
+    startLine: 249
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Erstellt ein Befehlsereignis für ein direktes Ziel.
+
+
+    Creates a command event targeting a specific view.
+  example: []
   syntax:
     content: public static TEvent CreateCommand(ushort command, object? info = null)
     parameters:
     - id: command
       type: System.UInt16
+      description: Der Befehlscode. / The command code.
     - id: info
       type: System.Object
+      description: Optionale Zusatzinformation. / Optional additional information.
     return:
       type: TuiVision.Core.TEvent
+      description: >-
+        Ein neues <xref href="TuiVision.Core.TEvent" data-throw-if-not-resolved="false"></xref> vom Typ <xref href="TuiVision.Core.TEventKind.Command" data-throw-if-not-resolved="false"></xref>.
+
+        A new <xref href="TuiVision.Core.TEvent" data-throw-if-not-resolved="false"></xref> of type <xref href="TuiVision.Core.TEventKind.Command" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Shared Function CreateCommand(command As UShort, info As Object = Nothing) As TEvent
   overload: TuiVision.Core.TEvent.CreateCommand*
   nameWithType.vb: TEvent.CreateCommand(UShort, Object)
@@ -284,23 +365,35 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: CreateBroadcast
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 97
+    startLine: 267
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Erstellt ein Rundfunkereignis, das an alle Ansichten gesendet wird.
+
+
+    Creates a broadcast event that is sent to all views.
+  example: []
   syntax:
     content: public static TEvent CreateBroadcast(ushort command, object? info = null)
     parameters:
     - id: command
       type: System.UInt16
+      description: Der Befehlscode. / The command code.
     - id: info
       type: System.Object
+      description: Optionale Zusatzinformation. / Optional additional information.
     return:
       type: TuiVision.Core.TEvent
+      description: >-
+        Ein neues <xref href="TuiVision.Core.TEvent" data-throw-if-not-resolved="false"></xref> vom Typ <xref href="TuiVision.Core.TEventKind.Broadcast" data-throw-if-not-resolved="false"></xref>.
+
+        A new <xref href="TuiVision.Core.TEvent" data-throw-if-not-resolved="false"></xref> of type <xref href="TuiVision.Core.TEventKind.Broadcast" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Shared Function CreateBroadcast(command As UShort, info As Object = Nothing) As TEvent
   overload: TuiVision.Core.TEvent.CreateBroadcast*
   nameWithType.vb: TEvent.CreateBroadcast(UShort, Object)
@@ -320,21 +413,32 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: CreateNone
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 104
+    startLine: 284
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Erstellt ein leeres Ereignis vom Typ <xref href="TuiVision.Core.TEventKind.Nothing" data-throw-if-not-resolved="false"></xref>.
+
+
+    Creates an empty event of type <xref href="TuiVision.Core.TEventKind.Nothing" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public static TEvent CreateNone(TObject? info = null)
     parameters:
     - id: info
       type: TuiVision.Core.TObject
+      description: Optionales Informationsobjekt. / Optional information object.
     return:
       type: TuiVision.Core.TEvent
+      description: >-
+        Ein neues leeres <xref href="TuiVision.Core.TEvent" data-throw-if-not-resolved="false"></xref>.
+
+        A new empty <xref href="TuiVision.Core.TEvent" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Shared Function CreateNone(info As TObject = Nothing) As TEvent
   overload: TuiVision.Core.TEvent.CreateNone*
   nameWithType.vb: TEvent.CreateNone(TObject)
@@ -354,19 +458,30 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Clear
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 111
+    startLine: 299
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Setzt dieses Ereignis auf <xref href="TuiVision.Core.TEventKind.Nothing" data-throw-if-not-resolved="false"></xref> zurück und markiert es als verarbeitet.
+
+    Diese Methode wird aufgerufen, nachdem eine Ansicht das Ereignis vollständig behandelt hat.
+
+
+    Resets this event to <xref href="TuiVision.Core.TEventKind.Nothing" data-throw-if-not-resolved="false"></xref>, marking it as handled.
+
+    This method is called after a view has fully processed the event.
+  example: []
   syntax:
     content: public void Clear(TObject? info = null)
     parameters:
     - id: info
       type: TuiVision.Core.TObject
+      description: Optionales Informationsobjekt. / Optional information object.
     content.vb: Public Sub Clear(info As TObject = Nothing)
   overload: TuiVision.Core.TEvent.Clear*
   nameWithType.vb: TEvent.Clear(TObject)
@@ -621,6 +736,12 @@ references:
   name: TEventKind
   nameWithType: TEventKind
   fullName: TuiVision.Core.TEventKind
+- uid: TuiVision.Core.TEvent.What
+  commentId: P:TuiVision.Core.TEvent.What
+  href: TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_What
+  name: What
+  nameWithType: TEvent.What
+  fullName: TuiVision.Core.TEvent.What
 - uid: TuiVision.Core.TEvent.Mouse*
   commentId: Overload:TuiVision.Core.TEvent.Mouse
   href: TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_Mouse
@@ -634,6 +755,12 @@ references:
   name: TMouseEvent
   nameWithType: TMouseEvent
   fullName: TuiVision.Core.TMouseEvent
+- uid: TuiVision.Core.TEventKind.KeyDown
+  commentId: F:TuiVision.Core.TEventKind.KeyDown
+  href: TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_KeyDown
+  name: KeyDown
+  nameWithType: TEventKind.KeyDown
+  fullName: TuiVision.Core.TEventKind.KeyDown
 - uid: TuiVision.Core.TEvent.KeyDown*
   commentId: Overload:TuiVision.Core.TEvent.KeyDown
   href: TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_KeyDown
@@ -660,6 +787,26 @@ references:
   name: TMessageEvent
   nameWithType: TMessageEvent
   fullName: TuiVision.Core.TMessageEvent
+- uid: TuiVision.Core.TEventKind.Mouse
+  commentId: F:TuiVision.Core.TEventKind.Mouse
+  href: TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Mouse
+  name: Mouse
+  nameWithType: TEventKind.Mouse
+  fullName: TuiVision.Core.TEventKind.Mouse
+- uid: TuiVision.Core.TEvent
+  commentId: T:TuiVision.Core.TEvent
+  parent: TuiVision.Core
+  href: TuiVision.Core.TEvent.html
+  name: TEvent
+  nameWithType: TEvent
+  fullName: TuiVision.Core.TEvent
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
 - uid: TuiVision.Core.TEvent.CreateMouse*
   commentId: Overload:TuiVision.Core.TEvent.CreateMouse
   href: TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_CreateMouse_TuiVision_Core_TEventKind_TuiVision_Core_TMouseButtons_System_Boolean_TuiVision_Core_TPoint_
@@ -691,19 +838,18 @@ references:
   name: TPoint
   nameWithType: TPoint
   fullName: TuiVision.Core.TPoint
-- uid: TuiVision.Core.TEvent
-  commentId: T:TuiVision.Core.TEvent
-  parent: TuiVision.Core
-  href: TuiVision.Core.TEvent.html
-  name: TEvent
-  nameWithType: TEvent
-  fullName: TuiVision.Core.TEvent
 - uid: TuiVision.Core.TEvent.CreateKeyDown*
   commentId: Overload:TuiVision.Core.TEvent.CreateKeyDown
   href: TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_CreateKeyDown_TuiVision_Core_TKeyDownEvent_
   name: CreateKeyDown
   nameWithType: TEvent.CreateKeyDown
   fullName: TuiVision.Core.TEvent.CreateKeyDown
+- uid: TuiVision.Core.TEventKind.Command
+  commentId: F:TuiVision.Core.TEventKind.Command
+  href: TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Command
+  name: Command
+  nameWithType: TEventKind.Command
+  fullName: TuiVision.Core.TEventKind.Command
 - uid: TuiVision.Core.TEvent.CreateCommand*
   commentId: Overload:TuiVision.Core.TEvent.CreateCommand
   href: TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_CreateCommand_System_UInt16_System_Object_
@@ -721,12 +867,24 @@ references:
   nameWithType.vb: UShort
   fullName.vb: UShort
   name.vb: UShort
+- uid: TuiVision.Core.TEventKind.Broadcast
+  commentId: F:TuiVision.Core.TEventKind.Broadcast
+  href: TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Broadcast
+  name: Broadcast
+  nameWithType: TEventKind.Broadcast
+  fullName: TuiVision.Core.TEventKind.Broadcast
 - uid: TuiVision.Core.TEvent.CreateBroadcast*
   commentId: Overload:TuiVision.Core.TEvent.CreateBroadcast
   href: TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_CreateBroadcast_System_UInt16_System_Object_
   name: CreateBroadcast
   nameWithType: TEvent.CreateBroadcast
   fullName: TuiVision.Core.TEvent.CreateBroadcast
+- uid: TuiVision.Core.TEventKind.Nothing
+  commentId: F:TuiVision.Core.TEventKind.Nothing
+  href: TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Nothing
+  name: Nothing
+  nameWithType: TEventKind.Nothing
+  fullName: TuiVision.Core.TEventKind.Nothing
 - uid: TuiVision.Core.TEvent.CreateNone*
   commentId: Overload:TuiVision.Core.TEvent.CreateNone
   href: TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_CreateNone_TuiVision_Core_TObject_

@@ -16,15 +16,27 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: ITStreamSerializable
     path: src/TuiVision.Serialization/Class1.cs
-    startLine: 7
+    startLine: 13
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
-  summary: Contract for stream-based serialization used by ported Turbo Vision record types.
+  summary: >-
+    Schnittstelle für stream-basierte Serialisierung portierter Turbo-Vision-Record-Typen.
+
+    Klassen, die diese Schnittstelle implementieren, können ihren Zustand in einen
+
+    <xref href="TuiVision.Serialization.TBinaryArchiveWriter" data-throw-if-not-resolved="false"></xref> schreiben und später wiederherstellen.
+
+
+    Contract for stream-based serialization of ported Turbo Vision record types.
+
+    Classes that implement this interface can write their state to a
+
+    <xref href="TuiVision.Serialization.TBinaryArchiveWriter" data-throw-if-not-resolved="false"></xref> and restore it later.
   example: []
   syntax:
     content: public interface ITStreamSerializable
@@ -43,22 +55,36 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: SaveTo
     path: src/TuiVision.Serialization/Class1.cs
-    startLine: 9
+    startLine: 21
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
+  summary: >-
+    Schreibt den Zustand dieses Objekts in den angegebenen Writer.
+
+
+    Writes the state of this object to the specified writer.
+  example: []
   syntax:
     content: void SaveTo(TBinaryArchiveWriter writer)
     parameters:
     - id: writer
       type: TuiVision.Serialization.TBinaryArchiveWriter
+      description: Der Ziel-Writer. / The target writer.
     content.vb: Sub SaveTo(writer As TBinaryArchiveWriter)
   overload: TuiVision.Serialization.ITStreamSerializable.SaveTo*
 references:
+- uid: TuiVision.Serialization.TBinaryArchiveWriter
+  commentId: T:TuiVision.Serialization.TBinaryArchiveWriter
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TBinaryArchiveWriter.html
+  name: TBinaryArchiveWriter
+  nameWithType: TBinaryArchiveWriter
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter
 - uid: TuiVision.Serialization
   commentId: N:TuiVision.Serialization
   href: TuiVision.html
@@ -87,10 +113,3 @@ references:
   name: SaveTo
   nameWithType: ITStreamSerializable.SaveTo
   fullName: TuiVision.Serialization.ITStreamSerializable.SaveTo
-- uid: TuiVision.Serialization.TBinaryArchiveWriter
-  commentId: T:TuiVision.Serialization.TBinaryArchiveWriter
-  parent: TuiVision.Serialization
-  href: TuiVision.Serialization.TBinaryArchiveWriter.html
-  name: TBinaryArchiveWriter
-  nameWithType: TBinaryArchiveWriter
-  fullName: TuiVision.Serialization.TBinaryArchiveWriter

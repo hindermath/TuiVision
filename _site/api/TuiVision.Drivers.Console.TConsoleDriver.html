@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TConsoleDriver | TuiVision Documentation ">
       
-      <meta name="description" content="Keeps the active back buffer and publishes immutable frame snapshots.">
+      <meta name="description" content="Verwaltet den aktiven Hinterpuffer und ver&#246;ffentlicht unver&#228;nderliche Frame-Schnappsch&#252;sse &#252;ber das Presenter-Pattern. Rendering-Backends sind dadurch austauschbar. Manages the active back buffer and publishes immutable frame snapshots via the presenter pattern. Rendering backends are therefore interchangeable.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Drivers_Console_TConsoleDriver.md&amp;value=---%0Auid%3A%20TuiVision.Drivers.Console.TConsoleDriver%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/003-dialog-control-layer/apiSpec/new?filename=TuiVision_Drivers_Console_TConsoleDriver.md&amp;value=---%0Auid%3A%20TuiVision.Drivers.Console.TConsoleDriver%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TuiVision_Drivers_Console_TConsoleDriver" data-uid="TuiVision.Drivers.Console.TConsoleDriver" class="text-break">
-Class TConsoleDriver  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Drivers.Console/Class1.cs/#L134"><i class="bi bi-code-slash"></i></a>
+Class TConsoleDriver  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Drivers.Console/TConsoleDriver.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,10 @@ Class TConsoleDriver  <a class="header-action link-secondary" title="View source
   <dl><dt>Assembly</dt><dd>TuiVision.Drivers.Console.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Keeps the active back buffer and publishes immutable frame snapshots.</p>
+  <div class="markdown summary"><p>Verwaltet den aktiven Hinterpuffer und veröffentlicht unveränderliche Frame-Schnappschüsse
+über das Presenter-Pattern. Rendering-Backends sind dadurch austauschbar.</p>
+<p>Manages the active back buffer and publishes immutable frame snapshots
+via the presenter pattern. Rendering backends are therefore interchangeable.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -154,10 +157,12 @@ Class TConsoleDriver  <a class="header-action link-secondary" title="View source
 
   <h3 id="TuiVision_Drivers_Console_TConsoleDriver__ctor_System_Int32_System_Int32_" data-uid="TuiVision.Drivers.Console.TConsoleDriver.#ctor(System.Int32,System.Int32)">
   TConsoleDriver(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Drivers.Console/Class1.cs/#L136"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Drivers.Console/TConsoleDriver.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Erstellt einen neuen Treiber mit einem Hinterpuffer der angegebenen Größe.</p>
+<p>Creates a new driver with a back buffer of the specified size.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -167,9 +172,13 @@ Class TConsoleDriver  <a class="header-action link-secondary" title="View source
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>Die Breite des Hinterpuffers in Zeichen. Muss positiv sein.
+The width of the back buffer in characters. Must be positive.</p>
+</dd>
     <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>Die Höhe des Hinterpuffers in Zeichen. Muss positiv sein.
+The height of the back buffer in characters. Must be positive.</p>
+</dd>
   </dl>
 
 
@@ -191,10 +200,12 @@ Class TConsoleDriver  <a class="header-action link-secondary" title="View source
 
   <h3 id="TuiVision_Drivers_Console_TConsoleDriver_BackBuffer" data-uid="TuiVision.Drivers.Console.TConsoleDriver.BackBuffer">
   BackBuffer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Drivers.Console/Class1.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Drivers.Console/TConsoleDriver.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Der aktuelle Hinterpuffer, in den Ansichten ihre Darstellung schreiben.</p>
+<p>The current back buffer into which views write their output.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -207,7 +218,7 @@ Class TConsoleDriver  <a class="header-action link-secondary" title="View source
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="TuiVision.Drivers.Console.TConsoleBuffer.html">TConsoleBuffer</a></dt>
+    <dt><a class="xref" href="TuiVision.Core.TConsoleBuffer.html">TConsoleBuffer</a></dt>
     <dd></dd>
   </dl>
 
@@ -226,10 +237,14 @@ Class TConsoleDriver  <a class="header-action link-secondary" title="View source
 
   <h3 id="TuiVision_Drivers_Console_TConsoleDriver_Present_TuiVision_Drivers_Console_IConsolePresenter_" data-uid="TuiVision.Drivers.Console.TConsoleDriver.Present(TuiVision.Drivers.Console.IConsolePresenter)">
   Present(IConsolePresenter)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Drivers.Console/Class1.cs/#L160"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Drivers.Console/TConsoleDriver.cs/#L106"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Übergibt einen unveränderlichen Schnappschuss des Hinterpuffers an den Presenter.
+Der Presenter erhält eine Kopie, damit er das Original nicht versehentlich verändern kann.</p>
+<p>Passes an immutable snapshot of the back buffer to the presenter.
+The presenter receives a copy so it cannot accidentally modify the original.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -239,7 +254,9 @@ Class TConsoleDriver  <a class="header-action link-secondary" title="View source
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>presenter</code> <a class="xref" href="TuiVision.Drivers.Console.IConsolePresenter.html">IConsolePresenter</a></dt>
-    <dd></dd>
+    <dd><p>Der Presenter, der den Frame darstellt. Darf nicht <code>null</code> sein.
+The presenter that renders the frame. Must not be <code>null</code>.</p>
+</dd>
   </dl>
 
 
@@ -250,6 +267,13 @@ Class TConsoleDriver  <a class="header-action link-secondary" title="View source
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Wird ausgelöst, wenn <code class="paramref">presenter</code> <code>null</code> ist.
+Thrown when <code class="paramref">presenter</code> is <code>null</code>.</p>
+</dd>
+  </dl>
 
 
 
@@ -257,10 +281,14 @@ Class TConsoleDriver  <a class="header-action link-secondary" title="View source
 
   <h3 id="TuiVision_Drivers_Console_TConsoleDriver_Resize_System_Int32_System_Int32_" data-uid="TuiVision.Drivers.Console.TConsoleDriver.Resize(System.Int32,System.Int32)">
   Resize(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Drivers.Console/Class1.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Drivers.Console/TConsoleDriver.cs/#L74"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Ändert die Größe des Hinterpuffers und kopiert den sichtbaren Inhalt des alten Puffers.
+Zellen außerhalb des neuen Bereichs werden verworfen; neue Zellen sind leer.</p>
+<p>Resizes the back buffer and copies the visible content from the old buffer.
+Cells outside the new area are discarded; new cells are empty.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -270,9 +298,11 @@ Class TConsoleDriver  <a class="header-action link-secondary" title="View source
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>Die neue Breite in Zeichen. Muss positiv sein. / The new width in characters. Must be positive.</p>
+</dd>
     <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>Die neue Höhe in Zeichen. Muss positiv sein. / The new height in characters. Must be positive.</p>
+</dd>
   </dl>
 
 
@@ -290,7 +320,7 @@ Class TConsoleDriver  <a class="header-action link-secondary" title="View source
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Drivers.Console/Class1.cs/#L134" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Drivers.Console/TConsoleDriver.cs/#L38" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -4,6 +4,29 @@ items:
   commentId: N:TuiVision.Controls
   id: TuiVision.Controls
   children:
+  - TuiVision.Controls.ShellCommandIds
+  - TuiVision.Controls.TApplication
+  - TuiVision.Controls.TButton
+  - TuiVision.Controls.TButtonFlags
+  - TuiVision.Controls.TCheckBoxes
+  - TuiVision.Controls.TCluster
+  - TuiVision.Controls.TDesktop
+  - TuiVision.Controls.TDialog
+  - TuiVision.Controls.TGroup
+  - TuiVision.Controls.TInputLine
+  - TuiVision.Controls.TLabel
+  - TuiVision.Controls.TListBox
+  - TuiVision.Controls.TListViewer
+  - TuiVision.Controls.TMenuBar
+  - TuiVision.Controls.TMenuItem
+  - TuiVision.Controls.TProgram
+  - TuiVision.Controls.TRadioButtons
+  - TuiVision.Controls.TScrollBar
+  - TuiVision.Controls.TScroller
+  - TuiVision.Controls.TStaticText
+  - TuiVision.Controls.TStatusItem
+  - TuiVision.Controls.TStatusLine
+  - TuiVision.Controls.TStringList
   - TuiVision.Controls.TView
   - TuiVision.Controls.TViewOptions
   - TuiVision.Controls.TViewState
@@ -17,6 +40,157 @@ items:
   assemblies:
   - TuiVision.Controls
 references:
+- uid: TuiVision.Controls.ShellCommandIds
+  commentId: T:TuiVision.Controls.ShellCommandIds
+  href: TuiVision.Controls.ShellCommandIds.html
+  name: ShellCommandIds
+  nameWithType: ShellCommandIds
+  fullName: TuiVision.Controls.ShellCommandIds
+- uid: TuiVision.Controls.TApplication
+  commentId: T:TuiVision.Controls.TApplication
+  href: TuiVision.Controls.TApplication.html
+  name: TApplication
+  nameWithType: TApplication
+  fullName: TuiVision.Controls.TApplication
+- uid: TuiVision.Controls.TButtonFlags
+  commentId: T:TuiVision.Controls.TButtonFlags
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TButtonFlags.html
+  name: TButtonFlags
+  nameWithType: TButtonFlags
+  fullName: TuiVision.Controls.TButtonFlags
+- uid: TuiVision.Controls.TButton
+  commentId: T:TuiVision.Controls.TButton
+  href: TuiVision.Controls.TButton.html
+  name: TButton
+  nameWithType: TButton
+  fullName: TuiVision.Controls.TButton
+- uid: TuiVision.Controls.TCheckBoxes
+  commentId: T:TuiVision.Controls.TCheckBoxes
+  href: TuiVision.Controls.TCheckBoxes.html
+  name: TCheckBoxes
+  nameWithType: TCheckBoxes
+  fullName: TuiVision.Controls.TCheckBoxes
+- uid: TuiVision.Controls.TCluster
+  commentId: T:TuiVision.Controls.TCluster
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TCluster.html
+  name: TCluster
+  nameWithType: TCluster
+  fullName: TuiVision.Controls.TCluster
+- uid: TuiVision.Controls.TDesktop
+  commentId: T:TuiVision.Controls.TDesktop
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TDesktop.html
+  name: TDesktop
+  nameWithType: TDesktop
+  fullName: TuiVision.Controls.TDesktop
+- uid: TuiVision.Controls.TDialog
+  commentId: T:TuiVision.Controls.TDialog
+  href: TuiVision.Controls.TDialog.html
+  name: TDialog
+  nameWithType: TDialog
+  fullName: TuiVision.Controls.TDialog
+- uid: TuiVision.Controls.TGroup
+  commentId: T:TuiVision.Controls.TGroup
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TGroup.html
+  name: TGroup
+  nameWithType: TGroup
+  fullName: TuiVision.Controls.TGroup
+- uid: TuiVision.Controls.TInputLine
+  commentId: T:TuiVision.Controls.TInputLine
+  href: TuiVision.Controls.TInputLine.html
+  name: TInputLine
+  nameWithType: TInputLine
+  fullName: TuiVision.Controls.TInputLine
+- uid: TuiVision.Controls.TLabel
+  commentId: T:TuiVision.Controls.TLabel
+  href: TuiVision.Controls.TLabel.html
+  name: TLabel
+  nameWithType: TLabel
+  fullName: TuiVision.Controls.TLabel
+- uid: TuiVision.Controls.TListBox
+  commentId: T:TuiVision.Controls.TListBox
+  href: TuiVision.Controls.TListBox.html
+  name: TListBox
+  nameWithType: TListBox
+  fullName: TuiVision.Controls.TListBox
+- uid: TuiVision.Controls.TListViewer
+  commentId: T:TuiVision.Controls.TListViewer
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TListViewer.html
+  name: TListViewer
+  nameWithType: TListViewer
+  fullName: TuiVision.Controls.TListViewer
+- uid: TuiVision.Controls.TMenuBar
+  commentId: T:TuiVision.Controls.TMenuBar
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TMenuBar.html
+  name: TMenuBar
+  nameWithType: TMenuBar
+  fullName: TuiVision.Controls.TMenuBar
+- uid: TuiVision.Controls.TMenuItem
+  commentId: T:TuiVision.Controls.TMenuItem
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TMenuItem.html
+  name: TMenuItem
+  nameWithType: TMenuItem
+  fullName: TuiVision.Controls.TMenuItem
+- uid: TuiVision.Controls.TProgram
+  commentId: T:TuiVision.Controls.TProgram
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TProgram.html
+  name: TProgram
+  nameWithType: TProgram
+  fullName: TuiVision.Controls.TProgram
+- uid: TuiVision.Controls.TRadioButtons
+  commentId: T:TuiVision.Controls.TRadioButtons
+  href: TuiVision.Controls.TRadioButtons.html
+  name: TRadioButtons
+  nameWithType: TRadioButtons
+  fullName: TuiVision.Controls.TRadioButtons
+- uid: TuiVision.Controls.TScrollBar
+  commentId: T:TuiVision.Controls.TScrollBar
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TScrollBar.html
+  name: TScrollBar
+  nameWithType: TScrollBar
+  fullName: TuiVision.Controls.TScrollBar
+- uid: TuiVision.Controls.TScroller
+  commentId: T:TuiVision.Controls.TScroller
+  href: TuiVision.Controls.TScroller.html
+  name: TScroller
+  nameWithType: TScroller
+  fullName: TuiVision.Controls.TScroller
+- uid: TuiVision.Controls.TStaticText
+  commentId: T:TuiVision.Controls.TStaticText
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TStaticText.html
+  name: TStaticText
+  nameWithType: TStaticText
+  fullName: TuiVision.Controls.TStaticText
+- uid: TuiVision.Controls.TStatusItem
+  commentId: T:TuiVision.Controls.TStatusItem
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TStatusItem.html
+  name: TStatusItem
+  nameWithType: TStatusItem
+  fullName: TuiVision.Controls.TStatusItem
+- uid: TuiVision.Controls.TStatusLine
+  commentId: T:TuiVision.Controls.TStatusLine
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TStatusLine.html
+  name: TStatusLine
+  nameWithType: TStatusLine
+  fullName: TuiVision.Controls.TStatusLine
+- uid: TuiVision.Controls.TStringList
+  commentId: T:TuiVision.Controls.TStringList
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TStringList.html
+  name: TStringList
+  nameWithType: TStringList
+  fullName: TuiVision.Controls.TStringList
 - uid: TuiVision.Controls.TViewState
   commentId: T:TuiVision.Controls.TViewState
   parent: TuiVision.Controls
@@ -33,6 +207,7 @@ references:
   fullName: TuiVision.Controls.TViewOptions
 - uid: TuiVision.Controls.TView
   commentId: T:TuiVision.Controls.TView
+  parent: TuiVision.Controls
   href: TuiVision.Controls.TView.html
   name: TView
   nameWithType: TView

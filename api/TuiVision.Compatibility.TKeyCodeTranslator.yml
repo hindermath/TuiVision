@@ -22,15 +22,27 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: TKeyCodeTranslator
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 16
+    startLine: 36
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
-  summary: Helpers for mapping .NET console input to Turbo Vision compatible key values.
+  summary: >-
+    Hilfsmethoden zum Umrechnen von .NET-Konsoleneingaben in Turbo-Vision-kompatible Tastenwerte.
+
+    Diese Klasse bildet die Brücke zwischen <xref href="System.ConsoleKeyInfo" data-throw-if-not-resolved="false"></xref> und
+
+    dem Turbo-Vision-Tastencode-Format.
+
+
+    Helper methods for mapping .NET console input to Turbo Vision compatible key values.
+
+    This class bridges <xref href="System.ConsoleKeyInfo" data-throw-if-not-resolved="false"></xref> and
+
+    the Turbo Vision key code format.
   example: []
   syntax:
     content: public static class TKeyCodeTranslator
@@ -59,14 +71,24 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: KeyEnter
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 18
+    startLine: 45
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
+  summary: >-
+    Turbo-Vision-Tastencode für die Eingabetaste (Enter).
+
+    Scan-Code 0x1C, Zeichencode 0x0D (Carriage Return).
+
+
+    Turbo Vision key code for the Enter key.
+
+    Scan code 0x1C, character code 0x0D (carriage return).
+  example: []
   syntax:
     content: public const ushort KeyEnter = 7181
     return:
@@ -86,14 +108,24 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: KeyEscape
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 19
+    startLine: 54
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
+  summary: >-
+    Turbo-Vision-Tastencode für die Escape-Taste.
+
+    Scan-Code 0x01, Zeichencode 0x1B.
+
+
+    Turbo Vision key code for the Escape key.
+
+    Scan code 0x01, character code 0x1B.
+  example: []
   syntax:
     content: public const ushort KeyEscape = 283
     return:
@@ -113,14 +145,24 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: KeyBackspace
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 20
+    startLine: 63
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
+  summary: >-
+    Turbo-Vision-Tastencode für die Rücktaste (Backspace).
+
+    Scan-Code 0x0E, Zeichencode 0x08.
+
+
+    Turbo Vision key code for the Backspace key.
+
+    Scan code 0x0E, character code 0x08.
+  example: []
   syntax:
     content: public const ushort KeyBackspace = 3592
     return:
@@ -140,14 +182,24 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: KeyTab
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 21
+    startLine: 72
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
+  summary: >-
+    Turbo-Vision-Tastencode für die Tabulatortaste (Tab).
+
+    Scan-Code 0x0F, Zeichencode 0x09.
+
+
+    Turbo Vision key code for the Tab key.
+
+    Scan code 0x0F, character code 0x09.
+  example: []
   syntax:
     content: public const ushort KeyTab = 3849
     return:
@@ -167,23 +219,45 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: ComposeKeyCode
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 23
+    startLine: 93
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
+  summary: >-
+    Erstellt einen zusammengesetzten Turbo-Vision-Tastencode aus Zeichencode und Scan-Code.
+
+    Das High-Byte enthält den Scan-Code, das Low-Byte den Zeichencode (0, wenn kein Zeichen).
+
+
+    Composes a Turbo Vision key code from a character code and scan code.
+
+    The high byte contains the scan code; the low byte contains the character code (0 if no character).
+  example: []
   syntax:
     content: public static ushort ComposeKeyCode(char charCode, byte scanCode)
     parameters:
     - id: charCode
       type: System.Char
+      description: >-
+        Der Zeichencode der Taste (0 bei reinen Steuertasten).
+
+        The character code of the key (0 for pure control keys).
     - id: scanCode
       type: System.Byte
+      description: >-
+        Der Hardware-Scan-Code der Taste.
+
+        The hardware scan code of the key.
     return:
       type: System.UInt16
+      description: >-
+        Der zusammengesetzte 16-Bit-Tastencode im Turbo-Vision-Format.
+
+        The composed 16-bit key code in Turbo Vision format.
     content.vb: Public Shared Function ComposeKeyCode(charCode As Char, scanCode As Byte) As UShort
   overload: TuiVision.Compatibility.TKeyCodeTranslator.ComposeKeyCode*
   nameWithType.vb: TKeyCodeTranslator.ComposeKeyCode(Char, Byte)
@@ -203,21 +277,35 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: FromConsoleKey
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 29
+    startLine: 112
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
+  summary: >-
+    Wandelt eine .NET-<xref href="System.ConsoleKeyInfo" data-throw-if-not-resolved="false"></xref> in ein Turbo-Vision-<xref href="TuiVision.Core.TKeyDownEvent" data-throw-if-not-resolved="false"></xref> um.
+
+
+    Converts a .NET <xref href="System.ConsoleKeyInfo" data-throw-if-not-resolved="false"></xref> into a Turbo Vision <xref href="TuiVision.Core.TKeyDownEvent" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public static TKeyDownEvent FromConsoleKey(ConsoleKeyInfo keyInfo)
     parameters:
     - id: keyInfo
       type: System.ConsoleKeyInfo
+      description: >-
+        Die .NET-Tasteneingabe-Information.
+
+        The .NET key input information.
     return:
       type: TuiVision.Core.TKeyDownEvent
+      description: >-
+        Ein <xref href="TuiVision.Core.TKeyDownEvent" data-throw-if-not-resolved="false"></xref> mit den umgerechneten Werten.
+
+        A <xref href="TuiVision.Core.TKeyDownEvent" data-throw-if-not-resolved="false"></xref> with the converted values.
     content.vb: Public Shared Function FromConsoleKey(keyInfo As ConsoleKeyInfo) As TKeyDownEvent
   overload: TuiVision.Compatibility.TKeyCodeTranslator.FromConsoleKey*
 - uid: TuiVision.Compatibility.TKeyCodeTranslator.IsPrintable(TuiVision.Core.TKeyDownEvent)
@@ -234,24 +322,43 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: IsPrintable
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 37
+    startLine: 130
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
+  summary: >-
+    Prüft, ob ein Tastenereignis ein druckbares Zeichen erzeugt hat.
+
+
+    Checks whether a key-down event produced a printable character.
+  example: []
   syntax:
     content: public static bool IsPrintable(TKeyDownEvent keyDown)
     parameters:
     - id: keyDown
       type: TuiVision.Core.TKeyDownEvent
+      description: Das zu prüfende Tastenereignis. / The key-down event to check.
     return:
       type: System.Boolean
+      description: >-
+        <code>true</code>, wenn <xref href="TuiVision.Core.TKeyDownEvent.CharCode" data-throw-if-not-resolved="false"></xref> kein Steuerzeichen ist; andernfalls <code>false</code>.
+
+        <code>true</code> if <xref href="TuiVision.Core.TKeyDownEvent.CharCode" data-throw-if-not-resolved="false"></xref> is not a control character; otherwise <code>false</code>.
     content.vb: Public Shared Function IsPrintable(keyDown As TKeyDownEvent) As Boolean
   overload: TuiVision.Compatibility.TKeyCodeTranslator.IsPrintable*
 references:
+- uid: System.ConsoleKeyInfo
+  commentId: T:System.ConsoleKeyInfo
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.consolekeyinfo
+  name: ConsoleKeyInfo
+  nameWithType: ConsoleKeyInfo
+  fullName: System.ConsoleKeyInfo
 - uid: TuiVision.Compatibility
   commentId: N:TuiVision.Compatibility
   href: TuiVision.html
@@ -550,20 +657,6 @@ references:
   nameWithType.vb: Byte
   fullName.vb: Byte
   name.vb: Byte
-- uid: TuiVision.Compatibility.TKeyCodeTranslator.FromConsoleKey*
-  commentId: Overload:TuiVision.Compatibility.TKeyCodeTranslator.FromConsoleKey
-  href: TuiVision.Compatibility.TKeyCodeTranslator.html#TuiVision_Compatibility_TKeyCodeTranslator_FromConsoleKey_System_ConsoleKeyInfo_
-  name: FromConsoleKey
-  nameWithType: TKeyCodeTranslator.FromConsoleKey
-  fullName: TuiVision.Compatibility.TKeyCodeTranslator.FromConsoleKey
-- uid: System.ConsoleKeyInfo
-  commentId: T:System.ConsoleKeyInfo
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.consolekeyinfo
-  name: ConsoleKeyInfo
-  nameWithType: ConsoleKeyInfo
-  fullName: System.ConsoleKeyInfo
 - uid: TuiVision.Core.TKeyDownEvent
   commentId: T:TuiVision.Core.TKeyDownEvent
   parent: TuiVision.Core
@@ -571,6 +664,12 @@ references:
   name: TKeyDownEvent
   nameWithType: TKeyDownEvent
   fullName: TuiVision.Core.TKeyDownEvent
+- uid: TuiVision.Compatibility.TKeyCodeTranslator.FromConsoleKey*
+  commentId: Overload:TuiVision.Compatibility.TKeyCodeTranslator.FromConsoleKey
+  href: TuiVision.Compatibility.TKeyCodeTranslator.html#TuiVision_Compatibility_TKeyCodeTranslator_FromConsoleKey_System_ConsoleKeyInfo_
+  name: FromConsoleKey
+  nameWithType: TKeyCodeTranslator.FromConsoleKey
+  fullName: TuiVision.Compatibility.TKeyCodeTranslator.FromConsoleKey
 - uid: TuiVision.Core
   commentId: N:TuiVision.Core
   href: TuiVision.html
@@ -593,6 +692,12 @@ references:
   - uid: TuiVision.Core
     name: Core
     href: TuiVision.Core.html
+- uid: TuiVision.Core.TKeyDownEvent.CharCode
+  commentId: P:TuiVision.Core.TKeyDownEvent.CharCode
+  href: TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_CharCode
+  name: CharCode
+  nameWithType: TKeyDownEvent.CharCode
+  fullName: TuiVision.Core.TKeyDownEvent.CharCode
 - uid: TuiVision.Compatibility.TKeyCodeTranslator.IsPrintable*
   commentId: Overload:TuiVision.Compatibility.TKeyCodeTranslator.IsPrintable
   href: TuiVision.Compatibility.TKeyCodeTranslator.html#TuiVision_Compatibility_TKeyCodeTranslator_IsPrintable_TuiVision_Core_TKeyDownEvent_

@@ -18,15 +18,19 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: TMessageEvent
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 48
+    startLine: 132
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Command/broadcast payload.
+  summary: >-
+    Nutzdaten einer Befehls- oder Rundfunknachricht.
+
+
+    Payload of a command or broadcast message.
   example: []
   syntax:
     content: 'public readonly record struct TMessageEvent : IEquatable<TMessageEvent>'
@@ -54,23 +58,35 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 48
+    startLine: 132
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Command/broadcast payload.
+  summary: >-
+    Nutzdaten einer Befehls- oder Rundfunknachricht.
+
+
+    Payload of a command or broadcast message.
   example: []
   syntax:
     content: public TMessageEvent(ushort Command, object? Info)
     parameters:
     - id: Command
       type: System.UInt16
+      description: >-
+        Der Befehlscode.
+
+        The command code.
     - id: Info
       type: System.Object
+      description: >-
+        Ein optionales Informationsobjekt, das zusätzliche Daten zum Befehl trägt.
+
+        An optional information object that carries additional data for the command.
     content.vb: Public Sub New(Command As UShort, Info As Object)
   overload: TuiVision.Core.TMessageEvent.#ctor*
   nameWithType.vb: TMessageEvent.New(UShort, Object)
@@ -90,14 +106,19 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Command
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 48
+    startLine: 132
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Der Befehlscode.
+
+    The command code.
+  example: []
   syntax:
     content: public ushort Command { get; init; }
     parameters: []
@@ -119,14 +140,19 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Info
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 48
+    startLine: 132
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Ein optionales Informationsobjekt, das zusätzliche Daten zum Befehl trägt.
+
+    An optional information object that carries additional data for the command.
+  example: []
   syntax:
     content: public object? Info { get; init; }
     parameters: []

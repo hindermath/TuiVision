@@ -52,7 +52,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Compatibility.TKeyCodeTranslator",
-      "Summary": "<p sourcefile=\"api/TuiVision.Compatibility.TKeyCodeTranslator.yml\" sourcestartlinenumber=\"1\">Helpers for mapping .NET console input to Turbo Vision compatible key values.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Compatibility.TKeyCodeTranslator.yml\" sourcestartlinenumber=\"1\">Hilfsmethoden zum Umrechnen von .NET-Konsoleneingaben in Turbo-Vision-kompatible Tastenwerte.\nDiese Klasse bildet die Brücke zwischen <xref href=\"System.ConsoleKeyInfo\" data-throw-if-not-resolved=\"false\"></xref> und\ndem Turbo-Vision-Tastencode-Format.</p>\n<p sourcefile=\"api/TuiVision.Compatibility.TKeyCodeTranslator.yml\" sourcestartlinenumber=\"5\">Helper methods for mapping .NET console input to Turbo Vision compatible key values.\nThis class bridges <xref href=\"System.ConsoleKeyInfo\" data-throw-if-not-resolved=\"false\"></xref> and\nthe Turbo Vision key code format.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -66,7 +66,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Compatibility.TShiftState",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/TuiVision.Compatibility.TShiftState.yml\" sourcestartlinenumber=\"1\">Bitmaske für aktive Umschalttasten beim Tastaturereignis.\nDie Werte entsprechen den <code>kbXxx</code>-Shift-Flags aus dem originalen Turbo-Vision-C++-Code.</p>\n<p sourcefile=\"api/TuiVision.Compatibility.TShiftState.yml\" sourcestartlinenumber=\"4\">Bit mask for active modifier keys during a keyboard event.\nThe values correspond to the <code>kbXxx</code> shift flags from the original Turbo Vision C++ code.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -84,6 +84,328 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.ShellCommandIds.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.ShellCommandIds.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.ShellCommandIds",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.ShellCommandIds.yml\" sourcestartlinenumber=\"1\">Definiert die standardmäßigen Shell-Befehl-IDs.</p>\n<p sourcefile=\"api/TuiVision.Controls.ShellCommandIds.yml\" sourcestartlinenumber=\"3\">Defines the standard shell command IDs.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TApplication.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TApplication.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TApplication",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TApplication.yml\" sourcestartlinenumber=\"1\">Die Standardklasse für TuiVision-Anwendungen.\nSie erstellt automatisch eine Shell mit Menüleiste, Desktop und Statuszeile\nund bietet virtuelle Initialisierungsmethoden zur Anpassung dieser Regionen.</p>\n<p sourcefile=\"api/TuiVision.Controls.TApplication.yml\" sourcestartlinenumber=\"5\">The standard class for TuiVision applications.\nIt automatically creates a shell with a menu bar, desktop, and status line,\nand exposes virtual initialization methods for customizing those regions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TButton.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TButton",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TButton.yml\" sourcestartlinenumber=\"1\">Interaktive Schaltfläche mit Command-ID, Hotkey-Unterstützung und Default-Zustand.</p>\n<p sourcefile=\"api/TuiVision.Controls.TButton.yml\" sourcestartlinenumber=\"3\">Interactive button with command ID, hotkey support, and default state.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TButtonFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TButtonFlags.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TButtonFlags",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TButtonFlags.yml\" sourcestartlinenumber=\"1\">Flags für das Verhalten und die Darstellung einer Schaltfläche.</p>\n<p sourcefile=\"api/TuiVision.Controls.TButtonFlags.yml\" sourcestartlinenumber=\"3\">Flags for the behaviour and appearance of a button.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TCheckBoxes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TCheckBoxes.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TCheckBoxes",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TCheckBoxes.yml\" sourcestartlinenumber=\"1\">Konkretes Cluster für unabhängige Mehrfachauswahl.</p>\n<p sourcefile=\"api/TuiVision.Controls.TCheckBoxes.yml\" sourcestartlinenumber=\"3\">Concrete cluster for independent multi-selection.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TCluster.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TCluster.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TCluster",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TCluster.yml\" sourcestartlinenumber=\"1\">Abstrakte Basis für gruppierte Auswahl-Controls.\nDie Klasse kapselt Item-Verwaltung, Cursor-Navigation und die gemeinsame\nTastaturbehandlung für Checkboxen und Radiobuttons.</p>\n<p sourcefile=\"api/TuiVision.Controls.TCluster.yml\" sourcestartlinenumber=\"5\">Abstract base for grouped selection controls.\nThe class encapsulates item management, cursor navigation, and the shared\nkeyboard handling for check boxes and radio buttons.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TDesktop.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TDesktop.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TDesktop",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TDesktop.yml\" sourcestartlinenumber=\"1\">Der zentrale Arbeitsbereich der Anwendung.\nEr verwaltet Kind-Fenster und sorgt für eine korrekte Fokus-Wiederherstellung.</p>\n<p sourcefile=\"api/TuiVision.Controls.TDesktop.yml\" sourcestartlinenumber=\"4\">The central workspace of the application.\nIt manages child windows and ensures correct focus recovery.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TDialog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TDialog.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TDialog",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TDialog.yml\" sourcestartlinenumber=\"1\">Modaler Dialog mit Rahmen, Titel, Fokuskoordination und synchronem Run-Loop.</p>\n<p sourcefile=\"api/TuiVision.Controls.TDialog.yml\" sourcestartlinenumber=\"3\">Modal dialog with frame, title, focus coordination, and a synchronous run loop.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TGroup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TGroup.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TGroup",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TGroup.yml\" sourcestartlinenumber=\"1\">Container-Ansicht, die Kind-Views in einer zirkulären doppelt-verlinkten Liste verwaltet.\n<xref href=\"TuiVision.Controls.TGroup\" data-throw-if-not-resolved=\"false\"></xref> implementiert Einfügen/Entfernen, Drei-Phasen-Ereignis-Dispatching,\nFokus-Management, Zeichenpuffer-Lifecycle und State-Propagation.\nPortiert von <code>TGroup</code> aus Turbo Vision 2.0.3.</p>\n<p sourcefile=\"api/TuiVision.Controls.TGroup.yml\" sourcestartlinenumber=\"6\">Container view that manages child views in a circular singly-linked list.\n<xref href=\"TuiVision.Controls.TGroup\" data-throw-if-not-resolved=\"false\"></xref> implements insertion/removal, three-phase event dispatching,\nfocus management, draw-buffer lifecycle, and state propagation.\nPorted from <code>TGroup</code> in Turbo Vision 2.0.3.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TInputLine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TInputLine.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TInputLine",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TInputLine.yml\" sourcestartlinenumber=\"1\">Einzeiliges Texteingabefeld mit Cursor- und Viewport-Verwaltung.</p>\n<p sourcefile=\"api/TuiVision.Controls.TInputLine.yml\" sourcestartlinenumber=\"3\">Single-line text input field with cursor and viewport management.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TLabel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TLabel",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TLabel.yml\" sourcestartlinenumber=\"1\">Beschriftung mit optionalem Hotkey, die den Fokus an ein verknüpftes Control weiterleitet.</p>\n<p sourcefile=\"api/TuiVision.Controls.TLabel.yml\" sourcestartlinenumber=\"3\">Label with an optional hotkey that forwards focus to a linked control.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TListBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TListBox.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TListBox",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TListBox.yml\" sourcestartlinenumber=\"1\">Konkrete Listenansicht für <xref href=\"TuiVision.Controls.TStringList\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n<p sourcefile=\"api/TuiVision.Controls.TListBox.yml\" sourcestartlinenumber=\"3\">Concrete list view for <xref href=\"TuiVision.Controls.TStringList\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TListViewer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TListViewer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TListViewer",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TListViewer.yml\" sourcestartlinenumber=\"1\">Abstrakte Basis für scrollbare Listenansichten mit fokussiertem Eintrag.</p>\n<p sourcefile=\"api/TuiVision.Controls.TListViewer.yml\" sourcestartlinenumber=\"3\">Abstract base for scrollable list views with a focused item.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TMenuBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TMenuBar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TMenuBar",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TMenuBar.yml\" sourcestartlinenumber=\"1\">Die Menüleiste am oberen Bildschirmrand.\nZeigt das Hauptmenü der Anwendung an.</p>\n<p sourcefile=\"api/TuiVision.Controls.TMenuBar.yml\" sourcestartlinenumber=\"4\">The menu bar at the top of the screen.\nDisplays the main menu of the application.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TMenuItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TMenuItem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TMenuItem",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TMenuItem.yml\" sourcestartlinenumber=\"1\">Repräsentiert einen Menüpunkt in einer Menüleiste oder einem Menü.\nKann verschachtelte Untermenüs enthalten.</p>\n<p sourcefile=\"api/TuiVision.Controls.TMenuItem.yml\" sourcestartlinenumber=\"4\">Represents a menu item in a menu bar or menu.\nCan contain nested submenus.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TProgram.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TProgram.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TProgram",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TProgram.yml\" sourcestartlinenumber=\"1\">Die Basisklasse für interaktive TuiVision-Anwendungen.\nSie koordiniert den Lebenszyklus, das Event-Routing und das Layout der Shell.</p>\n<p sourcefile=\"api/TuiVision.Controls.TProgram.yml\" sourcestartlinenumber=\"4\">The base class for interactive TuiVision applications.\nIt coordinates the shell lifecycle, event routing, and layout.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TRadioButtons.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TRadioButtons.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TRadioButtons",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TRadioButtons.yml\" sourcestartlinenumber=\"1\">Konkretes Cluster für gegenseitig ausschließende Einfachauswahl.</p>\n<p sourcefile=\"api/TuiVision.Controls.TRadioButtons.yml\" sourcestartlinenumber=\"3\">Concrete cluster for mutually exclusive single selection.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TScrollBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TScrollBar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TScrollBar",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TScrollBar.yml\" sourcestartlinenumber=\"1\">Visueller Scroll-Indikator für horizontales oder vertikales Scrollen.\nDie aktuelle Implementierung konzentriert sich auf Zustandsverwaltung,\nClamping und eine einfache Darstellung des Scroll-Daums.</p>\n<p sourcefile=\"api/TuiVision.Controls.TScrollBar.yml\" sourcestartlinenumber=\"5\">Visual scroll indicator for horizontal or vertical scrolling.\nThe current implementation focuses on state management,\nclamping, and a simple thumb representation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TScroller.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TScroller.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TScroller",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TScroller.yml\" sourcestartlinenumber=\"1\">Abstrakte Basis für scrollbare Views mit optional gekoppelten Scrollbars.\nDie Klasse kapselt Offset-Limits, Clamping und die Synchronisierung der Scrollbar-Werte.</p>\n<p sourcefile=\"api/TuiVision.Controls.TScroller.yml\" sourcestartlinenumber=\"4\">Abstract base for scrollable views with optionally attached scroll bars.\nThe class encapsulates offset limits, clamping, and synchronisation of scroll bar values.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TStaticText.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TStaticText.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TStaticText",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TStaticText.yml\" sourcestartlinenumber=\"1\">Nicht-interaktive Textanzeige für Dialoge und Formulare.\nDas Control rendert seinen Text zeilenweise in den Puffer der Eigentümergruppe.</p>\n<p sourcefile=\"api/TuiVision.Controls.TStaticText.yml\" sourcestartlinenumber=\"4\">Non-interactive text display for dialogs and forms.\nThe control renders its text line by line into the owner group's buffer.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TStatusItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TStatusItem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TStatusItem",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TStatusItem.yml\" sourcestartlinenumber=\"1\">Repräsentiert einen Statuszeilen-Eintrag mit einem Anzeigenamen und einer Befehl-ID.</p>\n<p sourcefile=\"api/TuiVision.Controls.TStatusItem.yml\" sourcestartlinenumber=\"3\">Represents a status line item with a display name and a command ID.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TStatusLine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TStatusLine.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TStatusLine",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TStatusLine.yml\" sourcestartlinenumber=\"1\">Die Statuszeile am unteren Bildschirmrand.\nZeigt kontextabhängige Hinweise und Shortcuts an.</p>\n<p sourcefile=\"api/TuiVision.Controls.TStatusLine.yml\" sourcestartlinenumber=\"4\">The status line at the bottom of the screen.\nDisplays context-sensitive hints and shortcuts.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TStringList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TStringList.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TStringList",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TStringList.yml\" sourcestartlinenumber=\"1\">Einfache indizierte String-Sammlung für listenbasierte Controls.\nDie Klasse bildet das managed Gegenstück zu <code>TStringList</code> aus Turbo Vision.</p>\n<p sourcefile=\"api/TuiVision.Controls.TStringList.yml\" sourcestartlinenumber=\"4\">Simple indexed string collection for list-based controls.\nThe class represents the managed counterpart of <code>TStringList</code> from Turbo Vision.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Controls.TView.yml",
       "output": {
         ".html": {
@@ -94,7 +416,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Controls.TView",
-      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TView.yml\" sourcestartlinenumber=\"1\">Base visual element ported from Turbo Vision's TView.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TView.yml\" sourcestartlinenumber=\"1\">Grundlegendes visuelles Element, portiert von <code>TView</code> aus Turbo Vision.\nAlle sichtbaren Elemente der Oberfläche erben von dieser Klasse und erben damit\nKoordinatenverwaltung, Zustandsflags und Ereignisverarbeitung.</p>\n<p sourcefile=\"api/TuiVision.Controls.TView.yml\" sourcestartlinenumber=\"5\">Fundamental visual element ported from <code>TView</code> in Turbo Vision.\nAll visible elements of the user interface inherit from this class, thereby\ninheriting coordinate management, state flags, and event handling.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -108,7 +430,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Controls.TViewOptions",
-      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TViewOptions.yml\" sourcestartlinenumber=\"1\">Option mask for view behavior.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TViewOptions.yml\" sourcestartlinenumber=\"1\">Optionsmaske für das Verhalten einer Ansicht.\nDie Werte entsprechen den <code>ofXxx</code>-Konstanten aus dem originalen Turbo-Vision-C++-Code.</p>\n<p sourcefile=\"api/TuiVision.Controls.TViewOptions.yml\" sourcestartlinenumber=\"4\">Option mask for view behavior.\nThe values correspond to the <code>ofXxx</code> constants from the original Turbo Vision C++ code.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -122,7 +444,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Controls.TViewState",
-      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TViewState.yml\" sourcestartlinenumber=\"1\">State mask for a view.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TViewState.yml\" sourcestartlinenumber=\"1\">Zustandsmaske für eine Ansicht.\nDie Werte entsprechen den <code>sfXxx</code>-Konstanten aus dem originalen Turbo-Vision-C++-Code.</p>\n<p sourcefile=\"api/TuiVision.Controls.TViewState.yml\" sourcestartlinenumber=\"4\">State mask for a view.\nThe values correspond to the <code>sfXxx</code> constants from the original Turbo Vision C++ code.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -140,6 +462,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TConsoleBuffer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TConsoleBuffer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TConsoleBuffer",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TConsoleBuffer.yml\" sourcestartlinenumber=\"1\">Veränderbarer zweidimensionaler Zeichenpuffer mit Clipping-Hilfsmethoden.\nJede Zelle des Puffers enthält ein Zeichen sowie Vordergrund- und Hintergrundfarbe.\nDer Puffer ist die zentrale Datenstruktur für das Rendering aller <code>TView</code>-Unterklassen.</p>\n<p sourcefile=\"api/TuiVision.Core.TConsoleBuffer.yml\" sourcestartlinenumber=\"5\">Mutable two-dimensional character buffer with clipping helper methods.\nEach cell of the buffer contains a character as well as foreground and background color.\nThe buffer is the central data structure for rendering all <code>TView</code> subclasses.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TConsoleCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TConsoleCell.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TConsoleCell",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TConsoleCell.yml\" sourcestartlinenumber=\"1\">Zeichenzelle des verwalteten Konsolentreibers mit Zeichen, Vordergrund- und Hintergrundfarbe.\nEine Zelle repräsentiert genau ein sichtbares Zeichen an einer Bildschirmposition.</p>\n<p sourcefile=\"api/TuiVision.Core.TConsoleCell.yml\" sourcestartlinenumber=\"4\">Character cell of the managed console driver, carrying a glyph, foreground, and background color.\nA cell represents exactly one visible character at a screen position.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Core.TEvent.yml",
       "output": {
         ".html": {
@@ -150,7 +500,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Core.TEvent",
-      "Summary": "<p sourcefile=\"api/TuiVision.Core.TEvent.yml\" sourcestartlinenumber=\"1\">Mutable event object that carries one payload channel (mouse, key, message).</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TEvent.yml\" sourcestartlinenumber=\"1\">Veränderbares Ereignisobjekt, das genau einen Nutzdatenkanal trägt: Maus, Tastatur oder Nachricht.\nStatische Factory-Methoden erstellen fertig initialisierte Ereignisse; der direkte\nAufruf des Konstruktors ist nicht möglich.</p>\n<p sourcefile=\"api/TuiVision.Core.TEvent.yml\" sourcestartlinenumber=\"5\">Mutable event object that carries exactly one payload channel: mouse, keyboard, or message.\nStatic factory methods create fully initialized events; direct constructor calls are not possible.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -164,7 +514,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Core.TEventKind",
-      "Summary": "<p sourcefile=\"api/TuiVision.Core.TEventKind.yml\" sourcestartlinenumber=\"1\">Event kind values ported from Turbo Vision event codes.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TEventKind.yml\" sourcestartlinenumber=\"1\">Ereignistypen aus dem Turbo-Vision-Eventsystem.\nDie Werte entsprechen den originalen <code>evXxx</code>-Konstanten aus dem C++-Quellcode.</p>\n<p sourcefile=\"api/TuiVision.Core.TEventKind.yml\" sourcestartlinenumber=\"4\">Event type values from the Turbo Vision event system.\nThe values correspond to the original <code>evXxx</code> constants from the C++ source code.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -178,7 +528,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Core.TKeyDownEvent",
-      "Summary": "<p sourcefile=\"api/TuiVision.Core.TKeyDownEvent.yml\" sourcestartlinenumber=\"1\">Key-down payload.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TKeyDownEvent.yml\" sourcestartlinenumber=\"1\">Nutzdaten eines Tastenereignisses.</p>\n<p sourcefile=\"api/TuiVision.Core.TKeyDownEvent.yml\" sourcestartlinenumber=\"3\">Payload of a key-down event.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -192,7 +542,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Core.TMessageEvent",
-      "Summary": "<p sourcefile=\"api/TuiVision.Core.TMessageEvent.yml\" sourcestartlinenumber=\"1\">Command/broadcast payload.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TMessageEvent.yml\" sourcestartlinenumber=\"1\">Nutzdaten einer Befehls- oder Rundfunknachricht.</p>\n<p sourcefile=\"api/TuiVision.Core.TMessageEvent.yml\" sourcestartlinenumber=\"3\">Payload of a command or broadcast message.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -206,7 +556,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Core.TMouseButtons",
-      "Summary": "<p sourcefile=\"api/TuiVision.Core.TMouseButtons.yml\" sourcestartlinenumber=\"1\">Mouse button flags.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TMouseButtons.yml\" sourcestartlinenumber=\"1\">Bitmaske für gedrückte Maustasten.</p>\n<p sourcefile=\"api/TuiVision.Core.TMouseButtons.yml\" sourcestartlinenumber=\"3\">Bit mask for pressed mouse buttons.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -220,7 +570,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Core.TMouseEvent",
-      "Summary": "<p sourcefile=\"api/TuiVision.Core.TMouseEvent.yml\" sourcestartlinenumber=\"1\">Mouse event payload.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TMouseEvent.yml\" sourcestartlinenumber=\"1\">Nutzdaten eines Mausereignisses.</p>\n<p sourcefile=\"api/TuiVision.Core.TMouseEvent.yml\" sourcestartlinenumber=\"3\">Payload of a mouse event.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -234,7 +584,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Core.TObject",
-      "Summary": "<p sourcefile=\"api/TuiVision.Core.TObject.yml\" sourcestartlinenumber=\"1\">Base object for ported Turbo Vision types.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TObject.yml\" sourcestartlinenumber=\"1\">Basisklasse für alle portierten Turbo-Vision-Typen.\nSie legt den grundlegenden Lebenszyklus-Vertrag fest: explizites Herunterfahren\nund optionale Ressourcenfreigabe über <xref href=\"System.IDisposable\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n<p sourcefile=\"api/TuiVision.Core.TObject.yml\" sourcestartlinenumber=\"5\">Base class for all ported Turbo Vision types.\nIt defines the fundamental lifecycle contract: explicit shutdown\nand optional resource release via <xref href=\"System.IDisposable\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -248,7 +598,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Core.TPoint",
-      "Summary": "<p sourcefile=\"api/TuiVision.Core.TPoint.yml\" sourcestartlinenumber=\"1\">2D point type matching Turbo Vision coordinate semantics.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TPoint.yml\" sourcestartlinenumber=\"1\">Zweidimensionaler Punkt, der die Koordinatensemantik von Turbo Vision abbildet.\nDie Felder <xref href=\"TuiVision.Core.TPoint.X\" data-throw-if-not-resolved=\"false\"></xref> und <xref href=\"TuiVision.Core.TPoint.Y\" data-throw-if-not-resolved=\"false\"></xref> entsprechen den originalen\nC++-Feldern <code>x</code> und <code>y</code> in <code>TPoint</code>.</p>\n<p sourcefile=\"api/TuiVision.Core.TPoint.yml\" sourcestartlinenumber=\"5\">Two-dimensional point that mirrors the coordinate semantics of Turbo Vision.\nThe fields <xref href=\"TuiVision.Core.TPoint.X\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"TuiVision.Core.TPoint.Y\" data-throw-if-not-resolved=\"false\"></xref> correspond to the original\nC++ fields <code>x</code> and <code>y</code> in <code>TPoint</code>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -262,7 +612,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Core.TRect",
-      "Summary": "<p sourcefile=\"api/TuiVision.Core.TRect.yml\" sourcestartlinenumber=\"1\">Rectangular region represented as top-left inclusive and bottom-right exclusive.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TRect.yml\" sourcestartlinenumber=\"1\">Rechteckiger Bereich, beschrieben durch eine inklusive obere linke Ecke (<xref href=\"TuiVision.Core.TRect.A\" data-throw-if-not-resolved=\"false\"></xref>)\nund eine exklusive untere rechte Ecke (<xref href=\"TuiVision.Core.TRect.B\" data-throw-if-not-resolved=\"false\"></xref>).\nDieses Koordinatensystem entspricht dem Original von Turbo Vision.</p>\n<p sourcefile=\"api/TuiVision.Core.TRect.yml\" sourcestartlinenumber=\"5\">Rectangular region described by an inclusive top-left corner (<xref href=\"TuiVision.Core.TRect.A\" data-throw-if-not-resolved=\"false\"></xref>)\nand an exclusive bottom-right corner (<xref href=\"TuiVision.Core.TRect.B\" data-throw-if-not-resolved=\"false\"></xref>).\nThis coordinate system matches the original Turbo Vision convention.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -290,7 +640,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Drivers.Console.IConsolePresenter",
-      "Summary": "<p sourcefile=\"api/TuiVision.Drivers.Console.IConsolePresenter.yml\" sourcestartlinenumber=\"1\">Receives a rendered frame from <xref href=\"TuiVision.Drivers.Console.TConsoleDriver\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Drivers.Console.IConsolePresenter.yml\" sourcestartlinenumber=\"1\">Empfängt einen gerenderten Frame von <xref href=\"TuiVision.Drivers.Console.TConsoleDriver\" data-throw-if-not-resolved=\"false\"></xref> und stellt ihn dar.\nImplementierungen können den Frame auf die echte Konsole, einen Test-Spy oder einen\nanderen Ausgabekanal schreiben.</p>\n<p sourcefile=\"api/TuiVision.Drivers.Console.IConsolePresenter.yml\" sourcestartlinenumber=\"5\">Receives a rendered frame from <xref href=\"TuiVision.Drivers.Console.TConsoleDriver\" data-throw-if-not-resolved=\"false\"></xref> and presents it.\nImplementations can write the frame to the real console, a test spy,\nor any other output channel.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -332,7 +682,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Drivers.Console.TConsoleDriver",
-      "Summary": "<p sourcefile=\"api/TuiVision.Drivers.Console.TConsoleDriver.yml\" sourcestartlinenumber=\"1\">Keeps the active back buffer and publishes immutable frame snapshots.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Drivers.Console.TConsoleDriver.yml\" sourcestartlinenumber=\"1\">Verwaltet den aktiven Hinterpuffer und veröffentlicht unveränderliche Frame-Schnappschüsse\nüber das Presenter-Pattern. Rendering-Backends sind dadurch austauschbar.</p>\n<p sourcefile=\"api/TuiVision.Drivers.Console.TConsoleDriver.yml\" sourcestartlinenumber=\"4\">Manages the active back buffer and publishes immutable frame snapshots\nvia the presenter pattern. Rendering backends are therefore interchangeable.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -360,7 +710,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Serialization.ITStreamSerializable",
-      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.ITStreamSerializable.yml\" sourcestartlinenumber=\"1\">Contract for stream-based serialization used by ported Turbo Vision record types.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.ITStreamSerializable.yml\" sourcestartlinenumber=\"1\">Schnittstelle für stream-basierte Serialisierung portierter Turbo-Vision-Record-Typen.\nKlassen, die diese Schnittstelle implementieren, können ihren Zustand in einen\n<xref href=\"TuiVision.Serialization.TBinaryArchiveWriter\" data-throw-if-not-resolved=\"false\"></xref> schreiben und später wiederherstellen.</p>\n<p sourcefile=\"api/TuiVision.Serialization.ITStreamSerializable.yml\" sourcestartlinenumber=\"5\">Contract for stream-based serialization of ported Turbo Vision record types.\nClasses that implement this interface can write their state to a\n<xref href=\"TuiVision.Serialization.TBinaryArchiveWriter\" data-throw-if-not-resolved=\"false\"></xref> and restore it later.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -374,7 +724,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Serialization.TBinaryArchiveReader",
-      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveReader.yml\" sourcestartlinenumber=\"1\">Small binary reader abstraction matching <xref href=\"TuiVision.Serialization.TBinaryArchiveWriter\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveReader.yml\" sourcestartlinenumber=\"1\">Schmale Binär-Reader-Abstraktion, die zu <xref href=\"TuiVision.Serialization.TBinaryArchiveWriter\" data-throw-if-not-resolved=\"false\"></xref> passt.\nKapselt einen <xref href=\"System.IO.BinaryReader\" data-throw-if-not-resolved=\"false\"></xref> mit fester UTF-8-Kodierung.</p>\n<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveReader.yml\" sourcestartlinenumber=\"4\">Thin binary reader abstraction matching <xref href=\"TuiVision.Serialization.TBinaryArchiveWriter\" data-throw-if-not-resolved=\"false\"></xref>.\nWraps a <xref href=\"System.IO.BinaryReader\" data-throw-if-not-resolved=\"false\"></xref> with fixed UTF-8 encoding.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -388,7 +738,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Serialization.TBinaryArchiveWriter",
-      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveWriter.yml\" sourcestartlinenumber=\"1\">Small binary writer abstraction for deterministic payload creation.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveWriter.yml\" sourcestartlinenumber=\"1\">Schmale Binär-Writer-Abstraktion für deterministisches Erstellen von Nutzdaten.\nKapselt einen <xref href=\"System.IO.BinaryWriter\" data-throw-if-not-resolved=\"false\"></xref> mit fester UTF-8-Kodierung.</p>\n<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveWriter.yml\" sourcestartlinenumber=\"4\">Thin binary writer abstraction for deterministic payload creation.\nWraps a <xref href=\"System.IO.BinaryWriter\" data-throw-if-not-resolved=\"false\"></xref> with fixed UTF-8 encoding.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -402,7 +752,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Serialization.TRecordRegistry",
-      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TRecordRegistry.yml\" sourcestartlinenumber=\"1\">Registry that maps stable type identifiers to factory delegates.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TRecordRegistry.yml\" sourcestartlinenumber=\"1\">Registry, die stabile Typbezeichner auf Factory-Delegates abbildet.\nErmöglicht polymorphe Deserialisierung ohne direkte Typabhängigkeiten.</p>\n<p sourcefile=\"api/TuiVision.Serialization.TRecordRegistry.yml\" sourcestartlinenumber=\"4\">Registry that maps stable type identifiers to factory delegates.\nEnables polymorphic deserialization without direct type dependencies.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -416,7 +766,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Serialization.TRecordSerializer",
-      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TRecordSerializer.yml\" sourcestartlinenumber=\"1\">Envelope serializer using type id + payload bytes.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TRecordSerializer.yml\" sourcestartlinenumber=\"1\">Umschlag-Serialisierer, der Typ-ID und Nutzdaten-Bytes in einem binären Format kapselt.\nDas Umschlag-Format ist: Typbezeichner (String) + Nutzdatenlänge (Int32) + Nutzdaten (Bytes).</p>\n<p sourcefile=\"api/TuiVision.Serialization.TRecordSerializer.yml\" sourcestartlinenumber=\"4\">Envelope serializer that wraps a type ID and payload bytes in a binary format.\nThe envelope format is: type identifier (string) + payload length (Int32) + payload (bytes).</p>\n"
     },
     {
       "type": "ManagedReference",

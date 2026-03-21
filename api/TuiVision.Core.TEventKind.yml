@@ -26,15 +26,23 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: TEventKind
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 5
+    startLine: 9
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Event kind values ported from Turbo Vision event codes.
+  summary: >-
+    Ereignistypen aus dem Turbo-Vision-Eventsystem.
+
+    Die Werte entsprechen den originalen <code>evXxx</code>-Konstanten aus dem C++-Quellcode.
+
+
+    Event type values from the Turbo Vision event system.
+
+    The values correspond to the original <code>evXxx</code> constants from the C++ source code.
   example: []
   syntax:
     content: >-
@@ -63,14 +71,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Nothing
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 8
+    startLine: 13
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Kein Ereignis vorhanden. / No event present.
+  example: []
   syntax:
     content: Nothing = 0
     return:
@@ -89,14 +99,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: MouseDown
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 9
+    startLine: 16
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Maustaste wurde gedrückt. / Mouse button was pressed.
+  example: []
   syntax:
     content: MouseDown = 1
     return:
@@ -115,14 +127,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: MouseUp
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 10
+    startLine: 19
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Maustaste wurde losgelassen. / Mouse button was released.
+  example: []
   syntax:
     content: MouseUp = 2
     return:
@@ -141,14 +155,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: MouseMove
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 11
+    startLine: 22
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Maus wurde bewegt. / Mouse was moved.
+  example: []
   syntax:
     content: MouseMove = 4
     return:
@@ -167,14 +183,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: MouseAuto
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 12
+    startLine: 25
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Automatisch wiederholtes Mausereignis (Auto-Repeat). / Auto-repeated mouse event.
+  example: []
   syntax:
     content: MouseAuto = 8
     return:
@@ -193,14 +211,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: KeyDown
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 13
+    startLine: 28
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Eine Taste wurde gedrückt. / A key was pressed.
+  example: []
   syntax:
     content: KeyDown = 16
     return:
@@ -219,14 +239,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Command
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 14
+    startLine: 31
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Befehlsnachricht an ein direktes Ziel. / Command message to a direct target.
+  example: []
   syntax:
     content: Command = 256
     return:
@@ -245,14 +267,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Broadcast
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 15
+    startLine: 34
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Rundfunknachricht an alle Ansichten. / Broadcast message to all views.
+  example: []
   syntax:
     content: Broadcast = 512
     return:
@@ -271,14 +295,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Mouse
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 16
+    startLine: 37
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Kombinationsflag für alle Mausereignistypen. / Combined flag for all mouse event types.
+  example: []
   syntax:
     content: Mouse = MouseDown | MouseUp | MouseMove | MouseAuto
     return:
@@ -298,14 +324,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Keyboard
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 17
+    startLine: 40
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Kombinationsflag für alle Tastaturereignistypen. / Combined flag for all keyboard event types.
+  example: []
   syntax:
     content: Keyboard = 16
     return:
@@ -324,14 +352,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Message
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 18
+    startLine: 43
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: Kombinationsflag für alle Nachrichtenereignistypen. / Combined flag for all message event types.
+  example: []
   syntax:
     content: Message = 65280
     return:
