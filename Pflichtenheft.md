@@ -121,12 +121,65 @@ docs/
 5. **Dialog-/Control-Schicht**: Eingabezeilen, Listen, Scrollbars, Buttons, usw.
 6. **Editor/Datei/Hilfe/Streams**: Editor, Resource-, Stream- und Help-Komponenten
 7. **Treiberkonsolidierung**: Managed Console-Treiber unter .NET Core ohne native OS-Bindings
-8. **Beispiele**: Portierung aller 25 Beispiele in Wellen
+8. **Beispiele**: Portierung aller 25 Beispiele in vier thematisch-technischen Wellen; jede Welle wird erst begonnen, wenn die zugehoerigen Framework-Phasen abgeschlossen sind (Abhaengigkeitsprinzip)
 
 ### 8.2 Beispielprogramme (MUSS-Umfang)
-Zu portieren sind alle vorhandenen Beispielordner:
-`bhelp`, `clipboard`, `cyrillic`, `demo`, `desklogo`, `dlgdsn`, `dyntxt`, `eterm`, `fonts`, `helpdemo`, `i18n`, `inplis`, `listvi`, `msgcls`, `progba`, `sdlg`, `sdlg2`, `tcombo`, `terminal`, `tprogb`, `tutorial`, `tvedit`, `tvhc`, `videomode`, `xterm`.
+Zu portieren sind alle 25 vorhandenen Beispielordner, eingeteilt in vier Wellen nach technischer Abhaengigkeit.
 Fuer jedes portierte Beispiel ist eine eigene didaktische Dokumentationsseite in `docs/guides/examples/` bereitzustellen.
+
+**Welle 1 – Grundlegende Anwendungsstruktur** (nach Abschluss Phase 4: Anwendungsrahmen)
+
+Benoetigt: `TProgram`, `TApplication`, `TDesktop`, `TMenuBar`, `TStatusLine`.
+Keine Controls, keine Dialoge, kein Editor, kein Hilfesystem.
+
+| Beispiel | Inhalt |
+|---|---|
+| `desklogo` | Minimale App: statisches Logo auf dem Desktop |
+| `msgcls` | Benutzerdefinierte Ereignisklassen und Nachrichtenverarbeitung |
+| `tutorial` | Schrittweise Einfuehrung in die TuiVision-Grundkonzepte |
+| `videomode` | Wechsel von Anzeigemodi (Pufferbreite/-hoehe) |
+
+**Welle 2 – Controls und Dialoge** (nach Abschluss Phase 5: Dialog-/Control-Schicht)
+
+Benoetigt: Eingabezeilen, Listen, Scrollbars, Buttons, Checkboxes, RadioButtons, Dialoge.
+
+| Beispiel | Inhalt |
+|---|---|
+| `clipboard` | Zwischenablage-Integration in Controls |
+| `demo` | Vollstaendige Turbo-Vision-Kerndemo (zeigt alle Basis-Controls) |
+| `dlgdsn` | Dialog-Designer: dynamisch zusammengesetzte Dialoge |
+| `dyntxt` | Dynamisch erzeugter Text in Views |
+| `inplis` | Eingabelisten mit `TInputLine` |
+| `listvi` | Listenansichten mit `TListViewer` |
+| `progba` | Einfacher Fortschrittsbalken |
+| `sdlg` | Standarddialoge (Datei-, Farb-, Zeichensatz-Auswahl) |
+| `sdlg2` | Erweiterte Standarddialoge |
+| `tcombo` | Kombinationsfelder (`TComboBox`) |
+| `tprogb` | Erweiterter Fortschrittsbalken mit Abbruch |
+
+**Welle 3 – Editor, Dateien, Hilfe und Streams** (nach Abschluss Phase 6: Editor/Datei/Hilfe/Streams)
+
+Benoetigt: `TEditor`, `TFileDialog`, `THelpViewer`, Stream- und Ressourcen-Infrastruktur.
+
+| Beispiel | Inhalt |
+|---|---|
+| `bhelp` | Grundlegendes Hilfesystem mit kontextsensitiven Themen |
+| `helpdemo` | Interaktive Demonstration des Hilfesystems |
+| `i18n` | Internationalisierung: mehrsprachige Texte und Ressourcen |
+| `tvedit` | Vollstaendiger Texteditor (Datei oeffnen, bearbeiten, speichern) |
+| `tvhc` | Hilfe-Compiler: Konvertierung von Quelltext in binaere Hilfedatei |
+
+**Welle 4 – Terminal-Emulation und erweiterte Zeichensaetze** (nach Abschluss Phase 7: Treiberkonsolidierung)
+
+Benoetigt: Managed Console-Treiber, plattformunabhaengige Zeichensatz- und Terminalpufferverwaltung.
+
+| Beispiel | Inhalt |
+|---|---|
+| `cyrillic` | Kyrillische Zeichensatz-Unterstuetzung im Textpuffer |
+| `eterm` | Erweiterter Terminal-Emulator |
+| `fonts` | Zeichensatz-Verwaltung und Darstellung alternativer Fonts |
+| `terminal` | Einfache Terminal-Integration |
+| `xterm` | XTerm-Protokoll-Emulation |
 
 ## 9. Test- und Qualitaetskonzept
 
