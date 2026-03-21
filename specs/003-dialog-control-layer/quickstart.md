@@ -174,6 +174,21 @@ dotnet format --verify-no-changes
 docfx docfx.json
 ```
 
+Zusätzlicher Governance-Check / Additional governance check:
+
+```bash
+# Falls im Feature JSON-Hilfsdateien, Testdaten oder Tooling ergänzt wurden:
+# Nur System.Text.Json verwenden; keine implizite Newtonsoft.Json-Einführung
+rg -n "Newtonsoft\\.Json|PackageReference Include=\"Newtonsoft\\.Json\"" \
+  src tests specs/003-dialog-control-layer
+```
+
+Der Check muss leer bleiben, solange keine dokumentierte Ausnahme für
+`Newtonsoft.Json` im Plan oder PR begründet wurde.
+
+The check must return no matches unless the plan or PR documents an approved
+exception for `Newtonsoft.Json`.
+
 ---
 
 ## Referenz-Quellen / Reference Sources

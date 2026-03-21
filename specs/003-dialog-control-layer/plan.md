@@ -33,7 +33,10 @@ TConsoleBuffer); `TuiVision.Compatibility` (Tastatur-Scan-Codes / keyboard scan 
 **Performance Goals**: Tastatur-Events werden innerhalb eines Event-Loop-Ticks verarbeitet
 und gerendert; kein wahrnehmbares Lag (<16 ms pro Keystroke — Standard für TUI-Anwendungen)
 **Constraints**: Kein P/Invoke; kein nativer Code; CS1591 nicht unterdrückt;
-alle OS-Anpassungen ausschließlich in `TuiVision.Drivers.Console`
+alle OS-Anpassungen ausschließlich in `TuiVision.Drivers.Console`; falls für dieses
+Feature später doch projektinternes JSON in Tests, Hilfswerkzeugen oder
+Begleitformaten benötigt wird, ist dafür `System.Text.Json` verbindlich und
+`Newtonsoft.Json` nur mit dokumentierter Ausnahme zulässig
 **Scale/Scope**: 13 neue Produktions-Klassen + 13 neue Test-Klassen; Coverage-Gate ≥ 70 %
 auf dem gesamten Modul `TuiVision.Controls`
 
@@ -57,7 +60,10 @@ auf dem gesamten Modul `TuiVision.Controls`
 **Post-Design Re-check**: Alle Prinzipien nach Phase 1 weiterhin erfüllt. `TDialog` erbt
 von `TGroup` (bestehend in `TuiVision.Controls`) — keine neue Modul-Abhängigkeit.
 `TStringList` ist keine `TView`-Subklasse (kein visuelles Rendering) — korrekt als
-eigenständige Hilfsklasse ohne Modulgrenzen-Verletzung.
+eigenständige Hilfsklasse ohne Modulgrenzen-Verletzung. Die Constitution-Ergänzung
+zur JSON-Bibliothek ist derzeit ebenfalls erfüllt, weil dieses Feature keine
+JSON-Schnittstelle definiert; eventuelle spätere JSON-Hilfsformate müssten
+`System.Text.Json` verwenden.
 
 ---
 
