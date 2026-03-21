@@ -33,6 +33,10 @@
 
 [Gates determined based on constitution file]
 
+- Statistical-documentation impact identified; schedule an update to
+  `docs/project-statistics.md` when the feature phase or agent-delivered change
+  lands.
+
 ## Project Structure
 
 ### Documentation (this feature)

@@ -4,6 +4,8 @@ items:
   commentId: N:TuiVision.Core
   id: TuiVision.Core
   children:
+  - TuiVision.Core.TConsoleBuffer
+  - TuiVision.Core.TConsoleCell
   - TuiVision.Core.TEvent
   - TuiVision.Core.TEventKind
   - TuiVision.Core.TKeyDownEvent
@@ -23,6 +25,20 @@ items:
   assemblies:
   - TuiVision.Core
 references:
+- uid: TuiVision.Core.TConsoleBuffer
+  commentId: T:TuiVision.Core.TConsoleBuffer
+  parent: TuiVision.Core
+  href: TuiVision.Core.TConsoleBuffer.html
+  name: TConsoleBuffer
+  nameWithType: TConsoleBuffer
+  fullName: TuiVision.Core.TConsoleBuffer
+- uid: TuiVision.Core.TConsoleCell
+  commentId: T:TuiVision.Core.TConsoleCell
+  parent: TuiVision.Core
+  href: TuiVision.Core.TConsoleCell.html
+  name: TConsoleCell
+  nameWithType: TConsoleCell
+  fullName: TuiVision.Core.TConsoleCell
 - uid: TuiVision.Core.TEventKind
   commentId: T:TuiVision.Core.TEventKind
   parent: TuiVision.Core

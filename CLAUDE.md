@@ -53,6 +53,9 @@ Tests use MSTest. Test projects mirror source projects (e.g., `TuiVision.Core.Te
 
 ### Documentation
 
+- Use `System.Text.Json` for project-owned JSON parsing and serialization.
+- Introduce `Newtonsoft.Json` only with documented justification and explicit
+  reviewer approval.
 - Explanatory documentation must be bilingual (German first, English second) with CEFR-B2 readability.
 - Public API changes must include complete XML documentation updates.
 - Run `docfx docfx.json` when root config exists and API/XML docs changed.
@@ -69,6 +72,8 @@ Feature branches use the pattern `codex/<feature-description>`. CI runs on pushe
 - C# `latest` (C# 14) / .NET 10 (`net10.0`) + TuiVision.Core (TPoint, TRect, TEvent, TObject, TConsoleBuffer ← verschoben) (001-view-system-tgroup)
 - C# `latest` on .NET 10 (`net10.0`) + Existing project modules `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`; MSTest for tests; docfx for API documentation validation (002-application-framework)
 - N/A (in-memory UI state only) (002-application-framework)
+- C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core` (TView, TGroup, TEvent, TObject, TPoint, TRect, (003-dialog-control-layer)
+- N/A — in-memory UI state only; keine Persistenz in Phase 5 (003-dialog-control-layer)
 
 ## Recent Changes
 - 001-view-system-tgroup: Added C# `latest` (C# 14) / .NET 10 (`net10.0`) + TuiVision.Core (TPoint, TRect, TEvent, TObject, TConsoleBuffer ← verschoben)
@@ -82,3 +87,9 @@ Feature branches use the pattern `codex/<feature-description>`. CI runs on pushe
   - `.github/copilot-instructions.md`
 - Do not leave shared guidance synchronized in only one of these files.
 - If an agent-specific file needs intentional divergence, document the reason in the same change.
+
+## Project Statistics
+
+- Maintain `docs/project-statistics.md` as the living statistics ledger for the repository.
+- Update the file after each completed Spec-Kit implementation phase, after each agent-driven repository change, or when a refresh is explicitly requested.
+- Each update must capture branch/phase, observable work window, production/test/documentation line counts, main work packages, and the conservative manual baseline of 80 code lines per day for an experienced developer.

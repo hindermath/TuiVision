@@ -27,15 +27,23 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: TViewState
     path: src/TuiVision.Controls/TView.cs
-    startLine: 7
+    startLine: 11
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
-  summary: State mask for a view.
+  summary: >-
+    Zustandsmaske für eine Ansicht.
+
+    Die Werte entsprechen den <code>sfXxx</code>-Konstanten aus dem originalen Turbo-Vision-C++-Code.
+
+
+    State mask for a view.
+
+    The values correspond to the <code>sfXxx</code> constants from the original Turbo Vision C++ code.
   example: []
   syntax:
     content: >-
@@ -64,14 +72,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Visible
     path: src/TuiVision.Controls/TView.cs
-    startLine: 10
+    startLine: 15
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
+  summary: Die Ansicht ist sichtbar. / The view is visible.
+  example: []
   syntax:
     content: Visible = 1
     return:
@@ -90,14 +100,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: CursorVisible
     path: src/TuiVision.Controls/TView.cs
-    startLine: 11
+    startLine: 18
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
+  summary: Der Cursor ist sichtbar. / The cursor is visible.
+  example: []
   syntax:
     content: CursorVisible = 2
     return:
@@ -116,14 +128,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: CursorInsert
     path: src/TuiVision.Controls/TView.cs
-    startLine: 12
+    startLine: 21
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
+  summary: Der Cursor befindet sich im Einfügemodus. / The cursor is in insert mode.
+  example: []
   syntax:
     content: CursorInsert = 4
     return:
@@ -142,14 +156,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Shadow
     path: src/TuiVision.Controls/TView.cs
-    startLine: 13
+    startLine: 24
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
+  summary: Die Ansicht wirft einen Schatten. / The view casts a shadow.
+  example: []
   syntax:
     content: Shadow = 8
     return:
@@ -168,14 +184,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Active
     path: src/TuiVision.Controls/TView.cs
-    startLine: 14
+    startLine: 27
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
+  summary: Die Ansicht gehört zum aktiven Fenster. / The view belongs to the active window.
+  example: []
   syntax:
     content: Active = 16
     return:
@@ -194,14 +212,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Selected
     path: src/TuiVision.Controls/TView.cs
-    startLine: 15
+    startLine: 30
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
+  summary: Die Ansicht ist ausgewählt. / The view is selected.
+  example: []
   syntax:
     content: Selected = 32
     return:
@@ -220,14 +240,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Focused
     path: src/TuiVision.Controls/TView.cs
-    startLine: 16
+    startLine: 33
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
+  summary: Die Ansicht hat den Eingabefokus. / The view has input focus.
+  example: []
   syntax:
     content: Focused = 64
     return:
@@ -246,14 +268,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Dragging
     path: src/TuiVision.Controls/TView.cs
-    startLine: 17
+    startLine: 36
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
+  summary: Die Ansicht wird gerade verschoben oder skaliert. / The view is currently being dragged or resized.
+  example: []
   syntax:
     content: Dragging = 128
     return:
@@ -272,14 +296,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Disabled
     path: src/TuiVision.Controls/TView.cs
-    startLine: 18
+    startLine: 39
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
+  summary: Die Ansicht ist deaktiviert und nimmt keine Eingaben entgegen. / The view is disabled and does not accept input.
+  example: []
   syntax:
     content: Disabled = 256
     return:
@@ -298,14 +324,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Modal
     path: src/TuiVision.Controls/TView.cs
-    startLine: 19
+    startLine: 42
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
+  summary: Die Ansicht ist modal und blockiert alle anderen Eingaben. / The view is modal and blocks all other input.
+  example: []
   syntax:
     content: Modal = 512
     return:
@@ -324,14 +352,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Default
     path: src/TuiVision.Controls/TView.cs
-    startLine: 20
+    startLine: 45
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
+  summary: Die Ansicht ist die Standard-Schaltfläche (z. B. bei Enter). / The view is the default button (e.g. activated by Enter).
+  example: []
   syntax:
     content: Default = 1024
     return:
@@ -350,14 +380,16 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Exposed
     path: src/TuiVision.Controls/TView.cs
-    startLine: 21
+    startLine: 48
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
+  summary: Die Ansicht ist nicht vollständig von anderen Ansichten verdeckt. / The view is not fully hidden behind other views.
+  example: []
   syntax:
     content: Exposed = 2048
     return:

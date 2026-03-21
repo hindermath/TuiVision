@@ -11,6 +11,26 @@ namespace TuiVision.Controls;
 public static class ShellCommandIds
 {
     /// <summary>
+    /// Bestätigt einen Dialog oder eine Aktion. / Confirms a dialog or action.
+    /// </summary>
+    public const ushort cmOK = 10;
+
+    /// <summary>
+    /// Bricht einen Dialog oder eine Aktion ab. / Cancels a dialog or action.
+    /// </summary>
+    public const ushort cmCancel = 11;
+
+    /// <summary>
+    /// Bestätigt eine Ja/Nein-Frage mit Ja. / Confirms a yes/no question with yes.
+    /// </summary>
+    public const ushort cmYes = 12;
+
+    /// <summary>
+    /// Bestätigt eine Ja/Nein-Frage mit Nein. / Confirms a yes/no question with no.
+    /// </summary>
+    public const ushort cmNo = 13;
+
+    /// <summary>
     /// Beendet die Anwendung. / Quits the application.
     /// </summary>
     public const ushort cmQuit = 101;

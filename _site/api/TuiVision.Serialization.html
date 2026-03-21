@@ -96,22 +96,34 @@ Classes
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Serialization.TBinaryArchiveReader.html">TBinaryArchiveReader</a></dt>
-      <dd><p>Small binary reader abstraction matching <a class="xref" href="TuiVision.Serialization.TBinaryArchiveWriter.html">TBinaryArchiveWriter</a>.</p>
+      <dd><p>Schmale Binär-Reader-Abstraktion, die zu <a class="xref" href="TuiVision.Serialization.TBinaryArchiveWriter.html">TBinaryArchiveWriter</a> passt.
+Kapselt einen <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a> mit fester UTF-8-Kodierung.</p>
+<p>Thin binary reader abstraction matching <a class="xref" href="TuiVision.Serialization.TBinaryArchiveWriter.html">TBinaryArchiveWriter</a>.
+Wraps a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a> with fixed UTF-8 encoding.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Serialization.TBinaryArchiveWriter.html">TBinaryArchiveWriter</a></dt>
-      <dd><p>Small binary writer abstraction for deterministic payload creation.</p>
+      <dd><p>Schmale Binär-Writer-Abstraktion für deterministisches Erstellen von Nutzdaten.
+Kapselt einen <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a> mit fester UTF-8-Kodierung.</p>
+<p>Thin binary writer abstraction for deterministic payload creation.
+Wraps a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a> with fixed UTF-8 encoding.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Serialization.TRecordRegistry.html">TRecordRegistry</a></dt>
-      <dd><p>Registry that maps stable type identifiers to factory delegates.</p>
+      <dd><p>Registry, die stabile Typbezeichner auf Factory-Delegates abbildet.
+Ermöglicht polymorphe Deserialisierung ohne direkte Typabhängigkeiten.</p>
+<p>Registry that maps stable type identifiers to factory delegates.
+Enables polymorphic deserialization without direct type dependencies.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Serialization.TRecordSerializer.html">TRecordSerializer</a></dt>
-      <dd><p>Envelope serializer using type id + payload bytes.</p>
+      <dd><p>Umschlag-Serialisierer, der Typ-ID und Nutzdaten-Bytes in einem binären Format kapselt.
+Das Umschlag-Format ist: Typbezeichner (String) + Nutzdatenlänge (Int32) + Nutzdaten (Bytes).</p>
+<p>Envelope serializer that wraps a type ID and payload bytes in a binary format.
+The envelope format is: type identifier (string) + payload length (Int32) + payload (bytes).</p>
 </dd>
     </dl>
     <h3 id="interfaces">
@@ -119,7 +131,12 @@ Interfaces
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Serialization.ITStreamSerializable.html">ITStreamSerializable</a></dt>
-      <dd><p>Contract for stream-based serialization used by ported Turbo Vision record types.</p>
+      <dd><p>Schnittstelle für stream-basierte Serialisierung portierter Turbo-Vision-Record-Typen.
+Klassen, die diese Schnittstelle implementieren, können ihren Zustand in einen
+<a class="xref" href="TuiVision.Serialization.TBinaryArchiveWriter.html">TBinaryArchiveWriter</a> schreiben und später wiederherstellen.</p>
+<p>Contract for stream-based serialization of ported Turbo Vision record types.
+Classes that implement this interface can write their state to a
+<a class="xref" href="TuiVision.Serialization.TBinaryArchiveWriter.html">TBinaryArchiveWriter</a> and restore it later.</p>
 </dd>
     </dl>
 

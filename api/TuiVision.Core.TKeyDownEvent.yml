@@ -21,15 +21,19 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: TKeyDownEvent
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 43
+    startLine: 117
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Key-down payload.
+  summary: >-
+    Nutzdaten eines Tastenereignisses.
+
+
+    Payload of a key-down event.
   example: []
   syntax:
     content: 'public readonly record struct TKeyDownEvent : IEquatable<TKeyDownEvent>'
@@ -57,29 +61,53 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 43
+    startLine: 117
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Key-down payload.
+  summary: >-
+    Nutzdaten eines Tastenereignisses.
+
+
+    Payload of a key-down event.
   example: []
   syntax:
     content: public TKeyDownEvent(char CharCode, byte ScanCode, ushort KeyCode, ushort ShiftState, byte RawScanCode)
     parameters:
     - id: CharCode
       type: System.Char
+      description: >-
+        Das Zeichen, das der Taste entspricht (0, wenn kein druckbares Zeichen vorhanden).
+
+        The character corresponding to the key (0 if no printable character is available).
     - id: ScanCode
       type: System.Byte
+      description: >-
+        Der Hardware-Scan-Code der Taste.
+
+        The hardware scan code of the key.
     - id: KeyCode
       type: System.UInt16
+      description: >-
+        Der zusammengesetzte Turbo-Vision-Tastencode (Scan-Code im High-Byte, Zeichencode im Low-Byte).
+
+        The composed Turbo Vision key code (scan code in the high byte, char code in the low byte).
     - id: ShiftState
       type: System.UInt16
+      description: >-
+        Die aktiven Umschalttasten als Bitmaske (Shift, Ctrl, Alt).
+
+        The active modifier keys as a bit mask (Shift, Ctrl, Alt).
     - id: RawScanCode
       type: System.Byte
+      description: >-
+        Der unverarbeitete Hardware-Scan-Code vor einer möglichen Umwandlung.
+
+        The unprocessed hardware scan code before any possible conversion.
     content.vb: Public Sub New(CharCode As Char, ScanCode As Byte, KeyCode As UShort, ShiftState As UShort, RawScanCode As Byte)
   overload: TuiVision.Core.TKeyDownEvent.#ctor*
   nameWithType.vb: TKeyDownEvent.New(Char, Byte, UShort, UShort, Byte)
@@ -99,14 +127,19 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: CharCode
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 43
+    startLine: 117
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Das Zeichen, das der Taste entspricht (0, wenn kein druckbares Zeichen vorhanden).
+
+    The character corresponding to the key (0 if no printable character is available).
+  example: []
   syntax:
     content: public char CharCode { get; init; }
     parameters: []
@@ -128,14 +161,19 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: ScanCode
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 43
+    startLine: 117
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Der Hardware-Scan-Code der Taste.
+
+    The hardware scan code of the key.
+  example: []
   syntax:
     content: public byte ScanCode { get; init; }
     parameters: []
@@ -157,14 +195,19 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: KeyCode
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 43
+    startLine: 117
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Der zusammengesetzte Turbo-Vision-Tastencode (Scan-Code im High-Byte, Zeichencode im Low-Byte).
+
+    The composed Turbo Vision key code (scan code in the high byte, char code in the low byte).
+  example: []
   syntax:
     content: public ushort KeyCode { get; init; }
     parameters: []
@@ -186,14 +229,19 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: ShiftState
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 43
+    startLine: 117
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Die aktiven Umschalttasten als Bitmaske (Shift, Ctrl, Alt).
+
+    The active modifier keys as a bit mask (Shift, Ctrl, Alt).
+  example: []
   syntax:
     content: public ushort ShiftState { get; init; }
     parameters: []
@@ -215,14 +263,19 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: RawScanCode
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 43
+    startLine: 117
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Der unverarbeitete Hardware-Scan-Code vor einer möglichen Umwandlung.
+
+    The unprocessed hardware scan code before any possible conversion.
+  example: []
   syntax:
     content: public byte RawScanCode { get; init; }
     parameters: []

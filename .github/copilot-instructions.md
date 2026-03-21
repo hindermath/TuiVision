@@ -53,12 +53,25 @@ All projects target `net10.0` with `Nullable: enable`, `ImplicitUsings: enable`,
 - **No native dependencies**: No P/Invoke or native interop. All drivers must be pure managed code.
 - **Value types**: Use `readonly record struct` for immutable payloads (e.g., `TMouseEvent`, `TKeyDownEvent`). Use `struct` (mutable) for geometry types like `TPoint` and `TRect` that match original Turbo Vision mutation semantics.
 - **Flags enums**: Use `[Flags]` enums (e.g., `TEventKind`, `TViewState`, `TViewOptions`) matching original Turbo Vision bitmask values.
+- **JSON handling**: Use `System.Text.Json` for project-owned JSON parsing and serialization. Introduce `Newtonsoft.Json` only with documented justification and explicit reviewer approval.
 - **XML documentation**: All public APIs require `<summary>`, `<param>`, and `<returns>` XML comments. Explanatory documentation blocks must be **bilingual: German first, English second**, both at CEFR-B2 readability. Update docs in the same commit as the API change.
 - **Test naming**: `ClassName_MethodName_Behavior` (e.g., `TRect_Contains_UsesTopLeftInclusiveBottomRightExclusive`).
 - **Branch naming**: Feature branches follow `codex/<feature-description>`.
 - **Porting guidance**: Consult `tv203s/contrib/tvision/` for original behavior when porting new classes. The C# port modernizes idioms — it does not translate line-for-line.
 
 ## Active Feature Context
+
+### 003-dialog-control-layer
+- Align active work with `specs/003-dialog-control-layer/plan.md`
+- Implement 13 new classes in `src/TuiVision.Controls` in dependency order: `TStringList` → `TScrollBar` → `TScroller` → `TStaticText` → `TCluster` → `TCheckBoxes` → `TRadioButtons` → `TLabel` → `TListViewer` → `TListBox` → `TButton` → `TInputLine` → `TDialog`
+- `TDialog.Run()` is synchronously blocking (inner event loop); it returns a `ushort` command ID
+- Tab/Shift-Tab focus navigation in `TDialog` is wrap-around (circular child list inherited from `TGroup`)
+- `TButton` supports `TButtonFlags.bfDefault` — activated by Enter when the focused control does not consume Enter; sets `TViewState.Default` (0x400)
+- `TScrollBar` is optional (nullable) for `TListBox` and `TListViewer`
+- `TCluster` is abstract; `TCheckBoxes` uses a bitmask `uint Value`; `TRadioButtons` uses an index `uint Value`
+- All 13 classes require complete bilingual XML documentation (German first, English second, CEFR-B2) for every member including non-public ones
+- Follow TDD Red-Green-Refactor with separate commits: test (Red) before implementation (Green)
+- Coverage gate: `TuiVision.Controls` ≥ 70% line coverage after all 13 classes are added
 
 ### 002-application-framework
 - Align active work with `specs/002-application-framework/plan.md`
@@ -79,3 +92,9 @@ All projects target `net10.0` with `Nullable: enable`, `ImplicitUsings: enable`,
   - `.github/copilot-instructions.md`
 - Shared guidance must not be updated in only one of these files.
 - Any intentional agent-specific divergence must be called out explicitly in the same change.
+
+## Project Statistics
+
+- Maintain `docs/project-statistics.md` as the living statistics ledger for the repository.
+- Update the file after each completed Spec-Kit implementation phase, after each agent-driven repository change, or when a refresh is explicitly requested.
+- Each update must capture branch/phase, observable work window, production/test/documentation line counts, main work packages, and the conservative manual baseline of 80 code lines per day for an experienced developer.

@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TView | TuiVision Documentation ">
       
-      <meta name="description" content="Base visual element ported from Turbo Vision&#39;s TView.">
+      <meta name="description" content="Grundlegendes visuelles Element, portiert von TView aus Turbo Vision. Alle sichtbaren Elemente der Oberfl&#228;che erben von dieser Klasse und erben damit Koordinatenverwaltung, Zustandsflags und Ereignisverarbeitung. Fundamental visual element ported from TView in Turbo Vision. All visible elements of the user interface inherit from this class, thereby inheriting coordinate management, state flags, and event handling.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Controls_TView.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TView%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/003-dialog-control-layer/apiSpec/new?filename=TuiVision_Controls_TView.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TView%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TuiVision_Controls_TView" data-uid="TuiVision.Controls.TView" class="text-break">
-Class TView  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L49"><i class="bi bi-code-slash"></i></a>
+Class TView  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L111"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
   <dl><dt>Assembly</dt><dd>TuiVision.Controls.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Base visual element ported from Turbo Vision's TView.</p>
+  <div class="markdown summary"><p>Grundlegendes visuelles Element, portiert von <code>TView</code> aus Turbo Vision.
+Alle sichtbaren Elemente der Oberfläche erben von dieser Klasse und erben damit
+Koordinatenverwaltung, Zustandsflags und Ereignisverarbeitung.</p>
+<p>Fundamental visual element ported from <code>TView</code> in Turbo Vision.
+All visible elements of the user interface inherit from this class, thereby
+inheriting coordinate management, state flags, and event handling.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -118,6 +123,21 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
   </dl>
 
 
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="TuiVision.Controls.TButton.html">TButton</a></div>
+      <div><a class="xref" href="TuiVision.Controls.TCluster.html">TCluster</a></div>
+      <div><a class="xref" href="TuiVision.Controls.TGroup.html">TGroup</a></div>
+      <div><a class="xref" href="TuiVision.Controls.TInputLine.html">TInputLine</a></div>
+      <div><a class="xref" href="TuiVision.Controls.TListViewer.html">TListViewer</a></div>
+      <div><a class="xref" href="TuiVision.Controls.TMenuBar.html">TMenuBar</a></div>
+      <div><a class="xref" href="TuiVision.Controls.TScrollBar.html">TScrollBar</a></div>
+      <div><a class="xref" href="TuiVision.Controls.TScroller.html">TScroller</a></div>
+      <div><a class="xref" href="TuiVision.Controls.TStaticText.html">TStaticText</a></div>
+      <div><a class="xref" href="TuiVision.Controls.TStatusLine.html">TStatusLine</a></div>
+    </dd>
+  </dl>
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
@@ -164,10 +184,16 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView__ctor_TuiVision_Core_TRect_" data-uid="TuiVision.Controls.TView.#ctor(TuiVision.Core.TRect)">
   TView(TRect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L153"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Erstellt eine neue Ansicht mit dem angegebenen Begrenzungsrahmen.
+Der anfängliche Zustand ist <a class="xref" href="TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Visible">Visible</a>;
+die Ereignismaske reagiert auf Mausklicks, Tastenanschläge und Befehle.</p>
+<p>Creates a new view with the specified bounding rectangle.
+The initial state is <a class="xref" href="TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Visible">Visible</a>;
+the event mask responds to mouse clicks, key presses, and commands.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -177,7 +203,11 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>bounds</code> <a class="xref" href="TuiVision.Core.TRect.html">TRect</a></dt>
-    <dd></dd>
+    <dd><p>Der anfängliche Begrenzungsrahmen in den Koordinaten des Eigentümers.
+Breite und Höhe dürfen nicht negativ sein.</p>
+<p>The initial bounding rectangle in the owner's coordinate space.
+Width and height must not be negative.</p>
+</dd>
   </dl>
 
 
@@ -188,6 +218,13 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Wird ausgelöst, wenn die Breite oder Höhe von <code class="paramref">bounds</code> negativ ist.
+Thrown when the width or height of <code class="paramref">bounds</code> is negative.</p>
+</dd>
+  </dl>
 
 
 
@@ -199,10 +236,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_EventMask" data-uid="TuiVision.Controls.TView.EventMask">
   EventMask
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L192"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Bitmaske der Ereignistypen, auf die diese Ansicht reagiert.</p>
+<p>Bit mask of event types that this view responds to.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -230,10 +269,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_Options" data-uid="TuiVision.Controls.TView.Options">
   Options
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L185"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Die Verhaltensoptionen dieser Ansicht.</p>
+<p>The behavior options of this view.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -261,10 +302,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_Origin" data-uid="TuiVision.Controls.TView.Origin">
   Origin
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L206"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Die Position der oberen linken Ecke der Ansicht im Koordinatenraum des Eigentümers.</p>
+<p>The position of the top-left corner of the view in the owner's coordinate space.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -288,14 +331,51 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
 
 
+  <a id="TuiVision_Controls_TView_Owner_" data-uid="TuiVision.Controls.TView.Owner*"></a>
+
+  <h3 id="TuiVision_Controls_TView_Owner" data-uid="TuiVision.Controls.TView.Owner">
+  Owner
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L169"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die Eigentümer-Gruppe dieser Ansicht, oder <code>null</code>, wenn die Ansicht keiner Gruppe angehört.
+Wird von <a class="xref" href="TuiVision.Controls.TGroup.html">TGroup</a> beim Einfügen gesetzt und beim Entfernen auf <code>null</code> zurückgesetzt.</p>
+<p>The owner group of this view, or <code>null</code> if the view does not belong to any group.
+Set by <a class="xref" href="TuiVision.Controls.TGroup.html">TGroup</a> on insertion and reset to <code>null</code> on removal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TGroup? Owner { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TuiVision.Controls.TGroup.html">TGroup</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TuiVision_Controls_TView_Size_" data-uid="TuiVision.Controls.TView.Size*"></a>
 
   <h3 id="TuiVision_Controls_TView_Size" data-uid="TuiVision.Controls.TView.Size">
   Size
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L213"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Die Größe der Ansicht als Breite-Höhe-Vektor.</p>
+<p>The size of the view as a width-height vector.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -323,10 +403,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_State" data-uid="TuiVision.Controls.TView.State">
   State
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L199"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Die aktuellen Zustandsflags dieser Ansicht.</p>
+<p>The current state flags of this view.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -354,14 +436,86 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 </h2>
 
 
+  <a id="TuiVision_Controls_TView_Draw_" data-uid="TuiVision.Controls.TView.Draw*"></a>
+
+  <h3 id="TuiVision_Controls_TView_Draw" data-uid="TuiVision.Controls.TView.Draw">
+  Draw()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L417"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Zeichnet den Inhalt dieser Ansicht.
+Die Basisimplementierung ist ein No-Op; abgeleitete Klassen überschreiben diese Methode,
+um ihren Inhalt in den Puffer der Eigentümer-Gruppe zu schreiben.
+<a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView">DrawView()</a> ist die Template-Methode; abgeleitete Klassen überschreiben
+ausschließlich <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw">Draw()</a>.</p>
+<p>Draws the content of this view.
+The base implementation is a no-op; derived classes override this method
+to write their content into the owner group's buffer.
+<a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView">DrawView()</a> is the template method; derived classes override
+only <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw">Draw()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Draw()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_TView_DrawView_" data-uid="TuiVision.Controls.TView.DrawView*"></a>
+
+  <h3 id="TuiVision_Controls_TView_DrawView" data-uid="TuiVision.Controls.TView.DrawView">
+  DrawView()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L430"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Template-Methode: Prüft Sichtbarkeit und Lock-Status der Eigentümer-Gruppe,
+bevor sie <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw">Draw()</a> aufruft.
+Sichtbar = <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetState_TuiVision_Controls_TViewState_">GetState(TViewState)</a>(<a class="xref" href="TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Visible">Visible</a>) == <code>true</code>.
+Ist <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Owner">Owner</a> nicht <code>null</code> und gesperrt (<code>IsLocked</code>), wird nicht gezeichnet.</p>
+<p>Template method: checks visibility and the owner group's lock status
+before calling <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw">Draw()</a>.
+Visible = <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetState_TuiVision_Controls_TViewState_">GetState(TViewState)</a>(<a class="xref" href="TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Visible">Visible</a>) == <code>true</code>.
+If <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Owner">Owner</a> is not <code>null</code> and locked (<code>IsLocked</code>), drawing is skipped.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawView()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="TuiVision_Controls_TView_GetBounds_" data-uid="TuiVision.Controls.TView.GetBounds*"></a>
 
   <h3 id="TuiVision_Controls_TView_GetBounds" data-uid="TuiVision.Controls.TView.GetBounds">
   GetBounds()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L224"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gibt den aktuellen Begrenzungsrahmen in den Koordinaten des Eigentümers zurück.</p>
+<p>Returns the current bounding rectangle in the owner's coordinate space.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -372,7 +526,49 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="TuiVision.Core.TRect.html">TRect</a></dt>
-    <dd></dd>
+    <dd><p>Der Begrenzungsrahmen dieser Ansicht.
+The bounding rectangle of this view.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_TView_GetDrawBuffer_" data-uid="TuiVision.Controls.TView.GetDrawBuffer*"></a>
+
+  <h3 id="TuiVision_Controls_TView_GetDrawBuffer" data-uid="TuiVision.Controls.TView.GetDrawBuffer">
+  GetDrawBuffer()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L454"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gibt den Zeichenpuffer der Eigentümergruppe zurück, wenn einer verfügbar ist.
+Controls verwenden diese Methode, um innerhalb ihrer <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw">Draw()</a>-Implementierung
+in den Puffer der umgebenden Gruppe zu schreiben.</p>
+<p>Returns the owning group's draw buffer when one is available.
+Controls use this method to write into the surrounding group's buffer from
+within their <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw">Draw()</a> implementation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected TConsoleBuffer? GetDrawBuffer()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TuiVision.Core.TConsoleBuffer.html">TConsoleBuffer</a></dt>
+    <dd><p>Der Zeichenpuffer der Eigentümergruppe oder <code>null</code>, wenn keine Gruppe
+oder kein Puffer verfügbar ist.
+The owning group's draw buffer, or <code>null</code> when no group or buffer is available.</p>
+</dd>
   </dl>
 
 
@@ -389,10 +585,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_GetExtent" data-uid="TuiVision.Controls.TView.GetExtent">
   GetExtent()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L235"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gibt den lokalen Ausdehnungsrahmen zurück, der immer bei (0,0) beginnt.</p>
+<p>Returns the local extent rectangle, which always starts at (0,0).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -403,7 +601,9 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="TuiVision.Core.TRect.html">TRect</a></dt>
-    <dd></dd>
+    <dd><p>Ein Rechteck von (0,0) bis zur Größe (<a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Size">Size</a>) dieser Ansicht.
+A rectangle from (0,0) to the size (<a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Size">Size</a>) of this view.</p>
+</dd>
   </dl>
 
 
@@ -420,10 +620,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_GetState_TuiVision_Controls_TViewState_" data-uid="TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)">
   GetState(TViewState)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L247"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Prüft, ob alle Bits der angegebenen Zustandsmaske in <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_State">State</a> gesetzt sind.</p>
+<p>Checks whether all bits of the specified state mask are set in <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_State">State</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -433,13 +635,50 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>state</code> <a class="xref" href="TuiVision.Controls.TViewState.html">TViewState</a></dt>
-    <dd></dd>
+    <dd><p>Die zu prüfende Zustandsmaske. / The state mask to check.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p><code>true</code>, wenn alle Bits der Maske gesetzt sind; andernfalls <code>false</code>.
+<code>true</code> if all bits of the mask are set; otherwise <code>false</code>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_TView_GetStatusHints_" data-uid="TuiVision.Controls.TView.GetStatusHints*"></a>
+
+  <h3 id="TuiVision_Controls_TView_GetStatusHints" data-uid="TuiVision.Controls.TView.GetStatusHints">
+  GetStatusHints()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L462"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gibt die Status-Hinweise für diese Ansicht zurück.</p>
+<p>Returns the status hints for this view.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual TStatusItem? GetStatusHints()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TuiVision.Controls.TStatusItem.html">TStatusItem</a></dt>
+    <dd><p>Eine Kette von <a class="xref" href="TuiVision.Controls.TStatusItem.html">TStatusItem</a>s oder <code>null</code>. / A chain of <a class="xref" href="TuiVision.Controls.TStatusItem.html">TStatusItem</a>s or <code>null</code>.</p>
+</dd>
   </dl>
 
 
@@ -456,10 +695,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_GrowTo_System_Int32_System_Int32_" data-uid="TuiVision.Controls.TView.GrowTo(System.Int32,System.Int32)">
   GrowTo(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L346"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Ändert die Größe der Ansicht auf die angegebenen Abmessungen, ohne sie zu verschieben.</p>
+<p>Resizes the view to the specified dimensions without moving it.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -469,9 +710,11 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>Die neue Breite in Zeichen. / The new width in characters.</p>
+</dd>
     <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>Die neue Höhe in Zeichen. / The new height in characters.</p>
+</dd>
   </dl>
 
 
@@ -482,6 +725,13 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Wird ausgelöst, wenn <code class="paramref">x</code> oder <code class="paramref">y</code> negativ ist.
+Thrown when <code class="paramref">x</code> or <code class="paramref">y</code> is negative.</p>
+</dd>
+  </dl>
 
 
 
@@ -489,10 +739,16 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_HandleEvent_TuiVision_Core_TEvent_" data-uid="TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)">
   HandleEvent(TEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L477"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Verarbeitet ein eingehendes Ereignis.
+Bei Mausklick wird die Ansicht ausgewählt, wenn sie selektierbar ist.
+Abgeleitete Klassen überschreiben diese Methode, um zusätzliche Ereignistypen zu verarbeiten.</p>
+<p>Processes an incoming event.
+On mouse button press, the view is selected if it is selectable.
+Derived classes override this method to handle additional event types.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -502,7 +758,8 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>event</code> <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a></dt>
-    <dd></dd>
+    <dd><p>Das zu verarbeitende Ereignis. / The event to process.</p>
+</dd>
   </dl>
 
 
@@ -520,10 +777,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_Hide" data-uid="TuiVision.Controls.TView.Hide">
   Hide()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L261"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Versteckt die Ansicht, indem das <a class="xref" href="TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Visible">Visible</a>-Flag gelöscht wird.</p>
+<p>Hides the view by clearing the <a class="xref" href="TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Visible">Visible</a> flag.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -546,10 +805,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_" data-uid="TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)">
   Locate(TRect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L310"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Setzt den Begrenzungsrahmen und passt ihn an die Größengrenzen von <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_SizeLimits_TuiVision_Core_TPoint__TuiVision_Core_TPoint__">SizeLimits(out TPoint, out TPoint)</a> an.</p>
+<p>Sets the bounding rectangle and clamps it to the size limits from <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_SizeLimits_TuiVision_Core_TPoint__TuiVision_Core_TPoint__">SizeLimits(out TPoint, out TPoint)</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -559,7 +820,9 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>bounds</code> <a class="xref" href="TuiVision.Core.TRect.html">TRect</a></dt>
-    <dd></dd>
+    <dd><p>Der gewünschte neue Begrenzungsrahmen.
+The desired new bounding rectangle.</p>
+</dd>
   </dl>
 
 
@@ -570,6 +833,13 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Wird ausgelöst, wenn <code class="paramref">bounds</code> eine negative Breite oder Höhe hat.
+Thrown when <code class="paramref">bounds</code> has a negative width or height.</p>
+</dd>
+  </dl>
 
 
 
@@ -577,10 +847,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_MakeGlobal_TuiVision_Core_TPoint_" data-uid="TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)">
   MakeGlobal(TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L374"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Wandelt einen lokalen Punkt in globale Bildschirmkoordinaten um.</p>
+<p>Converts a local point to global screen coordinates.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -590,13 +862,16 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>source</code> <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Der lokale Punkt. / The local point.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Der Punkt in globalen Koordinaten.
+The point in global coordinates.</p>
+</dd>
   </dl>
 
 
@@ -613,10 +888,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_MakeLocal_TuiVision_Core_TPoint_" data-uid="TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)">
   MakeLocal(TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L386"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Wandelt einen globalen Punkt in lokale Ansichtskoordinaten um.</p>
+<p>Converts a global point to local view coordinates.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -626,13 +903,16 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>source</code> <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Der globale Punkt. / The global point.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Der Punkt in lokalen Koordinaten.
+The point in local coordinates.</p>
+</dd>
   </dl>
 
 
@@ -649,10 +929,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_MouseInView_TuiVision_Core_TPoint_" data-uid="TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)">
   MouseInView(TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L398"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Prüft, ob eine globale Mausposition innerhalb dieser Ansicht liegt.</p>
+<p>Checks whether a global mouse position lies within this view.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -662,13 +944,16 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>mouse</code> <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Die globale Mausposition. / The global mouse position.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p><code>true</code>, wenn die Maus innerhalb der Ansicht liegt; andernfalls <code>false</code>.
+<code>true</code> if the mouse is within the view; otherwise <code>false</code>.</p>
+</dd>
   </dl>
 
 
@@ -685,10 +970,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_MoveTo_System_Int32_System_Int32_" data-uid="TuiVision.Controls.TView.MoveTo(System.Int32,System.Int32)">
   MoveTo(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L329"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Verschiebt die Ansicht auf die angegebene Position, ohne ihre Größe zu ändern.</p>
+<p>Moves the view to the specified position without changing its size.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -698,9 +985,11 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>Die neue X-Position (Spalte). / The new X position (column).</p>
+</dd>
     <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>Die neue Y-Position (Zeile). / The new Y position (row).</p>
+</dd>
   </dl>
 
 
@@ -718,10 +1007,14 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_OnBoundsChanged" data-uid="TuiVision.Controls.TView.OnBoundsChanged">
   OnBoundsChanged()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L150"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L509"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Wird aufgerufen, nachdem der Begrenzungsrahmen durch <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_">Locate(TRect)</a> geändert wurde.
+Abgeleitete Klassen überschreiben diese Methode, um auf Größen- oder Positionsänderungen zu reagieren.</p>
+<p>Called after the bounding rectangle has been changed by <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_">Locate(TRect)</a>.
+Derived classes override this method to react to size or position changes.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -744,10 +1037,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_SetBounds_TuiVision_Core_TRect_" data-uid="TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)">
   SetBounds(TRect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L362"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Setzt den Begrenzungsrahmen direkt. Entspricht einem Aufruf von <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_">Locate(TRect)</a>.</p>
+<p>Sets the bounding rectangle directly. Equivalent to calling <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_">Locate(TRect)</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -757,7 +1052,8 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>bounds</code> <a class="xref" href="TuiVision.Core.TRect.html">TRect</a></dt>
-    <dd></dd>
+    <dd><p>Der neue Begrenzungsrahmen. / The new bounding rectangle.</p>
+</dd>
   </dl>
 
 
@@ -775,10 +1071,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_SetState_TuiVision_Controls_TViewState_System_Boolean_" data-uid="TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState,System.Boolean)">
   SetState(TViewState, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L273"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Setzt oder löscht die angegebenen Zustandsbits in <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_State">State</a>.</p>
+<p>Sets or clears the specified state bits in <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_State">State</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -788,9 +1086,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>state</code> <a class="xref" href="TuiVision.Controls.TViewState.html">TViewState</a></dt>
-    <dd></dd>
+    <dd><p>Die zu ändernden Zustandsbits. / The state bits to change.</p>
+</dd>
     <dt><code>enable</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p><code>true</code>, um die Bits zu setzen; <code>false</code>, um sie zu löschen.
+<code>true</code> to set the bits; <code>false</code> to clear them.</p>
+</dd>
   </dl>
 
 
@@ -808,10 +1109,12 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_Show" data-uid="TuiVision.Controls.TView.Show">
   Show()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L254"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Macht die Ansicht sichtbar, indem das <a class="xref" href="TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Visible">Visible</a>-Flag gesetzt wird.</p>
+<p>Makes the view visible by setting the <a class="xref" href="TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Visible">Visible</a> flag.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -834,10 +1137,14 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="TuiVision_Controls_TView_SizeLimits_TuiVision_Core_TPoint__TuiVision_Core_TPoint__" data-uid="TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint@,TuiVision.Core.TPoint@)">
   SizeLimits(out TPoint, out TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L291"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gibt die minimale und maximale Größe zurück, auf die diese Ansicht skaliert werden darf.
+Abgeleitete Klassen überschreiben diese Methode, um Größenbeschränkungen festzulegen.</p>
+<p>Returns the minimum and maximum size to which this view may be resized.
+Derived classes override this method to define size constraints.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -847,9 +1154,13 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>min</code> <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Wird mit der Mindestgröße belegt.
+Receives the minimum size.</p>
+</dd>
     <dt><code>max</code> <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Wird mit der Maximalgröße belegt.
+Receives the maximum size.</p>
+</dd>
   </dl>
 
 
@@ -867,7 +1178,7 @@ Class TView  <a class="header-action link-secondary" title="View source" href="h
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L49" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L111" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -1,0 +1,161 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.TButtonFlags
+  commentId: T:TuiVision.Controls.TButtonFlags
+  id: TButtonFlags
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.TButtonFlags.bfDefault
+  - TuiVision.Controls.TButtonFlags.bfLeftJustify
+  - TuiVision.Controls.TButtonFlags.bfNormal
+  langs:
+  - csharp
+  - vb
+  name: TButtonFlags
+  nameWithType: TButtonFlags
+  fullName: TuiVision.Controls.TButtonFlags
+  type: Enum
+  source:
+    remote:
+      path: src/TuiVision.Controls/TButton.cs
+      branch: 003-dialog-control-layer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TButtonFlags
+    path: src/TuiVision.Controls/TButton.cs
+    startLine: 13
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Flags für das Verhalten und die Darstellung einer Schaltfläche.
+
+
+    Flags for the behaviour and appearance of a button.
+  example: []
+  syntax:
+    content: >-
+      [Flags]
+
+      public enum TButtonFlags : byte
+    content.vb: >-
+      <Flags>
+
+      Public Enum TButtonFlags As Byte
+  attributes:
+  - type: System.FlagsAttribute
+    ctor: System.FlagsAttribute.#ctor
+    arguments: []
+- uid: TuiVision.Controls.TButtonFlags.bfNormal
+  commentId: F:TuiVision.Controls.TButtonFlags.bfNormal
+  id: bfNormal
+  parent: TuiVision.Controls.TButtonFlags
+  langs:
+  - csharp
+  - vb
+  name: bfNormal
+  nameWithType: TButtonFlags.bfNormal
+  fullName: TuiVision.Controls.TButtonFlags.bfNormal
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TButton.cs
+      branch: 003-dialog-control-layer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: bfNormal
+    path: src/TuiVision.Controls/TButton.cs
+    startLine: 17
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Normale Schaltfläche. / Normal button.
+  example: []
+  syntax:
+    content: bfNormal = 0
+    return:
+      type: TuiVision.Controls.TButtonFlags
+- uid: TuiVision.Controls.TButtonFlags.bfDefault
+  commentId: F:TuiVision.Controls.TButtonFlags.bfDefault
+  id: bfDefault
+  parent: TuiVision.Controls.TButtonFlags
+  langs:
+  - csharp
+  - vb
+  name: bfDefault
+  nameWithType: TButtonFlags.bfDefault
+  fullName: TuiVision.Controls.TButtonFlags.bfDefault
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TButton.cs
+      branch: 003-dialog-control-layer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: bfDefault
+    path: src/TuiVision.Controls/TButton.cs
+    startLine: 20
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Default-Schaltfläche. / Default button.
+  example: []
+  syntax:
+    content: bfDefault = 1
+    return:
+      type: TuiVision.Controls.TButtonFlags
+- uid: TuiVision.Controls.TButtonFlags.bfLeftJustify
+  commentId: F:TuiVision.Controls.TButtonFlags.bfLeftJustify
+  id: bfLeftJustify
+  parent: TuiVision.Controls.TButtonFlags
+  langs:
+  - csharp
+  - vb
+  name: bfLeftJustify
+  nameWithType: TButtonFlags.bfLeftJustify
+  fullName: TuiVision.Controls.TButtonFlags.bfLeftJustify
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TButton.cs
+      branch: 003-dialog-control-layer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: bfLeftJustify
+    path: src/TuiVision.Controls/TButton.cs
+    startLine: 23
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Linksbündige Beschriftung. / Left-aligned caption.
+  example: []
+  syntax:
+    content: bfLeftJustify = 2
+    return:
+      type: TuiVision.Controls.TButtonFlags
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: TuiVision.Controls.TButtonFlags
+  commentId: T:TuiVision.Controls.TButtonFlags
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TButtonFlags.html
+  name: TButtonFlags
+  nameWithType: TButtonFlags
+  fullName: TuiVision.Controls.TButtonFlags

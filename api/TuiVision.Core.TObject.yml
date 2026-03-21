@@ -17,15 +17,27 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TObject.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: TObject
     path: src/TuiVision.Core/TObject.cs
-    startLine: 5
+    startLine: 11
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Base object for ported Turbo Vision types.
+  summary: >-
+    Basisklasse für alle portierten Turbo-Vision-Typen.
+
+    Sie legt den grundlegenden Lebenszyklus-Vertrag fest: explizites Herunterfahren
+
+    und optionale Ressourcenfreigabe über <xref href="System.IDisposable" data-throw-if-not-resolved="false"></xref>.
+
+
+    Base class for all ported Turbo Vision types.
+
+    It defines the fundamental lifecycle contract: explicit shutdown
+
+    and optional resource release via <xref href="System.IDisposable" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
     content: public class TObject
@@ -56,15 +68,23 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TObject.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: ShutDown
     path: src/TuiVision.Core/TObject.cs
-    startLine: 10
+    startLine: 20
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Performs explicit shutdown work before the object is released.
+  summary: >-
+    Führt explizite Aufräumarbeiten durch, bevor das Objekt freigegeben wird.
+
+    Abgeleitete Klassen überschreiben diese Methode, um eigene Ressourcen zu bereinigen.
+
+
+    Performs explicit cleanup work before the object is released.
+
+    Derived classes override this method to clean up their own resources.
   example: []
   syntax:
     content: public virtual void ShutDown()
@@ -84,27 +104,47 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TObject.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Destroy
     path: src/TuiVision.Core/TObject.cs
-    startLine: 17
+    startLine: 35
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Calls <xref href="TuiVision.Core.TObject.ShutDown" data-throw-if-not-resolved="false"></xref> and disposes the instance when supported.
+  summary: >-
+    Ruft <xref href="TuiVision.Core.TObject.ShutDown" data-throw-if-not-resolved="false"></xref> auf und gibt die Instanz frei,
+
+    wenn sie <xref href="System.IDisposable" data-throw-if-not-resolved="false"></xref> implementiert. Null-Referenzen werden sicher ignoriert.
+
+
+    Calls <xref href="TuiVision.Core.TObject.ShutDown" data-throw-if-not-resolved="false"></xref> and disposes the instance when it implements
+
+    <xref href="System.IDisposable" data-throw-if-not-resolved="false"></xref>. Null references are safely ignored.
   example: []
   syntax:
     content: public static void Destroy(TObject? instance)
     parameters:
     - id: instance
       type: TuiVision.Core.TObject
+      description: >-
+        Die freizugebende Instanz oder <code>null</code>.
+
+        The instance to release, or <code>null</code>.
     content.vb: Public Shared Sub Destroy(instance As TObject)
   overload: TuiVision.Core.TObject.Destroy*
   nameWithType.vb: TObject.Destroy(TObject)
   fullName.vb: TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
   name.vb: Destroy(TObject)
 references:
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
 - uid: TuiVision.Core
   commentId: N:TuiVision.Core
   href: TuiVision.html

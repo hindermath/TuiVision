@@ -398,6 +398,27 @@ public class TGroup : TView
     }
 
     /// <summary>
+    /// Liefert den internen Zeichenpuffer der Gruppe und allokiert ihn bei Bedarf.
+    /// Die Methode ist für untergeordnete Controls innerhalb desselben Assemblies gedacht.
+    ///
+    /// Returns the group's internal draw buffer and allocates it on demand.
+    /// The method is intended for child controls within the same assembly.
+    /// </summary>
+    /// <returns>
+    /// Der interne Zeichenpuffer oder <c>null</c>, wenn die Gruppe nicht exponiert ist.
+    /// The internal draw buffer, or <c>null</c> if the group is not exposed.
+    /// </returns>
+    internal new TConsoleBuffer? GetDrawBuffer()
+    {
+        if (_buffer == null && Options.HasFlag(TViewOptions.Buffered) && GetState(TViewState.Exposed))
+        {
+            _buffer = new TConsoleBuffer(Size.X, Size.Y);
+        }
+
+        return _buffer;
+    }
+
+    /// <summary>
     /// Sperrt das Zeichnen dieser Gruppe. Für jeden Aufruf von <see cref="LockDraw"/>
     /// muss ein entsprechender Aufruf von <see cref="UnlockDraw"/> erfolgen.
     ///
@@ -553,6 +574,16 @@ public class TGroup : TView
 
         _clip = GetExtent();
     }
+
+    /// <summary>
+    /// Liefert das erste Kind der zirkulären Kindliste oder <c>null</c>.
+    /// Abgeleitete Klassen können damit kontrolliert über die Kinder iterieren.
+    ///
+    /// Returns the first child in the circular child list or <c>null</c>.
+    /// Derived classes can use this to iterate over children in a controlled way.
+    /// </summary>
+    /// <returns>Das erste Kind oder <c>null</c>. / The first child or <c>null</c>.</returns>
+    protected internal TView? GetFirstChild() => First();
 
     // -------------------------------------------------------------------------
     // Private Hilfsmethoden / Private helper methods

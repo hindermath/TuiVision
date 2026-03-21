@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TKeyCodeTranslator | TuiVision Documentation ">
       
-      <meta name="description" content="Helpers for mapping .NET console input to Turbo Vision compatible key values.">
+      <meta name="description" content="Hilfsmethoden zum Umrechnen von .NET-Konsoleneingaben in Turbo-Vision-kompatible Tastenwerte. Diese Klasse bildet die Br&#252;cke zwischen  und dem Turbo-Vision-Tastencode-Format. Helper methods for mapping .NET console input to Turbo Vision compatible key values. This class bridges  and the Turbo Vision key code format.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Compatibility_TKeyCodeTranslator.md&amp;value=---%0Auid%3A%20TuiVision.Compatibility.TKeyCodeTranslator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/003-dialog-control-layer/apiSpec/new?filename=TuiVision_Compatibility_TKeyCodeTranslator.md&amp;value=---%0Auid%3A%20TuiVision.Compatibility.TKeyCodeTranslator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TuiVision_Compatibility_TKeyCodeTranslator" data-uid="TuiVision.Compatibility.TKeyCodeTranslator" class="text-break">
-Class TKeyCodeTranslator  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Compatibility/Class1.cs/#L17"><i class="bi bi-code-slash"></i></a>
+Class TKeyCodeTranslator  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Compatibility/Class1.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,12 @@ Class TKeyCodeTranslator  <a class="header-action link-secondary" title="View so
   <dl><dt>Assembly</dt><dd>TuiVision.Compatibility.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Helpers for mapping .NET console input to Turbo Vision compatible key values.</p>
+  <div class="markdown summary"><p>Hilfsmethoden zum Umrechnen von .NET-Konsoleneingaben in Turbo-Vision-kompatible Tastenwerte.
+Diese Klasse bildet die Brücke zwischen <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.consolekeyinfo">ConsoleKeyInfo</a> und
+dem Turbo-Vision-Tastencode-Format.</p>
+<p>Helper methods for mapping .NET console input to Turbo Vision compatible key values.
+This class bridges <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.consolekeyinfo">ConsoleKeyInfo</a> and
+the Turbo Vision key code format.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -156,10 +161,14 @@ Class TKeyCodeTranslator  <a class="header-action link-secondary" title="View so
 
   <h3 id="TuiVision_Compatibility_TKeyCodeTranslator_KeyBackspace" data-uid="TuiVision.Compatibility.TKeyCodeTranslator.KeyBackspace">
   KeyBackspace
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Compatibility/Class1.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Compatibility/Class1.cs/#L64"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Turbo-Vision-Tastencode für die Rücktaste (Backspace).
+Scan-Code 0x0E, Zeichencode 0x08.</p>
+<p>Turbo Vision key code for the Backspace key.
+Scan code 0x0E, character code 0x08.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -186,10 +195,14 @@ Class TKeyCodeTranslator  <a class="header-action link-secondary" title="View so
 
   <h3 id="TuiVision_Compatibility_TKeyCodeTranslator_KeyEnter" data-uid="TuiVision.Compatibility.TKeyCodeTranslator.KeyEnter">
   KeyEnter
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Compatibility/Class1.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Compatibility/Class1.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Turbo-Vision-Tastencode für die Eingabetaste (Enter).
+Scan-Code 0x1C, Zeichencode 0x0D (Carriage Return).</p>
+<p>Turbo Vision key code for the Enter key.
+Scan code 0x1C, character code 0x0D (carriage return).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -216,10 +229,14 @@ Class TKeyCodeTranslator  <a class="header-action link-secondary" title="View so
 
   <h3 id="TuiVision_Compatibility_TKeyCodeTranslator_KeyEscape" data-uid="TuiVision.Compatibility.TKeyCodeTranslator.KeyEscape">
   KeyEscape
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Compatibility/Class1.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Compatibility/Class1.cs/#L55"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Turbo-Vision-Tastencode für die Escape-Taste.
+Scan-Code 0x01, Zeichencode 0x1B.</p>
+<p>Turbo Vision key code for the Escape key.
+Scan code 0x01, character code 0x1B.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -246,10 +263,14 @@ Class TKeyCodeTranslator  <a class="header-action link-secondary" title="View so
 
   <h3 id="TuiVision_Compatibility_TKeyCodeTranslator_KeyTab" data-uid="TuiVision.Compatibility.TKeyCodeTranslator.KeyTab">
   KeyTab
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Compatibility/Class1.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Compatibility/Class1.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Turbo-Vision-Tastencode für die Tabulatortaste (Tab).
+Scan-Code 0x0F, Zeichencode 0x09.</p>
+<p>Turbo Vision key code for the Tab key.
+Scan code 0x0F, character code 0x09.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -281,10 +302,14 @@ Class TKeyCodeTranslator  <a class="header-action link-secondary" title="View so
 
   <h3 id="TuiVision_Compatibility_TKeyCodeTranslator_ComposeKeyCode_System_Char_System_Byte_" data-uid="TuiVision.Compatibility.TKeyCodeTranslator.ComposeKeyCode(System.Char,System.Byte)">
   ComposeKeyCode(char, byte)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Compatibility/Class1.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Compatibility/Class1.cs/#L94"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Erstellt einen zusammengesetzten Turbo-Vision-Tastencode aus Zeichencode und Scan-Code.
+Das High-Byte enthält den Scan-Code, das Low-Byte den Zeichencode (0, wenn kein Zeichen).</p>
+<p>Composes a Turbo Vision key code from a character code and scan code.
+The high byte contains the scan code; the low byte contains the character code (0 if no character).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -294,15 +319,21 @@ Class TKeyCodeTranslator  <a class="header-action link-secondary" title="View so
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>charCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
-    <dd></dd>
+    <dd><p>Der Zeichencode der Taste (0 bei reinen Steuertasten).
+The character code of the key (0 for pure control keys).</p>
+</dd>
     <dt><code>scanCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
-    <dd></dd>
+    <dd><p>Der Hardware-Scan-Code der Taste.
+The hardware scan code of the key.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
-    <dd></dd>
+    <dd><p>Der zusammengesetzte 16-Bit-Tastencode im Turbo-Vision-Format.
+The composed 16-bit key code in Turbo Vision format.</p>
+</dd>
   </dl>
 
 
@@ -319,10 +350,12 @@ Class TKeyCodeTranslator  <a class="header-action link-secondary" title="View so
 
   <h3 id="TuiVision_Compatibility_TKeyCodeTranslator_FromConsoleKey_System_ConsoleKeyInfo_" data-uid="TuiVision.Compatibility.TKeyCodeTranslator.FromConsoleKey(System.ConsoleKeyInfo)">
   FromConsoleKey(ConsoleKeyInfo)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Compatibility/Class1.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Compatibility/Class1.cs/#L113"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Wandelt eine .NET-<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.consolekeyinfo">ConsoleKeyInfo</a> in ein Turbo-Vision-<a class="xref" href="TuiVision.Core.TKeyDownEvent.html">TKeyDownEvent</a> um.</p>
+<p>Converts a .NET <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.consolekeyinfo">ConsoleKeyInfo</a> into a Turbo Vision <a class="xref" href="TuiVision.Core.TKeyDownEvent.html">TKeyDownEvent</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -332,13 +365,17 @@ Class TKeyCodeTranslator  <a class="header-action link-secondary" title="View so
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>keyInfo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.consolekeyinfo">ConsoleKeyInfo</a></dt>
-    <dd></dd>
+    <dd><p>Die .NET-Tasteneingabe-Information.
+The .NET key input information.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="TuiVision.Core.TKeyDownEvent.html">TKeyDownEvent</a></dt>
-    <dd></dd>
+    <dd><p>Ein <a class="xref" href="TuiVision.Core.TKeyDownEvent.html">TKeyDownEvent</a> mit den umgerechneten Werten.
+A <a class="xref" href="TuiVision.Core.TKeyDownEvent.html">TKeyDownEvent</a> with the converted values.</p>
+</dd>
   </dl>
 
 
@@ -355,10 +392,12 @@ Class TKeyCodeTranslator  <a class="header-action link-secondary" title="View so
 
   <h3 id="TuiVision_Compatibility_TKeyCodeTranslator_IsPrintable_TuiVision_Core_TKeyDownEvent_" data-uid="TuiVision.Compatibility.TKeyCodeTranslator.IsPrintable(TuiVision.Core.TKeyDownEvent)">
   IsPrintable(TKeyDownEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Compatibility/Class1.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Compatibility/Class1.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Prüft, ob ein Tastenereignis ein druckbares Zeichen erzeugt hat.</p>
+<p>Checks whether a key-down event produced a printable character.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -368,13 +407,16 @@ Class TKeyCodeTranslator  <a class="header-action link-secondary" title="View so
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>keyDown</code> <a class="xref" href="TuiVision.Core.TKeyDownEvent.html">TKeyDownEvent</a></dt>
-    <dd></dd>
+    <dd><p>Das zu prüfende Tastenereignis. / The key-down event to check.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p><code>true</code>, wenn <a class="xref" href="TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_CharCode">CharCode</a> kein Steuerzeichen ist; andernfalls <code>false</code>.
+<code>true</code> if <a class="xref" href="TuiVision.Core.TKeyDownEvent.html#TuiVision_Core_TKeyDownEvent_CharCode">CharCode</a> is not a control character; otherwise <code>false</code>.</p>
+</dd>
   </dl>
 
 
@@ -391,7 +433,7 @@ Class TKeyCodeTranslator  <a class="header-action link-secondary" title="View so
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Compatibility/Class1.cs/#L17" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Compatibility/Class1.cs/#L37" class="edit-link">Edit this page</a>
         </div>
 
 

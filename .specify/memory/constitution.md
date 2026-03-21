@@ -1,38 +1,37 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version change: 1.3.0 → 1.3.1
-  Bump rationale: PATCH — Clarified principle III by adding an explicit B2
-  readability rationale and a documentation rule for local variables, which
-  cannot carry XML documentation in C#.
+  Version change: 1.4.0 → 1.5.0
+  Bump rationale: MINOR — Added a mandatory project-statistics ledger and
+  defined update triggers, required metrics, and the conservative manual-effort
+  baseline for AI-assisted/spec-driven delivery.
   Full project scan performed (AGENTS.md, GEMINI.md, CLAUDE.md,
-  copilot-instructions.md, Pflichtenheft.md, README.md, all templates).
+  copilot-instructions.md, constitution templates, and core spec templates).
 
   Modified principles:
-    - III. Didactic and Linguistic Clarity
+    - None
 
   Added sections:
-    - "B2 Readability Rationale" under principle III
+    - Development Workflow → Statistical Documentation
 
   Removed sections:
     - None
 
   Templates requiring updates:
-    - .specify/templates/plan-template.md  ✅ aligned (generic, no project refs)
-    - .specify/templates/spec-template.md  ✅ aligned (generic, no project refs)
-    - .specify/templates/tasks-template.md ✅ aligned (TDD Red-Green pattern present)
+    - .specify/templates/plan-template.md  ✅ updated
+    - .specify/templates/spec-template.md  ✅ reviewed; no change required
+    - .specify/templates/tasks-template.md ✅ updated
+    - .specify/templates/constitution-template.md ✅ reviewed; no change required
 
   Agent files reviewed:
-    - AGENTS.md             ✅ aligned
-    - GEMINI.md             ✅ aligned
-    - .github/copilot-instructions.md ✅ aligned (source of new naming convention)
-    - CLAUDE.md             ⚠️ pending — CI branch list only says `codex/**`;
-      should list all AI-agent patterns: codex/**, claude/**, gemini/**,
-      opencode/**, copilot/**. Update CLAUDE.md manually or in a follow-up PR.
+    - AGENTS.md             ✅ updated
+    - GEMINI.md             ✅ updated
+    - .github/copilot-instructions.md ✅ updated
+    - CLAUDE.md             ✅ updated
 
   Follow-up TODOs:
-    - Update CLAUDE.md "Branching Convention" section to reflect all CI-trigger
-      branch patterns (currently only mentions codex/**).
+    - `.specify/templates/commands/` is not present in this repository, so no
+      command-template review was possible.
 -->
 
 # TuiVision Constitution
@@ -201,12 +200,17 @@ the project and its contributors (Pflichtenheft M-12).
 |---|---|
 | Language | C# (LangVersion: latest, targeting C# 14 features) |
 | Runtime | .NET 10 (`net10.0`), managed code only |
+| JSON library | `System.Text.Json` for project-owned JSON parsing and serialization |
 | Test framework | MSTest |
 | Documentation generator | docfx (external command `docfx`) |
 | CI platform | GitHub Actions |
 | Version control | Git; remote: `https://github.com/hindermath/TuiVision.git` |
 | Primary IDEs | JetBrains Rider (primary), VS Code (secondary) |
 | Dev tooling | `gh`, `codex`, `claude`, `gemini`, `opencode`, `copilot` |
+
+Project-owned code MUST use `System.Text.Json` for JSON parsing and
+serialization. Introducing `Newtonsoft.Json` requires documented justification
+in the relevant plan or PR and explicit reviewer approval in the same change.
 
 ### Mandatory Quality Gates (all MUST pass before merge to `main`)
 
@@ -296,6 +300,31 @@ be kept current with any tooling or workflow changes. Prerequisites (`gh`,
 `codex`, `claude`, `gemini`, `opencode`, `copilot`, `docfx`, `.NET 10 SDK`)
 MUST be documented with version check commands.
 
+### Statistical Documentation
+
+`docs/project-statistics.md` is the mandatory, living statistical ledger for the
+repository. It MUST be updated whenever one of the following happens:
+
+1. A Spec-Kit implementation phase is completed or materially re-scoped.
+2. An agent-driven work package changes repository content (code, tests, specs,
+   plans, tasks, governance, or operational docs).
+3. A contributor explicitly requests a statistics refresh.
+
+Every update MUST record, at minimum:
+
+- branch or phase identifier and current status,
+- observable git-based work window (first/last date, commit days where possible),
+- current or change-based counts for production code, test code, and
+  documentation,
+- the main work packages or delivered artefacts,
+- whether the numbers come from committed history, the working tree, or both,
+- a conservative manual-effort baseline using **80 code lines per day** for an
+  experienced developer.
+
+Manual-effort estimates for a small team MAY be derived from that baseline, but
+the formula and assumptions MUST be stated explicitly. Documentation effort is
+tracked separately and MUST NOT be hidden inside the code-line estimate.
+
 ### Portation Sequence
 
 New classes are ported following the incremental sequence defined in
@@ -337,5 +366,7 @@ writing in the relevant plan document.
 Use `CLAUDE.md`, `GEMINI.md`, `copilot-instructions.md`, and `AGENTS.md` for
 runtime agent-specific development guidance.
 Use `docs/guides/multi-mac-workflow.md` for local multi-machine workflow details.
+Use `docs/project-statistics.md` for the living project-statistics ledger and
+manual-effort baseline tracking.
 
-**Version**: 1.3.1 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-16
+**Version**: 1.5.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-21

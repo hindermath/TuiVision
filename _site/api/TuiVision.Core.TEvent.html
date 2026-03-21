@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TEvent | TuiVision Documentation ">
       
-      <meta name="description" content="Mutable event object that carries one payload channel (mouse, key, message).">
+      <meta name="description" content="Ver&#228;nderbares Ereignisobjekt, das genau einen Nutzdatenkanal tr&#228;gt: Maus, Tastatur oder Nachricht. Statische Factory-Methoden erstellen fertig initialisierte Ereignisse; der direkte Aufruf des Konstruktors ist nicht m&#246;glich. Mutable event object that carries exactly one payload channel: mouse, keyboard, or message. Static factory methods create fully initialized events; direct constructor calls are not possible.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Core_TEvent.md&amp;value=---%0Auid%3A%20TuiVision.Core.TEvent%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/003-dialog-control-layer/apiSpec/new?filename=TuiVision_Core_TEvent.md&amp;value=---%0Auid%3A%20TuiVision.Core.TEvent%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TuiVision_Core_TEvent" data-uid="TuiVision.Core.TEvent" class="text-break">
-Class TEvent  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L54"><i class="bi bi-code-slash"></i></a>
+Class TEvent  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TEvent.cs/#L143"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,11 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
   <dl><dt>Assembly</dt><dd>TuiVision.Core.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Mutable event object that carries one payload channel (mouse, key, message).</p>
+  <div class="markdown summary"><p>Veränderbares Ereignisobjekt, das genau einen Nutzdatenkanal trägt: Maus, Tastatur oder Nachricht.
+Statische Factory-Methoden erstellen fertig initialisierte Ereignisse; der direkte
+Aufruf des Konstruktors ist nicht möglich.</p>
+<p>Mutable event object that carries exactly one payload channel: mouse, keyboard, or message.
+Static factory methods create fully initialized events; direct constructor calls are not possible.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -154,10 +158,12 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
 
   <h3 id="TuiVision_Core_TEvent_KeyDown" data-uid="TuiVision.Core.TEvent.KeyDown">
   KeyDown
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TEvent.cs/#L179"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Die Tastatur-Nutzdaten. Nur gültig, wenn <a class="xref" href="TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_What">What</a> gleich <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_KeyDown">KeyDown</a> ist.</p>
+<p>The keyboard payload. Valid only when <a class="xref" href="TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_What">What</a> equals <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_KeyDown">KeyDown</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -185,10 +191,12 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
 
   <h3 id="TuiVision_Core_TEvent_Message" data-uid="TuiVision.Core.TEvent.Message">
   Message
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TEvent.cs/#L186"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Die Nachrichten-Nutzdaten. Nur gültig, wenn <a class="xref" href="TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_What">What</a> ein Nachrichten-Flag enthält.</p>
+<p>The message payload. Valid only when <a class="xref" href="TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_What">What</a> contains a message flag.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -216,10 +224,12 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
 
   <h3 id="TuiVision_Core_TEvent_Mouse" data-uid="TuiVision.Core.TEvent.Mouse">
   Mouse
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TEvent.cs/#L172"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Die Maus-Nutzdaten. Nur gültig, wenn <a class="xref" href="TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_What">What</a> ein Mausereignis-Flag enthält.</p>
+<p>The mouse payload. Valid only when <a class="xref" href="TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_What">What</a> contains a mouse event flag.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -247,10 +257,12 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
 
   <h3 id="TuiVision_Core_TEvent_What" data-uid="TuiVision.Core.TEvent.What">
   What
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TEvent.cs/#L165"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Der Typ dieses Ereignisses. Bestimmt, welcher Nutzdatenkanal gültig ist.</p>
+<p>The type of this event. Determines which payload channel is valid.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -282,10 +294,14 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
 
   <h3 id="TuiVision_Core_TEvent_Clear_TuiVision_Core_TObject_" data-uid="TuiVision.Core.TEvent.Clear(TuiVision.Core.TObject)">
   Clear(TObject?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TEvent.cs/#L300"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Setzt dieses Ereignis auf <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Nothing">Nothing</a> zurück und markiert es als verarbeitet.
+Diese Methode wird aufgerufen, nachdem eine Ansicht das Ereignis vollständig behandelt hat.</p>
+<p>Resets this event to <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Nothing">Nothing</a>, marking it as handled.
+This method is called after a view has fully processed the event.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -295,7 +311,8 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>info</code> <a class="xref" href="TuiVision.Core.TObject.html">TObject</a></dt>
-    <dd></dd>
+    <dd><p>Optionales Informationsobjekt. / Optional information object.</p>
+</dd>
   </dl>
 
 
@@ -313,10 +330,12 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
 
   <h3 id="TuiVision_Core_TEvent_CreateBroadcast_System_UInt16_System_Object_" data-uid="TuiVision.Core.TEvent.CreateBroadcast(System.UInt16,System.Object)">
   CreateBroadcast(ushort, object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TEvent.cs/#L268"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Erstellt ein Rundfunkereignis, das an alle Ansichten gesendet wird.</p>
+<p>Creates a broadcast event that is sent to all views.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -326,15 +345,19 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>command</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
-    <dd></dd>
+    <dd><p>Der Befehlscode. / The command code.</p>
+</dd>
     <dt><code>info</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
+    <dd><p>Optionale Zusatzinformation. / Optional additional information.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a></dt>
-    <dd></dd>
+    <dd><p>Ein neues <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a> vom Typ <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Broadcast">Broadcast</a>.
+A new <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a> of type <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Broadcast">Broadcast</a>.</p>
+</dd>
   </dl>
 
 
@@ -351,10 +374,12 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
 
   <h3 id="TuiVision_Core_TEvent_CreateCommand_System_UInt16_System_Object_" data-uid="TuiVision.Core.TEvent.CreateCommand(System.UInt16,System.Object)">
   CreateCommand(ushort, object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TEvent.cs/#L250"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Erstellt ein Befehlsereignis für ein direktes Ziel.</p>
+<p>Creates a command event targeting a specific view.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -364,15 +389,19 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>command</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
-    <dd></dd>
+    <dd><p>Der Befehlscode. / The command code.</p>
+</dd>
     <dt><code>info</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
+    <dd><p>Optionale Zusatzinformation. / Optional additional information.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a></dt>
-    <dd></dd>
+    <dd><p>Ein neues <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a> vom Typ <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Command">Command</a>.
+A new <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a> of type <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Command">Command</a>.</p>
+</dd>
   </dl>
 
 
@@ -389,10 +418,12 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
 
   <h3 id="TuiVision_Core_TEvent_CreateKeyDown_TuiVision_Core_TKeyDownEvent_" data-uid="TuiVision.Core.TEvent.CreateKeyDown(TuiVision.Core.TKeyDownEvent)">
   CreateKeyDown(TKeyDownEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TEvent.cs/#L232"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Erstellt ein Tastaturereignis aus den angegebenen Nutzdaten.</p>
+<p>Creates a keyboard event from the specified payload.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -402,13 +433,16 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>keyDown</code> <a class="xref" href="TuiVision.Core.TKeyDownEvent.html">TKeyDownEvent</a></dt>
-    <dd></dd>
+    <dd><p>Die Tastatur-Nutzdaten. / The keyboard payload.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a></dt>
-    <dd></dd>
+    <dd><p>Ein neues <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a> vom Typ <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_KeyDown">KeyDown</a>.
+A new <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a> of type <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_KeyDown">KeyDown</a>.</p>
+</dd>
   </dl>
 
 
@@ -425,10 +459,12 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
 
   <h3 id="TuiVision_Core_TEvent_CreateMouse_TuiVision_Core_TEventKind_TuiVision_Core_TMouseButtons_System_Boolean_TuiVision_Core_TPoint_" data-uid="TuiVision.Core.TEvent.CreateMouse(TuiVision.Core.TEventKind,TuiVision.Core.TMouseButtons,System.Boolean,TuiVision.Core.TPoint)">
   CreateMouse(TEventKind, TMouseButtons, bool, TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TEvent.cs/#L208"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Erstellt ein Mausereignis mit den angegebenen Nutzdaten.</p>
+<p>Creates a mouse event with the specified payload.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -438,19 +474,26 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>kind</code> <a class="xref" href="TuiVision.Core.TEventKind.html">TEventKind</a></dt>
-    <dd></dd>
+    <dd><p>Der Mausereignistyp. Muss ein Maus-Flag enthalten (siehe <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Mouse">Mouse</a>).
+The mouse event type. Must contain a mouse flag (see <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Mouse">Mouse</a>).</p>
+</dd>
     <dt><code>buttons</code> <a class="xref" href="TuiVision.Core.TMouseButtons.html">TMouseButtons</a></dt>
-    <dd></dd>
+    <dd><p>Die gedrückten Maustasten. / The pressed mouse buttons.</p>
+</dd>
     <dt><code>doubleClick</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p>Gibt an, ob ein Doppelklick vorliegt. / Indicates whether this is a double-click.</p>
+</dd>
     <dt><code>where</code> <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Die Mausposition in globalen Koordinaten. / The mouse position in global coordinates.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a></dt>
-    <dd></dd>
+    <dd><p>Ein neues <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a> mit den angegebenen Maus-Nutzdaten.
+A new <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a> with the specified mouse payload.</p>
+</dd>
   </dl>
 
 
@@ -460,6 +503,13 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Wird ausgelöst, wenn <code class="paramref">kind</code> kein Mausereignis-Flag enthält.
+Thrown when <code class="paramref">kind</code> does not contain a mouse event flag.</p>
+</dd>
+  </dl>
 
 
 
@@ -467,10 +517,12 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
 
   <h3 id="TuiVision_Core_TEvent_CreateNone_TuiVision_Core_TObject_" data-uid="TuiVision.Core.TEvent.CreateNone(TuiVision.Core.TObject)">
   CreateNone(TObject?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TEvent.cs/#L285"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Erstellt ein leeres Ereignis vom Typ <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Nothing">Nothing</a>.</p>
+<p>Creates an empty event of type <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Nothing">Nothing</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -480,13 +532,16 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>info</code> <a class="xref" href="TuiVision.Core.TObject.html">TObject</a></dt>
-    <dd></dd>
+    <dd><p>Optionales Informationsobjekt. / Optional information object.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a></dt>
-    <dd></dd>
+    <dd><p>Ein neues leeres <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a>.
+A new empty <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a>.</p>
+</dd>
   </dl>
 
 
@@ -503,7 +558,7 @@ Class TEvent  <a class="header-action link-secondary" title="View source" href="
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L54" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TEvent.cs/#L143" class="edit-link">Edit this page</a>
         </div>
 
 
