@@ -59,29 +59,24 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 
 ## 🎯 Aktueller Feature-Fokus
 
-### `002-application-framework`
-*   Plan-Quelle: `specs/002-application-framework/plan.md`
-*   Ziel dieses Inkrements: erster vollständiger Anwendungsrahmen auf Basis von `TView` und `TGroup`
-*   Geplanter Umfang in `src/TuiVision.Controls`:
-    *   `TProgram`
-    *   `TApplication`
-    *   `TDesktop`
-    *   `TMenuBar`
-    *   `TStatusLine`
-    *   leichte Menü-/Status-Aktionsmodelle und gemeinsame Shell-Command-IDs
+### `004-editor-file-help-streams`
+*   Spezifikationsquelle: `specs/004-editor-file-help-streams/spec.md`
+*   Ziel dieses Inkrements: Editor-, Datei-, Hilfe-, Stream- und Ressourcenbausteine als wiederverwendbare Framework-Komponenten definieren und für die Planung vorbereiten
+*   Geplanter Umfang in `src/TuiVision.Controls` und `src/TuiVision.Serialization`:
+    *   `TEditor`, `TMemo`, `TFileEditor`, `TEditWindow`
+    *   Datei-/Verzeichnisdialoge, Pfad-History und zugehörige Hilfskomponenten
+    *   `THelpTopic`, `THelpFile`, `THelpViewer`, `THelpWindow`
+    *   Stream-Primitiven und benannte Ressourcencontainer
 *   Verhalten:
-    *   `TApplication` erzeugt standardmäßig Menüleiste, Desktop und Statuszeile
-    *   globale Aktionen müssen über Menü, Statuszeile und Tastatur konsistent geroutet werden
-    *   nicht verfügbare Aktionen bleiben sichtbar, werden aber deaktiviert dargestellt
-    *   Fokus muss nach Start, Aktivierungswechsel und Schließen des aktiven Desktop-Kinds gültig bleiben
+    *   Editor-Flows müssen Bearbeitung, Suche/Ersetzen, Modified-State und explizite Entscheidungen bei ungespeicherten Änderungen abdecken
+    *   Datei-Flows müssen Dateiliste, Verzeichnisnavigation, manuelle Pfadeingabe und History-Rückruf synchron halten
+    *   Hilfe-Flows müssen kontextbezogene Topics, Querverweise und Fallback-Inhalte für fehlende Kontexte unterstützen
+    *   Stream-/Ressourcen-Flows müssen benannte Ablage und explizite Fehlerbehandlung bei defekten Persistenzdaten abdecken
 *   Explizit nicht Teil dieses Schritts:
-    *   konkrete Dialoge
-    *   Controls/Widgets
-    *   spezialisierte Fenstertypen
-*   Testfokus:
-    *   neue MSTest-Abdeckung in `tests/TuiVision.Controls.Tests/`
-    *   TDD in sichtbarer Red-Green-Refactor-Reihenfolge
-    *   Validierung mit `dotnet build --configuration Release`, `dotnet test`, `dotnet format --verify-no-changes` und bei API-/XML-Änderungen zusätzlich `docfx docfx.json`
+    *   Beispielprogramme wie `tvedit`, `bhelp` und `helpdemo`
+    *   Treiberkonsolidierung
+    *   Rechner-/Makro-/OS-Shell-Integrationen
+    *   sonstige fachfremde Spezial-Widgets
 
 ## 🔄 Synchronisationsregel für KI-Agenten-Dateien
 
@@ -103,8 +98,8 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 *Hinweis: Dieses Dokument wurde automatisch von Gemini CLI generiert und dient als Instruktionsbasis.*
 
 ## Active Technologies
-- C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core` (TView, TGroup, TEvent, TObject, TPoint, TRect, (003-dialog-control-layer)
-- N/A — in-memory UI state only; keine Persistenz in Phase 5 (003-dialog-control-layer)
+- C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Core`, `TuiVision.Drivers.Console` (004-editor-file-help-streams)
+- Lokales Dateisystem und persistente Ressourcen-Streams; keine Datenbank in diesem Inkrement (004-editor-file-help-streams)
 
 ## Recent Changes
-- 003-dialog-control-layer: Added C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core` (TView, TGroup, TEvent, TObject, TPoint, TRect,
+- 004-editor-file-help-streams: Spezifikation und Requirements-Checklist fuer Phase 6 (Editor/Datei/Hilfe/Streams) angelegt.

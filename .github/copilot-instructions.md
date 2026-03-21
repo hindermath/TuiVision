@@ -61,27 +61,14 @@ All projects target `net10.0` with `Nullable: enable`, `ImplicitUsings: enable`,
 
 ## Active Feature Context
 
-### 003-dialog-control-layer
-- Align active work with `specs/003-dialog-control-layer/plan.md`
-- Implement 13 new classes in `src/TuiVision.Controls` in dependency order: `TStringList` → `TScrollBar` → `TScroller` → `TStaticText` → `TCluster` → `TCheckBoxes` → `TRadioButtons` → `TLabel` → `TListViewer` → `TListBox` → `TButton` → `TInputLine` → `TDialog`
-- `TDialog.Run()` is synchronously blocking (inner event loop); it returns a `ushort` command ID
-- Tab/Shift-Tab focus navigation in `TDialog` is wrap-around (circular child list inherited from `TGroup`)
-- `TButton` supports `TButtonFlags.bfDefault` — activated by Enter when the focused control does not consume Enter; sets `TViewState.Default` (0x400)
-- `TScrollBar` is optional (nullable) for `TListBox` and `TListViewer`
-- `TCluster` is abstract; `TCheckBoxes` uses a bitmask `uint Value`; `TRadioButtons` uses an index `uint Value`
-- All 13 classes require complete bilingual XML documentation (German first, English second, CEFR-B2) for every member including non-public ones
-- Follow TDD Red-Green-Refactor with separate commits: test (Red) before implementation (Green)
-- Coverage gate: `TuiVision.Controls` ≥ 70% line coverage after all 13 classes are added
-
-### 002-application-framework
-- Align active work with `specs/002-application-framework/plan.md`
-- Implement the shell increment in `src/TuiVision.Controls`, centered on `TProgram`, `TApplication`, `TDesktop`, `TMenuBar`, `TStatusLine`, and shared shell command identifiers
-- Preserve the existing module hierarchy; do **not** introduce a new shell assembly
-- Reuse existing `TView`/`TGroup` semantics for ownership, focus, and event dispatch
-- `TApplication` must create a default shell automatically: menu bar, desktop workspace, and status line
-- Unavailable global actions must remain visible in both menu and status line, but be disabled
-- Keep this increment scoped to shell infrastructure only; dialogs, controls, and specialized window classes belong to later steps
-- Add or extend MSTest coverage in `tests/TuiVision.Controls.Tests/` before production code to preserve the repository's TDD-first workflow
+### 004-editor-file-help-streams
+- Align active work with `specs/004-editor-file-help-streams/spec.md` until planning artifacts exist
+- Scope is limited to reusable framework components in `src/TuiVision.Controls` and `src/TuiVision.Serialization`: `TEditor`, `TMemo`, `TFileEditor`, `TEditWindow`, file/dialog/history helpers, help topics/viewers/windows, stream primitives, and named resource containers
+- Editor flows must cover text editing, search/replace, modified-state handling, and explicit decisions before unsaved changes are discarded
+- File flows must keep directory navigation, file lists, manual path entry, and history recall synchronized inside reusable dialogs
+- Help flows must support context-based topic lookup, cross-reference navigation, and fallback content for missing contexts
+- Stream/resource flows must preserve named lookup semantics and reject malformed persisted input explicitly
+- Keep this increment scoped to reusable framework components only; example applications such as `tvedit`, `bhelp`, and `helpdemo`, as well as driver consolidation and calculator/macros/OS-shell integrations, are out of scope
 
 ## Agent File Synchronization Policy
 

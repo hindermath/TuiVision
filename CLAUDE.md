@@ -68,15 +68,23 @@ Tests use MSTest. Test projects mirror source projects (e.g., `TuiVision.Core.Te
 
 Feature branches use the pattern `codex/<feature-description>`. CI runs on pushes to `main`, `master`, `codex/**`, `claude/**`, `gemini/**`, `opencode/**`, and `copilot/**` branches.
 
+## Active Feature Context
+
+### 004-editor-file-help-streams
+- Current planning target: define and prepare the phase-6 increment from `specs/004-editor-file-help-streams/spec.md`
+- Scope is limited to reusable framework components in `src/TuiVision.Controls` and `src/TuiVision.Serialization`: `TEditor`, `TMemo`, `TFileEditor`, `TEditWindow`, file/dialog/history helpers, help topics/viewers/windows, stream primitives, and named resource containers
+- Out of scope for this increment: example applications such as `tvedit`, `bhelp`, and `helpdemo`; driver consolidation; calculator/macros/OS-shell integrations; and unrelated specialized widgets
+- Editor flows must cover text editing, search/replace, modified-state handling, and explicit decisions before unsaved changes are discarded
+- File flows must keep directory navigation, file lists, manual path entry, and history recall synchronized inside reusable dialogs
+- Help flows must support context-based topic lookup, cross-reference navigation, and fallback content for missing contexts
+- Stream/resource flows must preserve named lookup semantics and reject malformed persisted input explicitly
+
 ## Active Technologies
-- C# `latest` (C# 14) / .NET 10 (`net10.0`) + TuiVision.Core (TPoint, TRect, TEvent, TObject, TConsoleBuffer ← verschoben) (001-view-system-tgroup)
-- C# `latest` on .NET 10 (`net10.0`) + Existing project modules `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`; MSTest for tests; docfx for API documentation validation (002-application-framework)
-- N/A (in-memory UI state only) (002-application-framework)
-- C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core` (TView, TGroup, TEvent, TObject, TPoint, TRect, (003-dialog-control-layer)
-- N/A — in-memory UI state only; keine Persistenz in Phase 5 (003-dialog-control-layer)
+- C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Core`, `TuiVision.Drivers.Console` (004-editor-file-help-streams)
+- Local file-system interaction and persisted resource streams; no database layer in this increment (004-editor-file-help-streams)
 
 ## Recent Changes
-- 001-view-system-tgroup: Added C# `latest` (C# 14) / .NET 10 (`net10.0`) + TuiVision.Core (TPoint, TRect, TEvent, TObject, TConsoleBuffer ← verschoben)
+- 004-editor-file-help-streams: Added the phase-6 specification and requirements checklist for editor, file, help, stream, and resource components.
 
 ## Agent File Synchronization Policy
 
