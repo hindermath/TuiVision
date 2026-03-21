@@ -34,14 +34,14 @@ fortgeschrieben.
 | Kennzahl | Wert |
 |---|---:|
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-21 |
-| Git-Commits gesamt | 116 |
+| Git-Commits gesamt | 125 |
 | Autoren laut Git | 1 |
 | Git-Aktivtage | 9 |
 | Produktionscode aktuell | 34 Dateien / 5710 Zeilen |
 | Testcode aktuell | 35 Dateien / 3881 Zeilen |
-| Dokumentation aktuell | 64 Dateien / 8811 Zeilen |
-| Davon Spec-Kit-Artefakte | 28 Dateien / 4971 Zeilen |
-| Davon Governance/Agent-Dateien | 5 Dateien / 820 Zeilen |
+| Dokumentation aktuell | 65 Dateien / 8982 Zeilen |
+| Davon Spec-Kit-Artefakte | 37 Dateien / 6104 Zeilen |
+| Davon Governance/Agent-Dateien | 5 Dateien / 809 Zeilen |
 | Codebasis fuer Handschaetzung | 9591 Zeilen |
 | Erfahrener Entwickler, konservative Untergrenze | 119.9 Arbeitstage |
 | Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 48.0 Arbeitstage |
@@ -122,6 +122,28 @@ fortgeschrieben.
   - 44.1 Arbeitstage fuer einen erfahrenen Entwickler
   - 17.6 Arbeitstage fuer ein 3er-Team (+20 % Koordination)
 
+### 4. `004-editor-file-help-streams`
+
+- Status: Spezifikation und Checkliste auf Branch `004-editor-file-help-streams`
+  angelegt; bereit fuer `/speckit.plan`
+- Beobachtbarer Zeitraum: 2026-03-21 bis 2026-03-21
+- Commit-Bild: 0 Commits an 0 Git-Aktivtagen; aktueller Stand liegt vollstaendig
+  im Working Tree
+- Grundlegende Arbeiten:
+  - neue Phase-6-Spezifikation fuer Editor-, Datei-, Hilfe-, Stream- und
+    Ressourcenkomponenten
+  - Requirements-Checklist fuer die Spezifikationsqualitaet
+  - Synchronisation der gemeinsam genutzten Agent-Dateien auf den neuen
+    aktiven Feature-Kontext
+- Aktueller Working-Tree-Zuwachs:
+  - Produktionscode: +0 / -0 / netto +0
+  - Testcode: +0 / -0 / netto +0
+  - Dokumentation: +246 / -67 / netto +179
+- Konservative Handarbeits-Basis fuer Code:
+  - 0 Codezeilen netto
+  - 0.0 Arbeitstage fuer einen erfahrenen Entwickler
+  - 0.0 Arbeitstage fuer ein 3er-Team (+20 % Koordination)
+
 ## Zusatz-Branches
 
 | Branch | Letzte sichtbare Aktivitaet | Rolle |
@@ -149,3 +171,4 @@ fortgeschrieben.
 | Datum | Ausloeser | Eintrag |
 |---|---|---|
 | 2026-03-21 | Erstanlage | Basisstatistik fuer `main`, `001-view-system-tgroup`, `002-application-framework` und den aktuellen Stand von `003-dialog-control-layer` erzeugt; Constitution, Templates und Agent-Dateien auf Pflegepflicht synchronisiert. |
+| 2026-03-21 | Branch `004-editor-file-help-streams` | Dokumentationsstand nach neuer Phase-6-Spezifikation, Requirements-Checklist und synchronisierten Agent-Dateien fortgeschrieben; kein Code- oder Testzuwachs in diesem Arbeitsschritt. |
