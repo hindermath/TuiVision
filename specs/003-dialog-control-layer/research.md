@@ -191,6 +191,10 @@ können Unit-Tests den Consolenbuffer direkt inspizieren:
   Zustandsänderungen (Value, CurPos, FocusedItem) prüfen.
 - **Negativ-Tests**: Ungültige Eingaben (leere Liste, MaxLen=0, Out-of-Bounds-Index) →
   kein Absturz, definierter Fehlerzustand.
+- **Grenzfall-Tests**: `TDialog` ohne fokussierbare Kind-Controls, `TScrollBar` an ihren
+  Grenzen, sowie Mausereignisse außerhalb eines offenen modalen Dialogs werden als
+  explizite Negativ-/Abgrenzungsfälle abgedeckt, damit Phase 5 keine impliziten
+  Zusatzfeatures erfindet.
 
 Testklassen-Namenskonvention (Constitution §"Code Style"):
 `TDialog_Run_ReturnsCommandIdOnClose`, `TButton_HandleEvent_ActivatesOnEnter`, etc.

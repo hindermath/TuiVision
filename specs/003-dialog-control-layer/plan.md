@@ -241,6 +241,20 @@ schließt, sofern kein Kind-Control das Ereignis vorher konsumiert.
 `ShellCommandIds.cs` um `cmOK = 10`, `cmCancel = 11`, `cmYes = 12`, `cmNo = 13` ergänzen —
 **vor** Step 11 (TButton braucht diese Konstanten).
 
+### Negativ- und Grenzfall-Fokus
+
+Die Task-Ableitung MUSS zusätzlich sichtbare Negativ-/Grenzfall-Abdeckung für diese
+bereits in der Spec genannten Punkte erzeugen:
+
+- `TDialog` mit keinem fokussierbaren Kind-Control
+- `TListBox` mit leerer `TStringList`
+- `TInputLine` mit `MaxLen = 0`
+- `TScrollBar` an Clamp-/Grenzpositionen
+- Mausereignisse außerhalb eines offenen modalen Dialogs
+
+Diese Fälle sind als Test- und Designabgrenzung zu behandeln, nicht als Anlass für
+zusätzliche nicht spezifizierte Feature-Erweiterungen.
+
 ---
 
 ## Acceptance Criteria (aus Spec SC-001 bis SC-006)
