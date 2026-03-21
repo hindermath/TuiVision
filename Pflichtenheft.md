@@ -62,7 +62,7 @@ Der Lieferumfang umfasst:
 | M-12 | Keine nativen OS-Abhaengigkeiten | Keine P/Invoke-/Native-Library-Pflicht, keine OS-spezifischen Zusatzpakete | Build/Tests laufen mit .NET 10 Runtime ohne native Zusatzinstallation |
 | M-13 | Lizenz-Disclaimer fuer Beispielcharakter | Sichtbarer Hinweis in `LICENSE`/`README` | Hinweis beschreibt: Beispielprojekt, keine Konkurrenzabsicht, keine beabsichtigte Lizenzverletzung |
 | M-14 | CI/CD mit GitHub Actions | Build-/Test-Workflow unter `.github/workflows` | Automatischer Build und Testlauf pro Push/PR ist aktiv |
-| M-15 | Nutzerdokumentation | Leitfaeden, Einstieg und Nutzung unter `docs/guides` | Dokumentation ist vorhanden, nachvollziehbar und aktuell zum Stand der Portierung |
+| M-15 | Nutzerdokumentation | Pflichtguides unter `docs/guides/` gemaess Abschnitt 10.7; Quellenrangfolge und Adaptionspflicht gemaess Abschnitt 10.7 eingehalten; Sprache bilingual (Deutsch zuerst, Englisch) auf CEFR-B2-Niveau | Alle Pflichtguides unter `docs/guides/` sind vorhanden; Quellenrangfolge nachvollziehbar eingehalten; Sprache und Struktur entsprechen dem didaktischen Standard gemaess Abschnitt 10.3 und 10.7 |
 | M-16 | Vollstaendige XML-Kommentierung der oeffentlichen API | Alle `public` Typen, Member, Parameter, Rueckgabewerte und Ausnahmen mit XML-Dokumentation | API ist durchgaengig und didaktisch ausfuehrlich kommentiert; docfx erzeugt daraus vollstaendige Referenzseiten |
 | M-17 | Einheitlicher didaktischer Dokumentationsstil | Alle Dokumentationsartefakte folgen einem verbindlichen Lehr-/Beispielstandard fuer Fachinformatiker (Anwendungsentwicklung) | Struktur, Detailtiefe und Beispiele sind ueber alle Dokuarten konsistent und nachvollziehbar |
 | M-18 | Ausfuehrliche Dokumentation der Beispielprogramme | Pro Beispielprogramm eigener Guide mit Lernziel, Voraussetzungen, Start, Bedienung, Architekturhinweisen und Uebungen | Alle portierten Beispiele sind didaktisch nachvollziehbar dokumentiert und reproduzierbar ausfuehrbar |
@@ -286,6 +286,55 @@ Fuer die Arbeitsumgebungen `MacBook Air M2` und `Mac mini M4 Pro` gilt:
 3. Die Befehle sind so dokumentiert, dass sie auf beiden Systemen mit den angegebenen Voraussetzungen reproduzierbar funktionieren.
 4. Voraussetzungen (authentifizierte CLI-Tools) und die Versionspruefung sind explizit dokumentiert.
 5. Falls zusaetzliche Tools noetig sind (z. B. DocFX), ist die automatisierte Bereitstellung per dokumentiertem Befehl Bestandteil des Workflows.
+
+## 10.7 Standard fuer Nutzerdokumentation – Quellen, Struktur und Sprache (verbindlich)
+
+### Pflichtstruktur unter `docs/guides/`
+
+Die folgenden Guides sind verpflichtend bereitzustellen:
+
+| Datei/Ordner | Mindestinhalt |
+|---|---|
+| `getting-started.md` | Installation, Build, erstes Beispielprogramm starten; Zielgruppe: Azubis ohne TV-Vorkenntnisse |
+| `architecture.md` | Moduluebersicht, View-Hierarchie, Event-System, Koordinatensystem — konzeptuell mit Diagrammen oder Codeauszuegen |
+| `concepts/event-loop.md` | Wie Ereignisse entstehen, weitergeleitet und verarbeitet werden (`HandleEvent`, `PutEvent`, Broadcast) |
+| `concepts/view-hierarchy.md` | `TView`, `TGroup`, Fokus, Owner/Parent-Beziehungen, `Draw`-Zyklus |
+| `concepts/coordinate-system.md` | Lokale vs. globale Koordinaten, `MakeLocal`/`MakeGlobal`, `TRect`-Semantik |
+| `concepts/serialization.md` | Envelopenformat, `TRecordRegistry`, polymorphe De-/Serialisierung |
+| `tutorials/first-dialog.md` | Vollstaendiger Schritt-fuer-Schritt-Guide: eigenen Dialog aufbauen und in eine App einbinden |
+| `examples/` | Pro portiertem Beispielprogramm eine Seite gemaess M-18 und Abschnitt 10.4 |
+
+### Quellenrangfolge und Adaptionspflicht
+
+Die Nutzerdokumentation speist sich aus folgenden Quellen in absteigender Prioritaet:
+
+1. **Borland-Originaldokumentation (Tier 1 – Konzepte und Struktur)**
+   - *Turbo Vision for C++ User's Guide* (Borland International, 1992) – Konzepte, Architektur, Tutorials, Event-Modell
+   - *Turbo Vision for C++ Reference Guide* (Borland International, 1992) – vollstaendige Klassenreferenz mit Verhalten und Beispielen
+   - Beide Werke sind auf archive.org oeffentlich zugaenglich
+   - **Adaptionspflicht**: Diese Werke dienen ausschliesslich als inhaltliche Vorlage und Inspirationsquelle. Jeder Text ist vollstaendig neu zu formulieren: C++ wird zu C#, DOS- und Borland-Terminologie wird durch TuiVision- und .NET-Terminologie ersetzt, das Sprachniveau wird auf CEFR B2 angepasst. Woertliche Textuebernahmen sind nicht zulaessig.
+
+2. **Free Vision Reference (Tier 1 – ergaenzende Konzepte)**
+   - Free Pascal Projekt (freepascal.org) – konzeptionell verwandte Implementierung der gleichen TV-API
+   - Gleiche Adaptionspflicht wie fuer Borland-Material
+
+3. **tv203s C/C++-Quellcode (Tier 2 – Verhaltensreferenz)**
+   - `tv203s/contrib/tvision/` als massgebliche Referenz fuer das Originalverhalten
+   - Wird genutzt, um Verhalten zu erklaeren und bewusste Abweichungen der C#-Portierung zu begruenden
+
+4. **C# Quellcode und XML-Kommentare (Tier 3 – API-Dokumentation)**
+   - Primaerquelle fuer alle API-Referenzseiten; docfx erzeugt daraus automatisch die API-Doku
+   - XML-Kommentare muessen vollstaendig und didaktisch gemaess Abschnitt 10.1 sein
+
+5. **Portierte Beispielprogramme (Tier 4 – Nutzungsszenarien)**
+   - `examples/` liefert konkrete Anwendungsszenarien fuer Tutorials und konzeptuelle Guides
+
+### Sprache und Stil
+
+- Alle Guides sind **bilingual** zu verfassen: Deutsch zuerst, Englisch als gleichwertiger zweiter Abschnitt oder parallel.
+- Sprachniveau: **CEFR B2** – klare Satzstruktur, keine Umgangssprache, Fachbegriffe beim ersten Auftreten erklaert und mit Originalbegriff in Klammern angegeben.
+- Zielgruppe: Auszubildende Fachinformatiker Anwendungsentwicklung mit grundlegenden C#-Kenntnissen, ohne Vorkenntnisse in TUI-Frameworks.
+- Der didaktische Standard gemaess Abschnitt 10.3 gilt ergaenzend fuer alle Nutzerdokumentation.
 
 ## 11. Risiken und Randbedingungen
 
