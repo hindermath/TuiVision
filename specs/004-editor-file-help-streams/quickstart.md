@@ -13,9 +13,10 @@ Validate the planned phase-6 increment by exercising one complete editor workflo
 ## Planned Validation Flow
 
 1. Write failing MSTest cases for:
-   - editor document mutation and command-state behavior
+   - editor document mutation, insert/overwrite mode, clipboard-oriented actions, and command-state behavior
    - safe-close decision handling for modified buffers versus save-conflict handling for overwrite cases
-   - file-dialog synchronization and history bucket scoping
+   - shell menu/status-line alignment with the active editor session, including event-loop dispatch and focus transitions
+   - file-dialog synchronization, explicit dialog interaction, current file-information state, and history bucket scoping
    - manual path entry and wildcard-filter refresh behavior inside file dialogs
    - line-ending preservation and external file-change conflict handling
    - dedicated help-file loading, fallback lookup, and cross-reference navigation
@@ -27,6 +28,7 @@ Validate the planned phase-6 increment by exercising one complete editor workflo
 
 ```bash
 dotnet build --configuration Release
+dotnet test tests/TuiVision.Core.Tests/
 dotnet test tests/TuiVision.Controls.Tests/
 dotnet test tests/TuiVision.Serialization.Tests/
 dotnet test
@@ -68,9 +70,10 @@ public sealed class DemoEditorWorkflow
 
 - A file-backed editor can load, edit, and save a real file without silently changing its original line endings.
 - A modified document cannot be closed or replaced without an explicit discard or save decision.
+- Menus and status-line actions stay aligned with the active editor command state across event-loop dispatch and focus transitions.
 - New files default to `LF`.
 - If the file changed on disk during the session, save requires an explicit overwrite decision.
-- File dialogs keep browsing state, wildcard filters, typed path, and history bucket recall synchronized.
+- File dialogs keep browsing state, wildcard filters, typed path, current file information, explicit dialog interaction, and history bucket recall synchronized.
 - Runtime help loads from a dedicated help file, supports cross-reference navigation, and falls back safely for missing contexts.
 - Named resources can be stored and reloaded with exact case-sensitive keys.
 - Truncated, trailing, unknown-type, or cyclic persisted payloads fail explicitly.

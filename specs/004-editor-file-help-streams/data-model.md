@@ -79,16 +79,34 @@ This feature combines in-memory interaction models in `TuiVision.Controls` with 
   - Visible file entries
   - Visible directory entries
   - Typed path text
+  - Current file-information snapshot
   - Pending action (`open`, `select`, `save-target`, `cancel`)
   - Linked history identifier
 - **Relationships**:
   - May read from one `HistoryBucket`
+  - May own one `FileSelectionInfo`
   - May emit one resolved target path
 - **Validation rules**:
   - Directory view, file list, and typed path must remain synchronized
+  - Current file information must describe the same selected or typed target path as the rest of the dialog state
   - Wildcard-filter changes refresh the visible file-entry set without breaking manual path entry
   - Empty result sets do not block cancellation or manual path entry
   - Manual path entry may resolve a target without requiring prior list selection
+
+### FileSelectionInfo
+
+- **Purpose**: Represents the metadata the dialog exposes for the currently selected or typed path.
+- **Key attributes**:
+  - Resolved path
+  - Existence state
+  - Entry kind (`file`, `directory`, `missing`, `unknown`)
+  - Visible size or length when available
+  - Visible last-write metadata when available
+- **Relationships**:
+  - Belongs to exactly one `FileDialogSession`
+- **Validation rules**:
+  - Selection changes, directory navigation, wildcard-filter changes, and manual path edits must refresh the visible metadata consistently
+  - Missing targets still yield a coherent metadata state instead of stale details from a previous selection
 
 ### HistoryBucket
 

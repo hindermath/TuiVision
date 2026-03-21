@@ -9,8 +9,8 @@ Define the behavioral contract for the public or externally consumable surface i
 ### `TEditor`
 
 - Acts as the reusable multi-line editing surface.
-- Owns text mutation, cursor movement, viewport tracking, selection, and document modification state.
-- Exposes command availability and document state so the shell can keep menu/status actions aligned with the active editor session.
+- Owns text mutation, cursor movement, viewport tracking, selection, insert/overwrite mode, clipboard-oriented edit actions, and document modification state.
+- Exposes command availability and document state so the shell can keep menu and status-line actions aligned with the active editor session.
 - Requires an explicit safe-close decision path before modified content is discarded.
 - Does not perform real file-system persistence by itself.
 
@@ -36,7 +36,7 @@ Define the behavioral contract for the public or externally consumable surface i
 ### `TFileDialog`
 
 - Coordinates directory browsing, file listing, manual path entry, and action resolution for open/select/save-target flows.
-- Keeps wildcard filters, typed paths, and visible list content synchronized throughout one dialog session.
+- Keeps wildcard filters, typed paths, visible list content, and current file information synchronized throughout one dialog session.
 - Keeps related controls synchronized throughout one dialog session.
 - Returns explicit user intent rather than performing document persistence directly.
 
@@ -76,15 +76,17 @@ Define the behavioral contract for the public or externally consumable surface i
 
 1. **Editor-session guarantee**: A user can create or load a document, edit it, and reach either a successful save or an explicit safe-close decision in one shell session.
 2. **Discard-safety guarantee**: Modified content is never discarded through close or replacement flows without an explicit user decision.
-3. **Line-ending guarantee**: Loaded files keep their original line endings on save; new files default to `LF`.
-4. **Conflict guarantee**: External file modification or explicit target replacement never results in silent overwrite.
-5. **History-scoping guarantee**: Recall data is shared only within the same history identifier.
-6. **Help-source guarantee**: Runtime help comes from a dedicated help file, not from an unspecified persistence source.
-7. **Help-navigation guarantee**: Help context lookup, cross-reference navigation, and missing-context fallback stay inside one responsive runtime help workflow.
-8. **Shared-reference guarantee**: Supported persisted object graphs preserve shared-reference identity on read-back.
-9. **Cycle-rejection guarantee**: Unsupported cyclic graphs fail explicitly instead of yielding partial or corrupted reconstruction.
-10. **Resource-key guarantee**: Resource identifiers are case-sensitive and require exact matches for lookup, replacement, removal, and enumeration.
-11. **Scope guarantee**: This increment does not require example-port delivery, macro systems, calculator integration, OS shell execution, or general-purpose help authoring.
+3. **Shell-routing guarantee**: Editor command availability and modification state remain consumable by menus, status-line actions, and shell-level close/save routing.
+4. **Line-ending guarantee**: Loaded files keep their original line endings on save; new files default to `LF`.
+5. **Conflict guarantee**: External file modification or explicit target replacement never results in silent overwrite.
+6. **File-dialog metadata guarantee**: Directory state, file listing, current file information, and manual path entry continue to describe the same active target throughout one dialog session.
+7. **History-scoping guarantee**: Recall data is shared only within the same history identifier.
+8. **Help-source guarantee**: Runtime help comes from a dedicated help file, not from an unspecified persistence source.
+9. **Help-navigation guarantee**: Help context lookup, cross-reference navigation, and missing-context fallback stay inside one responsive runtime help workflow.
+10. **Shared-reference guarantee**: Supported persisted object graphs preserve shared-reference identity on read-back.
+11. **Cycle-rejection guarantee**: Unsupported cyclic graphs fail explicitly instead of yielding partial or corrupted reconstruction.
+12. **Resource-key guarantee**: Resource identifiers are case-sensitive and require exact matches for lookup, replacement, removal, and enumeration.
+13. **Scope guarantee**: This increment does not require example-port delivery, macro systems, calculator integration, OS shell execution, or general-purpose help authoring.
 
 ## Test Obligations
 

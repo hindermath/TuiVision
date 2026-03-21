@@ -24,7 +24,7 @@ Implement the phase-6 framework slice across `TuiVision.Controls` and `TuiVision
 **Language/Version**: C# `latest` on .NET 10 (`net10.0`)  
 **Primary Dependencies**: Existing modules `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`; MSTest; Coverlet via `dotnet test --collect:"XPlat Code Coverage"`; docfx for API documentation validation  
 **Storage**: Real local file system plus persisted binary help/resource files; no database storage  
-**Testing**: MSTest unit and integration-style coverage in `tests/TuiVision.Controls.Tests` and a new `tests/TuiVision.Serialization.Tests`; full repository validation via `dotnet build --configuration Release`, `dotnet test`, and `dotnet format --verify-no-changes`  
+**Testing**: MSTest unit and integration-style coverage in `tests/TuiVision.Controls.Tests` and a new `tests/TuiVision.Serialization.Tests`, plus continued repository-gate validation for `tests/TuiVision.Core.Tests`; full repository validation via `dotnet build --configuration Release`, `dotnet test`, and `dotnet format --verify-no-changes`  
 **Target Platform**: Cross-platform terminal applications on macOS, Linux, and Windows using managed .NET APIs only  
 **Project Type**: Managed .NET library framework with file-backed editing and persistence support  
 **Performance Goals**: Editing, cursor movement, scrolling, history recall, and help-topic navigation remain single-interaction-cycle operations for local terminal workflows; file save conflict detection occurs before overwrite and without extra hidden background passes  
@@ -145,7 +145,7 @@ tests/
 - `quickstart.md` is the validation artifact: it defines the intended reviewer/implementer walkthrough, mandatory quality gates, and conditional documentation regeneration steps.
 - `TEditor`, `TMemo`, `TFileEditor`, and `TEditWindow` are required editor deliverables because they realize the central user workflow from the specification.
 - `TIndicator` is treated as a supporting editor artifact, not as a separate feature track.
-- `TFileDialog`, `TFileInputLine`, `TFileList`, `TDirListBox`, and `THistory` are required file-flow artifacts because the specification requires synchronized browsing, manual entry, wildcard filtering, and scoped history recall.
+- `TFileDialog`, `TFileInputLine`, `TFileList`, `TDirListBox`, and `THistory` are required file-flow artifacts because the specification requires synchronized browsing, manual entry, wildcard filtering, file-information state, and scoped history recall.
 - `THelpViewer` and `THelpWindow` are UI-facing help artifacts; `THelpTopic`, `THelpIndex`, and `THelpFile` are persistence/model artifacts.
 - `pstream`, `ipstream`, `opstream`, `fpstream`, `TResourceFile`, and `TResourceCollection` are required compatibility and persistence artifacts for this increment because shared-reference streams and named resources are explicitly in scope.
 - A narrow framed-host helper may be introduced if needed to avoid duplicating frame/title logic between `TEditWindow` and `THelpWindow`; this is an enabling implementation detail, not a commitment to a broad general window subsystem.
@@ -166,11 +166,11 @@ See `research.md` for full detail. Key planning decisions:
 
 ## Phase 1 Design Overview
 
-- `TEditor` becomes the reusable multi-line editing surface responsible for buffer mutation, cursor motion, scrolling, selection, search/replace orchestration hooks, shell-visible command availability, and explicit safe-close decision routing when modified content would otherwise be discarded.
+- `TEditor` becomes the reusable multi-line editing surface responsible for buffer mutation, cursor motion, scrolling, insert/overwrite behavior, clipboard-oriented edit actions, selection, search/replace orchestration hooks, shell-visible command availability, and explicit safe-close decision routing when modified content would otherwise be discarded.
 - `TMemo` specializes `TEditor` for in-memory text workflows that do not need file-system attachment.
 - `TFileEditor` adds file loading/saving, line-ending tracking, file snapshot tracking, and explicit overwrite-decision hooks for target replacement and external modification conflicts.
 - `TEditWindow` hosts a `TFileEditor` plus optional indicator/status elements in a framed, non-modal desktop-compatible shell view.
-- `TFileDialog`, `TFileInputLine`, `TFileList`, `TDirListBox`, and `THistory` form the file-selection workflow. The dialog coordinates current directory, wildcard filter, selected entry, typed path, and history bucket recall.
+- `TFileDialog`, `TFileInputLine`, `TFileList`, `TDirListBox`, and `THistory` form the file-selection workflow. The dialog coordinates current directory, wildcard filter, selected entry, typed path, current file information, and history bucket recall.
 - `THelpTopic`, `THelpIndex`, and `THelpFile` model dedicated runtime help persistence in `TuiVision.Serialization`; `THelpViewer` and `THelpWindow` consume that model to display topics, scroll content, and navigate cross-references.
 - `pstream`, `ipstream`, `opstream`, and `fpstream` form a compatibility stream layer on top of the existing archive primitives and registry. This layer adds object-reference tracking, file-backed seek/tell behavior, and strict malformed-input rejection without promising legacy byte compatibility.
 - `TResourceFile` and `TResourceCollection` provide case-sensitive named persistence built on the compatibility stream layer.
@@ -178,9 +178,9 @@ See `research.md` for full detail. Key planning decisions:
 
 ### Responsibility Boundaries
 
-- `TEditor` owns editing behavior and document-state transitions; it does not own real file I/O or persisted help/resource concerns.
+- `TEditor` owns editing behavior and document-state transitions, including insert/overwrite mode, clipboard-oriented actions, and shell-facing command-state exposure; it does not own real file I/O or persisted help/resource concerns.
 - `TFileEditor` owns file attachment, line-ending preservation, and external-change conflict detection; it does not own directory browsing UX.
-- `TFileDialog` owns the selection workflow and returns an explicit user decision, but it does not perform the actual document save/load itself.
+- `TFileDialog` owns the selection workflow, synchronized file-information state, and explicit user decision, but it does not perform the actual document save/load itself.
 - `THistory` owns recall interaction for one linked field; the shared history store owns bucket partitioning by history identifier.
 - `THelpFile` owns dedicated help-file loading and topic lookup; it does not render UI.
 - `THelpViewer` owns on-screen help navigation and cross-reference activation; it does not author or rewrite help files.
@@ -215,7 +215,7 @@ See `research.md` for full detail. Key planning decisions:
 | Help topic lookup and cross-reference navigation | User Story 3 | `research.md`, `data-model.md` help entities, `contracts/public-api.md`, help runtime tests |
 | Stream/resource persistence flow | User Story 4 | `research.md`, `data-model.md` stream/resource entities, `contracts/public-api.md`, Serialization tests |
 | Unsaved-close decision flow | User Story 1 + FR-002 | `data-model.md` document lifecycle, `contracts/public-api.md`, editor/file close tests |
-| Manual path entry and wildcard-filter update flow | User Story 2 + FR-006 / FR-007 | `data-model.md` file dialog rules, `contracts/public-api.md`, dialog synchronization tests |
+| Manual path entry, file-information sync, and wildcard-filter update flow | User Story 2 + FR-006 / FR-007 | `data-model.md` file dialog rules, `contracts/public-api.md`, dialog synchronization tests |
 | Empty editor / long line / save target failure | Edge Cases | `data-model.md` document state rules, editor/file tests |
 | Missing help context / no cross references | Edge Cases | `data-model.md` help state transitions, help tests |
 | Case-sensitive resource keys | Edge Cases / FR-014a | `research.md`, `data-model.md`, Serialization tests |
@@ -237,13 +237,14 @@ See `research.md` for full detail. Key planning decisions:
 
 ## Testing Strategy
 
-- **Controls unit tests**: Editor buffer mutation, cursor/viewport behavior, search and replace entry points, history recall scoping, file-dialog synchronization, help-view navigation, framed-host close behavior, and shell command-availability updates.
+- **Controls unit tests**: Editor buffer mutation, cursor/viewport behavior, insert/overwrite behavior, clipboard-oriented edit actions, search and replace entry points, history recall scoping, file-dialog synchronization including current file information, help-view navigation, framed-host close behavior, and shell menu/status-line command-availability updates.
 - **Serialization unit tests**: Primitive read/write behavior, reference-table behavior, malformed-input rejection, seek/tell semantics, help-file topic lookup, resource key exact matching, replacement/removal, and cyclic-graph rejection.
-- **Integration-style tests**: `TFileEditor` load/save lifecycle, unsaved-close decision path, external file-change conflict path, line-ending preservation on save, help-file-to-help-view runtime navigation, and editor/dialog interaction under the shell.
+- **Integration-style tests**: `TFileEditor` load/save lifecycle, unsaved-close decision path, external file-change conflict path, line-ending preservation on save, help-file-to-help-view runtime navigation, file-dialog metadata synchronization, explicit dialog interaction, and editor/dialog interaction under the shell including event-loop dispatch, focus transitions, menu execution, and menu/status-line command routing.
 - **Regression tests**: Preserve existing dialog, list, input, scroll, and shell behavior by reusing current controls rather than regressing phase-3 or phase-4 expectations.
 - **Negative serialization cases**: Truncated payloads, trailing data, unknown type identifiers, duplicate/invalid registrations, and unsupported cycles must each have explicit failing tests rather than being grouped under one generic malformed-input check.
 - **Mandatory validation commands before merge**:
   - `dotnet build --configuration Release`
+  - `dotnet test tests/TuiVision.Core.Tests/`
   - `dotnet test tests/TuiVision.Controls.Tests/`
   - `dotnet test tests/TuiVision.Serialization.Tests/`
   - `dotnet test`
@@ -251,7 +252,7 @@ See `research.md` for full detail. Key planning decisions:
   - `dotnet test --collect:"XPlat Code Coverage"`
 - **Conditional validation command**:
   - `docfx docfx.json` when public APIs or XML comments changed
-- **Coverage gate interpretation**: Repository policy requires at least 70% line coverage for `TuiVision.Controls`. This feature plan keeps that merge gate and additionally sets the same 70% target for `TuiVision.Serialization` because this increment adds a new persistence subsystem whose acceptance would otherwise be weakly measurable.
+- **Coverage gate interpretation**: Constitution policy requires at least 70% line coverage for `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization`. This feature plan preserves that full repository gate and adds no narrower substitute.
 
 ### Success-Criteria Traceability
 

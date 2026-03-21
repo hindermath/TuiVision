@@ -3,7 +3,7 @@
 **Input**: Design documents from `/specs/004-editor-file-help-streams/`
 **Prerequisites**: [plan.md](plan.md), [spec.md](spec.md), [research.md](research.md), [data-model.md](data-model.md), [contracts/public-api.md](contracts/public-api.md), [quickstart.md](quickstart.md)
 
-**Tests**: Tests are mandatory for this feature. The constitution, plan, and quickstart require visible Red-Green-Refactor sequencing with MSTest coverage for `TuiVision.Controls` and `TuiVision.Serialization`.
+**Tests**: Tests are mandatory for this feature. The constitution, plan, and quickstart require visible Red-Green-Refactor sequencing with MSTest coverage for `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization`.
 
 **Organization**: Tasks are grouped by user story so each story remains independently testable, while Setup and Foundational phases prepare the shared infrastructure required by multiple stories.
 
@@ -54,13 +54,13 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T010 [P] [US1] Add red buffer, cursor, selection, and scrolling tests in `tests/TuiVision.Controls.Tests/TEditorTests.cs`
-- [ ] T011 [P] [US1] Add red search/replace, undo, and safe-close command tests in `tests/TuiVision.Controls.Tests/TEditorCommandTests.cs`
-- [ ] T012 [P] [US1] Add red host-window and indicator integration tests in `tests/TuiVision.Controls.Tests/TEditWindowTests.cs`
+- [ ] T010 [P] [US1] Add red buffer, cursor, selection, insert/overwrite, and scrolling tests in `tests/TuiVision.Controls.Tests/TEditorTests.cs`
+- [ ] T011 [P] [US1] Add red search/replace, clipboard-oriented edit actions, undo, and shell command-state tests in `tests/TuiVision.Controls.Tests/TEditorCommandTests.cs`
+- [ ] T012 [P] [US1] Add red host-window, indicator, event-loop, focus-transition, menu-execution, and status-line integration tests in `tests/TuiVision.Controls.Tests/TEditWindowTests.cs`
 
 ### Implementation for User Story 1
 
-- [ ] T013 [P] [US1] Implement the reusable multi-line editor core with bilingual XML docs in `src/TuiVision.Controls/TEditor.cs`
+- [ ] T013 [P] [US1] Implement the reusable multi-line editor core, including insert/overwrite mode and clipboard-oriented actions, with bilingual XML docs in `src/TuiVision.Controls/TEditor.cs`
 - [ ] T014 [P] [US1] Implement the memory-backed editor wrapper with bilingual XML docs in `src/TuiVision.Controls/TMemo.cs`
 - [ ] T015 [P] [US1] Implement the editor indicator view with bilingual XML docs in `src/TuiVision.Controls/TIndicator.cs`
 - [ ] T016 [US1] Implement the editor host window and safe-close coordination with bilingual XML docs in `src/TuiVision.Controls/TEditWindow.cs`
@@ -78,18 +78,18 @@
 ### Tests for User Story 2 ⚠️
 
 - [ ] T017 [P] [US2] Add red file-backed editor tests for load/save, newline preservation, and external-change conflicts in `tests/TuiVision.Controls.Tests/TFileEditorTests.cs`
-- [ ] T018 [P] [US2] Add red file-dialog synchronization and history-scoping tests in `tests/TuiVision.Controls.Tests/TFileDialogTests.cs`
+- [ ] T018 [P] [US2] Add red file-dialog synchronization, explicit dialog-interaction, file-information, and history-scoping tests in `tests/TuiVision.Controls.Tests/TFileDialogTests.cs`
 - [ ] T019 [P] [US2] Add red directory navigation and empty-filter-result tests in `tests/TuiVision.Controls.Tests/TDirListBoxTests.cs`
-- [ ] T020 [P] [US2] Add red filtered file-list and manual-path-entry tests in `tests/TuiVision.Controls.Tests/TFileListTests.cs`
+- [ ] T020 [P] [US2] Add red filtered file-list, file-information refresh, and manual-path-entry tests in `tests/TuiVision.Controls.Tests/TFileListTests.cs`
 
 ### Implementation for User Story 2
 
 - [ ] T021 [P] [US2] Implement history bucket recall with bilingual XML docs in `src/TuiVision.Controls/THistory.cs`
 - [ ] T022 [P] [US2] Implement file-path input behavior with bilingual XML docs in `src/TuiVision.Controls/TFileInputLine.cs`
-- [ ] T023 [P] [US2] Implement filtered file-list behavior with bilingual XML docs in `src/TuiVision.Controls/TFileList.cs`
+- [ ] T023 [P] [US2] Implement filtered file-list behavior and current file-information refresh with bilingual XML docs in `src/TuiVision.Controls/TFileList.cs`
 - [ ] T024 [P] [US2] Implement directory-list navigation with bilingual XML docs in `src/TuiVision.Controls/TDirListBox.cs`
 - [ ] T025 [US2] Implement real-file load/save, line-ending preservation, and snapshot-based overwrite conflict handling with bilingual XML docs in `src/TuiVision.Controls/TFileEditor.cs`
-- [ ] T026 [US2] Implement reusable file-dialog orchestration with bilingual XML docs in `src/TuiVision.Controls/TFileDialog.cs`
+- [ ] T026 [US2] Implement reusable file-dialog orchestration, including synchronized current file-information state, with bilingual XML docs in `src/TuiVision.Controls/TFileDialog.cs`
 
 **Checkpoint**: User Story 2 is independently functional and supports real file-system workflows without breaking US1.
 
@@ -145,8 +145,8 @@
 
 - [ ] T039 [P] Add cross-cutting editor/file/help edge-case coverage in `tests/TuiVision.Controls.Tests/EditorCoverageSweepTests.cs`
 - [ ] T040 [P] Add cross-cutting serialization negative-case coverage in `tests/TuiVision.Serialization.Tests/SerializationCoverageSweepTests.cs`
-- [ ] T041 Run and record `dotnet build --configuration Release`, `dotnet test tests/TuiVision.Controls.Tests/`, `dotnet test tests/TuiVision.Serialization.Tests/`, and `dotnet test` using `specs/004-editor-file-help-streams/quickstart.md`
-- [ ] T042 Run and record `dotnet test --collect:"XPlat Code Coverage"`, `dotnet format --verify-no-changes`, and `docfx docfx.json` using `specs/004-editor-file-help-streams/quickstart.md`
+- [ ] T041 Run and record `dotnet build --configuration Release`, `dotnet test tests/TuiVision.Core.Tests/`, `dotnet test tests/TuiVision.Controls.Tests/`, `dotnet test tests/TuiVision.Serialization.Tests/`, and `dotnet test` using `specs/004-editor-file-help-streams/quickstart.md`
+- [ ] T042 Run and record `dotnet test --collect:"XPlat Code Coverage"` with review of the Core/Controls/Serialization gate, plus `dotnet format --verify-no-changes` and `docfx docfx.json`, using `specs/004-editor-file-help-streams/quickstart.md`
 - [ ] T043 [P] Update `docs/project-statistics.md` with the final branch/phase scope, code/test/doc line counts, observable work window, and manual-effort baseline
 
 ---

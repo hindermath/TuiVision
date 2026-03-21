@@ -28,12 +28,12 @@ As an application developer, I want to host a reusable text editor inside the Tu
 
 **Why this priority**: The editor is the center of this increment. File handling, help integration, and several example applications only become useful once the framework can offer a credible in-application editing experience.
 
-**Independent Test**: Open a document window with a text buffer, type and delete text, move the cursor across lines, select text, run search and replace, and close the editor while preserving a valid application state.
+**Independent Test**: Open a document window with a text buffer, type and delete text, switch between insert and overwrite mode, use clipboard-oriented edit actions, move the cursor across lines, verify shell menu and status-line state updates, run search and replace, and close the editor while preserving a valid application state.
 
 **Acceptance Scenarios**:
 
-1. **Given** an editor window is open with a visible text buffer, **When** the user types text, inserts line breaks, and deletes characters, **Then** the buffer content changes accordingly and the visible viewport continues tracking the active cursor position.
-2. **Given** the editor contains searchable text, **When** the user runs find or replace, **Then** the editor moves to the matching content and applies the confirmed replacement without leaving the editing workflow.
+1. **Given** an editor window is open with a visible text buffer, **When** the user types text, inserts line breaks, deletes characters, switches between insert and overwrite mode, or applies clipboard-oriented edit actions, **Then** the buffer content changes accordingly and the visible viewport continues tracking the active cursor position.
+2. **Given** the editor contains searchable text and exposes shell-visible command state, **When** the user runs find or replace or changes the current selection, **Then** the editor moves to the matching content, applies the confirmed replacement, and keeps menu and status-line actions aligned with the active editing workflow.
 3. **Given** the editor has unsaved changes, **When** the user attempts to close or replace the current document, **Then** the framework requires an explicit decision before the changes are discarded.
 
 ---
@@ -44,11 +44,11 @@ As an end user, I want file-oriented dialogs and history helpers that operate on
 
 **Why this priority**: File interaction is the practical bridge between the editor and real application data. Without reusable file and directory components, the editor remains limited to temporary buffers and later example programs cannot be ported cleanly.
 
-**Independent Test**: Launch a file dialog from the shell, browse through directories, select an item from a filtered file list, recall a previously used path from history for the same history identifier, and complete either an open or save flow.
+**Independent Test**: Launch a file dialog from the shell, browse through directories, select an item from a filtered file list, verify that current file information follows the active selection or typed path, recall a previously used path from history for the same history identifier, and complete either an open or save flow.
 
 **Acceptance Scenarios**:
 
-1. **Given** a file dialog opens with a wildcard filter, **When** the user navigates directories or selects a listed item, **Then** the file list, current directory, and path input stay synchronized.
+1. **Given** a file dialog opens with a wildcard filter, **When** the user navigates directories, selects a listed item, or types a candidate path manually, **Then** the file list, current directory, current file information, and path input stay synchronized.
 2. **Given** the user wants to save to a different location, **When** the user enters or selects a new target path, **Then** the dialog returns that target for the save flow without forcing the user to restart the interaction.
 3. **Given** a destructive file action would replace an existing target, **When** the user confirms the action, **Then** the framework completes the action only after the replacement decision is made explicitly.
 4. **Given** an existing file is loaded with a known line-ending format, **When** the user saves changes without converting the document, **Then** the saved file keeps that line-ending format.
@@ -105,15 +105,15 @@ As a framework maintainer, I want reusable stream and resource components so tha
 
 ### Functional Requirements
 
-- **FR-001**: The system MUST provide a reusable multi-line editor component (`TEditor`) that supports text insertion, overwrite mode, deletion, line breaks, cursor movement, scrolling, selection, undo, clipboard-oriented editing actions, and search/replace within the active document buffer.
-- **FR-002**: The system MUST expose editor command availability and document state so that the surrounding application shell can keep menus, status-line actions, and close/save flows aligned with the active editor context.
+- **FR-001**: The system MUST provide a reusable multi-line editor component (`TEditor`) that supports text insertion, explicit insert/overwrite mode switching, deletion, line breaks, cursor movement, scrolling, selection, undo, clipboard-oriented editing actions (`cut`, `copy`, `paste`), and search/replace within the active document buffer.
+- **FR-002**: The system MUST expose editor command availability and document state so that the surrounding application shell can keep menus, status-line actions, command enablement, and close/save flows aligned with the active editor context.
 - **FR-003**: The system MUST provide an in-memory document editor (`TMemo`) for scenarios where application authors need editor behavior without immediate file-system attachment.
 - **FR-004**: The system MUST provide a file-backed editor (`TFileEditor`) that can load an existing document from the real local file system, create a new untitled document, save to the current target, save to a new target, and require an explicit decision before unsaved changes are discarded.
 - **FR-004a**: When `TFileEditor` saves a document that was loaded from an existing file, it MUST preserve that file's existing line-ending format. Newly created files MUST use `LF` as the default line-ending format consistently.
 - **FR-004b**: When `TFileEditor` detects that the underlying file changed externally after loading, it MUST require an explicit overwrite decision before replacing the on-disk file.
 - **FR-005**: The system MUST provide an editor host window (`TEditWindow`) that presents a document title, visible edit surface, and supporting editor indicators while remaining compatible with the existing desktop workspace and window-management model from earlier increments.
 - **FR-006**: The system MUST provide reusable file-dialog components that let users browse matching files on the real local file system, type a path manually, choose directories, confirm open/select/save flows, and cancel safely without destabilizing the application shell.
-- **FR-007**: The system MUST keep file-related controls synchronized so that directory navigation, file listing, file information, and manual path entry continue to describe the same current selection or target path throughout a dialog session.
+- **FR-007**: The system MUST keep file-related controls synchronized so that directory navigation, file listing, current file information, and manual path entry continue to describe the same current selection or target path throughout a dialog session. Current file information means the metadata the dialog exposes for the selected or typed target path, such as whether it exists, whether it is a file or directory, and the latest visible entry details; a dedicated standalone information widget is not mandatory for acceptance.
 - **FR-008**: The system MUST provide reusable history support (`THistory` and related interactions) so that previously used paths or text inputs can be recalled and reapplied without full re-entry. History entries MUST be partitioned by history identifier; fields share recall data only when they use the same history ID.
 - **FR-009**: The system MUST provide a help-content model (`THelpTopic`, `THelpIndex`, `THelpFile`) that stores help topics by numeric context, supports wrapped paragraph content, and maintains cross-reference links between topics for runtime reading and navigation from a dedicated help file.
 - **FR-010**: The system MUST provide a help viewer and help window (`THelpViewer`, `THelpWindow`) that can open the topic for a requested context, scroll through content, highlight selectable cross-references, and navigate to linked topics through keyboard and mouse interaction.
@@ -130,6 +130,7 @@ As a framework maintainer, I want reusable stream and resource components so tha
 - **Document Buffer**: The editable text content managed by `TEditor`, including cursor location, selection range, modification state, and undoable changes.
 - **Editor Session**: The visible editing workflow hosted by `TEditWindow`, combining the document buffer with shell routing, indicators, and save/close decisions.
 - **File Selection Session**: The temporary dialog state that coordinates current directory, wildcard filter, visible file entries, typed path text, and the pending user action such as open or save.
+- **File Information Snapshot**: The synchronized metadata for the currently selected or typed path, including whether the target exists, what kind of entry it is, and the latest visible details shown by the dialog state.
 - **History Entry Set**: The reusable record of previously entered paths or values that can be recalled into a linked input field and is partitioned by history identifier.
 - **Help Topic**: A context-addressable help entry containing wrapped paragraphs and zero or more cross-references to other topics.
 - **Help File**: The dedicated persisted source that stores help topics and their index for runtime lookup by help context.
@@ -145,6 +146,7 @@ As a framework maintainer, I want reusable stream and resource components so tha
 - Text editing is terminal-oriented and single-user; collaborative editing, concurrent file locking strategies, and network-based documents are not required in this increment.
 - Real local file-system access is part of the acceptance target for the editor and file-dialog flows in this increment.
 - File dialogs may be used for both open and save-style workflows, but they do not need to provide full operating-system file-manager behavior.
+- Current file information may be exposed through dialog state or supporting controls; a separate dedicated information pane is not required as long as the metadata remains synchronized with the active selection or typed path.
 - Newly created files use `LF` as the single TuiVision-defined default line-ending format, while loaded files keep their original line endings on save.
 - Externally modified files are treated as a conflict that requires an explicit overwrite decision rather than silent replacement.
 - The help subsystem in this increment is a runtime consumption feature based on a dedicated help file; help-authoring workflows belong to a later step if needed.
