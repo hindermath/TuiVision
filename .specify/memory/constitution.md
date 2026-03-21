@@ -1,38 +1,37 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version change: 1.3.0 → 1.3.1
-  Bump rationale: PATCH — Clarified principle III by adding an explicit B2
-  readability rationale and a documentation rule for local variables, which
-  cannot carry XML documentation in C#.
+  Version change: 1.3.1 → 1.4.0
+  Bump rationale: MINOR — Expanded the mandated technology guidance with a
+  project-wide JSON-library decision (`System.Text.Json`) and an exception rule
+  for introducing `Newtonsoft.Json`.
   Full project scan performed (AGENTS.md, GEMINI.md, CLAUDE.md,
-  copilot-instructions.md, Pflichtenheft.md, README.md, all templates).
+  copilot-instructions.md, constitution templates, and core spec templates).
 
   Modified principles:
-    - III. Didactic and Linguistic Clarity
+    - None
 
   Added sections:
-    - "B2 Readability Rationale" under principle III
+    - None
 
   Removed sections:
     - None
 
   Templates requiring updates:
-    - .specify/templates/plan-template.md  ✅ aligned (generic, no project refs)
-    - .specify/templates/spec-template.md  ✅ aligned (generic, no project refs)
-    - .specify/templates/tasks-template.md ✅ aligned (TDD Red-Green pattern present)
+    - .specify/templates/plan-template.md  ✅ reviewed; no change required
+    - .specify/templates/spec-template.md  ✅ reviewed; no change required
+    - .specify/templates/tasks-template.md ✅ reviewed; no change required
+    - .specify/templates/constitution-template.md ✅ reviewed; no change required
 
   Agent files reviewed:
-    - AGENTS.md             ✅ aligned
-    - GEMINI.md             ✅ aligned
-    - .github/copilot-instructions.md ✅ aligned (source of new naming convention)
-    - CLAUDE.md             ⚠️ pending — CI branch list only says `codex/**`;
-      should list all AI-agent patterns: codex/**, claude/**, gemini/**,
-      opencode/**, copilot/**. Update CLAUDE.md manually or in a follow-up PR.
+    - AGENTS.md             ✅ updated
+    - GEMINI.md             ✅ updated
+    - .github/copilot-instructions.md ✅ updated
+    - CLAUDE.md             ✅ updated
 
   Follow-up TODOs:
-    - Update CLAUDE.md "Branching Convention" section to reflect all CI-trigger
-      branch patterns (currently only mentions codex/**).
+    - `.specify/templates/commands/` is not present in this repository, so no
+      command-template review was possible.
 -->
 
 # TuiVision Constitution
@@ -201,12 +200,17 @@ the project and its contributors (Pflichtenheft M-12).
 |---|---|
 | Language | C# (LangVersion: latest, targeting C# 14 features) |
 | Runtime | .NET 10 (`net10.0`), managed code only |
+| JSON library | `System.Text.Json` for project-owned JSON parsing and serialization |
 | Test framework | MSTest |
 | Documentation generator | docfx (external command `docfx`) |
 | CI platform | GitHub Actions |
 | Version control | Git; remote: `https://github.com/hindermath/TuiVision.git` |
 | Primary IDEs | JetBrains Rider (primary), VS Code (secondary) |
 | Dev tooling | `gh`, `codex`, `claude`, `gemini`, `opencode`, `copilot` |
+
+Project-owned code MUST use `System.Text.Json` for JSON parsing and
+serialization. Introducing `Newtonsoft.Json` requires documented justification
+in the relevant plan or PR and explicit reviewer approval in the same change.
 
 ### Mandatory Quality Gates (all MUST pass before merge to `main`)
 
@@ -338,4 +342,4 @@ Use `CLAUDE.md`, `GEMINI.md`, `copilot-instructions.md`, and `AGENTS.md` for
 runtime agent-specific development guidance.
 Use `docs/guides/multi-mac-workflow.md` for local multi-machine workflow details.
 
-**Version**: 1.3.1 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-16
+**Version**: 1.4.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-21
