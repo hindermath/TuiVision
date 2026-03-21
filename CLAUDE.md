@@ -74,10 +74,10 @@ Feature branches use the pattern `codex/<feature-description>`. CI runs on pushe
 - Current implementation baseline: execute the phase-6 increment from `specs/004-editor-file-help-streams/spec.md` and `specs/004-editor-file-help-streams/plan.md`
 - Scope is limited to reusable framework components in `src/TuiVision.Controls` and `src/TuiVision.Serialization`: `TEditor`, `TMemo`, `TFileEditor`, `TEditWindow`, file/dialog/history helpers, help topics/viewers/windows, stream primitives, and named resource containers
 - Out of scope for this increment: example applications such as `tvedit`, `bhelp`, and `helpdemo`; driver consolidation; calculator/macros/OS-shell integrations; and unrelated specialized widgets
-- Editor flows must cover text editing, search/replace, modified-state handling, and explicit decisions before unsaved changes are discarded
-- File flows must keep directory navigation, file lists, manual path entry, and history recall synchronized inside reusable dialogs
+- Editor flows must cover text editing, search/replace, modified-state handling, explicit safe-close decisions before unsaved changes are discarded, and distinct overwrite decisions when save conflicts occur
+- File flows must keep directory navigation, file lists, wildcard filtering, manual path entry, and history recall synchronized inside reusable dialogs
 - Help flows must support context-based topic lookup, cross-reference navigation, and fallback content for missing contexts
-- Stream/resource flows must preserve named lookup semantics and reject malformed persisted input explicitly
+- Stream/resource flows must preserve named lookup semantics and reject malformed persisted input explicitly, including truncated, trailing, unknown-type, and cyclic payload failures
 - Planning decisions now fixed for this feature: dedicated runtime help files, shared-reference preservation without cyclic-graph support, exact case-sensitive resource keys, `LF` default for new files, preserved line endings for loaded files, and explicit overwrite decisions after external file changes
 
 ## Active Technologies
@@ -87,6 +87,7 @@ Feature branches use the pattern `codex/<feature-description>`. CI runs on pushe
 ## Recent Changes
 - 004-editor-file-help-streams: Added the phase-6 specification and requirements checklist for editor, file, help, stream, and resource components.
 - 004-editor-file-help-streams: Added `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, and `contracts/public-api.md`; synchronized shared agent guidance to the post-plan baseline.
+- 004-editor-file-help-streams: Applied plan-review clarifications for safe-close vs. overwrite handling, wildcard-filtered file dialogs, explicit malformed-stream cases, and non-functional scope boundaries.
 
 ## Agent File Synchronization Policy
 

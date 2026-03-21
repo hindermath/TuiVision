@@ -68,10 +68,10 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
     *   `THelpTopic`, `THelpFile`, `THelpViewer`, `THelpWindow`
     *   Stream-Primitiven und benannte Ressourcencontainer
 *   Verhalten:
-    *   Editor-Flows müssen Bearbeitung, Suche/Ersetzen, Modified-State und explizite Entscheidungen bei ungespeicherten Änderungen abdecken
-    *   Datei-Flows müssen Dateiliste, Verzeichnisnavigation, manuelle Pfadeingabe und History-Rückruf synchron halten
+    *   Editor-Flows müssen Bearbeitung, Suche/Ersetzen, Modified-State, explizite Safe-Close-Entscheidungen und getrennte Overwrite-Entscheidungen bei Save-Konflikten abdecken
+    *   Datei-Flows müssen Dateiliste, Verzeichnisnavigation, Wildcard-Filter, manuelle Pfadeingabe und History-Rückruf synchron halten
     *   Hilfe-Flows müssen kontextbezogene Topics, Querverweise und Fallback-Inhalte für fehlende Kontexte unterstützen
-    *   Stream-/Ressourcen-Flows müssen benannte Ablage und explizite Fehlerbehandlung bei defekten Persistenzdaten abdecken
+    *   Stream-/Ressourcen-Flows müssen benannte Ablage und explizite Fehlerbehandlung bei gekuerzten, ueberhaengenden, unbekannten oder zyklischen Persistenzdaten abdecken
 *   Festgezogene Planungsentscheidungen:
     *   Runtime-Hilfe kommt aus dedizierten Help-Dateien
     *   Shared References bleiben erhalten, zyklische Objektgraphen sind nicht Teil der Abnahme
@@ -110,3 +110,4 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 ## Recent Changes
 - 004-editor-file-help-streams: Spezifikation und Requirements-Checklist fuer Phase 6 (Editor/Datei/Hilfe/Streams) angelegt.
 - 004-editor-file-help-streams: Planartefakte (`plan.md`, `research.md`, `data-model.md`, `quickstart.md`, `contracts/public-api.md`) erstellt und gemeinsame Agent-Hinweise auf den Post-Plan-Stand synchronisiert.
+- 004-editor-file-help-streams: Plan-Review-Klarstellungen fuer Safe-Close vs. Overwrite, Wildcard-Filter in Dateidialogen, explizite Stream-Fehlerfaelle und nicht-funktionale Abgrenzungen eingearbeitet.
