@@ -53,6 +53,9 @@ Tests use MSTest. Test projects mirror source projects (e.g., `TuiVision.Core.Te
 
 ### Documentation
 
+- Use `System.Text.Json` for project-owned JSON parsing and serialization.
+- Introduce `Newtonsoft.Json` only with documented justification and explicit
+  reviewer approval.
 - Explanatory documentation must be bilingual (German first, English second) with CEFR-B2 readability.
 - Public API changes must include complete XML documentation updates.
 - Run `docfx docfx.json` when root config exists and API/XML docs changed.

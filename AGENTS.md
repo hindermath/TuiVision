@@ -78,6 +78,10 @@ docfx docfx.json
 - Use `static` for utility methods that don't depend on instance state
 - Use `sealed` classes when inheritance is not intended
 
+### JSON Handling
+- Use `System.Text.Json` for project-owned JSON parsing and serialization
+- Introduce `Newtonsoft.Json` only with documented justification and explicit review approval
+
 ### Documentation Guidelines
 - Explanatory documentation blocks must be bilingual: German first, English second
 - German and English documentation should target CEFR-B2 readability

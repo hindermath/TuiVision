@@ -38,17 +38,18 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 ## 📝 Entwicklungskonventionen
 
 1.  **Code-Stil:** Modernes C# (File-scoped Namespaces, Expression-bodied Members, Nullable Reference Types).
-2.  **Dokumentation (MUSS):**
+2.  **JSON-Verarbeitung:** Für projektinternes JSON-Parsing und JSON-Serialisierung ist `System.Text.Json` zu verwenden. `Newtonsoft.Json` darf nur mit dokumentierter Begründung und expliziter Freigabe im Review eingeführt werden.
+3.  **Dokumentation (MUSS):**
     *   Dokumentationsblöcke zweisprachig: erst Deutsch, dann Englisch.
     *   Beide Sprachfassungen auf CEFR-B2-Niveau.
     *   Vollständige XML-Kommentare für alle öffentlichen APIs (`summary`, `param`, `returns`, `remarks`).
     *   Didaktischer Stil: Erklärt das *Warum* und bietet Beispiele für Lernende.
     *   Aktualisierung der Dokumentation erfolgt zeitgleich mit Codeänderungen.
-3.  **Testing:**
+4.  **Testing:**
     *   Mindestens 70% Testabdeckung für Kernmodule.
     *   Jedes Feature benötigt Unit-Tests (MSTest) und ggf. Smoke-Tests in den Beispielen.
-4.  **Keine Nativen Abhängigkeiten:** Alle Treiber müssen rein in verwaltetem Code implementiert sein (kein P/Invoke, wo vermeidbar).
-5.  **Lizenztreue:** Einhaltung der MIT-Lizenz für neuen Code; Respektierung der Original-Lizenzen im `tv203s` Ordner.
+5.  **Keine Nativen Abhängigkeiten:** Alle Treiber müssen rein in verwaltetem Code implementiert sein (kein P/Invoke, wo vermeidbar).
+6.  **Lizenztreue:** Einhaltung der MIT-Lizenz für neuen Code; Respektierung der Original-Lizenzen im `tv203s` Ordner.
 
 ## 📚 Wichtige Dokumente
 *   `README.md`: Allgemeine Einführung und CI-Status.
