@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Struct TPoint | TuiVision Documentation ">
       
-      <meta name="description" content="2D point type matching Turbo Vision coordinate semantics.">
+      <meta name="description" content="Zweidimensionaler Punkt, der die Koordinatensemantik von Turbo Vision abbildet. Die Felder  und  entsprechen den originalen C++-Feldern x und y in TPoint. Two-dimensional point that mirrors the coordinate semantics of Turbo Vision. The fields  and  correspond to the original C++ fields x and y in TPoint.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Core_TPoint.md&amp;value=---%0Auid%3A%20TuiVision.Core.TPoint%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/003-dialog-control-layer/apiSpec/new?filename=TuiVision_Core_TPoint.md&amp;value=---%0Auid%3A%20TuiVision.Core.TPoint%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TuiVision_Core_TPoint" data-uid="TuiVision.Core.TPoint" class="text-break">
-Struct TPoint  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TPoint.cs/#L6"><i class="bi bi-code-slash"></i></a>
+Struct TPoint  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TPoint.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,12 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
   <dl><dt>Assembly</dt><dd>TuiVision.Core.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>2D point type matching Turbo Vision coordinate semantics.</p>
+  <div class="markdown summary"><p>Zweidimensionaler Punkt, der die Koordinatensemantik von Turbo Vision abbildet.
+Die Felder <a class="xref" href="TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_X">X</a> und <a class="xref" href="TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_Y">Y</a> entsprechen den originalen
+C++-Feldern <code>x</code> und <code>y</code> in <code>TPoint</code>.</p>
+<p>Two-dimensional point that mirrors the coordinate semantics of Turbo Vision.
+The fields <a class="xref" href="TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_X">X</a> and <a class="xref" href="TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_Y">Y</a> correspond to the original
+C++ fields <code>x</code> and <code>y</code> in <code>TPoint</code>.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -147,10 +152,12 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Core_TPoint__ctor_System_Int32_System_Int32_" data-uid="TuiVision.Core.TPoint.#ctor(System.Int32,System.Int32)">
   TPoint(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TPoint.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TPoint.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Erstellt einen neuen Punkt mit den angegebenen Koordinaten.</p>
+<p>Creates a new point with the specified coordinates.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -160,9 +167,13 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>Die horizontale Koordinate (Spalte).
+The horizontal coordinate (column).</p>
+</dd>
     <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>Die vertikale Koordinate (Zeile).
+The vertical coordinate (row).</p>
+</dd>
   </dl>
 
 
@@ -184,10 +195,12 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Core_TPoint_X" data-uid="TuiVision.Core.TPoint.X">
   X
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TPoint.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TPoint.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Die horizontale Koordinate (Spalte).</p>
+<p>The horizontal coordinate (column).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -215,10 +228,12 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Core_TPoint_Y" data-uid="TuiVision.Core.TPoint.Y">
   Y
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TPoint.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TPoint.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Die vertikale Koordinate (Zeile).</p>
+<p>The vertical coordinate (row).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -250,10 +265,11 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Core_TPoint_Equals_System_Object_" data-uid="TuiVision.Core.TPoint.Equals(System.Object)">
   Equals(object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TPoint.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TPoint.cs/#L123"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Indicates whether this instance and a specified object are equal.</p>
+  <div class="markdown level1 summary"><p>Vergleicht diesen Punkt mit einem beliebigen Objekt.</p>
+<p>Compares this point to an arbitrary object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -264,14 +280,15 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd><p>The object to compare with the current instance.</p>
+    <dd><p>Das zu vergleichende Objekt. / The object to compare with.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+    <dd><p><code>true</code>, wenn <code class="paramref">obj</code> ein <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a> mit denselben Koordinaten ist.
+<code>true</code> if <code class="paramref">obj</code> is a <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a> with the same coordinates.</p>
 </dd>
   </dl>
 
@@ -289,10 +306,11 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Core_TPoint_Equals_TuiVision_Core_TPoint_" data-uid="TuiVision.Core.TPoint.Equals(TuiVision.Core.TPoint)">
   Equals(TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TPoint.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TPoint.cs/#L111"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
+  <div class="markdown level1 summary"><p>Vergleicht diesen Punkt mit einem anderen <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a>.</p>
+<p>Compares this point to another <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -303,14 +321,15 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>other</code> <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd><p>An object to compare with this object.</p>
+    <dd><p>Der Vergleichspunkt. / The point to compare with.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+    <dd><p><code>true</code>, wenn <a class="xref" href="TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_X">X</a> und <a class="xref" href="TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_Y">Y</a> übereinstimmen; andernfalls <code>false</code>.
+<code>true</code> if <a class="xref" href="TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_X">X</a> and <a class="xref" href="TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_Y">Y</a> match; otherwise <code>false</code>.</p>
 </dd>
   </dl>
 
@@ -328,10 +347,11 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Core_TPoint_GetHashCode" data-uid="TuiVision.Core.TPoint.GetHashCode">
   GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TPoint.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TPoint.cs/#L134"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Returns the hash code for this instance.</p>
+  <div class="markdown level1 summary"><p>Berechnet den Hash-Code für diesen Punkt.</p>
+<p>Computes the hash code for this point.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -343,7 +363,8 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>A 32-bit signed integer that is the hash code for this instance.</p>
+    <dd><p>Ein Hash-Code, der aus <a class="xref" href="TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_X">X</a> und <a class="xref" href="TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_Y">Y</a> kombiniert wird.
+A hash code combined from <a class="xref" href="TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_X">X</a> and <a class="xref" href="TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_Y">Y</a>.</p>
 </dd>
   </dl>
 
@@ -365,10 +386,12 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Core_TPoint_op_Addition_TuiVision_Core_TPoint_TuiVision_Core_TPoint_" data-uid="TuiVision.Core.TPoint.op_Addition(TuiVision.Core.TPoint,TuiVision.Core.TPoint)">
   operator +(TPoint, TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TPoint.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TPoint.cs/#L58"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Addiert zwei Punkte komponentenweise und gibt einen neuen Punkt zurück.</p>
+<p>Adds two points component-wise and returns a new point.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -378,15 +401,19 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>one</code> <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Der erste Punkt. / The first point.</p>
+</dd>
     <dt><code>two</code> <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Der zweite Punkt. / The second point.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Ein neuer Punkt, dessen Koordinaten die Summe der jeweiligen Komponenten sind.
+A new point whose coordinates are the sum of the respective components.</p>
+</dd>
   </dl>
 
 
@@ -403,10 +430,12 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Core_TPoint_op_Equality_TuiVision_Core_TPoint_TuiVision_Core_TPoint_" data-uid="TuiVision.Core.TPoint.op_Equality(TuiVision.Core.TPoint,TuiVision.Core.TPoint)">
   operator ==(TPoint, TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TPoint.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TPoint.cs/#L86"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Prüft, ob zwei Punkte gleich sind.</p>
+<p>Checks whether two points are equal.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -416,15 +445,19 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>left</code> <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Der linke Operand. / The left operand.</p>
+</dd>
     <dt><code>right</code> <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Der rechte Operand. / The right operand.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p><code>true</code>, wenn beide Punkte gleich sind; andernfalls <code>false</code>.
+<code>true</code> if both points are equal; otherwise <code>false</code>.</p>
+</dd>
   </dl>
 
 
@@ -441,10 +474,12 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Core_TPoint_op_Inequality_TuiVision_Core_TPoint_TuiVision_Core_TPoint_" data-uid="TuiVision.Core.TPoint.op_Inequality(TuiVision.Core.TPoint,TuiVision.Core.TPoint)">
   operator !=(TPoint, TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TPoint.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TPoint.cs/#L99"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Prüft, ob zwei Punkte ungleich sind.</p>
+<p>Checks whether two points are not equal.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -454,15 +489,19 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>left</code> <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Der linke Operand. / The left operand.</p>
+</dd>
     <dt><code>right</code> <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Der rechte Operand. / The right operand.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p><code>true</code>, wenn die Punkte ungleich sind; andernfalls <code>false</code>.
+<code>true</code> if the points are not equal; otherwise <code>false</code>.</p>
+</dd>
   </dl>
 
 
@@ -479,10 +518,12 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Core_TPoint_op_Subtraction_TuiVision_Core_TPoint_TuiVision_Core_TPoint_" data-uid="TuiVision.Core.TPoint.op_Subtraction(TuiVision.Core.TPoint,TuiVision.Core.TPoint)">
   operator -(TPoint, TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TPoint.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TPoint.cs/#L72"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Subtrahiert zwei Punkte komponentenweise und gibt einen neuen Punkt zurück.</p>
+<p>Subtracts two points component-wise and returns a new point.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -492,15 +533,19 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>one</code> <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Der Minuend-Punkt. / The minuend point.</p>
+</dd>
     <dt><code>two</code> <a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Der Subtrahend-Punkt. / The subtrahend point.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="TuiVision.Core.TPoint.html">TPoint</a></dt>
-    <dd></dd>
+    <dd><p>Ein neuer Punkt, dessen Koordinaten die Differenz der jeweiligen Komponenten sind.
+A new point whose coordinates are the difference of the respective components.</p>
+</dd>
   </dl>
 
 
@@ -517,7 +562,7 @@ Struct TPoint  <a class="header-action link-secondary" title="View source" href=
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TPoint.cs/#L6" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TPoint.cs/#L12" class="edit-link">Edit this page</a>
         </div>
 
 

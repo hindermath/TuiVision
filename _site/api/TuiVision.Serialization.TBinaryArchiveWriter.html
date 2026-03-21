@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TBinaryArchiveWriter | TuiVision Documentation ">
       
-      <meta name="description" content="Small binary writer abstraction for deterministic payload creation.">
+      <meta name="description" content="Schmale Bin&#228;r-Writer-Abstraktion f&#252;r deterministisches Erstellen von Nutzdaten. Kapselt einen  mit fester UTF-8-Kodierung. Thin binary writer abstraction for deterministic payload creation. Wraps a  with fixed UTF-8 encoding.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Serialization_TBinaryArchiveWriter.md&amp;value=---%0Auid%3A%20TuiVision.Serialization.TBinaryArchiveWriter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/003-dialog-control-layer/apiSpec/new?filename=TuiVision_Serialization_TBinaryArchiveWriter.md&amp;value=---%0Auid%3A%20TuiVision.Serialization.TBinaryArchiveWriter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TuiVision_Serialization_TBinaryArchiveWriter" data-uid="TuiVision.Serialization.TBinaryArchiveWriter" class="text-break">
-Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/Class1.cs/#L16"><i class="bi bi-code-slash"></i></a>
+Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,10 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
   <dl><dt>Assembly</dt><dd>TuiVision.Serialization.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Small binary writer abstraction for deterministic payload creation.</p>
+  <div class="markdown summary"><p>Schmale Binär-Writer-Abstraktion für deterministisches Erstellen von Nutzdaten.
+Kapselt einen <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a> mit fester UTF-8-Kodierung.</p>
+<p>Thin binary writer abstraction for deterministic payload creation.
+Wraps a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a> with fixed UTF-8 encoding.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -160,10 +163,12 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveWriter__ctor_System_IO_Stream_System_Boolean_" data-uid="TuiVision.Serialization.TBinaryArchiveWriter.#ctor(System.IO.Stream,System.Boolean)">
   TBinaryArchiveWriter(Stream, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/Class1.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L72"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Erstellt einen neuen Writer für den angegebenen Stream.</p>
+<p>Creates a new writer for the specified stream.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -173,9 +178,15 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>stream</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></dt>
-    <dd></dd>
+    <dd><p>Der Zielstream. Muss beschreibbar sein.
+The target stream. Must be writable.</p>
+</dd>
     <dt><code>leaveOpen</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p><code>true</code>, um den Stream nach dem Freigeben dieses Writers offen zu lassen;
+<code>false</code>, um ihn zu schließen (Standard).</p>
+<p><code>true</code> to leave the stream open after disposing this writer;
+<code>false</code> to close it (default).</p>
+</dd>
   </dl>
 
 
@@ -186,6 +197,17 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Wird ausgelöst, wenn <code class="paramref">stream</code> <code>null</code> ist.
+Thrown when <code class="paramref">stream</code> is <code>null</code>.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Wird ausgelöst, wenn <code class="paramref">stream</code> nicht beschreibbar ist.
+Thrown when <code class="paramref">stream</code> is not writable.</p>
+</dd>
+  </dl>
 
 
 
@@ -197,10 +219,13 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveWriter_Dispose" data-uid="TuiVision.Serialization.TBinaryArchiveWriter.Dispose">
   Dispose()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/Class1.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L139"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+  <div class="markdown level1 summary"><p>Gibt den Writer frei. Schließt den zugrunde liegenden Stream,
+sofern <code>leaveOpen</code> beim Erstellen nicht auf <code>true</code> gesetzt wurde.</p>
+<p>Disposes the writer. Closes the underlying stream
+unless <code>leaveOpen</code> was set to <code>true</code> at construction.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -224,10 +249,12 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveWriter_WriteBoolean_System_Boolean_" data-uid="TuiVision.Serialization.TBinaryArchiveWriter.WriteBoolean(System.Boolean)">
   WriteBoolean(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/Class1.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L106"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Schreibt einen booleschen Wert in den Stream.</p>
+<p>Writes a boolean value to the stream.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -237,7 +264,8 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p>Der zu schreibende Wert. / The value to write.</p>
+</dd>
   </dl>
 
 
@@ -255,10 +283,12 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveWriter_WriteBytes_System_ReadOnlySpan_System_Byte__" data-uid="TuiVision.Serialization.TBinaryArchiveWriter.WriteBytes(System.ReadOnlySpan{System.Byte})">
   WriteBytes(ReadOnlySpan&lt;byte&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/Class1.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L130"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Schreibt einen Byte-Span direkt in den Stream.</p>
+<p>Writes a byte span directly to the stream.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -268,7 +298,8 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>bytes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
-    <dd></dd>
+    <dd><p>Die zu schreibenden Bytes. / The bytes to write.</p>
+</dd>
   </dl>
 
 
@@ -286,10 +317,12 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveWriter_WriteInt32_System_Int32_" data-uid="TuiVision.Serialization.TBinaryArchiveWriter.WriteInt32(System.Int32)">
   WriteInt32(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/Class1.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L90"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Schreibt einen 32-Bit-Integer-Wert in den Stream.</p>
+<p>Writes a 32-bit integer value to the stream.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -299,7 +332,8 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>Der zu schreibende Wert. / The value to write.</p>
+</dd>
   </dl>
 
 
@@ -317,10 +351,12 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveWriter_WriteString_System_String_" data-uid="TuiVision.Serialization.TBinaryArchiveWriter.WriteString(System.String)">
   WriteString(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/Class1.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L118"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Schreibt eine Zeichenkette im .NET-BinaryWriter-Format (Länge + UTF-8-Bytes) in den Stream.</p>
+<p>Writes a string in .NET BinaryWriter format (length prefix + UTF-8 bytes) to the stream.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -330,7 +366,8 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Die zu schreibende Zeichenkette. / The string to write.</p>
+</dd>
   </dl>
 
 
@@ -341,6 +378,13 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Wird ausgelöst, wenn <code class="paramref">value</code> <code>null</code> ist.
+Thrown when <code class="paramref">value</code> is <code>null</code>.</p>
+</dd>
+  </dl>
 
 
 
@@ -348,10 +392,12 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveWriter_WriteUInt16_System_UInt16_" data-uid="TuiVision.Serialization.TBinaryArchiveWriter.WriteUInt16(System.UInt16)">
   WriteUInt16(ushort)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/Class1.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L98"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Schreibt einen vorzeichenlosen 16-Bit-Integer-Wert in den Stream.</p>
+<p>Writes an unsigned 16-bit integer value to the stream.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -361,7 +407,8 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
-    <dd></dd>
+    <dd><p>Der zu schreibende Wert. / The value to write.</p>
+</dd>
   </dl>
 
 
@@ -379,7 +426,7 @@ Class TBinaryArchiveWriter  <a class="header-action link-secondary" title="View 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/Class1.cs/#L16" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L32" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Enum TEventKind | TuiVision Documentation ">
       
-      <meta name="description" content="Event kind values ported from Turbo Vision event codes.">
+      <meta name="description" content="Ereignistypen aus dem Turbo-Vision-Eventsystem. Die Werte entsprechen den originalen evXxx-Konstanten aus dem C++-Quellcode. Event type values from the Turbo Vision event system. The values correspond to the original evXxx constants from the C++ source code.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Core_TEventKind.md&amp;value=---%0Auid%3A%20TuiVision.Core.TEventKind%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/003-dialog-control-layer/apiSpec/new?filename=TuiVision_Core_TEventKind.md&amp;value=---%0Auid%3A%20TuiVision.Core.TEventKind%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -90,7 +90,7 @@
 
 
   <h1 id="TuiVision_Core_TEventKind" data-uid="TuiVision.Core.TEventKind" class="text-break">
-Enum TEventKind  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L6"><i class="bi bi-code-slash"></i></a>
+Enum TEventKind  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TEvent.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -98,7 +98,10 @@ Enum TEventKind  <a class="header-action link-secondary" title="View source" hre
   <dl><dt>Assembly</dt><dd>TuiVision.Core.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Event kind values ported from Turbo Vision event codes.</p>
+  <div class="markdown summary"><p>Ereignistypen aus dem Turbo-Vision-Eventsystem.
+Die Werte entsprechen den originalen <code>evXxx</code>-Konstanten aus dem C++-Quellcode.</p>
+<p>Event type values from the Turbo Vision event system.
+The values correspond to the original <code>evXxx</code> constants from the C++ source code.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -120,37 +123,48 @@ public enum TEventKind : ushort</code></pre>
   <dl class="parameters">
     <dt id="TuiVision_Core_TEventKind_Broadcast"><code>Broadcast = 512</code></dt>
   
-  <dd></dd>
+  <dd><p>Rundfunknachricht an alle Ansichten. / Broadcast message to all views.</p>
+</dd>
     <dt id="TuiVision_Core_TEventKind_Command"><code>Command = 256</code></dt>
   
-  <dd></dd>
+  <dd><p>Befehlsnachricht an ein direktes Ziel. / Command message to a direct target.</p>
+</dd>
     <dt id="TuiVision_Core_TEventKind_KeyDown"><code>KeyDown = 16</code></dt>
   
-  <dd></dd>
+  <dd><p>Eine Taste wurde gedrückt. / A key was pressed.</p>
+</dd>
     <dt id="TuiVision_Core_TEventKind_Keyboard"><code>Keyboard = 16</code></dt>
   
-  <dd></dd>
+  <dd><p>Kombinationsflag für alle Tastaturereignistypen. / Combined flag for all keyboard event types.</p>
+</dd>
     <dt id="TuiVision_Core_TEventKind_Message"><code>Message = 65280</code></dt>
   
-  <dd></dd>
+  <dd><p>Kombinationsflag für alle Nachrichtenereignistypen. / Combined flag for all message event types.</p>
+</dd>
     <dt id="TuiVision_Core_TEventKind_Mouse"><code>Mouse = MouseDown | MouseUp | MouseMove | MouseAuto</code></dt>
   
-  <dd></dd>
+  <dd><p>Kombinationsflag für alle Mausereignistypen. / Combined flag for all mouse event types.</p>
+</dd>
     <dt id="TuiVision_Core_TEventKind_MouseAuto"><code>MouseAuto = 8</code></dt>
   
-  <dd></dd>
+  <dd><p>Automatisch wiederholtes Mausereignis (Auto-Repeat). / Auto-repeated mouse event.</p>
+</dd>
     <dt id="TuiVision_Core_TEventKind_MouseDown"><code>MouseDown = 1</code></dt>
   
-  <dd></dd>
+  <dd><p>Maustaste wurde gedrückt. / Mouse button was pressed.</p>
+</dd>
     <dt id="TuiVision_Core_TEventKind_MouseMove"><code>MouseMove = 4</code></dt>
   
-  <dd></dd>
+  <dd><p>Maus wurde bewegt. / Mouse was moved.</p>
+</dd>
     <dt id="TuiVision_Core_TEventKind_MouseUp"><code>MouseUp = 2</code></dt>
   
-  <dd></dd>
+  <dd><p>Maustaste wurde losgelassen. / Mouse button was released.</p>
+</dd>
     <dt id="TuiVision_Core_TEventKind_Nothing"><code>Nothing = 0</code></dt>
   
-  <dd></dd>
+  <dd><p>Kein Ereignis vorhanden. / No event present.</p>
+</dd>
   </dl>
 
 
@@ -158,7 +172,7 @@ public enum TEventKind : ushort</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L6" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Core/TEvent.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
 

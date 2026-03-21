@@ -438,6 +438,22 @@ public class TView : TObject
     }
 
     /// <summary>
+    /// Gibt den Zeichenpuffer der Eigentümergruppe zurück, wenn einer verfügbar ist.
+    /// Controls verwenden diese Methode, um innerhalb ihrer <see cref="Draw"/>-Implementierung
+    /// in den Puffer der umgebenden Gruppe zu schreiben.
+    ///
+    /// Returns the owning group's draw buffer when one is available.
+    /// Controls use this method to write into the surrounding group's buffer from
+    /// within their <see cref="Draw"/> implementation.
+    /// </summary>
+    /// <returns>
+    /// Der Zeichenpuffer der Eigentümergruppe oder <c>null</c>, wenn keine Gruppe
+    /// oder kein Puffer verfügbar ist.
+    /// The owning group's draw buffer, or <c>null</c> when no group or buffer is available.
+    /// </returns>
+    protected TConsoleBuffer? GetDrawBuffer() => Owner?.GetDrawBuffer();
+
+    /// <summary>
     /// Gibt die Status-Hinweise für diese Ansicht zurück.
     ///
     /// Returns the status hints for this view.

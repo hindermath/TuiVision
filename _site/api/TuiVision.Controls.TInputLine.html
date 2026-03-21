@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class TInputLine | TuiVision Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class TInputLine | TuiVision Documentation ">
+      
+      <meta name="description" content="Einzeiliges Texteingabefeld mit Cursor- und Viewport-Verwaltung. Single-line text input field with cursor and viewport management.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/003-dialog-control-layer/apiSpec/new?filename=TuiVision_Controls_TInputLine.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TInputLine%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="TuiVision">
+            TuiVision
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="TuiVision.Controls.TInputLine">
+
+
+
+  <h1 id="TuiVision_Controls_TInputLine" data-uid="TuiVision.Controls.TInputLine" class="text-break">
+Class TInputLine  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TInputLine.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TuiVision.html">TuiVision</a>.<a class="xref" href="TuiVision.Controls.html">Controls</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>TuiVision.Controls.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Einzeiliges Texteingabefeld mit Cursor- und Viewport-Verwaltung.</p>
+<p>Single-line text input field with cursor and viewport management.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TInputLine : TView</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="TuiVision.Core.TObject.html">TObject</a></div>
+      <div><a class="xref" href="TuiVision.Controls.TView.html">TView</a></div>
+      <div><span class="xref">TInputLine</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Owner">TView.Owner</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Options">TView.Options</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_EventMask">TView.EventMask</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_State">TView.State</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Origin">TView.Origin</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Size">TView.Size</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetBounds">TView.GetBounds()</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetExtent">TView.GetExtent()</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetState_TuiVision_Controls_TViewState_">TView.GetState(TViewState)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Show">TView.Show()</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Hide">TView.Hide()</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetState_TuiVision_Controls_TViewState_System_Boolean_">TView.SetState(TViewState, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_SizeLimits_TuiVision_Core_TPoint__TuiVision_Core_TPoint__">TView.SizeLimits(out TPoint, out TPoint)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_">TView.Locate(TRect)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_MoveTo_System_Int32_System_Int32_">TView.MoveTo(int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GrowTo_System_Int32_System_Int32_">TView.GrowTo(int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetBounds_TuiVision_Core_TRect_">TView.SetBounds(TRect)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeGlobal_TuiVision_Core_TPoint_">TView.MakeGlobal(TPoint)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeLocal_TuiVision_Core_TPoint_">TView.MakeLocal(TPoint)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_MouseInView_TuiVision_Core_TPoint_">TView.MouseInView(TPoint)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView">TView.DrawView()</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer">TView.GetDrawBuffer()</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints">TView.GetStatusHints()</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_OnBoundsChanged">TView.OnBoundsChanged()</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Core.TObject.html#TuiVision_Core_TObject_ShutDown">TObject.ShutDown()</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Core.TObject.html#TuiVision_Core_TObject_Destroy_TuiVision_Core_TObject_">TObject.Destroy(TObject)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="TuiVision_Controls_TInputLine__ctor_" data-uid="TuiVision.Controls.TInputLine.#ctor*"></a>
+
+  <h3 id="TuiVision_Controls_TInputLine__ctor_TuiVision_Core_TRect_System_Int32_" data-uid="TuiVision.Controls.TInputLine.#ctor(TuiVision.Core.TRect,System.Int32)">
+  TInputLine(TRect, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TInputLine.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Erstellt eine neue Eingabezeile.</p>
+<p>Creates a new input line.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TInputLine(TRect bounds, int maxLen)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bounds</code> <a class="xref" href="TuiVision.Core.TRect.html">TRect</a></dt>
+    <dd><p>Die Bounds des Controls. / The control bounds.</p>
+</dd>
+    <dt><code>maxLen</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Die maximale Zeichenanzahl. / The maximum number of characters.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="TuiVision_Controls_TInputLine_CurPos_" data-uid="TuiVision.Controls.TInputLine.CurPos*"></a>
+
+  <h3 id="TuiVision_Controls_TInputLine_CurPos" data-uid="TuiVision.Controls.TInputLine.CurPos">
+  CurPos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TInputLine.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die aktuelle Cursor-Position.</p>
+<p>The current cursor position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CurPos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_TInputLine_Data_" data-uid="TuiVision.Controls.TInputLine.Data*"></a>
+
+  <h3 id="TuiVision_Controls_TInputLine_Data" data-uid="TuiVision.Controls.TInputLine.Data">
+  Data
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TInputLine.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Der aktuelle Textinhalt.</p>
+<p>The current text content.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Data { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_TInputLine_FirstPos_" data-uid="TuiVision.Controls.TInputLine.FirstPos*"></a>
+
+  <h3 id="TuiVision_Controls_TInputLine_FirstPos" data-uid="TuiVision.Controls.TInputLine.FirstPos">
+  FirstPos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TInputLine.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Der erste sichtbare Zeichenindex.</p>
+<p>The index of the first visible character.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FirstPos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_TInputLine_InsertMode_" data-uid="TuiVision.Controls.TInputLine.InsertMode*"></a>
+
+  <h3 id="TuiVision_Controls_TInputLine_InsertMode" data-uid="TuiVision.Controls.TInputLine.InsertMode">
+  InsertMode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TInputLine.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gibt an, ob Einfügemodus aktiv ist.</p>
+<p>Indicates whether insert mode is active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool InsertMode { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_TInputLine_MaxLen_" data-uid="TuiVision.Controls.TInputLine.MaxLen*"></a>
+
+  <h3 id="TuiVision_Controls_TInputLine_MaxLen" data-uid="TuiVision.Controls.TInputLine.MaxLen">
+  MaxLen
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TInputLine.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die maximale Zeichenanzahl.</p>
+<p>The maximum number of characters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxLen { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="TuiVision_Controls_TInputLine_Draw_" data-uid="TuiVision.Controls.TInputLine.Draw*"></a>
+
+  <h3 id="TuiVision_Controls_TInputLine_Draw" data-uid="TuiVision.Controls.TInputLine.Draw">
+  Draw()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TInputLine.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Zeichnet den aktuell sichtbaren Textausschnitt.</p>
+<p>Draws the currently visible text slice.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Draw()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_TInputLine_HandleEvent_" data-uid="TuiVision.Controls.TInputLine.HandleEvent*"></a>
+
+  <h3 id="TuiVision_Controls_TInputLine_HandleEvent_TuiVision_Core_TEvent_" data-uid="TuiVision.Controls.TInputLine.HandleEvent(TuiVision.Core.TEvent)">
+  HandleEvent(TEvent)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TInputLine.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Verarbeitet Textbearbeitung, Cursorbewegung und Insert/Overwrite.</p>
+<p>Processes text editing, cursor movement, and insert/overwrite mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void HandleEvent(TEvent @event)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>event</code> <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a></dt>
+    <dd><p>Das zu verarbeitende Ereignis. / The event to process.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TInputLine.cs/#L13" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

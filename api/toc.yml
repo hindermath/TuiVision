@@ -14,6 +14,75 @@ items:
   name: TuiVision.Controls
   type: Namespace
   items:
+  - uid: TuiVision.Controls.ShellCommandIds
+    name: ShellCommandIds
+    type: Class
+  - uid: TuiVision.Controls.TApplication
+    name: TApplication
+    type: Class
+  - uid: TuiVision.Controls.TButton
+    name: TButton
+    type: Class
+  - uid: TuiVision.Controls.TButtonFlags
+    name: TButtonFlags
+    type: Enum
+  - uid: TuiVision.Controls.TCheckBoxes
+    name: TCheckBoxes
+    type: Class
+  - uid: TuiVision.Controls.TCluster
+    name: TCluster
+    type: Class
+  - uid: TuiVision.Controls.TDesktop
+    name: TDesktop
+    type: Class
+  - uid: TuiVision.Controls.TDialog
+    name: TDialog
+    type: Class
+  - uid: TuiVision.Controls.TGroup
+    name: TGroup
+    type: Class
+  - uid: TuiVision.Controls.TInputLine
+    name: TInputLine
+    type: Class
+  - uid: TuiVision.Controls.TLabel
+    name: TLabel
+    type: Class
+  - uid: TuiVision.Controls.TListBox
+    name: TListBox
+    type: Class
+  - uid: TuiVision.Controls.TListViewer
+    name: TListViewer
+    type: Class
+  - uid: TuiVision.Controls.TMenuBar
+    name: TMenuBar
+    type: Class
+  - uid: TuiVision.Controls.TMenuItem
+    name: TMenuItem
+    type: Class
+  - uid: TuiVision.Controls.TProgram
+    name: TProgram
+    type: Class
+  - uid: TuiVision.Controls.TRadioButtons
+    name: TRadioButtons
+    type: Class
+  - uid: TuiVision.Controls.TScrollBar
+    name: TScrollBar
+    type: Class
+  - uid: TuiVision.Controls.TScroller
+    name: TScroller
+    type: Class
+  - uid: TuiVision.Controls.TStaticText
+    name: TStaticText
+    type: Class
+  - uid: TuiVision.Controls.TStatusItem
+    name: TStatusItem
+    type: Class
+  - uid: TuiVision.Controls.TStatusLine
+    name: TStatusLine
+    type: Class
+  - uid: TuiVision.Controls.TStringList
+    name: TStringList
+    type: Class
   - uid: TuiVision.Controls.TView
     name: TView
     type: Class
@@ -27,6 +96,12 @@ items:
   name: TuiVision.Core
   type: Namespace
   items:
+  - uid: TuiVision.Core.TConsoleBuffer
+    name: TConsoleBuffer
+    type: Class
+  - uid: TuiVision.Core.TConsoleCell
+    name: TConsoleCell
+    type: Struct
   - uid: TuiVision.Core.TEvent
     name: TEvent
     type: Class
@@ -61,12 +136,6 @@ items:
   - uid: TuiVision.Drivers.Console.IConsolePresenter
     name: IConsolePresenter
     type: Interface
-  - uid: TuiVision.Drivers.Console.TConsoleBuffer
-    name: TConsoleBuffer
-    type: Class
-  - uid: TuiVision.Drivers.Console.TConsoleCell
-    name: TConsoleCell
-    type: Struct
   - uid: TuiVision.Drivers.Console.TConsoleDriver
     name: TConsoleDriver
     type: Class

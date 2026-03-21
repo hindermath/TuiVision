@@ -1,0 +1,543 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.TStringList
+  commentId: T:TuiVision.Controls.TStringList
+  id: TStringList
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.TStringList.#ctor
+  - TuiVision.Controls.TStringList.Add(System.String)
+  - TuiVision.Controls.TStringList.Clear
+  - TuiVision.Controls.TStringList.Count
+  - TuiVision.Controls.TStringList.Item(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: TStringList
+  nameWithType: TStringList
+  fullName: TuiVision.Controls.TStringList
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStringList.cs
+      branch: 003-dialog-control-layer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TStringList
+    path: src/TuiVision.Controls/TStringList.cs
+    startLine: 12
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Einfache indizierte String-Sammlung für listenbasierte Controls.
+
+    Die Klasse bildet das managed Gegenstück zu <code>TStringList</code> aus Turbo Vision.
+
+
+    Simple indexed string collection for list-based controls.
+
+    The class represents the managed counterpart of <code>TStringList</code> from Turbo Vision.
+  example: []
+  syntax:
+    content: public sealed class TStringList
+    content.vb: Public NotInheritable Class TStringList
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Controls.TStringList.#ctor
+  commentId: M:TuiVision.Controls.TStringList.#ctor
+  id: '#ctor'
+  parent: TuiVision.Controls.TStringList
+  langs:
+  - csharp
+  - vb
+  name: TStringList()
+  nameWithType: TStringList.TStringList()
+  fullName: TuiVision.Controls.TStringList.TStringList()
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStringList.cs
+      branch: 003-dialog-control-layer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Controls/TStringList.cs
+    startLine: 26
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Erstellt eine leere String-Liste.
+
+
+    Creates an empty string list.
+  example: []
+  syntax:
+    content: public TStringList()
+    content.vb: Public Sub New()
+  overload: TuiVision.Controls.TStringList.#ctor*
+  nameWithType.vb: TStringList.New()
+  fullName.vb: TuiVision.Controls.TStringList.New()
+  name.vb: New()
+- uid: TuiVision.Controls.TStringList.Count
+  commentId: P:TuiVision.Controls.TStringList.Count
+  id: Count
+  parent: TuiVision.Controls.TStringList
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: TStringList.Count
+  fullName: TuiVision.Controls.TStringList.Count
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStringList.cs
+      branch: 003-dialog-control-layer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Count
+    path: src/TuiVision.Controls/TStringList.cs
+    startLine: 35
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Die Anzahl aktuell gespeicherter Einträge.
+
+
+    The number of currently stored entries.
+  example: []
+  syntax:
+    content: public int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Count As Integer
+  overload: TuiVision.Controls.TStringList.Count*
+- uid: TuiVision.Controls.TStringList.Item(System.Int32)
+  commentId: P:TuiVision.Controls.TStringList.Item(System.Int32)
+  id: Item(System.Int32)
+  parent: TuiVision.Controls.TStringList
+  langs:
+  - csharp
+  - vb
+  name: this[int]
+  nameWithType: TStringList.this[int]
+  fullName: TuiVision.Controls.TStringList.this[int]
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStringList.cs
+      branch: 003-dialog-control-layer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: this[]
+    path: src/TuiVision.Controls/TStringList.cs
+    startLine: 48
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Gibt den Eintrag an einem nullbasierten Index zurück.
+
+
+    Returns the entry at a zero-based index.
+  example: []
+  syntax:
+    content: public string this[int index] { get; }
+    parameters:
+    - id: index
+      type: System.Int32
+      description: Der gewünschte Index. / The requested index.
+    return:
+      type: System.String
+      description: Der Eintrag an der Position <code class="paramref">index</code>. / The entry at <code class="paramref">index</code>.
+    content.vb: Public ReadOnly Default Property this[](index As Integer) As String
+  overload: TuiVision.Controls.TStringList.Item*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: >-
+      Wird ausgelöst, wenn <code class="paramref">index</code> außerhalb der Liste liegt.
+
+      Thrown when <code class="paramref">index</code> is outside the list bounds.
+  nameWithType.vb: TStringList.this[](Integer)
+  fullName.vb: TuiVision.Controls.TStringList.this[](Integer)
+  name.vb: this[](Integer)
+- uid: TuiVision.Controls.TStringList.Add(System.String)
+  commentId: M:TuiVision.Controls.TStringList.Add(System.String)
+  id: Add(System.String)
+  parent: TuiVision.Controls.TStringList
+  langs:
+  - csharp
+  - vb
+  name: Add(string)
+  nameWithType: TStringList.Add(string)
+  fullName: TuiVision.Controls.TStringList.Add(string)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStringList.cs
+      branch: 003-dialog-control-layer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Add
+    path: src/TuiVision.Controls/TStringList.cs
+    startLine: 58
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Fügt einen neuen Eintrag am Ende der Liste an.
+
+
+    Adds a new entry to the end of the list.
+  example: []
+  syntax:
+    content: public void Add(string item)
+    parameters:
+    - id: item
+      type: System.String
+      description: Der hinzuzufügende Text. / The text to add.
+    content.vb: Public Sub Add(item As String)
+  overload: TuiVision.Controls.TStringList.Add*
+  nameWithType.vb: TStringList.Add(String)
+  fullName.vb: TuiVision.Controls.TStringList.Add(String)
+  name.vb: Add(String)
+- uid: TuiVision.Controls.TStringList.Clear
+  commentId: M:TuiVision.Controls.TStringList.Clear
+  id: Clear
+  parent: TuiVision.Controls.TStringList
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: TStringList.Clear()
+  fullName: TuiVision.Controls.TStringList.Clear()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStringList.cs
+      branch: 003-dialog-control-layer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Clear
+    path: src/TuiVision.Controls/TStringList.cs
+    startLine: 69
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Entfernt alle Einträge aus der Liste.
+
+
+    Removes all entries from the list.
+  example: []
+  syntax:
+    content: public void Clear()
+    content.vb: Public Sub Clear()
+  overload: TuiVision.Controls.TStringList.Clear*
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Controls.TStringList.#ctor*
+  commentId: Overload:TuiVision.Controls.TStringList.#ctor
+  href: TuiVision.Controls.TStringList.html#TuiVision_Controls_TStringList__ctor
+  name: TStringList
+  nameWithType: TStringList.TStringList
+  fullName: TuiVision.Controls.TStringList.TStringList
+  nameWithType.vb: TStringList.New
+  fullName.vb: TuiVision.Controls.TStringList.New
+  name.vb: New
+- uid: TuiVision.Controls.TStringList.Count*
+  commentId: Overload:TuiVision.Controls.TStringList.Count
+  href: TuiVision.Controls.TStringList.html#TuiVision_Controls_TStringList_Count
+  name: Count
+  nameWithType: TStringList.Count
+  fullName: TuiVision.Controls.TStringList.Count
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: TuiVision.Controls.TStringList.Item*
+  commentId: Overload:TuiVision.Controls.TStringList.Item
+  href: TuiVision.Controls.TStringList.html#TuiVision_Controls_TStringList_Item_System_Int32_
+  name: this
+  nameWithType: TStringList.this
+  fullName: TuiVision.Controls.TStringList.this
+  nameWithType.vb: TStringList.this[]
+  fullName.vb: TuiVision.Controls.TStringList.this[]
+  name.vb: this[]
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: TuiVision.Controls.TStringList.Add*
+  commentId: Overload:TuiVision.Controls.TStringList.Add
+  href: TuiVision.Controls.TStringList.html#TuiVision_Controls_TStringList_Add_System_String_
+  name: Add
+  nameWithType: TStringList.Add
+  fullName: TuiVision.Controls.TStringList.Add
+- uid: TuiVision.Controls.TStringList.Clear*
+  commentId: Overload:TuiVision.Controls.TStringList.Clear
+  href: TuiVision.Controls.TStringList.html#TuiVision_Controls_TStringList_Clear
+  name: Clear
+  nameWithType: TStringList.Clear
+  fullName: TuiVision.Controls.TStringList.Clear

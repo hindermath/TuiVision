@@ -19,15 +19,23 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: TRecordSerializer
     path: src/TuiVision.Serialization/Class1.cs
-    startLine: 153
+    startLine: 423
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
-  summary: Envelope serializer using type id + payload bytes.
+  summary: >-
+    Umschlag-Serialisierer, der Typ-ID und Nutzdaten-Bytes in einem binären Format kapselt.
+
+    Das Umschlag-Format ist: Typbezeichner (String) + Nutzdatenlänge (Int32) + Nutzdaten (Bytes).
+
+
+    Envelope serializer that wraps a type ID and payload bytes in a binary format.
+
+    The envelope format is: type identifier (string) + payload length (Int32) + payload (bytes).
   example: []
   syntax:
     content: public sealed class TRecordSerializer
@@ -55,21 +63,38 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Serialization/Class1.cs
-    startLine: 157
+    startLine: 445
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
+  summary: >-
+    Erstellt einen neuen Serialisierer mit der angegebenen Registry.
+
+
+    Creates a new serializer with the specified registry.
+  example: []
   syntax:
     content: public TRecordSerializer(TRecordRegistry registry)
     parameters:
     - id: registry
       type: TuiVision.Serialization.TRecordRegistry
+      description: >-
+        Die Registry mit den registrierten Typen. Darf nicht <code>null</code> sein.
+
+        The registry with the registered types. Must not be <code>null</code>.
     content.vb: Public Sub New(registry As TRecordRegistry)
   overload: TuiVision.Serialization.TRecordSerializer.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: >-
+      Wird ausgelöst, wenn <code class="paramref">registry</code> <code>null</code> ist.
+
+      Thrown when <code class="paramref">registry</code> is <code>null</code>.
   nameWithType.vb: TRecordSerializer.New(TRecordRegistry)
   fullName.vb: TuiVision.Serialization.TRecordSerializer.New(TuiVision.Serialization.TRecordRegistry)
   name.vb: New(TRecordRegistry)
@@ -87,23 +112,41 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Serialize
     path: src/TuiVision.Serialization/Class1.cs
-    startLine: 162
+    startLine: 467
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
+  summary: >-
+    Serialisiert einen Wert in ein Umschlag-Byte-Array.
+
+
+    Serializes a value into an envelope byte array.
+  example: []
   syntax:
     content: public byte[] Serialize(string typeId, ITStreamSerializable value)
     parameters:
     - id: typeId
       type: System.String
+      description: >-
+        Der stabile Typbezeichner. Darf nicht leer oder nur aus Leerzeichen bestehen.
+
+        The stable type identifier. Must not be empty or whitespace-only.
     - id: value
       type: TuiVision.Serialization.ITStreamSerializable
+      description: >-
+        Der zu serialisierende Wert. Darf nicht <code>null</code> sein.
+
+        The value to serialize. Must not be <code>null</code>.
     return:
       type: System.Byte[]
+      description: >-
+        Ein Byte-Array im Umschlag-Format.
+
+        A byte array in envelope format.
     content.vb: Public Function Serialize(typeId As String, value As ITStreamSerializable) As Byte()
   overload: TuiVision.Serialization.TRecordSerializer.Serialize*
   nameWithType.vb: TRecordSerializer.Serialize(String, ITStreamSerializable)
@@ -123,23 +166,44 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Deserialize
     path: src/TuiVision.Serialization/Class1.cs
-    startLine: 186
+    startLine: 508
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
+  summary: >-
+    Deserialisiert ein Umschlag-Byte-Array und gibt die enthaltene Instanz zurück.
+
+
+    Deserializes an envelope byte array and returns the contained instance.
+  example: []
   syntax:
     content: public object Deserialize(ReadOnlySpan<byte> data)
     parameters:
     - id: data
       type: System.ReadOnlySpan{System.Byte}
+      description: >-
+        Das zu deserialisierende Byte-Array. Darf nicht leer sein.
+
+        The byte array to deserialize. Must not be empty.
     return:
       type: System.Object
+      description: >-
+        Die deserialisierte Instanz.
+
+        The deserialized instance.
     content.vb: Public Function Deserialize(data As ReadOnlySpan(Of Byte)) As Object
   overload: TuiVision.Serialization.TRecordSerializer.Deserialize*
+  exceptions:
+  - type: System.IO.InvalidDataException
+    commentId: T:System.IO.InvalidDataException
+    description: >-
+      Wird ausgelöst, wenn die Daten leer, fehlerhaft oder unvollständig sind.
+
+      Thrown when the data is empty, malformed, or incomplete.
   nameWithType.vb: TRecordSerializer.Deserialize(ReadOnlySpan(Of Byte))
   fullName.vb: TuiVision.Serialization.TRecordSerializer.Deserialize(System.ReadOnlySpan(Of Byte))
   name.vb: Deserialize(ReadOnlySpan(Of Byte))
@@ -157,25 +221,50 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/Class1.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Deserialize
     path: src/TuiVision.Serialization/Class1.cs
-    startLine: 213
+    startLine: 556
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
+  summary: >-
+    Deserialisiert ein Umschlag-Byte-Array und gibt die enthaltene Instanz als <code class="typeparamref">T</code> zurück.
+
+
+    Deserializes an envelope byte array and returns the contained instance as <code class="typeparamref">T</code>.
+  example: []
   syntax:
     content: 'public T Deserialize<T>(ReadOnlySpan<byte> data) where T : class'
     parameters:
     - id: data
       type: System.ReadOnlySpan{System.Byte}
+      description: >-
+        Das zu deserialisierende Byte-Array.
+
+        The byte array to deserialize.
     typeParameters:
     - id: T
+      description: >-
+        Der erwartete Ergebnistyp. Muss eine Klasse sein.
+
+        The expected result type. Must be a class.
     return:
       type: '{T}'
+      description: >-
+        Die deserialisierte Instanz als <code class="typeparamref">T</code>.
+
+        The deserialized instance as <code class="typeparamref">T</code>.
     content.vb: Public Function Deserialize(Of T As Class)(data As ReadOnlySpan(Of Byte)) As T
   overload: TuiVision.Serialization.TRecordSerializer.Deserialize*
+  exceptions:
+  - type: System.IO.InvalidDataException
+    commentId: T:System.IO.InvalidDataException
+    description: >-
+      Wird ausgelöst, wenn die Nutzdaten keine Instanz von <code class="typeparamref">T</code> enthalten.
+
+      Thrown when the payload does not contain an instance of <code class="typeparamref">T</code>.
   nameWithType.vb: TRecordSerializer.Deserialize(Of T)(ReadOnlySpan(Of Byte))
   fullName.vb: TuiVision.Serialization.TRecordSerializer.Deserialize(Of T)(System.ReadOnlySpan(Of Byte))
   name.vb: Deserialize(Of T)(ReadOnlySpan(Of Byte))
@@ -415,6 +504,13 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
 - uid: TuiVision.Serialization.TRecordSerializer.#ctor*
   commentId: Overload:TuiVision.Serialization.TRecordSerializer.#ctor
   href: TuiVision.Serialization.TRecordSerializer.html#TuiVision_Serialization_TRecordSerializer__ctor_TuiVision_Serialization_TRecordRegistry_
@@ -478,6 +574,13 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.byte
   - name: (
   - name: )
+- uid: System.IO.InvalidDataException
+  commentId: T:System.IO.InvalidDataException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.invaliddataexception
+  name: InvalidDataException
+  nameWithType: InvalidDataException
+  fullName: System.IO.InvalidDataException
 - uid: TuiVision.Serialization.TRecordSerializer.Deserialize*
   commentId: Overload:TuiVision.Serialization.TRecordSerializer.Deserialize
   href: TuiVision.Serialization.TRecordSerializer.html#TuiVision_Serialization_TRecordSerializer_Deserialize_System_ReadOnlySpan_System_Byte__

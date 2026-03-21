@@ -178,6 +178,54 @@ dotnet format --verify-no-changes
 docfx docfx.json
 ```
 
+## Phase-8-Abschlusscheckliste / Phase 8 Final Checklist
+
+Die folgenden Kommandos bilden den finalen Phase-8-Durchlauf für dieses Feature.
+Sie sind in genau dieser Form ausführbar und dienen zugleich als Nachweisblock.
+
+The following commands define the final Phase 8 validation run for this feature.
+They are executable as written and also serve as the evidence block.
+
+```bash
+# 1. Fokus-Sweep für Phase 8 / Focused sweep for Phase 8
+dotnet test tests/TuiVision.Controls.Tests/TuiVision.Controls.Tests.csproj \
+  --configuration Release \
+  --filter "FullyQualifiedName~ControlCoverageSweepTests"
+
+# 2. Release-Build / Release build
+dotnet build --configuration Release
+
+# 3. Voller Control-Testlauf / Full control test run
+dotnet test tests/TuiVision.Controls.Tests/TuiVision.Controls.Tests.csproj --configuration Release
+
+# 4. Coverage-Gate für TuiVision.Controls / Coverage gate for TuiVision.Controls
+dotnet test tests/TuiVision.Controls.Tests/TuiVision.Controls.Tests.csproj \
+  --configuration Release \
+  --collect:"XPlat Code Coverage" \
+  --results-directory ./TestResults/003-dialog-control-layer-coverage
+
+# 5. Formatierung / Formatting
+dotnet format --verify-no-changes
+
+# 6. DocFX-Validierung / DocFX validation
+docfx docfx.json
+
+# 7. Smoke-Tests / Smoke tests
+dotnet test tests/TuiVision.Examples.SmokeTests/TuiVision.Examples.SmokeTests.csproj --configuration Release
+```
+
+### Ergebnisprotokoll / Validation Record
+
+| Schritt / Step | Kommando / Command | Status | Notiz / Note |
+|---|---|---|---|
+| Sweep | `dotnet test ... --filter "FullyQualifiedName~ControlCoverageSweepTests"` | PASS | 5/5 Tests grün am 2026-03-21 |
+| Build | `dotnet build --configuration Release` | PASS | 0 Warnungen, 0 Fehler am 2026-03-21 |
+| Tests | `dotnet test tests/TuiVision.Controls.Tests/TuiVision.Controls.Tests.csproj --configuration Release` | PASS | 110/110 Controls-Tests grün am 2026-03-21 |
+| Coverage | `dotnet test ... --collect:"XPlat Code Coverage"` | PASS | `TuiVision.Controls` Line Coverage = 85.47 % (`TestResults/003-dialog-control-layer-coverage-escalated/.../coverage.cobertura.xml`); wegen Sandbox-Named-Pipes außerhalb der Sandbox ausgeführt |
+| Format | `dotnet format --verify-no-changes` | PASS | Exit-Code 0 am 2026-03-21 |
+| DocFX | `docfx docfx.json` | PASS | 0 Warnungen, 0 Fehler am 2026-03-21; wegen Build-Host-Named-Pipes außerhalb der Sandbox ausgeführt |
+| Smoke | `dotnet test tests/TuiVision.Examples.SmokeTests/TuiVision.Examples.SmokeTests.csproj --configuration Release` | PASS | 3/3 Smoke-Tests grün am 2026-03-21 |
+
 Zusätzlicher Governance-Check / Additional governance check:
 
 ```bash

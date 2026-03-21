@@ -25,15 +25,27 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: TPoint
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 5
+    startLine: 11
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: 2D point type matching Turbo Vision coordinate semantics.
+  summary: >-
+    Zweidimensionaler Punkt, der die Koordinatensemantik von Turbo Vision abbildet.
+
+    Die Felder <xref href="TuiVision.Core.TPoint.X" data-throw-if-not-resolved="false"></xref> und <xref href="TuiVision.Core.TPoint.Y" data-throw-if-not-resolved="false"></xref> entsprechen den originalen
+
+    C++-Feldern <code>x</code> und <code>y</code> in <code>TPoint</code>.
+
+
+    Two-dimensional point that mirrors the coordinate semantics of Turbo Vision.
+
+    The fields <xref href="TuiVision.Core.TPoint.X" data-throw-if-not-resolved="false"></xref> and <xref href="TuiVision.Core.TPoint.Y" data-throw-if-not-resolved="false"></xref> correspond to the original
+
+    C++ fields <code>x</code> and <code>y</code> in <code>TPoint</code>.
   example: []
   syntax:
     content: 'public struct TPoint : IEquatable<TPoint>'
@@ -59,21 +71,35 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 7
+    startLine: 26
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Erstellt einen neuen Punkt mit den angegebenen Koordinaten.
+
+
+    Creates a new point with the specified coordinates.
+  example: []
   syntax:
     content: public TPoint(int x, int y)
     parameters:
     - id: x
       type: System.Int32
+      description: >-
+        Die horizontale Koordinate (Spalte).
+
+        The horizontal coordinate (column).
     - id: y
       type: System.Int32
+      description: >-
+        Die vertikale Koordinate (Zeile).
+
+        The vertical coordinate (row).
     content.vb: Public Sub New(x As Integer, y As Integer)
   overload: TuiVision.Core.TPoint.#ctor*
   nameWithType.vb: TPoint.New(Integer, Integer)
@@ -93,14 +119,20 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: X
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 13
+    startLine: 37
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Die horizontale Koordinate (Spalte).
+
+
+    The horizontal coordinate (column).
+  example: []
   syntax:
     content: public int X { readonly get; set; }
     parameters: []
@@ -122,14 +154,20 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Y
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 15
+    startLine: 44
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Die vertikale Koordinate (Zeile).
+
+
+    The vertical coordinate (row).
+  example: []
   syntax:
     content: public int Y { readonly get; set; }
     parameters: []
@@ -151,23 +189,35 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Addition
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 17
+    startLine: 57
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Addiert zwei Punkte komponentenweise und gibt einen neuen Punkt zurück.
+
+
+    Adds two points component-wise and returns a new point.
+  example: []
   syntax:
     content: public static TPoint operator +(TPoint one, TPoint two)
     parameters:
     - id: one
       type: TuiVision.Core.TPoint
+      description: Der erste Punkt. / The first point.
     - id: two
       type: TuiVision.Core.TPoint
+      description: Der zweite Punkt. / The second point.
     return:
       type: TuiVision.Core.TPoint
+      description: >-
+        Ein neuer Punkt, dessen Koordinaten die Summe der jeweiligen Komponenten sind.
+
+        A new point whose coordinates are the sum of the respective components.
     content.vb: Public Shared Operator +(one As TPoint, two As TPoint) As TPoint
   overload: TuiVision.Core.TPoint.op_Addition*
   nameWithType.vb: TPoint.+(TPoint, TPoint)
@@ -187,23 +237,35 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Subtraction
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 20
+    startLine: 71
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Subtrahiert zwei Punkte komponentenweise und gibt einen neuen Punkt zurück.
+
+
+    Subtracts two points component-wise and returns a new point.
+  example: []
   syntax:
     content: public static TPoint operator -(TPoint one, TPoint two)
     parameters:
     - id: one
       type: TuiVision.Core.TPoint
+      description: Der Minuend-Punkt. / The minuend point.
     - id: two
       type: TuiVision.Core.TPoint
+      description: Der Subtrahend-Punkt. / The subtrahend point.
     return:
       type: TuiVision.Core.TPoint
+      description: >-
+        Ein neuer Punkt, dessen Koordinaten die Differenz der jeweiligen Komponenten sind.
+
+        A new point whose coordinates are the difference of the respective components.
     content.vb: Public Shared Operator -(one As TPoint, two As TPoint) As TPoint
   overload: TuiVision.Core.TPoint.op_Subtraction*
   nameWithType.vb: TPoint.-(TPoint, TPoint)
@@ -223,23 +285,35 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Equality
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 23
+    startLine: 85
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Prüft, ob zwei Punkte gleich sind.
+
+
+    Checks whether two points are equal.
+  example: []
   syntax:
     content: public static bool operator ==(TPoint left, TPoint right)
     parameters:
     - id: left
       type: TuiVision.Core.TPoint
+      description: Der linke Operand. / The left operand.
     - id: right
       type: TuiVision.Core.TPoint
+      description: Der rechte Operand. / The right operand.
     return:
       type: System.Boolean
+      description: >-
+        <code>true</code>, wenn beide Punkte gleich sind; andernfalls <code>false</code>.
+
+        <code>true</code> if both points are equal; otherwise <code>false</code>.
     content.vb: Public Shared Operator =(left As TPoint, right As TPoint) As Boolean
   overload: TuiVision.Core.TPoint.op_Equality*
   nameWithType.vb: TPoint.=(TPoint, TPoint)
@@ -259,23 +333,35 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Inequality
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 25
+    startLine: 98
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
+  summary: >-
+    Prüft, ob zwei Punkte ungleich sind.
+
+
+    Checks whether two points are not equal.
+  example: []
   syntax:
     content: public static bool operator !=(TPoint left, TPoint right)
     parameters:
     - id: left
       type: TuiVision.Core.TPoint
+      description: Der linke Operand. / The left operand.
     - id: right
       type: TuiVision.Core.TPoint
+      description: Der rechte Operand. / The right operand.
     return:
       type: System.Boolean
+      description: >-
+        <code>true</code>, wenn die Punkte ungleich sind; andernfalls <code>false</code>.
+
+        <code>true</code> if the points are not equal; otherwise <code>false</code>.
     content.vb: Public Shared Operator <>(left As TPoint, right As TPoint) As Boolean
   overload: TuiVision.Core.TPoint.op_Inequality*
   nameWithType.vb: TPoint.<>(TPoint, TPoint)
@@ -295,25 +381,32 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Equals
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 27
+    startLine: 110
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Indicates whether the current object is equal to another object of the same type.
+  summary: >-
+    Vergleicht diesen Punkt mit einem anderen <xref href="TuiVision.Core.TPoint" data-throw-if-not-resolved="false"></xref>.
+
+
+    Compares this point to another <xref href="TuiVision.Core.TPoint" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
     content: public readonly bool Equals(TPoint other)
     parameters:
     - id: other
       type: TuiVision.Core.TPoint
-      description: An object to compare with this object.
+      description: Der Vergleichspunkt. / The point to compare with.
     return:
       type: System.Boolean
-      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+      description: >-
+        <code>true</code>, wenn <xref href="TuiVision.Core.TPoint.X" data-throw-if-not-resolved="false"></xref> und <xref href="TuiVision.Core.TPoint.Y" data-throw-if-not-resolved="false"></xref> übereinstimmen; andernfalls <code>false</code>.
+
+        <code>true</code> if <xref href="TuiVision.Core.TPoint.X" data-throw-if-not-resolved="false"></xref> and <xref href="TuiVision.Core.TPoint.Y" data-throw-if-not-resolved="false"></xref> match; otherwise <code>false</code>.
     content.vb: Public Function Equals(other As TPoint) As Boolean
   overload: TuiVision.Core.TPoint.Equals*
   implements:
@@ -332,25 +425,32 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: Equals
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 29
+    startLine: 122
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Indicates whether this instance and a specified object are equal.
+  summary: >-
+    Vergleicht diesen Punkt mit einem beliebigen Objekt.
+
+
+    Compares this point to an arbitrary object.
   example: []
   syntax:
     content: public override readonly bool Equals(object? obj)
     parameters:
     - id: obj
       type: System.Object
-      description: The object to compare with the current instance.
+      description: Das zu vergleichende Objekt. / The object to compare with.
     return:
       type: System.Boolean
-      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+      description: >-
+        <code>true</code>, wenn <code class="paramref">obj</code> ein <xref href="TuiVision.Core.TPoint" data-throw-if-not-resolved="false"></xref> mit denselben Koordinaten ist.
+
+        <code>true</code> if <code class="paramref">obj</code> is a <xref href="TuiVision.Core.TPoint" data-throw-if-not-resolved="false"></xref> with the same coordinates.
     content.vb: Public Overrides Function Equals(obj As Object) As Boolean
   overridden: System.ValueType.Equals(System.Object)
   overload: TuiVision.Core.TPoint.Equals*
@@ -371,25 +471,44 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 003-dialog-control-layer
       repo: https://github.com/hindermath/TuiVision.git
     id: GetHashCode
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 31
+    startLine: 133
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
-  summary: Returns the hash code for this instance.
+  summary: >-
+    Berechnet den Hash-Code für diesen Punkt.
+
+
+    Computes the hash code for this point.
   example: []
   syntax:
     content: public override readonly int GetHashCode()
     return:
       type: System.Int32
-      description: A 32-bit signed integer that is the hash code for this instance.
+      description: >-
+        Ein Hash-Code, der aus <xref href="TuiVision.Core.TPoint.X" data-throw-if-not-resolved="false"></xref> und <xref href="TuiVision.Core.TPoint.Y" data-throw-if-not-resolved="false"></xref> kombiniert wird.
+
+        A hash code combined from <xref href="TuiVision.Core.TPoint.X" data-throw-if-not-resolved="false"></xref> and <xref href="TuiVision.Core.TPoint.Y" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Overrides Function GetHashCode() As Integer
   overridden: System.ValueType.GetHashCode
   overload: TuiVision.Core.TPoint.GetHashCode*
 references:
+- uid: TuiVision.Core.TPoint.X
+  commentId: P:TuiVision.Core.TPoint.X
+  href: TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_X
+  name: X
+  nameWithType: TPoint.X
+  fullName: TuiVision.Core.TPoint.X
+- uid: TuiVision.Core.TPoint.Y
+  commentId: P:TuiVision.Core.TPoint.Y
+  href: TuiVision.Core.TPoint.html#TuiVision_Core_TPoint_Y
+  name: Y
+  nameWithType: TPoint.Y
+  fullName: TuiVision.Core.TPoint.Y
 - uid: TuiVision.Core
   commentId: N:TuiVision.Core
   href: TuiVision.html

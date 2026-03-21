@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/main/docs/guides/multi-mac-workflow.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/docs/guides/multi-mac-workflow.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -139,8 +139,17 @@ fi
 </ul>
 <h2 id="codex-workflow-lokal">Codex-Workflow (lokal)</h2>
 <p>Beispielaufruf:</p>
-<pre><code class="lang-bash">codex
+<pre><code class="lang-bash">direnv allow
+codex
 </code></pre>
+<p>Projektlokale Einstellung:
+<code>CODEX_HOME</code> wird in diesem Repository ueber <code>.envrc</code> auf <code>./.codex</code> gesetzt.
+Wenn <code>direnv</code> nicht verwendet wird, starte Codex stattdessen ueber
+<code>./scripts/codex-local.sh</code>.</p>
+<p>Project-local setting:
+<code>CODEX_HOME</code> is set in this repository via <code>.envrc</code> to <code>./.codex</code>.
+If <code>direnv</code> is not in use, start Codex through <code>./scripts/codex-local.sh</code>
+instead.</p>
 <p>Empfehlung fuer Sessions:</p>
 <ol>
 <li>Vor Session-Beginn <code>git status</code> pruefen.</li>
@@ -210,7 +219,7 @@ git diff
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/main/docs/guides/multi-mac-workflow.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/docs/guides/multi-mac-workflow.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

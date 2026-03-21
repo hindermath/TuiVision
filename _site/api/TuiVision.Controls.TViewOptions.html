@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Enum TViewOptions | TuiVision Documentation ">
       
-      <meta name="description" content="Option mask for view behavior.">
+      <meta name="description" content="Optionsmaske f&#252;r das Verhalten einer Ansicht. Die Werte entsprechen den ofXxx-Konstanten aus dem originalen Turbo-Vision-C++-Code. Option mask for view behavior. The values correspond to the ofXxx constants from the original Turbo Vision C++ code.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Controls_TViewOptions.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TViewOptions%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/003-dialog-control-layer/apiSpec/new?filename=TuiVision_Controls_TViewOptions.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TViewOptions%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -90,7 +90,7 @@
 
 
   <h1 id="TuiVision_Controls_TViewOptions" data-uid="TuiVision.Controls.TViewOptions" class="text-break">
-Enum TViewOptions  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L28"><i class="bi bi-code-slash"></i></a>
+Enum TViewOptions  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -98,7 +98,10 @@ Enum TViewOptions  <a class="header-action link-secondary" title="View source" h
   <dl><dt>Assembly</dt><dd>TuiVision.Controls.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Option mask for view behavior.</p>
+  <div class="markdown summary"><p>Optionsmaske für das Verhalten einer Ansicht.
+Die Werte entsprechen den <code>ofXxx</code>-Konstanten aus dem originalen Turbo-Vision-C++-Code.</p>
+<p>Option mask for view behavior.
+The values correspond to the <code>ofXxx</code> constants from the original Turbo Vision C++ code.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -120,43 +123,56 @@ public enum TViewOptions : ushort</code></pre>
   <dl class="parameters">
     <dt id="TuiVision_Controls_TViewOptions_Buffered"><code>Buffered = 64</code></dt>
   
-  <dd></dd>
+  <dd><p>Die Ansicht verwendet einen internen Zeichenpuffer. / The view uses an internal draw buffer.</p>
+</dd>
     <dt id="TuiVision_Controls_TViewOptions_CenterX"><code>CenterX = 256</code></dt>
   
-  <dd></dd>
+  <dd><p>Die Ansicht wird horizontal im Eigentümer zentriert. / The view is centered horizontally within its owner.</p>
+</dd>
     <dt id="TuiVision_Controls_TViewOptions_CenterY"><code>CenterY = 512</code></dt>
   
-  <dd></dd>
+  <dd><p>Die Ansicht wird vertikal im Eigentümer zentriert. / The view is centered vertically within its owner.</p>
+</dd>
     <dt id="TuiVision_Controls_TViewOptions_Centered"><code>Centered = CenterX | CenterY</code></dt>
   
-  <dd></dd>
+  <dd><p>Die Ansicht wird horizontal und vertikal zentriert. / The view is centered both horizontally and vertically.</p>
+</dd>
     <dt id="TuiVision_Controls_TViewOptions_FirstClick"><code>FirstClick = 4</code></dt>
   
-  <dd></dd>
+  <dd><p>Der erste Mausklick aktiviert die Ansicht und wird an sie weitergeleitet. / The first mouse click activates the view and is forwarded to it.</p>
+</dd>
     <dt id="TuiVision_Controls_TViewOptions_Framed"><code>Framed = 8</code></dt>
   
-  <dd></dd>
+  <dd><p>Die Ansicht zeichnet einen sichtbaren Rahmen um sich. / The view draws a visible frame around itself.</p>
+</dd>
     <dt id="TuiVision_Controls_TViewOptions_None"><code>None = 0</code></dt>
   
-  <dd></dd>
+  <dd><p>Keine Optionen gesetzt. / No options set.</p>
+</dd>
     <dt id="TuiVision_Controls_TViewOptions_PostProcess"><code>PostProcess = 32</code></dt>
   
-  <dd></dd>
+  <dd><p>Die Ansicht empfängt Ereignisse nach ihrem Eigentümer. / The view receives events after its owner.</p>
+</dd>
     <dt id="TuiVision_Controls_TViewOptions_PreProcess"><code>PreProcess = 16</code></dt>
   
-  <dd></dd>
+  <dd><p>Die Ansicht empfängt Ereignisse vor ihrem Eigentümer. / The view receives events before its owner.</p>
+</dd>
     <dt id="TuiVision_Controls_TViewOptions_Selectable"><code>Selectable = 1</code></dt>
   
-  <dd></dd>
+  <dd><p>Die Ansicht kann mit der Maus ausgewählt werden. / The view can be selected with the mouse.</p>
+</dd>
     <dt id="TuiVision_Controls_TViewOptions_Tileable"><code>Tileable = 128</code></dt>
   
-  <dd></dd>
+  <dd><p>Die Ansicht kann nebeneinander (gekachelt) angeordnet werden. / The view can be arranged in a tiled layout.</p>
+</dd>
     <dt id="TuiVision_Controls_TViewOptions_TopSelect"><code>TopSelect = 2</code></dt>
   
-  <dd></dd>
+  <dd><p>Auswahl bringt die Ansicht an die oberste Z-Position. / Selection brings the view to the top Z position.</p>
+</dd>
     <dt id="TuiVision_Controls_TViewOptions_Verbose"><code>Verbose = 1024</code></dt>
   
-  <dd></dd>
+  <dd><p>Ausführliche Diagnoseausgabe ist aktiviert. / Verbose diagnostic output is enabled.</p>
+</dd>
   </dl>
 
 
@@ -164,7 +180,7 @@ public enum TViewOptions : ushort</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L28" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Controls/TView.cs/#L59" class="edit-link">Edit this page</a>
         </div>
 
 

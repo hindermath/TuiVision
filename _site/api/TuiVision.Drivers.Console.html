@@ -95,21 +95,11 @@
 Classes
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="TuiVision.Drivers.Console.TConsoleBuffer.html">TConsoleBuffer</a></dt>
-      <dd><p>Mutable 2D character buffer with clipping helpers.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Drivers.Console.TConsoleDriver.html">TConsoleDriver</a></dt>
-      <dd><p>Keeps the active back buffer and publishes immutable frame snapshots.</p>
-</dd>
-    </dl>
-    <h3 id="structs">
-Structs
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TuiVision.Drivers.Console.TConsoleCell.html">TConsoleCell</a></dt>
-      <dd><p>Character cell model for the managed console driver.</p>
+      <dd><p>Verwaltet den aktiven Hinterpuffer und veröffentlicht unveränderliche Frame-Schnappschüsse
+über das Presenter-Pattern. Rendering-Backends sind dadurch austauschbar.</p>
+<p>Manages the active back buffer and publishes immutable frame snapshots
+via the presenter pattern. Rendering backends are therefore interchangeable.</p>
 </dd>
     </dl>
     <h3 id="interfaces">
@@ -117,7 +107,12 @@ Interfaces
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Drivers.Console.IConsolePresenter.html">IConsolePresenter</a></dt>
-      <dd><p>Receives a rendered frame from <a class="xref" href="TuiVision.Drivers.Console.TConsoleDriver.html">TConsoleDriver</a>.</p>
+      <dd><p>Empfängt einen gerenderten Frame von <a class="xref" href="TuiVision.Drivers.Console.TConsoleDriver.html">TConsoleDriver</a> und stellt ihn dar.
+Implementierungen können den Frame auf die echte Konsole, einen Test-Spy oder einen
+anderen Ausgabekanal schreiben.</p>
+<p>Receives a rendered frame from <a class="xref" href="TuiVision.Drivers.Console.TConsoleDriver.html">TConsoleDriver</a> and presents it.
+Implementations can write the frame to the real console, a test spy,
+or any other output channel.</p>
 </dd>
     </dl>
 
