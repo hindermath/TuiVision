@@ -45,15 +45,15 @@ fortgeschrieben.
 | Git-Aktivtage | 9 |
 | Produktionscode aktuell | 61 Dateien / 8877 Zeilen |
 | Testcode aktuell | 54 Dateien / 5306 Zeilen |
-| Dokumentation aktuell | 72 Dateien / 10464 Zeilen |
+| Dokumentation aktuell | 72 Dateien / 11026 Zeilen |
 | Davon Spec-Kit-Artefakte | 44 Dateien / 7305 Zeilen |
 | Davon Governance/Agent-Dateien | 5 Dateien / 635 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 24647 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 308.1 Arbeitstage |
-| Erfahrener Entwickler, brutto | 14.3 Arbeitsmonate (21.5 Tage/Monat) |
-| Erfahrener Entwickler, TVoeD-Annahme | 16.2 Kalendermonate bzw. 1.4 Jahre |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 123.2 Arbeitstage |
-| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 6.5 Kalendermonate |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 25209 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 315.1 Arbeitstage |
+| Erfahrener Entwickler, brutto | 14.7 Arbeitsmonate (21.5 Tage/Monat) |
+| Erfahrener Entwickler, TVoeD-Annahme | 16.6 Kalendermonate bzw. 1.4 Jahre |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 126.0 Arbeitstage |
+| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 6.6 Kalendermonate |
 
 ## Phasen und Haupt-Branches
 
@@ -189,14 +189,14 @@ fortgeschrieben.
 
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
-- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 24647 Zeilen
+- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 25209 Zeilen
   (Produktionscode + Tests + Dokumentation).
 - Selbst mit der fuer klassische Entwicklung guenstigen Obergrenze von
   80 manuell erstellten Zeilen pro Arbeitstag ergibt sich bereits eine
-  Untergrenze von 308.1 Entwickler-Arbeitstagen.
+  Untergrenze von 315.1 Entwickler-Arbeitstagen.
 - Unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr entspricht das fuer einen
-  erfahrenen Entwickler ca. 16.2 Kalendermonaten bzw. 1.4 Arbeitsjahren; fuer
-  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 6.5 Kalendermonaten.
+  erfahrenen Entwickler ca. 16.6 Kalendermonaten bzw. 1.4 Arbeitsjahren; fuer
+  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 6.6 Kalendermonaten.
 - Die vorliegenden Git-Daten zeigen damit eine deutliche Verdichtung durch
   agentische KI und GitHub Spec-Kit: hoher Dokumentations- und Codeumfang in
   einem kurzen beobachtbaren Aktivfenster.
@@ -218,3 +218,4 @@ fortgeschrieben.
 | 2026-03-22 | Pflege von `Pflichtenheft.md` | Das Pflichtenheft wurde um repo-basierte Statuschecklisten, Reihenfolgehinweise und eine offene/teilweise/erledigt-Markierung erweitert, damit der aktuelle Umsetzungsstand und die verbleibende Abarbeitungsreihenfolge im Dokument direkt sichtbar sind. |
 | 2026-03-22 | Erweiterung von Abschnitt 8.3 in `Pflichtenheft.md` | Die vier Beispielwellen wurden in Abschnitt 8.3 von Tabellen auf 25 einzelne Checkbox-Eintraege umgestellt, damit jede Beispielportierung direkt im Pflichtenheft als Arbeitspunkt nachverfolgt und abgehakt werden kann. |
 | 2026-03-22 | Methodik-Update fuer Handarbeits-Schaetzung | Die Statistik rechnet Handarbeit jetzt auf Basis von Produktionscode, Testcode und Dokumentation gemeinsam; zusaetzlich werden Monatswerte auf Basis von 21.5 Arbeitstagen pro Monat sowie TVoeD-Kalenderwerte mit 30 Urlaubstagen pro Jahr ausgewiesen. |
+| 2026-03-22 | Wiederherstellung von `Pflichtenheft.md` | Die vollstaendige Fassung von `Pflichtenheft.md` wurde aus Commit `4537ea4ecb152e63ba901da15214ffcee79193fe` wiederhergestellt; dadurch stieg der Dokumentationsbestand im aktuellen Repository-Snapshot um netto 562 Zeilen. |
