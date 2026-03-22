@@ -20,14 +20,20 @@ fortgeschrieben.
   `.github/`, `.specify/` sowie den Agent-Dateien.
 - Git-Phasenwerte sind Aenderungsvolumen aus Commit-Historie
   (`added/deleted/net`). Snapshot-Werte beschreiben den aktuellen Dateistand.
+- Die konservative Handarbeits-Basis in dieser Datei zaehlt Produktionscode,
+  Testcode und Dokumentation gemeinsam als manuell zu erstellenden Umfang.
 - Die konservative Handarbeits-Basis folgt dem Beitrag
   [Adapt or Disappear: How AI Turned a 2-Year Project into a 1-Week Sprint](https://www.holgerscode.com/blog/2026/02/23/adapt-or-disappear-how-ai-turned-a-2-year-project-into-a-1-week-sprint/#a-note-on-the-orm-29000-lines-you-never-have-to-write):
-  maximal 80 Codezeilen pro Tag fuer einen erfahrenen Entwickler.
-- Abgeleitete Team-Schaetzung in dieser Datei:
-  `((Produktionscode + Testcode) / 80) / 3 * 1.2`
-  Das ist eine abgeleitete 3-Personen-Kalenderschaetzung mit 20 % Abstimmungs-
-  aufschlag. Dokumentation ist darin noch nicht eingepreist; die klassische
-  Handarbeit laege also real hoeher.
+  maximal 80 manuell erstellte Zeilen pro Arbeitstag fuer einen erfahrenen
+  Entwickler.
+- Umrechnung in Zeitraeume:
+  durchschnittlich 21.5 Arbeitstage pro Monat (Mittel aus 21-22 Arbeitstagen);
+  unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr ergeben sich
+  `21.5 * 12 - 30 = 228` produktive Arbeitstage pro Jahr bzw.
+  durchschnittlich 19.0 produktive Tage pro Kalendermonat.
+- Abgeleitete Formeln in dieser Datei:
+  Einzelentwickler `((Produktionscode + Testcode + Dokumentation) / 80)`;
+  3er-Team `Einzelentwickler / 3 * 1.2` mit 20 % Koordinationsaufschlag.
 
 ## Gesamtstand des Repositories
 
@@ -42,9 +48,12 @@ fortgeschrieben.
 | Dokumentation aktuell | 72 Dateien / 10464 Zeilen |
 | Davon Spec-Kit-Artefakte | 44 Dateien / 7305 Zeilen |
 | Davon Governance/Agent-Dateien | 5 Dateien / 635 Zeilen |
-| Codebasis fuer Handschaetzung | 14183 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 177.3 Arbeitstage |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 70.9 Arbeitstage |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 24647 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 308.1 Arbeitstage |
+| Erfahrener Entwickler, brutto | 14.3 Arbeitsmonate (21.5 Tage/Monat) |
+| Erfahrener Entwickler, TVoeD-Annahme | 16.2 Kalendermonate bzw. 1.4 Jahre |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 123.2 Arbeitstage |
+| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 6.5 Kalendermonate |
 
 ## Phasen und Haupt-Branches
 
@@ -59,10 +68,12 @@ fortgeschrieben.
   - Produktionscode: +2346 / -41 / netto +2305
   - Testcode: +534 / -16 / netto +518
   - Dokumentation: +7528 / -140 / netto +7388
-- Konservative Handarbeits-Basis fuer Code:
-  - 2823 Codezeilen netto
-  - 35.3 Arbeitstage fuer einen erfahrenen Entwickler
-  - 14.1 Arbeitstage fuer ein 3er-Team (+20 % Koordination)
+- Konservative Handarbeits-Basis fuer Code und Dokumentation:
+  - 10211 Zeilen netto gesamt
+  - 127.6 Arbeitstage fuer einen erfahrenen Entwickler
+  - 5.9 Arbeitsmonate brutto bzw. 6.7 TVoeD-Kalendermonate
+  - 51.1 Arbeitstage fuer ein 3er-Team (+20 % Koordination), entsprechend ca.
+    2.7 TVoeD-Kalendermonaten
 
 ### 1. `001-view-system-tgroup`
 
@@ -76,10 +87,12 @@ fortgeschrieben.
   - Produktionscode: +1174 / -382 / netto +792
   - Testcode: +1384 / -2 / netto +1382
   - Dokumentation: +2398 / -219 / netto +2179
-- Konservative Handarbeits-Basis fuer Code:
-  - 2174 Codezeilen netto
-  - 27.2 Arbeitstage fuer einen erfahrenen Entwickler
-  - 10.9 Arbeitstage fuer ein 3er-Team (+20 % Koordination)
+- Konservative Handarbeits-Basis fuer Code und Dokumentation:
+  - 4353 Zeilen netto gesamt
+  - 54.4 Arbeitstage fuer einen erfahrenen Entwickler
+  - 2.5 Arbeitsmonate brutto bzw. 2.9 TVoeD-Kalendermonate
+  - 21.8 Arbeitstage fuer ein 3er-Team (+20 % Koordination), entsprechend ca.
+    1.1 TVoeD-Kalendermonaten
 
 ### 2. `002-application-framework`
 
@@ -92,10 +105,12 @@ fortgeschrieben.
   - Produktionscode: +622 / -34 / netto +588
   - Testcode: +486 / -4 / netto +482
   - Dokumentation: +1303 / -99 / netto +1204
-- Konservative Handarbeits-Basis fuer Code:
-  - 1070 Codezeilen netto
-  - 13.4 Arbeitstage fuer einen erfahrenen Entwickler
-  - 5.4 Arbeitstage fuer ein 3er-Team (+20 % Koordination)
+- Konservative Handarbeits-Basis fuer Code und Dokumentation:
+  - 2274 Zeilen netto gesamt
+  - 28.4 Arbeitstage fuer einen erfahrenen Entwickler
+  - 1.3 Arbeitsmonate brutto bzw. 1.5 TVoeD-Kalendermonate
+  - 11.4 Arbeitstage fuer ein 3er-Team (+20 % Koordination), entsprechend ca.
+    0.6 TVoeD-Kalendermonaten
 
 ### 3. `003-dialog-control-layer`
 
@@ -117,10 +132,13 @@ fortgeschrieben.
   - Produktionscode: +2025 / -0 / netto +2025
   - Testcode: +1626 / -127 / netto +1499
   - Dokumentation: +88 / -40 / netto +48
-- Konservative Handarbeits-Basis fuer den aktuellen Implementierungsstand:
-  - 3524 Codezeilen netto
-  - 44.1 Arbeitstage fuer einen erfahrenen Entwickler
-  - 17.6 Arbeitstage fuer ein 3er-Team (+20 % Koordination)
+- Konservative Handarbeits-Basis fuer den aktuellen Implementierungsstand
+  inklusive Dokumentation:
+  - 3572 Zeilen netto gesamt
+  - 44.7 Arbeitstage fuer einen erfahrenen Entwickler
+  - 2.1 Arbeitsmonate brutto bzw. 2.3 TVoeD-Kalendermonate
+  - 17.9 Arbeitstage fuer ein 3er-Team (+20 % Koordination), entsprechend ca.
+    0.9 TVoeD-Kalendermonaten
 
 ### 4. `004-editor-file-help-streams`
 
@@ -154,10 +172,13 @@ fortgeschrieben.
   - Produktionscode: +3167 / -0 / netto +3167
   - Testcode: +1425 / -0 / netto +1425
   - Dokumentation: +155 / -0 / netto +155
-- Konservative Handarbeits-Basis fuer diesen Implementierungsschritt:
-  - 4592 Codezeilen netto
-  - 57.4 Arbeitstage fuer einen erfahrenen Entwickler
-  - 23.0 Arbeitstage fuer ein 3er-Team (+20 % Koordination)
+- Konservative Handarbeits-Basis fuer diesen Implementierungsschritt inklusive
+  Dokumentation:
+  - 4747 Zeilen netto gesamt
+  - 59.3 Arbeitstage fuer einen erfahrenen Entwickler
+  - 2.8 Arbeitsmonate brutto bzw. 3.1 TVoeD-Kalendermonate
+  - 23.7 Arbeitstage fuer ein 3er-Team (+20 % Koordination), entsprechend ca.
+    1.2 TVoeD-Kalendermonaten
 
 ## Zusatz-Branches
 
@@ -168,15 +189,14 @@ fortgeschrieben.
 
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
-- Die beobachtbare Codebasis liegt bereits bei 9591 C#-Zeilen
-  (Produktionscode + Tests), dazu kommen mehrere tausend Zeilen
-  Spec-Kit-, Governance- und Betriebsdokumentation.
+- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 24647 Zeilen
+  (Produktionscode + Tests + Dokumentation).
 - Selbst mit der fuer klassische Entwicklung guenstigen Obergrenze von
-  80 Codezeilen pro Tag ergibt sich bereits eine Untergrenze von
-  119.9 Entwickler-Arbeitstagen nur fuer den Code.
-- Da Spezifikationen, Plaene, Checklisten, Agent-Dateien, Constitution und
-  sonstige Doku separat anfallen, liegt der klassische Gesamtaufwand real ueber
-  dieser Untergrenze.
+  80 manuell erstellten Zeilen pro Arbeitstag ergibt sich bereits eine
+  Untergrenze von 308.1 Entwickler-Arbeitstagen.
+- Unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr entspricht das fuer einen
+  erfahrenen Entwickler ca. 16.2 Kalendermonaten bzw. 1.4 Arbeitsjahren; fuer
+  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 6.5 Kalendermonaten.
 - Die vorliegenden Git-Daten zeigen damit eine deutliche Verdichtung durch
   agentische KI und GitHub Spec-Kit: hoher Dokumentations- und Codeumfang in
   einem kurzen beobachtbaren Aktivfenster.
@@ -195,3 +215,6 @@ fortgeschrieben.
 | 2026-03-22 | Analyse-Remediation fuer `004-editor-file-help-streams` | Spec-, Plan-, Datenmodell-, Vertrags-, Quickstart- und Task-Artefakte sowie die gemeinsamen Agent-Dateien nach Analysefunden geschaerft: explizite Insert/Overwrite- und Clipboard-Abdeckung, synchronisierte Datei-Metadaten, Shell-Menue-/Status-Routing und das volle Coverage-Gate fuer `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization`. |
 | 2026-03-22 | Zweite Analyse-Remediation fuer `004-editor-file-help-streams` | Die letzten offenen Analysepunkte ausgeraumt: Event-Loop-Verhalten, Fokuswechsel, Menueausfuehrung und explizite Dialoginteraktion nun direkt in `spec.md`, `plan.md`, `quickstart.md`, `tasks.md` und den synchronisierten Agent-Dateien benannt; Story-Tests in der Spezifikation an den nachgeschaerften FR-Stand angeglichen. |
 | 2026-03-22 | `/speckit-implement` fuer `004-editor-file-help-streams` | Phase 6 im Working Tree implementiert: neue Editor-, Datei-, Hilfe-, Stream- und Resource-Typen samt Controls-/Serialization-Tests, Coverage-Sweeps, Validierung ueber Build/Test/Format/Coverage/`docfx` und Fortschreibung der Repository-Statistik. |
+| 2026-03-22 | Pflege von `Pflichtenheft.md` | Das Pflichtenheft wurde um repo-basierte Statuschecklisten, Reihenfolgehinweise und eine offene/teilweise/erledigt-Markierung erweitert, damit der aktuelle Umsetzungsstand und die verbleibende Abarbeitungsreihenfolge im Dokument direkt sichtbar sind. |
+| 2026-03-22 | Erweiterung von Abschnitt 8.3 in `Pflichtenheft.md` | Die vier Beispielwellen wurden in Abschnitt 8.3 von Tabellen auf 25 einzelne Checkbox-Eintraege umgestellt, damit jede Beispielportierung direkt im Pflichtenheft als Arbeitspunkt nachverfolgt und abgehakt werden kann. |
+| 2026-03-22 | Methodik-Update fuer Handarbeits-Schaetzung | Die Statistik rechnet Handarbeit jetzt auf Basis von Produktionscode, Testcode und Dokumentation gemeinsam; zusaetzlich werden Monatswerte auf Basis von 21.5 Arbeitstagen pro Monat sowie TVoeD-Kalenderwerte mit 30 Urlaubstagen pro Jahr ausgewiesen. |
