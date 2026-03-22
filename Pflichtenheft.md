@@ -436,9 +436,10 @@ Die folgenden Guides sind verpflichtend bereitzustellen:
 Die Nutzerdokumentation speist sich aus folgenden Quellen in absteigender Prioritaet:
 
 1. **Borland-Originaldokumentation (Tier 1 – Konzepte und Struktur)**
-   - *Turbo Vision for C++ User's Guide* (Borland International, 1992; Quelle: https://archive.org/details/BorlandTurboVisionForCUserSGuide/mode/1up) – Konzepte, Architektur, Tutorials, Event-Modell
-   - *Turbo Vision for C++ Reference Guide* (Borland International, 1992; fuer das begleitende oeffentlich zugaengliche Referenz-/Programmiermaterial verifiziert ueber: https://archive.org/details/bitsavers_borlandTurrogrammingGuide1992_25707423) – vollstaendige Klassenreferenz mit Verhalten und Beispielen
-   - Beide Werke sind auf archive.org oeffentlich zugaenglich
+   - *Turbo Vision for C++ User's Guide* (Borland International, 1992; lokale Quelle: [TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.pdf](TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.pdf)) – Konzepte, Architektur, Tutorials, Event-Modell
+   - *Turbo Vision for C++ Reference Guide* (Borland International, 1992) – vollstaendige Klassenreferenz mit Verhalten und Beispielen
+   - Zusaetzlich verifiziertes oeffentlich zugaengliches Begleitdokument: *Turbo Vision Version 2.0 Programming Guide* (Borland, 1992; lokale Quelle: [TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.pdf](TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.pdf))
+   - Das User's Guide und das zusaetzlich genannte Programming Guide liegen in diesem Repository unter `TVDocs/`; fuer das separat benannte Reference Guide ist derzeit keine eigenstaendig verifizierte Einzeldatei hinterlegt.
    - **Adaptionspflicht**: Diese Werke dienen ausschliesslich als inhaltliche Vorlage und Inspirationsquelle. Jeder Text ist vollstaendig neu zu formulieren: C++ wird zu C#, DOS- und Borland-Terminologie wird durch TuiVision- und .NET-Terminologie ersetzt, das Sprachniveau wird auf CEFR B2 angepasst. Woertliche Textuebernahmen sind nicht zulaessig.
 
 2. **Free Vision Reference (Tier 1 – ergaenzende Konzepte)**

@@ -45,10 +45,10 @@ fortgeschrieben.
 | Git-Aktivtage | 9 |
 | Produktionscode aktuell | 61 Dateien / 8877 Zeilen |
 | Testcode aktuell | 54 Dateien / 5306 Zeilen |
-| Dokumentation aktuell | 72 Dateien / 11028 Zeilen |
+| Dokumentation aktuell | 72 Dateien / 11030 Zeilen |
 | Davon Spec-Kit-Artefakte | 44 Dateien / 7305 Zeilen |
 | Davon Governance/Agent-Dateien | 5 Dateien / 635 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 25211 Zeilen |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 25213 Zeilen |
 | Erfahrener Entwickler, konservative Untergrenze | 315.1 Arbeitstage |
 | Erfahrener Entwickler, brutto | 14.7 Arbeitsmonate (21.5 Tage/Monat) |
 | Erfahrener Entwickler, TVoeD-Annahme | 16.6 Kalendermonate bzw. 1.4 Jahre |
@@ -189,7 +189,7 @@ fortgeschrieben.
 
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
-- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 25211 Zeilen
+- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 25213 Zeilen
   (Produktionscode + Tests + Dokumentation).
 - Selbst mit der fuer klassische Entwicklung guenstigen Obergrenze von
   80 manuell erstellten Zeilen pro Arbeitstag ergibt sich bereits eine
@@ -221,3 +221,5 @@ fortgeschrieben.
 | 2026-03-22 | Wiederherstellung von `Pflichtenheft.md` | Die vollstaendige Fassung von `Pflichtenheft.md` wurde aus Commit `4537ea4ecb152e63ba901da15214ffcee79193fe` wiederhergestellt; dadurch stieg der Dokumentationsbestand im aktuellen Repository-Snapshot um netto 562 Zeilen. |
 | 2026-03-22 | Quellenangabe fuer `tv203s/` in `Pflichtenheft.md` | Die im Lastenheft genannte SourceForge-Herkunft des Verzeichnisses `tv203s/` wurde in die Ausgangsbasis des Pflichtenhefts uebernommen; der Dokumentationsbestand stieg dadurch um eine weitere Zeile. |
 | 2026-03-22 | URL-Quellen fuer Borland-Turbo-Vision-Dokumente | Die Tier-1-Quellen im Pflichtenheft wurden um konkrete Web-URLs ergaenzt: das User's Guide mit direkter Archive.org-Quelle und das oeffentlich verifizierbare begleitende Referenz-/Programmiermaterial ebenfalls mit Archive.org-Verweis. |
+| 2026-03-22 | Praezisierung der Borland-Quellenlage im `Pflichtenheft.md` | Die Formulierung zu den historischen Borland-Dokumenten wurde geschaerft: direkte URL nur fuer das verifizierte User's Guide, eigenstaendige Nennung des zusaetzlich verifizierten Programming Guide und ausdruecklicher Hinweis, dass fuer das separat benannte Reference Guide derzeit keine eigenstaendig verifizierte Einzel-URL hinterlegt ist. |
+| 2026-03-22 | Lokale PDF-Verweise unter `TVDocs/` | Die Tier-1-Quellen im Pflichtenheft verweisen jetzt per Markdown direkt auf die lokal abgelegten PDF-Dateien unter `TVDocs/`; fuer das separat benannte Reference Guide bleibt der Hinweis auf die derzeit fehlende eigenstaendige Einzeldatei bestehen. |
