@@ -1,3 +1,6 @@
+// Deutsch: Definiert die gemeinsame Basisklasse für die historischen Kompatibilitäts-Streams in der Serialisierungsschicht.
+// English: Defines the shared base class for the historical compatibility streams in the serialization layer.
+
 #pragma warning disable CS8981
 // Copyright (c) 2026 Thorsten Hindermann / TuiVision Contributors.
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.

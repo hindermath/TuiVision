@@ -1,3 +1,6 @@
+// Deutsch: Implementiert den schreibenden Kompatibilitäts-Stream für persistierte Objekte mit Referenzerhaltung.
+// English: Implements the writing compatibility stream for persisted objects with reference preservation.
+
 #pragma warning disable CS8981
 // Copyright (c) 2026 Thorsten Hindermann / TuiVision Contributors.
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.

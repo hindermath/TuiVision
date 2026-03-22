@@ -1,3 +1,6 @@
+// Deutsch: Bündelt die zentralen Ereignistypen und Datenstrukturen des Turbo-Vision-Ereignismodells für Core und Controls.
+// English: Collects the core event kinds and data structures of the Turbo Vision event model for core and controls.
+
 namespace TuiVision.Core;
 
 /// <summary>

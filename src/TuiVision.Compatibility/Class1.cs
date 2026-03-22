@@ -1,3 +1,6 @@
+// Deutsch: Enthält Kompatibilitätsbausteine für Tastaturzustände und die Übersetzung von .NET-Konsoleneingaben in Turbo-Vision-Tastencodes.
+// English: Contains compatibility primitives for keyboard state and translation from .NET console input to Turbo Vision key codes.
+
 using TuiVision.Core;
 
 namespace TuiVision.Compatibility;

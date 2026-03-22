@@ -1,3 +1,6 @@
+// Deutsch: Enthält den rechteckigen Geometrie-Grundtyp für Layout, Clipping und Koordinatentransformationen.
+// English: Contains the rectangular geometry primitive for layout, clipping, and coordinate transformations.
+
 namespace TuiVision.Core;
 
 /// <summary>

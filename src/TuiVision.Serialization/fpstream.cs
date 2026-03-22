@@ -1,3 +1,6 @@
+// Deutsch: Kapselt dateibasierte Kompatibilitäts-Streams und verbindet Dateizugriff mit der TuiVision-Stream-Registry.
+// English: Wraps file-backed compatibility streams and connects file access with the TuiVision stream registry.
+
 #pragma warning disable CS8981
 // Copyright (c) 2026 Thorsten Hindermann / TuiVision Contributors.
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.

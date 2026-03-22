@@ -48,13 +48,13 @@ Statuscheckliste Lieferumfang:
 - [x] C#-Portierung des Frameworks als Loesung mit klarer Projektstruktur
 - [x] Unit-Tests mit MSTest fuer portierte Klassen/Methoden
 - [x] API-Dokumentation mit docfx
-- [ ] Portierung der vorhandenen Beispielprogramme aus `tv203s/contrib/tvision/examples`
+- [-] Portierung der vorhandenen Beispielprogramme aus `tv203s/contrib/tvision/examples`
 - [-] Build- und Qualitaetssicherungsprozesse
 - [-] CI/CD-Workflow mit automatischem Build und Test auf GitHub Actions
 - [ ] Nutzerdokumentation (Leitfaeden fuer Einstieg und Verwendung)
 - [ ] Ausfuehrliche Dokumentation aller portierten Beispielprogramme
 - [-] Ausreichende Quellcode-Dokumentation fuer Lern- und Wartungszwecke
-- [-] Dokumentierter lokaler Workflow fuer `gh` und `codex` auf beiden macOS-Systemen
+- [-] Dokumentierter lokaler Workflow fuer `gh`, `codex`, `claude`, `copilot` und `gemini` auf beiden macOS-Systemen
 
 ## 5. Anforderungen (MUSS)
 
@@ -70,8 +70,8 @@ Statuscheckliste Anforderungen:
   Reihenfolgehinweis: Vor dem Eingangstor aus Abschnitt 8.2 abschliessen und in `docs/porting-status.md` nachweisen.
 - [x] `M-08` Unit-Tests fuer portierte Klassen/Methoden mit MSTest
 - [x] `M-09` API-Dokumentation mit docfx
-- [ ] `M-10` Portierung der vorhandenen Beispiele
-  Reihenfolgehinweis: Erst nach bestandenem Eingangstor aus Abschnitt 8.2 in den Wellen aus Abschnitt 8.3 abarbeiten.
+- [-] `M-10` Portierung der vorhandenen Beispiele
+  Reihenfolgehinweis: Die 25 Originalbeispiele bleiben der MUSS-Umfang und werden erst nach bestandenem Eingangstor aus Abschnitt 8.2 in den Wellen 1 bis 4 abgearbeitet; die neu aufgenommenen TP7-Beispiele in `TVDEMOS/` und `TVFM/` sind danach als Anschlusswellen 5 und 6 vorgesehen.
 - [-] `M-11` Qualitaetssicherung zusaetzlich zu Unit-Tests
 - [x] `M-12` Keine nativen OS-Abhaengigkeiten
 - [x] `M-13` Lizenz-Disclaimer fuer Beispielcharakter
@@ -97,7 +97,7 @@ Statuscheckliste Anforderungen:
 | M-07 | Portierung der Implementierungsdateien aus `tv203s/contrib/tvision/classes` | Alle `.cc`-Dateien aus dem Ordner `tv203s/contrib/tvision/classes` (z. B. `tview.cc`, `tgroup.cc`, `tapplica.cc`, `teditor.cc` u. v. m.) dienen als direkte C/C++-Vorlage fuer M-06; jede Datei wird gemaess Modulmapping (Abschnitt 7.2) einem Zielmodul (`TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization` oder `TuiVision.Drivers.Console`) zugeordnet und portiert | Alle identifizierten `.cc`-Quelldateien aus `tv203s/contrib/tvision/classes` (einschliesslich der plattformspezifischen Unterordner fuer `TuiVision.Drivers.Console`) sind in den entsprechenden C#-Zielmodulen nachweisbar abgebildet und durch Unit-Tests abgesichert |
 | M-08 | Unit-Tests fuer portierte Klassen/Methoden mit MSTest | Testprojekte pro Modul, CI-faehig | Tests laufen lokal und in CI stabil durch |
 | M-09 | API-Dokumentation mit docfx | docfx-Konfiguration, API-Generierung und erneute Doku-Erstellung bei API-/XML-Kommentar-Aenderungen | Doku erzeugbar, verlinkt alle Kern-Namespaces und ist nach API-/XML-Aenderungen aktualisiert |
-| M-10 | Portierung der vorhandenen Beispiele | Alle 25 Beispiele als .NET-Beispiele abbilden | Beispiele bauen; definierte Smoke-Tests bestehen |
+| M-10 | Portierung der vorhandenen Beispiele | Alle 25 Originalbeispiele aus `tv203s/contrib/tvision/examples` als .NET-Beispiele abbilden; zusaetzlich koennen die Anschlusswellen aus `TVDEMOS/` und `TVFM/` nachgelagert portiert werden | Die 25 Originalbeispiele bauen und bestehen die definierten Smoke-Tests; die TP7-Anschlusswellen werden als Zusatzumfang separat verfolgt |
 | M-11 | Qualitaetssicherung zusaetzlich zu Unit-Tests | Analyzer, Format- und Build-Gates | Qualitaets-Gates sind dokumentiert und aktiv |
 | M-12 | Keine nativen OS-Abhaengigkeiten | Keine P/Invoke-/Native-Library-Pflicht, keine OS-spezifischen Zusatzpakete | Build/Tests laufen mit .NET 10 Runtime ohne native Zusatzinstallation |
 | M-13 | Lizenz-Disclaimer fuer Beispielcharakter | Sichtbarer Hinweis in `LICENSE`/`README` | Hinweis beschreibt: Beispielprojekt, keine Konkurrenzabsicht, keine beabsichtigte Lizenzverletzung |
@@ -108,7 +108,7 @@ Statuscheckliste Anforderungen:
 | M-18 | Ausfuehrliche Dokumentation der Beispielprogramme | Pro Beispielprogramm eigener Guide mit Lernziel, Voraussetzungen, Start, Bedienung, Architekturhinweisen und Uebungen | Alle portierten Beispiele sind didaktisch nachvollziehbar dokumentiert und reproduzierbar ausfuehrbar |
 | M-19 | Ausreichende Quellcode-Dokumentation im gesamten TuiVision-Code | Nicht-triviale Logik, Architekturentscheidungen und interne Zusammenhaenge werden im Code nachvollziehbar kommentiert | Der Quellcode erfuellt die pruefbaren Kriterien aus Abschnitt 10.5 und ist fuer Fachinformatiker (Anwendungsentwicklung) lern- und wartbar |
 | M-20 | Messbarer Mindest-Testumfang (MUSS-Tests) | Definierte Mindestabdeckung, Pflichttestfaelle und vollstaendige Smoke-Tests gemaess Abschnitt 9.4 | Die in Abschnitt 9.4 definierten Kennzahlen und Testumfaenge sind vollstaendig erreicht |
-| M-21 | Reproduzierbarer Multi-Mac-Entwicklungsworkflow | Build-, Test-, GitHub- und Codex-Arbeitsablaeufe sind fuer `MacBook Air M2` und `Mac mini M4 Pro` mit `gh` und `codex` dokumentiert | Die dokumentierten Schluesselablaeufe funktionieren auf beiden Systemen mit den dokumentierten Voraussetzungen und ggf. automatisierter Tool-Bereitstellung (z. B. DocFX als .NET-Tool) |
+| M-21 | Reproduzierbarer Multi-Mac-Entwicklungsworkflow | Build-, Test-, GitHub- und KI-Agenten-Arbeitsablaeufe sind fuer `MacBook Air M2` und `Mac mini M4 Pro` mit `gh`, `codex`, `claude`, `copilot` und `gemini` dokumentiert | Die dokumentierten Schluesselablaeufe funktionieren auf beiden Systemen mit den dokumentierten Voraussetzungen und ggf. automatisierter Tool-Bereitstellung (z. B. DocFX als .NET-Tool) |
 | M-22 | Automatische Veroeffentlichung der Dokumentation auf GitHub Pages | Dedizierter Workflow `.github/workflows/docs-deploy.yml` gemaess Abschnitt 10.8: Trigger auf `push` nach `main` fuer Pfade `docs/**`, `src/**`, `docfx.json`; Schritte: checkout, dotnet-build (XML-Docs), docfx, `upload-pages-artifact`, `deploy-pages`; Repository-Setting auf Source „GitHub Actions"; Umgebung `github-pages` | Workflow existiert gemaess Abschnitt 10.8; docfx-Dokumentation ist ueber GitHub Pages erreichbar; Deployment laeuft automatisch nach jedem relevanten Merge auf `main`; Deployment-Status im Actions-Tab sichtbar |
 
 ## 6. Optionale Anforderungen (KANN / Pruefauftraege)
@@ -173,8 +173,8 @@ docs/
   Reihenfolgehinweis: abgeschlossen; Voraussetzung fuer Welle 3 der Beispiele.
 - [ ] **7. Treiberkonsolidierung**: Managed Console-Treiber unter .NET Core ohne native OS-Bindings
   Reihenfolgehinweis: als naechstes fachliches Hauptpaket vorziehen; Voraussetzung fuer Welle 4 und fuer den Vollstaendigkeitsnachweis aus `M-07`.
-- [ ] **8. Beispiele**: Portierung aller 25 Beispiele in vier thematisch-technischen Wellen; jede Welle wird erst begonnen, wenn die zugehoerigen Framework-Phasen abgeschlossen sind (Abhaengigkeitsprinzip); **vor Welle 1 ist das Eingangstor gemaess Abschnitt 8.2 vollstaendig zu bestehen**
-  Reihenfolgehinweis: erst nach Phase 7 und bestandenem Eingangstor starten.
+- [ ] **8. Beispiele**: Portierung aller 25 MUSS-Beispiele in vier thematisch-technischen Wellen; anschliessend optionale Anschlusswellen 5 und 6 fuer die zusaetzlich im Repository abgelegten TP7-Beispiele aus `TVDEMOS/` und `TVFM/`; jede Welle wird erst begonnen, wenn die zugehoerigen Framework-Phasen abgeschlossen sind (Abhaengigkeitsprinzip); **vor Welle 1 ist das Eingangstor gemaess Abschnitt 8.2 vollstaendig zu bestehen**
+  Reihenfolgehinweis: erst nach Phase 7 und bestandenem Eingangstor starten; TP7-Anschlusswellen erst nach den vier MUSS-Wellen.
 
 ### 8.2 Eingangstor Phase 8: Framework-Vollstaendigkeitsnachweis (verpflichtend vor Welle 1)
 
@@ -360,7 +360,7 @@ Die folgenden Punkte sind verpflichtend und bilden die "MUSS-Tests" im Sinne die
 - [x] Integrations-/Verhaltenstests decken mindestens Event-Loop, Fokuswechsel, Menueausfuehrung und Dialoginteraktion ab.
 - [ ] Smoke-Tests laufen fuer alle 25 portierten Beispielprogramme automatisiert in CI.
 - [ ] Alle MUSS-Tests laufen in GitHub Actions auf jedem Pull Request und auf dem Hauptbranch.
-- [-] Die dokumentierten lokalen Schluesselablaeufe mit `gh` und `codex` sind auf `MacBook Air M2` und `Mac mini M4 Pro` nachvollziehbar und reproduzierbar.
+- [-] Die dokumentierten lokalen Schluesselablaeufe mit `gh`, `codex`, `claude`, `copilot` und `gemini` sind auf `MacBook Air M2` und `Mac mini M4 Pro` nachvollziehbar und reproduzierbar.
 - [x] Bei API-/XML-Kommentar-Aenderungen ist die erfolgreiche docfx-Erzeugung als Nachweisartefakt vorhanden.
 
 ## 10. Dokumentation
@@ -369,7 +369,7 @@ Die folgenden Punkte sind verpflichtend und bilden die "MUSS-Tests" im Sinne die
 - [ ] Changelog fuer Portierungsfortschritt und Abweichungen vom Originalverhalten
 - [ ] Saemtliche Projektdokumentation folgt einem einheitlichen didaktischen Lehr-/Beispielstandard
 - [-] Der Quellcode selbst ist didaktisch und wartungsorientiert dokumentiert
-- [-] Lokale Arbeitsablaeufe mit `gh` und `codex` sind fuer beide macOS-Systeme dokumentiert
+- [-] Lokale Arbeitsablaeufe mit `gh`, `codex`, `claude`, `copilot` und `gemini` sind fuer beide macOS-Systeme dokumentiert
 
 ## 10.1 XML-Dokumentationsstandard fuer die API (verbindlich)
 Fuer den Lehr- und Beispielcharakter des Projekts gelten folgende verbindliche Regeln:
@@ -405,7 +405,7 @@ Der folgende Standard gilt fuer alle Dokumentationsartefakte (API-Referenz, Guid
 8. Dokumentation wird bei API- oder Verhaltensaenderungen im selben Arbeitsgang aktualisiert.
 
 ## 10.4 Standard fuer Beispielprogramm-Dokumentation (verbindlich)
-Fuer jedes portierte Beispielprogramm ist eine eigene Dokumentationsseite mit mindestens folgenden Inhalten verpflichtend:
+Fuer jedes portierte Beispielprogramm ist eine eigene Dokumentationsseite mit mindestens folgenden Inhalten verpflichtend. Dies gilt sowohl fuer die 25 MUSS-Beispiele aus `examples/` als auch fuer spaeter portierte TP7-Anschlussbeispiele aus `TVDEMOS/` und `TVFM/`:
 1. Ziel und Lernnutzen des Beispiels (welche Konzepte werden vermittelt).
 2. Voraussetzungen (SDK, Build-Schritte, ggf. Eingabedaten).
 3. Startanleitung (Befehle, erwartete Konsolenausgabe/Verhalten).
@@ -417,7 +417,7 @@ Fuer jedes portierte Beispielprogramm ist eine eigene Dokumentationsseite mit mi
 
 ## 10.5 Standard fuer Quellcode-Dokumentation (verbindlich)
 Fuer den Lehr- und Beispielcharakter gilt fuer den TuiVision-Quellcode:
-1. Jede nicht-generierte Quelldatei in `src/` enthaelt einen kurzen Modul-/Dateikommentar zu Verantwortung und Kontext.
+1. Jede fachlich gepflegte Quelldatei in `src/` beginnt mit einem kurzen Datei-/Modulkommentar (1 bis 3 Zeilen, Deutsch zuerst, Englisch danach). Der Kommentar benennt mindestens: a) die Hauptverantwortung der Datei, b) ihren technischen oder fachlichen Kontext im TuiVision-System und c) bei Bedarf die wichtigste Abgrenzung zu anderen Modulen. Diese Pflicht gilt ausdruecklich auch fuer von KI-Agenten sowie in Spec-/SDD-Workflows erzeugte Quelldateien. Ausgenommen sind nur rein technische, vollautomatisch regenerierbare Artefakte. Triviale Kommentare ohne Zusatznutzen, insbesondere blosse Wiederholungen von Klassen-, Typ- oder Dateinamen, gelten nicht als Erfuellung dieses Kriteriums.
 2. Methoden mit nicht-trivialer Logik (z. B. mehrere Verzweigungen, komplexe Zustandswechsel, nicht offensichtliche Algorithmen) erhalten erklaerende Kommentare.
 3. Kommentare erklaeren das Warum (Entscheidung, Randbedingung, Trade-off), nicht nur das Was.
 4. Interne Invarianten, Vorbedingungen und Nachbedingungen werden bei komplexer Logik explizit dokumentiert.
@@ -427,7 +427,7 @@ Fuer den Lehr- und Beispielcharakter gilt fuer den TuiVision-Quellcode:
 
 ## 10.6 Standard fuer lokalen Multi-Mac-Workflow (verbindlich)
 Fuer die Arbeitsumgebungen `MacBook Air M2` und `Mac mini M4 Pro` gilt:
-1. Die Nutzung von `gh` und `codex` fuer taegliche Entwicklungsschritte ist in `docs/guides` nachvollziehbar beschrieben.
+1. Die Nutzung von `gh`, `codex`, `claude`, `copilot` und `gemini` fuer taegliche Entwicklungsschritte ist in `docs/guides` nachvollziehbar beschrieben.
 2. Mindestens die Schluesselablaeufe Build, Test, Branch/PR-Workflow und Repository-Operationen sind dokumentiert.
 3. Die Befehle sind so dokumentiert, dass sie auf beiden Systemen mit den angegebenen Voraussetzungen reproduzierbar funktionieren.
 4. Voraussetzungen (authentifizierte CLI-Tools) und die Versionspruefung sind explizit dokumentiert.
@@ -459,7 +459,7 @@ Die folgenden Guides sind verpflichtend bereitzustellen:
 | `concepts/coordinate-system.md` | Lokale vs. globale Koordinaten, `MakeLocal`/`MakeGlobal`, `TRect`-Semantik |
 | `concepts/serialization.md` | Envelopenformat, `TRecordRegistry`, polymorphe De-/Serialisierung |
 | `tutorials/first-dialog.md` | Vollstaendiger Schritt-fuer-Schritt-Guide: eigenen Dialog aufbauen und in eine App einbinden |
-| `examples/` | Pro portiertem Beispielprogramm eine Seite gemaess M-18 und Abschnitt 10.4 |
+| `examples/` | Pro portiertem Beispielprogramm eine Seite gemaess M-18 und Abschnitt 10.4; fuer TP7-Anschlusswellen koennen parallele Unterordner oder klar benannte Zusatzseiten verwendet werden |
 
 ### Quellenrangfolge und Adaptionspflicht
 
@@ -469,7 +469,8 @@ Die Nutzerdokumentation speist sich aus folgenden Quellen in absteigender Priori
    - *Turbo Vision for C++ User's Guide* (Borland International, 1992; lokale Quelle: [TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.pdf](TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.pdf)) – Konzepte, Architektur, Tutorials, Event-Modell
    - *Turbo Vision for C++ Reference Guide* (Borland International, 1992) – vollstaendige Klassenreferenz mit Verhalten und Beispielen
    - Zusaetzlich verifiziertes oeffentlich zugaengliches Begleitdokument: *Turbo Vision Version 2.0 Programming Guide* (Borland, 1992; lokale Quelle: [TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.pdf](TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.pdf))
-   - Das User's Guide und das zusaetzlich genannte Programming Guide liegen in diesem Repository unter `TVDocs/`; fuer das separat benannte Reference Guide ist derzeit keine eigenstaendig verifizierte Einzeldatei hinterlegt.
+   - Fuer die lokale Recherche und die agentische Dokumentationserstellung liegen zusaetzlich OCR-Textfassungen und Markdown-Arbeitsfassungen vor: [TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.txt](TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.txt), [TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.md](TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.md), [TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.txt](TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.txt), [TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.md](TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.md)
+   - Das User's Guide und das zusaetzlich genannte Programming Guide liegen damit in diesem Repository sowohl als PDF als auch als lokale Hilfsfassungen unter `TVDocs/`; fuer das separat benannte Reference Guide ist derzeit keine eigenstaendig verifizierte Einzeldatei hinterlegt.
    - **Adaptionspflicht**: Diese Werke dienen ausschliesslich als inhaltliche Vorlage und Inspirationsquelle. Jeder Text ist vollstaendig neu zu formulieren: C++ wird zu C#, DOS- und Borland-Terminologie wird durch TuiVision- und .NET-Terminologie ersetzt, das Sprachniveau wird auf CEFR B2 angepasst. Woertliche Textuebernahmen sind nicht zulaessig.
 
 2. **Free Vision Reference (Tier 1 – ergaenzende Konzepte)**
@@ -581,14 +582,14 @@ Die Abnahme gilt als bestanden, wenn:
 - [ ] Alle MUSS-Anforderungen M-01 bis M-21 nachweisbar erfuellt sind.
 - [-] Das Framework in C#/.NET 10 (net10.0) buildbar ist und die definierten Tests durchlaufen.
 - [x] Die API-Dokumentation mit docfx erzeugt wird.
-- [ ] Alle 25 identifizierten Beispielprogramme in portierter Form vorliegen und mindestens per Smoke-Test validiert sind.
+- [ ] Alle 25 identifizierten Original-Beispielprogramme in portierter Form vorliegen und mindestens per Smoke-Test validiert sind; TP7-Anschlussbeispiele werden zusaetzlich und getrennt nachverfolgt.
 - [x] Das Projekt im GitHub-Repository `https://github.com/hindermath/TuiVision.git` nachvollziehbar versioniert ist.
 - [x] Der verbindliche Lizenz-/Disclaimer-Hinweis gemaess Abschnitt 10.2 sichtbar enthalten ist.
 - [ ] Die Gesamtdokumentation den didaktischen Standard gemaess Abschnitt 10.3 nachweisbar einhaelt.
-- [ ] Fuer alle 25 portierten Beispielprogramme liegt eine Dokumentation gemaess Abschnitt 10.4 vor.
+- [ ] Fuer alle 25 portierten Original-Beispielprogramme liegt eine Dokumentation gemaess Abschnitt 10.4 vor; fuer TP7-Anschlussbeispiele gilt derselbe Dokumentationsstandard, sobald sie portiert werden.
 - [-] Der Quellcode erfuellt den Dokumentationsstandard gemaess Abschnitt 10.5 nachweisbar.
 - [ ] Der Mindest-Testumfang gemaess Abschnitt 9.4 ist nachweisbar vollstaendig erfuellt.
-- [-] Der lokale Workflow mit `gh` und `codex` gemaess Abschnitt 10.6 ist auf beiden macOS-Systemen nachweisbar anwendbar.
+- [-] Der lokale Workflow mit `gh`, `codex`, `claude`, `copilot` und `gemini` gemaess Abschnitt 10.6 ist auf beiden macOS-Systemen nachweisbar anwendbar.
 - [x] Bei API-/XML-Kommentar-Aenderungen ist die docfx-Dokumentation nachweisbar neu erzeugt worden.
 - [ ] Die docfx-Dokumentation ist ueber GitHub Pages des Repositories `hindermath/TuiVision` erreichbar und wird bei jedem Merge auf `main` mit Doku-relevanten Aenderungen automatisch aktualisiert (M-22).
 

@@ -1,3 +1,6 @@
+// Deutsch: Stellt die gemeinsame Wurzel und den Lebenszyklusvertrag für portierte Turbo-Vision-Typen bereit.
+// English: Provides the common root type and lifecycle contract for ported Turbo Vision types.
+
 namespace TuiVision.Core;
 
 /// <summary>

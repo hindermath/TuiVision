@@ -1,3 +1,6 @@
+// Deutsch: Implementiert den lesenden Kompatibilitäts-Stream für persistierte Objekte und Referenzwiederherstellung.
+// English: Implements the reading compatibility stream for persisted objects and reference reconstruction.
+
 #pragma warning disable CS8981
 // Copyright (c) 2026 Thorsten Hindermann / TuiVision Contributors.
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.

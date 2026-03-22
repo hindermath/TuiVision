@@ -43,16 +43,16 @@ fortgeschrieben.
 | Git-Commits gesamt | 125 |
 | Autoren laut Git | 1 |
 | Git-Aktivtage | 9 |
-| Produktionscode aktuell | 61 Dateien / 8877 Zeilen |
+| Produktionscode aktuell | 61 Dateien / 8907 Zeilen |
 | Testcode aktuell | 54 Dateien / 5306 Zeilen |
-| Dokumentation aktuell | 72 Dateien / 11065 Zeilen |
+| Dokumentation aktuell | 70 Dateien / 10505 Zeilen |
 | Davon Spec-Kit-Artefakte | 44 Dateien / 7305 Zeilen |
 | Davon Governance/Agent-Dateien | 5 Dateien / 635 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 25248 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 315.6 Arbeitstage |
-| Erfahrener Entwickler, brutto | 14.7 Arbeitsmonate (21.5 Tage/Monat) |
-| Erfahrener Entwickler, TVoeD-Annahme | 16.6 Kalendermonate bzw. 1.4 Jahre |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 126.2 Arbeitstage |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 24718 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 309.0 Arbeitstage |
+| Erfahrener Entwickler, brutto | 14.4 Arbeitsmonate (21.5 Tage/Monat) |
+| Erfahrener Entwickler, TVoeD-Annahme | 16.3 Kalendermonate bzw. 1.4 Jahre |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 123.6 Arbeitstage |
 | Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 6.6 Kalendermonate |
 
 ## Phasen und Haupt-Branches
@@ -189,13 +189,13 @@ fortgeschrieben.
 
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
-- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 25248 Zeilen
+- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 24718 Zeilen
   (Produktionscode + Tests + Dokumentation).
 - Selbst mit der fuer klassische Entwicklung guenstigen Obergrenze von
   80 manuell erstellten Zeilen pro Arbeitstag ergibt sich bereits eine
-  Untergrenze von 315.6 Entwickler-Arbeitstagen.
+  Untergrenze von 309.0 Entwickler-Arbeitstagen.
 - Unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr entspricht das fuer einen
-  erfahrenen Entwickler ca. 16.6 Kalendermonaten bzw. 1.4 Arbeitsjahren; fuer
+  erfahrenen Entwickler ca. 16.3 Kalendermonaten bzw. 1.4 Arbeitsjahren; fuer
   ein 3er-Team mit 20 % Koordinationsaufschlag ca. 6.6 Kalendermonaten.
 - Die vorliegenden Git-Daten zeigen damit eine deutliche Verdichtung durch
   agentische KI und GitHub Spec-Kit: hoher Dokumentations- und Codeumfang in
@@ -227,3 +227,8 @@ fortgeschrieben.
 | 2026-03-22 | Markdown-Aufbereitung der OCR-Texte in `TVDocs/` | Die beiden OCR-Textdateien wurden zusaetzlich als lokale Markdown-Arbeitsfassungen mit Seitenueberschriften unter `TVDocs/*.md` erzeugt; die Statistikzaehlung selbst erfasst diese Hilfsdateien bewusst nicht, da die Methodik nur definierte Markdown-Orte zaehlt. |
 | 2026-03-22 | Markdown-Arbeitsfassungen um Snippet-Sektion erweitert | Die beiden `TVDocs/*.md`-Dateien wurden fuer spaetere Dokuarbeit nachgeschaerft: Metadatenlinks zur PDF- und TXT-Quelle, ein eigener Abschnitt mit automatisch erkannten Code-/Deklarationsschnipseln und ein davon getrennter roher OCR-Hauptteil mit Seitenueberschriften. |
 | 2026-03-22 | TP7-Beispiele als Anschlusswellen im `Pflichtenheft.md` | Abschnitt 8.3 wurde um zwei weitere Portierungswellen fuer die neu aufgenommenen Turbo-Pascal-Beispiele aus `TVDEMOS/` und `TVFM/` erweitert; dabei bleibt klar festgehalten, dass der urspruengliche MUSS-Umfang der 25 C/C++-Originalbeispiele zuerst vollstaendig zu erledigen ist. |
+| 2026-03-22 | M-10 und Beispielprogramm-Stellen nachgeschaerft | `M-10`, Abschnitt 8.3, die Dokumentationspflichten und die Abschlusskriterien wurden sprachlich auf den neuen Stand gebracht: 25 Originalbeispiele bleiben MUSS-Umfang, waehrend `TVDEMOS/` und `TVFM/` als getrennte TP7-Anschlusswellen gefuehrt werden. |
+| 2026-03-22 | Datei-Kommentarregel fuer agentische Dateien praezisiert | Abschnitt 10.5 Nr. 1 wurde durch eine pruefbare Formulierung ersetzt: 1 bis 3 bilinguale Zeilen mit Verantwortung, Kontext und ggf. Abgrenzung; die Pflicht gilt ausdruecklich auch fuer von KI-Agenten sowie in Spec-/SDD-Workflows erzeugte fachlich gepflegte Quelldateien, ausgenommen nur rein technische, vollautomatisch regenerierbare Artefakte. |
+| 2026-03-22 | Datei-/Modulkommentare in `src/` nachgezogen | Alle fachlich gepflegten `.cs`-Dateien unter `src/` wurden gegen Abschnitt 10.5 Nr. 1 geprueft; in 10 Dateien ohne Kopfkommentar wurden kurze bilinguale Datei-/Modulkommentare zu Verantwortung und Kontext nachgetragen, anschliessend per Skript mit `ALL_OK` verifiziert. |
+| 2026-03-22 | Multi-Agenten-Workflow in Abschnitt 10.6 erweitert | Die Workflow-Anforderungen nennen jetzt nicht mehr nur `gh` und `codex`, sondern konsistent auch `claude`, `copilot` und `gemini` in Lieferumfang, M-21, Test-/Dokumentationskapiteln sowie den Abschlusskriterien. |
+| 2026-03-22 | OCR- und Markdown-Hilfsfassungen als Tier-1-Quellen genannt | Im Abschnitt „Quellenrangfolge und Adaptionspflicht“ verweisen die Borland-Originalquellen jetzt zusaetzlich auf die lokalen `TVDocs/*.txt`- und `TVDocs/*.md`-Fassungen, damit Recherche und agentische Dokumentationserstellung direkt auf die aufbereiteten Hilfsdateien zugreifen koennen. |

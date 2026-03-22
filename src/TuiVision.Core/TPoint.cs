@@ -1,3 +1,6 @@
+// Deutsch: Beschreibt den grundlegenden zweidimensionalen Punktwert für Koordinatenoperationen im gesamten TuiVision-System.
+// English: Describes the fundamental two-dimensional point value for coordinate operations across the TuiVision system.
+
 namespace TuiVision.Core;
 
 /// <summary>

@@ -1,3 +1,6 @@
+// Deutsch: Definiert die grundlegenden View-Zustände, Optionen und die Basisklasse für die sichtbare TuiVision-Hierarchie.
+// English: Defines the fundamental view states, options, and the base class for the visible TuiVision hierarchy.
+
 using TuiVision.Core;
 
 namespace TuiVision.Controls;
