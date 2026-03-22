@@ -45,14 +45,14 @@ fortgeschrieben.
 | Git-Aktivtage | 9 |
 | Produktionscode aktuell | 61 Dateien / 8877 Zeilen |
 | Testcode aktuell | 54 Dateien / 5306 Zeilen |
-| Dokumentation aktuell | 72 Dateien / 11031 Zeilen |
+| Dokumentation aktuell | 72 Dateien / 11065 Zeilen |
 | Davon Spec-Kit-Artefakte | 44 Dateien / 7305 Zeilen |
 | Davon Governance/Agent-Dateien | 5 Dateien / 635 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 25214 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 315.1 Arbeitstage |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 25248 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 315.6 Arbeitstage |
 | Erfahrener Entwickler, brutto | 14.7 Arbeitsmonate (21.5 Tage/Monat) |
 | Erfahrener Entwickler, TVoeD-Annahme | 16.6 Kalendermonate bzw. 1.4 Jahre |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 126.1 Arbeitstage |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 126.2 Arbeitstage |
 | Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 6.6 Kalendermonate |
 
 ## Phasen und Haupt-Branches
@@ -189,11 +189,11 @@ fortgeschrieben.
 
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
-- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 25214 Zeilen
+- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 25248 Zeilen
   (Produktionscode + Tests + Dokumentation).
 - Selbst mit der fuer klassische Entwicklung guenstigen Obergrenze von
   80 manuell erstellten Zeilen pro Arbeitstag ergibt sich bereits eine
-  Untergrenze von 315.1 Entwickler-Arbeitstagen.
+  Untergrenze von 315.6 Entwickler-Arbeitstagen.
 - Unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr entspricht das fuer einen
   erfahrenen Entwickler ca. 16.6 Kalendermonaten bzw. 1.4 Arbeitsjahren; fuer
   ein 3er-Team mit 20 % Koordinationsaufschlag ca. 6.6 Kalendermonaten.
@@ -224,3 +224,6 @@ fortgeschrieben.
 | 2026-03-22 | Praezisierung der Borland-Quellenlage im `Pflichtenheft.md` | Die Formulierung zu den historischen Borland-Dokumenten wurde geschaerft: direkte URL nur fuer das verifizierte User's Guide, eigenstaendige Nennung des zusaetzlich verifizierten Programming Guide und ausdruecklicher Hinweis, dass fuer das separat benannte Reference Guide derzeit keine eigenstaendig verifizierte Einzel-URL hinterlegt ist. |
 | 2026-03-22 | Lokale PDF-Verweise unter `TVDocs/` | Die Tier-1-Quellen im Pflichtenheft verweisen jetzt per Markdown direkt auf die lokal abgelegten PDF-Dateien unter `TVDocs/`; fuer das separat benannte Reference Guide bleibt der Hinweis auf die derzeit fehlende eigenstaendige Einzeldatei bestehen. |
 | 2026-03-22 | OCR-Textablage fuer `TVDocs/` | Aus den beiden lokal abgelegten Turbo-Vision-PDFs wurde per macOS-Vision-OCR Volltext in `TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.txt` und `TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.txt` extrahiert, um spaetere Dokumentationsschritte lokal durchsuchbar zu machen. |
+| 2026-03-22 | Markdown-Aufbereitung der OCR-Texte in `TVDocs/` | Die beiden OCR-Textdateien wurden zusaetzlich als lokale Markdown-Arbeitsfassungen mit Seitenueberschriften unter `TVDocs/*.md` erzeugt; die Statistikzaehlung selbst erfasst diese Hilfsdateien bewusst nicht, da die Methodik nur definierte Markdown-Orte zaehlt. |
+| 2026-03-22 | Markdown-Arbeitsfassungen um Snippet-Sektion erweitert | Die beiden `TVDocs/*.md`-Dateien wurden fuer spaetere Dokuarbeit nachgeschaerft: Metadatenlinks zur PDF- und TXT-Quelle, ein eigener Abschnitt mit automatisch erkannten Code-/Deklarationsschnipseln und ein davon getrennter roher OCR-Hauptteil mit Seitenueberschriften. |
+| 2026-03-22 | TP7-Beispiele als Anschlusswellen im `Pflichtenheft.md` | Abschnitt 8.3 wurde um zwei weitere Portierungswellen fuer die neu aufgenommenen Turbo-Pascal-Beispiele aus `TVDEMOS/` und `TVFM/` erweitert; dabei bleibt klar festgehalten, dass der urspruengliche MUSS-Umfang der 25 C/C++-Originalbeispiele zuerst vollstaendig zu erledigen ist. |

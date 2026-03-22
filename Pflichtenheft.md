@@ -232,6 +232,7 @@ Der Abschluss des Eingangstors wird durch einen dedizierten Commit auf dem jewei
 ### 8.3 Beispielprogramme (MUSS-Umfang)
 Zu portieren sind alle 25 vorhandenen Beispielordner, eingeteilt in vier Wellen nach technischer Abhaengigkeit.
 Fuer jedes portierte Beispiel ist eine eigene didaktische Dokumentationsseite in `docs/guides/examples/` bereitzustellen.
+Die nachfolgend aufgefuehrten Turbo-Pascal-Beispiele aus dem Repository (`TVDEMOS/`, `TVFM/`) erweitern diesen Umfang als Anschlusswellen, ersetzen aber nicht den MUSS-Nachweis fuer die 25 Originalbeispiele aus `tv203s/contrib/tvision/examples`.
 
 Statuscheckliste Beispielwellen:
 - [ ] **Welle 1 - Grundlegende Anwendungsstruktur**
@@ -242,6 +243,10 @@ Statuscheckliste Beispielwellen:
   Reihenfolgehinweis: nach Welle 2; `tvedit`, `bhelp` und `helpdemo` eignen sich als fruehe Validierungsbeispiele fuer Phase 6.
 - [ ] **Welle 4 - Terminal-Emulation und erweiterte Zeichensaetze**
   Reihenfolgehinweis: zuletzt; haengt direkt an der noch offenen Treiberkonsolidierung aus Phase 7.
+- [ ] **Welle 5 - Turbo-Pascal-Demos aus TP7 (`TVDEMOS/`)**
+  Reihenfolgehinweis: erst nach Abschluss der MUSS-Wellen 1 bis 4; bevorzugt nach stabilen Portierungen von `tvdemo`, `tvedit`, Hilfesystem und Dialogschicht.
+- [ ] **Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`**
+  Reihenfolgehinweis: zuletzt; setzt die Erkenntnisse aus Welle 5, Datei-/Verzeichnisdialoge, Drag/Drop-Analoga und eine robuste Event-/Fensterintegration voraus.
 - [ ] Beispiel-Guides unter `docs/guides/examples/`
   Reihenfolgehinweis: jedes portierte Beispiel im selben Arbeitsgang mit eigenem Guide dokumentieren.
 
@@ -294,6 +299,31 @@ Checkliste Welle 4:
 - [ ] `fonts` - Zeichensatz-Verwaltung und Darstellung alternativer Fonts
 - [ ] `terminal` - Einfache Terminal-Integration
 - [ ] `xterm` - XTerm-Protokoll-Emulation
+
+**Welle 5 – Turbo-Pascal-Demos aus TP7 (`TVDEMOS/`)** (Anschlusswelle nach Abschluss der MUSS-Wellen 1 bis 4)
+
+Portierungsmeinung:
+Die Portierung von Turbo-Pascal-Beispielen nach C# ist grundsaetzlich gut machbar. Turbo Pascal und C# liegen fuer diesen Einsatzzweck semantisch naeher beieinander als C++ und C#: die Pascal-Turbo-Vision-Beispiele arbeiten meist klarer mit Units, Records/Objects, Menues, Dialogen und Ereignissen. Zusatzauswand entsteht vor allem bei DOS-/CRT-Annahmen, Dateisystemdetails, Ressourcenformaten und dem alten Pascal-Objektmodell.
+
+Benoetigt: stabile Dialog-/Control-Schicht, Editor-/Hilfe-/Datei-Infrastruktur, saubere Abbildung von Pascal-Object/Unit-Strukturen auf C#-Klassen und Namespaces.
+
+Checkliste Welle 5:
+- [ ] `TVDEMO.PAS` - grosse Turbo-Vision-Gesamtdemo als Pascal-Gegenstueck zu `demo`
+- [ ] `TVEDIT.PAS` - Pascal-Editorbeispiel als zusaetzlicher Validierer fuer den Editor-Stack
+- [ ] `TVHC.PAS`, `HELPFILE.PAS`, `DEMOHELP.PAS` - Pascal-Hilfesystem und Hilfe-Compiler-Flows
+- [ ] `CALC.PAS`, `CALENDAR.PAS`, `ASCIITAB.PAS`, `PUZZLE.PAS` - in sich geschlossene Fach-/Widget-Demos
+- [ ] `GADGETS.PAS`, `MOUSEDLG.PAS`, `TVRDEMO.PAS`, `GENRDEMO.PAS` - Interaktions-, Maus- und Ressourcen-Demos
+
+**Welle 6 – Turbo-Pascal-Dateimanager `TVFM/`** (Anschlusswelle nach Welle 5)
+
+Benoetigt: robuste Datei-/Verzeichnisnavigation, View-/Window-Komposition, Ressourcenverwaltung, zusaetzliche Portierungsentscheidungen fuer Dateimanager-spezifische Arbeitsablaeufe.
+
+Checkliste Welle 6:
+- [ ] `TVFM.PAS` - Hauptanwendung des Dateimanagers
+- [ ] `DIRVIEW.PAS`, `TREEWIN.PAS`, `FILEVIEW.PAS`, `VIEWTEXT.PAS`, `VIEWHEX.PAS`, `INFOVIEW.PAS` - Navigations- und Viewer-Komponenten
+- [ ] `FILECOPY.PAS`, `FILEFIND.PAS`, `DRAGDROP.PAS`, `TRASH.PAS` - Dateioperationen und Interaktionsfluesse
+- [ ] `COLORS.PAS`, `EDITPAL.PAS`, `GAUGES.PAS`, `TOOLS.PAS`, `GLOBALS.PAS`, `ASSOC.PAS`, `EQU.PAS` - Hilfs- und Konfigurationsmodule
+- [ ] Ressourcen- und Build-Begleitdateien (`MAKERES.PAS`, `MAKETVFM.BAT`, `.PAL`, `.TVR`) dokumentiert sichten und als C#-kompatible Assets/Generatoren neu zuschneiden
 
 ## 9. Test- und Qualitaetskonzept
 
