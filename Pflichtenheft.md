@@ -19,6 +19,7 @@ TuiVision ist dabei ausdruecklich als **Beispielprojekt** zur Modernisierung mit
 ## 2. Ausgangsbasis (Ist-Analyse)
 - Lastenheft: `Lasten_Heft.md`
 - Quellcodebasis: `tv203s/contrib/tvision`
+- Herkunft des `tv203s/`-Bestands laut Lastenheft: Download von `https://sourceforge.net/projects/tvision/files/DOS_Win32/2.0.3/`
 - Lokale Arbeitsumgebungen: macOS auf `MacBook Air M2` und `Mac mini M4 Pro`
 - Auf beiden Systemen vorhanden und authentifiziert: `gh` (GitHub CLI) und `codex` (Codex CLI)
 - Umfang der vorhandenen C/C++-Basis (Stand Analyse):
@@ -435,8 +436,8 @@ Die folgenden Guides sind verpflichtend bereitzustellen:
 Die Nutzerdokumentation speist sich aus folgenden Quellen in absteigender Prioritaet:
 
 1. **Borland-Originaldokumentation (Tier 1 – Konzepte und Struktur)**
-   - *Turbo Vision for C++ User's Guide* (Borland International, 1992) – Konzepte, Architektur, Tutorials, Event-Modell
-   - *Turbo Vision for C++ Reference Guide* (Borland International, 1992) – vollstaendige Klassenreferenz mit Verhalten und Beispielen
+   - *Turbo Vision for C++ User's Guide* (Borland International, 1992; Quelle: https://archive.org/details/BorlandTurboVisionForCUserSGuide/mode/1up) – Konzepte, Architektur, Tutorials, Event-Modell
+   - *Turbo Vision for C++ Reference Guide* (Borland International, 1992; fuer das begleitende oeffentlich zugaengliche Referenz-/Programmiermaterial verifiziert ueber: https://archive.org/details/bitsavers_borlandTurrogrammingGuide1992_25707423) – vollstaendige Klassenreferenz mit Verhalten und Beispielen
    - Beide Werke sind auf archive.org oeffentlich zugaenglich
    - **Adaptionspflicht**: Diese Werke dienen ausschliesslich als inhaltliche Vorlage und Inspirationsquelle. Jeder Text ist vollstaendig neu zu formulieren: C++ wird zu C#, DOS- und Borland-Terminologie wird durch TuiVision- und .NET-Terminologie ersetzt, das Sprachniveau wird auf CEFR B2 angepasst. Woertliche Textuebernahmen sind nicht zulaessig.
 
