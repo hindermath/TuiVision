@@ -39,4 +39,54 @@ public static class ShellCommandIds
     /// Wird gesendet, wenn sich der Fokus geändert hat. / Sent when focus has changed.
     /// </summary>
     public const ushort cmFocusChanged = 102;
+
+    /// <summary>
+    /// Schliesst den aktiven Host. / Closes the active host.
+    /// </summary>
+    public const ushort cmClose = 103;
+
+    /// <summary>
+    /// Speichert das aktive Dokument. / Saves the active document.
+    /// </summary>
+    public const ushort cmSave = 104;
+
+    /// <summary>
+    /// Oeffnet einen Dateidialog. / Opens a file dialog.
+    /// </summary>
+    public const ushort cmOpen = 105;
+
+    /// <summary>
+    /// Aktiviert Rueckgaengig. / Activates undo.
+    /// </summary>
+    public const ushort cmUndo = 106;
+
+    /// <summary>
+    /// Aktiviert Kopieren. / Activates copy.
+    /// </summary>
+    public const ushort cmCopy = 107;
+
+    /// <summary>
+    /// Aktiviert Ausschneiden. / Activates cut.
+    /// </summary>
+    public const ushort cmCut = 108;
+
+    /// <summary>
+    /// Aktiviert Einfuegen. / Activates paste.
+    /// </summary>
+    public const ushort cmPaste = 109;
+
+    /// <summary>
+    /// Aktiviert Suchen. / Activates find.
+    /// </summary>
+    public const ushort cmFind = 110;
+
+    /// <summary>
+    /// Aktiviert Ersetzen. / Activates replace.
+    /// </summary>
+    public const ushort cmReplace = 111;
+
+    /// <summary>
+    /// Oeffnet die Hilfe. / Opens help.
+    /// </summary>
+    public const ushort cmHelp = 112;
 }
