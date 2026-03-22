@@ -12,11 +12,30 @@ items:
   - TuiVision.Controls.TCluster
   - TuiVision.Controls.TDesktop
   - TuiVision.Controls.TDialog
+  - TuiVision.Controls.TDirListBox
+  - TuiVision.Controls.TEditWindow
+  - TuiVision.Controls.TEditor
+  - TuiVision.Controls.TFileDialog
+  - TuiVision.Controls.TFileDialogMode
+  - TuiVision.Controls.TFileEditor
+  - TuiVision.Controls.TFileEntryKind
+  - TuiVision.Controls.TFileInputLine
+  - TuiVision.Controls.TFileList
+  - TuiVision.Controls.TFileSaveConflict
+  - TuiVision.Controls.TFileSaveConflictKind
+  - TuiVision.Controls.TFileSelectionInfo
+  - TuiVision.Controls.TFileSnapshot
   - TuiVision.Controls.TGroup
+  - TuiVision.Controls.THelpViewer
+  - TuiVision.Controls.THelpWindow
+  - TuiVision.Controls.THistory
+  - TuiVision.Controls.TIndicator
   - TuiVision.Controls.TInputLine
   - TuiVision.Controls.TLabel
+  - TuiVision.Controls.TLineEndingMode
   - TuiVision.Controls.TListBox
   - TuiVision.Controls.TListViewer
+  - TuiVision.Controls.TMemo
   - TuiVision.Controls.TMenuBar
   - TuiVision.Controls.TMenuItem
   - TuiVision.Controls.TProgram
@@ -87,10 +106,104 @@ references:
   fullName: TuiVision.Controls.TDesktop
 - uid: TuiVision.Controls.TDialog
   commentId: T:TuiVision.Controls.TDialog
+  parent: TuiVision.Controls
   href: TuiVision.Controls.TDialog.html
   name: TDialog
   nameWithType: TDialog
   fullName: TuiVision.Controls.TDialog
+- uid: TuiVision.Controls.TDirListBox
+  commentId: T:TuiVision.Controls.TDirListBox
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TDirListBox.html
+  name: TDirListBox
+  nameWithType: TDirListBox
+  fullName: TuiVision.Controls.TDirListBox
+- uid: TuiVision.Controls.TEditor
+  commentId: T:TuiVision.Controls.TEditor
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TEditor.html
+  name: TEditor
+  nameWithType: TEditor
+  fullName: TuiVision.Controls.TEditor
+- uid: TuiVision.Controls.TEditWindow
+  commentId: T:TuiVision.Controls.TEditWindow
+  href: TuiVision.Controls.TEditWindow.html
+  name: TEditWindow
+  nameWithType: TEditWindow
+  fullName: TuiVision.Controls.TEditWindow
+- uid: TuiVision.Controls.TFileDialogMode
+  commentId: T:TuiVision.Controls.TFileDialogMode
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TFileDialogMode.html
+  name: TFileDialogMode
+  nameWithType: TFileDialogMode
+  fullName: TuiVision.Controls.TFileDialogMode
+- uid: TuiVision.Controls.TFileDialog
+  commentId: T:TuiVision.Controls.TFileDialog
+  href: TuiVision.Controls.TFileDialog.html
+  name: TFileDialog
+  nameWithType: TFileDialog
+  fullName: TuiVision.Controls.TFileDialog
+- uid: TuiVision.Controls.TFileSnapshot
+  commentId: T:TuiVision.Controls.TFileSnapshot
+  href: TuiVision.Controls.TFileSnapshot.html
+  name: TFileSnapshot
+  nameWithType: TFileSnapshot
+  fullName: TuiVision.Controls.TFileSnapshot
+- uid: TuiVision.Controls.TFileSaveConflictKind
+  commentId: T:TuiVision.Controls.TFileSaveConflictKind
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TFileSaveConflictKind.html
+  name: TFileSaveConflictKind
+  nameWithType: TFileSaveConflictKind
+  fullName: TuiVision.Controls.TFileSaveConflictKind
+- uid: TuiVision.Controls.TFileSaveConflict
+  commentId: T:TuiVision.Controls.TFileSaveConflict
+  href: TuiVision.Controls.TFileSaveConflict.html
+  name: TFileSaveConflict
+  nameWithType: TFileSaveConflict
+  fullName: TuiVision.Controls.TFileSaveConflict
+- uid: TuiVision.Controls.TLineEndingMode
+  commentId: T:TuiVision.Controls.TLineEndingMode
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TLineEndingMode.html
+  name: TLineEndingMode
+  nameWithType: TLineEndingMode
+  fullName: TuiVision.Controls.TLineEndingMode
+- uid: TuiVision.Controls.TFileEditor
+  commentId: T:TuiVision.Controls.TFileEditor
+  href: TuiVision.Controls.TFileEditor.html
+  name: TFileEditor
+  nameWithType: TFileEditor
+  fullName: TuiVision.Controls.TFileEditor
+- uid: TuiVision.Controls.TFileInputLine
+  commentId: T:TuiVision.Controls.TFileInputLine
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TFileInputLine.html
+  name: TFileInputLine
+  nameWithType: TFileInputLine
+  fullName: TuiVision.Controls.TFileInputLine
+- uid: TuiVision.Controls.TFileSelectionInfo
+  commentId: T:TuiVision.Controls.TFileSelectionInfo
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TFileSelectionInfo.html
+  name: TFileSelectionInfo
+  nameWithType: TFileSelectionInfo
+  fullName: TuiVision.Controls.TFileSelectionInfo
+- uid: TuiVision.Controls.TFileEntryKind
+  commentId: T:TuiVision.Controls.TFileEntryKind
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TFileEntryKind.html
+  name: TFileEntryKind
+  nameWithType: TFileEntryKind
+  fullName: TuiVision.Controls.TFileEntryKind
+- uid: TuiVision.Controls.TFileList
+  commentId: T:TuiVision.Controls.TFileList
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TFileList.html
+  name: TFileList
+  nameWithType: TFileList
+  fullName: TuiVision.Controls.TFileList
 - uid: TuiVision.Controls.TGroup
   commentId: T:TuiVision.Controls.TGroup
   parent: TuiVision.Controls
@@ -98,8 +211,35 @@ references:
   name: TGroup
   nameWithType: TGroup
   fullName: TuiVision.Controls.TGroup
+- uid: TuiVision.Controls.THelpViewer
+  commentId: T:TuiVision.Controls.THelpViewer
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.THelpViewer.html
+  name: THelpViewer
+  nameWithType: THelpViewer
+  fullName: TuiVision.Controls.THelpViewer
+- uid: TuiVision.Controls.THelpWindow
+  commentId: T:TuiVision.Controls.THelpWindow
+  href: TuiVision.Controls.THelpWindow.html
+  name: THelpWindow
+  nameWithType: THelpWindow
+  fullName: TuiVision.Controls.THelpWindow
+- uid: TuiVision.Controls.THistory
+  commentId: T:TuiVision.Controls.THistory
+  href: TuiVision.Controls.THistory.html
+  name: THistory
+  nameWithType: THistory
+  fullName: TuiVision.Controls.THistory
+- uid: TuiVision.Controls.TIndicator
+  commentId: T:TuiVision.Controls.TIndicator
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TIndicator.html
+  name: TIndicator
+  nameWithType: TIndicator
+  fullName: TuiVision.Controls.TIndicator
 - uid: TuiVision.Controls.TInputLine
   commentId: T:TuiVision.Controls.TInputLine
+  parent: TuiVision.Controls
   href: TuiVision.Controls.TInputLine.html
   name: TInputLine
   nameWithType: TInputLine
@@ -112,6 +252,7 @@ references:
   fullName: TuiVision.Controls.TLabel
 - uid: TuiVision.Controls.TListBox
   commentId: T:TuiVision.Controls.TListBox
+  parent: TuiVision.Controls
   href: TuiVision.Controls.TListBox.html
   name: TListBox
   nameWithType: TListBox
@@ -123,6 +264,12 @@ references:
   name: TListViewer
   nameWithType: TListViewer
   fullName: TuiVision.Controls.TListViewer
+- uid: TuiVision.Controls.TMemo
+  commentId: T:TuiVision.Controls.TMemo
+  href: TuiVision.Controls.TMemo.html
+  name: TMemo
+  nameWithType: TMemo
+  fullName: TuiVision.Controls.TMemo
 - uid: TuiVision.Controls.TMenuBar
   commentId: T:TuiVision.Controls.TMenuBar
   parent: TuiVision.Controls
@@ -159,6 +306,7 @@ references:
   fullName: TuiVision.Controls.TScrollBar
 - uid: TuiVision.Controls.TScroller
   commentId: T:TuiVision.Controls.TScroller
+  parent: TuiVision.Controls
   href: TuiVision.Controls.TScroller.html
   name: TScroller
   nameWithType: TScroller

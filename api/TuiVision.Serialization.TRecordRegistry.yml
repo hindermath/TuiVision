@@ -6,6 +6,7 @@ items:
   parent: TuiVision.Serialization
   children:
   - TuiVision.Serialization.TRecordRegistry.Create(System.String,TuiVision.Serialization.TBinaryArchiveReader)
+  - TuiVision.Serialization.TRecordRegistry.RegisterStream``1(System.String,System.Func{TuiVision.Serialization.ipstream,``0},System.Action{TuiVision.Serialization.opstream,``0})
   - TuiVision.Serialization.TRecordRegistry.Register``1(System.String,System.Func{TuiVision.Serialization.TBinaryArchiveReader,``0})
   langs:
   - csharp
@@ -16,24 +17,20 @@ items:
   type: Class
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TRecordRegistry.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: TRecordRegistry
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 337
+    path: src/TuiVision.Serialization/TRecordRegistry.cs
+    startLine: 10
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Registry, die stabile Typbezeichner auf Factory-Delegates abbildet.
-
-    Ermöglicht polymorphe Deserialisierung ohne direkte Typabhängigkeiten.
+    Registry fuer stabile Typ-IDs ueber Archiv- und Stream-Fabriken.
 
 
-    Registry that maps stable type identifiers to factory delegates.
-
-    Enables polymorphic deserialization without direct type dependencies.
+    Registry for stable type identifiers across archive and stream factories.
   example: []
   syntax:
     content: public sealed class TRecordRegistry
@@ -60,60 +57,86 @@ items:
   type: Method
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TRecordRegistry.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Register
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 373
+    path: src/TuiVision.Serialization/TRecordRegistry.cs
+    startLine: 24
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Registriert eine Factory-Funktion für den angegebenen Typbezeichner.
+    Registriert einen Archiv-Record.
 
 
-    Registers a factory function for the specified type identifier.
+    Registers an archive record.
   example: []
   syntax:
     content: 'public void Register<T>(string typeId, Func<TBinaryArchiveReader, T> factory) where T : notnull'
     parameters:
     - id: typeId
       type: System.String
-      description: >-
-        Der stabile Bezeichner des Typs. Darf nicht leer oder nur aus Leerzeichen bestehen.
-
-        The stable identifier of the type. Must not be empty or whitespace-only.
+      description: Die stabile Typ-ID. / The stable type identifier.
     - id: factory
       type: System.Func{TuiVision.Serialization.TBinaryArchiveReader,{T}}
-      description: >-
-        Eine Funktion, die aus einem Reader eine Instanz von <code class="typeparamref">T</code> erstellt.
-
-        A function that creates an instance of <code class="typeparamref">T</code> from a reader.
+      description: Die Archivfabrik. / The archive factory.
     typeParameters:
     - id: T
-      description: >-
-        Der zu registrierende Typ. Darf nicht <code>null</code> sein.
-
-        The type to register. Must not be <code>null</code>.
+      description: Der Record-Typ. / The record type.
     content.vb: Public Sub Register(Of T)(typeId As String, factory As Func(Of TBinaryArchiveReader, T))
   overload: TuiVision.Serialization.TRecordRegistry.Register*
-  exceptions:
-  - type: System.ArgumentException
-    commentId: T:System.ArgumentException
-    description: >-
-      Wird ausgelöst, wenn <code class="paramref">typeId</code> leer oder nur Leerzeichen ist.
-
-      Thrown when <code class="paramref">typeId</code> is empty or whitespace-only.
-  - type: System.InvalidOperationException
-    commentId: T:System.InvalidOperationException
-    description: >-
-      Wird ausgelöst, wenn <code class="paramref">typeId</code> bereits registriert ist.
-
-      Thrown when <code class="paramref">typeId</code> is already registered.
   nameWithType.vb: TRecordRegistry.Register(Of T)(String, Func(Of TBinaryArchiveReader, T))
   fullName.vb: TuiVision.Serialization.TRecordRegistry.Register(Of T)(String, System.Func(Of TuiVision.Serialization.TBinaryArchiveReader, T))
   name.vb: Register(Of T)(String, Func(Of TBinaryArchiveReader, T))
+- uid: TuiVision.Serialization.TRecordRegistry.RegisterStream``1(System.String,System.Func{TuiVision.Serialization.ipstream,``0},System.Action{TuiVision.Serialization.opstream,``0})
+  commentId: M:TuiVision.Serialization.TRecordRegistry.RegisterStream``1(System.String,System.Func{TuiVision.Serialization.ipstream,``0},System.Action{TuiVision.Serialization.opstream,``0})
+  id: RegisterStream``1(System.String,System.Func{TuiVision.Serialization.ipstream,``0},System.Action{TuiVision.Serialization.opstream,``0})
+  parent: TuiVision.Serialization.TRecordRegistry
+  langs:
+  - csharp
+  - vb
+  name: RegisterStream<T>(string, Func<ipstream, T>, Action<opstream, T>)
+  nameWithType: TRecordRegistry.RegisterStream<T>(string, Func<ipstream, T>, Action<opstream, T>)
+  fullName: TuiVision.Serialization.TRecordRegistry.RegisterStream<T>(string, System.Func<TuiVision.Serialization.ipstream, T>, System.Action<TuiVision.Serialization.opstream, T>)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TRecordRegistry.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: RegisterStream
+    path: src/TuiVision.Serialization/TRecordRegistry.cs
+    startLine: 45
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Registriert einen Stream-Typ mit gemeinsamer Referenzsemantik.
+
+
+    Registers a stream type with shared-reference semantics.
+  example: []
+  syntax:
+    content: 'public void RegisterStream<T>(string typeId, Func<ipstream, T> factory, Action<opstream, T> writer) where T : class'
+    parameters:
+    - id: typeId
+      type: System.String
+      description: Die stabile Typ-ID. / The stable type identifier.
+    - id: factory
+      type: System.Func{TuiVision.Serialization.ipstream,{T}}
+      description: Die Stream-Fabrik. / The stream factory.
+    - id: writer
+      type: System.Action{TuiVision.Serialization.opstream,{T}}
+      description: Der Stream-Writer. / The stream writer.
+    typeParameters:
+    - id: T
+      description: Der Laufzeittyp. / The runtime type.
+    content.vb: Public Sub RegisterStream(Of T As Class)(typeId As String, factory As Func(Of ipstream, T), writer As Action(Of opstream, T))
+  overload: TuiVision.Serialization.TRecordRegistry.RegisterStream*
+  nameWithType.vb: TRecordRegistry.RegisterStream(Of T)(String, Func(Of ipstream, T), Action(Of opstream, T))
+  fullName.vb: TuiVision.Serialization.TRecordRegistry.RegisterStream(Of T)(String, System.Func(Of TuiVision.Serialization.ipstream, T), System.Action(Of TuiVision.Serialization.opstream, T))
+  name.vb: RegisterStream(Of T)(String, Func(Of ipstream, T), Action(Of opstream, T))
 - uid: TuiVision.Serialization.TRecordRegistry.Create(System.String,TuiVision.Serialization.TBinaryArchiveReader)
   commentId: M:TuiVision.Serialization.TRecordRegistry.Create(System.String,TuiVision.Serialization.TBinaryArchiveReader)
   id: Create(System.String,TuiVision.Serialization.TBinaryArchiveReader)
@@ -127,48 +150,35 @@ items:
   type: Method
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TRecordRegistry.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Create
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 402
+    path: src/TuiVision.Serialization/TRecordRegistry.cs
+    startLine: 71
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Erstellt eine Instanz des zum Bezeichner gehörenden Typs aus dem Reader.
+    Erstellt einen Archiv-Record aus einer Typ-ID.
 
 
-    Creates an instance of the type associated with the identifier, reading from the reader.
+    Creates an archive record from a type identifier.
   example: []
   syntax:
     content: public object Create(string typeId, TBinaryArchiveReader reader)
     parameters:
     - id: typeId
       type: System.String
-      description: >-
-        Der stabile Typbezeichner. Muss zuvor registriert worden sein.
-
-        The stable type identifier. Must have been registered previously.
+      description: Die Typ-ID. / The type identifier.
     - id: reader
       type: TuiVision.Serialization.TBinaryArchiveReader
-      description: Der Reader mit den Nutzdaten. / The reader containing the payload.
+      description: Der Archiv-Reader. / The archive reader.
     return:
       type: System.Object
-      description: >-
-        Die deserialisierte Instanz.
-
-        The deserialized instance.
+      description: Das erzeugte Objekt. / The created object.
     content.vb: Public Function Create(typeId As String, reader As TBinaryArchiveReader) As Object
   overload: TuiVision.Serialization.TRecordRegistry.Create*
-  exceptions:
-  - type: System.Collections.Generic.KeyNotFoundException
-    commentId: T:System.Collections.Generic.KeyNotFoundException
-    description: >-
-      Wird ausgelöst, wenn für <code class="paramref">typeId</code> keine Factory registriert ist.
-
-      Thrown when no factory is registered for <code class="paramref">typeId</code>.
   nameWithType.vb: TRecordRegistry.Create(String, TBinaryArchiveReader)
   fullName.vb: TuiVision.Serialization.TRecordRegistry.Create(String, TuiVision.Serialization.TBinaryArchiveReader)
   name.vb: Create(String, TBinaryArchiveReader)
@@ -408,20 +418,6 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: System.ArgumentException
-  commentId: T:System.ArgumentException
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
-  name: ArgumentException
-  nameWithType: ArgumentException
-  fullName: System.ArgumentException
-- uid: System.InvalidOperationException
-  commentId: T:System.InvalidOperationException
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
-  name: InvalidOperationException
-  nameWithType: InvalidOperationException
-  fullName: System.InvalidOperationException
 - uid: TuiVision.Serialization.TRecordRegistry.Register*
   commentId: Overload:TuiVision.Serialization.TRecordRegistry.Register
   href: TuiVision.Serialization.TRecordRegistry.html#TuiVision_Serialization_TRecordRegistry_Register__1_System_String_System_Func_TuiVision_Serialization_TBinaryArchiveReader___0__
@@ -512,13 +508,124 @@ references:
   - name: " "
   - name: TResult
   - name: )
-- uid: System.Collections.Generic.KeyNotFoundException
-  commentId: T:System.Collections.Generic.KeyNotFoundException
+- uid: TuiVision.Serialization.TRecordRegistry.RegisterStream*
+  commentId: Overload:TuiVision.Serialization.TRecordRegistry.RegisterStream
+  href: TuiVision.Serialization.TRecordRegistry.html#TuiVision_Serialization_TRecordRegistry_RegisterStream__1_System_String_System_Func_TuiVision_Serialization_ipstream___0__System_Action_TuiVision_Serialization_opstream___0__
+  name: RegisterStream
+  nameWithType: TRecordRegistry.RegisterStream
+  fullName: TuiVision.Serialization.TRecordRegistry.RegisterStream
+- uid: System.Func{TuiVision.Serialization.ipstream,{T}}
+  commentId: T:System.Func{TuiVision.Serialization.ipstream,``0}
+  parent: System
+  definition: System.Func`2
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<ipstream, T>
+  nameWithType: Func<ipstream, T>
+  fullName: System.Func<TuiVision.Serialization.ipstream, T>
+  nameWithType.vb: Func(Of ipstream, T)
+  fullName.vb: System.Func(Of TuiVision.Serialization.ipstream, T)
+  name.vb: Func(Of ipstream, T)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: TuiVision.Serialization.ipstream
+    name: ipstream
+    href: TuiVision.Serialization.ipstream.html
+  - name: ','
+  - name: " "
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Serialization.ipstream
+    name: ipstream
+    href: TuiVision.Serialization.ipstream.html
+  - name: ','
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Action{TuiVision.Serialization.opstream,{T}}
+  commentId: T:System.Action{TuiVision.Serialization.opstream,``0}
+  parent: System
+  definition: System.Action`2
+  href: https://learn.microsoft.com/dotnet/api/system.action-2
+  name: Action<opstream, T>
+  nameWithType: Action<opstream, T>
+  fullName: System.Action<TuiVision.Serialization.opstream, T>
+  nameWithType.vb: Action(Of opstream, T)
+  fullName.vb: System.Action(Of TuiVision.Serialization.opstream, T)
+  name.vb: Action(Of opstream, T)
+  spec.csharp:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: <
+  - uid: TuiVision.Serialization.opstream
+    name: opstream
+    href: TuiVision.Serialization.opstream.html
+  - name: ','
+  - name: " "
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Serialization.opstream
+    name: opstream
+    href: TuiVision.Serialization.opstream.html
+  - name: ','
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Action`2
+  commentId: T:System.Action`2
   isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keynotfoundexception
-  name: KeyNotFoundException
-  nameWithType: KeyNotFoundException
-  fullName: System.Collections.Generic.KeyNotFoundException
+  href: https://learn.microsoft.com/dotnet/api/system.action-2
+  name: Action<T1, T2>
+  nameWithType: Action<T1, T2>
+  fullName: System.Action<T1, T2>
+  nameWithType.vb: Action(Of T1, T2)
+  fullName.vb: System.Action(Of T1, T2)
+  name.vb: Action(Of T1, T2)
+  spec.csharp:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
 - uid: TuiVision.Serialization.TRecordRegistry.Create*
   commentId: Overload:TuiVision.Serialization.TRecordRegistry.Create
   href: TuiVision.Serialization.TRecordRegistry.html#TuiVision_Serialization_TRecordRegistry_Create_System_String_TuiVision_Serialization_TBinaryArchiveReader_

@@ -147,6 +147,48 @@ It manages child windows and ensures correct focus recovery.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TDirListBox.html">TDirListBox</a></dt>
+      <dd><p>Verzeichnisliste fuer Dateidialoge.</p>
+<p>Directory list for file dialogs.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TEditWindow.html">TEditWindow</a></dt>
+      <dd><p>Nicht-modaler Editor-Host mit Rahmen, Titel und Safe-Close-Koordination.</p>
+<p>Non-modal editor host with frame, title, and safe-close coordination.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TEditor.html">TEditor</a></dt>
+      <dd><p>Wiederverwendbarer mehrzeiliger Texteditor mit Cursor-, Auswahl- und Suchlogik.</p>
+<p>Reusable multi-line text editor with cursor, selection, and search behaviour.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TFileDialog.html">TFileDialog</a></dt>
+      <dd><p>Koordiniert Ordnerliste, Dateiliste, Pfadeingabe und History innerhalb eines Dateidialogs.</p>
+<p>Coordinates directory list, file list, path input, and history within a file dialog.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TFileEditor.html">TFileEditor</a></dt>
+      <dd><p>Dateigebundener Editor mit Snapshot-basierter Konflikterkennung.</p>
+<p>File-backed editor with snapshot-based conflict detection.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TFileInputLine.html">TFileInputLine</a></dt>
+      <dd><p>Eingabezeile fuer Dateipfade mit History-Bucket-Anbindung.</p>
+<p>Input line for file paths with history bucket integration.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TFileList.html">TFileList</a></dt>
+      <dd><p>Gefilterte Dateiliste mit synchronisierter Dateiinformation.</p>
+<p>Filtered file list with synchronised file information.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Controls.TGroup.html">TGroup</a></dt>
       <dd><p>Container-Ansicht, die Kind-Views in einer zirkulären doppelt-verlinkten Liste verwaltet.
 <a class="xref" href="TuiVision.Controls.TGroup.html">TGroup</a> implementiert Einfügen/Entfernen, Drei-Phasen-Ereignis-Dispatching,
@@ -156,6 +198,30 @@ Portiert von <code>TGroup</code> aus Turbo Vision 2.0.3.</p>
 <a class="xref" href="TuiVision.Controls.TGroup.html">TGroup</a> implements insertion/removal, three-phase event dispatching,
 focus management, draw-buffer lifecycle, and state propagation.
 Ported from <code>TGroup</code> in Turbo Vision 2.0.3.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.THelpViewer.html">THelpViewer</a></dt>
+      <dd><p>Scrollbarer Laufzeit-Viewer fuer kontextbezogene Hilfethemen.</p>
+<p>Scrollable runtime viewer for context-sensitive help topics.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.THelpWindow.html">THelpWindow</a></dt>
+      <dd><p>Nicht-modaler Host fuer runtime-lesbare Hilfe.</p>
+<p>Non-modal host for runtime-readable help.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.THistory.html">THistory</a></dt>
+      <dd><p>In-Memory-History mit Buckets pro History-ID.</p>
+<p>In-memory history with buckets per history identifier.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TIndicator.html">TIndicator</a></dt>
+      <dd><p>Einfache Statusanzeige fuer Cursorposition, Modus und Dirty-State eines Editors.</p>
+<p>Simple indicator for editor cursor position, mode, and dirty state.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -180,6 +246,12 @@ Ported from <code>TGroup</code> in Turbo Vision 2.0.3.</p>
       <dt><a class="xref" href="TuiVision.Controls.TListViewer.html">TListViewer</a></dt>
       <dd><p>Abstrakte Basis für scrollbare Listenansichten mit fokussiertem Eintrag.</p>
 <p>Abstract base for scrollable list views with a focused item.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TMemo.html">TMemo</a></dt>
+      <dd><p>Speicherbasierter Editor ohne Dateibindung.</p>
+<p>Memory-backed editor without file attachment.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -270,6 +342,27 @@ All visible elements of the user interface inherit from this class, thereby
 inheriting coordinate management, state flags, and event handling.</p>
 </dd>
     </dl>
+    <h3 id="structs">
+Structs
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TFileSaveConflict.html">TFileSaveConflict</a></dt>
+      <dd><p>Beschreibt eine Save-Konfliktsituation.</p>
+<p>Describes a save conflict situation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TFileSelectionInfo.html">TFileSelectionInfo</a></dt>
+      <dd><p>Metadaten fuer den aktuell aktiven Datei- oder Pfadkontext eines Dialogs.</p>
+<p>Metadata for the currently active file or path context of a dialog.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TFileSnapshot.html">TFileSnapshot</a></dt>
+      <dd><p>Repräsentiert den gespeicherten Dateistand fuer Konflikterkennung.</p>
+<p>Represents the stored file state for conflict detection.</p>
+</dd>
+    </dl>
     <h3 id="enums">
 Enums
 </h3>
@@ -277,6 +370,30 @@ Enums
       <dt><a class="xref" href="TuiVision.Controls.TButtonFlags.html">TButtonFlags</a></dt>
       <dd><p>Flags für das Verhalten und die Darstellung einer Schaltfläche.</p>
 <p>Flags for the behaviour and appearance of a button.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TFileDialogMode.html">TFileDialogMode</a></dt>
+      <dd><p>Dialogmodus fuer Dateiinteraktionen.</p>
+<p>Dialog mode for file interactions.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TFileEntryKind.html">TFileEntryKind</a></dt>
+      <dd><p>Klassifiziert aktive Dateipfade in Dialogen.</p>
+<p>Classifies active file paths in dialogs.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TFileSaveConflictKind.html">TFileSaveConflictKind</a></dt>
+      <dd><p>Klassifiziert Speicherkonflikte fuer Dateieditoren.</p>
+<p>Classifies save conflicts for file editors.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TLineEndingMode.html">TLineEndingMode</a></dt>
+      <dd><p>Beschreibt den Zeilenendungsmodus des aktiven Dokuments.</p>
+<p>Describes the line-ending mode of the active document.</p>
 </dd>
     </dl>
     <dl class="jumplist">

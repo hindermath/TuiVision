@@ -1,0 +1,728 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Serialization.pstream
+  commentId: T:TuiVision.Serialization.pstream
+  id: pstream
+  parent: TuiVision.Serialization
+  children:
+  - TuiVision.Serialization.pstream.#ctor(System.IO.Stream,TuiVision.Serialization.TRecordRegistry,System.Boolean)
+  - TuiVision.Serialization.pstream.BaseStream
+  - TuiVision.Serialization.pstream.Dispose
+  - TuiVision.Serialization.pstream.LeaveOpen
+  - TuiVision.Serialization.pstream.Registry
+  - TuiVision.Serialization.pstream.Seek(System.Int64,System.IO.SeekOrigin)
+  - TuiVision.Serialization.pstream.Tell
+  langs:
+  - csharp
+  - vb
+  name: pstream
+  nameWithType: pstream
+  fullName: TuiVision.Serialization.pstream
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Serialization/pstream.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: pstream
+    path: src/TuiVision.Serialization/pstream.cs
+    startLine: 11
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Gemeinsame Basis fuer Kompatibilitaets-Streams.
+
+
+    Shared base for compatibility streams.
+  example: []
+  syntax:
+    content: 'public abstract class pstream : IDisposable'
+    content.vb: Public MustInherit Class pstream Implements IDisposable
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - TuiVision.Serialization.fpstream
+  - TuiVision.Serialization.ipstream
+  - TuiVision.Serialization.opstream
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Serialization.pstream.#ctor(System.IO.Stream,TuiVision.Serialization.TRecordRegistry,System.Boolean)
+  commentId: M:TuiVision.Serialization.pstream.#ctor(System.IO.Stream,TuiVision.Serialization.TRecordRegistry,System.Boolean)
+  id: '#ctor(System.IO.Stream,TuiVision.Serialization.TRecordRegistry,System.Boolean)'
+  parent: TuiVision.Serialization.pstream
+  langs:
+  - csharp
+  - vb
+  name: pstream(Stream, TRecordRegistry, bool)
+  nameWithType: pstream.pstream(Stream, TRecordRegistry, bool)
+  fullName: TuiVision.Serialization.pstream.pstream(System.IO.Stream, TuiVision.Serialization.TRecordRegistry, bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Serialization/pstream.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Serialization/pstream.cs
+    startLine: 21
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Initialisiert einen neuen Kompatibilitaets-Stream.
+
+
+    Initializes a new compatibility stream.
+  example: []
+  syntax:
+    content: protected pstream(Stream stream, TRecordRegistry registry, bool leaveOpen = false)
+    parameters:
+    - id: stream
+      type: System.IO.Stream
+      description: Der zugrunde liegende Stream. / The underlying stream.
+    - id: registry
+      type: TuiVision.Serialization.TRecordRegistry
+      description: Die Typ-Registry. / The type registry.
+    - id: leaveOpen
+      type: System.Boolean
+      description: Gibt an, ob der Stream offen bleiben soll. / Indicates whether the stream should remain open.
+    content.vb: Protected Sub New(stream As Stream, registry As TRecordRegistry, leaveOpen As Boolean = False)
+  overload: TuiVision.Serialization.pstream.#ctor*
+  nameWithType.vb: pstream.New(Stream, TRecordRegistry, Boolean)
+  fullName.vb: TuiVision.Serialization.pstream.New(System.IO.Stream, TuiVision.Serialization.TRecordRegistry, Boolean)
+  name.vb: New(Stream, TRecordRegistry, Boolean)
+- uid: TuiVision.Serialization.pstream.BaseStream
+  commentId: P:TuiVision.Serialization.pstream.BaseStream
+  id: BaseStream
+  parent: TuiVision.Serialization.pstream
+  langs:
+  - csharp
+  - vb
+  name: BaseStream
+  nameWithType: pstream.BaseStream
+  fullName: TuiVision.Serialization.pstream.BaseStream
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Serialization/pstream.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: BaseStream
+    path: src/TuiVision.Serialization/pstream.cs
+    startLine: 33
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Der zugrunde liegende Stream.
+
+
+    The underlying stream.
+  example: []
+  syntax:
+    content: protected Stream BaseStream { get; }
+    parameters: []
+    return:
+      type: System.IO.Stream
+    content.vb: Protected ReadOnly Property BaseStream As Stream
+  overload: TuiVision.Serialization.pstream.BaseStream*
+- uid: TuiVision.Serialization.pstream.Registry
+  commentId: P:TuiVision.Serialization.pstream.Registry
+  id: Registry
+  parent: TuiVision.Serialization.pstream
+  langs:
+  - csharp
+  - vb
+  name: Registry
+  nameWithType: pstream.Registry
+  fullName: TuiVision.Serialization.pstream.Registry
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Serialization/pstream.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Registry
+    path: src/TuiVision.Serialization/pstream.cs
+    startLine: 40
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Die Typ-Registry.
+
+
+    The type registry.
+  example: []
+  syntax:
+    content: protected TRecordRegistry Registry { get; }
+    parameters: []
+    return:
+      type: TuiVision.Serialization.TRecordRegistry
+    content.vb: Protected ReadOnly Property Registry As TRecordRegistry
+  overload: TuiVision.Serialization.pstream.Registry*
+- uid: TuiVision.Serialization.pstream.LeaveOpen
+  commentId: P:TuiVision.Serialization.pstream.LeaveOpen
+  id: LeaveOpen
+  parent: TuiVision.Serialization.pstream
+  langs:
+  - csharp
+  - vb
+  name: LeaveOpen
+  nameWithType: pstream.LeaveOpen
+  fullName: TuiVision.Serialization.pstream.LeaveOpen
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Serialization/pstream.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: LeaveOpen
+    path: src/TuiVision.Serialization/pstream.cs
+    startLine: 47
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Gibt an, ob der zugrunde liegende Stream offen bleiben soll.
+
+
+    Indicates whether the underlying stream should remain open.
+  example: []
+  syntax:
+    content: protected bool LeaveOpen { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Protected ReadOnly Property LeaveOpen As Boolean
+  overload: TuiVision.Serialization.pstream.LeaveOpen*
+- uid: TuiVision.Serialization.pstream.Tell
+  commentId: M:TuiVision.Serialization.pstream.Tell
+  id: Tell
+  parent: TuiVision.Serialization.pstream
+  langs:
+  - csharp
+  - vb
+  name: Tell()
+  nameWithType: pstream.Tell()
+  fullName: TuiVision.Serialization.pstream.Tell()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/pstream.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Tell
+    path: src/TuiVision.Serialization/pstream.cs
+    startLine: 55
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Liefert die aktuelle Stream-Position.
+
+
+    Returns the current stream position.
+  example: []
+  syntax:
+    content: public long Tell()
+    return:
+      type: System.Int64
+      description: Die aktuelle Position. / The current position.
+    content.vb: Public Function Tell() As Long
+  overload: TuiVision.Serialization.pstream.Tell*
+- uid: TuiVision.Serialization.pstream.Seek(System.Int64,System.IO.SeekOrigin)
+  commentId: M:TuiVision.Serialization.pstream.Seek(System.Int64,System.IO.SeekOrigin)
+  id: Seek(System.Int64,System.IO.SeekOrigin)
+  parent: TuiVision.Serialization.pstream
+  langs:
+  - csharp
+  - vb
+  name: Seek(long, SeekOrigin)
+  nameWithType: pstream.Seek(long, SeekOrigin)
+  fullName: TuiVision.Serialization.pstream.Seek(long, System.IO.SeekOrigin)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/pstream.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Seek
+    path: src/TuiVision.Serialization/pstream.cs
+    startLine: 65
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Verschiebt die aktuelle Stream-Position.
+
+
+    Moves the current stream position.
+  example: []
+  syntax:
+    content: public long Seek(long offset, SeekOrigin origin)
+    parameters:
+    - id: offset
+      type: System.Int64
+      description: Der Offset. / The offset.
+    - id: origin
+      type: System.IO.SeekOrigin
+      description: Der Bezugspunkt. / The reference point.
+    return:
+      type: System.Int64
+      description: Die neue Position. / The new position.
+    content.vb: Public Function Seek(offset As Long, origin As SeekOrigin) As Long
+  overload: TuiVision.Serialization.pstream.Seek*
+  nameWithType.vb: pstream.Seek(Long, SeekOrigin)
+  fullName.vb: TuiVision.Serialization.pstream.Seek(Long, System.IO.SeekOrigin)
+  name.vb: Seek(Long, SeekOrigin)
+- uid: TuiVision.Serialization.pstream.Dispose
+  commentId: M:TuiVision.Serialization.pstream.Dispose
+  id: Dispose
+  parent: TuiVision.Serialization.pstream
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: pstream.Dispose()
+  fullName: TuiVision.Serialization.pstream.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/pstream.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Dispose
+    path: src/TuiVision.Serialization/pstream.cs
+    startLine: 72
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Gibt den Stream frei.
+
+
+    Disposes the stream.
+  example: []
+  syntax:
+    content: public virtual void Dispose()
+    content.vb: Public Overridable Sub Dispose()
+  overload: TuiVision.Serialization.pstream.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: TuiVision.Serialization
+  commentId: N:TuiVision.Serialization
+  href: TuiVision.html
+  name: TuiVision.Serialization
+  nameWithType: TuiVision.Serialization
+  fullName: TuiVision.Serialization
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Serialization
+    name: Serialization
+    href: TuiVision.Serialization.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Serialization
+    name: Serialization
+    href: TuiVision.Serialization.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Serialization.pstream.#ctor*
+  commentId: Overload:TuiVision.Serialization.pstream.#ctor
+  href: TuiVision.Serialization.pstream.html#TuiVision_Serialization_pstream__ctor_System_IO_Stream_TuiVision_Serialization_TRecordRegistry_System_Boolean_
+  name: pstream
+  nameWithType: pstream.pstream
+  fullName: TuiVision.Serialization.pstream.pstream
+  nameWithType.vb: pstream.New
+  fullName.vb: TuiVision.Serialization.pstream.New
+  name.vb: New
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.stream
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: TuiVision.Serialization.TRecordRegistry
+  commentId: T:TuiVision.Serialization.TRecordRegistry
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TRecordRegistry.html
+  name: TRecordRegistry
+  nameWithType: TRecordRegistry
+  fullName: TuiVision.Serialization.TRecordRegistry
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: TuiVision.Serialization.pstream.BaseStream*
+  commentId: Overload:TuiVision.Serialization.pstream.BaseStream
+  href: TuiVision.Serialization.pstream.html#TuiVision_Serialization_pstream_BaseStream
+  name: BaseStream
+  nameWithType: pstream.BaseStream
+  fullName: TuiVision.Serialization.pstream.BaseStream
+- uid: TuiVision.Serialization.pstream.Registry*
+  commentId: Overload:TuiVision.Serialization.pstream.Registry
+  href: TuiVision.Serialization.pstream.html#TuiVision_Serialization_pstream_Registry
+  name: Registry
+  nameWithType: pstream.Registry
+  fullName: TuiVision.Serialization.pstream.Registry
+- uid: TuiVision.Serialization.pstream.LeaveOpen*
+  commentId: Overload:TuiVision.Serialization.pstream.LeaveOpen
+  href: TuiVision.Serialization.pstream.html#TuiVision_Serialization_pstream_LeaveOpen
+  name: LeaveOpen
+  nameWithType: pstream.LeaveOpen
+  fullName: TuiVision.Serialization.pstream.LeaveOpen
+- uid: TuiVision.Serialization.pstream.Tell*
+  commentId: Overload:TuiVision.Serialization.pstream.Tell
+  href: TuiVision.Serialization.pstream.html#TuiVision_Serialization_pstream_Tell
+  name: Tell
+  nameWithType: pstream.Tell
+  fullName: TuiVision.Serialization.pstream.Tell
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: TuiVision.Serialization.pstream.Seek*
+  commentId: Overload:TuiVision.Serialization.pstream.Seek
+  href: TuiVision.Serialization.pstream.html#TuiVision_Serialization_pstream_Seek_System_Int64_System_IO_SeekOrigin_
+  name: Seek
+  nameWithType: pstream.Seek
+  fullName: TuiVision.Serialization.pstream.Seek
+- uid: System.IO.SeekOrigin
+  commentId: T:System.IO.SeekOrigin
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.seekorigin
+  name: SeekOrigin
+  nameWithType: SeekOrigin
+  fullName: System.IO.SeekOrigin
+- uid: TuiVision.Serialization.pstream.Dispose*
+  commentId: Overload:TuiVision.Serialization.pstream.Dispose
+  href: TuiVision.Serialization.pstream.html#TuiVision_Serialization_pstream_Dispose
+  name: Dispose
+  nameWithType: pstream.Dispose
+  fullName: TuiVision.Serialization.pstream.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

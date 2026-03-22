@@ -1,0 +1,598 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Serialization.fpstream
+  commentId: T:TuiVision.Serialization.fpstream
+  id: fpstream
+  parent: TuiVision.Serialization
+  children:
+  - TuiVision.Serialization.fpstream.#ctor(System.String,System.IO.FileMode,System.IO.FileAccess,TuiVision.Serialization.TRecordRegistry)
+  - TuiVision.Serialization.fpstream.OpenReader
+  - TuiVision.Serialization.fpstream.OpenWriter
+  langs:
+  - csharp
+  - vb
+  name: fpstream
+  nameWithType: fpstream
+  fullName: TuiVision.Serialization.fpstream
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Serialization/fpstream.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: fpstream
+    path: src/TuiVision.Serialization/fpstream.cs
+    startLine: 11
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Dateibasierter Kompatibilitaets-Stream.
+
+
+    File-backed compatibility stream.
+  example: []
+  syntax:
+    content: 'public sealed class fpstream : pstream, IDisposable'
+    content.vb: Public NotInheritable Class fpstream Inherits pstream Implements IDisposable
+  inheritance:
+  - System.Object
+  - TuiVision.Serialization.pstream
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - TuiVision.Serialization.pstream.Tell
+  - TuiVision.Serialization.pstream.Seek(System.Int64,System.IO.SeekOrigin)
+  - TuiVision.Serialization.pstream.Dispose
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Serialization.fpstream.#ctor(System.String,System.IO.FileMode,System.IO.FileAccess,TuiVision.Serialization.TRecordRegistry)
+  commentId: M:TuiVision.Serialization.fpstream.#ctor(System.String,System.IO.FileMode,System.IO.FileAccess,TuiVision.Serialization.TRecordRegistry)
+  id: '#ctor(System.String,System.IO.FileMode,System.IO.FileAccess,TuiVision.Serialization.TRecordRegistry)'
+  parent: TuiVision.Serialization.fpstream
+  langs:
+  - csharp
+  - vb
+  name: fpstream(string, FileMode, FileAccess, TRecordRegistry)
+  nameWithType: fpstream.fpstream(string, FileMode, FileAccess, TRecordRegistry)
+  fullName: TuiVision.Serialization.fpstream.fpstream(string, System.IO.FileMode, System.IO.FileAccess, TuiVision.Serialization.TRecordRegistry)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Serialization/fpstream.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Serialization/fpstream.cs
+    startLine: 24
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Initialisiert einen neuen dateibasierten Stream.
+
+
+    Initializes a new file-backed stream.
+  example: []
+  syntax:
+    content: public fpstream(string path, FileMode mode, FileAccess access, TRecordRegistry registry)
+    parameters:
+    - id: path
+      type: System.String
+      description: Der Dateipfad. / The file path.
+    - id: mode
+      type: System.IO.FileMode
+      description: Der Dateimodus. / The file mode.
+    - id: access
+      type: System.IO.FileAccess
+      description: Der Dateizugriff. / The file access.
+    - id: registry
+      type: TuiVision.Serialization.TRecordRegistry
+      description: Die Typ-Registry. / The type registry.
+    content.vb: Public Sub New(path As String, mode As FileMode, access As FileAccess, registry As TRecordRegistry)
+  overload: TuiVision.Serialization.fpstream.#ctor*
+  nameWithType.vb: fpstream.New(String, FileMode, FileAccess, TRecordRegistry)
+  fullName.vb: TuiVision.Serialization.fpstream.New(String, System.IO.FileMode, System.IO.FileAccess, TuiVision.Serialization.TRecordRegistry)
+  name.vb: New(String, FileMode, FileAccess, TRecordRegistry)
+- uid: TuiVision.Serialization.fpstream.OpenReader
+  commentId: M:TuiVision.Serialization.fpstream.OpenReader
+  id: OpenReader
+  parent: TuiVision.Serialization.fpstream
+  langs:
+  - csharp
+  - vb
+  name: OpenReader()
+  nameWithType: fpstream.OpenReader()
+  fullName: TuiVision.Serialization.fpstream.OpenReader()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/fpstream.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: OpenReader
+    path: src/TuiVision.Serialization/fpstream.cs
+    startLine: 36
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Oeffnet einen lesenden Stream.
+
+
+    Opens a read stream.
+  example: []
+  syntax:
+    content: public ipstream OpenReader()
+    return:
+      type: TuiVision.Serialization.ipstream
+      description: Ein lesender Stream. / A read stream.
+    content.vb: Public Function OpenReader() As ipstream
+  overload: TuiVision.Serialization.fpstream.OpenReader*
+- uid: TuiVision.Serialization.fpstream.OpenWriter
+  commentId: M:TuiVision.Serialization.fpstream.OpenWriter
+  id: OpenWriter
+  parent: TuiVision.Serialization.fpstream
+  langs:
+  - csharp
+  - vb
+  name: OpenWriter()
+  nameWithType: fpstream.OpenWriter()
+  fullName: TuiVision.Serialization.fpstream.OpenWriter()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/fpstream.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: OpenWriter
+    path: src/TuiVision.Serialization/fpstream.cs
+    startLine: 44
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Oeffnet einen schreibenden Stream.
+
+
+    Opens a write stream.
+  example: []
+  syntax:
+    content: public opstream OpenWriter()
+    return:
+      type: TuiVision.Serialization.opstream
+      description: Ein write stream. / A write stream.
+    content.vb: Public Function OpenWriter() As opstream
+  overload: TuiVision.Serialization.fpstream.OpenWriter*
+references:
+- uid: TuiVision.Serialization
+  commentId: N:TuiVision.Serialization
+  href: TuiVision.html
+  name: TuiVision.Serialization
+  nameWithType: TuiVision.Serialization
+  fullName: TuiVision.Serialization
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Serialization
+    name: Serialization
+    href: TuiVision.Serialization.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Serialization
+    name: Serialization
+    href: TuiVision.Serialization.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TuiVision.Serialization.pstream
+  commentId: T:TuiVision.Serialization.pstream
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.pstream.html
+  name: pstream
+  nameWithType: pstream
+  fullName: TuiVision.Serialization.pstream
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: TuiVision.Serialization.pstream.Tell
+  commentId: M:TuiVision.Serialization.pstream.Tell
+  parent: TuiVision.Serialization.pstream
+  href: TuiVision.Serialization.pstream.html#TuiVision_Serialization_pstream_Tell
+  name: Tell()
+  nameWithType: pstream.Tell()
+  fullName: TuiVision.Serialization.pstream.Tell()
+  spec.csharp:
+  - uid: TuiVision.Serialization.pstream.Tell
+    name: Tell
+    href: TuiVision.Serialization.pstream.html#TuiVision_Serialization_pstream_Tell
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Serialization.pstream.Tell
+    name: Tell
+    href: TuiVision.Serialization.pstream.html#TuiVision_Serialization_pstream_Tell
+  - name: (
+  - name: )
+- uid: TuiVision.Serialization.pstream.Seek(System.Int64,System.IO.SeekOrigin)
+  commentId: M:TuiVision.Serialization.pstream.Seek(System.Int64,System.IO.SeekOrigin)
+  parent: TuiVision.Serialization.pstream
+  isExternal: true
+  href: TuiVision.Serialization.pstream.html#TuiVision_Serialization_pstream_Seek_System_Int64_System_IO_SeekOrigin_
+  name: Seek(long, SeekOrigin)
+  nameWithType: pstream.Seek(long, SeekOrigin)
+  fullName: TuiVision.Serialization.pstream.Seek(long, System.IO.SeekOrigin)
+  nameWithType.vb: pstream.Seek(Long, SeekOrigin)
+  fullName.vb: TuiVision.Serialization.pstream.Seek(Long, System.IO.SeekOrigin)
+  name.vb: Seek(Long, SeekOrigin)
+  spec.csharp:
+  - uid: TuiVision.Serialization.pstream.Seek(System.Int64,System.IO.SeekOrigin)
+    name: Seek
+    href: TuiVision.Serialization.pstream.html#TuiVision_Serialization_pstream_Seek_System_Int64_System_IO_SeekOrigin_
+  - name: (
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: ','
+  - name: " "
+  - uid: System.IO.SeekOrigin
+    name: SeekOrigin
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.seekorigin
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Serialization.pstream.Seek(System.Int64,System.IO.SeekOrigin)
+    name: Seek
+    href: TuiVision.Serialization.pstream.html#TuiVision_Serialization_pstream_Seek_System_Int64_System_IO_SeekOrigin_
+  - name: (
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: ','
+  - name: " "
+  - uid: System.IO.SeekOrigin
+    name: SeekOrigin
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.seekorigin
+  - name: )
+- uid: TuiVision.Serialization.pstream.Dispose
+  commentId: M:TuiVision.Serialization.pstream.Dispose
+  parent: TuiVision.Serialization.pstream
+  href: TuiVision.Serialization.pstream.html#TuiVision_Serialization_pstream_Dispose
+  name: Dispose()
+  nameWithType: pstream.Dispose()
+  fullName: TuiVision.Serialization.pstream.Dispose()
+  spec.csharp:
+  - uid: TuiVision.Serialization.pstream.Dispose
+    name: Dispose
+    href: TuiVision.Serialization.pstream.html#TuiVision_Serialization_pstream_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Serialization.pstream.Dispose
+    name: Dispose
+    href: TuiVision.Serialization.pstream.html#TuiVision_Serialization_pstream_Dispose
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Serialization.fpstream.#ctor*
+  commentId: Overload:TuiVision.Serialization.fpstream.#ctor
+  href: TuiVision.Serialization.fpstream.html#TuiVision_Serialization_fpstream__ctor_System_String_System_IO_FileMode_System_IO_FileAccess_TuiVision_Serialization_TRecordRegistry_
+  name: fpstream
+  nameWithType: fpstream.fpstream
+  fullName: TuiVision.Serialization.fpstream.fpstream
+  nameWithType.vb: fpstream.New
+  fullName.vb: TuiVision.Serialization.fpstream.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.IO.FileMode
+  commentId: T:System.IO.FileMode
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.filemode
+  name: FileMode
+  nameWithType: FileMode
+  fullName: System.IO.FileMode
+- uid: System.IO.FileAccess
+  commentId: T:System.IO.FileAccess
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.fileaccess
+  name: FileAccess
+  nameWithType: FileAccess
+  fullName: System.IO.FileAccess
+- uid: TuiVision.Serialization.TRecordRegistry
+  commentId: T:TuiVision.Serialization.TRecordRegistry
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TRecordRegistry.html
+  name: TRecordRegistry
+  nameWithType: TRecordRegistry
+  fullName: TuiVision.Serialization.TRecordRegistry
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: TuiVision.Serialization.fpstream.OpenReader*
+  commentId: Overload:TuiVision.Serialization.fpstream.OpenReader
+  href: TuiVision.Serialization.fpstream.html#TuiVision_Serialization_fpstream_OpenReader
+  name: OpenReader
+  nameWithType: fpstream.OpenReader
+  fullName: TuiVision.Serialization.fpstream.OpenReader
+- uid: TuiVision.Serialization.ipstream
+  commentId: T:TuiVision.Serialization.ipstream
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.ipstream.html
+  name: ipstream
+  nameWithType: ipstream
+  fullName: TuiVision.Serialization.ipstream
+- uid: TuiVision.Serialization.fpstream.OpenWriter*
+  commentId: Overload:TuiVision.Serialization.fpstream.OpenWriter
+  href: TuiVision.Serialization.fpstream.html#TuiVision_Serialization_fpstream_OpenWriter
+  name: OpenWriter
+  nameWithType: fpstream.OpenWriter
+  fullName: TuiVision.Serialization.fpstream.OpenWriter
+- uid: TuiVision.Serialization.opstream
+  commentId: T:TuiVision.Serialization.opstream
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.opstream.html
+  name: opstream
+  nameWithType: opstream
+  fullName: TuiVision.Serialization.opstream

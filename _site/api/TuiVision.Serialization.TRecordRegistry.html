@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TRecordRegistry | TuiVision Documentation ">
       
-      <meta name="description" content="Registry, die stabile Typbezeichner auf Factory-Delegates abbildet. Erm&#246;glicht polymorphe Deserialisierung ohne direkte Typabh&#228;ngigkeiten. Registry that maps stable type identifiers to factory delegates. Enables polymorphic deserialization without direct type dependencies.">
+      <meta name="description" content="Registry fuer stabile Typ-IDs ueber Archiv- und Stream-Fabriken. Registry for stable type identifiers across archive and stream factories.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/003-dialog-control-layer/apiSpec/new?filename=TuiVision_Serialization_TRecordRegistry.md&amp;value=---%0Auid%3A%20TuiVision.Serialization.TRecordRegistry%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/004-editor-file-help-streams/apiSpec/new?filename=TuiVision_Serialization_TRecordRegistry.md&amp;value=---%0Auid%3A%20TuiVision.Serialization.TRecordRegistry%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TuiVision_Serialization_TRecordRegistry" data-uid="TuiVision.Serialization.TRecordRegistry" class="text-break">
-Class TRecordRegistry  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L338"><i class="bi bi-code-slash"></i></a>
+Class TRecordRegistry  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TRecordRegistry.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,10 +97,8 @@ Class TRecordRegistry  <a class="header-action link-secondary" title="View sourc
   <dl><dt>Assembly</dt><dd>TuiVision.Serialization.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Registry, die stabile Typbezeichner auf Factory-Delegates abbildet.
-Ermöglicht polymorphe Deserialisierung ohne direkte Typabhängigkeiten.</p>
-<p>Registry that maps stable type identifiers to factory delegates.
-Enables polymorphic deserialization without direct type dependencies.</p>
+  <div class="markdown summary"><p>Registry fuer stabile Typ-IDs ueber Archiv- und Stream-Fabriken.</p>
+<p>Registry for stable type identifiers across archive and stream factories.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -157,11 +155,11 @@ Enables polymorphic deserialization without direct type dependencies.</p>
 
   <h3 id="TuiVision_Serialization_TRecordRegistry_Create_System_String_TuiVision_Serialization_TBinaryArchiveReader_" data-uid="TuiVision.Serialization.TRecordRegistry.Create(System.String,TuiVision.Serialization.TBinaryArchiveReader)">
   Create(string, TBinaryArchiveReader)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L403"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TRecordRegistry.cs/#L72"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Erstellt eine Instanz des zum Bezeichner gehörenden Typs aus dem Reader.</p>
-<p>Creates an instance of the type associated with the identifier, reading from the reader.</p>
+  <div class="markdown level1 summary"><p>Erstellt einen Archiv-Record aus einer Typ-ID.</p>
+<p>Creates an archive record from a type identifier.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -172,19 +170,17 @@ Enables polymorphic deserialization without direct type dependencies.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>typeId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Der stabile Typbezeichner. Muss zuvor registriert worden sein.
-The stable type identifier. Must have been registered previously.</p>
+    <dd><p>Die Typ-ID. / The type identifier.</p>
 </dd>
     <dt><code>reader</code> <a class="xref" href="TuiVision.Serialization.TBinaryArchiveReader.html">TBinaryArchiveReader</a></dt>
-    <dd><p>Der Reader mit den Nutzdaten. / The reader containing the payload.</p>
+    <dd><p>Der Archiv-Reader. / The archive reader.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd><p>Die deserialisierte Instanz.
-The deserialized instance.</p>
+    <dd><p>Das erzeugte Objekt. / The created object.</p>
 </dd>
   </dl>
 
@@ -195,13 +191,52 @@ The deserialized instance.</p>
 
 
 
-  <h4 class="section">Exceptions</h4>
+
+
+
+  <a id="TuiVision_Serialization_TRecordRegistry_RegisterStream_" data-uid="TuiVision.Serialization.TRecordRegistry.RegisterStream*"></a>
+
+  <h3 id="TuiVision_Serialization_TRecordRegistry_RegisterStream__1_System_String_System_Func_TuiVision_Serialization_ipstream___0__System_Action_TuiVision_Serialization_opstream___0__" data-uid="TuiVision.Serialization.TRecordRegistry.RegisterStream``1(System.String,System.Func{TuiVision.Serialization.ipstream,``0},System.Action{TuiVision.Serialization.opstream,``0})">
+  RegisterStream&lt;T&gt;(string, Func&lt;ipstream, T&gt;, Action&lt;opstream, T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TRecordRegistry.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Registriert einen Stream-Typ mit gemeinsamer Referenzsemantik.</p>
+<p>Registers a stream type with shared-reference semantics.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RegisterStream&lt;T&gt;(string typeId, Func&lt;ipstream, T&gt; factory, Action&lt;opstream, T&gt; writer) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keynotfoundexception">KeyNotFoundException</a></dt>
-    <dd><p>Wird ausgelöst, wenn für <code class="paramref">typeId</code> keine Factory registriert ist.
-Thrown when no factory is registered for <code class="paramref">typeId</code>.</p>
+    <dt><code>typeId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Die stabile Typ-ID. / The stable type identifier.</p>
+</dd>
+    <dt><code>factory</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="TuiVision.Serialization.ipstream.html">ipstream</a>, T&gt;</dt>
+    <dd><p>Die Stream-Fabrik. / The stream factory.</p>
+</dd>
+    <dt><code>writer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-2">Action</a>&lt;<a class="xref" href="TuiVision.Serialization.opstream.html">opstream</a>, T&gt;</dt>
+    <dd><p>Der Stream-Writer. / The stream writer.</p>
 </dd>
   </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>Der Laufzeittyp. / The runtime type.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
 
 
 
@@ -209,11 +244,11 @@ Thrown when no factory is registered for <code class="paramref">typeId</code>.</
 
   <h3 id="TuiVision_Serialization_TRecordRegistry_Register__1_System_String_System_Func_TuiVision_Serialization_TBinaryArchiveReader___0__" data-uid="TuiVision.Serialization.TRecordRegistry.Register``1(System.String,System.Func{TuiVision.Serialization.TBinaryArchiveReader,``0})">
   Register&lt;T&gt;(string, Func&lt;TBinaryArchiveReader, T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L374"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TRecordRegistry.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Registriert eine Factory-Funktion für den angegebenen Typbezeichner.</p>
-<p>Registers a factory function for the specified type identifier.</p>
+  <div class="markdown level1 summary"><p>Registriert einen Archiv-Record.</p>
+<p>Registers an archive record.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -224,12 +259,10 @@ Thrown when no factory is registered for <code class="paramref">typeId</code>.</
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>typeId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Der stabile Bezeichner des Typs. Darf nicht leer oder nur aus Leerzeichen bestehen.
-The stable identifier of the type. Must not be empty or whitespace-only.</p>
+    <dd><p>Die stabile Typ-ID. / The stable type identifier.</p>
 </dd>
     <dt><code>factory</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="TuiVision.Serialization.TBinaryArchiveReader.html">TBinaryArchiveReader</a>, T&gt;</dt>
-    <dd><p>Eine Funktion, die aus einem Reader eine Instanz von <code class="typeparamref">T</code> erstellt.
-A function that creates an instance of <code class="typeparamref">T</code> from a reader.</p>
+    <dd><p>Die Archivfabrik. / The archive factory.</p>
 </dd>
   </dl>
 
@@ -237,8 +270,7 @@ A function that creates an instance of <code class="typeparamref">T</code> from 
   <h4 class="section">Type Parameters</h4>
   <dl class="parameters">
     <dt><code>T</code></dt>
-    <dd><p>Der zu registrierende Typ. Darf nicht <code>null</code> sein.
-The type to register. Must not be <code>null</code>.</p>
+    <dd><p>Der Record-Typ. / The record type.</p>
 </dd>
   </dl>
 
@@ -248,17 +280,6 @@ The type to register. Must not be <code>null</code>.</p>
 
 
 
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
-    <dd><p>Wird ausgelöst, wenn <code class="paramref">typeId</code> leer oder nur Leerzeichen ist.
-Thrown when <code class="paramref">typeId</code> is empty or whitespace-only.</p>
-</dd>
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></dt>
-    <dd><p>Wird ausgelöst, wenn <code class="paramref">typeId</code> bereits registriert ist.
-Thrown when <code class="paramref">typeId</code> is already registered.</p>
-</dd>
-  </dl>
 
 
 
@@ -266,7 +287,7 @@ Thrown when <code class="paramref">typeId</code> is already registered.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L338" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TRecordRegistry.cs/#L11" class="edit-link">Edit this page</a>
         </div>
 
 

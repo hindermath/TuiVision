@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TRecordSerializer | TuiVision Documentation ">
       
-      <meta name="description" content="Umschlag-Serialisierer, der Typ-ID und Nutzdaten-Bytes in einem bin&#228;ren Format kapselt. Das Umschlag-Format ist: Typbezeichner (String) + Nutzdatenl&#228;nge (Int32) + Nutzdaten (Bytes). Envelope serializer that wraps a type ID and payload bytes in a binary format. The envelope format is: type identifier (string) + payload length (Int32) + payload (bytes).">
+      <meta name="description" content="Envelope-Serializer fuer archivbasierte Typ-IDs plus Nutzdaten. Envelope serializer for archive-based type identifiers plus payloads.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/003-dialog-control-layer/apiSpec/new?filename=TuiVision_Serialization_TRecordSerializer.md&amp;value=---%0Auid%3A%20TuiVision.Serialization.TRecordSerializer%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/004-editor-file-help-streams/apiSpec/new?filename=TuiVision_Serialization_TRecordSerializer.md&amp;value=---%0Auid%3A%20TuiVision.Serialization.TRecordSerializer%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TuiVision_Serialization_TRecordSerializer" data-uid="TuiVision.Serialization.TRecordSerializer" class="text-break">
-Class TRecordSerializer  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L424"><i class="bi bi-code-slash"></i></a>
+Class TRecordSerializer  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TRecordSerializer.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,10 +97,8 @@ Class TRecordSerializer  <a class="header-action link-secondary" title="View sou
   <dl><dt>Assembly</dt><dd>TuiVision.Serialization.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Umschlag-Serialisierer, der Typ-ID und Nutzdaten-Bytes in einem binären Format kapselt.
-Das Umschlag-Format ist: Typbezeichner (String) + Nutzdatenlänge (Int32) + Nutzdaten (Bytes).</p>
-<p>Envelope serializer that wraps a type ID and payload bytes in a binary format.
-The envelope format is: type identifier (string) + payload length (Int32) + payload (bytes).</p>
+  <div class="markdown summary"><p>Envelope-Serializer fuer archivbasierte Typ-IDs plus Nutzdaten.</p>
+<p>Envelope serializer for archive-based type identifiers plus payloads.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -157,11 +155,11 @@ The envelope format is: type identifier (string) + payload length (Int32) + payl
 
   <h3 id="TuiVision_Serialization_TRecordSerializer__ctor_TuiVision_Serialization_TRecordRegistry_" data-uid="TuiVision.Serialization.TRecordSerializer.#ctor(TuiVision.Serialization.TRecordRegistry)">
   TRecordSerializer(TRecordRegistry)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L446"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TRecordSerializer.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Erstellt einen neuen Serialisierer mit der angegebenen Registry.</p>
-<p>Creates a new serializer with the specified registry.</p>
+  <div class="markdown level1 summary"><p>Initialisiert einen neuen Serializer.</p>
+<p>Initializes a new serializer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -172,8 +170,7 @@ The envelope format is: type identifier (string) + payload length (Int32) + payl
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>registry</code> <a class="xref" href="TuiVision.Serialization.TRecordRegistry.html">TRecordRegistry</a></dt>
-    <dd><p>Die Registry mit den registrierten Typen. Darf nicht <code>null</code> sein.
-The registry with the registered types. Must not be <code>null</code>.</p>
+    <dd><p>Die verwendete Registry. / The registry to use.</p>
 </dd>
   </dl>
 
@@ -185,13 +182,6 @@ The registry with the registered types. Must not be <code>null</code>.</p>
 
 
 
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
-    <dd><p>Wird ausgelöst, wenn <code class="paramref">registry</code> <code>null</code> ist.
-Thrown when <code class="paramref">registry</code> is <code>null</code>.</p>
-</dd>
-  </dl>
 
 
 
@@ -203,11 +193,11 @@ Thrown when <code class="paramref">registry</code> is <code>null</code>.</p>
 
   <h3 id="TuiVision_Serialization_TRecordSerializer_Deserialize_System_ReadOnlySpan_System_Byte__" data-uid="TuiVision.Serialization.TRecordSerializer.Deserialize(System.ReadOnlySpan{System.Byte})">
   Deserialize(ReadOnlySpan&lt;byte&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L509"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TRecordSerializer.cs/#L64"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Deserialisiert ein Umschlag-Byte-Array und gibt die enthaltene Instanz zurück.</p>
-<p>Deserializes an envelope byte array and returns the contained instance.</p>
+  <div class="markdown level1 summary"><p>Deserialisiert ein Envelope-Array.</p>
+<p>Deserializes an envelope array.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -218,16 +208,14 @@ Thrown when <code class="paramref">registry</code> is <code>null</code>.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
-    <dd><p>Das zu deserialisierende Byte-Array. Darf nicht leer sein.
-The byte array to deserialize. Must not be empty.</p>
+    <dd><p>Die Eingabedaten. / The input data.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd><p>Die deserialisierte Instanz.
-The deserialized instance.</p>
+    <dd><p>Das deserialisierte Objekt. / The deserialized object.</p>
 </dd>
   </dl>
 
@@ -238,13 +226,6 @@ The deserialized instance.</p>
 
 
 
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.invaliddataexception">InvalidDataException</a></dt>
-    <dd><p>Wird ausgelöst, wenn die Daten leer, fehlerhaft oder unvollständig sind.
-Thrown when the data is empty, malformed, or incomplete.</p>
-</dd>
-  </dl>
 
 
 
@@ -252,11 +233,11 @@ Thrown when the data is empty, malformed, or incomplete.</p>
 
   <h3 id="TuiVision_Serialization_TRecordSerializer_Deserialize__1_System_ReadOnlySpan_System_Byte__" data-uid="TuiVision.Serialization.TRecordSerializer.Deserialize``1(System.ReadOnlySpan{System.Byte})">
   Deserialize&lt;T&gt;(ReadOnlySpan&lt;byte&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L557"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TRecordSerializer.cs/#L106"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Deserialisiert ein Umschlag-Byte-Array und gibt die enthaltene Instanz als <code class="typeparamref">T</code> zurück.</p>
-<p>Deserializes an envelope byte array and returns the contained instance as <code class="typeparamref">T</code>.</p>
+  <div class="markdown level1 summary"><p>Deserialisiert ein Envelope-Array typisiert.</p>
+<p>Deserializes an envelope array as a typed value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -267,24 +248,21 @@ Thrown when the data is empty, malformed, or incomplete.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
-    <dd><p>Das zu deserialisierende Byte-Array.
-The byte array to deserialize.</p>
+    <dd><p>Die Eingabedaten. / The input data.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><span class="xref">T</span></dt>
-    <dd><p>Die deserialisierte Instanz als <code class="typeparamref">T</code>.
-The deserialized instance as <code class="typeparamref">T</code>.</p>
+    <dd><p>Der deserialisierte Wert. / The deserialized value.</p>
 </dd>
   </dl>
 
   <h4 class="section">Type Parameters</h4>
   <dl class="parameters">
     <dt><code>T</code></dt>
-    <dd><p>Der erwartete Ergebnistyp. Muss eine Klasse sein.
-The expected result type. Must be a class.</p>
+    <dd><p>Der erwartete Typ. / The expected type.</p>
 </dd>
   </dl>
 
@@ -294,13 +272,6 @@ The expected result type. Must be a class.</p>
 
 
 
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.invaliddataexception">InvalidDataException</a></dt>
-    <dd><p>Wird ausgelöst, wenn die Nutzdaten keine Instanz von <code class="typeparamref">T</code> enthalten.
-Thrown when the payload does not contain an instance of <code class="typeparamref">T</code>.</p>
-</dd>
-  </dl>
 
 
 
@@ -308,11 +279,11 @@ Thrown when the payload does not contain an instance of <code class="typeparamre
 
   <h3 id="TuiVision_Serialization_TRecordSerializer_Serialize_System_String_TuiVision_Serialization_ITStreamSerializable_" data-uid="TuiVision.Serialization.TRecordSerializer.Serialize(System.String,TuiVision.Serialization.ITStreamSerializable)">
   Serialize(string, ITStreamSerializable)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L468"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TRecordSerializer.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Serialisiert einen Wert in ein Umschlag-Byte-Array.</p>
-<p>Serializes a value into an envelope byte array.</p>
+  <div class="markdown level1 summary"><p>Serialisiert einen Record in ein Envelope-Array.</p>
+<p>Serializes a record into an envelope array.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -323,20 +294,17 @@ Thrown when the payload does not contain an instance of <code class="typeparamre
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>typeId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Der stabile Typbezeichner. Darf nicht leer oder nur aus Leerzeichen bestehen.
-The stable type identifier. Must not be empty or whitespace-only.</p>
+    <dd><p>Die stabile Typ-ID. / The stable type identifier.</p>
 </dd>
     <dt><code>value</code> <a class="xref" href="TuiVision.Serialization.ITStreamSerializable.html">ITStreamSerializable</a></dt>
-    <dd><p>Der zu serialisierende Wert. Darf nicht <code>null</code> sein.
-The value to serialize. Must not be <code>null</code>.</p>
+    <dd><p>Der zu serialisierende Wert. / The value to serialize.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
-    <dd><p>Ein Byte-Array im Umschlag-Format.
-A byte array in envelope format.</p>
+    <dd><p>Das Envelope-Array. / The envelope array.</p>
 </dd>
   </dl>
 
@@ -354,7 +322,7 @@ A byte array in envelope format.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L424" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TRecordSerializer.cs/#L11" class="edit-link">Edit this page</a>
         </div>
 
 

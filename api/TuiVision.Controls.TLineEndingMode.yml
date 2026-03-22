@@ -1,0 +1,122 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.TLineEndingMode
+  commentId: T:TuiVision.Controls.TLineEndingMode
+  id: TLineEndingMode
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.TLineEndingMode.CrLf
+  - TuiVision.Controls.TLineEndingMode.Lf
+  langs:
+  - csharp
+  - vb
+  name: TLineEndingMode
+  nameWithType: TLineEndingMode
+  fullName: TuiVision.Controls.TLineEndingMode
+  type: Enum
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileEditor.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TLineEndingMode
+    path: src/TuiVision.Controls/TFileEditor.cs
+    startLine: 44
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Beschreibt den Zeilenendungsmodus des aktiven Dokuments.
+
+
+    Describes the line-ending mode of the active document.
+  example: []
+  syntax:
+    content: public enum TLineEndingMode
+    content.vb: Public Enum TLineEndingMode
+- uid: TuiVision.Controls.TLineEndingMode.Lf
+  commentId: F:TuiVision.Controls.TLineEndingMode.Lf
+  id: Lf
+  parent: TuiVision.Controls.TLineEndingMode
+  langs:
+  - csharp
+  - vb
+  name: Lf
+  nameWithType: TLineEndingMode.Lf
+  fullName: TuiVision.Controls.TLineEndingMode.Lf
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileEditor.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Lf
+    path: src/TuiVision.Controls/TFileEditor.cs
+    startLine: 47
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Line feed. / Line feed.
+  example: []
+  syntax:
+    content: Lf = 0
+    return:
+      type: TuiVision.Controls.TLineEndingMode
+- uid: TuiVision.Controls.TLineEndingMode.CrLf
+  commentId: F:TuiVision.Controls.TLineEndingMode.CrLf
+  id: CrLf
+  parent: TuiVision.Controls.TLineEndingMode
+  langs:
+  - csharp
+  - vb
+  name: CrLf
+  nameWithType: TLineEndingMode.CrLf
+  fullName: TuiVision.Controls.TLineEndingMode.CrLf
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileEditor.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: CrLf
+    path: src/TuiVision.Controls/TFileEditor.cs
+    startLine: 50
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Carriage return + line feed. / Carriage return + line feed.
+  example: []
+  syntax:
+    content: CrLf = 1
+    return:
+      type: TuiVision.Controls.TLineEndingMode
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: TuiVision.Controls.TLineEndingMode
+  commentId: T:TuiVision.Controls.TLineEndingMode
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TLineEndingMode.html
+  name: TLineEndingMode
+  nameWithType: TLineEndingMode
+  fullName: TuiVision.Controls.TLineEndingMode

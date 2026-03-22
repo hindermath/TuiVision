@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TBinaryArchiveReader | TuiVision Documentation ">
       
-      <meta name="description" content="Schmale Bin&#228;r-Reader-Abstraktion, die zu  passt. Kapselt einen  mit fester UTF-8-Kodierung. Thin binary reader abstraction matching . Wraps a  with fixed UTF-8 encoding.">
+      <meta name="description" content="Schmaler BinaryReader fuer deterministische Deserialisierung. Thin binary reader for deterministic deserialization.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/003-dialog-control-layer/apiSpec/new?filename=TuiVision_Serialization_TBinaryArchiveReader.md&amp;value=---%0Auid%3A%20TuiVision.Serialization.TBinaryArchiveReader%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/004-editor-file-help-streams/apiSpec/new?filename=TuiVision_Serialization_TBinaryArchiveReader.md&amp;value=---%0Auid%3A%20TuiVision.Serialization.TBinaryArchiveReader%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TuiVision_Serialization_TBinaryArchiveReader" data-uid="TuiVision.Serialization.TBinaryArchiveReader" class="text-break">
-Class TBinaryArchiveReader  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L155"><i class="bi bi-code-slash"></i></a>
+Class TBinaryArchiveReader  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,10 +97,8 @@ Class TBinaryArchiveReader  <a class="header-action link-secondary" title="View 
   <dl><dt>Assembly</dt><dd>TuiVision.Serialization.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Schmale Binär-Reader-Abstraktion, die zu <a class="xref" href="TuiVision.Serialization.TBinaryArchiveWriter.html">TBinaryArchiveWriter</a> passt.
-Kapselt einen <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a> mit fester UTF-8-Kodierung.</p>
-<p>Thin binary reader abstraction matching <a class="xref" href="TuiVision.Serialization.TBinaryArchiveWriter.html">TBinaryArchiveWriter</a>.
-Wraps a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a> with fixed UTF-8 encoding.</p>
+  <div class="markdown summary"><p>Schmaler BinaryReader fuer deterministische Deserialisierung.</p>
+<p>Thin binary reader for deterministic deserialization.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -163,11 +161,11 @@ Wraps a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.b
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader__ctor_System_IO_Stream_System_Boolean_" data-uid="TuiVision.Serialization.TBinaryArchiveReader.#ctor(System.IO.Stream,System.Boolean)">
   TBinaryArchiveReader(Stream, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L202"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Erstellt einen neuen Reader für den angegebenen Stream.</p>
-<p>Creates a new reader for the specified stream.</p>
+  <div class="markdown level1 summary"><p>Initialisiert einen neuen Archiv-Reader.</p>
+<p>Initializes a new archive reader.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -178,14 +176,10 @@ Wraps a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.b
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>stream</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></dt>
-    <dd><p>Der Quellstream. Muss lesbar sein.
-The source stream. Must be readable.</p>
+    <dd><p>Der Quellstream. / The source stream.</p>
 </dd>
     <dt><code>leaveOpen</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><code>true</code>, um den Stream nach dem Freigeben dieses Readers offen zu lassen;
-<code>false</code>, um ihn zu schließen (Standard).</p>
-<p><code>true</code> to leave the stream open after disposing this reader;
-<code>false</code> to close it (default).</p>
+    <dd><p>Gibt an, ob der Stream offen bleiben soll. / Indicates whether the stream should stay open.</p>
 </dd>
   </dl>
 
@@ -197,17 +191,6 @@ The source stream. Must be readable.</p>
 
 
 
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
-    <dd><p>Wird ausgelöst, wenn <code class="paramref">stream</code> <code>null</code> ist.
-Thrown when <code class="paramref">stream</code> is <code>null</code>.</p>
-</dd>
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
-    <dd><p>Wird ausgelöst, wenn <code class="paramref">stream</code> nicht lesbar ist.
-Thrown when <code class="paramref">stream</code> is not readable.</p>
-</dd>
-  </dl>
 
 
 
@@ -219,13 +202,11 @@ Thrown when <code class="paramref">stream</code> is not readable.</p>
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader_Dispose" data-uid="TuiVision.Serialization.TBinaryArchiveReader.Dispose">
   Dispose()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L322"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L128"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gibt den Reader frei. Schließt den zugrunde liegenden Stream,
-sofern <code>leaveOpen</code> beim Erstellen nicht auf <code>true</code> gesetzt wurde.</p>
-<p>Disposes the reader. Closes the underlying stream
-unless <code>leaveOpen</code> was set to <code>true</code> at construction.</p>
+  <div class="markdown level1 summary"><p>Gibt den Reader frei.</p>
+<p>Disposes the reader.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -249,13 +230,11 @@ unless <code>leaveOpen</code> was set to <code>true</code> at construction.</p>
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader_EnsureFullyConsumed" data-uid="TuiVision.Serialization.TBinaryArchiveReader.EnsureFullyConsumed">
   EnsureFullyConsumed()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L307"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L115"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Prüft, ob der Stream vollständig gelesen wurde.
-Wirft eine Ausnahme, wenn am Ende unerwartete Daten übrig sind.</p>
-<p>Checks whether the stream has been fully consumed.
-Throws an exception if unexpected trailing data remains.</p>
+  <div class="markdown level1 summary"><p>Stellt sicher, dass keine Restdaten uebrig sind.</p>
+<p>Ensures that no trailing data remains.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -272,13 +251,6 @@ Throws an exception if unexpected trailing data remains.</p>
 
 
 
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.invaliddataexception">InvalidDataException</a></dt>
-    <dd><p>Wird ausgelöst, wenn der Stream noch ungelesene Bytes enthält.
-Thrown when the stream still contains unread bytes.</p>
-</dd>
-  </dl>
 
 
 
@@ -286,11 +258,11 @@ Thrown when the stream still contains unread bytes.</p>
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader_ReadBoolean" data-uid="TuiVision.Serialization.TBinaryArchiveReader.ReadBoolean">
   ReadBoolean()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L246"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L77"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Liest einen booleschen Wert aus dem Stream.</p>
-<p>Reads a boolean value from the stream.</p>
+  <div class="markdown level1 summary"><p>Liest einen Bool-Wert.</p>
+<p>Reads a Boolean value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -302,8 +274,41 @@ Thrown when the stream still contains unread bytes.</p>
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Der gelesene Wert.
-The value that was read.</p>
+    <dd><p>Der gelesene Wert. / The read value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Serialization_TBinaryArchiveReader_ReadByte_" data-uid="TuiVision.Serialization.TBinaryArchiveReader.ReadByte*"></a>
+
+  <h3 id="TuiVision_Serialization_TBinaryArchiveReader_ReadByte" data-uid="TuiVision.Serialization.TBinaryArchiveReader.ReadByte">
+  ReadByte()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Liest ein Byte.</p>
+<p>Reads a byte.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte ReadByte()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd><p>Das gelesene Byte. / The read byte.</p>
 </dd>
   </dl>
 
@@ -321,11 +326,11 @@ The value that was read.</p>
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader_ReadBytes_System_Int32_" data-uid="TuiVision.Serialization.TBinaryArchiveReader.ReadBytes(System.Int32)">
   ReadBytes(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L280"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L94"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Liest eine bestimmte Anzahl Bytes aus dem Stream und gibt sie als Array zurück.</p>
-<p>Reads a specified number of bytes from the stream and returns them as an array.</p>
+  <div class="markdown level1 summary"><p>Liest exakt die angegebene Anzahl Bytes.</p>
+<p>Reads exactly the specified number of bytes.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -336,16 +341,14 @@ The value that was read.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Die Anzahl der zu lesenden Bytes. Darf nicht negativ sein.
-The number of bytes to read. Must not be negative.</p>
+    <dd><p>Die erwartete Bytezahl. / The expected byte count.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
-    <dd><p>Ein Byte-Array mit exakt <code class="paramref">count</code> Bytes.
-A byte array with exactly <code class="paramref">count</code> bytes.</p>
+    <dd><p>Die gelesenen Bytes. / The read bytes.</p>
 </dd>
   </dl>
 
@@ -356,17 +359,6 @@ A byte array with exactly <code class="paramref">count</code> bytes.</p>
 
 
 
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
-    <dd><p>Wird ausgelöst, wenn <code class="paramref">count</code> negativ ist.
-Thrown when <code class="paramref">count</code> is negative.</p>
-</dd>
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.endofstreamexception">EndOfStreamException</a></dt>
-    <dd><p>Wird ausgelöst, wenn der Stream weniger Bytes enthält als erwartet.
-Thrown when the stream contains fewer bytes than expected.</p>
-</dd>
-  </dl>
 
 
 
@@ -374,11 +366,11 @@ Thrown when the stream contains fewer bytes than expected.</p>
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader_ReadInt32" data-uid="TuiVision.Serialization.TBinaryArchiveReader.ReadInt32">
   ReadInt32()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L224"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Liest einen 32-Bit-Integer-Wert aus dem Stream.</p>
-<p>Reads a 32-bit integer value from the stream.</p>
+  <div class="markdown level1 summary"><p>Liest einen 32-Bit-Integer.</p>
+<p>Reads a 32-bit integer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -390,8 +382,41 @@ Thrown when the stream contains fewer bytes than expected.</p>
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Der gelesene Wert.
-The value that was read.</p>
+    <dd><p>Der gelesene Wert. / The read value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Serialization_TBinaryArchiveReader_ReadInt64_" data-uid="TuiVision.Serialization.TBinaryArchiveReader.ReadInt64*"></a>
+
+  <h3 id="TuiVision_Serialization_TBinaryArchiveReader_ReadInt64" data-uid="TuiVision.Serialization.TBinaryArchiveReader.ReadInt64">
+  ReadInt64()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Liest einen 64-Bit-Integer.</p>
+<p>Reads a 64-bit integer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long ReadInt64()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>Der gelesene Wert. / The read value.</p>
 </dd>
   </dl>
 
@@ -409,11 +434,11 @@ The value that was read.</p>
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader_ReadString" data-uid="TuiVision.Serialization.TBinaryArchiveReader.ReadString">
   ReadString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L257"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L85"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Liest eine Zeichenkette im .NET-BinaryReader-Format (Länge + UTF-8-Bytes) aus dem Stream.</p>
-<p>Reads a string in .NET BinaryReader format (length prefix + UTF-8 bytes) from the stream.</p>
+  <div class="markdown level1 summary"><p>Liest einen String.</p>
+<p>Reads a string.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -425,8 +450,7 @@ The value that was read.</p>
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Die gelesene Zeichenkette.
-The string that was read.</p>
+    <dd><p>Der gelesene String. / The read string.</p>
 </dd>
   </dl>
 
@@ -444,11 +468,11 @@ The string that was read.</p>
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader_ReadUInt16" data-uid="TuiVision.Serialization.TBinaryArchiveReader.ReadUInt16">
   ReadUInt16()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L235"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Liest einen vorzeichenlosen 16-Bit-Integer-Wert aus dem Stream.</p>
-<p>Reads an unsigned 16-bit integer value from the stream.</p>
+  <div class="markdown level1 summary"><p>Liest einen UInt16-Wert.</p>
+<p>Reads a UInt16 value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -460,8 +484,7 @@ The string that was read.</p>
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
-    <dd><p>Der gelesene Wert.
-The value that was read.</p>
+    <dd><p>Der gelesene Wert. / The read value.</p>
 </dd>
   </dl>
 
@@ -479,7 +502,7 @@ The value that was read.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L155" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 

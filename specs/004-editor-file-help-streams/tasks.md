@@ -19,10 +19,10 @@
 
 **Purpose**: Create the missing test project and shared fixtures required by the feature plan.
 
-- [ ] T001 Create the serialization test project in `tests/TuiVision.Serialization.Tests/TuiVision.Serialization.Tests.csproj`
-- [ ] T002 Register `tests/TuiVision.Serialization.Tests/TuiVision.Serialization.Tests.csproj` in `TuiVision.sln`
-- [ ] T003 [P] Add shared serialization fixtures, streamable test doubles, and registry helpers in `tests/TuiVision.Serialization.Tests/SerializationTestSupport.cs`
-- [ ] T004 [P] Add shared shell-hosting, temp-file, and dialog test utilities in `tests/TuiVision.Controls.Tests/EditorShellTestContext.cs`
+- [X] T001 Create the serialization test project in `tests/TuiVision.Serialization.Tests/TuiVision.Serialization.Tests.csproj`
+- [X] T002 Register `tests/TuiVision.Serialization.Tests/TuiVision.Serialization.Tests.csproj` in `TuiVision.sln`
+- [X] T003 [P] Add shared serialization fixtures, streamable test doubles, and registry helpers in `tests/TuiVision.Serialization.Tests/SerializationTestSupport.cs`
+- [X] T004 [P] Add shared shell-hosting, temp-file, and dialog test utilities in `tests/TuiVision.Controls.Tests/EditorShellTestContext.cs`
 
 **Checkpoint**: Both test projects and their shared test-support fixtures are ready.
 
@@ -34,11 +34,11 @@
 
 **⚠️ CRITICAL**: No user story work should begin until this phase is complete.
 
-- [ ] T005 [P] Add red regression tests for archive/registry foundation behavior in `tests/TuiVision.Serialization.Tests/TRecordCompatibilityTests.cs`
-- [ ] T006 [P] Add red shell-host lifecycle tests for non-modal framed views in `tests/TuiVision.Controls.Tests/FramedHostViewTests.cs`
-- [ ] T007 Refactor the serialization scaffold into `src/TuiVision.Serialization/ITStreamSerializable.cs`, `src/TuiVision.Serialization/TBinaryArchiveReader.cs`, `src/TuiVision.Serialization/TBinaryArchiveWriter.cs`, `src/TuiVision.Serialization/TRecordRegistry.cs`, `src/TuiVision.Serialization/TRecordSerializer.cs`, and trim `src/TuiVision.Serialization/Class1.cs`
-- [ ] T008 Implement the shared non-modal framed host base in `src/TuiVision.Controls/Internal/FramedHostView.cs`
-- [ ] T009 Extend editor/file/help command identifiers in `src/TuiVision.Controls/ShellCommandIds.cs`
+- [X] T005 [P] Add red regression tests for archive/registry foundation behavior in `tests/TuiVision.Serialization.Tests/TRecordCompatibilityTests.cs`
+- [X] T006 [P] Add red shell-host lifecycle tests for non-modal framed views in `tests/TuiVision.Controls.Tests/FramedHostViewTests.cs`
+- [X] T007 Refactor the serialization scaffold into `src/TuiVision.Serialization/ITStreamSerializable.cs`, `src/TuiVision.Serialization/TBinaryArchiveReader.cs`, `src/TuiVision.Serialization/TBinaryArchiveWriter.cs`, `src/TuiVision.Serialization/TRecordRegistry.cs`, `src/TuiVision.Serialization/TRecordSerializer.cs`, and trim `src/TuiVision.Serialization/Class1.cs`
+- [X] T008 Implement the shared non-modal framed host base in `src/TuiVision.Controls/Internal/FramedHostView.cs`
+- [X] T009 Extend editor/file/help command identifiers in `src/TuiVision.Controls/ShellCommandIds.cs`
 
 **Checkpoint**: Shared serialization and shell-host infrastructure is in place for all stories.
 
@@ -54,16 +54,16 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T010 [P] [US1] Add red buffer, cursor, selection, insert/overwrite, and scrolling tests in `tests/TuiVision.Controls.Tests/TEditorTests.cs`
-- [ ] T011 [P] [US1] Add red search/replace, clipboard-oriented edit actions, undo, and shell command-state tests in `tests/TuiVision.Controls.Tests/TEditorCommandTests.cs`
-- [ ] T012 [P] [US1] Add red host-window, indicator, event-loop, focus-transition, menu-execution, and status-line integration tests in `tests/TuiVision.Controls.Tests/TEditWindowTests.cs`
+- [X] T010 [P] [US1] Add red buffer, cursor, selection, insert/overwrite, and scrolling tests in `tests/TuiVision.Controls.Tests/TEditorTests.cs`
+- [X] T011 [P] [US1] Add red search/replace, clipboard-oriented edit actions, undo, and shell command-state tests in `tests/TuiVision.Controls.Tests/TEditorCommandTests.cs`
+- [X] T012 [P] [US1] Add red host-window, indicator, event-loop, focus-transition, menu-execution, and status-line integration tests in `tests/TuiVision.Controls.Tests/TEditWindowTests.cs`
 
 ### Implementation for User Story 1
 
-- [ ] T013 [P] [US1] Implement the reusable multi-line editor core, including insert/overwrite mode and clipboard-oriented actions, with bilingual XML docs in `src/TuiVision.Controls/TEditor.cs`
-- [ ] T014 [P] [US1] Implement the memory-backed editor wrapper with bilingual XML docs in `src/TuiVision.Controls/TMemo.cs`
-- [ ] T015 [P] [US1] Implement the editor indicator view with bilingual XML docs in `src/TuiVision.Controls/TIndicator.cs`
-- [ ] T016 [US1] Implement the editor host window and safe-close coordination with bilingual XML docs in `src/TuiVision.Controls/TEditWindow.cs`
+- [X] T013 [P] [US1] Implement the reusable multi-line editor core, including insert/overwrite mode and clipboard-oriented actions, with bilingual XML docs in `src/TuiVision.Controls/TEditor.cs`
+- [X] T014 [P] [US1] Implement the memory-backed editor wrapper with bilingual XML docs in `src/TuiVision.Controls/TMemo.cs`
+- [X] T015 [P] [US1] Implement the editor indicator view with bilingual XML docs in `src/TuiVision.Controls/TIndicator.cs`
+- [X] T016 [US1] Implement the editor host window and safe-close coordination with bilingual XML docs in `src/TuiVision.Controls/TEditWindow.cs`
 
 **Checkpoint**: User Story 1 is independently functional and serves as the MVP for the increment.
 
@@ -77,19 +77,19 @@
 
 ### Tests for User Story 2 ⚠️
 
-- [ ] T017 [P] [US2] Add red file-backed editor tests for load/save, newline preservation, and external-change conflicts in `tests/TuiVision.Controls.Tests/TFileEditorTests.cs`
-- [ ] T018 [P] [US2] Add red file-dialog synchronization, explicit dialog-interaction, file-information, and history-scoping tests in `tests/TuiVision.Controls.Tests/TFileDialogTests.cs`
-- [ ] T019 [P] [US2] Add red directory navigation and empty-filter-result tests in `tests/TuiVision.Controls.Tests/TDirListBoxTests.cs`
-- [ ] T020 [P] [US2] Add red filtered file-list, file-information refresh, and manual-path-entry tests in `tests/TuiVision.Controls.Tests/TFileListTests.cs`
+- [X] T017 [P] [US2] Add red file-backed editor tests for load/save, newline preservation, and external-change conflicts in `tests/TuiVision.Controls.Tests/TFileEditorTests.cs`
+- [X] T018 [P] [US2] Add red file-dialog synchronization, explicit dialog-interaction, file-information, and history-scoping tests in `tests/TuiVision.Controls.Tests/TFileDialogTests.cs`
+- [X] T019 [P] [US2] Add red directory navigation and empty-filter-result tests in `tests/TuiVision.Controls.Tests/TDirListBoxTests.cs`
+- [X] T020 [P] [US2] Add red filtered file-list, file-information refresh, and manual-path-entry tests in `tests/TuiVision.Controls.Tests/TFileListTests.cs`
 
 ### Implementation for User Story 2
 
-- [ ] T021 [P] [US2] Implement history bucket recall with bilingual XML docs in `src/TuiVision.Controls/THistory.cs`
-- [ ] T022 [P] [US2] Implement file-path input behavior with bilingual XML docs in `src/TuiVision.Controls/TFileInputLine.cs`
-- [ ] T023 [P] [US2] Implement filtered file-list behavior and current file-information refresh with bilingual XML docs in `src/TuiVision.Controls/TFileList.cs`
-- [ ] T024 [P] [US2] Implement directory-list navigation with bilingual XML docs in `src/TuiVision.Controls/TDirListBox.cs`
-- [ ] T025 [US2] Implement real-file load/save, line-ending preservation, and snapshot-based overwrite conflict handling with bilingual XML docs in `src/TuiVision.Controls/TFileEditor.cs`
-- [ ] T026 [US2] Implement reusable file-dialog orchestration, including synchronized current file-information state, with bilingual XML docs in `src/TuiVision.Controls/TFileDialog.cs`
+- [X] T021 [P] [US2] Implement history bucket recall with bilingual XML docs in `src/TuiVision.Controls/THistory.cs`
+- [X] T022 [P] [US2] Implement file-path input behavior with bilingual XML docs in `src/TuiVision.Controls/TFileInputLine.cs`
+- [X] T023 [P] [US2] Implement filtered file-list behavior and current file-information refresh with bilingual XML docs in `src/TuiVision.Controls/TFileList.cs`
+- [X] T024 [P] [US2] Implement directory-list navigation with bilingual XML docs in `src/TuiVision.Controls/TDirListBox.cs`
+- [X] T025 [US2] Implement real-file load/save, line-ending preservation, and snapshot-based overwrite conflict handling with bilingual XML docs in `src/TuiVision.Controls/TFileEditor.cs`
+- [X] T026 [US2] Implement reusable file-dialog orchestration, including synchronized current file-information state, with bilingual XML docs in `src/TuiVision.Controls/TFileDialog.cs`
 
 **Checkpoint**: User Story 2 is independently functional and supports real file-system workflows without breaking US1.
 
@@ -103,15 +103,15 @@
 
 ### Tests for User Story 3 ⚠️
 
-- [ ] T027 [P] [US3] Add red help-file model tests for context lookup, cross-reference resolution, and fallback behavior in `tests/TuiVision.Serialization.Tests/THelpFileTests.cs`
-- [ ] T028 [P] [US3] Add red help-view navigation and cross-reference activation tests in `tests/TuiVision.Controls.Tests/THelpViewerTests.cs`
-- [ ] T029 [P] [US3] Add red help-window host integration tests in `tests/TuiVision.Controls.Tests/THelpWindowTests.cs`
+- [X] T027 [P] [US3] Add red help-file model tests for context lookup, cross-reference resolution, and fallback behavior in `tests/TuiVision.Serialization.Tests/THelpFileTests.cs`
+- [X] T028 [P] [US3] Add red help-view navigation and cross-reference activation tests in `tests/TuiVision.Controls.Tests/THelpViewerTests.cs`
+- [X] T029 [P] [US3] Add red help-window host integration tests in `tests/TuiVision.Controls.Tests/THelpWindowTests.cs`
 
 ### Implementation for User Story 3
 
-- [ ] T030 [P] [US3] Implement the dedicated help persistence model with bilingual XML docs in `src/TuiVision.Serialization/THelpTopic.cs`, `src/TuiVision.Serialization/THelpIndex.cs`, and `src/TuiVision.Serialization/THelpFile.cs`
-- [ ] T031 [US3] Implement the scrollable help viewer with cross-reference navigation and bilingual XML docs in `src/TuiVision.Controls/THelpViewer.cs`
-- [ ] T032 [US3] Implement the help host window with context-open flow and bilingual XML docs in `src/TuiVision.Controls/THelpWindow.cs`
+- [X] T030 [P] [US3] Implement the dedicated help persistence model with bilingual XML docs in `src/TuiVision.Serialization/THelpTopic.cs`, `src/TuiVision.Serialization/THelpIndex.cs`, and `src/TuiVision.Serialization/THelpFile.cs`
+- [X] T031 [US3] Implement the scrollable help viewer with cross-reference navigation and bilingual XML docs in `src/TuiVision.Controls/THelpViewer.cs`
+- [X] T032 [US3] Implement the help host window with context-open flow and bilingual XML docs in `src/TuiVision.Controls/THelpWindow.cs`
 
 **Checkpoint**: User Story 3 is independently functional and reuses the shell and persistence infrastructure without breaking US1 or US2.
 
@@ -125,15 +125,15 @@
 
 ### Tests for User Story 4 ⚠️
 
-- [ ] T033 [P] [US4] Add red compatibility-stream tests for shared references, seek/tell, and malformed input rejection in `tests/TuiVision.Serialization.Tests/PStreamTests.cs`
-- [ ] T034 [P] [US4] Add red resource-container tests for exact-key lookup, replacement, removal, and enumeration in `tests/TuiVision.Serialization.Tests/TResourceFileTests.cs`
-- [ ] T035 [P] [US4] Add red end-to-end registration and reload regression tests in `tests/TuiVision.Serialization.Tests/TRecordCompatibilityTests.cs`
+- [X] T033 [P] [US4] Add red compatibility-stream tests for shared references, seek/tell, and malformed input rejection in `tests/TuiVision.Serialization.Tests/PStreamTests.cs`
+- [X] T034 [P] [US4] Add red resource-container tests for exact-key lookup, replacement, removal, and enumeration in `tests/TuiVision.Serialization.Tests/TResourceFileTests.cs`
+- [X] T035 [P] [US4] Add red end-to-end registration and reload regression tests in `tests/TuiVision.Serialization.Tests/TRecordCompatibilityTests.cs`
 
 ### Implementation for User Story 4
 
-- [ ] T036 [US4] Implement `pstream`, `ipstream`, `opstream`, and `fpstream` with bilingual XML docs in `src/TuiVision.Serialization/pstream.cs`, `src/TuiVision.Serialization/ipstream.cs`, `src/TuiVision.Serialization/opstream.cs`, and `src/TuiVision.Serialization/fpstream.cs`
-- [ ] T037 [US4] Implement named resource persistence with bilingual XML docs in `src/TuiVision.Serialization/TResourceFile.cs` and `src/TuiVision.Serialization/TResourceCollection.cs`
-- [ ] T038 [US4] Integrate help-file and resource persistence through the compatibility stream registrations in `src/TuiVision.Serialization/THelpFile.cs` and `src/TuiVision.Serialization/TResourceFile.cs`
+- [X] T036 [US4] Implement `pstream`, `ipstream`, `opstream`, and `fpstream` with bilingual XML docs in `src/TuiVision.Serialization/pstream.cs`, `src/TuiVision.Serialization/ipstream.cs`, `src/TuiVision.Serialization/opstream.cs`, and `src/TuiVision.Serialization/fpstream.cs`
+- [X] T037 [US4] Implement named resource persistence with bilingual XML docs in `src/TuiVision.Serialization/TResourceFile.cs` and `src/TuiVision.Serialization/TResourceCollection.cs`
+- [X] T038 [US4] Integrate help-file and resource persistence through the compatibility stream registrations in `src/TuiVision.Serialization/THelpFile.cs` and `src/TuiVision.Serialization/TResourceFile.cs`
 
 **Checkpoint**: User Story 4 is independently functional and completes the persistence backbone for the increment.
 
@@ -143,11 +143,11 @@
 
 **Purpose**: Close coverage gaps, run the mandatory quality gates, and refresh repository statistics.
 
-- [ ] T039 [P] Add cross-cutting editor/file/help edge-case coverage in `tests/TuiVision.Controls.Tests/EditorCoverageSweepTests.cs`
-- [ ] T040 [P] Add cross-cutting serialization negative-case coverage in `tests/TuiVision.Serialization.Tests/SerializationCoverageSweepTests.cs`
-- [ ] T041 Run and record `dotnet build --configuration Release`, `dotnet test tests/TuiVision.Core.Tests/`, `dotnet test tests/TuiVision.Controls.Tests/`, `dotnet test tests/TuiVision.Serialization.Tests/`, and `dotnet test` using `specs/004-editor-file-help-streams/quickstart.md`
-- [ ] T042 Run and record `dotnet test --collect:"XPlat Code Coverage"` with review of the Core/Controls/Serialization gate, plus `dotnet format --verify-no-changes` and `docfx docfx.json`, using `specs/004-editor-file-help-streams/quickstart.md`
-- [ ] T043 [P] Update `docs/project-statistics.md` with the final branch/phase scope, code/test/doc line counts, observable work window, and manual-effort baseline
+- [X] T039 [P] Add cross-cutting editor/file/help edge-case coverage in `tests/TuiVision.Controls.Tests/EditorCoverageSweepTests.cs`
+- [X] T040 [P] Add cross-cutting serialization negative-case coverage in `tests/TuiVision.Serialization.Tests/SerializationCoverageSweepTests.cs`
+- [X] T041 Run and record `dotnet build --configuration Release`, `dotnet test tests/TuiVision.Core.Tests/`, `dotnet test tests/TuiVision.Controls.Tests/`, `dotnet test tests/TuiVision.Serialization.Tests/`, and `dotnet test` using `specs/004-editor-file-help-streams/quickstart.md`
+- [X] T042 Run and record `dotnet test --collect:"XPlat Code Coverage"` with review of the Core/Controls/Serialization gate, plus `dotnet format --verify-no-changes` and `docfx docfx.json`, using `specs/004-editor-file-help-streams/quickstart.md`
+- [X] T043 [P] Update `docs/project-statistics.md` with the final branch/phase scope, code/test/doc line counts, observable work window, and manual-effort baseline
 
 ---
 

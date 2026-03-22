@@ -25,7 +25,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: TEvent
     path: src/TuiVision.Core/TEvent.cs
@@ -71,7 +71,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: What
     path: src/TuiVision.Core/TEvent.cs
@@ -106,7 +106,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Mouse
     path: src/TuiVision.Core/TEvent.cs
@@ -141,7 +141,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: KeyDown
     path: src/TuiVision.Core/TEvent.cs
@@ -176,7 +176,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Message
     path: src/TuiVision.Core/TEvent.cs
@@ -211,7 +211,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: CreateMouse
     path: src/TuiVision.Core/TEvent.cs
@@ -275,7 +275,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: CreateKeyDown
     path: src/TuiVision.Core/TEvent.cs
@@ -317,7 +317,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: CreateCommand
     path: src/TuiVision.Core/TEvent.cs
@@ -365,7 +365,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: CreateBroadcast
     path: src/TuiVision.Core/TEvent.cs
@@ -413,7 +413,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: CreateNone
     path: src/TuiVision.Core/TEvent.cs
@@ -458,7 +458,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Clear
     path: src/TuiVision.Core/TEvent.cs

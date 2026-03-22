@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TListBox.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: TListBox
     path: src/TuiVision.Controls/TListBox.cs
@@ -43,6 +43,9 @@ items:
   - TuiVision.Core.TObject
   - TuiVision.Controls.TView
   - TuiVision.Controls.TListViewer
+  derivedClasses:
+  - TuiVision.Controls.TDirListBox
+  - TuiVision.Controls.TFileList
   inheritedMembers:
   - TuiVision.Controls.TListViewer.NumCols
   - TuiVision.Controls.TListViewer.TopItem
@@ -101,7 +104,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TListBox.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TListBox.cs
@@ -149,7 +152,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TListBox.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: List
     path: src/TuiVision.Controls/TListBox.cs
@@ -184,7 +187,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TListBox.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Selection
     path: src/TuiVision.Controls/TListBox.cs
@@ -219,7 +222,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TListBox.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: GetNumItems
     path: src/TuiVision.Controls/TListBox.cs
@@ -255,7 +258,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TListBox.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: GetText
     path: src/TuiVision.Controls/TListBox.cs
@@ -301,7 +304,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TListBox.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TListBox.cs

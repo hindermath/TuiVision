@@ -30,7 +30,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: TGroup
     path: src/TuiVision.Controls/TGroup.cs
@@ -64,6 +64,7 @@ items:
   - TuiVision.Core.TObject
   - TuiVision.Controls.TView
   derivedClasses:
+  - TuiVision.Controls.Internal.FramedHostView
   - TuiVision.Controls.TDesktop
   - TuiVision.Controls.TDialog
   - TuiVision.Controls.TProgram
@@ -112,7 +113,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TGroup.cs
@@ -158,7 +159,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Current
     path: src/TuiVision.Controls/TGroup.cs
@@ -197,7 +198,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Insert
     path: src/TuiVision.Controls/TGroup.cs
@@ -285,7 +286,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Remove
     path: src/TuiVision.Controls/TGroup.cs
@@ -348,7 +349,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: ShutDown
     path: src/TuiVision.Controls/TGroup.cs
@@ -385,7 +386,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: SetFocus
     path: src/TuiVision.Controls/TGroup.cs
@@ -444,7 +445,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: CurrentChanged
     path: src/TuiVision.Controls/TGroup.cs
@@ -480,7 +481,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectNext
     path: src/TuiVision.Controls/TGroup.cs
@@ -530,7 +531,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TGroup.cs
@@ -571,7 +572,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: LockDraw
     path: src/TuiVision.Controls/TGroup.cs
@@ -607,7 +608,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: UnlockDraw
     path: src/TuiVision.Controls/TGroup.cs
@@ -647,7 +648,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: SetState
     path: src/TuiVision.Controls/TGroup.cs
@@ -707,7 +708,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TGroup.cs
@@ -750,7 +751,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: OnBoundsChanged
     path: src/TuiVision.Controls/TGroup.cs
@@ -787,7 +788,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: GetFirstChild
     path: src/TuiVision.Controls/TGroup.cs

@@ -1,0 +1,548 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Serialization.THelpIndex
+  commentId: T:TuiVision.Serialization.THelpIndex
+  id: THelpIndex
+  parent: TuiVision.Serialization
+  children:
+  - TuiVision.Serialization.THelpIndex.Add(System.Int32,System.Int32)
+  - TuiVision.Serialization.THelpIndex.LoadFrom(TuiVision.Serialization.TBinaryArchiveReader)
+  - TuiVision.Serialization.THelpIndex.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  - TuiVision.Serialization.THelpIndex.TryGetPosition(System.Int32,System.Int32@)
+  langs:
+  - csharp
+  - vb
+  name: THelpIndex
+  nameWithType: THelpIndex
+  fullName: TuiVision.Serialization.THelpIndex
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Serialization/THelpIndex.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: THelpIndex
+    path: src/TuiVision.Serialization/THelpIndex.cs
+    startLine: 10
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Kontextindex fuer runtime-lesbare Hilfethemen.
+
+
+    Context index for runtime-readable help topics.
+  example: []
+  syntax:
+    content: 'public sealed class THelpIndex : ITStreamSerializable'
+    content.vb: Public NotInheritable Class THelpIndex Implements ITStreamSerializable
+  inheritance:
+  - System.Object
+  implements:
+  - TuiVision.Serialization.ITStreamSerializable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Serialization.THelpIndex.Add(System.Int32,System.Int32)
+  commentId: M:TuiVision.Serialization.THelpIndex.Add(System.Int32,System.Int32)
+  id: Add(System.Int32,System.Int32)
+  parent: TuiVision.Serialization.THelpIndex
+  langs:
+  - csharp
+  - vb
+  name: Add(int, int)
+  nameWithType: THelpIndex.Add(int, int)
+  fullName: TuiVision.Serialization.THelpIndex.Add(int, int)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/THelpIndex.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Add
+    path: src/TuiVision.Serialization/THelpIndex.cs
+    startLine: 21
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Registriert einen Kontext und seine Themenposition.
+
+
+    Registers a context and its topic position.
+  example: []
+  syntax:
+    content: public void Add(int context, int position)
+    parameters:
+    - id: context
+      type: System.Int32
+      description: Die Kontext-ID. / The context identifier.
+    - id: position
+      type: System.Int32
+      description: Die Themenposition. / The topic position.
+    content.vb: Public Sub Add(context As Integer, position As Integer)
+  overload: TuiVision.Serialization.THelpIndex.Add*
+  nameWithType.vb: THelpIndex.Add(Integer, Integer)
+  fullName.vb: TuiVision.Serialization.THelpIndex.Add(Integer, Integer)
+  name.vb: Add(Integer, Integer)
+- uid: TuiVision.Serialization.THelpIndex.TryGetPosition(System.Int32,System.Int32@)
+  commentId: M:TuiVision.Serialization.THelpIndex.TryGetPosition(System.Int32,System.Int32@)
+  id: TryGetPosition(System.Int32,System.Int32@)
+  parent: TuiVision.Serialization.THelpIndex
+  langs:
+  - csharp
+  - vb
+  name: TryGetPosition(int, out int)
+  nameWithType: THelpIndex.TryGetPosition(int, out int)
+  fullName: TuiVision.Serialization.THelpIndex.TryGetPosition(int, out int)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/THelpIndex.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TryGetPosition
+    path: src/TuiVision.Serialization/THelpIndex.cs
+    startLine: 34
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Versucht eine Themenposition fuer einen Kontext aufzulösen.
+
+
+    Tries to resolve a topic position for a context.
+  example: []
+  syntax:
+    content: public bool TryGetPosition(int context, out int position)
+    parameters:
+    - id: context
+      type: System.Int32
+      description: Die Kontext-ID. / The context identifier.
+    - id: position
+      type: System.Int32
+      description: Die Themenposition. / The topic position.
+    return:
+      type: System.Boolean
+      description: <code>true</code>, wenn eine Position existiert. / <code>true</code> if a position exists.
+    content.vb: Public Function TryGetPosition(context As Integer, position As Integer) As Boolean
+  overload: TuiVision.Serialization.THelpIndex.TryGetPosition*
+  nameWithType.vb: THelpIndex.TryGetPosition(Integer, Integer)
+  fullName.vb: TuiVision.Serialization.THelpIndex.TryGetPosition(Integer, Integer)
+  name.vb: TryGetPosition(Integer, Integer)
+- uid: TuiVision.Serialization.THelpIndex.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  commentId: M:TuiVision.Serialization.THelpIndex.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  id: SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  parent: TuiVision.Serialization.THelpIndex
+  langs:
+  - csharp
+  - vb
+  name: SaveTo(TBinaryArchiveWriter)
+  nameWithType: THelpIndex.SaveTo(TBinaryArchiveWriter)
+  fullName: TuiVision.Serialization.THelpIndex.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/THelpIndex.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SaveTo
+    path: src/TuiVision.Serialization/THelpIndex.cs
+    startLine: 42
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Schreibt den Index in einen Archiv-Writer.
+
+
+    Writes the index to an archive writer.
+  example: []
+  syntax:
+    content: public void SaveTo(TBinaryArchiveWriter writer)
+    parameters:
+    - id: writer
+      type: TuiVision.Serialization.TBinaryArchiveWriter
+      description: Der Ziel-Writer. / The destination writer.
+    content.vb: Public Sub SaveTo(writer As TBinaryArchiveWriter)
+  overload: TuiVision.Serialization.THelpIndex.SaveTo*
+  implements:
+  - TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+- uid: TuiVision.Serialization.THelpIndex.LoadFrom(TuiVision.Serialization.TBinaryArchiveReader)
+  commentId: M:TuiVision.Serialization.THelpIndex.LoadFrom(TuiVision.Serialization.TBinaryArchiveReader)
+  id: LoadFrom(TuiVision.Serialization.TBinaryArchiveReader)
+  parent: TuiVision.Serialization.THelpIndex
+  langs:
+  - csharp
+  - vb
+  name: LoadFrom(TBinaryArchiveReader)
+  nameWithType: THelpIndex.LoadFrom(TBinaryArchiveReader)
+  fullName: TuiVision.Serialization.THelpIndex.LoadFrom(TuiVision.Serialization.TBinaryArchiveReader)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/THelpIndex.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: LoadFrom
+    path: src/TuiVision.Serialization/THelpIndex.cs
+    startLine: 59
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Laedt einen Index aus einem Archiv-Reader.
+
+
+    Loads an index from an archive reader.
+  example: []
+  syntax:
+    content: public static THelpIndex LoadFrom(TBinaryArchiveReader reader)
+    parameters:
+    - id: reader
+      type: TuiVision.Serialization.TBinaryArchiveReader
+      description: Der Quell-Reader. / The source reader.
+    return:
+      type: TuiVision.Serialization.THelpIndex
+      description: Der geladene Index. / The loaded index.
+    content.vb: Public Shared Function LoadFrom(reader As TBinaryArchiveReader) As THelpIndex
+  overload: TuiVision.Serialization.THelpIndex.LoadFrom*
+references:
+- uid: TuiVision.Serialization
+  commentId: N:TuiVision.Serialization
+  href: TuiVision.html
+  name: TuiVision.Serialization
+  nameWithType: TuiVision.Serialization
+  fullName: TuiVision.Serialization
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Serialization
+    name: Serialization
+    href: TuiVision.Serialization.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Serialization
+    name: Serialization
+    href: TuiVision.Serialization.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TuiVision.Serialization.ITStreamSerializable
+  commentId: T:TuiVision.Serialization.ITStreamSerializable
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.ITStreamSerializable.html
+  name: ITStreamSerializable
+  nameWithType: ITStreamSerializable
+  fullName: TuiVision.Serialization.ITStreamSerializable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Serialization.THelpIndex.Add*
+  commentId: Overload:TuiVision.Serialization.THelpIndex.Add
+  href: TuiVision.Serialization.THelpIndex.html#TuiVision_Serialization_THelpIndex_Add_System_Int32_System_Int32_
+  name: Add
+  nameWithType: THelpIndex.Add
+  fullName: TuiVision.Serialization.THelpIndex.Add
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: TuiVision.Serialization.THelpIndex.TryGetPosition*
+  commentId: Overload:TuiVision.Serialization.THelpIndex.TryGetPosition
+  href: TuiVision.Serialization.THelpIndex.html#TuiVision_Serialization_THelpIndex_TryGetPosition_System_Int32_System_Int32__
+  name: TryGetPosition
+  nameWithType: THelpIndex.TryGetPosition
+  fullName: TuiVision.Serialization.THelpIndex.TryGetPosition
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: TuiVision.Serialization.THelpIndex.SaveTo*
+  commentId: Overload:TuiVision.Serialization.THelpIndex.SaveTo
+  href: TuiVision.Serialization.THelpIndex.html#TuiVision_Serialization_THelpIndex_SaveTo_TuiVision_Serialization_TBinaryArchiveWriter_
+  name: SaveTo
+  nameWithType: THelpIndex.SaveTo
+  fullName: TuiVision.Serialization.THelpIndex.SaveTo
+- uid: TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  commentId: M:TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  parent: TuiVision.Serialization.ITStreamSerializable
+  href: TuiVision.Serialization.ITStreamSerializable.html#TuiVision_Serialization_ITStreamSerializable_SaveTo_TuiVision_Serialization_TBinaryArchiveWriter_
+  name: SaveTo(TBinaryArchiveWriter)
+  nameWithType: ITStreamSerializable.SaveTo(TBinaryArchiveWriter)
+  fullName: TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  spec.csharp:
+  - uid: TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+    name: SaveTo
+    href: TuiVision.Serialization.ITStreamSerializable.html#TuiVision_Serialization_ITStreamSerializable_SaveTo_TuiVision_Serialization_TBinaryArchiveWriter_
+  - name: (
+  - uid: TuiVision.Serialization.TBinaryArchiveWriter
+    name: TBinaryArchiveWriter
+    href: TuiVision.Serialization.TBinaryArchiveWriter.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+    name: SaveTo
+    href: TuiVision.Serialization.ITStreamSerializable.html#TuiVision_Serialization_ITStreamSerializable_SaveTo_TuiVision_Serialization_TBinaryArchiveWriter_
+  - name: (
+  - uid: TuiVision.Serialization.TBinaryArchiveWriter
+    name: TBinaryArchiveWriter
+    href: TuiVision.Serialization.TBinaryArchiveWriter.html
+  - name: )
+- uid: TuiVision.Serialization.TBinaryArchiveWriter
+  commentId: T:TuiVision.Serialization.TBinaryArchiveWriter
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TBinaryArchiveWriter.html
+  name: TBinaryArchiveWriter
+  nameWithType: TBinaryArchiveWriter
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter
+- uid: TuiVision.Serialization.THelpIndex.LoadFrom*
+  commentId: Overload:TuiVision.Serialization.THelpIndex.LoadFrom
+  href: TuiVision.Serialization.THelpIndex.html#TuiVision_Serialization_THelpIndex_LoadFrom_TuiVision_Serialization_TBinaryArchiveReader_
+  name: LoadFrom
+  nameWithType: THelpIndex.LoadFrom
+  fullName: TuiVision.Serialization.THelpIndex.LoadFrom
+- uid: TuiVision.Serialization.TBinaryArchiveReader
+  commentId: T:TuiVision.Serialization.TBinaryArchiveReader
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TBinaryArchiveReader.html
+  name: TBinaryArchiveReader
+  nameWithType: TBinaryArchiveReader
+  fullName: TuiVision.Serialization.TBinaryArchiveReader
+- uid: TuiVision.Serialization.THelpIndex
+  commentId: T:TuiVision.Serialization.THelpIndex
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.THelpIndex.html
+  name: THelpIndex
+  nameWithType: THelpIndex
+  fullName: TuiVision.Serialization.THelpIndex

@@ -22,7 +22,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDialog.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: TDialog
     path: src/TuiVision.Controls/TDialog.cs
@@ -44,6 +44,8 @@ items:
   - TuiVision.Core.TObject
   - TuiVision.Controls.TView
   - TuiVision.Controls.TGroup
+  derivedClasses:
+  - TuiVision.Controls.TFileDialog
   inheritedMembers:
   - TuiVision.Controls.TGroup.Current
   - TuiVision.Controls.TGroup.Insert(TuiVision.Controls.TView)
@@ -101,7 +103,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDialog.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TDialog.cs
@@ -143,7 +145,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDialog.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Title
     path: src/TuiVision.Controls/TDialog.cs
@@ -178,7 +180,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDialog.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Run
     path: src/TuiVision.Controls/TDialog.cs
@@ -213,7 +215,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDialog.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: CloseDialog
     path: src/TuiVision.Controls/TDialog.cs
@@ -252,7 +254,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDialog.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TDialog.cs
@@ -285,7 +287,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDialog.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TDialog.cs
@@ -322,7 +324,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDialog.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: GetEvent
     path: src/TuiVision.Controls/TDialog.cs
@@ -1435,6 +1437,7 @@ references:
   fullName: TuiVision.Controls.TDialog.Title
 - uid: TuiVision.Controls.TDialog.CloseDialog(System.UInt16)
   commentId: M:TuiVision.Controls.TDialog.CloseDialog(System.UInt16)
+  parent: TuiVision.Controls.TDialog
   isExternal: true
   href: TuiVision.Controls.TDialog.html#TuiVision_Controls_TDialog_CloseDialog_System_UInt16_
   name: CloseDialog(ushort)
@@ -1480,6 +1483,13 @@ references:
   nameWithType.vb: UShort
   fullName.vb: UShort
   name.vb: UShort
+- uid: TuiVision.Controls.TDialog
+  commentId: T:TuiVision.Controls.TDialog
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TDialog.html
+  name: TDialog
+  nameWithType: TDialog
+  fullName: TuiVision.Controls.TDialog
 - uid: TuiVision.Controls.TDialog.CloseDialog*
   commentId: Overload:TuiVision.Controls.TDialog.CloseDialog
   href: TuiVision.Controls.TDialog.html#TuiVision_Controls_TDialog_CloseDialog_System_UInt16_

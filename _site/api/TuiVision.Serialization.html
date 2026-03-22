@@ -95,35 +95,96 @@
 Classes
 </h3>
     <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Serialization.SerializationModule.html">SerializationModule</a></dt>
+      <dd><p>Markerdatei fuer das Serialisierungsmodul nach dem Aufsplitten der Klassen.</p>
+<p>Marker file for the serialization module after splitting the classes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Serialization.TBinaryArchiveReader.html">TBinaryArchiveReader</a></dt>
-      <dd><p>Schmale Binär-Reader-Abstraktion, die zu <a class="xref" href="TuiVision.Serialization.TBinaryArchiveWriter.html">TBinaryArchiveWriter</a> passt.
-Kapselt einen <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a> mit fester UTF-8-Kodierung.</p>
-<p>Thin binary reader abstraction matching <a class="xref" href="TuiVision.Serialization.TBinaryArchiveWriter.html">TBinaryArchiveWriter</a>.
-Wraps a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a> with fixed UTF-8 encoding.</p>
+      <dd><p>Schmaler BinaryReader fuer deterministische Deserialisierung.</p>
+<p>Thin binary reader for deterministic deserialization.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Serialization.TBinaryArchiveWriter.html">TBinaryArchiveWriter</a></dt>
-      <dd><p>Schmale Binär-Writer-Abstraktion für deterministisches Erstellen von Nutzdaten.
-Kapselt einen <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a> mit fester UTF-8-Kodierung.</p>
-<p>Thin binary writer abstraction for deterministic payload creation.
-Wraps a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a> with fixed UTF-8 encoding.</p>
+      <dd><p>Schmaler BinaryWriter fuer deterministische Serialisierung.</p>
+<p>Thin binary writer for deterministic serialization.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Serialization.THelpFile.html">THelpFile</a></dt>
+      <dd><p>Persistiertes Laufzeitmodell fuer kontextbasierte Hilfe.</p>
+<p>Persisted runtime model for context-based help.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Serialization.THelpIndex.html">THelpIndex</a></dt>
+      <dd><p>Kontextindex fuer runtime-lesbare Hilfethemen.</p>
+<p>Context index for runtime-readable help topics.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Serialization.THelpTopic.html">THelpTopic</a></dt>
+      <dd><p>Laufzeitmodell fuer ein einzelnes Hilfethema.</p>
+<p>Runtime model for a single help topic.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Serialization.TRecordRegistry.html">TRecordRegistry</a></dt>
-      <dd><p>Registry, die stabile Typbezeichner auf Factory-Delegates abbildet.
-Ermöglicht polymorphe Deserialisierung ohne direkte Typabhängigkeiten.</p>
-<p>Registry that maps stable type identifiers to factory delegates.
-Enables polymorphic deserialization without direct type dependencies.</p>
+      <dd><p>Registry fuer stabile Typ-IDs ueber Archiv- und Stream-Fabriken.</p>
+<p>Registry for stable type identifiers across archive and stream factories.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Serialization.TRecordSerializer.html">TRecordSerializer</a></dt>
-      <dd><p>Umschlag-Serialisierer, der Typ-ID und Nutzdaten-Bytes in einem binären Format kapselt.
-Das Umschlag-Format ist: Typbezeichner (String) + Nutzdatenlänge (Int32) + Nutzdaten (Bytes).</p>
-<p>Envelope serializer that wraps a type ID and payload bytes in a binary format.
-The envelope format is: type identifier (string) + payload length (Int32) + payload (bytes).</p>
+      <dd><p>Envelope-Serializer fuer archivbasierte Typ-IDs plus Nutzdaten.</p>
+<p>Envelope serializer for archive-based type identifiers plus payloads.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Serialization.TResourceCollection.html">TResourceCollection</a></dt>
+      <dd><p>Fallunterscheidbarer Ressourcenkatalog mit exakter Gross-/Kleinschreibung.</p>
+<p>Case-sensitive resource catalog with exact key matching.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Serialization.TResourceFile.html">TResourceFile</a></dt>
+      <dd><p>Persistierbarer Container fuer benannte Objekte mit exakter Schluesselauflosung.</p>
+<p>Persistable container for named objects with exact key resolution.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Serialization.fpstream.html">fpstream</a></dt>
+      <dd><p>Dateibasierter Kompatibilitaets-Stream.</p>
+<p>File-backed compatibility stream.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Serialization.ipstream.html">ipstream</a></dt>
+      <dd><p>Lesender Kompatibilitaets-Stream mit Referenzwiederherstellung.</p>
+<p>Reading compatibility stream with reference reconstruction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Serialization.opstream.html">opstream</a></dt>
+      <dd><p>Schreibender Kompatibilitaets-Stream mit Referenzerhaltung.</p>
+<p>Writing compatibility stream with reference preservation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Serialization.pstream.html">pstream</a></dt>
+      <dd><p>Gemeinsame Basis fuer Kompatibilitaets-Streams.</p>
+<p>Shared base for compatibility streams.</p>
+</dd>
+    </dl>
+    <h3 id="structs">
+Structs
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Serialization.THelpCrossReference.html">THelpCrossReference</a></dt>
+      <dd><p>Navigierbare Querverweis-Markierung innerhalb eines Hilfethemas.</p>
+<p>Navigable cross-reference marker inside a help topic.</p>
 </dd>
     </dl>
     <h3 id="interfaces">
@@ -131,12 +192,8 @@ Interfaces
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Serialization.ITStreamSerializable.html">ITStreamSerializable</a></dt>
-      <dd><p>Schnittstelle für stream-basierte Serialisierung portierter Turbo-Vision-Record-Typen.
-Klassen, die diese Schnittstelle implementieren, können ihren Zustand in einen
-<a class="xref" href="TuiVision.Serialization.TBinaryArchiveWriter.html">TBinaryArchiveWriter</a> schreiben und später wiederherstellen.</p>
-<p>Contract for stream-based serialization of ported Turbo Vision record types.
-Classes that implement this interface can write their state to a
-<a class="xref" href="TuiVision.Serialization.TBinaryArchiveWriter.html">TBinaryArchiveWriter</a> and restore it later.</p>
+      <dd><p>Schnittstelle fuer archivbasierte Serialisierung portierter Record-Typen.</p>
+<p>Contract for archive-based serialization of ported record types.</p>
 </dd>
     </dl>
 

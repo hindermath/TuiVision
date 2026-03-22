@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Projektstatistik TuiVision | TuiVision Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Projektstatistik TuiVision | TuiVision Documentation ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="">
+      <meta name="docfx:tocrel" content="">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/docs/project-statistics.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="TuiVision">
+            TuiVision
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="projektstatistik-tuivision">Projektstatistik TuiVision</h1>
+
+<p>Stand: 2026-03-22</p>
+<h2 id="zweck-und-pflege">Zweck und Pflege</h2>
+<p>Diese Datei ist das fortlaufende Statistik-Register fuer TuiVision. Sie wird
+nach jeder abgeschlossenen Spec-Kit-Implementierungsphase, nach jeder
+agentischen Aenderung am Repository und auf explizite Anforderung
+fortgeschrieben.</p>
+<h2 id="methodik">Methodik</h2>
+<ul>
+<li>Quellen: Git-Historie, lokale Branches, aktueller Arbeitsbaum.</li>
+<li>Ausgeschlossen: <code>tv203s/</code>, <code>_site/</code>, <code>bin/</code>, <code>obj/</code> sowie sonstige generierte
+Artefakte.</li>
+<li>Produktionscode: <code>src/**/*.cs</code></li>
+<li>Testcode: <code>tests/**/*.cs</code></li>
+<li>Dokumentation: Markdown-Dateien in Repository-Wurzel, <code>docs/</code>, <code>specs/</code>,
+<code>.github/</code>, <code>.specify/</code> sowie den Agent-Dateien.</li>
+<li>Git-Phasenwerte sind Aenderungsvolumen aus Commit-Historie
+(<code>added/deleted/net</code>). Snapshot-Werte beschreiben den aktuellen Dateistand.</li>
+<li>Die konservative Handarbeits-Basis folgt dem Beitrag
+<a href="https://www.holgerscode.com/blog/2026/02/23/adapt-or-disappear-how-ai-turned-a-2-year-project-into-a-1-week-sprint/#a-note-on-the-orm-29000-lines-you-never-have-to-write">Adapt or Disappear: How AI Turned a 2-Year Project into a 1-Week Sprint</a>:
+maximal 80 Codezeilen pro Tag fuer einen erfahrenen Entwickler.</li>
+<li>Abgeleitete Team-Schaetzung in dieser Datei:
+<code>((Produktionscode + Testcode) / 80) / 3 * 1.2</code>
+Das ist eine abgeleitete 3-Personen-Kalenderschaetzung mit 20 % Abstimmungs-
+aufschlag. Dokumentation ist darin noch nicht eingepreist; die klassische
+Handarbeit laege also real hoeher.</li>
+</ul>
+<h2 id="gesamtstand-des-repositories">Gesamtstand des Repositories</h2>
+<table>
+<thead>
+<tr>
+<th>Kennzahl</th>
+<th style="text-align: right;">Wert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beobachtbarer Projektzeitraum</td>
+<td style="text-align: right;">2026-02-08 bis 2026-03-22</td>
+</tr>
+<tr>
+<td>Git-Commits gesamt</td>
+<td style="text-align: right;">125</td>
+</tr>
+<tr>
+<td>Autoren laut Git</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Git-Aktivtage</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr>
+<td>Produktionscode aktuell</td>
+<td style="text-align: right;">34 Dateien / 5710 Zeilen</td>
+</tr>
+<tr>
+<td>Testcode aktuell</td>
+<td style="text-align: right;">35 Dateien / 3881 Zeilen</td>
+</tr>
+<tr>
+<td>Dokumentation aktuell</td>
+<td style="text-align: right;">72 Dateien / 10309 Zeilen</td>
+</tr>
+<tr>
+<td>Davon Spec-Kit-Artefakte</td>
+<td style="text-align: right;">44 Dateien / 7305 Zeilen</td>
+</tr>
+<tr>
+<td>Davon Governance/Agent-Dateien</td>
+<td style="text-align: right;">5 Dateien / 635 Zeilen</td>
+</tr>
+<tr>
+<td>Codebasis fuer Handschaetzung</td>
+<td style="text-align: right;">9591 Zeilen</td>
+</tr>
+<tr>
+<td>Erfahrener Entwickler, konservative Untergrenze</td>
+<td style="text-align: right;">119.9 Arbeitstage</td>
+</tr>
+<tr>
+<td>Kleines Team (3 Personen, +20 % Koordination), Untergrenze</td>
+<td style="text-align: right;">48.0 Arbeitstage</td>
+</tr>
+</tbody>
+</table>
+<h2 id="phasen-und-haupt-branches">Phasen und Haupt-Branches</h2>
+<h3 id="0-projektbasis-auf-main-bootstrap-governance-kernmodule">0. Projektbasis auf <code>main</code> (Bootstrap, Governance, Kernmodule)</h3>
+<ul>
+<li>Status: abgeschlossen und in <code>main</code> integriert</li>
+<li>Beobachtbarer Zeitraum: 2026-02-08 bis 2026-03-08</li>
+<li>Commit-Bild: 20 Commits an 4 Git-Aktivtagen</li>
+<li>Grundlegende Arbeiten: Loesungs-Setup, erste Kernmodule, Tests, CI, Agent-
+Dateien, Constitution, Spec-Kit-Grundlagen</li>
+<li>Git-Aenderungsvolumen:
+<ul>
+<li>Produktionscode: +2346 / -41 / netto +2305</li>
+<li>Testcode: +534 / -16 / netto +518</li>
+<li>Dokumentation: +7528 / -140 / netto +7388</li>
+</ul>
+</li>
+<li>Konservative Handarbeits-Basis fuer Code:
+<ul>
+<li>2823 Codezeilen netto</li>
+<li>35.3 Arbeitstage fuer einen erfahrenen Entwickler</li>
+<li>14.1 Arbeitstage fuer ein 3er-Team (+20 % Koordination)</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-001-view-system-tgroup">1. <code>001-view-system-tgroup</code></h3>
+<ul>
+<li>Status: abgeschlossen und in <code>main</code> integriert</li>
+<li>Beobachtbarer Zeitraum: 2026-03-16 bis 2026-03-20</li>
+<li>Commit-Bild: 36 Commits an 4 Git-Aktivtagen</li>
+<li>Grundlegende Arbeiten: <code>TGroup</code>, Fokus- und State-Verhalten, Draw-Integration,
+<code>TConsoleBuffer</code>/<code>TConsoleCell</code> in <code>TuiVision.Core</code>, didaktische Specs,
+Checklisten und TDD-Testpaket</li>
+<li>Git-Aenderungsvolumen:
+<ul>
+<li>Produktionscode: +1174 / -382 / netto +792</li>
+<li>Testcode: +1384 / -2 / netto +1382</li>
+<li>Dokumentation: +2398 / -219 / netto +2179</li>
+</ul>
+</li>
+<li>Konservative Handarbeits-Basis fuer Code:
+<ul>
+<li>2174 Codezeilen netto</li>
+<li>27.2 Arbeitstage fuer einen erfahrenen Entwickler</li>
+<li>10.9 Arbeitstage fuer ein 3er-Team (+20 % Koordination)</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-002-application-framework">2. <code>002-application-framework</code></h3>
+<ul>
+<li>Status: abgeschlossen und in <code>main</code> integriert</li>
+<li>Beobachtbarer Zeitraum: 2026-03-20 bis 2026-03-21</li>
+<li>Commit-Bild: 34 Commits an 2 Git-Aktivtagen</li>
+<li>Grundlegende Arbeiten: <code>TProgram</code>, <code>TApplication</code>, <code>TDesktop</code>, <code>TMenuBar</code>,
+<code>TStatusLine</code>, Shell-Command-IDs, Shell-Tests, API-/Plan-/Quickstart-Artefakte</li>
+<li>Git-Aenderungsvolumen:
+<ul>
+<li>Produktionscode: +622 / -34 / netto +588</li>
+<li>Testcode: +486 / -4 / netto +482</li>
+<li>Dokumentation: +1303 / -99 / netto +1204</li>
+</ul>
+</li>
+<li>Konservative Handarbeits-Basis fuer Code:
+<ul>
+<li>1070 Codezeilen netto</li>
+<li>13.4 Arbeitstage fuer einen erfahrenen Entwickler</li>
+<li>5.4 Arbeitstage fuer ein 3er-Team (+20 % Koordination)</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-003-dialog-control-layer">3. <code>003-dialog-control-layer</code></h3>
+<ul>
+<li>Status: in Umsetzung auf Branch <code>003-dialog-control-layer</code></li>
+<li>Beobachtbarer Zeitraum: 2026-03-21 bis 2026-03-21</li>
+<li>Commit-Bild: 18 Commits an 1 Git-Aktivtag fuer Planung und Aufgabenschnitt</li>
+<li>Grundlegende Arbeiten:
+<ul>
+<li>committed: Spezifikation, Research, Datenmodell, API-Vertrag, Checklisten und
+Task-Plan fuer 13 Controls/Dialogklassen</li>
+<li>working tree: <code>TButton</code>, <code>TCheckBoxes</code>, <code>TCluster</code>, <code>TDialog</code>,
+<code>TInputLine</code>, <code>TLabel</code>, <code>TListBox</code>, <code>TListViewer</code>, <code>TRadioButtons</code>,
+<code>TScrollBar</code>, <code>TScroller</code>, <code>TStaticText</code>, <code>TStringList</code> sowie zugehoerige
+Control-Tests und Hilfsklassen</li>
+</ul>
+</li>
+<li>Git-Aenderungsvolumen aus Commits:
+<ul>
+<li>Produktionscode: +0 / -0 / netto +0</li>
+<li>Testcode: +0 / -0 / netto +0</li>
+<li>Dokumentation: +4045 / -204 / netto +3841</li>
+</ul>
+</li>
+<li>Aktueller Working-Tree-Zuwachs:
+<ul>
+<li>Produktionscode: +2025 / -0 / netto +2025</li>
+<li>Testcode: +1626 / -127 / netto +1499</li>
+<li>Dokumentation: +88 / -40 / netto +48</li>
+</ul>
+</li>
+<li>Konservative Handarbeits-Basis fuer den aktuellen Implementierungsstand:
+<ul>
+<li>3524 Codezeilen netto</li>
+<li>44.1 Arbeitstage fuer einen erfahrenen Entwickler</li>
+<li>17.6 Arbeitstage fuer ein 3er-Team (+20 % Koordination)</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-004-editor-file-help-streams">4. <code>004-editor-file-help-streams</code></h3>
+<ul>
+<li>Status: Spezifikation, Checkliste und Planungsartefakte auf Branch
+<code>004-editor-file-help-streams</code> angelegt; <code>tasks.md</code> erstellt und nach
+Analyse-Remediation bereit fuer den naechsten Implementierungsschritt</li>
+<li>Beobachtbarer Zeitraum: 2026-03-21 bis 2026-03-22</li>
+<li>Commit-Bild: 0 Commits an 0 Git-Aktivtagen; aktueller Stand liegt vollstaendig
+im Working Tree</li>
+<li>Grundlegende Arbeiten:
+<ul>
+<li>neue Phase-6-Spezifikation und Requirements-Checklist fuer Editor-, Datei-,
+Hilfe-, Stream- und Ressourcenkomponenten</li>
+<li>Planungsartefakte <code>plan.md</code>, <code>research.md</code>, <code>data-model.md</code>,
+<code>quickstart.md</code> und <code>contracts/public-api.md</code></li>
+<li>zusaetzliche Plan-Review-Checkliste mit Durchfuehrungshinweisen</li>
+<li>neue umsetzbare Aufgabenliste <code>tasks.md</code> mit Setup-, Foundation-,
+User-Story- und Polish-Phasen</li>
+<li>nachgezogene Klarstellungen fuer Artefaktrollen, Safe-Close vs.
+Overwrite-Konflikt, Coverage-Gate-Interpretation, nicht-funktionale
+Abgrenzung und Szenarioabdeckung; Checkliste danach vollstaendig abgehakt</li>
+<li>Analyse-Remediation fuer die Phase-6-Artefakte: explizite Insert/Overwrite-
+und Clipboard-Abdeckung, Datei-Metadaten-Synchronisation in Dialogen,
+Shell-Menue-/Status-Routing sowie das volle Coverage-Gate fuer Core,
+Controls und Serialization</li>
+<li>zweite Analyse-Remediation: explizite Benennung von Event-Loop-Verhalten,
+Fokuswechseln, Menueausfuehrung und Dialoginteraktion in Spec, Plan,
+Quickstart, Tasks und synchronisierten Agent-Dateien</li>
+<li>Synchronisation der gemeinsam genutzten Agent-Dateien auf den aktuellen
+Analyse- und Remediation-Stand des aktiven Features</li>
+</ul>
+</li>
+<li>Aktueller Working-Tree-Zuwachs:
+<ul>
+<li>Produktionscode: +0 / -0 / netto +0</li>
+<li>Testcode: +0 / -0 / netto +0</li>
+<li>Dokumentation: +319 / -0 / netto +319</li>
+</ul>
+</li>
+<li>Konservative Handarbeits-Basis fuer Code:
+<ul>
+<li>0 Codezeilen netto</li>
+<li>0.0 Arbeitstage fuer einen erfahrenen Entwickler</li>
+<li>0.0 Arbeitstage fuer ein 3er-Team (+20 % Koordination)</li>
+</ul>
+</li>
+</ul>
+<h2 id="zusatz-branches">Zusatz-Branches</h2>
+<table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Letzte sichtbare Aktivitaet</th>
+<th>Rolle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>origin/codex/add-project-constitution</code></td>
+<td>2026-03-01</td>
+<td>Governance-Bootstrap fuer die erste Constitution</td>
+</tr>
+<tr>
+<td><code>origin/hindermath-patch-1</code></td>
+<td>2026-03-01</td>
+<td>CI-Anpassung fuer Branch-Trigger</td>
+</tr>
+</tbody>
+</table>
+<h2 id="einordnung-der-ki-spec-kit-wirkung">Einordnung der KI-/Spec-Kit-Wirkung</h2>
+<ul>
+<li>Die beobachtbare Codebasis liegt bereits bei 9591 C#-Zeilen
+(Produktionscode + Tests), dazu kommen mehrere tausend Zeilen
+Spec-Kit-, Governance- und Betriebsdokumentation.</li>
+<li>Selbst mit der fuer klassische Entwicklung guenstigen Obergrenze von
+80 Codezeilen pro Tag ergibt sich bereits eine Untergrenze von
+119.9 Entwickler-Arbeitstagen nur fuer den Code.</li>
+<li>Da Spezifikationen, Plaene, Checklisten, Agent-Dateien, Constitution und
+sonstige Doku separat anfallen, liegt der klassische Gesamtaufwand real ueber
+dieser Untergrenze.</li>
+<li>Die vorliegenden Git-Daten zeigen damit eine deutliche Verdichtung durch
+agentische KI und GitHub Spec-Kit: hoher Dokumentations- und Codeumfang in
+einem kurzen beobachtbaren Aktivfenster.</li>
+</ul>
+<h2 id="fortschreibungsprotokoll">Fortschreibungsprotokoll</h2>
+<table>
+<thead>
+<tr>
+<th>Datum</th>
+<th>Ausloeser</th>
+<th>Eintrag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-21</td>
+<td>Erstanlage</td>
+<td>Basisstatistik fuer <code>main</code>, <code>001-view-system-tgroup</code>, <code>002-application-framework</code> und den aktuellen Stand von <code>003-dialog-control-layer</code> erzeugt; Constitution, Templates und Agent-Dateien auf Pflegepflicht synchronisiert.</td>
+</tr>
+<tr>
+<td>2026-03-21</td>
+<td>Branch <code>004-editor-file-help-streams</code></td>
+<td>Dokumentationsstand nach neuer Phase-6-Spezifikation, Requirements-Checklist und synchronisierten Agent-Dateien fortgeschrieben; kein Code- oder Testzuwachs in diesem Arbeitsschritt.</td>
+</tr>
+<tr>
+<td>2026-03-21</td>
+<td><code>/speckit-plan</code> fuer <code>004-editor-file-help-streams</code></td>
+<td>Planungsstand mit <code>plan.md</code>, <code>research.md</code>, <code>data-model.md</code>, <code>quickstart.md</code>, <code>contracts/public-api.md</code> und synchronisierten Agent-Dateien fortgeschrieben; weiterhin kein Produktions- oder Testcodezuwachs in diesem Arbeitsschritt.</td>
+</tr>
+<tr>
+<td>2026-03-21</td>
+<td><code>/speckit-checklist</code> fuer <code>004-editor-file-help-streams</code></td>
+<td>Zusaetzliche Plan-Review-Checkliste <code>checklists/planning.md</code> mit Durchfuehrungshinweisen aufgenommen und den Dokumentationsstand fuer Branch <code>004-editor-file-help-streams</code> erneut fortgeschrieben.</td>
+</tr>
+<tr>
+<td>2026-03-21</td>
+<td>Review der Plan-Checkliste</td>
+<td>Planungsartefakte anhand von <code>checklists/planning.md</code> nachgeschaerft, Safe-Close- und Coverage-Klarstellungen eingepflegt und anschliessend alle 30 Review-Punkte in der Checkliste abgehakt.</td>
+</tr>
+<tr>
+<td>2026-03-21</td>
+<td>Nachpruefung <code>/speckit-plan</code></td>
+<td>Keine weitere fachliche Plananpassung erforderlich; versehentlich ueberschriebener Working-Tree-Plan wiederhergestellt und gemeinsame Agent-Dateien auf den Post-Review-Planstand synchronisiert.</td>
+</tr>
+<tr>
+<td>2026-03-21</td>
+<td><code>/speckit-tasks</code> fuer <code>004-editor-file-help-streams</code></td>
+<td>Umsetzbare <code>tasks.md</code> mit 43 Aufgaben aus Plan, Datenmodell, Vertrag, Research und Quickstart erstellt; Branch damit vom Planungs- in den Ausfuehrungszustand ueberfuehrt.</td>
+</tr>
+<tr>
+<td>2026-03-22</td>
+<td>Analyse-Remediation fuer <code>004-editor-file-help-streams</code></td>
+<td>Spec-, Plan-, Datenmodell-, Vertrags-, Quickstart- und Task-Artefakte sowie die gemeinsamen Agent-Dateien nach Analysefunden geschaerft: explizite Insert/Overwrite- und Clipboard-Abdeckung, synchronisierte Datei-Metadaten, Shell-Menue-/Status-Routing und das volle Coverage-Gate fuer <code>TuiVision.Core</code>, <code>TuiVision.Controls</code> und <code>TuiVision.Serialization</code>.</td>
+</tr>
+<tr>
+<td>2026-03-22</td>
+<td>Zweite Analyse-Remediation fuer <code>004-editor-file-help-streams</code></td>
+<td>Die letzten offenen Analysepunkte ausgeraumt: Event-Loop-Verhalten, Fokuswechsel, Menueausfuehrung und explizite Dialoginteraktion nun direkt in <code>spec.md</code>, <code>plan.md</code>, <code>quickstart.md</code>, <code>tasks.md</code> und den synchronisierten Agent-Dateien benannt; Story-Tests in der Spezifikation an den nachgeschaerften FR-Stand angeglichen.</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/docs/project-statistics.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

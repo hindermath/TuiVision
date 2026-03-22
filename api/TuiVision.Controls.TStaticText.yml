@@ -18,7 +18,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStaticText.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: TStaticText
     path: src/TuiVision.Controls/TStaticText.cs
@@ -94,7 +94,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStaticText.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TStaticText.cs
@@ -136,7 +136,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStaticText.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Text
     path: src/TuiVision.Controls/TStaticText.cs
@@ -171,7 +171,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStaticText.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TStaticText.cs

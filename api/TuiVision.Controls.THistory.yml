@@ -1,0 +1,608 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.THistory
+  commentId: T:TuiVision.Controls.THistory
+  id: THistory
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.THistory.#ctor(System.String)
+  - TuiVision.Controls.THistory.Add(System.String)
+  - TuiVision.Controls.THistory.ClearAll
+  - TuiVision.Controls.THistory.HistoryId
+  - TuiVision.Controls.THistory.Recall
+  langs:
+  - csharp
+  - vb
+  name: THistory
+  nameWithType: THistory
+  fullName: TuiVision.Controls.THistory
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Controls/THistory.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: THistory
+    path: src/TuiVision.Controls/THistory.cs
+    startLine: 10
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    In-Memory-History mit Buckets pro History-ID.
+
+
+    In-memory history with buckets per history identifier.
+  example: []
+  syntax:
+    content: public sealed class THistory
+    content.vb: Public NotInheritable Class THistory
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Controls.THistory.#ctor(System.String)
+  commentId: M:TuiVision.Controls.THistory.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: TuiVision.Controls.THistory
+  langs:
+  - csharp
+  - vb
+  name: THistory(string)
+  nameWithType: THistory.THistory(string)
+  fullName: TuiVision.Controls.THistory.THistory(string)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Controls/THistory.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Controls/THistory.cs
+    startLine: 20
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Initialisiert einen neuen History-Bucket-Zugriff.
+
+
+    Initializes a new history bucket accessor.
+  example: []
+  syntax:
+    content: public THistory(string historyId)
+    parameters:
+    - id: historyId
+      type: System.String
+      description: Die Bucket-ID. / The bucket identifier.
+    content.vb: Public Sub New(historyId As String)
+  overload: TuiVision.Controls.THistory.#ctor*
+  nameWithType.vb: THistory.New(String)
+  fullName.vb: TuiVision.Controls.THistory.New(String)
+  name.vb: New(String)
+- uid: TuiVision.Controls.THistory.HistoryId
+  commentId: P:TuiVision.Controls.THistory.HistoryId
+  id: HistoryId
+  parent: TuiVision.Controls.THistory
+  langs:
+  - csharp
+  - vb
+  name: HistoryId
+  nameWithType: THistory.HistoryId
+  fullName: TuiVision.Controls.THistory.HistoryId
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/THistory.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: HistoryId
+    path: src/TuiVision.Controls/THistory.cs
+    startLine: 30
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Die zugeordnete Bucket-ID.
+
+
+    The associated bucket identifier.
+  example: []
+  syntax:
+    content: public string HistoryId { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property HistoryId As String
+  overload: TuiVision.Controls.THistory.HistoryId*
+- uid: TuiVision.Controls.THistory.Add(System.String)
+  commentId: M:TuiVision.Controls.THistory.Add(System.String)
+  id: Add(System.String)
+  parent: TuiVision.Controls.THistory
+  langs:
+  - csharp
+  - vb
+  name: Add(string)
+  nameWithType: THistory.Add(string)
+  fullName: TuiVision.Controls.THistory.Add(string)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/THistory.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Add
+    path: src/TuiVision.Controls/THistory.cs
+    startLine: 38
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Fuegt einen History-Eintrag hinzu.
+
+
+    Adds a history entry.
+  example: []
+  syntax:
+    content: public void Add(string value)
+    parameters:
+    - id: value
+      type: System.String
+      description: Der zu speichernde Wert. / The value to store.
+    content.vb: Public Sub Add(value As String)
+  overload: TuiVision.Controls.THistory.Add*
+  nameWithType.vb: THistory.Add(String)
+  fullName.vb: TuiVision.Controls.THistory.Add(String)
+  name.vb: Add(String)
+- uid: TuiVision.Controls.THistory.Recall
+  commentId: M:TuiVision.Controls.THistory.Recall
+  id: Recall
+  parent: TuiVision.Controls.THistory
+  langs:
+  - csharp
+  - vb
+  name: Recall()
+  nameWithType: THistory.Recall()
+  fullName: TuiVision.Controls.THistory.Recall()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/THistory.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Recall
+    path: src/TuiVision.Controls/THistory.cs
+    startLine: 56
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Liefert die Eintraege der Bucket-ID in Most-Recent-First-Reihenfolge.
+
+
+    Returns the bucket entries in most-recent-first order.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> Recall()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+      description: Die History-Eintraege. / The history entries.
+    content.vb: Public Function Recall() As IReadOnlyList(Of String)
+  overload: TuiVision.Controls.THistory.Recall*
+- uid: TuiVision.Controls.THistory.ClearAll
+  commentId: M:TuiVision.Controls.THistory.ClearAll
+  id: ClearAll
+  parent: TuiVision.Controls.THistory
+  langs:
+  - csharp
+  - vb
+  name: ClearAll()
+  nameWithType: THistory.ClearAll()
+  fullName: TuiVision.Controls.THistory.ClearAll()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/THistory.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: ClearAll
+    path: src/TuiVision.Controls/THistory.cs
+    startLine: 63
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Loescht alle Buckets. Nur fuer Tests und kontrollierte Resets gedacht.
+
+
+    Clears all buckets. Intended only for tests and controlled resets.
+  example: []
+  syntax:
+    content: public static void ClearAll()
+    content.vb: Public Shared Sub ClearAll()
+  overload: TuiVision.Controls.THistory.ClearAll*
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Controls.THistory.#ctor*
+  commentId: Overload:TuiVision.Controls.THistory.#ctor
+  href: TuiVision.Controls.THistory.html#TuiVision_Controls_THistory__ctor_System_String_
+  name: THistory
+  nameWithType: THistory.THistory
+  fullName: TuiVision.Controls.THistory.THistory
+  nameWithType.vb: THistory.New
+  fullName.vb: TuiVision.Controls.THistory.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: TuiVision.Controls.THistory.HistoryId*
+  commentId: Overload:TuiVision.Controls.THistory.HistoryId
+  href: TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_HistoryId
+  name: HistoryId
+  nameWithType: THistory.HistoryId
+  fullName: TuiVision.Controls.THistory.HistoryId
+- uid: TuiVision.Controls.THistory.Add*
+  commentId: Overload:TuiVision.Controls.THistory.Add
+  href: TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_Add_System_String_
+  name: Add
+  nameWithType: THistory.Add
+  fullName: TuiVision.Controls.THistory.Add
+- uid: TuiVision.Controls.THistory.Recall*
+  commentId: Overload:TuiVision.Controls.THistory.Recall
+  href: TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_Recall
+  name: Recall
+  nameWithType: THistory.Recall
+  fullName: TuiVision.Controls.THistory.Recall
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TuiVision.Controls.THistory.ClearAll*
+  commentId: Overload:TuiVision.Controls.THistory.ClearAll
+  href: TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_ClearAll
+  name: ClearAll
+  nameWithType: THistory.ClearAll
+  fullName: TuiVision.Controls.THistory.ClearAll

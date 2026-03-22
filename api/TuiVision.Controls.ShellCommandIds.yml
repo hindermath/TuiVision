@@ -6,10 +6,20 @@ items:
   parent: TuiVision.Controls
   children:
   - TuiVision.Controls.ShellCommandIds.cmCancel
+  - TuiVision.Controls.ShellCommandIds.cmClose
+  - TuiVision.Controls.ShellCommandIds.cmCopy
+  - TuiVision.Controls.ShellCommandIds.cmCut
+  - TuiVision.Controls.ShellCommandIds.cmFind
   - TuiVision.Controls.ShellCommandIds.cmFocusChanged
+  - TuiVision.Controls.ShellCommandIds.cmHelp
   - TuiVision.Controls.ShellCommandIds.cmNo
   - TuiVision.Controls.ShellCommandIds.cmOK
+  - TuiVision.Controls.ShellCommandIds.cmOpen
+  - TuiVision.Controls.ShellCommandIds.cmPaste
   - TuiVision.Controls.ShellCommandIds.cmQuit
+  - TuiVision.Controls.ShellCommandIds.cmReplace
+  - TuiVision.Controls.ShellCommandIds.cmSave
+  - TuiVision.Controls.ShellCommandIds.cmUndo
   - TuiVision.Controls.ShellCommandIds.cmYes
   langs:
   - csharp
@@ -21,7 +31,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: ShellCommandIds
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -62,7 +72,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: cmOK
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -91,7 +101,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: cmCancel
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -120,7 +130,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: cmYes
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -149,7 +159,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: cmNo
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -178,7 +188,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: cmQuit
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -207,7 +217,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: cmFocusChanged
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -222,6 +232,296 @@ items:
     return:
       type: System.UInt16
     content.vb: Public Const cmFocusChanged As UShort = 102
+- uid: TuiVision.Controls.ShellCommandIds.cmClose
+  commentId: F:TuiVision.Controls.ShellCommandIds.cmClose
+  id: cmClose
+  parent: TuiVision.Controls.ShellCommandIds
+  langs:
+  - csharp
+  - vb
+  name: cmClose
+  nameWithType: ShellCommandIds.cmClose
+  fullName: TuiVision.Controls.ShellCommandIds.cmClose
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/ShellCommandIds.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: cmClose
+    path: src/TuiVision.Controls/ShellCommandIds.cs
+    startLine: 45
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Schliesst den aktiven Host. / Closes the active host.
+  example: []
+  syntax:
+    content: public const ushort cmClose = 103
+    return:
+      type: System.UInt16
+    content.vb: Public Const cmClose As UShort = 103
+- uid: TuiVision.Controls.ShellCommandIds.cmSave
+  commentId: F:TuiVision.Controls.ShellCommandIds.cmSave
+  id: cmSave
+  parent: TuiVision.Controls.ShellCommandIds
+  langs:
+  - csharp
+  - vb
+  name: cmSave
+  nameWithType: ShellCommandIds.cmSave
+  fullName: TuiVision.Controls.ShellCommandIds.cmSave
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/ShellCommandIds.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: cmSave
+    path: src/TuiVision.Controls/ShellCommandIds.cs
+    startLine: 50
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Speichert das aktive Dokument. / Saves the active document.
+  example: []
+  syntax:
+    content: public const ushort cmSave = 104
+    return:
+      type: System.UInt16
+    content.vb: Public Const cmSave As UShort = 104
+- uid: TuiVision.Controls.ShellCommandIds.cmOpen
+  commentId: F:TuiVision.Controls.ShellCommandIds.cmOpen
+  id: cmOpen
+  parent: TuiVision.Controls.ShellCommandIds
+  langs:
+  - csharp
+  - vb
+  name: cmOpen
+  nameWithType: ShellCommandIds.cmOpen
+  fullName: TuiVision.Controls.ShellCommandIds.cmOpen
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/ShellCommandIds.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: cmOpen
+    path: src/TuiVision.Controls/ShellCommandIds.cs
+    startLine: 55
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Oeffnet einen Dateidialog. / Opens a file dialog.
+  example: []
+  syntax:
+    content: public const ushort cmOpen = 105
+    return:
+      type: System.UInt16
+    content.vb: Public Const cmOpen As UShort = 105
+- uid: TuiVision.Controls.ShellCommandIds.cmUndo
+  commentId: F:TuiVision.Controls.ShellCommandIds.cmUndo
+  id: cmUndo
+  parent: TuiVision.Controls.ShellCommandIds
+  langs:
+  - csharp
+  - vb
+  name: cmUndo
+  nameWithType: ShellCommandIds.cmUndo
+  fullName: TuiVision.Controls.ShellCommandIds.cmUndo
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/ShellCommandIds.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: cmUndo
+    path: src/TuiVision.Controls/ShellCommandIds.cs
+    startLine: 60
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Aktiviert Rueckgaengig. / Activates undo.
+  example: []
+  syntax:
+    content: public const ushort cmUndo = 106
+    return:
+      type: System.UInt16
+    content.vb: Public Const cmUndo As UShort = 106
+- uid: TuiVision.Controls.ShellCommandIds.cmCopy
+  commentId: F:TuiVision.Controls.ShellCommandIds.cmCopy
+  id: cmCopy
+  parent: TuiVision.Controls.ShellCommandIds
+  langs:
+  - csharp
+  - vb
+  name: cmCopy
+  nameWithType: ShellCommandIds.cmCopy
+  fullName: TuiVision.Controls.ShellCommandIds.cmCopy
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/ShellCommandIds.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: cmCopy
+    path: src/TuiVision.Controls/ShellCommandIds.cs
+    startLine: 65
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Aktiviert Kopieren. / Activates copy.
+  example: []
+  syntax:
+    content: public const ushort cmCopy = 107
+    return:
+      type: System.UInt16
+    content.vb: Public Const cmCopy As UShort = 107
+- uid: TuiVision.Controls.ShellCommandIds.cmCut
+  commentId: F:TuiVision.Controls.ShellCommandIds.cmCut
+  id: cmCut
+  parent: TuiVision.Controls.ShellCommandIds
+  langs:
+  - csharp
+  - vb
+  name: cmCut
+  nameWithType: ShellCommandIds.cmCut
+  fullName: TuiVision.Controls.ShellCommandIds.cmCut
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/ShellCommandIds.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: cmCut
+    path: src/TuiVision.Controls/ShellCommandIds.cs
+    startLine: 70
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Aktiviert Ausschneiden. / Activates cut.
+  example: []
+  syntax:
+    content: public const ushort cmCut = 108
+    return:
+      type: System.UInt16
+    content.vb: Public Const cmCut As UShort = 108
+- uid: TuiVision.Controls.ShellCommandIds.cmPaste
+  commentId: F:TuiVision.Controls.ShellCommandIds.cmPaste
+  id: cmPaste
+  parent: TuiVision.Controls.ShellCommandIds
+  langs:
+  - csharp
+  - vb
+  name: cmPaste
+  nameWithType: ShellCommandIds.cmPaste
+  fullName: TuiVision.Controls.ShellCommandIds.cmPaste
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/ShellCommandIds.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: cmPaste
+    path: src/TuiVision.Controls/ShellCommandIds.cs
+    startLine: 75
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Aktiviert Einfuegen. / Activates paste.
+  example: []
+  syntax:
+    content: public const ushort cmPaste = 109
+    return:
+      type: System.UInt16
+    content.vb: Public Const cmPaste As UShort = 109
+- uid: TuiVision.Controls.ShellCommandIds.cmFind
+  commentId: F:TuiVision.Controls.ShellCommandIds.cmFind
+  id: cmFind
+  parent: TuiVision.Controls.ShellCommandIds
+  langs:
+  - csharp
+  - vb
+  name: cmFind
+  nameWithType: ShellCommandIds.cmFind
+  fullName: TuiVision.Controls.ShellCommandIds.cmFind
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/ShellCommandIds.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: cmFind
+    path: src/TuiVision.Controls/ShellCommandIds.cs
+    startLine: 80
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Aktiviert Suchen. / Activates find.
+  example: []
+  syntax:
+    content: public const ushort cmFind = 110
+    return:
+      type: System.UInt16
+    content.vb: Public Const cmFind As UShort = 110
+- uid: TuiVision.Controls.ShellCommandIds.cmReplace
+  commentId: F:TuiVision.Controls.ShellCommandIds.cmReplace
+  id: cmReplace
+  parent: TuiVision.Controls.ShellCommandIds
+  langs:
+  - csharp
+  - vb
+  name: cmReplace
+  nameWithType: ShellCommandIds.cmReplace
+  fullName: TuiVision.Controls.ShellCommandIds.cmReplace
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/ShellCommandIds.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: cmReplace
+    path: src/TuiVision.Controls/ShellCommandIds.cs
+    startLine: 85
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Aktiviert Ersetzen. / Activates replace.
+  example: []
+  syntax:
+    content: public const ushort cmReplace = 111
+    return:
+      type: System.UInt16
+    content.vb: Public Const cmReplace As UShort = 111
+- uid: TuiVision.Controls.ShellCommandIds.cmHelp
+  commentId: F:TuiVision.Controls.ShellCommandIds.cmHelp
+  id: cmHelp
+  parent: TuiVision.Controls.ShellCommandIds
+  langs:
+  - csharp
+  - vb
+  name: cmHelp
+  nameWithType: ShellCommandIds.cmHelp
+  fullName: TuiVision.Controls.ShellCommandIds.cmHelp
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/ShellCommandIds.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: cmHelp
+    path: src/TuiVision.Controls/ShellCommandIds.cs
+    startLine: 90
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Oeffnet die Hilfe. / Opens help.
+  example: []
+  syntax:
+    content: public const ushort cmHelp = 112
+    return:
+      type: System.UInt16
+    content.vb: Public Const cmHelp As UShort = 112
 references:
 - uid: TuiVision.Controls
   commentId: N:TuiVision.Controls

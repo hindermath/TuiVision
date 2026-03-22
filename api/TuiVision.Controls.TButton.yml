@@ -23,7 +23,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TButton.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: TButton
     path: src/TuiVision.Controls/TButton.cs
@@ -91,7 +91,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TButton.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TButton.cs
@@ -139,7 +139,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TButton.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Title
     path: src/TuiVision.Controls/TButton.cs
@@ -174,7 +174,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TButton.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Command
     path: src/TuiVision.Controls/TButton.cs
@@ -209,7 +209,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TButton.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Flags
     path: src/TuiVision.Controls/TButton.cs
@@ -244,7 +244,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TButton.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: AmDefault
     path: src/TuiVision.Controls/TButton.cs
@@ -279,7 +279,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TButton.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: SetState
     path: src/TuiVision.Controls/TButton.cs
@@ -322,7 +322,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TButton.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TButton.cs
@@ -355,7 +355,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TButton.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TButton.cs

@@ -15,32 +15,28 @@ items:
   type: Interface
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/ITStreamSerializable.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: ITStreamSerializable
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 13
+    path: src/TuiVision.Serialization/ITStreamSerializable.cs
+    startLine: 10
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Schnittstelle für stream-basierte Serialisierung portierter Turbo-Vision-Record-Typen.
-
-    Klassen, die diese Schnittstelle implementieren, können ihren Zustand in einen
-
-    <xref href="TuiVision.Serialization.TBinaryArchiveWriter" data-throw-if-not-resolved="false"></xref> schreiben und später wiederherstellen.
+    Schnittstelle fuer archivbasierte Serialisierung portierter Record-Typen.
 
 
-    Contract for stream-based serialization of ported Turbo Vision record types.
-
-    Classes that implement this interface can write their state to a
-
-    <xref href="TuiVision.Serialization.TBinaryArchiveWriter" data-throw-if-not-resolved="false"></xref> and restore it later.
+    Contract for archive-based serialization of ported record types.
   example: []
   syntax:
     content: public interface ITStreamSerializable
     content.vb: Public Interface ITStreamSerializable
+  derivedClasses:
+  - TuiVision.Serialization.THelpFile
+  - TuiVision.Serialization.THelpIndex
+  - TuiVision.Serialization.THelpTopic
 - uid: TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
   commentId: M:TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
   id: SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
@@ -54,37 +50,30 @@ items:
   type: Method
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/ITStreamSerializable.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: SaveTo
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 21
+    path: src/TuiVision.Serialization/ITStreamSerializable.cs
+    startLine: 18
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Schreibt den Zustand dieses Objekts in den angegebenen Writer.
+    Schreibt den Zustand des Objekts in den angegebenen Writer.
 
 
-    Writes the state of this object to the specified writer.
+    Writes the state of the object to the specified writer.
   example: []
   syntax:
     content: void SaveTo(TBinaryArchiveWriter writer)
     parameters:
     - id: writer
       type: TuiVision.Serialization.TBinaryArchiveWriter
-      description: Der Ziel-Writer. / The target writer.
+      description: Der Ziel-Writer. / The destination writer.
     content.vb: Sub SaveTo(writer As TBinaryArchiveWriter)
   overload: TuiVision.Serialization.ITStreamSerializable.SaveTo*
 references:
-- uid: TuiVision.Serialization.TBinaryArchiveWriter
-  commentId: T:TuiVision.Serialization.TBinaryArchiveWriter
-  parent: TuiVision.Serialization
-  href: TuiVision.Serialization.TBinaryArchiveWriter.html
-  name: TBinaryArchiveWriter
-  nameWithType: TBinaryArchiveWriter
-  fullName: TuiVision.Serialization.TBinaryArchiveWriter
 - uid: TuiVision.Serialization
   commentId: N:TuiVision.Serialization
   href: TuiVision.html
@@ -113,3 +102,10 @@ references:
   name: SaveTo
   nameWithType: ITStreamSerializable.SaveTo
   fullName: TuiVision.Serialization.ITStreamSerializable.SaveTo
+- uid: TuiVision.Serialization.TBinaryArchiveWriter
+  commentId: T:TuiVision.Serialization.TBinaryArchiveWriter
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TBinaryArchiveWriter.html
+  name: TBinaryArchiveWriter
+  nameWithType: TBinaryArchiveWriter
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter

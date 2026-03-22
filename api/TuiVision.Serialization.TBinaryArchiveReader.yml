@@ -9,8 +9,10 @@ items:
   - TuiVision.Serialization.TBinaryArchiveReader.Dispose
   - TuiVision.Serialization.TBinaryArchiveReader.EnsureFullyConsumed
   - TuiVision.Serialization.TBinaryArchiveReader.ReadBoolean
+  - TuiVision.Serialization.TBinaryArchiveReader.ReadByte
   - TuiVision.Serialization.TBinaryArchiveReader.ReadBytes(System.Int32)
   - TuiVision.Serialization.TBinaryArchiveReader.ReadInt32
+  - TuiVision.Serialization.TBinaryArchiveReader.ReadInt64
   - TuiVision.Serialization.TBinaryArchiveReader.ReadString
   - TuiVision.Serialization.TBinaryArchiveReader.ReadUInt16
   langs:
@@ -22,24 +24,20 @@ items:
   type: Class
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: TBinaryArchiveReader
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 154
+    path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+    startLine: 12
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Schmale Binär-Reader-Abstraktion, die zu <xref href="TuiVision.Serialization.TBinaryArchiveWriter" data-throw-if-not-resolved="false"></xref> passt.
-
-    Kapselt einen <xref href="System.IO.BinaryReader" data-throw-if-not-resolved="false"></xref> mit fester UTF-8-Kodierung.
+    Schmaler BinaryReader fuer deterministische Deserialisierung.
 
 
-    Thin binary reader abstraction matching <xref href="TuiVision.Serialization.TBinaryArchiveWriter" data-throw-if-not-resolved="false"></xref>.
-
-    Wraps a <xref href="System.IO.BinaryReader" data-throw-if-not-resolved="false"></xref> with fixed UTF-8 encoding.
+    Thin binary reader for deterministic deserialization.
   example: []
   syntax:
     content: 'public sealed class TBinaryArchiveReader : IDisposable'
@@ -68,59 +66,70 @@ items:
   type: Constructor
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 201
+    path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+    startLine: 25
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Erstellt einen neuen Reader für den angegebenen Stream.
+    Initialisiert einen neuen Archiv-Reader.
 
 
-    Creates a new reader for the specified stream.
+    Initializes a new archive reader.
   example: []
   syntax:
     content: public TBinaryArchiveReader(Stream stream, bool leaveOpen = false)
     parameters:
     - id: stream
       type: System.IO.Stream
-      description: >-
-        Der Quellstream. Muss lesbar sein.
-
-        The source stream. Must be readable.
+      description: Der Quellstream. / The source stream.
     - id: leaveOpen
       type: System.Boolean
-      description: >-
-        <code>true</code>, um den Stream nach dem Freigeben dieses Readers offen zu lassen;
-
-        <code>false</code>, um ihn zu schließen (Standard).
-
-
-        <code>true</code> to leave the stream open after disposing this reader;
-
-        <code>false</code> to close it (default).
+      description: Gibt an, ob der Stream offen bleiben soll. / Indicates whether the stream should stay open.
     content.vb: Public Sub New(stream As Stream, leaveOpen As Boolean = False)
   overload: TuiVision.Serialization.TBinaryArchiveReader.#ctor*
-  exceptions:
-  - type: System.ArgumentNullException
-    commentId: T:System.ArgumentNullException
-    description: >-
-      Wird ausgelöst, wenn <code class="paramref">stream</code> <code>null</code> ist.
-
-      Thrown when <code class="paramref">stream</code> is <code>null</code>.
-  - type: System.ArgumentException
-    commentId: T:System.ArgumentException
-    description: >-
-      Wird ausgelöst, wenn <code class="paramref">stream</code> nicht lesbar ist.
-
-      Thrown when <code class="paramref">stream</code> is not readable.
   nameWithType.vb: TBinaryArchiveReader.New(Stream, Boolean)
   fullName.vb: TuiVision.Serialization.TBinaryArchiveReader.New(System.IO.Stream, Boolean)
   name.vb: New(Stream, Boolean)
+- uid: TuiVision.Serialization.TBinaryArchiveReader.ReadByte
+  commentId: M:TuiVision.Serialization.TBinaryArchiveReader.ReadByte
+  id: ReadByte
+  parent: TuiVision.Serialization.TBinaryArchiveReader
+  langs:
+  - csharp
+  - vb
+  name: ReadByte()
+  nameWithType: TBinaryArchiveReader.ReadByte()
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.ReadByte()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: ReadByte
+    path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+    startLine: 44
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Liest ein Byte.
+
+
+    Reads a byte.
+  example: []
+  syntax:
+    content: public byte ReadByte()
+    return:
+      type: System.Byte
+      description: Das gelesene Byte. / The read byte.
+    content.vb: Public Function ReadByte() As Byte
+  overload: TuiVision.Serialization.TBinaryArchiveReader.ReadByte*
 - uid: TuiVision.Serialization.TBinaryArchiveReader.ReadInt32
   commentId: M:TuiVision.Serialization.TBinaryArchiveReader.ReadInt32
   id: ReadInt32
@@ -134,31 +143,63 @@ items:
   type: Method
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: ReadInt32
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 223
+    path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+    startLine: 52
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Liest einen 32-Bit-Integer-Wert aus dem Stream.
+    Liest einen 32-Bit-Integer.
 
 
-    Reads a 32-bit integer value from the stream.
+    Reads a 32-bit integer.
   example: []
   syntax:
     content: public int ReadInt32()
     return:
       type: System.Int32
-      description: >-
-        Der gelesene Wert.
-
-        The value that was read.
+      description: Der gelesene Wert. / The read value.
     content.vb: Public Function ReadInt32() As Integer
   overload: TuiVision.Serialization.TBinaryArchiveReader.ReadInt32*
+- uid: TuiVision.Serialization.TBinaryArchiveReader.ReadInt64
+  commentId: M:TuiVision.Serialization.TBinaryArchiveReader.ReadInt64
+  id: ReadInt64
+  parent: TuiVision.Serialization.TBinaryArchiveReader
+  langs:
+  - csharp
+  - vb
+  name: ReadInt64()
+  nameWithType: TBinaryArchiveReader.ReadInt64()
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.ReadInt64()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: ReadInt64
+    path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+    startLine: 60
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Liest einen 64-Bit-Integer.
+
+
+    Reads a 64-bit integer.
+  example: []
+  syntax:
+    content: public long ReadInt64()
+    return:
+      type: System.Int64
+      description: Der gelesene Wert. / The read value.
+    content.vb: Public Function ReadInt64() As Long
+  overload: TuiVision.Serialization.TBinaryArchiveReader.ReadInt64*
 - uid: TuiVision.Serialization.TBinaryArchiveReader.ReadUInt16
   commentId: M:TuiVision.Serialization.TBinaryArchiveReader.ReadUInt16
   id: ReadUInt16
@@ -172,29 +213,26 @@ items:
   type: Method
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: ReadUInt16
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 234
+    path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+    startLine: 68
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Liest einen vorzeichenlosen 16-Bit-Integer-Wert aus dem Stream.
+    Liest einen UInt16-Wert.
 
 
-    Reads an unsigned 16-bit integer value from the stream.
+    Reads a UInt16 value.
   example: []
   syntax:
     content: public ushort ReadUInt16()
     return:
       type: System.UInt16
-      description: >-
-        Der gelesene Wert.
-
-        The value that was read.
+      description: Der gelesene Wert. / The read value.
     content.vb: Public Function ReadUInt16() As UShort
   overload: TuiVision.Serialization.TBinaryArchiveReader.ReadUInt16*
 - uid: TuiVision.Serialization.TBinaryArchiveReader.ReadBoolean
@@ -210,29 +248,26 @@ items:
   type: Method
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: ReadBoolean
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 245
+    path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+    startLine: 76
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Liest einen booleschen Wert aus dem Stream.
+    Liest einen Bool-Wert.
 
 
-    Reads a boolean value from the stream.
+    Reads a Boolean value.
   example: []
   syntax:
     content: public bool ReadBoolean()
     return:
       type: System.Boolean
-      description: >-
-        Der gelesene Wert.
-
-        The value that was read.
+      description: Der gelesene Wert. / The read value.
     content.vb: Public Function ReadBoolean() As Boolean
   overload: TuiVision.Serialization.TBinaryArchiveReader.ReadBoolean*
 - uid: TuiVision.Serialization.TBinaryArchiveReader.ReadString
@@ -248,29 +283,26 @@ items:
   type: Method
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: ReadString
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 256
+    path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+    startLine: 84
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Liest eine Zeichenkette im .NET-BinaryReader-Format (Länge + UTF-8-Bytes) aus dem Stream.
+    Liest einen String.
 
 
-    Reads a string in .NET BinaryReader format (length prefix + UTF-8 bytes) from the stream.
+    Reads a string.
   example: []
   syntax:
     content: public string ReadString()
     return:
       type: System.String
-      description: >-
-        Die gelesene Zeichenkette.
-
-        The string that was read.
+      description: Der gelesene String. / The read string.
     content.vb: Public Function ReadString() As String
   overload: TuiVision.Serialization.TBinaryArchiveReader.ReadString*
 - uid: TuiVision.Serialization.TBinaryArchiveReader.ReadBytes(System.Int32)
@@ -286,51 +318,32 @@ items:
   type: Method
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: ReadBytes
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 279
+    path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+    startLine: 93
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Liest eine bestimmte Anzahl Bytes aus dem Stream und gibt sie als Array zurück.
+    Liest exakt die angegebene Anzahl Bytes.
 
 
-    Reads a specified number of bytes from the stream and returns them as an array.
+    Reads exactly the specified number of bytes.
   example: []
   syntax:
     content: public byte[] ReadBytes(int count)
     parameters:
     - id: count
       type: System.Int32
-      description: >-
-        Die Anzahl der zu lesenden Bytes. Darf nicht negativ sein.
-
-        The number of bytes to read. Must not be negative.
+      description: Die erwartete Bytezahl. / The expected byte count.
     return:
       type: System.Byte[]
-      description: >-
-        Ein Byte-Array mit exakt <code class="paramref">count</code> Bytes.
-
-        A byte array with exactly <code class="paramref">count</code> bytes.
+      description: Die gelesenen Bytes. / The read bytes.
     content.vb: Public Function ReadBytes(count As Integer) As Byte()
   overload: TuiVision.Serialization.TBinaryArchiveReader.ReadBytes*
-  exceptions:
-  - type: System.ArgumentOutOfRangeException
-    commentId: T:System.ArgumentOutOfRangeException
-    description: >-
-      Wird ausgelöst, wenn <code class="paramref">count</code> negativ ist.
-
-      Thrown when <code class="paramref">count</code> is negative.
-  - type: System.IO.EndOfStreamException
-    commentId: T:System.IO.EndOfStreamException
-    description: >-
-      Wird ausgelöst, wenn der Stream weniger Bytes enthält als erwartet.
-
-      Thrown when the stream contains fewer bytes than expected.
   nameWithType.vb: TBinaryArchiveReader.ReadBytes(Integer)
   fullName.vb: TuiVision.Serialization.TBinaryArchiveReader.ReadBytes(Integer)
   name.vb: ReadBytes(Integer)
@@ -347,36 +360,25 @@ items:
   type: Method
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: EnsureFullyConsumed
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 306
+    path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+    startLine: 114
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Prüft, ob der Stream vollständig gelesen wurde.
-
-    Wirft eine Ausnahme, wenn am Ende unerwartete Daten übrig sind.
+    Stellt sicher, dass keine Restdaten uebrig sind.
 
 
-    Checks whether the stream has been fully consumed.
-
-    Throws an exception if unexpected trailing data remains.
+    Ensures that no trailing data remains.
   example: []
   syntax:
     content: public void EnsureFullyConsumed()
     content.vb: Public Sub EnsureFullyConsumed()
   overload: TuiVision.Serialization.TBinaryArchiveReader.EnsureFullyConsumed*
-  exceptions:
-  - type: System.IO.InvalidDataException
-    commentId: T:System.IO.InvalidDataException
-    description: >-
-      Wird ausgelöst, wenn der Stream noch ungelesene Bytes enthält.
-
-      Thrown when the stream still contains unread bytes.
 - uid: TuiVision.Serialization.TBinaryArchiveReader.Dispose
   commentId: M:TuiVision.Serialization.TBinaryArchiveReader.Dispose
   id: Dispose
@@ -390,24 +392,20 @@ items:
   type: Method
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Dispose
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 321
+    path: src/TuiVision.Serialization/TBinaryArchiveReader.cs
+    startLine: 127
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Gibt den Reader frei. Schließt den zugrunde liegenden Stream,
-
-    sofern <code>leaveOpen</code> beim Erstellen nicht auf <code>true</code> gesetzt wurde.
+    Gibt den Reader frei.
 
 
-    Disposes the reader. Closes the underlying stream
-
-    unless <code>leaveOpen</code> was set to <code>true</code> at construction.
+    Disposes the reader.
   example: []
   syntax:
     content: public void Dispose()
@@ -416,20 +414,6 @@ items:
   implements:
   - System.IDisposable.Dispose
 references:
-- uid: TuiVision.Serialization.TBinaryArchiveWriter
-  commentId: T:TuiVision.Serialization.TBinaryArchiveWriter
-  parent: TuiVision.Serialization
-  href: TuiVision.Serialization.TBinaryArchiveWriter.html
-  name: TBinaryArchiveWriter
-  nameWithType: TBinaryArchiveWriter
-  fullName: TuiVision.Serialization.TBinaryArchiveWriter
-- uid: System.IO.BinaryReader
-  commentId: T:System.IO.BinaryReader
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
-  name: BinaryReader
-  nameWithType: BinaryReader
-  fullName: System.IO.BinaryReader
 - uid: TuiVision.Serialization
   commentId: N:TuiVision.Serialization
   href: TuiVision.html
@@ -673,20 +657,6 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: System.ArgumentNullException
-  commentId: T:System.ArgumentNullException
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
-  name: ArgumentNullException
-  nameWithType: ArgumentNullException
-  fullName: System.ArgumentNullException
-- uid: System.ArgumentException
-  commentId: T:System.ArgumentException
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
-  name: ArgumentException
-  nameWithType: ArgumentException
-  fullName: System.ArgumentException
 - uid: TuiVision.Serialization.TBinaryArchiveReader.#ctor*
   commentId: Overload:TuiVision.Serialization.TBinaryArchiveReader.#ctor
   href: TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader__ctor_System_IO_Stream_System_Boolean_
@@ -742,6 +712,23 @@ references:
     name: IO
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: TuiVision.Serialization.TBinaryArchiveReader.ReadByte*
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveReader.ReadByte
+  href: TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_ReadByte
+  name: ReadByte
+  nameWithType: TBinaryArchiveReader.ReadByte
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.ReadByte
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
 - uid: TuiVision.Serialization.TBinaryArchiveReader.ReadInt32*
   commentId: Overload:TuiVision.Serialization.TBinaryArchiveReader.ReadInt32
   href: TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_ReadInt32
@@ -759,6 +746,23 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
+- uid: TuiVision.Serialization.TBinaryArchiveReader.ReadInt64*
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveReader.ReadInt64
+  href: TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_ReadInt64
+  name: ReadInt64
+  nameWithType: TBinaryArchiveReader.ReadInt64
+  fullName: TuiVision.Serialization.TBinaryArchiveReader.ReadInt64
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
 - uid: TuiVision.Serialization.TBinaryArchiveReader.ReadUInt16*
   commentId: Overload:TuiVision.Serialization.TBinaryArchiveReader.ReadUInt16
   href: TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_ReadUInt16
@@ -799,20 +803,6 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
-- uid: System.ArgumentOutOfRangeException
-  commentId: T:System.ArgumentOutOfRangeException
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
-  name: ArgumentOutOfRangeException
-  nameWithType: ArgumentOutOfRangeException
-  fullName: System.ArgumentOutOfRangeException
-- uid: System.IO.EndOfStreamException
-  commentId: T:System.IO.EndOfStreamException
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.io.endofstreamexception
-  name: EndOfStreamException
-  nameWithType: EndOfStreamException
-  fullName: System.IO.EndOfStreamException
 - uid: TuiVision.Serialization.TBinaryArchiveReader.ReadBytes*
   commentId: Overload:TuiVision.Serialization.TBinaryArchiveReader.ReadBytes
   href: TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_ReadBytes_System_Int32_
@@ -842,13 +832,6 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.byte
   - name: (
   - name: )
-- uid: System.IO.InvalidDataException
-  commentId: T:System.IO.InvalidDataException
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.io.invaliddataexception
-  name: InvalidDataException
-  nameWithType: InvalidDataException
-  fullName: System.IO.InvalidDataException
 - uid: TuiVision.Serialization.TBinaryArchiveReader.EnsureFullyConsumed*
   commentId: Overload:TuiVision.Serialization.TBinaryArchiveReader.EnsureFullyConsumed
   href: TuiVision.Serialization.TBinaryArchiveReader.html#TuiVision_Serialization_TBinaryArchiveReader_EnsureFullyConsumed

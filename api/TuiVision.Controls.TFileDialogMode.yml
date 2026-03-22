@@ -1,0 +1,122 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.TFileDialogMode
+  commentId: T:TuiVision.Controls.TFileDialogMode
+  id: TFileDialogMode
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.TFileDialogMode.Open
+  - TuiVision.Controls.TFileDialogMode.Save
+  langs:
+  - csharp
+  - vb
+  name: TFileDialogMode
+  nameWithType: TFileDialogMode
+  fullName: TuiVision.Controls.TFileDialogMode
+  type: Enum
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDialog.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TFileDialogMode
+    path: src/TuiVision.Controls/TFileDialog.cs
+    startLine: 12
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Dialogmodus fuer Dateiinteraktionen.
+
+
+    Dialog mode for file interactions.
+  example: []
+  syntax:
+    content: public enum TFileDialogMode
+    content.vb: Public Enum TFileDialogMode
+- uid: TuiVision.Controls.TFileDialogMode.Open
+  commentId: F:TuiVision.Controls.TFileDialogMode.Open
+  id: Open
+  parent: TuiVision.Controls.TFileDialogMode
+  langs:
+  - csharp
+  - vb
+  name: Open
+  nameWithType: TFileDialogMode.Open
+  fullName: TuiVision.Controls.TFileDialogMode.Open
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDialog.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Open
+    path: src/TuiVision.Controls/TFileDialog.cs
+    startLine: 15
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Datei oeffnen. / Open file.
+  example: []
+  syntax:
+    content: Open = 0
+    return:
+      type: TuiVision.Controls.TFileDialogMode
+- uid: TuiVision.Controls.TFileDialogMode.Save
+  commentId: F:TuiVision.Controls.TFileDialogMode.Save
+  id: Save
+  parent: TuiVision.Controls.TFileDialogMode
+  langs:
+  - csharp
+  - vb
+  name: Save
+  nameWithType: TFileDialogMode.Save
+  fullName: TuiVision.Controls.TFileDialogMode.Save
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDialog.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Save
+    path: src/TuiVision.Controls/TFileDialog.cs
+    startLine: 18
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Zieldatei waehlen. / Choose save target.
+  example: []
+  syntax:
+    content: Save = 1
+    return:
+      type: TuiVision.Controls.TFileDialogMode
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: TuiVision.Controls.TFileDialogMode
+  commentId: T:TuiVision.Controls.TFileDialogMode
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TFileDialogMode.html
+  name: TFileDialogMode
+  nameWithType: TFileDialogMode
+  fullName: TuiVision.Controls.TFileDialogMode
