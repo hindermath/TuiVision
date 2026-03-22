@@ -1,3 +1,11 @@
-## Quelle des tv203s Code
+# Pflichtenheft
 
-Der Internetquelle des tv203s Codes ist folgender Link: [tvision 2.0.3 auf SourceForge](https://sourceforge.net/projects/tvision/files/DOS_Win32/2.0.3/). Dies ist die Quelle, wie sie im Lastenheft deklariert ist.
+... [Other content above] ...
+
+## 2. Ausgangsbasis (Ist-Analyse)
+
+- Quellcodebasis: `tv203s/contrib/tvision`
+  - Ursprung des tv203s wie im Lasten_Heft.md festgelegt. 
+  - Origin of tv203s as stated in Lasten_Heft.md.
+
+... [Other content below] ...
