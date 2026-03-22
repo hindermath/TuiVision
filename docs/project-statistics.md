@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-03-21
+Stand: 2026-03-22
 
 ## Zweck und Pflege
 
@@ -33,18 +33,18 @@ fortgeschrieben.
 
 | Kennzahl | Wert |
 |---|---:|
-| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-21 |
-| Git-Commits gesamt | 116 |
+| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-22 |
+| Git-Commits gesamt | 125 |
 | Autoren laut Git | 1 |
 | Git-Aktivtage | 9 |
-| Produktionscode aktuell | 34 Dateien / 5710 Zeilen |
-| Testcode aktuell | 35 Dateien / 3881 Zeilen |
-| Dokumentation aktuell | 64 Dateien / 8811 Zeilen |
-| Davon Spec-Kit-Artefakte | 28 Dateien / 4971 Zeilen |
-| Davon Governance/Agent-Dateien | 5 Dateien / 820 Zeilen |
-| Codebasis fuer Handschaetzung | 9591 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 119.9 Arbeitstage |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 48.0 Arbeitstage |
+| Produktionscode aktuell | 61 Dateien / 8877 Zeilen |
+| Testcode aktuell | 54 Dateien / 5306 Zeilen |
+| Dokumentation aktuell | 72 Dateien / 10464 Zeilen |
+| Davon Spec-Kit-Artefakte | 44 Dateien / 7305 Zeilen |
+| Davon Governance/Agent-Dateien | 5 Dateien / 635 Zeilen |
+| Codebasis fuer Handschaetzung | 14183 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 177.3 Arbeitstage |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 70.9 Arbeitstage |
 
 ## Phasen und Haupt-Branches
 
@@ -122,6 +122,43 @@ fortgeschrieben.
   - 44.1 Arbeitstage fuer einen erfahrenen Entwickler
   - 17.6 Arbeitstage fuer ein 3er-Team (+20 % Koordination)
 
+### 4. `004-editor-file-help-streams`
+
+- Status: Implementierung im Working Tree abgeschlossen; Editor-, Datei-, Hilfe-,
+  Stream- und Ressourcenkomponenten stehen inklusive Validierung auf Branch
+  `004-editor-file-help-streams`
+- Beobachtbarer Zeitraum: 2026-03-21 bis 2026-03-22
+- Commit-Bild: 0 Commits an 0 Git-Aktivtagen; aktueller Stand liegt vollstaendig
+  im Working Tree
+- Grundlegende Arbeiten:
+  - Setup- und Foundation-Arbeiten: neues Testprojekt
+    `TuiVision.Serialization.Tests`, gesplittete Archiv-/Registry-Klassen,
+    Kompatibilitaets-Streams und nicht-modaler Host-Frame
+  - User Story 1: `TEditor`, `TMemo`, `TIndicator`, `TEditWindow` samt
+    Shell-Routing, Safe-Close, Undo, Suche/Ersetzen und Clipboard-Flows
+  - User Story 2: `THistory`, `TFileInputLine`, `TFileList`, `TDirListBox`,
+    `TFileEditor` und `TFileDialog` mit Datei-Metadaten-Synchronisation,
+    Filterung, manueller Pfadeingabe und Konfliktbehandlung
+  - User Story 3: `THelpTopic`, `THelpIndex`, `THelpFile`, `THelpViewer` und
+    `THelpWindow` fuer kontextbasierte Hilfe mit Querverweisen und Fallback
+  - User Story 4: `pstream`, `ipstream`, `opstream`, `fpstream`,
+    `TResourceCollection` und `TResourceFile` fuer Shared References,
+    Fehlersignale und case-sensitive Resource-Keys
+  - Abschlussvalidierung: `dotnet build --configuration Release`,
+    `dotnet test tests/TuiVision.Core.Tests/`,
+    `dotnet test tests/TuiVision.Controls.Tests/`,
+    `dotnet test tests/TuiVision.Serialization.Tests/`, `dotnet test`,
+    `dotnet test --collect:"XPlat Code Coverage"`,
+    `dotnet format --verify-no-changes` und `docfx docfx.json`
+- Snapshot-Zuwachs gegen den letzten Statistikstand:
+  - Produktionscode: +3167 / -0 / netto +3167
+  - Testcode: +1425 / -0 / netto +1425
+  - Dokumentation: +155 / -0 / netto +155
+- Konservative Handarbeits-Basis fuer diesen Implementierungsschritt:
+  - 4592 Codezeilen netto
+  - 57.4 Arbeitstage fuer einen erfahrenen Entwickler
+  - 23.0 Arbeitstage fuer ein 3er-Team (+20 % Koordination)
+
 ## Zusatz-Branches
 
 | Branch | Letzte sichtbare Aktivitaet | Rolle |
@@ -149,3 +186,12 @@ fortgeschrieben.
 | Datum | Ausloeser | Eintrag |
 |---|---|---|
 | 2026-03-21 | Erstanlage | Basisstatistik fuer `main`, `001-view-system-tgroup`, `002-application-framework` und den aktuellen Stand von `003-dialog-control-layer` erzeugt; Constitution, Templates und Agent-Dateien auf Pflegepflicht synchronisiert. |
+| 2026-03-21 | Branch `004-editor-file-help-streams` | Dokumentationsstand nach neuer Phase-6-Spezifikation, Requirements-Checklist und synchronisierten Agent-Dateien fortgeschrieben; kein Code- oder Testzuwachs in diesem Arbeitsschritt. |
+| 2026-03-21 | `/speckit-plan` fuer `004-editor-file-help-streams` | Planungsstand mit `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, `contracts/public-api.md` und synchronisierten Agent-Dateien fortgeschrieben; weiterhin kein Produktions- oder Testcodezuwachs in diesem Arbeitsschritt. |
+| 2026-03-21 | `/speckit-checklist` fuer `004-editor-file-help-streams` | Zusaetzliche Plan-Review-Checkliste `checklists/planning.md` mit Durchfuehrungshinweisen aufgenommen und den Dokumentationsstand fuer Branch `004-editor-file-help-streams` erneut fortgeschrieben. |
+| 2026-03-21 | Review der Plan-Checkliste | Planungsartefakte anhand von `checklists/planning.md` nachgeschaerft, Safe-Close- und Coverage-Klarstellungen eingepflegt und anschliessend alle 30 Review-Punkte in der Checkliste abgehakt. |
+| 2026-03-21 | Nachpruefung `/speckit-plan` | Keine weitere fachliche Plananpassung erforderlich; versehentlich ueberschriebener Working-Tree-Plan wiederhergestellt und gemeinsame Agent-Dateien auf den Post-Review-Planstand synchronisiert. |
+| 2026-03-21 | `/speckit-tasks` fuer `004-editor-file-help-streams` | Umsetzbare `tasks.md` mit 43 Aufgaben aus Plan, Datenmodell, Vertrag, Research und Quickstart erstellt; Branch damit vom Planungs- in den Ausfuehrungszustand ueberfuehrt. |
+| 2026-03-22 | Analyse-Remediation fuer `004-editor-file-help-streams` | Spec-, Plan-, Datenmodell-, Vertrags-, Quickstart- und Task-Artefakte sowie die gemeinsamen Agent-Dateien nach Analysefunden geschaerft: explizite Insert/Overwrite- und Clipboard-Abdeckung, synchronisierte Datei-Metadaten, Shell-Menue-/Status-Routing und das volle Coverage-Gate fuer `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization`. |
+| 2026-03-22 | Zweite Analyse-Remediation fuer `004-editor-file-help-streams` | Die letzten offenen Analysepunkte ausgeraumt: Event-Loop-Verhalten, Fokuswechsel, Menueausfuehrung und explizite Dialoginteraktion nun direkt in `spec.md`, `plan.md`, `quickstart.md`, `tasks.md` und den synchronisierten Agent-Dateien benannt; Story-Tests in der Spezifikation an den nachgeschaerften FR-Stand angeglichen. |
+| 2026-03-22 | `/speckit-implement` fuer `004-editor-file-help-streams` | Phase 6 im Working Tree implementiert: neue Editor-, Datei-, Hilfe-, Stream- und Resource-Typen samt Controls-/Serialization-Tests, Coverage-Sweeps, Validierung ueber Build/Test/Format/Coverage/`docfx` und Fortschreibung der Repository-Statistik. |

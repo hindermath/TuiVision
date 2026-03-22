@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Interface ITStreamSerializable | TuiVision Documentation ">
       
-      <meta name="description" content="Schnittstelle f&#252;r stream-basierte Serialisierung portierter Turbo-Vision-Record-Typen. Klassen, die diese Schnittstelle implementieren, k&#246;nnen ihren Zustand in einen  schreiben und sp&#228;ter wiederherstellen. Contract for stream-based serialization of ported Turbo Vision record types. Classes that implement this interface can write their state to a  and restore it later.">
+      <meta name="description" content="Schnittstelle fuer archivbasierte Serialisierung portierter Record-Typen. Contract for archive-based serialization of ported record types.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/003-dialog-control-layer/apiSpec/new?filename=TuiVision_Serialization_ITStreamSerializable.md&amp;value=---%0Auid%3A%20TuiVision.Serialization.ITStreamSerializable%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/004-editor-file-help-streams/apiSpec/new?filename=TuiVision_Serialization_ITStreamSerializable.md&amp;value=---%0Auid%3A%20TuiVision.Serialization.ITStreamSerializable%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TuiVision_Serialization_ITStreamSerializable" data-uid="TuiVision.Serialization.ITStreamSerializable" class="text-break">
-Interface ITStreamSerializable  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L14"><i class="bi bi-code-slash"></i></a>
+Interface ITStreamSerializable  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/ITStreamSerializable.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,12 +97,8 @@ Interface ITStreamSerializable  <a class="header-action link-secondary" title="V
   <dl><dt>Assembly</dt><dd>TuiVision.Serialization.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Schnittstelle für stream-basierte Serialisierung portierter Turbo-Vision-Record-Typen.
-Klassen, die diese Schnittstelle implementieren, können ihren Zustand in einen
-<a class="xref" href="TuiVision.Serialization.TBinaryArchiveWriter.html">TBinaryArchiveWriter</a> schreiben und später wiederherstellen.</p>
-<p>Contract for stream-based serialization of ported Turbo Vision record types.
-Classes that implement this interface can write their state to a
-<a class="xref" href="TuiVision.Serialization.TBinaryArchiveWriter.html">TBinaryArchiveWriter</a> and restore it later.</p>
+  <div class="markdown summary"><p>Schnittstelle fuer archivbasierte Serialisierung portierter Record-Typen.</p>
+<p>Contract for archive-based serialization of ported record types.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -130,11 +126,11 @@ Classes that implement this interface can write their state to a
 
   <h3 id="TuiVision_Serialization_ITStreamSerializable_SaveTo_TuiVision_Serialization_TBinaryArchiveWriter_" data-uid="TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)">
   SaveTo(TBinaryArchiveWriter)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/ITStreamSerializable.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Schreibt den Zustand dieses Objekts in den angegebenen Writer.</p>
-<p>Writes the state of this object to the specified writer.</p>
+  <div class="markdown level1 summary"><p>Schreibt den Zustand des Objekts in den angegebenen Writer.</p>
+<p>Writes the state of the object to the specified writer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -145,7 +141,7 @@ Classes that implement this interface can write their state to a
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>writer</code> <a class="xref" href="TuiVision.Serialization.TBinaryArchiveWriter.html">TBinaryArchiveWriter</a></dt>
-    <dd><p>Der Ziel-Writer. / The target writer.</p>
+    <dd><p>Der Ziel-Writer. / The destination writer.</p>
 </dd>
   </dl>
 
@@ -164,7 +160,7 @@ Classes that implement this interface can write their state to a
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/003-dialog-control-layer/src/TuiVision.Serialization/Class1.cs/#L14" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/004-editor-file-help-streams/src/TuiVision.Serialization/ITStreamSerializable.cs/#L11" class="edit-link">Edit this page</a>
         </div>
 
 

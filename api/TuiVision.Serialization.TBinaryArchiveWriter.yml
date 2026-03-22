@@ -8,8 +8,10 @@ items:
   - TuiVision.Serialization.TBinaryArchiveWriter.#ctor(System.IO.Stream,System.Boolean)
   - TuiVision.Serialization.TBinaryArchiveWriter.Dispose
   - TuiVision.Serialization.TBinaryArchiveWriter.WriteBoolean(System.Boolean)
+  - TuiVision.Serialization.TBinaryArchiveWriter.WriteByte(System.Byte)
   - TuiVision.Serialization.TBinaryArchiveWriter.WriteBytes(System.ReadOnlySpan{System.Byte})
   - TuiVision.Serialization.TBinaryArchiveWriter.WriteInt32(System.Int32)
+  - TuiVision.Serialization.TBinaryArchiveWriter.WriteInt64(System.Int64)
   - TuiVision.Serialization.TBinaryArchiveWriter.WriteString(System.String)
   - TuiVision.Serialization.TBinaryArchiveWriter.WriteUInt16(System.UInt16)
   langs:
@@ -21,24 +23,20 @@ items:
   type: Class
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: TBinaryArchiveWriter
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 31
+    path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+    startLine: 12
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Schmale Binär-Writer-Abstraktion für deterministisches Erstellen von Nutzdaten.
-
-    Kapselt einen <xref href="System.IO.BinaryWriter" data-throw-if-not-resolved="false"></xref> mit fester UTF-8-Kodierung.
+    Schmaler BinaryWriter fuer deterministische Serialisierung.
 
 
-    Thin binary writer abstraction for deterministic payload creation.
-
-    Wraps a <xref href="System.IO.BinaryWriter" data-throw-if-not-resolved="false"></xref> with fixed UTF-8 encoding.
+    Thin binary writer for deterministic serialization.
   example: []
   syntax:
     content: 'public sealed class TBinaryArchiveWriter : IDisposable'
@@ -67,59 +65,74 @@ items:
   type: Constructor
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 71
+    path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+    startLine: 24
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Erstellt einen neuen Writer für den angegebenen Stream.
+    Initialisiert einen neuen Archiv-Writer.
 
 
-    Creates a new writer for the specified stream.
+    Initializes a new archive writer.
   example: []
   syntax:
     content: public TBinaryArchiveWriter(Stream stream, bool leaveOpen = false)
     parameters:
     - id: stream
       type: System.IO.Stream
-      description: >-
-        Der Zielstream. Muss beschreibbar sein.
-
-        The target stream. Must be writable.
+      description: Der Zielstream. / The destination stream.
     - id: leaveOpen
       type: System.Boolean
-      description: >-
-        <code>true</code>, um den Stream nach dem Freigeben dieses Writers offen zu lassen;
-
-        <code>false</code>, um ihn zu schließen (Standard).
-
-
-        <code>true</code> to leave the stream open after disposing this writer;
-
-        <code>false</code> to close it (default).
+      description: Gibt an, ob der Stream offen bleiben soll. / Indicates whether the stream should stay open.
     content.vb: Public Sub New(stream As Stream, leaveOpen As Boolean = False)
   overload: TuiVision.Serialization.TBinaryArchiveWriter.#ctor*
-  exceptions:
-  - type: System.ArgumentNullException
-    commentId: T:System.ArgumentNullException
-    description: >-
-      Wird ausgelöst, wenn <code class="paramref">stream</code> <code>null</code> ist.
-
-      Thrown when <code class="paramref">stream</code> is <code>null</code>.
-  - type: System.ArgumentException
-    commentId: T:System.ArgumentException
-    description: >-
-      Wird ausgelöst, wenn <code class="paramref">stream</code> nicht beschreibbar ist.
-
-      Thrown when <code class="paramref">stream</code> is not writable.
   nameWithType.vb: TBinaryArchiveWriter.New(Stream, Boolean)
   fullName.vb: TuiVision.Serialization.TBinaryArchiveWriter.New(System.IO.Stream, Boolean)
   name.vb: New(Stream, Boolean)
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteByte(System.Byte)
+  commentId: M:TuiVision.Serialization.TBinaryArchiveWriter.WriteByte(System.Byte)
+  id: WriteByte(System.Byte)
+  parent: TuiVision.Serialization.TBinaryArchiveWriter
+  langs:
+  - csharp
+  - vb
+  name: WriteByte(byte)
+  nameWithType: TBinaryArchiveWriter.WriteByte(byte)
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.WriteByte(byte)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: WriteByte
+    path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+    startLine: 42
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Schreibt einen Byte-Wert.
+
+
+    Writes a byte value.
+  example: []
+  syntax:
+    content: public void WriteByte(byte value)
+    parameters:
+    - id: value
+      type: System.Byte
+      description: Der Wert. / The value.
+    content.vb: Public Sub WriteByte(value As Byte)
+  overload: TuiVision.Serialization.TBinaryArchiveWriter.WriteByte*
+  nameWithType.vb: TBinaryArchiveWriter.WriteByte(Byte)
+  fullName.vb: TuiVision.Serialization.TBinaryArchiveWriter.WriteByte(Byte)
+  name.vb: WriteByte(Byte)
 - uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteInt32(System.Int32)
   commentId: M:TuiVision.Serialization.TBinaryArchiveWriter.WriteInt32(System.Int32)
   id: WriteInt32(System.Int32)
@@ -133,32 +146,71 @@ items:
   type: Method
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteInt32
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 89
+    path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+    startLine: 50
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Schreibt einen 32-Bit-Integer-Wert in den Stream.
+    Schreibt einen 32-Bit-Integer.
 
 
-    Writes a 32-bit integer value to the stream.
+    Writes a 32-bit integer.
   example: []
   syntax:
     content: public void WriteInt32(int value)
     parameters:
     - id: value
       type: System.Int32
-      description: Der zu schreibende Wert. / The value to write.
+      description: Der Wert. / The value.
     content.vb: Public Sub WriteInt32(value As Integer)
   overload: TuiVision.Serialization.TBinaryArchiveWriter.WriteInt32*
   nameWithType.vb: TBinaryArchiveWriter.WriteInt32(Integer)
   fullName.vb: TuiVision.Serialization.TBinaryArchiveWriter.WriteInt32(Integer)
   name.vb: WriteInt32(Integer)
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteInt64(System.Int64)
+  commentId: M:TuiVision.Serialization.TBinaryArchiveWriter.WriteInt64(System.Int64)
+  id: WriteInt64(System.Int64)
+  parent: TuiVision.Serialization.TBinaryArchiveWriter
+  langs:
+  - csharp
+  - vb
+  name: WriteInt64(long)
+  nameWithType: TBinaryArchiveWriter.WriteInt64(long)
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.WriteInt64(long)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: WriteInt64
+    path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+    startLine: 58
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Schreibt einen 64-Bit-Integer.
+
+
+    Writes a 64-bit integer.
+  example: []
+  syntax:
+    content: public void WriteInt64(long value)
+    parameters:
+    - id: value
+      type: System.Int64
+      description: Der Wert. / The value.
+    content.vb: Public Sub WriteInt64(value As Long)
+  overload: TuiVision.Serialization.TBinaryArchiveWriter.WriteInt64*
+  nameWithType.vb: TBinaryArchiveWriter.WriteInt64(Long)
+  fullName.vb: TuiVision.Serialization.TBinaryArchiveWriter.WriteInt64(Long)
+  name.vb: WriteInt64(Long)
 - uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteUInt16(System.UInt16)
   commentId: M:TuiVision.Serialization.TBinaryArchiveWriter.WriteUInt16(System.UInt16)
   id: WriteUInt16(System.UInt16)
@@ -172,27 +224,27 @@ items:
   type: Method
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteUInt16
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 97
+    path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+    startLine: 66
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Schreibt einen vorzeichenlosen 16-Bit-Integer-Wert in den Stream.
+    Schreibt einen UInt16-Wert.
 
 
-    Writes an unsigned 16-bit integer value to the stream.
+    Writes a UInt16 value.
   example: []
   syntax:
     content: public void WriteUInt16(ushort value)
     parameters:
     - id: value
       type: System.UInt16
-      description: Der zu schreibende Wert. / The value to write.
+      description: Der Wert. / The value.
     content.vb: Public Sub WriteUInt16(value As UShort)
   overload: TuiVision.Serialization.TBinaryArchiveWriter.WriteUInt16*
   nameWithType.vb: TBinaryArchiveWriter.WriteUInt16(UShort)
@@ -211,27 +263,27 @@ items:
   type: Method
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteBoolean
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 105
+    path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+    startLine: 74
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Schreibt einen booleschen Wert in den Stream.
+    Schreibt einen Bool-Wert.
 
 
-    Writes a boolean value to the stream.
+    Writes a Boolean value.
   example: []
   syntax:
     content: public void WriteBoolean(bool value)
     parameters:
     - id: value
       type: System.Boolean
-      description: Der zu schreibende Wert. / The value to write.
+      description: Der Wert. / The value.
     content.vb: Public Sub WriteBoolean(value As Boolean)
   overload: TuiVision.Serialization.TBinaryArchiveWriter.WriteBoolean*
   nameWithType.vb: TBinaryArchiveWriter.WriteBoolean(Boolean)
@@ -250,36 +302,29 @@ items:
   type: Method
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteString
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 117
+    path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+    startLine: 82
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Schreibt eine Zeichenkette im .NET-BinaryWriter-Format (Länge + UTF-8-Bytes) in den Stream.
+    Schreibt einen String.
 
 
-    Writes a string in .NET BinaryWriter format (length prefix + UTF-8 bytes) to the stream.
+    Writes a string.
   example: []
   syntax:
     content: public void WriteString(string value)
     parameters:
     - id: value
       type: System.String
-      description: Die zu schreibende Zeichenkette. / The string to write.
+      description: Der zu schreibende String. / The string to write.
     content.vb: Public Sub WriteString(value As String)
   overload: TuiVision.Serialization.TBinaryArchiveWriter.WriteString*
-  exceptions:
-  - type: System.ArgumentNullException
-    commentId: T:System.ArgumentNullException
-    description: >-
-      Wird ausgelöst, wenn <code class="paramref">value</code> <code>null</code> ist.
-
-      Thrown when <code class="paramref">value</code> is <code>null</code>.
   nameWithType.vb: TBinaryArchiveWriter.WriteString(String)
   fullName.vb: TuiVision.Serialization.TBinaryArchiveWriter.WriteString(String)
   name.vb: WriteString(String)
@@ -296,20 +341,20 @@ items:
   type: Method
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteBytes
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 129
+    path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+    startLine: 94
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Schreibt einen Byte-Span direkt in den Stream.
+    Schreibt Rohbytes.
 
 
-    Writes a byte span directly to the stream.
+    Writes raw bytes.
   example: []
   syntax:
     content: public void WriteBytes(ReadOnlySpan<byte> bytes)
@@ -335,24 +380,20 @@ items:
   type: Method
   source:
     remote:
-      path: src/TuiVision.Serialization/Class1.cs
-      branch: 003-dialog-control-layer
+      path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Dispose
-    path: src/TuiVision.Serialization/Class1.cs
-    startLine: 138
+    path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
+    startLine: 101
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
   summary: >-
-    Gibt den Writer frei. Schließt den zugrunde liegenden Stream,
-
-    sofern <code>leaveOpen</code> beim Erstellen nicht auf <code>true</code> gesetzt wurde.
+    Gibt den Writer frei.
 
 
-    Disposes the writer. Closes the underlying stream
-
-    unless <code>leaveOpen</code> was set to <code>true</code> at construction.
+    Disposes the writer.
   example: []
   syntax:
     content: public void Dispose()
@@ -361,13 +402,6 @@ items:
   implements:
   - System.IDisposable.Dispose
 references:
-- uid: System.IO.BinaryWriter
-  commentId: T:System.IO.BinaryWriter
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
-  name: BinaryWriter
-  nameWithType: BinaryWriter
-  fullName: System.IO.BinaryWriter
 - uid: TuiVision.Serialization
   commentId: N:TuiVision.Serialization
   href: TuiVision.html
@@ -611,20 +645,6 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: System.ArgumentNullException
-  commentId: T:System.ArgumentNullException
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
-  name: ArgumentNullException
-  nameWithType: ArgumentNullException
-  fullName: System.ArgumentNullException
-- uid: System.ArgumentException
-  commentId: T:System.ArgumentException
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
-  name: ArgumentException
-  nameWithType: ArgumentException
-  fullName: System.ArgumentException
 - uid: TuiVision.Serialization.TBinaryArchiveWriter.#ctor*
   commentId: Overload:TuiVision.Serialization.TBinaryArchiveWriter.#ctor
   href: TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter__ctor_System_IO_Stream_System_Boolean_
@@ -680,6 +700,23 @@ references:
     name: IO
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteByte*
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveWriter.WriteByte
+  href: TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter_WriteByte_System_Byte_
+  name: WriteByte
+  nameWithType: TBinaryArchiveWriter.WriteByte
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.WriteByte
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
 - uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteInt32*
   commentId: Overload:TuiVision.Serialization.TBinaryArchiveWriter.WriteInt32
   href: TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter_WriteInt32_System_Int32_
@@ -697,6 +734,23 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
+- uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteInt64*
+  commentId: Overload:TuiVision.Serialization.TBinaryArchiveWriter.WriteInt64
+  href: TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter_WriteInt64_System_Int64_
+  name: WriteInt64
+  nameWithType: TBinaryArchiveWriter.WriteInt64
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter.WriteInt64
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
 - uid: TuiVision.Serialization.TBinaryArchiveWriter.WriteUInt16*
   commentId: Overload:TuiVision.Serialization.TBinaryArchiveWriter.WriteUInt16
   href: TuiVision.Serialization.TBinaryArchiveWriter.html#TuiVision_Serialization_TBinaryArchiveWriter_WriteUInt16_System_UInt16_

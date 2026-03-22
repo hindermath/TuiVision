@@ -1,0 +1,1487 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.TDirListBox
+  commentId: T:TuiVision.Controls.TDirListBox
+  id: TDirListBox
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.TDirListBox.#ctor(TuiVision.Core.TRect)
+  - TuiVision.Controls.TDirListBox.CurrentDirectory
+  - TuiVision.Controls.TDirListBox.Entries
+  - TuiVision.Controls.TDirListBox.GoToParent
+  - TuiVision.Controls.TDirListBox.NavigateToFocusedDirectory
+  - TuiVision.Controls.TDirListBox.Refresh(System.String)
+  langs:
+  - csharp
+  - vb
+  name: TDirListBox
+  nameWithType: TDirListBox
+  fullName: TuiVision.Controls.TDirListBox
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDirListBox.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TDirListBox
+    path: src/TuiVision.Controls/TDirListBox.cs
+    startLine: 12
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Verzeichnisliste fuer Dateidialoge.
+
+
+    Directory list for file dialogs.
+  example: []
+  syntax:
+    content: 'public sealed class TDirListBox : TListBox'
+    content.vb: Public NotInheritable Class TDirListBox Inherits TListBox
+  inheritance:
+  - System.Object
+  - TuiVision.Core.TObject
+  - TuiVision.Controls.TView
+  - TuiVision.Controls.TListViewer
+  - TuiVision.Controls.TListBox
+  inheritedMembers:
+  - TuiVision.Controls.TListBox.List
+  - TuiVision.Controls.TListBox.Selection
+  - TuiVision.Controls.TListBox.GetNumItems
+  - TuiVision.Controls.TListBox.GetText(System.Int32,System.Int32)
+  - TuiVision.Controls.TListBox.HandleEvent(TuiVision.Core.TEvent)
+  - TuiVision.Controls.TListViewer.NumCols
+  - TuiVision.Controls.TListViewer.TopItem
+  - TuiVision.Controls.TListViewer.FocusedItem
+  - TuiVision.Controls.TListViewer.VScrollBar
+  - TuiVision.Controls.TListViewer.HScrollBar
+  - TuiVision.Controls.TListViewer.FocusItem(System.Int32)
+  - TuiVision.Controls.TListViewer.SelectItem(System.Int32)
+  - TuiVision.Controls.TListViewer.Draw
+  - TuiVision.Controls.TView.Owner
+  - TuiVision.Controls.TView.Options
+  - TuiVision.Controls.TView.EventMask
+  - TuiVision.Controls.TView.State
+  - TuiVision.Controls.TView.Origin
+  - TuiVision.Controls.TView.Size
+  - TuiVision.Controls.TView.GetBounds
+  - TuiVision.Controls.TView.GetExtent
+  - TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)
+  - TuiVision.Controls.TView.Show
+  - TuiVision.Controls.TView.Hide
+  - TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState,System.Boolean)
+  - TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint@,TuiVision.Core.TPoint@)
+  - TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)
+  - TuiVision.Controls.TView.MoveTo(System.Int32,System.Int32)
+  - TuiVision.Controls.TView.GrowTo(System.Int32,System.Int32)
+  - TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)
+  - TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
+  - TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
+  - TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
+  - TuiVision.Controls.TView.DrawView
+  - TuiVision.Controls.TView.GetStatusHints
+  - TuiVision.Core.TObject.ShutDown
+  - TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Controls.TDirListBox.#ctor(TuiVision.Core.TRect)
+  commentId: M:TuiVision.Controls.TDirListBox.#ctor(TuiVision.Core.TRect)
+  id: '#ctor(TuiVision.Core.TRect)'
+  parent: TuiVision.Controls.TDirListBox
+  langs:
+  - csharp
+  - vb
+  name: TDirListBox(TRect)
+  nameWithType: TDirListBox.TDirListBox(TRect)
+  fullName: TuiVision.Controls.TDirListBox.TDirListBox(TuiVision.Core.TRect)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDirListBox.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Controls/TDirListBox.cs
+    startLine: 22
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Initialisiert eine neue Verzeichnisliste.
+
+
+    Initializes a new directory list.
+  example: []
+  syntax:
+    content: public TDirListBox(TRect bounds)
+    parameters:
+    - id: bounds
+      type: TuiVision.Core.TRect
+      description: Die Bounds der Liste. / The list bounds.
+    content.vb: Public Sub New(bounds As TRect)
+  overload: TuiVision.Controls.TDirListBox.#ctor*
+  nameWithType.vb: TDirListBox.New(TRect)
+  fullName.vb: TuiVision.Controls.TDirListBox.New(TuiVision.Core.TRect)
+  name.vb: New(TRect)
+- uid: TuiVision.Controls.TDirListBox.CurrentDirectory
+  commentId: P:TuiVision.Controls.TDirListBox.CurrentDirectory
+  id: CurrentDirectory
+  parent: TuiVision.Controls.TDirListBox
+  langs:
+  - csharp
+  - vb
+  name: CurrentDirectory
+  nameWithType: TDirListBox.CurrentDirectory
+  fullName: TuiVision.Controls.TDirListBox.CurrentDirectory
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDirListBox.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: CurrentDirectory
+    path: src/TuiVision.Controls/TDirListBox.cs
+    startLine: 32
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Der aktuelle Ordnerkontext.
+
+
+    The current directory context.
+  example: []
+  syntax:
+    content: public string CurrentDirectory { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property CurrentDirectory As String
+  overload: TuiVision.Controls.TDirListBox.CurrentDirectory*
+- uid: TuiVision.Controls.TDirListBox.Entries
+  commentId: P:TuiVision.Controls.TDirListBox.Entries
+  id: Entries
+  parent: TuiVision.Controls.TDirListBox
+  langs:
+  - csharp
+  - vb
+  name: Entries
+  nameWithType: TDirListBox.Entries
+  fullName: TuiVision.Controls.TDirListBox.Entries
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDirListBox.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Entries
+    path: src/TuiVision.Controls/TDirListBox.cs
+    startLine: 39
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Die sichtbaren Unterverzeichnisse.
+
+
+    The visible subdirectories.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> Entries { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public ReadOnly Property Entries As IReadOnlyList(Of String)
+  overload: TuiVision.Controls.TDirListBox.Entries*
+- uid: TuiVision.Controls.TDirListBox.Refresh(System.String)
+  commentId: M:TuiVision.Controls.TDirListBox.Refresh(System.String)
+  id: Refresh(System.String)
+  parent: TuiVision.Controls.TDirListBox
+  langs:
+  - csharp
+  - vb
+  name: Refresh(string)
+  nameWithType: TDirListBox.Refresh(string)
+  fullName: TuiVision.Controls.TDirListBox.Refresh(string)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDirListBox.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Refresh
+    path: src/TuiVision.Controls/TDirListBox.cs
+    startLine: 47
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Laedt die Unterverzeichnisse eines Ordners.
+
+
+    Loads the subdirectories of a directory.
+  example: []
+  syntax:
+    content: public void Refresh(string directory)
+    parameters:
+    - id: directory
+      type: System.String
+      description: Der Quellordner. / The source directory.
+    content.vb: Public Sub Refresh(directory As String)
+  overload: TuiVision.Controls.TDirListBox.Refresh*
+  nameWithType.vb: TDirListBox.Refresh(String)
+  fullName.vb: TuiVision.Controls.TDirListBox.Refresh(String)
+  name.vb: Refresh(String)
+- uid: TuiVision.Controls.TDirListBox.NavigateToFocusedDirectory
+  commentId: M:TuiVision.Controls.TDirListBox.NavigateToFocusedDirectory
+  id: NavigateToFocusedDirectory
+  parent: TuiVision.Controls.TDirListBox
+  langs:
+  - csharp
+  - vb
+  name: NavigateToFocusedDirectory()
+  nameWithType: TDirListBox.NavigateToFocusedDirectory()
+  fullName: TuiVision.Controls.TDirListBox.NavigateToFocusedDirectory()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDirListBox.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: NavigateToFocusedDirectory
+    path: src/TuiVision.Controls/TDirListBox.cs
+    startLine: 71
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Navigiert in das fokussierte Unterverzeichnis.
+
+
+    Navigates into the focused subdirectory.
+  example: []
+  syntax:
+    content: public string NavigateToFocusedDirectory()
+    return:
+      type: System.String
+      description: Der neue Ordnerpfad. / The new directory path.
+    content.vb: Public Function NavigateToFocusedDirectory() As String
+  overload: TuiVision.Controls.TDirListBox.NavigateToFocusedDirectory*
+- uid: TuiVision.Controls.TDirListBox.GoToParent
+  commentId: M:TuiVision.Controls.TDirListBox.GoToParent
+  id: GoToParent
+  parent: TuiVision.Controls.TDirListBox
+  langs:
+  - csharp
+  - vb
+  name: GoToParent()
+  nameWithType: TDirListBox.GoToParent()
+  fullName: TuiVision.Controls.TDirListBox.GoToParent()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDirListBox.cs
+      branch: 004-editor-file-help-streams
+      repo: https://github.com/hindermath/TuiVision.git
+    id: GoToParent
+    path: src/TuiVision.Controls/TDirListBox.cs
+    startLine: 89
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Navigiert zum uebergeordneten Ordner.
+
+
+    Navigates to the parent directory.
+  example: []
+  syntax:
+    content: public string GoToParent()
+    return:
+      type: System.String
+      description: Der neue Ordnerpfad. / The new directory path.
+    content.vb: Public Function GoToParent() As String
+  overload: TuiVision.Controls.TDirListBox.GoToParent*
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TuiVision.Core.TObject
+  commentId: T:TuiVision.Core.TObject
+  parent: TuiVision.Core
+  href: TuiVision.Core.TObject.html
+  name: TObject
+  nameWithType: TObject
+  fullName: TuiVision.Core.TObject
+- uid: TuiVision.Controls.TView
+  commentId: T:TuiVision.Controls.TView
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TView.html
+  name: TView
+  nameWithType: TView
+  fullName: TuiVision.Controls.TView
+- uid: TuiVision.Controls.TListViewer
+  commentId: T:TuiVision.Controls.TListViewer
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TListViewer.html
+  name: TListViewer
+  nameWithType: TListViewer
+  fullName: TuiVision.Controls.TListViewer
+- uid: TuiVision.Controls.TListBox
+  commentId: T:TuiVision.Controls.TListBox
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TListBox.html
+  name: TListBox
+  nameWithType: TListBox
+  fullName: TuiVision.Controls.TListBox
+- uid: TuiVision.Controls.TListBox.List
+  commentId: P:TuiVision.Controls.TListBox.List
+  parent: TuiVision.Controls.TListBox
+  href: TuiVision.Controls.TListBox.html#TuiVision_Controls_TListBox_List
+  name: List
+  nameWithType: TListBox.List
+  fullName: TuiVision.Controls.TListBox.List
+- uid: TuiVision.Controls.TListBox.Selection
+  commentId: P:TuiVision.Controls.TListBox.Selection
+  parent: TuiVision.Controls.TListBox
+  href: TuiVision.Controls.TListBox.html#TuiVision_Controls_TListBox_Selection
+  name: Selection
+  nameWithType: TListBox.Selection
+  fullName: TuiVision.Controls.TListBox.Selection
+- uid: TuiVision.Controls.TListBox.GetNumItems
+  commentId: M:TuiVision.Controls.TListBox.GetNumItems
+  parent: TuiVision.Controls.TListBox
+  href: TuiVision.Controls.TListBox.html#TuiVision_Controls_TListBox_GetNumItems
+  name: GetNumItems()
+  nameWithType: TListBox.GetNumItems()
+  fullName: TuiVision.Controls.TListBox.GetNumItems()
+  spec.csharp:
+  - uid: TuiVision.Controls.TListBox.GetNumItems
+    name: GetNumItems
+    href: TuiVision.Controls.TListBox.html#TuiVision_Controls_TListBox_GetNumItems
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TListBox.GetNumItems
+    name: GetNumItems
+    href: TuiVision.Controls.TListBox.html#TuiVision_Controls_TListBox_GetNumItems
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TListBox.GetText(System.Int32,System.Int32)
+  commentId: M:TuiVision.Controls.TListBox.GetText(System.Int32,System.Int32)
+  parent: TuiVision.Controls.TListBox
+  isExternal: true
+  href: TuiVision.Controls.TListBox.html#TuiVision_Controls_TListBox_GetText_System_Int32_System_Int32_
+  name: GetText(int, int)
+  nameWithType: TListBox.GetText(int, int)
+  fullName: TuiVision.Controls.TListBox.GetText(int, int)
+  nameWithType.vb: TListBox.GetText(Integer, Integer)
+  fullName.vb: TuiVision.Controls.TListBox.GetText(Integer, Integer)
+  name.vb: GetText(Integer, Integer)
+  spec.csharp:
+  - uid: TuiVision.Controls.TListBox.GetText(System.Int32,System.Int32)
+    name: GetText
+    href: TuiVision.Controls.TListBox.html#TuiVision_Controls_TListBox_GetText_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TListBox.GetText(System.Int32,System.Int32)
+    name: GetText
+    href: TuiVision.Controls.TListBox.html#TuiVision_Controls_TListBox_GetText_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: TuiVision.Controls.TListBox.HandleEvent(TuiVision.Core.TEvent)
+  commentId: M:TuiVision.Controls.TListBox.HandleEvent(TuiVision.Core.TEvent)
+  parent: TuiVision.Controls.TListBox
+  href: TuiVision.Controls.TListBox.html#TuiVision_Controls_TListBox_HandleEvent_TuiVision_Core_TEvent_
+  name: HandleEvent(TEvent)
+  nameWithType: TListBox.HandleEvent(TEvent)
+  fullName: TuiVision.Controls.TListBox.HandleEvent(TuiVision.Core.TEvent)
+  spec.csharp:
+  - uid: TuiVision.Controls.TListBox.HandleEvent(TuiVision.Core.TEvent)
+    name: HandleEvent
+    href: TuiVision.Controls.TListBox.html#TuiVision_Controls_TListBox_HandleEvent_TuiVision_Core_TEvent_
+  - name: (
+  - uid: TuiVision.Core.TEvent
+    name: TEvent
+    href: TuiVision.Core.TEvent.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TListBox.HandleEvent(TuiVision.Core.TEvent)
+    name: HandleEvent
+    href: TuiVision.Controls.TListBox.html#TuiVision_Controls_TListBox_HandleEvent_TuiVision_Core_TEvent_
+  - name: (
+  - uid: TuiVision.Core.TEvent
+    name: TEvent
+    href: TuiVision.Core.TEvent.html
+  - name: )
+- uid: TuiVision.Controls.TListViewer.NumCols
+  commentId: P:TuiVision.Controls.TListViewer.NumCols
+  parent: TuiVision.Controls.TListViewer
+  href: TuiVision.Controls.TListViewer.html#TuiVision_Controls_TListViewer_NumCols
+  name: NumCols
+  nameWithType: TListViewer.NumCols
+  fullName: TuiVision.Controls.TListViewer.NumCols
+- uid: TuiVision.Controls.TListViewer.TopItem
+  commentId: P:TuiVision.Controls.TListViewer.TopItem
+  parent: TuiVision.Controls.TListViewer
+  href: TuiVision.Controls.TListViewer.html#TuiVision_Controls_TListViewer_TopItem
+  name: TopItem
+  nameWithType: TListViewer.TopItem
+  fullName: TuiVision.Controls.TListViewer.TopItem
+- uid: TuiVision.Controls.TListViewer.FocusedItem
+  commentId: P:TuiVision.Controls.TListViewer.FocusedItem
+  parent: TuiVision.Controls.TListViewer
+  href: TuiVision.Controls.TListViewer.html#TuiVision_Controls_TListViewer_FocusedItem
+  name: FocusedItem
+  nameWithType: TListViewer.FocusedItem
+  fullName: TuiVision.Controls.TListViewer.FocusedItem
+- uid: TuiVision.Controls.TListViewer.VScrollBar
+  commentId: P:TuiVision.Controls.TListViewer.VScrollBar
+  parent: TuiVision.Controls.TListViewer
+  href: TuiVision.Controls.TListViewer.html#TuiVision_Controls_TListViewer_VScrollBar
+  name: VScrollBar
+  nameWithType: TListViewer.VScrollBar
+  fullName: TuiVision.Controls.TListViewer.VScrollBar
+- uid: TuiVision.Controls.TListViewer.HScrollBar
+  commentId: P:TuiVision.Controls.TListViewer.HScrollBar
+  parent: TuiVision.Controls.TListViewer
+  href: TuiVision.Controls.TListViewer.html#TuiVision_Controls_TListViewer_HScrollBar
+  name: HScrollBar
+  nameWithType: TListViewer.HScrollBar
+  fullName: TuiVision.Controls.TListViewer.HScrollBar
+- uid: TuiVision.Controls.TListViewer.FocusItem(System.Int32)
+  commentId: M:TuiVision.Controls.TListViewer.FocusItem(System.Int32)
+  parent: TuiVision.Controls.TListViewer
+  isExternal: true
+  href: TuiVision.Controls.TListViewer.html#TuiVision_Controls_TListViewer_FocusItem_System_Int32_
+  name: FocusItem(int)
+  nameWithType: TListViewer.FocusItem(int)
+  fullName: TuiVision.Controls.TListViewer.FocusItem(int)
+  nameWithType.vb: TListViewer.FocusItem(Integer)
+  fullName.vb: TuiVision.Controls.TListViewer.FocusItem(Integer)
+  name.vb: FocusItem(Integer)
+  spec.csharp:
+  - uid: TuiVision.Controls.TListViewer.FocusItem(System.Int32)
+    name: FocusItem
+    href: TuiVision.Controls.TListViewer.html#TuiVision_Controls_TListViewer_FocusItem_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TListViewer.FocusItem(System.Int32)
+    name: FocusItem
+    href: TuiVision.Controls.TListViewer.html#TuiVision_Controls_TListViewer_FocusItem_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: TuiVision.Controls.TListViewer.SelectItem(System.Int32)
+  commentId: M:TuiVision.Controls.TListViewer.SelectItem(System.Int32)
+  parent: TuiVision.Controls.TListViewer
+  isExternal: true
+  href: TuiVision.Controls.TListViewer.html#TuiVision_Controls_TListViewer_SelectItem_System_Int32_
+  name: SelectItem(int)
+  nameWithType: TListViewer.SelectItem(int)
+  fullName: TuiVision.Controls.TListViewer.SelectItem(int)
+  nameWithType.vb: TListViewer.SelectItem(Integer)
+  fullName.vb: TuiVision.Controls.TListViewer.SelectItem(Integer)
+  name.vb: SelectItem(Integer)
+  spec.csharp:
+  - uid: TuiVision.Controls.TListViewer.SelectItem(System.Int32)
+    name: SelectItem
+    href: TuiVision.Controls.TListViewer.html#TuiVision_Controls_TListViewer_SelectItem_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TListViewer.SelectItem(System.Int32)
+    name: SelectItem
+    href: TuiVision.Controls.TListViewer.html#TuiVision_Controls_TListViewer_SelectItem_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: TuiVision.Controls.TListViewer.Draw
+  commentId: M:TuiVision.Controls.TListViewer.Draw
+  parent: TuiVision.Controls.TListViewer
+  href: TuiVision.Controls.TListViewer.html#TuiVision_Controls_TListViewer_Draw
+  name: Draw()
+  nameWithType: TListViewer.Draw()
+  fullName: TuiVision.Controls.TListViewer.Draw()
+  spec.csharp:
+  - uid: TuiVision.Controls.TListViewer.Draw
+    name: Draw
+    href: TuiVision.Controls.TListViewer.html#TuiVision_Controls_TListViewer_Draw
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TListViewer.Draw
+    name: Draw
+    href: TuiVision.Controls.TListViewer.html#TuiVision_Controls_TListViewer_Draw
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TView.Owner
+  commentId: P:TuiVision.Controls.TView.Owner
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Owner
+  name: Owner
+  nameWithType: TView.Owner
+  fullName: TuiVision.Controls.TView.Owner
+- uid: TuiVision.Controls.TView.Options
+  commentId: P:TuiVision.Controls.TView.Options
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Options
+  name: Options
+  nameWithType: TView.Options
+  fullName: TuiVision.Controls.TView.Options
+- uid: TuiVision.Controls.TView.EventMask
+  commentId: P:TuiVision.Controls.TView.EventMask
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_EventMask
+  name: EventMask
+  nameWithType: TView.EventMask
+  fullName: TuiVision.Controls.TView.EventMask
+- uid: TuiVision.Controls.TView.State
+  commentId: P:TuiVision.Controls.TView.State
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_State
+  name: State
+  nameWithType: TView.State
+  fullName: TuiVision.Controls.TView.State
+- uid: TuiVision.Controls.TView.Origin
+  commentId: P:TuiVision.Controls.TView.Origin
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Origin
+  name: Origin
+  nameWithType: TView.Origin
+  fullName: TuiVision.Controls.TView.Origin
+- uid: TuiVision.Controls.TView.Size
+  commentId: P:TuiVision.Controls.TView.Size
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Size
+  name: Size
+  nameWithType: TView.Size
+  fullName: TuiVision.Controls.TView.Size
+- uid: TuiVision.Controls.TView.GetBounds
+  commentId: M:TuiVision.Controls.TView.GetBounds
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetBounds
+  name: GetBounds()
+  nameWithType: TView.GetBounds()
+  fullName: TuiVision.Controls.TView.GetBounds()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.GetBounds
+    name: GetBounds
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetBounds
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.GetBounds
+    name: GetBounds
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetBounds
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TView.GetExtent
+  commentId: M:TuiVision.Controls.TView.GetExtent
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetExtent
+  name: GetExtent()
+  nameWithType: TView.GetExtent()
+  fullName: TuiVision.Controls.TView.GetExtent()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.GetExtent
+    name: GetExtent
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetExtent
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.GetExtent
+    name: GetExtent
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetExtent
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)
+  commentId: M:TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetState_TuiVision_Controls_TViewState_
+  name: GetState(TViewState)
+  nameWithType: TView.GetState(TViewState)
+  fullName: TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)
+    name: GetState
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetState_TuiVision_Controls_TViewState_
+  - name: (
+  - uid: TuiVision.Controls.TViewState
+    name: TViewState
+    href: TuiVision.Controls.TViewState.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)
+    name: GetState
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetState_TuiVision_Controls_TViewState_
+  - name: (
+  - uid: TuiVision.Controls.TViewState
+    name: TViewState
+    href: TuiVision.Controls.TViewState.html
+  - name: )
+- uid: TuiVision.Controls.TView.Show
+  commentId: M:TuiVision.Controls.TView.Show
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Show
+  name: Show()
+  nameWithType: TView.Show()
+  fullName: TuiVision.Controls.TView.Show()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.Show
+    name: Show
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Show
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.Show
+    name: Show
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Show
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TView.Hide
+  commentId: M:TuiVision.Controls.TView.Hide
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Hide
+  name: Hide()
+  nameWithType: TView.Hide()
+  fullName: TuiVision.Controls.TView.Hide()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.Hide
+    name: Hide
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Hide
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.Hide
+    name: Hide
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Hide
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState,System.Boolean)
+  commentId: M:TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState,System.Boolean)
+  parent: TuiVision.Controls.TView
+  isExternal: true
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetState_TuiVision_Controls_TViewState_System_Boolean_
+  name: SetState(TViewState, bool)
+  nameWithType: TView.SetState(TViewState, bool)
+  fullName: TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState, bool)
+  nameWithType.vb: TView.SetState(TViewState, Boolean)
+  fullName.vb: TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState, Boolean)
+  name.vb: SetState(TViewState, Boolean)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState,System.Boolean)
+    name: SetState
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetState_TuiVision_Controls_TViewState_System_Boolean_
+  - name: (
+  - uid: TuiVision.Controls.TViewState
+    name: TViewState
+    href: TuiVision.Controls.TViewState.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState,System.Boolean)
+    name: SetState
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetState_TuiVision_Controls_TViewState_System_Boolean_
+  - name: (
+  - uid: TuiVision.Controls.TViewState
+    name: TViewState
+    href: TuiVision.Controls.TViewState.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint@,TuiVision.Core.TPoint@)
+  commentId: M:TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint@,TuiVision.Core.TPoint@)
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SizeLimits_TuiVision_Core_TPoint__TuiVision_Core_TPoint__
+  name: SizeLimits(out TPoint, out TPoint)
+  nameWithType: TView.SizeLimits(out TPoint, out TPoint)
+  fullName: TuiVision.Controls.TView.SizeLimits(out TuiVision.Core.TPoint, out TuiVision.Core.TPoint)
+  nameWithType.vb: TView.SizeLimits(TPoint, TPoint)
+  fullName.vb: TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  name.vb: SizeLimits(TPoint, TPoint)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint@,TuiVision.Core.TPoint@)
+    name: SizeLimits
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SizeLimits_TuiVision_Core_TPoint__TuiVision_Core_TPoint__
+  - name: (
+  - name: out
+  - name: " "
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint@,TuiVision.Core.TPoint@)
+    name: SizeLimits
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SizeLimits_TuiVision_Core_TPoint__TuiVision_Core_TPoint__
+  - name: (
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: ','
+  - name: " "
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+- uid: TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)
+  commentId: M:TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_
+  name: Locate(TRect)
+  nameWithType: TView.Locate(TRect)
+  fullName: TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)
+    name: Locate
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_
+  - name: (
+  - uid: TuiVision.Core.TRect
+    name: TRect
+    href: TuiVision.Core.TRect.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)
+    name: Locate
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_
+  - name: (
+  - uid: TuiVision.Core.TRect
+    name: TRect
+    href: TuiVision.Core.TRect.html
+  - name: )
+- uid: TuiVision.Controls.TView.MoveTo(System.Int32,System.Int32)
+  commentId: M:TuiVision.Controls.TView.MoveTo(System.Int32,System.Int32)
+  parent: TuiVision.Controls.TView
+  isExternal: true
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MoveTo_System_Int32_System_Int32_
+  name: MoveTo(int, int)
+  nameWithType: TView.MoveTo(int, int)
+  fullName: TuiVision.Controls.TView.MoveTo(int, int)
+  nameWithType.vb: TView.MoveTo(Integer, Integer)
+  fullName.vb: TuiVision.Controls.TView.MoveTo(Integer, Integer)
+  name.vb: MoveTo(Integer, Integer)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.MoveTo(System.Int32,System.Int32)
+    name: MoveTo
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MoveTo_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.MoveTo(System.Int32,System.Int32)
+    name: MoveTo
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MoveTo_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: TuiVision.Controls.TView.GrowTo(System.Int32,System.Int32)
+  commentId: M:TuiVision.Controls.TView.GrowTo(System.Int32,System.Int32)
+  parent: TuiVision.Controls.TView
+  isExternal: true
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GrowTo_System_Int32_System_Int32_
+  name: GrowTo(int, int)
+  nameWithType: TView.GrowTo(int, int)
+  fullName: TuiVision.Controls.TView.GrowTo(int, int)
+  nameWithType.vb: TView.GrowTo(Integer, Integer)
+  fullName.vb: TuiVision.Controls.TView.GrowTo(Integer, Integer)
+  name.vb: GrowTo(Integer, Integer)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.GrowTo(System.Int32,System.Int32)
+    name: GrowTo
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GrowTo_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.GrowTo(System.Int32,System.Int32)
+    name: GrowTo
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GrowTo_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)
+  commentId: M:TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetBounds_TuiVision_Core_TRect_
+  name: SetBounds(TRect)
+  nameWithType: TView.SetBounds(TRect)
+  fullName: TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)
+    name: SetBounds
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetBounds_TuiVision_Core_TRect_
+  - name: (
+  - uid: TuiVision.Core.TRect
+    name: TRect
+    href: TuiVision.Core.TRect.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)
+    name: SetBounds
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetBounds_TuiVision_Core_TRect_
+  - name: (
+  - uid: TuiVision.Core.TRect
+    name: TRect
+    href: TuiVision.Core.TRect.html
+  - name: )
+- uid: TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
+  commentId: M:TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeGlobal_TuiVision_Core_TPoint_
+  name: MakeGlobal(TPoint)
+  nameWithType: TView.MakeGlobal(TPoint)
+  fullName: TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
+    name: MakeGlobal
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeGlobal_TuiVision_Core_TPoint_
+  - name: (
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
+    name: MakeGlobal
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeGlobal_TuiVision_Core_TPoint_
+  - name: (
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+- uid: TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
+  commentId: M:TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeLocal_TuiVision_Core_TPoint_
+  name: MakeLocal(TPoint)
+  nameWithType: TView.MakeLocal(TPoint)
+  fullName: TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
+    name: MakeLocal
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeLocal_TuiVision_Core_TPoint_
+  - name: (
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
+    name: MakeLocal
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeLocal_TuiVision_Core_TPoint_
+  - name: (
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+- uid: TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
+  commentId: M:TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MouseInView_TuiVision_Core_TPoint_
+  name: MouseInView(TPoint)
+  nameWithType: TView.MouseInView(TPoint)
+  fullName: TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
+    name: MouseInView
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MouseInView_TuiVision_Core_TPoint_
+  - name: (
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
+    name: MouseInView
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MouseInView_TuiVision_Core_TPoint_
+  - name: (
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+- uid: TuiVision.Controls.TView.DrawView
+  commentId: M:TuiVision.Controls.TView.DrawView
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView
+  name: DrawView()
+  nameWithType: TView.DrawView()
+  fullName: TuiVision.Controls.TView.DrawView()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.DrawView
+    name: DrawView
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.DrawView
+    name: DrawView
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TView.GetStatusHints
+  commentId: M:TuiVision.Controls.TView.GetStatusHints
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints
+  name: GetStatusHints()
+  nameWithType: TView.GetStatusHints()
+  fullName: TuiVision.Controls.TView.GetStatusHints()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.GetStatusHints
+    name: GetStatusHints
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.GetStatusHints
+    name: GetStatusHints
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints
+  - name: (
+  - name: )
+- uid: TuiVision.Core.TObject.ShutDown
+  commentId: M:TuiVision.Core.TObject.ShutDown
+  parent: TuiVision.Core.TObject
+  href: TuiVision.Core.TObject.html#TuiVision_Core_TObject_ShutDown
+  name: ShutDown()
+  nameWithType: TObject.ShutDown()
+  fullName: TuiVision.Core.TObject.ShutDown()
+  spec.csharp:
+  - uid: TuiVision.Core.TObject.ShutDown
+    name: ShutDown
+    href: TuiVision.Core.TObject.html#TuiVision_Core_TObject_ShutDown
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Core.TObject.ShutDown
+    name: ShutDown
+    href: TuiVision.Core.TObject.html#TuiVision_Core_TObject_ShutDown
+  - name: (
+  - name: )
+- uid: TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
+  commentId: M:TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
+  parent: TuiVision.Core.TObject
+  href: TuiVision.Core.TObject.html#TuiVision_Core_TObject_Destroy_TuiVision_Core_TObject_
+  name: Destroy(TObject)
+  nameWithType: TObject.Destroy(TObject)
+  fullName: TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
+  spec.csharp:
+  - uid: TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
+    name: Destroy
+    href: TuiVision.Core.TObject.html#TuiVision_Core_TObject_Destroy_TuiVision_Core_TObject_
+  - name: (
+  - uid: TuiVision.Core.TObject
+    name: TObject
+    href: TuiVision.Core.TObject.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
+    name: Destroy
+    href: TuiVision.Core.TObject.html#TuiVision_Core_TObject_Destroy_TuiVision_Core_TObject_
+  - name: (
+  - uid: TuiVision.Core.TObject
+    name: TObject
+    href: TuiVision.Core.TObject.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Core
+  commentId: N:TuiVision.Core
+  href: TuiVision.html
+  name: TuiVision.Core
+  nameWithType: TuiVision.Core
+  fullName: TuiVision.Core
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+- uid: TuiVision.Controls.TDirListBox.#ctor*
+  commentId: Overload:TuiVision.Controls.TDirListBox.#ctor
+  href: TuiVision.Controls.TDirListBox.html#TuiVision_Controls_TDirListBox__ctor_TuiVision_Core_TRect_
+  name: TDirListBox
+  nameWithType: TDirListBox.TDirListBox
+  fullName: TuiVision.Controls.TDirListBox.TDirListBox
+  nameWithType.vb: TDirListBox.New
+  fullName.vb: TuiVision.Controls.TDirListBox.New
+  name.vb: New
+- uid: TuiVision.Core.TRect
+  commentId: T:TuiVision.Core.TRect
+  parent: TuiVision.Core
+  href: TuiVision.Core.TRect.html
+  name: TRect
+  nameWithType: TRect
+  fullName: TuiVision.Core.TRect
+- uid: TuiVision.Controls.TDirListBox.CurrentDirectory*
+  commentId: Overload:TuiVision.Controls.TDirListBox.CurrentDirectory
+  href: TuiVision.Controls.TDirListBox.html#TuiVision_Controls_TDirListBox_CurrentDirectory
+  name: CurrentDirectory
+  nameWithType: TDirListBox.CurrentDirectory
+  fullName: TuiVision.Controls.TDirListBox.CurrentDirectory
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: TuiVision.Controls.TDirListBox.Entries*
+  commentId: Overload:TuiVision.Controls.TDirListBox.Entries
+  href: TuiVision.Controls.TDirListBox.html#TuiVision_Controls_TDirListBox_Entries
+  name: Entries
+  nameWithType: TDirListBox.Entries
+  fullName: TuiVision.Controls.TDirListBox.Entries
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TuiVision.Controls.TDirListBox.Refresh*
+  commentId: Overload:TuiVision.Controls.TDirListBox.Refresh
+  href: TuiVision.Controls.TDirListBox.html#TuiVision_Controls_TDirListBox_Refresh_System_String_
+  name: Refresh
+  nameWithType: TDirListBox.Refresh
+  fullName: TuiVision.Controls.TDirListBox.Refresh
+- uid: TuiVision.Controls.TDirListBox.NavigateToFocusedDirectory*
+  commentId: Overload:TuiVision.Controls.TDirListBox.NavigateToFocusedDirectory
+  href: TuiVision.Controls.TDirListBox.html#TuiVision_Controls_TDirListBox_NavigateToFocusedDirectory
+  name: NavigateToFocusedDirectory
+  nameWithType: TDirListBox.NavigateToFocusedDirectory
+  fullName: TuiVision.Controls.TDirListBox.NavigateToFocusedDirectory
+- uid: TuiVision.Controls.TDirListBox.GoToParent*
+  commentId: Overload:TuiVision.Controls.TDirListBox.GoToParent
+  href: TuiVision.Controls.TDirListBox.html#TuiVision_Controls_TDirListBox_GoToParent
+  name: GoToParent
+  nameWithType: TDirListBox.GoToParent
+  fullName: TuiVision.Controls.TDirListBox.GoToParent

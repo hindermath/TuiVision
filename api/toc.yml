@@ -38,8 +38,59 @@ items:
   - uid: TuiVision.Controls.TDialog
     name: TDialog
     type: Class
+  - uid: TuiVision.Controls.TDirListBox
+    name: TDirListBox
+    type: Class
+  - uid: TuiVision.Controls.TEditWindow
+    name: TEditWindow
+    type: Class
+  - uid: TuiVision.Controls.TEditor
+    name: TEditor
+    type: Class
+  - uid: TuiVision.Controls.TFileDialog
+    name: TFileDialog
+    type: Class
+  - uid: TuiVision.Controls.TFileDialogMode
+    name: TFileDialogMode
+    type: Enum
+  - uid: TuiVision.Controls.TFileEditor
+    name: TFileEditor
+    type: Class
+  - uid: TuiVision.Controls.TFileEntryKind
+    name: TFileEntryKind
+    type: Enum
+  - uid: TuiVision.Controls.TFileInputLine
+    name: TFileInputLine
+    type: Class
+  - uid: TuiVision.Controls.TFileList
+    name: TFileList
+    type: Class
+  - uid: TuiVision.Controls.TFileSaveConflict
+    name: TFileSaveConflict
+    type: Struct
+  - uid: TuiVision.Controls.TFileSaveConflictKind
+    name: TFileSaveConflictKind
+    type: Enum
+  - uid: TuiVision.Controls.TFileSelectionInfo
+    name: TFileSelectionInfo
+    type: Struct
+  - uid: TuiVision.Controls.TFileSnapshot
+    name: TFileSnapshot
+    type: Struct
   - uid: TuiVision.Controls.TGroup
     name: TGroup
+    type: Class
+  - uid: TuiVision.Controls.THelpViewer
+    name: THelpViewer
+    type: Class
+  - uid: TuiVision.Controls.THelpWindow
+    name: THelpWindow
+    type: Class
+  - uid: TuiVision.Controls.THistory
+    name: THistory
+    type: Class
+  - uid: TuiVision.Controls.TIndicator
+    name: TIndicator
     type: Class
   - uid: TuiVision.Controls.TInputLine
     name: TInputLine
@@ -47,11 +98,17 @@ items:
   - uid: TuiVision.Controls.TLabel
     name: TLabel
     type: Class
+  - uid: TuiVision.Controls.TLineEndingMode
+    name: TLineEndingMode
+    type: Enum
   - uid: TuiVision.Controls.TListBox
     name: TListBox
     type: Class
   - uid: TuiVision.Controls.TListViewer
     name: TListViewer
+    type: Class
+  - uid: TuiVision.Controls.TMemo
+    name: TMemo
     type: Class
   - uid: TuiVision.Controls.TMenuBar
     name: TMenuBar
@@ -92,6 +149,13 @@ items:
   - uid: TuiVision.Controls.TViewState
     name: TViewState
     type: Enum
+- uid: TuiVision.Controls.Internal
+  name: TuiVision.Controls.Internal
+  type: Namespace
+  items:
+  - uid: TuiVision.Controls.Internal.FramedHostView
+    name: FramedHostView
+    type: Class
 - uid: TuiVision.Core
   name: TuiVision.Core
   type: Namespace
@@ -146,16 +210,49 @@ items:
   - uid: TuiVision.Serialization.ITStreamSerializable
     name: ITStreamSerializable
     type: Interface
+  - uid: TuiVision.Serialization.SerializationModule
+    name: SerializationModule
+    type: Class
   - uid: TuiVision.Serialization.TBinaryArchiveReader
     name: TBinaryArchiveReader
     type: Class
   - uid: TuiVision.Serialization.TBinaryArchiveWriter
     name: TBinaryArchiveWriter
     type: Class
+  - uid: TuiVision.Serialization.THelpCrossReference
+    name: THelpCrossReference
+    type: Struct
+  - uid: TuiVision.Serialization.THelpFile
+    name: THelpFile
+    type: Class
+  - uid: TuiVision.Serialization.THelpIndex
+    name: THelpIndex
+    type: Class
+  - uid: TuiVision.Serialization.THelpTopic
+    name: THelpTopic
+    type: Class
   - uid: TuiVision.Serialization.TRecordRegistry
     name: TRecordRegistry
     type: Class
   - uid: TuiVision.Serialization.TRecordSerializer
     name: TRecordSerializer
+    type: Class
+  - uid: TuiVision.Serialization.TResourceCollection
+    name: TResourceCollection
+    type: Class
+  - uid: TuiVision.Serialization.TResourceFile
+    name: TResourceFile
+    type: Class
+  - uid: TuiVision.Serialization.fpstream
+    name: fpstream
+    type: Class
+  - uid: TuiVision.Serialization.ipstream
+    name: ipstream
+    type: Class
+  - uid: TuiVision.Serialization.opstream
+    name: opstream
+    type: Class
+  - uid: TuiVision.Serialization.pstream
+    name: pstream
     type: Class
 memberLayout: SamePage

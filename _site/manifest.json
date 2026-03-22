@@ -84,6 +84,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.Internal.FramedHostView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.Internal.FramedHostView.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.Internal.FramedHostView",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.Internal.FramedHostView.yml\" sourcestartlinenumber=\"1\">Schmaler nicht-modaler Host mit Rahmen und Titel fuer Desktop-Kinder.</p>\n<p sourcefile=\"api/TuiVision.Controls.Internal.FramedHostView.yml\" sourcestartlinenumber=\"3\">Narrow non-modal host with frame and title for desktop children.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.Internal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.Internal.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.Internal",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Controls.ShellCommandIds.yml",
       "output": {
         ".html": {
@@ -196,6 +224,188 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TDirListBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TDirListBox.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TDirListBox",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TDirListBox.yml\" sourcestartlinenumber=\"1\">Verzeichnisliste fuer Dateidialoge.</p>\n<p sourcefile=\"api/TuiVision.Controls.TDirListBox.yml\" sourcestartlinenumber=\"3\">Directory list for file dialogs.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TEditWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TEditWindow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TEditWindow",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TEditWindow.yml\" sourcestartlinenumber=\"1\">Nicht-modaler Editor-Host mit Rahmen, Titel und Safe-Close-Koordination.</p>\n<p sourcefile=\"api/TuiVision.Controls.TEditWindow.yml\" sourcestartlinenumber=\"3\">Non-modal editor host with frame, title, and safe-close coordination.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TEditor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TEditor",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TEditor.yml\" sourcestartlinenumber=\"1\">Wiederverwendbarer mehrzeiliger Texteditor mit Cursor-, Auswahl- und Suchlogik.</p>\n<p sourcefile=\"api/TuiVision.Controls.TEditor.yml\" sourcestartlinenumber=\"3\">Reusable multi-line text editor with cursor, selection, and search behaviour.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TFileDialog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TFileDialog.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TFileDialog",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TFileDialog.yml\" sourcestartlinenumber=\"1\">Koordiniert Ordnerliste, Dateiliste, Pfadeingabe und History innerhalb eines Dateidialogs.</p>\n<p sourcefile=\"api/TuiVision.Controls.TFileDialog.yml\" sourcestartlinenumber=\"3\">Coordinates directory list, file list, path input, and history within a file dialog.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TFileDialogMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TFileDialogMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TFileDialogMode",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TFileDialogMode.yml\" sourcestartlinenumber=\"1\">Dialogmodus fuer Dateiinteraktionen.</p>\n<p sourcefile=\"api/TuiVision.Controls.TFileDialogMode.yml\" sourcestartlinenumber=\"3\">Dialog mode for file interactions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TFileEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TFileEditor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TFileEditor",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TFileEditor.yml\" sourcestartlinenumber=\"1\">Dateigebundener Editor mit Snapshot-basierter Konflikterkennung.</p>\n<p sourcefile=\"api/TuiVision.Controls.TFileEditor.yml\" sourcestartlinenumber=\"3\">File-backed editor with snapshot-based conflict detection.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TFileEntryKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TFileEntryKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TFileEntryKind",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TFileEntryKind.yml\" sourcestartlinenumber=\"1\">Klassifiziert aktive Dateipfade in Dialogen.</p>\n<p sourcefile=\"api/TuiVision.Controls.TFileEntryKind.yml\" sourcestartlinenumber=\"3\">Classifies active file paths in dialogs.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TFileInputLine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TFileInputLine.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TFileInputLine",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TFileInputLine.yml\" sourcestartlinenumber=\"1\">Eingabezeile fuer Dateipfade mit History-Bucket-Anbindung.</p>\n<p sourcefile=\"api/TuiVision.Controls.TFileInputLine.yml\" sourcestartlinenumber=\"3\">Input line for file paths with history bucket integration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TFileList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TFileList.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TFileList",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TFileList.yml\" sourcestartlinenumber=\"1\">Gefilterte Dateiliste mit synchronisierter Dateiinformation.</p>\n<p sourcefile=\"api/TuiVision.Controls.TFileList.yml\" sourcestartlinenumber=\"3\">Filtered file list with synchronised file information.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TFileSaveConflict.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TFileSaveConflict.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TFileSaveConflict",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TFileSaveConflict.yml\" sourcestartlinenumber=\"1\">Beschreibt eine Save-Konfliktsituation.</p>\n<p sourcefile=\"api/TuiVision.Controls.TFileSaveConflict.yml\" sourcestartlinenumber=\"3\">Describes a save conflict situation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TFileSaveConflictKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TFileSaveConflictKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TFileSaveConflictKind",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TFileSaveConflictKind.yml\" sourcestartlinenumber=\"1\">Klassifiziert Speicherkonflikte fuer Dateieditoren.</p>\n<p sourcefile=\"api/TuiVision.Controls.TFileSaveConflictKind.yml\" sourcestartlinenumber=\"3\">Classifies save conflicts for file editors.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TFileSelectionInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TFileSelectionInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TFileSelectionInfo",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TFileSelectionInfo.yml\" sourcestartlinenumber=\"1\">Metadaten fuer den aktuell aktiven Datei- oder Pfadkontext eines Dialogs.</p>\n<p sourcefile=\"api/TuiVision.Controls.TFileSelectionInfo.yml\" sourcestartlinenumber=\"3\">Metadata for the currently active file or path context of a dialog.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TFileSnapshot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TFileSnapshot.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TFileSnapshot",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TFileSnapshot.yml\" sourcestartlinenumber=\"1\">Repräsentiert den gespeicherten Dateistand fuer Konflikterkennung.</p>\n<p sourcefile=\"api/TuiVision.Controls.TFileSnapshot.yml\" sourcestartlinenumber=\"3\">Represents the stored file state for conflict detection.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Controls.TGroup.yml",
       "output": {
         ".html": {
@@ -207,6 +417,62 @@
       "IsMRef": true,
       "Title": "TuiVision.Controls.TGroup",
       "Summary": "<p sourcefile=\"api/TuiVision.Controls.TGroup.yml\" sourcestartlinenumber=\"1\">Container-Ansicht, die Kind-Views in einer zirkulären doppelt-verlinkten Liste verwaltet.\n<xref href=\"TuiVision.Controls.TGroup\" data-throw-if-not-resolved=\"false\"></xref> implementiert Einfügen/Entfernen, Drei-Phasen-Ereignis-Dispatching,\nFokus-Management, Zeichenpuffer-Lifecycle und State-Propagation.\nPortiert von <code>TGroup</code> aus Turbo Vision 2.0.3.</p>\n<p sourcefile=\"api/TuiVision.Controls.TGroup.yml\" sourcestartlinenumber=\"6\">Container view that manages child views in a circular singly-linked list.\n<xref href=\"TuiVision.Controls.TGroup\" data-throw-if-not-resolved=\"false\"></xref> implements insertion/removal, three-phase event dispatching,\nfocus management, draw-buffer lifecycle, and state propagation.\nPorted from <code>TGroup</code> in Turbo Vision 2.0.3.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.THelpViewer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.THelpViewer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.THelpViewer",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.THelpViewer.yml\" sourcestartlinenumber=\"1\">Scrollbarer Laufzeit-Viewer fuer kontextbezogene Hilfethemen.</p>\n<p sourcefile=\"api/TuiVision.Controls.THelpViewer.yml\" sourcestartlinenumber=\"3\">Scrollable runtime viewer for context-sensitive help topics.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.THelpWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.THelpWindow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.THelpWindow",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.THelpWindow.yml\" sourcestartlinenumber=\"1\">Nicht-modaler Host fuer runtime-lesbare Hilfe.</p>\n<p sourcefile=\"api/TuiVision.Controls.THelpWindow.yml\" sourcestartlinenumber=\"3\">Non-modal host for runtime-readable help.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.THistory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.THistory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.THistory",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.THistory.yml\" sourcestartlinenumber=\"1\">In-Memory-History mit Buckets pro History-ID.</p>\n<p sourcefile=\"api/TuiVision.Controls.THistory.yml\" sourcestartlinenumber=\"3\">In-memory history with buckets per history identifier.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TIndicator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TIndicator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TIndicator",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TIndicator.yml\" sourcestartlinenumber=\"1\">Einfache Statusanzeige fuer Cursorposition, Modus und Dirty-State eines Editors.</p>\n<p sourcefile=\"api/TuiVision.Controls.TIndicator.yml\" sourcestartlinenumber=\"3\">Simple indicator for editor cursor position, mode, and dirty state.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -238,6 +504,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TLineEndingMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TLineEndingMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TLineEndingMode",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TLineEndingMode.yml\" sourcestartlinenumber=\"1\">Beschreibt den Zeilenendungsmodus des aktiven Dokuments.</p>\n<p sourcefile=\"api/TuiVision.Controls.TLineEndingMode.yml\" sourcestartlinenumber=\"3\">Describes the line-ending mode of the active document.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Controls.TListBox.yml",
       "output": {
         ".html": {
@@ -263,6 +543,20 @@
       "IsMRef": true,
       "Title": "TuiVision.Controls.TListViewer",
       "Summary": "<p sourcefile=\"api/TuiVision.Controls.TListViewer.yml\" sourcestartlinenumber=\"1\">Abstrakte Basis für scrollbare Listenansichten mit fokussiertem Eintrag.</p>\n<p sourcefile=\"api/TuiVision.Controls.TListViewer.yml\" sourcestartlinenumber=\"3\">Abstract base for scrollable list views with a focused item.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TMemo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TMemo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TMemo",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TMemo.yml\" sourcestartlinenumber=\"1\">Speicherbasierter Editor ohne Dateibindung.</p>\n<p sourcefile=\"api/TuiVision.Controls.TMemo.yml\" sourcestartlinenumber=\"3\">Memory-backed editor without file attachment.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -710,7 +1004,21 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Serialization.ITStreamSerializable",
-      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.ITStreamSerializable.yml\" sourcestartlinenumber=\"1\">Schnittstelle für stream-basierte Serialisierung portierter Turbo-Vision-Record-Typen.\nKlassen, die diese Schnittstelle implementieren, können ihren Zustand in einen\n<xref href=\"TuiVision.Serialization.TBinaryArchiveWriter\" data-throw-if-not-resolved=\"false\"></xref> schreiben und später wiederherstellen.</p>\n<p sourcefile=\"api/TuiVision.Serialization.ITStreamSerializable.yml\" sourcestartlinenumber=\"5\">Contract for stream-based serialization of ported Turbo Vision record types.\nClasses that implement this interface can write their state to a\n<xref href=\"TuiVision.Serialization.TBinaryArchiveWriter\" data-throw-if-not-resolved=\"false\"></xref> and restore it later.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.ITStreamSerializable.yml\" sourcestartlinenumber=\"1\">Schnittstelle fuer archivbasierte Serialisierung portierter Record-Typen.</p>\n<p sourcefile=\"api/TuiVision.Serialization.ITStreamSerializable.yml\" sourcestartlinenumber=\"3\">Contract for archive-based serialization of ported record types.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.SerializationModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.SerializationModule.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.SerializationModule",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.SerializationModule.yml\" sourcestartlinenumber=\"1\">Markerdatei fuer das Serialisierungsmodul nach dem Aufsplitten der Klassen.</p>\n<p sourcefile=\"api/TuiVision.Serialization.SerializationModule.yml\" sourcestartlinenumber=\"3\">Marker file for the serialization module after splitting the classes.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -724,7 +1032,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Serialization.TBinaryArchiveReader",
-      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveReader.yml\" sourcestartlinenumber=\"1\">Schmale Binär-Reader-Abstraktion, die zu <xref href=\"TuiVision.Serialization.TBinaryArchiveWriter\" data-throw-if-not-resolved=\"false\"></xref> passt.\nKapselt einen <xref href=\"System.IO.BinaryReader\" data-throw-if-not-resolved=\"false\"></xref> mit fester UTF-8-Kodierung.</p>\n<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveReader.yml\" sourcestartlinenumber=\"4\">Thin binary reader abstraction matching <xref href=\"TuiVision.Serialization.TBinaryArchiveWriter\" data-throw-if-not-resolved=\"false\"></xref>.\nWraps a <xref href=\"System.IO.BinaryReader\" data-throw-if-not-resolved=\"false\"></xref> with fixed UTF-8 encoding.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveReader.yml\" sourcestartlinenumber=\"1\">Schmaler BinaryReader fuer deterministische Deserialisierung.</p>\n<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveReader.yml\" sourcestartlinenumber=\"3\">Thin binary reader for deterministic deserialization.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -738,7 +1046,63 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Serialization.TBinaryArchiveWriter",
-      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveWriter.yml\" sourcestartlinenumber=\"1\">Schmale Binär-Writer-Abstraktion für deterministisches Erstellen von Nutzdaten.\nKapselt einen <xref href=\"System.IO.BinaryWriter\" data-throw-if-not-resolved=\"false\"></xref> mit fester UTF-8-Kodierung.</p>\n<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveWriter.yml\" sourcestartlinenumber=\"4\">Thin binary writer abstraction for deterministic payload creation.\nWraps a <xref href=\"System.IO.BinaryWriter\" data-throw-if-not-resolved=\"false\"></xref> with fixed UTF-8 encoding.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveWriter.yml\" sourcestartlinenumber=\"1\">Schmaler BinaryWriter fuer deterministische Serialisierung.</p>\n<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveWriter.yml\" sourcestartlinenumber=\"3\">Thin binary writer for deterministic serialization.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.THelpCrossReference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.THelpCrossReference.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.THelpCrossReference",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.THelpCrossReference.yml\" sourcestartlinenumber=\"1\">Navigierbare Querverweis-Markierung innerhalb eines Hilfethemas.</p>\n<p sourcefile=\"api/TuiVision.Serialization.THelpCrossReference.yml\" sourcestartlinenumber=\"3\">Navigable cross-reference marker inside a help topic.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.THelpFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.THelpFile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.THelpFile",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.THelpFile.yml\" sourcestartlinenumber=\"1\">Persistiertes Laufzeitmodell fuer kontextbasierte Hilfe.</p>\n<p sourcefile=\"api/TuiVision.Serialization.THelpFile.yml\" sourcestartlinenumber=\"3\">Persisted runtime model for context-based help.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.THelpIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.THelpIndex.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.THelpIndex",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.THelpIndex.yml\" sourcestartlinenumber=\"1\">Kontextindex fuer runtime-lesbare Hilfethemen.</p>\n<p sourcefile=\"api/TuiVision.Serialization.THelpIndex.yml\" sourcestartlinenumber=\"3\">Context index for runtime-readable help topics.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.THelpTopic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.THelpTopic.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.THelpTopic",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.THelpTopic.yml\" sourcestartlinenumber=\"1\">Laufzeitmodell fuer ein einzelnes Hilfethema.</p>\n<p sourcefile=\"api/TuiVision.Serialization.THelpTopic.yml\" sourcestartlinenumber=\"3\">Runtime model for a single help topic.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -752,7 +1116,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Serialization.TRecordRegistry",
-      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TRecordRegistry.yml\" sourcestartlinenumber=\"1\">Registry, die stabile Typbezeichner auf Factory-Delegates abbildet.\nErmöglicht polymorphe Deserialisierung ohne direkte Typabhängigkeiten.</p>\n<p sourcefile=\"api/TuiVision.Serialization.TRecordRegistry.yml\" sourcestartlinenumber=\"4\">Registry that maps stable type identifiers to factory delegates.\nEnables polymorphic deserialization without direct type dependencies.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TRecordRegistry.yml\" sourcestartlinenumber=\"1\">Registry fuer stabile Typ-IDs ueber Archiv- und Stream-Fabriken.</p>\n<p sourcefile=\"api/TuiVision.Serialization.TRecordRegistry.yml\" sourcestartlinenumber=\"3\">Registry for stable type identifiers across archive and stream factories.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -766,7 +1130,91 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Serialization.TRecordSerializer",
-      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TRecordSerializer.yml\" sourcestartlinenumber=\"1\">Umschlag-Serialisierer, der Typ-ID und Nutzdaten-Bytes in einem binären Format kapselt.\nDas Umschlag-Format ist: Typbezeichner (String) + Nutzdatenlänge (Int32) + Nutzdaten (Bytes).</p>\n<p sourcefile=\"api/TuiVision.Serialization.TRecordSerializer.yml\" sourcestartlinenumber=\"4\">Envelope serializer that wraps a type ID and payload bytes in a binary format.\nThe envelope format is: type identifier (string) + payload length (Int32) + payload (bytes).</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TRecordSerializer.yml\" sourcestartlinenumber=\"1\">Envelope-Serializer fuer archivbasierte Typ-IDs plus Nutzdaten.</p>\n<p sourcefile=\"api/TuiVision.Serialization.TRecordSerializer.yml\" sourcestartlinenumber=\"3\">Envelope serializer for archive-based type identifiers plus payloads.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.TResourceCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.TResourceCollection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.TResourceCollection",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TResourceCollection.yml\" sourcestartlinenumber=\"1\">Fallunterscheidbarer Ressourcenkatalog mit exakter Gross-/Kleinschreibung.</p>\n<p sourcefile=\"api/TuiVision.Serialization.TResourceCollection.yml\" sourcestartlinenumber=\"3\">Case-sensitive resource catalog with exact key matching.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.TResourceFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.TResourceFile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.TResourceFile",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TResourceFile.yml\" sourcestartlinenumber=\"1\">Persistierbarer Container fuer benannte Objekte mit exakter Schluesselauflosung.</p>\n<p sourcefile=\"api/TuiVision.Serialization.TResourceFile.yml\" sourcestartlinenumber=\"3\">Persistable container for named objects with exact key resolution.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.fpstream.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.fpstream.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.fpstream",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.fpstream.yml\" sourcestartlinenumber=\"1\">Dateibasierter Kompatibilitaets-Stream.</p>\n<p sourcefile=\"api/TuiVision.Serialization.fpstream.yml\" sourcestartlinenumber=\"3\">File-backed compatibility stream.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.ipstream.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.ipstream.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.ipstream",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.ipstream.yml\" sourcestartlinenumber=\"1\">Lesender Kompatibilitaets-Stream mit Referenzwiederherstellung.</p>\n<p sourcefile=\"api/TuiVision.Serialization.ipstream.yml\" sourcestartlinenumber=\"3\">Reading compatibility stream with reference reconstruction.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.opstream.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.opstream.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.opstream",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.opstream.yml\" sourcestartlinenumber=\"1\">Schreibender Kompatibilitaets-Stream mit Referenzerhaltung.</p>\n<p sourcefile=\"api/TuiVision.Serialization.opstream.yml\" sourcestartlinenumber=\"3\">Writing compatibility stream with reference preservation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.pstream.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.pstream.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.pstream",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.pstream.yml\" sourcestartlinenumber=\"1\">Gemeinsame Basis fuer Kompatibilitaets-Streams.</p>\n<p sourcefile=\"api/TuiVision.Serialization.pstream.yml\" sourcestartlinenumber=\"3\">Shared base for compatibility streams.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -801,6 +1249,16 @@
       "output": {
         ".html": {
           "relative_path": "docs/guides/multi-mac-workflow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/project-statistics.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/project-statistics.html"
         }
       },
       "version": ""

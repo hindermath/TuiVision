@@ -25,7 +25,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TScroller.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: TScroller
     path: src/TuiVision.Controls/TScroller.cs
@@ -50,6 +50,9 @@ items:
   - System.Object
   - TuiVision.Core.TObject
   - TuiVision.Controls.TView
+  derivedClasses:
+  - TuiVision.Controls.TEditor
+  - TuiVision.Controls.THelpViewer
   inheritedMembers:
   - TuiVision.Controls.TView.Owner
   - TuiVision.Controls.TView.Options
@@ -98,7 +101,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TScroller.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TScroller.cs
@@ -137,7 +140,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TScroller.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Delta
     path: src/TuiVision.Controls/TScroller.cs
@@ -172,7 +175,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TScroller.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Limit
     path: src/TuiVision.Controls/TScroller.cs
@@ -207,7 +210,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TScroller.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: HScrollBar
     path: src/TuiVision.Controls/TScroller.cs
@@ -242,7 +245,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TScroller.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: VScrollBar
     path: src/TuiVision.Controls/TScroller.cs
@@ -277,7 +280,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TScroller.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: SetScrollBars
     path: src/TuiVision.Controls/TScroller.cs
@@ -319,7 +322,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TScroller.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: ScrollTo
     path: src/TuiVision.Controls/TScroller.cs
@@ -355,7 +358,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TScroller.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: SetLimit
     path: src/TuiVision.Controls/TScroller.cs
@@ -391,7 +394,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TScroller.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TScroller.cs
@@ -424,7 +427,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TScroller.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TScroller.cs

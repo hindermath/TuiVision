@@ -59,29 +59,31 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 
 ## 🎯 Aktueller Feature-Fokus
 
-### `002-application-framework`
-*   Plan-Quelle: `specs/002-application-framework/plan.md`
-*   Ziel dieses Inkrements: erster vollständiger Anwendungsrahmen auf Basis von `TView` und `TGroup`
-*   Geplanter Umfang in `src/TuiVision.Controls`:
-    *   `TProgram`
-    *   `TApplication`
-    *   `TDesktop`
-    *   `TMenuBar`
-    *   `TStatusLine`
-    *   leichte Menü-/Status-Aktionsmodelle und gemeinsame Shell-Command-IDs
+### `004-editor-file-help-streams`
+*   Spezifikationsquelle: `specs/004-editor-file-help-streams/spec.md`
+*   Umsetzungsgrundlage dieses Inkrements: `specs/004-editor-file-help-streams/spec.md` und `specs/004-editor-file-help-streams/plan.md`
+*   Geplanter Umfang in `src/TuiVision.Controls` und `src/TuiVision.Serialization`:
+    *   `TEditor`, `TMemo`, `TFileEditor`, `TEditWindow`
+    *   Datei-/Verzeichnisdialoge, Pfad-History und zugehörige Hilfskomponenten
+    *   `THelpTopic`, `THelpFile`, `THelpViewer`, `THelpWindow`
+    *   Stream-Primitiven und benannte Ressourcencontainer
 *   Verhalten:
-    *   `TApplication` erzeugt standardmäßig Menüleiste, Desktop und Statuszeile
-    *   globale Aktionen müssen über Menü, Statuszeile und Tastatur konsistent geroutet werden
-    *   nicht verfügbare Aktionen bleiben sichtbar, werden aber deaktiviert dargestellt
-    *   Fokus muss nach Start, Aktivierungswechsel und Schließen des aktiven Desktop-Kinds gültig bleiben
+    *   Editor-Flows müssen Bearbeitung, Insert/Overwrite-Modus, Clipboard-Aktionen, Suche/Ersetzen, Modified-State, explizite Safe-Close-Entscheidungen und getrennte Overwrite-Entscheidungen bei Save-Konflikten abdecken
+    *   Datei-Flows müssen Dateiliste, Verzeichnisnavigation, aktuelle Datei-Metadaten, Wildcard-Filter, manuelle Pfadeingabe und History-Rückruf synchron halten
+    *   Hilfe-Flows müssen kontextbezogene Topics, Querverweise und Fallback-Inhalte für fehlende Kontexte unterstützen
+    *   Stream-/Ressourcen-Flows müssen benannte Ablage und explizite Fehlerbehandlung bei gekuerzten, ueberhaengenden, unbekannten oder zyklischen Persistenzdaten abdecken
+    *   Integrationsabdeckung muss Event-Loop-Verhalten, Fokuswechsel, Menueausfuehrung und explizite Dialoginteraktion fuer dieses Feature direkt benennen
+*   Festgezogene Planungsentscheidungen:
+    *   Runtime-Hilfe kommt aus dedizierten Help-Dateien
+    *   Shared References bleiben erhalten, zyklische Objektgraphen sind nicht Teil der Abnahme
+    *   Resource-Keys sind exakt case-sensitive
+    *   Neue Dateien verwenden `LF`; geladene Dateien behalten ihr Zeilenendformat
+    *   Externe Dateiaenderungen erfordern vor dem Ueberschreiben eine explizite Entscheidung
 *   Explizit nicht Teil dieses Schritts:
-    *   konkrete Dialoge
-    *   Controls/Widgets
-    *   spezialisierte Fenstertypen
-*   Testfokus:
-    *   neue MSTest-Abdeckung in `tests/TuiVision.Controls.Tests/`
-    *   TDD in sichtbarer Red-Green-Refactor-Reihenfolge
-    *   Validierung mit `dotnet build --configuration Release`, `dotnet test`, `dotnet format --verify-no-changes` und bei API-/XML-Änderungen zusätzlich `docfx docfx.json`
+    *   Beispielprogramme wie `tvedit`, `bhelp` und `helpdemo`
+    *   Treiberkonsolidierung
+    *   Rechner-/Makro-/OS-Shell-Integrationen
+    *   sonstige fachfremde Spezial-Widgets
 
 ## 🔄 Synchronisationsregel für KI-Agenten-Dateien
 
@@ -103,8 +105,12 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 *Hinweis: Dieses Dokument wurde automatisch von Gemini CLI generiert und dient als Instruktionsbasis.*
 
 ## Active Technologies
-- C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core` (TView, TGroup, TEvent, TObject, TPoint, TRect, (003-dialog-control-layer)
-- N/A — in-memory UI state only; keine Persistenz in Phase 5 (003-dialog-control-layer)
+- C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, MSTest, Coverlet, docfx (004-editor-file-help-streams)
+- Lokales Dateisystem sowie persistente binaere Help-/Ressourcen-Streams; keine Datenbank in diesem Inkrement (004-editor-file-help-streams)
 
 ## Recent Changes
-- 003-dialog-control-layer: Added C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core` (TView, TGroup, TEvent, TObject, TPoint, TRect,
+- 004-editor-file-help-streams: Spezifikation und Requirements-Checklist fuer Phase 6 (Editor/Datei/Hilfe/Streams) angelegt.
+- 004-editor-file-help-streams: Planartefakte (`plan.md`, `research.md`, `data-model.md`, `quickstart.md`, `contracts/public-api.md`) erstellt und gemeinsame Agent-Hinweise auf den Post-Plan-Stand synchronisiert.
+- 004-editor-file-help-streams: Plan-Review-Klarstellungen fuer Safe-Close vs. Overwrite, Wildcard-Filter in Dateidialogen, explizite Stream-Fehlerfaelle und nicht-funktionale Abgrenzungen eingearbeitet.
+- 004-editor-file-help-streams: Editor-Clipboard/Overwrite, Datei-Metadaten-Synchronisation, Shell-Menue-/Status-Routing und das volle Coverage-Gate fuer Core/Controls/Serialization explizit nachgeschaerft.
+- 004-editor-file-help-streams: Verbleibende Integrationsanforderungen fuer Event-Loop, Fokuswechsel, Menueausfuehrung und explizite Dialoginteraktion direkt in den Feature-Artefakten benannt.

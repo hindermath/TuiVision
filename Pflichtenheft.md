@@ -61,14 +61,15 @@ Der Lieferumfang umfasst:
 | M-11 | Qualitaetssicherung zusaetzlich zu Unit-Tests | Analyzer, Format- und Build-Gates | Qualitaets-Gates sind dokumentiert und aktiv |
 | M-12 | Keine nativen OS-Abhaengigkeiten | Keine P/Invoke-/Native-Library-Pflicht, keine OS-spezifischen Zusatzpakete | Build/Tests laufen mit .NET 10 Runtime ohne native Zusatzinstallation |
 | M-13 | Lizenz-Disclaimer fuer Beispielcharakter | Sichtbarer Hinweis in `LICENSE`/`README` | Hinweis beschreibt: Beispielprojekt, keine Konkurrenzabsicht, keine beabsichtigte Lizenzverletzung |
-| M-14 | CI/CD mit GitHub Actions | Build-/Test-Workflow unter `.github/workflows` | Automatischer Build und Testlauf pro Push/PR ist aktiv |
-| M-15 | Nutzerdokumentation | Leitfaeden, Einstieg und Nutzung unter `docs/guides` | Dokumentation ist vorhanden, nachvollziehbar und aktuell zum Stand der Portierung |
+| M-14 | CI/CD mit GitHub Actions | Build-/Test-Workflow und Dokumentations-Deployment-Workflow unter `.github/workflows`; GitHub-Pages-Deployment gemaess M-22 ist Bestandteil der CI/CD-Pipeline | Automatischer Build und Testlauf pro Push/PR ist aktiv; GitHub-Pages-Deployment laeuft automatisch bei Doku-Aenderungen auf `main` (M-22) |
+| M-15 | Nutzerdokumentation | Pflichtguides unter `docs/guides/` gemaess Abschnitt 10.7; Quellenrangfolge und Adaptionspflicht gemaess Abschnitt 10.7 eingehalten; Sprache bilingual (Deutsch zuerst, Englisch) auf CEFR-B2-Niveau | Alle Pflichtguides unter `docs/guides/` sind vorhanden; Quellenrangfolge nachvollziehbar eingehalten; Sprache und Struktur entsprechen dem didaktischen Standard gemaess Abschnitt 10.3 und 10.7 |
 | M-16 | Vollstaendige XML-Kommentierung der oeffentlichen API | Alle `public` Typen, Member, Parameter, Rueckgabewerte und Ausnahmen mit XML-Dokumentation | API ist durchgaengig und didaktisch ausfuehrlich kommentiert; docfx erzeugt daraus vollstaendige Referenzseiten |
 | M-17 | Einheitlicher didaktischer Dokumentationsstil | Alle Dokumentationsartefakte folgen einem verbindlichen Lehr-/Beispielstandard fuer Fachinformatiker (Anwendungsentwicklung) | Struktur, Detailtiefe und Beispiele sind ueber alle Dokuarten konsistent und nachvollziehbar |
 | M-18 | Ausfuehrliche Dokumentation der Beispielprogramme | Pro Beispielprogramm eigener Guide mit Lernziel, Voraussetzungen, Start, Bedienung, Architekturhinweisen und Uebungen | Alle portierten Beispiele sind didaktisch nachvollziehbar dokumentiert und reproduzierbar ausfuehrbar |
 | M-19 | Ausreichende Quellcode-Dokumentation im gesamten TuiVision-Code | Nicht-triviale Logik, Architekturentscheidungen und interne Zusammenhaenge werden im Code nachvollziehbar kommentiert | Der Quellcode erfuellt die pruefbaren Kriterien aus Abschnitt 10.5 und ist fuer Fachinformatiker (Anwendungsentwicklung) lern- und wartbar |
 | M-20 | Messbarer Mindest-Testumfang (MUSS-Tests) | Definierte Mindestabdeckung, Pflichttestfaelle und vollstaendige Smoke-Tests gemaess Abschnitt 9.4 | Die in Abschnitt 9.4 definierten Kennzahlen und Testumfaenge sind vollstaendig erreicht |
 | M-21 | Reproduzierbarer Multi-Mac-Entwicklungsworkflow | Build-, Test-, GitHub- und Codex-Arbeitsablaeufe sind fuer `MacBook Air M2` und `Mac mini M4 Pro` mit `gh` und `codex` dokumentiert | Die dokumentierten Schluesselablaeufe funktionieren auf beiden Systemen mit den dokumentierten Voraussetzungen und ggf. automatisierter Tool-Bereitstellung (z. B. DocFX als .NET-Tool) |
+| M-22 | Automatische Veroeffentlichung der Dokumentation auf GitHub Pages | Dedizierter Workflow `.github/workflows/docs-deploy.yml` gemaess Abschnitt 10.8: Trigger auf `push` nach `main` fuer Pfade `docs/**`, `src/**`, `docfx.json`; Schritte: checkout, dotnet-build (XML-Docs), docfx, `upload-pages-artifact`, `deploy-pages`; Repository-Setting auf Source „GitHub Actions"; Umgebung `github-pages` | Workflow existiert gemaess Abschnitt 10.8; docfx-Dokumentation ist ueber GitHub Pages erreichbar; Deployment laeuft automatisch nach jedem relevanten Merge auf `main`; Deployment-Status im Actions-Tab sichtbar |
 
 ## 6. Optionale Anforderungen (KANN / Pruefauftraege)
 
@@ -121,12 +122,103 @@ docs/
 5. **Dialog-/Control-Schicht**: Eingabezeilen, Listen, Scrollbars, Buttons, usw.
 6. **Editor/Datei/Hilfe/Streams**: Editor, Resource-, Stream- und Help-Komponenten
 7. **Treiberkonsolidierung**: Managed Console-Treiber unter .NET Core ohne native OS-Bindings
-8. **Beispiele**: Portierung aller 25 Beispiele in Wellen
+8. **Beispiele**: Portierung aller 25 Beispiele in vier thematisch-technischen Wellen; jede Welle wird erst begonnen, wenn die zugehoerigen Framework-Phasen abgeschlossen sind (Abhaengigkeitsprinzip); **vor Welle 1 ist das Eingangstor gemaess Abschnitt 8.3 vollstaendig zu bestehen**
+
+### 8.3 Eingangstor Phase 8: Framework-Vollstaendigkeitsnachweis (verpflichtend vor Welle 1)
+
+Bevor das erste Beispielprogramm portiert wird (Welle 1, Abschnitt 8.2), muessen alle nachfolgenden Kriterien nachweisbar erfuellt sein. Jedes offene Kriterium blockiert den Start von Phase 8 und ist als Issue im Repository zu erfassen und zu schliessen.
+
+#### Kriterium 1 – M-07-Vollstaendigkeitsnachweis (Mapping-Tabelle)
+
+Die Datei `docs/porting-status.md` muss existieren und fuer jede `.cc`-Quelldatei aus `tv203s/contrib/tvision/classes` (einschliesslich plattformspezifischer Unterordner) einen Eintrag enthalten mit:
+- Quelldatei (relativer Pfad in `tv203s/`)
+- Zugeordnetes C#-Zielmodul (`TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization` oder `TuiVision.Drivers.Console`)
+- Zugehoerige C#-Zieldatei(en)
+- Teststatus (`portiert + getestet` / `portiert + Test ausstehend` / `bewusst ausgelassen + Begruendung`)
+
+Kein Eintrag darf den Status `ausstehend` oder `TODO` ohne zugehoerigen offenen Issue tragen.
+
+#### Kriterium 2 – Keine portierten Luecken ohne Begruendung
+
+Jede `.cc`-Datei, die nicht portiert wurde, muss in `docs/porting-status.md` mit einer nachvollziehbaren Begruendung als `bewusst ausgelassen` markiert sein (z. B. plattformspezifischer Treiber, der durch `TuiVision.Drivers.Console` ersetzt wird).
+
+#### Kriterium 3 – Build-Gate
+
+`dotnet build --configuration Release` laeuft ohne Fehler und ohne als Fehler konfigurierte Warnungen fuer alle Projekte in `src/`.
+
+#### Kriterium 4 – Test-Gate
+
+Alle Unit-Tests in `tests/` laufen gruen durch, lokal und in CI (M-08). Kein Test darf als `Ignored` oder `Skip` markiert sein, ohne einen zugehoerigen offenen Issue.
+
+#### Kriterium 5 – Coverage-Gate
+
+Line Coverage in `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` betraegt jeweils mindestens 70 % (gemaess §9.4 Nr. 1), gemessen mit Coverlet. Das Coverage-Ergebnis ist als CI-Artefakt oder lokaler Report nachweisbar.
+
+#### Kriterium 6 – API-Doku-Gate
+
+`docfx` laeuft ohne Fehler durch; keine oeffentliche API ist undokumentiert (M-09, M-16). Das erzeugte Ausgabeverzeichnis ist im Repository oder als CI-Artefakt vorhanden.
+
+#### Nachweisdokument
+
+Der Abschluss des Eingangstors wird durch einen dedizierten Commit auf dem jeweiligen Feature-Branch dokumentiert, dessen Commit-Nachricht alle sechs Kriterien als erfuellt ausweist und auf `docs/porting-status.md` verweist.
 
 ### 8.2 Beispielprogramme (MUSS-Umfang)
-Zu portieren sind alle vorhandenen Beispielordner:
-`bhelp`, `clipboard`, `cyrillic`, `demo`, `desklogo`, `dlgdsn`, `dyntxt`, `eterm`, `fonts`, `helpdemo`, `i18n`, `inplis`, `listvi`, `msgcls`, `progba`, `sdlg`, `sdlg2`, `tcombo`, `terminal`, `tprogb`, `tutorial`, `tvedit`, `tvhc`, `videomode`, `xterm`.
+Zu portieren sind alle 25 vorhandenen Beispielordner, eingeteilt in vier Wellen nach technischer Abhaengigkeit.
 Fuer jedes portierte Beispiel ist eine eigene didaktische Dokumentationsseite in `docs/guides/examples/` bereitzustellen.
+
+**Welle 1 – Grundlegende Anwendungsstruktur** (nach Abschluss Phase 4: Anwendungsrahmen)
+
+Benoetigt: `TProgram`, `TApplication`, `TDesktop`, `TMenuBar`, `TStatusLine`.
+Keine Controls, keine Dialoge, kein Editor, kein Hilfesystem.
+
+| Beispiel | Inhalt |
+|---|---|
+| `desklogo` | Minimale App: statisches Logo auf dem Desktop |
+| `msgcls` | Benutzerdefinierte Ereignisklassen und Nachrichtenverarbeitung |
+| `tutorial` | Schrittweise Einfuehrung in die TuiVision-Grundkonzepte |
+| `videomode` | Wechsel von Anzeigemodi (Pufferbreite/-hoehe) |
+
+**Welle 2 – Controls und Dialoge** (nach Abschluss Phase 5: Dialog-/Control-Schicht)
+
+Benoetigt: Eingabezeilen, Listen, Scrollbars, Buttons, Checkboxes, RadioButtons, Dialoge.
+
+| Beispiel | Inhalt |
+|---|---|
+| `clipboard` | Zwischenablage-Integration in Controls |
+| `demo` | Vollstaendige Turbo-Vision-Kerndemo (zeigt alle Basis-Controls) |
+| `dlgdsn` | Dialog-Designer: dynamisch zusammengesetzte Dialoge |
+| `dyntxt` | Dynamisch erzeugter Text in Views |
+| `inplis` | Eingabelisten mit `TInputLine` |
+| `listvi` | Listenansichten mit `TListViewer` |
+| `progba` | Einfacher Fortschrittsbalken |
+| `sdlg` | Standarddialoge (Datei-, Farb-, Zeichensatz-Auswahl) |
+| `sdlg2` | Erweiterte Standarddialoge |
+| `tcombo` | Kombinationsfelder (`TComboBox`) |
+| `tprogb` | Erweiterter Fortschrittsbalken mit Abbruch |
+
+**Welle 3 – Editor, Dateien, Hilfe und Streams** (nach Abschluss Phase 6: Editor/Datei/Hilfe/Streams)
+
+Benoetigt: `TEditor`, `TFileDialog`, `THelpViewer`, Stream- und Ressourcen-Infrastruktur.
+
+| Beispiel | Inhalt |
+|---|---|
+| `bhelp` | Grundlegendes Hilfesystem mit kontextsensitiven Themen |
+| `helpdemo` | Interaktive Demonstration des Hilfesystems |
+| `i18n` | Internationalisierung: mehrsprachige Texte und Ressourcen |
+| `tvedit` | Vollstaendiger Texteditor (Datei oeffnen, bearbeiten, speichern) |
+| `tvhc` | Hilfe-Compiler: Konvertierung von Quelltext in binaere Hilfedatei |
+
+**Welle 4 – Terminal-Emulation und erweiterte Zeichensaetze** (nach Abschluss Phase 7: Treiberkonsolidierung)
+
+Benoetigt: Managed Console-Treiber, plattformunabhaengige Zeichensatz- und Terminalpufferverwaltung.
+
+| Beispiel | Inhalt |
+|---|---|
+| `cyrillic` | Kyrillische Zeichensatz-Unterstuetzung im Textpuffer |
+| `eterm` | Erweiterter Terminal-Emulator |
+| `fonts` | Zeichensatz-Verwaltung und Darstellung alternativer Fonts |
+| `terminal` | Einfache Terminal-Integration |
+| `xterm` | XTerm-Protokoll-Emulation |
 
 ## 9. Test- und Qualitaetskonzept
 
@@ -149,6 +241,7 @@ Fuer jedes portierte Beispiel ist eine eigene didaktische Dokumentationsseite in
 - Dokumentations-Review gegen den didaktischen Standard gemaess Abschnitt 10.3 ist fuer Releases verpflichtend
 - Beispielprogramme gelten erst als abgeschlossen, wenn die zugehoerigen Guides gemaess Abschnitt 10.4 vorliegen
 - Quellcode-Review gegen den Standard gemaess Abschnitt 10.5 ist fuer Releases verpflichtend
+- GitHub-Pages-Deployment der docfx-Dokumentation ist nach jedem Merge auf `main` mit Aenderungen an `docs/`, `src/` oder `docfx.json` automatisch erfolgreich abgeschlossen (M-22)
 
 ### 9.3 Rueckverfolgbarkeit
 Jede MUSS-Anforderung (M-xx) wird mindestens einem Nachweisartefakt zugeordnet.
@@ -234,6 +327,118 @@ Fuer die Arbeitsumgebungen `MacBook Air M2` und `Mac mini M4 Pro` gilt:
 4. Voraussetzungen (authentifizierte CLI-Tools) und die Versionspruefung sind explizit dokumentiert.
 5. Falls zusaetzliche Tools noetig sind (z. B. DocFX), ist die automatisierte Bereitstellung per dokumentiertem Befehl Bestandteil des Workflows.
 
+## 10.7 Standard fuer Nutzerdokumentation – Quellen, Struktur und Sprache (verbindlich)
+
+### Pflichtstruktur unter `docs/guides/`
+
+Die folgenden Guides sind verpflichtend bereitzustellen:
+
+| Datei/Ordner | Mindestinhalt |
+|---|---|
+| `getting-started.md` | Installation, Build, erstes Beispielprogramm starten; Zielgruppe: Azubis ohne TV-Vorkenntnisse |
+| `architecture.md` | Moduluebersicht, View-Hierarchie, Event-System, Koordinatensystem — konzeptuell mit Diagrammen oder Codeauszuegen |
+| `concepts/event-loop.md` | Wie Ereignisse entstehen, weitergeleitet und verarbeitet werden (`HandleEvent`, `PutEvent`, Broadcast) |
+| `concepts/view-hierarchy.md` | `TView`, `TGroup`, Fokus, Owner/Parent-Beziehungen, `Draw`-Zyklus |
+| `concepts/coordinate-system.md` | Lokale vs. globale Koordinaten, `MakeLocal`/`MakeGlobal`, `TRect`-Semantik |
+| `concepts/serialization.md` | Envelopenformat, `TRecordRegistry`, polymorphe De-/Serialisierung |
+| `tutorials/first-dialog.md` | Vollstaendiger Schritt-fuer-Schritt-Guide: eigenen Dialog aufbauen und in eine App einbinden |
+| `examples/` | Pro portiertem Beispielprogramm eine Seite gemaess M-18 und Abschnitt 10.4 |
+
+### Quellenrangfolge und Adaptionspflicht
+
+Die Nutzerdokumentation speist sich aus folgenden Quellen in absteigender Prioritaet:
+
+1. **Borland-Originaldokumentation (Tier 1 – Konzepte und Struktur)**
+   - *Turbo Vision for C++ User's Guide* (Borland International, 1992) – Konzepte, Architektur, Tutorials, Event-Modell
+   - *Turbo Vision for C++ Reference Guide* (Borland International, 1992) – vollstaendige Klassenreferenz mit Verhalten und Beispielen
+   - Beide Werke sind auf archive.org oeffentlich zugaenglich
+   - **Adaptionspflicht**: Diese Werke dienen ausschliesslich als inhaltliche Vorlage und Inspirationsquelle. Jeder Text ist vollstaendig neu zu formulieren: C++ wird zu C#, DOS- und Borland-Terminologie wird durch TuiVision- und .NET-Terminologie ersetzt, das Sprachniveau wird auf CEFR B2 angepasst. Woertliche Textuebernahmen sind nicht zulaessig.
+
+2. **Free Vision Reference (Tier 1 – ergaenzende Konzepte)**
+   - Free Pascal Projekt (freepascal.org) – konzeptionell verwandte Implementierung der gleichen TV-API
+   - Gleiche Adaptionspflicht wie fuer Borland-Material
+
+3. **tv203s C/C++-Quellcode (Tier 2 – Verhaltensreferenz)**
+   - `tv203s/contrib/tvision/` als massgebliche Referenz fuer das Originalverhalten
+   - Wird genutzt, um Verhalten zu erklaeren und bewusste Abweichungen der C#-Portierung zu begruenden
+
+4. **C# Quellcode und XML-Kommentare (Tier 3 – API-Dokumentation)**
+   - Primaerquelle fuer alle API-Referenzseiten; docfx erzeugt daraus automatisch die API-Doku
+   - XML-Kommentare muessen vollstaendig und didaktisch gemaess Abschnitt 10.1 sein
+
+5. **Portierte Beispielprogramme (Tier 4 – Nutzungsszenarien)**
+   - `examples/` liefert konkrete Anwendungsszenarien fuer Tutorials und konzeptuelle Guides
+
+### Sprache und Stil
+
+- Alle Guides sind **bilingual** zu verfassen: Deutsch zuerst, Englisch als gleichwertiger zweiter Abschnitt oder parallel.
+- Sprachniveau: **CEFR B2** – klare Satzstruktur, keine Umgangssprache, Fachbegriffe beim ersten Auftreten erklaert und mit Originalbegriff in Klammern angegeben.
+- Zielgruppe: Auszubildende Fachinformatiker Anwendungsentwicklung mit grundlegenden C#-Kenntnissen, ohne Vorkenntnisse in TUI-Frameworks.
+- Der didaktische Standard gemaess Abschnitt 10.3 gilt ergaenzend fuer alle Nutzerdokumentation.
+
+## 10.8 Standard fuer GitHub-Pages-Deployment (verbindlich)
+
+### Repository-Einstellung
+
+Im GitHub-Repository `hindermath/TuiVision` muss unter *Settings → Pages → Source* die Option **GitHub Actions** aktiviert sein. Eine manuelle Branch-basierte Veroeffentlichung (z. B. `gh-pages`-Branch) ist nicht zulaessig, da sie keinen nachvollziehbaren Deployment-Status im CI-Workflow erzeugt.
+
+### Workflow-Datei
+
+Das Deployment wird in einer dedizierten Workflow-Datei `.github/workflows/docs-deploy.yml` konfiguriert, getrennt vom Build-/Test-Workflow. Die Trennung stellt sicher, dass ein fehlgeschlagenes Deployment den Build-/Test-Status nicht beeinflusst und umgekehrt.
+
+### Trigger
+
+Der Workflow wird ausgeloest durch einen `push` auf den Branch `main`, eingeschraenkt auf folgende Pfade:
+
+```yaml
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+      - 'src/**'
+      - 'docfx.json'
+```
+
+Dadurch wird ein Deployment nur ausgeloest, wenn Dokumentationsinhalte, XML-Kommentare im Quellcode oder die docfx-Konfiguration geaendert wurden. Reine Code-Commits ohne Doku-Relevanz loesen kein Deployment aus.
+
+### Erforderliche Actions und Berechtigungen
+
+Der Workflow benoetigt folgende GitHub Actions in dieser Reihenfolge:
+
+| Schritt | Action | Zweck |
+|---|---|---|
+| 1 | `actions/checkout` | Repository auschecken |
+| 2 | `actions/setup-dotnet` | .NET 10 SDK bereitstellen (fuer `dotnet build` zur XML-Doc-Erzeugung) |
+| 3 | `dotnet restore` + `dotnet build` | XML-Kommentardateien erzeugen, die docfx als API-Quelle benoetigt |
+| 4 | `docfx docfx.json` | Statische Dokumentationsseiten generieren |
+| 5 | `actions/upload-pages-artifact` | Erzeugtes Ausgabeverzeichnis als Pages-Artefakt hochladen |
+| 6 | `actions/deploy-pages` | Artefakt auf GitHub Pages veroeffentlichen |
+
+Der Job benoetigt folgende explizite Berechtigungen im Workflow:
+
+```yaml
+permissions:
+  pages: write
+  id-token: write
+  contents: read
+```
+
+Der Deployment-Job muss der GitHub-Pages-Umgebung zugeordnet sein:
+
+```yaml
+environment:
+  name: github-pages
+  url: ${{ steps.deployment.outputs.page_url }}
+```
+
+### Abnahmekriterium fuer diesen Standard
+
+- Der Workflow `.github/workflows/docs-deploy.yml` existiert und enthaelt Trigger, Berechtigungen, Umgebung und alle sechs Schritte gemaess diesem Abschnitt.
+- Nach einem Merge auf `main` mit Aenderungen an den definierten Pfaden ist der Deployment-Job im Actions-Tab des Repositories als erfolgreich abgeschlossen sichtbar.
+- Die veroeffentlichte GitHub-Pages-URL liefert die aktuelle docfx-Ausgabe aus.
+
 ## 11. Risiken und Randbedingungen
 
 | Risiko | Bewertung | Gegenmassnahme |
@@ -258,6 +463,7 @@ Die Abnahme gilt als bestanden, wenn:
 10. Der Mindest-Testumfang gemaess Abschnitt 9.4 ist nachweisbar vollstaendig erfuellt.
 11. Der lokale Workflow mit `gh` und `codex` gemaess Abschnitt 10.6 ist auf beiden macOS-Systemen nachweisbar anwendbar.
 12. Bei API-/XML-Kommentar-Aenderungen ist die docfx-Dokumentation nachweisbar neu erzeugt worden.
+13. Die docfx-Dokumentation ist ueber GitHub Pages des Repositories `hindermath/TuiVision` erreichbar und wird bei jedem Merge auf `main` mit Doku-relevanten Aenderungen automatisch aktualisiert (M-22).
 
 ## 13. Abgrenzung
 Nicht Bestandteil der MUSS-Abnahme:

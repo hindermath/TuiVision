@@ -23,7 +23,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: TInputLine
     path: src/TuiVision.Controls/TInputLine.cs
@@ -44,6 +44,8 @@ items:
   - System.Object
   - TuiVision.Core.TObject
   - TuiVision.Controls.TView
+  derivedClasses:
+  - TuiVision.Controls.TFileInputLine
   inheritedMembers:
   - TuiVision.Controls.TView.Owner
   - TuiVision.Controls.TView.Options
@@ -92,7 +94,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TInputLine.cs
@@ -134,7 +136,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Data
     path: src/TuiVision.Controls/TInputLine.cs
@@ -169,7 +171,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: MaxLen
     path: src/TuiVision.Controls/TInputLine.cs
@@ -204,7 +206,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: CurPos
     path: src/TuiVision.Controls/TInputLine.cs
@@ -239,7 +241,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: FirstPos
     path: src/TuiVision.Controls/TInputLine.cs
@@ -274,7 +276,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: InsertMode
     path: src/TuiVision.Controls/TInputLine.cs
@@ -309,7 +311,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TInputLine.cs
@@ -342,7 +344,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 003-dialog-control-layer
+      branch: 004-editor-file-help-streams
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TInputLine.cs

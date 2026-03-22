@@ -109,15 +109,16 @@ docfx docfx.json
 
 ## Active Feature Context
 
-### 002-application-framework
-- Current planning target: implement the application shell increment from `specs/002-application-framework/spec.md` and `specs/002-application-framework/plan.md`
-- Scope is limited to shell infrastructure in `src/TuiVision.Controls`: `TProgram`, `TApplication`, `TDesktop`, `TMenuBar`, `TStatusLine`, lightweight action items, and shared shell command identifiers
-- Out of scope for this increment: concrete dialogs, control widgets, and specialized window types
-- `TApplication` must auto-create a default shell with menu bar, desktop workspace, and status line
-- Unavailable global actions must remain visible in menu and status line, but be disabled
-- Reuse existing `TView`/`TGroup` ownership, focus, and event-dispatch behavior instead of introducing a new shell module
-- Add focused MSTest coverage in `tests/TuiVision.Controls.Tests/` for default shell creation, shared command routing, disabled-action visibility, and desktop focus recovery
-- Follow visible Red-Green-Refactor TDD sequencing for this feature before production code is added
+### 004-editor-file-help-streams
+- Current implementation baseline: execute the phase-6 increment from `specs/004-editor-file-help-streams/spec.md` and `specs/004-editor-file-help-streams/plan.md`
+- Scope is limited to reusable framework components in `src/TuiVision.Controls` and `src/TuiVision.Serialization`: `TEditor`, `TMemo`, `TFileEditor`, `TEditWindow`, file/dialog/history helpers, help topics/viewers/windows, stream primitives, and named resource containers
+- Out of scope for this increment: example applications such as `tvedit`, `bhelp`, and `helpdemo`; driver consolidation; calculator/macros/OS-shell integrations; and unrelated specialized widgets
+- Editor flows must cover text editing, insert/overwrite behavior, clipboard-oriented actions, search/replace, modified-state handling, explicit safe-close decisions before unsaved changes are discarded, and distinct overwrite decisions when save conflicts occur
+- Integration coverage for this feature must explicitly include event-loop-aware shell interaction, focus transitions, menu execution, and dialog interaction rather than relying on those behaviors only implicitly
+- File flows must keep directory navigation, file lists, current file-information metadata, wildcard filtering, manual path entry, and history recall synchronized inside reusable dialogs
+- Help flows must support context-based topic lookup, cross-reference navigation, and fallback content for missing contexts
+- Stream/resource flows must preserve named lookup semantics and reject malformed persisted input explicitly, including truncated, trailing, unknown-type, and cyclic payload failures
+- Planning decisions now fixed for this feature: dedicated runtime help files, shared-reference preservation without cyclic-graph support, exact case-sensitive resource keys, `LF` default for new files, preserved line endings for loaded files, and explicit overwrite decisions after external file changes
 
 ## Agent File Synchronization Policy
 
@@ -136,8 +137,12 @@ docfx docfx.json
 - Each update must record the relevant branch/phase, observable work window, production/test/documentation line counts, main work packages, and the conservative manual baseline of 80 code lines per day for an experienced developer.
 
 ## Active Technologies
-- C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core` (TView, TGroup, TEvent, TObject, TPoint, TRect, (003-dialog-control-layer)
-- N/A — in-memory UI state only; keine Persistenz in Phase 5 (003-dialog-control-layer)
+- C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, MSTest, Coverlet, docfx (004-editor-file-help-streams)
+- Real local file-system interaction plus persisted binary help/resource files; no database layer in this increment (004-editor-file-help-streams)
 
 ## Recent Changes
-- 003-dialog-control-layer: Added C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core` (TView, TGroup, TEvent, TObject, TPoint, TRect,
+- 004-editor-file-help-streams: Added the phase-6 specification and requirements checklist for editor, file, help, stream, and resource components.
+- 004-editor-file-help-streams: Added `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, and `contracts/public-api.md`; synchronized shared agent guidance to the post-plan baseline.
+- 004-editor-file-help-streams: Applied plan-review clarifications for safe-close vs. overwrite handling, wildcard-filtered file dialogs, explicit malformed-stream cases, and non-functional scope boundaries.
+- 004-editor-file-help-streams: Added explicit coverage of insert/overwrite plus clipboard editor actions, synchronized file-information state in dialogs, shell menu/status routing, and the full Core/Controls/Serialization coverage gate.
+- 004-editor-file-help-streams: Tightened the remaining integration-test expectations so event-loop dispatch, focus transitions, menu execution, and explicit dialog interaction are named directly in the feature artifacts.

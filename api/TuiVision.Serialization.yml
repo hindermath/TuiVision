@@ -5,10 +5,21 @@ items:
   id: TuiVision.Serialization
   children:
   - TuiVision.Serialization.ITStreamSerializable
+  - TuiVision.Serialization.SerializationModule
   - TuiVision.Serialization.TBinaryArchiveReader
   - TuiVision.Serialization.TBinaryArchiveWriter
+  - TuiVision.Serialization.THelpCrossReference
+  - TuiVision.Serialization.THelpFile
+  - TuiVision.Serialization.THelpIndex
+  - TuiVision.Serialization.THelpTopic
   - TuiVision.Serialization.TRecordRegistry
   - TuiVision.Serialization.TRecordSerializer
+  - TuiVision.Serialization.TResourceCollection
+  - TuiVision.Serialization.TResourceFile
+  - TuiVision.Serialization.fpstream
+  - TuiVision.Serialization.ipstream
+  - TuiVision.Serialization.opstream
+  - TuiVision.Serialization.pstream
   langs:
   - csharp
   - vb
@@ -19,6 +30,25 @@ items:
   assemblies:
   - TuiVision.Serialization
 references:
+- uid: TuiVision.Serialization.SerializationModule
+  commentId: T:TuiVision.Serialization.SerializationModule
+  href: TuiVision.Serialization.SerializationModule.html
+  name: SerializationModule
+  nameWithType: SerializationModule
+  fullName: TuiVision.Serialization.SerializationModule
+- uid: TuiVision.Serialization.fpstream
+  commentId: T:TuiVision.Serialization.fpstream
+  href: TuiVision.Serialization.fpstream.html
+  name: fpstream
+  nameWithType: fpstream
+  fullName: TuiVision.Serialization.fpstream
+- uid: TuiVision.Serialization.ipstream
+  commentId: T:TuiVision.Serialization.ipstream
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.ipstream.html
+  name: ipstream
+  nameWithType: ipstream
+  fullName: TuiVision.Serialization.ipstream
 - uid: TuiVision.Serialization.ITStreamSerializable
   commentId: T:TuiVision.Serialization.ITStreamSerializable
   parent: TuiVision.Serialization
@@ -26,13 +56,20 @@ references:
   name: ITStreamSerializable
   nameWithType: ITStreamSerializable
   fullName: TuiVision.Serialization.ITStreamSerializable
-- uid: TuiVision.Serialization.TBinaryArchiveWriter
-  commentId: T:TuiVision.Serialization.TBinaryArchiveWriter
+- uid: TuiVision.Serialization.opstream
+  commentId: T:TuiVision.Serialization.opstream
   parent: TuiVision.Serialization
-  href: TuiVision.Serialization.TBinaryArchiveWriter.html
-  name: TBinaryArchiveWriter
-  nameWithType: TBinaryArchiveWriter
-  fullName: TuiVision.Serialization.TBinaryArchiveWriter
+  href: TuiVision.Serialization.opstream.html
+  name: opstream
+  nameWithType: opstream
+  fullName: TuiVision.Serialization.opstream
+- uid: TuiVision.Serialization.pstream
+  commentId: T:TuiVision.Serialization.pstream
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.pstream.html
+  name: pstream
+  nameWithType: pstream
+  fullName: TuiVision.Serialization.pstream
 - uid: TuiVision.Serialization.TBinaryArchiveReader
   commentId: T:TuiVision.Serialization.TBinaryArchiveReader
   parent: TuiVision.Serialization
@@ -40,6 +77,41 @@ references:
   name: TBinaryArchiveReader
   nameWithType: TBinaryArchiveReader
   fullName: TuiVision.Serialization.TBinaryArchiveReader
+- uid: TuiVision.Serialization.TBinaryArchiveWriter
+  commentId: T:TuiVision.Serialization.TBinaryArchiveWriter
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TBinaryArchiveWriter.html
+  name: TBinaryArchiveWriter
+  nameWithType: TBinaryArchiveWriter
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter
+- uid: TuiVision.Serialization.THelpFile
+  commentId: T:TuiVision.Serialization.THelpFile
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.THelpFile.html
+  name: THelpFile
+  nameWithType: THelpFile
+  fullName: TuiVision.Serialization.THelpFile
+- uid: TuiVision.Serialization.THelpIndex
+  commentId: T:TuiVision.Serialization.THelpIndex
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.THelpIndex.html
+  name: THelpIndex
+  nameWithType: THelpIndex
+  fullName: TuiVision.Serialization.THelpIndex
+- uid: TuiVision.Serialization.THelpCrossReference
+  commentId: T:TuiVision.Serialization.THelpCrossReference
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.THelpCrossReference.html
+  name: THelpCrossReference
+  nameWithType: THelpCrossReference
+  fullName: TuiVision.Serialization.THelpCrossReference
+- uid: TuiVision.Serialization.THelpTopic
+  commentId: T:TuiVision.Serialization.THelpTopic
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.THelpTopic.html
+  name: THelpTopic
+  nameWithType: THelpTopic
+  fullName: TuiVision.Serialization.THelpTopic
 - uid: TuiVision.Serialization.TRecordRegistry
   commentId: T:TuiVision.Serialization.TRecordRegistry
   parent: TuiVision.Serialization
@@ -53,6 +125,20 @@ references:
   name: TRecordSerializer
   nameWithType: TRecordSerializer
   fullName: TuiVision.Serialization.TRecordSerializer
+- uid: TuiVision.Serialization.TResourceCollection
+  commentId: T:TuiVision.Serialization.TResourceCollection
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TResourceCollection.html
+  name: TResourceCollection
+  nameWithType: TResourceCollection
+  fullName: TuiVision.Serialization.TResourceCollection
+- uid: TuiVision.Serialization.TResourceFile
+  commentId: T:TuiVision.Serialization.TResourceFile
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TResourceFile.html
+  name: TResourceFile
+  nameWithType: TResourceFile
+  fullName: TuiVision.Serialization.TResourceFile
 - uid: TuiVision.Serialization
   commentId: N:TuiVision.Serialization
   href: TuiVision.html
