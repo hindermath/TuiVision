@@ -16,7 +16,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Drivers.Console/TConsoleDriver.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: IConsolePresenter
     path: src/TuiVision.Drivers.Console/TConsoleDriver.cs
@@ -55,7 +55,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Drivers.Console/TConsoleDriver.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Present
     path: src/TuiVision.Drivers.Console/TConsoleDriver.cs

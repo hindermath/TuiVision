@@ -24,7 +24,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpTopic.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: THelpTopic
     path: src/TuiVision.Serialization/THelpTopic.cs
@@ -66,7 +66,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpTopic.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Serialization/THelpTopic.cs
@@ -108,7 +108,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpTopic.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Context
     path: src/TuiVision.Serialization/THelpTopic.cs
@@ -143,7 +143,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpTopic.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Title
     path: src/TuiVision.Serialization/THelpTopic.cs
@@ -178,7 +178,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpTopic.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Paragraphs
     path: src/TuiVision.Serialization/THelpTopic.cs
@@ -213,7 +213,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpTopic.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: CrossReferences
     path: src/TuiVision.Serialization/THelpTopic.cs
@@ -248,7 +248,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpTopic.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: AddParagraph
     path: src/TuiVision.Serialization/THelpTopic.cs
@@ -287,7 +287,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpTopic.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: AddCrossReference
     path: src/TuiVision.Serialization/THelpTopic.cs
@@ -323,7 +323,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpTopic.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: SaveTo
     path: src/TuiVision.Serialization/THelpTopic.cs
@@ -361,7 +361,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpTopic.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: LoadFrom
     path: src/TuiVision.Serialization/THelpTopic.cs

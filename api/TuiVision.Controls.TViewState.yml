@@ -27,7 +27,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TViewState
     path: src/TuiVision.Controls/TView.cs
@@ -72,7 +72,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Visible
     path: src/TuiVision.Controls/TView.cs
@@ -100,7 +100,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: CursorVisible
     path: src/TuiVision.Controls/TView.cs
@@ -128,7 +128,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: CursorInsert
     path: src/TuiVision.Controls/TView.cs
@@ -156,7 +156,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Shadow
     path: src/TuiVision.Controls/TView.cs
@@ -184,7 +184,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Active
     path: src/TuiVision.Controls/TView.cs
@@ -212,7 +212,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Selected
     path: src/TuiVision.Controls/TView.cs
@@ -240,7 +240,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Focused
     path: src/TuiVision.Controls/TView.cs
@@ -268,7 +268,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Dragging
     path: src/TuiVision.Controls/TView.cs
@@ -296,7 +296,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Disabled
     path: src/TuiVision.Controls/TView.cs
@@ -324,7 +324,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Modal
     path: src/TuiVision.Controls/TView.cs
@@ -352,7 +352,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Default
     path: src/TuiVision.Controls/TView.cs
@@ -380,7 +380,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Exposed
     path: src/TuiVision.Controls/TView.cs

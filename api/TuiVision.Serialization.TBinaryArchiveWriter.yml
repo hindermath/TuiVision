@@ -24,7 +24,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TBinaryArchiveWriter
     path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
@@ -66,7 +66,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
@@ -108,7 +108,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteByte
     path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
@@ -147,7 +147,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteInt32
     path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
@@ -186,7 +186,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteInt64
     path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
@@ -225,7 +225,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteUInt16
     path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
@@ -264,7 +264,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteBoolean
     path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
@@ -303,7 +303,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteString
     path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
@@ -342,7 +342,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteBytes
     path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
@@ -381,7 +381,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs
-      branch: 004-editor-file-help-streams
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Dispose
     path: src/TuiVision.Serialization/TBinaryArchiveWriter.cs

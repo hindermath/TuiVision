@@ -28,8 +28,11 @@
       },
       {
         "files": [
+          "index.md",
+          "toc.yml",
           "README.md",
           "docs/**/*.md",
+          "docs/toc.yml",
           "examples/README.md"
         ]
       }

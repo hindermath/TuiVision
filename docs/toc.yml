@@ -1,0 +1,6 @@
+- name: Projektstatistiken
+  href: project-statistics.md
+- name: Anleitungen
+  items:
+    - name: Multi-Mac-Workflow
+      href: guides/multi-mac-workflow.md
