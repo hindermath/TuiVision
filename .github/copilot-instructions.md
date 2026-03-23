@@ -72,6 +72,14 @@ All projects target `net10.0` with `Nullable: enable`, `ImplicitUsings: enable`,
 - Planning decisions now fixed for this feature: dedicated runtime help files, shared-reference preservation without cyclic-graph support, exact case-sensitive resource keys, `LF` default for new files, preserved line endings for loaded files, and explicit overwrite decisions after external file changes
 - Keep this increment scoped to reusable framework components only; example applications such as `tvedit`, `bhelp`, and `helpdemo`, as well as driver consolidation and calculator/macros/OS-shell integrations, are out of scope
 
+### 005-driver-consolidation-m07
+- Align active work with `specs/005-driver-consolidation-m07/spec.md` and the planning artifacts in `specs/005-driver-consolidation-m07/`
+- Scope is limited to the managed driver baseline in `src/TuiVision.Drivers.Console`, the supporting validation in `tests/TuiVision.Drivers.Tests`, and the proof ledger `docs/porting-status.md`
+- The proof ledger must cover every historical `.cc` implementation file in `tv203s/contrib/tvision/classes` with one mandatory primary target, optional secondary targets, status, evidence, and rationale
+- Linux and Windows/WSL compatibility checks are required as reviewable evidence for this phase, but may still be manual or semi-automated rather than mandatory CI gates
+- Planning decisions now fixed for this feature: `.cc` files are the formal `M-07` ledger scope, ancillary `.c`/`.h` files may appear only as rationale support, capability buckets replace per-OS lineage as the review model, and Phase 7 remains distinct from the later full Phase-8 gate closure
+- Keep this increment scoped to driver consolidation and proof preparation only; mandatory example waves and complete Phase-8 gate closure remain out of scope
+
 ## Agent File Synchronization Policy
 
 - When active feature context, plan-derived implementation guidance, or other shared AI-agent instructions change, review and update these files together when affected:

@@ -5,6 +5,13 @@
 **Status**: Ready for Planning  
 **Input**: User description: "Bitte >>> NAECHSTER SCHRITT <<< 1. Phase 7 Treiberkonsolidierung abschliessen. als Naechstes gezielt an Phase 7 und schaue zuerst auf M-07-relevante Treiberreste und das fehlende docs/porting-status.md."
 
+## Clarifications
+
+### Session 2026-03-23
+
+- Q: Wie soll `docs/porting-status.md` historische Dateien behandeln, deren Verantwortung heute auf mehrere Zielbereiche verteilt ist? → A: Ein Primaerziel ist Pflicht, zusaetzliche Zielbereiche oder Dateien duerfen ergaenzend genannt werden.
+- Q: Wie verbindlich muessen Linux- und Windows/WSL-Kompatibilitaetspruefungen in Phase 7 bereits nachgewiesen sein? → A: Sie muessen fuer Phase 7 nachweisbar getestet werden, duerfen aber noch manuell oder halbautomatisch belegt sein.
+
 ## User Scenarios & Testing *(mandatory)*
 
 This feature does not port any of the 25 mandatory original examples from
@@ -102,6 +109,8 @@ unknowns.
   a managed cross-platform replacement?
 - What happens when one historical source file contributes behavior to more than
   one current target area instead of mapping neatly to a single destination?
+  The proof ledger must still assign one review-leading primary target and may
+  list additional secondary targets where needed.
 - How is the proof ledger handled when a historical source file has no current
   runtime equivalent because the modern managed architecture deliberately
   removes that dependency?
@@ -121,8 +130,9 @@ unknowns.
   baseline.
 - **FR-003**: The feature MUST provide a maintained mapping ledger in
   `docs/porting-status.md` that lists each historical implementation file with
-  its source path, current target area, current completion status, and the
-  related evidence or rationale.
+  its source path, one mandatory primary target area, any additional secondary
+  target areas where applicable, current completion status, and the related
+  evidence or rationale.
 - **FR-004**: The mapping ledger MUST distinguish at least between behavior that
   is ported and verified, ported but still awaiting explicit verification, and
   consciously replaced or omitted with a documented reason.
@@ -143,7 +153,9 @@ unknowns.
 - **FR-009**: The feature MUST name the primary validation environments for the
   consolidated driver baseline as the two macOS development machines plus Linux
   and Windows compatibility validation, with Windows preferably exercised
-  through current Ubuntu on WSL.
+  through current Ubuntu on WSL. For this feature, Linux and Windows/WSL
+  validation must be demonstrably executed, but the evidence may still be
+  manual or semi-automated rather than already enforced as a mandatory CI gate.
 - **FR-010**: The feature MUST identify the remaining explicit follow-up proof
   items required for the full Phase-8 entrance gate, including build, test,
   coverage, and API-documentation evidence where those gates are not closed by
@@ -165,8 +177,8 @@ unknowns.
 - **Managed Driver Baseline**: The current cross-platform driver behavior that
   the project treats as the maintained runtime target for terminal interaction.
 - **Porting Status Entry**: One ledger row in `docs/porting-status.md` that ties
-  a historical implementation file to its current target, proof state, and
-  rationale.
+  a historical implementation file to one primary current target, optional
+  secondary targets, proof state, and rationale.
 - **Replacement Decision**: A documented explanation for a historical behavior
   that is merged, superseded, or intentionally not reproduced one-to-one in the
   current architecture.
@@ -191,6 +203,9 @@ unknowns.
   decision.
 - Compatibility validation on Linux and Windows/WSL supplements, but does not
   replace, the primary day-to-day Multi-Mac development workflow.
+- For the Phase-7 acceptance scope, Linux and Windows/WSL compatibility checks
+  need reviewable evidence, but they do not yet have to exist as fully
+  automated mandatory CI jobs.
 
 ## Success Criteria *(mandatory)*
 
