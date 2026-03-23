@@ -19,9 +19,9 @@
 
 **Purpose**: Prepare the driver test and proof-ledger scaffolding used by all later stories.
 
-- [ ] T001 Split the current baseline driver tests out of `tests/TuiVision.Drivers.Tests/Test1.cs` into a dedicated `tests/TuiVision.Drivers.Tests/TConsoleDriverBaselineTests.cs`
-- [ ] T002 [P] Add shared Phase-7 validation helpers for driver and ledger work in `tests/TuiVision.Drivers.Tests/Phase7DriverTestContext.cs`
-- [ ] T003 [P] Create the initial proof-ledger document skeleton in `docs/porting-status.md`
+- [X] T001 Split the current baseline driver tests out of `tests/TuiVision.Drivers.Tests/Test1.cs` into a dedicated `tests/TuiVision.Drivers.Tests/TConsoleDriverBaselineTests.cs`
+- [X] T002 [P] Add shared Phase-7 validation helpers for driver and ledger work in `tests/TuiVision.Drivers.Tests/Phase7DriverTestContext.cs`
+- [X] T003 [P] Create the initial proof-ledger document skeleton in `docs/porting-status.md`
 
 **Checkpoint**: Shared driver-test structure and the repository-local proof-ledger file exist.
 
@@ -33,10 +33,10 @@
 
 **CRITICAL**: No user-story work should begin until this phase is complete.
 
-- [ ] T004 [P] Add failing inventory and schema validation tests for `docs/porting-status.md` in `tests/TuiVision.Drivers.Tests/PortingStatusLedgerTests.cs`
-- [ ] T005 [P] Add failing capability-bucket and managed-replacement regression tests in `tests/TuiVision.Drivers.Tests/TConsoleDriverConsolidationTests.cs`
-- [ ] T006 Build the complete historical `.cc` inventory baseline, including associated `.h`/`.c` context notes, in `docs/porting-status.md`
-- [ ] T007 Define the canonical Phase-7 capability buckets and their managed target areas in `docs/porting-status.md`
+- [X] T004 [P] Add failing inventory and schema validation tests for `docs/porting-status.md` in `tests/TuiVision.Drivers.Tests/PortingStatusLedgerTests.cs`
+- [X] T005 [P] Add failing capability-bucket and managed-replacement regression tests in `tests/TuiVision.Drivers.Tests/TConsoleDriverConsolidationTests.cs`
+- [X] T006 Build the complete historical `.cc` inventory baseline, including associated `.h`/`.c` context notes, in `docs/porting-status.md`
+- [X] T007 Define the canonical Phase-7 capability buckets and their managed target areas in `docs/porting-status.md`
 
 **Checkpoint**: The formal proof scope, row schema, and capability vocabulary are fixed and reviewable.
 
@@ -52,15 +52,15 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T008 [P] [US1] Add failing resize, presentation, and state-transition coverage in `tests/TuiVision.Drivers.Tests/TConsoleDriverConsolidationTests.cs`
-- [ ] T009 [P] [US1] Add failing compatibility-caveat and managed-replacement coverage in `tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs`
+- [X] T008 [P] [US1] Add failing resize, presentation, and state-transition coverage in `tests/TuiVision.Drivers.Tests/TConsoleDriverConsolidationTests.cs`
+- [X] T009 [P] [US1] Add failing compatibility-caveat and managed-replacement coverage in `tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs`
 
 ### Implementation for User Story 1
 
-- [ ] T010 [US1] Expand the managed driver baseline and supporting documentation in `src/TuiVision.Drivers.Console/TConsoleDriver.cs`
-- [ ] T011 [P] [US1] Retire the placeholder-only role of `src/TuiVision.Drivers.Console/Class1.cs` and move any real support type into a purpose-named file such as `src/TuiVision.Drivers.Console/DriverCapabilityMap.cs`
-- [ ] T012 [US1] Record the driver-consolidation decisions for the historical platform families in `docs/porting-status.md`
-- [ ] T013 [US1] Capture the required compatibility-evidence workflow for `MacBook Air M2`, `Mac mini M4 Pro`, Linux, and Windows/WSL in `docs/guides/multi-mac-workflow.md`
+- [X] T010 [US1] Expand the managed driver baseline and supporting documentation in `src/TuiVision.Drivers.Console/TConsoleDriver.cs`
+- [X] T011 [P] [US1] Retire the placeholder-only role of `src/TuiVision.Drivers.Console/Class1.cs` and move any real support type into a purpose-named file such as `src/TuiVision.Drivers.Console/DriverCapabilityMap.cs`
+- [X] T012 [US1] Record the driver-consolidation decisions for the historical platform families in `docs/porting-status.md`
+- [X] T013 [US1] Capture the required compatibility-evidence workflow for `MacBook Air M2`, `Mac mini M4 Pro`, Linux, and Windows/WSL in `docs/guides/multi-mac-workflow.md`
 
 **Checkpoint**: User Story 1 is independently reviewable as the Phase-7 MVP.
 
@@ -74,15 +74,15 @@
 
 ### Tests for User Story 2
 
-- [ ] T014 [P] [US2] Extend the ledger validation tests for primary/secondary target rules and canonical statuses in `tests/TuiVision.Drivers.Tests/PortingStatusLedgerTests.cs`
-- [ ] T015 [P] [US2] Add failing coverage for associated support-file references and zero-gap completeness checks in `tests/TuiVision.Drivers.Tests/PortingStatusCompletenessTests.cs`
+- [X] T014 [P] [US2] Extend the ledger validation tests for primary/secondary target rules and canonical statuses in `tests/TuiVision.Drivers.Tests/PortingStatusLedgerTests.cs`
+- [X] T015 [P] [US2] Add failing coverage for associated support-file references and zero-gap completeness checks in `tests/TuiVision.Drivers.Tests/PortingStatusCompletenessTests.cs`
 
 ### Implementation for User Story 2
 
-- [ ] T016 [US2] Populate all shared non-driver framework rows with target mapping, status, evidence, and rationale in `docs/porting-status.md`
-- [ ] T017 [US2] Populate all platform-specific driver rows for `dos/`, `linux/`, `unix/`, `qnx4/`, `qnxrtp/`, `wingr/`, `winnt/`, and `x11/` in `docs/porting-status.md`
-- [ ] T018 [US2] Add the materially relevant ancillary-support references for `tv203s/contrib/tvision/classes/dos/vgastate.h`, `tv203s/contrib/tvision/classes/dos/vgaregs.h`, `tv203s/contrib/tvision/classes/dos/vgastate.c`, and `tv203s/contrib/tvision/classes/dos/vgaregs.c` in `docs/porting-status.md`
-- [ ] T019 [US2] Record explicit evidence references for driver tests, manual compatibility runs, and documented replacement decisions in `docs/porting-status.md`
+- [X] T016 [US2] Populate all shared non-driver framework rows with target mapping, status, evidence, and rationale in `docs/porting-status.md`
+- [X] T017 [US2] Populate all platform-specific driver rows for `dos/`, `linux/`, `unix/`, `qnx4/`, `qnxrtp/`, `wingr/`, `winnt/`, and `x11/` in `docs/porting-status.md`
+- [X] T018 [US2] Add the materially relevant ancillary-support references for `tv203s/contrib/tvision/classes/dos/vgastate.h`, `tv203s/contrib/tvision/classes/dos/vgaregs.h`, `tv203s/contrib/tvision/classes/dos/vgastate.c`, and `tv203s/contrib/tvision/classes/dos/vgaregs.c` in `docs/porting-status.md`
+- [X] T019 [US2] Record explicit evidence references for driver tests, manual compatibility runs, and documented replacement decisions in `docs/porting-status.md`
 
 **Checkpoint**: User Story 2 closes the formal `M-07` proof artifact without relying on repository archaeology.
 
@@ -96,14 +96,14 @@
 
 ### Validation for User Story 3
 
-- [ ] T020 [P] [US3] Add a review checklist for Phase-7-vs.-Phase-8 gate separation in `specs/005-driver-consolidation-m07/checklists/phase-8-gate-review.md`
-- [ ] T021 [P] [US3] Add a quickstart validation pass for the finished proof package in `specs/005-driver-consolidation-m07/quickstart.md`
+- [X] T020 [P] [US3] Add a review checklist for Phase-7-vs.-Phase-8 gate separation in `specs/005-driver-consolidation-m07/checklists/phase-8-gate-review.md`
+- [X] T021 [P] [US3] Add a quickstart validation pass for the finished proof package in `specs/005-driver-consolidation-m07/quickstart.md`
 
 ### Implementation for User Story 3
 
-- [ ] T022 [US3] Document the explicit remaining Phase-8 entrance-gate follow-up items in `docs/porting-status.md`
-- [ ] T023 [US3] Align the Phase-7 completion wording and `>>> NAECHSTER SCHRITT <<<` context in `Pflichtenheft.md`
-- [ ] T024 [US3] Sync the feature outcome and execution guidance in `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` if the active-work guidance changed
+- [X] T022 [US3] Document the explicit remaining Phase-8 entrance-gate follow-up items in `docs/porting-status.md`
+- [X] T023 [US3] Align the Phase-7 completion wording and `>>> NAECHSTER SCHRITT <<<` context in `Pflichtenheft.md`
+- [X] T024 [US3] Sync the feature outcome and execution guidance in `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` if the active-work guidance changed
 
 **Checkpoint**: User Story 3 leaves a clean hand-off from framework completion to later example-port gating.
 
@@ -113,11 +113,11 @@
 
 **Purpose**: Run the mandatory quality gates, close documentation updates, and refresh repository statistics.
 
-- [ ] T025 [P] Run and record `dotnet build --configuration Release`, `dotnet test tests/TuiVision.Drivers.Tests/`, and `dotnet test` using `specs/005-driver-consolidation-m07/quickstart.md`
-- [ ] T026 [P] Run and record `dotnet format --verify-no-changes` and `dotnet test --collect:"XPlat Code Coverage"` using `specs/005-driver-consolidation-m07/quickstart.md`
-- [ ] T027 Run and record compatibility evidence for `MacBook Air M2`, `Mac mini M4 Pro`, Linux, and Windows/WSL in `docs/guides/multi-mac-workflow.md` and `docs/porting-status.md`
-- [ ] T028 [P] Run `docfx docfx.json` if `src/TuiVision.Drivers.Console/` public APIs or XML comments changed, and record the result in `specs/005-driver-consolidation-m07/quickstart.md`
-- [ ] T029 [P] Update `docs/project-statistics.md` with the branch/phase scope, documentation growth, observable work window, and manual-effort baseline for `005-driver-consolidation-m07`
+- [X] T025 [P] Run and record `dotnet build --configuration Release`, `dotnet test tests/TuiVision.Drivers.Tests/`, and `dotnet test` using `specs/005-driver-consolidation-m07/quickstart.md`
+- [X] T026 [P] Run and record `dotnet format --verify-no-changes` and `dotnet test --collect:"XPlat Code Coverage"` using `specs/005-driver-consolidation-m07/quickstart.md`
+- [X] T027 Run and record compatibility evidence for `MacBook Air M2`, `Mac mini M4 Pro`, Linux, and Windows/WSL in `docs/guides/multi-mac-workflow.md` and `docs/porting-status.md`
+- [X] T028 [P] Run `docfx docfx.json` if `src/TuiVision.Drivers.Console/` public APIs or XML comments changed, and record the result in `specs/005-driver-consolidation-m07/quickstart.md`
+- [X] T029 [P] Update `docs/project-statistics.md` with the branch/phase scope, documentation growth, observable work window, and manual-effort baseline for `005-driver-consolidation-m07`
 
 ---
 
