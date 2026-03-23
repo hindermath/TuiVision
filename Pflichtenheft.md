@@ -6,7 +6,7 @@
 - [ ] Offen oder im Repository derzeit nicht belastbar nachweisbar
 
 Hinweis:
-Die Statusmarken in diesem Dokument basieren auf dem lokalen Repository-Stand vom 2026-03-22.
+Die Statusmarken in diesem Dokument basieren auf dem lokalen Repository-Stand vom 2026-03-23.
 Externe GitHub-Einstellungen oder nicht versionierte Nachweisartefakte sind nur dann als erledigt markiert, wenn sie im Repository direkt belegbar sind.
 
 ## 1. Zweck und Geltungsbereich
@@ -21,7 +21,7 @@ TuiVision ist dabei ausdruecklich als **Beispielprojekt** zur Modernisierung mit
 - Quellcodebasis: `tv203s/contrib/tvision`
 - Herkunft des `tv203s/`-Bestands laut Lastenheft: Download von `https://sourceforge.net/projects/tvision/files/DOS_Win32/2.0.3/`
 - Lokale Arbeitsumgebungen: macOS auf `MacBook Air M2` und `Mac mini M4 Pro`
-- Auf beiden Systemen vorhanden und authentifiziert: `gh` (GitHub CLI) und `codex` (Codex CLI)
+- Auf beiden Systemen vorhanden und authentifiziert: `gh` (GitHub CLI), `codex`, `claude`, `copilot` und `gemini`; zusaetzlich ist GitHub Spec-Kit als verpflichtende Grundlage in allen vier KI-Agenten (`codex`, `claude`, `copilot`, `gemini`) installiert und nutzbar
 - Umfang der vorhandenen C/C++-Basis (Stand Analyse):
   - ca. 130 oeffentliche Header in `include/tv`
   - 105 Implementierungsdateien im Kernbereich `classes`
@@ -54,7 +54,7 @@ Statuscheckliste Lieferumfang:
 - [ ] Nutzerdokumentation (Leitfaeden fuer Einstieg und Verwendung)
 - [ ] Ausfuehrliche Dokumentation aller portierten Beispielprogramme
 - [-] Ausreichende Quellcode-Dokumentation fuer Lern- und Wartungszwecke
-- [-] Dokumentierter lokaler Workflow fuer `gh`, `codex`, `claude`, `copilot` und `gemini` auf beiden macOS-Systemen
+- [-] Dokumentierter lokaler Workflow fuer `gh`, `codex`, `claude`, `copilot` und `gemini` auf beiden macOS-Systemen einschliesslich GitHub Spec-Kit in allen vier KI-Agenten
 
 ## 5. Anforderungen (MUSS)
 
@@ -108,7 +108,7 @@ Statuscheckliste Anforderungen:
 | M-18 | Ausfuehrliche Dokumentation der Beispielprogramme | Pro Beispielprogramm eigener Guide mit Lernziel, Voraussetzungen, Start, Bedienung, Architekturhinweisen und Uebungen | Alle portierten Beispiele sind didaktisch nachvollziehbar dokumentiert und reproduzierbar ausfuehrbar |
 | M-19 | Ausreichende Quellcode-Dokumentation im gesamten TuiVision-Code | Nicht-triviale Logik, Architekturentscheidungen und interne Zusammenhaenge werden im Code nachvollziehbar kommentiert | Der Quellcode erfuellt die pruefbaren Kriterien aus Abschnitt 10.5 und ist fuer Fachinformatiker (Anwendungsentwicklung) lern- und wartbar |
 | M-20 | Messbarer Mindest-Testumfang (MUSS-Tests) | Definierte Mindestabdeckung, Pflichttestfaelle und vollstaendige Smoke-Tests gemaess Abschnitt 9.4 | Die in Abschnitt 9.4 definierten Kennzahlen und Testumfaenge sind vollstaendig erreicht |
-| M-21 | Reproduzierbarer Multi-Mac-Entwicklungsworkflow | Build-, Test-, GitHub- und KI-Agenten-Arbeitsablaeufe sind fuer `MacBook Air M2` und `Mac mini M4 Pro` mit `gh`, `codex`, `claude`, `copilot` und `gemini` dokumentiert | Die dokumentierten Schluesselablaeufe funktionieren auf beiden Systemen mit den dokumentierten Voraussetzungen und ggf. automatisierter Tool-Bereitstellung (z. B. DocFX als .NET-Tool) |
+| M-21 | Reproduzierbarer Multi-Mac-Entwicklungsworkflow | Build-, Test-, GitHub- und KI-Agenten-Arbeitsablaeufe sind fuer `MacBook Air M2` und `Mac mini M4 Pro` mit `gh`, `codex`, `claude`, `copilot` und `gemini` dokumentiert; GitHub Spec-Kit ist in allen vier KI-Agenten verpflichtend installiert und in den Workflows beruecksichtigt | Die dokumentierten Schluesselablaeufe funktionieren auf beiden Systemen mit den dokumentierten Voraussetzungen und ggf. automatisierter Tool-Bereitstellung (z. B. DocFX als .NET-Tool); die Spec-Kit-gestuetzten Agentenablaeufe sind fuer `codex`, `claude`, `copilot` und `gemini` nachvollziehbar nachweisbar |
 | M-22 | Automatische Veroeffentlichung der Dokumentation auf GitHub Pages | Dedizierter Workflow `.github/workflows/docs-deploy.yml` gemaess Abschnitt 10.8: Trigger auf `push` nach `main` fuer Pfade `docs/**`, `src/**`, `docfx.json`; Schritte: checkout, dotnet-build (XML-Docs), docfx, `upload-pages-artifact`, `deploy-pages`; Repository-Setting auf Source „GitHub Actions"; Umgebung `github-pages` | Workflow existiert gemaess Abschnitt 10.8; docfx-Dokumentation ist ueber GitHub Pages erreichbar; Deployment laeuft automatisch nach jedem relevanten Merge auf `main`; Deployment-Status im Actions-Tab sichtbar |
 
 ## 6. Optionale Anforderungen (KANN / Pruefauftraege)
@@ -360,7 +360,7 @@ Die folgenden Punkte sind verpflichtend und bilden die "MUSS-Tests" im Sinne die
 - [x] Integrations-/Verhaltenstests decken mindestens Event-Loop, Fokuswechsel, Menueausfuehrung und Dialoginteraktion ab.
 - [ ] Smoke-Tests laufen fuer alle 25 portierten Beispielprogramme automatisiert in CI.
 - [ ] Alle MUSS-Tests laufen in GitHub Actions auf jedem Pull Request und auf dem Hauptbranch.
-- [-] Die dokumentierten lokalen Schluesselablaeufe mit `gh`, `codex`, `claude`, `copilot` und `gemini` sind auf `MacBook Air M2` und `Mac mini M4 Pro` nachvollziehbar und reproduzierbar.
+- [-] Die dokumentierten lokalen Schluesselablaeufe mit `gh`, `codex`, `claude`, `copilot` und `gemini` sind auf `MacBook Air M2` und `Mac mini M4 Pro` nachvollziehbar und reproduzierbar; GitHub Spec-Kit ist dabei in allen vier KI-Agenten installiert und Bestandteil der nachgewiesenen Agentenablaeufe.
 - [x] Bei API-/XML-Kommentar-Aenderungen ist die erfolgreiche docfx-Erzeugung als Nachweisartefakt vorhanden.
 
 ## 10. Dokumentation
@@ -369,7 +369,7 @@ Die folgenden Punkte sind verpflichtend und bilden die "MUSS-Tests" im Sinne die
 - [ ] Changelog fuer Portierungsfortschritt und Abweichungen vom Originalverhalten
 - [ ] Saemtliche Projektdokumentation folgt einem einheitlichen didaktischen Lehr-/Beispielstandard
 - [-] Der Quellcode selbst ist didaktisch und wartungsorientiert dokumentiert
-- [-] Lokale Arbeitsablaeufe mit `gh`, `codex`, `claude`, `copilot` und `gemini` sind fuer beide macOS-Systeme dokumentiert
+- [-] Lokale Arbeitsablaeufe mit `gh`, `codex`, `claude`, `copilot` und `gemini` sind fuer beide macOS-Systeme dokumentiert; GitHub Spec-Kit ist als Pflichtbestandteil in allen vier KI-Agenten beruecksichtigt
 
 ## 10.1 XML-Dokumentationsstandard fuer die API (verbindlich)
 Fuer den Lehr- und Beispielcharakter des Projekts gelten folgende verbindliche Regeln:
@@ -427,11 +427,12 @@ Fuer den Lehr- und Beispielcharakter gilt fuer den TuiVision-Quellcode:
 
 ## 10.6 Standard fuer lokalen Multi-Mac-Workflow (verbindlich)
 Fuer die Arbeitsumgebungen `MacBook Air M2` und `Mac mini M4 Pro` gilt:
-1. Die Nutzung von `gh`, `codex`, `claude`, `copilot` und `gemini` fuer taegliche Entwicklungsschritte ist in `docs/guides` nachvollziehbar beschrieben.
+1. Die Nutzung von `gh`, `codex`, `claude`, `copilot` und `gemini` fuer taegliche Entwicklungsschritte ist in `docs/guides` nachvollziehbar beschrieben. `codex`, `claude`, `copilot` und `gemini` sind auf beiden Systemen als Pflichtinstallation vorzuhalten.
 2. Mindestens die Schluesselablaeufe Build, Test, Branch/PR-Workflow und Repository-Operationen sind dokumentiert.
 3. Die Befehle sind so dokumentiert, dass sie auf beiden Systemen mit den angegebenen Voraussetzungen reproduzierbar funktionieren.
 4. Voraussetzungen (authentifizierte CLI-Tools) und die Versionspruefung sind explizit dokumentiert.
-5. Falls zusaetzliche Tools noetig sind (z. B. DocFX), ist die automatisierte Bereitstellung per dokumentiertem Befehl Bestandteil des Workflows.
+5. GitHub Spec-Kit ist als Pflichtbestandteil in allen vier KI-Agenten (`codex`, `claude`, `copilot`, `gemini`) installiert; Installation, Versionspruefung und Grundnutzung sind fuer beide Systeme dokumentiert.
+6. Falls zusaetzliche Tools noetig sind (z. B. DocFX), ist die automatisierte Bereitstellung per dokumentiertem Befehl Bestandteil des Workflows.
 
 ## 10.7 Standard fuer Nutzerdokumentation – Quellen, Struktur und Sprache (verbindlich)
 
@@ -469,23 +470,26 @@ Die Nutzerdokumentation speist sich aus folgenden Quellen in absteigender Priori
    - *Turbo Vision for C++ User's Guide* (Borland International, 1992; lokale Quelle: [TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.pdf](TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.pdf)) – Konzepte, Architektur, Tutorials, Event-Modell
    - *Turbo Vision for C++ Reference Guide* (Borland International, 1992) – vollstaendige Klassenreferenz mit Verhalten und Beispielen
    - Zusaetzlich verifiziertes oeffentlich zugaengliches Begleitdokument: *Turbo Vision Version 2.0 Programming Guide* (Borland, 1992; lokale Quelle: [TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.pdf](TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.pdf))
-   - Fuer die lokale Recherche und die agentische Dokumentationserstellung liegen zusaetzlich OCR-Textfassungen und Markdown-Arbeitsfassungen vor: [TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.txt](TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.txt), [TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.md](TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.md), [TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.txt](TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.txt), [TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.md](TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.md)
-   - Das User's Guide und das zusaetzlich genannte Programming Guide liegen damit in diesem Repository sowohl als PDF als auch als lokale Hilfsfassungen unter `TVDocs/`; fuer das separat benannte Reference Guide ist derzeit keine eigenstaendig verifizierte Einzeldatei hinterlegt.
+   - Das User's Guide und das zusaetzlich genannte Programming Guide liegen damit in diesem Repository als originale PDF-Quellen unter `TVDocs/`; fuer das separat benannte Reference Guide ist derzeit keine eigenstaendig verifizierte Einzeldatei hinterlegt.
    - **Adaptionspflicht**: Diese Werke dienen ausschliesslich als inhaltliche Vorlage und Inspirationsquelle. Jeder Text ist vollstaendig neu zu formulieren: C++ wird zu C#, DOS- und Borland-Terminologie wird durch TuiVision- und .NET-Terminologie ersetzt, das Sprachniveau wird auf CEFR B2 angepasst. Woertliche Textuebernahmen sind nicht zulaessig.
 
-2. **Free Vision Reference (Tier 1 – ergaenzende Konzepte)**
+2. **Lokale Hilfsfassungen fuer Recherche und agentische Dokuarbeit (nicht normative Arbeitsmittel)**
+   - OCR-Textfassungen und Markdown-Arbeitsfassungen: [TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.txt](TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.txt), [TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.md](TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.md), [TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.txt](TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.txt), [TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.md](TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.md)
+   - Diese Fassungen dienen ausschliesslich der lokalen Suche, Navigation und agentischen Aufbereitung. Bei Konflikten oder OCR-Fehlern haben die PDF-Originalquellen aus Tier 1 Vorrang.
+
+3. **Free Vision Reference (Tier 1 – ergaenzende Konzepte)**
    - Free Pascal Projekt (freepascal.org) – konzeptionell verwandte Implementierung der gleichen TV-API
    - Gleiche Adaptionspflicht wie fuer Borland-Material
 
-3. **tv203s C/C++-Quellcode (Tier 2 – Verhaltensreferenz)**
+4. **tv203s C/C++-Quellcode (Tier 2 – Verhaltensreferenz)**
    - `tv203s/contrib/tvision/` als massgebliche Referenz fuer das Originalverhalten
    - Wird genutzt, um Verhalten zu erklaeren und bewusste Abweichungen der C#-Portierung zu begruenden
 
-4. **C# Quellcode und XML-Kommentare (Tier 3 – API-Dokumentation)**
+5. **C# Quellcode und XML-Kommentare (Tier 3 – API-Dokumentation)**
    - Primaerquelle fuer alle API-Referenzseiten; docfx erzeugt daraus automatisch die API-Doku
    - XML-Kommentare muessen vollstaendig und didaktisch gemaess Abschnitt 10.1 sein
 
-5. **Portierte Beispielprogramme (Tier 4 – Nutzungsszenarien)**
+6. **Portierte Beispielprogramme (Tier 4 – Nutzungsszenarien)**
    - `examples/` liefert konkrete Anwendungsszenarien fuer Tutorials und konzeptuelle Guides
 
 ### Sprache und Stil
@@ -577,9 +581,40 @@ environment:
 | Umfang der Beispielportierung | mittel | Inkrementelle Wellen, pro Beispiel Smoke-Test |
 | Vermeidung nativer Abhaengigkeiten bei zugleich hoher Funktionsnahe | mittel | Architekturregeln (M-12) und Build-Checks ohne Native-Payload |
 
+## 11.1 Priorisierte Restarbeiten bis zur Abnahme
+
+Die verbleibenden Arbeiten sind in folgender Reihenfolge abzuarbeiten, damit die MUSS-Abnahme mit moeglichst geringem Ruecksprungrisiko erreicht wird:
+
+1. **M-07 und Eingangstor Phase 8 schliessen**
+   - `docs/porting-status.md` vollstaendig aufbauen, jede `.cc`-Quelldatei aus `tv203s/contrib/tvision/classes` abbilden, Teststatus und bewusst ausgelassene Faelle mit Begruendung nachweisen.
+   - Build-, Test-, Coverage- und API-Doku-Gate fuer `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` vollstaendig und belastbar nachziehen.
+
+2. **Phase 7 Treiberkonsolidierung abschliessen**
+   - Den Managed-Console-Treiber fachlich so weit stabilisieren, dass Welle 4 nicht durch offene Terminal-/Zeichensatzfragen blockiert bleibt.
+   - Offene plattformspezifische Restfaelle aus `M-07` gegen die neue Treiberschicht explizit aufloesen.
+
+3. **MUSS-Beispielwellen 1 bis 4 portieren**
+   - Erst nach bestandenem Eingangstor beginnen.
+   - Die 25 Originalbeispiele aus `tv203s/contrib/tvision/examples` bleiben bis zur Abnahme der einzige verpflichtende Beispielumfang.
+
+4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
+   - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.
+   - Die MUSS-Tests gemaess Abschnitt 9.4 fuer Pull Requests und `main` vollstaendig nachweisbar machen.
+
+5. **Pflichtdokumentation parallel zur Portierung fertigstellen**
+   - Pflichtguides unter `docs/guides/`, Beispiel-Guides gemaess Abschnitt 10.4, XML-Dokumentation, Changelog und didaktische Vereinheitlichung nicht auf den Projektabschluss verschieben.
+   - Dokumentation ist im selben Arbeitsgang wie API-, Verhaltens- und Beispielaenderungen nachzuziehen.
+
+6. **Multi-Mac-Workflow und GitHub Pages abschliessen**
+   - Die dokumentierten Schluesselablaeufe fuer `gh`, `codex`, `claude`, `copilot`, `gemini` und GitHub Spec-Kit auf beiden Macs nachvollziehbar absichern.
+   - `M-22` mit automatischem GitHub-Pages-Deployment der docfx-Dokumentation auf `main` schliessen.
+
+7. **TP7-Anschlusswellen erst nach MUSS-Abnahme verfolgen**
+   - `TVDEMOS/` und `TVFM/` bleiben wertvolle Anschlussarbeit, duerfen aber weder `M-10` noch die Abschlusskriterien fuer die 25 Originalbeispiele verwischen.
+
 ## 12. Abnahmekriterien
 Die Abnahme gilt als bestanden, wenn:
-- [ ] Alle MUSS-Anforderungen M-01 bis M-21 nachweisbar erfuellt sind.
+- [ ] Alle MUSS-Anforderungen M-01 bis M-22 nachweisbar erfuellt sind.
 - [-] Das Framework in C#/.NET 10 (net10.0) buildbar ist und die definierten Tests durchlaufen.
 - [x] Die API-Dokumentation mit docfx erzeugt wird.
 - [ ] Alle 25 identifizierten Original-Beispielprogramme in portierter Form vorliegen und mindestens per Smoke-Test validiert sind; TP7-Anschlussbeispiele werden zusaetzlich und getrennt nachverfolgt.
@@ -589,7 +624,7 @@ Die Abnahme gilt als bestanden, wenn:
 - [ ] Fuer alle 25 portierten Original-Beispielprogramme liegt eine Dokumentation gemaess Abschnitt 10.4 vor; fuer TP7-Anschlussbeispiele gilt derselbe Dokumentationsstandard, sobald sie portiert werden.
 - [-] Der Quellcode erfuellt den Dokumentationsstandard gemaess Abschnitt 10.5 nachweisbar.
 - [ ] Der Mindest-Testumfang gemaess Abschnitt 9.4 ist nachweisbar vollstaendig erfuellt.
-- [-] Der lokale Workflow mit `gh`, `codex`, `claude`, `copilot` und `gemini` gemaess Abschnitt 10.6 ist auf beiden macOS-Systemen nachweisbar anwendbar.
+- [-] Der lokale Workflow mit `gh`, `codex`, `claude`, `copilot` und `gemini` gemaess Abschnitt 10.6 ist auf beiden macOS-Systemen nachweisbar anwendbar; GitHub Spec-Kit ist in allen vier KI-Agenten installiert und in den dokumentierten Ablaeufen nutzbar.
 - [x] Bei API-/XML-Kommentar-Aenderungen ist die docfx-Dokumentation nachweisbar neu erzeugt worden.
 - [ ] Die docfx-Dokumentation ist ueber GitHub Pages des Repositories `hindermath/TuiVision` erreichbar und wird bei jedem Merge auf `main` mit Doku-relevanten Aenderungen automatisch aktualisiert (M-22).
 
