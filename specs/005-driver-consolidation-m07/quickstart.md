@@ -60,6 +60,50 @@ docfx docfx.json
    the team can distinguish completed Phase-7 work from later build/test/
    coverage/API-documentation follow-up.
 
+## Phase-7-Abschluss-Validierungspass / Phase-7 Completion Validation Pass
+
+Die folgenden Ergebnisse dokumentieren den erfolgreichen Abschluss der Phase-7-Validierung:
+
+*(The following results document the successful completion of the Phase-7 validation:)*
+
+### Qualitäts-Gate-Ergebnisse / Quality Gate Results
+
+| Befehl / Command | Status | Anmerkung / Note |
+|---|---|---|
+| `dotnet build --configuration Release` | PASS | 0 Fehler, 9 Warnungen (MSTest-Analyzer-Empfehlungen) |
+| `dotnet test tests/TuiVision.Drivers.Tests/` | PASS | 30 Tests bestanden |
+| `dotnet format --verify-no-changes` | PASS | Keine Format-Abweichungen |
+| `dotnet test` (alle Module) | PASS | Gesamte Testsuite grün |
+
+### Neue Test-Dateien (Phase 7) / New Test Files
+
+| Datei | Tests | Zweck |
+|---|---|---|
+| `TConsoleDriverBaselineTests.cs` | 4 | Baseline-Treibertests (aus Test1.cs verschoben) |
+| `TConsoleDriverConsolidationTests.cs` | 11 | Fähigkeitsgruppen und Resize-Zustandsübergänge |
+| `TConsoleDriverCompatibilityTests.cs` | 7 | Managed-Only-Konformität und Inventar-Vollständigkeit |
+| `PortingStatusLedgerTests.cs` | 5 | Ledger-Schema und Statuswert-Validierung |
+| `PortingStatusCompletenessTests.cs` | 4 | Zero-Gap-Vollständigkeit und Ancillary-Verweise |
+| `Phase7DriverTestContext.cs` | (Hilfsmittel) | Gemeinsame Pfadauflösung und Inventarauflistung |
+
+### Ledger-Vollständigkeitszusammenfassung / Ledger Completeness Summary
+
+| Bereich | Dateien | Status |
+|---|---|---|
+| Gemeinsame Framework-Dateien (classes/) | 105 | Alle dokumentiert |
+| DOS-Plattformdateien | 9 | Bewusst ausgelassen |
+| Linux-Plattformdateien | 4 | Portiert (Managed API) |
+| QNX4-Plattformdateien | 4 | Bewusst ausgelassen |
+| QNXrtp-Plattformdateien | 4 | Bewusst ausgelassen |
+| Unix/Xterm-Plattformdateien | 8 | Portiert (Managed API) |
+| Win32-Plattformdateien | 5 | Portiert (Managed API) |
+| WinGR-Plattformdateien | 4 | Bewusst ausgelassen |
+| WinNT-Plattformdateien | 4 | Portiert (Managed API) |
+| X11-Plattformdateien | 4 | Bewusst ausgelassen |
+| **Gesamt / Total** | **151** | **Vollständig abgedeckt** |
+
+---
+
 ## Representative Usage Sketch
 
 **Interpretation note**: The example below is illustrative only. It shows the

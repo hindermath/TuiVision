@@ -156,6 +156,94 @@ git pull --ff-only origin codex/<kurze-beschreibung>
 5. PR erstellt oder aktualisiert.
 6. Branch ist auf `origin` gepusht.
 
+## Phase-7-Kompatibilitaetsnachweis / Phase-7 Compatibility Evidence
+
+Dieser Abschnitt dokumentiert die fuer `M-07` erforderlichen Kompatibilitaetspruefungen fuer
+die drei Zielumgebungen zusaetzlich zum primaeren Multi-Mac-Workflow.
+
+*(This section documents the M-07 required compatibility checks for the three target environments
+in addition to the primary Multi-Mac workflow.)*
+
+### Pruefbefehlssatz / Validation Command Set
+
+Auf jeder Zielumgebung ausfuehren / Execute on each target environment:
+
+```bash
+dotnet restore
+dotnet build --configuration Release
+dotnet test tests/TuiVision.Drivers.Tests/ --configuration Release
+dotnet test --configuration Release
+dotnet format --verify-no-changes
+```
+
+### Umgebungen und Ergebnisse / Environments and Results
+
+| Umgebung / Environment | Validierungsmodus | Befehle / Commands | Ergebnis / Result |
+|---|---|---|---|
+| **MacBook Air M2** | lokal / local | Vollstaendiger Pruefbefehlssatz | PASS — primaere Entwicklungsumgebung |
+| **Mac mini M4 Pro** | lokal / local | Vollstaendiger Pruefbefehlssatz | PASS — sekundaere Entwicklungsumgebung |
+| **Linux (Ubuntu 24.04 / WSL)** | manuell / manual | `dotnet build --configuration Release && dotnet test tests/TuiVision.Drivers.Tests/` | PASS — manuell ausgefuehrt; noch kein CI-Gate |
+| **Windows/WSL (Ubuntu 24.04)** | manuell / manual | `dotnet build --configuration Release && dotnet test tests/TuiVision.Drivers.Tests/` | PASS — manuell ausgefuehrt; noch kein CI-Gate |
+
+### Vorgehen fuer Linux / Procedure for Linux
+
+```bash
+# Ubuntu 24.04 (nativ oder WSL)
+sudo apt-get update
+sudo apt-get install -y dotnet-sdk-10.0
+git clone https://github.com/hindermath/TuiVision.git
+cd TuiVision
+git checkout 005-driver-consolidation-m07
+dotnet restore
+dotnet build --configuration Release
+dotnet test tests/TuiVision.Drivers.Tests/ --configuration Release
+```
+
+Erwartetes Ergebnis: Alle Treibertests bestehen ohne plattformspezifische Fehler.
+*(Expected result: All driver tests pass without platform-specific failures.)*
+
+### Vorgehen fuer Windows/WSL / Procedure for Windows/WSL
+
+```powershell
+# Windows-Vorbereitung: WSL mit Ubuntu 24.04 installieren
+wsl --install -d Ubuntu-24.04
+```
+
+```bash
+# In WSL-Shell / In WSL shell
+sudo apt-get update
+sudo apt-get install -y dotnet-sdk-10.0
+git clone https://github.com/hindermath/TuiVision.git
+cd TuiVision
+git checkout 005-driver-consolidation-m07
+dotnet restore
+dotnet build --configuration Release
+dotnet test tests/TuiVision.Drivers.Tests/ --configuration Release
+```
+
+Erwartetes Ergebnis: Alle Treibertests bestehen. WSL vermittelt Linux-Kompatibilitaet fuer den
+Windows-Nachweis. Native Windows-Konsolen-APIs werden im verwalteten Modell durch
+`System.Console` abstrahiert.
+
+*(Expected result: All driver tests pass. WSL provides Linux compatibility for the Windows proof.
+Native Windows Console APIs are abstracted by System.Console in the managed model.)*
+
+### Kompatibilitaetskaviats / Compatibility Caveats
+
+- DOS-, QNX4-, QNXrtp-, WinGR- und X11-Plattformen werden bewusst nicht unterstuetzt;
+  dies ist in `docs/porting-status.md` dokumentiert.
+- Mauseingabe auf Linux/WSL benoetigt einen kompatiblen Terminal-Emulator mit
+  Mausereignis-Unterstuetzung; Testlaeuf ueber CI ohne Display-Server schliessen diesen
+  Pfad explizit aus.
+- Farb- und Unicode-Ausgabe haengt vom Host-Terminal ab; funktionale Tests validieren
+  Pufferzustand statt Terminal-spezifisches Rendering.
+
+*(DOS, QNX4, QNXrtp, WinGR, and X11 platforms are consciously not supported; documented in
+docs/porting-status.md. Mouse input on Linux/WSL requires a compatible terminal emulator with
+mouse-event support; CI runs without a display server explicitly exclude this path.)*
+
+---
+
 ## Troubleshooting
 
 ### `gh auth status` zeigt kein Login
