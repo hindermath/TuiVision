@@ -101,6 +101,11 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 *   Die Datei muss nach jeder abgeschlossenen Spec-Kit-Implementierungsphase, nach jeder agentischen Änderung am Repository und auf explizite Anforderung aktualisiert werden.
 *   Jeder Eintrag muss Branch oder Phase, beobachtbares Arbeitsfenster, Produktions-, Test- und Doku-Zeilen, die wesentlichen Arbeitspakete sowie die konservative Handarbeits-Basis von 80 Codezeilen pro Tag für einen erfahrenen Entwickler enthalten.
 
+## ▶ Pflichtenheft-Marker fuer den naechsten Schritt
+
+*   In `Pflichtenheft.md` ist ein gut sichtbarer Marker `>>> NAECHSTER SCHRITT <<<` zu pflegen.
+*   Der Marker muss immer auf den aktuell hoechstprioren offenen Arbeitsschritt im Abschnitt der priorisierten Restarbeiten zeigen und bei Fortschritt entsprechend weitergeschoben werden.
+
 ---
 *Hinweis: Dieses Dokument wurde automatisch von Gemini CLI generiert und dient als Instruktionsbasis.*
 

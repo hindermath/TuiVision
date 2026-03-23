@@ -87,3 +87,8 @@ All projects target `net10.0` with `Nullable: enable`, `ImplicitUsings: enable`,
 - Maintain `docs/project-statistics.md` as the living statistics ledger for the repository.
 - Update the file after each completed Spec-Kit implementation phase, after each agent-driven repository change, or when a refresh is explicitly requested.
 - Each update must capture branch/phase, observable work window, production/test/documentation line counts, main work packages, and the conservative manual baseline of 80 code lines per day for an experienced developer.
+
+## Pflichtenheft Next-Step Marker
+
+- Maintain a prominent `>>> NAECHSTER SCHRITT <<<` marker in `Pflichtenheft.md`.
+- The marker MUST point to the currently highest-priority open work item in the prioritized rest-work section and MUST be moved whenever progress changes the effective next step.

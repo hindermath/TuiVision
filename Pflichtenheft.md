@@ -580,6 +580,9 @@ environment:
 
 Die verbleibenden Arbeiten sind in folgender Reihenfolge abzuarbeiten, damit die MUSS-Abnahme mit moeglichst geringem Ruecksprungrisiko erreicht wird:
 
+>>> NAECHSTER SCHRITT <<< 1. **M-07 und Eingangstor Phase 8 schliessen**
+Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf den dann hoechstprioren offenen Arbeitsschritt zu verschieben.
+
 1. **M-07 und Eingangstor Phase 8 schliessen**
    - `docs/porting-status.md` vollstaendig aufbauen, jede `.cc`-Quelldatei aus `tv203s/contrib/tvision/classes` abbilden, Teststatus und bewusst ausgelassene Faelle mit Begruendung nachweisen.
    - Build-, Test-, Coverage- und API-Doku-Gate fuer `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` vollstaendig und belastbar nachziehen.
