@@ -51,6 +51,11 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 5.  **Keine Nativen Abhängigkeiten:** Alle Treiber müssen rein in verwaltetem Code implementiert sein (kein P/Invoke, wo vermeidbar).
 6.  **Lizenztreue:** Einhaltung der MIT-Lizenz für neuen Code; Respektierung der Original-Lizenzen im `tv203s` Ordner.
 
+## 🌿 Branch-Konvention
+
+*   Feature-Branches verwenden entweder die agentenpraefixierte Form `codex/<feature-description>` (oder ein anderes unterstuetztes Praefix wie `claude/`, `gemini/`, `copilot/`, `opencode/`) oder die nummerierte Spec-Kit-Form `NNN-short-description`, wenn der Spec-Kit-Workflow diesen Branch-Typ erzeugt.
+*   CI reagiert auf Pushes nach `main`, `master`, `codex/**`, `claude/**`, `gemini/**`, `copilot/**` und `opencode/**`.
+
 ## 📚 Wichtige Dokumente
 *   `README.md`: Allgemeine Einführung und CI-Status.
 *   `Lasten_Heft.md`: Grobe Anforderungen und Ziele.

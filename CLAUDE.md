@@ -66,7 +66,7 @@ Tests use MSTest. Test projects mirror source projects (e.g., `TuiVision.Core.Te
 
 ## Branching Convention
 
-Feature branches use the pattern `codex/<feature-description>`. CI runs on pushes to `main`, `master`, `codex/**`, `claude/**`, `gemini/**`, `opencode/**`, and `copilot/**` branches.
+Feature branches use either the agent-prefixed form `codex/<feature-description>` (or another supported agent prefix such as `claude/`, `gemini/`, `copilot/`, `opencode/`) or the numbered Spec-Kit form `NNN-short-description` when the Spec-Kit workflow creates the branch. CI runs on pushes to `main`, `master`, `codex/**`, `claude/**`, `gemini/**`, `opencode/**`, and `copilot/**` branches.
 
 ## Active Feature Context
 

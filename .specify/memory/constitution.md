@@ -1,10 +1,10 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version change: 1.7.1 → 1.8.0
-  Bump rationale: MINOR — Expanded workflow governance to define the
-  Multi-Mac setup as the primary development path while adding Linux and
-  Windows/WSL as explicit compatibility-validation environments.
+  Version change: 1.8.0 → 1.9.0
+  Bump rationale: MINOR — Aligned branch-governance with the active
+  Spec-Kit workflow by permitting numbered feature branches in addition to
+  agent-prefixed branches.
   Full project scan performed (AGENTS.md, GEMINI.md, CLAUDE.md,
   copilot-instructions.md, constitution templates, and core spec templates).
 
@@ -18,7 +18,7 @@
     - None
 
   Templates requiring updates:
-    - .specify/templates/plan-template.md  ✅ updated
+    - .specify/templates/plan-template.md  ✅ reviewed; no change required
     - .specify/templates/spec-template.md  ✅ reviewed; no change required
     - .specify/templates/tasks-template.md ✅ reviewed; no change required
     - .specify/templates/constitution-template.md ✅ reviewed; no change required
@@ -244,7 +244,11 @@ All projects share settings via `Directory.Build.props`:
 - Direct pushes to `main` are permitted for tightly scoped, user-approved
   repository changes (including documentation, governance, and small corrective
   updates) when the applicable quality gates remain satisfied.
-- Feature branches follow the pattern: `codex/<short-description>`.
+- Feature branches follow either the agent-prefixed pattern
+  `codex/<short-description>` (or another supported agent prefix such as
+  `claude/`, `gemini/`, `copilot/`, `opencode/`) or the numbered Spec-Kit
+  feature pattern `NNN-short-description` when the feature workflow creates and
+  maintains that branch shape.
 - CI runs on pushes to `main`, `master`, `codex/**`, `claude/**`, `gemini/**`,
   `opencode/**` and `copilot/**`.
 
@@ -396,4 +400,4 @@ Use `docs/guides/multi-mac-workflow.md` for local multi-machine workflow details
 Use `docs/project-statistics.md` for the living project-statistics ledger and
 manual-effort baseline tracking.
 
-**Version**: 1.8.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-23
+**Version**: 1.9.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-23

@@ -76,7 +76,7 @@ src/
 ├── TuiVision.Drivers.Console/
 │   ├── TConsoleDriver.cs
 │   ├── Class1.cs
-│   └── additional driver-support types (planned)
+│   └── additional purpose-named driver-support types (planned)
 ├── TuiVision.Serialization/
 └── TuiVision.Compatibility/
 
@@ -125,13 +125,13 @@ Phase-0 research resolves the planning choices that would otherwise remain impli
 
 ## Phase 1 Design Overview
 
-- The managed console-driver baseline remains centered in `TuiVision.Drivers.Console`, but the feature is expected to expand beyond the current minimal `TConsoleDriver` by adding or refactoring supporting types for capability mapping, input/output handling, or terminal-state behavior where the historical inventory proves that the current surface is incomplete.
+- The managed console-driver baseline remains centered in `TuiVision.Drivers.Console`, but the feature is expected to expand beyond the current minimal `TConsoleDriver` by adding or refactoring purpose-named supporting types for capability mapping, input/output handling, or terminal-state behavior where the historical inventory proves that the current surface is incomplete. The placeholder file `Class1.cs` must not become a long-term catch-all container.
 - Historical OS-specific source files are analyzed by capability bucket rather than by platform lineage. The plan treats screen presentation, keyboard handling, mouse handling, display adaptation, and terminal capability handling as the main review buckets for consolidation.
 - `docs/porting-status.md` becomes the single canonical proof ledger for `M-07`. Each historical `.cc` file receives one row with source path, capability bucket, mandatory primary target, optional secondary targets, status, evidence reference, rationale, and where needed explicit references to associated `.h`/`.c` support files that shaped the mapping decision.
 - The formal acceptance row set for the ledger is the `.cc` implementation inventory named in the Pflichtenheft. Associated `.h` and `.c` files found in historical subdirectories must still be reviewed for includes, constants, structs, register layouts, or helper logic and must be referenced from the affected `.cc` rows whenever they materially influence the managed replacement or omission rationale.
 - The feature will likely touch documentation and proofs more heavily than public surface area. If public or non-public API changes occur in `TuiVision.Drivers.Console`, XML documentation and conditional `docfx` regeneration remain part of the gate.
 - Driver validation stays anchored in `tests/TuiVision.Drivers.Tests`, which will grow from the current narrow `TConsoleDriver` coverage into a broader phase-7 safety net. Impacted cross-module tests may be added or updated only where behavior leaks into shell integration.
-- Linux and Windows/WSL compatibility evidence is planned as a reviewable artifact in this increment. The evidence may come from documented command runs, notes, or semi-automated scripts; converting that evidence into a mandatory CI gate is explicitly deferred beyond this plan unless implementation naturally enables it.
+- Linux and Windows/WSL compatibility evidence is planned as a reviewable artifact in this increment. The evidence may come from documented command runs, notes, or semi-automated scripts; converting that evidence into a mandatory CI gate is explicitly deferred beyond this plan unless implementation naturally enables it. The primary Multi-Mac evidence set must name both `MacBook Air M2` and `Mac mini M4 Pro` explicitly instead of treating macOS validation as an unnamed aggregate.
 
 ### Responsibility Boundaries
 

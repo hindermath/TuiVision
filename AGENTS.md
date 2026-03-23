@@ -107,6 +107,10 @@ docfx docfx.json
 - Tests are run using `dotnet test` command with Release configuration
 - Build and test validation is mandatory for all code changes
 
+## Branching Convention
+- Feature branches use either the agent-prefixed form `codex/<feature-description>` (or another supported agent prefix such as `claude/`, `gemini/`, `copilot/`, `opencode/`) or the numbered Spec-Kit form `NNN-short-description` when the Spec-Kit workflow creates the branch.
+- CI runs on pushes to `main`, `master`, `codex/**`, `claude/**`, `gemini/**`, `copilot/**`, and `opencode/**` branches.
+
 ## Active Feature Context
 
 ### 004-editor-file-help-streams

@@ -58,9 +58,9 @@
 ### Implementation for User Story 1
 
 - [ ] T010 [US1] Expand the managed driver baseline and supporting documentation in `src/TuiVision.Drivers.Console/TConsoleDriver.cs`
-- [ ] T011 [P] [US1] Replace the placeholder module file with a real module-level description and any required support types in `src/TuiVision.Drivers.Console/Class1.cs`
+- [ ] T011 [P] [US1] Retire the placeholder-only role of `src/TuiVision.Drivers.Console/Class1.cs` and move any real support type into a purpose-named file such as `src/TuiVision.Drivers.Console/DriverCapabilityMap.cs`
 - [ ] T012 [US1] Record the driver-consolidation decisions for the historical platform families in `docs/porting-status.md`
-- [ ] T013 [US1] Capture the required Multi-Mac, Linux, and Windows/WSL compatibility-evidence workflow in `docs/guides/multi-mac-workflow.md`
+- [ ] T013 [US1] Capture the required compatibility-evidence workflow for `MacBook Air M2`, `Mac mini M4 Pro`, Linux, and Windows/WSL in `docs/guides/multi-mac-workflow.md`
 
 **Checkpoint**: User Story 1 is independently reviewable as the Phase-7 MVP.
 
@@ -115,7 +115,7 @@
 
 - [ ] T025 [P] Run and record `dotnet build --configuration Release`, `dotnet test tests/TuiVision.Drivers.Tests/`, and `dotnet test` using `specs/005-driver-consolidation-m07/quickstart.md`
 - [ ] T026 [P] Run and record `dotnet format --verify-no-changes` and `dotnet test --collect:"XPlat Code Coverage"` using `specs/005-driver-consolidation-m07/quickstart.md`
-- [ ] T027 Run and record Linux and Windows/WSL compatibility evidence in `docs/guides/multi-mac-workflow.md` and `docs/porting-status.md`
+- [ ] T027 Run and record compatibility evidence for `MacBook Air M2`, `Mac mini M4 Pro`, Linux, and Windows/WSL in `docs/guides/multi-mac-workflow.md` and `docs/porting-status.md`
 - [ ] T028 [P] Run `docfx docfx.json` if `src/TuiVision.Drivers.Console/` public APIs or XML comments changed, and record the result in `specs/005-driver-consolidation-m07/quickstart.md`
 - [ ] T029 [P] Update `docs/project-statistics.md` with the branch/phase scope, documentation growth, observable work window, and manual-effort baseline for `005-driver-consolidation-m07`
 
@@ -141,6 +141,7 @@
 ### Within Each User Story
 
 - Tests and validation tasks MUST be written first and fail or identify a real gap before implementation proceeds.
+- The required Red -> Green -> Refactor sequence must remain visible in commit history; do not collapse failing tests, implementation, and refactor into one combined commit.
 - `docs/porting-status.md` is a first-class deliverable, not a polish-only afterthought.
 - Associated `.h`/`.c` support files remain context-only, but materially relevant ones must be visible from the affected `.cc` rows.
 - Do not treat example-porting work as part of this feature; it remains blocked behind the later Phase-8 entrance decision.
@@ -215,3 +216,4 @@ Task: "Add a quickstart validation pass for the finished proof package in specs/
 - The original Turbo Vision sources under `tv203s/` remain reference-only and must not be modified.
 - `docs/porting-status.md` is both a documentation file and a formal acceptance artifact for `M-07`.
 - Linux and Windows/WSL evidence is mandatory for this feature, even if it is still manual or semi-automated rather than a hard CI gate.
+- The primary Multi-Mac evidence set must mention `MacBook Air M2` and `Mac mini M4 Pro` explicitly.
