@@ -18,11 +18,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/fpstream.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: fpstream
     path: src/TuiVision.Serialization/fpstream.cs
-    startLine: 11
+    startLine: 14
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
@@ -64,11 +64,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/fpstream.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Serialization/fpstream.cs
-    startLine: 24
+    startLine: 27
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
@@ -112,11 +112,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/fpstream.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: OpenReader
     path: src/TuiVision.Serialization/fpstream.cs
-    startLine: 36
+    startLine: 39
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
@@ -147,11 +147,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/fpstream.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: OpenWriter
     path: src/TuiVision.Serialization/fpstream.cs
-    startLine: 44
+    startLine: 47
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization

@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuItem.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: TMenuItem
     path: src/TuiVision.Controls/TMenuItem.cs
@@ -65,7 +65,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuItem.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TMenuItem.cs
@@ -113,7 +113,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuItem.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Name
     path: src/TuiVision.Controls/TMenuItem.cs
@@ -144,7 +144,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuItem.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Command
     path: src/TuiVision.Controls/TMenuItem.cs
@@ -175,7 +175,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuItem.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Next
     path: src/TuiVision.Controls/TMenuItem.cs
@@ -206,7 +206,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuItem.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: SubMenu
     path: src/TuiVision.Controls/TMenuItem.cs
@@ -237,7 +237,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuItem.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Disabled
     path: src/TuiVision.Controls/TMenuItem.cs

@@ -25,11 +25,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: TPoint
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 11
+    startLine: 14
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -71,11 +71,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 26
+    startLine: 29
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -119,11 +119,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: X
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 37
+    startLine: 40
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -154,11 +154,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Y
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 44
+    startLine: 47
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -189,11 +189,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Addition
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 57
+    startLine: 60
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -237,11 +237,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Subtraction
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 71
+    startLine: 74
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -285,11 +285,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Equality
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 85
+    startLine: 88
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -333,11 +333,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Inequality
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 98
+    startLine: 101
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -381,11 +381,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Equals
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 110
+    startLine: 113
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -425,11 +425,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Equals
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 122
+    startLine: 125
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -471,11 +471,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: GetHashCode
     path: src/TuiVision.Core/TPoint.cs
-    startLine: 133
+    startLine: 136
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core

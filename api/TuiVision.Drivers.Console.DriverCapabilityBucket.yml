@@ -1,0 +1,232 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Drivers.Console.DriverCapabilityBucket
+  commentId: T:TuiVision.Drivers.Console.DriverCapabilityBucket
+  id: DriverCapabilityBucket
+  parent: TuiVision.Drivers.Console
+  children:
+  - TuiVision.Drivers.Console.DriverCapabilityBucket.DisplayAdaptation
+  - TuiVision.Drivers.Console.DriverCapabilityBucket.KeyboardInput
+  - TuiVision.Drivers.Console.DriverCapabilityBucket.MouseInput
+  - TuiVision.Drivers.Console.DriverCapabilityBucket.ScreenPresentation
+  - TuiVision.Drivers.Console.DriverCapabilityBucket.TerminalModeControl
+  langs:
+  - csharp
+  - vb
+  name: DriverCapabilityBucket
+  nameWithType: DriverCapabilityBucket
+  fullName: TuiVision.Drivers.Console.DriverCapabilityBucket
+  type: Enum
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
+      branch: 005-driver-consolidation-m07
+      repo: https://github.com/hindermath/TuiVision.git
+    id: DriverCapabilityBucket
+    path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
+    startLine: 10
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  summary: >-
+    Kategorisiert historische Treiberfähigkeiten in überprüfbare Gruppen für die Phase-7-Konsolidierung.
+
+
+    Categorises historical driver capabilities into reviewable buckets for Phase-7 consolidation.
+  example: []
+  syntax:
+    content: public enum DriverCapabilityBucket
+    content.vb: Public Enum DriverCapabilityBucket
+- uid: TuiVision.Drivers.Console.DriverCapabilityBucket.ScreenPresentation
+  commentId: F:TuiVision.Drivers.Console.DriverCapabilityBucket.ScreenPresentation
+  id: ScreenPresentation
+  parent: TuiVision.Drivers.Console.DriverCapabilityBucket
+  langs:
+  - csharp
+  - vb
+  name: ScreenPresentation
+  nameWithType: DriverCapabilityBucket.ScreenPresentation
+  fullName: TuiVision.Drivers.Console.DriverCapabilityBucket.ScreenPresentation
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
+      branch: 005-driver-consolidation-m07
+      repo: https://github.com/hindermath/TuiVision.git
+    id: ScreenPresentation
+    path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
+    startLine: 16
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  summary: >-
+    Bildschirmausgabe, Rahmenzeichen, Cursorpositionierung.
+
+    Screen output, frame characters, cursor positioning.
+  example: []
+  syntax:
+    content: ScreenPresentation = 0
+    return:
+      type: TuiVision.Drivers.Console.DriverCapabilityBucket
+- uid: TuiVision.Drivers.Console.DriverCapabilityBucket.KeyboardInput
+  commentId: F:TuiVision.Drivers.Console.DriverCapabilityBucket.KeyboardInput
+  id: KeyboardInput
+  parent: TuiVision.Drivers.Console.DriverCapabilityBucket
+  langs:
+  - csharp
+  - vb
+  name: KeyboardInput
+  nameWithType: DriverCapabilityBucket.KeyboardInput
+  fullName: TuiVision.Drivers.Console.DriverCapabilityBucket.KeyboardInput
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
+      branch: 005-driver-consolidation-m07
+      repo: https://github.com/hindermath/TuiVision.git
+    id: KeyboardInput
+    path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
+    startLine: 22
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  summary: >-
+    Tastatureingabe-Verarbeitung und Scancode-Übersetzung.
+
+    Keyboard input processing and scan-code translation.
+  example: []
+  syntax:
+    content: KeyboardInput = 1
+    return:
+      type: TuiVision.Drivers.Console.DriverCapabilityBucket
+- uid: TuiVision.Drivers.Console.DriverCapabilityBucket.MouseInput
+  commentId: F:TuiVision.Drivers.Console.DriverCapabilityBucket.MouseInput
+  id: MouseInput
+  parent: TuiVision.Drivers.Console.DriverCapabilityBucket
+  langs:
+  - csharp
+  - vb
+  name: MouseInput
+  nameWithType: DriverCapabilityBucket.MouseInput
+  fullName: TuiVision.Drivers.Console.DriverCapabilityBucket.MouseInput
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
+      branch: 005-driver-consolidation-m07
+      repo: https://github.com/hindermath/TuiVision.git
+    id: MouseInput
+    path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
+    startLine: 28
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  summary: >-
+    Mausereignis-Verarbeitung und Koordinatenauflösung.
+
+    Mouse event processing and coordinate resolution.
+  example: []
+  syntax:
+    content: MouseInput = 2
+    return:
+      type: TuiVision.Drivers.Console.DriverCapabilityBucket
+- uid: TuiVision.Drivers.Console.DriverCapabilityBucket.DisplayAdaptation
+  commentId: F:TuiVision.Drivers.Console.DriverCapabilityBucket.DisplayAdaptation
+  id: DisplayAdaptation
+  parent: TuiVision.Drivers.Console.DriverCapabilityBucket
+  langs:
+  - csharp
+  - vb
+  name: DisplayAdaptation
+  nameWithType: DriverCapabilityBucket.DisplayAdaptation
+  fullName: TuiVision.Drivers.Console.DriverCapabilityBucket.DisplayAdaptation
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
+      branch: 005-driver-consolidation-m07
+      repo: https://github.com/hindermath/TuiVision.git
+    id: DisplayAdaptation
+    path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
+    startLine: 34
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  summary: >-
+    Zeichensätze, Codepages, Schriften, Hardware-Farbkonfiguration.
+
+    Character sets, codepages, fonts, hardware colour configuration.
+  example: []
+  syntax:
+    content: DisplayAdaptation = 3
+    return:
+      type: TuiVision.Drivers.Console.DriverCapabilityBucket
+- uid: TuiVision.Drivers.Console.DriverCapabilityBucket.TerminalModeControl
+  commentId: F:TuiVision.Drivers.Console.DriverCapabilityBucket.TerminalModeControl
+  id: TerminalModeControl
+  parent: TuiVision.Drivers.Console.DriverCapabilityBucket
+  langs:
+  - csharp
+  - vb
+  name: TerminalModeControl
+  nameWithType: DriverCapabilityBucket.TerminalModeControl
+  fullName: TuiVision.Drivers.Console.DriverCapabilityBucket.TerminalModeControl
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
+      branch: 005-driver-consolidation-m07
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TerminalModeControl
+    path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
+    startLine: 40
+  assemblies:
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
+  summary: >-
+    Terminalmodus-Einstellung (raw/cooked) und Teardown.
+
+    Terminal mode setup (raw/cooked) and teardown.
+  example: []
+  syntax:
+    content: TerminalModeControl = 4
+    return:
+      type: TuiVision.Drivers.Console.DriverCapabilityBucket
+references:
+- uid: TuiVision.Drivers.Console
+  commentId: N:TuiVision.Drivers.Console
+  href: TuiVision.html
+  name: TuiVision.Drivers.Console
+  nameWithType: TuiVision.Drivers.Console
+  fullName: TuiVision.Drivers.Console
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Drivers
+    name: Drivers
+    href: TuiVision.Drivers.html
+  - name: .
+  - uid: TuiVision.Drivers.Console
+    name: Console
+    href: TuiVision.Drivers.Console.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Drivers
+    name: Drivers
+    href: TuiVision.Drivers.html
+  - name: .
+  - uid: TuiVision.Drivers.Console
+    name: Console
+    href: TuiVision.Drivers.Console.html
+- uid: TuiVision.Drivers.Console.DriverCapabilityBucket
+  commentId: T:TuiVision.Drivers.Console.DriverCapabilityBucket
+  parent: TuiVision.Drivers.Console
+  href: TuiVision.Drivers.Console.DriverCapabilityBucket.html
+  name: DriverCapabilityBucket
+  nameWithType: DriverCapabilityBucket
+  fullName: TuiVision.Drivers.Console.DriverCapabilityBucket

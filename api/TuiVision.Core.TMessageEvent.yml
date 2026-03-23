@@ -18,11 +18,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: TMessageEvent
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 132
+    startLine: 135
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -58,11 +58,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 132
+    startLine: 135
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -106,11 +106,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Command
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 132
+    startLine: 135
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -140,11 +140,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Info
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 132
+    startLine: 135
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core

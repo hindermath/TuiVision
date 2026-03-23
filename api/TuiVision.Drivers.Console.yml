@@ -4,6 +4,8 @@ items:
   commentId: N:TuiVision.Drivers.Console
   id: TuiVision.Drivers.Console
   children:
+  - TuiVision.Drivers.Console.DriverCapabilityBucket
+  - TuiVision.Drivers.Console.DriverCapabilityMap
   - TuiVision.Drivers.Console.IConsolePresenter
   - TuiVision.Drivers.Console.TConsoleDriver
   langs:
@@ -16,6 +18,19 @@ items:
   assemblies:
   - TuiVision.Drivers.Console
 references:
+- uid: TuiVision.Drivers.Console.DriverCapabilityBucket
+  commentId: T:TuiVision.Drivers.Console.DriverCapabilityBucket
+  parent: TuiVision.Drivers.Console
+  href: TuiVision.Drivers.Console.DriverCapabilityBucket.html
+  name: DriverCapabilityBucket
+  nameWithType: DriverCapabilityBucket
+  fullName: TuiVision.Drivers.Console.DriverCapabilityBucket
+- uid: TuiVision.Drivers.Console.DriverCapabilityMap
+  commentId: T:TuiVision.Drivers.Console.DriverCapabilityMap
+  href: TuiVision.Drivers.Console.DriverCapabilityMap.html
+  name: DriverCapabilityMap
+  nameWithType: DriverCapabilityMap
+  fullName: TuiVision.Drivers.Console.DriverCapabilityMap
 - uid: TuiVision.Drivers.Console.IConsolePresenter
   commentId: T:TuiVision.Drivers.Console.IConsolePresenter
   parent: TuiVision.Drivers.Console

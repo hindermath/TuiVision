@@ -22,7 +22,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDialog.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: TDialog
     path: src/TuiVision.Controls/TDialog.cs
@@ -103,7 +103,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDialog.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TDialog.cs
@@ -145,7 +145,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDialog.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Title
     path: src/TuiVision.Controls/TDialog.cs
@@ -180,7 +180,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDialog.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Run
     path: src/TuiVision.Controls/TDialog.cs
@@ -215,7 +215,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDialog.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: CloseDialog
     path: src/TuiVision.Controls/TDialog.cs
@@ -254,7 +254,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDialog.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TDialog.cs
@@ -287,7 +287,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDialog.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TDialog.cs
@@ -324,7 +324,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDialog.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: GetEvent
     path: src/TuiVision.Controls/TDialog.cs

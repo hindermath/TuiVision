@@ -32,11 +32,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: TRect
     path: src/TuiVision.Core/TRect.cs
-    startLine: 11
+    startLine: 14
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -78,11 +78,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TRect.cs
-    startLine: 22
+    startLine: 25
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -126,11 +126,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TRect.cs
-    startLine: 34
+    startLine: 37
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -168,11 +168,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: A
     path: src/TuiVision.Core/TRect.cs
-    startLine: 45
+    startLine: 48
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -203,11 +203,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: B
     path: src/TuiVision.Core/TRect.cs
-    startLine: 52
+    startLine: 55
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -238,11 +238,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Width
     path: src/TuiVision.Core/TRect.cs
-    startLine: 59
+    startLine: 62
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -273,11 +273,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Height
     path: src/TuiVision.Core/TRect.cs
-    startLine: 66
+    startLine: 69
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -308,11 +308,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: IsEmpty
     path: src/TuiVision.Core/TRect.cs
-    startLine: 77
+    startLine: 80
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -346,11 +346,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Contains
     path: src/TuiVision.Core/TRect.cs
-    startLine: 91
+    startLine: 94
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -392,11 +392,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Move
     path: src/TuiVision.Core/TRect.cs
-    startLine: 102
+    startLine: 105
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -434,11 +434,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Grow
     path: src/TuiVision.Core/TRect.cs
-    startLine: 117
+    startLine: 120
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -480,11 +480,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Intersect
     path: src/TuiVision.Core/TRect.cs
-    startLine: 131
+    startLine: 134
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -520,11 +520,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Union
     path: src/TuiVision.Core/TRect.cs
-    startLine: 143
+    startLine: 146
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -556,11 +556,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Equality
     path: src/TuiVision.Core/TRect.cs
-    startLine: 160
+    startLine: 163
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -604,11 +604,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Inequality
     path: src/TuiVision.Core/TRect.cs
-    startLine: 173
+    startLine: 176
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -652,11 +652,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Equals
     path: src/TuiVision.Core/TRect.cs
-    startLine: 185
+    startLine: 188
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -696,11 +696,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Equals
     path: src/TuiVision.Core/TRect.cs
-    startLine: 197
+    startLine: 200
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -742,11 +742,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: GetHashCode
     path: src/TuiVision.Core/TRect.cs
-    startLine: 208
+    startLine: 211
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core

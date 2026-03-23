@@ -19,11 +19,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: TShiftState
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 11
+    startLine: 14
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
@@ -64,11 +64,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: None
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 15
+    startLine: 18
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
@@ -92,11 +92,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Shift
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 18
+    startLine: 21
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
@@ -120,11 +120,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Ctrl
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 21
+    startLine: 24
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility
@@ -148,11 +148,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Alt
     path: src/TuiVision.Compatibility/Class1.cs
-    startLine: 24
+    startLine: 27
   assemblies:
   - TuiVision.Compatibility
   namespace: TuiVision.Compatibility

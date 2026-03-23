@@ -18,7 +18,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStaticText.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: TStaticText
     path: src/TuiVision.Controls/TStaticText.cs
@@ -94,7 +94,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStaticText.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TStaticText.cs
@@ -136,7 +136,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStaticText.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Text
     path: src/TuiVision.Controls/TStaticText.cs
@@ -171,7 +171,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStaticText.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TStaticText.cs

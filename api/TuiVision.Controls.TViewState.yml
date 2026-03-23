@@ -27,11 +27,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: TViewState
     path: src/TuiVision.Controls/TView.cs
-    startLine: 11
+    startLine: 14
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -72,11 +72,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Visible
     path: src/TuiVision.Controls/TView.cs
-    startLine: 15
+    startLine: 18
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -100,11 +100,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: CursorVisible
     path: src/TuiVision.Controls/TView.cs
-    startLine: 18
+    startLine: 21
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -128,11 +128,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: CursorInsert
     path: src/TuiVision.Controls/TView.cs
-    startLine: 21
+    startLine: 24
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -156,11 +156,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Shadow
     path: src/TuiVision.Controls/TView.cs
-    startLine: 24
+    startLine: 27
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -184,11 +184,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Active
     path: src/TuiVision.Controls/TView.cs
-    startLine: 27
+    startLine: 30
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -212,11 +212,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Selected
     path: src/TuiVision.Controls/TView.cs
-    startLine: 30
+    startLine: 33
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -240,11 +240,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Focused
     path: src/TuiVision.Controls/TView.cs
-    startLine: 33
+    startLine: 36
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -268,11 +268,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Dragging
     path: src/TuiVision.Controls/TView.cs
-    startLine: 36
+    startLine: 39
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -296,11 +296,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Disabled
     path: src/TuiVision.Controls/TView.cs
-    startLine: 39
+    startLine: 42
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -324,11 +324,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Modal
     path: src/TuiVision.Controls/TView.cs
-    startLine: 42
+    startLine: 45
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -352,11 +352,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Default
     path: src/TuiVision.Controls/TView.cs
-    startLine: 45
+    startLine: 48
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -380,11 +380,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Exposed
     path: src/TuiVision.Controls/TView.cs
-    startLine: 48
+    startLine: 51
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls

@@ -1,42 +1,44 @@
 ### YamlMime:ManagedReference
 items:
-- uid: TuiVision.Controls.THistory
-  commentId: T:TuiVision.Controls.THistory
-  id: THistory
-  parent: TuiVision.Controls
+- uid: TuiVision.Drivers.Console.DriverCapabilityMap
+  commentId: T:TuiVision.Drivers.Console.DriverCapabilityMap
+  id: DriverCapabilityMap
+  parent: TuiVision.Drivers.Console
   children:
-  - TuiVision.Controls.THistory.#ctor(System.String)
-  - TuiVision.Controls.THistory.Add(System.String)
-  - TuiVision.Controls.THistory.ClearAll
-  - TuiVision.Controls.THistory.HistoryId
-  - TuiVision.Controls.THistory.Recall
+  - TuiVision.Drivers.Console.DriverCapabilityMap.AllBuckets
+  - TuiVision.Drivers.Console.DriverCapabilityMap.GetHistoricalSourcePattern(TuiVision.Drivers.Console.DriverCapabilityBucket)
+  - TuiVision.Drivers.Console.DriverCapabilityMap.GetManagedReplacement(TuiVision.Drivers.Console.DriverCapabilityBucket)
   langs:
   - csharp
   - vb
-  name: THistory
-  nameWithType: THistory
-  fullName: TuiVision.Controls.THistory
+  name: DriverCapabilityMap
+  nameWithType: DriverCapabilityMap
+  fullName: TuiVision.Drivers.Console.DriverCapabilityMap
   type: Class
   source:
     remote:
-      path: src/TuiVision.Controls/THistory.cs
+      path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
       branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
-    id: THistory
-    path: src/TuiVision.Controls/THistory.cs
-    startLine: 10
+    id: DriverCapabilityMap
+    path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
+    startLine: 50
   assemblies:
-  - TuiVision.Controls
-  namespace: TuiVision.Controls
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
   summary: >-
-    In-Memory-History mit Buckets pro History-ID.
+    Stellt den kanonischen Satz der Phase-7-Fähigkeitsgruppen bereit und beschreibt den
+
+    jeweils zugeordneten verwalteten Ersatz in <code>TuiVision.Drivers.Console</code>.
 
 
-    In-memory history with buckets per history identifier.
+    Provides the canonical set of Phase-7 capability buckets and describes the
+
+    corresponding managed replacement in <code>TuiVision.Drivers.Console</code>.
   example: []
   syntax:
-    content: public sealed class THistory
-    content.vb: Public NotInheritable Class THistory
+    content: public static class DriverCapabilityMap
+    content.vb: Public Module DriverCapabilityMap
   inheritance:
   - System.Object
   inheritedMembers:
@@ -44,211 +46,168 @@ items:
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.GetHashCode
   - System.Object.GetType
+  - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: TuiVision.Controls.THistory.#ctor(System.String)
-  commentId: M:TuiVision.Controls.THistory.#ctor(System.String)
-  id: '#ctor(System.String)'
-  parent: TuiVision.Controls.THistory
+- uid: TuiVision.Drivers.Console.DriverCapabilityMap.AllBuckets
+  commentId: P:TuiVision.Drivers.Console.DriverCapabilityMap.AllBuckets
+  id: AllBuckets
+  parent: TuiVision.Drivers.Console.DriverCapabilityMap
   langs:
   - csharp
   - vb
-  name: THistory(string)
-  nameWithType: THistory.THistory(string)
-  fullName: TuiVision.Controls.THistory.THistory(string)
-  type: Constructor
-  source:
-    remote:
-      path: src/TuiVision.Controls/THistory.cs
-      branch: 005-driver-consolidation-m07
-      repo: https://github.com/hindermath/TuiVision.git
-    id: .ctor
-    path: src/TuiVision.Controls/THistory.cs
-    startLine: 20
-  assemblies:
-  - TuiVision.Controls
-  namespace: TuiVision.Controls
-  summary: >-
-    Initialisiert einen neuen History-Bucket-Zugriff.
-
-
-    Initializes a new history bucket accessor.
-  example: []
-  syntax:
-    content: public THistory(string historyId)
-    parameters:
-    - id: historyId
-      type: System.String
-      description: Die Bucket-ID. / The bucket identifier.
-    content.vb: Public Sub New(historyId As String)
-  overload: TuiVision.Controls.THistory.#ctor*
-  nameWithType.vb: THistory.New(String)
-  fullName.vb: TuiVision.Controls.THistory.New(String)
-  name.vb: New(String)
-- uid: TuiVision.Controls.THistory.HistoryId
-  commentId: P:TuiVision.Controls.THistory.HistoryId
-  id: HistoryId
-  parent: TuiVision.Controls.THistory
-  langs:
-  - csharp
-  - vb
-  name: HistoryId
-  nameWithType: THistory.HistoryId
-  fullName: TuiVision.Controls.THistory.HistoryId
+  name: AllBuckets
+  nameWithType: DriverCapabilityMap.AllBuckets
+  fullName: TuiVision.Drivers.Console.DriverCapabilityMap.AllBuckets
   type: Property
   source:
     remote:
-      path: src/TuiVision.Controls/THistory.cs
+      path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
       branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
-    id: HistoryId
-    path: src/TuiVision.Controls/THistory.cs
-    startLine: 30
+    id: AllBuckets
+    path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
+    startLine: 57
   assemblies:
-  - TuiVision.Controls
-  namespace: TuiVision.Controls
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
   summary: >-
-    Die zugeordnete Bucket-ID.
+    Alle definierten Fähigkeitsgruppen. Muss alle <xref href="TuiVision.Drivers.Console.DriverCapabilityBucket" data-throw-if-not-resolved="false"></xref>-Werte enthalten.
 
 
-    The associated bucket identifier.
+    All defined capability buckets. Must contain every <xref href="TuiVision.Drivers.Console.DriverCapabilityBucket" data-throw-if-not-resolved="false"></xref> value.
   example: []
   syntax:
-    content: public string HistoryId { get; }
+    content: public static IReadOnlyList<DriverCapabilityBucket> AllBuckets { get; }
     parameters: []
     return:
-      type: System.String
-    content.vb: Public ReadOnly Property HistoryId As String
-  overload: TuiVision.Controls.THistory.HistoryId*
-- uid: TuiVision.Controls.THistory.Add(System.String)
-  commentId: M:TuiVision.Controls.THistory.Add(System.String)
-  id: Add(System.String)
-  parent: TuiVision.Controls.THistory
+      type: System.Collections.Generic.IReadOnlyList{TuiVision.Drivers.Console.DriverCapabilityBucket}
+    content.vb: Public Shared ReadOnly Property AllBuckets As IReadOnlyList(Of DriverCapabilityBucket)
+  overload: TuiVision.Drivers.Console.DriverCapabilityMap.AllBuckets*
+- uid: TuiVision.Drivers.Console.DriverCapabilityMap.GetManagedReplacement(TuiVision.Drivers.Console.DriverCapabilityBucket)
+  commentId: M:TuiVision.Drivers.Console.DriverCapabilityMap.GetManagedReplacement(TuiVision.Drivers.Console.DriverCapabilityBucket)
+  id: GetManagedReplacement(TuiVision.Drivers.Console.DriverCapabilityBucket)
+  parent: TuiVision.Drivers.Console.DriverCapabilityMap
   langs:
   - csharp
   - vb
-  name: Add(string)
-  nameWithType: THistory.Add(string)
-  fullName: TuiVision.Controls.THistory.Add(string)
+  name: GetManagedReplacement(DriverCapabilityBucket)
+  nameWithType: DriverCapabilityMap.GetManagedReplacement(DriverCapabilityBucket)
+  fullName: TuiVision.Drivers.Console.DriverCapabilityMap.GetManagedReplacement(TuiVision.Drivers.Console.DriverCapabilityBucket)
   type: Method
   source:
     remote:
-      path: src/TuiVision.Controls/THistory.cs
+      path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
       branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
-    id: Add
-    path: src/TuiVision.Controls/THistory.cs
-    startLine: 38
+    id: GetManagedReplacement
+    path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
+    startLine: 74
   assemblies:
-  - TuiVision.Controls
-  namespace: TuiVision.Controls
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
   summary: >-
-    Fuegt einen History-Eintrag hinzu.
+    Gibt die Beschreibung des verwalteten Ersatzes für die angegebene Fähigkeitsgruppe zurück.
 
 
-    Adds a history entry.
+    Returns the managed replacement description for the given capability bucket.
   example: []
   syntax:
-    content: public void Add(string value)
+    content: public static string GetManagedReplacement(DriverCapabilityBucket bucket)
     parameters:
-    - id: value
-      type: System.String
-      description: Der zu speichernde Wert. / The value to store.
-    content.vb: Public Sub Add(value As String)
-  overload: TuiVision.Controls.THistory.Add*
-  nameWithType.vb: THistory.Add(String)
-  fullName.vb: TuiVision.Controls.THistory.Add(String)
-  name.vb: Add(String)
-- uid: TuiVision.Controls.THistory.Recall
-  commentId: M:TuiVision.Controls.THistory.Recall
-  id: Recall
-  parent: TuiVision.Controls.THistory
-  langs:
-  - csharp
-  - vb
-  name: Recall()
-  nameWithType: THistory.Recall()
-  fullName: TuiVision.Controls.THistory.Recall()
-  type: Method
-  source:
-    remote:
-      path: src/TuiVision.Controls/THistory.cs
-      branch: 005-driver-consolidation-m07
-      repo: https://github.com/hindermath/TuiVision.git
-    id: Recall
-    path: src/TuiVision.Controls/THistory.cs
-    startLine: 56
-  assemblies:
-  - TuiVision.Controls
-  namespace: TuiVision.Controls
-  summary: >-
-    Liefert die Eintraege der Bucket-ID in Most-Recent-First-Reihenfolge.
-
-
-    Returns the bucket entries in most-recent-first order.
-  example: []
-  syntax:
-    content: public IReadOnlyList<string> Recall()
+    - id: bucket
+      type: TuiVision.Drivers.Console.DriverCapabilityBucket
+      description: Die Fähigkeitsgruppe. / The capability bucket.
     return:
-      type: System.Collections.Generic.IReadOnlyList{System.String}
-      description: Die History-Eintraege. / The history entries.
-    content.vb: Public Function Recall() As IReadOnlyList(Of String)
-  overload: TuiVision.Controls.THistory.Recall*
-- uid: TuiVision.Controls.THistory.ClearAll
-  commentId: M:TuiVision.Controls.THistory.ClearAll
-  id: ClearAll
-  parent: TuiVision.Controls.THistory
+      type: System.String
+      description: >-
+        Nicht-leere Beschreibung des verwalteten Ersatzes.
+
+        Non-empty description of the managed replacement.
+    content.vb: Public Shared Function GetManagedReplacement(bucket As DriverCapabilityBucket) As String
+  overload: TuiVision.Drivers.Console.DriverCapabilityMap.GetManagedReplacement*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: >-
+      Wird ausgelöst, wenn kein Eintrag für den Bucket vorliegt.
+
+      Thrown when no entry exists for the bucket.
+- uid: TuiVision.Drivers.Console.DriverCapabilityMap.GetHistoricalSourcePattern(TuiVision.Drivers.Console.DriverCapabilityBucket)
+  commentId: M:TuiVision.Drivers.Console.DriverCapabilityMap.GetHistoricalSourcePattern(TuiVision.Drivers.Console.DriverCapabilityBucket)
+  id: GetHistoricalSourcePattern(TuiVision.Drivers.Console.DriverCapabilityBucket)
+  parent: TuiVision.Drivers.Console.DriverCapabilityMap
   langs:
   - csharp
   - vb
-  name: ClearAll()
-  nameWithType: THistory.ClearAll()
-  fullName: TuiVision.Controls.THistory.ClearAll()
+  name: GetHistoricalSourcePattern(DriverCapabilityBucket)
+  nameWithType: DriverCapabilityMap.GetHistoricalSourcePattern(DriverCapabilityBucket)
+  fullName: TuiVision.Drivers.Console.DriverCapabilityMap.GetHistoricalSourcePattern(TuiVision.Drivers.Console.DriverCapabilityBucket)
   type: Method
   source:
     remote:
-      path: src/TuiVision.Controls/THistory.cs
+      path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
       branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
-    id: ClearAll
-    path: src/TuiVision.Controls/THistory.cs
-    startLine: 63
+    id: GetHistoricalSourcePattern
+    path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
+    startLine: 115
   assemblies:
-  - TuiVision.Controls
-  namespace: TuiVision.Controls
+  - TuiVision.Drivers.Console
+  namespace: TuiVision.Drivers.Console
   summary: >-
-    Loescht alle Buckets. Nur fuer Tests und kontrollierte Resets gedacht.
+    Gibt an, welche historischen plattformspezifischen Quelldatei-Familien zu dieser
+
+    Fähigkeitsgruppe gehören.
 
 
-    Clears all buckets. Intended only for tests and controlled resets.
+    Returns which historical platform-specific source file families belong to this capability bucket.
   example: []
   syntax:
-    content: public static void ClearAll()
-    content.vb: Public Shared Sub ClearAll()
-  overload: TuiVision.Controls.THistory.ClearAll*
+    content: public static string GetHistoricalSourcePattern(DriverCapabilityBucket bucket)
+    parameters:
+    - id: bucket
+      type: TuiVision.Drivers.Console.DriverCapabilityBucket
+      description: Die Fähigkeitsgruppe. / The capability bucket.
+    return:
+      type: System.String
+      description: >-
+        Lesbare Aufzählung der historischen Quelldatei-Muster.
+
+        Human-readable enumeration of historical source file patterns.
+    content.vb: Public Shared Function GetHistoricalSourcePattern(bucket As DriverCapabilityBucket) As String
+  overload: TuiVision.Drivers.Console.DriverCapabilityMap.GetHistoricalSourcePattern*
 references:
-- uid: TuiVision.Controls
-  commentId: N:TuiVision.Controls
+- uid: TuiVision.Drivers.Console
+  commentId: N:TuiVision.Drivers.Console
   href: TuiVision.html
-  name: TuiVision.Controls
-  nameWithType: TuiVision.Controls
-  fullName: TuiVision.Controls
+  name: TuiVision.Drivers.Console
+  nameWithType: TuiVision.Drivers.Console
+  fullName: TuiVision.Drivers.Console
   spec.csharp:
   - uid: TuiVision
     name: TuiVision
     href: TuiVision.html
   - name: .
-  - uid: TuiVision.Controls
-    name: Controls
-    href: TuiVision.Controls.html
+  - uid: TuiVision.Drivers
+    name: Drivers
+    href: TuiVision.Drivers.html
+  - name: .
+  - uid: TuiVision.Drivers.Console
+    name: Console
+    href: TuiVision.Drivers.Console.html
   spec.vb:
   - uid: TuiVision
     name: TuiVision
     href: TuiVision.html
   - name: .
-  - uid: TuiVision.Controls
-    name: Controls
-    href: TuiVision.Controls.html
+  - uid: TuiVision.Drivers
+    name: Drivers
+    href: TuiVision.Drivers.html
+  - name: .
+  - uid: TuiVision.Drivers.Console
+    name: Console
+    href: TuiVision.Drivers.Console.html
 - uid: System.Object
   commentId: T:System.Object
   parent: System
@@ -386,6 +345,30 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.gettype
   - name: (
   - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
 - uid: System.Object.ReferenceEquals(System.Object,System.Object)
   commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
   parent: System.Object
@@ -462,65 +445,39 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: TuiVision.Controls.THistory.#ctor*
-  commentId: Overload:TuiVision.Controls.THistory.#ctor
-  href: TuiVision.Controls.THistory.html#TuiVision_Controls_THistory__ctor_System_String_
-  name: THistory
-  nameWithType: THistory.THistory
-  fullName: TuiVision.Controls.THistory.THistory
-  nameWithType.vb: THistory.New
-  fullName.vb: TuiVision.Controls.THistory.New
-  name.vb: New
-- uid: System.String
-  commentId: T:System.String
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.string
-  name: string
-  nameWithType: string
-  fullName: string
-  nameWithType.vb: String
-  fullName.vb: String
-  name.vb: String
-- uid: TuiVision.Controls.THistory.HistoryId*
-  commentId: Overload:TuiVision.Controls.THistory.HistoryId
-  href: TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_HistoryId
-  name: HistoryId
-  nameWithType: THistory.HistoryId
-  fullName: TuiVision.Controls.THistory.HistoryId
-- uid: TuiVision.Controls.THistory.Add*
-  commentId: Overload:TuiVision.Controls.THistory.Add
-  href: TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_Add_System_String_
-  name: Add
-  nameWithType: THistory.Add
-  fullName: TuiVision.Controls.THistory.Add
-- uid: TuiVision.Controls.THistory.Recall*
-  commentId: Overload:TuiVision.Controls.THistory.Recall
-  href: TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_Recall
-  name: Recall
-  nameWithType: THistory.Recall
-  fullName: TuiVision.Controls.THistory.Recall
-- uid: System.Collections.Generic.IReadOnlyList{System.String}
-  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+- uid: TuiVision.Drivers.Console.DriverCapabilityBucket
+  commentId: T:TuiVision.Drivers.Console.DriverCapabilityBucket
+  parent: TuiVision.Drivers.Console
+  href: TuiVision.Drivers.Console.DriverCapabilityBucket.html
+  name: DriverCapabilityBucket
+  nameWithType: DriverCapabilityBucket
+  fullName: TuiVision.Drivers.Console.DriverCapabilityBucket
+- uid: TuiVision.Drivers.Console.DriverCapabilityMap.AllBuckets*
+  commentId: Overload:TuiVision.Drivers.Console.DriverCapabilityMap.AllBuckets
+  href: TuiVision.Drivers.Console.DriverCapabilityMap.html#TuiVision_Drivers_Console_DriverCapabilityMap_AllBuckets
+  name: AllBuckets
+  nameWithType: DriverCapabilityMap.AllBuckets
+  fullName: TuiVision.Drivers.Console.DriverCapabilityMap.AllBuckets
+- uid: System.Collections.Generic.IReadOnlyList{TuiVision.Drivers.Console.DriverCapabilityBucket}
+  commentId: T:System.Collections.Generic.IReadOnlyList{TuiVision.Drivers.Console.DriverCapabilityBucket}
   parent: System.Collections.Generic
   definition: System.Collections.Generic.IReadOnlyList`1
   href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
-  name: IReadOnlyList<string>
-  nameWithType: IReadOnlyList<string>
-  fullName: System.Collections.Generic.IReadOnlyList<string>
-  nameWithType.vb: IReadOnlyList(Of String)
-  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
-  name.vb: IReadOnlyList(Of String)
+  name: IReadOnlyList<DriverCapabilityBucket>
+  nameWithType: IReadOnlyList<DriverCapabilityBucket>
+  fullName: System.Collections.Generic.IReadOnlyList<TuiVision.Drivers.Console.DriverCapabilityBucket>
+  nameWithType.vb: IReadOnlyList(Of DriverCapabilityBucket)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of TuiVision.Drivers.Console.DriverCapabilityBucket)
+  name.vb: IReadOnlyList(Of DriverCapabilityBucket)
   spec.csharp:
   - uid: System.Collections.Generic.IReadOnlyList`1
     name: IReadOnlyList
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
   - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
+  - uid: TuiVision.Drivers.Console.DriverCapabilityBucket
+    name: DriverCapabilityBucket
+    href: TuiVision.Drivers.Console.DriverCapabilityBucket.html
   - name: '>'
   spec.vb:
   - uid: System.Collections.Generic.IReadOnlyList`1
@@ -530,10 +487,9 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
+  - uid: TuiVision.Drivers.Console.DriverCapabilityBucket
+    name: DriverCapabilityBucket
+    href: TuiVision.Drivers.Console.DriverCapabilityBucket.html
   - name: )
 - uid: System.Collections.Generic.IReadOnlyList`1
   commentId: T:System.Collections.Generic.IReadOnlyList`1
@@ -600,9 +556,33 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
-- uid: TuiVision.Controls.THistory.ClearAll*
-  commentId: Overload:TuiVision.Controls.THistory.ClearAll
-  href: TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_ClearAll
-  name: ClearAll
-  nameWithType: THistory.ClearAll
-  fullName: TuiVision.Controls.THistory.ClearAll
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: TuiVision.Drivers.Console.DriverCapabilityMap.GetManagedReplacement*
+  commentId: Overload:TuiVision.Drivers.Console.DriverCapabilityMap.GetManagedReplacement
+  href: TuiVision.Drivers.Console.DriverCapabilityMap.html#TuiVision_Drivers_Console_DriverCapabilityMap_GetManagedReplacement_TuiVision_Drivers_Console_DriverCapabilityBucket_
+  name: GetManagedReplacement
+  nameWithType: DriverCapabilityMap.GetManagedReplacement
+  fullName: TuiVision.Drivers.Console.DriverCapabilityMap.GetManagedReplacement
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: TuiVision.Drivers.Console.DriverCapabilityMap.GetHistoricalSourcePattern*
+  commentId: Overload:TuiVision.Drivers.Console.DriverCapabilityMap.GetHistoricalSourcePattern
+  href: TuiVision.Drivers.Console.DriverCapabilityMap.html#TuiVision_Drivers_Console_DriverCapabilityMap_GetHistoricalSourcePattern_TuiVision_Drivers_Console_DriverCapabilityBucket_
+  name: GetHistoricalSourcePattern
+  nameWithType: DriverCapabilityMap.GetHistoricalSourcePattern
+  fullName: TuiVision.Drivers.Console.DriverCapabilityMap.GetHistoricalSourcePattern

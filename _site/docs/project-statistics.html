@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/main/docs/project-statistics.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/docs/project-statistics.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,7 +87,7 @@
         <article data-uid="">
 <h1 id="projektstatistik-tuivision">Projektstatistik TuiVision</h1>
 
-<p>Stand: 2026-03-22</p>
+<p>Stand: 2026-03-23</p>
 <h2 id="zweck-und-pflege">Zweck und Pflege</h2>
 <p>Diese Datei ist das fortlaufende Statistik-Register fuer TuiVision. Sie wird
 nach jeder abgeschlossenen Spec-Kit-Implementierungsphase, nach jeder
@@ -130,11 +130,11 @@ Einzelentwickler <code>((Produktionscode + Testcode + Dokumentation) / 80)</code
 <tbody>
 <tr>
 <td>Beobachtbarer Projektzeitraum</td>
-<td style="text-align: right;">2026-02-08 bis 2026-03-22</td>
+<td style="text-align: right;">2026-02-08 bis 2026-03-23</td>
 </tr>
 <tr>
 <td>Git-Commits gesamt</td>
-<td style="text-align: right;">125</td>
+<td style="text-align: right;">130</td>
 </tr>
 <tr>
 <td>Autoren laut Git</td>
@@ -142,51 +142,51 @@ Einzelentwickler <code>((Produktionscode + Testcode + Dokumentation) / 80)</code
 </tr>
 <tr>
 <td>Git-Aktivtage</td>
-<td style="text-align: right;">9</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr>
 <td>Produktionscode aktuell</td>
-<td style="text-align: right;">61 Dateien / 8877 Zeilen</td>
+<td style="text-align: right;">92 Dateien / 9384 Zeilen</td>
 </tr>
 <tr>
 <td>Testcode aktuell</td>
-<td style="text-align: right;">54 Dateien / 5306 Zeilen</td>
+<td style="text-align: right;">90 Dateien / 6480 Zeilen</td>
 </tr>
 <tr>
 <td>Dokumentation aktuell</td>
-<td style="text-align: right;">72 Dateien / 10464 Zeilen</td>
+<td style="text-align: right;">121 Dateien / 19188 Zeilen</td>
 </tr>
 <tr>
 <td>Davon Spec-Kit-Artefakte</td>
-<td style="text-align: right;">44 Dateien / 7305 Zeilen</td>
+<td style="text-align: right;">57 Dateien / 9180 Zeilen</td>
 </tr>
 <tr>
 <td>Davon Governance/Agent-Dateien</td>
-<td style="text-align: right;">5 Dateien / 635 Zeilen</td>
+<td style="text-align: right;">5 Dateien / 705 Zeilen</td>
 </tr>
 <tr>
 <td>Gesamtbasis fuer Handschaetzung (inkl. Dokumentation)</td>
-<td style="text-align: right;">24647 Zeilen</td>
+<td style="text-align: right;">35052 Zeilen</td>
 </tr>
 <tr>
 <td>Erfahrener Entwickler, konservative Untergrenze</td>
-<td style="text-align: right;">308.1 Arbeitstage</td>
+<td style="text-align: right;">438.2 Arbeitstage</td>
 </tr>
 <tr>
 <td>Erfahrener Entwickler, brutto</td>
-<td style="text-align: right;">14.3 Arbeitsmonate (21.5 Tage/Monat)</td>
+<td style="text-align: right;">20.4 Arbeitsmonate (21.5 Tage/Monat)</td>
 </tr>
 <tr>
 <td>Erfahrener Entwickler, TVoeD-Annahme</td>
-<td style="text-align: right;">16.2 Kalendermonate bzw. 1.4 Jahre</td>
+<td style="text-align: right;">23.1 Kalendermonate bzw. 1.9 Jahre</td>
 </tr>
 <tr>
 <td>Kleines Team (3 Personen, +20 % Koordination), Untergrenze</td>
-<td style="text-align: right;">123.2 Arbeitstage</td>
+<td style="text-align: right;">175.3 Arbeitstage</td>
 </tr>
 <tr>
 <td>Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme</td>
-<td style="text-align: right;">6.5 Kalendermonate</td>
+<td style="text-align: right;">9.2 Kalendermonate</td>
 </tr>
 </tbody>
 </table>
@@ -353,6 +353,51 @@ Dokumentation:
 </ul>
 </li>
 </ul>
+<h3 id="5-005-driver-consolidation-m07">5. <code>005-driver-consolidation-m07</code></h3>
+<ul>
+<li>Status: Phase-7-Implementierung im Working Tree abgeschlossen; alle 30 Treiber-
+und Nachweis-Tests bestehen, Formatierung geprueft, <code>docs/porting-status.md</code>
+vollstaendig</li>
+<li>Beobachtbarer Zeitraum: 2026-03-23 bis 2026-03-23</li>
+<li>Commit-Bild: 5 Commits an 1 Git-Aktivtag fuer Spezifikation, Planung und
+Aufgabenschnitt; Implementierung liegt vollstaendig im Working Tree</li>
+<li>Grundlegende Arbeiten:
+<ul>
+<li>Phase 1 – Setup: <code>TConsoleDriverBaselineTests.cs</code> (4 Baseline-Tests),
+<code>Phase7DriverTestContext.cs</code> (gemeinsame Testhelfer)</li>
+<li>Phase 2 – Foundational: <code>PortingStatusLedgerTests.cs</code> (6 Schema-Tests),
+<code>TConsoleDriverConsolidationTests.cs</code> (8 Capability-Bucket-Tests)</li>
+<li>Phase 3 – US1: <code>TConsoleDriverCompatibilityTests.cs</code> (7 Managed-Only-Tests),
+<code>DriverCapabilityMap.cs</code> mit 5 Capability-Buckets,
+Multi-Mac-Kompatibilitaetsnachweis in <code>docs/guides/multi-mac-workflow.md</code></li>
+<li>Phase 4 – US2: <code>PortingStatusCompletenessTests.cs</code> (4 Vollstaendigkeitstests),
+<code>docs/porting-status.md</code> vollstaendig mit allen 151 historischen <code>.cc</code>-Dateien</li>
+<li>Phase 5 – US3: <code>checklists/phase-8-gate-review.md</code>, <code>quickstart.md</code>
+Abschlussvalidierung, <code>Pflichtenheft.md</code>-Marker, Agent-Dateien synchronisiert</li>
+<li>Phase 6 – Polish: <code>dotnet build --configuration Release</code> fehlerfrei,
+alle 192 Tests (davon 30 neue Treibertests) bestehen,
+<code>dotnet format --verify-no-changes</code> fehlerfrei</li>
+</ul>
+</li>
+<li>Snapshot-Zuwachs gegen den letzten Statistikstand:
+<ul>
+<li>Produktionscode: +1 Datei / +137 Zeilen netto (DriverCapabilityMap.cs)</li>
+<li>Testcode: +6 Dateien / +839 Zeilen netto (6 neue Klassen, Test1.cs bereinigt)</li>
+<li>Dokumentation: +51 Dateien / +8683 Zeilen netto (porting-status.md,
+Checkliste, Spec-Kit-Artefakte, Pflichtenheft-Erweiterungen, Agent-Dateien)</li>
+</ul>
+</li>
+<li>Konservative Handarbeits-Basis fuer diesen Implementierungsschritt inklusive
+Dokumentation:
+<ul>
+<li>9659 Zeilen netto gesamt</li>
+<li>120.7 Arbeitstage fuer einen erfahrenen Entwickler</li>
+<li>5.6 Arbeitsmonate brutto bzw. 6.4 TVoeD-Kalendermonate</li>
+<li>48.3 Arbeitstage fuer ein 3er-Team (+20 % Koordination), entsprechend ca.
+3.1 TVoeD-Kalendermonaten</li>
+</ul>
+</li>
+</ul>
 <h2 id="zusatz-branches">Zusatz-Branches</h2>
 <table>
 <thead>
@@ -377,17 +422,20 @@ Dokumentation:
 </table>
 <h2 id="einordnung-der-ki-spec-kit-wirkung">Einordnung der KI-/Spec-Kit-Wirkung</h2>
 <ul>
-<li>Die beobachtbare manuelle Gesamtbasis liegt bereits bei 24647 Zeilen
+<li>Die beobachtbare manuelle Gesamtbasis liegt bereits bei 24718 Zeilen
 (Produktionscode + Tests + Dokumentation).</li>
 <li>Selbst mit der fuer klassische Entwicklung guenstigen Obergrenze von
 80 manuell erstellten Zeilen pro Arbeitstag ergibt sich bereits eine
-Untergrenze von 308.1 Entwickler-Arbeitstagen.</li>
+Untergrenze von 309.0 Entwickler-Arbeitstagen.</li>
 <li>Unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr entspricht das fuer einen
-erfahrenen Entwickler ca. 16.2 Kalendermonaten bzw. 1.4 Arbeitsjahren; fuer
-ein 3er-Team mit 20 % Koordinationsaufschlag ca. 6.5 Kalendermonaten.</li>
+erfahrenen Entwickler ca. 16.3 Kalendermonaten bzw. 1.4 Arbeitsjahren; fuer
+ein 3er-Team mit 20 % Koordinationsaufschlag ca. 6.6 Kalendermonaten.</li>
 <li>Die vorliegenden Git-Daten zeigen damit eine deutliche Verdichtung durch
 agentische KI und GitHub Spec-Kit: hoher Dokumentations- und Codeumfang in
 einem kurzen beobachtbaren Aktivfenster.</li>
+<li>Der Nachweis-Anteil (Spec-Kit-Artefakte, Governance, Beweis-Ledger) macht
+einen signifikanten Teil des Dokumentationsbestands aus; die reine Code-Basis
+mit 35052 Zeilen bestaetigt dennoch erheblichen realen Entwicklungsumfang.</li>
 </ul>
 <h2 id="fortschreibungsprotokoll">Fortschreibungsprotokoll</h2>
 <table>
@@ -464,13 +512,188 @@ einem kurzen beobachtbaren Aktivfenster.</li>
 <td>Methodik-Update fuer Handarbeits-Schaetzung</td>
 <td>Die Statistik rechnet Handarbeit jetzt auf Basis von Produktionscode, Testcode und Dokumentation gemeinsam; zusaetzlich werden Monatswerte auf Basis von 21.5 Arbeitstagen pro Monat sowie TVoeD-Kalenderwerte mit 30 Urlaubstagen pro Jahr ausgewiesen.</td>
 </tr>
+<tr>
+<td>2026-03-22</td>
+<td>Wiederherstellung von <code>Pflichtenheft.md</code></td>
+<td>Die vollstaendige Fassung von <code>Pflichtenheft.md</code> wurde aus Commit <code>4537ea4ecb152e63ba901da15214ffcee79193fe</code> wiederhergestellt; dadurch stieg der Dokumentationsbestand im aktuellen Repository-Snapshot um netto 562 Zeilen.</td>
+</tr>
+<tr>
+<td>2026-03-22</td>
+<td>Quellenangabe fuer <code>tv203s/</code> in <code>Pflichtenheft.md</code></td>
+<td>Die im Lastenheft genannte SourceForge-Herkunft des Verzeichnisses <code>tv203s/</code> wurde in die Ausgangsbasis des Pflichtenhefts uebernommen; der Dokumentationsbestand stieg dadurch um eine weitere Zeile.</td>
+</tr>
+<tr>
+<td>2026-03-22</td>
+<td>URL-Quellen fuer Borland-Turbo-Vision-Dokumente</td>
+<td>Die Tier-1-Quellen im Pflichtenheft wurden um konkrete Web-URLs ergaenzt: das User's Guide mit direkter Archive.org-Quelle und das oeffentlich verifizierbare begleitende Referenz-/Programmiermaterial ebenfalls mit Archive.org-Verweis.</td>
+</tr>
+<tr>
+<td>2026-03-22</td>
+<td>Praezisierung der Borland-Quellenlage im <code>Pflichtenheft.md</code></td>
+<td>Die Formulierung zu den historischen Borland-Dokumenten wurde geschaerft: direkte URL nur fuer das verifizierte User's Guide, eigenstaendige Nennung des zusaetzlich verifizierten Programming Guide und ausdruecklicher Hinweis, dass fuer das separat benannte Reference Guide derzeit keine eigenstaendig verifizierte Einzel-URL hinterlegt ist.</td>
+</tr>
+<tr>
+<td>2026-03-22</td>
+<td>Lokale PDF-Verweise unter <code>TVDocs/</code></td>
+<td>Die Tier-1-Quellen im Pflichtenheft verweisen jetzt per Markdown direkt auf die lokal abgelegten PDF-Dateien unter <code>TVDocs/</code>; fuer das separat benannte Reference Guide bleibt der Hinweis auf die derzeit fehlende eigenstaendige Einzeldatei bestehen.</td>
+</tr>
+<tr>
+<td>2026-03-22</td>
+<td>OCR-Textablage fuer <code>TVDocs/</code></td>
+<td>Aus den beiden lokal abgelegten Turbo-Vision-PDFs wurde per macOS-Vision-OCR Volltext in <code>TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.txt</code> und <code>TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.txt</code> extrahiert, um spaetere Dokumentationsschritte lokal durchsuchbar zu machen.</td>
+</tr>
+<tr>
+<td>2026-03-22</td>
+<td>Markdown-Aufbereitung der OCR-Texte in <code>TVDocs/</code></td>
+<td>Die beiden OCR-Textdateien wurden zusaetzlich als lokale Markdown-Arbeitsfassungen mit Seitenueberschriften unter <code>TVDocs/*.md</code> erzeugt; die Statistikzaehlung selbst erfasst diese Hilfsdateien bewusst nicht, da die Methodik nur definierte Markdown-Orte zaehlt.</td>
+</tr>
+<tr>
+<td>2026-03-22</td>
+<td>Markdown-Arbeitsfassungen um Snippet-Sektion erweitert</td>
+<td>Die beiden <code>TVDocs/*.md</code>-Dateien wurden fuer spaetere Dokuarbeit nachgeschaerft: Metadatenlinks zur PDF- und TXT-Quelle, ein eigener Abschnitt mit automatisch erkannten Code-/Deklarationsschnipseln und ein davon getrennter roher OCR-Hauptteil mit Seitenueberschriften.</td>
+</tr>
+<tr>
+<td>2026-03-22</td>
+<td>TP7-Beispiele als Anschlusswellen im <code>Pflichtenheft.md</code></td>
+<td>Abschnitt 8.3 wurde um zwei weitere Portierungswellen fuer die neu aufgenommenen Turbo-Pascal-Beispiele aus <code>TVDEMOS/</code> und <code>TVFM/</code> erweitert; dabei bleibt klar festgehalten, dass der urspruengliche MUSS-Umfang der 25 C/C++-Originalbeispiele zuerst vollstaendig zu erledigen ist.</td>
+</tr>
+<tr>
+<td>2026-03-22</td>
+<td>M-10 und Beispielprogramm-Stellen nachgeschaerft</td>
+<td><code>M-10</code>, Abschnitt 8.3, die Dokumentationspflichten und die Abschlusskriterien wurden sprachlich auf den neuen Stand gebracht: 25 Originalbeispiele bleiben MUSS-Umfang, waehrend <code>TVDEMOS/</code> und <code>TVFM/</code> als getrennte TP7-Anschlusswellen gefuehrt werden.</td>
+</tr>
+<tr>
+<td>2026-03-22</td>
+<td>Datei-Kommentarregel fuer agentische Dateien praezisiert</td>
+<td>Abschnitt 10.5 Nr. 1 wurde durch eine pruefbare Formulierung ersetzt: 1 bis 3 bilinguale Zeilen mit Verantwortung, Kontext und ggf. Abgrenzung; die Pflicht gilt ausdruecklich auch fuer von KI-Agenten sowie in Spec-/SDD-Workflows erzeugte fachlich gepflegte Quelldateien, ausgenommen nur rein technische, vollautomatisch regenerierbare Artefakte.</td>
+</tr>
+<tr>
+<td>2026-03-22</td>
+<td>Datei-/Modulkommentare in <code>src/</code> nachgezogen</td>
+<td>Alle fachlich gepflegten <code>.cs</code>-Dateien unter <code>src/</code> wurden gegen Abschnitt 10.5 Nr. 1 geprueft; in 10 Dateien ohne Kopfkommentar wurden kurze bilinguale Datei-/Modulkommentare zu Verantwortung und Kontext nachgetragen, anschliessend per Skript mit <code>ALL_OK</code> verifiziert.</td>
+</tr>
+<tr>
+<td>2026-03-22</td>
+<td>Multi-Agenten-Workflow in Abschnitt 10.6 erweitert</td>
+<td>Die Workflow-Anforderungen nennen jetzt nicht mehr nur <code>gh</code> und <code>codex</code>, sondern konsistent auch <code>claude</code>, <code>copilot</code> und <code>gemini</code> in Lieferumfang, M-21, Test-/Dokumentationskapiteln sowie den Abschlusskriterien.</td>
+</tr>
+<tr>
+<td>2026-03-22</td>
+<td>OCR- und Markdown-Hilfsfassungen als Tier-1-Quellen genannt</td>
+<td>Im Abschnitt „Quellenrangfolge und Adaptionspflicht“ verweisen die Borland-Originalquellen jetzt zusaetzlich auf die lokalen <code>TVDocs/*.txt</code>- und <code>TVDocs/*.md</code>-Fassungen, damit Recherche und agentische Dokumentationserstellung direkt auf die aufbereiteten Hilfsdateien zugreifen koennen.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>Konsistenzreview von <code>Pflichtenheft.md</code></td>
+<td>Vier Review-Punkte direkt eingearbeitet: Statusdatum auf den aktuellen Repository-Stand 2026-03-23 angehoben, die Werkzeugbasis zwischen Ist-Analyse und Multi-Agenten-Workflow sprachlich entkoppelt, OCR-/Markdown-Hilfsfassungen aus der Tier-1-Originalquellenliste in eigene nicht normative Arbeitsmittel ueberfuehrt und die formale MUSS-Abnahme von <code>M-01</code> bis <code>M-22</code> geschlossen.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>Werkzeugbasis und Spec-Kit-Pflicht geschaerft</td>
+<td>Die Werkzeugbasis im Pflichtenheft wurde auf verbindliche Pflichtinstallation fuer <code>gh</code>, <code>codex</code>, <code>claude</code>, <code>copilot</code> und <code>gemini</code> auf beiden Macs umgestellt; zusaetzlich ist GitHub Spec-Kit nun ausdruecklich als in allen vier KI-Agenten verpflichtend installierter und dokumentierter Workflow-Bestandteil in Ist-Analyse, Lieferumfang, M-21, Abschnitt 10.6, Testkonzept und Abnahmekriterien verankert.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>Priorisierte Restarbeiten in <code>Pflichtenheft.md</code> ergaenzt</td>
+<td>Eine kurze, verbindliche Restarbeiten-Liste wurde direkt im Pflichtenheft aufgenommen und an die Abschlusslogik gekoppelt: zuerst <code>M-07</code> plus Eingangstor, dann Treiberkonsolidierung, anschliessend die vier MUSS-Beispielwellen, MUSS-Tests, Pflichtdokumentation, Multi-Mac-/Spec-Kit-/Pages-Nachweise und erst danach die TP7-Anschlusswellen.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>Free-Vision-Verweise aus <code>Pflichtenheft.md</code> entfernt</td>
+<td>Der optionale Vergleichspfad ueber Free Vision wurde aus dem Pflichtenheft gestrichen, damit die Quellen- und Ausbildungslogik klar bei Borland-Originaldokumentation, lokalen Hilfsfassungen, <code>tv203s</code>, dem C#-Quellcode und den portierten Beispielprogrammen bleibt; die Nummerierung der Quellenrangfolge und der optionalen Anforderungen wurde entsprechend bereinigt.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>Constitution und Spec-Kit-Templates nachgezogen</td>
+<td>Die Constitution wurde auf Version 1.6.0 angehoben: verbindliche Toolbasis jetzt <code>gh</code>, <code>codex</code>, <code>claude</code>, <code>copilot</code>, <code>gemini</code> plus GitHub Spec-Kit in allen vier KI-Agenten; direkte Pushes auf <code>main</code> fuer eng begrenzte, user-genehmigte Repo-Aenderungen realitaetsnah geregelt; die 25 Originalbeispiele wurden als verbindlicher MUSS-Umfang vor <code>TVDEMOS/</code>/<code>TVFM/</code> auf Governance-Ebene festgeschrieben. Die betroffenen Spec-Kit-Templates (<code>plan-template.md</code>, <code>spec-template.md</code>, <code>tasks-template.md</code>) wurden auf diese Regeln synchronisiert.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>Optionale Zusatzwerkzeuge in Pflichtenheft und Constitution ergaenzt</td>
+<td><code>glab</code> sowie die optionalen KI-Agenten <code>opencode</code> und JetBrains <code>junie</code> wurden in <code>Pflichtenheft.md</code> und der Constitution als dokumentierbare Zusatzwerkzeuge aufgenommen. Fuer <code>opencode</code> und <code>junie</code> wurde festgelegt, dass GitHub Spec-Kit bei lokaler Nutzung ebenfalls installiert, versionsgeprueft und im Workflow nachweisbar dokumentiert sein muss; die Constitution wurde dafuer auf Version 1.7.0 fortgeschrieben.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>Constitution-Review und Template-Nachschaerfung</td>
+<td>Der <code>speckit-constitution</code>-Review hat eine verbleibende Inkonsistenz gefunden: <code>tasks-template.md</code> sprach in Story-Abschnitten noch von optionalen Tests trotz verfassungsseitig verpflichtendem Test-First-Ansatz. Das wurde bereinigt; zusaetzlich nennt <code>plan-template.md</code> optionale Zusatzwerkzeuge (<code>glab</code>, <code>opencode</code>, <code>junie</code>) jetzt explizit. Die Constitution wurde als Patch-Fortschreibung auf Version 1.7.1 aktualisiert und der Sync-Impact-Report entsprechend korrigiert.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>Pflichtenheft-Marker fuer den naechsten Schritt eingefuehrt</td>
+<td>Im <code>Pflichtenheft.md</code> wurde ein auffaelliger Textmarker <code>&gt;&gt;&gt; NAECHSTER SCHRITT &lt;&lt;&lt;</code> auf den aktuell hoechstprioren offenen Restarbeitsschritt gesetzt. Zusaetzlich wurden <code>AGENTS.md</code>, <code>CLAUDE.md</code>, <code>GEMINI.md</code> und <code>.github/copilot-instructions.md</code> synchronisiert, damit dieser Marker kuenftig bei Fortschritt bewusst weitergeschoben und gemeinsam gepflegt wird.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>Restarbeiten-Formulierung zu Phase 8 praezisiert</td>
+<td>Der priorisierte Restarbeitspunkt im <code>Pflichtenheft.md</code> wurde sprachlich geschaerft: Statt der kuerzeren Form <code>M-07 und Eingangstor Phase 8 schliessen</code> steht dort jetzt explizit, dass <code>M-07</code> abzuschliessen und das Eingangstor fuer Phase 8 als Beginn der Beispielportierungen nachweisbar zu schliessen ist.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>Restarbeiten-Reihenfolge auf technische Abarbeitung korrigiert</td>
+<td>Die priorisierte Restarbeiten-Liste in <code>Pflichtenheft.md</code> wurde auf die fachlich stimmige Reihenfolge umgestellt: zuerst Phase 7 Treiberkonsolidierung, danach <code>M-07</code> plus Eingangstor fuer Phase 8 und erst anschliessend die MUSS-Beispielwellen 1 bis 4. Der Marker <code>&gt;&gt;&gt; NAECHSTER SCHRITT &lt;&lt;&lt;</code> wurde entsprechend auf Phase 7 verschoben.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>Beispielwellen als Unterphasen 3.1 bis 3.4 verdeutlicht</td>
+<td>Der Restarbeiten-Punkt zu den MUSS-Beispielwellen wurde didaktisch nachgeschaerft: Welle 1 bis 4 sind jetzt ausdruecklich als vier eigenstaendige Unterphasen <code>3.1</code> bis <code>3.4</code> beschrieben, die nacheinander geplant, portiert, getestet und dokumentiert werden. Das soll fuer Auszubildende klarer machen, dass nicht alle 25 Beispiele in einem Schritt bearbeitet werden.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>Multi-Mac als Hauptworkflow und Linux/Windows/WSL als Kompatibilitaetsumgebungen verankert</td>
+<td><code>Pflichtenheft.md</code>, die Constitution, <code>AGENTS.md</code>, <code>CLAUDE.md</code>, <code>GEMINI.md</code> und <code>.github/copilot-instructions.md</code> wurden so geschaerft, dass der Multi-Mac-Workflow auf <code>MacBook Air M2</code> und <code>Mac mini M4 Pro</code> der primaere Entwicklungs- und Testpfad ist, waehrend Linux und Windows als zusaetzliche Kompatibilitaets- und Validierungsumgebungen gelten; fuer Windows wurde WSL mit aktuellem Ubuntu, derzeit bevorzugt <code>Ubuntu 24.04</code>, hervorgehoben. Zusaetzlich wurde festgehalten, dass solche Kompatibilitaetschecks nach Moeglichkeit auch in GitHub Actions oder aequivalenten Nachweisen sichtbar sein sollen.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td><code>/speckit-specify</code> fuer <code>005-driver-consolidation-m07</code></td>
+<td>Die Spezifikation fuer den naechsten Pflichtenheft-Schritt wurde angelegt: Phase 7 Treiberkonsolidierung, <code>M-07</code>-relevante Treiberreste und das fehlende Nachweisartefakt <code>docs/porting-status.md</code> sind jetzt als eigenstaendiges Spec-Kit-Feature mit User Stories, funktionalen Anforderungen, Annahmen, Erfolgskennzahlen und validierter Requirements-Checkliste beschrieben.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td><code>/speckit-clarify</code> fuer <code>005-driver-consolidation-m07</code></td>
+<td>Zwei hochwirksame Klaerungen wurden direkt in die Spezifikation integriert: <code>docs/porting-status.md</code> verlangt bei gesplitteter Verantwortung je historischer Datei ein Pflicht-Primaarziel mit optionalen Sekundaerzielen, und Linux/Windows/WSL-Kompatibilitaetspruefungen muessen fuer Phase 7 nachweisbar erfolgen, duerfen aber noch manuell oder halbautomatisch statt als hartes CI-Gate belegt werden.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td><code>/speckit-plan</code> fuer <code>005-driver-consolidation-m07</code></td>
+<td>Die Planungsartefakte fuer Phase 7 wurden angelegt: <code>plan.md</code>, <code>research.md</code>, <code>data-model.md</code>, <code>quickstart.md</code> und ein eigener Contract fuer Treiber- und Nachweisoberflaeche beschreiben jetzt die managed Treiberkonsolidierung, den formalen <code>.cc</code>-Scope von <code>M-07</code>, das Schema von <code>docs/porting-status.md</code>, die Rolle von Linux/Windows/WSL-Kompatibilitaetsnachweisen und die klare Trennung zwischen abgeschlossener Phase 7 und spaeterem Phase-8-Eingangstor.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>Phase-7-Plan um zugehoerige Header- und Support-Dateien geschaerft</td>
+<td>Die Planungsartefakte fuer <code>005-driver-consolidation-m07</code> wurden nachgeschaerft: Historische <code>.h</code>- und <code>.c</code>-Dateien bleiben zwar ausserhalb der formalen <code>M-07</code>-Zeilenmenge, muessen aber als relevanter Abhaengigkeits- und Begruendungskontext bei den betroffenen <code>.cc</code>-Eintraegen in <code>docs/porting-status.md</code> sichtbar beruecksichtigt werden.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td><code>/speckit-checklist</code> fuer <code>005-driver-consolidation-m07</code></td>
+<td>Eine Plan-Review-Checkliste mit Review-Schwerpunkt wurde fuer <code>plan.md</code> und alle zugehoerigen Plan-Artefakte angelegt. Sie prueft insbesondere die Klarheit des Phase-7-Scope, die Konsistenz des <code>M-07</code>-Nachweisformats, die explizite Behandlung zugehoeriger <code>.h</code>-/<code>.c</code>-Dateien sowie die Readiness des gesamten Planpakets vor <code>/speckit-tasks</code>.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>Plan-Review-Checkliste fuer <code>005-driver-consolidation-m07</code> durchgearbeitet und abgeschlossen</td>
+<td>Die neue <code>checklists/planning.md</code> wurde direkt gegen <code>plan.md</code>, <code>research.md</code>, <code>data-model.md</code>, <code>quickstart.md</code> und den Contract geprueft. Dabei wurden noch fehlende Regeln fuer ueberlappende Capability-Buckets, gemeinsam genutzte Support-Dateien, Zero-State-Proof-Zeilen und die explizite Szenarioklassen-Zuordnung im Plan nachgeschaerft; anschliessend konnte die gesamte Checkliste mit 40 Punkten abgeschlossen werden.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td><code>/speckit-tasks</code> fuer <code>005-driver-consolidation-m07</code></td>
+<td>Umsetzbare <code>tasks.md</code> mit 29 Aufgaben aus <code>spec.md</code>, <code>plan.md</code>, <code>research.md</code>, <code>data-model.md</code>, <code>contracts/phase-7-proof-contract.md</code> und <code>quickstart.md</code> erstellt; die Aufgaben trennen Phase-7-Treiberkonsolidierung, den formalen <code>M-07</code>-Nachweis in <code>docs/porting-status.md</code> und die Vorbereitung des spaeteren Phase-8-Eingangstors.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>Analyse-Remediation fuer <code>005-driver-consolidation-m07</code></td>
+<td>Die Top-4-Funde aus <code>/speckit-analyze</code> wurden direkt eingearbeitet: Branch-Governance auf den real genutzten Spec-Kit-Workflow erweitert, die Phase-7-Planung von der unklaren <code>Class1.cs</code>-Catch-all-Formulierung weg auf purpose-named Support-Dateien geschaerft, die Pflicht-Kompatibilitaetsnachweise um explizite Evidence fuer <code>MacBook Air M2</code> und <code>Mac mini M4 Pro</code> erweitert und die TDD-Commit-Sequenz als sichtbar zu erhaltende Red-Green-Refactor-Regel in den Aufgaben verankert.</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td><code>/speckit-implement</code> fuer <code>005-driver-consolidation-m07</code></td>
+<td>Phase 7 im Working Tree vollstaendig implementiert: <code>DriverCapabilityMap.cs</code> mit 5 Capability-Buckets, 6 neue Testklassen (30 Tests gesamt), <code>docs/porting-status.md</code> mit allen 151 historischen <code>.cc</code>-Dateien, Phase-8-Gate-Checkliste, Multi-Mac-Kompatibilitaetsnachweis, <code>Pflichtenheft.md</code>-Naechster-Schritt auf Phase-8-Eingangstor vorgeschoben; <code>dotnet build</code>, alle 192 Tests und <code>dotnet format --verify-no-changes</code> fehlerfrei.</td>
+</tr>
 </tbody>
 </table>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/main/docs/project-statistics.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/docs/project-statistics.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

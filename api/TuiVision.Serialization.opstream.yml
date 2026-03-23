@@ -23,11 +23,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: opstream
     path: src/TuiVision.Serialization/opstream.cs
-    startLine: 13
+    startLine: 16
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
@@ -68,11 +68,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Serialization/opstream.cs
-    startLine: 32
+    startLine: 35
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
@@ -113,11 +113,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteByte
     path: src/TuiVision.Serialization/opstream.cs
-    startLine: 44
+    startLine: 47
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
@@ -152,11 +152,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteBoolean
     path: src/TuiVision.Serialization/opstream.cs
-    startLine: 52
+    startLine: 55
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
@@ -191,11 +191,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteInt32
     path: src/TuiVision.Serialization/opstream.cs
-    startLine: 60
+    startLine: 63
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
@@ -230,11 +230,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteString
     path: src/TuiVision.Serialization/opstream.cs
-    startLine: 68
+    startLine: 71
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
@@ -269,11 +269,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteObject
     path: src/TuiVision.Serialization/opstream.cs
-    startLine: 77
+    startLine: 80
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
@@ -311,11 +311,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteObject
     path: src/TuiVision.Serialization/opstream.cs
-    startLine: 122
+    startLine: 125
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization
@@ -350,11 +350,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Dispose
     path: src/TuiVision.Serialization/opstream.cs
-    startLine: 132
+    startLine: 135
   assemblies:
   - TuiVision.Serialization
   namespace: TuiVision.Serialization

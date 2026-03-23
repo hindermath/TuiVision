@@ -924,6 +924,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Drivers.Console.DriverCapabilityBucket.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Drivers.Console.DriverCapabilityBucket.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Drivers.Console.DriverCapabilityBucket",
+      "Summary": "<p sourcefile=\"api/TuiVision.Drivers.Console.DriverCapabilityBucket.yml\" sourcestartlinenumber=\"1\">Kategorisiert historische Treiberfähigkeiten in überprüfbare Gruppen für die Phase-7-Konsolidierung.</p>\n<p sourcefile=\"api/TuiVision.Drivers.Console.DriverCapabilityBucket.yml\" sourcestartlinenumber=\"3\">Categorises historical driver capabilities into reviewable buckets for Phase-7 consolidation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Drivers.Console.DriverCapabilityMap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Drivers.Console.DriverCapabilityMap.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Drivers.Console.DriverCapabilityMap",
+      "Summary": "<p sourcefile=\"api/TuiVision.Drivers.Console.DriverCapabilityMap.yml\" sourcestartlinenumber=\"1\">Stellt den kanonischen Satz der Phase-7-Fähigkeitsgruppen bereit und beschreibt den\njeweils zugeordneten verwalteten Ersatz in <code>TuiVision.Drivers.Console</code>.</p>\n<p sourcefile=\"api/TuiVision.Drivers.Console.DriverCapabilityMap.yml\" sourcestartlinenumber=\"4\">Provides the canonical set of Phase-7 capability buckets and describes the\ncorresponding managed replacement in <code>TuiVision.Drivers.Console</code>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Drivers.Console.IConsolePresenter.yml",
       "output": {
         ".html": {
@@ -1249,6 +1277,16 @@
       "output": {
         ".html": {
           "relative_path": "docs/guides/multi-mac-workflow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/porting-status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/porting-status.html"
         }
       },
       "version": ""
