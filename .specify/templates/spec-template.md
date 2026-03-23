@@ -7,6 +7,12 @@
 
 ## User Scenarios & Testing *(mandatory)*
 
+If the feature concerns example applications, the specification MUST state
+explicitly whether it advances one of the 25 mandatory original examples from
+`tv203s/contrib/tvision/examples` or only a post-acceptance follow-on wave from
+`TVDEMOS/` / `TVFM/`. Follow-on waves MUST NOT be presented as a substitute for
+mandatory example scope.
+
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
   Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,

@@ -33,6 +33,14 @@
 
 [Gates determined based on constitution file]
 
+- If the feature changes local workflow or agent tooling, document the required
+  baseline for `gh`, `codex`, `claude`, `copilot`, `gemini`, and GitHub
+  Spec-Kit on both Macs, including installation, version checks, and basic
+  usage.
+- If the feature touches example-porting scope, state explicitly whether it
+  advances the 25 mandatory original examples from
+  `tv203s/contrib/tvision/examples` or only post-acceptance follow-on waves
+  from `TVDEMOS/` / `TVFM/`. Follow-on waves MUST NOT displace mandatory scope.
 - Statistical-documentation impact identified; schedule an update to
   `docs/project-statistics.md` when the feature phase or agent-delivered change
   lands.

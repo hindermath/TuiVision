@@ -21,7 +21,7 @@ TuiVision ist dabei ausdruecklich als **Beispielprojekt** zur Modernisierung mit
 - Quellcodebasis: `tv203s/contrib/tvision`
 - Herkunft des `tv203s/`-Bestands laut Lastenheft: Download von `https://sourceforge.net/projects/tvision/files/DOS_Win32/2.0.3/`
 - Lokale Arbeitsumgebungen: macOS auf `MacBook Air M2` und `Mac mini M4 Pro`
-- Auf beiden Systemen vorhanden und authentifiziert: `gh` (GitHub CLI), `codex`, `claude`, `copilot` und `gemini`; zusaetzlich ist GitHub Spec-Kit als verpflichtende Grundlage in allen vier KI-Agenten (`codex`, `claude`, `copilot`, `gemini`) installiert und nutzbar
+- Auf beiden Systemen vorhanden und authentifiziert: `gh` (GitHub CLI), `codex`, `claude`, `copilot` und `gemini`; zusaetzlich ist GitHub Spec-Kit als verpflichtende Grundlage in allen vier KI-Agenten (`codex`, `claude`, `copilot`, `gemini`) installiert und nutzbar. Optional koennen `glab` (GitLab CLI) sowie die KI-Agenten `opencode` und JetBrains `junie` eingerichtet werden; falls `opencode` oder `junie` genutzt werden, ist GitHub Spec-Kit auch dort zu installieren und dokumentiert nutzbar zu halten
 - Umfang der vorhandenen C/C++-Basis (Stand Analyse):
   - ca. 130 oeffentliche Header in `include/tv`
   - 105 Implementierungsdateien im Kernbereich `classes`
@@ -54,7 +54,7 @@ Statuscheckliste Lieferumfang:
 - [ ] Nutzerdokumentation (Leitfaeden fuer Einstieg und Verwendung)
 - [ ] Ausfuehrliche Dokumentation aller portierten Beispielprogramme
 - [-] Ausreichende Quellcode-Dokumentation fuer Lern- und Wartungszwecke
-- [-] Dokumentierter lokaler Workflow fuer `gh`, `codex`, `claude`, `copilot` und `gemini` auf beiden macOS-Systemen einschliesslich GitHub Spec-Kit in allen vier KI-Agenten
+- [-] Dokumentierter lokaler Workflow fuer `gh`, `codex`, `claude`, `copilot` und `gemini` auf beiden macOS-Systemen einschliesslich GitHub Spec-Kit in allen vier KI-Agenten; optionale Zusatzwerkzeuge `glab`, `opencode` und `junie` sind bei Nutzung ebenfalls dokumentiert
 
 ## 5. Anforderungen (MUSS)
 
@@ -108,19 +108,17 @@ Statuscheckliste Anforderungen:
 | M-18 | Ausfuehrliche Dokumentation der Beispielprogramme | Pro Beispielprogramm eigener Guide mit Lernziel, Voraussetzungen, Start, Bedienung, Architekturhinweisen und Uebungen | Alle portierten Beispiele sind didaktisch nachvollziehbar dokumentiert und reproduzierbar ausfuehrbar |
 | M-19 | Ausreichende Quellcode-Dokumentation im gesamten TuiVision-Code | Nicht-triviale Logik, Architekturentscheidungen und interne Zusammenhaenge werden im Code nachvollziehbar kommentiert | Der Quellcode erfuellt die pruefbaren Kriterien aus Abschnitt 10.5 und ist fuer Fachinformatiker (Anwendungsentwicklung) lern- und wartbar |
 | M-20 | Messbarer Mindest-Testumfang (MUSS-Tests) | Definierte Mindestabdeckung, Pflichttestfaelle und vollstaendige Smoke-Tests gemaess Abschnitt 9.4 | Die in Abschnitt 9.4 definierten Kennzahlen und Testumfaenge sind vollstaendig erreicht |
-| M-21 | Reproduzierbarer Multi-Mac-Entwicklungsworkflow | Build-, Test-, GitHub- und KI-Agenten-Arbeitsablaeufe sind fuer `MacBook Air M2` und `Mac mini M4 Pro` mit `gh`, `codex`, `claude`, `copilot` und `gemini` dokumentiert; GitHub Spec-Kit ist in allen vier KI-Agenten verpflichtend installiert und in den Workflows beruecksichtigt | Die dokumentierten Schluesselablaeufe funktionieren auf beiden Systemen mit den dokumentierten Voraussetzungen und ggf. automatisierter Tool-Bereitstellung (z. B. DocFX als .NET-Tool); die Spec-Kit-gestuetzten Agentenablaeufe sind fuer `codex`, `claude`, `copilot` und `gemini` nachvollziehbar nachweisbar |
+| M-21 | Reproduzierbarer Multi-Mac-Entwicklungsworkflow | Build-, Test-, GitHub- und KI-Agenten-Arbeitsablaeufe sind fuer `MacBook Air M2` und `Mac mini M4 Pro` mit `gh`, `codex`, `claude`, `copilot` und `gemini` dokumentiert; GitHub Spec-Kit ist in allen vier KI-Agenten verpflichtend installiert und in den Workflows beruecksichtigt. Optionale Zusatzwerkzeuge `glab`, `opencode` und `junie` werden bei Nutzung ebenfalls dokumentiert; fuer `opencode` und `junie` gilt dann ebenfalls die Spec-Kit-Pflicht | Die dokumentierten Schluesselablaeufe funktionieren auf beiden Systemen mit den dokumentierten Voraussetzungen und ggf. automatisierter Tool-Bereitstellung (z. B. DocFX als .NET-Tool); die Spec-Kit-gestuetzten Agentenablaeufe sind fuer `codex`, `claude`, `copilot` und `gemini` nachvollziehbar nachweisbar, bei Nutzung optional zusaetzlich auch fuer `opencode` und `junie` |
 | M-22 | Automatische Veroeffentlichung der Dokumentation auf GitHub Pages | Dedizierter Workflow `.github/workflows/docs-deploy.yml` gemaess Abschnitt 10.8: Trigger auf `push` nach `main` fuer Pfade `docs/**`, `src/**`, `docfx.json`; Schritte: checkout, dotnet-build (XML-Docs), docfx, `upload-pages-artifact`, `deploy-pages`; Repository-Setting auf Source „GitHub Actions"; Umgebung `github-pages` | Workflow existiert gemaess Abschnitt 10.8; docfx-Dokumentation ist ueber GitHub Pages erreichbar; Deployment laeuft automatisch nach jedem relevanten Merge auf `main`; Deployment-Status im Actions-Tab sichtbar |
 
 ## 6. Optionale Anforderungen (KANN / Pruefauftraege)
 
 Statuscheckliste optionale Anforderungen:
 - [ ] `O-01` NuGet-Paketierung
-- [ ] `O-02` Free Vision als Vergleichsquelle nutzen
 
 | ID | Option | Umsetzung | Ergebnisartefakt |
 |---|---|---|---|
 | O-01 | NuGet-Paketierung | Pack-/Versionierungsprozess | erzeugbares `.nupkg` |
-| O-02 | Free Vision als Vergleichsquelle nutzen | API-/Konzeptvergleich | Mapping-/Abweichungsdokument |
 
 ## 7. Zielarchitektur und Projektstruktur
 
@@ -360,7 +358,7 @@ Die folgenden Punkte sind verpflichtend und bilden die "MUSS-Tests" im Sinne die
 - [x] Integrations-/Verhaltenstests decken mindestens Event-Loop, Fokuswechsel, Menueausfuehrung und Dialoginteraktion ab.
 - [ ] Smoke-Tests laufen fuer alle 25 portierten Beispielprogramme automatisiert in CI.
 - [ ] Alle MUSS-Tests laufen in GitHub Actions auf jedem Pull Request und auf dem Hauptbranch.
-- [-] Die dokumentierten lokalen Schluesselablaeufe mit `gh`, `codex`, `claude`, `copilot` und `gemini` sind auf `MacBook Air M2` und `Mac mini M4 Pro` nachvollziehbar und reproduzierbar; GitHub Spec-Kit ist dabei in allen vier KI-Agenten installiert und Bestandteil der nachgewiesenen Agentenablaeufe.
+- [-] Die dokumentierten lokalen Schluesselablaeufe mit `gh`, `codex`, `claude`, `copilot` und `gemini` sind auf `MacBook Air M2` und `Mac mini M4 Pro` nachvollziehbar und reproduzierbar; GitHub Spec-Kit ist dabei in allen vier KI-Agenten installiert und Bestandteil der nachgewiesenen Agentenablaeufe. Falls `glab`, `opencode` oder `junie` genutzt werden, sind auch diese Ablaeufe dokumentiert; fuer `opencode` und `junie` ebenfalls mit installiertem Spec-Kit.
 - [x] Bei API-/XML-Kommentar-Aenderungen ist die erfolgreiche docfx-Erzeugung als Nachweisartefakt vorhanden.
 
 ## 10. Dokumentation
@@ -369,7 +367,7 @@ Die folgenden Punkte sind verpflichtend und bilden die "MUSS-Tests" im Sinne die
 - [ ] Changelog fuer Portierungsfortschritt und Abweichungen vom Originalverhalten
 - [ ] Saemtliche Projektdokumentation folgt einem einheitlichen didaktischen Lehr-/Beispielstandard
 - [-] Der Quellcode selbst ist didaktisch und wartungsorientiert dokumentiert
-- [-] Lokale Arbeitsablaeufe mit `gh`, `codex`, `claude`, `copilot` und `gemini` sind fuer beide macOS-Systeme dokumentiert; GitHub Spec-Kit ist als Pflichtbestandteil in allen vier KI-Agenten beruecksichtigt
+- [-] Lokale Arbeitsablaeufe mit `gh`, `codex`, `claude`, `copilot` und `gemini` sind fuer beide macOS-Systeme dokumentiert; GitHub Spec-Kit ist als Pflichtbestandteil in allen vier KI-Agenten beruecksichtigt. Optionale Zusatzwerkzeuge `glab`, `opencode` und `junie` sind bei Nutzung ebenfalls dokumentiert; fuer `opencode` und `junie` mit Spec-Kit.
 
 ## 10.1 XML-Dokumentationsstandard fuer die API (verbindlich)
 Fuer den Lehr- und Beispielcharakter des Projekts gelten folgende verbindliche Regeln:
@@ -427,12 +425,13 @@ Fuer den Lehr- und Beispielcharakter gilt fuer den TuiVision-Quellcode:
 
 ## 10.6 Standard fuer lokalen Multi-Mac-Workflow (verbindlich)
 Fuer die Arbeitsumgebungen `MacBook Air M2` und `Mac mini M4 Pro` gilt:
-1. Die Nutzung von `gh`, `codex`, `claude`, `copilot` und `gemini` fuer taegliche Entwicklungsschritte ist in `docs/guides` nachvollziehbar beschrieben. `codex`, `claude`, `copilot` und `gemini` sind auf beiden Systemen als Pflichtinstallation vorzuhalten.
+1. Die Nutzung von `gh`, `codex`, `claude`, `copilot` und `gemini` fuer taegliche Entwicklungsschritte ist in `docs/guides` nachvollziehbar beschrieben. `codex`, `claude`, `copilot` und `gemini` sind auf beiden Systemen als Pflichtinstallation vorzuhalten. `glab`, `opencode` und JetBrains `junie` koennen optional ergaenzt werden und sind bei Nutzung ebenfalls nachvollziehbar zu dokumentieren.
 2. Mindestens die Schluesselablaeufe Build, Test, Branch/PR-Workflow und Repository-Operationen sind dokumentiert.
 3. Die Befehle sind so dokumentiert, dass sie auf beiden Systemen mit den angegebenen Voraussetzungen reproduzierbar funktionieren.
 4. Voraussetzungen (authentifizierte CLI-Tools) und die Versionspruefung sind explizit dokumentiert.
 5. GitHub Spec-Kit ist als Pflichtbestandteil in allen vier KI-Agenten (`codex`, `claude`, `copilot`, `gemini`) installiert; Installation, Versionspruefung und Grundnutzung sind fuer beide Systeme dokumentiert.
-6. Falls zusaetzliche Tools noetig sind (z. B. DocFX), ist die automatisierte Bereitstellung per dokumentiertem Befehl Bestandteil des Workflows.
+6. Fuer optional genutzte KI-Agenten `opencode` und JetBrains `junie` gilt ebenfalls: Wenn sie lokal eingerichtet sind, ist GitHub Spec-Kit auch dort zu installieren, mit Versionspruefung zu versehen und in der Workflow-Dokumentation nachweisbar zu nutzen.
+7. Falls zusaetzliche Tools noetig sind (z. B. DocFX), ist die automatisierte Bereitstellung per dokumentiertem Befehl Bestandteil des Workflows.
 
 ## 10.7 Standard fuer Nutzerdokumentation – Quellen, Struktur und Sprache (verbindlich)
 
@@ -477,19 +476,15 @@ Die Nutzerdokumentation speist sich aus folgenden Quellen in absteigender Priori
    - OCR-Textfassungen und Markdown-Arbeitsfassungen: [TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.txt](TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.txt), [TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.md](TVDocs/Borland-Turbo-Vision-for-C-User-s-Guide.md), [TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.txt](TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.txt), [TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.md](TVDocs/Turbo_Vision_Version_2.0_Programming_Guide_1992.md)
    - Diese Fassungen dienen ausschliesslich der lokalen Suche, Navigation und agentischen Aufbereitung. Bei Konflikten oder OCR-Fehlern haben die PDF-Originalquellen aus Tier 1 Vorrang.
 
-3. **Free Vision Reference (Tier 1 – ergaenzende Konzepte)**
-   - Free Pascal Projekt (freepascal.org) – konzeptionell verwandte Implementierung der gleichen TV-API
-   - Gleiche Adaptionspflicht wie fuer Borland-Material
-
-4. **tv203s C/C++-Quellcode (Tier 2 – Verhaltensreferenz)**
+3. **tv203s C/C++-Quellcode (Tier 2 – Verhaltensreferenz)**
    - `tv203s/contrib/tvision/` als massgebliche Referenz fuer das Originalverhalten
    - Wird genutzt, um Verhalten zu erklaeren und bewusste Abweichungen der C#-Portierung zu begruenden
 
-5. **C# Quellcode und XML-Kommentare (Tier 3 – API-Dokumentation)**
+4. **C# Quellcode und XML-Kommentare (Tier 3 – API-Dokumentation)**
    - Primaerquelle fuer alle API-Referenzseiten; docfx erzeugt daraus automatisch die API-Doku
    - XML-Kommentare muessen vollstaendig und didaktisch gemaess Abschnitt 10.1 sein
 
-6. **Portierte Beispielprogramme (Tier 4 – Nutzungsszenarien)**
+5. **Portierte Beispielprogramme (Tier 4 – Nutzungsszenarien)**
    - `examples/` liefert konkrete Anwendungsszenarien fuer Tutorials und konzeptuelle Guides
 
 ### Sprache und Stil
@@ -606,7 +601,7 @@ Die verbleibenden Arbeiten sind in folgender Reihenfolge abzuarbeiten, damit die
    - Dokumentation ist im selben Arbeitsgang wie API-, Verhaltens- und Beispielaenderungen nachzuziehen.
 
 6. **Multi-Mac-Workflow und GitHub Pages abschliessen**
-   - Die dokumentierten Schluesselablaeufe fuer `gh`, `codex`, `claude`, `copilot`, `gemini` und GitHub Spec-Kit auf beiden Macs nachvollziehbar absichern.
+   - Die dokumentierten Schluesselablaeufe fuer `gh`, `codex`, `claude`, `copilot`, `gemini` und GitHub Spec-Kit auf beiden Macs nachvollziehbar absichern; optionale Werkzeuge `glab`, `opencode` und `junie` bei Nutzung einschliessen, bei den beiden optionalen KI-Agenten jeweils ebenfalls mit Spec-Kit.
    - `M-22` mit automatischem GitHub-Pages-Deployment der docfx-Dokumentation auf `main` schliessen.
 
 7. **TP7-Anschlusswellen erst nach MUSS-Abnahme verfolgen**
@@ -624,7 +619,7 @@ Die Abnahme gilt als bestanden, wenn:
 - [ ] Fuer alle 25 portierten Original-Beispielprogramme liegt eine Dokumentation gemaess Abschnitt 10.4 vor; fuer TP7-Anschlussbeispiele gilt derselbe Dokumentationsstandard, sobald sie portiert werden.
 - [-] Der Quellcode erfuellt den Dokumentationsstandard gemaess Abschnitt 10.5 nachweisbar.
 - [ ] Der Mindest-Testumfang gemaess Abschnitt 9.4 ist nachweisbar vollstaendig erfuellt.
-- [-] Der lokale Workflow mit `gh`, `codex`, `claude`, `copilot` und `gemini` gemaess Abschnitt 10.6 ist auf beiden macOS-Systemen nachweisbar anwendbar; GitHub Spec-Kit ist in allen vier KI-Agenten installiert und in den dokumentierten Ablaeufen nutzbar.
+- [-] Der lokale Workflow mit `gh`, `codex`, `claude`, `copilot` und `gemini` gemaess Abschnitt 10.6 ist auf beiden macOS-Systemen nachweisbar anwendbar; GitHub Spec-Kit ist in allen vier KI-Agenten installiert und in den dokumentierten Ablaeufen nutzbar. Optionale Werkzeuge `glab`, `opencode` und `junie` sind bei Nutzung ebenfalls erfasst; fuer `opencode` und `junie` mit installierter Spec-Kit-Unterstuetzung.
 - [x] Bei API-/XML-Kommentar-Aenderungen ist die docfx-Dokumentation nachweisbar neu erzeugt worden.
 - [ ] Die docfx-Dokumentation ist ueber GitHub Pages des Repositories `hindermath/TuiVision` erreichbar und wird bei jedem Merge auf `main` mit Doku-relevanten Aenderungen automatisch aktualisiert (M-22).
 

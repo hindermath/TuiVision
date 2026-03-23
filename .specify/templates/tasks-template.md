@@ -8,7 +8,10 @@ description: "Task list template for feature implementation"
 **Input**: Design documents from `/specs/[###-feature-name]/`
 **Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
-**Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
+**Tests**: Test tasks are MANDATORY for behavior-changing work in this
+repository. Generated tasks MUST reflect the constitution's Red-Green-Refactor
+rule: tests first, failing before implementation, then implementation, then
+refactor and validation.
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
@@ -181,7 +184,7 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Within Each User Story
 
-- Tests (if included) MUST be written and FAIL before implementation
+- Tests MUST be written and FAIL before implementation
 - Models before services
 - Services before endpoints
 - Core implementation before integration
@@ -249,6 +252,10 @@ With multiple developers:
 - [Story] label maps task to specific user story for traceability
 - Each user story should be independently completable and testable
 - Verify tests fail before implementing
+- Include documentation/statistics/workflow tasks whenever the change affects
+  public APIs, user guidance, governance, or local agent/tooling workflows
+- If example-porting work is in scope, distinguish the 25 mandatory original
+  examples from any post-acceptance `TVDEMOS/` / `TVFM/` follow-on work
 - Commit after each task or logical group
 - Stop at any checkpoint to validate story independently
 - Avoid: vague tasks, same file conflicts, cross-story dependencies that break independence

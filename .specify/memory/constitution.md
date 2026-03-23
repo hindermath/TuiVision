@@ -1,10 +1,10 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version change: 1.4.0 → 1.5.0
-  Bump rationale: MINOR — Added a mandatory project-statistics ledger and
-  defined update triggers, required metrics, and the conservative manual-effort
-  baseline for AI-assisted/spec-driven delivery.
+  Version change: 1.6.0 → 1.7.0
+  Bump rationale: MINOR — Expanded the workflow governance to include optional
+  supplementary tooling (`glab`, `opencode`, `junie`) and required GitHub
+  Spec-Kit wherever optional AI agents are configured locally.
   Full project scan performed (AGENTS.md, GEMINI.md, CLAUDE.md,
   copilot-instructions.md, constitution templates, and core spec templates).
 
@@ -12,22 +12,22 @@
     - None
 
   Added sections:
-    - Development Workflow → Statistical Documentation
+    - None
 
   Removed sections:
     - None
 
   Templates requiring updates:
-    - .specify/templates/plan-template.md  ✅ updated
+    - .specify/templates/plan-template.md  ✅ reviewed; no change required
     - .specify/templates/spec-template.md  ✅ reviewed; no change required
-    - .specify/templates/tasks-template.md ✅ updated
+    - .specify/templates/tasks-template.md ✅ reviewed; no change required
     - .specify/templates/constitution-template.md ✅ reviewed; no change required
 
   Agent files reviewed:
-    - AGENTS.md             ✅ updated
-    - GEMINI.md             ✅ updated
-    - .github/copilot-instructions.md ✅ updated
-    - CLAUDE.md             ✅ updated
+    - AGENTS.md             ✅ reviewed; no change required
+    - GEMINI.md             ✅ reviewed; no change required
+    - .github/copilot-instructions.md ✅ reviewed; no change required
+    - CLAUDE.md             ✅ reviewed; no change required
 
   Follow-up TODOs:
     - `.specify/templates/commands/` is not present in this repository, so no
@@ -206,7 +206,7 @@ the project and its contributors (Pflichtenheft M-12).
 | CI platform | GitHub Actions |
 | Version control | Git; remote: `https://github.com/hindermath/TuiVision.git` |
 | Primary IDEs | JetBrains Rider (primary), VS Code (secondary) |
-| Dev tooling | `gh`, `codex`, `claude`, `gemini`, `opencode`, `copilot` |
+| Dev tooling | `gh`, optional `glab`, `codex`, `claude`, `copilot`, `gemini`, optional `opencode`, optional `junie`, GitHub Spec-Kit |
 
 Project-owned code MUST use `System.Text.Json` for JSON parsing and
 serialization. Introducing `Newtonsoft.Json` requires documented justification
@@ -239,8 +239,11 @@ All projects share settings via `Directory.Build.props`:
 
 ### Branching
 
-- `main` is the integration branch; direct pushes to `main` are only permitted
-  for administrative changes (not code).
+- `main` is the integration branch.
+- Feature branches remain the preferred path for substantial feature delivery.
+- Direct pushes to `main` are permitted for tightly scoped, user-approved
+  repository changes (including documentation, governance, and small corrective
+  updates) when the applicable quality gates remain satisfied.
 - Feature branches follow the pattern: `codex/<short-description>`.
 - CI runs on pushes to `main`, `master`, `codex/**`, `claude/**`, `gemini/**`,
   `opencode/**` and `copilot/**`.
@@ -297,8 +300,19 @@ include an explicit documentation compliance check:
 The documented workflow in `docs/guides/multi-mac-workflow.md` is the canonical
 reference for development on **MacBook Air M2** and **Mac mini M4 Pro**. It MUST
 be kept current with any tooling or workflow changes. Prerequisites (`gh`,
-`codex`, `claude`, `gemini`, `opencode`, `copilot`, `docfx`, `.NET 10 SDK`)
-MUST be documented with version check commands.
+optional `glab`, `codex`, `claude`, `copilot`, `gemini`, optional `opencode`,
+optional `junie`, GitHub Spec-Kit, `docfx`, `.NET 10 SDK`) MUST be documented
+with version check commands.
+
+`codex`, `claude`, `copilot`, and `gemini` are the four supported AI agents for
+this project. GitHub Spec-Kit MUST be installed and usable in all four agents.
+Installation, version checks, and the basic Spec-Kit workflow commands MUST be
+documented for both Macs.
+
+`glab` is an optional supplementary CLI. `opencode` and JetBrains `junie` are
+optional supplementary AI agents. Whenever `opencode` or `junie` are configured
+locally, GitHub Spec-Kit MUST also be installed, version-checked, and included
+in the documented workflow for that machine.
 
 ### Statistical Documentation
 
@@ -339,6 +353,12 @@ Pflichtenheft section 8.1:
 7. Driver consolidation (managed console driver)
 8. Examples (all 25, in waves)
 
+The 25 original example programs from `tv203s/contrib/tvision/examples` are the
+only mandatory example scope for acceptance. Additional Turbo-Pascal follow-on
+waves from `TVDEMOS/` and `TVFM/` MAY be pursued only after the mandatory scope
+is complete and MUST NOT displace or dilute the acceptance criteria for the 25
+original examples.
+
 ### Commit Discipline
 
 Each commit MUST leave the repository in a passing build-and-test state.
@@ -369,4 +389,4 @@ Use `docs/guides/multi-mac-workflow.md` for local multi-machine workflow details
 Use `docs/project-statistics.md` for the living project-statistics ledger and
 manual-effort baseline tracking.
 
-**Version**: 1.5.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-21
+**Version**: 1.7.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-23
