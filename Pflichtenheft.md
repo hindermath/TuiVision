@@ -594,6 +594,11 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
 3. **MUSS-Beispielwellen 1 bis 4 portieren**
    - Erst nach bestandenem Eingangstor beginnen.
    - Die 25 Originalbeispiele aus `tv203s/contrib/tvision/examples` bleiben bis zur Abnahme der einzige verpflichtende Beispielumfang.
+   - Die vier Wellen sind als vier eigenstaendige Unterphasen `3.1` bis `3.4` zu behandeln; sie werden nacheinander abgearbeitet und jeweils separat geplant, portiert, getestet und dokumentiert.
+   - `3.1` = Welle 1: Grundlegende Anwendungsstruktur
+   - `3.2` = Welle 2: Controls und Dialoge
+   - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams
+   - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.
