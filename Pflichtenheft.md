@@ -21,6 +21,7 @@ TuiVision ist dabei ausdruecklich als **Beispielprojekt** zur Modernisierung mit
 - Quellcodebasis: `tv203s/contrib/tvision`
 - Herkunft des `tv203s/`-Bestands laut Lastenheft: Download von `https://sourceforge.net/projects/tvision/files/DOS_Win32/2.0.3/`
 - Lokale Arbeitsumgebungen: macOS auf `MacBook Air M2` und `Mac mini M4 Pro`
+- Zusaetzliche Kompatibilitaets- und Validierungsumgebungen: Windows und Linux; unter Windows insbesondere WSL mit aktuellem Ubuntu (derzeit bevorzugt `Ubuntu 24.04`)
 - Auf beiden Systemen vorhanden und authentifiziert: `gh` (GitHub CLI), `codex`, `claude`, `copilot` und `gemini`; zusaetzlich ist GitHub Spec-Kit als verpflichtende Grundlage in allen vier KI-Agenten (`codex`, `claude`, `copilot`, `gemini`) installiert und nutzbar. Optional koennen `glab` (GitLab CLI) sowie die KI-Agenten `opencode` und JetBrains `junie` eingerichtet werden; falls `opencode` oder `junie` genutzt werden, ist GitHub Spec-Kit auch dort zu installieren und dokumentiert nutzbar zu halten
 - Umfang der vorhandenen C/C++-Basis (Stand Analyse):
   - ca. 130 oeffentliche Header in `include/tv`
@@ -101,14 +102,14 @@ Statuscheckliste Anforderungen:
 | M-11 | Qualitaetssicherung zusaetzlich zu Unit-Tests | Analyzer, Format- und Build-Gates | Qualitaets-Gates sind dokumentiert und aktiv |
 | M-12 | Keine nativen OS-Abhaengigkeiten | Keine P/Invoke-/Native-Library-Pflicht, keine OS-spezifischen Zusatzpakete | Build/Tests laufen mit .NET 10 Runtime ohne native Zusatzinstallation |
 | M-13 | Lizenz-Disclaimer fuer Beispielcharakter | Sichtbarer Hinweis in `LICENSE`/`README` | Hinweis beschreibt: Beispielprojekt, keine Konkurrenzabsicht, keine beabsichtigte Lizenzverletzung |
-| M-14 | CI/CD mit GitHub Actions | Build-/Test-Workflow und Dokumentations-Deployment-Workflow unter `.github/workflows`; GitHub-Pages-Deployment gemaess M-22 ist Bestandteil der CI/CD-Pipeline | Automatischer Build und Testlauf pro Push/PR ist aktiv; GitHub-Pages-Deployment laeuft automatisch bei Doku-Aenderungen auf `main` (M-22) |
+| M-14 | CI/CD mit GitHub Actions | Build-/Test-Workflow und Dokumentations-Deployment-Workflow unter `.github/workflows`; GitHub-Pages-Deployment gemaess M-22 ist Bestandteil der CI/CD-Pipeline; dabei werden die primaeren Entwicklungsumgebungen auf macOS und zusaetzliche Kompatibilitaetspruefungen fuer Linux und nach Moeglichkeit auch Windows/WSL beruecksichtigt | Automatischer Build und Testlauf pro Push/PR ist aktiv; GitHub-Pages-Deployment laeuft automatisch bei Doku-Aenderungen auf `main` (M-22); Kompatibilitaetsnachweise fuer Linux und Windows/WSL sind dokumentiert oder in der CI sichtbar |
 | M-15 | Nutzerdokumentation | Pflichtguides unter `docs/guides/` gemaess Abschnitt 10.7; Quellenrangfolge und Adaptionspflicht gemaess Abschnitt 10.7 eingehalten; Sprache bilingual (Deutsch zuerst, Englisch) auf CEFR-B2-Niveau | Alle Pflichtguides unter `docs/guides/` sind vorhanden; Quellenrangfolge nachvollziehbar eingehalten; Sprache und Struktur entsprechen dem didaktischen Standard gemaess Abschnitt 10.3 und 10.7 |
 | M-16 | Vollstaendige XML-Kommentierung der oeffentlichen API | Alle `public` Typen, Member, Parameter, Rueckgabewerte und Ausnahmen mit XML-Dokumentation | API ist durchgaengig und didaktisch ausfuehrlich kommentiert; docfx erzeugt daraus vollstaendige Referenzseiten |
 | M-17 | Einheitlicher didaktischer Dokumentationsstil | Alle Dokumentationsartefakte folgen einem verbindlichen Lehr-/Beispielstandard fuer Fachinformatiker (Anwendungsentwicklung) | Struktur, Detailtiefe und Beispiele sind ueber alle Dokuarten konsistent und nachvollziehbar |
 | M-18 | Ausfuehrliche Dokumentation der Beispielprogramme | Pro Beispielprogramm eigener Guide mit Lernziel, Voraussetzungen, Start, Bedienung, Architekturhinweisen und Uebungen | Alle portierten Beispiele sind didaktisch nachvollziehbar dokumentiert und reproduzierbar ausfuehrbar |
 | M-19 | Ausreichende Quellcode-Dokumentation im gesamten TuiVision-Code | Nicht-triviale Logik, Architekturentscheidungen und interne Zusammenhaenge werden im Code nachvollziehbar kommentiert | Der Quellcode erfuellt die pruefbaren Kriterien aus Abschnitt 10.5 und ist fuer Fachinformatiker (Anwendungsentwicklung) lern- und wartbar |
 | M-20 | Messbarer Mindest-Testumfang (MUSS-Tests) | Definierte Mindestabdeckung, Pflichttestfaelle und vollstaendige Smoke-Tests gemaess Abschnitt 9.4 | Die in Abschnitt 9.4 definierten Kennzahlen und Testumfaenge sind vollstaendig erreicht |
-| M-21 | Reproduzierbarer Multi-Mac-Entwicklungsworkflow | Build-, Test-, GitHub- und KI-Agenten-Arbeitsablaeufe sind fuer `MacBook Air M2` und `Mac mini M4 Pro` mit `gh`, `codex`, `claude`, `copilot` und `gemini` dokumentiert; GitHub Spec-Kit ist in allen vier KI-Agenten verpflichtend installiert und in den Workflows beruecksichtigt. Optionale Zusatzwerkzeuge `glab`, `opencode` und `junie` werden bei Nutzung ebenfalls dokumentiert; fuer `opencode` und `junie` gilt dann ebenfalls die Spec-Kit-Pflicht | Die dokumentierten Schluesselablaeufe funktionieren auf beiden Systemen mit den dokumentierten Voraussetzungen und ggf. automatisierter Tool-Bereitstellung (z. B. DocFX als .NET-Tool); die Spec-Kit-gestuetzten Agentenablaeufe sind fuer `codex`, `claude`, `copilot` und `gemini` nachvollziehbar nachweisbar, bei Nutzung optional zusaetzlich auch fuer `opencode` und `junie` |
+| M-21 | Reproduzierbarer Multi-Mac-Entwicklungsworkflow | Build-, Test-, GitHub- und KI-Agenten-Arbeitsablaeufe sind fuer `MacBook Air M2` und `Mac mini M4 Pro` mit `gh`, `codex`, `claude`, `copilot` und `gemini` dokumentiert; GitHub Spec-Kit ist in allen vier KI-Agenten verpflichtend installiert und in den Workflows beruecksichtigt. Optionale Zusatzwerkzeuge `glab`, `opencode` und `junie` werden bei Nutzung ebenfalls dokumentiert; fuer `opencode` und `junie` gilt dann ebenfalls die Spec-Kit-Pflicht. Windows und Linux, insbesondere WSL mit aktuellem Ubuntu, dienen ergaenzend als Kompatibilitaets- und Validierungsumgebungen | Die dokumentierten Schluesselablaeufe funktionieren auf beiden macOS-Systemen mit den dokumentierten Voraussetzungen und ggf. automatisierter Tool-Bereitstellung (z. B. DocFX als .NET-Tool); die Spec-Kit-gestuetzten Agentenablaeufe sind fuer `codex`, `claude`, `copilot` und `gemini` nachvollziehbar nachweisbar, bei Nutzung optional zusaetzlich auch fuer `opencode` und `junie`; Kompatibilitaetsnachweise fuer Linux und Windows/WSL sind reproduzierbar dokumentiert oder in der CI sichtbar |
 | M-22 | Automatische Veroeffentlichung der Dokumentation auf GitHub Pages | Dedizierter Workflow `.github/workflows/docs-deploy.yml` gemaess Abschnitt 10.8: Trigger auf `push` nach `main` fuer Pfade `docs/**`, `src/**`, `docfx.json`; Schritte: checkout, dotnet-build (XML-Docs), docfx, `upload-pages-artifact`, `deploy-pages`; Repository-Setting auf Source „GitHub Actions"; Umgebung `github-pages` | Workflow existiert gemaess Abschnitt 10.8; docfx-Dokumentation ist ueber GitHub Pages erreichbar; Deployment laeuft automatisch nach jedem relevanten Merge auf `main`; Deployment-Status im Actions-Tab sichtbar |
 
 ## 6. Optionale Anforderungen (KANN / Pruefauftraege)
@@ -330,9 +331,9 @@ Checkliste Welle 6:
 - [x] **Integrations-/Verhaltenstests** fuer Event-Loop, Fokus, Menue-/Dialogfluss
 - [-] **Snapshot-/Golden-Tests** fuer Render-/Zeichenpuffer-Verhalten
 - [ ] **Smoke-Tests** fuer alle portierten Beispiele
-- [-] **Runtime-Kompatibilitaetstests** fuer .NET 10 (net10.0) ohne native Zusatzkomponenten
+- [-] **Runtime-Kompatibilitaetstests** fuer .NET 10 (net10.0) ohne native Zusatzkomponenten auf macOS, Linux sowie ergaenzend Windows/WSL
 - [ ] **MUSS-Tests**: Sammelbegriff fuer alle in Abschnitt 9.4 als verpflichtend markierten Tests und Kennzahlen
-- [-] **Umgebungs-/Workflow-Checks** fuer lokale Arbeit auf `MacBook Air M2` und `Mac mini M4 Pro`
+- [-] **Umgebungs-/Workflow-Checks** fuer lokale Arbeit auf `MacBook Air M2` und `Mac mini M4 Pro` sowie fuer ergaenzende Kompatibilitaetspruefungen auf Linux und Windows/WSL
 
 ### 9.2 Mindest-Qualitaetsgates
 - [x] Build ohne Warnungsfehler fuer freigegebene Konfiguration
@@ -358,7 +359,7 @@ Die folgenden Punkte sind verpflichtend und bilden die "MUSS-Tests" im Sinne die
 - [x] Integrations-/Verhaltenstests decken mindestens Event-Loop, Fokuswechsel, Menueausfuehrung und Dialoginteraktion ab.
 - [ ] Smoke-Tests laufen fuer alle 25 portierten Beispielprogramme automatisiert in CI.
 - [ ] Alle MUSS-Tests laufen in GitHub Actions auf jedem Pull Request und auf dem Hauptbranch.
-- [-] Die dokumentierten lokalen Schluesselablaeufe mit `gh`, `codex`, `claude`, `copilot` und `gemini` sind auf `MacBook Air M2` und `Mac mini M4 Pro` nachvollziehbar und reproduzierbar; GitHub Spec-Kit ist dabei in allen vier KI-Agenten installiert und Bestandteil der nachgewiesenen Agentenablaeufe. Falls `glab`, `opencode` oder `junie` genutzt werden, sind auch diese Ablaeufe dokumentiert; fuer `opencode` und `junie` ebenfalls mit installiertem Spec-Kit.
+- [-] Die dokumentierten lokalen Schluesselablaeufe mit `gh`, `codex`, `claude`, `copilot` und `gemini` sind auf `MacBook Air M2` und `Mac mini M4 Pro` nachvollziehbar und reproduzierbar; GitHub Spec-Kit ist dabei in allen vier KI-Agenten installiert und Bestandteil der nachgewiesenen Agentenablaeufe. Falls `glab`, `opencode` oder `junie` genutzt werden, sind auch diese Ablaeufe dokumentiert; fuer `opencode` und `junie` ebenfalls mit installiertem Spec-Kit. Linux- und Windows/WSL-Kompatibilitaetschecks sind als zusaetzliche Validierung nachgewiesen oder eingeplant.
 - [x] Bei API-/XML-Kommentar-Aenderungen ist die erfolgreiche docfx-Erzeugung als Nachweisartefakt vorhanden.
 
 ## 10. Dokumentation
@@ -432,6 +433,8 @@ Fuer die Arbeitsumgebungen `MacBook Air M2` und `Mac mini M4 Pro` gilt:
 5. GitHub Spec-Kit ist als Pflichtbestandteil in allen vier KI-Agenten (`codex`, `claude`, `copilot`, `gemini`) installiert; Installation, Versionspruefung und Grundnutzung sind fuer beide Systeme dokumentiert.
 6. Fuer optional genutzte KI-Agenten `opencode` und JetBrains `junie` gilt ebenfalls: Wenn sie lokal eingerichtet sind, ist GitHub Spec-Kit auch dort zu installieren, mit Versionspruefung zu versehen und in der Workflow-Dokumentation nachweisbar zu nutzen.
 7. Falls zusaetzliche Tools noetig sind (z. B. DocFX), ist die automatisierte Bereitstellung per dokumentiertem Befehl Bestandteil des Workflows.
+8. Der Multi-Mac-Workflow ist der primaere Entwicklungs- und Testworkflow des Projekts. Zusaetzlich sind Windows und Linux als Kompatibilitaetsumgebungen zu beruecksichtigen; unter Windows bevorzugt WSL mit aktuellem Ubuntu (derzeit `Ubuntu 24.04`).
+9. Soweit praktikabel, werden Linux- und Windows/WSL-Kompatibilitaetspruefungen auch in GitHub Actions oder aequivalenten automatisierten Nachweisen mitgefuehrt.
 
 ## 10.7 Standard fuer Nutzerdokumentation – Quellen, Struktur und Sprache (verbindlich)
 

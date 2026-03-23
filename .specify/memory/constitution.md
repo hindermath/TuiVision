@@ -1,10 +1,10 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version change: 1.7.0 → 1.7.1
-  Bump rationale: PATCH — Corrected template-alignment details after review:
-  the tasks template now reflects constitution-mandatory tests consistently,
-  and the plan template now names optional supplementary tooling explicitly.
+  Version change: 1.7.1 → 1.8.0
+  Bump rationale: MINOR — Expanded workflow governance to define the
+  Multi-Mac setup as the primary development path while adding Linux and
+  Windows/WSL as explicit compatibility-validation environments.
   Full project scan performed (AGENTS.md, GEMINI.md, CLAUDE.md,
   copilot-instructions.md, constitution templates, and core spec templates).
 
@@ -20,7 +20,7 @@
   Templates requiring updates:
     - .specify/templates/plan-template.md  ✅ updated
     - .specify/templates/spec-template.md  ✅ reviewed; no change required
-    - .specify/templates/tasks-template.md ✅ updated
+    - .specify/templates/tasks-template.md ✅ reviewed; no change required
     - .specify/templates/constitution-template.md ✅ reviewed; no change required
 
   Agent files reviewed:
@@ -314,6 +314,13 @@ optional supplementary AI agents. Whenever `opencode` or `junie` are configured
 locally, GitHub Spec-Kit MUST also be installed, version-checked, and included
 in the documented workflow for that machine.
 
+The Multi-Mac setup is the project's primary development and day-to-day test
+workflow. Linux and Windows are additional compatibility-validation
+environments; on Windows, WSL with a current Ubuntu release (currently Ubuntu
+24.04) is the preferred setup. Where practical, these compatibility checks
+SHOULD also be represented in GitHub Actions or an equivalent automated
+validation path.
+
 ### Statistical Documentation
 
 `docs/project-statistics.md` is the mandatory, living statistical ledger for the
@@ -389,4 +396,4 @@ Use `docs/guides/multi-mac-workflow.md` for local multi-machine workflow details
 Use `docs/project-statistics.md` for the living project-statistics ledger and
 manual-effort baseline tracking.
 
-**Version**: 1.7.1 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-23
+**Version**: 1.8.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-23

@@ -39,6 +39,10 @@
   usage. If optional tooling such as `glab`, `opencode`, or `junie` is in
   scope, document it explicitly; optional AI agents still require Spec-Kit
   when used locally.
+- If the feature affects runtime behavior, validation, or delivery workflow,
+  state whether Linux and Windows/WSL compatibility checks are required in
+  addition to the primary Multi-Mac workflow and whether they should be covered
+  by GitHub Actions or another automated path.
 - If the feature touches example-porting scope, state explicitly whether it
   advances the 25 mandatory original examples from
   `tv203s/contrib/tvision/examples` or only post-acceptance follow-on waves

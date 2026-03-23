@@ -102,7 +102,7 @@ docfx docfx.json
 
 ## CI/CD Configuration
 - Repository uses GitHub Actions for CI
-- Builds and tests on Ubuntu and macOS runners
+- Builds and tests on Ubuntu and macOS runners; Windows oder WSL-basierte Kompatibilitaetschecks sollen bei relevanten Aenderungen zusaetzlich beruecksichtigt werden
 - Uses .NET 10 SDK
 - Tests are run using `dotnet test` command with Release configuration
 - Build and test validation is mandatory for all code changes
@@ -135,6 +135,12 @@ docfx docfx.json
 - Maintain `docs/project-statistics.md` as the living statistics ledger for the repository.
 - Update the file after each completed Spec-Kit implementation phase, after each agent-driven repository change, or when a refresh is explicitly requested.
 - Each update must record the relevant branch/phase, observable work window, production/test/documentation line counts, main work packages, and the conservative manual baseline of 80 code lines per day for an experienced developer.
+
+## Workflow Platforms
+
+- The Multi-Mac setup on `MacBook Air M2` and `Mac mini M4 Pro` is the primary development and day-to-day test workflow.
+- Linux and Windows are additional compatibility-validation environments; on Windows, prefer WSL with a current Ubuntu release, currently `Ubuntu 24.04`.
+- When changes affect runtime behavior, build reliability, terminal behavior, or portability, include Linux and Windows/WSL compatibility checks where practical and reflect them in CI or equivalent validation evidence when feasible.
 
 ## Pflichtenheft Next-Step Marker
 
