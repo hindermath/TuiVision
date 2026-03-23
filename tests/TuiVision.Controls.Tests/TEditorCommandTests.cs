@@ -9,8 +9,20 @@ namespace TuiVision.Controls.Tests;
 /// Tests for search, replace, clipboard actions, and undo in the editor.
 /// </summary>
 [TestClass]
+[DoNotParallelize]
 public sealed class TEditorCommandTests
 {
+    /// <summary>
+    /// Setzt die gemeinsame Zwischenablage vor jedem Test zurueck.
+    ///
+    /// Resets the shared clipboard before each test.
+    /// </summary>
+    [TestInitialize]
+    public void ResetClipboard()
+    {
+        TEditor.ClipboardText = string.Empty;
+    }
+
     /// <summary>
     /// Prueft Suche und Ersetzen ueber Auswahlmarkierung.
     ///

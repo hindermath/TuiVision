@@ -11,8 +11,20 @@ namespace TuiVision.Controls.Tests;
 /// Tests for editor hosts, indicators, and shell integration.
 /// </summary>
 [TestClass]
+[DoNotParallelize]
 public sealed class TEditWindowTests
 {
+    /// <summary>
+    /// Setzt die gemeinsame Zwischenablage vor jedem Test zurueck.
+    ///
+    /// Resets the shared clipboard before each test.
+    /// </summary>
+    [TestInitialize]
+    public void ResetClipboard()
+    {
+        TEditor.ClipboardText = string.Empty;
+    }
+
     /// <summary>
     /// Prueft, dass der Indikator Cursorposition und Insert-Modus zeigt.
     ///
