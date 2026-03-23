@@ -1,10 +1,10 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version change: 1.6.0 → 1.7.0
-  Bump rationale: MINOR — Expanded the workflow governance to include optional
-  supplementary tooling (`glab`, `opencode`, `junie`) and required GitHub
-  Spec-Kit wherever optional AI agents are configured locally.
+  Version change: 1.7.0 → 1.7.1
+  Bump rationale: PATCH — Corrected template-alignment details after review:
+  the tasks template now reflects constitution-mandatory tests consistently,
+  and the plan template now names optional supplementary tooling explicitly.
   Full project scan performed (AGENTS.md, GEMINI.md, CLAUDE.md,
   copilot-instructions.md, constitution templates, and core spec templates).
 
@@ -18,9 +18,9 @@
     - None
 
   Templates requiring updates:
-    - .specify/templates/plan-template.md  ✅ reviewed; no change required
+    - .specify/templates/plan-template.md  ✅ updated
     - .specify/templates/spec-template.md  ✅ reviewed; no change required
-    - .specify/templates/tasks-template.md ✅ reviewed; no change required
+    - .specify/templates/tasks-template.md ✅ updated
     - .specify/templates/constitution-template.md ✅ reviewed; no change required
 
   Agent files reviewed:
@@ -389,4 +389,4 @@ Use `docs/guides/multi-mac-workflow.md` for local multi-machine workflow details
 Use `docs/project-statistics.md` for the living project-statistics ledger and
 manual-effort baseline tracking.
 
-**Version**: 1.7.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-23
+**Version**: 1.7.1 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-23

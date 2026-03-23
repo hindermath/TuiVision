@@ -36,7 +36,9 @@
 - If the feature changes local workflow or agent tooling, document the required
   baseline for `gh`, `codex`, `claude`, `copilot`, `gemini`, and GitHub
   Spec-Kit on both Macs, including installation, version checks, and basic
-  usage.
+  usage. If optional tooling such as `glab`, `opencode`, or `junie` is in
+  scope, document it explicitly; optional AI agents still require Spec-Kit
+  when used locally.
 - If the feature touches example-porting scope, state explicitly whether it
   advances the 25 mandatory original examples from
   `tv203s/contrib/tvision/examples` or only post-acceptance follow-on waves
