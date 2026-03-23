@@ -580,16 +580,16 @@ environment:
 
 Die verbleibenden Arbeiten sind in folgender Reihenfolge abzuarbeiten, damit die MUSS-Abnahme mit moeglichst geringem Ruecksprungrisiko erreicht wird:
 
->>> NAECHSTER SCHRITT <<< 1. **M-07 und Eingangstor Phase 8 schliessen**
+>>> NAECHSTER SCHRITT <<< 1. **Phase 7 Treiberkonsolidierung abschliessen**
 Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf den dann hoechstprioren offenen Arbeitsschritt zu verschieben.
 
-1. **M-07 und Eingangstor Phase 8 schliessen**
-   - `docs/porting-status.md` vollstaendig aufbauen, jede `.cc`-Quelldatei aus `tv203s/contrib/tvision/classes` abbilden, Teststatus und bewusst ausgelassene Faelle mit Begruendung nachweisen.
-   - Build-, Test-, Coverage- und API-Doku-Gate fuer `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` vollstaendig und belastbar nachziehen.
-
-2. **Phase 7 Treiberkonsolidierung abschliessen**
+1. **Phase 7 Treiberkonsolidierung abschliessen**
    - Den Managed-Console-Treiber fachlich so weit stabilisieren, dass Welle 4 nicht durch offene Terminal-/Zeichensatzfragen blockiert bleibt.
    - Offene plattformspezifische Restfaelle aus `M-07` gegen die neue Treiberschicht explizit aufloesen.
+
+2. **M-07 abschliessen und das Eingangstor fuer Phase 8 (Beginn der Beispielportierungen) nachweisbar schliessen**
+   - `docs/porting-status.md` vollstaendig aufbauen, jede `.cc`-Quelldatei aus `tv203s/contrib/tvision/classes` abbilden, Teststatus und bewusst ausgelassene Faelle mit Begruendung nachweisen.
+   - Build-, Test-, Coverage- und API-Doku-Gate fuer `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` vollstaendig und belastbar nachziehen.
 
 3. **MUSS-Beispielwellen 1 bis 4 portieren**
    - Erst nach bestandenem Eingangstor beginnen.
