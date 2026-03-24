@@ -90,6 +90,40 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
     *   Rechner-/Makro-/OS-Shell-Integrationen
     *   sonstige fachfremde Spezial-Widgets
 
+### `005-driver-consolidation-m07`
+*   Spezifikationsquelle: `specs/005-driver-consolidation-m07/spec.md`
+*   Planungsgrundlage dieses Inkrements: `specs/005-driver-consolidation-m07/spec.md` und `specs/005-driver-consolidation-m07/plan.md`
+*   Geplanter Umfang:
+    *   der verwaltete Konsolentreiber in `src/TuiVision.Drivers.Console`
+    *   begleitende Validierung in `tests/TuiVision.Drivers.Tests`
+    *   das M-07-Beweis-Ledger `docs/porting-status.md`
+*   Festgezogene Planungsentscheidungen:
+    *   `.cc`-Dateien sind der formale `M-07`-Ledger-Scope
+    *   zugehoerige `.c`-/`.h`-Dateien duerfen nur als Begruendungs- oder Referenzmaterial auftreten
+    *   Capability-Buckets ersetzen eine Eins-zu-eins-Abbildung pro historischem OS-Treiber
+    *   Phase 7 bleibt bewusst von der spaeteren vollstaendigen Phase-8-Gateschliessung getrennt
+*   Explizit nicht Teil dieses Schritts:
+    *   die 25 verpflichtenden Beispielwellen
+    *   eine vollstaendige Phase-8-Gateschliessung
+    *   neue Quellmodule oder native Bindings
+
+### `006-close-phase8-gate`
+*   Spezifikationsquelle: `specs/006-close-phase8-gate/spec.md`
+*   Planungsgrundlage dieses Inkrements: finaler `M-07`-Abschluss und nachweisbare Schliessung des Phase-8-Eingangstors
+*   Geplanter Umfang:
+    *   `docs/porting-status.md` als autoritatives M-07-Ledger
+    *   Gate-Nachweise fuer Build, Volltests, Coverage, Formatierung und API-Dokumentation
+    *   Fortschreibung der Pflichtenheft- und Review-Artefakte fuer die Phase-8-Entscheidung
+*   Festgezogene Planungsentscheidungen:
+    *   keine `portiert + Test ausstehend`-Zeilen mehr nach behauptetem Gate-Abschluss
+    *   `TuiVision.Controls` muss die explizite 70-%-Line-Coverage-Huerde erreichen
+    *   Core- und Serialization-Coverage muessen im selben Nachweispaket sichtbar sein
+    *   die 25 MUSS-Beispiele bleiben bis zum formalen Gate-Abschluss blockiert
+*   Explizit nicht Teil dieses Schritts:
+    *   Beginn der Beispielportierungen
+    *   Ersatzumfang aus `TVDEMOS/` oder `TVFM/`
+    *   fachfremde neue Framework-Features
+
 ## 🔄 Synchronisationsregel für KI-Agenten-Dateien
 
 *   Wenn sich aktiver Feature-Kontext, Planungsstand oder gemeinsam genutzte Agenten-Hinweise ändern, müssen diese Dateien gemeinsam geprüft und bei Bedarf im selben Arbeitsgang aktualisiert werden:
@@ -126,6 +160,8 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 - Lokales Dateisystem sowie persistente binaere Help-/Ressourcen-Streams; keine Datenbank in diesem Inkrement (004-editor-file-help-streams)
 - C# `latest` on .NET 10 (`net10.0`) + Existing modules `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, `TuiVision.Compatibility`; MSTest; Coverlet via `dotnet test --collect:"XPlat Code Coverage"`; docfx for API documentation validation; GitHub Actions for existing CI (005-driver-consolidation-m07)
 - Versionskontrollierter Markdown-Nachweis in `docs/porting-status.md`; keine Datenbank; Kompatibilitaetsnachweise duerfen als Repo-Notizen oder dokumentierte Kommandoausgaben vorliegen (005-driver-consolidation-m07)
+- C# `latest` on .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, bestehende MSTest-Suiten, Coverlet-Nachweise, `dotnet format`, docfx, `Pflichtenheft.md` und `docs/porting-status.md` fuer den formalen Phase-8-Gate-Nachweis (006-close-phase8-gate)
+- Reine Repository-Nachweisartefakte; keine Datenbank und keine Beispielanwendungs-Auslieferung in diesem Inkrement (006-close-phase8-gate)
 
 ## Recent Changes
 - 004-editor-file-help-streams: Spezifikation und Requirements-Checklist fuer Phase 6 (Editor/Datei/Hilfe/Streams) angelegt.
@@ -136,3 +172,4 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 - 005-driver-consolidation-m07: Spezifikation und Klarstellungen fuer Phase 7 angelegt, inklusive `M-07`-Nachweis ueber `docs/porting-status.md`, Pflicht-Primaarziel pro historischer Datei und reviewbarer Linux/Windows/WSL-Kompatibilitaetsnachweise.
 - 005-driver-consolidation-m07: Planartefakte (`plan.md`, `research.md`, `data-model.md`, `quickstart.md`, `contracts/phase-7-proof-contract.md`) erstellt und den Phase-7-Ansatz als capability-basierte Treiberkonsolidierung mit formalem `.cc`-Ledger-Scope beschrieben.
 - 005-driver-consolidation-m07: Phase-7-Implementierung abgeschlossen: `DriverCapabilityMap.cs` mit 5 Faehigkeitsgruppen erstellt, `docs/porting-status.md` mit allen 151 historischen `.cc`-Dateien aufgebaut, 5 neue Treiber-Testdateien (30 Tests bestanden), `docs/guides/multi-mac-workflow.md` um Kompatibilitaetsnachweis erweitert, `checklists/phase-8-gate-review.md` angelegt, `Pflichtenheft.md`-Marker auf Phase-8-Gate-Abschluss verschoben.
+- 006-close-phase8-gate: Spezifikation und Requirements-Checklist fuer den finalen `M-07`-Abschluss und die nachweisbare Phase-8-Gateschliessung angelegt; gemeinsamer Agent-Kontext auf den neuen Prioritaetsschritt synchronisiert.

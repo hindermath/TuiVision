@@ -89,11 +89,21 @@ Feature branches use either the agent-prefixed form `codex/<feature-description>
 - Linux and Windows/WSL compatibility checks are required as reviewable evidence for this phase, but may still be manual or semi-automated rather than mandatory CI gates
 - Planning decisions now fixed for this feature: `.cc` files are the formal `M-07` ledger scope, ancillary `.c`/`.h` files may appear only as rationale support, capability buckets replace per-OS lineage as the review model, and Phase 7 remains distinct from the later full Phase-8 gate closure
 
+### 006-close-phase8-gate
+- Current planning baseline: execute the Phase-8 entrance-gate closure from `specs/006-close-phase8-gate/spec.md`
+- Scope is limited to final `M-07` proof closure plus the remaining gate evidence across `docs/porting-status.md`, `Pflichtenheft.md`, the existing Core/Controls/Serialization test projects, coverage evidence, formatting evidence, and API-documentation validation
+- Out of scope for this increment: any of the 25 mandatory example waves, substitute follow-on example scope from `TVDEMOS/` or `TVFM/`, unrelated new framework features, and Phase-7 redesign beyond finalizing still-pending proof rows
+- Every historical `.cc` ledger row must end in `portiert + getestet` or `bewusst ausgelassen + Begruendung`; no provisional `portiert + Test ausstehend` state may remain after closure is claimed
+- Gate closure must package explicit build, full-test, coverage, formatting, and conditional API-doc evidence and keep example waves blocked until the closure is formally recorded
+- Planning decisions now fixed for this feature: `docs/porting-status.md` stays the authoritative M-07 ledger, `TuiVision.Controls` must satisfy the explicit 70 % line-coverage gate, Core and Serialization coverage must be evidenced alongside it, and the closure needs a dedicated gate-marker or commit reference
+
 ## Active Technologies
 - C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, MSTest, Coverlet, docfx (004-editor-file-help-streams)
 - Real local file-system interaction plus persisted binary help/resource files; no database layer in this increment (004-editor-file-help-streams)
 - C# `latest` on .NET 10 (`net10.0`) + Existing modules `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, `TuiVision.Compatibility`; MSTest; Coverlet via `dotnet test --collect:"XPlat Code Coverage"`; docfx for API documentation validation; GitHub Actions for existing CI (005-driver-consolidation-m07)
 - Source-controlled Markdown evidence in `docs/porting-status.md`; no database storage; compatibility evidence may include repository notes and command output references (005-driver-consolidation-m07)
+- C# `latest` on .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, existing MSTest suites, Coverlet coverage evidence, `dotnet format`, docfx, `Pflichtenheft.md`, and `docs/porting-status.md` for the formal Phase-8 entrance-gate proof (006-close-phase8-gate)
+- Repository-visible proof artifacts only; no database layer and no example-application delivery in this increment (006-close-phase8-gate)
 
 ## Recent Changes
 - 004-editor-file-help-streams: Added the phase-6 specification and requirements checklist for editor, file, help, stream, and resource components.
@@ -104,6 +114,7 @@ Feature branches use either the agent-prefixed form `codex/<feature-description>
 - 005-driver-consolidation-m07: Added the phase-7 specification and clarification set for managed driver consolidation, `M-07` proof coverage, primary versus secondary ledger targets, and required Linux/Windows/WSL compatibility evidence.
 - 005-driver-consolidation-m07: Added `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, and `contracts/phase-7-proof-contract.md` to define the capability-based driver consolidation approach, the formal `.cc` ledger scope, and the review contract for `docs/porting-status.md`.
 - 005-driver-consolidation-m07: Implemented Phase-7 consolidation: created `DriverCapabilityMap.cs` with 5 capability buckets, built `docs/porting-status.md` covering all 151 historical `.cc` files, added 5 new driver test files (30 tests passing), updated `docs/guides/multi-mac-workflow.md` with compatibility evidence, created `checklists/phase-8-gate-review.md`, updated `Pflichtenheft.md` marker to Phase-8 gate closure.
+- 006-close-phase8-gate: Added the Phase-8 entrance-gate specification and requirements checklist for final `M-07` closure, removal of provisional ledger states, and explicit build/test/coverage/format/API-doc proof before example waves may start.
 
 ## Agent File Synchronization Policy
 

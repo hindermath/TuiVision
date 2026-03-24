@@ -39,21 +39,21 @@ fortgeschrieben.
 
 | Kennzahl | Wert |
 |---|---:|
-| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-23 |
-| Git-Commits gesamt | 130 |
+| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-24 |
+| Git-Commits gesamt | 175 |
 | Autoren laut Git | 1 |
-| Git-Aktivtage | 10 |
-| Produktionscode aktuell | 92 Dateien / 9384 Zeilen |
-| Testcode aktuell | 90 Dateien / 6480 Zeilen |
-| Dokumentation aktuell | 121 Dateien / 19188 Zeilen |
-| Davon Spec-Kit-Artefakte | 57 Dateien / 9180 Zeilen |
-| Davon Governance/Agent-Dateien | 5 Dateien / 705 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 35052 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 438.2 Arbeitstage |
-| Erfahrener Entwickler, brutto | 20.4 Arbeitsmonate (21.5 Tage/Monat) |
-| Erfahrener Entwickler, TVoeD-Annahme | 23.1 Kalendermonate bzw. 1.9 Jahre |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 175.3 Arbeitstage |
-| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 9.2 Kalendermonate |
+| Git-Aktivtage | 12 |
+| Produktionscode aktuell | 62 Dateien / 9044 Zeilen |
+| Testcode aktuell | 60 Dateien / 6130 Zeilen |
+| Dokumentation aktuell | 86 Dateien / 13077 Zeilen |
+| Davon Spec-Kit-Artefakte | 49 Dateien / 7942 Zeilen |
+| Davon Governance/Agent-Dateien | 5 Dateien / 1028 Zeilen |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 28251 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 353.1 Arbeitstage |
+| Erfahrener Entwickler, brutto | 16.4 Arbeitsmonate (21.5 Tage/Monat) |
+| Erfahrener Entwickler, TVoeD-Annahme | 18.6 Kalendermonate bzw. 1.5 Jahre |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 141.3 Arbeitstage |
+| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 7.4 Kalendermonate |
 
 ## Phasen und Haupt-Branches
 
@@ -216,6 +216,28 @@ fortgeschrieben.
   - 48.3 Arbeitstage fuer ein 3er-Team (+20 % Koordination), entsprechend ca.
     3.1 TVoeD-Kalendermonaten
 
+### 6. `006-close-phase8-gate`
+
+- Status: Spezifikation im Working Tree angelegt; bereit fuer `/speckit-plan`
+- Beobachtbarer Zeitraum: 2026-03-24 bis 2026-03-24
+- Commit-Bild: 0 Commits an 0 Git-Aktivtagen; aktueller Stand liegt im Working Tree
+- Grundlegende Arbeiten:
+  - Phase-8-Eingangstor-Spezifikation `specs/006-close-phase8-gate/spec.md`
+  - Requirements-Checklist `specs/006-close-phase8-gate/checklists/requirements.md`
+  - Synchronisierte Agent-Dateien `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`,
+    `.github/copilot-instructions.md` fuer den neuen aktiven Feature-Kontext
+- Snapshot-Zuwachs gegen den letzten Statistikstand vor dieser Selbstfortschreibung:
+  - Produktionscode: +0 / -0 / netto +0
+  - Testcode: +0 / -0 / netto +0
+  - Dokumentation: +299 / -0 / netto +299
+- Konservative Handarbeits-Basis fuer diesen Spezifikationsschritt inklusive
+  Dokumentation:
+  - 299 Zeilen netto gesamt
+  - 3.7 Arbeitstage fuer einen erfahrenen Entwickler
+  - 0.2 Arbeitsmonate brutto bzw. 0.2 TVoeD-Kalendermonate
+  - 1.5 Arbeitstage fuer ein 3er-Team (+20 % Koordination), entsprechend ca.
+    0.1 TVoeD-Kalendermonaten
+
 ## Zusatz-Branches
 
 | Branch | Letzte sichtbare Aktivitaet | Rolle |
@@ -293,3 +315,4 @@ fortgeschrieben.
 | 2026-03-23 | Analyse-Remediation fuer `005-driver-consolidation-m07` | Die Top-4-Funde aus `/speckit-analyze` wurden direkt eingearbeitet: Branch-Governance auf den real genutzten Spec-Kit-Workflow erweitert, die Phase-7-Planung von der unklaren `Class1.cs`-Catch-all-Formulierung weg auf purpose-named Support-Dateien geschaerft, die Pflicht-Kompatibilitaetsnachweise um explizite Evidence fuer `MacBook Air M2` und `Mac mini M4 Pro` erweitert und die TDD-Commit-Sequenz als sichtbar zu erhaltende Red-Green-Refactor-Regel in den Aufgaben verankert. |
 | 2026-03-23 | `/speckit-implement` fuer `005-driver-consolidation-m07` | Phase 7 im Working Tree vollstaendig implementiert: `DriverCapabilityMap.cs` mit 5 Capability-Buckets, 6 neue Testklassen (30 Tests gesamt), `docs/porting-status.md` mit allen 151 historischen `.cc`-Dateien, Phase-8-Gate-Checkliste, Multi-Mac-Kompatibilitaetsnachweis, `Pflichtenheft.md`-Naechster-Schritt auf Phase-8-Eingangstor vorgeschoben; `dotnet build`, alle 192 Tests und `dotnet format --verify-no-changes` fehlerfrei. |
 | 2026-03-24 | Multi-Mac-Workflow um Spec-Kit-Checks und Toolpflege erweitert | `docs/guides/multi-mac-workflow.md` wurde auf den agentenuebergreifenden Branch-Workflow, den Root-`docfx.json`-Pfad, `specify` als Pflichtwerkzeug, `specify check` fuer die Toolpruefung und die `uv`-Befehle fuer Installation bzw. Release-Upgrades der GitHub-Spec-Kit-CLI erweitert. Die gemeinsamen Agent-Dateien `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` und `.github/copilot-instructions.md` wurden dazu auf denselben Multi-Mac-/Spec-Kit-Stand synchronisiert. |
+| 2026-03-24 | `/speckit-specify` fuer `006-close-phase8-gate` | Neue Spezifikation und Requirements-Checklist fuer den finalen `M-07`-Abschluss und das nachweisbare Phase-8-Eingangstor angelegt; gemeinsame Agent-Dateien auf den neuen aktiven Feature-Kontext synchronisiert und die Statistik fuer diesen Branch fortgeschrieben. |

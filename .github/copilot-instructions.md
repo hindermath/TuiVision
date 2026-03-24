@@ -81,6 +81,13 @@ All projects target `net10.0` with `Nullable: enable`, `ImplicitUsings: enable`,
 - Keep this increment scoped to driver consolidation and proof preparation only; mandatory example waves and complete Phase-8 gate closure remain out of scope
 - Phase-7 implementation is complete: `DriverCapabilityMap.cs` with 5 capability buckets, `docs/porting-status.md` covering all 151 `.cc` files, 30 driver tests passing, compatibility evidence in `docs/guides/multi-mac-workflow.md`, gate checklist in `checklists/phase-8-gate-review.md`; next priority is Phase-8 gate closure (Controls coverage ≥ 70 %, full dotnet test suite)
 
+### 006-close-phase8-gate
+- Align active work with `specs/006-close-phase8-gate/spec.md`
+- Scope is limited to final `M-07` proof closure plus the remaining Phase-8 entrance evidence across `docs/porting-status.md`, `Pflichtenheft.md`, the existing Core/Controls/Serialization test suites, coverage evidence, formatting evidence, and API-documentation validation
+- Every historical `.cc` ledger row must finish in `portiert + getestet` or `bewusst ausgelassen + Begruendung`; no `portiert + Test ausstehend` row may remain after closure is claimed
+- Gate closure must include explicit build, full-test, coverage, formatting, and conditional API-doc proof, and must keep the 25 mandatory example waves blocked until the closure is formally recorded
+- Keep this increment scoped to gate closure only; mandatory example waves, substitute follow-on example scope from `TVDEMOS/` or `TVFM/`, and unrelated new framework features remain out of scope
+
 ## Agent File Synchronization Policy
 
 - When active feature context, plan-derived implementation guidance, or other shared AI-agent instructions change, review and update these files together when affected:
