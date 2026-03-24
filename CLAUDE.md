@@ -49,7 +49,7 @@ All projects share: `net10.0`, `LangVersion: latest`, `Nullable: enable`, `Impli
 
 Tests use MSTest. Test projects mirror source projects (e.g., `TuiVision.Core.Tests` → `TuiVision.Core`). `TuiVision.Examples.SmokeTests` is for integration-level tests of ported example programs.
 
-**Coverage Gate (SC-003)**: `TuiVision.Controls` must achieve ≥ 70 % Line Coverage (Pflichtenheft §9.4 Nr. 1). Measured with Coverlet (`coverlet.collector`): `dotnet test tests/TuiVision.Controls.Tests/ --collect:"XPlat Code Coverage"`. Do not merge to `main` without passing this gate.
+**Coverage Gate (SC-003)**: `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization` must each achieve ≥ 70 % Line Coverage (Pflichtenheft §9.4 Nr. 1). Measured with Coverlet (`coverlet.collector`): `dotnet test --collect:"XPlat Code Coverage"`. Do not merge to `main` without passing this gate.
 
 ### Documentation
 
@@ -95,7 +95,7 @@ Feature branches use either the agent-prefixed form `codex/<feature-description>
 - Out of scope for this increment: any of the 25 mandatory example waves, substitute follow-on example scope from `TVDEMOS/` or `TVFM/`, unrelated new framework features, and Phase-7 redesign beyond finalizing still-pending proof rows
 - Every historical `.cc` ledger row must end in `portiert + getestet` or `bewusst ausgelassen + Begruendung`; no provisional `portiert + Test ausstehend` state may remain after closure is claimed
 - Gate closure must package explicit build, full-test, coverage, formatting, and conditional API-doc evidence and keep example waves blocked until the closure is formally recorded
-- Planning decisions now fixed for this feature: `docs/porting-status.md` stays the authoritative M-07 ledger, `TuiVision.Controls` must satisfy the explicit 70 % line-coverage gate, Core and Serialization coverage must be evidenced alongside it, and the closure needs a dedicated gate-marker or commit reference
+- Planning decisions now fixed for this feature: `docs/porting-status.md` stays the authoritative M-07 ledger, `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization` must each satisfy the explicit 70 % line-coverage gate, and the closure needs a dedicated gate-marker or commit reference
 
 ## Active Technologies
 - C# latest (C# 14) / .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, MSTest, Coverlet, docfx (004-editor-file-help-streams)
@@ -115,6 +115,7 @@ Feature branches use either the agent-prefixed form `codex/<feature-description>
 - 005-driver-consolidation-m07: Added `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, and `contracts/phase-7-proof-contract.md` to define the capability-based driver consolidation approach, the formal `.cc` ledger scope, and the review contract for `docs/porting-status.md`.
 - 005-driver-consolidation-m07: Implemented Phase-7 consolidation: created `DriverCapabilityMap.cs` with 5 capability buckets, built `docs/porting-status.md` covering all 151 historical `.cc` files, added 5 new driver test files (30 tests passing), updated `docs/guides/multi-mac-workflow.md` with compatibility evidence, created `checklists/phase-8-gate-review.md`, updated `Pflichtenheft.md` marker to Phase-8 gate closure.
 - 006-close-phase8-gate: Added the Phase-8 entrance-gate specification and requirements checklist for final `M-07` closure, removal of provisional ledger states, and explicit build/test/coverage/format/API-doc proof before example waves may start.
+- 006-close-phase8-gate: Synchronized the hard coverage rule to require `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization` each to reach at least 70 % line coverage across the shared agent guidance and gate-tracking artifacts.
 
 ## Agent File Synchronization Policy
 

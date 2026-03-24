@@ -188,7 +188,7 @@ Statuscheckliste Eingangstor:
 - [-] Kriterium 4 - Test-Gate
   Reihenfolgehinweis: lokal stark abgesichert; CI-Nachweis und Skip-/Ignored-Pruefung vor Eingangstor nochmals explizit durchziehen.
 - [-] Kriterium 5 - Coverage-Gate
-  Reihenfolgehinweis: `TuiVision.Controls` und `TuiVision.Serialization` sind nachgewiesen ueber 70 %; `TuiVision.Core` muss fuer das Eingangstor explizit mitgezogen werden.
+  Reihenfolgehinweis: `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` muessen fuer das Eingangstor jeweils explizit ueber 70 % Line Coverage nachgewiesen werden.
 - [-] Kriterium 6 - API-Doku-Gate
   Reihenfolgehinweis: `docfx` laeuft, der Vollstaendigkeitsnachweis fuer die gesamte oeffentliche API steht aber noch aus.
 - [ ] Nachweisdokument
@@ -594,8 +594,8 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
 
 2. **M-07 vollstaendig schliessen und das Eingangstor fuer Phase 8 (Beginn der Beispielportierungen) nachweisbar schliessen**
    - `docs/porting-status.md` ist aufgebaut; alle 151 `.cc`-Dateien abgebildet. Offene Aufgabe: Status `portiert + Test ausstehend` durch tatsaechliche Testabdeckung in Phase-8-Scope schliessen.
-   - Build-, Test-, Coverage- und API-Doku-Gate fuer `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` vollstaendig nachziehen (insbesondere `TuiVision.Controls` >= 70 % Line Coverage, SC-003).
-   - Offene Gate-Punkte: vollstaendige `dotnet test` aller Module ohne Fehler; `TuiVision.Controls`-Coverage-Gate; `dotnet format --verify-no-changes` dauerhaft; `docfx docfx.json` bei API-Aenderungen.
+   - Build-, Test-, Coverage- und API-Doku-Gate fuer `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` vollstaendig nachziehen; fuer alle drei Module gilt jeweils `>= 70 %` Line Coverage als harte Eingangstor-Bedingung.
+   - Offene Gate-Punkte: vollstaendige `dotnet test` aller Module ohne Fehler; Coverage-Gate fuer `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization`; `dotnet format --verify-no-changes` dauerhaft; `docfx docfx.json` bei API-Aenderungen.
 
 3. **MUSS-Beispielwellen 1 bis 4 portieren**
    - Erst nach bestandenem Eingangstor beginnen.

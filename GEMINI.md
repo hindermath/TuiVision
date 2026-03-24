@@ -46,7 +46,7 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
     *   Didaktischer Stil: Erklärt das *Warum* und bietet Beispiele für Lernende.
     *   Aktualisierung der Dokumentation erfolgt zeitgleich mit Codeänderungen.
 4.  **Testing:**
-    *   Mindestens 70% Testabdeckung für Kernmodule.
+    *   Mindestens 70% Line Coverage jeweils fuer `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization`.
     *   Jedes Feature benötigt Unit-Tests (MSTest) und ggf. Smoke-Tests in den Beispielen.
 5.  **Keine Nativen Abhängigkeiten:** Alle Treiber müssen rein in verwaltetem Code implementiert sein (kein P/Invoke, wo vermeidbar).
 6.  **Lizenztreue:** Einhaltung der MIT-Lizenz für neuen Code; Respektierung der Original-Lizenzen im `tv203s` Ordner.
@@ -116,8 +116,7 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
     *   Fortschreibung der Pflichtenheft- und Review-Artefakte fuer die Phase-8-Entscheidung
 *   Festgezogene Planungsentscheidungen:
     *   keine `portiert + Test ausstehend`-Zeilen mehr nach behauptetem Gate-Abschluss
-    *   `TuiVision.Controls` muss die explizite 70-%-Line-Coverage-Huerde erreichen
-    *   Core- und Serialization-Coverage muessen im selben Nachweispaket sichtbar sein
+    *   `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` muessen jeweils die explizite 70-%-Line-Coverage-Huerde erreichen
     *   die 25 MUSS-Beispiele bleiben bis zum formalen Gate-Abschluss blockiert
 *   Explizit nicht Teil dieses Schritts:
     *   Beginn der Beispielportierungen
@@ -173,3 +172,4 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 - 005-driver-consolidation-m07: Planartefakte (`plan.md`, `research.md`, `data-model.md`, `quickstart.md`, `contracts/phase-7-proof-contract.md`) erstellt und den Phase-7-Ansatz als capability-basierte Treiberkonsolidierung mit formalem `.cc`-Ledger-Scope beschrieben.
 - 005-driver-consolidation-m07: Phase-7-Implementierung abgeschlossen: `DriverCapabilityMap.cs` mit 5 Faehigkeitsgruppen erstellt, `docs/porting-status.md` mit allen 151 historischen `.cc`-Dateien aufgebaut, 5 neue Treiber-Testdateien (30 Tests bestanden), `docs/guides/multi-mac-workflow.md` um Kompatibilitaetsnachweis erweitert, `checklists/phase-8-gate-review.md` angelegt, `Pflichtenheft.md`-Marker auf Phase-8-Gate-Abschluss verschoben.
 - 006-close-phase8-gate: Spezifikation und Requirements-Checklist fuer den finalen `M-07`-Abschluss und die nachweisbare Phase-8-Gateschliessung angelegt; gemeinsamer Agent-Kontext auf den neuen Prioritaetsschritt synchronisiert.
+- 006-close-phase8-gate: Die harte Coverage-Regel auf `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` jeweils `>= 70 %` erweitert und in die gemeinsamen Gate-Artefakte synchronisiert.

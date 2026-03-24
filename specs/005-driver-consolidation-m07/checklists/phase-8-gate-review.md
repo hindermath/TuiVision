@@ -44,7 +44,7 @@ Diese Punkte sind **nicht** Teil von Phase 7. Sie müssen vor Beginn der Beispie
 
 *(These items are NOT part of Phase 7. They must be closed before beginning example porting (Phase 8).)*
 
-- [ ] `TuiVision.Controls` Testabdeckung ≥ 70 % Line Coverage (SC-003 Pflichtenheft §9.4 Nr. 1).
+- [ ] `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` Testabdeckung jeweils ≥ 70 % Line Coverage (SC-003 Pflichtenheft §9.4 Nr. 1).
 - [ ] Vollständige `dotnet test` für alle Module (nicht nur Treiber-Tests) ohne Fehler.
 - [ ] `dotnet format --verify-no-changes` ohne Abweichungen.
 - [ ] Alle Ledger-Zeilen mit Status `portiert + Test ausstehend` haben entsprechende MSTest-Coverage in einem der Testprojekte.
@@ -64,6 +64,6 @@ Diese Punkte sind **nicht** Teil von Phase 7. Sie müssen vor Beginn der Beispie
 | Fähigkeitsgruppen-Dokumentation | ✓ Vollständig | Beibehalten |
 | Kompatibilitätsnachweis (macOS) | ✓ PASS | Fortlaufend |
 | Kompatibilitätsnachweis (Linux/WSL) | ✓ Manuell dokumentiert | Als CI-Gate etablieren |
-| Controls-Testabdeckung ≥ 70 % | Ausstehend — Phase-8-Gate | Schließen vor Beispielbeginn |
+| Core-/Controls-/Serialization-Testabdeckung je ≥ 70 % | Ausstehend — Phase-8-Gate | Schließen vor Beispielbeginn |
 | Beispielportierungen (25 MUSS) | Nicht begonnen | Phase 8 nach Gate-Bestehen |
 | Vollständige `dotnet test` Coverage | Phase-7-Treibertests abgedeckt | Alle Module nach Phase 8 |

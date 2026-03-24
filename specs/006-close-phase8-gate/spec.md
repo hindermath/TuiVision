@@ -5,6 +5,16 @@
 **Status**: Ready for Planning  
 **Input**: User description: "Bitte >>> NAECHSTER SCHRITT <<< 2. **M-07 vollstaendig schliessen und das Eingangstor fuer Phase 8 nachweisbar schliessen** in Pflichtenheft.md ausfuehren."
 
+## Clarifications
+
+### Session 2026-03-24
+
+- Q: Soll das Phase-8-Gate fuer die Coverage nur `TuiVision.Controls` mit 70 % erzwingen oder alle drei Module `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization`? → A: Alle drei Module `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` muessen jeweils mindestens 70 % Line Coverage erreichen.
+- Q: Duerfen heute noch als `geplant` markierte nicht-treiberspezifische Framework-Zeilen im M-07-Ledger ohne neue Implementierung nur narrativ abgeschlossen werden? → A: Nein. Nicht-treiberspezifische `geplant`-Zeilen muessen in diesem Feature real implementiert und getestet werden; nur echte Architektur-Ersetzungen oder obsolete Spezialfaelle duerfen als `bewusst ausgelassen + Begruendung` enden.
+- Q: Reicht fuer den Phase-8-Gate-Abschluss ein alternatives Review-Marker-Artefakt oder ist ein eigener Git-Commit Pflicht? → A: Der Phase-8-Gate-Abschluss braucht zwingend einen eigenen dedizierten Git-Commit.
+- Q: Bedeutet `full-suite validation evidence` im Gate einen erfolgreichen Lauf ueber alle Testprojekte im Repository oder nur ueber die Gate-nahen Module? → A: `Full-suite validation` bedeutet `dotnet test` fuer alle Testprojekte im Repository.
+- Q: Sind Linux- und Windows/WSL-Kompatibilitaetsnachweise fuer dieses Gate immer Pflichtblocker oder nur bei materiell plattformrelevanten Aenderungen? → A: Linux- und Windows/WSL-Nachweise sind Pflicht, wenn die Aenderungen Laufzeit-, Terminal-, Portabilitaets- oder Build-Verhalten materiell betreffen; sonst reicht eine begruendete Nicht-Anwendbarkeit.
+
 ## User Scenarios & Testing *(mandatory)*
 
 This feature does not start any of the 25 mandatory original examples from
@@ -118,33 +128,44 @@ pass whether example wave 1 is allowed to start.
 - **FR-005**: Every row concluded as `bewusst ausgelassen + Begruendung` MUST
   explain why the historical responsibility is consciously omitted, replaced, or
   merged in the managed architecture.
-- **FR-006**: The feature MUST provide repository-visible full-suite validation
-  evidence for the gate scope across `TuiVision.Core`, `TuiVision.Controls`,
-  `TuiVision.Serialization`, and the already consolidated driver baseline.
-- **FR-007**: The feature MUST record whether any test is skipped or ignored
+- **FR-006**: Every non-driver framework entry that is still mapped to a
+  `geplant` target area at the start of this feature MUST be implemented and
+  covered by automated tests before M-07 closure is claimed, unless the entry
+  is reclassified as a true architecture replacement or obsolete special case
+  with explicit rationale.
+- **FR-007**: The feature MUST provide repository-visible full-suite validation
+  evidence by running `dotnet test` successfully for all test projects in the
+  repository, including the gate scope across `TuiVision.Core`,
+  `TuiVision.Controls`, `TuiVision.Serialization`, and the already
+  consolidated driver baseline.
+- **FR-008**: The feature MUST record whether any test is skipped or ignored
   within the gate scope. A skipped or ignored test without a corresponding
   tracked issue MUST prevent the gate from being reported as closed.
-- **FR-008**: The feature MUST provide current coverage evidence for
+- **FR-009**: The feature MUST provide current coverage evidence for
   `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization`.
-  Wherever the Pflichtenheft defines a numeric gate threshold, that threshold
-  MUST be satisfied before Phase 8 may start.
-- **FR-009**: The feature MUST provide current formatting and build compliance
+  Each of the three modules MUST reach at least 70% line coverage before
+  Phase 8 may start.
+- **FR-010**: The feature MUST provide current formatting and build compliance
   evidence for the gate scope as part of the same entrance-gate proof package.
-- **FR-010**: If public API signatures or XML comments change within this gate
+- **FR-011**: If public API signatures or XML comments change within this gate
   closure scope, the feature MUST refresh the API-documentation validation and
   include its outcome in the evidence package. If no such changes occur, the
   evidence package MUST state that no refresh was required.
-- **FR-011**: The feature MUST update the Pflichtenheft-facing gate status so a
+- **FR-012**: The feature MUST update the Pflichtenheft-facing gate status so a
   reviewer can determine the current state of all six entrance-gate criteria
   without reconstructing context from commit history or oral handover.
-- **FR-012**: Once all gate criteria are satisfied, the feature MUST identify a
-  dedicated gate-closure commit or equivalent review marker that documents the
-  closure and references the relevant proof artifacts.
-- **FR-013**: The feature MUST preserve the project rule that the 25 mandatory
+- **FR-013**: Once all gate criteria are satisfied, the feature MUST create and
+  identify a dedicated gate-closure git commit that documents the closure and
+  references the relevant proof artifacts.
+- **FR-014**: The feature MUST preserve the project rule that the 25 mandatory
   original examples stay blocked until the gate is formally closed and recorded.
-- **FR-014**: The feature MUST keep the primary execution workflow on the two
+- **FR-015**: The feature MUST keep the primary execution workflow on the two
   documented macOS machines while preserving reviewable Linux and Windows/WSL
-  compatibility evidence for behavior that materially affects the gate decision.
+  compatibility evidence whenever the implemented changes materially affect
+  runtime behavior, terminal behavior, portability, or build reliability. If
+  the closure work is limited to documentation or other non-runtime proof
+  maintenance, the evidence package MUST state why additional Linux and
+  Windows/WSL execution was not applicable.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -157,8 +178,8 @@ pass whether example wave 1 is allowed to start.
 - **Validation Evidence Package**: The repository-visible collection of proof
   artifacts that shows current build, test, coverage, formatting, API-doc, and
   compatibility status for the gate scope.
-- **Gate-Closure Marker**: The dedicated commit reference or equivalent review
-  marker that states the gate is closed and points to the supporting evidence.
+- **Gate-Closure Commit**: The dedicated git commit that states the gate is
+  closed and points to the supporting evidence.
 - **Mandatory Example Wave**: One of the required example-porting waves that
   remains blocked until this feature's proof obligations are satisfied.
 
@@ -191,8 +212,12 @@ pass whether example wave 1 is allowed to start.
   all six criteria and leaves 0 undocumented blockers.
 - **SC-004**: The repository contains current coverage evidence for
   `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization`, and
-  `TuiVision.Controls` meets or exceeds the Pflichtenheft threshold of 70% line
-  coverage before Phase 8 is declared open.
+  each of the three modules meets or exceeds 70% line coverage before Phase 8
+  is declared open.
 - **SC-005**: A project lead can determine in one review pass whether mandatory
   example wave 1 may begin, using only repository artifacts updated by this
   feature.
+- **SC-006**: For every closure change that materially affects runtime behavior,
+  terminal behavior, portability, or build reliability, the evidence package
+  either includes Linux and Windows/WSL validation results or records a
+  reviewable not-applicable rationale when no such execution was required.

@@ -20,6 +20,8 @@ dotnet test --filter "FullyQualifiedName~MethodName"
 dotnet format --verify-no-changes
 ```
 
+Coverage Gate (SC-003): `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization` must each achieve at least 70% line coverage. Measure with Coverlet via `dotnet test --collect:"XPlat Code Coverage"`.
+
 CI runs on Ubuntu and macOS against .NET 10. Linux and Windows/WSL compatibility checks should be added or expanded where changes affect runtime behavior, terminal handling, or portability. The `tv203s/` directory is **excluded from all builds and tests**. CI triggers on pushes to `main`, `master`, and branches matching `codex/**`, `claude/**`, `gemini/**`, `copilot/**`, `opencode/**`.
 
 ## Architecture
@@ -79,13 +81,14 @@ All projects target `net10.0` with `Nullable: enable`, `ImplicitUsings: enable`,
 - Linux and Windows/WSL compatibility checks are required as reviewable evidence for this phase, but may still be manual or semi-automated rather than mandatory CI gates
 - Planning decisions now fixed for this feature: `.cc` files are the formal `M-07` ledger scope, ancillary `.c`/`.h` files may appear only as rationale support, capability buckets replace per-OS lineage as the review model, and Phase 7 remains distinct from the later full Phase-8 gate closure
 - Keep this increment scoped to driver consolidation and proof preparation only; mandatory example waves and complete Phase-8 gate closure remain out of scope
-- Phase-7 implementation is complete: `DriverCapabilityMap.cs` with 5 capability buckets, `docs/porting-status.md` covering all 151 `.cc` files, 30 driver tests passing, compatibility evidence in `docs/guides/multi-mac-workflow.md`, gate checklist in `checklists/phase-8-gate-review.md`; next priority is Phase-8 gate closure (Controls coverage ≥ 70 %, full dotnet test suite)
+- Phase-7 implementation is complete: `DriverCapabilityMap.cs` with 5 capability buckets, `docs/porting-status.md` covering all 151 `.cc` files, 30 driver tests passing, compatibility evidence in `docs/guides/multi-mac-workflow.md`, gate checklist in `checklists/phase-8-gate-review.md`; next priority is Phase-8 gate closure (Core/Controls/Serialization coverage each ≥ 70 %, full dotnet test suite)
 
 ### 006-close-phase8-gate
 - Align active work with `specs/006-close-phase8-gate/spec.md`
 - Scope is limited to final `M-07` proof closure plus the remaining Phase-8 entrance evidence across `docs/porting-status.md`, `Pflichtenheft.md`, the existing Core/Controls/Serialization test suites, coverage evidence, formatting evidence, and API-documentation validation
 - Every historical `.cc` ledger row must finish in `portiert + getestet` or `bewusst ausgelassen + Begruendung`; no `portiert + Test ausstehend` row may remain after closure is claimed
 - Gate closure must include explicit build, full-test, coverage, formatting, and conditional API-doc proof, and must keep the 25 mandatory example waves blocked until the closure is formally recorded
+- `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization` must each satisfy the hard 70 % line-coverage gate before Phase 8 is declared open
 - Keep this increment scoped to gate closure only; mandatory example waves, substitute follow-on example scope from `TVDEMOS/` or `TVFM/`, and unrelated new framework features remain out of scope
 
 ## Agent File Synchronization Policy
