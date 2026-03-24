@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-03-23
+Stand: 2026-03-24
 
 ## Zweck und Pflege
 
@@ -292,3 +292,4 @@ fortgeschrieben.
 | 2026-03-23 | `/speckit-tasks` fuer `005-driver-consolidation-m07` | Umsetzbare `tasks.md` mit 29 Aufgaben aus `spec.md`, `plan.md`, `research.md`, `data-model.md`, `contracts/phase-7-proof-contract.md` und `quickstart.md` erstellt; die Aufgaben trennen Phase-7-Treiberkonsolidierung, den formalen `M-07`-Nachweis in `docs/porting-status.md` und die Vorbereitung des spaeteren Phase-8-Eingangstors. |
 | 2026-03-23 | Analyse-Remediation fuer `005-driver-consolidation-m07` | Die Top-4-Funde aus `/speckit-analyze` wurden direkt eingearbeitet: Branch-Governance auf den real genutzten Spec-Kit-Workflow erweitert, die Phase-7-Planung von der unklaren `Class1.cs`-Catch-all-Formulierung weg auf purpose-named Support-Dateien geschaerft, die Pflicht-Kompatibilitaetsnachweise um explizite Evidence fuer `MacBook Air M2` und `Mac mini M4 Pro` erweitert und die TDD-Commit-Sequenz als sichtbar zu erhaltende Red-Green-Refactor-Regel in den Aufgaben verankert. |
 | 2026-03-23 | `/speckit-implement` fuer `005-driver-consolidation-m07` | Phase 7 im Working Tree vollstaendig implementiert: `DriverCapabilityMap.cs` mit 5 Capability-Buckets, 6 neue Testklassen (30 Tests gesamt), `docs/porting-status.md` mit allen 151 historischen `.cc`-Dateien, Phase-8-Gate-Checkliste, Multi-Mac-Kompatibilitaetsnachweis, `Pflichtenheft.md`-Naechster-Schritt auf Phase-8-Eingangstor vorgeschoben; `dotnet build`, alle 192 Tests und `dotnet format --verify-no-changes` fehlerfrei. |
+| 2026-03-24 | Multi-Mac-Workflow um Spec-Kit-Checks und Toolpflege erweitert | `docs/guides/multi-mac-workflow.md` wurde auf den agentenuebergreifenden Branch-Workflow, den Root-`docfx.json`-Pfad, `specify` als Pflichtwerkzeug, `specify check` fuer die Toolpruefung und die `uv`-Befehle fuer Installation bzw. Release-Upgrades der GitHub-Spec-Kit-CLI erweitert. Die gemeinsamen Agent-Dateien `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` und `.github/copilot-instructions.md` wurden dazu auf denselben Multi-Mac-/Spec-Kit-Stand synchronisiert. |
