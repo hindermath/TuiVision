@@ -25,11 +25,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: TEvent
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 142
+    startLine: 145
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -71,11 +71,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: What
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 164
+    startLine: 167
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -106,11 +106,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Mouse
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 171
+    startLine: 174
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -141,11 +141,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: KeyDown
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 178
+    startLine: 181
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -176,11 +176,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Message
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 185
+    startLine: 188
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -211,11 +211,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: CreateMouse
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 207
+    startLine: 210
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -275,11 +275,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: CreateKeyDown
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 231
+    startLine: 234
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -317,11 +317,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: CreateCommand
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 249
+    startLine: 252
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -365,11 +365,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: CreateBroadcast
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 267
+    startLine: 270
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -413,11 +413,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: CreateNone
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 284
+    startLine: 287
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core
@@ -458,11 +458,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Clear
     path: src/TuiVision.Core/TEvent.cs
-    startLine: 299
+    startLine: 302
   assemblies:
   - TuiVision.Core
   namespace: TuiVision.Core

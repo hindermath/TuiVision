@@ -20,7 +20,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: THistory
     path: src/TuiVision.Controls/THistory.cs
@@ -60,7 +60,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/THistory.cs
@@ -99,7 +99,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: HistoryId
     path: src/TuiVision.Controls/THistory.cs
@@ -134,7 +134,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Add
     path: src/TuiVision.Controls/THistory.cs
@@ -173,7 +173,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Recall
     path: src/TuiVision.Controls/THistory.cs
@@ -208,7 +208,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: ClearAll
     path: src/TuiVision.Controls/THistory.cs

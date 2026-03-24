@@ -19,7 +19,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TIndicator.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: TIndicator
     path: src/TuiVision.Controls/TIndicator.cs
@@ -86,7 +86,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TIndicator.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TIndicator.cs
@@ -128,7 +128,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TIndicator.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Editor
     path: src/TuiVision.Controls/TIndicator.cs
@@ -163,7 +163,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TIndicator.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Caption
     path: src/TuiVision.Controls/TIndicator.cs
@@ -198,7 +198,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TIndicator.cs
-      branch: main
+      branch: 005-driver-consolidation-m07
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TIndicator.cs

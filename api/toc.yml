@@ -197,6 +197,12 @@ items:
   name: TuiVision.Drivers.Console
   type: Namespace
   items:
+  - uid: TuiVision.Drivers.Console.DriverCapabilityBucket
+    name: DriverCapabilityBucket
+    type: Enum
+  - uid: TuiVision.Drivers.Console.DriverCapabilityMap
+    name: DriverCapabilityMap
+    type: Class
   - uid: TuiVision.Drivers.Console.IConsolePresenter
     name: IConsolePresenter
     type: Interface

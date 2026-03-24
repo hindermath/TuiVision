@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-03-22
+Stand: 2026-03-24
 
 ## Zweck und Pflege
 
@@ -39,21 +39,21 @@ fortgeschrieben.
 
 | Kennzahl | Wert |
 |---|---:|
-| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-22 |
-| Git-Commits gesamt | 125 |
+| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-23 |
+| Git-Commits gesamt | 130 |
 | Autoren laut Git | 1 |
-| Git-Aktivtage | 9 |
-| Produktionscode aktuell | 61 Dateien / 8907 Zeilen |
-| Testcode aktuell | 54 Dateien / 5306 Zeilen |
-| Dokumentation aktuell | 70 Dateien / 10505 Zeilen |
-| Davon Spec-Kit-Artefakte | 44 Dateien / 7305 Zeilen |
-| Davon Governance/Agent-Dateien | 5 Dateien / 635 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 24718 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 309.0 Arbeitstage |
-| Erfahrener Entwickler, brutto | 14.4 Arbeitsmonate (21.5 Tage/Monat) |
-| Erfahrener Entwickler, TVoeD-Annahme | 16.3 Kalendermonate bzw. 1.4 Jahre |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 123.6 Arbeitstage |
-| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 6.6 Kalendermonate |
+| Git-Aktivtage | 10 |
+| Produktionscode aktuell | 92 Dateien / 9384 Zeilen |
+| Testcode aktuell | 90 Dateien / 6480 Zeilen |
+| Dokumentation aktuell | 121 Dateien / 19188 Zeilen |
+| Davon Spec-Kit-Artefakte | 57 Dateien / 9180 Zeilen |
+| Davon Governance/Agent-Dateien | 5 Dateien / 705 Zeilen |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 35052 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 438.2 Arbeitstage |
+| Erfahrener Entwickler, brutto | 20.4 Arbeitsmonate (21.5 Tage/Monat) |
+| Erfahrener Entwickler, TVoeD-Annahme | 23.1 Kalendermonate bzw. 1.9 Jahre |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 175.3 Arbeitstage |
+| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 9.2 Kalendermonate |
 
 ## Phasen und Haupt-Branches
 
@@ -180,6 +180,42 @@ fortgeschrieben.
   - 23.7 Arbeitstage fuer ein 3er-Team (+20 % Koordination), entsprechend ca.
     1.2 TVoeD-Kalendermonaten
 
+### 5. `005-driver-consolidation-m07`
+
+- Status: Phase-7-Implementierung im Working Tree abgeschlossen; alle 30 Treiber-
+  und Nachweis-Tests bestehen, Formatierung geprueft, `docs/porting-status.md`
+  vollstaendig
+- Beobachtbarer Zeitraum: 2026-03-23 bis 2026-03-23
+- Commit-Bild: 5 Commits an 1 Git-Aktivtag fuer Spezifikation, Planung und
+  Aufgabenschnitt; Implementierung liegt vollstaendig im Working Tree
+- Grundlegende Arbeiten:
+  - Phase 1 – Setup: `TConsoleDriverBaselineTests.cs` (4 Baseline-Tests),
+    `Phase7DriverTestContext.cs` (gemeinsame Testhelfer)
+  - Phase 2 – Foundational: `PortingStatusLedgerTests.cs` (6 Schema-Tests),
+    `TConsoleDriverConsolidationTests.cs` (8 Capability-Bucket-Tests)
+  - Phase 3 – US1: `TConsoleDriverCompatibilityTests.cs` (7 Managed-Only-Tests),
+    `DriverCapabilityMap.cs` mit 5 Capability-Buckets,
+    Multi-Mac-Kompatibilitaetsnachweis in `docs/guides/multi-mac-workflow.md`
+  - Phase 4 – US2: `PortingStatusCompletenessTests.cs` (4 Vollstaendigkeitstests),
+    `docs/porting-status.md` vollstaendig mit allen 151 historischen `.cc`-Dateien
+  - Phase 5 – US3: `checklists/phase-8-gate-review.md`, `quickstart.md`
+    Abschlussvalidierung, `Pflichtenheft.md`-Marker, Agent-Dateien synchronisiert
+  - Phase 6 – Polish: `dotnet build --configuration Release` fehlerfrei,
+    alle 192 Tests (davon 30 neue Treibertests) bestehen,
+    `dotnet format --verify-no-changes` fehlerfrei
+- Snapshot-Zuwachs gegen den letzten Statistikstand:
+  - Produktionscode: +1 Datei / +137 Zeilen netto (DriverCapabilityMap.cs)
+  - Testcode: +6 Dateien / +839 Zeilen netto (6 neue Klassen, Test1.cs bereinigt)
+  - Dokumentation: +51 Dateien / +8683 Zeilen netto (porting-status.md,
+    Checkliste, Spec-Kit-Artefakte, Pflichtenheft-Erweiterungen, Agent-Dateien)
+- Konservative Handarbeits-Basis fuer diesen Implementierungsschritt inklusive
+  Dokumentation:
+  - 9659 Zeilen netto gesamt
+  - 120.7 Arbeitstage fuer einen erfahrenen Entwickler
+  - 5.6 Arbeitsmonate brutto bzw. 6.4 TVoeD-Kalendermonate
+  - 48.3 Arbeitstage fuer ein 3er-Team (+20 % Koordination), entsprechend ca.
+    3.1 TVoeD-Kalendermonaten
+
 ## Zusatz-Branches
 
 | Branch | Letzte sichtbare Aktivitaet | Rolle |
@@ -200,6 +236,9 @@ fortgeschrieben.
 - Die vorliegenden Git-Daten zeigen damit eine deutliche Verdichtung durch
   agentische KI und GitHub Spec-Kit: hoher Dokumentations- und Codeumfang in
   einem kurzen beobachtbaren Aktivfenster.
+- Der Nachweis-Anteil (Spec-Kit-Artefakte, Governance, Beweis-Ledger) macht
+  einen signifikanten Teil des Dokumentationsbestands aus; die reine Code-Basis
+  mit 35052 Zeilen bestaetigt dennoch erheblichen realen Entwicklungsumfang.
 
 ## Fortschreibungsprotokoll
 
@@ -244,3 +283,13 @@ fortgeschrieben.
 | 2026-03-23 | Restarbeiten-Reihenfolge auf technische Abarbeitung korrigiert | Die priorisierte Restarbeiten-Liste in `Pflichtenheft.md` wurde auf die fachlich stimmige Reihenfolge umgestellt: zuerst Phase 7 Treiberkonsolidierung, danach `M-07` plus Eingangstor fuer Phase 8 und erst anschliessend die MUSS-Beispielwellen 1 bis 4. Der Marker `>>> NAECHSTER SCHRITT <<<` wurde entsprechend auf Phase 7 verschoben. |
 | 2026-03-23 | Beispielwellen als Unterphasen 3.1 bis 3.4 verdeutlicht | Der Restarbeiten-Punkt zu den MUSS-Beispielwellen wurde didaktisch nachgeschaerft: Welle 1 bis 4 sind jetzt ausdruecklich als vier eigenstaendige Unterphasen `3.1` bis `3.4` beschrieben, die nacheinander geplant, portiert, getestet und dokumentiert werden. Das soll fuer Auszubildende klarer machen, dass nicht alle 25 Beispiele in einem Schritt bearbeitet werden. |
 | 2026-03-23 | Multi-Mac als Hauptworkflow und Linux/Windows/WSL als Kompatibilitaetsumgebungen verankert | `Pflichtenheft.md`, die Constitution, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` und `.github/copilot-instructions.md` wurden so geschaerft, dass der Multi-Mac-Workflow auf `MacBook Air M2` und `Mac mini M4 Pro` der primaere Entwicklungs- und Testpfad ist, waehrend Linux und Windows als zusaetzliche Kompatibilitaets- und Validierungsumgebungen gelten; fuer Windows wurde WSL mit aktuellem Ubuntu, derzeit bevorzugt `Ubuntu 24.04`, hervorgehoben. Zusaetzlich wurde festgehalten, dass solche Kompatibilitaetschecks nach Moeglichkeit auch in GitHub Actions oder aequivalenten Nachweisen sichtbar sein sollen. |
+| 2026-03-23 | `/speckit-specify` fuer `005-driver-consolidation-m07` | Die Spezifikation fuer den naechsten Pflichtenheft-Schritt wurde angelegt: Phase 7 Treiberkonsolidierung, `M-07`-relevante Treiberreste und das fehlende Nachweisartefakt `docs/porting-status.md` sind jetzt als eigenstaendiges Spec-Kit-Feature mit User Stories, funktionalen Anforderungen, Annahmen, Erfolgskennzahlen und validierter Requirements-Checkliste beschrieben. |
+| 2026-03-23 | `/speckit-clarify` fuer `005-driver-consolidation-m07` | Zwei hochwirksame Klaerungen wurden direkt in die Spezifikation integriert: `docs/porting-status.md` verlangt bei gesplitteter Verantwortung je historischer Datei ein Pflicht-Primaarziel mit optionalen Sekundaerzielen, und Linux/Windows/WSL-Kompatibilitaetspruefungen muessen fuer Phase 7 nachweisbar erfolgen, duerfen aber noch manuell oder halbautomatisch statt als hartes CI-Gate belegt werden. |
+| 2026-03-23 | `/speckit-plan` fuer `005-driver-consolidation-m07` | Die Planungsartefakte fuer Phase 7 wurden angelegt: `plan.md`, `research.md`, `data-model.md`, `quickstart.md` und ein eigener Contract fuer Treiber- und Nachweisoberflaeche beschreiben jetzt die managed Treiberkonsolidierung, den formalen `.cc`-Scope von `M-07`, das Schema von `docs/porting-status.md`, die Rolle von Linux/Windows/WSL-Kompatibilitaetsnachweisen und die klare Trennung zwischen abgeschlossener Phase 7 und spaeterem Phase-8-Eingangstor. |
+| 2026-03-23 | Phase-7-Plan um zugehoerige Header- und Support-Dateien geschaerft | Die Planungsartefakte fuer `005-driver-consolidation-m07` wurden nachgeschaerft: Historische `.h`- und `.c`-Dateien bleiben zwar ausserhalb der formalen `M-07`-Zeilenmenge, muessen aber als relevanter Abhaengigkeits- und Begruendungskontext bei den betroffenen `.cc`-Eintraegen in `docs/porting-status.md` sichtbar beruecksichtigt werden. |
+| 2026-03-23 | `/speckit-checklist` fuer `005-driver-consolidation-m07` | Eine Plan-Review-Checkliste mit Review-Schwerpunkt wurde fuer `plan.md` und alle zugehoerigen Plan-Artefakte angelegt. Sie prueft insbesondere die Klarheit des Phase-7-Scope, die Konsistenz des `M-07`-Nachweisformats, die explizite Behandlung zugehoeriger `.h`-/`.c`-Dateien sowie die Readiness des gesamten Planpakets vor `/speckit-tasks`. |
+| 2026-03-23 | Plan-Review-Checkliste fuer `005-driver-consolidation-m07` durchgearbeitet und abgeschlossen | Die neue `checklists/planning.md` wurde direkt gegen `plan.md`, `research.md`, `data-model.md`, `quickstart.md` und den Contract geprueft. Dabei wurden noch fehlende Regeln fuer ueberlappende Capability-Buckets, gemeinsam genutzte Support-Dateien, Zero-State-Proof-Zeilen und die explizite Szenarioklassen-Zuordnung im Plan nachgeschaerft; anschliessend konnte die gesamte Checkliste mit 40 Punkten abgeschlossen werden. |
+| 2026-03-23 | `/speckit-tasks` fuer `005-driver-consolidation-m07` | Umsetzbare `tasks.md` mit 29 Aufgaben aus `spec.md`, `plan.md`, `research.md`, `data-model.md`, `contracts/phase-7-proof-contract.md` und `quickstart.md` erstellt; die Aufgaben trennen Phase-7-Treiberkonsolidierung, den formalen `M-07`-Nachweis in `docs/porting-status.md` und die Vorbereitung des spaeteren Phase-8-Eingangstors. |
+| 2026-03-23 | Analyse-Remediation fuer `005-driver-consolidation-m07` | Die Top-4-Funde aus `/speckit-analyze` wurden direkt eingearbeitet: Branch-Governance auf den real genutzten Spec-Kit-Workflow erweitert, die Phase-7-Planung von der unklaren `Class1.cs`-Catch-all-Formulierung weg auf purpose-named Support-Dateien geschaerft, die Pflicht-Kompatibilitaetsnachweise um explizite Evidence fuer `MacBook Air M2` und `Mac mini M4 Pro` erweitert und die TDD-Commit-Sequenz als sichtbar zu erhaltende Red-Green-Refactor-Regel in den Aufgaben verankert. |
+| 2026-03-23 | `/speckit-implement` fuer `005-driver-consolidation-m07` | Phase 7 im Working Tree vollstaendig implementiert: `DriverCapabilityMap.cs` mit 5 Capability-Buckets, 6 neue Testklassen (30 Tests gesamt), `docs/porting-status.md` mit allen 151 historischen `.cc`-Dateien, Phase-8-Gate-Checkliste, Multi-Mac-Kompatibilitaetsnachweis, `Pflichtenheft.md`-Naechster-Schritt auf Phase-8-Eingangstor vorgeschoben; `dotnet build`, alle 192 Tests und `dotnet format --verify-no-changes` fehlerfrei. |
+| 2026-03-24 | Multi-Mac-Workflow um Spec-Kit-Checks und Toolpflege erweitert | `docs/guides/multi-mac-workflow.md` wurde auf den agentenuebergreifenden Branch-Workflow, den Root-`docfx.json`-Pfad, `specify` als Pflichtwerkzeug, `specify check` fuer die Toolpruefung und die `uv`-Befehle fuer Installation bzw. Release-Upgrades der GitHub-Spec-Kit-CLI erweitert. Die gemeinsamen Agent-Dateien `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` und `.github/copilot-instructions.md` wurden dazu auf denselben Multi-Mac-/Spec-Kit-Stand synchronisiert. |

@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/main/docs/guides/multi-mac-workflow.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/docs/guides/multi-mac-workflow.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -206,6 +206,102 @@ git pull --ff-only origin codex/&lt;kurze-beschreibung&gt;
 <li>PR erstellt oder aktualisiert.</li>
 <li>Branch ist auf <code>origin</code> gepusht.</li>
 </ol>
+<h2 id="phase-7-kompatibilitaetsnachweis--phase-7-compatibility-evidence">Phase-7-Kompatibilitaetsnachweis / Phase-7 Compatibility Evidence</h2>
+<p>Dieser Abschnitt dokumentiert die fuer <code>M-07</code> erforderlichen Kompatibilitaetspruefungen fuer
+die drei Zielumgebungen zusaetzlich zum primaeren Multi-Mac-Workflow.</p>
+<p><em>(This section documents the M-07 required compatibility checks for the three target environments
+in addition to the primary Multi-Mac workflow.)</em></p>
+<h3 id="pruefbefehlssatz--validation-command-set">Pruefbefehlssatz / Validation Command Set</h3>
+<p>Auf jeder Zielumgebung ausfuehren / Execute on each target environment:</p>
+<pre><code class="lang-bash">dotnet restore
+dotnet build --configuration Release
+dotnet test tests/TuiVision.Drivers.Tests/ --configuration Release
+dotnet test --configuration Release
+dotnet format --verify-no-changes
+</code></pre>
+<h3 id="umgebungen-und-ergebnisse--environments-and-results">Umgebungen und Ergebnisse / Environments and Results</h3>
+<table>
+<thead>
+<tr>
+<th>Umgebung / Environment</th>
+<th>Validierungsmodus</th>
+<th>Befehle / Commands</th>
+<th>Ergebnis / Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MacBook Air M2</strong></td>
+<td>lokal / local</td>
+<td>Vollstaendiger Pruefbefehlssatz</td>
+<td>PASS — primaere Entwicklungsumgebung</td>
+</tr>
+<tr>
+<td><strong>Mac mini M4 Pro</strong></td>
+<td>lokal / local</td>
+<td>Vollstaendiger Pruefbefehlssatz</td>
+<td>PASS — sekundaere Entwicklungsumgebung</td>
+</tr>
+<tr>
+<td><strong>Linux (Ubuntu 24.04 / WSL)</strong></td>
+<td>manuell / manual</td>
+<td><code>dotnet build --configuration Release &amp;&amp; dotnet test tests/TuiVision.Drivers.Tests/</code></td>
+<td>PASS — manuell ausgefuehrt; noch kein CI-Gate</td>
+</tr>
+<tr>
+<td><strong>Windows/WSL (Ubuntu 24.04)</strong></td>
+<td>manuell / manual</td>
+<td><code>dotnet build --configuration Release &amp;&amp; dotnet test tests/TuiVision.Drivers.Tests/</code></td>
+<td>PASS — manuell ausgefuehrt; noch kein CI-Gate</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vorgehen-fuer-linux--procedure-for-linux">Vorgehen fuer Linux / Procedure for Linux</h3>
+<pre><code class="lang-bash"># Ubuntu 24.04 (nativ oder WSL)
+sudo apt-get update
+sudo apt-get install -y dotnet-sdk-10.0
+git clone https://github.com/hindermath/TuiVision.git
+cd TuiVision
+git checkout 005-driver-consolidation-m07
+dotnet restore
+dotnet build --configuration Release
+dotnet test tests/TuiVision.Drivers.Tests/ --configuration Release
+</code></pre>
+<p>Erwartetes Ergebnis: Alle Treibertests bestehen ohne plattformspezifische Fehler.
+<em>(Expected result: All driver tests pass without platform-specific failures.)</em></p>
+<h3 id="vorgehen-fuer-windowswsl--procedure-for-windowswsl">Vorgehen fuer Windows/WSL / Procedure for Windows/WSL</h3>
+<pre><code class="lang-powershell"># Windows-Vorbereitung: WSL mit Ubuntu 24.04 installieren
+wsl --install -d Ubuntu-24.04
+</code></pre>
+<pre><code class="lang-bash"># In WSL-Shell / In WSL shell
+sudo apt-get update
+sudo apt-get install -y dotnet-sdk-10.0
+git clone https://github.com/hindermath/TuiVision.git
+cd TuiVision
+git checkout 005-driver-consolidation-m07
+dotnet restore
+dotnet build --configuration Release
+dotnet test tests/TuiVision.Drivers.Tests/ --configuration Release
+</code></pre>
+<p>Erwartetes Ergebnis: Alle Treibertests bestehen. WSL vermittelt Linux-Kompatibilitaet fuer den
+Windows-Nachweis. Native Windows-Konsolen-APIs werden im verwalteten Modell durch
+<code>System.Console</code> abstrahiert.</p>
+<p><em>(Expected result: All driver tests pass. WSL provides Linux compatibility for the Windows proof.
+Native Windows Console APIs are abstracted by System.Console in the managed model.)</em></p>
+<h3 id="kompatibilitaetskaviats--compatibility-caveats">Kompatibilitaetskaviats / Compatibility Caveats</h3>
+<ul>
+<li>DOS-, QNX4-, QNXrtp-, WinGR- und X11-Plattformen werden bewusst nicht unterstuetzt;
+dies ist in <code>docs/porting-status.md</code> dokumentiert.</li>
+<li>Mauseingabe auf Linux/WSL benoetigt einen kompatiblen Terminal-Emulator mit
+Mausereignis-Unterstuetzung; Testlaeuf ueber CI ohne Display-Server schliessen diesen
+Pfad explizit aus.</li>
+<li>Farb- und Unicode-Ausgabe haengt vom Host-Terminal ab; funktionale Tests validieren
+Pufferzustand statt Terminal-spezifisches Rendering.</li>
+</ul>
+<p><em>(DOS, QNX4, QNXrtp, WinGR, and X11 platforms are consciously not supported; documented in
+docs/porting-status.md. Mouse input on Linux/WSL requires a compatible terminal emulator with
+mouse-event support; CI runs without a display server explicitly exclude this path.)</em></p>
+<hr>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="gh-auth-status-zeigt-kein-login"><code>gh auth status</code> zeigt kein Login</h3>
 <pre><code class="lang-bash">gh auth login
@@ -233,7 +329,7 @@ git diff
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/main/docs/guides/multi-mac-workflow.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/docs/guides/multi-mac-workflow.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
