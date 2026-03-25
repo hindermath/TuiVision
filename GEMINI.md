@@ -109,7 +109,7 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 
 ### `006-close-phase8-gate`
 *   Spezifikationsquelle: `specs/006-close-phase8-gate/spec.md`
-*   Planungsgrundlage dieses Inkrements: finaler `M-07`-Abschluss und nachweisbare Schliessung des Phase-8-Eingangstors
+*   Planungsgrundlage dieses Inkrements: `specs/006-close-phase8-gate/spec.md` und `specs/006-close-phase8-gate/plan.md`
 *   Geplanter Umfang:
     *   `docs/porting-status.md` als autoritatives M-07-Ledger
     *   Gate-Nachweise fuer Build, Volltests, Coverage, Formatierung und API-Dokumentation
@@ -173,3 +173,4 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 - 005-driver-consolidation-m07: Phase-7-Implementierung abgeschlossen: `DriverCapabilityMap.cs` mit 5 Faehigkeitsgruppen erstellt, `docs/porting-status.md` mit allen 151 historischen `.cc`-Dateien aufgebaut, 5 neue Treiber-Testdateien (30 Tests bestanden), `docs/guides/multi-mac-workflow.md` um Kompatibilitaetsnachweis erweitert, `checklists/phase-8-gate-review.md` angelegt, `Pflichtenheft.md`-Marker auf Phase-8-Gate-Abschluss verschoben.
 - 006-close-phase8-gate: Spezifikation und Requirements-Checklist fuer den finalen `M-07`-Abschluss und die nachweisbare Phase-8-Gateschliessung angelegt; gemeinsamer Agent-Kontext auf den neuen Prioritaetsschritt synchronisiert.
 - 006-close-phase8-gate: Die harte Coverage-Regel auf `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` jeweils `>= 70 %` erweitert und in die gemeinsamen Gate-Artefakte synchronisiert.
+- 006-close-phase8-gate: Planartefakte (`plan.md`, `research.md`, `data-model.md`, `quickstart.md`, `contracts/phase-8-gate-contract.md`) erstellt und den finalen Framework-Vollbeweis mit 3x-70%-Coverage, Repository-Volltestlauf und dediziertem Gate-Closure-Commit als verbindlichen Planstand beschrieben.

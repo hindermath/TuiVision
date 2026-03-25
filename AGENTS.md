@@ -133,7 +133,7 @@ docfx docfx.json
 - Planning decisions now fixed for this feature: `.cc` files are the formal `M-07` ledger scope, ancillary `.c`/`.h` files may appear only as rationale support, capability buckets replace per-OS lineage as the review model, and Phase 7 remains distinct from the later full Phase-8 gate closure
 
 ### 006-close-phase8-gate
-- Current planning baseline: execute the Phase-8 entrance-gate closure from `specs/006-close-phase8-gate/spec.md`
+- Current planning baseline: execute the Phase-8 entrance-gate closure from `specs/006-close-phase8-gate/spec.md` and `specs/006-close-phase8-gate/plan.md`
 - Scope is limited to closing the remaining `M-07` proof and gate evidence in `docs/porting-status.md`, `Pflichtenheft.md`, the existing module test projects, coverage evidence, formatting evidence, and API-documentation validation for `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization`
 - Out of scope for this increment: starting any of the 25 mandatory example waves, introducing substitute follow-on example scope from `TVDEMOS/` or `TVFM/`, reopening Phase-7 capability-bucket decisions except where pending proof rows require final status updates, and unrelated new framework features
 - Every historical `.cc` row in `docs/porting-status.md` must end in a final proof state of `portiert + getestet` or `bewusst ausgelassen + Begruendung`; no `portiert + Test ausstehend` rows may remain once the gate is claimed closed
@@ -187,3 +187,4 @@ docfx docfx.json
 - 005-driver-consolidation-m07: Implemented Phase-7 consolidation: created `DriverCapabilityMap.cs` with 5 capability buckets, built `docs/porting-status.md` covering all 151 historical `.cc` files, added 5 new driver test files (30 tests passing), updated `docs/guides/multi-mac-workflow.md` with compatibility evidence, created `checklists/phase-8-gate-review.md`, updated `Pflichtenheft.md` marker to Phase-8 gate closure.
 - 006-close-phase8-gate: Added the Phase-8 entrance-gate specification and requirements checklist for fully closing `M-07`, resolving every pending ledger row to a final proof state, and packaging the remaining build/test/coverage/format/API-doc evidence before mandatory example work may begin.
 - 006-close-phase8-gate: Synchronized the hard coverage rule to require `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization` each to reach at least 70 % line coverage across the shared agent guidance and gate-tracking artifacts.
+- 006-close-phase8-gate: Added `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, and `contracts/phase-8-gate-contract.md` to define the final `M-07` closure workflow, the 3x-70%-coverage gate, the full-suite validation package, and the dedicated closure-commit contract.

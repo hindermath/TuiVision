@@ -84,11 +84,12 @@ All projects target `net10.0` with `Nullable: enable`, `ImplicitUsings: enable`,
 - Phase-7 implementation is complete: `DriverCapabilityMap.cs` with 5 capability buckets, `docs/porting-status.md` covering all 151 `.cc` files, 30 driver tests passing, compatibility evidence in `docs/guides/multi-mac-workflow.md`, gate checklist in `checklists/phase-8-gate-review.md`; next priority is Phase-8 gate closure (Core/Controls/Serialization coverage each ≥ 70 %, full dotnet test suite)
 
 ### 006-close-phase8-gate
-- Align active work with `specs/006-close-phase8-gate/spec.md`
+- Align active work with `specs/006-close-phase8-gate/spec.md` and the planning artifacts in `specs/006-close-phase8-gate/`
 - Scope is limited to final `M-07` proof closure plus the remaining Phase-8 entrance evidence across `docs/porting-status.md`, `Pflichtenheft.md`, the existing Core/Controls/Serialization test suites, coverage evidence, formatting evidence, and API-documentation validation
 - Every historical `.cc` ledger row must finish in `portiert + getestet` or `bewusst ausgelassen + Begruendung`; no `portiert + Test ausstehend` row may remain after closure is claimed
 - Gate closure must include explicit build, full-test, coverage, formatting, and conditional API-doc proof, and must keep the 25 mandatory example waves blocked until the closure is formally recorded
 - `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization` must each satisfy the hard 70 % line-coverage gate before Phase 8 is declared open
+- The planning baseline now also fixes repository-wide `dotnet test`, conditional Linux/Windows/WSL evidence, and a dedicated gate-closure commit as hard closure criteria
 - Keep this increment scoped to gate closure only; mandatory example waves, substitute follow-on example scope from `TVDEMOS/` or `TVFM/`, and unrelated new framework features remain out of scope
 
 ## Agent File Synchronization Policy
