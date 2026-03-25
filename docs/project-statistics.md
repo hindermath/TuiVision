@@ -34,6 +34,32 @@ fortgeschrieben.
 - Abgeleitete Formeln in dieser Datei:
   Einzelentwickler `((Produktionscode + Testcode + Dokumentation) / 80)`;
   3er-Team `Einzelentwickler / 3 * 1.2` mit 20 % Koordinationsaufschlag.
+- Zusatzannahmen fuer die erfahrungsadjustierte Thorsten-Referenz:
+  - Allgemeiner Expertenaufschlag `* 1.25`, weil Thorsten seit Februar 1985
+    mehr als 40 Jahre Softwareentwicklungspraxis einbringt und seit 2001 mit
+    .NET/C# arbeitet.
+  - Legacy-Portierungsaufschlag `* 1.25`, weil fuer Pascal-/Turbo-
+    Vision-nahe Altcode-Portierungen zusaetzlich 10 bis 15 Jahre praktische
+    Turbo-Pascal-/Turbo-Vision-Erfahrung vorliegen.
+  - Daraus ergibt sich fuer TuiVision eine erfahrungsadjustierte Solo-Referenz
+    von `80 * 1.25 * 1.25 = 125` manuell erstellten Zeilen pro Arbeitstag.
+- Beschleunigungsfaktoren vergleichen Referenz-Arbeitstage mit sichtbaren
+  `Git-Aktivtagen`. Sie sind bewusst als repo-weiter Output-zu-Aktivtag-
+  Indikator formuliert und keine exakte Stoppuhrmessung.
+
+## Erfahrungsprofil und Beschleunigungsmodell
+
+- Referenzprofil fuer die erfahrungsadjustierte Zweitrechnung:
+  - mehr als 40 Jahre Softwareentwicklung seit Februar 1985
+  - langjaehrige .NET-/C#-Praxis seit 2001
+  - 10 bis 15 Jahre Turbo-Pascal-/Turbo-Vision-Erfahrung
+- Dadurch wird neben der konservativen 80-Zeilen-Referenz eine zweite,
+  explizit benannte Thorsten-Solo-Referenz mit `125 Zeilen/Arbeitstag`
+  ausgewiesen.
+- Die ausgewiesenen Beschleunigungsfaktoren beantworten nicht die Frage
+  "Wie viele Stunden wurden wirklich gearbeitet?", sondern die Frage
+  "Wie stark verdichtet war der sichtbare Lieferumfang gegenueber einer
+  klassischen, manuell dominierten Portierung?".
 
 ## Gesamtstand des Repositories
 
@@ -52,8 +78,13 @@ fortgeschrieben.
 | Erfahrener Entwickler, konservative Untergrenze | 353.1 Arbeitstage |
 | Erfahrener Entwickler, brutto | 16.4 Arbeitsmonate (21.5 Tage/Monat) |
 | Erfahrener Entwickler, TVoeD-Annahme | 18.6 Kalendermonate bzw. 1.5 Jahre |
+| Thorsten solo, erfahrungsadjustierte Untergrenze | 226.0 Arbeitstage |
+| Thorsten solo, brutto | 10.5 Arbeitsmonate (21.5 Tage/Monat) |
+| Thorsten solo, TVoeD-Annahme | 11.9 Kalendermonate bzw. 1.0 Jahre |
 | Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 141.3 Arbeitstage |
 | Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 7.4 Kalendermonate |
+| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 29.4x (353.1 / 12 Git-Aktivtage) |
+| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 18.8x (226.0 / 12 Git-Aktivtage) |
 
 ## Phasen und Haupt-Branches
 
@@ -247,14 +278,20 @@ fortgeschrieben.
 
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
-- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 24718 Zeilen
+- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 28251 Zeilen
   (Produktionscode + Tests + Dokumentation).
 - Selbst mit der fuer klassische Entwicklung guenstigen Obergrenze von
   80 manuell erstellten Zeilen pro Arbeitstag ergibt sich bereits eine
-  Untergrenze von 309.0 Entwickler-Arbeitstagen.
+  Untergrenze von 353.1 Entwickler-Arbeitstagen.
 - Unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr entspricht das fuer einen
-  erfahrenen Entwickler ca. 16.3 Kalendermonaten bzw. 1.4 Arbeitsjahren; fuer
-  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 6.6 Kalendermonaten.
+  erfahrenen Entwickler ca. 18.6 Kalendermonaten bzw. 1.5 Arbeitsjahren; fuer
+  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 7.4 Kalendermonaten.
+- Unter Einbezug von Thorstens Erfahrungsprofil sinkt die klassische
+  Solo-Referenz fuer dieses Repository auf ca. 226.0 Arbeitstage bzw.
+  11.9 TVoeD-Kalendermonate.
+- Gegen die sichtbaren 12 Git-Aktivtage ergibt sich damit ein repo-weiter
+  Beschleunigungsfaktor von ca. 29.4x gegen die konservative Referenz und
+  immer noch ca. 18.8x gegen die erfahrungsadjustierte Thorsten-Referenz.
 - Die vorliegenden Git-Daten zeigen damit eine deutliche Verdichtung durch
   agentische KI und GitHub Spec-Kit: hoher Dokumentations- und Codeumfang in
   einem kurzen beobachtbaren Aktivfenster.
@@ -322,3 +359,4 @@ fortgeschrieben.
 | 2026-03-25 | Plan-Refresh nach Coverage-Clarify fuer `006-close-phase8-gate` | Nach den letzten Spec-Klarstellungen wurde der 006-Plan auf assembly-scharfe Coverage-Nachweise fuer alle fuenf Gate-Module und auf das Verbot von Platzhalter-/No-op-Modulen als Schein-Nachweis nachgeschaerft; dazu wurden Planartefakte und die gemeinsamen Agent-Dateien synchronisiert. |
 | 2026-03-25 | Gate-Dokumentations-Review fuer `006-close-phase8-gate` | Die neue Gate-Checkliste wurde gegen den 006-Dokumentensatz abgeglichen; dabei wurden Gate-Scope-Entfernungen im selben Artefaktpaket, Begriffschaerfungen fuer Platzhalter-/No-op-/triviale Tests sowie die Behandlung lokaler-vs.-CI-Coverage-Konflikte in Spezifikation, Plan, Datenmodell, Quickstart, Vertrag und Agent-Guidance nachgeschaerft. |
 | 2026-03-25 | `/speckit-tasks` fuer `006-close-phase8-gate` | Eine umsetzbare `tasks.md` mit 34 Aufgaben aus `spec.md`, `plan.md`, `research.md`, `data-model.md`, `quickstart.md` und `contracts/phase-8-gate-contract.md` erstellt; die Aufgaben schneiden den Restaufwand in die drei 006-User-Stories, verankern die TDD-Reihenfolge, ein eigenes `TuiVision.Compatibility`-Testprojekt, die assembly-scharfen 5x-70-%-Coverage-Nachweise und den dedizierten Gate-Closure-Commit. |
+| 2026-03-25 | Erfahrungsadjustierte Beschleunigungsrechnung erweitert | Die Statistik wurde um eine zweite Thorsten-Solo-Referenz erweitert: >40 Jahre Softwareentwicklung seit Februar 1985, .NET-/C#-Praxis seit 2001 und 10-15 Jahre Turbo-Pascal-/Turbo-Vision-Erfahrung werden nun als explizite Annahmen fuer die repo-weite Beschleunigungsrechnung gegenueber klassischer Portierung ausgewiesen; dieselbe Logik wurde in die gemeinsamen Agent-Dateien synchronisiert. |
