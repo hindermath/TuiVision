@@ -164,6 +164,7 @@ specs/006-close-phase8-gate/
 ├── contracts/
 │   └── phase-8-gate-contract.md
 ├── checklists/
+│   ├── gate-docs.md
 │   └── requirements.md
 └── tasks.md
 ```
@@ -181,6 +182,7 @@ src/
 tests/
 ├── TuiVision.Core.Tests/
 ├── TuiVision.Controls.Tests/
+├── TuiVision.Compatibility.Tests/
 ├── TuiVision.Drivers.Tests/
 ├── TuiVision.Serialization.Tests/
 └── TuiVision.Examples.SmokeTests/
@@ -351,8 +353,10 @@ Phase 0 resolves and locks the following planning decisions:
 
 - **Framework unit tests**: Expand `tests/TuiVision.Core.Tests`,
   `tests/TuiVision.Controls.Tests`, `tests/TuiVision.Serialization.Tests`, and
-  Compatibility-focused coverage first, before implementation, for every
-  still-open ledger-backed behavior.
+  `tests/TuiVision.Compatibility.Tests` first, before implementation, for every
+  still-open ledger-backed behavior. Shared suites may still contribute to the
+  final gate evidence, but the plan assumes a dedicated Compatibility-focused
+  suite exists when the shared repository tests are insufficient.
 - **Driver regression tests**: Retain and extend `tests/TuiVision.Drivers.Tests`
   because the gate interpretation now requires both full-suite pass status and
   `TuiVision.Drivers.Console` coverage at or above the hard threshold.
@@ -370,6 +374,9 @@ Phase 0 resolves and locks the following planning decisions:
 - **Coverage conflict resolution**: If local and CI measurements diverge for a
   gate assembly, closure stays blocked until the discrepancy is explained and
   the authoritative repository-visible result is named in the evidence package.
+- **Skip/ignore governance**: If any gate-scoped test is skipped or ignored,
+  closure remains blocked until the evidence package names the corresponding
+  tracked issue and the affected proof surfaces record the same reference.
 - **Proof-ledger review**: Treat `docs/porting-status.md` as a first-class
   deliverable and verify that no row remains provisional.
 - **Compatibility evidence**: Refresh Linux and Windows/WSL evidence when the
@@ -383,12 +390,13 @@ Phase 0 resolves and locks the following planning decisions:
   - `dotnet test tests/TuiVision.Core.Tests/ --collect:"XPlat Code Coverage"`
   - `dotnet test tests/TuiVision.Controls.Tests/ --collect:"XPlat Code Coverage"`
   - `dotnet test tests/TuiVision.Serialization.Tests/ --collect:"XPlat Code Coverage"`
+  - `dotnet test tests/TuiVision.Compatibility.Tests/ --collect:"XPlat Code Coverage"`
   - `dotnet test tests/TuiVision.Drivers.Tests/ --collect:"XPlat Code Coverage"`
-- **Compatibility coverage note**: If the existing suites do not exercise
-  `TuiVision.Compatibility` deeply enough to clear 70%, add a dedicated
-  Compatibility-focused MSTest suite and include it in the same coverage run.
-  Shared suites remain acceptable as long as the final report still separates
-  the five target assemblies.
+- **Compatibility coverage note**: Shared suites remain acceptable as long as
+  the final report still separates the five target assemblies, but this plan's
+  baseline keeps `tests/TuiVision.Compatibility.Tests/` as the dedicated
+  Compatibility-focused suite whenever the shared repository tests are not
+  sufficient to clear the 70% gate honestly.
 - **Conditional validation command**:
   - `docfx docfx.json` when public APIs or XML comments changed
 

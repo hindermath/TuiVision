@@ -3,7 +3,7 @@
 **Input**: Design documents from `/Users/thorstenhindermann/RiderProjects/TuiVision/specs/006-close-phase8-gate/`
 **Prerequisites**: `plan.md` (required), `spec.md` (required for user stories), `research.md`, `data-model.md`, `contracts/`
 
-**Tests**: Test tasks are mandatory for the behavior-changing closure work in this repository. Follow Red-Green-Refactor: add failing tests first, implement the missing behavior, then re-run the relevant validation before advancing the ledger or gate claim.
+**Tests**: Test tasks are mandatory for the behavior-changing closure work in this repository. Follow Red-Green-Refactor: add failing tests first, implement the missing behavior, then re-run the relevant validation before advancing the ledger or gate claim. Keep that sequence visible in commit history, and do not advance any proof-closing commit unless the relevant validation is passing again.
 
 **Organization**: Tasks are grouped by user story so that the remaining `M-07` proof, the Phase-8 evidence package, and the explicit gate-decision artifacts can be completed and reviewed in dependency order.
 
@@ -85,7 +85,7 @@
 ### Validation and Coverage Tasks for User Story 2
 
 - [ ] T022 [P] [US2] Add or extend coverage-sweep tests under `tests/TuiVision.Core.Tests/`, `tests/TuiVision.Controls.Tests/`, `tests/TuiVision.Serialization.Tests/`, `tests/TuiVision.Compatibility.Tests/`, and `tests/TuiVision.Drivers.Tests/` until each gate assembly can reach `>= 70 %` line coverage.
-- [ ] T023 [US2] Run `dotnet build --configuration Release` and `dotnet test`, then record build/test status plus skip-or-ignore outcomes in `Pflichtenheft.md` and `docs/porting-status.md`.
+- [ ] T023 [US2] Run `dotnet build --configuration Release` and `dotnet test`, then record build/test status plus every skip-or-ignore outcome and its corresponding tracked-issue reference in `Pflichtenheft.md` and `docs/porting-status.md`; do not allow gate closure while such a reference is missing.
 - [ ] T024 [P] [US2] Run assembly-specific Coverlet collection for `tests/TuiVision.Core.Tests/`, `tests/TuiVision.Controls.Tests/`, `tests/TuiVision.Serialization.Tests/`, `tests/TuiVision.Compatibility.Tests/`, and `tests/TuiVision.Drivers.Tests/`, then publish the separated five-assembly results in `docs/porting-status.md` and `specs/005-driver-consolidation-m07/checklists/phase-8-gate-review.md`.
 - [ ] T025 [US2] Compare local coverage outputs with repository-visible CI evidence and record the authoritative result plus any resolved discrepancy in `Pflichtenheft.md`, `docs/porting-status.md`, and `specs/006-close-phase8-gate/quickstart.md`.
 - [ ] T026 [P] [US2] Run `dotnet format --verify-no-changes` and conditional `docfx docfx.json`, then record PASS or explicit N/A in `Pflichtenheft.md` and `docs/porting-status.md`.

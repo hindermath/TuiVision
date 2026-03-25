@@ -28,9 +28,11 @@ Validate the planned Phase-8 gate-closure increment by:
    - `tests/TuiVision.Core.Tests/`
    - `tests/TuiVision.Controls.Tests/`
    - `tests/TuiVision.Serialization.Tests/`
+   - `tests/TuiVision.Compatibility.Tests/`
    - `tests/TuiVision.Drivers.Tests/`
-   - a dedicated Compatibility-focused suite if the existing repository tests
-     do not exercise `TuiVision.Compatibility` deeply enough
+   - shared repository suites may still contribute to coverage evidence, but
+     the dedicated Compatibility-focused suite remains the fallback baseline
+     when `TuiVision.Compatibility` is not exercised deeply enough elsewhere
 
 3. Implement the minimum framework behavior needed to close those rows as
    `portiert + getestet`, or explicitly justify true replacements / obsolete
@@ -55,6 +57,7 @@ dotnet format --verify-no-changes
 dotnet test tests/TuiVision.Core.Tests/ --collect:"XPlat Code Coverage"
 dotnet test tests/TuiVision.Controls.Tests/ --collect:"XPlat Code Coverage"
 dotnet test tests/TuiVision.Serialization.Tests/ --collect:"XPlat Code Coverage"
+dotnet test tests/TuiVision.Compatibility.Tests/ --collect:"XPlat Code Coverage"
 dotnet test tests/TuiVision.Drivers.Tests/ --collect:"XPlat Code Coverage"
 ```
 
@@ -63,6 +66,9 @@ coverage package. A single aggregated repository percentage is not sufficient.
 If local and CI coverage results diverge for any gate assembly, do not claim
 closure until the discrepancy is explained and the authoritative
 repository-visible result is identified in the proof package.
+If any gate-scoped test is skipped or ignored, do not claim closure until the
+proof package records the corresponding tracked issue in `Pflichtenheft.md` and
+`docs/porting-status.md`.
 
 7. If public APIs or XML comments changed, run the conditional documentation
    gate:
@@ -93,6 +99,7 @@ dotnet format --verify-no-changes
 dotnet test tests/TuiVision.Core.Tests/ --collect:"XPlat Code Coverage"
 dotnet test tests/TuiVision.Controls.Tests/ --collect:"XPlat Code Coverage"
 dotnet test tests/TuiVision.Serialization.Tests/ --collect:"XPlat Code Coverage"
+dotnet test tests/TuiVision.Compatibility.Tests/ --collect:"XPlat Code Coverage"
 dotnet test tests/TuiVision.Drivers.Tests/ --collect:"XPlat Code Coverage"
 docfx docfx.json   # only when public API or XML comments changed
 ```
@@ -107,6 +114,8 @@ docfx docfx.json   # only when public API or XML comments changed
   code.
 - No unresolved local-versus-CI conflict remains for any gate assembly.
 - `dotnet test` passes for all repository test projects.
+- Any skipped or ignored gate-scoped test is paired with a recorded tracked
+  issue reference.
 - Linux and Windows/WSL evidence is either refreshed or explicitly documented as
   not applicable.
 - A dedicated git commit states that the Phase-8 entrance gate is closed.
