@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-03-24
+Stand: 2026-03-25
 
 ## Zweck und Pflege
 
@@ -321,3 +321,4 @@ fortgeschrieben.
 | 2026-03-25 | Coverage-Gate-Erweiterung fuer `006-close-phase8-gate` | Die Phase-8-Coverage-Regel wurde von drei auf fuenf Module erweitert: `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console` muessen nun jeweils `>= 70 %` Line Coverage erreichen; dafuer wurden Spezifikation, Planartefakte, `Pflichtenheft.md`, `docs/porting-status.md`, die Phase-8-Review-Unterlagen und die gemeinsamen Agent-Dateien nachgezogen. |
 | 2026-03-25 | Plan-Refresh nach Coverage-Clarify fuer `006-close-phase8-gate` | Nach den letzten Spec-Klarstellungen wurde der 006-Plan auf assembly-scharfe Coverage-Nachweise fuer alle fuenf Gate-Module und auf das Verbot von Platzhalter-/No-op-Modulen als Schein-Nachweis nachgeschaerft; dazu wurden Planartefakte und die gemeinsamen Agent-Dateien synchronisiert. |
 | 2026-03-25 | Gate-Dokumentations-Review fuer `006-close-phase8-gate` | Die neue Gate-Checkliste wurde gegen den 006-Dokumentensatz abgeglichen; dabei wurden Gate-Scope-Entfernungen im selben Artefaktpaket, Begriffschaerfungen fuer Platzhalter-/No-op-/triviale Tests sowie die Behandlung lokaler-vs.-CI-Coverage-Konflikte in Spezifikation, Plan, Datenmodell, Quickstart, Vertrag und Agent-Guidance nachgeschaerft. |
+| 2026-03-25 | `/speckit-tasks` fuer `006-close-phase8-gate` | Eine umsetzbare `tasks.md` mit 34 Aufgaben aus `spec.md`, `plan.md`, `research.md`, `data-model.md`, `quickstart.md` und `contracts/phase-8-gate-contract.md` erstellt; die Aufgaben schneiden den Restaufwand in die drei 006-User-Stories, verankern die TDD-Reihenfolge, ein eigenes `TuiVision.Compatibility`-Testprojekt, die assembly-scharfen 5x-70-%-Coverage-Nachweise und den dedizierten Gate-Closure-Commit. |
