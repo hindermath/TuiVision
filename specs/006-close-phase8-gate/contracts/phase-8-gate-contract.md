@@ -14,8 +14,9 @@ The closure claim is represented by these repository-owned surfaces:
 - `docs/porting-status.md`
 - `Pflichtenheft.md`
 - MSTest suites under `tests/`
-- coverage evidence for `TuiVision.Core`, `TuiVision.Controls`, and
-  `TuiVision.Serialization`
+- coverage evidence for `TuiVision.Core`, `TuiVision.Controls`,
+  `TuiVision.Serialization`, `TuiVision.Compatibility`, and
+  `TuiVision.Drivers.Console`
 - formatting/build/doc validation records
 - compatibility-evidence records
 - one dedicated gate-closure git commit
@@ -42,8 +43,9 @@ of the accepted closure surface.
 2. **Rationale guarantee**: Every `bewusst ausgelassen + Begruendung` row
    explains the true architecture replacement or obsolete special case.
 3. **Implementation guarantee**: Non-driver rows still mapped to `geplant`
-   targets in Core/Controls/Serialization are implementation work unless they
-   are explicitly justified as a true replacement or obsolete special case.
+   targets in Core/Controls/Serialization/Compatibility are implementation work
+   unless they are explicitly justified as a true replacement or obsolete
+   special case.
 4. **Reviewability guarantee**: Reviewers can inspect any row without relying on
    commit-history archaeology alone.
 
@@ -54,8 +56,9 @@ of the accepted closure surface.
 1. `dotnet build --configuration Release` succeeds.
 2. `dotnet test` succeeds across all test projects in the repository.
 3. `dotnet format --verify-no-changes` succeeds.
-4. `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization` each
-   reach `>= 70 %` line coverage.
+4. `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`,
+   `TuiVision.Compatibility`, and `TuiVision.Drivers.Console` each reach
+   `>= 70 %` line coverage.
 5. If public APIs or XML comments changed, `docfx docfx.json` succeeds.
 6. No undocumented blocker remains in the gate review.
 
@@ -63,8 +66,9 @@ of the accepted closure surface.
 
 1. **Repository-wide test guarantee**: The gate is not satisfied by a subset of
    module tests; the full repository test-project set must pass.
-2. **Three-module coverage guarantee**: Core, Controls, and Serialization each
-   satisfy the same hard 70% threshold.
+2. **Five-module coverage guarantee**: Core, Controls, Serialization,
+   Compatibility, and Drivers.Console each satisfy the same hard 70%
+   threshold.
 3. **Skip/ignore guarantee**: A skipped or ignored test without a tracked issue
    blocks closure.
 

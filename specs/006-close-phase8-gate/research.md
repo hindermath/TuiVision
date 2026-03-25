@@ -1,25 +1,27 @@
 # Research: M-07 Closure and Phase-8 Entrance Gate
 
-## Decision 1: Coverage gate applies independently to Core, Controls, and Serialization
+## Decision 1: Coverage gate applies independently to five modules
 
-- **Decision**: `TuiVision.Core`, `TuiVision.Controls`, and
-  `TuiVision.Serialization` must each reach at least 70% line coverage before
-  the Phase-8 entrance gate may be declared closed.
-- **Rationale**: The clarified specification deliberately tightened the gate
-  from a Controls-only threshold to a three-module threshold so the final
-  framework-completeness claim does not leave Core or Serialization under-
-  evidenced.
+- **Decision**: `TuiVision.Core`, `TuiVision.Controls`,
+  `TuiVision.Serialization`, `TuiVision.Compatibility`, and
+  `TuiVision.Drivers.Console` must each reach at least 70% line coverage
+  before the Phase-8 entrance gate may be declared closed.
+- **Rationale**: The clarified specification now treats the final Phase-8
+  readiness claim as a five-module completeness statement. Compatibility and
+  the managed driver baseline are part of the same framework proof surface and
+  should not stay outside the hard numeric gate.
 - **Alternatives considered**:
-  - Keep 70% only on Controls and merely record Core/Serialization evidence.
-  - Treat the threshold as advisory for Core and Serialization rather than a
-    hard gate.
+  - Keep 70% only on Controls and merely record the other modules as soft
+    evidence.
+  - Limit the hard gate to Core/Controls/Serialization while leaving
+    Compatibility or Drivers.Console outside the threshold.
 
 ## Decision 2: Non-driver `geplant` rows are implementation work, not narrative cleanup
 
 - **Decision**: Every non-driver ledger row still mapped to a `geplant` target
-  in Core, Controls, or Serialization must be implemented and covered by
-  automated tests unless it can be reclassified as a true architecture
-  replacement or obsolete special case with explicit rationale.
+  in Core, Controls, Serialization, or Compatibility must be implemented and
+  covered by automated tests unless it can be reclassified as a true
+  architecture replacement or obsolete special case with explicit rationale.
 - **Rationale**: `M-07 vollstaendig schliessen` would be undercut if remaining
   framework gaps could be closed only by editing ledger prose rather than by
   providing real maintained runtime behavior.
@@ -35,7 +37,7 @@
 - **Rationale**: The closure claim is repository-wide, and the clarified spec
   now ties gate success to all test projects rather than to a narrow subset.
 - **Alternatives considered**:
-  - Limit the hard gate to Core/Controls/Serialization/Drivers only.
+  - Limit the hard gate to four modules and leave Compatibility outside it.
   - Run only the directly affected test projects and treat the rest as
     optional follow-up validation.
 

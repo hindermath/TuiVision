@@ -3,11 +3,12 @@
 ## Overview
 
 This feature combines framework completion work in `TuiVision.Core`,
-`TuiVision.Controls`, and `TuiVision.Serialization` with a repository-local
-gate-evidence model. No database storage is involved. The data model focuses on
-historical source rows, final proof states, quality-gate results, coverage
-evidence, compatibility-validation evidence, and the dedicated gate-closure
-commit.
+`TuiVision.Controls`, `TuiVision.Serialization`, and
+`TuiVision.Compatibility`, plus final driver-proof hardening in
+`TuiVision.Drivers.Console`, with a repository-local gate-evidence model. No
+database storage is involved. The data model focuses on historical source rows,
+final proof states, quality-gate results, coverage evidence,
+compatibility-validation evidence, and the dedicated gate-closure commit.
 
 ## Entities
 
@@ -72,7 +73,9 @@ commit.
 - **Purpose**: Represents one measured line-coverage outcome for a required
   module in the Phase-8 entrance gate.
 - **Key attributes**:
-  - Module name (`TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`)
+  - Module name (`TuiVision.Core`, `TuiVision.Controls`,
+    `TuiVision.Serialization`, `TuiVision.Compatibility`,
+    `TuiVision.Drivers.Console`)
   - Measurement method
   - Coverage percentage
   - Report location
@@ -80,7 +83,7 @@ commit.
 - **Relationships**:
   - Belongs to one `QualityGateResult`
 - **Validation rules**:
-  - Each of the three required modules must appear exactly once in the gate
+  - Each of the five required modules must appear exactly once in the gate
     evidence set
   - Coverage percentage must be `>= 70 %` for a passing result
 
@@ -93,7 +96,7 @@ commit.
   - Blocking reason when present
 - **Relationships**:
   - Owns zero to many `EvidenceRecord` items
-  - Coverage gate owns three `CoverageResult` items
+  - Coverage gate owns five `CoverageResult` items
 - **Validation rules**:
   - All six gate areas must have an explicit current status
   - No undocumented blocker is allowed at closure time

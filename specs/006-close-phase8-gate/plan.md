@@ -12,12 +12,14 @@ closing the full Phase-8 entrance gate with repository-visible quality evidence.
 
 Finish the still-open framework proof by implementing and testing the remaining
 non-driver Phase-8-scope framework types in `TuiVision.Core`,
-`TuiVision.Controls`, and `TuiVision.Serialization`, update
+`TuiVision.Controls`, `TuiVision.Serialization`, and
+`TuiVision.Compatibility`, update
 `docs/porting-status.md` so all 151 historical `.cc` rows end in
 `portiert + getestet` or `bewusst ausgelassen + Begruendung`, and assemble the
 full gate evidence package: `dotnet build --configuration Release`,
 `dotnet test` across all test projects, `dotnet format --verify-no-changes`,
-Coverlet-backed line coverage of at least 70% in Core/Controls/Serialization,
+Coverlet-backed line coverage of at least 70% in
+Core/Controls/Serialization/Compatibility/Drivers.Console,
 conditional `docfx docfx.json`, and platform-evidence records for Multi-Mac
 plus Linux/Windows/WSL where the implemented changes materially affect runtime,
 terminal, portability, or build behavior. The result is a dedicated gate-closure
@@ -33,9 +35,9 @@ commit that makes Phase-8 readiness reviewable in one pass.
   `bewusst ausgelassen + Begruendung`.
 - **Planned non-driver framework entry**: A ledger row currently mapped to a
   non-driver target marked `geplant` in `TuiVision.Core`, `TuiVision.Controls`,
-  or `TuiVision.Serialization`; this plan treats such rows as implementation
-  work unless they are upgraded to a true architecture replacement or obsolete
-  special case with explicit rationale.
+  `TuiVision.Serialization`, or `TuiVision.Compatibility`; this plan treats
+  such rows as implementation work unless they are upgraded to a true
+  architecture replacement or obsolete special case with explicit rationale.
 - **Validation evidence package**: The combined review set of build, test,
   coverage, format, documentation, compatibility, and ledger evidence used to
   judge whether Phase 8 may begin.
@@ -57,9 +59,11 @@ validation; GitHub Actions for existing CI
 `docs/porting-status.md`, `Pflichtenheft.md`, and the 006 planning artifacts;
 no database or external spreadsheet storage  
 **Testing**: MSTest-first coverage in `tests/TuiVision.Core.Tests`,
-`tests/TuiVision.Controls.Tests`, `tests/TuiVision.Serialization.Tests`, and
-impacted driver/example suites; repository-wide `dotnet test` is a hard gate;
-Core/Controls/Serialization each require `>= 70 %` line coverage  
+`tests/TuiVision.Controls.Tests`, `tests/TuiVision.Serialization.Tests`,
+`tests/TuiVision.Drivers.Tests`, and any added Compatibility-focused suite if
+cross-module coverage is insufficient; repository-wide `dotnet test` is a hard
+gate; Core/Controls/Serialization/Compatibility/Drivers.Console each require
+`>= 70 %` line coverage  
 **Target Platform**: Managed cross-platform .NET library workflow on macOS,
 Linux, and Windows/WSL, with `MacBook Air M2` and `Mac mini M4 Pro` as the
 primary development environments  
@@ -70,14 +74,16 @@ the primary Multi-Mac workflow; reviewers can determine Phase-8 readiness in
 one pass through the evidence package without ad-hoc repository archaeology  
 **Constraints**: No native bindings; no example-porting work in this increment;
 all 151 ledger rows must end in a final proof state; full `dotnet test` across
-all repository test projects must pass; Core/Controls/Serialization each must
-reach at least 70% line coverage; skipped or ignored tests without a tracked
-issue block closure; documentation and XML comments remain bilingual at CEFR-B2;
-the closure requires a dedicated git commit  
+all repository test projects must pass;
+Core/Controls/Serialization/Compatibility/Drivers.Console each must reach at
+least 70% line coverage; skipped or ignored tests without a tracked issue block
+closure; documentation and XML comments remain bilingual at CEFR-B2; the
+closure requires a dedicated git commit  
 **Scale/Scope**: One documentation-backed closure pass across the remaining
-Core/Controls/Serialization framework gaps, all affected tests, the canonical
-ledger `docs/porting-status.md`, the prioritized rest-work in
-`Pflichtenheft.md`, and the Phase-8 review artifacts
+Core/Controls/Serialization/Compatibility framework gaps, the still-open final
+driver proof rows, all affected tests, the canonical ledger
+`docs/porting-status.md`, the prioritized rest-work in `Pflichtenheft.md`, and
+the Phase-8 review artifacts
 
 ## Constitution Check
 
@@ -88,14 +94,16 @@ ledger `docs/porting-status.md`, the prioritized rest-work in
   runtime forks.
 - **Test-First Development — TDD**: Pass with explicit workflow constraint.
   Every remaining framework gap must start with failing MSTest coverage before
-  implementation, and the final gate still requires repository-wide `dotnet test`
-  plus 70% line coverage in Core/Controls/Serialization.
+  implementation, and the final gate still requires repository-wide
+  `dotnet test` plus 70% line coverage in
+  Core/Controls/Serialization/Compatibility/Drivers.Console.
 - **Didactic and Linguistic Clarity**: Pass. The feature extends repository
   proof and planning artifacts; any changed APIs or XML comments remain subject
   to bilingual CEFR-B2 documentation rules.
 - **Modular Architecture**: Pass. Runtime work remains inside the existing five
-  modules, mainly `TuiVision.Core`, `TuiVision.Controls`, and
-  `TuiVision.Serialization`; no new source assembly is introduced.
+  modules: `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`,
+  `TuiVision.Compatibility`, and `TuiVision.Drivers.Console`; no new source
+  assembly is introduced.
 - **Cross-Platform Portability**: Pass. Multi-Mac remains the primary workflow,
   and Linux/Windows/WSL evidence is explicitly planned whenever the implemented
   changes materially affect runtime, terminal behavior, portability, or build
@@ -106,7 +114,7 @@ ledger `docs/porting-status.md`, the prioritized rest-work in
 
 **Post-Design Gate Review**: Phase-1 artifacts keep the feature inside the
 existing module hierarchy, preserve the managed-only runtime, retain the
-mandatory full-test and 3x-70%-coverage gates, and maintain the distinction
+mandatory full-test and 5x-70%-coverage gates, and maintain the distinction
 between this final framework-proof increment and the later example-port waves.
 No constitution exception is required.
 
@@ -173,18 +181,21 @@ tv203s/
     └── x11/
 ```
 
-**Structure Decision**: Keep the feature inside the existing Core/Controls/
-Serialization modules and their paired test projects, use `docs/porting-status.md`
-and `Pflichtenheft.md` as the primary proof surfaces, and store all design
-artifacts under `specs/006-close-phase8-gate/`. No new source module, external
-service, or alternate storage layer is justified.
+**Structure Decision**: Keep the feature inside the existing
+Core/Controls/Serialization/Compatibility/Drivers.Console modules and the
+paired or cross-module test projects that exercise them, use
+`docs/porting-status.md` and `Pflichtenheft.md` as the primary proof surfaces,
+and store all design artifacts under `specs/006-close-phase8-gate/`. No new
+source module, external service, or alternate storage layer is justified.
 
 ## Research Focus
 
 Phase 0 resolves and locks the following planning decisions:
 
 1. The coverage gate applies independently to `TuiVision.Core`,
-   `TuiVision.Controls`, and `TuiVision.Serialization`, each at `>= 70 %`.
+   `TuiVision.Controls`, `TuiVision.Serialization`,
+   `TuiVision.Compatibility`, and `TuiVision.Drivers.Console`, each at
+   `>= 70 %`.
 2. Non-driver ledger rows still mapped to `geplant` targets are implementation
    work, not merely narrative reclassification work, unless a true replacement
    or obsolete special case is documented.
@@ -202,8 +213,9 @@ Phase 0 resolves and locks the following planning decisions:
 - The ledger may no longer end with `portiert + Test ausstehend` rows once this
   feature is complete.
 - Remaining framework gaps are closed by implementation and tests inside
-  `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization`, not by
-  merely rewriting ledger text.
+  `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, and
+  `TuiVision.Compatibility`, while still-open driver rows must be backed by
+  final `TuiVision.Drivers.Console` proof. Ledger text alone is not enough.
 
 ### Quality-Gate Boundary
 
@@ -211,7 +223,8 @@ Phase 0 resolves and locks the following planning decisions:
   - `dotnet build --configuration Release`
   - `dotnet test` across all test projects
   - `dotnet format --verify-no-changes`
-  - per-module coverage evidence showing `>= 70 %` in Core/Controls/Serialization
+  - per-module coverage evidence showing `>= 70 %` in
+    Core/Controls/Serialization/Compatibility/Drivers.Console
   - conditional `docfx docfx.json` when public APIs or XML comments changed
   - Multi-Mac plus conditional Linux/Windows/WSL evidence
 - No skipped or ignored test without a tracked issue is acceptable in the gate.
@@ -229,8 +242,9 @@ Phase 0 resolves and locks the following planning decisions:
 
 1. Inventory all remaining non-driver `geplant` targets and all ledger rows that
    still end in `portiert + Test ausstehend`.
-2. Add failing MSTest coverage in the relevant Core/Controls/Serialization test
-   projects for those still-open behaviors.
+2. Add failing MSTest coverage in the relevant Core/Controls/Serialization/
+   Drivers test projects, plus Compatibility-focused tests where existing
+   suites are insufficient, for those still-open behaviors.
 3. Implement the minimum framework code needed to turn those rows into
    `portiert + getestet`, or explicitly document true replacements / obsolete
    cases where implementation is not warranted.
@@ -251,7 +265,7 @@ Phase 0 resolves and locks the following planning decisions:
 
 | Scenario class | Covered in spec | Planned artifact coverage |
 |---|---|---|
-| Remaining Core/Controls/Serialization gaps require real code and tests | Clarifications + User Story 1 | `research.md`, `data-model.md`, contract guarantees, implementation strategy |
+| Remaining Core/Controls/Serialization/Compatibility gaps require real code and tests | Clarifications + User Story 1 | `research.md`, `data-model.md`, contract guarantees, implementation strategy |
 | Ledger row moves from `portiert + Test ausstehend` to `portiert + getestet` | User Story 1 | `data-model.md`, contract status rules, quickstart validation flow |
 | Ledger row ends as `bewusst ausgelassen + Begruendung` because of true replacement or obsolescence | User Story 1 + FR-005/FR-006 | `research.md`, `data-model.md`, contract guarantees |
 | Full gate package must prove Phase-8 readiness in one pass | User Story 2 + SC-003/SC-005 | `plan.md`, `quickstart.md`, contract review surface |
@@ -271,24 +285,26 @@ Phase 0 resolves and locks the following planning decisions:
   caveats discovered during validation.
 - **Recovery scenarios**: a gate run reveals missing evidence, so the package is
   corrected before the dedicated closure commit is created.
-- **Non-functional scenarios**: 3x-70%-coverage compliance, repository-wide
+- **Non-functional scenarios**: 5x-70%-coverage compliance, repository-wide
   test pass, formatting pass, conditional docfx pass, and conditional platform
   evidence.
 
 ## Testing Strategy
 
 - **Framework unit tests**: Expand `tests/TuiVision.Core.Tests`,
-  `tests/TuiVision.Controls.Tests`, and `tests/TuiVision.Serialization.Tests`
-  first, before implementation, for every still-open ledger-backed behavior.
-- **Driver regression tests**: Retain `tests/TuiVision.Drivers.Tests` in the
-  full-suite run because the gate interpretation now requires all test projects
-  to pass, not only the directly touched ones.
+  `tests/TuiVision.Controls.Tests`, `tests/TuiVision.Serialization.Tests`, and
+  Compatibility-focused coverage first, before implementation, for every
+  still-open ledger-backed behavior.
+- **Driver regression tests**: Retain and extend `tests/TuiVision.Drivers.Tests`
+  because the gate interpretation now requires both full-suite pass status and
+  `TuiVision.Drivers.Console` coverage at or above the hard threshold.
 - **Example smoke tests**: Include `TuiVision.Examples.SmokeTests` in the
   repository-wide `dotnet test` pass; no new example ports are added here, but
   existing smoke tests still participate in the global gate.
 - **Coverage validation**: Collect per-module Coverlet evidence until
-  `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization` each
-  reach `>= 70 %` line coverage.
+  `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`,
+  `TuiVision.Compatibility`, and `TuiVision.Drivers.Console` each reach
+  `>= 70 %` line coverage.
 - **Proof-ledger review**: Treat `docs/porting-status.md` as a first-class
   deliverable and verify that no row remains provisional.
 - **Compatibility evidence**: Refresh Linux and Windows/WSL evidence when the
@@ -302,6 +318,10 @@ Phase 0 resolves and locks the following planning decisions:
   - `dotnet test tests/TuiVision.Core.Tests/ --collect:"XPlat Code Coverage"`
   - `dotnet test tests/TuiVision.Controls.Tests/ --collect:"XPlat Code Coverage"`
   - `dotnet test tests/TuiVision.Serialization.Tests/ --collect:"XPlat Code Coverage"`
+  - `dotnet test tests/TuiVision.Drivers.Tests/ --collect:"XPlat Code Coverage"`
+- **Compatibility coverage note**: If the existing suites do not exercise
+  `TuiVision.Compatibility` deeply enough to clear 70%, add a dedicated
+  Compatibility-focused MSTest suite and include it in the same coverage run.
 - **Conditional validation command**:
   - `docfx docfx.json` when public APIs or XML comments changed
 
@@ -312,7 +332,7 @@ Phase 0 resolves and locks the following planning decisions:
 | `SC-001` All 151 rows reach a final proof state | `data-model.md`, contract status rules, implementation strategy steps 1-4 |
 | `SC-002` Every `portiert + getestet` row has repository-visible automated evidence | testing strategy, contract review surface, quickstart validation flow |
 | `SC-003` All six entrance-gate criteria have explicit status with no undocumented blockers | plan summary, quickstart gate checklist, contract guarantees |
-| `SC-004` Core/Controls/Serialization each reach `>= 70 %` line coverage | research decisions, testing strategy, quickstart coverage flow |
+| `SC-004` Core/Controls/Serialization/Compatibility/Drivers.Console each reach `>= 70 %` line coverage | research decisions, testing strategy, quickstart coverage flow |
 | `SC-005` Reviewers can decide in one pass whether example wave 1 may start | plan summary, quickstart expected outcomes, dedicated closure commit rule |
 | `SC-006` Platform-evidence package includes Linux/Windows/WSL results or a valid N/A rationale | research decisions, data-model validation rules, contract platform evidence rule |
 

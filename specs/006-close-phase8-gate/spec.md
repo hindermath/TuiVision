@@ -9,7 +9,7 @@
 
 ### Session 2026-03-24
 
-- Q: Soll das Phase-8-Gate fuer die Coverage nur `TuiVision.Controls` mit 70 % erzwingen oder alle drei Module `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization`? → A: Alle drei Module `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` muessen jeweils mindestens 70 % Line Coverage erreichen.
+- Q: Soll das Phase-8-Gate fuer die Coverage nur `TuiVision.Controls` mit 70 % erzwingen oder weitere Module verbindlich einschliessen? → A: Das Eingangstor verlangt fuer `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console` jeweils mindestens 70 % Line Coverage.
 - Q: Duerfen heute noch als `geplant` markierte nicht-treiberspezifische Framework-Zeilen im M-07-Ledger ohne neue Implementierung nur narrativ abgeschlossen werden? → A: Nein. Nicht-treiberspezifische `geplant`-Zeilen muessen in diesem Feature real implementiert und getestet werden; nur echte Architektur-Ersetzungen oder obsolete Spezialfaelle duerfen als `bewusst ausgelassen + Begruendung` enden.
 - Q: Reicht fuer den Phase-8-Gate-Abschluss ein alternatives Review-Marker-Artefakt oder ist ein eigener Git-Commit Pflicht? → A: Der Phase-8-Gate-Abschluss braucht zwingend einen eigenen dedizierten Git-Commit.
 - Q: Bedeutet `full-suite validation evidence` im Gate einen erfolgreichen Lauf ueber alle Testprojekte im Repository oder nur ueber die Gate-nahen Module? → A: `Full-suite validation` bedeutet `dotnet test` fuer alle Testprojekte im Repository.
@@ -33,9 +33,9 @@ next step before Phase 8. As long as rows remain in a provisional status,
 mandatory example work is still formally blocked.
 
 **Independent Test**: Inspect `docs/porting-status.md`, sample entries from
-`TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, and driver
-areas, and confirm that each row is either explicitly verified or consciously
-excluded with a rationale.
+`TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`,
+`TuiVision.Compatibility`, and driver areas, and confirm that each row is
+either explicitly verified or consciously excluded with a rationale.
 
 **Acceptance Scenarios**:
 
@@ -136,15 +136,15 @@ pass whether example wave 1 is allowed to start.
 - **FR-007**: The feature MUST provide repository-visible full-suite validation
   evidence by running `dotnet test` successfully for all test projects in the
   repository, including the gate scope across `TuiVision.Core`,
-  `TuiVision.Controls`, `TuiVision.Serialization`, and the already
-  consolidated driver baseline.
+  `TuiVision.Controls`, `TuiVision.Serialization`,
+  `TuiVision.Compatibility`, and the already consolidated driver baseline.
 - **FR-008**: The feature MUST record whether any test is skipped or ignored
   within the gate scope. A skipped or ignored test without a corresponding
   tracked issue MUST prevent the gate from being reported as closed.
 - **FR-009**: The feature MUST provide current coverage evidence for
-  `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization`.
-  Each of the three modules MUST reach at least 70% line coverage before
-  Phase 8 may start.
+  `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`,
+  `TuiVision.Compatibility`, and `TuiVision.Drivers.Console`. Each of the five
+  modules MUST reach at least 70% line coverage before Phase 8 may start.
 - **FR-010**: The feature MUST provide current formatting and build compliance
   evidence for the gate scope as part of the same entrance-gate proof package.
 - **FR-011**: If public API signatures or XML comments change within this gate
@@ -191,8 +191,9 @@ pass whether example wave 1 is allowed to start.
 - `docs/porting-status.md` remains the primary human-readable proof ledger for
   M-07 and is the authoritative place to confirm row-level closure.
 - The entrance-gate closure will likely require additional tests and possibly
-  documentation updates in `TuiVision.Core`, `TuiVision.Controls`, and
-  `TuiVision.Serialization`, but it does not start example porting itself.
+  documentation updates in `TuiVision.Core`, `TuiVision.Controls`,
+  `TuiVision.Serialization`, `TuiVision.Compatibility`, and
+  `TuiVision.Drivers.Console`, but it does not start example porting itself.
 - Linux and Windows/WSL compatibility evidence may remain manual or
   semi-automated unless the same feature explicitly upgrades them into a harder
   gate.
@@ -211,9 +212,10 @@ pass whether example wave 1 is allowed to start.
 - **SC-003**: The Phase-8 entrance-gate review records an explicit status for
   all six criteria and leaves 0 undocumented blockers.
 - **SC-004**: The repository contains current coverage evidence for
-  `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization`, and
-  each of the three modules meets or exceeds 70% line coverage before Phase 8
-  is declared open.
+  `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`,
+  `TuiVision.Compatibility`, and `TuiVision.Drivers.Console`, and each of the
+  five modules meets or exceeds 70% line coverage before Phase 8 is declared
+  open.
 - **SC-005**: A project lead can determine in one review pass whether mandatory
   example wave 1 may begin, using only repository artifacts updated by this
   feature.

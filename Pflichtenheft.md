@@ -95,7 +95,7 @@ Statuscheckliste Anforderungen:
 | M-04 | Verwendung von C#/.NET 10 (.NET Core) | SDK-Target `net10.0` in allen Projekten | `dotnet build` laeuft ohne Target-Konflikte |
 | M-05 | Projektstruktur nach .NET-Best-Practices | Trennung in `src`, `tests`, `examples`, `docs` | Struktur ist konsistent, Build reproduzierbar |
 | M-06 | Portierung des Framework-Kerns aus `tv203s` | API- und Verhaltensport in C# | Definierte Kernmodule sind funktional und testbar |
-| M-07 | Portierung der Implementierungsdateien aus `tv203s/contrib/tvision/classes` | Alle `.cc`-Dateien aus dem Ordner `tv203s/contrib/tvision/classes` (z. B. `tview.cc`, `tgroup.cc`, `tapplica.cc`, `teditor.cc` u. v. m.) dienen als direkte C/C++-Vorlage fuer M-06; jede Datei wird gemaess Modulmapping (Abschnitt 7.2) einem Zielmodul (`TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization` oder `TuiVision.Drivers.Console`) zugeordnet und portiert | Alle identifizierten `.cc`-Quelldateien aus `tv203s/contrib/tvision/classes` (einschliesslich der plattformspezifischen Unterordner fuer `TuiVision.Drivers.Console`) sind in den entsprechenden C#-Zielmodulen nachweisbar abgebildet und durch Unit-Tests abgesichert |
+| M-07 | Portierung der Implementierungsdateien aus `tv203s/contrib/tvision/classes` | Alle `.cc`-Dateien aus dem Ordner `tv203s/contrib/tvision/classes` (z. B. `tview.cc`, `tgroup.cc`, `tapplica.cc`, `teditor.cc` u. v. m.) dienen als direkte C/C++-Vorlage fuer M-06; jede Datei wird gemaess Modulmapping (Abschnitt 7.2) einem Zielmodul (`TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` oder `TuiVision.Drivers.Console`) zugeordnet und portiert | Alle identifizierten `.cc`-Quelldateien aus `tv203s/contrib/tvision/classes` (einschliesslich der plattformspezifischen Unterordner fuer `TuiVision.Drivers.Console`) sind in den entsprechenden C#-Zielmodulen nachweisbar abgebildet und durch Unit-Tests abgesichert |
 | M-08 | Unit-Tests fuer portierte Klassen/Methoden mit MSTest | Testprojekte pro Modul, CI-faehig | Tests laufen lokal und in CI stabil durch |
 | M-09 | API-Dokumentation mit docfx | docfx-Konfiguration, API-Generierung und erneute Doku-Erstellung bei API-/XML-Kommentar-Aenderungen | Doku erzeugbar, verlinkt alle Kern-Namespaces und ist nach API-/XML-Aenderungen aktualisiert |
 | M-10 | Portierung der vorhandenen Beispiele | Alle 25 Originalbeispiele aus `tv203s/contrib/tvision/examples` als .NET-Beispiele abbilden; zusaetzlich koennen die Anschlusswellen aus `TVDEMOS/` und `TVFM/` nachgelagert portiert werden | Die 25 Originalbeispiele bauen und bestehen die definierten Smoke-Tests; die TP7-Anschlusswellen werden als Zusatzumfang separat verfolgt |
@@ -188,7 +188,7 @@ Statuscheckliste Eingangstor:
 - [-] Kriterium 4 - Test-Gate
   Reihenfolgehinweis: lokal stark abgesichert; CI-Nachweis und Skip-/Ignored-Pruefung vor Eingangstor nochmals explizit durchziehen.
 - [-] Kriterium 5 - Coverage-Gate
-  Reihenfolgehinweis: `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` muessen fuer das Eingangstor jeweils explizit ueber 70 % Line Coverage nachgewiesen werden.
+  Reihenfolgehinweis: `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console` muessen fuer das Eingangstor jeweils explizit ueber 70 % Line Coverage nachgewiesen werden.
 - [-] Kriterium 6 - API-Doku-Gate
   Reihenfolgehinweis: `docfx` laeuft, der Vollstaendigkeitsnachweis fuer die gesamte oeffentliche API steht aber noch aus.
 - [ ] Nachweisdokument
@@ -198,7 +198,7 @@ Statuscheckliste Eingangstor:
 
 Die Datei `docs/porting-status.md` muss existieren und fuer jede `.cc`-Quelldatei aus `tv203s/contrib/tvision/classes` (einschliesslich plattformspezifischer Unterordner) einen Eintrag enthalten mit:
 - Quelldatei (relativer Pfad in `tv203s/`)
-- Zugeordnetes C#-Zielmodul (`TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization` oder `TuiVision.Drivers.Console`)
+- Zugeordnetes C#-Zielmodul (`TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` oder `TuiVision.Drivers.Console`)
 - Zugehoerige C#-Zieldatei(en)
 - Teststatus (`portiert + getestet` / `portiert + Test ausstehend` / `bewusst ausgelassen + Begruendung`)
 
@@ -218,7 +218,7 @@ Alle Unit-Tests in `tests/` laufen gruen durch, lokal und in CI (M-08). Kein Tes
 
 #### Kriterium 5 – Coverage-Gate
 
-Line Coverage in `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` betraegt jeweils mindestens 70 % (gemaess §9.4 Nr. 1), gemessen mit Coverlet. Das Coverage-Ergebnis ist als CI-Artefakt oder lokaler Report nachweisbar.
+Line Coverage in `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console` betraegt jeweils mindestens 70 % (gemaess §9.4 Nr. 1), gemessen mit Coverlet. Das Coverage-Ergebnis ist als CI-Artefakt oder lokaler Report nachweisbar.
 
 #### Kriterium 6 – API-Doku-Gate
 
@@ -353,8 +353,8 @@ Zulaessige Nachweisartefakte sind Testfall, Smoke-Test, Build-/CI-Nachweis, Doku
 
 ### 9.4 Verbindlicher Mindest-Testumfang (MUSS-Tests)
 Die folgenden Punkte sind verpflichtend und bilden die "MUSS-Tests" im Sinne dieses Pflichtenhefts:
-- [-] Unit-Test-Abdeckung (Line Coverage) von mindestens 70% in `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization`.
-  Reihenfolgehinweis: `Controls` und `Serialization` sind nachgewiesen; `Core` fuer den Gesamtabschluss noch explizit messen.
+- [-] Unit-Test-Abdeckung (Line Coverage) von mindestens 70% in `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console`.
+  Reihenfolgehinweis: Fuer den Gesamtabschluss muessen die finalen Coverlet-Nachweise fuer alle fuenf Gate-Module gemeinsam vorliegen.
 - [-] Fuer jede portierte Kernkomponente existieren mindestens ein Positivtest und ein Negativ-/Fehlerfalltest (sofern fachlich sinnvoll).
 - [x] Integrations-/Verhaltenstests decken mindestens Event-Loop, Fokuswechsel, Menueausfuehrung und Dialoginteraktion ab.
 - [ ] Smoke-Tests laufen fuer alle 25 portierten Beispielprogramme automatisiert in CI.
@@ -594,8 +594,8 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
 
 2. **M-07 vollstaendig schliessen und das Eingangstor fuer Phase 8 (Beginn der Beispielportierungen) nachweisbar schliessen**
    - `docs/porting-status.md` ist aufgebaut; alle 151 `.cc`-Dateien abgebildet. Offene Aufgabe: Status `portiert + Test ausstehend` durch tatsaechliche Testabdeckung in Phase-8-Scope schliessen.
-   - Build-, Test-, Coverage- und API-Doku-Gate fuer `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` vollstaendig nachziehen; fuer alle drei Module gilt jeweils `>= 70 %` Line Coverage als harte Eingangstor-Bedingung.
-   - Offene Gate-Punkte: vollstaendige `dotnet test` aller Module ohne Fehler; Coverage-Gate fuer `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization`; `dotnet format --verify-no-changes` dauerhaft; `docfx docfx.json` bei API-Aenderungen.
+   - Build-, Test-, Coverage- und API-Doku-Gate fuer `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console` vollstaendig nachziehen; fuer alle fuenf Module gilt jeweils `>= 70 %` Line Coverage als harte Eingangstor-Bedingung.
+   - Offene Gate-Punkte: vollstaendige `dotnet test` aller Module ohne Fehler; Coverage-Gate fuer `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console`; `dotnet format --verify-no-changes` dauerhaft; `docfx docfx.json` bei API-Aenderungen.
 
 3. **MUSS-Beispielwellen 1 bis 4 portieren**
    - Erst nach bestandenem Eingangstor beginnen.

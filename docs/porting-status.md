@@ -358,9 +358,9 @@ Die folgenden Punkte gehören **nicht** zu Phase 7, müssen aber vor dem Beginn 
 | Gate-Bereich | Aktueller Status | Nächster Schritt |
 |---|---|---|
 | Build-Gate: `dotnet build --configuration Release` für alle Module | Phase-7-Scope: PASS | Vor Phase-8 erneut validieren nach Beispiel-Portierungsänderungen. |
-| Test-Gate: `dotnet test` (alle Module) | Coverage-Nachweis `>= 70 %` für `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` ausstehend | Tests für Core-, Controls- und Serialization-Typen schließen; Coverage messen. |
+| Test-Gate: `dotnet test` (alle Module) | Coverage-Nachweis `>= 70 %` für `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console` ausstehend | Tests für Core-, Controls-, Serialization-, Compatibility- und Driver-Typen schließen; Coverage messen. |
 | Format-Gate: `dotnet format --verify-no-changes` | PASS (Phase-7-Scope) | Fortlaufend sicherstellen. |
-| Coverage-Gate: `TuiVision.Core`, `TuiVision.Controls` und `TuiVision.Serialization` jeweils ≥ 70 % Line Coverage | Ausstehend | Fehlende Core-, Control- und Serialization-Tests implementieren. |
+| Coverage-Gate: `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console` jeweils ≥ 70 % Line Coverage | Ausstehend | Fehlende Core-, Control-, Serialization-, Compatibility- und Driver-Tests implementieren. |
 | API-Doku-Gate: XML-Kommentare + `docfx docfx.json` | Für Phase-7-Änderungen aktuell | Bei Phase-8-API-Änderungen erneuern. |
-| Vollständiger M-07-Beweis: alle `.cc`-Zeilen mit `portiert + getestet` oder `bewusst ausgelassen + Begruendung` | Viele Zeilen noch auf `portiert + Test ausstehend` | Tests für portierte Core-, Controls- und Serialization-Bereiche in Phase 8 schließen. |
+| Vollständiger M-07-Beweis: alle `.cc`-Zeilen mit `portiert + getestet` oder `bewusst ausgelassen + Begruendung` | Viele Zeilen noch auf `portiert + Test ausstehend` | Tests für portierte Core-, Controls-, Serialization-, Compatibility- und Driver-Bereiche in Phase 8 schließen. |
 | Beispielportierungen Wellen 1–4 | Noch nicht begonnen | Erst nach bestandenem Eingangstor beginnen. |
