@@ -31,6 +31,9 @@ fortgeschrieben.
   unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr ergeben sich
   `21.5 * 12 - 30 = 228` produktive Arbeitstage pro Jahr bzw.
   durchschnittlich 19.0 produktive Tage pro Kalendermonat.
+- TVoeD-Stundenbasis in dieser Datei:
+  `7.8 Stunden` bzw. `7 Stunden 48 Minuten` pro Arbeitstag fuer zusaetzliche
+  Stundenumrechnungen.
 - Abgeleitete Formeln in dieser Datei:
   Einzelentwickler `((Produktionscode + Testcode + Dokumentation) / 80)`;
   3er-Team `Einzelentwickler / 3 * 1.2` mit 20 % Koordinationsaufschlag.
@@ -76,9 +79,11 @@ fortgeschrieben.
 | Davon Governance/Agent-Dateien | 5 Dateien / 1028 Zeilen |
 | Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 28251 Zeilen |
 | Erfahrener Entwickler, konservative Untergrenze | 353.1 Arbeitstage |
+| Erfahrener Entwickler, konservative Untergrenze in Stunden | 2754.2 Stunden (353.1 * 7.8) |
 | Erfahrener Entwickler, brutto | 16.4 Arbeitsmonate (21.5 Tage/Monat) |
 | Erfahrener Entwickler, TVoeD-Annahme | 18.6 Kalendermonate bzw. 1.5 Jahre |
 | Thorsten solo, erfahrungsadjustierte Untergrenze | 226.0 Arbeitstage |
+| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 1762.8 Stunden (226.0 * 7.8) |
 | Thorsten solo, brutto | 10.5 Arbeitsmonate (21.5 Tage/Monat) |
 | Thorsten solo, TVoeD-Annahme | 11.9 Kalendermonate bzw. 1.0 Jahre |
 | Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 141.3 Arbeitstage |
@@ -360,3 +365,4 @@ fortgeschrieben.
 | 2026-03-25 | Gate-Dokumentations-Review fuer `006-close-phase8-gate` | Die neue Gate-Checkliste wurde gegen den 006-Dokumentensatz abgeglichen; dabei wurden Gate-Scope-Entfernungen im selben Artefaktpaket, Begriffschaerfungen fuer Platzhalter-/No-op-/triviale Tests sowie die Behandlung lokaler-vs.-CI-Coverage-Konflikte in Spezifikation, Plan, Datenmodell, Quickstart, Vertrag und Agent-Guidance nachgeschaerft. |
 | 2026-03-25 | `/speckit-tasks` fuer `006-close-phase8-gate` | Eine umsetzbare `tasks.md` mit 34 Aufgaben aus `spec.md`, `plan.md`, `research.md`, `data-model.md`, `quickstart.md` und `contracts/phase-8-gate-contract.md` erstellt; die Aufgaben schneiden den Restaufwand in die drei 006-User-Stories, verankern die TDD-Reihenfolge, ein eigenes `TuiVision.Compatibility`-Testprojekt, die assembly-scharfen 5x-70-%-Coverage-Nachweise und den dedizierten Gate-Closure-Commit. |
 | 2026-03-25 | Erfahrungsadjustierte Beschleunigungsrechnung erweitert | Die Statistik wurde um eine zweite Thorsten-Solo-Referenz erweitert: >40 Jahre Softwareentwicklung seit Februar 1985, .NET-/C#-Praxis seit 2001 und 10-15 Jahre Turbo-Pascal-/Turbo-Vision-Erfahrung werden nun als explizite Annahmen fuer die repo-weite Beschleunigungsrechnung gegenueber klassischer Portierung ausgewiesen; dieselbe Logik wurde in die gemeinsamen Agent-Dateien synchronisiert. |
+| 2026-03-25 | TVoeD-Stundenbasis ergänzt | Die Statistik weist zusaetzlich Stundenwerte auf Basis von `7,8 Stunden` bzw. `7 Stunden 48 Minuten` pro Arbeitstag aus; dieselbe Umrechnungsregel wurde in die gemeinsamen Agent-Dateien aufgenommen. |
