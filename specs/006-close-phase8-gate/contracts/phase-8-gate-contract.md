@@ -59,8 +59,14 @@ of the accepted closure surface.
 4. `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`,
    `TuiVision.Compatibility`, and `TuiVision.Drivers.Console` each reach
    `>= 70 %` line coverage.
-5. If public APIs or XML comments changed, `docfx docfx.json` succeeds.
-6. No undocumented blocker remains in the gate review.
+5. Coverage evidence is reviewable separately for each of the five gate
+   assemblies, not only as an aggregated percentage.
+6. No gate-scoped module remains placeholder-only or no-op-only.
+7. If local and CI coverage evidence diverges for a gate assembly, the
+   discrepancy is resolved and the authoritative repository-visible result is
+   identified before closure.
+8. If public APIs or XML comments changed, `docfx docfx.json` succeeds.
+9. No undocumented blocker remains in the gate review.
 
 ### Test and Coverage Guarantees
 
@@ -69,7 +75,18 @@ of the accepted closure surface.
 2. **Five-module coverage guarantee**: Core, Controls, Serialization,
    Compatibility, and Drivers.Console each satisfy the same hard 70%
    threshold.
-3. **Skip/ignore guarantee**: A skipped or ignored test without a tracked issue
+3. **Assembly-report guarantee**: The final proof package exposes coverage
+   results separately for the five target assemblies, even where tests are
+   shared across projects.
+4. **Real-responsibility guarantee**: A gate-counted module must carry real
+   remaining framework responsibility; placeholder-only or no-op-only code with
+   trivial tests does not satisfy the contract.
+5. **Gate-scope update guarantee**: If a module is restructured out of the hard
+   gate, the gate-defining proof surfaces are updated in the same change.
+6. **Conflict-resolution guarantee**: Divergent local and CI coverage results
+   cannot leave the gate in a passing state until the governing result is
+   explicitly named.
+7. **Skip/ignore guarantee**: A skipped or ignored test without a tracked issue
    blocks closure.
 
 ## Compatibility-Evidence Contract

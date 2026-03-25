@@ -5,7 +5,8 @@
 - **Decision**: `TuiVision.Core`, `TuiVision.Controls`,
   `TuiVision.Serialization`, `TuiVision.Compatibility`, and
   `TuiVision.Drivers.Console` must each reach at least 70% line coverage
-  before the Phase-8 entrance gate may be declared closed.
+  before the Phase-8 entrance gate may be declared closed, and that result
+  must be reviewable separately for each target assembly.
 - **Rationale**: The clarified specification now treats the final Phase-8
   readiness claim as a five-module completeness statement. Compatibility and
   the managed driver baseline are part of the same framework proof surface and
@@ -15,6 +16,19 @@
     evidence.
   - Limit the hard gate to Core/Controls/Serialization while leaving
     Compatibility or Drivers.Console outside the threshold.
+
+## Decision 1a: Coverage evidence is assembly-specific even when tests are shared
+
+- **Decision**: The final evidence package must report line coverage
+  assembly-by-assembly for the five gate modules, even when the exercising
+  tests come from shared or cross-module repository test projects.
+- **Rationale**: The clarified specification explicitly rejects an aggregated
+  coverage number as sufficient proof. Reviewers need a direct pass/fail view
+  for each gate assembly.
+- **Alternatives considered**:
+  - Accept one aggregated repository coverage percentage.
+  - Require one dedicated test project per gate module instead of allowing
+    shared suites with separated reporting.
 
 ## Decision 2: Non-driver `geplant` rows are implementation work, not narrative cleanup
 
@@ -78,3 +92,28 @@
   - Split evidence across repository files and external review notes.
   - Treat CI output alone as sufficient without synchronizing the human-readable
     proof documents.
+
+## Decision 7: Placeholder-only or no-op-only modules cannot satisfy the gate
+
+- **Decision**: A module counted toward the Phase-8 coverage gate must carry
+  real remaining framework responsibility. Placeholder-only or no-op-only code
+  with trivial tests is not acceptable proof; such a module must either gain
+  real responsibility or be restructured out of the hard gate before closure is
+  claimed.
+- **Rationale**: Otherwise the expanded five-module gate could be passed
+  formally while weakening the actual meaning of framework completeness.
+- **Alternatives considered**:
+  - Accept trivial placeholder coverage as long as the percentage passes.
+  - Allow only `TuiVision.Compatibility` as a special placeholder exception.
+
+## Decision 8: Coverage conflicts require explicit resolution
+
+- **Decision**: If local and CI coverage results diverge for a gate assembly,
+  the Phase-8 gate remains open until the discrepancy is explained and the
+  final repository-visible evidence package identifies the authoritative
+  result.
+- **Rationale**: Assembly-specific proof is only useful if reviewers know which
+  result governs the closure decision when multiple measurements exist.
+- **Alternatives considered**:
+  - Let the latest local result implicitly override CI.
+  - Let CI always win without documenting the discrepancy.

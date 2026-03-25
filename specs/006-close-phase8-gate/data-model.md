@@ -76,9 +76,14 @@ compatibility-validation evidence, and the dedicated gate-closure commit.
   - Module name (`TuiVision.Core`, `TuiVision.Controls`,
     `TuiVision.Serialization`, `TuiVision.Compatibility`,
     `TuiVision.Drivers.Console`)
+  - Target assembly identity
   - Measurement method
   - Coverage percentage
   - Report location
+  - Contributing test projects
+  - Evidence source (`local`, `CI`, `mixed`)
+  - Conflict state (`clear`, `conflicted`, `resolved`)
+  - Authoritative-result marker
   - Pass/fail state
 - **Relationships**:
   - Belongs to one `QualityGateResult`
@@ -86,6 +91,29 @@ compatibility-validation evidence, and the dedicated gate-closure commit.
   - Each of the five required modules must appear exactly once in the gate
     evidence set
   - Coverage percentage must be `>= 70 %` for a passing result
+  - The evidence must be readable per target assembly, not only as an
+    aggregated repository percentage
+  - Conflicted local-versus-CI evidence cannot reach a passing final state
+    until one authoritative result is identified
+
+### GateScopedModule
+
+- **Purpose**: Represents one module that is still counted toward the hard
+  Phase-8 coverage gate.
+- **Key attributes**:
+  - Module name
+  - Responsibility summary
+  - Code status (`active`, `placeholder-only`, `restructured-out`)
+  - Gate-inclusion state
+- **Relationships**:
+  - Owns exactly one `CoverageResult` while included in the hard gate
+  - May be referenced by zero to many `HistoricalImplementationFile` rows
+- **Validation rules**:
+  - A gate-included module cannot remain `placeholder-only` at closure time
+  - If a module has no real remaining responsibility, it must be marked
+    `restructured-out` before gate closure is claimed
+  - A restructured-out module must be removed from the gate-defining proof
+    surfaces in the same closure effort
 
 ### QualityGateResult
 
@@ -149,12 +177,26 @@ compatibility-validation evidence, and the dedicated gate-closure commit.
 
 ### Coverage Lifecycle
 
-`planned` -> `measured` -> `passing` / `blocked`
+`planned` -> `measured` -> `passing` / `blocked` / `conflicted`
 
 - `planned`: the module is identified as part of the hard gate
-- `measured`: a Coverlet-backed result exists
+- `measured`: a Coverlet-backed result exists and is attributable to one target
+  assembly
 - `passing`: the module is at least 70% line coverage
 - `blocked`: the module is below threshold or missing evidence
+- `conflicted`: multiple repository-visible measurements disagree and the
+  authoritative result is not yet named
+
+### Gate-Scoped Module Lifecycle
+
+`identified` -> `confirmed-active` / `restructured-out` -> `eligible-for-closure`
+
+- `identified`: the module is currently listed in the hard gate
+- `confirmed-active`: the module still carries real remaining responsibility
+- `restructured-out`: the module is explicitly removed from gate scope by
+  restructuring or scope correction, and the proof surfaces are updated
+- `eligible-for-closure`: the module is active and backed by valid coverage
+  evidence
 
 ### Entrance-Gate Lifecycle
 

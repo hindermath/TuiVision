@@ -15,6 +15,11 @@
 - Q: Bedeutet `full-suite validation evidence` im Gate einen erfolgreichen Lauf ueber alle Testprojekte im Repository oder nur ueber die Gate-nahen Module? → A: `Full-suite validation` bedeutet `dotnet test` fuer alle Testprojekte im Repository.
 - Q: Sind Linux- und Windows/WSL-Kompatibilitaetsnachweise fuer dieses Gate immer Pflichtblocker oder nur bei materiell plattformrelevanten Aenderungen? → A: Linux- und Windows/WSL-Nachweise sind Pflicht, wenn die Aenderungen Laufzeit-, Terminal-, Portabilitaets- oder Build-Verhalten materiell betreffen; sonst reicht eine begruendete Nicht-Anwendbarkeit.
 
+### Session 2026-03-25
+
+- Q: Gilt das erweiterte Coverage-Gate pro Ziel-Assembly oder nur als aggregierter Report? → A: Die 70-%-Huerde gilt pro Ziel-Assembly; die Tests duerfen aus beliebigen Repository-Testprojekten kommen, solange der finale Coverage-Report `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console` getrennt ausweist.
+- Q: Duerfen Gate-Module ihre 70 % auch nur mit Platzhalter- oder No-op-Code erreichen? → A: Nein. Ein Gate-Modul darf nicht nur durch Platzhalter-/No-op-Code und triviale Tests die 70 % erreichen; wenn es im Gate bleibt, braucht es reale verbleibende Verantwortung, sonst muss es vor Gate-Schluss sauber entfernt oder umgeordnet werden.
+
 ## User Scenarios & Testing *(mandatory)*
 
 This feature does not start any of the 25 mandatory original examples from
@@ -106,6 +111,10 @@ pass whether example wave 1 is allowed to start.
   than to a one-class-to-one-file historical equivalent?
 - How is the gate handled when the build and tests succeed, but a skipped or
   ignored test is discovered without a matching tracked issue?
+- What happens if a Phase-8 gate module still contains only placeholder or
+  no-op code while the coverage threshold is being measured?
+- What happens if local and CI coverage results disagree for one gate
+  assembly?
 - What happens when no public API or XML-comment change occurs while the gate is
   being closed?
 - How is the evidence package interpreted when macOS, Linux, and Windows/WSL
@@ -145,6 +154,20 @@ pass whether example wave 1 is allowed to start.
   `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`,
   `TuiVision.Compatibility`, and `TuiVision.Drivers.Console`. Each of the five
   modules MUST reach at least 70% line coverage before Phase 8 may start.
+  Coverage is evaluated per target assembly, and the final evidence package
+  MUST report the five assemblies separately even when the exercising tests are
+  distributed across multiple repository test projects.
+- **FR-009a**: A module counted toward the Phase-8 coverage gate MUST represent
+  real remaining framework responsibility. Placeholder-only or no-op-only code
+  paired with trivial tests MUST NOT be used to satisfy the gate. If such a
+  module has no real remaining responsibility, it MUST be removed from the gate
+  scope by explicit restructuring or scope correction before closure is claimed.
+  The same change MUST update the gate-defining proof surfaces that still name
+  the module, including the specification, planning artifacts, and the final
+  gate-review documents.
+- **FR-009b**: If local and CI coverage results diverge for any gate assembly,
+  the gate MUST remain open until the discrepancy is explained and the final
+  repository-visible evidence package identifies which result is authoritative.
 - **FR-010**: The feature MUST provide current formatting and build compliance
   evidence for the gate scope as part of the same entrance-gate proof package.
 - **FR-011**: If public API signatures or XML comments change within this gate
@@ -178,6 +201,14 @@ pass whether example wave 1 is allowed to start.
 - **Validation Evidence Package**: The repository-visible collection of proof
   artifacts that shows current build, test, coverage, formatting, API-doc, and
   compatibility status for the gate scope.
+- **Coverage Result**: One assembly-specific line-coverage result for
+  `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`,
+  `TuiVision.Compatibility`, or `TuiVision.Drivers.Console`, measured and
+  reported separately inside the final evidence package.
+- **Gate-Scoped Module**: One module still counted toward the hard Phase-8
+  coverage gate because it retains real remaining framework responsibility. A
+  module with no such remaining responsibility must be explicitly restructured
+  out of the gate and removed from the gate-defining proof surfaces.
 - **Gate-Closure Commit**: The dedicated git commit that states the gate is
   closed and points to the supporting evidence.
 - **Mandatory Example Wave**: One of the required example-porting waves that
@@ -194,6 +225,12 @@ pass whether example wave 1 is allowed to start.
   documentation updates in `TuiVision.Core`, `TuiVision.Controls`,
   `TuiVision.Serialization`, `TuiVision.Compatibility`, and
   `TuiVision.Drivers.Console`, but it does not start example porting itself.
+- Any module retained inside the hard coverage gate is assumed to carry real
+  remaining runtime or framework responsibility rather than placeholder-only
+  content.
+- If local and CI evidence diverge for a gate assembly, closure is deferred
+  until the discrepancy is resolved and one authoritative repository-visible
+  result is named.
 - Linux and Windows/WSL compatibility evidence may remain manual or
   semi-automated unless the same feature explicitly upgrades them into a harder
   gate.
@@ -215,7 +252,9 @@ pass whether example wave 1 is allowed to start.
   `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`,
   `TuiVision.Compatibility`, and `TuiVision.Drivers.Console`, and each of the
   five modules meets or exceeds 70% line coverage before Phase 8 is declared
-  open.
+  open; reviewers can read that result assembly-by-assembly rather than only as
+  one aggregated coverage number, and no unresolved local-versus-CI conflict
+  remains for any gate assembly.
 - **SC-005**: A project lead can determine in one review pass whether mandatory
   example wave 1 may begin, using only repository artifacts updated by this
   feature.
