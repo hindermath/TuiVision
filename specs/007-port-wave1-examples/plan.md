@@ -166,9 +166,9 @@ tests/
 
 docs/
 ├── guides/
-│   └── examples/
+│   ├── examples/
+│   └── multi-mac-workflow.md
 ├── project-statistics.md
-└── multi-mac-workflow.md
 
 tv203s/
 └── contrib/tvision/examples/
