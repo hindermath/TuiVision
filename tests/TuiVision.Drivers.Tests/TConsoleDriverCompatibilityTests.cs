@@ -125,6 +125,42 @@ public sealed class TConsoleDriverCompatibilityTests
             $"KeyboardInput replacement must mention ReadKey.\n{replacement}");
     }
 
+    // ── Gate-006-Integritätsprüfungen / Gate-006 integrity assertions ─────────
+
+    /// <summary>
+    /// Gate-006-Integritätsprüfung: <c>TuiVision.Drivers.Console</c> darf nicht ausschließlich
+    /// No-op-Code enthalten. <see cref="TConsoleDriver"/> muss echte Buffer-Verwaltung
+    /// implementieren, messbar durch WriteText/GetCell.
+    ///
+    /// Gate-006 integrity check: <c>TuiVision.Drivers.Console</c> must not contain only
+    /// no-op code. <see cref="TConsoleDriver"/> must implement real buffer management,
+    /// measurable through WriteText/GetCell.
+    /// </summary>
+    [TestMethod]
+    public void Driver_HasRealBufferImplementation_Gate006()
+    {
+        var driver = new TConsoleDriver(5, 3);
+
+        // Must have a real back buffer (not null, not throw)
+        Assert.IsNotNull(driver.BackBuffer,
+            "Gate-006: TConsoleDriver.BackBuffer darf nicht null sein. " +
+            "Gate-006: TConsoleDriver.BackBuffer must not be null.");
+
+        // Writes must be observable through GetCell — no-op would fail this
+        driver.BackBuffer.WriteText(0, 0, "Hi".AsSpan(), ConsoleColor.Cyan, ConsoleColor.DarkBlue);
+        Assert.AreEqual('H', driver.BackBuffer.GetCell(0, 0).Glyph,
+            "Gate-006: TConsoleDriver.BackBuffer.WriteText ist eine No-op-Implementierung. " +
+            "Gate-006: TConsoleDriver.BackBuffer.WriteText is a no-op implementation.");
+        Assert.AreEqual('i', driver.BackBuffer.GetCell(1, 0).Glyph,
+            "Gate-006: TConsoleDriver.BackBuffer.WriteText schreibt keine zweite Zelle. " +
+            "Gate-006: TConsoleDriver.BackBuffer.WriteText does not write the second cell.");
+
+        // Colour information must be stored (no-op driver would use defaults)
+        Assert.AreEqual(ConsoleColor.Cyan, driver.BackBuffer.GetCell(0, 0).Foreground,
+            "Gate-006: TConsoleDriver.BackBuffer muss Vordergrundfarbe speichern. " +
+            "Gate-006: TConsoleDriver.BackBuffer must store foreground colour.");
+    }
+
     // ── Kompatibilitätsnachweis-Hilfstests / Compatibility evidence helper tests ──
 
     /// <summary>

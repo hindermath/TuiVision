@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuiVision.Examples.SmokeTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuiVision.Serialization.Tests", "tests\TuiVision.Serialization.Tests\TuiVision.Serialization.Tests.csproj", "{F36F481C-FABC-4031-B09C-0E8873D9EB45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuiVision.Compatibility.Tests", "tests\TuiVision.Compatibility.Tests\TuiVision.Compatibility.Tests.csproj", "{917E99FD-ABEA-449E-B74F-ED39EE6CA120}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,6 +159,18 @@ Global
 		{F36F481C-FABC-4031-B09C-0E8873D9EB45}.Release|x64.Build.0 = Release|Any CPU
 		{F36F481C-FABC-4031-B09C-0E8873D9EB45}.Release|x86.ActiveCfg = Release|Any CPU
 		{F36F481C-FABC-4031-B09C-0E8873D9EB45}.Release|x86.Build.0 = Release|Any CPU
+		{917E99FD-ABEA-449E-B74F-ED39EE6CA120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{917E99FD-ABEA-449E-B74F-ED39EE6CA120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{917E99FD-ABEA-449E-B74F-ED39EE6CA120}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{917E99FD-ABEA-449E-B74F-ED39EE6CA120}.Debug|x64.Build.0 = Debug|Any CPU
+		{917E99FD-ABEA-449E-B74F-ED39EE6CA120}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{917E99FD-ABEA-449E-B74F-ED39EE6CA120}.Debug|x86.Build.0 = Debug|Any CPU
+		{917E99FD-ABEA-449E-B74F-ED39EE6CA120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{917E99FD-ABEA-449E-B74F-ED39EE6CA120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{917E99FD-ABEA-449E-B74F-ED39EE6CA120}.Release|x64.ActiveCfg = Release|Any CPU
+		{917E99FD-ABEA-449E-B74F-ED39EE6CA120}.Release|x64.Build.0 = Release|Any CPU
+		{917E99FD-ABEA-449E-B74F-ED39EE6CA120}.Release|x86.ActiveCfg = Release|Any CPU
+		{917E99FD-ABEA-449E-B74F-ED39EE6CA120}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -172,5 +186,6 @@ Global
 		{16F57635-C7DF-4D23-A01D-2439B552CD28} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 		{F16FFD1E-0F57-4F04-B5CC-AD12E7232E57} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 		{F36F481C-FABC-4031-B09C-0E8873D9EB45} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
+		{917E99FD-ABEA-449E-B74F-ED39EE6CA120} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 	EndGlobalSection
 EndGlobal
