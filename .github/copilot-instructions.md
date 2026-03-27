@@ -106,6 +106,7 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
   - `CLAUDE.md`
   - `GEMINI.md`
   - `.github/copilot-instructions.md`
+  - `.github/agents/copilot-instructions.md`
 - Shared guidance must not be updated in only one of these files.
 - Any intentional agent-specific divergence must be called out explicitly in the same change.
 
@@ -122,6 +123,7 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 
 - The Multi-Mac setup on `MacBook Air M2` and `Mac mini M4 Pro` is the primary development and day-to-day test workflow.
 - Keep `gh`, `specify`, `codex`, `claude`, `copilot`, and `gemini` installed on both Macs; before Spec-Kit work or Spec-Kit updates, run `specify check` to confirm the required toolchain is available.
+- After every `/speckit-plan` run or equivalent plan refresh that changes active technologies, project structure, or agent context, run `.specify/scripts/bash/update-agent-context.sh` for `codex`, `claude`, `gemini`, and `copilot` in the same work item by default. This repository treats that multi-agent context refresh as pre-approved maintenance and does not require a separate user prompt.
 - Linux and Windows are additional compatibility-validation environments; on Windows, prefer WSL with a current Ubuntu release, currently `Ubuntu 24.04`.
 - When changes affect runtime behavior, build reliability, terminal behavior, or portability, include Linux and Windows/WSL compatibility checks where practical and reflect them in CI or equivalent validation evidence when feasible.
 
