@@ -23,9 +23,9 @@
 
 **Purpose**: Freeze the real 006 closure scope before code changes begin.
 
-- [ ] T001 Audit `docs/porting-status.md` and freeze the list of all remaining `portiert + Test ausstehend` rows plus non-driver `geplant` targets that 006 must close.
-- [ ] T002 Audit gate-scoped responsibilities in `src/TuiVision.Core/`, `src/TuiVision.Controls/`, `src/TuiVision.Serialization/`, `src/TuiVision.Compatibility/Class1.cs`, `src/TuiVision.Drivers.Console/Class1.cs`, and `src/TuiVision.Drivers.Console/TConsoleDriver.cs` to confirm whether any module must be restructured out of the hard gate.
-- [ ] T003 [P] Audit the authoritative proof surfaces in `Pflichtenheft.md`, `docs/porting-status.md`, `specs/005-driver-consolidation-m07/checklists/phase-8-gate-review.md`, `specs/006-close-phase8-gate/quickstart.md`, and `specs/006-close-phase8-gate/contracts/phase-8-gate-contract.md` so later closure updates stay synchronized.
+- [X] T001 Audit `docs/porting-status.md` and freeze the list of all remaining `portiert + Test ausstehend` rows plus non-driver `geplant` targets that 006 must close. As part of this audit, run `dotnet test tests/TuiVision.Controls.Tests/ --collect:"XPlat Code Coverage"` and inspect the resulting `coverage.cobertura.xml` to determine whether `TuiVision.Compatibility` already receives transitive line coverage above 0 % from shared tests; record the baseline percentage so T006 can scope the dedicated Compatibility suite correctly.
+- [X] T002 Audit gate-scoped responsibilities in `src/TuiVision.Core/`, `src/TuiVision.Controls/`, `src/TuiVision.Serialization/`, `src/TuiVision.Compatibility/Class1.cs`, `src/TuiVision.Drivers.Console/Class1.cs`, and `src/TuiVision.Drivers.Console/TConsoleDriver.cs` to confirm whether any module must be restructured out of the hard gate. If a placeholder-only or no-op-only module is identified, the gate-scope restructuring package (coordinated updates to `specs/006-close-phase8-gate/spec.md`, `specs/006-close-phase8-gate/plan.md`, `specs/006-close-phase8-gate/quickstart.md`, `specs/006-close-phase8-gate/contracts/phase-8-gate-contract.md`, and `specs/005-driver-consolidation-m07/checklists/phase-8-gate-review.md`) MUST be applied in the same change before any Phase-3 implementation task starts.
+- [X] T003 [P] Audit the authoritative proof surfaces in `Pflichtenheft.md`, `docs/porting-status.md`, `specs/005-driver-consolidation-m07/checklists/phase-8-gate-review.md`, `specs/006-close-phase8-gate/quickstart.md`, and `specs/006-close-phase8-gate/contracts/phase-8-gate-contract.md` so later closure updates stay synchronized.
 
 ---
 
@@ -35,10 +35,10 @@
 
 **⚠️ CRITICAL**: No user-story implementation should start before these tasks are complete.
 
-- [ ] T004 Strengthen `tests/TuiVision.Drivers.Tests/PortingStatusLedgerTests.cs` and `tests/TuiVision.Drivers.Tests/PortingStatusCompletenessTests.cs` so provisional `portiert + Test ausstehend` rows and undocumented non-driver `geplant` closures fail fast.
-- [ ] T005 [P] Add gate-scope integrity assertions in `tests/TuiVision.Examples.SmokeTests/Test1.cs` and `tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs` that reject placeholder-only or no-op-only closure evidence for `TuiVision.Compatibility` and `TuiVision.Drivers.Console`.
-- [ ] T006 [P] Create `tests/TuiVision.Compatibility.Tests/TuiVision.Compatibility.Tests.csproj`, add it to `TuiVision.sln`, and scaffold first coverage-focused tests under `tests/TuiVision.Compatibility.Tests/`.
-- [ ] T007 Add shared ledger/evidence parsing helpers to `tests/TuiVision.Drivers.Tests/Phase7DriverTestContext.cs` so row-state, evidence-link, and final-proof checks can be reused across the 006 proof tests.
+- [X] T004 Strengthen `tests/TuiVision.Drivers.Tests/PortingStatusLedgerTests.cs` and `tests/TuiVision.Drivers.Tests/PortingStatusCompletenessTests.cs` so provisional `portiert + Test ausstehend` rows and undocumented non-driver `geplant` closures fail fast.
+- [X] T005 [P] Add gate-scope integrity assertions in `tests/TuiVision.Examples.SmokeTests/Test1.cs` and `tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs` that reject placeholder-only or no-op-only closure evidence for `TuiVision.Compatibility` and `TuiVision.Drivers.Console`.
+- [X] T006 [P] Create `tests/TuiVision.Compatibility.Tests/TuiVision.Compatibility.Tests.csproj`, add it to `TuiVision.sln`, and scaffold first coverage-focused tests under `tests/TuiVision.Compatibility.Tests/`.
+- [X] T007 Add shared ledger/evidence parsing helpers to `tests/TuiVision.Drivers.Tests/Phase7DriverTestContext.cs` so row-state, evidence-link, and final-proof checks can be reused across the 006 proof tests.
 
 **Checkpoint**: The repository now has failing infrastructure for final-state proof, gate-scope integrity, and dedicated Compatibility coverage work.
 
@@ -68,7 +68,7 @@
 - [ ] T016 [P] [US1] Implement managed text and clipboard replacements in `src/TuiVision.Controls/`, `src/TuiVision.Controls/TEditor.cs`, and related Controls files for `osclipboard.cc`, `win32/win32clip.cc`, `tparamte.cc`, `tvtext1.cc`, and `tvtext2.cc`.
 - [ ] T017 [P] [US1] Complete stream, help, and resource behavior in `src/TuiVision.Serialization/fpstream.cs`, `src/TuiVision.Serialization/ipstream.cs`, `src/TuiVision.Serialization/opstream.cs`, `src/TuiVision.Serialization/pstream.cs`, `src/TuiVision.Serialization/THelpFile.cs`, `src/TuiVision.Serialization/THelpIndex.cs`, `src/TuiVision.Serialization/TResourceCollection.cs`, `src/TuiVision.Serialization/TResourceFile.cs`, `src/TuiVision.Serialization/TRecordRegistry.cs`, and `src/TuiVision.Serialization/TRecordSerializer.cs`.
 - [ ] T018 [P] [US1] Expand `src/TuiVision.Compatibility/Class1.cs` and add concrete support files under `src/TuiVision.Compatibility/` for global key tables, UI strings, internationalization, and xterm-key compatibility behavior.
-- [ ] T019 [US1] Extend `src/TuiVision.Drivers.Console/TConsoleDriver.cs`, `src/TuiVision.Drivers.Console/DriverCapabilityMap.cs`, and `src/TuiVision.Drivers.Console/Class1.cs` to close the remaining codepage, keyboard, and mouse proof rows without placeholder-only scaffolding.
+- [ ] T019 [US1] Extend `src/TuiVision.Drivers.Console/TConsoleDriver.cs` and `src/TuiVision.Drivers.Console/DriverCapabilityMap.cs`, and add new focused source files under `src/TuiVision.Drivers.Console/` where needed, to close the remaining codepage, keyboard, and mouse proof rows without placeholder-only scaffolding. Do not add runtime code to `src/TuiVision.Drivers.Console/Class1.cs` — that file documents a deliberate relocation and must remain a comment-only redirect.
 - [ ] T020 [US1] Reconcile every affected row in `docs/porting-status.md` to `portiert + getestet` or `bewusst ausgelassen + Begruendung`, with direct evidence or rationale references for all 151 historical `.cc` files.
 - [ ] T021 [US1] Run the targeted module proof suite via `tests/TuiVision.Core.Tests/`, `tests/TuiVision.Controls.Tests/`, `tests/TuiVision.Serialization.Tests/`, `tests/TuiVision.Compatibility.Tests/`, and `tests/TuiVision.Drivers.Tests/` and fix the remaining proof-gap failures before declaring `M-07` closed.
 
