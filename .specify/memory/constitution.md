@@ -1,10 +1,10 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version change: 1.8.0 → 1.9.0
-  Bump rationale: MINOR — Aligned branch-governance with the active
-  Spec-Kit workflow by permitting numbered feature branches in addition to
-  agent-prefixed branches.
+  Version change: 1.9.0 → 1.10.0
+  Bump rationale: MINOR — Added repo-wide assembly-version governance for
+  numbered Spec-Kit branches via `Directory.Build.props`, including the rule
+  that the feature/branch number becomes the canonical PR number for `Minor`.
   Full project scan performed (AGENTS.md, GEMINI.md, CLAUDE.md,
   copilot-instructions.md, constitution templates, and core spec templates).
 
@@ -24,10 +24,10 @@
     - .specify/templates/constitution-template.md ✅ reviewed; no change required
 
   Agent files reviewed:
-    - AGENTS.md             ✅ reviewed; no change required
-    - GEMINI.md             ✅ reviewed; no change required
-    - .github/copilot-instructions.md ✅ reviewed; no change required
-    - CLAUDE.md             ✅ reviewed; no change required
+    - AGENTS.md             ✅ updated
+    - GEMINI.md             ✅ updated
+    - .github/copilot-instructions.md ✅ updated
+    - CLAUDE.md             ✅ updated
 
   Follow-up TODOs:
     - `.specify/templates/commands/` is not present in this repository, so no
@@ -235,6 +235,14 @@ All projects share settings via `Directory.Build.props`:
 <ImplicitUsings>enable</ImplicitUsings>
 ```
 
+For numbered Spec-Kit branches, `Directory.Build.props` MUST also carry aligned
+repo-wide `Version`, `AssemblyVersion`, and `FileVersion` values using
+`Major.Minor.Patch.Build`, where `Minor` = the numerically interpreted
+Spec-Kit feature/branch number as the canonical PR number for versioning
+(`007` -> `7`), `Patch` = the commit count in that feature/PR branch after the
+current change is committed, and `Build` = a manual build counter incremented
+before each `dotnet build` or `dotnet test`.
+
 ## Development Workflow
 
 ### Branching
@@ -400,4 +408,4 @@ Use `docs/guides/multi-mac-workflow.md` for local multi-machine workflow details
 Use `docs/project-statistics.md` for the living project-statistics ledger and
 manual-effort baseline tracking.
 
-**Version**: 1.9.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-23
+**Version**: 1.10.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-27

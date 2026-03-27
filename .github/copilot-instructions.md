@@ -26,6 +26,13 @@ CI runs on Ubuntu and macOS against .NET 10. Linux and Windows/WSL compatibility
 
 All projects target `net10.0` with `Nullable: enable`, `ImplicitUsings: enable`, and `LangVersion: latest` via `Directory.Build.props`.
 
+`Directory.Build.props` also carries the repo-wide `Version`, `AssemblyVersion`, and `FileVersion` values for all projects using `Major.Minor.Patch.Build`:
+- `Minor` = current Spec-Kit feature/branch number, interpreted numerically as the canonical PR number for versioning (`007` -> `7`) and used immediately even before a GitHub PR exists
+- `Patch` = current commit count in that feature/PR branch (after committing the current change)
+- `Build` = manual build counter incremented before every `dotnet build` or `dotnet test`
+
+On numbered Spec-Kit branches, align those three version fields before pushing.
+
 | Module | Purpose |
 |---|---|
 | `src/TuiVision.Core` | Foundation: `TObject`, `TPoint`, `TRect`, `TEvent` |
