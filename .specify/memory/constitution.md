@@ -1,8 +1,14 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version change: 1.8.0 → 1.9.0
-  Bump rationale: MINOR — Aligned branch-governance with the active
+  Version change: 1.9.0 → 1.10.0
+  Bump rationale: MINOR — Extended mandatory 70% line-coverage gate from
+  three to five assemblies (TuiVision.Compatibility and
+  TuiVision.Drivers.Console added). Ratified as part of Phase-8 gate
+  closure work (006-close-phase8-gate).
+
+  Previous version: 1.8.0 → 1.9.0
+  Previous rationale: MINOR — Aligned branch-governance with the active
   Spec-Kit workflow by permitting numbered feature branches in addition to
   agent-prefixed branches.
   Full project scan performed (AGENTS.md, GEMINI.md, CLAUDE.md,
@@ -60,8 +66,12 @@ All implementation MUST follow the Red-Green-Refactor cycle:
 Additional constraints:
 
 - Test framework: **MSTest** exclusively.
-- Minimum line coverage: **70%** in `TuiVision.Core`, `TuiVision.Controls`, and
-  `TuiVision.Serialization`. This is measured and enforced in CI.
+- Minimum line coverage: **70%** in `TuiVision.Core`, `TuiVision.Controls`,
+  `TuiVision.Serialization`, `TuiVision.Compatibility`, and
+  `TuiVision.Drivers.Console`. This is measured and enforced in CI.
+  Coverage is evaluated per target assembly and must be reported separately
+  for each of the five gate assemblies even when exercising tests are
+  distributed across multiple test projects.
 - Every ported core component MUST have at least one positive test and one
   negative/error-case test where technically meaningful.
 - Integration tests MUST cover: event loop, focus transitions, menu execution,
@@ -217,7 +227,10 @@ in the relevant plan or PR and explicit reviewer approval in the same change.
 1. `dotnet build --configuration Release` exits with code 0 and zero warnings
    treated as errors.
 2. `dotnet test` — all required tests pass (see Pflichtenheft section 9.4).
-3. Line coverage ≥ 70% in Core, Controls, Serialization.
+3. Line coverage ≥ 70% per assembly in `TuiVision.Core`, `TuiVision.Controls`,
+   `TuiVision.Serialization`, `TuiVision.Compatibility`, and
+   `TuiVision.Drivers.Console`. Assembly-specific evidence required; aggregated
+   coverage alone does not satisfy this gate.
 4. `dotnet format --verify-no-changes` — no formatting violations.
 5. No CS1591 suppressions added without documented justification.
 6. If `docfx.json` exists in the repository root and public API/XML docs changed,
@@ -403,4 +416,4 @@ Use `docs/guides/multi-mac-workflow.md` for local multi-machine workflow details
 Use `docs/project-statistics.md` for the living project-statistics ledger and
 manual-effort baseline tracking.
 
-**Version**: 1.9.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-23
+**Version**: 1.10.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-27
