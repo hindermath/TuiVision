@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/docs/guides/multi-mac-workflow.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/docs/guides/multi-mac-workflow.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -97,39 +97,54 @@ auf zwei macOS-Systemen:</p>
 <p>Verwendete Tools:</p>
 <ul>
 <li><code>gh</code> (GitHub CLI, authentifiziert)</li>
+<li><code>specify</code> (GitHub Spec-Kit CLI, installiert)</li>
 <li><code>codex</code> (Codex CLI, authentifiziert)</li>
+<li><code>claude</code> (Claude Code CLI, authentifiziert)</li>
+<li><code>copilot</code> (Copilot CLI, authentifiziert)</li>
+<li><code>gemini</code> (Gemini CLI, authentifiziert)</li>
 </ul>
 <h2 id="voraussetzungen">Voraussetzungen</h2>
 <ol>
 <li>Repository ist lokal auf beiden Systemen ausgecheckt.</li>
-<li>Auf beiden Systemen sind <code>gh</code> und <code>codex</code> installiert und authentifiziert.</li>
+<li>Auf beiden Systemen sind <code>gh</code>, <code>specify</code>, <code>codex</code>, <code>claude</code>, <code>copilot</code> und <code>gemini</code> installiert; <code>gh</code>, <code>codex</code>, <code>claude</code>, <code>copilot</code> und <code>gemini</code> sind authentifiziert.</li>
 <li>GitHub-Remote <code>origin</code> zeigt auf <code>https://github.com/hindermath/TuiVision.git</code>.</li>
 <li>.NET SDK 10 ist auf beiden Systemen verfuegbar (<code>dotnet --info</code>).</li>
 </ol>
 <h2 id="einmaliger-check-pro-system">Einmaliger Check pro System</h2>
 <pre><code class="lang-bash">gh auth status
 gh --version
+specify --version || specify --help
+specify check
 codex --version || codex --help
-codex --help
+claude --version || claude --help
+copilot --version || copilot --help
+gemini --version || gemini --help
+dotnet --version || dotnet --help
 git remote -v
-dotnet --info
+dotnet --list-sdks
 </code></pre>
 <p>Erwartung:</p>
 <ul>
 <li><code>gh auth status</code> zeigt einen aktiven Login.</li>
 <li><code>gh --version</code> liefert eine gueltige Versionsausgabe.</li>
+<li><code>specify --version</code> (oder alternativ <code>specify --help</code>) liefert eine gueltige Ausgabe.</li>
+<li><code>specify check</code> bestaetigt, dass alle fuer Spec-Kit benoetigten Tools installiert sind.</li>
 <li><code>codex --version</code> (oder alternativ <code>codex --help</code>) liefert eine gueltige Ausgabe.</li>
-<li><code>codex --help</code> liefert die CLI-Hilfe ohne Fehler.</li>
+<li><code>claude --version</code> (oder alternativ <code>claude --help</code>) liefert eine gueltige Ausgabe.</li>
+<li><code>copilot --version</code> (oder alternativ <code>copilot --help</code>) liefert eine gueltige Ausgabe.</li>
+<li><code>gemini --version</code> (oder alternativ <code>gemini --help</code>) liefert eine gueltige Ausgabe.</li>
 <li><code>git remote -v</code> zeigt <code>origin</code> auf das TuiVision-Repository.</li>
-<li><code>dotnet --info</code> zeigt eine installierte .NET-10-Umgebung.</li>
+<li><code>dotnet --list-sdks</code> zeigt eine installierte .NET-10-Umgebung.</li>
 </ul>
 <h2 id="start-eines-arbeitstags-egal-auf-welchem-mac">Start eines Arbeitstags (egal auf welchem Mac)</h2>
 <pre><code class="lang-bash">git checkout main
 git pull --ff-only origin main
-dotnet --info
+dotnet --list-sdks
+specify --version || specify --help
+specify check
 </code></pre>
 <p>Wenn an einem Feature gearbeitet wird:</p>
-<pre><code class="lang-bash">git checkout -b codex/&lt;kurze-beschreibung&gt;
+<pre><code class="lang-bash">git checkout -b &lt;agent&gt;/&lt;kurze-beschreibung&gt;
 </code></pre>
 <h2 id="entwicklungsschleife">Entwicklungsschleife</h2>
 <pre><code class="lang-bash">dotnet restore
@@ -137,12 +152,12 @@ dotnet build
 dotnet test
 </code></pre>
 <p>Wenn sich oeffentliche API oder XML-Kommentare geaendert haben, danach docfx neu erzeugen:</p>
-<pre><code class="lang-bash">if [[ -f &quot;docs/docfx.json&quot; ]]; then
+<pre><code class="lang-bash">if [[ -f &quot;docfx.json&quot; ]]; then
   dotnet tool update --global docfx || dotnet tool install --global docfx
   export PATH=&quot;$PATH:$HOME/.dotnet/tools&quot;
-  docfx docs/docfx.json
+  docfx docfx.json
 else
-  echo &quot;docs/docfx.json nicht gefunden - docfx-Schritt uebersprungen.&quot;
+  echo &quot;docfx.json nicht gefunden - docfx-Schritt uebersprungen.&quot;
 fi
 </code></pre>
 <p>Dokumentation aktualisieren, wenn Code angepasst wurde:</p>
@@ -151,15 +166,38 @@ fi
 <li>Guides unter <code>docs/guides/</code></li>
 <li>Beispiel-Guides unter <code>docs/guides/examples/</code></li>
 </ul>
-<h2 id="codex-workflow-lokal">Codex-Workflow (lokal)</h2>
-<p>Beispielaufruf:</p>
+<h2 id="ki-agenten-workflow-lokal">KI-Agenten-Workflow (lokal)</h2>
+<p>Beispielaufrufe:</p>
 <pre><code class="lang-bash">direnv allow
 codex
+</code></pre>
+<pre><code class="lang-bash">direnv allow
+claude
+</code></pre>
+<pre><code class="lang-bash">direnv allow
+copilot
+</code></pre>
+<pre><code class="lang-bash">direnv allow
+gemini
 </code></pre>
 <p>Projektlokale Einstellung:
 <code>CODEX_HOME</code> wird in diesem Repository ueber <code>.envrc</code> auf <code>./.codex</code> gesetzt.
 Wenn <code>direnv</code> nicht verwendet wird, starte Codex stattdessen ueber
 <code>./scripts/codex-local.sh</code>.</p>
+<p>Spec-Kit-Voraussetzung:
+<code>specify</code> muss auf beiden Macs installiert sein, damit <code>specify</code>-Laeufe und
+Spec-Kit-Updates auf beiden Systemen ohne Umwege moeglich bleiben. Vor
+Spec-Kit-Arbeiten sollte <code>specify check</code> bestaetigen, dass alle benoetigten
+Tools installiert sind.</p>
+<p>Installation oder Update von <code>specify</code>:</p>
+<pre><code class="lang-bash"># Erstinstallation aus dem aktuellen main-Stand
+uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+
+# Upgrade auf einen konkreten Release-Tag
+uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git@vX.Y.Z
+</code></pre>
+<p>Den aktuellen Release-Tag vor einem gezielten Upgrade unter
+<code>https://github.com/github/spec-kit/releases</code> pruefen.</p>
 <p>Project-local setting:
 <code>CODEX_HOME</code> is set in this repository via <code>.envrc</code> to <code>./.codex</code>.
 If <code>direnv</code> is not in use, start Codex through <code>./scripts/codex-local.sh</code>
@@ -168,6 +206,7 @@ instead.</p>
 <ol>
 <li>Vor Session-Beginn <code>git status</code> pruefen.</li>
 <li>Aufgabenbezug klar in der Session formulieren (Datei/Abschnitt/Testziel).</li>
+<li>Wenn die Session Spec-Kit-Artefakte oder Workflow-Updates betrifft: <code>specify --version || specify --help</code> und <code>specify check</code> ausfuehren.</li>
 <li>Nach Session: <code>dotnet build</code> und <code>dotnet test</code> ausfuehren.</li>
 <li>Wenn API-/XML-Kommentare geaendert wurden: den obigen docfx-Schritt ausfuehren.</li>
 <li>Ergebnis + Doku in denselben Commit aufnehmen.</li>
@@ -176,7 +215,7 @@ instead.</p>
 <pre><code class="lang-bash">git status
 git add -A
 git commit -m &quot;Kurzbeschreibung der Aenderung&quot;
-git push -u origin codex/&lt;kurze-beschreibung&gt;
+git push -u origin &lt;agent&gt;/&lt;kurze-beschreibung&gt;
 </code></pre>
 <h2 id="pull-request-mit-gh">Pull Request mit gh</h2>
 <pre><code class="lang-bash">gh pr create --fill
@@ -194,14 +233,15 @@ git push
 </code></pre>
 <p>Nach dem Wechsel (auf System B):</p>
 <pre><code class="lang-bash">git fetch origin
-git checkout codex/&lt;kurze-beschreibung&gt;
-git pull --ff-only origin codex/&lt;kurze-beschreibung&gt;
+git checkout &lt;agent&gt;/&lt;kurze-beschreibung&gt;
+git pull --ff-only origin &lt;agent&gt;/&lt;kurze-beschreibung&gt;
 </code></pre>
 <h2 id="abschluss-einer-aufgabe">Abschluss einer Aufgabe</h2>
 <ol>
 <li><code>dotnet build</code> erfolgreich.</li>
 <li><code>dotnet test</code> erfolgreich.</li>
-<li>Bei API-/XML-Kommentar-Aenderungen: docfx-Schritt erfolgreich (falls <code>docs/docfx.json</code> vorhanden).</li>
+<li>Bei Spec-Kit-Arbeiten: <code>specify --version</code> oder <code>specify --help</code> sowie <code>specify check</code> auf dem verwendeten Mac erfolgreich.</li>
+<li>Bei API-/XML-Kommentar-Aenderungen: docfx-Schritt erfolgreich (falls <code>docfx.json</code> im Projektwurzelverzeichnis vorhanden).</li>
 <li>Doku aktualisiert (API, Guides, Beispiel-Guide, falls betroffen).</li>
 <li>PR erstellt oder aktualisiert.</li>
 <li>Branch ist auf <code>origin</code> gepusht.</li>
@@ -269,6 +309,54 @@ dotnet test tests/TuiVision.Drivers.Tests/ --configuration Release
 </code></pre>
 <p>Erwartetes Ergebnis: Alle Treibertests bestehen ohne plattformspezifische Fehler.
 <em>(Expected result: All driver tests pass without platform-specific failures.)</em></p>
+<h2 id="phase-8-gate-closure-review--phase-8-gate-closure-review">Phase-8-Gate-Closure-Review / Phase-8 Gate Closure Review</h2>
+<p>Dieser Abschnitt haelt fest, wie die Kompatibilitaetsfrage fuer das
+Eingangstor-Closure-Paket von <code>006-close-phase8-gate</code> bewertet wurde.</p>
+<p><em>(This section records how compatibility was evaluated for the entrance-gate
+closure package of <code>006-close-phase8-gate</code>.)</em></p>
+<h3 id="review-status-2026-03-27">Review-Status 2026-03-27</h3>
+<table>
+<thead>
+<tr>
+<th>Umgebung / Environment</th>
+<th>Status fuer das Closure-Paket</th>
+<th>Begruendung / Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MacBook Air M2</strong></td>
+<td>Primaere Multi-Mac-Baseline</td>
+<td>Der repo-weite Gate-Befehlssatz (<code>build</code>, <code>test</code>, <code>format</code>, bedingtes <code>docfx</code>, getrennte Coverage-Laeufe) bleibt auf der primaeren macOS-Entwicklungsumgebung der massgebliche Ablauf.</td>
+</tr>
+<tr>
+<td><strong>Mac mini M4 Pro</strong></td>
+<td>Sekundaere Multi-Mac-Baseline</td>
+<td>Dieselbe Managed-.NET-10-Befehlsfolge bleibt ohne Plattformsplit reproduzierbar; das Closure-Paket fuehrt keinen neuen macOS-spezifischen Codepfad ein.</td>
+</tr>
+<tr>
+<td><strong>Linux (Ubuntu 24.04 / WSL)</strong></td>
+<td>Kein zusaetzlicher Rerun erforderlich</td>
+<td>Fuer die Aufgaben <code>T022</code> bis <code>T034</code> wurden nur Coverage-, Build/Test-, Format-, Doku- und Proof-Artefakte finalisiert; die letzte runtime-nahe Linux-Evidence bleibt der dokumentierte Phase-7-PASS.</td>
+</tr>
+<tr>
+<td><strong>Windows/WSL (Ubuntu 24.04)</strong></td>
+<td>Kein zusaetzlicher Rerun erforderlich</td>
+<td>Gleiche Begruendung wie fuer Linux: kein neuer plattformspezifischer Runtime- oder Terminalpfad in der Gate-Abschlussarbeit nach <code>T021</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-8-review-fazit--phase-8-review-conclusion">Phase-8-Review-Fazit / Phase-8 Review Conclusion</h3>
+<ul>
+<li>Fuer das eigentliche Eingangstor sind die repo-weiten Qualitaetsnachweise
+(<code>dotnet build --configuration Release</code>, <code>dotnet test</code>,
+<code>dotnet format --verify-no-changes</code>, <code>docfx docfx.json</code>, Coverlet je
+Gate-Assembly) die autoritativen Artefakte.</li>
+<li>Linux- und Windows/WSL-Ausfuehrungen bleiben fuer spaetere
+runtime-/portabilitaetswirksame Aenderungen verpflichtend, wurden fuer die
+reinen Gate-Abschlussaufgaben dieses Pakets aber reviewbar als nicht
+zusaetzlich erforderlich dokumentiert.</li>
+</ul>
 <h3 id="vorgehen-fuer-windowswsl--procedure-for-windowswsl">Vorgehen fuer Windows/WSL / Procedure for Windows/WSL</h3>
 <pre><code class="lang-powershell"># Windows-Vorbereitung: WSL mit Ubuntu 24.04 installieren
 wsl --install -d Ubuntu-24.04
@@ -307,13 +395,29 @@ mouse-event support; CI runs without a display server explicitly exclude this pa
 <pre><code class="lang-bash">gh auth login
 </code></pre>
 <h3 id="docfx-wird-nicht-gefunden"><code>docfx</code> wird nicht gefunden</h3>
-<pre><code class="lang-bash">if [[ -f &quot;docs/docfx.json&quot; ]]; then
+<pre><code class="lang-bash">if [[ -f &quot;docfx.json&quot; ]]; then
   dotnet tool update --global docfx || dotnet tool install --global docfx
   export PATH=&quot;$PATH:$HOME/.dotnet/tools&quot;
-  docfx docs/docfx.json
+  docfx docfx.json
 else
-  echo &quot;docs/docfx.json nicht gefunden.&quot;
+  echo &quot;docfx.json nicht gefunden.&quot;
 fi
+</code></pre>
+<h3 id="specify-wird-nicht-gefunden"><code>specify</code> wird nicht gefunden</h3>
+<pre><code class="lang-bash">specify --help
+</code></pre>
+<p>Wenn der Befehl nicht aufloest, GitHub Spec-Kit CLI auf dem betroffenen Mac
+installieren oder die lokale Shell-/PATH-Konfiguration korrigieren:</p>
+<pre><code class="lang-bash">uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+</code></pre>
+<h3 id="specify-check-meldet-fehlende-tools"><code>specify check</code> meldet fehlende Tools</h3>
+<pre><code class="lang-bash">specify check
+</code></pre>
+<p>Fehlende Abhaengigkeiten auf dem betroffenen Mac nachinstallieren und den Check
+erneut ausfuehren, bis alle erforderlichen Tools als verfuegbar gemeldet werden.
+Wenn zusaetzlich ein CLI-Update noetig ist, den passenden Release-Tag unter
+<code>https://github.com/github/spec-kit/releases</code> pruefen und danach zum Beispiel:</p>
+<pre><code class="lang-bash">uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git@vX.Y.Z
 </code></pre>
 <h3 id="branch-ist-auf-beiden-macs-unterschiedlich">Branch ist auf beiden Macs unterschiedlich</h3>
 <pre><code class="lang-bash">git fetch origin
@@ -329,7 +433,7 @@ git diff
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/docs/guides/multi-mac-workflow.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/docs/guides/multi-mac-workflow.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

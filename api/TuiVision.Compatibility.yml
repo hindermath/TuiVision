@@ -4,6 +4,7 @@ items:
   commentId: N:TuiVision.Compatibility
   id: TuiVision.Compatibility
   children:
+  - TuiVision.Compatibility.TConsoleInputAdapter
   - TuiVision.Compatibility.TKeyCodeTranslator
   - TuiVision.Compatibility.TShiftState
   langs:
@@ -29,6 +30,12 @@ references:
   name: TKeyCodeTranslator
   nameWithType: TKeyCodeTranslator
   fullName: TuiVision.Compatibility.TKeyCodeTranslator
+- uid: TuiVision.Compatibility.TConsoleInputAdapter
+  commentId: T:TuiVision.Compatibility.TConsoleInputAdapter
+  href: TuiVision.Compatibility.TConsoleInputAdapter.html
+  name: TConsoleInputAdapter
+  nameWithType: TConsoleInputAdapter
+  fullName: TuiVision.Compatibility.TConsoleInputAdapter
 - uid: TuiVision.Compatibility
   commentId: N:TuiVision.Compatibility
   href: TuiVision.html

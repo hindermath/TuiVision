@@ -1,0 +1,443 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.TFilterValidator
+  commentId: T:TuiVision.Controls.TFilterValidator
+  id: TFilterValidator
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.TFilterValidator.#ctor(System.String)
+  - TuiVision.Controls.TFilterValidator.IsValid(System.String)
+  langs:
+  - csharp
+  - vb
+  name: TFilterValidator
+  nameWithType: TFilterValidator
+  fullName: TuiVision.Controls.TFilterValidator
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFilterValidator.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TFilterValidator
+    path: src/TuiVision.Controls/TFilterValidator.cs
+    startLine: 12
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Zeichensatzeinschränkender Validator als managed Gegenstück zu
+
+    <code>TFilterValidator</code> aus Turbo Vision (<code>tfilterv.cc</code>).
+
+
+    Character-set restricting validator as a managed counterpart to
+
+    <code>TFilterValidator</code> from Turbo Vision (<code>tfilterv.cc</code>).
+  example: []
+  syntax:
+    content: 'public sealed class TFilterValidator : TValidator'
+    content.vb: Public NotInheritable Class TFilterValidator Inherits TValidator
+  inheritance:
+  - System.Object
+  - TuiVision.Controls.TValidator
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Controls.TFilterValidator.#ctor(System.String)
+  commentId: M:TuiVision.Controls.TFilterValidator.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: TuiVision.Controls.TFilterValidator
+  langs:
+  - csharp
+  - vb
+  name: TFilterValidator(string)
+  nameWithType: TFilterValidator.TFilterValidator(string)
+  fullName: TuiVision.Controls.TFilterValidator.TFilterValidator(string)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFilterValidator.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Controls/TFilterValidator.cs
+    startLine: 22
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Initialisiert den Validator mit den erlaubten Zeichen.
+
+
+    Initializes the validator with the allowed characters.
+  example: []
+  syntax:
+    content: public TFilterValidator(string allowedCharacters)
+    parameters:
+    - id: allowedCharacters
+      type: System.String
+      description: Alle zulässigen Zeichen. / All permitted characters.
+    content.vb: Public Sub New(allowedCharacters As String)
+  overload: TuiVision.Controls.TFilterValidator.#ctor*
+  nameWithType.vb: TFilterValidator.New(String)
+  fullName.vb: TuiVision.Controls.TFilterValidator.New(String)
+  name.vb: New(String)
+- uid: TuiVision.Controls.TFilterValidator.IsValid(System.String)
+  commentId: M:TuiVision.Controls.TFilterValidator.IsValid(System.String)
+  id: IsValid(System.String)
+  parent: TuiVision.Controls.TFilterValidator
+  langs:
+  - csharp
+  - vb
+  name: IsValid(string)
+  nameWithType: TFilterValidator.IsValid(string)
+  fullName: TuiVision.Controls.TFilterValidator.IsValid(string)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFilterValidator.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: IsValid
+    path: src/TuiVision.Controls/TFilterValidator.cs
+    startLine: 29
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Prüft, ob die Eingabe gültig ist.
+
+
+    Checks whether the input is valid.
+  example: []
+  syntax:
+    content: public override bool IsValid(string input)
+    parameters:
+    - id: input
+      type: System.String
+      description: Die zu prüfende Eingabe. / The input to validate.
+    return:
+      type: System.Boolean
+      description: <code>true</code> bei gültiger Eingabe; sonst <code>false</code>. / <code>true</code> for valid input; otherwise <code>false</code>.
+    content.vb: Public Overrides Function IsValid(input As String) As Boolean
+  overridden: TuiVision.Controls.TValidator.IsValid(System.String)
+  overload: TuiVision.Controls.TFilterValidator.IsValid*
+  nameWithType.vb: TFilterValidator.IsValid(String)
+  fullName.vb: TuiVision.Controls.TFilterValidator.IsValid(String)
+  name.vb: IsValid(String)
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TuiVision.Controls.TValidator
+  commentId: T:TuiVision.Controls.TValidator
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TValidator.html
+  name: TValidator
+  nameWithType: TValidator
+  fullName: TuiVision.Controls.TValidator
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Controls.TFilterValidator.#ctor*
+  commentId: Overload:TuiVision.Controls.TFilterValidator.#ctor
+  href: TuiVision.Controls.TFilterValidator.html#TuiVision_Controls_TFilterValidator__ctor_System_String_
+  name: TFilterValidator
+  nameWithType: TFilterValidator.TFilterValidator
+  fullName: TuiVision.Controls.TFilterValidator.TFilterValidator
+  nameWithType.vb: TFilterValidator.New
+  fullName.vb: TuiVision.Controls.TFilterValidator.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: TuiVision.Controls.TValidator.IsValid(System.String)
+  commentId: M:TuiVision.Controls.TValidator.IsValid(System.String)
+  parent: TuiVision.Controls.TValidator
+  isExternal: true
+  href: TuiVision.Controls.TValidator.html#TuiVision_Controls_TValidator_IsValid_System_String_
+  name: IsValid(string)
+  nameWithType: TValidator.IsValid(string)
+  fullName: TuiVision.Controls.TValidator.IsValid(string)
+  nameWithType.vb: TValidator.IsValid(String)
+  fullName.vb: TuiVision.Controls.TValidator.IsValid(String)
+  name.vb: IsValid(String)
+  spec.csharp:
+  - uid: TuiVision.Controls.TValidator.IsValid(System.String)
+    name: IsValid
+    href: TuiVision.Controls.TValidator.html#TuiVision_Controls_TValidator_IsValid_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TValidator.IsValid(System.String)
+    name: IsValid
+    href: TuiVision.Controls.TValidator.html#TuiVision_Controls_TValidator_IsValid_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: TuiVision.Controls.TFilterValidator.IsValid*
+  commentId: Overload:TuiVision.Controls.TFilterValidator.IsValid
+  href: TuiVision.Controls.TFilterValidator.html#TuiVision_Controls_TFilterValidator_IsValid_System_String_
+  name: IsValid
+  nameWithType: TFilterValidator.IsValid
+  fullName: TuiVision.Controls.TFilterValidator.IsValid
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

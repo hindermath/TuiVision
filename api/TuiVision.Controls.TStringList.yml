@@ -20,7 +20,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStringList.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: TStringList
     path: src/TuiVision.Controls/TStringList.cs
@@ -64,7 +64,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStringList.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TStringList.cs
@@ -99,7 +99,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStringList.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Count
     path: src/TuiVision.Controls/TStringList.cs
@@ -134,7 +134,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStringList.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: this[]
     path: src/TuiVision.Controls/TStringList.cs
@@ -183,7 +183,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStringList.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Add
     path: src/TuiVision.Controls/TStringList.cs
@@ -222,7 +222,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStringList.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Clear
     path: src/TuiVision.Controls/TStringList.cs

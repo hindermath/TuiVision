@@ -44,7 +44,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: TEditor
     path: src/TuiVision.Controls/TEditor.cs
@@ -123,7 +123,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TEditor.cs
@@ -162,7 +162,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Changed
     path: src/TuiVision.Controls/TEditor.cs
@@ -195,7 +195,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: ClipboardText
     path: src/TuiVision.Controls/TEditor.cs
@@ -230,7 +230,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: InsertMode
     path: src/TuiVision.Controls/TEditor.cs
@@ -265,7 +265,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Modified
     path: src/TuiVision.Controls/TEditor.cs
@@ -300,7 +300,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: CursorIndex
     path: src/TuiVision.Controls/TEditor.cs
@@ -335,7 +335,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: CursorRow
     path: src/TuiVision.Controls/TEditor.cs
@@ -370,7 +370,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: CursorColumn
     path: src/TuiVision.Controls/TEditor.cs
@@ -405,7 +405,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectionStart
     path: src/TuiVision.Controls/TEditor.cs
@@ -440,7 +440,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectionEnd
     path: src/TuiVision.Controls/TEditor.cs
@@ -475,7 +475,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: HasSelection
     path: src/TuiVision.Controls/TEditor.cs
@@ -510,7 +510,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: GetText
     path: src/TuiVision.Controls/TEditor.cs
@@ -545,7 +545,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: LoadText
     path: src/TuiVision.Controls/TEditor.cs
@@ -587,7 +587,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: MoveCursorTo
     path: src/TuiVision.Controls/TEditor.cs
@@ -629,7 +629,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Select
     path: src/TuiVision.Controls/TEditor.cs
@@ -671,7 +671,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectAll
     path: src/TuiVision.Controls/TEditor.cs
@@ -703,7 +703,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: CopySelection
     path: src/TuiVision.Controls/TEditor.cs
@@ -735,7 +735,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: CutSelection
     path: src/TuiVision.Controls/TEditor.cs
@@ -767,7 +767,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: PasteClipboard
     path: src/TuiVision.Controls/TEditor.cs
@@ -799,7 +799,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Undo
     path: src/TuiVision.Controls/TEditor.cs
@@ -834,7 +834,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: FindNext
     path: src/TuiVision.Controls/TEditor.cs
@@ -879,7 +879,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: ReplaceSelection
     path: src/TuiVision.Controls/TEditor.cs
@@ -921,7 +921,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: ReplaceAll
     path: src/TuiVision.Controls/TEditor.cs
@@ -969,7 +969,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: IsCommandEnabled
     path: src/TuiVision.Controls/TEditor.cs
@@ -1011,7 +1011,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: CanClose
     path: src/TuiVision.Controls/TEditor.cs
@@ -1053,7 +1053,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TEditor.cs
@@ -1086,7 +1086,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TEditor.cs
@@ -1123,7 +1123,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: GetStatusHints
     path: src/TuiVision.Controls/TEditor.cs
@@ -1159,7 +1159,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: MarkClean
     path: src/TuiVision.Controls/TEditor.cs

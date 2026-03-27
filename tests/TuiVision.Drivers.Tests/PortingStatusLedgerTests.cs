@@ -185,4 +185,45 @@ public sealed class PortingStatusLedgerTests
             "Beweisledger muss eine Tabelle mit Spalte 'Quelldatei' enthalten. " +
             "Proof ledger must contain a table with column 'Quelldatei'.");
     }
+
+    /// <summary>
+    /// Bewachungsregel (Phase-8-Gate, 006): Keine Ledger-Zeile darf den provisorischen Status
+    /// <c>portiert + Test ausstehend</c> enthalten. Jede solche Zeile blockiert den Gate-Abschluss.
+    ///
+    /// Guardrail (Phase-8 gate, 006): No ledger row may carry the provisional status
+    /// <c>portiert + Test ausstehend</c>. Every such row blocks gate closure.
+    /// </summary>
+    [TestMethod]
+    public void LedgerFile_NoProvisionalRows_Gate006()
+    {
+        string content = Phase7DriverTestContext.ReadPortingStatus();
+        var provisional = new List<string>();
+
+        foreach (string line in content.Split('\n'))
+        {
+            string trimmed = line.TrimStart();
+            if (!trimmed.StartsWith("| tv203s/", StringComparison.Ordinal))
+                continue;
+
+            string[] cells = trimmed.Split('|');
+            if (cells.Length < 6)
+                continue;
+
+            string status = cells[5].Trim();
+            if (status == Phase7DriverTestContext.ProvisionalStatus)
+            {
+                // Extract just the source file for a compact error message
+                string sourceFile = cells[1].Trim();
+                provisional.Add(sourceFile);
+            }
+        }
+
+        Assert.IsEmpty(provisional,
+            $"Phase-8-Gate-006: {provisional.Count} Zeile(n) noch im provisorischen Status " +
+            $"'portiert + Test ausstehend'. Diese Zeilen blockieren den Gate-Abschluss:\n" +
+            $"Phase-8-Gate-006: {provisional.Count} row(s) still in provisional status " +
+            $"'portiert + Test ausstehend'. These rows block gate closure:\n" +
+            string.Join("\n", provisional.Take(30)) +
+            (provisional.Count > 30 ? $"\n...und {provisional.Count - 30} weitere / ...and {provisional.Count - 30} more" : string.Empty));
+    }
 }

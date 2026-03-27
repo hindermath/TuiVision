@@ -213,7 +213,7 @@ Phase-0 research resolves the planning choices that would otherwise remain impli
   - `dotnet test --collect:"XPlat Code Coverage"`
 - **Conditional validation command**:
   - `docfx docfx.json` when public APIs or XML comments changed
-- **Coverage gate interpretation**: The constitution still requires at least 70% line coverage in `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization`. This feature adds driver-focused tests and may use coverage collection for local evidence, but it does not weaken the existing repository-wide gate model.
+- **Coverage gate interpretation**: The current project gate requires at least 70% line coverage in `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, and `TuiVision.Drivers.Console`. This feature adds driver-focused tests and may use coverage collection for local evidence, but it does not weaken the existing repository-wide gate model.
 
 ### Success-Criteria Traceability
 

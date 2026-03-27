@@ -101,4 +101,103 @@ public sealed class TConsoleBufferTests
 
         Assert.AreEqual(TConsoleCell.Empty, buffer[1, 1]);
     }
+
+    /// <summary>
+    /// Prüft, dass der Konstruktor ungültige Abmessungen ablehnt.
+    ///
+    /// Verifies that the constructor rejects invalid dimensions.
+    /// </summary>
+    [TestMethod]
+    public void TConsoleBuffer_Constructor_InvalidDimensions_Throw()
+    {
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => new TConsoleBuffer(0, 1));
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => new TConsoleBuffer(1, 0));
+    }
+
+    /// <summary>
+    /// Prüft, dass <see cref="TConsoleBuffer.GetCell"/> und <see cref="TConsoleBuffer.SetCell"/>
+    /// Koordinaten außerhalb des Puffers ablehnen.
+    ///
+    /// Verifies that <see cref="TConsoleBuffer.GetCell"/> and <see cref="TConsoleBuffer.SetCell"/>
+    /// reject coordinates outside the buffer.
+    /// </summary>
+    [TestMethod]
+    public void TConsoleBuffer_GetSet_OutOfBounds_Throw()
+    {
+        TConsoleBuffer buffer = new(2, 2);
+
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => buffer.GetCell(-1, 0));
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => buffer.SetCell(2, 0, TConsoleCell.Empty));
+    }
+
+    /// <summary>
+    /// Prüft, dass <see cref="TConsoleBuffer.TrySetCell"/> innerhalb des Puffers schreibt.
+    ///
+    /// Verifies that <see cref="TConsoleBuffer.TrySetCell"/> writes inside the buffer.
+    /// </summary>
+    [TestMethod]
+    public void TConsoleBuffer_TrySetCell_InsideBounds_WritesCell()
+    {
+        TConsoleBuffer buffer = new(2, 2);
+        TConsoleCell cell = new('Q', ConsoleColor.Yellow, ConsoleColor.DarkBlue);
+
+        bool result = buffer.TrySetCell(1, 1, cell);
+
+        Assert.IsTrue(result);
+        Assert.AreEqual(cell, buffer.GetCell(1, 1));
+    }
+
+    /// <summary>
+    /// Prüft, dass <see cref="TConsoleBuffer.Clear(TConsoleCell)"/> eine benutzerdefinierte Füllzelle nutzt.
+    ///
+    /// Verifies that <see cref="TConsoleBuffer.Clear(TConsoleCell)"/> uses a custom fill cell.
+    /// </summary>
+    [TestMethod]
+    public void TConsoleBuffer_ClearWithFillCell_FillsWholeBuffer()
+    {
+        TConsoleBuffer buffer = new(2, 2);
+        TConsoleCell fill = new('.', ConsoleColor.Cyan, ConsoleColor.DarkGray);
+
+        buffer.Clear(fill);
+
+        Assert.AreEqual(fill, buffer[0, 0]);
+        Assert.AreEqual(fill, buffer[1, 1]);
+    }
+
+    /// <summary>
+    /// Prüft, dass <see cref="TConsoleBuffer.WriteText"/> links geclippt und außerhalb liegende Zeilen ignoriert.
+    ///
+    /// Verifies that <see cref="TConsoleBuffer.WriteText"/> clips on the left and ignores out-of-range rows.
+    /// </summary>
+    [TestMethod]
+    public void TConsoleBuffer_WriteText_ClipsAndIgnoresOutsideRows()
+    {
+        TConsoleBuffer buffer = new(4, 2);
+
+        buffer.WriteText(-1, 0, "ABCD".AsSpan(), ConsoleColor.Green, ConsoleColor.Black);
+        buffer.WriteText(0, 5, "ZZ".AsSpan(), ConsoleColor.Red, ConsoleColor.Black);
+
+        Assert.AreEqual('B', buffer[0, 0].Glyph);
+        Assert.AreEqual('C', buffer[1, 0].Glyph);
+        Assert.AreEqual('D', buffer[2, 0].Glyph);
+        Assert.AreEqual(TConsoleCell.Empty, buffer[0, 1]);
+    }
+
+    /// <summary>
+    /// Prüft, dass <see cref="TConsoleBuffer.Clone"/> eine unabhängige Kopie erzeugt.
+    ///
+    /// Verifies that <see cref="TConsoleBuffer.Clone"/> creates an independent copy.
+    /// </summary>
+    [TestMethod]
+    public void TConsoleBuffer_Clone_ReturnsIndependentCopy()
+    {
+        TConsoleBuffer original = new(2, 1);
+        original[0, 0] = new TConsoleCell('A', ConsoleColor.White, ConsoleColor.Black);
+
+        TConsoleBuffer clone = original.Clone();
+        clone[0, 0] = new TConsoleCell('B', ConsoleColor.White, ConsoleColor.Black);
+
+        Assert.AreEqual('A', original[0, 0].Glyph);
+        Assert.AreEqual('B', clone[0, 0].Glyph);
+    }
 }

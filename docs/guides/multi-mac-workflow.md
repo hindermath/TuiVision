@@ -253,6 +253,34 @@ dotnet test tests/TuiVision.Drivers.Tests/ --configuration Release
 Erwartetes Ergebnis: Alle Treibertests bestehen ohne plattformspezifische Fehler.
 *(Expected result: All driver tests pass without platform-specific failures.)*
 
+## Phase-8-Gate-Closure-Review / Phase-8 Gate Closure Review
+
+Dieser Abschnitt haelt fest, wie die Kompatibilitaetsfrage fuer das
+Eingangstor-Closure-Paket von `006-close-phase8-gate` bewertet wurde.
+
+*(This section records how compatibility was evaluated for the entrance-gate
+closure package of `006-close-phase8-gate`.)*
+
+### Review-Status 2026-03-27
+
+| Umgebung / Environment | Status fuer das Closure-Paket | Begruendung / Rationale |
+|---|---|---|
+| **MacBook Air M2** | Primaere Multi-Mac-Baseline | Der repo-weite Gate-Befehlssatz (`build`, `test`, `format`, bedingtes `docfx`, getrennte Coverage-Laeufe) bleibt auf der primaeren macOS-Entwicklungsumgebung der massgebliche Ablauf. |
+| **Mac mini M4 Pro** | Sekundaere Multi-Mac-Baseline | Dieselbe Managed-.NET-10-Befehlsfolge bleibt ohne Plattformsplit reproduzierbar; das Closure-Paket fuehrt keinen neuen macOS-spezifischen Codepfad ein. |
+| **Linux (Ubuntu 24.04 / WSL)** | Kein zusaetzlicher Rerun erforderlich | Fuer die Aufgaben `T022` bis `T034` wurden nur Coverage-, Build/Test-, Format-, Doku- und Proof-Artefakte finalisiert; die letzte runtime-nahe Linux-Evidence bleibt der dokumentierte Phase-7-PASS. |
+| **Windows/WSL (Ubuntu 24.04)** | Kein zusaetzlicher Rerun erforderlich | Gleiche Begruendung wie fuer Linux: kein neuer plattformspezifischer Runtime- oder Terminalpfad in der Gate-Abschlussarbeit nach `T021`. |
+
+### Phase-8-Review-Fazit / Phase-8 Review Conclusion
+
+- Fuer das eigentliche Eingangstor sind die repo-weiten Qualitaetsnachweise
+  (`dotnet build --configuration Release`, `dotnet test`,
+  `dotnet format --verify-no-changes`, `docfx docfx.json`, Coverlet je
+  Gate-Assembly) die autoritativen Artefakte.
+- Linux- und Windows/WSL-Ausfuehrungen bleiben fuer spaetere
+  runtime-/portabilitaetswirksame Aenderungen verpflichtend, wurden fuer die
+  reinen Gate-Abschlussaufgaben dieses Pakets aber reviewbar als nicht
+  zusaetzlich erforderlich dokumentiert.
+
 ### Vorgehen fuer Windows/WSL / Procedure for Windows/WSL
 
 ```powershell

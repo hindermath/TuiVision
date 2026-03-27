@@ -71,6 +71,30 @@ public sealed class CorePortTests
     }
 
     /// <summary>
+    /// Prüft, dass <see cref="TRect"/> Bewegung, Wachstum, Leerheitsprüfung und Hash-/Objektgleichheit korrekt abbildet.
+    ///
+    /// Verifies that <see cref="TRect"/> correctly models movement, growth, emptiness, and hash/object equality.
+    /// </summary>
+    [TestMethod]
+    public void TRect_MoveGrowEmptyAndEquality_Work()
+    {
+        TRect rect = new(1, 1, 3, 3);
+        rect.Move(2, -1);
+        Assert.AreEqual(new TRect(3, 0, 5, 2), rect);
+
+        rect.Grow(1, 2);
+        Assert.AreEqual(new TRect(2, -2, 6, 4), rect);
+        Assert.IsFalse(rect.IsEmpty());
+
+        object boxed = new TRect(2, -2, 6, 4);
+        Assert.IsTrue(rect.Equals(boxed));
+        Assert.AreEqual(boxed.GetHashCode(), rect.GetHashCode());
+
+        TRect empty = new(4, 4, 4, 3);
+        Assert.IsTrue(empty.IsEmpty());
+    }
+
+    /// <summary>
     /// Prüft, dass <see cref="TObject.Destroy"/> sowohl <c>ShutDown</c> als auch
     /// <c>Dispose</c> aufruft, wenn das Objekt <see cref="IDisposable"/> implementiert.
     ///
@@ -86,6 +110,17 @@ public sealed class CorePortTests
 
         Assert.AreEqual(1, probe.ShutDownCalls);
         Assert.AreEqual(1, probe.DisposeCalls);
+    }
+
+    /// <summary>
+    /// Prüft, dass <see cref="TObject.Destroy"/> mit <c>null</c> sicher ist.
+    ///
+    /// Verifies that <see cref="TObject.Destroy"/> is safe with <c>null</c>.
+    /// </summary>
+    [TestMethod]
+    public void TObject_Destroy_Null_DoesNothing()
+    {
+        TObject.Destroy(null);
     }
 
     /// <summary>
@@ -121,6 +156,30 @@ public sealed class CorePortTests
     {
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(
             () => TEvent.CreateMouse(TEventKind.Command, TMouseButtons.Left, false, new TPoint(0, 0)));
+    }
+
+    /// <summary>
+    /// Prüft, dass <see cref="TEvent"/> Tastatur-, Broadcast- und None-Kanäle korrekt initialisiert.
+    ///
+    /// Verifies that <see cref="TEvent"/> correctly initializes keyboard, broadcast, and none channels.
+    /// </summary>
+    [TestMethod]
+    public void TEvent_CreateKeyBroadcastAndNone_InitializeChannels()
+    {
+        TKeyDownEvent keyDown = new('A', 0x1E, 0x1E41, 0x0001, 0x1E);
+        TEvent keyEvent = TEvent.CreateKeyDown(keyDown);
+        TEvent broadcast = TEvent.CreateBroadcast(77, "all");
+        TEvent none = TEvent.CreateNone();
+
+        Assert.AreEqual(TEventKind.KeyDown, keyEvent.What);
+        Assert.AreEqual(keyDown, keyEvent.KeyDown);
+
+        Assert.AreEqual(TEventKind.Broadcast, broadcast.What);
+        Assert.AreEqual((ushort)77, broadcast.Message.Command);
+        Assert.AreEqual("all", broadcast.Message.Info);
+
+        Assert.AreEqual(TEventKind.Nothing, none.What);
+        Assert.AreEqual((ushort)0, none.Message.Command);
     }
 
     /// <summary>

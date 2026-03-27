@@ -20,6 +20,8 @@ dotnet test --filter "FullyQualifiedName~MethodName"
 dotnet format --verify-no-changes
 ```
 
+Coverage Gate (SC-003): `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, and `TuiVision.Drivers.Console` must each achieve at least 70% line coverage. Measure with Coverlet via `dotnet test --collect:"XPlat Code Coverage"`.
+
 CI runs on Ubuntu and macOS against .NET 10. Linux and Windows/WSL compatibility checks should be added or expanded where changes affect runtime behavior, terminal handling, or portability. The `tv203s/` directory is **excluded from all builds and tests**. CI triggers on pushes to `main`, `master`, and branches matching `codex/**`, `claude/**`, `gemini/**`, `copilot/**`, `opencode/**`.
 
 ## Architecture
@@ -86,7 +88,16 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Linux and Windows/WSL compatibility checks are required as reviewable evidence for this phase, but may still be manual or semi-automated rather than mandatory CI gates
 - Planning decisions now fixed for this feature: `.cc` files are the formal `M-07` ledger scope, ancillary `.c`/`.h` files may appear only as rationale support, capability buckets replace per-OS lineage as the review model, and Phase 7 remains distinct from the later full Phase-8 gate closure
 - Keep this increment scoped to driver consolidation and proof preparation only; mandatory example waves and complete Phase-8 gate closure remain out of scope
-- Phase-7 implementation is complete: `DriverCapabilityMap.cs` with 5 capability buckets, `docs/porting-status.md` covering all 151 `.cc` files, 30 driver tests passing, compatibility evidence in `docs/guides/multi-mac-workflow.md`, gate checklist in `checklists/phase-8-gate-review.md`; next priority is Phase-8 gate closure (Controls coverage ≥ 70 %, full dotnet test suite)
+- Phase-7 implementation is complete: `DriverCapabilityMap.cs` with 5 capability buckets, `docs/porting-status.md` covering all 151 `.cc` files, 30 driver tests passing, compatibility evidence in `docs/guides/multi-mac-workflow.md`, gate checklist in `checklists/phase-8-gate-review.md`; next priority is Phase-8 gate closure (Core/Controls/Serialization/Compatibility/Drivers.Console coverage each ≥ 70 %, full dotnet test suite)
+
+### 006-close-phase8-gate
+- Align active work with `specs/006-close-phase8-gate/spec.md` and the planning artifacts in `specs/006-close-phase8-gate/`
+- Scope is limited to final `M-07` proof closure plus the remaining Phase-8 entrance evidence across `docs/porting-status.md`, `Pflichtenheft.md`, the existing module test suites plus any required Compatibility-focused validation additions, coverage evidence, formatting evidence, and API-documentation validation
+- Every historical `.cc` ledger row must finish in `portiert + getestet` or `bewusst ausgelassen + Begruendung`; no `portiert + Test ausstehend` row may remain after closure is claimed
+- Gate closure must include explicit build, full-test, coverage, formatting, and conditional API-doc proof, and must keep the 25 mandatory example waves blocked until the closure is formally recorded
+- `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, and `TuiVision.Drivers.Console` must each satisfy the hard 70 % line-coverage gate before Phase 8 is declared open
+- The planning baseline now also fixes repository-wide `dotnet test`, `tests/TuiVision.Compatibility.Tests/` as the dedicated Compatibility fallback suite when shared tests are insufficient, assembly-specific coverage evidence for the five gate modules, conditional Linux/Windows/WSL evidence, rejection of placeholder-only or no-op-only gate modules, same-change proof-surface updates when a gate module is removed, mandatory tracked-issue references for skip/ignore outcomes, local-versus-CI coverage conflict resolution, and a dedicated gate-closure commit as hard closure criteria
+- Keep this increment scoped to gate closure only; mandatory example waves, substitute follow-on example scope from `TVDEMOS/` or `TVFM/`, and unrelated new framework features remain out of scope
 
 ## Agent File Synchronization Policy
 
@@ -102,7 +113,10 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 
 - Maintain `docs/project-statistics.md` as the living statistics ledger for the repository.
 - Update the file after each completed Spec-Kit implementation phase, after each agent-driven repository change, or when a refresh is explicitly requested.
-- Each update must capture branch/phase, observable work window, production/test/documentation line counts, main work packages, and the conservative manual baseline of 80 code lines per day for an experienced developer.
+- Within the `## Fortschreibungsprotokoll` table, keep entries in strict chronological order: oldest entry at the top, newest and most recently added entry at the bottom; entries with the same date keep their insertion order.
+- Each update must capture branch/phase, observable work window, production/test/documentation line counts, main work packages, the conservative manual baseline of 80 code lines per day for an experienced developer, and the repo-specific Thorsten-Solo comparison baseline of 125 lines per workday for this Pascal/Turbo-Vision-derived port.
+- When reporting acceleration, compare both manual references against visible Git active days and label the result as a blended repository speedup rather than a stopwatch measurement.
+- When hour values are shown, convert the day-based estimates with the TVoeD working-day baseline of `7.8 hours` (`7h 48m`) per day.
 
 ## Workflow Platforms
 

@@ -24,7 +24,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/ipstream.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: ipstream
     path: src/TuiVision.Serialization/ipstream.cs
@@ -69,7 +69,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/ipstream.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Serialization/ipstream.cs
@@ -114,7 +114,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/ipstream.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: ReadByte
     path: src/TuiVision.Serialization/ipstream.cs
@@ -149,7 +149,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/ipstream.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: ReadBoolean
     path: src/TuiVision.Serialization/ipstream.cs
@@ -184,7 +184,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/ipstream.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: ReadInt32
     path: src/TuiVision.Serialization/ipstream.cs
@@ -219,7 +219,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/ipstream.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: ReadString
     path: src/TuiVision.Serialization/ipstream.cs
@@ -254,7 +254,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/ipstream.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: ReadObject
     path: src/TuiVision.Serialization/ipstream.cs
@@ -295,7 +295,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/ipstream.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: ReadObject
     path: src/TuiVision.Serialization/ipstream.cs
@@ -330,7 +330,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/ipstream.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: EnsureFullyConsumed
     path: src/TuiVision.Serialization/ipstream.cs
@@ -362,7 +362,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/ipstream.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Dispose
     path: src/TuiVision.Serialization/ipstream.cs

@@ -23,7 +23,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TResourceFile.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: TResourceFile
     path: src/TuiVision.Serialization/TResourceFile.cs
@@ -63,7 +63,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TResourceFile.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Serialization/TResourceFile.cs
@@ -102,7 +102,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TResourceFile.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Resources
     path: src/TuiVision.Serialization/TResourceFile.cs
@@ -137,7 +137,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TResourceFile.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: RegisterBuiltInTypes
     path: src/TuiVision.Serialization/TResourceFile.cs
@@ -173,7 +173,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TResourceFile.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Put
     path: src/TuiVision.Serialization/TResourceFile.cs
@@ -215,7 +215,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TResourceFile.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Get
     path: src/TuiVision.Serialization/TResourceFile.cs
@@ -260,7 +260,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TResourceFile.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Remove
     path: src/TuiVision.Serialization/TResourceFile.cs
@@ -302,7 +302,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TResourceFile.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Save
     path: src/TuiVision.Serialization/TResourceFile.cs
@@ -338,7 +338,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TResourceFile.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Load
     path: src/TuiVision.Serialization/TResourceFile.cs

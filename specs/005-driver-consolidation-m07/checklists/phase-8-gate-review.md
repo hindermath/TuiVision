@@ -1,6 +1,6 @@
 # Phase-7 vs. Phase-8 Gate-Trennung / Gate Separation Review Checklist
 
-**Feature**: `005-driver-consolidation-m07` | **Datum / Date**: 2026-03-23
+**Feature**: `005-driver-consolidation-m07` | **Datum / Date**: 2026-03-27
 
 Diese Checkliste stellt sicher, dass Phase-7-Arbeit von den verbleibenden Phase-8-Eingangstor-Anforderungen
 klar getrennt ist, bevor der Branch gemergt wird.
@@ -38,20 +38,25 @@ requirements before the branch is merged.)*
 
 ---
 
-## Noch offene Phase-8-Eingangstor-Punkte / Open Phase-8 Entrance Gate Items
+## Phase-8-Eingangstor-Abschlussstand / Phase-8 Entrance Gate Closure State
 
-Diese Punkte sind **nicht** Teil von Phase 7. Sie müssen vor Beginn der Beispielportierungen (Phase 8) geschlossen sein.
+Diese Punkte sind in Feature `006-close-phase8-gate` geschlossen worden und
+bilden jetzt den reviewbaren Eingangstor-Nachweis vor Welle 1.
 
-*(These items are NOT part of Phase 7. They must be closed before beginning example porting (Phase 8).)*
+*(These items were closed in feature `006-close-phase8-gate` and now form the
+reviewable entrance-gate evidence ahead of wave 1.)*
 
-- [ ] `TuiVision.Controls` Testabdeckung ≥ 70 % Line Coverage (SC-003 Pflichtenheft §9.4 Nr. 1).
-- [ ] Vollständige `dotnet test` für alle Module (nicht nur Treiber-Tests) ohne Fehler.
-- [ ] `dotnet format --verify-no-changes` ohne Abweichungen.
-- [ ] Alle Ledger-Zeilen mit Status `portiert + Test ausstehend` haben entsprechende MSTest-Coverage in einem der Testprojekte.
-- [ ] `docfx docfx.json` bei API-/XML-Kommentar-Änderungen in Phase-8-Scope erfolgreich ausgeführt.
-- [ ] M-07-Vollbeweis: alle 151 `.cc`-Zeilen mit `portiert + getestet` ODER `bewusst ausgelassen + Begruendung` (aktuell viele auf `portiert + Test ausstehend`).
-- [ ] Beispielportierungen Wellen 1–4 beginnen erst nach bestandenem Eingangstor.
-- [ ] Linux- und Windows/WSL-Kompatibilitätsnachweise als CI-Gate etabliert (optional für Phase 8, empfohlen).
+- [X] `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console` erreichen jeweils ≥ 70 % Line Coverage (`89.11 %`, `84.10 %`, `83.33 %`, `80.95 %`, `97.43 %`).
+- [X] Vollständige `dotnet test` für alle Module läuft ohne Fehler.
+- [X] `dotnet format --verify-no-changes` läuft ohne Abweichungen.
+- [X] Alle Ledger-Zeilen mit Status `portiert + Test ausstehend` wurden eliminiert; keine provisorische `.cc`-Zeile verbleibt.
+- [X] `docfx docfx.json` wurde wegen API-/XML-Kommentar-Änderungen im 006-Scope erfolgreich ausgeführt.
+- [X] M-07-Vollbeweis: alle 151 `.cc`-Zeilen enden mit `portiert + getestet` ODER `bewusst ausgelassen + Begruendung`.
+- [X] Beispielportierungen Wellen 1–4 bleiben bis zum dedizierten Closure-Commit blockiert und sind danach freigegeben.
+- [X] Linux- und Windows/WSL-Kompatibilitätsnachweise bleiben für Phase 8 reviewbar dokumentiert; für die reinen Gate-Abschlussaufgaben `T022` bis `T034` war kein zusätzlicher Plattform-Rerun erforderlich.
+
+**Closure-Commit-Referenz / Closure Commit Reference**:
+`docs: close phase-8 entrance gate for feature 006`
 
 ---
 
@@ -60,10 +65,10 @@ Diese Punkte sind **nicht** Teil von Phase 7. Sie müssen vor Beginn der Beispie
 | Aspekt | Phase 7 (dieser Branch) | Phase 8 (folgender Branch) |
 |---|---|---|
 | Managed Driver Baseline | ✓ Abgeschlossen | Beibehalten |
-| M-07 Proof Ledger | ✓ Vollständig | Statuswerte aktualisieren wenn Tests folgen |
+| M-07 Proof Ledger | ✓ Vollständig | ✓ Final geschlossen |
 | Fähigkeitsgruppen-Dokumentation | ✓ Vollständig | Beibehalten |
-| Kompatibilitätsnachweis (macOS) | ✓ PASS | Fortlaufend |
-| Kompatibilitätsnachweis (Linux/WSL) | ✓ Manuell dokumentiert | Als CI-Gate etablieren |
-| Controls-Testabdeckung ≥ 70 % | Ausstehend — Phase-8-Gate | Schließen vor Beispielbeginn |
-| Beispielportierungen (25 MUSS) | Nicht begonnen | Phase 8 nach Gate-Bestehen |
-| Vollständige `dotnet test` Coverage | Phase-7-Treibertests abgedeckt | Alle Module nach Phase 8 |
+| Kompatibilitätsnachweis (macOS) | ✓ PASS | ✓ Gate-Paket verwendet denselben Multi-Mac-Baseline-Workflow |
+| Kompatibilitätsnachweis (Linux/WSL) | ✓ Manuell dokumentiert | ✓ Vorhandene Evidence bleibt gültig; kein zusätzlicher Rerun für reine Gate-Abschlussarbeit |
+| Core-/Controls-/Serialization-/Compatibility-/Drivers.Console-Testabdeckung je ≥ 70 % | Ausstehend — Phase-8-Gate | ✓ Geschlossen vor Beispielbeginn |
+| Beispielportierungen (25 MUSS) | Nicht begonnen | Welle 1 darf nach Closure-Commit beginnen |
+| Vollständige `dotnet test` Coverage | Phase-7-Treibertests abgedeckt | ✓ Alle Module im Closure-Paket verifiziert |

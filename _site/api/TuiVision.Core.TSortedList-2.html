@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class TSortedList&lt;TKey, TValue&gt; | TuiVision Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class TSortedList&lt;TKey, TValue&gt; | TuiVision Documentation ">
+      
+      <meta name="description" content="Sortierte Schl&#252;ssel-Wert-Sammlung als managed Gegenst&#252;ck zu TSortedList aus Turbo Vision (tsortedl.cc). Sorted key-value collection as a managed counterpart to TSortedList from Turbo Vision (tsortedl.cc).">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/006-close-phase8-gate/apiSpec/new?filename=TuiVision_Core_TSortedList_2.md&amp;value=---%0Auid%3A%20TuiVision.Core.TSortedList%602%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="TuiVision">
+            TuiVision
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="TuiVision.Core.TSortedList`2">
+
+
+
+  <h1 id="TuiVision_Core_TSortedList_2" data-uid="TuiVision.Core.TSortedList`2" class="text-break">
+Class TSortedList&lt;TKey, TValue&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Core/TSortedList.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TuiVision.html">TuiVision</a>.<a class="xref" href="TuiVision.Core.html">Core</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>TuiVision.Core.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Sortierte Schlüssel-Wert-Sammlung als managed Gegenstück zu <code>TSortedList</code>
+aus Turbo Vision (<code>tsortedl.cc</code>).</p>
+<p>Sorted key-value collection as a managed counterpart to <code>TSortedList</code>
+from Turbo Vision (<code>tsortedl.cc</code>).</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class TSortedList&lt;TKey, TValue&gt; where TKey : notnull</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TKey</code></dt>
+    <dd><p>Der Schlüsseltyp. / The key type.</p>
+</dd>
+    <dt><code>TValue</code></dt>
+    <dd><p>Der Werttyp. / The value type.</p>
+</dd>
+  </dl>
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">TSortedList&lt;TKey, TValue&gt;</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="TuiVision_Core_TSortedList_2__ctor_" data-uid="TuiVision.Core.TSortedList`2.#ctor*"></a>
+
+  <h3 id="TuiVision_Core_TSortedList_2__ctor" data-uid="TuiVision.Core.TSortedList`2.#ctor">
+  TSortedList()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Core/TSortedList.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Erstellt eine neue sortierte Liste mit dem Standardvergleicher für Schlüssel.</p>
+<p>Creates a new sorted list using the default comparer for keys.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TSortedList()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Core_TSortedList_2__ctor_" data-uid="TuiVision.Core.TSortedList`2.#ctor*"></a>
+
+  <h3 id="TuiVision_Core_TSortedList_2__ctor_System_Collections_Generic_IComparer__0__" data-uid="TuiVision.Core.TSortedList`2.#ctor(System.Collections.Generic.IComparer{`0})">
+  TSortedList(IComparer&lt;TKey&gt;?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Core/TSortedList.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Erstellt eine neue sortierte Liste mit einem benutzerdefinierten Schlüsselvergleicher.</p>
+<p>Creates a new sorted list with a custom key comparer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TSortedList(IComparer&lt;TKey&gt;? comparer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>comparer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1">IComparer</a>&lt;TKey&gt;</dt>
+    <dd><p>Der Schlüsselvergleicher. / The key comparer.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="TuiVision_Core_TSortedList_2_Count_" data-uid="TuiVision.Core.TSortedList`2.Count*"></a>
+
+  <h3 id="TuiVision_Core_TSortedList_2_Count" data-uid="TuiVision.Core.TSortedList`2.Count">
+  Count
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Core/TSortedList.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die Anzahl der gespeicherten Paare.</p>
+<p>The number of stored pairs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Core_TSortedList_2_Item_" data-uid="TuiVision.Core.TSortedList`2.Item*"></a>
+
+  <h3 id="TuiVision_Core_TSortedList_2_Item__0_" data-uid="TuiVision.Core.TSortedList`2.Item(`0)">
+  this[TKey]
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Core/TSortedList.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gibt den Wert zum angegebenen Schlüssel zurück.</p>
+<p>Returns the value for the specified key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TValue this[TKey key] { get; }</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <span class="xref">TKey</span></dt>
+    <dd><p>Der gesuchte Schlüssel. / The key to look up.</p>
+</dd>
+  </dl>
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">TValue</span></dt>
+    <dd><p>Der zugehörige Wert. / The corresponding value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Core_TSortedList_2_Keys_" data-uid="TuiVision.Core.TSortedList`2.Keys*"></a>
+
+  <h3 id="TuiVision_Core_TSortedList_2_Keys" data-uid="TuiVision.Core.TSortedList`2.Keys">
+  Keys
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Core/TSortedList.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gibt die Schlüssel in sortierter Reihenfolge zurück.</p>
+<p>Returns the keys in sorted order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TKey&gt; Keys { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TKey&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="TuiVision_Core_TSortedList_2_Add_" data-uid="TuiVision.Core.TSortedList`2.Add*"></a>
+
+  <h3 id="TuiVision_Core_TSortedList_2_Add__0__1_" data-uid="TuiVision.Core.TSortedList`2.Add(`0,`1)">
+  Add(TKey, TValue)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Core/TSortedList.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Fügt ein Schlüssel-Wert-Paar hinzu oder ersetzt einen vorhandenen Eintrag.</p>
+<p>Adds a key-value pair or replaces an existing entry.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(TKey key, TValue value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <span class="xref">TKey</span></dt>
+    <dd><p>Der Schlüssel. / The key.</p>
+</dd>
+    <dt><code>value</code> <span class="xref">TValue</span></dt>
+    <dd><p>Der Wert. / The value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Core/TSortedList.cs/#L15" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

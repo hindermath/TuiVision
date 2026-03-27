@@ -3,8 +3,16 @@
   ==================
   Version change: 1.9.0 → 1.10.0
   Bump rationale: MINOR — Added repo-wide assembly-version governance for
-  numbered Spec-Kit branches via `Directory.Build.props`, including the rule
-  that the feature/branch number becomes the canonical PR number for `Minor`.
+  numbered Spec-Kit branches via `Directory.Build.props`, and finalized the
+  mandatory 70% line-coverage gate across five assemblies
+  (`TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`,
+  `TuiVision.Compatibility`, `TuiVision.Drivers.Console`) as part of the
+  Phase-8 gate-closure work (`006-close-phase8-gate`).
+
+  Previous version: 1.8.0 → 1.9.0
+  Previous rationale: MINOR — Aligned branch-governance with the active
+  Spec-Kit workflow by permitting numbered feature branches in addition to
+  agent-prefixed branches.
   Full project scan performed (AGENTS.md, GEMINI.md, CLAUDE.md,
   copilot-instructions.md, constitution templates, and core spec templates).
 
@@ -60,8 +68,12 @@ All implementation MUST follow the Red-Green-Refactor cycle:
 Additional constraints:
 
 - Test framework: **MSTest** exclusively.
-- Minimum line coverage: **70%** in `TuiVision.Core`, `TuiVision.Controls`, and
-  `TuiVision.Serialization`. This is measured and enforced in CI.
+- Minimum line coverage: **70%** in `TuiVision.Core`, `TuiVision.Controls`,
+  `TuiVision.Serialization`, `TuiVision.Compatibility`, and
+  `TuiVision.Drivers.Console`. This is measured and enforced in CI.
+  Coverage is evaluated per target assembly and must be reported separately
+  for each of the five gate assemblies even when exercising tests are
+  distributed across multiple test projects.
 - Every ported core component MUST have at least one positive test and one
   negative/error-case test where technically meaningful.
 - Integration tests MUST cover: event loop, focus transitions, menu execution,
@@ -217,7 +229,10 @@ in the relevant plan or PR and explicit reviewer approval in the same change.
 1. `dotnet build --configuration Release` exits with code 0 and zero warnings
    treated as errors.
 2. `dotnet test` — all required tests pass (see Pflichtenheft section 9.4).
-3. Line coverage ≥ 70% in Core, Controls, Serialization.
+3. Line coverage ≥ 70% per assembly in `TuiVision.Core`, `TuiVision.Controls`,
+   `TuiVision.Serialization`, `TuiVision.Compatibility`, and
+   `TuiVision.Drivers.Console`. Assembly-specific evidence required; aggregated
+   coverage alone does not satisfy this gate.
 4. `dotnet format --verify-no-changes` — no formatting violations.
 5. No CS1591 suppressions added without documented justification.
 6. If `docfx.json` exists in the repository root and public API/XML docs changed,
@@ -342,6 +357,9 @@ repository. It MUST be updated whenever one of the following happens:
 2. An agent-driven work package changes repository content (code, tests, specs,
    plans, tasks, governance, or operational docs).
 3. A contributor explicitly requests a statistics refresh.
+
+
+Within the `## Fortschreibungsprotokoll` section, table rows MUST remain in strict chronological order: oldest entry first, newest and most recently added entry last, while rows with the same date keep their insertion order.
 
 Every update MUST record, at minimum:
 

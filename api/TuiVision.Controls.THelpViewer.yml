@@ -24,7 +24,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THelpViewer.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: THelpViewer
     path: src/TuiVision.Controls/THelpViewer.cs
@@ -98,7 +98,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THelpViewer.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/THelpViewer.cs
@@ -140,7 +140,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THelpViewer.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: HelpFile
     path: src/TuiVision.Controls/THelpViewer.cs
@@ -175,7 +175,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THelpViewer.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: CurrentTopic
     path: src/TuiVision.Controls/THelpViewer.cs
@@ -210,7 +210,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THelpViewer.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectedReferenceIndex
     path: src/TuiVision.Controls/THelpViewer.cs
@@ -245,7 +245,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THelpViewer.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: OpenContext
     path: src/TuiVision.Controls/THelpViewer.cs
@@ -284,7 +284,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THelpViewer.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectReference
     path: src/TuiVision.Controls/THelpViewer.cs
@@ -323,7 +323,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THelpViewer.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: ActivateSelectedReference
     path: src/TuiVision.Controls/THelpViewer.cs
@@ -358,7 +358,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THelpViewer.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: GoBack
     path: src/TuiVision.Controls/THelpViewer.cs
@@ -393,7 +393,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THelpViewer.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/THelpViewer.cs

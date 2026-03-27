@@ -1,0 +1,398 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.TIniFile
+  commentId: T:TuiVision.Controls.TIniFile
+  id: TIniFile
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.TIniFile.Get(System.String,System.String)
+  - TuiVision.Controls.TIniFile.Set(System.String,System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: TIniFile
+  nameWithType: TIniFile
+  fullName: TuiVision.Controls.TIniFile
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Controls/TIniFile.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TIniFile
+    path: src/TuiVision.Controls/TIniFile.cs
+    startLine: 12
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Einfache INI-artige Sektion- und Schlüsselablage als managed Gegenstück zu
+
+    <code>TProgIni</code> aus Turbo Vision (<code>tprogini.cc</code>).
+
+
+    Simple INI-style section and key store as a managed counterpart to
+
+    <code>TProgIni</code> from Turbo Vision (<code>tprogini.cc</code>).
+  example: []
+  syntax:
+    content: public sealed class TIniFile
+    content.vb: Public NotInheritable Class TIniFile
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Controls.TIniFile.Set(System.String,System.String,System.String)
+  commentId: M:TuiVision.Controls.TIniFile.Set(System.String,System.String,System.String)
+  id: Set(System.String,System.String,System.String)
+  parent: TuiVision.Controls.TIniFile
+  langs:
+  - csharp
+  - vb
+  name: Set(string, string, string)
+  nameWithType: TIniFile.Set(string, string, string)
+  fullName: TuiVision.Controls.TIniFile.Set(string, string, string)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TIniFile.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Set
+    path: src/TuiVision.Controls/TIniFile.cs
+    startLine: 25
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Speichert oder ersetzt einen Wert in der angegebenen Sektion.
+
+
+    Stores or replaces a value in the specified section.
+  example: []
+  syntax:
+    content: public void Set(string section, string key, string value)
+    parameters:
+    - id: section
+      type: System.String
+      description: Die Sektion. / The section.
+    - id: key
+      type: System.String
+      description: Der Schlüssel. / The key.
+    - id: value
+      type: System.String
+      description: Der Wert. / The value.
+    content.vb: Public Sub [Set](section As String, key As String, value As String)
+  overload: TuiVision.Controls.TIniFile.Set*
+  nameWithType.vb: TIniFile.Set(String, String, String)
+  fullName.vb: TuiVision.Controls.TIniFile.Set(String, String, String)
+  name.vb: Set(String, String, String)
+- uid: TuiVision.Controls.TIniFile.Get(System.String,System.String)
+  commentId: M:TuiVision.Controls.TIniFile.Get(System.String,System.String)
+  id: Get(System.String,System.String)
+  parent: TuiVision.Controls.TIniFile
+  langs:
+  - csharp
+  - vb
+  name: Get(string, string)
+  nameWithType: TIniFile.Get(string, string)
+  fullName: TuiVision.Controls.TIniFile.Get(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TIniFile.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Get
+    path: src/TuiVision.Controls/TIniFile.cs
+    startLine: 48
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Liest einen Wert aus der angegebenen Sektion oder <code>null</code>, wenn kein Eintrag vorhanden ist.
+
+
+    Reads a value from the specified section or <code>null</code> when no entry exists.
+  example: []
+  syntax:
+    content: public string? Get(string section, string key)
+    parameters:
+    - id: section
+      type: System.String
+      description: Die Sektion. / The section.
+    - id: key
+      type: System.String
+      description: Der Schlüssel. / The key.
+    return:
+      type: System.String
+      description: Der gespeicherte Wert oder <code>null</code>. / The stored value or <code>null</code>.
+    content.vb: Public Function [Get](section As String, key As String) As String
+  overload: TuiVision.Controls.TIniFile.Get*
+  nameWithType.vb: TIniFile.Get(String, String)
+  fullName.vb: TuiVision.Controls.TIniFile.Get(String, String)
+  name.vb: Get(String, String)
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Controls.TIniFile.Set*
+  commentId: Overload:TuiVision.Controls.TIniFile.Set
+  href: TuiVision.Controls.TIniFile.html#TuiVision_Controls_TIniFile_Set_System_String_System_String_System_String_
+  name: Set
+  nameWithType: TIniFile.Set
+  fullName: TuiVision.Controls.TIniFile.Set
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: TuiVision.Controls.TIniFile.Get*
+  commentId: Overload:TuiVision.Controls.TIniFile.Get
+  href: TuiVision.Controls.TIniFile.html#TuiVision_Controls_TIniFile_Get_System_String_System_String_
+  name: Get
+  nameWithType: TIniFile.Get
+  fullName: TuiVision.Controls.TIniFile.Get
