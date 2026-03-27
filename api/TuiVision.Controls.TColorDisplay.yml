@@ -1,0 +1,421 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.TColorDisplay
+  commentId: T:TuiVision.Controls.TColorDisplay
+  id: TColorDisplay
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.TColorDisplay.Background
+  - TuiVision.Controls.TColorDisplay.Foreground
+  - TuiVision.Controls.TColorDisplay.SetColors(System.ConsoleColor,System.ConsoleColor)
+  langs:
+  - csharp
+  - vb
+  name: TColorDisplay
+  nameWithType: TColorDisplay
+  fullName: TuiVision.Controls.TColorDisplay
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplay.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TColorDisplay
+    path: src/TuiVision.Controls/TColorDisplay.cs
+    startLine: 12
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Vorder- und Hintergrund-Farbvorschau als managed Gegenstück zu <code>TColorDisplay</code>
+
+    aus Turbo Vision (<code>tclrdisp.cc</code>).
+
+
+    Foreground and background colour preview as a managed counterpart to <code>TColorDisplay</code>
+
+    from Turbo Vision (<code>tclrdisp.cc</code>).
+  example: []
+  syntax:
+    content: public sealed class TColorDisplay
+    content.vb: Public NotInheritable Class TColorDisplay
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Controls.TColorDisplay.Foreground
+  commentId: P:TuiVision.Controls.TColorDisplay.Foreground
+  id: Foreground
+  parent: TuiVision.Controls.TColorDisplay
+  langs:
+  - csharp
+  - vb
+  name: Foreground
+  nameWithType: TColorDisplay.Foreground
+  fullName: TuiVision.Controls.TColorDisplay.Foreground
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplay.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Foreground
+    path: src/TuiVision.Controls/TColorDisplay.cs
+    startLine: 19
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Die Vordergrundfarbe.
+
+
+    The foreground colour.
+  example: []
+  syntax:
+    content: public ConsoleColor Foreground { get; }
+    parameters: []
+    return:
+      type: System.ConsoleColor
+    content.vb: Public Property Foreground As ConsoleColor
+  overload: TuiVision.Controls.TColorDisplay.Foreground*
+- uid: TuiVision.Controls.TColorDisplay.Background
+  commentId: P:TuiVision.Controls.TColorDisplay.Background
+  id: Background
+  parent: TuiVision.Controls.TColorDisplay
+  langs:
+  - csharp
+  - vb
+  name: Background
+  nameWithType: TColorDisplay.Background
+  fullName: TuiVision.Controls.TColorDisplay.Background
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplay.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Background
+    path: src/TuiVision.Controls/TColorDisplay.cs
+    startLine: 26
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Die Hintergrundfarbe.
+
+
+    The background colour.
+  example: []
+  syntax:
+    content: public ConsoleColor Background { get; }
+    parameters: []
+    return:
+      type: System.ConsoleColor
+    content.vb: Public Property Background As ConsoleColor
+  overload: TuiVision.Controls.TColorDisplay.Background*
+- uid: TuiVision.Controls.TColorDisplay.SetColors(System.ConsoleColor,System.ConsoleColor)
+  commentId: M:TuiVision.Controls.TColorDisplay.SetColors(System.ConsoleColor,System.ConsoleColor)
+  id: SetColors(System.ConsoleColor,System.ConsoleColor)
+  parent: TuiVision.Controls.TColorDisplay
+  langs:
+  - csharp
+  - vb
+  name: SetColors(ConsoleColor, ConsoleColor)
+  nameWithType: TColorDisplay.SetColors(ConsoleColor, ConsoleColor)
+  fullName: TuiVision.Controls.TColorDisplay.SetColors(System.ConsoleColor, System.ConsoleColor)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplay.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SetColors
+    path: src/TuiVision.Controls/TColorDisplay.cs
+    startLine: 35
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Setzt Vorder- und Hintergrundfarbe.
+
+
+    Sets the foreground and background colours.
+  example: []
+  syntax:
+    content: public void SetColors(ConsoleColor foreground, ConsoleColor background)
+    parameters:
+    - id: foreground
+      type: System.ConsoleColor
+      description: Die Vordergrundfarbe. / The foreground colour.
+    - id: background
+      type: System.ConsoleColor
+      description: Die Hintergrundfarbe. / The background colour.
+    content.vb: Public Sub SetColors(foreground As ConsoleColor, background As ConsoleColor)
+  overload: TuiVision.Controls.TColorDisplay.SetColors*
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Controls.TColorDisplay.Foreground*
+  commentId: Overload:TuiVision.Controls.TColorDisplay.Foreground
+  href: TuiVision.Controls.TColorDisplay.html#TuiVision_Controls_TColorDisplay_Foreground
+  name: Foreground
+  nameWithType: TColorDisplay.Foreground
+  fullName: TuiVision.Controls.TColorDisplay.Foreground
+- uid: System.ConsoleColor
+  commentId: T:System.ConsoleColor
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.consolecolor
+  name: ConsoleColor
+  nameWithType: ConsoleColor
+  fullName: System.ConsoleColor
+- uid: TuiVision.Controls.TColorDisplay.Background*
+  commentId: Overload:TuiVision.Controls.TColorDisplay.Background
+  href: TuiVision.Controls.TColorDisplay.html#TuiVision_Controls_TColorDisplay_Background
+  name: Background
+  nameWithType: TColorDisplay.Background
+  fullName: TuiVision.Controls.TColorDisplay.Background
+- uid: TuiVision.Controls.TColorDisplay.SetColors*
+  commentId: Overload:TuiVision.Controls.TColorDisplay.SetColors
+  href: TuiVision.Controls.TColorDisplay.html#TuiVision_Controls_TColorDisplay_SetColors_System_ConsoleColor_System_ConsoleColor_
+  name: SetColors
+  nameWithType: TColorDisplay.SetColors
+  fullName: TuiVision.Controls.TColorDisplay.SetColors

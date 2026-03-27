@@ -1,0 +1,457 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.TParamText
+  commentId: T:TuiVision.Controls.TParamText
+  id: TParamText
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.TParamText.#ctor(System.String)
+  - TuiVision.Controls.TParamText.Format(System.Object[])
+  - TuiVision.Controls.TParamText.Template
+  langs:
+  - csharp
+  - vb
+  name: TParamText
+  nameWithType: TParamText
+  fullName: TuiVision.Controls.TParamText
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Controls/TParamText.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TParamText
+    path: src/TuiVision.Controls/TParamText.cs
+    startLine: 14
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Parameterisierter UI-Text als managed Gegenstück zu <code>TParamText</code>
+
+    aus Turbo Vision (<code>tparamte.cc</code>).
+
+
+    Parameterized UI text as a managed counterpart to <code>TParamText</code>
+
+    from Turbo Vision (<code>tparamte.cc</code>).
+  example: []
+  syntax:
+    content: public sealed class TParamText
+    content.vb: Public NotInheritable Class TParamText
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Controls.TParamText.#ctor(System.String)
+  commentId: M:TuiVision.Controls.TParamText.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: TuiVision.Controls.TParamText
+  langs:
+  - csharp
+  - vb
+  name: TParamText(string)
+  nameWithType: TParamText.TParamText(string)
+  fullName: TuiVision.Controls.TParamText.TParamText(string)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Controls/TParamText.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Controls/TParamText.cs
+    startLine: 22
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Initialisiert den parametrisierten Text.
+
+
+    Initializes the parameterized text.
+  example: []
+  syntax:
+    content: public TParamText(string template)
+    parameters:
+    - id: template
+      type: System.String
+      description: Die Formatvorlage. / The format template.
+    content.vb: Public Sub New(template As String)
+  overload: TuiVision.Controls.TParamText.#ctor*
+  nameWithType.vb: TParamText.New(String)
+  fullName.vb: TuiVision.Controls.TParamText.New(String)
+  name.vb: New(String)
+- uid: TuiVision.Controls.TParamText.Template
+  commentId: P:TuiVision.Controls.TParamText.Template
+  id: Template
+  parent: TuiVision.Controls.TParamText
+  langs:
+  - csharp
+  - vb
+  name: Template
+  nameWithType: TParamText.Template
+  fullName: TuiVision.Controls.TParamText.Template
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TParamText.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Template
+    path: src/TuiVision.Controls/TParamText.cs
+    startLine: 33
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Die Formatvorlage.
+
+
+    The format template.
+  example: []
+  syntax:
+    content: public string Template { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Template As String
+  overload: TuiVision.Controls.TParamText.Template*
+- uid: TuiVision.Controls.TParamText.Format(System.Object[])
+  commentId: M:TuiVision.Controls.TParamText.Format(System.Object[])
+  id: Format(System.Object[])
+  parent: TuiVision.Controls.TParamText
+  langs:
+  - csharp
+  - vb
+  name: Format(params object?[])
+  nameWithType: TParamText.Format(params object?[])
+  fullName: TuiVision.Controls.TParamText.Format(params object?[])
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TParamText.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Format
+    path: src/TuiVision.Controls/TParamText.cs
+    startLine: 42
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Formatiert den Text mit den angegebenen Parametern.
+
+
+    Formats the text with the specified parameters.
+  example: []
+  syntax:
+    content: public string Format(params object?[] parameters)
+    parameters:
+    - id: parameters
+      type: System.Object[]
+      description: Die Formatparameter. / The format parameters.
+    return:
+      type: System.String
+      description: Der formatierte Text. / The formatted text.
+    content.vb: Public Function Format(ParamArray parameters As Object()) As String
+  overload: TuiVision.Controls.TParamText.Format*
+  nameWithType.vb: TParamText.Format(ParamArray Object())
+  fullName.vb: TuiVision.Controls.TParamText.Format(ParamArray Object())
+  name.vb: Format(ParamArray Object())
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Controls.TParamText.#ctor*
+  commentId: Overload:TuiVision.Controls.TParamText.#ctor
+  href: TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText__ctor_System_String_
+  name: TParamText
+  nameWithType: TParamText.TParamText
+  fullName: TuiVision.Controls.TParamText.TParamText
+  nameWithType.vb: TParamText.New
+  fullName.vb: TuiVision.Controls.TParamText.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: TuiVision.Controls.TParamText.Template*
+  commentId: Overload:TuiVision.Controls.TParamText.Template
+  href: TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText_Template
+  name: Template
+  nameWithType: TParamText.Template
+  fullName: TuiVision.Controls.TParamText.Template
+- uid: TuiVision.Controls.TParamText.Format*
+  commentId: Overload:TuiVision.Controls.TParamText.Format
+  href: TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText_Format_System_Object___
+  name: Format
+  nameWithType: TParamText.Format
+  fullName: TuiVision.Controls.TParamText.Format
+- uid: System.Object[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object[]
+  nameWithType: object[]
+  fullName: object[]
+  nameWithType.vb: Object()
+  fullName.vb: Object()
+  name.vb: Object()
+  spec.csharp:
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )

@@ -30,7 +30,9 @@ public sealed class TKeyCodeTranslatorTests
     [TestMethod]
     public void KeyEnter_HasExpectedTurboVisionValue()
     {
-        Assert.AreEqual((ushort)0x1C0D, TKeyCodeTranslator.KeyEnter,
+        ushort actual = TKeyCodeTranslator.KeyEnter;
+
+        Assert.AreEqual((ushort)0x1C0D, actual,
             "TKeyCodeTranslator.KeyEnter muss 0x1C0D sein (Scan 0x1C, Char 0x0D). " +
             "TKeyCodeTranslator.KeyEnter must be 0x1C0D (scan 0x1C, char 0x0D).");
     }
@@ -45,7 +47,9 @@ public sealed class TKeyCodeTranslatorTests
     [TestMethod]
     public void KeyEscape_HasExpectedTurboVisionValue()
     {
-        Assert.AreEqual((ushort)0x011B, TKeyCodeTranslator.KeyEscape,
+        ushort actual = TKeyCodeTranslator.KeyEscape;
+
+        Assert.AreEqual((ushort)0x011B, actual,
             "TKeyCodeTranslator.KeyEscape muss 0x011B sein (Scan 0x01, Char 0x1B). " +
             "TKeyCodeTranslator.KeyEscape must be 0x011B (scan 0x01, char 0x1B).");
     }
@@ -58,7 +62,9 @@ public sealed class TKeyCodeTranslatorTests
     [TestMethod]
     public void KeyBackspace_HasExpectedTurboVisionValue()
     {
-        Assert.AreEqual((ushort)0x0E08, TKeyCodeTranslator.KeyBackspace,
+        ushort actual = TKeyCodeTranslator.KeyBackspace;
+
+        Assert.AreEqual((ushort)0x0E08, actual,
             "TKeyCodeTranslator.KeyBackspace muss 0x0E08 sein. " +
             "TKeyCodeTranslator.KeyBackspace must be 0x0E08.");
     }
@@ -71,7 +77,9 @@ public sealed class TKeyCodeTranslatorTests
     [TestMethod]
     public void KeyTab_HasExpectedTurboVisionValue()
     {
-        Assert.AreEqual((ushort)0x0F09, TKeyCodeTranslator.KeyTab,
+        ushort actual = TKeyCodeTranslator.KeyTab;
+
+        Assert.AreEqual((ushort)0x0F09, actual,
             "TKeyCodeTranslator.KeyTab muss 0x0F09 sein. " +
             "TKeyCodeTranslator.KeyTab must be 0x0F09.");
     }
@@ -223,6 +231,53 @@ public sealed class TKeyCodeTranslatorTests
             "IsPrintable must return false for Enter (control character).");
     }
 
+    // ── TConsoleInputAdapter ─────────────────────────────────────────────────
+
+    /// <summary>
+    /// Prüft, dass <see cref="TConsoleInputAdapter.CreateKeyDownEvent"/> einen verwalteten
+    /// Konsolenschlüssel in ein vollständiges Turbo-Vision-Ereignis umsetzt.
+    ///
+    /// Verifies that <see cref="TConsoleInputAdapter.CreateKeyDownEvent"/> converts a managed
+    /// console key into a complete Turbo Vision event.
+    /// </summary>
+    [TestMethod]
+    public void ConsoleInputAdapter_CreateKeyDownEvent_WrapsTranslatorResult()
+    {
+        var keyInfo = new ConsoleKeyInfo('\0', ConsoleKey.LeftArrow, shift: false, alt: false, control: false);
+        TEvent result = TConsoleInputAdapter.CreateKeyDownEvent(keyInfo);
+
+        Assert.AreEqual(TEventKind.KeyDown, result.What,
+            "CreateKeyDownEvent muss ein KeyDown-Ereignis erzeugen. " +
+            "CreateKeyDownEvent must create a KeyDown event.");
+        Assert.AreEqual((ushort)0x4B00, result.KeyDown.KeyCode,
+            "CreateKeyDownEvent(LeftArrow) muss den TV-KeyCode 0x4B00 erzeugen. " +
+            "CreateKeyDownEvent(LeftArrow) must produce the TV key code 0x4B00.");
+    }
+
+    /// <summary>
+    /// Prüft, dass <see cref="TConsoleInputAdapter.IsXtermCompatibleKey"/> die explizit
+    /// nachgebildete xterm-kompatible Tastenmenge korrekt meldet.
+    ///
+    /// Verifies that <see cref="TConsoleInputAdapter.IsXtermCompatibleKey"/> correctly reports
+    /// the explicitly reproduced xterm-compatible key subset.
+    /// </summary>
+    [TestMethod]
+    public void ConsoleInputAdapter_IsXtermCompatibleKey_RecognisesSupportedKeys()
+    {
+        ConsoleKey[] supportedKeys = [ConsoleKey.LeftArrow, ConsoleKey.Home, ConsoleKey.F5];
+
+        foreach (ConsoleKey key in supportedKeys)
+        {
+            Assert.IsTrue(TConsoleInputAdapter.IsXtermCompatibleKey(key),
+                $"Die Taste {key} muss als xterm-kompatibel markiert sein. " +
+                $"The key {key} must be marked as xterm-compatible.");
+        }
+
+        Assert.IsFalse(TConsoleInputAdapter.IsXtermCompatibleKey(ConsoleKey.Spacebar),
+            "Die Leertaste gehört nicht zur expliziten xterm-Kompatibilitätsmenge. " +
+            "The space bar is not part of the explicit xterm-compatibility subset.");
+    }
+
     // ── TShiftState ───────────────────────────────────────────────────────────
 
     /// <summary>
@@ -233,7 +288,9 @@ public sealed class TKeyCodeTranslatorTests
     [TestMethod]
     public void TShiftState_None_IsZero()
     {
-        Assert.AreEqual((ushort)0x0000, (ushort)TShiftState.None,
+        ushort actual = (ushort)TShiftState.None;
+
+        Assert.AreEqual((ushort)0x0000, actual,
             "TShiftState.None muss 0x0000 sein. " +
             "TShiftState.None must be 0x0000.");
     }
@@ -248,11 +305,15 @@ public sealed class TKeyCodeTranslatorTests
     [TestMethod]
     public void TShiftState_Flags_HaveExpectedBitValues()
     {
-        Assert.AreEqual((ushort)0x0001, (ushort)TShiftState.Shift,
+        ushort shift = (ushort)TShiftState.Shift;
+        ushort ctrl = (ushort)TShiftState.Ctrl;
+        ushort alt = (ushort)TShiftState.Alt;
+
+        Assert.AreEqual((ushort)0x0001, shift,
             "TShiftState.Shift muss 0x0001 sein.");
-        Assert.AreEqual((ushort)0x0002, (ushort)TShiftState.Ctrl,
+        Assert.AreEqual((ushort)0x0002, ctrl,
             "TShiftState.Ctrl muss 0x0002 sein.");
-        Assert.AreEqual((ushort)0x0004, (ushort)TShiftState.Alt,
+        Assert.AreEqual((ushort)0x0004, alt,
             "TShiftState.Alt muss 0x0004 sein.");
 
         // Combination: Ctrl+Shift = 0x0003

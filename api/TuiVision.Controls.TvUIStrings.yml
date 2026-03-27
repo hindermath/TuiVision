@@ -1,0 +1,505 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.TvUIStrings
+  commentId: T:TuiVision.Controls.TvUIStrings
+  id: TvUIStrings
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.TvUIStrings.Cancel
+  - TuiVision.Controls.TvUIStrings.Close
+  - TuiVision.Controls.TvUIStrings.Ok
+  - TuiVision.Controls.TvUIStrings.Open
+  - TuiVision.Controls.TvUIStrings.Save
+  langs:
+  - csharp
+  - vb
+  name: TvUIStrings
+  nameWithType: TvUIStrings
+  fullName: TuiVision.Controls.TvUIStrings
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Controls/TvUIStrings.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TvUIStrings
+    path: src/TuiVision.Controls/TvUIStrings.cs
+    startLine: 10
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Standard-UI-Texte als managed Ersatz für <code>tvtext1.cc</code> und <code>tvtext2.cc</code>.
+
+
+    Default UI texts as a managed replacement for <code>tvtext1.cc</code> and <code>tvtext2.cc</code>.
+  example: []
+  syntax:
+    content: public static class TvUIStrings
+    content.vb: Public Module TvUIStrings
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Controls.TvUIStrings.Ok
+  commentId: P:TuiVision.Controls.TvUIStrings.Ok
+  id: Ok
+  parent: TuiVision.Controls.TvUIStrings
+  langs:
+  - csharp
+  - vb
+  name: Ok
+  nameWithType: TvUIStrings.Ok
+  fullName: TuiVision.Controls.TvUIStrings.Ok
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TvUIStrings.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Ok
+    path: src/TuiVision.Controls/TvUIStrings.cs
+    startLine: 13
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: OK-Beschriftung. / OK label.
+  example: []
+  syntax:
+    content: public static string Ok { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property Ok As String
+  overload: TuiVision.Controls.TvUIStrings.Ok*
+- uid: TuiVision.Controls.TvUIStrings.Cancel
+  commentId: P:TuiVision.Controls.TvUIStrings.Cancel
+  id: Cancel
+  parent: TuiVision.Controls.TvUIStrings
+  langs:
+  - csharp
+  - vb
+  name: Cancel
+  nameWithType: TvUIStrings.Cancel
+  fullName: TuiVision.Controls.TvUIStrings.Cancel
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TvUIStrings.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Cancel
+    path: src/TuiVision.Controls/TvUIStrings.cs
+    startLine: 16
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Abbrechen-Beschriftung. / Cancel label.
+  example: []
+  syntax:
+    content: public static string Cancel { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property Cancel As String
+  overload: TuiVision.Controls.TvUIStrings.Cancel*
+- uid: TuiVision.Controls.TvUIStrings.Open
+  commentId: P:TuiVision.Controls.TvUIStrings.Open
+  id: Open
+  parent: TuiVision.Controls.TvUIStrings
+  langs:
+  - csharp
+  - vb
+  name: Open
+  nameWithType: TvUIStrings.Open
+  fullName: TuiVision.Controls.TvUIStrings.Open
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TvUIStrings.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Open
+    path: src/TuiVision.Controls/TvUIStrings.cs
+    startLine: 19
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Öffnen-Beschriftung. / Open label.
+  example: []
+  syntax:
+    content: public static string Open { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property Open As String
+  overload: TuiVision.Controls.TvUIStrings.Open*
+- uid: TuiVision.Controls.TvUIStrings.Save
+  commentId: P:TuiVision.Controls.TvUIStrings.Save
+  id: Save
+  parent: TuiVision.Controls.TvUIStrings
+  langs:
+  - csharp
+  - vb
+  name: Save
+  nameWithType: TvUIStrings.Save
+  fullName: TuiVision.Controls.TvUIStrings.Save
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TvUIStrings.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Save
+    path: src/TuiVision.Controls/TvUIStrings.cs
+    startLine: 22
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Speichern-Beschriftung. / Save label.
+  example: []
+  syntax:
+    content: public static string Save { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property Save As String
+  overload: TuiVision.Controls.TvUIStrings.Save*
+- uid: TuiVision.Controls.TvUIStrings.Close
+  commentId: P:TuiVision.Controls.TvUIStrings.Close
+  id: Close
+  parent: TuiVision.Controls.TvUIStrings
+  langs:
+  - csharp
+  - vb
+  name: Close
+  nameWithType: TvUIStrings.Close
+  fullName: TuiVision.Controls.TvUIStrings.Close
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TvUIStrings.cs
+      branch: 006-close-phase8-gate
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Close
+    path: src/TuiVision.Controls/TvUIStrings.cs
+    startLine: 25
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Schließen-Beschriftung. / Close label.
+  example: []
+  syntax:
+    content: public static string Close { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property Close As String
+  overload: TuiVision.Controls.TvUIStrings.Close*
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Controls.TvUIStrings.Ok*
+  commentId: Overload:TuiVision.Controls.TvUIStrings.Ok
+  href: TuiVision.Controls.TvUIStrings.html#TuiVision_Controls_TvUIStrings_Ok
+  name: Ok
+  nameWithType: TvUIStrings.Ok
+  fullName: TuiVision.Controls.TvUIStrings.Ok
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: TuiVision.Controls.TvUIStrings.Cancel*
+  commentId: Overload:TuiVision.Controls.TvUIStrings.Cancel
+  href: TuiVision.Controls.TvUIStrings.html#TuiVision_Controls_TvUIStrings_Cancel
+  name: Cancel
+  nameWithType: TvUIStrings.Cancel
+  fullName: TuiVision.Controls.TvUIStrings.Cancel
+- uid: TuiVision.Controls.TvUIStrings.Open*
+  commentId: Overload:TuiVision.Controls.TvUIStrings.Open
+  href: TuiVision.Controls.TvUIStrings.html#TuiVision_Controls_TvUIStrings_Open
+  name: Open
+  nameWithType: TvUIStrings.Open
+  fullName: TuiVision.Controls.TvUIStrings.Open
+- uid: TuiVision.Controls.TvUIStrings.Save*
+  commentId: Overload:TuiVision.Controls.TvUIStrings.Save
+  href: TuiVision.Controls.TvUIStrings.html#TuiVision_Controls_TvUIStrings_Save
+  name: Save
+  nameWithType: TvUIStrings.Save
+  fullName: TuiVision.Controls.TvUIStrings.Save
+- uid: TuiVision.Controls.TvUIStrings.Close*
+  commentId: Overload:TuiVision.Controls.TvUIStrings.Close
+  href: TuiVision.Controls.TvUIStrings.html#TuiVision_Controls_TvUIStrings_Close
+  name: Close
+  nameWithType: TvUIStrings.Close
+  fullName: TuiVision.Controls.TvUIStrings.Close

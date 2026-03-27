@@ -1,6 +1,8 @@
 // Copyright (c) 2025 Thorsten Hindermann / TuiVision Contributors.
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
+using TuiVision.Compatibility;
+using TuiVision.Core;
 using TuiVision.Drivers.Console;
 
 namespace TuiVision.Drivers.Tests;
@@ -123,6 +125,105 @@ public sealed class TConsoleDriverCompatibilityTests
             replacement.Contains("ReadKey", StringComparison.Ordinal),
             $"KeyboardInput-Ersatz muss ReadKey erwähnen. " +
             $"KeyboardInput replacement must mention ReadKey.\n{replacement}");
+    }
+
+    /// <summary>
+    /// Prüft, dass <see cref="DriverCapabilityBucket.DisplayAdaptation"/> den verwalteten
+    /// Unicode-/Encoding-Ersatz für historische Codepage-Verwaltung explizit benennt.
+    ///
+    /// Verifies that <see cref="DriverCapabilityBucket.DisplayAdaptation"/> explicitly names the
+    /// managed Unicode/encoding replacement for historical codepage management.
+    /// </summary>
+    [TestMethod]
+    public void CapabilityMap_DisplayAdaptationBucket_ReferencesUnicodeAndEncoding()
+    {
+        string replacement = DriverCapabilityMap.GetManagedReplacement(DriverCapabilityBucket.DisplayAdaptation);
+
+        Assert.IsTrue(
+            replacement.Contains("Unicode", StringComparison.OrdinalIgnoreCase),
+            $"DisplayAdaptation-Ersatz muss Unicode erwähnen. " +
+            $"DisplayAdaptation replacement must mention Unicode.\n{replacement}");
+        Assert.IsTrue(
+            replacement.Contains("System.Text.Encoding", StringComparison.Ordinal),
+            $"DisplayAdaptation-Ersatz muss System.Text.Encoding erwähnen. " +
+            $"DisplayAdaptation replacement must mention System.Text.Encoding.\n{replacement}");
+    }
+
+    /// <summary>
+    /// Prüft, dass die verwaltete Tastaturbrücke die konsolenseitige Taste in ein
+    /// Turbo-Vision-Ereignis überführt und dabei die xterm-kompatible Navigationsmenge abdeckt.
+    ///
+    /// Verifies that the managed keyboard bridge translates a console-side key into a
+    /// Turbo Vision event while covering the xterm-compatible navigation subset.
+    /// </summary>
+    [TestMethod]
+    public void ConsoleInputAdapter_KeyTranslation_ProducesTurboVisionEvent()
+    {
+        var keyInfo = new ConsoleKeyInfo('\0', ConsoleKey.LeftArrow, shift: false, alt: false, control: false);
+        TEvent result = TConsoleInputAdapter.CreateKeyDownEvent(keyInfo);
+
+        Assert.AreEqual(TEventKind.KeyDown, result.What,
+            "Die Tastaturbrücke muss ein KeyDown-Ereignis erzeugen. " +
+            "The keyboard bridge must create a KeyDown event.");
+        Assert.AreEqual((ushort)0x4B00, result.KeyDown.KeyCode,
+            "LeftArrow muss als TV-KeyCode 0x4B00 abgebildet werden. " +
+            "LeftArrow must be mapped to TV key code 0x4B00.");
+        Assert.IsTrue(TConsoleInputAdapter.IsXtermCompatibleKey(ConsoleKey.LeftArrow),
+            "LeftArrow muss als xterm-kompatible Taste markiert sein. " +
+            "LeftArrow must be marked as an xterm-compatible key.");
+    }
+
+    /// <summary>
+    /// Prüft, dass das verwaltete Mausereignismodell Koordinaten, Buttons und Doppelklickstatus
+    /// ohne plattformspezifischen Raw-Driver transportiert.
+    ///
+    /// Verifies that the managed mouse event model carries coordinates, buttons, and double-click
+    /// state without a platform-specific raw driver.
+    /// </summary>
+    [TestMethod]
+    public void MouseEventModel_CreateMouse_PreservesButtonsAndCoordinates()
+    {
+        TEvent result = TEvent.CreateMouse(
+            TEventKind.MouseMove,
+            TMouseButtons.Left | TMouseButtons.Right,
+            doubleClick: true,
+            new TPoint(12, 4));
+
+        Assert.AreEqual(TEventKind.MouseMove, result.What,
+            "CreateMouse muss den übergebenen Mausereignistyp bewahren. " +
+            "CreateMouse must preserve the provided mouse event kind.");
+        Assert.AreEqual(TMouseButtons.Left | TMouseButtons.Right, result.Mouse.Buttons,
+            "CreateMouse muss die gedrückten Buttons bewahren. " +
+            "CreateMouse must preserve the pressed buttons.");
+        Assert.IsTrue(result.Mouse.DoubleClick,
+            "CreateMouse muss den Doppelklickstatus bewahren. " +
+            "CreateMouse must preserve the double-click state.");
+        Assert.AreEqual(new TPoint(12, 4), result.Mouse.Where,
+            "CreateMouse muss die Koordinaten bewahren. " +
+            "CreateMouse must preserve the coordinates.");
+    }
+
+    /// <summary>
+    /// Prüft, dass die MouseInput-Fähigkeitsbeschreibung den bewussten Verzicht auf einen
+    /// plattformspezifischen Raw-Maus-Treiber ausdrücklich dokumentiert.
+    ///
+    /// Verifies that the MouseInput capability description explicitly documents the conscious
+    /// omission of a platform-specific raw mouse driver.
+    /// </summary>
+    [TestMethod]
+    public void CapabilityMap_MouseInputBucket_DocumentsIntentionalOmission()
+    {
+        string replacement = DriverCapabilityMap.GetManagedReplacement(DriverCapabilityBucket.MouseInput);
+
+        Assert.IsTrue(
+            replacement.Contains("TEvent", StringComparison.Ordinal),
+            $"MouseInput-Ersatz muss TEvent erwähnen. " +
+            $"MouseInput replacement must mention TEvent.\n{replacement}");
+        Assert.IsTrue(
+            replacement.Contains("consciously", StringComparison.OrdinalIgnoreCase) ||
+            replacement.Contains("not reproduced", StringComparison.OrdinalIgnoreCase),
+            $"MouseInput-Ersatz muss den bewussten Verzicht dokumentieren. " +
+            $"MouseInput replacement must document the conscious omission.\n{replacement}");
     }
 
     // ── Gate-006-Integritätsprüfungen / Gate-006 integrity assertions ─────────

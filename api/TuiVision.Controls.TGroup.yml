@@ -30,7 +30,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: TGroup
     path: src/TuiVision.Controls/TGroup.cs
@@ -68,6 +68,7 @@ items:
   - TuiVision.Controls.TDesktop
   - TuiVision.Controls.TDialog
   - TuiVision.Controls.TProgram
+  - TuiVision.Controls.TWindow
   inheritedMembers:
   - TuiVision.Controls.TView.Owner
   - TuiVision.Controls.TView.Options
@@ -113,7 +114,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TGroup.cs
@@ -159,7 +160,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Current
     path: src/TuiVision.Controls/TGroup.cs
@@ -198,7 +199,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Insert
     path: src/TuiVision.Controls/TGroup.cs
@@ -286,7 +287,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Remove
     path: src/TuiVision.Controls/TGroup.cs
@@ -349,7 +350,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: ShutDown
     path: src/TuiVision.Controls/TGroup.cs
@@ -386,7 +387,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: SetFocus
     path: src/TuiVision.Controls/TGroup.cs
@@ -445,7 +446,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: CurrentChanged
     path: src/TuiVision.Controls/TGroup.cs
@@ -481,7 +482,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectNext
     path: src/TuiVision.Controls/TGroup.cs
@@ -531,7 +532,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TGroup.cs
@@ -572,7 +573,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: LockDraw
     path: src/TuiVision.Controls/TGroup.cs
@@ -608,7 +609,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: UnlockDraw
     path: src/TuiVision.Controls/TGroup.cs
@@ -648,7 +649,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: SetState
     path: src/TuiVision.Controls/TGroup.cs
@@ -708,7 +709,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TGroup.cs
@@ -751,7 +752,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: OnBoundsChanged
     path: src/TuiVision.Controls/TGroup.cs
@@ -788,7 +789,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 005-driver-consolidation-m07
+      branch: 006-close-phase8-gate
       repo: https://github.com/hindermath/TuiVision.git
     id: GetFirstChild
     path: src/TuiVision.Controls/TGroup.cs

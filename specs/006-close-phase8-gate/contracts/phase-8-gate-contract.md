@@ -24,6 +24,29 @@ The closure claim is represented by these repository-owned surfaces:
 No external spreadsheet, hidden local note, or oral-only review context is part
 of the accepted closure surface.
 
+## Closure Record for Feature `006-close-phase8-gate`
+
+The repository-visible closure record for `2026-03-27` is:
+
+- `docs/porting-status.md` contains no provisional `portiert + Test ausstehend`
+  ledger row.
+- `dotnet build --configuration Release` passed.
+- `dotnet test` passed across the repository test-project set.
+- `dotnet format --verify-no-changes` passed.
+- `docfx docfx.json` passed because public APIs and XML comments changed in the
+  006 package.
+- Coverage evidence is recorded separately for the five gate assemblies:
+  - `TuiVision.Core`: `89.11 %`
+  - `TuiVision.Controls`: `84.10 %`
+  - `TuiVision.Serialization`: `83.33 %`
+  - `TuiVision.Compatibility`: `80.95 %`
+  - `TuiVision.Drivers.Console`: `97.43 %`
+- No unresolved local-versus-CI coverage conflict remains because the
+  repository proof surface currently contains no conflicting assembly-specific
+  CI artifact.
+- Dedicated closure-commit reference:
+  `docs: close phase-8 entrance gate for feature 006`
+
 ## `docs/porting-status.md` Final-State Contract
 
 ### Required Row Outcome
@@ -113,6 +136,8 @@ of the accepted closure surface.
 - That commit must identify the proof artifacts or point directly to them.
 - The commit boundary is part of the contract, not an optional documentation
   convenience.
+- For feature `006-close-phase8-gate`, the dedicated closure-commit reference
+  is `docs: close phase-8 entrance gate for feature 006`.
 
 ## Documentation Contract
 

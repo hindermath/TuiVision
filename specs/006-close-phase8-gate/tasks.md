@@ -54,23 +54,23 @@
 
 > **NOTE**: Write these tests first, verify they fail, and only then implement the missing framework behavior.
 
-- [ ] T008 [P] [US1] Add failing Core proof tests under `tests/TuiVision.Core.Tests/` for the ledger mappings from `tcollect.cc`, `tnscolle.cc`, `tnssorte.cc`, `tsortedc.cc`, `tsortedl.cc`, `tstrinde.cc`, `tstringc.cc`, and `tstrlist.cc`.
-- [ ] T009 [P] [US1] Add failing Controls proof tests under `tests/TuiVision.Controls.Tests/` for the still-planned config, window, validator, file-info, colour, text, selection, and clipboard responsibilities.
-- [ ] T010 [P] [US1] Add failing Serialization proof tests in `tests/TuiVision.Serialization.Tests/PStreamTests.cs`, `tests/TuiVision.Serialization.Tests/THelpFileTests.cs`, `tests/TuiVision.Serialization.Tests/TResourceFileTests.cs`, and `tests/TuiVision.Serialization.Tests/SerializationCoverageSweepTests.cs` for the remaining stream/help/resource rows.
-- [ ] T011 [P] [US1] Add failing Compatibility and driver-input proof tests under `tests/TuiVision.Compatibility.Tests/` and `tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs` for `tgkey.cc`, `tvintl.cc`, codepage, keyboard, and mouse mappings.
+- [X] T008 [P] [US1] Add failing Core proof tests under `tests/TuiVision.Core.Tests/` for the ledger mappings from `tcollect.cc`, `tnscolle.cc`, `tnssorte.cc`, `tsortedc.cc`, `tsortedl.cc`, `tstrinde.cc`, `tstringc.cc`, and `tstrlist.cc`.
+- [X] T009 [P] [US1] Add failing Controls proof tests under `tests/TuiVision.Controls.Tests/` for the still-planned config, window, validator, file-info, colour, text, selection, and clipboard responsibilities.
+- [X] T010 [P] [US1] Add failing Serialization proof tests in `tests/TuiVision.Serialization.Tests/PStreamTests.cs`, `tests/TuiVision.Serialization.Tests/THelpFileTests.cs`, `tests/TuiVision.Serialization.Tests/TResourceFileTests.cs`, and `tests/TuiVision.Serialization.Tests/SerializationCoverageSweepTests.cs` for the remaining stream/help/resource rows.
+- [X] T011 [P] [US1] Add failing Compatibility and driver-input proof tests under `tests/TuiVision.Compatibility.Tests/` and `tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs` for `tgkey.cc`, `tvintl.cc`, codepage, keyboard, and mouse mappings.
 
 ### Implementation for User Story 1
 
-- [ ] T012 [P] [US1] Implement the planned collection and string family under `src/TuiVision.Core/` for the `tcollect`, `tnscolle`, `tnssorte`, `tsortedc`, `tsortedl`, `tstrinde`, `tstringc`, and `tstrlist` ledger mappings.
-- [ ] T013 [P] [US1] Implement config, initialization, window, and file-info types under `src/TuiVision.Controls/` for `configfile.cc`, `tprogini.cc`, `twindow.cc`, and `tfileinf.cc`.
-- [ ] T014 [P] [US1] Implement validator types under `src/TuiVision.Controls/` for `tvalidat.cc`, `tfilterv.cc`, and `trangeva.cc`.
-- [ ] T015 [P] [US1] Implement colour, palette, and selector types under `src/TuiVision.Controls/` for `tclrdisp.cc`, `tcolordi.cc`, `tcolorgr.cc`, `tcolorit.cc`, `tcolorse.cc`, `tpalette.cc`, and `tmonosel.cc`.
-- [ ] T016 [P] [US1] Implement managed text and clipboard replacements in `src/TuiVision.Controls/`, `src/TuiVision.Controls/TEditor.cs`, and related Controls files for `osclipboard.cc`, `win32/win32clip.cc`, `tparamte.cc`, `tvtext1.cc`, and `tvtext2.cc`.
-- [ ] T017 [P] [US1] Complete stream, help, and resource behavior in `src/TuiVision.Serialization/fpstream.cs`, `src/TuiVision.Serialization/ipstream.cs`, `src/TuiVision.Serialization/opstream.cs`, `src/TuiVision.Serialization/pstream.cs`, `src/TuiVision.Serialization/THelpFile.cs`, `src/TuiVision.Serialization/THelpIndex.cs`, `src/TuiVision.Serialization/TResourceCollection.cs`, `src/TuiVision.Serialization/TResourceFile.cs`, `src/TuiVision.Serialization/TRecordRegistry.cs`, and `src/TuiVision.Serialization/TRecordSerializer.cs`.
-- [ ] T018 [P] [US1] Expand `src/TuiVision.Compatibility/Class1.cs` and add concrete support files under `src/TuiVision.Compatibility/` for global key tables, UI strings, internationalization, and xterm-key compatibility behavior.
-- [ ] T019 [US1] Extend `src/TuiVision.Drivers.Console/TConsoleDriver.cs` and `src/TuiVision.Drivers.Console/DriverCapabilityMap.cs`, and add new focused source files under `src/TuiVision.Drivers.Console/` where needed, to close the remaining codepage, keyboard, and mouse proof rows without placeholder-only scaffolding. Do not add runtime code to `src/TuiVision.Drivers.Console/Class1.cs` — that file documents a deliberate relocation and must remain a comment-only redirect.
-- [ ] T020 [US1] Reconcile every affected row in `docs/porting-status.md` to `portiert + getestet` or `bewusst ausgelassen + Begruendung`, with direct evidence or rationale references for all 151 historical `.cc` files.
-- [ ] T021 [US1] Run the targeted module proof suite via `tests/TuiVision.Core.Tests/`, `tests/TuiVision.Controls.Tests/`, `tests/TuiVision.Serialization.Tests/`, `tests/TuiVision.Compatibility.Tests/`, and `tests/TuiVision.Drivers.Tests/` and fix the remaining proof-gap failures before declaring `M-07` closed.
+- [X] T012 [P] [US1] Implement the planned collection and string family under `src/TuiVision.Core/` for the `tcollect`, `tnscolle`, `tnssorte`, `tsortedc`, `tsortedl`, `tstrinde`, `tstringc`, and `tstrlist` ledger mappings.
+- [X] T013 [P] [US1] Implement config, initialization, window, and file-info types under `src/TuiVision.Controls/` for `configfile.cc`, `tprogini.cc`, `twindow.cc`, and `tfileinf.cc`.
+- [X] T014 [P] [US1] Implement validator types under `src/TuiVision.Controls/` for `tvalidat.cc`, `tfilterv.cc`, and `trangeva.cc`.
+- [X] T015 [P] [US1] Implement colour, palette, and selector types under `src/TuiVision.Controls/` for `tclrdisp.cc`, `tcolordi.cc`, `tcolorgr.cc`, `tcolorit.cc`, `tcolorse.cc`, `tpalette.cc`, and `tmonosel.cc`.
+- [X] T016 [P] [US1] Implement managed text and clipboard replacements in `src/TuiVision.Controls/`, `src/TuiVision.Controls/TEditor.cs`, and related Controls files for `osclipboard.cc`, `win32/win32clip.cc`, `tparamte.cc`, `tvtext1.cc`, and `tvtext2.cc`.
+- [X] T017 [P] [US1] Complete stream, help, and resource behavior in `src/TuiVision.Serialization/fpstream.cs`, `src/TuiVision.Serialization/ipstream.cs`, `src/TuiVision.Serialization/opstream.cs`, `src/TuiVision.Serialization/pstream.cs`, `src/TuiVision.Serialization/THelpFile.cs`, `src/TuiVision.Serialization/THelpIndex.cs`, `src/TuiVision.Serialization/TResourceCollection.cs`, `src/TuiVision.Serialization/TResourceFile.cs`, `src/TuiVision.Serialization/TRecordRegistry.cs`, and `src/TuiVision.Serialization/TRecordSerializer.cs`.
+- [X] T018 [P] [US1] Expand `src/TuiVision.Compatibility/Class1.cs` and add concrete support files under `src/TuiVision.Compatibility/` for global key tables, UI strings, internationalization, and xterm-key compatibility behavior.
+- [X] T019 [US1] Extend `src/TuiVision.Drivers.Console/TConsoleDriver.cs` and `src/TuiVision.Drivers.Console/DriverCapabilityMap.cs`, and add new focused source files under `src/TuiVision.Drivers.Console/` where needed, to close the remaining codepage, keyboard, and mouse proof rows without placeholder-only scaffolding. Do not add runtime code to `src/TuiVision.Drivers.Console/Class1.cs` — that file documents a deliberate relocation and must remain a comment-only redirect.
+- [X] T020 [US1] Reconcile every affected row in `docs/porting-status.md` to `portiert + getestet` or `bewusst ausgelassen + Begruendung`, with direct evidence or rationale references for all 151 historical `.cc` files.
+- [X] T021 [US1] Run the targeted module proof suite via `tests/TuiVision.Core.Tests/`, `tests/TuiVision.Controls.Tests/`, `tests/TuiVision.Serialization.Tests/`, `tests/TuiVision.Compatibility.Tests/`, and `tests/TuiVision.Drivers.Tests/` and fix the remaining proof-gap failures before declaring `M-07` closed.
 
 **Checkpoint**: User Story 1 is complete when the ledger has no provisional rows left and every historical mapping is backed by implementation or explicit rationale.
 
@@ -84,13 +84,13 @@
 
 ### Validation and Coverage Tasks for User Story 2
 
-- [ ] T022 [P] [US2] Add or extend coverage-sweep tests under `tests/TuiVision.Core.Tests/`, `tests/TuiVision.Controls.Tests/`, `tests/TuiVision.Serialization.Tests/`, `tests/TuiVision.Compatibility.Tests/`, and `tests/TuiVision.Drivers.Tests/` until each gate assembly can reach `>= 70 %` line coverage.
-- [ ] T023 [US2] Run `dotnet build --configuration Release` and `dotnet test`, then record build/test status plus every skip-or-ignore outcome and its corresponding tracked-issue reference in `Pflichtenheft.md` and `docs/porting-status.md`; do not allow gate closure while such a reference is missing.
-- [ ] T024 [P] [US2] Run assembly-specific Coverlet collection for `tests/TuiVision.Core.Tests/`, `tests/TuiVision.Controls.Tests/`, `tests/TuiVision.Serialization.Tests/`, `tests/TuiVision.Compatibility.Tests/`, and `tests/TuiVision.Drivers.Tests/`, then publish the separated five-assembly results in `docs/porting-status.md` and `specs/005-driver-consolidation-m07/checklists/phase-8-gate-review.md`.
-- [ ] T025 [US2] Compare local coverage outputs with repository-visible CI evidence and record the authoritative result plus any resolved discrepancy in `Pflichtenheft.md`, `docs/porting-status.md`, and `specs/006-close-phase8-gate/quickstart.md`.
-- [ ] T026 [P] [US2] Run `dotnet format --verify-no-changes` and conditional `docfx docfx.json`, then record PASS or explicit N/A in `Pflichtenheft.md` and `docs/porting-status.md`.
-- [ ] T027 [P] [US2] Refresh compatibility evidence in `docs/guides/multi-mac-workflow.md` for `MacBook Air M2`, `Mac mini M4 Pro`, and, when materially required, Linux and Windows/WSL.
-- [ ] T028 [US2] Sync the final six-criteria evidence package across `Pflichtenheft.md`, `docs/porting-status.md`, and `specs/005-driver-consolidation-m07/checklists/phase-8-gate-review.md` so reviewers see one consistent gate state.
+- [X] T022 [P] [US2] Add or extend coverage-sweep tests under `tests/TuiVision.Core.Tests/`, `tests/TuiVision.Controls.Tests/`, `tests/TuiVision.Serialization.Tests/`, `tests/TuiVision.Compatibility.Tests/`, and `tests/TuiVision.Drivers.Tests/` until each gate assembly can reach `>= 70 %` line coverage.
+- [X] T023 [US2] Run `dotnet build --configuration Release` and `dotnet test`, then record build/test status plus every skip-or-ignore outcome and its corresponding tracked-issue reference in `Pflichtenheft.md` and `docs/porting-status.md`; do not allow gate closure while such a reference is missing.
+- [X] T024 [P] [US2] Run assembly-specific Coverlet collection for `tests/TuiVision.Core.Tests/`, `tests/TuiVision.Controls.Tests/`, `tests/TuiVision.Serialization.Tests/`, `tests/TuiVision.Compatibility.Tests/`, and `tests/TuiVision.Drivers.Tests/`, then publish the separated five-assembly results in `docs/porting-status.md` and `specs/005-driver-consolidation-m07/checklists/phase-8-gate-review.md`.
+- [X] T025 [US2] Compare local coverage outputs with repository-visible CI evidence and record the authoritative result plus any resolved discrepancy in `Pflichtenheft.md`, `docs/porting-status.md`, and `specs/006-close-phase8-gate/quickstart.md`.
+- [X] T026 [P] [US2] Run `dotnet format --verify-no-changes` and conditional `docfx docfx.json`, then record PASS or explicit N/A in `Pflichtenheft.md` and `docs/porting-status.md`.
+- [X] T027 [P] [US2] Refresh compatibility evidence in `docs/guides/multi-mac-workflow.md` for `MacBook Air M2`, `Mac mini M4 Pro`, and, when materially required, Linux and Windows/WSL.
+- [X] T028 [US2] Sync the final six-criteria evidence package across `Pflichtenheft.md`, `docs/porting-status.md`, and `specs/005-driver-consolidation-m07/checklists/phase-8-gate-review.md` so reviewers see one consistent gate state.
 
 **Checkpoint**: User Story 2 is complete when build, test, format, coverage, API-doc, and platform evidence are all reviewable from repository files without oral handover.
 
@@ -104,9 +104,9 @@
 
 ### Implementation for User Story 3
 
-- [ ] T029 [US3] Update `Pflichtenheft.md` so the six entrance-gate criteria, the `>>> NAECHSTER SCHRITT <<<` marker, and the example-wave block/unblock wording match the finished Phase-8 gate state.
-- [ ] T030 [US3] Record the final gate decision and dedicated closure-commit reference in `Pflichtenheft.md`, `docs/porting-status.md`, and `specs/005-driver-consolidation-m07/checklists/phase-8-gate-review.md`.
-- [ ] T031 [US3] Add a final closure summary in `specs/006-close-phase8-gate/quickstart.md` and `specs/006-close-phase8-gate/contracts/phase-8-gate-contract.md` that points reviewers to the authoritative gate-closure proof surfaces.
+- [X] T029 [US3] Update `Pflichtenheft.md` so the six entrance-gate criteria, the `>>> NAECHSTER SCHRITT <<<` marker, and the example-wave block/unblock wording match the finished Phase-8 gate state.
+- [X] T030 [US3] Record the final gate decision and dedicated closure-commit reference in `Pflichtenheft.md`, `docs/porting-status.md`, and `specs/005-driver-consolidation-m07/checklists/phase-8-gate-review.md`.
+- [X] T031 [US3] Add a final closure summary in `specs/006-close-phase8-gate/quickstart.md` and `specs/006-close-phase8-gate/contracts/phase-8-gate-contract.md` that points reviewers to the authoritative gate-closure proof surfaces.
 
 **Checkpoint**: User Story 3 is complete when the repository explicitly states whether Phase 8 may start and names the commit that closed the gate.
 
@@ -116,9 +116,9 @@
 
 **Purpose**: Finish the cross-story cleanup and readiness checks around the closed gate.
 
-- [ ] T032 [P] Refresh `docs/project-statistics.md` with the 006 implementation window, code/test/doc deltas, and conservative manual-effort baseline after the gate work lands.
-- [ ] T033 [P] Re-run the review flow in `specs/006-close-phase8-gate/checklists/gate-docs.md` and `specs/006-close-phase8-gate/quickstart.md` against the final repository state.
-- [ ] T034 Remove temporary coverage/debug scaffolding from `tests/` and `docs/` while preserving only the repository-visible evidence required for the gate-closure claim.
+- [X] T032 [P] Refresh `docs/project-statistics.md` with the 006 implementation window, code/test/doc deltas, and conservative manual-effort baseline after the gate work lands.
+- [X] T033 [P] Re-run the review flow in `specs/006-close-phase8-gate/checklists/gate-docs.md` and `specs/006-close-phase8-gate/quickstart.md` against the final repository state.
+- [X] T034 Remove temporary coverage/debug scaffolding from `tests/` and `docs/` while preserving only the repository-visible evidence required for the gate-closure claim.
 
 ---
 

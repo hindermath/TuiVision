@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-03-25
+Stand: 2026-03-27
 
 ## Zweck und Pflege
 
@@ -68,28 +68,28 @@ fortgeschrieben.
 
 | Kennzahl | Wert |
 |---|---:|
-| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-24 |
-| Git-Commits gesamt | 175 |
+| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-27 |
+| Git-Commits gesamt | 191 |
 | Autoren laut Git | 1 |
-| Git-Aktivtage | 12 |
-| Produktionscode aktuell | 62 Dateien / 9044 Zeilen |
-| Testcode aktuell | 60 Dateien / 6130 Zeilen |
-| Dokumentation aktuell | 86 Dateien / 13077 Zeilen |
-| Davon Spec-Kit-Artefakte | 49 Dateien / 7942 Zeilen |
-| Davon Governance/Agent-Dateien | 5 Dateien / 1028 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 28251 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 353.1 Arbeitstage |
-| Erfahrener Entwickler, konservative Untergrenze in Stunden | 2754.2 Stunden (353.1 * 7.8) |
-| Erfahrener Entwickler, brutto | 16.4 Arbeitsmonate (21.5 Tage/Monat) |
-| Erfahrener Entwickler, TVoeD-Annahme | 18.6 Kalendermonate bzw. 1.5 Jahre |
-| Thorsten solo, erfahrungsadjustierte Untergrenze | 226.0 Arbeitstage |
-| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 1762.8 Stunden (226.0 * 7.8) |
-| Thorsten solo, brutto | 10.5 Arbeitsmonate (21.5 Tage/Monat) |
-| Thorsten solo, TVoeD-Annahme | 11.9 Kalendermonate bzw. 1.0 Jahre |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 141.3 Arbeitstage |
-| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 7.4 Kalendermonate |
-| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 29.4x (353.1 / 12 Git-Aktivtage) |
-| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 18.8x (226.0 / 12 Git-Aktivtage) |
+| Git-Aktivtage | 14 |
+| Produktionscode aktuell | 118 Dateien / 10622 Zeilen |
+| Testcode aktuell | 100 Dateien / 8483 Zeilen |
+| Dokumentation aktuell | 94 Dateien / 14942 Zeilen |
+| Davon Spec-Kit-Artefakte | 64 Dateien / 10728 Zeilen |
+| Davon Governance/Agent-Dateien | 5 Dateien / 720 Zeilen |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 34047 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 425.6 Arbeitstage |
+| Erfahrener Entwickler, konservative Untergrenze in Stunden | 3319.6 Stunden (425.6 * 7.8) |
+| Erfahrener Entwickler, brutto | 19.8 Arbeitsmonate (21.5 Tage/Monat) |
+| Erfahrener Entwickler, TVoeD-Annahme | 22.4 Kalendermonate bzw. 1.9 Jahre |
+| Thorsten solo, erfahrungsadjustierte Untergrenze | 272.4 Arbeitstage |
+| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 2124.5 Stunden (272.4 * 7.8) |
+| Thorsten solo, brutto | 12.7 Arbeitsmonate (21.5 Tage/Monat) |
+| Thorsten solo, TVoeD-Annahme | 14.3 Kalendermonate bzw. 1.2 Jahre |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 170.2 Arbeitstage |
+| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 9.0 Kalendermonate |
+| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 30.4x (425.6 / 14 Git-Aktivtage) |
+| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 19.5x (272.4 / 14 Git-Aktivtage) |
 
 ## Phasen und Haupt-Branches
 
@@ -254,25 +254,41 @@ fortgeschrieben.
 
 ### 6. `006-close-phase8-gate`
 
-- Status: Spezifikation im Working Tree angelegt; bereit fuer `/speckit-plan`
-- Beobachtbarer Zeitraum: 2026-03-24 bis 2026-03-24
-- Commit-Bild: 0 Commits an 0 Git-Aktivtagen; aktueller Stand liegt im Working Tree
+- Status: Eingangstor fuer Phase 8 im Closure-Paket geschlossen; Welle 1 der
+  MUSS-Beispiele ist nach dem dedizierten Abschluss-Commit der naechste offene
+  Hauptschritt
+- Beobachtbarer Zeitraum: 2026-03-24 bis 2026-03-27
+- Commit-Bild: Planungsstand bereits im Repository sichtbar; der finale
+  Nachweis wird durch den dedizierten Closure-Commit
+  `docs: close phase-8 entrance gate for feature 006` markiert
 - Grundlegende Arbeiten:
-  - Phase-8-Eingangstor-Spezifikation `specs/006-close-phase8-gate/spec.md`
-  - Requirements-Checklist `specs/006-close-phase8-gate/checklists/requirements.md`
-  - Synchronisierte Agent-Dateien `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`,
-    `.github/copilot-instructions.md` fuer den neuen aktiven Feature-Kontext
-- Snapshot-Zuwachs gegen den letzten Statistikstand vor dieser Selbstfortschreibung:
-  - Produktionscode: +0 / -0 / netto +0
-  - Testcode: +0 / -0 / netto +0
-  - Dokumentation: +299 / -0 / netto +299
-- Konservative Handarbeits-Basis fuer diesen Spezifikationsschritt inklusive
+  - Abschluss des restlichen `M-07`-Proofs mit finalem `docs/porting-status.md`
+    ohne provisorische `.cc`-Zeilen
+  - neues Coverage-/Compatibility-Hardening in `TuiVision.Core`,
+    `TuiVision.Compatibility` und `TuiVision.Drivers.Console` samt
+    Gate-spezifischen MSTests und Coverlet-Infrastruktur
+  - repo-weite Eingangstor-Evidenz fuer `dotnet build --configuration Release`,
+    `dotnet test`, `dotnet format --verify-no-changes`, `docfx docfx.json`
+    und 5 assembly-scharfe Coverage-Laeufe
+  - synchronisierte Gate-Artefakte in `Pflichtenheft.md`,
+    `docs/porting-status.md`, `docs/guides/multi-mac-workflow.md`,
+    `specs/005-driver-consolidation-m07/checklists/phase-8-gate-review.md`,
+    `specs/006-close-phase8-gate/quickstart.md`,
+    `specs/006-close-phase8-gate/contracts/phase-8-gate-contract.md` und
+    `specs/006-close-phase8-gate/tasks.md`
+- Snapshot-Zuwachs gegen den letzten Statistikstand:
+  - Produktionscode: +1578 Zeilen netto
+  - Testcode: +2353 Zeilen netto
+  - Dokumentation: +1865 Zeilen netto
+- Konservative Handarbeits-Basis fuer diesen Abschlussstand inklusive
   Dokumentation:
-  - 299 Zeilen netto gesamt
-  - 3.7 Arbeitstage fuer einen erfahrenen Entwickler
-  - 0.2 Arbeitsmonate brutto bzw. 0.2 TVoeD-Kalendermonate
-  - 1.5 Arbeitstage fuer ein 3er-Team (+20 % Koordination), entsprechend ca.
-    0.1 TVoeD-Kalendermonaten
+  - 5796 Zeilen netto gesamt
+  - 72.5 Arbeitstage fuer einen erfahrenen Entwickler
+  - 565.1 Stunden (72.5 * 7.8)
+  - 3.4 Arbeitsmonate brutto bzw. 3.8 TVoeD-Kalendermonate
+  - 46.4 Arbeitstage bzw. 361.7 Stunden in der Thorsten-Solo-Referenz
+  - 29.0 Arbeitstage fuer ein 3er-Team (+20 % Koordination), entsprechend ca.
+    1.5 TVoeD-Kalendermonaten
 
 ## Zusatz-Branches
 
@@ -283,26 +299,27 @@ fortgeschrieben.
 
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
-- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 28251 Zeilen
+- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 34047 Zeilen
   (Produktionscode + Tests + Dokumentation).
 - Selbst mit der fuer klassische Entwicklung guenstigen Obergrenze von
   80 manuell erstellten Zeilen pro Arbeitstag ergibt sich bereits eine
-  Untergrenze von 353.1 Entwickler-Arbeitstagen.
+  Untergrenze von 425.6 Entwickler-Arbeitstagen.
 - Unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr entspricht das fuer einen
-  erfahrenen Entwickler ca. 18.6 Kalendermonaten bzw. 1.5 Arbeitsjahren; fuer
-  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 7.4 Kalendermonaten.
+  erfahrenen Entwickler ca. 22.4 Kalendermonaten bzw. 1.9 Arbeitsjahren; fuer
+  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 9.0 Kalendermonaten.
 - Unter Einbezug von Thorstens Erfahrungsprofil sinkt die klassische
-  Solo-Referenz fuer dieses Repository auf ca. 226.0 Arbeitstage bzw.
-  11.9 TVoeD-Kalendermonate.
-- Gegen die sichtbaren 12 Git-Aktivtage ergibt sich damit ein repo-weiter
-  Beschleunigungsfaktor von ca. 29.4x gegen die konservative Referenz und
-  immer noch ca. 18.8x gegen die erfahrungsadjustierte Thorsten-Referenz.
+  Solo-Referenz fuer dieses Repository auf ca. 272.4 Arbeitstage bzw.
+  14.3 TVoeD-Kalendermonate.
+- Gegen die sichtbaren 14 Git-Aktivtage ergibt sich damit ein repo-weiter
+  Beschleunigungsfaktor von ca. 30.4x gegen die konservative Referenz und
+  immer noch ca. 19.5x gegen die erfahrungsadjustierte Thorsten-Referenz.
 - Die vorliegenden Git-Daten zeigen damit eine deutliche Verdichtung durch
   agentische KI und GitHub Spec-Kit: hoher Dokumentations- und Codeumfang in
   einem kurzen beobachtbaren Aktivfenster.
 - Der Nachweis-Anteil (Spec-Kit-Artefakte, Governance, Beweis-Ledger) macht
-  einen signifikanten Teil des Dokumentationsbestands aus; die reine Code-Basis
-  mit 35052 Zeilen bestaetigt dennoch erheblichen realen Entwicklungsumfang.
+  einen signifikanten Teil des Dokumentationsbestands aus; die kombinierte
+  Code-Basis aus Produktions- und Testcode mit 19105 Zeilen bestaetigt dennoch
+  erheblichen realen Entwicklungsumfang.
 
 ## Fortschreibungsprotokoll
 
@@ -368,3 +385,4 @@ fortgeschrieben.
 | 2026-03-25 | TVoeD-Stundenbasis ergänzt | Die Statistik weist zusaetzlich Stundenwerte auf Basis von `7,8 Stunden` bzw. `7 Stunden 48 Minuten` pro Arbeitstag aus; dieselbe Umrechnungsregel wurde in die gemeinsamen Agent-Dateien aufgenommen. |
 | 2026-03-25 | Analyse-Remediation fuer `006-close-phase8-gate` | Nach der Querpruefung von `tasks.md` gegen `spec.md` und `plan.md` wurden die letzten Dokumentdriften beseitigt: `gate-docs.md` ist jetzt expliziter Bestandteil des Plan-Artefaktsets, `tests/TuiVision.Compatibility.Tests/` ist als feste Compatibility-Fallback-Suite in Plan und Quickstart verankert, und Skip-/Ignore-Faelle duerfen das Gate nur noch mit dokumentierter Tracking-Issue-Referenz passieren. Die gemeinsamen Agent-Dateien wurden im selben Arbeitsschritt synchronisiert. |
 | 2026-03-27 | Sortierung des Fortschreibungsprotokolls vereinheitlicht | Die Eintraege im Fortschreibungsprotokoll wurden auf strikt chronologische Reihenfolge gebracht: aeltester Eintrag oben, juengster und zuletzt eingetragener Eintrag unten. Dieselbe Regel wurde in der gemeinsamen Agent-Governance fuer dieses Repository festgeschrieben. |
+| 2026-03-27 | `/speckit-implement` fuer `006-close-phase8-gate` | Das Phase-8-Eingangstor wurde im Closure-Paket abgeschlossen: restliche `M-07`-Proof-Luecken geschlossen, Gate-Artefakte synchronisiert, repo-weite Build-/Test-/Format-/`docfx`-Nachweise dokumentiert, 5 assembly-scharfe Coverlet-Ergebnisse (`89.11 %`, `84.10 %`, `83.33 %`, `80.95 %`, `97.43 %`) verankert und der dedizierte Closure-Commit fuer Feature `006` gesetzt. |

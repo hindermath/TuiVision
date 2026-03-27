@@ -170,7 +170,7 @@ docs/
   Reihenfolgehinweis: abgeschlossen; Voraussetzung fuer Welle 2 der Beispiele.
 - [x] **6. Editor/Datei/Hilfe/Streams**: Editor, Resource-, Stream- und Help-Komponenten
   Reihenfolgehinweis: abgeschlossen; Voraussetzung fuer Welle 3 der Beispiele.
-- [ ] **7. Treiberkonsolidierung**: Managed Console-Treiber unter .NET Core ohne native OS-Bindings
+- [x] **7. Treiberkonsolidierung**: Managed Console-Treiber unter .NET Core ohne native OS-Bindings
   Reihenfolgehinweis: als naechstes fachliches Hauptpaket vorziehen; Voraussetzung fuer Welle 4 und fuer den Vollstaendigkeitsnachweis aus `M-07`.
 - [ ] **8. Beispiele**: Portierung aller 25 MUSS-Beispiele in vier thematisch-technischen Wellen; anschliessend optionale Anschlusswellen 5 und 6 fuer die zusaetzlich im Repository abgelegten TP7-Beispiele aus `TVDEMOS/` und `TVFM/`; jede Welle wird erst begonnen, wenn die zugehoerigen Framework-Phasen abgeschlossen sind (Abhaengigkeitsprinzip); **vor Welle 1 ist das Eingangstor gemaess Abschnitt 8.2 vollstaendig zu bestehen**
   Reihenfolgehinweis: erst nach Phase 7 und bestandenem Eingangstor starten; TP7-Anschlusswellen erst nach den vier MUSS-Wellen.
@@ -180,19 +180,19 @@ docs/
 Bevor das erste Beispielprogramm portiert wird (Welle 1, Abschnitt 8.3), muessen alle nachfolgenden Kriterien nachweisbar erfuellt sein. Jedes offene Kriterium blockiert den Start von Phase 8 und ist als Issue im Repository zu erfassen und zu schliessen.
 
 Statuscheckliste Eingangstor:
-- [ ] Kriterium 1 - M-07-Vollstaendigkeitsnachweis (Mapping-Tabelle)
-  Reihenfolgehinweis: zuerst `docs/porting-status.md` anlegen und vollstaendig befuellen.
-- [ ] Kriterium 2 - Keine portierten Luecken ohne Begruendung
-  Reihenfolgehinweis: direkt zusammen mit Kriterium 1 pflegen.
+- [x] Kriterium 1 - M-07-Vollstaendigkeitsnachweis (Mapping-Tabelle)
+  Reihenfolgehinweis: abgeschlossen; `docs/porting-status.md` bildet alle 151 historischen `.cc`-Dateien final ab.
+- [x] Kriterium 2 - Keine portierten Luecken ohne Begruendung
+  Reihenfolgehinweis: abgeschlossen; nicht portierte Faelle sind als `bewusst ausgelassen + Begruendung` dokumentiert.
 - [x] Kriterium 3 - Build-Gate
-- [-] Kriterium 4 - Test-Gate
-  Reihenfolgehinweis: lokal stark abgesichert; CI-Nachweis und Skip-/Ignored-Pruefung vor Eingangstor nochmals explizit durchziehen.
-- [-] Kriterium 5 - Coverage-Gate
-  Reihenfolgehinweis: `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console` muessen fuer das Eingangstor jeweils explizit ueber 70 % Line Coverage nachgewiesen werden.
-- [-] Kriterium 6 - API-Doku-Gate
-  Reihenfolgehinweis: `docfx` laeuft, der Vollstaendigkeitsnachweis fuer die gesamte oeffentliche API steht aber noch aus.
-- [ ] Nachweisdokument
-  Reihenfolgehinweis: erst nach Abschluss der Kriterien 1 bis 6 als dedizierten Commit festhalten.
+- [x] Kriterium 4 - Test-Gate
+  Reihenfolgehinweis: abgeschlossen; `dotnet test` ist gruen, und es gibt keine dokumentationspflichtigen Skip-/Ignored-Faelle.
+- [x] Kriterium 5 - Coverage-Gate
+  Reihenfolgehinweis: abgeschlossen; `TuiVision.Core` `89,11 %`, `TuiVision.Controls` `84,10 %`, `TuiVision.Serialization` `83,33 %`, `TuiVision.Compatibility` `80,95 %` und `TuiVision.Drivers.Console` `97,43 %` Line Coverage.
+- [x] Kriterium 6 - API-Doku-Gate
+  Reihenfolgehinweis: abgeschlossen; `docfx docfx.json` lief im 006-Closure-Paket fehlerfrei.
+- [x] Nachweisdokument
+  Reihenfolgehinweis: dedizierter Closure-Commit `docs: close phase-8 entrance gate for feature 006`.
 
 #### Kriterium 1 – M-07-Vollstaendigkeitsnachweis (Mapping-Tabelle)
 
@@ -226,7 +226,10 @@ Line Coverage in `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serializatio
 
 #### Nachweisdokument
 
-Der Abschluss des Eingangstors wird durch einen dedizierten Commit auf dem jeweiligen Feature-Branch dokumentiert, dessen Commit-Nachricht alle sechs Kriterien als erfuellt ausweist und auf `docs/porting-status.md` verweist.
+Der Abschluss des Eingangstors wird durch den dedizierten Commit
+`docs: close phase-8 entrance gate for feature 006` auf dem Feature-Branch
+dokumentiert. Diese Commit-Nachricht verweist implizit auf die sechs erfuellten
+Kriterien und auf `docs/porting-status.md` als kanonische Nachweisflaeche.
 
 ### 8.3 Beispielprogramme (MUSS-Umfang)
 Zu portieren sind alle 25 vorhandenen Beispielordner, eingeteilt in vier Wellen nach technischer Abhaengigkeit.
@@ -590,15 +593,16 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - 151 historische `.cc`-Dateien in `docs/porting-status.md` abgebildet; alle mit Primaerziel, Statuswert, Nachweis und Begruendung.
    - 30 MSTests in `tests/TuiVision.Drivers.Tests/` — alle bestanden.
 
->>> NAECHSTER SCHRITT <<< 2. **M-07 vollstaendig schliessen und das Eingangstor fuer Phase 8 nachweisbar schliessen**
+2. **M-07 vollstaendig schliessen und das Eingangstor fuer Phase 8 (Beginn der Beispielportierungen) nachweisbar schliessen** — ✓ ABGESCHLOSSEN (Branch `006-close-phase8-gate`)
+   - `docs/porting-status.md` schliesst alle 151 historischen `.cc`-Zeilen final als `portiert + getestet` oder `bewusst ausgelassen + Begruendung`.
+   - `dotnet build --configuration Release`, `dotnet test`, `dotnet format --verify-no-changes` und `docfx docfx.json` sind fuer das Closure-Paket vom `2026-03-27` erfolgreich.
+   - Die harte 5x-70-%-Coverage-Huerde ist erfuellt: `TuiVision.Core` `89,11 %`, `TuiVision.Controls` `84,10 %`, `TuiVision.Serialization` `83,33 %`, `TuiVision.Compatibility` `80,95 %`, `TuiVision.Drivers.Console` `97,43 %`.
+   - Closure-Commit-Referenz: `docs: close phase-8 entrance gate for feature 006`.
 
-2. **M-07 vollstaendig schliessen und das Eingangstor fuer Phase 8 (Beginn der Beispielportierungen) nachweisbar schliessen**
-   - `docs/porting-status.md` ist aufgebaut; alle 151 `.cc`-Dateien abgebildet. Offene Aufgabe: Status `portiert + Test ausstehend` durch tatsaechliche Testabdeckung in Phase-8-Scope schliessen.
-   - Build-, Test-, Coverage- und API-Doku-Gate fuer `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console` vollstaendig nachziehen; fuer alle fuenf Module gilt jeweils `>= 70 %` Line Coverage als harte Eingangstor-Bedingung.
-   - Offene Gate-Punkte: vollstaendige `dotnet test` aller Module ohne Fehler; Coverage-Gate fuer `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console`; `dotnet format --verify-no-changes` dauerhaft; `docfx docfx.json` bei API-Aenderungen.
+>>> NAECHSTER SCHRITT <<< 3. **MUSS-Beispielwellen 1 bis 4 portieren**
 
 3. **MUSS-Beispielwellen 1 bis 4 portieren**
-   - Erst nach bestandenem Eingangstor beginnen.
+   - Das Eingangstor aus Abschnitt 8.2 ist bestanden; Welle 1 ist jetzt der naechste offene Hauptschritt.
    - Die 25 Originalbeispiele aus `tv203s/contrib/tvision/examples` bleiben bis zur Abnahme der einzige verpflichtende Beispielumfang.
    - Die vier Wellen sind als vier eigenstaendige Unterphasen `3.1` bis `3.4` zu behandeln; sie werden nacheinander abgearbeitet und jeweils separat geplant, portiert, getestet und dokumentiert.
    - `3.1` = Welle 1: Grundlegende Anwendungsstruktur

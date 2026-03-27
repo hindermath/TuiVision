@@ -194,3 +194,7 @@ author before commit and reviewers during formal gate review.
 - Validated against the updated 006 documentation set on 2026-03-25; review
   findings were folded back into spec, plan, research, data model, quickstart,
   contract, and shared agent guidance before all items were checked off.
+- Re-run against the final closure package on 2026-03-27; the checked items
+  still matched the synchronized gate state in `docs/porting-status.md`,
+  `Pflichtenheft.md`, the 005 review checklist, this checklist, the 006
+  quickstart, and the Phase-8 contract.
