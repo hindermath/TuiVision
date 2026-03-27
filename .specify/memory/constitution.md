@@ -335,6 +335,9 @@ repository. It MUST be updated whenever one of the following happens:
    plans, tasks, governance, or operational docs).
 3. A contributor explicitly requests a statistics refresh.
 
+
+Within the `## Fortschreibungsprotokoll` section, table rows MUST remain in strict chronological order: oldest entry first, newest and most recently added entry last, while rows with the same date keep their insertion order.
+
 Every update MUST record, at minimum:
 
 - branch or phase identifier and current status,
