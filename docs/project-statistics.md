@@ -319,6 +319,41 @@ fortgeschrieben.
   - 0.4x gegen die konservative 80-Zeilen-Referenz
   - 0.3x gegen die Thorsten-Solo-Referenz mit 125 Zeilen pro Arbeitstag
 
+### 8. Branch `007-port-wave1-examples`
+
+- Status: Planungsstand auf Feature-Branch `007-port-wave1-examples`
+- Beobachtbarer Zeitraum: 2026-03-27 bis 2026-03-27
+- Commit-Bild: 2 Commits an 1 Git-Aktivtag nach dem Commit dieses
+  Planungs- und Review-Pakets
+- Grundlegende Arbeiten:
+  - Spezifikation, Requirements-Checkliste, Plan, Research, Datenmodell,
+    Quickstart und Contract fuer die erste MUSS-Beispielwelle mit `desklogo`,
+    `msgcls`, `tutorial` und `videomode`
+  - zusaetzliche Plan-Review-Checkliste mit 28 Pruefpunkten und
+    Durchfuehrungshinweisen
+  - Nachschaerfung der Planungsartefakte fuer Managed-Delivery-Begriff,
+    In-Process-Smoke-Seam, Clean-Exit-Definition, Tracking-Baseline,
+    Agent-Synchronisationsoberflaechen und Branch-Versionierung
+- Git-/Arbeitsbaum-Aenderungsvolumen fuer den aktuellen Aenderungssatz:
+  - Produktionscode: 0 Zeilen
+  - Testcode: 0 Zeilen
+  - Dokumentation und Governance: 1207 Zeilen netto in den acht
+    `specs/007-port-wave1-examples/`-Artefakten
+  - Build-/Versionsmetadaten: 3 Zeilen in `Directory.Build.props`
+- Konservative Handarbeits-Basis fuer Code und Dokumentation:
+  - 1210 Zeilen netto gesamt
+  - 15.1 Arbeitstage fuer einen erfahrenen Entwickler
+  - 117.8 Stunden auf TVoeD-Basis (`15.1 * 7.8`)
+  - 0.7 Arbeitsmonate brutto bzw. 0.8 TVoeD-Kalendermonate
+- Thorsten-Solo-Referenz:
+  - 9.7 Arbeitstage
+  - 75.4 Stunden auf TVoeD-Basis (`9.7 * 7.8`)
+  - 0.5 Arbeitsmonate brutto bzw. 0.6 TVoeD-Kalendermonate
+- Blended Repository Speedup gegen sichtbare 1 Git-Aktivtag fuer diesen
+  Aenderungssatz:
+  - 15.1x gegen die konservative 80-Zeilen-Referenz
+  - 9.7x gegen die Thorsten-Solo-Referenz mit 125 Zeilen pro Arbeitstag
+
 ## Zusatz-Branches
 
 | Branch | Letzte sichtbare Aktivitaet | Rolle |
@@ -417,3 +452,4 @@ fortgeschrieben.
 | 2026-03-25 | Analyse-Remediation fuer `006-close-phase8-gate` | Nach der Querpruefung von `tasks.md` gegen `spec.md` und `plan.md` wurden die letzten Dokumentdriften beseitigt: `gate-docs.md` ist jetzt expliziter Bestandteil des Plan-Artefaktsets, `tests/TuiVision.Compatibility.Tests/` ist als feste Compatibility-Fallback-Suite in Plan und Quickstart verankert, und Skip-/Ignore-Faelle duerfen das Gate nur noch mit dokumentierter Tracking-Issue-Referenz passieren. Die gemeinsamen Agent-Dateien wurden im selben Arbeitsschritt synchronisiert. |
 | 2026-03-27 | Sortierung des Fortschreibungsprotokolls vereinheitlicht | Die Eintraege im Fortschreibungsprotokoll wurden auf strikt chronologische Reihenfolge gebracht: aeltester Eintrag oben, juengster und zuletzt eingetragener Eintrag unten. Dieselbe Regel wurde in der gemeinsamen Agent-Governance fuer dieses Repository festgeschrieben. |
 | 2026-03-27 | `/speckit-implement` fuer `006-close-phase8-gate` | Das Phase-8-Eingangstor wurde im Closure-Paket abgeschlossen: restliche `M-07`-Proof-Luecken geschlossen, Gate-Artefakte synchronisiert, repo-weite Build-/Test-/Format-/`docfx`-Nachweise dokumentiert, 5 assembly-scharfe Coverlet-Ergebnisse (`89.11 %`, `84.10 %`, `83.33 %`, `80.95 %`, `97.43 %`) verankert und der dedizierte Closure-Commit fuer Feature `006` gesetzt. |
+| 2026-03-27 | Branch `007-port-wave1-examples` | Spezifikations-, Planungs- und Review-Paket fuer die erste MUSS-Beispielwelle angelegt und nach der Plan-Checkliste nachgeschaerft: `spec.md`, `requirements.md`, `plan.md`, `research.md`, `data-model.md`, `contracts/wave-1-example-contract.md`, `quickstart.md` und `checklists/planning.md` definieren jetzt Scope, Smoke-Seams, Guides, Tracking-Baseline und Synchronisationspflichten fuer `desklogo`, `msgcls`, `tutorial` und `videomode`. |
