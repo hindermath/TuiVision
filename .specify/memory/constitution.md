@@ -2,10 +2,12 @@
   SYNC IMPACT REPORT
   ==================
   Version change: 1.9.0 → 1.10.0
-  Bump rationale: MINOR — Extended mandatory 70% line-coverage gate from
-  three to five assemblies (TuiVision.Compatibility and
-  TuiVision.Drivers.Console added). Ratified as part of Phase-8 gate
-  closure work (006-close-phase8-gate).
+  Bump rationale: MINOR — Added repo-wide assembly-version governance for
+  numbered Spec-Kit branches via `Directory.Build.props`, and finalized the
+  mandatory 70% line-coverage gate across five assemblies
+  (`TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`,
+  `TuiVision.Compatibility`, `TuiVision.Drivers.Console`) as part of the
+  Phase-8 gate-closure work (`006-close-phase8-gate`).
 
   Previous version: 1.8.0 → 1.9.0
   Previous rationale: MINOR — Aligned branch-governance with the active
@@ -30,10 +32,10 @@
     - .specify/templates/constitution-template.md ✅ reviewed; no change required
 
   Agent files reviewed:
-    - AGENTS.md             ✅ reviewed; no change required
-    - GEMINI.md             ✅ reviewed; no change required
-    - .github/copilot-instructions.md ✅ reviewed; no change required
-    - CLAUDE.md             ✅ reviewed; no change required
+    - AGENTS.md             ✅ updated
+    - GEMINI.md             ✅ updated
+    - .github/copilot-instructions.md ✅ updated
+    - CLAUDE.md             ✅ updated
 
   Follow-up TODOs:
     - `.specify/templates/commands/` is not present in this repository, so no
@@ -247,6 +249,14 @@ All projects share settings via `Directory.Build.props`:
 <Nullable>enable</Nullable>
 <ImplicitUsings>enable</ImplicitUsings>
 ```
+
+For numbered Spec-Kit branches, `Directory.Build.props` MUST also carry aligned
+repo-wide `Version`, `AssemblyVersion`, and `FileVersion` values using
+`Major.Minor.Patch.Build`, where `Minor` = the numerically interpreted
+Spec-Kit feature/branch number as the canonical PR number for versioning
+(`007` -> `7`), `Patch` = the commit count in that feature/PR branch after the
+current change is committed, and `Build` = a manual build counter incremented
+before each `dotnet build` or `dotnet test`.
 
 ## Development Workflow
 

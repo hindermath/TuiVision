@@ -111,6 +111,15 @@ docfx docfx.json
 - Feature branches use either the agent-prefixed form `codex/<feature-description>` (or another supported agent prefix such as `claude/`, `gemini/`, `copilot/`, `opencode/`) or the numbered Spec-Kit form `NNN-short-description` when the Spec-Kit workflow creates the branch.
 - CI runs on pushes to `main`, `master`, `codex/**`, `claude/**`, `gemini/**`, `copilot/**`, and `opencode/**` branches.
 
+## Build Versioning
+
+- Repo-wide assembly version fields live in `Directory.Build.props` and MUST keep `Version`, `AssemblyVersion`, and `FileVersion` aligned for all projects.
+- The scheme is `Major.Minor.Patch.Build`.
+- `Minor` = current Spec-Kit feature/branch number, interpreted numerically as the canonical PR number for versioning (`007` -> `7`) and used immediately even before a GitHub PR exists.
+- `Patch` = current commit count in that feature/PR branch after committing the current change.
+- `Build` = manual build counter incremented by the bot before every `dotnet build` or `dotnet test`.
+- Before any commit or push on a numbered Spec-Kit branch, the repo-wide version fields in `Directory.Build.props` MUST be aligned to this scheme.
+
 ## Active Feature Context
 
 ### 004-editor-file-help-streams
