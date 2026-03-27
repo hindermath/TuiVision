@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-03-24
+Stand: 2026-03-27
 
 ## Zweck und Pflege
 
@@ -216,6 +216,34 @@ fortgeschrieben.
   - 48.3 Arbeitstage fuer ein 3er-Team (+20 % Koordination), entsprechend ca.
     3.1 TVoeD-Kalendermonaten
 
+### 7. Branch `007-spec-kit-versioning`
+
+- Status: in Arbeit auf Feature-Branch `007-spec-kit-versioning`
+- Beobachtbarer Zeitraum: 2026-03-27 bis 2026-03-27
+- Commit-Bild: aktueller Working-Tree-Aenderungssatz vor dem ersten Branch-Commit
+- Grundlegende Arbeiten: repo-weite Versionslogik ueber `Directory.Build.props`
+  eingefuehrt und die gemeinsame Agent-/Constitution-Governance auf
+  nummerierte Spec-Kit-Branches mit `Minor = Feature-/Branch-Nummer als
+  kanonische PR-Nummer` synchronisiert
+- Git-/Arbeitsbaum-Aenderungsvolumen fuer den aktuellen Aenderungssatz:
+  - Produktionscode: 0 Zeilen
+  - Testcode: 0 Zeilen
+  - Dokumentation und Governance: 32 Zeilen netto
+  - Build-/Versionsmetadaten: 3 Zeilen in `Directory.Build.props`
+- Konservative Handarbeits-Basis fuer Code und Dokumentation:
+  - 35 Zeilen netto gesamt
+  - 0.4 Arbeitstage fuer einen erfahrenen Entwickler
+  - 3.1 Stunden auf TVoeD-Basis (`0.4 * 7.8`)
+  - 0.0 Arbeitsmonate brutto bzw. 0.0 TVoeD-Kalendermonate
+- Thorsten-Solo-Referenz:
+  - 0.3 Arbeitstage
+  - 2.3 Stunden auf TVoeD-Basis (`0.3 * 7.8`)
+  - 0.0 Arbeitsmonate brutto bzw. 0.0 TVoeD-Kalendermonate
+- Blended Repository Speedup gegen sichtbare 1 Git-Aktivtag fuer diesen
+  Aenderungssatz:
+  - 0.4x gegen die konservative 80-Zeilen-Referenz
+  - 0.3x gegen die Thorsten-Solo-Referenz mit 125 Zeilen pro Arbeitstag
+
 ## Zusatz-Branches
 
 | Branch | Letzte sichtbare Aktivitaet | Rolle |
@@ -244,6 +272,7 @@ fortgeschrieben.
 
 | Datum | Ausloeser | Eintrag |
 |---|---|---|
+| 2026-03-27 | Branch `007-spec-kit-versioning` | Repo-weite Versionslogik fuer nummerierte Spec-Kit-Branches eingefuehrt: `Directory.Build.props` traegt jetzt `Version`, `AssemblyVersion` und `FileVersion`; die gemeinsame Agent-Governance und die Constitution wurden auf `Minor = Spec-Kit-Feature-/Branch-Nummer als kanonische PR-Nummer` synchronisiert. |
 | 2026-03-21 | Erstanlage | Basisstatistik fuer `main`, `001-view-system-tgroup`, `002-application-framework` und den aktuellen Stand von `003-dialog-control-layer` erzeugt; Constitution, Templates und Agent-Dateien auf Pflegepflicht synchronisiert. |
 | 2026-03-21 | Branch `004-editor-file-help-streams` | Dokumentationsstand nach neuer Phase-6-Spezifikation, Requirements-Checklist und synchronisierten Agent-Dateien fortgeschrieben; kein Code- oder Testzuwachs in diesem Arbeitsschritt. |
 | 2026-03-21 | `/speckit-plan` fuer `004-editor-file-help-streams` | Planungsstand mit `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, `contracts/public-api.md` und synchronisierten Agent-Dateien fortgeschrieben; weiterhin kein Produktions- oder Testcodezuwachs in diesem Arbeitsschritt. |
