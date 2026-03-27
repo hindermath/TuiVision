@@ -95,4 +95,119 @@ internal static class Phase7DriverTestContext
         "portiert + Test ausstehend",
         "bewusst ausgelassen + Begruendung",
     };
+
+    /// <summary>
+    /// Der provisorische Statuswert, der im Phase-8-Gate-Abschluss nicht mehr erlaubt ist.
+    /// Jede Zeile mit diesem Status blockiert den Gate-Abschluss (006).
+    ///
+    /// The provisional status value that is no longer allowed at Phase-8 gate closure.
+    /// Any row carrying this status blocks gate closure (006).
+    /// </summary>
+    public const string ProvisionalStatus = "portiert + Test ausstehend";
+
+    /// <summary>
+    /// Liest alle Ledger-Zeilen aus <c>docs/porting-status.md</c> und gibt sie als strukturierte
+    /// Einträge zurück. Jede Zeile beginnt mit dem Repository-relativen Pfad.
+    ///
+    /// Reads all ledger rows from <c>docs/porting-status.md</c> and returns them as structured
+    /// entries. Every row begins with the repository-relative path.
+    /// </summary>
+    /// <returns>
+    /// Geordnete Liste von Ledger-Einträgen. / Ordered list of ledger entries.
+    /// </returns>
+    public static IReadOnlyList<LedgerRow> ParseLedgerRows()
+    {
+        string content = ReadPortingStatus();
+        var rows = new List<LedgerRow>();
+
+        foreach (string line in content.Split('\n'))
+        {
+            string trimmed = line.TrimStart();
+            if (!trimmed.StartsWith("| tv203s/", StringComparison.Ordinal))
+                continue;
+
+            string[] cells = trimmed.Split('|');
+            if (cells.Length < 8)
+                continue;
+
+            rows.Add(new LedgerRow(
+                SourceFile: cells[1].Trim(),
+                CapabilityBucket: cells[2].Trim(),
+                PrimaryTarget: cells[3].Trim(),
+                SecondaryTargets: cells[4].Trim(),
+                Status: cells[5].Trim(),
+                Evidence: cells[6].Trim(),
+                Rationale: cells[7].Trim()
+            ));
+        }
+
+        return rows.AsReadOnly();
+    }
+
+    /// <summary>
+    /// Prüft, ob ein Primärziel als Platzhalter gilt (enthält "(geplant)" und ist kein Treiberziel).
+    ///
+    /// Checks whether a primary target is considered a placeholder
+    /// (contains "(geplant)" and is not a driver target).
+    /// </summary>
+    /// <param name="primaryTarget">Das zu prüfende Primärziel. / The primary target to check.</param>
+    /// <returns>
+    /// <c>true</c>, wenn das Ziel ein nicht-Treiber Platzhalter ist; andernfalls <c>false</c>.
+    /// <c>true</c> if the target is a non-driver placeholder; otherwise <c>false</c>.
+    /// </returns>
+    public static bool IsNonDriverPlannedTarget(string primaryTarget)
+    {
+        if (!primaryTarget.Contains("(geplant)", StringComparison.Ordinal))
+            return false;
+        // Driver targets are acceptable as "geplant" only if they point to a concrete driver path
+        // Non-driver geplant targets lack documented rationale
+        return !primaryTarget.Contains("TuiVision.Drivers", StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    /// Prüft, ob ein Nachweis-Verweis vorhanden und nicht leer ist.
+    ///
+    /// Checks whether an evidence reference is present and non-empty.
+    /// </summary>
+    /// <param name="evidence">Der zu prüfende Nachweis-Verweis. / The evidence reference to check.</param>
+    /// <returns>
+    /// <c>true</c>, wenn ein nicht-leerer Nachweis vorhanden ist; andernfalls <c>false</c>.
+    /// <c>true</c> if a non-empty evidence reference is present; otherwise <c>false</c>.
+    /// </returns>
+    public static bool HasEvidence(string evidence)
+        => !string.IsNullOrWhiteSpace(evidence) && evidence != "–";
+
+    /// <summary>
+    /// Prüft, ob eine Ledger-Zeile den finalen Beweisstatus hat.
+    ///
+    /// Checks whether a ledger row carries a final proof status.
+    /// </summary>
+    /// <param name="status">Der zu prüfende Statuswert. / The status value to check.</param>
+    /// <returns>
+    /// <c>true</c>, wenn der Status ein finaler Zustand ist; andernfalls <c>false</c>.
+    /// <c>true</c> if the status is a final state; otherwise <c>false</c>.
+    /// </returns>
+    public static bool IsFinalProofStatus(string status)
+        => status is "portiert + getestet" or "bewusst ausgelassen + Begruendung";
 }
+
+/// <summary>
+/// Strukturierter Ledger-Eintrag aus <c>docs/porting-status.md</c>.
+///
+/// Structured ledger entry from <c>docs/porting-status.md</c>.
+/// </summary>
+/// <param name="SourceFile">Repository-relativer Pfad zur historischen .cc-Datei. / Repository-relative path to the historical .cc file.</param>
+/// <param name="CapabilityBucket">Fähigkeitsgruppe / Capability bucket.</param>
+/// <param name="PrimaryTarget">Primäres verwaltetes Ziel. / Primary managed target.</param>
+/// <param name="SecondaryTargets">Optionale sekundäre Ziele. / Optional secondary targets.</param>
+/// <param name="Status">Statuswert der Zeile. / Row status value.</param>
+/// <param name="Evidence">Nachweis-Verweis. / Evidence reference.</param>
+/// <param name="Rationale">Begründungsnotiz. / Rationale note.</param>
+internal sealed record LedgerRow(
+    string SourceFile,
+    string CapabilityBucket,
+    string PrimaryTarget,
+    string SecondaryTargets,
+    string Status,
+    string Evidence,
+    string Rationale);

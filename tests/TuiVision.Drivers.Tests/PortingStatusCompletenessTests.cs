@@ -127,6 +127,41 @@ public sealed class PortingStatusCompletenessTests
         }
     }
 
+    /// <summary>
+    /// Bewachungsregel (Phase-8-Gate, 006): Keine nicht-Treiber-Zeile mit einem <c>(geplant)</c>-Primärziel
+    /// darf ohne eine dokumentierte Begründungsnotiz verbleiben. Jede solche undokumentierte
+    /// Planzeile blockiert den Gate-Abschluss.
+    ///
+    /// Guardrail (Phase-8 gate, 006): No non-driver row with a <c>(geplant)</c> primary target
+    /// may remain without a documented rationale note. Every such undocumented planned row
+    /// blocks gate closure.
+    /// </summary>
+    [TestMethod]
+    public void LedgerFile_NonDriverPlannedTargets_HaveRationale_Gate006()
+    {
+        var rows = Phase7DriverTestContext.ParseLedgerRows();
+        var undocumented = new List<string>();
+
+        foreach (var row in rows)
+        {
+            if (!Phase7DriverTestContext.IsNonDriverPlannedTarget(row.PrimaryTarget))
+                continue;
+
+            // A non-driver geplant row must have a rationale explaining what will be done
+            if (string.IsNullOrWhiteSpace(row.Rationale) || row.Rationale == "–")
+            {
+                undocumented.Add($"{row.SourceFile} → {row.PrimaryTarget}");
+            }
+        }
+
+        Assert.IsEmpty(undocumented,
+            $"Phase-8-Gate-006: {undocumented.Count} nicht-Treiber-(geplant)-Zeile(n) ohne Begründungsnotiz. " +
+            $"Diese Zeilen blockieren den Gate-Abschluss:\n" +
+            $"Phase-8-Gate-006: {undocumented.Count} non-driver (geplant) row(s) without rationale note. " +
+            $"These rows block gate closure:\n" +
+            string.Join("\n", undocumented));
+    }
+
     // ── Hilfsmethoden / Helper methods ─────────────────────────────────────────
 
     private static int CountOccurrences(string text, string pattern)
