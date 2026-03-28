@@ -204,6 +204,10 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Der Delta-Punkt ändert sich, wenn die Bildlaufleiste bewegt wird.
 
+**Übungen**:
+1. Zeige den aktuellen Delta-Punkt (X- und Y-Versatz) dynamisch im Fenstertitel an.
+2. Begrenze den scrollbaren Bereich auf maximal 50 Zeilen und 120 Spalten mit `SetLimit()`.
+
 ---
 
 ## Schritt 09 — Mehrere Fenster / Multiple Windows
@@ -214,6 +218,10 @@ Text in den Fensterinhalt zeichnen.
 **Learning goal**: Open multiple windows on the desktop and understand their Z-order.
 
 **Ergebnis**: Mehrere Fenster erscheinen. Das aktive Fenster liegt oben.
+
+**Übungen**:
+1. Öffne beim Start drei Fenster mit je einem eigenen Titel an verschiedenen Positionen.
+2. Implementiere einen Menüpunkt, der mit `Desktop?.SelectNext(false)` zum nächsten Fenster wechselt (äquivalent zu F6).
 
 ---
 
@@ -226,6 +234,10 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Ein Dialog blockiert die restliche Anwendung, bis er geschlossen wird.
 
+**Übungen**:
+1. Füge dem Dialog einen `TButton` mit `cmOK` hinzu, damit er per Mausklick geschlossen werden kann.
+2. Öffne den Dialog über einen Menüpunkt mit einem eigenen Befehlscode.
+
 ---
 
 ## Schritt 11 — Schaltflächen im Dialog / Buttons in a Dialog
@@ -236,6 +248,10 @@ Text in den Fensterinhalt zeichnen.
 **Learning goal**: Insert buttons (`TButton`) into a dialog.
 
 **Ergebnis**: Der Dialog zeigt eine Schaltfläche, die beim Klick den Dialog schließt.
+
+**Übungen**:
+1. Füge neben dem OK-Button einen zweiten `TButton` für „Abbrechen / Cancel" ein.
+2. Werte den Rückgabewert von `ExecView()` aus und zeige das Ergebnis in der Statuszeile an.
 
 ---
 
@@ -248,6 +264,10 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Der Dialog zeigt ein Textfeld für Benutzereingaben.
 
+**Übungen**:
+1. Begrenze die maximale Eingabelänge auf 20 Zeichen über den zweiten Parameter von `TInputLine`.
+2. Lese nach dem Schließen des Dialogs den eingegebenen Text aus und zeige ihn in einem neuen Fenster an.
+
 ---
 
 ## Schritt 13 — Zwei Schaltflächen / Two Buttons
@@ -258,6 +278,10 @@ Text in den Fensterinhalt zeichnen.
 **Learning goal**: Insert two buttons (OK and Cancel) into a dialog.
 
 **Ergebnis**: Der Dialog kann über zwei verschiedene Schaltflächen geschlossen werden.
+
+**Übungen**:
+1. Werte den Rückgabewert von `ExecView()` aus und reagiere unterschiedlich auf OK und Abbrechen.
+2. Füge eine dritte Schaltfläche „Hilfe / Help" mit einem eigenen Befehlscode hinzu.
 
 ---
 
@@ -270,6 +294,10 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Der Dialog zeigt auswählbare Optionen.
 
+**Übungen**:
+1. Lese nach `ExecView()` den Zustand der Checkboxen (Bitmask) und den ausgewählten RadioButton (Index) aus.
+2. Setze vor dem Öffnen des Dialogs Standardwerte über die `Value`-Eigenschaft vor.
+
 ---
 
 ## Schritt 15 — Dialogdaten speichern / Saving Dialog Data
@@ -281,6 +309,10 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Der Dialog merkt sich seine Zustände zwischen Öffnungen.
 
+**Übungen**:
+1. Speichere den Dialogzustand auch beim Klick auf „Abbrechen", indem du `GetData()` unabhängig vom Rückgabewert aufrufst.
+2. Zeige den zuletzt gespeicherten Zustand nach dem Schließen des Dialogs im Hauptfenster an.
+
 ---
 
 ## Schritt 16 — Dialogdaten speichern und wiederherstellen / Save and Restore Dialog Data
@@ -291,6 +323,10 @@ Text in den Fensterinhalt zeichnen.
 **Learning goal**: Transfer dialog data with `setData`/`getData`.
 
 **Ergebnis**: Der Dialog stellt beim erneuten Öffnen die zuletzt eingegebenen Werte wieder her.
+
+**Übungen**:
+1. Füge dem Dialog einen Reset-Button hinzu, der alle Felder auf Standardwerte zurücksetzt, ohne den Dialog zu schließen.
+2. Überschreibe `Valid()` in einer `TDialog`-Unterklasse, um die Eingabe vor dem Schließen zu prüfen (z. B. Name darf nicht leer sein).
 
 ---
 
