@@ -71,4 +71,30 @@ internal sealed class TvGuid07App : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 1 – Beide Bildlaufleisten mit Inhalt verknüpfen / Solution Exercise 1 – Link both scroll bars to content
+    /*
+     * Erstelle sowohl eine horizontale als auch eine vertikale TScrollBar und
+     * verknüpfe sie über SetLimit() mit den Inhaltsdimensionen.
+     * Create both a horizontal and a vertical TScrollBar and link them
+     * to the content dimensions via SetLimit().
+     *
+     * // Vertikale Scrollbar / Vertical scroll bar:
+     * var vScroll = new TScrollBar(new TRect(bounds.B.X - 1, bounds.A.Y + 1,
+     *                                        bounds.B.X,     bounds.B.Y - 1),
+     *                              TScrollBarKind.Vertical);
+     * Insert(vScroll);
+     * VScrollBar = vScroll;
+     *
+     * // Horizontale Scrollbar / Horizontal scroll bar:
+     * var hScroll = new TScrollBar(new TRect(bounds.A.X + 1, bounds.B.Y - 1,
+     *                                        bounds.B.X - 1, bounds.B.Y),
+     *                              TScrollBarKind.Horizontal);
+     * Insert(hScroll);
+     * HScrollBar = hScroll;
+     *
+     * // Gesamtdimensionen setzen (Zeilen × Spalten) / Set total dimensions (rows × columns):
+     * SetLimit(200, 80);
+     */
+    #endregion
 }

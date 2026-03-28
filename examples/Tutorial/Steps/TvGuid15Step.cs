@@ -67,4 +67,43 @@ internal sealed class TvGuid15App : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 1 – Zustand auch bei Abbrechen speichern / Solution Exercise 1 – Save state even on Cancel
+    /*
+     * Standardmäßig werden Dialogdaten nur bei cmOK übernommen. Speichere sie
+     * zusätzlich bei cmCancel, indem du getData() vor dem Schließen aufrufst.
+     * By default dialog data is only accepted on cmOK. Save it also on cmCancel
+     * by calling getData() before closing.
+     *
+     * // Datenstruktur vor ExecView befüllen / Fill data structure before ExecView:
+     * var data = new MyDialogData { Name = "Standard / Default" };
+     * dialog.SetData(ref data);
+     *
+     * int result = ExecView(dialog);
+     *
+     * // Daten immer auslesen, unabhängig vom Ergebnis:
+     * // Always read data regardless of result:
+     * dialog.GetData(ref data);
+     * _savedData = data;
+     */
+    #endregion
+
+    #region Lösung Übung 2 – Gespeicherten Zustand im Hauptfenster anzeigen / Solution Exercise 2 – Display saved state in the main window
+    /*
+     * Zeige den zuletzt gespeicherten Dialogzustand als Fenstertitel oder
+     * als Text im Desktop an.
+     * Display the last saved dialog state as a window title or
+     * as text on the desktop.
+     *
+     * // Nach ExecView() und GetData():
+     * // After ExecView() and GetData():
+     * string summary = $"Name: {_savedData.Name}";
+     * var resultWindow = new TWindow(summary, 2, 2, 50, 6);
+     * Desktop?.Insert(resultWindow);
+     *
+     * // Oder: Fenstertitel aktualisieren / Or: update window title:
+     * myInfoWindow.Title = summary;
+     * myInfoWindow.DrawView();
+     */
+    #endregion
 }

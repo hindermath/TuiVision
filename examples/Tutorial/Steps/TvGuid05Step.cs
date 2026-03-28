@@ -95,4 +95,38 @@ internal sealed class TvGuid05App : TApplication
             base.Draw();
         }
     }
+
+    #region Lösung Übung 1 – Mehrere Textzeilen zeichnen / Solution Exercise 1 – Draw multiple text lines
+    /*
+     * Überschreibe Draw() in deiner TWindow-Unterklasse und zeichne mehrere Zeilen
+     * mit WriteText() oder WriteChar().
+     * Override Draw() in your TWindow subclass and draw multiple lines
+     * using WriteText() or WriteChar().
+     *
+     * public override void Draw()
+     * {
+     *     base.Draw();
+     *     WriteText(1, 1, "Zeile 1 / Line 1");
+     *     WriteText(1, 2, "Zeile 2 / Line 2");
+     *     WriteText(1, 3, "Zeile 3 / Line 3");
+     * }
+     */
+    #endregion
+
+    #region Lösung Übung 2 – Farben für Vordergrund und Hintergrund / Solution Exercise 2 – Foreground and background colours
+    /*
+     * Erstelle ein TColorAttr mit der gewünschten Farb-Kombination und übergib es
+     * an WriteText() oder WriteChar().
+     * Create a TColorAttr with the desired colour combination and pass it
+     * to WriteText() or WriteChar().
+     *
+     * // Weißer Text auf blauem Hintergrund / White text on blue background:
+     * var attr = new TColorAttr(TColor.White, TColor.Blue);
+     * WriteText(1, 1, "Farbiger Text / Coloured text", attr);
+     *
+     * // Gelber Text auf rotem Hintergrund / Yellow text on red background:
+     * var attrError = new TColorAttr(TColor.Yellow, TColor.Red);
+     * WriteText(1, 2, "Fehler! / Error!", attrError);
+     */
+    #endregion
 }

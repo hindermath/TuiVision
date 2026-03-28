@@ -67,4 +67,39 @@ internal sealed class TvGuid11App : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 1 – Abbrechen-Schaltfläche hinzufügen / Solution Exercise 1 – Add a Cancel button
+    /*
+     * Füge neben dem OK-Button einen zweiten TButton für „Abbrechen / Cancel" ein.
+     * Add a second TButton for "Cancel" next to the OK button.
+     *
+     * var dialog = new TDialog(new TRect(10, 5, 60, 16), "Dialog");
+     *
+     * var btnOk = new TButton(new TRect(10, 8, 22, 10), "~O~K",
+     *                          cmOK, TButtonFlags.Default);
+     * var btnCancel = new TButton(new TRect(24, 8, 38, 10), "~A~bbrechen / ~C~ancel",
+     *                              cmCancel, TButtonFlags.Normal);
+     *
+     * dialog.Insert(btnOk);
+     * dialog.Insert(btnCancel);
+     *
+     * int result = ExecView(dialog);
+     * // result == cmOK     → OK gedrückt / OK pressed
+     * // result == cmCancel → Abbrechen gedrückt / Cancel pressed
+     */
+    #endregion
+
+    #region Lösung Übung 2 – Rückgabewert in der Statuszeile anzeigen / Solution Exercise 2 – Display return value in status bar
+    /*
+     * Werte den Rückgabewert von ExecView() aus und zeige ihn in der Statuszeile an.
+     * Evaluate the return value of ExecView() and display it in the status bar.
+     *
+     * int result = ExecView(dialog);
+     * string msg = result == cmOK ? "OK gedrückt / OK pressed"
+     *                              : "Abgebrochen / Cancelled";
+     *
+     * // Statuszeile aktualisieren (falls vorhanden) / Update status bar (if present):
+     * StatusBar?.SetHintText(msg);
+     */
+    #endregion
 }

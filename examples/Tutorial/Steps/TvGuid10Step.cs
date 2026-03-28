@@ -67,4 +67,47 @@ internal sealed class TvGuid10App : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 1 – Schließen-Button im Dialog / Solution Exercise 1 – Close button in dialog
+    /*
+     * Füge dem Dialog einen TButton mit cmCancel oder cmOK hinzu, damit der
+     * Benutzer ihn per Mausklick schließen kann.
+     * Add a TButton with cmCancel or cmOK to the dialog so the user can
+     * close it with a mouse click.
+     *
+     * var dialog = new TDialog(new TRect(10, 5, 50, 15), "Mein Dialog / My Dialog");
+     * var btn = new TButton(new TRect(14, 7, 26, 9), "~O~K", cmOK, TButtonFlags.Default);
+     * dialog.Insert(btn);
+     * ExecView(dialog);
+     */
+    #endregion
+
+    #region Lösung Übung 2 – Dialog über Menüpunkt öffnen / Solution Exercise 2 – Open dialog via menu item
+    /*
+     * Überschreibe InitMenuBar() und füge einen Menüpunkt hinzu, der den Dialog öffnet.
+     * Override InitMenuBar() and add a menu item that opens the dialog.
+     *
+     * private const int cmOpenDialog = 400;
+     *
+     * protected override TMenuBar InitMenuBar(TRect bounds)
+     * {
+     *     return new TMenuBar(bounds,
+     *         new TSubMenu("~A~ktionen / ~A~ctions", 0x2400,
+     *             new TMenuItem("~D~ialog öffnen / Open ~D~ialog", cmOpenDialog, kbNoKey) +
+     *             new TMenuItemDivider() +
+     *             new TMenuItem("~E~nde / E~x~it", ShellCommandIds.cmQuit, kbAltX)));
+     * }
+     *
+     * public override void HandleEvent(TEvent @event)
+     * {
+     *     if (@event.What == TEventKind.Command && @event.Message.Command == cmOpenDialog)
+     *     {
+     *         var dialog = new TDialog(new TRect(10, 5, 50, 15), "Dialog");
+     *         ExecView(dialog);
+     *         @event.Clear(); return;
+     *     }
+     *     base.HandleEvent(@event);
+     * }
+     */
+    #endregion
 }

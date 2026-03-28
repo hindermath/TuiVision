@@ -67,4 +67,44 @@ internal sealed class TvGuid13App : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 1 – Rückgabewert auswerten / Solution Exercise 1 – Evaluate the return value
+    /*
+     * Werte den Rückgabewert von ExecView() aus, um unterschiedlich auf OK und
+     * Abbrechen zu reagieren.
+     * Evaluate the return value of ExecView() to react differently to OK and Cancel.
+     *
+     * int result = ExecView(dialog);
+     * if (result == cmOK)
+     * {
+     *     // Aktion bei OK / Action on OK
+     *     Desktop?.Insert(new TWindow("OK gewählt / OK chosen", 5, 3, 40, 6));
+     * }
+     * else
+     * {
+     *     // Aktion bei Abbrechen / Action on Cancel
+     *     Desktop?.Insert(new TWindow("Abgebrochen / Cancelled", 5, 3, 40, 6));
+     * }
+     */
+    #endregion
+
+    #region Lösung Übung 2 – Dritte Schaltfläche „Hilfe" hinzufügen / Solution Exercise 2 – Add a third "Help" button
+    /*
+     * Füge eine dritte Schaltfläche mit einem benutzerdefinierten Befehlscode hinzu.
+     * Add a third button with a custom command code.
+     *
+     * private const int cmHelp = 500;
+     *
+     * var btnHelp = new TButton(new TRect(38, 8, 50, 10), "~H~ilfe / ~H~elp",
+     *                            cmHelp, TButtonFlags.Normal);
+     * dialog.Insert(btnHelp);
+     *
+     * // In HandleEvent() auf cmHelp reagieren / React to cmHelp in HandleEvent():
+     * if (@event.Message.Command == cmHelp)
+     * {
+     *     // Hilfetext anzeigen / Show help text
+     *     @event.Clear(); return;
+     * }
+     */
+    #endregion
 }

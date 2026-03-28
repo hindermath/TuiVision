@@ -78,4 +78,39 @@ internal sealed class TvGuid09App : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 1 – Drei Fenster mit verschiedenen Titeln öffnen / Solution Exercise 1 – Open three windows with different titles
+    /*
+     * Erstelle beim Start drei TWindow-Instanzen mit je einem eigenen Titel und
+     * füge sie an verschiedenen Positionen in den Desktop ein.
+     * Create three TWindow instances at startup, each with its own title,
+     * and insert them at different positions into the desktop.
+     *
+     * Desktop?.Insert(new TWindow("Fenster 1 / Window 1",  2,  1, 30, 8));
+     * Desktop?.Insert(new TWindow("Fenster 2 / Window 2",  8,  4, 30, 8));
+     * Desktop?.Insert(new TWindow("Fenster 3 / Window 3", 14,  7, 30, 8));
+     *
+     * // Das zuletzt eingefügte Fenster liegt automatisch oben (Z-Reihenfolge).
+     * // The last inserted window is automatically on top (Z-order).
+     */
+    #endregion
+
+    #region Lösung Übung 2 – Zwischen Fenstern wechseln / Solution Exercise 2 – Switch between windows
+    /*
+     * Rufe Desktop?.SelectNext(false) auf (z. B. über einen Menübefehl), um
+     * zyklisch zum nächsten Fenster zu wechseln — äquivalent zu F6 in Turbo Vision.
+     * Call Desktop?.SelectNext(false) (e.g. via a menu command) to cycle
+     * to the next window — equivalent to F6 in Turbo Vision.
+     *
+     * private const int cmNextWindow = 300;
+     *
+     * // In InitMenuBar():
+     * new TMenuItem("~N~ächstes Fenster / ~N~ext Window", cmNextWindow, kbF6)
+     *
+     * // In HandleEvent():
+     * case cmNextWindow:
+     *     Desktop?.SelectNext(false);
+     *     @event.Clear(); return;
+     */
+    #endregion
 }

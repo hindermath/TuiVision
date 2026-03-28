@@ -67,4 +67,38 @@ internal sealed class TvGuid14App : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 1 – Ausgewählte Werte auslesen / Solution Exercise 1 – Read selected values
+    /*
+     * Lese nach ExecView() den Zustand der CheckBoxen und RadioButtons aus und
+     * zeige die gewählten Optionen in einem Fenster an.
+     * After ExecView(), read the state of the check boxes and radio buttons
+     * and display the selected options in a window.
+     *
+     * // CheckBoxes: jedes Bit steht für eine Option (Bit 0 = Option 1 usw.)
+     * // CheckBoxes: each bit represents an option (bit 0 = option 1 etc.)
+     * int checkState = checkBoxes.Value;
+     * bool option1Selected = (checkState & 1) != 0;
+     * bool option2Selected = (checkState & 2) != 0;
+     *
+     * // RadioButtons: Value = Index des ausgewählten Eintrags (0-basiert)
+     * // RadioButtons: Value = index of the selected entry (0-based)
+     * int radioChoice = radioButtons.Value;
+     */
+    #endregion
+
+    #region Lösung Übung 2 – Standardwerte vorbelegen / Solution Exercise 2 – Set default values
+    /*
+     * Setze Value vor ExecView(), um Checkboxen oder RadioButtons vorzubelegen.
+     * Set Value before ExecView() to pre-select check boxes or radio buttons.
+     *
+     * // CheckBox-Option 1 und 3 vorab aktivieren (Bit 0 + Bit 2):
+     * // Pre-activate checkbox options 1 and 3 (bit 0 + bit 2):
+     * checkBoxes.Value = 0b_0101;   // = 5
+     *
+     * // RadioButton-Option 2 vorab auswählen (0-basierter Index):
+     * // Pre-select radio button option 2 (0-based index):
+     * radioButtons.Value = 1;
+     */
+    #endregion
 }

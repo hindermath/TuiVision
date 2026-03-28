@@ -73,4 +73,30 @@ internal sealed class TvGuid04App : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 1 – Fenster zentrieren / Solution Exercise 1 – Centre the window
+    /*
+     * Setze das Centered-Flag beim Erstellen des Fensters, damit TuiVision es
+     * automatisch auf dem Desktop zentriert.
+     * Set the Centered flag when creating the window so TuiVision centres it
+     * automatically on the desktop.
+     *
+     * var window = new TWindow("Mein Fenster / My Window", 0, 0, 40, 10);
+     * window.Options |= TViewOptions.Centered;
+     * Desktop?.Insert(window);
+     */
+    #endregion
+
+    #region Lösung Übung 2 – Benutzerdefinierten Fenstertitel setzen / Solution Exercise 2 – Set a custom window title
+    /*
+     * Übergib den gewünschten Titel direkt an den TWindow-Konstruktor.
+     * Pass the desired title directly to the TWindow constructor.
+     *
+     * var window = new TWindow("Mein eigener Titel / My Custom Title", 5, 3, 40, 10);
+     * Desktop?.Insert(window);
+     *
+     * // Oder ändere den Titel nach dem Erstellen / Or change the title after creation:
+     * window.Title = "Neuer Titel / New Title";
+     */
+    #endregion
 }

@@ -71,4 +71,43 @@ internal sealed class TvGuid08App : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 1 – Delta-Punkt in der Titelleiste anzeigen / Solution Exercise 1 – Show delta point in the title bar
+    /*
+     * Überschreibe HandleEvent() und aktualisiere bei jeder Scroll-Ereignis den
+     * Fenstertitel, um den aktuellen Delta-Punkt anzuzeigen.
+     * Override HandleEvent() and update the window title on each scroll event
+     * to display the current delta point.
+     *
+     * public override void HandleEvent(TEvent @event)
+     * {
+     *     base.HandleEvent(@event);
+     *     if (@event.What == TEventKind.Broadcast)
+     *     {
+     *         // Delta-Punkt aus dem Fenster auslesen und Titel aktualisieren
+     *         // Read delta point from window and update title
+     *         Title = $"Delta: ({myWindow.Delta.X}, {myWindow.Delta.Y})";
+     *         DrawView();
+     *     }
+     * }
+     */
+    #endregion
+
+    #region Lösung Übung 2 – Scrollbaren Bereich begrenzen / Solution Exercise 2 – Limit the scrollable range
+    /*
+     * Rufe SetLimit() mit einem festen Maximalwert auf, um zu verhindern, dass
+     * der Benutzer über den Inhalt hinaus scrollt.
+     * Call SetLimit() with a fixed maximum value to prevent the user from
+     * scrolling beyond the content.
+     *
+     * // Maximal 50 Zeilen und 120 Spalten erlauben:
+     * // Allow at most 50 rows and 120 columns:
+     * SetLimit(50, 120);
+     *
+     * // TuiVision passt die Scrollbar-Position automatisch an, wenn der
+     * // Delta-Punkt den Grenzwert überschreiten würde.
+     * // TuiVision automatically adjusts the scroll bar position when the
+     * // delta point would exceed the limit.
+     */
+    #endregion
 }

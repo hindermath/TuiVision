@@ -71,4 +71,40 @@ internal sealed class TvGuid06App : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 1 – Bildlaufleiste mit Inhalt verknüpfen / Solution Exercise 1 – Link scroll bar to content
+    /*
+     * Erstelle eine TScrollBar und übergib sie an deine TWindow-Unterklasse.
+     * Aktualisiere SetLimit() mit der Gesamtlänge des Inhalts.
+     * Create a TScrollBar and pass it to your TWindow subclass.
+     * Update SetLimit() with the total content length.
+     *
+     * // Im Fenster-Konstruktor / In the window constructor:
+     * var vScroll = new TScrollBar(new TRect(bounds.B.X - 1, bounds.A.Y + 1,
+     *                                        bounds.B.X,     bounds.B.Y - 1),
+     *                              TScrollBarKind.Vertical);
+     * Insert(vScroll);
+     * VScrollBar = vScroll;
+     *
+     * // Gesamtlänge setzen / Set total length (z. B. 100 Zeilen / e.g. 100 lines):
+     * SetLimit(100, 0);
+     */
+    #endregion
+
+    #region Lösung Übung 2 – Inhalt kürzer als Fenster / Solution Exercise 2 – Content shorter than window
+    /*
+     * Wenn SetLimit() einen Wert kleiner oder gleich der sichtbaren Fensterhöhe
+     * erhält, deaktiviert TuiVision die Bildlaufleiste automatisch (sie wird ausgegraut).
+     * When SetLimit() receives a value less than or equal to the visible window height,
+     * TuiVision disables the scroll bar automatically (it is greyed out).
+     *
+     * // Kurzer Inhalt (weniger Zeilen als das Fenster hoch ist):
+     * // Short content (fewer lines than the window height):
+     * SetLimit(3, 0);   // → Scrollbar deaktiviert / disabled
+     *
+     * // Langer Inhalt (mehr Zeilen als das Fenster hoch ist):
+     * // Long content (more lines than the window height):
+     * SetLimit(200, 0); // → Scrollbar aktiv / active
+     */
+    #endregion
 }

@@ -67,4 +67,55 @@ internal sealed class TvGuid16App : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 1 – Reset-Button für Standardwerte / Solution Exercise 1 – Reset button for default values
+    /*
+     * Füge dem Dialog einen Reset-Button hinzu, der alle Felder auf Standardwerte
+     * zurücksetzt, ohne den Dialog zu schließen.
+     * Add a Reset button to the dialog that resets all fields to default values
+     * without closing the dialog.
+     *
+     * private const int cmReset = 600;
+     *
+     * var btnReset = new TButton(new TRect(3, 10, 17, 12), "~Z~urücksetzen / ~R~eset",
+     *                             cmReset, TButtonFlags.Normal);
+     * dialog.Insert(btnReset);
+     *
+     * // Im Dialog-HandleEvent (Unterklasse von TDialog):
+     * // In dialog's HandleEvent (TDialog subclass):
+     * if (@event.Message.Command == cmReset)
+     * {
+     *     var defaults = new MyDialogData(); // Standardkonstruktor / default constructor
+     *     SetData(ref defaults);
+     *     DrawView();
+     *     @event.Clear(); return;
+     * }
+     */
+    #endregion
+
+    #region Lösung Übung 2 – Eingabe vor dem Schließen validieren / Solution Exercise 2 – Validate input before closing
+    /*
+     * Überschreibe Valid() in deiner TDialog-Unterklasse, um die Eingabe zu
+     * prüfen bevor der Dialog geschlossen wird.
+     * Override Valid() in your TDialog subclass to validate input
+     * before the dialog closes.
+     *
+     * public override bool Valid(int command)
+     * {
+     *     if (command == cmOK)
+     *     {
+     *         var data = new MyDialogData();
+     *         GetData(ref data);
+     *
+     *         if (string.IsNullOrWhiteSpace(data.Name))
+     *         {
+     *             // Fehlermeldung anzeigen / Show error message:
+     *             // MessageBox.Error("Name darf nicht leer sein / Name must not be empty");
+     *             return false;  // Dialog bleibt offen / dialog stays open
+     *         }
+     *     }
+     *     return base.Valid(command);
+     * }
+     */
+    #endregion
 }

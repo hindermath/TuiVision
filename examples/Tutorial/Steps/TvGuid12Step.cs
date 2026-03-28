@@ -67,4 +67,37 @@ internal sealed class TvGuid12App : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 1 – Maximale Eingabelänge begrenzen / Solution Exercise 1 – Limit maximum input length
+    /*
+     * Übergib die maximale Zeichenanzahl als zweiten Parameter an TInputLine.
+     * Pass the maximum character count as the second parameter to TInputLine.
+     *
+     * // Maximal 20 Zeichen erlauben / Allow at most 20 characters:
+     * var input = new TInputLine(new TRect(3, 3, 37, 4), 20);
+     * dialog.Insert(input);
+     *
+     * // TuiVision schneidet die Eingabe automatisch ab, wenn das Limit erreicht ist.
+     * // TuiVision automatically truncates input when the limit is reached.
+     */
+    #endregion
+
+    #region Lösung Übung 2 – Eingabe nach Dialog-Schließen anzeigen / Solution Exercise 2 – Display input after dialog closes
+    /*
+     * Lese den Inhalt des TInputLine-Feldes nach ExecView() aus und zeige ihn an.
+     * Read the TInputLine content after ExecView() and display it.
+     *
+     * var input = new TInputLine(new TRect(3, 3, 37, 4), 80);
+     * dialog.Insert(input);
+     *
+     * int result = ExecView(dialog);
+     * if (result == cmOK)
+     * {
+     *     string entered = input.Data ?? string.Empty;
+     *     // Eingabe im Desktop-Fenster anzeigen / Display input in a desktop window:
+     *     var infoWin = new TWindow($"Eingabe: {entered}", 5, 5, 50, 8);
+     *     Desktop?.Insert(infoWin);
+     * }
+     */
+    #endregion
 }
