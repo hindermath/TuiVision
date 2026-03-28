@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -15,12 +15,21 @@
     <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
 
+  <!-- Referenzen auf die fünf Framework-Module / References to the five framework modules -->
   <ItemGroup>
     <ProjectReference Include="..\..\src\TuiVision.Core\TuiVision.Core.csproj" />
     <ProjectReference Include="..\..\src\TuiVision.Controls\TuiVision.Controls.csproj" />
     <ProjectReference Include="..\..\src\TuiVision.Compatibility\TuiVision.Compatibility.csproj" />
     <ProjectReference Include="..\..\src\TuiVision.Drivers.Console\TuiVision.Drivers.Console.csproj" />
     <ProjectReference Include="..\..\src\TuiVision.Serialization\TuiVision.Serialization.csproj" />
+  </ItemGroup>
+
+  <!-- Wave-1-Beispielprojekte für In-Process-Smoke-Tests / Wave 1 example projects for in-process smoke tests -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\examples\Desklogo\Desklogo.csproj" />
+    <ProjectReference Include="..\..\examples\MsgCls\MsgCls.csproj" />
+    <ProjectReference Include="..\..\examples\Tutorial\Tutorial.csproj" />
+    <ProjectReference Include="..\..\examples\Videomode\Videomode.csproj" />
   </ItemGroup>
 
 </Project>

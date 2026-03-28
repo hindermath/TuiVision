@@ -100,6 +100,12 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - The planning baseline now also fixes repository-wide `dotnet test`, `tests/TuiVision.Compatibility.Tests/` as the dedicated Compatibility fallback suite when shared tests are insufficient, assembly-specific coverage evidence for the five gate modules, conditional Linux/Windows/WSL evidence, rejection of placeholder-only or no-op-only gate modules, same-change proof-surface updates when a gate module is removed, mandatory tracked-issue references for skip/ignore outcomes, local-versus-CI coverage conflict resolution, and a dedicated gate-closure commit as hard closure criteria
 - Keep this increment scoped to gate closure only; mandatory example waves, substitute follow-on example scope from `TVDEMOS/` or `TVFM/`, and unrelated new framework features remain out of scope
 
+### 007-port-wave1-examples
+- Current status: Wave 1 delivered (2026-03-28). `desklogo`, `msgcls`, `tutorial` (16 steps), `videomode` are ported, smoke-tested, and guide-documented.
+- Wave 1 scope: `examples/Desklogo/`, `examples/MsgCls/`, `examples/Tutorial/`, `examples/Videomode/`; shared smoke-test infrastructure in `tests/TuiVision.Examples.SmokeTests/`; guides in `docs/guides/examples/`.
+- Next open scope: Wave 2 – Controls and Dialogs (requires Controls/Dialog layer as prerequisite before planning starts).
+- Planning decisions now fixed: headless smoke seam via `bool headless` constructor parameter + `GetEvent()` override; in-process MSTest execution without external process spawning; bilingual German-first/English-second XML docs and comments at CEFR-B2; `DisplayModeCoordinator.ProbeResizeSupport()` cross-platform probe with CA1416 suppressed.
+
 ## Agent File Synchronization Policy
 
 - When active feature context, plan-derived implementation guidance, or other shared AI-agent instructions change, review and update these files together when affected:

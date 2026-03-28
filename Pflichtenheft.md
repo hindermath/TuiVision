@@ -237,8 +237,8 @@ Fuer jedes portierte Beispiel ist eine eigene didaktische Dokumentationsseite in
 Die nachfolgend aufgefuehrten Turbo-Pascal-Beispiele aus dem Repository (`TVDEMOS/`, `TVFM/`) erweitern diesen Umfang als Anschlusswellen, ersetzen aber nicht den MUSS-Nachweis fuer die 25 Originalbeispiele aus `tv203s/contrib/tvision/examples`.
 
 Statuscheckliste Beispielwellen:
-- [ ] **Welle 1 - Grundlegende Anwendungsstruktur**
-  Reihenfolgehinweis: erst nach bestandenem Eingangstor aus Abschnitt 8.2 beginnen.
+- [x] **Welle 1 - Grundlegende Anwendungsstruktur**
+  Reihenfolgehinweis: abgeschlossen (Branch `007-port-wave1-examples`); 4 Beispiele portiert, 41 Smoke-Tests gruen, Guides geliefert.
 - [ ] **Welle 2 - Controls und Dialoge**
   Reihenfolgehinweis: nach Welle 1; zuerst Kernbeispiele mit breiter Abdeckung wie `demo`, dann Spezialfaelle.
 - [ ] **Welle 3 - Editor, Dateien, Hilfe und Streams**
@@ -258,10 +258,10 @@ Benoetigt: `TProgram`, `TApplication`, `TDesktop`, `TMenuBar`, `TStatusLine`.
 Keine Controls, keine Dialoge, kein Editor, kein Hilfesystem.
 
 Checkliste Welle 1:
-- [ ] `desklogo` - Minimale App: statisches Logo auf dem Desktop
-- [ ] `msgcls` - Benutzerdefinierte Ereignisklassen und Nachrichtenverarbeitung
-- [ ] `tutorial` - Schrittweise Einfuehrung in die TuiVision-Grundkonzepte
-- [ ] `videomode` - Wechsel von Anzeigemodi (Pufferbreite/-hoehe)
+- [x] `desklogo` - Minimale App: statisches Logo auf dem Desktop
+- [x] `msgcls` - Benutzerdefinierte Ereignisklassen und Nachrichtenverarbeitung
+- [x] `tutorial` - Schrittweise Einfuehrung in die TuiVision-Grundkonzepte (16 Schritte, token-basiert)
+- [x] `videomode` - Wechsel von Anzeigemodi (Pufferbreite/-hoehe)
 
 **Welle 2 – Controls und Dialoge** (nach Abschluss Phase 5: Dialog-/Control-Schicht)
 
@@ -599,16 +599,17 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - Die harte 5x-70-%-Coverage-Huerde ist erfuellt: `TuiVision.Core` `89,11 %`, `TuiVision.Controls` `84,10 %`, `TuiVision.Serialization` `83,33 %`, `TuiVision.Compatibility` `80,95 %`, `TuiVision.Drivers.Console` `97,43 %`.
    - Closure-Commit-Referenz: `docs: close phase-8 entrance gate for feature 006`.
 
->>> NAECHSTER SCHRITT <<< 3. **MUSS-Beispielwellen 1 bis 4 portieren**
-
 3. **MUSS-Beispielwellen 1 bis 4 portieren**
-   - Das Eingangstor aus Abschnitt 8.2 ist bestanden; Welle 1 ist jetzt der naechste offene Hauptschritt.
+   - Das Eingangstor aus Abschnitt 8.2 ist bestanden; Welle 1 ist abgeschlossen (Branch `007-port-wave1-examples`, 2026-03-28).
+   - Welle-1-Lieferumfang: `desklogo`, `msgcls`, `tutorial` (16 Schritte), `videomode`; 41 Smoke-Tests gruen; Guides unter `docs/guides/examples/` geliefert; Release-Build sauber, `dotnet format --verify-no-changes` bestanden.
    - Die 25 Originalbeispiele aus `tv203s/contrib/tvision/examples` bleiben bis zur Abnahme der einzige verpflichtende Beispielumfang.
    - Die vier Wellen sind als vier eigenstaendige Unterphasen `3.1` bis `3.4` zu behandeln; sie werden nacheinander abgearbeitet und jeweils separat geplant, portiert, getestet und dokumentiert.
-   - `3.1` = Welle 1: Grundlegende Anwendungsstruktur
+   - `3.1` = Welle 1: Grundlegende Anwendungsstruktur — ✓ ABGESCHLOSSEN
    - `3.2` = Welle 2: Controls und Dialoge
    - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze
+
+>>> NAECHSTER SCHRITT <<< Welle 2 – Controls und Dialoge: Controls-/Dialog-Schicht als Voraussetzung sicherstellen, dann die naechste Beispielwelle planen und portieren.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

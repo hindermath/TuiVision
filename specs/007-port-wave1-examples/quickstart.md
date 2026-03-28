@@ -122,3 +122,52 @@ dotnet run --project examples/Videomode
 - Until those implementation updates land, the current `Pflichtenheft.md` and
   `docs/project-statistics.md` states are treated as pre-wave baseline context,
   not partial delivery evidence for feature 007.
+
+## Wave-1-Only Audit (T039) / Wave-1-Only Audit
+
+Completed 2026-03-28. This section records whether any delivered wave-1 surface
+has a hidden dependency on later-wave controls, dialogs, editor/help flows, or
+advanced terminal-emulation scope.
+
+| Example | Framework types used | Later-wave dependency? |
+|---|---|---|
+| `desklogo` | `TApplication`, `TDesktop`, `TRect`, `TEvent` | None |
+| `msgcls` | `TApplication`, `TWindow`, `TEvent.CreateBroadcast`, `TRect` | None |
+| `tutorial` (tvguid01–16) | `TApplication`, `TRect`, `TEvent`, `ITutorialStep` (example-local) | None |
+| `videomode` | `TApplication`, `TWindow`, `TRect`, `Console.SetWindowSize` | None |
+
+| Test surface | Later-wave dependency? |
+|---|---|
+| `DesklogoSmokeTests.cs` | None |
+| `MsgClsSmokeTests.cs` | None |
+| `TutorialSmokeTests.cs` | None |
+| `VideomodeSmokeTests.cs` | None |
+| `ExampleTestBase.cs` | None |
+
+| Guide surface | Later-wave dependency? |
+|---|---|
+| `docs/guides/examples/desklogo.md` | None |
+| `docs/guides/examples/msgcls.md` | None |
+| `docs/guides/examples/tutorial.md` | None — guide covers all 16 tvguid steps in one page |
+| `docs/guides/examples/videomode.md` | None |
+
+**Audit outcome**: All four wave-1 examples, their smoke tests, and their guide
+pages are fully self-contained within the Wave-1 framework boundary
+(`TApplication`, `TDesktop`, `TWindow`, `TRect`, `TEvent`). No
+`TInputLine`, `TDialog`, `TEditor`, `THelpViewer`, or advanced terminal-emulation
+types appear in the wave-1 delivery. Wave 2 and later may proceed independently.
+
+## Guide-Walkthrough-Prüfung (T040) / Guide Walkthrough Verification
+
+Completed 2026-03-28. Each guide was reviewed for the documented 5-minute
+primary-outcome path from a clean checkout.
+
+| Guide | Primary command | Verified path |
+|---|---|---|
+| `desklogo.md` | `dotnet run --project examples/Desklogo` | Startup → ASCII logo on desktop → quit with Alt-X. Clear in under 2 minutes. |
+| `msgcls.md` | `dotnet run --project examples/MsgCls` | Startup → press documented trigger key → observe message in MsgWindow → quit. Clear in under 2 minutes. |
+| `tutorial.md` | `dotnet run --project examples/Tutorial -- tvguid01` | Token selection table maps directly to launch command; each step starts in seconds. Clear in under 3 minutes. |
+| `videomode.md` | `dotnet run --project examples/Videomode` | Startup → observe real transition or visible fallback → quit. Fallback path documented and expected on CI/macOS. Clear in under 2 minutes. |
+
+**Result**: All four guides lead to the primary documented outcome in 5 minutes or
+less without hidden prerequisites. No guide revisions needed after walkthrough.
