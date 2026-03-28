@@ -85,6 +85,47 @@ public class MsgClsApp : TApplication
     }
 
     /// <summary>
+    /// Erstellt die Menüleiste mit dem Menüpunkt „Nachricht posten / Post message".
+    /// Drücken von F10 aktiviert das Menü; anschließend löst die Taste <c>N</c>
+    /// den Befehl <see cref="MsgClsEvents.cmPostLoremIpsum"/> aus.
+    ///
+    /// Creates the menu bar with the "Nachricht posten / Post message" menu item.
+    /// Pressing F10 activates the menu; then pressing <c>N</c> fires the
+    /// <see cref="MsgClsEvents.cmPostLoremIpsum"/> command.
+    /// </summary>
+    /// <param name="bounds">Die Grenzen der Menüleiste. / The bounds of the menu bar.</param>
+    /// <returns>Die konfigurierte Menüleiste. / The configured menu bar.</returns>
+    protected override TMenuBar InitMenuBar(TRect bounds)
+    {
+        TMenuBar bar = new(bounds)
+        {
+            Menu = new TMenuItem("~N~achricht posten / Post ~m~essage", MsgClsEvents.cmPostLoremIpsum)
+        };
+        return bar;
+    }
+
+    /// <summary>
+    /// Verarbeitet Ereignisse. Reagiert auf <see cref="MsgClsEvents.cmPostLoremIpsum"/>,
+    /// indem der Lorem-Ipsum-Text über <see cref="PostMessage"/> gesendet wird.
+    ///
+    /// Handles events. Reacts to <see cref="MsgClsEvents.cmPostLoremIpsum"/> by sending
+    /// the Lorem Ipsum text via <see cref="PostMessage"/>.
+    /// </summary>
+    /// <param name="event">Das zu verarbeitende Ereignis. / The event to process.</param>
+    public override void HandleEvent(TEvent @event)
+    {
+        if (@event.What == TEventKind.Command &&
+            @event.Message.Command == MsgClsEvents.cmPostLoremIpsum)
+        {
+            PostMessage("Lorem Ipsum dolor sit amet.");
+            @event.Clear();
+            return;
+        }
+
+        base.HandleEvent(@event);
+    }
+
+    /// <summary>
     /// Ruft das nächste Ereignis ab.
     /// Im Headless-Modus wird beim ersten Aufruf ein Quit-Befehl zurückgegeben.
     ///

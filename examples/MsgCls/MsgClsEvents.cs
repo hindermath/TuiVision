@@ -29,4 +29,11 @@ public static class MsgClsEvents
     /// The <c>Info</c> slot of the event carries the message text as a <see cref="string"/>.
     /// </summary>
     public const ushort cmPostToMsgWindow = 201;
+
+    /// <summary>
+    /// Menü-Befehl zum Senden des vorgegebenen Lorem-Ipsum-Texts an das Nachrichtenfenster.
+    ///
+    /// Menu command to post the predefined Lorem Ipsum text to the message window.
+    /// </summary>
+    public const ushort cmPostLoremIpsum = 202;
 }
