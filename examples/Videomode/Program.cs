@@ -4,8 +4,14 @@
 using TuiVision.Core;
 using TuiVision.Examples.Videomode;
 
-// Startet die Videomode-Anwendung mit einer 80×25-Konsolenoberfläche.
-// Starts the Videomode application with an 80×25 console surface.
-TRect bounds = new(0, 0, 80, 25);
+// Tatsächliche Konsolengröße ermitteln; Fallback auf 80×25 falls nicht verfügbar.
+// Detect actual console size; fall back to 80×25 if unavailable.
+int width, height;
+try { width = Console.WindowWidth; height = Console.WindowHeight; }
+catch { width = 80; height = 25; }
+if (width <= 0) width = 80;
+if (height <= 0) height = 25;
+
+TRect bounds = new(0, 0, width, height);
 VideomodeApp app = new(bounds);
 app.Run();

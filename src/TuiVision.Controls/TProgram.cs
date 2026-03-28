@@ -66,6 +66,11 @@ public class TProgram : TGroup
         // Mark the entire view tree as exposed so TGroup buffers are allocated.
         SetState(TViewState.Exposed, true);
 
+        // Bildschirm vor dem ersten Zeichnen leeren, damit kein alter Prompt durchscheint.
+        // Clear screen before first draw so no residual prompt content shows through.
+        try { Console.Clear(); } catch { }
+        try { Console.CursorVisible = false; } catch { }
+
         // Initialer Zeichenvorgang und Ausgabe / Initial draw and present
         Draw();
         PresentScreen();
@@ -92,6 +97,24 @@ public class TProgram : TGroup
         MenuBar = null;
         Desktop = null;
         StatusLine = null;
+
+        // Konsole aufräumen: TUI-Inhalt löschen, Cursor und Farben wiederherstellen.
+        // Clean up console: erase TUI content, restore cursor and colours.
+        CleanupConsole();
+    }
+
+    /// <summary>
+    /// Löscht den TUI-Inhalt und stellt den Standard-Konsolenzustand wieder her,
+    /// sodass nach dem Beenden der Anwendung der Shell-Prompt sichtbar erscheint.
+    ///
+    /// Clears the TUI content and restores the default console state so that the
+    /// shell prompt appears after the application exits.
+    /// </summary>
+    private static void CleanupConsole()
+    {
+        try { Console.Clear(); } catch { }
+        try { Console.ResetColor(); } catch { }
+        try { Console.CursorVisible = true; } catch { }
     }
 
     /// <summary>
