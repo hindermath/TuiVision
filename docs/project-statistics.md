@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-03-28
+Stand: 2026-03-28 (aktualisiert nach Wave-1-Korrekturen)
 
 ## Zweck und Pflege
 
@@ -69,28 +69,28 @@ fortgeschrieben.
 
 | Kennzahl | Wert |
 |---|---:|
-| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-27 |
-| Git-Commits gesamt | 191 |
+| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-28 |
+| Git-Commits gesamt | 211 |
 | Autoren laut Git | 1 |
-| Git-Aktivtage | 14 |
-| Produktionscode aktuell | 118 Dateien / 10622 Zeilen |
-| Testcode aktuell | 100 Dateien / 8483 Zeilen |
-| Dokumentation aktuell | 94 Dateien / 14942 Zeilen |
+| Git-Aktivtage | 15 |
+| Produktionscode aktuell | 119 Dateien / 11022 Zeilen |
+| Testcode aktuell | 105 Dateien / 9137 Zeilen |
+| Dokumentation aktuell | 108 Dateien / 17549 Zeilen |
 | Davon Spec-Kit-Artefakte | 64 Dateien / 10728 Zeilen |
 | Davon Governance/Agent-Dateien | 5 Dateien / 720 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 34047 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 425.6 Arbeitstage |
-| Erfahrener Entwickler, konservative Untergrenze in Stunden | 3319.6 Stunden (425.6 * 7.8) |
-| Erfahrener Entwickler, brutto | 19.8 Arbeitsmonate (21.5 Tage/Monat) |
-| Erfahrener Entwickler, TVoeD-Annahme | 22.4 Kalendermonate bzw. 1.9 Jahre |
-| Thorsten solo, erfahrungsadjustierte Untergrenze | 272.4 Arbeitstage |
-| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 2124.5 Stunden (272.4 * 7.8) |
-| Thorsten solo, brutto | 12.7 Arbeitsmonate (21.5 Tage/Monat) |
-| Thorsten solo, TVoeD-Annahme | 14.3 Kalendermonate bzw. 1.2 Jahre |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 170.2 Arbeitstage |
-| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 9.0 Kalendermonate |
-| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 30.4x (425.6 / 14 Git-Aktivtage) |
-| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 19.5x (272.4 / 14 Git-Aktivtage) |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 37708 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 471.4 Arbeitstage |
+| Erfahrener Entwickler, konservative Untergrenze in Stunden | 3676.5 Stunden (471.4 * 7.8) |
+| Erfahrener Entwickler, brutto | 21.9 Arbeitsmonate (21.5 Tage/Monat) |
+| Erfahrener Entwickler, TVoeD-Annahme | 24.8 Kalendermonate bzw. 2.1 Jahre |
+| Thorsten solo, erfahrungsadjustierte Untergrenze | 301.7 Arbeitstage |
+| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 2353.0 Stunden (301.7 * 7.8) |
+| Thorsten solo, brutto | 14.0 Arbeitsmonate (21.5 Tage/Monat) |
+| Thorsten solo, TVoeD-Annahme | 15.9 Kalendermonate bzw. 1.3 Jahre |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 188.5 Arbeitstage |
+| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 9.9 Kalendermonate |
+| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 31.4x (471.4 / 15 Git-Aktivtage) |
+| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 20.1x (301.7 / 15 Git-Aktivtage) |
 
 ## Phasen und Haupt-Branches
 
@@ -321,11 +321,14 @@ fortgeschrieben.
 
 ### 8. Branch `007-port-wave1-examples`
 
-- Status: analysebereinigter Planungs- und Aufgabenstand auf Feature-Branch
-  `007-port-wave1-examples`
+- Status: Wave 1 vollstaendig portiert (2026-03-28): `desklogo`, `msgcls`,
+  `tutorial` (16 Schritte), `videomode`; 41 Smoke-Tests gruen; Release-Build
+  und `dotnet format --verify-no-changes` fehlerfrei; 4 interaktive Korrekturen
+  (Rendering-Pipeline, Lorem-Ipsum-Menüeintrag, Vollbild-Konsole, macOS-Quit);
+  `>>> NAECHSTER SCHRITT <<<` zeigt auf Welle 2
 - Beobachtbarer Zeitraum: 2026-03-27 bis 2026-03-28
-- Commit-Bild: 4 Commits an 2 Git-Aktivtagen nach dem Commit dieses
-  Planungs-, Review-, Analyse- und Aufgabenpakets
+- Commit-Bild: 15 Commits an 2 Git-Aktivtagen (Planung + Analyse,
+  Wave-1-Portierung, Lernmaterial-Nacharbeit, 4 Korrekturs-Commits)
 - Grundlegende Arbeiten:
   - Spezifikation, Requirements-Checkliste, Plan, Research, Datenmodell,
     Quickstart und Contract fuer die erste MUSS-Beispielwelle mit `desklogo`,
@@ -341,25 +344,31 @@ fortgeschrieben.
   - finale Analyse-Remediation fuer Guide-Bilingualitaet, MUSS-vs.-Follow-on-
     Abgrenzung, Helper-/Asset-Audits, Small-Terminal-Hinweise, explizite
     Later-Wave-Dependency-Pruefung und konkrete Driver-Zieldateien
-- Git-/Arbeitsbaum-Aenderungsvolumen fuer den aktuellen Aenderungssatz:
-  - Produktionscode: 0 Zeilen
-  - Testcode: 0 Zeilen
-  - Dokumentation und Governance: 1447 Zeilen netto in den neun
-    `specs/007-port-wave1-examples/`-Artefakten
-  - Build-/Versionsmetadaten: 3 Zeilen in `Directory.Build.props`
+- Kumulierter Snapshot-Zuwachs fuer den gesamten Branch (alle 15 Commits):
+  - Produktionscode (`src/`): +341 Zeilen netto (Wave-1-Impl.) + +400 Zeilen
+    netto (4 Korrekturen) = gesamt `+741` Zeilen netto / 1 neue Datei
+  - Beispielcode (`examples/`): `~2 227` Zeilen netto (Wave-1-Impl.) + `+797`
+    Zeilen netto (Lernmaterialien) + `+138` Zeilen netto (4 Korrekturen) =
+    gesamt `~3 162` Zeilen netto
+  - Testcode (`tests/`): `~654` Zeilen netto (41 Smoke-Tests), keine weiteren
+    Aenderungen
+  - Dokumentation und Governance: `1447` Zeilen netto (Planung/Specs) +
+    `~672` Zeilen netto (4 Guides + README) + `+102` Zeilen netto
+    (Lernmaterial-Guides) = gesamt `~2 221` Zeilen netto
+  - Build-/Versionsmetadaten: Zeilen in `Directory.Build.props` laufend
+    fortgeschrieben
 - Konservative Handarbeits-Basis fuer Code und Dokumentation:
-  - 1450 Zeilen netto gesamt
-  - 18.1 Arbeitstage fuer einen erfahrenen Entwickler
-  - 141.2 Stunden auf TVoeD-Basis (`18.1 * 7.8`)
-  - 0.7 Arbeitsmonate brutto bzw. 0.8 TVoeD-Kalendermonate
+  - Gesamt-Netto ca. `6778` Zeilen (Prod + Tests + Doku kumuliert)
+  - 84.7 Arbeitstage fuer einen erfahrenen Entwickler
+  - 660.7 Stunden auf TVoeD-Basis (`84.7 * 7.8`)
+  - 3.9 Arbeitsmonate brutto bzw. 4.5 TVoeD-Kalendermonate
 - Thorsten-Solo-Referenz:
-  - 11.6 Arbeitstage
-  - 90.5 Stunden auf TVoeD-Basis (`11.6 * 7.8`)
-  - 0.5 Arbeitsmonate brutto bzw. 0.6 TVoeD-Kalendermonate
-- Blended Repository Speedup gegen sichtbare 2 Git-Aktivtage fuer diesen
-  Aenderungssatz:
-  - 9.1x gegen die konservative 80-Zeilen-Referenz
-  - 5.8x gegen die Thorsten-Solo-Referenz mit 125 Zeilen pro Arbeitstag
+  - 54.2 Arbeitstage
+  - 422.8 Stunden auf TVoeD-Basis (`54.2 * 7.8`)
+  - 2.5 Arbeitsmonate brutto bzw. 2.9 TVoeD-Kalendermonate
+- Blended Repository Speedup gegen sichtbare 2 Git-Aktivtage fuer diesen Branch:
+  - 42.3x gegen die konservative 80-Zeilen-Referenz
+  - 27.1x gegen die Thorsten-Solo-Referenz mit 125 Zeilen pro Arbeitstag
 
 ## Zusatz-Branches
 
@@ -370,26 +379,26 @@ fortgeschrieben.
 
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
-- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 34047 Zeilen
+- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 37708 Zeilen
   (Produktionscode + Tests + Dokumentation).
 - Selbst mit der fuer klassische Entwicklung guenstigen Obergrenze von
   80 manuell erstellten Zeilen pro Arbeitstag ergibt sich bereits eine
-  Untergrenze von 425.6 Entwickler-Arbeitstagen.
+  Untergrenze von 471.4 Entwickler-Arbeitstagen.
 - Unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr entspricht das fuer einen
-  erfahrenen Entwickler ca. 22.4 Kalendermonaten bzw. 1.9 Arbeitsjahren; fuer
-  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 9.0 Kalendermonaten.
+  erfahrenen Entwickler ca. 24.8 Kalendermonaten bzw. 2.1 Arbeitsjahren; fuer
+  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 9.9 Kalendermonaten.
 - Unter Einbezug von Thorstens Erfahrungsprofil sinkt die klassische
-  Solo-Referenz fuer dieses Repository auf ca. 272.4 Arbeitstage bzw.
-  14.3 TVoeD-Kalendermonate.
-- Gegen die sichtbaren 14 Git-Aktivtage ergibt sich damit ein repo-weiter
-  Beschleunigungsfaktor von ca. 30.4x gegen die konservative Referenz und
-  immer noch ca. 19.5x gegen die erfahrungsadjustierte Thorsten-Referenz.
+  Solo-Referenz fuer dieses Repository auf ca. 301.7 Arbeitstage bzw.
+  15.9 TVoeD-Kalendermonate.
+- Gegen die sichtbaren 15 Git-Aktivtage ergibt sich damit ein repo-weiter
+  Beschleunigungsfaktor von ca. 31.4x gegen die konservative Referenz und
+  immer noch ca. 20.1x gegen die erfahrungsadjustierte Thorsten-Referenz.
 - Die vorliegenden Git-Daten zeigen damit eine deutliche Verdichtung durch
   agentische KI und GitHub Spec-Kit: hoher Dokumentations- und Codeumfang in
   einem kurzen beobachtbaren Aktivfenster.
 - Der Nachweis-Anteil (Spec-Kit-Artefakte, Governance, Beweis-Ledger) macht
   einen signifikanten Teil des Dokumentationsbestands aus; die kombinierte
-  Code-Basis aus Produktions- und Testcode mit 19105 Zeilen bestaetigt dennoch
+  Code-Basis aus Produktions- und Testcode mit 20159 Zeilen bestaetigt dennoch
   erheblichen realen Entwicklungsumfang.
 
 ## Fortschreibungsprotokoll
@@ -463,3 +472,9 @@ fortgeschrieben.
 | 2026-03-27 | `/speckit-tasks` fuer `007-port-wave1-examples` | Die Aufgabenzerlegung fuer die erste MUSS-Beispielwelle wurde mit 37 Tasks aus `spec.md`, `plan.md`, `research.md`, `data-model.md`, `quickstart.md` und `contracts/wave-1-example-contract.md` erzeugt. Die neue `tasks.md` schneidet Setup, gemeinsame Smoke-Infrastruktur, die vier Wave-1-Beispiele, Plattformnachweise sowie Tracking- und Governance-Follow-through in einen ausfuehrbaren, story-basierten Ablauf. |
 | 2026-03-28 | Analyse-Remediation fuer `007-port-wave1-examples` | `plan.md` und `tasks.md` wurden nach mehreren Konsistenzlaeufen final bereinigt: Guide-Seiten sind jetzt explizit bilingual (`Deutsch zuerst`, `Englisch danach`, CEFR-B2), Wave-1-MUSS-Abgrenzung und Helper-/Asset-Entscheidungen sind sichtbar verankert, Small-Terminal- und Later-Wave-Abhaengigkeitspruefungen sind als Aufgaben enthalten, `T029` ist auf konkrete Driver-Dateien zugeschnitten und der Pfad `docs/guides/multi-mac-workflow.md` wurde im Plan korrigiert. |
 | 2026-03-28 | Lastenheft-Branch-Suffix-Regel in Agent-Guidance verankert | Die gemeinsamen Agent-Dateien (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `.github/agents/copilot-instructions.md`) wurden um die Governance-Regel erweitert, dass ein Lastenheft nach Umsetzung durch einen dedizierten Feature-Branch auf `Lastenheft_<Thema>.<feature-branch>.md` umzubenennen ist, damit die Rueckverfolgbarkeit im Repository erhalten bleibt; Aenderungsumfang dieser Runde vor dieser Ledger-Fortschreibung: 0 Produktionscode-Zeilen, 0 Testcode-Zeilen, +5 Dokumentationszeilen netto im Arbeitsbaum, konservative Handarbeits-Untergrenze 0.1 Arbeitstage bzw. 0.5 Stunden auf TVoeD-Basis, Thorsten-Solo-Referenz 0.0 Arbeitstage bzw. 0.3 Stunden, Monatsannahme weiterhin 21.5 Arbeitstage brutto bzw. 19.0 TVoeD-produktive Tage pro Kalendermonat. |
+| 2026-03-28 | Agenten-Governance-Sync auf Branch `007-port-wave1-examples` | Die gemeinsame Agent-Guidance wurde gegen `main` nachgezogen: `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` und `.github/copilot-instructions.md` enthalten jetzt wieder konsistent die Lastenheft-Traceability-Regel zur Umbenennung nach `Lastenheft_<Thema>.<feature-branch>.md`; `.github/agents/copilot-instructions.md` war bereits auf diesem Stand. |
+| 2026-03-28 | Analyse-Follow-up fuer `007-port-wave1-examples` | Die Analysefunde aus dem read-only Cross-Artifact-Check wurden in den 007-Artefakten nachgezogen: `spec.md` grenzt den Small-Terminal-Edge-Case jetzt auf die relevanten Beispiele ein, `plan.md`, `tasks.md` und `quickstart.md` operationalisieren die reviewbare Red-Green-Refactor-Commitfolge, die 5-Minuten-Guide-Walkthrough-Pflicht und den Dokumentations-Scope fuer `examples/`, `tests/TuiVision.Examples.SmokeTests/` und beruehrte `src/`-Dateien. |
+| 2026-03-28 | Constitution-Patch fuer TDD-Commitdisziplin | Die Constitution wurde von `1.10.0` auf `1.10.1` per PATCH-Schaerfung angehoben: Der bislang widerspruechliche Zusammenhang zwischen sichtbarer Red-Green-Refactor-Historie und der Pflicht auf gruene Commits ist jetzt eng geklaert. Bewusst rote TDD-Commits sind nur noch als schmale Feature-Branch-Ausnahme vor Green/Handover/Merge zulaessig; Templates und gemeinsame Agent-Dateien wurden auf Aenderungsbedarf geprueft, brauchten aber keine Textanpassung. |
+| 2026-03-28 | `/speckit-implement` fuer `007-port-wave1-examples` | Welle 1 der MUSS-Beispiele wurde vollstaendig portiert: 4 Beispiele (`desklogo`, `msgcls`, `tutorial` mit 16 Schritten, `videomode`), 35 Produktionsdateien (`~2 227` Zeilen), 5 Smoke-Test-Klassen mit 41 Tests (`~654` Zeilen), 4 bilinguale Guides plus `examples/README.md` (`~672` Zeilen), gesamt `~3 553` neue Zeilen. Release-Build, alle 314 Tests (inkl. Framework-Suites) und `dotnet format --verify-no-changes` fehlerfrei; `>>> NAECHSTER SCHRITT <<<` auf Welle 2 vorgeschoben. Konservative Manualreferenz: 80 Zeilen/Tag = `44,4` Tage (ca. `346` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `28,4` Tage (ca. `222` Stunden); tatsaechliches Arbeitsfenster: 1 Agentensitzung am 2026-03-28. |
+| 2026-03-28 | Nacharbeit Wave-1-Lernmaterialien auf Branch `007-port-wave1-examples` | Vier Folgearbeiten in einer Agentensitzung: (1) Voraussetzungen-Abschnitte in allen 4 Wave-1-Guides um .NET-SDK-URL, `git clone`-Snippet, Microsoft-Learn-Link und TuiVision-Event-System-Link erweitert; (2) kollabierbare `#region`/`#endregion`-Lösungsblöcke in alle Wave-1-Beispieldateien eingefügt (Schritte 01–03 bereits in `1035876`, Schritte 04–16 in `0cc7ac2`); (3) fehlende `**Übungen / Exercises**`-Abschnitte fuer Schritte 08–16 in `tutorial.md` ergänzt (`ddcf6a3`); (4) alle Übungsabschnitte (Schritte 01–16) auf konsequente CEFR-B2-Bilingualität korrigiert. Netto-Änderungsvolumen gegenüber dem Welle-1-Implementierungscommit `12c47a2`: Beispiel-CS-Dateien `+797` Zeilen / Guide-MD-Dateien `+102` Zeilen netto, gesamt `+899` Zeilen über 25 geänderte Dateien. Konservative Manualreferenz: 80 Zeilen/Tag = `11,2` Tage (ca. `87` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `7,2` Tage (ca. `56` Stunden); tatsaechliches Arbeitsfenster: 1 Agentensitzung am 2026-03-28. |
+| 2026-03-28 | Wave-1-Korrekturen auf Branch `007-port-wave1-examples` | Vier Korrekturen in einer Agentensitzung nach dem Lernmaterial-Commit: (1) `fix(wave1)` – vollstaendige Rendering-Pipeline repariert: `TViewState.Exposed` jetzt propagiert, Child-TGroup-Puffer korrekt in Parent-Puffer kompositiert, `TGroup.GetDrawBuffer()` als `protected internal new`, neue `SystemConsolePresenter.cs`, `TDesktop.Draw()`, `TMenuBar.Draw()`/`HandleEvent()` mit `~X~`-Hotkey-Rendering, `TStatusLine.Draw()` und `TWindow.Draw()` mit Box-Drawing-Rahmen implementiert; (2) `feat(msgcls)` – Menüeintrag `~N~achricht posten / Post ~m~essage` löst `cmPostLoremIpsum` aus, `MsgClsApp.HandleEvent()` sendet `"Lorem Ipsum dolor sit amet."` via `PostMessage()`; (3) `feat(shell)` – alle vier Wave-1-`Program.cs` ermitteln die tatsaechliche Konsolengrösse bei Start, `TProgram.Run()` loescht den Bildschirm, setzt `CursorVisible = false` und ruft nach dem Quit `CleanupConsole()` auf (Prompt sichtbar); (4) `fix(quit)` – `Ctrl+Q` und `Ctrl+C` als universelle Quit-Tasten in `TProgram.GetEvent()` verankert (`Console.TreatControlCAsInput = true`), Statuszeile auf `^Q Beenden / Quit  Alt+X` umgestellt. Hintergrund: In macOS Terminal.app sendet die Option-Taste standardmaessig Unicode-Zeichen statt ESC-Sequenz, `ConsoleModifiers.Alt` wird nie gesetzt. Netto-Aenderungsvolumen: `src/` `+413 / -13` = `+400` Zeilen netto (1 neue Datei `SystemConsolePresenter.cs`, 6 veraenderte Dateien); `examples/` `+152 / -14` = `+138` Zeilen netto (9 veraenderte Dateien); gesamt `+538` Zeilen netto ueber 16 Dateien. Konservative Manualreferenz: 80 Zeilen/Tag = `6.7` Tage (ca. `52` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `4.3` Tage (ca. `34` Stunden); tatsaechliches Arbeitsfenster: 1 Agentensitzung am 2026-03-28. |

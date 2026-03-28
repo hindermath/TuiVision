@@ -25,6 +25,25 @@ public class TDesktop : TGroup
     }
 
     /// <summary>
+    /// Füllt den Desktop-Hintergrund mit dem Schraffurzeichen '░' und zeichnet danach
+    /// alle eingebetteten Kind-Fenster.
+    ///
+    /// Fills the desktop background with the hatching character '░' and then draws
+    /// all embedded child windows.
+    /// </summary>
+    public override void Draw()
+    {
+        // Hintergrund mit '░' auf Blau füllen / Fill background with '░' on blue
+        TConsoleBuffer? buffer = GetDrawBuffer();
+        if (buffer != null)
+        {
+            buffer.Clear(new TConsoleCell('░', ConsoleColor.DarkCyan, ConsoleColor.Blue));
+        }
+
+        base.Draw();
+    }
+
+    /// <summary>
     /// Wird aufgerufen, wenn sich die aktuell fokussierte Ansicht ändert.
     /// Sorgt für einen Fallback zum Desktop selbst, wenn kein Kind mehr fokussierbar ist.
     ///

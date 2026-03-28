@@ -3,7 +3,7 @@
 **Input**: Design documents from `/Users/thorstenhindermann/RiderProjects/TuiVision/specs/007-port-wave1-examples/`
 **Prerequisites**: `plan.md` (required), `spec.md` (required for user stories), `research.md`, `data-model.md`, `contracts/`
 
-**Tests**: Test tasks are mandatory for this behavior-changing example wave. Follow Red-Green-Refactor: add failing MSTest smoke coverage first, implement the minimum managed example behavior to turn the tests green, then re-run the relevant validation before advancing guides or tracking artifacts.
+**Tests**: Test tasks are mandatory for this behavior-changing example wave. Follow Red-Green-Refactor: add failing MSTest smoke coverage first, commit that red state separately, implement the minimum managed example behavior to turn the tests green in a later commit, then use a distinct refactor commit only after the green state is already reviewable. Re-run the relevant validation before advancing guides or tracking artifacts.
 
 **Organization**: Tasks are grouped by user story so that each wave-1 example can be implemented, smoke-tested, documented, and reviewed as an independent increment.
 
@@ -24,9 +24,9 @@
 
 **Purpose**: Establish the example-project layout, branch-governance prerequisites, and source-traceability surfaces before behavior work starts.
 
-- [ ] T001 Align and maintain the numbered-branch version fields in `Directory.Build.props` for feature `007-port-wave1-examples`, including incrementing the `Build` component before every `dotnet build` or `dotnet test` invocation during this implementation slice and realigning `Patch` before commit or push.
-- [ ] T002 Create the managed example project skeletons `examples/Desklogo/Desklogo.csproj`, `examples/MsgCls/MsgCls.csproj`, `examples/Tutorial/Tutorial.csproj`, and `examples/Videomode/Videomode.csproj`, and add them to `TuiVision.sln`.
-- [ ] T003 [P] Replace the placeholder-only wave description in `examples/README.md` with source-traceable mappings for `desklogo`, `msgcls`, `tutorial`, and `videomode`, including the original `tv203s/contrib/tvision/examples/` folders, the intended managed launch identities, and one explicit required-vs-not-required support-asset or helper-utility decision per original example folder.
+- [X] T001 Align and maintain the numbered-branch version fields in `Directory.Build.props` for feature `007-port-wave1-examples`, including incrementing the `Build` component before every `dotnet build` or `dotnet test` invocation during this implementation slice and realigning `Patch` before commit or push.
+- [X] T002 Create the managed example project skeletons `examples/Desklogo/Desklogo.csproj`, `examples/MsgCls/MsgCls.csproj`, `examples/Tutorial/Tutorial.csproj`, and `examples/Videomode/Videomode.csproj`, and add them to `TuiVision.sln`.
+- [X] T003 [P] Replace the placeholder-only wave description in `examples/README.md` with source-traceable mappings for `desklogo`, `msgcls`, `tutorial`, and `videomode`, including the original `tv203s/contrib/tvision/examples/` folders, the intended managed launch identities, and one explicit required-vs-not-required support-asset or helper-utility decision per original example folder.
 
 ---
 
@@ -36,10 +36,10 @@
 
 **⚠️ CRITICAL**: No user-story implementation should start before these tasks are complete.
 
-- [ ] T004 Replace the placeholder test in `tests/TuiVision.Examples.SmokeTests/Test1.cs` with shared wave-1 smoke-test infrastructure and create reusable helpers under `tests/TuiVision.Examples.SmokeTests/` for launch, behavior assertions, and clean-exit assertions.
-- [ ] T005 [P] Configure `tests/TuiVision.Examples.SmokeTests/TuiVision.Examples.SmokeTests.csproj` to reference the new example projects under `examples/` and keep MSTest smoke execution CI-ready for the wave-1 suite.
-- [ ] T006 [P] Add canonical user-facing entry-point files under `examples/Desklogo/`, `examples/MsgCls/`, `examples/Tutorial/`, and `examples/Videomode/` so each example exposes a real launch surface plus a test-callable in-process seam that still exercises the real host contract.
-- [ ] T007 [P] Create the documentation home `docs/guides/examples/` and establish the wave-1 guide file set `docs/guides/examples/desklogo.md`, `docs/guides/examples/msgcls.md`, `docs/guides/examples/tutorial.md`, and `docs/guides/examples/videomode.md`.
+- [X] T004 Replace the placeholder test in `tests/TuiVision.Examples.SmokeTests/Test1.cs` with shared wave-1 smoke-test infrastructure and create reusable helpers under `tests/TuiVision.Examples.SmokeTests/` for launch, behavior assertions, and clean-exit assertions.
+- [X] T005 [P] Configure `tests/TuiVision.Examples.SmokeTests/TuiVision.Examples.SmokeTests.csproj` to reference the new example projects under `examples/` and keep MSTest smoke execution CI-ready for the wave-1 suite.
+- [X] T006 [P] Add canonical user-facing entry-point files under `examples/Desklogo/`, `examples/MsgCls/`, `examples/Tutorial/`, and `examples/Videomode/` so each example exposes a real launch surface plus a test-callable in-process seam that still exercises the real host contract.
+- [X] T007 [P] Create the documentation home `docs/guides/examples/` and establish the wave-1 guide file set `docs/guides/examples/desklogo.md`, `docs/guides/examples/msgcls.md`, `docs/guides/examples/tutorial.md`, and `docs/guides/examples/videomode.md`.
 
 **Checkpoint**: The repository now has runnable example project skeletons, a shared smoke-test home, canonical launch seams, and the guide surface required by every story.
 
@@ -55,14 +55,14 @@
 
 > **NOTE**: Write these tests first, verify they fail, and only then implement the managed example behavior.
 
-- [ ] T008 [P] [US1] Add failing `desklogo` smoke scenarios in `tests/TuiVision.Examples.SmokeTests/DesklogoSmokeTests.cs` that assert startup, static desktop-logo rendering, deterministic behavior or a documented visible limitation on undersized terminals, and documented clean exit.
+- [X] T008 [P] [US1] Add failing `desklogo` smoke scenarios in `tests/TuiVision.Examples.SmokeTests/DesklogoSmokeTests.cs` that assert startup, static desktop-logo rendering, deterministic behavior or a documented visible limitation on undersized terminals, and documented clean exit.
 
 ### Implementation for User Story 1
 
-- [ ] T009 [P] [US1] Implement the `desklogo` entry point and application host in `examples/Desklogo/Program.cs` and `examples/Desklogo/DesklogoApp.cs`.
-- [ ] T010 [P] [US1] Implement the minimal desktop-logo rendering surface in `examples/Desklogo/DesklogoDesktop.cs` and any required example-local support files under `examples/Desklogo/`.
-- [ ] T011 [US1] Write the didactic guide `docs/guides/examples/desklogo.md` with German-first/English-second CEFR-B2 content covering learning goal, prerequisites, startup flow, architecture hints, exercises, explicit traceability back to `tv203s/contrib/tvision/examples/desklogo/`, a clear statement that `desklogo` belongs to the mandatory original-example wave rather than to `TVDEMOS/` or `TVFM/`, and a note describing the expected behavior on undersized terminals.
-- [ ] T012 [US1] Re-run the focused `desklogo` smoke path in `tests/TuiVision.Examples.SmokeTests/DesklogoSmokeTests.cs` and keep `examples/Desklogo/` green before moving to the next example.
+- [X] T009 [P] [US1] Implement the `desklogo` entry point and application host in `examples/Desklogo/Program.cs` and `examples/Desklogo/DesklogoApp.cs`.
+- [X] T010 [P] [US1] Implement the minimal desktop-logo rendering surface in `examples/Desklogo/DesklogoDesktop.cs` and any required example-local support files under `examples/Desklogo/`.
+- [X] T011 [US1] Write the didactic guide `docs/guides/examples/desklogo.md` with German-first/English-second CEFR-B2 content covering learning goal, prerequisites, startup flow, architecture hints, exercises, explicit traceability back to `tv203s/contrib/tvision/examples/desklogo/`, a clear statement that `desklogo` belongs to the mandatory original-example wave rather than to `TVDEMOS/` or `TVFM/`, and a note describing the expected behavior on undersized terminals.
+- [X] T012 [US1] Re-run the focused `desklogo` smoke path in `tests/TuiVision.Examples.SmokeTests/DesklogoSmokeTests.cs` and keep `examples/Desklogo/` green before moving to the next example.
 
 **Checkpoint**: `desklogo` is independently runnable, smoke-covered, guide-covered, and traceable to its historical source.
 
@@ -76,14 +76,14 @@
 
 ### Tests for User Story 2 (MANDATORY for behavior changes) ⚠️
 
-- [ ] T013 [P] [US2] Add failing `msgcls` smoke scenarios in `tests/TuiVision.Examples.SmokeTests/MsgClsSmokeTests.cs` that assert startup, the documented custom-message trigger, the visible routed outcome, repeated-trigger stability, and clean exit.
+- [X] T013 [P] [US2] Add failing `msgcls` smoke scenarios in `tests/TuiVision.Examples.SmokeTests/MsgClsSmokeTests.cs` that assert startup, the documented custom-message trigger, the visible routed outcome, repeated-trigger stability, and clean exit.
 
 ### Implementation for User Story 2
 
-- [ ] T014 [P] [US2] Implement the `msgcls` entry point and host in `examples/MsgCls/Program.cs` and `examples/MsgCls/MsgClsApp.cs`.
-- [ ] T015 [P] [US2] Implement the custom event/message classes and routed behavior in `examples/MsgCls/MsgClsWindow.cs`, `examples/MsgCls/MsgClsEvents.cs`, and related example-local files under `examples/MsgCls/`.
-- [ ] T016 [US2] Write the didactic guide `docs/guides/examples/msgcls.md` with German-first/English-second CEFR-B2 content covering startup instructions, trigger flow, message-routing explanation, exercises, traceability to `tv203s/contrib/tvision/examples/msgcls/`, and a clear statement that `msgcls` belongs to the mandatory original-example wave rather than to `TVDEMOS/` or `TVFM/`.
-- [ ] T017 [US2] Re-run the focused `msgcls` smoke path in `tests/TuiVision.Examples.SmokeTests/MsgClsSmokeTests.cs` and keep `examples/MsgCls/` green before starting tutorial work.
+- [X] T014 [P] [US2] Implement the `msgcls` entry point and host in `examples/MsgCls/Program.cs` and `examples/MsgCls/MsgClsApp.cs`.
+- [X] T015 [P] [US2] Implement the custom event/message classes and routed behavior in `examples/MsgCls/MsgClsWindow.cs`, `examples/MsgCls/MsgClsEvents.cs`, and related example-local files under `examples/MsgCls/`.
+- [X] T016 [US2] Write the didactic guide `docs/guides/examples/msgcls.md` with German-first/English-second CEFR-B2 content covering startup instructions, trigger flow, message-routing explanation, exercises, traceability to `tv203s/contrib/tvision/examples/msgcls/`, and a clear statement that `msgcls` belongs to the mandatory original-example wave rather than to `TVDEMOS/` or `TVFM/`.
+- [X] T017 [US2] Re-run the focused `msgcls` smoke path in `tests/TuiVision.Examples.SmokeTests/MsgClsSmokeTests.cs` and keep `examples/MsgCls/` green before starting tutorial work.
 
 **Checkpoint**: `msgcls` demonstrates user-defined message handling through a documented interaction and passes its standalone smoke flow.
 
@@ -97,17 +97,17 @@
 
 ### Tests for User Story 3 (MANDATORY for behavior changes) ⚠️
 
-- [ ] T018 [P] [US3] Add failing smoke scenarios for `tvguid01` through `tvguid08` in `tests/TuiVision.Examples.SmokeTests/TutorialSmokeTests.cs`, asserting startup, the step-specific defining behavior, ordered discoverability, and clean exit for each token.
-- [ ] T019 [P] [US3] Add failing smoke scenarios for `tvguid09` through `tvguid16` in `tests/TuiVision.Examples.SmokeTests/TutorialSmokeTests.cs`, asserting startup, the step-specific defining behavior, ordered discoverability, and clean exit for each token.
+- [X] T018 [P] [US3] Add failing smoke scenarios for `tvguid01` through `tvguid08` in `tests/TuiVision.Examples.SmokeTests/TutorialSmokeTests.cs`, asserting startup, the step-specific defining behavior, ordered discoverability, and clean exit for each token.
+- [X] T019 [P] [US3] Add failing smoke scenarios for `tvguid09` through `tvguid16` in `tests/TuiVision.Examples.SmokeTests/TutorialSmokeTests.cs`, asserting startup, the step-specific defining behavior, ordered discoverability, and clean exit for each token.
 
 ### Implementation for User Story 3
 
-- [ ] T020 [P] [US3] Implement the shared tutorial entry point and token-selection host in `examples/Tutorial/Program.cs` and `examples/Tutorial/TutorialApp.cs`.
-- [ ] T021 [P] [US3] Implement the shared tutorial-step contract and sequencing support in `examples/Tutorial/Steps/ITutorialStep.cs`, `examples/Tutorial/Steps/TutorialStepCatalog.cs`, and related files under `examples/Tutorial/Steps/`.
-- [ ] T022 [P] [US3] Implement `tvguid01` through `tvguid08` in `examples/Tutorial/Steps/TvGuid01Step.cs`, `examples/Tutorial/Steps/TvGuid02Step.cs`, `examples/Tutorial/Steps/TvGuid03Step.cs`, `examples/Tutorial/Steps/TvGuid04Step.cs`, `examples/Tutorial/Steps/TvGuid05Step.cs`, `examples/Tutorial/Steps/TvGuid06Step.cs`, `examples/Tutorial/Steps/TvGuid07Step.cs`, and `examples/Tutorial/Steps/TvGuid08Step.cs`.
-- [ ] T023 [P] [US3] Implement `tvguid09` through `tvguid16` in `examples/Tutorial/Steps/TvGuid09Step.cs`, `examples/Tutorial/Steps/TvGuid10Step.cs`, `examples/Tutorial/Steps/TvGuid11Step.cs`, `examples/Tutorial/Steps/TvGuid12Step.cs`, `examples/Tutorial/Steps/TvGuid13Step.cs`, `examples/Tutorial/Steps/TvGuid14Step.cs`, `examples/Tutorial/Steps/TvGuid15Step.cs`, and `examples/Tutorial/Steps/TvGuid16Step.cs`.
-- [ ] T024 [US3] Write the shared guide `docs/guides/examples/tutorial.md` with German-first/English-second CEFR-B2 content and one clearly separated section for each token from `tvguid01` through `tvguid16`, including learning goal, startup path, expected outcome, architecture hints, exercises, sequence context, and a clear statement that `tutorial` belongs to the mandatory original-example wave rather than to `TVDEMOS/` or `TVFM/`.
-- [ ] T025 [US3] Re-run the full tutorial smoke suite in `tests/TuiVision.Examples.SmokeTests/TutorialSmokeTests.cs` until all 16 step-specific scenarios are green and the ordered sequence remains reviewable.
+- [X] T020 [P] [US3] Implement the shared tutorial entry point and token-selection host in `examples/Tutorial/Program.cs` and `examples/Tutorial/TutorialApp.cs`.
+- [X] T021 [P] [US3] Implement the shared tutorial-step contract and sequencing support in `examples/Tutorial/Steps/ITutorialStep.cs`, `examples/Tutorial/Steps/TutorialStepCatalog.cs`, and related files under `examples/Tutorial/Steps/`.
+- [X] T022 [P] [US3] Implement `tvguid01` through `tvguid08` in `examples/Tutorial/Steps/TvGuid01Step.cs`, `examples/Tutorial/Steps/TvGuid02Step.cs`, `examples/Tutorial/Steps/TvGuid03Step.cs`, `examples/Tutorial/Steps/TvGuid04Step.cs`, `examples/Tutorial/Steps/TvGuid05Step.cs`, `examples/Tutorial/Steps/TvGuid06Step.cs`, `examples/Tutorial/Steps/TvGuid07Step.cs`, and `examples/Tutorial/Steps/TvGuid08Step.cs`.
+- [X] T023 [P] [US3] Implement `tvguid09` through `tvguid16` in `examples/Tutorial/Steps/TvGuid09Step.cs`, `examples/Tutorial/Steps/TvGuid10Step.cs`, `examples/Tutorial/Steps/TvGuid11Step.cs`, `examples/Tutorial/Steps/TvGuid12Step.cs`, `examples/Tutorial/Steps/TvGuid13Step.cs`, `examples/Tutorial/Steps/TvGuid14Step.cs`, `examples/Tutorial/Steps/TvGuid15Step.cs`, and `examples/Tutorial/Steps/TvGuid16Step.cs`.
+- [X] T024 [US3] Write the shared guide `docs/guides/examples/tutorial.md` with German-first/English-second CEFR-B2 content and one clearly separated section for each token from `tvguid01` through `tvguid16`, including learning goal, startup path, expected outcome, architecture hints, exercises, sequence context, and a clear statement that `tutorial` belongs to the mandatory original-example wave rather than to `TVDEMOS/` or `TVFM/`.
+- [X] T025 [US3] Re-run the full tutorial smoke suite in `tests/TuiVision.Examples.SmokeTests/TutorialSmokeTests.cs` until all 16 step-specific scenarios are green and the ordered sequence remains reviewable.
 
 **Checkpoint**: `tutorial` exposes all 16 original steps through stable tokens, each step is independently smoke-covered, and the shared guide preserves the learning sequence.
 
@@ -121,15 +121,15 @@
 
 ### Tests for User Story 4 (MANDATORY for behavior changes) ⚠️
 
-- [ ] T026 [P] [US4] Add failing `videomode` smoke scenarios in `tests/TuiVision.Examples.SmokeTests/VideomodeSmokeTests.cs` for the supported-transition path, the explicit visible-fallback path, undersized-terminal behavior, post-transition usability, and clean exit.
+- [X] T026 [P] [US4] Add failing `videomode` smoke scenarios in `tests/TuiVision.Examples.SmokeTests/VideomodeSmokeTests.cs` for the supported-transition path, the explicit visible-fallback path, undersized-terminal behavior, post-transition usability, and clean exit.
 
 ### Implementation for User Story 4
 
-- [ ] T027 [P] [US4] Implement the `videomode` entry point and host in `examples/Videomode/Program.cs` and `examples/Videomode/VideomodeApp.cs`.
-- [ ] T028 [P] [US4] Implement terminal-capability detection, real-transition handling, and visible fallback behavior in `examples/Videomode/DisplayModeCoordinator.cs`, `examples/Videomode/VideomodeView.cs`, and related files under `examples/Videomode/`.
-- [ ] T029 [US4] If `videomode` needs framework-visible capability plumbing, add only the minimum supporting changes in `src/TuiVision.Drivers.Console/TConsoleDriver.cs` and `src/TuiVision.Drivers.Console/DriverCapabilityMap.cs` required to keep the example managed, cross-platform, and non-simulated.
-- [ ] T030 [US4] Write the didactic guide `docs/guides/examples/videomode.md` with German-first/English-second CEFR-B2 content covering runtime-capability notes, supported transition flow, explicit fallback explanation, undersized-terminal behavior notes, exercises, traceability to `tv203s/contrib/tvision/examples/videomode/`, and a clear statement that `videomode` belongs to the mandatory original-example wave rather than to `TVDEMOS/` or `TVFM/`.
-- [ ] T031 [US4] Re-run the focused `videomode` smoke path in `tests/TuiVision.Examples.SmokeTests/VideomodeSmokeTests.cs` until the real-transition and visible-fallback assertions are both green.
+- [X] T027 [P] [US4] Implement the `videomode` entry point and host in `examples/Videomode/Program.cs` and `examples/Videomode/VideomodeApp.cs`.
+- [X] T028 [P] [US4] Implement terminal-capability detection, real-transition handling, and visible fallback behavior in `examples/Videomode/DisplayModeCoordinator.cs`, `examples/Videomode/VideomodeView.cs`, and related files under `examples/Videomode/`.
+- [X] T029 [US4] If `videomode` needs framework-visible capability plumbing, add only the minimum supporting changes in `src/TuiVision.Drivers.Console/TConsoleDriver.cs` and `src/TuiVision.Drivers.Console/DriverCapabilityMap.cs` required to keep the example managed, cross-platform, and non-simulated.
+- [X] T030 [US4] Write the didactic guide `docs/guides/examples/videomode.md` with German-first/English-second CEFR-B2 content covering runtime-capability notes, supported transition flow, explicit fallback explanation, undersized-terminal behavior notes, exercises, traceability to `tv203s/contrib/tvision/examples/videomode/`, and a clear statement that `videomode` belongs to the mandatory original-example wave rather than to `TVDEMOS/` or `TVFM/`.
+- [X] T031 [US4] Re-run the focused `videomode` smoke path in `tests/TuiVision.Examples.SmokeTests/VideomodeSmokeTests.cs` until the real-transition and visible-fallback assertions are both green.
 
 **Checkpoint**: `videomode` proves a real supported change where available, exposes a visible fallback otherwise, and remains usable after either outcome.
 
@@ -139,14 +139,15 @@
 
 **Purpose**: Finish the wave-level validation, tracking, and governance follow-through after all four example scopes are implemented.
 
-- [ ] T032 [P] Before each `dotnet build --configuration Release`, `dotnet test tests/TuiVision.Examples.SmokeTests/`, and `dotnet test` command in this validation pass, increment the `Build` component in `Directory.Build.props`, keep `Version`, `AssemblyVersion`, and `FileVersion` aligned, then run the commands plus `dotnet format --verify-no-changes` and fix any remaining issues in `examples/`, `tests/TuiVision.Examples.SmokeTests/`, and touched `src/` files before updating tracking artifacts.
-- [ ] T033 [P] If public APIs or XML comments changed in touched framework files under `src/`, run `docfx docfx.json` and update the affected XML-comment or documentation surfaces in `src/` and `docs/`.
-- [ ] T034 [P] Record the delivered wave-1 status in `Pflichtenheft.md`, keeping the `>>> NAECHSTER SCHRITT <<<` marker and wave-1 checklist state explicit without leaking into later mandatory waves.
-- [ ] T035 [P] Refresh `docs/project-statistics.md` with the 007 implementation window, example/smoke/doc deltas, and the conservative manual-effort baseline after the wave-1 implementation lands.
-- [ ] T036 [P] Capture runtime validation evidence for `MacBook Air M2`, `Mac mini M4 Pro`, Linux, and Windows/WSL in `docs/guides/multi-mac-workflow.md`, covering the wave-1 example launch and `videomode` capability behavior.
-- [ ] T037 [P] If wave-1 implementation changes shared agent guidance, active technologies, or project structure, synchronize `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and `.github/agents/copilot-instructions.md` in the same work item.
-- [ ] T038 [P] Review all new or changed project-owned source files under `examples/` and any touched files under `src/` for German-first/English-second XML documentation and explanatory comments at CEFR-B2 level, then update those files so the constitution's didactic-documentation rule is satisfied before merge.
-- [ ] T039 [P] Audit `examples/`, `tests/TuiVision.Examples.SmokeTests/`, `docs/guides/examples/`, and `specs/007-port-wave1-examples/quickstart.md` for hidden dependencies on later-wave controls, dialogs, editor/help flows, or advanced terminal-emulation scope, and document the wave-1-only review outcome in `specs/007-port-wave1-examples/quickstart.md`.
+- [X] T032 [P] Before each `dotnet build --configuration Release`, `dotnet test tests/TuiVision.Examples.SmokeTests/`, and `dotnet test` command in this validation pass, increment the `Build` component in `Directory.Build.props`, keep `Version`, `AssemblyVersion`, and `FileVersion` aligned, then run the commands plus `dotnet format --verify-no-changes` and fix any remaining issues in `examples/`, `tests/TuiVision.Examples.SmokeTests/`, and touched `src/` files before updating tracking artifacts.
+- [X] T033 [P] If public APIs or XML comments changed in touched framework files under `src/`, run `docfx docfx.json` and update the affected XML-comment or documentation surfaces in `src/` and `docs/`.
+- [X] T034 [P] Record the delivered wave-1 status in `Pflichtenheft.md`, keeping the `>>> NAECHSTER SCHRITT <<<` marker and wave-1 checklist state explicit without leaking into later mandatory waves.
+- [X] T035 [P] Refresh `docs/project-statistics.md` with the 007 implementation window, example/smoke/doc deltas, and the conservative manual-effort baseline after the wave-1 implementation lands.
+- [X] T036 [P] Capture runtime validation evidence for `MacBook Air M2`, `Mac mini M4 Pro`, Linux, and Windows/WSL in `docs/guides/multi-mac-workflow.md`, covering the wave-1 example launch and `videomode` capability behavior.
+- [X] T037 [P] If wave-1 implementation changes shared agent guidance, active technologies, or project structure, synchronize `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and `.github/agents/copilot-instructions.md` in the same work item.
+- [X] T038 [P] Review all new or changed project-owned source files under `examples/`, `tests/TuiVision.Examples.SmokeTests/`, and any touched files under `src/` for German-first/English-second XML documentation and explanatory comments at CEFR-B2 level, then update those files so the constitution's didactic-documentation rule is satisfied before merge.
+- [X] T039 [P] Audit `examples/`, `tests/TuiVision.Examples.SmokeTests/`, `docs/guides/examples/`, and `specs/007-port-wave1-examples/quickstart.md` for hidden dependencies on later-wave controls, dialogs, editor/help flows, or advanced terminal-emulation scope, and document the wave-1-only review outcome in `specs/007-port-wave1-examples/quickstart.md`.
+- [X] T040 [P] Walk each delivered guide in `docs/guides/examples/` from a clean checkout, verify that the reviewer can reach the example's primary documented outcome within 5 minutes without hidden knowledge, and update the affected guide pages plus `specs/007-port-wave1-examples/quickstart.md` wherever the walkthrough exposes missing or misleading instructions.
 
 ---
 
@@ -172,6 +173,7 @@
 ### Within Each User Story
 
 - Smoke tests must be written and failing before production code is added.
+- Each user story must preserve a reviewable Red-commit -> Green-commit -> optional Refactor-commit sequence; do not combine the first failing tests and the first working implementation in one commit.
 - Canonical entry point and host first, example-local behavior second, guide third, focused re-validation last.
 - `tutorial` step implementation should preserve token identity and sequence clarity while keeping each step independently runnable.
 - `videomode` must prove both supported-transition and explicit-fallback behavior before the story is considered done.
@@ -181,7 +183,7 @@
 - `T003`, `T005`, `T006`, and `T007` can proceed in parallel once the project skeleton exists.
 - In User Story 3, `T018` and `T019` can run in parallel, and the step-implementation batches `T022` and `T023` can also run in parallel.
 - In User Story 4, `T027` and `T028` can proceed in parallel once the failing smoke tests exist.
-- In Polish, `T034`, `T035`, `T036`, `T037`, `T038`, and `T039` can run in parallel after the mandatory validation commands are green.
+- In Polish, `T034`, `T035`, `T036`, `T037`, `T038`, `T039`, and `T040` can run in parallel after the mandatory validation commands are green.
 
 ---
 
@@ -237,4 +239,5 @@ With multiple developers:
 - The task order keeps wave 1 inside the existing five-module framework boundary and avoids hidden later-wave dependencies.
 - `tests/TuiVision.Examples.SmokeTests/` is treated as the canonical smoke-test home for this feature and should no longer remain a placeholder-only module-smoke surface.
 - `tutorial` acceptance is not satisfied until all 16 step tokens are independently runnable, smoke-covered, and documented on the shared guide page.
+- Guide acceptance is not satisfied until each delivered example can be driven from its guide to the primary documented outcome in 5 minutes or less from a clean checkout.
 - `Pflichtenheft.md` and `docs/project-statistics.md` remain pre-wave baseline surfaces until the implementation tasks in this file land.

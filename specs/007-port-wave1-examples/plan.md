@@ -92,11 +92,16 @@ and the related wave-tracking updates in project documentation
   package dependencies.
 - **Test-First Development — TDD**: Pass with explicit workflow constraint.
   Each example port and each tutorial step must begin with failing MSTest smoke
-  coverage before production code is added, and the resulting smoke tests join
-  the repository-wide validation path.
+  coverage before production code is added, the resulting smoke tests join the
+  repository-wide validation path, and the execution workflow keeps a reviewable
+  Red-commit -> Green-commit -> optional Refactor-commit sequence instead of
+  collapsing tests and first implementation into one commit.
 - **Didactic and Linguistic Clarity**: Pass. This increment adds example
-  applications, guides, and likely internal comments or XML docs; all
-  explanatory material remains bilingual with German first and English second.
+  applications, smoke tests, guides, and likely internal comments or XML docs;
+  all explanatory material remains bilingual with German first and English
+  second, and the documentation-compliance review must cover changed
+  project-owned source files in `examples/`, `tests/`, and touched `src/`
+  locations.
 - **Modular Architecture**: Pass. No sixth framework module is introduced.
   Example executables live under `examples/` and consume the established five
   modules as clients.
@@ -241,6 +246,10 @@ Phase 0 resolves and locks the following planning decisions:
   describe one example.
 - `docs/guides/examples/tutorial.md` is one shared guide page with step-scoped
   sections for `tvguid01` through `tvguid16`.
+- Guide acceptance includes one clean-checkout walkthrough per delivered
+  example, proving that a reviewer can reach the primary documented outcome in
+  5 minutes or less without hidden knowledge; if not, the guide or example must
+  be revised before merge.
 - Guides remain part of the acceptance surface, not a follow-up cleanup task.
 
 ### Tracking and Delivery Boundary

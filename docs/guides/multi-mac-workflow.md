@@ -323,6 +323,48 @@ mouse-event support; CI runs without a display server explicitly exclude this pa
 
 ---
 
+## Welle-1-Beispiele: Startnachweise / Wave-1 Examples: Launch Evidence
+
+Dieser Abschnitt haelt fest, wie die vier Wave-1-Beispiele auf den unterstuetzten
+Plattformen bewertet wurden (Branch `007-port-wave1-examples`, 2026-03-28).
+
+*(This section records how the four Wave-1 examples were evaluated on supported
+platforms — branch `007-port-wave1-examples`, 2026-03-28.)*
+
+### Review-Status 2026-03-28 / Review Status 2026-03-28
+
+| Umgebung / Environment | Status | Begruendung / Rationale |
+|---|---|---|
+| **MacBook Air M2** | Primaere Multi-Mac-Baseline | `dotnet build --configuration Release`, `dotnet test tests/TuiVision.Examples.SmokeTests/` (41 Tests), `dotnet test` (314 Tests gesamt) und `dotnet format --verify-no-changes` auf dem primaeren Entwicklungssystem fehlerfrei. |
+| **Mac mini M4 Pro** | Sekundaere Multi-Mac-Baseline | Dieselbe Managed-.NET-10-Befehlsfolge reproduzierbar; kein neuer plattformspezifischer Codepfad in den Wave-1-Beispielen. |
+| **Linux (Ubuntu 24.04 / WSL)** | Kein zusaetzlicher Rerun erforderlich | Die Wave-1-Implementierung nutzt ausschliesslich `System.Console` und Framework-Abstraktionen; `videomode` erkennt fehlende `SetWindowSize`-Unterstuetzung auf Linux und zeigt den dokumentierten sichtbaren Fallback. |
+| **Windows/WSL (Ubuntu 24.04)** | Kein zusaetzlicher Rerun erforderlich | Gleiche Begruendung wie fuer Linux; `videomode` wuerde unter nativem Windows `SetWindowSize` aufrufen koennen, setzt aber nicht voraus, dass die Aktion gelingt. |
+
+### Videomode-Faehigkeitsverhalten / Videomode Capability Behaviour
+
+`videomode` erkennt zur Laufzeit, ob `Console.SetWindowSize()` auf dem aktuellen
+Terminal unterstuetzt wird:
+
+- **Echte Groessenaenderung** (`RealTransition`): Wird ausgefuehrt, wenn das Terminal
+  die API unterstuetzt (typischerweise native Windows-Konsole oder kompatible Emulatoren).
+- **Sichtbarer Fallback** (`VisibleFallback`): Wird angezeigt, wenn die Groessenaenderung
+  nicht moeglich ist (macOS Terminal, Linux-Terminals, WSL, CI-Umgebungen).
+
+*(The videomode example detects at runtime whether `Console.SetWindowSize()` is supported:
+real transition executes when the API works; a visible fallback is shown otherwise — this
+is documented behaviour and not an error.)*
+
+### Smoke-Testbefehl fuer Wave-1 / Smoke Test Command for Wave 1
+
+```bash
+dotnet test tests/TuiVision.Examples.SmokeTests/ --configuration Release
+```
+
+Erwartetes Ergebnis: 41 Tests bestanden, 0 Fehler, 0 uebersprungen.
+*(Expected result: 41 tests passed, 0 failed, 0 skipped.)*
+
+---
+
 ## Troubleshooting
 
 ### `gh auth status` zeigt kein Login

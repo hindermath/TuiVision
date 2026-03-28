@@ -190,7 +190,13 @@ docfx docfx.json
 - Source-controlled Markdown evidence in `docs/porting-status.md`; no database storage; compatibility evidence may include repository notes and command output references (005-driver-consolidation-m07)
 - C# `latest` on .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, existing MSTest suites plus any required Compatibility-focused validation additions, Coverlet coverage evidence, `dotnet format`, docfx, `Pflichtenheft.md`, and `docs/porting-status.md` for the formal Phase-8 entrance-gate proof (006-close-phase8-gate)
 - Repository-visible proof artifacts only; no database layer, and no example-application delivery in this increment (006-close-phase8-gate)
-- Source-controlled example projects under `examples/`, (007-port-wave1-examples)
+- Source-controlled example projects under `examples/`; wave-1 examples (`desklogo`, `msgcls`, `tutorial`, `videomode`) delivered; 41 smoke tests green; next: Wave 2 Controls and Dialogs (007-port-wave1-examples)
+
+### 007-port-wave1-examples
+- Current status: Wave 1 delivered (2026-03-28). `desklogo`, `msgcls`, `tutorial` (16 steps), `videomode` are ported, smoke-tested, and guide-documented.
+- Wave 1 scope: `examples/Desklogo/`, `examples/MsgCls/`, `examples/Tutorial/`, `examples/Videomode/`; shared smoke-test infrastructure in `tests/TuiVision.Examples.SmokeTests/`; guides in `docs/guides/examples/`.
+- Next open scope: Wave 2 – Controls and Dialogs (requires Controls/Dialog layer as prerequisite before planning starts).
+- Planning decisions now fixed: headless smoke seam via `bool headless` constructor parameter + `GetEvent()` override; in-process MSTest execution without external process spawning; bilingual German-first/English-second XML docs and comments at CEFR-B2; `DisplayModeCoordinator.ProbeResizeSupport()` cross-platform probe with CA1416 suppressed.
 
 ## Recent Changes
 - 004-editor-file-help-streams: Added the phase-6 specification and requirements checklist for editor, file, help, stream, and resource components.
@@ -206,3 +212,4 @@ docfx docfx.json
 - 006-close-phase8-gate: Added `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, and `contracts/phase-8-gate-contract.md` to define the final `M-07` closure workflow, the 5x-70%-coverage gate, the full-suite validation package, and the dedicated closure-commit contract.
 - 006-close-phase8-gate: Refined the planning baseline so the five-module coverage gate now requires assembly-specific evidence and forbids placeholder-only or no-op-only modules from satisfying Phase-8 closure.
 - 006-close-phase8-gate: Analyse-Remediation nach `tasks.md`-Pruefung eingearbeitet: `gate-docs.md` im Planartefakt-Satz verankert, `tests/TuiVision.Compatibility.Tests/` als explizite Plan-Baseline nachgezogen und die Pflicht auf dokumentierte Tracking-Issues fuer Skip/Ignore-Faelle in Plan, Quickstart und Aufgaben sichtbar gemacht.
+- 007-port-wave1-examples: Wave 1 portiert: `desklogo` (minimale Desktop-App), `msgcls` (Broadcast-Nachrichtenrouting), `tutorial` (16 token-basierte Schritte), `videomode` (Faehigkeitserkennung + Fallback). 41 Smoke-Tests gruen, Release-Build sauber, `dotnet format --verify-no-changes` bestanden. `Pflichtenheft.md` Welle-1-Checkliste abgehakt, `>>> NAECHSTER SCHRITT <<<` auf Welle 2 vorgeschoben.
