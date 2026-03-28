@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-03-28 (aktualisiert nach Wave-1-Korrekturen)
+Stand: 2026-03-29 (aktualisiert nach Untermenü-Popup-Fix und Controls-Revision-Lastenheft)
 
 ## Zweck und Pflege
 
@@ -69,28 +69,28 @@ fortgeschrieben.
 
 | Kennzahl | Wert |
 |---|---:|
-| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-28 |
-| Git-Commits gesamt | 211 |
+| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-29 |
+| Git-Commits gesamt | 224 |
 | Autoren laut Git | 1 |
-| Git-Aktivtage | 15 |
-| Produktionscode aktuell | 119 Dateien / 11022 Zeilen |
+| Git-Aktivtage | 16 |
+| Produktionscode aktuell | 119 Dateien / 11198 Zeilen |
 | Testcode aktuell | 105 Dateien / 9137 Zeilen |
-| Dokumentation aktuell | 108 Dateien / 17549 Zeilen |
+| Dokumentation aktuell | 109 Dateien / 17860 Zeilen |
 | Davon Spec-Kit-Artefakte | 64 Dateien / 10728 Zeilen |
 | Davon Governance/Agent-Dateien | 5 Dateien / 720 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 37708 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 471.4 Arbeitstage |
-| Erfahrener Entwickler, konservative Untergrenze in Stunden | 3676.5 Stunden (471.4 * 7.8) |
-| Erfahrener Entwickler, brutto | 21.9 Arbeitsmonate (21.5 Tage/Monat) |
-| Erfahrener Entwickler, TVoeD-Annahme | 24.8 Kalendermonate bzw. 2.1 Jahre |
-| Thorsten solo, erfahrungsadjustierte Untergrenze | 301.7 Arbeitstage |
-| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 2353.0 Stunden (301.7 * 7.8) |
-| Thorsten solo, brutto | 14.0 Arbeitsmonate (21.5 Tage/Monat) |
-| Thorsten solo, TVoeD-Annahme | 15.9 Kalendermonate bzw. 1.3 Jahre |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 188.5 Arbeitstage |
-| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 9.9 Kalendermonate |
-| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 31.4x (471.4 / 15 Git-Aktivtage) |
-| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 20.1x (301.7 / 15 Git-Aktivtage) |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 38195 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 477.4 Arbeitstage |
+| Erfahrener Entwickler, konservative Untergrenze in Stunden | 3723.9 Stunden (477.4 * 7.8) |
+| Erfahrener Entwickler, brutto | 22.2 Arbeitsmonate (21.5 Tage/Monat) |
+| Erfahrener Entwickler, TVoeD-Annahme | 25.1 Kalendermonate bzw. 2.1 Jahre |
+| Thorsten solo, erfahrungsadjustierte Untergrenze | 305.6 Arbeitstage |
+| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 2383.7 Stunden (305.6 * 7.8) |
+| Thorsten solo, brutto | 14.2 Arbeitsmonate (21.5 Tage/Monat) |
+| Thorsten solo, TVoeD-Annahme | 16.1 Kalendermonate bzw. 1.3 Jahre |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 191.0 Arbeitstage |
+| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 10.0 Kalendermonate |
+| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 29.8x (477.4 / 16 Git-Aktivtage) |
+| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 19.1x (305.6 / 16 Git-Aktivtage) |
 
 ## Phasen und Haupt-Branches
 
@@ -478,3 +478,4 @@ fortgeschrieben.
 | 2026-03-28 | `/speckit-implement` fuer `007-port-wave1-examples` | Welle 1 der MUSS-Beispiele wurde vollstaendig portiert: 4 Beispiele (`desklogo`, `msgcls`, `tutorial` mit 16 Schritten, `videomode`), 35 Produktionsdateien (`~2 227` Zeilen), 5 Smoke-Test-Klassen mit 41 Tests (`~654` Zeilen), 4 bilinguale Guides plus `examples/README.md` (`~672` Zeilen), gesamt `~3 553` neue Zeilen. Release-Build, alle 314 Tests (inkl. Framework-Suites) und `dotnet format --verify-no-changes` fehlerfrei; `>>> NAECHSTER SCHRITT <<<` auf Welle 2 vorgeschoben. Konservative Manualreferenz: 80 Zeilen/Tag = `44,4` Tage (ca. `346` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `28,4` Tage (ca. `222` Stunden); tatsaechliches Arbeitsfenster: 1 Agentensitzung am 2026-03-28. |
 | 2026-03-28 | Nacharbeit Wave-1-Lernmaterialien auf Branch `007-port-wave1-examples` | Vier Folgearbeiten in einer Agentensitzung: (1) Voraussetzungen-Abschnitte in allen 4 Wave-1-Guides um .NET-SDK-URL, `git clone`-Snippet, Microsoft-Learn-Link und TuiVision-Event-System-Link erweitert; (2) kollabierbare `#region`/`#endregion`-Lösungsblöcke in alle Wave-1-Beispieldateien eingefügt (Schritte 01–03 bereits in `1035876`, Schritte 04–16 in `0cc7ac2`); (3) fehlende `**Übungen / Exercises**`-Abschnitte fuer Schritte 08–16 in `tutorial.md` ergänzt (`ddcf6a3`); (4) alle Übungsabschnitte (Schritte 01–16) auf konsequente CEFR-B2-Bilingualität korrigiert. Netto-Änderungsvolumen gegenüber dem Welle-1-Implementierungscommit `12c47a2`: Beispiel-CS-Dateien `+797` Zeilen / Guide-MD-Dateien `+102` Zeilen netto, gesamt `+899` Zeilen über 25 geänderte Dateien. Konservative Manualreferenz: 80 Zeilen/Tag = `11,2` Tage (ca. `87` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `7,2` Tage (ca. `56` Stunden); tatsaechliches Arbeitsfenster: 1 Agentensitzung am 2026-03-28. |
 | 2026-03-28 | Wave-1-Korrekturen auf Branch `007-port-wave1-examples` | Vier Korrekturen in einer Agentensitzung nach dem Lernmaterial-Commit: (1) `fix(wave1)` – vollstaendige Rendering-Pipeline repariert: `TViewState.Exposed` jetzt propagiert, Child-TGroup-Puffer korrekt in Parent-Puffer kompositiert, `TGroup.GetDrawBuffer()` als `protected internal new`, neue `SystemConsolePresenter.cs`, `TDesktop.Draw()`, `TMenuBar.Draw()`/`HandleEvent()` mit `~X~`-Hotkey-Rendering, `TStatusLine.Draw()` und `TWindow.Draw()` mit Box-Drawing-Rahmen implementiert; (2) `feat(msgcls)` – Menüeintrag `~N~achricht posten / Post ~m~essage` löst `cmPostLoremIpsum` aus, `MsgClsApp.HandleEvent()` sendet `"Lorem Ipsum dolor sit amet."` via `PostMessage()`; (3) `feat(shell)` – alle vier Wave-1-`Program.cs` ermitteln die tatsaechliche Konsolengrösse bei Start, `TProgram.Run()` loescht den Bildschirm, setzt `CursorVisible = false` und ruft nach dem Quit `CleanupConsole()` auf (Prompt sichtbar); (4) `fix(quit)` – `Ctrl+Q` und `Ctrl+C` als universelle Quit-Tasten in `TProgram.GetEvent()` verankert (`Console.TreatControlCAsInput = true`), Statuszeile auf `^Q Beenden / Quit  Alt+X` umgestellt. Hintergrund: In macOS Terminal.app sendet die Option-Taste standardmaessig Unicode-Zeichen statt ESC-Sequenz, `ConsoleModifiers.Alt` wird nie gesetzt. Netto-Aenderungsvolumen: `src/` `+413 / -13` = `+400` Zeilen netto (1 neue Datei `SystemConsolePresenter.cs`, 6 veraenderte Dateien); `examples/` `+152 / -14` = `+138` Zeilen netto (9 veraenderte Dateien); gesamt `+538` Zeilen netto ueber 16 Dateien. Konservative Manualreferenz: 80 Zeilen/Tag = `6.7` Tage (ca. `52` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `4.3` Tage (ca. `34` Stunden); tatsaechliches Arbeitsfenster: 1 Agentensitzung am 2026-03-28. |
+| 2026-03-29 | Untermenü-Popup-Fix und Controls-Revision-Lastenheft auf Branch `007-port-wave1-examples` | Zwei Arbeitspakete in einer Agentensitzung: (1) `feat(menubar)` – vollstaendige Untermenü-Popup-Implementierung: `TMenuBar` erhaelt `_openSubMenu`/`_openSubMenuX`-Felder, `HandleEvent()` oeffnet Untermenüs per Hotkey, schliesst per Escape, dispatcht Untermenü-Eintraege; `DrawSubMenuOverlay()` rendert ein Box-Drawing-Popup (`┌─┐ │ │ └─┘`) mit Hotkey-Hervorhebung direkt in den finalen Puffer; `TProgram.Draw()` ruft das Overlay nach `base.Draw()` auf, sodass der Desktop-Puffer es nicht ueberschreibt (Overlay-Pattern nach Desktop-Compositing). (2) `Lastenheft_ControlsRevision.md` – 300-Zeilen-Anforderungsdokument fuer Branch `008-controls-revision` erstellt: vergleichende Analyse von `tmenuvie.cc` (644 Zeilen) vs. `TMenuBar.cs`, `tstatusl.cc` (369 Zeilen) vs. `TStatusLine.cs` (80 Zeilen), `twindow.cc` vs. `TWindow.cs`; 7 priorisierte Anforderungen R-01 bis R-07 mit messbaren Akzeptanzkriterien; Branch `007` in `main` per PR #14 gemergt (13 Commits, admin-merge nach gruenen CI-Gates). Netto-Aenderungsvolumen: `src/` `+205 / -29` = `+176` Zeilen netto (2 veraenderte Dateien); `docs/` `+300` Zeilen netto (1 neue Datei `Lastenheft_ControlsRevision.md`); gesamt `+476` Zeilen netto ueber 3 Dateien. Konservative Manualreferenz: 80 Zeilen/Tag = `6.0` Tage (ca. `46.5` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `3.8` Tage (ca. `29.8` Stunden); tatsaechliches Arbeitsfenster: 1 Agentensitzung am 2026-03-29. |
