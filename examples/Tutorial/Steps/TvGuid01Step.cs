@@ -67,4 +67,35 @@ internal sealed class TvGuid01App : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 1 – InitMenuBar() überschreiben / Solution Exercise 1 – Override InitMenuBar()
+    /*
+     * Überschreibe InitMenuBar() in TvGuid01App, um eine leere Menüleiste zu erzeugen.
+     * Override InitMenuBar() in TvGuid01App to produce an empty menu bar.
+     *
+     * protected override TMenuBar InitMenuBar(TRect bounds)
+     * {
+     *     return new TMenuBar(bounds, null);
+     * }
+     *
+     * Ergebnis: Die Menüleiste erscheint oben, ist aber leer.
+     * Result: The menu bar appears at the top but is empty.
+     */
+    #endregion
+
+    #region Lösung Übung 2 – Terminalgröße beobachten / Solution Exercise 2 – Observe terminal size
+    /*
+     * Die Terminalgröße beeinflusst die bounds, die dem Konstruktor übergeben werden.
+     * Starte die Anwendung in einem kleineren oder größeren Terminalfenster und beobachte,
+     * wie sich der Desktop anpasst. Du musst dafür keinen Code ändern.
+     * The terminal size influences the bounds passed to the constructor.
+     * Start the application in a smaller or larger terminal window and observe
+     * how the desktop adapts. No code change is required.
+     *
+     * // Experimentiere mit verschiedenen Terminalgrößen, z. B.:
+     * // Experiment with different terminal sizes, e.g.:
+     * // Terminal → 40×12: kleiner Desktop / small desktop
+     * // Terminal → 132×50: großer Desktop / large desktop
+     */
+    #endregion
 }

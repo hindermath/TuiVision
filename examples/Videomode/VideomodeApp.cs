@@ -102,4 +102,93 @@ public class VideomodeApp : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 1 – Menüeintrag für Terminalgrößen / Solution Exercise 1 – Menu entry for terminal sizes
+    /*
+     * Überschreibe InitMenuBar() in VideomodeApp, um Terminalgrößen als Menüpunkte anzubieten.
+     * Override InitMenuBar() in VideomodeApp to offer terminal sizes as menu items.
+     *
+     * private const int cmMode80x25  = 1001;
+     * private const int cmMode132x50 = 1002;
+     *
+     * protected override TMenuBar InitMenuBar(TRect bounds)
+     * {
+     *     return new TMenuBar(bounds,
+     *         new TSubMenu("~V~ideomode", 0x2200,
+     *             new TMenuItem("80×25",  cmMode80x25,  kbNoKey) +
+     *             new TMenuItem("132×50", cmMode132x50, kbNoKey) +
+     *             new TMenuItemDivider() +
+     *             new TMenuItem("~E~nde / E~x~it", ShellCommandIds.cmQuit, kbAltX)));
+     * }
+     *
+     * // In HandleEvent() auf die neuen Befehle reagieren:
+     * // In HandleEvent() respond to the new commands:
+     * public override void HandleEvent(TEvent @event)
+     * {
+     *     if (@event.What == TEventKind.Command)
+     *     {
+     *         switch (@event.Message.Command)
+     *         {
+     *             case cmMode80x25:
+     *                 var o1 = Coordinator.TryTransition(80, 25);
+     *                 View.ShowOutcome(o1, o1 == DisplayModeOutcome.RealTransition
+     *                     ? "80×25 gesetzt / 80×25 set" : Coordinator.FallbackMessage);
+     *                 @event.Clear(); return;
+     *             case cmMode132x50:
+     *                 var o2 = Coordinator.TryTransition(132, 50);
+     *                 View.ShowOutcome(o2, o2 == DisplayModeOutcome.RealTransition
+     *                     ? "132×50 gesetzt / 132×50 set" : Coordinator.FallbackMessage);
+     *                 @event.Clear(); return;
+     *         }
+     *     }
+     *     base.HandleEvent(@event);
+     * }
+     */
+    #endregion
+
+    #region Lösung Übung 2 – Übergänge protokollieren / Solution Exercise 2 – Log transitions to file
+    /*
+     * Erstelle eine Hilfsmethode LogTransition(), die jeden Übergangsversuch mit
+     * Zeitstempel, Zielgröße und Ergebnis in eine Datei schreibt.
+     * Create a helper method LogTransition() that writes each transition attempt
+     * with timestamp, target size, and outcome to a file.
+     *
+     * private void LogTransition(int width, int height, DisplayModeOutcome outcome)
+     * {
+     *     string line = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} | {width}x{height} | {outcome}";
+     *     File.AppendAllText("videomode.log", line + Environment.NewLine);
+     * }
+     *
+     * // Aufruf nach TryTransition() / Call after TryTransition():
+     * DisplayModeOutcome outcome = Coordinator.TryTransition(80, 25);
+     * LogTransition(80, 25, outcome);
+     * View.ShowOutcome(outcome, ...);
+     */
+    #endregion
+
+    #region Lösung Übung 3 – Post-Übergangs-Usability-Test / Solution Exercise 3 – Post-transition usability test
+    /*
+     * Nach einem erfolgreichen Übergang kannst du prüfen, ob die Anwendung weiterhin
+     * korrekt zeichnet, indem du DrawView() auf der Hauptansicht aufrufst und
+     * das Ergebnis mit dem erwarteten LastShownOutcome vergleichst.
+     * After a successful transition, verify that the application still draws correctly
+     * by calling DrawView() on the main view and comparing the result with the
+     * expected LastShownOutcome.
+     *
+     * private bool RunPostTransitionCheck()
+     * {
+     *     // Ansicht neu zeichnen und Ergebnis prüfen / Redraw the view and check outcome
+     *     View.DrawView();
+     *     return View.LastShownOutcome == DisplayModeOutcome.RealTransition
+     *         && View.LastShownMessage != null;
+     * }
+     *
+     * // Aufruf nach dem Übergang / Call after the transition:
+     * DisplayModeOutcome outcome = Coordinator.TryTransition(80, 25);
+     * View.ShowOutcome(outcome, ...);
+     * bool isHealthy = RunPostTransitionCheck();
+     * // isHealthy == true  → Anwendung zeichnet korrekt / application draws correctly
+     * // isHealthy == false → Anwendung in inkonsistentem Zustand / application in inconsistent state
+     */
+    #endregion
 }

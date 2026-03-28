@@ -71,4 +71,31 @@ public class MsgClsWindow : TWindow
 
         base.HandleEvent(@event);
     }
+
+    #region Lösung Übung 1 – Zweite Fensterkategorie / Solution Exercise 1 – Second window category
+    /*
+     * Füge ein zweites Befehlscode-Flag für Fehlermeldungen hinzu und reagiere
+     * im HandleEvent() auf diesen Code, um Fehlermeldungen separat zu speichern.
+     * Add a second command code flag for error messages and react to it in HandleEvent()
+     * to store error messages separately.
+     *
+     * // In MsgClsEvents.cs ergänzen / Add to MsgClsEvents.cs:
+     * public const int cmPostErrorToMsgWindow = 202;
+     *
+     * // In MsgClsWindow.cs – zweite Liste und erweitertes HandleEvent:
+     * // In MsgClsWindow.cs – second list and extended HandleEvent:
+     * private readonly List<string> _errorMessages = [];
+     * public IReadOnlyList<string> ErrorMessages => _errorMessages;
+     *
+     * // Im HandleEvent() zusätzlich / Additionally in HandleEvent():
+     * if (@event.What == TEventKind.Broadcast
+     *     && @event.Message.Command == MsgClsEvents.cmPostErrorToMsgWindow)
+     * {
+     *     if (@event.Message.Info is string errorText)
+     *         _errorMessages.Add($"[ERROR] {errorText}");
+     *     @event.Clear();
+     *     return;
+     * }
+     */
+    #endregion
 }

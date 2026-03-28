@@ -70,4 +70,18 @@ public class DesklogoApp : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 2 – Menüleiste hinzufügen / Solution Exercise 2 – Add a menu bar
+    /*
+     * Überschreibe InitMenuBar() in DesklogoApp, um eine Menüleiste mit einem Untermenü hinzuzufügen.
+     * Override InitMenuBar() in DesklogoApp to add a menu bar with one submenu.
+     *
+     * protected override TMenuBar InitMenuBar(TRect bounds)
+     * {
+     *     return new TMenuBar(bounds,
+     *         new TSubMenu("~D~esklogo", 0x2100,
+     *             new TMenuItem("~E~nde / E~x~it", ShellCommandIds.cmQuit, kbAltX)));
+     * }
+     */
+    #endregion
 }

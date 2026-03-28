@@ -67,4 +67,37 @@ internal sealed class TvGuid02App : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 1 – Zweiten Untermenüeintrag hinzufügen / Solution Exercise 1 – Add a second submenu item
+    /*
+     * Überschreibe InitMenuBar() in TvGuid02App und füge einen zweiten Untermenüeintrag hinzu.
+     * Override InitMenuBar() in TvGuid02App and add a second submenu item.
+     *
+     * protected override TMenuBar InitMenuBar(TRect bounds)
+     * {
+     *     return new TMenuBar(bounds,
+     *         new TSubMenu("~D~atei / ~F~ile", 0x2100,
+     *             new TMenuItem("~N~eu / ~N~ew",   cmNew,  kbNoKey) +
+     *             new TMenuItem("~Ö~ffnen / ~O~pen", cmOpen, kbNoKey) +   // ← zweiter Eintrag / second item
+     *             new TMenuItemDivider() +
+     *             new TMenuItem("~E~nde / E~x~it", ShellCommandIds.cmQuit, kbAltX)));
+     * }
+     *
+     * private const int cmNew  = 101;
+     * private const int cmOpen = 102;
+     */
+    #endregion
+
+    #region Lösung Übung 2 – Alt-F10 testen / Solution Exercise 2 – Test Alt-F10
+    /*
+     * Alt-F10 ist eine TuiVision-Standardtastenkombination, um die Menüleiste zu fokussieren.
+     * Du musst dafür keinen Code schreiben — starte die Anwendung und drücke Alt-F10.
+     * Alt-F10 is a built-in TuiVision shortcut to focus the menu bar.
+     * No code change is needed — start the application and press Alt-F10.
+     *
+     * // Erwartetes Verhalten / Expected behaviour:
+     * // Die Menüleiste erhält den Fokus und der erste Menüpunkt wird hervorgehoben.
+     * // The menu bar receives focus and the first menu item is highlighted.
+     */
+    #endregion
 }

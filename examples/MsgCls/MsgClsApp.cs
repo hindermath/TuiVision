@@ -104,4 +104,46 @@ public class MsgClsApp : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 2 – Nachrichten in Datei speichern / Solution Exercise 2 – Persist messages to file
+    /*
+     * Überschreibe ShutDown() in MsgClsApp und schreibe alle gesammelten Nachrichten
+     * beim Beenden in eine Textdatei.
+     * Override ShutDown() in MsgClsApp and write all collected messages to a text file on exit.
+     *
+     * public override void ShutDown()
+     * {
+     *     File.WriteAllLines("messages.log", MsgWindow.Messages);
+     *     base.ShutDown();
+     * }
+     */
+    #endregion
+
+    #region Lösung Übung 3 – Verhalten bei geschlossenem Fenster / Solution Exercise 3 – Behaviour when window is closed
+    /*
+     * Wenn das MsgClsWindow geschlossen wurde, existiert es noch im Speicher, ist aber
+     * nicht mehr Teil der View-Hierarchie. PostMessage() routet den Broadcast weiterhin
+     * durch HandleEvent(), aber kein Empfänger verarbeitet ihn mehr — der Broadcast verpufft still.
+     *
+     * When MsgClsWindow has been closed it still exists in memory but is no longer part
+     * of the view hierarchy. PostMessage() still routes the broadcast through HandleEvent(),
+     * but no receiver processes it — the broadcast silently disappears.
+     *
+     * // Du kannst das prüfen, indem du MsgWindow.MessageCount vor und nach dem Schließen vergleichst.
+     * // You can verify this by comparing MsgWindow.MessageCount before and after closing.
+     * //
+     * // Mögliche Lösung: IsOpen-Flag im Fenster pflegen und in PostMessage() prüfen.
+     * // Possible solution: maintain an IsOpen flag in the window and check it in PostMessage().
+     * //
+     * // public bool IsOpen { get; private set; } = true;
+     * // public override void Close() { IsOpen = false; base.Close(); }
+     * //
+     * // public void PostMessage(string text)
+     * // {
+     * //     if (!MsgWindow.IsOpen) return;  // Abbruch wenn geschlossen / abort when closed
+     * //     TEvent broadcast = TEvent.CreateBroadcast(MsgClsEvents.cmPostToMsgWindow, text);
+     * //     HandleEvent(broadcast);
+     * // }
+     */
+    #endregion
 }

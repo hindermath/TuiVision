@@ -77,4 +77,45 @@ public class DesklogoDesktop : TDesktop
         // Logo wurde gerendert – Zähler aktualisieren / Logo has been rendered – update counter
         RenderedLineCount = LogoLines.Length;
     }
+
+    #region Lösung Übung 1 – Logo-Muster ändern / Solution Exercise 1 – Change the logo pattern
+    /*
+     * Ändere das Array LogoLines[] in DesklogoDesktop, um ein eigenes Muster zu erzeugen.
+     * Change the LogoLines[] array in DesklogoDesktop to produce a custom pattern.
+     *
+     * public string[] LogoLines { get; } =
+     * [
+     *     "**************************************************",
+     *     "*                                                *",
+     *     "*   Mein eigenes Logo / My own logo              *",
+     *     "*                                                *",
+     *     "**************************************************"
+     * ];
+     */
+    #endregion
+
+    #region Lösung Übung 3 – Animiertes Logo mit Timer / Solution Exercise 3 – Animated logo with timer
+    /*
+     * Für ein animiertes Logo kannst du einen Timer im Konstruktor registrieren und
+     * in HandleEvent() auf evTimer reagieren, um das FillChar-Zeichen zu rotieren.
+     * For an animated logo, register a timer in the constructor and react to evTimer
+     * in HandleEvent() to rotate the FillChar character.
+     *
+     * // Im Konstruktor / In the constructor:
+     * SetTimer(100);   // 100 ms Intervall / 100 ms interval
+     *
+     * // In HandleEvent():
+     * public override void HandleEvent(TEvent @event)
+     * {
+     *     if (@event.What == TEventKind.Timer)
+     *     {
+     *         FillChar = FillChar == '░' ? '▒' : FillChar == '▒' ? '▓' : '░';
+     *         DrawView();
+     *         @event.Clear();
+     *         return;
+     *     }
+     *     base.HandleEvent(@event);
+     * }
+     */
+    #endregion
 }

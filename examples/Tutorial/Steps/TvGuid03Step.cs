@@ -67,4 +67,53 @@ internal sealed class TvGuid03App : TApplication
 
         base.GetEvent(out @event);
     }
+
+    #region Lösung Übung 1 – „Über dieses Programm"-Menüpunkt / Solution Exercise 1 – "About" menu item
+    /*
+     * Füge einen „Über dieses Programm / About"-Menüpunkt hinzu und zeige beim Klick
+     * einen Informationsdialog an.
+     * Add an "About" menu item and show an information dialog when clicked.
+     *
+     * private const int cmAbout = 200;
+     *
+     * protected override TMenuBar InitMenuBar(TRect bounds)
+     * {
+     *     return new TMenuBar(bounds,
+     *         new TSubMenu("~H~ilfe / ~H~elp", 0x2300,
+     *             new TMenuItem("~Ü~ber / ~A~bout", cmAbout, kbNoKey) +
+     *             new TMenuItemDivider() +
+     *             new TMenuItem("~E~nde / E~x~it", ShellCommandIds.cmQuit, kbAltX)));
+     * }
+     *
+     * public override void HandleEvent(TEvent @event)
+     * {
+     *     if (@event.What == TEventKind.Command && @event.Message.Command == cmAbout)
+     *     {
+     *         // Hier einen modalen Dialog anzeigen / Show a modal dialog here
+     *         // MessageBox.Show("TuiVision Tutorial – Schritt 03", "OK");
+     *         @event.Clear();
+     *         return;
+     *     }
+     *     base.HandleEvent(@event);
+     * }
+     */
+    #endregion
+
+    #region Lösung Übung 2 – Menüpunkt dynamisch deaktivieren / Solution Exercise 2 – Disable a menu item dynamically
+    /*
+     * Rufe DisableCommand() auf, um einen Befehl zu deaktivieren, und EnableCommand()
+     * um ihn wieder zu aktivieren. TuiVision graut den Menüpunkt automatisch aus.
+     * Call DisableCommand() to disable a command and EnableCommand() to re-enable it.
+     * TuiVision automatically grays out the menu item.
+     *
+     * // Befehl deaktivieren / Disable command:
+     * DisableCommand(cmAbout);
+     *
+     * // Befehl wieder aktivieren / Re-enable command:
+     * EnableCommand(cmAbout);
+     *
+     * // Tipp: Rufe DisableCommand() z. B. beim Start auf, um den Effekt sofort zu sehen.
+     * // Tip: call DisableCommand() e.g. in the constructor to see the effect immediately.
+     */
+    #endregion
 }
