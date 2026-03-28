@@ -3,7 +3,7 @@
 **Input**: Design documents from `/Users/thorstenhindermann/RiderProjects/TuiVision/specs/007-port-wave1-examples/`
 **Prerequisites**: `plan.md` (required), `spec.md` (required for user stories), `research.md`, `data-model.md`, `contracts/`
 
-**Tests**: Test tasks are mandatory for this behavior-changing example wave. Follow Red-Green-Refactor: add failing MSTest smoke coverage first, implement the minimum managed example behavior to turn the tests green, then re-run the relevant validation before advancing guides or tracking artifacts.
+**Tests**: Test tasks are mandatory for this behavior-changing example wave. Follow Red-Green-Refactor: add failing MSTest smoke coverage first, commit that red state separately, implement the minimum managed example behavior to turn the tests green in a later commit, then use a distinct refactor commit only after the green state is already reviewable. Re-run the relevant validation before advancing guides or tracking artifacts.
 
 **Organization**: Tasks are grouped by user story so that each wave-1 example can be implemented, smoke-tested, documented, and reviewed as an independent increment.
 
@@ -145,8 +145,9 @@
 - [ ] T035 [P] Refresh `docs/project-statistics.md` with the 007 implementation window, example/smoke/doc deltas, and the conservative manual-effort baseline after the wave-1 implementation lands.
 - [ ] T036 [P] Capture runtime validation evidence for `MacBook Air M2`, `Mac mini M4 Pro`, Linux, and Windows/WSL in `docs/guides/multi-mac-workflow.md`, covering the wave-1 example launch and `videomode` capability behavior.
 - [ ] T037 [P] If wave-1 implementation changes shared agent guidance, active technologies, or project structure, synchronize `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and `.github/agents/copilot-instructions.md` in the same work item.
-- [ ] T038 [P] Review all new or changed project-owned source files under `examples/` and any touched files under `src/` for German-first/English-second XML documentation and explanatory comments at CEFR-B2 level, then update those files so the constitution's didactic-documentation rule is satisfied before merge.
+- [ ] T038 [P] Review all new or changed project-owned source files under `examples/`, `tests/TuiVision.Examples.SmokeTests/`, and any touched files under `src/` for German-first/English-second XML documentation and explanatory comments at CEFR-B2 level, then update those files so the constitution's didactic-documentation rule is satisfied before merge.
 - [ ] T039 [P] Audit `examples/`, `tests/TuiVision.Examples.SmokeTests/`, `docs/guides/examples/`, and `specs/007-port-wave1-examples/quickstart.md` for hidden dependencies on later-wave controls, dialogs, editor/help flows, or advanced terminal-emulation scope, and document the wave-1-only review outcome in `specs/007-port-wave1-examples/quickstart.md`.
+- [ ] T040 [P] Walk each delivered guide in `docs/guides/examples/` from a clean checkout, verify that the reviewer can reach the example's primary documented outcome within 5 minutes without hidden knowledge, and update the affected guide pages plus `specs/007-port-wave1-examples/quickstart.md` wherever the walkthrough exposes missing or misleading instructions.
 
 ---
 
@@ -172,6 +173,7 @@
 ### Within Each User Story
 
 - Smoke tests must be written and failing before production code is added.
+- Each user story must preserve a reviewable Red-commit -> Green-commit -> optional Refactor-commit sequence; do not combine the first failing tests and the first working implementation in one commit.
 - Canonical entry point and host first, example-local behavior second, guide third, focused re-validation last.
 - `tutorial` step implementation should preserve token identity and sequence clarity while keeping each step independently runnable.
 - `videomode` must prove both supported-transition and explicit-fallback behavior before the story is considered done.
@@ -181,7 +183,7 @@
 - `T003`, `T005`, `T006`, and `T007` can proceed in parallel once the project skeleton exists.
 - In User Story 3, `T018` and `T019` can run in parallel, and the step-implementation batches `T022` and `T023` can also run in parallel.
 - In User Story 4, `T027` and `T028` can proceed in parallel once the failing smoke tests exist.
-- In Polish, `T034`, `T035`, `T036`, `T037`, `T038`, and `T039` can run in parallel after the mandatory validation commands are green.
+- In Polish, `T034`, `T035`, `T036`, `T037`, `T038`, `T039`, and `T040` can run in parallel after the mandatory validation commands are green.
 
 ---
 
@@ -237,4 +239,5 @@ With multiple developers:
 - The task order keeps wave 1 inside the existing five-module framework boundary and avoids hidden later-wave dependencies.
 - `tests/TuiVision.Examples.SmokeTests/` is treated as the canonical smoke-test home for this feature and should no longer remain a placeholder-only module-smoke surface.
 - `tutorial` acceptance is not satisfied until all 16 step tokens are independently runnable, smoke-covered, and documented on the shared guide page.
+- Guide acceptance is not satisfied until each delivered example can be driven from its guide to the primary documented outcome in 5 minutes or less from a clean checkout.
 - `Pflichtenheft.md` and `docs/project-statistics.md` remain pre-wave baseline surfaces until the implementation tasks in this file land.

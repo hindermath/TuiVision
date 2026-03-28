@@ -137,8 +137,9 @@ documented visible fallback outcome.
   guide or smoke-validation path?
 - How does `msgcls` behave if a custom message arrives in an unexpected order
   or a trigger action is repeated rapidly?
-- What happens when a user runs a wave-1 example in a terminal that is too
-  small for its intended default presentation?
+- What happens when a wave-1 example with spatial presentation constraints,
+  especially `desklogo` or `videomode`, is run in a terminal that is too small
+  for its intended default presentation?
 
 ## Requirements *(mandatory)*
 

@@ -1,23 +1,26 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version change: 1.9.0 → 1.10.0
-  Bump rationale: MINOR — Added repo-wide assembly-version governance for
+  Version change: 1.10.0 → 1.10.1
+  Bump rationale: PATCH — Clarified the interaction between the mandatory
+  Red-Green-Refactor history and commit-discipline rules so intentionally red
+  TDD commits are allowed only as tightly scoped feature-branch exceptions
+  without weakening the passing-state bar for review and merge.
+
+  Previous version: 1.9.0 → 1.10.0
+  Previous rationale: MINOR — Added repo-wide assembly-version governance for
   numbered Spec-Kit branches via `Directory.Build.props`, and finalized the
   mandatory 70% line-coverage gate across five assemblies
   (`TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`,
   `TuiVision.Compatibility`, `TuiVision.Drivers.Console`) as part of the
   Phase-8 gate-closure work (`006-close-phase8-gate`).
-
-  Previous version: 1.8.0 → 1.9.0
-  Previous rationale: MINOR — Aligned branch-governance with the active
-  Spec-Kit workflow by permitting numbered feature branches in addition to
-  agent-prefixed branches.
-  Full project scan performed (AGENTS.md, GEMINI.md, CLAUDE.md,
-  copilot-instructions.md, constitution templates, and core spec templates).
+  Full project scan performed (constitution templates, core spec templates,
+  and shared agent guidance files for impact review).
 
   Modified principles:
-    - None
+    - II. Test-First Development — TDD (clarified operational interaction with
+      commit discipline)
+    - Commit Discipline (narrow TDD exception added for feature branches)
 
   Added sections:
     - None
@@ -32,10 +35,11 @@
     - .specify/templates/constitution-template.md ✅ reviewed; no change required
 
   Agent files reviewed:
-    - AGENTS.md             ✅ updated
-    - GEMINI.md             ✅ updated
-    - .github/copilot-instructions.md ✅ updated
-    - CLAUDE.md             ✅ updated
+    - AGENTS.md             ✅ reviewed; no change required
+    - GEMINI.md             ✅ reviewed; no change required
+    - .github/copilot-instructions.md ✅ reviewed; no change required
+    - CLAUDE.md             ✅ reviewed; no change required
+    - .github/agents/copilot-instructions.md ✅ reviewed; no change required
 
   Follow-up TODOs:
     - `.specify/templates/commands/` is not present in this repository, so no
@@ -398,9 +402,16 @@ original examples.
 
 ### Commit Discipline
 
-Each commit MUST leave the repository in a passing build-and-test state.
+Each commit presented for review, handoff, or merge to `main` MUST leave the
+repository in a passing build-and-test state.
+One narrowly scoped exception is permitted for Test-Driven Development on a
+feature branch: an intentionally red commit MAY fail temporarily when it exists
+only to record the new failing test slice for the next behavior change, adds no
+production implementation for that slice, and is followed by a green commit
+before merge, reviewer handoff, or branch completion.
 API changes, implementation changes, and documentation updates that belong to
-the same change MUST be in the same commit.
+the same change MUST be in the same commit, except for the explicit Red →
+Green → optional Refactor separation mandated by principle II.
 
 ## Governance
 
@@ -426,4 +437,4 @@ Use `docs/guides/multi-mac-workflow.md` for local multi-machine workflow details
 Use `docs/project-statistics.md` for the living project-statistics ledger and
 manual-effort baseline tracking.
 
-**Version**: 1.10.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-27
+**Version**: 1.10.1 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-28
