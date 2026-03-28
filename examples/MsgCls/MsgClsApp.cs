@@ -86,12 +86,12 @@ public class MsgClsApp : TApplication
 
     /// <summary>
     /// Erstellt die Menüleiste mit dem Menüpunkt „Nachricht posten / Post message".
-    /// Drücken von F10 aktiviert das Menü; anschließend löst die Taste <c>N</c>
-    /// den Befehl <see cref="MsgClsEvents.cmPostLoremIpsum"/> aus.
+    /// Drücken von F10 aktiviert das Menü; anschließend löst <c>N</c> (deutsch)
+    /// oder <c>P</c> (englisch) den Befehl <see cref="MsgClsEvents.cmPostLoremIpsum"/> aus.
     ///
     /// Creates the menu bar with the "Nachricht posten / Post message" menu item.
-    /// Pressing F10 activates the menu; then pressing <c>N</c> fires the
-    /// <see cref="MsgClsEvents.cmPostLoremIpsum"/> command.
+    /// Pressing F10 activates the menu; then <c>N</c> (German) or <c>P</c> (English)
+    /// fires the <see cref="MsgClsEvents.cmPostLoremIpsum"/> command.
     /// </summary>
     /// <param name="bounds">Die Grenzen der Menüleiste. / The bounds of the menu bar.</param>
     /// <returns>Die konfigurierte Menüleiste. / The configured menu bar.</returns>
@@ -99,7 +99,7 @@ public class MsgClsApp : TApplication
     {
         TMenuBar bar = new(bounds)
         {
-            Menu = new TMenuItem("~N~achricht posten / Post ~m~essage", MsgClsEvents.cmPostLoremIpsum)
+            Menu = new TMenuItem("~N~achricht posten / ~P~ost message", MsgClsEvents.cmPostLoremIpsum)
         };
         return bar;
     }

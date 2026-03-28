@@ -62,12 +62,12 @@ public class TMenuBar : TView
 
         if (Menu != null)
         {
-            // Menüpunkte mit hervorgehobenem Hotkey rendern / Render menu items with highlighted hotkey
+            // Menüpunkte mit hervorgehobenen Hotkeys rendern / Render menu items with highlighted hotkeys
             int col = 1;
             TMenuItem? item = Menu;
             while (item != null && col < Size.X)
             {
-                char? hotKey = ExtractHotKey(item.Name);
+                HashSet<char> hotKeys = ExtractHotKeys(item.Name);
                 string display = " " + StripHotKeys(item.Name) + " ";
 
                 foreach (char ch in display)
@@ -77,8 +77,7 @@ public class TMenuBar : TView
                         break;
                     }
 
-                    bool isHot = hotKey.HasValue &&
-                                 char.ToUpperInvariant(ch) == char.ToUpperInvariant(hotKey.Value);
+                    bool isHot = hotKeys.Contains(char.ToUpperInvariant(ch));
                     ConsoleColor fg = isHot ? ConsoleColor.Yellow : ConsoleColor.Black;
                     buffer.TrySetCell(Origin.X + col, Origin.Y, new TConsoleCell(ch, fg, ConsoleColor.Cyan));
                     col++;
@@ -127,8 +126,8 @@ public class TMenuBar : TView
                 TMenuItem? item = Menu;
                 while (item != null)
                 {
-                    char? hotKey = ExtractHotKey(item.Name);
-                    if (hotKey.HasValue && char.ToUpperInvariant(hotKey.Value) == pressed)
+                    HashSet<char> hotKeys = ExtractHotKeys(item.Name);
+                    if (hotKeys.Contains(pressed))
                     {
                         IsMenuActive = false;
                         Owner?.HandleEvent(TEvent.CreateCommand((ushort)item.Command));
@@ -153,20 +152,30 @@ public class TMenuBar : TView
         name.Replace("~", string.Empty, StringComparison.Ordinal);
 
     /// <summary>
-    /// Extrahiert den Hotkey-Buchstaben aus einer <c>~X~</c>-Markierung.
+    /// Extrahiert alle Hotkey-Buchstaben aus den <c>~X~</c>-Markierungen eines Menünamens.
+    /// Ein Menüpunkt kann mehrere Hotkeys haben, z. B. <c>~N~achricht / ~P~ost</c>.
     ///
-    /// Extracts the hotkey letter from a <c>~X~</c> marker.
+    /// Extracts all hotkey letters from the <c>~X~</c> markers in a menu name.
+    /// A menu item may have multiple hotkeys, e.g. <c>~N~achricht / ~P~ost</c>.
     /// </summary>
-    /// <param name="name">Der Menüname mit optionaler Tilde-Markierung. / The menu name with optional tilde marker.</param>
-    /// <returns>Der Hotkey-Buchstabe, oder <c>null</c> wenn keiner vorhanden ist. / The hotkey letter, or <c>null</c> if none is present.</returns>
-    private static char? ExtractHotKey(string name)
+    /// <param name="name">Der Menüname mit optionalen Tilde-Markierungen. / The menu name with optional tilde markers.</param>
+    /// <returns>Menge aller Hotkey-Buchstaben (Großbuchstaben). / Set of all hotkey letters (upper-case).</returns>
+    private static HashSet<char> ExtractHotKeys(string name)
     {
-        int first = name.IndexOf('~', StringComparison.Ordinal);
-        if (first < 0 || first + 1 >= name.Length)
+        var result = new HashSet<char>();
+        int i = 0;
+        while (i < name.Length)
         {
-            return null;
+            int tilde = name.IndexOf('~', i);
+            if (tilde < 0 || tilde + 1 >= name.Length)
+            {
+                break;
+            }
+
+            result.Add(char.ToUpperInvariant(name[tilde + 1]));
+            i = tilde + 2;
         }
 
-        return name[first + 1];
+        return result;
     }
 }
