@@ -69,28 +69,28 @@ fortgeschrieben.
 
 | Kennzahl | Wert |
 |---|---:|
-| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-27 |
-| Git-Commits gesamt | 191 |
+| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-28 |
+| Git-Commits gesamt | 196 |
 | Autoren laut Git | 1 |
-| Git-Aktivtage | 14 |
-| Produktionscode aktuell | 118 Dateien / 10622 Zeilen |
-| Testcode aktuell | 100 Dateien / 8483 Zeilen |
-| Dokumentation aktuell | 94 Dateien / 14942 Zeilen |
+| Git-Aktivtage | 15 |
+| Produktionscode aktuell | 118 Dateien / 10681 Zeilen |
+| Testcode aktuell | 100 Dateien / 9137 Zeilen |
+| Dokumentation aktuell | 109 Dateien / 17603 Zeilen |
 | Davon Spec-Kit-Artefakte | 64 Dateien / 10728 Zeilen |
 | Davon Governance/Agent-Dateien | 5 Dateien / 720 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 34047 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 425.6 Arbeitstage |
-| Erfahrener Entwickler, konservative Untergrenze in Stunden | 3319.6 Stunden (425.6 * 7.8) |
-| Erfahrener Entwickler, brutto | 19.8 Arbeitsmonate (21.5 Tage/Monat) |
-| Erfahrener Entwickler, TVoeD-Annahme | 22.4 Kalendermonate bzw. 1.9 Jahre |
-| Thorsten solo, erfahrungsadjustierte Untergrenze | 272.4 Arbeitstage |
-| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 2124.5 Stunden (272.4 * 7.8) |
-| Thorsten solo, brutto | 12.7 Arbeitsmonate (21.5 Tage/Monat) |
-| Thorsten solo, TVoeD-Annahme | 14.3 Kalendermonate bzw. 1.2 Jahre |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 170.2 Arbeitstage |
-| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 9.0 Kalendermonate |
-| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 30.4x (425.6 / 14 Git-Aktivtage) |
-| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 19.5x (272.4 / 14 Git-Aktivtage) |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 37421 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 467.8 Arbeitstage |
+| Erfahrener Entwickler, konservative Untergrenze in Stunden | 3648.8 Stunden (467.8 * 7.8) |
+| Erfahrener Entwickler, brutto | 21.8 Arbeitsmonate (21.5 Tage/Monat) |
+| Erfahrener Entwickler, TVoeD-Annahme | 24.6 Kalendermonate bzw. 2.1 Jahre |
+| Thorsten solo, erfahrungsadjustierte Untergrenze | 299.4 Arbeitstage |
+| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 2335.3 Stunden (299.4 * 7.8) |
+| Thorsten solo, brutto | 13.9 Arbeitsmonate (21.5 Tage/Monat) |
+| Thorsten solo, TVoeD-Annahme | 15.8 Kalendermonate bzw. 1.3 Jahre |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 187.1 Arbeitstage |
+| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 9.8 Kalendermonate |
+| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 31.2x (467.8 / 15 Git-Aktivtage) |
+| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 20.0x (299.4 / 15 Git-Aktivtage) |
 
 ## Phasen und Haupt-Branches
 
@@ -370,20 +370,20 @@ fortgeschrieben.
 
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
-- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 34047 Zeilen
+- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 37421 Zeilen
   (Produktionscode + Tests + Dokumentation).
 - Selbst mit der fuer klassische Entwicklung guenstigen Obergrenze von
   80 manuell erstellten Zeilen pro Arbeitstag ergibt sich bereits eine
-  Untergrenze von 425.6 Entwickler-Arbeitstagen.
+  Untergrenze von 467.8 Entwickler-Arbeitstagen.
 - Unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr entspricht das fuer einen
-  erfahrenen Entwickler ca. 22.4 Kalendermonaten bzw. 1.9 Arbeitsjahren; fuer
-  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 9.0 Kalendermonaten.
+  erfahrenen Entwickler ca. 24.6 Kalendermonaten bzw. 2.1 Arbeitsjahren; fuer
+  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 9.8 Kalendermonaten.
 - Unter Einbezug von Thorstens Erfahrungsprofil sinkt die klassische
-  Solo-Referenz fuer dieses Repository auf ca. 272.4 Arbeitstage bzw.
-  14.3 TVoeD-Kalendermonate.
-- Gegen die sichtbaren 14 Git-Aktivtage ergibt sich damit ein repo-weiter
-  Beschleunigungsfaktor von ca. 30.4x gegen die konservative Referenz und
-  immer noch ca. 19.5x gegen die erfahrungsadjustierte Thorsten-Referenz.
+  Solo-Referenz fuer dieses Repository auf ca. 299.4 Arbeitstage bzw.
+  15.8 TVoeD-Kalendermonate.
+- Gegen die sichtbaren 15 Git-Aktivtage ergibt sich damit ein repo-weiter
+  Beschleunigungsfaktor von ca. 31.2x gegen die konservative Referenz und
+  immer noch ca. 20.0x gegen die erfahrungsadjustierte Thorsten-Referenz.
 - Die vorliegenden Git-Daten zeigen damit eine deutliche Verdichtung durch
   agentische KI und GitHub Spec-Kit: hoher Dokumentations- und Codeumfang in
   einem kurzen beobachtbaren Aktivfenster.
@@ -466,3 +466,4 @@ fortgeschrieben.
 | 2026-03-28 | Analyse-Follow-up fuer `007-port-wave1-examples` | Die Analysefunde aus dem read-only Cross-Artifact-Check wurden in den 007-Artefakten nachgezogen: `spec.md` grenzt den Small-Terminal-Edge-Case jetzt auf die relevanten Beispiele ein, `plan.md`, `tasks.md` und `quickstart.md` operationalisieren die reviewbare Red-Green-Refactor-Commitfolge, die 5-Minuten-Guide-Walkthrough-Pflicht und den Dokumentations-Scope fuer `examples/`, `tests/TuiVision.Examples.SmokeTests/` und beruehrte `src/`-Dateien. |
 | 2026-03-28 | Constitution-Patch fuer TDD-Commitdisziplin | Die Constitution wurde von `1.10.0` auf `1.10.1` per PATCH-Schaerfung angehoben: Der bislang widerspruechliche Zusammenhang zwischen sichtbarer Red-Green-Refactor-Historie und der Pflicht auf gruene Commits ist jetzt eng geklaert. Bewusst rote TDD-Commits sind nur noch als schmale Feature-Branch-Ausnahme vor Green/Handover/Merge zulaessig; Templates und gemeinsame Agent-Dateien wurden auf Aenderungsbedarf geprueft, brauchten aber keine Textanpassung. |
 | 2026-03-28 | `/speckit-implement` fuer `007-port-wave1-examples` | Welle 1 der MUSS-Beispiele wurde vollstaendig portiert: 4 Beispiele (`desklogo`, `msgcls`, `tutorial` mit 16 Schritten, `videomode`), 35 Produktionsdateien (`~2 227` Zeilen), 5 Smoke-Test-Klassen mit 41 Tests (`~654` Zeilen), 4 bilinguale Guides plus `examples/README.md` (`~672` Zeilen), gesamt `~3 553` neue Zeilen. Release-Build, alle 314 Tests (inkl. Framework-Suites) und `dotnet format --verify-no-changes` fehlerfrei; `>>> NAECHSTER SCHRITT <<<` auf Welle 2 vorgeschoben. Konservative Manualreferenz: 80 Zeilen/Tag = `44,4` Tage (ca. `346` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `28,4` Tage (ca. `222` Stunden); tatsaechliches Arbeitsfenster: 1 Agentensitzung am 2026-03-28. |
+| 2026-03-28 | Nacharbeit Wave-1-Lernmaterialien auf Branch `007-port-wave1-examples` | Vier Folgearbeiten in einer Agentensitzung: (1) Voraussetzungen-Abschnitte in allen 4 Wave-1-Guides um .NET-SDK-URL, `git clone`-Snippet, Microsoft-Learn-Link und TuiVision-Event-System-Link erweitert; (2) kollabierbare `#region`/`#endregion`-Lösungsblöcke in alle Wave-1-Beispieldateien eingefügt (Schritte 01–03 bereits in `1035876`, Schritte 04–16 in `0cc7ac2`); (3) fehlende `**Übungen / Exercises**`-Abschnitte fuer Schritte 08–16 in `tutorial.md` ergänzt (`ddcf6a3`); (4) alle Übungsabschnitte (Schritte 01–16) auf konsequente CEFR-B2-Bilingualität korrigiert. Netto-Änderungsvolumen gegenüber dem Welle-1-Implementierungscommit `12c47a2`: Beispiel-CS-Dateien `+797` Zeilen / Guide-MD-Dateien `+102` Zeilen netto, gesamt `+899` Zeilen über 25 geänderte Dateien. Konservative Manualreferenz: 80 Zeilen/Tag = `11,2` Tage (ca. `87` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `7,2` Tage (ca. `56` Stunden); tatsaechliches Arbeitsfenster: 1 Agentensitzung am 2026-03-28. |

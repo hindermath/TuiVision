@@ -99,8 +99,8 @@ dotnet run --project examples/Tutorial
 **Architektur**: Nur `TApplication` ohne Anpassungen. / Architecture: Just `TApplication` without customization.
 
 **Übungen / Exercises**:
-1. Überschreiben Sie `InitMenuBar()` und geben Sie eine leere Menüleiste zurück.
-2. Ändern Sie die Terminalgröße und beobachten Sie das Verhalten.
+1. Überschreibe `InitMenuBar()` und gib eine leere Menüleiste zurück. / Override `InitMenuBar()` and return an empty menu bar.
+2. Ändere die Terminalgröße und beobachte das Verhalten. / Resize the terminal and observe the behaviour.
 
 ---
 
@@ -113,9 +113,9 @@ dotnet run --project examples/Tutorial
 
 **Ergebnis**: Eine Menüleiste erscheint oben. Untermenüs können mit der Maus oder Tastatur geöffnet werden.
 
-**Übungen**:
-1. Fügen Sie einen zweiten Untermenüeintrag hinzu.
-2. Testen Sie, ob `Alt-F10` die Menüleiste fokussiert.
+**Übungen / Exercises**:
+1. Füge einen zweiten Untermenüeintrag hinzu. / Add a second submenu entry.
+2. Teste, ob `Alt-F10` die Menüleiste fokussiert. / Test whether `Alt-F10` focuses the menu bar.
 
 ---
 
@@ -128,9 +128,9 @@ dotnet run --project examples/Tutorial
 
 **Ergebnis**: Ein Menüpunkt zeigt beim Klick eine Aktion (z. B. ein Meldungsfenster).
 
-**Übungen**:
-1. Implementieren Sie „Über dieses Programm / About" als Menüpunkt.
-2. Deaktivieren Sie einen Menüpunkt dynamisch mit `DisableCommand()`.
+**Übungen / Exercises**:
+1. Implementiere einen „Über dieses Programm / About"-Menüpunkt. / Implement an "About this program" menu item.
+2. Deaktiviere einen Menüpunkt dynamisch mit `DisableCommand()`. / Dynamically disable a menu item using `DisableCommand()`.
 
 ---
 
@@ -143,9 +143,9 @@ dotnet run --project examples/Tutorial
 
 **Ergebnis**: Ein Fenster erscheint auf dem Desktop. Es kann mit der Maus bewegt werden.
 
-**Übungen**:
-1. Öffnen Sie das Fenster zentriert mit dem `TViewOptions.Centered`-Flag.
-2. Setzen Sie einen benutzerdefinierten Fenstertitel.
+**Übungen / Exercises**:
+1. Öffne das Fenster zentriert mit dem `TViewOptions.Centered`-Flag. / Open the window centred using the `TViewOptions.Centered` flag.
+2. Setze einen benutzerdefinierten Fenstertitel. / Set a custom window title.
 
 ---
 
@@ -160,9 +160,9 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Ein Fenster mit eigenem Text-Inhalt erscheint auf dem Desktop.
 
-**Übungen**:
-1. Zeichnen Sie mehrere Textzeilen.
-2. Verwenden Sie verschiedene Farben für Vordergrund und Hintergrund.
+**Übungen / Exercises**:
+1. Zeichne mehrere Textzeilen. / Draw multiple lines of text.
+2. Verwende verschiedene Farben für Vordergrund und Hintergrund. / Use different colours for foreground and background.
 
 ---
 
@@ -175,9 +175,9 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Eine Bildlaufleiste erscheint am rechten Rand des Fensters.
 
-**Übungen**:
-1. Verknüpfen Sie die Bildlaufleiste mit dem Fensterinhalt.
-2. Testen Sie das Verhalten, wenn der Inhalt kürzer als das Fenster ist.
+**Übungen / Exercises**:
+1. Verknüpfe die Bildlaufleiste mit dem Fensterinhalt. / Link the scroll bar to the window content.
+2. Teste das Verhalten, wenn der Inhalt kürzer als das Fenster ist. / Test the behaviour when the content is shorter than the window.
 
 ---
 
@@ -190,8 +190,8 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Ein Fenster mit horizontaler und vertikaler Bildlaufleiste erscheint.
 
-**Übungen**:
-1. Verknüpfen Sie beide Bildlaufleisten mit dem Fensterinhalt.
+**Übungen / Exercises**:
+1. Verknüpfe beide Bildlaufleisten mit dem Fensterinhalt. / Link both scroll bars to the window content.
 
 ---
 
@@ -204,9 +204,9 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Der Delta-Punkt ändert sich, wenn die Bildlaufleiste bewegt wird.
 
-**Übungen**:
-1. Zeige den aktuellen Delta-Punkt (X- und Y-Versatz) dynamisch im Fenstertitel an.
-2. Begrenze den scrollbaren Bereich auf maximal 50 Zeilen und 120 Spalten mit `SetLimit()`.
+**Übungen / Exercises**:
+1. Zeige den aktuellen Delta-Punkt (X- und Y-Versatz) dynamisch im Fenstertitel an. / Display the current delta point (X and Y offset) dynamically in the window title.
+2. Begrenze den scrollbaren Bereich auf maximal 50 Zeilen und 120 Spalten mit `SetLimit()`. / Limit the scrollable area to at most 50 rows and 120 columns using `SetLimit()`.
 
 ---
 
@@ -219,9 +219,9 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Mehrere Fenster erscheinen. Das aktive Fenster liegt oben.
 
-**Übungen**:
-1. Öffne beim Start drei Fenster mit je einem eigenen Titel an verschiedenen Positionen.
-2. Implementiere einen Menüpunkt, der mit `Desktop?.SelectNext(false)` zum nächsten Fenster wechselt (äquivalent zu F6).
+**Übungen / Exercises**:
+1. Öffne beim Start drei Fenster mit je einem eigenen Titel an verschiedenen Positionen. / At startup, open three windows with individual titles at different positions.
+2. Implementiere einen Menüpunkt, der mit `Desktop?.SelectNext(false)` zum nächsten Fenster wechselt (äquivalent zu F6). / Implement a menu item that switches to the next window using `Desktop?.SelectNext(false)` (equivalent to F6).
 
 ---
 
@@ -234,9 +234,9 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Ein Dialog blockiert die restliche Anwendung, bis er geschlossen wird.
 
-**Übungen**:
-1. Füge dem Dialog einen `TButton` mit `cmOK` hinzu, damit er per Mausklick geschlossen werden kann.
-2. Öffne den Dialog über einen Menüpunkt mit einem eigenen Befehlscode.
+**Übungen / Exercises**:
+1. Füge dem Dialog einen `TButton` mit `cmOK` hinzu, damit er per Mausklick geschlossen werden kann. / Add a `TButton` with `cmOK` to the dialog so that it can be closed with a mouse click.
+2. Öffne den Dialog über einen Menüpunkt mit einem eigenen Befehlscode. / Open the dialog via a menu item with a custom command code.
 
 ---
 
@@ -249,9 +249,9 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Der Dialog zeigt eine Schaltfläche, die beim Klick den Dialog schließt.
 
-**Übungen**:
-1. Füge neben dem OK-Button einen zweiten `TButton` für „Abbrechen / Cancel" ein.
-2. Werte den Rückgabewert von `ExecView()` aus und zeige das Ergebnis in der Statuszeile an.
+**Übungen / Exercises**:
+1. Füge neben dem OK-Button einen zweiten `TButton` für „Abbrechen / Cancel" ein. / Add a second `TButton` for "Cancel" next to the OK button.
+2. Werte den Rückgabewert von `ExecView()` aus und zeige das Ergebnis in der Statuszeile an. / Evaluate the return value of `ExecView()` and display the result in the status bar.
 
 ---
 
@@ -264,9 +264,9 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Der Dialog zeigt ein Textfeld für Benutzereingaben.
 
-**Übungen**:
-1. Begrenze die maximale Eingabelänge auf 20 Zeichen über den zweiten Parameter von `TInputLine`.
-2. Lese nach dem Schließen des Dialogs den eingegebenen Text aus und zeige ihn in einem neuen Fenster an.
+**Übungen / Exercises**:
+1. Begrenze die maximale Eingabelänge auf 20 Zeichen über den zweiten Parameter von `TInputLine`. / Limit the maximum input length to 20 characters via the second parameter of `TInputLine`.
+2. Lese nach dem Schließen des Dialogs den eingegebenen Text aus und zeige ihn in einem neuen Fenster an. / After closing the dialog, read the entered text and display it in a new window.
 
 ---
 
@@ -279,9 +279,9 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Der Dialog kann über zwei verschiedene Schaltflächen geschlossen werden.
 
-**Übungen**:
-1. Werte den Rückgabewert von `ExecView()` aus und reagiere unterschiedlich auf OK und Abbrechen.
-2. Füge eine dritte Schaltfläche „Hilfe / Help" mit einem eigenen Befehlscode hinzu.
+**Übungen / Exercises**:
+1. Werte den Rückgabewert von `ExecView()` aus und reagiere unterschiedlich auf OK und Abbrechen. / Evaluate the return value of `ExecView()` and react differently to OK and Cancel.
+2. Füge eine dritte Schaltfläche „Hilfe / Help" mit einem eigenen Befehlscode hinzu. / Add a third "Help" button with a custom command code.
 
 ---
 
@@ -294,9 +294,9 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Der Dialog zeigt auswählbare Optionen.
 
-**Übungen**:
-1. Lese nach `ExecView()` den Zustand der Checkboxen (Bitmask) und den ausgewählten RadioButton (Index) aus.
-2. Setze vor dem Öffnen des Dialogs Standardwerte über die `Value`-Eigenschaft vor.
+**Übungen / Exercises**:
+1. Lese nach `ExecView()` den Zustand der Checkboxen (Bitmask) und den ausgewählten RadioButton (Index) aus. / After `ExecView()`, read the checkbox state (bitmask) and the selected radio button (index).
+2. Setze vor dem Öffnen des Dialogs Standardwerte über die `Value`-Eigenschaft vor. / Before opening the dialog, set default values using the `Value` property.
 
 ---
 
@@ -309,9 +309,9 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Der Dialog merkt sich seine Zustände zwischen Öffnungen.
 
-**Übungen**:
-1. Speichere den Dialogzustand auch beim Klick auf „Abbrechen", indem du `GetData()` unabhängig vom Rückgabewert aufrufst.
-2. Zeige den zuletzt gespeicherten Zustand nach dem Schließen des Dialogs im Hauptfenster an.
+**Übungen / Exercises**:
+1. Speichere den Dialogzustand auch beim Klick auf „Abbrechen", indem du `GetData()` unabhängig vom Rückgabewert aufrufst. / Save the dialog state even when "Cancel" is clicked by calling `GetData()` regardless of the return value.
+2. Zeige den zuletzt gespeicherten Zustand nach dem Schließen des Dialogs im Hauptfenster an. / Display the last saved state in the main window after closing the dialog.
 
 ---
 
@@ -324,9 +324,9 @@ Text in den Fensterinhalt zeichnen.
 
 **Ergebnis**: Der Dialog stellt beim erneuten Öffnen die zuletzt eingegebenen Werte wieder her.
 
-**Übungen**:
-1. Füge dem Dialog einen Reset-Button hinzu, der alle Felder auf Standardwerte zurücksetzt, ohne den Dialog zu schließen.
-2. Überschreibe `Valid()` in einer `TDialog`-Unterklasse, um die Eingabe vor dem Schließen zu prüfen (z. B. Name darf nicht leer sein).
+**Übungen / Exercises**:
+1. Füge dem Dialog einen Reset-Button hinzu, der alle Felder auf Standardwerte zurücksetzt, ohne den Dialog zu schließen. / Add a Reset button to the dialog that restores all fields to their default values without closing the dialog.
+2. Überschreibe `Valid()` in einer `TDialog`-Unterklasse, um die Eingabe vor dem Schließen zu prüfen (z. B. Name darf nicht leer sein). / Override `Valid()` in a `TDialog` subclass to validate input before closing (e.g. name must not be empty).
 
 ---
 
