@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-03-27
+Stand: 2026-03-28
 
 ## Zweck und Pflege
 
@@ -319,6 +319,48 @@ fortgeschrieben.
   - 0.4x gegen die konservative 80-Zeilen-Referenz
   - 0.3x gegen die Thorsten-Solo-Referenz mit 125 Zeilen pro Arbeitstag
 
+### 8. Branch `007-port-wave1-examples`
+
+- Status: analysebereinigter Planungs- und Aufgabenstand auf Feature-Branch
+  `007-port-wave1-examples`
+- Beobachtbarer Zeitraum: 2026-03-27 bis 2026-03-28
+- Commit-Bild: 4 Commits an 2 Git-Aktivtagen nach dem Commit dieses
+  Planungs-, Review-, Analyse- und Aufgabenpakets
+- Grundlegende Arbeiten:
+  - Spezifikation, Requirements-Checkliste, Plan, Research, Datenmodell,
+    Quickstart und Contract fuer die erste MUSS-Beispielwelle mit `desklogo`,
+    `msgcls`, `tutorial` und `videomode`
+  - zusaetzliche Plan-Review-Checkliste mit 28 Pruefpunkten und
+    Durchfuehrungshinweisen
+  - umsetzbare `tasks.md` mit 39 Aufgaben fuer Setup, gemeinsame Smoke-
+    Infrastruktur, `desklogo`, `msgcls`, alle 16 `tutorial`-Schritte,
+    `videomode` sowie Tracking-, Plattform- und Governance-Follow-through
+  - Nachschaerfung der Planungsartefakte fuer Managed-Delivery-Begriff,
+    In-Process-Smoke-Seam, Clean-Exit-Definition, Tracking-Baseline,
+    Agent-Synchronisationsoberflaechen und Branch-Versionierung
+  - finale Analyse-Remediation fuer Guide-Bilingualitaet, MUSS-vs.-Follow-on-
+    Abgrenzung, Helper-/Asset-Audits, Small-Terminal-Hinweise, explizite
+    Later-Wave-Dependency-Pruefung und konkrete Driver-Zieldateien
+- Git-/Arbeitsbaum-Aenderungsvolumen fuer den aktuellen Aenderungssatz:
+  - Produktionscode: 0 Zeilen
+  - Testcode: 0 Zeilen
+  - Dokumentation und Governance: 1447 Zeilen netto in den neun
+    `specs/007-port-wave1-examples/`-Artefakten
+  - Build-/Versionsmetadaten: 3 Zeilen in `Directory.Build.props`
+- Konservative Handarbeits-Basis fuer Code und Dokumentation:
+  - 1450 Zeilen netto gesamt
+  - 18.1 Arbeitstage fuer einen erfahrenen Entwickler
+  - 141.2 Stunden auf TVoeD-Basis (`18.1 * 7.8`)
+  - 0.7 Arbeitsmonate brutto bzw. 0.8 TVoeD-Kalendermonate
+- Thorsten-Solo-Referenz:
+  - 11.6 Arbeitstage
+  - 90.5 Stunden auf TVoeD-Basis (`11.6 * 7.8`)
+  - 0.5 Arbeitsmonate brutto bzw. 0.6 TVoeD-Kalendermonate
+- Blended Repository Speedup gegen sichtbare 2 Git-Aktivtage fuer diesen
+  Aenderungssatz:
+  - 9.1x gegen die konservative 80-Zeilen-Referenz
+  - 5.8x gegen die Thorsten-Solo-Referenz mit 125 Zeilen pro Arbeitstag
+
 ## Zusatz-Branches
 
 | Branch | Letzte sichtbare Aktivitaet | Rolle |
@@ -417,3 +459,7 @@ fortgeschrieben.
 | 2026-03-25 | Analyse-Remediation fuer `006-close-phase8-gate` | Nach der Querpruefung von `tasks.md` gegen `spec.md` und `plan.md` wurden die letzten Dokumentdriften beseitigt: `gate-docs.md` ist jetzt expliziter Bestandteil des Plan-Artefaktsets, `tests/TuiVision.Compatibility.Tests/` ist als feste Compatibility-Fallback-Suite in Plan und Quickstart verankert, und Skip-/Ignore-Faelle duerfen das Gate nur noch mit dokumentierter Tracking-Issue-Referenz passieren. Die gemeinsamen Agent-Dateien wurden im selben Arbeitsschritt synchronisiert. |
 | 2026-03-27 | Sortierung des Fortschreibungsprotokolls vereinheitlicht | Die Eintraege im Fortschreibungsprotokoll wurden auf strikt chronologische Reihenfolge gebracht: aeltester Eintrag oben, juengster und zuletzt eingetragener Eintrag unten. Dieselbe Regel wurde in der gemeinsamen Agent-Governance fuer dieses Repository festgeschrieben. |
 | 2026-03-27 | `/speckit-implement` fuer `006-close-phase8-gate` | Das Phase-8-Eingangstor wurde im Closure-Paket abgeschlossen: restliche `M-07`-Proof-Luecken geschlossen, Gate-Artefakte synchronisiert, repo-weite Build-/Test-/Format-/`docfx`-Nachweise dokumentiert, 5 assembly-scharfe Coverlet-Ergebnisse (`89.11 %`, `84.10 %`, `83.33 %`, `80.95 %`, `97.43 %`) verankert und der dedizierte Closure-Commit fuer Feature `006` gesetzt. |
+| 2026-03-27 | Branch `007-port-wave1-examples` | Spezifikations-, Planungs- und Review-Paket fuer die erste MUSS-Beispielwelle angelegt und nach der Plan-Checkliste nachgeschaerft: `spec.md`, `requirements.md`, `plan.md`, `research.md`, `data-model.md`, `contracts/wave-1-example-contract.md`, `quickstart.md` und `checklists/planning.md` definieren jetzt Scope, Smoke-Seams, Guides, Tracking-Baseline und Synchronisationspflichten fuer `desklogo`, `msgcls`, `tutorial` und `videomode`. |
+| 2026-03-27 | `/speckit-tasks` fuer `007-port-wave1-examples` | Die Aufgabenzerlegung fuer die erste MUSS-Beispielwelle wurde mit 37 Tasks aus `spec.md`, `plan.md`, `research.md`, `data-model.md`, `quickstart.md` und `contracts/wave-1-example-contract.md` erzeugt. Die neue `tasks.md` schneidet Setup, gemeinsame Smoke-Infrastruktur, die vier Wave-1-Beispiele, Plattformnachweise sowie Tracking- und Governance-Follow-through in einen ausfuehrbaren, story-basierten Ablauf. |
+| 2026-03-28 | Analyse-Remediation fuer `007-port-wave1-examples` | `plan.md` und `tasks.md` wurden nach mehreren Konsistenzlaeufen final bereinigt: Guide-Seiten sind jetzt explizit bilingual (`Deutsch zuerst`, `Englisch danach`, CEFR-B2), Wave-1-MUSS-Abgrenzung und Helper-/Asset-Entscheidungen sind sichtbar verankert, Small-Terminal- und Later-Wave-Abhaengigkeitspruefungen sind als Aufgaben enthalten, `T029` ist auf konkrete Driver-Dateien zugeschnitten und der Pfad `docs/guides/multi-mac-workflow.md` wurde im Plan korrigiert. |
+| 2026-03-28 | Lastenheft-Branch-Suffix-Regel in Agent-Guidance verankert | Die gemeinsamen Agent-Dateien (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `.github/agents/copilot-instructions.md`) wurden um die Governance-Regel erweitert, dass ein Lastenheft nach Umsetzung durch einen dedizierten Feature-Branch auf `Lastenheft_<Thema>.<feature-branch>.md` umzubenennen ist, damit die Rueckverfolgbarkeit im Repository erhalten bleibt; Aenderungsumfang dieser Runde vor dieser Ledger-Fortschreibung: 0 Produktionscode-Zeilen, 0 Testcode-Zeilen, +5 Dokumentationszeilen netto im Arbeitsbaum, konservative Handarbeits-Untergrenze 0.1 Arbeitstage bzw. 0.5 Stunden auf TVoeD-Basis, Thorsten-Solo-Referenz 0.0 Arbeitstage bzw. 0.3 Stunden, Monatsannahme weiterhin 21.5 Arbeitstage brutto bzw. 19.0 TVoeD-produktive Tage pro Kalendermonat. |

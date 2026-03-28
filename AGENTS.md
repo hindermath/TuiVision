@@ -110,6 +110,7 @@ docfx docfx.json
 ## Branching Convention
 - Feature branches use either the agent-prefixed form `codex/<feature-description>` (or another supported agent prefix such as `claude/`, `gemini/`, `copilot/`, `opencode/`) or the numbered Spec-Kit form `NNN-short-description` when the Spec-Kit workflow creates the branch.
 - CI runs on pushes to `main`, `master`, `codex/**`, `claude/**`, `gemini/**`, `copilot/**`, and `opencode/**` branches.
+- When a dedicated feature branch has implemented the requirements of a Lastenheft, rename that file to `Lastenheft_<Thema>.<feature-branch>.md` so the delivered requirement scope stays traceable in the repository.
 
 ## Build Versioning
 
@@ -156,6 +157,7 @@ docfx docfx.json
   - `CLAUDE.md`
   - `GEMINI.md`
   - `.github/copilot-instructions.md`
+  - `.github/agents/copilot-instructions.md`
 - Partial synchronization is not acceptable when shared guidance has changed.
 - If one file intentionally diverges for agent-specific reasons, that divergence MUST be explicit and documented in the same change.
 
@@ -172,6 +174,7 @@ docfx docfx.json
 
 - The Multi-Mac setup on `MacBook Air M2` and `Mac mini M4 Pro` is the primary development and day-to-day test workflow.
 - Keep `gh`, `specify`, `codex`, `claude`, `copilot`, and `gemini` installed on both Macs; before Spec-Kit work or Spec-Kit updates, run `specify check` to confirm the required toolchain is available.
+- After every `/speckit-plan` run or equivalent plan refresh that changes active technologies, project structure, or agent context, run `.specify/scripts/bash/update-agent-context.sh` for `codex`, `claude`, `gemini`, and `copilot` in the same work item by default. This repository treats that multi-agent context refresh as pre-approved maintenance and does not require a separate user prompt.
 - Linux and Windows are additional compatibility-validation environments; on Windows, prefer WSL with a current Ubuntu release, currently `Ubuntu 24.04`.
 - When changes affect runtime behavior, build reliability, terminal behavior, or portability, include Linux and Windows/WSL compatibility checks where practical and reflect them in CI or equivalent validation evidence when feasible.
 
@@ -187,6 +190,7 @@ docfx docfx.json
 - Source-controlled Markdown evidence in `docs/porting-status.md`; no database storage; compatibility evidence may include repository notes and command output references (005-driver-consolidation-m07)
 - C# `latest` on .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, existing MSTest suites plus any required Compatibility-focused validation additions, Coverlet coverage evidence, `dotnet format`, docfx, `Pflichtenheft.md`, and `docs/porting-status.md` for the formal Phase-8 entrance-gate proof (006-close-phase8-gate)
 - Repository-visible proof artifacts only; no database layer, and no example-application delivery in this increment (006-close-phase8-gate)
+- Source-controlled example projects under `examples/`, (007-port-wave1-examples)
 
 ## Recent Changes
 - 004-editor-file-help-streams: Added the phase-6 specification and requirements checklist for editor, file, help, stream, and resource components.
