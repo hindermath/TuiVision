@@ -20,9 +20,27 @@ Each step builds on the previous one and demonstrates an independent learning ob
 
 ## Voraussetzungen / Prerequisites
 
-- .NET 10 SDK installiert / .NET 10 SDK installed
-- Kloniertes TuiVision-Repository / Cloned TuiVision repository
-- Grundkenntnisse in C# / Basic knowledge of C#
+- **.NET 10 SDK installiert** — lade das SDK von [dotnet.microsoft.com](https://dotnet.microsoft.com/download/dotnet/10.0)
+  herunter und installiere es auf deinem Rechner. /
+  **.NET 10 SDK installed** — download the SDK from [dotnet.microsoft.com](https://dotnet.microsoft.com/download/dotnet/10.0)
+  and install it on your machine.
+
+- **TuiVision-Repository geklont** — klone das Repository mit:
+  `git clone https://github.com/hindermath/TuiVision.git` /
+  **TuiVision repository cloned** — clone the repository with:
+  `git clone https://github.com/hindermath/TuiVision.git`
+
+- **Grundkenntnisse in C#** — falls du C# noch nicht kennst, bietet
+  [Microsoft Learn](https://learn.microsoft.com/de-de/dotnet/csharp/) einen guten Einstieg. /
+  **Basic knowledge of C#** — if you are new to C#,
+  [Microsoft Learn](https://learn.microsoft.com/de-de/dotnet/csharp/) provides a solid starting point.
+
+- **TuiVision-Ereignissystem (optional, empfohlen ab Schritt 03)** — das Tutorial
+  verwendet Events intensiv; einen Überblick über das Ereignissystem findest du in
+  `src/TuiVision.Core/TEvent.cs` im Repository. /
+  **TuiVision event system (optional, recommended from step 03 onwards)** — the tutorial
+  makes heavy use of events; refer to `src/TuiVision.Core/TEvent.cs` in the repository
+  for an overview of the event system.
 
 ---
 

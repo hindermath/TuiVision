@@ -20,10 +20,32 @@ Otherwise, a visible fallback is displayed instead of failing silently.
 
 ## Voraussetzungen / Prerequisites
 
-- .NET 10 SDK installiert / .NET 10 SDK installed
-- Kloniertes TuiVision-Repository / Cloned TuiVision repository
-- Ein Terminal, das `Console.SetWindowSize()` unterstützt (optional) /
-  A terminal that supports `Console.SetWindowSize()` (optional)
+- **[.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)** — Lade das SDK von
+  [dotnet.microsoft.com](https://dotnet.microsoft.com/download/dotnet/10.0) herunter und
+  installiere es auf deinem System. /
+  Download and install the SDK from
+  [dotnet.microsoft.com](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+- **Kloniertes TuiVision-Repository** — Klone das Repository mit: /
+  Cloned TuiVision repository — clone it with:
+  ```
+  git clone https://github.com/hindermath/TuiVision.git
+  ```
+
+- **Grundkenntnisse in C#** — Wenn du noch neu in C# bist, empfiehlt sich ein Blick auf
+  [Microsoft Learn C#](https://learn.microsoft.com/de-de/dotnet/csharp/) als Einstieg. /
+  Basic knowledge of C# — if you're new to C#, start with
+  [Microsoft Learn C#](https://learn.microsoft.com/de-de/dotnet/csharp/).
+
+- **TuiVision-Ereignissystem** — Das Beispiel nutzt das TuiVision-Ereignissystem.
+  Den Quellcode findest du unter `src/TuiVision.Core/TEvent.cs` im Repository. /
+  This example uses the TuiVision event system; see `src/TuiVision.Core/TEvent.cs` in
+  the repository for reference.
+
+- **Passendes Terminal** — `Console.SetWindowSize()` wird nur von bestimmten Terminals
+  unterstützt; auf macOS und Linux greift meistens der Fallback (siehe unten). /
+  A terminal that supports `Console.SetWindowSize()` (optional) — on macOS and Linux the
+  fallback path is usually taken (see below).
 
 ---
 

@@ -20,9 +20,19 @@ the contained texts.
 
 ## Voraussetzungen / Prerequisites
 
-- .NET 10 SDK installiert / .NET 10 SDK installed
-- Kloniertes TuiVision-Repository / Cloned TuiVision repository
-- Kenntnisse des TuiVision-Ereignissystems / Knowledge of the TuiVision event system
+- **.NET 10 SDK** installiert — lade es von [dotnet.microsoft.com](https://dotnet.microsoft.com/download/dotnet/10.0) herunter und installiere es, bevor du weitermachst. /
+  **.NET 10 SDK** installed — download and install it from [dotnet.microsoft.com](https://dotnet.microsoft.com/download/dotnet/10.0) before proceeding.
+
+- **TuiVision-Repository** geklont — führe folgenden Befehl aus, um das Repository lokal verfügbar zu machen:
+  `git clone https://github.com/hindermath/TuiVision.git` /
+  **TuiVision repository** cloned — run the following command to get a local copy:
+  `git clone https://github.com/hindermath/TuiVision.git`
+
+- **C#-Grundkenntnisse** — ein grundlegendes Verständnis von C# ist hilfreich; eine gute Einführung findest du auf [Microsoft Learn](https://learn.microsoft.com/de-de/dotnet/csharp/). /
+  **Basic C# knowledge** — a foundational understanding of C# is helpful; a good starting point is [Microsoft Learn](https://learn.microsoft.com/de-de/dotnet/csharp/).
+
+- **TuiVision-Ereignissystem** — Kenntnisse des Ereignismodells erleichtern das Verständnis erheblich; für eine tiefere Lektüre sieh dir `src/TuiVision.Core/TEvent.cs` im Repository an. /
+  **TuiVision event system** — familiarity with the event model is recommended; for deeper reading, refer to `src/TuiVision.Core/TEvent.cs` in the repository.
 
 ---
 

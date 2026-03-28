@@ -21,9 +21,25 @@ TuiVision application: starting `TApplication`, customising the desktop, and exi
 
 ## Voraussetzungen / Prerequisites
 
-- .NET 10 SDK installiert / .NET 10 SDK installed
-- Kloniertes TuiVision-Repository / Cloned TuiVision repository
-- Grundkenntnisse in C# / Basic knowledge of C#
+- **.NET 10 SDK** installiert — lade es von [dotnet.microsoft.com](https://dotnet.microsoft.com/download/dotnet/10.0)
+  herunter und installiere es, bevor du das Projekt baust oder ausführst. /
+  **.NET 10 SDK** installed — download and install it from
+  [dotnet.microsoft.com](https://dotnet.microsoft.com/download/dotnet/10.0) before building or running the project.
+
+- **TuiVision-Repository geklont** — klone das Repository mit
+  `git clone https://github.com/hindermath/TuiVision.git` und öffne das Verzeichnis in deiner IDE oder im Terminal. /
+  **TuiVision repository cloned** — clone the repository with
+  `git clone https://github.com/hindermath/TuiVision.git` and open the directory in your IDE or terminal.
+
+- **Grundkenntnisse in C#** — falls du noch neu in C# bist, bietet
+  [Microsoft Learn](https://learn.microsoft.com/de-de/dotnet/csharp/) einen kostenlosen Einstiegskurs. /
+  **Basic knowledge of C#** — if you are new to C#, the free course on
+  [Microsoft Learn](https://learn.microsoft.com/de-de/dotnet/csharp/) is a good starting point.
+
+- **Vertrautheit mit dem TuiVision-Ereignissystem** — schau dir `src/TuiVision.Core/TEvent.cs` im Repository an,
+  um zu verstehen, wie Ereignisse erzeugt und verarbeitet werden. /
+  **Familiarity with the TuiVision event system** — review `src/TuiVision.Core/TEvent.cs` in the repository
+  to understand how events are created and processed.
 
 ---
 
