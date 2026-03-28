@@ -167,13 +167,15 @@ public class TMenuBar : TView
         while (i < name.Length)
         {
             int tilde = name.IndexOf('~', i);
-            if (tilde < 0 || tilde + 1 >= name.Length)
+            // Ein gültiger Marker hat das Muster ~X~ (Öffner + Buchstabe + Schließer).
+            // A valid marker has the pattern ~X~ (opener + letter + closer).
+            if (tilde < 0 || tilde + 2 >= name.Length || name[tilde + 2] != '~')
             {
                 break;
             }
 
             result.Add(char.ToUpperInvariant(name[tilde + 1]));
-            i = tilde + 2;
+            i = tilde + 3; // ~X~ überspringen / skip past ~X~
         }
 
         return result;
