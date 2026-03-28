@@ -125,6 +125,19 @@ public class TProgram : TGroup
     }
 
     /// <summary>
+    /// Zeichnet alle Kind-Views und anschließend das Untermenü-Overlay der Menüleiste.
+    /// Das Overlay wird nach dem Desktop-Compositing gerendert, damit es nicht überschrieben wird.
+    ///
+    /// Draws all child views and then the menu bar's submenu overlay.
+    /// The overlay is rendered after desktop compositing so it is not overwritten.
+    /// </summary>
+    public override void Draw()
+    {
+        base.Draw();
+        MenuBar?.DrawSubMenuOverlay(GetDrawBuffer());
+    }
+
+    /// <summary>
     /// Überträgt den eigenen Zeichenpuffer in den Treiber-Hinterpuffer und stellt ihn dar.
     /// Stille Rückkehr, wenn kein Puffer alloziert ist.
     ///

@@ -26,6 +26,11 @@ public class TMenuBar : TView
     /// </summary>
     public bool IsMenuActive { get; private set; }
 
+    // Das aktuell geöffnete Untermenü und seine X-Startposition.
+    // The currently open submenu and its X start position.
+    private TMenuItem? _openSubMenu;
+    private int _openSubMenuX;
+
     /// <summary>
     /// Initialisiert eine neue Instanz der <see cref="TMenuBar"/>-Klasse.
     ///
@@ -107,6 +112,22 @@ public class TMenuBar : TView
 
         if (@event.What == TEventKind.KeyDown)
         {
+            // Escape schließt Untermenü oder deaktiviert die Menüleiste.
+            // Escape closes the open submenu or deactivates the menu bar.
+            if (@event.KeyDown.CharCode == '\x1b')
+            {
+                if (_openSubMenu != null)
+                {
+                    _openSubMenu = null;
+                }
+                else
+                {
+                    IsMenuActive = false;
+                }
+                @event.Clear();
+                return;
+            }
+
             // F10 (ScanCode 0x44) oder Alt-Taste (ShiftState-Bit 0x0004) aktiviert die Menüleiste.
             // F10 (ScanCode 0x44) or Alt key (ShiftState bit 0x0004) toggles menu bar activation.
             bool isF10 = @event.KeyDown.ScanCode == 0x44;
@@ -114,31 +135,152 @@ public class TMenuBar : TView
             if (isF10 || isAlt)
             {
                 IsMenuActive = !IsMenuActive;
+                if (!IsMenuActive)
+                {
+                    _openSubMenu = null;
+                }
                 @event.Clear();
                 return;
             }
 
-            // Hotkey-Dispatch: Im aktiven Zustand einen Menüpunkt per Taste auslösen.
-            // Hotkey dispatch: fire a menu item command by key press when menu is active.
-            if (IsMenuActive && @event.KeyDown.CharCode != '\0' && Menu != null)
+            // Untermenü-Hotkey-Dispatch: Eintrag im offenen Untermenü auslösen.
+            // Submenu hotkey dispatch: fire an item from the open submenu.
+            if (_openSubMenu != null && @event.KeyDown.CharCode != '\0')
             {
                 char pressed = char.ToUpperInvariant(@event.KeyDown.CharCode);
-                TMenuItem? item = Menu;
-                while (item != null)
+                TMenuItem? sub = _openSubMenu;
+                while (sub != null)
                 {
-                    HashSet<char> hotKeys = ExtractHotKeys(item.Name);
-                    if (hotKeys.Contains(pressed))
+                    HashSet<char> subHotKeys = ExtractHotKeys(sub.Name);
+                    if (subHotKeys.Contains(pressed))
                     {
+                        _openSubMenu = null;
                         IsMenuActive = false;
-                        Owner?.HandleEvent(TEvent.CreateCommand((ushort)item.Command));
+                        Owner?.HandleEvent(TEvent.CreateCommand((ushort)sub.Command));
                         @event.Clear();
                         return;
                     }
 
+                    sub = sub.Next;
+                }
+            }
+
+            // Hotkey-Dispatch: Im aktiven Zustand einen Top-Level-Menüpunkt per Taste auslösen.
+            // Hotkey dispatch: activate a top-level menu item by key press when menu is active.
+            if (IsMenuActive && @event.KeyDown.CharCode != '\0' && Menu != null)
+            {
+                char pressed = char.ToUpperInvariant(@event.KeyDown.CharCode);
+                TMenuItem? item = Menu;
+                int col = 1;
+                while (item != null)
+                {
+                    string display = " " + StripHotKeys(item.Name) + " ";
+                    HashSet<char> hotKeys = ExtractHotKeys(item.Name);
+                    if (hotKeys.Contains(pressed))
+                    {
+                        if (item.SubMenu != null)
+                        {
+                            // Untermenü öffnen statt Befehl feuern.
+                            // Open submenu instead of firing command.
+                            _openSubMenu = item.SubMenu;
+                            _openSubMenuX = col;
+                        }
+                        else
+                        {
+                            IsMenuActive = false;
+                            _openSubMenu = null;
+                            Owner?.HandleEvent(TEvent.CreateCommand((ushort)item.Command));
+                        }
+                        @event.Clear();
+                        return;
+                    }
+
+                    col += display.Length;
                     item = item.Next;
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// Zeichnet das aktuell offene Untermenü als Popup-Overlay in den finalen Puffer.
+    /// Muss nach dem Desktop-Compositing aufgerufen werden, damit das Popup nicht überschrieben wird.
+    ///
+    /// Draws the currently open submenu as a popup overlay into the final buffer.
+    /// Must be called after desktop compositing so the popup is not overwritten.
+    /// </summary>
+    /// <param name="buffer">Der Ausgabepuffer. / The output buffer.</param>
+    internal void DrawSubMenuOverlay(TConsoleBuffer? buffer)
+    {
+        if (buffer == null || _openSubMenu == null)
+        {
+            return;
+        }
+
+        // Breite des breitesten Eintrags ermitteln / Determine width of widest item
+        int maxLen = 0;
+        TMenuItem? cur = _openSubMenu;
+        while (cur != null)
+        {
+            int len = StripHotKeys(cur.Name).Length;
+            if (len > maxLen) maxLen = len;
+            cur = cur.Next;
+        }
+
+        // Popup-Breite inkl. Rand (2 Leerzeichen + 2 Rahmenzeichen) / Popup width incl. border
+        int popupW = maxLen + 4;
+
+        // Einträge zählen / Count items
+        int itemCount = 0;
+        cur = _openSubMenu;
+        while (cur != null) { itemCount++; cur = cur.Next; }
+
+        // Popup-Position: direkt unter der Menüleiste, ab _openSubMenuX
+        // Popup position: directly below the menu bar, at _openSubMenuX
+        int px = Origin.X + _openSubMenuX;
+        int py = Origin.Y + 1;
+
+        // Oberer Rahmen / Top border
+        buffer.TrySetCell(px, py, new TConsoleCell('┌', ConsoleColor.Black, ConsoleColor.Cyan));
+        for (int x = 1; x < popupW - 1; x++)
+            buffer.TrySetCell(px + x, py, new TConsoleCell('─', ConsoleColor.Black, ConsoleColor.Cyan));
+        buffer.TrySetCell(px + popupW - 1, py, new TConsoleCell('┐', ConsoleColor.Black, ConsoleColor.Cyan));
+
+        // Einträge / Items
+        cur = _openSubMenu;
+        for (int row = 0; row < itemCount; row++)
+        {
+            int ry = py + 1 + row;
+            buffer.TrySetCell(px, ry, new TConsoleCell('│', ConsoleColor.Black, ConsoleColor.Cyan));
+
+            string stripped = StripHotKeys(cur!.Name);
+            HashSet<char> hotKeys = ExtractHotKeys(cur.Name);
+
+            // Linkes Leerzeichen / Left padding
+            buffer.TrySetCell(px + 1, ry, new TConsoleCell(' ', ConsoleColor.Black, ConsoleColor.Cyan));
+
+            // Zeichen des Eintrags / Characters of the item
+            for (int ci = 0; ci < maxLen; ci++)
+            {
+                char ch = ci < stripped.Length ? stripped[ci] : ' ';
+                bool isHot = hotKeys.Contains(char.ToUpperInvariant(ch));
+                ConsoleColor fg = isHot ? ConsoleColor.Yellow : ConsoleColor.Black;
+                buffer.TrySetCell(px + 2 + ci, ry, new TConsoleCell(ch, fg, ConsoleColor.Cyan));
+            }
+
+            // Rechtes Leerzeichen / Right padding
+            buffer.TrySetCell(px + 2 + maxLen, ry, new TConsoleCell(' ', ConsoleColor.Black, ConsoleColor.Cyan));
+            buffer.TrySetCell(px + popupW - 1, ry, new TConsoleCell('│', ConsoleColor.Black, ConsoleColor.Cyan));
+
+            cur = cur.Next;
+        }
+
+        // Unterer Rahmen / Bottom border
+        int by = py + 1 + itemCount;
+        buffer.TrySetCell(px, by, new TConsoleCell('└', ConsoleColor.Black, ConsoleColor.Cyan));
+        for (int x = 1; x < popupW - 1; x++)
+            buffer.TrySetCell(px + x, by, new TConsoleCell('─', ConsoleColor.Black, ConsoleColor.Cyan));
+        buffer.TrySetCell(px + popupW - 1, by, new TConsoleCell('┘', ConsoleColor.Black, ConsoleColor.Cyan));
     }
 
     /// <summary>
