@@ -70,9 +70,28 @@ public class DesklogoDesktop : TDesktop
     /// </summary>
     public override void Draw()
     {
-        // Zuerst alle Kind-Views zeichnen (Basis-Verhalten übernehmen)
-        // First draw all child views (inherit base behaviour)
+        // Hintergrund füllen und Kind-Views zeichnen (TDesktop.Draw → TGroup.Draw)
+        // Fill background and draw child views (TDesktop.Draw → TGroup.Draw)
         base.Draw();
+
+        // Logo zentriert über den Hintergrund schreiben / Write logo centred on the background
+        TConsoleBuffer? buffer = GetDrawBuffer();
+        if (buffer != null)
+        {
+            int startY = Math.Max(0, (buffer.Height - LogoLines.Length) / 2);
+            for (int i = 0; i < LogoLines.Length; i++)
+            {
+                int row = startY + i;
+                if (row >= buffer.Height)
+                {
+                    break;
+                }
+
+                string line = LogoLines[i];
+                int startX = Math.Max(0, (buffer.Width - line.Length) / 2);
+                buffer.WriteText(startX, row, line.AsSpan(), ConsoleColor.White, ConsoleColor.Blue);
+            }
+        }
 
         // Logo wurde gerendert – Zähler aktualisieren / Logo has been rendered – update counter
         RenderedLineCount = LogoLines.Length;

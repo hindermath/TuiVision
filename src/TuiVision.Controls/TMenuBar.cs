@@ -40,6 +40,32 @@ public class TMenuBar : TView
     }
 
     /// <summary>
+    /// Zeichnet die Menüleiste mit einfarbigem Hintergrund.
+    /// Schreibt die Zellen in den Puffer des Eigentümers bei absoluten Koordinaten.
+    ///
+    /// Draws the menu bar with a solid background colour.
+    /// Writes cells into the owner's buffer at absolute coordinates.
+    /// </summary>
+    public override void Draw()
+    {
+        TConsoleBuffer? buffer = GetDrawBuffer();
+        if (buffer == null || Size.X <= 0)
+        {
+            return;
+        }
+
+        // Menüleisten-Hintergrund füllen / Fill menu bar background
+        for (int x = 0; x < Size.X; x++)
+        {
+            buffer.TrySetCell(Origin.X + x, Origin.Y, new TConsoleCell(' ', ConsoleColor.Black, ConsoleColor.Cyan));
+        }
+
+        // Anwendungsname / Application name
+        const string label = " TuiVision ";
+        buffer.WriteText(Origin.X, Origin.Y, label.AsSpan(), ConsoleColor.Black, ConsoleColor.Cyan);
+    }
+
+    /// <summary>
     /// Verarbeitet ein Ereignis. Aktiviert die Menüleiste bei F10, reagiert auf Pfeiltasten.
     ///
     /// Processes an event. Activates the menu bar on F10, reacts to arrow keys.

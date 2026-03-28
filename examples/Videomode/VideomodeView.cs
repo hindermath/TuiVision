@@ -59,10 +59,24 @@ public class VideomodeView : TWindow
         DrawView();
     }
 
-    /// <inheritdoc/>
+    /// <summary>
+    /// Zeichnet den Fensterrahmen und zeigt die zuletzt gespeicherte Übergangsmeldung an.
+    ///
+    /// Draws the window frame and displays the last stored transition message.
+    /// </summary>
     public override void Draw()
     {
-        // Basis-Draw ausführen / Execute base draw
+        // Rahmen zeichnen / Draw border
         base.Draw();
+
+        TConsoleBuffer? buffer = GetDrawBuffer();
+        if (buffer == null || buffer.Width < 3 || buffer.Height < 3 || LastShownMessage == null)
+        {
+            return;
+        }
+
+        int innerWidth = buffer.Width - 2;
+        ReadOnlySpan<char> text = LastShownMessage.AsSpan(0, Math.Min(LastShownMessage.Length, innerWidth));
+        buffer.WriteText(1, 1, text, ConsoleColor.White, ConsoleColor.DarkBlue);
     }
 }

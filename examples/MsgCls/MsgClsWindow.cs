@@ -72,6 +72,37 @@ public class MsgClsWindow : TWindow
         base.HandleEvent(@event);
     }
 
+    /// <summary>
+    /// Zeichnet den Fensterrahmen und zeigt die gesammelten Nachrichten im Innenbereich an.
+    /// Neuere Nachrichten verdrängen ältere, wenn mehr Nachrichten vorhanden sind als Zeilen passen.
+    ///
+    /// Draws the window frame and displays the accumulated messages inside.
+    /// Newer messages push older ones out when there are more messages than available rows.
+    /// </summary>
+    public override void Draw()
+    {
+        // Rahmen zeichnen / Draw border
+        base.Draw();
+
+        TConsoleBuffer? buffer = GetDrawBuffer();
+        if (buffer == null || buffer.Width < 3 || buffer.Height < 3)
+        {
+            return;
+        }
+
+        int innerWidth = buffer.Width - 2;
+        int maxLines = buffer.Height - 2;
+        int startMsg = Math.Max(0, _messages.Count - maxLines);
+        int displayCount = Math.Min(_messages.Count - startMsg, maxLines);
+
+        for (int i = 0; i < displayCount; i++)
+        {
+            string msg = _messages[startMsg + i];
+            ReadOnlySpan<char> text = msg.AsSpan(0, Math.Min(msg.Length, innerWidth));
+            buffer.WriteText(1, 1 + i, text, ConsoleColor.White, ConsoleColor.DarkBlue);
+        }
+    }
+
     #region Lösung Übung 1 – Zweite Fensterkategorie / Solution Exercise 1 – Second window category
     /*
      * Füge ein zweites Befehlscode-Flag für Fehlermeldungen hinzu und reagiere

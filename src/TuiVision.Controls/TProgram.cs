@@ -38,6 +38,7 @@ public class TProgram : TGroup
     public TStatusLine? StatusLine { get; protected set; }
 
     private bool _shouldQuit;
+    private readonly TuiVision.Drivers.Console.SystemConsolePresenter _presenter = new();
 
     /// <summary>
     /// Initialisiert eine neue Instanz der <see cref="TProgram"/>-Klasse.
@@ -61,8 +62,13 @@ public class TProgram : TGroup
     {
         _shouldQuit = false;
 
-        // Initialer Zeichenvorgang
+        // Gesamten View-Baum als exponiert markieren, damit TGroup-Puffer alloziert werden.
+        // Mark the entire view tree as exposed so TGroup buffers are allocated.
+        SetState(TViewState.Exposed, true);
+
+        // Initialer Zeichenvorgang und Ausgabe / Initial draw and present
         Draw();
+        PresentScreen();
 
         while (!_shouldQuit)
         {
@@ -70,10 +76,12 @@ public class TProgram : TGroup
             if (@event.What != TEventKind.Nothing)
             {
                 HandleEvent(@event);
+                if (!_shouldQuit)
+                {
+                    Draw();
+                    PresentScreen();
+                }
             }
-
-            // Idle-Verarbeitung oder Refresh
-            // In dieser Phase noch minimal
         }
 
         // Shutdown-Orchestrierung: alle Kind-Views in LIFO-Reihenfolge herunterfahren
@@ -87,16 +95,65 @@ public class TProgram : TGroup
     }
 
     /// <summary>
-    /// Ruft das nächste Ereignis ab.
-    /// Aktuell ein Platzhalter, der keine Ereignisse liefert.
+    /// Überträgt den eigenen Zeichenpuffer in den Treiber-Hinterpuffer und stellt ihn dar.
+    /// Stille Rückkehr, wenn kein Puffer alloziert ist.
     ///
-    /// Retrieves the next event.
-    /// Currently a placeholder that returns no events.
+    /// Copies the own draw buffer to the driver back buffer and presents it.
+    /// Returns silently when no buffer has been allocated.
+    /// </summary>
+    private void PresentScreen()
+    {
+        TConsoleBuffer? frame = GetDrawBuffer();
+        if (frame == null)
+        {
+            return;
+        }
+
+        int copyW = Math.Min(frame.Width, Driver.BackBuffer.Width);
+        int copyH = Math.Min(frame.Height, Driver.BackBuffer.Height);
+        for (int y = 0; y < copyH; y++)
+        {
+            for (int x = 0; x < copyW; x++)
+            {
+                Driver.BackBuffer.SetCell(x, y, frame.GetCell(x, y));
+            }
+        }
+
+        Driver.Present(_presenter);
+    }
+
+    /// <summary>
+    /// Ruft das nächste Tastatureingabe-Ereignis ab.
+    /// Blockiert, bis eine Taste gedrückt wird. Alt+X und Alt+Q lösen <c>cmQuit</c> aus.
+    /// In Umgebungen ohne Konsole (z. B. umgeleitete E/A) wird <see cref="TEventKind.Nothing"/> zurückgegeben.
+    ///
+    /// Retrieves the next keyboard event.
+    /// Blocks until a key is pressed. Alt+X and Alt+Q trigger <c>cmQuit</c>.
+    /// In environments without a console (e.g. redirected I/O) returns <see cref="TEventKind.Nothing"/>.
     /// </summary>
     /// <param name="event">Das abgerufene Ereignis. / The retrieved event.</param>
     public virtual void GetEvent(out TEvent @event)
     {
-        @event = TEvent.CreateNone();
+        try
+        {
+            ConsoleKeyInfo key = Console.ReadKey(intercept: true);
+
+            // Alt+X oder Alt+Q → Anwendung beenden / Alt+X or Alt+Q → quit application
+            if ((key.Modifiers & ConsoleModifiers.Alt) != 0 &&
+                (key.Key == ConsoleKey.X || key.Key == ConsoleKey.Q))
+            {
+                @event = TEvent.CreateCommand(ShellCommandIds.cmQuit);
+                return;
+            }
+
+            @event = TEvent.CreateNone();
+        }
+        catch
+        {
+            // Keine Konsole verfügbar (z. B. umgeleitete Ein-/Ausgabe).
+            // No console available (e.g. redirected I/O).
+            @event = TEvent.CreateNone();
+        }
     }
 
     /// <summary>

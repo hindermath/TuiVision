@@ -30,6 +30,32 @@ public class TStatusLine : TView
     }
 
     /// <summary>
+    /// Zeichnet die Statuszeile mit Hintergrundfarbe und dem Alt+X-Hinweis.
+    /// Schreibt die Zellen in den Puffer des Eigentümers bei absoluten Koordinaten.
+    ///
+    /// Draws the status line with background colour and the Alt+X hint.
+    /// Writes cells into the owner's buffer at absolute coordinates.
+    /// </summary>
+    public override void Draw()
+    {
+        TConsoleBuffer? buffer = GetDrawBuffer();
+        if (buffer == null || Size.X <= 0)
+        {
+            return;
+        }
+
+        // Statuszeilen-Hintergrund füllen / Fill status line background
+        for (int x = 0; x < Size.X; x++)
+        {
+            buffer.TrySetCell(Origin.X + x, Origin.Y, new TConsoleCell(' ', ConsoleColor.Black, ConsoleColor.Cyan));
+        }
+
+        // Alt+X-Hinweis / Alt+X quit hint
+        const string hint = " Alt+X Beenden / Quit ";
+        buffer.WriteText(Origin.X, Origin.Y, hint.AsSpan(), ConsoleColor.Yellow, ConsoleColor.Cyan);
+    }
+
+    /// <summary>
     /// Verarbeitet Ereignisse. Aktualisiert die Hinweise bei Fokuswechseln.
     ///
     /// Processes events. Updates hints on focus changes.
