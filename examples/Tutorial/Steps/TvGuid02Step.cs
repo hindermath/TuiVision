@@ -55,6 +55,33 @@ internal sealed class TvGuid02App : TApplication
         _headless = headless;
     }
 
+    // Befehlskonstanten für diesen Tutorial-Schritt / Command constants for this tutorial step
+    private const ushort CmFileNew  = 100;
+    private const ushort CmFileOpen = 101;
+
+    /// <summary>
+    /// Erstellt eine Menüleiste mit einem Datei-Menüpunkt und dessen Untereinträgen.
+    /// Entspricht dem Turbo-Vision-Beispiel tvguid02: Menüleiste mit Untermenüs.
+    ///
+    /// Creates a menu bar with a File menu item and its sub-entries.
+    /// Corresponds to the Turbo Vision example tvguid02: menu bar with submenus.
+    /// </summary>
+    /// <param name="bounds">Die Grenzen der Menüleiste. / The bounds of the menu bar.</param>
+    /// <returns>Die konfigurierte Menüleiste. / The configured menu bar.</returns>
+    protected override TMenuBar InitMenuBar(TRect bounds)
+    {
+        // Untermenü-Einträge für Datei / File: Neu, Öffnen, Beenden
+        // Submenu entries for File: New, Open, Quit
+        TMenuItem fileItems = new TMenuItem("~N~eu / ~N~ew",         CmFileNew,                    next: new TMenuItem(
+                                            "~Ö~ffnen / ~O~pen",     CmFileOpen,                   next: new TMenuItem(
+                                            "~E~nde / E~x~it",       ShellCommandIds.cmQuit)));
+
+        return new TMenuBar(bounds)
+        {
+            Menu = new TMenuItem("~D~atei / ~F~ile", 0, subMenu: fileItems)
+        };
+    }
+
     /// <inheritdoc/>
     public override void GetEvent(out TEvent @event)
     {
