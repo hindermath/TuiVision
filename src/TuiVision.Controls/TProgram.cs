@@ -197,7 +197,17 @@ public class TProgram : TGroup
                 return;
             }
 
-            @event = TEvent.CreateNone();
+            // Alle anderen Tasten als KeyDown-Ereignis in den View-Tree weiterleiten.
+            // F10 erhält den IBM-PC-ScanCode 0x44 damit TMenuBar es erkennt.
+            // Forward all other keys as KeyDown events into the view tree.
+            // F10 receives IBM-PC scan code 0x44 so TMenuBar can detect it.
+            byte scanCode = key.Key == ConsoleKey.F10 ? (byte)0x44 : (byte)0;
+            ushort shiftState = 0;
+            if (isAlt)   shiftState |= 0x0004;
+            if (isCtrl)  shiftState |= 0x0002;
+            if ((key.Modifiers & ConsoleModifiers.Shift) != 0) shiftState |= 0x0001;
+
+            @event = TEvent.CreateKeyDown(new TKeyDownEvent(key.KeyChar, scanCode, (ushort)key.Key, shiftState, scanCode));
         }
         catch
         {
