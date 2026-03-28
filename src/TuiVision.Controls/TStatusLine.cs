@@ -50,8 +50,9 @@ public class TStatusLine : TView
             buffer.TrySetCell(Origin.X + x, Origin.Y, new TConsoleCell(' ', ConsoleColor.Black, ConsoleColor.Cyan));
         }
 
-        // Alt+X-Hinweis / Alt+X quit hint
-        const string hint = " Alt+X Beenden / Quit ";
+        // Quit-Hinweis: ^Q = Ctrl+Q (universell); Alt+X wenn Terminal Meta-Key aktiviert hat.
+        // Quit hint: ^Q = Ctrl+Q (universal); Alt+X when terminal has Meta key enabled.
+        const string hint = " ^Q Beenden / Quit  Alt+X ";
         buffer.WriteText(Origin.X, Origin.Y, hint.AsSpan(), ConsoleColor.Yellow, ConsoleColor.Cyan);
     }
 

@@ -66,6 +66,12 @@ public class TProgram : TGroup
         // Mark the entire view tree as exposed so TGroup buffers are allocated.
         SetState(TViewState.Exposed, true);
 
+        // Ctrl+C als normalen Tastendruck behandeln, damit der saubere Shutdown-Pfad
+        // durchlaufen wird und die Konsole korrekt aufgeräumt werden kann.
+        // Treat Ctrl+C as a regular key press so the clean shutdown path is taken
+        // and the console can be properly restored.
+        try { Console.TreatControlCAsInput = true; } catch { }
+
         // Bildschirm vor dem ersten Zeichnen leeren, damit kein alter Prompt durchscheint.
         // Clear screen before first draw so no residual prompt content shows through.
         try { Console.Clear(); } catch { }
@@ -112,6 +118,7 @@ public class TProgram : TGroup
     /// </summary>
     private static void CleanupConsole()
     {
+        try { Console.TreatControlCAsInput = false; } catch { }
         try { Console.Clear(); } catch { }
         try { Console.ResetColor(); } catch { }
         try { Console.CursorVisible = true; } catch { }
@@ -146,12 +153,22 @@ public class TProgram : TGroup
     }
 
     /// <summary>
-    /// Ruft das nächste Tastatureingabe-Ereignis ab.
-    /// Blockiert, bis eine Taste gedrückt wird. Alt+X und Alt+Q lösen <c>cmQuit</c> aus.
+    /// Ruft das nächste Tastatureingabe-Ereignis ab. Blockiert bis zu einem Tastendruck.
+    /// Folgende Tastenkombinationen lösen <c>cmQuit</c> aus:
+    /// <list type="bullet">
+    /// <item><description>Ctrl+Q — zuverlässig in macOS Terminal.app und anderen Terminals</description></item>
+    /// <item><description>Ctrl+C — erfordert zuvor gesetztes <c>TreatControlCAsInput = true</c></description></item>
+    /// <item><description>Alt+X / Alt+Q — wenn das Terminal die Meta-Taste als ESC-Sequenz überträgt</description></item>
+    /// </list>
     /// In Umgebungen ohne Konsole (z. B. umgeleitete E/A) wird <see cref="TEventKind.Nothing"/> zurückgegeben.
     ///
-    /// Retrieves the next keyboard event.
-    /// Blocks until a key is pressed. Alt+X and Alt+Q trigger <c>cmQuit</c>.
+    /// Retrieves the next keyboard event. Blocks until a key is pressed.
+    /// The following key combinations trigger <c>cmQuit</c>:
+    /// <list type="bullet">
+    /// <item><description>Ctrl+Q — reliable in macOS Terminal.app and other terminals</description></item>
+    /// <item><description>Ctrl+C — requires <c>TreatControlCAsInput = true</c> set beforehand</description></item>
+    /// <item><description>Alt+X / Alt+Q — when the terminal transmits the Meta key as an ESC sequence</description></item>
+    /// </list>
     /// In environments without a console (e.g. redirected I/O) returns <see cref="TEventKind.Nothing"/>.
     /// </summary>
     /// <param name="event">Das abgerufene Ereignis. / The retrieved event.</param>
@@ -161,9 +178,20 @@ public class TProgram : TGroup
         {
             ConsoleKeyInfo key = Console.ReadKey(intercept: true);
 
-            // Alt+X oder Alt+Q → Anwendung beenden / Alt+X or Alt+Q → quit application
-            if ((key.Modifiers & ConsoleModifiers.Alt) != 0 &&
-                (key.Key == ConsoleKey.X || key.Key == ConsoleKey.Q))
+            bool isAlt = (key.Modifiers & ConsoleModifiers.Alt) != 0;
+            bool isCtrl = (key.Modifiers & ConsoleModifiers.Control) != 0;
+
+            // Alt+X / Alt+Q → Beenden (wenn Terminal Meta-Taste als ESC-Sequenz überträgt)
+            // Alt+X / Alt+Q → Quit (when terminal transmits Meta key as ESC sequence)
+            if (isAlt && (key.Key == ConsoleKey.X || key.Key == ConsoleKey.Q))
+            {
+                @event = TEvent.CreateCommand(ShellCommandIds.cmQuit);
+                return;
+            }
+
+            // Ctrl+Q / Ctrl+C → Beenden (universell zuverlässig, auch macOS Terminal.app)
+            // Ctrl+Q / Ctrl+C → Quit (universally reliable, including macOS Terminal.app)
+            if (isCtrl && (key.Key == ConsoleKey.Q || key.Key == ConsoleKey.C))
             {
                 @event = TEvent.CreateCommand(ShellCommandIds.cmQuit);
                 return;
