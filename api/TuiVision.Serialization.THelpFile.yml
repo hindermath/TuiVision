@@ -26,7 +26,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpFile.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: THelpFile
     path: src/TuiVision.Serialization/THelpFile.cs
@@ -68,7 +68,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpFile.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Serialization/THelpFile.cs
@@ -103,7 +103,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpFile.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Index
     path: src/TuiVision.Serialization/THelpFile.cs
@@ -138,7 +138,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpFile.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Topics
     path: src/TuiVision.Serialization/THelpFile.cs
@@ -173,7 +173,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpFile.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: AddTopic
     path: src/TuiVision.Serialization/THelpFile.cs
@@ -209,7 +209,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpFile.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Lookup
     path: src/TuiVision.Serialization/THelpFile.cs
@@ -251,7 +251,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpFile.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: GetTopicOrFallback
     path: src/TuiVision.Serialization/THelpFile.cs
@@ -293,7 +293,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpFile.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: SaveTo
     path: src/TuiVision.Serialization/THelpFile.cs
@@ -331,7 +331,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpFile.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Save
     path: src/TuiVision.Serialization/THelpFile.cs
@@ -370,7 +370,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpFile.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: LoadFrom
     path: src/TuiVision.Serialization/THelpFile.cs
@@ -409,7 +409,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpFile.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Load
     path: src/TuiVision.Serialization/THelpFile.cs
@@ -451,7 +451,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/THelpFile.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: RegisterRecords
     path: src/TuiVision.Serialization/THelpFile.cs

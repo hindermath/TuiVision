@@ -103,6 +103,12 @@ and <code>win32clip.cc</code>.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.MenuLayoutSlot.html">MenuLayoutSlot</a></dt>
+      <dd><p>Repräsentiert ein Layout-Slot für einen Top-Level-Menüeintrag.</p>
+<p>Represents a layout slot for a top-level menu entry.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Controls.ShellCommandIds.html">ShellCommandIds</a></dt>
       <dd><p>Definiert die standardmäßigen Shell-Befehl-IDs.</p>
 <p>Defines the standard shell command IDs.</p>
@@ -321,17 +327,21 @@ Ported from <code>TGroup</code> in Turbo Vision 2.0.3.</p>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Controls.TMenuBar.html">TMenuBar</a></dt>
       <dd><p>Die Menüleiste am oberen Bildschirmrand.
-Zeigt das Hauptmenü der Anwendung an.</p>
+Zeigt das Hauptmenü der Anwendung an und unterstützt vollständige Tastaturnavigation:
+Pfeiltasten, Enter, Escape, Mnemonik-Kürzel und Wrap-around.</p>
 <p>The menu bar at the top of the screen.
-Displays the main menu of the application.</p>
+Displays the main menu of the application and supports full keyboard navigation:
+arrow keys, Enter, Escape, mnemonic shortcuts, and wrap-around.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Controls.TMenuItem.html">TMenuItem</a></dt>
       <dd><p>Repräsentiert einen Menüpunkt in einer Menüleiste oder einem Menü.
-Kann verschachtelte Untermenüs enthalten.</p>
+Kann verschachtelte Untermenüs enthalten. Trennzeilen werden mit dem
+speziellen Namen <code>&quot;---&quot;</code> oder über <a class="xref" href="TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Separator_TuiVision_Controls_TMenuItem_">Separator(TMenuItem?)</a> erstellt.</p>
 <p>Represents a menu item in a menu bar or menu.
-Can contain nested submenus.</p>
+Can contain nested submenus. Separator rows are created using the special
+name <code>&quot;---&quot;</code> or via <a class="xref" href="TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Separator_TuiVision_Controls_TMenuItem_">Separator(TMenuItem?)</a>.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -407,6 +417,18 @@ The control renders its text line by line into the owner group's buffer.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TStatusDef.html">TStatusDef</a></dt>
+      <dd><p>Ordnet einem inklusiven Hilfekontext-Bereich einen Satz von Statuszeilen-Aktionen zu.
+Mehrere Definitionen werden als verkettete Liste organisiert; die erste passende
+Definition gewinnt (First-Match-Wins-Reihenfolge).
+Wenn keine Definition passt, wird ein neutraler Leer-Zustand angezeigt.</p>
+<p>Maps one inclusive help-context range to one set of status-line actions.
+Multiple definitions are organised as a linked list; the first matching
+definition wins (first-match-wins ordering).
+When no definition matches, a neutral empty state is shown.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Controls.TStatusItem.html">TStatusItem</a></dt>
       <dd><p>Repräsentiert einen Statuszeilen-Eintrag mit einem Anzeigenamen und einer Befehl-ID.</p>
 <p>Represents a status line item with a display name and a command ID.</p>
@@ -415,9 +437,19 @@ The control renders its text line by line into the owner group's buffer.</p>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Controls.TStatusLine.html">TStatusLine</a></dt>
       <dd><p>Die Statuszeile am unteren Bildschirmrand.
-Zeigt kontextabhängige Hinweise und Shortcuts an.</p>
+Zeigt kontextabhängige Hinweise und Shortcuts an.
+Wenn eine <a class="xref" href="TuiVision.Controls.TStatusDef.html">TStatusDef</a>-Kette konfiguriert ist, wird die erste passende
+Definition per First-Match-Wins ausgewählt; bei keiner Übereinstimmung bleibt die
+Zeile neutral (<a class="xref" href="TuiVision.Controls.TStatusLine.html#TuiVision_Controls_TStatusLine_Items">Items</a> == <code>null</code>).
+Ohne <a class="xref" href="TuiVision.Controls.TStatusDef.html">TStatusDef</a> greift der Kompatibilitäts-Fallback auf
+<a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints">GetStatusHints()</a> der fokussierten View zurück.</p>
 <p>The status line at the bottom of the screen.
-Displays context-sensitive hints and shortcuts.</p>
+Displays context-sensitive hints and shortcuts.
+When a <a class="xref" href="TuiVision.Controls.TStatusDef.html">TStatusDef</a> chain is configured, the first matching definition
+is selected using first-match-wins ordering; when no definition matches, the line
+shows a neutral state (<a class="xref" href="TuiVision.Controls.TStatusLine.html#TuiVision_Controls_TStatusLine_Items">Items</a> == <code>null</code>).
+Without a <a class="xref" href="TuiVision.Controls.TStatusDef.html">TStatusDef</a> the compatibility fallback uses
+<a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints">GetStatusHints()</a> from the focused view.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -426,6 +458,20 @@ Displays context-sensitive hints and shortcuts.</p>
 Die Klasse bildet das managed Gegenstück zu <code>TStringList</code> aus Turbo Vision.</p>
 <p>Simple indexed string collection for list-based controls.
 The class represents the managed counterpart of <code>TStringList</code> from Turbo Vision.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.TSubMenu.html">TSubMenu</a></dt>
+      <dd><p>Beschreibt einen Untermenü-Zweig unter einem Top-Level-Menüeintrag.
+Entspricht dem historischen <code>tvguid02</code>-Syntax:
+<code>new TSubMenu(&quot;~E~diting&quot;, 0, new TMenuItem(...))</code>.
+Nur eine Ebene von Untermenüs wird unterstützt; verschachtelte Untermenübäume
+liegen außerhalb des Geltungsbereichs dieser Revision.</p>
+<p>Describes a submenu branch under one top-level menu entry.
+Corresponds to the historical <code>tvguid02</code> builder syntax:
+<code>new TSubMenu(&quot;~E~diting&quot;, 0, new TMenuItem(...))</code>.
+Only one level of submenus is supported; nested submenu trees are out of scope
+for this revision.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -448,10 +494,12 @@ inheriting coordinate management, state flags, and event handling.</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Controls.TWindow.html">TWindow</a></dt>
-      <dd><p>Einfaches Fenster-Container-Element als managed Gegenstück zu <code>TWindow</code>
-aus Turbo Vision (<code>twindow.cc</code>).</p>
-<p>Simple window container element as a managed counterpart to <code>TWindow</code>
-from Turbo Vision (<code>twindow.cc</code>).</p>
+      <dd><p>Fenster-Container-Element als managed Gegenstück zu <code>TWindow</code> aus Turbo Vision.
+Unterstützt optionale Schließ-Affordanz (×), Ctrl+W, bewachtes Escape sowie
+einen reversiblen Verschiebe-Modus per Ctrl+F5.</p>
+<p>Window container element as the managed counterpart to <code>TWindow</code> from Turbo Vision.
+Supports optional close affordance (×), Ctrl+W, guarded Escape, and a reversible
+move mode via Ctrl+F5.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -544,6 +592,16 @@ The values correspond to the <code>ofXxx</code> constants from the original Turb
 Die Werte entsprechen den <code>sfXxx</code>-Konstanten aus dem originalen Turbo-Vision-C++-Code.</p>
 <p>State mask for a view.
 The values correspond to the <code>sfXxx</code> constants from the original Turbo Vision C++ code.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Controls.WindowFlags.html">WindowFlags</a></dt>
+      <dd><p>Steuert sichtbare Fensterfähigkeiten: Schließen und Verschieben.
+Nur <a class="xref" href="TuiVision.Controls.WindowFlags.html#TuiVision_Controls_WindowFlags_Close">Close</a> und <a class="xref" href="TuiVision.Controls.WindowFlags.html#TuiVision_Controls_WindowFlags_Move">Move</a> sind für diese Revision definiert;
+Zoom und Grow liegen außerhalb des aktuellen Geltungsbereichs.</p>
+<p>Controls visible window capabilities: closing and moving.
+Only <a class="xref" href="TuiVision.Controls.WindowFlags.html#TuiVision_Controls_WindowFlags_Close">Close</a> and <a class="xref" href="TuiVision.Controls.WindowFlags.html#TuiVision_Controls_WindowFlags_Move">Move</a> are defined for this revision;
+zoom and grow are out of scope.</p>
 </dd>
     </dl>
 

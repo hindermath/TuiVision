@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Tutorial — Anleitung / Guide | TuiVision Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Tutorial — Anleitung / Guide | TuiVision Documentation ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/008-controls-revision/docs/guides/examples/tutorial.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo.svg" alt="TuiVision">
+            TuiVision
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="tutorial--anleitung--guide">Tutorial — Anleitung / Guide</h1>
+
+<blockquote>
+<p><strong>Quelle / Source</strong>: <code>tv203s/contrib/tvision/examples/tutorial/</code> (16 Schritte: <code>tvguid01.cc</code> bis <code>tvguid16.cc</code>)
+<strong>Wave</strong>: 1 — Pflichtbeispiel aus dem Originalordner <code>tv203s/contrib/tvision/examples/</code>
+<strong>Nicht</strong> Bestandteil von <code>TVDEMOS/</code> oder <code>TVFM/</code>.</p>
+</blockquote>
+<hr>
+<h2 id="lernziel--learning-goal">Lernziel / Learning Goal</h2>
+<p>Die 16-stufige Tutorial-Reihe führt schrittweise in die zentralen TuiVision-Konzepte ein:
+von der minimalen <code>TApplication</code> bis hin zu vollständigen Dialogen mit Datenspeicherung.
+Jeder Schritt baut auf dem vorherigen auf und demonstriert ein eigenständiges Lernziel.</p>
+<p>The 16-step tutorial series gradually introduces the core TuiVision concepts:
+from the minimal <code>TApplication</code> to complete dialogs with data persistence.
+Each step builds on the previous one and demonstrates an independent learning objective.</p>
+<hr>
+<h2 id="voraussetzungen--prerequisites">Voraussetzungen / Prerequisites</h2>
+<ul>
+<li><p><strong>.NET 10 SDK installiert</strong> — lade das SDK von <a href="https://dotnet.microsoft.com/download/dotnet/10.0">dotnet.microsoft.com</a>
+herunter und installiere es auf deinem Rechner. /
+<strong>.NET 10 SDK installed</strong> — download the SDK from <a href="https://dotnet.microsoft.com/download/dotnet/10.0">dotnet.microsoft.com</a>
+and install it on your machine.</p>
+</li>
+<li><p><strong>TuiVision-Repository geklont</strong> — klone das Repository mit:
+<code>git clone https://github.com/hindermath/TuiVision.git</code> /
+<strong>TuiVision repository cloned</strong> — clone the repository with:
+<code>git clone https://github.com/hindermath/TuiVision.git</code></p>
+</li>
+<li><p><strong>Grundkenntnisse in C#</strong> — falls du C# noch nicht kennst, bietet
+<a href="https://learn.microsoft.com/de-de/dotnet/csharp/">Microsoft Learn</a> einen guten Einstieg. /
+<strong>Basic knowledge of C#</strong> — if you are new to C#,
+<a href="https://learn.microsoft.com/de-de/dotnet/csharp/">Microsoft Learn</a> provides a solid starting point.</p>
+</li>
+<li><p><strong>TuiVision-Ereignissystem (optional, empfohlen ab Schritt 03)</strong> — das Tutorial
+verwendet Events intensiv; einen Überblick über das Ereignissystem findest du in
+<code>src/TuiVision.Core/TEvent.cs</code> im Repository. /
+<strong>TuiVision event system (optional, recommended from step 03 onwards)</strong> — the tutorial
+makes heavy use of events; refer to <code>src/TuiVision.Core/TEvent.cs</code> in the repository
+for an overview of the event system.</p>
+</li>
+</ul>
+<hr>
+<h2 id="startbefehl--startup-command">Startbefehl / Startup Command</h2>
+<p>Jeden Schritt einzeln starten — Token als erstes Argument übergeben:</p>
+<p>Start each step individually — pass the token as the first argument:</p>
+<pre><code class="lang-bash">dotnet run --project examples/Tutorial -- tvguid01
+dotnet run --project examples/Tutorial -- tvguid16
+</code></pre>
+<p>Ohne Argument wird <code>tvguid01</code> gestartet / Without argument, <code>tvguid01</code> is started:</p>
+<pre><code class="lang-bash">dotnet run --project examples/Tutorial
+</code></pre>
+<hr>
+<h2 id="schritt-übersicht--step-overview">Schritt-Übersicht / Step Overview</h2>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Schritt / Step</th>
+<th>Lernziel / Learning Objective</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tvguid01</code></td>
+<td>01</td>
+<td>Minimale TApplication</td>
+</tr>
+<tr>
+<td><code>tvguid02</code></td>
+<td>02</td>
+<td>Menüleiste mit Untermenüs</td>
+</tr>
+<tr>
+<td><code>tvguid03</code></td>
+<td>03</td>
+<td>Menübefehl-Verarbeitung</td>
+</tr>
+<tr>
+<td><code>tvguid04</code></td>
+<td>04</td>
+<td>Ein TWindow öffnen</td>
+</tr>
+<tr>
+<td><code>tvguid05</code></td>
+<td>05</td>
+<td>Inhalt in ein Fenster zeichnen</td>
+</tr>
+<tr>
+<td><code>tvguid06</code></td>
+<td>06</td>
+<td>Vertikale Bildlaufleiste</td>
+</tr>
+<tr>
+<td><code>tvguid07</code></td>
+<td>07</td>
+<td>Horizontale und vertikale Bildlaufleisten</td>
+</tr>
+<tr>
+<td><code>tvguid08</code></td>
+<td>08</td>
+<td>Bildlaufleisten und Delta-Punkt</td>
+</tr>
+<tr>
+<td><code>tvguid09</code></td>
+<td>09</td>
+<td>Mehrere Fenster</td>
+</tr>
+<tr>
+<td><code>tvguid10</code></td>
+<td>10</td>
+<td>Ein TDialog öffnen</td>
+</tr>
+<tr>
+<td><code>tvguid11</code></td>
+<td>11</td>
+<td>Schaltflächen im Dialog</td>
+</tr>
+<tr>
+<td><code>tvguid12</code></td>
+<td>12</td>
+<td>Eingabefeld im Dialog</td>
+</tr>
+<tr>
+<td><code>tvguid13</code></td>
+<td>13</td>
+<td>Zwei Schaltflächen</td>
+</tr>
+<tr>
+<td><code>tvguid14</code></td>
+<td>14</td>
+<td>Kontrollkästchen und Optionsfelder</td>
+</tr>
+<tr>
+<td><code>tvguid15</code></td>
+<td>15</td>
+<td>Dialogdaten speichern</td>
+</tr>
+<tr>
+<td><code>tvguid16</code></td>
+<td>16</td>
+<td>Dialogdaten speichern und wiederherstellen</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="schritt-01--minimale-tapplication--minimal-tapplication">Schritt 01 — Minimale TApplication / Minimal TApplication</h2>
+<p><strong>Quelle / Source</strong>: <code>tvguid01.cc</code></p>
+<p><strong>Lernziel</strong>: Die kleinstmögliche TuiVision-Anwendung starten und sauber beenden.
+<strong>Learning goal</strong>: Start the smallest possible TuiVision application and exit cleanly.</p>
+<p><strong>Ergebnis / Expected outcome</strong>: Ein leeres Fenster mit Menüleiste, Desktop und Statuszeile erscheint.
+<code>Alt-X</code> beendet die Anwendung.</p>
+<p><strong>Architektur</strong>: Nur <code>TApplication</code> ohne Anpassungen. / Architecture: Just <code>TApplication</code> without customization.</p>
+<p><strong>Übungen / Exercises</strong>:</p>
+<ol>
+<li>Überschreibe <code>InitMenuBar()</code> und gib eine leere Menüleiste zurück. / Override <code>InitMenuBar()</code> and return an empty menu bar.</li>
+<li>Ändere die Terminalgröße und beobachte das Verhalten. / Resize the terminal and observe the behaviour.</li>
+</ol>
+<hr>
+<h2 id="schritt-02--menüleiste-mit-untermenüs--menu-bar-with-submenus">Schritt 02 — Menüleiste mit Untermenüs / Menu Bar with Submenus</h2>
+<p><strong>Quelle / Source</strong>: <code>tvguid02.cc</code></p>
+<p><strong>Lernziel</strong>: Eine Menüleiste mit mindestens einem Untermenü und Menüpunkten hinzufügen.
+<strong>Learning goal</strong>: Add a menu bar with at least one submenu and menu items.</p>
+<p><strong>Ergebnis</strong>: Eine Menüleiste erscheint oben. Untermenüs können mit der Maus oder Tastatur geöffnet werden.</p>
+<p><strong>Übungen / Exercises</strong>:</p>
+<ol>
+<li>Füge einen zweiten Untermenüeintrag hinzu. / Add a second submenu entry.</li>
+<li>Teste, ob <code>Alt-F10</code> die Menüleiste fokussiert. / Test whether <code>Alt-F10</code> focuses the menu bar.</li>
+</ol>
+<hr>
+<h2 id="schritt-03--menübefehl-verarbeitung--menu-command-handling">Schritt 03 — Menübefehl-Verarbeitung / Menu Command Handling</h2>
+<p><strong>Quelle / Source</strong>: <code>tvguid03.cc</code></p>
+<p><strong>Lernziel</strong>: Auf Menübefehle in <code>HandleEvent()</code> reagieren.
+<strong>Learning goal</strong>: Respond to menu commands in <code>HandleEvent()</code>.</p>
+<p><strong>Ergebnis</strong>: Ein Menüpunkt zeigt beim Klick eine Aktion (z. B. ein Meldungsfenster).</p>
+<p><strong>Übungen / Exercises</strong>:</p>
+<ol>
+<li>Implementiere einen „Über dieses Programm / About&quot;-Menüpunkt. / Implement an &quot;About this program&quot; menu item.</li>
+<li>Deaktiviere einen Menüpunkt dynamisch mit <code>DisableCommand()</code>. / Dynamically disable a menu item using <code>DisableCommand()</code>.</li>
+</ol>
+<hr>
+<h2 id="schritt-04--ein-twindow-öffnen--opening-a-twindow">Schritt 04 — Ein TWindow öffnen / Opening a TWindow</h2>
+<p><strong>Quelle / Source</strong>: <code>tvguid04.cc</code></p>
+<p><strong>Lernziel</strong>: Ein <code>TWindow</code> erstellen und in den Desktop einfügen.
+<strong>Learning goal</strong>: Create a <code>TWindow</code> and insert it into the desktop.</p>
+<p><strong>Ergebnis</strong>: Ein Fenster erscheint auf dem Desktop. Es kann mit der Maus bewegt werden.</p>
+<p><strong>Übungen / Exercises</strong>:</p>
+<ol>
+<li>Öffne das Fenster zentriert mit dem <code>TViewOptions.Centered</code>-Flag. / Open the window centred using the <code>TViewOptions.Centered</code> flag.</li>
+<li>Setze einen benutzerdefinierten Fenstertitel. / Set a custom window title.</li>
+</ol>
+<hr>
+<h2 id="schritt-05--inhalt-in-ein-fenster-zeichnen--drawing-content-into-a-window">Schritt 05 — Inhalt in ein Fenster zeichnen / Drawing Content into a Window</h2>
+<p><strong>Quelle / Source</strong>: <code>tvguid05.cc</code></p>
+<p><strong>Lernziel</strong>: Die <code>Draw()</code>-Methode eines Fensters überschreiben und benutzerdefinierten
+Text in den Fensterinhalt zeichnen.</p>
+<p><strong>Learning goal</strong>: Override a window's <code>Draw()</code> method and draw custom text into the window content.</p>
+<p><strong>Ergebnis</strong>: Ein Fenster mit eigenem Text-Inhalt erscheint auf dem Desktop.</p>
+<p><strong>Übungen / Exercises</strong>:</p>
+<ol>
+<li>Zeichne mehrere Textzeilen. / Draw multiple lines of text.</li>
+<li>Verwende verschiedene Farben für Vordergrund und Hintergrund. / Use different colours for foreground and background.</li>
+</ol>
+<hr>
+<h2 id="schritt-06--vertikale-bildlaufleiste--vertical-scroll-bar">Schritt 06 — Vertikale Bildlaufleiste / Vertical Scroll Bar</h2>
+<p><strong>Quelle / Source</strong>: <code>tvguid06.cc</code></p>
+<p><strong>Lernziel</strong>: Eine vertikale Bildlaufleiste zu einem Fenster hinzufügen.
+<strong>Learning goal</strong>: Add a vertical scroll bar to a window.</p>
+<p><strong>Ergebnis</strong>: Eine Bildlaufleiste erscheint am rechten Rand des Fensters.</p>
+<p><strong>Übungen / Exercises</strong>:</p>
+<ol>
+<li>Verknüpfe die Bildlaufleiste mit dem Fensterinhalt. / Link the scroll bar to the window content.</li>
+<li>Teste das Verhalten, wenn der Inhalt kürzer als das Fenster ist. / Test the behaviour when the content is shorter than the window.</li>
+</ol>
+<hr>
+<h2 id="schritt-07--horizontale-und-vertikale-bildlaufleisten--horizontal-and-vertical-scroll-bars">Schritt 07 — Horizontale und vertikale Bildlaufleisten / Horizontal and Vertical Scroll Bars</h2>
+<p><strong>Quelle / Source</strong>: <code>tvguid07.cc</code></p>
+<p><strong>Lernziel</strong>: Beide Bildlaufleisten zu einem Fenster hinzufügen.
+<strong>Learning goal</strong>: Add both scroll bars to a window.</p>
+<p><strong>Ergebnis</strong>: Ein Fenster mit horizontaler und vertikaler Bildlaufleiste erscheint.</p>
+<p><strong>Übungen / Exercises</strong>:</p>
+<ol>
+<li>Verknüpfe beide Bildlaufleisten mit dem Fensterinhalt. / Link both scroll bars to the window content.</li>
+</ol>
+<hr>
+<h2 id="schritt-08--bildlaufleisten-und-delta-punkt--scroll-bars-and-delta-point">Schritt 08 — Bildlaufleisten und Delta-Punkt / Scroll Bars and Delta Point</h2>
+<p><strong>Quelle / Source</strong>: <code>tvguid08.cc</code></p>
+<p><strong>Lernziel</strong>: Verstehen, wie Bildlaufleisten den <code>Delta</code>-Punkt beeinflussen.
+<strong>Learning goal</strong>: Understand how scroll bars affect the <code>Delta</code> point.</p>
+<p><strong>Ergebnis</strong>: Der Delta-Punkt ändert sich, wenn die Bildlaufleiste bewegt wird.</p>
+<p><strong>Übungen / Exercises</strong>:</p>
+<ol>
+<li>Zeige den aktuellen Delta-Punkt (X- und Y-Versatz) dynamisch im Fenstertitel an. / Display the current delta point (X and Y offset) dynamically in the window title.</li>
+<li>Begrenze den scrollbaren Bereich auf maximal 50 Zeilen und 120 Spalten mit <code>SetLimit()</code>. / Limit the scrollable area to at most 50 rows and 120 columns using <code>SetLimit()</code>.</li>
+</ol>
+<hr>
+<h2 id="schritt-09--mehrere-fenster--multiple-windows">Schritt 09 — Mehrere Fenster / Multiple Windows</h2>
+<p><strong>Quelle / Source</strong>: <code>tvguid09.cc</code></p>
+<p><strong>Lernziel</strong>: Mehrere Fenster auf dem Desktop öffnen und ihre Z-Reihenfolge verstehen.
+<strong>Learning goal</strong>: Open multiple windows on the desktop and understand their Z-order.</p>
+<p><strong>Ergebnis</strong>: Mehrere Fenster erscheinen. Das aktive Fenster liegt oben.</p>
+<p><strong>Übungen / Exercises</strong>:</p>
+<ol>
+<li>Öffne beim Start drei Fenster mit je einem eigenen Titel an verschiedenen Positionen. / At startup, open three windows with individual titles at different positions.</li>
+<li>Implementiere einen Menüpunkt, der mit <code>Desktop?.SelectNext(false)</code> zum nächsten Fenster wechselt (äquivalent zu F6). / Implement a menu item that switches to the next window using <code>Desktop?.SelectNext(false)</code> (equivalent to F6).</li>
+</ol>
+<hr>
+<h2 id="schritt-10--ein-tdialog-öffnen--opening-a-tdialog">Schritt 10 — Ein TDialog öffnen / Opening a TDialog</h2>
+<p><strong>Quelle / Source</strong>: <code>tvguid10.cc</code></p>
+<p><strong>Lernziel</strong>: Einen modalen Dialog öffnen und schließen.
+<strong>Learning goal</strong>: Open and close a modal dialog.</p>
+<p><strong>Ergebnis</strong>: Ein Dialog blockiert die restliche Anwendung, bis er geschlossen wird.</p>
+<p><strong>Übungen / Exercises</strong>:</p>
+<ol>
+<li>Füge dem Dialog einen <code>TButton</code> mit <code>cmOK</code> hinzu, damit er per Mausklick geschlossen werden kann. / Add a <code>TButton</code> with <code>cmOK</code> to the dialog so that it can be closed with a mouse click.</li>
+<li>Öffne den Dialog über einen Menüpunkt mit einem eigenen Befehlscode. / Open the dialog via a menu item with a custom command code.</li>
+</ol>
+<hr>
+<h2 id="schritt-11--schaltflächen-im-dialog--buttons-in-a-dialog">Schritt 11 — Schaltflächen im Dialog / Buttons in a Dialog</h2>
+<p><strong>Quelle / Source</strong>: <code>tvguid11.cc</code></p>
+<p><strong>Lernziel</strong>: Schaltflächen (<code>TButton</code>) in einen Dialog einfügen.
+<strong>Learning goal</strong>: Insert buttons (<code>TButton</code>) into a dialog.</p>
+<p><strong>Ergebnis</strong>: Der Dialog zeigt eine Schaltfläche, die beim Klick den Dialog schließt.</p>
+<p><strong>Übungen / Exercises</strong>:</p>
+<ol>
+<li>Füge neben dem OK-Button einen zweiten <code>TButton</code> für „Abbrechen / Cancel&quot; ein. / Add a second <code>TButton</code> for &quot;Cancel&quot; next to the OK button.</li>
+<li>Werte den Rückgabewert von <code>ExecView()</code> aus und zeige das Ergebnis in der Statuszeile an. / Evaluate the return value of <code>ExecView()</code> and display the result in the status bar.</li>
+</ol>
+<hr>
+<h2 id="schritt-12--eingabefeld-im-dialog--input-line-in-a-dialog">Schritt 12 — Eingabefeld im Dialog / Input Line in a Dialog</h2>
+<p><strong>Quelle / Source</strong>: <code>tvguid12.cc</code></p>
+<p><strong>Lernziel</strong>: Ein Eingabefeld (<code>TInputLine</code>) in einen Dialog einfügen.
+<strong>Learning goal</strong>: Add an input line (<code>TInputLine</code>) to a dialog.</p>
+<p><strong>Ergebnis</strong>: Der Dialog zeigt ein Textfeld für Benutzereingaben.</p>
+<p><strong>Übungen / Exercises</strong>:</p>
+<ol>
+<li>Begrenze die maximale Eingabelänge auf 20 Zeichen über den zweiten Parameter von <code>TInputLine</code>. / Limit the maximum input length to 20 characters via the second parameter of <code>TInputLine</code>.</li>
+<li>Lese nach dem Schließen des Dialogs den eingegebenen Text aus und zeige ihn in einem neuen Fenster an. / After closing the dialog, read the entered text and display it in a new window.</li>
+</ol>
+<hr>
+<h2 id="schritt-13--zwei-schaltflächen--two-buttons">Schritt 13 — Zwei Schaltflächen / Two Buttons</h2>
+<p><strong>Quelle / Source</strong>: <code>tvguid13.cc</code></p>
+<p><strong>Lernziel</strong>: Zwei Schaltflächen (OK und Abbrechen) in einen Dialog einfügen.
+<strong>Learning goal</strong>: Insert two buttons (OK and Cancel) into a dialog.</p>
+<p><strong>Ergebnis</strong>: Der Dialog kann über zwei verschiedene Schaltflächen geschlossen werden.</p>
+<p><strong>Übungen / Exercises</strong>:</p>
+<ol>
+<li>Werte den Rückgabewert von <code>ExecView()</code> aus und reagiere unterschiedlich auf OK und Abbrechen. / Evaluate the return value of <code>ExecView()</code> and react differently to OK and Cancel.</li>
+<li>Füge eine dritte Schaltfläche „Hilfe / Help&quot; mit einem eigenen Befehlscode hinzu. / Add a third &quot;Help&quot; button with a custom command code.</li>
+</ol>
+<hr>
+<h2 id="schritt-14--kontrollkästchen-und-optionsfelder--check-boxes-and-radio-buttons">Schritt 14 — Kontrollkästchen und Optionsfelder / Check Boxes and Radio Buttons</h2>
+<p><strong>Quelle / Source</strong>: <code>tvguid14.cc</code></p>
+<p><strong>Lernziel</strong>: <code>TCheckBoxes</code> und <code>TRadioButtons</code> in einen Dialog einfügen.
+<strong>Learning goal</strong>: Insert <code>TCheckBoxes</code> and <code>TRadioButtons</code> into a dialog.</p>
+<p><strong>Ergebnis</strong>: Der Dialog zeigt auswählbare Optionen.</p>
+<p><strong>Übungen / Exercises</strong>:</p>
+<ol>
+<li>Lese nach <code>ExecView()</code> den Zustand der Checkboxen (Bitmask) und den ausgewählten RadioButton (Index) aus. / After <code>ExecView()</code>, read the checkbox state (bitmask) and the selected radio button (index).</li>
+<li>Setze vor dem Öffnen des Dialogs Standardwerte über die <code>Value</code>-Eigenschaft vor. / Before opening the dialog, set default values using the <code>Value</code> property.</li>
+</ol>
+<hr>
+<h2 id="schritt-15--dialogdaten-speichern--saving-dialog-data">Schritt 15 — Dialogdaten speichern / Saving Dialog Data</h2>
+<p><strong>Quelle / Source</strong>: <code>tvguid15.cc</code></p>
+<p><strong>Lernziel</strong>: Dialogzustand in einer Datenstruktur speichern.
+<strong>Learning goal</strong>: Save dialog state in a data structure.</p>
+<p><strong>Ergebnis</strong>: Der Dialog merkt sich seine Zustände zwischen Öffnungen.</p>
+<p><strong>Übungen / Exercises</strong>:</p>
+<ol>
+<li>Speichere den Dialogzustand auch beim Klick auf „Abbrechen&quot;, indem du <code>GetData()</code> unabhängig vom Rückgabewert aufrufst. / Save the dialog state even when &quot;Cancel&quot; is clicked by calling <code>GetData()</code> regardless of the return value.</li>
+<li>Zeige den zuletzt gespeicherten Zustand nach dem Schließen des Dialogs im Hauptfenster an. / Display the last saved state in the main window after closing the dialog.</li>
+</ol>
+<hr>
+<h2 id="schritt-16--dialogdaten-speichern-und-wiederherstellen--save-and-restore-dialog-data">Schritt 16 — Dialogdaten speichern und wiederherstellen / Save and Restore Dialog Data</h2>
+<p><strong>Quelle / Source</strong>: <code>tvguid16.cc</code></p>
+<p><strong>Lernziel</strong>: Dialogdaten mit <code>setData</code>/<code>getData</code> übertragen.
+<strong>Learning goal</strong>: Transfer dialog data with <code>setData</code>/<code>getData</code>.</p>
+<p><strong>Ergebnis</strong>: Der Dialog stellt beim erneuten Öffnen die zuletzt eingegebenen Werte wieder her.</p>
+<p><strong>Übungen / Exercises</strong>:</p>
+<ol>
+<li>Füge dem Dialog einen Reset-Button hinzu, der alle Felder auf Standardwerte zurücksetzt, ohne den Dialog zu schließen. / Add a Reset button to the dialog that restores all fields to their default values without closing the dialog.</li>
+<li>Überschreibe <code>Valid()</code> in einer <code>TDialog</code>-Unterklasse, um die Eingabe vor dem Schließen zu prüfen (z. B. Name darf nicht leer sein). / Override <code>Valid()</code> in a <code>TDialog</code> subclass to validate input before closing (e.g. name must not be empty).</li>
+</ol>
+<hr>
+<h2 id="quellenrückverfolgung--source-traceability">Quellenrückverfolgung / Source Traceability</h2>
+<table>
+<thead>
+<tr>
+<th>Verwaltete Datei / Managed File</th>
+<th>Historische Quelle / Historical Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>examples/Tutorial/Steps/TvGuid01Step.cs</code></td>
+<td><code>tv203s/contrib/tvision/examples/tutorial/tvguid01.cc</code></td>
+</tr>
+<tr>
+<td><code>examples/Tutorial/Steps/TvGuid02Step.cs</code></td>
+<td><code>tv203s/contrib/tvision/examples/tutorial/tvguid02.cc</code></td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td><code>examples/Tutorial/Steps/TvGuid16Step.cs</code></td>
+<td><code>tv203s/contrib/tvision/examples/tutorial/tvguid16.cc</code></td>
+</tr>
+<tr>
+<td><code>examples/Tutorial/TutorialApp.cs</code></td>
+<td>Gemeinsamer Launcher — kein direktes historisches Gegenstück</td>
+</tr>
+<tr>
+<td><code>examples/Tutorial/Steps/TutorialStepCatalog.cs</code></td>
+<td>Kein historisches Gegenstück — neue Infrastruktur</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/docs/guides/examples/tutorial.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

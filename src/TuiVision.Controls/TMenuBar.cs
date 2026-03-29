@@ -6,14 +6,49 @@ using TuiVision.Core;
 namespace TuiVision.Controls;
 
 /// <summary>
+/// Repräsentiert ein Layout-Slot für einen Top-Level-Menüeintrag.
+///
+/// Represents a layout slot for a top-level menu entry.
+/// </summary>
+public sealed class MenuLayoutSlot
+{
+    /// <summary>
+    /// Der zugehörige Menüpunkt. / The associated menu item.
+    /// </summary>
+    public required TMenuItem Item { get; init; }
+
+    /// <summary>
+    /// Startspalte des Eintrags (inklusive Leerzeichen-Padding).
+    ///
+    /// Start column of the entry (including padding spaces).
+    /// </summary>
+    public int StartCol { get; init; }
+
+    /// <summary>
+    /// Gesamtbreite des Eintrags inkl. Padding. / Total width of the entry including padding.
+    /// </summary>
+    public int Width { get; init; }
+}
+
+/// <summary>
 /// Die Menüleiste am oberen Bildschirmrand.
-/// Zeigt das Hauptmenü der Anwendung an.
+/// Zeigt das Hauptmenü der Anwendung an und unterstützt vollständige Tastaturnavigation:
+/// Pfeiltasten, Enter, Escape, Mnemonik-Kürzel und Wrap-around.
 ///
 /// The menu bar at the top of the screen.
-/// Displays the main menu of the application.
+/// Displays the main menu of the application and supports full keyboard navigation:
+/// arrow keys, Enter, Escape, mnemonic shortcuts, and wrap-around.
 /// </summary>
 public class TMenuBar : TView
 {
+    // Scan-Codes für Navigationstasten / Scan codes for navigation keys
+    private const byte ScanLeft = 0x4B;
+    private const byte ScanRight = 0x4D;
+    private const byte ScanUp = 0x48;
+    private const byte ScanDown = 0x50;
+    private const byte ScanEnter = 0x1C;
+    private const byte ScanEscape = 0x01;
+
     /// <summary>
     /// Die Liste der Menüpunkte. / The list of menu items.
     /// </summary>
@@ -25,6 +60,32 @@ public class TMenuBar : TView
     /// Indicates whether the menu bar is currently active (open).
     /// </summary>
     public bool IsMenuActive { get; private set; }
+
+    /// <summary>
+    /// Der aktuell ausgewählte Top-Level-Menüpunkt (wenn das Menü aktiv ist).
+    ///
+    /// The currently selected top-level menu item (when the menu is active).
+    /// </summary>
+    public TMenuItem? SelectedTopLevel { get; private set; }
+
+    /// <summary>
+    /// Der aktuell ausgewählte Untermenü-Eintrag (wenn ein Untermenü geöffnet ist).
+    ///
+    /// The currently selected submenu entry (when a submenu is open).
+    /// </summary>
+    public TMenuItem? SelectedSubMenuItem { get; private set; }
+
+    /// <summary>
+    /// Die berechneten Layout-Slots der Top-Level-Einträge.
+    /// Wird bei Aktivierung und nach Größenänderungen neu berechnet.
+    ///
+    /// The computed layout slots for top-level entries.
+    /// Recomputed on activation and after bounds changes.
+    /// </summary>
+    public IReadOnlyList<MenuLayoutSlot> LayoutSlots => _layoutSlots;
+
+    // Interner Layout-Slot-Speicher / Internal layout slot storage
+    private readonly List<MenuLayoutSlot> _layoutSlots = [];
 
     // Das aktuell geöffnete Untermenü und seine X-Startposition.
     // The currently open submenu and its X start position.
@@ -46,10 +107,12 @@ public class TMenuBar : TView
 
     /// <summary>
     /// Zeichnet die Menüleiste. Sind Menüpunkte gesetzt, werden sie mit hervorgehobenem
-    /// Hotkey-Zeichen angezeigt; andernfalls erscheint der Anwendungsname.
+    /// Hotkey-Zeichen angezeigt; der ausgewählte Top-Level-Eintrag wird hervorgehoben.
+    /// Andernfalls erscheint der Anwendungsname.
     ///
     /// Draws the menu bar. When menu items are set they are rendered with the hotkey character
-    /// highlighted; otherwise the application name is shown.
+    /// highlighted; the selected top-level entry is highlighted. Otherwise the application
+    /// name is shown.
     /// </summary>
     public override void Draw()
     {
@@ -67,28 +130,31 @@ public class TMenuBar : TView
 
         if (Menu != null)
         {
-            // Menüpunkte mit hervorgehobenen Hotkeys rendern / Render menu items with highlighted hotkeys
-            int col = 1;
-            TMenuItem? item = Menu;
-            while (item != null && col < Size.X)
+            // Layout-Slots sicherstellen / Ensure layout slots are current
+            if (_layoutSlots.Count == 0)
             {
-                HashSet<char> hotKeys = ExtractHotKeys(item.Name);
-                string display = " " + StripHotKeys(item.Name) + " ";
+                RecomputeLayoutSlots();
+            }
+
+            // Menüpunkte mit hervorgehobenen Hotkeys rendern / Render menu items with highlighted hotkeys
+            foreach (MenuLayoutSlot slot in _layoutSlots)
+            {
+                bool isSelected = IsMenuActive && ReferenceEquals(slot.Item, SelectedTopLevel);
+                ConsoleColor bg = isSelected ? ConsoleColor.Blue : ConsoleColor.Cyan;
+                ConsoleColor defaultFg = isSelected ? ConsoleColor.White : ConsoleColor.Black;
+
+                string display = " " + StripHotKeys(slot.Item.Name) + " ";
+                HashSet<char> hotKeys = ExtractHotKeys(slot.Item.Name);
+                int col = slot.StartCol;
 
                 foreach (char ch in display)
                 {
-                    if (col >= Size.X)
-                    {
-                        break;
-                    }
-
+                    if (col >= Size.X) break;
                     bool isHot = hotKeys.Contains(char.ToUpperInvariant(ch));
-                    ConsoleColor fg = isHot ? ConsoleColor.Yellow : ConsoleColor.Black;
-                    buffer.TrySetCell(Origin.X + col, Origin.Y, new TConsoleCell(ch, fg, ConsoleColor.Cyan));
+                    ConsoleColor fg = isHot ? ConsoleColor.Yellow : defaultFg;
+                    buffer.TrySetCell(Origin.X + col, Origin.Y, new TConsoleCell(ch, fg, bg));
                     col++;
                 }
-
-                item = item.Next;
             }
         }
         else
@@ -96,80 +162,102 @@ public class TMenuBar : TView
             // Kein Menü – Standardbezeichnung anzeigen / No menu – show default label
             buffer.WriteText(Origin.X, Origin.Y, " TuiVision ".AsSpan(), ConsoleColor.Black, ConsoleColor.Cyan);
         }
+
+        // Untermenü-Popup in denselben Puffer zeichnen (falls ein Untermenü offen ist).
+        // Draw the submenu popup into the same buffer (when a submenu is open).
+        DrawSubMenuOverlay(buffer);
     }
 
     /// <summary>
-    /// Verarbeitet ein Ereignis. Aktiviert die Menüleiste bei F10/Alt und löst einen
-    /// Menüpunkt-Befehl aus, wenn die zugehörige Taste im aktiven Zustand gedrückt wird.
+    /// Verarbeitet ein Ereignis. Aktiviert die Menüleiste bei F10/Alt,
+    /// und bietet vollständige Tastaturnavigation im aktiven Zustand.
     ///
-    /// Processes an event. Activates the menu bar on F10/Alt and fires a menu item
-    /// command when the corresponding hotkey is pressed while the menu is active.
+    /// Processes an event. Activates the menu bar on F10/Alt,
+    /// and provides full keyboard navigation while the menu is active.
     /// </summary>
     /// <param name="event">Das zu verarbeitende Ereignis. / The event to process.</param>
     public override void HandleEvent(TEvent @event)
     {
         base.HandleEvent(@event);
 
-        if (@event.What == TEventKind.KeyDown)
+        if (@event.What != TEventKind.KeyDown)
         {
-            // Escape schließt Untermenü oder deaktiviert die Menüleiste.
-            // Escape closes the open submenu or deactivates the menu bar.
-            if (@event.KeyDown.CharCode == '\x1b')
+            return;
+        }
+
+        byte scan = @event.KeyDown.ScanCode;
+        char ch = @event.KeyDown.CharCode;
+
+        // Escape: Untermenü schließen oder Menüleiste deaktivieren.
+        // Escape: close open submenu or deactivate the menu bar.
+        if (scan == ScanEscape || ch == '\x1b')
+        {
+            if (_openSubMenu != null)
             {
-                if (_openSubMenu != null)
-                {
-                    _openSubMenu = null;
-                }
-                else
-                {
-                    IsMenuActive = false;
-                }
-                @event.Clear();
+                _openSubMenu = null;
+                SelectedSubMenuItem = null;
+            }
+            else if (IsMenuActive)
+            {
+                DeactivateMenu();
+            }
+
+            return;
+        }
+
+        // F10 (ScanCode 0x44) oder Alt-Taste (ShiftState-Bit 0x0004) aktiviert die Menüleiste.
+        // F10 (ScanCode 0x44) or Alt key (ShiftState bit 0x0004) toggles menu bar activation.
+        bool isF10 = scan == 0x44;
+        bool isAlt = (@event.KeyDown.ShiftState & 0x0004) != 0;
+        if (isF10 || isAlt)
+        {
+            if (IsMenuActive)
+            {
+                DeactivateMenu();
+            }
+            else
+            {
+                ActivateMenu();
+            }
+
+            return;
+        }
+
+        if (!IsMenuActive)
+        {
+            return;
+        }
+
+        // ---- Navigation im aktiven Zustand / Navigation while active ----
+
+        if (_openSubMenu == null)
+        {
+            // Top-Level-Navigation / Top-level navigation
+            if (scan == ScanLeft)
+            {
+                NavigateTopLevel(forward: false);
                 return;
             }
 
-            // F10 (ScanCode 0x44) oder Alt-Taste (ShiftState-Bit 0x0004) aktiviert die Menüleiste.
-            // F10 (ScanCode 0x44) or Alt key (ShiftState bit 0x0004) toggles menu bar activation.
-            bool isF10 = @event.KeyDown.ScanCode == 0x44;
-            bool isAlt = (@event.KeyDown.ShiftState & 0x0004) != 0;
-            if (isF10 || isAlt)
+            if (scan == ScanRight)
             {
-                IsMenuActive = !IsMenuActive;
-                if (!IsMenuActive)
-                {
-                    _openSubMenu = null;
-                }
-                @event.Clear();
+                NavigateTopLevel(forward: true);
                 return;
             }
 
-            // Untermenü-Hotkey-Dispatch: Eintrag im offenen Untermenü auslösen.
-            // Submenu hotkey dispatch: fire an item from the open submenu.
-            if (_openSubMenu != null && @event.KeyDown.CharCode != '\0')
+            if (scan == ScanDown || scan == ScanEnter || ch == '\r')
             {
-                char pressed = char.ToUpperInvariant(@event.KeyDown.CharCode);
-                TMenuItem? sub = _openSubMenu;
-                while (sub != null)
-                {
-                    HashSet<char> subHotKeys = ExtractHotKeys(sub.Name);
-                    if (subHotKeys.Contains(pressed))
-                    {
-                        _openSubMenu = null;
-                        IsMenuActive = false;
-                        Owner?.HandleEvent(TEvent.CreateCommand((ushort)sub.Command));
-                        @event.Clear();
-                        return;
-                    }
-
-                    sub = sub.Next;
-                }
+                // Untermenü des ausgewählten Top-Level-Eintrags öffnen.
+                // Open the submenu of the selected top-level entry.
+                OpenSubMenuForSelected();
+                return;
             }
 
-            // Hotkey-Dispatch: Im aktiven Zustand einen Top-Level-Menüpunkt per Taste auslösen.
-            // Hotkey dispatch: activate a top-level menu item by key press when menu is active.
-            if (IsMenuActive && @event.KeyDown.CharCode != '\0' && Menu != null)
+            // Mnemonik-Zeichen: Top-Level-Eintrag aktivieren.
+            // Mnemonic character: activate a top-level entry.
+            if (ch != '\0' && Menu != null)
             {
-                char pressed = char.ToUpperInvariant(@event.KeyDown.CharCode);
+                char pressed = char.ToUpperInvariant(ch);
                 TMenuItem? item = Menu;
                 int col = 1;
                 while (item != null)
@@ -178,25 +266,90 @@ public class TMenuBar : TView
                     HashSet<char> hotKeys = ExtractHotKeys(item.Name);
                     if (hotKeys.Contains(pressed))
                     {
+                        SelectedTopLevel = item;
                         if (item.SubMenu != null)
                         {
-                            // Untermenü öffnen statt Befehl feuern.
-                            // Open submenu instead of firing command.
                             _openSubMenu = item.SubMenu;
                             _openSubMenuX = col;
+                            SelectedSubMenuItem = FirstSelectableSubItem(item.SubMenu);
                         }
                         else
                         {
-                            IsMenuActive = false;
-                            _openSubMenu = null;
+                            DeactivateMenu();
                             Owner?.HandleEvent(TEvent.CreateCommand((ushort)item.Command));
                         }
-                        @event.Clear();
+
                         return;
                     }
 
                     col += display.Length;
                     item = item.Next;
+                }
+            }
+        }
+        else
+        {
+            // ---- Untermenü-Navigation / Submenu navigation ----
+
+            if (scan == ScanUp)
+            {
+                NavigateSubMenu(forward: false);
+                return;
+            }
+
+            if (scan == ScanDown)
+            {
+                NavigateSubMenu(forward: true);
+                return;
+            }
+
+            if (scan == ScanLeft || scan == ScanRight)
+            {
+                // Untermenü schließen und Top-Level navigieren.
+                // Close submenu and navigate top-level.
+                _openSubMenu = null;
+                SelectedSubMenuItem = null;
+                NavigateTopLevel(forward: scan == ScanRight);
+                return;
+            }
+
+            if (scan == ScanEnter || ch == '\r')
+            {
+                // Befehl des ausgewählten Untermenü-Eintrags ausführen.
+                // Execute the command of the selected submenu entry.
+                TMenuItem? selected = SelectedSubMenuItem;
+                if (selected != null && !selected.Disabled && !selected.IsSeparator)
+                {
+                    _openSubMenu = null;
+                    SelectedSubMenuItem = null;
+                    IsMenuActive = false;
+                    SelectedTopLevel = null;
+                    _layoutSlots.Clear();
+                    Owner?.HandleEvent(TEvent.CreateCommand((ushort)selected.Command));
+                }
+
+                return;
+            }
+
+            // Mnemonik-Zeichen im Untermenü / Mnemonic character in submenu
+            if (ch != '\0')
+            {
+                char pressed = char.ToUpperInvariant(ch);
+                TMenuItem? sub = _openSubMenu;
+                while (sub != null)
+                {
+                    if (!sub.IsSeparator && !sub.Disabled && sub.Mnemonic == pressed)
+                    {
+                        _openSubMenu = null;
+                        SelectedSubMenuItem = null;
+                        IsMenuActive = false;
+                        SelectedTopLevel = null;
+                        _layoutSlots.Clear();
+                        Owner?.HandleEvent(TEvent.CreateCommand((ushort)sub.Command));
+                        return;
+                    }
+
+                    sub = sub.Next;
                 }
             }
         }
@@ -210,7 +363,7 @@ public class TMenuBar : TView
     /// Must be called after desktop compositing so the popup is not overwritten.
     /// </summary>
     /// <param name="buffer">Der Ausgabepuffer. / The output buffer.</param>
-    internal void DrawSubMenuOverlay(TConsoleBuffer? buffer)
+    public void DrawSubMenuOverlay(TConsoleBuffer? buffer)
     {
         if (buffer == null || _openSubMenu == null)
         {
@@ -222,7 +375,7 @@ public class TMenuBar : TView
         TMenuItem? cur = _openSubMenu;
         while (cur != null)
         {
-            int len = StripHotKeys(cur.Name).Length;
+            int len = cur.IsSeparator ? 0 : StripHotKeys(cur.Name).Length;
             if (len > maxLen) maxLen = len;
             cur = cur.Next;
         }
@@ -251,25 +404,41 @@ public class TMenuBar : TView
         for (int row = 0; row < itemCount; row++)
         {
             int ry = py + 1 + row;
+            bool isHighlighted = ReferenceEquals(cur, SelectedSubMenuItem);
+            ConsoleColor entryBg = isHighlighted ? ConsoleColor.DarkBlue : ConsoleColor.Cyan;
+            ConsoleColor entryFg = isHighlighted ? ConsoleColor.White : ConsoleColor.Black;
+
             buffer.TrySetCell(px, ry, new TConsoleCell('│', ConsoleColor.Black, ConsoleColor.Cyan));
 
-            string stripped = StripHotKeys(cur!.Name);
-            HashSet<char> hotKeys = ExtractHotKeys(cur.Name);
-
-            // Linkes Leerzeichen / Left padding
-            buffer.TrySetCell(px + 1, ry, new TConsoleCell(' ', ConsoleColor.Black, ConsoleColor.Cyan));
-
-            // Zeichen des Eintrags / Characters of the item
-            for (int ci = 0; ci < maxLen; ci++)
+            if (cur!.IsSeparator)
             {
-                char ch = ci < stripped.Length ? stripped[ci] : ' ';
-                bool isHot = hotKeys.Contains(char.ToUpperInvariant(ch));
-                ConsoleColor fg = isHot ? ConsoleColor.Yellow : ConsoleColor.Black;
-                buffer.TrySetCell(px + 2 + ci, ry, new TConsoleCell(ch, fg, ConsoleColor.Cyan));
+                // Trennzeile / Separator row
+                buffer.TrySetCell(px + 1, ry, new TConsoleCell('├', ConsoleColor.Black, ConsoleColor.Cyan));
+                for (int si = 2; si < popupW - 2; si++)
+                    buffer.TrySetCell(px + si, ry, new TConsoleCell('─', ConsoleColor.Black, ConsoleColor.Cyan));
+                buffer.TrySetCell(px + popupW - 2, ry, new TConsoleCell('┤', ConsoleColor.Black, ConsoleColor.Cyan));
+            }
+            else
+            {
+                string stripped = StripHotKeys(cur.Name);
+                HashSet<char> hotKeys = ExtractHotKeys(cur.Name);
+
+                // Linkes Leerzeichen / Left padding
+                buffer.TrySetCell(px + 1, ry, new TConsoleCell(' ', entryFg, entryBg));
+
+                // Zeichen des Eintrags / Characters of the item
+                for (int ci = 0; ci < maxLen; ci++)
+                {
+                    char drawCh = ci < stripped.Length ? stripped[ci] : ' ';
+                    bool isHot = hotKeys.Contains(char.ToUpperInvariant(drawCh));
+                    ConsoleColor fg = isHot ? ConsoleColor.Yellow : entryFg;
+                    buffer.TrySetCell(px + 2 + ci, ry, new TConsoleCell(drawCh, fg, entryBg));
+                }
+
+                // Rechtes Leerzeichen / Right padding
+                buffer.TrySetCell(px + 2 + maxLen, ry, new TConsoleCell(' ', entryFg, entryBg));
             }
 
-            // Rechtes Leerzeichen / Right padding
-            buffer.TrySetCell(px + 2 + maxLen, ry, new TConsoleCell(' ', ConsoleColor.Black, ConsoleColor.Cyan));
             buffer.TrySetCell(px + popupW - 1, ry, new TConsoleCell('│', ConsoleColor.Black, ConsoleColor.Cyan));
 
             cur = cur.Next;
@@ -284,6 +453,211 @@ public class TMenuBar : TView
     }
 
     /// <summary>
+    /// Wird aufgerufen, wenn sich der Begrenzungsrahmen ändert. Invalidiert die Layout-Slots,
+    /// damit sie beim nächsten Aktivierungsvorgang neu berechnet werden.
+    ///
+    /// Called when the bounding rectangle changes. Invalidates the layout slots so they are
+    /// recomputed on the next activation.
+    /// </summary>
+    protected override void OnBoundsChanged()
+    {
+        base.OnBoundsChanged();
+        _layoutSlots.Clear();
+        if (IsMenuActive)
+        {
+            RecomputeLayoutSlots();
+        }
+    }
+
+    // ---- Private Hilfsmethoden / Private helper methods ----
+
+    /// <summary>
+    /// Aktiviert das Menü und setzt den Fokus auf den ersten wählbaren Top-Level-Eintrag.
+    ///
+    /// Activates the menu and sets focus on the first selectable top-level entry.
+    /// </summary>
+    private void ActivateMenu()
+    {
+        IsMenuActive = true;
+        RecomputeLayoutSlots();
+        SelectedTopLevel = FirstSelectableTopLevel();
+    }
+
+    /// <summary>
+    /// Deaktiviert das Menü und setzt den Zustand zurück.
+    ///
+    /// Deactivates the menu and resets state.
+    /// </summary>
+    private void DeactivateMenu()
+    {
+        IsMenuActive = false;
+        _openSubMenu = null;
+        SelectedTopLevel = null;
+        SelectedSubMenuItem = null;
+        _layoutSlots.Clear();
+    }
+
+    /// <summary>
+    /// Berechnet die Layout-Slots für alle Top-Level-Einträge neu.
+    ///
+    /// Recomputes the layout slots for all top-level entries.
+    /// </summary>
+    private void RecomputeLayoutSlots()
+    {
+        _layoutSlots.Clear();
+        if (Menu == null) return;
+
+        int col = 1;
+        TMenuItem? item = Menu;
+        while (item != null && col < Size.X)
+        {
+            string display = " " + StripHotKeys(item.Name) + " ";
+            _layoutSlots.Add(new MenuLayoutSlot { Item = item, StartCol = col, Width = display.Length });
+            col += display.Length;
+            item = item.Next;
+        }
+    }
+
+    /// <summary>
+    /// Navigiert im Top-Level-Menü vorwärts oder rückwärts. Überspringt deaktivierte Einträge
+    /// und schlägt am Anfang/Ende um.
+    ///
+    /// Navigates forward or backward in the top-level menu. Skips disabled entries
+    /// and wraps at the beginning/end.
+    /// </summary>
+    /// <param name="forward">
+    /// <c>true</c> für vorwärts (Pfeil-Rechts); <c>false</c> für rückwärts (Pfeil-Links).
+    /// <c>true</c> for forward (Right arrow); <c>false</c> for backward (Left arrow).
+    /// </param>
+    private void NavigateTopLevel(bool forward)
+    {
+        if (_layoutSlots.Count == 0)
+        {
+            return;
+        }
+
+        int current = _layoutSlots.FindIndex(s => ReferenceEquals(s.Item, SelectedTopLevel));
+        if (current < 0) current = 0;
+
+        int count = _layoutSlots.Count;
+        int next = current;
+
+        for (int attempts = 0; attempts < count; attempts++)
+        {
+            next = forward
+                ? (next + 1) % count
+                : (next - 1 + count) % count;
+
+            if (!_layoutSlots[next].Item.Disabled)
+            {
+                SelectedTopLevel = _layoutSlots[next].Item;
+                break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Öffnet das Untermenü des aktuell ausgewählten Top-Level-Eintrags.
+    ///
+    /// Opens the submenu of the currently selected top-level entry.
+    /// </summary>
+    private void OpenSubMenuForSelected()
+    {
+        if (SelectedTopLevel == null) return;
+
+        TMenuItem? items = SelectedTopLevel.SubMenu;
+        if (items == null) return;
+
+        // Startposition aus dem Layout-Slot / Start position from the layout slot
+        int col = 1;
+        MenuLayoutSlot? slot = _layoutSlots.Find(s => ReferenceEquals(s.Item, SelectedTopLevel));
+        if (slot != null) col = slot.StartCol;
+
+        _openSubMenu = items;
+        _openSubMenuX = col;
+        SelectedSubMenuItem = FirstSelectableSubItem(items);
+    }
+
+    /// <summary>
+    /// Navigiert im geöffneten Untermenü vorwärts oder rückwärts.
+    /// Überspringt deaktivierte Einträge und Trennzeilen; schlägt um.
+    ///
+    /// Navigates forward or backward in the open submenu.
+    /// Skips disabled entries and separators; wraps around.
+    /// </summary>
+    /// <param name="forward">
+    /// <c>true</c> für vorwärts (Pfeil-Runter); <c>false</c> für rückwärts (Pfeil-Hoch).
+    /// <c>true</c> for forward (Down arrow); <c>false</c> for backward (Up arrow).
+    /// </param>
+    private void NavigateSubMenu(bool forward)
+    {
+        if (_openSubMenu == null) return;
+
+        // Untermenü-Einträge in eine Liste überführen für einfache Navigation.
+        // Collect submenu entries into a list for easy navigation.
+        List<TMenuItem> items = [];
+        TMenuItem? cur = _openSubMenu;
+        while (cur != null) { items.Add(cur); cur = cur.Next; }
+
+        int current = items.FindIndex(i => ReferenceEquals(i, SelectedSubMenuItem));
+        if (current < 0) current = 0;
+
+        int count = items.Count;
+        int next = current;
+
+        for (int attempts = 0; attempts < count; attempts++)
+        {
+            next = forward
+                ? (next + 1) % count
+                : (next - 1 + count) % count;
+
+            TMenuItem candidate = items[next];
+            if (!candidate.IsSeparator && !candidate.Disabled)
+            {
+                SelectedSubMenuItem = candidate;
+                return;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Gibt den ersten wählbaren Top-Level-Eintrag zurück.
+    ///
+    /// Returns the first selectable top-level entry.
+    /// </summary>
+    /// <returns>Der erste aktivierbare Eintrag oder <c>null</c>. / The first activatable entry or <c>null</c>.</returns>
+    private TMenuItem? FirstSelectableTopLevel()
+    {
+        TMenuItem? item = Menu;
+        while (item != null)
+        {
+            if (!item.Disabled) return item;
+            item = item.Next;
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Gibt den ersten wählbaren Eintrag in einem Untermenü zurück.
+    ///
+    /// Returns the first selectable entry in a submenu.
+    /// </summary>
+    /// <param name="first">Der erste Eintrag der Untermenüliste. / The first entry in the submenu list.</param>
+    /// <returns>Der erste aktivierbare Eintrag oder <c>null</c>. / The first activatable entry or <c>null</c>.</returns>
+    private static TMenuItem? FirstSelectableSubItem(TMenuItem? first)
+    {
+        TMenuItem? item = first;
+        while (item != null)
+        {
+            if (!item.IsSeparator && !item.Disabled) return item;
+            item = item.Next;
+        }
+
+        return null;
+    }
+
+    /// <summary>
     /// Entfernt alle <c>~X~</c>-Markierungen aus dem Menüpunktnamen.
     ///
     /// Removes all <c>~X~</c> markers from a menu item name.
@@ -295,10 +669,8 @@ public class TMenuBar : TView
 
     /// <summary>
     /// Extrahiert alle Hotkey-Buchstaben aus den <c>~X~</c>-Markierungen eines Menünamens.
-    /// Ein Menüpunkt kann mehrere Hotkeys haben, z. B. <c>~N~achricht / ~P~ost</c>.
     ///
     /// Extracts all hotkey letters from the <c>~X~</c> markers in a menu name.
-    /// A menu item may have multiple hotkeys, e.g. <c>~N~achricht / ~P~ost</c>.
     /// </summary>
     /// <param name="name">Der Menüname mit optionalen Tilde-Markierungen. / The menu name with optional tilde markers.</param>
     /// <returns>Menge aller Hotkey-Buchstaben (Großbuchstaben). / Set of all hotkey letters (upper-case).</returns>
@@ -309,15 +681,13 @@ public class TMenuBar : TView
         while (i < name.Length)
         {
             int tilde = name.IndexOf('~', i);
-            // Ein gültiger Marker hat das Muster ~X~ (Öffner + Buchstabe + Schließer).
-            // A valid marker has the pattern ~X~ (opener + letter + closer).
             if (tilde < 0 || tilde + 2 >= name.Length || name[tilde + 2] != '~')
             {
                 break;
             }
 
             result.Add(char.ToUpperInvariant(name[tilde + 1]));
-            i = tilde + 3; // ~X~ überspringen / skip past ~X~
+            i = tilde + 3;
         }
 
         return result;

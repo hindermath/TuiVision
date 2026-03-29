@@ -9,6 +9,7 @@ items:
   - TuiVision.Controls.TGroup.Current
   - TuiVision.Controls.TGroup.CurrentChanged
   - TuiVision.Controls.TGroup.Draw
+  - TuiVision.Controls.TGroup.GetDrawBuffer
   - TuiVision.Controls.TGroup.GetFirstChild
   - TuiVision.Controls.TGroup.HandleEvent(TuiVision.Core.TEvent)
   - TuiVision.Controls.TGroup.Insert(TuiVision.Controls.TView)
@@ -30,7 +31,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: TGroup
     path: src/TuiVision.Controls/TGroup.cs
@@ -90,7 +91,7 @@ items:
   - TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.DrawView
-  - TuiVision.Controls.TView.GetDrawBuffer
+  - TuiVision.Controls.TView.HelpContext
   - TuiVision.Controls.TView.GetStatusHints
   - TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
   - System.Object.Equals(System.Object)
@@ -114,7 +115,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TGroup.cs
@@ -160,7 +161,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Current
     path: src/TuiVision.Controls/TGroup.cs
@@ -199,7 +200,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Insert
     path: src/TuiVision.Controls/TGroup.cs
@@ -287,11 +288,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Remove
     path: src/TuiVision.Controls/TGroup.cs
-    startLine: 217
+    startLine: 226
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -350,11 +351,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: ShutDown
     path: src/TuiVision.Controls/TGroup.cs
-    startLine: 261
+    startLine: 270
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -387,11 +388,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: SetFocus
     path: src/TuiVision.Controls/TGroup.cs
-    startLine: 295
+    startLine: 304
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -446,11 +447,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: CurrentChanged
     path: src/TuiVision.Controls/TGroup.cs
-    startLine: 323
+    startLine: 332
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -482,11 +483,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectNext
     path: src/TuiVision.Controls/TGroup.cs
-    startLine: 340
+    startLine: 349
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -532,11 +533,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TGroup.cs
-    startLine: 382
+    startLine: 391
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -559,6 +560,48 @@ items:
     content.vb: Public Overrides Sub Draw()
   overridden: TuiVision.Controls.TView.Draw
   overload: TuiVision.Controls.TGroup.Draw*
+- uid: TuiVision.Controls.TGroup.GetDrawBuffer
+  commentId: M:TuiVision.Controls.TGroup.GetDrawBuffer
+  id: GetDrawBuffer
+  parent: TuiVision.Controls.TGroup
+  langs:
+  - csharp
+  - vb
+  name: GetDrawBuffer()
+  nameWithType: TGroup.GetDrawBuffer()
+  fullName: TuiVision.Controls.TGroup.GetDrawBuffer()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TGroup.cs
+      branch: 008-controls-revision
+      repo: https://github.com/hindermath/TuiVision.git
+    id: GetDrawBuffer
+    path: src/TuiVision.Controls/TGroup.cs
+    startLine: 440
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Liefert den internen Zeichenpuffer der Gruppe und allokiert ihn bei Bedarf.
+
+    Die Methode ist für untergeordnete Controls innerhalb desselben Assemblies gedacht.
+
+
+    Returns the group's internal draw buffer and allocates it on demand.
+
+    The method is intended for child controls within the same assembly.
+  example: []
+  syntax:
+    content: protected TConsoleBuffer? GetDrawBuffer()
+    return:
+      type: TuiVision.Core.TConsoleBuffer
+      description: >-
+        Der interne Zeichenpuffer oder <code>null</code>, wenn die Gruppe nicht exponiert ist.
+
+        The internal draw buffer, or <code>null</code> if the group is not exposed.
+    content.vb: Protected Function GetDrawBuffer() As TConsoleBuffer
+  overload: TuiVision.Controls.TGroup.GetDrawBuffer*
 - uid: TuiVision.Controls.TGroup.LockDraw
   commentId: M:TuiVision.Controls.TGroup.LockDraw
   id: LockDraw
@@ -573,11 +616,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: LockDraw
     path: src/TuiVision.Controls/TGroup.cs
-    startLine: 427
+    startLine: 457
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -609,11 +652,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: UnlockDraw
     path: src/TuiVision.Controls/TGroup.cs
-    startLine: 438
+    startLine: 468
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -649,11 +692,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: SetState
     path: src/TuiVision.Controls/TGroup.cs
-    startLine: 468
+    startLine: 498
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -709,11 +752,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TGroup.cs
-    startLine: 496
+    startLine: 526
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -752,11 +795,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: OnBoundsChanged
     path: src/TuiVision.Controls/TGroup.cs
-    startLine: 567
+    startLine: 597
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -789,11 +832,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TGroup.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: GetFirstChild
     path: src/TuiVision.Controls/TGroup.cs
-    startLine: 585
+    startLine: 615
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -1284,25 +1327,13 @@ references:
     href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView
   - name: (
   - name: )
-- uid: TuiVision.Controls.TView.GetDrawBuffer
-  commentId: M:TuiVision.Controls.TView.GetDrawBuffer
+- uid: TuiVision.Controls.TView.HelpContext
+  commentId: P:TuiVision.Controls.TView.HelpContext
   parent: TuiVision.Controls.TView
-  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
-  name: GetDrawBuffer()
-  nameWithType: TView.GetDrawBuffer()
-  fullName: TuiVision.Controls.TView.GetDrawBuffer()
-  spec.csharp:
-  - uid: TuiVision.Controls.TView.GetDrawBuffer
-    name: GetDrawBuffer
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: TuiVision.Controls.TView.GetDrawBuffer
-    name: GetDrawBuffer
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
-  - name: (
-  - name: )
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext
+  name: HelpContext
+  nameWithType: TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
 - uid: TuiVision.Controls.TView.GetStatusHints
   commentId: M:TuiVision.Controls.TView.GetStatusHints
   parent: TuiVision.Controls.TView
@@ -1791,6 +1822,19 @@ references:
   name: Draw
   nameWithType: TGroup.Draw
   fullName: TuiVision.Controls.TGroup.Draw
+- uid: TuiVision.Controls.TGroup.GetDrawBuffer*
+  commentId: Overload:TuiVision.Controls.TGroup.GetDrawBuffer
+  href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer
+  name: GetDrawBuffer
+  nameWithType: TGroup.GetDrawBuffer
+  fullName: TuiVision.Controls.TGroup.GetDrawBuffer
+- uid: TuiVision.Core.TConsoleBuffer
+  commentId: T:TuiVision.Core.TConsoleBuffer
+  parent: TuiVision.Core
+  href: TuiVision.Core.TConsoleBuffer.html
+  name: TConsoleBuffer
+  nameWithType: TConsoleBuffer
+  fullName: TuiVision.Core.TConsoleBuffer
 - uid: TuiVision.Controls.TGroup.LockDraw
   commentId: M:TuiVision.Controls.TGroup.LockDraw
   parent: TuiVision.Controls.TGroup

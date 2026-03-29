@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/006-close-phase8-gate/apiSpec/new?filename=TuiVision_Controls_TDesktop.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TDesktop%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/008-controls-revision/apiSpec/new?filename=TuiVision_Controls_TDesktop.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TDesktop%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TuiVision_Controls_TDesktop" data-uid="TuiVision.Controls.TDesktop" class="text-break">
-Class TDesktop  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Controls/TDesktop.cs/#L15"><i class="bi bi-code-slash"></i></a>
+Class TDesktop  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TDesktop.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -146,7 +146,7 @@ It manages child windows and ensures correct focus recovery.</p>
       <a class="xref" href="TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_SelectNext_System_Boolean_">TGroup.SelectNext(bool)</a>
     </div>
     <div>
-      <a class="xref" href="TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw">TGroup.Draw()</a>
+      <a class="xref" href="TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer">TGroup.GetDrawBuffer()</a>
     </div>
     <div>
       <a class="xref" href="TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_LockDraw">TGroup.LockDraw()</a>
@@ -227,7 +227,7 @@ It manages child windows and ensures correct focus recovery.</p>
       <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView">TView.DrawView()</a>
     </div>
     <div>
-      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer">TView.GetDrawBuffer()</a>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext">TView.HelpContext</a>
     </div>
     <div>
       <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints">TView.GetStatusHints()</a>
@@ -271,7 +271,7 @@ It manages child windows and ensures correct focus recovery.</p>
 
   <h3 id="TuiVision_Controls_TDesktop__ctor_TuiVision_Core_TRect_" data-uid="TuiVision.Controls.TDesktop.#ctor(TuiVision.Core.TRect)">
   TDesktop(TRect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Controls/TDesktop.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TDesktop.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initialisiert eine neue Instanz der <a class="xref" href="TuiVision.Controls.TDesktop.html">TDesktop</a>-Klasse.</p>
@@ -309,7 +309,7 @@ It manages child windows and ensures correct focus recovery.</p>
 
   <h3 id="TuiVision_Controls_TDesktop_CurrentChanged" data-uid="TuiVision.Controls.TDesktop.CurrentChanged">
   CurrentChanged()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Controls/TDesktop.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TDesktop.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Wird aufgerufen, wenn sich die aktuell fokussierte Ansicht ändert.
@@ -335,11 +335,41 @@ Ensures fallback to the desktop itself if no child is focusable.</p>
 
 
 
+  <a id="TuiVision_Controls_TDesktop_Draw_" data-uid="TuiVision.Controls.TDesktop.Draw*"></a>
+
+  <h3 id="TuiVision_Controls_TDesktop_Draw" data-uid="TuiVision.Controls.TDesktop.Draw">
+  Draw()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TDesktop.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Füllt den Desktop-Hintergrund mit dem Schraffurzeichen '░' und zeichnet danach
+alle eingebetteten Kind-Fenster.</p>
+<p>Fills the desktop background with the hatching character '░' and then draws
+all embedded child windows.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Draw()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Controls/TDesktop.cs/#L15" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TDesktop.cs/#L15" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TListBox.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: TListBox
     path: src/TuiVision.Controls/TListBox.cs
@@ -79,6 +79,7 @@ items:
   - TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.DrawView
   - TuiVision.Controls.TView.GetDrawBuffer
+  - TuiVision.Controls.TView.HelpContext
   - TuiVision.Controls.TView.GetStatusHints
   - TuiVision.Controls.TView.OnBoundsChanged
   - TuiVision.Core.TObject.ShutDown
@@ -104,7 +105,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TListBox.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TListBox.cs
@@ -152,7 +153,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TListBox.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: List
     path: src/TuiVision.Controls/TListBox.cs
@@ -187,7 +188,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TListBox.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Selection
     path: src/TuiVision.Controls/TListBox.cs
@@ -222,7 +223,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TListBox.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: GetNumItems
     path: src/TuiVision.Controls/TListBox.cs
@@ -258,7 +259,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TListBox.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: GetText
     path: src/TuiVision.Controls/TListBox.cs
@@ -304,7 +305,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TListBox.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TListBox.cs
@@ -1042,6 +1043,13 @@ references:
     href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
   - name: (
   - name: )
+- uid: TuiVision.Controls.TView.HelpContext
+  commentId: P:TuiVision.Controls.TView.HelpContext
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext
+  name: HelpContext
+  nameWithType: TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
 - uid: TuiVision.Controls.TView.GetStatusHints
   commentId: M:TuiVision.Controls.TView.GetStatusHints
   parent: TuiVision.Controls.TView

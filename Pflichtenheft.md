@@ -609,7 +609,7 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze
 
->>> NAECHSTER SCHRITT <<< Welle 2 – Controls und Dialoge: Controls-/Dialog-Schicht als Voraussetzung sicherstellen, dann die naechste Beispielwelle planen und portieren.
+>>> NAECHSTER SCHRITT <<< Welle 2 – Controls und Dialoge: Controls-Revision (008-controls-revision) abgeschlossen — Menues, Statuszeile, Fenster und Dialog sind als Voraussetzung nachgewiesen; jetzt Welle-2-Planung starten und die 11 Controls-/Dialog-Beispiele portieren.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

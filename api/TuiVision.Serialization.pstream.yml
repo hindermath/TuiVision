@@ -22,7 +22,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/pstream.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: pstream
     path: src/TuiVision.Serialization/pstream.cs
@@ -69,7 +69,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/pstream.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Serialization/pstream.cs
@@ -114,7 +114,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/pstream.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: BaseStream
     path: src/TuiVision.Serialization/pstream.cs
@@ -149,7 +149,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/pstream.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Registry
     path: src/TuiVision.Serialization/pstream.cs
@@ -184,7 +184,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/pstream.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: LeaveOpen
     path: src/TuiVision.Serialization/pstream.cs
@@ -219,7 +219,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/pstream.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Tell
     path: src/TuiVision.Serialization/pstream.cs
@@ -254,7 +254,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/pstream.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Seek
     path: src/TuiVision.Serialization/pstream.cs
@@ -299,7 +299,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/pstream.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Dispose
     path: src/TuiVision.Serialization/pstream.cs

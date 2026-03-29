@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TWindow | TuiVision Documentation ">
       
-      <meta name="description" content="Einfaches Fenster-Container-Element als managed Gegenst&#252;ck zu TWindow aus Turbo Vision (twindow.cc). Simple window container element as a managed counterpart to TWindow from Turbo Vision (twindow.cc).">
+      <meta name="description" content="Fenster-Container-Element als managed Gegenst&#252;ck zu TWindow aus Turbo Vision. Unterst&#252;tzt optionale Schlie&#223;-Affordanz (&#215;), Ctrl+W, bewachtes Escape sowie einen reversiblen Verschiebe-Modus per Ctrl+F5. Window container element as the managed counterpart to TWindow from Turbo Vision. Supports optional close affordance (&#215;), Ctrl+W, guarded Escape, and a reversible move mode via Ctrl+F5.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/006-close-phase8-gate/apiSpec/new?filename=TuiVision_Controls_TWindow.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TWindow%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/008-controls-revision/apiSpec/new?filename=TuiVision_Controls_TWindow.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TWindow%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TuiVision_Controls_TWindow" data-uid="TuiVision.Controls.TWindow" class="text-break">
-Class TWindow  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Controls/TWindow.cs/#L15"><i class="bi bi-code-slash"></i></a>
+Class TWindow  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TWindow.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,10 +97,12 @@ Class TWindow  <a class="header-action link-secondary" title="View source" href=
   <dl><dt>Assembly</dt><dd>TuiVision.Controls.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Einfaches Fenster-Container-Element als managed Gegenstück zu <code>TWindow</code>
-aus Turbo Vision (<code>twindow.cc</code>).</p>
-<p>Simple window container element as a managed counterpart to <code>TWindow</code>
-from Turbo Vision (<code>twindow.cc</code>).</p>
+  <div class="markdown summary"><p>Fenster-Container-Element als managed Gegenstück zu <code>TWindow</code> aus Turbo Vision.
+Unterstützt optionale Schließ-Affordanz (×), Ctrl+W, bewachtes Escape sowie
+einen reversiblen Verschiebe-Modus per Ctrl+F5.</p>
+<p>Window container element as the managed counterpart to <code>TWindow</code> from Turbo Vision.
+Supports optional close affordance (×), Ctrl+W, guarded Escape, and a reversible
+move mode via Ctrl+F5.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -149,7 +151,7 @@ from Turbo Vision (<code>twindow.cc</code>).</p>
       <a class="xref" href="TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_SelectNext_System_Boolean_">TGroup.SelectNext(bool)</a>
     </div>
     <div>
-      <a class="xref" href="TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw">TGroup.Draw()</a>
+      <a class="xref" href="TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer">TGroup.GetDrawBuffer()</a>
     </div>
     <div>
       <a class="xref" href="TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_LockDraw">TGroup.LockDraw()</a>
@@ -159,9 +161,6 @@ from Turbo Vision (<code>twindow.cc</code>).</p>
     </div>
     <div>
       <a class="xref" href="TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_SetState_TuiVision_Controls_TViewState_System_Boolean_">TGroup.SetState(TViewState, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_HandleEvent_TuiVision_Core_TEvent_">TGroup.HandleEvent(TEvent)</a>
     </div>
     <div>
       <a class="xref" href="TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_OnBoundsChanged">TGroup.OnBoundsChanged()</a>
@@ -230,7 +229,7 @@ from Turbo Vision (<code>twindow.cc</code>).</p>
       <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView">TView.DrawView()</a>
     </div>
     <div>
-      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer">TView.GetDrawBuffer()</a>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext">TView.HelpContext</a>
     </div>
     <div>
       <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints">TView.GetStatusHints()</a>
@@ -274,7 +273,7 @@ from Turbo Vision (<code>twindow.cc</code>).</p>
 
   <h3 id="TuiVision_Controls_TWindow__ctor_System_String_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="TuiVision.Controls.TWindow.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
   TWindow(string, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Controls/TWindow.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TWindow.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initialisiert ein Fenster mit Titel und Begrenzungsrahmen.</p>
@@ -316,6 +315,56 @@ from Turbo Vision (<code>twindow.cc</code>).</p>
 
 
 
+  <a id="TuiVision_Controls_TWindow__ctor_" data-uid="TuiVision.Controls.TWindow.#ctor*"></a>
+
+  <h3 id="TuiVision_Controls_TWindow__ctor_System_String_System_Int32_System_Int32_System_Int32_System_Int32_TuiVision_Controls_WindowFlags_" data-uid="TuiVision.Controls.TWindow.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,TuiVision.Controls.WindowFlags)">
+  TWindow(string, int, int, int, int, WindowFlags)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TWindow.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initialisiert ein Fenster mit Titel, Begrenzungsrahmen und Fenster-Flags.</p>
+<p>Initializes a window with a title, bounds, and window flags.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TWindow(string title, int x, int y, int width, int height, WindowFlags flags)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>title</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Der Fenstertitel. / The window title.</p>
+</dd>
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Die linke Spalte. / The left column.</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Die obere Zeile. / The top row.</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Die Fensterbreite. / The window width.</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Die Fensterhöhe. / The window height.</p>
+</dd>
+    <dt><code>flags</code> <a class="xref" href="TuiVision.Controls.WindowFlags.html">WindowFlags</a></dt>
+    <dd><p>Die Fenster-Fähigkeiten (Schließen, Verschieben).
+The window capabilities (close, move).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <h2 class="section" id="properties">Properties
 </h2>
 
@@ -324,7 +373,7 @@ from Turbo Vision (<code>twindow.cc</code>).</p>
 
   <h3 id="TuiVision_Controls_TWindow_Bounds" data-uid="TuiVision.Controls.TWindow.Bounds">
   Bounds
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Controls/TWindow.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TWindow.cs/#L93"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die aktuellen Fenstergrenzen.</p>
@@ -353,11 +402,77 @@ from Turbo Vision (<code>twindow.cc</code>).</p>
 
 
 
+  <a id="TuiVision_Controls_TWindow_Flags_" data-uid="TuiVision.Controls.TWindow.Flags*"></a>
+
+  <h3 id="TuiVision_Controls_TWindow_Flags" data-uid="TuiVision.Controls.TWindow.Flags">
+  Flags
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TWindow.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die aktiven Fenster-Fähigkeiten.</p>
+<p>The active window capabilities.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WindowFlags Flags { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TuiVision.Controls.WindowFlags.html">WindowFlags</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_TWindow_IsInMoveMode_" data-uid="TuiVision.Controls.TWindow.IsInMoveMode*"></a>
+
+  <h3 id="TuiVision_Controls_TWindow_IsInMoveMode" data-uid="TuiVision.Controls.TWindow.IsInMoveMode">
+  IsInMoveMode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TWindow.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gibt an, ob sich das Fenster gerade im Verschiebe-Modus befindet.</p>
+<p>Indicates whether the window is currently in move mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsInMoveMode { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TuiVision_Controls_TWindow_Title_" data-uid="TuiVision.Controls.TWindow.Title*"></a>
 
   <h3 id="TuiVision_Controls_TWindow_Title" data-uid="TuiVision.Controls.TWindow.Title">
   Title
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Controls/TWindow.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TWindow.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Der Fenstertitel.</p>
@@ -386,11 +501,79 @@ from Turbo Vision (<code>twindow.cc</code>).</p>
 
 
 
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="TuiVision_Controls_TWindow_Draw_" data-uid="TuiVision.Controls.TWindow.Draw*"></a>
+
+  <h3 id="TuiVision_Controls_TWindow_Draw" data-uid="TuiVision.Controls.TWindow.Draw">
+  Draw()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TWindow.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Zeichnet den Fensterrahmen mit Titel und füllt den Innenbereich mit der Hintergrundfarbe.
+Wenn <a class="xref" href="TuiVision.Controls.WindowFlags.html#TuiVision_Controls_WindowFlags_Close">Close</a> gesetzt ist, wird das ×-Symbol in der oberen linken Ecke angezeigt.</p>
+<p>Draws the window frame with title and fills the interior with background colour.
+When <a class="xref" href="TuiVision.Controls.WindowFlags.html#TuiVision_Controls_WindowFlags_Close">Close</a> is set, the × symbol is shown in the top-left corner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Draw()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_TWindow_HandleEvent_" data-uid="TuiVision.Controls.TWindow.HandleEvent*"></a>
+
+  <h3 id="TuiVision_Controls_TWindow_HandleEvent_TuiVision_Core_TEvent_" data-uid="TuiVision.Controls.TWindow.HandleEvent(TuiVision.Core.TEvent)">
+  HandleEvent(TEvent)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TWindow.cs/#L176"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Verarbeitet Ereignisse für Schließen (Ctrl+W, Escape) und Verschieben (Ctrl+F5, Pfeiltasten).</p>
+<p>Processes events for closing (Ctrl+W, Escape) and moving (Ctrl+F5, arrow keys).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void HandleEvent(TEvent @event)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>event</code> <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a></dt>
+    <dd><p>Das zu verarbeitende Ereignis. / The event to process.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Controls/TWindow.cs/#L15" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TWindow.cs/#L17" class="edit-link">Edit this page</a>
         </div>
 
 

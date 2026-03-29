@@ -291,6 +291,51 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.ManagedClipboard.SetText
   nameWithType: ManagedClipboard.SetText
+- uid: TuiVision.Controls.MenuLayoutSlot
+  name: MenuLayoutSlot
+  href: api/TuiVision.Controls.MenuLayoutSlot.html
+  commentId: T:TuiVision.Controls.MenuLayoutSlot
+  fullName: TuiVision.Controls.MenuLayoutSlot
+  nameWithType: MenuLayoutSlot
+- uid: TuiVision.Controls.MenuLayoutSlot.Item
+  name: Item
+  href: api/TuiVision.Controls.MenuLayoutSlot.html#TuiVision_Controls_MenuLayoutSlot_Item
+  commentId: P:TuiVision.Controls.MenuLayoutSlot.Item
+  fullName: TuiVision.Controls.MenuLayoutSlot.Item
+  nameWithType: MenuLayoutSlot.Item
+- uid: TuiVision.Controls.MenuLayoutSlot.Item*
+  name: Item
+  href: api/TuiVision.Controls.MenuLayoutSlot.html#TuiVision_Controls_MenuLayoutSlot_Item_
+  commentId: Overload:TuiVision.Controls.MenuLayoutSlot.Item
+  isSpec: "True"
+  fullName: TuiVision.Controls.MenuLayoutSlot.Item
+  nameWithType: MenuLayoutSlot.Item
+- uid: TuiVision.Controls.MenuLayoutSlot.StartCol
+  name: StartCol
+  href: api/TuiVision.Controls.MenuLayoutSlot.html#TuiVision_Controls_MenuLayoutSlot_StartCol
+  commentId: P:TuiVision.Controls.MenuLayoutSlot.StartCol
+  fullName: TuiVision.Controls.MenuLayoutSlot.StartCol
+  nameWithType: MenuLayoutSlot.StartCol
+- uid: TuiVision.Controls.MenuLayoutSlot.StartCol*
+  name: StartCol
+  href: api/TuiVision.Controls.MenuLayoutSlot.html#TuiVision_Controls_MenuLayoutSlot_StartCol_
+  commentId: Overload:TuiVision.Controls.MenuLayoutSlot.StartCol
+  isSpec: "True"
+  fullName: TuiVision.Controls.MenuLayoutSlot.StartCol
+  nameWithType: MenuLayoutSlot.StartCol
+- uid: TuiVision.Controls.MenuLayoutSlot.Width
+  name: Width
+  href: api/TuiVision.Controls.MenuLayoutSlot.html#TuiVision_Controls_MenuLayoutSlot_Width
+  commentId: P:TuiVision.Controls.MenuLayoutSlot.Width
+  fullName: TuiVision.Controls.MenuLayoutSlot.Width
+  nameWithType: MenuLayoutSlot.Width
+- uid: TuiVision.Controls.MenuLayoutSlot.Width*
+  name: Width
+  href: api/TuiVision.Controls.MenuLayoutSlot.html#TuiVision_Controls_MenuLayoutSlot_Width_
+  commentId: Overload:TuiVision.Controls.MenuLayoutSlot.Width
+  isSpec: "True"
+  fullName: TuiVision.Controls.MenuLayoutSlot.Width
+  nameWithType: MenuLayoutSlot.Width
 - uid: TuiVision.Controls.ShellCommandIds
   name: ShellCommandIds
   href: api/TuiVision.Controls.ShellCommandIds.html
@@ -1124,6 +1169,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TDesktop.CurrentChanged
   nameWithType: TDesktop.CurrentChanged
+- uid: TuiVision.Controls.TDesktop.Draw
+  name: Draw()
+  href: api/TuiVision.Controls.TDesktop.html#TuiVision_Controls_TDesktop_Draw
+  commentId: M:TuiVision.Controls.TDesktop.Draw
+  fullName: TuiVision.Controls.TDesktop.Draw()
+  nameWithType: TDesktop.Draw()
+- uid: TuiVision.Controls.TDesktop.Draw*
+  name: Draw
+  href: api/TuiVision.Controls.TDesktop.html#TuiVision_Controls_TDesktop_Draw_
+  commentId: Overload:TuiVision.Controls.TDesktop.Draw
+  isSpec: "True"
+  fullName: TuiVision.Controls.TDesktop.Draw
+  nameWithType: TDesktop.Draw
 - uid: TuiVision.Controls.TDialog
   name: TDialog
   href: api/TuiVision.Controls.TDialog.html
@@ -1233,6 +1291,22 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TDialog.Title
   nameWithType: TDialog.Title
+- uid: TuiVision.Controls.TDialog.Valid(System.UInt16)
+  name: Valid(ushort)
+  href: api/TuiVision.Controls.TDialog.html#TuiVision_Controls_TDialog_Valid_System_UInt16_
+  commentId: M:TuiVision.Controls.TDialog.Valid(System.UInt16)
+  name.vb: Valid(UShort)
+  fullName: TuiVision.Controls.TDialog.Valid(ushort)
+  fullName.vb: TuiVision.Controls.TDialog.Valid(UShort)
+  nameWithType: TDialog.Valid(ushort)
+  nameWithType.vb: TDialog.Valid(UShort)
+- uid: TuiVision.Controls.TDialog.Valid*
+  name: Valid
+  href: api/TuiVision.Controls.TDialog.html#TuiVision_Controls_TDialog_Valid_
+  commentId: Overload:TuiVision.Controls.TDialog.Valid
+  isSpec: "True"
+  fullName: TuiVision.Controls.TDialog.Valid
+  nameWithType: TDialog.Valid
 - uid: TuiVision.Controls.TDirListBox
   name: TDirListBox
   href: api/TuiVision.Controls.TDirListBox.html
@@ -2798,6 +2872,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TGroup.Draw
   nameWithType: TGroup.Draw
+- uid: TuiVision.Controls.TGroup.GetDrawBuffer
+  name: GetDrawBuffer()
+  href: api/TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer
+  commentId: M:TuiVision.Controls.TGroup.GetDrawBuffer
+  fullName: TuiVision.Controls.TGroup.GetDrawBuffer()
+  nameWithType: TGroup.GetDrawBuffer()
+- uid: TuiVision.Controls.TGroup.GetDrawBuffer*
+  name: GetDrawBuffer
+  href: api/TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer_
+  commentId: Overload:TuiVision.Controls.TGroup.GetDrawBuffer
+  isSpec: "True"
+  fullName: TuiVision.Controls.TGroup.GetDrawBuffer
+  nameWithType: TGroup.GetDrawBuffer
 - uid: TuiVision.Controls.TGroup.GetFirstChild
   name: GetFirstChild()
   href: api/TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetFirstChild
@@ -3878,6 +3965,35 @@ references:
   fullName.vb: TuiVision.Controls.TMenuBar.New
   nameWithType: TMenuBar.TMenuBar
   nameWithType.vb: TMenuBar.New
+- uid: TuiVision.Controls.TMenuBar.Draw
+  name: Draw()
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_Draw
+  commentId: M:TuiVision.Controls.TMenuBar.Draw
+  fullName: TuiVision.Controls.TMenuBar.Draw()
+  nameWithType: TMenuBar.Draw()
+- uid: TuiVision.Controls.TMenuBar.Draw*
+  name: Draw
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_Draw_
+  commentId: Overload:TuiVision.Controls.TMenuBar.Draw
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuBar.Draw
+  nameWithType: TMenuBar.Draw
+- uid: TuiVision.Controls.TMenuBar.DrawSubMenuOverlay(TuiVision.Core.TConsoleBuffer)
+  name: DrawSubMenuOverlay(TConsoleBuffer?)
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_DrawSubMenuOverlay_TuiVision_Core_TConsoleBuffer_
+  commentId: M:TuiVision.Controls.TMenuBar.DrawSubMenuOverlay(TuiVision.Core.TConsoleBuffer)
+  name.vb: DrawSubMenuOverlay(TConsoleBuffer)
+  fullName: TuiVision.Controls.TMenuBar.DrawSubMenuOverlay(TuiVision.Core.TConsoleBuffer?)
+  fullName.vb: TuiVision.Controls.TMenuBar.DrawSubMenuOverlay(TuiVision.Core.TConsoleBuffer)
+  nameWithType: TMenuBar.DrawSubMenuOverlay(TConsoleBuffer?)
+  nameWithType.vb: TMenuBar.DrawSubMenuOverlay(TConsoleBuffer)
+- uid: TuiVision.Controls.TMenuBar.DrawSubMenuOverlay*
+  name: DrawSubMenuOverlay
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_DrawSubMenuOverlay_
+  commentId: Overload:TuiVision.Controls.TMenuBar.DrawSubMenuOverlay
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuBar.DrawSubMenuOverlay
+  nameWithType: TMenuBar.DrawSubMenuOverlay
 - uid: TuiVision.Controls.TMenuBar.HandleEvent(TuiVision.Core.TEvent)
   name: HandleEvent(TEvent)
   href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_HandleEvent_TuiVision_Core_TEvent_
@@ -3904,6 +4020,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TMenuBar.IsMenuActive
   nameWithType: TMenuBar.IsMenuActive
+- uid: TuiVision.Controls.TMenuBar.LayoutSlots
+  name: LayoutSlots
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_LayoutSlots
+  commentId: P:TuiVision.Controls.TMenuBar.LayoutSlots
+  fullName: TuiVision.Controls.TMenuBar.LayoutSlots
+  nameWithType: TMenuBar.LayoutSlots
+- uid: TuiVision.Controls.TMenuBar.LayoutSlots*
+  name: LayoutSlots
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_LayoutSlots_
+  commentId: Overload:TuiVision.Controls.TMenuBar.LayoutSlots
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuBar.LayoutSlots
+  nameWithType: TMenuBar.LayoutSlots
 - uid: TuiVision.Controls.TMenuBar.Menu
   name: Menu
   href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_Menu
@@ -3917,6 +4046,45 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TMenuBar.Menu
   nameWithType: TMenuBar.Menu
+- uid: TuiVision.Controls.TMenuBar.OnBoundsChanged
+  name: OnBoundsChanged()
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_OnBoundsChanged
+  commentId: M:TuiVision.Controls.TMenuBar.OnBoundsChanged
+  fullName: TuiVision.Controls.TMenuBar.OnBoundsChanged()
+  nameWithType: TMenuBar.OnBoundsChanged()
+- uid: TuiVision.Controls.TMenuBar.OnBoundsChanged*
+  name: OnBoundsChanged
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_OnBoundsChanged_
+  commentId: Overload:TuiVision.Controls.TMenuBar.OnBoundsChanged
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuBar.OnBoundsChanged
+  nameWithType: TMenuBar.OnBoundsChanged
+- uid: TuiVision.Controls.TMenuBar.SelectedSubMenuItem
+  name: SelectedSubMenuItem
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_SelectedSubMenuItem
+  commentId: P:TuiVision.Controls.TMenuBar.SelectedSubMenuItem
+  fullName: TuiVision.Controls.TMenuBar.SelectedSubMenuItem
+  nameWithType: TMenuBar.SelectedSubMenuItem
+- uid: TuiVision.Controls.TMenuBar.SelectedSubMenuItem*
+  name: SelectedSubMenuItem
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_SelectedSubMenuItem_
+  commentId: Overload:TuiVision.Controls.TMenuBar.SelectedSubMenuItem
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuBar.SelectedSubMenuItem
+  nameWithType: TMenuBar.SelectedSubMenuItem
+- uid: TuiVision.Controls.TMenuBar.SelectedTopLevel
+  name: SelectedTopLevel
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_SelectedTopLevel
+  commentId: P:TuiVision.Controls.TMenuBar.SelectedTopLevel
+  fullName: TuiVision.Controls.TMenuBar.SelectedTopLevel
+  nameWithType: TMenuBar.SelectedTopLevel
+- uid: TuiVision.Controls.TMenuBar.SelectedTopLevel*
+  name: SelectedTopLevel
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_SelectedTopLevel_
+  commentId: Overload:TuiVision.Controls.TMenuBar.SelectedTopLevel
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuBar.SelectedTopLevel
+  nameWithType: TMenuBar.SelectedTopLevel
 - uid: TuiVision.Controls.TMenuItem
   name: TMenuItem
   href: api/TuiVision.Controls.TMenuItem.html
@@ -3968,6 +4136,32 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TMenuItem.Disabled
   nameWithType: TMenuItem.Disabled
+- uid: TuiVision.Controls.TMenuItem.IsSeparator
+  name: IsSeparator
+  href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_IsSeparator
+  commentId: P:TuiVision.Controls.TMenuItem.IsSeparator
+  fullName: TuiVision.Controls.TMenuItem.IsSeparator
+  nameWithType: TMenuItem.IsSeparator
+- uid: TuiVision.Controls.TMenuItem.IsSeparator*
+  name: IsSeparator
+  href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_IsSeparator_
+  commentId: Overload:TuiVision.Controls.TMenuItem.IsSeparator
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuItem.IsSeparator
+  nameWithType: TMenuItem.IsSeparator
+- uid: TuiVision.Controls.TMenuItem.Mnemonic
+  name: Mnemonic
+  href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Mnemonic
+  commentId: P:TuiVision.Controls.TMenuItem.Mnemonic
+  fullName: TuiVision.Controls.TMenuItem.Mnemonic
+  nameWithType: TMenuItem.Mnemonic
+- uid: TuiVision.Controls.TMenuItem.Mnemonic*
+  name: Mnemonic
+  href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Mnemonic_
+  commentId: Overload:TuiVision.Controls.TMenuItem.Mnemonic
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuItem.Mnemonic
+  nameWithType: TMenuItem.Mnemonic
 - uid: TuiVision.Controls.TMenuItem.Name
   name: Name
   href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Name
@@ -3994,6 +4188,22 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TMenuItem.Next
   nameWithType: TMenuItem.Next
+- uid: TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)
+  name: Separator(TMenuItem?)
+  href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Separator_TuiVision_Controls_TMenuItem_
+  commentId: M:TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)
+  name.vb: Separator(TMenuItem)
+  fullName: TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem?)
+  fullName.vb: TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)
+  nameWithType: TMenuItem.Separator(TMenuItem?)
+  nameWithType.vb: TMenuItem.Separator(TMenuItem)
+- uid: TuiVision.Controls.TMenuItem.Separator*
+  name: Separator
+  href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Separator_
+  commentId: Overload:TuiVision.Controls.TMenuItem.Separator
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuItem.Separator
+  nameWithType: TMenuItem.Separator
 - uid: TuiVision.Controls.TMenuItem.SubMenu
   name: SubMenu
   href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_SubMenu
@@ -4007,6 +4217,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TMenuItem.SubMenu
   nameWithType: TMenuItem.SubMenu
+- uid: TuiVision.Controls.TMenuItem.SubMenuDef
+  name: SubMenuDef
+  href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_SubMenuDef
+  commentId: P:TuiVision.Controls.TMenuItem.SubMenuDef
+  fullName: TuiVision.Controls.TMenuItem.SubMenuDef
+  nameWithType: TMenuItem.SubMenuDef
+- uid: TuiVision.Controls.TMenuItem.SubMenuDef*
+  name: SubMenuDef
+  href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_SubMenuDef_
+  commentId: Overload:TuiVision.Controls.TMenuItem.SubMenuDef
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuItem.SubMenuDef
+  nameWithType: TMenuItem.SubMenuDef
 - uid: TuiVision.Controls.TMonoSelector
   name: TMonoSelector
   href: api/TuiVision.Controls.TMonoSelector.html
@@ -4211,6 +4434,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TProgram.Desktop
   nameWithType: TProgram.Desktop
+- uid: TuiVision.Controls.TProgram.Draw
+  name: Draw()
+  href: api/TuiVision.Controls.TProgram.html#TuiVision_Controls_TProgram_Draw
+  commentId: M:TuiVision.Controls.TProgram.Draw
+  fullName: TuiVision.Controls.TProgram.Draw()
+  nameWithType: TProgram.Draw()
+- uid: TuiVision.Controls.TProgram.Draw*
+  name: Draw
+  href: api/TuiVision.Controls.TProgram.html#TuiVision_Controls_TProgram_Draw_
+  commentId: Overload:TuiVision.Controls.TProgram.Draw
+  isSpec: "True"
+  fullName: TuiVision.Controls.TProgram.Draw
+  nameWithType: TProgram.Draw
 - uid: TuiVision.Controls.TProgram.Driver
   name: Driver
   href: api/TuiVision.Controls.TProgram.html#TuiVision_Controls_TProgram_Driver
@@ -4805,6 +5041,99 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TStaticText.Text
   nameWithType: TStaticText.Text
+- uid: TuiVision.Controls.TStatusDef
+  name: TStatusDef
+  href: api/TuiVision.Controls.TStatusDef.html
+  commentId: T:TuiVision.Controls.TStatusDef
+  fullName: TuiVision.Controls.TStatusDef
+  nameWithType: TStatusDef
+- uid: TuiVision.Controls.TStatusDef.#ctor(System.Int32,System.Int32,TuiVision.Controls.TStatusItem,TuiVision.Controls.TStatusDef)
+  name: TStatusDef(int, int, TStatusItem?, TStatusDef?)
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef__ctor_System_Int32_System_Int32_TuiVision_Controls_TStatusItem_TuiVision_Controls_TStatusDef_
+  commentId: M:TuiVision.Controls.TStatusDef.#ctor(System.Int32,System.Int32,TuiVision.Controls.TStatusItem,TuiVision.Controls.TStatusDef)
+  name.vb: New(Integer, Integer, TStatusItem, TStatusDef)
+  fullName: TuiVision.Controls.TStatusDef.TStatusDef(int, int, TuiVision.Controls.TStatusItem?, TuiVision.Controls.TStatusDef?)
+  fullName.vb: TuiVision.Controls.TStatusDef.New(Integer, Integer, TuiVision.Controls.TStatusItem, TuiVision.Controls.TStatusDef)
+  nameWithType: TStatusDef.TStatusDef(int, int, TStatusItem?, TStatusDef?)
+  nameWithType.vb: TStatusDef.New(Integer, Integer, TStatusItem, TStatusDef)
+- uid: TuiVision.Controls.TStatusDef.#ctor*
+  name: TStatusDef
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef__ctor_
+  commentId: Overload:TuiVision.Controls.TStatusDef.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TStatusDef.TStatusDef
+  fullName.vb: TuiVision.Controls.TStatusDef.New
+  nameWithType: TStatusDef.TStatusDef
+  nameWithType.vb: TStatusDef.New
+- uid: TuiVision.Controls.TStatusDef.Items
+  name: Items
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_Items
+  commentId: P:TuiVision.Controls.TStatusDef.Items
+  fullName: TuiVision.Controls.TStatusDef.Items
+  nameWithType: TStatusDef.Items
+- uid: TuiVision.Controls.TStatusDef.Items*
+  name: Items
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_Items_
+  commentId: Overload:TuiVision.Controls.TStatusDef.Items
+  isSpec: "True"
+  fullName: TuiVision.Controls.TStatusDef.Items
+  nameWithType: TStatusDef.Items
+- uid: TuiVision.Controls.TStatusDef.Matches(System.Int32)
+  name: Matches(int)
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_Matches_System_Int32_
+  commentId: M:TuiVision.Controls.TStatusDef.Matches(System.Int32)
+  name.vb: Matches(Integer)
+  fullName: TuiVision.Controls.TStatusDef.Matches(int)
+  fullName.vb: TuiVision.Controls.TStatusDef.Matches(Integer)
+  nameWithType: TStatusDef.Matches(int)
+  nameWithType.vb: TStatusDef.Matches(Integer)
+- uid: TuiVision.Controls.TStatusDef.Matches*
+  name: Matches
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_Matches_
+  commentId: Overload:TuiVision.Controls.TStatusDef.Matches
+  isSpec: "True"
+  fullName: TuiVision.Controls.TStatusDef.Matches
+  nameWithType: TStatusDef.Matches
+- uid: TuiVision.Controls.TStatusDef.MaxCtx
+  name: MaxCtx
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_MaxCtx
+  commentId: P:TuiVision.Controls.TStatusDef.MaxCtx
+  fullName: TuiVision.Controls.TStatusDef.MaxCtx
+  nameWithType: TStatusDef.MaxCtx
+- uid: TuiVision.Controls.TStatusDef.MaxCtx*
+  name: MaxCtx
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_MaxCtx_
+  commentId: Overload:TuiVision.Controls.TStatusDef.MaxCtx
+  isSpec: "True"
+  fullName: TuiVision.Controls.TStatusDef.MaxCtx
+  nameWithType: TStatusDef.MaxCtx
+- uid: TuiVision.Controls.TStatusDef.MinCtx
+  name: MinCtx
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_MinCtx
+  commentId: P:TuiVision.Controls.TStatusDef.MinCtx
+  fullName: TuiVision.Controls.TStatusDef.MinCtx
+  nameWithType: TStatusDef.MinCtx
+- uid: TuiVision.Controls.TStatusDef.MinCtx*
+  name: MinCtx
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_MinCtx_
+  commentId: Overload:TuiVision.Controls.TStatusDef.MinCtx
+  isSpec: "True"
+  fullName: TuiVision.Controls.TStatusDef.MinCtx
+  nameWithType: TStatusDef.MinCtx
+- uid: TuiVision.Controls.TStatusDef.Next
+  name: Next
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_Next
+  commentId: P:TuiVision.Controls.TStatusDef.Next
+  fullName: TuiVision.Controls.TStatusDef.Next
+  nameWithType: TStatusDef.Next
+- uid: TuiVision.Controls.TStatusDef.Next*
+  name: Next
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_Next_
+  commentId: Overload:TuiVision.Controls.TStatusDef.Next
+  isSpec: "True"
+  fullName: TuiVision.Controls.TStatusDef.Next
+  nameWithType: TStatusDef.Next
 - uid: TuiVision.Controls.TStatusItem
   name: TStatusItem
   href: api/TuiVision.Controls.TStatusItem.html
@@ -4897,6 +5226,15 @@ references:
   fullName.vb: TuiVision.Controls.TStatusLine.New(TuiVision.Core.TRect)
   nameWithType: TStatusLine.TStatusLine(TRect)
   nameWithType.vb: TStatusLine.New(TRect)
+- uid: TuiVision.Controls.TStatusLine.#ctor(TuiVision.Core.TRect,TuiVision.Controls.TStatusDef)
+  name: TStatusLine(TRect, TStatusDef?)
+  href: api/TuiVision.Controls.TStatusLine.html#TuiVision_Controls_TStatusLine__ctor_TuiVision_Core_TRect_TuiVision_Controls_TStatusDef_
+  commentId: M:TuiVision.Controls.TStatusLine.#ctor(TuiVision.Core.TRect,TuiVision.Controls.TStatusDef)
+  name.vb: New(TRect, TStatusDef)
+  fullName: TuiVision.Controls.TStatusLine.TStatusLine(TuiVision.Core.TRect, TuiVision.Controls.TStatusDef?)
+  fullName.vb: TuiVision.Controls.TStatusLine.New(TuiVision.Core.TRect, TuiVision.Controls.TStatusDef)
+  nameWithType: TStatusLine.TStatusLine(TRect, TStatusDef?)
+  nameWithType.vb: TStatusLine.New(TRect, TStatusDef)
 - uid: TuiVision.Controls.TStatusLine.#ctor*
   name: TStatusLine
   href: api/TuiVision.Controls.TStatusLine.html#TuiVision_Controls_TStatusLine__ctor_
@@ -4907,6 +5245,19 @@ references:
   fullName.vb: TuiVision.Controls.TStatusLine.New
   nameWithType: TStatusLine.TStatusLine
   nameWithType.vb: TStatusLine.New
+- uid: TuiVision.Controls.TStatusLine.Draw
+  name: Draw()
+  href: api/TuiVision.Controls.TStatusLine.html#TuiVision_Controls_TStatusLine_Draw
+  commentId: M:TuiVision.Controls.TStatusLine.Draw
+  fullName: TuiVision.Controls.TStatusLine.Draw()
+  nameWithType: TStatusLine.Draw()
+- uid: TuiVision.Controls.TStatusLine.Draw*
+  name: Draw
+  href: api/TuiVision.Controls.TStatusLine.html#TuiVision_Controls_TStatusLine_Draw_
+  commentId: Overload:TuiVision.Controls.TStatusLine.Draw
+  isSpec: "True"
+  fullName: TuiVision.Controls.TStatusLine.Draw
+  nameWithType: TStatusLine.Draw
 - uid: TuiVision.Controls.TStatusLine.HandleEvent(TuiVision.Core.TEvent)
   name: HandleEvent(TEvent)
   href: api/TuiVision.Controls.TStatusLine.html#TuiVision_Controls_TStatusLine_HandleEvent_TuiVision_Core_TEvent_
@@ -5019,6 +5370,83 @@ references:
   fullName.vb: TuiVision.Controls.TStringList.this[]
   nameWithType: TStringList.this
   nameWithType.vb: TStringList.this[]
+- uid: TuiVision.Controls.TSubMenu
+  name: TSubMenu
+  href: api/TuiVision.Controls.TSubMenu.html
+  commentId: T:TuiVision.Controls.TSubMenu
+  fullName: TuiVision.Controls.TSubMenu
+  nameWithType: TSubMenu
+- uid: TuiVision.Controls.TSubMenu.#ctor(System.String,System.Int32,TuiVision.Controls.TMenuItem,TuiVision.Controls.TSubMenu)
+  name: TSubMenu(string, int, TMenuItem?, TSubMenu?)
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu__ctor_System_String_System_Int32_TuiVision_Controls_TMenuItem_TuiVision_Controls_TSubMenu_
+  commentId: M:TuiVision.Controls.TSubMenu.#ctor(System.String,System.Int32,TuiVision.Controls.TMenuItem,TuiVision.Controls.TSubMenu)
+  name.vb: New(String, Integer, TMenuItem, TSubMenu)
+  fullName: TuiVision.Controls.TSubMenu.TSubMenu(string, int, TuiVision.Controls.TMenuItem?, TuiVision.Controls.TSubMenu?)
+  fullName.vb: TuiVision.Controls.TSubMenu.New(String, Integer, TuiVision.Controls.TMenuItem, TuiVision.Controls.TSubMenu)
+  nameWithType: TSubMenu.TSubMenu(string, int, TMenuItem?, TSubMenu?)
+  nameWithType.vb: TSubMenu.New(String, Integer, TMenuItem, TSubMenu)
+- uid: TuiVision.Controls.TSubMenu.#ctor*
+  name: TSubMenu
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu__ctor_
+  commentId: Overload:TuiVision.Controls.TSubMenu.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TSubMenu.TSubMenu
+  fullName.vb: TuiVision.Controls.TSubMenu.New
+  nameWithType: TSubMenu.TSubMenu
+  nameWithType.vb: TSubMenu.New
+- uid: TuiVision.Controls.TSubMenu.HelpCtx
+  name: HelpCtx
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu_HelpCtx
+  commentId: P:TuiVision.Controls.TSubMenu.HelpCtx
+  fullName: TuiVision.Controls.TSubMenu.HelpCtx
+  nameWithType: TSubMenu.HelpCtx
+- uid: TuiVision.Controls.TSubMenu.HelpCtx*
+  name: HelpCtx
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu_HelpCtx_
+  commentId: Overload:TuiVision.Controls.TSubMenu.HelpCtx
+  isSpec: "True"
+  fullName: TuiVision.Controls.TSubMenu.HelpCtx
+  nameWithType: TSubMenu.HelpCtx
+- uid: TuiVision.Controls.TSubMenu.Items
+  name: Items
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu_Items
+  commentId: P:TuiVision.Controls.TSubMenu.Items
+  fullName: TuiVision.Controls.TSubMenu.Items
+  nameWithType: TSubMenu.Items
+- uid: TuiVision.Controls.TSubMenu.Items*
+  name: Items
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu_Items_
+  commentId: Overload:TuiVision.Controls.TSubMenu.Items
+  isSpec: "True"
+  fullName: TuiVision.Controls.TSubMenu.Items
+  nameWithType: TSubMenu.Items
+- uid: TuiVision.Controls.TSubMenu.Name
+  name: Name
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu_Name
+  commentId: P:TuiVision.Controls.TSubMenu.Name
+  fullName: TuiVision.Controls.TSubMenu.Name
+  nameWithType: TSubMenu.Name
+- uid: TuiVision.Controls.TSubMenu.Name*
+  name: Name
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu_Name_
+  commentId: Overload:TuiVision.Controls.TSubMenu.Name
+  isSpec: "True"
+  fullName: TuiVision.Controls.TSubMenu.Name
+  nameWithType: TSubMenu.Name
+- uid: TuiVision.Controls.TSubMenu.Next
+  name: Next
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu_Next
+  commentId: P:TuiVision.Controls.TSubMenu.Next
+  fullName: TuiVision.Controls.TSubMenu.Next
+  nameWithType: TSubMenu.Next
+- uid: TuiVision.Controls.TSubMenu.Next*
+  name: Next
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu_Next_
+  commentId: Overload:TuiVision.Controls.TSubMenu.Next
+  isSpec: "True"
+  fullName: TuiVision.Controls.TSubMenu.Next
+  nameWithType: TSubMenu.Next
 - uid: TuiVision.Controls.TValidator
   name: TValidator
   href: api/TuiVision.Controls.TValidator.html
@@ -5199,6 +5627,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TView.HandleEvent
   nameWithType: TView.HandleEvent
+- uid: TuiVision.Controls.TView.HelpContext
+  name: HelpContext
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext
+  commentId: P:TuiVision.Controls.TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
+  nameWithType: TView.HelpContext
+- uid: TuiVision.Controls.TView.HelpContext*
+  name: HelpContext
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext_
+  commentId: Overload:TuiVision.Controls.TView.HelpContext
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.HelpContext
+  nameWithType: TView.HelpContext
 - uid: TuiVision.Controls.TView.Hide
   name: Hide()
   href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_Hide
@@ -5593,6 +6034,15 @@ references:
   fullName.vb: TuiVision.Controls.TWindow.New(String, Integer, Integer, Integer, Integer)
   nameWithType: TWindow.TWindow(string, int, int, int, int)
   nameWithType.vb: TWindow.New(String, Integer, Integer, Integer, Integer)
+- uid: TuiVision.Controls.TWindow.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,TuiVision.Controls.WindowFlags)
+  name: TWindow(string, int, int, int, int, WindowFlags)
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow__ctor_System_String_System_Int32_System_Int32_System_Int32_System_Int32_TuiVision_Controls_WindowFlags_
+  commentId: M:TuiVision.Controls.TWindow.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,TuiVision.Controls.WindowFlags)
+  name.vb: New(String, Integer, Integer, Integer, Integer, WindowFlags)
+  fullName: TuiVision.Controls.TWindow.TWindow(string, int, int, int, int, TuiVision.Controls.WindowFlags)
+  fullName.vb: TuiVision.Controls.TWindow.New(String, Integer, Integer, Integer, Integer, TuiVision.Controls.WindowFlags)
+  nameWithType: TWindow.TWindow(string, int, int, int, int, WindowFlags)
+  nameWithType.vb: TWindow.New(String, Integer, Integer, Integer, Integer, WindowFlags)
 - uid: TuiVision.Controls.TWindow.#ctor*
   name: TWindow
   href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow__ctor_
@@ -5616,6 +6066,58 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TWindow.Bounds
   nameWithType: TWindow.Bounds
+- uid: TuiVision.Controls.TWindow.Draw
+  name: Draw()
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_Draw
+  commentId: M:TuiVision.Controls.TWindow.Draw
+  fullName: TuiVision.Controls.TWindow.Draw()
+  nameWithType: TWindow.Draw()
+- uid: TuiVision.Controls.TWindow.Draw*
+  name: Draw
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_Draw_
+  commentId: Overload:TuiVision.Controls.TWindow.Draw
+  isSpec: "True"
+  fullName: TuiVision.Controls.TWindow.Draw
+  nameWithType: TWindow.Draw
+- uid: TuiVision.Controls.TWindow.Flags
+  name: Flags
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_Flags
+  commentId: P:TuiVision.Controls.TWindow.Flags
+  fullName: TuiVision.Controls.TWindow.Flags
+  nameWithType: TWindow.Flags
+- uid: TuiVision.Controls.TWindow.Flags*
+  name: Flags
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_Flags_
+  commentId: Overload:TuiVision.Controls.TWindow.Flags
+  isSpec: "True"
+  fullName: TuiVision.Controls.TWindow.Flags
+  nameWithType: TWindow.Flags
+- uid: TuiVision.Controls.TWindow.HandleEvent(TuiVision.Core.TEvent)
+  name: HandleEvent(TEvent)
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_HandleEvent_TuiVision_Core_TEvent_
+  commentId: M:TuiVision.Controls.TWindow.HandleEvent(TuiVision.Core.TEvent)
+  fullName: TuiVision.Controls.TWindow.HandleEvent(TuiVision.Core.TEvent)
+  nameWithType: TWindow.HandleEvent(TEvent)
+- uid: TuiVision.Controls.TWindow.HandleEvent*
+  name: HandleEvent
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_HandleEvent_
+  commentId: Overload:TuiVision.Controls.TWindow.HandleEvent
+  isSpec: "True"
+  fullName: TuiVision.Controls.TWindow.HandleEvent
+  nameWithType: TWindow.HandleEvent
+- uid: TuiVision.Controls.TWindow.IsInMoveMode
+  name: IsInMoveMode
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_IsInMoveMode
+  commentId: P:TuiVision.Controls.TWindow.IsInMoveMode
+  fullName: TuiVision.Controls.TWindow.IsInMoveMode
+  nameWithType: TWindow.IsInMoveMode
+- uid: TuiVision.Controls.TWindow.IsInMoveMode*
+  name: IsInMoveMode
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_IsInMoveMode_
+  commentId: Overload:TuiVision.Controls.TWindow.IsInMoveMode
+  isSpec: "True"
+  fullName: TuiVision.Controls.TWindow.IsInMoveMode
+  nameWithType: TWindow.IsInMoveMode
 - uid: TuiVision.Controls.TWindow.Title
   name: Title
   href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_Title
@@ -5700,6 +6202,30 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TvUIStrings.Save
   nameWithType: TvUIStrings.Save
+- uid: TuiVision.Controls.WindowFlags
+  name: WindowFlags
+  href: api/TuiVision.Controls.WindowFlags.html
+  commentId: T:TuiVision.Controls.WindowFlags
+  fullName: TuiVision.Controls.WindowFlags
+  nameWithType: WindowFlags
+- uid: TuiVision.Controls.WindowFlags.Close
+  name: Close
+  href: api/TuiVision.Controls.WindowFlags.html#TuiVision_Controls_WindowFlags_Close
+  commentId: F:TuiVision.Controls.WindowFlags.Close
+  fullName: TuiVision.Controls.WindowFlags.Close
+  nameWithType: WindowFlags.Close
+- uid: TuiVision.Controls.WindowFlags.Move
+  name: Move
+  href: api/TuiVision.Controls.WindowFlags.html#TuiVision_Controls_WindowFlags_Move
+  commentId: F:TuiVision.Controls.WindowFlags.Move
+  fullName: TuiVision.Controls.WindowFlags.Move
+  nameWithType: WindowFlags.Move
+- uid: TuiVision.Controls.WindowFlags.None
+  name: None
+  href: api/TuiVision.Controls.WindowFlags.html#TuiVision_Controls_WindowFlags_None
+  commentId: F:TuiVision.Controls.WindowFlags.None
+  fullName: TuiVision.Controls.WindowFlags.None
+  nameWithType: WindowFlags.None
 - uid: TuiVision.Core
   name: TuiVision.Core
   href: api/TuiVision.Core.html
@@ -7564,6 +8090,25 @@ references:
   isSpec: "True"
   fullName: TuiVision.Drivers.Console.IConsolePresenter.Present
   nameWithType: IConsolePresenter.Present
+- uid: TuiVision.Drivers.Console.SystemConsolePresenter
+  name: SystemConsolePresenter
+  href: api/TuiVision.Drivers.Console.SystemConsolePresenter.html
+  commentId: T:TuiVision.Drivers.Console.SystemConsolePresenter
+  fullName: TuiVision.Drivers.Console.SystemConsolePresenter
+  nameWithType: SystemConsolePresenter
+- uid: TuiVision.Drivers.Console.SystemConsolePresenter.Present(TuiVision.Core.TConsoleBuffer)
+  name: Present(TConsoleBuffer)
+  href: api/TuiVision.Drivers.Console.SystemConsolePresenter.html#TuiVision_Drivers_Console_SystemConsolePresenter_Present_TuiVision_Core_TConsoleBuffer_
+  commentId: M:TuiVision.Drivers.Console.SystemConsolePresenter.Present(TuiVision.Core.TConsoleBuffer)
+  fullName: TuiVision.Drivers.Console.SystemConsolePresenter.Present(TuiVision.Core.TConsoleBuffer)
+  nameWithType: SystemConsolePresenter.Present(TConsoleBuffer)
+- uid: TuiVision.Drivers.Console.SystemConsolePresenter.Present*
+  name: Present
+  href: api/TuiVision.Drivers.Console.SystemConsolePresenter.html#TuiVision_Drivers_Console_SystemConsolePresenter_Present_
+  commentId: Overload:TuiVision.Drivers.Console.SystemConsolePresenter.Present
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.SystemConsolePresenter.Present
+  nameWithType: SystemConsolePresenter.Present
 - uid: TuiVision.Drivers.Console.TConsoleBuffer
   name: TConsoleBuffer
   href: api/TuiVision.Drivers.Console.TConsoleBuffer.html

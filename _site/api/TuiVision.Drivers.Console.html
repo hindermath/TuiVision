@@ -103,6 +103,16 @@ corresponding managed replacement in <code>TuiVision.Drivers.Console</code>.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="TuiVision.Drivers.Console.SystemConsolePresenter.html">SystemConsolePresenter</a></dt>
+      <dd><p>Stellt einen <a class="xref" href="TuiVision.Core.TConsoleBuffer.html">TConsoleBuffer</a>-Frame auf der echten <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.console">Console</a> dar.
+Alle Konsolen-API-Aufrufe sind von <code>try/catch</code>-Blöcken umgeben, damit der Presenter
+in Umgebungen ohne Terminal (z. B. CI, umgeleitete E/A, Smoke-Tests) stumm bleibt.</p>
+<p>Presents a <a class="xref" href="TuiVision.Core.TConsoleBuffer.html">TConsoleBuffer</a> frame on the real <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.console">Console</a>.
+All console API calls are wrapped in <code>try/catch</code> blocks so the presenter
+stays silent in environments without a terminal (e.g. CI, redirected I/O, smoke tests).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="TuiVision.Drivers.Console.TConsoleDriver.html">TConsoleDriver</a></dt>
       <dd><p>Verwaltet den aktiven Hinterpuffer und veröffentlicht unveränderliche Frame-Schnappschüsse
 über das Presenter-Pattern. Rendering-Backends sind dadurch austauschbar.</p>

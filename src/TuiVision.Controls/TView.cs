@@ -457,6 +457,17 @@ public class TView : TObject
     protected TConsoleBuffer? GetDrawBuffer() => Owner?.GetDrawBuffer();
 
     /// <summary>
+    /// Der Hilfekontext-Bezeichner dieser Ansicht.
+    /// Wird von der Statuszeile verwendet, um die passende <see cref="TStatusDef"/>-Kette
+    /// auszuwählen (First-Match-Wins). Standardwert ist 0.
+    ///
+    /// The help-context identifier of this view.
+    /// Used by the status line to select the matching <see cref="TStatusDef"/> chain
+    /// (first-match-wins). Default value is 0.
+    /// </summary>
+    public virtual int HelpContext { get; set; }
+
+    /// <summary>
     /// Gibt die Status-Hinweise für diese Ansicht zurück.
     ///
     /// Returns the status hints for this view.

@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/docs/guides/multi-mac-workflow.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/008-controls-revision/docs/guides/multi-mac-workflow.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -390,6 +390,61 @@ Pufferzustand statt Terminal-spezifisches Rendering.</li>
 docs/porting-status.md. Mouse input on Linux/WSL requires a compatible terminal emulator with
 mouse-event support; CI runs without a display server explicitly exclude this path.)</em></p>
 <hr>
+<h2 id="welle-1-beispiele-startnachweise--wave-1-examples-launch-evidence">Welle-1-Beispiele: Startnachweise / Wave-1 Examples: Launch Evidence</h2>
+<p>Dieser Abschnitt haelt fest, wie die vier Wave-1-Beispiele auf den unterstuetzten
+Plattformen bewertet wurden (Branch <code>007-port-wave1-examples</code>, 2026-03-28).</p>
+<p><em>(This section records how the four Wave-1 examples were evaluated on supported
+platforms — branch <code>007-port-wave1-examples</code>, 2026-03-28.)</em></p>
+<h3 id="review-status-2026-03-28--review-status-2026-03-28">Review-Status 2026-03-28 / Review Status 2026-03-28</h3>
+<table>
+<thead>
+<tr>
+<th>Umgebung / Environment</th>
+<th>Status</th>
+<th>Begruendung / Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MacBook Air M2</strong></td>
+<td>Primaere Multi-Mac-Baseline</td>
+<td><code>dotnet build --configuration Release</code>, <code>dotnet test tests/TuiVision.Examples.SmokeTests/</code> (41 Tests), <code>dotnet test</code> (314 Tests gesamt) und <code>dotnet format --verify-no-changes</code> auf dem primaeren Entwicklungssystem fehlerfrei.</td>
+</tr>
+<tr>
+<td><strong>Mac mini M4 Pro</strong></td>
+<td>Sekundaere Multi-Mac-Baseline</td>
+<td>Dieselbe Managed-.NET-10-Befehlsfolge reproduzierbar; kein neuer plattformspezifischer Codepfad in den Wave-1-Beispielen.</td>
+</tr>
+<tr>
+<td><strong>Linux (Ubuntu 24.04 / WSL)</strong></td>
+<td>Kein zusaetzlicher Rerun erforderlich</td>
+<td>Die Wave-1-Implementierung nutzt ausschliesslich <code>System.Console</code> und Framework-Abstraktionen; <code>videomode</code> erkennt fehlende <code>SetWindowSize</code>-Unterstuetzung auf Linux und zeigt den dokumentierten sichtbaren Fallback.</td>
+</tr>
+<tr>
+<td><strong>Windows/WSL (Ubuntu 24.04)</strong></td>
+<td>Kein zusaetzlicher Rerun erforderlich</td>
+<td>Gleiche Begruendung wie fuer Linux; <code>videomode</code> wuerde unter nativem Windows <code>SetWindowSize</code> aufrufen koennen, setzt aber nicht voraus, dass die Aktion gelingt.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="videomode-faehigkeitsverhalten--videomode-capability-behaviour">Videomode-Faehigkeitsverhalten / Videomode Capability Behaviour</h3>
+<p><code>videomode</code> erkennt zur Laufzeit, ob <code>Console.SetWindowSize()</code> auf dem aktuellen
+Terminal unterstuetzt wird:</p>
+<ul>
+<li><strong>Echte Groessenaenderung</strong> (<code>RealTransition</code>): Wird ausgefuehrt, wenn das Terminal
+die API unterstuetzt (typischerweise native Windows-Konsole oder kompatible Emulatoren).</li>
+<li><strong>Sichtbarer Fallback</strong> (<code>VisibleFallback</code>): Wird angezeigt, wenn die Groessenaenderung
+nicht moeglich ist (macOS Terminal, Linux-Terminals, WSL, CI-Umgebungen).</li>
+</ul>
+<p><em>(The videomode example detects at runtime whether <code>Console.SetWindowSize()</code> is supported:
+real transition executes when the API works; a visible fallback is shown otherwise — this
+is documented behaviour and not an error.)</em></p>
+<h3 id="smoke-testbefehl-fuer-wave-1--smoke-test-command-for-wave-1">Smoke-Testbefehl fuer Wave-1 / Smoke Test Command for Wave 1</h3>
+<pre><code class="lang-bash">dotnet test tests/TuiVision.Examples.SmokeTests/ --configuration Release
+</code></pre>
+<p>Erwartetes Ergebnis: 41 Tests bestanden, 0 Fehler, 0 uebersprungen.
+<em>(Expected result: 41 tests passed, 0 failed, 0 skipped.)</em></p>
+<hr>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="gh-auth-status-zeigt-kein-login"><code>gh auth status</code> zeigt kein Login</h3>
 <pre><code class="lang-bash">gh auth login
@@ -433,7 +488,7 @@ git diff
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/docs/guides/multi-mac-workflow.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/docs/guides/multi-mac-workflow.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

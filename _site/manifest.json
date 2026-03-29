@@ -140,6 +140,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.MenuLayoutSlot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.MenuLayoutSlot.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.MenuLayoutSlot",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.MenuLayoutSlot.yml\" sourcestartlinenumber=\"1\">Repräsentiert ein Layout-Slot für einen Top-Level-Menüeintrag.</p>\n<p sourcefile=\"api/TuiVision.Controls.MenuLayoutSlot.yml\" sourcestartlinenumber=\"3\">Represents a layout slot for a top-level menu entry.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Controls.ShellCommandIds.yml",
       "output": {
         ".html": {
@@ -724,7 +738,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Controls.TMenuBar",
-      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TMenuBar.yml\" sourcestartlinenumber=\"1\">Die Menüleiste am oberen Bildschirmrand.\nZeigt das Hauptmenü der Anwendung an.</p>\n<p sourcefile=\"api/TuiVision.Controls.TMenuBar.yml\" sourcestartlinenumber=\"4\">The menu bar at the top of the screen.\nDisplays the main menu of the application.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TMenuBar.yml\" sourcestartlinenumber=\"1\">Die Menüleiste am oberen Bildschirmrand.\nZeigt das Hauptmenü der Anwendung an und unterstützt vollständige Tastaturnavigation:\nPfeiltasten, Enter, Escape, Mnemonik-Kürzel und Wrap-around.</p>\n<p sourcefile=\"api/TuiVision.Controls.TMenuBar.yml\" sourcestartlinenumber=\"5\">The menu bar at the top of the screen.\nDisplays the main menu of the application and supports full keyboard navigation:\narrow keys, Enter, Escape, mnemonic shortcuts, and wrap-around.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -738,7 +752,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Controls.TMenuItem",
-      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TMenuItem.yml\" sourcestartlinenumber=\"1\">Repräsentiert einen Menüpunkt in einer Menüleiste oder einem Menü.\nKann verschachtelte Untermenüs enthalten.</p>\n<p sourcefile=\"api/TuiVision.Controls.TMenuItem.yml\" sourcestartlinenumber=\"4\">Represents a menu item in a menu bar or menu.\nCan contain nested submenus.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TMenuItem.yml\" sourcestartlinenumber=\"1\">Repräsentiert einen Menüpunkt in einer Menüleiste oder einem Menü.\nKann verschachtelte Untermenüs enthalten. Trennzeilen werden mit dem\nspeziellen Namen <code>&quot;---&quot;</code> oder über <xref href=\"TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)\" data-throw-if-not-resolved=\"false\"></xref> erstellt.</p>\n<p sourcefile=\"api/TuiVision.Controls.TMenuItem.yml\" sourcestartlinenumber=\"5\">Represents a menu item in a menu bar or menu.\nCan contain nested submenus. Separator rows are created using the special\nname <code>&quot;---&quot;</code> or via <xref href=\"TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -868,6 +882,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TStatusDef.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TStatusDef.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TStatusDef",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TStatusDef.yml\" sourcestartlinenumber=\"1\">Ordnet einem inklusiven Hilfekontext-Bereich einen Satz von Statuszeilen-Aktionen zu.\nMehrere Definitionen werden als verkettete Liste organisiert; die erste passende\nDefinition gewinnt (First-Match-Wins-Reihenfolge).\nWenn keine Definition passt, wird ein neutraler Leer-Zustand angezeigt.</p>\n<p sourcefile=\"api/TuiVision.Controls.TStatusDef.yml\" sourcestartlinenumber=\"6\">Maps one inclusive help-context range to one set of status-line actions.\nMultiple definitions are organised as a linked list; the first matching\ndefinition wins (first-match-wins ordering).\nWhen no definition matches, a neutral empty state is shown.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Controls.TStatusItem.yml",
       "output": {
         ".html": {
@@ -892,7 +920,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Controls.TStatusLine",
-      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TStatusLine.yml\" sourcestartlinenumber=\"1\">Die Statuszeile am unteren Bildschirmrand.\nZeigt kontextabhängige Hinweise und Shortcuts an.</p>\n<p sourcefile=\"api/TuiVision.Controls.TStatusLine.yml\" sourcestartlinenumber=\"4\">The status line at the bottom of the screen.\nDisplays context-sensitive hints and shortcuts.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TStatusLine.yml\" sourcestartlinenumber=\"1\">Die Statuszeile am unteren Bildschirmrand.\nZeigt kontextabhängige Hinweise und Shortcuts an.\nWenn eine <xref href=\"TuiVision.Controls.TStatusDef\" data-throw-if-not-resolved=\"false\"></xref>-Kette konfiguriert ist, wird die erste passende\nDefinition per First-Match-Wins ausgewählt; bei keiner Übereinstimmung bleibt die\nZeile neutral (<xref href=\"TuiVision.Controls.TStatusLine.Items\" data-throw-if-not-resolved=\"false\"></xref> == <code>null</code>).\nOhne <xref href=\"TuiVision.Controls.TStatusDef\" data-throw-if-not-resolved=\"false\"></xref> greift der Kompatibilitäts-Fallback auf\n<xref href=\"TuiVision.Controls.TView.GetStatusHints\" data-throw-if-not-resolved=\"false\"></xref> der fokussierten View zurück.</p>\n<p sourcefile=\"api/TuiVision.Controls.TStatusLine.yml\" sourcestartlinenumber=\"9\">The status line at the bottom of the screen.\nDisplays context-sensitive hints and shortcuts.\nWhen a <xref href=\"TuiVision.Controls.TStatusDef\" data-throw-if-not-resolved=\"false\"></xref> chain is configured, the first matching definition\nis selected using first-match-wins ordering; when no definition matches, the line\nshows a neutral state (<xref href=\"TuiVision.Controls.TStatusLine.Items\" data-throw-if-not-resolved=\"false\"></xref> == <code>null</code>).\nWithout a <xref href=\"TuiVision.Controls.TStatusDef\" data-throw-if-not-resolved=\"false\"></xref> the compatibility fallback uses\n<xref href=\"TuiVision.Controls.TView.GetStatusHints\" data-throw-if-not-resolved=\"false\"></xref> from the focused view.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -907,6 +935,20 @@
       "IsMRef": true,
       "Title": "TuiVision.Controls.TStringList",
       "Summary": "<p sourcefile=\"api/TuiVision.Controls.TStringList.yml\" sourcestartlinenumber=\"1\">Einfache indizierte String-Sammlung für listenbasierte Controls.\nDie Klasse bildet das managed Gegenstück zu <code>TStringList</code> aus Turbo Vision.</p>\n<p sourcefile=\"api/TuiVision.Controls.TStringList.yml\" sourcestartlinenumber=\"4\">Simple indexed string collection for list-based controls.\nThe class represents the managed counterpart of <code>TStringList</code> from Turbo Vision.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TSubMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TSubMenu.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TSubMenu",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TSubMenu.yml\" sourcestartlinenumber=\"1\">Beschreibt einen Untermenü-Zweig unter einem Top-Level-Menüeintrag.\nEntspricht dem historischen <code>tvguid02</code>-Syntax:\n<code>new TSubMenu(&quot;~E~diting&quot;, 0, new TMenuItem(...))</code>.\nNur eine Ebene von Untermenüs wird unterstützt; verschachtelte Untermenübäume\nliegen außerhalb des Geltungsbereichs dieser Revision.</p>\n<p sourcefile=\"api/TuiVision.Controls.TSubMenu.yml\" sourcestartlinenumber=\"7\">Describes a submenu branch under one top-level menu entry.\nCorresponds to the historical <code>tvguid02</code> builder syntax:\n<code>new TSubMenu(&quot;~E~diting&quot;, 0, new TMenuItem(...))</code>.\nOnly one level of submenus is supported; nested submenu trees are out of scope\nfor this revision.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -976,7 +1018,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Controls.TWindow",
-      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TWindow.yml\" sourcestartlinenumber=\"1\">Einfaches Fenster-Container-Element als managed Gegenstück zu <code>TWindow</code>\naus Turbo Vision (<code>twindow.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TWindow.yml\" sourcestartlinenumber=\"4\">Simple window container element as a managed counterpart to <code>TWindow</code>\nfrom Turbo Vision (<code>twindow.cc</code>).</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TWindow.yml\" sourcestartlinenumber=\"1\">Fenster-Container-Element als managed Gegenstück zu <code>TWindow</code> aus Turbo Vision.\nUnterstützt optionale Schließ-Affordanz (×), Ctrl+W, bewachtes Escape sowie\neinen reversiblen Verschiebe-Modus per Ctrl+F5.</p>\n<p sourcefile=\"api/TuiVision.Controls.TWindow.yml\" sourcestartlinenumber=\"5\">Window container element as the managed counterpart to <code>TWindow</code> from Turbo Vision.\nSupports optional close affordance (×), Ctrl+W, guarded Escape, and a reversible\nmove mode via Ctrl+F5.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -991,6 +1033,20 @@
       "IsMRef": true,
       "Title": "TuiVision.Controls.TvUIStrings",
       "Summary": "<p sourcefile=\"api/TuiVision.Controls.TvUIStrings.yml\" sourcestartlinenumber=\"1\">Standard-UI-Texte als managed Ersatz für <code>tvtext1.cc</code> und <code>tvtext2.cc</code>.</p>\n<p sourcefile=\"api/TuiVision.Controls.TvUIStrings.yml\" sourcestartlinenumber=\"3\">Default UI texts as a managed replacement for <code>tvtext1.cc</code> and <code>tvtext2.cc</code>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.WindowFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.WindowFlags.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.WindowFlags",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.WindowFlags.yml\" sourcestartlinenumber=\"1\">Steuert sichtbare Fensterfähigkeiten: Schließen und Verschieben.\nNur <xref href=\"TuiVision.Controls.WindowFlags.Close\" data-throw-if-not-resolved=\"false\"></xref> und <xref href=\"TuiVision.Controls.WindowFlags.Move\" data-throw-if-not-resolved=\"false\"></xref> sind für diese Revision definiert;\nZoom und Grow liegen außerhalb des aktuellen Geltungsbereichs.</p>\n<p sourcefile=\"api/TuiVision.Controls.WindowFlags.yml\" sourcestartlinenumber=\"5\">Controls visible window capabilities: closing and moving.\nOnly <xref href=\"TuiVision.Controls.WindowFlags.Close\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"TuiVision.Controls.WindowFlags.Move\" data-throw-if-not-resolved=\"false\"></xref> are defined for this revision;\nzoom and grow are out of scope.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1330,6 +1386,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Drivers.Console.SystemConsolePresenter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Drivers.Console.SystemConsolePresenter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Drivers.Console.SystemConsolePresenter",
+      "Summary": "<p sourcefile=\"api/TuiVision.Drivers.Console.SystemConsolePresenter.yml\" sourcestartlinenumber=\"1\">Stellt einen <xref href=\"TuiVision.Core.TConsoleBuffer\" data-throw-if-not-resolved=\"false\"></xref>-Frame auf der echten <xref href=\"System.Console\" data-throw-if-not-resolved=\"false\"></xref> dar.\nAlle Konsolen-API-Aufrufe sind von <code>try/catch</code>-Blöcken umgeben, damit der Presenter\nin Umgebungen ohne Terminal (z. B. CI, umgeleitete E/A, Smoke-Tests) stumm bleibt.</p>\n<p sourcefile=\"api/TuiVision.Drivers.Console.SystemConsolePresenter.yml\" sourcestartlinenumber=\"5\">Presents a <xref href=\"TuiVision.Core.TConsoleBuffer\" data-throw-if-not-resolved=\"false\"></xref> frame on the real <xref href=\"System.Console\" data-throw-if-not-resolved=\"false\"></xref>.\nAll console API calls are wrapped in <code>try/catch</code> blocks so the presenter\nstays silent in environments without a terminal (e.g. CI, redirected I/O, smoke tests).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Drivers.Console.TConsoleBuffer.yml",
       "output": {
         ".html": {
@@ -1631,6 +1701,46 @@
         },
         ".json": {
           "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/examples/desklogo.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/examples/desklogo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/examples/msgcls.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/examples/msgcls.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/examples/tutorial.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/examples/tutorial.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/examples/videomode.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/examples/videomode.html"
         }
       },
       "version": ""
