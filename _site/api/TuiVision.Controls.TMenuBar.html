@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TMenuBar | TuiVision Documentation ">
       
-      <meta name="description" content="Die Men&#252;leiste am oberen Bildschirmrand. Zeigt das Hauptmen&#252; der Anwendung an. The menu bar at the top of the screen. Displays the main menu of the application.">
+      <meta name="description" content="Die Men&#252;leiste am oberen Bildschirmrand. Zeigt das Hauptmen&#252; der Anwendung an und unterst&#252;tzt vollst&#228;ndige Tastaturnavigation: Pfeiltasten, Enter, Escape, Mnemonik-K&#252;rzel und Wrap-around. The menu bar at the top of the screen. Displays the main menu of the application and supports full keyboard navigation: arrow keys, Enter, Escape, mnemonic shortcuts, and wrap-around.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/006-close-phase8-gate/apiSpec/new?filename=TuiVision_Controls_TMenuBar.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TMenuBar%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/008-controls-revision/apiSpec/new?filename=TuiVision_Controls_TMenuBar.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TMenuBar%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TuiVision_Controls_TMenuBar" data-uid="TuiVision.Controls.TMenuBar" class="text-break">
-Class TMenuBar  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Controls/TMenuBar.cs/#L15"><i class="bi bi-code-slash"></i></a>
+Class TMenuBar  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -98,9 +98,11 @@ Class TMenuBar  <a class="header-action link-secondary" title="View source" href
   </div>
 
   <div class="markdown summary"><p>Die Menüleiste am oberen Bildschirmrand.
-Zeigt das Hauptmenü der Anwendung an.</p>
+Zeigt das Hauptmenü der Anwendung an und unterstützt vollständige Tastaturnavigation:
+Pfeiltasten, Enter, Escape, Mnemonik-Kürzel und Wrap-around.</p>
 <p>The menu bar at the top of the screen.
-Displays the main menu of the application.</p>
+Displays the main menu of the application and supports full keyboard navigation:
+arrow keys, Enter, Escape, mnemonic shortcuts, and wrap-around.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -187,19 +189,16 @@ Displays the main menu of the application.</p>
       <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_MouseInView_TuiVision_Core_TPoint_">TView.MouseInView(TPoint)</a>
     </div>
     <div>
-      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw">TView.Draw()</a>
-    </div>
-    <div>
       <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView">TView.DrawView()</a>
     </div>
     <div>
       <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer">TView.GetDrawBuffer()</a>
     </div>
     <div>
-      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints">TView.GetStatusHints()</a>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext">TView.HelpContext</a>
     </div>
     <div>
-      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_OnBoundsChanged">TView.OnBoundsChanged()</a>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints">TView.GetStatusHints()</a>
     </div>
     <div>
       <a class="xref" href="TuiVision.Core.TObject.html#TuiVision_Core_TObject_ShutDown">TObject.ShutDown()</a>
@@ -243,7 +242,7 @@ Displays the main menu of the application.</p>
 
   <h3 id="TuiVision_Controls_TMenuBar__ctor_TuiVision_Core_TRect_" data-uid="TuiVision.Controls.TMenuBar.#ctor(TuiVision.Core.TRect)">
   TMenuBar(TRect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Controls/TMenuBar.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L101"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initialisiert eine neue Instanz der <a class="xref" href="TuiVision.Controls.TMenuBar.html">TMenuBar</a>-Klasse.</p>
@@ -281,7 +280,7 @@ Displays the main menu of the application.</p>
 
   <h3 id="TuiVision_Controls_TMenuBar_IsMenuActive" data-uid="TuiVision.Controls.TMenuBar.IsMenuActive">
   IsMenuActive
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Controls/TMenuBar.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L62"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gibt an, ob die Menüleiste gerade aktiv (geöffnet) ist.</p>
@@ -310,11 +309,46 @@ Displays the main menu of the application.</p>
 
 
 
+  <a id="TuiVision_Controls_TMenuBar_LayoutSlots_" data-uid="TuiVision.Controls.TMenuBar.LayoutSlots*"></a>
+
+  <h3 id="TuiVision_Controls_TMenuBar_LayoutSlots" data-uid="TuiVision.Controls.TMenuBar.LayoutSlots">
+  LayoutSlots
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die berechneten Layout-Slots der Top-Level-Einträge.
+Wird bei Aktivierung und nach Größenänderungen neu berechnet.</p>
+<p>The computed layout slots for top-level entries.
+Recomputed on activation and after bounds changes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;MenuLayoutSlot&gt; LayoutSlots { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="TuiVision.Controls.MenuLayoutSlot.html">MenuLayoutSlot</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TuiVision_Controls_TMenuBar_Menu_" data-uid="TuiVision.Controls.TMenuBar.Menu*"></a>
 
   <h3 id="TuiVision_Controls_TMenuBar_Menu" data-uid="TuiVision.Controls.TMenuBar.Menu">
   Menu
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Controls/TMenuBar.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L55"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die Liste der Menüpunkte. / The list of menu items.</p>
@@ -342,19 +376,155 @@ Displays the main menu of the application.</p>
 
 
 
+  <a id="TuiVision_Controls_TMenuBar_SelectedSubMenuItem_" data-uid="TuiVision.Controls.TMenuBar.SelectedSubMenuItem*"></a>
+
+  <h3 id="TuiVision_Controls_TMenuBar_SelectedSubMenuItem" data-uid="TuiVision.Controls.TMenuBar.SelectedSubMenuItem">
+  SelectedSubMenuItem
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Der aktuell ausgewählte Untermenü-Eintrag (wenn ein Untermenü geöffnet ist).</p>
+<p>The currently selected submenu entry (when a submenu is open).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TMenuItem? SelectedSubMenuItem { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TuiVision.Controls.TMenuItem.html">TMenuItem</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_TMenuBar_SelectedTopLevel_" data-uid="TuiVision.Controls.TMenuBar.SelectedTopLevel*"></a>
+
+  <h3 id="TuiVision_Controls_TMenuBar_SelectedTopLevel" data-uid="TuiVision.Controls.TMenuBar.SelectedTopLevel">
+  SelectedTopLevel
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Der aktuell ausgewählte Top-Level-Menüpunkt (wenn das Menü aktiv ist).</p>
+<p>The currently selected top-level menu item (when the menu is active).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TMenuItem? SelectedTopLevel { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TuiVision.Controls.TMenuItem.html">TMenuItem</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
+
+
+  <a id="TuiVision_Controls_TMenuBar_Draw_" data-uid="TuiVision.Controls.TMenuBar.Draw*"></a>
+
+  <h3 id="TuiVision_Controls_TMenuBar_Draw" data-uid="TuiVision.Controls.TMenuBar.Draw">
+  Draw()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Zeichnet die Menüleiste. Sind Menüpunkte gesetzt, werden sie mit hervorgehobenem
+Hotkey-Zeichen angezeigt; der ausgewählte Top-Level-Eintrag wird hervorgehoben.
+Andernfalls erscheint der Anwendungsname.</p>
+<p>Draws the menu bar. When menu items are set they are rendered with the hotkey character
+highlighted; the selected top-level entry is highlighted. Otherwise the application
+name is shown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Draw()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_TMenuBar_DrawSubMenuOverlay_" data-uid="TuiVision.Controls.TMenuBar.DrawSubMenuOverlay*"></a>
+
+  <h3 id="TuiVision_Controls_TMenuBar_DrawSubMenuOverlay_TuiVision_Core_TConsoleBuffer_" data-uid="TuiVision.Controls.TMenuBar.DrawSubMenuOverlay(TuiVision.Core.TConsoleBuffer)">
+  DrawSubMenuOverlay(TConsoleBuffer?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L366"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Zeichnet das aktuell offene Untermenü als Popup-Overlay in den finalen Puffer.
+Muss nach dem Desktop-Compositing aufgerufen werden, damit das Popup nicht überschrieben wird.</p>
+<p>Draws the currently open submenu as a popup overlay into the final buffer.
+Must be called after desktop compositing so the popup is not overwritten.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawSubMenuOverlay(TConsoleBuffer? buffer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>buffer</code> <a class="xref" href="TuiVision.Core.TConsoleBuffer.html">TConsoleBuffer</a></dt>
+    <dd><p>Der Ausgabepuffer. / The output buffer.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
 
 
   <a id="TuiVision_Controls_TMenuBar_HandleEvent_" data-uid="TuiVision.Controls.TMenuBar.HandleEvent*"></a>
 
   <h3 id="TuiVision_Controls_TMenuBar_HandleEvent_TuiVision_Core_TEvent_" data-uid="TuiVision.Controls.TMenuBar.HandleEvent(TuiVision.Core.TEvent)">
   HandleEvent(TEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Controls/TMenuBar.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L179"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Verarbeitet ein Ereignis. Aktiviert die Menüleiste bei F10, reagiert auf Pfeiltasten.</p>
-<p>Processes an event. Activates the menu bar on F10, reacts to arrow keys.</p>
+  <div class="markdown level1 summary"><p>Verarbeitet ein Ereignis. Aktiviert die Menüleiste bei F10/Alt,
+und bietet vollständige Tastaturnavigation im aktiven Zustand.</p>
+<p>Processes an event. Activates the menu bar on F10/Alt,
+and provides full keyboard navigation while the menu is active.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -380,11 +550,41 @@ Displays the main menu of the application.</p>
 
 
 
+  <a id="TuiVision_Controls_TMenuBar_OnBoundsChanged_" data-uid="TuiVision.Controls.TMenuBar.OnBoundsChanged*"></a>
+
+  <h3 id="TuiVision_Controls_TMenuBar_OnBoundsChanged" data-uid="TuiVision.Controls.TMenuBar.OnBoundsChanged">
+  OnBoundsChanged()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L462"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Wird aufgerufen, wenn sich der Begrenzungsrahmen ändert. Invalidiert die Layout-Slots,
+damit sie beim nächsten Aktivierungsvorgang neu berechnet werden.</p>
+<p>Called when the bounding rectangle changes. Invalidates the layout slots so they are
+recomputed on the next activation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnBoundsChanged()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/src/TuiVision.Controls/TMenuBar.cs/#L15" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L42" class="edit-link">Edit this page</a>
         </div>
 
 

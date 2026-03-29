@@ -56,7 +56,7 @@ internal sealed class TvGuid02App : TApplication
     }
 
     // Befehlskonstanten für diesen Tutorial-Schritt / Command constants for this tutorial step
-    private const ushort CmFileNew  = 100;
+    private const ushort CmFileNew = 100;
     private const ushort CmFileOpen = 101;
 
     /// <summary>
@@ -72,9 +72,9 @@ internal sealed class TvGuid02App : TApplication
     {
         // Untermenü-Einträge für Datei / File: Neu, Öffnen, Beenden
         // Submenu entries for File: New, Open, Quit
-        TMenuItem fileItems = new TMenuItem("~N~eu / ~N~ew",         CmFileNew,                    next: new TMenuItem(
-                                            "~Ö~ffnen / ~O~pen",     CmFileOpen,                   next: new TMenuItem(
-                                            "~E~nde / E~x~it",       ShellCommandIds.cmQuit)));
+        TMenuItem fileItems = new TMenuItem("~N~eu / ~N~ew", CmFileNew, next: new TMenuItem(
+                                            "~Ö~ffnen / ~O~pen", CmFileOpen, next: new TMenuItem(
+                                            "~E~nde / E~x~it", ShellCommandIds.cmQuit)));
 
         return new TMenuBar(bounds)
         {

@@ -6,6 +6,8 @@ items:
   parent: TuiVision.Controls
   children:
   - TuiVision.Controls.TStatusLine.#ctor(TuiVision.Core.TRect)
+  - TuiVision.Controls.TStatusLine.#ctor(TuiVision.Core.TRect,TuiVision.Controls.TStatusDef)
+  - TuiVision.Controls.TStatusLine.Draw
   - TuiVision.Controls.TStatusLine.HandleEvent(TuiVision.Core.TEvent)
   - TuiVision.Controls.TStatusLine.Items
   langs:
@@ -18,11 +20,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStatusLine.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: TStatusLine
     path: src/TuiVision.Controls/TStatusLine.cs
-    startLine: 14
+    startLine: 24
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -31,10 +33,30 @@ items:
 
     Zeigt kontextabhängige Hinweise und Shortcuts an.
 
+    Wenn eine <xref href="TuiVision.Controls.TStatusDef" data-throw-if-not-resolved="false"></xref>-Kette konfiguriert ist, wird die erste passende
+
+    Definition per First-Match-Wins ausgewählt; bei keiner Übereinstimmung bleibt die
+
+    Zeile neutral (<xref href="TuiVision.Controls.TStatusLine.Items" data-throw-if-not-resolved="false"></xref> == <code>null</code>).
+
+    Ohne <xref href="TuiVision.Controls.TStatusDef" data-throw-if-not-resolved="false"></xref> greift der Kompatibilitäts-Fallback auf
+
+    <xref href="TuiVision.Controls.TView.GetStatusHints" data-throw-if-not-resolved="false"></xref> der fokussierten View zurück.
+
 
     The status line at the bottom of the screen.
 
     Displays context-sensitive hints and shortcuts.
+
+    When a <xref href="TuiVision.Controls.TStatusDef" data-throw-if-not-resolved="false"></xref> chain is configured, the first matching definition
+
+    is selected using first-match-wins ordering; when no definition matches, the line
+
+    shows a neutral state (<xref href="TuiVision.Controls.TStatusLine.Items" data-throw-if-not-resolved="false"></xref> == <code>null</code>).
+
+    Without a <xref href="TuiVision.Controls.TStatusDef" data-throw-if-not-resolved="false"></xref> the compatibility fallback uses
+
+    <xref href="TuiVision.Controls.TView.GetStatusHints" data-throw-if-not-resolved="false"></xref> from the focused view.
   example: []
   syntax:
     content: 'public class TStatusLine : TView'
@@ -64,9 +86,9 @@ items:
   - TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
-  - TuiVision.Controls.TView.Draw
   - TuiVision.Controls.TView.DrawView
   - TuiVision.Controls.TView.GetDrawBuffer
+  - TuiVision.Controls.TView.HelpContext
   - TuiVision.Controls.TView.GetStatusHints
   - TuiVision.Controls.TView.OnBoundsChanged
   - TuiVision.Core.TObject.ShutDown
@@ -92,11 +114,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStatusLine.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Items
     path: src/TuiVision.Controls/TStatusLine.cs
-    startLine: 19
+    startLine: 29
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -123,19 +145,23 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStatusLine.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TStatusLine.cs
-    startLine: 27
+    startLine: 42
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
   summary: >-
-    Initialisiert eine neue Instanz der <xref href="TuiVision.Controls.TStatusLine" data-throw-if-not-resolved="false"></xref>-Klasse.
+    Initialisiert eine neue Instanz der <xref href="TuiVision.Controls.TStatusLine" data-throw-if-not-resolved="false"></xref>-Klasse
+
+    ohne explizite Statuszeilen-Definitionen (Kompatibilitätsmodus).
 
 
-    Initializes a new instance of the <xref href="TuiVision.Controls.TStatusLine" data-throw-if-not-resolved="false"></xref> class.
+    Initializes a new instance of the <xref href="TuiVision.Controls.TStatusLine" data-throw-if-not-resolved="false"></xref> class
+
+    without explicit status-line definitions (compatibility mode).
   example: []
   syntax:
     content: public TStatusLine(TRect bounds)
@@ -148,6 +174,88 @@ items:
   nameWithType.vb: TStatusLine.New(TRect)
   fullName.vb: TuiVision.Controls.TStatusLine.New(TuiVision.Core.TRect)
   name.vb: New(TRect)
+- uid: TuiVision.Controls.TStatusLine.#ctor(TuiVision.Core.TRect,TuiVision.Controls.TStatusDef)
+  commentId: M:TuiVision.Controls.TStatusLine.#ctor(TuiVision.Core.TRect,TuiVision.Controls.TStatusDef)
+  id: '#ctor(TuiVision.Core.TRect,TuiVision.Controls.TStatusDef)'
+  parent: TuiVision.Controls.TStatusLine
+  langs:
+  - csharp
+  - vb
+  name: TStatusLine(TRect, TStatusDef?)
+  nameWithType: TStatusLine.TStatusLine(TRect, TStatusDef?)
+  fullName: TuiVision.Controls.TStatusLine.TStatusLine(TuiVision.Core.TRect, TuiVision.Controls.TStatusDef?)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStatusLine.cs
+      branch: 008-controls-revision
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Controls/TStatusLine.cs
+    startLine: 58
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Initialisiert eine neue Instanz der <xref href="TuiVision.Controls.TStatusLine" data-throw-if-not-resolved="false"></xref>-Klasse
+
+    mit einer expliziten <xref href="TuiVision.Controls.TStatusDef" data-throw-if-not-resolved="false"></xref>-Kette.
+
+
+    Initializes a new instance of the <xref href="TuiVision.Controls.TStatusLine" data-throw-if-not-resolved="false"></xref> class
+
+    with an explicit <xref href="TuiVision.Controls.TStatusDef" data-throw-if-not-resolved="false"></xref> chain.
+  example: []
+  syntax:
+    content: public TStatusLine(TRect bounds, TStatusDef? defs)
+    parameters:
+    - id: bounds
+      type: TuiVision.Core.TRect
+      description: Die Grenzen der Statuszeile. / The bounds of the status line.
+    - id: defs
+      type: TuiVision.Controls.TStatusDef
+      description: >-
+        Die erste Definition der Statusketten. Darf <code>null</code> sein (dann Kompatibilitätsmodus).
+
+        The first definition in the status chain. May be <code>null</code> (then compatibility mode).
+    content.vb: Public Sub New(bounds As TRect, defs As TStatusDef)
+  overload: TuiVision.Controls.TStatusLine.#ctor*
+  nameWithType.vb: TStatusLine.New(TRect, TStatusDef)
+  fullName.vb: TuiVision.Controls.TStatusLine.New(TuiVision.Core.TRect, TuiVision.Controls.TStatusDef)
+  name.vb: New(TRect, TStatusDef)
+- uid: TuiVision.Controls.TStatusLine.Draw
+  commentId: M:TuiVision.Controls.TStatusLine.Draw
+  id: Draw
+  parent: TuiVision.Controls.TStatusLine
+  langs:
+  - csharp
+  - vb
+  name: Draw()
+  nameWithType: TStatusLine.Draw()
+  fullName: TuiVision.Controls.TStatusLine.Draw()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStatusLine.cs
+      branch: 008-controls-revision
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Draw
+    path: src/TuiVision.Controls/TStatusLine.cs
+    startLine: 68
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Zeichnet die Statuszeile mit Hintergrundfarbe und dem Alt+X-Hinweis.
+
+
+    Draws the status line with background colour and the Alt+X hint.
+  example: []
+  syntax:
+    content: public override void Draw()
+    content.vb: Public Overrides Sub Draw()
+  overridden: TuiVision.Controls.TView.Draw
+  overload: TuiVision.Controls.TStatusLine.Draw*
 - uid: TuiVision.Controls.TStatusLine.HandleEvent(TuiVision.Core.TEvent)
   commentId: M:TuiVision.Controls.TStatusLine.HandleEvent(TuiVision.Core.TEvent)
   id: HandleEvent(TuiVision.Core.TEvent)
@@ -162,11 +270,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStatusLine.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TStatusLine.cs
-    startLine: 37
+    startLine: 94
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -186,6 +294,38 @@ items:
   overridden: TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)
   overload: TuiVision.Controls.TStatusLine.HandleEvent*
 references:
+- uid: TuiVision.Controls.TStatusDef
+  commentId: T:TuiVision.Controls.TStatusDef
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TStatusDef.html
+  name: TStatusDef
+  nameWithType: TStatusDef
+  fullName: TuiVision.Controls.TStatusDef
+- uid: TuiVision.Controls.TStatusLine.Items
+  commentId: P:TuiVision.Controls.TStatusLine.Items
+  href: TuiVision.Controls.TStatusLine.html#TuiVision_Controls_TStatusLine_Items
+  name: Items
+  nameWithType: TStatusLine.Items
+  fullName: TuiVision.Controls.TStatusLine.Items
+- uid: TuiVision.Controls.TView.GetStatusHints
+  commentId: M:TuiVision.Controls.TView.GetStatusHints
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints
+  name: GetStatusHints()
+  nameWithType: TView.GetStatusHints()
+  fullName: TuiVision.Controls.TView.GetStatusHints()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.GetStatusHints
+    name: GetStatusHints
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.GetStatusHints
+    name: GetStatusHints
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints
+  - name: (
+  - name: )
 - uid: TuiVision.Controls
   commentId: N:TuiVision.Controls
   href: TuiVision.html
@@ -670,25 +810,6 @@ references:
     name: TPoint
     href: TuiVision.Core.TPoint.html
   - name: )
-- uid: TuiVision.Controls.TView.Draw
-  commentId: M:TuiVision.Controls.TView.Draw
-  parent: TuiVision.Controls.TView
-  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw
-  name: Draw()
-  nameWithType: TView.Draw()
-  fullName: TuiVision.Controls.TView.Draw()
-  spec.csharp:
-  - uid: TuiVision.Controls.TView.Draw
-    name: Draw
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: TuiVision.Controls.TView.Draw
-    name: Draw
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw
-  - name: (
-  - name: )
 - uid: TuiVision.Controls.TView.DrawView
   commentId: M:TuiVision.Controls.TView.DrawView
   parent: TuiVision.Controls.TView
@@ -727,25 +848,13 @@ references:
     href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
   - name: (
   - name: )
-- uid: TuiVision.Controls.TView.GetStatusHints
-  commentId: M:TuiVision.Controls.TView.GetStatusHints
+- uid: TuiVision.Controls.TView.HelpContext
+  commentId: P:TuiVision.Controls.TView.HelpContext
   parent: TuiVision.Controls.TView
-  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints
-  name: GetStatusHints()
-  nameWithType: TView.GetStatusHints()
-  fullName: TuiVision.Controls.TView.GetStatusHints()
-  spec.csharp:
-  - uid: TuiVision.Controls.TView.GetStatusHints
-    name: GetStatusHints
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: TuiVision.Controls.TView.GetStatusHints
-    name: GetStatusHints
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints
-  - name: (
-  - name: )
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext
+  name: HelpContext
+  nameWithType: TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
 - uid: TuiVision.Controls.TView.OnBoundsChanged
   commentId: M:TuiVision.Controls.TView.OnBoundsChanged
   parent: TuiVision.Controls.TView
@@ -1093,6 +1202,31 @@ references:
   name: TRect
   nameWithType: TRect
   fullName: TuiVision.Core.TRect
+- uid: TuiVision.Controls.TView.Draw
+  commentId: M:TuiVision.Controls.TView.Draw
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw
+  name: Draw()
+  nameWithType: TView.Draw()
+  fullName: TuiVision.Controls.TView.Draw()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.Draw
+    name: Draw
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.Draw
+    name: Draw
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TStatusLine.Draw*
+  commentId: Overload:TuiVision.Controls.TStatusLine.Draw
+  href: TuiVision.Controls.TStatusLine.html#TuiVision_Controls_TStatusLine_Draw
+  name: Draw
+  nameWithType: TStatusLine.Draw
+  fullName: TuiVision.Controls.TStatusLine.Draw
 - uid: TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)
   commentId: M:TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)
   parent: TuiVision.Controls.TView

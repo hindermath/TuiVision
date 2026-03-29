@@ -8,6 +8,7 @@ items:
   - TuiVision.Controls.TProgram.#ctor(TuiVision.Core.TRect)
   - TuiVision.Controls.TProgram.CurrentChanged
   - TuiVision.Controls.TProgram.Desktop
+  - TuiVision.Controls.TProgram.Draw
   - TuiVision.Controls.TProgram.Driver
   - TuiVision.Controls.TProgram.GetEvent(TuiVision.Core.TEvent@)
   - TuiVision.Controls.TProgram.HandleEvent(TuiVision.Core.TEvent)
@@ -26,7 +27,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: TProgram
     path: src/TuiVision.Controls/TProgram.cs
@@ -61,7 +62,7 @@ items:
   - TuiVision.Controls.TGroup.ShutDown
   - TuiVision.Controls.TGroup.SetFocus(TuiVision.Controls.TView)
   - TuiVision.Controls.TGroup.SelectNext(System.Boolean)
-  - TuiVision.Controls.TGroup.Draw
+  - TuiVision.Controls.TGroup.GetDrawBuffer
   - TuiVision.Controls.TGroup.LockDraw
   - TuiVision.Controls.TGroup.UnlockDraw
   - TuiVision.Controls.TGroup.SetState(TuiVision.Controls.TViewState,System.Boolean)
@@ -87,7 +88,7 @@ items:
   - TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.DrawView
-  - TuiVision.Controls.TView.GetDrawBuffer
+  - TuiVision.Controls.TView.HelpContext
   - TuiVision.Controls.TView.GetStatusHints
   - TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
   - System.Object.Equals(System.Object)
@@ -111,7 +112,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Driver
     path: src/TuiVision.Controls/TProgram.cs
@@ -146,7 +147,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: MenuBar
     path: src/TuiVision.Controls/TProgram.cs
@@ -177,7 +178,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Desktop
     path: src/TuiVision.Controls/TProgram.cs
@@ -208,7 +209,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: StatusLine
     path: src/TuiVision.Controls/TProgram.cs
@@ -239,11 +240,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TProgram.cs
-    startLine: 47
+    startLine: 48
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -278,11 +279,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Run
     path: src/TuiVision.Controls/TProgram.cs
-    startLine: 59
+    startLine: 60
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -300,6 +301,43 @@ items:
     content: public virtual void Run()
     content.vb: Public Overridable Sub Run()
   overload: TuiVision.Controls.TProgram.Run*
+- uid: TuiVision.Controls.TProgram.Draw
+  commentId: M:TuiVision.Controls.TProgram.Draw
+  id: Draw
+  parent: TuiVision.Controls.TProgram
+  langs:
+  - csharp
+  - vb
+  name: Draw()
+  nameWithType: TProgram.Draw()
+  fullName: TuiVision.Controls.TProgram.Draw()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TProgram.cs
+      branch: 008-controls-revision
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Draw
+    path: src/TuiVision.Controls/TProgram.cs
+    startLine: 133
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Zeichnet alle Kind-Views und anschließend das Untermenü-Overlay der Menüleiste.
+
+    Das Overlay wird nach dem Desktop-Compositing gerendert, damit es nicht überschrieben wird.
+
+
+    Draws all child views and then the menu bar's submenu overlay.
+
+    The overlay is rendered after desktop compositing so it is not overwritten.
+  example: []
+  syntax:
+    content: public override void Draw()
+    content.vb: Public Overrides Sub Draw()
+  overridden: TuiVision.Controls.TGroup.Draw
+  overload: TuiVision.Controls.TProgram.Draw*
 - uid: TuiVision.Controls.TProgram.GetEvent(TuiVision.Core.TEvent@)
   commentId: M:TuiVision.Controls.TProgram.GetEvent(TuiVision.Core.TEvent@)
   id: GetEvent(TuiVision.Core.TEvent@)
@@ -314,23 +352,35 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: GetEvent
     path: src/TuiVision.Controls/TProgram.cs
-    startLine: 96
+    startLine: 187
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
   summary: >-
-    Ruft das nächste Ereignis ab.
+    Ruft das nächste Tastatureingabe-Ereignis ab. Blockiert bis zu einem Tastendruck.
 
-    Aktuell ein Platzhalter, der keine Ereignisse liefert.
+    Folgende Tastenkombinationen lösen <code>cmQuit</code> aus:
 
 
-    Retrieves the next event.
+    <ul><li>Ctrl+Q — zuverlässig in macOS Terminal.app und anderen Terminals</li><li>Ctrl+C — erfordert zuvor gesetztes <code>TreatControlCAsInput = true</code></li><li>Alt+X / Alt+Q — wenn das Terminal die Meta-Taste als ESC-Sequenz überträgt</li></ul>
 
-    Currently a placeholder that returns no events.
+
+    In Umgebungen ohne Konsole (z. B. umgeleitete E/A) wird <xref href="TuiVision.Core.TEventKind.Nothing" data-throw-if-not-resolved="false"></xref> zurückgegeben.
+
+
+    Retrieves the next keyboard event. Blocks until a key is pressed.
+
+    The following key combinations trigger <code>cmQuit</code>:
+
+
+    <ul><li>Ctrl+Q — reliable in macOS Terminal.app and other terminals</li><li>Ctrl+C — requires <code>TreatControlCAsInput = true</code> set beforehand</li><li>Alt+X / Alt+Q — when the terminal transmits the Meta key as an ESC sequence</li></ul>
+
+
+    In environments without a console (e.g. redirected I/O) returns <xref href="TuiVision.Core.TEventKind.Nothing" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
     content: public virtual void GetEvent(out TEvent @event)
@@ -357,11 +407,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TProgram.cs
-    startLine: 107
+    startLine: 238
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -394,11 +444,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: IsCommandDisabled
     path: src/TuiVision.Controls/TProgram.cs
-    startLine: 138
+    startLine: 269
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -440,11 +490,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Resize
     path: src/TuiVision.Controls/TProgram.cs
-    startLine: 149
+    startLine: 280
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -476,11 +526,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: CurrentChanged
     path: src/TuiVision.Controls/TProgram.cs
-    startLine: 178
+    startLine: 309
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -686,23 +736,23 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: )
-- uid: TuiVision.Controls.TGroup.Draw
-  commentId: M:TuiVision.Controls.TGroup.Draw
+- uid: TuiVision.Controls.TGroup.GetDrawBuffer
+  commentId: M:TuiVision.Controls.TGroup.GetDrawBuffer
   parent: TuiVision.Controls.TGroup
-  href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw
-  name: Draw()
-  nameWithType: TGroup.Draw()
-  fullName: TuiVision.Controls.TGroup.Draw()
+  href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer
+  name: GetDrawBuffer()
+  nameWithType: TGroup.GetDrawBuffer()
+  fullName: TuiVision.Controls.TGroup.GetDrawBuffer()
   spec.csharp:
-  - uid: TuiVision.Controls.TGroup.Draw
-    name: Draw
-    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw
+  - uid: TuiVision.Controls.TGroup.GetDrawBuffer
+    name: GetDrawBuffer
+    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer
   - name: (
   - name: )
   spec.vb:
-  - uid: TuiVision.Controls.TGroup.Draw
-    name: Draw
-    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw
+  - uid: TuiVision.Controls.TGroup.GetDrawBuffer
+    name: GetDrawBuffer
+    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer
   - name: (
   - name: )
 - uid: TuiVision.Controls.TGroup.LockDraw
@@ -1237,25 +1287,13 @@ references:
     href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView
   - name: (
   - name: )
-- uid: TuiVision.Controls.TView.GetDrawBuffer
-  commentId: M:TuiVision.Controls.TView.GetDrawBuffer
+- uid: TuiVision.Controls.TView.HelpContext
+  commentId: P:TuiVision.Controls.TView.HelpContext
   parent: TuiVision.Controls.TView
-  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
-  name: GetDrawBuffer()
-  nameWithType: TView.GetDrawBuffer()
-  fullName: TuiVision.Controls.TView.GetDrawBuffer()
-  spec.csharp:
-  - uid: TuiVision.Controls.TView.GetDrawBuffer
-    name: GetDrawBuffer
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: TuiVision.Controls.TView.GetDrawBuffer
-    name: GetDrawBuffer
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
-  - name: (
-  - name: )
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext
+  name: HelpContext
+  nameWithType: TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
 - uid: TuiVision.Controls.TView.GetStatusHints
   commentId: M:TuiVision.Controls.TView.GetStatusHints
   parent: TuiVision.Controls.TView
@@ -1659,6 +1697,37 @@ references:
   name: Run
   nameWithType: TProgram.Run
   fullName: TuiVision.Controls.TProgram.Run
+- uid: TuiVision.Controls.TGroup.Draw
+  commentId: M:TuiVision.Controls.TGroup.Draw
+  parent: TuiVision.Controls.TGroup
+  href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw
+  name: Draw()
+  nameWithType: TGroup.Draw()
+  fullName: TuiVision.Controls.TGroup.Draw()
+  spec.csharp:
+  - uid: TuiVision.Controls.TGroup.Draw
+    name: Draw
+    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TGroup.Draw
+    name: Draw
+    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TProgram.Draw*
+  commentId: Overload:TuiVision.Controls.TProgram.Draw
+  href: TuiVision.Controls.TProgram.html#TuiVision_Controls_TProgram_Draw
+  name: Draw
+  nameWithType: TProgram.Draw
+  fullName: TuiVision.Controls.TProgram.Draw
+- uid: TuiVision.Core.TEventKind.Nothing
+  commentId: F:TuiVision.Core.TEventKind.Nothing
+  href: TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Nothing
+  name: Nothing
+  nameWithType: TEventKind.Nothing
+  fullName: TuiVision.Core.TEventKind.Nothing
 - uid: TuiVision.Controls.TProgram.GetEvent*
   commentId: Overload:TuiVision.Controls.TProgram.GetEvent
   href: TuiVision.Controls.TProgram.html#TuiVision_Controls_TProgram_GetEvent_TuiVision_Core_TEvent__

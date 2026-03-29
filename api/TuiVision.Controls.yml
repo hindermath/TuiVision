@@ -5,6 +5,7 @@ items:
   id: TuiVision.Controls
   children:
   - TuiVision.Controls.ManagedClipboard
+  - TuiVision.Controls.MenuLayoutSlot
   - TuiVision.Controls.ShellCommandIds
   - TuiVision.Controls.TApplication
   - TuiVision.Controls.TButton
@@ -57,15 +58,18 @@ items:
   - TuiVision.Controls.TScrollBar
   - TuiVision.Controls.TScroller
   - TuiVision.Controls.TStaticText
+  - TuiVision.Controls.TStatusDef
   - TuiVision.Controls.TStatusItem
   - TuiVision.Controls.TStatusLine
   - TuiVision.Controls.TStringList
+  - TuiVision.Controls.TSubMenu
   - TuiVision.Controls.TValidator
   - TuiVision.Controls.TView
   - TuiVision.Controls.TViewOptions
   - TuiVision.Controls.TViewState
   - TuiVision.Controls.TWindow
   - TuiVision.Controls.TvUIStrings
+  - TuiVision.Controls.WindowFlags
   langs:
   - csharp
   - vb
@@ -351,6 +355,12 @@ references:
   name: TMemo
   nameWithType: TMemo
   fullName: TuiVision.Controls.TMemo
+- uid: TuiVision.Controls.MenuLayoutSlot
+  commentId: T:TuiVision.Controls.MenuLayoutSlot
+  href: TuiVision.Controls.MenuLayoutSlot.html
+  name: MenuLayoutSlot
+  nameWithType: MenuLayoutSlot
+  fullName: TuiVision.Controls.MenuLayoutSlot
 - uid: TuiVision.Controls.TMenuBar
   commentId: T:TuiVision.Controls.TMenuBar
   parent: TuiVision.Controls
@@ -424,6 +434,13 @@ references:
   name: TStaticText
   nameWithType: TStaticText
   fullName: TuiVision.Controls.TStaticText
+- uid: TuiVision.Controls.TStatusDef
+  commentId: T:TuiVision.Controls.TStatusDef
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TStatusDef.html
+  name: TStatusDef
+  nameWithType: TStatusDef
+  fullName: TuiVision.Controls.TStatusDef
 - uid: TuiVision.Controls.TStatusItem
   commentId: T:TuiVision.Controls.TStatusItem
   parent: TuiVision.Controls
@@ -445,6 +462,13 @@ references:
   name: TStringList
   nameWithType: TStringList
   fullName: TuiVision.Controls.TStringList
+- uid: TuiVision.Controls.TSubMenu
+  commentId: T:TuiVision.Controls.TSubMenu
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TSubMenu.html
+  name: TSubMenu
+  nameWithType: TSubMenu
+  fullName: TuiVision.Controls.TSubMenu
 - uid: TuiVision.Controls.TValidator
   commentId: T:TuiVision.Controls.TValidator
   parent: TuiVision.Controls
@@ -485,6 +509,13 @@ references:
   name: TWindow
   nameWithType: TWindow
   fullName: TuiVision.Controls.TWindow
+- uid: TuiVision.Controls.WindowFlags
+  commentId: T:TuiVision.Controls.WindowFlags
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.WindowFlags.html
+  name: WindowFlags
+  nameWithType: WindowFlags
+  fullName: TuiVision.Controls.WindowFlags
 - uid: TuiVision.Controls
   commentId: N:TuiVision.Controls
   href: TuiVision.html

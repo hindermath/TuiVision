@@ -10,13 +10,15 @@ namespace TuiVision.Controls.Tests;
 /// Deckt configfile.cc, tprogini.cc, twindow.cc, tfileinf.cc,
 /// tvalidat.cc, tfilterv.cc, trangeva.cc, tclrdisp.cc, tcolordi.cc,
 /// tcolorgr.cc, tcolorit.cc, tcolorse.cc, tpalette.cc, tmonosel.cc,
-/// tparamte.cc, tvtext1.cc, tvtext2.cc und osclipboard.cc / win32clip.cc ab.
+/// tparamte.cc, tvtext1.cc, tvtext2.cc, osclipboard.cc / win32clip.cc,
+/// tsubmenu.cc und tstatusd.cc ab.
 ///
 /// Proof tests for planned Controls types in the M-07 proof ledger.
 /// Covers configfile.cc, tprogini.cc, twindow.cc, tfileinf.cc,
 /// tvalidat.cc, tfilterv.cc, trangeva.cc, tclrdisp.cc, tcolordi.cc,
 /// tcolorgr.cc, tcolorit.cc, tcolorse.cc, tpalette.cc, tmonosel.cc,
-/// tparamte.cc, tvtext1.cc, tvtext2.cc, and osclipboard.cc / win32clip.cc.
+/// tparamte.cc, tvtext1.cc, tvtext2.cc, osclipboard.cc / win32clip.cc,
+/// tsubmenu.cc, and tstatusd.cc.
 /// </summary>
 [TestClass]
 public sealed class ControlsProofTests
@@ -481,6 +483,96 @@ public sealed class ControlsProofTests
             "TvUIStrings.Save darf nicht null sein. TvUIStrings.Save must not be null.");
         Assert.IsNotNull(TvUIStrings.Close,
             "TvUIStrings.Close darf nicht null sein. TvUIStrings.Close must not be null.");
+    }
+
+    // ── TSubMenu (tsubmenu.cc) ────────────────────────────────────────────────
+
+    /// <summary>
+    /// Prüft, dass <see cref="TSubMenu"/> Name, HelpCtx und Items-Liste korrekt speichert.
+    ///
+    /// Verifies that <see cref="TSubMenu"/> correctly stores name, HelpCtx, and item list.
+    /// </summary>
+    [TestMethod]
+    public void TSubMenu_Constructor_StoresNameAndItems()
+    {
+        TMenuItem items = new("~N~eu / ~N~ew", 100);
+        var sub = new TSubMenu("~D~atei / ~F~ile", 0x2100, items);
+
+        Assert.AreEqual("~D~atei / ~F~ile", sub.Name,
+            "TSubMenu.Name muss Konstruktor-Wert enthalten. TSubMenu.Name must hold the constructor value.");
+        Assert.AreEqual(0x2100, sub.HelpCtx,
+            "TSubMenu.HelpCtx muss 0x2100 sein. TSubMenu.HelpCtx must be 0x2100.");
+        Assert.AreSame(items, sub.Items,
+            "TSubMenu.Items muss die übergebene TMenuItem-Instanz enthalten. " +
+            "TSubMenu.Items must hold the provided TMenuItem instance.");
+        Assert.IsNull(sub.Next,
+            "TSubMenu.Next muss null sein wenn kein Next übergeben wurde. " +
+            "TSubMenu.Next must be null when no next was provided.");
+    }
+
+    /// <summary>
+    /// Prüft, dass verknüpfte <see cref="TSubMenu"/>-Knoten korrekt traversiert werden können.
+    ///
+    /// Verifies that linked <see cref="TSubMenu"/> nodes can be traversed correctly.
+    /// </summary>
+    [TestMethod]
+    public void TSubMenu_LinkedList_NextNodeIsAccessible()
+    {
+        var second = new TSubMenu("~E~dit", 0);
+        var first = new TSubMenu("~F~ile", 0, next: second);
+
+        Assert.AreSame(second, first.Next,
+            "TSubMenu.Next muss zweites Untermenü zurückgeben. " +
+            "TSubMenu.Next must return the second submenu.");
+    }
+
+    // ── TStatusDef (tstatusd.cc) ──────────────────────────────────────────────
+
+    /// <summary>
+    /// Prüft, dass <see cref="TStatusDef"/> einen Hilfekontext-Bereich und zugehörige Einträge speichert.
+    ///
+    /// Verifies that <see cref="TStatusDef"/> stores a help-context range and associated items.
+    /// </summary>
+    [TestMethod]
+    public void TStatusDef_Constructor_StoresRangeAndItems()
+    {
+        TStatusItem item = new("~F1~ Hilfe", ShellCommandIds.cmHelp);
+        var def = new TStatusDef(100, 199, item);
+
+        Assert.AreEqual(100, def.MinCtx,
+            "TStatusDef.MinCtx muss 100 sein. TStatusDef.MinCtx must be 100.");
+        Assert.AreEqual(199, def.MaxCtx,
+            "TStatusDef.MaxCtx muss 199 sein. TStatusDef.MaxCtx must be 199.");
+        Assert.AreSame(item, def.Items,
+            "TStatusDef.Items muss die übergebene TStatusItem-Instanz enthalten. " +
+            "TStatusDef.Items must hold the provided TStatusItem instance.");
+    }
+
+    /// <summary>
+    /// Prüft, dass <see cref="TStatusDef.Matches"/> korrekt für Werte innerhalb und außerhalb des Bereichs antwortet.
+    ///
+    /// Verifies that <see cref="TStatusDef.Matches"/> responds correctly for values inside and outside the range.
+    /// </summary>
+    [TestMethod]
+    public void TStatusDef_Matches_ReturnsTrueForInRangeAndFalseForOutOfRange()
+    {
+        var def = new TStatusDef(100, 199, null);
+
+        Assert.IsTrue(def.Matches(100),
+            "TStatusDef.Matches muss true für untere Grenze zurückgeben. " +
+            "TStatusDef.Matches must return true for the lower bound.");
+        Assert.IsTrue(def.Matches(150),
+            "TStatusDef.Matches muss true für Mittelwert zurückgeben. " +
+            "TStatusDef.Matches must return true for a mid-range value.");
+        Assert.IsTrue(def.Matches(199),
+            "TStatusDef.Matches muss true für obere Grenze zurückgeben. " +
+            "TStatusDef.Matches must return true for the upper bound.");
+        Assert.IsFalse(def.Matches(99),
+            "TStatusDef.Matches muss false für Wert unterhalb des Bereichs zurückgeben. " +
+            "TStatusDef.Matches must return false for a value below the range.");
+        Assert.IsFalse(def.Matches(200),
+            "TStatusDef.Matches muss false für Wert oberhalb des Bereichs zurückgeben. " +
+            "TStatusDef.Matches must return false for a value above the range.");
     }
 
     // ── Helper validators for TValidator tests ────────────────────────────────

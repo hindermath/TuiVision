@@ -20,6 +20,9 @@ items:
   - uid: TuiVision.Controls.ManagedClipboard
     name: ManagedClipboard
     type: Class
+  - uid: TuiVision.Controls.MenuLayoutSlot
+    name: MenuLayoutSlot
+    type: Class
   - uid: TuiVision.Controls.ShellCommandIds
     name: ShellCommandIds
     type: Class
@@ -176,6 +179,9 @@ items:
   - uid: TuiVision.Controls.TStaticText
     name: TStaticText
     type: Class
+  - uid: TuiVision.Controls.TStatusDef
+    name: TStatusDef
+    type: Class
   - uid: TuiVision.Controls.TStatusItem
     name: TStatusItem
     type: Class
@@ -184,6 +190,9 @@ items:
     type: Class
   - uid: TuiVision.Controls.TStringList
     name: TStringList
+    type: Class
+  - uid: TuiVision.Controls.TSubMenu
+    name: TSubMenu
     type: Class
   - uid: TuiVision.Controls.TValidator
     name: TValidator
@@ -203,6 +212,9 @@ items:
   - uid: TuiVision.Controls.TvUIStrings
     name: TvUIStrings
     type: Class
+  - uid: TuiVision.Controls.WindowFlags
+    name: WindowFlags
+    type: Enum
 - uid: TuiVision.Controls.Internal
   name: TuiVision.Controls.Internal
   type: Namespace
@@ -284,6 +296,9 @@ items:
   - uid: TuiVision.Drivers.Console.IConsolePresenter
     name: IConsolePresenter
     type: Interface
+  - uid: TuiVision.Drivers.Console.SystemConsolePresenter
+    name: SystemConsolePresenter
+    type: Class
   - uid: TuiVision.Drivers.Console.TConsoleDriver
     name: TConsoleDriver
     type: Class

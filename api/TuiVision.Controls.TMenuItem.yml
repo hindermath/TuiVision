@@ -8,9 +8,13 @@ items:
   - TuiVision.Controls.TMenuItem.#ctor(System.String,System.Int32,TuiVision.Controls.TMenuItem,TuiVision.Controls.TMenuItem)
   - TuiVision.Controls.TMenuItem.Command
   - TuiVision.Controls.TMenuItem.Disabled
+  - TuiVision.Controls.TMenuItem.IsSeparator
+  - TuiVision.Controls.TMenuItem.Mnemonic
   - TuiVision.Controls.TMenuItem.Name
   - TuiVision.Controls.TMenuItem.Next
+  - TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)
   - TuiVision.Controls.TMenuItem.SubMenu
+  - TuiVision.Controls.TMenuItem.SubMenuDef
   langs:
   - csharp
   - vb
@@ -21,23 +25,27 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuItem.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: TMenuItem
     path: src/TuiVision.Controls/TMenuItem.cs
-    startLine: 12
+    startLine: 14
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
   summary: >-
     Repräsentiert einen Menüpunkt in einer Menüleiste oder einem Menü.
 
-    Kann verschachtelte Untermenüs enthalten.
+    Kann verschachtelte Untermenüs enthalten. Trennzeilen werden mit dem
+
+    speziellen Namen <code>"---"</code> oder über <xref href="TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)" data-throw-if-not-resolved="false"></xref> erstellt.
 
 
     Represents a menu item in a menu bar or menu.
 
-    Can contain nested submenus.
+    Can contain nested submenus. Separator rows are created using the special
+
+    name <code>"---"</code> or via <xref href="TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
     content: public sealed class TMenuItem
@@ -65,11 +73,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuItem.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TMenuItem.cs
-    startLine: 23
+    startLine: 25
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -93,7 +101,7 @@ items:
       description: Der nächste Menüpunkt in derselben Ebene. / The next menu item in the same level.
     - id: subMenu
       type: TuiVision.Controls.TMenuItem
-      description: Ein optionales Untermenü. / An optional submenu.
+      description: Ein optionales Untermenü (verknüpfte Liste von TMenuItems). / An optional submenu (linked list of TMenuItems).
     content.vb: Public Sub New(name As String, command As Integer, [next] As TMenuItem = Nothing, subMenu As TMenuItem = Nothing)
   overload: TuiVision.Controls.TMenuItem.#ctor*
   nameWithType.vb: TMenuItem.New(String, Integer, TMenuItem, TMenuItem)
@@ -113,11 +121,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuItem.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Name
     path: src/TuiVision.Controls/TMenuItem.cs
-    startLine: 34
+    startLine: 37
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -144,11 +152,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuItem.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Command
     path: src/TuiVision.Controls/TMenuItem.cs
-    startLine: 39
+    startLine: 42
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -175,11 +183,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuItem.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Next
     path: src/TuiVision.Controls/TMenuItem.cs
-    startLine: 44
+    startLine: 47
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -206,15 +214,19 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuItem.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: SubMenu
     path: src/TuiVision.Controls/TMenuItem.cs
-    startLine: 49
+    startLine: 54
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
-  summary: Das Untermenü. / The submenu.
+  summary: >-
+    Das Untermenü (verknüpfte Liste von Kind-Menüpunkten).
+
+
+    The submenu (linked list of child menu items).
   example: []
   syntax:
     content: public TMenuItem? SubMenu { get; }
@@ -223,6 +235,49 @@ items:
       type: TuiVision.Controls.TMenuItem
     content.vb: Public ReadOnly Property SubMenu As TMenuItem
   overload: TuiVision.Controls.TMenuItem.SubMenu*
+- uid: TuiVision.Controls.TMenuItem.SubMenuDef
+  commentId: P:TuiVision.Controls.TMenuItem.SubMenuDef
+  id: SubMenuDef
+  parent: TuiVision.Controls.TMenuItem
+  langs:
+  - csharp
+  - vb
+  name: SubMenuDef
+  nameWithType: TMenuItem.SubMenuDef
+  fullName: TuiVision.Controls.TMenuItem.SubMenuDef
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TMenuItem.cs
+      branch: 008-controls-revision
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SubMenuDef
+    path: src/TuiVision.Controls/TMenuItem.cs
+    startLine: 65
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Optionale <xref href="TuiVision.Controls.TSubMenu" data-throw-if-not-resolved="false"></xref>-Deklaration für den historischen tvguid02-Stil.
+
+    Wird zusätzlich zu <xref href="TuiVision.Controls.TMenuItem.SubMenu" data-throw-if-not-resolved="false"></xref> unterstützt; hat bei der Navigation Vorrang,
+
+    wenn gesetzt.
+
+
+    Optional <xref href="TuiVision.Controls.TSubMenu" data-throw-if-not-resolved="false"></xref> declaration for the historical tvguid02 style.
+
+    Supported in addition to <xref href="TuiVision.Controls.TMenuItem.SubMenu" data-throw-if-not-resolved="false"></xref>; takes precedence during navigation
+
+    when set.
+  example: []
+  syntax:
+    content: public TSubMenu? SubMenuDef { get; set; }
+    parameters: []
+    return:
+      type: TuiVision.Controls.TSubMenu
+    content.vb: Public Property SubMenuDef As TSubMenu
+  overload: TuiVision.Controls.TMenuItem.SubMenuDef*
 - uid: TuiVision.Controls.TMenuItem.Disabled
   commentId: P:TuiVision.Controls.TMenuItem.Disabled
   id: Disabled
@@ -237,15 +292,19 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuItem.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Disabled
     path: src/TuiVision.Controls/TMenuItem.cs
-    startLine: 54
+    startLine: 72
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
-  summary: Gibt an, ob der Menüpunkt aktiviert ist. / Indicates whether the menu item is enabled.
+  summary: >-
+    Gibt an, ob der Menüpunkt deaktiviert ist und übersprungen werden soll.
+
+
+    Indicates whether the menu item is disabled and should be skipped.
   example: []
   syntax:
     content: public bool Disabled { get; set; }
@@ -254,7 +313,151 @@ items:
       type: System.Boolean
     content.vb: Public Property Disabled As Boolean
   overload: TuiVision.Controls.TMenuItem.Disabled*
+- uid: TuiVision.Controls.TMenuItem.IsSeparator
+  commentId: P:TuiVision.Controls.TMenuItem.IsSeparator
+  id: IsSeparator
+  parent: TuiVision.Controls.TMenuItem
+  langs:
+  - csharp
+  - vb
+  name: IsSeparator
+  nameWithType: TMenuItem.IsSeparator
+  fullName: TuiVision.Controls.TMenuItem.IsSeparator
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TMenuItem.cs
+      branch: 008-controls-revision
+      repo: https://github.com/hindermath/TuiVision.git
+    id: IsSeparator
+    path: src/TuiVision.Controls/TMenuItem.cs
+    startLine: 81
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Gibt an, ob dieser Menüpunkt eine Trennzeile ist.
+
+    Trennzeilen werden durch den Namen <code>"---"</code> erkannt oder explizit über <xref href="TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)" data-throw-if-not-resolved="false"></xref> erzeugt.
+
+
+    Indicates whether this menu item is a separator row.
+
+    Separator rows are identified by the name <code>"---"</code> or created explicitly via <xref href="TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool IsSeparator { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsSeparator As Boolean
+  overload: TuiVision.Controls.TMenuItem.IsSeparator*
+- uid: TuiVision.Controls.TMenuItem.Mnemonic
+  commentId: P:TuiVision.Controls.TMenuItem.Mnemonic
+  id: Mnemonic
+  parent: TuiVision.Controls.TMenuItem
+  langs:
+  - csharp
+  - vb
+  name: Mnemonic
+  nameWithType: TMenuItem.Mnemonic
+  fullName: TuiVision.Controls.TMenuItem.Mnemonic
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TMenuItem.cs
+      branch: 008-controls-revision
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Mnemonic
+    path: src/TuiVision.Controls/TMenuItem.cs
+    startLine: 90
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Die Mnemonik dieses Eintrags (erster Buchstabe aus <code>~X~</code>-Markierung), groß geschrieben.
+
+    <code>'\0'</code>, wenn keine Mnemonik vorhanden ist.
+
+
+    The mnemonic of this entry (first letter from a <code>~X~</code> marker), upper-cased.
+
+    <code>'\0'</code> if no mnemonic is present.
+  example: []
+  syntax:
+    content: public char Mnemonic { get; }
+    parameters: []
+    return:
+      type: System.Char
+    content.vb: Public ReadOnly Property Mnemonic As Char
+  overload: TuiVision.Controls.TMenuItem.Mnemonic*
+- uid: TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)
+  commentId: M:TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)
+  id: Separator(TuiVision.Controls.TMenuItem)
+  parent: TuiVision.Controls.TMenuItem
+  langs:
+  - csharp
+  - vb
+  name: Separator(TMenuItem?)
+  nameWithType: TMenuItem.Separator(TMenuItem?)
+  fullName: TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem?)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TMenuItem.cs
+      branch: 008-controls-revision
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Separator
+    path: src/TuiVision.Controls/TMenuItem.cs
+    startLine: 99
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Erzeugt eine Trennzeile mit einem optionalen Nachfolger.
+
+
+    Creates a separator row with an optional successor.
+  example: []
+  syntax:
+    content: public static TMenuItem Separator(TMenuItem? next = null)
+    parameters:
+    - id: next
+      type: TuiVision.Controls.TMenuItem
+      description: Der Menüpunkt nach der Trennzeile. / The menu item after the separator.
+    return:
+      type: TuiVision.Controls.TMenuItem
+      description: Eine neue Trennzeilen-Instanz. / A new separator instance.
+    content.vb: Public Shared Function Separator([next] As TMenuItem = Nothing) As TMenuItem
+  overload: TuiVision.Controls.TMenuItem.Separator*
+  nameWithType.vb: TMenuItem.Separator(TMenuItem)
+  fullName.vb: TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)
+  name.vb: Separator(TMenuItem)
 references:
+- uid: TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)
+  commentId: M:TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)
+  href: TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Separator_TuiVision_Controls_TMenuItem_
+  name: Separator(TMenuItem)
+  nameWithType: TMenuItem.Separator(TMenuItem)
+  fullName: TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)
+  spec.csharp:
+  - uid: TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)
+    name: Separator
+    href: TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Separator_TuiVision_Controls_TMenuItem_
+  - name: (
+  - uid: TuiVision.Controls.TMenuItem
+    name: TMenuItem
+    href: TuiVision.Controls.TMenuItem.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)
+    name: Separator
+    href: TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Separator_TuiVision_Controls_TMenuItem_
+  - name: (
+  - uid: TuiVision.Controls.TMenuItem
+    name: TMenuItem
+    href: TuiVision.Controls.TMenuItem.html
+  - name: )
 - uid: TuiVision.Controls
   commentId: N:TuiVision.Controls
   href: TuiVision.html
@@ -552,6 +755,25 @@ references:
   name: SubMenu
   nameWithType: TMenuItem.SubMenu
   fullName: TuiVision.Controls.TMenuItem.SubMenu
+- uid: TuiVision.Controls.TSubMenu
+  commentId: T:TuiVision.Controls.TSubMenu
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TSubMenu.html
+  name: TSubMenu
+  nameWithType: TSubMenu
+  fullName: TuiVision.Controls.TSubMenu
+- uid: TuiVision.Controls.TMenuItem.SubMenu
+  commentId: P:TuiVision.Controls.TMenuItem.SubMenu
+  href: TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_SubMenu
+  name: SubMenu
+  nameWithType: TMenuItem.SubMenu
+  fullName: TuiVision.Controls.TMenuItem.SubMenu
+- uid: TuiVision.Controls.TMenuItem.SubMenuDef*
+  commentId: Overload:TuiVision.Controls.TMenuItem.SubMenuDef
+  href: TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_SubMenuDef
+  name: SubMenuDef
+  nameWithType: TMenuItem.SubMenuDef
+  fullName: TuiVision.Controls.TMenuItem.SubMenuDef
 - uid: TuiVision.Controls.TMenuItem.Disabled*
   commentId: Overload:TuiVision.Controls.TMenuItem.Disabled
   href: TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Disabled
@@ -569,3 +791,32 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+- uid: TuiVision.Controls.TMenuItem.IsSeparator*
+  commentId: Overload:TuiVision.Controls.TMenuItem.IsSeparator
+  href: TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_IsSeparator
+  name: IsSeparator
+  nameWithType: TMenuItem.IsSeparator
+  fullName: TuiVision.Controls.TMenuItem.IsSeparator
+- uid: TuiVision.Controls.TMenuItem.Mnemonic*
+  commentId: Overload:TuiVision.Controls.TMenuItem.Mnemonic
+  href: TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Mnemonic
+  name: Mnemonic
+  nameWithType: TMenuItem.Mnemonic
+  fullName: TuiVision.Controls.TMenuItem.Mnemonic
+- uid: System.Char
+  commentId: T:System.Char
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.char
+  name: char
+  nameWithType: char
+  fullName: char
+  nameWithType.vb: Char
+  fullName.vb: Char
+  name.vb: Char
+- uid: TuiVision.Controls.TMenuItem.Separator*
+  commentId: Overload:TuiVision.Controls.TMenuItem.Separator
+  href: TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Separator_TuiVision_Controls_TMenuItem_
+  name: Separator
+  nameWithType: TMenuItem.Separator
+  fullName: TuiVision.Controls.TMenuItem.Separator

@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: TKeyDownEvent
     path: src/TuiVision.Core/TEvent.cs
@@ -61,7 +61,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TEvent.cs
@@ -127,7 +127,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: CharCode
     path: src/TuiVision.Core/TEvent.cs
@@ -161,7 +161,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: ScanCode
     path: src/TuiVision.Core/TEvent.cs
@@ -195,7 +195,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: KeyCode
     path: src/TuiVision.Core/TEvent.cs
@@ -229,7 +229,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: ShiftState
     path: src/TuiVision.Core/TEvent.cs
@@ -263,7 +263,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: RawScanCode
     path: src/TuiVision.Core/TEvent.cs

@@ -19,7 +19,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TApplication.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: TApplication
     path: src/TuiVision.Controls/TApplication.cs
@@ -56,6 +56,7 @@ items:
   - TuiVision.Controls.TProgram.Desktop
   - TuiVision.Controls.TProgram.StatusLine
   - TuiVision.Controls.TProgram.Run
+  - TuiVision.Controls.TProgram.Draw
   - TuiVision.Controls.TProgram.GetEvent(TuiVision.Core.TEvent@)
   - TuiVision.Controls.TProgram.HandleEvent(TuiVision.Core.TEvent)
   - TuiVision.Controls.TProgram.IsCommandDisabled(System.UInt16)
@@ -67,7 +68,7 @@ items:
   - TuiVision.Controls.TGroup.ShutDown
   - TuiVision.Controls.TGroup.SetFocus(TuiVision.Controls.TView)
   - TuiVision.Controls.TGroup.SelectNext(System.Boolean)
-  - TuiVision.Controls.TGroup.Draw
+  - TuiVision.Controls.TGroup.GetDrawBuffer
   - TuiVision.Controls.TGroup.LockDraw
   - TuiVision.Controls.TGroup.UnlockDraw
   - TuiVision.Controls.TGroup.SetState(TuiVision.Controls.TViewState,System.Boolean)
@@ -93,7 +94,7 @@ items:
   - TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.DrawView
-  - TuiVision.Controls.TView.GetDrawBuffer
+  - TuiVision.Controls.TView.HelpContext
   - TuiVision.Controls.TView.GetStatusHints
   - TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
   - System.Object.Equals(System.Object)
@@ -117,7 +118,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TApplication.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TApplication.cs
@@ -164,7 +165,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TApplication.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: InitMenuBar
     path: src/TuiVision.Controls/TApplication.cs
@@ -211,7 +212,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TApplication.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: InitDesktop
     path: src/TuiVision.Controls/TApplication.cs
@@ -258,7 +259,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TApplication.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: InitStatusLine
     path: src/TuiVision.Controls/TApplication.cs
@@ -398,6 +399,25 @@ references:
   - uid: TuiVision.Controls.TProgram.Run
     name: Run
     href: TuiVision.Controls.TProgram.html#TuiVision_Controls_TProgram_Run
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TProgram.Draw
+  commentId: M:TuiVision.Controls.TProgram.Draw
+  parent: TuiVision.Controls.TProgram
+  href: TuiVision.Controls.TProgram.html#TuiVision_Controls_TProgram_Draw
+  name: Draw()
+  nameWithType: TProgram.Draw()
+  fullName: TuiVision.Controls.TProgram.Draw()
+  spec.csharp:
+  - uid: TuiVision.Controls.TProgram.Draw
+    name: Draw
+    href: TuiVision.Controls.TProgram.html#TuiVision_Controls_TProgram_Draw
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TProgram.Draw
+    name: Draw
+    href: TuiVision.Controls.TProgram.html#TuiVision_Controls_TProgram_Draw
   - name: (
   - name: )
 - uid: TuiVision.Controls.TProgram.GetEvent(TuiVision.Core.TEvent@)
@@ -662,23 +682,23 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: )
-- uid: TuiVision.Controls.TGroup.Draw
-  commentId: M:TuiVision.Controls.TGroup.Draw
+- uid: TuiVision.Controls.TGroup.GetDrawBuffer
+  commentId: M:TuiVision.Controls.TGroup.GetDrawBuffer
   parent: TuiVision.Controls.TGroup
-  href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw
-  name: Draw()
-  nameWithType: TGroup.Draw()
-  fullName: TuiVision.Controls.TGroup.Draw()
+  href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer
+  name: GetDrawBuffer()
+  nameWithType: TGroup.GetDrawBuffer()
+  fullName: TuiVision.Controls.TGroup.GetDrawBuffer()
   spec.csharp:
-  - uid: TuiVision.Controls.TGroup.Draw
-    name: Draw
-    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw
+  - uid: TuiVision.Controls.TGroup.GetDrawBuffer
+    name: GetDrawBuffer
+    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer
   - name: (
   - name: )
   spec.vb:
-  - uid: TuiVision.Controls.TGroup.Draw
-    name: Draw
-    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw
+  - uid: TuiVision.Controls.TGroup.GetDrawBuffer
+    name: GetDrawBuffer
+    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer
   - name: (
   - name: )
 - uid: TuiVision.Controls.TGroup.LockDraw
@@ -1213,25 +1233,13 @@ references:
     href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView
   - name: (
   - name: )
-- uid: TuiVision.Controls.TView.GetDrawBuffer
-  commentId: M:TuiVision.Controls.TView.GetDrawBuffer
+- uid: TuiVision.Controls.TView.HelpContext
+  commentId: P:TuiVision.Controls.TView.HelpContext
   parent: TuiVision.Controls.TView
-  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
-  name: GetDrawBuffer()
-  nameWithType: TView.GetDrawBuffer()
-  fullName: TuiVision.Controls.TView.GetDrawBuffer()
-  spec.csharp:
-  - uid: TuiVision.Controls.TView.GetDrawBuffer
-    name: GetDrawBuffer
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: TuiVision.Controls.TView.GetDrawBuffer
-    name: GetDrawBuffer
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
-  - name: (
-  - name: )
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext
+  name: HelpContext
+  nameWithType: TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
 - uid: TuiVision.Controls.TView.GetStatusHints
   commentId: M:TuiVision.Controls.TView.GetStatusHints
   parent: TuiVision.Controls.TView

@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/docs/porting-status.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/008-controls-revision/docs/porting-status.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -542,8 +542,8 @@
 <td>TuiVision.Controls/TDialog.cs</td>
 <td>–</td>
 <td>portiert + getestet</td>
-<td>tests/TuiVision.Controls.Tests/</td>
-<td>TDialog; portiert nach TDialog.cs. / TDialog; ported to TDialog.cs.</td>
+<td>tests/TuiVision.Controls.Tests/TDialogTests.cs</td>
+<td>TDialog; portiert nach TDialog.cs; erweitert um Valid(ushort)-Validierungshook (008-controls-revision): abgelehnte Schließanfragen bewahren den Dialogzustand, akzeptierte liefern das modale Ergebnis. / TDialog; ported to TDialog.cs; extended with Valid(ushort) validation hook (008-controls-revision): rejected close requests preserve dialog state, accepted ones return the modal result.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tdircoll.cc</td>
@@ -803,17 +803,17 @@
 <td>TuiVision.Controls/TMenuBar.cs</td>
 <td>TuiVision.Controls/TMenuItem.cs</td>
 <td>portiert + getestet</td>
-<td>tests/TuiVision.Controls.Tests/</td>
-<td>TMenuBar; portiert nach TMenuBar.cs. / TMenuBar; ported to TMenuBar.cs.</td>
+<td>tests/TuiVision.Controls.Tests/TMenuBarTests.cs</td>
+<td>TMenuBar; portiert nach TMenuBar.cs; erweitert um vollständige Tastaturnavigation (Wrap-around, Skip-over, Auswahl-Hervorhebung, berechnete Layout-Slots, Resize-Relayout) per 008-controls-revision. / TMenuBar; ported to TMenuBar.cs; extended with full keyboard navigation (wrap-around, skip-over, selection highlight, computed layout slots, resize relayout) by 008-controls-revision.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tmenubox.cc</td>
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TMenuItem.cs</td>
-<td>–</td>
+<td>TuiVision.Controls/TMenuBar.cs</td>
 <td>portiert + getestet</td>
-<td>tests/TuiVision.Controls.Tests/</td>
-<td>TMenuBox; Menüfeld-Darstellung; in TMenuItem-Modell zusammengeführt. / TMenuBox; menu box display; merged into TMenuItem model.</td>
+<td>tests/TuiVision.Controls.Tests/TMenuBarTests.cs</td>
+<td>TMenuBox; Popup-Menüfeld-Darstellung; in TMenuItem-Deklarationsmodell und TMenuBar-Popup-Rendering zusammengeführt. Untermenü-Overlay wird von TMenuBar.DrawSubMenuOverlay gezeichnet. / TMenuBox; popup menu box display; merged into TMenuItem declaration model and TMenuBar popup rendering. Submenu overlay is drawn by TMenuBar.DrawSubMenuOverlay.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tmenuvie.cc</td>
@@ -821,8 +821,8 @@
 <td>TuiVision.Controls/TMenuItem.cs</td>
 <td>TuiVision.Controls/TMenuBar.cs</td>
 <td>portiert + getestet</td>
-<td>tests/TuiVision.Controls.Tests/</td>
-<td>TMenuView; Menüansicht-Basis; in TMenuItem und TMenuBar zusammengeführt. / TMenuView; menu view base; merged into TMenuItem and TMenuBar.</td>
+<td>tests/TuiVision.Controls.Tests/TMenuBarTests.cs</td>
+<td>TMenuView; Menüansicht-Basis für Interaction und Auswahl; in TMenuItem (Deklaration) und TMenuBar (Laufzeitnavigation, Auswahl-Highlight) zusammengeführt. / TMenuView; menu view base for interaction and selection; merged into TMenuItem (declaration) and TMenuBar (runtime navigation, selection highlight).</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tmonosel.cc</td>
@@ -1034,20 +1034,20 @@
 <tr>
 <td>tv203s/contrib/tvision/classes/tstatusd.cc</td>
 <td>Steuerelement</td>
+<td>TuiVision.Controls/TStatusDef.cs</td>
 <td>TuiVision.Controls/TStatusLine.cs</td>
-<td>TuiVision.Controls/TStatusItem.cs</td>
 <td>portiert + getestet</td>
-<td>tests/TuiVision.Controls.Tests/</td>
-<td>TStatusDef; Statuszeilen-Definition; in TStatusLine und TStatusItem zusammengeführt. / TStatusDef; status line definition; merged into TStatusLine and TStatusItem.</td>
+<td>tests/TuiVision.Controls.Tests/TStatusLineTests.cs</td>
+<td>TStatusDef; eigenständige Statuszeilen-Definition mit inklusivem Hilfekontext-Bereich und geordneter Aktionsliste; portiert als TStatusDef.cs (008-controls-revision). First-Match-Wins-Routing in TStatusLine. / TStatusDef; standalone status line definition with inclusive help-context range and ordered action list; ported as TStatusDef.cs (008-controls-revision). First-match-wins routing in TStatusLine.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tstatusl.cc</td>
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TStatusLine.cs</td>
-<td>–</td>
+<td>TuiVision.Controls/TStatusDef.cs</td>
 <td>portiert + getestet</td>
-<td>tests/TuiVision.Controls.Tests/</td>
-<td>TStatusLine; portiert nach TStatusLine.cs. / TStatusLine; ported to TStatusLine.cs.</td>
+<td>tests/TuiVision.Controls.Tests/TStatusLineTests.cs</td>
+<td>TStatusLine; portiert nach TStatusLine.cs; erweitert um TStatusDef-basiertes First-Match-Wins-Routing, neutralen Leer-Fallback bei keiner Übereinstimmung und Kompatibilitäts-Brücke auf GetStatusHints() ohne explizite Definitionen (008-controls-revision). / TStatusLine; ported to TStatusLine.cs; extended with TStatusDef-based first-match-wins routing, neutral empty fallback when no definition matches, and compatibility bridge to GetStatusHints() when no explicit definitions are configured (008-controls-revision).</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tstrinde.cc</td>
@@ -1106,11 +1106,11 @@
 <tr>
 <td>tv203s/contrib/tvision/classes/tsubmenu.cc</td>
 <td>Steuerelement</td>
+<td>TuiVision.Controls/TSubMenu.cs</td>
 <td>TuiVision.Controls/TMenuBar.cs</td>
-<td>TuiVision.Controls/TMenuItem.cs</td>
 <td>portiert + getestet</td>
-<td>tests/TuiVision.Controls.Tests/</td>
-<td>TSubMenu; Untermenü-Steuerelement; in TMenuBar und TMenuItem integriert. / TSubMenu; submenu control; integrated into TMenuBar and TMenuItem.</td>
+<td>tests/TuiVision.Controls.Tests/TMenuBarTests.cs</td>
+<td>TSubMenu; eigenständiger Deklarationsknoten für eine Untermenü-Verzweigung; portiert als TSubMenu.cs (008-controls-revision). Historische tvguid02-Syntax bleibt kompatibel. Laufzeitausführung und Popup-Rendering bleiben in TMenuBar. / TSubMenu; standalone declaration node for a submenu branch; ported as TSubMenu.cs (008-controls-revision). Historical tvguid02 syntax remains compatible. Runtime execution and popup rendering remain in TMenuBar.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/ttermina.cc</td>
@@ -1206,10 +1206,10 @@
 <td>tv203s/contrib/tvision/classes/twindow.cc</td>
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TWindow.cs</td>
-<td>TuiVision.Controls/TGroup.cs</td>
+<td>TuiVision.Controls/WindowFlags.cs</td>
 <td>portiert + getestet</td>
-<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
-<td>TWindow ist als Fenster-Container auf Basis von TGroup portiert und per Proof-Test belegt. / TWindow is ported as a window container on top of TGroup and covered by proof tests.</td>
+<td>tests/TuiVision.Controls.Tests/TWindowTests.cs</td>
+<td>TWindow; portiert nach TWindow.cs (auf Basis von TGroup); erweitert um WindowFlags (Close, Move), sichtbare Schließ-Affordanz (×), Ctrl+W, bewachtes Escape, reversiblen Verschiebe-Modus per Ctrl+F5 (008-controls-revision). / TWindow; ported to TWindow.cs (on top of TGroup); extended with WindowFlags (Close, Move), visible close affordance (×), Ctrl+W, guarded Escape, reversible move mode via Ctrl+F5 (008-controls-revision).</td>
 </tr>
 </tbody>
 </table>
@@ -1975,7 +1975,7 @@ Ausführungssteuerung, keine ausgelassenen Tests.</li>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/006-close-phase8-gate/docs/porting-status.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/docs/porting-status.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

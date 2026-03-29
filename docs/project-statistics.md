@@ -370,6 +370,39 @@ fortgeschrieben.
   - 42.3x gegen die konservative 80-Zeilen-Referenz
   - 27.1x gegen die Thorsten-Solo-Referenz mit 125 Zeilen pro Arbeitstag
 
+### 9. Branch `008-controls-revision`
+
+- Status: Implementierung im Working Tree abgeschlossen; Controls-Revision (Menues, Statuszeile, Fenster, Dialog) als Voraussetzung fuer Welle 2 nachgewiesen; 338 Tests gruen, Release-Build und Format-Gate sauber
+- Beobachtbarer Zeitraum: 2026-03-29 bis 2026-03-29
+- Commit-Bild: 4 vorbereitende Commits (Planung, Spezifikation, Tasks, Analyse-Remediationen); Implementierung liegt vollstaendig im Working Tree
+- Grundlegende Arbeiten:
+  - Drei neue Deklarationstypen: `TSubMenu.cs`, `TStatusDef.cs`, `WindowFlags.cs`
+  - `TMenuItem.cs`: IsSeparator, Mnemonic, SubMenuDef, Separator-Factory-Methode
+  - `TMenuBar.cs`: vollstaendige Tastaturnavigation (Wrap-around, Skip-over, Layout-Slots, Auswahl-Highlight, Resize-Relayout per `OnBoundsChanged`)
+  - `TStatusLine.cs`: TStatusDef-basiertes First-Match-Wins-Routing, neutraler Fallback, Kompatibilitaets-Bruecke fuer `GetStatusHints()`
+  - `TView.cs`: explizite `HelpContext`-Property fuer Shell-lesbaren Hilfekontext
+  - `TWindow.cs`: `WindowFlags` (Close, Move), Schliess-Affordanz (×), Ctrl+W, bewachtes Escape, reversibler Verschiebe-Modus per Ctrl+F5
+  - `TDialog.cs`: `Valid(ushort command)`-Validierungshook vor Dialog-Schliessung
+  - Neues Testpaket `TWindowTests.cs` mit 8 Testmethoden (317 Zeilen); Erweiterungen in 4 bestehenden Testdateien (je 40-135 neue Zeilen)
+  - Proof-Updates: 8 Zeilen in `docs/porting-status.md`, `>>> NAECHSTER SCHRITT <<<` in `Pflichtenheft.md`
+- Snapshot-Zuwachs:
+  - Produktionscode (`src/TuiVision.Controls/`): ca. `+800` Zeilen netto (3 neue Dateien + 7 modifizierte)
+  - Testcode (`tests/TuiVision.Controls.Tests/`): ca. `+700` Zeilen netto (1 neue Datei + 4 modifizierte)
+  - Dokumentation und Governance: ca. `+50` Zeilen netto
+- Konservative Handarbeits-Basis fuer Code und Dokumentation:
+  - Gesamt-Netto ca. `1550` Zeilen
+  - 19.4 Arbeitstage fuer einen erfahrenen Entwickler
+  - 151.1 Stunden auf TVoeD-Basis (`19.4 * 7.8`)
+  - 0.9 Arbeitsmonate brutto bzw. 1.0 TVoeD-Kalendermonat
+- Thorsten-Solo-Referenz:
+  - 12.4 Arbeitstage
+  - 96.7 Stunden auf TVoeD-Basis (`12.4 * 7.8`)
+  - 0.6 Arbeitsmonate brutto bzw. 0.7 TVoeD-Kalendermonate
+- Coverage-Stand: `TuiVision.Controls` 84.02 % Line Coverage (Tor: 70 % bestanden)
+- Blended Repository Speedup gegen sichtbaren 1 Git-Aktivtag fuer diesen Branch:
+  - 19.4x gegen die konservative 80-Zeilen-Referenz
+  - 12.4x gegen die Thorsten-Solo-Referenz mit 125 Zeilen pro Arbeitstag
+
 ## Zusatz-Branches
 
 | Branch | Letzte sichtbare Aktivitaet | Rolle |
@@ -484,3 +517,4 @@ fortgeschrieben.
 | 2026-03-29 | Analyse-Remediation fuer `008-controls-revision` | Die Top-4-Funde aus dem Cross-Artifact-Check wurden direkt in `spec.md`, `plan.md`, `quickstart.md` und `tasks.md` nachgezogen: (1) Die TDD-Reihenfolge wurde in `tasks.md` repariert, indem Phase 2 jetzt nur noch testseitige Vorbereitungen enthaelt und keine Produktionsdateien unter `src/TuiVision.Controls/` mehr vor den ersten Red-Tests anfasst. (2) Die US3-Inkonsistenz zum Window-Close-Pfad wurde auf den dokumentierten Tastaturpfad (`Ctrl+W` / guarded `Escape`) geschaerft, statt still einen nicht operationalisierten Titelbereich-Trigger mitzuschleppen. (3) `SC-003` wurde in Plan, Quickstart und Tasks um eine reviewbare Repeated-Run-Matrix mit Versuchszahlen und First-Attempt-Pass-Rate operationalisiert. (4) Linux- und Windows/WSL-Portabilitaet verlangen nun nicht nur Laufzeitnotizen, sondern explizite Build-/Test-Nachweise im finalen Validierungsblock. Netto-Aenderungsvolumen vor dieser Ledger-Zeile: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+15 / -14` Dokumentationszeilen netto ueber `specs/008-controls-revision/spec.md`, `specs/008-controls-revision/plan.md`, `specs/008-controls-revision/quickstart.md`, `specs/008-controls-revision/tasks.md` und `docs/project-statistics.md`. Konservative Manualreferenz: 80 Zeilen/Tag = `0,2` Tage (ca. `1,0` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `0,1` Tage (ca. `0,7` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-29, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 | 2026-03-29 | Analyse-Remediation Runde 2 fuer `008-controls-revision` | Die verbleibenden Top-3-Funde aus dem erneuten Analyse-Durchlauf wurden direkt eingearbeitet: (1) `plan.md` und `tasks.md` erlauben jetzt explizit eine enge compile-only scaffolding Ausnahme fuer neue Typen/Mitglieder (`TSubMenu`, `TStatusDef`, `WindowFlags`, `HelpContext`), damit statisch typisierte Red-Tests in C# ueberhaupt kompilieren koennen, ohne bereits ausgelieferte Laufzeitlogik vorzuziehen. (2) Die Dokumentationsaufgabe in `tasks.md` wurde von einer Public-API-Bedingung auf die constitution-konforme Pruefung aller beruehrten projekt-eigenen Quelldateien unter `src/TuiVision.Controls/` erweitert. (3) Ein eigener Audit-Task gegen `FR-016` bis `FR-018` wurde hinzugefuegt, damit Streaming-, Mouse- und Palette-Scope nicht nur narrativ, sondern auch reviewbar abgesichert sind. Die Aufgabenliste wurde dabei konsistent von 31 auf 33 Tasks umnummeriert und die Parallel-/Beispielsektionen entsprechend nachgezogen. Netto-Aenderungsvolumen vor dieser Ledger-Zeile: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+20 / -16` Dokumentationszeilen netto ueber `specs/008-controls-revision/plan.md`, `specs/008-controls-revision/tasks.md` und `docs/project-statistics.md`. Konservative Manualreferenz: 80 Zeilen/Tag = `0,3` Tage (ca. `1,6` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `0,2` Tage (ca. `1,0` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-29, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 | 2026-03-29 | Thematische Lastenhefte fuer Welle 2 bis 4 | Vier neue Anforderungsdokumente wurden als bewusst geschnittenes Vorbereitungs- und Roadmap-Paket angelegt: `Lastenheft_01_ControlsWidgetsAndCollections.md` und `Lastenheft_02_StandardDialogsAndDesigner.md` definieren die aus meiner Sicht echten Vor-Welle-2-Voraussetzungen jenseits der laufenden `008-controls-revision`; `Lastenheft_03_EditorHelpAndResourcesHardening.md` und `Lastenheft_04_TerminalCharsetAndEmulation.md` ziehen die spaeteren Wave-3-/Wave-4-Haertungen frueh sichtbar nach, ohne sie als Sofort-Blocker fuer Wave 2 zu deklarieren. Netto-Aenderungsvolumen dieser Runde: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+660` Dokumentationszeilen netto (`659` neue Lastenheft-Zeilen plus Fortschreibung in `docs/project-statistics.md`). Konservative Manualreferenz: 80 Zeilen/Tag = `8,3` Tage (ca. `64,4` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `5,3` Tage (ca. `41,2` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-29, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
+| 2026-03-29 | `/speckit-implement` fuer `008-controls-revision` | Controls-Revision vollstaendig implementiert: drei neue Deklarationstypen (`TSubMenu.cs`, `TStatusDef.cs`, `WindowFlags.cs`), erweiterte `TMenuItem.cs` (IsSeparator, Mnemonic, SubMenuDef, Separator-Factory), vollstaendige Tastaturnavigation in `TMenuBar.cs` (Wrap-around, Skip-over, Layout-Slots, Auswahl-Highlight, Resize-Relayout), TStatusDef-basiertes First-Match-Wins-Routing mit neutralem Fallback in `TStatusLine.cs`, HelpContext-Property in `TView.cs`, WindowFlags-Flags mit Schliess-Affordanz/Ctrl+W/bewachtem Escape/Ctrl+F5-Verschiebe-Modus in `TWindow.cs`, Valid(ushort)-Validierungshook in `TDialog.cs`. Neues Testpaket `TWindowTests.cs` (317 Zeilen) und Erweiterungen in `TMenuBarTests.cs`, `TStatusLineTests.cs`, `TDialogTests.cs`, `TProgramTests.cs`. `docs/porting-status.md` fuer alle 8 betroffenen `.cc`-Zeilen aktualisiert; `>>> NAECHSTER SCHRITT <<<` in `Pflichtenheft.md` auf Welle-2-Planung vorgeschoben. Validierung: `dotnet build --configuration Release` (0 Fehler, 0 Warnungen), `dotnet test` (338 Tests, 0 Fehler), `dotnet format --verify-no-changes` (gruen). TuiVision.Controls Coverage: 84,02 % Line Coverage (Tor: 70 %). Netto-Aenderungsvolumen: ca. `+800` Produktionscode-Zeilen netto (10 Dateien bearbeitet/neu), ca. `+700` Testcode-Zeilen netto (5 Dateien bearbeitet/neu), ca. `+50` Dokumentationszeilen netto. Konservative Manualreferenz: 80 Zeilen/Tag = `19,4` Tage (ca. `151,1` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `12,4` Tage (ca. `96,7` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-29, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |

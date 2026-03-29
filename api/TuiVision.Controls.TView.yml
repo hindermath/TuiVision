@@ -16,6 +16,7 @@ items:
   - TuiVision.Controls.TView.GetStatusHints
   - TuiVision.Controls.TView.GrowTo(System.Int32,System.Int32)
   - TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)
+  - TuiVision.Controls.TView.HelpContext
   - TuiVision.Controls.TView.Hide
   - TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)
   - TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
@@ -42,7 +43,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: TView
     path: src/TuiVision.Controls/TView.cs
@@ -106,7 +107,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TView.cs
@@ -168,7 +169,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Owner
     path: src/TuiVision.Controls/TView.cs
@@ -207,7 +208,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Options
     path: src/TuiVision.Controls/TView.cs
@@ -242,7 +243,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: EventMask
     path: src/TuiVision.Controls/TView.cs
@@ -277,7 +278,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: State
     path: src/TuiVision.Controls/TView.cs
@@ -312,7 +313,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Origin
     path: src/TuiVision.Controls/TView.cs
@@ -347,7 +348,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Size
     path: src/TuiVision.Controls/TView.cs
@@ -382,7 +383,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: GetBounds
     path: src/TuiVision.Controls/TView.cs
@@ -420,7 +421,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: GetExtent
     path: src/TuiVision.Controls/TView.cs
@@ -458,7 +459,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: GetState
     path: src/TuiVision.Controls/TView.cs
@@ -500,7 +501,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Show
     path: src/TuiVision.Controls/TView.cs
@@ -532,7 +533,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Hide
     path: src/TuiVision.Controls/TView.cs
@@ -564,7 +565,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: SetState
     path: src/TuiVision.Controls/TView.cs
@@ -609,7 +610,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: SizeLimits
     path: src/TuiVision.Controls/TView.cs
@@ -661,7 +662,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Locate
     path: src/TuiVision.Controls/TView.cs
@@ -707,7 +708,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: MoveTo
     path: src/TuiVision.Controls/TView.cs
@@ -749,7 +750,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: GrowTo
     path: src/TuiVision.Controls/TView.cs
@@ -798,7 +799,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: SetBounds
     path: src/TuiVision.Controls/TView.cs
@@ -834,7 +835,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: MakeGlobal
     path: src/TuiVision.Controls/TView.cs
@@ -876,7 +877,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: MakeLocal
     path: src/TuiVision.Controls/TView.cs
@@ -918,7 +919,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: MouseInView
     path: src/TuiVision.Controls/TView.cs
@@ -960,7 +961,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TView.cs
@@ -1008,7 +1009,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: DrawView
     path: src/TuiVision.Controls/TView.cs
@@ -1052,7 +1053,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: GetDrawBuffer
     path: src/TuiVision.Controls/TView.cs
@@ -1086,6 +1087,49 @@ items:
         The owning group's draw buffer, or <code>null</code> when no group or buffer is available.
     content.vb: Protected Function GetDrawBuffer() As TConsoleBuffer
   overload: TuiVision.Controls.TView.GetDrawBuffer*
+- uid: TuiVision.Controls.TView.HelpContext
+  commentId: P:TuiVision.Controls.TView.HelpContext
+  id: HelpContext
+  parent: TuiVision.Controls.TView
+  langs:
+  - csharp
+  - vb
+  name: HelpContext
+  nameWithType: TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TView.cs
+      branch: 008-controls-revision
+      repo: https://github.com/hindermath/TuiVision.git
+    id: HelpContext
+    path: src/TuiVision.Controls/TView.cs
+    startLine: 467
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Der Hilfekontext-Bezeichner dieser Ansicht.
+
+    Wird von der Statuszeile verwendet, um die passende <xref href="TuiVision.Controls.TStatusDef" data-throw-if-not-resolved="false"></xref>-Kette
+
+    auszuwählen (First-Match-Wins). Standardwert ist 0.
+
+
+    The help-context identifier of this view.
+
+    Used by the status line to select the matching <xref href="TuiVision.Controls.TStatusDef" data-throw-if-not-resolved="false"></xref> chain
+
+    (first-match-wins). Default value is 0.
+  example: []
+  syntax:
+    content: public virtual int HelpContext { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Overridable Property HelpContext As Integer
+  overload: TuiVision.Controls.TView.HelpContext*
 - uid: TuiVision.Controls.TView.GetStatusHints
   commentId: M:TuiVision.Controls.TView.GetStatusHints
   id: GetStatusHints
@@ -1100,11 +1144,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: GetStatusHints
     path: src/TuiVision.Controls/TView.cs
-    startLine: 464
+    startLine: 475
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -1135,11 +1179,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TView.cs
-    startLine: 479
+    startLine: 490
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -1179,11 +1223,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: OnBoundsChanged
     path: src/TuiVision.Controls/TView.cs
-    startLine: 511
+    startLine: 522
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -1930,6 +1974,19 @@ references:
   name: TConsoleBuffer
   nameWithType: TConsoleBuffer
   fullName: TuiVision.Core.TConsoleBuffer
+- uid: TuiVision.Controls.TStatusDef
+  commentId: T:TuiVision.Controls.TStatusDef
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TStatusDef.html
+  name: TStatusDef
+  nameWithType: TStatusDef
+  fullName: TuiVision.Controls.TStatusDef
+- uid: TuiVision.Controls.TView.HelpContext*
+  commentId: Overload:TuiVision.Controls.TView.HelpContext
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext
+  name: HelpContext
+  nameWithType: TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
 - uid: TuiVision.Controls.TStatusItem
   commentId: T:TuiVision.Controls.TStatusItem
   parent: TuiVision.Controls

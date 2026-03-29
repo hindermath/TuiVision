@@ -190,6 +190,15 @@ public class TGroup : TView
             _last.Next = view;
             _last = view;
         }
+
+        // Zustandsflags von der Eigentümergruppe auf die neue View übertragen (Exposed, Active, Focused).
+        // Propagate state flags from the owner group to the newly inserted view (Exposed, Active, Focused).
+        TViewState inherited = TViewState.Exposed | TViewState.Active | TViewState.Focused;
+        TViewState ownerState = State & inherited;
+        if (ownerState != 0)
+        {
+            view.SetState(ownerState, true);
+        }
     }
 
     /// <summary>

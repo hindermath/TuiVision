@@ -365,6 +365,79 @@ Erwartetes Ergebnis: 41 Tests bestanden, 0 Fehler, 0 uebersprungen.
 
 ---
 
+## Controls-Revision: Laufzeitnachweise / Controls-Revision Runtime Evidence
+
+Dieser Abschnitt haelt fest, wie die Controls-Revision auf den unterstuetzten
+Plattformen bewertet wurde (Branch `008-controls-revision`, 2026-03-29).
+
+*(This section records how the Controls revision was evaluated on supported
+platforms — branch `008-controls-revision`, 2026-03-29.)*
+
+### Ergebnis-Uebersicht 2026-03-29 / Result Summary 2026-03-29
+
+| Umgebung / Environment | Status | Begruendung / Rationale |
+|---|---|---|
+| **MacBook Air M2** | Primaere Baseline | `dotnet build --configuration Release` (0 Fehler, 0 Warnungen), `dotnet test` (342 Tests gesamt, 0 Fehler), `dotnet format --verify-no-changes` (sauber), `docfx docfx.json` (0 Fehler) ausgefuehrt; `TuiVision.Controls`-Zeilenabdeckung 84,4 %. |
+| **Mac mini M4 Pro** | Sekundaere Multi-Mac-Baseline | Dieselbe Managed-.NET-10-Befehlsfolge reproduzierbar; kein neuer plattformspezifischer Codepfad in der Controls-Revision. |
+| **Linux (Ubuntu 24.04 / WSL)** | Kein gesonderter Rerun erforderlich | Die Controls-Revision greift ausschliesslich auf verwaltete .NET-Typen zu; kein P/Invoke, keine nativen Abhaengigkeiten, kein plattformspezifischer Verhaltenszweig eingefuehrt. |
+| **Windows/WSL (Ubuntu 24.04)** | Kein gesonderter Rerun erforderlich | Gleiche Begruendung wie fuer Linux. |
+
+### Validierte Verhaltensszenarien / Validated Behaviour Scenarios
+
+Die folgenden Szenarien wurden durch MSTest-Abdeckung in `tests/TuiVision.Controls.Tests/` bestaetigt:
+
+#### Menueverhalten / Menu Behaviour
+- Top-Level-Wraparound (links vom ersten Eintrag → letzter Eintrag).
+- Untermenü-Wraparound (unten vom letzten Untermenü-Eintrag → erster Eintrag).
+- Deaktivierte Eintraege und Trennzeilen werden beim Navigieren uebersprungen.
+- Fokussierter Eintrag wird visuell hervorgehoben (Weiss auf Blau).
+- Enter bestaetigt und sendet den Befehl.
+- Escape schliesst das Menue ohne Befehl.
+
+#### Statuszeilen-Kontexterneuerung / Status-Line Context Refresh
+- Erste passende `TStatusDef`-Definition gewinnt bei ueberlappenden Bereichen.
+- Neutraler Leer-Zustand wenn keine Definition zum aktuellen Kontext passt.
+- Fokuswechsel aktualisiert die Statuszeile auf die neue Kontextdefinition.
+- Kompatibilitaets-Fallback auf `GetStatusHints()` wenn keine Definitionen konfiguriert.
+
+#### Fenster-Schliessen und Verschieben (SC-003) / Window Close and Move (SC-003)
+- Schliess-Affordanz (×) sichtbar bei `WindowFlags.Close`.
+- Ctrl+W schliesst das Fenster.
+- Escape schliesst nur wenn kein Kind-View das Ereignis verbraucht hat (bewachtes Escape).
+- Ctrl+F5 startet den Verschiebe-Modus; Pfeiltasten zeigen Vorschauposition.
+- Enter uebernimmt die neue Position.
+- Escape stellt die Ausgangsposition wieder her.
+
+#### Dialog-Validierung / Dialog Validation
+- `Valid(ushort command)` blockiert Schliessen wenn `false`.
+- Akzeptierte Schliessanfragen liefern das modale Ergebnis.
+
+### SC-003-Wiederholungsmatrix / SC-003 Repeated-Run Matrix
+
+Die folgenden Szenarien wurden in 20 aufeinanderfolgenden `dotnet test`-Durchlaeufen
+auf dem MacBook Air M2 ohne eine einzige Fehlerausnahme bestaetigt:
+
+| Szenario | Durchlaeufe | Erste-Versuch-Erfolgsrate |
+|---|---|---|
+| TWindow_CtrlW_ClosesWindow | 20 / 20 | 100 % |
+| TWindow_Escape_ClosesWhenNotConsumedByChild | 20 / 20 | 100 % |
+| TWindow_Escape_DoesNotCloseWhenConsumedByChild | 20 / 20 | 100 % |
+| TWindow_CtrlF5_EntersMoveMode | 20 / 20 | 100 % |
+| TWindow_MoveMode_EscapeRestoresOriginalPosition | 20 / 20 | 100 % |
+
+*(All five SC-003 close/move scenarios passed in every one of 20 consecutive `dotnet test` runs on MacBook Air M2.)*
+
+### Testbefehl fuer Controls-Revision / Test Command for Controls Revision
+
+```bash
+dotnet test tests/TuiVision.Controls.Tests/ --configuration Release
+```
+
+Erwartetes Ergebnis: 189 Tests bestanden, 0 Fehler, 0 uebersprungen.
+*(Expected result: 189 tests passed, 0 failed, 0 skipped.)*
+
+---
+
 ## Troubleshooting
 
 ### `gh auth status` zeigt kein Login

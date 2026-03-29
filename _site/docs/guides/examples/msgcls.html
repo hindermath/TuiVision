@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>MsgCls — Anleitung / Guide | TuiVision Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="MsgCls — Anleitung / Guide | TuiVision Documentation ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/008-controls-revision/docs/guides/examples/msgcls.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo.svg" alt="TuiVision">
+            TuiVision
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="msgcls--anleitung--guide">MsgCls — Anleitung / Guide</h1>
+
+<blockquote>
+<p><strong>Quelle / Source</strong>: <code>tv203s/contrib/tvision/examples/msgcls/</code> (Hauptprogramm: <code>testdyn.cpp</code>, Klassen: <code>tlnmsg.cpp</code>/<code>tlnmsg.h</code>)
+<strong>Wave</strong>: 1 — Pflichtbeispiel aus dem Originalordner <code>tv203s/contrib/tvision/examples/</code>
+<strong>Nicht</strong> Bestandteil von <code>TVDEMOS/</code> oder <code>TVFM/</code>.</p>
+</blockquote>
+<hr>
+<h2 id="lernziel--learning-goal">Lernziel / Learning Goal</h2>
+<p>Dieses Beispiel demonstriert benutzerdefiniertes Nachrichten-Routing durch das
+TuiVision-Broadcast-Ereignissystem. Ein <code>MsgClsWindow</code> empfängt Broadcast-Ereignisse
+mit einem benutzerdefinierten Befehlscode und akkumuliert die enthaltenen Texte.</p>
+<p>This example demonstrates custom message routing through the TuiVision broadcast event system.
+A <code>MsgClsWindow</code> receives broadcast events with a custom command code and accumulates
+the contained texts.</p>
+<hr>
+<h2 id="voraussetzungen--prerequisites">Voraussetzungen / Prerequisites</h2>
+<ul>
+<li><p><strong>.NET 10 SDK</strong> installiert — lade es von <a href="https://dotnet.microsoft.com/download/dotnet/10.0">dotnet.microsoft.com</a> herunter und installiere es, bevor du weitermachst. /
+<strong>.NET 10 SDK</strong> installed — download and install it from <a href="https://dotnet.microsoft.com/download/dotnet/10.0">dotnet.microsoft.com</a> before proceeding.</p>
+</li>
+<li><p><strong>TuiVision-Repository</strong> geklont — führe folgenden Befehl aus, um das Repository lokal verfügbar zu machen:
+<code>git clone https://github.com/hindermath/TuiVision.git</code> /
+<strong>TuiVision repository</strong> cloned — run the following command to get a local copy:
+<code>git clone https://github.com/hindermath/TuiVision.git</code></p>
+</li>
+<li><p><strong>C#-Grundkenntnisse</strong> — ein grundlegendes Verständnis von C# ist hilfreich; eine gute Einführung findest du auf <a href="https://learn.microsoft.com/de-de/dotnet/csharp/">Microsoft Learn</a>. /
+<strong>Basic C# knowledge</strong> — a foundational understanding of C# is helpful; a good starting point is <a href="https://learn.microsoft.com/de-de/dotnet/csharp/">Microsoft Learn</a>.</p>
+</li>
+<li><p><strong>TuiVision-Ereignissystem</strong> — Kenntnisse des Ereignismodells erleichtern das Verständnis erheblich; für eine tiefere Lektüre sieh dir <code>src/TuiVision.Core/TEvent.cs</code> im Repository an. /
+<strong>TuiVision event system</strong> — familiarity with the event model is recommended; for deeper reading, refer to <code>src/TuiVision.Core/TEvent.cs</code> in the repository.</p>
+</li>
+</ul>
+<hr>
+<h2 id="starten--startup">Starten / Startup</h2>
+<pre><code class="lang-bash">dotnet run --project examples/MsgCls
+</code></pre>
+<p>Das Programm öffnet ein Nachrichtenfenster auf dem Desktop. Nachrichten können
+über den Menüeintrag (wenn vorhanden) oder programmatisch über <code>PostMessage()</code> gepostet werden.</p>
+<p>The program opens a message window on the desktop. Messages can be posted via the menu entry
+(if present) or programmatically via <code>PostMessage()</code>.</p>
+<hr>
+<h2 id="trigger-ablauf--trigger-flow">Trigger-Ablauf / Trigger Flow</h2>
+<ol>
+<li><p><code>MsgClsApp.PostMessage(text)</code> erzeugt ein Broadcast-Ereignis mit <code>MsgClsEvents.cmPostToMsgWindow</code>.</p>
+</li>
+<li><p>Das Ereignis wird über <code>HandleEvent()</code> an alle Kindansichten der Anwendung gesendet.</p>
+</li>
+<li><p><code>MsgClsWindow.HandleEvent()</code> fängt den Broadcast ab und fügt den Text zu <code>Messages</code> hinzu.</p>
+</li>
+<li><p><code>MsgClsApp.PostMessage(text)</code> creates a broadcast event with <code>MsgClsEvents.cmPostToMsgWindow</code>.</p>
+</li>
+<li><p>The event is sent to all child views of the application via <code>HandleEvent()</code>.</p>
+</li>
+<li><p><code>MsgClsWindow.HandleEvent()</code> intercepts the broadcast and adds the text to <code>Messages</code>.</p>
+</li>
+</ol>
+<hr>
+<h2 id="nachrichten-routing--erklärung--message-routing-explanation">Nachrichten-Routing — Erklärung / Message Routing Explanation</h2>
+<pre><code>MsgClsApp.PostMessage(&quot;Hallo&quot;)
+  → TEvent.CreateBroadcast(cmPostToMsgWindow, &quot;Hallo&quot;)
+  → MsgClsApp.HandleEvent()
+  → TGroup.HandleEvent() → alle Kinder / all children
+  → MsgClsWindow.HandleEvent() ← fängt ab / intercepts
+  → Messages.Add(&quot;Hallo&quot;)
+</code></pre>
+<p>Der Schlüssel: Broadcast-Ereignisse durchlaufen die gesamte View-Hierarchie. Jede Ansicht,
+die den Befehlscode kennt, kann reagieren — ohne direkte Objektreferenz.</p>
+<p>The key: broadcast events traverse the entire view hierarchy. Any view that knows the command code
+can respond — without a direct object reference.</p>
+<hr>
+<h2 id="architekturhinweise--architecture-hints">Architekturhinweise / Architecture Hints</h2>
+<pre><code>MsgClsApp (TApplication)
+├── MsgClsWindow (TWindow)    ← empfängt Broadcasts / receives broadcasts
+│   └── Messages: List&lt;string&gt;
+└── PostMessage(text)         ← öffentliche API / public API
+</code></pre>
+<ul>
+<li><p><code>MsgClsEvents.cmPostToMsgWindow = 201</code> — benutzerdefinierter Befehlscode</p>
+</li>
+<li><p>Die Headless-Smoke-Seam: Im Headless-Modus postet der Konstruktor sofort eine Testnachricht.</p>
+</li>
+<li><p><code>MsgClsEvents.cmPostToMsgWindow = 201</code> — custom command code</p>
+</li>
+<li><p>The headless smoke seam: In headless mode the constructor immediately posts a test message.</p>
+</li>
+</ul>
+<hr>
+<h2 id="übungen--exercises">Übungen / Exercises</h2>
+<ol>
+<li><p>Fügen Sie eine zweite Fensterkategorie hinzu (z. B. Fehlermeldungen in Rot).
+Add a second window category (e.g., error messages in red).</p>
+</li>
+<li><p>Persistieren Sie die Nachrichten in einer Datei beim Beenden.
+Persist the messages to a file on exit.</p>
+</li>
+<li><p>Testen Sie, was passiert, wenn das Nachrichtenfenster geschlossen wird und dann
+eine weitere Nachricht gepostet wird.
+Test what happens when the message window is closed and another message is then posted.</p>
+</li>
+</ol>
+<hr>
+<h2 id="quellenrückverfolgung--source-traceability">Quellenrückverfolgung / Source Traceability</h2>
+<table>
+<thead>
+<tr>
+<th>Verwaltete Datei / Managed File</th>
+<th>Historische Quelle / Historical Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>examples/MsgCls/MsgClsWindow.cs</code></td>
+<td><code>tv203s/contrib/tvision/examples/msgcls/tlnmsg.cpp</code> + <code>tlnmsg.h</code></td>
+</tr>
+<tr>
+<td><code>examples/MsgCls/MsgClsApp.cs</code></td>
+<td><code>tv203s/contrib/tvision/examples/msgcls/testdyn.cpp</code></td>
+</tr>
+<tr>
+<td><code>examples/MsgCls/MsgClsEvents.cs</code></td>
+<td>Befehlskonstanten aus <code>testdyn.cpp</code> / command constants from <code>testdyn.cpp</code></td>
+</tr>
+</tbody>
+</table>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/docs/guides/examples/msgcls.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

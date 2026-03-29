@@ -75,16 +75,37 @@ public class TDialog : TGroup
     }
 
     /// <summary>
-    /// Beendet den Dialog mit einer Command-ID.
+    /// Beendet den Dialog mit einer Command-ID, sofern <see cref="Valid"/> die Anfrage akzeptiert.
     ///
-    /// Closes the dialog with a command ID.
+    /// Closes the dialog with a command ID, provided <see cref="Valid"/> accepts the request.
     /// </summary>
     /// <param name="command">Die Rückgabe-Command-ID. / The command ID to return.</param>
     public void CloseDialog(ushort command)
     {
+        if (!Valid(command))
+        {
+            return;
+        }
+
         _result = command;
         _running = false;
     }
+
+    /// <summary>
+    /// Validierungshook: Gibt <c>true</c> zurück, wenn der Dialog mit der angegebenen Befehl-ID
+    /// geschlossen werden darf. Abgeleitete Klassen überschreiben diese Methode, um ungültige
+    /// Zustände zu verhindern. Die Standardimplementierung erlaubt immer das Schließen.
+    ///
+    /// Validation hook: returns <c>true</c> when the dialog may be closed with the given command ID.
+    /// Derived classes override this method to prevent invalid state closure.
+    /// The default implementation always allows closing.
+    /// </summary>
+    /// <param name="command">Die Befehl-ID, mit der der Dialog geschlossen werden soll. / The command ID used to close the dialog.</param>
+    /// <returns>
+    /// <c>true</c>, wenn das Schließen erlaubt ist; <c>false</c>, um es zu verhindern.
+    /// <c>true</c> to allow closing; <c>false</c> to prevent it.
+    /// </returns>
+    protected virtual bool Valid(ushort command) => true;
 
     /// <summary>
     /// Zeichnet Rahmen, Titel und Kind-Controls und kopiert den Dialog in den Owner-Puffer.

@@ -18,7 +18,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THelpWindow.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: THelpWindow
     path: src/TuiVision.Controls/THelpWindow.cs
@@ -75,6 +75,7 @@ items:
   - TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.DrawView
+  - TuiVision.Controls.TView.HelpContext
   - TuiVision.Controls.TView.GetStatusHints
   - TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
   - System.Object.Equals(System.Object)
@@ -97,7 +98,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THelpWindow.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/THelpWindow.cs
@@ -142,7 +143,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THelpWindow.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: Viewer
     path: src/TuiVision.Controls/THelpWindow.cs
@@ -177,7 +178,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THelpWindow.cs
-      branch: 006-close-phase8-gate
+      branch: 008-controls-revision
       repo: https://github.com/hindermath/TuiVision.git
     id: OpenContext
     path: src/TuiVision.Controls/THelpWindow.cs
@@ -960,6 +961,13 @@ references:
     href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView
   - name: (
   - name: )
+- uid: TuiVision.Controls.TView.HelpContext
+  commentId: P:TuiVision.Controls.TView.HelpContext
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext
+  name: HelpContext
+  nameWithType: TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
 - uid: TuiVision.Controls.TView.GetStatusHints
   commentId: M:TuiVision.Controls.TView.GetStatusHints
   parent: TuiVision.Controls.TView
