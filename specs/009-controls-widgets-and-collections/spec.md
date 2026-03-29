@@ -5,6 +5,16 @@
 **Status**: Draft  
 **Input**: User description: "Erstelle eine Spezifikation aus dem Inhalt der Datei Lastenheft_01_ControlsWidgetsAndCollections.md"
 
+## Clarifications
+
+### Session 2026-03-29
+
+- Q: Welcher Mindestumfang ist fuer den neuen Combo-Box-Baustein in `009` verpflichtend? → A: Editierbare Combo-Box mit sichtbarer Drop-down-Auswahl ist Pflicht.
+- Q: Welcher Clipboard-Scope ist fuer `009` verpflichtend? → A: Anwendungsinterne Managed-Clipboard-Semantik ist Pflicht; Host-Integration ist optional.
+- Q: Welche Mindest-Lebensdauer ist fuer den History-Vertrag in `009` verpflichtend? → A: Nur laufende Anwendungssitzung ist Pflicht.
+- Q: Welcher Progress-Mindesttyp ist fuer `009` verpflichtend? → A: Determinierter Fortschritt mit numerischem Wertbereich ist Pflicht.
+- Q: Wo soll die verpflichtende Akzeptanzflaeche fuer `009` primaer liegen? → A: Primaer in `tests/TuiVision.Controls.Tests/`; Beispiel-Smokes erst spaeter.
+
 ## User Scenarios & Testing *(mandatory)*
 
 This feature does not port one of the 25 mandatory original examples by itself.
@@ -26,9 +36,10 @@ places and hide the real framework gaps.
 
 **Independent Test**: Create focused control-level tests that exercise
 `TListViewer`, `TListBox`, `TScrollBar`, `TScroller`, `TInputLine`, `THistory`,
-`TFileInputLine`, and `ManagedClipboard` without launching any example project,
-and verify that the controls preserve visible state and predictable keyboard
-behaviour under normal and edge conditions.
+`TFileInputLine`, and `ManagedClipboard` primarily in `tests/TuiVision.Controls.Tests/`
+without launching any example project, and verify that the controls preserve
+visible state and predictable keyboard behaviour under normal and edge
+conditions.
 
 **Acceptance Scenarios**:
 
@@ -59,14 +70,14 @@ example folders.
 
 **Independent Test**: Prove that a reusable combo widget, a reusable progress
 display contract, and a reusable parameterized text display can be instantiated,
-updated, rendered, and verified in focused framework tests without any example
-project.
+updated, rendered, and verified in focused framework tests primarily under
+`tests/TuiVision.Controls.Tests/` without any example project.
 
 **Acceptance Scenarios**:
 
 1. **Given** a combo-style input flow, **When** the user opens the selection
-   surface and chooses an item, **Then** the input value, list presentation, and
-   history or drop-down state remain consistent.
+   surface, edits the value, and chooses an item, **Then** the input value, list
+   presentation, and history or drop-down state remain consistent.
 2. **Given** a long-running operation represented by a progress widget,
    **When** the reported state changes from running to completed or canceled,
    **Then** the widget updates its visible state without requiring custom
@@ -129,21 +140,35 @@ that later example smoke tests can stay comparatively thin.
   affected wave-2 examples do not invent local variants of those flows.
 - **FR-004**: The framework MUST define the expected interaction boundaries
   between `TInputLine`, `THistory`, `TFileInputLine`, and `ManagedClipboard`.
+- **FR-004a**: The required clipboard contract for this feature MUST be
+  satisfied by an application-internal managed clipboard semantics; operating
+  system clipboard integration is optional and MUST NOT be required for feature
+  acceptance.
+- **FR-004b**: The required history contract for this feature MUST cover the
+  active application session only; persistence across program restarts is out
+  of scope for this feature and MUST NOT be required for acceptance.
 - **FR-005**: The Controls layer MUST introduce a reusable combo-box style
-  widget model that combines editable or selectable input state with a list
+  widget model that combines editable input state with a visible drop-down list
   presentation contract.
-- **FR-006**: Combo-style widget behaviour MUST support a visible selection
-  surface, a consistent selected-value outcome, and predictable closure of the
-  temporary selection state.
+- **FR-006**: Combo-style widget behaviour MUST support free text editing, a
+  visible selection surface, a consistent selected-value outcome, and
+  predictable closure of the temporary drop-down state.
 - **FR-007**: The Controls layer MUST provide a reusable progress-display
-  contract that supports at least running, completed, and canceled states.
+  contract for determinate progress with a numeric value range that supports at
+  least running, completed, and canceled states.
 - **FR-008**: Progress-display behaviour MUST be testable without binding it to
   one specific example application's long-running task logic.
+- **FR-008a**: Indeterminate progress indication is optional for this feature
+  and MUST NOT be required for acceptance.
 - **FR-009**: Dynamic parameterized text display MUST support runtime value
   refresh and clipping within declared bounds.
 - **FR-010**: The widget and collections feature MUST establish a dedicated
   framework-level acceptance surface for list, combo/history, progress, and
   parameter-text behaviour before the affected wave-2 examples are ported.
+- **FR-010a**: The mandatory acceptance surface for this feature MUST live
+  primarily in `tests/TuiVision.Controls.Tests/`; example smoke tests for the
+  consuming wave-2 applications are deferred until later example-delivery
+  features.
 - **FR-011**: Later example smoke tests for `clipboard`, `dyntxt`, `inplis`,
   `listvi`, `progba`, `tcombo`, and `tprogb` MUST be able to rely on the shared
   framework implementations delivered by this feature.
@@ -159,11 +184,15 @@ that later example smoke tests can stay comparatively thin.
 - **List Navigation State**: The active item, visible range, and linked scroll
   position that together describe the current state of a list-driven control.
 - **Input Interaction Contract**: The framework-level agreement for text entry,
-  history recall, and clipboard-oriented actions across input-related controls.
+  history recall, and application-internal clipboard-oriented actions across
+  input-related controls during the active application session, with host
+  clipboard integration treated as optional.
 - **Combo Presentation State**: The currently visible combo selection surface,
-  its available choices, and the resulting selected or edited value.
+  its available choices, the current edited text, and the resulting selected
+  value.
 - **Progress State**: The reported operational state of a progress display,
-  including running, completed, and canceled outcomes.
+  including a numeric progress range plus running, completed, and canceled
+  outcomes.
 - **Parameterized Text State**: A display contract that combines a text pattern,
   current runtime values, and the effective bounds available for rendering.
 
@@ -173,7 +202,8 @@ that later example smoke tests can stay comparatively thin.
 
 - **SC-001**: A dedicated framework validation slice can verify list,
   combo/history, progress, and parameter-text behaviour without launching any
-  of the affected example projects.
+  of the affected example projects, with the primary acceptance coverage living
+  in `tests/TuiVision.Controls.Tests/`.
 - **SC-002**: All affected wave-2 examples can be planned as consumers of shared
   framework widgets rather than as owners of their own combo, progress,
   clipboard, or list implementations.
