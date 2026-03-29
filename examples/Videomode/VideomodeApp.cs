@@ -56,16 +56,13 @@ public class VideomodeApp : TApplication
         View = new VideomodeView(viewBounds);
         Desktop?.Insert(View);
 
-        // Im Headless-Modus: Übergangsversuch sofort ausführen und Ergebnis anzeigen
-        // In headless mode: execute transition attempt immediately and show result
-        if (_headless)
-        {
-            DisplayModeOutcome outcome = Coordinator.TryTransition(80, 25);
-            string message = outcome == DisplayModeOutcome.RealTransition
-                ? "Übergang erfolgreich / Transition successful"
-                : Coordinator.FallbackMessage;
-            View.ShowOutcome(outcome, message);
-        }
+        // Übergangsversuch immer sofort ausführen und Ergebnis anzeigen (interaktiv und headless).
+        // Always execute the transition attempt immediately and show the result (interactive and headless).
+        DisplayModeOutcome outcome = Coordinator.TryTransition(80, 25);
+        string message = outcome == DisplayModeOutcome.RealTransition
+            ? "Übergang erfolgreich / Transition successful"
+            : Coordinator.FallbackMessage;
+        View.ShowOutcome(outcome, message);
     }
 
     /// <summary>
