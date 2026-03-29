@@ -106,6 +106,12 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Next open scope: Wave 2 – Controls and Dialogs (requires Controls/Dialog layer as prerequisite before planning starts).
 - Planning decisions now fixed: headless smoke seam via `bool headless` constructor parameter + `GetEvent()` override; in-process MSTest execution without external process spawning; bilingual German-first/English-second XML docs and comments at CEFR-B2; `DisplayModeCoordinator.ProbeResizeSupport()` cross-platform probe with CA1416 suppressed.
 
+### 008-controls-revision
+- Align active work with `specs/008-controls-revision/spec.md` and the planning artifacts in `specs/008-controls-revision/`.
+- Scope is limited to `src/TuiVision.Controls`, `tests/TuiVision.Controls.Tests`, and the follow-through proof surfaces `docs/porting-status.md`, `Pflichtenheft.md`, and `docs/project-statistics.md`.
+- The revision must close the current menu, status-line, window, and dialog behavior gap before the next Controls/Dialog example wave proceeds.
+- Planning decisions now fixed: `TSubMenu` as a standalone declaration type; exactly one submenu level; `TStatusDef` with inclusive ranges, first-match-wins ordering, and neutral-empty fallback; explicit `HelpContext` on `TView` with `GetStatusHints()` retained only as a compatibility bridge for current callers such as `TEditor` and `TEditWindow` when no definitions are configured; `WindowFlags` limited to `Close` and `Move`; `Ctrl+F5` move mode; `Valid(ushort command)` for `TDialog`; same-change updates for the affected `docs/porting-status.md` rows, `docs/project-statistics.md`, and the `>>> NAECHSTER SCHRITT <<<` marker in `Pflichtenheft.md` when the effective next step changes.
+
 ## Agent File Synchronization Policy
 
 - When active feature context, plan-derived implementation guidance, or other shared AI-agent instructions change, review and update these files together when affected:
