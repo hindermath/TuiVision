@@ -96,9 +96,9 @@ that the dialog can block closure when its validation rule fails.
 **Acceptance Scenarios**:
 
 1. **Given** a window is marked as closable, **When** the user invokes a close
-   action from its title area, `Ctrl+W`, or `Escape` when no focused child
-   control consumes that key, **Then** the window closes through a normal
-   command result instead of remaining stuck onscreen.
+   action through `Ctrl+W` or `Escape` when no focused child control consumes
+   that key, **Then** the window closes through a normal command result instead
+   of remaining stuck onscreen.
 2. **Given** a window is marked as movable, **When** the user enters move mode
    and uses navigation keys, **Then** the window position changes in visible
    single-step increments until the move interaction is confirmed with `Enter`

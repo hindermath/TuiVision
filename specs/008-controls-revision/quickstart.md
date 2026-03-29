@@ -55,7 +55,9 @@ docfx docfx.json
 ```
 
 5. Capture the required runtime-behavior evidence on the primary Multi-Mac path
-   and the supplemental Linux / Windows/WSL path before closing the feature.
+   and the supplemental Linux / Windows/WSL path before closing the feature,
+   including explicit build/test outcomes on those paths and a repeated-run
+   result matrix for the `SC-003` window close/move scenarios.
 
 ## Representative Usage Sketch
 

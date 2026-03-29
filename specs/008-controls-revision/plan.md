@@ -299,6 +299,9 @@ See [research.md](research.md) for full detail. Key planning decisions:
 5. Introduce minimal declaration/helper types (`TSubMenu`, `TStatusDef`,
    `WindowFlags`) and expand existing models (`TMenuItem`, `TView`, `TWindow`,
    `TDialog`) only enough to make the tests compile.
+   For statically typed red tests, this compile-only seam may precede the first
+   failing behavioral assertions, but it must remain inert scaffolding rather
+   than delivered runtime behavior.
 6. Implement `TMenuBar`, `TStatusLine`, `TWindow`, and `TDialog` behaviors in
    the smallest vertical slices that satisfy the red tests.
 7. Update proof/documentation surfaces and bilingual XML docs once the behavior
@@ -373,8 +376,9 @@ docfx docfx.json
 ```
 
 - **Compatibility evidence**: Because runtime shell behavior changes, the
-  implementation phase must record Linux and Windows/WSL compatibility evidence
-  alongside the primary Multi-Mac validation path.
+  implementation phase must record explicit build/test evidence on Linux and
+  Windows/WSL alongside the primary Multi-Mac validation path, plus a
+  reviewable repeated-run result matrix for the `SC-003` close/move scenarios.
 
 ## Success-Criteria Traceability
 
@@ -382,7 +386,7 @@ docfx docfx.json
 |---|---|
 | `SC-001` menu navigation reaches intended command without mnemonic-only access | Menu interaction model, `TMenuBarTests.cs`, contract menu guarantees |
 | `SC-002` status line updates correctly on context changes | `TStatusDef` data model, status contract, `TStatusLineTests.cs` |
-| `SC-003` closable/movable windows behave predictably in repeated runs | window state model, `TWindowTests.cs`, contract window guarantees |
+| `SC-003` closable/movable windows behave predictably in repeated runs | window state model, `TWindowTests.cs`, contract window guarantees, repeated-run validation matrix across the supported environments |
 | `SC-004` dialog validation cleanly rejects or accepts close requests | dialog close request model, `TDialogTests.cs`, contract dialog guarantee |
 | `SC-005` feature stays within stated bounds | constitution/scope sections, risk boundaries, proof-surface update plan |
 
@@ -397,7 +401,9 @@ docfx docfx.json
   `docfx.json` exists, docfx becomes part of the gate.
 - **TDD visibility**: Tasks must be ordered so red tests for menu, status,
   window, and dialog behavior appear before the corresponding implementation
-  slices.
+  slices; the only allowed exception is inert compile-only scaffolding for new
+  types or members that the statically typed red tests need in order to
+  compile.
 - **Scope discipline**: One submenu level, no mouse, no streaming, no zoom/grow
   work, and no unrelated example delivery remain hard planning boundaries.
 
