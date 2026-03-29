@@ -99,7 +99,7 @@ public class MsgClsApp : TApplication
     {
         TMenuBar bar = new(bounds)
         {
-            Menu = new TMenuItem("~N~achricht posten / Post message", MsgClsEvents.cmPostLoremIpsum)
+            Menu = new TMenuItem("~N~achricht posten / ~P~ost message", MsgClsEvents.cmPostLoremIpsum)
         };
         return bar;
     }

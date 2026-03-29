@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-03-29 (aktualisiert nach thematischen Lastenheften fuer Welle 2 bis 4)
+Stand: 2026-03-30 (aktualisiert nach MsgCls-Hotkey-Korrektur und Statistikfortschreibung)
 
 ## Zweck und Pflege
 
@@ -69,28 +69,28 @@ fortgeschrieben.
 
 | Kennzahl | Wert |
 |---|---:|
-| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-29 |
-| Git-Commits gesamt | 224 |
+| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-03-30 |
+| Git-Commits gesamt | 234 |
 | Autoren laut Git | 1 |
-| Git-Aktivtage | 16 |
-| Produktionscode aktuell | 119 Dateien / 11198 Zeilen |
-| Testcode aktuell | 105 Dateien / 9137 Zeilen |
-| Dokumentation aktuell | 109 Dateien / 17860 Zeilen |
-| Davon Spec-Kit-Artefakte | 64 Dateien / 10728 Zeilen |
-| Davon Governance/Agent-Dateien | 5 Dateien / 720 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 38195 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 477.4 Arbeitstage |
-| Erfahrener Entwickler, konservative Untergrenze in Stunden | 3723.9 Stunden (477.4 * 7.8) |
-| Erfahrener Entwickler, brutto | 22.2 Arbeitsmonate (21.5 Tage/Monat) |
-| Erfahrener Entwickler, TVoeD-Annahme | 25.1 Kalendermonate bzw. 2.1 Jahre |
-| Thorsten solo, erfahrungsadjustierte Untergrenze | 305.6 Arbeitstage |
-| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 2383.7 Stunden (305.6 * 7.8) |
-| Thorsten solo, brutto | 14.2 Arbeitsmonate (21.5 Tage/Monat) |
-| Thorsten solo, TVoeD-Annahme | 16.1 Kalendermonate bzw. 1.3 Jahre |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 191.0 Arbeitstage |
-| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 10.0 Kalendermonate |
-| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 29.8x (477.4 / 16 Git-Aktivtage) |
-| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 19.1x (305.6 / 16 Git-Aktivtage) |
+| Git-Aktivtage | 17 |
+| Produktionscode aktuell | 122 Dateien / 12144 Zeilen |
+| Testcode aktuell | 106 Dateien / 10218 Zeilen |
+| Dokumentation aktuell | 115 Dateien / 19374 Zeilen |
+| Davon Spec-Kit-Artefakte | 75 Dateien / 12983 Zeilen |
+| Davon Governance/Agent-Dateien | 5 Dateien / 777 Zeilen |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 41736 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 521.7 Arbeitstage |
+| Erfahrener Entwickler, konservative Untergrenze in Stunden | 4069.3 Stunden (521.7 * 7.8) |
+| Erfahrener Entwickler, brutto | 24.3 Arbeitsmonate (21.5 Tage/Monat) |
+| Erfahrener Entwickler, TVoeD-Annahme | 27.5 Kalendermonate bzw. 2.3 Jahre |
+| Thorsten solo, erfahrungsadjustierte Untergrenze | 333.9 Arbeitstage |
+| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 2604.3 Stunden (333.9 * 7.8) |
+| Thorsten solo, brutto | 15.5 Arbeitsmonate (21.5 Tage/Monat) |
+| Thorsten solo, TVoeD-Annahme | 17.6 Kalendermonate bzw. 1.5 Jahre |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 208.7 Arbeitstage |
+| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 11.0 Kalendermonate |
+| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 30.7x (521.7 / 17 Git-Aktivtage) |
+| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 19.6x (333.9 / 17 Git-Aktivtage) |
 
 ## Phasen und Haupt-Branches
 
@@ -412,26 +412,26 @@ fortgeschrieben.
 
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
-- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 37708 Zeilen
+- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 41736 Zeilen
   (Produktionscode + Tests + Dokumentation).
 - Selbst mit der fuer klassische Entwicklung guenstigen Obergrenze von
   80 manuell erstellten Zeilen pro Arbeitstag ergibt sich bereits eine
-  Untergrenze von 471.4 Entwickler-Arbeitstagen.
+  Untergrenze von 521.7 Entwickler-Arbeitstagen.
 - Unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr entspricht das fuer einen
-  erfahrenen Entwickler ca. 24.8 Kalendermonaten bzw. 2.1 Arbeitsjahren; fuer
-  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 9.9 Kalendermonaten.
+  erfahrenen Entwickler ca. 27.5 Kalendermonaten bzw. 2.3 Arbeitsjahren; fuer
+  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 11.0 Kalendermonaten.
 - Unter Einbezug von Thorstens Erfahrungsprofil sinkt die klassische
-  Solo-Referenz fuer dieses Repository auf ca. 301.7 Arbeitstage bzw.
-  15.9 TVoeD-Kalendermonate.
-- Gegen die sichtbaren 15 Git-Aktivtage ergibt sich damit ein repo-weiter
-  Beschleunigungsfaktor von ca. 31.4x gegen die konservative Referenz und
-  immer noch ca. 20.1x gegen die erfahrungsadjustierte Thorsten-Referenz.
+  Solo-Referenz fuer dieses Repository auf ca. 333.9 Arbeitstage bzw.
+  17.6 TVoeD-Kalendermonate.
+- Gegen die sichtbaren 17 Git-Aktivtage ergibt sich damit ein repo-weiter
+  Beschleunigungsfaktor von ca. 30.7x gegen die konservative Referenz und
+  immer noch ca. 19.6x gegen die erfahrungsadjustierte Thorsten-Referenz.
 - Die vorliegenden Git-Daten zeigen damit eine deutliche Verdichtung durch
   agentische KI und GitHub Spec-Kit: hoher Dokumentations- und Codeumfang in
   einem kurzen beobachtbaren Aktivfenster.
 - Der Nachweis-Anteil (Spec-Kit-Artefakte, Governance, Beweis-Ledger) macht
   einen signifikanten Teil des Dokumentationsbestands aus; die kombinierte
-  Code-Basis aus Produktions- und Testcode mit 20159 Zeilen bestaetigt dennoch
+  Code-Basis aus Produktions- und Testcode mit 22362 Zeilen bestaetigt dennoch
   erheblichen realen Entwicklungsumfang.
 
 ## Fortschreibungsprotokoll
@@ -518,3 +518,4 @@ fortgeschrieben.
 | 2026-03-29 | Analyse-Remediation Runde 2 fuer `008-controls-revision` | Die verbleibenden Top-3-Funde aus dem erneuten Analyse-Durchlauf wurden direkt eingearbeitet: (1) `plan.md` und `tasks.md` erlauben jetzt explizit eine enge compile-only scaffolding Ausnahme fuer neue Typen/Mitglieder (`TSubMenu`, `TStatusDef`, `WindowFlags`, `HelpContext`), damit statisch typisierte Red-Tests in C# ueberhaupt kompilieren koennen, ohne bereits ausgelieferte Laufzeitlogik vorzuziehen. (2) Die Dokumentationsaufgabe in `tasks.md` wurde von einer Public-API-Bedingung auf die constitution-konforme Pruefung aller beruehrten projekt-eigenen Quelldateien unter `src/TuiVision.Controls/` erweitert. (3) Ein eigener Audit-Task gegen `FR-016` bis `FR-018` wurde hinzugefuegt, damit Streaming-, Mouse- und Palette-Scope nicht nur narrativ, sondern auch reviewbar abgesichert sind. Die Aufgabenliste wurde dabei konsistent von 31 auf 33 Tasks umnummeriert und die Parallel-/Beispielsektionen entsprechend nachgezogen. Netto-Aenderungsvolumen vor dieser Ledger-Zeile: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+20 / -16` Dokumentationszeilen netto ueber `specs/008-controls-revision/plan.md`, `specs/008-controls-revision/tasks.md` und `docs/project-statistics.md`. Konservative Manualreferenz: 80 Zeilen/Tag = `0,3` Tage (ca. `1,6` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `0,2` Tage (ca. `1,0` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-29, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 | 2026-03-29 | Thematische Lastenhefte fuer Welle 2 bis 4 | Vier neue Anforderungsdokumente wurden als bewusst geschnittenes Vorbereitungs- und Roadmap-Paket angelegt: `Lastenheft_01_ControlsWidgetsAndCollections.md` und `Lastenheft_02_StandardDialogsAndDesigner.md` definieren die aus meiner Sicht echten Vor-Welle-2-Voraussetzungen jenseits der laufenden `008-controls-revision`; `Lastenheft_03_EditorHelpAndResourcesHardening.md` und `Lastenheft_04_TerminalCharsetAndEmulation.md` ziehen die spaeteren Wave-3-/Wave-4-Haertungen frueh sichtbar nach, ohne sie als Sofort-Blocker fuer Wave 2 zu deklarieren. Netto-Aenderungsvolumen dieser Runde: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+660` Dokumentationszeilen netto (`659` neue Lastenheft-Zeilen plus Fortschreibung in `docs/project-statistics.md`). Konservative Manualreferenz: 80 Zeilen/Tag = `8,3` Tage (ca. `64,4` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `5,3` Tage (ca. `41,2` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-29, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 | 2026-03-29 | `/speckit-implement` fuer `008-controls-revision` | Controls-Revision vollstaendig implementiert: drei neue Deklarationstypen (`TSubMenu.cs`, `TStatusDef.cs`, `WindowFlags.cs`), erweiterte `TMenuItem.cs` (IsSeparator, Mnemonic, SubMenuDef, Separator-Factory), vollstaendige Tastaturnavigation in `TMenuBar.cs` (Wrap-around, Skip-over, Layout-Slots, Auswahl-Highlight, Resize-Relayout), TStatusDef-basiertes First-Match-Wins-Routing mit neutralem Fallback in `TStatusLine.cs`, HelpContext-Property in `TView.cs`, WindowFlags-Flags mit Schliess-Affordanz/Ctrl+W/bewachtem Escape/Ctrl+F5-Verschiebe-Modus in `TWindow.cs`, Valid(ushort)-Validierungshook in `TDialog.cs`. Neues Testpaket `TWindowTests.cs` (317 Zeilen) und Erweiterungen in `TMenuBarTests.cs`, `TStatusLineTests.cs`, `TDialogTests.cs`, `TProgramTests.cs`. `docs/porting-status.md` fuer alle 8 betroffenen `.cc`-Zeilen aktualisiert; `>>> NAECHSTER SCHRITT <<<` in `Pflichtenheft.md` auf Welle-2-Planung vorgeschoben. Validierung: `dotnet build --configuration Release` (0 Fehler, 0 Warnungen), `dotnet test` (338 Tests, 0 Fehler), `dotnet format --verify-no-changes` (gruen). TuiVision.Controls Coverage: 84,02 % Line Coverage (Tor: 70 %). Netto-Aenderungsvolumen: ca. `+800` Produktionscode-Zeilen netto (10 Dateien bearbeitet/neu), ca. `+700` Testcode-Zeilen netto (5 Dateien bearbeitet/neu), ca. `+50` Dokumentationszeilen netto. Konservative Manualreferenz: 80 Zeilen/Tag = `19,4` Tage (ca. `151,1` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `12,4` Tage (ca. `96,7` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-29, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
+| 2026-03-30 | Hotkey-Korrektur fuer `MsgCls` auf `main` | Rendering-Regression im Menue behoben: `TMenuBar` markiert Hotkeys jetzt positionsgenau statt alle spaeteren Vorkommen desselben Zeichens; `examples/MsgCls/MsgClsApp.cs` wurde auf die bilinguale Mnemonik `~N~achricht posten / ~P~ost message` gezogen, zwei neue Controls-Regressionstests sichern Top-Level- und Untermenue-Rendering, `dotnet test tests/TuiVision.Controls.Tests/ --filter "FullyQualifiedName~TMenuBar"` lief mit 12/12 gruener Testsuite. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `src/` `+45 / -8` = `+37` Zeilen netto, `tests/` `+87 / -0` = `+87` Zeilen netto, `docs/` `+33 / -32` = `+1` Zeile netto in `docs/project-statistics.md`; zusaetzlich `examples/` `+1 / -1` = `0` und `Directory.Build.props` `+3 / -3` = `0` Repo-Metadaten-/Versionspflege. Konservative Manualreferenz fuer die repo-relevanten `125` Netto-Zeilen aus `src/` + `tests` + `docs`: `1,6` Tage (ca. `12,2` Stunden); Thorsten-Solo-Referenz: `1,0` Tage (ca. `7,8` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-30, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |

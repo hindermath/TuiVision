@@ -1,6 +1,7 @@
 // Copyright (c) 2026 Thorsten Hindermann / TuiVision Contributors.
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
+using System.Text;
 using TuiVision.Core;
 
 namespace TuiVision.Controls;
@@ -29,6 +30,13 @@ public sealed class MenuLayoutSlot
     /// </summary>
     public int Width { get; init; }
 }
+
+/// <summary>
+/// Bereitet einen Menünamen für die Anzeige auf und merkt sich die exakten Hotkey-Positionen.
+///
+/// Prepares a menu name for display and tracks the exact hotkey positions.
+/// </summary>
+internal readonly record struct MenuTextLayout(string Text, IReadOnlySet<int> HotKeyPositions);
 
 /// <summary>
 /// Die Menüleiste am oberen Bildschirmrand.
@@ -143,17 +151,19 @@ public class TMenuBar : TView
                 ConsoleColor bg = isSelected ? ConsoleColor.Blue : ConsoleColor.Cyan;
                 ConsoleColor defaultFg = isSelected ? ConsoleColor.White : ConsoleColor.Black;
 
-                string display = " " + StripHotKeys(slot.Item.Name) + " ";
-                HashSet<char> hotKeys = ExtractHotKeys(slot.Item.Name);
+                MenuTextLayout layout = ParseMenuText(slot.Item.Name);
+                string display = " " + layout.Text + " ";
                 int col = slot.StartCol;
+                int textIndex = -1;
 
                 foreach (char ch in display)
                 {
                     if (col >= Size.X) break;
-                    bool isHot = hotKeys.Contains(char.ToUpperInvariant(ch));
+                    bool isHot = textIndex >= 0 && layout.HotKeyPositions.Contains(textIndex);
                     ConsoleColor fg = isHot ? ConsoleColor.Yellow : defaultFg;
                     buffer.TrySetCell(Origin.X + col, Origin.Y, new TConsoleCell(ch, fg, bg));
                     col++;
+                    textIndex++;
                 }
             }
         }
@@ -420,8 +430,7 @@ public class TMenuBar : TView
             }
             else
             {
-                string stripped = StripHotKeys(cur.Name);
-                HashSet<char> hotKeys = ExtractHotKeys(cur.Name);
+                MenuTextLayout layout = ParseMenuText(cur.Name);
 
                 // Linkes Leerzeichen / Left padding
                 buffer.TrySetCell(px + 1, ry, new TConsoleCell(' ', entryFg, entryBg));
@@ -429,8 +438,8 @@ public class TMenuBar : TView
                 // Zeichen des Eintrags / Characters of the item
                 for (int ci = 0; ci < maxLen; ci++)
                 {
-                    char drawCh = ci < stripped.Length ? stripped[ci] : ' ';
-                    bool isHot = hotKeys.Contains(char.ToUpperInvariant(drawCh));
+                    char drawCh = ci < layout.Text.Length ? layout.Text[ci] : ' ';
+                    bool isHot = layout.HotKeyPositions.Contains(ci);
                     ConsoleColor fg = isHot ? ConsoleColor.Yellow : entryFg;
                     buffer.TrySetCell(px + 2 + ci, ry, new TConsoleCell(drawCh, fg, entryBg));
                 }
@@ -511,7 +520,7 @@ public class TMenuBar : TView
         TMenuItem? item = Menu;
         while (item != null && col < Size.X)
         {
-            string display = " " + StripHotKeys(item.Name) + " ";
+            string display = " " + ParseMenuText(item.Name).Text + " ";
             _layoutSlots.Add(new MenuLayoutSlot { Item = item, StartCol = col, Width = display.Length });
             col += display.Length;
             item = item.Next;
@@ -691,5 +700,33 @@ public class TMenuBar : TView
         }
 
         return result;
+    }
+
+    /// <summary>
+    /// Wandelt den Menünamen in den sichtbaren Text um und merkt sich die markierten Positionen.
+    ///
+    /// Converts a menu name into visible text and records the marked positions.
+    /// </summary>
+    /// <param name="name">Der rohe Menüname mit optionalen Tilde-Markierungen. / The raw menu name with optional tilde markers.</param>
+    /// <returns>Der sichtbare Text plus exakte Hotkey-Positionen. / The visible text plus exact hotkey positions.</returns>
+    private static MenuTextLayout ParseMenuText(string name)
+    {
+        StringBuilder builder = new(name.Length);
+        HashSet<int> hotKeyPositions = [];
+
+        for (int index = 0; index < name.Length; index++)
+        {
+            if (name[index] == '~' && index + 2 < name.Length && name[index + 2] == '~')
+            {
+                hotKeyPositions.Add(builder.Length);
+                builder.Append(name[index + 1]);
+                index += 2;
+                continue;
+            }
+
+            builder.Append(name[index]);
+        }
+
+        return new MenuTextLayout(builder.ToString(), hotKeyPositions);
     }
 }

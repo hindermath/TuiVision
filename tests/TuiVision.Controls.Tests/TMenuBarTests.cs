@@ -242,6 +242,78 @@ public sealed class TMenuBarTests
     }
 
     /// <summary>
+    /// Prüft, dass in der Menüleiste nur die explizit markierte Hotkey-Position hervorgehoben wird.
+    ///
+    /// Verifies that the menu bar highlights only the explicitly marked hotkey position.
+    /// </summary>
+    [TestMethod]
+    public void TMenuBar_TopLevel_HighlightsOnlyMarkedCharacterPosition()
+    {
+        const string itemName = "~N~achricht posten";
+
+        TMenuBar menuBar = new(new TRect(0, 0, 40, 1))
+        {
+            Menu = new TMenuItem(itemName, 100)
+        };
+
+        TGroup owner = ControlTestContext.AttachToOwner(menuBar, new TRect(0, 0, 40, 4));
+        TConsoleBuffer snapshot = ControlTestContext.GetBufferSnapshot(owner);
+        string display = " " + itemName.Replace("~", string.Empty, StringComparison.Ordinal) + " ";
+
+        int highlightedCount = CountHighlightedGlyphs(snapshot, 0, 'N', 'n');
+        int markedColumn = 1 + display.IndexOf('N');
+        int repeatedColumn = 1 + display.LastIndexOf('n');
+
+        Assert.AreEqual(1, highlightedCount,
+            "Only the explicit mnemonic position should be highlighted in the top-level menu.");
+        Assert.AreEqual(ConsoleColor.Yellow, snapshot[markedColumn, 0].Foreground,
+            "The marked mnemonic position must remain highlighted.");
+        Assert.AreNotEqual(ConsoleColor.Yellow, snapshot[repeatedColumn, 0].Foreground,
+            "A later repeated letter must not be highlighted without its own mnemonic marker.");
+    }
+
+    /// <summary>
+    /// Prüft, dass im Untermenü nur die explizit markierte Hotkey-Position hervorgehoben wird.
+    ///
+    /// Verifies that a submenu highlights only the explicitly marked hotkey position.
+    /// </summary>
+    [TestMethod]
+    public void TMenuBar_Submenu_HighlightsOnlyMarkedCharacterPosition()
+    {
+        const string topLevelName = "~F~ile";
+        const string subItemName = "~N~otion n";
+
+        TMenuBar menuBar = new(new TRect(0, 0, 40, 1))
+        {
+            Menu = new TMenuItem(topLevelName, 0, null, new TMenuItem(subItemName, 201))
+        };
+
+        TGroup owner = ControlTestContext.AttachToOwner(menuBar, new TRect(0, 0, 40, 6));
+
+        TEvent f10 = ControlEventFactory.CreateKeyDown(scanCode: 0x44);
+        menuBar.HandleEvent(f10);
+
+        TEvent down = ControlEventFactory.CreateKeyDown(scanCode: 0x50);
+        menuBar.HandleEvent(down);
+
+        TConsoleBuffer snapshot = ControlTestContext.GetBufferSnapshot(owner);
+        string submenuText = subItemName.Replace("~", string.Empty, StringComparison.Ordinal);
+
+        int highlightedCount = CountHighlightedGlyphs(snapshot, 2, 'N', 'n');
+        int popupX = 1;
+        int textStartColumn = popupX + 2;
+        int markedColumn = textStartColumn + submenuText.IndexOf('N');
+        int repeatedColumn = textStartColumn + submenuText.LastIndexOf('n');
+
+        Assert.AreEqual(1, highlightedCount,
+            "Only the explicit mnemonic position should be highlighted in the submenu.");
+        Assert.AreEqual(ConsoleColor.Yellow, snapshot[markedColumn, 2].Foreground,
+            "The marked submenu mnemonic position must remain highlighted.");
+        Assert.AreNotEqual(ConsoleColor.Yellow, snapshot[repeatedColumn, 2].Foreground,
+            "A later repeated submenu letter must not be highlighted without its own marker.");
+    }
+
+    /// <summary>
     /// Prüft, ob Enter den Befehl des ausgewählten Untermenü-Eintrags sendet.
     ///
     /// Verifies that Enter dispatches the command of the focused submenu entry.
@@ -365,5 +437,20 @@ public sealed class TMenuBarTests
 
             base.HandleEvent(@event);
         }
+    }
+
+    private static int CountHighlightedGlyphs(TConsoleBuffer snapshot, int row, params char[] glyphs)
+    {
+        int count = 0;
+        for (int x = 0; x < snapshot.Width; x++)
+        {
+            TConsoleCell cell = snapshot[x, row];
+            if (cell.Foreground == ConsoleColor.Yellow && Array.IndexOf(glyphs, cell.Glyph) >= 0)
+            {
+                count++;
+            }
+        }
+
+        return count;
     }
 }
