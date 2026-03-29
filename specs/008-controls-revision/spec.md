@@ -2,7 +2,7 @@
 
 **Feature Branch**: `008-controls-revision`  
 **Created**: 2026-03-29  
-**Status**: Ready for Planning  
+**Status**: Ready for Implementation  
 **Input**: User description: "Erstelle aus der Datei Lastenheft_ControlsRevision.md eine Specifikation."
 
 ## Clarifications
@@ -202,6 +202,27 @@ that the dialog can block closure when its validation rule fails.
   surfaces so reviewers can see that the affected Controls-layer components now
   reflect their actual delivered behavior.
 
+### Non-Functional Requirements
+
+- **NFR-001**: Runtime behavior introduced by this revision MUST remain fully
+  managed and portable across macOS, Linux, and Windows/WSL without introducing
+  OS-specific logic in `TuiVision.Controls`.
+- **NFR-002**: Menu navigation, status-line refresh, window movement, and dialog
+  close validation MUST settle in the same interactive event-loop cycle that
+  processes the triggering input so the first redraw already reflects the new
+  state.
+- **NFR-003**: The implementation MUST preserve the repository's mandatory
+  quality gates: passing `dotnet build --configuration Release`, passing
+  `dotnet test`, passing `dotnet format --verify-no-changes`, and reviewable
+  assembly-specific coverage evidence with at least 70% line coverage for
+  `TuiVision.Controls` plus the required five-assembly gate package for merge.
+- **NFR-004**: Every changed project-owned source member in this feature MUST be
+  documented in bilingual German-first/English-second XML documentation and
+  explanatory comments at CEFR-B2 level in the same implementation slice that
+  changes the behavior.
+- **NFR-005**: Validation evidence for the finished feature MUST include reviewable
+  results from `MacBook Air M2`, `Mac mini M4 Pro`, Linux, and Windows/WSL.
+
 ### Key Entities *(include if feature involves data)*
 
 - **Menu Context**: The currently active top-level menu entry together with any
@@ -256,8 +277,8 @@ that the dialog can block closure when its validation rule fails.
   shows no stale actions from the previously focused context.
 - **SC-003**: In validation scenarios for closable and movable windows, each
   requested close or move interaction produces the expected visible result on
-  the first attempt in at least 95% of repeated runs across the supported test
-  environments.
+  the first attempt in at least 19 of 20 repeated runs per environment on
+  `MacBook Air M2`, `Mac mini M4 Pro`, Linux, and Windows/WSL.
 - **SC-004**: In validation scenarios for dialogs that apply close rules,
   rejected close attempts keep the dialog open and accepted close attempts
   return a distinct modal result in 100% of observed runs.

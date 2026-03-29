@@ -29,16 +29,16 @@
 
 ## Phase 2: Foundational (Blocking Compile-Time Seams)
 
-**Purpose**: Install only the minimal compile-time seams and test scaffolding required for the red tests to compile without widening scope beyond the approved plan.
+**Purpose**: Install shared test scaffolding and reserve only the narrow compile-only declarations that a story's first red commit may need, without widening scope beyond the approved plan.
 
-**⚠️ CRITICAL**: No user-story runtime behavior under `src/TuiVision.Controls/` should be implemented before the corresponding red tests exist. The only allowed exception is inert compile-only scaffolding for new types or members that the statically typed red tests require in order to compile.
+**⚠️ CRITICAL**: No user-story runtime behavior under `src/TuiVision.Controls/` should be implemented before the corresponding red tests exist. If a statically typed red test needs a new type or member to compile, add only the inert declaration in the same red commit as that test, never in a prior standalone implementation commit.
 
-- [ ] T002 Create inert compile-only seams in `src/TuiVision.Controls/TSubMenu.cs`, `src/TuiVision.Controls/TStatusDef.cs`, `src/TuiVision.Controls/WindowFlags.cs`, and `src/TuiVision.Controls/TView.cs` only as far as required for the statically typed red tests to compile, without implementing delivered runtime behavior.
+- [ ] T002 When a story's first red tests require them, add inert compile-only seams in `src/TuiVision.Controls/TSubMenu.cs`, `src/TuiVision.Controls/TStatusDef.cs`, `src/TuiVision.Controls/WindowFlags.cs`, and `src/TuiVision.Controls/TView.cs` only in the same red commit as those tests, and only as far as required for the tests to compile without implementing delivered runtime behavior.
 - [ ] T003 Create the new test home `tests/TuiVision.Controls.Tests/TWindowTests.cs` with bilingual XML documentation so the User-Story-3 red suite has a dedicated file before production window changes begin.
 - [ ] T004 [P] Extend shared Controls test helpers in `tests/TuiVision.Controls.Tests/ControlEventFactory.cs`, `tests/TuiVision.Controls.Tests/ControlTestContext.cs`, and `tests/TuiVision.Controls.Tests/ShellTestSupport.cs` only where needed so menu, status-line, window, and dialog red tests can drive repeatable keyboard- and shell-behavior scenarios.
 - [ ] T005 [P] If existing test homes need structural cleanup before red coverage is added, refactor only `tests/TuiVision.Controls.Tests/TMenuBarTests.cs`, `tests/TuiVision.Controls.Tests/TStatusLineTests.cs`, `tests/TuiVision.Controls.Tests/TDialogTests.cs`, `tests/TuiVision.Controls.Tests/TDialogCompositeTests.cs`, `tests/TuiVision.Controls.Tests/TProgramTests.cs`, `tests/TuiVision.Controls.Tests/TEditorCommandTests.cs`, and `tests/TuiVision.Controls.Tests/TEditWindowTests.cs` so later red tests can be added without touching production files first.
 
-**Checkpoint**: Compile-only seams, shared red-test homes, and helper scaffolding exist, but no delivered user-story behavior has been implemented yet.
+**Checkpoint**: Shared red-test homes and helper scaffolding exist, and any compile-only production seams still wait for the specific red commit that needs them.
 
 ---
 
@@ -60,7 +60,7 @@
 - [ ] T008 [P] [US1] Expand the declaration model in `src/TuiVision.Controls/TMenuItem.cs` and `src/TuiVision.Controls/TSubMenu.cs` so one-level submenu composition, historical `tvguid02`-style builder syntax, mnemonic metadata, separator rows, and disabled entries are represented explicitly.
 - [ ] T009 [US1] Implement active menu interaction in `src/TuiVision.Controls/TMenuBar.cs`, covering activation, top-level navigation, submenu opening, skip/wrap behavior, focused-entry highlight state, command dispatch, and clean dismissal.
 - [ ] T010 [US1] Update `src/TuiVision.Controls/TProgram.cs` and `src/TuiVision.Controls/TApplication.cs` only as needed so menu relayout and active-menu execution remain aligned with shell resize and command-routing behavior.
-- [ ] T011 [US1] Re-run the focused menu slice in `tests/TuiVision.Controls.Tests/TMenuBarTests.cs` and `tests/TuiVision.Controls.Tests/TProgramTests.cs` until User Story 1 is independently green.
+- [ ] T011 [US1] Re-run the focused menu slice in `tests/TuiVision.Controls.Tests/TMenuBarTests.cs` and `tests/TuiVision.Controls.Tests/TProgramTests.cs`, and complete the mandatory bilingual XML documentation/comments for the touched menu-shell members in the same User-Story-1 slice until that slice is independently green and documented.
 
 **Checkpoint**: Menu declaration and runtime navigation now behave like the approved one-level Turbo Vision shell baseline and can be reviewed independently.
 
@@ -82,7 +82,7 @@
 - [ ] T014 [P] [US2] Implement the explicit status-definition surface in `src/TuiVision.Controls/TStatusDef.cs` and update `src/TuiVision.Controls/TStatusItem.cs` only as needed so ordered definition chains and status action sets can be represented without inventing a second routing model.
 - [ ] T015 [US2] Implement explicit help-context routing and compatibility-bridge behavior in `src/TuiVision.Controls/TView.cs`, `src/TuiVision.Controls/TEditor.cs`, and `src/TuiVision.Controls/TEditWindow.cs`.
 - [ ] T016 [US2] Implement first-match-wins resolution, neutral fallback, and focus-driven refresh in `src/TuiVision.Controls/TStatusLine.cs`, and narrow `src/TuiVision.Controls/TProgram.cs` only if shell focus-change propagation needs adjustment for the new status model.
-- [ ] T017 [US2] Re-run the focused status slice in `tests/TuiVision.Controls.Tests/TStatusLineTests.cs`, `tests/TuiVision.Controls.Tests/TEditorCommandTests.cs`, and `tests/TuiVision.Controls.Tests/TEditWindowTests.cs` until User Story 2 is independently green.
+- [ ] T017 [US2] Re-run the focused status slice in `tests/TuiVision.Controls.Tests/TStatusLineTests.cs`, `tests/TuiVision.Controls.Tests/TEditorCommandTests.cs`, and `tests/TuiVision.Controls.Tests/TEditWindowTests.cs`, and complete the mandatory bilingual XML documentation/comments for the touched status-routing members in the same User-Story-2 slice until that slice is independently green and documented.
 
 **Checkpoint**: Status-line behavior is explicitly context-driven, deterministic on overlap and no-match cases, and still compatible with the currently ported legacy hint producers.
 
@@ -104,7 +104,7 @@
 - [ ] T020 [P] [US3] Implement the focused window-capability surface in `src/TuiVision.Controls/WindowFlags.cs` and `src/TuiVision.Controls/TWindow.cs`, covering visible close affordance, guarded close handling, move-session snapshots, and reversible move mode without reopening zoom/grow scope.
 - [ ] T021 [US3] Implement dialog close validation in `src/TuiVision.Controls/TDialog.cs` and update `src/TuiVision.Controls/TButton.cs` only if command dispatch needs narrowing so validated closes stay on the existing modal-result path.
 - [ ] T022 [US3] Update `src/TuiVision.Controls/TProgram.cs` and `src/TuiVision.Controls/TApplication.cs` only as needed so window close commands and dialog validation stay on the normal shell command pipeline.
-- [ ] T023 [US3] Re-run the focused window/dialog slice in `tests/TuiVision.Controls.Tests/TWindowTests.cs`, `tests/TuiVision.Controls.Tests/TDialogTests.cs`, and `tests/TuiVision.Controls.Tests/TDialogCompositeTests.cs` until User Story 3 is independently green.
+- [ ] T023 [US3] Re-run the focused window/dialog slice in `tests/TuiVision.Controls.Tests/TWindowTests.cs`, `tests/TuiVision.Controls.Tests/TDialogTests.cs`, and `tests/TuiVision.Controls.Tests/TDialogCompositeTests.cs`, and complete the mandatory bilingual XML documentation/comments for the touched window/dialog members in the same User-Story-3 slice until that slice is independently green and documented.
 
 **Checkpoint**: Closable/movable windows and validating dialogs now follow the approved shell contract without broadening into zoom/grow or a new modal-loop design.
 
@@ -114,16 +114,16 @@
 
 **Purpose**: Finish proof, governance, documentation, portability evidence, and final validation after the three user stories are green.
 
-- [ ] T024 [P] Update `tests/TuiVision.Controls.Tests/ControlsProofTests.cs` and `tests/TuiVision.Controls.Tests/ControlCoverageSweepTests.cs` where needed so the affected historical Controls lineage remains explicitly proved and the `TuiVision.Controls` coverage gate stays reviewable.
+- [ ] T024 [P] Update `tests/TuiVision.Controls.Tests/ControlsProofTests.cs` and `tests/TuiVision.Controls.Tests/ControlCoverageSweepTests.cs` where needed so the affected historical Controls lineage remains explicitly proved, the fresh `TuiVision.Controls` coverage gate stays reviewable, and any cross-assembly coverage references needed for untouched gate assemblies remain current.
 - [ ] T025 [P] Update `docs/porting-status.md` for the affected historical rows `tmenubar.cc`, `tmenubox.cc`, `tmenuvie.cc`, `tsubmenu.cc`, `tstatusd.cc`, `tstatusl.cc`, `tdialog.cc`, and `twindow.cc` so the ledger reflects the delivered Controls behavior and evidence paths.
 - [ ] T026 [P] Record the delivered Controls revision in `Pflichtenheft.md`, and move the prominent `>>> NAECHSTER SCHRITT <<<` marker if this implementation changes the highest-priority remaining work item.
 - [ ] T027 [P] Refresh `docs/project-statistics.md` with the `008-controls-revision` implementation window, production/test/documentation deltas, main work packages, and both manual-effort baselines after the feature lands.
-- [ ] T028 [P] Capture runtime validation evidence for `MacBook Air M2`, `Mac mini M4 Pro`, Linux, and Windows/WSL in `docs/guides/multi-mac-workflow.md`, covering menu behavior, status-context refresh, window move/close behavior, dialog validation, and a repeated-run result matrix for the `SC-003` close/move scenarios with attempt counts and first-attempt pass rate.
-- [ ] T029 [P] Review all touched project-owned source files under `src/TuiVision.Controls/` for mandatory bilingual XML documentation and explanatory comments at CEFR-B2 level, run `docfx docfx.json` if API/XML surfaces changed, and fix resulting documentation issues in `src/` and `docs/`.
+- [ ] T028 [P] Capture runtime validation evidence for `MacBook Air M2`, `Mac mini M4 Pro`, Linux, and Windows/WSL in `docs/guides/multi-mac-workflow.md`, covering menu behavior, status-context refresh, window move/close behavior, dialog validation, and a repeated-run result matrix for the `SC-003` close/move scenarios with 20 attempts per environment plus the first-attempt pass rate.
+- [ ] T029 [P] Perform the final cross-story documentation audit for all touched project-owned source files under `src/TuiVision.Controls/`, run `docfx docfx.json` if API/XML surfaces changed, and fix any remaining documentation-generator issues in `src/` and `docs/` without deferring member-level documentation debt past the story slices.
 - [ ] T030 [P] Audit touched files under `src/TuiVision.Controls/`, `tests/TuiVision.Controls.Tests/`, `docs/`, and `specs/008-controls-revision/` against `FR-016`, `FR-017`, and `FR-018`, then record that no streaming, terminal-mouse, or palette-customization scope leaked into this increment.
 - [ ] T031 [P] Rename `Lastenheft_ControlsRevision.md` to `Lastenheft_ControlsRevision.008-controls-revision.md` once this branch fully implements the described scope so the delivered requirement set stays branch-traceable in the repository.
 - [ ] T032 [P] Synchronize `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and `.github/agents/copilot-instructions.md` in the same work item if implementation changes shared guidance, active technologies, or project structure.
-- [ ] T033 [P] Before each final validation run, increment the `Build` component in `Directory.Build.props`, then run `dotnet build --configuration Release`, `dotnet test tests/TuiVision.Controls.Tests/`, `dotnet test tests/TuiVision.Controls.Tests/ --collect:"XPlat Code Coverage"`, `dotnet test`, `dotnet format --verify-no-changes`, and conditional `docfx docfx.json` on the primary macOS path, plus record equivalent `dotnet build --configuration Release`, targeted Controls-test, and full `dotnet test` outcomes on Linux and Windows/WSL; fix remaining issues in touched `src/`, `tests/`, `docs/`, `Pflichtenheft.md`, and `specs/008-controls-revision/quickstart.md`.
+- [ ] T033 [P] Before each final validation run, increment the `Build` component in `Directory.Build.props`, then run `dotnet build --configuration Release`, `dotnet test tests/TuiVision.Controls.Tests/`, `dotnet test tests/TuiVision.Controls.Tests/ --collect:"XPlat Code Coverage"`, `dotnet test`, `dotnet format --verify-no-changes`, and conditional `docfx docfx.json` on the primary macOS path, plus record equivalent `dotnet build --configuration Release`, targeted Controls-test, and full `dotnet test` outcomes on Linux and Windows/WSL; produce the final assembly-specific coverage package by refreshing `TuiVision.Controls`, citing the accepted Phase-8 evidence for untouched `TuiVision.Core`, `TuiVision.Serialization`, `TuiVision.Compatibility`, and `TuiVision.Drivers.Console`, and regenerating fresh evidence for any of those assemblies if implementation touches them; then fix remaining issues in touched `src/`, `tests/`, `docs/`, `Pflichtenheft.md`, and `specs/008-controls-revision/quickstart.md`.
 
 ---
 
@@ -132,7 +132,7 @@
 ### Phase Dependencies
 
 - **Setup (Phase 1)**: No dependencies; starts immediately.
-- **Foundational (Phase 2)**: Depends on Setup and blocks all story work because the red tests need the compile-time seams first.
+- **Foundational (Phase 2)**: Depends on Setup and prepares shared test infrastructure; any production compile-only seams are introduced only inside the corresponding story's first red commit.
 - **User Story 1 (Phase 3)**: Depends on Foundational and is the MVP.
 - **User Story 2 (Phase 4)**: Depends on Foundational; safest after User Story 1 establishes the menu/shell interaction pattern.
 - **User Story 3 (Phase 5)**: Depends on Foundational; can start after User Story 1 if shared shell command-path work needs coordination.
@@ -141,19 +141,20 @@
 ### User Story Dependencies
 
 - **User Story 1 (P1)**: First deliverable and MVP; it restores the menu shell baseline needed by the next example wave.
-- **User Story 2 (P2)**: Depends on the explicit help-context seam from Phase 2 and may share narrow shell refresh hooks with User Story 1.
-- **User Story 3 (P3)**: Depends on the compile-time seams from Phase 2 and may share command-path plumbing with User Stories 1 and 2.
+- **User Story 2 (P2)**: Depends on the shared red-test infrastructure from Phase 2 and may introduce its explicit help-context seam inside its own red/green story slice.
+- **User Story 3 (P3)**: Depends on the shared red-test infrastructure from Phase 2 and may introduce any required compile-only seams inside its own red/green story slice while sharing command-path plumbing with User Stories 1 and 2.
 
 ### Within Each User Story
 
 - Red tests must be written and observed failing before production behavior is added.
+- If a red test needs a new production type or member to compile, introduce only the inert declaration in that same red commit.
 - Keep a reviewable Red commit -> Green commit -> optional Refactor commit sequence for each story.
 - Shared declaration or seam changes should remain minimal and must not reopen mouse, streaming, zoom/grow, or broader editor/help scope.
 - Re-run the focused story test slice before advancing to the next story or to polish.
 
 ### Parallel Opportunities
 
-- `T004` and `T005` can run in parallel after the narrow compile-only seam `T002` and the new test-home task `T003`.
+- `T004` and `T005` can run in parallel after the new test-home task `T003`; any compile-only seam from `T002` is introduced only when a specific story's red tests actually need it.
 - In User Story 1, `T006` and `T007` can run in parallel before the production work starts.
 - In User Story 2, `T012` and `T013` can run in parallel before the production work starts.
 - In User Story 3, `T018` and `T019` can run in parallel before the production work starts.

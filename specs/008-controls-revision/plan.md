@@ -50,7 +50,9 @@ completed Controls revision changes the highest-priority remaining work item.
 including unit-style and integration-style shell behavior checks; full
 repository validation via `dotnet build --configuration Release`, `dotnet test`,
 `dotnet format --verify-no-changes`, and conditional `docfx docfx.json`; the
-feature must preserve the `TuiVision.Controls` 70% line-coverage gate and the
+feature must preserve the `TuiVision.Controls` 70% line-coverage gate, keep the
+repository-wide five-assembly coverage package reviewable by citing the accepted
+Phase-8 evidence for untouched gate assemblies, and preserve the
 constitution-mandated event-loop/focus/menu/dialog integration coverage  
 **Target Platform**: Managed cross-platform terminal UI on macOS, Linux, and
 Windows/WSL, with the Multi-Mac workflow (`MacBook Air M2`, `Mac mini M4 Pro`)
@@ -296,16 +298,15 @@ See [research.md](research.md) for full detail. Key planning decisions:
 4. Add failing MSTest coverage for dialog close validation, including rejected
    close requests that keep the dialog open and accepted requests that return
    the expected modal result.
-5. Introduce minimal declaration/helper types (`TSubMenu`, `TStatusDef`,
-   `WindowFlags`) and expand existing models (`TMenuItem`, `TView`, `TWindow`,
-   `TDialog`) only enough to make the tests compile.
-   For statically typed red tests, this compile-only seam may precede the first
-   failing behavioral assertions, but it must remain inert scaffolding rather
-   than delivered runtime behavior.
+5. If a statically typed red test needs a new type or member to compile, add
+   only the minimal inert declaration in the same red commit as that test.
+   Those compile-only seams must not appear in a standalone pre-test commit and
+   must not contain delivered runtime behavior.
 6. Implement `TMenuBar`, `TStatusLine`, `TWindow`, and `TDialog` behaviors in
    the smallest vertical slices that satisfy the red tests.
-7. Update proof/documentation surfaces and bilingual XML docs once the behavior
-   is stable and passing.
+7. Update the touched members' bilingual XML docs, explanatory comments, and
+   related proof/documentation surfaces within the same story slice that changes
+   the behavior; deferred documentation cleanup is out of bounds.
 8. Run build, test, coverage, formatting, and conditional docfx validation
    before the feature is considered ready for tasks/implementation review.
 
@@ -378,7 +379,15 @@ docfx docfx.json
 - **Compatibility evidence**: Because runtime shell behavior changes, the
   implementation phase must record explicit build/test evidence on Linux and
   Windows/WSL alongside the primary Multi-Mac validation path, plus a
-  reviewable repeated-run result matrix for the `SC-003` close/move scenarios.
+  reviewable repeated-run result matrix for the `SC-003` close/move scenarios
+  with 20 attempts per environment.
+- **Coverage evidence**: The feature review package must include fresh
+  assembly-specific coverlet evidence for `TuiVision.Controls` and an explicit
+  citation to the accepted Phase-8 evidence for `TuiVision.Core`,
+  `TuiVision.Serialization`, `TuiVision.Compatibility`, and
+  `TuiVision.Drivers.Console` unless the implementation touches any of those
+  assemblies, in which case fresh assembly-specific evidence is also required
+  for each touched assembly before merge.
 
 ## Success-Criteria Traceability
 
@@ -386,7 +395,7 @@ docfx docfx.json
 |---|---|
 | `SC-001` menu navigation reaches intended command without mnemonic-only access | Menu interaction model, `TMenuBarTests.cs`, contract menu guarantees |
 | `SC-002` status line updates correctly on context changes | `TStatusDef` data model, status contract, `TStatusLineTests.cs` |
-| `SC-003` closable/movable windows behave predictably in repeated runs | window state model, `TWindowTests.cs`, contract window guarantees, repeated-run validation matrix across the supported environments |
+| `SC-003` closable/movable windows behave predictably in repeated runs | window state model, `TWindowTests.cs`, contract window guarantees, repeated-run validation matrix with 20 attempts per environment across `MacBook Air M2`, `Mac mini M4 Pro`, Linux, and Windows/WSL |
 | `SC-004` dialog validation cleanly rejects or accepts close requests | dialog close request model, `TDialogTests.cs`, contract dialog guarantee |
 | `SC-005` feature stays within stated bounds | constitution/scope sections, risk boundaries, proof-surface update plan |
 
@@ -395,15 +404,18 @@ docfx docfx.json
 - **Portability**: All new runtime logic remains in `TuiVision.Controls`; no
   OS-specific logic is introduced there.
 - **Coverage discipline**: New or expanded Controls behavior must keep the
-  assembly-level 70% line-coverage gate intact for `TuiVision.Controls`.
+  assembly-level 70% line-coverage gate intact for `TuiVision.Controls`, and
+  feature review must keep the repo-wide five-assembly evidence package current
+  by refreshing any touched gate assemblies and citing the accepted Phase-8
+  evidence for untouched ones.
 - **Documentation completeness**: Changed production surfaces require bilingual
-  XML docs in the same implementation change; if public API/XML docs change and
-  `docfx.json` exists, docfx becomes part of the gate.
+  XML docs in the same implementation change and story slice; if public API/XML
+  docs change and `docfx.json` exists, docfx becomes part of the gate.
 - **TDD visibility**: Tasks must be ordered so red tests for menu, status,
   window, and dialog behavior appear before the corresponding implementation
-  slices; the only allowed exception is inert compile-only scaffolding for new
-  types or members that the statically typed red tests need in order to
-  compile.
+  slices. If static typing requires a new type or member for a red test to
+  compile, that inert declaration must be introduced in the same red commit as
+  the test and not as a prior implementation step.
 - **Scope discipline**: One submenu level, no mouse, no streaming, no zoom/grow
   work, and no unrelated example delivery remain hard planning boundaries.
 
