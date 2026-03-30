@@ -20,7 +20,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TNSCollection.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: TNSCollection
     path: src/TuiVision.Core/TNSCollection.cs
@@ -80,7 +80,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TNSCollection.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Count
     path: src/TuiVision.Core/TNSCollection.cs
@@ -117,7 +117,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TNSCollection.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: this[]
     path: src/TuiVision.Core/TNSCollection.cs
@@ -166,7 +166,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TNSCollection.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Add
     path: src/TuiVision.Core/TNSCollection.cs
@@ -204,7 +204,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TNSCollection.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Clear
     path: src/TuiVision.Core/TNSCollection.cs
@@ -238,7 +238,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TNSCollection.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Remove
     path: src/TuiVision.Core/TNSCollection.cs

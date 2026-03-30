@@ -49,12 +49,26 @@ public sealed class THistory
     }
 
     /// <summary>
+    /// Die Anzahl der Eintraege im aktuellen Bucket.
+    ///
+    /// The number of entries in the current bucket.
+    /// </summary>
+    public int Count => GetBucket(HistoryId).Count;
+
+    /// <summary>
     /// Liefert die Eintraege der Bucket-ID in Most-Recent-First-Reihenfolge.
     ///
     /// Returns the bucket entries in most-recent-first order.
     /// </summary>
     /// <returns>Die History-Eintraege. / The history entries.</returns>
     public IReadOnlyList<string> Recall() => GetBucket(HistoryId).AsReadOnly();
+
+    /// <summary>
+    /// Leert den Bucket der aktuellen History-ID.
+    ///
+    /// Clears the bucket for the current history identifier.
+    /// </summary>
+    public void ClearBucket() => GetBucket(HistoryId).Clear();
 
     /// <summary>
     /// Loescht alle Buckets. Nur fuer Tests und kontrollierte Resets gedacht.

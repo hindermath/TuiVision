@@ -27,6 +27,13 @@ public static class ManagedClipboard
     }
 
     /// <summary>
+    /// Gibt an, ob die Zwischenablage Text enthält.
+    ///
+    /// Indicates whether the clipboard contains text.
+    /// </summary>
+    public static bool HasText => !string.IsNullOrEmpty(ClipboardText.Value);
+
+    /// <summary>
     /// Liest den aktuellen Zwischenablageninhalt.
     ///
     /// Reads the current clipboard content.

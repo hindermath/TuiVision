@@ -16,7 +16,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/ITStreamSerializable.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: ITStreamSerializable
     path: src/TuiVision.Serialization/ITStreamSerializable.cs
@@ -51,7 +51,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/ITStreamSerializable.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: SaveTo
     path: src/TuiVision.Serialization/ITStreamSerializable.cs

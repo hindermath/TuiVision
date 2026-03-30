@@ -18,7 +18,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStaticText.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: TStaticText
     path: src/TuiVision.Controls/TStaticText.cs
@@ -95,7 +95,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStaticText.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TStaticText.cs
@@ -137,7 +137,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStaticText.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Text
     path: src/TuiVision.Controls/TStaticText.cs
@@ -172,7 +172,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStaticText.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TStaticText.cs

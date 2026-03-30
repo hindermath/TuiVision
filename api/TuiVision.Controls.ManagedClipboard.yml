@@ -7,6 +7,7 @@ items:
   children:
   - TuiVision.Controls.ManagedClipboard.Clear
   - TuiVision.Controls.ManagedClipboard.GetText
+  - TuiVision.Controls.ManagedClipboard.HasText
   - TuiVision.Controls.ManagedClipboard.SetText(System.String)
   langs:
   - csharp
@@ -18,7 +19,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ManagedClipboard.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: ManagedClipboard
     path: src/TuiVision.Controls/ManagedClipboard.cs
@@ -63,7 +64,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ManagedClipboard.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: SetText
     path: src/TuiVision.Controls/ManagedClipboard.cs
@@ -88,6 +89,41 @@ items:
   nameWithType.vb: ManagedClipboard.SetText(String)
   fullName.vb: TuiVision.Controls.ManagedClipboard.SetText(String)
   name.vb: SetText(String)
+- uid: TuiVision.Controls.ManagedClipboard.HasText
+  commentId: P:TuiVision.Controls.ManagedClipboard.HasText
+  id: HasText
+  parent: TuiVision.Controls.ManagedClipboard
+  langs:
+  - csharp
+  - vb
+  name: HasText
+  nameWithType: ManagedClipboard.HasText
+  fullName: TuiVision.Controls.ManagedClipboard.HasText
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/ManagedClipboard.cs
+      branch: 009-controls-widgets-and-collections
+      repo: https://github.com/hindermath/TuiVision.git
+    id: HasText
+    path: src/TuiVision.Controls/ManagedClipboard.cs
+    startLine: 33
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Gibt an, ob die Zwischenablage Text enthält.
+
+
+    Indicates whether the clipboard contains text.
+  example: []
+  syntax:
+    content: public static bool HasText { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Shared ReadOnly Property HasText As Boolean
+  overload: TuiVision.Controls.ManagedClipboard.HasText*
 - uid: TuiVision.Controls.ManagedClipboard.GetText
   commentId: M:TuiVision.Controls.ManagedClipboard.GetText
   id: GetText
@@ -102,11 +138,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ManagedClipboard.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: GetText
     path: src/TuiVision.Controls/ManagedClipboard.cs
-    startLine: 34
+    startLine: 41
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -137,11 +173,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ManagedClipboard.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Clear
     path: src/TuiVision.Controls/ManagedClipboard.cs
-    startLine: 41
+    startLine: 48
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -432,6 +468,23 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: TuiVision.Controls.ManagedClipboard.HasText*
+  commentId: Overload:TuiVision.Controls.ManagedClipboard.HasText
+  href: TuiVision.Controls.ManagedClipboard.html#TuiVision_Controls_ManagedClipboard_HasText
+  name: HasText
+  nameWithType: ManagedClipboard.HasText
+  fullName: TuiVision.Controls.ManagedClipboard.HasText
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
 - uid: TuiVision.Controls.ManagedClipboard.GetText*
   commentId: Overload:TuiVision.Controls.ManagedClipboard.GetText
   href: TuiVision.Controls.ManagedClipboard.html#TuiVision_Controls_ManagedClipboard_GetText

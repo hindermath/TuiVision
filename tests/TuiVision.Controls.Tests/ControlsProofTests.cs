@@ -2,6 +2,7 @@
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
 using TuiVision.Controls;
+using TuiVision.Core;
 
 namespace TuiVision.Controls.Tests;
 
@@ -396,7 +397,7 @@ public sealed class ControlsProofTests
     [TestMethod]
     public void TParamText_Format_ReplacesPlaceholders()
     {
-        var text = new TParamText("Hello, {0}! You have {1} messages.");
+        var text = new TParamText(new TRect(0, 0, 40, 1), "Hello, {0}! You have {1} messages.");
         string result = text.Format("Alice", "3");
 
         Assert.AreEqual("Hello, Alice! You have 3 messages.", result,
@@ -411,7 +412,7 @@ public sealed class ControlsProofTests
     [TestMethod]
     public void TParamText_Format_NoPlaceholders_ReturnsOriginal()
     {
-        var text = new TParamText("Static text.");
+        var text = new TParamText(new TRect(0, 0, 20, 1), "Static text.");
         string result = text.Format();
 
         Assert.AreEqual("Static text.", result,

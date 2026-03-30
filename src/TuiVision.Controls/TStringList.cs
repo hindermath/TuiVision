@@ -29,6 +29,22 @@ public sealed class TStringList
     }
 
     /// <summary>
+    /// Erstellt eine String-Liste mit den angegebenen Einträgen.
+    ///
+    /// Creates a string list pre-populated with the given items.
+    /// </summary>
+    /// <param name="items">Die initialen Einträge. / The initial items.</param>
+    public TStringList(IEnumerable<string> items)
+    {
+        ArgumentNullException.ThrowIfNull(items);
+        foreach (string item in items)
+        {
+            ArgumentNullException.ThrowIfNull(item);
+            _items.Add(item);
+        }
+    }
+
+    /// <summary>
     /// Die Anzahl aktuell gespeicherter Einträge.
     ///
     /// The number of currently stored entries.

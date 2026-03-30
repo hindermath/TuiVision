@@ -275,6 +275,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.ManagedClipboard.GetText
   nameWithType: ManagedClipboard.GetText
+- uid: TuiVision.Controls.ManagedClipboard.HasText
+  name: HasText
+  href: api/TuiVision.Controls.ManagedClipboard.html#TuiVision_Controls_ManagedClipboard_HasText
+  commentId: P:TuiVision.Controls.ManagedClipboard.HasText
+  fullName: TuiVision.Controls.ManagedClipboard.HasText
+  nameWithType: ManagedClipboard.HasText
+- uid: TuiVision.Controls.ManagedClipboard.HasText*
+  name: HasText
+  href: api/TuiVision.Controls.ManagedClipboard.html#TuiVision_Controls_ManagedClipboard_HasText_
+  commentId: Overload:TuiVision.Controls.ManagedClipboard.HasText
+  isSpec: "True"
+  fullName: TuiVision.Controls.ManagedClipboard.HasText
+  nameWithType: ManagedClipboard.HasText
 - uid: TuiVision.Controls.ManagedClipboard.SetText(System.String)
   name: SetText(string)
   href: api/TuiVision.Controls.ManagedClipboard.html#TuiVision_Controls_ManagedClipboard_SetText_System_String_
@@ -336,6 +349,30 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.MenuLayoutSlot.Width
   nameWithType: MenuLayoutSlot.Width
+- uid: TuiVision.Controls.ProgressBarState
+  name: ProgressBarState
+  href: api/TuiVision.Controls.ProgressBarState.html
+  commentId: T:TuiVision.Controls.ProgressBarState
+  fullName: TuiVision.Controls.ProgressBarState
+  nameWithType: ProgressBarState
+- uid: TuiVision.Controls.ProgressBarState.Canceled
+  name: Canceled
+  href: api/TuiVision.Controls.ProgressBarState.html#TuiVision_Controls_ProgressBarState_Canceled
+  commentId: F:TuiVision.Controls.ProgressBarState.Canceled
+  fullName: TuiVision.Controls.ProgressBarState.Canceled
+  nameWithType: ProgressBarState.Canceled
+- uid: TuiVision.Controls.ProgressBarState.Completed
+  name: Completed
+  href: api/TuiVision.Controls.ProgressBarState.html#TuiVision_Controls_ProgressBarState_Completed
+  commentId: F:TuiVision.Controls.ProgressBarState.Completed
+  fullName: TuiVision.Controls.ProgressBarState.Completed
+  nameWithType: ProgressBarState.Completed
+- uid: TuiVision.Controls.ProgressBarState.Running
+  name: Running
+  href: api/TuiVision.Controls.ProgressBarState.html#TuiVision_Controls_ProgressBarState_Running
+  commentId: F:TuiVision.Controls.ProgressBarState.Running
+  fullName: TuiVision.Controls.ProgressBarState.Running
+  nameWithType: ProgressBarState.Running
 - uid: TuiVision.Controls.ShellCommandIds
   name: ShellCommandIds
   href: api/TuiVision.Controls.ShellCommandIds.html
@@ -1093,6 +1130,138 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TColorSelector.SelectedColor
   nameWithType: TColorSelector.SelectedColor
+- uid: TuiVision.Controls.TComboBox
+  name: TComboBox
+  href: api/TuiVision.Controls.TComboBox.html
+  commentId: T:TuiVision.Controls.TComboBox
+  fullName: TuiVision.Controls.TComboBox
+  nameWithType: TComboBox
+- uid: TuiVision.Controls.TComboBox.#ctor(TuiVision.Core.TRect,System.Int32,TuiVision.Controls.TStringList,System.String)
+  name: TComboBox(TRect, int, TStringList?, string?)
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox__ctor_TuiVision_Core_TRect_System_Int32_TuiVision_Controls_TStringList_System_String_
+  commentId: M:TuiVision.Controls.TComboBox.#ctor(TuiVision.Core.TRect,System.Int32,TuiVision.Controls.TStringList,System.String)
+  name.vb: New(TRect, Integer, TStringList, String)
+  fullName: TuiVision.Controls.TComboBox.TComboBox(TuiVision.Core.TRect, int, TuiVision.Controls.TStringList?, string?)
+  fullName.vb: TuiVision.Controls.TComboBox.New(TuiVision.Core.TRect, Integer, TuiVision.Controls.TStringList, String)
+  nameWithType: TComboBox.TComboBox(TRect, int, TStringList?, string?)
+  nameWithType.vb: TComboBox.New(TRect, Integer, TStringList, String)
+- uid: TuiVision.Controls.TComboBox.#ctor*
+  name: TComboBox
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox__ctor_
+  commentId: Overload:TuiVision.Controls.TComboBox.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TComboBox.TComboBox
+  fullName.vb: TuiVision.Controls.TComboBox.New
+  nameWithType: TComboBox.TComboBox
+  nameWithType.vb: TComboBox.New
+- uid: TuiVision.Controls.TComboBox.Choices
+  name: Choices
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox_Choices
+  commentId: P:TuiVision.Controls.TComboBox.Choices
+  fullName: TuiVision.Controls.TComboBox.Choices
+  nameWithType: TComboBox.Choices
+- uid: TuiVision.Controls.TComboBox.Choices*
+  name: Choices
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox_Choices_
+  commentId: Overload:TuiVision.Controls.TComboBox.Choices
+  isSpec: "True"
+  fullName: TuiVision.Controls.TComboBox.Choices
+  nameWithType: TComboBox.Choices
+- uid: TuiVision.Controls.TComboBox.CloseDropDown
+  name: CloseDropDown()
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox_CloseDropDown
+  commentId: M:TuiVision.Controls.TComboBox.CloseDropDown
+  fullName: TuiVision.Controls.TComboBox.CloseDropDown()
+  nameWithType: TComboBox.CloseDropDown()
+- uid: TuiVision.Controls.TComboBox.CloseDropDown*
+  name: CloseDropDown
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox_CloseDropDown_
+  commentId: Overload:TuiVision.Controls.TComboBox.CloseDropDown
+  isSpec: "True"
+  fullName: TuiVision.Controls.TComboBox.CloseDropDown
+  nameWithType: TComboBox.CloseDropDown
+- uid: TuiVision.Controls.TComboBox.CommitToHistory
+  name: CommitToHistory()
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox_CommitToHistory
+  commentId: M:TuiVision.Controls.TComboBox.CommitToHistory
+  fullName: TuiVision.Controls.TComboBox.CommitToHistory()
+  nameWithType: TComboBox.CommitToHistory()
+- uid: TuiVision.Controls.TComboBox.CommitToHistory*
+  name: CommitToHistory
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox_CommitToHistory_
+  commentId: Overload:TuiVision.Controls.TComboBox.CommitToHistory
+  isSpec: "True"
+  fullName: TuiVision.Controls.TComboBox.CommitToHistory
+  nameWithType: TComboBox.CommitToHistory
+- uid: TuiVision.Controls.TComboBox.DropDownOpen
+  name: DropDownOpen
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox_DropDownOpen
+  commentId: P:TuiVision.Controls.TComboBox.DropDownOpen
+  fullName: TuiVision.Controls.TComboBox.DropDownOpen
+  nameWithType: TComboBox.DropDownOpen
+- uid: TuiVision.Controls.TComboBox.DropDownOpen*
+  name: DropDownOpen
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox_DropDownOpen_
+  commentId: Overload:TuiVision.Controls.TComboBox.DropDownOpen
+  isSpec: "True"
+  fullName: TuiVision.Controls.TComboBox.DropDownOpen
+  nameWithType: TComboBox.DropDownOpen
+- uid: TuiVision.Controls.TComboBox.HistoryId
+  name: HistoryId
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox_HistoryId
+  commentId: P:TuiVision.Controls.TComboBox.HistoryId
+  fullName: TuiVision.Controls.TComboBox.HistoryId
+  nameWithType: TComboBox.HistoryId
+- uid: TuiVision.Controls.TComboBox.HistoryId*
+  name: HistoryId
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox_HistoryId_
+  commentId: Overload:TuiVision.Controls.TComboBox.HistoryId
+  isSpec: "True"
+  fullName: TuiVision.Controls.TComboBox.HistoryId
+  nameWithType: TComboBox.HistoryId
+- uid: TuiVision.Controls.TComboBox.OpenDropDown
+  name: OpenDropDown()
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox_OpenDropDown
+  commentId: M:TuiVision.Controls.TComboBox.OpenDropDown
+  fullName: TuiVision.Controls.TComboBox.OpenDropDown()
+  nameWithType: TComboBox.OpenDropDown()
+- uid: TuiVision.Controls.TComboBox.OpenDropDown*
+  name: OpenDropDown
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox_OpenDropDown_
+  commentId: Overload:TuiVision.Controls.TComboBox.OpenDropDown
+  isSpec: "True"
+  fullName: TuiVision.Controls.TComboBox.OpenDropDown
+  nameWithType: TComboBox.OpenDropDown
+- uid: TuiVision.Controls.TComboBox.SelectIndex(System.Int32)
+  name: SelectIndex(int)
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox_SelectIndex_System_Int32_
+  commentId: M:TuiVision.Controls.TComboBox.SelectIndex(System.Int32)
+  name.vb: SelectIndex(Integer)
+  fullName: TuiVision.Controls.TComboBox.SelectIndex(int)
+  fullName.vb: TuiVision.Controls.TComboBox.SelectIndex(Integer)
+  nameWithType: TComboBox.SelectIndex(int)
+  nameWithType.vb: TComboBox.SelectIndex(Integer)
+- uid: TuiVision.Controls.TComboBox.SelectIndex*
+  name: SelectIndex
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox_SelectIndex_
+  commentId: Overload:TuiVision.Controls.TComboBox.SelectIndex
+  isSpec: "True"
+  fullName: TuiVision.Controls.TComboBox.SelectIndex
+  nameWithType: TComboBox.SelectIndex
+- uid: TuiVision.Controls.TComboBox.SelectedIndex
+  name: SelectedIndex
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox_SelectedIndex
+  commentId: P:TuiVision.Controls.TComboBox.SelectedIndex
+  fullName: TuiVision.Controls.TComboBox.SelectedIndex
+  nameWithType: TComboBox.SelectedIndex
+- uid: TuiVision.Controls.TComboBox.SelectedIndex*
+  name: SelectedIndex
+  href: api/TuiVision.Controls.TComboBox.html#TuiVision_Controls_TComboBox_SelectedIndex_
+  commentId: Overload:TuiVision.Controls.TComboBox.SelectedIndex
+  isSpec: "True"
+  fullName: TuiVision.Controls.TComboBox.SelectedIndex
+  nameWithType: TComboBox.SelectedIndex
 - uid: TuiVision.Controls.TConfigFile
   name: TConfigFile
   href: api/TuiVision.Controls.TConfigFile.html
@@ -2403,6 +2572,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TFileInputLine.HistoryId
   nameWithType: TFileInputLine.HistoryId
+- uid: TuiVision.Controls.TFileInputLine.Recall
+  name: Recall()
+  href: api/TuiVision.Controls.TFileInputLine.html#TuiVision_Controls_TFileInputLine_Recall
+  commentId: M:TuiVision.Controls.TFileInputLine.Recall
+  fullName: TuiVision.Controls.TFileInputLine.Recall()
+  nameWithType: TFileInputLine.Recall()
+- uid: TuiVision.Controls.TFileInputLine.Recall*
+  name: Recall
+  href: api/TuiVision.Controls.TFileInputLine.html#TuiVision_Controls_TFileInputLine_Recall_
+  commentId: Overload:TuiVision.Controls.TFileInputLine.Recall
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileInputLine.Recall
+  nameWithType: TFileInputLine.Recall
 - uid: TuiVision.Controls.TFileInputLine.RecallAt(System.Int32)
   name: RecallAt(int)
   href: api/TuiVision.Controls.TFileInputLine.html#TuiVision_Controls_TFileInputLine_RecallAt_System_Int32_
@@ -3277,6 +3459,32 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.THistory.ClearAll
   nameWithType: THistory.ClearAll
+- uid: TuiVision.Controls.THistory.ClearBucket
+  name: ClearBucket()
+  href: api/TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_ClearBucket
+  commentId: M:TuiVision.Controls.THistory.ClearBucket
+  fullName: TuiVision.Controls.THistory.ClearBucket()
+  nameWithType: THistory.ClearBucket()
+- uid: TuiVision.Controls.THistory.ClearBucket*
+  name: ClearBucket
+  href: api/TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_ClearBucket_
+  commentId: Overload:TuiVision.Controls.THistory.ClearBucket
+  isSpec: "True"
+  fullName: TuiVision.Controls.THistory.ClearBucket
+  nameWithType: THistory.ClearBucket
+- uid: TuiVision.Controls.THistory.Count
+  name: Count
+  href: api/TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_Count
+  commentId: P:TuiVision.Controls.THistory.Count
+  fullName: TuiVision.Controls.THistory.Count
+  nameWithType: THistory.Count
+- uid: TuiVision.Controls.THistory.Count*
+  name: Count
+  href: api/TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_Count_
+  commentId: Overload:TuiVision.Controls.THistory.Count
+  isSpec: "True"
+  fullName: TuiVision.Controls.THistory.Count
+  nameWithType: THistory.Count
 - uid: TuiVision.Controls.THistory.HistoryId
   name: HistoryId
   href: api/TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_HistoryId
@@ -4335,15 +4543,15 @@ references:
   commentId: T:TuiVision.Controls.TParamText
   fullName: TuiVision.Controls.TParamText
   nameWithType: TParamText
-- uid: TuiVision.Controls.TParamText.#ctor(System.String)
-  name: TParamText(string)
-  href: api/TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText__ctor_System_String_
-  commentId: M:TuiVision.Controls.TParamText.#ctor(System.String)
-  name.vb: New(String)
-  fullName: TuiVision.Controls.TParamText.TParamText(string)
-  fullName.vb: TuiVision.Controls.TParamText.New(String)
-  nameWithType: TParamText.TParamText(string)
-  nameWithType.vb: TParamText.New(String)
+- uid: TuiVision.Controls.TParamText.#ctor(TuiVision.Core.TRect,System.String)
+  name: TParamText(TRect, string)
+  href: api/TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText__ctor_TuiVision_Core_TRect_System_String_
+  commentId: M:TuiVision.Controls.TParamText.#ctor(TuiVision.Core.TRect,System.String)
+  name.vb: New(TRect, String)
+  fullName: TuiVision.Controls.TParamText.TParamText(TuiVision.Core.TRect, string)
+  fullName.vb: TuiVision.Controls.TParamText.New(TuiVision.Core.TRect, String)
+  nameWithType: TParamText.TParamText(TRect, string)
+  nameWithType.vb: TParamText.New(TRect, String)
 - uid: TuiVision.Controls.TParamText.#ctor*
   name: TParamText
   href: api/TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText__ctor_
@@ -4354,6 +4562,19 @@ references:
   fullName.vb: TuiVision.Controls.TParamText.New
   nameWithType: TParamText.TParamText
   nameWithType.vb: TParamText.New
+- uid: TuiVision.Controls.TParamText.Draw
+  name: Draw()
+  href: api/TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText_Draw
+  commentId: M:TuiVision.Controls.TParamText.Draw
+  fullName: TuiVision.Controls.TParamText.Draw()
+  nameWithType: TParamText.Draw()
+- uid: TuiVision.Controls.TParamText.Draw*
+  name: Draw
+  href: api/TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText_Draw_
+  commentId: Overload:TuiVision.Controls.TParamText.Draw
+  isSpec: "True"
+  fullName: TuiVision.Controls.TParamText.Draw
+  nameWithType: TParamText.Draw
 - uid: TuiVision.Controls.TParamText.Format(System.Object[])
   name: Format(params object?[])
   href: api/TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText_Format_System_Object___
@@ -4370,6 +4591,22 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TParamText.Format
   nameWithType: TParamText.Format
+- uid: TuiVision.Controls.TParamText.SetValues(System.Object[])
+  name: SetValues(params object?[])
+  href: api/TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText_SetValues_System_Object___
+  commentId: M:TuiVision.Controls.TParamText.SetValues(System.Object[])
+  name.vb: SetValues(ParamArray Object())
+  fullName: TuiVision.Controls.TParamText.SetValues(params object?[])
+  fullName.vb: TuiVision.Controls.TParamText.SetValues(ParamArray Object())
+  nameWithType: TParamText.SetValues(params object?[])
+  nameWithType.vb: TParamText.SetValues(ParamArray Object())
+- uid: TuiVision.Controls.TParamText.SetValues*
+  name: SetValues
+  href: api/TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText_SetValues_
+  commentId: Overload:TuiVision.Controls.TParamText.SetValues
+  isSpec: "True"
+  fullName: TuiVision.Controls.TParamText.SetValues
+  nameWithType: TParamText.SetValues
 - uid: TuiVision.Controls.TParamText.Template
   name: Template
   href: api/TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText_Template
@@ -4557,6 +4794,138 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TProgram.StatusLine
   nameWithType: TProgram.StatusLine
+- uid: TuiVision.Controls.TProgressBar
+  name: TProgressBar
+  href: api/TuiVision.Controls.TProgressBar.html
+  commentId: T:TuiVision.Controls.TProgressBar
+  fullName: TuiVision.Controls.TProgressBar
+  nameWithType: TProgressBar
+- uid: TuiVision.Controls.TProgressBar.#ctor(TuiVision.Core.TRect,System.Int32,System.Int32)
+  name: TProgressBar(TRect, int, int)
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar__ctor_TuiVision_Core_TRect_System_Int32_System_Int32_
+  commentId: M:TuiVision.Controls.TProgressBar.#ctor(TuiVision.Core.TRect,System.Int32,System.Int32)
+  name.vb: New(TRect, Integer, Integer)
+  fullName: TuiVision.Controls.TProgressBar.TProgressBar(TuiVision.Core.TRect, int, int)
+  fullName.vb: TuiVision.Controls.TProgressBar.New(TuiVision.Core.TRect, Integer, Integer)
+  nameWithType: TProgressBar.TProgressBar(TRect, int, int)
+  nameWithType.vb: TProgressBar.New(TRect, Integer, Integer)
+- uid: TuiVision.Controls.TProgressBar.#ctor*
+  name: TProgressBar
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar__ctor_
+  commentId: Overload:TuiVision.Controls.TProgressBar.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TProgressBar.TProgressBar
+  fullName.vb: TuiVision.Controls.TProgressBar.New
+  nameWithType: TProgressBar.TProgressBar
+  nameWithType.vb: TProgressBar.New
+- uid: TuiVision.Controls.TProgressBar.BarState
+  name: BarState
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_BarState
+  commentId: P:TuiVision.Controls.TProgressBar.BarState
+  fullName: TuiVision.Controls.TProgressBar.BarState
+  nameWithType: TProgressBar.BarState
+- uid: TuiVision.Controls.TProgressBar.BarState*
+  name: BarState
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_BarState_
+  commentId: Overload:TuiVision.Controls.TProgressBar.BarState
+  isSpec: "True"
+  fullName: TuiVision.Controls.TProgressBar.BarState
+  nameWithType: TProgressBar.BarState
+- uid: TuiVision.Controls.TProgressBar.Cancel
+  name: Cancel()
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Cancel
+  commentId: M:TuiVision.Controls.TProgressBar.Cancel
+  fullName: TuiVision.Controls.TProgressBar.Cancel()
+  nameWithType: TProgressBar.Cancel()
+- uid: TuiVision.Controls.TProgressBar.Cancel*
+  name: Cancel
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Cancel_
+  commentId: Overload:TuiVision.Controls.TProgressBar.Cancel
+  isSpec: "True"
+  fullName: TuiVision.Controls.TProgressBar.Cancel
+  nameWithType: TProgressBar.Cancel
+- uid: TuiVision.Controls.TProgressBar.Complete
+  name: Complete()
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Complete
+  commentId: M:TuiVision.Controls.TProgressBar.Complete
+  fullName: TuiVision.Controls.TProgressBar.Complete()
+  nameWithType: TProgressBar.Complete()
+- uid: TuiVision.Controls.TProgressBar.Complete*
+  name: Complete
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Complete_
+  commentId: Overload:TuiVision.Controls.TProgressBar.Complete
+  isSpec: "True"
+  fullName: TuiVision.Controls.TProgressBar.Complete
+  nameWithType: TProgressBar.Complete
+- uid: TuiVision.Controls.TProgressBar.Draw
+  name: Draw()
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Draw
+  commentId: M:TuiVision.Controls.TProgressBar.Draw
+  fullName: TuiVision.Controls.TProgressBar.Draw()
+  nameWithType: TProgressBar.Draw()
+- uid: TuiVision.Controls.TProgressBar.Draw*
+  name: Draw
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Draw_
+  commentId: Overload:TuiVision.Controls.TProgressBar.Draw
+  isSpec: "True"
+  fullName: TuiVision.Controls.TProgressBar.Draw
+  nameWithType: TProgressBar.Draw
+- uid: TuiVision.Controls.TProgressBar.Max
+  name: Max
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Max
+  commentId: P:TuiVision.Controls.TProgressBar.Max
+  fullName: TuiVision.Controls.TProgressBar.Max
+  nameWithType: TProgressBar.Max
+- uid: TuiVision.Controls.TProgressBar.Max*
+  name: Max
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Max_
+  commentId: Overload:TuiVision.Controls.TProgressBar.Max
+  isSpec: "True"
+  fullName: TuiVision.Controls.TProgressBar.Max
+  nameWithType: TProgressBar.Max
+- uid: TuiVision.Controls.TProgressBar.Min
+  name: Min
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Min
+  commentId: P:TuiVision.Controls.TProgressBar.Min
+  fullName: TuiVision.Controls.TProgressBar.Min
+  nameWithType: TProgressBar.Min
+- uid: TuiVision.Controls.TProgressBar.Min*
+  name: Min
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Min_
+  commentId: Overload:TuiVision.Controls.TProgressBar.Min
+  isSpec: "True"
+  fullName: TuiVision.Controls.TProgressBar.Min
+  nameWithType: TProgressBar.Min
+- uid: TuiVision.Controls.TProgressBar.SetValue(System.Int32)
+  name: SetValue(int)
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_SetValue_System_Int32_
+  commentId: M:TuiVision.Controls.TProgressBar.SetValue(System.Int32)
+  name.vb: SetValue(Integer)
+  fullName: TuiVision.Controls.TProgressBar.SetValue(int)
+  fullName.vb: TuiVision.Controls.TProgressBar.SetValue(Integer)
+  nameWithType: TProgressBar.SetValue(int)
+  nameWithType.vb: TProgressBar.SetValue(Integer)
+- uid: TuiVision.Controls.TProgressBar.SetValue*
+  name: SetValue
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_SetValue_
+  commentId: Overload:TuiVision.Controls.TProgressBar.SetValue
+  isSpec: "True"
+  fullName: TuiVision.Controls.TProgressBar.SetValue
+  nameWithType: TProgressBar.SetValue
+- uid: TuiVision.Controls.TProgressBar.Value
+  name: Value
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Value
+  commentId: P:TuiVision.Controls.TProgressBar.Value
+  fullName: TuiVision.Controls.TProgressBar.Value
+  nameWithType: TProgressBar.Value
+- uid: TuiVision.Controls.TProgressBar.Value*
+  name: Value
+  href: api/TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Value_
+  commentId: Overload:TuiVision.Controls.TProgressBar.Value
+  isSpec: "True"
+  fullName: TuiVision.Controls.TProgressBar.Value
+  nameWithType: TProgressBar.Value
 - uid: TuiVision.Controls.TRadioButtons
   name: TRadioButtons
   href: api/TuiVision.Controls.TRadioButtons.html
@@ -5299,6 +5668,15 @@ references:
   fullName.vb: TuiVision.Controls.TStringList.New()
   nameWithType: TStringList.TStringList()
   nameWithType.vb: TStringList.New()
+- uid: TuiVision.Controls.TStringList.#ctor(System.Collections.Generic.IEnumerable{System.String})
+  name: TStringList(IEnumerable<string>)
+  href: api/TuiVision.Controls.TStringList.html#TuiVision_Controls_TStringList__ctor_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:TuiVision.Controls.TStringList.#ctor(System.Collections.Generic.IEnumerable{System.String})
+  name.vb: New(IEnumerable(Of String))
+  fullName: TuiVision.Controls.TStringList.TStringList(System.Collections.Generic.IEnumerable<string>)
+  fullName.vb: TuiVision.Controls.TStringList.New(System.Collections.Generic.IEnumerable(Of String))
+  nameWithType: TStringList.TStringList(IEnumerable<string>)
+  nameWithType.vb: TStringList.New(IEnumerable(Of String))
 - uid: TuiVision.Controls.TStringList.#ctor*
   name: TStringList
   href: api/TuiVision.Controls.TStringList.html#TuiVision_Controls_TStringList__ctor_

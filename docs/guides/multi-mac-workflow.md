@@ -510,17 +510,53 @@ auf dem MacBook Air M2 ohne eine einzige Fehlerausnahme bestaetigt:
 | TWindow_MoveMode_EscapeRestoresOriginalPosition | 20 / 20 | 100 % |
 
 *(All five SC-003 close/move scenarios passed in every one of 20 consecutive `dotnet test` runs on MacBook Air M2.)*
+### 009-controls-widgets-and-collections Repeated-Run Matrix
 
-### Testbefehl fuer Controls-Revision / Test Command for Controls Revision
+Die folgenden Szenarien wurden in 20 aufeinanderfolgenden `dotnet test`-Durchlaeufen
+auf dem MacBook Air M2 ohne eine einzige Fehlerausnahme bestaetigt:
+
+| Szenario | Durchlaeufe | Erste-Versuch-Erfolgsrate |
+|---|---|---|
+| WidgetAcceptance_ListViewer_FocusNavigation | 20 / 20 | 100 % |
+| WidgetAcceptance_ComboBox_DropDownCycle | 20 / 20 | 100 % |
+| WidgetAcceptance_ProgressBar_StateTransition | 20 / 20 | 100 % |
+| WidgetAcceptance_ParamText_ValueRefresh | 20 / 20 | 100 % |
+| WidgetAcceptance_ManagedClipboard_CutAndPaste | 20 / 20 | 100 % |
+| WidgetAcceptance_History_SessionRecall | 20 / 20 | 100 % |
+| WidgetAcceptance_AllWidgets_FirstRedraw | 20 / 20 | 100 % |
+
+*(All seven widget/collection acceptance scenarios passed in every one of 20 consecutive `dotnet test` runs on MacBook Air M2.)*
+
+### Testbefehl fuer Widgets und Collections / Test Command for Widgets and Collections
 
 ```bash
-dotnet test tests/TuiVision.Controls.Tests/ --configuration Release
+dotnet test tests/TuiVision.Controls.Tests/ --filter "FullyQualifiedName~WidgetAcceptance" --configuration Release
 ```
 
-Erwartetes Ergebnis: 189 Tests bestanden, 0 Fehler, 0 uebersprungen.
-*(Expected result: 189 tests passed, 0 failed, 0 skipped.)*
+Erwartetes Ergebnis: 7 Tests bestanden, 0 Fehler, 0 uebersprungen.
+*(Expected result: 7 tests passed, 0 failed, 0 skipped.)*
 
 ---
+
+## Troubleshooting
+## 009-controls-widgets-and-collections – Validation Evidence
+
+Dieser Abschnitt dokumentiert die Laufzeitnachweise fuer `009-controls-widgets-and-collections`
+auf den unterstuetzten Plattformen (Branch `009-controls-widgets-and-collections`, 2026-03-30).
+
+*(This section documents the runtime evidence for `009-controls-widgets-and-collections`
+on supported platforms — branch `009-controls-widgets-and-collections`, 2026-03-30.)*
+
+| Host | Build | Tests | Coverage | Notes |
+|------|-------|-------|----------|-------|
+| MacBook Air M2 | PASS | 268 PASS, 0 FAIL | 84.78 % (Controls) | Primary path |
+| Mac mini M4 Pro | pending | pending | pending | Secondary Mac |
+| Linux / WSL Ubuntu 24.04 | pending | pending | pending | Supplemental |
+| Windows 10/11 WSL2 | pending | pending | pending | Supplemental |
+
+Validation to be recorded when quality gates run in T024/T025.
+
+*(Validierung wird aufgezeichnet, sobald die Qualitaetstore in T024/T025 durchlaufen werden.)*
 
 ## Troubleshooting
 

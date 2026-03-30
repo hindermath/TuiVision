@@ -77,4 +77,62 @@ public sealed class TInputLineTests
         Assert.AreEqual(0, inputLine.CurPos);
         Assert.AreEqual(0, inputLine.FirstPos);
     }
+
+    /// <summary>
+    /// Prüft, dass Strg+C den aktuellen Text in die Zwischenablage kopiert.
+    ///
+    /// Verifies that Ctrl+C copies the current text to the clipboard.
+    /// </summary>
+    [TestMethod]
+    public void TInputLine_HandleEvent_CtrlC_CopiesTextToClipboard()
+    {
+        ManagedClipboard.Clear();
+        TInputLine inputLine = new(new TRect(0, 0, 10, 1), 20);
+        foreach (char ch in "Hello")
+        {
+            inputLine.HandleEvent(ControlEventFactory.CreateKeyDown(charCode: ch));
+        }
+
+        inputLine.HandleEvent(ControlEventFactory.CreateCtrlC());
+
+        Assert.AreEqual("Hello", ManagedClipboard.GetText());
+    }
+
+    /// <summary>
+    /// Prüft, dass Strg+X den Text ausschneidet und in die Zwischenablage kopiert.
+    ///
+    /// Verifies that Ctrl+X cuts the text and copies it to the clipboard.
+    /// </summary>
+    [TestMethod]
+    public void TInputLine_HandleEvent_CtrlX_CutsTextToClipboard()
+    {
+        ManagedClipboard.Clear();
+        TInputLine inputLine = new(new TRect(0, 0, 10, 1), 20);
+        foreach (char ch in "Hello")
+        {
+            inputLine.HandleEvent(ControlEventFactory.CreateKeyDown(charCode: ch));
+        }
+
+        inputLine.HandleEvent(ControlEventFactory.CreateCtrlX());
+
+        Assert.AreEqual("Hello", ManagedClipboard.GetText());
+        Assert.AreEqual(string.Empty, inputLine.Data);
+    }
+
+    /// <summary>
+    /// Prüft, dass Strg+V Text aus der Zwischenablage einfügt.
+    ///
+    /// Verifies that Ctrl+V pastes text from the clipboard.
+    /// </summary>
+    [TestMethod]
+    public void TInputLine_HandleEvent_CtrlV_PastesFromClipboard()
+    {
+        ManagedClipboard.Clear();
+        ManagedClipboard.SetText("World");
+        TInputLine inputLine = new(new TRect(0, 0, 10, 1), 20);
+
+        inputLine.HandleEvent(ControlEventFactory.CreateCtrlV());
+
+        Assert.AreEqual("World", inputLine.Data);
+    }
 }

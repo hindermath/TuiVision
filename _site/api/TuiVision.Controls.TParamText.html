@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TParamText | TuiVision Documentation ">
       
-      <meta name="description" content="Parameterisierter UI-Text als managed Gegenst&#252;ck zu TParamText aus Turbo Vision (tparamte.cc). Parameterized UI text as a managed counterpart to TParamText from Turbo Vision (tparamte.cc).">
+      <meta name="description" content="Parameterisierter UI-Text als bounded View-Oberfl&#228;che. Entspricht dem Konzept von TParamText aus Turbo Vision (tparamte.cc). Parameterized UI text as a bounded view surface. Corresponds to the concept of TParamText from Turbo Vision (tparamte.cc).">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -17,7 +17,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Controls_TParamText.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TParamText%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/009-controls-widgets-and-collections/apiSpec/new?filename=TuiVision_Controls_TParamText.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TParamText%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -94,7 +94,7 @@
 
 
   <h1 id="TuiVision_Controls_TParamText" data-uid="TuiVision.Controls.TParamText" class="text-break">
-Class TParamText  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TParamText.cs/#L15"><i class="bi bi-code-slash"></i></a>
+Class TParamText  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TParamText.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -102,15 +102,15 @@ Class TParamText  <a class="header-action link-secondary" title="View source" hr
   <dl><dt>Assembly</dt><dd>TuiVision.Controls.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Parameterisierter UI-Text als managed Gegenstück zu <code>TParamText</code>
-aus Turbo Vision (<code>tparamte.cc</code>).</p>
-<p>Parameterized UI text as a managed counterpart to <code>TParamText</code>
-from Turbo Vision (<code>tparamte.cc</code>).</p>
+  <div class="markdown summary"><p>Parameterisierter UI-Text als bounded View-Oberfläche. Entspricht dem Konzept von
+<code>TParamText</code> aus Turbo Vision (<code>tparamte.cc</code>).</p>
+<p>Parameterized UI text as a bounded view surface. Corresponds to the concept of
+<code>TParamText</code> from Turbo Vision (<code>tparamte.cc</code>).</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class TParamText</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class TParamText : TView</code></pre>
   </div>
 
 
@@ -120,6 +120,8 @@ from Turbo Vision (<code>tparamte.cc</code>).</p>
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="TuiVision.Core.TObject.html">TObject</a></div>
+      <div><a class="xref" href="TuiVision.Controls.TView.html">TView</a></div>
       <div><span class="xref">TParamText</span></div>
     </dd>
   </dl>
@@ -129,6 +131,84 @@ from Turbo Vision (<code>tparamte.cc</code>).</p>
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Owner">TView.Owner</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Options">TView.Options</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_EventMask">TView.EventMask</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_State">TView.State</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Origin">TView.Origin</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Size">TView.Size</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetBounds">TView.GetBounds()</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetExtent">TView.GetExtent()</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetState_TuiVision_Controls_TViewState_">TView.GetState(TViewState)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Show">TView.Show()</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Hide">TView.Hide()</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetState_TuiVision_Controls_TViewState_System_Boolean_">TView.SetState(TViewState, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_SizeLimits_TuiVision_Core_TPoint__TuiVision_Core_TPoint__">TView.SizeLimits(out TPoint, out TPoint)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_">TView.Locate(TRect)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_MoveTo_System_Int32_System_Int32_">TView.MoveTo(int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GrowTo_System_Int32_System_Int32_">TView.GrowTo(int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetBounds_TuiVision_Core_TRect_">TView.SetBounds(TRect)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeGlobal_TuiVision_Core_TPoint_">TView.MakeGlobal(TPoint)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeLocal_TuiVision_Core_TPoint_">TView.MakeLocal(TPoint)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_MouseInView_TuiVision_Core_TPoint_">TView.MouseInView(TPoint)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView">TView.DrawView()</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext">TView.HelpContext</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints">TView.GetStatusHints()</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_HandleEvent_TuiVision_Core_TEvent_">TView.HandleEvent(TEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Core.TObject.html#TuiVision_Core_TObject_ShutDown">TObject.ShutDown()</a>
+    </div>
+    <div>
+      <a class="xref" href="TuiVision.Core.TObject.html#TuiVision_Core_TObject_Destroy_TuiVision_Core_TObject_">TObject.Destroy(TObject)</a>
+    </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -160,22 +240,25 @@ from Turbo Vision (<code>tparamte.cc</code>).</p>
 
   <a id="TuiVision_Controls_TParamText__ctor_" data-uid="TuiVision.Controls.TParamText.#ctor*"></a>
 
-  <h3 id="TuiVision_Controls_TParamText__ctor_System_String_" data-uid="TuiVision.Controls.TParamText.#ctor(System.String)">
-  TParamText(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TParamText.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TuiVision_Controls_TParamText__ctor_TuiVision_Core_TRect_System_String_" data-uid="TuiVision.Controls.TParamText.#ctor(TuiVision.Core.TRect,System.String)">
+  TParamText(TRect, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TParamText.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initialisiert den parametrisierten Text.</p>
-<p>Initializes the parameterized text.</p>
+  <div class="markdown level1 summary"><p>Initialisiert den parametrisierten Text als View.</p>
+<p>Initializes the parameterized text as a view.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TParamText(string template)</code></pre>
+    <pre><code class="lang-csharp hljs">public TParamText(TRect bounds, string template)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
+    <dt><code>bounds</code> <a class="xref" href="TuiVision.Core.TRect.html">TRect</a></dt>
+    <dd><p>Die Bounds des Controls. / The control bounds.</p>
+</dd>
     <dt><code>template</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd><p>Die Formatvorlage. / The format template.</p>
 </dd>
@@ -200,7 +283,7 @@ from Turbo Vision (<code>tparamte.cc</code>).</p>
 
   <h3 id="TuiVision_Controls_TParamText_Template" data-uid="TuiVision.Controls.TParamText.Template">
   Template
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TParamText.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TParamText.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die Formatvorlage.</p>
@@ -233,15 +316,43 @@ from Turbo Vision (<code>tparamte.cc</code>).</p>
 </h2>
 
 
+  <a id="TuiVision_Controls_TParamText_Draw_" data-uid="TuiVision.Controls.TParamText.Draw*"></a>
+
+  <h3 id="TuiVision_Controls_TParamText_Draw" data-uid="TuiVision.Controls.TParamText.Draw">
+  Draw()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TParamText.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Zeichnet den formatierten Text in den Puffer, geclippt auf die View-Breite.</p>
+<p>Draws the formatted text into the buffer, clipped to the view width.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Draw()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="TuiVision_Controls_TParamText_Format_" data-uid="TuiVision.Controls.TParamText.Format*"></a>
 
   <h3 id="TuiVision_Controls_TParamText_Format_System_Object___" data-uid="TuiVision.Controls.TParamText.Format(System.Object[])">
   Format(params object?[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TParamText.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TParamText.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Formatiert den Text mit den angegebenen Parametern.</p>
-<p>Formats the text with the specified parameters.</p>
+  <div class="markdown level1 summary"><p>Formatiert den Text mit den angegebenen Parametern und gibt das Ergebnis sofort zurück.</p>
+<p>Formats the text with the specified parameters and returns the result immediately.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -273,11 +384,45 @@ from Turbo Vision (<code>tparamte.cc</code>).</p>
 
 
 
+  <a id="TuiVision_Controls_TParamText_SetValues_" data-uid="TuiVision.Controls.TParamText.SetValues*"></a>
+
+  <h3 id="TuiVision_Controls_TParamText_SetValues_System_Object___" data-uid="TuiVision.Controls.TParamText.SetValues(System.Object[])">
+  SetValues(params object?[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TParamText.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Speichert Werte für den nächsten Draw-Aufruf.</p>
+<p>Stores values for the next Draw call.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetValues(params object?[] values)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>values</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>Die zu speichernden Werte. / The values to store.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TParamText.cs/#L15" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TParamText.cs/#L16" class="edit-link">Edit this page</a>
         </div>
 
 

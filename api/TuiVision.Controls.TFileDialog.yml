@@ -28,7 +28,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: TFileDialog
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -109,7 +109,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -163,7 +163,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Mode
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -198,7 +198,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: PathInput
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -233,7 +233,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Directories
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -268,7 +268,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Files
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -303,7 +303,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: CurrentInfo
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -338,7 +338,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: ChangeDirectory
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -377,7 +377,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: ChangeFilter
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -416,7 +416,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: SetTypedPath
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -455,7 +455,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectFile
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -494,7 +494,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: NavigateToFocusedDirectory
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -526,7 +526,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: RecallHistory
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -568,7 +568,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: ConfirmSelection
     path: src/TuiVision.Controls/TFileDialog.cs

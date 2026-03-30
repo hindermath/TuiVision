@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDirListBox.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: TDirListBox
     path: src/TuiVision.Controls/TDirListBox.cs
@@ -103,7 +103,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDirListBox.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TDirListBox.cs
@@ -142,7 +142,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDirListBox.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: CurrentDirectory
     path: src/TuiVision.Controls/TDirListBox.cs
@@ -177,7 +177,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDirListBox.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Entries
     path: src/TuiVision.Controls/TDirListBox.cs
@@ -212,7 +212,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDirListBox.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Refresh
     path: src/TuiVision.Controls/TDirListBox.cs
@@ -251,7 +251,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDirListBox.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: NavigateToFocusedDirectory
     path: src/TuiVision.Controls/TDirListBox.cs
@@ -286,7 +286,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDirListBox.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: GoToParent
     path: src/TuiVision.Controls/TDirListBox.cs

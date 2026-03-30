@@ -19,7 +19,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TApplication.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: TApplication
     path: src/TuiVision.Controls/TApplication.cs
@@ -118,7 +118,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TApplication.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TApplication.cs
@@ -165,7 +165,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TApplication.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: InitMenuBar
     path: src/TuiVision.Controls/TApplication.cs
@@ -212,7 +212,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TApplication.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: InitDesktop
     path: src/TuiVision.Controls/TApplication.cs
@@ -259,7 +259,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TApplication.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: InitStatusLine
     path: src/TuiVision.Controls/TApplication.cs

@@ -8,6 +8,8 @@ items:
   - TuiVision.Controls.THistory.#ctor(System.String)
   - TuiVision.Controls.THistory.Add(System.String)
   - TuiVision.Controls.THistory.ClearAll
+  - TuiVision.Controls.THistory.ClearBucket
+  - TuiVision.Controls.THistory.Count
   - TuiVision.Controls.THistory.HistoryId
   - TuiVision.Controls.THistory.Recall
   langs:
@@ -20,7 +22,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: THistory
     path: src/TuiVision.Controls/THistory.cs
@@ -60,7 +62,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/THistory.cs
@@ -99,7 +101,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: HistoryId
     path: src/TuiVision.Controls/THistory.cs
@@ -134,7 +136,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Add
     path: src/TuiVision.Controls/THistory.cs
@@ -159,6 +161,41 @@ items:
   nameWithType.vb: THistory.Add(String)
   fullName.vb: TuiVision.Controls.THistory.Add(String)
   name.vb: Add(String)
+- uid: TuiVision.Controls.THistory.Count
+  commentId: P:TuiVision.Controls.THistory.Count
+  id: Count
+  parent: TuiVision.Controls.THistory
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: THistory.Count
+  fullName: TuiVision.Controls.THistory.Count
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/THistory.cs
+      branch: 009-controls-widgets-and-collections
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Count
+    path: src/TuiVision.Controls/THistory.cs
+    startLine: 55
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Die Anzahl der Eintraege im aktuellen Bucket.
+
+
+    The number of entries in the current bucket.
+  example: []
+  syntax:
+    content: public int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Count As Integer
+  overload: TuiVision.Controls.THistory.Count*
 - uid: TuiVision.Controls.THistory.Recall
   commentId: M:TuiVision.Controls.THistory.Recall
   id: Recall
@@ -173,11 +210,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Recall
     path: src/TuiVision.Controls/THistory.cs
-    startLine: 56
+    startLine: 63
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -194,6 +231,38 @@ items:
       description: Die History-Eintraege. / The history entries.
     content.vb: Public Function Recall() As IReadOnlyList(Of String)
   overload: TuiVision.Controls.THistory.Recall*
+- uid: TuiVision.Controls.THistory.ClearBucket
+  commentId: M:TuiVision.Controls.THistory.ClearBucket
+  id: ClearBucket
+  parent: TuiVision.Controls.THistory
+  langs:
+  - csharp
+  - vb
+  name: ClearBucket()
+  nameWithType: THistory.ClearBucket()
+  fullName: TuiVision.Controls.THistory.ClearBucket()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/THistory.cs
+      branch: 009-controls-widgets-and-collections
+      repo: https://github.com/hindermath/TuiVision.git
+    id: ClearBucket
+    path: src/TuiVision.Controls/THistory.cs
+    startLine: 70
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Leert den Bucket der aktuellen History-ID.
+
+
+    Clears the bucket for the current history identifier.
+  example: []
+  syntax:
+    content: public void ClearBucket()
+    content.vb: Public Sub ClearBucket()
+  overload: TuiVision.Controls.THistory.ClearBucket*
 - uid: TuiVision.Controls.THistory.ClearAll
   commentId: M:TuiVision.Controls.THistory.ClearAll
   id: ClearAll
@@ -208,11 +277,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: ClearAll
     path: src/TuiVision.Controls/THistory.cs
-    startLine: 63
+    startLine: 77
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -494,6 +563,23 @@ references:
   name: Add
   nameWithType: THistory.Add
   fullName: TuiVision.Controls.THistory.Add
+- uid: TuiVision.Controls.THistory.Count*
+  commentId: Overload:TuiVision.Controls.THistory.Count
+  href: TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_Count
+  name: Count
+  nameWithType: THistory.Count
+  fullName: TuiVision.Controls.THistory.Count
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: TuiVision.Controls.THistory.Recall*
   commentId: Overload:TuiVision.Controls.THistory.Recall
   href: TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_Recall
@@ -600,6 +686,12 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TuiVision.Controls.THistory.ClearBucket*
+  commentId: Overload:TuiVision.Controls.THistory.ClearBucket
+  href: TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_ClearBucket
+  name: ClearBucket
+  nameWithType: THistory.ClearBucket
+  fullName: TuiVision.Controls.THistory.ClearBucket
 - uid: TuiVision.Controls.THistory.ClearAll*
   commentId: Overload:TuiVision.Controls.THistory.ClearAll
   href: TuiVision.Controls.THistory.html#TuiVision_Controls_THistory_ClearAll

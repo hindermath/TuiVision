@@ -6,6 +6,7 @@ items:
   parent: TuiVision.Controls
   children:
   - TuiVision.Controls.TStringList.#ctor
+  - TuiVision.Controls.TStringList.#ctor(System.Collections.Generic.IEnumerable{System.String})
   - TuiVision.Controls.TStringList.Add(System.String)
   - TuiVision.Controls.TStringList.Clear
   - TuiVision.Controls.TStringList.Count
@@ -20,7 +21,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStringList.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: TStringList
     path: src/TuiVision.Controls/TStringList.cs
@@ -64,7 +65,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStringList.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TStringList.cs
@@ -85,6 +86,45 @@ items:
   nameWithType.vb: TStringList.New()
   fullName.vb: TuiVision.Controls.TStringList.New()
   name.vb: New()
+- uid: TuiVision.Controls.TStringList.#ctor(System.Collections.Generic.IEnumerable{System.String})
+  commentId: M:TuiVision.Controls.TStringList.#ctor(System.Collections.Generic.IEnumerable{System.String})
+  id: '#ctor(System.Collections.Generic.IEnumerable{System.String})'
+  parent: TuiVision.Controls.TStringList
+  langs:
+  - csharp
+  - vb
+  name: TStringList(IEnumerable<string>)
+  nameWithType: TStringList.TStringList(IEnumerable<string>)
+  fullName: TuiVision.Controls.TStringList.TStringList(System.Collections.Generic.IEnumerable<string>)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStringList.cs
+      branch: 009-controls-widgets-and-collections
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Controls/TStringList.cs
+    startLine: 36
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Erstellt eine String-Liste mit den angegebenen Einträgen.
+
+
+    Creates a string list pre-populated with the given items.
+  example: []
+  syntax:
+    content: public TStringList(IEnumerable<string> items)
+    parameters:
+    - id: items
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: Die initialen Einträge. / The initial items.
+    content.vb: Public Sub New(items As IEnumerable(Of String))
+  overload: TuiVision.Controls.TStringList.#ctor*
+  nameWithType.vb: TStringList.New(IEnumerable(Of String))
+  fullName.vb: TuiVision.Controls.TStringList.New(System.Collections.Generic.IEnumerable(Of String))
+  name.vb: New(IEnumerable(Of String))
 - uid: TuiVision.Controls.TStringList.Count
   commentId: P:TuiVision.Controls.TStringList.Count
   id: Count
@@ -99,11 +139,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStringList.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Count
     path: src/TuiVision.Controls/TStringList.cs
-    startLine: 35
+    startLine: 51
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -134,11 +174,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStringList.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: this[]
     path: src/TuiVision.Controls/TStringList.cs
-    startLine: 48
+    startLine: 64
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -183,11 +223,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStringList.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Add
     path: src/TuiVision.Controls/TStringList.cs
-    startLine: 58
+    startLine: 74
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -222,11 +262,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStringList.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Clear
     path: src/TuiVision.Controls/TStringList.cs
-    startLine: 69
+    startLine: 85
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -485,6 +525,106 @@ references:
   nameWithType.vb: TStringList.New
   fullName.vb: TuiVision.Controls.TStringList.New
   name.vb: New
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: TuiVision.Controls.TStringList.Count*
   commentId: Overload:TuiVision.Controls.TStringList.Count
   href: TuiVision.Controls.TStringList.html#TuiVision_Controls_TStringList_Count

@@ -6,6 +6,7 @@ items:
   children:
   - TuiVision.Controls.ManagedClipboard
   - TuiVision.Controls.MenuLayoutSlot
+  - TuiVision.Controls.ProgressBarState
   - TuiVision.Controls.ShellCommandIds
   - TuiVision.Controls.TApplication
   - TuiVision.Controls.TButton
@@ -17,6 +18,7 @@ items:
   - TuiVision.Controls.TColorGroup
   - TuiVision.Controls.TColorItem
   - TuiVision.Controls.TColorSelector
+  - TuiVision.Controls.TComboBox
   - TuiVision.Controls.TConfigFile
   - TuiVision.Controls.TDesktop
   - TuiVision.Controls.TDialog
@@ -53,6 +55,7 @@ items:
   - TuiVision.Controls.TPalette
   - TuiVision.Controls.TParamText
   - TuiVision.Controls.TProgram
+  - TuiVision.Controls.TProgressBar
   - TuiVision.Controls.TRadioButtons
   - TuiVision.Controls.TRangeValidator
   - TuiVision.Controls.TScrollBar
@@ -158,6 +161,12 @@ references:
   name: TColorSelector
   nameWithType: TColorSelector
   fullName: TuiVision.Controls.TColorSelector
+- uid: TuiVision.Controls.TComboBox
+  commentId: T:TuiVision.Controls.TComboBox
+  href: TuiVision.Controls.TComboBox.html
+  name: TComboBox
+  nameWithType: TComboBox
+  fullName: TuiVision.Controls.TComboBox
 - uid: TuiVision.Controls.TConfigFile
   commentId: T:TuiVision.Controls.TConfigFile
   href: TuiVision.Controls.TConfigFile.html
@@ -401,6 +410,19 @@ references:
   name: TProgram
   nameWithType: TProgram
   fullName: TuiVision.Controls.TProgram
+- uid: TuiVision.Controls.ProgressBarState
+  commentId: T:TuiVision.Controls.ProgressBarState
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.ProgressBarState.html
+  name: ProgressBarState
+  nameWithType: ProgressBarState
+  fullName: TuiVision.Controls.ProgressBarState
+- uid: TuiVision.Controls.TProgressBar
+  commentId: T:TuiVision.Controls.TProgressBar
+  href: TuiVision.Controls.TProgressBar.html
+  name: TProgressBar
+  nameWithType: TProgressBar
+  fullName: TuiVision.Controls.TProgressBar
 - uid: TuiVision.Controls.TRadioButtons
   commentId: T:TuiVision.Controls.TRadioButtons
   href: TuiVision.Controls.TRadioButtons.html
