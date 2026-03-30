@@ -19,8 +19,8 @@
 
 **Purpose**: Prepare the shared Controls test scaffolding and helper surfaces used by all later stories.
 
-- [ ] T001 Create the initial shared widget interaction scaffold in `tests/TuiVision.Controls.Tests/ControlsWidgetTestContext.cs`
-- [ ] T002 [P] Extend reusable event and owner-buffer helpers for list/combo/history scenarios in `tests/TuiVision.Controls.Tests/ControlEventFactory.cs` and `tests/TuiVision.Controls.Tests/ControlTestContext.cs`
+- [X] T001 Create the initial shared widget interaction scaffold in `tests/TuiVision.Controls.Tests/ControlsWidgetTestContext.cs`
+- [X] T002 [P] Extend reusable event and owner-buffer helpers for list/combo/history scenarios in `tests/TuiVision.Controls.Tests/ControlEventFactory.cs` and `tests/TuiVision.Controls.Tests/ControlTestContext.cs`
 
 **Checkpoint**: The test suite has reusable scaffolding for the upcoming widget and collections work.
 
@@ -32,9 +32,9 @@
 
 **CRITICAL**: No user-story work should begin until this phase is complete.
 
-- [ ] T003 [P] Add red acceptance-slice scaffolding for widgets and collections in `tests/TuiVision.Controls.Tests/ControlCoverageSweepTests.cs`
-- [ ] T004 [P] Align the numbered-branch version fields and next build/test counter handling in `Directory.Build.props`
-- [ ] T005 Extend `tests/TuiVision.Controls.Tests/ControlsWidgetTestContext.cs` with test-side factories and reflection-based activation helpers for planned widget surfaces
+- [X] T003 [P] Add red acceptance-slice scaffolding for widgets and collections in `tests/TuiVision.Controls.Tests/ControlCoverageSweepTests.cs`
+- [X] T004 [P] Align the numbered-branch version fields and next build/test counter handling in `Directory.Build.props`
+- [X] T005 Extend `tests/TuiVision.Controls.Tests/ControlsWidgetTestContext.cs` with test-side factories and reflection-based activation helpers for planned widget surfaces
 
 **Checkpoint**: Shared acceptance/test scaffolding and numbered-branch governance are ready for story work.
 
@@ -50,15 +50,15 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T006 [P] [US1] Add red list-navigation and undersized-bounds coverage in `tests/TuiVision.Controls.Tests/TListViewerTests.cs`, `tests/TuiVision.Controls.Tests/TListBoxTests.cs`, `tests/TuiVision.Controls.Tests/TScrollBarTests.cs`, and `tests/TuiVision.Controls.Tests/TScrollerTests.cs`
-- [ ] T007 [P] [US1] Add red session-history and file-input recall coverage in `tests/TuiVision.Controls.Tests/THistoryTests.cs` and `tests/TuiVision.Controls.Tests/TFileInputLineTests.cs`
-- [ ] T008 [P] [US1] Add red managed-clipboard and input-line interaction coverage in `tests/TuiVision.Controls.Tests/TManagedClipboardTests.cs` and `tests/TuiVision.Controls.Tests/TInputLineTests.cs`
+- [X] T006 [P] [US1] Add red list-navigation and undersized-bounds coverage in `tests/TuiVision.Controls.Tests/TListViewerTests.cs`, `tests/TuiVision.Controls.Tests/TListBoxTests.cs`, `tests/TuiVision.Controls.Tests/TScrollBarTests.cs`, and `tests/TuiVision.Controls.Tests/TScrollerTests.cs`
+- [X] T007 [P] [US1] Add red session-history and file-input recall coverage in `tests/TuiVision.Controls.Tests/THistoryTests.cs` and `tests/TuiVision.Controls.Tests/TFileInputLineTests.cs`
+- [X] T008 [P] [US1] Add red managed-clipboard and input-line interaction coverage in `tests/TuiVision.Controls.Tests/TManagedClipboardTests.cs` and `tests/TuiVision.Controls.Tests/TInputLineTests.cs`
 
 ### Implementation for User Story 1
 
-- [ ] T009 [P] [US1] Harden list focus, visible-range, and scroll synchronization in `src/TuiVision.Controls/TListViewer.cs`, `src/TuiVision.Controls/TListBox.cs`, `src/TuiVision.Controls/TScrollBar.cs`, and `src/TuiVision.Controls/TScroller.cs`
-- [ ] T010 [P] [US1] Implement session-scoped recall semantics and file-input integration with bilingual XML docs in `src/TuiVision.Controls/THistory.cs`, `src/TuiVision.Controls/TFileInputLine.cs`, and `src/TuiVision.Controls/TStringList.cs`
-- [ ] T011 [US1] Strengthen the existing application-internal clipboard semantics and input-line integration with bilingual XML docs in `src/TuiVision.Controls/ManagedClipboard.cs` and `src/TuiVision.Controls/TInputLine.cs`
+- [X] T009 [P] [US1] Harden list focus, visible-range, and scroll synchronization in `src/TuiVision.Controls/TListViewer.cs`, `src/TuiVision.Controls/TListBox.cs`, `src/TuiVision.Controls/TScrollBar.cs`, and `src/TuiVision.Controls/TScroller.cs`
+- [X] T010 [P] [US1] Implement session-scoped recall semantics and file-input integration with bilingual XML docs in `src/TuiVision.Controls/THistory.cs`, `src/TuiVision.Controls/TFileInputLine.cs`, and `src/TuiVision.Controls/TStringList.cs`
+- [X] T011 [US1] Strengthen the existing application-internal clipboard semantics and input-line integration with bilingual XML docs in `src/TuiVision.Controls/ManagedClipboard.cs` and `src/TuiVision.Controls/TInputLine.cs`
 
 **Checkpoint**: User Story 1 is independently functional and provides the MVP hardening baseline for later widget consumers.
 
@@ -74,16 +74,16 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T012 [P] [US2] Add red editable combo-box interaction and first-redraw drop-down visibility coverage in `tests/TuiVision.Controls.Tests/TComboBoxTests.cs`
-- [ ] T013 [P] [US2] Add red determinate progress state, range, and first-redraw visibility coverage in `tests/TuiVision.Controls.Tests/TProgressBarTests.cs`
-- [ ] T014 [P] [US2] Add red parameterized-text refresh, clipping, and first-redraw visibility coverage in `tests/TuiVision.Controls.Tests/TParamTextTests.cs`
+- [X] T012 [P] [US2] Add red editable combo-box interaction and first-redraw drop-down visibility coverage in `tests/TuiVision.Controls.Tests/TComboBoxTests.cs`
+- [X] T013 [P] [US2] Add red determinate progress state, range, and first-redraw visibility coverage in `tests/TuiVision.Controls.Tests/TProgressBarTests.cs`
+- [X] T014 [P] [US2] Add red parameterized-text refresh, clipping, and first-redraw visibility coverage in `tests/TuiVision.Controls.Tests/TParamTextTests.cs`
 
 ### Implementation for User Story 2
 
-- [ ] T015 [US2] Implement the editable combo-box surface with bilingual XML docs in `src/TuiVision.Controls/TComboBox.cs`
-- [ ] T016 [P] [US2] Implement the determinate numeric progress surface with bilingual XML docs in `src/TuiVision.Controls/TProgressBar.cs`
-- [ ] T017 [P] [US2] Extend the existing `TParamText` baseline into the bounded parameterized-text view with bilingual XML docs in `src/TuiVision.Controls/TParamText.cs`
-- [ ] T018 [US2] Integrate combo-box history and list-backed choice consumption in `src/TuiVision.Controls/TComboBox.cs`, `src/TuiVision.Controls/TStringList.cs`, and `src/TuiVision.Controls/THistory.cs`
+- [X] T015 [US2] Implement the editable combo-box surface with bilingual XML docs in `src/TuiVision.Controls/TComboBox.cs`
+- [X] T016 [P] [US2] Implement the determinate numeric progress surface with bilingual XML docs in `src/TuiVision.Controls/TProgressBar.cs`
+- [X] T017 [P] [US2] Extend the existing `TParamText` baseline into the bounded parameterized-text view with bilingual XML docs in `src/TuiVision.Controls/TParamText.cs`
+- [X] T018 [US2] Integrate combo-box history and list-backed choice consumption in `src/TuiVision.Controls/TComboBox.cs`, `src/TuiVision.Controls/TStringList.cs`, and `src/TuiVision.Controls/THistory.cs`
 
 **Checkpoint**: User Story 2 is independently functional and keeps wave-2 widget behavior inside the shared framework surface.
 
@@ -99,14 +99,14 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T019 [P] [US3] Add red framework-acceptance scenarios for event-loop dispatch, focus transitions, menu execution, dialog interaction, and first-redraw widget visibility in `tests/TuiVision.Controls.Tests/WidgetAcceptanceScenarioTests.cs`
-- [ ] T020 [P] [US3] Add red traceability-matrix and thin-consumer guard assertions for `clipboard`, `dyntxt`, `inplis`, `listvi`, `progba`, `tcombo`, and `tprogb` in `tests/TuiVision.Controls.Tests/ControlCoverageSweepTests.cs`
+- [X] T019 [P] [US3] Add red framework-acceptance scenarios for event-loop dispatch, focus transitions, menu execution, dialog interaction, and first-redraw widget visibility in `tests/TuiVision.Controls.Tests/WidgetAcceptanceScenarioTests.cs`
+- [X] T020 [P] [US3] Add red traceability-matrix and thin-consumer guard assertions for `clipboard`, `dyntxt`, `inplis`, `listvi`, `progba`, `tcombo`, and `tprogb` in `tests/TuiVision.Controls.Tests/ControlCoverageSweepTests.cs`
 
 ### Implementation for User Story 3
 
-- [ ] T021 [US3] Implement the framework-first acceptance scenarios in `tests/TuiVision.Controls.Tests/WidgetAcceptanceScenarioTests.cs`
-- [ ] T022 [US3] Refresh the cross-widget sweep, explicit later-consumer traceability guidance for `clipboard`, `dyntxt`, `inplis`, `listvi`, `progba`, `tcombo`, and `tprogb`, and the validation flow in `tests/TuiVision.Controls.Tests/ControlCoverageSweepTests.cs` and `specs/009-controls-widgets-and-collections/quickstart.md`
-- [ ] T023 [US3] Record the required Multi-Mac, Linux, and Windows/WSL acceptance-evidence workflow in `docs/guides/multi-mac-workflow.md`
+- [X] T021 [US3] Implement the framework-first acceptance scenarios in `tests/TuiVision.Controls.Tests/WidgetAcceptanceScenarioTests.cs`
+- [X] T022 [US3] Refresh the cross-widget sweep, explicit later-consumer traceability guidance for `clipboard`, `dyntxt`, `inplis`, `listvi`, `progba`, `tcombo`, and `tprogb`, and the validation flow in `tests/TuiVision.Controls.Tests/ControlCoverageSweepTests.cs` and `specs/009-controls-widgets-and-collections/quickstart.md`
+- [X] T023 [US3] Record the required Multi-Mac, Linux, and Windows/WSL acceptance-evidence workflow in `docs/guides/multi-mac-workflow.md`
 
 **Checkpoint**: User Story 3 leaves a reviewable, framework-first acceptance package without pulling example-smoke delivery into this branch.
 

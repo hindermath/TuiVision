@@ -17,7 +17,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/main/docs/project-statistics.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/docs/project-statistics.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -1190,6 +1190,11 @@ erheblichen realen Entwicklungsumfang.</li>
 <td>Parent-Guidance bewusst auf repo-uebergreifende Regeln begrenzt</td>
 <td>Nach dem Anlegen von <code>/Users/thorstenhindermann/RiderProjects/AGENTS.md</code> wurde in den lokalen TuiVision-Guidance-Dateien explizit vermerkt, dass die Parent-Datei nur gemeinsame Basisregeln fuer mehrere Repositories tragen soll. Repository-spezifische Build-, Test-, Workflow-, Architektur- und Feature-Vorgaben bleiben bewusst in <code>TuiVision</code> selbst und sind bei Konflikten die spezifischere Autoritaet. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: <code>0</code> Produktionscode-Zeilen, <code>0</code> Testcode-Zeilen, <code>+12 / -0</code> Dokumentationszeilen netto ueber die lokalen Guidance-Dateien und diese Statistikfortschreibung. Konservative Manualreferenz: 80 Zeilen/Tag = <code>0,2</code> Tage (ca. <code>1,2</code> Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = <code>0,1</code> Tage (ca. <code>0,7</code> Stunden); sichtbares Arbeitsfenster: 1 kurze Agentensitzung am 2026-03-30.</td>
 </tr>
+<tr>
+<td>2026-03-30</td>
+<td><code>009-controls-widgets-and-collections</code> mit <code>main</code> synchronisiert und gegen 008/Wave 1 revalidiert</td>
+<td>Der Branch <code>009-controls-widgets-and-collections</code> wurde lokal mit <code>main</code> zusammengefuehrt, die kollidierenden generierten Artefakte unter <code>tests/web-a11y/</code> wurden vorab bereinigt, und das 009-Planpaket wurde anschliessend gegen den inzwischen gelieferten Stand aus <code>006-close-phase8-gate</code>, <code>007-port-wave1-examples</code> und <code>008-controls-revision</code> nachgeschaerft. Konkret wurden die 009-Artefakte auf die aktuelle Lastenheft-Namensregel mit Punkt-Suffix umgestellt, <code>ManagedClipboard</code> und <code>TParamText</code> als bereits vorhandene Basis statt als rein neue 009-Dateien eingeordnet, der verpflichtende DocFX-plus-A11y-Folgeschritt im Quickstart und in den Aufgaben verankert und die gemeinsamen Agent-Kontexte via <code>.specify/scripts/bash/update-agent-context.sh</code> fuer <code>codex</code>, <code>claude</code>, <code>gemini</code> und <code>copilot</code> aktualisiert. Validierung auf dem synchronisierten Stand: <code>dotnet build --configuration Release</code> erfolgreich, danach <code>dotnet test</code> erfolgreich mit <code>44</code> Core-, <code>191</code> Controls-, <code>37</code> Drivers-, <code>18</code> Compatibility-, <code>13</code> Serialization- und <code>41</code> Example-Smoke-Tests; <code>Directory.Build.props</code> steht fuer diesen Arbeitsschritt auf der branchkonformen Version <code>1.9.182.2</code>. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: <code>0</code> Produktionscode-Zeilen, <code>0</code> Testcode-Zeilen, <code>+287 / -56</code> Dokumentations- und Guidance-Zeilen netto ueber <code>AGENTS.md</code>, <code>CLAUDE.md</code>, <code>GEMINI.md</code>, <code>.github/agents/copilot-instructions.md</code> sowie das 009-Planpaket; zusaetzlich <code>Directory.Build.props</code> <code>+3 / -3</code> = <code>0</code> Repo-Metadaten-/Versionspflege. Konservative Manualreferenz fuer die dokumentationsrelevanten <code>231</code> Netto-Zeilen: <code>2,9</code> Tage (ca. <code>22,5</code> Stunden); Thorsten-Solo-Referenz: <code>1,8</code> Tage (ca. <code>14,4</code> Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-30, als blended repository speedup und nicht als Stopwatch-Messung zu lesen.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="gesamtstatistik">Gesamtstatistik</h2>
@@ -1443,7 +1448,7 @@ for the same comparison.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/main/docs/project-statistics.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/docs/project-statistics.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

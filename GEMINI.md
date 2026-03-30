@@ -45,7 +45,7 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
     *   Dokumentationsblöcke zweisprachig: erst Deutsch, dann Englisch.
     *   Beide Sprachfassungen auf CEFR-B2-Niveau.
     *   Grosse normative Dokumente wie `Pflichtenheft*.md` und `Lastenheft*.md` duerfen statt eines uebergrossen Inline-Zweisprachblocks als synchron gepflegte `.EN.md`-Parallelfassung ausgeliefert werden; die deutsche Fassung bleibt kanonisch, sofern nichts anderes markiert ist.
-    *   Es gilt der Leitsatz `Programmierung #include<everyone>`: Guides, Statistiken, Beispiele und erzeugte API-Dokumentation muessen in textorientierten Hilfsmitteln wie Braille-Zeile, Screenreader und Textbrowser nutzbar bleiben.
+    *   Programmierung #include<everyone> — Diese Lernbeispiele richten sich an Azubis (Fachinformatiker AE/SI) mit Deutsch und Englisch als Arbeitssprachen sowie an sehbehinderte Lernende, die mit Braille-Displays, Screen-Readern oder Textbrowsern arbeiten. Barrierefreiheit ist kein Nice-to-have, sondern Pflichtanforderung.
     *   Erzeugte HTML-Dokumentation soll mindestens WCAG 2.2 Konformitaetsstufe AA als Barrierefreiheits-Basis anstreben.
     *   Die Smoke-Tests unter `tests/web-a11y/` mit Playwright und `@axe-core/playwright` muessen bei DocFX-Struktur- oder API-Doku-Aenderungen mitgezogen werden; `lynx` dient als zusaetzlicher Textbrowser-Gegencheck.
     *   Jeder DocFX-Neubau gilt erst dann als abgeschlossen, wenn der zugehoerige A11y-Smoke-Test ebenfalls erfolgreich war.
@@ -219,5 +219,5 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 
 ## Shared Parent Guidance
 
-*   Die gemeinsame Datei `/Users/thorstenhindermann/RiderProjects/AGENTS.md` speichert bewusst nur repo-uebergreifende Basisregeln.
-*   Repository-spezifische Build-, Test-, Workflow-, Architektur- und Feature-Regeln bleiben in den lokalen Projektdateien; wenn beide Ebenen existieren, ist die repo-lokale Guidance die spezifischere Autoritaet.
+*   Die gemeinsamen Dateien `/Users/thorstenhindermann/RiderProjects/AGENTS.md` und `/Users/thorstenhindermann/RiderProjects/GEMINI.md` speichern die repo-uebergreifenden Basisregeln.
+*   Diese Projekt-Datei ist die spezifischere Autoritaet fuer projektspezifische Build-Befehle, Workflows, Architektur und Features.

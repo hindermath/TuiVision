@@ -70,6 +70,39 @@ public sealed class TScrollerTests
     }
 
     /// <summary>
+    /// Prüft, dass ScrollTo bei einem Limit von (0,0) den Delta-Wert bei (0,0) hält.
+    ///
+    /// Verifies that ScrollTo keeps the Delta at (0,0) when the limit is (0,0).
+    /// </summary>
+    [TestMethod]
+    public void TScroller_SetLimit_BothZero_ScrollToStaysAtOrigin()
+    {
+        TestScroller scroller = new(new TRect(0, 0, 10, 4));
+        scroller.ApplyLimit(new TPoint(0, 0));
+
+        scroller.ScrollTo(new TPoint(5, 5));
+
+        Assert.AreEqual(new TPoint(0, 0), scroller.Delta);
+    }
+
+    /// <summary>
+    /// Prüft, dass ScrollTo ohne zugewiesene Scrollbars keine Exception wirft.
+    ///
+    /// Verifies that ScrollTo does not throw when no scroll bars are assigned.
+    /// </summary>
+    [TestMethod]
+    public void TScroller_ScrollTo_WithoutScrollBars_NoException()
+    {
+        TestScroller scroller = new(new TRect(0, 0, 10, 4));
+        scroller.ApplyLimit(new TPoint(20, 10));
+
+        // Should not throw even with no scroll bars
+        scroller.ScrollTo(new TPoint(5, 3));
+
+        Assert.AreEqual(new TPoint(5, 3), scroller.Delta);
+    }
+
+    /// <summary>
     /// Kleine Test-Unterklasse, um geschützte Scroller-APIs zugänglich zu machen.
     ///
     /// Small test subclass that exposes protected scroller APIs.

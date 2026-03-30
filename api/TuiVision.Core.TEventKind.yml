@@ -26,7 +26,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: TEventKind
     path: src/TuiVision.Core/TEvent.cs
@@ -71,7 +71,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Nothing
     path: src/TuiVision.Core/TEvent.cs
@@ -99,7 +99,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: MouseDown
     path: src/TuiVision.Core/TEvent.cs
@@ -127,7 +127,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: MouseUp
     path: src/TuiVision.Core/TEvent.cs
@@ -155,7 +155,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: MouseMove
     path: src/TuiVision.Core/TEvent.cs
@@ -183,7 +183,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: MouseAuto
     path: src/TuiVision.Core/TEvent.cs
@@ -211,7 +211,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: KeyDown
     path: src/TuiVision.Core/TEvent.cs
@@ -239,7 +239,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Command
     path: src/TuiVision.Core/TEvent.cs
@@ -267,7 +267,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Broadcast
     path: src/TuiVision.Core/TEvent.cs
@@ -295,7 +295,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Mouse
     path: src/TuiVision.Core/TEvent.cs
@@ -324,7 +324,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Keyboard
     path: src/TuiVision.Core/TEvent.cs
@@ -352,7 +352,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TEvent.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Message
     path: src/TuiVision.Core/TEvent.cs

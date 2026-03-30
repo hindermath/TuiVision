@@ -32,7 +32,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: TRect
     path: src/TuiVision.Core/TRect.cs
@@ -78,7 +78,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TRect.cs
@@ -126,7 +126,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TRect.cs
@@ -168,7 +168,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: A
     path: src/TuiVision.Core/TRect.cs
@@ -203,7 +203,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: B
     path: src/TuiVision.Core/TRect.cs
@@ -238,7 +238,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Width
     path: src/TuiVision.Core/TRect.cs
@@ -273,7 +273,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Height
     path: src/TuiVision.Core/TRect.cs
@@ -308,7 +308,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: IsEmpty
     path: src/TuiVision.Core/TRect.cs
@@ -346,7 +346,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Contains
     path: src/TuiVision.Core/TRect.cs
@@ -392,7 +392,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Move
     path: src/TuiVision.Core/TRect.cs
@@ -434,7 +434,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Grow
     path: src/TuiVision.Core/TRect.cs
@@ -480,7 +480,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Intersect
     path: src/TuiVision.Core/TRect.cs
@@ -520,7 +520,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Union
     path: src/TuiVision.Core/TRect.cs
@@ -556,7 +556,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Equality
     path: src/TuiVision.Core/TRect.cs
@@ -604,7 +604,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Inequality
     path: src/TuiVision.Core/TRect.cs
@@ -652,7 +652,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Equals
     path: src/TuiVision.Core/TRect.cs
@@ -696,7 +696,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Equals
     path: src/TuiVision.Core/TRect.cs
@@ -742,7 +742,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TRect.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: GetHashCode
     path: src/TuiVision.Core/TRect.cs

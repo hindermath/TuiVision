@@ -23,7 +23,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: TFileEditor
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -124,7 +124,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -166,7 +166,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: FileName
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -201,7 +201,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: LineEndingMode
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -236,7 +236,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Snapshot
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -271,7 +271,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: ConfirmOverwrite
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -306,7 +306,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: LoadFile
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -345,7 +345,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Save
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -380,7 +380,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: SaveAs
     path: src/TuiVision.Controls/TFileEditor.cs

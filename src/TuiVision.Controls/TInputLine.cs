@@ -126,6 +126,52 @@ public class TInputLine : TView
             return;
         }
 
+        // Clipboard handling: Ctrl+C (copy), Ctrl+X (cut), Ctrl+V (paste)
+        if (@event.KeyDown.CharCode == '\x03') // Ctrl+C: copy
+        {
+            if (!string.IsNullOrEmpty(Data))
+            {
+                ManagedClipboard.SetText(Data);
+            }
+
+            @event.Clear(this);
+            return;
+        }
+
+        if (@event.KeyDown.CharCode == '\x18') // Ctrl+X: cut
+        {
+            if (!string.IsNullOrEmpty(Data))
+            {
+                ManagedClipboard.SetText(Data);
+            }
+
+            _data = string.Empty;
+            CurPos = 0;
+            FirstPos = 0;
+            @event.Clear(this);
+            return;
+        }
+
+        if (@event.KeyDown.CharCode == '\x16') // Ctrl+V: paste
+        {
+            string? clip = ManagedClipboard.GetText();
+            if (!string.IsNullOrEmpty(clip) && Data.Length < MaxLen)
+            {
+                int space = MaxLen - Data.Length;
+                string toInsert = clip.Length <= space ? clip : clip[..space];
+                toInsert = new string(toInsert.Where(c => c >= ' ').ToArray());
+                if (toInsert.Length > 0)
+                {
+                    _data = Data.Insert(CurPos, toInsert);
+                    CurPos = Math.Min(Data.Length, CurPos + toInsert.Length);
+                    SyncViewport();
+                }
+            }
+
+            @event.Clear(this);
+            return;
+        }
+
         switch (@event.KeyDown.ScanCode)
         {
             case ScanLeft:

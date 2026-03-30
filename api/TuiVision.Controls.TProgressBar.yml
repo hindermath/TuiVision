@@ -1,0 +1,1337 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.TProgressBar
+  commentId: T:TuiVision.Controls.TProgressBar
+  id: TProgressBar
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.TProgressBar.#ctor(TuiVision.Core.TRect,System.Int32,System.Int32)
+  - TuiVision.Controls.TProgressBar.BarState
+  - TuiVision.Controls.TProgressBar.Cancel
+  - TuiVision.Controls.TProgressBar.Complete
+  - TuiVision.Controls.TProgressBar.Draw
+  - TuiVision.Controls.TProgressBar.Max
+  - TuiVision.Controls.TProgressBar.Min
+  - TuiVision.Controls.TProgressBar.SetValue(System.Int32)
+  - TuiVision.Controls.TProgressBar.Value
+  langs:
+  - csharp
+  - vb
+  name: TProgressBar
+  nameWithType: TProgressBar
+  fullName: TuiVision.Controls.TProgressBar
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Controls/TProgressBar.cs
+      branch: 009-controls-widgets-and-collections
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TProgressBar
+    path: src/TuiVision.Controls/TProgressBar.cs
+    startLine: 31
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Deterministischer Fortschrittsbalken mit numerischem Bereich.
+
+    Entspricht dem Konzept von <code>TProgressBar</code> in Turbo Vision.
+
+
+    Determinate progress bar with a numeric range.
+
+    Corresponds to the concept of <code>TProgressBar</code> in Turbo Vision.
+  example: []
+  syntax:
+    content: 'public sealed class TProgressBar : TView'
+    content.vb: Public NotInheritable Class TProgressBar Inherits TView
+  inheritance:
+  - System.Object
+  - TuiVision.Core.TObject
+  - TuiVision.Controls.TView
+  inheritedMembers:
+  - TuiVision.Controls.TView.Owner
+  - TuiVision.Controls.TView.Options
+  - TuiVision.Controls.TView.EventMask
+  - TuiVision.Controls.TView.State
+  - TuiVision.Controls.TView.Origin
+  - TuiVision.Controls.TView.Size
+  - TuiVision.Controls.TView.GetBounds
+  - TuiVision.Controls.TView.GetExtent
+  - TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)
+  - TuiVision.Controls.TView.Show
+  - TuiVision.Controls.TView.Hide
+  - TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState,System.Boolean)
+  - TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint@,TuiVision.Core.TPoint@)
+  - TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)
+  - TuiVision.Controls.TView.MoveTo(System.Int32,System.Int32)
+  - TuiVision.Controls.TView.GrowTo(System.Int32,System.Int32)
+  - TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)
+  - TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
+  - TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
+  - TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
+  - TuiVision.Controls.TView.DrawView
+  - TuiVision.Controls.TView.HelpContext
+  - TuiVision.Controls.TView.GetStatusHints
+  - TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)
+  - TuiVision.Core.TObject.ShutDown
+  - TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Controls.TProgressBar.#ctor(TuiVision.Core.TRect,System.Int32,System.Int32)
+  commentId: M:TuiVision.Controls.TProgressBar.#ctor(TuiVision.Core.TRect,System.Int32,System.Int32)
+  id: '#ctor(TuiVision.Core.TRect,System.Int32,System.Int32)'
+  parent: TuiVision.Controls.TProgressBar
+  langs:
+  - csharp
+  - vb
+  name: TProgressBar(TRect, int, int)
+  nameWithType: TProgressBar.TProgressBar(TRect, int, int)
+  fullName: TuiVision.Controls.TProgressBar.TProgressBar(TuiVision.Core.TRect, int, int)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Controls/TProgressBar.cs
+      branch: 009-controls-widgets-and-collections
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Controls/TProgressBar.cs
+    startLine: 48
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Erstellt einen neuen Fortschrittsbalken.
+
+
+    Creates a new progress bar.
+  example: []
+  syntax:
+    content: public TProgressBar(TRect bounds, int min, int max)
+    parameters:
+    - id: bounds
+      type: TuiVision.Core.TRect
+      description: Die Bounds des Controls. / The control bounds.
+    - id: min
+      type: System.Int32
+      description: Der minimale Wert. / The minimum value.
+    - id: max
+      type: System.Int32
+      description: Der maximale Wert. / The maximum value.
+    content.vb: Public Sub New(bounds As TRect, min As Integer, max As Integer)
+  overload: TuiVision.Controls.TProgressBar.#ctor*
+  nameWithType.vb: TProgressBar.New(TRect, Integer, Integer)
+  fullName.vb: TuiVision.Controls.TProgressBar.New(TuiVision.Core.TRect, Integer, Integer)
+  name.vb: New(TRect, Integer, Integer)
+- uid: TuiVision.Controls.TProgressBar.Min
+  commentId: P:TuiVision.Controls.TProgressBar.Min
+  id: Min
+  parent: TuiVision.Controls.TProgressBar
+  langs:
+  - csharp
+  - vb
+  name: Min
+  nameWithType: TProgressBar.Min
+  fullName: TuiVision.Controls.TProgressBar.Min
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TProgressBar.cs
+      branch: 009-controls-widgets-and-collections
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Min
+    path: src/TuiVision.Controls/TProgressBar.cs
+    startLine: 61
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Der minimale Wert des Balkens.
+
+
+    The minimum value of the bar.
+  example: []
+  syntax:
+    content: public int Min { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Min As Integer
+  overload: TuiVision.Controls.TProgressBar.Min*
+- uid: TuiVision.Controls.TProgressBar.Max
+  commentId: P:TuiVision.Controls.TProgressBar.Max
+  id: Max
+  parent: TuiVision.Controls.TProgressBar
+  langs:
+  - csharp
+  - vb
+  name: Max
+  nameWithType: TProgressBar.Max
+  fullName: TuiVision.Controls.TProgressBar.Max
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TProgressBar.cs
+      branch: 009-controls-widgets-and-collections
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Max
+    path: src/TuiVision.Controls/TProgressBar.cs
+    startLine: 68
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Der maximale Wert des Balkens.
+
+
+    The maximum value of the bar.
+  example: []
+  syntax:
+    content: public int Max { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Max As Integer
+  overload: TuiVision.Controls.TProgressBar.Max*
+- uid: TuiVision.Controls.TProgressBar.Value
+  commentId: P:TuiVision.Controls.TProgressBar.Value
+  id: Value
+  parent: TuiVision.Controls.TProgressBar
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: TProgressBar.Value
+  fullName: TuiVision.Controls.TProgressBar.Value
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TProgressBar.cs
+      branch: 009-controls-widgets-and-collections
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Value
+    path: src/TuiVision.Controls/TProgressBar.cs
+    startLine: 75
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Der aktuelle Wert des Balkens.
+
+
+    The current value of the bar.
+  example: []
+  syntax:
+    content: public int Value { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Value As Integer
+  overload: TuiVision.Controls.TProgressBar.Value*
+- uid: TuiVision.Controls.TProgressBar.BarState
+  commentId: P:TuiVision.Controls.TProgressBar.BarState
+  id: BarState
+  parent: TuiVision.Controls.TProgressBar
+  langs:
+  - csharp
+  - vb
+  name: BarState
+  nameWithType: TProgressBar.BarState
+  fullName: TuiVision.Controls.TProgressBar.BarState
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TProgressBar.cs
+      branch: 009-controls-widgets-and-collections
+      repo: https://github.com/hindermath/TuiVision.git
+    id: BarState
+    path: src/TuiVision.Controls/TProgressBar.cs
+    startLine: 82
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Der aktuelle Fortschrittszustand des Balkens.
+
+
+    The current progress state of the bar.
+  example: []
+  syntax:
+    content: public ProgressBarState BarState { get; }
+    parameters: []
+    return:
+      type: TuiVision.Controls.ProgressBarState
+    content.vb: Public ReadOnly Property BarState As ProgressBarState
+  overload: TuiVision.Controls.TProgressBar.BarState*
+- uid: TuiVision.Controls.TProgressBar.SetValue(System.Int32)
+  commentId: M:TuiVision.Controls.TProgressBar.SetValue(System.Int32)
+  id: SetValue(System.Int32)
+  parent: TuiVision.Controls.TProgressBar
+  langs:
+  - csharp
+  - vb
+  name: SetValue(int)
+  nameWithType: TProgressBar.SetValue(int)
+  fullName: TuiVision.Controls.TProgressBar.SetValue(int)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TProgressBar.cs
+      branch: 009-controls-widgets-and-collections
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SetValue
+    path: src/TuiVision.Controls/TProgressBar.cs
+    startLine: 92
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Setzt den aktuellen Wert und klemmt ihn in den gültigen Bereich.
+
+    Bei Erreichen des Maximums wird der Zustand auf Completed gesetzt.
+
+
+    Sets the current value and clamps it to the valid range.
+
+    When the maximum is reached, the state is set to Completed.
+  example: []
+  syntax:
+    content: public void SetValue(int value)
+    parameters:
+    - id: value
+      type: System.Int32
+      description: Der neue Wert. / The new value.
+    content.vb: Public Sub SetValue(value As Integer)
+  overload: TuiVision.Controls.TProgressBar.SetValue*
+  nameWithType.vb: TProgressBar.SetValue(Integer)
+  fullName.vb: TuiVision.Controls.TProgressBar.SetValue(Integer)
+  name.vb: SetValue(Integer)
+- uid: TuiVision.Controls.TProgressBar.Complete
+  commentId: M:TuiVision.Controls.TProgressBar.Complete
+  id: Complete
+  parent: TuiVision.Controls.TProgressBar
+  langs:
+  - csharp
+  - vb
+  name: Complete()
+  nameWithType: TProgressBar.Complete()
+  fullName: TuiVision.Controls.TProgressBar.Complete()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TProgressBar.cs
+      branch: 009-controls-widgets-and-collections
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Complete
+    path: src/TuiVision.Controls/TProgressBar.cs
+    startLine: 111
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Setzt den Wert auf das Maximum und den Zustand auf Completed.
+
+
+    Sets the value to the maximum and the state to Completed.
+  example: []
+  syntax:
+    content: public void Complete()
+    content.vb: Public Sub Complete()
+  overload: TuiVision.Controls.TProgressBar.Complete*
+- uid: TuiVision.Controls.TProgressBar.Cancel
+  commentId: M:TuiVision.Controls.TProgressBar.Cancel
+  id: Cancel
+  parent: TuiVision.Controls.TProgressBar
+  langs:
+  - csharp
+  - vb
+  name: Cancel()
+  nameWithType: TProgressBar.Cancel()
+  fullName: TuiVision.Controls.TProgressBar.Cancel()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TProgressBar.cs
+      branch: 009-controls-widgets-and-collections
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Cancel
+    path: src/TuiVision.Controls/TProgressBar.cs
+    startLine: 122
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Setzt den Zustand auf Canceled.
+
+
+    Sets the state to Canceled.
+  example: []
+  syntax:
+    content: public void Cancel()
+    content.vb: Public Sub Cancel()
+  overload: TuiVision.Controls.TProgressBar.Cancel*
+- uid: TuiVision.Controls.TProgressBar.Draw
+  commentId: M:TuiVision.Controls.TProgressBar.Draw
+  id: Draw
+  parent: TuiVision.Controls.TProgressBar
+  langs:
+  - csharp
+  - vb
+  name: Draw()
+  nameWithType: TProgressBar.Draw()
+  fullName: TuiVision.Controls.TProgressBar.Draw()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TProgressBar.cs
+      branch: 009-controls-widgets-and-collections
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Draw
+    path: src/TuiVision.Controls/TProgressBar.cs
+    startLine: 134
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Zeichnet den Fortschrittsbalken in Zeile 0 der View.
+
+    Laufend: '#' gefüllt, '.' leer; Abgeschlossen: '=' durchgehend; Abgebrochen: 'X' gefüllt, '.' leer.
+
+
+    Draws the progress bar on row 0 of the view.
+
+    Running: '#' filled, '.' empty; Completed: '=' throughout; Canceled: 'X' filled, '.' empty.
+  example: []
+  syntax:
+    content: public override void Draw()
+    content.vb: Public Overrides Sub Draw()
+  overridden: TuiVision.Controls.TView.Draw
+  overload: TuiVision.Controls.TProgressBar.Draw*
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TuiVision.Core.TObject
+  commentId: T:TuiVision.Core.TObject
+  parent: TuiVision.Core
+  href: TuiVision.Core.TObject.html
+  name: TObject
+  nameWithType: TObject
+  fullName: TuiVision.Core.TObject
+- uid: TuiVision.Controls.TView
+  commentId: T:TuiVision.Controls.TView
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TView.html
+  name: TView
+  nameWithType: TView
+  fullName: TuiVision.Controls.TView
+- uid: TuiVision.Controls.TView.Owner
+  commentId: P:TuiVision.Controls.TView.Owner
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Owner
+  name: Owner
+  nameWithType: TView.Owner
+  fullName: TuiVision.Controls.TView.Owner
+- uid: TuiVision.Controls.TView.Options
+  commentId: P:TuiVision.Controls.TView.Options
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Options
+  name: Options
+  nameWithType: TView.Options
+  fullName: TuiVision.Controls.TView.Options
+- uid: TuiVision.Controls.TView.EventMask
+  commentId: P:TuiVision.Controls.TView.EventMask
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_EventMask
+  name: EventMask
+  nameWithType: TView.EventMask
+  fullName: TuiVision.Controls.TView.EventMask
+- uid: TuiVision.Controls.TView.State
+  commentId: P:TuiVision.Controls.TView.State
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_State
+  name: State
+  nameWithType: TView.State
+  fullName: TuiVision.Controls.TView.State
+- uid: TuiVision.Controls.TView.Origin
+  commentId: P:TuiVision.Controls.TView.Origin
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Origin
+  name: Origin
+  nameWithType: TView.Origin
+  fullName: TuiVision.Controls.TView.Origin
+- uid: TuiVision.Controls.TView.Size
+  commentId: P:TuiVision.Controls.TView.Size
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Size
+  name: Size
+  nameWithType: TView.Size
+  fullName: TuiVision.Controls.TView.Size
+- uid: TuiVision.Controls.TView.GetBounds
+  commentId: M:TuiVision.Controls.TView.GetBounds
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetBounds
+  name: GetBounds()
+  nameWithType: TView.GetBounds()
+  fullName: TuiVision.Controls.TView.GetBounds()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.GetBounds
+    name: GetBounds
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetBounds
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.GetBounds
+    name: GetBounds
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetBounds
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TView.GetExtent
+  commentId: M:TuiVision.Controls.TView.GetExtent
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetExtent
+  name: GetExtent()
+  nameWithType: TView.GetExtent()
+  fullName: TuiVision.Controls.TView.GetExtent()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.GetExtent
+    name: GetExtent
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetExtent
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.GetExtent
+    name: GetExtent
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetExtent
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)
+  commentId: M:TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetState_TuiVision_Controls_TViewState_
+  name: GetState(TViewState)
+  nameWithType: TView.GetState(TViewState)
+  fullName: TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)
+    name: GetState
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetState_TuiVision_Controls_TViewState_
+  - name: (
+  - uid: TuiVision.Controls.TViewState
+    name: TViewState
+    href: TuiVision.Controls.TViewState.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)
+    name: GetState
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetState_TuiVision_Controls_TViewState_
+  - name: (
+  - uid: TuiVision.Controls.TViewState
+    name: TViewState
+    href: TuiVision.Controls.TViewState.html
+  - name: )
+- uid: TuiVision.Controls.TView.Show
+  commentId: M:TuiVision.Controls.TView.Show
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Show
+  name: Show()
+  nameWithType: TView.Show()
+  fullName: TuiVision.Controls.TView.Show()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.Show
+    name: Show
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Show
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.Show
+    name: Show
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Show
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TView.Hide
+  commentId: M:TuiVision.Controls.TView.Hide
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Hide
+  name: Hide()
+  nameWithType: TView.Hide()
+  fullName: TuiVision.Controls.TView.Hide()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.Hide
+    name: Hide
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Hide
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.Hide
+    name: Hide
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Hide
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState,System.Boolean)
+  commentId: M:TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState,System.Boolean)
+  parent: TuiVision.Controls.TView
+  isExternal: true
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetState_TuiVision_Controls_TViewState_System_Boolean_
+  name: SetState(TViewState, bool)
+  nameWithType: TView.SetState(TViewState, bool)
+  fullName: TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState, bool)
+  nameWithType.vb: TView.SetState(TViewState, Boolean)
+  fullName.vb: TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState, Boolean)
+  name.vb: SetState(TViewState, Boolean)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState,System.Boolean)
+    name: SetState
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetState_TuiVision_Controls_TViewState_System_Boolean_
+  - name: (
+  - uid: TuiVision.Controls.TViewState
+    name: TViewState
+    href: TuiVision.Controls.TViewState.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState,System.Boolean)
+    name: SetState
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetState_TuiVision_Controls_TViewState_System_Boolean_
+  - name: (
+  - uid: TuiVision.Controls.TViewState
+    name: TViewState
+    href: TuiVision.Controls.TViewState.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint@,TuiVision.Core.TPoint@)
+  commentId: M:TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint@,TuiVision.Core.TPoint@)
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SizeLimits_TuiVision_Core_TPoint__TuiVision_Core_TPoint__
+  name: SizeLimits(out TPoint, out TPoint)
+  nameWithType: TView.SizeLimits(out TPoint, out TPoint)
+  fullName: TuiVision.Controls.TView.SizeLimits(out TuiVision.Core.TPoint, out TuiVision.Core.TPoint)
+  nameWithType.vb: TView.SizeLimits(TPoint, TPoint)
+  fullName.vb: TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint, TuiVision.Core.TPoint)
+  name.vb: SizeLimits(TPoint, TPoint)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint@,TuiVision.Core.TPoint@)
+    name: SizeLimits
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SizeLimits_TuiVision_Core_TPoint__TuiVision_Core_TPoint__
+  - name: (
+  - name: out
+  - name: " "
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint@,TuiVision.Core.TPoint@)
+    name: SizeLimits
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SizeLimits_TuiVision_Core_TPoint__TuiVision_Core_TPoint__
+  - name: (
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: ','
+  - name: " "
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+- uid: TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)
+  commentId: M:TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_
+  name: Locate(TRect)
+  nameWithType: TView.Locate(TRect)
+  fullName: TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)
+    name: Locate
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_
+  - name: (
+  - uid: TuiVision.Core.TRect
+    name: TRect
+    href: TuiVision.Core.TRect.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)
+    name: Locate
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_
+  - name: (
+  - uid: TuiVision.Core.TRect
+    name: TRect
+    href: TuiVision.Core.TRect.html
+  - name: )
+- uid: TuiVision.Controls.TView.MoveTo(System.Int32,System.Int32)
+  commentId: M:TuiVision.Controls.TView.MoveTo(System.Int32,System.Int32)
+  parent: TuiVision.Controls.TView
+  isExternal: true
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MoveTo_System_Int32_System_Int32_
+  name: MoveTo(int, int)
+  nameWithType: TView.MoveTo(int, int)
+  fullName: TuiVision.Controls.TView.MoveTo(int, int)
+  nameWithType.vb: TView.MoveTo(Integer, Integer)
+  fullName.vb: TuiVision.Controls.TView.MoveTo(Integer, Integer)
+  name.vb: MoveTo(Integer, Integer)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.MoveTo(System.Int32,System.Int32)
+    name: MoveTo
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MoveTo_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.MoveTo(System.Int32,System.Int32)
+    name: MoveTo
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MoveTo_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: TuiVision.Controls.TView.GrowTo(System.Int32,System.Int32)
+  commentId: M:TuiVision.Controls.TView.GrowTo(System.Int32,System.Int32)
+  parent: TuiVision.Controls.TView
+  isExternal: true
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GrowTo_System_Int32_System_Int32_
+  name: GrowTo(int, int)
+  nameWithType: TView.GrowTo(int, int)
+  fullName: TuiVision.Controls.TView.GrowTo(int, int)
+  nameWithType.vb: TView.GrowTo(Integer, Integer)
+  fullName.vb: TuiVision.Controls.TView.GrowTo(Integer, Integer)
+  name.vb: GrowTo(Integer, Integer)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.GrowTo(System.Int32,System.Int32)
+    name: GrowTo
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GrowTo_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.GrowTo(System.Int32,System.Int32)
+    name: GrowTo
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GrowTo_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)
+  commentId: M:TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetBounds_TuiVision_Core_TRect_
+  name: SetBounds(TRect)
+  nameWithType: TView.SetBounds(TRect)
+  fullName: TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)
+    name: SetBounds
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetBounds_TuiVision_Core_TRect_
+  - name: (
+  - uid: TuiVision.Core.TRect
+    name: TRect
+    href: TuiVision.Core.TRect.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)
+    name: SetBounds
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_SetBounds_TuiVision_Core_TRect_
+  - name: (
+  - uid: TuiVision.Core.TRect
+    name: TRect
+    href: TuiVision.Core.TRect.html
+  - name: )
+- uid: TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
+  commentId: M:TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeGlobal_TuiVision_Core_TPoint_
+  name: MakeGlobal(TPoint)
+  nameWithType: TView.MakeGlobal(TPoint)
+  fullName: TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
+    name: MakeGlobal
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeGlobal_TuiVision_Core_TPoint_
+  - name: (
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
+    name: MakeGlobal
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeGlobal_TuiVision_Core_TPoint_
+  - name: (
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+- uid: TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
+  commentId: M:TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeLocal_TuiVision_Core_TPoint_
+  name: MakeLocal(TPoint)
+  nameWithType: TView.MakeLocal(TPoint)
+  fullName: TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
+    name: MakeLocal
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeLocal_TuiVision_Core_TPoint_
+  - name: (
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
+    name: MakeLocal
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MakeLocal_TuiVision_Core_TPoint_
+  - name: (
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+- uid: TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
+  commentId: M:TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MouseInView_TuiVision_Core_TPoint_
+  name: MouseInView(TPoint)
+  nameWithType: TView.MouseInView(TPoint)
+  fullName: TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
+    name: MouseInView
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MouseInView_TuiVision_Core_TPoint_
+  - name: (
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
+    name: MouseInView
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_MouseInView_TuiVision_Core_TPoint_
+  - name: (
+  - uid: TuiVision.Core.TPoint
+    name: TPoint
+    href: TuiVision.Core.TPoint.html
+  - name: )
+- uid: TuiVision.Controls.TView.DrawView
+  commentId: M:TuiVision.Controls.TView.DrawView
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView
+  name: DrawView()
+  nameWithType: TView.DrawView()
+  fullName: TuiVision.Controls.TView.DrawView()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.DrawView
+    name: DrawView
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.DrawView
+    name: DrawView
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TView.HelpContext
+  commentId: P:TuiVision.Controls.TView.HelpContext
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext
+  name: HelpContext
+  nameWithType: TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
+- uid: TuiVision.Controls.TView.GetStatusHints
+  commentId: M:TuiVision.Controls.TView.GetStatusHints
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints
+  name: GetStatusHints()
+  nameWithType: TView.GetStatusHints()
+  fullName: TuiVision.Controls.TView.GetStatusHints()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.GetStatusHints
+    name: GetStatusHints
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.GetStatusHints
+    name: GetStatusHints
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)
+  commentId: M:TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HandleEvent_TuiVision_Core_TEvent_
+  name: HandleEvent(TEvent)
+  nameWithType: TView.HandleEvent(TEvent)
+  fullName: TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)
+    name: HandleEvent
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HandleEvent_TuiVision_Core_TEvent_
+  - name: (
+  - uid: TuiVision.Core.TEvent
+    name: TEvent
+    href: TuiVision.Core.TEvent.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)
+    name: HandleEvent
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HandleEvent_TuiVision_Core_TEvent_
+  - name: (
+  - uid: TuiVision.Core.TEvent
+    name: TEvent
+    href: TuiVision.Core.TEvent.html
+  - name: )
+- uid: TuiVision.Core.TObject.ShutDown
+  commentId: M:TuiVision.Core.TObject.ShutDown
+  parent: TuiVision.Core.TObject
+  href: TuiVision.Core.TObject.html#TuiVision_Core_TObject_ShutDown
+  name: ShutDown()
+  nameWithType: TObject.ShutDown()
+  fullName: TuiVision.Core.TObject.ShutDown()
+  spec.csharp:
+  - uid: TuiVision.Core.TObject.ShutDown
+    name: ShutDown
+    href: TuiVision.Core.TObject.html#TuiVision_Core_TObject_ShutDown
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Core.TObject.ShutDown
+    name: ShutDown
+    href: TuiVision.Core.TObject.html#TuiVision_Core_TObject_ShutDown
+  - name: (
+  - name: )
+- uid: TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
+  commentId: M:TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
+  parent: TuiVision.Core.TObject
+  href: TuiVision.Core.TObject.html#TuiVision_Core_TObject_Destroy_TuiVision_Core_TObject_
+  name: Destroy(TObject)
+  nameWithType: TObject.Destroy(TObject)
+  fullName: TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
+  spec.csharp:
+  - uid: TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
+    name: Destroy
+    href: TuiVision.Core.TObject.html#TuiVision_Core_TObject_Destroy_TuiVision_Core_TObject_
+  - name: (
+  - uid: TuiVision.Core.TObject
+    name: TObject
+    href: TuiVision.Core.TObject.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
+    name: Destroy
+    href: TuiVision.Core.TObject.html#TuiVision_Core_TObject_Destroy_TuiVision_Core_TObject_
+  - name: (
+  - uid: TuiVision.Core.TObject
+    name: TObject
+    href: TuiVision.Core.TObject.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Core
+  commentId: N:TuiVision.Core
+  href: TuiVision.html
+  name: TuiVision.Core
+  nameWithType: TuiVision.Core
+  fullName: TuiVision.Core
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+- uid: TuiVision.Controls.TProgressBar.#ctor*
+  commentId: Overload:TuiVision.Controls.TProgressBar.#ctor
+  href: TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar__ctor_TuiVision_Core_TRect_System_Int32_System_Int32_
+  name: TProgressBar
+  nameWithType: TProgressBar.TProgressBar
+  fullName: TuiVision.Controls.TProgressBar.TProgressBar
+  nameWithType.vb: TProgressBar.New
+  fullName.vb: TuiVision.Controls.TProgressBar.New
+  name.vb: New
+- uid: TuiVision.Core.TRect
+  commentId: T:TuiVision.Core.TRect
+  parent: TuiVision.Core
+  href: TuiVision.Core.TRect.html
+  name: TRect
+  nameWithType: TRect
+  fullName: TuiVision.Core.TRect
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: TuiVision.Controls.TProgressBar.Min*
+  commentId: Overload:TuiVision.Controls.TProgressBar.Min
+  href: TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Min
+  name: Min
+  nameWithType: TProgressBar.Min
+  fullName: TuiVision.Controls.TProgressBar.Min
+- uid: TuiVision.Controls.TProgressBar.Max*
+  commentId: Overload:TuiVision.Controls.TProgressBar.Max
+  href: TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Max
+  name: Max
+  nameWithType: TProgressBar.Max
+  fullName: TuiVision.Controls.TProgressBar.Max
+- uid: TuiVision.Controls.TProgressBar.Value*
+  commentId: Overload:TuiVision.Controls.TProgressBar.Value
+  href: TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Value
+  name: Value
+  nameWithType: TProgressBar.Value
+  fullName: TuiVision.Controls.TProgressBar.Value
+- uid: TuiVision.Controls.TProgressBar.BarState*
+  commentId: Overload:TuiVision.Controls.TProgressBar.BarState
+  href: TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_BarState
+  name: BarState
+  nameWithType: TProgressBar.BarState
+  fullName: TuiVision.Controls.TProgressBar.BarState
+- uid: TuiVision.Controls.ProgressBarState
+  commentId: T:TuiVision.Controls.ProgressBarState
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.ProgressBarState.html
+  name: ProgressBarState
+  nameWithType: ProgressBarState
+  fullName: TuiVision.Controls.ProgressBarState
+- uid: TuiVision.Controls.TProgressBar.SetValue*
+  commentId: Overload:TuiVision.Controls.TProgressBar.SetValue
+  href: TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_SetValue_System_Int32_
+  name: SetValue
+  nameWithType: TProgressBar.SetValue
+  fullName: TuiVision.Controls.TProgressBar.SetValue
+- uid: TuiVision.Controls.TProgressBar.Complete*
+  commentId: Overload:TuiVision.Controls.TProgressBar.Complete
+  href: TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Complete
+  name: Complete
+  nameWithType: TProgressBar.Complete
+  fullName: TuiVision.Controls.TProgressBar.Complete
+- uid: TuiVision.Controls.TProgressBar.Cancel*
+  commentId: Overload:TuiVision.Controls.TProgressBar.Cancel
+  href: TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Cancel
+  name: Cancel
+  nameWithType: TProgressBar.Cancel
+  fullName: TuiVision.Controls.TProgressBar.Cancel
+- uid: TuiVision.Controls.TView.Draw
+  commentId: M:TuiVision.Controls.TView.Draw
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw
+  name: Draw()
+  nameWithType: TView.Draw()
+  fullName: TuiVision.Controls.TView.Draw()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.Draw
+    name: Draw
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.Draw
+    name: Draw
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TProgressBar.Draw*
+  commentId: Overload:TuiVision.Controls.TProgressBar.Draw
+  href: TuiVision.Controls.TProgressBar.html#TuiVision_Controls_TProgressBar_Draw
+  name: Draw
+  nameWithType: TProgressBar.Draw
+  fullName: TuiVision.Controls.TProgressBar.Draw

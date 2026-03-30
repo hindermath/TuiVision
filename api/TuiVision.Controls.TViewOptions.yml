@@ -28,7 +28,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: TViewOptions
     path: src/TuiVision.Controls/TView.cs
@@ -73,7 +73,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: None
     path: src/TuiVision.Controls/TView.cs
@@ -101,7 +101,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Selectable
     path: src/TuiVision.Controls/TView.cs
@@ -129,7 +129,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: TopSelect
     path: src/TuiVision.Controls/TView.cs
@@ -157,7 +157,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: FirstClick
     path: src/TuiVision.Controls/TView.cs
@@ -185,7 +185,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Framed
     path: src/TuiVision.Controls/TView.cs
@@ -213,7 +213,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: PreProcess
     path: src/TuiVision.Controls/TView.cs
@@ -241,7 +241,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: PostProcess
     path: src/TuiVision.Controls/TView.cs
@@ -269,7 +269,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Buffered
     path: src/TuiVision.Controls/TView.cs
@@ -297,7 +297,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Tileable
     path: src/TuiVision.Controls/TView.cs
@@ -325,7 +325,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: CenterX
     path: src/TuiVision.Controls/TView.cs
@@ -353,7 +353,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: CenterY
     path: src/TuiVision.Controls/TView.cs
@@ -381,7 +381,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Centered
     path: src/TuiVision.Controls/TView.cs
@@ -410,7 +410,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TView.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Verbose
     path: src/TuiVision.Controls/TView.cs

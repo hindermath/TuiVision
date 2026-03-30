@@ -154,6 +154,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.ProgressBarState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.ProgressBarState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.ProgressBarState",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.ProgressBarState.yml\" sourcestartlinenumber=\"1\">Zustandswerte des Fortschrittsbalkens.</p>\n<p sourcefile=\"api/TuiVision.Controls.ProgressBarState.yml\" sourcestartlinenumber=\"3\">State values for the progress bar.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Controls.ShellCommandIds.yml",
       "output": {
         ".html": {
@@ -305,6 +319,20 @@
       "IsMRef": true,
       "Title": "TuiVision.Controls.TColorSelector",
       "Summary": "<p sourcefile=\"api/TuiVision.Controls.TColorSelector.yml\" sourcestartlinenumber=\"1\">Einfache Farbauswahl als managed Gegenstück zu <code>TColorSelector</code>\naus Turbo Vision (<code>tcolorse.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TColorSelector.yml\" sourcestartlinenumber=\"4\">Simple colour selector as a managed counterpart to <code>TColorSelector</code>\nfrom Turbo Vision (<code>tcolorse.cc</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TComboBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TComboBox.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TComboBox",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TComboBox.yml\" sourcestartlinenumber=\"1\">Editierbares Kombinationsfeld auf Basis von <xref href=\"TuiVision.Controls.TInputLine\" data-throw-if-not-resolved=\"false\"></xref> mit optionaler\nDropdown-Auswahlliste und History-Anbindung.</p>\n<p sourcefile=\"api/TuiVision.Controls.TComboBox.yml\" sourcestartlinenumber=\"4\">Editable combo box based on <xref href=\"TuiVision.Controls.TInputLine\" data-throw-if-not-resolved=\"false\"></xref> with an optional dropdown\nchoice list and history integration.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -794,7 +822,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Controls.TParamText",
-      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TParamText.yml\" sourcestartlinenumber=\"1\">Parameterisierter UI-Text als managed Gegenstück zu <code>TParamText</code>\naus Turbo Vision (<code>tparamte.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TParamText.yml\" sourcestartlinenumber=\"4\">Parameterized UI text as a managed counterpart to <code>TParamText</code>\nfrom Turbo Vision (<code>tparamte.cc</code>).</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TParamText.yml\" sourcestartlinenumber=\"1\">Parameterisierter UI-Text als bounded View-Oberfläche. Entspricht dem Konzept von\n<code>TParamText</code> aus Turbo Vision (<code>tparamte.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TParamText.yml\" sourcestartlinenumber=\"4\">Parameterized UI text as a bounded view surface. Corresponds to the concept of\n<code>TParamText</code> from Turbo Vision (<code>tparamte.cc</code>).</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -809,6 +837,20 @@
       "IsMRef": true,
       "Title": "TuiVision.Controls.TProgram",
       "Summary": "<p sourcefile=\"api/TuiVision.Controls.TProgram.yml\" sourcestartlinenumber=\"1\">Die Basisklasse für interaktive TuiVision-Anwendungen.\nSie koordiniert den Lebenszyklus, das Event-Routing und das Layout der Shell.</p>\n<p sourcefile=\"api/TuiVision.Controls.TProgram.yml\" sourcestartlinenumber=\"4\">The base class for interactive TuiVision applications.\nIt coordinates the shell lifecycle, event routing, and layout.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TProgressBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TProgressBar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TProgressBar",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TProgressBar.yml\" sourcestartlinenumber=\"1\">Deterministischer Fortschrittsbalken mit numerischem Bereich.\nEntspricht dem Konzept von <code>TProgressBar</code> in Turbo Vision.</p>\n<p sourcefile=\"api/TuiVision.Controls.TProgressBar.yml\" sourcestartlinenumber=\"4\">Determinate progress bar with a numeric range.\nCorresponds to the concept of <code>TProgressBar</code> in Turbo Vision.</p>\n"
     },
     {
       "type": "ManagedReference",

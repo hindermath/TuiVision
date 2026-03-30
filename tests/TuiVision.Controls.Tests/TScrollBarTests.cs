@@ -82,4 +82,34 @@ public sealed class TScrollBarTests
         Assert.AreEqual(4, scrollBar.PgStep);
         Assert.AreEqual(2, scrollBar.ArStep);
     }
+
+    /// <summary>
+    /// Prüft, dass SetLimit(0) den Wert auf 0 klemmt.
+    ///
+    /// Verifies that SetLimit(0) clamps the value to 0.
+    /// </summary>
+    [TestMethod]
+    public void TScrollBar_SetLimit_ZeroMax_ValueClamped()
+    {
+        TScrollBar scrollBar = new(new TRect(0, 0, 1, 5));
+
+        scrollBar.SetLimit(0);
+
+        Assert.AreEqual(0, scrollBar.Value);
+    }
+
+    /// <summary>
+    /// Prüft, dass SetParams einen negativen Min-Wert als 0 behandelt.
+    ///
+    /// Verifies that SetParams treats a negative min value as 0.
+    /// </summary>
+    [TestMethod]
+    public void TScrollBar_SetParams_NegativeMin_TreatedAsZero()
+    {
+        TScrollBar scrollBar = new(new TRect(0, 0, 1, 5));
+
+        scrollBar.SetParams(0, -5, 10, 2, 1);
+
+        Assert.AreEqual(10, scrollBar.Max);
+    }
 }

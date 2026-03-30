@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TSortedList.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: TSortedList
     path: src/TuiVision.Core/TSortedList.cs
@@ -73,7 +73,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TSortedList.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TSortedList.cs
@@ -108,7 +108,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TSortedList.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TSortedList.cs
@@ -147,7 +147,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TSortedList.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Count
     path: src/TuiVision.Core/TSortedList.cs
@@ -184,7 +184,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TSortedList.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Keys
     path: src/TuiVision.Core/TSortedList.cs
@@ -221,7 +221,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TSortedList.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: this[]
     path: src/TuiVision.Core/TSortedList.cs
@@ -263,7 +263,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TSortedList.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Add
     path: src/TuiVision.Core/TSortedList.cs

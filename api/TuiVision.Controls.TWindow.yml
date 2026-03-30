@@ -23,7 +23,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TWindow.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: TWindow
     path: src/TuiVision.Controls/TWindow.cs
@@ -111,7 +111,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TWindow.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TWindow.cs
@@ -162,7 +162,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TWindow.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TWindow.cs
@@ -219,7 +219,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TWindow.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Title
     path: src/TuiVision.Controls/TWindow.cs
@@ -254,7 +254,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TWindow.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Flags
     path: src/TuiVision.Controls/TWindow.cs
@@ -289,7 +289,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TWindow.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Bounds
     path: src/TuiVision.Controls/TWindow.cs
@@ -324,7 +324,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TWindow.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: IsInMoveMode
     path: src/TuiVision.Controls/TWindow.cs
@@ -359,7 +359,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TWindow.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TWindow.cs
@@ -396,7 +396,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TWindow.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TWindow.cs

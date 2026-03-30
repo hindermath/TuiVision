@@ -62,6 +62,71 @@ public sealed class TListViewerTests
     }
 
     /// <summary>
+    /// Prüft, dass FocusItem bei leerer Liste auf 0 bleibt.
+    ///
+    /// Verifies that FocusItem stays at 0 for an empty list.
+    /// </summary>
+    [TestMethod]
+    public void TListViewer_FocusItem_EmptyList_StaysAtZero()
+    {
+        TestListViewer viewer = new(new TRect(0, 0, 10, 3), []);
+
+        viewer.FocusItem(3);
+
+        Assert.AreEqual(0, viewer.FocusedItem);
+    }
+
+    /// <summary>
+    /// Prüft, dass FocusItem bei einem einzigen Eintrag auf 0 bleibt.
+    ///
+    /// Verifies that FocusItem stays at 0 for a single-item list.
+    /// </summary>
+    [TestMethod]
+    public void TListViewer_FocusItem_SingleItem_StaysAt0()
+    {
+        TestListViewer viewer = new(new TRect(0, 0, 10, 3), ["Only"]);
+
+        viewer.FocusItem(0);
+
+        Assert.AreEqual(0, viewer.FocusedItem);
+    }
+
+    /// <summary>
+    /// Prüft, dass TopItem bei kleinen Bounds korrekt geklämmt wird.
+    ///
+    /// Verifies that TopItem is correctly clamped for undersized bounds.
+    /// </summary>
+    [TestMethod]
+    public void TListViewer_FocusItem_UndersizedBounds_TopItemClamped()
+    {
+        // Viewer with only 1 visible row (Size.Y = 1) but 3 items
+        TestListViewer viewer = new(new TRect(0, 0, 10, 1), ["One", "Two", "Three"]);
+
+        viewer.FocusItem(2);
+
+        Assert.AreEqual(2, viewer.FocusedItem);
+        // TopItem must equal FocusedItem for a 1-row viewer so the item is visible.
+        Assert.AreEqual(viewer.FocusedItem, viewer.TopItem);
+    }
+
+    /// <summary>
+    /// Prüft, dass Draw bei leerer Liste nicht abstürzt und leere Zeilen rendert.
+    ///
+    /// Verifies that Draw does not crash for an empty list and renders blank rows.
+    /// </summary>
+    [TestMethod]
+    public void TListViewer_Draw_EmptyList_RendersBlankRows()
+    {
+        TestListViewer viewer = new(new TRect(0, 0, 10, 3), []);
+        TGroup owner = ControlTestContext.AttachToOwner(viewer, new TRect(0, 0, 15, 5));
+
+        TConsoleBuffer buffer = ControlTestContext.GetBufferSnapshot(owner);
+
+        // Row 0 should be blank (space character)
+        Assert.AreEqual(' ', buffer[0, 0].Glyph);
+    }
+
+    /// <summary>
     /// Kleine konkrete Testliste.
     ///
     /// Small concrete test list.

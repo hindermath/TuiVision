@@ -19,7 +19,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorGroup.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: TColorGroup
     path: src/TuiVision.Controls/TColorGroup.cs
@@ -63,7 +63,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorGroup.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TColorGroup.cs
@@ -102,7 +102,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorGroup.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Name
     path: src/TuiVision.Controls/TColorGroup.cs
@@ -137,7 +137,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorGroup.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: ItemCount
     path: src/TuiVision.Controls/TColorGroup.cs
@@ -172,7 +172,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorGroup.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: AddItem
     path: src/TuiVision.Controls/TColorGroup.cs

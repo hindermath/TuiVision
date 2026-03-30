@@ -25,7 +25,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: TMenuBar
     path: src/TuiVision.Controls/TMenuBar.cs
@@ -102,7 +102,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Menu
     path: src/TuiVision.Controls/TMenuBar.cs
@@ -133,7 +133,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: IsMenuActive
     path: src/TuiVision.Controls/TMenuBar.cs
@@ -168,7 +168,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectedTopLevel
     path: src/TuiVision.Controls/TMenuBar.cs
@@ -203,7 +203,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectedSubMenuItem
     path: src/TuiVision.Controls/TMenuBar.cs
@@ -238,7 +238,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: LayoutSlots
     path: src/TuiVision.Controls/TMenuBar.cs
@@ -277,7 +277,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TMenuBar.cs
@@ -316,7 +316,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TMenuBar.cs
@@ -357,7 +357,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TMenuBar.cs
@@ -398,7 +398,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: DrawSubMenuOverlay
     path: src/TuiVision.Controls/TMenuBar.cs
@@ -441,7 +441,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: main
+      branch: 009-controls-widgets-and-collections
       repo: https://github.com/hindermath/TuiVision.git
     id: OnBoundsChanged
     path: src/TuiVision.Controls/TMenuBar.cs

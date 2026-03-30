@@ -59,4 +59,12 @@ public sealed class TFileInputLine : TInputLine
         Data = values[index];
         return Data;
     }
+
+    /// <summary>
+    /// Gibt alle History-Eintraege des zugehörigen Buckets zurück.
+    ///
+    /// Returns all history entries of the associated bucket.
+    /// </summary>
+    /// <returns>Die History-Eintraege in Most-Recent-First-Reihenfolge. / The history entries in most-recent-first order.</returns>
+    public IReadOnlyList<string> Recall() => _history.Recall();
 }
