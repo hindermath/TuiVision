@@ -944,3 +944,5 @@ modules.xml
 .junie/memory/
 .junie/.onboarding_migrated
 .opencode/node_modules/
+tests/web-a11y/playwright-report/
+tests/web-a11y/test-results/

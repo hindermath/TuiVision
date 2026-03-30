@@ -53,6 +53,7 @@ dotnet format --verify-no-changes
 
 ```bash
 docfx docfx.json
+cd tests/web-a11y && npm run test:docfx
 ```
 
 6. Capture the required runtime-behavior evidence on the primary Multi-Mac path
@@ -67,7 +68,7 @@ docfx docfx.json
 8. Complete the required repository follow-through before closing the feature:
    update `docs/project-statistics.md` and rename
    `Lastenheft_01_ControlsWidgetsAndCollections.md` to
-   `Lastenheft_01_ControlsWidgetsAndCollections_009-controls-widgets-and-collections.md`.
+   `Lastenheft_01_ControlsWidgetsAndCollections.009-controls-widgets-and-collections.md`.
 
 ## Representative Usage Sketch
 

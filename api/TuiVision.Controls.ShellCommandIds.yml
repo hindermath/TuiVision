@@ -31,7 +31,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: ShellCommandIds
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -72,7 +72,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: cmOK
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -101,7 +101,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: cmCancel
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -130,7 +130,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: cmYes
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -159,7 +159,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: cmNo
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -188,7 +188,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: cmQuit
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -217,7 +217,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: cmFocusChanged
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -246,7 +246,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: cmClose
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -275,7 +275,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: cmSave
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -304,7 +304,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: cmOpen
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -333,7 +333,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: cmUndo
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -362,7 +362,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: cmCopy
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -391,7 +391,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: cmCut
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -420,7 +420,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: cmPaste
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -449,7 +449,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: cmFind
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -478,7 +478,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: cmReplace
     path: src/TuiVision.Controls/ShellCommandIds.cs
@@ -507,7 +507,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ShellCommandIds.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: cmHelp
     path: src/TuiVision.Controls/ShellCommandIds.cs

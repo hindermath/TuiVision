@@ -4,6 +4,7 @@ items:
   commentId: N:TuiVision.Core
   id: TuiVision.Core
   children:
+  - TuiVision.Core.TCollection`1
   - TuiVision.Core.TConsoleBuffer
   - TuiVision.Core.TConsoleCell
   - TuiVision.Core.TEvent
@@ -12,9 +13,16 @@ items:
   - TuiVision.Core.TMessageEvent
   - TuiVision.Core.TMouseButtons
   - TuiVision.Core.TMouseEvent
+  - TuiVision.Core.TNSCollection`1
+  - TuiVision.Core.TNSSorter
   - TuiVision.Core.TObject
   - TuiVision.Core.TPoint
   - TuiVision.Core.TRect
+  - TuiVision.Core.TSortedCollection`1
+  - TuiVision.Core.TSortedList`2
+  - TuiVision.Core.TStrList
+  - TuiVision.Core.TStringCollection
+  - TuiVision.Core.TStringIndex
   langs:
   - csharp
   - vb
@@ -25,6 +33,31 @@ items:
   assemblies:
   - TuiVision.Core
 references:
+- uid: TuiVision.Core.TCollection`1
+  commentId: T:TuiVision.Core.TCollection`1
+  href: TuiVision.Core.TCollection-1.html
+  name: TCollection<T>
+  nameWithType: TCollection<T>
+  fullName: TuiVision.Core.TCollection<T>
+  nameWithType.vb: TCollection(Of T)
+  fullName.vb: TuiVision.Core.TCollection(Of T)
+  name.vb: TCollection(Of T)
+  spec.csharp:
+  - uid: TuiVision.Core.TCollection`1
+    name: TCollection
+    href: TuiVision.Core.TCollection-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: TuiVision.Core.TCollection`1
+    name: TCollection
+    href: TuiVision.Core.TCollection-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
 - uid: TuiVision.Core.TConsoleBuffer
   commentId: T:TuiVision.Core.TConsoleBuffer
   parent: TuiVision.Core
@@ -81,6 +114,37 @@ references:
   name: TEvent
   nameWithType: TEvent
   fullName: TuiVision.Core.TEvent
+- uid: TuiVision.Core.TNSCollection`1
+  commentId: T:TuiVision.Core.TNSCollection`1
+  href: TuiVision.Core.TNSCollection-1.html
+  name: TNSCollection<T>
+  nameWithType: TNSCollection<T>
+  fullName: TuiVision.Core.TNSCollection<T>
+  nameWithType.vb: TNSCollection(Of T)
+  fullName.vb: TuiVision.Core.TNSCollection(Of T)
+  name.vb: TNSCollection(Of T)
+  spec.csharp:
+  - uid: TuiVision.Core.TNSCollection`1
+    name: TNSCollection
+    href: TuiVision.Core.TNSCollection-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: TuiVision.Core.TNSCollection`1
+    name: TNSCollection
+    href: TuiVision.Core.TNSCollection-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TuiVision.Core.TNSSorter
+  commentId: T:TuiVision.Core.TNSSorter
+  href: TuiVision.Core.TNSSorter.html
+  name: TNSSorter
+  nameWithType: TNSSorter
+  fullName: TuiVision.Core.TNSSorter
 - uid: TuiVision.Core.TObject
   commentId: T:TuiVision.Core.TObject
   parent: TuiVision.Core
@@ -102,6 +166,80 @@ references:
   name: TRect
   nameWithType: TRect
   fullName: TuiVision.Core.TRect
+- uid: TuiVision.Core.TSortedCollection`1
+  commentId: T:TuiVision.Core.TSortedCollection`1
+  href: TuiVision.Core.TSortedCollection-1.html
+  name: TSortedCollection<T>
+  nameWithType: TSortedCollection<T>
+  fullName: TuiVision.Core.TSortedCollection<T>
+  nameWithType.vb: TSortedCollection(Of T)
+  fullName.vb: TuiVision.Core.TSortedCollection(Of T)
+  name.vb: TSortedCollection(Of T)
+  spec.csharp:
+  - uid: TuiVision.Core.TSortedCollection`1
+    name: TSortedCollection
+    href: TuiVision.Core.TSortedCollection-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: TuiVision.Core.TSortedCollection`1
+    name: TSortedCollection
+    href: TuiVision.Core.TSortedCollection-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TuiVision.Core.TSortedList`2
+  commentId: T:TuiVision.Core.TSortedList`2
+  href: TuiVision.Core.TSortedList-2.html
+  name: TSortedList<TKey, TValue>
+  nameWithType: TSortedList<TKey, TValue>
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>
+  nameWithType.vb: TSortedList(Of TKey, TValue)
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue)
+  name.vb: TSortedList(Of TKey, TValue)
+  spec.csharp:
+  - uid: TuiVision.Core.TSortedList`2
+    name: TSortedList
+    href: TuiVision.Core.TSortedList-2.html
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: TuiVision.Core.TSortedList`2
+    name: TSortedList
+    href: TuiVision.Core.TSortedList-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: TuiVision.Core.TStringCollection
+  commentId: T:TuiVision.Core.TStringCollection
+  href: TuiVision.Core.TStringCollection.html
+  name: TStringCollection
+  nameWithType: TStringCollection
+  fullName: TuiVision.Core.TStringCollection
+- uid: TuiVision.Core.TStringIndex
+  commentId: T:TuiVision.Core.TStringIndex
+  href: TuiVision.Core.TStringIndex.html
+  name: TStringIndex
+  nameWithType: TStringIndex
+  fullName: TuiVision.Core.TStringIndex
+- uid: TuiVision.Core.TStrList
+  commentId: T:TuiVision.Core.TStrList
+  href: TuiVision.Core.TStrList.html
+  name: TStrList
+  nameWithType: TStrList
+  fullName: TuiVision.Core.TStrList
 - uid: TuiVision.Core
   commentId: N:TuiVision.Core
   href: TuiVision.html

@@ -80,14 +80,18 @@ public static class DriverCapabilityMap
             "per-platform screen output using the managed System.Console API.",
 
         DriverCapabilityBucket.KeyboardInput =>
-            "System.Console.ReadKey(intercept: true) via the managed .NET 10 runtime. Replaces " +
-            "historical *key.cc per-platform raw keyboard polling (BIOS INT 16h, Linux ioctl, " +
-            "Win32 ReadConsoleInput). Key translation is handled by TuiVision.Compatibility.",
+            "System.Console.ReadKey(intercept: true) via the managed .NET 10 runtime. " +
+            "TuiVision.Compatibility.TConsoleInputAdapter and TKeyCodeTranslator convert the " +
+            "managed console keys into Turbo-Vision-compatible key events. Replaces historical " +
+            "*key.cc per-platform raw keyboard polling (BIOS INT 16h, Linux ioctl, " +
+            "Win32 ReadConsoleInput).",
 
         DriverCapabilityBucket.MouseInput =>
-            "System.Console mouse event support via Console.MouseMove / Console input record " +
-            "processing in the managed .NET 10 runtime. Replaces historical *mouse.cc per-platform " +
-            "mouse drivers (INT 33h, GPM, Win32 mouse records, X11 pointer events).",
+            "The managed .NET 10 console baseline does not recreate a dedicated cross-platform " +
+            "raw mouse-driver layer. Mouse payloads remain represented by TuiVision.Core.TEvent " +
+            "and TMouseEvent for UI-level handling, while the historical per-platform *mouse.cc " +
+            "drivers (INT 33h, GPM, Win32 input records, Xterm mouse protocols) are consciously " +
+            "not reproduced one-to-one.",
 
         DriverCapabilityBucket.DisplayAdaptation =>
             "Managed Unicode and System.Text.Encoding APIs on .NET 10. Codepage and font selection " +

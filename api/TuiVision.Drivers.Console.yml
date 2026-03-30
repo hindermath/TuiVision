@@ -7,6 +7,7 @@ items:
   - TuiVision.Drivers.Console.DriverCapabilityBucket
   - TuiVision.Drivers.Console.DriverCapabilityMap
   - TuiVision.Drivers.Console.IConsolePresenter
+  - TuiVision.Drivers.Console.SystemConsolePresenter
   - TuiVision.Drivers.Console.TConsoleDriver
   langs:
   - csharp
@@ -31,6 +32,12 @@ references:
   name: DriverCapabilityMap
   nameWithType: DriverCapabilityMap
   fullName: TuiVision.Drivers.Console.DriverCapabilityMap
+- uid: TuiVision.Drivers.Console.SystemConsolePresenter
+  commentId: T:TuiVision.Drivers.Console.SystemConsolePresenter
+  href: TuiVision.Drivers.Console.SystemConsolePresenter.html
+  name: SystemConsolePresenter
+  nameWithType: SystemConsolePresenter
+  fullName: TuiVision.Drivers.Console.SystemConsolePresenter
 - uid: TuiVision.Drivers.Console.IConsolePresenter
   commentId: T:TuiVision.Drivers.Console.IConsolePresenter
   parent: TuiVision.Drivers.Console

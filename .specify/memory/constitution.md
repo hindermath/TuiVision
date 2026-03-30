@@ -1,15 +1,26 @@
 <!--
   SYNC IMPACT REPORT
   ==================
-  Version change: 1.9.0 → 1.10.0
-  Bump rationale: MINOR — Added repo-wide assembly-version governance for
-  numbered Spec-Kit branches via `Directory.Build.props`, including the rule
-  that the feature/branch number becomes the canonical PR number for `Minor`.
-  Full project scan performed (AGENTS.md, GEMINI.md, CLAUDE.md,
-  copilot-instructions.md, constitution templates, and core spec templates).
+  Version change: 1.10.0 → 1.10.1
+  Bump rationale: PATCH — Clarified the interaction between the mandatory
+  Red-Green-Refactor history and commit-discipline rules so intentionally red
+  TDD commits are allowed only as tightly scoped feature-branch exceptions
+  without weakening the passing-state bar for review and merge.
+
+  Previous version: 1.9.0 → 1.10.0
+  Previous rationale: MINOR — Added repo-wide assembly-version governance for
+  numbered Spec-Kit branches via `Directory.Build.props`, and finalized the
+  mandatory 70% line-coverage gate across five assemblies
+  (`TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`,
+  `TuiVision.Compatibility`, `TuiVision.Drivers.Console`) as part of the
+  Phase-8 gate-closure work (`006-close-phase8-gate`).
+  Full project scan performed (constitution templates, core spec templates,
+  and shared agent guidance files for impact review).
 
   Modified principles:
-    - None
+    - II. Test-First Development — TDD (clarified operational interaction with
+      commit discipline)
+    - Commit Discipline (narrow TDD exception added for feature branches)
 
   Added sections:
     - None
@@ -24,10 +35,11 @@
     - .specify/templates/constitution-template.md ✅ reviewed; no change required
 
   Agent files reviewed:
-    - AGENTS.md             ✅ updated
-    - GEMINI.md             ✅ updated
-    - .github/copilot-instructions.md ✅ updated
-    - CLAUDE.md             ✅ updated
+    - AGENTS.md             ✅ reviewed; no change required
+    - GEMINI.md             ✅ reviewed; no change required
+    - .github/copilot-instructions.md ✅ reviewed; no change required
+    - CLAUDE.md             ✅ reviewed; no change required
+    - .github/agents/copilot-instructions.md ✅ reviewed; no change required
 
   Follow-up TODOs:
     - `.specify/templates/commands/` is not present in this repository, so no
@@ -60,8 +72,12 @@ All implementation MUST follow the Red-Green-Refactor cycle:
 Additional constraints:
 
 - Test framework: **MSTest** exclusively.
-- Minimum line coverage: **70%** in `TuiVision.Core`, `TuiVision.Controls`, and
-  `TuiVision.Serialization`. This is measured and enforced in CI.
+- Minimum line coverage: **70%** in `TuiVision.Core`, `TuiVision.Controls`,
+  `TuiVision.Serialization`, `TuiVision.Compatibility`, and
+  `TuiVision.Drivers.Console`. This is measured and enforced in CI.
+  Coverage is evaluated per target assembly and must be reported separately
+  for each of the five gate assemblies even when exercising tests are
+  distributed across multiple test projects.
 - Every ported core component MUST have at least one positive test and one
   negative/error-case test where technically meaningful.
 - Integration tests MUST cover: event loop, focus transitions, menu execution,
@@ -217,7 +233,10 @@ in the relevant plan or PR and explicit reviewer approval in the same change.
 1. `dotnet build --configuration Release` exits with code 0 and zero warnings
    treated as errors.
 2. `dotnet test` — all required tests pass (see Pflichtenheft section 9.4).
-3. Line coverage ≥ 70% in Core, Controls, Serialization.
+3. Line coverage ≥ 70% per assembly in `TuiVision.Core`, `TuiVision.Controls`,
+   `TuiVision.Serialization`, `TuiVision.Compatibility`, and
+   `TuiVision.Drivers.Console`. Assembly-specific evidence required; aggregated
+   coverage alone does not satisfy this gate.
 4. `dotnet format --verify-no-changes` — no formatting violations.
 5. No CS1591 suppressions added without documented justification.
 6. If `docfx.json` exists in the repository root and public API/XML docs changed,
@@ -343,6 +362,9 @@ repository. It MUST be updated whenever one of the following happens:
    plans, tasks, governance, or operational docs).
 3. A contributor explicitly requests a statistics refresh.
 
+
+Within the `## Fortschreibungsprotokoll` section, table rows MUST remain in strict chronological order: oldest entry first, newest and most recently added entry last, while rows with the same date keep their insertion order.
+
 Every update MUST record, at minimum:
 
 - branch or phase identifier and current status,
@@ -380,9 +402,16 @@ original examples.
 
 ### Commit Discipline
 
-Each commit MUST leave the repository in a passing build-and-test state.
+Each commit presented for review, handoff, or merge to `main` MUST leave the
+repository in a passing build-and-test state.
+One narrowly scoped exception is permitted for Test-Driven Development on a
+feature branch: an intentionally red commit MAY fail temporarily when it exists
+only to record the new failing test slice for the next behavior change, adds no
+production implementation for that slice, and is followed by a green commit
+before merge, reviewer handoff, or branch completion.
 API changes, implementation changes, and documentation updates that belong to
-the same change MUST be in the same commit.
+the same change MUST be in the same commit, except for the explicit Red →
+Green → optional Refactor separation mandated by principle II.
 
 ## Governance
 
@@ -408,4 +437,4 @@ Use `docs/guides/multi-mac-workflow.md` for local multi-machine workflow details
 Use `docs/project-statistics.md` for the living project-statistics ledger and
 manual-effort baseline tracking.
 
-**Version**: 1.10.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-27
+**Version**: 1.10.1 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-28

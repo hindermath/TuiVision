@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
     <meta charset="utf-8">
       <title>Class TView | TuiVision Documentation </title>
@@ -10,13 +10,14 @@
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
+      <link rel="stylesheet" href="../public/accessibility.css">
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/005-driver-consolidation-m07/apiSpec/new?filename=TuiVision_Controls_TView.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TView%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Controls_TView.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TView%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,6 +32,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
 
       <script type="module" src="./../public/docfx.min.js"></script>
+      <script type="module" src="./../public/accessibility.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -40,20 +42,23 @@
   </head>
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen / Skip to main content</a>
+    <a class="skip-link skip-link-secondary" href="#toc">Zum Inhaltsverzeichnis springen / Skip to table of contents</a>
+
     <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation" aria-label="Primary">
         <div class="container-xxl flex-nowrap">
           <a class="navbar-brand" href="../index.html">
             <img id="logo" class="svg" src="../logo.svg" alt="TuiVision">
             TuiVision
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
+            <i class="bi bi-three-dots" aria-hidden="true"></i>
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
               <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
+                <i class="bi bi-search" aria-hidden="true"></i>
                 <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
@@ -62,7 +67,7 @@
       </nav>
     </header>
 
-    <main class="container-xxl">
+    <main class="container-xxl" id="main-content" tabindex="-1">
       <div class="toc-offcanvas">
         <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
           <div class="offcanvas-header">
@@ -70,7 +75,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+            <nav class="toc" id="toc" aria-label="Table of Contents"></nav>
           </div>
         </div>
       </div>
@@ -78,10 +83,10 @@
       <div class="content">
         <div class="actionbar">
           <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
+            <i class="bi bi-list" aria-hidden="true"></i>
           </button>
 
-          <nav id="breadcrumb"></nav>
+          <nav id="breadcrumb" aria-label="Breadcrumb"></nav>
         </div>
 
         <article data-uid="TuiVision.Controls.TView">
@@ -89,7 +94,7 @@
 
 
   <h1 id="TuiVision_Controls_TView" data-uid="TuiVision.Controls.TView" class="text-break">
-Class TView  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L114"><i class="bi bi-code-slash"></i></a>
+Class TView  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L114"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -185,7 +190,7 @@ inheriting coordinate management, state flags, and event handling.</p>
 
   <h3 id="TuiVision_Controls_TView__ctor_TuiVision_Core_TRect_" data-uid="TuiVision.Controls.TView.#ctor(TuiVision.Core.TRect)">
   TView(TRect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L156"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L156"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Erstellt eine neue Ansicht mit dem angegebenen Begrenzungsrahmen.
@@ -237,7 +242,7 @@ Thrown when the width or height of <code class="paramref">bounds</code> is negat
 
   <h3 id="TuiVision_Controls_TView_EventMask" data-uid="TuiVision.Controls.TView.EventMask">
   EventMask
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L195"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L195"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Bitmaske der Ereignistypen, auf die diese Ansicht reagiert.</p>
@@ -266,11 +271,48 @@ Thrown when the width or height of <code class="paramref">bounds</code> is negat
 
 
 
+  <a id="TuiVision_Controls_TView_HelpContext_" data-uid="TuiVision.Controls.TView.HelpContext*"></a>
+
+  <h3 id="TuiVision_Controls_TView_HelpContext" data-uid="TuiVision.Controls.TView.HelpContext">
+  HelpContext
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L468"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Der Hilfekontext-Bezeichner dieser Ansicht.
+Wird von der Statuszeile verwendet, um die passende <a class="xref" href="TuiVision.Controls.TStatusDef.html">TStatusDef</a>-Kette
+auszuwählen (First-Match-Wins). Standardwert ist 0.</p>
+<p>The help-context identifier of this view.
+Used by the status line to select the matching <a class="xref" href="TuiVision.Controls.TStatusDef.html">TStatusDef</a> chain
+(first-match-wins). Default value is 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int HelpContext { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TuiVision_Controls_TView_Options_" data-uid="TuiVision.Controls.TView.Options*"></a>
 
   <h3 id="TuiVision_Controls_TView_Options" data-uid="TuiVision.Controls.TView.Options">
   Options
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L188"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L188"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die Verhaltensoptionen dieser Ansicht.</p>
@@ -303,7 +345,7 @@ Thrown when the width or height of <code class="paramref">bounds</code> is negat
 
   <h3 id="TuiVision_Controls_TView_Origin" data-uid="TuiVision.Controls.TView.Origin">
   Origin
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L209"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L209"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die Position der oberen linken Ecke der Ansicht im Koordinatenraum des Eigentümers.</p>
@@ -336,7 +378,7 @@ Thrown when the width or height of <code class="paramref">bounds</code> is negat
 
   <h3 id="TuiVision_Controls_TView_Owner" data-uid="TuiVision.Controls.TView.Owner">
   Owner
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L172"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L172"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die Eigentümer-Gruppe dieser Ansicht, oder <code>null</code>, wenn die Ansicht keiner Gruppe angehört.
@@ -371,7 +413,7 @@ Set by <a class="xref" href="TuiVision.Controls.TGroup.html">TGroup</a> on inser
 
   <h3 id="TuiVision_Controls_TView_Size" data-uid="TuiVision.Controls.TView.Size">
   Size
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L216"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L216"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die Größe der Ansicht als Breite-Höhe-Vektor.</p>
@@ -404,7 +446,7 @@ Set by <a class="xref" href="TuiVision.Controls.TGroup.html">TGroup</a> on inser
 
   <h3 id="TuiVision_Controls_TView_State" data-uid="TuiVision.Controls.TView.State">
   State
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L202"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L202"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die aktuellen Zustandsflags dieser Ansicht.</p>
@@ -441,7 +483,7 @@ Set by <a class="xref" href="TuiVision.Controls.TGroup.html">TGroup</a> on inser
 
   <h3 id="TuiVision_Controls_TView_Draw" data-uid="TuiVision.Controls.TView.Draw">
   Draw()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L420"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L420"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Zeichnet den Inhalt dieser Ansicht.
@@ -477,7 +519,7 @@ only <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TVie
 
   <h3 id="TuiVision_Controls_TView_DrawView" data-uid="TuiVision.Controls.TView.DrawView">
   DrawView()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L433"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L433"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Template-Methode: Prüft Sichtbarkeit und Lock-Status der Eigentümer-Gruppe,
@@ -511,7 +553,7 @@ If <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_
 
   <h3 id="TuiVision_Controls_TView_GetBounds" data-uid="TuiVision.Controls.TView.GetBounds">
   GetBounds()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L227"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L227"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gibt den aktuellen Begrenzungsrahmen in den Koordinaten des Eigentümers zurück.</p>
@@ -546,7 +588,7 @@ The bounding rectangle of this view.</p>
 
   <h3 id="TuiVision_Controls_TView_GetDrawBuffer" data-uid="TuiVision.Controls.TView.GetDrawBuffer">
   GetDrawBuffer()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L457"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L457"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gibt den Zeichenpuffer der Eigentümergruppe zurück, wenn einer verfügbar ist.
@@ -586,7 +628,7 @@ The owning group's draw buffer, or <code>null</code> when no group or buffer is 
 
   <h3 id="TuiVision_Controls_TView_GetExtent" data-uid="TuiVision.Controls.TView.GetExtent">
   GetExtent()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L238"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L238"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gibt den lokalen Ausdehnungsrahmen zurück, der immer bei (0,0) beginnt.</p>
@@ -621,7 +663,7 @@ A rectangle from (0,0) to the size (<a class="xref" href="TuiVision.Controls.TVi
 
   <h3 id="TuiVision_Controls_TView_GetState_TuiVision_Controls_TViewState_" data-uid="TuiVision.Controls.TView.GetState(TuiVision.Controls.TViewState)">
   GetState(TViewState)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L250"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L250"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Prüft, ob alle Bits der angegebenen Zustandsmaske in <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_State">State</a> gesetzt sind.</p>
@@ -662,7 +704,7 @@ A rectangle from (0,0) to the size (<a class="xref" href="TuiVision.Controls.TVi
 
   <h3 id="TuiVision_Controls_TView_GetStatusHints" data-uid="TuiVision.Controls.TView.GetStatusHints">
   GetStatusHints()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L465"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L476"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gibt die Status-Hinweise für diese Ansicht zurück.</p>
@@ -696,7 +738,7 @@ A rectangle from (0,0) to the size (<a class="xref" href="TuiVision.Controls.TVi
 
   <h3 id="TuiVision_Controls_TView_GrowTo_System_Int32_System_Int32_" data-uid="TuiVision.Controls.TView.GrowTo(System.Int32,System.Int32)">
   GrowTo(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L349"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L349"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Ändert die Größe der Ansicht auf die angegebenen Abmessungen, ohne sie zu verschieben.</p>
@@ -740,7 +782,7 @@ Thrown when <code class="paramref">x</code> or <code class="paramref">y</code> i
 
   <h3 id="TuiVision_Controls_TView_HandleEvent_TuiVision_Core_TEvent_" data-uid="TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)">
   HandleEvent(TEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L480"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L491"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Verarbeitet ein eingehendes Ereignis.
@@ -778,7 +820,7 @@ Derived classes override this method to handle additional event types.</p>
 
   <h3 id="TuiVision_Controls_TView_Hide" data-uid="TuiVision.Controls.TView.Hide">
   Hide()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L264"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L264"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Versteckt die Ansicht, indem das <a class="xref" href="TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Visible">Visible</a>-Flag gelöscht wird.</p>
@@ -806,7 +848,7 @@ Derived classes override this method to handle additional event types.</p>
 
   <h3 id="TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_" data-uid="TuiVision.Controls.TView.Locate(TuiVision.Core.TRect)">
   Locate(TRect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L313"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L313"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Setzt den Begrenzungsrahmen und passt ihn an die Größengrenzen von <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_SizeLimits_TuiVision_Core_TPoint__TuiVision_Core_TPoint__">SizeLimits(out TPoint, out TPoint)</a> an.</p>
@@ -848,7 +890,7 @@ Thrown when <code class="paramref">bounds</code> has a negative width or height.
 
   <h3 id="TuiVision_Controls_TView_MakeGlobal_TuiVision_Core_TPoint_" data-uid="TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)">
   MakeGlobal(TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L377"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L377"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Wandelt einen lokalen Punkt in globale Bildschirmkoordinaten um.</p>
@@ -889,7 +931,7 @@ The point in global coordinates.</p>
 
   <h3 id="TuiVision_Controls_TView_MakeLocal_TuiVision_Core_TPoint_" data-uid="TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)">
   MakeLocal(TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L389"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L389"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Wandelt einen globalen Punkt in lokale Ansichtskoordinaten um.</p>
@@ -930,7 +972,7 @@ The point in local coordinates.</p>
 
   <h3 id="TuiVision_Controls_TView_MouseInView_TuiVision_Core_TPoint_" data-uid="TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)">
   MouseInView(TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L401"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L401"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Prüft, ob eine globale Mausposition innerhalb dieser Ansicht liegt.</p>
@@ -971,7 +1013,7 @@ The point in local coordinates.</p>
 
   <h3 id="TuiVision_Controls_TView_MoveTo_System_Int32_System_Int32_" data-uid="TuiVision.Controls.TView.MoveTo(System.Int32,System.Int32)">
   MoveTo(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L332"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L332"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Verschiebt die Ansicht auf die angegebene Position, ohne ihre Größe zu ändern.</p>
@@ -1008,7 +1050,7 @@ The point in local coordinates.</p>
 
   <h3 id="TuiVision_Controls_TView_OnBoundsChanged" data-uid="TuiVision.Controls.TView.OnBoundsChanged">
   OnBoundsChanged()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L512"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L523"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Wird aufgerufen, nachdem der Begrenzungsrahmen durch <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_">Locate(TRect)</a> geändert wurde.
@@ -1038,7 +1080,7 @@ Derived classes override this method to react to size or position changes.</p>
 
   <h3 id="TuiVision_Controls_TView_SetBounds_TuiVision_Core_TRect_" data-uid="TuiVision.Controls.TView.SetBounds(TuiVision.Core.TRect)">
   SetBounds(TRect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L365"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L365"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Setzt den Begrenzungsrahmen direkt. Entspricht einem Aufruf von <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_Locate_TuiVision_Core_TRect_">Locate(TRect)</a>.</p>
@@ -1072,7 +1114,7 @@ Derived classes override this method to react to size or position changes.</p>
 
   <h3 id="TuiVision_Controls_TView_SetState_TuiVision_Controls_TViewState_System_Boolean_" data-uid="TuiVision.Controls.TView.SetState(TuiVision.Controls.TViewState,System.Boolean)">
   SetState(TViewState, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L276"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L276"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Setzt oder löscht die angegebenen Zustandsbits in <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_State">State</a>.</p>
@@ -1110,7 +1152,7 @@ Derived classes override this method to react to size or position changes.</p>
 
   <h3 id="TuiVision_Controls_TView_Show" data-uid="TuiVision.Controls.TView.Show">
   Show()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L257"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L257"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Macht die Ansicht sichtbar, indem das <a class="xref" href="TuiVision.Controls.TViewState.html#TuiVision_Controls_TViewState_Visible">Visible</a>-Flag gesetzt wird.</p>
@@ -1138,7 +1180,7 @@ Derived classes override this method to react to size or position changes.</p>
 
   <h3 id="TuiVision_Controls_TView_SizeLimits_TuiVision_Core_TPoint__TuiVision_Core_TPoint__" data-uid="TuiVision.Controls.TView.SizeLimits(TuiVision.Core.TPoint@,TuiVision.Core.TPoint@)">
   SizeLimits(out TPoint, out TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L294"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L294"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gibt die minimale und maximale Größe zurück, auf die diese Ansicht skaliert werden darf.
@@ -1179,14 +1221,14 @@ Receives the maximum size.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TView.cs/#L114" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TView.cs/#L114" class="edit-link">Edit this page</a>
         </div>
 
 
       </div>
 
       <div class="affix">
-        <nav id="affix"></nav>
+        <nav id="affix" aria-label="In this article"></nav>
       </div>
     </main>
 

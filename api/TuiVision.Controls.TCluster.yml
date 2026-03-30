@@ -23,7 +23,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TCluster.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TCluster
     path: src/TuiVision.Controls/TCluster.cs
@@ -78,6 +78,7 @@ items:
   - TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.DrawView
   - TuiVision.Controls.TView.GetDrawBuffer
+  - TuiVision.Controls.TView.HelpContext
   - TuiVision.Controls.TView.GetStatusHints
   - TuiVision.Controls.TView.OnBoundsChanged
   - TuiVision.Core.TObject.ShutDown
@@ -103,7 +104,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TCluster.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TCluster.cs
@@ -145,7 +146,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TCluster.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Items
     path: src/TuiVision.Controls/TCluster.cs
@@ -180,7 +181,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TCluster.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Value
     path: src/TuiVision.Controls/TCluster.cs
@@ -215,7 +216,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TCluster.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Sel
     path: src/TuiVision.Controls/TCluster.cs
@@ -250,7 +251,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TCluster.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Mark
     path: src/TuiVision.Controls/TCluster.cs
@@ -292,7 +293,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TCluster.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Press
     path: src/TuiVision.Controls/TCluster.cs
@@ -331,7 +332,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TCluster.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TCluster.cs
@@ -364,7 +365,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TCluster.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TCluster.cs
@@ -910,6 +911,13 @@ references:
     href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
   - name: (
   - name: )
+- uid: TuiVision.Controls.TView.HelpContext
+  commentId: P:TuiVision.Controls.TView.HelpContext
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext
+  name: HelpContext
+  nameWithType: TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
 - uid: TuiVision.Controls.TView.GetStatusHints
   commentId: M:TuiVision.Controls.TView.GetStatusHints
   parent: TuiVision.Controls.TView

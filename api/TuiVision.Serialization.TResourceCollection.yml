@@ -20,7 +20,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TResourceCollection.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TResourceCollection
     path: src/TuiVision.Serialization/TResourceCollection.cs
@@ -60,7 +60,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TResourceCollection.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Count
     path: src/TuiVision.Serialization/TResourceCollection.cs
@@ -95,7 +95,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TResourceCollection.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Keys
     path: src/TuiVision.Serialization/TResourceCollection.cs
@@ -130,7 +130,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TResourceCollection.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Set
     path: src/TuiVision.Serialization/TResourceCollection.cs
@@ -172,7 +172,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TResourceCollection.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TryGet
     path: src/TuiVision.Serialization/TResourceCollection.cs
@@ -220,7 +220,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/TResourceCollection.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Remove
     path: src/TuiVision.Serialization/TResourceCollection.cs

@@ -6,9 +6,15 @@ items:
   parent: TuiVision.Controls
   children:
   - TuiVision.Controls.TMenuBar.#ctor(TuiVision.Core.TRect)
+  - TuiVision.Controls.TMenuBar.Draw
+  - TuiVision.Controls.TMenuBar.DrawSubMenuOverlay(TuiVision.Core.TConsoleBuffer)
   - TuiVision.Controls.TMenuBar.HandleEvent(TuiVision.Core.TEvent)
   - TuiVision.Controls.TMenuBar.IsMenuActive
+  - TuiVision.Controls.TMenuBar.LayoutSlots
   - TuiVision.Controls.TMenuBar.Menu
+  - TuiVision.Controls.TMenuBar.OnBoundsChanged
+  - TuiVision.Controls.TMenuBar.SelectedSubMenuItem
+  - TuiVision.Controls.TMenuBar.SelectedTopLevel
   langs:
   - csharp
   - vb
@@ -19,23 +25,27 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TMenuBar
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 14
+    startLine: 49
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
   summary: >-
     Die Menüleiste am oberen Bildschirmrand.
 
-    Zeigt das Hauptmenü der Anwendung an.
+    Zeigt das Hauptmenü der Anwendung an und unterstützt vollständige Tastaturnavigation:
+
+    Pfeiltasten, Enter, Escape, Mnemonik-Kürzel und Wrap-around.
 
 
     The menu bar at the top of the screen.
 
-    Displays the main menu of the application.
+    Displays the main menu of the application and supports full keyboard navigation:
+
+    arrow keys, Enter, Escape, mnemonic shortcuts, and wrap-around.
   example: []
   syntax:
     content: 'public class TMenuBar : TView'
@@ -65,11 +75,10 @@ items:
   - TuiVision.Controls.TView.MakeGlobal(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
-  - TuiVision.Controls.TView.Draw
   - TuiVision.Controls.TView.DrawView
   - TuiVision.Controls.TView.GetDrawBuffer
+  - TuiVision.Controls.TView.HelpContext
   - TuiVision.Controls.TView.GetStatusHints
-  - TuiVision.Controls.TView.OnBoundsChanged
   - TuiVision.Core.TObject.ShutDown
   - TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
   - System.Object.Equals(System.Object)
@@ -93,11 +102,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Menu
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 19
+    startLine: 62
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -124,11 +133,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: IsMenuActive
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 26
+    startLine: 69
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -145,6 +154,115 @@ items:
       type: System.Boolean
     content.vb: Public Property IsMenuActive As Boolean
   overload: TuiVision.Controls.TMenuBar.IsMenuActive*
+- uid: TuiVision.Controls.TMenuBar.SelectedTopLevel
+  commentId: P:TuiVision.Controls.TMenuBar.SelectedTopLevel
+  id: SelectedTopLevel
+  parent: TuiVision.Controls.TMenuBar
+  langs:
+  - csharp
+  - vb
+  name: SelectedTopLevel
+  nameWithType: TMenuBar.SelectedTopLevel
+  fullName: TuiVision.Controls.TMenuBar.SelectedTopLevel
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TMenuBar.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SelectedTopLevel
+    path: src/TuiVision.Controls/TMenuBar.cs
+    startLine: 76
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Der aktuell ausgewählte Top-Level-Menüpunkt (wenn das Menü aktiv ist).
+
+
+    The currently selected top-level menu item (when the menu is active).
+  example: []
+  syntax:
+    content: public TMenuItem? SelectedTopLevel { get; }
+    parameters: []
+    return:
+      type: TuiVision.Controls.TMenuItem
+    content.vb: Public Property SelectedTopLevel As TMenuItem
+  overload: TuiVision.Controls.TMenuBar.SelectedTopLevel*
+- uid: TuiVision.Controls.TMenuBar.SelectedSubMenuItem
+  commentId: P:TuiVision.Controls.TMenuBar.SelectedSubMenuItem
+  id: SelectedSubMenuItem
+  parent: TuiVision.Controls.TMenuBar
+  langs:
+  - csharp
+  - vb
+  name: SelectedSubMenuItem
+  nameWithType: TMenuBar.SelectedSubMenuItem
+  fullName: TuiVision.Controls.TMenuBar.SelectedSubMenuItem
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TMenuBar.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SelectedSubMenuItem
+    path: src/TuiVision.Controls/TMenuBar.cs
+    startLine: 83
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Der aktuell ausgewählte Untermenü-Eintrag (wenn ein Untermenü geöffnet ist).
+
+
+    The currently selected submenu entry (when a submenu is open).
+  example: []
+  syntax:
+    content: public TMenuItem? SelectedSubMenuItem { get; }
+    parameters: []
+    return:
+      type: TuiVision.Controls.TMenuItem
+    content.vb: Public Property SelectedSubMenuItem As TMenuItem
+  overload: TuiVision.Controls.TMenuBar.SelectedSubMenuItem*
+- uid: TuiVision.Controls.TMenuBar.LayoutSlots
+  commentId: P:TuiVision.Controls.TMenuBar.LayoutSlots
+  id: LayoutSlots
+  parent: TuiVision.Controls.TMenuBar
+  langs:
+  - csharp
+  - vb
+  name: LayoutSlots
+  nameWithType: TMenuBar.LayoutSlots
+  fullName: TuiVision.Controls.TMenuBar.LayoutSlots
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TMenuBar.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: LayoutSlots
+    path: src/TuiVision.Controls/TMenuBar.cs
+    startLine: 92
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Die berechneten Layout-Slots der Top-Level-Einträge.
+
+    Wird bei Aktivierung und nach Größenänderungen neu berechnet.
+
+
+    The computed layout slots for top-level entries.
+
+    Recomputed on activation and after bounds changes.
+  example: []
+  syntax:
+    content: public IReadOnlyList<MenuLayoutSlot> LayoutSlots { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{TuiVision.Controls.MenuLayoutSlot}
+    content.vb: Public ReadOnly Property LayoutSlots As IReadOnlyList(Of MenuLayoutSlot)
+  overload: TuiVision.Controls.TMenuBar.LayoutSlots*
 - uid: TuiVision.Controls.TMenuBar.#ctor(TuiVision.Core.TRect)
   commentId: M:TuiVision.Controls.TMenuBar.#ctor(TuiVision.Core.TRect)
   id: '#ctor(TuiVision.Core.TRect)'
@@ -159,11 +277,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 34
+    startLine: 108
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -184,6 +302,47 @@ items:
   nameWithType.vb: TMenuBar.New(TRect)
   fullName.vb: TuiVision.Controls.TMenuBar.New(TuiVision.Core.TRect)
   name.vb: New(TRect)
+- uid: TuiVision.Controls.TMenuBar.Draw
+  commentId: M:TuiVision.Controls.TMenuBar.Draw
+  id: Draw
+  parent: TuiVision.Controls.TMenuBar
+  langs:
+  - csharp
+  - vb
+  name: Draw()
+  nameWithType: TMenuBar.Draw()
+  fullName: TuiVision.Controls.TMenuBar.Draw()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TMenuBar.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Draw
+    path: src/TuiVision.Controls/TMenuBar.cs
+    startLine: 124
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Zeichnet die Menüleiste. Sind Menüpunkte gesetzt, werden sie mit hervorgehobenem
+
+    Hotkey-Zeichen angezeigt; der ausgewählte Top-Level-Eintrag wird hervorgehoben.
+
+    Andernfalls erscheint der Anwendungsname.
+
+
+    Draws the menu bar. When menu items are set they are rendered with the hotkey character
+
+    highlighted; the selected top-level entry is highlighted. Otherwise the application
+
+    name is shown.
+  example: []
+  syntax:
+    content: public override void Draw()
+    content.vb: Public Overrides Sub Draw()
+  overridden: TuiVision.Controls.TView.Draw
+  overload: TuiVision.Controls.TMenuBar.Draw*
 - uid: TuiVision.Controls.TMenuBar.HandleEvent(TuiVision.Core.TEvent)
   commentId: M:TuiVision.Controls.TMenuBar.HandleEvent(TuiVision.Core.TEvent)
   id: HandleEvent(TuiVision.Core.TEvent)
@@ -198,19 +357,23 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 47
+    startLine: 188
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
   summary: >-
-    Verarbeitet ein Ereignis. Aktiviert die Menüleiste bei F10, reagiert auf Pfeiltasten.
+    Verarbeitet ein Ereignis. Aktiviert die Menüleiste bei F10/Alt,
+
+    und bietet vollständige Tastaturnavigation im aktiven Zustand.
 
 
-    Processes an event. Activates the menu bar on F10, reacts to arrow keys.
+    Processes an event. Activates the menu bar on F10/Alt,
+
+    and provides full keyboard navigation while the menu is active.
   example: []
   syntax:
     content: public override void HandleEvent(TEvent @event)
@@ -221,6 +384,86 @@ items:
     content.vb: Public Overrides Sub HandleEvent([event] As TEvent)
   overridden: TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)
   overload: TuiVision.Controls.TMenuBar.HandleEvent*
+- uid: TuiVision.Controls.TMenuBar.DrawSubMenuOverlay(TuiVision.Core.TConsoleBuffer)
+  commentId: M:TuiVision.Controls.TMenuBar.DrawSubMenuOverlay(TuiVision.Core.TConsoleBuffer)
+  id: DrawSubMenuOverlay(TuiVision.Core.TConsoleBuffer)
+  parent: TuiVision.Controls.TMenuBar
+  langs:
+  - csharp
+  - vb
+  name: DrawSubMenuOverlay(TConsoleBuffer?)
+  nameWithType: TMenuBar.DrawSubMenuOverlay(TConsoleBuffer?)
+  fullName: TuiVision.Controls.TMenuBar.DrawSubMenuOverlay(TuiVision.Core.TConsoleBuffer?)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TMenuBar.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: DrawSubMenuOverlay
+    path: src/TuiVision.Controls/TMenuBar.cs
+    startLine: 375
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Zeichnet das aktuell offene Untermenü als Popup-Overlay in den finalen Puffer.
+
+    Muss nach dem Desktop-Compositing aufgerufen werden, damit das Popup nicht überschrieben wird.
+
+
+    Draws the currently open submenu as a popup overlay into the final buffer.
+
+    Must be called after desktop compositing so the popup is not overwritten.
+  example: []
+  syntax:
+    content: public void DrawSubMenuOverlay(TConsoleBuffer? buffer)
+    parameters:
+    - id: buffer
+      type: TuiVision.Core.TConsoleBuffer
+      description: Der Ausgabepuffer. / The output buffer.
+    content.vb: Public Sub DrawSubMenuOverlay(buffer As TConsoleBuffer)
+  overload: TuiVision.Controls.TMenuBar.DrawSubMenuOverlay*
+  nameWithType.vb: TMenuBar.DrawSubMenuOverlay(TConsoleBuffer)
+  fullName.vb: TuiVision.Controls.TMenuBar.DrawSubMenuOverlay(TuiVision.Core.TConsoleBuffer)
+  name.vb: DrawSubMenuOverlay(TConsoleBuffer)
+- uid: TuiVision.Controls.TMenuBar.OnBoundsChanged
+  commentId: M:TuiVision.Controls.TMenuBar.OnBoundsChanged
+  id: OnBoundsChanged
+  parent: TuiVision.Controls.TMenuBar
+  langs:
+  - csharp
+  - vb
+  name: OnBoundsChanged()
+  nameWithType: TMenuBar.OnBoundsChanged()
+  fullName: TuiVision.Controls.TMenuBar.OnBoundsChanged()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TMenuBar.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: OnBoundsChanged
+    path: src/TuiVision.Controls/TMenuBar.cs
+    startLine: 470
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Wird aufgerufen, wenn sich der Begrenzungsrahmen ändert. Invalidiert die Layout-Slots,
+
+    damit sie beim nächsten Aktivierungsvorgang neu berechnet werden.
+
+
+    Called when the bounding rectangle changes. Invalidates the layout slots so they are
+
+    recomputed on the next activation.
+  example: []
+  syntax:
+    content: protected override void OnBoundsChanged()
+    content.vb: Protected Overrides Sub OnBoundsChanged()
+  overridden: TuiVision.Controls.TView.OnBoundsChanged
+  overload: TuiVision.Controls.TMenuBar.OnBoundsChanged*
 references:
 - uid: TuiVision.Controls
   commentId: N:TuiVision.Controls
@@ -706,25 +949,6 @@ references:
     name: TPoint
     href: TuiVision.Core.TPoint.html
   - name: )
-- uid: TuiVision.Controls.TView.Draw
-  commentId: M:TuiVision.Controls.TView.Draw
-  parent: TuiVision.Controls.TView
-  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw
-  name: Draw()
-  nameWithType: TView.Draw()
-  fullName: TuiVision.Controls.TView.Draw()
-  spec.csharp:
-  - uid: TuiVision.Controls.TView.Draw
-    name: Draw
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: TuiVision.Controls.TView.Draw
-    name: Draw
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw
-  - name: (
-  - name: )
 - uid: TuiVision.Controls.TView.DrawView
   commentId: M:TuiVision.Controls.TView.DrawView
   parent: TuiVision.Controls.TView
@@ -763,6 +987,13 @@ references:
     href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
   - name: (
   - name: )
+- uid: TuiVision.Controls.TView.HelpContext
+  commentId: P:TuiVision.Controls.TView.HelpContext
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext
+  name: HelpContext
+  nameWithType: TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
 - uid: TuiVision.Controls.TView.GetStatusHints
   commentId: M:TuiVision.Controls.TView.GetStatusHints
   parent: TuiVision.Controls.TView
@@ -780,25 +1011,6 @@ references:
   - uid: TuiVision.Controls.TView.GetStatusHints
     name: GetStatusHints
     href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints
-  - name: (
-  - name: )
-- uid: TuiVision.Controls.TView.OnBoundsChanged
-  commentId: M:TuiVision.Controls.TView.OnBoundsChanged
-  parent: TuiVision.Controls.TView
-  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_OnBoundsChanged
-  name: OnBoundsChanged()
-  nameWithType: TView.OnBoundsChanged()
-  fullName: TuiVision.Controls.TView.OnBoundsChanged()
-  spec.csharp:
-  - uid: TuiVision.Controls.TView.OnBoundsChanged
-    name: OnBoundsChanged
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_OnBoundsChanged
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: TuiVision.Controls.TView.OnBoundsChanged
-    name: OnBoundsChanged
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_OnBoundsChanged
   - name: (
   - name: )
 - uid: TuiVision.Core.TObject.ShutDown
@@ -1123,6 +1335,122 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+- uid: TuiVision.Controls.TMenuBar.SelectedTopLevel*
+  commentId: Overload:TuiVision.Controls.TMenuBar.SelectedTopLevel
+  href: TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_SelectedTopLevel
+  name: SelectedTopLevel
+  nameWithType: TMenuBar.SelectedTopLevel
+  fullName: TuiVision.Controls.TMenuBar.SelectedTopLevel
+- uid: TuiVision.Controls.TMenuBar.SelectedSubMenuItem*
+  commentId: Overload:TuiVision.Controls.TMenuBar.SelectedSubMenuItem
+  href: TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_SelectedSubMenuItem
+  name: SelectedSubMenuItem
+  nameWithType: TMenuBar.SelectedSubMenuItem
+  fullName: TuiVision.Controls.TMenuBar.SelectedSubMenuItem
+- uid: TuiVision.Controls.TMenuBar.LayoutSlots*
+  commentId: Overload:TuiVision.Controls.TMenuBar.LayoutSlots
+  href: TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_LayoutSlots
+  name: LayoutSlots
+  nameWithType: TMenuBar.LayoutSlots
+  fullName: TuiVision.Controls.TMenuBar.LayoutSlots
+- uid: System.Collections.Generic.IReadOnlyList{TuiVision.Controls.MenuLayoutSlot}
+  commentId: T:System.Collections.Generic.IReadOnlyList{TuiVision.Controls.MenuLayoutSlot}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<MenuLayoutSlot>
+  nameWithType: IReadOnlyList<MenuLayoutSlot>
+  fullName: System.Collections.Generic.IReadOnlyList<TuiVision.Controls.MenuLayoutSlot>
+  nameWithType.vb: IReadOnlyList(Of MenuLayoutSlot)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of TuiVision.Controls.MenuLayoutSlot)
+  name.vb: IReadOnlyList(Of MenuLayoutSlot)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: TuiVision.Controls.MenuLayoutSlot
+    name: MenuLayoutSlot
+    href: TuiVision.Controls.MenuLayoutSlot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Controls.MenuLayoutSlot
+    name: MenuLayoutSlot
+    href: TuiVision.Controls.MenuLayoutSlot.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: TuiVision.Controls.TMenuBar
   commentId: T:TuiVision.Controls.TMenuBar
   parent: TuiVision.Controls
@@ -1146,6 +1474,31 @@ references:
   name: TRect
   nameWithType: TRect
   fullName: TuiVision.Core.TRect
+- uid: TuiVision.Controls.TView.Draw
+  commentId: M:TuiVision.Controls.TView.Draw
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw
+  name: Draw()
+  nameWithType: TView.Draw()
+  fullName: TuiVision.Controls.TView.Draw()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.Draw
+    name: Draw
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.Draw
+    name: Draw
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_Draw
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TMenuBar.Draw*
+  commentId: Overload:TuiVision.Controls.TMenuBar.Draw
+  href: TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_Draw
+  name: Draw
+  nameWithType: TMenuBar.Draw
+  fullName: TuiVision.Controls.TMenuBar.Draw
 - uid: TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)
   commentId: M:TuiVision.Controls.TView.HandleEvent(TuiVision.Core.TEvent)
   parent: TuiVision.Controls.TView
@@ -1184,3 +1537,41 @@ references:
   name: TEvent
   nameWithType: TEvent
   fullName: TuiVision.Core.TEvent
+- uid: TuiVision.Controls.TMenuBar.DrawSubMenuOverlay*
+  commentId: Overload:TuiVision.Controls.TMenuBar.DrawSubMenuOverlay
+  href: TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_DrawSubMenuOverlay_TuiVision_Core_TConsoleBuffer_
+  name: DrawSubMenuOverlay
+  nameWithType: TMenuBar.DrawSubMenuOverlay
+  fullName: TuiVision.Controls.TMenuBar.DrawSubMenuOverlay
+- uid: TuiVision.Core.TConsoleBuffer
+  commentId: T:TuiVision.Core.TConsoleBuffer
+  parent: TuiVision.Core
+  href: TuiVision.Core.TConsoleBuffer.html
+  name: TConsoleBuffer
+  nameWithType: TConsoleBuffer
+  fullName: TuiVision.Core.TConsoleBuffer
+- uid: TuiVision.Controls.TView.OnBoundsChanged
+  commentId: M:TuiVision.Controls.TView.OnBoundsChanged
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_OnBoundsChanged
+  name: OnBoundsChanged()
+  nameWithType: TView.OnBoundsChanged()
+  fullName: TuiVision.Controls.TView.OnBoundsChanged()
+  spec.csharp:
+  - uid: TuiVision.Controls.TView.OnBoundsChanged
+    name: OnBoundsChanged
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_OnBoundsChanged
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TView.OnBoundsChanged
+    name: OnBoundsChanged
+    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_OnBoundsChanged
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TMenuBar.OnBoundsChanged*
+  commentId: Overload:TuiVision.Controls.TMenuBar.OnBoundsChanged
+  href: TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_OnBoundsChanged
+  name: OnBoundsChanged
+  nameWithType: TMenuBar.OnBoundsChanged
+  fullName: TuiVision.Controls.TMenuBar.OnBoundsChanged

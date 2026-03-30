@@ -1,0 +1,752 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Core.TSortedList`2
+  commentId: T:TuiVision.Core.TSortedList`2
+  id: TSortedList`2
+  parent: TuiVision.Core
+  children:
+  - TuiVision.Core.TSortedList`2.#ctor
+  - TuiVision.Core.TSortedList`2.#ctor(System.Collections.Generic.IComparer{`0})
+  - TuiVision.Core.TSortedList`2.Add(`0,`1)
+  - TuiVision.Core.TSortedList`2.Count
+  - TuiVision.Core.TSortedList`2.Item(`0)
+  - TuiVision.Core.TSortedList`2.Keys
+  langs:
+  - csharp
+  - vb
+  name: TSortedList<TKey, TValue>
+  nameWithType: TSortedList<TKey, TValue>
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Core/TSortedList.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TSortedList
+    path: src/TuiVision.Core/TSortedList.cs
+    startLine: 14
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: >-
+    Sortierte Schlüssel-Wert-Sammlung als managed Gegenstück zu <code>TSortedList</code>
+
+    aus Turbo Vision (<code>tsortedl.cc</code>).
+
+
+    Sorted key-value collection as a managed counterpart to <code>TSortedList</code>
+
+    from Turbo Vision (<code>tsortedl.cc</code>).
+  example: []
+  syntax:
+    content: 'public sealed class TSortedList<TKey, TValue> where TKey : notnull'
+    typeParameters:
+    - id: TKey
+      description: Der Schlüsseltyp. / The key type.
+    - id: TValue
+      description: Der Werttyp. / The value type.
+    content.vb: Public NotInheritable Class TSortedList(Of TKey, TValue)
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: TSortedList(Of TKey, TValue)
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue)
+  name.vb: TSortedList(Of TKey, TValue)
+- uid: TuiVision.Core.TSortedList`2.#ctor
+  commentId: M:TuiVision.Core.TSortedList`2.#ctor
+  id: '#ctor'
+  parent: TuiVision.Core.TSortedList`2
+  langs:
+  - csharp
+  - vb
+  name: TSortedList()
+  nameWithType: TSortedList<TKey, TValue>.TSortedList()
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.TSortedList()
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Core/TSortedList.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Core/TSortedList.cs
+    startLine: 23
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: >-
+    Erstellt eine neue sortierte Liste mit dem Standardvergleicher für Schlüssel.
+
+
+    Creates a new sorted list using the default comparer for keys.
+  example: []
+  syntax:
+    content: public TSortedList()
+    content.vb: Public Sub New()
+  overload: TuiVision.Core.TSortedList`2.#ctor*
+  nameWithType.vb: TSortedList(Of TKey, TValue).New()
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).New()
+  name.vb: New()
+- uid: TuiVision.Core.TSortedList`2.#ctor(System.Collections.Generic.IComparer{`0})
+  commentId: M:TuiVision.Core.TSortedList`2.#ctor(System.Collections.Generic.IComparer{`0})
+  id: '#ctor(System.Collections.Generic.IComparer{`0})'
+  parent: TuiVision.Core.TSortedList`2
+  langs:
+  - csharp
+  - vb
+  name: TSortedList(IComparer<TKey>?)
+  nameWithType: TSortedList<TKey, TValue>.TSortedList(IComparer<TKey>?)
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.TSortedList(System.Collections.Generic.IComparer<TKey>?)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Core/TSortedList.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Core/TSortedList.cs
+    startLine: 34
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: >-
+    Erstellt eine neue sortierte Liste mit einem benutzerdefinierten Schlüsselvergleicher.
+
+
+    Creates a new sorted list with a custom key comparer.
+  example: []
+  syntax:
+    content: public TSortedList(IComparer<TKey>? comparer)
+    parameters:
+    - id: comparer
+      type: System.Collections.Generic.IComparer{{TKey}}
+      description: Der Schlüsselvergleicher. / The key comparer.
+    content.vb: Public Sub New(comparer As IComparer(Of TKey))
+  overload: TuiVision.Core.TSortedList`2.#ctor*
+  nameWithType.vb: TSortedList(Of TKey, TValue).New(IComparer(Of TKey))
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).New(System.Collections.Generic.IComparer(Of TKey))
+  name.vb: New(IComparer(Of TKey))
+- uid: TuiVision.Core.TSortedList`2.Count
+  commentId: P:TuiVision.Core.TSortedList`2.Count
+  id: Count
+  parent: TuiVision.Core.TSortedList`2
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: TSortedList<TKey, TValue>.Count
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.Count
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Core/TSortedList.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Count
+    path: src/TuiVision.Core/TSortedList.cs
+    startLine: 44
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: >-
+    Die Anzahl der gespeicherten Paare.
+
+
+    The number of stored pairs.
+  example: []
+  syntax:
+    content: public int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Count As Integer
+  overload: TuiVision.Core.TSortedList`2.Count*
+  nameWithType.vb: TSortedList(Of TKey, TValue).Count
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).Count
+- uid: TuiVision.Core.TSortedList`2.Keys
+  commentId: P:TuiVision.Core.TSortedList`2.Keys
+  id: Keys
+  parent: TuiVision.Core.TSortedList`2
+  langs:
+  - csharp
+  - vb
+  name: Keys
+  nameWithType: TSortedList<TKey, TValue>.Keys
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.Keys
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Core/TSortedList.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Keys
+    path: src/TuiVision.Core/TSortedList.cs
+    startLine: 51
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: >-
+    Gibt die Schlüssel in sortierter Reihenfolge zurück.
+
+
+    Returns the keys in sorted order.
+  example: []
+  syntax:
+    content: public IEnumerable<TKey> Keys { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerable{{TKey}}
+    content.vb: Public ReadOnly Property Keys As IEnumerable(Of TKey)
+  overload: TuiVision.Core.TSortedList`2.Keys*
+  nameWithType.vb: TSortedList(Of TKey, TValue).Keys
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).Keys
+- uid: TuiVision.Core.TSortedList`2.Item(`0)
+  commentId: P:TuiVision.Core.TSortedList`2.Item(`0)
+  id: Item(`0)
+  parent: TuiVision.Core.TSortedList`2
+  langs:
+  - csharp
+  - vb
+  name: this[TKey]
+  nameWithType: TSortedList<TKey, TValue>.this[TKey]
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.this[TKey]
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Core/TSortedList.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: this[]
+    path: src/TuiVision.Core/TSortedList.cs
+    startLine: 60
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: >-
+    Gibt den Wert zum angegebenen Schlüssel zurück.
+
+
+    Returns the value for the specified key.
+  example: []
+  syntax:
+    content: public TValue this[TKey key] { get; }
+    parameters:
+    - id: key
+      type: '{TKey}'
+      description: Der gesuchte Schlüssel. / The key to look up.
+    return:
+      type: '{TValue}'
+      description: Der zugehörige Wert. / The corresponding value.
+    content.vb: Public ReadOnly Default Property this[](key As TKey) As TValue
+  overload: TuiVision.Core.TSortedList`2.Item*
+  nameWithType.vb: TSortedList(Of TKey, TValue).this[](TKey)
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).this[](TKey)
+  name.vb: this[](TKey)
+- uid: TuiVision.Core.TSortedList`2.Add(`0,`1)
+  commentId: M:TuiVision.Core.TSortedList`2.Add(`0,`1)
+  id: Add(`0,`1)
+  parent: TuiVision.Core.TSortedList`2
+  langs:
+  - csharp
+  - vb
+  name: Add(TKey, TValue)
+  nameWithType: TSortedList<TKey, TValue>.Add(TKey, TValue)
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.Add(TKey, TValue)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Core/TSortedList.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Add
+    path: src/TuiVision.Core/TSortedList.cs
+    startLine: 69
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: >-
+    Fügt ein Schlüssel-Wert-Paar hinzu oder ersetzt einen vorhandenen Eintrag.
+
+
+    Adds a key-value pair or replaces an existing entry.
+  example: []
+  syntax:
+    content: public void Add(TKey key, TValue value)
+    parameters:
+    - id: key
+      type: '{TKey}'
+      description: Der Schlüssel. / The key.
+    - id: value
+      type: '{TValue}'
+      description: Der Wert. / The value.
+    content.vb: Public Sub Add(key As TKey, value As TValue)
+  overload: TuiVision.Core.TSortedList`2.Add*
+  nameWithType.vb: TSortedList(Of TKey, TValue).Add(TKey, TValue)
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).Add(TKey, TValue)
+references:
+- uid: TuiVision.Core
+  commentId: N:TuiVision.Core
+  href: TuiVision.html
+  name: TuiVision.Core
+  nameWithType: TuiVision.Core
+  fullName: TuiVision.Core
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Core.TSortedList`2.#ctor*
+  commentId: Overload:TuiVision.Core.TSortedList`2.#ctor
+  href: TuiVision.Core.TSortedList-2.html#TuiVision_Core_TSortedList_2__ctor
+  name: TSortedList
+  nameWithType: TSortedList<TKey, TValue>.TSortedList
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.TSortedList
+  nameWithType.vb: TSortedList(Of TKey, TValue).New
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).New
+  name.vb: New
+- uid: System.Collections.Generic.IComparer{{TKey}}
+  commentId: T:System.Collections.Generic.IComparer{`0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IComparer`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
+  name: IComparer<TKey>
+  nameWithType: IComparer<TKey>
+  fullName: System.Collections.Generic.IComparer<TKey>
+  nameWithType.vb: IComparer(Of TKey)
+  fullName.vb: System.Collections.Generic.IComparer(Of TKey)
+  name.vb: IComparer(Of TKey)
+  spec.csharp:
+  - uid: System.Collections.Generic.IComparer`1
+    name: IComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
+  - name: <
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IComparer`1
+    name: IComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: System.Collections.Generic.IComparer`1
+  commentId: T:System.Collections.Generic.IComparer`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
+  name: IComparer<T>
+  nameWithType: IComparer<T>
+  fullName: System.Collections.Generic.IComparer<T>
+  nameWithType.vb: IComparer(Of T)
+  fullName.vb: System.Collections.Generic.IComparer(Of T)
+  name.vb: IComparer(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IComparer`1
+    name: IComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IComparer`1
+    name: IComparer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TuiVision.Core.TSortedList`2.Count*
+  commentId: Overload:TuiVision.Core.TSortedList`2.Count
+  href: TuiVision.Core.TSortedList-2.html#TuiVision_Core_TSortedList_2_Count
+  name: Count
+  nameWithType: TSortedList<TKey, TValue>.Count
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.Count
+  nameWithType.vb: TSortedList(Of TKey, TValue).Count
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).Count
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: TuiVision.Core.TSortedList`2.Keys*
+  commentId: Overload:TuiVision.Core.TSortedList`2.Keys
+  href: TuiVision.Core.TSortedList-2.html#TuiVision_Core_TSortedList_2_Keys
+  name: Keys
+  nameWithType: TSortedList<TKey, TValue>.Keys
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.Keys
+  nameWithType.vb: TSortedList(Of TKey, TValue).Keys
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).Keys
+- uid: System.Collections.Generic.IEnumerable{{TKey}}
+  commentId: T:System.Collections.Generic.IEnumerable{`0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<TKey>
+  nameWithType: IEnumerable<TKey>
+  fullName: System.Collections.Generic.IEnumerable<TKey>
+  nameWithType.vb: IEnumerable(Of TKey)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of TKey)
+  name.vb: IEnumerable(Of TKey)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TuiVision.Core.TSortedList`2.Item*
+  commentId: Overload:TuiVision.Core.TSortedList`2.Item
+  href: TuiVision.Core.TSortedList-2.html#TuiVision_Core_TSortedList_2_Item__0_
+  name: this
+  nameWithType: TSortedList<TKey, TValue>.this
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.this
+  nameWithType.vb: TSortedList(Of TKey, TValue).this[]
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).this[]
+  name.vb: this[]
+- uid: '{TKey}'
+  commentId: '!:TKey'
+  definition: TKey
+  name: TKey
+  nameWithType: TKey
+  fullName: TKey
+- uid: '{TValue}'
+  commentId: '!:TValue'
+  definition: TValue
+  name: TValue
+  nameWithType: TValue
+  fullName: TValue
+- uid: TKey
+  name: TKey
+  nameWithType: TKey
+  fullName: TKey
+- uid: TValue
+  name: TValue
+  nameWithType: TValue
+  fullName: TValue
+- uid: TuiVision.Core.TSortedList`2.Add*
+  commentId: Overload:TuiVision.Core.TSortedList`2.Add
+  href: TuiVision.Core.TSortedList-2.html#TuiVision_Core_TSortedList_2_Add__0__1_
+  name: Add
+  nameWithType: TSortedList<TKey, TValue>.Add
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.Add
+  nameWithType.vb: TSortedList(Of TKey, TValue).Add
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).Add

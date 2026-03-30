@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
     <meta charset="utf-8">
       <title>Class TScrollBar | TuiVision Documentation </title>
@@ -10,13 +10,14 @@
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
+      <link rel="stylesheet" href="../public/accessibility.css">
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/005-driver-consolidation-m07/apiSpec/new?filename=TuiVision_Controls_TScrollBar.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TScrollBar%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Controls_TScrollBar.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TScrollBar%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,6 +32,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
 
       <script type="module" src="./../public/docfx.min.js"></script>
+      <script type="module" src="./../public/accessibility.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -40,20 +42,23 @@
   </head>
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen / Skip to main content</a>
+    <a class="skip-link skip-link-secondary" href="#toc">Zum Inhaltsverzeichnis springen / Skip to table of contents</a>
+
     <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation" aria-label="Primary">
         <div class="container-xxl flex-nowrap">
           <a class="navbar-brand" href="../index.html">
             <img id="logo" class="svg" src="../logo.svg" alt="TuiVision">
             TuiVision
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
+            <i class="bi bi-three-dots" aria-hidden="true"></i>
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
               <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
+                <i class="bi bi-search" aria-hidden="true"></i>
                 <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
@@ -62,7 +67,7 @@
       </nav>
     </header>
 
-    <main class="container-xxl">
+    <main class="container-xxl" id="main-content" tabindex="-1">
       <div class="toc-offcanvas">
         <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
           <div class="offcanvas-header">
@@ -70,7 +75,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+            <nav class="toc" id="toc" aria-label="Table of Contents"></nav>
           </div>
         </div>
       </div>
@@ -78,10 +83,10 @@
       <div class="content">
         <div class="actionbar">
           <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
+            <i class="bi bi-list" aria-hidden="true"></i>
           </button>
 
-          <nav id="breadcrumb"></nav>
+          <nav id="breadcrumb" aria-label="Breadcrumb"></nav>
         </div>
 
         <article data-uid="TuiVision.Controls.TScrollBar">
@@ -89,7 +94,7 @@
 
 
   <h1 id="TuiVision_Controls_TScrollBar" data-uid="TuiVision.Controls.TScrollBar" class="text-break">
-Class TScrollBar  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TScrollBar.cs/#L17"><i class="bi bi-code-slash"></i></a>
+Class TScrollBar  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TScrollBar.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -195,6 +200,9 @@ clamping, and a simple thumb representation.</p>
       <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer">TView.GetDrawBuffer()</a>
     </div>
     <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext">TView.HelpContext</a>
+    </div>
+    <div>
       <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints">TView.GetStatusHints()</a>
     </div>
     <div>
@@ -242,7 +250,7 @@ clamping, and a simple thumb representation.</p>
 
   <h3 id="TuiVision_Controls_TScrollBar__ctor_TuiVision_Core_TRect_System_Boolean_" data-uid="TuiVision.Controls.TScrollBar.#ctor(TuiVision.Core.TRect,System.Boolean)">
   TScrollBar(TRect, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TScrollBar.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TScrollBar.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Erstellt eine neue Scrollbar.</p>
@@ -283,7 +291,7 @@ clamping, and a simple thumb representation.</p>
 
   <h3 id="TuiVision_Controls_TScrollBar_ArStep" data-uid="TuiVision.Controls.TScrollBar.ArStep">
   ArStep
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TScrollBar.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TScrollBar.cs/#L60"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Schrittweite für Einzelbewegungen.</p>
@@ -316,7 +324,7 @@ clamping, and a simple thumb representation.</p>
 
   <h3 id="TuiVision_Controls_TScrollBar_Horizontal" data-uid="TuiVision.Controls.TScrollBar.Horizontal">
   Horizontal
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TScrollBar.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TScrollBar.cs/#L67"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gibt an, ob die Scrollbar horizontal ausgerichtet ist.</p>
@@ -349,7 +357,7 @@ clamping, and a simple thumb representation.</p>
 
   <h3 id="TuiVision_Controls_TScrollBar_Max" data-uid="TuiVision.Controls.TScrollBar.Max">
   Max
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TScrollBar.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TScrollBar.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Maximal zulässige Scroll-Position.</p>
@@ -382,7 +390,7 @@ clamping, and a simple thumb representation.</p>
 
   <h3 id="TuiVision_Controls_TScrollBar_PgStep" data-uid="TuiVision.Controls.TScrollBar.PgStep">
   PgStep
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TScrollBar.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TScrollBar.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Schrittweite für Seitenbewegungen.</p>
@@ -415,7 +423,7 @@ clamping, and a simple thumb representation.</p>
 
   <h3 id="TuiVision_Controls_TScrollBar_Value" data-uid="TuiVision.Controls.TScrollBar.Value">
   Value
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TScrollBar.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TScrollBar.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Aktuelle Scroll-Position.</p>
@@ -452,7 +460,7 @@ clamping, and a simple thumb representation.</p>
 
   <h3 id="TuiVision_Controls_TScrollBar_Draw" data-uid="TuiVision.Controls.TScrollBar.Draw">
   Draw()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TScrollBar.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TScrollBar.cs/#L118"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Zeichnet eine einfache Scroll-Leiste mit einem Thumb-Zeichen.</p>
@@ -480,7 +488,7 @@ clamping, and a simple thumb representation.</p>
 
   <h3 id="TuiVision_Controls_TScrollBar_HandleEvent_TuiVision_Core_TEvent_" data-uid="TuiVision.Controls.TScrollBar.HandleEvent(TuiVision.Core.TEvent)">
   HandleEvent(TEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TScrollBar.cs/#L152"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TScrollBar.cs/#L152"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Verarbeitet Basisereignisse der Scrollbar.
@@ -518,7 +526,7 @@ scrolling interaction small until later integration steps.</p>
 
   <h3 id="TuiVision_Controls_TScrollBar_ScrollTo_System_Int32_" data-uid="TuiVision.Controls.TScrollBar.ScrollTo(System.Int32)">
   ScrollTo(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TScrollBar.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TScrollBar.cs/#L108"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Scrollt auf eine Zielposition unter Beachtung der Grenzen.</p>
@@ -552,7 +560,7 @@ scrolling interaction small until later integration steps.</p>
 
   <h3 id="TuiVision_Controls_TScrollBar_SetLimit_System_Int32_" data-uid="TuiVision.Controls.TScrollBar.SetLimit(System.Int32)">
   SetLimit(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TScrollBar.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TScrollBar.cs/#L94"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Setzt das obere Scroll-Limit und klemmt den aktuellen Wert daran.</p>
@@ -586,7 +594,7 @@ scrolling interaction small until later integration steps.</p>
 
   <h3 id="TuiVision_Controls_TScrollBar_SetParams_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="TuiVision.Controls.TScrollBar.SetParams(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
   SetParams(int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TScrollBar.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TScrollBar.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Setzt die kompletten Scroll-Parameter.</p>
@@ -632,14 +640,14 @@ scrolling interaction small until later integration steps.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TScrollBar.cs/#L17" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TScrollBar.cs/#L17" class="edit-link">Edit this page</a>
         </div>
 
 
       </div>
 
       <div class="affix">
-        <nav id="affix"></nav>
+        <nav id="affix" aria-label="In this article"></nav>
       </div>
     </main>
 

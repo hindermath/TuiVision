@@ -7,6 +7,7 @@ items:
   children:
   - TuiVision.Controls.TDesktop.#ctor(TuiVision.Core.TRect)
   - TuiVision.Controls.TDesktop.CurrentChanged
+  - TuiVision.Controls.TDesktop.Draw
   langs:
   - csharp
   - vb
@@ -17,7 +18,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDesktop.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TDesktop
     path: src/TuiVision.Controls/TDesktop.cs
@@ -50,7 +51,7 @@ items:
   - TuiVision.Controls.TGroup.ShutDown
   - TuiVision.Controls.TGroup.SetFocus(TuiVision.Controls.TView)
   - TuiVision.Controls.TGroup.SelectNext(System.Boolean)
-  - TuiVision.Controls.TGroup.Draw
+  - TuiVision.Controls.TGroup.GetDrawBuffer
   - TuiVision.Controls.TGroup.LockDraw
   - TuiVision.Controls.TGroup.UnlockDraw
   - TuiVision.Controls.TGroup.SetState(TuiVision.Controls.TViewState,System.Boolean)
@@ -77,7 +78,7 @@ items:
   - TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.DrawView
-  - TuiVision.Controls.TView.GetDrawBuffer
+  - TuiVision.Controls.TView.HelpContext
   - TuiVision.Controls.TView.GetStatusHints
   - TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
   - System.Object.Equals(System.Object)
@@ -101,7 +102,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDesktop.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TDesktop.cs
@@ -126,6 +127,43 @@ items:
   nameWithType.vb: TDesktop.New(TRect)
   fullName.vb: TuiVision.Controls.TDesktop.New(TuiVision.Core.TRect)
   name.vb: New(TRect)
+- uid: TuiVision.Controls.TDesktop.Draw
+  commentId: M:TuiVision.Controls.TDesktop.Draw
+  id: Draw
+  parent: TuiVision.Controls.TDesktop
+  langs:
+  - csharp
+  - vb
+  name: Draw()
+  nameWithType: TDesktop.Draw()
+  fullName: TuiVision.Controls.TDesktop.Draw()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDesktop.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Draw
+    path: src/TuiVision.Controls/TDesktop.cs
+    startLine: 33
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Füllt den Desktop-Hintergrund mit dem Schraffurzeichen '░' und zeichnet danach
+
+    alle eingebetteten Kind-Fenster.
+
+
+    Fills the desktop background with the hatching character '░' and then draws
+
+    all embedded child windows.
+  example: []
+  syntax:
+    content: public override void Draw()
+    content.vb: Public Overrides Sub Draw()
+  overridden: TuiVision.Controls.TGroup.Draw
+  overload: TuiVision.Controls.TDesktop.Draw*
 - uid: TuiVision.Controls.TDesktop.CurrentChanged
   commentId: M:TuiVision.Controls.TDesktop.CurrentChanged
   id: CurrentChanged
@@ -140,11 +178,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDesktop.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: CurrentChanged
     path: src/TuiVision.Controls/TDesktop.cs
-    startLine: 33
+    startLine: 52
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -350,23 +388,23 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: )
-- uid: TuiVision.Controls.TGroup.Draw
-  commentId: M:TuiVision.Controls.TGroup.Draw
+- uid: TuiVision.Controls.TGroup.GetDrawBuffer
+  commentId: M:TuiVision.Controls.TGroup.GetDrawBuffer
   parent: TuiVision.Controls.TGroup
-  href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw
-  name: Draw()
-  nameWithType: TGroup.Draw()
-  fullName: TuiVision.Controls.TGroup.Draw()
+  href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer
+  name: GetDrawBuffer()
+  nameWithType: TGroup.GetDrawBuffer()
+  fullName: TuiVision.Controls.TGroup.GetDrawBuffer()
   spec.csharp:
-  - uid: TuiVision.Controls.TGroup.Draw
-    name: Draw
-    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw
+  - uid: TuiVision.Controls.TGroup.GetDrawBuffer
+    name: GetDrawBuffer
+    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer
   - name: (
   - name: )
   spec.vb:
-  - uid: TuiVision.Controls.TGroup.Draw
-    name: Draw
-    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw
+  - uid: TuiVision.Controls.TGroup.GetDrawBuffer
+    name: GetDrawBuffer
+    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer
   - name: (
   - name: )
 - uid: TuiVision.Controls.TGroup.LockDraw
@@ -926,25 +964,13 @@ references:
     href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView
   - name: (
   - name: )
-- uid: TuiVision.Controls.TView.GetDrawBuffer
-  commentId: M:TuiVision.Controls.TView.GetDrawBuffer
+- uid: TuiVision.Controls.TView.HelpContext
+  commentId: P:TuiVision.Controls.TView.HelpContext
   parent: TuiVision.Controls.TView
-  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
-  name: GetDrawBuffer()
-  nameWithType: TView.GetDrawBuffer()
-  fullName: TuiVision.Controls.TView.GetDrawBuffer()
-  spec.csharp:
-  - uid: TuiVision.Controls.TView.GetDrawBuffer
-    name: GetDrawBuffer
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: TuiVision.Controls.TView.GetDrawBuffer
-    name: GetDrawBuffer
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
-  - name: (
-  - name: )
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext
+  name: HelpContext
+  nameWithType: TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
 - uid: TuiVision.Controls.TView.GetStatusHints
   commentId: M:TuiVision.Controls.TView.GetStatusHints
   parent: TuiVision.Controls.TView
@@ -1260,6 +1286,31 @@ references:
   name: TRect
   nameWithType: TRect
   fullName: TuiVision.Core.TRect
+- uid: TuiVision.Controls.TGroup.Draw
+  commentId: M:TuiVision.Controls.TGroup.Draw
+  parent: TuiVision.Controls.TGroup
+  href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw
+  name: Draw()
+  nameWithType: TGroup.Draw()
+  fullName: TuiVision.Controls.TGroup.Draw()
+  spec.csharp:
+  - uid: TuiVision.Controls.TGroup.Draw
+    name: Draw
+    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TGroup.Draw
+    name: Draw
+    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Draw
+  - name: (
+  - name: )
+- uid: TuiVision.Controls.TDesktop.Draw*
+  commentId: Overload:TuiVision.Controls.TDesktop.Draw
+  href: TuiVision.Controls.TDesktop.html#TuiVision_Controls_TDesktop_Draw
+  name: Draw
+  nameWithType: TDesktop.Draw
+  fullName: TuiVision.Controls.TDesktop.Draw
 - uid: TuiVision.Controls.TGroup.CurrentChanged
   commentId: M:TuiVision.Controls.TGroup.CurrentChanged
   parent: TuiVision.Controls.TGroup

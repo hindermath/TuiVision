@@ -28,7 +28,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TFileDialog
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -86,6 +86,7 @@ items:
   - TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.DrawView
+  - TuiVision.Controls.TView.HelpContext
   - TuiVision.Controls.TView.GetStatusHints
   - TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
   - System.Object.Equals(System.Object)
@@ -108,7 +109,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -162,7 +163,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Mode
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -197,7 +198,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: PathInput
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -232,7 +233,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Directories
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -267,7 +268,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Files
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -302,7 +303,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: CurrentInfo
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -337,7 +338,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: ChangeDirectory
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -376,7 +377,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: ChangeFilter
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -415,7 +416,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: SetTypedPath
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -454,7 +455,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectFile
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -493,7 +494,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: NavigateToFocusedDirectory
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -525,7 +526,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: RecallHistory
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -567,7 +568,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: ConfirmSelection
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -1377,6 +1378,13 @@ references:
     href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView
   - name: (
   - name: )
+- uid: TuiVision.Controls.TView.HelpContext
+  commentId: P:TuiVision.Controls.TView.HelpContext
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext
+  name: HelpContext
+  nameWithType: TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
 - uid: TuiVision.Controls.TView.GetStatusHints
   commentId: M:TuiVision.Controls.TView.GetStatusHints
   parent: TuiVision.Controls.TView

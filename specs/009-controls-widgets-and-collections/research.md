@@ -74,11 +74,11 @@
     clarification chose determinate numeric progress only as the mandatory
     acceptance path.
 
-## Decision 6: Introduce `TParamText` as a bounded formatting view
+## Decision 6: Extend `TParamText` into a bounded formatting view
 
-- **Decision**: Add `TParamText` as a standalone non-interactive view that
-  formats runtime values into text on redraw and clips the rendered output to
-  the declared bounds.
+- **Decision**: Extend the existing `TParamText` baseline into a standalone
+  non-interactive view that formats runtime values into text on redraw and
+  clips the rendered output to the declared bounds.
 - **Rationale**: The spec requires dynamic parameterized text behavior for
   `dyntxt` and later demo usage, but it does not require a separate template
   engine or persisted formatting language.
@@ -87,6 +87,9 @@
     rejected because it would bypass the shared framework surface.
   - Fold parameterized text into `TStaticText`: rejected because runtime
     refresh semantics would become implicit and harder to test.
+  - Leave the current lightweight formatter helper unchanged: rejected because
+    the existing baseline does not yet satisfy the required bounded redraw and
+    clipping contract from this feature.
 
 ## Decision 7: Keep the acceptance surface primarily in Controls.Tests
 
@@ -108,7 +111,7 @@
 - **Decision**: Treat `docs/project-statistics.md` as a mandatory follow-through
   surface for this planning/implementation work and rename
   `Lastenheft_01_ControlsWidgetsAndCollections.md` to
-  `Lastenheft_01_ControlsWidgetsAndCollections_009-controls-widgets-and-collections.md`
+  `Lastenheft_01_ControlsWidgetsAndCollections.009-controls-widgets-and-collections.md`
   when the feature implementation lands.
 - **Rationale**: The repository governance explicitly requires both statistics
   maintenance and branch-traceable Lastenheft naming.

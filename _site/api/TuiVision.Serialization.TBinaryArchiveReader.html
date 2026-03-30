@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
     <meta charset="utf-8">
       <title>Class TBinaryArchiveReader | TuiVision Documentation </title>
@@ -10,13 +10,14 @@
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
+      <link rel="stylesheet" href="../public/accessibility.css">
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/005-driver-consolidation-m07/apiSpec/new?filename=TuiVision_Serialization_TBinaryArchiveReader.md&amp;value=---%0Auid%3A%20TuiVision.Serialization.TBinaryArchiveReader%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Serialization_TBinaryArchiveReader.md&amp;value=---%0Auid%3A%20TuiVision.Serialization.TBinaryArchiveReader%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,6 +32,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
 
       <script type="module" src="./../public/docfx.min.js"></script>
+      <script type="module" src="./../public/accessibility.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -40,20 +42,23 @@
   </head>
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen / Skip to main content</a>
+    <a class="skip-link skip-link-secondary" href="#toc">Zum Inhaltsverzeichnis springen / Skip to table of contents</a>
+
     <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation" aria-label="Primary">
         <div class="container-xxl flex-nowrap">
           <a class="navbar-brand" href="../index.html">
             <img id="logo" class="svg" src="../logo.svg" alt="TuiVision">
             TuiVision
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
+            <i class="bi bi-three-dots" aria-hidden="true"></i>
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
               <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
+                <i class="bi bi-search" aria-hidden="true"></i>
                 <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
@@ -62,7 +67,7 @@
       </nav>
     </header>
 
-    <main class="container-xxl">
+    <main class="container-xxl" id="main-content" tabindex="-1">
       <div class="toc-offcanvas">
         <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
           <div class="offcanvas-header">
@@ -70,7 +75,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+            <nav class="toc" id="toc" aria-label="Table of Contents"></nav>
           </div>
         </div>
       </div>
@@ -78,10 +83,10 @@
       <div class="content">
         <div class="actionbar">
           <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
+            <i class="bi bi-list" aria-hidden="true"></i>
           </button>
 
-          <nav id="breadcrumb"></nav>
+          <nav id="breadcrumb" aria-label="Breadcrumb"></nav>
         </div>
 
         <article data-uid="TuiVision.Serialization.TBinaryArchiveReader">
@@ -89,7 +94,7 @@
 
 
   <h1 id="TuiVision_Serialization_TBinaryArchiveReader" data-uid="TuiVision.Serialization.TBinaryArchiveReader" class="text-break">
-Class TBinaryArchiveReader  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L13"><i class="bi bi-code-slash"></i></a>
+Class TBinaryArchiveReader  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -161,7 +166,7 @@ Class TBinaryArchiveReader  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader__ctor_System_IO_Stream_System_Boolean_" data-uid="TuiVision.Serialization.TBinaryArchiveReader.#ctor(System.IO.Stream,System.Boolean)">
   TBinaryArchiveReader(Stream, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initialisiert einen neuen Archiv-Reader.</p>
@@ -202,7 +207,7 @@ Class TBinaryArchiveReader  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader_Dispose" data-uid="TuiVision.Serialization.TBinaryArchiveReader.Dispose">
   Dispose()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L128"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L128"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gibt den Reader frei.</p>
@@ -230,7 +235,7 @@ Class TBinaryArchiveReader  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader_EnsureFullyConsumed" data-uid="TuiVision.Serialization.TBinaryArchiveReader.EnsureFullyConsumed">
   EnsureFullyConsumed()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L115"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Stellt sicher, dass keine Restdaten uebrig sind.</p>
@@ -258,7 +263,7 @@ Class TBinaryArchiveReader  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader_ReadBoolean" data-uid="TuiVision.Serialization.TBinaryArchiveReader.ReadBoolean">
   ReadBoolean()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L77"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Liest einen Bool-Wert.</p>
@@ -292,7 +297,7 @@ Class TBinaryArchiveReader  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader_ReadByte" data-uid="TuiVision.Serialization.TBinaryArchiveReader.ReadByte">
   ReadByte()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Liest ein Byte.</p>
@@ -326,7 +331,7 @@ Class TBinaryArchiveReader  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader_ReadBytes_System_Int32_" data-uid="TuiVision.Serialization.TBinaryArchiveReader.ReadBytes(System.Int32)">
   ReadBytes(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L94"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Liest exakt die angegebene Anzahl Bytes.</p>
@@ -366,7 +371,7 @@ Class TBinaryArchiveReader  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader_ReadInt32" data-uid="TuiVision.Serialization.TBinaryArchiveReader.ReadInt32">
   ReadInt32()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Liest einen 32-Bit-Integer.</p>
@@ -400,7 +405,7 @@ Class TBinaryArchiveReader  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader_ReadInt64" data-uid="TuiVision.Serialization.TBinaryArchiveReader.ReadInt64">
   ReadInt64()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Liest einen 64-Bit-Integer.</p>
@@ -434,7 +439,7 @@ Class TBinaryArchiveReader  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader_ReadString" data-uid="TuiVision.Serialization.TBinaryArchiveReader.ReadString">
   ReadString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L85"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Liest einen String.</p>
@@ -468,7 +473,7 @@ Class TBinaryArchiveReader  <a class="header-action link-secondary" title="View 
 
   <h3 id="TuiVision_Serialization_TBinaryArchiveReader_ReadUInt16" data-uid="TuiVision.Serialization.TBinaryArchiveReader.ReadUInt16">
   ReadUInt16()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Liest einen UInt16-Wert.</p>
@@ -502,14 +507,14 @@ Class TBinaryArchiveReader  <a class="header-action link-secondary" title="View 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L13" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Serialization/TBinaryArchiveReader.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 
       </div>
 
       <div class="affix">
-        <nav id="affix"></nav>
+        <nav id="affix" aria-label="In this article"></nav>
       </div>
     </main>
 

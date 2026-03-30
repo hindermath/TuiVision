@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
     <meta charset="utf-8">
       <title>Class TButton | TuiVision Documentation </title>
@@ -10,13 +10,14 @@
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
+      <link rel="stylesheet" href="../public/accessibility.css">
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/005-driver-consolidation-m07/apiSpec/new?filename=TuiVision_Controls_TButton.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TButton%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Controls_TButton.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TButton%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,6 +32,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
 
       <script type="module" src="./../public/docfx.min.js"></script>
+      <script type="module" src="./../public/accessibility.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -40,20 +42,23 @@
   </head>
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen / Skip to main content</a>
+    <a class="skip-link skip-link-secondary" href="#toc">Zum Inhaltsverzeichnis springen / Skip to table of contents</a>
+
     <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation" aria-label="Primary">
         <div class="container-xxl flex-nowrap">
           <a class="navbar-brand" href="../index.html">
             <img id="logo" class="svg" src="../logo.svg" alt="TuiVision">
             TuiVision
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
+            <i class="bi bi-three-dots" aria-hidden="true"></i>
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
               <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
+                <i class="bi bi-search" aria-hidden="true"></i>
                 <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
@@ -62,7 +67,7 @@
       </nav>
     </header>
 
-    <main class="container-xxl">
+    <main class="container-xxl" id="main-content" tabindex="-1">
       <div class="toc-offcanvas">
         <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
           <div class="offcanvas-header">
@@ -70,7 +75,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+            <nav class="toc" id="toc" aria-label="Table of Contents"></nav>
           </div>
         </div>
       </div>
@@ -78,10 +83,10 @@
       <div class="content">
         <div class="actionbar">
           <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
+            <i class="bi bi-list" aria-hidden="true"></i>
           </button>
 
-          <nav id="breadcrumb"></nav>
+          <nav id="breadcrumb" aria-label="Breadcrumb"></nav>
         </div>
 
         <article data-uid="TuiVision.Controls.TButton">
@@ -89,7 +94,7 @@
 
 
   <h1 id="TuiVision_Controls_TButton" data-uid="TuiVision.Controls.TButton" class="text-break">
-Class TButton  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TButton.cs/#L32"><i class="bi bi-code-slash"></i></a>
+Class TButton  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TButton.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -188,6 +193,9 @@ Class TButton  <a class="header-action link-secondary" title="View source" href=
       <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer">TView.GetDrawBuffer()</a>
     </div>
     <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext">TView.HelpContext</a>
+    </div>
+    <div>
       <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetStatusHints">TView.GetStatusHints()</a>
     </div>
     <div>
@@ -235,7 +243,7 @@ Class TButton  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Controls_TButton__ctor_TuiVision_Core_TRect_System_String_System_UInt16_TuiVision_Controls_TButtonFlags_" data-uid="TuiVision.Controls.TButton.#ctor(TuiVision.Core.TRect,System.String,System.UInt16,TuiVision.Controls.TButtonFlags)">
   TButton(TRect, string, ushort, TButtonFlags)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TButton.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TButton.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Erstellt eine neue Schaltfläche.</p>
@@ -282,7 +290,7 @@ Class TButton  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Controls_TButton_AmDefault" data-uid="TuiVision.Controls.TButton.AmDefault">
   AmDefault
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TButton.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TButton.cs/#L88"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gibt an, ob die Schaltfläche aktuell als Default gilt.</p>
@@ -315,7 +323,7 @@ Class TButton  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Controls_TButton_Command" data-uid="TuiVision.Controls.TButton.Command">
   Command
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TButton.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TButton.cs/#L74"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die beim Aktivieren ausgelöste Command-ID.</p>
@@ -348,7 +356,7 @@ Class TButton  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Controls_TButton_Flags" data-uid="TuiVision.Controls.TButton.Flags">
   Flags
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TButton.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TButton.cs/#L81"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die konfigurierten Button-Flags.</p>
@@ -381,7 +389,7 @@ Class TButton  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Controls_TButton_Title" data-uid="TuiVision.Controls.TButton.Title">
   Title
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TButton.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TButton.cs/#L67"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die Button-Beschriftung ohne Hotkey-Marker.</p>
@@ -418,7 +426,7 @@ Class TButton  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Controls_TButton_Draw" data-uid="TuiVision.Controls.TButton.Draw">
   Draw()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TButton.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TButton.cs/#L112"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Zeichnet die Schaltfläche mit einfachem Rahmen und ausgerichteter Beschriftung.</p>
@@ -446,7 +454,7 @@ Class TButton  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Controls_TButton_HandleEvent_TuiVision_Core_TEvent_" data-uid="TuiVision.Controls.TButton.HandleEvent(TuiVision.Core.TEvent)">
   HandleEvent(TEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TButton.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TButton.cs/#L144"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Verarbeitet Enter, Leertaste, Mausklick und Alt-Hotkeys.</p>
@@ -480,7 +488,7 @@ Class TButton  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="TuiVision_Controls_TButton_SetState_TuiVision_Controls_TViewState_System_Boolean_" data-uid="TuiVision.Controls.TButton.SetState(TuiVision.Controls.TViewState,System.Boolean)">
   SetState(TViewState, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TButton.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TButton.cs/#L97"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Hält den abgeleiteten Default-Zustand synchron mit dem View-State.</p>
@@ -517,14 +525,14 @@ Class TButton  <a class="header-action link-secondary" title="View source" href=
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TButton.cs/#L32" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TButton.cs/#L32" class="edit-link">Edit this page</a>
         </div>
 
 
       </div>
 
       <div class="affix">
-        <nav id="affix"></nav>
+        <nav id="affix" aria-label="In this article"></nav>
       </div>
     </main>
 

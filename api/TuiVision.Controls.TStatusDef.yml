@@ -1,0 +1,646 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.TStatusDef
+  commentId: T:TuiVision.Controls.TStatusDef
+  id: TStatusDef
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.TStatusDef.#ctor(System.Int32,System.Int32,TuiVision.Controls.TStatusItem,TuiVision.Controls.TStatusDef)
+  - TuiVision.Controls.TStatusDef.Items
+  - TuiVision.Controls.TStatusDef.Matches(System.Int32)
+  - TuiVision.Controls.TStatusDef.MaxCtx
+  - TuiVision.Controls.TStatusDef.MinCtx
+  - TuiVision.Controls.TStatusDef.Next
+  langs:
+  - csharp
+  - vb
+  name: TStatusDef
+  nameWithType: TStatusDef
+  fullName: TuiVision.Controls.TStatusDef
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStatusDef.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TStatusDef
+    path: src/TuiVision.Controls/TStatusDef.cs
+    startLine: 16
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Ordnet einem inklusiven Hilfekontext-Bereich einen Satz von Statuszeilen-Aktionen zu.
+
+    Mehrere Definitionen werden als verkettete Liste organisiert; die erste passende
+
+    Definition gewinnt (First-Match-Wins-Reihenfolge).
+
+    Wenn keine Definition passt, wird ein neutraler Leer-Zustand angezeigt.
+
+
+    Maps one inclusive help-context range to one set of status-line actions.
+
+    Multiple definitions are organised as a linked list; the first matching
+
+    definition wins (first-match-wins ordering).
+
+    When no definition matches, a neutral empty state is shown.
+  example: []
+  syntax:
+    content: public class TStatusDef
+    content.vb: Public Class TStatusDef
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Controls.TStatusDef.#ctor(System.Int32,System.Int32,TuiVision.Controls.TStatusItem,TuiVision.Controls.TStatusDef)
+  commentId: M:TuiVision.Controls.TStatusDef.#ctor(System.Int32,System.Int32,TuiVision.Controls.TStatusItem,TuiVision.Controls.TStatusDef)
+  id: '#ctor(System.Int32,System.Int32,TuiVision.Controls.TStatusItem,TuiVision.Controls.TStatusDef)'
+  parent: TuiVision.Controls.TStatusDef
+  langs:
+  - csharp
+  - vb
+  name: TStatusDef(int, int, TStatusItem?, TStatusDef?)
+  nameWithType: TStatusDef.TStatusDef(int, int, TStatusItem?, TStatusDef?)
+  fullName: TuiVision.Controls.TStatusDef.TStatusDef(int, int, TuiVision.Controls.TStatusItem?, TuiVision.Controls.TStatusDef?)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStatusDef.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Controls/TStatusDef.cs
+    startLine: 39
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Initialisiert eine neue Statuszeilen-Definition.
+
+
+    Initializes a new status-line definition.
+  example: []
+  syntax:
+    content: public TStatusDef(int minCtx, int maxCtx, TStatusItem? items, TStatusDef? next = null)
+    parameters:
+    - id: minCtx
+      type: System.Int32
+      description: >-
+        Untere Grenze des inklusiven Hilfekontext-Bereichs.
+
+        Lower bound of the inclusive help-context range.
+    - id: maxCtx
+      type: System.Int32
+      description: >-
+        Obere Grenze des inklusiven Hilfekontext-Bereichs.
+
+        Upper bound of the inclusive help-context range.
+    - id: items
+      type: TuiVision.Controls.TStatusItem
+      description: >-
+        Das erste Element der Statuszeilen-Aktionsliste für diesen Kontext.
+
+        The first item in the status-action list for this context.
+    - id: next
+      type: TuiVision.Controls.TStatusDef
+      description: >-
+        Die nächste Definition in der Kette (niedrigere Priorität).
+
+        The next definition in the chain (lower priority).
+    content.vb: Public Sub New(minCtx As Integer, maxCtx As Integer, items As TStatusItem, [next] As TStatusDef = Nothing)
+  overload: TuiVision.Controls.TStatusDef.#ctor*
+  nameWithType.vb: TStatusDef.New(Integer, Integer, TStatusItem, TStatusDef)
+  fullName.vb: TuiVision.Controls.TStatusDef.New(Integer, Integer, TuiVision.Controls.TStatusItem, TuiVision.Controls.TStatusDef)
+  name.vb: New(Integer, Integer, TStatusItem, TStatusDef)
+- uid: TuiVision.Controls.TStatusDef.MinCtx
+  commentId: P:TuiVision.Controls.TStatusDef.MinCtx
+  id: MinCtx
+  parent: TuiVision.Controls.TStatusDef
+  langs:
+  - csharp
+  - vb
+  name: MinCtx
+  nameWithType: TStatusDef.MinCtx
+  fullName: TuiVision.Controls.TStatusDef.MinCtx
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStatusDef.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: MinCtx
+    path: src/TuiVision.Controls/TStatusDef.cs
+    startLine: 52
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Untere inklusive Grenze des Hilfekontext-Bereichs.
+
+
+    Lower inclusive bound of the help-context range.
+  example: []
+  syntax:
+    content: public int MinCtx { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property MinCtx As Integer
+  overload: TuiVision.Controls.TStatusDef.MinCtx*
+- uid: TuiVision.Controls.TStatusDef.MaxCtx
+  commentId: P:TuiVision.Controls.TStatusDef.MaxCtx
+  id: MaxCtx
+  parent: TuiVision.Controls.TStatusDef
+  langs:
+  - csharp
+  - vb
+  name: MaxCtx
+  nameWithType: TStatusDef.MaxCtx
+  fullName: TuiVision.Controls.TStatusDef.MaxCtx
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStatusDef.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: MaxCtx
+    path: src/TuiVision.Controls/TStatusDef.cs
+    startLine: 59
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Obere inklusive Grenze des Hilfekontext-Bereichs.
+
+
+    Upper inclusive bound of the help-context range.
+  example: []
+  syntax:
+    content: public int MaxCtx { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property MaxCtx As Integer
+  overload: TuiVision.Controls.TStatusDef.MaxCtx*
+- uid: TuiVision.Controls.TStatusDef.Items
+  commentId: P:TuiVision.Controls.TStatusDef.Items
+  id: Items
+  parent: TuiVision.Controls.TStatusDef
+  langs:
+  - csharp
+  - vb
+  name: Items
+  nameWithType: TStatusDef.Items
+  fullName: TuiVision.Controls.TStatusDef.Items
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStatusDef.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Items
+    path: src/TuiVision.Controls/TStatusDef.cs
+    startLine: 66
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Der erste Statuszeilen-Eintrag für diesen Hilfekontext-Bereich.
+
+
+    The first status-line item for this help-context range.
+  example: []
+  syntax:
+    content: public TStatusItem? Items { get; }
+    parameters: []
+    return:
+      type: TuiVision.Controls.TStatusItem
+    content.vb: Public ReadOnly Property Items As TStatusItem
+  overload: TuiVision.Controls.TStatusDef.Items*
+- uid: TuiVision.Controls.TStatusDef.Next
+  commentId: P:TuiVision.Controls.TStatusDef.Next
+  id: Next
+  parent: TuiVision.Controls.TStatusDef
+  langs:
+  - csharp
+  - vb
+  name: Next
+  nameWithType: TStatusDef.Next
+  fullName: TuiVision.Controls.TStatusDef.Next
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStatusDef.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Next
+    path: src/TuiVision.Controls/TStatusDef.cs
+    startLine: 73
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Die nächste Definition in der Kette (niedrigere Priorität).
+
+
+    The next definition in the chain (lower priority).
+  example: []
+  syntax:
+    content: public TStatusDef? Next { get; }
+    parameters: []
+    return:
+      type: TuiVision.Controls.TStatusDef
+    content.vb: Public ReadOnly Property [Next] As TStatusDef
+  overload: TuiVision.Controls.TStatusDef.Next*
+- uid: TuiVision.Controls.TStatusDef.Matches(System.Int32)
+  commentId: M:TuiVision.Controls.TStatusDef.Matches(System.Int32)
+  id: Matches(System.Int32)
+  parent: TuiVision.Controls.TStatusDef
+  langs:
+  - csharp
+  - vb
+  name: Matches(int)
+  nameWithType: TStatusDef.Matches(int)
+  fullName: TuiVision.Controls.TStatusDef.Matches(int)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStatusDef.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Matches
+    path: src/TuiVision.Controls/TStatusDef.cs
+    startLine: 87
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Gibt <code>true</code> zurück, wenn <code class="paramref">helpContext</code> innerhalb dieses
+
+    inklusiven Bereichs liegt.
+
+
+    Returns <code>true</code> when <code class="paramref">helpContext</code> falls within this
+
+    inclusive range.
+  example: []
+  syntax:
+    content: public bool Matches(int helpContext)
+    parameters:
+    - id: helpContext
+      type: System.Int32
+      description: Der zu prüfende Hilfekontext-Wert. / The help-context value to check.
+    return:
+      type: System.Boolean
+      description: >-
+        <code>true</code>, wenn der Wert im Bereich liegt; andernfalls <code>false</code>.
+
+        <code>true</code> if the value is within the range; otherwise <code>false</code>.
+    content.vb: Public Function Matches(helpContext As Integer) As Boolean
+  overload: TuiVision.Controls.TStatusDef.Matches*
+  nameWithType.vb: TStatusDef.Matches(Integer)
+  fullName.vb: TuiVision.Controls.TStatusDef.Matches(Integer)
+  name.vb: Matches(Integer)
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Controls.TStatusDef.#ctor*
+  commentId: Overload:TuiVision.Controls.TStatusDef.#ctor
+  href: TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef__ctor_System_Int32_System_Int32_TuiVision_Controls_TStatusItem_TuiVision_Controls_TStatusDef_
+  name: TStatusDef
+  nameWithType: TStatusDef.TStatusDef
+  fullName: TuiVision.Controls.TStatusDef.TStatusDef
+  nameWithType.vb: TStatusDef.New
+  fullName.vb: TuiVision.Controls.TStatusDef.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: TuiVision.Controls.TStatusItem
+  commentId: T:TuiVision.Controls.TStatusItem
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TStatusItem.html
+  name: TStatusItem
+  nameWithType: TStatusItem
+  fullName: TuiVision.Controls.TStatusItem
+- uid: TuiVision.Controls.TStatusDef
+  commentId: T:TuiVision.Controls.TStatusDef
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TStatusDef.html
+  name: TStatusDef
+  nameWithType: TStatusDef
+  fullName: TuiVision.Controls.TStatusDef
+- uid: TuiVision.Controls.TStatusDef.MinCtx*
+  commentId: Overload:TuiVision.Controls.TStatusDef.MinCtx
+  href: TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_MinCtx
+  name: MinCtx
+  nameWithType: TStatusDef.MinCtx
+  fullName: TuiVision.Controls.TStatusDef.MinCtx
+- uid: TuiVision.Controls.TStatusDef.MaxCtx*
+  commentId: Overload:TuiVision.Controls.TStatusDef.MaxCtx
+  href: TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_MaxCtx
+  name: MaxCtx
+  nameWithType: TStatusDef.MaxCtx
+  fullName: TuiVision.Controls.TStatusDef.MaxCtx
+- uid: TuiVision.Controls.TStatusDef.Items*
+  commentId: Overload:TuiVision.Controls.TStatusDef.Items
+  href: TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_Items
+  name: Items
+  nameWithType: TStatusDef.Items
+  fullName: TuiVision.Controls.TStatusDef.Items
+- uid: TuiVision.Controls.TStatusDef.Next*
+  commentId: Overload:TuiVision.Controls.TStatusDef.Next
+  href: TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_Next
+  name: Next
+  nameWithType: TStatusDef.Next
+  fullName: TuiVision.Controls.TStatusDef.Next
+- uid: TuiVision.Controls.TStatusDef.Matches*
+  commentId: Overload:TuiVision.Controls.TStatusDef.Matches
+  href: TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_Matches_System_Int32_
+  name: Matches
+  nameWithType: TStatusDef.Matches
+  fullName: TuiVision.Controls.TStatusDef.Matches
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

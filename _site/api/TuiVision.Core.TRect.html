@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
     <meta charset="utf-8">
       <title>Struct TRect | TuiVision Documentation </title>
@@ -10,13 +10,14 @@
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
+      <link rel="stylesheet" href="../public/accessibility.css">
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/005-driver-consolidation-m07/apiSpec/new?filename=TuiVision_Core_TRect.md&amp;value=---%0Auid%3A%20TuiVision.Core.TRect%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Core_TRect.md&amp;value=---%0Auid%3A%20TuiVision.Core.TRect%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,6 +32,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
 
       <script type="module" src="./../public/docfx.min.js"></script>
+      <script type="module" src="./../public/accessibility.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -40,20 +42,23 @@
   </head>
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen / Skip to main content</a>
+    <a class="skip-link skip-link-secondary" href="#toc">Zum Inhaltsverzeichnis springen / Skip to table of contents</a>
+
     <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation" aria-label="Primary">
         <div class="container-xxl flex-nowrap">
           <a class="navbar-brand" href="../index.html">
             <img id="logo" class="svg" src="../logo.svg" alt="TuiVision">
             TuiVision
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
+            <i class="bi bi-three-dots" aria-hidden="true"></i>
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
               <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
+                <i class="bi bi-search" aria-hidden="true"></i>
                 <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
@@ -62,7 +67,7 @@
       </nav>
     </header>
 
-    <main class="container-xxl">
+    <main class="container-xxl" id="main-content" tabindex="-1">
       <div class="toc-offcanvas">
         <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
           <div class="offcanvas-header">
@@ -70,7 +75,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+            <nav class="toc" id="toc" aria-label="Table of Contents"></nav>
           </div>
         </div>
       </div>
@@ -78,10 +83,10 @@
       <div class="content">
         <div class="actionbar">
           <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
+            <i class="bi bi-list" aria-hidden="true"></i>
           </button>
 
-          <nav id="breadcrumb"></nav>
+          <nav id="breadcrumb" aria-label="Breadcrumb"></nav>
         </div>
 
         <article data-uid="TuiVision.Core.TRect">
@@ -89,7 +94,7 @@
 
 
   <h1 id="TuiVision_Core_TRect" data-uid="TuiVision.Core.TRect" class="text-break">
-Struct TRect  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L15"><i class="bi bi-code-slash"></i></a>
+Struct TRect  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -152,7 +157,7 @@ This coordinate system matches the original Turbo Vision convention.</p>
 
   <h3 id="TuiVision_Core_TRect__ctor_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="TuiVision.Core.TRect.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
   TRect(int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Erstellt ein neues Rechteck aus vier Integer-Koordinaten.</p>
@@ -195,7 +200,7 @@ This coordinate system matches the original Turbo Vision convention.</p>
 
   <h3 id="TuiVision_Core_TRect__ctor_TuiVision_Core_TPoint_TuiVision_Core_TPoint_" data-uid="TuiVision.Core.TRect.#ctor(TuiVision.Core.TPoint,TuiVision.Core.TPoint)">
   TRect(TPoint, TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Erstellt ein neues Rechteck aus zwei Punkten.</p>
@@ -236,7 +241,7 @@ This coordinate system matches the original Turbo Vision convention.</p>
 
   <h3 id="TuiVision_Core_TRect_A" data-uid="TuiVision.Core.TRect.A">
   A
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die inklusive obere linke Ecke des Rechtecks.</p>
@@ -269,7 +274,7 @@ This coordinate system matches the original Turbo Vision convention.</p>
 
   <h3 id="TuiVision_Core_TRect_B" data-uid="TuiVision.Core.TRect.B">
   B
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die exklusive untere rechte Ecke des Rechtecks.</p>
@@ -302,7 +307,7 @@ This coordinate system matches the original Turbo Vision convention.</p>
 
   <h3 id="TuiVision_Core_TRect_Height" data-uid="TuiVision.Core.TRect.Height">
   Height
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L70"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die Höhe des Rechtecks in Zeichen (Anzahl der Zeilen).</p>
@@ -335,7 +340,7 @@ This coordinate system matches the original Turbo Vision convention.</p>
 
   <h3 id="TuiVision_Core_TRect_Width" data-uid="TuiVision.Core.TRect.Width">
   Width
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die Breite des Rechtecks in Zeichen (Anzahl der Spalten).</p>
@@ -372,7 +377,7 @@ This coordinate system matches the original Turbo Vision convention.</p>
 
   <h3 id="TuiVision_Core_TRect_Contains_TuiVision_Core_TPoint_" data-uid="TuiVision.Core.TRect.Contains(TuiVision.Core.TPoint)">
   Contains(TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L95"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Prüft, ob ein Punkt innerhalb dieses Rechtecks liegt.
@@ -415,7 +420,7 @@ The top-left corner is inclusive; the bottom-right corner is exclusive.</p>
 
   <h3 id="TuiVision_Core_TRect_Equals_System_Object_" data-uid="TuiVision.Core.TRect.Equals(System.Object)">
   Equals(object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L201"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L201"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vergleicht dieses Rechteck mit einem beliebigen Objekt.</p>
@@ -456,7 +461,7 @@ The top-left corner is inclusive; the bottom-right corner is exclusive.</p>
 
   <h3 id="TuiVision_Core_TRect_Equals_TuiVision_Core_TRect_" data-uid="TuiVision.Core.TRect.Equals(TuiVision.Core.TRect)">
   Equals(TRect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L189"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vergleicht dieses Rechteck mit einem anderen <a class="xref" href="TuiVision.Core.TRect.html">TRect</a>.</p>
@@ -497,7 +502,7 @@ The top-left corner is inclusive; the bottom-right corner is exclusive.</p>
 
   <h3 id="TuiVision_Core_TRect_GetHashCode" data-uid="TuiVision.Core.TRect.GetHashCode">
   GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L212"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L212"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Berechnet den Hash-Code für dieses Rechteck.</p>
@@ -532,7 +537,7 @@ A hash code combined from the corner points <a class="xref" href="TuiVision.Core
 
   <h3 id="TuiVision_Core_TRect_Grow_System_Int32_System_Int32_" data-uid="TuiVision.Core.TRect.Grow(System.Int32,System.Int32)">
   Grow(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L121"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vergrößert oder verkleinert das Rechteck gleichmäßig an allen Seiten.
@@ -571,7 +576,7 @@ A positive value expands; a negative value shrinks the rectangle.</p>
 
   <h3 id="TuiVision_Core_TRect_Intersect_TuiVision_Core_TRect_" data-uid="TuiVision.Core.TRect.Intersect(TuiVision.Core.TRect)">
   Intersect(TRect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L135"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L135"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Schneidet dieses Rechteck mit einem anderen und speichert den Schnittbereich.
@@ -607,7 +612,7 @@ If the rectangles do not overlap, the result is empty (see <a class="xref" href=
 
   <h3 id="TuiVision_Core_TRect_IsEmpty" data-uid="TuiVision.Core.TRect.IsEmpty">
   IsEmpty()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L81"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gibt an, ob das Rechteck leer ist (Breite oder Höhe ist null oder negativ).</p>
@@ -642,7 +647,7 @@ If the rectangles do not overlap, the result is empty (see <a class="xref" href=
 
   <h3 id="TuiVision_Core_TRect_Move_System_Int32_System_Int32_" data-uid="TuiVision.Core.TRect.Move(System.Int32,System.Int32)">
   Move(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L106"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Verschiebt das Rechteck um den angegebenen Versatz.</p>
@@ -679,7 +684,7 @@ If the rectangles do not overlap, the result is empty (see <a class="xref" href=
 
   <h3 id="TuiVision_Core_TRect_Union_TuiVision_Core_TRect_" data-uid="TuiVision.Core.TRect.Union(TuiVision.Core.TRect)">
   Union(TRect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L147"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L147"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Berechnet das umschließende Rechteck (Vereinigung) dieses und eines anderen Rechtecks.</p>
@@ -717,7 +722,7 @@ If the rectangles do not overlap, the result is empty (see <a class="xref" href=
 
   <h3 id="TuiVision_Core_TRect_op_Equality_TuiVision_Core_TRect_TuiVision_Core_TRect_" data-uid="TuiVision.Core.TRect.op_Equality(TuiVision.Core.TRect,TuiVision.Core.TRect)">
   operator ==(TRect, TRect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L164"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Prüft, ob zwei Rechtecke gleich sind.</p>
@@ -761,7 +766,7 @@ If the rectangles do not overlap, the result is empty (see <a class="xref" href=
 
   <h3 id="TuiVision_Core_TRect_op_Inequality_TuiVision_Core_TRect_TuiVision_Core_TRect_" data-uid="TuiVision.Core.TRect.op_Inequality(TuiVision.Core.TRect,TuiVision.Core.TRect)">
   operator !=(TRect, TRect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L177"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Prüft, ob zwei Rechtecke ungleich sind.</p>
@@ -805,14 +810,14 @@ If the rectangles do not overlap, the result is empty (see <a class="xref" href=
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TRect.cs/#L15" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TRect.cs/#L15" class="edit-link">Edit this page</a>
         </div>
 
 
       </div>
 
       <div class="affix">
-        <nav id="affix"></nav>
+        <nav id="affix" aria-label="In this article"></nav>
       </div>
     </main>
 

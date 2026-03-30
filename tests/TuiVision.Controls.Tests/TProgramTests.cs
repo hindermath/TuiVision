@@ -91,6 +91,57 @@ public sealed class TProgramTests
         Assert.IsTrue(relayoutTriggered, "Terminal resize re-layout logic not yet implemented.");
     }
 
+    // -----------------------------------------------------------------------
+    // T007: Resize-driven menu relayout test (RED – fails until T010 adds behavior)
+    // -----------------------------------------------------------------------
+
+    /// <summary>
+    /// Prüft, ob nach einer Größenänderung der Shell die Layout-Slots der Menüleiste
+    /// neu berechnet werden.
+    ///
+    /// Verifies that after a shell bounds change the menu bar's layout slots are recomputed.
+    /// </summary>
+    [TestMethod]
+    public void TProgram_MenuBar_RelayoutsOnResize()
+    {
+        TRect initialBounds = ShellTestSupport.CreateStandardBounds(); // 80×25
+        ProgramWithMenuBar program = new(initialBounds);
+
+        // Größe der Shell auf 100×30 ändern.
+        // Resize the shell to 100×30.
+        TRect newBounds = new(0, 0, 100, 30);
+        program.Resize(newBounds);
+
+        // Die Menüleiste muss die neue Breite übernommen haben.
+        // The menu bar must have adopted the new width.
+        Assert.AreEqual(100, program.MenuBar!.Size.X,
+            "After shell resize, the menu bar width must match the new shell width.");
+
+        // Die Layout-Slots müssen nach Aktivierung mit der neuen Breite korrekt sein.
+        // Layout slots must be correctly sized after activation with the new width.
+        // Aktivierung um Layout-Slots zu erzeugen / Activate to generate layout slots.
+        TEvent f10 = ControlEventFactory.CreateKeyDown(scanCode: 0x44);
+        program.MenuBar.HandleEvent(f10);
+        Assert.IsNotEmpty(program.MenuBar.LayoutSlots,
+            "After resize and activation, menu bar layout slots must be recomputed (count > 0 when Menu is set).");
+    }
+
+    /// <summary>
+    /// Hilfsklasse mit vorkonfigurierter Menüleiste.
+    ///
+    /// Helper class with a preconfigured menu bar.
+    /// </summary>
+    private sealed class ProgramWithMenuBar : TProgram
+    {
+        public ProgramWithMenuBar(TRect bounds) : base(bounds)
+        {
+            TMenuBar mb = new(new TRect(0, 0, bounds.Width, 1));
+            mb.Menu = new TMenuItem("~F~ile", 0, new TMenuItem("~E~dit", 0));
+            MenuBar = mb;
+            Insert(mb);
+        }
+    }
+
     /// <summary>
     /// Hilfsklasse, die bei GetEvent sofort ein cmQuit-Ereignis zurückliefert,
     /// damit Run() in Tests kontrolliert beendet werden kann.

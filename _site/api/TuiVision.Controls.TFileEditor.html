@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
     <meta charset="utf-8">
       <title>Class TFileEditor | TuiVision Documentation </title>
@@ -10,13 +10,14 @@
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
+      <link rel="stylesheet" href="../public/accessibility.css">
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/005-driver-consolidation-m07/apiSpec/new?filename=TuiVision_Controls_TFileEditor.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TFileEditor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Controls_TFileEditor.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TFileEditor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,6 +32,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
 
       <script type="module" src="./../public/docfx.min.js"></script>
+      <script type="module" src="./../public/accessibility.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -40,20 +42,23 @@
   </head>
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen / Skip to main content</a>
+    <a class="skip-link skip-link-secondary" href="#toc">Zum Inhaltsverzeichnis springen / Skip to table of contents</a>
+
     <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation" aria-label="Primary">
         <div class="container-xxl flex-nowrap">
           <a class="navbar-brand" href="../index.html">
             <img id="logo" class="svg" src="../logo.svg" alt="TuiVision">
             TuiVision
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
+            <i class="bi bi-three-dots" aria-hidden="true"></i>
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
               <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
+                <i class="bi bi-search" aria-hidden="true"></i>
                 <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
@@ -62,7 +67,7 @@
       </nav>
     </header>
 
-    <main class="container-xxl">
+    <main class="container-xxl" id="main-content" tabindex="-1">
       <div class="toc-offcanvas">
         <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
           <div class="offcanvas-header">
@@ -70,7 +75,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+            <nav class="toc" id="toc" aria-label="Table of Contents"></nav>
           </div>
         </div>
       </div>
@@ -78,10 +83,10 @@
       <div class="content">
         <div class="actionbar">
           <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
+            <i class="bi bi-list" aria-hidden="true"></i>
           </button>
 
-          <nav id="breadcrumb"></nav>
+          <nav id="breadcrumb" aria-label="Breadcrumb"></nav>
         </div>
 
         <article data-uid="TuiVision.Controls.TFileEditor">
@@ -89,7 +94,7 @@
 
 
   <h1 id="TuiVision_Controls_TFileEditor" data-uid="TuiVision.Controls.TFileEditor" class="text-break">
-Class TFileEditor  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TFileEditor.cs/#L59"><i class="bi bi-code-slash"></i></a>
+Class TFileEditor  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TFileEditor.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -289,6 +294,9 @@ Class TFileEditor  <a class="header-action link-secondary" title="View source" h
       <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView">TView.DrawView()</a>
     </div>
     <div>
+      <a class="xref" href="TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext">TView.HelpContext</a>
+    </div>
+    <div>
       <a class="xref" href="TuiVision.Core.TObject.html#TuiVision_Core_TObject_ShutDown">TObject.ShutDown()</a>
     </div>
     <div>
@@ -327,7 +335,7 @@ Class TFileEditor  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TuiVision_Controls_TFileEditor__ctor_TuiVision_Core_TRect_System_String_" data-uid="TuiVision.Controls.TFileEditor.#ctor(TuiVision.Core.TRect,System.String)">
   TFileEditor(TRect, string?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TFileEditor.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TFileEditor.cs/#L68"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initialisiert einen neuen Dateieditor.</p>
@@ -368,7 +376,7 @@ Class TFileEditor  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TuiVision_Controls_TFileEditor_ConfirmOverwrite" data-uid="TuiVision.Controls.TFileEditor.ConfirmOverwrite">
   ConfirmOverwrite
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TFileEditor.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TFileEditor.cs/#L99"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Optionale Callback-Funktion fuer Overwrite-Entscheidungen.</p>
@@ -401,7 +409,7 @@ Class TFileEditor  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TuiVision_Controls_TFileEditor_FileName" data-uid="TuiVision.Controls.TFileEditor.FileName">
   FileName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TFileEditor.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TFileEditor.cs/#L78"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Der aktuell gebundene Dateiname.</p>
@@ -434,7 +442,7 @@ Class TFileEditor  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TuiVision_Controls_TFileEditor_LineEndingMode" data-uid="TuiVision.Controls.TFileEditor.LineEndingMode">
   LineEndingMode
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TFileEditor.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TFileEditor.cs/#L85"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Der Zeilenendungsmodus des Dokuments.</p>
@@ -467,7 +475,7 @@ Class TFileEditor  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TuiVision_Controls_TFileEditor_Snapshot" data-uid="TuiVision.Controls.TFileEditor.Snapshot">
   Snapshot
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TFileEditor.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TFileEditor.cs/#L92"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Der zuletzt bekannte Dateisnapshot.</p>
@@ -504,7 +512,7 @@ Class TFileEditor  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TuiVision_Controls_TFileEditor_LoadFile_System_String_" data-uid="TuiVision.Controls.TFileEditor.LoadFile(System.String)">
   LoadFile(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TFileEditor.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TFileEditor.cs/#L107"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Laedt eine Datei in den Editor.</p>
@@ -538,7 +546,7 @@ Class TFileEditor  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TuiVision_Controls_TFileEditor_Save" data-uid="TuiVision.Controls.TFileEditor.Save">
   Save()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TFileEditor.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TFileEditor.cs/#L122"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Speichert das Dokument unter dem aktuellen Dateinamen.</p>
@@ -572,7 +580,7 @@ Class TFileEditor  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TuiVision_Controls_TFileEditor_SaveAs_System_String_" data-uid="TuiVision.Controls.TFileEditor.SaveAs(System.String)">
   SaveAs(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TFileEditor.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TFileEditor.cs/#L139"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Speichert das Dokument unter einem Zielpfad.</p>
@@ -612,14 +620,14 @@ Class TFileEditor  <a class="header-action link-secondary" title="View source" h
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Controls/TFileEditor.cs/#L59" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TFileEditor.cs/#L59" class="edit-link">Edit this page</a>
         </div>
 
 
       </div>
 
       <div class="affix">
-        <nav id="affix"></nav>
+        <nav id="affix" aria-label="In this article"></nav>
       </div>
     </main>
 

@@ -15,7 +15,7 @@ clipboard semantics in-memory for the active application session, and defers
 consuming example smoke coverage until later wave-2 delivery branches. When the
 implementation lands, it must update `docs/project-statistics.md` and rename
 `Lastenheft_01_ControlsWidgetsAndCollections.md` to
-`Lastenheft_01_ControlsWidgetsAndCollections_009-controls-widgets-and-collections.md`
+`Lastenheft_01_ControlsWidgetsAndCollections.009-controls-widgets-and-collections.md`
 to satisfy the branch-traceability rule. Runtime mouse-support remains
 explicitly out of scope for this feature and is handled by a separate later
 requirements block.
@@ -48,14 +48,14 @@ requirements block.
 ## Technical Context
 
 **Language/Version**: C# `latest` on .NET 10 (`net10.0`)  
-**Primary Dependencies**: Existing `TuiVision.Core` geometry/event/buffer types; existing `TuiVision.Controls` control foundation (`TView`, `TGroup`, `TInputLine`, `TListViewer`, `TListBox`, `TScrollBar`, `TScroller`, `TStringList`, `TFileInputLine`, `THistory`, editor-oriented `TIndicator` as a contrast case only); MSTest; Coverlet via `dotnet test --collect:"XPlat Code Coverage"`; conditional `docfx docfx.json`; GitHub Actions for existing CI validation  
+**Primary Dependencies**: Existing `TuiVision.Core` geometry/event/buffer types; existing `TuiVision.Controls` shell foundation delivered in `008-controls-revision` (`TView`, `TGroup`, `TProgram`, `TApplication`, `TMenuItem`, `TStatusItem`, `ShellCommandIds`) plus existing widget/input primitives (`TInputLine`, `TListViewer`, `TListBox`, `TScrollBar`, `TScroller`, `TStringList`, `TFileInputLine`, `THistory`, `ManagedClipboard`, current `TParamText`, editor-oriented `TIndicator` as a contrast case only); MSTest; Coverlet via `dotnet test --collect:"XPlat Code Coverage"`; conditional `docfx docfx.json`; GitHub Actions and existing `tests/TuiVision.Examples.SmokeTests/` infrastructure as downstream context  
 **Storage**: In-memory UI state only in production; source-controlled planning, tests, and proof artifacts in `specs/`, `tests/`, and `docs/`; no database or external service storage  
-**Testing**: MSTest-first validation primarily in `tests/TuiVision.Controls.Tests`, including unit-style widget checks plus integration-style coverage for event-loop dispatch, focus transitions, menu execution, dialog interaction, and framework-first acceptance scenarios; full repository validation via `dotnet build --configuration Release`, `dotnet test tests/TuiVision.Controls.Tests/`, `dotnet test tests/TuiVision.Controls.Tests/ --collect:"XPlat Code Coverage"`, `dotnet test`, `dotnet format --verify-no-changes`, and conditional `docfx docfx.json`; later example smoke tests remain explicitly out of scope for this feature  
+**Testing**: MSTest-first validation primarily in `tests/TuiVision.Controls.Tests`, including unit-style widget checks plus integration-style coverage for event-loop dispatch, focus transitions, menu execution, dialog interaction, and framework-first acceptance scenarios; full repository validation via `dotnet build --configuration Release`, `dotnet test tests/TuiVision.Controls.Tests/`, `dotnet test tests/TuiVision.Controls.Tests/ --collect:"XPlat Code Coverage"`, `dotnet test`, `dotnet format --verify-no-changes`, and conditional `docfx docfx.json` followed by `cd tests/web-a11y && npm run test:docfx`; existing example smoke infrastructure remains downstream context rather than this feature's primary acceptance surface  
 **Target Platform**: Managed cross-platform terminal UI on macOS, Linux, and Windows/WSL, with the Multi-Mac workflow (`MacBook Air M2`, `Mac mini M4 Pro`) as the primary development path  
 **Project Type**: Managed .NET library increment in `TuiVision.Controls` with companion test expansion and repository-visible planning/proof updates  
 **Performance Goals**: List navigation, combo-box drop-down updates, determinate progress redraws, and parameterized text refreshes must become visible on the first redraw cycle after the triggering event during normal terminal interaction; focused widget-test slices should remain suitable for repeated local red-green TDD cycles on the primary Macs  
 **Constraints**: Managed-only runtime; no new framework module; acceptance surface primarily in `tests/TuiVision.Controls.Tests`; session-only history; application-internal clipboard is required and host clipboard integration remains optional; editable combo box with visible drop-down is mandatory; determinate numeric progress is mandatory while indeterminate progress remains optional; runtime mouse-support is out of scope; no mandatory example-port delivery in this feature; German-first/English-second CEFR-B2 documentation; numbered-branch version governance in `Directory.Build.props` remains mandatory before any implementation-phase build/test commits  
-**Scale/Scope**: Strengthen existing controls (`TListViewer`, `TListBox`, `TScrollBar`, `TScroller`, `TInputLine`, `TFileInputLine`, `THistory`, `TStringList`) in place; add the missing reusable controls (`TComboBox`, `TProgressBar`, `TParamText`, and the new `ManagedClipboard` surface planned in this branch baseline); expand Controls test coverage with new or broadened test classes; update `docs/project-statistics.md` and rename `Lastenheft_01_ControlsWidgetsAndCollections.md` to `Lastenheft_01_ControlsWidgetsAndCollections_009-controls-widgets-and-collections.md` when the feature is implemented
+**Scale/Scope**: Strengthen existing controls (`TListViewer`, `TListBox`, `TScrollBar`, `TScroller`, `TInputLine`, `TFileInputLine`, `THistory`, `TStringList`, `ManagedClipboard`, and the current `TParamText` baseline) in place; add the missing reusable controls (`TComboBox` and `TProgressBar`) and evolve `TParamText` into the required bounded display surface; expand Controls test coverage with new or broadened test classes; update `docs/project-statistics.md` and rename `Lastenheft_01_ControlsWidgetsAndCollections.md` to `Lastenheft_01_ControlsWidgetsAndCollections.009-controls-widgets-and-collections.md` when the feature is implemented
 
 ## Constitution Check
 
@@ -102,7 +102,7 @@ No constitution exception is required.
   `docs/project-statistics.md` when this planning or implementation work lands.
 - The delivered requirements file must be renamed from
   `Lastenheft_01_ControlsWidgetsAndCollections.md` to
-  `Lastenheft_01_ControlsWidgetsAndCollections_009-controls-widgets-and-collections.md`
+  `Lastenheft_01_ControlsWidgetsAndCollections.009-controls-widgets-and-collections.md`
   once the dedicated feature branch has implemented it.
 
 ## Project Structure
@@ -125,16 +125,16 @@ specs/009-controls-widgets-and-collections/
 ```text
 src/
 └── TuiVision.Controls/
-    ├── ManagedClipboard.cs          # planned in this feature
-    ├── TComboBox.cs                 # planned
+    ├── ManagedClipboard.cs          # existing baseline; strengthened in this feature
+    ├── TComboBox.cs                 # planned new control
     ├── TFileInputLine.cs
     ├── THistory.cs
     ├── TInputLine.cs
     ├── TIndicator.cs                # existing editor-only indicator; not the generic progress surface
     ├── TListBox.cs
     ├── TListViewer.cs
-    ├── TParamText.cs                # planned
-    ├── TProgressBar.cs              # planned
+    ├── TParamText.cs                # existing baseline; extended to bounded view behavior
+    ├── TProgressBar.cs              # planned new control
     ├── TScrollBar.cs
     ├── TScroller.cs
     └── TStringList.cs
@@ -162,14 +162,14 @@ docs/
 │   └── multi-mac-workflow.md
 └── project-statistics.md
 
-Lastenheft_01_ControlsWidgetsAndCollections.md   # implementation follow-through renames this file to Lastenheft_01_ControlsWidgetsAndCollections_009-controls-widgets-and-collections.md
+Lastenheft_01_ControlsWidgetsAndCollections.md   # implementation follow-through renames this file to Lastenheft_01_ControlsWidgetsAndCollections.009-controls-widgets-and-collections.md
 ```
 
 **Structure Decision**: Keep the feature entirely inside the existing
 `TuiVision.Controls` library and `tests/TuiVision.Controls.Tests`. Strengthen
 the existing list/input primitives in place and add only the missing reusable
-widget types needed by the spec (`TComboBox`, `TProgressBar`, `TParamText`,
-and the new managed clipboard surface planned in this branch baseline) rather than
+widget types needed by the spec (`TComboBox`, `TProgressBar`, and the required
+bounded-view evolution of `TParamText` plus strengthened `ManagedClipboard`) rather than
 introducing a dedicated widget subsystem or example-local helper assemblies.
 
 ## Research Focus
@@ -186,13 +186,13 @@ Phase 0 resolves and locks the following planning decisions:
    rather than as a selection-only or history-only surface.
 5. Introduce a dedicated generic determinate progress surface rather than
    repurposing the editor-specific `TIndicator`.
-6. Introduce `TParamText` as a standalone bounded display surface with explicit
-   refresh and clipping semantics.
+6. Extend the existing `TParamText` baseline into a standalone bounded display
+   surface with explicit refresh and clipping semantics.
 7. Keep the mandatory acceptance slice in `tests/TuiVision.Controls.Tests` and
    defer example smoke coverage to later wave-2 delivery branches.
 8. Treat `docs/project-statistics.md` and the rename from
    `Lastenheft_01_ControlsWidgetsAndCollections.md` to
-   `Lastenheft_01_ControlsWidgetsAndCollections_009-controls-widgets-and-collections.md`
+   `Lastenheft_01_ControlsWidgetsAndCollections.009-controls-widgets-and-collections.md`
    as mandatory follow-through surfaces when the feature implementation lands.
 
 ## Phase 0 Research Summary
@@ -209,14 +209,14 @@ See [research.md](research.md) for full detail. Key planning decisions:
    backed by shared list primitives.
 5. Introduce a new generic `TProgressBar` control for determinate progress and
    leave `TIndicator` editor-specific.
-6. Introduce `TParamText` as a bounded formatting view that refreshes and clips
-   full output on redraw.
+6. Extend the existing `TParamText` baseline into a bounded formatting view
+   that refreshes and clips full output on redraw.
 7. Put the required acceptance coverage primarily in
    `tests/TuiVision.Controls.Tests` and defer example-smoke proof to later
    example-delivery features.
 8. Treat `docs/project-statistics.md` and the rename from
    `Lastenheft_01_ControlsWidgetsAndCollections.md` to
-   `Lastenheft_01_ControlsWidgetsAndCollections_009-controls-widgets-and-collections.md`
+   `Lastenheft_01_ControlsWidgetsAndCollections.009-controls-widgets-and-collections.md`
    as mandatory repository follow-through.
 
 ## Phase 1 Design Overview
@@ -227,15 +227,15 @@ See [research.md](research.md) for full detail. Key planning decisions:
 - `THistory` remains the owner of MRU-style session recall buckets, while
   `TFileInputLine` and later `TComboBox` consume those buckets through explicit
   input contracts.
-- `ManagedClipboard` represents the required application-internal clipboard
-  semantics for widget flows without depending on host operating-system
-  clipboard access.
+- `ManagedClipboard` remains the required application-internal clipboard
+  surface and is strengthened for widget flows without depending on host
+  operating-system clipboard access.
 - `TComboBox` becomes the reusable composition point for editable input plus a
   visible drop-down list of choices.
 - `TProgressBar` becomes the reusable determinate progress surface with a
   numeric range and state transitions for running, completed, and canceled.
-- `TParamText` becomes the non-interactive dynamic text surface for formatting
-  runtime values and clipping them to bounds.
+- `TParamText` becomes the bounded non-interactive dynamic text surface for
+  formatting runtime values and clipping them to bounds.
 - Controls-level test coverage owns acceptance for all of the above before any
   later consuming example branch adds smoke tests.
 

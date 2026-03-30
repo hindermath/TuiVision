@@ -1,0 +1,554 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.TFileInfo
+  commentId: T:TuiVision.Controls.TFileInfo
+  id: TFileInfo
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.TFileInfo.#ctor(System.String,System.Int64,System.DateTime)
+  - TuiVision.Controls.TFileInfo.FileName
+  - TuiVision.Controls.TFileInfo.LastModified
+  - TuiVision.Controls.TFileInfo.Size
+  langs:
+  - csharp
+  - vb
+  name: TFileInfo
+  nameWithType: TFileInfo
+  fullName: TuiVision.Controls.TFileInfo
+  type: Struct
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileInfo.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TFileInfo
+    path: src/TuiVision.Controls/TFileInfo.cs
+    startLine: 15
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Dateimetadaten als managed Gegenstück zu <code>TFileInfo</code> aus Turbo Vision
+
+    (<code>tfileinf.cc</code>).
+
+
+    File metadata as a managed counterpart to <code>TFileInfo</code> from Turbo Vision
+
+    (<code>tfileinf.cc</code>).
+  example: []
+  syntax:
+    content: 'public readonly record struct TFileInfo : IEquatable<TFileInfo>'
+    content.vb: Public Structure TFileInfo Implements IEquatable(Of TFileInfo)
+  implements:
+  - System.IEquatable{TuiVision.Controls.TFileInfo}
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: TuiVision.Controls.TFileInfo.#ctor(System.String,System.Int64,System.DateTime)
+  commentId: M:TuiVision.Controls.TFileInfo.#ctor(System.String,System.Int64,System.DateTime)
+  id: '#ctor(System.String,System.Int64,System.DateTime)'
+  parent: TuiVision.Controls.TFileInfo
+  langs:
+  - csharp
+  - vb
+  name: TFileInfo(string, long, DateTime)
+  nameWithType: TFileInfo.TFileInfo(string, long, DateTime)
+  fullName: TuiVision.Controls.TFileInfo.TFileInfo(string, long, System.DateTime)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileInfo.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Controls/TFileInfo.cs
+    startLine: 15
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Dateimetadaten als managed Gegenstück zu <code>TFileInfo</code> aus Turbo Vision
+
+    (<code>tfileinf.cc</code>).
+
+
+    File metadata as a managed counterpart to <code>TFileInfo</code> from Turbo Vision
+
+    (<code>tfileinf.cc</code>).
+  example: []
+  syntax:
+    content: public TFileInfo(string FileName, long Size, DateTime LastModified)
+    parameters:
+    - id: FileName
+      type: System.String
+      description: Der Dateiname. / The file name.
+    - id: Size
+      type: System.Int64
+      description: Die Dateigröße in Bytes. / The file size in bytes.
+    - id: LastModified
+      type: System.DateTime
+      description: Der Änderungszeitpunkt. / The last modification timestamp.
+    content.vb: Public Sub New(FileName As String, Size As Long, LastModified As Date)
+  overload: TuiVision.Controls.TFileInfo.#ctor*
+  nameWithType.vb: TFileInfo.New(String, Long, Date)
+  fullName.vb: TuiVision.Controls.TFileInfo.New(String, Long, Date)
+  name.vb: New(String, Long, Date)
+- uid: TuiVision.Controls.TFileInfo.FileName
+  commentId: P:TuiVision.Controls.TFileInfo.FileName
+  id: FileName
+  parent: TuiVision.Controls.TFileInfo
+  langs:
+  - csharp
+  - vb
+  name: FileName
+  nameWithType: TFileInfo.FileName
+  fullName: TuiVision.Controls.TFileInfo.FileName
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileInfo.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: FileName
+    path: src/TuiVision.Controls/TFileInfo.cs
+    startLine: 15
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Der Dateiname. / The file name.
+  example: []
+  syntax:
+    content: public string FileName { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property FileName As String
+  overload: TuiVision.Controls.TFileInfo.FileName*
+- uid: TuiVision.Controls.TFileInfo.Size
+  commentId: P:TuiVision.Controls.TFileInfo.Size
+  id: Size
+  parent: TuiVision.Controls.TFileInfo
+  langs:
+  - csharp
+  - vb
+  name: Size
+  nameWithType: TFileInfo.Size
+  fullName: TuiVision.Controls.TFileInfo.Size
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileInfo.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Size
+    path: src/TuiVision.Controls/TFileInfo.cs
+    startLine: 15
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Die Dateigröße in Bytes. / The file size in bytes.
+  example: []
+  syntax:
+    content: public long Size { get; init; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property Size As Long
+  overload: TuiVision.Controls.TFileInfo.Size*
+- uid: TuiVision.Controls.TFileInfo.LastModified
+  commentId: P:TuiVision.Controls.TFileInfo.LastModified
+  id: LastModified
+  parent: TuiVision.Controls.TFileInfo
+  langs:
+  - csharp
+  - vb
+  name: LastModified
+  nameWithType: TFileInfo.LastModified
+  fullName: TuiVision.Controls.TFileInfo.LastModified
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileInfo.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: LastModified
+    path: src/TuiVision.Controls/TFileInfo.cs
+    startLine: 15
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Der Änderungszeitpunkt. / The last modification timestamp.
+  example: []
+  syntax:
+    content: public DateTime LastModified { get; init; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property LastModified As Date
+  overload: TuiVision.Controls.TFileInfo.LastModified*
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: System.IEquatable{TuiVision.Controls.TFileInfo}
+  commentId: T:System.IEquatable{TuiVision.Controls.TFileInfo}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<TFileInfo>
+  nameWithType: IEquatable<TFileInfo>
+  fullName: System.IEquatable<TuiVision.Controls.TFileInfo>
+  nameWithType.vb: IEquatable(Of TFileInfo)
+  fullName.vb: System.IEquatable(Of TuiVision.Controls.TFileInfo)
+  name.vb: IEquatable(Of TFileInfo)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: TuiVision.Controls.TFileInfo
+    name: TFileInfo
+    href: TuiVision.Controls.TFileInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Controls.TFileInfo
+    name: TFileInfo
+    href: TuiVision.Controls.TFileInfo.html
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TuiVision.Controls.TFileInfo.#ctor*
+  commentId: Overload:TuiVision.Controls.TFileInfo.#ctor
+  href: TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo__ctor_System_String_System_Int64_System_DateTime_
+  name: TFileInfo
+  nameWithType: TFileInfo.TFileInfo
+  fullName: TuiVision.Controls.TFileInfo.TFileInfo
+  nameWithType.vb: TFileInfo.New
+  fullName.vb: TuiVision.Controls.TFileInfo.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: TuiVision.Controls.TFileInfo.FileName*
+  commentId: Overload:TuiVision.Controls.TFileInfo.FileName
+  href: TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo_FileName
+  name: FileName
+  nameWithType: TFileInfo.FileName
+  fullName: TuiVision.Controls.TFileInfo.FileName
+- uid: TuiVision.Controls.TFileInfo.Size*
+  commentId: Overload:TuiVision.Controls.TFileInfo.Size
+  href: TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo_Size
+  name: Size
+  nameWithType: TFileInfo.Size
+  fullName: TuiVision.Controls.TFileInfo.Size
+- uid: TuiVision.Controls.TFileInfo.LastModified*
+  commentId: Overload:TuiVision.Controls.TFileInfo.LastModified
+  href: TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo_LastModified
+  name: LastModified
+  nameWithType: TFileInfo.LastModified
+  fullName: TuiVision.Controls.TFileInfo.LastModified

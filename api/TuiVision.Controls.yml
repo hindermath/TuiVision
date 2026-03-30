@@ -4,12 +4,20 @@ items:
   commentId: N:TuiVision.Controls
   id: TuiVision.Controls
   children:
+  - TuiVision.Controls.ManagedClipboard
+  - TuiVision.Controls.MenuLayoutSlot
   - TuiVision.Controls.ShellCommandIds
   - TuiVision.Controls.TApplication
   - TuiVision.Controls.TButton
   - TuiVision.Controls.TButtonFlags
   - TuiVision.Controls.TCheckBoxes
   - TuiVision.Controls.TCluster
+  - TuiVision.Controls.TColorDialog
+  - TuiVision.Controls.TColorDisplay
+  - TuiVision.Controls.TColorGroup
+  - TuiVision.Controls.TColorItem
+  - TuiVision.Controls.TColorSelector
+  - TuiVision.Controls.TConfigFile
   - TuiVision.Controls.TDesktop
   - TuiVision.Controls.TDialog
   - TuiVision.Controls.TDirListBox
@@ -19,17 +27,20 @@ items:
   - TuiVision.Controls.TFileDialogMode
   - TuiVision.Controls.TFileEditor
   - TuiVision.Controls.TFileEntryKind
+  - TuiVision.Controls.TFileInfo
   - TuiVision.Controls.TFileInputLine
   - TuiVision.Controls.TFileList
   - TuiVision.Controls.TFileSaveConflict
   - TuiVision.Controls.TFileSaveConflictKind
   - TuiVision.Controls.TFileSelectionInfo
   - TuiVision.Controls.TFileSnapshot
+  - TuiVision.Controls.TFilterValidator
   - TuiVision.Controls.TGroup
   - TuiVision.Controls.THelpViewer
   - TuiVision.Controls.THelpWindow
   - TuiVision.Controls.THistory
   - TuiVision.Controls.TIndicator
+  - TuiVision.Controls.TIniFile
   - TuiVision.Controls.TInputLine
   - TuiVision.Controls.TLabel
   - TuiVision.Controls.TLineEndingMode
@@ -38,17 +49,27 @@ items:
   - TuiVision.Controls.TMemo
   - TuiVision.Controls.TMenuBar
   - TuiVision.Controls.TMenuItem
+  - TuiVision.Controls.TMonoSelector
+  - TuiVision.Controls.TPalette
+  - TuiVision.Controls.TParamText
   - TuiVision.Controls.TProgram
   - TuiVision.Controls.TRadioButtons
+  - TuiVision.Controls.TRangeValidator
   - TuiVision.Controls.TScrollBar
   - TuiVision.Controls.TScroller
   - TuiVision.Controls.TStaticText
+  - TuiVision.Controls.TStatusDef
   - TuiVision.Controls.TStatusItem
   - TuiVision.Controls.TStatusLine
   - TuiVision.Controls.TStringList
+  - TuiVision.Controls.TSubMenu
+  - TuiVision.Controls.TValidator
   - TuiVision.Controls.TView
   - TuiVision.Controls.TViewOptions
   - TuiVision.Controls.TViewState
+  - TuiVision.Controls.TWindow
+  - TuiVision.Controls.TvUIStrings
+  - TuiVision.Controls.WindowFlags
   langs:
   - csharp
   - vb
@@ -59,6 +80,12 @@ items:
   assemblies:
   - TuiVision.Controls
 references:
+- uid: TuiVision.Controls.ManagedClipboard
+  commentId: T:TuiVision.Controls.ManagedClipboard
+  href: TuiVision.Controls.ManagedClipboard.html
+  name: ManagedClipboard
+  nameWithType: ManagedClipboard
+  fullName: TuiVision.Controls.ManagedClipboard
 - uid: TuiVision.Controls.ShellCommandIds
   commentId: T:TuiVision.Controls.ShellCommandIds
   href: TuiVision.Controls.ShellCommandIds.html
@@ -97,6 +124,46 @@ references:
   name: TCluster
   nameWithType: TCluster
   fullName: TuiVision.Controls.TCluster
+- uid: TuiVision.Controls.TColorDialog
+  commentId: T:TuiVision.Controls.TColorDialog
+  href: TuiVision.Controls.TColorDialog.html
+  name: TColorDialog
+  nameWithType: TColorDialog
+  fullName: TuiVision.Controls.TColorDialog
+- uid: TuiVision.Controls.TColorDisplay
+  commentId: T:TuiVision.Controls.TColorDisplay
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TColorDisplay.html
+  name: TColorDisplay
+  nameWithType: TColorDisplay
+  fullName: TuiVision.Controls.TColorDisplay
+- uid: TuiVision.Controls.TColorGroup
+  commentId: T:TuiVision.Controls.TColorGroup
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TColorGroup.html
+  name: TColorGroup
+  nameWithType: TColorGroup
+  fullName: TuiVision.Controls.TColorGroup
+- uid: TuiVision.Controls.TColorItem
+  commentId: T:TuiVision.Controls.TColorItem
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TColorItem.html
+  name: TColorItem
+  nameWithType: TColorItem
+  fullName: TuiVision.Controls.TColorItem
+- uid: TuiVision.Controls.TColorSelector
+  commentId: T:TuiVision.Controls.TColorSelector
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TColorSelector.html
+  name: TColorSelector
+  nameWithType: TColorSelector
+  fullName: TuiVision.Controls.TColorSelector
+- uid: TuiVision.Controls.TConfigFile
+  commentId: T:TuiVision.Controls.TConfigFile
+  href: TuiVision.Controls.TConfigFile.html
+  name: TConfigFile
+  nameWithType: TConfigFile
+  fullName: TuiVision.Controls.TConfigFile
 - uid: TuiVision.Controls.TDesktop
   commentId: T:TuiVision.Controls.TDesktop
   parent: TuiVision.Controls
@@ -176,6 +243,12 @@ references:
   name: TFileEditor
   nameWithType: TFileEditor
   fullName: TuiVision.Controls.TFileEditor
+- uid: TuiVision.Controls.TFileInfo
+  commentId: T:TuiVision.Controls.TFileInfo
+  href: TuiVision.Controls.TFileInfo.html
+  name: TFileInfo
+  nameWithType: TFileInfo
+  fullName: TuiVision.Controls.TFileInfo
 - uid: TuiVision.Controls.TFileInputLine
   commentId: T:TuiVision.Controls.TFileInputLine
   parent: TuiVision.Controls
@@ -204,6 +277,12 @@ references:
   name: TFileList
   nameWithType: TFileList
   fullName: TuiVision.Controls.TFileList
+- uid: TuiVision.Controls.TFilterValidator
+  commentId: T:TuiVision.Controls.TFilterValidator
+  href: TuiVision.Controls.TFilterValidator.html
+  name: TFilterValidator
+  nameWithType: TFilterValidator
+  fullName: TuiVision.Controls.TFilterValidator
 - uid: TuiVision.Controls.TGroup
   commentId: T:TuiVision.Controls.TGroup
   parent: TuiVision.Controls
@@ -237,6 +316,12 @@ references:
   name: TIndicator
   nameWithType: TIndicator
   fullName: TuiVision.Controls.TIndicator
+- uid: TuiVision.Controls.TIniFile
+  commentId: T:TuiVision.Controls.TIniFile
+  href: TuiVision.Controls.TIniFile.html
+  name: TIniFile
+  nameWithType: TIniFile
+  fullName: TuiVision.Controls.TIniFile
 - uid: TuiVision.Controls.TInputLine
   commentId: T:TuiVision.Controls.TInputLine
   parent: TuiVision.Controls
@@ -270,6 +355,12 @@ references:
   name: TMemo
   nameWithType: TMemo
   fullName: TuiVision.Controls.TMemo
+- uid: TuiVision.Controls.MenuLayoutSlot
+  commentId: T:TuiVision.Controls.MenuLayoutSlot
+  href: TuiVision.Controls.MenuLayoutSlot.html
+  name: MenuLayoutSlot
+  nameWithType: MenuLayoutSlot
+  fullName: TuiVision.Controls.MenuLayoutSlot
 - uid: TuiVision.Controls.TMenuBar
   commentId: T:TuiVision.Controls.TMenuBar
   parent: TuiVision.Controls
@@ -284,6 +375,25 @@ references:
   name: TMenuItem
   nameWithType: TMenuItem
   fullName: TuiVision.Controls.TMenuItem
+- uid: TuiVision.Controls.TMonoSelector
+  commentId: T:TuiVision.Controls.TMonoSelector
+  href: TuiVision.Controls.TMonoSelector.html
+  name: TMonoSelector
+  nameWithType: TMonoSelector
+  fullName: TuiVision.Controls.TMonoSelector
+- uid: TuiVision.Controls.TPalette
+  commentId: T:TuiVision.Controls.TPalette
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TPalette.html
+  name: TPalette
+  nameWithType: TPalette
+  fullName: TuiVision.Controls.TPalette
+- uid: TuiVision.Controls.TParamText
+  commentId: T:TuiVision.Controls.TParamText
+  href: TuiVision.Controls.TParamText.html
+  name: TParamText
+  nameWithType: TParamText
+  fullName: TuiVision.Controls.TParamText
 - uid: TuiVision.Controls.TProgram
   commentId: T:TuiVision.Controls.TProgram
   parent: TuiVision.Controls
@@ -297,6 +407,12 @@ references:
   name: TRadioButtons
   nameWithType: TRadioButtons
   fullName: TuiVision.Controls.TRadioButtons
+- uid: TuiVision.Controls.TRangeValidator
+  commentId: T:TuiVision.Controls.TRangeValidator
+  href: TuiVision.Controls.TRangeValidator.html
+  name: TRangeValidator
+  nameWithType: TRangeValidator
+  fullName: TuiVision.Controls.TRangeValidator
 - uid: TuiVision.Controls.TScrollBar
   commentId: T:TuiVision.Controls.TScrollBar
   parent: TuiVision.Controls
@@ -318,6 +434,13 @@ references:
   name: TStaticText
   nameWithType: TStaticText
   fullName: TuiVision.Controls.TStaticText
+- uid: TuiVision.Controls.TStatusDef
+  commentId: T:TuiVision.Controls.TStatusDef
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TStatusDef.html
+  name: TStatusDef
+  nameWithType: TStatusDef
+  fullName: TuiVision.Controls.TStatusDef
 - uid: TuiVision.Controls.TStatusItem
   commentId: T:TuiVision.Controls.TStatusItem
   parent: TuiVision.Controls
@@ -339,6 +462,20 @@ references:
   name: TStringList
   nameWithType: TStringList
   fullName: TuiVision.Controls.TStringList
+- uid: TuiVision.Controls.TSubMenu
+  commentId: T:TuiVision.Controls.TSubMenu
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TSubMenu.html
+  name: TSubMenu
+  nameWithType: TSubMenu
+  fullName: TuiVision.Controls.TSubMenu
+- uid: TuiVision.Controls.TValidator
+  commentId: T:TuiVision.Controls.TValidator
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TValidator.html
+  name: TValidator
+  nameWithType: TValidator
+  fullName: TuiVision.Controls.TValidator
 - uid: TuiVision.Controls.TViewState
   commentId: T:TuiVision.Controls.TViewState
   parent: TuiVision.Controls
@@ -360,6 +497,25 @@ references:
   name: TView
   nameWithType: TView
   fullName: TuiVision.Controls.TView
+- uid: TuiVision.Controls.TvUIStrings
+  commentId: T:TuiVision.Controls.TvUIStrings
+  href: TuiVision.Controls.TvUIStrings.html
+  name: TvUIStrings
+  nameWithType: TvUIStrings
+  fullName: TuiVision.Controls.TvUIStrings
+- uid: TuiVision.Controls.TWindow
+  commentId: T:TuiVision.Controls.TWindow
+  href: TuiVision.Controls.TWindow.html
+  name: TWindow
+  nameWithType: TWindow
+  fullName: TuiVision.Controls.TWindow
+- uid: TuiVision.Controls.WindowFlags
+  commentId: T:TuiVision.Controls.WindowFlags
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.WindowFlags.html
+  name: WindowFlags
+  nameWithType: WindowFlags
+  fullName: TuiVision.Controls.WindowFlags
 - uid: TuiVision.Controls
   commentId: N:TuiVision.Controls
   href: TuiVision.html

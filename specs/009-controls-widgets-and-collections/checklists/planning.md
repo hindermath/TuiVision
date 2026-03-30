@@ -16,7 +16,7 @@
 
 - [x] CHK003 Are the required repository follow-through surfaces fully named and scoped, including `docs/project-statistics.md` and the branch-suffixed Lastenheft rename rule? [Completeness, Plan §§Summary, Constitution Check, Research Decision 8, Quickstart §Planned Validation Flow]
 > **Durchführungshinweis**: Prüfe, ob alle verpflichtenden Dokument- und Governance-Follow-throughs in mehr als einem Artefakt sichtbar sind und nicht nur in einem einzelnen Nebensatz des Plans versteckt bleiben.
-> **Review-Notiz**: `plan.md`, `research.md` und `quickstart.md` wurden auf denselben operablen Follow-through gebracht: `docs/project-statistics.md` plus die konkrete Umbenennung nach `Lastenheft_01_ControlsWidgetsAndCollections_009-controls-widgets-and-collections.md`.
+> **Review-Notiz**: `plan.md`, `research.md` und `quickstart.md` wurden auf denselben operablen Follow-through gebracht: `docs/project-statistics.md` plus die konkrete Umbenennung nach `Lastenheft_01_ControlsWidgetsAndCollections.009-controls-widgets-and-collections.md`.
 
 - [x] CHK004 Are the later consuming wave-2 examples documented consistently as downstream consumers rather than as independent in-scope implementation targets? [Completeness, Spec §User Scenarios, Plan §§Terminology & Operational Definitions, Scenario Matrix]
 > **Durchführungshinweis**: Vergleiche die Erwähnungen von `clipboard`, `dyntxt`, `inplis`, `listvi`, `progba`, `tcombo` und `tprogb` in allen Artefakten und prüfe, ob sie überall nur als Verbraucher des Frameworks auftauchen.
@@ -81,7 +81,7 @@
 
 - [x] CHK020 Are dependencies on existing Controls primitives documented precisely enough to show what is being extended in place versus what is newly introduced? [Dependencies & Assumptions, Plan §Technical Context, Project Structure, Research Decisions 2, 4, 5, 6]
 > **Durchführungshinweis**: Prüfe, ob der Plan klar trennt zwischen bestehendem Typbestand (`TListViewer`, `TInputLine`, `THistory` usw.) und neuen Typen (`TComboBox`, `TProgressBar`, `TParamText`, geplante Tests). Unklare Trennungen erschweren die Task-Zerlegung.
-> **Review-Notiz**: Die Trennung wurde nachgeschärft: `ManagedClipboard` ist jetzt in `plan.md` explizit als neuer, in diesem Branch geplanter Surface-Baustein beschrieben und nicht mehr als unklare Mischform aus vorhanden oder verstärkt.
+> **Review-Notiz**: Nach der Revalidierung gegen `main` ist die Trennung wieder klar: `ManagedClipboard.cs` und `TParamText.cs` existieren bereits in der Basis, waehrend `TComboBox.cs` und `TProgressBar.cs` weiterhin neue 009-Lieferobjekte bleiben.
 
 - [x] CHK021 Are the cross-platform validation assumptions proportionate and explicit, especially regarding Multi-Mac as primary path and Linux/Windows/WSL as required supplemental evidence? [Dependencies & Assumptions, Plan §§Technical Context, Constitution Check, Quickstart §Prerequisites]
 > **Durchführungshinweis**: Vergleiche Technical Context, Constitution Check und Quickstart; wenn eine Plattform nur in einem Artefakt genannt wird oder der Evidenzanspruch schwankt, ist die Annahme nicht sauber genug dokumentiert.
@@ -93,15 +93,15 @@
 
 - [x] CHK023 Are there any remaining places where "planned or strengthened in this feature" leaves ownership of `ManagedClipboard` ambiguous instead of stating whether the file already exists and what review consequence that has? [Ambiguity, Plan §Project Structure]
 > **Durchführungshinweis**: Solche Formulierungen sind typische Rest-Unschaerfen aus frühen Planfassungen. Prüfe, ob der Wortlaut über vorhandene vs. neue Dateien für Reviewer und spätere Tasks eindeutig genug ist.
-> **Review-Notiz**: Korrigiert. `ManagedClipboard.cs` ist im aktuellen Branch-Baseline nicht vorhanden; `plan.md` benennt die Datei jetzt eindeutig als geplant statt als "planned or strengthened".
+> **Review-Notiz**: Revalidiert. `ManagedClipboard.cs` ist seit `main` Bestandteil der Basis; `plan.md` benennt die Datei nun konsistent als bestaehenden Surface-Baustein, der in 009 gehaertet wird.
 
 - [x] CHK024 Do `plan.md` and `research.md` avoid contradicting each other on whether `TParamText` already exists conceptually versus being introduced as a new reusable surface? [Conflict, Plan §§Technical Context, Phase 0 Research Summary, Research Decision 6]
 > **Durchführungshinweis**: Vergleiche beide Artefakte auf Sprachmuster wie "add", "introduce", "strengthen" oder "planned". Unterschiedliche Verben können verdeckte Widersprüche über den erwarteten Umbauumfang anzeigen.
-> **Review-Notiz**: Nach der Review bleibt `TParamText` in allen Planartefakten konsistent als neuer wiederverwendbarer Surface-Baustein beschrieben; kein Restwiderspruch zwischen `plan.md` und `research.md`.
+> **Review-Notiz**: Nach der Revalidierung bleibt `TParamText` artefaktuebergreifend konsistent als vorhandener Basis-Typ beschrieben, der in 009 zum bounded display surface erweitert wird; kein Restwiderspruch zwischen `plan.md` und `research.md`.
 
 - [x] CHK025 Is the branch-traceability rename rule for the Lastenheft described consistently enough that later tasks can operationalize it without guessing the target filename shape? [Clarity, Governance, Plan §§Summary, Constitution Check, Research Decision 8]
 > **Durchführungshinweis**: Kontrolliere, ob der Plan die Umbenennung nur erwähnt oder ob aus dem Text klar hervorgeht, dass die Branchkennung Teil des finalen Dateinamens werden muss.
-> **Review-Notiz**: Die Zielform ist jetzt konkretisiert und artefaktübergreifend konsistent: `Lastenheft_01_ControlsWidgetsAndCollections_009-controls-widgets-and-collections.md`.
+> **Review-Notiz**: Die Zielform ist jetzt konkretisiert und artefaktuebergreifend konsistent: `Lastenheft_01_ControlsWidgetsAndCollections.009-controls-widgets-and-collections.md`.
 
 - [x] CHK026 Are all references to the consuming examples framed as downstream traceability aids rather than accidental hidden requirements to pre-design their example-local behavior now? [Consistency, Scope, Spec §User Scenarios, Plan §§Summary, Scenario Matrix]
 > **Durchführungshinweis**: Lies alle Beispielreferenzen mit der Frage, ob sie noch Framework-Readiness prüfen oder bereits Beispielimplementierung vorwegnehmen. Alles Letztere gehört aus einer Plan-Review-Perspektive markiert.

@@ -23,7 +23,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TFileEditor
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -101,6 +101,7 @@ items:
   - TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.DrawView
+  - TuiVision.Controls.TView.HelpContext
   - TuiVision.Core.TObject.ShutDown
   - TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
   - System.Object.Equals(System.Object)
@@ -123,7 +124,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -165,7 +166,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: FileName
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -200,7 +201,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: LineEndingMode
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -235,7 +236,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Snapshot
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -270,7 +271,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: ConfirmOverwrite
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -305,7 +306,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: LoadFile
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -344,7 +345,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Save
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -379,7 +380,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: SaveAs
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -1594,6 +1595,13 @@ references:
     href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView
   - name: (
   - name: )
+- uid: TuiVision.Controls.TView.HelpContext
+  commentId: P:TuiVision.Controls.TView.HelpContext
+  parent: TuiVision.Controls.TView
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext
+  name: HelpContext
+  nameWithType: TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
 - uid: TuiVision.Core.TObject.ShutDown
   commentId: M:TuiVision.Core.TObject.ShutDown
   parent: TuiVision.Core.TObject

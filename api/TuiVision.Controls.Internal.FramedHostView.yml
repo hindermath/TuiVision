@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/Internal/FramedHostView.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: FramedHostView
     path: src/TuiVision.Controls/Internal/FramedHostView.cs
@@ -54,6 +54,7 @@ items:
   - TuiVision.Controls.TGroup.SetFocus(TuiVision.Controls.TView)
   - TuiVision.Controls.TGroup.CurrentChanged
   - TuiVision.Controls.TGroup.SelectNext(System.Boolean)
+  - TuiVision.Controls.TGroup.GetDrawBuffer
   - TuiVision.Controls.TGroup.LockDraw
   - TuiVision.Controls.TGroup.UnlockDraw
   - TuiVision.Controls.TGroup.SetState(TuiVision.Controls.TViewState,System.Boolean)
@@ -79,7 +80,7 @@ items:
   - TuiVision.Controls.TView.MakeLocal(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.MouseInView(TuiVision.Core.TPoint)
   - TuiVision.Controls.TView.DrawView
-  - TuiVision.Controls.TView.GetDrawBuffer
+  - TuiVision.Controls.TView.HelpContext
   - TuiVision.Controls.TView.GetStatusHints
   - TuiVision.Core.TObject.Destroy(TuiVision.Core.TObject)
   - System.Object.Equals(System.Object)
@@ -103,7 +104,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/Internal/FramedHostView.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/Internal/FramedHostView.cs
@@ -145,7 +146,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/Internal/FramedHostView.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Title
     path: src/TuiVision.Controls/Internal/FramedHostView.cs
@@ -180,7 +181,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/Internal/FramedHostView.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/Internal/FramedHostView.cs
@@ -213,7 +214,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/Internal/FramedHostView.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/Internal/FramedHostView.cs
@@ -250,7 +251,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/Internal/FramedHostView.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: RequestClose
     path: src/TuiVision.Controls/Internal/FramedHostView.cs
@@ -285,7 +286,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/Internal/FramedHostView.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: CanClose
     path: src/TuiVision.Controls/Internal/FramedHostView.cs
@@ -519,6 +520,25 @@ references:
     name: Boolean
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: TuiVision.Controls.TGroup.GetDrawBuffer
+  commentId: M:TuiVision.Controls.TGroup.GetDrawBuffer
+  parent: TuiVision.Controls.TGroup
+  href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer
+  name: GetDrawBuffer()
+  nameWithType: TGroup.GetDrawBuffer()
+  fullName: TuiVision.Controls.TGroup.GetDrawBuffer()
+  spec.csharp:
+  - uid: TuiVision.Controls.TGroup.GetDrawBuffer
+    name: GetDrawBuffer
+    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Controls.TGroup.GetDrawBuffer
+    name: GetDrawBuffer
+    href: TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer
+  - name: (
   - name: )
 - uid: TuiVision.Controls.TGroup.LockDraw
   commentId: M:TuiVision.Controls.TGroup.LockDraw
@@ -1052,25 +1072,13 @@ references:
     href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_DrawView
   - name: (
   - name: )
-- uid: TuiVision.Controls.TView.GetDrawBuffer
-  commentId: M:TuiVision.Controls.TView.GetDrawBuffer
+- uid: TuiVision.Controls.TView.HelpContext
+  commentId: P:TuiVision.Controls.TView.HelpContext
   parent: TuiVision.Controls.TView
-  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
-  name: GetDrawBuffer()
-  nameWithType: TView.GetDrawBuffer()
-  fullName: TuiVision.Controls.TView.GetDrawBuffer()
-  spec.csharp:
-  - uid: TuiVision.Controls.TView.GetDrawBuffer
-    name: GetDrawBuffer
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: TuiVision.Controls.TView.GetDrawBuffer
-    name: GetDrawBuffer
-    href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_GetDrawBuffer
-  - name: (
-  - name: )
+  href: TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext
+  name: HelpContext
+  nameWithType: TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
 - uid: TuiVision.Controls.TView.GetStatusHints
   commentId: M:TuiVision.Controls.TView.GetStatusHints
   parent: TuiVision.Controls.TView

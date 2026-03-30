@@ -1,0 +1,201 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.WindowFlags
+  commentId: T:TuiVision.Controls.WindowFlags
+  id: WindowFlags
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.WindowFlags.Close
+  - TuiVision.Controls.WindowFlags.Move
+  - TuiVision.Controls.WindowFlags.None
+  langs:
+  - csharp
+  - vb
+  name: WindowFlags
+  nameWithType: WindowFlags
+  fullName: TuiVision.Controls.WindowFlags
+  type: Enum
+  source:
+    remote:
+      path: src/TuiVision.Controls/WindowFlags.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: WindowFlags
+    path: src/TuiVision.Controls/WindowFlags.cs
+    startLine: 14
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Steuert sichtbare Fensterfähigkeiten: Schließen und Verschieben.
+
+    Nur <xref href="TuiVision.Controls.WindowFlags.Close" data-throw-if-not-resolved="false"></xref> und <xref href="TuiVision.Controls.WindowFlags.Move" data-throw-if-not-resolved="false"></xref> sind für diese Revision definiert;
+
+    Zoom und Grow liegen außerhalb des aktuellen Geltungsbereichs.
+
+
+    Controls visible window capabilities: closing and moving.
+
+    Only <xref href="TuiVision.Controls.WindowFlags.Close" data-throw-if-not-resolved="false"></xref> and <xref href="TuiVision.Controls.WindowFlags.Move" data-throw-if-not-resolved="false"></xref> are defined for this revision;
+
+    zoom and grow are out of scope.
+  example: []
+  syntax:
+    content: >-
+      [Flags]
+
+      public enum WindowFlags
+    content.vb: >-
+      <Flags>
+
+      Public Enum WindowFlags
+  attributes:
+  - type: System.FlagsAttribute
+    ctor: System.FlagsAttribute.#ctor
+    arguments: []
+- uid: TuiVision.Controls.WindowFlags.None
+  commentId: F:TuiVision.Controls.WindowFlags.None
+  id: None
+  parent: TuiVision.Controls.WindowFlags
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: WindowFlags.None
+  fullName: TuiVision.Controls.WindowFlags.None
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/WindowFlags.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: None
+    path: src/TuiVision.Controls/WindowFlags.cs
+    startLine: 22
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Keine besonderen Fähigkeiten aktiviert.
+
+
+    No special capabilities enabled.
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: TuiVision.Controls.WindowFlags
+- uid: TuiVision.Controls.WindowFlags.Close
+  commentId: F:TuiVision.Controls.WindowFlags.Close
+  id: Close
+  parent: TuiVision.Controls.WindowFlags
+  langs:
+  - csharp
+  - vb
+  name: Close
+  nameWithType: WindowFlags.Close
+  fullName: TuiVision.Controls.WindowFlags.Close
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/WindowFlags.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Close
+    path: src/TuiVision.Controls/WindowFlags.cs
+    startLine: 31
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Zeigt ein Schließen-Symbol (×) in der Titelzeile an und erlaubt das Schließen
+
+    per Ctrl+W sowie per Escape (wenn kein Kind das Ereignis vorher verarbeitet).
+
+
+    Displays a close affordance (×) in the title bar and allows closing
+
+    with Ctrl+W or Escape (when no child has consumed the event first).
+  example: []
+  syntax:
+    content: Close = 1
+    return:
+      type: TuiVision.Controls.WindowFlags
+- uid: TuiVision.Controls.WindowFlags.Move
+  commentId: F:TuiVision.Controls.WindowFlags.Move
+  id: Move
+  parent: TuiVision.Controls.WindowFlags
+  langs:
+  - csharp
+  - vb
+  name: Move
+  nameWithType: WindowFlags.Move
+  fullName: TuiVision.Controls.WindowFlags.Move
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/WindowFlags.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Move
+    path: src/TuiVision.Controls/WindowFlags.cs
+    startLine: 40
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Ermöglicht das Verschieben des Fensters per Ctrl+F5 gefolgt von Pfeiltasten.
+
+    Enter übernimmt die neue Position; Escape stellt die ursprüngliche Position wieder her.
+
+
+    Enables moving the window via Ctrl+F5 followed by arrow keys.
+
+    Enter commits the new position; Escape restores the original position.
+  example: []
+  syntax:
+    content: Move = 2
+    return:
+      type: TuiVision.Controls.WindowFlags
+references:
+- uid: TuiVision.Controls.WindowFlags.Close
+  commentId: F:TuiVision.Controls.WindowFlags.Close
+  href: TuiVision.Controls.WindowFlags.html#TuiVision_Controls_WindowFlags_Close
+  name: Close
+  nameWithType: WindowFlags.Close
+  fullName: TuiVision.Controls.WindowFlags.Close
+- uid: TuiVision.Controls.WindowFlags.Move
+  commentId: F:TuiVision.Controls.WindowFlags.Move
+  href: TuiVision.Controls.WindowFlags.html#TuiVision_Controls_WindowFlags_Move
+  name: Move
+  nameWithType: WindowFlags.Move
+  fullName: TuiVision.Controls.WindowFlags.Move
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: TuiVision.Controls.WindowFlags
+  commentId: T:TuiVision.Controls.WindowFlags
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.WindowFlags.html
+  name: WindowFlags
+  nameWithType: WindowFlags
+  fullName: TuiVision.Controls.WindowFlags

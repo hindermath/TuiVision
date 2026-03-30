@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
     <meta charset="utf-8">
       <title>Class TEvent | TuiVision Documentation </title>
@@ -10,13 +10,14 @@
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
+      <link rel="stylesheet" href="../public/accessibility.css">
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/005-driver-consolidation-m07/apiSpec/new?filename=TuiVision_Core_TEvent.md&amp;value=---%0Auid%3A%20TuiVision.Core.TEvent%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Core_TEvent.md&amp;value=---%0Auid%3A%20TuiVision.Core.TEvent%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,6 +32,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
 
       <script type="module" src="./../public/docfx.min.js"></script>
+      <script type="module" src="./../public/accessibility.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -40,20 +42,23 @@
   </head>
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen / Skip to main content</a>
+    <a class="skip-link skip-link-secondary" href="#toc">Zum Inhaltsverzeichnis springen / Skip to table of contents</a>
+
     <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation" aria-label="Primary">
         <div class="container-xxl flex-nowrap">
           <a class="navbar-brand" href="../index.html">
             <img id="logo" class="svg" src="../logo.svg" alt="TuiVision">
             TuiVision
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
+            <i class="bi bi-three-dots" aria-hidden="true"></i>
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
               <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
+                <i class="bi bi-search" aria-hidden="true"></i>
                 <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
@@ -62,7 +67,7 @@
       </nav>
     </header>
 
-    <main class="container-xxl">
+    <main class="container-xxl" id="main-content" tabindex="-1">
       <div class="toc-offcanvas">
         <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
           <div class="offcanvas-header">
@@ -70,7 +75,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+            <nav class="toc" id="toc" aria-label="Table of Contents"></nav>
           </div>
         </div>
       </div>
@@ -78,10 +83,10 @@
       <div class="content">
         <div class="actionbar">
           <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
+            <i class="bi bi-list" aria-hidden="true"></i>
           </button>
 
-          <nav id="breadcrumb"></nav>
+          <nav id="breadcrumb" aria-label="Breadcrumb"></nav>
         </div>
 
         <article data-uid="TuiVision.Core.TEvent">
@@ -89,7 +94,7 @@
 
 
   <h1 id="TuiVision_Core_TEvent" data-uid="TuiVision.Core.TEvent" class="text-break">
-Class TEvent  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TEvent.cs/#L146"><i class="bi bi-code-slash"></i></a>
+Class TEvent  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L146"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -158,7 +163,7 @@ Static factory methods create fully initialized events; direct constructor calls
 
   <h3 id="TuiVision_Core_TEvent_KeyDown" data-uid="TuiVision.Core.TEvent.KeyDown">
   KeyDown
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TEvent.cs/#L182"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L182"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die Tastatur-Nutzdaten. Nur gültig, wenn <a class="xref" href="TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_What">What</a> gleich <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_KeyDown">KeyDown</a> ist.</p>
@@ -191,7 +196,7 @@ Static factory methods create fully initialized events; direct constructor calls
 
   <h3 id="TuiVision_Core_TEvent_Message" data-uid="TuiVision.Core.TEvent.Message">
   Message
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TEvent.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L189"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die Nachrichten-Nutzdaten. Nur gültig, wenn <a class="xref" href="TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_What">What</a> ein Nachrichten-Flag enthält.</p>
@@ -224,7 +229,7 @@ Static factory methods create fully initialized events; direct constructor calls
 
   <h3 id="TuiVision_Core_TEvent_Mouse" data-uid="TuiVision.Core.TEvent.Mouse">
   Mouse
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TEvent.cs/#L175"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L175"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die Maus-Nutzdaten. Nur gültig, wenn <a class="xref" href="TuiVision.Core.TEvent.html#TuiVision_Core_TEvent_What">What</a> ein Mausereignis-Flag enthält.</p>
@@ -257,7 +262,7 @@ Static factory methods create fully initialized events; direct constructor calls
 
   <h3 id="TuiVision_Core_TEvent_What" data-uid="TuiVision.Core.TEvent.What">
   What
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TEvent.cs/#L168"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L168"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Der Typ dieses Ereignisses. Bestimmt, welcher Nutzdatenkanal gültig ist.</p>
@@ -294,7 +299,7 @@ Static factory methods create fully initialized events; direct constructor calls
 
   <h3 id="TuiVision_Core_TEvent_Clear_TuiVision_Core_TObject_" data-uid="TuiVision.Core.TEvent.Clear(TuiVision.Core.TObject)">
   Clear(TObject?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TEvent.cs/#L303"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L303"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Setzt dieses Ereignis auf <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Nothing">Nothing</a> zurück und markiert es als verarbeitet.
@@ -330,7 +335,7 @@ This method is called after a view has fully processed the event.</p>
 
   <h3 id="TuiVision_Core_TEvent_CreateBroadcast_System_UInt16_System_Object_" data-uid="TuiVision.Core.TEvent.CreateBroadcast(System.UInt16,System.Object)">
   CreateBroadcast(ushort, object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TEvent.cs/#L271"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L271"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Erstellt ein Rundfunkereignis, das an alle Ansichten gesendet wird.</p>
@@ -374,7 +379,7 @@ A new <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a> of type <a cl
 
   <h3 id="TuiVision_Core_TEvent_CreateCommand_System_UInt16_System_Object_" data-uid="TuiVision.Core.TEvent.CreateCommand(System.UInt16,System.Object)">
   CreateCommand(ushort, object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TEvent.cs/#L253"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L253"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Erstellt ein Befehlsereignis für ein direktes Ziel.</p>
@@ -418,7 +423,7 @@ A new <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a> of type <a cl
 
   <h3 id="TuiVision_Core_TEvent_CreateKeyDown_TuiVision_Core_TKeyDownEvent_" data-uid="TuiVision.Core.TEvent.CreateKeyDown(TuiVision.Core.TKeyDownEvent)">
   CreateKeyDown(TKeyDownEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TEvent.cs/#L235"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L235"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Erstellt ein Tastaturereignis aus den angegebenen Nutzdaten.</p>
@@ -459,7 +464,7 @@ A new <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a> of type <a cl
 
   <h3 id="TuiVision_Core_TEvent_CreateMouse_TuiVision_Core_TEventKind_TuiVision_Core_TMouseButtons_System_Boolean_TuiVision_Core_TPoint_" data-uid="TuiVision.Core.TEvent.CreateMouse(TuiVision.Core.TEventKind,TuiVision.Core.TMouseButtons,System.Boolean,TuiVision.Core.TPoint)">
   CreateMouse(TEventKind, TMouseButtons, bool, TPoint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TEvent.cs/#L211"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L211"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Erstellt ein Mausereignis mit den angegebenen Nutzdaten.</p>
@@ -517,7 +522,7 @@ Thrown when <code class="paramref">kind</code> does not contain a mouse event fl
 
   <h3 id="TuiVision_Core_TEvent_CreateNone_TuiVision_Core_TObject_" data-uid="TuiVision.Core.TEvent.CreateNone(TuiVision.Core.TObject)">
   CreateNone(TObject?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TEvent.cs/#L288"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L288"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Erstellt ein leeres Ereignis vom Typ <a class="xref" href="TuiVision.Core.TEventKind.html#TuiVision_Core_TEventKind_Nothing">Nothing</a>.</p>
@@ -558,14 +563,14 @@ A new empty <a class="xref" href="TuiVision.Core.TEvent.html">TEvent</a>.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/src/TuiVision.Core/TEvent.cs/#L146" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Core/TEvent.cs/#L146" class="edit-link">Edit this page</a>
         </div>
 
 
       </div>
 
       <div class="affix">
-        <nav id="affix"></nav>
+        <nav id="affix" aria-label="In this article"></nav>
       </div>
     </main>
 

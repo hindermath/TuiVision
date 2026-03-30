@@ -42,6 +42,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Compatibility.TConsoleInputAdapter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Compatibility.TConsoleInputAdapter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Compatibility.TConsoleInputAdapter",
+      "Summary": "<p sourcefile=\"api/TuiVision.Compatibility.TConsoleInputAdapter.yml\" sourcestartlinenumber=\"1\">Verwaltete Eingabe-Bruecke zwischen <xref href=\"System.ConsoleKeyInfo\" data-throw-if-not-resolved=\"false\"></xref> und dem Turbo-Vision-Ereignismodell.\nDie Klasse buendelt die xterm-kompatible Tastaturmenge, die in Phase 8 als Ersatz fuer\nhistorische Raw-Input-Treiber nachgewiesen wird.</p>\n<p sourcefile=\"api/TuiVision.Compatibility.TConsoleInputAdapter.yml\" sourcestartlinenumber=\"5\">Managed input bridge between <xref href=\"System.ConsoleKeyInfo\" data-throw-if-not-resolved=\"false\"></xref> and the Turbo Vision event model.\nThe class bundles the xterm-compatible key subset that Phase 8 uses as proof replacement\nfor the historical raw-input drivers.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Compatibility.TKeyCodeTranslator.yml",
       "output": {
         ".html": {
@@ -109,6 +123,34 @@
       "IsMRef": true,
       "Title": "TuiVision.Controls.Internal",
       "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.ManagedClipboard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.ManagedClipboard.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.ManagedClipboard",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.ManagedClipboard.yml\" sourcestartlinenumber=\"1\">Prozesslokale Text-Zwischenablage als managed Ersatz für <code>osclipboard.cc</code>\nund <code>win32clip.cc</code>.</p>\n<p sourcefile=\"api/TuiVision.Controls.ManagedClipboard.yml\" sourcestartlinenumber=\"4\">Process-local text clipboard as a managed replacement for <code>osclipboard.cc</code>\nand <code>win32clip.cc</code>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.MenuLayoutSlot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.MenuLayoutSlot.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.MenuLayoutSlot",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.MenuLayoutSlot.yml\" sourcestartlinenumber=\"1\">Repräsentiert ein Layout-Slot für einen Top-Level-Menüeintrag.</p>\n<p sourcefile=\"api/TuiVision.Controls.MenuLayoutSlot.yml\" sourcestartlinenumber=\"3\">Represents a layout slot for a top-level menu entry.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -193,6 +235,90 @@
       "IsMRef": true,
       "Title": "TuiVision.Controls.TCluster",
       "Summary": "<p sourcefile=\"api/TuiVision.Controls.TCluster.yml\" sourcestartlinenumber=\"1\">Abstrakte Basis für gruppierte Auswahl-Controls.\nDie Klasse kapselt Item-Verwaltung, Cursor-Navigation und die gemeinsame\nTastaturbehandlung für Checkboxen und Radiobuttons.</p>\n<p sourcefile=\"api/TuiVision.Controls.TCluster.yml\" sourcestartlinenumber=\"5\">Abstract base for grouped selection controls.\nThe class encapsulates item management, cursor navigation, and the shared\nkeyboard handling for check boxes and radio buttons.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TColorDialog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TColorDialog.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TColorDialog",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TColorDialog.yml\" sourcestartlinenumber=\"1\">Einfacher verwalteter Farbkonfigurationsdialog als Gegenstück zu <code>TColorDialog</code>\naus Turbo Vision (<code>tcolordi.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TColorDialog.yml\" sourcestartlinenumber=\"4\">Simple managed colour configuration dialog as a counterpart to <code>TColorDialog</code>\nfrom Turbo Vision (<code>tcolordi.cc</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TColorDisplay.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TColorDisplay.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TColorDisplay",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TColorDisplay.yml\" sourcestartlinenumber=\"1\">Vorder- und Hintergrund-Farbvorschau als managed Gegenstück zu <code>TColorDisplay</code>\naus Turbo Vision (<code>tclrdisp.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TColorDisplay.yml\" sourcestartlinenumber=\"4\">Foreground and background colour preview as a managed counterpart to <code>TColorDisplay</code>\nfrom Turbo Vision (<code>tclrdisp.cc</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TColorGroup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TColorGroup.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TColorGroup",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TColorGroup.yml\" sourcestartlinenumber=\"1\">Gruppiert mehrere Farbelemente als managed Gegenstück zu <code>TColorGroup</code>\naus Turbo Vision (<code>tcolorgr.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TColorGroup.yml\" sourcestartlinenumber=\"4\">Groups multiple colour items as a managed counterpart to <code>TColorGroup</code>\nfrom Turbo Vision (<code>tcolorgr.cc</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TColorItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TColorItem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TColorItem",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TColorItem.yml\" sourcestartlinenumber=\"1\">Benanntes Farbelement als managed Gegenstück zu <code>TColorItem</code> aus Turbo Vision\n(<code>tcolorit.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TColorItem.yml\" sourcestartlinenumber=\"4\">Named colour item as a managed counterpart to <code>TColorItem</code> from Turbo Vision\n(<code>tcolorit.cc</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TColorSelector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TColorSelector.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TColorSelector",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TColorSelector.yml\" sourcestartlinenumber=\"1\">Einfache Farbauswahl als managed Gegenstück zu <code>TColorSelector</code>\naus Turbo Vision (<code>tcolorse.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TColorSelector.yml\" sourcestartlinenumber=\"4\">Simple colour selector as a managed counterpart to <code>TColorSelector</code>\nfrom Turbo Vision (<code>tcolorse.cc</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TConfigFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TConfigFile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TConfigFile",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TConfigFile.yml\" sourcestartlinenumber=\"1\">Einfache Konfigurationsablage als managed Gegenstück zu <code>TConfigFile</code>\naus Turbo Vision (<code>configfile.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TConfigFile.yml\" sourcestartlinenumber=\"4\">Simple configuration store as a managed counterpart to <code>TConfigFile</code>\nfrom Turbo Vision (<code>configfile.cc</code>).</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -322,6 +448,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TFileInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TFileInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TFileInfo",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TFileInfo.yml\" sourcestartlinenumber=\"1\">Dateimetadaten als managed Gegenstück zu <code>TFileInfo</code> aus Turbo Vision\n(<code>tfileinf.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TFileInfo.yml\" sourcestartlinenumber=\"4\">File metadata as a managed counterpart to <code>TFileInfo</code> from Turbo Vision\n(<code>tfileinf.cc</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Controls.TFileInputLine.yml",
       "output": {
         ".html": {
@@ -406,6 +546,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TFilterValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TFilterValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TFilterValidator",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TFilterValidator.yml\" sourcestartlinenumber=\"1\">Zeichensatzeinschränkender Validator als managed Gegenstück zu\n<code>TFilterValidator</code> aus Turbo Vision (<code>tfilterv.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TFilterValidator.yml\" sourcestartlinenumber=\"4\">Character-set restricting validator as a managed counterpart to\n<code>TFilterValidator</code> from Turbo Vision (<code>tfilterv.cc</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Controls.TGroup.yml",
       "output": {
         ".html": {
@@ -473,6 +627,20 @@
       "IsMRef": true,
       "Title": "TuiVision.Controls.TIndicator",
       "Summary": "<p sourcefile=\"api/TuiVision.Controls.TIndicator.yml\" sourcestartlinenumber=\"1\">Einfache Statusanzeige fuer Cursorposition, Modus und Dirty-State eines Editors.</p>\n<p sourcefile=\"api/TuiVision.Controls.TIndicator.yml\" sourcestartlinenumber=\"3\">Simple indicator for editor cursor position, mode, and dirty state.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TIniFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TIniFile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TIniFile",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TIniFile.yml\" sourcestartlinenumber=\"1\">Einfache INI-artige Sektion- und Schlüsselablage als managed Gegenstück zu\n<code>TProgIni</code> aus Turbo Vision (<code>tprogini.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TIniFile.yml\" sourcestartlinenumber=\"4\">Simple INI-style section and key store as a managed counterpart to\n<code>TProgIni</code> from Turbo Vision (<code>tprogini.cc</code>).</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -570,7 +738,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Controls.TMenuBar",
-      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TMenuBar.yml\" sourcestartlinenumber=\"1\">Die Menüleiste am oberen Bildschirmrand.\nZeigt das Hauptmenü der Anwendung an.</p>\n<p sourcefile=\"api/TuiVision.Controls.TMenuBar.yml\" sourcestartlinenumber=\"4\">The menu bar at the top of the screen.\nDisplays the main menu of the application.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TMenuBar.yml\" sourcestartlinenumber=\"1\">Die Menüleiste am oberen Bildschirmrand.\nZeigt das Hauptmenü der Anwendung an und unterstützt vollständige Tastaturnavigation:\nPfeiltasten, Enter, Escape, Mnemonik-Kürzel und Wrap-around.</p>\n<p sourcefile=\"api/TuiVision.Controls.TMenuBar.yml\" sourcestartlinenumber=\"5\">The menu bar at the top of the screen.\nDisplays the main menu of the application and supports full keyboard navigation:\narrow keys, Enter, Escape, mnemonic shortcuts, and wrap-around.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -584,7 +752,49 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Controls.TMenuItem",
-      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TMenuItem.yml\" sourcestartlinenumber=\"1\">Repräsentiert einen Menüpunkt in einer Menüleiste oder einem Menü.\nKann verschachtelte Untermenüs enthalten.</p>\n<p sourcefile=\"api/TuiVision.Controls.TMenuItem.yml\" sourcestartlinenumber=\"4\">Represents a menu item in a menu bar or menu.\nCan contain nested submenus.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TMenuItem.yml\" sourcestartlinenumber=\"1\">Repräsentiert einen Menüpunkt in einer Menüleiste oder einem Menü.\nKann verschachtelte Untermenüs enthalten. Trennzeilen werden mit dem\nspeziellen Namen <code>&quot;---&quot;</code> oder über <xref href=\"TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)\" data-throw-if-not-resolved=\"false\"></xref> erstellt.</p>\n<p sourcefile=\"api/TuiVision.Controls.TMenuItem.yml\" sourcestartlinenumber=\"5\">Represents a menu item in a menu bar or menu.\nCan contain nested submenus. Separator rows are created using the special\nname <code>&quot;---&quot;</code> or via <xref href=\"TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TMonoSelector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TMonoSelector.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TMonoSelector",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TMonoSelector.yml\" sourcestartlinenumber=\"1\">Einfache Einzelauswahl aus Textoptionen als managed Gegenstück zu <code>TMonoSelector</code>\naus Turbo Vision (<code>tmonosel.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TMonoSelector.yml\" sourcestartlinenumber=\"4\">Simple single-selection control over text options as a managed counterpart to <code>TMonoSelector</code>\nfrom Turbo Vision (<code>tmonosel.cc</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TPalette.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TPalette.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TPalette",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TPalette.yml\" sourcestartlinenumber=\"1\">Sammlung von Farbgruppen als managed Gegenstück zu <code>TPalette</code>\naus Turbo Vision (<code>tpalette.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TPalette.yml\" sourcestartlinenumber=\"4\">Collection of colour groups as a managed counterpart to <code>TPalette</code>\nfrom Turbo Vision (<code>tpalette.cc</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TParamText.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TParamText.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TParamText",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TParamText.yml\" sourcestartlinenumber=\"1\">Parameterisierter UI-Text als managed Gegenstück zu <code>TParamText</code>\naus Turbo Vision (<code>tparamte.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TParamText.yml\" sourcestartlinenumber=\"4\">Parameterized UI text as a managed counterpart to <code>TParamText</code>\nfrom Turbo Vision (<code>tparamte.cc</code>).</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -613,6 +823,20 @@
       "IsMRef": true,
       "Title": "TuiVision.Controls.TRadioButtons",
       "Summary": "<p sourcefile=\"api/TuiVision.Controls.TRadioButtons.yml\" sourcestartlinenumber=\"1\">Konkretes Cluster für gegenseitig ausschließende Einfachauswahl.</p>\n<p sourcefile=\"api/TuiVision.Controls.TRadioButtons.yml\" sourcestartlinenumber=\"3\">Concrete cluster for mutually exclusive single selection.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TRangeValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TRangeValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TRangeValidator",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TRangeValidator.yml\" sourcestartlinenumber=\"1\">Numerischer Bereichsvalidator als managed Gegenstück zu <code>TRangeValidator</code>\naus Turbo Vision (<code>trangeva.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TRangeValidator.yml\" sourcestartlinenumber=\"4\">Numeric range validator as a managed counterpart to <code>TRangeValidator</code>\nfrom Turbo Vision (<code>trangeva.cc</code>).</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -658,6 +882,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TStatusDef.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TStatusDef.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TStatusDef",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TStatusDef.yml\" sourcestartlinenumber=\"1\">Ordnet einem inklusiven Hilfekontext-Bereich einen Satz von Statuszeilen-Aktionen zu.\nMehrere Definitionen werden als verkettete Liste organisiert; die erste passende\nDefinition gewinnt (First-Match-Wins-Reihenfolge).\nWenn keine Definition passt, wird ein neutraler Leer-Zustand angezeigt.</p>\n<p sourcefile=\"api/TuiVision.Controls.TStatusDef.yml\" sourcestartlinenumber=\"6\">Maps one inclusive help-context range to one set of status-line actions.\nMultiple definitions are organised as a linked list; the first matching\ndefinition wins (first-match-wins ordering).\nWhen no definition matches, a neutral empty state is shown.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Controls.TStatusItem.yml",
       "output": {
         ".html": {
@@ -682,7 +920,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "TuiVision.Controls.TStatusLine",
-      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TStatusLine.yml\" sourcestartlinenumber=\"1\">Die Statuszeile am unteren Bildschirmrand.\nZeigt kontextabhängige Hinweise und Shortcuts an.</p>\n<p sourcefile=\"api/TuiVision.Controls.TStatusLine.yml\" sourcestartlinenumber=\"4\">The status line at the bottom of the screen.\nDisplays context-sensitive hints and shortcuts.</p>\n"
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TStatusLine.yml\" sourcestartlinenumber=\"1\">Die Statuszeile am unteren Bildschirmrand.\nZeigt kontextabhängige Hinweise und Shortcuts an.\nWenn eine <xref href=\"TuiVision.Controls.TStatusDef\" data-throw-if-not-resolved=\"false\"></xref>-Kette konfiguriert ist, wird die erste passende\nDefinition per First-Match-Wins ausgewählt; bei keiner Übereinstimmung bleibt die\nZeile neutral (<xref href=\"TuiVision.Controls.TStatusLine.Items\" data-throw-if-not-resolved=\"false\"></xref> == <code>null</code>).\nOhne <xref href=\"TuiVision.Controls.TStatusDef\" data-throw-if-not-resolved=\"false\"></xref> greift der Kompatibilitäts-Fallback auf\n<xref href=\"TuiVision.Controls.TView.GetStatusHints\" data-throw-if-not-resolved=\"false\"></xref> der fokussierten View zurück.</p>\n<p sourcefile=\"api/TuiVision.Controls.TStatusLine.yml\" sourcestartlinenumber=\"9\">The status line at the bottom of the screen.\nDisplays context-sensitive hints and shortcuts.\nWhen a <xref href=\"TuiVision.Controls.TStatusDef\" data-throw-if-not-resolved=\"false\"></xref> chain is configured, the first matching definition\nis selected using first-match-wins ordering; when no definition matches, the line\nshows a neutral state (<xref href=\"TuiVision.Controls.TStatusLine.Items\" data-throw-if-not-resolved=\"false\"></xref> == <code>null</code>).\nWithout a <xref href=\"TuiVision.Controls.TStatusDef\" data-throw-if-not-resolved=\"false\"></xref> the compatibility fallback uses\n<xref href=\"TuiVision.Controls.TView.GetStatusHints\" data-throw-if-not-resolved=\"false\"></xref> from the focused view.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -697,6 +935,34 @@
       "IsMRef": true,
       "Title": "TuiVision.Controls.TStringList",
       "Summary": "<p sourcefile=\"api/TuiVision.Controls.TStringList.yml\" sourcestartlinenumber=\"1\">Einfache indizierte String-Sammlung für listenbasierte Controls.\nDie Klasse bildet das managed Gegenstück zu <code>TStringList</code> aus Turbo Vision.</p>\n<p sourcefile=\"api/TuiVision.Controls.TStringList.yml\" sourcestartlinenumber=\"4\">Simple indexed string collection for list-based controls.\nThe class represents the managed counterpart of <code>TStringList</code> from Turbo Vision.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TSubMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TSubMenu.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TSubMenu",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TSubMenu.yml\" sourcestartlinenumber=\"1\">Beschreibt einen Untermenü-Zweig unter einem Top-Level-Menüeintrag.\nEntspricht dem historischen <code>tvguid02</code>-Syntax:\n<code>new TSubMenu(&quot;~E~diting&quot;, 0, new TMenuItem(...))</code>.\nNur eine Ebene von Untermenüs wird unterstützt; verschachtelte Untermenübäume\nliegen außerhalb des Geltungsbereichs dieser Revision.</p>\n<p sourcefile=\"api/TuiVision.Controls.TSubMenu.yml\" sourcestartlinenumber=\"7\">Describes a submenu branch under one top-level menu entry.\nCorresponds to the historical <code>tvguid02</code> builder syntax:\n<code>new TSubMenu(&quot;~E~diting&quot;, 0, new TMenuItem(...))</code>.\nOnly one level of submenus is supported; nested submenu trees are out of scope\nfor this revision.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TValidator",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TValidator.yml\" sourcestartlinenumber=\"1\">Abstrakte Eingabevalidierung als managed Gegenstück zu <code>TValidator</code>\naus Turbo Vision (<code>tvalidat.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Controls.TValidator.yml\" sourcestartlinenumber=\"4\">Abstract input validation as a managed counterpart to <code>TValidator</code>\nfrom Turbo Vision (<code>tvalidat.cc</code>).</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -742,6 +1008,48 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TWindow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TWindow",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TWindow.yml\" sourcestartlinenumber=\"1\">Fenster-Container-Element als managed Gegenstück zu <code>TWindow</code> aus Turbo Vision.\nUnterstützt optionale Schließ-Affordanz (×), Ctrl+W, bewachtes Escape sowie\neinen reversiblen Verschiebe-Modus per Ctrl+F5.</p>\n<p sourcefile=\"api/TuiVision.Controls.TWindow.yml\" sourcestartlinenumber=\"5\">Window container element as the managed counterpart to <code>TWindow</code> from Turbo Vision.\nSupports optional close affordance (×), Ctrl+W, guarded Escape, and a reversible\nmove mode via Ctrl+F5.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TvUIStrings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TvUIStrings.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TvUIStrings",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TvUIStrings.yml\" sourcestartlinenumber=\"1\">Standard-UI-Texte als managed Ersatz für <code>tvtext1.cc</code> und <code>tvtext2.cc</code>.</p>\n<p sourcefile=\"api/TuiVision.Controls.TvUIStrings.yml\" sourcestartlinenumber=\"3\">Default UI texts as a managed replacement for <code>tvtext1.cc</code> and <code>tvtext2.cc</code>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.WindowFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.WindowFlags.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.WindowFlags",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.WindowFlags.yml\" sourcestartlinenumber=\"1\">Steuert sichtbare Fensterfähigkeiten: Schließen und Verschieben.\nNur <xref href=\"TuiVision.Controls.WindowFlags.Close\" data-throw-if-not-resolved=\"false\"></xref> und <xref href=\"TuiVision.Controls.WindowFlags.Move\" data-throw-if-not-resolved=\"false\"></xref> sind für diese Revision definiert;\nZoom und Grow liegen außerhalb des aktuellen Geltungsbereichs.</p>\n<p sourcefile=\"api/TuiVision.Controls.WindowFlags.yml\" sourcestartlinenumber=\"5\">Controls visible window capabilities: closing and moving.\nOnly <xref href=\"TuiVision.Controls.WindowFlags.Close\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"TuiVision.Controls.WindowFlags.Move\" data-throw-if-not-resolved=\"false\"></xref> are defined for this revision;\nzoom and grow are out of scope.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Controls.yml",
       "output": {
         ".html": {
@@ -753,6 +1061,20 @@
       "IsMRef": true,
       "Title": "TuiVision.Controls",
       "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TCollection-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TCollection-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TCollection<T>",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TCollection-1.yml\" sourcestartlinenumber=\"1\">Generische geordnete Sammlung als managed Gegenstück zu <code>TCollection</code> aus Turbo Vision\n(<code>tcollect.cc</code>). Verwendet intern eine <xref href=\"System.Collections.Generic.List%601\" data-throw-if-not-resolved=\"false\"></xref> anstelle der\nursprünglichen manuellen Speicherverwaltung.</p>\n<p sourcefile=\"api/TuiVision.Core.TCollection-1.yml\" sourcestartlinenumber=\"5\">Generic ordered collection as managed counterpart to <code>TCollection</code> from Turbo Vision\n(<code>tcollect.cc</code>). Internally uses a <xref href=\"System.Collections.Generic.List%601\" data-throw-if-not-resolved=\"false\"></xref> instead of the original\nmanual memory management.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -868,6 +1190,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TNSCollection-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TNSCollection-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TNSCollection<T>",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TNSCollection-1.yml\" sourcestartlinenumber=\"1\">Nicht besitzende generische Sammlung als managed Gegenstück zu <code>TNSCollection</code> aus Turbo Vision\n(<code>tnscolle.cc</code>). Im ursprünglichen C++-Code bedeutet „NS&quot; (non-sorted / non-owning), dass\ndie Sammlung keine Eigentümerschaft über die Elemente übernimmt. Im verwalteten .NET-Modell\nist die Lebenszeit durch den Garbage Collector geregelt; diese Klasse bildet das Konzept als\neine einfache, nicht sortierte Liste ab.</p>\n<p sourcefile=\"api/TuiVision.Core.TNSCollection-1.yml\" sourcestartlinenumber=\"7\">Non-owning generic collection as managed counterpart to <code>TNSCollection</code> from Turbo Vision\n(<code>tnscolle.cc</code>). In the original C++ code &quot;NS&quot; (non-sorted / non-owning) meant the\ncollection does not assume ownership of its elements. In the managed .NET model, lifetime is\nhandled by the garbage collector; this class models the concept as a simple, unsorted list.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TNSSorter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TNSSorter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TNSSorter",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TNSSorter.yml\" sourcestartlinenumber=\"1\">Sortier-Hilfsklasse als managed Gegenstück zu <code>TNSSorter</code> / <code>TNSClass</code> aus Turbo Vision\n(<code>tnssorte.cc</code>). Das Original implementierte einen Heapsort oder Shellsort für\nTCollection-Unterklassen. Im .NET-Modell wird <code>Array.Sort</code> verwendet,\ndas intern Intro-Sort (Heap + Quick + Insertion) ausführt.</p>\n<p sourcefile=\"api/TuiVision.Core.TNSSorter.yml\" sourcestartlinenumber=\"6\">Sort helper class as managed counterpart to <code>TNSSorter</code> / <code>TNSClass</code> from Turbo Vision\n(<code>tnssorte.cc</code>). The original implemented a heap sort or shell sort for TCollection\nsubclasses. In the .NET model, <code>Array.Sort</code> is used, which internally performs\nintro-sort (heap + quick + insertion).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Core.TObject.yml",
       "output": {
         ".html": {
@@ -907,6 +1257,76 @@
       "IsMRef": true,
       "Title": "TuiVision.Core.TRect",
       "Summary": "<p sourcefile=\"api/TuiVision.Core.TRect.yml\" sourcestartlinenumber=\"1\">Rechteckiger Bereich, beschrieben durch eine inklusive obere linke Ecke (<xref href=\"TuiVision.Core.TRect.A\" data-throw-if-not-resolved=\"false\"></xref>)\nund eine exklusive untere rechte Ecke (<xref href=\"TuiVision.Core.TRect.B\" data-throw-if-not-resolved=\"false\"></xref>).\nDieses Koordinatensystem entspricht dem Original von Turbo Vision.</p>\n<p sourcefile=\"api/TuiVision.Core.TRect.yml\" sourcestartlinenumber=\"5\">Rectangular region described by an inclusive top-left corner (<xref href=\"TuiVision.Core.TRect.A\" data-throw-if-not-resolved=\"false\"></xref>)\nand an exclusive bottom-right corner (<xref href=\"TuiVision.Core.TRect.B\" data-throw-if-not-resolved=\"false\"></xref>).\nThis coordinate system matches the original Turbo Vision convention.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TSortedCollection-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TSortedCollection-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TSortedCollection<T>",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TSortedCollection-1.yml\" sourcestartlinenumber=\"1\">Sortierte generische Sammlung als managed Gegenstück zu <code>TSortedCollection</code>\naus Turbo Vision (<code>tsortedc.cc</code>). Elemente werden beim Hinzufügen automatisch\nin aufsteigender Reihenfolge eingefügt. Duplikate werden erlaubt; für Eindeutigkeit\nverwende <code>TStringCollection</code> oder <xref href=\"System.Collections.Generic.SortedSet%601\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n<p sourcefile=\"api/TuiVision.Core.TSortedCollection-1.yml\" sourcestartlinenumber=\"6\">Sorted generic collection as managed counterpart to <code>TSortedCollection</code> from Turbo Vision\n(<code>tsortedc.cc</code>). Elements are automatically inserted in ascending order when added.\nDuplicates are allowed; for uniqueness use <code>TStringCollection</code> or\n<xref href=\"System.Collections.Generic.SortedSet%601\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TSortedList-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TSortedList-2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TSortedList<TKey, TValue>",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TSortedList-2.yml\" sourcestartlinenumber=\"1\">Sortierte Schlüssel-Wert-Sammlung als managed Gegenstück zu <code>TSortedList</code>\naus Turbo Vision (<code>tsortedl.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Core.TSortedList-2.yml\" sourcestartlinenumber=\"4\">Sorted key-value collection as a managed counterpart to <code>TSortedList</code>\nfrom Turbo Vision (<code>tsortedl.cc</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TStrList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TStrList.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TStrList",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TStrList.yml\" sourcestartlinenumber=\"1\">Einfache Einfügereihenfolge-Zeichenkettenliste als managed Gegenstück zu\n<code>TStrList</code> aus Turbo Vision (<code>tstrlist.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Core.TStrList.yml\" sourcestartlinenumber=\"4\">Simple insertion-order string list as a managed counterpart to\n<code>TStrList</code> from Turbo Vision (<code>tstrlist.cc</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TStringCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TStringCollection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TStringCollection",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TStringCollection.yml\" sourcestartlinenumber=\"1\">Sortierte, eindeutige Zeichenkettensammlung als managed Gegenstück zu\n<code>TStringCollection</code> aus Turbo Vision (<code>tstringc.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Core.TStringCollection.yml\" sourcestartlinenumber=\"4\">Sorted, unique string collection as a managed counterpart to\n<code>TStringCollection</code> from Turbo Vision (<code>tstringc.cc</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Core.TStringIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Core.TStringIndex.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Core.TStringIndex",
+      "Summary": "<p sourcefile=\"api/TuiVision.Core.TStringIndex.yml\" sourcestartlinenumber=\"1\">Case-sensitive Zeichenkettenindex als managed Gegenstück zu <code>TStringIndex</code>\naus Turbo Vision (<code>tstrinde.cc</code>).</p>\n<p sourcefile=\"api/TuiVision.Core.TStringIndex.yml\" sourcestartlinenumber=\"4\">Case-sensitive string index as a managed counterpart to <code>TStringIndex</code>\nfrom Turbo Vision (<code>tstrinde.cc</code>).</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -963,6 +1383,20 @@
       "IsMRef": true,
       "Title": "TuiVision.Drivers.Console.IConsolePresenter",
       "Summary": "<p sourcefile=\"api/TuiVision.Drivers.Console.IConsolePresenter.yml\" sourcestartlinenumber=\"1\">Empfängt einen gerenderten Frame von <xref href=\"TuiVision.Drivers.Console.TConsoleDriver\" data-throw-if-not-resolved=\"false\"></xref> und stellt ihn dar.\nImplementierungen können den Frame auf die echte Konsole, einen Test-Spy oder einen\nanderen Ausgabekanal schreiben.</p>\n<p sourcefile=\"api/TuiVision.Drivers.Console.IConsolePresenter.yml\" sourcestartlinenumber=\"5\">Receives a rendered frame from <xref href=\"TuiVision.Drivers.Console.TConsoleDriver\" data-throw-if-not-resolved=\"false\"></xref> and presents it.\nImplementations can write the frame to the real console, a test spy,\nor any other output channel.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Drivers.Console.SystemConsolePresenter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Drivers.Console.SystemConsolePresenter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Drivers.Console.SystemConsolePresenter",
+      "Summary": "<p sourcefile=\"api/TuiVision.Drivers.Console.SystemConsolePresenter.yml\" sourcestartlinenumber=\"1\">Stellt einen <xref href=\"TuiVision.Core.TConsoleBuffer\" data-throw-if-not-resolved=\"false\"></xref>-Frame auf der echten <xref href=\"System.Console\" data-throw-if-not-resolved=\"false\"></xref> dar.\nAlle Konsolen-API-Aufrufe sind von <code>try/catch</code>-Blöcken umgeben, damit der Presenter\nin Umgebungen ohne Terminal (z. B. CI, umgeleitete E/A, Smoke-Tests) stumm bleibt.</p>\n<p sourcefile=\"api/TuiVision.Drivers.Console.SystemConsolePresenter.yml\" sourcestartlinenumber=\"5\">Presents a <xref href=\"TuiVision.Core.TConsoleBuffer\" data-throw-if-not-resolved=\"false\"></xref> frame on the real <xref href=\"System.Console\" data-throw-if-not-resolved=\"false\"></xref>.\nAll console API calls are wrapped in <code>try/catch</code> blocks so the presenter\nstays silent in environments without a terminal (e.g. CI, redirected I/O, smoke tests).</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1267,6 +1701,46 @@
         },
         ".json": {
           "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/examples/desklogo.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/examples/desklogo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/examples/msgcls.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/examples/msgcls.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/examples/tutorial.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/examples/tutorial.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/examples/videomode.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/examples/videomode.html"
         }
       },
       "version": ""

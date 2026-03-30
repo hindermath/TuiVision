@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
     <meta charset="utf-8">
       <title>Porting-Status / M-07 Proof Ledger | TuiVision Documentation </title>
@@ -10,13 +10,14 @@
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
+      <link rel="stylesheet" href="../public/accessibility.css">
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/docs/porting-status.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/main/docs/porting-status.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,6 +32,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
 
       <script type="module" src="./../public/docfx.min.js"></script>
+      <script type="module" src="./../public/accessibility.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -40,20 +42,23 @@
   </head>
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen / Skip to main content</a>
+    <a class="skip-link skip-link-secondary" href="#toc">Zum Inhaltsverzeichnis springen / Skip to table of contents</a>
+
     <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation" aria-label="Primary">
         <div class="container-xxl flex-nowrap">
           <a class="navbar-brand" href="../index.html">
             <img id="logo" class="svg" src="../logo.svg" alt="TuiVision">
             TuiVision
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
+            <i class="bi bi-three-dots" aria-hidden="true"></i>
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
               <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
+                <i class="bi bi-search" aria-hidden="true"></i>
                 <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
@@ -62,7 +67,7 @@
       </nav>
     </header>
 
-    <main class="container-xxl">
+    <main class="container-xxl" id="main-content" tabindex="-1">
       <div class="toc-offcanvas">
         <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
           <div class="offcanvas-header">
@@ -70,7 +75,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+            <nav class="toc" id="toc" aria-label="Table of Contents"></nav>
           </div>
         </div>
       </div>
@@ -78,10 +83,10 @@
       <div class="content">
         <div class="actionbar">
           <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
+            <i class="bi bi-list" aria-hidden="true"></i>
           </button>
 
-          <nav id="breadcrumb"></nav>
+          <nav id="breadcrumb" aria-label="Breadcrumb"></nav>
         </div>
 
         <article data-uid="">
@@ -97,7 +102,7 @@
 <!-- Every historical .cc implementation file from tv203s/contrib/tvision/classes/ has exactly one   -->
 <!-- row with path, capability bucket, primary target, optional secondary targets, one allowed        -->
 <!-- status value, an evidence reference, and a rationale note for non-trivial decisions.             -->
-<p><strong>Branch</strong>: <code>005-driver-consolidation-m07</code> | <strong>Datum / Date</strong>: 2026-03-23</p>
+<p><strong>Branch</strong>: <code>006-close-phase8-gate</code> | <strong>Datum / Date</strong>: 2026-03-27</p>
 <hr>
 <h2 id="erlaubte-statuswerte--allowed-status-values">Erlaubte Statuswerte / Allowed Status Values</h2>
 <table>
@@ -114,7 +119,7 @@
 </tr>
 <tr>
 <td><code>portiert + Test ausstehend</code></td>
-<td>Fähigkeit ist implementiert, aber formale Testabdeckung steht noch aus. / Capability implemented, but formal test coverage is still pending.</td>
+<td>Provisorischer Zwischenstatus für laufende Portierungsarbeit; im finalen Phase-8-Paket nicht mehr verwendet. / Provisional in-progress state for ongoing porting work; no longer used in the final Phase-8 package.</td>
 </tr>
 <tr>
 <td><code>bewusst ausgelassen + Begruendung</code></td>
@@ -289,18 +294,18 @@
 <td>Anzeigeadaption</td>
 <td>TuiVision.Drivers.Console/DriverCapabilityMap.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>tests/TuiVision.Drivers.Tests/TConsoleDriverConsolidationTests.cs</td>
-<td>Codepage-Verwaltung wird durch .NET-Zeichenkodierung ersetzt; DriverCapabilityMap dokumentiert den Ersatz. / Codepage management is superseded by .NET character encoding; DriverCapabilityMap documents the replacement.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs</td>
+<td>Codepage-Verwaltung wird durch Unicode- und <code>System.Text.Encoding</code>-APIs im verwalteten Laufzeitmodell ersetzt; der DriverCapabilityMap-/Proof-Test belegt diesen Ersatz. / Codepage management is replaced by Unicode and <code>System.Text.Encoding</code> APIs in the managed runtime model; the DriverCapabilityMap proof test covers that replacement.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/configfile.cc</td>
 <td>Konfiguration</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/TConfigFile.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>Konfigurationsdatei-Parsing; Zieltyp in Phase-8-Scope geplant. / Config-file parsing; target type planned for Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>Konfigurationsdatei-Parsing ist als leichter Schlüssel-Wert-Speicher in TConfigFile portiert und per Proof-Test belegt. / Config-file parsing is ported as a lightweight key-value store in TConfigFile and covered by proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/fontcoll.cc</td>
@@ -316,106 +321,106 @@
 <td>Serialisierung</td>
 <td>TuiVision.Serialization/fpstream.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Serialization.Tests/</td>
-<td>Basis für Datei-Pointer-Streams; portiert als Hilfsimplementierung von fpstream.cs. / Base for file-pointer streams; ported as helper implementation in fpstream.cs.</td>
+<td>Basis für Datei-Pointer-Streams ist in fpstream.cs portiert und durch die Serialization-Suite belegt. / The base for file-pointer streams is ported in fpstream.cs and covered by the serialization suite.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/fpstream.cc</td>
 <td>Serialisierung</td>
 <td>TuiVision.Serialization/fpstream.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Serialization.Tests/</td>
-<td>Datei-Pointer-Stream; portiert nach fpstream.cs. / File-pointer stream; ported to fpstream.cs.</td>
+<td>Datei-Pointer-Stream ist nach fpstream.cs portiert und per Serialization-Suite nachgewiesen. / The file-pointer stream is ported to fpstream.cs and verified by the serialization suite.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/help.cc</td>
 <td>Hilfesystem</td>
 <td>TuiVision.Serialization/THelpFile.cs</td>
 <td>TuiVision.Controls/THelpViewer.cs</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Serialization.Tests/</td>
-<td>Hilfe-Laufzeit-Engine; portiert nach THelpFile und THelpViewer. / Help runtime engine; ported to THelpFile and THelpViewer.</td>
+<td>Hilfe-Laufzeit-Engine ist in THelpFile und THelpViewer portiert; Kontextlookup, Querverweise und Fallback sind automatisiert belegt. / The help runtime engine is ported into THelpFile and THelpViewer; context lookup, cross references, and fallback are covered by automated tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/helpbase.cc</td>
 <td>Hilfesystem</td>
 <td>TuiVision.Serialization/THelpFile.cs</td>
 <td>TuiVision.Serialization/THelpIndex.cs</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Serialization.Tests/</td>
-<td>Hilfe-Basistypen; portiert nach THelpFile und THelpIndex. / Help base types; ported to THelpFile and THelpIndex.</td>
+<td>Hilfe-Basistypen sind in THelpFile und THelpIndex portiert und durch Hilfedatei-Tests belegt. / The help base types are ported into THelpFile and THelpIndex and covered by help-file tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/ifpstrea.cc</td>
 <td>Serialisierung</td>
 <td>TuiVision.Serialization/fpstream.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Serialization.Tests/</td>
-<td>Eingabe-Datei-Pointer-Stream; in fpstream.cs zusammengeführt. / Input file-pointer stream; merged into fpstream.cs.</td>
+<td>Eingabe-Datei-Pointer-Stream ist in fpstream.cs zusammengeführt und durch die Serialization-Suite nachgewiesen. / The input file-pointer stream is merged into fpstream.cs and covered by the serialization suite.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/iopstrea.cc</td>
 <td>Serialisierung</td>
 <td>TuiVision.Serialization/ipstream.cs</td>
 <td>TuiVision.Serialization/opstream.cs</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Serialization.Tests/</td>
-<td>I/O-Persistent-Stream; in ipstream.cs und opstream.cs aufgeteilt. / I/O persistent stream; split into ipstream.cs and opstream.cs.</td>
+<td>I/O-Persistent-Stream ist in ipstream.cs und opstream.cs portiert und per Roundtrip-/Fehlerfalltests belegt. / The I/O persistent stream is ported into ipstream.cs and opstream.cs and covered by round-trip and failure-case tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/ipstream.cc</td>
 <td>Serialisierung</td>
 <td>TuiVision.Serialization/ipstream.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Serialization.Tests/</td>
-<td>Eingabe-Persistent-Stream; portiert nach ipstream.cs. / Input persistent stream; ported to ipstream.cs.</td>
+<td>Eingabe-Persistent-Stream ist nach ipstream.cs portiert und durch die Serialization-Suite belegt. / The input persistent stream is ported to ipstream.cs and covered by the serialization suite.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/ofpstrea.cc</td>
 <td>Serialisierung</td>
 <td>TuiVision.Serialization/fpstream.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Serialization.Tests/</td>
-<td>Ausgabe-Datei-Pointer-Stream; in fpstream.cs zusammengeführt. / Output file-pointer stream; merged into fpstream.cs.</td>
+<td>Ausgabe-Datei-Pointer-Stream ist in fpstream.cs zusammengeführt und per Serialization-Suite belegt. / The output file-pointer stream is merged into fpstream.cs and covered by the serialization suite.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/opstream.cc</td>
 <td>Serialisierung</td>
 <td>TuiVision.Serialization/opstream.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Serialization.Tests/</td>
-<td>Ausgabe-Persistent-Stream; portiert nach opstream.cs. / Output persistent stream; ported to opstream.cs.</td>
+<td>Ausgabe-Persistent-Stream ist nach opstream.cs portiert und durch die Serialization-Suite belegt. / The output persistent stream is ported to opstream.cs and covered by the serialization suite.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/osclipboard.cc</td>
 <td>OS-Clipboard</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/ManagedClipboard.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>OS-Zwischenablage-Integration; Zieltyp in Phase-8-Scope geplant. / OS clipboard integration; target type planned for Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>Die Betriebssystem-Zwischenablage wird im managed Modell als testisolierte In-Process-Clipboard-Abstraktion umgesetzt. / The operating-system clipboard is implemented in the managed model as a test-isolated in-process clipboard abstraction.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/pstream.cc</td>
 <td>Serialisierung</td>
 <td>TuiVision.Serialization/pstream.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Serialization.Tests/</td>
-<td>Persistent-Stream-Basis; portiert nach pstream.cs. / Persistent stream base; ported to pstream.cs.</td>
+<td>Persistent-Stream-Basis ist nach pstream.cs portiert und durch Roundtrip-/Fehlerfalltests belegt. / The persistent-stream base is ported to pstream.cs and covered by round-trip and failure-case tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tapplica.cc</td>
 <td>Anwendungsrahmen</td>
 <td>TuiVision.Controls/TApplication.cs</td>
 <td>TuiVision.Controls/TProgram.cs</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TApplication-Klasse; portiert nach TApplication.cs. / TApplication class; ported to TApplication.cs.</td>
 </tr>
@@ -424,7 +429,7 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TDesktop.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TBackground als Teil des Desktop-Hintergrundmusters; in TDesktop zusammengeführt. / TBackground as part of the desktop background pattern; merged into TDesktop.</td>
 </tr>
@@ -433,7 +438,7 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TButton.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TButton; portiert nach TButton.cs. / TButton; ported to TButton.cs.</td>
 </tr>
@@ -442,7 +447,7 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TFileDialog.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TChDirDialog; Verzeichniswechsel-Dialog; in TFileDialog integriert. / TChDirDialog; change-directory dialog; merged into TFileDialog.</td>
 </tr>
@@ -451,79 +456,79 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TCheckBoxes.cs</td>
 <td>TuiVision.Controls/TCluster.cs</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TCheckBoxes; portiert nach TCheckBoxes.cs. / TCheckBoxes; ported to TCheckBoxes.cs.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tclrdisp.cc</td>
 <td>Steuerelement</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/TColorDisplay.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TColorDisplay; Farbvorschau-Widget; Zieltyp in Phase-8-Scope. / TColorDisplay; colour preview widget; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>TColorDisplay ist als verwaltete Farbvorschau portiert und durch Proof-Tests belegt. / TColorDisplay is ported as a managed colour preview and covered by proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tcluster.cc</td>
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TCluster.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TCluster; Basis für Checkbox- und Radio-Gruppen; portiert nach TCluster.cs. / TCluster; base for checkbox and radio groups; ported to TCluster.cs.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tcollect.cc</td>
 <td>Framework-Kern</td>
-<td>TuiVision.Core (geplant)</td>
+<td>TuiVision.Core/TCollection.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TCollection; generische geordnete Sammlung; Zieltyp in Phase-8-Scope. / TCollection; generic ordered collection; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Core.Tests/CollectionProofTests.cs</td>
+<td>TCollection ist als verwaltete geordnete Sammlung portiert und per Collection-Proof-Tests belegt. / TCollection is ported as a managed ordered collection and covered by collection proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tcolordi.cc</td>
 <td>Steuerelement</td>
-<td>TuiVision.Controls (geplant)</td>
-<td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TColorDialog; Farbauswahl-Dialog; Zieltyp in Phase-8-Scope. / TColorDialog; colour selection dialog; target type in Phase-8 scope.</td>
+<td>TuiVision.Controls/TColorDialog.cs</td>
+<td>TuiVision.Controls/TColorSelector.cs</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>TColorDialog ist als verwalteter Farbkonfigurationsdialog portiert und koppelt Palette, Selektor und Vorschau nachweisbar. / TColorDialog is ported as a managed colour configuration dialog and demonstrably wires palette, selector, and preview together.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tcolorgr.cc</td>
 <td>Steuerelement</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/TColorGroup.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TColorGroup; Farbgruppen-Widget; Zieltyp in Phase-8-Scope. / TColorGroup; colour-group widget; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>TColorGroup ist als Farbgruppen-Container portiert und per Proof-Test belegt. / TColorGroup is ported as a colour-group container and covered by proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tcolorit.cc</td>
 <td>Steuerelement</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/TColorItem.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TColorItem; Farb-Listenelement; Zieltyp in Phase-8-Scope. / TColorItem; colour list item; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>TColorItem ist als benannter Farbwert portiert und automatisiert belegt. / TColorItem is ported as a named colour value and covered by automated tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tcolorse.cc</td>
 <td>Steuerelement</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/TColorSelector.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TColorSelector; Farbauswahl-Steuerelement; Zieltyp in Phase-8-Scope. / TColorSelector; colour selection control; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>TColorSelector ist als verwaltete Farbauswahl portiert und per Proof-Test belegt. / TColorSelector is ported as a managed colour selector and covered by proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tcommand.cc</td>
 <td>Steuerelement</td>
 <td>TuiVision.Controls/ShellCommandIds.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TCommandSet/TCommand-IDs; portiert als ShellCommandIds-Enumeration. / TCommandSet/TCommand IDs; ported as ShellCommandIds enumeration.</td>
 </tr>
@@ -532,7 +537,7 @@
 <td>Anwendungsrahmen</td>
 <td>TuiVision.Controls/TDesktop.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TDesktop; portiert nach TDesktop.cs. / TDesktop; ported to TDesktop.cs.</td>
 </tr>
@@ -541,16 +546,16 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TDialog.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>tests/TuiVision.Controls.Tests/</td>
-<td>TDialog; portiert nach TDialog.cs. / TDialog; ported to TDialog.cs.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/TDialogTests.cs</td>
+<td>TDialog; portiert nach TDialog.cs; erweitert um Valid(ushort)-Validierungshook (008-controls-revision): abgelehnte Schließanfragen bewahren den Dialogzustand, akzeptierte liefern das modale Ergebnis. / TDialog; ported to TDialog.cs; extended with Valid(ushort) validation hook (008-controls-revision): rejected close requests preserve dialog state, accepted ones return the modal result.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tdircoll.cc</td>
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TDirListBox.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TDirCollection; Verzeichnissammlung; in TDirListBox zusammengeführt. / TDirCollection; directory collection; merged into TDirListBox.</td>
 </tr>
@@ -559,7 +564,7 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TDirListBox.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TDirListBox; Verzeichnis-Listenfeld; portiert nach TDirListBox.cs. / TDirListBox; directory list box; ported to TDirListBox.cs.</td>
 </tr>
@@ -586,7 +591,7 @@
 <td>Editor</td>
 <td>TuiVision.Controls/TEditor.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TEditor-Kern; portiert nach TEditor.cs. / TEditor core; ported to TEditor.cs.</td>
 </tr>
@@ -595,7 +600,7 @@
 <td>Editor</td>
 <td>TuiVision.Controls/TFileEditor.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TEditorFilter; Datei-Editor-Filterschicht; portiert nach TFileEditor.cs. / TEditorFilter; file-editor filter layer; ported to TFileEditor.cs.</td>
 </tr>
@@ -604,7 +609,7 @@
 <td>Editor</td>
 <td>TuiVision.Controls/TEditWindow.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TEditWindow; portiert nach TEditWindow.cs. / TEditWindow; ported to TEditWindow.cs.</td>
 </tr>
@@ -622,7 +627,7 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TFileList.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TFileCollection; Dateisammlung; in TFileList zusammengeführt. / TFileCollection; file collection; merged into TFileList.</td>
 </tr>
@@ -631,7 +636,7 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TFileDialog.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TFileDialog; portiert nach TFileDialog.cs. / TFileDialog; ported to TFileDialog.cs.</td>
 </tr>
@@ -640,25 +645,25 @@
 <td>Editor</td>
 <td>TuiVision.Controls/TFileEditor.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TFileEditor; portiert nach TFileEditor.cs. / TFileEditor; ported to TFileEditor.cs.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tfileinf.cc</td>
 <td>Steuerelement</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/TFileInfo.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TFileInfoPane; Dateiinfo-Anzeige; Zieltyp in Phase-8-Scope. / TFileInfoPane; file info display; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>TFileInfo ist als verwaltetes Dateimetadatenmodell portiert und per Proof-Test belegt. / TFileInfo is ported as a managed file metadata model and covered by proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tfileinp.cc</td>
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TFileInputLine.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TFileInputLine; portiert nach TFileInputLine.cs. / TFileInputLine; ported to TFileInputLine.cs.</td>
 </tr>
@@ -667,43 +672,43 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TFileList.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TFileList; portiert nach TFileList.cs. / TFileList; ported to TFileList.cs.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tfilterv.cc</td>
 <td>Validierung</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/TFilterValidator.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TFilterValidator; Eingabefilter-Validator; Zieltyp in Phase-8-Scope. / TFilterValidator; input filter validator; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>TFilterValidator ist als Zeichensatz-Validator portiert und per Proof-Test belegt. / TFilterValidator is ported as a character-set validator and covered by proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tframe.cc</td>
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TGroup.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TFrame; Fensterrahmen; als Teil der TGroup-Darstellungslogik integriert. / TFrame; window frame; integrated as part of TGroup drawing logic.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tgkey.cc</td>
 <td>Lokalisierung</td>
-<td>TuiVision.Compatibility (geplant)</td>
+<td>TuiVision.Compatibility/Class1.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>Globale Tastenbelegungstabellen; Zieltyp in TuiVision.Compatibility geplant. / Global key-binding tables; target type planned in TuiVision.Compatibility.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Compatibility.Tests/TKeyCodeTranslatorTests.cs</td>
+<td>Globale Tastenbelegung und Scancode-Zuordnung sind in TShiftState und TKeyCodeTranslator portiert und per Kompatibilitätstests belegt. / Global key binding and scan-code mapping are ported into TShiftState and TKeyCodeTranslator and covered by compatibility tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tgroup.cc</td>
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TGroup.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TGroup; portiert nach TGroup.cs. / TGroup; ported to TGroup.cs.</td>
 </tr>
@@ -712,7 +717,7 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/THistory.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>THistory; portiert nach THistory.cs. / THistory; ported to THistory.cs.</td>
 </tr>
@@ -721,7 +726,7 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/THelpViewer.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>THistoryViewer; Verlaufsansicht; portiert als Basis für THelpViewer. / THistoryViewer; history viewer; ported as base for THelpViewer.</td>
 </tr>
@@ -730,25 +735,25 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/THelpWindow.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>THistoryWindow; Verlaufsfenster; portiert nach THelpWindow.cs. / THistoryWindow; history window; ported to THelpWindow.cs.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/thwmouse.cc</td>
 <td>Ereignissteuerung</td>
-<td>TuiVision.Drivers.Console/TConsoleDriver.cs</td>
-<td>TuiVision.Core/TEvent.cs</td>
-<td>portiert + Test ausstehend</td>
-<td>tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs</td>
-<td>THardwareMouse; Maus-Hardwareabstraktion; durch System.Console-Mausereignisse ersetzt. / THardwareMouse; mouse hardware abstraction; replaced by System.Console mouse events.</td>
+<td>bewusst ausgelassen</td>
+<td>–</td>
+<td>bewusst ausgelassen + Begruendung</td>
+<td>–</td>
+<td>THardwareMouse war eine plattformspezifische Raw-Maus-Hardwareabstraktion; im verwalteten .NET-10-Konsolenmodell wird kein dedizierter Hardware-Maustreiber nachgebildet. Das UI-seitige Mausmodell bleibt in <code>TuiVision.Core/TEvent.cs</code> erhalten. / THardwareMouse was a platform-specific raw mouse hardware abstraction; the managed .NET 10 console model does not recreate a dedicated hardware mouse driver. The UI-facing mouse model remains in <code>TuiVision.Core/TEvent.cs</code>.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tindicat.cc</td>
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TIndicator.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TIndicator; portiert nach TIndicator.cs. / TIndicator; ported to TIndicator.cs.</td>
 </tr>
@@ -757,7 +762,7 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TInputLine.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TInputLine; portiert nach TInputLine.cs. / TInputLine; ported to TInputLine.cs.</td>
 </tr>
@@ -766,7 +771,7 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TLabel.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TLabel; portiert nach TLabel.cs. / TLabel; ported to TLabel.cs.</td>
 </tr>
@@ -775,7 +780,7 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TListBox.cs</td>
 <td>TuiVision.Controls/TListViewer.cs</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TListBox; portiert nach TListBox.cs. / TListBox; ported to TListBox.cs.</td>
 </tr>
@@ -784,7 +789,7 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TListViewer.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TListViewer; portiert nach TListViewer.cs. / TListViewer; ported to TListViewer.cs.</td>
 </tr>
@@ -793,7 +798,7 @@
 <td>Editor</td>
 <td>TuiVision.Controls/TMemo.cs</td>
 <td>TuiVision.Controls/TEditor.cs</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TMemo; portiert nach TMemo.cs (erbt von TEditor). / TMemo; ported to TMemo.cs (inherits from TEditor).</td>
 </tr>
@@ -802,63 +807,63 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TMenuBar.cs</td>
 <td>TuiVision.Controls/TMenuItem.cs</td>
-<td>portiert + Test ausstehend</td>
-<td>tests/TuiVision.Controls.Tests/</td>
-<td>TMenuBar; portiert nach TMenuBar.cs. / TMenuBar; ported to TMenuBar.cs.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/TMenuBarTests.cs</td>
+<td>TMenuBar; portiert nach TMenuBar.cs; erweitert um vollständige Tastaturnavigation (Wrap-around, Skip-over, Auswahl-Hervorhebung, berechnete Layout-Slots, Resize-Relayout) per 008-controls-revision. / TMenuBar; ported to TMenuBar.cs; extended with full keyboard navigation (wrap-around, skip-over, selection highlight, computed layout slots, resize relayout) by 008-controls-revision.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tmenubox.cc</td>
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TMenuItem.cs</td>
-<td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>tests/TuiVision.Controls.Tests/</td>
-<td>TMenuBox; Menüfeld-Darstellung; in TMenuItem-Modell zusammengeführt. / TMenuBox; menu box display; merged into TMenuItem model.</td>
+<td>TuiVision.Controls/TMenuBar.cs</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/TMenuBarTests.cs</td>
+<td>TMenuBox; Popup-Menüfeld-Darstellung; in TMenuItem-Deklarationsmodell und TMenuBar-Popup-Rendering zusammengeführt. Untermenü-Overlay wird von TMenuBar.DrawSubMenuOverlay gezeichnet. / TMenuBox; popup menu box display; merged into TMenuItem declaration model and TMenuBar popup rendering. Submenu overlay is drawn by TMenuBar.DrawSubMenuOverlay.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tmenuvie.cc</td>
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TMenuItem.cs</td>
 <td>TuiVision.Controls/TMenuBar.cs</td>
-<td>portiert + Test ausstehend</td>
-<td>tests/TuiVision.Controls.Tests/</td>
-<td>TMenuView; Menüansicht-Basis; in TMenuItem und TMenuBar zusammengeführt. / TMenuView; menu view base; merged into TMenuItem and TMenuBar.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/TMenuBarTests.cs</td>
+<td>TMenuView; Menüansicht-Basis für Interaction und Auswahl; in TMenuItem (Deklaration) und TMenuBar (Laufzeitnavigation, Auswahl-Highlight) zusammengeführt. / TMenuView; menu view base for interaction and selection; merged into TMenuItem (declaration) and TMenuBar (runtime navigation, selection highlight).</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tmonosel.cc</td>
 <td>Steuerelement</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/TMonoSelector.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TMonoSelector; Einfachauswahl-Widget; Zieltyp in Phase-8-Scope. / TMonoSelector; single-selection widget; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>TMonoSelector ist als verwaltete Einzelauswahl portiert und per Proof-Test belegt. / TMonoSelector is ported as a managed single selector and covered by proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tmouse.cc</td>
 <td>Ereignissteuerung</td>
 <td>TuiVision.Core/TEvent.cs</td>
-<td>TuiVision.Drivers.Console/TConsoleDriver.cs</td>
-<td>portiert + Test ausstehend</td>
+<td>–</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs</td>
-<td>TMouse; Maus-Zustandsabstraktion; im TEvent-Modell und TConsoleDriver vertreten. / TMouse; mouse state abstraction; represented in TEvent model and TConsoleDriver.</td>
+<td>TMouse ist als verwaltete Maus-Zustandsabstraktion über <code>TMouseEvent</code> und <code>TEvent.CreateMouse</code> portiert; der Proof-Test belegt Buttons, Koordinaten und Doppelklickstatus. / TMouse is ported as a managed mouse-state abstraction through <code>TMouseEvent</code> and <code>TEvent.CreateMouse</code>; the proof test covers buttons, coordinates, and double-click state.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tnscolle.cc</td>
 <td>Framework-Kern</td>
-<td>TuiVision.Core (geplant)</td>
+<td>TuiVision.Core/TNSCollection.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TNSCollection (non-sortierte Sammlung); Zieltyp in Phase-8-Scope. / TNSCollection (non-sorted collection); target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Core.Tests/CollectionProofTests.cs</td>
+<td>TNSCollection ist als verwaltete nicht-besitzende Sammlung portiert und per Collection-Proof-Tests belegt. / TNSCollection is ported as a managed non-owning collection and covered by collection proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tnssorte.cc</td>
 <td>Framework-Kern</td>
-<td>TuiVision.Core (geplant)</td>
+<td>TuiVision.Core/TNSSorter.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TNSSortedCollection; Zieltyp in Phase-8-Scope. / TNSSortedCollection; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Core.Tests/CollectionProofTests.cs</td>
+<td>TNSSorter ist als verwaltete Sortierhilfe portiert und per Collection-Proof-Tests belegt. / TNSSorter is ported as a managed sort helper and covered by collection proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tobject.cc</td>
@@ -872,20 +877,20 @@
 <tr>
 <td>tv203s/contrib/tvision/classes/tpalette.cc</td>
 <td>Steuerelement</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/TPalette.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TPalette; Farbpaletten-Verwaltung; Zieltyp in Phase-8-Scope. / TPalette; colour palette management; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>TPalette ist als verwaltete Farbgruppensammlung portiert und per Proof-Test belegt. / TPalette is ported as a managed colour-group collection and covered by proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tparamte.cc</td>
 <td>Steuerelement</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/TParamText.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TParamText; parametrierter Statischer Text; Zieltyp in Phase-8-Scope. / TParamText; parameterised static text; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>TParamText ist als parametrisierbarer UI-Text portiert und per Proof-Test belegt. / TParamText is ported as parameterised UI text and covered by proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tpoint.cc</td>
@@ -899,18 +904,18 @@
 <tr>
 <td>tv203s/contrib/tvision/classes/tprogini.cc</td>
 <td>Konfiguration</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/TIniFile.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TProgramInit; Programm-Initialisierungssequenz; Zieltyp in Phase-8-Scope. / TProgramInit; program initialisation sequence; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>Die historische Programm-INI-Verwaltung ist im managed Modell als TIniFile portiert und per Proof-Test belegt. / The historical program INI handling is ported in the managed model as TIniFile and covered by proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tprogram.cc</td>
 <td>Anwendungsrahmen</td>
 <td>TuiVision.Controls/TProgram.cs</td>
 <td>TuiVision.Controls/TApplication.cs</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TProgram; portiert nach TProgram.cs. / TProgram; ported to TProgram.cs.</td>
 </tr>
@@ -946,36 +951,36 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TRadioButtons.cs</td>
 <td>TuiVision.Controls/TCluster.cs</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TRadioButtons; portiert nach TRadioButtons.cs. / TRadioButtons; ported to TRadioButtons.cs.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/trangeva.cc</td>
 <td>Validierung</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/TRangeValidator.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TRangeValidator; Bereichsprüfung; Zieltyp in Phase-8-Scope. / TRangeValidator; range checking; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>TRangeValidator ist als numerischer Bereichsvalidator portiert und per Proof-Test belegt. / TRangeValidator is ported as a numeric range validator and covered by proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/trescoll.cc</td>
 <td>Ressourcen</td>
 <td>TuiVision.Serialization/TResourceCollection.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Serialization.Tests/</td>
-<td>TResCollection; portiert nach TResourceCollection.cs. / TResCollection; ported to TResourceCollection.cs.</td>
+<td>TResCollection ist nach TResourceCollection.cs portiert und durch exakte Key-/Persistenztests belegt. / TResCollection is ported to TResourceCollection.cs and covered by exact-key and persistence tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tresfile.cc</td>
 <td>Ressourcen</td>
 <td>TuiVision.Serialization/TResourceFile.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Serialization.Tests/</td>
-<td>TResFile; portiert nach TResourceFile.cs. / TResFile; ported to TResourceFile.cs.</td>
+<td>TResFile ist nach TResourceFile.cs portiert und per Save/Load-/Randfalltests belegt. / TResFile is ported to TResourceFile.cs and covered by save/load and edge-case tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tscreen.cc</td>
@@ -991,7 +996,7 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TScrollBar.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TScrollBar; portiert nach TScrollBar.cs. / TScrollBar; ported to TScrollBar.cs.</td>
 </tr>
@@ -1000,117 +1005,117 @@
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TScroller.cs</td>
 <td>TuiVision.Controls/TScrollBar.cs</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TScroller; portiert nach TScroller.cs. / TScroller; ported to TScroller.cs.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tsortedc.cc</td>
 <td>Framework-Kern</td>
-<td>TuiVision.Core (geplant)</td>
+<td>TuiVision.Core/TSortedCollection.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TSortedCollection; sortierte Sammlung; Zieltyp in Phase-8-Scope. / TSortedCollection; sorted collection; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Core.Tests/CollectionProofTests.cs</td>
+<td>TSortedCollection ist als verwaltete sortierte Sammlung portiert und per Collection-Proof-Tests belegt. / TSortedCollection is ported as a managed sorted collection and covered by collection proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tsortedl.cc</td>
 <td>Framework-Kern</td>
-<td>TuiVision.Core (geplant)</td>
+<td>TuiVision.Core/TSortedList.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TSortedList; sortierte Liste; Zieltyp in Phase-8-Scope. / TSortedList; sorted list; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Core.Tests/CollectionProofTests.cs</td>
+<td>TSortedList ist als verwaltete sortierte Schlüssel-Wert-Liste portiert und per Collection-Proof-Tests belegt. / TSortedList is ported as a managed sorted key-value list and covered by collection proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tstatict.cc</td>
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TStaticText.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TStaticText; portiert nach TStaticText.cs. / TStaticText; ported to TStaticText.cs.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tstatusd.cc</td>
 <td>Steuerelement</td>
+<td>TuiVision.Controls/TStatusDef.cs</td>
 <td>TuiVision.Controls/TStatusLine.cs</td>
-<td>TuiVision.Controls/TStatusItem.cs</td>
-<td>portiert + Test ausstehend</td>
-<td>tests/TuiVision.Controls.Tests/</td>
-<td>TStatusDef; Statuszeilen-Definition; in TStatusLine und TStatusItem zusammengeführt. / TStatusDef; status line definition; merged into TStatusLine and TStatusItem.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/TStatusLineTests.cs</td>
+<td>TStatusDef; eigenständige Statuszeilen-Definition mit inklusivem Hilfekontext-Bereich und geordneter Aktionsliste; portiert als TStatusDef.cs (008-controls-revision). First-Match-Wins-Routing in TStatusLine. / TStatusDef; standalone status line definition with inclusive help-context range and ordered action list; ported as TStatusDef.cs (008-controls-revision). First-match-wins routing in TStatusLine.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tstatusl.cc</td>
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TStatusLine.cs</td>
-<td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>tests/TuiVision.Controls.Tests/</td>
-<td>TStatusLine; portiert nach TStatusLine.cs. / TStatusLine; ported to TStatusLine.cs.</td>
+<td>TuiVision.Controls/TStatusDef.cs</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/TStatusLineTests.cs</td>
+<td>TStatusLine; portiert nach TStatusLine.cs; erweitert um TStatusDef-basiertes First-Match-Wins-Routing, neutralen Leer-Fallback bei keiner Übereinstimmung und Kompatibilitäts-Brücke auf GetStatusHints() ohne explizite Definitionen (008-controls-revision). / TStatusLine; ported to TStatusLine.cs; extended with TStatusDef-based first-match-wins routing, neutral empty fallback when no definition matches, and compatibility bridge to GetStatusHints() when no explicit definitions are configured (008-controls-revision).</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tstrinde.cc</td>
 <td>Framework-Kern</td>
-<td>TuiVision.Core (geplant)</td>
+<td>TuiVision.Core/TStringIndex.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TStringIndex; Zeichenketten-Index; Zieltyp in Phase-8-Scope. / TStringIndex; string index; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Core.Tests/CollectionProofTests.cs</td>
+<td>TStringIndex ist als case-sensitiver Zeichenkettenindex portiert und per Collection-Proof-Tests belegt. / TStringIndex is ported as a case-sensitive string index and covered by collection proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tstringc.cc</td>
 <td>Framework-Kern</td>
-<td>TuiVision.Core (geplant)</td>
+<td>TuiVision.Core/TStringCollection.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TStringCollection; Zeichenkettensammlung; Zieltyp in Phase-8-Scope. / TStringCollection; string collection; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Core.Tests/CollectionProofTests.cs</td>
+<td>TStringCollection ist als sortierte eindeutige Zeichenkettensammlung portiert und per Collection-Proof-Tests belegt. / TStringCollection is ported as a sorted unique string collection and covered by collection proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tstringl.cc</td>
 <td>Steuerelement</td>
 <td>TuiVision.Controls/TStringList.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TStringList; portiert nach TStringList.cs. / TStringList; ported to TStringList.cs.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tstrlist.cc</td>
 <td>Framework-Kern</td>
-<td>TuiVision.Core (geplant)</td>
+<td>TuiVision.Core/TStrList.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TStrList; Zeichenkettenlistenbasis; Zieltyp in Phase-8-Scope. / TStrList; string list base; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Core.Tests/CollectionProofTests.cs</td>
+<td>TStrList ist als Einfügereihenfolge-Zeichenkettenliste portiert und per Collection-Proof-Tests belegt. / TStrList is ported as an insertion-order string list and covered by collection proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tstrmcla.cc</td>
 <td>Serialisierung</td>
 <td>TuiVision.Serialization/TRecordRegistry.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Serialization.Tests/</td>
-<td>TStreamClass; Typ-Registrierung für Streams; portiert nach TRecordRegistry. / TStreamClass; type registry for streams; ported to TRecordRegistry.</td>
+<td>TStreamClass ist in TRecordRegistry portiert und durch Registrierungs-/Kompatibilitätstests belegt. / TStreamClass is ported into TRecordRegistry and covered by registration and compatibility tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tstrmtyp.cc</td>
 <td>Serialisierung</td>
 <td>TuiVision.Serialization/TRecordRegistry.cs</td>
 <td>TuiVision.Serialization/TRecordSerializer.cs</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Serialization.Tests/</td>
-<td>TStreamTypes; Typkatalog; in TRecordRegistry und TRecordSerializer zusammengeführt. / TStreamTypes; type catalogue; merged into TRecordRegistry and TRecordSerializer.</td>
+<td>TStreamTypes sind in TRecordRegistry und TRecordSerializer portiert und per Serialization-Suite belegt. / TStreamTypes are ported into TRecordRegistry and TRecordSerializer and covered by the serialization suite.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tsubmenu.cc</td>
 <td>Steuerelement</td>
+<td>TuiVision.Controls/TSubMenu.cs</td>
 <td>TuiVision.Controls/TMenuBar.cs</td>
-<td>TuiVision.Controls/TMenuItem.cs</td>
-<td>portiert + Test ausstehend</td>
-<td>tests/TuiVision.Controls.Tests/</td>
-<td>TSubMenu; Untermenü-Steuerelement; in TMenuBar und TMenuItem integriert. / TSubMenu; submenu control; integrated into TMenuBar and TMenuItem.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/TMenuBarTests.cs</td>
+<td>TSubMenu; eigenständiger Deklarationsknoten für eine Untermenü-Verzweigung; portiert als TSubMenu.cs (008-controls-revision). Historische tvguid02-Syntax bleibt kompatibel. Laufzeitausführung und Popup-Rendering bleiben in TMenuBar. / TSubMenu; standalone declaration node for a submenu branch; ported as TSubMenu.cs (008-controls-revision). Historical tvguid02 syntax remains compatible. Runtime execution and popup rendering remain in TMenuBar.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/ttermina.cc</td>
@@ -1133,18 +1138,18 @@
 <tr>
 <td>tv203s/contrib/tvision/classes/tvalidat.cc</td>
 <td>Validierung</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/TValidator.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TValidator; Eingabevalidierungs-Basisklasse; Zieltyp in Phase-8-Scope. / TValidator; input validation base class; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>TValidator ist als verwaltete Basisklasse für Validierung portiert und durch Proof-Tests belegt. / TValidator is ported as the managed base class for validation and covered by proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tvedit1.cc</td>
 <td>Editor</td>
 <td>TuiVision.Controls/TEditor.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TEditor-Teil 1 (Textoperationen); in TEditor.cs zusammengeführt. / TEditor part 1 (text operations); merged into TEditor.cs.</td>
 </tr>
@@ -1153,7 +1158,7 @@
 <td>Editor</td>
 <td>TuiVision.Controls/TEditor.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TEditor-Teil 2 (Such/Ersatz); in TEditor.cs zusammengeführt. / TEditor part 2 (search/replace); merged into TEditor.cs.</td>
 </tr>
@@ -1162,7 +1167,7 @@
 <td>Editor</td>
 <td>TuiVision.Controls/TEditor.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Controls.Tests/</td>
 <td>TEditor-Teil 3 (Datei/Befehl); in TEditor.cs zusammengeführt. / TEditor part 3 (file/command); merged into TEditor.cs.</td>
 </tr>
@@ -1178,38 +1183,38 @@
 <tr>
 <td>tv203s/contrib/tvision/classes/tvintl.cc</td>
 <td>Lokalisierung</td>
-<td>TuiVision.Compatibility (geplant)</td>
+<td>TuiVision.Compatibility/Class1.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TV-Internationalisierung; Zieltyp in TuiVision.Compatibility geplant. / TV internationalisation; target type planned in TuiVision.Compatibility.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Compatibility.Tests/TKeyCodeTranslatorTests.cs</td>
+<td>Die TV-Internationalisierung der Tasten- und Modifier-Semantik ist in TShiftState und TKeyCodeTranslator portiert und durch Kompatibilitätstests belegt. / The TV internationalisation of key and modifier semantics is ported into TShiftState and TKeyCodeTranslator and covered by compatibility tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tvtext1.cc</td>
 <td>Lokalisierung</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/TvUIStrings.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TV-UI-Zeichenketten Teil 1; Zieltyp in Phase-8-Scope. / TV UI strings part 1; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>TV-UI-Zeichenketten Teil 1 ist in TvUIStrings portiert und per Proof-Test belegt. / TV UI strings part 1 is ported into TvUIStrings and covered by proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/tvtext2.cc</td>
 <td>Lokalisierung</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/TvUIStrings.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TV-UI-Zeichenketten Teil 2; Zieltyp in Phase-8-Scope. / TV UI strings part 2; target type in Phase-8 scope.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>TV-UI-Zeichenketten Teil 2 ist in TvUIStrings portiert und per Proof-Test belegt. / TV UI strings part 2 is ported into TvUIStrings and covered by proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/twindow.cc</td>
 <td>Steuerelement</td>
-<td>TuiVision.Controls (geplant)</td>
-<td>TuiVision.Controls/TGroup.cs</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>TWindow; Fensterbasisklasse; Zieltyp in Phase-8-Scope (TGroup erbt Basisfunktion). / TWindow; window base class; target type in Phase-8 scope (TGroup inherits base function).</td>
+<td>TuiVision.Controls/TWindow.cs</td>
+<td>TuiVision.Controls/WindowFlags.cs</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/TWindowTests.cs</td>
+<td>TWindow; portiert nach TWindow.cs (auf Basis von TGroup); erweitert um WindowFlags (Close, Move), sichtbare Schließ-Affordanz (×), Ctrl+W, bewachtes Escape, reversiblen Verschiebe-Modus per Ctrl+F5 (008-controls-revision). / TWindow; ported to TWindow.cs (on top of TGroup); extended with WindowFlags (Close, Move), visible close affordance (×), Ctrl+W, guarded Escape, reversible move mode via Ctrl+F5 (008-controls-revision).</td>
 </tr>
 </tbody>
 </table>
@@ -1321,7 +1326,7 @@
 <hr>
 <h2 id="linux-plattformdateien--linux-platform-files">Linux-Plattformdateien / Linux Platform Files</h2>
 <p>Linux-Treiberdateien werden <strong>portiert</strong> — die Fähigkeiten werden durch die verwaltete <code>System.Console</code>-API von .NET 10 bereitgestellt, die auf Linux transparent funktioniert.</p>
-<p><em>(Linux driver files are ported — the capabilities are provided by the managed .NET 10 System.Console API, which operates transparently on Linux.)</em></p>
+<p><em>(Linux display and keyboard capabilities are ported through the managed .NET 10 console stack; the historical raw mouse driver is consciously omitted because no dedicated cross-platform managed mouse driver exists.)</em></p>
 <table>
 <thead>
 <tr>
@@ -1348,19 +1353,19 @@
 <td>tv203s/contrib/tvision/classes/linux/linuxkey.cc</td>
 <td>Tastatureingabe</td>
 <td>TuiVision.Drivers.Console/TConsoleDriver.cs</td>
-<td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>TuiVision.Compatibility/TConsoleInputAdapter.cs</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs</td>
-<td>Linux-Tastatur-Rohmodus; durch System.Console.ReadKey() ersetzt. Eingabe-Tests ausstehend. / Linux keyboard raw mode; replaced by System.Console.ReadKey(). Input tests pending.</td>
+<td>Linux-Tastatur-Rohmodus wird im managed Modell durch <code>System.Console.ReadKey()</code> plus <code>TConsoleInputAdapter</code>/<code>TKeyCodeTranslator</code> ersetzt; der Driver-Proof-Test belegt die Event-Übersetzung. / Linux raw keyboard mode is replaced in the managed model by <code>System.Console.ReadKey()</code> plus <code>TConsoleInputAdapter</code>/<code>TKeyCodeTranslator</code>; the driver proof test covers the event translation.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/linux/linuxmouse.cc</td>
 <td>Mauseingabe</td>
-<td>TuiVision.Drivers.Console/TConsoleDriver.cs</td>
+<td>bewusst ausgelassen</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs</td>
-<td>Linux-Mauseingabe; durch Console-Mausereignisse ersetzt. Maus-Tests ausstehend. / Linux mouse input; replaced by Console mouse events. Mouse tests pending.</td>
+<td>bewusst ausgelassen + Begruendung</td>
+<td>–</td>
+<td>Linux-Raw-Mauseingabe (z. B. GPM/ioctl-basierte Treiber) wird im verwalteten Konsolenmodell nicht als eigener Treiber nachgebildet; nur das UI-seitige Mausereignismodell bleibt erhalten. / Linux raw mouse input (for example GPM/ioctl-based drivers) is not recreated as a dedicated driver in the managed console model; only the UI-facing mouse event model remains.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/linux/linuxscr.cc</td>
@@ -1486,7 +1491,7 @@
 <hr>
 <h2 id="unixxterm-plattformdateien--unixxterm-platform-files">Unix/Xterm-Plattformdateien / Unix/Xterm Platform Files</h2>
 <p>Unix- und Xterm-Treiberdateien werden <strong>portiert</strong> — POSIX-Terminalfähigkeiten sind durch die verwaltete <code>System.Console</code>-API von .NET 10 abgedeckt.</p>
-<p><em>(Unix and Xterm driver files are ported — POSIX terminal capabilities are covered by the managed .NET 10 System.Console API.)</em></p>
+<p><em>(Unix and Xterm display/keyboard capabilities are ported through the managed .NET 10 console stack; the historical raw mouse protocols are consciously omitted because no dedicated managed mouse-driver layer exists.)</em></p>
 <table>
 <thead>
 <tr>
@@ -1513,19 +1518,19 @@
 <td>tv203s/contrib/tvision/classes/unix/unixkey.cc</td>
 <td>Tastatureingabe</td>
 <td>TuiVision.Drivers.Console/TConsoleDriver.cs</td>
-<td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>TuiVision.Compatibility/TConsoleInputAdapter.cs</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs</td>
-<td>Unix-Tastatur; durch System.Console.ReadKey() ersetzt. Eingabe-Tests ausstehend. / Unix keyboard; replaced by System.Console.ReadKey(). Input tests pending.</td>
+<td>Unix-Tastatur wird im managed Modell durch <code>System.Console.ReadKey()</code> plus <code>TConsoleInputAdapter</code>/<code>TKeyCodeTranslator</code> ersetzt; der Driver-Proof-Test belegt die TV-Ereignisübersetzung. / Unix keyboard input is replaced in the managed model by <code>System.Console.ReadKey()</code> plus <code>TConsoleInputAdapter</code>/<code>TKeyCodeTranslator</code>; the driver proof test covers the TV event translation.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/unix/unixmouse.cc</td>
 <td>Mauseingabe</td>
-<td>TuiVision.Drivers.Console/TConsoleDriver.cs</td>
+<td>bewusst ausgelassen</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs</td>
-<td>Unix-Maus; durch Console-Mausereignisse ersetzt. Maus-Tests ausstehend. / Unix mouse; replaced by Console mouse events. Mouse tests pending.</td>
+<td>bewusst ausgelassen + Begruendung</td>
+<td>–</td>
+<td>Unix-Raw-Mauseingabe hatte keine stabile verwaltete Konsolenentsprechung; Phase 8 bewahrt nur das Mausereignismodell in <code>TuiVision.Core/TEvent.cs</code>, nicht aber einen plattformspezifischen Eingabetreiber. / Unix raw mouse input had no stable managed console equivalent; Phase 8 preserves only the mouse event model in <code>TuiVision.Core/TEvent.cs</code>, not a platform-specific input driver.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/unix/unixscr.cc</td>
@@ -1549,19 +1554,19 @@
 <td>tv203s/contrib/tvision/classes/unix/xtermkey.cc</td>
 <td>Tastatureingabe</td>
 <td>TuiVision.Drivers.Console/TConsoleDriver.cs</td>
-<td>TuiVision.Compatibility</td>
-<td>portiert + Test ausstehend</td>
+<td>TuiVision.Compatibility/TConsoleInputAdapter.cs</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs</td>
-<td>Xterm-Tastatursequenzen; durch System.Console.ReadKey() und TuiVision.Compatibility ersetzt. / Xterm key sequences; replaced by System.Console.ReadKey() and TuiVision.Compatibility.</td>
+<td>Xterm-Tastatursequenzen werden im managed Modell über <code>System.Console.ReadKey()</code> und die explizit xterm-kompatible Tastenmenge des <code>TConsoleInputAdapter</code> ersetzt; der Proof-Test deckt Navigations- und Funktionstasten ab. / Xterm key sequences are replaced in the managed model via <code>System.Console.ReadKey()</code> and the explicit xterm-compatible key subset in <code>TConsoleInputAdapter</code>; the proof test covers navigation and function keys.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/unix/xtermmouse.cc</td>
 <td>Mauseingabe</td>
-<td>TuiVision.Drivers.Console/TConsoleDriver.cs</td>
+<td>bewusst ausgelassen</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs</td>
-<td>Xterm-Mausprotokoll; durch Console-Mausereignisse ersetzt. Maus-Tests ausstehend. / Xterm mouse protocol; replaced by Console mouse events. Mouse tests pending.</td>
+<td>bewusst ausgelassen + Begruendung</td>
+<td>–</td>
+<td>Das historische Xterm-Mausprotokoll wird im verwalteten Konsolenmodell nicht als eigener Protokolltreiber nachgebildet; nur das allgemeine Mausereignismodell bleibt erhalten. / The historical Xterm mouse protocol is not recreated as a dedicated protocol driver in the managed console model; only the general mouse event model remains.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/unix/xtermscr.cc</td>
@@ -1577,7 +1582,7 @@
 <hr>
 <h2 id="win32-plattformdateien--win32-platform-files">Win32-Plattformdateien / Win32 Platform Files</h2>
 <p>Win32-Treiberdateien werden <strong>portiert</strong> — Win32-Console-API-Fähigkeiten sind durch die verwaltete <code>System.Console</code>-API von .NET 10 auf Windows abgedeckt.</p>
-<p><em>(Win32 driver files are ported — Win32 Console API capabilities are covered by the managed .NET 10 System.Console API on Windows.)</em></p>
+<p><em>(Win32 display and keyboard capabilities are ported through the managed .NET 10 console stack on Windows; the historical raw mouse driver is consciously omitted because no dedicated managed mouse-driver layer exists.)</em></p>
 <table>
 <thead>
 <tr>
@@ -1594,11 +1599,11 @@
 <tr>
 <td>tv203s/contrib/tvision/classes/win32/win32clip.cc</td>
 <td>OS-Clipboard</td>
-<td>TuiVision.Controls (geplant)</td>
+<td>TuiVision.Controls/ManagedClipboard.cs</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>–</td>
-<td>Win32-Zwischenablage-Integration; Zieltyp in Phase-8-Scope. Auf Windows durch verwaltete Clipboard-APIs ersetzt. / Win32 clipboard integration; target type in Phase-8 scope. Replaced by managed Clipboard APIs on Windows.</td>
+<td>portiert + getestet</td>
+<td>tests/TuiVision.Controls.Tests/ControlsProofTests.cs</td>
+<td>Die Win32-Zwischenablage ist im managed Modell durch ManagedClipboard ersetzt und per Proof-Test belegt. / The Win32 clipboard is replaced in the managed model by ManagedClipboard and covered by proof tests.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/win32/win32dis.cc</td>
@@ -1613,19 +1618,19 @@
 <td>tv203s/contrib/tvision/classes/win32/win32key.cc</td>
 <td>Tastatureingabe</td>
 <td>TuiVision.Drivers.Console/TConsoleDriver.cs</td>
-<td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>TuiVision.Compatibility/TConsoleInputAdapter.cs</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs</td>
-<td>Win32-Tastatureingabe; durch System.Console.ReadKey() ersetzt. Eingabe-Tests ausstehend. / Win32 keyboard input; replaced by System.Console.ReadKey(). Input tests pending.</td>
+<td>Win32-Tastatureingabe wird im managed Modell durch <code>System.Console.ReadKey()</code> plus <code>TConsoleInputAdapter</code>/<code>TKeyCodeTranslator</code> ersetzt; der Driver-Proof-Test belegt die Turbo-Vision-Ereignisabbildung. / Win32 keyboard input is replaced in the managed model by <code>System.Console.ReadKey()</code> plus <code>TConsoleInputAdapter</code>/<code>TKeyCodeTranslator</code>; the driver proof test covers the Turbo Vision event mapping.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/win32/win32mouse.cc</td>
 <td>Mauseingabe</td>
-<td>TuiVision.Drivers.Console/TConsoleDriver.cs</td>
+<td>bewusst ausgelassen</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs</td>
-<td>Win32-Mauseingabe; durch Console-Mausereignisse ersetzt. Maus-Tests ausstehend. / Win32 mouse input; replaced by Console mouse events. Mouse tests pending.</td>
+<td>bewusst ausgelassen + Begruendung</td>
+<td>–</td>
+<td>Win32-Raw-Mauseingabe über Console-Input-Records wird in Phase 8 nicht als eigener Treiber nachgebildet; stattdessen bleibt nur das UI-seitige Mausereignismodell erhalten. / Win32 raw mouse input through console input records is not recreated as a dedicated driver in Phase 8; instead only the UI-facing mouse event model remains.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/win32/win32scr.cc</td>
@@ -1695,8 +1700,8 @@
 </table>
 <hr>
 <h2 id="winnt-plattformdateien--winnt-platform-files">WinNT-Plattformdateien / WinNT Platform Files</h2>
-<p>WinNT-Treiberdateien werden <strong>portiert</strong> — Windows-Console-API-Fähigkeiten sind durch die verwaltete <code>System.Console</code>-API von .NET 10 abgedeckt.</p>
-<p><em>(WinNT driver files are ported — Windows Console API capabilities are covered by the managed .NET 10 System.Console API.)</em></p>
+<p>WinNT-Treiberdateien werden für Darstellung und Tastatur <strong>portiert</strong>; der historische Raw-Maus-Treiber wird bewusst ausgelassen, weil kein dedizierter verwalteter Maus-Treiberstack existiert.</p>
+<p><em>(WinNT display and keyboard capabilities are ported through the managed .NET 10 console stack; the historical raw mouse driver is consciously omitted because no dedicated managed mouse-driver layer exists.)</em></p>
 <table>
 <thead>
 <tr>
@@ -1723,19 +1728,19 @@
 <td>tv203s/contrib/tvision/classes/winnt/winntkey.cc</td>
 <td>Tastatureingabe</td>
 <td>TuiVision.Drivers.Console/TConsoleDriver.cs</td>
-<td>–</td>
-<td>portiert + Test ausstehend</td>
+<td>TuiVision.Compatibility/TConsoleInputAdapter.cs</td>
+<td>portiert + getestet</td>
 <td>tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs</td>
-<td>WinNT-Tastatureingabe; durch System.Console.ReadKey() ersetzt. Eingabe-Tests ausstehend. / WinNT keyboard input; replaced by System.Console.ReadKey(). Input tests pending.</td>
+<td>WinNT-Tastatureingabe wird im managed Modell durch <code>System.Console.ReadKey()</code> plus <code>TConsoleInputAdapter</code>/<code>TKeyCodeTranslator</code> ersetzt; der Driver-Proof-Test belegt die TV-Ereignisübersetzung. / WinNT keyboard input is replaced in the managed model by <code>System.Console.ReadKey()</code> plus <code>TConsoleInputAdapter</code>/<code>TKeyCodeTranslator</code>; the driver proof test covers the TV event translation.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/winnt/winntmouse.cc</td>
 <td>Mauseingabe</td>
-<td>TuiVision.Drivers.Console/TConsoleDriver.cs</td>
+<td>bewusst ausgelassen</td>
 <td>–</td>
-<td>portiert + Test ausstehend</td>
-<td>tests/TuiVision.Drivers.Tests/TConsoleDriverCompatibilityTests.cs</td>
-<td>WinNT-Mauseingabe; durch Console-Mausereignisse ersetzt. Maus-Tests ausstehend. / WinNT mouse input; replaced by Console mouse events. Mouse tests pending.</td>
+<td>bewusst ausgelassen + Begruendung</td>
+<td>–</td>
+<td>WinNT-Raw-Mauseingabe wird im verwalteten Konsolenmodell nicht als eigener Treiber nachgebildet; nur das allgemeine Mausereignismodell bleibt erhalten. / WinNT raw mouse input is not recreated as a dedicated driver in the managed console model; only the general mouse event model remains.</td>
 </tr>
 <tr>
 <td>tv203s/contrib/tvision/classes/winnt/winntscr.cc</td>
@@ -1857,60 +1862,125 @@
 </table>
 <p>Vollständige Ausführungsdetails: siehe <code>docs/guides/multi-mac-workflow.md</code>, Abschnitt „Phase-7-Kompatibilitätsnachweis&quot;.</p>
 <hr>
-<h2 id="noch-offene-phase-8-eingangstor-nachweise--open-phase-8-entrance-gate-items">Noch offene Phase-8-Eingangstor-Nachweise / Open Phase-8 Entrance Gate Items</h2>
-<p>Die folgenden Punkte gehören <strong>nicht</strong> zu Phase 7, müssen aber vor dem Beginn von Phase 8 (Beispielportierungen) explizit geschlossen werden:</p>
-<p><em>(The following items do not belong to Phase 7 but must be explicitly closed before Phase 8 (example porting) begins:)</em></p>
+<h2 id="phase-8-eingangstor-nachweis--phase-8-entrance-gate-evidence">Phase-8-Eingangstor-Nachweis / Phase-8 Entrance Gate Evidence</h2>
+<p>Die Phase-8-Eingangsvoraussetzungen sind im Closure-Paket vom <code>2026-03-27</code>
+vollständig nachgewiesen. Welle 1 der Beispielportierungen darf ab dem
+dedizierten Closure-Commit <code>docs: close phase-8 entrance gate for feature 006</code>
+beginnen.</p>
+<p><em>(The Phase-8 entrance requirements are fully evidenced in the 2026-03-27
+closure package. Example wave 1 may begin starting with the dedicated closure
+commit <code>docs: close phase-8 entrance gate for feature 006</code>.)</em></p>
 <table>
 <thead>
 <tr>
 <th>Gate-Bereich</th>
-<th>Aktueller Status</th>
-<th>Nächster Schritt</th>
+<th>Ergebnis 2026-03-27</th>
+<th>Nachweis / Anmerkung</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Build-Gate: <code>dotnet build --configuration Release</code> für alle Module</td>
-<td>Phase-7-Scope: PASS</td>
-<td>Vor Phase-8 erneut validieren nach Beispiel-Portierungsänderungen.</td>
+<td>PASS</td>
+<td>Erfolgreich ohne verbleibende Warnungen aus dem Closure-Paket.</td>
 </tr>
 <tr>
 <td>Test-Gate: <code>dotnet test</code> (alle Module)</td>
-<td><code>TuiVision.Controls</code> Coverage ≥ 70 % (SC-003) ausstehend</td>
-<td>Tests für Controls-Typen schließen; Coverage messen.</td>
+<td>PASS</td>
+<td>Alle Repository-Testprojekte grün; keine dokumentationspflichtigen Skip-/Ignore-Fälle.</td>
 </tr>
 <tr>
 <td>Format-Gate: <code>dotnet format --verify-no-changes</code></td>
-<td>PASS (Phase-7-Scope)</td>
-<td>Fortlaufend sicherstellen.</td>
+<td>PASS</td>
+<td>Nach MSTest-Analyzer-Bereinigung ohne Abweichungen.</td>
 </tr>
 <tr>
-<td>Coverage-Gate: <code>TuiVision.Controls</code> ≥ 70 % Line Coverage</td>
-<td>Ausstehend</td>
-<td>Fehlende Control-Tests implementieren.</td>
+<td>Coverage-Gate: <code>TuiVision.Core</code>, <code>TuiVision.Controls</code>, <code>TuiVision.Serialization</code>, <code>TuiVision.Compatibility</code> und <code>TuiVision.Drivers.Console</code> jeweils ≥ 70 % Line Coverage</td>
+<td>PASS</td>
+<td>Alle fünf Gate-Assemblies separat mit Coverlet nachgewiesen; Details siehe Tabelle unten.</td>
 </tr>
 <tr>
 <td>API-Doku-Gate: XML-Kommentare + <code>docfx docfx.json</code></td>
-<td>Für Phase-7-Änderungen aktuell</td>
-<td>Bei Phase-8-API-Änderungen erneuern.</td>
+<td>PASS</td>
+<td>Bedingter Doku-Gate-Lauf erfolgreich, da öffentliche API/XML-Kommentare im 006-Paket geändert wurden.</td>
 </tr>
 <tr>
 <td>Vollständiger M-07-Beweis: alle <code>.cc</code>-Zeilen mit <code>portiert + getestet</code> oder <code>bewusst ausgelassen + Begruendung</code></td>
-<td>Viele Zeilen noch auf <code>portiert + Test ausstehend</code></td>
-<td>Tests für portierte Controls/Serialization in Phase 8 schließen.</td>
+<td>PASS</td>
+<td>Keine Ledger-Zeile verbleibt im provisorischen Status.</td>
 </tr>
 <tr>
 <td>Beispielportierungen Wellen 1–4</td>
-<td>Noch nicht begonnen</td>
-<td>Erst nach bestandenem Eingangstor beginnen.</td>
+<td>FREIGEGEBEN</td>
+<td>Phase 8 darf ab dem dedizierten Closure-Commit beginnen; Welle 1 ist der nächste offene Hauptschritt.</td>
 </tr>
 </tbody>
 </table>
+<h3 id="coverage-ergebnisse-je-gate-assembly--coverage-results-per-gate-assembly">Coverage-Ergebnisse je Gate-Assembly / Coverage Results per Gate Assembly</h3>
+<table>
+<thead>
+<tr>
+<th>Ziel-Assembly</th>
+<th>Testprojekt / Evidence Source</th>
+<th style="text-align: right;">Line Coverage</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TuiVision.Core</code></td>
+<td><code>dotnet test tests/TuiVision.Core.Tests/ --collect:&quot;XPlat Code Coverage&quot;</code></td>
+<td style="text-align: right;"><code>89.11 %</code></td>
+<td>PASS</td>
+</tr>
+<tr>
+<td><code>TuiVision.Controls</code></td>
+<td><code>dotnet test tests/TuiVision.Controls.Tests/ --collect:&quot;XPlat Code Coverage&quot;</code></td>
+<td style="text-align: right;"><code>84.10 %</code></td>
+<td>PASS</td>
+</tr>
+<tr>
+<td><code>TuiVision.Serialization</code></td>
+<td><code>dotnet test tests/TuiVision.Serialization.Tests/ --collect:&quot;XPlat Code Coverage&quot;</code></td>
+<td style="text-align: right;"><code>83.33 %</code></td>
+<td>PASS</td>
+</tr>
+<tr>
+<td><code>TuiVision.Compatibility</code></td>
+<td><code>dotnet test tests/TuiVision.Compatibility.Tests/ --collect:&quot;XPlat Code Coverage&quot;</code></td>
+<td style="text-align: right;"><code>80.95 %</code></td>
+<td>PASS</td>
+</tr>
+<tr>
+<td><code>TuiVision.Drivers.Console</code></td>
+<td><code>dotnet test tests/TuiVision.Drivers.Tests/ --collect:&quot;XPlat Code Coverage&quot;</code></td>
+<td style="text-align: right;"><code>97.43 %</code></td>
+<td>PASS</td>
+</tr>
+</tbody>
+</table>
+<p>Die lokalen Coverlet-Läufe vom <code>2026-03-27</code> sind für das Eingangstor das
+maßgebliche Ergebnis, weil im Repository derzeit kein separates,
+assembly-scharfes CI-Artefakt mit abweichenden Werten vorliegt.</p>
+<p><em>(The local 2026-03-27 Coverlet runs are the authoritative entrance-gate
+result because the repository currently contains no separate assembly-specific
+CI artifact with conflicting values.)</em></p>
+<h3 id="skip-ignore-prüfung--skip-and-ignore-review">Skip-/Ignore-Prüfung / Skip and Ignore Review</h3>
+<ul>
+<li><code>dotnet test</code> meldet am <code>2026-03-27</code> keine <code>[Ignore]</code>- oder <code>Skip</code>-Fälle in
+gate-relevanten Testprojekten.</li>
+<li>Vorhandene <code>[DoNotParallelize]</code>-Attribute in einzelnen Controls-Tests sind
+Ausführungssteuerung, keine ausgelassenen Tests.</li>
+</ul>
+<h3 id="closure-commit-referenz--closure-commit-reference">Closure-Commit-Referenz / Closure Commit Reference</h3>
+<ul>
+<li>Dedizierter Gate-Closure-Commit: <code>docs: close phase-8 entrance gate for feature 006</code></li>
+</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/005-driver-consolidation-m07/docs/porting-status.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/main/docs/porting-status.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -1918,7 +1988,7 @@
       </div>
 
       <div class="affix">
-        <nav id="affix"></nav>
+        <nav id="affix" aria-label="In this article"></nav>
       </div>
     </main>
 

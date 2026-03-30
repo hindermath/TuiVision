@@ -18,7 +18,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: DriverCapabilityMap
     path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
@@ -63,7 +63,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: AllBuckets
     path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
@@ -98,7 +98,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: GetManagedReplacement
     path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
@@ -147,11 +147,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: GetHistoricalSourcePattern
     path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
-    startLine: 115
+    startLine: 119
   assemblies:
   - TuiVision.Drivers.Console
   namespace: TuiVision.Drivers.Console

@@ -190,6 +190,15 @@ public class TGroup : TView
             _last.Next = view;
             _last = view;
         }
+
+        // Zustandsflags von der Eigentümergruppe auf die neue View übertragen (Exposed, Active, Focused).
+        // Propagate state flags from the owner group to the newly inserted view (Exposed, Active, Focused).
+        TViewState inherited = TViewState.Exposed | TViewState.Active | TViewState.Focused;
+        TViewState ownerState = State & inherited;
+        if (ownerState != 0)
+        {
+            view.SetState(ownerState, true);
+        }
     }
 
     /// <summary>
@@ -395,6 +404,27 @@ public class TGroup : TView
                 v.DrawView();
             }
         });
+
+        // Puffer der Kind-Gruppen in eigenen Puffer einblenden (Compositing).
+        // Composite child-group buffers into own buffer (Compositing).
+        if (_buffer != null)
+        {
+            ForEach(v =>
+            {
+                if (v is TGroup childGroup && childGroup._buffer != null)
+                {
+                    int offX = v.Origin.X;
+                    int offY = v.Origin.Y;
+                    for (int gy = 0; gy < childGroup._buffer.Height; gy++)
+                    {
+                        for (int gx = 0; gx < childGroup._buffer.Width; gx++)
+                        {
+                            _buffer.TrySetCell(offX + gx, offY + gy, childGroup._buffer.GetCell(gx, gy));
+                        }
+                    }
+                }
+            });
+        }
     }
 
     /// <summary>
@@ -408,7 +438,7 @@ public class TGroup : TView
     /// Der interne Zeichenpuffer oder <c>null</c>, wenn die Gruppe nicht exponiert ist.
     /// The internal draw buffer, or <c>null</c> if the group is not exposed.
     /// </returns>
-    internal new TConsoleBuffer? GetDrawBuffer()
+    protected internal new TConsoleBuffer? GetDrawBuffer()
     {
         if (_buffer == null && Options.HasFlag(TViewOptions.Buffered) && GetState(TViewState.Exposed))
         {
@@ -470,7 +500,7 @@ public class TGroup : TView
     {
         base.SetState(state, enable);
 
-        if ((state & (TViewState.Active | TViewState.Focused | TViewState.Disabled)) != 0)
+        if ((state & (TViewState.Active | TViewState.Focused | TViewState.Disabled | TViewState.Exposed)) != 0)
         {
             ForEach(v => v.SetState(state, enable));
         }

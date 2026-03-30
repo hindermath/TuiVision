@@ -7,6 +7,38 @@ references:
   commentId: N:TuiVision.Compatibility
   fullName: TuiVision.Compatibility
   nameWithType: TuiVision.Compatibility
+- uid: TuiVision.Compatibility.TConsoleInputAdapter
+  name: TConsoleInputAdapter
+  href: api/TuiVision.Compatibility.TConsoleInputAdapter.html
+  commentId: T:TuiVision.Compatibility.TConsoleInputAdapter
+  fullName: TuiVision.Compatibility.TConsoleInputAdapter
+  nameWithType: TConsoleInputAdapter
+- uid: TuiVision.Compatibility.TConsoleInputAdapter.CreateKeyDownEvent(System.ConsoleKeyInfo)
+  name: CreateKeyDownEvent(ConsoleKeyInfo)
+  href: api/TuiVision.Compatibility.TConsoleInputAdapter.html#TuiVision_Compatibility_TConsoleInputAdapter_CreateKeyDownEvent_System_ConsoleKeyInfo_
+  commentId: M:TuiVision.Compatibility.TConsoleInputAdapter.CreateKeyDownEvent(System.ConsoleKeyInfo)
+  fullName: TuiVision.Compatibility.TConsoleInputAdapter.CreateKeyDownEvent(System.ConsoleKeyInfo)
+  nameWithType: TConsoleInputAdapter.CreateKeyDownEvent(ConsoleKeyInfo)
+- uid: TuiVision.Compatibility.TConsoleInputAdapter.CreateKeyDownEvent*
+  name: CreateKeyDownEvent
+  href: api/TuiVision.Compatibility.TConsoleInputAdapter.html#TuiVision_Compatibility_TConsoleInputAdapter_CreateKeyDownEvent_
+  commentId: Overload:TuiVision.Compatibility.TConsoleInputAdapter.CreateKeyDownEvent
+  isSpec: "True"
+  fullName: TuiVision.Compatibility.TConsoleInputAdapter.CreateKeyDownEvent
+  nameWithType: TConsoleInputAdapter.CreateKeyDownEvent
+- uid: TuiVision.Compatibility.TConsoleInputAdapter.IsXtermCompatibleKey(System.ConsoleKey)
+  name: IsXtermCompatibleKey(ConsoleKey)
+  href: api/TuiVision.Compatibility.TConsoleInputAdapter.html#TuiVision_Compatibility_TConsoleInputAdapter_IsXtermCompatibleKey_System_ConsoleKey_
+  commentId: M:TuiVision.Compatibility.TConsoleInputAdapter.IsXtermCompatibleKey(System.ConsoleKey)
+  fullName: TuiVision.Compatibility.TConsoleInputAdapter.IsXtermCompatibleKey(System.ConsoleKey)
+  nameWithType: TConsoleInputAdapter.IsXtermCompatibleKey(ConsoleKey)
+- uid: TuiVision.Compatibility.TConsoleInputAdapter.IsXtermCompatibleKey*
+  name: IsXtermCompatibleKey
+  href: api/TuiVision.Compatibility.TConsoleInputAdapter.html#TuiVision_Compatibility_TConsoleInputAdapter_IsXtermCompatibleKey_
+  commentId: Overload:TuiVision.Compatibility.TConsoleInputAdapter.IsXtermCompatibleKey
+  isSpec: "True"
+  fullName: TuiVision.Compatibility.TConsoleInputAdapter.IsXtermCompatibleKey
+  nameWithType: TConsoleInputAdapter.IsXtermCompatibleKey
 - uid: TuiVision.Compatibility.TKeyCodeTranslator
   name: TKeyCodeTranslator
   href: api/TuiVision.Compatibility.TKeyCodeTranslator.html
@@ -211,6 +243,99 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.Internal.FramedHostView.Title
   nameWithType: FramedHostView.Title
+- uid: TuiVision.Controls.ManagedClipboard
+  name: ManagedClipboard
+  href: api/TuiVision.Controls.ManagedClipboard.html
+  commentId: T:TuiVision.Controls.ManagedClipboard
+  fullName: TuiVision.Controls.ManagedClipboard
+  nameWithType: ManagedClipboard
+- uid: TuiVision.Controls.ManagedClipboard.Clear
+  name: Clear()
+  href: api/TuiVision.Controls.ManagedClipboard.html#TuiVision_Controls_ManagedClipboard_Clear
+  commentId: M:TuiVision.Controls.ManagedClipboard.Clear
+  fullName: TuiVision.Controls.ManagedClipboard.Clear()
+  nameWithType: ManagedClipboard.Clear()
+- uid: TuiVision.Controls.ManagedClipboard.Clear*
+  name: Clear
+  href: api/TuiVision.Controls.ManagedClipboard.html#TuiVision_Controls_ManagedClipboard_Clear_
+  commentId: Overload:TuiVision.Controls.ManagedClipboard.Clear
+  isSpec: "True"
+  fullName: TuiVision.Controls.ManagedClipboard.Clear
+  nameWithType: ManagedClipboard.Clear
+- uid: TuiVision.Controls.ManagedClipboard.GetText
+  name: GetText()
+  href: api/TuiVision.Controls.ManagedClipboard.html#TuiVision_Controls_ManagedClipboard_GetText
+  commentId: M:TuiVision.Controls.ManagedClipboard.GetText
+  fullName: TuiVision.Controls.ManagedClipboard.GetText()
+  nameWithType: ManagedClipboard.GetText()
+- uid: TuiVision.Controls.ManagedClipboard.GetText*
+  name: GetText
+  href: api/TuiVision.Controls.ManagedClipboard.html#TuiVision_Controls_ManagedClipboard_GetText_
+  commentId: Overload:TuiVision.Controls.ManagedClipboard.GetText
+  isSpec: "True"
+  fullName: TuiVision.Controls.ManagedClipboard.GetText
+  nameWithType: ManagedClipboard.GetText
+- uid: TuiVision.Controls.ManagedClipboard.SetText(System.String)
+  name: SetText(string)
+  href: api/TuiVision.Controls.ManagedClipboard.html#TuiVision_Controls_ManagedClipboard_SetText_System_String_
+  commentId: M:TuiVision.Controls.ManagedClipboard.SetText(System.String)
+  name.vb: SetText(String)
+  fullName: TuiVision.Controls.ManagedClipboard.SetText(string)
+  fullName.vb: TuiVision.Controls.ManagedClipboard.SetText(String)
+  nameWithType: ManagedClipboard.SetText(string)
+  nameWithType.vb: ManagedClipboard.SetText(String)
+- uid: TuiVision.Controls.ManagedClipboard.SetText*
+  name: SetText
+  href: api/TuiVision.Controls.ManagedClipboard.html#TuiVision_Controls_ManagedClipboard_SetText_
+  commentId: Overload:TuiVision.Controls.ManagedClipboard.SetText
+  isSpec: "True"
+  fullName: TuiVision.Controls.ManagedClipboard.SetText
+  nameWithType: ManagedClipboard.SetText
+- uid: TuiVision.Controls.MenuLayoutSlot
+  name: MenuLayoutSlot
+  href: api/TuiVision.Controls.MenuLayoutSlot.html
+  commentId: T:TuiVision.Controls.MenuLayoutSlot
+  fullName: TuiVision.Controls.MenuLayoutSlot
+  nameWithType: MenuLayoutSlot
+- uid: TuiVision.Controls.MenuLayoutSlot.Item
+  name: Item
+  href: api/TuiVision.Controls.MenuLayoutSlot.html#TuiVision_Controls_MenuLayoutSlot_Item
+  commentId: P:TuiVision.Controls.MenuLayoutSlot.Item
+  fullName: TuiVision.Controls.MenuLayoutSlot.Item
+  nameWithType: MenuLayoutSlot.Item
+- uid: TuiVision.Controls.MenuLayoutSlot.Item*
+  name: Item
+  href: api/TuiVision.Controls.MenuLayoutSlot.html#TuiVision_Controls_MenuLayoutSlot_Item_
+  commentId: Overload:TuiVision.Controls.MenuLayoutSlot.Item
+  isSpec: "True"
+  fullName: TuiVision.Controls.MenuLayoutSlot.Item
+  nameWithType: MenuLayoutSlot.Item
+- uid: TuiVision.Controls.MenuLayoutSlot.StartCol
+  name: StartCol
+  href: api/TuiVision.Controls.MenuLayoutSlot.html#TuiVision_Controls_MenuLayoutSlot_StartCol
+  commentId: P:TuiVision.Controls.MenuLayoutSlot.StartCol
+  fullName: TuiVision.Controls.MenuLayoutSlot.StartCol
+  nameWithType: MenuLayoutSlot.StartCol
+- uid: TuiVision.Controls.MenuLayoutSlot.StartCol*
+  name: StartCol
+  href: api/TuiVision.Controls.MenuLayoutSlot.html#TuiVision_Controls_MenuLayoutSlot_StartCol_
+  commentId: Overload:TuiVision.Controls.MenuLayoutSlot.StartCol
+  isSpec: "True"
+  fullName: TuiVision.Controls.MenuLayoutSlot.StartCol
+  nameWithType: MenuLayoutSlot.StartCol
+- uid: TuiVision.Controls.MenuLayoutSlot.Width
+  name: Width
+  href: api/TuiVision.Controls.MenuLayoutSlot.html#TuiVision_Controls_MenuLayoutSlot_Width
+  commentId: P:TuiVision.Controls.MenuLayoutSlot.Width
+  fullName: TuiVision.Controls.MenuLayoutSlot.Width
+  nameWithType: MenuLayoutSlot.Width
+- uid: TuiVision.Controls.MenuLayoutSlot.Width*
+  name: Width
+  href: api/TuiVision.Controls.MenuLayoutSlot.html#TuiVision_Controls_MenuLayoutSlot_Width_
+  commentId: Overload:TuiVision.Controls.MenuLayoutSlot.Width
+  isSpec: "True"
+  fullName: TuiVision.Controls.MenuLayoutSlot.Width
+  nameWithType: MenuLayoutSlot.Width
 - uid: TuiVision.Controls.ShellCommandIds
   name: ShellCommandIds
   href: api/TuiVision.Controls.ShellCommandIds.html
@@ -699,6 +824,313 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TCluster.Value
   nameWithType: TCluster.Value
+- uid: TuiVision.Controls.TColorDialog
+  name: TColorDialog
+  href: api/TuiVision.Controls.TColorDialog.html
+  commentId: T:TuiVision.Controls.TColorDialog
+  fullName: TuiVision.Controls.TColorDialog
+  nameWithType: TColorDialog
+- uid: TuiVision.Controls.TColorDialog.#ctor(TuiVision.Controls.TPalette)
+  name: TColorDialog(TPalette)
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog__ctor_TuiVision_Controls_TPalette_
+  commentId: M:TuiVision.Controls.TColorDialog.#ctor(TuiVision.Controls.TPalette)
+  name.vb: New(TPalette)
+  fullName: TuiVision.Controls.TColorDialog.TColorDialog(TuiVision.Controls.TPalette)
+  fullName.vb: TuiVision.Controls.TColorDialog.New(TuiVision.Controls.TPalette)
+  nameWithType: TColorDialog.TColorDialog(TPalette)
+  nameWithType.vb: TColorDialog.New(TPalette)
+- uid: TuiVision.Controls.TColorDialog.#ctor*
+  name: TColorDialog
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog__ctor_
+  commentId: Overload:TuiVision.Controls.TColorDialog.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TColorDialog.TColorDialog
+  fullName.vb: TuiVision.Controls.TColorDialog.New
+  nameWithType: TColorDialog.TColorDialog
+  nameWithType.vb: TColorDialog.New
+- uid: TuiVision.Controls.TColorDialog.Palette
+  name: Palette
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_Palette
+  commentId: P:TuiVision.Controls.TColorDialog.Palette
+  fullName: TuiVision.Controls.TColorDialog.Palette
+  nameWithType: TColorDialog.Palette
+- uid: TuiVision.Controls.TColorDialog.Palette*
+  name: Palette
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_Palette_
+  commentId: Overload:TuiVision.Controls.TColorDialog.Palette
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorDialog.Palette
+  nameWithType: TColorDialog.Palette
+- uid: TuiVision.Controls.TColorDialog.Preview
+  name: Preview
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_Preview
+  commentId: P:TuiVision.Controls.TColorDialog.Preview
+  fullName: TuiVision.Controls.TColorDialog.Preview
+  nameWithType: TColorDialog.Preview
+- uid: TuiVision.Controls.TColorDialog.Preview*
+  name: Preview
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_Preview_
+  commentId: Overload:TuiVision.Controls.TColorDialog.Preview
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorDialog.Preview
+  nameWithType: TColorDialog.Preview
+- uid: TuiVision.Controls.TColorDialog.SelectColor(System.ConsoleColor)
+  name: SelectColor(ConsoleColor)
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_SelectColor_System_ConsoleColor_
+  commentId: M:TuiVision.Controls.TColorDialog.SelectColor(System.ConsoleColor)
+  fullName: TuiVision.Controls.TColorDialog.SelectColor(System.ConsoleColor)
+  nameWithType: TColorDialog.SelectColor(ConsoleColor)
+- uid: TuiVision.Controls.TColorDialog.SelectColor*
+  name: SelectColor
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_SelectColor_
+  commentId: Overload:TuiVision.Controls.TColorDialog.SelectColor
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorDialog.SelectColor
+  nameWithType: TColorDialog.SelectColor
+- uid: TuiVision.Controls.TColorDialog.Selector
+  name: Selector
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_Selector
+  commentId: P:TuiVision.Controls.TColorDialog.Selector
+  fullName: TuiVision.Controls.TColorDialog.Selector
+  nameWithType: TColorDialog.Selector
+- uid: TuiVision.Controls.TColorDialog.Selector*
+  name: Selector
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_Selector_
+  commentId: Overload:TuiVision.Controls.TColorDialog.Selector
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorDialog.Selector
+  nameWithType: TColorDialog.Selector
+- uid: TuiVision.Controls.TColorDisplay
+  name: TColorDisplay
+  href: api/TuiVision.Controls.TColorDisplay.html
+  commentId: T:TuiVision.Controls.TColorDisplay
+  fullName: TuiVision.Controls.TColorDisplay
+  nameWithType: TColorDisplay
+- uid: TuiVision.Controls.TColorDisplay.Background
+  name: Background
+  href: api/TuiVision.Controls.TColorDisplay.html#TuiVision_Controls_TColorDisplay_Background
+  commentId: P:TuiVision.Controls.TColorDisplay.Background
+  fullName: TuiVision.Controls.TColorDisplay.Background
+  nameWithType: TColorDisplay.Background
+- uid: TuiVision.Controls.TColorDisplay.Background*
+  name: Background
+  href: api/TuiVision.Controls.TColorDisplay.html#TuiVision_Controls_TColorDisplay_Background_
+  commentId: Overload:TuiVision.Controls.TColorDisplay.Background
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorDisplay.Background
+  nameWithType: TColorDisplay.Background
+- uid: TuiVision.Controls.TColorDisplay.Foreground
+  name: Foreground
+  href: api/TuiVision.Controls.TColorDisplay.html#TuiVision_Controls_TColorDisplay_Foreground
+  commentId: P:TuiVision.Controls.TColorDisplay.Foreground
+  fullName: TuiVision.Controls.TColorDisplay.Foreground
+  nameWithType: TColorDisplay.Foreground
+- uid: TuiVision.Controls.TColorDisplay.Foreground*
+  name: Foreground
+  href: api/TuiVision.Controls.TColorDisplay.html#TuiVision_Controls_TColorDisplay_Foreground_
+  commentId: Overload:TuiVision.Controls.TColorDisplay.Foreground
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorDisplay.Foreground
+  nameWithType: TColorDisplay.Foreground
+- uid: TuiVision.Controls.TColorDisplay.SetColors(System.ConsoleColor,System.ConsoleColor)
+  name: SetColors(ConsoleColor, ConsoleColor)
+  href: api/TuiVision.Controls.TColorDisplay.html#TuiVision_Controls_TColorDisplay_SetColors_System_ConsoleColor_System_ConsoleColor_
+  commentId: M:TuiVision.Controls.TColorDisplay.SetColors(System.ConsoleColor,System.ConsoleColor)
+  fullName: TuiVision.Controls.TColorDisplay.SetColors(System.ConsoleColor, System.ConsoleColor)
+  nameWithType: TColorDisplay.SetColors(ConsoleColor, ConsoleColor)
+- uid: TuiVision.Controls.TColorDisplay.SetColors*
+  name: SetColors
+  href: api/TuiVision.Controls.TColorDisplay.html#TuiVision_Controls_TColorDisplay_SetColors_
+  commentId: Overload:TuiVision.Controls.TColorDisplay.SetColors
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorDisplay.SetColors
+  nameWithType: TColorDisplay.SetColors
+- uid: TuiVision.Controls.TColorGroup
+  name: TColorGroup
+  href: api/TuiVision.Controls.TColorGroup.html
+  commentId: T:TuiVision.Controls.TColorGroup
+  fullName: TuiVision.Controls.TColorGroup
+  nameWithType: TColorGroup
+- uid: TuiVision.Controls.TColorGroup.#ctor(System.String)
+  name: TColorGroup(string)
+  href: api/TuiVision.Controls.TColorGroup.html#TuiVision_Controls_TColorGroup__ctor_System_String_
+  commentId: M:TuiVision.Controls.TColorGroup.#ctor(System.String)
+  name.vb: New(String)
+  fullName: TuiVision.Controls.TColorGroup.TColorGroup(string)
+  fullName.vb: TuiVision.Controls.TColorGroup.New(String)
+  nameWithType: TColorGroup.TColorGroup(string)
+  nameWithType.vb: TColorGroup.New(String)
+- uid: TuiVision.Controls.TColorGroup.#ctor*
+  name: TColorGroup
+  href: api/TuiVision.Controls.TColorGroup.html#TuiVision_Controls_TColorGroup__ctor_
+  commentId: Overload:TuiVision.Controls.TColorGroup.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TColorGroup.TColorGroup
+  fullName.vb: TuiVision.Controls.TColorGroup.New
+  nameWithType: TColorGroup.TColorGroup
+  nameWithType.vb: TColorGroup.New
+- uid: TuiVision.Controls.TColorGroup.AddItem(TuiVision.Controls.TColorItem)
+  name: AddItem(TColorItem)
+  href: api/TuiVision.Controls.TColorGroup.html#TuiVision_Controls_TColorGroup_AddItem_TuiVision_Controls_TColorItem_
+  commentId: M:TuiVision.Controls.TColorGroup.AddItem(TuiVision.Controls.TColorItem)
+  fullName: TuiVision.Controls.TColorGroup.AddItem(TuiVision.Controls.TColorItem)
+  nameWithType: TColorGroup.AddItem(TColorItem)
+- uid: TuiVision.Controls.TColorGroup.AddItem*
+  name: AddItem
+  href: api/TuiVision.Controls.TColorGroup.html#TuiVision_Controls_TColorGroup_AddItem_
+  commentId: Overload:TuiVision.Controls.TColorGroup.AddItem
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorGroup.AddItem
+  nameWithType: TColorGroup.AddItem
+- uid: TuiVision.Controls.TColorGroup.ItemCount
+  name: ItemCount
+  href: api/TuiVision.Controls.TColorGroup.html#TuiVision_Controls_TColorGroup_ItemCount
+  commentId: P:TuiVision.Controls.TColorGroup.ItemCount
+  fullName: TuiVision.Controls.TColorGroup.ItemCount
+  nameWithType: TColorGroup.ItemCount
+- uid: TuiVision.Controls.TColorGroup.ItemCount*
+  name: ItemCount
+  href: api/TuiVision.Controls.TColorGroup.html#TuiVision_Controls_TColorGroup_ItemCount_
+  commentId: Overload:TuiVision.Controls.TColorGroup.ItemCount
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorGroup.ItemCount
+  nameWithType: TColorGroup.ItemCount
+- uid: TuiVision.Controls.TColorGroup.Name
+  name: Name
+  href: api/TuiVision.Controls.TColorGroup.html#TuiVision_Controls_TColorGroup_Name
+  commentId: P:TuiVision.Controls.TColorGroup.Name
+  fullName: TuiVision.Controls.TColorGroup.Name
+  nameWithType: TColorGroup.Name
+- uid: TuiVision.Controls.TColorGroup.Name*
+  name: Name
+  href: api/TuiVision.Controls.TColorGroup.html#TuiVision_Controls_TColorGroup_Name_
+  commentId: Overload:TuiVision.Controls.TColorGroup.Name
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorGroup.Name
+  nameWithType: TColorGroup.Name
+- uid: TuiVision.Controls.TColorItem
+  name: TColorItem
+  href: api/TuiVision.Controls.TColorItem.html
+  commentId: T:TuiVision.Controls.TColorItem
+  fullName: TuiVision.Controls.TColorItem
+  nameWithType: TColorItem
+- uid: TuiVision.Controls.TColorItem.#ctor(System.String,System.ConsoleColor)
+  name: TColorItem(string, ConsoleColor)
+  href: api/TuiVision.Controls.TColorItem.html#TuiVision_Controls_TColorItem__ctor_System_String_System_ConsoleColor_
+  commentId: M:TuiVision.Controls.TColorItem.#ctor(System.String,System.ConsoleColor)
+  name.vb: New(String, ConsoleColor)
+  fullName: TuiVision.Controls.TColorItem.TColorItem(string, System.ConsoleColor)
+  fullName.vb: TuiVision.Controls.TColorItem.New(String, System.ConsoleColor)
+  nameWithType: TColorItem.TColorItem(string, ConsoleColor)
+  nameWithType.vb: TColorItem.New(String, ConsoleColor)
+- uid: TuiVision.Controls.TColorItem.#ctor*
+  name: TColorItem
+  href: api/TuiVision.Controls.TColorItem.html#TuiVision_Controls_TColorItem__ctor_
+  commentId: Overload:TuiVision.Controls.TColorItem.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TColorItem.TColorItem
+  fullName.vb: TuiVision.Controls.TColorItem.New
+  nameWithType: TColorItem.TColorItem
+  nameWithType.vb: TColorItem.New
+- uid: TuiVision.Controls.TColorItem.Color
+  name: Color
+  href: api/TuiVision.Controls.TColorItem.html#TuiVision_Controls_TColorItem_Color
+  commentId: P:TuiVision.Controls.TColorItem.Color
+  fullName: TuiVision.Controls.TColorItem.Color
+  nameWithType: TColorItem.Color
+- uid: TuiVision.Controls.TColorItem.Color*
+  name: Color
+  href: api/TuiVision.Controls.TColorItem.html#TuiVision_Controls_TColorItem_Color_
+  commentId: Overload:TuiVision.Controls.TColorItem.Color
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorItem.Color
+  nameWithType: TColorItem.Color
+- uid: TuiVision.Controls.TColorItem.Name
+  name: Name
+  href: api/TuiVision.Controls.TColorItem.html#TuiVision_Controls_TColorItem_Name
+  commentId: P:TuiVision.Controls.TColorItem.Name
+  fullName: TuiVision.Controls.TColorItem.Name
+  nameWithType: TColorItem.Name
+- uid: TuiVision.Controls.TColorItem.Name*
+  name: Name
+  href: api/TuiVision.Controls.TColorItem.html#TuiVision_Controls_TColorItem_Name_
+  commentId: Overload:TuiVision.Controls.TColorItem.Name
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorItem.Name
+  nameWithType: TColorItem.Name
+- uid: TuiVision.Controls.TColorSelector
+  name: TColorSelector
+  href: api/TuiVision.Controls.TColorSelector.html
+  commentId: T:TuiVision.Controls.TColorSelector
+  fullName: TuiVision.Controls.TColorSelector
+  nameWithType: TColorSelector
+- uid: TuiVision.Controls.TColorSelector.SelectColor(System.ConsoleColor)
+  name: SelectColor(ConsoleColor)
+  href: api/TuiVision.Controls.TColorSelector.html#TuiVision_Controls_TColorSelector_SelectColor_System_ConsoleColor_
+  commentId: M:TuiVision.Controls.TColorSelector.SelectColor(System.ConsoleColor)
+  fullName: TuiVision.Controls.TColorSelector.SelectColor(System.ConsoleColor)
+  nameWithType: TColorSelector.SelectColor(ConsoleColor)
+- uid: TuiVision.Controls.TColorSelector.SelectColor*
+  name: SelectColor
+  href: api/TuiVision.Controls.TColorSelector.html#TuiVision_Controls_TColorSelector_SelectColor_
+  commentId: Overload:TuiVision.Controls.TColorSelector.SelectColor
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorSelector.SelectColor
+  nameWithType: TColorSelector.SelectColor
+- uid: TuiVision.Controls.TColorSelector.SelectedColor
+  name: SelectedColor
+  href: api/TuiVision.Controls.TColorSelector.html#TuiVision_Controls_TColorSelector_SelectedColor
+  commentId: P:TuiVision.Controls.TColorSelector.SelectedColor
+  fullName: TuiVision.Controls.TColorSelector.SelectedColor
+  nameWithType: TColorSelector.SelectedColor
+- uid: TuiVision.Controls.TColorSelector.SelectedColor*
+  name: SelectedColor
+  href: api/TuiVision.Controls.TColorSelector.html#TuiVision_Controls_TColorSelector_SelectedColor_
+  commentId: Overload:TuiVision.Controls.TColorSelector.SelectedColor
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorSelector.SelectedColor
+  nameWithType: TColorSelector.SelectedColor
+- uid: TuiVision.Controls.TConfigFile
+  name: TConfigFile
+  href: api/TuiVision.Controls.TConfigFile.html
+  commentId: T:TuiVision.Controls.TConfigFile
+  fullName: TuiVision.Controls.TConfigFile
+  nameWithType: TConfigFile
+- uid: TuiVision.Controls.TConfigFile.Get(System.String)
+  name: Get(string)
+  href: api/TuiVision.Controls.TConfigFile.html#TuiVision_Controls_TConfigFile_Get_System_String_
+  commentId: M:TuiVision.Controls.TConfigFile.Get(System.String)
+  name.vb: Get(String)
+  fullName: TuiVision.Controls.TConfigFile.Get(string)
+  fullName.vb: TuiVision.Controls.TConfigFile.Get(String)
+  nameWithType: TConfigFile.Get(string)
+  nameWithType.vb: TConfigFile.Get(String)
+- uid: TuiVision.Controls.TConfigFile.Get*
+  name: Get
+  href: api/TuiVision.Controls.TConfigFile.html#TuiVision_Controls_TConfigFile_Get_
+  commentId: Overload:TuiVision.Controls.TConfigFile.Get
+  isSpec: "True"
+  fullName: TuiVision.Controls.TConfigFile.Get
+  nameWithType: TConfigFile.Get
+- uid: TuiVision.Controls.TConfigFile.Set(System.String,System.String)
+  name: Set(string, string)
+  href: api/TuiVision.Controls.TConfigFile.html#TuiVision_Controls_TConfigFile_Set_System_String_System_String_
+  commentId: M:TuiVision.Controls.TConfigFile.Set(System.String,System.String)
+  name.vb: Set(String, String)
+  fullName: TuiVision.Controls.TConfigFile.Set(string, string)
+  fullName.vb: TuiVision.Controls.TConfigFile.Set(String, String)
+  nameWithType: TConfigFile.Set(string, string)
+  nameWithType.vb: TConfigFile.Set(String, String)
+- uid: TuiVision.Controls.TConfigFile.Set*
+  name: Set
+  href: api/TuiVision.Controls.TConfigFile.html#TuiVision_Controls_TConfigFile_Set_
+  commentId: Overload:TuiVision.Controls.TConfigFile.Set
+  isSpec: "True"
+  fullName: TuiVision.Controls.TConfigFile.Set
+  nameWithType: TConfigFile.Set
 - uid: TuiVision.Controls.TDesktop
   name: TDesktop
   href: api/TuiVision.Controls.TDesktop.html
@@ -737,6 +1169,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TDesktop.CurrentChanged
   nameWithType: TDesktop.CurrentChanged
+- uid: TuiVision.Controls.TDesktop.Draw
+  name: Draw()
+  href: api/TuiVision.Controls.TDesktop.html#TuiVision_Controls_TDesktop_Draw
+  commentId: M:TuiVision.Controls.TDesktop.Draw
+  fullName: TuiVision.Controls.TDesktop.Draw()
+  nameWithType: TDesktop.Draw()
+- uid: TuiVision.Controls.TDesktop.Draw*
+  name: Draw
+  href: api/TuiVision.Controls.TDesktop.html#TuiVision_Controls_TDesktop_Draw_
+  commentId: Overload:TuiVision.Controls.TDesktop.Draw
+  isSpec: "True"
+  fullName: TuiVision.Controls.TDesktop.Draw
+  nameWithType: TDesktop.Draw
 - uid: TuiVision.Controls.TDialog
   name: TDialog
   href: api/TuiVision.Controls.TDialog.html
@@ -846,6 +1291,22 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TDialog.Title
   nameWithType: TDialog.Title
+- uid: TuiVision.Controls.TDialog.Valid(System.UInt16)
+  name: Valid(ushort)
+  href: api/TuiVision.Controls.TDialog.html#TuiVision_Controls_TDialog_Valid_System_UInt16_
+  commentId: M:TuiVision.Controls.TDialog.Valid(System.UInt16)
+  name.vb: Valid(UShort)
+  fullName: TuiVision.Controls.TDialog.Valid(ushort)
+  fullName.vb: TuiVision.Controls.TDialog.Valid(UShort)
+  nameWithType: TDialog.Valid(ushort)
+  nameWithType.vb: TDialog.Valid(UShort)
+- uid: TuiVision.Controls.TDialog.Valid*
+  name: Valid
+  href: api/TuiVision.Controls.TDialog.html#TuiVision_Controls_TDialog_Valid_
+  commentId: Overload:TuiVision.Controls.TDialog.Valid
+  isSpec: "True"
+  fullName: TuiVision.Controls.TDialog.Valid
+  nameWithType: TDialog.Valid
 - uid: TuiVision.Controls.TDirListBox
   name: TDirListBox
   href: api/TuiVision.Controls.TDirListBox.html
@@ -1827,6 +2288,70 @@ references:
   commentId: F:TuiVision.Controls.TFileEntryKind.Unknown
   fullName: TuiVision.Controls.TFileEntryKind.Unknown
   nameWithType: TFileEntryKind.Unknown
+- uid: TuiVision.Controls.TFileInfo
+  name: TFileInfo
+  href: api/TuiVision.Controls.TFileInfo.html
+  commentId: T:TuiVision.Controls.TFileInfo
+  fullName: TuiVision.Controls.TFileInfo
+  nameWithType: TFileInfo
+- uid: TuiVision.Controls.TFileInfo.#ctor(System.String,System.Int64,System.DateTime)
+  name: TFileInfo(string, long, DateTime)
+  href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo__ctor_System_String_System_Int64_System_DateTime_
+  commentId: M:TuiVision.Controls.TFileInfo.#ctor(System.String,System.Int64,System.DateTime)
+  name.vb: New(String, Long, Date)
+  fullName: TuiVision.Controls.TFileInfo.TFileInfo(string, long, System.DateTime)
+  fullName.vb: TuiVision.Controls.TFileInfo.New(String, Long, Date)
+  nameWithType: TFileInfo.TFileInfo(string, long, DateTime)
+  nameWithType.vb: TFileInfo.New(String, Long, Date)
+- uid: TuiVision.Controls.TFileInfo.#ctor*
+  name: TFileInfo
+  href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo__ctor_
+  commentId: Overload:TuiVision.Controls.TFileInfo.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TFileInfo.TFileInfo
+  fullName.vb: TuiVision.Controls.TFileInfo.New
+  nameWithType: TFileInfo.TFileInfo
+  nameWithType.vb: TFileInfo.New
+- uid: TuiVision.Controls.TFileInfo.FileName
+  name: FileName
+  href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo_FileName
+  commentId: P:TuiVision.Controls.TFileInfo.FileName
+  fullName: TuiVision.Controls.TFileInfo.FileName
+  nameWithType: TFileInfo.FileName
+- uid: TuiVision.Controls.TFileInfo.FileName*
+  name: FileName
+  href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo_FileName_
+  commentId: Overload:TuiVision.Controls.TFileInfo.FileName
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileInfo.FileName
+  nameWithType: TFileInfo.FileName
+- uid: TuiVision.Controls.TFileInfo.LastModified
+  name: LastModified
+  href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo_LastModified
+  commentId: P:TuiVision.Controls.TFileInfo.LastModified
+  fullName: TuiVision.Controls.TFileInfo.LastModified
+  nameWithType: TFileInfo.LastModified
+- uid: TuiVision.Controls.TFileInfo.LastModified*
+  name: LastModified
+  href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo_LastModified_
+  commentId: Overload:TuiVision.Controls.TFileInfo.LastModified
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileInfo.LastModified
+  nameWithType: TFileInfo.LastModified
+- uid: TuiVision.Controls.TFileInfo.Size
+  name: Size
+  href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo_Size
+  commentId: P:TuiVision.Controls.TFileInfo.Size
+  fullName: TuiVision.Controls.TFileInfo.Size
+  nameWithType: TFileInfo.Size
+- uid: TuiVision.Controls.TFileInfo.Size*
+  name: Size
+  href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo_Size_
+  commentId: Overload:TuiVision.Controls.TFileInfo.Size
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileInfo.Size
+  nameWithType: TFileInfo.Size
 - uid: TuiVision.Controls.TFileInputLine
   name: TFileInputLine
   href: api/TuiVision.Controls.TFileInputLine.html
@@ -2242,6 +2767,47 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TFileSnapshot.Length
   nameWithType: TFileSnapshot.Length
+- uid: TuiVision.Controls.TFilterValidator
+  name: TFilterValidator
+  href: api/TuiVision.Controls.TFilterValidator.html
+  commentId: T:TuiVision.Controls.TFilterValidator
+  fullName: TuiVision.Controls.TFilterValidator
+  nameWithType: TFilterValidator
+- uid: TuiVision.Controls.TFilterValidator.#ctor(System.String)
+  name: TFilterValidator(string)
+  href: api/TuiVision.Controls.TFilterValidator.html#TuiVision_Controls_TFilterValidator__ctor_System_String_
+  commentId: M:TuiVision.Controls.TFilterValidator.#ctor(System.String)
+  name.vb: New(String)
+  fullName: TuiVision.Controls.TFilterValidator.TFilterValidator(string)
+  fullName.vb: TuiVision.Controls.TFilterValidator.New(String)
+  nameWithType: TFilterValidator.TFilterValidator(string)
+  nameWithType.vb: TFilterValidator.New(String)
+- uid: TuiVision.Controls.TFilterValidator.#ctor*
+  name: TFilterValidator
+  href: api/TuiVision.Controls.TFilterValidator.html#TuiVision_Controls_TFilterValidator__ctor_
+  commentId: Overload:TuiVision.Controls.TFilterValidator.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TFilterValidator.TFilterValidator
+  fullName.vb: TuiVision.Controls.TFilterValidator.New
+  nameWithType: TFilterValidator.TFilterValidator
+  nameWithType.vb: TFilterValidator.New
+- uid: TuiVision.Controls.TFilterValidator.IsValid(System.String)
+  name: IsValid(string)
+  href: api/TuiVision.Controls.TFilterValidator.html#TuiVision_Controls_TFilterValidator_IsValid_System_String_
+  commentId: M:TuiVision.Controls.TFilterValidator.IsValid(System.String)
+  name.vb: IsValid(String)
+  fullName: TuiVision.Controls.TFilterValidator.IsValid(string)
+  fullName.vb: TuiVision.Controls.TFilterValidator.IsValid(String)
+  nameWithType: TFilterValidator.IsValid(string)
+  nameWithType.vb: TFilterValidator.IsValid(String)
+- uid: TuiVision.Controls.TFilterValidator.IsValid*
+  name: IsValid
+  href: api/TuiVision.Controls.TFilterValidator.html#TuiVision_Controls_TFilterValidator_IsValid_
+  commentId: Overload:TuiVision.Controls.TFilterValidator.IsValid
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFilterValidator.IsValid
+  nameWithType: TFilterValidator.IsValid
 - uid: TuiVision.Controls.TGroup
   name: TGroup
   href: api/TuiVision.Controls.TGroup.html
@@ -2306,6 +2872,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TGroup.Draw
   nameWithType: TGroup.Draw
+- uid: TuiVision.Controls.TGroup.GetDrawBuffer
+  name: GetDrawBuffer()
+  href: api/TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer
+  commentId: M:TuiVision.Controls.TGroup.GetDrawBuffer
+  fullName: TuiVision.Controls.TGroup.GetDrawBuffer()
+  nameWithType: TGroup.GetDrawBuffer()
+- uid: TuiVision.Controls.TGroup.GetDrawBuffer*
+  name: GetDrawBuffer
+  href: api/TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetDrawBuffer_
+  commentId: Overload:TuiVision.Controls.TGroup.GetDrawBuffer
+  isSpec: "True"
+  fullName: TuiVision.Controls.TGroup.GetDrawBuffer
+  nameWithType: TGroup.GetDrawBuffer
 - uid: TuiVision.Controls.TGroup.GetFirstChild
   name: GetFirstChild()
   href: api/TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_GetFirstChild
@@ -2788,6 +3367,44 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TIndicator.Editor
   nameWithType: TIndicator.Editor
+- uid: TuiVision.Controls.TIniFile
+  name: TIniFile
+  href: api/TuiVision.Controls.TIniFile.html
+  commentId: T:TuiVision.Controls.TIniFile
+  fullName: TuiVision.Controls.TIniFile
+  nameWithType: TIniFile
+- uid: TuiVision.Controls.TIniFile.Get(System.String,System.String)
+  name: Get(string, string)
+  href: api/TuiVision.Controls.TIniFile.html#TuiVision_Controls_TIniFile_Get_System_String_System_String_
+  commentId: M:TuiVision.Controls.TIniFile.Get(System.String,System.String)
+  name.vb: Get(String, String)
+  fullName: TuiVision.Controls.TIniFile.Get(string, string)
+  fullName.vb: TuiVision.Controls.TIniFile.Get(String, String)
+  nameWithType: TIniFile.Get(string, string)
+  nameWithType.vb: TIniFile.Get(String, String)
+- uid: TuiVision.Controls.TIniFile.Get*
+  name: Get
+  href: api/TuiVision.Controls.TIniFile.html#TuiVision_Controls_TIniFile_Get_
+  commentId: Overload:TuiVision.Controls.TIniFile.Get
+  isSpec: "True"
+  fullName: TuiVision.Controls.TIniFile.Get
+  nameWithType: TIniFile.Get
+- uid: TuiVision.Controls.TIniFile.Set(System.String,System.String,System.String)
+  name: Set(string, string, string)
+  href: api/TuiVision.Controls.TIniFile.html#TuiVision_Controls_TIniFile_Set_System_String_System_String_System_String_
+  commentId: M:TuiVision.Controls.TIniFile.Set(System.String,System.String,System.String)
+  name.vb: Set(String, String, String)
+  fullName: TuiVision.Controls.TIniFile.Set(string, string, string)
+  fullName.vb: TuiVision.Controls.TIniFile.Set(String, String, String)
+  nameWithType: TIniFile.Set(string, string, string)
+  nameWithType.vb: TIniFile.Set(String, String, String)
+- uid: TuiVision.Controls.TIniFile.Set*
+  name: Set
+  href: api/TuiVision.Controls.TIniFile.html#TuiVision_Controls_TIniFile_Set_
+  commentId: Overload:TuiVision.Controls.TIniFile.Set
+  isSpec: "True"
+  fullName: TuiVision.Controls.TIniFile.Set
+  nameWithType: TIniFile.Set
 - uid: TuiVision.Controls.TInputLine
   name: TInputLine
   href: api/TuiVision.Controls.TInputLine.html
@@ -3348,6 +3965,35 @@ references:
   fullName.vb: TuiVision.Controls.TMenuBar.New
   nameWithType: TMenuBar.TMenuBar
   nameWithType.vb: TMenuBar.New
+- uid: TuiVision.Controls.TMenuBar.Draw
+  name: Draw()
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_Draw
+  commentId: M:TuiVision.Controls.TMenuBar.Draw
+  fullName: TuiVision.Controls.TMenuBar.Draw()
+  nameWithType: TMenuBar.Draw()
+- uid: TuiVision.Controls.TMenuBar.Draw*
+  name: Draw
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_Draw_
+  commentId: Overload:TuiVision.Controls.TMenuBar.Draw
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuBar.Draw
+  nameWithType: TMenuBar.Draw
+- uid: TuiVision.Controls.TMenuBar.DrawSubMenuOverlay(TuiVision.Core.TConsoleBuffer)
+  name: DrawSubMenuOverlay(TConsoleBuffer?)
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_DrawSubMenuOverlay_TuiVision_Core_TConsoleBuffer_
+  commentId: M:TuiVision.Controls.TMenuBar.DrawSubMenuOverlay(TuiVision.Core.TConsoleBuffer)
+  name.vb: DrawSubMenuOverlay(TConsoleBuffer)
+  fullName: TuiVision.Controls.TMenuBar.DrawSubMenuOverlay(TuiVision.Core.TConsoleBuffer?)
+  fullName.vb: TuiVision.Controls.TMenuBar.DrawSubMenuOverlay(TuiVision.Core.TConsoleBuffer)
+  nameWithType: TMenuBar.DrawSubMenuOverlay(TConsoleBuffer?)
+  nameWithType.vb: TMenuBar.DrawSubMenuOverlay(TConsoleBuffer)
+- uid: TuiVision.Controls.TMenuBar.DrawSubMenuOverlay*
+  name: DrawSubMenuOverlay
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_DrawSubMenuOverlay_
+  commentId: Overload:TuiVision.Controls.TMenuBar.DrawSubMenuOverlay
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuBar.DrawSubMenuOverlay
+  nameWithType: TMenuBar.DrawSubMenuOverlay
 - uid: TuiVision.Controls.TMenuBar.HandleEvent(TuiVision.Core.TEvent)
   name: HandleEvent(TEvent)
   href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_HandleEvent_TuiVision_Core_TEvent_
@@ -3374,6 +4020,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TMenuBar.IsMenuActive
   nameWithType: TMenuBar.IsMenuActive
+- uid: TuiVision.Controls.TMenuBar.LayoutSlots
+  name: LayoutSlots
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_LayoutSlots
+  commentId: P:TuiVision.Controls.TMenuBar.LayoutSlots
+  fullName: TuiVision.Controls.TMenuBar.LayoutSlots
+  nameWithType: TMenuBar.LayoutSlots
+- uid: TuiVision.Controls.TMenuBar.LayoutSlots*
+  name: LayoutSlots
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_LayoutSlots_
+  commentId: Overload:TuiVision.Controls.TMenuBar.LayoutSlots
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuBar.LayoutSlots
+  nameWithType: TMenuBar.LayoutSlots
 - uid: TuiVision.Controls.TMenuBar.Menu
   name: Menu
   href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_Menu
@@ -3387,6 +4046,45 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TMenuBar.Menu
   nameWithType: TMenuBar.Menu
+- uid: TuiVision.Controls.TMenuBar.OnBoundsChanged
+  name: OnBoundsChanged()
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_OnBoundsChanged
+  commentId: M:TuiVision.Controls.TMenuBar.OnBoundsChanged
+  fullName: TuiVision.Controls.TMenuBar.OnBoundsChanged()
+  nameWithType: TMenuBar.OnBoundsChanged()
+- uid: TuiVision.Controls.TMenuBar.OnBoundsChanged*
+  name: OnBoundsChanged
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_OnBoundsChanged_
+  commentId: Overload:TuiVision.Controls.TMenuBar.OnBoundsChanged
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuBar.OnBoundsChanged
+  nameWithType: TMenuBar.OnBoundsChanged
+- uid: TuiVision.Controls.TMenuBar.SelectedSubMenuItem
+  name: SelectedSubMenuItem
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_SelectedSubMenuItem
+  commentId: P:TuiVision.Controls.TMenuBar.SelectedSubMenuItem
+  fullName: TuiVision.Controls.TMenuBar.SelectedSubMenuItem
+  nameWithType: TMenuBar.SelectedSubMenuItem
+- uid: TuiVision.Controls.TMenuBar.SelectedSubMenuItem*
+  name: SelectedSubMenuItem
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_SelectedSubMenuItem_
+  commentId: Overload:TuiVision.Controls.TMenuBar.SelectedSubMenuItem
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuBar.SelectedSubMenuItem
+  nameWithType: TMenuBar.SelectedSubMenuItem
+- uid: TuiVision.Controls.TMenuBar.SelectedTopLevel
+  name: SelectedTopLevel
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_SelectedTopLevel
+  commentId: P:TuiVision.Controls.TMenuBar.SelectedTopLevel
+  fullName: TuiVision.Controls.TMenuBar.SelectedTopLevel
+  nameWithType: TMenuBar.SelectedTopLevel
+- uid: TuiVision.Controls.TMenuBar.SelectedTopLevel*
+  name: SelectedTopLevel
+  href: api/TuiVision.Controls.TMenuBar.html#TuiVision_Controls_TMenuBar_SelectedTopLevel_
+  commentId: Overload:TuiVision.Controls.TMenuBar.SelectedTopLevel
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuBar.SelectedTopLevel
+  nameWithType: TMenuBar.SelectedTopLevel
 - uid: TuiVision.Controls.TMenuItem
   name: TMenuItem
   href: api/TuiVision.Controls.TMenuItem.html
@@ -3438,6 +4136,32 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TMenuItem.Disabled
   nameWithType: TMenuItem.Disabled
+- uid: TuiVision.Controls.TMenuItem.IsSeparator
+  name: IsSeparator
+  href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_IsSeparator
+  commentId: P:TuiVision.Controls.TMenuItem.IsSeparator
+  fullName: TuiVision.Controls.TMenuItem.IsSeparator
+  nameWithType: TMenuItem.IsSeparator
+- uid: TuiVision.Controls.TMenuItem.IsSeparator*
+  name: IsSeparator
+  href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_IsSeparator_
+  commentId: Overload:TuiVision.Controls.TMenuItem.IsSeparator
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuItem.IsSeparator
+  nameWithType: TMenuItem.IsSeparator
+- uid: TuiVision.Controls.TMenuItem.Mnemonic
+  name: Mnemonic
+  href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Mnemonic
+  commentId: P:TuiVision.Controls.TMenuItem.Mnemonic
+  fullName: TuiVision.Controls.TMenuItem.Mnemonic
+  nameWithType: TMenuItem.Mnemonic
+- uid: TuiVision.Controls.TMenuItem.Mnemonic*
+  name: Mnemonic
+  href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Mnemonic_
+  commentId: Overload:TuiVision.Controls.TMenuItem.Mnemonic
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuItem.Mnemonic
+  nameWithType: TMenuItem.Mnemonic
 - uid: TuiVision.Controls.TMenuItem.Name
   name: Name
   href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Name
@@ -3464,6 +4188,22 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TMenuItem.Next
   nameWithType: TMenuItem.Next
+- uid: TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)
+  name: Separator(TMenuItem?)
+  href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Separator_TuiVision_Controls_TMenuItem_
+  commentId: M:TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)
+  name.vb: Separator(TMenuItem)
+  fullName: TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem?)
+  fullName.vb: TuiVision.Controls.TMenuItem.Separator(TuiVision.Controls.TMenuItem)
+  nameWithType: TMenuItem.Separator(TMenuItem?)
+  nameWithType.vb: TMenuItem.Separator(TMenuItem)
+- uid: TuiVision.Controls.TMenuItem.Separator*
+  name: Separator
+  href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_Separator_
+  commentId: Overload:TuiVision.Controls.TMenuItem.Separator
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuItem.Separator
+  nameWithType: TMenuItem.Separator
 - uid: TuiVision.Controls.TMenuItem.SubMenu
   name: SubMenu
   href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_SubMenu
@@ -3477,6 +4217,172 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TMenuItem.SubMenu
   nameWithType: TMenuItem.SubMenu
+- uid: TuiVision.Controls.TMenuItem.SubMenuDef
+  name: SubMenuDef
+  href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_SubMenuDef
+  commentId: P:TuiVision.Controls.TMenuItem.SubMenuDef
+  fullName: TuiVision.Controls.TMenuItem.SubMenuDef
+  nameWithType: TMenuItem.SubMenuDef
+- uid: TuiVision.Controls.TMenuItem.SubMenuDef*
+  name: SubMenuDef
+  href: api/TuiVision.Controls.TMenuItem.html#TuiVision_Controls_TMenuItem_SubMenuDef_
+  commentId: Overload:TuiVision.Controls.TMenuItem.SubMenuDef
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMenuItem.SubMenuDef
+  nameWithType: TMenuItem.SubMenuDef
+- uid: TuiVision.Controls.TMonoSelector
+  name: TMonoSelector
+  href: api/TuiVision.Controls.TMonoSelector.html
+  commentId: T:TuiVision.Controls.TMonoSelector
+  fullName: TuiVision.Controls.TMonoSelector
+  nameWithType: TMonoSelector
+- uid: TuiVision.Controls.TMonoSelector.#ctor(System.Collections.Generic.IReadOnlyList{System.String})
+  name: TMonoSelector(IReadOnlyList<string>)
+  href: api/TuiVision.Controls.TMonoSelector.html#TuiVision_Controls_TMonoSelector__ctor_System_Collections_Generic_IReadOnlyList_System_String__
+  commentId: M:TuiVision.Controls.TMonoSelector.#ctor(System.Collections.Generic.IReadOnlyList{System.String})
+  name.vb: New(IReadOnlyList(Of String))
+  fullName: TuiVision.Controls.TMonoSelector.TMonoSelector(System.Collections.Generic.IReadOnlyList<string>)
+  fullName.vb: TuiVision.Controls.TMonoSelector.New(System.Collections.Generic.IReadOnlyList(Of String))
+  nameWithType: TMonoSelector.TMonoSelector(IReadOnlyList<string>)
+  nameWithType.vb: TMonoSelector.New(IReadOnlyList(Of String))
+- uid: TuiVision.Controls.TMonoSelector.#ctor*
+  name: TMonoSelector
+  href: api/TuiVision.Controls.TMonoSelector.html#TuiVision_Controls_TMonoSelector__ctor_
+  commentId: Overload:TuiVision.Controls.TMonoSelector.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TMonoSelector.TMonoSelector
+  fullName.vb: TuiVision.Controls.TMonoSelector.New
+  nameWithType: TMonoSelector.TMonoSelector
+  nameWithType.vb: TMonoSelector.New
+- uid: TuiVision.Controls.TMonoSelector.Select(System.Int32)
+  name: Select(int)
+  href: api/TuiVision.Controls.TMonoSelector.html#TuiVision_Controls_TMonoSelector_Select_System_Int32_
+  commentId: M:TuiVision.Controls.TMonoSelector.Select(System.Int32)
+  name.vb: Select(Integer)
+  fullName: TuiVision.Controls.TMonoSelector.Select(int)
+  fullName.vb: TuiVision.Controls.TMonoSelector.Select(Integer)
+  nameWithType: TMonoSelector.Select(int)
+  nameWithType.vb: TMonoSelector.Select(Integer)
+- uid: TuiVision.Controls.TMonoSelector.Select*
+  name: Select
+  href: api/TuiVision.Controls.TMonoSelector.html#TuiVision_Controls_TMonoSelector_Select_
+  commentId: Overload:TuiVision.Controls.TMonoSelector.Select
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMonoSelector.Select
+  nameWithType: TMonoSelector.Select
+- uid: TuiVision.Controls.TMonoSelector.SelectedIndex
+  name: SelectedIndex
+  href: api/TuiVision.Controls.TMonoSelector.html#TuiVision_Controls_TMonoSelector_SelectedIndex
+  commentId: P:TuiVision.Controls.TMonoSelector.SelectedIndex
+  fullName: TuiVision.Controls.TMonoSelector.SelectedIndex
+  nameWithType: TMonoSelector.SelectedIndex
+- uid: TuiVision.Controls.TMonoSelector.SelectedIndex*
+  name: SelectedIndex
+  href: api/TuiVision.Controls.TMonoSelector.html#TuiVision_Controls_TMonoSelector_SelectedIndex_
+  commentId: Overload:TuiVision.Controls.TMonoSelector.SelectedIndex
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMonoSelector.SelectedIndex
+  nameWithType: TMonoSelector.SelectedIndex
+- uid: TuiVision.Controls.TMonoSelector.SelectedItem
+  name: SelectedItem
+  href: api/TuiVision.Controls.TMonoSelector.html#TuiVision_Controls_TMonoSelector_SelectedItem
+  commentId: P:TuiVision.Controls.TMonoSelector.SelectedItem
+  fullName: TuiVision.Controls.TMonoSelector.SelectedItem
+  nameWithType: TMonoSelector.SelectedItem
+- uid: TuiVision.Controls.TMonoSelector.SelectedItem*
+  name: SelectedItem
+  href: api/TuiVision.Controls.TMonoSelector.html#TuiVision_Controls_TMonoSelector_SelectedItem_
+  commentId: Overload:TuiVision.Controls.TMonoSelector.SelectedItem
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMonoSelector.SelectedItem
+  nameWithType: TMonoSelector.SelectedItem
+- uid: TuiVision.Controls.TPalette
+  name: TPalette
+  href: api/TuiVision.Controls.TPalette.html
+  commentId: T:TuiVision.Controls.TPalette
+  fullName: TuiVision.Controls.TPalette
+  nameWithType: TPalette
+- uid: TuiVision.Controls.TPalette.AddGroup(TuiVision.Controls.TColorGroup)
+  name: AddGroup(TColorGroup)
+  href: api/TuiVision.Controls.TPalette.html#TuiVision_Controls_TPalette_AddGroup_TuiVision_Controls_TColorGroup_
+  commentId: M:TuiVision.Controls.TPalette.AddGroup(TuiVision.Controls.TColorGroup)
+  fullName: TuiVision.Controls.TPalette.AddGroup(TuiVision.Controls.TColorGroup)
+  nameWithType: TPalette.AddGroup(TColorGroup)
+- uid: TuiVision.Controls.TPalette.AddGroup*
+  name: AddGroup
+  href: api/TuiVision.Controls.TPalette.html#TuiVision_Controls_TPalette_AddGroup_
+  commentId: Overload:TuiVision.Controls.TPalette.AddGroup
+  isSpec: "True"
+  fullName: TuiVision.Controls.TPalette.AddGroup
+  nameWithType: TPalette.AddGroup
+- uid: TuiVision.Controls.TPalette.GroupCount
+  name: GroupCount
+  href: api/TuiVision.Controls.TPalette.html#TuiVision_Controls_TPalette_GroupCount
+  commentId: P:TuiVision.Controls.TPalette.GroupCount
+  fullName: TuiVision.Controls.TPalette.GroupCount
+  nameWithType: TPalette.GroupCount
+- uid: TuiVision.Controls.TPalette.GroupCount*
+  name: GroupCount
+  href: api/TuiVision.Controls.TPalette.html#TuiVision_Controls_TPalette_GroupCount_
+  commentId: Overload:TuiVision.Controls.TPalette.GroupCount
+  isSpec: "True"
+  fullName: TuiVision.Controls.TPalette.GroupCount
+  nameWithType: TPalette.GroupCount
+- uid: TuiVision.Controls.TParamText
+  name: TParamText
+  href: api/TuiVision.Controls.TParamText.html
+  commentId: T:TuiVision.Controls.TParamText
+  fullName: TuiVision.Controls.TParamText
+  nameWithType: TParamText
+- uid: TuiVision.Controls.TParamText.#ctor(System.String)
+  name: TParamText(string)
+  href: api/TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText__ctor_System_String_
+  commentId: M:TuiVision.Controls.TParamText.#ctor(System.String)
+  name.vb: New(String)
+  fullName: TuiVision.Controls.TParamText.TParamText(string)
+  fullName.vb: TuiVision.Controls.TParamText.New(String)
+  nameWithType: TParamText.TParamText(string)
+  nameWithType.vb: TParamText.New(String)
+- uid: TuiVision.Controls.TParamText.#ctor*
+  name: TParamText
+  href: api/TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText__ctor_
+  commentId: Overload:TuiVision.Controls.TParamText.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TParamText.TParamText
+  fullName.vb: TuiVision.Controls.TParamText.New
+  nameWithType: TParamText.TParamText
+  nameWithType.vb: TParamText.New
+- uid: TuiVision.Controls.TParamText.Format(System.Object[])
+  name: Format(params object?[])
+  href: api/TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText_Format_System_Object___
+  commentId: M:TuiVision.Controls.TParamText.Format(System.Object[])
+  name.vb: Format(ParamArray Object())
+  fullName: TuiVision.Controls.TParamText.Format(params object?[])
+  fullName.vb: TuiVision.Controls.TParamText.Format(ParamArray Object())
+  nameWithType: TParamText.Format(params object?[])
+  nameWithType.vb: TParamText.Format(ParamArray Object())
+- uid: TuiVision.Controls.TParamText.Format*
+  name: Format
+  href: api/TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText_Format_
+  commentId: Overload:TuiVision.Controls.TParamText.Format
+  isSpec: "True"
+  fullName: TuiVision.Controls.TParamText.Format
+  nameWithType: TParamText.Format
+- uid: TuiVision.Controls.TParamText.Template
+  name: Template
+  href: api/TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText_Template
+  commentId: P:TuiVision.Controls.TParamText.Template
+  fullName: TuiVision.Controls.TParamText.Template
+  nameWithType: TParamText.Template
+- uid: TuiVision.Controls.TParamText.Template*
+  name: Template
+  href: api/TuiVision.Controls.TParamText.html#TuiVision_Controls_TParamText_Template_
+  commentId: Overload:TuiVision.Controls.TParamText.Template
+  isSpec: "True"
+  fullName: TuiVision.Controls.TParamText.Template
+  nameWithType: TParamText.Template
 - uid: TuiVision.Controls.TProgram
   name: TProgram
   href: api/TuiVision.Controls.TProgram.html
@@ -3528,6 +4434,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TProgram.Desktop
   nameWithType: TProgram.Desktop
+- uid: TuiVision.Controls.TProgram.Draw
+  name: Draw()
+  href: api/TuiVision.Controls.TProgram.html#TuiVision_Controls_TProgram_Draw
+  commentId: M:TuiVision.Controls.TProgram.Draw
+  fullName: TuiVision.Controls.TProgram.Draw()
+  nameWithType: TProgram.Draw()
+- uid: TuiVision.Controls.TProgram.Draw*
+  name: Draw
+  href: api/TuiVision.Controls.TProgram.html#TuiVision_Controls_TProgram_Draw_
+  commentId: Overload:TuiVision.Controls.TProgram.Draw
+  isSpec: "True"
+  fullName: TuiVision.Controls.TProgram.Draw
+  nameWithType: TProgram.Draw
 - uid: TuiVision.Controls.TProgram.Driver
   name: Driver
   href: api/TuiVision.Controls.TProgram.html#TuiVision_Controls_TProgram_Driver
@@ -3695,6 +4614,73 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TRadioButtons.Press
   nameWithType: TRadioButtons.Press
+- uid: TuiVision.Controls.TRangeValidator
+  name: TRangeValidator
+  href: api/TuiVision.Controls.TRangeValidator.html
+  commentId: T:TuiVision.Controls.TRangeValidator
+  fullName: TuiVision.Controls.TRangeValidator
+  nameWithType: TRangeValidator
+- uid: TuiVision.Controls.TRangeValidator.#ctor(System.Int32,System.Int32)
+  name: TRangeValidator(int, int)
+  href: api/TuiVision.Controls.TRangeValidator.html#TuiVision_Controls_TRangeValidator__ctor_System_Int32_System_Int32_
+  commentId: M:TuiVision.Controls.TRangeValidator.#ctor(System.Int32,System.Int32)
+  name.vb: New(Integer, Integer)
+  fullName: TuiVision.Controls.TRangeValidator.TRangeValidator(int, int)
+  fullName.vb: TuiVision.Controls.TRangeValidator.New(Integer, Integer)
+  nameWithType: TRangeValidator.TRangeValidator(int, int)
+  nameWithType.vb: TRangeValidator.New(Integer, Integer)
+- uid: TuiVision.Controls.TRangeValidator.#ctor*
+  name: TRangeValidator
+  href: api/TuiVision.Controls.TRangeValidator.html#TuiVision_Controls_TRangeValidator__ctor_
+  commentId: Overload:TuiVision.Controls.TRangeValidator.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TRangeValidator.TRangeValidator
+  fullName.vb: TuiVision.Controls.TRangeValidator.New
+  nameWithType: TRangeValidator.TRangeValidator
+  nameWithType.vb: TRangeValidator.New
+- uid: TuiVision.Controls.TRangeValidator.IsValid(System.String)
+  name: IsValid(string)
+  href: api/TuiVision.Controls.TRangeValidator.html#TuiVision_Controls_TRangeValidator_IsValid_System_String_
+  commentId: M:TuiVision.Controls.TRangeValidator.IsValid(System.String)
+  name.vb: IsValid(String)
+  fullName: TuiVision.Controls.TRangeValidator.IsValid(string)
+  fullName.vb: TuiVision.Controls.TRangeValidator.IsValid(String)
+  nameWithType: TRangeValidator.IsValid(string)
+  nameWithType.vb: TRangeValidator.IsValid(String)
+- uid: TuiVision.Controls.TRangeValidator.IsValid*
+  name: IsValid
+  href: api/TuiVision.Controls.TRangeValidator.html#TuiVision_Controls_TRangeValidator_IsValid_
+  commentId: Overload:TuiVision.Controls.TRangeValidator.IsValid
+  isSpec: "True"
+  fullName: TuiVision.Controls.TRangeValidator.IsValid
+  nameWithType: TRangeValidator.IsValid
+- uid: TuiVision.Controls.TRangeValidator.Maximum
+  name: Maximum
+  href: api/TuiVision.Controls.TRangeValidator.html#TuiVision_Controls_TRangeValidator_Maximum
+  commentId: P:TuiVision.Controls.TRangeValidator.Maximum
+  fullName: TuiVision.Controls.TRangeValidator.Maximum
+  nameWithType: TRangeValidator.Maximum
+- uid: TuiVision.Controls.TRangeValidator.Maximum*
+  name: Maximum
+  href: api/TuiVision.Controls.TRangeValidator.html#TuiVision_Controls_TRangeValidator_Maximum_
+  commentId: Overload:TuiVision.Controls.TRangeValidator.Maximum
+  isSpec: "True"
+  fullName: TuiVision.Controls.TRangeValidator.Maximum
+  nameWithType: TRangeValidator.Maximum
+- uid: TuiVision.Controls.TRangeValidator.Minimum
+  name: Minimum
+  href: api/TuiVision.Controls.TRangeValidator.html#TuiVision_Controls_TRangeValidator_Minimum
+  commentId: P:TuiVision.Controls.TRangeValidator.Minimum
+  fullName: TuiVision.Controls.TRangeValidator.Minimum
+  nameWithType: TRangeValidator.Minimum
+- uid: TuiVision.Controls.TRangeValidator.Minimum*
+  name: Minimum
+  href: api/TuiVision.Controls.TRangeValidator.html#TuiVision_Controls_TRangeValidator_Minimum_
+  commentId: Overload:TuiVision.Controls.TRangeValidator.Minimum
+  isSpec: "True"
+  fullName: TuiVision.Controls.TRangeValidator.Minimum
+  nameWithType: TRangeValidator.Minimum
 - uid: TuiVision.Controls.TScrollBar
   name: TScrollBar
   href: api/TuiVision.Controls.TScrollBar.html
@@ -4055,6 +5041,99 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TStaticText.Text
   nameWithType: TStaticText.Text
+- uid: TuiVision.Controls.TStatusDef
+  name: TStatusDef
+  href: api/TuiVision.Controls.TStatusDef.html
+  commentId: T:TuiVision.Controls.TStatusDef
+  fullName: TuiVision.Controls.TStatusDef
+  nameWithType: TStatusDef
+- uid: TuiVision.Controls.TStatusDef.#ctor(System.Int32,System.Int32,TuiVision.Controls.TStatusItem,TuiVision.Controls.TStatusDef)
+  name: TStatusDef(int, int, TStatusItem?, TStatusDef?)
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef__ctor_System_Int32_System_Int32_TuiVision_Controls_TStatusItem_TuiVision_Controls_TStatusDef_
+  commentId: M:TuiVision.Controls.TStatusDef.#ctor(System.Int32,System.Int32,TuiVision.Controls.TStatusItem,TuiVision.Controls.TStatusDef)
+  name.vb: New(Integer, Integer, TStatusItem, TStatusDef)
+  fullName: TuiVision.Controls.TStatusDef.TStatusDef(int, int, TuiVision.Controls.TStatusItem?, TuiVision.Controls.TStatusDef?)
+  fullName.vb: TuiVision.Controls.TStatusDef.New(Integer, Integer, TuiVision.Controls.TStatusItem, TuiVision.Controls.TStatusDef)
+  nameWithType: TStatusDef.TStatusDef(int, int, TStatusItem?, TStatusDef?)
+  nameWithType.vb: TStatusDef.New(Integer, Integer, TStatusItem, TStatusDef)
+- uid: TuiVision.Controls.TStatusDef.#ctor*
+  name: TStatusDef
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef__ctor_
+  commentId: Overload:TuiVision.Controls.TStatusDef.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TStatusDef.TStatusDef
+  fullName.vb: TuiVision.Controls.TStatusDef.New
+  nameWithType: TStatusDef.TStatusDef
+  nameWithType.vb: TStatusDef.New
+- uid: TuiVision.Controls.TStatusDef.Items
+  name: Items
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_Items
+  commentId: P:TuiVision.Controls.TStatusDef.Items
+  fullName: TuiVision.Controls.TStatusDef.Items
+  nameWithType: TStatusDef.Items
+- uid: TuiVision.Controls.TStatusDef.Items*
+  name: Items
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_Items_
+  commentId: Overload:TuiVision.Controls.TStatusDef.Items
+  isSpec: "True"
+  fullName: TuiVision.Controls.TStatusDef.Items
+  nameWithType: TStatusDef.Items
+- uid: TuiVision.Controls.TStatusDef.Matches(System.Int32)
+  name: Matches(int)
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_Matches_System_Int32_
+  commentId: M:TuiVision.Controls.TStatusDef.Matches(System.Int32)
+  name.vb: Matches(Integer)
+  fullName: TuiVision.Controls.TStatusDef.Matches(int)
+  fullName.vb: TuiVision.Controls.TStatusDef.Matches(Integer)
+  nameWithType: TStatusDef.Matches(int)
+  nameWithType.vb: TStatusDef.Matches(Integer)
+- uid: TuiVision.Controls.TStatusDef.Matches*
+  name: Matches
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_Matches_
+  commentId: Overload:TuiVision.Controls.TStatusDef.Matches
+  isSpec: "True"
+  fullName: TuiVision.Controls.TStatusDef.Matches
+  nameWithType: TStatusDef.Matches
+- uid: TuiVision.Controls.TStatusDef.MaxCtx
+  name: MaxCtx
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_MaxCtx
+  commentId: P:TuiVision.Controls.TStatusDef.MaxCtx
+  fullName: TuiVision.Controls.TStatusDef.MaxCtx
+  nameWithType: TStatusDef.MaxCtx
+- uid: TuiVision.Controls.TStatusDef.MaxCtx*
+  name: MaxCtx
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_MaxCtx_
+  commentId: Overload:TuiVision.Controls.TStatusDef.MaxCtx
+  isSpec: "True"
+  fullName: TuiVision.Controls.TStatusDef.MaxCtx
+  nameWithType: TStatusDef.MaxCtx
+- uid: TuiVision.Controls.TStatusDef.MinCtx
+  name: MinCtx
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_MinCtx
+  commentId: P:TuiVision.Controls.TStatusDef.MinCtx
+  fullName: TuiVision.Controls.TStatusDef.MinCtx
+  nameWithType: TStatusDef.MinCtx
+- uid: TuiVision.Controls.TStatusDef.MinCtx*
+  name: MinCtx
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_MinCtx_
+  commentId: Overload:TuiVision.Controls.TStatusDef.MinCtx
+  isSpec: "True"
+  fullName: TuiVision.Controls.TStatusDef.MinCtx
+  nameWithType: TStatusDef.MinCtx
+- uid: TuiVision.Controls.TStatusDef.Next
+  name: Next
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_Next
+  commentId: P:TuiVision.Controls.TStatusDef.Next
+  fullName: TuiVision.Controls.TStatusDef.Next
+  nameWithType: TStatusDef.Next
+- uid: TuiVision.Controls.TStatusDef.Next*
+  name: Next
+  href: api/TuiVision.Controls.TStatusDef.html#TuiVision_Controls_TStatusDef_Next_
+  commentId: Overload:TuiVision.Controls.TStatusDef.Next
+  isSpec: "True"
+  fullName: TuiVision.Controls.TStatusDef.Next
+  nameWithType: TStatusDef.Next
 - uid: TuiVision.Controls.TStatusItem
   name: TStatusItem
   href: api/TuiVision.Controls.TStatusItem.html
@@ -4147,6 +5226,15 @@ references:
   fullName.vb: TuiVision.Controls.TStatusLine.New(TuiVision.Core.TRect)
   nameWithType: TStatusLine.TStatusLine(TRect)
   nameWithType.vb: TStatusLine.New(TRect)
+- uid: TuiVision.Controls.TStatusLine.#ctor(TuiVision.Core.TRect,TuiVision.Controls.TStatusDef)
+  name: TStatusLine(TRect, TStatusDef?)
+  href: api/TuiVision.Controls.TStatusLine.html#TuiVision_Controls_TStatusLine__ctor_TuiVision_Core_TRect_TuiVision_Controls_TStatusDef_
+  commentId: M:TuiVision.Controls.TStatusLine.#ctor(TuiVision.Core.TRect,TuiVision.Controls.TStatusDef)
+  name.vb: New(TRect, TStatusDef)
+  fullName: TuiVision.Controls.TStatusLine.TStatusLine(TuiVision.Core.TRect, TuiVision.Controls.TStatusDef?)
+  fullName.vb: TuiVision.Controls.TStatusLine.New(TuiVision.Core.TRect, TuiVision.Controls.TStatusDef)
+  nameWithType: TStatusLine.TStatusLine(TRect, TStatusDef?)
+  nameWithType.vb: TStatusLine.New(TRect, TStatusDef)
 - uid: TuiVision.Controls.TStatusLine.#ctor*
   name: TStatusLine
   href: api/TuiVision.Controls.TStatusLine.html#TuiVision_Controls_TStatusLine__ctor_
@@ -4157,6 +5245,19 @@ references:
   fullName.vb: TuiVision.Controls.TStatusLine.New
   nameWithType: TStatusLine.TStatusLine
   nameWithType.vb: TStatusLine.New
+- uid: TuiVision.Controls.TStatusLine.Draw
+  name: Draw()
+  href: api/TuiVision.Controls.TStatusLine.html#TuiVision_Controls_TStatusLine_Draw
+  commentId: M:TuiVision.Controls.TStatusLine.Draw
+  fullName: TuiVision.Controls.TStatusLine.Draw()
+  nameWithType: TStatusLine.Draw()
+- uid: TuiVision.Controls.TStatusLine.Draw*
+  name: Draw
+  href: api/TuiVision.Controls.TStatusLine.html#TuiVision_Controls_TStatusLine_Draw_
+  commentId: Overload:TuiVision.Controls.TStatusLine.Draw
+  isSpec: "True"
+  fullName: TuiVision.Controls.TStatusLine.Draw
+  nameWithType: TStatusLine.Draw
 - uid: TuiVision.Controls.TStatusLine.HandleEvent(TuiVision.Core.TEvent)
   name: HandleEvent(TEvent)
   href: api/TuiVision.Controls.TStatusLine.html#TuiVision_Controls_TStatusLine_HandleEvent_TuiVision_Core_TEvent_
@@ -4269,6 +5370,105 @@ references:
   fullName.vb: TuiVision.Controls.TStringList.this[]
   nameWithType: TStringList.this
   nameWithType.vb: TStringList.this[]
+- uid: TuiVision.Controls.TSubMenu
+  name: TSubMenu
+  href: api/TuiVision.Controls.TSubMenu.html
+  commentId: T:TuiVision.Controls.TSubMenu
+  fullName: TuiVision.Controls.TSubMenu
+  nameWithType: TSubMenu
+- uid: TuiVision.Controls.TSubMenu.#ctor(System.String,System.Int32,TuiVision.Controls.TMenuItem,TuiVision.Controls.TSubMenu)
+  name: TSubMenu(string, int, TMenuItem?, TSubMenu?)
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu__ctor_System_String_System_Int32_TuiVision_Controls_TMenuItem_TuiVision_Controls_TSubMenu_
+  commentId: M:TuiVision.Controls.TSubMenu.#ctor(System.String,System.Int32,TuiVision.Controls.TMenuItem,TuiVision.Controls.TSubMenu)
+  name.vb: New(String, Integer, TMenuItem, TSubMenu)
+  fullName: TuiVision.Controls.TSubMenu.TSubMenu(string, int, TuiVision.Controls.TMenuItem?, TuiVision.Controls.TSubMenu?)
+  fullName.vb: TuiVision.Controls.TSubMenu.New(String, Integer, TuiVision.Controls.TMenuItem, TuiVision.Controls.TSubMenu)
+  nameWithType: TSubMenu.TSubMenu(string, int, TMenuItem?, TSubMenu?)
+  nameWithType.vb: TSubMenu.New(String, Integer, TMenuItem, TSubMenu)
+- uid: TuiVision.Controls.TSubMenu.#ctor*
+  name: TSubMenu
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu__ctor_
+  commentId: Overload:TuiVision.Controls.TSubMenu.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TSubMenu.TSubMenu
+  fullName.vb: TuiVision.Controls.TSubMenu.New
+  nameWithType: TSubMenu.TSubMenu
+  nameWithType.vb: TSubMenu.New
+- uid: TuiVision.Controls.TSubMenu.HelpCtx
+  name: HelpCtx
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu_HelpCtx
+  commentId: P:TuiVision.Controls.TSubMenu.HelpCtx
+  fullName: TuiVision.Controls.TSubMenu.HelpCtx
+  nameWithType: TSubMenu.HelpCtx
+- uid: TuiVision.Controls.TSubMenu.HelpCtx*
+  name: HelpCtx
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu_HelpCtx_
+  commentId: Overload:TuiVision.Controls.TSubMenu.HelpCtx
+  isSpec: "True"
+  fullName: TuiVision.Controls.TSubMenu.HelpCtx
+  nameWithType: TSubMenu.HelpCtx
+- uid: TuiVision.Controls.TSubMenu.Items
+  name: Items
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu_Items
+  commentId: P:TuiVision.Controls.TSubMenu.Items
+  fullName: TuiVision.Controls.TSubMenu.Items
+  nameWithType: TSubMenu.Items
+- uid: TuiVision.Controls.TSubMenu.Items*
+  name: Items
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu_Items_
+  commentId: Overload:TuiVision.Controls.TSubMenu.Items
+  isSpec: "True"
+  fullName: TuiVision.Controls.TSubMenu.Items
+  nameWithType: TSubMenu.Items
+- uid: TuiVision.Controls.TSubMenu.Name
+  name: Name
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu_Name
+  commentId: P:TuiVision.Controls.TSubMenu.Name
+  fullName: TuiVision.Controls.TSubMenu.Name
+  nameWithType: TSubMenu.Name
+- uid: TuiVision.Controls.TSubMenu.Name*
+  name: Name
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu_Name_
+  commentId: Overload:TuiVision.Controls.TSubMenu.Name
+  isSpec: "True"
+  fullName: TuiVision.Controls.TSubMenu.Name
+  nameWithType: TSubMenu.Name
+- uid: TuiVision.Controls.TSubMenu.Next
+  name: Next
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu_Next
+  commentId: P:TuiVision.Controls.TSubMenu.Next
+  fullName: TuiVision.Controls.TSubMenu.Next
+  nameWithType: TSubMenu.Next
+- uid: TuiVision.Controls.TSubMenu.Next*
+  name: Next
+  href: api/TuiVision.Controls.TSubMenu.html#TuiVision_Controls_TSubMenu_Next_
+  commentId: Overload:TuiVision.Controls.TSubMenu.Next
+  isSpec: "True"
+  fullName: TuiVision.Controls.TSubMenu.Next
+  nameWithType: TSubMenu.Next
+- uid: TuiVision.Controls.TValidator
+  name: TValidator
+  href: api/TuiVision.Controls.TValidator.html
+  commentId: T:TuiVision.Controls.TValidator
+  fullName: TuiVision.Controls.TValidator
+  nameWithType: TValidator
+- uid: TuiVision.Controls.TValidator.IsValid(System.String)
+  name: IsValid(string)
+  href: api/TuiVision.Controls.TValidator.html#TuiVision_Controls_TValidator_IsValid_System_String_
+  commentId: M:TuiVision.Controls.TValidator.IsValid(System.String)
+  name.vb: IsValid(String)
+  fullName: TuiVision.Controls.TValidator.IsValid(string)
+  fullName.vb: TuiVision.Controls.TValidator.IsValid(String)
+  nameWithType: TValidator.IsValid(string)
+  nameWithType.vb: TValidator.IsValid(String)
+- uid: TuiVision.Controls.TValidator.IsValid*
+  name: IsValid
+  href: api/TuiVision.Controls.TValidator.html#TuiVision_Controls_TValidator_IsValid_
+  commentId: Overload:TuiVision.Controls.TValidator.IsValid
+  isSpec: "True"
+  fullName: TuiVision.Controls.TValidator.IsValid
+  nameWithType: TValidator.IsValid
 - uid: TuiVision.Controls.TView
   name: TView
   href: api/TuiVision.Controls.TView.html
@@ -4427,6 +5627,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TView.HandleEvent
   nameWithType: TView.HandleEvent
+- uid: TuiVision.Controls.TView.HelpContext
+  name: HelpContext
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext
+  commentId: P:TuiVision.Controls.TView.HelpContext
+  fullName: TuiVision.Controls.TView.HelpContext
+  nameWithType: TView.HelpContext
+- uid: TuiVision.Controls.TView.HelpContext*
+  name: HelpContext
+  href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_HelpContext_
+  commentId: Overload:TuiVision.Controls.TView.HelpContext
+  isSpec: "True"
+  fullName: TuiVision.Controls.TView.HelpContext
+  nameWithType: TView.HelpContext
 - uid: TuiVision.Controls.TView.Hide
   name: Hide()
   href: api/TuiVision.Controls.TView.html#TuiVision_Controls_TView_Hide
@@ -4806,12 +6019,332 @@ references:
   commentId: F:TuiVision.Controls.TViewState.Visible
   fullName: TuiVision.Controls.TViewState.Visible
   nameWithType: TViewState.Visible
+- uid: TuiVision.Controls.TWindow
+  name: TWindow
+  href: api/TuiVision.Controls.TWindow.html
+  commentId: T:TuiVision.Controls.TWindow
+  fullName: TuiVision.Controls.TWindow
+  nameWithType: TWindow
+- uid: TuiVision.Controls.TWindow.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32)
+  name: TWindow(string, int, int, int, int)
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow__ctor_System_String_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:TuiVision.Controls.TWindow.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32)
+  name.vb: New(String, Integer, Integer, Integer, Integer)
+  fullName: TuiVision.Controls.TWindow.TWindow(string, int, int, int, int)
+  fullName.vb: TuiVision.Controls.TWindow.New(String, Integer, Integer, Integer, Integer)
+  nameWithType: TWindow.TWindow(string, int, int, int, int)
+  nameWithType.vb: TWindow.New(String, Integer, Integer, Integer, Integer)
+- uid: TuiVision.Controls.TWindow.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,TuiVision.Controls.WindowFlags)
+  name: TWindow(string, int, int, int, int, WindowFlags)
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow__ctor_System_String_System_Int32_System_Int32_System_Int32_System_Int32_TuiVision_Controls_WindowFlags_
+  commentId: M:TuiVision.Controls.TWindow.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,TuiVision.Controls.WindowFlags)
+  name.vb: New(String, Integer, Integer, Integer, Integer, WindowFlags)
+  fullName: TuiVision.Controls.TWindow.TWindow(string, int, int, int, int, TuiVision.Controls.WindowFlags)
+  fullName.vb: TuiVision.Controls.TWindow.New(String, Integer, Integer, Integer, Integer, TuiVision.Controls.WindowFlags)
+  nameWithType: TWindow.TWindow(string, int, int, int, int, WindowFlags)
+  nameWithType.vb: TWindow.New(String, Integer, Integer, Integer, Integer, WindowFlags)
+- uid: TuiVision.Controls.TWindow.#ctor*
+  name: TWindow
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow__ctor_
+  commentId: Overload:TuiVision.Controls.TWindow.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TWindow.TWindow
+  fullName.vb: TuiVision.Controls.TWindow.New
+  nameWithType: TWindow.TWindow
+  nameWithType.vb: TWindow.New
+- uid: TuiVision.Controls.TWindow.Bounds
+  name: Bounds
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_Bounds
+  commentId: P:TuiVision.Controls.TWindow.Bounds
+  fullName: TuiVision.Controls.TWindow.Bounds
+  nameWithType: TWindow.Bounds
+- uid: TuiVision.Controls.TWindow.Bounds*
+  name: Bounds
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_Bounds_
+  commentId: Overload:TuiVision.Controls.TWindow.Bounds
+  isSpec: "True"
+  fullName: TuiVision.Controls.TWindow.Bounds
+  nameWithType: TWindow.Bounds
+- uid: TuiVision.Controls.TWindow.Draw
+  name: Draw()
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_Draw
+  commentId: M:TuiVision.Controls.TWindow.Draw
+  fullName: TuiVision.Controls.TWindow.Draw()
+  nameWithType: TWindow.Draw()
+- uid: TuiVision.Controls.TWindow.Draw*
+  name: Draw
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_Draw_
+  commentId: Overload:TuiVision.Controls.TWindow.Draw
+  isSpec: "True"
+  fullName: TuiVision.Controls.TWindow.Draw
+  nameWithType: TWindow.Draw
+- uid: TuiVision.Controls.TWindow.Flags
+  name: Flags
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_Flags
+  commentId: P:TuiVision.Controls.TWindow.Flags
+  fullName: TuiVision.Controls.TWindow.Flags
+  nameWithType: TWindow.Flags
+- uid: TuiVision.Controls.TWindow.Flags*
+  name: Flags
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_Flags_
+  commentId: Overload:TuiVision.Controls.TWindow.Flags
+  isSpec: "True"
+  fullName: TuiVision.Controls.TWindow.Flags
+  nameWithType: TWindow.Flags
+- uid: TuiVision.Controls.TWindow.HandleEvent(TuiVision.Core.TEvent)
+  name: HandleEvent(TEvent)
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_HandleEvent_TuiVision_Core_TEvent_
+  commentId: M:TuiVision.Controls.TWindow.HandleEvent(TuiVision.Core.TEvent)
+  fullName: TuiVision.Controls.TWindow.HandleEvent(TuiVision.Core.TEvent)
+  nameWithType: TWindow.HandleEvent(TEvent)
+- uid: TuiVision.Controls.TWindow.HandleEvent*
+  name: HandleEvent
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_HandleEvent_
+  commentId: Overload:TuiVision.Controls.TWindow.HandleEvent
+  isSpec: "True"
+  fullName: TuiVision.Controls.TWindow.HandleEvent
+  nameWithType: TWindow.HandleEvent
+- uid: TuiVision.Controls.TWindow.IsInMoveMode
+  name: IsInMoveMode
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_IsInMoveMode
+  commentId: P:TuiVision.Controls.TWindow.IsInMoveMode
+  fullName: TuiVision.Controls.TWindow.IsInMoveMode
+  nameWithType: TWindow.IsInMoveMode
+- uid: TuiVision.Controls.TWindow.IsInMoveMode*
+  name: IsInMoveMode
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_IsInMoveMode_
+  commentId: Overload:TuiVision.Controls.TWindow.IsInMoveMode
+  isSpec: "True"
+  fullName: TuiVision.Controls.TWindow.IsInMoveMode
+  nameWithType: TWindow.IsInMoveMode
+- uid: TuiVision.Controls.TWindow.Title
+  name: Title
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_Title
+  commentId: P:TuiVision.Controls.TWindow.Title
+  fullName: TuiVision.Controls.TWindow.Title
+  nameWithType: TWindow.Title
+- uid: TuiVision.Controls.TWindow.Title*
+  name: Title
+  href: api/TuiVision.Controls.TWindow.html#TuiVision_Controls_TWindow_Title_
+  commentId: Overload:TuiVision.Controls.TWindow.Title
+  isSpec: "True"
+  fullName: TuiVision.Controls.TWindow.Title
+  nameWithType: TWindow.Title
+- uid: TuiVision.Controls.TvUIStrings
+  name: TvUIStrings
+  href: api/TuiVision.Controls.TvUIStrings.html
+  commentId: T:TuiVision.Controls.TvUIStrings
+  fullName: TuiVision.Controls.TvUIStrings
+  nameWithType: TvUIStrings
+- uid: TuiVision.Controls.TvUIStrings.Cancel
+  name: Cancel
+  href: api/TuiVision.Controls.TvUIStrings.html#TuiVision_Controls_TvUIStrings_Cancel
+  commentId: P:TuiVision.Controls.TvUIStrings.Cancel
+  fullName: TuiVision.Controls.TvUIStrings.Cancel
+  nameWithType: TvUIStrings.Cancel
+- uid: TuiVision.Controls.TvUIStrings.Cancel*
+  name: Cancel
+  href: api/TuiVision.Controls.TvUIStrings.html#TuiVision_Controls_TvUIStrings_Cancel_
+  commentId: Overload:TuiVision.Controls.TvUIStrings.Cancel
+  isSpec: "True"
+  fullName: TuiVision.Controls.TvUIStrings.Cancel
+  nameWithType: TvUIStrings.Cancel
+- uid: TuiVision.Controls.TvUIStrings.Close
+  name: Close
+  href: api/TuiVision.Controls.TvUIStrings.html#TuiVision_Controls_TvUIStrings_Close
+  commentId: P:TuiVision.Controls.TvUIStrings.Close
+  fullName: TuiVision.Controls.TvUIStrings.Close
+  nameWithType: TvUIStrings.Close
+- uid: TuiVision.Controls.TvUIStrings.Close*
+  name: Close
+  href: api/TuiVision.Controls.TvUIStrings.html#TuiVision_Controls_TvUIStrings_Close_
+  commentId: Overload:TuiVision.Controls.TvUIStrings.Close
+  isSpec: "True"
+  fullName: TuiVision.Controls.TvUIStrings.Close
+  nameWithType: TvUIStrings.Close
+- uid: TuiVision.Controls.TvUIStrings.Ok
+  name: Ok
+  href: api/TuiVision.Controls.TvUIStrings.html#TuiVision_Controls_TvUIStrings_Ok
+  commentId: P:TuiVision.Controls.TvUIStrings.Ok
+  fullName: TuiVision.Controls.TvUIStrings.Ok
+  nameWithType: TvUIStrings.Ok
+- uid: TuiVision.Controls.TvUIStrings.Ok*
+  name: Ok
+  href: api/TuiVision.Controls.TvUIStrings.html#TuiVision_Controls_TvUIStrings_Ok_
+  commentId: Overload:TuiVision.Controls.TvUIStrings.Ok
+  isSpec: "True"
+  fullName: TuiVision.Controls.TvUIStrings.Ok
+  nameWithType: TvUIStrings.Ok
+- uid: TuiVision.Controls.TvUIStrings.Open
+  name: Open
+  href: api/TuiVision.Controls.TvUIStrings.html#TuiVision_Controls_TvUIStrings_Open
+  commentId: P:TuiVision.Controls.TvUIStrings.Open
+  fullName: TuiVision.Controls.TvUIStrings.Open
+  nameWithType: TvUIStrings.Open
+- uid: TuiVision.Controls.TvUIStrings.Open*
+  name: Open
+  href: api/TuiVision.Controls.TvUIStrings.html#TuiVision_Controls_TvUIStrings_Open_
+  commentId: Overload:TuiVision.Controls.TvUIStrings.Open
+  isSpec: "True"
+  fullName: TuiVision.Controls.TvUIStrings.Open
+  nameWithType: TvUIStrings.Open
+- uid: TuiVision.Controls.TvUIStrings.Save
+  name: Save
+  href: api/TuiVision.Controls.TvUIStrings.html#TuiVision_Controls_TvUIStrings_Save
+  commentId: P:TuiVision.Controls.TvUIStrings.Save
+  fullName: TuiVision.Controls.TvUIStrings.Save
+  nameWithType: TvUIStrings.Save
+- uid: TuiVision.Controls.TvUIStrings.Save*
+  name: Save
+  href: api/TuiVision.Controls.TvUIStrings.html#TuiVision_Controls_TvUIStrings_Save_
+  commentId: Overload:TuiVision.Controls.TvUIStrings.Save
+  isSpec: "True"
+  fullName: TuiVision.Controls.TvUIStrings.Save
+  nameWithType: TvUIStrings.Save
+- uid: TuiVision.Controls.WindowFlags
+  name: WindowFlags
+  href: api/TuiVision.Controls.WindowFlags.html
+  commentId: T:TuiVision.Controls.WindowFlags
+  fullName: TuiVision.Controls.WindowFlags
+  nameWithType: WindowFlags
+- uid: TuiVision.Controls.WindowFlags.Close
+  name: Close
+  href: api/TuiVision.Controls.WindowFlags.html#TuiVision_Controls_WindowFlags_Close
+  commentId: F:TuiVision.Controls.WindowFlags.Close
+  fullName: TuiVision.Controls.WindowFlags.Close
+  nameWithType: WindowFlags.Close
+- uid: TuiVision.Controls.WindowFlags.Move
+  name: Move
+  href: api/TuiVision.Controls.WindowFlags.html#TuiVision_Controls_WindowFlags_Move
+  commentId: F:TuiVision.Controls.WindowFlags.Move
+  fullName: TuiVision.Controls.WindowFlags.Move
+  nameWithType: WindowFlags.Move
+- uid: TuiVision.Controls.WindowFlags.None
+  name: None
+  href: api/TuiVision.Controls.WindowFlags.html#TuiVision_Controls_WindowFlags_None
+  commentId: F:TuiVision.Controls.WindowFlags.None
+  fullName: TuiVision.Controls.WindowFlags.None
+  nameWithType: WindowFlags.None
 - uid: TuiVision.Core
   name: TuiVision.Core
   href: api/TuiVision.Core.html
   commentId: N:TuiVision.Core
   fullName: TuiVision.Core
   nameWithType: TuiVision.Core
+- uid: TuiVision.Core.TCollection`1
+  name: TCollection<T>
+  href: api/TuiVision.Core.TCollection-1.html
+  commentId: T:TuiVision.Core.TCollection`1
+  name.vb: TCollection(Of T)
+  fullName: TuiVision.Core.TCollection<T>
+  fullName.vb: TuiVision.Core.TCollection(Of T)
+  nameWithType: TCollection<T>
+  nameWithType.vb: TCollection(Of T)
+- uid: TuiVision.Core.TCollection`1.Add(`0)
+  name: Add(T)
+  href: api/TuiVision.Core.TCollection-1.html#TuiVision_Core_TCollection_1_Add__0_
+  commentId: M:TuiVision.Core.TCollection`1.Add(`0)
+  fullName: TuiVision.Core.TCollection<T>.Add(T)
+  fullName.vb: TuiVision.Core.TCollection(Of T).Add(T)
+  nameWithType: TCollection<T>.Add(T)
+  nameWithType.vb: TCollection(Of T).Add(T)
+- uid: TuiVision.Core.TCollection`1.Add*
+  name: Add
+  href: api/TuiVision.Core.TCollection-1.html#TuiVision_Core_TCollection_1_Add_
+  commentId: Overload:TuiVision.Core.TCollection`1.Add
+  isSpec: "True"
+  fullName: TuiVision.Core.TCollection<T>.Add
+  fullName.vb: TuiVision.Core.TCollection(Of T).Add
+  nameWithType: TCollection<T>.Add
+  nameWithType.vb: TCollection(Of T).Add
+- uid: TuiVision.Core.TCollection`1.Clear
+  name: Clear()
+  href: api/TuiVision.Core.TCollection-1.html#TuiVision_Core_TCollection_1_Clear
+  commentId: M:TuiVision.Core.TCollection`1.Clear
+  fullName: TuiVision.Core.TCollection<T>.Clear()
+  fullName.vb: TuiVision.Core.TCollection(Of T).Clear()
+  nameWithType: TCollection<T>.Clear()
+  nameWithType.vb: TCollection(Of T).Clear()
+- uid: TuiVision.Core.TCollection`1.Clear*
+  name: Clear
+  href: api/TuiVision.Core.TCollection-1.html#TuiVision_Core_TCollection_1_Clear_
+  commentId: Overload:TuiVision.Core.TCollection`1.Clear
+  isSpec: "True"
+  fullName: TuiVision.Core.TCollection<T>.Clear
+  fullName.vb: TuiVision.Core.TCollection(Of T).Clear
+  nameWithType: TCollection<T>.Clear
+  nameWithType.vb: TCollection(Of T).Clear
+- uid: TuiVision.Core.TCollection`1.Contains(`0)
+  name: Contains(T)
+  href: api/TuiVision.Core.TCollection-1.html#TuiVision_Core_TCollection_1_Contains__0_
+  commentId: M:TuiVision.Core.TCollection`1.Contains(`0)
+  fullName: TuiVision.Core.TCollection<T>.Contains(T)
+  fullName.vb: TuiVision.Core.TCollection(Of T).Contains(T)
+  nameWithType: TCollection<T>.Contains(T)
+  nameWithType.vb: TCollection(Of T).Contains(T)
+- uid: TuiVision.Core.TCollection`1.Contains*
+  name: Contains
+  href: api/TuiVision.Core.TCollection-1.html#TuiVision_Core_TCollection_1_Contains_
+  commentId: Overload:TuiVision.Core.TCollection`1.Contains
+  isSpec: "True"
+  fullName: TuiVision.Core.TCollection<T>.Contains
+  fullName.vb: TuiVision.Core.TCollection(Of T).Contains
+  nameWithType: TCollection<T>.Contains
+  nameWithType.vb: TCollection(Of T).Contains
+- uid: TuiVision.Core.TCollection`1.Count
+  name: Count
+  href: api/TuiVision.Core.TCollection-1.html#TuiVision_Core_TCollection_1_Count
+  commentId: P:TuiVision.Core.TCollection`1.Count
+  fullName: TuiVision.Core.TCollection<T>.Count
+  fullName.vb: TuiVision.Core.TCollection(Of T).Count
+  nameWithType: TCollection<T>.Count
+  nameWithType.vb: TCollection(Of T).Count
+- uid: TuiVision.Core.TCollection`1.Count*
+  name: Count
+  href: api/TuiVision.Core.TCollection-1.html#TuiVision_Core_TCollection_1_Count_
+  commentId: Overload:TuiVision.Core.TCollection`1.Count
+  isSpec: "True"
+  fullName: TuiVision.Core.TCollection<T>.Count
+  fullName.vb: TuiVision.Core.TCollection(Of T).Count
+  nameWithType: TCollection<T>.Count
+  nameWithType.vb: TCollection(Of T).Count
+- uid: TuiVision.Core.TCollection`1.Item(System.Int32)
+  name: this[int]
+  href: api/TuiVision.Core.TCollection-1.html#TuiVision_Core_TCollection_1_Item_System_Int32_
+  commentId: P:TuiVision.Core.TCollection`1.Item(System.Int32)
+  name.vb: this[](Integer)
+  fullName: TuiVision.Core.TCollection<T>.this[int]
+  fullName.vb: TuiVision.Core.TCollection(Of T).this[](Integer)
+  nameWithType: TCollection<T>.this[int]
+  nameWithType.vb: TCollection(Of T).this[](Integer)
+- uid: TuiVision.Core.TCollection`1.Item*
+  name: this
+  href: api/TuiVision.Core.TCollection-1.html#TuiVision_Core_TCollection_1_Item_
+  commentId: Overload:TuiVision.Core.TCollection`1.Item
+  isSpec: "True"
+  name.vb: this[]
+  fullName: TuiVision.Core.TCollection<T>.this
+  fullName.vb: TuiVision.Core.TCollection(Of T).this[]
+  nameWithType: TCollection<T>.this
+  nameWithType.vb: TCollection(Of T).this[]
+- uid: TuiVision.Core.TCollection`1.Remove(`0)
+  name: Remove(T)
+  href: api/TuiVision.Core.TCollection-1.html#TuiVision_Core_TCollection_1_Remove__0_
+  commentId: M:TuiVision.Core.TCollection`1.Remove(`0)
+  fullName: TuiVision.Core.TCollection<T>.Remove(T)
+  fullName.vb: TuiVision.Core.TCollection(Of T).Remove(T)
+  nameWithType: TCollection<T>.Remove(T)
+  nameWithType.vb: TCollection(Of T).Remove(T)
+- uid: TuiVision.Core.TCollection`1.Remove*
+  name: Remove
+  href: api/TuiVision.Core.TCollection-1.html#TuiVision_Core_TCollection_1_Remove_
+  commentId: Overload:TuiVision.Core.TCollection`1.Remove
+  isSpec: "True"
+  fullName: TuiVision.Core.TCollection<T>.Remove
+  fullName.vb: TuiVision.Core.TCollection(Of T).Remove
+  nameWithType: TCollection<T>.Remove
+  nameWithType.vb: TCollection(Of T).Remove
 - uid: TuiVision.Core.TConsoleBuffer
   name: TConsoleBuffer
   href: api/TuiVision.Core.TConsoleBuffer.html
@@ -5518,6 +7051,133 @@ references:
   isSpec: "True"
   fullName: TuiVision.Core.TMouseEvent.Where
   nameWithType: TMouseEvent.Where
+- uid: TuiVision.Core.TNSCollection`1
+  name: TNSCollection<T>
+  href: api/TuiVision.Core.TNSCollection-1.html
+  commentId: T:TuiVision.Core.TNSCollection`1
+  name.vb: TNSCollection(Of T)
+  fullName: TuiVision.Core.TNSCollection<T>
+  fullName.vb: TuiVision.Core.TNSCollection(Of T)
+  nameWithType: TNSCollection<T>
+  nameWithType.vb: TNSCollection(Of T)
+- uid: TuiVision.Core.TNSCollection`1.Add(`0)
+  name: Add(T)
+  href: api/TuiVision.Core.TNSCollection-1.html#TuiVision_Core_TNSCollection_1_Add__0_
+  commentId: M:TuiVision.Core.TNSCollection`1.Add(`0)
+  fullName: TuiVision.Core.TNSCollection<T>.Add(T)
+  fullName.vb: TuiVision.Core.TNSCollection(Of T).Add(T)
+  nameWithType: TNSCollection<T>.Add(T)
+  nameWithType.vb: TNSCollection(Of T).Add(T)
+- uid: TuiVision.Core.TNSCollection`1.Add*
+  name: Add
+  href: api/TuiVision.Core.TNSCollection-1.html#TuiVision_Core_TNSCollection_1_Add_
+  commentId: Overload:TuiVision.Core.TNSCollection`1.Add
+  isSpec: "True"
+  fullName: TuiVision.Core.TNSCollection<T>.Add
+  fullName.vb: TuiVision.Core.TNSCollection(Of T).Add
+  nameWithType: TNSCollection<T>.Add
+  nameWithType.vb: TNSCollection(Of T).Add
+- uid: TuiVision.Core.TNSCollection`1.Clear
+  name: Clear()
+  href: api/TuiVision.Core.TNSCollection-1.html#TuiVision_Core_TNSCollection_1_Clear
+  commentId: M:TuiVision.Core.TNSCollection`1.Clear
+  fullName: TuiVision.Core.TNSCollection<T>.Clear()
+  fullName.vb: TuiVision.Core.TNSCollection(Of T).Clear()
+  nameWithType: TNSCollection<T>.Clear()
+  nameWithType.vb: TNSCollection(Of T).Clear()
+- uid: TuiVision.Core.TNSCollection`1.Clear*
+  name: Clear
+  href: api/TuiVision.Core.TNSCollection-1.html#TuiVision_Core_TNSCollection_1_Clear_
+  commentId: Overload:TuiVision.Core.TNSCollection`1.Clear
+  isSpec: "True"
+  fullName: TuiVision.Core.TNSCollection<T>.Clear
+  fullName.vb: TuiVision.Core.TNSCollection(Of T).Clear
+  nameWithType: TNSCollection<T>.Clear
+  nameWithType.vb: TNSCollection(Of T).Clear
+- uid: TuiVision.Core.TNSCollection`1.Count
+  name: Count
+  href: api/TuiVision.Core.TNSCollection-1.html#TuiVision_Core_TNSCollection_1_Count
+  commentId: P:TuiVision.Core.TNSCollection`1.Count
+  fullName: TuiVision.Core.TNSCollection<T>.Count
+  fullName.vb: TuiVision.Core.TNSCollection(Of T).Count
+  nameWithType: TNSCollection<T>.Count
+  nameWithType.vb: TNSCollection(Of T).Count
+- uid: TuiVision.Core.TNSCollection`1.Count*
+  name: Count
+  href: api/TuiVision.Core.TNSCollection-1.html#TuiVision_Core_TNSCollection_1_Count_
+  commentId: Overload:TuiVision.Core.TNSCollection`1.Count
+  isSpec: "True"
+  fullName: TuiVision.Core.TNSCollection<T>.Count
+  fullName.vb: TuiVision.Core.TNSCollection(Of T).Count
+  nameWithType: TNSCollection<T>.Count
+  nameWithType.vb: TNSCollection(Of T).Count
+- uid: TuiVision.Core.TNSCollection`1.Item(System.Int32)
+  name: this[int]
+  href: api/TuiVision.Core.TNSCollection-1.html#TuiVision_Core_TNSCollection_1_Item_System_Int32_
+  commentId: P:TuiVision.Core.TNSCollection`1.Item(System.Int32)
+  name.vb: this[](Integer)
+  fullName: TuiVision.Core.TNSCollection<T>.this[int]
+  fullName.vb: TuiVision.Core.TNSCollection(Of T).this[](Integer)
+  nameWithType: TNSCollection<T>.this[int]
+  nameWithType.vb: TNSCollection(Of T).this[](Integer)
+- uid: TuiVision.Core.TNSCollection`1.Item*
+  name: this
+  href: api/TuiVision.Core.TNSCollection-1.html#TuiVision_Core_TNSCollection_1_Item_
+  commentId: Overload:TuiVision.Core.TNSCollection`1.Item
+  isSpec: "True"
+  name.vb: this[]
+  fullName: TuiVision.Core.TNSCollection<T>.this
+  fullName.vb: TuiVision.Core.TNSCollection(Of T).this[]
+  nameWithType: TNSCollection<T>.this
+  nameWithType.vb: TNSCollection(Of T).this[]
+- uid: TuiVision.Core.TNSCollection`1.Remove(`0)
+  name: Remove(T)
+  href: api/TuiVision.Core.TNSCollection-1.html#TuiVision_Core_TNSCollection_1_Remove__0_
+  commentId: M:TuiVision.Core.TNSCollection`1.Remove(`0)
+  fullName: TuiVision.Core.TNSCollection<T>.Remove(T)
+  fullName.vb: TuiVision.Core.TNSCollection(Of T).Remove(T)
+  nameWithType: TNSCollection<T>.Remove(T)
+  nameWithType.vb: TNSCollection(Of T).Remove(T)
+- uid: TuiVision.Core.TNSCollection`1.Remove*
+  name: Remove
+  href: api/TuiVision.Core.TNSCollection-1.html#TuiVision_Core_TNSCollection_1_Remove_
+  commentId: Overload:TuiVision.Core.TNSCollection`1.Remove
+  isSpec: "True"
+  fullName: TuiVision.Core.TNSCollection<T>.Remove
+  fullName.vb: TuiVision.Core.TNSCollection(Of T).Remove
+  nameWithType: TNSCollection<T>.Remove
+  nameWithType.vb: TNSCollection(Of T).Remove
+- uid: TuiVision.Core.TNSSorter
+  name: TNSSorter
+  href: api/TuiVision.Core.TNSSorter.html
+  commentId: T:TuiVision.Core.TNSSorter
+  fullName: TuiVision.Core.TNSSorter
+  nameWithType: TNSSorter
+- uid: TuiVision.Core.TNSSorter.Sort*
+  name: Sort
+  href: api/TuiVision.Core.TNSSorter.html#TuiVision_Core_TNSSorter_Sort_
+  commentId: Overload:TuiVision.Core.TNSSorter.Sort
+  isSpec: "True"
+  fullName: TuiVision.Core.TNSSorter.Sort
+  nameWithType: TNSSorter.Sort
+- uid: TuiVision.Core.TNSSorter.Sort``1(``0[])
+  name: Sort<T>(T[])
+  href: api/TuiVision.Core.TNSSorter.html#TuiVision_Core_TNSSorter_Sort__1___0___
+  commentId: M:TuiVision.Core.TNSSorter.Sort``1(``0[])
+  name.vb: Sort(Of T)(T())
+  fullName: TuiVision.Core.TNSSorter.Sort<T>(T[])
+  fullName.vb: TuiVision.Core.TNSSorter.Sort(Of T)(T())
+  nameWithType: TNSSorter.Sort<T>(T[])
+  nameWithType.vb: TNSSorter.Sort(Of T)(T())
+- uid: TuiVision.Core.TNSSorter.Sort``1(``0[],System.Collections.Generic.IComparer{``0})
+  name: Sort<T>(T[], IComparer<T>)
+  href: api/TuiVision.Core.TNSSorter.html#TuiVision_Core_TNSSorter_Sort__1___0___System_Collections_Generic_IComparer___0__
+  commentId: M:TuiVision.Core.TNSSorter.Sort``1(``0[],System.Collections.Generic.IComparer{``0})
+  name.vb: Sort(Of T)(T(), IComparer(Of T))
+  fullName: TuiVision.Core.TNSSorter.Sort<T>(T[], System.Collections.Generic.IComparer<T>)
+  fullName.vb: TuiVision.Core.TNSSorter.Sort(Of T)(T(), System.Collections.Generic.IComparer(Of T))
+  nameWithType: TNSSorter.Sort<T>(T[], IComparer<T>)
+  nameWithType.vb: TNSSorter.Sort(Of T)(T(), IComparer(Of T))
 - uid: TuiVision.Core.TObject
   name: TObject
   href: api/TuiVision.Core.TObject.html
@@ -5958,6 +7618,372 @@ references:
   fullName.vb: TuiVision.Core.TRect.<>
   nameWithType: TRect.operator !=
   nameWithType.vb: TRect.<>
+- uid: TuiVision.Core.TSortedCollection`1
+  name: TSortedCollection<T>
+  href: api/TuiVision.Core.TSortedCollection-1.html
+  commentId: T:TuiVision.Core.TSortedCollection`1
+  name.vb: TSortedCollection(Of T)
+  fullName: TuiVision.Core.TSortedCollection<T>
+  fullName.vb: TuiVision.Core.TSortedCollection(Of T)
+  nameWithType: TSortedCollection<T>
+  nameWithType.vb: TSortedCollection(Of T)
+- uid: TuiVision.Core.TSortedCollection`1.Add(`0)
+  name: Add(T)
+  href: api/TuiVision.Core.TSortedCollection-1.html#TuiVision_Core_TSortedCollection_1_Add__0_
+  commentId: M:TuiVision.Core.TSortedCollection`1.Add(`0)
+  fullName: TuiVision.Core.TSortedCollection<T>.Add(T)
+  fullName.vb: TuiVision.Core.TSortedCollection(Of T).Add(T)
+  nameWithType: TSortedCollection<T>.Add(T)
+  nameWithType.vb: TSortedCollection(Of T).Add(T)
+- uid: TuiVision.Core.TSortedCollection`1.Add*
+  name: Add
+  href: api/TuiVision.Core.TSortedCollection-1.html#TuiVision_Core_TSortedCollection_1_Add_
+  commentId: Overload:TuiVision.Core.TSortedCollection`1.Add
+  isSpec: "True"
+  fullName: TuiVision.Core.TSortedCollection<T>.Add
+  fullName.vb: TuiVision.Core.TSortedCollection(Of T).Add
+  nameWithType: TSortedCollection<T>.Add
+  nameWithType.vb: TSortedCollection(Of T).Add
+- uid: TuiVision.Core.TSortedCollection`1.Clear
+  name: Clear()
+  href: api/TuiVision.Core.TSortedCollection-1.html#TuiVision_Core_TSortedCollection_1_Clear
+  commentId: M:TuiVision.Core.TSortedCollection`1.Clear
+  fullName: TuiVision.Core.TSortedCollection<T>.Clear()
+  fullName.vb: TuiVision.Core.TSortedCollection(Of T).Clear()
+  nameWithType: TSortedCollection<T>.Clear()
+  nameWithType.vb: TSortedCollection(Of T).Clear()
+- uid: TuiVision.Core.TSortedCollection`1.Clear*
+  name: Clear
+  href: api/TuiVision.Core.TSortedCollection-1.html#TuiVision_Core_TSortedCollection_1_Clear_
+  commentId: Overload:TuiVision.Core.TSortedCollection`1.Clear
+  isSpec: "True"
+  fullName: TuiVision.Core.TSortedCollection<T>.Clear
+  fullName.vb: TuiVision.Core.TSortedCollection(Of T).Clear
+  nameWithType: TSortedCollection<T>.Clear
+  nameWithType.vb: TSortedCollection(Of T).Clear
+- uid: TuiVision.Core.TSortedCollection`1.Contains(`0)
+  name: Contains(T)
+  href: api/TuiVision.Core.TSortedCollection-1.html#TuiVision_Core_TSortedCollection_1_Contains__0_
+  commentId: M:TuiVision.Core.TSortedCollection`1.Contains(`0)
+  fullName: TuiVision.Core.TSortedCollection<T>.Contains(T)
+  fullName.vb: TuiVision.Core.TSortedCollection(Of T).Contains(T)
+  nameWithType: TSortedCollection<T>.Contains(T)
+  nameWithType.vb: TSortedCollection(Of T).Contains(T)
+- uid: TuiVision.Core.TSortedCollection`1.Contains*
+  name: Contains
+  href: api/TuiVision.Core.TSortedCollection-1.html#TuiVision_Core_TSortedCollection_1_Contains_
+  commentId: Overload:TuiVision.Core.TSortedCollection`1.Contains
+  isSpec: "True"
+  fullName: TuiVision.Core.TSortedCollection<T>.Contains
+  fullName.vb: TuiVision.Core.TSortedCollection(Of T).Contains
+  nameWithType: TSortedCollection<T>.Contains
+  nameWithType.vb: TSortedCollection(Of T).Contains
+- uid: TuiVision.Core.TSortedCollection`1.Count
+  name: Count
+  href: api/TuiVision.Core.TSortedCollection-1.html#TuiVision_Core_TSortedCollection_1_Count
+  commentId: P:TuiVision.Core.TSortedCollection`1.Count
+  fullName: TuiVision.Core.TSortedCollection<T>.Count
+  fullName.vb: TuiVision.Core.TSortedCollection(Of T).Count
+  nameWithType: TSortedCollection<T>.Count
+  nameWithType.vb: TSortedCollection(Of T).Count
+- uid: TuiVision.Core.TSortedCollection`1.Count*
+  name: Count
+  href: api/TuiVision.Core.TSortedCollection-1.html#TuiVision_Core_TSortedCollection_1_Count_
+  commentId: Overload:TuiVision.Core.TSortedCollection`1.Count
+  isSpec: "True"
+  fullName: TuiVision.Core.TSortedCollection<T>.Count
+  fullName.vb: TuiVision.Core.TSortedCollection(Of T).Count
+  nameWithType: TSortedCollection<T>.Count
+  nameWithType.vb: TSortedCollection(Of T).Count
+- uid: TuiVision.Core.TSortedCollection`1.Item(System.Int32)
+  name: this[int]
+  href: api/TuiVision.Core.TSortedCollection-1.html#TuiVision_Core_TSortedCollection_1_Item_System_Int32_
+  commentId: P:TuiVision.Core.TSortedCollection`1.Item(System.Int32)
+  name.vb: this[](Integer)
+  fullName: TuiVision.Core.TSortedCollection<T>.this[int]
+  fullName.vb: TuiVision.Core.TSortedCollection(Of T).this[](Integer)
+  nameWithType: TSortedCollection<T>.this[int]
+  nameWithType.vb: TSortedCollection(Of T).this[](Integer)
+- uid: TuiVision.Core.TSortedCollection`1.Item*
+  name: this
+  href: api/TuiVision.Core.TSortedCollection-1.html#TuiVision_Core_TSortedCollection_1_Item_
+  commentId: Overload:TuiVision.Core.TSortedCollection`1.Item
+  isSpec: "True"
+  name.vb: this[]
+  fullName: TuiVision.Core.TSortedCollection<T>.this
+  fullName.vb: TuiVision.Core.TSortedCollection(Of T).this[]
+  nameWithType: TSortedCollection<T>.this
+  nameWithType.vb: TSortedCollection(Of T).this[]
+- uid: TuiVision.Core.TSortedCollection`1.Remove(`0)
+  name: Remove(T)
+  href: api/TuiVision.Core.TSortedCollection-1.html#TuiVision_Core_TSortedCollection_1_Remove__0_
+  commentId: M:TuiVision.Core.TSortedCollection`1.Remove(`0)
+  fullName: TuiVision.Core.TSortedCollection<T>.Remove(T)
+  fullName.vb: TuiVision.Core.TSortedCollection(Of T).Remove(T)
+  nameWithType: TSortedCollection<T>.Remove(T)
+  nameWithType.vb: TSortedCollection(Of T).Remove(T)
+- uid: TuiVision.Core.TSortedCollection`1.Remove*
+  name: Remove
+  href: api/TuiVision.Core.TSortedCollection-1.html#TuiVision_Core_TSortedCollection_1_Remove_
+  commentId: Overload:TuiVision.Core.TSortedCollection`1.Remove
+  isSpec: "True"
+  fullName: TuiVision.Core.TSortedCollection<T>.Remove
+  fullName.vb: TuiVision.Core.TSortedCollection(Of T).Remove
+  nameWithType: TSortedCollection<T>.Remove
+  nameWithType.vb: TSortedCollection(Of T).Remove
+- uid: TuiVision.Core.TSortedList`2
+  name: TSortedList<TKey, TValue>
+  href: api/TuiVision.Core.TSortedList-2.html
+  commentId: T:TuiVision.Core.TSortedList`2
+  name.vb: TSortedList(Of TKey, TValue)
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue)
+  nameWithType: TSortedList<TKey, TValue>
+  nameWithType.vb: TSortedList(Of TKey, TValue)
+- uid: TuiVision.Core.TSortedList`2.#ctor
+  name: TSortedList()
+  href: api/TuiVision.Core.TSortedList-2.html#TuiVision_Core_TSortedList_2__ctor
+  commentId: M:TuiVision.Core.TSortedList`2.#ctor
+  name.vb: New()
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.TSortedList()
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).New()
+  nameWithType: TSortedList<TKey, TValue>.TSortedList()
+  nameWithType.vb: TSortedList(Of TKey, TValue).New()
+- uid: TuiVision.Core.TSortedList`2.#ctor(System.Collections.Generic.IComparer{`0})
+  name: TSortedList(IComparer<TKey>?)
+  href: api/TuiVision.Core.TSortedList-2.html#TuiVision_Core_TSortedList_2__ctor_System_Collections_Generic_IComparer__0__
+  commentId: M:TuiVision.Core.TSortedList`2.#ctor(System.Collections.Generic.IComparer{`0})
+  name.vb: New(IComparer(Of TKey))
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.TSortedList(System.Collections.Generic.IComparer<TKey>?)
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).New(System.Collections.Generic.IComparer(Of TKey))
+  nameWithType: TSortedList<TKey, TValue>.TSortedList(IComparer<TKey>?)
+  nameWithType.vb: TSortedList(Of TKey, TValue).New(IComparer(Of TKey))
+- uid: TuiVision.Core.TSortedList`2.#ctor*
+  name: TSortedList
+  href: api/TuiVision.Core.TSortedList-2.html#TuiVision_Core_TSortedList_2__ctor_
+  commentId: Overload:TuiVision.Core.TSortedList`2.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.TSortedList
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).New
+  nameWithType: TSortedList<TKey, TValue>.TSortedList
+  nameWithType.vb: TSortedList(Of TKey, TValue).New
+- uid: TuiVision.Core.TSortedList`2.Add(`0,`1)
+  name: Add(TKey, TValue)
+  href: api/TuiVision.Core.TSortedList-2.html#TuiVision_Core_TSortedList_2_Add__0__1_
+  commentId: M:TuiVision.Core.TSortedList`2.Add(`0,`1)
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.Add(TKey, TValue)
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).Add(TKey, TValue)
+  nameWithType: TSortedList<TKey, TValue>.Add(TKey, TValue)
+  nameWithType.vb: TSortedList(Of TKey, TValue).Add(TKey, TValue)
+- uid: TuiVision.Core.TSortedList`2.Add*
+  name: Add
+  href: api/TuiVision.Core.TSortedList-2.html#TuiVision_Core_TSortedList_2_Add_
+  commentId: Overload:TuiVision.Core.TSortedList`2.Add
+  isSpec: "True"
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.Add
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).Add
+  nameWithType: TSortedList<TKey, TValue>.Add
+  nameWithType.vb: TSortedList(Of TKey, TValue).Add
+- uid: TuiVision.Core.TSortedList`2.Count
+  name: Count
+  href: api/TuiVision.Core.TSortedList-2.html#TuiVision_Core_TSortedList_2_Count
+  commentId: P:TuiVision.Core.TSortedList`2.Count
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.Count
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).Count
+  nameWithType: TSortedList<TKey, TValue>.Count
+  nameWithType.vb: TSortedList(Of TKey, TValue).Count
+- uid: TuiVision.Core.TSortedList`2.Count*
+  name: Count
+  href: api/TuiVision.Core.TSortedList-2.html#TuiVision_Core_TSortedList_2_Count_
+  commentId: Overload:TuiVision.Core.TSortedList`2.Count
+  isSpec: "True"
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.Count
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).Count
+  nameWithType: TSortedList<TKey, TValue>.Count
+  nameWithType.vb: TSortedList(Of TKey, TValue).Count
+- uid: TuiVision.Core.TSortedList`2.Item(`0)
+  name: this[TKey]
+  href: api/TuiVision.Core.TSortedList-2.html#TuiVision_Core_TSortedList_2_Item__0_
+  commentId: P:TuiVision.Core.TSortedList`2.Item(`0)
+  name.vb: this[](TKey)
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.this[TKey]
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).this[](TKey)
+  nameWithType: TSortedList<TKey, TValue>.this[TKey]
+  nameWithType.vb: TSortedList(Of TKey, TValue).this[](TKey)
+- uid: TuiVision.Core.TSortedList`2.Item*
+  name: this
+  href: api/TuiVision.Core.TSortedList-2.html#TuiVision_Core_TSortedList_2_Item_
+  commentId: Overload:TuiVision.Core.TSortedList`2.Item
+  isSpec: "True"
+  name.vb: this[]
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.this
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).this[]
+  nameWithType: TSortedList<TKey, TValue>.this
+  nameWithType.vb: TSortedList(Of TKey, TValue).this[]
+- uid: TuiVision.Core.TSortedList`2.Keys
+  name: Keys
+  href: api/TuiVision.Core.TSortedList-2.html#TuiVision_Core_TSortedList_2_Keys
+  commentId: P:TuiVision.Core.TSortedList`2.Keys
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.Keys
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).Keys
+  nameWithType: TSortedList<TKey, TValue>.Keys
+  nameWithType.vb: TSortedList(Of TKey, TValue).Keys
+- uid: TuiVision.Core.TSortedList`2.Keys*
+  name: Keys
+  href: api/TuiVision.Core.TSortedList-2.html#TuiVision_Core_TSortedList_2_Keys_
+  commentId: Overload:TuiVision.Core.TSortedList`2.Keys
+  isSpec: "True"
+  fullName: TuiVision.Core.TSortedList<TKey, TValue>.Keys
+  fullName.vb: TuiVision.Core.TSortedList(Of TKey, TValue).Keys
+  nameWithType: TSortedList<TKey, TValue>.Keys
+  nameWithType.vb: TSortedList(Of TKey, TValue).Keys
+- uid: TuiVision.Core.TStrList
+  name: TStrList
+  href: api/TuiVision.Core.TStrList.html
+  commentId: T:TuiVision.Core.TStrList
+  fullName: TuiVision.Core.TStrList
+  nameWithType: TStrList
+- uid: TuiVision.Core.TStrList.Add(System.String)
+  name: Add(string)
+  href: api/TuiVision.Core.TStrList.html#TuiVision_Core_TStrList_Add_System_String_
+  commentId: M:TuiVision.Core.TStrList.Add(System.String)
+  name.vb: Add(String)
+  fullName: TuiVision.Core.TStrList.Add(string)
+  fullName.vb: TuiVision.Core.TStrList.Add(String)
+  nameWithType: TStrList.Add(string)
+  nameWithType.vb: TStrList.Add(String)
+- uid: TuiVision.Core.TStrList.Add*
+  name: Add
+  href: api/TuiVision.Core.TStrList.html#TuiVision_Core_TStrList_Add_
+  commentId: Overload:TuiVision.Core.TStrList.Add
+  isSpec: "True"
+  fullName: TuiVision.Core.TStrList.Add
+  nameWithType: TStrList.Add
+- uid: TuiVision.Core.TStrList.Count
+  name: Count
+  href: api/TuiVision.Core.TStrList.html#TuiVision_Core_TStrList_Count
+  commentId: P:TuiVision.Core.TStrList.Count
+  fullName: TuiVision.Core.TStrList.Count
+  nameWithType: TStrList.Count
+- uid: TuiVision.Core.TStrList.Count*
+  name: Count
+  href: api/TuiVision.Core.TStrList.html#TuiVision_Core_TStrList_Count_
+  commentId: Overload:TuiVision.Core.TStrList.Count
+  isSpec: "True"
+  fullName: TuiVision.Core.TStrList.Count
+  nameWithType: TStrList.Count
+- uid: TuiVision.Core.TStrList.Item(System.Int32)
+  name: this[int]
+  href: api/TuiVision.Core.TStrList.html#TuiVision_Core_TStrList_Item_System_Int32_
+  commentId: P:TuiVision.Core.TStrList.Item(System.Int32)
+  name.vb: this[](Integer)
+  fullName: TuiVision.Core.TStrList.this[int]
+  fullName.vb: TuiVision.Core.TStrList.this[](Integer)
+  nameWithType: TStrList.this[int]
+  nameWithType.vb: TStrList.this[](Integer)
+- uid: TuiVision.Core.TStrList.Item*
+  name: this
+  href: api/TuiVision.Core.TStrList.html#TuiVision_Core_TStrList_Item_
+  commentId: Overload:TuiVision.Core.TStrList.Item
+  isSpec: "True"
+  name.vb: this[]
+  fullName: TuiVision.Core.TStrList.this
+  fullName.vb: TuiVision.Core.TStrList.this[]
+  nameWithType: TStrList.this
+  nameWithType.vb: TStrList.this[]
+- uid: TuiVision.Core.TStringCollection
+  name: TStringCollection
+  href: api/TuiVision.Core.TStringCollection.html
+  commentId: T:TuiVision.Core.TStringCollection
+  fullName: TuiVision.Core.TStringCollection
+  nameWithType: TStringCollection
+- uid: TuiVision.Core.TStringCollection.Add(System.String)
+  name: Add(string)
+  href: api/TuiVision.Core.TStringCollection.html#TuiVision_Core_TStringCollection_Add_System_String_
+  commentId: M:TuiVision.Core.TStringCollection.Add(System.String)
+  name.vb: Add(String)
+  fullName: TuiVision.Core.TStringCollection.Add(string)
+  fullName.vb: TuiVision.Core.TStringCollection.Add(String)
+  nameWithType: TStringCollection.Add(string)
+  nameWithType.vb: TStringCollection.Add(String)
+- uid: TuiVision.Core.TStringCollection.Add*
+  name: Add
+  href: api/TuiVision.Core.TStringCollection.html#TuiVision_Core_TStringCollection_Add_
+  commentId: Overload:TuiVision.Core.TStringCollection.Add
+  isSpec: "True"
+  fullName: TuiVision.Core.TStringCollection.Add
+  nameWithType: TStringCollection.Add
+- uid: TuiVision.Core.TStringCollection.Count
+  name: Count
+  href: api/TuiVision.Core.TStringCollection.html#TuiVision_Core_TStringCollection_Count
+  commentId: P:TuiVision.Core.TStringCollection.Count
+  fullName: TuiVision.Core.TStringCollection.Count
+  nameWithType: TStringCollection.Count
+- uid: TuiVision.Core.TStringCollection.Count*
+  name: Count
+  href: api/TuiVision.Core.TStringCollection.html#TuiVision_Core_TStringCollection_Count_
+  commentId: Overload:TuiVision.Core.TStringCollection.Count
+  isSpec: "True"
+  fullName: TuiVision.Core.TStringCollection.Count
+  nameWithType: TStringCollection.Count
+- uid: TuiVision.Core.TStringCollection.Item(System.Int32)
+  name: this[int]
+  href: api/TuiVision.Core.TStringCollection.html#TuiVision_Core_TStringCollection_Item_System_Int32_
+  commentId: P:TuiVision.Core.TStringCollection.Item(System.Int32)
+  name.vb: this[](Integer)
+  fullName: TuiVision.Core.TStringCollection.this[int]
+  fullName.vb: TuiVision.Core.TStringCollection.this[](Integer)
+  nameWithType: TStringCollection.this[int]
+  nameWithType.vb: TStringCollection.this[](Integer)
+- uid: TuiVision.Core.TStringCollection.Item*
+  name: this
+  href: api/TuiVision.Core.TStringCollection.html#TuiVision_Core_TStringCollection_Item_
+  commentId: Overload:TuiVision.Core.TStringCollection.Item
+  isSpec: "True"
+  name.vb: this[]
+  fullName: TuiVision.Core.TStringCollection.this
+  fullName.vb: TuiVision.Core.TStringCollection.this[]
+  nameWithType: TStringCollection.this
+  nameWithType.vb: TStringCollection.this[]
+- uid: TuiVision.Core.TStringIndex
+  name: TStringIndex
+  href: api/TuiVision.Core.TStringIndex.html
+  commentId: T:TuiVision.Core.TStringIndex
+  fullName: TuiVision.Core.TStringIndex
+  nameWithType: TStringIndex
+- uid: TuiVision.Core.TStringIndex.Add(System.String,System.String)
+  name: Add(string, string)
+  href: api/TuiVision.Core.TStringIndex.html#TuiVision_Core_TStringIndex_Add_System_String_System_String_
+  commentId: M:TuiVision.Core.TStringIndex.Add(System.String,System.String)
+  name.vb: Add(String, String)
+  fullName: TuiVision.Core.TStringIndex.Add(string, string)
+  fullName.vb: TuiVision.Core.TStringIndex.Add(String, String)
+  nameWithType: TStringIndex.Add(string, string)
+  nameWithType.vb: TStringIndex.Add(String, String)
+- uid: TuiVision.Core.TStringIndex.Add*
+  name: Add
+  href: api/TuiVision.Core.TStringIndex.html#TuiVision_Core_TStringIndex_Add_
+  commentId: Overload:TuiVision.Core.TStringIndex.Add
+  isSpec: "True"
+  fullName: TuiVision.Core.TStringIndex.Add
+  nameWithType: TStringIndex.Add
+- uid: TuiVision.Core.TStringIndex.Get(System.String)
+  name: Get(string)
+  href: api/TuiVision.Core.TStringIndex.html#TuiVision_Core_TStringIndex_Get_System_String_
+  commentId: M:TuiVision.Core.TStringIndex.Get(System.String)
+  name.vb: Get(String)
+  fullName: TuiVision.Core.TStringIndex.Get(string)
+  fullName.vb: TuiVision.Core.TStringIndex.Get(String)
+  nameWithType: TStringIndex.Get(string)
+  nameWithType.vb: TStringIndex.Get(String)
+- uid: TuiVision.Core.TStringIndex.Get*
+  name: Get
+  href: api/TuiVision.Core.TStringIndex.html#TuiVision_Core_TStringIndex_Get_
+  commentId: Overload:TuiVision.Core.TStringIndex.Get
+  isSpec: "True"
+  fullName: TuiVision.Core.TStringIndex.Get
+  nameWithType: TStringIndex.Get
 - uid: TuiVision.Drivers.Console
   name: TuiVision.Drivers.Console
   href: api/TuiVision.Drivers.Console.html
@@ -6064,6 +8090,25 @@ references:
   isSpec: "True"
   fullName: TuiVision.Drivers.Console.IConsolePresenter.Present
   nameWithType: IConsolePresenter.Present
+- uid: TuiVision.Drivers.Console.SystemConsolePresenter
+  name: SystemConsolePresenter
+  href: api/TuiVision.Drivers.Console.SystemConsolePresenter.html
+  commentId: T:TuiVision.Drivers.Console.SystemConsolePresenter
+  fullName: TuiVision.Drivers.Console.SystemConsolePresenter
+  nameWithType: SystemConsolePresenter
+- uid: TuiVision.Drivers.Console.SystemConsolePresenter.Present(TuiVision.Core.TConsoleBuffer)
+  name: Present(TConsoleBuffer)
+  href: api/TuiVision.Drivers.Console.SystemConsolePresenter.html#TuiVision_Drivers_Console_SystemConsolePresenter_Present_TuiVision_Core_TConsoleBuffer_
+  commentId: M:TuiVision.Drivers.Console.SystemConsolePresenter.Present(TuiVision.Core.TConsoleBuffer)
+  fullName: TuiVision.Drivers.Console.SystemConsolePresenter.Present(TuiVision.Core.TConsoleBuffer)
+  nameWithType: SystemConsolePresenter.Present(TConsoleBuffer)
+- uid: TuiVision.Drivers.Console.SystemConsolePresenter.Present*
+  name: Present
+  href: api/TuiVision.Drivers.Console.SystemConsolePresenter.html#TuiVision_Drivers_Console_SystemConsolePresenter_Present_
+  commentId: Overload:TuiVision.Drivers.Console.SystemConsolePresenter.Present
+  isSpec: "True"
+  fullName: TuiVision.Drivers.Console.SystemConsolePresenter.Present
+  nameWithType: SystemConsolePresenter.Present
 - uid: TuiVision.Drivers.Console.TConsoleBuffer
   name: TConsoleBuffer
   href: api/TuiVision.Drivers.Console.TConsoleBuffer.html

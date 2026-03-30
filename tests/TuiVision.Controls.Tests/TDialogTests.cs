@@ -136,6 +136,75 @@ public sealed class TDialogTests
         Assert.AreEqual(ShellCommandIds.cmCancel, result);
     }
 
+    // -----------------------------------------------------------------------
+    // T019: Dialog validation tests (RED – fail until T021 adds Valid() hook)
+    // -----------------------------------------------------------------------
+
+    /// <summary>
+    /// Prüft, ob Valid(ushort) false den Dialog offen hält (kein Schließen bei Ablehnung).
+    ///
+    /// Verifies that Valid(ushort) returning false keeps the dialog open.
+    /// </summary>
+    [TestMethod]
+    public void TDialog_Valid_RejectsCloseWhenValidReturnsFalse()
+    {
+        RejectingDialog dialog = new(new TRect(0, 0, 20, 6), "Reject");
+        TButton okButton = new(new TRect(2, 2, 10, 3), "OK", ShellCommandIds.cmOK, TButtonFlags.bfDefault);
+        dialog.Insert(okButton);
+        ControlTestContext.AttachToOwner(dialog, new TRect(0, 0, 30, 10));
+
+        // Befehl cmOK direkt senden – Valid() gibt false zurück, CloseDialog wird NICHT aufgerufen.
+        // Send cmOK directly – Valid() returns false, CloseDialog must NOT be called.
+        TEvent okCmd = ControlEventFactory.CreateCommand(ShellCommandIds.cmOK);
+        dialog.HandleEvent(okCmd);
+
+        Assert.AreEqual(0, dialog.CloseDialogCallCount,
+            "Dialog must not call CloseDialog when Valid() returns false.");
+    }
+
+    /// <summary>
+    /// Prüft, ob Valid(ushort) true den Dialog schließt und den Ergebniswert setzt.
+    ///
+    /// Verifies that Valid(ushort) returning true closes the dialog with the expected result.
+    /// </summary>
+    [TestMethod]
+    public void TDialog_Valid_AcceptsCloseWhenValidReturnsTrue()
+    {
+        TestDialog dialog = new(new TRect(0, 0, 20, 6), "Accept");
+        TButton okButton = new(new TRect(2, 2, 10, 3), "OK", ShellCommandIds.cmOK, TButtonFlags.bfDefault);
+        dialog.Insert(okButton);
+        ControlTestContext.AttachToOwner(dialog, new TRect(0, 0, 30, 10));
+        dialog.Enqueue(ControlEventFactory.CreateCommand(ShellCommandIds.cmOK));
+        dialog.Enqueue(ControlEventFactory.CreateCommand(ShellCommandIds.cmCancel)); // Fallback
+
+        ushort result = dialog.Run();
+
+        Assert.AreEqual(ShellCommandIds.cmOK, result,
+            "Dialog must close with cmOK when Valid() returns true.");
+    }
+
+    /// <summary>
+    /// Stellt sicher, dass das bestehende Escape/OK-Verhalten nicht regressiert.
+    ///
+    /// Ensures that the existing Escape/OK behavior is not regressed.
+    /// </summary>
+    [TestMethod]
+    public void TDialog_ExistingModalBehavior_NotRegressed()
+    {
+        TestDialog dialog = new(new TRect(0, 0, 30, 8), "Regression");
+        TButton okButton = new(new TRect(2, 2, 10, 3), "OK", ShellCommandIds.cmOK, TButtonFlags.bfDefault);
+        TButton cancelButton = new(new TRect(12, 2, 24, 3), "Cancel", ShellCommandIds.cmCancel, TButtonFlags.bfNormal);
+        dialog.Insert(okButton);
+        dialog.Insert(cancelButton);
+        ControlTestContext.AttachToOwner(dialog, new TRect(0, 0, 40, 12));
+        dialog.Enqueue(ControlEventFactory.CreateKeyDown(scanCode: 0x01)); // Escape
+
+        ushort result = dialog.Run();
+
+        Assert.AreEqual(ShellCommandIds.cmCancel, result,
+            "Existing Escape→cmCancel behavior must not be regressed by Valid() hook introduction.");
+    }
+
     private static TestDialog CreateDialogWithTwoButtons(out TButton okButton, out TButton cancelButton)
     {
         TestDialog dialog = new(new TRect(0, 0, 30, 8), "Test");
@@ -160,6 +229,42 @@ public sealed class TDialogTests
         protected override void GetEvent(out TEvent @event)
         {
             @event = _events.Count > 0 ? _events.Dequeue() : TEvent.CreateCommand(ShellCommandIds.cmCancel);
+        }
+    }
+
+    /// <summary>
+    /// Dialog, dessen Valid()-Methode stets <c>false</c> zurückgibt und der CloseDialog-Aufrufe zählt.
+    ///
+    /// Dialog whose Valid() method always returns <c>false</c> and counts CloseDialog calls.
+    /// </summary>
+    private sealed class RejectingDialog : TDialog
+    {
+        public RejectingDialog(TRect bounds, string? title) : base(bounds, title) { }
+
+        /// <summary>
+        /// Anzahl der CloseDialog-Aufrufe. / Number of CloseDialog call invocations.
+        /// </summary>
+        public int CloseDialogCallCount { get; private set; }
+
+        /// <summary>
+        /// Gibt stets <c>false</c> zurück, um das Schließen zu verhindern.
+        ///
+        /// Always returns <c>false</c> to prevent closing.
+        /// </summary>
+        /// <param name="command">Die Befehl-ID. / The command ID.</param>
+        /// <returns><c>false</c></returns>
+        protected override bool Valid(ushort command) => false;
+
+        /// <summary>
+        /// Zählt CloseDialog-Aufrufe mit.
+        ///
+        /// Counts CloseDialog calls.
+        /// </summary>
+        /// <param name="command">Die Rückgabe-Command-ID. / The command ID to return.</param>
+        public new void CloseDialog(ushort command)
+        {
+            CloseDialogCallCount++;
+            base.CloseDialog(command);
         }
     }
 

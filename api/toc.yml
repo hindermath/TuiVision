@@ -4,6 +4,9 @@ items:
   name: TuiVision.Compatibility
   type: Namespace
   items:
+  - uid: TuiVision.Compatibility.TConsoleInputAdapter
+    name: TConsoleInputAdapter
+    type: Class
   - uid: TuiVision.Compatibility.TKeyCodeTranslator
     name: TKeyCodeTranslator
     type: Class
@@ -14,6 +17,12 @@ items:
   name: TuiVision.Controls
   type: Namespace
   items:
+  - uid: TuiVision.Controls.ManagedClipboard
+    name: ManagedClipboard
+    type: Class
+  - uid: TuiVision.Controls.MenuLayoutSlot
+    name: MenuLayoutSlot
+    type: Class
   - uid: TuiVision.Controls.ShellCommandIds
     name: ShellCommandIds
     type: Class
@@ -31,6 +40,24 @@ items:
     type: Class
   - uid: TuiVision.Controls.TCluster
     name: TCluster
+    type: Class
+  - uid: TuiVision.Controls.TColorDialog
+    name: TColorDialog
+    type: Class
+  - uid: TuiVision.Controls.TColorDisplay
+    name: TColorDisplay
+    type: Class
+  - uid: TuiVision.Controls.TColorGroup
+    name: TColorGroup
+    type: Class
+  - uid: TuiVision.Controls.TColorItem
+    name: TColorItem
+    type: Struct
+  - uid: TuiVision.Controls.TColorSelector
+    name: TColorSelector
+    type: Class
+  - uid: TuiVision.Controls.TConfigFile
+    name: TConfigFile
     type: Class
   - uid: TuiVision.Controls.TDesktop
     name: TDesktop
@@ -59,6 +86,9 @@ items:
   - uid: TuiVision.Controls.TFileEntryKind
     name: TFileEntryKind
     type: Enum
+  - uid: TuiVision.Controls.TFileInfo
+    name: TFileInfo
+    type: Struct
   - uid: TuiVision.Controls.TFileInputLine
     name: TFileInputLine
     type: Class
@@ -77,6 +107,9 @@ items:
   - uid: TuiVision.Controls.TFileSnapshot
     name: TFileSnapshot
     type: Struct
+  - uid: TuiVision.Controls.TFilterValidator
+    name: TFilterValidator
+    type: Class
   - uid: TuiVision.Controls.TGroup
     name: TGroup
     type: Class
@@ -91,6 +124,9 @@ items:
     type: Class
   - uid: TuiVision.Controls.TIndicator
     name: TIndicator
+    type: Class
+  - uid: TuiVision.Controls.TIniFile
+    name: TIniFile
     type: Class
   - uid: TuiVision.Controls.TInputLine
     name: TInputLine
@@ -116,11 +152,23 @@ items:
   - uid: TuiVision.Controls.TMenuItem
     name: TMenuItem
     type: Class
+  - uid: TuiVision.Controls.TMonoSelector
+    name: TMonoSelector
+    type: Class
+  - uid: TuiVision.Controls.TPalette
+    name: TPalette
+    type: Class
+  - uid: TuiVision.Controls.TParamText
+    name: TParamText
+    type: Class
   - uid: TuiVision.Controls.TProgram
     name: TProgram
     type: Class
   - uid: TuiVision.Controls.TRadioButtons
     name: TRadioButtons
+    type: Class
+  - uid: TuiVision.Controls.TRangeValidator
+    name: TRangeValidator
     type: Class
   - uid: TuiVision.Controls.TScrollBar
     name: TScrollBar
@@ -131,6 +179,9 @@ items:
   - uid: TuiVision.Controls.TStaticText
     name: TStaticText
     type: Class
+  - uid: TuiVision.Controls.TStatusDef
+    name: TStatusDef
+    type: Class
   - uid: TuiVision.Controls.TStatusItem
     name: TStatusItem
     type: Class
@@ -140,6 +191,12 @@ items:
   - uid: TuiVision.Controls.TStringList
     name: TStringList
     type: Class
+  - uid: TuiVision.Controls.TSubMenu
+    name: TSubMenu
+    type: Class
+  - uid: TuiVision.Controls.TValidator
+    name: TValidator
+    type: Class
   - uid: TuiVision.Controls.TView
     name: TView
     type: Class
@@ -148,6 +205,15 @@ items:
     type: Enum
   - uid: TuiVision.Controls.TViewState
     name: TViewState
+    type: Enum
+  - uid: TuiVision.Controls.TWindow
+    name: TWindow
+    type: Class
+  - uid: TuiVision.Controls.TvUIStrings
+    name: TvUIStrings
+    type: Class
+  - uid: TuiVision.Controls.WindowFlags
+    name: WindowFlags
     type: Enum
 - uid: TuiVision.Controls.Internal
   name: TuiVision.Controls.Internal
@@ -160,6 +226,9 @@ items:
   name: TuiVision.Core
   type: Namespace
   items:
+  - uid: TuiVision.Core.TCollection`1
+    name: TCollection<T>
+    type: Class
   - uid: TuiVision.Core.TConsoleBuffer
     name: TConsoleBuffer
     type: Class
@@ -184,6 +253,12 @@ items:
   - uid: TuiVision.Core.TMouseEvent
     name: TMouseEvent
     type: Struct
+  - uid: TuiVision.Core.TNSCollection`1
+    name: TNSCollection<T>
+    type: Class
+  - uid: TuiVision.Core.TNSSorter
+    name: TNSSorter
+    type: Class
   - uid: TuiVision.Core.TObject
     name: TObject
     type: Class
@@ -193,6 +268,21 @@ items:
   - uid: TuiVision.Core.TRect
     name: TRect
     type: Struct
+  - uid: TuiVision.Core.TSortedCollection`1
+    name: TSortedCollection<T>
+    type: Class
+  - uid: TuiVision.Core.TSortedList`2
+    name: TSortedList<TKey, TValue>
+    type: Class
+  - uid: TuiVision.Core.TStrList
+    name: TStrList
+    type: Class
+  - uid: TuiVision.Core.TStringCollection
+    name: TStringCollection
+    type: Class
+  - uid: TuiVision.Core.TStringIndex
+    name: TStringIndex
+    type: Class
 - uid: TuiVision.Drivers.Console
   name: TuiVision.Drivers.Console
   type: Namespace
@@ -206,6 +296,9 @@ items:
   - uid: TuiVision.Drivers.Console.IConsolePresenter
     name: IConsolePresenter
     type: Interface
+  - uid: TuiVision.Drivers.Console.SystemConsolePresenter
+    name: SystemConsolePresenter
+    type: Class
   - uid: TuiVision.Drivers.Console.TConsoleDriver
     name: TConsoleDriver
     type: Class

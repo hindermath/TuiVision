@@ -25,7 +25,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TPoint
     path: src/TuiVision.Core/TPoint.cs
@@ -71,7 +71,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TPoint.cs
@@ -119,7 +119,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: X
     path: src/TuiVision.Core/TPoint.cs
@@ -154,7 +154,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Y
     path: src/TuiVision.Core/TPoint.cs
@@ -189,7 +189,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Addition
     path: src/TuiVision.Core/TPoint.cs
@@ -237,7 +237,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Subtraction
     path: src/TuiVision.Core/TPoint.cs
@@ -285,7 +285,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Equality
     path: src/TuiVision.Core/TPoint.cs
@@ -333,7 +333,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: op_Inequality
     path: src/TuiVision.Core/TPoint.cs
@@ -381,7 +381,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Equals
     path: src/TuiVision.Core/TPoint.cs
@@ -425,7 +425,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Equals
     path: src/TuiVision.Core/TPoint.cs
@@ -471,7 +471,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TPoint.cs
-      branch: 005-driver-consolidation-m07
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: GetHashCode
     path: src/TuiVision.Core/TPoint.cs

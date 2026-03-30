@@ -78,6 +78,83 @@ public sealed class ModuleSmokeTests
         Assert.ThrowsExactly<KeyNotFoundException>(() => serializer.Deserialize(blob));
     }
 
+    // ── Gate-006-Integritätsprüfungen / Gate-006 integrity assertions ─────────
+
+    /// <summary>
+    /// Gate-006-Integritätsprüfung: <c>TuiVision.Compatibility</c> darf nicht
+    /// ausschließlich Platzhalter-Code enthalten. Die Assembly muss mindestens
+    /// einen aufrufbaren, nicht-trivialen Typ mit echtem Verhalten exportieren.
+    ///
+    /// Gate-006 integrity check: <c>TuiVision.Compatibility</c> must not contain
+    /// only placeholder code. The assembly must export at least one callable,
+    /// non-trivial type with real behaviour.
+    /// </summary>
+    [TestMethod]
+    public void Compatibility_Assembly_IsNotPlaceholderOnly_Gate006()
+    {
+        var assembly = typeof(TKeyCodeTranslator).Assembly;
+
+        // The assembly must export more than just the module initializer
+        var publicTypes = assembly.GetExportedTypes()
+            .Where(t => !t.IsSpecialName)
+            .ToList();
+
+        Assert.IsGreaterThanOrEqualTo(2, publicTypes.Count,
+            $"Gate-006: TuiVision.Compatibility muss mindestens 2 öffentliche Typen exportieren " +
+            $"(gefunden: {publicTypes.Count}). Die Assembly darf kein Platzhalter sein. " +
+            $"Gate-006: TuiVision.Compatibility must export at least 2 public types " +
+            $"(found: {publicTypes.Count}). The assembly must not be a placeholder.");
+
+        // Verify TKeyCodeTranslator has real methods beyond just property accessors
+        var translatorMethods = typeof(TKeyCodeTranslator)
+            .GetMethods(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static)
+            .Where(m => !m.IsSpecialName)
+            .ToList();
+
+        Assert.IsGreaterThanOrEqualTo(3, translatorMethods.Count,
+            $"Gate-006: TKeyCodeTranslator muss mindestens 3 öffentliche statische Methoden haben " +
+            $"(gefunden: {translatorMethods.Count}). " +
+            $"Gate-006: TKeyCodeTranslator must have at least 3 public static methods " +
+            $"(found: {translatorMethods.Count}).");
+    }
+
+    /// <summary>
+    /// Gate-006-Integritätsprüfung: <c>TuiVision.Drivers.Console</c> darf keine
+    /// No-op-Implementierung sein. <see cref="TConsoleDriver"/> muss mindestens
+    /// eine zustandsbehaftete Eigenschaft und eine testbare Rendering-Methode haben.
+    ///
+    /// Gate-006 integrity check: <c>TuiVision.Drivers.Console</c> must not be a
+    /// no-op implementation. <see cref="TConsoleDriver"/> must have at least one
+    /// stateful property and a testable rendering method.
+    /// </summary>
+    [TestMethod]
+    public void Driver_Assembly_IsNotNoOpOnly_Gate006()
+    {
+        // TConsoleDriver must be instantiable with real state
+        var driver = new TConsoleDriver(10, 5);
+
+        // BackBuffer must be a real object (not null) with usable state
+        Assert.IsNotNull(driver.BackBuffer,
+            "Gate-006: TConsoleDriver.BackBuffer darf nicht null sein. " +
+            "Gate-006: TConsoleDriver.BackBuffer must not be null.");
+
+        // The driver must carry real width/height state (not hard-coded zeros)
+        driver.BackBuffer.WriteText(0, 0, "X".AsSpan(), ConsoleColor.White, ConsoleColor.Black);
+        var cell = driver.BackBuffer.GetCell(0, 0);
+
+        Assert.AreEqual('X', cell.Glyph,
+            "Gate-006: TConsoleDriver.BackBuffer.WriteText muss echte Zellen schreiben — keine No-op-Implementierung. " +
+            "Gate-006: TConsoleDriver.BackBuffer.WriteText must write real cells — not a no-op implementation.");
+
+        // DriverCapabilityMap must have the 5 real buckets
+        var buckets = DriverCapabilityMap.AllBuckets;
+        Assert.IsGreaterThanOrEqualTo(5, buckets.Count,
+            $"Gate-006: DriverCapabilityMap muss mindestens 5 Fähigkeitsgruppen enthalten " +
+            $"(gefunden: {buckets.Count}). " +
+            $"Gate-006: DriverCapabilityMap must contain at least 5 capability buckets " +
+            $"(found: {buckets.Count}).");
+    }
+
     /// <summary>
     /// Einfacher Zustandstyp für Smoke-Tests der Serialisierungsschicht.
     ///

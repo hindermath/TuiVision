@@ -1,0 +1,445 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Core.TStringCollection
+  commentId: T:TuiVision.Core.TStringCollection
+  id: TStringCollection
+  parent: TuiVision.Core
+  children:
+  - TuiVision.Core.TStringCollection.Add(System.String)
+  - TuiVision.Core.TStringCollection.Count
+  - TuiVision.Core.TStringCollection.Item(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: TStringCollection
+  nameWithType: TStringCollection
+  fullName: TuiVision.Core.TStringCollection
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Core/TStringCollection.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TStringCollection
+    path: src/TuiVision.Core/TStringCollection.cs
+    startLine: 12
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: >-
+    Sortierte, eindeutige Zeichenkettensammlung als managed Gegenstück zu
+
+    <code>TStringCollection</code> aus Turbo Vision (<code>tstringc.cc</code>).
+
+
+    Sorted, unique string collection as a managed counterpart to
+
+    <code>TStringCollection</code> from Turbo Vision (<code>tstringc.cc</code>).
+  example: []
+  syntax:
+    content: public sealed class TStringCollection
+    content.vb: Public NotInheritable Class TStringCollection
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Core.TStringCollection.Count
+  commentId: P:TuiVision.Core.TStringCollection.Count
+  id: Count
+  parent: TuiVision.Core.TStringCollection
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: TStringCollection.Count
+  fullName: TuiVision.Core.TStringCollection.Count
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Core/TStringCollection.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Count
+    path: src/TuiVision.Core/TStringCollection.cs
+    startLine: 21
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: >-
+    Die Anzahl der gespeicherten Zeichenketten.
+
+
+    The number of stored strings.
+  example: []
+  syntax:
+    content: public int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Count As Integer
+  overload: TuiVision.Core.TStringCollection.Count*
+- uid: TuiVision.Core.TStringCollection.Item(System.Int32)
+  commentId: P:TuiVision.Core.TStringCollection.Item(System.Int32)
+  id: Item(System.Int32)
+  parent: TuiVision.Core.TStringCollection
+  langs:
+  - csharp
+  - vb
+  name: this[int]
+  nameWithType: TStringCollection.this[int]
+  fullName: TuiVision.Core.TStringCollection.this[int]
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Core/TStringCollection.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: this[]
+    path: src/TuiVision.Core/TStringCollection.cs
+    startLine: 30
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: >-
+    Gibt die Zeichenkette am angegebenen Index zurück.
+
+
+    Returns the string at the specified index.
+  example: []
+  syntax:
+    content: public string this[int index] { get; }
+    parameters:
+    - id: index
+      type: System.Int32
+      description: Der nullbasierte Index. / The zero-based index.
+    return:
+      type: System.String
+      description: Die Zeichenkette an dieser Position. / The string at that position.
+    content.vb: Public ReadOnly Default Property this[](index As Integer) As String
+  overload: TuiVision.Core.TStringCollection.Item*
+  nameWithType.vb: TStringCollection.this[](Integer)
+  fullName.vb: TuiVision.Core.TStringCollection.this[](Integer)
+  name.vb: this[](Integer)
+- uid: TuiVision.Core.TStringCollection.Add(System.String)
+  commentId: M:TuiVision.Core.TStringCollection.Add(System.String)
+  id: Add(System.String)
+  parent: TuiVision.Core.TStringCollection
+  langs:
+  - csharp
+  - vb
+  name: Add(string)
+  nameWithType: TStringCollection.Add(string)
+  fullName: TuiVision.Core.TStringCollection.Add(string)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Core/TStringCollection.cs
+      branch: main
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Add
+    path: src/TuiVision.Core/TStringCollection.cs
+    startLine: 38
+  assemblies:
+  - TuiVision.Core
+  namespace: TuiVision.Core
+  summary: >-
+    Fügt eine Zeichenkette sortiert ein, sofern sie noch nicht vorhanden ist.
+
+
+    Inserts a string in sorted order if it is not present yet.
+  example: []
+  syntax:
+    content: public void Add(string value)
+    parameters:
+    - id: value
+      type: System.String
+      description: Die einzufügende Zeichenkette. / The string to insert.
+    content.vb: Public Sub Add(value As String)
+  overload: TuiVision.Core.TStringCollection.Add*
+  nameWithType.vb: TStringCollection.Add(String)
+  fullName.vb: TuiVision.Core.TStringCollection.Add(String)
+  name.vb: Add(String)
+references:
+- uid: TuiVision.Core
+  commentId: N:TuiVision.Core
+  href: TuiVision.html
+  name: TuiVision.Core
+  nameWithType: TuiVision.Core
+  fullName: TuiVision.Core
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Core
+    name: Core
+    href: TuiVision.Core.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TuiVision.Core.TStringCollection.Count*
+  commentId: Overload:TuiVision.Core.TStringCollection.Count
+  href: TuiVision.Core.TStringCollection.html#TuiVision_Core_TStringCollection_Count
+  name: Count
+  nameWithType: TStringCollection.Count
+  fullName: TuiVision.Core.TStringCollection.Count
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: TuiVision.Core.TStringCollection.Item*
+  commentId: Overload:TuiVision.Core.TStringCollection.Item
+  href: TuiVision.Core.TStringCollection.html#TuiVision_Core_TStringCollection_Item_System_Int32_
+  name: this
+  nameWithType: TStringCollection.this
+  fullName: TuiVision.Core.TStringCollection.this
+  nameWithType.vb: TStringCollection.this[]
+  fullName.vb: TuiVision.Core.TStringCollection.this[]
+  name.vb: this[]
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: TuiVision.Core.TStringCollection.Add*
+  commentId: Overload:TuiVision.Core.TStringCollection.Add
+  href: TuiVision.Core.TStringCollection.html#TuiVision_Core_TStringCollection_Add_System_String_
+  name: Add
+  nameWithType: TStringCollection.Add
+  fullName: TuiVision.Core.TStringCollection.Add

@@ -58,7 +58,7 @@
 
 - [ ] T009 [P] [US1] Harden list focus, visible-range, and scroll synchronization in `src/TuiVision.Controls/TListViewer.cs`, `src/TuiVision.Controls/TListBox.cs`, `src/TuiVision.Controls/TScrollBar.cs`, and `src/TuiVision.Controls/TScroller.cs`
 - [ ] T010 [P] [US1] Implement session-scoped recall semantics and file-input integration with bilingual XML docs in `src/TuiVision.Controls/THistory.cs`, `src/TuiVision.Controls/TFileInputLine.cs`, and `src/TuiVision.Controls/TStringList.cs`
-- [ ] T011 [US1] Implement application-internal clipboard semantics and input-line integration with bilingual XML docs in `src/TuiVision.Controls/ManagedClipboard.cs` and `src/TuiVision.Controls/TInputLine.cs`
+- [ ] T011 [US1] Strengthen the existing application-internal clipboard semantics and input-line integration with bilingual XML docs in `src/TuiVision.Controls/ManagedClipboard.cs` and `src/TuiVision.Controls/TInputLine.cs`
 
 **Checkpoint**: User Story 1 is independently functional and provides the MVP hardening baseline for later widget consumers.
 
@@ -82,7 +82,7 @@
 
 - [ ] T015 [US2] Implement the editable combo-box surface with bilingual XML docs in `src/TuiVision.Controls/TComboBox.cs`
 - [ ] T016 [P] [US2] Implement the determinate numeric progress surface with bilingual XML docs in `src/TuiVision.Controls/TProgressBar.cs`
-- [ ] T017 [P] [US2] Implement the bounded parameterized-text view with bilingual XML docs in `src/TuiVision.Controls/TParamText.cs`
+- [ ] T017 [P] [US2] Extend the existing `TParamText` baseline into the bounded parameterized-text view with bilingual XML docs in `src/TuiVision.Controls/TParamText.cs`
 - [ ] T018 [US2] Integrate combo-box history and list-backed choice consumption in `src/TuiVision.Controls/TComboBox.cs`, `src/TuiVision.Controls/TStringList.cs`, and `src/TuiVision.Controls/THistory.cs`
 
 **Checkpoint**: User Story 2 is independently functional and keeps wave-2 widget behavior inside the shared framework surface.
@@ -117,9 +117,9 @@
 **Purpose**: Run the required quality gates, finish governance follow-through, and refresh repository statistics.
 
 - [ ] T024 [P] After aligning `Directory.Build.props` to the current numbered-branch version/build-counter state, run and record `dotnet build --configuration Release`, `dotnet test tests/TuiVision.Controls.Tests/`, and `dotnet test` using `specs/009-controls-widgets-and-collections/quickstart.md`
-- [ ] T025 [P] On the same `Directory.Build.props`-aligned state, run and record `dotnet test tests/TuiVision.Controls.Tests/ --collect:"XPlat Code Coverage"`, `dotnet format --verify-no-changes`, and conditional `docfx docfx.json` using `specs/009-controls-widgets-and-collections/quickstart.md`
+- [ ] T025 [P] On the same `Directory.Build.props`-aligned state, run and record `dotnet test tests/TuiVision.Controls.Tests/ --collect:"XPlat Code Coverage"`, `dotnet format --verify-no-changes`, and conditional `docfx docfx.json` plus `cd tests/web-a11y && npm run test:docfx` using `specs/009-controls-widgets-and-collections/quickstart.md`
 - [ ] T026 Record repeated-run Multi-Mac, Linux, and Windows/WSL evidence in `docs/guides/multi-mac-workflow.md` and `specs/009-controls-widgets-and-collections/quickstart.md`
-- [ ] T027 [P] Rename `Lastenheft_01_ControlsWidgetsAndCollections.md` to `Lastenheft_01_ControlsWidgetsAndCollections_009-controls-widgets-and-collections.md`
+- [ ] T027 [P] Rename `Lastenheft_01_ControlsWidgetsAndCollections.md` to `Lastenheft_01_ControlsWidgetsAndCollections.009-controls-widgets-and-collections.md`
 - [ ] T028 [P] Update `docs/project-statistics.md` with the branch/phase scope, code/test/doc line counts, observable work window, and manual-effort baseline for `009-controls-widgets-and-collections`
 - [ ] T029 [P] Sync `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.github/agents/copilot-instructions.md` if the active `009` execution guidance changes during implementation
 
