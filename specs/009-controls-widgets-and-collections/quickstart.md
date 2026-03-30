@@ -109,5 +109,7 @@ paramText.SetValues(progress.Value);
 - The primary acceptance proof for these guarantees lives in
   `tests/TuiVision.Controls.Tests`; later example smoke coverage remains deferred
   to wave-2 delivery features.
+- No acceptance artifact in this feature requires runtime mouse input or
+  terminal-side mouse-event capture.
 - Traceability remains reviewable for the downstream consumers `clipboard`,
   `dyntxt`, `inplis`, `listvi`, `progba`, `tcombo`, and `tprogb`.

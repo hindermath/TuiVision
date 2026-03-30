@@ -79,8 +79,8 @@ final internal signatures.
 9. **Framework-first acceptance guarantee**: The mandatory acceptance slice for
    this feature lives primarily in `tests/TuiVision.Controls.Tests`.
 10. **Scope guarantee**: This feature does not itself deliver consuming
-    example ports, host clipboard requirements, restart-persistent history, or
-    mandatory indeterminate progress.
+    example ports, runtime mouse-support, host clipboard requirements,
+    restart-persistent history, or mandatory indeterminate progress.
 
 ## Test Obligations
 

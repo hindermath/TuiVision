@@ -52,6 +52,9 @@
 - [x] CHK013 Do the planning artifacts consistently keep `008-controls-revision` out of scope while still recognizing it as an already separate prerequisite context? [Consistency, Plan §Design Boundaries, Spec §FR-012, Research Decision 1]
 > **Durchführungshinweis**: Kontrolliere, ob `008` nirgends stillschweigend wieder geöffnet wird, etwa über Menü-, Status-, Fenster- oder Dialog-Verhalten, die in diesem Planpaket eigentlich bewusst ausgespart bleiben.
 
+- [x] CHK013a Do the planning artifacts now exclude runtime mouse-support explicitly, so the updated `Lastenheft_01_ControlsWidgetsAndCollections.md` does not drift from `spec.md`, `plan.md`, `quickstart.md`, and the contract? [Consistency, Scope, Lastenheft §5, Spec §FR-012, Plan §Constraints, Contract §Behavioral Guarantees]
+> **Durchführungshinweis**: Suche gezielt nach Scope-Formulierungen, die Maus- oder terminalseitige Eingabepfade stillschweigend wieder in `009` hineinziehen. Die Artefakte muessen stattdessen klar halten, dass dieses Feature Widgets/Collections vorbereitet und keine Runtime-Mauseingabe liefert.
+
 ## Acceptance Criteria Quality
 
 - [x] CHK014 Are the planned acceptance surfaces specific enough that each required widget family can later be mapped to one primary Controls test class or planned test class? [Acceptance Criteria Quality, Spec §Success Criteria, Plan §§Project Structure, Scenario Matrix, Contract §Test Obligations]

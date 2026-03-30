@@ -16,7 +16,9 @@ consuming example smoke coverage until later wave-2 delivery branches. When the
 implementation lands, it must update `docs/project-statistics.md` and rename
 `Lastenheft_01_ControlsWidgetsAndCollections.md` to
 `Lastenheft_01_ControlsWidgetsAndCollections_009-controls-widgets-and-collections.md`
-to satisfy the branch-traceability rule.
+to satisfy the branch-traceability rule. Runtime mouse-support remains
+explicitly out of scope for this feature and is handled by a separate later
+requirements block.
 
 ## Terminology & Operational Definitions
 
@@ -52,7 +54,7 @@ to satisfy the branch-traceability rule.
 **Target Platform**: Managed cross-platform terminal UI on macOS, Linux, and Windows/WSL, with the Multi-Mac workflow (`MacBook Air M2`, `Mac mini M4 Pro`) as the primary development path  
 **Project Type**: Managed .NET library increment in `TuiVision.Controls` with companion test expansion and repository-visible planning/proof updates  
 **Performance Goals**: List navigation, combo-box drop-down updates, determinate progress redraws, and parameterized text refreshes must become visible on the first redraw cycle after the triggering event during normal terminal interaction; focused widget-test slices should remain suitable for repeated local red-green TDD cycles on the primary Macs  
-**Constraints**: Managed-only runtime; no new framework module; acceptance surface primarily in `tests/TuiVision.Controls.Tests`; session-only history; application-internal clipboard is required and host clipboard integration remains optional; editable combo box with visible drop-down is mandatory; determinate numeric progress is mandatory while indeterminate progress remains optional; no mandatory example-port delivery in this feature; German-first/English-second CEFR-B2 documentation; numbered-branch version governance in `Directory.Build.props` remains mandatory before any implementation-phase build/test commits  
+**Constraints**: Managed-only runtime; no new framework module; acceptance surface primarily in `tests/TuiVision.Controls.Tests`; session-only history; application-internal clipboard is required and host clipboard integration remains optional; editable combo box with visible drop-down is mandatory; determinate numeric progress is mandatory while indeterminate progress remains optional; runtime mouse-support is out of scope; no mandatory example-port delivery in this feature; German-first/English-second CEFR-B2 documentation; numbered-branch version governance in `Directory.Build.props` remains mandatory before any implementation-phase build/test commits  
 **Scale/Scope**: Strengthen existing controls (`TListViewer`, `TListBox`, `TScrollBar`, `TScroller`, `TInputLine`, `TFileInputLine`, `THistory`, `TStringList`) in place; add the missing reusable controls (`TComboBox`, `TProgressBar`, `TParamText`, and the new `ManagedClipboard` surface planned in this branch baseline); expand Controls test coverage with new or broadened test classes; update `docs/project-statistics.md` and rename `Lastenheft_01_ControlsWidgetsAndCollections.md` to `Lastenheft_01_ControlsWidgetsAndCollections_009-controls-widgets-and-collections.md` when the feature is implemented
 
 ## Constitution Check
@@ -84,7 +86,8 @@ to satisfy the branch-traceability rule.
 **Post-Design Gate Review**: Phase-1 artifacts keep the feature inside the
 existing module layout, preserve MSTest-first validation, and resolve the
 widget/collections scope without widening into menu/status/window revision,
-editor/help systems, terminal emulation, or the actual wave-2 example ports.
+runtime mouse-support, editor/help systems, terminal emulation, or the actual
+wave-2 example ports.
 No constitution exception is required.
 
 - The feature affects runtime behavior and validation workflow, so Linux and
@@ -92,6 +95,9 @@ No constitution exception is required.
 - The feature does not itself advance one of the 25 mandatory example ports; it
   prepares the framework surface that those mandatory wave-2 examples consume
   later.
+- Runtime mouse-support remains intentionally excluded so this branch does not
+  reopen the separate interaction/driver work planned after the wave-3 base is
+  stable.
 - Statistical-documentation impact identified; update
   `docs/project-statistics.md` when this planning or implementation work lands.
 - The delivered requirements file must be renamed from
@@ -257,6 +263,8 @@ See [research.md](research.md) for full detail. Key planning decisions:
 
 - The feature does not reopen menu/status/window/dialog behavior from
   `008-controls-revision`.
+- The feature does not introduce runtime mouse input capture or terminal-side
+  mouse event parsing.
 - The feature does not deliver or smoke-test the mandatory wave-2 example
   applications themselves.
 - Host operating-system clipboard integration is optional and cannot be

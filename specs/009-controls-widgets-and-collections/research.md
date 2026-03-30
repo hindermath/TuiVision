@@ -13,6 +13,9 @@
   - Move some logic into examples immediately: rejected because the spec
     explicitly treats this feature as framework preparation before wave-2
     example delivery.
+  - Pull runtime mouse-support into the same feature: rejected because the
+    updated requirements keep terminal-side mouse capture as a separate later
+    interaction/driver block instead of mixing it into widget preparation.
 
 ## Decision 2: Strengthen list, list-box, scroll-bar, and scroller behavior in place
 

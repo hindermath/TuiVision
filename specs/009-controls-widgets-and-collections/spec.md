@@ -174,7 +174,7 @@ that later example smoke tests can stay comparatively thin.
   framework implementations delivered by this feature.
 - **FR-012**: This feature MUST remain limited to reusable widget and collection
   behaviour and MUST NOT absorb menu, status-line, window, dialog-validation,
-  editor, help, or terminal-emulation scope.
+  runtime mouse-support, editor, help, or terminal-emulation scope.
 - **FR-013**: This feature MUST NOT deliver the mandatory example ports
   themselves; it only prepares the framework surface that those examples later
   consume.
