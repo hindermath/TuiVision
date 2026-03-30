@@ -25,11 +25,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TMenuBar
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 41
+    startLine: 49
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -102,11 +102,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Menu
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 54
+    startLine: 62
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -133,11 +133,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: IsMenuActive
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 61
+    startLine: 69
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -168,11 +168,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectedTopLevel
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 68
+    startLine: 76
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -203,11 +203,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectedSubMenuItem
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 75
+    startLine: 83
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -238,11 +238,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: LayoutSlots
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 84
+    startLine: 92
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -277,11 +277,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 100
+    startLine: 108
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -316,11 +316,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 116
+    startLine: 124
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -357,11 +357,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 178
+    startLine: 188
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -398,11 +398,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: DrawSubMenuOverlay
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 365
+    startLine: 375
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -441,11 +441,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: OnBoundsChanged
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 461
+    startLine: 470
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls

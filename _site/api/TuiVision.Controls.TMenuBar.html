@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
     <meta charset="utf-8">
       <title>Class TMenuBar | TuiVision Documentation </title>
@@ -10,13 +10,14 @@
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
+      <link rel="stylesheet" href="../public/accessibility.css">
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/008-controls-revision/apiSpec/new?filename=TuiVision_Controls_TMenuBar.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TMenuBar%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Controls_TMenuBar.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TMenuBar%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,6 +32,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
 
       <script type="module" src="./../public/docfx.min.js"></script>
+      <script type="module" src="./../public/accessibility.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -40,20 +42,23 @@
   </head>
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen / Skip to main content</a>
+    <a class="skip-link skip-link-secondary" href="#toc">Zum Inhaltsverzeichnis springen / Skip to table of contents</a>
+
     <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation" aria-label="Primary">
         <div class="container-xxl flex-nowrap">
           <a class="navbar-brand" href="../index.html">
             <img id="logo" class="svg" src="../logo.svg" alt="TuiVision">
             TuiVision
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
+            <i class="bi bi-three-dots" aria-hidden="true"></i>
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
               <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
+                <i class="bi bi-search" aria-hidden="true"></i>
                 <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
@@ -62,7 +67,7 @@
       </nav>
     </header>
 
-    <main class="container-xxl">
+    <main class="container-xxl" id="main-content" tabindex="-1">
       <div class="toc-offcanvas">
         <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
           <div class="offcanvas-header">
@@ -70,7 +75,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+            <nav class="toc" id="toc" aria-label="Table of Contents"></nav>
           </div>
         </div>
       </div>
@@ -78,10 +83,10 @@
       <div class="content">
         <div class="actionbar">
           <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
+            <i class="bi bi-list" aria-hidden="true"></i>
           </button>
 
-          <nav id="breadcrumb"></nav>
+          <nav id="breadcrumb" aria-label="Breadcrumb"></nav>
         </div>
 
         <article data-uid="TuiVision.Controls.TMenuBar">
@@ -89,7 +94,7 @@
 
 
   <h1 id="TuiVision_Controls_TMenuBar" data-uid="TuiVision.Controls.TMenuBar" class="text-break">
-Class TMenuBar  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L42"><i class="bi bi-code-slash"></i></a>
+Class TMenuBar  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TMenuBar.cs/#L50"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -242,7 +247,7 @@ arrow keys, Enter, Escape, mnemonic shortcuts, and wrap-around.</p>
 
   <h3 id="TuiVision_Controls_TMenuBar__ctor_TuiVision_Core_TRect_" data-uid="TuiVision.Controls.TMenuBar.#ctor(TuiVision.Core.TRect)">
   TMenuBar(TRect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TMenuBar.cs/#L109"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initialisiert eine neue Instanz der <a class="xref" href="TuiVision.Controls.TMenuBar.html">TMenuBar</a>-Klasse.</p>
@@ -280,7 +285,7 @@ arrow keys, Enter, Escape, mnemonic shortcuts, and wrap-around.</p>
 
   <h3 id="TuiVision_Controls_TMenuBar_IsMenuActive" data-uid="TuiVision.Controls.TMenuBar.IsMenuActive">
   IsMenuActive
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TMenuBar.cs/#L70"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gibt an, ob die Menüleiste gerade aktiv (geöffnet) ist.</p>
@@ -313,7 +318,7 @@ arrow keys, Enter, Escape, mnemonic shortcuts, and wrap-around.</p>
 
   <h3 id="TuiVision_Controls_TMenuBar_LayoutSlots" data-uid="TuiVision.Controls.TMenuBar.LayoutSlots">
   LayoutSlots
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TMenuBar.cs/#L93"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die berechneten Layout-Slots der Top-Level-Einträge.
@@ -348,7 +353,7 @@ Recomputed on activation and after bounds changes.</p>
 
   <h3 id="TuiVision_Controls_TMenuBar_Menu" data-uid="TuiVision.Controls.TMenuBar.Menu">
   Menu
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TMenuBar.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die Liste der Menüpunkte. / The list of menu items.</p>
@@ -380,7 +385,7 @@ Recomputed on activation and after bounds changes.</p>
 
   <h3 id="TuiVision_Controls_TMenuBar_SelectedSubMenuItem" data-uid="TuiVision.Controls.TMenuBar.SelectedSubMenuItem">
   SelectedSubMenuItem
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TMenuBar.cs/#L84"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Der aktuell ausgewählte Untermenü-Eintrag (wenn ein Untermenü geöffnet ist).</p>
@@ -413,7 +418,7 @@ Recomputed on activation and after bounds changes.</p>
 
   <h3 id="TuiVision_Controls_TMenuBar_SelectedTopLevel" data-uid="TuiVision.Controls.TMenuBar.SelectedTopLevel">
   SelectedTopLevel
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TMenuBar.cs/#L77"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Der aktuell ausgewählte Top-Level-Menüpunkt (wenn das Menü aktiv ist).</p>
@@ -450,7 +455,7 @@ Recomputed on activation and after bounds changes.</p>
 
   <h3 id="TuiVision_Controls_TMenuBar_Draw" data-uid="TuiVision.Controls.TMenuBar.Draw">
   Draw()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TMenuBar.cs/#L125"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Zeichnet die Menüleiste. Sind Menüpunkte gesetzt, werden sie mit hervorgehobenem
@@ -482,7 +487,7 @@ name is shown.</p>
 
   <h3 id="TuiVision_Controls_TMenuBar_DrawSubMenuOverlay_TuiVision_Core_TConsoleBuffer_" data-uid="TuiVision.Controls.TMenuBar.DrawSubMenuOverlay(TuiVision.Core.TConsoleBuffer)">
   DrawSubMenuOverlay(TConsoleBuffer?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L366"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TMenuBar.cs/#L376"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Zeichnet das aktuell offene Untermenü als Popup-Overlay in den finalen Puffer.
@@ -518,7 +523,7 @@ Must be called after desktop compositing so the popup is not overwritten.</p>
 
   <h3 id="TuiVision_Controls_TMenuBar_HandleEvent_TuiVision_Core_TEvent_" data-uid="TuiVision.Controls.TMenuBar.HandleEvent(TuiVision.Core.TEvent)">
   HandleEvent(TEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L179"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TMenuBar.cs/#L189"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Verarbeitet ein Ereignis. Aktiviert die Menüleiste bei F10/Alt,
@@ -554,7 +559,7 @@ and provides full keyboard navigation while the menu is active.</p>
 
   <h3 id="TuiVision_Controls_TMenuBar_OnBoundsChanged" data-uid="TuiVision.Controls.TMenuBar.OnBoundsChanged">
   OnBoundsChanged()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L462"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TMenuBar.cs/#L471"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Wird aufgerufen, wenn sich der Begrenzungsrahmen ändert. Invalidiert die Layout-Slots,
@@ -584,14 +589,14 @@ recomputed on the next activation.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TMenuBar.cs/#L42" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TMenuBar.cs/#L50" class="edit-link">Edit this page</a>
         </div>
 
 
       </div>
 
       <div class="affix">
-        <nav id="affix"></nav>
+        <nav id="affix" aria-label="In this article"></nav>
       </div>
     </main>
 

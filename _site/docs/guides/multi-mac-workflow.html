@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
     <meta charset="utf-8">
       <title>Multi-Mac Workflow (MacBook Air M2 + Mac mini M4 Pro) | TuiVision Documentation </title>
@@ -10,13 +10,14 @@
       <link rel="icon" href="../../favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
       <link rel="stylesheet" href="../../public/main.css">
+      <link rel="stylesheet" href="../../public/accessibility.css">
       <meta name="docfx:navrel" content="../../toc.html">
       <meta name="docfx:tocrel" content="../toc.html">
       
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/008-controls-revision/docs/guides/multi-mac-workflow.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/main/docs/guides/multi-mac-workflow.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,6 +32,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
 
       <script type="module" src="./../../public/docfx.min.js"></script>
+      <script type="module" src="./../../public/accessibility.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -40,20 +42,23 @@
   </head>
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen / Skip to main content</a>
+    <a class="skip-link skip-link-secondary" href="#toc">Zum Inhaltsverzeichnis springen / Skip to table of contents</a>
+
     <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation" aria-label="Primary">
         <div class="container-xxl flex-nowrap">
           <a class="navbar-brand" href="../../index.html">
             <img id="logo" class="svg" src="../../logo.svg" alt="TuiVision">
             TuiVision
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
+            <i class="bi bi-three-dots" aria-hidden="true"></i>
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
               <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
+                <i class="bi bi-search" aria-hidden="true"></i>
                 <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
@@ -62,7 +67,7 @@
       </nav>
     </header>
 
-    <main class="container-xxl">
+    <main class="container-xxl" id="main-content" tabindex="-1">
       <div class="toc-offcanvas">
         <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
           <div class="offcanvas-header">
@@ -70,7 +75,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+            <nav class="toc" id="toc" aria-label="Table of Contents"></nav>
           </div>
         </div>
       </div>
@@ -78,10 +83,10 @@
       <div class="content">
         <div class="actionbar">
           <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
+            <i class="bi bi-list" aria-hidden="true"></i>
           </button>
 
-          <nav id="breadcrumb"></nav>
+          <nav id="breadcrumb" aria-label="Breadcrumb"></nav>
         </div>
 
         <article data-uid="">
@@ -102,6 +107,9 @@ auf zwei macOS-Systemen:</p>
 <li><code>claude</code> (Claude Code CLI, authentifiziert)</li>
 <li><code>copilot</code> (Copilot CLI, authentifiziert)</li>
 <li><code>gemini</code> (Gemini CLI, authentifiziert)</li>
+<li><code>node</code> 24 LTS und <code>npm</code> fuer <code>tests/web-a11y/</code></li>
+<li>Playwright + <code>@axe-core/playwright</code> als lokaler DocFX-A11y-Pruefpfad</li>
+<li><code>lynx</code> als textbasierter Browser-Gegencheck</li>
 </ul>
 <h2 id="voraussetzungen">Voraussetzungen</h2>
 <ol>
@@ -109,6 +117,9 @@ auf zwei macOS-Systemen:</p>
 <li>Auf beiden Systemen sind <code>gh</code>, <code>specify</code>, <code>codex</code>, <code>claude</code>, <code>copilot</code> und <code>gemini</code> installiert; <code>gh</code>, <code>codex</code>, <code>claude</code>, <code>copilot</code> und <code>gemini</code> sind authentifiziert.</li>
 <li>GitHub-Remote <code>origin</code> zeigt auf <code>https://github.com/hindermath/TuiVision.git</code>.</li>
 <li>.NET SDK 10 ist auf beiden Systemen verfuegbar (<code>dotnet --info</code>).</li>
+<li>Node <code>24.x</code> LTS und <code>npm</code> sind auf beiden Systemen verfuegbar.</li>
+<li><code>lynx</code> ist auf beiden Systemen installiert.</li>
+<li>Im Repo wurde unter <code>tests/web-a11y/</code> einmalig <code>npm install</code> und <code>npx playwright install chromium</code> ausgefuehrt.</li>
 </ol>
 <h2 id="einmaliger-check-pro-system">Einmaliger Check pro System</h2>
 <pre><code class="lang-bash">gh auth status
@@ -120,6 +131,9 @@ claude --version || claude --help
 copilot --version || copilot --help
 gemini --version || gemini --help
 dotnet --version || dotnet --help
+node --version
+npm --version
+lynx -version
 git remote -v
 dotnet --list-sdks
 </code></pre>
@@ -133,6 +147,9 @@ dotnet --list-sdks
 <li><code>claude --version</code> (oder alternativ <code>claude --help</code>) liefert eine gueltige Ausgabe.</li>
 <li><code>copilot --version</code> (oder alternativ <code>copilot --help</code>) liefert eine gueltige Ausgabe.</li>
 <li><code>gemini --version</code> (oder alternativ <code>gemini --help</code>) liefert eine gueltige Ausgabe.</li>
+<li><code>node --version</code> liefert eine gueltige LTS-Ausgabe, bevorzugt <code>24.x</code>.</li>
+<li><code>npm --version</code> liefert eine gueltige Ausgabe.</li>
+<li><code>lynx -version</code> liefert eine gueltige Ausgabe.</li>
 <li><code>git remote -v</code> zeigt <code>origin</code> auf das TuiVision-Repository.</li>
 <li><code>dotnet --list-sdks</code> zeigt eine installierte .NET-10-Umgebung.</li>
 </ul>
@@ -159,6 +176,22 @@ dotnet test
 else
   echo &quot;docfx.json nicht gefunden - docfx-Schritt uebersprungen.&quot;
 fi
+</code></pre>
+<p>Nach jedem erfolgreichen DocFX-Neubau direkt den A11y-Pruefpfad ausfuehren:</p>
+<pre><code class="lang-bash">cd tests/web-a11y
+npm run test:docfx
+cd ../..
+</code></pre>
+<p>Die Regel dazu ist verbindlich: Ein DocFX-Neubau ist in diesem Repository erst
+dann abgeschlossen, wenn der passende Playwright-plus-axe-Smoke-Test ebenfalls
+erfolgreich war. <code>lynx</code> ist der zusaetzliche textuelle Gegencheck fuer Braille-
+nahe und Screenreader-nahe Lesbarkeit. Fuer einen <code>lynx</code>-Check den lokalen
+Server in einem zweiten Terminal starten:</p>
+<pre><code class="lang-bash">cd tests/web-a11y
+npm run serve:docfx
+</code></pre>
+<p>Danach im anderen Terminal zum Beispiel:</p>
+<pre><code class="lang-bash">lynx -dump http://127.0.0.1:8123/index.html
 </code></pre>
 <p>Dokumentation aktualisieren, wenn Code angepasst wurde:</p>
 <ul>
@@ -209,6 +242,7 @@ instead.</p>
 <li>Wenn die Session Spec-Kit-Artefakte oder Workflow-Updates betrifft: <code>specify --version || specify --help</code> und <code>specify check</code> ausfuehren.</li>
 <li>Nach Session: <code>dotnet build</code> und <code>dotnet test</code> ausfuehren.</li>
 <li>Wenn API-/XML-Kommentare geaendert wurden: den obigen docfx-Schritt ausfuehren.</li>
+<li>Nach jedem docfx-Neubau den A11y-Smoke-Test unter <code>tests/web-a11y/</code> ausfuehren; optional <code>lynx</code>-Dump pruefen.</li>
 <li>Ergebnis + Doku in denselben Commit aufnehmen.</li>
 </ol>
 <h2 id="commit-und-push">Commit und Push</h2>
@@ -242,10 +276,44 @@ git pull --ff-only origin &lt;agent&gt;/&lt;kurze-beschreibung&gt;
 <li><code>dotnet test</code> erfolgreich.</li>
 <li>Bei Spec-Kit-Arbeiten: <code>specify --version</code> oder <code>specify --help</code> sowie <code>specify check</code> auf dem verwendeten Mac erfolgreich.</li>
 <li>Bei API-/XML-Kommentar-Aenderungen: docfx-Schritt erfolgreich (falls <code>docfx.json</code> im Projektwurzelverzeichnis vorhanden).</li>
+<li>Nach jedem erfolgreichen DocFX-Neubau: <code>cd tests/web-a11y &amp;&amp; npm run test:docfx</code> erfolgreich.</li>
+<li><code>lynx</code>-Gegencheck bei relevanten Doku-/Navigationsaenderungen mit betrachtet.</li>
 <li>Doku aktualisiert (API, Guides, Beispiel-Guide, falls betroffen).</li>
 <li>PR erstellt oder aktualisiert.</li>
 <li>Branch ist auf <code>origin</code> gepusht.</li>
 </ol>
+<h2 id="installation-der-a11y-voraussetzungen">Installation der A11y-Voraussetzungen</h2>
+<p>Die folgenden Schritte werden einmal pro Mac benoetigt, damit die HTML-Doku
+nach <code>Programmierung #include&lt;everyone&gt;</code> reproduzierbar geprueft werden kann.</p>
+<p>The following steps are needed once per Mac so the HTML documentation can be
+checked reproducibly according to <code>Programmierung #include&lt;everyone&gt;</code>.</p>
+<h3 id="node-24-lts-und-lynx">Node 24 LTS und lynx</h3>
+<pre><code class="lang-bash">brew install node@24
+brew install lynx
+echo 'export PATH=&quot;/opt/homebrew/opt/node@24/bin:$PATH&quot;' &gt;&gt; ~/.zshrc
+source ~/.zshrc
+node --version
+lynx -version
+</code></pre>
+<h3 id="playwright-und-axe-fuer-dieses-repository">Playwright und axe fuer dieses Repository</h3>
+<pre><code class="lang-bash">cd /pfad/zu/TuiVision/tests/web-a11y
+npm install
+npx playwright install chromium
+</code></pre>
+<h3 id="regel-fuer-kuenftige-docfx-laeufe">Regel fuer kuenftige DocFX-Laeufe</h3>
+<pre><code class="lang-bash">cd /pfad/zu/TuiVision
+docfx docfx.json
+cd tests/web-a11y
+npm run test:docfx
+</code></pre>
+<p>Kurz gesagt:</p>
+<ul>
+<li><code>docfx</code> erzeugt die HTML-Doku neu.</li>
+<li><code>npm run test:docfx</code> prueft die erzeugten Seiten mit Playwright und
+<code>@axe-core/playwright</code>.</li>
+<li><code>lynx</code> bleibt der zweite, rein textuelle Blick fuer sehbehinderte Lernende
+und fuer textorientierte Review-Pfade.</li>
+</ul>
 <h2 id="phase-7-kompatibilitaetsnachweis--phase-7-compatibility-evidence">Phase-7-Kompatibilitaetsnachweis / Phase-7 Compatibility Evidence</h2>
 <p>Dieser Abschnitt dokumentiert die fuer <code>M-07</code> erforderlichen Kompatibilitaetspruefungen fuer
 die drei Zielumgebungen zusaetzlich zum primaeren Multi-Mac-Workflow.</p>
@@ -445,6 +513,121 @@ is documented behaviour and not an error.)</em></p>
 <p>Erwartetes Ergebnis: 41 Tests bestanden, 0 Fehler, 0 uebersprungen.
 <em>(Expected result: 41 tests passed, 0 failed, 0 skipped.)</em></p>
 <hr>
+<h2 id="controls-revision-laufzeitnachweise--controls-revision-runtime-evidence">Controls-Revision: Laufzeitnachweise / Controls-Revision Runtime Evidence</h2>
+<p>Dieser Abschnitt haelt fest, wie die Controls-Revision auf den unterstuetzten
+Plattformen bewertet wurde (Branch <code>008-controls-revision</code>, 2026-03-29).</p>
+<p><em>(This section records how the Controls revision was evaluated on supported
+platforms — branch <code>008-controls-revision</code>, 2026-03-29.)</em></p>
+<h3 id="ergebnis-uebersicht-2026-03-29--result-summary-2026-03-29">Ergebnis-Uebersicht 2026-03-29 / Result Summary 2026-03-29</h3>
+<table>
+<thead>
+<tr>
+<th>Umgebung / Environment</th>
+<th>Status</th>
+<th>Begruendung / Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MacBook Air M2</strong></td>
+<td>Primaere Baseline</td>
+<td><code>dotnet build --configuration Release</code> (0 Fehler, 0 Warnungen), <code>dotnet test</code> (342 Tests gesamt, 0 Fehler), <code>dotnet format --verify-no-changes</code> (sauber), <code>docfx docfx.json</code> (0 Fehler) ausgefuehrt; <code>TuiVision.Controls</code>-Zeilenabdeckung 84,4 %.</td>
+</tr>
+<tr>
+<td><strong>Mac mini M4 Pro</strong></td>
+<td>Sekundaere Multi-Mac-Baseline</td>
+<td>Dieselbe Managed-.NET-10-Befehlsfolge reproduzierbar; kein neuer plattformspezifischer Codepfad in der Controls-Revision.</td>
+</tr>
+<tr>
+<td><strong>Linux (Ubuntu 24.04 / WSL)</strong></td>
+<td>Kein gesonderter Rerun erforderlich</td>
+<td>Die Controls-Revision greift ausschliesslich auf verwaltete .NET-Typen zu; kein P/Invoke, keine nativen Abhaengigkeiten, kein plattformspezifischer Verhaltenszweig eingefuehrt.</td>
+</tr>
+<tr>
+<td><strong>Windows/WSL (Ubuntu 24.04)</strong></td>
+<td>Kein gesonderter Rerun erforderlich</td>
+<td>Gleiche Begruendung wie fuer Linux.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="validierte-verhaltensszenarien--validated-behaviour-scenarios">Validierte Verhaltensszenarien / Validated Behaviour Scenarios</h3>
+<p>Die folgenden Szenarien wurden durch MSTest-Abdeckung in <code>tests/TuiVision.Controls.Tests/</code> bestaetigt:</p>
+<h4 id="menueverhalten--menu-behaviour">Menueverhalten / Menu Behaviour</h4>
+<ul>
+<li>Top-Level-Wraparound (links vom ersten Eintrag → letzter Eintrag).</li>
+<li>Untermenü-Wraparound (unten vom letzten Untermenü-Eintrag → erster Eintrag).</li>
+<li>Deaktivierte Eintraege und Trennzeilen werden beim Navigieren uebersprungen.</li>
+<li>Fokussierter Eintrag wird visuell hervorgehoben (Weiss auf Blau).</li>
+<li>Enter bestaetigt und sendet den Befehl.</li>
+<li>Escape schliesst das Menue ohne Befehl.</li>
+</ul>
+<h4 id="statuszeilen-kontexterneuerung--status-line-context-refresh">Statuszeilen-Kontexterneuerung / Status-Line Context Refresh</h4>
+<ul>
+<li>Erste passende <code>TStatusDef</code>-Definition gewinnt bei ueberlappenden Bereichen.</li>
+<li>Neutraler Leer-Zustand wenn keine Definition zum aktuellen Kontext passt.</li>
+<li>Fokuswechsel aktualisiert die Statuszeile auf die neue Kontextdefinition.</li>
+<li>Kompatibilitaets-Fallback auf <code>GetStatusHints()</code> wenn keine Definitionen konfiguriert.</li>
+</ul>
+<h4 id="fenster-schliessen-und-verschieben-sc-003--window-close-and-move-sc-003">Fenster-Schliessen und Verschieben (SC-003) / Window Close and Move (SC-003)</h4>
+<ul>
+<li>Schliess-Affordanz (×) sichtbar bei <code>WindowFlags.Close</code>.</li>
+<li>Ctrl+W schliesst das Fenster.</li>
+<li>Escape schliesst nur wenn kein Kind-View das Ereignis verbraucht hat (bewachtes Escape).</li>
+<li>Ctrl+F5 startet den Verschiebe-Modus; Pfeiltasten zeigen Vorschauposition.</li>
+<li>Enter uebernimmt die neue Position.</li>
+<li>Escape stellt die Ausgangsposition wieder her.</li>
+</ul>
+<h4 id="dialog-validierung--dialog-validation">Dialog-Validierung / Dialog Validation</h4>
+<ul>
+<li><code>Valid(ushort command)</code> blockiert Schliessen wenn <code>false</code>.</li>
+<li>Akzeptierte Schliessanfragen liefern das modale Ergebnis.</li>
+</ul>
+<h3 id="sc-003-wiederholungsmatrix--sc-003-repeated-run-matrix">SC-003-Wiederholungsmatrix / SC-003 Repeated-Run Matrix</h3>
+<p>Die folgenden Szenarien wurden in 20 aufeinanderfolgenden <code>dotnet test</code>-Durchlaeufen
+auf dem MacBook Air M2 ohne eine einzige Fehlerausnahme bestaetigt:</p>
+<table>
+<thead>
+<tr>
+<th>Szenario</th>
+<th>Durchlaeufe</th>
+<th>Erste-Versuch-Erfolgsrate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TWindow_CtrlW_ClosesWindow</td>
+<td>20 / 20</td>
+<td>100 %</td>
+</tr>
+<tr>
+<td>TWindow_Escape_ClosesWhenNotConsumedByChild</td>
+<td>20 / 20</td>
+<td>100 %</td>
+</tr>
+<tr>
+<td>TWindow_Escape_DoesNotCloseWhenConsumedByChild</td>
+<td>20 / 20</td>
+<td>100 %</td>
+</tr>
+<tr>
+<td>TWindow_CtrlF5_EntersMoveMode</td>
+<td>20 / 20</td>
+<td>100 %</td>
+</tr>
+<tr>
+<td>TWindow_MoveMode_EscapeRestoresOriginalPosition</td>
+<td>20 / 20</td>
+<td>100 %</td>
+</tr>
+</tbody>
+</table>
+<p><em>(All five SC-003 close/move scenarios passed in every one of 20 consecutive <code>dotnet test</code> runs on MacBook Air M2.)</em></p>
+<h3 id="testbefehl-fuer-controls-revision--test-command-for-controls-revision">Testbefehl fuer Controls-Revision / Test Command for Controls Revision</h3>
+<pre><code class="lang-bash">dotnet test tests/TuiVision.Controls.Tests/ --configuration Release
+</code></pre>
+<p>Erwartetes Ergebnis: 189 Tests bestanden, 0 Fehler, 0 uebersprungen.
+<em>(Expected result: 189 tests passed, 0 failed, 0 skipped.)</em></p>
+<hr>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="gh-auth-status-zeigt-kein-login"><code>gh auth status</code> zeigt kein Login</h3>
 <pre><code class="lang-bash">gh auth login
@@ -488,7 +671,7 @@ git diff
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/docs/guides/multi-mac-workflow.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/main/docs/guides/multi-mac-workflow.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -496,7 +679,7 @@ git diff
       </div>
 
       <div class="affix">
-        <nav id="affix"></nav>
+        <nav id="affix" aria-label="In this article"></nav>
       </div>
     </main>
 

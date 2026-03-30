@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TFileSaveConflictKind
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -48,7 +48,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: ReplaceExisting
     path: src/TuiVision.Controls/TFileEditor.cs
@@ -76,7 +76,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileEditor.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: ExternalModification
     path: src/TuiVision.Controls/TFileEditor.cs

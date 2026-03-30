@@ -1,0 +1,65 @@
+html {
+  scroll-padding-top: 5rem;
+}
+
+body {
+  line-height: 1.6;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 2000;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link-secondary {
+  top: 4.5rem;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 0.75rem 1rem;
+  border: 3px solid #0b3d91;
+  background: #fff8d6;
+  color: #111111;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+:where(a, button, input, select, textarea, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 3px solid #0b3d91;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px #fff8d6;
+}
+
+#breadcrumb:empty,
+#affix:empty,
+#search-results:empty {
+  display: none;
+}
+
+article {
+  max-width: 78ch;
+}
+
+code,
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}

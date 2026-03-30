@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TSortedCollection.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TSortedCollection
     path: src/TuiVision.Core/TSortedCollection.cs
@@ -82,7 +82,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TSortedCollection.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Count
     path: src/TuiVision.Core/TSortedCollection.cs
@@ -119,7 +119,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TSortedCollection.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: this[]
     path: src/TuiVision.Core/TSortedCollection.cs
@@ -161,7 +161,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TSortedCollection.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Add
     path: src/TuiVision.Core/TSortedCollection.cs
@@ -199,7 +199,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TSortedCollection.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Remove
     path: src/TuiVision.Core/TSortedCollection.cs
@@ -237,7 +237,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TSortedCollection.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Contains
     path: src/TuiVision.Core/TSortedCollection.cs
@@ -281,7 +281,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TSortedCollection.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Clear
     path: src/TuiVision.Core/TSortedCollection.cs

@@ -27,7 +27,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TProgram
     path: src/TuiVision.Controls/TProgram.cs
@@ -112,7 +112,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Driver
     path: src/TuiVision.Controls/TProgram.cs
@@ -147,7 +147,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: MenuBar
     path: src/TuiVision.Controls/TProgram.cs
@@ -178,7 +178,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Desktop
     path: src/TuiVision.Controls/TProgram.cs
@@ -209,7 +209,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: StatusLine
     path: src/TuiVision.Controls/TProgram.cs
@@ -240,7 +240,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TProgram.cs
@@ -279,7 +279,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Run
     path: src/TuiVision.Controls/TProgram.cs
@@ -315,7 +315,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TProgram.cs
@@ -352,7 +352,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: GetEvent
     path: src/TuiVision.Controls/TProgram.cs
@@ -407,7 +407,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TProgram.cs
@@ -444,7 +444,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: IsCommandDisabled
     path: src/TuiVision.Controls/TProgram.cs
@@ -490,7 +490,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Resize
     path: src/TuiVision.Controls/TProgram.cs
@@ -526,7 +526,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgram.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: CurrentChanged
     path: src/TuiVision.Controls/TProgram.cs

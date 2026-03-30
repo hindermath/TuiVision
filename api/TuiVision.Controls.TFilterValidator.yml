@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFilterValidator.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TFilterValidator
     path: src/TuiVision.Controls/TFilterValidator.cs
@@ -62,7 +62,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFilterValidator.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TFilterValidator.cs
@@ -101,7 +101,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFilterValidator.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: IsValid
     path: src/TuiVision.Controls/TFilterValidator.cs

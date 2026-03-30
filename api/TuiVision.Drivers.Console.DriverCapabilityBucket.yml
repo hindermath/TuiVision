@@ -20,7 +20,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: DriverCapabilityBucket
     path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
@@ -51,7 +51,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: ScreenPresentation
     path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
@@ -82,7 +82,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: KeyboardInput
     path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
@@ -113,7 +113,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: MouseInput
     path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
@@ -144,7 +144,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: DisplayAdaptation
     path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
@@ -175,7 +175,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TerminalModeControl
     path: src/TuiVision.Drivers.Console/DriverCapabilityMap.cs

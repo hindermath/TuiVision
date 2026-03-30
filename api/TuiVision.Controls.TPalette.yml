@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TPalette.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TPalette
     path: src/TuiVision.Controls/TPalette.cs
@@ -61,7 +61,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TPalette.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: GroupCount
     path: src/TuiVision.Controls/TPalette.cs
@@ -96,7 +96,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TPalette.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: AddGroup
     path: src/TuiVision.Controls/TPalette.cs

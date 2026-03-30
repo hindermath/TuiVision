@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
     <meta charset="utf-8">
       <title>Class TGroup | TuiVision Documentation </title>
@@ -10,13 +10,14 @@
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
+      <link rel="stylesheet" href="../public/accessibility.css">
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/008-controls-revision/apiSpec/new?filename=TuiVision_Controls_TGroup.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TGroup%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/main/apiSpec/new?filename=TuiVision_Controls_TGroup.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TGroup%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,6 +32,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
 
       <script type="module" src="./../public/docfx.min.js"></script>
+      <script type="module" src="./../public/accessibility.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -40,20 +42,23 @@
   </head>
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen / Skip to main content</a>
+    <a class="skip-link skip-link-secondary" href="#toc">Zum Inhaltsverzeichnis springen / Skip to table of contents</a>
+
     <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation" aria-label="Primary">
         <div class="container-xxl flex-nowrap">
           <a class="navbar-brand" href="../index.html">
             <img id="logo" class="svg" src="../logo.svg" alt="TuiVision">
             TuiVision
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
+            <i class="bi bi-three-dots" aria-hidden="true"></i>
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
               <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
+                <i class="bi bi-search" aria-hidden="true"></i>
                 <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
@@ -62,7 +67,7 @@
       </nav>
     </header>
 
-    <main class="container-xxl">
+    <main class="container-xxl" id="main-content" tabindex="-1">
       <div class="toc-offcanvas">
         <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
           <div class="offcanvas-header">
@@ -70,7 +75,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+            <nav class="toc" id="toc" aria-label="Table of Contents"></nav>
           </div>
         </div>
       </div>
@@ -78,10 +83,10 @@
       <div class="content">
         <div class="actionbar">
           <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
+            <i class="bi bi-list" aria-hidden="true"></i>
           </button>
 
-          <nav id="breadcrumb"></nav>
+          <nav id="breadcrumb" aria-label="Breadcrumb"></nav>
         </div>
 
         <article data-uid="TuiVision.Controls.TGroup">
@@ -89,7 +94,7 @@
 
 
   <h1 id="TuiVision_Controls_TGroup" data-uid="TuiVision.Controls.TGroup" class="text-break">
-Class TGroup  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L19"><i class="bi bi-code-slash"></i></a>
+Class TGroup  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -245,7 +250,7 @@ Ported from <code>TGroup</code> in Turbo Vision 2.0.3.</p>
 
   <h3 id="TuiVision_Controls_TGroup__ctor_TuiVision_Core_TRect_" data-uid="TuiVision.Controls.TGroup.#ctor(TuiVision.Core.TRect)">
   TGroup(TRect)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L84"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Erstellt eine neue Gruppe mit dem angegebenen Begrenzungsrahmen.
@@ -286,7 +291,7 @@ The initial bounding rectangle in the owner's coordinate space.</p>
 
   <h3 id="TuiVision_Controls_TGroup_Current" data-uid="TuiVision.Controls.TGroup.Current">
   Current
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L101"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die aktuell fokussierte Kind-View, oder <code>null</code>, wenn keine View fokussiert ist.
@@ -325,7 +330,7 @@ Initial: <code>null</code>; not automatically set by <a class="xref" href="TuiVi
 
   <h3 id="TuiVision_Controls_TGroup_CurrentChanged" data-uid="TuiVision.Controls.TGroup.CurrentChanged">
   CurrentChanged()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L333"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L333"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Wird aufgerufen, wenn sich die aktuell fokussierte Ansicht (<a class="xref" href="TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_Current">Current</a>) ändert.
@@ -355,7 +360,7 @@ Derived classes can override this method to react to focus changes.</p>
 
   <h3 id="TuiVision_Controls_TGroup_Draw" data-uid="TuiVision.Controls.TGroup.Draw">
   Draw()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L392"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L392"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Zeichnet alle sichtbaren Kind-Views in Einfügereihenfolge (Z-Reihenfolge).
@@ -387,7 +392,7 @@ and the group is exposed.</p>
 
   <h3 id="TuiVision_Controls_TGroup_GetDrawBuffer" data-uid="TuiVision.Controls.TGroup.GetDrawBuffer">
   GetDrawBuffer()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L441"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L441"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Liefert den internen Zeichenpuffer der Gruppe und allokiert ihn bei Bedarf.
@@ -424,7 +429,7 @@ The internal draw buffer, or <code>null</code> if the group is not exposed.</p>
 
   <h3 id="TuiVision_Controls_TGroup_GetFirstChild" data-uid="TuiVision.Controls.TGroup.GetFirstChild">
   GetFirstChild()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L616"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L616"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Liefert das erste Kind der zirkulären Kindliste oder <code>null</code>.
@@ -460,7 +465,7 @@ Derived classes can use this to iterate over children in a controlled way.</p>
 
   <h3 id="TuiVision_Controls_TGroup_HandleEvent_TuiVision_Core_TEvent_" data-uid="TuiVision.Controls.TGroup.HandleEvent(TuiVision.Core.TEvent)">
   HandleEvent(TEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L527"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L527"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Verarbeitet ein Ereignis in drei Phasen: PreProcess → Focused → PostProcess.</p>
@@ -496,7 +501,7 @@ Derived classes can use this to iterate over children in a controlled way.</p>
 
   <h3 id="TuiVision_Controls_TGroup_Insert_TuiVision_Controls_TView_" data-uid="TuiVision.Controls.TGroup.Insert(TuiVision.Controls.TView)">
   Insert(TView)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L160"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L160"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Fügt <code class="paramref">view</code> am Ende der Kind-Liste ein und setzt ihren
@@ -558,7 +563,7 @@ or when <code class="paramref">view</code> is the group itself.</p>
 
   <h3 id="TuiVision_Controls_TGroup_LockDraw" data-uid="TuiVision.Controls.TGroup.LockDraw">
   LockDraw()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L458"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L458"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sperrt das Zeichnen dieser Gruppe. Für jeden Aufruf von <a class="xref" href="TuiVision.Controls.TGroup.html#TuiVision_Controls_TGroup_LockDraw">LockDraw()</a>
@@ -588,7 +593,7 @@ must be matched by a corresponding call to <a class="xref" href="TuiVision.Contr
 
   <h3 id="TuiVision_Controls_TGroup_OnBoundsChanged" data-uid="TuiVision.Controls.TGroup.OnBoundsChanged">
   OnBoundsChanged()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L598"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L598"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Wird nach einer Größen- oder Positionsänderung aufgerufen.
@@ -618,7 +623,7 @@ Reallocates the buffer if it already exists, and updates the clip rectangle.</p>
 
   <h3 id="TuiVision_Controls_TGroup_Remove_TuiVision_Controls_TView_" data-uid="TuiVision.Controls.TGroup.Remove(TuiVision.Controls.TView)">
   Remove(TView)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L227"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L227"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Entfernt <code class="paramref">view</code> aus der Kind-Liste und setzt ihren
@@ -669,7 +674,7 @@ Thrown when <code class="paramref">view</code> does not belong to this group.</p
 
   <h3 id="TuiVision_Controls_TGroup_SelectNext_System_Boolean_" data-uid="TuiVision.Controls.TGroup.SelectNext(System.Boolean)">
   SelectNext(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L350"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L350"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Bewegt den Fokus zur nächsten (oder vorherigen) auswählbaren, sichtbaren und nicht
@@ -708,7 +713,7 @@ If the group is empty or no suitable view is found, this method is a no-op.</p>
 
   <h3 id="TuiVision_Controls_TGroup_SetFocus_TuiVision_Controls_TView_" data-uid="TuiVision.Controls.TGroup.SetFocus(TuiVision.Controls.TView)">
   SetFocus(TView)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L305"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L305"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Überträgt den Eingabefokus auf <code class="paramref">view</code>.
@@ -757,7 +762,7 @@ Thrown when <code class="paramref">view</code> does not belong to this group.</p
 
   <h3 id="TuiVision_Controls_TGroup_SetState_TuiVision_Controls_TViewState_System_Boolean_" data-uid="TuiVision.Controls.TGroup.SetState(TuiVision.Controls.TViewState,System.Boolean)">
   SetState(TViewState, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L499"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L499"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Setzt oder löscht Zustandsbits und propagiert den neuen Zustand an alle Kind-Views,
@@ -802,7 +807,7 @@ Nested groups receive the state as a child view and propagate it internally on t
 
   <h3 id="TuiVision_Controls_TGroup_ShutDown" data-uid="TuiVision.Controls.TGroup.ShutDown">
   ShutDown()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L271"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L271"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Fährt alle Kind-Views in umgekehrter Einfügereihenfolge (LIFO) herunter und
@@ -832,7 +837,7 @@ then calls <a class="xref" href="TuiVision.Core.TObject.html#TuiVision_Core_TObj
 
   <h3 id="TuiVision_Controls_TGroup_UnlockDraw" data-uid="TuiVision.Controls.TGroup.UnlockDraw">
   UnlockDraw()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L469"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L469"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Entsperrt das Zeichnen. Erst wenn der Lock-Zähler 0 erreicht, wird
@@ -864,14 +869,14 @@ locked draw calls were accumulated.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/src/TuiVision.Controls/TGroup.cs/#L19" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/main/src/TuiVision.Controls/TGroup.cs/#L19" class="edit-link">Edit this page</a>
         </div>
 
 
       </div>
 
       <div class="affix">
-        <nav id="affix"></nav>
+        <nav id="affix" aria-label="In this article"></nav>
       </div>
     </main>
 

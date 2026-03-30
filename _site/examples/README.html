@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
     <meta charset="utf-8">
       <title>Examples — Wave 1: Pflichtbeispiele / Wave 1: Mandatory Examples | TuiVision Documentation </title>
@@ -10,13 +10,14 @@
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
+      <link rel="stylesheet" href="../public/accessibility.css">
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="../toc.html">
       
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/008-controls-revision/examples/README.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/main/examples/README.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -31,6 +32,7 @@
       <meta name="loc:downloadPdf" content="Download PDF">
 
       <script type="module" src="./../public/docfx.min.js"></script>
+      <script type="module" src="./../public/accessibility.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -40,20 +42,22 @@
   </head>
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen / Skip to main content</a>
+
     <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation" aria-label="Primary">
         <div class="container-xxl flex-nowrap">
           <a class="navbar-brand" href="../index.html">
             <img id="logo" class="svg" src="../logo.svg" alt="TuiVision">
             TuiVision
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
+            <i class="bi bi-three-dots" aria-hidden="true"></i>
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
               <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
+                <i class="bi bi-search" aria-hidden="true"></i>
                 <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
@@ -62,12 +66,12 @@
       </nav>
     </header>
 
-    <main class="container-xxl">
+    <main class="container-xxl" id="main-content" tabindex="-1">
 
       <div class="content">
         <div class="actionbar">
 
-          <nav id="breadcrumb"></nav>
+          <nav id="breadcrumb" aria-label="Breadcrumb"></nav>
         </div>
 
         <article data-uid="">
@@ -144,7 +148,7 @@ dotnet test tests/TuiVision.Examples.SmokeTests/ --filter &quot;FullyQualifiedNa
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/008-controls-revision/examples/README.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/main/examples/README.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -152,7 +156,7 @@ dotnet test tests/TuiVision.Examples.SmokeTests/ --filter &quot;FullyQualifiedNa
       </div>
 
       <div class="affix">
-        <nav id="affix"></nav>
+        <nav id="affix" aria-label="In this article"></nav>
       </div>
     </main>
 

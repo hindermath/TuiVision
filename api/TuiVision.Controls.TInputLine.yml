@@ -23,7 +23,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TInputLine
     path: src/TuiVision.Controls/TInputLine.cs
@@ -95,7 +95,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TInputLine.cs
@@ -137,7 +137,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Data
     path: src/TuiVision.Controls/TInputLine.cs
@@ -172,7 +172,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: MaxLen
     path: src/TuiVision.Controls/TInputLine.cs
@@ -207,7 +207,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: CurPos
     path: src/TuiVision.Controls/TInputLine.cs
@@ -242,7 +242,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: FirstPos
     path: src/TuiVision.Controls/TInputLine.cs
@@ -277,7 +277,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: InsertMode
     path: src/TuiVision.Controls/TInputLine.cs
@@ -312,7 +312,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TInputLine.cs
@@ -345,7 +345,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TInputLine.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TInputLine.cs

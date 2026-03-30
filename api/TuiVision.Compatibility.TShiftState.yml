@@ -19,7 +19,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TShiftState
     path: src/TuiVision.Compatibility/Class1.cs
@@ -64,7 +64,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: None
     path: src/TuiVision.Compatibility/Class1.cs
@@ -92,7 +92,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Shift
     path: src/TuiVision.Compatibility/Class1.cs
@@ -120,7 +120,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Ctrl
     path: src/TuiVision.Compatibility/Class1.cs
@@ -148,7 +148,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Compatibility/Class1.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Alt
     path: src/TuiVision.Compatibility/Class1.cs

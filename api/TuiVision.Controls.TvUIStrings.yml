@@ -20,7 +20,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TvUIStrings.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: TvUIStrings
     path: src/TuiVision.Controls/TvUIStrings.cs
@@ -61,7 +61,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TvUIStrings.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Ok
     path: src/TuiVision.Controls/TvUIStrings.cs
@@ -92,7 +92,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TvUIStrings.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Cancel
     path: src/TuiVision.Controls/TvUIStrings.cs
@@ -123,7 +123,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TvUIStrings.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Open
     path: src/TuiVision.Controls/TvUIStrings.cs
@@ -154,7 +154,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TvUIStrings.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Save
     path: src/TuiVision.Controls/TvUIStrings.cs
@@ -185,7 +185,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TvUIStrings.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Close
     path: src/TuiVision.Controls/TvUIStrings.cs

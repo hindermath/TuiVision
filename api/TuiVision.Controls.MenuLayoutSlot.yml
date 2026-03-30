@@ -18,11 +18,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: MenuLayoutSlot
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 12
+    startLine: 13
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -58,11 +58,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Item
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 17
+    startLine: 18
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -89,11 +89,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: StartCol
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 24
+    startLine: 25
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -124,11 +124,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMenuBar.cs
-      branch: 008-controls-revision
+      branch: main
       repo: https://github.com/hindermath/TuiVision.git
     id: Width
     path: src/TuiVision.Controls/TMenuBar.cs
-    startLine: 29
+    startLine: 30
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
