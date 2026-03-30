@@ -1,8 +1,8 @@
 ---
 _layout: landing
+title: TuiVision Dokumentation
+description: Bilinguale, textorientierte Projektdokumentation fuer TuiVision mit API-Referenz, Guides und Statistik.
 ---
-
-# TuiVision Dokumentation
 
 [!include[README](README.md)]
 

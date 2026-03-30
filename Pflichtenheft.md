@@ -498,6 +498,7 @@ Die Nutzerdokumentation speist sich aus folgenden Quellen in absteigender Priori
 - Alle Guides sind **bilingual** zu verfassen: Deutsch zuerst, Englisch als gleichwertiger zweiter Abschnitt oder parallel.
 - Sprachniveau: **CEFR B2** – klare Satzstruktur, keine Umgangssprache, Fachbegriffe beim ersten Auftreten erklaert und mit Originalbegriff in Klammern angegeben.
 - Zielgruppe: Auszubildende Fachinformatiker Anwendungsentwicklung mit grundlegenden C#-Kenntnissen, ohne Vorkenntnisse in TUI-Frameworks.
+- Fuer grosse normative Dokumente wie `Pflichtenheft*.md` und `Lastenheft*.md` ist aus Uebersichtsgruenden eine synchron gepflegte englische Parallelfassung mit Suffix `.EN.md` zulaessig und empfohlen; die deutsche Fassung bleibt kanonisch, sofern nicht explizit anders markiert.
 - Der didaktische Standard gemaess Abschnitt 10.3 gilt ergaenzend fuer alle Nutzerdokumentation.
 
 ## 10.8 Standard fuer GitHub-Pages-Deployment (verbindlich)
@@ -635,11 +636,13 @@ Die Abnahme gilt als bestanden, wenn:
 - [x] Das Projekt im GitHub-Repository `https://github.com/hindermath/TuiVision.git` nachvollziehbar versioniert ist.
 - [x] Der verbindliche Lizenz-/Disclaimer-Hinweis gemaess Abschnitt 10.2 sichtbar enthalten ist.
 - [ ] Die Gesamtdokumentation den didaktischen Standard gemaess Abschnitt 10.3 nachweisbar einhaelt.
+- [ ] Alle lernrelevanten Dokumente, Guides sowie die aktiven `Pflichtenheft`-/`Lastenheft`-Artefakte liegen fuer Auszubildende nachvollziehbar in Deutsch und Englisch auf CEFR-B2-Niveau vor; grosse normative Dokumente duerfen dafuer als synchron gepflegte `.EN.md`-Parallelfassung statt als inline zweisprachiger Block bereitgestellt werden.
 - [ ] Fuer alle 25 portierten Original-Beispielprogramme liegt eine Dokumentation gemaess Abschnitt 10.4 vor; fuer TP7-Anschlussbeispiele gilt derselbe Dokumentationsstandard, sobald sie portiert werden.
 - [-] Der Quellcode erfuellt den Dokumentationsstandard gemaess Abschnitt 10.5 nachweisbar.
 - [ ] Der Mindest-Testumfang gemaess Abschnitt 9.4 ist nachweisbar vollstaendig erfuellt.
 - [-] Der lokale Workflow mit `gh`, `codex`, `claude`, `copilot` und `gemini` gemaess Abschnitt 10.6 ist auf beiden macOS-Systemen nachweisbar anwendbar; GitHub Spec-Kit ist in allen vier KI-Agenten installiert und in den dokumentierten Ablaeufen nutzbar. Optionale Werkzeuge `glab`, `opencode` und `junie` sind bei Nutzung ebenfalls erfasst; fuer `opencode` und `junie` mit installierter Spec-Kit-Unterstuetzung.
 - [x] Bei API-/XML-Kommentar-Aenderungen ist die docfx-Dokumentation nachweisbar neu erzeugt worden.
+- [ ] Fuer erzeugte HTML-Dokumentation und textorientierte Review-Pfade liegt ein nachvollziehbarer A11Y-Nachweis gemaess `Programmierung #include<everyone>` vor: WCAG 2.2 AA als Baseline, textorientierter Review nach DocFX-Neubau sowie Nutzbarkeit fuer Braille-Zeile, Screenreader und Textbrowser.
 - [ ] Die docfx-Dokumentation ist ueber GitHub Pages des Repositories `hindermath/TuiVision` erreichbar und wird bei jedem Merge auf `main` mit Doku-relevanten Aenderungen automatisch aktualisiert (M-22).
 
 ## 13. Abgrenzung

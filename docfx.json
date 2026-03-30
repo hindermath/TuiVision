@@ -49,11 +49,13 @@
     "dest": "_site",
     "template": [
       "default",
-      "modern"
+      "modern",
+      "docfx-templates/accessibility-modern"
     ],
     "globalMetadata": {
       "_appName": "TuiVision",
       "_appTitle": "TuiVision Documentation",
+      "_lang": "de",
       "_enableSearch": true
     }
   }

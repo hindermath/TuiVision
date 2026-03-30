@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-03-30 (aktualisiert nach MsgCls-Hotkey-Korrektur und Statistikfortschreibung)
+Stand: 2026-03-30 (aktualisiert inklusive WCAG-2.2-AA-Review, DocFX-Accessibility-Nachschaerfung, Playwright-plus-axe-Smoke-Setup, verankerter DocFX-A11y-Pflicht und praxisbereinigtem lynx-Workflow)
 
 ## Zweck und Pflege
 
@@ -18,6 +18,13 @@ fortgeschrieben.
 - Testcode: `tests/**/*.cs`
 - Dokumentation: Markdown-Dateien in Repository-Wurzel, `docs/`, `specs/`,
   `.github/`, `.specify/` sowie den Agent-Dateien.
+- Leitsatz fuer diese Datei und die Lernmaterialien:
+  `Programmierung #include<everyone>`. Inhalte muessen fuer Braille-Zeile,
+  Screenreader und Textbrowser lesbar bleiben; die ASCII-Diagramme sind
+  deshalb bewusst textuell und nicht farbgetragen aufgebaut.
+- Fuer erzeugte HTML-Dokumentation gilt WCAG 2.2 Konformitaetsstufe AA als
+  konkrete Pruefbasis; besonders wichtig sind Seitensprache, Bypass-Mechanismen,
+  Tastaturfokus, Non-Text-Contrast und semantische Landmarken.
 - Git-Phasenwerte sind Aenderungsvolumen aus Commit-Historie
   (`added/deleted/net`). Snapshot-Werte beschreiben den aktuellen Dateistand.
 - Die konservative Handarbeits-Basis in dieser Datei zaehlt Produktionscode,
@@ -519,3 +526,250 @@ fortgeschrieben.
 | 2026-03-29 | Thematische Lastenhefte fuer Welle 2 bis 4 | Vier neue Anforderungsdokumente wurden als bewusst geschnittenes Vorbereitungs- und Roadmap-Paket angelegt: `Lastenheft_01_ControlsWidgetsAndCollections.md` und `Lastenheft_02_StandardDialogsAndDesigner.md` definieren die aus meiner Sicht echten Vor-Welle-2-Voraussetzungen jenseits der laufenden `008-controls-revision`; `Lastenheft_03_EditorHelpAndResourcesHardening.md` und `Lastenheft_04_TerminalCharsetAndEmulation.md` ziehen die spaeteren Wave-3-/Wave-4-Haertungen frueh sichtbar nach, ohne sie als Sofort-Blocker fuer Wave 2 zu deklarieren. Netto-Aenderungsvolumen dieser Runde: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+660` Dokumentationszeilen netto (`659` neue Lastenheft-Zeilen plus Fortschreibung in `docs/project-statistics.md`). Konservative Manualreferenz: 80 Zeilen/Tag = `8,3` Tage (ca. `64,4` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `5,3` Tage (ca. `41,2` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-29, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 | 2026-03-29 | `/speckit-implement` fuer `008-controls-revision` | Controls-Revision vollstaendig implementiert: drei neue Deklarationstypen (`TSubMenu.cs`, `TStatusDef.cs`, `WindowFlags.cs`), erweiterte `TMenuItem.cs` (IsSeparator, Mnemonic, SubMenuDef, Separator-Factory), vollstaendige Tastaturnavigation in `TMenuBar.cs` (Wrap-around, Skip-over, Layout-Slots, Auswahl-Highlight, Resize-Relayout), TStatusDef-basiertes First-Match-Wins-Routing mit neutralem Fallback in `TStatusLine.cs`, HelpContext-Property in `TView.cs`, WindowFlags-Flags mit Schliess-Affordanz/Ctrl+W/bewachtem Escape/Ctrl+F5-Verschiebe-Modus in `TWindow.cs`, Valid(ushort)-Validierungshook in `TDialog.cs`. Neues Testpaket `TWindowTests.cs` (317 Zeilen) und Erweiterungen in `TMenuBarTests.cs`, `TStatusLineTests.cs`, `TDialogTests.cs`, `TProgramTests.cs`. `docs/porting-status.md` fuer alle 8 betroffenen `.cc`-Zeilen aktualisiert; `>>> NAECHSTER SCHRITT <<<` in `Pflichtenheft.md` auf Welle-2-Planung vorgeschoben. Validierung: `dotnet build --configuration Release` (0 Fehler, 0 Warnungen), `dotnet test` (338 Tests, 0 Fehler), `dotnet format --verify-no-changes` (gruen). TuiVision.Controls Coverage: 84,02 % Line Coverage (Tor: 70 %). Netto-Aenderungsvolumen: ca. `+800` Produktionscode-Zeilen netto (10 Dateien bearbeitet/neu), ca. `+700` Testcode-Zeilen netto (5 Dateien bearbeitet/neu), ca. `+50` Dokumentationszeilen netto. Konservative Manualreferenz: 80 Zeilen/Tag = `19,4` Tage (ca. `151,1` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `12,4` Tage (ca. `96,7` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-29, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 | 2026-03-30 | Hotkey-Korrektur fuer `MsgCls` auf `main` | Rendering-Regression im Menue behoben: `TMenuBar` markiert Hotkeys jetzt positionsgenau statt alle spaeteren Vorkommen desselben Zeichens; `examples/MsgCls/MsgClsApp.cs` wurde auf die bilinguale Mnemonik `~N~achricht posten / ~P~ost message` gezogen, zwei neue Controls-Regressionstests sichern Top-Level- und Untermenue-Rendering, `dotnet test tests/TuiVision.Controls.Tests/ --filter "FullyQualifiedName~TMenuBar"` lief mit 12/12 gruener Testsuite. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `src/` `+45 / -8` = `+37` Zeilen netto, `tests/` `+87 / -0` = `+87` Zeilen netto, `docs/` `+33 / -32` = `+1` Zeile netto in `docs/project-statistics.md`; zusaetzlich `examples/` `+1 / -1` = `0` und `Directory.Build.props` `+3 / -3` = `0` Repo-Metadaten-/Versionspflege. Konservative Manualreferenz fuer die repo-relevanten `125` Netto-Zeilen aus `src/` + `tests` + `docs`: `1,6` Tage (ca. `12,2` Stunden); Thorsten-Solo-Referenz: `1,0` Tage (ca. `7,8` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-30, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
+| 2026-03-30 | Lastenheft-Reihe um Maussupport erweitert und neu nummeriert | Die thematische Lastenheft-Reihe wurde zwischen Wave-3-Haertung und Terminal-/Charset-Vorbereitung um ein eigenes Dokument fuer Laufzeit-Maussupport ergaenzt: neu `Lastenheft_04_MouseSupportAndInteraction.md`; das bisherige Terminal-Dokument wurde auf `Lastenheft_05_TerminalCharsetAndEmulation.md` verschoben. Die angrenzenden Lastenhefte `01`, `02`, `03` und `05` wurden in ihren Scope-Grenzen auf den neuen Block ausgerichtet. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+213` Dokumentationszeilen netto ueber `Lastenheft_01_ControlsWidgetsAndCollections.md`, `Lastenheft_02_StandardDialogsAndDesigner.md`, `Lastenheft_03_EditorHelpAndResourcesHardening.md`, `Lastenheft_04_MouseSupportAndInteraction.md` und `Lastenheft_05_TerminalCharsetAndEmulation.md`. Konservative Manualreferenz: 80 Zeilen/Tag = `2,7` Tage (ca. `20,8` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `1,7` Tage (ca. `13,3` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-30, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
+| 2026-03-30 | Gesamtstatistik-Block und ASCII-Diagramme als Schlusssektion verankert | `docs/project-statistics.md` endet jetzt verbindlich mit einem finalen Top-Level-Block `## Gesamtstatistik`, in dem eine kompakte Gesamtauswertung und ASCII-only-Verlaufsdiagramme direkt am Dateiende mitgefuehrt werden. Dieselbe Pflegepflicht wurde in `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `.github/agents/copilot-instructions.md` und in einer globalen Codex-Merknote fuer die Repositories `TuiVision`, `TinyCalc`, `TinyPl0`, `InventarWorkerService` und `sysinfotool` verankert. Netto-Aenderungsvolumen dieses Arbeitsschritts wird als reine Dokumentations-/Governance-Aenderung im Folge-Refresh der Snapshot-Zaehler mitgefuehrt; die neue Schlusssektion selbst basiert auf den aktuell dokumentierten Snapshot- und Phasenwerten dieses Statistikdokuments. |
+| 2026-03-30 | Erklaertexte fuer ASCII-Diagramme nachgezogen | Die ASCII-Diagramme im finalen Block `## Gesamtstatistik` wurden um kurze Erklaertexte in CEFR-B2-Sprache erweitert, damit Auszubildende die dargestellten Messgroessen und die beabsichtigte Aussage schneller verstehen. Dieselbe Pflicht wurde in die gemeinsamen Agent-Dateien und in die globale Codex-Merknote fuer die weiteren Repositories uebernommen. |
+| 2026-03-30 | Zusaetzliche ASCII-X/Y-Diagramme fuer Verlaufsdaten | Die Schlusssektion `## Gesamtstatistik` enthaelt jetzt neben Balkenvergleichen auch einfache ASCII-X/Y-Diagramme fuer dokumentiertes Phasenvolumen, konservative Handarbeits-Referenzen und dokumentierte Beschleunigungsfaktoren. Die gemeinsame Guidance und die globale Codex-Merknote erlauben solche X/Y-Darstellungen kuenftig ausdruecklich, wenn Verlaufsdaten damit fuer Lernende besser lesbar werden. |
+| 2026-03-30 | Inklusions-Leitsatz und DocFX-Textzugang verankert | Der Leitsatz `Programmierung #include<everyone>` wurde fuer dieses Repository explizit auf textuelle Barrierefreiheit erweitert: Guides, Statistik und erzeugte API-Dokumentation muessen fuer Braille-Zeile, Screenreader und Textbrowser nutzbar bleiben. `README.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md` und `docs/project-statistics.md` wurden entsprechend nachgezogen; die globale Codex-Merknote fuer `TuiVision`, `TinyCalc`, `TinyPl0`, `InventarWorkerService` und `sysinfotool` wurde ebenfalls aktualisiert. Als reviewbarer Pruefpfad ist ein lokaler Playwright-Accessibility-Snapshot fuer repraesentative DocFX-Seiten (`/index.html`, `/api/TuiVision.Controls.TView.html`, `/docs/project-statistics.html`) festgehalten; der aktuelle Check zeigt sauber lesbare Ueberschriften, Listen, Tabellen und Artikelbereiche. Validierung: `docfx docfx.json` erfolgreich, danach Accessibility-Snapshot ueber den lokal gestarteten `_site/`-Server. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+280 / -1` Dokumentationszeilen netto ueber die genannten Repo-Dateien; die ausserhalb des Repositories gepflegte Codex-Merknote ist darin nicht mitgezaehlt. Konservative Manualreferenz: 80 Zeilen/Tag = `3,5` Tage (ca. `27,3` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `2,2` Tage (ca. `17,5` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-30, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
+| 2026-03-30 | WCAG-2.2-AA-Baseline und DocFX-Template-Nachschaerfung | Die Barrierefreiheitsanforderung fuer erzeugte HTML-Dokumentation wurde auf WCAG 2.2 Konformitaetsstufe AA geschaerft und in die gemeinsame Agent-Guidance sowie in `README.md` aufgenommen. Technisch wurde `docfx.json` um ein eigenes Accessibility-Template erweitert, `index.md` fuer eine ruhigere Landing-Page ohne doppelte Hauptueberschrift nachgeschaerft und ein kleines DocFX-Override-Paket unter `docfx-templates/accessibility-modern/` eingefuehrt: `lang=\"de\"`, Skip-Link zum Hauptinhalt, klar sichtbare Fokusmarkierung, Landmark-Labels, geringeres Screenreader-Rauschen fuer Deko-Icons und textfreundlichere Layoutregeln. Validierung: `docfx docfx.json` erfolgreich; frischer Playwright-Check mit Cache-Busting bestaetigt auf `/index.html?wcag=1` `lang=\"de\"`, vorhandenes Accessibility-CSS/JS, genau eine `h1` auf der Landing-Page, `#main-content` als Sprungziel und den Skip-Link als ersten Tastaturfokus. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+558 / -4` Zeilen netto ueber Governance-, Konfigurations-, Landing-Page- und DocFX-Template-Dateien im Repository; die neu erzeugten `_site/`- und `api/`-Artefakte sind darin nicht mitgezaehlt. Konservative Manualreferenz: 80 Zeilen/Tag = `6,9` Tage (ca. `54,0` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `4,4` Tage (ca. `34,6` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-30, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
+| 2026-03-30 | Playwright-plus-axe-Smoke-Setup fuer DocFX-A11y pruefbar gemacht | Unter `tests/web-a11y/` wurde ein eigenstaendiger Node-basierter Pruefpfad fuer die erzeugte DocFX-Dokumentation eingerichtet: `package.json`, `playwright.config.ts`, eine erste repraesentative Spezifikation fuer Landing-Page, API-Seite und Statistikseite sowie eine kurze Bedienhilfe. Das Setup verbindet den vorhandenen DocFX-Build mit Playwright, `@axe-core/playwright`, einem lokalen `_site/`-Server und optionalen `lynx`-Sichtpruefungen. Die gemeinsame Agent-Guidance und `README.md` nennen den neuen Standardpfad jetzt explizit, damit kuenftige DocFX- oder API-Doku-Aenderungen den A11y-Smoke-Test mitziehen. Validierung: `npm install`, `npx playwright install chromium` und `npm run test:docfx` in `tests/web-a11y/`. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `+92 / -0` Test-/Tooling-Zeilen in `tests/web-a11y/`, `+53 / -0` Dokumentations- und Guidance-Zeilen in den begleitenden Repo-Dateien; generierte `package-lock.json`-Metadaten sind darin nicht separat ausgewiesen. Konservative Manualreferenz: 80 Zeilen/Tag = `1,8` Tage (ca. `14,1` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `1,2` Tage (ca. `9,0` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-30, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
+| 2026-03-30 | DocFX-A11y-Pflicht und Installationsvoraussetzungen nachgezogen | Der neue A11y-Pruefpfad wurde als dauerhafte Betriebsregel verschaerft: Jeder erfolgreiche `docfx`-Neubau muss im selben Arbeitsschritt durch den passenden Playwright-plus-axe-Smoke-Test unter `tests/web-a11y/` begleitet werden. Zusaetzlich wurden `Node 24 LTS`, `npm`, Playwright, `@axe-core/playwright` und `lynx` in den Installationsvoraussetzungen des Repositories sichtbar verankert, vor allem im Multi-Mac-Workflow und in der lokalen A11y-Bedienhilfe. Die gemeinsame Agent-Guidance sowie die globale Codex-Merknote fuer `TuiVision`, `TinyCalc`, `TinyPl0`, `InventarWorkerService` und `sysinfotool` wurden auf dieselbe Regel synchronisiert. Validierung: Regel- und Doku-Update im Repository; kein zusaetzlicher Build notwendig, weil der A11y-Pruefpfad bereits unmittelbar zuvor gruen gegen `npm run test:docfx` verifiziert wurde. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+88 / -0` Dokumentations- und Guidance-Zeilen netto ueber die betroffenen Repo-Dateien; die ausserhalb des Repositories gepflegte Codex-Merknote ist darin nicht mitgezaehlt. Konservative Manualreferenz: 80 Zeilen/Tag = `1,1` Tage (ca. `8,6` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `0,7` Tage (ca. `5,5` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-03-30, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
+| 2026-03-30 | lynx-Workflow im Installationspfad praxisbereinigt | Die Installations- und Nutzungstexte fuer den textbasierten `lynx`-Gegencheck wurden noch einmal nachgeschaerft: `README.md`, `docs/guides/multi-mac-workflow.md` und `tests/web-a11y/README.md` beschreiben jetzt sauber, dass fuer den separaten `lynx`-Abruf ein lokaler Server wie `npm run serve:docfx` in einem zweiten Terminal laufen muss. Dadurch ist der textuelle Review-Pfad fuer sehbehinderte Auszubildende nicht nur benannt, sondern auch praktisch reproduzierbar dokumentiert. Validierung: reiner Doku-Nachtrag; der technische A11y-Pruefpfad war unmittelbar zuvor bereits gruen ueber `npm run test:docfx`. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+20 / -2` Dokumentationszeilen netto ueber die drei genannten Repo-Dateien. Konservative Manualreferenz: 80 Zeilen/Tag = `0,3` Tage (ca. `1,8` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `0,2` Tage (ca. `1,2` Stunden); sichtbares Arbeitsfenster: 1 kurze Agenten-Nacharbeit am 2026-03-30, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
+| 2026-03-30 | Bilinguale Abschlusspruefung in Pflichtenheft-Abnahme verankert | Nach Review des aktuellen Doku-Standes wurde klar nachgezogen, dass die grossen Anforderungsdokumente in `TuiVision` noch nicht durchgaengig in einem einzigen Inline-Format gehalten werden muessen. Deshalb nennt `Pflichtenheft.md` jetzt explizit zwei Abschlusspruefpunkte: erstens muessen lernrelevante Dokumente sowie aktive `Pflichtenheft`-/`Lastenheft`-Artefakte fuer Auszubildende in Deutsch und Englisch auf CEFR-B2-Niveau vorliegen, wobei grosse normative Dokumente als synchron gepflegte `.EN.md`-Parallelfassung ausgeliefert werden duerfen; zweitens ist die A11Y-Pruefung nach `Programmierung #include<everyone>` mit WCAG-2.2-AA-Baseline, DocFX-Folgereview und textorientierter Nutzbarkeit Teil der formalen Abnahme. Die gemeinsame Agent-Guidance (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, beide Copilot-Instructions) wurde dazu synchron nachgezogen; dieselbe Leitentscheidung wurde fuer die weiteren Repositories in ihren verbindlichen Anforderungs- oder Planungsdokumenten vermerkt. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+24 / -1` Dokumentationszeilen netto in `Pflichtenheft.md`, den gemeinsamen Guidance-Dateien und dieser Statistikfortschreibung. Konservative Manualreferenz: 80 Zeilen/Tag = `0,3` Tage (ca. `2,3` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `0,2` Tage (ca. `1,5` Stunden); sichtbares Arbeitsfenster: 1 kurze Agentensitzung am 2026-03-30, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
+| 2026-03-30 | Parent-Guidance bewusst auf repo-uebergreifende Regeln begrenzt | Nach dem Anlegen von `/Users/thorstenhindermann/RiderProjects/AGENTS.md` wurde in den lokalen TuiVision-Guidance-Dateien explizit vermerkt, dass die Parent-Datei nur gemeinsame Basisregeln fuer mehrere Repositories tragen soll. Repository-spezifische Build-, Test-, Workflow-, Architektur- und Feature-Vorgaben bleiben bewusst in `TuiVision` selbst und sind bei Konflikten die spezifischere Autoritaet. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+12 / -0` Dokumentationszeilen netto ueber die lokalen Guidance-Dateien und diese Statistikfortschreibung. Konservative Manualreferenz: 80 Zeilen/Tag = `0,2` Tage (ca. `1,2` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `0,1` Tage (ca. `0,7` Stunden); sichtbares Arbeitsfenster: 1 kurze Agentensitzung am 2026-03-30. |
+
+## Gesamtstatistik
+
+Basis dieses Schlussblocks sind die aktuell dokumentierten Snapshot- und
+Phasenwerte aus den Abschnitten `## Gesamtstand des Repositories` und
+`## Phasen und Haupt-Branches` weiter oben.
+
+| Kennzahl | Verdichteter Gesamtblick |
+|---|---:|
+| Artefaktbasis gesamt | `41736` Zeilen |
+| Produktions- und Testcode zusammen | `22362` Zeilen (`53.6 %`) |
+| Dokumentationsanteil | `19374` Zeilen (`46.4 %`) |
+| Spec-Kit-Anteil innerhalb der Doku | `12983` Zeilen (`67.0 %`) |
+| Governance-/Agent-Anteil innerhalb der Doku | `777` Zeilen (`4.0 %`) |
+| Beobachtbarer Projektzeitraum | `2026-02-08` bis `2026-03-30` |
+| Git-Commits pro sichtbarem Aktivtag | `13.8` (`234 / 17`) |
+| Dokumentierte Gesamtzeilen pro sichtbarem Aktivtag | `2455.1` (`41736 / 17`) |
+| Dokumentierte Gesamtzeilen pro Commit | `178.4` (`41736 / 234`) |
+| Konservative Einzelentwickler-Untergrenze | `521.7` Arbeitstage / `4069.3` Stunden |
+| Thorsten-Solo-Untergrenze | `333.9` Arbeitstage / `2604.3` Stunden |
+| Kleines 3er-Team mit Koordinationsaufschlag | `208.7` Arbeitstage |
+| Repo-weiter Speedup gg. 80-Zeilen-Referenz | `30.7x` |
+| Repo-weiter Speedup gg. Thorsten-Referenz | `19.6x` |
+
+Kurzfazit:
+Die aktuell dokumentierte Basis zeigt ein fast ausgeglichenes Verhaeltnis
+zwischen Code (`53.6 %`) und Dokumentation (`46.4 %`), wobei der
+Spec-Kit-/Nachweisanteil innerhalb der Doku sehr hoch bleibt. Der groesste
+sichtbare Volumensprung liegt in der Bootstrap-/Governance-Phase `0` und in
+`005-driver-consolidation-m07`; die hoechsten dokumentierten manuellen
+Referenzlasten stammen ebenfalls aus diesen Paketen. Damit bleibt der bisherige
+Projektverlauf klar als stark dokumentations- und nachweisgetriebene
+Portierungsarbeit mit gleichzeitig substanzieller Codebasis lesbar. Die
+dokumentierten Beschleunigungsfaktoren zeigen dabei nicht eine Stoppuhr, sondern
+die sichtbare Verdichtung durch agentische KI plus Spec-Kit-/SDD-gestuetzte
+Artefakt- und Liefergeschwindigkeit.
+
+### ASCII-Diagramme
+
+```text
+Artefaktmix nach aktuell dokumentiertem Snapshot (Zeilen)
+Produktion     | ###################            | 12144 | 29.1 %
+Tests          | ################               | 10218 | 24.5 %
+Dokumentation  | ############################## | 19374 | 46.4 %
+```
+
+Der Artefaktmix zeigt, wie sich der aktuelle Repository-Snapshot auf
+Produktionscode, Testcode und Dokumentation verteilt. Lange Balken bedeuten
+mehr Zeilen innerhalb derselben Vergleichsgruppe. So sieht man schnell, ob der
+aktuelle Stand eher von Code oder eher von Dokumentation gepraegt ist.
+
+The artifact mix shows how the current repository snapshot is split between
+production code, test code, and documentation. Longer bars mean more lines
+inside the same comparison group. This helps readers see quickly whether the
+current state is driven more by code or by documentation.
+
+```text
+Branch-/Phasenvolumen nach dokumentierter Netto-Basis (Zeilen)
+0 main  | ######################## | 10211
+1 001   | ##########               |  4353
+2 002   | #####                    |  2274
+3 003   | ########                 |  3572
+4 004   | ###########              |  4747
+5 005   | #######################  |  9659
+6 006   | ##############           |  5796
+7 007v  | #                        |    35
+8 007ex | ################         |  6778
+9 008   | ####                     |  1550
+```
+
+Dieses Diagramm zeigt die grob sichtbare Netto-Basis der dokumentierten
+Branch- und Phasenpakete. Es beantwortet die Frage, welches Paket im
+Repository besonders viel sichtbaren Umfang erzeugt hat.
+
+This chart shows the visible net size of the documented branch and phase
+packages. It answers the question which package created especially large visible
+scope in the repository.
+
+```text
+Konservative Handarbeits-Referenz je dokumentierter Phase (Arbeitstage)
+0 main  | ######################## | 127.6 d
+1 001   | ##########               |  54.4 d
+2 002   | #####                    |  28.4 d
+3 003   | ########                 |  44.7 d
+4 004   | ###########              |  59.3 d
+5 005   | #######################  | 120.7 d
+6 006   | ##############           |  72.5 d
+7 007v  | #                        |   0.4 d
+8 007ex | ################         |  84.7 d
+9 008   | ####                     |  19.4 d
+```
+
+Dieses Diagramm zeigt dieselben Pakete noch einmal, jetzt aber als
+konservative manuelle Referenz in Arbeitstagen. Damit wird sichtbar, wie gross
+derselbe Lieferumfang ohne agentische Unterstuetzung aus klassischer Sicht
+waere.
+
+This chart shows the same packages again, now as a conservative manual
+reference in workdays. It makes visible how large the same delivery would look
+from a traditional non-agentic perspective.
+
+```text
+Dokumentierte Beschleunigungsfaktoren durch agentische KI + Spec-Kit/SDD
+Repo 80 | ######                   |  30.7x
+Repo125 | ####                     |  19.6x
+0 main  | ######                   |  31.9x
+1 001   | ###                      |  13.6x
+2 002   | ###                      |  14.2x
+3 003   | #########                |  44.7x
+4 004   | n/a                      |  keine belastbare Git-Aktivtag-Basis
+5 005   | ######################## | 120.7x
+6 006   | n/a                      |  kein expliziter Branch-Speedup dokumentiert
+7 007v  | #                        |   0.4x
+8 007ex | ########                 |  42.3x
+9 008   | ####                     |  19.4x
+```
+
+Dieses Diagramm zeigt die dokumentierten Beschleunigungsfaktoren. Hier wird
+nicht echte Uhrzeit gemessen. Stattdessen wird die sichtbare Verdichtung des
+Lieferumfangs gegen die gewaehlten manuellen Referenzen verglichen. Hohe Werte
+bedeuten also: viel sichtbarer Output in wenigen dokumentierten Aktivtagen.
+
+This chart shows the documented acceleration factors. It does not measure real
+clock time. Instead, it compares visible delivery density against the chosen
+manual references. Higher values therefore mean a lot of visible output within
+only a few documented active days.
+
+```text
+Vergleich dokumentierter Gesamtaufwand / sichtbares KI-Lieferfenster
+Erfahren   | ############################## | 521.7 d
+Thorsten   | ###################            | 333.9 d
+KI sichtbar| #                              |  17.0 d
+```
+
+Dieses Diagramm vergleicht die drei Gesamtperspektiven direkt: `Erfahren`
+steht fuer die konservative 80-Zeilen-Referenz eines erfahrenen Entwicklers,
+`Thorsten` fuer die erfahrungsadjustierte Solo-Referenz, und `KI sichtbar` fuer
+das im Repository belegte Aktivfenster. Der Abstand zwischen den Balken macht
+die dokumentierte Verdichtung durch agentische KI und Spec-Kit/SDD besonders
+leicht lesbar.
+
+This chart compares the three overall perspectives directly: `Erfahren` stands
+for the conservative 80-lines-per-day reference of an experienced developer,
+`Thorsten` for the experience-adjusted solo reference, and `KI sichtbar` for
+the repository-visible activity window. The distance between the bars makes the
+documented compression through agentic AI and Spec-Kit/SDD easier to
+understand.
+
+Wenn man einen Verlauf ueber die X-Achse sehen will, helfen X/Y-Diagramme
+zusaetzlich. Hier steht die X-Achse fuer die dokumentierten Phasen oder
+Branches (`0` bis `9`). Die Y-Achse zeigt je nach Diagramm Zeilen, Arbeitstage
+oder Beschleunigungsfaktoren. Die Sternpunkte sind bewusst grob gesetzt: Sie
+sollen Trends sichtbar machen, nicht mathematische Genauigkeit auf Plotter-
+Niveau liefern.
+
+If readers want to see progression across the X-axis, X/Y charts help as a
+second view. Here the X-axis stands for the documented phases or branches (`0`
+to `9`). Depending on the chart, the Y-axis shows lines, workdays, or
+acceleration factors. The star markers are intentionally approximate: they are
+meant to reveal trends, not to deliver plotter-level mathematical precision.
+
+```text
+X/Y-Diagramm: dokumentiertes Phasenvolumen (X = Phase/Branch, Y = Zeilen)
+10211.0 |*         *        
+ 8934.6 |                   
+ 7658.2 |                   
+ 6381.9 |            *   *  
+ 5105.5 |        *          
+ 3829.1 |  *   *            
+ 2552.8 |    *              
+ 1276.4 |                  *
+    0.0 |              *    
+        +-------------------
+         0 1 2 3 4 5 6 7 8 9
+```
+
+Dieses X/Y-Diagramm zeigt denselben Verlauf wie der Volumen-Balkenblock, aber
+als Punktkurve ueber die Phasenachse. Damit sieht man leichter, wo groessere
+Spruenge oder Einbrueche zwischen direkt benachbarten Paketen liegen.
+
+This X/Y chart shows the same progression as the volume bar block, but as a
+point curve across the phase axis. It helps readers spot bigger jumps or drops
+between directly neighboring packages.
+
+```text
+X/Y-Diagramm: konservative Handarbeits-Referenz (X = Phase/Branch, Y = Arbeitstage)
+  127.6 |*         *        
+  111.6 |                   
+   95.7 |                   
+   79.8 |            *   *  
+   63.8 |        *          
+   47.8 |  *   *            
+   31.9 |    *              
+   15.9 |                  *
+    0.0 |              *    
+        +-------------------
+         0 1 2 3 4 5 6 7 8 9
+```
+
+Dieses X/Y-Diagramm zeigt, wie sich die konservative manuelle Referenz ueber
+die dokumentierten Pakete verteilt. Der Nutzen fuer Auszubildende liegt hier
+vor allem im Vergleich: Ein hoher Zeilenwert und ein hoher Arbeitstagewert
+laufen oft parallel, aber nicht jede kleine Aenderung hat automatisch denselben
+didaktischen oder organisatorischen Aufwand.
+
+This X/Y chart shows how the conservative manual reference is distributed across
+the documented packages. Its value for apprentices is mainly comparative: a
+high line count and a high workday count often move together, but not every
+small code change implies the same teaching or coordination effort.
+
+```text
+X/Y-Diagramm: dokumentierte Beschleunigungsfaktoren (X = Phase/Branch, Y = Faktor)
+  120.7 |        *      
+  105.6 |               
+   90.5 |               
+   75.4 |               
+   60.4 |               
+   45.3 |      *     *  
+   30.2 |*              
+   15.1 |  * *         *
+    0.0 |          *    
+        +---------------
+         0 1 2 3 5 7 8 9
+```
+
+Dieses X/Y-Diagramm zeigt die dokumentierten Beschleunigungsfaktoren nur fuer
+die Pakete, bei denen im Dokument eine belastbare Aktivtag-Basis oder ein
+expliziter Faktor genannt ist. Fehlende Punkte bedeuten also nicht automatisch
+schlechte Leistung, sondern nur: Hier liegt im aktuellen Statistikstand keine
+saubere Basis fuer denselben Vergleich vor.
+
+This X/Y chart shows the documented acceleration factors only for packages
+where the document already provides a reliable active-day basis or an explicit
+factor. Missing points therefore do not automatically mean poor performance;
+they only mean that the current statistics state does not provide a clean base
+for the same comparison.

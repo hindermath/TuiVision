@@ -1,0 +1,24 @@
+{
+  "name": "tuivision-docfx-a11y",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Playwright and axe smoke tests for the generated DocFX documentation.",
+  "engines": {
+    "node": "20.x || 22.x || 24.x"
+  },
+  "scripts": {
+    "docs:build": "docfx ../../docfx.json",
+    "serve:docfx": "python3 -m http.server 8123 --directory ../../_site",
+    "test": "playwright test",
+    "test:docfx": "npm run docs:build && npm test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "lynx:index": "lynx -dump http://127.0.0.1:8123/index.html",
+    "lynx:api": "lynx -dump http://127.0.0.1:8123/api/TuiVision.Controls.TView.html",
+    "lynx:stats": "lynx -dump http://127.0.0.1:8123/docs/project-statistics.html"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.54.2"
+  }
+}

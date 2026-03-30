@@ -15,6 +15,9 @@ Verwendete Tools:
 - `claude` (Claude Code CLI, authentifiziert)
 - `copilot` (Copilot CLI, authentifiziert)
 - `gemini` (Gemini CLI, authentifiziert)
+- `node` 24 LTS und `npm` fuer `tests/web-a11y/`
+- Playwright + `@axe-core/playwright` als lokaler DocFX-A11y-Pruefpfad
+- `lynx` als textbasierter Browser-Gegencheck
 
 ## Voraussetzungen
 
@@ -22,6 +25,9 @@ Verwendete Tools:
 2. Auf beiden Systemen sind `gh`, `specify`, `codex`, `claude`, `copilot` und `gemini` installiert; `gh`, `codex`, `claude`, `copilot` und `gemini` sind authentifiziert.
 3. GitHub-Remote `origin` zeigt auf `https://github.com/hindermath/TuiVision.git`.
 4. .NET SDK 10 ist auf beiden Systemen verfuegbar (`dotnet --info`).
+5. Node `24.x` LTS und `npm` sind auf beiden Systemen verfuegbar.
+6. `lynx` ist auf beiden Systemen installiert.
+7. Im Repo wurde unter `tests/web-a11y/` einmalig `npm install` und `npx playwright install chromium` ausgefuehrt.
 
 ## Einmaliger Check pro System
 
@@ -35,6 +41,9 @@ claude --version || claude --help
 copilot --version || copilot --help
 gemini --version || gemini --help
 dotnet --version || dotnet --help
+node --version
+npm --version
+lynx -version
 git remote -v
 dotnet --list-sdks
 ```
@@ -49,6 +58,9 @@ Erwartung:
 - `claude --version` (oder alternativ `claude --help`) liefert eine gueltige Ausgabe.
 - `copilot --version` (oder alternativ `copilot --help`) liefert eine gueltige Ausgabe.
 - `gemini --version` (oder alternativ `gemini --help`) liefert eine gueltige Ausgabe.
+- `node --version` liefert eine gueltige LTS-Ausgabe, bevorzugt `24.x`.
+- `npm --version` liefert eine gueltige Ausgabe.
+- `lynx -version` liefert eine gueltige Ausgabe.
 - `git remote -v` zeigt `origin` auf das TuiVision-Repository.
 - `dotnet --list-sdks` zeigt eine installierte .NET-10-Umgebung.
 
@@ -86,6 +98,31 @@ if [[ -f "docfx.json" ]]; then
 else
   echo "docfx.json nicht gefunden - docfx-Schritt uebersprungen."
 fi
+```
+
+Nach jedem erfolgreichen DocFX-Neubau direkt den A11y-Pruefpfad ausfuehren:
+
+```bash
+cd tests/web-a11y
+npm run test:docfx
+cd ../..
+```
+
+Die Regel dazu ist verbindlich: Ein DocFX-Neubau ist in diesem Repository erst
+dann abgeschlossen, wenn der passende Playwright-plus-axe-Smoke-Test ebenfalls
+erfolgreich war. `lynx` ist der zusaetzliche textuelle Gegencheck fuer Braille-
+nahe und Screenreader-nahe Lesbarkeit. Fuer einen `lynx`-Check den lokalen
+Server in einem zweiten Terminal starten:
+
+```bash
+cd tests/web-a11y
+npm run serve:docfx
+```
+
+Danach im anderen Terminal zum Beispiel:
+
+```bash
+lynx -dump http://127.0.0.1:8123/index.html
 ```
 
 Dokumentation aktualisieren, wenn Code angepasst wurde:
@@ -154,7 +191,8 @@ Empfehlung fuer Sessions:
 3. Wenn die Session Spec-Kit-Artefakte oder Workflow-Updates betrifft: `specify --version || specify --help` und `specify check` ausfuehren.
 4. Nach Session: `dotnet build` und `dotnet test` ausfuehren.
 5. Wenn API-/XML-Kommentare geaendert wurden: den obigen docfx-Schritt ausfuehren.
-6. Ergebnis + Doku in denselben Commit aufnehmen.
+6. Nach jedem docfx-Neubau den A11y-Smoke-Test unter `tests/web-a11y/` ausfuehren; optional `lynx`-Dump pruefen.
+7. Ergebnis + Doku in denselben Commit aufnehmen.
 
 ## Commit und Push
 
@@ -203,9 +241,55 @@ git pull --ff-only origin <agent>/<kurze-beschreibung>
 2. `dotnet test` erfolgreich.
 3. Bei Spec-Kit-Arbeiten: `specify --version` oder `specify --help` sowie `specify check` auf dem verwendeten Mac erfolgreich.
 4. Bei API-/XML-Kommentar-Aenderungen: docfx-Schritt erfolgreich (falls `docfx.json` im Projektwurzelverzeichnis vorhanden).
-5. Doku aktualisiert (API, Guides, Beispiel-Guide, falls betroffen).
-6. PR erstellt oder aktualisiert.
-7. Branch ist auf `origin` gepusht.
+5. Nach jedem erfolgreichen DocFX-Neubau: `cd tests/web-a11y && npm run test:docfx` erfolgreich.
+6. `lynx`-Gegencheck bei relevanten Doku-/Navigationsaenderungen mit betrachtet.
+7. Doku aktualisiert (API, Guides, Beispiel-Guide, falls betroffen).
+8. PR erstellt oder aktualisiert.
+9. Branch ist auf `origin` gepusht.
+
+## Installation der A11y-Voraussetzungen
+
+Die folgenden Schritte werden einmal pro Mac benoetigt, damit die HTML-Doku
+nach `Programmierung #include<everyone>` reproduzierbar geprueft werden kann.
+
+The following steps are needed once per Mac so the HTML documentation can be
+checked reproducibly according to `Programmierung #include<everyone>`.
+
+### Node 24 LTS und lynx
+
+```bash
+brew install node@24
+brew install lynx
+echo 'export PATH="/opt/homebrew/opt/node@24/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+node --version
+lynx -version
+```
+
+### Playwright und axe fuer dieses Repository
+
+```bash
+cd /pfad/zu/TuiVision/tests/web-a11y
+npm install
+npx playwright install chromium
+```
+
+### Regel fuer kuenftige DocFX-Laeufe
+
+```bash
+cd /pfad/zu/TuiVision
+docfx docfx.json
+cd tests/web-a11y
+npm run test:docfx
+```
+
+Kurz gesagt:
+
+- `docfx` erzeugt die HTML-Doku neu.
+- `npm run test:docfx` prueft die erzeugten Seiten mit Playwright und
+  `@axe-core/playwright`.
+- `lynx` bleibt der zweite, rein textuelle Blick fuer sehbehinderte Lernende
+  und fuer textorientierte Review-Pfade.
 
 ## Phase-7-Kompatibilitaetsnachweis / Phase-7 Compatibility Evidence
 
