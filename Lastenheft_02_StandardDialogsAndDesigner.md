@@ -149,10 +149,12 @@ and designer readiness for wave 2.
 
 - Menue-/Status-/Fenster-Grundrevision aus `Lastenheft_ControlsRevision.md`
 - Allgemeine Widget-Nacharbeit aus `Lastenheft_01_ControlsWidgetsAndCollections.md`
+- Laufzeit-Maussupport aus `Lastenheft_04_MouseSupportAndInteraction.md`
 - Editor, Help-Compiler, Hilfefenster, Terminalemulation
 
 - Menu/status/window baseline revision from `Lastenheft_ControlsRevision.md`
 - General widget follow-up from `Lastenheft_01_ControlsWidgetsAndCollections.md`
+- Runtime mouse support from `Lastenheft_04_MouseSupportAndInteraction.md`
 - Editor, help compiler, help windows, terminal emulation
 
 ---

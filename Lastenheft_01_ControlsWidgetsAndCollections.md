@@ -155,11 +155,13 @@ explicitly out of scope here.
 
 - Menueleiste, Statuszeile, Fensterbewegung, Dialog-Validierung
 - Editor-, Datei-, Hilfe- und Stream-Subsysteme
+- Laufzeit-Maussupport und terminalseitige Mausereignis-Erfassung
 - XTerm-, Terminal- oder Zeichensatzemulation
 - Beispielspezifische One-off-Widgets im jeweiligen `examples/`-Ordner
 
 - Menu bar, status line, window movement, dialog validation
 - Editor, file, help, and stream subsystems
+- Runtime mouse support and terminal-side mouse event capture
 - XTerm, terminal, or charset emulation
 - Example-specific one-off widgets inside individual `examples/` folders
 

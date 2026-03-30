@@ -110,12 +110,14 @@ fallback or rejection path.
 ### R-06: Abgrenzung zu Wave 2 und 3 bleibt bestehen
 
 Dieses Dokument darf weder fehlende Dialog-Widgets aus Wave 2 noch Editor- und
-Hilfevertraege aus Wave 3 mitziehen. Terminal und Charset sind ein eigener
-Vorbereitungsblock.
+Hilfevertraege aus Wave 3 mitziehen. Der dedizierte Laufzeit-Maussupport wird
+vorab in `Lastenheft_04_MouseSupportAndInteraction.md` geschnitten. Terminal
+und Charset bleiben hier der eigene Vorbereitungsblock fuer Wave 4.
 
 This document must not pull missing dialog widgets from wave 2 or editor/help
-contracts from wave 3 into scope. Terminal and charset readiness is its own
-preparation block.
+contracts from wave 3 into scope. Dedicated runtime mouse support is scoped
+first in `Lastenheft_04_MouseSupportAndInteraction.md`. Terminal and charset
+readiness remain the separate preparation block for wave 4 here.
 
 ---
 
@@ -123,11 +125,13 @@ preparation block.
 
 - Allgemeine Dialog-/Widget-Nacharbeit
 - Editor-, Datei-, Help- und Stream-End-to-End-Fluesse
+- Dedizierter Runtime-Maussupport aus `Lastenheft_04_MouseSupportAndInteraction.md`
 - Vollstaendige native Mausprotokoll-Portierung ueber den dokumentierten
   Emulationsumfang hinaus
 
 - General dialog and widget follow-up
 - Editor, file, help, and stream end-to-end flows
+- Dedicated runtime mouse support from `Lastenheft_04_MouseSupportAndInteraction.md`
 - Full native mouse-protocol porting beyond the documented emulation scope
 
 ---

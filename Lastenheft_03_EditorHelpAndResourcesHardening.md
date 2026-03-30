@@ -125,11 +125,11 @@ Wave-3 examples may present these failures, but must not hide them.
 ## 5. Nicht im Scope / Out of Scope
 
 - Die unmittelbare Wave-2-Widget- und Dialogreife
-- Vollstaendige Terminalemulation und Zeichensatztreiber
+- Laufzeit-Maussupport sowie vollstaendige Terminalemulation und Zeichensatztreiber
 - Neue Anschlusswellen aus `TVDEMOS/` oder `TVFM/`
 
 - Immediate wave-2 widget and dialog readiness
-- Full terminal emulation and charset drivers
+- Runtime mouse support plus full terminal emulation and charset drivers
 - New follow-on waves from `TVDEMOS/` or `TVFM/`
 
 ---
