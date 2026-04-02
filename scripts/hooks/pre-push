@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+# pre-push Hook: Blockiert den Push, wenn Secrets in git-getrackten Dateien gefunden werden.
+# Scannt NUR Dateien, die tatsächlich in diesem Repository verwaltet werden (.gitignore wird respektiert).
+# Installation: scripts/install-hooks.sh ausführen
+
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+secret_content_regex='(id_token|access_token|refresh_token|api[_-]?key|client[_-]?secret|password\s*=|authorization:\s*bearer|bearer\s+[A-Za-z0-9\-._~+/]+=*|sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AIza[0-9A-Za-z_-]{20,}|AKIA[0-9A-Z]{16}|-----BEGIN (RSA|OPENSSH|EC|DSA) PRIVATE KEY-----)'
+secret_name_regex='(auth\.json|\.env(\.[^.]+)?$|[^/]*(secret|credential|creds)[^/]*\.(json|yaml|yml|xml|ini|cfg|conf|toml)|[^/]*id_rsa[^/]*|[^/]*\.(pem|key|p12|pfx))$'
+
+echo "pre-push: Prüfe git-getrackte Dateien auf Secrets …"
+
+# Nur Dateien prüfen, die git kennt (respektiert .gitignore)
+tracked_files=()
+while IFS= read -r f; do
+  tracked_files+=("$REPO_ROOT/$f")
+done < <(git -C "$REPO_ROOT" ls-files)
+
+if [ "${#tracked_files[@]}" -eq 0 ]; then
+  echo "pre-push: Keine getrackten Dateien gefunden. Push wird fortgesetzt."
+  exit 0
+fi
+
+found_high=0
+
+# Dateinamen mit Secret-ähnlichen Namen
+name_hits=()
+while IFS= read -r f; do
+  name_hits+=("$f")
+done < <(printf '%s\n' "${tracked_files[@]}" | grep -Ei "$secret_name_regex" || true)
+
+if [ "${#name_hits[@]}" -gt 0 ]; then
+  found_high=1
+  echo "  HIGH: Secret-ähnliche Dateinamen gefunden:" >&2
+  printf '       %s\n' "${name_hits[@]}" >&2
+fi
+
+# Dateiinhalte mit Secret-Mustern
+content_hits=()
+while IFS= read -r f; do
+  content_hits+=("$f")
+done < <(grep -rEl --include='*' "$secret_content_regex" "${tracked_files[@]}" 2>/dev/null || true)
+
+if [ "${#content_hits[@]}" -gt 0 ]; then
+  found_high=1
+  echo "  HIGH: Secret-Muster im Dateiinhalt gefunden:" >&2
+  printf '       %s\n' "${content_hits[@]}" >&2
+fi
+
+if [ "$found_high" -eq 1 ]; then
+  echo "" >&2
+  echo "╔══════════════════════════════════════════════════════════════╗" >&2
+  echo "║  PUSH ABGEBROCHEN: Mögliche Secrets in getrackten Dateien!  ║" >&2
+  echo "║  Bitte die markierten Dateien bereinigen und erneut pushen.  ║" >&2
+  echo "╚══════════════════════════════════════════════════════════════╝" >&2
+  exit 2
+fi
+
+echo "pre-push: Keine Secrets in getrackten Dateien. Push wird fortgesetzt."
+exit 0

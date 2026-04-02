@@ -138,6 +138,74 @@ Steps for a new feature:
 
 All spec artefacts are stored and versioned in the branch directory `specs/{branch}/`.
 
+---
+
+## Homogeneity Guardian — Skript-Kurzreferenz / Script Quick Reference
+
+### `scripts/check-homogeneity.sh` / `scripts/check-homogeneity.ps1`
+
+Prüft dieses Projekt auf Compliance (constitution.md, A11Y, Spec-kit, Azubis-Abschnitte, STATS.md).
+*Checks this project for compliance (constitution.md, A11Y, Spec-kit, Azubis sections, STATS.md).*
+
+```bash
+bash scripts/check-homogeneity.sh
+
+# JSON-Ausgabe für CI/Scripting / JSON output for CI/scripting
+bash scripts/check-homogeneity.sh --json
+```
+
+```powershell
+pwsh scripts/check-homogeneity.ps1
+pwsh scripts/check-homogeneity.ps1 -Json
+```
+
+---
+
+### `scripts/init-stats.sh` / `scripts/init-stats.ps1`
+
+Schreibt einen Baseline-Eintrag in `STATS.md`. Einmalig nach dem Einrichten ausführen.
+*Writes a baseline entry to `STATS.md`. Run once after initial setup.*
+
+```bash
+bash scripts/init-stats.sh
+```
+
+```powershell
+pwsh scripts/init-stats.ps1
+```
+
+---
+
+### `scripts/rename-lastenheft.sh` / `scripts/rename-lastenheft.ps1`
+
+Benennt eine Lastenheft-Datei via `git mv` um und committet — fügt Branch-Suffix hinzu.
+*Renames a Lastenheft file via `git mv` and commits — adds branch suffix.*
+
+```bash
+# Datei umbenennen und committen / Rename and commit
+bash scripts/rename-lastenheft.sh Lastenheft_foo.md 002-feature-branch
+# Ergebnis / Result: Lastenheft_foo.002-feature-branch.md
+```
+
+```powershell
+pwsh scripts/rename-lastenheft.ps1 -File Lastenheft_foo.md -Branch 002-feature-branch
+```
+
+---
+
+### `scripts/install-hooks.sh` / `scripts/install-hooks.ps1`
+
+Installiert den `pre-push`-Hook nach dem Clonen auf einem neuen Gerät.
+*Installs the `pre-push` hook after cloning on a new device.*
+
+```bash
+bash scripts/install-hooks.sh
+```
+
+```powershell
+pwsh scripts/install-hooks.ps1
+```
+
 ## Für Azubis / For Apprentices
 
 Willkommen! Diese Sektion beschreibt den Einstieg in die Entwicklungsumgebung
