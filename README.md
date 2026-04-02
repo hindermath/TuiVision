@@ -75,3 +75,138 @@ The historical Turbo Vision source tree used as input is located in:
 
 Use and redistribution of these files must follow their original licensing and
 copyright notices.
+
+## Barrierefreiheit / Accessibility (A11Y)
+
+Dieses Projekt folgt grundlegenden Barrierefreiheitsstandards für alle
+dokumentierten Inhalte und Benutzeroberflächen.
+
+Richtlinien für Markdown-Dokumentation:
+
+- Überschriften folgen einer klaren Hierarchie (h1 → h2 → h3 — keine Ebene überspringen)
+- Alle Bilder haben aussagekräftige Alt-Texte (`![Beschreibung](bild.png)`)
+- Linkbeschriftungen sind beschreibend (`[Installationsanleitung](...)` statt `[hier](...)`)
+- Code-Blöcke geben die Sprache an (` ```bash `, ` ```powershell `)
+- Tabellen haben Kopfzeilen für alle Spalten
+- Keine Informationen werden ausschließlich über Farbe vermittelt
+
+---
+
+This project follows basic accessibility standards for all documented
+content and user interfaces.
+
+Guidelines for Markdown documentation:
+
+- Headings follow a clear hierarchy (h1 → h2 → h3 — no level skipped)
+- All images have meaningful alt texts (`![Description](image.png)`)
+- Link labels are descriptive (`[Installation guide](...)` instead of `[here](...)`)
+- Code blocks specify the language (` ```bash `, ` ```powershell `)
+- Tables have header rows for all columns
+- No information is conveyed through colour alone
+
+## Spec-kit-Workflow
+
+Neue Features in diesem Workspace werden nach dem **Specification-Driven Development (SDD)**-Workflow entwickelt.
+Der Workflow verwendet das `speckit`-CLI-Tool (GitHub Copilot Skill).
+
+Schritte für ein neues Feature:
+
+1. **Spezifikation erstellen** — `speckit specify "Feature-Name"` → `specs/{branch}/spec.md`
+2. **Klärungsfragen** — `speckit clarify` → offene Fragen in `spec.md` beantworten
+3. **Implementierungsplan** — `speckit plan` → `specs/{branch}/plan.md`
+4. **Aufgabenliste** — `speckit tasks` → `specs/{branch}/tasks.md`
+5. **Implementieren** — `speckit implement` → Aufgaben aus `tasks.md` abarbeiten
+6. **Validieren** — `bash scripts/check-homogeneity.sh` → Compliance-Score prüfen
+
+Alle Spec-Artefakte werden im Branch-Verzeichnis `specs/{branch}/` gespeichert und versioniert.
+
+---
+
+## Spec-kit Workflow
+
+New features in this workspace are developed following the **Specification-Driven Development (SDD)** workflow.
+The workflow uses the `speckit` CLI tool (GitHub Copilot Skill).
+
+Steps for a new feature:
+
+1. **Create specification** — `speckit specify "Feature Name"` → `specs/{branch}/spec.md`
+2. **Clarification questions** — `speckit clarify` → answer open questions in `spec.md`
+3. **Implementation plan** — `speckit plan` → `specs/{branch}/plan.md`
+4. **Task list** — `speckit tasks` → `specs/{branch}/tasks.md`
+5. **Implement** — `speckit implement` → work through tasks in `tasks.md`
+6. **Validate** — `bash scripts/check-homogeneity.sh` → check compliance score
+
+All spec artefacts are stored and versioned in the branch directory `specs/{branch}/`.
+
+## Für Azubis / For Apprentices
+
+Willkommen! Diese Sektion beschreibt den Einstieg in die Entwicklungsumgebung
+für Fachinformatiker-Azubis und andere Einsteiger.
+
+**Voraussetzungen:**
+
+- Git (macOS: `brew install git` / Windows: `winget install Git.Git`)
+- PowerShell 7+ (Windows: `winget install Microsoft.PowerShell`)
+- ripgrep (macOS: `brew install ripgrep` / Windows: `winget install BurntSushi.ripgrep.MSVC`)
+- GitHub CLI (macOS: `brew install gh` / Windows: `winget install GitHub.cli`)
+
+**Ersten Schritt ausführen:**
+
+```bash
+# Repository klonen
+git clone <repo-url>
+cd <projekt-verzeichnis>
+
+# Hooks installieren
+bash scripts/install-hooks.sh
+
+# Compliance prüfen
+bash scripts/check-homogeneity.sh
+```
+
+**Hilfreiche Befehle:**
+
+| Befehl | Beschreibung |
+|--------|--------------|
+| `bash scripts/check-homogeneity.sh` | Compliance-Bericht anzeigen |
+| `bash scripts/init-stats.sh` | Compliance-Baseline in STATS.md schreiben |
+| `git log --oneline -10` | Letzte 10 Commits anzeigen |
+
+Bei Fragen: Issue im GitHub-Repository erstellen oder Mentor ansprechen.
+
+---
+
+Welcome! This section describes how to get started with the development
+environment for apprentice software developers (Fachinformatiker-Azubis) and
+other beginners.
+
+**Prerequisites:**
+
+- Git (macOS: `brew install git` / Windows: `winget install Git.Git`)
+- PowerShell 7+ (Windows: `winget install Microsoft.PowerShell`)
+- ripgrep (macOS: `brew install ripgrep` / Windows: `winget install BurntSushi.ripgrep.MSVC`)
+- GitHub CLI (macOS: `brew install gh` / Windows: `winget install GitHub.cli`)
+
+**First steps:**
+
+```bash
+# Clone the repository
+git clone <repo-url>
+cd <project-directory>
+
+# Install hooks
+bash scripts/install-hooks.sh
+
+# Check compliance
+bash scripts/check-homogeneity.sh
+```
+
+**Useful commands:**
+
+| Command | Description |
+|---------|-------------|
+| `bash scripts/check-homogeneity.sh` | Show compliance report |
+| `bash scripts/init-stats.sh` | Write compliance baseline to STATS.md |
+| `git log --oneline -10` | Show last 10 commits |
+
+For questions: open an issue in the GitHub repository or ask your mentor.

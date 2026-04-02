@@ -1,0 +1,40 @@
+name: Homogeneity Check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    name: Homogeneity Check (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, macos-14, windows-latest]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install ripgrep (Ubuntu)
+        if: runner.os == 'Linux'
+        run: sudo apt-get install -y ripgrep
+
+      - name: Install ripgrep (macOS)
+        if: runner.os == 'macOS'
+        run: brew install ripgrep
+
+      - name: Install ripgrep (Windows)
+        if: runner.os == 'Windows'
+        run: choco install ripgrep -y
+
+      - name: Run Homogeneity Check (Bash)
+        if: runner.os != 'Windows'
+        run: bash scripts/check-homogeneity.sh $(basename "$GITHUB_WORKSPACE")
+
+      - name: Run Homogeneity Check (PowerShell)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: pwsh scripts/check-homogeneity.ps1 -WorkspaceName (Split-Path $env:GITHUB_WORKSPACE -Leaf)
