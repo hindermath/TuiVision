@@ -3,7 +3,8 @@
 
 [CmdletBinding()]
 param(
-    [string]$TargetDir = $env:HOME,
+    [string]$TargetDir = $(if ($env:HOME) { $env:HOME } else { $env:USERPROFILE }),
+    [string]$WorkspaceName = '',
     [switch]$Json,
     [switch]$DryRun,
     [string]$ApplyPatch = '',
@@ -150,7 +151,7 @@ function Check-ReadmeSections {
     } else {
         Emit-Result 'FAIL' 'README.md' 'Spec-kit section missing' $Dir
     }
-    if ($content -match '(?im)^## .*Azubis') {
+    if ($content -match '(?im)^## .*(Azubis|Auszubildende)') {
         Emit-Result 'PASS' 'README.md' 'Azubis section' $Dir
     } else {
         Emit-Result 'FAIL' 'README.md' 'Azubis section missing' $Dir
@@ -162,8 +163,10 @@ function Check-AnsiInScripts {
     $scriptsDir = Join-Path $Dir 'scripts'
     if (-not (Test-Path $scriptsDir)) { return }
     # ANSI escape scan: actual ESC byte, \033[, \e[ (PS1 uses .NET regex)
+    # Exclude the scanner scripts themselves (they contain the patterns as literals in comments/code)
     $pattern = '\x1b\[|\\033\[|\\e\['
     $found = Get-ChildItem -Path $scriptsDir -File -Recurse -ErrorAction SilentlyContinue |
+        Where-Object { $_.Name -notmatch '^check-homogeneity\.(ps1|sh)$' } |
         Where-Object { (Get-Content $_.FullName -Raw -ErrorAction SilentlyContinue) -match $pattern } |
         Select-Object -First 1
     if ($null -eq $found) {
@@ -289,11 +292,34 @@ foreach ($entry in $scanResults) {
     }
 
     if ($level -eq 0) {
-        $canonicalHook = Join-Path $env:HOME 'scripts/hooks/pre-push'
+        $canonicalHook = Join-Path $dir 'scripts/hooks/pre-push'
         if (Test-Path $canonicalHook) {
             Emit-Result 'PASS' 'scripts/hooks/pre-push' 'canonical hook present' $dir
         } else {
             Emit-Result 'WARN' 'scripts/hooks/pre-push' 'canonical hook missing' $dir
+        }
+    }
+
+    # Level 0: Git Scope Isolation checks (GIT-SCOPE-001, GIT-SCOPE-002)
+    if ($level -eq 0) {
+        $homeDir2 = $(if ($env:HOME) { $env:HOME } else { $env:USERPROFILE })
+        $gitconfigD2 = Join-Path $homeDir2 '.gitconfig.d'
+        $gitconfig2  = Join-Path $homeDir2 '.gitconfig'
+        if (-not (Test-Path $gitconfigD2)) {
+            if ($Json) {
+                Write-Host '{"check":"GIT-SCOPE-001","status":"WARN","message":"~/.gitconfig.d/ fehlt — Scope-Isolierung nicht konfiguriert / missing — scope isolation not configured"}'
+            }
+            Emit-Result 'WARN' '~/.gitconfig.d/' `
+                '~/.gitconfig.d/ fehlt — Scope-Isolierung nicht konfiguriert / missing — scope isolation not configured' `
+                $dir
+        } elseif (-not ((Get-Content $gitconfig2 -ErrorAction SilentlyContinue) |
+                Select-String -SimpleMatch 'gitdir:~/home-baseline-tmp/' -Quiet)) {
+            if ($Json) {
+                Write-Host '{"check":"GIT-SCOPE-002","status":"WARN","message":"includeIf für home-baseline-tmp nicht gefunden / not found for home-baseline-tmp"}'
+            }
+            Emit-Result 'WARN' '~/.gitconfig' `
+                'includeIf für home-baseline-tmp nicht gefunden / not found for home-baseline-tmp' `
+                $dir
         }
     }
 
@@ -349,7 +375,7 @@ if ($Json) {
         $ls = if ($lt -gt 0) { [int](($lp * 100) / $lt) } else { 0 }
         $filled = [int]($ls * 10 / 100)
         $bar = ('█' * $filled) + ('░' * (10 - $filled))
-        $shortName = $d -replace [regex]::Escape($env:HOME), '~'
+        $shortName = $d -replace [regex]::Escape($(if ($env:HOME) { $env:HOME } else { $env:USERPROFILE })), '~'
         Write-Host ("{0,-30} [{1}] {2,3} %  ({3}/{4} checks)" -f $shortName, $bar, $ls, $lp, $lt)
     }
 
@@ -357,7 +383,7 @@ if ($Json) {
     Write-Host ("Overall: $OverallScore %  |  Workspaces: $WorkspacesCount  |  Projects: $ProjectsCount")
 
     if (-not $DryRun) {
-        Write-Host "STATS.md updated: $env:HOME/STATS.md"
+        Write-Host "STATS.md updated: $(if ($env:HOME) { $env:HOME } else { $env:USERPROFILE })/STATS.md"
     }
 
     $fc = $Failures.Count; $wc = $Warnings.Count

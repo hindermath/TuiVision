@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "simple",
+  "packages": {
+    ".": {
+      "changelog-sections": [
+        {"type": "feat",     "section": "Features / Neue Funktionen"},
+        {"type": "fix",      "section": "Bug Fixes / Fehlerbehebungen"},
+        {"type": "docs",     "section": "Documentation / Dokumentation"},
+        {"type": "chore",    "section": "Maintenance / Wartung", "hidden": false},
+        {"type": "refactor", "section": "Refactoring", "hidden": true}
+      ]
+    }
+  }
+}
