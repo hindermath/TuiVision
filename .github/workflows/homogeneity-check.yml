@@ -28,6 +28,10 @@ jobs:
         if: runner.os == 'macOS'
         run: brew install ripgrep
 
+      - name: Install ripgrep (Windows)
+        if: runner.os == 'Windows'
+        run: choco install ripgrep -y
+
       - name: Run Agent Secret Scan (Bash)
         if: runner.os != 'Windows'
         run: bash scripts/scan-agent-secrets.sh --fail-on-high .
