@@ -1,6 +1,12 @@
-# Constitution v1.1.0
+# Constitution v1.4.0
 
 # home-baseline Constitution
+
+## Beschreibung / Description
+
+Diese Verfassung definiert die verbindlichen Prinzipien und Standards für alle home-baseline Workspaces.
+
+*This constitution defines the non-negotiable principles and standards for all home-baseline workspaces.*
 
 ## Core Principles
 
@@ -40,19 +46,23 @@ incident. Automated prevention at push time is the last reliable gate. The
 surgical subdirectory exception enables Spec-Kit tool definitions to be
 synchronized across devices without exposing any credentials.
 
-### II. Cross-Platform Parity
+### II. Cross-Platform Parity & Documentation
 
 Every critical script MUST exist in two variants:
 - Bash (`.sh`) for macOS/Linux
 - PowerShell Core 7+ (`.ps1`) for Windows
 
 Both variants MUST provide identical functionality and produce equivalent output.
-A new script is not considered complete until both variants exist, pass manual
-verification, and are committed together in the same commit.
+A new script is not considered complete until:
+1. Both variants exist and pass manual verification.
+2. A corresponding Unix man-page is provided for the Bash variant (stored in `docs/man/`).
+3. Complete bilingual comment-based help is provided for the PowerShell variant.
+4. PowerShell scripts MUST also be available as Cmdlets (Advanced Functions) using the `Verb-Noun` naming convention (e.g., `New-HBWorkspace`).
+5. Help switches (`-h`, `--help`) point to the man-page or internal help.
 
-**Rationale**: The workspace is used on macOS (Mac Mini M4 Pro, MacBook Air M2)
-and may be used on Windows. Bash-only or PowerShell-only scripts create a
-second-class experience on one platform.
+All files MUST be committed together in the same commit.
+
+**Rationale**: The workspace is used on macOS and Windows. Bash-only or PowerShell-only scripts create a second-class experience. Professional documentation ensures maintainability and ease of use across platforms.
 
 ### III. Bootstrap Automation
 
@@ -63,6 +73,15 @@ New workspaces MUST be created exclusively via the bootstrap scripts:
 Manual `git init` + `gh repo create` outside the bootstrap flow is prohibited
 for new workspaces. The bootstrap script is the single authoritative source of
 the correct workspace setup sequence.
+
+Workspace removal MUST be performed exclusively via the teardown scripts:
+- `bash ~/scripts/teardown-workspace.sh <WorkspaceName>` (macOS/Linux)
+- `pwsh ~/scripts/teardown-workspace.ps1 -WorkspaceName <Name>` (Windows)
+- or the alias: `bash ~/scripts/bootstrap-workspace.sh --teardown <WorkspaceName>`
+
+Manual `rm -rf` without teardown is prohibited because it orphans remote
+repositories, `~/README.md` table entries, `~/.gitignore` entries, and
+`~/.gitconfig` `[includeIf]` blocks.
 
 `~/README.md` MUST be updated (automatically or manually) whenever a new
 workspace is added. The workspace table anchor `<!-- workspace-table-end -->`
@@ -83,7 +102,7 @@ are excluded by the whitelist `.gitignore`):
 | Category | Tracked paths |
 |----------|--------------|
 | Infrastructure scripts | `scripts/` |
-| Documentation | `README.md`, `.gitignore`, `.gitconfig` |
+| Documentation | `README.md`, `.gitignore`, `.gitconfig`, `docs/` |
 | AI agent guidance | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md` |
 | Spec-Kit tooling | `.specify/` (config, templates, memory/constitution), `.agents/skills/`, `.github/agents/`, `.github/prompts/` |
 | Agent Spec-Kit commands | `.claude/commands/`, `.gemini/commands/` |
@@ -99,12 +118,16 @@ Rules:
 **Rationale**: Submodules create fragile cross-repo coupling. Independent repos
 give each workspace its own clean history and deployment lifecycle. Tracking
 AI agent guidance files and Spec-Kit tooling ensures consistent development
-environments across all devices (Mac Mini M4 Pro, MacBook Air M2).
+environments across all devices.
 
 ### V. Manual-First Verification
 
-There is no automated CI/CD pipeline for `home-baseline` scripts. Verification
-is manual and MUST follow the safe-mode-first rule:
+`home-baseline` uses a blended verification model: manual verification remains
+mandatory for script changes, and lightweight automated CI/CD guardrails on
+GitHub MAY complement it. GitLab release automation is also maintained in this
+repository as reusable baseline logic and MUST be validated through real
+project pipelines before it is treated as production-ready. Verification MUST
+follow the safe-mode-first rule:
 
 - Bootstrap changes: always test with `--dry-run` (Bash) / `-WhatIf` (PowerShell)
   before running for real.
@@ -116,8 +139,29 @@ is manual and MUST follow the safe-mode-first rule:
 Automated test tooling MUST NOT be added to this repository unless a formal
 decision is made and documented in this constitution (Governance section).
 
-**Rationale**: The scripts are low-churn infrastructure. The overhead of a test
-framework would exceed the benefit for the current scope.
+**Rationale**: The scripts are low-churn infrastructure. Manual dry-runs and
+real pipeline validation catch the most relevant operational risks with less
+maintenance overhead than a broad scripted test framework.
+
+### VI. Observability & Continuous Measurement
+
+Every repository — including `home-baseline` and every Level-2 workspace — MUST maintain a living statistics ledger at `docs/project-statistics.md`.
+
+Mandatory content and update rules:
+
+- **Fortschreibungsprotokoll**: chronological table (oldest entry first, newest last) recording cumulative lines, active days, and commit count at each milestone.
+- **Gesamtstatistik**: always the final top-level section; includes compact ASCII-only diagrams (artefakt mix, phase volume, speedup factors, manual-reference comparison).
+- **Update triggers**: after each completed Spec-Kit implementation phase, after each merged feature, or when explicitly requested.
+- **Reference baselines**:
+  - Manual reference: `80` lines/workday (conservative) — project-specific Thorsten-Solo baseline documented in `AGENTS.md`.
+  - TVöD workday: `7.8 h` (`7h 48m`). Month: `21.5` workdays. Vacation: 30 days until end of 2026, 31 days from 2027 onwards.
+- **Acceleration factor** = blended repository speedup — delivery density against manual reference, **not** stopwatch time.
+- **Diagram format**: compact ASCII-only; each diagram followed by a CEFR-B2 bilingual explanation (DE + EN).
+- **Consistency rule**: When statistics methodology or shared guidance changes, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` MUST be updated together in the same commit.
+
+The bootstrap scripts (`bootstrap-project.sh` / `.ps1`) MUST create an initial `docs/project-statistics.md` stub at project creation time. `docs/` MUST be whitelisted in every project `.gitignore`.
+
+**Rationale**: Blended speedup metrics are educational for developers and apprentices. They make the productivity impact of AI-assisted workflows visible and comparable across projects. A living ledger that accumulates over the project lifetime is the only reliable source of this data.
 
 ## Script & Code Conventions
 
@@ -129,10 +173,16 @@ Coding style rules that apply to all scripts in this repository:
 - **Indentation**: 2 spaces in Bash, 4 spaces in PowerShell
 - **Filenames**: kebab-case (e.g., `bootstrap-workspace.sh`)
 - **PowerShell parameters**: PascalCase (e.g., `-WorkspaceName`, `-WhatIf`)
+- **PowerShell naming**: Use the standard `Verb-Noun` pattern for functions and Cmdlets (e.g., `New-HBWorkspace`, `Set-HBSettings`).
 - **Bash variables**: lowercase_underscore (e.g., `repo_name`)
+- **Documentation**:
+  - Bash scripts MUST have a corresponding man-page in `docs/man/` (section 1).
+  - PowerShell scripts MUST include complete comment-based help (`.SYNOPSIS`, `.DESCRIPTION`, etc.).
+  - Both MUST be bilingual (DE / EN) or consistent with existing script headers.
 - **User-facing messages**: German primary (`Fehler:`, `Verzeichnis nicht gefunden`);
   English is acceptable in code comments
 - **Visual output**: box-drawing characters (╔, ║, ╚, ✓, →) for structured console blocks
+- **End-of-options sentinel**: Bash scripts that accept positional arguments MUST support `--` to terminate option parsing, allowing names that start with `-` (e.g., `teardown-workspace.sh -- -myworkspace`)
 
 ## Commit & Pull Request Standards
 
@@ -147,6 +197,7 @@ Coding style rules that apply to all scripts in this repository:
   - Manual verification commands run (with `--dry-run` / `-WhatIf` output)
   - Sample console output when user-visible output changes
   - Explicit security risk statement for any change touching hook or scanner logic
+- **Lastenheft rename on feature completion**: When a feature's implementation is fully merged, the corresponding `Lastenheft_*.md` MUST be renamed via `bash scripts/rename-lastenheft.sh <LH-file> <branch-name>` (macOS/Linux) or `pwsh scripts/rename-lastenheft.ps1 -File <LH-file> -BranchName <branch-name>` (Windows). This stamps the feature branch name onto the filename and marks the Lastenheft as archived. The rename commit MUST be included in the final tasks.md as the last step of the Polish phase.
 
 ## Governance
 
@@ -182,7 +233,7 @@ allowed path.
 per-agent operational guidance. This constitution is the authoritative policy
 layer above all agent-specific files.
 
-**Version**: 1.1.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-03-31
+**Version**: 1.4.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-04-12
 
 <!-- EN: constitution.md placeholder
 [DE-Zusammenfassung: constitution.md beschreibt die Prinzipien und Standards für alle home-baseline Workspaces.]
