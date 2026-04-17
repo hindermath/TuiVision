@@ -248,3 +248,10 @@ npm run test:docfx
 
 - The shared parent file `/Users/thorstenhindermann/RiderProjects/AGENTS.md` intentionally stores only repo-spanning baseline rules.
 - Keep repository-specific build, test, workflow, architecture, and feature guidance in this repository's own files; when both layers exist, the repository-local files are the more specific authority.
+
+---
+
+## Hinweise / Notes
+
+- Diese Datei bleibt bewusst kompakt und ergänzt die projektspezifische Dokumentation.
+- This file intentionally stays compact and complements the project-specific documentation.

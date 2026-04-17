@@ -221,3 +221,10 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 
 *   Die gemeinsamen Dateien `/Users/thorstenhindermann/RiderProjects/AGENTS.md` und `/Users/thorstenhindermann/RiderProjects/GEMINI.md` speichern die repo-uebergreifenden Basisregeln.
 *   Diese Projekt-Datei ist die spezifischere Autoritaet fuer projektspezifische Build-Befehle, Workflows, Architektur und Features.
+
+---
+
+## Hinweise / Notes
+
+- Diese Datei bleibt bewusst kompakt und ergänzt die projektspezifische Dokumentation.
+- This file intentionally stays compact and complements the project-specific documentation.
