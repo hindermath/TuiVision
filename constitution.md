@@ -1,4 +1,4 @@
-# Constitution v1.4.0
+# Constitution v1.5.0
 
 # home-baseline Constitution
 
@@ -7,6 +7,10 @@
 Diese Verfassung definiert die verbindlichen Prinzipien und Standards für alle home-baseline Workspaces.
 
 *This constitution defines the non-negotiable principles and standards for all home-baseline workspaces.*
+
+Leitspruch: `Programmierung #include<everyone>`.
+
+*Guiding motto: `Programmierung #include<everyone>`.*
 
 ## Core Principles
 
@@ -153,15 +157,64 @@ Mandatory content and update rules:
 - **Gesamtstatistik**: always the final top-level section; includes compact ASCII-only diagrams (artefakt mix, phase volume, speedup factors, manual-reference comparison).
 - **Update triggers**: after each completed Spec-Kit implementation phase, after each merged feature, or when explicitly requested.
 - **Reference baselines**:
-  - Manual reference: `80` lines/workday (conservative) — project-specific Thorsten-Solo baseline documented in `AGENTS.md`.
+  - Manual reference: `80` lines/workday (conservative) — project-specific Thorsten-Solo baseline documented consistently in `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md`.
+  - Default C#/.NET Thorsten-Solo baseline: `125` lines/workday unless a repository documents and justifies a different project-specific value. `home-baseline` itself keeps `100` lines/workday as the scripting-infrastructure Thorsten-Solo reference.
   - TVöD workday: `7.8 h` (`7h 48m`). Month: `21.5` workdays. Vacation: 30 days until end of 2026, 31 days from 2027 onwards.
 - **Acceleration factor** = blended repository speedup — delivery density against manual reference, **not** stopwatch time.
 - **Diagram format**: compact ASCII-only; each diagram followed by a CEFR-B2 bilingual explanation (DE + EN).
-- **Consistency rule**: When statistics methodology or shared guidance changes, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` MUST be updated together in the same commit.
+- **Consistency rule**: When statistics methodology or shared guidance changes, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` MUST be updated together in the same commit. The same shared rules MUST also be propagated to the relevant project templates and `.specify/memory/constitution.md`.
 
 The bootstrap scripts (`bootstrap-project.sh` / `.ps1`) MUST create an initial `docs/project-statistics.md` stub at project creation time. `docs/` MUST be whitelisted in every project `.gitignore`.
 
 **Rationale**: Blended speedup metrics are educational for developers and apprentices. They make the productivity impact of AI-assisted workflows visible and comparable across projects. A living ledger that accumulates over the project lifetime is the only reliable source of this data.
+
+### VII. Programmierung #include<everyone> — Inclusion & Accessibility By Default
+
+`Programmierung #include<everyone>` is a binding repository-wide principle, not a slogan.
+All user-facing artefacts MUST be designed and reviewed for inclusive use:
+
+- CLI output
+- Documentation and Markdown
+- HTML and generated websites
+- Graphical user interfaces
+- Generated templates and scaffolding
+
+Mandatory rules:
+- WCAG 2.2 Level AA is the default accessibility baseline wherever the criteria are applicable.
+- User-facing artefacts MUST remain usable with keyboard-only interaction, screen readers, Braille displays, and text browsers.
+- Text-first fallbacks MUST be preferred for status reporting, diagrams, and operational guidance.
+- Accessibility review is part of completion, not post-processing.
+
+**Rationale**: Inclusive delivery improves quality for everyone, reduces retrofit work, and makes the repositories usable in real assistive-technology workflows from the start.
+
+### VIII. DE-First / EN-Second Bilingual Delivery
+
+German is the canonical first language for user-facing documentation and governance in this workspace family; English follows directly after it.
+
+Mandatory rules:
+- Headings MUST follow the `DE / EN` pattern unless the heading is a proper noun or tool name.
+- Learner-facing and user-facing documentation MUST be maintained bilingually at approximately CEFR-B2 readability.
+- Large normative documents MAY use a synchronized `.EN.md` companion file when inline bilingual maintenance would become unreadable.
+- Changes that materially affect user-facing guidance MUST update both language tracks in the same change.
+
+**Rationale**: DE-first / EN-second delivery reflects the actual audience while keeping the content usable for mixed-language teams, apprentices, and external review.
+
+### IX. Four-Agent Guidance Parity & Template Synchronization
+
+Shared AI-agent guidance in this workspace family is only valid when the four maintained agent surfaces stay aligned:
+
+- `AGENTS.md` for Codex/Codex-like agents
+- `CLAUDE.md`
+- `GEMINI.md`
+- `.github/copilot-instructions.md`
+
+Mandatory rules:
+- Shared operational rules MUST NOT be updated in only one of the four files.
+- Any intentional deviation MUST be documented explicitly in the same change.
+- The corresponding project templates and `.specify/memory/constitution.md` MUST be updated in the same change whenever a shared principle changes.
+- Runtime guidance references in governance text MUST name all four maintained agent surfaces.
+
+**Rationale**: Divergent agent instructions create silent process drift. Atomic parity keeps different AI tools aligned and makes future project bootstraps inherit the same governance baseline.
 
 ## Script & Code Conventions
 
@@ -214,7 +267,8 @@ defines non-negotiable structural rules.
    - MINOR: new principle or section added / materially expanded guidance
    - PATCH: clarifications, wording fixes, non-semantic refinements
 4. Propagate any principle changes to dependent templates
-   (`.specify/templates/plan-template.md`, `spec-template.md`, `tasks-template.md`)
+   (`.specify/templates/plan-template.md`, `spec-template.md`, `tasks-template.md`,
+   relevant `scripts/templates/*`, and `.specify/memory/constitution.md`)
    and AI agent guidance files, committing all changes atomically.
 5. All PRs and AI-assisted sessions MUST verify compliance with the current
    version of this constitution before committing code or scripts.
@@ -229,11 +283,11 @@ Any expansion of the surgical subdirectory exception (Principle I) MUST include
 a security justification confirming no credentials are present in the newly
 allowed path.
 
-**Runtime guidance**: Use `AGENTS.md` / `CLAUDE.md` / `GEMINI.md` for
-per-agent operational guidance. This constitution is the authoritative policy
-layer above all agent-specific files.
+**Runtime guidance**: Use `AGENTS.md` / `CLAUDE.md` / `GEMINI.md` /
+`.github/copilot-instructions.md` for per-agent operational guidance. This
+constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.4.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-04-12
+**Version**: 1.5.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-04-20
 
 <!-- EN: constitution.md placeholder
 [DE-Zusammenfassung: constitution.md beschreibt die Prinzipien und Standards für alle home-baseline Workspaces.]
