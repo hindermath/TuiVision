@@ -237,3 +237,8 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 
 - Diese Datei bleibt bewusst kompakt und ergänzt die projektspezifische Dokumentation.
 - This file intentionally stays compact and complements the project-specific documentation.
+
+<!-- SPECKIT START -->
+For additional context about technologies to be used, project structure,
+shell commands, and other important information, read the current plan
+<!-- SPECKIT END -->

@@ -1,49 +1,23 @@
 <!--
-  SYNC IMPACT REPORT
-  ==================
-  Version change: 1.10.0 → 1.10.1
-  Bump rationale: PATCH — Clarified the interaction between the mandatory
-  Red-Green-Refactor history and commit-discipline rules so intentionally red
-  TDD commits are allowed only as tightly scoped feature-branch exceptions
-  without weakening the passing-state bar for review and merge.
-
-  Previous version: 1.9.0 → 1.10.0
-  Previous rationale: MINOR — Added repo-wide assembly-version governance for
-  numbered Spec-Kit branches via `Directory.Build.props`, and finalized the
-  mandatory 70% line-coverage gate across five assemblies
-  (`TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`,
-  `TuiVision.Compatibility`, `TuiVision.Drivers.Console`) as part of the
-  Phase-8 gate-closure work (`006-close-phase8-gate`).
-  Full project scan performed (constitution templates, core spec templates,
-  and shared agent guidance files for impact review).
-
-  Modified principles:
-    - II. Test-First Development — TDD (clarified operational interaction with
-      commit discipline)
-    - Commit Discipline (narrow TDD exception added for feature branches)
-
-  Added sections:
-    - None
-
-  Removed sections:
-    - None
-
-  Templates requiring updates:
-    - .specify/templates/plan-template.md  ✅ reviewed; no change required
-    - .specify/templates/spec-template.md  ✅ reviewed; no change required
-    - .specify/templates/tasks-template.md ✅ reviewed; no change required
-    - .specify/templates/constitution-template.md ✅ reviewed; no change required
-
-  Agent files reviewed:
-    - AGENTS.md             ✅ reviewed; no change required
-    - GEMINI.md             ✅ reviewed; no change required
-    - .github/copilot-instructions.md ✅ reviewed; no change required
-    - CLAUDE.md             ✅ reviewed; no change required
-    - .github/agents/copilot-instructions.md ✅ reviewed; no change required
-
-  Follow-up TODOs:
-    - `.specify/templates/commands/` is not present in this repository, so no
-      command-template review was possible.
+Sync Impact Report
+- Version change: 1.10.1 -> 1.11.0
+- Bump rationale:
+  - MINOR: Added workspace-baseline alignment guidance from the repository root `constitution.md` without removing repository-specific principles.
+- Modified principles:
+  - None
+- Added sections:
+  - Workspace Baseline Alignment / Observability & Continuous Measurement
+  - Workspace Baseline Alignment / Programmierung #include<everyone> — Inclusion & Accessibility By Default
+  - Workspace Baseline Alignment / Runtime Guidance References
+- Removed sections:
+  - None
+- Templates requiring updates:
+  - .specify/templates/plan-template.md: pending review
+  - .specify/templates/spec-template.md: pending review
+  - .specify/templates/tasks-template.md: pending review
+  - .specify/templates/commands/constitution.md: pending review
+- Follow-up TODOs:
+  - Review template and runtime-guidance wording for repository-specific propagation where needed.
 -->
 
 # TuiVision Constitution
@@ -413,6 +387,22 @@ API changes, implementation changes, and documentation updates that belong to
 the same change MUST be in the same commit, except for the explicit Red →
 Green → optional Refactor separation mandated by principle II.
 
+## Workspace Baseline Alignment
+
+This Spec-Kit constitution inherits the binding workspace-family governance from `constitution.md` in the repository root. Project-specific rules remain in force; where both apply, the stricter rule wins.
+
+### A. Observability & Continuous Measurement
+
+Every repository MUST maintain `docs/project-statistics.md` as a living statistics ledger. The conservative manual reference is `80` lines/workday. Because this is a C#/.NET repository, the default Thorsten-Solo baseline is `125` lines/workday unless the repository documents and justifies a different project-specific value. The TVöD workday baseline is `7.8 h` (`7h 48m`). Shared statistics guidance MUST stay consistent across `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md`.
+
+### B. Programmierung #include<everyone> — Inclusion & Accessibility By Default
+
+`Programmierung #include<everyone>` is a binding repository-wide principle. All user-facing artefacts — including CLI output, documentation and Markdown, HTML and generated websites, graphical user interfaces, and generated templates or scaffolding — MUST follow WCAG 2.2 Level AA wherever the criteria are applicable. They MUST remain usable with keyboard-only interaction, screen readers, Braille displays, and text browsers. Accessibility review is part of completion, not post-processing.
+
+### C. Runtime Guidance References
+
+Governance text that references runtime guidance MUST name all four maintained agent surfaces: `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md`.
+
 ## Governance
 
 This constitution supersedes all other practice documents in case of conflict.
@@ -437,4 +427,4 @@ Use `docs/guides/multi-mac-workflow.md` for local multi-machine workflow details
 Use `docs/project-statistics.md` for the living project-statistics ledger and
 manual-effort baseline tracking.
 
-**Version**: 1.10.1 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-28
+**Version**: 1.11.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-04-20

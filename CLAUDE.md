@@ -219,3 +219,8 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 
 - Diese Datei ergaenzt die projektspezifische Dokumentation mit agentischen Arbeitsregeln.
 - This file complements the project-specific documentation with agent-oriented working rules.
+
+<!-- SPECKIT START -->
+For additional context about technologies to be used, project structure,
+shell commands, and other important information, read the current plan
+<!-- SPECKIT END -->
