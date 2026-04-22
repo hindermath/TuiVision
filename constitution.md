@@ -1,4 +1,27 @@
-# Constitution v1.5.1
+<!--
+Sync Impact Report
+Version change: 1.5.1 -> 1.6.0
+Modified principles:
+- X. Level-2 Project Environment Addenda -> expanded with the shared Level-2 environment registry rule
+Added sections:
+- Level-2 Project Environment Registry / Level-2-Projektumgebungsregister
+Removed sections:
+- None
+Templates requiring updates:
+- ✅ .specify/templates/plan-template.md
+- ✅ .specify/templates/spec-template.md
+- ✅ .specify/templates/tasks-template.md
+- ✅ .specify/templates/commands/ (not present in this repository)
+Runtime guidance requiring updates:
+- ✅ AGENTS.md
+- ✅ CLAUDE.md
+- ✅ GEMINI.md
+- ✅ .github/copilot-instructions.md
+Follow-up TODOs:
+- None
+-->
+
+# Constitution v1.6.0
 
 # home-baseline Constitution
 
@@ -219,26 +242,49 @@ Mandatory rules:
 ### X. Level-2 Project Environment Addenda
 
 Level-2 project constitutions MUST preserve the shared policy layer and add a
-project-local environment addendum instead of replacing the constitution with a
-generic copy.
+project-local environment addendum or a clearly applicable entry in the shared
+Level-2 environment registry instead of relying on a generic copy.
 
 Mandatory rules:
 - Each Level-2 `constitution.md` MUST document the local runtime, build system,
   test framework, documentation/A11Y toolchain, statistics baseline, and
   repository-specific agent surfaces.
+- The shared Level-2 Project Environment Registry in this constitution is the
+  canonical cross-repository index for those project environments.
 - Project-specific addenda MUST enrich the shared constitution; they MUST NOT
   weaken Security-First, A11Y, bilingual, statistics, or four-agent parity
   requirements.
-- When a project-specific runtime or tooling baseline changes, the local
-  `constitution.md`, `.specify/memory/constitution.md`, and affected agent
-  guidance files MUST be reviewed together.
+- When a project-specific runtime or tooling baseline changes, this registry,
+  the local `constitution.md`, `.specify/memory/constitution.md`, and affected
+  agent guidance files MUST be reviewed together.
 - Level-0 and Level-1 constitutions define shared policy. Level-2 constitutions
-  define the same policy plus the concrete project environment.
+  define the same policy plus the concrete project environment. A Level-2
+  repository MUST treat its registry row as binding local context for Spec-Kit
+  plans, generated tasks, and agent runtime decisions.
 
 **Rationale**: A generic constitution is not sufficient for real project work.
 Agentic tools need the binding shared rules and the local build/test/runtime
 context in the same policy surface so generated plans do not drift away from
 the actual project environment.
+
+## Level-2 Project Environment Registry / Level-2-Projektumgebungsregister
+
+This registry consolidates the constitution-relevant Level-2 project facts
+extracted from the project-local `.specify/memory/constitution.md` files.
+Spec-Kit planning and agent-generated work MUST use the matching row as binding
+project context.
+
+| Level-2 Project | Runtime / Language | Build & Test Baseline | Docs / A11Y Baseline | Statistics Baseline | Agent Surfaces |
+|---|---|---|---|---|---|
+| `C64Projects/cc65` | C/C89-oriented host tools, 6502 assembler/runtime libraries, C64 and 8-bit target support | GNU `make`; `make`, `make test`, `make check`, `make checkstyle`, `make -C targettest SYS=c64` | `doc/`, `samples/`, generated `html/`; DE-first/EN-second additions where local scope allows; no color-only meaning | Manual conservative `80` lines/workday; no C# default unless a justified Thorsten-Solo baseline is documented | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, Spec-Kit command/prompt surfaces |
+| `DataGripProjects/InventarDb` | Database/schema artefacts with C#/.NET Framework integration context where documented | Repository-specific DataGrip/database validation plus homogeneity checks after agent-guidance changes | SQL, documentation, generated templates, and reports remain text-first, bilingual where user-facing, and WCAG 2.2 AA-oriented where applicable | Manual conservative `80` lines/workday; C#/.NET integration work uses `125` lines/workday unless justified otherwise | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, Spec-Kit surfaces |
+| `RiderProjects/InventarWorkerService` | .NET 10 / C# 14 multi-project inventory solution: worker/API, harvester, Terminal UI, shared libraries, SQLite/MongoDB/PostgreSQL | `dotnet restore/build/test` on `InventarWorkerService.sln`; MSTest unit/integration tests; Playwright setup when required | DocFX output and learner-facing docs require text-oriented A11Y review; generated `api/` and `_site/` remain build artefacts | Manual conservative `80`; repo-specific Thorsten-Solo `100` lines/workday unless all agent files change it | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, Spec-Kit surfaces |
+| `RiderProjects/TinyCalc` | .NET 10 / C# spreadsheet and Terminal.Gui TUI port; Pascal reference artefacts for behaviour parity | `dotnet restore/build/test MicroCalc.sln`; xUnit suites; non-interactive TUI smoke mode | DocFX changes require text-oriented A11Y smoke review; documentation and didactic comments stay DE-first/EN-second at CEFR B2 | Manual conservative `80`; Thorsten-Solo `125` lines/workday for this Pascal-derived C#/.NET port | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, Spec-Kit surfaces |
+| `RiderProjects/TinyPl0` | .NET 10 / C# 14 compiler, VM, CLI, and Terminal.Gui IDE for PL/0 | `dotnet restore/build/test`; coverage collection; `scripts/update-golden-code.sh` for intentional compiler-output changes | Learner-facing compiler docs, examples, generated API docs, and IDE flows follow DE-first/EN-second and WCAG 2.2 AA-oriented review | Manual conservative `80`; C#/.NET Thorsten-Solo `125` unless all agent files justify a deviation | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `.codex` prompt/rule surfaces, Spec-Kit surfaces; `.codex` credentials/logs/history/SQLite state are forbidden |
+| `RiderProjects/TuiVision` | .NET 10 / C# terminal UI framework and Turbo Vision port: framework libraries, managed console driver, compatibility, controls, serialization, examples | `dotnet restore/build/test`; MSTest suites; Coverlet coverage gates for core assemblies; `dotnet format` where configured | DocFX regeneration requires Playwright + axe and lynx-oriented A11Y smoke review for generated documentation | Manual conservative `80`; C#/.NET Thorsten-Solo `125` unless all agent files justify a deviation | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `.github/agents/copilot-instructions.md`, Spec-Kit surfaces |
+| `RiderProjects/WebApplication1` | .NET 10 / C# single-project ASP.NET Core MVC application | `dotnet build`; `dotnet build -c Release/Debug`; `dotnet run --project WebApplication1/WebApplication1.csproj` | HTML views, documentation, templates, and UI output follow WCAG 2.2 AA where applicable and stay keyboard/AT usable | Manual conservative `80`; C#/.NET Thorsten-Solo `125` unless all agent files justify a deviation | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, Spec-Kit surfaces |
+| `RiderProjects/inventarworkerservice2` | .NET 9.0 via `global.json`; cross-platform Worker Service; Windows/Systemd hosting; hardware inventory; PowerShell SDK; YAML/JSON status output | `dotnet build InventarWorkerService2.sln`; `dotnet run --project InventarWorkerService2/InventarWorkerService2.csproj`; CI includes Gitleaks and agent-secret-scan | CLI/service status output, generated templates, docs, JSON/YAML reports, and logs remain text-first and accessibility-aware | Manual conservative `80`; C#/.NET Thorsten-Solo `125` unless all agent files justify a deviation | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `.opencode`, Spec-Kit surfaces; credentials/history/logs/SQLite state are forbidden |
+| `RiderProjects/sysinfotool` | .NET 10 / C# 14 cross-platform system-information CLI; Spectre.Console; Windows/macOS/Linux/FreeBSD services; DE/EN localization | `dotnet restore/build/test`; coverage collection; `docfx docfx.json`; GitLab CI stages `build/test/docs/scan` | Generated DocFX HTML targets WCAG 2.2 AA; DocFX regeneration requires Playwright + axe and lynx-oriented review where applicable | Manual conservative `80`; repo-specific Thorsten-Solo `100` lines/workday for this .NET CLI codebase | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `.opencode`, Spec-Kit surfaces; credentials/history/logs/SQLite state are forbidden |
 
 ## Script & Code Conventions
 
@@ -311,7 +357,7 @@ allowed path.
 `.github/copilot-instructions.md` for per-agent operational guidance. This
 constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.5.1 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-04-22
+**Version**: 1.6.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-04-22
 
 <!-- EN: constitution.md placeholder
 [DE-Zusammenfassung: constitution.md beschreibt die Prinzipien und Standards für alle home-baseline Workspaces.]
