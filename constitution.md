@@ -1,4 +1,4 @@
-# Constitution v1.5.0
+# Constitution v1.5.1
 
 # home-baseline Constitution
 
@@ -216,6 +216,30 @@ Mandatory rules:
 
 **Rationale**: Divergent agent instructions create silent process drift. Atomic parity keeps different AI tools aligned and makes future project bootstraps inherit the same governance baseline.
 
+### X. Level-2 Project Environment Addenda
+
+Level-2 project constitutions MUST preserve the shared policy layer and add a
+project-local environment addendum instead of replacing the constitution with a
+generic copy.
+
+Mandatory rules:
+- Each Level-2 `constitution.md` MUST document the local runtime, build system,
+  test framework, documentation/A11Y toolchain, statistics baseline, and
+  repository-specific agent surfaces.
+- Project-specific addenda MUST enrich the shared constitution; they MUST NOT
+  weaken Security-First, A11Y, bilingual, statistics, or four-agent parity
+  requirements.
+- When a project-specific runtime or tooling baseline changes, the local
+  `constitution.md`, `.specify/memory/constitution.md`, and affected agent
+  guidance files MUST be reviewed together.
+- Level-0 and Level-1 constitutions define shared policy. Level-2 constitutions
+  define the same policy plus the concrete project environment.
+
+**Rationale**: A generic constitution is not sufficient for real project work.
+Agentic tools need the binding shared rules and the local build/test/runtime
+context in the same policy surface so generated plans do not drift away from
+the actual project environment.
+
 ## Script & Code Conventions
 
 Coding style rules that apply to all scripts in this repository:
@@ -287,8 +311,17 @@ allowed path.
 `.github/copilot-instructions.md` for per-agent operational guidance. This
 constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.5.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-04-20
+**Version**: 1.5.1 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-04-22
 
 <!-- EN: constitution.md placeholder
 [DE-Zusammenfassung: constitution.md beschreibt die Prinzipien und Standards für alle home-baseline Workspaces.]
 -->
+
+## Level-2 Project Environment Addendum / Level-2-Projektumgebung
+
+- Projekt / Project: TuiVision .NET terminal UI framework and Turbo Vision port.
+- Laufzeit und Sprache / Runtime and language: .NET 10 / C#, framework libraries under src/, managed console driver, compatibility layers, controls, serialization, and examples.
+- Build und Tests / Build and tests: dotnet restore/build/test; MSTest suites; coverlet coverage gates for core assemblies; dotnet format where configured.
+- Doku und A11Y / Docs and A11Y: DocFX regeneration requires Playwright + axe and lynx-oriented A11Y smoke review for generated documentation.
+- Statistik / Statistics: manual conservative baseline 80 lines/workday; C#/.NET Thorsten-Solo baseline 125 lines/workday unless all agent files document a justified deviation.
+- Agentenflaechen / Agent surfaces: AGENTS.md, CLAUDE.md, GEMINI.md, .github/copilot-instructions.md, .github/agents/copilot-instructions.md, and Spec-Kit surfaces stay synchronized for shared rules.
