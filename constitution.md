@@ -1,27 +1,27 @@
 <!--
 Sync Impact Report
-Version change: 1.5.1 -> 1.6.0
+Version change: 1.8.0 -> 1.9.0
 Modified principles:
-- X. Level-2 Project Environment Addenda -> expanded with the shared Level-2 environment registry rule
+- None (purely additive)
 Added sections:
-- Level-2 Project Environment Registry / Level-2-Projektumgebungsregister
+- XIII. Secure Software Architecture (ISO 27001/27002 A.8.27)
 Removed sections:
 - None
 Templates requiring updates:
 - ✅ .specify/templates/plan-template.md
 - ✅ .specify/templates/spec-template.md
 - ✅ .specify/templates/tasks-template.md
-- ✅ .specify/templates/commands/ (not present in this repository)
 Runtime guidance requiring updates:
 - ✅ AGENTS.md
 - ✅ CLAUDE.md
 - ✅ GEMINI.md
 - ✅ .github/copilot-instructions.md
+- ✅ .specify/memory/constitution.md (mirror)
 Follow-up TODOs:
 - None
 -->
 
-# Constitution v1.6.0
+# Constitution v1.10.0
 
 # home-baseline Constitution
 
@@ -267,6 +267,219 @@ Agentic tools need the binding shared rules and the local build/test/runtime
 context in the same policy surface so generated plans do not drift away from
 the actual project environment.
 
+### XI. Memory-Safe Languages (MSL) Preference for Level-2 Projects
+
+Level-2 project repositories SHOULD select a memory-safe language (MSL) as
+their primary implementation runtime whenever the target platform allows it.
+This is a recommendation, not a hard block: legacy, embedded, and retro-
+hardware targets that cannot be built with an MSL toolchain remain explicitly
+permitted when their Level-2 `constitution.md` documents a short justification.
+
+Mandatory rules:
+- The `Runtime / Language` column of every Level-2 registry row is the
+  authoritative primary-language declaration for that project.
+- When the declared primary language is **not** on the MSL allow-list below,
+  the Level-2 `constitution.md` MUST include a short written justification
+  (target hardware, legacy C API, retro platform, interoperability
+  requirement, safety-certified non-MSL toolchain, etc.). The justification
+  MUST name the constraint, not merely restate the fact.
+- The Spec-Kit `speckit.constitution` skill and `speckit.specify` SHOULD emit
+  a non-blocking advisory warning when a repository's primary implementation
+  language is not an MSL. The warning MUST NOT prevent constitution creation,
+  amendment, or repository bootstrap.
+- Adding a new non-MSL Level-2 project is allowed with justification. Removing
+  the MSL preference itself requires a MAJOR constitution amendment.
+
+**MSL allow-list** (baseline: NSA "Software Memory Safety", Nov 2022; CISA
+"The Case for Memory Safe Roadmaps", Dec 2023; extended with obvious
+CLR/JVM/BEAM and functional peers of the NSA/CISA-listed languages):
+
+| Family | Memory-safe languages |
+|---|---|
+| Systems / compiled | Rust, Swift |
+| .NET / CLR | C#, F#, VB.NET |
+| JVM | Java, Kotlin, Scala, Clojure, Groovy |
+| Google-originated | Go, Dart |
+| Dynamic / scripting | Python, Ruby, JavaScript, TypeScript, PHP (Zend ≥ 7), Lua |
+| Functional | Haskell, OCaml, Elm, PureScript |
+| BEAM (actor VM) | Erlang, Elixir, Gleam |
+| Safety-critical / formally verified | Ada, SPARK |
+
+**Explicitly NOT memory-safe** (primary use requires justification):
+C, C++, classic Objective-C, Assembly (6502, ARM, x86, RISC-V, Z80, …),
+the `cc65` C89 toolchain, Zig (pre-1.0, only partial runtime checks), Nim
+(manual-memory mode), D without the default GC.
+
+**Current registry status**:
+- All `RiderProjects/*` entries (C# / .NET 9–10) — MSL ✓
+- `DataGripProjects/InventarDb` (C# / .NET integration context) — MSL ✓
+- `C64Projects/cc65` (C / 6502 assembler targeting Commodore 64) —
+  **not MSL**; justification: the target platform is 8-bit retro hardware
+  with no MSL toolchain available, and the repository's purpose is parity
+  with the historical cc65 reference. Justification to be documented inline
+  in its Level-2 `constitution.md`.
+
+**Rationale**: Since 2022/2023 NSA and CISA have identified the transition to
+memory-safe languages as the single highest-leverage mitigation against the
+most common CVE classes (buffer overflows, use-after-free, double-free, type
+confusion, out-of-bounds reads). Encoding the preference at workspace level
+keeps new Level-2 projects actively choosing memory safety instead of drifting
+into unsafe defaults, while preserving deliberate room for legacy, embedded,
+and hardware-bound repositories.
+
+### XII. Secure Code Generation (ISO 27001/27002 A.8.28)
+
+AI-generated code MUST follow the established secure-coding best practices of
+the target language and framework. LLMs do not reliably produce secure code by
+default; explicit enforcement at the governance level is required.
+
+Mandatory rules:
+- Generated code MUST avoid known vulnerability classes from the OWASP Top 10
+  and the language-specific CWE lists relevant to the project runtime.
+- Language-specific secure-coding standards MUST be applied:
+  - **C / C89 (cc65)**: bounds checking on all buffer operations, no `gets()`,
+    no unchecked `sprintf()`/`strcpy()`, integer overflow guards, CERT C Coding
+    Standard where applicable.
+  - **C# / .NET**: parameterised queries (no string-concatenated SQL),
+    output encoding against XSS, anti-forgery tokens for forms, secure
+    deserialisation defaults, `SecureString` or modern alternatives for
+    in-memory secrets, Microsoft Secure Coding Guidelines.
+  - **SQL**: parameterised statements only, least-privilege access patterns,
+    no dynamic SQL from untrusted input.
+  - **Bash**: quoted variable expansions (`"$var"`), no `eval` on untrusted
+    input, `--` end-of-options sentinel for external commands, CERT Shell
+    Scripting guidelines.
+  - **PowerShell**: `Set-StrictMode -Version Latest`, validated parameters,
+    no `Invoke-Expression` on untrusted input, PowerShell security best
+    practices.
+- Cryptographic choices MUST use current, recommended algorithms and
+  key lengths (e.g., AES-256, RSA >= 3072 bit, SHA-256+, Ed25519).
+  Deprecated algorithms (MD5, SHA-1 for signatures, DES, RC4) MUST NOT be
+  used unless interfacing with legacy systems — and then only with an
+  explicit risk acknowledgement in the code comment and PR.
+- Error handling MUST NOT expose internal state, stack traces, or connection
+  strings to end users.
+- Dependencies added by AI-generated code MUST be from actively maintained
+  sources with no known critical CVEs at the time of addition.
+- Code reviews (human or automated) MUST include a security perspective
+  for any change that touches input handling, authentication, authorisation,
+  cryptography, or file/network I/O.
+
+**Rationale**: ISO 27002:2022 control A.8.28 (Secure coding) requires that
+secure coding principles are applied to software development. LLMs routinely
+generate code with buffer overflows, injection vulnerabilities, insecure
+defaults, and deprecated cryptographic choices. Making secure coding an
+explicit constitutional requirement ensures that AI-assisted development
+produces code that is defensible under increasing cyber threat levels and
+compatible with ISO 27001/27002 certification requirements.
+
+Mandatory security documentation (Principle XII extensions):
+- Every Level-2 project MUST maintain a **Security Checklist**
+  (`security-checklist-template.md`) for code reviews touching security-relevant
+  code. The checklist MUST cover the general section and all language-specific
+  sections applicable to the project.
+- Every Level-2 project MUST maintain a **Dependency Audit**
+  (`dependency-audit-template.md`) that is updated before each release and at
+  least monthly. The audit MUST cover CVE status, license compliance, registry
+  verification, lock-file status, and supply-chain risks.
+- Every Level-2 project SHOULD maintain **Security Quality Scenarios**
+  (`security-quality-scenarios-template.md`) following iSAQB CPSA-F quality
+  attribute scenario methodology to make security requirements testable and
+  measurable.
+- Templates for these documents are located in `.specify/templates/` and
+  project-specific instances are maintained in `docs/security/`.
+
+### XIII. Secure Software Architecture (ISO 27001/27002 A.8.27)
+
+AI-generated and human-written software architecture MUST follow established
+secure-architecture principles. Secure code (Principle XII) without a secure
+architecture is insufficient — both levels must work together to achieve
+resilient systems. This principle aligns with ISO 27002:2022 control A.8.27
+(Secure system architecture and engineering principles) and with the
+iSAQB CPSA curriculum's treatment of security as a first-class quality
+attribute.
+
+Mandatory architectural principles:
+- **Trust boundaries**: Every system MUST define explicit trust boundaries.
+  All input crossing a trust boundary (user input, external API responses,
+  file content, environment variables from untrusted sources) MUST be
+  validated and sanitised before processing. Internal components behind the
+  same trust boundary MAY trust each other.
+- **Defense in depth**: Security MUST NOT depend on a single control. At least
+  two independent layers MUST protect critical assets (e.g., input validation
+  at the API gateway AND parameterised queries at the data-access layer).
+- **Principle of least privilege**: Every component, service, user, and
+  process MUST operate with the minimum permissions required for its function.
+  Database connections MUST use role-specific accounts with restricted
+  grants, not administrative credentials. File-system access MUST be scoped
+  to required directories.
+- **Fail-safe defaults**: Access MUST be denied by default and granted
+  explicitly. Error paths MUST fall back to a secure state (deny access,
+  close connection, return generic error) rather than an open or permissive
+  state.
+- **Attack surface reduction**: Unused endpoints, services, ports, and
+  features MUST be disabled or removed. Public APIs MUST expose only the
+  minimum required interface. Debug endpoints, verbose error output, and
+  diagnostic tools MUST NOT be accessible in production configurations.
+- **Separation of concerns**: Authentication, authorisation, logging, and
+  input validation MUST be implemented as cross-cutting architectural
+  concerns (middleware, filters, interceptors, decorators), not scattered
+  ad-hoc across business logic. Security-relevant decisions MUST be
+  centralised, not duplicated.
+- **Secure configuration management**: Secrets (connection strings, API keys,
+  tokens) MUST be stored in platform-appropriate secret stores (e.g., Azure
+  Key Vault, macOS Keychain, environment-variable injection from CI/CD
+  secrets), never in source code, configuration files tracked in Git, or
+  hard-coded constants.
+- **Dependency and supply-chain security**: All third-party dependencies MUST
+  be sourced from verified package registries. Lock files (`packages.lock.json`,
+  `package-lock.json`, `Cargo.lock`) SHOULD be committed. Known-vulnerable
+  dependencies MUST be updated or replaced before release.
+
+Language-specific architectural guidance:
+- **C# / .NET**: Use ASP.NET Core middleware pipelines for authentication,
+  authorisation, CORS, and anti-forgery. Prefer dependency injection for
+  all security-relevant services. Use `IDataProtectionProvider` for
+  encryption at rest. Configure HTTPS-only transport via `UseHttpsRedirection`.
+- **C / C89 (cc65)**: Isolate external input handling in dedicated modules
+  with bounds-checked buffer APIs. Minimise global mutable state. Use
+  `const` annotations for read-only data.
+- **SQL**: Enforce least-privilege at the schema level (separate read/write
+  roles). Use stored procedures or parameterised views as API boundaries.
+  Row-level security where the DBMS supports it.
+- **Bash / PowerShell**: Treat all positional arguments and environment
+  variables as untrusted at script entry. Validate and sanitise before
+  passing to subprocesses. Use `--` sentinel to prevent option injection.
+
+**Rationale**: ISO 27002:2022 control A.8.27 requires that organisations
+establish, document, maintain, and apply secure architecture and engineering
+principles to any information system development. The iSAQB CPSA Foundation
+curriculum identifies security (confidentiality, integrity, availability) as
+a mandatory quality attribute that must be addressed at the architecture
+level, not just at the code level. Principles XII and XIII together form a
+complete secure-development approach: XII ensures safe tactical code patterns,
+XIII ensures the strategic system structure is defensible. In an environment
+of increasing cyber threats, neither layer alone provides sufficient
+resilience.
+
+Mandatory security documentation (Principle XIII extensions):
+- Every Level-2 project MUST maintain a **Threat Model**
+  (`threat-model-template.md`) using the STRIDE methodology. The model MUST
+  identify trust boundaries, assess risks per STRIDE category, document
+  mitigations, and track residual risks.
+- Security-relevant architectural decisions MUST be recorded as **Security
+  Architecture Decision Records (S-ADR)** (`adr-template.md`) with context,
+  decision, rationale, alternatives considered, consequences, and a
+  compliance evidence table mapping to Constitution principles.
+- Every Level-2 project MUST maintain an **arc42 Section 8 Security
+  Cross-Cutting Concepts** document (`arc42-security-template.md`) covering
+  authentication strategy, authorisation model, encryption (in-transit and
+  at-rest), input validation, error handling, logging/audit trail, dependency
+  management, and deployment security.
+- Templates for these documents are located in `.specify/templates/` and
+  project-specific instances are maintained in `docs/security/`.
+- S-ADRs are stored as individual files in `docs/security/adr/`.
+
 ## Level-2 Project Environment Registry / Level-2-Projektumgebungsregister
 
 This registry consolidates the constitution-relevant Level-2 project facts
@@ -357,7 +570,7 @@ allowed path.
 `.github/copilot-instructions.md` for per-agent operational guidance. This
 constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.6.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-04-22
+**Version**: 1.10.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-04-24
 
 <!-- EN: constitution.md placeholder
 [DE-Zusammenfassung: constitution.md beschreibt die Prinzipien und Standards für alle home-baseline Workspaces.]
