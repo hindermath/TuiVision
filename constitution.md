@@ -1,10 +1,14 @@
 <!--
 Sync Impact Report
-Version change: 1.8.0 -> 1.9.0
+Version change: 1.10.0 -> 1.11.0
 Modified principles:
 - None (purely additive)
 Added sections:
-- XIII. Secure Software Architecture (ISO 27001/27002 A.8.27)
+- XIV. Secure Development Standards & Applicability Matrix
+- XV. Secure SDLC & Verification Standards
+- XVI. Supply-Chain Transparency & Build Integrity
+- XVII. Threat Modeling & Attack Pattern Coverage
+- XVIII. Zero Trust Applicability & Security Program Maturity
 Removed sections:
 - None
 Templates requiring updates:
@@ -21,7 +25,7 @@ Follow-up TODOs:
 - None
 -->
 
-# Constitution v1.10.0
+# Constitution v1.11.0
 
 # home-baseline Constitution
 
@@ -480,6 +484,154 @@ Mandatory security documentation (Principle XIII extensions):
   project-specific instances are maintained in `docs/security/`.
 - S-ADRs are stored as individual files in `docs/security/adr/`.
 
+### XIV. Secure Development Standards & Applicability Matrix
+
+The following standards matrix defines which secure-development and
+software-architecture standards are mandatory, recommended, or dependent on
+the project type. Every Level-2 feature, plan, task list, review, and release
+MUST use this matrix to determine which standards apply.
+
+| Standard / guide | Priority | Applies when | Minimum expectation |
+|---|---|---|---|
+| NIST SSDF (SP 800-218) | MUST | All Level-2 projects | Secure SDLC work covers prepare, protect, produce, and respond practices |
+| CWE Top 25 | MUST | All Level-2 projects | Relevant weaknesses are checked during design, implementation, review, and remediation |
+| OWASP ASVS | MUST | Web, API, HTTP, or authentication-bearing services | Select and document an ASVS level and verification scope |
+| SBOM | MUST | Release-capable or distributable artefacts | Generate machine-readable component inventory per release |
+| VEX | MUST | Known vulnerabilities in shipped or evaluated components | Record whether the project is affected, not affected, mitigated, or under investigation |
+| SLSA | SHOULD | CI/CD-built or published artefacts | Target build provenance and integrity controls; at least L1 where feasible |
+| OWASP SAMM | SHOULD | Long-lived Level-1 and Level-2 workspaces/projects | Periodic self-assessment with prioritized improvement actions |
+| CAPEC | SHOULD | Threat modeling of material attack paths | Reference relevant attack patterns for high-risk flows and abuse cases |
+| NIST Zero Trust (SP 800-207) | Project-type-dependent | Distributed, service-based, cloud, remote-managed, or multi-device systems | Explicit applicability decision with controls or justified N/A |
+| OWASP Cheat Sheet Series / Proactive Controls | SHOULD | All developer-facing projects | Use as day-to-day implementation guidance below the constitution |
+| OpenSSF Scorecard | Project-type-dependent | Public OSS repositories or high-impact external dependencies | Review repository/dependency security posture before adoption or release |
+
+Mandatory rules:
+- Every Level-2 feature specification, plan, task list, PR, and release note
+  MUST identify the applicable entries from this matrix and mark all other
+  ambiguous entries as `N/A` with a short justification. Silent omission is
+  not allowed.
+- `NIST SSDF` and `CWE Top 25` are never `N/A` for Level-2 work.
+- Where a standard applies, the implementation evidence MUST be reflected in
+  the relevant artefacts: `spec.md`, `plan.md`, `tasks.md`, `docs/security/`,
+  S-ADRs, release assets, or CI/CD configuration as appropriate.
+
+**Rationale**: Secure-development standards are often partially remembered and
+selectively applied. A binding applicability matrix keeps teams, agents, and
+future templates aligned on what is always required, what is recommended, and
+what depends on project shape rather than personal preference.
+
+### XV. Secure SDLC & Verification Standards
+
+Level-2 projects MUST integrate modern secure-development and verification
+standards into the full software lifecycle, not only into final code review.
+
+Mandatory rules:
+- All Level-2 projects MUST align their secure-development lifecycle with
+  `NIST SP 800-218` (Secure Software Development Framework, SSDF). Security
+  work MUST cover preparation, source/build protection, secure production of
+  software, and vulnerability response/improvement.
+- All Level-2 projects MUST use the current `CWE Top 25` as a root-cause and
+  prioritization lens for architecture, implementation, review checklists, and
+  remediation planning. When a relevant Top-25 weakness applies, the chosen
+  mitigations SHOULD be named in the checklist, threat model, ADR, or PR.
+- Web, API, HTTP, and authentication-bearing services MUST select an `OWASP
+  ASVS` verification level:
+  - `ASVS Level 1` for simple or internal web applications with limited risk.
+  - `ASVS Level 2` for authenticated, multi-user, privileged, internet-facing,
+    or data-bearing services.
+  - `ASVS Level 3` only when the project has explicit high-assurance,
+    high-impact, or regulatory security requirements.
+- Web/API projects MUST record the selected ASVS level and verification scope
+  in `docs/security/` (for example as an ASVS verification matrix or
+  equivalent repository-local format).
+- `OWASP Cheat Sheet Series` and `OWASP Proactive Controls` SHOULD be used as
+  day-to-day implementation guidance wherever language/framework standards do
+  not already provide stricter or more specific rules.
+
+**Rationale**: SSDF provides the process frame, CWE Top 25 provides defect
+prioritization, ASVS provides application verification depth, and OWASP cheat
+sheets provide tactical implementation help. Together they reduce the gap
+between abstract policy and day-to-day engineering decisions.
+
+### XVI. Supply-Chain Transparency & Build Integrity
+
+Secure development MUST include transparency about what is shipped and how it
+was produced.
+
+Mandatory rules:
+- Every release-capable or distributable Level-2 project MUST generate a
+  machine-readable `SBOM` for each released artefact set. The SBOM MAY be
+  stored as a release asset and/or mirrored in `docs/security/`.
+- When a released or evaluated component has a known vulnerability that is
+  relevant to consumers or reviewers, the project MUST publish or record a
+  `VEX`-style status statement indicating whether the product is affected,
+  not affected, mitigated, or still under investigation.
+- Projects with CI/CD-built or published artefacts SHOULD target `SLSA`
+  controls for build integrity and provenance. At minimum, scripted/automated
+  builds and provenance evidence SHOULD exist where tooling makes this
+  practical; publicly consumed artefacts SHOULD aim for `SLSA L2` or better
+  over time.
+- Public OSS repositories and the adoption of high-impact external
+  dependencies SHOULD consider `OpenSSF Scorecard` findings (or an equivalent
+  source of repository security posture evidence) before release or adoption.
+- Dependency, SBOM, VEX, provenance, and Scorecard evidence MUST feed into the
+  repository's dependency audit and release review process.
+
+**Rationale**: A project can follow secure coding rules and still ship opaque
+or tampered artefacts. SBOM, VEX, SLSA, and Scorecard address transparency,
+integrity, and supplier trustworthiness across the software supply chain.
+
+### XVII. Threat Modeling & Attack Pattern Coverage
+
+Threat modeling MUST describe both what the system values and how it can be
+attacked.
+
+Mandatory rules:
+- Every Level-2 threat model MUST use `STRIDE` as the base categorization
+  scheme, as already required by Principle XIII.
+- Threat models SHOULD reference relevant `CAPEC` attack patterns for the
+  highest-risk trust boundaries, abuse cases, or externally reachable flows.
+  The goal is not exhaustive mapping, but explicit coverage of realistic
+  attacker techniques.
+- Threat models MUST be updated when authentication, authorization,
+  privilege boundaries, deployment topology, externally reachable endpoints,
+  sensitive data flows, or third-party integrations materially change.
+- Security-relevant mitigations and residual risks identified through STRIDE
+  or CAPEC analysis SHOULD be reflected in S-ADRs, checklists, and tasks.
+
+**Rationale**: STRIDE is strong for systematic coverage of threat categories;
+CAPEC complements it by adding attacker behavior and attack-pattern language.
+Using both helps avoid sterile threat models that classify risks but fail to
+anticipate realistic exploitation paths.
+
+### XVIII. Zero Trust Applicability & Security Program Maturity
+
+Secure architecture is not static; it must account for modern distributed
+access patterns and continuously improve over time.
+
+Mandatory rules:
+- Distributed, service-based, cloud, remote-managed, multi-device, or
+  identity-federated systems MUST explicitly evaluate the applicability of
+  `NIST SP 800-207` (Zero Trust Architecture). The architecture documentation
+  MUST record either the relevant zero-trust controls or a justified `N/A`
+  decision.
+- Where zero-trust principles apply, systems MUST NOT rely on implicit trust
+  based solely on network location. User, workload, and device access SHOULD
+  be authenticated and authorized before access to protected resources, and
+  policy decisions SHOULD be observable in logging or audit evidence.
+- Long-lived Level-1 workspaces and Level-2 projects SHOULD perform periodic
+  `OWASP SAMM` self-assessments and maintain a short, prioritized improvement
+  backlog or assessment note in `docs/security/` or equivalent governance
+  documentation.
+- Findings from incidents, audits, dependency reviews, and SAMM assessments
+  SHOULD feed back into templates, checklists, security docs, and AI-agent
+  guidance files so improvements become structural rather than one-off fixes.
+
+**Rationale**: Zero Trust addresses the realities of remote access, services,
+and cloud deployment; SAMM addresses the maturity of the development program
+itself. Together they keep security architecture and security process moving
+forward instead of freezing at a one-time baseline.
+
 ## Level-2 Project Environment Registry / Level-2-Projektumgebungsregister
 
 This registry consolidates the constitution-relevant Level-2 project facts
@@ -570,7 +722,7 @@ allowed path.
 `.github/copilot-instructions.md` for per-agent operational guidance. This
 constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.10.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-04-24
+**Version**: 1.11.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-04-24
 
 <!-- EN: constitution.md placeholder
 [DE-Zusammenfassung: constitution.md beschreibt die Prinzipien und Standards für alle home-baseline Workspaces.]

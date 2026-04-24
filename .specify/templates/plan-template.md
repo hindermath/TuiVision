@@ -33,23 +33,46 @@
 
 [Gates determined based on constitution file]
 
-- If the feature changes local workflow or agent tooling, document the required
-  baseline for `gh`, `codex`, `claude`, `copilot`, `gemini`, and GitHub
-  Spec-Kit on both Macs, including installation, version checks, and basic
-  usage. If optional tooling such as `glab`, `opencode`, or `junie` is in
-  scope, document it explicitly; optional AI agents still require Spec-Kit
-  when used locally.
-- If the feature affects runtime behavior, validation, or delivery workflow,
-  state whether Linux and Windows/WSL compatibility checks are required in
-  addition to the primary Multi-Mac workflow and whether they should be covered
-  by GitHub Actions or another automated path.
-- If the feature touches example-porting scope, state explicitly whether it
-  advances the 25 mandatory original examples from
-  `tv203s/contrib/tvision/examples` or only post-acceptance follow-on waves
-  from `TVDEMOS/` / `TVFM/`. Follow-on waves MUST NOT displace mandatory scope.
-- Statistical-documentation impact identified; schedule an update to
-  `docs/project-statistics.md` when the feature phase or agent-delivered change
-  lands.
+- **Level-2 environment**: If this plan targets a listed Level-2 project, it
+  MUST cite the matching row from the Level-2 Project Environment Registry in
+  `constitution.md` and use its runtime, build/test, docs/A11Y, statistics, and
+  agent-surface baselines.
+- **Memory-safe languages (MSL)**: State the primary implementation language
+  and confirm it is on the MSL allow-list in `constitution.md`, Principle XI.
+  If the primary language is not an MSL (e.g. C, C++, Assembly, `cc65`), cite
+  the justification recorded in the Level-2 `constitution.md`.
+- **Secure code generation**: Confirm that AI-generated code will follow the
+  language-specific secure-coding rules in `constitution.md`, Principle XII
+  (OWASP Top 10 avoidance, parameterised queries, output encoding, quoted
+  variables, current cryptographic algorithms, no internal state exposure).
+- **Secure software architecture**: Confirm the architecture follows the
+  secure-architecture principles in `constitution.md`, Principle XIII (trust
+  boundaries, defense in depth, least privilege, fail-safe defaults, attack
+  surface reduction, separation of concerns, secure configuration, supply-chain
+  security). State how trust boundaries and layered security apply.
+- **Security documentation**: Identify which mandatory security documents apply
+  (threat model, S-ADRs, arc42 Section 8 security concepts, security checklist,
+  dependency audit, security quality scenarios). State whether `docs/security/`
+  needs new or updated documents. Templates: `.specify/templates/`.
+- **Security standards applicability**: Determine which standards from
+  `constitution.md`, Principles XIV-XVIII apply. `NIST SSDF` and `CWE Top 25`
+  always apply to Level-2; add `OWASP ASVS`, `SBOM`, `VEX`, `SLSA`, `CAPEC`,
+  `NIST Zero Trust`, `OWASP SAMM`, `OWASP Cheat Sheet Series` /
+  `OWASP Proactive Controls`, and `OpenSSF Scorecard` where relevant. Mark
+  non-applicable standards as `N/A` with justification.
+- **Release / supply-chain evidence**: State whether the feature requires
+  ASVS verification notes, SBOM/VEX artefacts, provenance/SLSA evidence,
+  CAPEC references, Zero-Trust applicability notes, or SAMM follow-up items,
+  and where that evidence will live.
+- **Security-first**: Confirm no credential files, agent state, logs, history,
+  or SQLite state are planned for tracking.
+- **Inclusion/A11Y**: Identify affected user-facing artefacts and the WCAG 2.2
+  Level AA or text-first review path.
+- **Bilingual delivery**: State how DE-first/EN-second requirements apply.
+- **Statistics**: State whether `docs/project-statistics.md` needs an update
+  and which manual/Thorsten-Solo baseline applies.
+- **Agent guidance parity**: State whether `AGENTS.md`, `CLAUDE.md`,
+  `GEMINI.md`, and `.github/copilot-instructions.md` are affected together.
 
 ## Project Structure
 
