@@ -169,6 +169,7 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX [P] If the feature creates releasable or distributable artefacts, generate/update `SBOM` and, when relevant, `VEX` evidence; capture provenance/SLSA actions for CI/CD or published artefacts
 - [ ] TXXX [P] If threat boundaries or externally reachable flows changed, update STRIDE threat modeling and add relevant `CAPEC` references for the highest-risk attack paths
 - [ ] TXXX [P] If the system is distributed, service-based, cloud, or remotely managed, document `Zero Trust` applicability; if the project is long-lived, note any `OWASP SAMM` follow-up actions
+- [ ] TXXX [P] Prefer the default evidence files `docs/security/asvs-verification.md`, `docs/security/supply-chain-evidence.md`, `docs/security/zero-trust-applicability.md`, and `docs/security/samm-assessment.md`; document and justify any equivalent governance location
 - [ ] TXXX Run quickstart.md validation
 - [ ] TXXX Lastenheft umbenennen / Rename Lastenheft: `bash scripts/rename-lastenheft.sh <LH-Datei> <branch-name>` (macOS/Linux) · `pwsh scripts/rename-lastenheft.ps1 -File <LH-Datei> -BranchName <branch-name>` (Windows) — stamps the feature branch name onto the filename to mark it as archived
 

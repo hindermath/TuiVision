@@ -122,6 +122,10 @@
 - **CR-009**: If the feature changes trust boundaries, externally reachable
   flows, or distributed/service architecture, it MUST state how `CAPEC` and
   `Zero Trust` applicability will be handled.
+- **CR-010**: The feature MUST state whether it uses the default evidence files
+  in `docs/security/` (`asvs-verification.md`, `supply-chain-evidence.md`,
+  `zero-trust-applicability.md`, `samm-assessment.md`) or an explicitly
+  justified equivalent governance location.
 
 ### Key Entities *(include if feature involves data)*
 

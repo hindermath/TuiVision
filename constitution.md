@@ -1,20 +1,21 @@
 <!--
 Sync Impact Report
-Version change: 1.10.0 -> 1.11.0
+Version change: 1.11.0 -> 1.12.0
 Modified principles:
 - None (purely additive)
 Added sections:
-- XIV. Secure Development Standards & Applicability Matrix
-- XV. Secure SDLC & Verification Standards
-- XVI. Supply-Chain Transparency & Build Integrity
-- XVII. Threat Modeling & Attack Pattern Coverage
-- XVIII. Zero Trust Applicability & Security Program Maturity
+- None
 Removed sections:
 - None
 Templates requiring updates:
 - ✅ .specify/templates/plan-template.md
 - ✅ .specify/templates/spec-template.md
 - ✅ .specify/templates/tasks-template.md
+- ✅ .specify/templates/asvs-verification-template.md
+- ✅ .specify/templates/supply-chain-evidence-template.md
+- ✅ .specify/templates/zero-trust-applicability-template.md
+- ✅ .specify/templates/samm-assessment-template.md
+- ✅ .specify/templates/threat-model-template.md
 Runtime guidance requiring updates:
 - ✅ AGENTS.md
 - ✅ CLAUDE.md
@@ -25,7 +26,7 @@ Follow-up TODOs:
 - None
 -->
 
-# Constitution v1.11.0
+# Constitution v1.12.0
 
 # home-baseline Constitution
 
@@ -514,6 +515,15 @@ Mandatory rules:
 - Where a standard applies, the implementation evidence MUST be reflected in
   the relevant artefacts: `spec.md`, `plan.md`, `tasks.md`, `docs/security/`,
   S-ADRs, release assets, or CI/CD configuration as appropriate.
+- The default evidence location for Level-2 projects is `docs/security/` using
+  the canonical filenames and templates defined in `.specify/templates/`.
+  A repository MAY use an equivalent governance location only when
+  `docs/security/` would be structurally inappropriate; in that case the
+  alternative location MUST be explicitly linked from `docs/security/README.md`
+  or equivalent repository-local index documentation.
+- Level-1 workspaces SHOULD also prefer `docs/security/` for security-governance
+  evidence. If a workspace uses another governance document or directory, the
+  chosen location MUST be stated in its local security index.
 
 **Rationale**: Secure-development standards are often partially remembered and
 selectively applied. A binding applicability matrix keeps teams, agents, and
@@ -544,6 +554,9 @@ Mandatory rules:
 - Web/API projects MUST record the selected ASVS level and verification scope
   in `docs/security/` (for example as an ASVS verification matrix or
   equivalent repository-local format).
+- Web/API projects MUST maintain an ASVS evidence document using
+  `asvs-verification-template.md` or an equivalent repository-local format that
+  captures scope, selected level, covered controls, gaps, and follow-up work.
 - `OWASP Cheat Sheet Series` and `OWASP Proactive Controls` SHOULD be used as
   day-to-day implementation guidance wherever language/framework standards do
   not already provide stricter or more specific rules.
@@ -576,6 +589,10 @@ Mandatory rules:
   source of repository security posture evidence) before release or adoption.
 - Dependency, SBOM, VEX, provenance, and Scorecard evidence MUST feed into the
   repository's dependency audit and release review process.
+- Release-capable projects MUST maintain a supply-chain evidence document using
+  `supply-chain-evidence-template.md` or an equivalent repository-local format.
+  That document MUST reference the current SBOM, VEX decisions, provenance or
+  SLSA status, and any relevant OpenSSF Scorecard observations.
 
 **Rationale**: A project can follow secure coding rules and still ship opaque
 or tampered artefacts. SBOM, VEX, SLSA, and Scorecard address transparency,
@@ -598,6 +615,9 @@ Mandatory rules:
   sensitive data flows, or third-party integrations materially change.
 - Security-relevant mitigations and residual risks identified through STRIDE
   or CAPEC analysis SHOULD be reflected in S-ADRs, checklists, and tasks.
+- Threat-model evidence SHOULD capture CAPEC references directly in the threat
+  model document, not only in ADRs or tasks, so the attacker-technique mapping
+  stays reviewable in one place.
 
 **Rationale**: STRIDE is strong for systematic coverage of threat categories;
 CAPEC complements it by adding attacker behavior and attack-pattern language.
@@ -626,6 +646,12 @@ Mandatory rules:
 - Findings from incidents, audits, dependency reviews, and SAMM assessments
   SHOULD feed back into templates, checklists, security docs, and AI-agent
   guidance files so improvements become structural rather than one-off fixes.
+- Systems where Zero Trust applicability is material SHOULD maintain a
+  dedicated applicability note using `zero-trust-applicability-template.md` or
+  an equivalent repository-local format.
+- Repositories performing periodic SAMM reviews SHOULD maintain their current
+  assessment snapshot and follow-up actions using `samm-assessment-template.md`
+  or an equivalent repository-local format.
 
 **Rationale**: Zero Trust addresses the realities of remote access, services,
 and cloud deployment; SAMM addresses the maturity of the development program
@@ -722,7 +748,7 @@ allowed path.
 `.github/copilot-instructions.md` for per-agent operational guidance. This
 constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.11.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-04-24
+**Version**: 1.12.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-04-24
 
 <!-- EN: constitution.md placeholder
 [DE-Zusammenfassung: constitution.md beschreibt die Prinzipien und Standards für alle home-baseline Workspaces.]

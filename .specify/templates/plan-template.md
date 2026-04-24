@@ -64,6 +64,11 @@
   ASVS verification notes, SBOM/VEX artefacts, provenance/SLSA evidence,
   CAPEC references, Zero-Trust applicability notes, or SAMM follow-up items,
   and where that evidence will live.
+- **Default evidence files**: Prefer `docs/security/asvs-verification.md`,
+  `docs/security/supply-chain-evidence.md`,
+  `docs/security/zero-trust-applicability.md`, and
+  `docs/security/samm-assessment.md`. If the repository uses an equivalent
+  governance location, state that path explicitly and justify the deviation.
 - **Security-first**: Confirm no credential files, agent state, logs, history,
   or SQLite state are planned for tracking.
 - **Inclusion/A11Y**: Identify affected user-facing artefacts and the WCAG 2.2
