@@ -1,5 +1,42 @@
 # Changelog
 
+## [0.2.1](https://github.com/hindermath/TuiVision/compare/v0.2.0...v0.2.1) (2026-04-30)
+
+
+### Bug Fixes / Fehlerbehebungen
+
+* install ripgrep for windows secret scan ([14ad09f](https://github.com/hindermath/TuiVision/commit/14ad09f5ab4717ab0d4923ba94d0a68f006a5565))
+* opt release-please into node 24 ([08810b1](https://github.com/hindermath/TuiVision/commit/08810b180f1ce98100e11a936fe272aa476107a3))
+* pin release-please node 24 action ([22c576b](https://github.com/hindermath/TuiVision/commit/22c576beb1c1bc660bfb7ae7cfe1c7020c8386c8))
+* replace broken homogeneity workflow ([b57f867](https://github.com/hindermath/TuiVision/commit/b57f867d3a0ffbaee3d939bd0d7e0c5b3344ed45))
+* stabilize windows secret scan CI ([ac97efa](https://github.com/hindermath/TuiVision/commit/ac97efa0c2a261e1547c63c565dd8718077603db))
+
+
+### Documentation / Dokumentation
+
+* add security evidence structure ([671a060](https://github.com/hindermath/TuiVision/commit/671a060c32a958d1a7e7a668738244ea743f36d9))
+* amend constitution to v1.6.0 ([501350b](https://github.com/hindermath/TuiVision/commit/501350b249f987191553bea9dbcd17bd2f806ea4))
+* initialize speckit assets and align constitutions ([d047a91](https://github.com/hindermath/TuiVision/commit/d047a9197c3a0aff551868ffcc513116bb66b8b9))
+* propagate constitution v1.10.0 guidance ([efedfe8](https://github.com/hindermath/TuiVision/commit/efedfe8ad90a374589363ae4b8bf7c322240ccd0))
+* propagate constitution v1.11.0 guidance ([b00392f](https://github.com/hindermath/TuiVision/commit/b00392f2347632b58ac799cf9a6d93866d28e0a7))
+* sync constitution and shared agent guidance ([bc62773](https://github.com/hindermath/TuiVision/commit/bc62773a0d726f08b4ec9ca293564b58c766e5df))
+* update constitution v1.5.1 ([5bda3b0](https://github.com/hindermath/TuiVision/commit/5bda3b0057f2a12e7ec15cd46e544c8b9c18957e))
+* update stats ([ac5f3fb](https://github.com/hindermath/TuiVision/commit/ac5f3fb0f82c8b7214f8dcf8384ffa8f0988f373))
+
+
+### Maintenance / Wartung
+
+* complete bilingual compliance markers ([97cc467](https://github.com/hindermath/TuiVision/commit/97cc46707168cf48a7e755659e88eb71d065e2cf))
+* complete bilingual heading coverage ([0aa72c6](https://github.com/hindermath/TuiVision/commit/0aa72c61d5bdc0916e9aa47b3e537960b7458a16))
+* propagate security guidance from home-baseline v1.12.0 ([f0291ac](https://github.com/hindermath/TuiVision/commit/f0291acdd5aa65420b52341392993128c57bbce1))
+* reconcile local agent artifacts ([a58043b](https://github.com/hindermath/TuiVision/commit/a58043b1c7c5b9a1574a448152154aff31db9de3))
+* sync constitution to v1.4.0 ([616b56b](https://github.com/hindermath/TuiVision/commit/616b56b4d6428ff7e8852f550e6e3ab887852fbc))
+* update homogeneity stats ([b1a16b9](https://github.com/hindermath/TuiVision/commit/b1a16b9f84a6ba39ad2fc5a2fb8f11a11eb0d2d7))
+* update homogeneity stats ([949e5cc](https://github.com/hindermath/TuiVision/commit/949e5cc740de41766a3e0ba5b4f1c83cb3b334ea))
+* update spec-kit integrations ([24f1c75](https://github.com/hindermath/TuiVision/commit/24f1c75fe8f0f60fcd6900098a6db301f753e732))
+* update spec-kit integrations ([0d63d8d](https://github.com/hindermath/TuiVision/commit/0d63d8dd5826102e4169efa239e4fa16e6f41712))
+* update stats ([26f52e4](https://github.com/hindermath/TuiVision/commit/26f52e416b6f8338f2076f814ade5e6eeae11e8d))
+
 ## [0.2.0](https://github.com/hindermath/TuiVision/compare/v0.1.0...v0.2.0) (2026-04-12)
 
 
