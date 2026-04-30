@@ -29,7 +29,7 @@ description: "Task list template for feature implementation"
   ============================================================================
   IMPORTANT: The tasks below are SAMPLE TASKS for illustration purposes only.
   
-  The /speckit.tasks command MUST replace these with actual tasks based on:
+  The /speckit-tasks command MUST replace these with actual tasks based on:
   - User stories from spec.md (with their priorities P1, P2, P3...)
   - Feature requirements from plan.md
   - Entities from data-model.md
@@ -159,9 +159,10 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX Code cleanup and refactoring
 - [ ] TXXX Performance optimization across all stories
 - [ ] TXXX [P] Additional unit tests (if requested) in tests/unit/
+- [ ] TXXX Security hardening
 - [ ] TXXX [P] Verify AI-generated code against secure-coding rules in `constitution.md`, Principle XII (OWASP Top 10, language-specific best practices, cryptographic choices, error-handling exposure, dependency CVE status)
 - [ ] TXXX [P] Verify architecture against secure-architecture principles in `constitution.md`, Principle XIII (trust boundaries, defense in depth, least privilege, fail-safe defaults, attack surface reduction, separation of concerns, secure configuration, supply-chain security)
-- [ ] TXXX [P] Update mandatory security documentation in `docs/security/`: threat model, security checklist, dependency audit, arc42 security concepts, and security quality scenarios (SHOULD) — using templates from `.specify/templates/`
+- [ ] TXXX [P] Update mandatory security documentation in `docs/security/`: threat model, security checklist, dependency audit, arc42 security concepts, and security quality scenarios (SHOULD) - using templates from `.specify/templates/`
 - [ ] TXXX [P] Create or update Security Architecture Decision Records (S-ADR) in `docs/security/adr/` for any security-relevant architectural decisions made during this feature
 - [ ] TXXX [P] Record the applicable security standards from `constitution.md`, Principles XIV-XVIII, and mark non-applicable entries as `N/A` with justification
 - [ ] TXXX [P] Apply `NIST SSDF` and `CWE Top 25` to design/review/remediation evidence; add relevant notes to checklist, threat model, ADR, or PR as appropriate
@@ -171,7 +172,7 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX [P] If the system is distributed, service-based, cloud, or remotely managed, document `Zero Trust` applicability; if the project is long-lived, note any `OWASP SAMM` follow-up actions
 - [ ] TXXX [P] Prefer the default evidence files `docs/security/asvs-verification.md`, `docs/security/supply-chain-evidence.md`, `docs/security/zero-trust-applicability.md`, and `docs/security/samm-assessment.md`; document and justify any equivalent governance location
 - [ ] TXXX Run quickstart.md validation
-- [ ] TXXX Lastenheft umbenennen / Rename Lastenheft: `bash scripts/rename-lastenheft.sh <LH-Datei> <branch-name>` (macOS/Linux) · `pwsh scripts/rename-lastenheft.ps1 -File <LH-Datei> -BranchName <branch-name>` (Windows) — stamps the feature branch name onto the filename to mark it as archived
+- [ ] TXXX Lastenheft umbenennen / Rename Lastenheft: `bash scripts/rename-lastenheft.sh <LH-Datei> <branch-name>` (macOS/Linux) . `pwsh scripts/rename-lastenheft.ps1 -File <LH-Datei> -BranchName <branch-name>` (Windows) - stamps the feature branch name onto the filename to mark it as archived
 
 ---
 
