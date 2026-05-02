@@ -19,6 +19,9 @@ example ports.
 
 1. Confirm scope boundaries:
    - no full `demo`, `sdlg`, `sdlg2`, or `dlgdsn` port in this feature
+   - no additional "comparable wave-2 selections" beyond the planned file,
+     directory, color, symbolic charset, display, and dialog-description
+     responsibility classes
    - no terminal rendering/font/emulation implementation
    - no runtime mouse requirement
    - no file content I/O inside standard dialogs
@@ -32,6 +35,7 @@ example ports.
 
    Expected proof:
    - file open/select/save-target decision flows
+   - directory navigation and directory select decision flows
    - current directory, filter, selected/manual path, metadata, history, and
      result synchronization
    - empty filter/list, invalid path, unreadable metadata, stale entry, and
@@ -40,6 +44,8 @@ example ports.
    - keyboard-only completion of all acceptance-critical flows
    - downstream consumer classification for `demo`, `sdlg`, `sdlg2`, and
      `dlgdsn`
+   - planned test targets are named as planned evidence until `tasks.md`
+     assigns concrete create/update tasks
 
 3. Run focused Serialization validation after implementation:
 

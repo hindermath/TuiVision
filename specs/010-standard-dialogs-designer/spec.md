@@ -43,6 +43,9 @@ using a wave-2 example as the primary proof. The complete flow must be usable
 through keyboard interaction; mouse support is optional and not required for
 acceptance.
 
+**Traceability**: FR-001, FR-002, FR-002a, FR-003, FR-003a, FR-010,
+FR-010a, FR-013; SC-001, SC-007, SC-008.
+
 **Acceptance Scenarios**:
 
 1. **Given** a user opens a standard file selection flow, **When** the user
@@ -80,6 +83,9 @@ standard flow and verify that selection, preview, validation, cancellation, and
 confirmation stay consistent without requiring terminal rendering, font, or
 emulation effects, mouse interaction, or a ported wave-2 example.
 
+**Traceability**: FR-001, FR-004, FR-005, FR-010, FR-010a, FR-012, FR-013;
+SC-002, SC-005, SC-006, SC-007, SC-008.
+
 **Acceptance Scenarios**:
 
 1. **Given** a user opens a color selection flow, **When** the user changes a
@@ -115,6 +121,9 @@ This evidence is framework-first; `dlgdsn` remains a later consumer rather than
 the primary acceptance vehicle for this feature. Designer flows must be
 operable through keyboard interaction.
 
+**Traceability**: FR-006, FR-006a, FR-007, FR-008, FR-008a, FR-009, FR-010,
+FR-010a, FR-011, FR-013; SC-003, SC-003a, SC-004, SC-005, SC-007, SC-008.
+
 **Acceptance Scenarios**:
 
 1. **Given** a valid dialog description, **When** it is validated and consumed,
@@ -148,8 +157,9 @@ operable through keyboard interaction.
 - A selected file has missing or unreadable metadata, so the dialog must show a
   clear fallback instead of desynchronizing the selected path.
 - A color group, symbolic charset choice, or display mode has no supported
-  option for the active environment, so the user must see a bounded fallback
-  and no local example widget should reinterpret the state.
+  option for the active environment, so the flow must return a text-first
+  no-supported-option or preserved-committed-value fallback and no local example
+  widget should reinterpret the state.
 - A dialog description references an unknown control role, duplicate command,
   duplicate control identifier, invalid tab order, missing label, or
   unsupported persisted value.
@@ -171,7 +181,11 @@ operable through keyboard interaction.
 - **FR-001**: The feature MUST define reusable standard dialog flows for file,
   directory, color, symbolic charset, display, and comparable wave-2 selections
   as complete user flows, including visible choices, validation, cancellation,
-  confirmation, and return values.
+  confirmation, and return values. "Comparable wave-2 selections" is limited
+  to selection points in `demo`, `sdlg`, `sdlg2`, or `dlgdsn` that use the same
+  file, directory, color, symbolic charset, display, or dialog-description
+  responsibility classes already named here; it does not add new dialog
+  categories to this feature.
 - **FR-002**: File and directory selection flows MUST keep current directory,
   active filter, visible entries, selected item, manual path entry, file
   metadata, history recall, validation state, and returned result synchronized.

@@ -9,6 +9,8 @@ and English-second XML documentation complete.
 ## File And Directory Dialog Contract
 
 - Provides reusable open, select, and save-target decision flows.
+- Covers both file targets and directory targets. A returned select decision
+  must identify whether the selected path is a file or directory.
 - Synchronizes current directory, active filter, visible entries, selected
   entry, manual path, metadata, session history, validation state, and returned
   result.
@@ -28,7 +30,10 @@ and English-second XML documentation complete.
 - Does not change terminal rendering, fonts, buffers, or emulation behavior.
 - Keeps selected value, preview/display value, cancellation, and confirmation
   synchronized.
-- Provides a bounded fallback when no supported option exists.
+- Provides a bounded fallback when no supported option exists: the flow must
+  expose a text-first fallback reason, preserve the committed value or return an
+  explicit no-supported-option decision, and avoid any example-local
+  reinterpretation of unsupported state.
 - Supports full keyboard operation for all acceptance-critical actions.
 
 ## Dialog Description Contract
@@ -66,8 +71,8 @@ and English-second XML documentation complete.
 ## Test Obligations
 
 - Controls tests must prove file decisions, color/display/charset decisions,
-  keyboard operation, cancellation/confirmation, validation, and consumer
-  classification.
+  directory decisions, keyboard operation, cancellation/confirmation,
+  validation, and consumer classification.
 - Serialization tests must prove persisted-description roundtrip and malformed
   input rejection.
 - Tests must demonstrate that wave-2 example smoke coverage is not the primary

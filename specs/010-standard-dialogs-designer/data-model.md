@@ -32,6 +32,7 @@ dialog-description roundtrip.
 
 **Fields**:
 - `CurrentDirectory`
+- `SelectionTargetKind`: file or directory.
 - `ActiveFilter`
 - `VisibleEntries`
 - `SelectedEntry`
@@ -40,12 +41,14 @@ dialog-description roundtrip.
 - `HistoryId`
 - `SessionHistoryEntries`
 - `ValidationState`
-- `DecisionKind`: `open`, `select`, or `save-target`
+- `DecisionKind`: `open`, `select`, or `save-target`; `select` may target a
+  file or directory according to `SelectionTargetKind`.
 - `DecisionValue`
 
 **Validation rules**:
 - `SelectedEntry`, `ManualPath`, `FileInfo`, and `DecisionValue` must not
   contradict each other when a decision is confirmed.
+- `SelectionTargetKind` must match the confirmed file or directory decision.
 - Empty `VisibleEntries` must still allow manual path entry and cancellation.
 - Unreadable or missing metadata must produce an explicit fallback state.
 - Existing or non-writable save targets return validation/decision state only;
@@ -60,10 +63,11 @@ dialog-description roundtrip.
 
 ## FileDecisionResult
 
-**Purpose**: Explicit outcome returned by a file-oriented dialog.
+**Purpose**: Explicit outcome returned by a file- or directory-oriented dialog.
 
 **Fields**:
 - `Kind`: `open`, `select`, `save-target`, or `canceled`.
+- `TargetKind`: `file`, `directory`, or `none` for canceled results.
 - `Path`
 - `Filter`
 - `MetadataSnapshot`
@@ -74,6 +78,8 @@ dialog-description roundtrip.
 - A result never represents completed file I/O.
 - `save-target` may point to an existing path, but only as caller-visible
   intent.
+- Directory selection returns a directory target and does not imply recursive
+  scanning or file content operations.
 
 ## ColorDisplaySelectionState
 
@@ -92,6 +98,9 @@ dialog-description roundtrip.
 - `SelectedValue` must be one of `SupportedOptions` unless an explicit fallback
   state is active.
 - Cancel restores `CommittedValue`.
+- If no supported option exists, the state must expose a text-first fallback
+  reason and preserve the last committed value or return an explicit
+  no-supported-option decision.
 - Symbolic charset values do not change terminal rendering, fonts, buffers, or
   emulation behavior.
 
@@ -172,6 +181,7 @@ dialog-description roundtrip.
 **Validation rules**:
 - Malformed or truncated payloads are rejected.
 - Unsupported format versions are rejected.
+- Unsupported persisted values are rejected.
 - Semantic validation runs after reading and before runtime dialog creation.
 - Runtime-only state is not persisted.
 
@@ -195,3 +205,6 @@ dialog-description roundtrip.
 - Example-specific responsibilities must not duplicate file selection, color
   selection, symbolic charset/display selection, or dialog-description
   validation when the framework provides them.
+- `demo` must classify general standard-dialog consumption, `sdlg` and `sdlg2`
+  must classify color/charset/display consumption, and `dlgdsn` must classify
+  dialog-description and persistence consumption.

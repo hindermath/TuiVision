@@ -27,6 +27,11 @@ font, mouse, editor, or help scope.
 - **Symbolic charset choice**: A dialog-level choice value for `sdlg`/`sdlg2`
   traceability. It does not alter terminal rendering, fonts, buffers, or
   emulation behavior.
+- **Bounded fallback**: A text-first no-supported-option or
+  preserved-committed-value state returned by a standard dialog when the active
+  environment cannot offer a color/display/charset option. It must be visible
+  to the caller and must not let an example reinterpret unsupported state
+  locally.
 - **Dialog description**: The design-time representation for `dlgdsn`, including
   controls, labels, navigation order, command bindings, initial values, and
   validation constraints.
@@ -46,7 +51,7 @@ font, mouse, editor, or help scope.
 **Testing**: MSTest-first validation in `tests/TuiVision.Controls.Tests` and `tests/TuiVision.Serialization.Tests`; focused acceptance tests for keyboard-only dialog flows, synchronized file state, color/charset/display selection, dialog-description validation, malformed persisted input, and framework/example-consumer classification; full repository validation via `dotnet build --configuration Release`, targeted tests, `dotnet test`, coverage collection, `dotnet format --verify-no-changes`, and conditional DocFX + web A11Y smoke check  
 **Target Platform**: Managed cross-platform terminal UI on macOS, Linux, and Windows/WSL, with Multi-Mac development (`MacBook Air M2`, `Mac mini M4 Pro`) as primary workflow  
 **Project Type**: Managed .NET library/framework increment in existing Controls and Serialization modules, with test and proof-artifact expansion  
-**Performance Goals**: Standard-dialog navigation, validation, selection updates, and cancel/confirm outcomes must complete within a normal single event-loop interaction for local terminal use; persisted dialog-description validation must fail before runtime dialog creation for invalid input  
+**Performance Goals**: Standard-dialog navigation, validation, selection updates, and cancel/confirm outcomes must be specified as synchronous local dialog-state transitions for one handled input event; they must not hide file content I/O, background work, or unbounded scans behind ordinary selection changes. File-system metadata enumeration is allowed only as the explicit file-list/metadata refresh owned by the dialog flow. Persisted dialog-description validation must fail before runtime dialog creation for invalid input.  
 **Constraints**: No new source module; no example-port delivery in this feature; full keyboard operation is acceptance-critical; mouse remains optional; file dialogs return decisions only and do not perform file content I/O; history is active-session-only; symbolic charset choices do not affect terminal rendering/font/emulation; minimal persisted dialog-description roundtrip only; German-first/English-second documentation rules; numbered-branch version governance before implementation-phase builds/tests  
 **Scale/Scope**: Harden existing `TuiVision.Controls` and `TuiVision.Serialization` surfaces in place; add focused tests and proof notes; update `docs/project-statistics.md` and rename `Lastenheft_02_StandardDialogsAndDesigner.md` to `Lastenheft_02_StandardDialogsAndDesigner.010-standard-dialogs-designer.md` when the implementation is complete
 
@@ -120,8 +125,9 @@ specs/010-standard-dialogs-designer/
 ├── contracts/
 │   └── standard-dialogs-designer-api.md
 ├── checklists/
-│   └── requirements.md
-└── tasks.md
+│   ├── requirements.md
+│   └── plan-quality.md
+└── tasks.md                 # planned after checklist/plan review
 ```
 
 ### Source Code (repository root)
@@ -260,6 +266,7 @@ See [research.md](research.md) for full detail. Key planning decisions:
 | Scenario class | Covered in spec | Planned artifact coverage |
 |---|---|---|
 | File open/select decision | User Story 1, FR-001..FR-003a | `data-model.md`, API contract, `TFileDialogTests` |
+| Directory navigation/select decision | User Story 1, FR-001..FR-003a | `data-model.md`, API contract, `TDirListBoxTests`, `TFileDialogTests` |
 | Save-target decision without I/O | Clarification, FR-003a | `data-model.md`, API contract, negative Controls tests |
 | Empty filter/list and invalid manual path | Edge Cases, FR-003 | Controls dialog tests and quickstart |
 | Metadata fallback | Edge Cases, FR-002/FR-003 | `data-model.md`, `TFileInfo` tests |
@@ -274,9 +281,10 @@ See [research.md](research.md) for full detail. Key planning decisions:
 ## Testing Strategy
 
 - **Controls tests**: File dialog synchronization, manual entry, empty filter
-  handling, metadata fallback, save-target decisions, session-only history,
-  color/display/symbolic-charset selection, cancellation/confirmation, keyboard
-  navigation, and framework/example consumer classification.
+  handling, directory navigation/selection, metadata fallback, save-target
+  decisions, session-only history, color/display/symbolic-charset selection,
+  cancellation/confirmation, keyboard navigation, and framework/example
+  consumer classification.
 - **Serialization tests**: Minimal dialog-description roundtrip, runtime-only
   state exclusion, unsupported version, malformed/truncated input, duplicate
   control IDs, duplicate command bindings, unknown control role, invalid
@@ -299,10 +307,10 @@ See [research.md](research.md) for full detail. Key planning decisions:
 | Success criterion | Planning hook |
 |---|---|
 | SC-001 | File decision model, `TFileDialog` contract, Controls tests |
-| SC-002 | Color/display/charset state model, Controls tests |
-| SC-003 | Dialog-description model and validation tests |
-| SC-003a | Persisted-description model, Serialization tests |
-| SC-004 | Wave-2 consumer classification in quickstart/proof notes |
+| SC-002 | Color/display/charset state model, bounded fallback definition, Controls tests |
+| SC-003 | Dialog-description model, uniqueness rules, validation tests |
+| SC-003a | Persisted-description model, malformed/truncated/semantic rejection, Serialization tests |
+| SC-004 | Wave-2 consumer classification for `demo`, `dlgdsn`, `sdlg`, and `sdlg2` in quickstart/proof notes |
 | SC-005 | Thin-consumer guard checks and downstream classification |
 | SC-006 | Text-first proof notes and A11Y-oriented quickstart review |
 | SC-007 | Framework-first acceptance strategy |
