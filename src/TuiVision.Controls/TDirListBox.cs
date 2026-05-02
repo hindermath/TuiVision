@@ -40,6 +40,14 @@ public sealed class TDirListBox : TListBox
     public IReadOnlyList<string> Entries => _entries.AsReadOnly();
 
     /// <summary>
+    /// Der aktuell fokussierte Verzeichnispfad.
+    ///
+    /// The currently focused directory path.
+    /// </summary>
+    public string SelectedDirectory =>
+        FocusedItem >= 0 && FocusedItem < _entries.Count ? _entries[FocusedItem] : CurrentDirectory;
+
+    /// <summary>
     /// Laedt die Unterverzeichnisse eines Ordners.
     ///
     /// Loads the subdirectories of a directory.
@@ -51,7 +59,18 @@ public sealed class TDirListBox : TListBox
         _entries.Clear();
         List!.Clear();
 
-        foreach (string path in Directory.EnumerateDirectories(CurrentDirectory).OrderBy(path => path, StringComparer.Ordinal))
+        IEnumerable<string> directories;
+        try
+        {
+            directories = Directory.EnumerateDirectories(CurrentDirectory).OrderBy(path => path, StringComparer.Ordinal).ToArray();
+        }
+        catch (Exception exception) when (exception is IOException or UnauthorizedAccessException or DirectoryNotFoundException)
+        {
+            List.Add($"<unreadable: {exception.GetType().Name}>");
+            return;
+        }
+
+        foreach (string path in directories)
         {
             _entries.Add(path);
             List.Add(Path.GetFileName(path));

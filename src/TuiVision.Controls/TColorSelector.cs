@@ -13,6 +13,14 @@ namespace TuiVision.Controls;
 public sealed class TColorSelector
 {
     /// <summary>
+    /// Die unterstuetzten Konsolenfarben.
+    ///
+    /// The supported console colours.
+    /// </summary>
+    public static IReadOnlyList<string> SupportedColorNames { get; } =
+        Enum.GetNames<ConsoleColor>().OrderBy(name => name, StringComparer.Ordinal).ToArray();
+
+    /// <summary>
     /// Die aktuell ausgewählte Farbe.
     ///
     /// The currently selected colour.
@@ -26,4 +34,20 @@ public sealed class TColorSelector
     /// </summary>
     /// <param name="color">Die gewünschte Farbe. / The desired colour.</param>
     public void SelectColor(ConsoleColor color) => SelectedColor = color;
+
+    /// <summary>
+    /// Waehlt eine Farbe anhand ihres Namens aus.
+    ///
+    /// Selects a colour by its name.
+    /// </summary>
+    /// <param name="colorName">Der Farbname. / The colour name.</param>
+    public void SelectColor(string colorName)
+    {
+        if (!Enum.TryParse(colorName, ignoreCase: false, out ConsoleColor color))
+        {
+            throw new ArgumentException("Unsupported colour name.", nameof(colorName));
+        }
+
+        SelectColor(color);
+    }
 }

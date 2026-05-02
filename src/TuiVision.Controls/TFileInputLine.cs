@@ -67,4 +67,22 @@ public sealed class TFileInputLine : TInputLine
     /// </summary>
     /// <returns>Die History-Eintraege in Most-Recent-First-Reihenfolge. / The history entries in most-recent-first order.</returns>
     public IReadOnlyList<string> Recall() => _history.Recall();
+
+    /// <summary>
+    /// Loest einen eingegebenen Pfad relativ zu einem Basisordner auf.
+    ///
+    /// Resolves a typed path relative to a base directory.
+    /// </summary>
+    /// <param name="baseDirectory">Der Basisordner. / The base directory.</param>
+    /// <returns>Der normalisierte Pfad oder <c>null</c>. / The normalized path or <c>null</c>.</returns>
+    public string? ResolvePath(string baseDirectory)
+    {
+        if (string.IsNullOrWhiteSpace(Data))
+        {
+            return null;
+        }
+
+        string basePath = string.IsNullOrWhiteSpace(baseDirectory) ? Directory.GetCurrentDirectory() : baseDirectory;
+        return Path.GetFullPath(Path.IsPathRooted(Data) ? Data : Path.Combine(basePath, Data));
+    }
 }
