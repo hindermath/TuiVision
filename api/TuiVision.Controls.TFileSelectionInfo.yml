@@ -5,8 +5,9 @@ items:
   id: TFileSelectionInfo
   parent: TuiVision.Controls
   children:
-  - TuiVision.Controls.TFileSelectionInfo.#ctor(System.String,TuiVision.Controls.TFileEntryKind,System.Boolean,System.Nullable{System.Int64},System.Nullable{System.DateTime})
+  - TuiVision.Controls.TFileSelectionInfo.#ctor(System.String,TuiVision.Controls.TFileEntryKind,System.Boolean,System.Nullable{System.Int64},System.Nullable{System.DateTime},System.String)
   - TuiVision.Controls.TFileSelectionInfo.Exists
+  - TuiVision.Controls.TFileSelectionInfo.FallbackMessage
   - TuiVision.Controls.TFileSelectionInfo.Kind
   - TuiVision.Controls.TFileSelectionInfo.LastWriteTimeUtc
   - TuiVision.Controls.TFileSelectionInfo.Length
@@ -21,11 +22,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TFileSelectionInfo
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 17
+    startLine: 18
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -47,25 +48,25 @@ items:
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.GetType
   - System.Object.ReferenceEquals(System.Object,System.Object)
-- uid: TuiVision.Controls.TFileSelectionInfo.#ctor(System.String,TuiVision.Controls.TFileEntryKind,System.Boolean,System.Nullable{System.Int64},System.Nullable{System.DateTime})
-  commentId: M:TuiVision.Controls.TFileSelectionInfo.#ctor(System.String,TuiVision.Controls.TFileEntryKind,System.Boolean,System.Nullable{System.Int64},System.Nullable{System.DateTime})
-  id: '#ctor(System.String,TuiVision.Controls.TFileEntryKind,System.Boolean,System.Nullable{System.Int64},System.Nullable{System.DateTime})'
+- uid: TuiVision.Controls.TFileSelectionInfo.#ctor(System.String,TuiVision.Controls.TFileEntryKind,System.Boolean,System.Nullable{System.Int64},System.Nullable{System.DateTime},System.String)
+  commentId: M:TuiVision.Controls.TFileSelectionInfo.#ctor(System.String,TuiVision.Controls.TFileEntryKind,System.Boolean,System.Nullable{System.Int64},System.Nullable{System.DateTime},System.String)
+  id: '#ctor(System.String,TuiVision.Controls.TFileEntryKind,System.Boolean,System.Nullable{System.Int64},System.Nullable{System.DateTime},System.String)'
   parent: TuiVision.Controls.TFileSelectionInfo
   langs:
   - csharp
   - vb
-  name: TFileSelectionInfo(string, TFileEntryKind, bool, long?, DateTime?)
-  nameWithType: TFileSelectionInfo.TFileSelectionInfo(string, TFileEntryKind, bool, long?, DateTime?)
-  fullName: TuiVision.Controls.TFileSelectionInfo.TFileSelectionInfo(string, TuiVision.Controls.TFileEntryKind, bool, long?, System.DateTime?)
+  name: TFileSelectionInfo(string, TFileEntryKind, bool, long?, DateTime?, string?)
+  nameWithType: TFileSelectionInfo.TFileSelectionInfo(string, TFileEntryKind, bool, long?, DateTime?, string?)
+  fullName: TuiVision.Controls.TFileSelectionInfo.TFileSelectionInfo(string, TuiVision.Controls.TFileEntryKind, bool, long?, System.DateTime?, string?)
   type: Constructor
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 17
+    startLine: 18
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -76,7 +77,7 @@ items:
     Metadata for the currently active file or path context of a dialog.
   example: []
   syntax:
-    content: public TFileSelectionInfo(string ResolvedPath, TFileEntryKind Kind, bool Exists, long? Length, DateTime? LastWriteTimeUtc)
+    content: public TFileSelectionInfo(string ResolvedPath, TFileEntryKind Kind, bool Exists, long? Length, DateTime? LastWriteTimeUtc, string? FallbackMessage = null)
     parameters:
     - id: ResolvedPath
       type: System.String
@@ -93,11 +94,14 @@ items:
     - id: LastWriteTimeUtc
       type: System.Nullable{System.DateTime}
       description: Der letzte Schreibzeitpunkt, wenn verfuegbar. / The last write time when available.
-    content.vb: Public Sub New(ResolvedPath As String, Kind As TFileEntryKind, Exists As Boolean, Length As Long?, LastWriteTimeUtc As Date?)
+    - id: FallbackMessage
+      type: System.String
+      description: Der optionale textorientierte Fallback. / The optional text-oriented fallback.
+    content.vb: Public Sub New(ResolvedPath As String, Kind As TFileEntryKind, Exists As Boolean, Length As Long?, LastWriteTimeUtc As Date?, FallbackMessage As String = Nothing)
   overload: TuiVision.Controls.TFileSelectionInfo.#ctor*
-  nameWithType.vb: TFileSelectionInfo.New(String, TFileEntryKind, Boolean, Long?, Date?)
-  fullName.vb: TuiVision.Controls.TFileSelectionInfo.New(String, TuiVision.Controls.TFileEntryKind, Boolean, Long?, Date?)
-  name.vb: New(String, TFileEntryKind, Boolean, Long?, Date?)
+  nameWithType.vb: TFileSelectionInfo.New(String, TFileEntryKind, Boolean, Long?, Date?, String)
+  fullName.vb: TuiVision.Controls.TFileSelectionInfo.New(String, TuiVision.Controls.TFileEntryKind, Boolean, Long?, Date?, String)
+  name.vb: New(String, TFileEntryKind, Boolean, Long?, Date?, String)
 - uid: TuiVision.Controls.TFileSelectionInfo.ResolvedPath
   commentId: P:TuiVision.Controls.TFileSelectionInfo.ResolvedPath
   id: ResolvedPath
@@ -112,11 +116,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: ResolvedPath
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 18
+    startLine: 19
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -143,11 +147,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Kind
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 19
+    startLine: 20
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -174,11 +178,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Exists
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 20
+    startLine: 21
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -205,11 +209,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Length
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 21
+    startLine: 22
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -236,11 +240,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: LastWriteTimeUtc
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 22
+    startLine: 23
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -253,6 +257,37 @@ items:
       type: System.Nullable{System.DateTime}
     content.vb: Public Property LastWriteTimeUtc As Date?
   overload: TuiVision.Controls.TFileSelectionInfo.LastWriteTimeUtc*
+- uid: TuiVision.Controls.TFileSelectionInfo.FallbackMessage
+  commentId: P:TuiVision.Controls.TFileSelectionInfo.FallbackMessage
+  id: FallbackMessage
+  parent: TuiVision.Controls.TFileSelectionInfo
+  langs:
+  - csharp
+  - vb
+  name: FallbackMessage
+  nameWithType: TFileSelectionInfo.FallbackMessage
+  fullName: TuiVision.Controls.TFileSelectionInfo.FallbackMessage
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileList.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: FallbackMessage
+    path: src/TuiVision.Controls/TFileList.cs
+    startLine: 24
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Der optionale textorientierte Fallback. / The optional text-oriented fallback.
+  example: []
+  syntax:
+    content: public string? FallbackMessage { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property FallbackMessage As String
+  overload: TuiVision.Controls.TFileSelectionInfo.FallbackMessage*
 references:
 - uid: TuiVision.Controls
   commentId: N:TuiVision.Controls
@@ -556,7 +591,7 @@ references:
   name.vb: Object
 - uid: TuiVision.Controls.TFileSelectionInfo.#ctor*
   commentId: Overload:TuiVision.Controls.TFileSelectionInfo.#ctor
-  href: TuiVision.Controls.TFileSelectionInfo.html#TuiVision_Controls_TFileSelectionInfo__ctor_System_String_TuiVision_Controls_TFileEntryKind_System_Boolean_System_Nullable_System_Int64__System_Nullable_System_DateTime__
+  href: TuiVision.Controls.TFileSelectionInfo.html#TuiVision_Controls_TFileSelectionInfo__ctor_System_String_TuiVision_Controls_TFileEntryKind_System_Boolean_System_Nullable_System_Int64__System_Nullable_System_DateTime__System_String_
   name: TFileSelectionInfo
   nameWithType: TFileSelectionInfo.TFileSelectionInfo
   fullName: TuiVision.Controls.TFileSelectionInfo.TFileSelectionInfo
@@ -696,3 +731,9 @@ references:
   name: LastWriteTimeUtc
   nameWithType: TFileSelectionInfo.LastWriteTimeUtc
   fullName: TuiVision.Controls.TFileSelectionInfo.LastWriteTimeUtc
+- uid: TuiVision.Controls.TFileSelectionInfo.FallbackMessage*
+  commentId: Overload:TuiVision.Controls.TFileSelectionInfo.FallbackMessage
+  href: TuiVision.Controls.TFileSelectionInfo.html#TuiVision_Controls_TFileSelectionInfo_FallbackMessage
+  name: FallbackMessage
+  nameWithType: TFileSelectionInfo.FallbackMessage
+  fullName: TuiVision.Controls.TFileSelectionInfo.FallbackMessage

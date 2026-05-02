@@ -147,6 +147,704 @@ references:
   commentId: N:TuiVision.Controls
   fullName: TuiVision.Controls
   nameWithType: TuiVision.Controls
+- uid: TuiVision.Controls.ColorDisplaySelectionKind
+  name: ColorDisplaySelectionKind
+  href: api/TuiVision.Controls.ColorDisplaySelectionKind.html
+  commentId: T:TuiVision.Controls.ColorDisplaySelectionKind
+  fullName: TuiVision.Controls.ColorDisplaySelectionKind
+  nameWithType: ColorDisplaySelectionKind
+- uid: TuiVision.Controls.ColorDisplaySelectionKind.Color
+  name: Color
+  href: api/TuiVision.Controls.ColorDisplaySelectionKind.html#TuiVision_Controls_ColorDisplaySelectionKind_Color
+  commentId: F:TuiVision.Controls.ColorDisplaySelectionKind.Color
+  fullName: TuiVision.Controls.ColorDisplaySelectionKind.Color
+  nameWithType: ColorDisplaySelectionKind.Color
+- uid: TuiVision.Controls.ColorDisplaySelectionKind.Display
+  name: Display
+  href: api/TuiVision.Controls.ColorDisplaySelectionKind.html#TuiVision_Controls_ColorDisplaySelectionKind_Display
+  commentId: F:TuiVision.Controls.ColorDisplaySelectionKind.Display
+  fullName: TuiVision.Controls.ColorDisplaySelectionKind.Display
+  nameWithType: ColorDisplaySelectionKind.Display
+- uid: TuiVision.Controls.ColorDisplaySelectionKind.Mono
+  name: Mono
+  href: api/TuiVision.Controls.ColorDisplaySelectionKind.html#TuiVision_Controls_ColorDisplaySelectionKind_Mono
+  commentId: F:TuiVision.Controls.ColorDisplaySelectionKind.Mono
+  fullName: TuiVision.Controls.ColorDisplaySelectionKind.Mono
+  nameWithType: ColorDisplaySelectionKind.Mono
+- uid: TuiVision.Controls.ColorDisplaySelectionKind.SymbolicCharset
+  name: SymbolicCharset
+  href: api/TuiVision.Controls.ColorDisplaySelectionKind.html#TuiVision_Controls_ColorDisplaySelectionKind_SymbolicCharset
+  commentId: F:TuiVision.Controls.ColorDisplaySelectionKind.SymbolicCharset
+  fullName: TuiVision.Controls.ColorDisplaySelectionKind.SymbolicCharset
+  nameWithType: ColorDisplaySelectionKind.SymbolicCharset
+- uid: TuiVision.Controls.ColorDisplaySelectionState
+  name: ColorDisplaySelectionState
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html
+  commentId: T:TuiVision.Controls.ColorDisplaySelectionState
+  fullName: TuiVision.Controls.ColorDisplaySelectionState
+  nameWithType: ColorDisplaySelectionState
+- uid: TuiVision.Controls.ColorDisplaySelectionState.#ctor(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String,System.String,System.Collections.Generic.IReadOnlyList{System.String},System.String)
+  name: ColorDisplaySelectionState(ColorDisplaySelectionKind, string, string?, string?, string?, IReadOnlyList<string>, string?)
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState__ctor_TuiVision_Controls_ColorDisplaySelectionKind_System_String_System_String_System_String_System_String_System_Collections_Generic_IReadOnlyList_System_String__System_String_
+  commentId: M:TuiVision.Controls.ColorDisplaySelectionState.#ctor(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String,System.String,System.Collections.Generic.IReadOnlyList{System.String},System.String)
+  name.vb: New(ColorDisplaySelectionKind, String, String, String, String, IReadOnlyList(Of String), String)
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.ColorDisplaySelectionState(TuiVision.Controls.ColorDisplaySelectionKind, string, string?, string?, string?, System.Collections.Generic.IReadOnlyList<string>, string?)
+  fullName.vb: TuiVision.Controls.ColorDisplaySelectionState.New(TuiVision.Controls.ColorDisplaySelectionKind, String, String, String, String, System.Collections.Generic.IReadOnlyList(Of String), String)
+  nameWithType: ColorDisplaySelectionState.ColorDisplaySelectionState(ColorDisplaySelectionKind, string, string?, string?, string?, IReadOnlyList<string>, string?)
+  nameWithType.vb: ColorDisplaySelectionState.New(ColorDisplaySelectionKind, String, String, String, String, IReadOnlyList(Of String), String)
+- uid: TuiVision.Controls.ColorDisplaySelectionState.#ctor*
+  name: ColorDisplaySelectionState
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState__ctor_
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.ColorDisplaySelectionState
+  fullName.vb: TuiVision.Controls.ColorDisplaySelectionState.New
+  nameWithType: ColorDisplaySelectionState.ColorDisplaySelectionState
+  nameWithType.vb: ColorDisplaySelectionState.New
+- uid: TuiVision.Controls.ColorDisplaySelectionState.Cancel
+  name: Cancel()
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_Cancel
+  commentId: M:TuiVision.Controls.ColorDisplaySelectionState.Cancel
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.Cancel()
+  nameWithType: ColorDisplaySelectionState.Cancel()
+- uid: TuiVision.Controls.ColorDisplaySelectionState.Cancel*
+  name: Cancel
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_Cancel_
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.Cancel
+  isSpec: "True"
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.Cancel
+  nameWithType: ColorDisplaySelectionState.Cancel
+- uid: TuiVision.Controls.ColorDisplaySelectionState.CommittedValue
+  name: CommittedValue
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_CommittedValue
+  commentId: P:TuiVision.Controls.ColorDisplaySelectionState.CommittedValue
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.CommittedValue
+  nameWithType: ColorDisplaySelectionState.CommittedValue
+- uid: TuiVision.Controls.ColorDisplaySelectionState.CommittedValue*
+  name: CommittedValue
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_CommittedValue_
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.CommittedValue
+  isSpec: "True"
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.CommittedValue
+  nameWithType: ColorDisplaySelectionState.CommittedValue
+- uid: TuiVision.Controls.ColorDisplaySelectionState.Create(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})
+  name: Create(ColorDisplaySelectionKind, string, string, string?, IEnumerable<string>)
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_Create_TuiVision_Controls_ColorDisplaySelectionKind_System_String_System_String_System_String_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:TuiVision.Controls.ColorDisplaySelectionState.Create(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})
+  name.vb: Create(ColorDisplaySelectionKind, String, String, String, IEnumerable(Of String))
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.Create(TuiVision.Controls.ColorDisplaySelectionKind, string, string, string?, System.Collections.Generic.IEnumerable<string>)
+  fullName.vb: TuiVision.Controls.ColorDisplaySelectionState.Create(TuiVision.Controls.ColorDisplaySelectionKind, String, String, String, System.Collections.Generic.IEnumerable(Of String))
+  nameWithType: ColorDisplaySelectionState.Create(ColorDisplaySelectionKind, string, string, string?, IEnumerable<string>)
+  nameWithType.vb: ColorDisplaySelectionState.Create(ColorDisplaySelectionKind, String, String, String, IEnumerable(Of String))
+- uid: TuiVision.Controls.ColorDisplaySelectionState.Create*
+  name: Create
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_Create_
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.Create
+  isSpec: "True"
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.Create
+  nameWithType: ColorDisplaySelectionState.Create
+- uid: TuiVision.Controls.ColorDisplaySelectionState.CreateFallback(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String)
+  name: CreateFallback(ColorDisplaySelectionKind, string, string?, string)
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_CreateFallback_TuiVision_Controls_ColorDisplaySelectionKind_System_String_System_String_System_String_
+  commentId: M:TuiVision.Controls.ColorDisplaySelectionState.CreateFallback(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String)
+  name.vb: CreateFallback(ColorDisplaySelectionKind, String, String, String)
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.CreateFallback(TuiVision.Controls.ColorDisplaySelectionKind, string, string?, string)
+  fullName.vb: TuiVision.Controls.ColorDisplaySelectionState.CreateFallback(TuiVision.Controls.ColorDisplaySelectionKind, String, String, String)
+  nameWithType: ColorDisplaySelectionState.CreateFallback(ColorDisplaySelectionKind, string, string?, string)
+  nameWithType.vb: ColorDisplaySelectionState.CreateFallback(ColorDisplaySelectionKind, String, String, String)
+- uid: TuiVision.Controls.ColorDisplaySelectionState.CreateFallback*
+  name: CreateFallback
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_CreateFallback_
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.CreateFallback
+  isSpec: "True"
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.CreateFallback
+  nameWithType: ColorDisplaySelectionState.CreateFallback
+- uid: TuiVision.Controls.ColorDisplaySelectionState.FallbackReason
+  name: FallbackReason
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_FallbackReason
+  commentId: P:TuiVision.Controls.ColorDisplaySelectionState.FallbackReason
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.FallbackReason
+  nameWithType: ColorDisplaySelectionState.FallbackReason
+- uid: TuiVision.Controls.ColorDisplaySelectionState.FallbackReason*
+  name: FallbackReason
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_FallbackReason_
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.FallbackReason
+  isSpec: "True"
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.FallbackReason
+  nameWithType: ColorDisplaySelectionState.FallbackReason
+- uid: TuiVision.Controls.ColorDisplaySelectionState.Group
+  name: Group
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_Group
+  commentId: P:TuiVision.Controls.ColorDisplaySelectionState.Group
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.Group
+  nameWithType: ColorDisplaySelectionState.Group
+- uid: TuiVision.Controls.ColorDisplaySelectionState.Group*
+  name: Group
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_Group_
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.Group
+  isSpec: "True"
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.Group
+  nameWithType: ColorDisplaySelectionState.Group
+- uid: TuiVision.Controls.ColorDisplaySelectionState.HasFallback
+  name: HasFallback
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_HasFallback
+  commentId: P:TuiVision.Controls.ColorDisplaySelectionState.HasFallback
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.HasFallback
+  nameWithType: ColorDisplaySelectionState.HasFallback
+- uid: TuiVision.Controls.ColorDisplaySelectionState.HasFallback*
+  name: HasFallback
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_HasFallback_
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.HasFallback
+  isSpec: "True"
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.HasFallback
+  nameWithType: ColorDisplaySelectionState.HasFallback
+- uid: TuiVision.Controls.ColorDisplaySelectionState.PreviewValue
+  name: PreviewValue
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_PreviewValue
+  commentId: P:TuiVision.Controls.ColorDisplaySelectionState.PreviewValue
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.PreviewValue
+  nameWithType: ColorDisplaySelectionState.PreviewValue
+- uid: TuiVision.Controls.ColorDisplaySelectionState.PreviewValue*
+  name: PreviewValue
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_PreviewValue_
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.PreviewValue
+  isSpec: "True"
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.PreviewValue
+  nameWithType: ColorDisplaySelectionState.PreviewValue
+- uid: TuiVision.Controls.ColorDisplaySelectionState.SelectedValue
+  name: SelectedValue
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_SelectedValue
+  commentId: P:TuiVision.Controls.ColorDisplaySelectionState.SelectedValue
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.SelectedValue
+  nameWithType: ColorDisplaySelectionState.SelectedValue
+- uid: TuiVision.Controls.ColorDisplaySelectionState.SelectedValue*
+  name: SelectedValue
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_SelectedValue_
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.SelectedValue
+  isSpec: "True"
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.SelectedValue
+  nameWithType: ColorDisplaySelectionState.SelectedValue
+- uid: TuiVision.Controls.ColorDisplaySelectionState.SelectionKind
+  name: SelectionKind
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_SelectionKind
+  commentId: P:TuiVision.Controls.ColorDisplaySelectionState.SelectionKind
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.SelectionKind
+  nameWithType: ColorDisplaySelectionState.SelectionKind
+- uid: TuiVision.Controls.ColorDisplaySelectionState.SelectionKind*
+  name: SelectionKind
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_SelectionKind_
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.SelectionKind
+  isSpec: "True"
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.SelectionKind
+  nameWithType: ColorDisplaySelectionState.SelectionKind
+- uid: TuiVision.Controls.ColorDisplaySelectionState.SupportedOptions
+  name: SupportedOptions
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_SupportedOptions
+  commentId: P:TuiVision.Controls.ColorDisplaySelectionState.SupportedOptions
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.SupportedOptions
+  nameWithType: ColorDisplaySelectionState.SupportedOptions
+- uid: TuiVision.Controls.ColorDisplaySelectionState.SupportedOptions*
+  name: SupportedOptions
+  href: api/TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_SupportedOptions_
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.SupportedOptions
+  isSpec: "True"
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.SupportedOptions
+  nameWithType: ColorDisplaySelectionState.SupportedOptions
+- uid: TuiVision.Controls.DialogCommandBinding
+  name: DialogCommandBinding
+  href: api/TuiVision.Controls.DialogCommandBinding.html
+  commentId: T:TuiVision.Controls.DialogCommandBinding
+  fullName: TuiVision.Controls.DialogCommandBinding
+  nameWithType: DialogCommandBinding
+- uid: TuiVision.Controls.DialogCommandBinding.#ctor(System.UInt16,System.String,System.String,System.String)
+  name: DialogCommandBinding(ushort, string?, string, string)
+  href: api/TuiVision.Controls.DialogCommandBinding.html#TuiVision_Controls_DialogCommandBinding__ctor_System_UInt16_System_String_System_String_System_String_
+  commentId: M:TuiVision.Controls.DialogCommandBinding.#ctor(System.UInt16,System.String,System.String,System.String)
+  name.vb: New(UShort, String, String, String)
+  fullName: TuiVision.Controls.DialogCommandBinding.DialogCommandBinding(ushort, string?, string, string)
+  fullName.vb: TuiVision.Controls.DialogCommandBinding.New(UShort, String, String, String)
+  nameWithType: DialogCommandBinding.DialogCommandBinding(ushort, string?, string, string)
+  nameWithType.vb: DialogCommandBinding.New(UShort, String, String, String)
+- uid: TuiVision.Controls.DialogCommandBinding.#ctor*
+  name: DialogCommandBinding
+  href: api/TuiVision.Controls.DialogCommandBinding.html#TuiVision_Controls_DialogCommandBinding__ctor_
+  commentId: Overload:TuiVision.Controls.DialogCommandBinding.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.DialogCommandBinding.DialogCommandBinding
+  fullName.vb: TuiVision.Controls.DialogCommandBinding.New
+  nameWithType: DialogCommandBinding.DialogCommandBinding
+  nameWithType.vb: DialogCommandBinding.New
+- uid: TuiVision.Controls.DialogCommandBinding.CommandId
+  name: CommandId
+  href: api/TuiVision.Controls.DialogCommandBinding.html#TuiVision_Controls_DialogCommandBinding_CommandId
+  commentId: P:TuiVision.Controls.DialogCommandBinding.CommandId
+  fullName: TuiVision.Controls.DialogCommandBinding.CommandId
+  nameWithType: DialogCommandBinding.CommandId
+- uid: TuiVision.Controls.DialogCommandBinding.CommandId*
+  name: CommandId
+  href: api/TuiVision.Controls.DialogCommandBinding.html#TuiVision_Controls_DialogCommandBinding_CommandId_
+  commentId: Overload:TuiVision.Controls.DialogCommandBinding.CommandId
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogCommandBinding.CommandId
+  nameWithType: DialogCommandBinding.CommandId
+- uid: TuiVision.Controls.DialogCommandBinding.KeyboardTrigger
+  name: KeyboardTrigger
+  href: api/TuiVision.Controls.DialogCommandBinding.html#TuiVision_Controls_DialogCommandBinding_KeyboardTrigger
+  commentId: P:TuiVision.Controls.DialogCommandBinding.KeyboardTrigger
+  fullName: TuiVision.Controls.DialogCommandBinding.KeyboardTrigger
+  nameWithType: DialogCommandBinding.KeyboardTrigger
+- uid: TuiVision.Controls.DialogCommandBinding.KeyboardTrigger*
+  name: KeyboardTrigger
+  href: api/TuiVision.Controls.DialogCommandBinding.html#TuiVision_Controls_DialogCommandBinding_KeyboardTrigger_
+  commentId: Overload:TuiVision.Controls.DialogCommandBinding.KeyboardTrigger
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogCommandBinding.KeyboardTrigger
+  nameWithType: DialogCommandBinding.KeyboardTrigger
+- uid: TuiVision.Controls.DialogCommandBinding.Meaning
+  name: Meaning
+  href: api/TuiVision.Controls.DialogCommandBinding.html#TuiVision_Controls_DialogCommandBinding_Meaning
+  commentId: P:TuiVision.Controls.DialogCommandBinding.Meaning
+  fullName: TuiVision.Controls.DialogCommandBinding.Meaning
+  nameWithType: DialogCommandBinding.Meaning
+- uid: TuiVision.Controls.DialogCommandBinding.Meaning*
+  name: Meaning
+  href: api/TuiVision.Controls.DialogCommandBinding.html#TuiVision_Controls_DialogCommandBinding_Meaning_
+  commentId: Overload:TuiVision.Controls.DialogCommandBinding.Meaning
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogCommandBinding.Meaning
+  nameWithType: DialogCommandBinding.Meaning
+- uid: TuiVision.Controls.DialogCommandBinding.TargetControlId
+  name: TargetControlId
+  href: api/TuiVision.Controls.DialogCommandBinding.html#TuiVision_Controls_DialogCommandBinding_TargetControlId
+  commentId: P:TuiVision.Controls.DialogCommandBinding.TargetControlId
+  fullName: TuiVision.Controls.DialogCommandBinding.TargetControlId
+  nameWithType: DialogCommandBinding.TargetControlId
+- uid: TuiVision.Controls.DialogCommandBinding.TargetControlId*
+  name: TargetControlId
+  href: api/TuiVision.Controls.DialogCommandBinding.html#TuiVision_Controls_DialogCommandBinding_TargetControlId_
+  commentId: Overload:TuiVision.Controls.DialogCommandBinding.TargetControlId
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogCommandBinding.TargetControlId
+  nameWithType: DialogCommandBinding.TargetControlId
+- uid: TuiVision.Controls.DialogControlDescription
+  name: DialogControlDescription
+  href: api/TuiVision.Controls.DialogControlDescription.html
+  commentId: T:TuiVision.Controls.DialogControlDescription
+  fullName: TuiVision.Controls.DialogControlDescription
+  nameWithType: DialogControlDescription
+- uid: TuiVision.Controls.DialogControlDescription.#ctor(System.String,System.String,System.String,System.String,System.Boolean)
+  name: DialogControlDescription(string, string, string, string?, bool)
+  href: api/TuiVision.Controls.DialogControlDescription.html#TuiVision_Controls_DialogControlDescription__ctor_System_String_System_String_System_String_System_String_System_Boolean_
+  commentId: M:TuiVision.Controls.DialogControlDescription.#ctor(System.String,System.String,System.String,System.String,System.Boolean)
+  name.vb: New(String, String, String, String, Boolean)
+  fullName: TuiVision.Controls.DialogControlDescription.DialogControlDescription(string, string, string, string?, bool)
+  fullName.vb: TuiVision.Controls.DialogControlDescription.New(String, String, String, String, Boolean)
+  nameWithType: DialogControlDescription.DialogControlDescription(string, string, string, string?, bool)
+  nameWithType.vb: DialogControlDescription.New(String, String, String, String, Boolean)
+- uid: TuiVision.Controls.DialogControlDescription.#ctor*
+  name: DialogControlDescription
+  href: api/TuiVision.Controls.DialogControlDescription.html#TuiVision_Controls_DialogControlDescription__ctor_
+  commentId: Overload:TuiVision.Controls.DialogControlDescription.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.DialogControlDescription.DialogControlDescription
+  fullName.vb: TuiVision.Controls.DialogControlDescription.New
+  nameWithType: DialogControlDescription.DialogControlDescription
+  nameWithType.vb: DialogControlDescription.New
+- uid: TuiVision.Controls.DialogControlDescription.CanFocus
+  name: CanFocus
+  href: api/TuiVision.Controls.DialogControlDescription.html#TuiVision_Controls_DialogControlDescription_CanFocus
+  commentId: P:TuiVision.Controls.DialogControlDescription.CanFocus
+  fullName: TuiVision.Controls.DialogControlDescription.CanFocus
+  nameWithType: DialogControlDescription.CanFocus
+- uid: TuiVision.Controls.DialogControlDescription.CanFocus*
+  name: CanFocus
+  href: api/TuiVision.Controls.DialogControlDescription.html#TuiVision_Controls_DialogControlDescription_CanFocus_
+  commentId: Overload:TuiVision.Controls.DialogControlDescription.CanFocus
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogControlDescription.CanFocus
+  nameWithType: DialogControlDescription.CanFocus
+- uid: TuiVision.Controls.DialogControlDescription.ControlId
+  name: ControlId
+  href: api/TuiVision.Controls.DialogControlDescription.html#TuiVision_Controls_DialogControlDescription_ControlId
+  commentId: P:TuiVision.Controls.DialogControlDescription.ControlId
+  fullName: TuiVision.Controls.DialogControlDescription.ControlId
+  nameWithType: DialogControlDescription.ControlId
+- uid: TuiVision.Controls.DialogControlDescription.ControlId*
+  name: ControlId
+  href: api/TuiVision.Controls.DialogControlDescription.html#TuiVision_Controls_DialogControlDescription_ControlId_
+  commentId: Overload:TuiVision.Controls.DialogControlDescription.ControlId
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogControlDescription.ControlId
+  nameWithType: DialogControlDescription.ControlId
+- uid: TuiVision.Controls.DialogControlDescription.InitialValue
+  name: InitialValue
+  href: api/TuiVision.Controls.DialogControlDescription.html#TuiVision_Controls_DialogControlDescription_InitialValue
+  commentId: P:TuiVision.Controls.DialogControlDescription.InitialValue
+  fullName: TuiVision.Controls.DialogControlDescription.InitialValue
+  nameWithType: DialogControlDescription.InitialValue
+- uid: TuiVision.Controls.DialogControlDescription.InitialValue*
+  name: InitialValue
+  href: api/TuiVision.Controls.DialogControlDescription.html#TuiVision_Controls_DialogControlDescription_InitialValue_
+  commentId: Overload:TuiVision.Controls.DialogControlDescription.InitialValue
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogControlDescription.InitialValue
+  nameWithType: DialogControlDescription.InitialValue
+- uid: TuiVision.Controls.DialogControlDescription.Label
+  name: Label
+  href: api/TuiVision.Controls.DialogControlDescription.html#TuiVision_Controls_DialogControlDescription_Label
+  commentId: P:TuiVision.Controls.DialogControlDescription.Label
+  fullName: TuiVision.Controls.DialogControlDescription.Label
+  nameWithType: DialogControlDescription.Label
+- uid: TuiVision.Controls.DialogControlDescription.Label*
+  name: Label
+  href: api/TuiVision.Controls.DialogControlDescription.html#TuiVision_Controls_DialogControlDescription_Label_
+  commentId: Overload:TuiVision.Controls.DialogControlDescription.Label
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogControlDescription.Label
+  nameWithType: DialogControlDescription.Label
+- uid: TuiVision.Controls.DialogControlDescription.Role
+  name: Role
+  href: api/TuiVision.Controls.DialogControlDescription.html#TuiVision_Controls_DialogControlDescription_Role
+  commentId: P:TuiVision.Controls.DialogControlDescription.Role
+  fullName: TuiVision.Controls.DialogControlDescription.Role
+  nameWithType: DialogControlDescription.Role
+- uid: TuiVision.Controls.DialogControlDescription.Role*
+  name: Role
+  href: api/TuiVision.Controls.DialogControlDescription.html#TuiVision_Controls_DialogControlDescription_Role_
+  commentId: Overload:TuiVision.Controls.DialogControlDescription.Role
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogControlDescription.Role
+  nameWithType: DialogControlDescription.Role
+- uid: TuiVision.Controls.DialogControlRoles
+  name: DialogControlRoles
+  href: api/TuiVision.Controls.DialogControlRoles.html
+  commentId: T:TuiVision.Controls.DialogControlRoles
+  fullName: TuiVision.Controls.DialogControlRoles
+  nameWithType: DialogControlRoles
+- uid: TuiVision.Controls.DialogControlRoles.Button
+  name: Button
+  href: api/TuiVision.Controls.DialogControlRoles.html#TuiVision_Controls_DialogControlRoles_Button
+  commentId: F:TuiVision.Controls.DialogControlRoles.Button
+  fullName: TuiVision.Controls.DialogControlRoles.Button
+  nameWithType: DialogControlRoles.Button
+- uid: TuiVision.Controls.DialogControlRoles.CheckBox
+  name: CheckBox
+  href: api/TuiVision.Controls.DialogControlRoles.html#TuiVision_Controls_DialogControlRoles_CheckBox
+  commentId: F:TuiVision.Controls.DialogControlRoles.CheckBox
+  fullName: TuiVision.Controls.DialogControlRoles.CheckBox
+  nameWithType: DialogControlRoles.CheckBox
+- uid: TuiVision.Controls.DialogControlRoles.InputLine
+  name: InputLine
+  href: api/TuiVision.Controls.DialogControlRoles.html#TuiVision_Controls_DialogControlRoles_InputLine
+  commentId: F:TuiVision.Controls.DialogControlRoles.InputLine
+  fullName: TuiVision.Controls.DialogControlRoles.InputLine
+  nameWithType: DialogControlRoles.InputLine
+- uid: TuiVision.Controls.DialogControlRoles.ListBox
+  name: ListBox
+  href: api/TuiVision.Controls.DialogControlRoles.html#TuiVision_Controls_DialogControlRoles_ListBox
+  commentId: F:TuiVision.Controls.DialogControlRoles.ListBox
+  fullName: TuiVision.Controls.DialogControlRoles.ListBox
+  nameWithType: DialogControlRoles.ListBox
+- uid: TuiVision.Controls.DialogControlRoles.StaticText
+  name: StaticText
+  href: api/TuiVision.Controls.DialogControlRoles.html#TuiVision_Controls_DialogControlRoles_StaticText
+  commentId: F:TuiVision.Controls.DialogControlRoles.StaticText
+  fullName: TuiVision.Controls.DialogControlRoles.StaticText
+  nameWithType: DialogControlRoles.StaticText
+- uid: TuiVision.Controls.DialogDescription
+  name: DialogDescription
+  href: api/TuiVision.Controls.DialogDescription.html
+  commentId: T:TuiVision.Controls.DialogDescription
+  fullName: TuiVision.Controls.DialogDescription
+  nameWithType: DialogDescription
+- uid: TuiVision.Controls.DialogDescription.#ctor(System.String,System.Int32,System.String,System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogControlDescription},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogCommandBinding})
+  name: DialogDescription(string, int, string, IEnumerable<DialogControlDescription>, IEnumerable<string>, IEnumerable<DialogCommandBinding>)
+  href: api/TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription__ctor_System_String_System_Int32_System_String_System_Collections_Generic_IEnumerable_TuiVision_Controls_DialogControlDescription__System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_TuiVision_Controls_DialogCommandBinding__
+  commentId: M:TuiVision.Controls.DialogDescription.#ctor(System.String,System.Int32,System.String,System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogControlDescription},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogCommandBinding})
+  name.vb: New(String, Integer, String, IEnumerable(Of DialogControlDescription), IEnumerable(Of String), IEnumerable(Of DialogCommandBinding))
+  fullName: TuiVision.Controls.DialogDescription.DialogDescription(string, int, string, System.Collections.Generic.IEnumerable<TuiVision.Controls.DialogControlDescription>, System.Collections.Generic.IEnumerable<string>, System.Collections.Generic.IEnumerable<TuiVision.Controls.DialogCommandBinding>)
+  fullName.vb: TuiVision.Controls.DialogDescription.New(String, Integer, String, System.Collections.Generic.IEnumerable(Of TuiVision.Controls.DialogControlDescription), System.Collections.Generic.IEnumerable(Of String), System.Collections.Generic.IEnumerable(Of TuiVision.Controls.DialogCommandBinding))
+  nameWithType: DialogDescription.DialogDescription(string, int, string, IEnumerable<DialogControlDescription>, IEnumerable<string>, IEnumerable<DialogCommandBinding>)
+  nameWithType.vb: DialogDescription.New(String, Integer, String, IEnumerable(Of DialogControlDescription), IEnumerable(Of String), IEnumerable(Of DialogCommandBinding))
+- uid: TuiVision.Controls.DialogDescription.#ctor*
+  name: DialogDescription
+  href: api/TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription__ctor_
+  commentId: Overload:TuiVision.Controls.DialogDescription.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.DialogDescription.DialogDescription
+  fullName.vb: TuiVision.Controls.DialogDescription.New
+  nameWithType: DialogDescription.DialogDescription
+  nameWithType.vb: DialogDescription.New
+- uid: TuiVision.Controls.DialogDescription.CommandBindings
+  name: CommandBindings
+  href: api/TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_CommandBindings
+  commentId: P:TuiVision.Controls.DialogDescription.CommandBindings
+  fullName: TuiVision.Controls.DialogDescription.CommandBindings
+  nameWithType: DialogDescription.CommandBindings
+- uid: TuiVision.Controls.DialogDescription.CommandBindings*
+  name: CommandBindings
+  href: api/TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_CommandBindings_
+  commentId: Overload:TuiVision.Controls.DialogDescription.CommandBindings
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogDescription.CommandBindings
+  nameWithType: DialogDescription.CommandBindings
+- uid: TuiVision.Controls.DialogDescription.Controls
+  name: Controls
+  href: api/TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_Controls
+  commentId: P:TuiVision.Controls.DialogDescription.Controls
+  fullName: TuiVision.Controls.DialogDescription.Controls
+  nameWithType: DialogDescription.Controls
+- uid: TuiVision.Controls.DialogDescription.Controls*
+  name: Controls
+  href: api/TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_Controls_
+  commentId: Overload:TuiVision.Controls.DialogDescription.Controls
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogDescription.Controls
+  nameWithType: DialogDescription.Controls
+- uid: TuiVision.Controls.DialogDescription.DescriptionId
+  name: DescriptionId
+  href: api/TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_DescriptionId
+  commentId: P:TuiVision.Controls.DialogDescription.DescriptionId
+  fullName: TuiVision.Controls.DialogDescription.DescriptionId
+  nameWithType: DialogDescription.DescriptionId
+- uid: TuiVision.Controls.DialogDescription.DescriptionId*
+  name: DescriptionId
+  href: api/TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_DescriptionId_
+  commentId: Overload:TuiVision.Controls.DialogDescription.DescriptionId
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogDescription.DescriptionId
+  nameWithType: DialogDescription.DescriptionId
+- uid: TuiVision.Controls.DialogDescription.NavigationOrder
+  name: NavigationOrder
+  href: api/TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_NavigationOrder
+  commentId: P:TuiVision.Controls.DialogDescription.NavigationOrder
+  fullName: TuiVision.Controls.DialogDescription.NavigationOrder
+  nameWithType: DialogDescription.NavigationOrder
+- uid: TuiVision.Controls.DialogDescription.NavigationOrder*
+  name: NavigationOrder
+  href: api/TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_NavigationOrder_
+  commentId: Overload:TuiVision.Controls.DialogDescription.NavigationOrder
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogDescription.NavigationOrder
+  nameWithType: DialogDescription.NavigationOrder
+- uid: TuiVision.Controls.DialogDescription.Title
+  name: Title
+  href: api/TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_Title
+  commentId: P:TuiVision.Controls.DialogDescription.Title
+  fullName: TuiVision.Controls.DialogDescription.Title
+  nameWithType: DialogDescription.Title
+- uid: TuiVision.Controls.DialogDescription.Title*
+  name: Title
+  href: api/TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_Title_
+  commentId: Overload:TuiVision.Controls.DialogDescription.Title
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogDescription.Title
+  nameWithType: DialogDescription.Title
+- uid: TuiVision.Controls.DialogDescription.Version
+  name: Version
+  href: api/TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_Version
+  commentId: P:TuiVision.Controls.DialogDescription.Version
+  fullName: TuiVision.Controls.DialogDescription.Version
+  nameWithType: DialogDescription.Version
+- uid: TuiVision.Controls.DialogDescription.Version*
+  name: Version
+  href: api/TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_Version_
+  commentId: Overload:TuiVision.Controls.DialogDescription.Version
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogDescription.Version
+  nameWithType: DialogDescription.Version
+- uid: TuiVision.Controls.DialogDescriptionFactory
+  name: DialogDescriptionFactory
+  href: api/TuiVision.Controls.DialogDescriptionFactory.html
+  commentId: T:TuiVision.Controls.DialogDescriptionFactory
+  fullName: TuiVision.Controls.DialogDescriptionFactory
+  nameWithType: DialogDescriptionFactory
+- uid: TuiVision.Controls.DialogDescriptionFactory.CreateRuntimeDialog(TuiVision.Controls.DialogDescription)
+  name: CreateRuntimeDialog(DialogDescription)
+  href: api/TuiVision.Controls.DialogDescriptionFactory.html#TuiVision_Controls_DialogDescriptionFactory_CreateRuntimeDialog_TuiVision_Controls_DialogDescription_
+  commentId: M:TuiVision.Controls.DialogDescriptionFactory.CreateRuntimeDialog(TuiVision.Controls.DialogDescription)
+  fullName: TuiVision.Controls.DialogDescriptionFactory.CreateRuntimeDialog(TuiVision.Controls.DialogDescription)
+  nameWithType: DialogDescriptionFactory.CreateRuntimeDialog(DialogDescription)
+- uid: TuiVision.Controls.DialogDescriptionFactory.CreateRuntimeDialog*
+  name: CreateRuntimeDialog
+  href: api/TuiVision.Controls.DialogDescriptionFactory.html#TuiVision_Controls_DialogDescriptionFactory_CreateRuntimeDialog_
+  commentId: Overload:TuiVision.Controls.DialogDescriptionFactory.CreateRuntimeDialog
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogDescriptionFactory.CreateRuntimeDialog
+  nameWithType: DialogDescriptionFactory.CreateRuntimeDialog
+- uid: TuiVision.Controls.DialogDescriptionPersistenceAdapter
+  name: DialogDescriptionPersistenceAdapter
+  href: api/TuiVision.Controls.DialogDescriptionPersistenceAdapter.html
+  commentId: T:TuiVision.Controls.DialogDescriptionPersistenceAdapter
+  fullName: TuiVision.Controls.DialogDescriptionPersistenceAdapter
+  nameWithType: DialogDescriptionPersistenceAdapter
+- uid: TuiVision.Controls.DialogDescriptionPersistenceAdapter.FromRecord(TuiVision.Serialization.TDialogDescriptionRecord)
+  name: FromRecord(TDialogDescriptionRecord)
+  href: api/TuiVision.Controls.DialogDescriptionPersistenceAdapter.html#TuiVision_Controls_DialogDescriptionPersistenceAdapter_FromRecord_TuiVision_Serialization_TDialogDescriptionRecord_
+  commentId: M:TuiVision.Controls.DialogDescriptionPersistenceAdapter.FromRecord(TuiVision.Serialization.TDialogDescriptionRecord)
+  fullName: TuiVision.Controls.DialogDescriptionPersistenceAdapter.FromRecord(TuiVision.Serialization.TDialogDescriptionRecord)
+  nameWithType: DialogDescriptionPersistenceAdapter.FromRecord(TDialogDescriptionRecord)
+- uid: TuiVision.Controls.DialogDescriptionPersistenceAdapter.FromRecord*
+  name: FromRecord
+  href: api/TuiVision.Controls.DialogDescriptionPersistenceAdapter.html#TuiVision_Controls_DialogDescriptionPersistenceAdapter_FromRecord_
+  commentId: Overload:TuiVision.Controls.DialogDescriptionPersistenceAdapter.FromRecord
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogDescriptionPersistenceAdapter.FromRecord
+  nameWithType: DialogDescriptionPersistenceAdapter.FromRecord
+- uid: TuiVision.Controls.DialogDescriptionPersistenceAdapter.ToRecord(TuiVision.Controls.DialogDescription)
+  name: ToRecord(DialogDescription)
+  href: api/TuiVision.Controls.DialogDescriptionPersistenceAdapter.html#TuiVision_Controls_DialogDescriptionPersistenceAdapter_ToRecord_TuiVision_Controls_DialogDescription_
+  commentId: M:TuiVision.Controls.DialogDescriptionPersistenceAdapter.ToRecord(TuiVision.Controls.DialogDescription)
+  fullName: TuiVision.Controls.DialogDescriptionPersistenceAdapter.ToRecord(TuiVision.Controls.DialogDescription)
+  nameWithType: DialogDescriptionPersistenceAdapter.ToRecord(DialogDescription)
+- uid: TuiVision.Controls.DialogDescriptionPersistenceAdapter.ToRecord*
+  name: ToRecord
+  href: api/TuiVision.Controls.DialogDescriptionPersistenceAdapter.html#TuiVision_Controls_DialogDescriptionPersistenceAdapter_ToRecord_
+  commentId: Overload:TuiVision.Controls.DialogDescriptionPersistenceAdapter.ToRecord
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogDescriptionPersistenceAdapter.ToRecord
+  nameWithType: DialogDescriptionPersistenceAdapter.ToRecord
+- uid: TuiVision.Controls.DialogDescriptionValidationResult
+  name: DialogDescriptionValidationResult
+  href: api/TuiVision.Controls.DialogDescriptionValidationResult.html
+  commentId: T:TuiVision.Controls.DialogDescriptionValidationResult
+  fullName: TuiVision.Controls.DialogDescriptionValidationResult
+  nameWithType: DialogDescriptionValidationResult
+- uid: TuiVision.Controls.DialogDescriptionValidationResult.#ctor(System.Collections.Generic.IReadOnlyList{TuiVision.Controls.StandardDialogValidationMessage})
+  name: DialogDescriptionValidationResult(IReadOnlyList<StandardDialogValidationMessage>)
+  href: api/TuiVision.Controls.DialogDescriptionValidationResult.html#TuiVision_Controls_DialogDescriptionValidationResult__ctor_System_Collections_Generic_IReadOnlyList_TuiVision_Controls_StandardDialogValidationMessage__
+  commentId: M:TuiVision.Controls.DialogDescriptionValidationResult.#ctor(System.Collections.Generic.IReadOnlyList{TuiVision.Controls.StandardDialogValidationMessage})
+  name.vb: New(IReadOnlyList(Of StandardDialogValidationMessage))
+  fullName: TuiVision.Controls.DialogDescriptionValidationResult.DialogDescriptionValidationResult(System.Collections.Generic.IReadOnlyList<TuiVision.Controls.StandardDialogValidationMessage>)
+  fullName.vb: TuiVision.Controls.DialogDescriptionValidationResult.New(System.Collections.Generic.IReadOnlyList(Of TuiVision.Controls.StandardDialogValidationMessage))
+  nameWithType: DialogDescriptionValidationResult.DialogDescriptionValidationResult(IReadOnlyList<StandardDialogValidationMessage>)
+  nameWithType.vb: DialogDescriptionValidationResult.New(IReadOnlyList(Of StandardDialogValidationMessage))
+- uid: TuiVision.Controls.DialogDescriptionValidationResult.#ctor*
+  name: DialogDescriptionValidationResult
+  href: api/TuiVision.Controls.DialogDescriptionValidationResult.html#TuiVision_Controls_DialogDescriptionValidationResult__ctor_
+  commentId: Overload:TuiVision.Controls.DialogDescriptionValidationResult.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.DialogDescriptionValidationResult.DialogDescriptionValidationResult
+  fullName.vb: TuiVision.Controls.DialogDescriptionValidationResult.New
+  nameWithType: DialogDescriptionValidationResult.DialogDescriptionValidationResult
+  nameWithType.vb: DialogDescriptionValidationResult.New
+- uid: TuiVision.Controls.DialogDescriptionValidationResult.IsValid
+  name: IsValid
+  href: api/TuiVision.Controls.DialogDescriptionValidationResult.html#TuiVision_Controls_DialogDescriptionValidationResult_IsValid
+  commentId: P:TuiVision.Controls.DialogDescriptionValidationResult.IsValid
+  fullName: TuiVision.Controls.DialogDescriptionValidationResult.IsValid
+  nameWithType: DialogDescriptionValidationResult.IsValid
+- uid: TuiVision.Controls.DialogDescriptionValidationResult.IsValid*
+  name: IsValid
+  href: api/TuiVision.Controls.DialogDescriptionValidationResult.html#TuiVision_Controls_DialogDescriptionValidationResult_IsValid_
+  commentId: Overload:TuiVision.Controls.DialogDescriptionValidationResult.IsValid
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogDescriptionValidationResult.IsValid
+  nameWithType: DialogDescriptionValidationResult.IsValid
+- uid: TuiVision.Controls.DialogDescriptionValidationResult.Messages
+  name: Messages
+  href: api/TuiVision.Controls.DialogDescriptionValidationResult.html#TuiVision_Controls_DialogDescriptionValidationResult_Messages
+  commentId: P:TuiVision.Controls.DialogDescriptionValidationResult.Messages
+  fullName: TuiVision.Controls.DialogDescriptionValidationResult.Messages
+  nameWithType: DialogDescriptionValidationResult.Messages
+- uid: TuiVision.Controls.DialogDescriptionValidationResult.Messages*
+  name: Messages
+  href: api/TuiVision.Controls.DialogDescriptionValidationResult.html#TuiVision_Controls_DialogDescriptionValidationResult_Messages_
+  commentId: Overload:TuiVision.Controls.DialogDescriptionValidationResult.Messages
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogDescriptionValidationResult.Messages
+  nameWithType: DialogDescriptionValidationResult.Messages
+- uid: TuiVision.Controls.DialogDescriptionValidationResult.Success
+  name: Success
+  href: api/TuiVision.Controls.DialogDescriptionValidationResult.html#TuiVision_Controls_DialogDescriptionValidationResult_Success
+  commentId: P:TuiVision.Controls.DialogDescriptionValidationResult.Success
+  fullName: TuiVision.Controls.DialogDescriptionValidationResult.Success
+  nameWithType: DialogDescriptionValidationResult.Success
+- uid: TuiVision.Controls.DialogDescriptionValidationResult.Success*
+  name: Success
+  href: api/TuiVision.Controls.DialogDescriptionValidationResult.html#TuiVision_Controls_DialogDescriptionValidationResult_Success_
+  commentId: Overload:TuiVision.Controls.DialogDescriptionValidationResult.Success
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogDescriptionValidationResult.Success
+  nameWithType: DialogDescriptionValidationResult.Success
+- uid: TuiVision.Controls.DialogDescriptionValidator
+  name: DialogDescriptionValidator
+  href: api/TuiVision.Controls.DialogDescriptionValidator.html
+  commentId: T:TuiVision.Controls.DialogDescriptionValidator
+  fullName: TuiVision.Controls.DialogDescriptionValidator
+  nameWithType: DialogDescriptionValidator
+- uid: TuiVision.Controls.DialogDescriptionValidator.Validate(TuiVision.Controls.DialogDescription)
+  name: Validate(DialogDescription)
+  href: api/TuiVision.Controls.DialogDescriptionValidator.html#TuiVision_Controls_DialogDescriptionValidator_Validate_TuiVision_Controls_DialogDescription_
+  commentId: M:TuiVision.Controls.DialogDescriptionValidator.Validate(TuiVision.Controls.DialogDescription)
+  fullName: TuiVision.Controls.DialogDescriptionValidator.Validate(TuiVision.Controls.DialogDescription)
+  nameWithType: DialogDescriptionValidator.Validate(DialogDescription)
+- uid: TuiVision.Controls.DialogDescriptionValidator.Validate*
+  name: Validate
+  href: api/TuiVision.Controls.DialogDescriptionValidator.html#TuiVision_Controls_DialogDescriptionValidator_Validate_
+  commentId: Overload:TuiVision.Controls.DialogDescriptionValidator.Validate
+  isSpec: "True"
+  fullName: TuiVision.Controls.DialogDescriptionValidator.Validate
+  nameWithType: DialogDescriptionValidator.Validate
+- uid: TuiVision.Controls.FileDecisionKind
+  name: FileDecisionKind
+  href: api/TuiVision.Controls.FileDecisionKind.html
+  commentId: T:TuiVision.Controls.FileDecisionKind
+  fullName: TuiVision.Controls.FileDecisionKind
+  nameWithType: FileDecisionKind
+- uid: TuiVision.Controls.FileDecisionKind.Canceled
+  name: Canceled
+  href: api/TuiVision.Controls.FileDecisionKind.html#TuiVision_Controls_FileDecisionKind_Canceled
+  commentId: F:TuiVision.Controls.FileDecisionKind.Canceled
+  fullName: TuiVision.Controls.FileDecisionKind.Canceled
+  nameWithType: FileDecisionKind.Canceled
+- uid: TuiVision.Controls.FileDecisionKind.Open
+  name: Open
+  href: api/TuiVision.Controls.FileDecisionKind.html#TuiVision_Controls_FileDecisionKind_Open
+  commentId: F:TuiVision.Controls.FileDecisionKind.Open
+  fullName: TuiVision.Controls.FileDecisionKind.Open
+  nameWithType: FileDecisionKind.Open
+- uid: TuiVision.Controls.FileDecisionKind.SaveTarget
+  name: SaveTarget
+  href: api/TuiVision.Controls.FileDecisionKind.html#TuiVision_Controls_FileDecisionKind_SaveTarget
+  commentId: F:TuiVision.Controls.FileDecisionKind.SaveTarget
+  fullName: TuiVision.Controls.FileDecisionKind.SaveTarget
+  nameWithType: FileDecisionKind.SaveTarget
+- uid: TuiVision.Controls.FileDecisionKind.Select
+  name: Select
+  href: api/TuiVision.Controls.FileDecisionKind.html#TuiVision_Controls_FileDecisionKind_Select
+  commentId: F:TuiVision.Controls.FileDecisionKind.Select
+  fullName: TuiVision.Controls.FileDecisionKind.Select
+  nameWithType: FileDecisionKind.Select
+- uid: TuiVision.Controls.FileSelectionTargetKind
+  name: FileSelectionTargetKind
+  href: api/TuiVision.Controls.FileSelectionTargetKind.html
+  commentId: T:TuiVision.Controls.FileSelectionTargetKind
+  fullName: TuiVision.Controls.FileSelectionTargetKind
+  nameWithType: FileSelectionTargetKind
+- uid: TuiVision.Controls.FileSelectionTargetKind.Directory
+  name: Directory
+  href: api/TuiVision.Controls.FileSelectionTargetKind.html#TuiVision_Controls_FileSelectionTargetKind_Directory
+  commentId: F:TuiVision.Controls.FileSelectionTargetKind.Directory
+  fullName: TuiVision.Controls.FileSelectionTargetKind.Directory
+  nameWithType: FileSelectionTargetKind.Directory
+- uid: TuiVision.Controls.FileSelectionTargetKind.File
+  name: File
+  href: api/TuiVision.Controls.FileSelectionTargetKind.html#TuiVision_Controls_FileSelectionTargetKind_File
+  commentId: F:TuiVision.Controls.FileSelectionTargetKind.File
+  fullName: TuiVision.Controls.FileSelectionTargetKind.File
+  nameWithType: FileSelectionTargetKind.File
+- uid: TuiVision.Controls.FileSelectionTargetKind.None
+  name: None
+  href: api/TuiVision.Controls.FileSelectionTargetKind.html#TuiVision_Controls_FileSelectionTargetKind_None
+  commentId: F:TuiVision.Controls.FileSelectionTargetKind.None
+  fullName: TuiVision.Controls.FileSelectionTargetKind.None
+  nameWithType: FileSelectionTargetKind.None
 - uid: TuiVision.Controls.Internal
   name: TuiVision.Controls.Internal
   href: api/TuiVision.Controls.Internal.html
@@ -475,6 +1173,329 @@ references:
   commentId: F:TuiVision.Controls.ShellCommandIds.cmYes
   fullName: TuiVision.Controls.ShellCommandIds.cmYes
   nameWithType: ShellCommandIds.cmYes
+- uid: TuiVision.Controls.StandardDialogFlowState
+  name: StandardDialogFlowState
+  href: api/TuiVision.Controls.StandardDialogFlowState.html
+  commentId: T:TuiVision.Controls.StandardDialogFlowState
+  fullName: TuiVision.Controls.StandardDialogFlowState
+  nameWithType: StandardDialogFlowState
+- uid: TuiVision.Controls.StandardDialogFlowState.#ctor(TuiVision.Controls.StandardDialogKind,TuiVision.Controls.StandardDialogInteractionState,System.Boolean,System.Collections.Generic.IReadOnlyList{TuiVision.Controls.StandardDialogValidationMessage},System.Object)
+  name: StandardDialogFlowState(StandardDialogKind, StandardDialogInteractionState, bool, IReadOnlyList<StandardDialogValidationMessage>, object?)
+  href: api/TuiVision.Controls.StandardDialogFlowState.html#TuiVision_Controls_StandardDialogFlowState__ctor_TuiVision_Controls_StandardDialogKind_TuiVision_Controls_StandardDialogInteractionState_System_Boolean_System_Collections_Generic_IReadOnlyList_TuiVision_Controls_StandardDialogValidationMessage__System_Object_
+  commentId: M:TuiVision.Controls.StandardDialogFlowState.#ctor(TuiVision.Controls.StandardDialogKind,TuiVision.Controls.StandardDialogInteractionState,System.Boolean,System.Collections.Generic.IReadOnlyList{TuiVision.Controls.StandardDialogValidationMessage},System.Object)
+  name.vb: New(StandardDialogKind, StandardDialogInteractionState, Boolean, IReadOnlyList(Of StandardDialogValidationMessage), Object)
+  fullName: TuiVision.Controls.StandardDialogFlowState.StandardDialogFlowState(TuiVision.Controls.StandardDialogKind, TuiVision.Controls.StandardDialogInteractionState, bool, System.Collections.Generic.IReadOnlyList<TuiVision.Controls.StandardDialogValidationMessage>, object?)
+  fullName.vb: TuiVision.Controls.StandardDialogFlowState.New(TuiVision.Controls.StandardDialogKind, TuiVision.Controls.StandardDialogInteractionState, Boolean, System.Collections.Generic.IReadOnlyList(Of TuiVision.Controls.StandardDialogValidationMessage), Object)
+  nameWithType: StandardDialogFlowState.StandardDialogFlowState(StandardDialogKind, StandardDialogInteractionState, bool, IReadOnlyList<StandardDialogValidationMessage>, object?)
+  nameWithType.vb: StandardDialogFlowState.New(StandardDialogKind, StandardDialogInteractionState, Boolean, IReadOnlyList(Of StandardDialogValidationMessage), Object)
+- uid: TuiVision.Controls.StandardDialogFlowState.#ctor*
+  name: StandardDialogFlowState
+  href: api/TuiVision.Controls.StandardDialogFlowState.html#TuiVision_Controls_StandardDialogFlowState__ctor_
+  commentId: Overload:TuiVision.Controls.StandardDialogFlowState.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.StandardDialogFlowState.StandardDialogFlowState
+  fullName.vb: TuiVision.Controls.StandardDialogFlowState.New
+  nameWithType: StandardDialogFlowState.StandardDialogFlowState
+  nameWithType.vb: StandardDialogFlowState.New
+- uid: TuiVision.Controls.StandardDialogFlowState.Active(TuiVision.Controls.StandardDialogKind)
+  name: Active(StandardDialogKind)
+  href: api/TuiVision.Controls.StandardDialogFlowState.html#TuiVision_Controls_StandardDialogFlowState_Active_TuiVision_Controls_StandardDialogKind_
+  commentId: M:TuiVision.Controls.StandardDialogFlowState.Active(TuiVision.Controls.StandardDialogKind)
+  fullName: TuiVision.Controls.StandardDialogFlowState.Active(TuiVision.Controls.StandardDialogKind)
+  nameWithType: StandardDialogFlowState.Active(StandardDialogKind)
+- uid: TuiVision.Controls.StandardDialogFlowState.Active*
+  name: Active
+  href: api/TuiVision.Controls.StandardDialogFlowState.html#TuiVision_Controls_StandardDialogFlowState_Active_
+  commentId: Overload:TuiVision.Controls.StandardDialogFlowState.Active
+  isSpec: "True"
+  fullName: TuiVision.Controls.StandardDialogFlowState.Active
+  nameWithType: StandardDialogFlowState.Active
+- uid: TuiVision.Controls.StandardDialogFlowState.Decision
+  name: Decision
+  href: api/TuiVision.Controls.StandardDialogFlowState.html#TuiVision_Controls_StandardDialogFlowState_Decision
+  commentId: P:TuiVision.Controls.StandardDialogFlowState.Decision
+  fullName: TuiVision.Controls.StandardDialogFlowState.Decision
+  nameWithType: StandardDialogFlowState.Decision
+- uid: TuiVision.Controls.StandardDialogFlowState.Decision*
+  name: Decision
+  href: api/TuiVision.Controls.StandardDialogFlowState.html#TuiVision_Controls_StandardDialogFlowState_Decision_
+  commentId: Overload:TuiVision.Controls.StandardDialogFlowState.Decision
+  isSpec: "True"
+  fullName: TuiVision.Controls.StandardDialogFlowState.Decision
+  nameWithType: StandardDialogFlowState.Decision
+- uid: TuiVision.Controls.StandardDialogFlowState.DialogKind
+  name: DialogKind
+  href: api/TuiVision.Controls.StandardDialogFlowState.html#TuiVision_Controls_StandardDialogFlowState_DialogKind
+  commentId: P:TuiVision.Controls.StandardDialogFlowState.DialogKind
+  fullName: TuiVision.Controls.StandardDialogFlowState.DialogKind
+  nameWithType: StandardDialogFlowState.DialogKind
+- uid: TuiVision.Controls.StandardDialogFlowState.DialogKind*
+  name: DialogKind
+  href: api/TuiVision.Controls.StandardDialogFlowState.html#TuiVision_Controls_StandardDialogFlowState_DialogKind_
+  commentId: Overload:TuiVision.Controls.StandardDialogFlowState.DialogKind
+  isSpec: "True"
+  fullName: TuiVision.Controls.StandardDialogFlowState.DialogKind
+  nameWithType: StandardDialogFlowState.DialogKind
+- uid: TuiVision.Controls.StandardDialogFlowState.InteractionState
+  name: InteractionState
+  href: api/TuiVision.Controls.StandardDialogFlowState.html#TuiVision_Controls_StandardDialogFlowState_InteractionState
+  commentId: P:TuiVision.Controls.StandardDialogFlowState.InteractionState
+  fullName: TuiVision.Controls.StandardDialogFlowState.InteractionState
+  nameWithType: StandardDialogFlowState.InteractionState
+- uid: TuiVision.Controls.StandardDialogFlowState.InteractionState*
+  name: InteractionState
+  href: api/TuiVision.Controls.StandardDialogFlowState.html#TuiVision_Controls_StandardDialogFlowState_InteractionState_
+  commentId: Overload:TuiVision.Controls.StandardDialogFlowState.InteractionState
+  isSpec: "True"
+  fullName: TuiVision.Controls.StandardDialogFlowState.InteractionState
+  nameWithType: StandardDialogFlowState.InteractionState
+- uid: TuiVision.Controls.StandardDialogFlowState.KeyboardReachable
+  name: KeyboardReachable
+  href: api/TuiVision.Controls.StandardDialogFlowState.html#TuiVision_Controls_StandardDialogFlowState_KeyboardReachable
+  commentId: P:TuiVision.Controls.StandardDialogFlowState.KeyboardReachable
+  fullName: TuiVision.Controls.StandardDialogFlowState.KeyboardReachable
+  nameWithType: StandardDialogFlowState.KeyboardReachable
+- uid: TuiVision.Controls.StandardDialogFlowState.KeyboardReachable*
+  name: KeyboardReachable
+  href: api/TuiVision.Controls.StandardDialogFlowState.html#TuiVision_Controls_StandardDialogFlowState_KeyboardReachable_
+  commentId: Overload:TuiVision.Controls.StandardDialogFlowState.KeyboardReachable
+  isSpec: "True"
+  fullName: TuiVision.Controls.StandardDialogFlowState.KeyboardReachable
+  nameWithType: StandardDialogFlowState.KeyboardReachable
+- uid: TuiVision.Controls.StandardDialogFlowState.ValidationMessages
+  name: ValidationMessages
+  href: api/TuiVision.Controls.StandardDialogFlowState.html#TuiVision_Controls_StandardDialogFlowState_ValidationMessages
+  commentId: P:TuiVision.Controls.StandardDialogFlowState.ValidationMessages
+  fullName: TuiVision.Controls.StandardDialogFlowState.ValidationMessages
+  nameWithType: StandardDialogFlowState.ValidationMessages
+- uid: TuiVision.Controls.StandardDialogFlowState.ValidationMessages*
+  name: ValidationMessages
+  href: api/TuiVision.Controls.StandardDialogFlowState.html#TuiVision_Controls_StandardDialogFlowState_ValidationMessages_
+  commentId: Overload:TuiVision.Controls.StandardDialogFlowState.ValidationMessages
+  isSpec: "True"
+  fullName: TuiVision.Controls.StandardDialogFlowState.ValidationMessages
+  nameWithType: StandardDialogFlowState.ValidationMessages
+- uid: TuiVision.Controls.StandardDialogInteractionState
+  name: StandardDialogInteractionState
+  href: api/TuiVision.Controls.StandardDialogInteractionState.html
+  commentId: T:TuiVision.Controls.StandardDialogInteractionState
+  fullName: TuiVision.Controls.StandardDialogInteractionState
+  nameWithType: StandardDialogInteractionState
+- uid: TuiVision.Controls.StandardDialogInteractionState.Active
+  name: Active
+  href: api/TuiVision.Controls.StandardDialogInteractionState.html#TuiVision_Controls_StandardDialogInteractionState_Active
+  commentId: F:TuiVision.Controls.StandardDialogInteractionState.Active
+  fullName: TuiVision.Controls.StandardDialogInteractionState.Active
+  nameWithType: StandardDialogInteractionState.Active
+- uid: TuiVision.Controls.StandardDialogInteractionState.Canceled
+  name: Canceled
+  href: api/TuiVision.Controls.StandardDialogInteractionState.html#TuiVision_Controls_StandardDialogInteractionState_Canceled
+  commentId: F:TuiVision.Controls.StandardDialogInteractionState.Canceled
+  fullName: TuiVision.Controls.StandardDialogInteractionState.Canceled
+  nameWithType: StandardDialogInteractionState.Canceled
+- uid: TuiVision.Controls.StandardDialogInteractionState.Confirmed
+  name: Confirmed
+  href: api/TuiVision.Controls.StandardDialogInteractionState.html#TuiVision_Controls_StandardDialogInteractionState_Confirmed
+  commentId: F:TuiVision.Controls.StandardDialogInteractionState.Confirmed
+  fullName: TuiVision.Controls.StandardDialogInteractionState.Confirmed
+  nameWithType: StandardDialogInteractionState.Confirmed
+- uid: TuiVision.Controls.StandardDialogInteractionState.Idle
+  name: Idle
+  href: api/TuiVision.Controls.StandardDialogInteractionState.html#TuiVision_Controls_StandardDialogInteractionState_Idle
+  commentId: F:TuiVision.Controls.StandardDialogInteractionState.Idle
+  fullName: TuiVision.Controls.StandardDialogInteractionState.Idle
+  nameWithType: StandardDialogInteractionState.Idle
+- uid: TuiVision.Controls.StandardDialogInteractionState.Rejected
+  name: Rejected
+  href: api/TuiVision.Controls.StandardDialogInteractionState.html#TuiVision_Controls_StandardDialogInteractionState_Rejected
+  commentId: F:TuiVision.Controls.StandardDialogInteractionState.Rejected
+  fullName: TuiVision.Controls.StandardDialogInteractionState.Rejected
+  nameWithType: StandardDialogInteractionState.Rejected
+- uid: TuiVision.Controls.StandardDialogInteractionState.Validated
+  name: Validated
+  href: api/TuiVision.Controls.StandardDialogInteractionState.html#TuiVision_Controls_StandardDialogInteractionState_Validated
+  commentId: F:TuiVision.Controls.StandardDialogInteractionState.Validated
+  fullName: TuiVision.Controls.StandardDialogInteractionState.Validated
+  nameWithType: StandardDialogInteractionState.Validated
+- uid: TuiVision.Controls.StandardDialogKind
+  name: StandardDialogKind
+  href: api/TuiVision.Controls.StandardDialogKind.html
+  commentId: T:TuiVision.Controls.StandardDialogKind
+  fullName: TuiVision.Controls.StandardDialogKind
+  nameWithType: StandardDialogKind
+- uid: TuiVision.Controls.StandardDialogKind.Color
+  name: Color
+  href: api/TuiVision.Controls.StandardDialogKind.html#TuiVision_Controls_StandardDialogKind_Color
+  commentId: F:TuiVision.Controls.StandardDialogKind.Color
+  fullName: TuiVision.Controls.StandardDialogKind.Color
+  nameWithType: StandardDialogKind.Color
+- uid: TuiVision.Controls.StandardDialogKind.Designer
+  name: Designer
+  href: api/TuiVision.Controls.StandardDialogKind.html#TuiVision_Controls_StandardDialogKind_Designer
+  commentId: F:TuiVision.Controls.StandardDialogKind.Designer
+  fullName: TuiVision.Controls.StandardDialogKind.Designer
+  nameWithType: StandardDialogKind.Designer
+- uid: TuiVision.Controls.StandardDialogKind.Directory
+  name: Directory
+  href: api/TuiVision.Controls.StandardDialogKind.html#TuiVision_Controls_StandardDialogKind_Directory
+  commentId: F:TuiVision.Controls.StandardDialogKind.Directory
+  fullName: TuiVision.Controls.StandardDialogKind.Directory
+  nameWithType: StandardDialogKind.Directory
+- uid: TuiVision.Controls.StandardDialogKind.Display
+  name: Display
+  href: api/TuiVision.Controls.StandardDialogKind.html#TuiVision_Controls_StandardDialogKind_Display
+  commentId: F:TuiVision.Controls.StandardDialogKind.Display
+  fullName: TuiVision.Controls.StandardDialogKind.Display
+  nameWithType: StandardDialogKind.Display
+- uid: TuiVision.Controls.StandardDialogKind.File
+  name: File
+  href: api/TuiVision.Controls.StandardDialogKind.html#TuiVision_Controls_StandardDialogKind_File
+  commentId: F:TuiVision.Controls.StandardDialogKind.File
+  fullName: TuiVision.Controls.StandardDialogKind.File
+  nameWithType: StandardDialogKind.File
+- uid: TuiVision.Controls.StandardDialogKind.SymbolicCharset
+  name: SymbolicCharset
+  href: api/TuiVision.Controls.StandardDialogKind.html#TuiVision_Controls_StandardDialogKind_SymbolicCharset
+  commentId: F:TuiVision.Controls.StandardDialogKind.SymbolicCharset
+  fullName: TuiVision.Controls.StandardDialogKind.SymbolicCharset
+  nameWithType: StandardDialogKind.SymbolicCharset
+- uid: TuiVision.Controls.StandardDialogValidationMessage
+  name: StandardDialogValidationMessage
+  href: api/TuiVision.Controls.StandardDialogValidationMessage.html
+  commentId: T:TuiVision.Controls.StandardDialogValidationMessage
+  fullName: TuiVision.Controls.StandardDialogValidationMessage
+  nameWithType: StandardDialogValidationMessage
+- uid: TuiVision.Controls.StandardDialogValidationMessage.#ctor(System.String,System.String,TuiVision.Controls.StandardDialogValidationSeverity)
+  name: StandardDialogValidationMessage(string, string, StandardDialogValidationSeverity)
+  href: api/TuiVision.Controls.StandardDialogValidationMessage.html#TuiVision_Controls_StandardDialogValidationMessage__ctor_System_String_System_String_TuiVision_Controls_StandardDialogValidationSeverity_
+  commentId: M:TuiVision.Controls.StandardDialogValidationMessage.#ctor(System.String,System.String,TuiVision.Controls.StandardDialogValidationSeverity)
+  name.vb: New(String, String, StandardDialogValidationSeverity)
+  fullName: TuiVision.Controls.StandardDialogValidationMessage.StandardDialogValidationMessage(string, string, TuiVision.Controls.StandardDialogValidationSeverity)
+  fullName.vb: TuiVision.Controls.StandardDialogValidationMessage.New(String, String, TuiVision.Controls.StandardDialogValidationSeverity)
+  nameWithType: StandardDialogValidationMessage.StandardDialogValidationMessage(string, string, StandardDialogValidationSeverity)
+  nameWithType.vb: StandardDialogValidationMessage.New(String, String, StandardDialogValidationSeverity)
+- uid: TuiVision.Controls.StandardDialogValidationMessage.#ctor*
+  name: StandardDialogValidationMessage
+  href: api/TuiVision.Controls.StandardDialogValidationMessage.html#TuiVision_Controls_StandardDialogValidationMessage__ctor_
+  commentId: Overload:TuiVision.Controls.StandardDialogValidationMessage.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.StandardDialogValidationMessage.StandardDialogValidationMessage
+  fullName.vb: TuiVision.Controls.StandardDialogValidationMessage.New
+  nameWithType: StandardDialogValidationMessage.StandardDialogValidationMessage
+  nameWithType.vb: StandardDialogValidationMessage.New
+- uid: TuiVision.Controls.StandardDialogValidationMessage.Code
+  name: Code
+  href: api/TuiVision.Controls.StandardDialogValidationMessage.html#TuiVision_Controls_StandardDialogValidationMessage_Code
+  commentId: P:TuiVision.Controls.StandardDialogValidationMessage.Code
+  fullName: TuiVision.Controls.StandardDialogValidationMessage.Code
+  nameWithType: StandardDialogValidationMessage.Code
+- uid: TuiVision.Controls.StandardDialogValidationMessage.Code*
+  name: Code
+  href: api/TuiVision.Controls.StandardDialogValidationMessage.html#TuiVision_Controls_StandardDialogValidationMessage_Code_
+  commentId: Overload:TuiVision.Controls.StandardDialogValidationMessage.Code
+  isSpec: "True"
+  fullName: TuiVision.Controls.StandardDialogValidationMessage.Code
+  nameWithType: StandardDialogValidationMessage.Code
+- uid: TuiVision.Controls.StandardDialogValidationMessage.Error(System.String,System.String)
+  name: Error(string, string)
+  href: api/TuiVision.Controls.StandardDialogValidationMessage.html#TuiVision_Controls_StandardDialogValidationMessage_Error_System_String_System_String_
+  commentId: M:TuiVision.Controls.StandardDialogValidationMessage.Error(System.String,System.String)
+  name.vb: Error(String, String)
+  fullName: TuiVision.Controls.StandardDialogValidationMessage.Error(string, string)
+  fullName.vb: TuiVision.Controls.StandardDialogValidationMessage.Error(String, String)
+  nameWithType: StandardDialogValidationMessage.Error(string, string)
+  nameWithType.vb: StandardDialogValidationMessage.Error(String, String)
+- uid: TuiVision.Controls.StandardDialogValidationMessage.Error*
+  name: Error
+  href: api/TuiVision.Controls.StandardDialogValidationMessage.html#TuiVision_Controls_StandardDialogValidationMessage_Error_
+  commentId: Overload:TuiVision.Controls.StandardDialogValidationMessage.Error
+  isSpec: "True"
+  fullName: TuiVision.Controls.StandardDialogValidationMessage.Error
+  nameWithType: StandardDialogValidationMessage.Error
+- uid: TuiVision.Controls.StandardDialogValidationMessage.Info(System.String,System.String)
+  name: Info(string, string)
+  href: api/TuiVision.Controls.StandardDialogValidationMessage.html#TuiVision_Controls_StandardDialogValidationMessage_Info_System_String_System_String_
+  commentId: M:TuiVision.Controls.StandardDialogValidationMessage.Info(System.String,System.String)
+  name.vb: Info(String, String)
+  fullName: TuiVision.Controls.StandardDialogValidationMessage.Info(string, string)
+  fullName.vb: TuiVision.Controls.StandardDialogValidationMessage.Info(String, String)
+  nameWithType: StandardDialogValidationMessage.Info(string, string)
+  nameWithType.vb: StandardDialogValidationMessage.Info(String, String)
+- uid: TuiVision.Controls.StandardDialogValidationMessage.Info*
+  name: Info
+  href: api/TuiVision.Controls.StandardDialogValidationMessage.html#TuiVision_Controls_StandardDialogValidationMessage_Info_
+  commentId: Overload:TuiVision.Controls.StandardDialogValidationMessage.Info
+  isSpec: "True"
+  fullName: TuiVision.Controls.StandardDialogValidationMessage.Info
+  nameWithType: StandardDialogValidationMessage.Info
+- uid: TuiVision.Controls.StandardDialogValidationMessage.Severity
+  name: Severity
+  href: api/TuiVision.Controls.StandardDialogValidationMessage.html#TuiVision_Controls_StandardDialogValidationMessage_Severity
+  commentId: P:TuiVision.Controls.StandardDialogValidationMessage.Severity
+  fullName: TuiVision.Controls.StandardDialogValidationMessage.Severity
+  nameWithType: StandardDialogValidationMessage.Severity
+- uid: TuiVision.Controls.StandardDialogValidationMessage.Severity*
+  name: Severity
+  href: api/TuiVision.Controls.StandardDialogValidationMessage.html#TuiVision_Controls_StandardDialogValidationMessage_Severity_
+  commentId: Overload:TuiVision.Controls.StandardDialogValidationMessage.Severity
+  isSpec: "True"
+  fullName: TuiVision.Controls.StandardDialogValidationMessage.Severity
+  nameWithType: StandardDialogValidationMessage.Severity
+- uid: TuiVision.Controls.StandardDialogValidationMessage.Text
+  name: Text
+  href: api/TuiVision.Controls.StandardDialogValidationMessage.html#TuiVision_Controls_StandardDialogValidationMessage_Text
+  commentId: P:TuiVision.Controls.StandardDialogValidationMessage.Text
+  fullName: TuiVision.Controls.StandardDialogValidationMessage.Text
+  nameWithType: StandardDialogValidationMessage.Text
+- uid: TuiVision.Controls.StandardDialogValidationMessage.Text*
+  name: Text
+  href: api/TuiVision.Controls.StandardDialogValidationMessage.html#TuiVision_Controls_StandardDialogValidationMessage_Text_
+  commentId: Overload:TuiVision.Controls.StandardDialogValidationMessage.Text
+  isSpec: "True"
+  fullName: TuiVision.Controls.StandardDialogValidationMessage.Text
+  nameWithType: StandardDialogValidationMessage.Text
+- uid: TuiVision.Controls.StandardDialogValidationMessage.Warning(System.String,System.String)
+  name: Warning(string, string)
+  href: api/TuiVision.Controls.StandardDialogValidationMessage.html#TuiVision_Controls_StandardDialogValidationMessage_Warning_System_String_System_String_
+  commentId: M:TuiVision.Controls.StandardDialogValidationMessage.Warning(System.String,System.String)
+  name.vb: Warning(String, String)
+  fullName: TuiVision.Controls.StandardDialogValidationMessage.Warning(string, string)
+  fullName.vb: TuiVision.Controls.StandardDialogValidationMessage.Warning(String, String)
+  nameWithType: StandardDialogValidationMessage.Warning(string, string)
+  nameWithType.vb: StandardDialogValidationMessage.Warning(String, String)
+- uid: TuiVision.Controls.StandardDialogValidationMessage.Warning*
+  name: Warning
+  href: api/TuiVision.Controls.StandardDialogValidationMessage.html#TuiVision_Controls_StandardDialogValidationMessage_Warning_
+  commentId: Overload:TuiVision.Controls.StandardDialogValidationMessage.Warning
+  isSpec: "True"
+  fullName: TuiVision.Controls.StandardDialogValidationMessage.Warning
+  nameWithType: StandardDialogValidationMessage.Warning
+- uid: TuiVision.Controls.StandardDialogValidationSeverity
+  name: StandardDialogValidationSeverity
+  href: api/TuiVision.Controls.StandardDialogValidationSeverity.html
+  commentId: T:TuiVision.Controls.StandardDialogValidationSeverity
+  fullName: TuiVision.Controls.StandardDialogValidationSeverity
+  nameWithType: StandardDialogValidationSeverity
+- uid: TuiVision.Controls.StandardDialogValidationSeverity.Error
+  name: Error
+  href: api/TuiVision.Controls.StandardDialogValidationSeverity.html#TuiVision_Controls_StandardDialogValidationSeverity_Error
+  commentId: F:TuiVision.Controls.StandardDialogValidationSeverity.Error
+  fullName: TuiVision.Controls.StandardDialogValidationSeverity.Error
+  nameWithType: StandardDialogValidationSeverity.Error
+- uid: TuiVision.Controls.StandardDialogValidationSeverity.Info
+  name: Info
+  href: api/TuiVision.Controls.StandardDialogValidationSeverity.html#TuiVision_Controls_StandardDialogValidationSeverity_Info
+  commentId: F:TuiVision.Controls.StandardDialogValidationSeverity.Info
+  fullName: TuiVision.Controls.StandardDialogValidationSeverity.Info
+  nameWithType: StandardDialogValidationSeverity.Info
+- uid: TuiVision.Controls.StandardDialogValidationSeverity.Warning
+  name: Warning
+  href: api/TuiVision.Controls.StandardDialogValidationSeverity.html#TuiVision_Controls_StandardDialogValidationSeverity_Warning
+  commentId: F:TuiVision.Controls.StandardDialogValidationSeverity.Warning
+  fullName: TuiVision.Controls.StandardDialogValidationSeverity.Warning
+  nameWithType: StandardDialogValidationSeverity.Warning
 - uid: TuiVision.Controls.TApplication
   name: TApplication
   href: api/TuiVision.Controls.TApplication.html
@@ -886,6 +1907,45 @@ references:
   fullName.vb: TuiVision.Controls.TColorDialog.New
   nameWithType: TColorDialog.TColorDialog
   nameWithType.vb: TColorDialog.New
+- uid: TuiVision.Controls.TColorDialog.CancelSelection
+  name: CancelSelection()
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_CancelSelection
+  commentId: M:TuiVision.Controls.TColorDialog.CancelSelection
+  fullName: TuiVision.Controls.TColorDialog.CancelSelection()
+  nameWithType: TColorDialog.CancelSelection()
+- uid: TuiVision.Controls.TColorDialog.CancelSelection*
+  name: CancelSelection
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_CancelSelection_
+  commentId: Overload:TuiVision.Controls.TColorDialog.CancelSelection
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorDialog.CancelSelection
+  nameWithType: TColorDialog.CancelSelection
+- uid: TuiVision.Controls.TColorDialog.ConfirmSelection
+  name: ConfirmSelection()
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_ConfirmSelection
+  commentId: M:TuiVision.Controls.TColorDialog.ConfirmSelection
+  fullName: TuiVision.Controls.TColorDialog.ConfirmSelection()
+  nameWithType: TColorDialog.ConfirmSelection()
+- uid: TuiVision.Controls.TColorDialog.ConfirmSelection*
+  name: ConfirmSelection
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_ConfirmSelection_
+  commentId: Overload:TuiVision.Controls.TColorDialog.ConfirmSelection
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorDialog.ConfirmSelection
+  nameWithType: TColorDialog.ConfirmSelection
+- uid: TuiVision.Controls.TColorDialog.FlowState
+  name: FlowState
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_FlowState
+  commentId: P:TuiVision.Controls.TColorDialog.FlowState
+  fullName: TuiVision.Controls.TColorDialog.FlowState
+  nameWithType: TColorDialog.FlowState
+- uid: TuiVision.Controls.TColorDialog.FlowState*
+  name: FlowState
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_FlowState_
+  commentId: Overload:TuiVision.Controls.TColorDialog.FlowState
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorDialog.FlowState
+  nameWithType: TColorDialog.FlowState
 - uid: TuiVision.Controls.TColorDialog.Palette
   name: Palette
   href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_Palette
@@ -925,6 +1985,51 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TColorDialog.SelectColor
   nameWithType: TColorDialog.SelectColor
+- uid: TuiVision.Controls.TColorDialog.SelectDisplay(System.String)
+  name: SelectDisplay(string)
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_SelectDisplay_System_String_
+  commentId: M:TuiVision.Controls.TColorDialog.SelectDisplay(System.String)
+  name.vb: SelectDisplay(String)
+  fullName: TuiVision.Controls.TColorDialog.SelectDisplay(string)
+  fullName.vb: TuiVision.Controls.TColorDialog.SelectDisplay(String)
+  nameWithType: TColorDialog.SelectDisplay(string)
+  nameWithType.vb: TColorDialog.SelectDisplay(String)
+- uid: TuiVision.Controls.TColorDialog.SelectDisplay*
+  name: SelectDisplay
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_SelectDisplay_
+  commentId: Overload:TuiVision.Controls.TColorDialog.SelectDisplay
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorDialog.SelectDisplay
+  nameWithType: TColorDialog.SelectDisplay
+- uid: TuiVision.Controls.TColorDialog.SelectSymbolicCharset(System.String)
+  name: SelectSymbolicCharset(string)
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_SelectSymbolicCharset_System_String_
+  commentId: M:TuiVision.Controls.TColorDialog.SelectSymbolicCharset(System.String)
+  name.vb: SelectSymbolicCharset(String)
+  fullName: TuiVision.Controls.TColorDialog.SelectSymbolicCharset(string)
+  fullName.vb: TuiVision.Controls.TColorDialog.SelectSymbolicCharset(String)
+  nameWithType: TColorDialog.SelectSymbolicCharset(string)
+  nameWithType.vb: TColorDialog.SelectSymbolicCharset(String)
+- uid: TuiVision.Controls.TColorDialog.SelectSymbolicCharset*
+  name: SelectSymbolicCharset
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_SelectSymbolicCharset_
+  commentId: Overload:TuiVision.Controls.TColorDialog.SelectSymbolicCharset
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorDialog.SelectSymbolicCharset
+  nameWithType: TColorDialog.SelectSymbolicCharset
+- uid: TuiVision.Controls.TColorDialog.SelectionState
+  name: SelectionState
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_SelectionState
+  commentId: P:TuiVision.Controls.TColorDialog.SelectionState
+  fullName: TuiVision.Controls.TColorDialog.SelectionState
+  nameWithType: TColorDialog.SelectionState
+- uid: TuiVision.Controls.TColorDialog.SelectionState*
+  name: SelectionState
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_SelectionState_
+  commentId: Overload:TuiVision.Controls.TColorDialog.SelectionState
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorDialog.SelectionState
+  nameWithType: TColorDialog.SelectionState
 - uid: TuiVision.Controls.TColorDialog.Selector
   name: Selector
   href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_Selector
@@ -938,6 +2043,22 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TColorDialog.Selector
   nameWithType: TColorDialog.Selector
+- uid: TuiVision.Controls.TColorDialog.UseFallback(TuiVision.Controls.ColorDisplaySelectionKind,System.String)
+  name: UseFallback(ColorDisplaySelectionKind, string)
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_UseFallback_TuiVision_Controls_ColorDisplaySelectionKind_System_String_
+  commentId: M:TuiVision.Controls.TColorDialog.UseFallback(TuiVision.Controls.ColorDisplaySelectionKind,System.String)
+  name.vb: UseFallback(ColorDisplaySelectionKind, String)
+  fullName: TuiVision.Controls.TColorDialog.UseFallback(TuiVision.Controls.ColorDisplaySelectionKind, string)
+  fullName.vb: TuiVision.Controls.TColorDialog.UseFallback(TuiVision.Controls.ColorDisplaySelectionKind, String)
+  nameWithType: TColorDialog.UseFallback(ColorDisplaySelectionKind, string)
+  nameWithType.vb: TColorDialog.UseFallback(ColorDisplaySelectionKind, String)
+- uid: TuiVision.Controls.TColorDialog.UseFallback*
+  name: UseFallback
+  href: api/TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_UseFallback_
+  commentId: Overload:TuiVision.Controls.TColorDialog.UseFallback
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorDialog.UseFallback
+  nameWithType: TColorDialog.UseFallback
 - uid: TuiVision.Controls.TColorDisplay
   name: TColorDisplay
   href: api/TuiVision.Controls.TColorDisplay.html
@@ -970,6 +2091,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TColorDisplay.Foreground
   nameWithType: TColorDisplay.Foreground
+- uid: TuiVision.Controls.TColorDisplay.PreviewValue
+  name: PreviewValue
+  href: api/TuiVision.Controls.TColorDisplay.html#TuiVision_Controls_TColorDisplay_PreviewValue
+  commentId: P:TuiVision.Controls.TColorDisplay.PreviewValue
+  fullName: TuiVision.Controls.TColorDisplay.PreviewValue
+  nameWithType: TColorDisplay.PreviewValue
+- uid: TuiVision.Controls.TColorDisplay.PreviewValue*
+  name: PreviewValue
+  href: api/TuiVision.Controls.TColorDisplay.html#TuiVision_Controls_TColorDisplay_PreviewValue_
+  commentId: Overload:TuiVision.Controls.TColorDisplay.PreviewValue
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorDisplay.PreviewValue
+  nameWithType: TColorDisplay.PreviewValue
 - uid: TuiVision.Controls.TColorDisplay.SetColors(System.ConsoleColor,System.ConsoleColor)
   name: SetColors(ConsoleColor, ConsoleColor)
   href: api/TuiVision.Controls.TColorDisplay.html#TuiVision_Controls_TColorDisplay_SetColors_System_ConsoleColor_System_ConsoleColor_
@@ -1110,6 +2244,15 @@ references:
   commentId: M:TuiVision.Controls.TColorSelector.SelectColor(System.ConsoleColor)
   fullName: TuiVision.Controls.TColorSelector.SelectColor(System.ConsoleColor)
   nameWithType: TColorSelector.SelectColor(ConsoleColor)
+- uid: TuiVision.Controls.TColorSelector.SelectColor(System.String)
+  name: SelectColor(string)
+  href: api/TuiVision.Controls.TColorSelector.html#TuiVision_Controls_TColorSelector_SelectColor_System_String_
+  commentId: M:TuiVision.Controls.TColorSelector.SelectColor(System.String)
+  name.vb: SelectColor(String)
+  fullName: TuiVision.Controls.TColorSelector.SelectColor(string)
+  fullName.vb: TuiVision.Controls.TColorSelector.SelectColor(String)
+  nameWithType: TColorSelector.SelectColor(string)
+  nameWithType.vb: TColorSelector.SelectColor(String)
 - uid: TuiVision.Controls.TColorSelector.SelectColor*
   name: SelectColor
   href: api/TuiVision.Controls.TColorSelector.html#TuiVision_Controls_TColorSelector_SelectColor_
@@ -1130,6 +2273,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TColorSelector.SelectedColor
   nameWithType: TColorSelector.SelectedColor
+- uid: TuiVision.Controls.TColorSelector.SupportedColorNames
+  name: SupportedColorNames
+  href: api/TuiVision.Controls.TColorSelector.html#TuiVision_Controls_TColorSelector_SupportedColorNames
+  commentId: P:TuiVision.Controls.TColorSelector.SupportedColorNames
+  fullName: TuiVision.Controls.TColorSelector.SupportedColorNames
+  nameWithType: TColorSelector.SupportedColorNames
+- uid: TuiVision.Controls.TColorSelector.SupportedColorNames*
+  name: SupportedColorNames
+  href: api/TuiVision.Controls.TColorSelector.html#TuiVision_Controls_TColorSelector_SupportedColorNames_
+  commentId: Overload:TuiVision.Controls.TColorSelector.SupportedColorNames
+  isSpec: "True"
+  fullName: TuiVision.Controls.TColorSelector.SupportedColorNames
+  nameWithType: TColorSelector.SupportedColorNames
 - uid: TuiVision.Controls.TComboBox
   name: TComboBox
   href: api/TuiVision.Controls.TComboBox.html
@@ -1569,6 +2725,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TDirListBox.Refresh
   nameWithType: TDirListBox.Refresh
+- uid: TuiVision.Controls.TDirListBox.SelectedDirectory
+  name: SelectedDirectory
+  href: api/TuiVision.Controls.TDirListBox.html#TuiVision_Controls_TDirListBox_SelectedDirectory
+  commentId: P:TuiVision.Controls.TDirListBox.SelectedDirectory
+  fullName: TuiVision.Controls.TDirListBox.SelectedDirectory
+  nameWithType: TDirListBox.SelectedDirectory
+- uid: TuiVision.Controls.TDirListBox.SelectedDirectory*
+  name: SelectedDirectory
+  href: api/TuiVision.Controls.TDirListBox.html#TuiVision_Controls_TDirListBox_SelectedDirectory_
+  commentId: Overload:TuiVision.Controls.TDirListBox.SelectedDirectory
+  isSpec: "True"
+  fullName: TuiVision.Controls.TDirListBox.SelectedDirectory
+  nameWithType: TDirListBox.SelectedDirectory
 - uid: TuiVision.Controls.TEditWindow
   name: TEditWindow
   href: api/TuiVision.Controls.TEditWindow.html
@@ -2091,6 +3260,122 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TEditor.Undo
   nameWithType: TEditor.Undo
+- uid: TuiVision.Controls.TFileDecisionResult
+  name: TFileDecisionResult
+  href: api/TuiVision.Controls.TFileDecisionResult.html
+  commentId: T:TuiVision.Controls.TFileDecisionResult
+  fullName: TuiVision.Controls.TFileDecisionResult
+  nameWithType: TFileDecisionResult
+- uid: TuiVision.Controls.TFileDecisionResult.#ctor(TuiVision.Controls.FileDecisionKind,TuiVision.Controls.FileSelectionTargetKind,System.String,System.String,TuiVision.Controls.TFileSelectionInfo,System.Boolean)
+  name: TFileDecisionResult(FileDecisionKind, FileSelectionTargetKind, string?, string?, TFileSelectionInfo, bool)
+  href: api/TuiVision.Controls.TFileDecisionResult.html#TuiVision_Controls_TFileDecisionResult__ctor_TuiVision_Controls_FileDecisionKind_TuiVision_Controls_FileSelectionTargetKind_System_String_System_String_TuiVision_Controls_TFileSelectionInfo_System_Boolean_
+  commentId: M:TuiVision.Controls.TFileDecisionResult.#ctor(TuiVision.Controls.FileDecisionKind,TuiVision.Controls.FileSelectionTargetKind,System.String,System.String,TuiVision.Controls.TFileSelectionInfo,System.Boolean)
+  name.vb: New(FileDecisionKind, FileSelectionTargetKind, String, String, TFileSelectionInfo, Boolean)
+  fullName: TuiVision.Controls.TFileDecisionResult.TFileDecisionResult(TuiVision.Controls.FileDecisionKind, TuiVision.Controls.FileSelectionTargetKind, string?, string?, TuiVision.Controls.TFileSelectionInfo, bool)
+  fullName.vb: TuiVision.Controls.TFileDecisionResult.New(TuiVision.Controls.FileDecisionKind, TuiVision.Controls.FileSelectionTargetKind, String, String, TuiVision.Controls.TFileSelectionInfo, Boolean)
+  nameWithType: TFileDecisionResult.TFileDecisionResult(FileDecisionKind, FileSelectionTargetKind, string?, string?, TFileSelectionInfo, bool)
+  nameWithType.vb: TFileDecisionResult.New(FileDecisionKind, FileSelectionTargetKind, String, String, TFileSelectionInfo, Boolean)
+- uid: TuiVision.Controls.TFileDecisionResult.#ctor*
+  name: TFileDecisionResult
+  href: api/TuiVision.Controls.TFileDecisionResult.html#TuiVision_Controls_TFileDecisionResult__ctor_
+  commentId: Overload:TuiVision.Controls.TFileDecisionResult.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Controls.TFileDecisionResult.TFileDecisionResult
+  fullName.vb: TuiVision.Controls.TFileDecisionResult.New
+  nameWithType: TFileDecisionResult.TFileDecisionResult
+  nameWithType.vb: TFileDecisionResult.New
+- uid: TuiVision.Controls.TFileDecisionResult.Canceled
+  name: Canceled()
+  href: api/TuiVision.Controls.TFileDecisionResult.html#TuiVision_Controls_TFileDecisionResult_Canceled
+  commentId: M:TuiVision.Controls.TFileDecisionResult.Canceled
+  fullName: TuiVision.Controls.TFileDecisionResult.Canceled()
+  nameWithType: TFileDecisionResult.Canceled()
+- uid: TuiVision.Controls.TFileDecisionResult.Canceled*
+  name: Canceled
+  href: api/TuiVision.Controls.TFileDecisionResult.html#TuiVision_Controls_TFileDecisionResult_Canceled_
+  commentId: Overload:TuiVision.Controls.TFileDecisionResult.Canceled
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileDecisionResult.Canceled
+  nameWithType: TFileDecisionResult.Canceled
+- uid: TuiVision.Controls.TFileDecisionResult.Filter
+  name: Filter
+  href: api/TuiVision.Controls.TFileDecisionResult.html#TuiVision_Controls_TFileDecisionResult_Filter
+  commentId: P:TuiVision.Controls.TFileDecisionResult.Filter
+  fullName: TuiVision.Controls.TFileDecisionResult.Filter
+  nameWithType: TFileDecisionResult.Filter
+- uid: TuiVision.Controls.TFileDecisionResult.Filter*
+  name: Filter
+  href: api/TuiVision.Controls.TFileDecisionResult.html#TuiVision_Controls_TFileDecisionResult_Filter_
+  commentId: Overload:TuiVision.Controls.TFileDecisionResult.Filter
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileDecisionResult.Filter
+  nameWithType: TFileDecisionResult.Filter
+- uid: TuiVision.Controls.TFileDecisionResult.Kind
+  name: Kind
+  href: api/TuiVision.Controls.TFileDecisionResult.html#TuiVision_Controls_TFileDecisionResult_Kind
+  commentId: P:TuiVision.Controls.TFileDecisionResult.Kind
+  fullName: TuiVision.Controls.TFileDecisionResult.Kind
+  nameWithType: TFileDecisionResult.Kind
+- uid: TuiVision.Controls.TFileDecisionResult.Kind*
+  name: Kind
+  href: api/TuiVision.Controls.TFileDecisionResult.html#TuiVision_Controls_TFileDecisionResult_Kind_
+  commentId: Overload:TuiVision.Controls.TFileDecisionResult.Kind
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileDecisionResult.Kind
+  nameWithType: TFileDecisionResult.Kind
+- uid: TuiVision.Controls.TFileDecisionResult.MetadataSnapshot
+  name: MetadataSnapshot
+  href: api/TuiVision.Controls.TFileDecisionResult.html#TuiVision_Controls_TFileDecisionResult_MetadataSnapshot
+  commentId: P:TuiVision.Controls.TFileDecisionResult.MetadataSnapshot
+  fullName: TuiVision.Controls.TFileDecisionResult.MetadataSnapshot
+  nameWithType: TFileDecisionResult.MetadataSnapshot
+- uid: TuiVision.Controls.TFileDecisionResult.MetadataSnapshot*
+  name: MetadataSnapshot
+  href: api/TuiVision.Controls.TFileDecisionResult.html#TuiVision_Controls_TFileDecisionResult_MetadataSnapshot_
+  commentId: Overload:TuiVision.Controls.TFileDecisionResult.MetadataSnapshot
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileDecisionResult.MetadataSnapshot
+  nameWithType: TFileDecisionResult.MetadataSnapshot
+- uid: TuiVision.Controls.TFileDecisionResult.Path
+  name: Path
+  href: api/TuiVision.Controls.TFileDecisionResult.html#TuiVision_Controls_TFileDecisionResult_Path
+  commentId: P:TuiVision.Controls.TFileDecisionResult.Path
+  fullName: TuiVision.Controls.TFileDecisionResult.Path
+  nameWithType: TFileDecisionResult.Path
+- uid: TuiVision.Controls.TFileDecisionResult.Path*
+  name: Path
+  href: api/TuiVision.Controls.TFileDecisionResult.html#TuiVision_Controls_TFileDecisionResult_Path_
+  commentId: Overload:TuiVision.Controls.TFileDecisionResult.Path
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileDecisionResult.Path
+  nameWithType: TFileDecisionResult.Path
+- uid: TuiVision.Controls.TFileDecisionResult.RequiresCallerDecision
+  name: RequiresCallerDecision
+  href: api/TuiVision.Controls.TFileDecisionResult.html#TuiVision_Controls_TFileDecisionResult_RequiresCallerDecision
+  commentId: P:TuiVision.Controls.TFileDecisionResult.RequiresCallerDecision
+  fullName: TuiVision.Controls.TFileDecisionResult.RequiresCallerDecision
+  nameWithType: TFileDecisionResult.RequiresCallerDecision
+- uid: TuiVision.Controls.TFileDecisionResult.RequiresCallerDecision*
+  name: RequiresCallerDecision
+  href: api/TuiVision.Controls.TFileDecisionResult.html#TuiVision_Controls_TFileDecisionResult_RequiresCallerDecision_
+  commentId: Overload:TuiVision.Controls.TFileDecisionResult.RequiresCallerDecision
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileDecisionResult.RequiresCallerDecision
+  nameWithType: TFileDecisionResult.RequiresCallerDecision
+- uid: TuiVision.Controls.TFileDecisionResult.TargetKind
+  name: TargetKind
+  href: api/TuiVision.Controls.TFileDecisionResult.html#TuiVision_Controls_TFileDecisionResult_TargetKind
+  commentId: P:TuiVision.Controls.TFileDecisionResult.TargetKind
+  fullName: TuiVision.Controls.TFileDecisionResult.TargetKind
+  nameWithType: TFileDecisionResult.TargetKind
+- uid: TuiVision.Controls.TFileDecisionResult.TargetKind*
+  name: TargetKind
+  href: api/TuiVision.Controls.TFileDecisionResult.html#TuiVision_Controls_TFileDecisionResult_TargetKind_
+  commentId: Overload:TuiVision.Controls.TFileDecisionResult.TargetKind
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileDecisionResult.TargetKind
+  nameWithType: TFileDecisionResult.TargetKind
 - uid: TuiVision.Controls.TFileDialog
   name: TFileDialog
   href: api/TuiVision.Controls.TFileDialog.html
@@ -2116,6 +3401,19 @@ references:
   fullName.vb: TuiVision.Controls.TFileDialog.New
   nameWithType: TFileDialog.TFileDialog
   nameWithType.vb: TFileDialog.New
+- uid: TuiVision.Controls.TFileDialog.CancelDecision
+  name: CancelDecision()
+  href: api/TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_CancelDecision
+  commentId: M:TuiVision.Controls.TFileDialog.CancelDecision
+  fullName: TuiVision.Controls.TFileDialog.CancelDecision()
+  nameWithType: TFileDialog.CancelDecision()
+- uid: TuiVision.Controls.TFileDialog.CancelDecision*
+  name: CancelDecision
+  href: api/TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_CancelDecision_
+  commentId: Overload:TuiVision.Controls.TFileDialog.CancelDecision
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileDialog.CancelDecision
+  nameWithType: TFileDialog.CancelDecision
 - uid: TuiVision.Controls.TFileDialog.ChangeDirectory(System.String)
   name: ChangeDirectory(string)
   href: api/TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_ChangeDirectory_System_String_
@@ -2148,6 +3446,32 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TFileDialog.ChangeFilter
   nameWithType: TFileDialog.ChangeFilter
+- uid: TuiVision.Controls.TFileDialog.ConfirmDecision
+  name: ConfirmDecision()
+  href: api/TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_ConfirmDecision
+  commentId: M:TuiVision.Controls.TFileDialog.ConfirmDecision
+  fullName: TuiVision.Controls.TFileDialog.ConfirmDecision()
+  nameWithType: TFileDialog.ConfirmDecision()
+- uid: TuiVision.Controls.TFileDialog.ConfirmDecision*
+  name: ConfirmDecision
+  href: api/TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_ConfirmDecision_
+  commentId: Overload:TuiVision.Controls.TFileDialog.ConfirmDecision
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileDialog.ConfirmDecision
+  nameWithType: TFileDialog.ConfirmDecision
+- uid: TuiVision.Controls.TFileDialog.ConfirmDirectorySelection
+  name: ConfirmDirectorySelection()
+  href: api/TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_ConfirmDirectorySelection
+  commentId: M:TuiVision.Controls.TFileDialog.ConfirmDirectorySelection
+  fullName: TuiVision.Controls.TFileDialog.ConfirmDirectorySelection()
+  nameWithType: TFileDialog.ConfirmDirectorySelection()
+- uid: TuiVision.Controls.TFileDialog.ConfirmDirectorySelection*
+  name: ConfirmDirectorySelection
+  href: api/TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_ConfirmDirectorySelection_
+  commentId: Overload:TuiVision.Controls.TFileDialog.ConfirmDirectorySelection
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileDialog.ConfirmDirectorySelection
+  nameWithType: TFileDialog.ConfirmDirectorySelection
 - uid: TuiVision.Controls.TFileDialog.ConfirmSelection
   name: ConfirmSelection()
   href: api/TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_ConfirmSelection
@@ -2200,6 +3524,32 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TFileDialog.Files
   nameWithType: TFileDialog.Files
+- uid: TuiVision.Controls.TFileDialog.FlowState
+  name: FlowState
+  href: api/TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_FlowState
+  commentId: P:TuiVision.Controls.TFileDialog.FlowState
+  fullName: TuiVision.Controls.TFileDialog.FlowState
+  nameWithType: TFileDialog.FlowState
+- uid: TuiVision.Controls.TFileDialog.FlowState*
+  name: FlowState
+  href: api/TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_FlowState_
+  commentId: Overload:TuiVision.Controls.TFileDialog.FlowState
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileDialog.FlowState
+  nameWithType: TFileDialog.FlowState
+- uid: TuiVision.Controls.TFileDialog.LastDecision
+  name: LastDecision
+  href: api/TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_LastDecision
+  commentId: P:TuiVision.Controls.TFileDialog.LastDecision
+  fullName: TuiVision.Controls.TFileDialog.LastDecision
+  nameWithType: TFileDialog.LastDecision
+- uid: TuiVision.Controls.TFileDialog.LastDecision*
+  name: LastDecision
+  href: api/TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_LastDecision_
+  commentId: Overload:TuiVision.Controls.TFileDialog.LastDecision
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileDialog.LastDecision
+  nameWithType: TFileDialog.LastDecision
 - uid: TuiVision.Controls.TFileDialog.Mode
   name: Mode
   href: api/TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_Mode
@@ -2305,6 +3655,24 @@ references:
   commentId: F:TuiVision.Controls.TFileDialogMode.Save
   fullName: TuiVision.Controls.TFileDialogMode.Save
   nameWithType: TFileDialogMode.Save
+- uid: TuiVision.Controls.TFileDialogMode.SaveTarget
+  name: SaveTarget
+  href: api/TuiVision.Controls.TFileDialogMode.html#TuiVision_Controls_TFileDialogMode_SaveTarget
+  commentId: F:TuiVision.Controls.TFileDialogMode.SaveTarget
+  fullName: TuiVision.Controls.TFileDialogMode.SaveTarget
+  nameWithType: TFileDialogMode.SaveTarget
+- uid: TuiVision.Controls.TFileDialogMode.Select
+  name: Select
+  href: api/TuiVision.Controls.TFileDialogMode.html#TuiVision_Controls_TFileDialogMode_Select
+  commentId: F:TuiVision.Controls.TFileDialogMode.Select
+  fullName: TuiVision.Controls.TFileDialogMode.Select
+  nameWithType: TFileDialogMode.Select
+- uid: TuiVision.Controls.TFileDialogMode.SelectDirectory
+  name: SelectDirectory
+  href: api/TuiVision.Controls.TFileDialogMode.html#TuiVision_Controls_TFileDialogMode_SelectDirectory
+  commentId: F:TuiVision.Controls.TFileDialogMode.SelectDirectory
+  fullName: TuiVision.Controls.TFileDialogMode.SelectDirectory
+  nameWithType: TFileDialogMode.SelectDirectory
 - uid: TuiVision.Controls.TFileEditor
   name: TFileEditor
   href: api/TuiVision.Controls.TFileEditor.html
@@ -2463,15 +3831,15 @@ references:
   commentId: T:TuiVision.Controls.TFileInfo
   fullName: TuiVision.Controls.TFileInfo
   nameWithType: TFileInfo
-- uid: TuiVision.Controls.TFileInfo.#ctor(System.String,System.Int64,System.DateTime)
-  name: TFileInfo(string, long, DateTime)
-  href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo__ctor_System_String_System_Int64_System_DateTime_
-  commentId: M:TuiVision.Controls.TFileInfo.#ctor(System.String,System.Int64,System.DateTime)
-  name.vb: New(String, Long, Date)
-  fullName: TuiVision.Controls.TFileInfo.TFileInfo(string, long, System.DateTime)
-  fullName.vb: TuiVision.Controls.TFileInfo.New(String, Long, Date)
-  nameWithType: TFileInfo.TFileInfo(string, long, DateTime)
-  nameWithType.vb: TFileInfo.New(String, Long, Date)
+- uid: TuiVision.Controls.TFileInfo.#ctor(System.String,System.Int64,System.DateTime,System.String)
+  name: TFileInfo(string, long, DateTime, string?)
+  href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo__ctor_System_String_System_Int64_System_DateTime_System_String_
+  commentId: M:TuiVision.Controls.TFileInfo.#ctor(System.String,System.Int64,System.DateTime,System.String)
+  name.vb: New(String, Long, Date, String)
+  fullName: TuiVision.Controls.TFileInfo.TFileInfo(string, long, System.DateTime, string?)
+  fullName.vb: TuiVision.Controls.TFileInfo.New(String, Long, Date, String)
+  nameWithType: TFileInfo.TFileInfo(string, long, DateTime, string?)
+  nameWithType.vb: TFileInfo.New(String, Long, Date, String)
 - uid: TuiVision.Controls.TFileInfo.#ctor*
   name: TFileInfo
   href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo__ctor_
@@ -2482,6 +3850,19 @@ references:
   fullName.vb: TuiVision.Controls.TFileInfo.New
   nameWithType: TFileInfo.TFileInfo
   nameWithType.vb: TFileInfo.New
+- uid: TuiVision.Controls.TFileInfo.FallbackMessage
+  name: FallbackMessage
+  href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo_FallbackMessage
+  commentId: P:TuiVision.Controls.TFileInfo.FallbackMessage
+  fullName: TuiVision.Controls.TFileInfo.FallbackMessage
+  nameWithType: TFileInfo.FallbackMessage
+- uid: TuiVision.Controls.TFileInfo.FallbackMessage*
+  name: FallbackMessage
+  href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo_FallbackMessage_
+  commentId: Overload:TuiVision.Controls.TFileInfo.FallbackMessage
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileInfo.FallbackMessage
+  nameWithType: TFileInfo.FallbackMessage
 - uid: TuiVision.Controls.TFileInfo.FileName
   name: FileName
   href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo_FileName
@@ -2495,6 +3876,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TFileInfo.FileName
   nameWithType: TFileInfo.FileName
+- uid: TuiVision.Controls.TFileInfo.HasFallback
+  name: HasFallback
+  href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo_HasFallback
+  commentId: P:TuiVision.Controls.TFileInfo.HasFallback
+  fullName: TuiVision.Controls.TFileInfo.HasFallback
+  nameWithType: TFileInfo.HasFallback
+- uid: TuiVision.Controls.TFileInfo.HasFallback*
+  name: HasFallback
+  href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo_HasFallback_
+  commentId: Overload:TuiVision.Controls.TFileInfo.HasFallback
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileInfo.HasFallback
+  nameWithType: TFileInfo.HasFallback
 - uid: TuiVision.Controls.TFileInfo.LastModified
   name: LastModified
   href: api/TuiVision.Controls.TFileInfo.html#TuiVision_Controls_TFileInfo_LastModified
@@ -2601,6 +3995,22 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TFileInputLine.RecallAt
   nameWithType: TFileInputLine.RecallAt
+- uid: TuiVision.Controls.TFileInputLine.ResolvePath(System.String)
+  name: ResolvePath(string)
+  href: api/TuiVision.Controls.TFileInputLine.html#TuiVision_Controls_TFileInputLine_ResolvePath_System_String_
+  commentId: M:TuiVision.Controls.TFileInputLine.ResolvePath(System.String)
+  name.vb: ResolvePath(String)
+  fullName: TuiVision.Controls.TFileInputLine.ResolvePath(string)
+  fullName.vb: TuiVision.Controls.TFileInputLine.ResolvePath(String)
+  nameWithType: TFileInputLine.ResolvePath(string)
+  nameWithType.vb: TFileInputLine.ResolvePath(String)
+- uid: TuiVision.Controls.TFileInputLine.ResolvePath*
+  name: ResolvePath
+  href: api/TuiVision.Controls.TFileInputLine.html#TuiVision_Controls_TFileInputLine_ResolvePath_
+  commentId: Overload:TuiVision.Controls.TFileInputLine.ResolvePath
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileInputLine.ResolvePath
+  nameWithType: TFileInputLine.ResolvePath
 - uid: TuiVision.Controls.TFileList
   name: TFileList
   href: api/TuiVision.Controls.TFileList.html
@@ -2814,15 +4224,15 @@ references:
   commentId: T:TuiVision.Controls.TFileSelectionInfo
   fullName: TuiVision.Controls.TFileSelectionInfo
   nameWithType: TFileSelectionInfo
-- uid: TuiVision.Controls.TFileSelectionInfo.#ctor(System.String,TuiVision.Controls.TFileEntryKind,System.Boolean,System.Nullable{System.Int64},System.Nullable{System.DateTime})
-  name: TFileSelectionInfo(string, TFileEntryKind, bool, long?, DateTime?)
-  href: api/TuiVision.Controls.TFileSelectionInfo.html#TuiVision_Controls_TFileSelectionInfo__ctor_System_String_TuiVision_Controls_TFileEntryKind_System_Boolean_System_Nullable_System_Int64__System_Nullable_System_DateTime__
-  commentId: M:TuiVision.Controls.TFileSelectionInfo.#ctor(System.String,TuiVision.Controls.TFileEntryKind,System.Boolean,System.Nullable{System.Int64},System.Nullable{System.DateTime})
-  name.vb: New(String, TFileEntryKind, Boolean, Long?, Date?)
-  fullName: TuiVision.Controls.TFileSelectionInfo.TFileSelectionInfo(string, TuiVision.Controls.TFileEntryKind, bool, long?, System.DateTime?)
-  fullName.vb: TuiVision.Controls.TFileSelectionInfo.New(String, TuiVision.Controls.TFileEntryKind, Boolean, Long?, Date?)
-  nameWithType: TFileSelectionInfo.TFileSelectionInfo(string, TFileEntryKind, bool, long?, DateTime?)
-  nameWithType.vb: TFileSelectionInfo.New(String, TFileEntryKind, Boolean, Long?, Date?)
+- uid: TuiVision.Controls.TFileSelectionInfo.#ctor(System.String,TuiVision.Controls.TFileEntryKind,System.Boolean,System.Nullable{System.Int64},System.Nullable{System.DateTime},System.String)
+  name: TFileSelectionInfo(string, TFileEntryKind, bool, long?, DateTime?, string?)
+  href: api/TuiVision.Controls.TFileSelectionInfo.html#TuiVision_Controls_TFileSelectionInfo__ctor_System_String_TuiVision_Controls_TFileEntryKind_System_Boolean_System_Nullable_System_Int64__System_Nullable_System_DateTime__System_String_
+  commentId: M:TuiVision.Controls.TFileSelectionInfo.#ctor(System.String,TuiVision.Controls.TFileEntryKind,System.Boolean,System.Nullable{System.Int64},System.Nullable{System.DateTime},System.String)
+  name.vb: New(String, TFileEntryKind, Boolean, Long?, Date?, String)
+  fullName: TuiVision.Controls.TFileSelectionInfo.TFileSelectionInfo(string, TuiVision.Controls.TFileEntryKind, bool, long?, System.DateTime?, string?)
+  fullName.vb: TuiVision.Controls.TFileSelectionInfo.New(String, TuiVision.Controls.TFileEntryKind, Boolean, Long?, Date?, String)
+  nameWithType: TFileSelectionInfo.TFileSelectionInfo(string, TFileEntryKind, bool, long?, DateTime?, string?)
+  nameWithType.vb: TFileSelectionInfo.New(String, TFileEntryKind, Boolean, Long?, Date?, String)
 - uid: TuiVision.Controls.TFileSelectionInfo.#ctor*
   name: TFileSelectionInfo
   href: api/TuiVision.Controls.TFileSelectionInfo.html#TuiVision_Controls_TFileSelectionInfo__ctor_
@@ -2846,6 +4256,19 @@ references:
   isSpec: "True"
   fullName: TuiVision.Controls.TFileSelectionInfo.Exists
   nameWithType: TFileSelectionInfo.Exists
+- uid: TuiVision.Controls.TFileSelectionInfo.FallbackMessage
+  name: FallbackMessage
+  href: api/TuiVision.Controls.TFileSelectionInfo.html#TuiVision_Controls_TFileSelectionInfo_FallbackMessage
+  commentId: P:TuiVision.Controls.TFileSelectionInfo.FallbackMessage
+  fullName: TuiVision.Controls.TFileSelectionInfo.FallbackMessage
+  nameWithType: TFileSelectionInfo.FallbackMessage
+- uid: TuiVision.Controls.TFileSelectionInfo.FallbackMessage*
+  name: FallbackMessage
+  href: api/TuiVision.Controls.TFileSelectionInfo.html#TuiVision_Controls_TFileSelectionInfo_FallbackMessage_
+  commentId: Overload:TuiVision.Controls.TFileSelectionInfo.FallbackMessage
+  isSpec: "True"
+  fullName: TuiVision.Controls.TFileSelectionInfo.FallbackMessage
+  nameWithType: TFileSelectionInfo.FallbackMessage
 - uid: TuiVision.Controls.TFileSelectionInfo.Kind
   name: Kind
   href: api/TuiVision.Controls.TFileSelectionInfo.html#TuiVision_Controls_TFileSelectionInfo_Kind
@@ -4463,6 +5886,19 @@ references:
   fullName.vb: TuiVision.Controls.TMonoSelector.New
   nameWithType: TMonoSelector.TMonoSelector
   nameWithType.vb: TMonoSelector.New
+- uid: TuiVision.Controls.TMonoSelector.Items
+  name: Items
+  href: api/TuiVision.Controls.TMonoSelector.html#TuiVision_Controls_TMonoSelector_Items
+  commentId: P:TuiVision.Controls.TMonoSelector.Items
+  fullName: TuiVision.Controls.TMonoSelector.Items
+  nameWithType: TMonoSelector.Items
+- uid: TuiVision.Controls.TMonoSelector.Items*
+  name: Items
+  href: api/TuiVision.Controls.TMonoSelector.html#TuiVision_Controls_TMonoSelector_Items_
+  commentId: Overload:TuiVision.Controls.TMonoSelector.Items
+  isSpec: "True"
+  fullName: TuiVision.Controls.TMonoSelector.Items
+  nameWithType: TMonoSelector.Items
 - uid: TuiVision.Controls.TMonoSelector.Select(System.Int32)
   name: Select(int)
   href: api/TuiVision.Controls.TMonoSelector.html#TuiVision_Controls_TMonoSelector_Select_System_Int32_
@@ -8815,6 +10251,24 @@ references:
   isSpec: "True"
   fullName: TuiVision.Serialization.ITStreamSerializable.SaveTo
   nameWithType: ITStreamSerializable.SaveTo
+- uid: TuiVision.Serialization.PersistedDialogRepresentation
+  name: PersistedDialogRepresentation
+  href: api/TuiVision.Serialization.PersistedDialogRepresentation.html
+  commentId: T:TuiVision.Serialization.PersistedDialogRepresentation
+  fullName: TuiVision.Serialization.PersistedDialogRepresentation
+  nameWithType: PersistedDialogRepresentation
+- uid: TuiVision.Serialization.PersistedDialogRepresentation.CurrentFormatVersion
+  name: CurrentFormatVersion
+  href: api/TuiVision.Serialization.PersistedDialogRepresentation.html#TuiVision_Serialization_PersistedDialogRepresentation_CurrentFormatVersion
+  commentId: F:TuiVision.Serialization.PersistedDialogRepresentation.CurrentFormatVersion
+  fullName: TuiVision.Serialization.PersistedDialogRepresentation.CurrentFormatVersion
+  nameWithType: PersistedDialogRepresentation.CurrentFormatVersion
+- uid: TuiVision.Serialization.PersistedDialogRepresentation.TypeId
+  name: TypeId
+  href: api/TuiVision.Serialization.PersistedDialogRepresentation.html#TuiVision_Serialization_PersistedDialogRepresentation_TypeId
+  commentId: F:TuiVision.Serialization.PersistedDialogRepresentation.TypeId
+  fullName: TuiVision.Serialization.PersistedDialogRepresentation.TypeId
+  nameWithType: PersistedDialogRepresentation.TypeId
 - uid: TuiVision.Serialization.SerializationModule
   name: SerializationModule
   href: api/TuiVision.Serialization.SerializationModule.html
@@ -9116,6 +10570,341 @@ references:
   isSpec: "True"
   fullName: TuiVision.Serialization.TBinaryArchiveWriter.WriteUInt16
   nameWithType: TBinaryArchiveWriter.WriteUInt16
+- uid: TuiVision.Serialization.TDialogCommandBindingRecord
+  name: TDialogCommandBindingRecord
+  href: api/TuiVision.Serialization.TDialogCommandBindingRecord.html
+  commentId: T:TuiVision.Serialization.TDialogCommandBindingRecord
+  fullName: TuiVision.Serialization.TDialogCommandBindingRecord
+  nameWithType: TDialogCommandBindingRecord
+- uid: TuiVision.Serialization.TDialogCommandBindingRecord.#ctor(System.UInt16,System.String,System.String,System.String)
+  name: TDialogCommandBindingRecord(ushort, string?, string, string)
+  href: api/TuiVision.Serialization.TDialogCommandBindingRecord.html#TuiVision_Serialization_TDialogCommandBindingRecord__ctor_System_UInt16_System_String_System_String_System_String_
+  commentId: M:TuiVision.Serialization.TDialogCommandBindingRecord.#ctor(System.UInt16,System.String,System.String,System.String)
+  name.vb: New(UShort, String, String, String)
+  fullName: TuiVision.Serialization.TDialogCommandBindingRecord.TDialogCommandBindingRecord(ushort, string?, string, string)
+  fullName.vb: TuiVision.Serialization.TDialogCommandBindingRecord.New(UShort, String, String, String)
+  nameWithType: TDialogCommandBindingRecord.TDialogCommandBindingRecord(ushort, string?, string, string)
+  nameWithType.vb: TDialogCommandBindingRecord.New(UShort, String, String, String)
+- uid: TuiVision.Serialization.TDialogCommandBindingRecord.#ctor*
+  name: TDialogCommandBindingRecord
+  href: api/TuiVision.Serialization.TDialogCommandBindingRecord.html#TuiVision_Serialization_TDialogCommandBindingRecord__ctor_
+  commentId: Overload:TuiVision.Serialization.TDialogCommandBindingRecord.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Serialization.TDialogCommandBindingRecord.TDialogCommandBindingRecord
+  fullName.vb: TuiVision.Serialization.TDialogCommandBindingRecord.New
+  nameWithType: TDialogCommandBindingRecord.TDialogCommandBindingRecord
+  nameWithType.vb: TDialogCommandBindingRecord.New
+- uid: TuiVision.Serialization.TDialogCommandBindingRecord.CommandId
+  name: CommandId
+  href: api/TuiVision.Serialization.TDialogCommandBindingRecord.html#TuiVision_Serialization_TDialogCommandBindingRecord_CommandId
+  commentId: P:TuiVision.Serialization.TDialogCommandBindingRecord.CommandId
+  fullName: TuiVision.Serialization.TDialogCommandBindingRecord.CommandId
+  nameWithType: TDialogCommandBindingRecord.CommandId
+- uid: TuiVision.Serialization.TDialogCommandBindingRecord.CommandId*
+  name: CommandId
+  href: api/TuiVision.Serialization.TDialogCommandBindingRecord.html#TuiVision_Serialization_TDialogCommandBindingRecord_CommandId_
+  commentId: Overload:TuiVision.Serialization.TDialogCommandBindingRecord.CommandId
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogCommandBindingRecord.CommandId
+  nameWithType: TDialogCommandBindingRecord.CommandId
+- uid: TuiVision.Serialization.TDialogCommandBindingRecord.KeyboardTrigger
+  name: KeyboardTrigger
+  href: api/TuiVision.Serialization.TDialogCommandBindingRecord.html#TuiVision_Serialization_TDialogCommandBindingRecord_KeyboardTrigger
+  commentId: P:TuiVision.Serialization.TDialogCommandBindingRecord.KeyboardTrigger
+  fullName: TuiVision.Serialization.TDialogCommandBindingRecord.KeyboardTrigger
+  nameWithType: TDialogCommandBindingRecord.KeyboardTrigger
+- uid: TuiVision.Serialization.TDialogCommandBindingRecord.KeyboardTrigger*
+  name: KeyboardTrigger
+  href: api/TuiVision.Serialization.TDialogCommandBindingRecord.html#TuiVision_Serialization_TDialogCommandBindingRecord_KeyboardTrigger_
+  commentId: Overload:TuiVision.Serialization.TDialogCommandBindingRecord.KeyboardTrigger
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogCommandBindingRecord.KeyboardTrigger
+  nameWithType: TDialogCommandBindingRecord.KeyboardTrigger
+- uid: TuiVision.Serialization.TDialogCommandBindingRecord.Meaning
+  name: Meaning
+  href: api/TuiVision.Serialization.TDialogCommandBindingRecord.html#TuiVision_Serialization_TDialogCommandBindingRecord_Meaning
+  commentId: P:TuiVision.Serialization.TDialogCommandBindingRecord.Meaning
+  fullName: TuiVision.Serialization.TDialogCommandBindingRecord.Meaning
+  nameWithType: TDialogCommandBindingRecord.Meaning
+- uid: TuiVision.Serialization.TDialogCommandBindingRecord.Meaning*
+  name: Meaning
+  href: api/TuiVision.Serialization.TDialogCommandBindingRecord.html#TuiVision_Serialization_TDialogCommandBindingRecord_Meaning_
+  commentId: Overload:TuiVision.Serialization.TDialogCommandBindingRecord.Meaning
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogCommandBindingRecord.Meaning
+  nameWithType: TDialogCommandBindingRecord.Meaning
+- uid: TuiVision.Serialization.TDialogCommandBindingRecord.TargetControlId
+  name: TargetControlId
+  href: api/TuiVision.Serialization.TDialogCommandBindingRecord.html#TuiVision_Serialization_TDialogCommandBindingRecord_TargetControlId
+  commentId: P:TuiVision.Serialization.TDialogCommandBindingRecord.TargetControlId
+  fullName: TuiVision.Serialization.TDialogCommandBindingRecord.TargetControlId
+  nameWithType: TDialogCommandBindingRecord.TargetControlId
+- uid: TuiVision.Serialization.TDialogCommandBindingRecord.TargetControlId*
+  name: TargetControlId
+  href: api/TuiVision.Serialization.TDialogCommandBindingRecord.html#TuiVision_Serialization_TDialogCommandBindingRecord_TargetControlId_
+  commentId: Overload:TuiVision.Serialization.TDialogCommandBindingRecord.TargetControlId
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogCommandBindingRecord.TargetControlId
+  nameWithType: TDialogCommandBindingRecord.TargetControlId
+- uid: TuiVision.Serialization.TDialogControlDescriptionRecord
+  name: TDialogControlDescriptionRecord
+  href: api/TuiVision.Serialization.TDialogControlDescriptionRecord.html
+  commentId: T:TuiVision.Serialization.TDialogControlDescriptionRecord
+  fullName: TuiVision.Serialization.TDialogControlDescriptionRecord
+  nameWithType: TDialogControlDescriptionRecord
+- uid: TuiVision.Serialization.TDialogControlDescriptionRecord.#ctor(System.String,System.String,System.String,System.String,System.Boolean)
+  name: TDialogControlDescriptionRecord(string, string, string, string?, bool)
+  href: api/TuiVision.Serialization.TDialogControlDescriptionRecord.html#TuiVision_Serialization_TDialogControlDescriptionRecord__ctor_System_String_System_String_System_String_System_String_System_Boolean_
+  commentId: M:TuiVision.Serialization.TDialogControlDescriptionRecord.#ctor(System.String,System.String,System.String,System.String,System.Boolean)
+  name.vb: New(String, String, String, String, Boolean)
+  fullName: TuiVision.Serialization.TDialogControlDescriptionRecord.TDialogControlDescriptionRecord(string, string, string, string?, bool)
+  fullName.vb: TuiVision.Serialization.TDialogControlDescriptionRecord.New(String, String, String, String, Boolean)
+  nameWithType: TDialogControlDescriptionRecord.TDialogControlDescriptionRecord(string, string, string, string?, bool)
+  nameWithType.vb: TDialogControlDescriptionRecord.New(String, String, String, String, Boolean)
+- uid: TuiVision.Serialization.TDialogControlDescriptionRecord.#ctor*
+  name: TDialogControlDescriptionRecord
+  href: api/TuiVision.Serialization.TDialogControlDescriptionRecord.html#TuiVision_Serialization_TDialogControlDescriptionRecord__ctor_
+  commentId: Overload:TuiVision.Serialization.TDialogControlDescriptionRecord.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Serialization.TDialogControlDescriptionRecord.TDialogControlDescriptionRecord
+  fullName.vb: TuiVision.Serialization.TDialogControlDescriptionRecord.New
+  nameWithType: TDialogControlDescriptionRecord.TDialogControlDescriptionRecord
+  nameWithType.vb: TDialogControlDescriptionRecord.New
+- uid: TuiVision.Serialization.TDialogControlDescriptionRecord.CanFocus
+  name: CanFocus
+  href: api/TuiVision.Serialization.TDialogControlDescriptionRecord.html#TuiVision_Serialization_TDialogControlDescriptionRecord_CanFocus
+  commentId: P:TuiVision.Serialization.TDialogControlDescriptionRecord.CanFocus
+  fullName: TuiVision.Serialization.TDialogControlDescriptionRecord.CanFocus
+  nameWithType: TDialogControlDescriptionRecord.CanFocus
+- uid: TuiVision.Serialization.TDialogControlDescriptionRecord.CanFocus*
+  name: CanFocus
+  href: api/TuiVision.Serialization.TDialogControlDescriptionRecord.html#TuiVision_Serialization_TDialogControlDescriptionRecord_CanFocus_
+  commentId: Overload:TuiVision.Serialization.TDialogControlDescriptionRecord.CanFocus
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogControlDescriptionRecord.CanFocus
+  nameWithType: TDialogControlDescriptionRecord.CanFocus
+- uid: TuiVision.Serialization.TDialogControlDescriptionRecord.ControlId
+  name: ControlId
+  href: api/TuiVision.Serialization.TDialogControlDescriptionRecord.html#TuiVision_Serialization_TDialogControlDescriptionRecord_ControlId
+  commentId: P:TuiVision.Serialization.TDialogControlDescriptionRecord.ControlId
+  fullName: TuiVision.Serialization.TDialogControlDescriptionRecord.ControlId
+  nameWithType: TDialogControlDescriptionRecord.ControlId
+- uid: TuiVision.Serialization.TDialogControlDescriptionRecord.ControlId*
+  name: ControlId
+  href: api/TuiVision.Serialization.TDialogControlDescriptionRecord.html#TuiVision_Serialization_TDialogControlDescriptionRecord_ControlId_
+  commentId: Overload:TuiVision.Serialization.TDialogControlDescriptionRecord.ControlId
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogControlDescriptionRecord.ControlId
+  nameWithType: TDialogControlDescriptionRecord.ControlId
+- uid: TuiVision.Serialization.TDialogControlDescriptionRecord.InitialValue
+  name: InitialValue
+  href: api/TuiVision.Serialization.TDialogControlDescriptionRecord.html#TuiVision_Serialization_TDialogControlDescriptionRecord_InitialValue
+  commentId: P:TuiVision.Serialization.TDialogControlDescriptionRecord.InitialValue
+  fullName: TuiVision.Serialization.TDialogControlDescriptionRecord.InitialValue
+  nameWithType: TDialogControlDescriptionRecord.InitialValue
+- uid: TuiVision.Serialization.TDialogControlDescriptionRecord.InitialValue*
+  name: InitialValue
+  href: api/TuiVision.Serialization.TDialogControlDescriptionRecord.html#TuiVision_Serialization_TDialogControlDescriptionRecord_InitialValue_
+  commentId: Overload:TuiVision.Serialization.TDialogControlDescriptionRecord.InitialValue
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogControlDescriptionRecord.InitialValue
+  nameWithType: TDialogControlDescriptionRecord.InitialValue
+- uid: TuiVision.Serialization.TDialogControlDescriptionRecord.Label
+  name: Label
+  href: api/TuiVision.Serialization.TDialogControlDescriptionRecord.html#TuiVision_Serialization_TDialogControlDescriptionRecord_Label
+  commentId: P:TuiVision.Serialization.TDialogControlDescriptionRecord.Label
+  fullName: TuiVision.Serialization.TDialogControlDescriptionRecord.Label
+  nameWithType: TDialogControlDescriptionRecord.Label
+- uid: TuiVision.Serialization.TDialogControlDescriptionRecord.Label*
+  name: Label
+  href: api/TuiVision.Serialization.TDialogControlDescriptionRecord.html#TuiVision_Serialization_TDialogControlDescriptionRecord_Label_
+  commentId: Overload:TuiVision.Serialization.TDialogControlDescriptionRecord.Label
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogControlDescriptionRecord.Label
+  nameWithType: TDialogControlDescriptionRecord.Label
+- uid: TuiVision.Serialization.TDialogControlDescriptionRecord.Role
+  name: Role
+  href: api/TuiVision.Serialization.TDialogControlDescriptionRecord.html#TuiVision_Serialization_TDialogControlDescriptionRecord_Role
+  commentId: P:TuiVision.Serialization.TDialogControlDescriptionRecord.Role
+  fullName: TuiVision.Serialization.TDialogControlDescriptionRecord.Role
+  nameWithType: TDialogControlDescriptionRecord.Role
+- uid: TuiVision.Serialization.TDialogControlDescriptionRecord.Role*
+  name: Role
+  href: api/TuiVision.Serialization.TDialogControlDescriptionRecord.html#TuiVision_Serialization_TDialogControlDescriptionRecord_Role_
+  commentId: Overload:TuiVision.Serialization.TDialogControlDescriptionRecord.Role
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogControlDescriptionRecord.Role
+  nameWithType: TDialogControlDescriptionRecord.Role
+- uid: TuiVision.Serialization.TDialogDescriptionRecord
+  name: TDialogDescriptionRecord
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html
+  commentId: T:TuiVision.Serialization.TDialogDescriptionRecord
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord
+  nameWithType: TDialogDescriptionRecord
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.#ctor(System.Int32,System.String,System.Int32,System.String,System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogControlDescriptionRecord},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogCommandBindingRecord},System.Boolean)
+  name: TDialogDescriptionRecord(int, string, int, string, IEnumerable<TDialogControlDescriptionRecord>, IEnumerable<string>, IEnumerable<TDialogCommandBindingRecord>, bool)
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord__ctor_System_Int32_System_String_System_Int32_System_String_System_Collections_Generic_IEnumerable_TuiVision_Serialization_TDialogControlDescriptionRecord__System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_TuiVision_Serialization_TDialogCommandBindingRecord__System_Boolean_
+  commentId: M:TuiVision.Serialization.TDialogDescriptionRecord.#ctor(System.Int32,System.String,System.Int32,System.String,System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogControlDescriptionRecord},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogCommandBindingRecord},System.Boolean)
+  name.vb: New(Integer, String, Integer, String, IEnumerable(Of TDialogControlDescriptionRecord), IEnumerable(Of String), IEnumerable(Of TDialogCommandBindingRecord), Boolean)
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.TDialogDescriptionRecord(int, string, int, string, System.Collections.Generic.IEnumerable<TuiVision.Serialization.TDialogControlDescriptionRecord>, System.Collections.Generic.IEnumerable<string>, System.Collections.Generic.IEnumerable<TuiVision.Serialization.TDialogCommandBindingRecord>, bool)
+  fullName.vb: TuiVision.Serialization.TDialogDescriptionRecord.New(Integer, String, Integer, String, System.Collections.Generic.IEnumerable(Of TuiVision.Serialization.TDialogControlDescriptionRecord), System.Collections.Generic.IEnumerable(Of String), System.Collections.Generic.IEnumerable(Of TuiVision.Serialization.TDialogCommandBindingRecord), Boolean)
+  nameWithType: TDialogDescriptionRecord.TDialogDescriptionRecord(int, string, int, string, IEnumerable<TDialogControlDescriptionRecord>, IEnumerable<string>, IEnumerable<TDialogCommandBindingRecord>, bool)
+  nameWithType.vb: TDialogDescriptionRecord.New(Integer, String, Integer, String, IEnumerable(Of TDialogControlDescriptionRecord), IEnumerable(Of String), IEnumerable(Of TDialogCommandBindingRecord), Boolean)
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.#ctor*
+  name: TDialogDescriptionRecord
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord__ctor_
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.TDialogDescriptionRecord
+  fullName.vb: TuiVision.Serialization.TDialogDescriptionRecord.New
+  nameWithType: TDialogDescriptionRecord.TDialogDescriptionRecord
+  nameWithType.vb: TDialogDescriptionRecord.New
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.CommandBindings
+  name: CommandBindings
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_CommandBindings
+  commentId: P:TuiVision.Serialization.TDialogDescriptionRecord.CommandBindings
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.CommandBindings
+  nameWithType: TDialogDescriptionRecord.CommandBindings
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.CommandBindings*
+  name: CommandBindings
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_CommandBindings_
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.CommandBindings
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.CommandBindings
+  nameWithType: TDialogDescriptionRecord.CommandBindings
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.Controls
+  name: Controls
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_Controls
+  commentId: P:TuiVision.Serialization.TDialogDescriptionRecord.Controls
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.Controls
+  nameWithType: TDialogDescriptionRecord.Controls
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.Controls*
+  name: Controls
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_Controls_
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.Controls
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.Controls
+  nameWithType: TDialogDescriptionRecord.Controls
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.DescriptionId
+  name: DescriptionId
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_DescriptionId
+  commentId: P:TuiVision.Serialization.TDialogDescriptionRecord.DescriptionId
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.DescriptionId
+  nameWithType: TDialogDescriptionRecord.DescriptionId
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.DescriptionId*
+  name: DescriptionId
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_DescriptionId_
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.DescriptionId
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.DescriptionId
+  nameWithType: TDialogDescriptionRecord.DescriptionId
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.FormatVersion
+  name: FormatVersion
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_FormatVersion
+  commentId: P:TuiVision.Serialization.TDialogDescriptionRecord.FormatVersion
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.FormatVersion
+  nameWithType: TDialogDescriptionRecord.FormatVersion
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.FormatVersion*
+  name: FormatVersion
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_FormatVersion_
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.FormatVersion
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.FormatVersion
+  nameWithType: TDialogDescriptionRecord.FormatVersion
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.LoadFrom(TuiVision.Serialization.TBinaryArchiveReader)
+  name: LoadFrom(TBinaryArchiveReader)
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_LoadFrom_TuiVision_Serialization_TBinaryArchiveReader_
+  commentId: M:TuiVision.Serialization.TDialogDescriptionRecord.LoadFrom(TuiVision.Serialization.TBinaryArchiveReader)
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.LoadFrom(TuiVision.Serialization.TBinaryArchiveReader)
+  nameWithType: TDialogDescriptionRecord.LoadFrom(TBinaryArchiveReader)
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.LoadFrom*
+  name: LoadFrom
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_LoadFrom_
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.LoadFrom
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.LoadFrom
+  nameWithType: TDialogDescriptionRecord.LoadFrom
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.ModelVersion
+  name: ModelVersion
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_ModelVersion
+  commentId: P:TuiVision.Serialization.TDialogDescriptionRecord.ModelVersion
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.ModelVersion
+  nameWithType: TDialogDescriptionRecord.ModelVersion
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.ModelVersion*
+  name: ModelVersion
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_ModelVersion_
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.ModelVersion
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.ModelVersion
+  nameWithType: TDialogDescriptionRecord.ModelVersion
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.NavigationOrder
+  name: NavigationOrder
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_NavigationOrder
+  commentId: P:TuiVision.Serialization.TDialogDescriptionRecord.NavigationOrder
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.NavigationOrder
+  nameWithType: TDialogDescriptionRecord.NavigationOrder
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.NavigationOrder*
+  name: NavigationOrder
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_NavigationOrder_
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.NavigationOrder
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.NavigationOrder
+  nameWithType: TDialogDescriptionRecord.NavigationOrder
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.Register(TuiVision.Serialization.TRecordRegistry)
+  name: Register(TRecordRegistry)
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_Register_TuiVision_Serialization_TRecordRegistry_
+  commentId: M:TuiVision.Serialization.TDialogDescriptionRecord.Register(TuiVision.Serialization.TRecordRegistry)
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.Register(TuiVision.Serialization.TRecordRegistry)
+  nameWithType: TDialogDescriptionRecord.Register(TRecordRegistry)
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.Register*
+  name: Register
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_Register_
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.Register
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.Register
+  nameWithType: TDialogDescriptionRecord.Register
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.RuntimeStateIncluded
+  name: RuntimeStateIncluded
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_RuntimeStateIncluded
+  commentId: P:TuiVision.Serialization.TDialogDescriptionRecord.RuntimeStateIncluded
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.RuntimeStateIncluded
+  nameWithType: TDialogDescriptionRecord.RuntimeStateIncluded
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.RuntimeStateIncluded*
+  name: RuntimeStateIncluded
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_RuntimeStateIncluded_
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.RuntimeStateIncluded
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.RuntimeStateIncluded
+  nameWithType: TDialogDescriptionRecord.RuntimeStateIncluded
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  name: SaveTo(TBinaryArchiveWriter)
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_SaveTo_TuiVision_Serialization_TBinaryArchiveWriter_
+  commentId: M:TuiVision.Serialization.TDialogDescriptionRecord.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  nameWithType: TDialogDescriptionRecord.SaveTo(TBinaryArchiveWriter)
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.SaveTo*
+  name: SaveTo
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_SaveTo_
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.SaveTo
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.SaveTo
+  nameWithType: TDialogDescriptionRecord.SaveTo
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.Title
+  name: Title
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_Title
+  commentId: P:TuiVision.Serialization.TDialogDescriptionRecord.Title
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.Title
+  nameWithType: TDialogDescriptionRecord.Title
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.Title*
+  name: Title
+  href: api/TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_Title_
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.Title
+  isSpec: "True"
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.Title
+  nameWithType: TDialogDescriptionRecord.Title
 - uid: TuiVision.Serialization.THelpCrossReference
   name: THelpCrossReference
   href: api/TuiVision.Serialization.THelpCrossReference.html

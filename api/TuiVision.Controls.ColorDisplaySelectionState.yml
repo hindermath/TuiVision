@@ -1,0 +1,1079 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.ColorDisplaySelectionState
+  commentId: T:TuiVision.Controls.ColorDisplaySelectionState
+  id: ColorDisplaySelectionState
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.ColorDisplaySelectionState.#ctor(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String,System.String,System.Collections.Generic.IReadOnlyList{System.String},System.String)
+  - TuiVision.Controls.ColorDisplaySelectionState.Cancel
+  - TuiVision.Controls.ColorDisplaySelectionState.CommittedValue
+  - TuiVision.Controls.ColorDisplaySelectionState.Create(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})
+  - TuiVision.Controls.ColorDisplaySelectionState.CreateFallback(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String)
+  - TuiVision.Controls.ColorDisplaySelectionState.FallbackReason
+  - TuiVision.Controls.ColorDisplaySelectionState.Group
+  - TuiVision.Controls.ColorDisplaySelectionState.HasFallback
+  - TuiVision.Controls.ColorDisplaySelectionState.PreviewValue
+  - TuiVision.Controls.ColorDisplaySelectionState.SelectedValue
+  - TuiVision.Controls.ColorDisplaySelectionState.SelectionKind
+  - TuiVision.Controls.ColorDisplaySelectionState.SupportedOptions
+  langs:
+  - csharp
+  - vb
+  name: ColorDisplaySelectionState
+  nameWithType: ColorDisplaySelectionState
+  fullName: TuiVision.Controls.ColorDisplaySelectionState
+  type: Struct
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: ColorDisplaySelectionState
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 37
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Synchroner Auswahlzustand fuer Farbe, Anzeige und symbolischen Zeichensatz.
+
+
+    Synchronous selection state for colour, display, and symbolic charset.
+  example: []
+  syntax:
+    content: 'public readonly record struct ColorDisplaySelectionState : IEquatable<ColorDisplaySelectionState>'
+    content.vb: Public Structure ColorDisplaySelectionState Implements IEquatable(Of ColorDisplaySelectionState)
+  implements:
+  - System.IEquatable{TuiVision.Controls.ColorDisplaySelectionState}
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: TuiVision.Controls.ColorDisplaySelectionState.#ctor(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String,System.String,System.Collections.Generic.IReadOnlyList{System.String},System.String)
+  commentId: M:TuiVision.Controls.ColorDisplaySelectionState.#ctor(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String,System.String,System.Collections.Generic.IReadOnlyList{System.String},System.String)
+  id: '#ctor(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String,System.String,System.Collections.Generic.IReadOnlyList{System.String},System.String)'
+  parent: TuiVision.Controls.ColorDisplaySelectionState
+  langs:
+  - csharp
+  - vb
+  name: ColorDisplaySelectionState(ColorDisplaySelectionKind, string, string?, string?, string?, IReadOnlyList<string>, string?)
+  nameWithType: ColorDisplaySelectionState.ColorDisplaySelectionState(ColorDisplaySelectionKind, string, string?, string?, string?, IReadOnlyList<string>, string?)
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.ColorDisplaySelectionState(TuiVision.Controls.ColorDisplaySelectionKind, string, string?, string?, string?, System.Collections.Generic.IReadOnlyList<string>, string?)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 37
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Synchroner Auswahlzustand fuer Farbe, Anzeige und symbolischen Zeichensatz.
+
+
+    Synchronous selection state for colour, display, and symbolic charset.
+  example: []
+  syntax:
+    content: public ColorDisplaySelectionState(ColorDisplaySelectionKind SelectionKind, string Group, string? SelectedValue, string? PreviewValue, string? CommittedValue, IReadOnlyList<string> SupportedOptions, string? FallbackReason)
+    parameters:
+    - id: SelectionKind
+      type: TuiVision.Controls.ColorDisplaySelectionKind
+      description: Die Auswahlart. / The selection kind.
+    - id: Group
+      type: System.String
+      description: Die Auswahlgruppe. / The selection group.
+    - id: SelectedValue
+      type: System.String
+      description: Der aktuell gewaählte Wert. / The currently selected value.
+    - id: PreviewValue
+      type: System.String
+      description: Der Vorschauwert. / The preview value.
+    - id: CommittedValue
+      type: System.String
+      description: Der bestaetigte Ausgangswert. / The committed starting value.
+    - id: SupportedOptions
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+      description: Die unterstuetzten Werte. / The supported values.
+    - id: FallbackReason
+      type: System.String
+      description: Der optionale Fallback-Grund. / The optional fallback reason.
+    content.vb: Public Sub New(SelectionKind As ColorDisplaySelectionKind, Group As String, SelectedValue As String, PreviewValue As String, CommittedValue As String, SupportedOptions As IReadOnlyList(Of String), FallbackReason As String)
+  overload: TuiVision.Controls.ColorDisplaySelectionState.#ctor*
+  nameWithType.vb: ColorDisplaySelectionState.New(ColorDisplaySelectionKind, String, String, String, String, IReadOnlyList(Of String), String)
+  fullName.vb: TuiVision.Controls.ColorDisplaySelectionState.New(TuiVision.Controls.ColorDisplaySelectionKind, String, String, String, String, System.Collections.Generic.IReadOnlyList(Of String), String)
+  name.vb: New(ColorDisplaySelectionKind, String, String, String, String, IReadOnlyList(Of String), String)
+- uid: TuiVision.Controls.ColorDisplaySelectionState.SelectionKind
+  commentId: P:TuiVision.Controls.ColorDisplaySelectionState.SelectionKind
+  id: SelectionKind
+  parent: TuiVision.Controls.ColorDisplaySelectionState
+  langs:
+  - csharp
+  - vb
+  name: SelectionKind
+  nameWithType: ColorDisplaySelectionState.SelectionKind
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.SelectionKind
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SelectionKind
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 38
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Die Auswahlart. / The selection kind.
+  example: []
+  syntax:
+    content: public ColorDisplaySelectionKind SelectionKind { get; init; }
+    parameters: []
+    return:
+      type: TuiVision.Controls.ColorDisplaySelectionKind
+    content.vb: Public Property SelectionKind As ColorDisplaySelectionKind
+  overload: TuiVision.Controls.ColorDisplaySelectionState.SelectionKind*
+- uid: TuiVision.Controls.ColorDisplaySelectionState.Group
+  commentId: P:TuiVision.Controls.ColorDisplaySelectionState.Group
+  id: Group
+  parent: TuiVision.Controls.ColorDisplaySelectionState
+  langs:
+  - csharp
+  - vb
+  name: Group
+  nameWithType: ColorDisplaySelectionState.Group
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.Group
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Group
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 39
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Die Auswahlgruppe. / The selection group.
+  example: []
+  syntax:
+    content: public string Group { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Group As String
+  overload: TuiVision.Controls.ColorDisplaySelectionState.Group*
+- uid: TuiVision.Controls.ColorDisplaySelectionState.SelectedValue
+  commentId: P:TuiVision.Controls.ColorDisplaySelectionState.SelectedValue
+  id: SelectedValue
+  parent: TuiVision.Controls.ColorDisplaySelectionState
+  langs:
+  - csharp
+  - vb
+  name: SelectedValue
+  nameWithType: ColorDisplaySelectionState.SelectedValue
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.SelectedValue
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SelectedValue
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 40
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Der aktuell gewaählte Wert. / The currently selected value.
+  example: []
+  syntax:
+    content: public string? SelectedValue { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SelectedValue As String
+  overload: TuiVision.Controls.ColorDisplaySelectionState.SelectedValue*
+- uid: TuiVision.Controls.ColorDisplaySelectionState.PreviewValue
+  commentId: P:TuiVision.Controls.ColorDisplaySelectionState.PreviewValue
+  id: PreviewValue
+  parent: TuiVision.Controls.ColorDisplaySelectionState
+  langs:
+  - csharp
+  - vb
+  name: PreviewValue
+  nameWithType: ColorDisplaySelectionState.PreviewValue
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.PreviewValue
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: PreviewValue
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 41
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Der Vorschauwert. / The preview value.
+  example: []
+  syntax:
+    content: public string? PreviewValue { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property PreviewValue As String
+  overload: TuiVision.Controls.ColorDisplaySelectionState.PreviewValue*
+- uid: TuiVision.Controls.ColorDisplaySelectionState.CommittedValue
+  commentId: P:TuiVision.Controls.ColorDisplaySelectionState.CommittedValue
+  id: CommittedValue
+  parent: TuiVision.Controls.ColorDisplaySelectionState
+  langs:
+  - csharp
+  - vb
+  name: CommittedValue
+  nameWithType: ColorDisplaySelectionState.CommittedValue
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.CommittedValue
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: CommittedValue
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 42
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Der bestaetigte Ausgangswert. / The committed starting value.
+  example: []
+  syntax:
+    content: public string? CommittedValue { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property CommittedValue As String
+  overload: TuiVision.Controls.ColorDisplaySelectionState.CommittedValue*
+- uid: TuiVision.Controls.ColorDisplaySelectionState.SupportedOptions
+  commentId: P:TuiVision.Controls.ColorDisplaySelectionState.SupportedOptions
+  id: SupportedOptions
+  parent: TuiVision.Controls.ColorDisplaySelectionState
+  langs:
+  - csharp
+  - vb
+  name: SupportedOptions
+  nameWithType: ColorDisplaySelectionState.SupportedOptions
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.SupportedOptions
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SupportedOptions
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 43
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Die unterstuetzten Werte. / The supported values.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> SupportedOptions { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Property SupportedOptions As IReadOnlyList(Of String)
+  overload: TuiVision.Controls.ColorDisplaySelectionState.SupportedOptions*
+- uid: TuiVision.Controls.ColorDisplaySelectionState.FallbackReason
+  commentId: P:TuiVision.Controls.ColorDisplaySelectionState.FallbackReason
+  id: FallbackReason
+  parent: TuiVision.Controls.ColorDisplaySelectionState
+  langs:
+  - csharp
+  - vb
+  name: FallbackReason
+  nameWithType: ColorDisplaySelectionState.FallbackReason
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.FallbackReason
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: FallbackReason
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 44
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Der optionale Fallback-Grund. / The optional fallback reason.
+  example: []
+  syntax:
+    content: public string? FallbackReason { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property FallbackReason As String
+  overload: TuiVision.Controls.ColorDisplaySelectionState.FallbackReason*
+- uid: TuiVision.Controls.ColorDisplaySelectionState.HasFallback
+  commentId: P:TuiVision.Controls.ColorDisplaySelectionState.HasFallback
+  id: HasFallback
+  parent: TuiVision.Controls.ColorDisplaySelectionState
+  langs:
+  - csharp
+  - vb
+  name: HasFallback
+  nameWithType: ColorDisplaySelectionState.HasFallback
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.HasFallback
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: HasFallback
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 51
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Gibt an, ob ein Fallback aktiv ist.
+
+
+    Indicates whether fallback is active.
+  example: []
+  syntax:
+    content: public bool HasFallback { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasFallback As Boolean
+  overload: TuiVision.Controls.ColorDisplaySelectionState.HasFallback*
+- uid: TuiVision.Controls.ColorDisplaySelectionState.Create(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})
+  commentId: M:TuiVision.Controls.ColorDisplaySelectionState.Create(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})
+  id: Create(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})
+  parent: TuiVision.Controls.ColorDisplaySelectionState
+  langs:
+  - csharp
+  - vb
+  name: Create(ColorDisplaySelectionKind, string, string, string?, IEnumerable<string>)
+  nameWithType: ColorDisplaySelectionState.Create(ColorDisplaySelectionKind, string, string, string?, IEnumerable<string>)
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.Create(TuiVision.Controls.ColorDisplaySelectionKind, string, string, string?, System.Collections.Generic.IEnumerable<string>)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Create
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 64
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Erstellt einen validierten Auswahlzustand.
+
+
+    Creates a validated selection state.
+  example: []
+  syntax:
+    content: public static ColorDisplaySelectionState Create(ColorDisplaySelectionKind kind, string group, string selectedValue, string? committedValue, IEnumerable<string> supportedOptions)
+    parameters:
+    - id: kind
+      type: TuiVision.Controls.ColorDisplaySelectionKind
+      description: Die Auswahlart. / The selection kind.
+    - id: group
+      type: System.String
+      description: Die Gruppe. / The group.
+    - id: selectedValue
+      type: System.String
+      description: Der Auswahlwert. / The selected value.
+    - id: committedValue
+      type: System.String
+      description: Der bestaetigte Wert. / The committed value.
+    - id: supportedOptions
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: Die unterstuetzten Werte. / The supported values.
+    return:
+      type: TuiVision.Controls.ColorDisplaySelectionState
+      description: Der Auswahlzustand. / The selection state.
+    content.vb: Public Shared Function Create(kind As ColorDisplaySelectionKind, group As String, selectedValue As String, committedValue As String, supportedOptions As IEnumerable(Of String)) As ColorDisplaySelectionState
+  overload: TuiVision.Controls.ColorDisplaySelectionState.Create*
+  nameWithType.vb: ColorDisplaySelectionState.Create(ColorDisplaySelectionKind, String, String, String, IEnumerable(Of String))
+  fullName.vb: TuiVision.Controls.ColorDisplaySelectionState.Create(TuiVision.Controls.ColorDisplaySelectionKind, String, String, String, System.Collections.Generic.IEnumerable(Of String))
+  name.vb: Create(ColorDisplaySelectionKind, String, String, String, IEnumerable(Of String))
+- uid: TuiVision.Controls.ColorDisplaySelectionState.CreateFallback(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String)
+  commentId: M:TuiVision.Controls.ColorDisplaySelectionState.CreateFallback(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String)
+  id: CreateFallback(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String)
+  parent: TuiVision.Controls.ColorDisplaySelectionState
+  langs:
+  - csharp
+  - vb
+  name: CreateFallback(ColorDisplaySelectionKind, string, string?, string)
+  nameWithType: ColorDisplaySelectionState.CreateFallback(ColorDisplaySelectionKind, string, string?, string)
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.CreateFallback(TuiVision.Controls.ColorDisplaySelectionKind, string, string?, string)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: CreateFallback
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 95
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Erstellt einen begrenzten Fallback-Zustand.
+
+
+    Creates a bounded fallback state.
+  example: []
+  syntax:
+    content: public static ColorDisplaySelectionState CreateFallback(ColorDisplaySelectionKind kind, string group, string? committedValue, string reason)
+    parameters:
+    - id: kind
+      type: TuiVision.Controls.ColorDisplaySelectionKind
+      description: Die Auswahlart. / The selection kind.
+    - id: group
+      type: System.String
+      description: Die Gruppe. / The group.
+    - id: committedValue
+      type: System.String
+      description: Der zu erhaltende Wert. / The value to preserve.
+    - id: reason
+      type: System.String
+      description: Der Fallback-Grund. / The fallback reason.
+    return:
+      type: TuiVision.Controls.ColorDisplaySelectionState
+      description: Der Fallback-Zustand. / The fallback state.
+    content.vb: Public Shared Function CreateFallback(kind As ColorDisplaySelectionKind, group As String, committedValue As String, reason As String) As ColorDisplaySelectionState
+  overload: TuiVision.Controls.ColorDisplaySelectionState.CreateFallback*
+  nameWithType.vb: ColorDisplaySelectionState.CreateFallback(ColorDisplaySelectionKind, String, String, String)
+  fullName.vb: TuiVision.Controls.ColorDisplaySelectionState.CreateFallback(TuiVision.Controls.ColorDisplaySelectionKind, String, String, String)
+  name.vb: CreateFallback(ColorDisplaySelectionKind, String, String, String)
+- uid: TuiVision.Controls.ColorDisplaySelectionState.Cancel
+  commentId: M:TuiVision.Controls.ColorDisplaySelectionState.Cancel
+  id: Cancel
+  parent: TuiVision.Controls.ColorDisplaySelectionState
+  langs:
+  - csharp
+  - vb
+  name: Cancel()
+  nameWithType: ColorDisplaySelectionState.Cancel()
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.Cancel()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Cancel
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 108
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Stellt den bestaetigten Wert nach einem Abbruch wieder her.
+
+
+    Restores the committed value after cancellation.
+  example: []
+  syntax:
+    content: public ColorDisplaySelectionState Cancel()
+    return:
+      type: TuiVision.Controls.ColorDisplaySelectionState
+      description: Der wiederhergestellte Zustand. / The restored state.
+    content.vb: Public Function Cancel() As ColorDisplaySelectionState
+  overload: TuiVision.Controls.ColorDisplaySelectionState.Cancel*
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: System.IEquatable{TuiVision.Controls.ColorDisplaySelectionState}
+  commentId: T:System.IEquatable{TuiVision.Controls.ColorDisplaySelectionState}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<ColorDisplaySelectionState>
+  nameWithType: IEquatable<ColorDisplaySelectionState>
+  fullName: System.IEquatable<TuiVision.Controls.ColorDisplaySelectionState>
+  nameWithType.vb: IEquatable(Of ColorDisplaySelectionState)
+  fullName.vb: System.IEquatable(Of TuiVision.Controls.ColorDisplaySelectionState)
+  name.vb: IEquatable(Of ColorDisplaySelectionState)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: TuiVision.Controls.ColorDisplaySelectionState
+    name: ColorDisplaySelectionState
+    href: TuiVision.Controls.ColorDisplaySelectionState.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Controls.ColorDisplaySelectionState
+    name: ColorDisplaySelectionState
+    href: TuiVision.Controls.ColorDisplaySelectionState.html
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TuiVision.Controls.ColorDisplaySelectionState.#ctor*
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.#ctor
+  href: TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState__ctor_TuiVision_Controls_ColorDisplaySelectionKind_System_String_System_String_System_String_System_String_System_Collections_Generic_IReadOnlyList_System_String__System_String_
+  name: ColorDisplaySelectionState
+  nameWithType: ColorDisplaySelectionState.ColorDisplaySelectionState
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.ColorDisplaySelectionState
+  nameWithType.vb: ColorDisplaySelectionState.New
+  fullName.vb: TuiVision.Controls.ColorDisplaySelectionState.New
+  name.vb: New
+- uid: TuiVision.Controls.ColorDisplaySelectionKind
+  commentId: T:TuiVision.Controls.ColorDisplaySelectionKind
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.ColorDisplaySelectionKind.html
+  name: ColorDisplaySelectionKind
+  nameWithType: ColorDisplaySelectionKind
+  fullName: TuiVision.Controls.ColorDisplaySelectionKind
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TuiVision.Controls.ColorDisplaySelectionState.SelectionKind*
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.SelectionKind
+  href: TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_SelectionKind
+  name: SelectionKind
+  nameWithType: ColorDisplaySelectionState.SelectionKind
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.SelectionKind
+- uid: TuiVision.Controls.ColorDisplaySelectionState.Group*
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.Group
+  href: TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_Group
+  name: Group
+  nameWithType: ColorDisplaySelectionState.Group
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.Group
+- uid: TuiVision.Controls.ColorDisplaySelectionState.SelectedValue*
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.SelectedValue
+  href: TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_SelectedValue
+  name: SelectedValue
+  nameWithType: ColorDisplaySelectionState.SelectedValue
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.SelectedValue
+- uid: TuiVision.Controls.ColorDisplaySelectionState.PreviewValue*
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.PreviewValue
+  href: TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_PreviewValue
+  name: PreviewValue
+  nameWithType: ColorDisplaySelectionState.PreviewValue
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.PreviewValue
+- uid: TuiVision.Controls.ColorDisplaySelectionState.CommittedValue*
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.CommittedValue
+  href: TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_CommittedValue
+  name: CommittedValue
+  nameWithType: ColorDisplaySelectionState.CommittedValue
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.CommittedValue
+- uid: TuiVision.Controls.ColorDisplaySelectionState.SupportedOptions*
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.SupportedOptions
+  href: TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_SupportedOptions
+  name: SupportedOptions
+  nameWithType: ColorDisplaySelectionState.SupportedOptions
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.SupportedOptions
+- uid: TuiVision.Controls.ColorDisplaySelectionState.FallbackReason*
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.FallbackReason
+  href: TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_FallbackReason
+  name: FallbackReason
+  nameWithType: ColorDisplaySelectionState.FallbackReason
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.FallbackReason
+- uid: TuiVision.Controls.ColorDisplaySelectionState.HasFallback*
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.HasFallback
+  href: TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_HasFallback
+  name: HasFallback
+  nameWithType: ColorDisplaySelectionState.HasFallback
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.HasFallback
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: TuiVision.Controls.ColorDisplaySelectionState.Create*
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.Create
+  href: TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_Create_TuiVision_Controls_ColorDisplaySelectionKind_System_String_System_String_System_String_System_Collections_Generic_IEnumerable_System_String__
+  name: Create
+  nameWithType: ColorDisplaySelectionState.Create
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.Create
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: TuiVision.Controls.ColorDisplaySelectionState
+  commentId: T:TuiVision.Controls.ColorDisplaySelectionState
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.ColorDisplaySelectionState.html
+  name: ColorDisplaySelectionState
+  nameWithType: ColorDisplaySelectionState
+  fullName: TuiVision.Controls.ColorDisplaySelectionState
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TuiVision.Controls.ColorDisplaySelectionState.CreateFallback*
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.CreateFallback
+  href: TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_CreateFallback_TuiVision_Controls_ColorDisplaySelectionKind_System_String_System_String_System_String_
+  name: CreateFallback
+  nameWithType: ColorDisplaySelectionState.CreateFallback
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.CreateFallback
+- uid: TuiVision.Controls.ColorDisplaySelectionState.Cancel*
+  commentId: Overload:TuiVision.Controls.ColorDisplaySelectionState.Cancel
+  href: TuiVision.Controls.ColorDisplaySelectionState.html#TuiVision_Controls_ColorDisplaySelectionState_Cancel
+  name: Cancel
+  nameWithType: ColorDisplaySelectionState.Cancel
+  fullName: TuiVision.Controls.ColorDisplaySelectionState.Cancel

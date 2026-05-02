@@ -17,7 +17,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/docs/guides/multi-mac-workflow.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/docs/guides/multi-mac-workflow.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -622,12 +622,63 @@ auf dem MacBook Air M2 ohne eine einzige Fehlerausnahme bestaetigt:</p>
 </tbody>
 </table>
 <p><em>(All five SC-003 close/move scenarios passed in every one of 20 consecutive <code>dotnet test</code> runs on MacBook Air M2.)</em></p>
-<h3 id="testbefehl-fuer-controls-revision--test-command-for-controls-revision">Testbefehl fuer Controls-Revision / Test Command for Controls Revision</h3>
-<pre><code class="lang-bash">dotnet test tests/TuiVision.Controls.Tests/ --configuration Release
+<h3 id="009-controls-widgets-and-collections-repeated-run-matrix">009-controls-widgets-and-collections Repeated-Run Matrix</h3>
+<p>Die folgenden Szenarien wurden in 20 aufeinanderfolgenden <code>dotnet test</code>-Durchlaeufen
+auf dem MacBook Air M2 ohne eine einzige Fehlerausnahme bestaetigt:</p>
+<table>
+<thead>
+<tr>
+<th>Szenario</th>
+<th>Durchlaeufe</th>
+<th>Erste-Versuch-Erfolgsrate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WidgetAcceptance_ListViewer_FocusNavigation</td>
+<td>20 / 20</td>
+<td>100 %</td>
+</tr>
+<tr>
+<td>WidgetAcceptance_ComboBox_DropDownCycle</td>
+<td>20 / 20</td>
+<td>100 %</td>
+</tr>
+<tr>
+<td>WidgetAcceptance_ProgressBar_StateTransition</td>
+<td>20 / 20</td>
+<td>100 %</td>
+</tr>
+<tr>
+<td>WidgetAcceptance_ParamText_ValueRefresh</td>
+<td>20 / 20</td>
+<td>100 %</td>
+</tr>
+<tr>
+<td>WidgetAcceptance_ManagedClipboard_CutAndPaste</td>
+<td>20 / 20</td>
+<td>100 %</td>
+</tr>
+<tr>
+<td>WidgetAcceptance_History_SessionRecall</td>
+<td>20 / 20</td>
+<td>100 %</td>
+</tr>
+<tr>
+<td>WidgetAcceptance_AllWidgets_FirstRedraw</td>
+<td>20 / 20</td>
+<td>100 %</td>
+</tr>
+</tbody>
+</table>
+<p><em>(All seven widget/collection acceptance scenarios passed in every one of 20 consecutive <code>dotnet test</code> runs on MacBook Air M2.)</em></p>
+<h3 id="testbefehl-fuer-widgets-und-collections--test-command-for-widgets-and-collections">Testbefehl fuer Widgets und Collections / Test Command for Widgets and Collections</h3>
+<pre><code class="lang-bash">dotnet test tests/TuiVision.Controls.Tests/ --filter &quot;FullyQualifiedName~WidgetAcceptance&quot; --configuration Release
 </code></pre>
-<p>Erwartetes Ergebnis: 189 Tests bestanden, 0 Fehler, 0 uebersprungen.
-<em>(Expected result: 189 tests passed, 0 failed, 0 skipped.)</em></p>
+<p>Erwartetes Ergebnis: 7 Tests bestanden, 0 Fehler, 0 uebersprungen.
+<em>(Expected result: 7 tests passed, 0 failed, 0 skipped.)</em></p>
 <hr>
+<h2 id="troubleshooting">Troubleshooting</h2>
 <h2 id="009-controls-widgets-and-collections--validation-evidence">009-controls-widgets-and-collections – Validation Evidence</h2>
 <p>Dieser Abschnitt dokumentiert die Laufzeitnachweise fuer <code>009-controls-widgets-and-collections</code>
 auf den unterstuetzten Plattformen (Branch <code>009-controls-widgets-and-collections</code>, 2026-03-30).</p>
@@ -646,9 +697,9 @@ on supported platforms — branch <code>009-controls-widgets-and-collections</co
 <tbody>
 <tr>
 <td>MacBook Air M2</td>
-<td>dotnet build --configuration Release (pending)</td>
-<td>dotnet test tests/TuiVision.Controls.Tests/ (pending)</td>
-<td>pending</td>
+<td>PASS</td>
+<td>268 PASS, 0 FAIL</td>
+<td>84.78 % (Controls)</td>
 <td>Primary path</td>
 </tr>
 <tr>
@@ -676,7 +727,68 @@ on supported platforms — branch <code>009-controls-widgets-and-collections</co
 </table>
 <p>Validation to be recorded when quality gates run in T024/T025.</p>
 <p><em>(Validierung wird aufgezeichnet, sobald die Qualitaetstore in T024/T025 durchlaufen werden.)</em></p>
-<h2 id="troubleshooting">Troubleshooting</h2>
+<h2 id="010-standard-dialogs-designer---validation-evidence">010-standard-dialogs-designer - Validation Evidence</h2>
+<p>Dieser Abschnitt dokumentiert die lokalen Nachweise fuer
+<code>010-standard-dialogs-designer</code> auf dem primaeren Multi-Mac-Pfad am
+2026-05-02.</p>
+<p>This section documents local evidence for <code>010-standard-dialogs-designer</code> on
+the primary Multi-Mac path on 2026-05-02.</p>
+<table>
+<thead>
+<tr>
+<th>Host</th>
+<th>Build</th>
+<th>Controls</th>
+<th>Serialization</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MacBook Air M2</td>
+<td>PASS (<code>dotnet build --configuration Release</code>)</td>
+<td>PASS, 281 Tests</td>
+<td>PASS, 18 Tests</td>
+<td>Keyboard-only, text-first, non-destructive file decisions, persisted-input rejection</td>
+</tr>
+<tr>
+<td>Mac mini M4 Pro</td>
+<td>pending</td>
+<td>pending</td>
+<td>pending</td>
+<td>Secondary Mac</td>
+</tr>
+<tr>
+<td>Linux / WSL Ubuntu 24.04</td>
+<td>pending</td>
+<td>pending</td>
+<td>pending</td>
+<td>Supplemental</td>
+</tr>
+<tr>
+<td>Windows 10/11 WSL2</td>
+<td>pending</td>
+<td>pending</td>
+<td>pending</td>
+<td>Supplemental</td>
+</tr>
+</tbody>
+</table>
+<p>Additional MacBook Air M2 evidence: <code>dotnet test</code> passed with 439 tests, the
+gate-relevant Cobertura files reported <code>Core</code> 89.11 %, <code>Controls</code> 82.85 %,
+<code>Serialization</code> 87.00 %, <code>Compatibility</code> 80.95 %, and <code>Drivers.Console</code>
+76.76 % line coverage, <code>docfx docfx.json</code> passed, and <code>npm run test:docfx</code>
+passed with 2/2 Playwright/axe smoke tests. <code>dotnet format --verify-no-changes</code> passed after the repository line-ending rule was aligned
+to LF and the five MSTest settings files were normalized to UTF-8 without BOM.</p>
+<p>A11Y proof: standard-dialog flow tests assert keyboard reachability through
+<code>StandardDialogFlowState.KeyboardReachable</code>; validation and fallback states are
+plain text (<code>StandardDialogValidationMessage</code>, <code>FallbackMessage</code>,
+<code>FallbackReason</code>). No mouse-only acceptance path was added.</p>
+<p>Security proof: file dialogs return caller-visible decisions only and do not
+perform file content I/O. Persisted dialog descriptions reject truncated,
+trailing, unsupported-version, runtime-state, and semantic invalid input before
+runtime dialog creation.</p>
+<h2 id="troubleshooting-1">Troubleshooting</h2>
 <h3 id="gh-auth-status-zeigt-kein-login"><code>gh auth status</code> zeigt kein Login</h3>
 <pre><code class="lang-bash">gh auth login
 </code></pre>
@@ -719,7 +831,7 @@ git diff
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/docs/guides/multi-mac-workflow.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/docs/guides/multi-mac-workflow.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

@@ -1,0 +1,1239 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Serialization.TDialogDescriptionRecord
+  commentId: T:TuiVision.Serialization.TDialogDescriptionRecord
+  id: TDialogDescriptionRecord
+  parent: TuiVision.Serialization
+  children:
+  - TuiVision.Serialization.TDialogDescriptionRecord.#ctor(System.Int32,System.String,System.Int32,System.String,System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogControlDescriptionRecord},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogCommandBindingRecord},System.Boolean)
+  - TuiVision.Serialization.TDialogDescriptionRecord.CommandBindings
+  - TuiVision.Serialization.TDialogDescriptionRecord.Controls
+  - TuiVision.Serialization.TDialogDescriptionRecord.DescriptionId
+  - TuiVision.Serialization.TDialogDescriptionRecord.FormatVersion
+  - TuiVision.Serialization.TDialogDescriptionRecord.LoadFrom(TuiVision.Serialization.TBinaryArchiveReader)
+  - TuiVision.Serialization.TDialogDescriptionRecord.ModelVersion
+  - TuiVision.Serialization.TDialogDescriptionRecord.NavigationOrder
+  - TuiVision.Serialization.TDialogDescriptionRecord.Register(TuiVision.Serialization.TRecordRegistry)
+  - TuiVision.Serialization.TDialogDescriptionRecord.RuntimeStateIncluded
+  - TuiVision.Serialization.TDialogDescriptionRecord.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  - TuiVision.Serialization.TDialogDescriptionRecord.Title
+  langs:
+  - csharp
+  - vb
+  name: TDialogDescriptionRecord
+  nameWithType: TDialogDescriptionRecord
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: TDialogDescriptionRecord
+    path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+    startLine: 42
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Persistierbare Minimaldarstellung einer Dialogbeschreibung.
+
+
+    Persistable minimal representation of a dialog description.
+  example: []
+  syntax:
+    content: 'public sealed record TDialogDescriptionRecord : ITStreamSerializable, IEquatable<TDialogDescriptionRecord>'
+    content.vb: Public NotInheritable Class TDialogDescriptionRecord Implements ITStreamSerializable, IEquatable(Of TDialogDescriptionRecord)
+  inheritance:
+  - System.Object
+  implements:
+  - TuiVision.Serialization.ITStreamSerializable
+  - System.IEquatable{TuiVision.Serialization.TDialogDescriptionRecord}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.#ctor(System.Int32,System.String,System.Int32,System.String,System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogControlDescriptionRecord},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogCommandBindingRecord},System.Boolean)
+  commentId: M:TuiVision.Serialization.TDialogDescriptionRecord.#ctor(System.Int32,System.String,System.Int32,System.String,System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogControlDescriptionRecord},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogCommandBindingRecord},System.Boolean)
+  id: '#ctor(System.Int32,System.String,System.Int32,System.String,System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogControlDescriptionRecord},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogCommandBindingRecord},System.Boolean)'
+  parent: TuiVision.Serialization.TDialogDescriptionRecord
+  langs:
+  - csharp
+  - vb
+  name: TDialogDescriptionRecord(int, string, int, string, IEnumerable<TDialogControlDescriptionRecord>, IEnumerable<string>, IEnumerable<TDialogCommandBindingRecord>, bool)
+  nameWithType: TDialogDescriptionRecord.TDialogDescriptionRecord(int, string, int, string, IEnumerable<TDialogControlDescriptionRecord>, IEnumerable<string>, IEnumerable<TDialogCommandBindingRecord>, bool)
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.TDialogDescriptionRecord(int, string, int, string, System.Collections.Generic.IEnumerable<TuiVision.Serialization.TDialogControlDescriptionRecord>, System.Collections.Generic.IEnumerable<string>, System.Collections.Generic.IEnumerable<TuiVision.Serialization.TDialogCommandBindingRecord>, bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+    startLine: 59
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Erstellt einen Dialogbeschreibungs-Record.
+
+
+    Creates a dialog-description record.
+  example: []
+  syntax:
+    content: public TDialogDescriptionRecord(int formatVersion, string descriptionId, int modelVersion, string title, IEnumerable<TDialogControlDescriptionRecord> controls, IEnumerable<string> navigationOrder, IEnumerable<TDialogCommandBindingRecord> commandBindings, bool runtimeStateIncluded = false)
+    parameters:
+    - id: formatVersion
+      type: System.Int32
+      description: Die Formatversion. / The format version.
+    - id: descriptionId
+      type: System.String
+      description: Die Beschreibungs-ID. / The description identifier.
+    - id: modelVersion
+      type: System.Int32
+      description: Die Modellversion. / The model version.
+    - id: title
+      type: System.String
+      description: Der Dialogtitel. / The dialog title.
+    - id: controls
+      type: System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogControlDescriptionRecord}
+      description: Die Controls. / The controls.
+    - id: navigationOrder
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: Die Navigationsreihenfolge. / The navigation order.
+    - id: commandBindings
+      type: System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogCommandBindingRecord}
+      description: Die Command-Bindungen. / The command bindings.
+    - id: runtimeStateIncluded
+      type: System.Boolean
+      description: Ob Runtime-Zustand enthalten ist. / Whether runtime state is included.
+    content.vb: Public Sub New(formatVersion As Integer, descriptionId As String, modelVersion As Integer, title As String, controls As IEnumerable(Of TDialogControlDescriptionRecord), navigationOrder As IEnumerable(Of String), commandBindings As IEnumerable(Of TDialogCommandBindingRecord), runtimeStateIncluded As Boolean = False)
+  overload: TuiVision.Serialization.TDialogDescriptionRecord.#ctor*
+  nameWithType.vb: TDialogDescriptionRecord.New(Integer, String, Integer, String, IEnumerable(Of TDialogControlDescriptionRecord), IEnumerable(Of String), IEnumerable(Of TDialogCommandBindingRecord), Boolean)
+  fullName.vb: TuiVision.Serialization.TDialogDescriptionRecord.New(Integer, String, Integer, String, System.Collections.Generic.IEnumerable(Of TuiVision.Serialization.TDialogControlDescriptionRecord), System.Collections.Generic.IEnumerable(Of String), System.Collections.Generic.IEnumerable(Of TuiVision.Serialization.TDialogCommandBindingRecord), Boolean)
+  name.vb: New(Integer, String, Integer, String, IEnumerable(Of TDialogControlDescriptionRecord), IEnumerable(Of String), IEnumerable(Of TDialogCommandBindingRecord), Boolean)
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.FormatVersion
+  commentId: P:TuiVision.Serialization.TDialogDescriptionRecord.FormatVersion
+  id: FormatVersion
+  parent: TuiVision.Serialization.TDialogDescriptionRecord
+  langs:
+  - csharp
+  - vb
+  name: FormatVersion
+  nameWithType: TDialogDescriptionRecord.FormatVersion
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.FormatVersion
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: FormatVersion
+    path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+    startLine: 80
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: Die Formatversion. / The format version.
+  example: []
+  syntax:
+    content: public int FormatVersion { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property FormatVersion As Integer
+  overload: TuiVision.Serialization.TDialogDescriptionRecord.FormatVersion*
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.DescriptionId
+  commentId: P:TuiVision.Serialization.TDialogDescriptionRecord.DescriptionId
+  id: DescriptionId
+  parent: TuiVision.Serialization.TDialogDescriptionRecord
+  langs:
+  - csharp
+  - vb
+  name: DescriptionId
+  nameWithType: TDialogDescriptionRecord.DescriptionId
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.DescriptionId
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: DescriptionId
+    path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+    startLine: 83
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: Die Beschreibungs-ID. / The description identifier.
+  example: []
+  syntax:
+    content: public string DescriptionId { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property DescriptionId As String
+  overload: TuiVision.Serialization.TDialogDescriptionRecord.DescriptionId*
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.ModelVersion
+  commentId: P:TuiVision.Serialization.TDialogDescriptionRecord.ModelVersion
+  id: ModelVersion
+  parent: TuiVision.Serialization.TDialogDescriptionRecord
+  langs:
+  - csharp
+  - vb
+  name: ModelVersion
+  nameWithType: TDialogDescriptionRecord.ModelVersion
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.ModelVersion
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: ModelVersion
+    path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+    startLine: 86
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: Die Modellversion. / The model version.
+  example: []
+  syntax:
+    content: public int ModelVersion { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property ModelVersion As Integer
+  overload: TuiVision.Serialization.TDialogDescriptionRecord.ModelVersion*
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.Title
+  commentId: P:TuiVision.Serialization.TDialogDescriptionRecord.Title
+  id: Title
+  parent: TuiVision.Serialization.TDialogDescriptionRecord
+  langs:
+  - csharp
+  - vb
+  name: Title
+  nameWithType: TDialogDescriptionRecord.Title
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.Title
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Title
+    path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+    startLine: 89
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: Der Dialogtitel. / The dialog title.
+  example: []
+  syntax:
+    content: public string Title { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Title As String
+  overload: TuiVision.Serialization.TDialogDescriptionRecord.Title*
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.Controls
+  commentId: P:TuiVision.Serialization.TDialogDescriptionRecord.Controls
+  id: Controls
+  parent: TuiVision.Serialization.TDialogDescriptionRecord
+  langs:
+  - csharp
+  - vb
+  name: Controls
+  nameWithType: TDialogDescriptionRecord.Controls
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.Controls
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Controls
+    path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+    startLine: 92
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: Die Control-Records. / The control records.
+  example: []
+  syntax:
+    content: public IReadOnlyList<TDialogControlDescriptionRecord> Controls { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{TuiVision.Serialization.TDialogControlDescriptionRecord}
+    content.vb: Public ReadOnly Property Controls As IReadOnlyList(Of TDialogControlDescriptionRecord)
+  overload: TuiVision.Serialization.TDialogDescriptionRecord.Controls*
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.NavigationOrder
+  commentId: P:TuiVision.Serialization.TDialogDescriptionRecord.NavigationOrder
+  id: NavigationOrder
+  parent: TuiVision.Serialization.TDialogDescriptionRecord
+  langs:
+  - csharp
+  - vb
+  name: NavigationOrder
+  nameWithType: TDialogDescriptionRecord.NavigationOrder
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.NavigationOrder
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: NavigationOrder
+    path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+    startLine: 95
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: Die Navigationsreihenfolge. / The navigation order.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> NavigationOrder { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public ReadOnly Property NavigationOrder As IReadOnlyList(Of String)
+  overload: TuiVision.Serialization.TDialogDescriptionRecord.NavigationOrder*
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.CommandBindings
+  commentId: P:TuiVision.Serialization.TDialogDescriptionRecord.CommandBindings
+  id: CommandBindings
+  parent: TuiVision.Serialization.TDialogDescriptionRecord
+  langs:
+  - csharp
+  - vb
+  name: CommandBindings
+  nameWithType: TDialogDescriptionRecord.CommandBindings
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.CommandBindings
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: CommandBindings
+    path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+    startLine: 98
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: Die Command-Bindungen. / The command bindings.
+  example: []
+  syntax:
+    content: public IReadOnlyList<TDialogCommandBindingRecord> CommandBindings { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{TuiVision.Serialization.TDialogCommandBindingRecord}
+    content.vb: Public ReadOnly Property CommandBindings As IReadOnlyList(Of TDialogCommandBindingRecord)
+  overload: TuiVision.Serialization.TDialogDescriptionRecord.CommandBindings*
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.RuntimeStateIncluded
+  commentId: P:TuiVision.Serialization.TDialogDescriptionRecord.RuntimeStateIncluded
+  id: RuntimeStateIncluded
+  parent: TuiVision.Serialization.TDialogDescriptionRecord
+  langs:
+  - csharp
+  - vb
+  name: RuntimeStateIncluded
+  nameWithType: TDialogDescriptionRecord.RuntimeStateIncluded
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.RuntimeStateIncluded
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: RuntimeStateIncluded
+    path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+    startLine: 101
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: Ob Runtime-Zustand enthalten ist. / Whether runtime state is included.
+  example: []
+  syntax:
+    content: public bool RuntimeStateIncluded { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property RuntimeStateIncluded As Boolean
+  overload: TuiVision.Serialization.TDialogDescriptionRecord.RuntimeStateIncluded*
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  commentId: M:TuiVision.Serialization.TDialogDescriptionRecord.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  id: SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  parent: TuiVision.Serialization.TDialogDescriptionRecord
+  langs:
+  - csharp
+  - vb
+  name: SaveTo(TBinaryArchiveWriter)
+  nameWithType: TDialogDescriptionRecord.SaveTo(TBinaryArchiveWriter)
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SaveTo
+    path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+    startLine: 109
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Speichert den Record in einen Archiv-Writer.
+
+
+    Saves the record to an archive writer.
+  example: []
+  syntax:
+    content: public void SaveTo(TBinaryArchiveWriter writer)
+    parameters:
+    - id: writer
+      type: TuiVision.Serialization.TBinaryArchiveWriter
+      description: Der Writer. / The writer.
+    content.vb: Public Sub SaveTo(writer As TBinaryArchiveWriter)
+  overload: TuiVision.Serialization.TDialogDescriptionRecord.SaveTo*
+  implements:
+  - TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.LoadFrom(TuiVision.Serialization.TBinaryArchiveReader)
+  commentId: M:TuiVision.Serialization.TDialogDescriptionRecord.LoadFrom(TuiVision.Serialization.TBinaryArchiveReader)
+  id: LoadFrom(TuiVision.Serialization.TBinaryArchiveReader)
+  parent: TuiVision.Serialization.TDialogDescriptionRecord
+  langs:
+  - csharp
+  - vb
+  name: LoadFrom(TBinaryArchiveReader)
+  nameWithType: TDialogDescriptionRecord.LoadFrom(TBinaryArchiveReader)
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.LoadFrom(TuiVision.Serialization.TBinaryArchiveReader)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: LoadFrom
+    path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+    startLine: 161
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Laedt einen Record aus einem Archiv-Reader.
+
+
+    Loads a record from an archive reader.
+  example: []
+  syntax:
+    content: public static TDialogDescriptionRecord LoadFrom(TBinaryArchiveReader reader)
+    parameters:
+    - id: reader
+      type: TuiVision.Serialization.TBinaryArchiveReader
+      description: Der Reader. / The reader.
+    return:
+      type: TuiVision.Serialization.TDialogDescriptionRecord
+      description: Der geladene Record. / The loaded record.
+    content.vb: Public Shared Function LoadFrom(reader As TBinaryArchiveReader) As TDialogDescriptionRecord
+  overload: TuiVision.Serialization.TDialogDescriptionRecord.LoadFrom*
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.Register(TuiVision.Serialization.TRecordRegistry)
+  commentId: M:TuiVision.Serialization.TDialogDescriptionRecord.Register(TuiVision.Serialization.TRecordRegistry)
+  id: Register(TuiVision.Serialization.TRecordRegistry)
+  parent: TuiVision.Serialization.TDialogDescriptionRecord
+  langs:
+  - csharp
+  - vb
+  name: Register(TRecordRegistry)
+  nameWithType: TDialogDescriptionRecord.Register(TRecordRegistry)
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.Register(TuiVision.Serialization.TRecordRegistry)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Register
+    path: src/TuiVision.Serialization/TDialogDescriptionRecord.cs
+    startLine: 226
+  assemblies:
+  - TuiVision.Serialization
+  namespace: TuiVision.Serialization
+  summary: >-
+    Registriert den Dialogbeschreibungs-Record.
+
+
+    Registers the dialog-description record.
+  example: []
+  syntax:
+    content: public static void Register(TRecordRegistry registry)
+    parameters:
+    - id: registry
+      type: TuiVision.Serialization.TRecordRegistry
+      description: Die Registry. / The registry.
+    content.vb: Public Shared Sub Register(registry As TRecordRegistry)
+  overload: TuiVision.Serialization.TDialogDescriptionRecord.Register*
+references:
+- uid: TuiVision.Serialization
+  commentId: N:TuiVision.Serialization
+  href: TuiVision.html
+  name: TuiVision.Serialization
+  nameWithType: TuiVision.Serialization
+  fullName: TuiVision.Serialization
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Serialization
+    name: Serialization
+    href: TuiVision.Serialization.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Serialization
+    name: Serialization
+    href: TuiVision.Serialization.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TuiVision.Serialization.ITStreamSerializable
+  commentId: T:TuiVision.Serialization.ITStreamSerializable
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.ITStreamSerializable.html
+  name: ITStreamSerializable
+  nameWithType: ITStreamSerializable
+  fullName: TuiVision.Serialization.ITStreamSerializable
+- uid: System.IEquatable{TuiVision.Serialization.TDialogDescriptionRecord}
+  commentId: T:System.IEquatable{TuiVision.Serialization.TDialogDescriptionRecord}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<TDialogDescriptionRecord>
+  nameWithType: IEquatable<TDialogDescriptionRecord>
+  fullName: System.IEquatable<TuiVision.Serialization.TDialogDescriptionRecord>
+  nameWithType.vb: IEquatable(Of TDialogDescriptionRecord)
+  fullName.vb: System.IEquatable(Of TuiVision.Serialization.TDialogDescriptionRecord)
+  name.vb: IEquatable(Of TDialogDescriptionRecord)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: TuiVision.Serialization.TDialogDescriptionRecord
+    name: TDialogDescriptionRecord
+    href: TuiVision.Serialization.TDialogDescriptionRecord.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Serialization.TDialogDescriptionRecord
+    name: TDialogDescriptionRecord
+    href: TuiVision.Serialization.TDialogDescriptionRecord.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.#ctor*
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.#ctor
+  href: TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord__ctor_System_Int32_System_String_System_Int32_System_String_System_Collections_Generic_IEnumerable_TuiVision_Serialization_TDialogControlDescriptionRecord__System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_TuiVision_Serialization_TDialogCommandBindingRecord__System_Boolean_
+  name: TDialogDescriptionRecord
+  nameWithType: TDialogDescriptionRecord.TDialogDescriptionRecord
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.TDialogDescriptionRecord
+  nameWithType.vb: TDialogDescriptionRecord.New
+  fullName.vb: TuiVision.Serialization.TDialogDescriptionRecord.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogControlDescriptionRecord}
+  commentId: T:System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogControlDescriptionRecord}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<TDialogControlDescriptionRecord>
+  nameWithType: IEnumerable<TDialogControlDescriptionRecord>
+  fullName: System.Collections.Generic.IEnumerable<TuiVision.Serialization.TDialogControlDescriptionRecord>
+  nameWithType.vb: IEnumerable(Of TDialogControlDescriptionRecord)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of TuiVision.Serialization.TDialogControlDescriptionRecord)
+  name.vb: IEnumerable(Of TDialogControlDescriptionRecord)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: TuiVision.Serialization.TDialogControlDescriptionRecord
+    name: TDialogControlDescriptionRecord
+    href: TuiVision.Serialization.TDialogControlDescriptionRecord.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Serialization.TDialogControlDescriptionRecord
+    name: TDialogControlDescriptionRecord
+    href: TuiVision.Serialization.TDialogControlDescriptionRecord.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogCommandBindingRecord}
+  commentId: T:System.Collections.Generic.IEnumerable{TuiVision.Serialization.TDialogCommandBindingRecord}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<TDialogCommandBindingRecord>
+  nameWithType: IEnumerable<TDialogCommandBindingRecord>
+  fullName: System.Collections.Generic.IEnumerable<TuiVision.Serialization.TDialogCommandBindingRecord>
+  nameWithType.vb: IEnumerable(Of TDialogCommandBindingRecord)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of TuiVision.Serialization.TDialogCommandBindingRecord)
+  name.vb: IEnumerable(Of TDialogCommandBindingRecord)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: TuiVision.Serialization.TDialogCommandBindingRecord
+    name: TDialogCommandBindingRecord
+    href: TuiVision.Serialization.TDialogCommandBindingRecord.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Serialization.TDialogCommandBindingRecord
+    name: TDialogCommandBindingRecord
+    href: TuiVision.Serialization.TDialogCommandBindingRecord.html
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.FormatVersion*
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.FormatVersion
+  href: TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_FormatVersion
+  name: FormatVersion
+  nameWithType: TDialogDescriptionRecord.FormatVersion
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.FormatVersion
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.DescriptionId*
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.DescriptionId
+  href: TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_DescriptionId
+  name: DescriptionId
+  nameWithType: TDialogDescriptionRecord.DescriptionId
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.DescriptionId
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.ModelVersion*
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.ModelVersion
+  href: TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_ModelVersion
+  name: ModelVersion
+  nameWithType: TDialogDescriptionRecord.ModelVersion
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.ModelVersion
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.Title*
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.Title
+  href: TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_Title
+  name: Title
+  nameWithType: TDialogDescriptionRecord.Title
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.Title
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.Controls*
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.Controls
+  href: TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_Controls
+  name: Controls
+  nameWithType: TDialogDescriptionRecord.Controls
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.Controls
+- uid: System.Collections.Generic.IReadOnlyList{TuiVision.Serialization.TDialogControlDescriptionRecord}
+  commentId: T:System.Collections.Generic.IReadOnlyList{TuiVision.Serialization.TDialogControlDescriptionRecord}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<TDialogControlDescriptionRecord>
+  nameWithType: IReadOnlyList<TDialogControlDescriptionRecord>
+  fullName: System.Collections.Generic.IReadOnlyList<TuiVision.Serialization.TDialogControlDescriptionRecord>
+  nameWithType.vb: IReadOnlyList(Of TDialogControlDescriptionRecord)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of TuiVision.Serialization.TDialogControlDescriptionRecord)
+  name.vb: IReadOnlyList(Of TDialogControlDescriptionRecord)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: TuiVision.Serialization.TDialogControlDescriptionRecord
+    name: TDialogControlDescriptionRecord
+    href: TuiVision.Serialization.TDialogControlDescriptionRecord.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Serialization.TDialogControlDescriptionRecord
+    name: TDialogControlDescriptionRecord
+    href: TuiVision.Serialization.TDialogControlDescriptionRecord.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.NavigationOrder*
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.NavigationOrder
+  href: TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_NavigationOrder
+  name: NavigationOrder
+  nameWithType: TDialogDescriptionRecord.NavigationOrder
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.NavigationOrder
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.CommandBindings*
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.CommandBindings
+  href: TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_CommandBindings
+  name: CommandBindings
+  nameWithType: TDialogDescriptionRecord.CommandBindings
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.CommandBindings
+- uid: System.Collections.Generic.IReadOnlyList{TuiVision.Serialization.TDialogCommandBindingRecord}
+  commentId: T:System.Collections.Generic.IReadOnlyList{TuiVision.Serialization.TDialogCommandBindingRecord}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<TDialogCommandBindingRecord>
+  nameWithType: IReadOnlyList<TDialogCommandBindingRecord>
+  fullName: System.Collections.Generic.IReadOnlyList<TuiVision.Serialization.TDialogCommandBindingRecord>
+  nameWithType.vb: IReadOnlyList(Of TDialogCommandBindingRecord)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of TuiVision.Serialization.TDialogCommandBindingRecord)
+  name.vb: IReadOnlyList(Of TDialogCommandBindingRecord)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: TuiVision.Serialization.TDialogCommandBindingRecord
+    name: TDialogCommandBindingRecord
+    href: TuiVision.Serialization.TDialogCommandBindingRecord.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Serialization.TDialogCommandBindingRecord
+    name: TDialogCommandBindingRecord
+    href: TuiVision.Serialization.TDialogCommandBindingRecord.html
+  - name: )
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.RuntimeStateIncluded*
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.RuntimeStateIncluded
+  href: TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_RuntimeStateIncluded
+  name: RuntimeStateIncluded
+  nameWithType: TDialogDescriptionRecord.RuntimeStateIncluded
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.RuntimeStateIncluded
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.SaveTo*
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.SaveTo
+  href: TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_SaveTo_TuiVision_Serialization_TBinaryArchiveWriter_
+  name: SaveTo
+  nameWithType: TDialogDescriptionRecord.SaveTo
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.SaveTo
+- uid: TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  commentId: M:TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  parent: TuiVision.Serialization.ITStreamSerializable
+  href: TuiVision.Serialization.ITStreamSerializable.html#TuiVision_Serialization_ITStreamSerializable_SaveTo_TuiVision_Serialization_TBinaryArchiveWriter_
+  name: SaveTo(TBinaryArchiveWriter)
+  nameWithType: ITStreamSerializable.SaveTo(TBinaryArchiveWriter)
+  fullName: TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+  spec.csharp:
+  - uid: TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+    name: SaveTo
+    href: TuiVision.Serialization.ITStreamSerializable.html#TuiVision_Serialization_ITStreamSerializable_SaveTo_TuiVision_Serialization_TBinaryArchiveWriter_
+  - name: (
+  - uid: TuiVision.Serialization.TBinaryArchiveWriter
+    name: TBinaryArchiveWriter
+    href: TuiVision.Serialization.TBinaryArchiveWriter.html
+  - name: )
+  spec.vb:
+  - uid: TuiVision.Serialization.ITStreamSerializable.SaveTo(TuiVision.Serialization.TBinaryArchiveWriter)
+    name: SaveTo
+    href: TuiVision.Serialization.ITStreamSerializable.html#TuiVision_Serialization_ITStreamSerializable_SaveTo_TuiVision_Serialization_TBinaryArchiveWriter_
+  - name: (
+  - uid: TuiVision.Serialization.TBinaryArchiveWriter
+    name: TBinaryArchiveWriter
+    href: TuiVision.Serialization.TBinaryArchiveWriter.html
+  - name: )
+- uid: TuiVision.Serialization.TBinaryArchiveWriter
+  commentId: T:TuiVision.Serialization.TBinaryArchiveWriter
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TBinaryArchiveWriter.html
+  name: TBinaryArchiveWriter
+  nameWithType: TBinaryArchiveWriter
+  fullName: TuiVision.Serialization.TBinaryArchiveWriter
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.LoadFrom*
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.LoadFrom
+  href: TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_LoadFrom_TuiVision_Serialization_TBinaryArchiveReader_
+  name: LoadFrom
+  nameWithType: TDialogDescriptionRecord.LoadFrom
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.LoadFrom
+- uid: TuiVision.Serialization.TBinaryArchiveReader
+  commentId: T:TuiVision.Serialization.TBinaryArchiveReader
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TBinaryArchiveReader.html
+  name: TBinaryArchiveReader
+  nameWithType: TBinaryArchiveReader
+  fullName: TuiVision.Serialization.TBinaryArchiveReader
+- uid: TuiVision.Serialization.TDialogDescriptionRecord
+  commentId: T:TuiVision.Serialization.TDialogDescriptionRecord
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TDialogDescriptionRecord.html
+  name: TDialogDescriptionRecord
+  nameWithType: TDialogDescriptionRecord
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord
+- uid: TuiVision.Serialization.TDialogDescriptionRecord.Register*
+  commentId: Overload:TuiVision.Serialization.TDialogDescriptionRecord.Register
+  href: TuiVision.Serialization.TDialogDescriptionRecord.html#TuiVision_Serialization_TDialogDescriptionRecord_Register_TuiVision_Serialization_TRecordRegistry_
+  name: Register
+  nameWithType: TDialogDescriptionRecord.Register
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord.Register
+- uid: TuiVision.Serialization.TRecordRegistry
+  commentId: T:TuiVision.Serialization.TRecordRegistry
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TRecordRegistry.html
+  name: TRecordRegistry
+  nameWithType: TRecordRegistry
+  fullName: TuiVision.Serialization.TRecordRegistry

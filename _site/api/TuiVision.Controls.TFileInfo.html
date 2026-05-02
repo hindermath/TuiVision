@@ -17,7 +17,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/009-controls-widgets-and-collections/apiSpec/new?filename=TuiVision_Controls_TFileInfo.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TFileInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/010-standard-dialogs-designer/apiSpec/new?filename=TuiVision_Controls_TFileInfo.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TFileInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -94,7 +94,7 @@
 
 
   <h1 id="TuiVision_Controls_TFileInfo" data-uid="TuiVision.Controls.TFileInfo" class="text-break">
-Struct TFileInfo  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TFileInfo.cs/#L16"><i class="bi bi-code-slash"></i></a>
+Struct TFileInfo  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TFileInfo.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -159,9 +159,9 @@ Struct TFileInfo  <a class="header-action link-secondary" title="View source" hr
 
   <a id="TuiVision_Controls_TFileInfo__ctor_" data-uid="TuiVision.Controls.TFileInfo.#ctor*"></a>
 
-  <h3 id="TuiVision_Controls_TFileInfo__ctor_System_String_System_Int64_System_DateTime_" data-uid="TuiVision.Controls.TFileInfo.#ctor(System.String,System.Int64,System.DateTime)">
-  TFileInfo(string, long, DateTime)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TFileInfo.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TuiVision_Controls_TFileInfo__ctor_System_String_System_Int64_System_DateTime_System_String_" data-uid="TuiVision.Controls.TFileInfo.#ctor(System.String,System.Int64,System.DateTime,System.String)">
+  TFileInfo(string, long, DateTime, string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TFileInfo.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Dateimetadaten als managed Gegenstück zu <code>TFileInfo</code> aus Turbo Vision
@@ -172,7 +172,7 @@ Struct TFileInfo  <a class="header-action link-secondary" title="View source" hr
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TFileInfo(string FileName, long Size, DateTime LastModified)</code></pre>
+    <pre><code class="lang-csharp hljs">public TFileInfo(string FileName, long Size, DateTime LastModified, string? FallbackMessage = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -185,6 +185,9 @@ Struct TFileInfo  <a class="header-action link-secondary" title="View source" hr
 </dd>
     <dt><code>LastModified</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
     <dd><p>Der Änderungszeitpunkt. / The last modification timestamp.</p>
+</dd>
+    <dt><code>FallbackMessage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Der optionale Fallback-Text. / The optional fallback text.</p>
 </dd>
   </dl>
 
@@ -203,11 +206,43 @@ Struct TFileInfo  <a class="header-action link-secondary" title="View source" hr
 </h2>
 
 
+  <a id="TuiVision_Controls_TFileInfo_FallbackMessage_" data-uid="TuiVision.Controls.TFileInfo.FallbackMessage*"></a>
+
+  <h3 id="TuiVision_Controls_TFileInfo_FallbackMessage" data-uid="TuiVision.Controls.TFileInfo.FallbackMessage">
+  FallbackMessage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TFileInfo.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Der optionale Fallback-Text. / The optional fallback text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? FallbackMessage { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TuiVision_Controls_TFileInfo_FileName_" data-uid="TuiVision.Controls.TFileInfo.FileName*"></a>
 
   <h3 id="TuiVision_Controls_TFileInfo_FileName" data-uid="TuiVision.Controls.TFileInfo.FileName">
   FileName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TFileInfo.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TFileInfo.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Der Dateiname. / The file name.</p>
@@ -235,11 +270,44 @@ Struct TFileInfo  <a class="header-action link-secondary" title="View source" hr
 
 
 
+  <a id="TuiVision_Controls_TFileInfo_HasFallback_" data-uid="TuiVision.Controls.TFileInfo.HasFallback*"></a>
+
+  <h3 id="TuiVision_Controls_TFileInfo_HasFallback" data-uid="TuiVision.Controls.TFileInfo.HasFallback">
+  HasFallback
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TFileInfo.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gibt an, ob Metadaten nur als Fallback vorliegen.</p>
+<p>Indicates whether metadata is available only as fallback.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasFallback { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TuiVision_Controls_TFileInfo_LastModified_" data-uid="TuiVision.Controls.TFileInfo.LastModified*"></a>
 
   <h3 id="TuiVision_Controls_TFileInfo_LastModified" data-uid="TuiVision.Controls.TFileInfo.LastModified">
   LastModified
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TFileInfo.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TFileInfo.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Der Änderungszeitpunkt. / The last modification timestamp.</p>
@@ -271,7 +339,7 @@ Struct TFileInfo  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="TuiVision_Controls_TFileInfo_Size" data-uid="TuiVision.Controls.TFileInfo.Size">
   Size
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TFileInfo.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TFileInfo.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die Dateigröße in Bytes. / The file size in bytes.</p>
@@ -303,7 +371,7 @@ Struct TFileInfo  <a class="header-action link-secondary" title="View source" hr
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TFileInfo.cs/#L16" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TFileInfo.cs/#L17" class="edit-link">Edit this page</a>
         </div>
 
 

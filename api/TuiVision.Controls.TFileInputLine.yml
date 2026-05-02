@@ -10,6 +10,7 @@ items:
   - TuiVision.Controls.TFileInputLine.HistoryId
   - TuiVision.Controls.TFileInputLine.Recall
   - TuiVision.Controls.TFileInputLine.RecallAt(System.Int32)
+  - TuiVision.Controls.TFileInputLine.ResolvePath(System.String)
   langs:
   - csharp
   - vb
@@ -20,7 +21,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileInputLine.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TFileInputLine
     path: src/TuiVision.Controls/TFileInputLine.cs
@@ -95,7 +96,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileInputLine.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TFileInputLine.cs
@@ -140,7 +141,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileInputLine.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: HistoryId
     path: src/TuiVision.Controls/TFileInputLine.cs
@@ -175,7 +176,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileInputLine.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: CommitToHistory
     path: src/TuiVision.Controls/TFileInputLine.cs
@@ -207,7 +208,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileInputLine.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: RecallAt
     path: src/TuiVision.Controls/TFileInputLine.cs
@@ -249,7 +250,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileInputLine.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Recall
     path: src/TuiVision.Controls/TFileInputLine.cs
@@ -270,6 +271,48 @@ items:
       description: Die History-Eintraege in Most-Recent-First-Reihenfolge. / The history entries in most-recent-first order.
     content.vb: Public Function Recall() As IReadOnlyList(Of String)
   overload: TuiVision.Controls.TFileInputLine.Recall*
+- uid: TuiVision.Controls.TFileInputLine.ResolvePath(System.String)
+  commentId: M:TuiVision.Controls.TFileInputLine.ResolvePath(System.String)
+  id: ResolvePath(System.String)
+  parent: TuiVision.Controls.TFileInputLine
+  langs:
+  - csharp
+  - vb
+  name: ResolvePath(string)
+  nameWithType: TFileInputLine.ResolvePath(string)
+  fullName: TuiVision.Controls.TFileInputLine.ResolvePath(string)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileInputLine.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: ResolvePath
+    path: src/TuiVision.Controls/TFileInputLine.cs
+    startLine: 77
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Loest einen eingegebenen Pfad relativ zu einem Basisordner auf.
+
+
+    Resolves a typed path relative to a base directory.
+  example: []
+  syntax:
+    content: public string? ResolvePath(string baseDirectory)
+    parameters:
+    - id: baseDirectory
+      type: System.String
+      description: Der Basisordner. / The base directory.
+    return:
+      type: System.String
+      description: Der normalisierte Pfad oder <code>null</code>. / The normalized path or <code>null</code>.
+    content.vb: Public Function ResolvePath(baseDirectory As String) As String
+  overload: TuiVision.Controls.TFileInputLine.ResolvePath*
+  nameWithType.vb: TFileInputLine.ResolvePath(String)
+  fullName.vb: TuiVision.Controls.TFileInputLine.ResolvePath(String)
+  name.vb: ResolvePath(String)
 references:
 - uid: TuiVision.Controls
   commentId: N:TuiVision.Controls
@@ -1316,3 +1359,9 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TuiVision.Controls.TFileInputLine.ResolvePath*
+  commentId: Overload:TuiVision.Controls.TFileInputLine.ResolvePath
+  href: TuiVision.Controls.TFileInputLine.html#TuiVision_Controls_TFileInputLine_ResolvePath_System_String_
+  name: ResolvePath
+  nameWithType: TFileInputLine.ResolvePath
+  fullName: TuiVision.Controls.TFileInputLine.ResolvePath

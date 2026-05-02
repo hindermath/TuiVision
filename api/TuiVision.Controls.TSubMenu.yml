@@ -20,7 +20,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TSubMenu.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TSubMenu
     path: src/TuiVision.Controls/TSubMenu.cs
@@ -77,7 +77,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TSubMenu.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TSubMenu.cs
@@ -137,7 +137,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TSubMenu.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Name
     path: src/TuiVision.Controls/TSubMenu.cs
@@ -172,7 +172,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TSubMenu.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: HelpCtx
     path: src/TuiVision.Controls/TSubMenu.cs
@@ -203,7 +203,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TSubMenu.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Items
     path: src/TuiVision.Controls/TSubMenu.cs
@@ -238,7 +238,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TSubMenu.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Next
     path: src/TuiVision.Controls/TSubMenu.cs

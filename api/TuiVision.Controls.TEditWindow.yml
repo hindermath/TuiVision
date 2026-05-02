@@ -23,7 +23,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditWindow.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TEditWindow
     path: src/TuiVision.Controls/TEditWindow.cs
@@ -105,7 +105,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditWindow.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TEditWindow.cs
@@ -150,7 +150,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditWindow.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Editor
     path: src/TuiVision.Controls/TEditWindow.cs
@@ -185,7 +185,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditWindow.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Indicator
     path: src/TuiVision.Controls/TEditWindow.cs
@@ -220,7 +220,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditWindow.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: ConfirmDiscard
     path: src/TuiVision.Controls/TEditWindow.cs
@@ -255,7 +255,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditWindow.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TEditWindow.cs
@@ -292,7 +292,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditWindow.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: GetStatusHints
     path: src/TuiVision.Controls/TEditWindow.cs
@@ -328,7 +328,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditWindow.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: OnBoundsChanged
     path: src/TuiVision.Controls/TEditWindow.cs
@@ -361,7 +361,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TEditWindow.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: CanClose
     path: src/TuiVision.Controls/TEditWindow.cs

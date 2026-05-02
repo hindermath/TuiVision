@@ -1,0 +1,465 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.DialogControlRoles
+  commentId: T:TuiVision.Controls.DialogControlRoles
+  id: DialogControlRoles
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.DialogControlRoles.Button
+  - TuiVision.Controls.DialogControlRoles.CheckBox
+  - TuiVision.Controls.DialogControlRoles.InputLine
+  - TuiVision.Controls.DialogControlRoles.ListBox
+  - TuiVision.Controls.DialogControlRoles.StaticText
+  langs:
+  - csharp
+  - vb
+  name: DialogControlRoles
+  nameWithType: DialogControlRoles
+  fullName: TuiVision.Controls.DialogControlRoles
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDialogDescription.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: DialogControlRoles
+    path: src/TuiVision.Controls/TDialogDescription.cs
+    startLine: 10
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Unterstuetzte Rollen fuer design-time Dialog-Controls.
+
+
+    Supported roles for design-time dialog controls.
+  example: []
+  syntax:
+    content: public static class DialogControlRoles
+    content.vb: Public Module DialogControlRoles
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Controls.DialogControlRoles.StaticText
+  commentId: F:TuiVision.Controls.DialogControlRoles.StaticText
+  id: StaticText
+  parent: TuiVision.Controls.DialogControlRoles
+  langs:
+  - csharp
+  - vb
+  name: StaticText
+  nameWithType: DialogControlRoles.StaticText
+  fullName: TuiVision.Controls.DialogControlRoles.StaticText
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDialogDescription.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: StaticText
+    path: src/TuiVision.Controls/TDialogDescription.cs
+    startLine: 13
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Statischer Text. / Static text.
+  example: []
+  syntax:
+    content: public const string StaticText = "static-text"
+    return:
+      type: System.String
+    content.vb: Public Const StaticText As String = "static-text"
+- uid: TuiVision.Controls.DialogControlRoles.InputLine
+  commentId: F:TuiVision.Controls.DialogControlRoles.InputLine
+  id: InputLine
+  parent: TuiVision.Controls.DialogControlRoles
+  langs:
+  - csharp
+  - vb
+  name: InputLine
+  nameWithType: DialogControlRoles.InputLine
+  fullName: TuiVision.Controls.DialogControlRoles.InputLine
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDialogDescription.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: InputLine
+    path: src/TuiVision.Controls/TDialogDescription.cs
+    startLine: 16
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Eingabezeile. / Input line.
+  example: []
+  syntax:
+    content: public const string InputLine = "input-line"
+    return:
+      type: System.String
+    content.vb: Public Const InputLine As String = "input-line"
+- uid: TuiVision.Controls.DialogControlRoles.Button
+  commentId: F:TuiVision.Controls.DialogControlRoles.Button
+  id: Button
+  parent: TuiVision.Controls.DialogControlRoles
+  langs:
+  - csharp
+  - vb
+  name: Button
+  nameWithType: DialogControlRoles.Button
+  fullName: TuiVision.Controls.DialogControlRoles.Button
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDialogDescription.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Button
+    path: src/TuiVision.Controls/TDialogDescription.cs
+    startLine: 19
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Schaltflaeche. / Button.
+  example: []
+  syntax:
+    content: public const string Button = "button"
+    return:
+      type: System.String
+    content.vb: Public Const Button As String = "button"
+- uid: TuiVision.Controls.DialogControlRoles.ListBox
+  commentId: F:TuiVision.Controls.DialogControlRoles.ListBox
+  id: ListBox
+  parent: TuiVision.Controls.DialogControlRoles
+  langs:
+  - csharp
+  - vb
+  name: ListBox
+  nameWithType: DialogControlRoles.ListBox
+  fullName: TuiVision.Controls.DialogControlRoles.ListBox
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDialogDescription.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: ListBox
+    path: src/TuiVision.Controls/TDialogDescription.cs
+    startLine: 22
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Listenfeld. / List box.
+  example: []
+  syntax:
+    content: public const string ListBox = "list-box"
+    return:
+      type: System.String
+    content.vb: Public Const ListBox As String = "list-box"
+- uid: TuiVision.Controls.DialogControlRoles.CheckBox
+  commentId: F:TuiVision.Controls.DialogControlRoles.CheckBox
+  id: CheckBox
+  parent: TuiVision.Controls.DialogControlRoles
+  langs:
+  - csharp
+  - vb
+  name: CheckBox
+  nameWithType: DialogControlRoles.CheckBox
+  fullName: TuiVision.Controls.DialogControlRoles.CheckBox
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDialogDescription.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: CheckBox
+    path: src/TuiVision.Controls/TDialogDescription.cs
+    startLine: 25
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Kontrollkaestchen. / Check box.
+  example: []
+  syntax:
+    content: public const string CheckBox = "check-box"
+    return:
+      type: System.String
+    content.vb: Public Const CheckBox As String = "check-box"
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

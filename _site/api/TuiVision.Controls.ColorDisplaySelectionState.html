@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+      <title>Struct ColorDisplaySelectionState | TuiVision Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Struct ColorDisplaySelectionState | TuiVision Documentation ">
+      
+      <meta name="description" content="Synchroner Auswahlzustand fuer Farbe, Anzeige und symbolischen Zeichensatz. Synchronous selection state for colour, display, and symbolic charset.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <link rel="stylesheet" href="../public/accessibility.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/010-standard-dialogs-designer/apiSpec/new?filename=TuiVision_Controls_ColorDisplaySelectionState.md&amp;value=---%0Auid%3A%20TuiVision.Controls.ColorDisplaySelectionState%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+      <script type="module" src="./../public/accessibility.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen / Skip to main content</a>
+    <a class="skip-link skip-link-secondary" href="#toc">Zum Inhaltsverzeichnis springen / Skip to table of contents</a>
+
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation" aria-label="Primary">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="TuiVision">
+            TuiVision
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots" aria-hidden="true"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search" aria-hidden="true"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl" id="main-content" tabindex="-1">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc" aria-label="Table of Contents"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list" aria-hidden="true"></i>
+          </button>
+
+          <nav id="breadcrumb" aria-label="Breadcrumb"></nav>
+        </div>
+
+        <article data-uid="TuiVision.Controls.ColorDisplaySelectionState">
+
+
+
+  <h1 id="TuiVision_Controls_ColorDisplaySelectionState" data-uid="TuiVision.Controls.ColorDisplaySelectionState" class="text-break">
+Struct ColorDisplaySelectionState  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorDisplaySelectionState.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TuiVision.html">TuiVision</a>.<a class="xref" href="TuiVision.Controls.html">Controls</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>TuiVision.Controls.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Synchroner Auswahlzustand fuer Farbe, Anzeige und symbolischen Zeichensatz.</p>
+<p>Synchronous selection state for colour, display, and symbolic charset.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly record struct ColorDisplaySelectionState : IEquatable&lt;ColorDisplaySelectionState&gt;</code></pre>
+  </div>
+
+
+
+
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="TuiVision.Controls.ColorDisplaySelectionState.html">ColorDisplaySelectionState</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode">ValueType.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.tostring">ValueType.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="TuiVision_Controls_ColorDisplaySelectionState__ctor_" data-uid="TuiVision.Controls.ColorDisplaySelectionState.#ctor*"></a>
+
+  <h3 id="TuiVision_Controls_ColorDisplaySelectionState__ctor_TuiVision_Controls_ColorDisplaySelectionKind_System_String_System_String_System_String_System_String_System_Collections_Generic_IReadOnlyList_System_String__System_String_" data-uid="TuiVision.Controls.ColorDisplaySelectionState.#ctor(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String,System.String,System.Collections.Generic.IReadOnlyList{System.String},System.String)">
+  ColorDisplaySelectionState(ColorDisplaySelectionKind, string, string?, string?, string?, IReadOnlyList&lt;string&gt;, string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorDisplaySelectionState.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Synchroner Auswahlzustand fuer Farbe, Anzeige und symbolischen Zeichensatz.</p>
+<p>Synchronous selection state for colour, display, and symbolic charset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ColorDisplaySelectionState(ColorDisplaySelectionKind SelectionKind, string Group, string? SelectedValue, string? PreviewValue, string? CommittedValue, IReadOnlyList&lt;string&gt; SupportedOptions, string? FallbackReason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>SelectionKind</code> <a class="xref" href="TuiVision.Controls.ColorDisplaySelectionKind.html">ColorDisplaySelectionKind</a></dt>
+    <dd><p>Die Auswahlart. / The selection kind.</p>
+</dd>
+    <dt><code>Group</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Die Auswahlgruppe. / The selection group.</p>
+</dd>
+    <dt><code>SelectedValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Der aktuell gewaählte Wert. / The currently selected value.</p>
+</dd>
+    <dt><code>PreviewValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Der Vorschauwert. / The preview value.</p>
+</dd>
+    <dt><code>CommittedValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Der bestaetigte Ausgangswert. / The committed starting value.</p>
+</dd>
+    <dt><code>SupportedOptions</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>Die unterstuetzten Werte. / The supported values.</p>
+</dd>
+    <dt><code>FallbackReason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Der optionale Fallback-Grund. / The optional fallback reason.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="TuiVision_Controls_ColorDisplaySelectionState_CommittedValue_" data-uid="TuiVision.Controls.ColorDisplaySelectionState.CommittedValue*"></a>
+
+  <h3 id="TuiVision_Controls_ColorDisplaySelectionState_CommittedValue" data-uid="TuiVision.Controls.ColorDisplaySelectionState.CommittedValue">
+  CommittedValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorDisplaySelectionState.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Der bestaetigte Ausgangswert. / The committed starting value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? CommittedValue { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_ColorDisplaySelectionState_FallbackReason_" data-uid="TuiVision.Controls.ColorDisplaySelectionState.FallbackReason*"></a>
+
+  <h3 id="TuiVision_Controls_ColorDisplaySelectionState_FallbackReason" data-uid="TuiVision.Controls.ColorDisplaySelectionState.FallbackReason">
+  FallbackReason
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorDisplaySelectionState.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Der optionale Fallback-Grund. / The optional fallback reason.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? FallbackReason { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_ColorDisplaySelectionState_Group_" data-uid="TuiVision.Controls.ColorDisplaySelectionState.Group*"></a>
+
+  <h3 id="TuiVision_Controls_ColorDisplaySelectionState_Group" data-uid="TuiVision.Controls.ColorDisplaySelectionState.Group">
+  Group
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorDisplaySelectionState.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die Auswahlgruppe. / The selection group.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Group { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_ColorDisplaySelectionState_HasFallback_" data-uid="TuiVision.Controls.ColorDisplaySelectionState.HasFallback*"></a>
+
+  <h3 id="TuiVision_Controls_ColorDisplaySelectionState_HasFallback" data-uid="TuiVision.Controls.ColorDisplaySelectionState.HasFallback">
+  HasFallback
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorDisplaySelectionState.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gibt an, ob ein Fallback aktiv ist.</p>
+<p>Indicates whether fallback is active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasFallback { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_ColorDisplaySelectionState_PreviewValue_" data-uid="TuiVision.Controls.ColorDisplaySelectionState.PreviewValue*"></a>
+
+  <h3 id="TuiVision_Controls_ColorDisplaySelectionState_PreviewValue" data-uid="TuiVision.Controls.ColorDisplaySelectionState.PreviewValue">
+  PreviewValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorDisplaySelectionState.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Der Vorschauwert. / The preview value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? PreviewValue { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_ColorDisplaySelectionState_SelectedValue_" data-uid="TuiVision.Controls.ColorDisplaySelectionState.SelectedValue*"></a>
+
+  <h3 id="TuiVision_Controls_ColorDisplaySelectionState_SelectedValue" data-uid="TuiVision.Controls.ColorDisplaySelectionState.SelectedValue">
+  SelectedValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorDisplaySelectionState.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Der aktuell gewaählte Wert. / The currently selected value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? SelectedValue { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_ColorDisplaySelectionState_SelectionKind_" data-uid="TuiVision.Controls.ColorDisplaySelectionState.SelectionKind*"></a>
+
+  <h3 id="TuiVision_Controls_ColorDisplaySelectionState_SelectionKind" data-uid="TuiVision.Controls.ColorDisplaySelectionState.SelectionKind">
+  SelectionKind
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorDisplaySelectionState.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die Auswahlart. / The selection kind.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ColorDisplaySelectionKind SelectionKind { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TuiVision.Controls.ColorDisplaySelectionKind.html">ColorDisplaySelectionKind</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_ColorDisplaySelectionState_SupportedOptions_" data-uid="TuiVision.Controls.ColorDisplaySelectionState.SupportedOptions*"></a>
+
+  <h3 id="TuiVision_Controls_ColorDisplaySelectionState_SupportedOptions" data-uid="TuiVision.Controls.ColorDisplaySelectionState.SupportedOptions">
+  SupportedOptions
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorDisplaySelectionState.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die unterstuetzten Werte. / The supported values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;string&gt; SupportedOptions { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="TuiVision_Controls_ColorDisplaySelectionState_Cancel_" data-uid="TuiVision.Controls.ColorDisplaySelectionState.Cancel*"></a>
+
+  <h3 id="TuiVision_Controls_ColorDisplaySelectionState_Cancel" data-uid="TuiVision.Controls.ColorDisplaySelectionState.Cancel">
+  Cancel()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorDisplaySelectionState.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Stellt den bestaetigten Wert nach einem Abbruch wieder her.</p>
+<p>Restores the committed value after cancellation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ColorDisplaySelectionState Cancel()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TuiVision.Controls.ColorDisplaySelectionState.html">ColorDisplaySelectionState</a></dt>
+    <dd><p>Der wiederhergestellte Zustand. / The restored state.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_ColorDisplaySelectionState_Create_" data-uid="TuiVision.Controls.ColorDisplaySelectionState.Create*"></a>
+
+  <h3 id="TuiVision_Controls_ColorDisplaySelectionState_Create_TuiVision_Controls_ColorDisplaySelectionKind_System_String_System_String_System_String_System_Collections_Generic_IEnumerable_System_String__" data-uid="TuiVision.Controls.ColorDisplaySelectionState.Create(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+  Create(ColorDisplaySelectionKind, string, string, string?, IEnumerable&lt;string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorDisplaySelectionState.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Erstellt einen validierten Auswahlzustand.</p>
+<p>Creates a validated selection state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ColorDisplaySelectionState Create(ColorDisplaySelectionKind kind, string group, string selectedValue, string? committedValue, IEnumerable&lt;string&gt; supportedOptions)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>kind</code> <a class="xref" href="TuiVision.Controls.ColorDisplaySelectionKind.html">ColorDisplaySelectionKind</a></dt>
+    <dd><p>Die Auswahlart. / The selection kind.</p>
+</dd>
+    <dt><code>group</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Die Gruppe. / The group.</p>
+</dd>
+    <dt><code>selectedValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Der Auswahlwert. / The selected value.</p>
+</dd>
+    <dt><code>committedValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Der bestaetigte Wert. / The committed value.</p>
+</dd>
+    <dt><code>supportedOptions</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>Die unterstuetzten Werte. / The supported values.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TuiVision.Controls.ColorDisplaySelectionState.html">ColorDisplaySelectionState</a></dt>
+    <dd><p>Der Auswahlzustand. / The selection state.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_ColorDisplaySelectionState_CreateFallback_" data-uid="TuiVision.Controls.ColorDisplaySelectionState.CreateFallback*"></a>
+
+  <h3 id="TuiVision_Controls_ColorDisplaySelectionState_CreateFallback_TuiVision_Controls_ColorDisplaySelectionKind_System_String_System_String_System_String_" data-uid="TuiVision.Controls.ColorDisplaySelectionState.CreateFallback(TuiVision.Controls.ColorDisplaySelectionKind,System.String,System.String,System.String)">
+  CreateFallback(ColorDisplaySelectionKind, string, string?, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorDisplaySelectionState.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Erstellt einen begrenzten Fallback-Zustand.</p>
+<p>Creates a bounded fallback state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ColorDisplaySelectionState CreateFallback(ColorDisplaySelectionKind kind, string group, string? committedValue, string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>kind</code> <a class="xref" href="TuiVision.Controls.ColorDisplaySelectionKind.html">ColorDisplaySelectionKind</a></dt>
+    <dd><p>Die Auswahlart. / The selection kind.</p>
+</dd>
+    <dt><code>group</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Die Gruppe. / The group.</p>
+</dd>
+    <dt><code>committedValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Der zu erhaltende Wert. / The value to preserve.</p>
+</dd>
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Der Fallback-Grund. / The fallback reason.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TuiVision.Controls.ColorDisplaySelectionState.html">ColorDisplaySelectionState</a></dt>
+    <dd><p>Der Fallback-Zustand. / The fallback state.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorDisplaySelectionState.cs/#L38" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix" aria-label="In this article"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

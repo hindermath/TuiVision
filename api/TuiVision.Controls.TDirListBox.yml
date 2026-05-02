@@ -11,6 +11,7 @@ items:
   - TuiVision.Controls.TDirListBox.GoToParent
   - TuiVision.Controls.TDirListBox.NavigateToFocusedDirectory
   - TuiVision.Controls.TDirListBox.Refresh(System.String)
+  - TuiVision.Controls.TDirListBox.SelectedDirectory
   langs:
   - csharp
   - vb
@@ -21,7 +22,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDirListBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TDirListBox
     path: src/TuiVision.Controls/TDirListBox.cs
@@ -103,7 +104,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDirListBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TDirListBox.cs
@@ -142,7 +143,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDirListBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: CurrentDirectory
     path: src/TuiVision.Controls/TDirListBox.cs
@@ -177,7 +178,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDirListBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Entries
     path: src/TuiVision.Controls/TDirListBox.cs
@@ -198,6 +199,41 @@ items:
       type: System.Collections.Generic.IReadOnlyList{System.String}
     content.vb: Public ReadOnly Property Entries As IReadOnlyList(Of String)
   overload: TuiVision.Controls.TDirListBox.Entries*
+- uid: TuiVision.Controls.TDirListBox.SelectedDirectory
+  commentId: P:TuiVision.Controls.TDirListBox.SelectedDirectory
+  id: SelectedDirectory
+  parent: TuiVision.Controls.TDirListBox
+  langs:
+  - csharp
+  - vb
+  name: SelectedDirectory
+  nameWithType: TDirListBox.SelectedDirectory
+  fullName: TuiVision.Controls.TDirListBox.SelectedDirectory
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDirListBox.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SelectedDirectory
+    path: src/TuiVision.Controls/TDirListBox.cs
+    startLine: 46
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Der aktuell fokussierte Verzeichnispfad.
+
+
+    The currently focused directory path.
+  example: []
+  syntax:
+    content: public string SelectedDirectory { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property SelectedDirectory As String
+  overload: TuiVision.Controls.TDirListBox.SelectedDirectory*
 - uid: TuiVision.Controls.TDirListBox.Refresh(System.String)
   commentId: M:TuiVision.Controls.TDirListBox.Refresh(System.String)
   id: Refresh(System.String)
@@ -212,11 +248,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDirListBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Refresh
     path: src/TuiVision.Controls/TDirListBox.cs
-    startLine: 47
+    startLine: 55
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -251,11 +287,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDirListBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: NavigateToFocusedDirectory
     path: src/TuiVision.Controls/TDirListBox.cs
-    startLine: 71
+    startLine: 90
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -286,11 +322,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TDirListBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: GoToParent
     path: src/TuiVision.Controls/TDirListBox.cs
-    startLine: 89
+    startLine: 108
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -1475,6 +1511,12 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TuiVision.Controls.TDirListBox.SelectedDirectory*
+  commentId: Overload:TuiVision.Controls.TDirListBox.SelectedDirectory
+  href: TuiVision.Controls.TDirListBox.html#TuiVision_Controls_TDirListBox_SelectedDirectory
+  name: SelectedDirectory
+  nameWithType: TDirListBox.SelectedDirectory
+  fullName: TuiVision.Controls.TDirListBox.SelectedDirectory
 - uid: TuiVision.Controls.TDirListBox.Refresh*
   commentId: Overload:TuiVision.Controls.TDirListBox.Refresh
   href: TuiVision.Controls.TDirListBox.html#TuiVision_Controls_TDirListBox_Refresh_System_String_

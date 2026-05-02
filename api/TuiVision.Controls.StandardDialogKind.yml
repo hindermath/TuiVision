@@ -1,0 +1,238 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.StandardDialogKind
+  commentId: T:TuiVision.Controls.StandardDialogKind
+  id: StandardDialogKind
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.StandardDialogKind.Color
+  - TuiVision.Controls.StandardDialogKind.Designer
+  - TuiVision.Controls.StandardDialogKind.Directory
+  - TuiVision.Controls.StandardDialogKind.Display
+  - TuiVision.Controls.StandardDialogKind.File
+  - TuiVision.Controls.StandardDialogKind.SymbolicCharset
+  langs:
+  - csharp
+  - vb
+  name: StandardDialogKind
+  nameWithType: StandardDialogKind
+  fullName: TuiVision.Controls.StandardDialogKind
+  type: Enum
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStandardDialogFlowState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: StandardDialogKind
+    path: src/TuiVision.Controls/TStandardDialogFlowState.cs
+    startLine: 10
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Art eines wiederverwendbaren Standarddialog-Flows.
+
+
+    Kind of reusable standard-dialog flow.
+  example: []
+  syntax:
+    content: public enum StandardDialogKind
+    content.vb: Public Enum StandardDialogKind
+- uid: TuiVision.Controls.StandardDialogKind.File
+  commentId: F:TuiVision.Controls.StandardDialogKind.File
+  id: File
+  parent: TuiVision.Controls.StandardDialogKind
+  langs:
+  - csharp
+  - vb
+  name: File
+  nameWithType: StandardDialogKind.File
+  fullName: TuiVision.Controls.StandardDialogKind.File
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStandardDialogFlowState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: File
+    path: src/TuiVision.Controls/TStandardDialogFlowState.cs
+    startLine: 13
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Dateiauswahl. / File selection.
+  example: []
+  syntax:
+    content: File = 0
+    return:
+      type: TuiVision.Controls.StandardDialogKind
+- uid: TuiVision.Controls.StandardDialogKind.Directory
+  commentId: F:TuiVision.Controls.StandardDialogKind.Directory
+  id: Directory
+  parent: TuiVision.Controls.StandardDialogKind
+  langs:
+  - csharp
+  - vb
+  name: Directory
+  nameWithType: StandardDialogKind.Directory
+  fullName: TuiVision.Controls.StandardDialogKind.Directory
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStandardDialogFlowState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Directory
+    path: src/TuiVision.Controls/TStandardDialogFlowState.cs
+    startLine: 16
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Verzeichnisauswahl. / Directory selection.
+  example: []
+  syntax:
+    content: Directory = 1
+    return:
+      type: TuiVision.Controls.StandardDialogKind
+- uid: TuiVision.Controls.StandardDialogKind.Color
+  commentId: F:TuiVision.Controls.StandardDialogKind.Color
+  id: Color
+  parent: TuiVision.Controls.StandardDialogKind
+  langs:
+  - csharp
+  - vb
+  name: Color
+  nameWithType: StandardDialogKind.Color
+  fullName: TuiVision.Controls.StandardDialogKind.Color
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStandardDialogFlowState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Color
+    path: src/TuiVision.Controls/TStandardDialogFlowState.cs
+    startLine: 19
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Farbauswahl. / Colour selection.
+  example: []
+  syntax:
+    content: Color = 2
+    return:
+      type: TuiVision.Controls.StandardDialogKind
+- uid: TuiVision.Controls.StandardDialogKind.SymbolicCharset
+  commentId: F:TuiVision.Controls.StandardDialogKind.SymbolicCharset
+  id: SymbolicCharset
+  parent: TuiVision.Controls.StandardDialogKind
+  langs:
+  - csharp
+  - vb
+  name: SymbolicCharset
+  nameWithType: StandardDialogKind.SymbolicCharset
+  fullName: TuiVision.Controls.StandardDialogKind.SymbolicCharset
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStandardDialogFlowState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SymbolicCharset
+    path: src/TuiVision.Controls/TStandardDialogFlowState.cs
+    startLine: 22
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Symbolische Zeichensatzauswahl. / Symbolic charset selection.
+  example: []
+  syntax:
+    content: SymbolicCharset = 3
+    return:
+      type: TuiVision.Controls.StandardDialogKind
+- uid: TuiVision.Controls.StandardDialogKind.Display
+  commentId: F:TuiVision.Controls.StandardDialogKind.Display
+  id: Display
+  parent: TuiVision.Controls.StandardDialogKind
+  langs:
+  - csharp
+  - vb
+  name: Display
+  nameWithType: StandardDialogKind.Display
+  fullName: TuiVision.Controls.StandardDialogKind.Display
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStandardDialogFlowState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Display
+    path: src/TuiVision.Controls/TStandardDialogFlowState.cs
+    startLine: 25
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Anzeigeauswahl. / Display selection.
+  example: []
+  syntax:
+    content: Display = 4
+    return:
+      type: TuiVision.Controls.StandardDialogKind
+- uid: TuiVision.Controls.StandardDialogKind.Designer
+  commentId: F:TuiVision.Controls.StandardDialogKind.Designer
+  id: Designer
+  parent: TuiVision.Controls.StandardDialogKind
+  langs:
+  - csharp
+  - vb
+  name: Designer
+  nameWithType: StandardDialogKind.Designer
+  fullName: TuiVision.Controls.StandardDialogKind.Designer
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStandardDialogFlowState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Designer
+    path: src/TuiVision.Controls/TStandardDialogFlowState.cs
+    startLine: 28
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Dialog-Designer-Flow. / Dialog-designer flow.
+  example: []
+  syntax:
+    content: Designer = 5
+    return:
+      type: TuiVision.Controls.StandardDialogKind
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: TuiVision.Controls.StandardDialogKind
+  commentId: T:TuiVision.Controls.StandardDialogKind
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.StandardDialogKind.html
+  name: StandardDialogKind
+  nameWithType: StandardDialogKind
+  fullName: TuiVision.Controls.StandardDialogKind

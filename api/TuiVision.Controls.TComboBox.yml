@@ -24,7 +24,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TComboBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TComboBox
     path: src/TuiVision.Controls/TComboBox.cs
@@ -106,7 +106,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TComboBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TComboBox.cs
@@ -154,7 +154,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TComboBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Choices
     path: src/TuiVision.Controls/TComboBox.cs
@@ -189,7 +189,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TComboBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: DropDownOpen
     path: src/TuiVision.Controls/TComboBox.cs
@@ -224,7 +224,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TComboBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectedIndex
     path: src/TuiVision.Controls/TComboBox.cs
@@ -259,7 +259,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TComboBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: HistoryId
     path: src/TuiVision.Controls/TComboBox.cs
@@ -294,7 +294,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TComboBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: OpenDropDown
     path: src/TuiVision.Controls/TComboBox.cs
@@ -326,7 +326,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TComboBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: CloseDropDown
     path: src/TuiVision.Controls/TComboBox.cs
@@ -358,7 +358,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TComboBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectIndex
     path: src/TuiVision.Controls/TComboBox.cs
@@ -401,7 +401,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TComboBox.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: CommitToHistory
     path: src/TuiVision.Controls/TComboBox.cs

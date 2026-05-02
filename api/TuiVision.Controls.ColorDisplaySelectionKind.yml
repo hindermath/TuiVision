@@ -1,0 +1,180 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.ColorDisplaySelectionKind
+  commentId: T:TuiVision.Controls.ColorDisplaySelectionKind
+  id: ColorDisplaySelectionKind
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.ColorDisplaySelectionKind.Color
+  - TuiVision.Controls.ColorDisplaySelectionKind.Display
+  - TuiVision.Controls.ColorDisplaySelectionKind.Mono
+  - TuiVision.Controls.ColorDisplaySelectionKind.SymbolicCharset
+  langs:
+  - csharp
+  - vb
+  name: ColorDisplaySelectionKind
+  nameWithType: ColorDisplaySelectionKind
+  fullName: TuiVision.Controls.ColorDisplaySelectionKind
+  type: Enum
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: ColorDisplaySelectionKind
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 10
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Art einer Farb-, Anzeige- oder Zeichensatzwahl.
+
+
+    Kind of colour, display, or charset choice.
+  example: []
+  syntax:
+    content: public enum ColorDisplaySelectionKind
+    content.vb: Public Enum ColorDisplaySelectionKind
+- uid: TuiVision.Controls.ColorDisplaySelectionKind.Color
+  commentId: F:TuiVision.Controls.ColorDisplaySelectionKind.Color
+  id: Color
+  parent: TuiVision.Controls.ColorDisplaySelectionKind
+  langs:
+  - csharp
+  - vb
+  name: Color
+  nameWithType: ColorDisplaySelectionKind.Color
+  fullName: TuiVision.Controls.ColorDisplaySelectionKind.Color
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Color
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 13
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Farbwahl. / Colour choice.
+  example: []
+  syntax:
+    content: Color = 0
+    return:
+      type: TuiVision.Controls.ColorDisplaySelectionKind
+- uid: TuiVision.Controls.ColorDisplaySelectionKind.Mono
+  commentId: F:TuiVision.Controls.ColorDisplaySelectionKind.Mono
+  id: Mono
+  parent: TuiVision.Controls.ColorDisplaySelectionKind
+  langs:
+  - csharp
+  - vb
+  name: Mono
+  nameWithType: ColorDisplaySelectionKind.Mono
+  fullName: TuiVision.Controls.ColorDisplaySelectionKind.Mono
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Mono
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 16
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Monochrome Anzeige. / Monochrome display.
+  example: []
+  syntax:
+    content: Mono = 1
+    return:
+      type: TuiVision.Controls.ColorDisplaySelectionKind
+- uid: TuiVision.Controls.ColorDisplaySelectionKind.SymbolicCharset
+  commentId: F:TuiVision.Controls.ColorDisplaySelectionKind.SymbolicCharset
+  id: SymbolicCharset
+  parent: TuiVision.Controls.ColorDisplaySelectionKind
+  langs:
+  - csharp
+  - vb
+  name: SymbolicCharset
+  nameWithType: ColorDisplaySelectionKind.SymbolicCharset
+  fullName: TuiVision.Controls.ColorDisplaySelectionKind.SymbolicCharset
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SymbolicCharset
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 19
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Symbolischer Zeichensatz. / Symbolic charset.
+  example: []
+  syntax:
+    content: SymbolicCharset = 2
+    return:
+      type: TuiVision.Controls.ColorDisplaySelectionKind
+- uid: TuiVision.Controls.ColorDisplaySelectionKind.Display
+  commentId: F:TuiVision.Controls.ColorDisplaySelectionKind.Display
+  id: Display
+  parent: TuiVision.Controls.ColorDisplaySelectionKind
+  langs:
+  - csharp
+  - vb
+  name: Display
+  nameWithType: ColorDisplaySelectionKind.Display
+  fullName: TuiVision.Controls.ColorDisplaySelectionKind.Display
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Display
+    path: src/TuiVision.Controls/TColorDisplaySelectionState.cs
+    startLine: 22
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Anzeigeprofil. / Display profile.
+  example: []
+  syntax:
+    content: Display = 3
+    return:
+      type: TuiVision.Controls.ColorDisplaySelectionKind
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: TuiVision.Controls.ColorDisplaySelectionKind
+  commentId: T:TuiVision.Controls.ColorDisplaySelectionKind
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.ColorDisplaySelectionKind.html
+  name: ColorDisplaySelectionKind
+  nameWithType: ColorDisplaySelectionKind
+  fullName: TuiVision.Controls.ColorDisplaySelectionKind

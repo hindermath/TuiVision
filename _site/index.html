@@ -17,7 +17,7 @@
       <meta name="docfx:rel" content="">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -149,6 +149,187 @@ own original license terms and notices.</li>
 </ul>
 <p>Use and redistribution of these files must follow their original licensing and
 copyright notices.</p>
+<h2 id="barrierefreiheit--accessibility-a11y">Barrierefreiheit / Accessibility (A11Y)</h2>
+<p>Dieses Projekt folgt grundlegenden Barrierefreiheitsstandards für alle
+dokumentierten Inhalte und Benutzeroberflächen.</p>
+<p>Richtlinien für Markdown-Dokumentation:</p>
+<ul>
+<li>Überschriften folgen einer klaren Hierarchie (h1 → h2 → h3 — keine Ebene überspringen)</li>
+<li>Alle Bilder haben aussagekräftige Alt-Texte (<code>![Beschreibung](bild.png)</code>)</li>
+<li>Linkbeschriftungen sind beschreibend (<code>[Installationsanleitung](...)</code> statt <code>[hier](...)</code>)</li>
+<li>Code-Blöcke geben die Sprache an (<code>```bash</code>, <code>```powershell</code>)</li>
+<li>Tabellen haben Kopfzeilen für alle Spalten</li>
+<li>Keine Informationen werden ausschließlich über Farbe vermittelt</li>
+</ul>
+<hr>
+<p>This project follows basic accessibility standards for all documented
+content and user interfaces.</p>
+<p>Guidelines for Markdown documentation:</p>
+<ul>
+<li>Headings follow a clear hierarchy (h1 → h2 → h3 — no level skipped)</li>
+<li>All images have meaningful alt texts (<code>![Description](image.png)</code>)</li>
+<li>Link labels are descriptive (<code>[Installation guide](...)</code> instead of <code>[here](...)</code>)</li>
+<li>Code blocks specify the language (<code>```bash</code>, <code>```powershell</code>)</li>
+<li>Tables have header rows for all columns</li>
+<li>No information is conveyed through colour alone</li>
+</ul>
+<h2 id="spec-kit-workflow">Spec-kit-Workflow</h2>
+<p>Neue Features in diesem Workspace werden nach dem <strong>Specification-Driven Development (SDD)</strong>-Workflow entwickelt.
+Der Workflow verwendet das <code>speckit</code>-CLI-Tool (GitHub Copilot Skill).</p>
+<p>Schritte für ein neues Feature:</p>
+<ol>
+<li><strong>Spezifikation erstellen</strong> — <code>speckit specify &quot;Feature-Name&quot;</code> → <code>specs/{branch}/spec.md</code></li>
+<li><strong>Klärungsfragen</strong> — <code>speckit clarify</code> → offene Fragen in <code>spec.md</code> beantworten</li>
+<li><strong>Implementierungsplan</strong> — <code>speckit plan</code> → <code>specs/{branch}/plan.md</code></li>
+<li><strong>Aufgabenliste</strong> — <code>speckit tasks</code> → <code>specs/{branch}/tasks.md</code></li>
+<li><strong>Implementieren</strong> — <code>speckit implement</code> → Aufgaben aus <code>tasks.md</code> abarbeiten</li>
+<li><strong>Validieren</strong> — <code>bash scripts/check-homogeneity.sh</code> → Compliance-Score prüfen</li>
+</ol>
+<p>Alle Spec-Artefakte werden im Branch-Verzeichnis <code>specs/{branch}/</code> gespeichert und versioniert.</p>
+<hr>
+<h2 id="spec-kit-workflow-1">Spec-kit Workflow</h2>
+<p>New features in this workspace are developed following the <strong>Specification-Driven Development (SDD)</strong> workflow.
+The workflow uses the <code>speckit</code> CLI tool (GitHub Copilot Skill).</p>
+<p>Steps for a new feature:</p>
+<ol>
+<li><strong>Create specification</strong> — <code>speckit specify &quot;Feature Name&quot;</code> → <code>specs/{branch}/spec.md</code></li>
+<li><strong>Clarification questions</strong> — <code>speckit clarify</code> → answer open questions in <code>spec.md</code></li>
+<li><strong>Implementation plan</strong> — <code>speckit plan</code> → <code>specs/{branch}/plan.md</code></li>
+<li><strong>Task list</strong> — <code>speckit tasks</code> → <code>specs/{branch}/tasks.md</code></li>
+<li><strong>Implement</strong> — <code>speckit implement</code> → work through tasks in <code>tasks.md</code></li>
+<li><strong>Validate</strong> — <code>bash scripts/check-homogeneity.sh</code> → check compliance score</li>
+</ol>
+<p>All spec artefacts are stored and versioned in the branch directory <code>specs/{branch}/</code>.</p>
+<hr>
+<h2 id="homogeneity-guardian--skript-kurzreferenz--script-quick-reference">Homogeneity Guardian — Skript-Kurzreferenz / Script Quick Reference</h2>
+<h3 id="scriptscheck-homogeneitysh--scriptscheck-homogeneityps1"><code>scripts/check-homogeneity.sh</code> / <code>scripts/check-homogeneity.ps1</code></h3>
+<p>Prüft dieses Projekt auf Compliance (constitution.md, A11Y, Spec-kit, Azubis-Abschnitte, STATS.md).
+<em>Checks this project for compliance (constitution.md, A11Y, Spec-kit, Azubis sections, STATS.md).</em></p>
+<pre><code class="lang-bash">bash scripts/check-homogeneity.sh
+
+# JSON-Ausgabe für CI/Scripting / JSON output for CI/scripting
+bash scripts/check-homogeneity.sh --json
+</code></pre>
+<pre><code class="lang-powershell">pwsh scripts/check-homogeneity.ps1
+pwsh scripts/check-homogeneity.ps1 -Json
+</code></pre>
+<hr>
+<h3 id="scriptsinit-statssh--scriptsinit-statsps1"><code>scripts/init-stats.sh</code> / <code>scripts/init-stats.ps1</code></h3>
+<p>Schreibt einen Baseline-Eintrag in <code>STATS.md</code>. Einmalig nach dem Einrichten ausführen.
+<em>Writes a baseline entry to <code>STATS.md</code>. Run once after initial setup.</em></p>
+<pre><code class="lang-bash">bash scripts/init-stats.sh
+</code></pre>
+<pre><code class="lang-powershell">pwsh scripts/init-stats.ps1
+</code></pre>
+<hr>
+<h3 id="scriptsrename-lastenheftsh--scriptsrename-lastenheftps1"><code>scripts/rename-lastenheft.sh</code> / <code>scripts/rename-lastenheft.ps1</code></h3>
+<p>Benennt eine Lastenheft-Datei via <code>git mv</code> um und committet — fügt Branch-Suffix hinzu.
+<em>Renames a Lastenheft file via <code>git mv</code> and commits — adds branch suffix.</em></p>
+<pre><code class="lang-bash"># Datei umbenennen und committen / Rename and commit
+bash scripts/rename-lastenheft.sh Lastenheft_foo.md 002-feature-branch
+# Ergebnis / Result: Lastenheft_foo.002-feature-branch.md
+</code></pre>
+<pre><code class="lang-powershell">pwsh scripts/rename-lastenheft.ps1 -File Lastenheft_foo.md -Branch 002-feature-branch
+</code></pre>
+<hr>
+<h3 id="scriptsinstall-hookssh--scriptsinstall-hooksps1"><code>scripts/install-hooks.sh</code> / <code>scripts/install-hooks.ps1</code></h3>
+<p>Installiert den <code>pre-push</code>-Hook nach dem Clonen auf einem neuen Gerät.
+<em>Installs the <code>pre-push</code> hook after cloning on a new device.</em></p>
+<pre><code class="lang-bash">bash scripts/install-hooks.sh
+</code></pre>
+<pre><code class="lang-powershell">pwsh scripts/install-hooks.ps1
+</code></pre>
+<h2 id="für-azubis--for-apprentices">Für Azubis / For Apprentices</h2>
+<p>Willkommen! Diese Sektion beschreibt den Einstieg in die Entwicklungsumgebung
+für Fachinformatiker-Azubis und andere Einsteiger.</p>
+<p><strong>Voraussetzungen:</strong></p>
+<ul>
+<li>Git (macOS: <code>brew install git</code> / Windows: <code>winget install Git.Git</code>)</li>
+<li>PowerShell 7+ (Windows: <code>winget install Microsoft.PowerShell</code>)</li>
+<li>ripgrep (macOS: <code>brew install ripgrep</code> / Windows: <code>winget install BurntSushi.ripgrep.MSVC</code>)</li>
+<li>GitHub CLI (macOS: <code>brew install gh</code> / Windows: <code>winget install GitHub.cli</code>)</li>
+</ul>
+<p><strong>Ersten Schritt ausführen:</strong></p>
+<pre><code class="lang-bash"># Repository klonen
+git clone &lt;repo-url&gt;
+cd &lt;projekt-verzeichnis&gt;
+
+# Hooks installieren
+bash scripts/install-hooks.sh
+
+# Compliance prüfen
+bash scripts/check-homogeneity.sh
+</code></pre>
+<p><strong>Hilfreiche Befehle:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Befehl</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bash scripts/check-homogeneity.sh</code></td>
+<td>Compliance-Bericht anzeigen</td>
+</tr>
+<tr>
+<td><code>bash scripts/init-stats.sh</code></td>
+<td>Compliance-Baseline in STATS.md schreiben</td>
+</tr>
+<tr>
+<td><code>git log --oneline -10</code></td>
+<td>Letzte 10 Commits anzeigen</td>
+</tr>
+</tbody>
+</table>
+<p>Bei Fragen: Issue im GitHub-Repository erstellen oder Mentor ansprechen.</p>
+<hr>
+<p>Welcome! This section describes how to get started with the development
+environment for apprentice software developers (Fachinformatiker-Azubis) and
+other beginners.</p>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>Git (macOS: <code>brew install git</code> / Windows: <code>winget install Git.Git</code>)</li>
+<li>PowerShell 7+ (Windows: <code>winget install Microsoft.PowerShell</code>)</li>
+<li>ripgrep (macOS: <code>brew install ripgrep</code> / Windows: <code>winget install BurntSushi.ripgrep.MSVC</code>)</li>
+<li>GitHub CLI (macOS: <code>brew install gh</code> / Windows: <code>winget install GitHub.cli</code>)</li>
+</ul>
+<p><strong>First steps:</strong></p>
+<pre><code class="lang-bash"># Clone the repository
+git clone &lt;repo-url&gt;
+cd &lt;project-directory&gt;
+
+# Install hooks
+bash scripts/install-hooks.sh
+
+# Check compliance
+bash scripts/check-homogeneity.sh
+</code></pre>
+<p><strong>Useful commands:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bash scripts/check-homogeneity.sh</code></td>
+<td>Show compliance report</td>
+</tr>
+<tr>
+<td><code>bash scripts/init-stats.sh</code></td>
+<td>Write compliance baseline to STATS.md</td>
+</tr>
+<tr>
+<td><code>git log --oneline -10</code></td>
+<td>Show last 10 commits</td>
+</tr>
+</tbody>
+</table>
+<p>For questions: open an issue in the GitHub repository or ask your mentor.</p>
 <h2 id="weitere-informationen">Weitere Informationen</h2>
 <ul>
 <li><a href="docs/guides/multi-mac-workflow.html">Entwickler-Dokumentation</a></li>
@@ -159,7 +340,7 @@ copyright notices.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

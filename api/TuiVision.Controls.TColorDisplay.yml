@@ -7,6 +7,7 @@ items:
   children:
   - TuiVision.Controls.TColorDisplay.Background
   - TuiVision.Controls.TColorDisplay.Foreground
+  - TuiVision.Controls.TColorDisplay.PreviewValue
   - TuiVision.Controls.TColorDisplay.SetColors(System.ConsoleColor,System.ConsoleColor)
   langs:
   - csharp
@@ -18,7 +19,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorDisplay.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TColorDisplay
     path: src/TuiVision.Controls/TColorDisplay.cs
@@ -62,7 +63,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorDisplay.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Foreground
     path: src/TuiVision.Controls/TColorDisplay.cs
@@ -97,7 +98,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorDisplay.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Background
     path: src/TuiVision.Controls/TColorDisplay.cs
@@ -132,7 +133,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorDisplay.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: SetColors
     path: src/TuiVision.Controls/TColorDisplay.cs
@@ -157,6 +158,41 @@ items:
       description: Die Hintergrundfarbe. / The background colour.
     content.vb: Public Sub SetColors(foreground As ConsoleColor, background As ConsoleColor)
   overload: TuiVision.Controls.TColorDisplay.SetColors*
+- uid: TuiVision.Controls.TColorDisplay.PreviewValue
+  commentId: P:TuiVision.Controls.TColorDisplay.PreviewValue
+  id: PreviewValue
+  parent: TuiVision.Controls.TColorDisplay
+  langs:
+  - csharp
+  - vb
+  name: PreviewValue
+  nameWithType: TColorDisplay.PreviewValue
+  fullName: TuiVision.Controls.TColorDisplay.PreviewValue
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDisplay.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: PreviewValue
+    path: src/TuiVision.Controls/TColorDisplay.cs
+    startLine: 46
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Der textorientierte Vorschauwert.
+
+
+    The text-oriented preview value.
+  example: []
+  syntax:
+    content: public string PreviewValue { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property PreviewValue As String
+  overload: TuiVision.Controls.TColorDisplay.PreviewValue*
 references:
 - uid: TuiVision.Controls
   commentId: N:TuiVision.Controls
@@ -419,3 +455,20 @@ references:
   name: SetColors
   nameWithType: TColorDisplay.SetColors
   fullName: TuiVision.Controls.TColorDisplay.SetColors
+- uid: TuiVision.Controls.TColorDisplay.PreviewValue*
+  commentId: Overload:TuiVision.Controls.TColorDisplay.PreviewValue
+  href: TuiVision.Controls.TColorDisplay.html#TuiVision_Controls_TColorDisplay_PreviewValue
+  name: PreviewValue
+  nameWithType: TColorDisplay.PreviewValue
+  fullName: TuiVision.Controls.TColorDisplay.PreviewValue
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

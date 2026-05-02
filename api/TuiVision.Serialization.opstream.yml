@@ -23,7 +23,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: opstream
     path: src/TuiVision.Serialization/opstream.cs
@@ -68,7 +68,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Serialization/opstream.cs
@@ -113,7 +113,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteByte
     path: src/TuiVision.Serialization/opstream.cs
@@ -152,7 +152,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteBoolean
     path: src/TuiVision.Serialization/opstream.cs
@@ -191,7 +191,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteInt32
     path: src/TuiVision.Serialization/opstream.cs
@@ -230,7 +230,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteString
     path: src/TuiVision.Serialization/opstream.cs
@@ -269,7 +269,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteObject
     path: src/TuiVision.Serialization/opstream.cs
@@ -311,7 +311,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteObject
     path: src/TuiVision.Serialization/opstream.cs
@@ -350,7 +350,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/opstream.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Dispose
     path: src/TuiVision.Serialization/opstream.cs
