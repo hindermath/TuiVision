@@ -16,7 +16,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/ITStreamSerializable.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: ITStreamSerializable
     path: src/TuiVision.Serialization/ITStreamSerializable.cs
@@ -34,6 +34,7 @@ items:
     content: public interface ITStreamSerializable
     content.vb: Public Interface ITStreamSerializable
   derivedClasses:
+  - TuiVision.Serialization.TDialogDescriptionRecord
   - TuiVision.Serialization.THelpFile
   - TuiVision.Serialization.THelpIndex
   - TuiVision.Serialization.THelpTopic
@@ -51,7 +52,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Serialization/ITStreamSerializable.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: SaveTo
     path: src/TuiVision.Serialization/ITStreamSerializable.cs

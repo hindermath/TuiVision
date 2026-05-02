@@ -22,7 +22,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: THistory
     path: src/TuiVision.Controls/THistory.cs
@@ -62,7 +62,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/THistory.cs
@@ -101,7 +101,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: HistoryId
     path: src/TuiVision.Controls/THistory.cs
@@ -136,7 +136,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Add
     path: src/TuiVision.Controls/THistory.cs
@@ -175,7 +175,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Count
     path: src/TuiVision.Controls/THistory.cs
@@ -210,7 +210,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Recall
     path: src/TuiVision.Controls/THistory.cs
@@ -245,7 +245,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: ClearBucket
     path: src/TuiVision.Controls/THistory.cs
@@ -277,7 +277,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/THistory.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: ClearAll
     path: src/TuiVision.Controls/THistory.cs

@@ -17,7 +17,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/009-controls-widgets-and-collections/apiSpec/new?filename=TuiVision_Controls_TColorSelector.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TColorSelector%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/010-standard-dialogs-designer/apiSpec/new?filename=TuiVision_Controls_TColorSelector.md&amp;value=---%0Auid%3A%20TuiVision.Controls.TColorSelector%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -94,7 +94,7 @@
 
 
   <h1 id="TuiVision_Controls_TColorSelector" data-uid="TuiVision.Controls.TColorSelector" class="text-break">
-Class TColorSelector  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TColorSelector.cs/#L13"><i class="bi bi-code-slash"></i></a>
+Class TColorSelector  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorSelector.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -162,7 +162,7 @@ from Turbo Vision (<code>tcolorse.cc</code>).</p>
 
   <h3 id="TuiVision_Controls_TColorSelector_SelectedColor" data-uid="TuiVision.Controls.TColorSelector.SelectedColor">
   SelectedColor
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TColorSelector.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorSelector.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Die aktuell ausgewählte Farbe.</p>
@@ -191,6 +191,39 @@ from Turbo Vision (<code>tcolorse.cc</code>).</p>
 
 
 
+  <a id="TuiVision_Controls_TColorSelector_SupportedColorNames_" data-uid="TuiVision.Controls.TColorSelector.SupportedColorNames*"></a>
+
+  <h3 id="TuiVision_Controls_TColorSelector_SupportedColorNames" data-uid="TuiVision.Controls.TColorSelector.SupportedColorNames">
+  SupportedColorNames
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorSelector.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die unterstuetzten Konsolenfarben.</p>
+<p>The supported console colours.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IReadOnlyList&lt;string&gt; SupportedColorNames { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -199,7 +232,7 @@ from Turbo Vision (<code>tcolorse.cc</code>).</p>
 
   <h3 id="TuiVision_Controls_TColorSelector_SelectColor_System_ConsoleColor_" data-uid="TuiVision.Controls.TColorSelector.SelectColor(System.ConsoleColor)">
   SelectColor(ConsoleColor)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TColorSelector.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorSelector.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Wählt eine Farbe aus.</p>
@@ -229,11 +262,45 @@ from Turbo Vision (<code>tcolorse.cc</code>).</p>
 
 
 
+  <a id="TuiVision_Controls_TColorSelector_SelectColor_" data-uid="TuiVision.Controls.TColorSelector.SelectColor*"></a>
+
+  <h3 id="TuiVision_Controls_TColorSelector_SelectColor_System_String_" data-uid="TuiVision.Controls.TColorSelector.SelectColor(System.String)">
+  SelectColor(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorSelector.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Waehlt eine Farbe anhand ihres Namens aus.</p>
+<p>Selects a colour by its name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SelectColor(string colorName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>colorName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Der Farbname. / The colour name.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/hindermath/TuiVision/blob/009-controls-widgets-and-collections/src/TuiVision.Controls/TColorSelector.cs/#L13" class="edit-link">Edit this page</a>
+          <a href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TColorSelector.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 

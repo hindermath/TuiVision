@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStatusDef.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TStatusDef
     path: src/TuiVision.Controls/TStatusDef.cs
@@ -74,7 +74,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStatusDef.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TStatusDef.cs
@@ -134,7 +134,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStatusDef.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: MinCtx
     path: src/TuiVision.Controls/TStatusDef.cs
@@ -169,7 +169,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStatusDef.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: MaxCtx
     path: src/TuiVision.Controls/TStatusDef.cs
@@ -204,7 +204,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStatusDef.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Items
     path: src/TuiVision.Controls/TStatusDef.cs
@@ -239,7 +239,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStatusDef.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Next
     path: src/TuiVision.Controls/TStatusDef.cs
@@ -274,7 +274,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TStatusDef.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Matches
     path: src/TuiVision.Controls/TStatusDef.cs

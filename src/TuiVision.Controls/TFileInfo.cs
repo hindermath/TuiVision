@@ -13,4 +13,13 @@ namespace TuiVision.Controls;
 /// <param name="FileName">Der Dateiname. / The file name.</param>
 /// <param name="Size">Die Dateigröße in Bytes. / The file size in bytes.</param>
 /// <param name="LastModified">Der Änderungszeitpunkt. / The last modification timestamp.</param>
-public readonly record struct TFileInfo(string FileName, long Size, DateTime LastModified);
+/// <param name="FallbackMessage">Der optionale Fallback-Text. / The optional fallback text.</param>
+public readonly record struct TFileInfo(string FileName, long Size, DateTime LastModified, string? FallbackMessage = null)
+{
+    /// <summary>
+    /// Gibt an, ob Metadaten nur als Fallback vorliegen.
+    ///
+    /// Indicates whether metadata is available only as fallback.
+    /// </summary>
+    public bool HasFallback => !string.IsNullOrWhiteSpace(FallbackMessage);
+}

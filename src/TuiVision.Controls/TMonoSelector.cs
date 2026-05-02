@@ -42,6 +42,13 @@ public sealed class TMonoSelector
     public string? SelectedItem => SelectedIndex < 0 ? null : _items[SelectedIndex];
 
     /// <summary>
+    /// Die verfuegbaren Eintraege.
+    ///
+    /// The available items.
+    /// </summary>
+    public IReadOnlyList<string> Items => _items;
+
+    /// <summary>
     /// Setzt die Auswahl auf den angegebenen Index.
     ///
     /// Sets the selection to the specified index.

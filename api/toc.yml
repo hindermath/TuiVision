@@ -17,6 +17,42 @@ items:
   name: TuiVision.Controls
   type: Namespace
   items:
+  - uid: TuiVision.Controls.ColorDisplaySelectionKind
+    name: ColorDisplaySelectionKind
+    type: Enum
+  - uid: TuiVision.Controls.ColorDisplaySelectionState
+    name: ColorDisplaySelectionState
+    type: Struct
+  - uid: TuiVision.Controls.DialogCommandBinding
+    name: DialogCommandBinding
+    type: Class
+  - uid: TuiVision.Controls.DialogControlDescription
+    name: DialogControlDescription
+    type: Class
+  - uid: TuiVision.Controls.DialogControlRoles
+    name: DialogControlRoles
+    type: Class
+  - uid: TuiVision.Controls.DialogDescription
+    name: DialogDescription
+    type: Class
+  - uid: TuiVision.Controls.DialogDescriptionFactory
+    name: DialogDescriptionFactory
+    type: Class
+  - uid: TuiVision.Controls.DialogDescriptionPersistenceAdapter
+    name: DialogDescriptionPersistenceAdapter
+    type: Class
+  - uid: TuiVision.Controls.DialogDescriptionValidationResult
+    name: DialogDescriptionValidationResult
+    type: Class
+  - uid: TuiVision.Controls.DialogDescriptionValidator
+    name: DialogDescriptionValidator
+    type: Class
+  - uid: TuiVision.Controls.FileDecisionKind
+    name: FileDecisionKind
+    type: Enum
+  - uid: TuiVision.Controls.FileSelectionTargetKind
+    name: FileSelectionTargetKind
+    type: Enum
   - uid: TuiVision.Controls.ManagedClipboard
     name: ManagedClipboard
     type: Class
@@ -29,6 +65,21 @@ items:
   - uid: TuiVision.Controls.ShellCommandIds
     name: ShellCommandIds
     type: Class
+  - uid: TuiVision.Controls.StandardDialogFlowState
+    name: StandardDialogFlowState
+    type: Struct
+  - uid: TuiVision.Controls.StandardDialogInteractionState
+    name: StandardDialogInteractionState
+    type: Enum
+  - uid: TuiVision.Controls.StandardDialogKind
+    name: StandardDialogKind
+    type: Enum
+  - uid: TuiVision.Controls.StandardDialogValidationMessage
+    name: StandardDialogValidationMessage
+    type: Struct
+  - uid: TuiVision.Controls.StandardDialogValidationSeverity
+    name: StandardDialogValidationSeverity
+    type: Enum
   - uid: TuiVision.Controls.TApplication
     name: TApplication
     type: Class
@@ -80,6 +131,9 @@ items:
   - uid: TuiVision.Controls.TEditor
     name: TEditor
     type: Class
+  - uid: TuiVision.Controls.TFileDecisionResult
+    name: TFileDecisionResult
+    type: Struct
   - uid: TuiVision.Controls.TFileDialog
     name: TFileDialog
     type: Class
@@ -318,6 +372,9 @@ items:
   - uid: TuiVision.Serialization.ITStreamSerializable
     name: ITStreamSerializable
     type: Interface
+  - uid: TuiVision.Serialization.PersistedDialogRepresentation
+    name: PersistedDialogRepresentation
+    type: Class
   - uid: TuiVision.Serialization.SerializationModule
     name: SerializationModule
     type: Class
@@ -326,6 +383,15 @@ items:
     type: Class
   - uid: TuiVision.Serialization.TBinaryArchiveWriter
     name: TBinaryArchiveWriter
+    type: Class
+  - uid: TuiVision.Serialization.TDialogCommandBindingRecord
+    name: TDialogCommandBindingRecord
+    type: Class
+  - uid: TuiVision.Serialization.TDialogControlDescriptionRecord
+    name: TDialogControlDescriptionRecord
+    type: Class
+  - uid: TuiVision.Serialization.TDialogDescriptionRecord
+    name: TDialogDescriptionRecord
     type: Class
   - uid: TuiVision.Serialization.THelpCrossReference
     name: THelpCrossReference

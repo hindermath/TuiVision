@@ -19,7 +19,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ManagedClipboard.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: ManagedClipboard
     path: src/TuiVision.Controls/ManagedClipboard.cs
@@ -64,7 +64,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ManagedClipboard.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: SetText
     path: src/TuiVision.Controls/ManagedClipboard.cs
@@ -103,7 +103,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ManagedClipboard.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: HasText
     path: src/TuiVision.Controls/ManagedClipboard.cs
@@ -138,7 +138,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ManagedClipboard.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: GetText
     path: src/TuiVision.Controls/ManagedClipboard.cs
@@ -173,7 +173,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/ManagedClipboard.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Clear
     path: src/TuiVision.Controls/ManagedClipboard.cs

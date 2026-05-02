@@ -24,11 +24,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TFileList
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 49
+    startLine: 51
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -105,11 +105,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 59
+    startLine: 61
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -144,11 +144,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: CurrentDirectory
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 69
+    startLine: 71
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -179,11 +179,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Wildcard
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 76
+    startLine: 78
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -214,11 +214,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: CurrentInfo
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 83
+    startLine: 85
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -249,11 +249,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Entries
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 90
+    startLine: 92
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -284,11 +284,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Refresh
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 99
+    startLine: 101
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -326,11 +326,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectByName
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 129
+    startLine: 148
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -365,11 +365,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: SetTypedPath
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 145
+    startLine: 168
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -404,11 +404,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileList.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: HandleEvent
     path: src/TuiVision.Controls/TFileList.cs
-    startLine: 159
+    startLine: 182
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls

@@ -6,12 +6,17 @@ items:
   parent: TuiVision.Controls
   children:
   - TuiVision.Controls.TFileDialog.#ctor(TuiVision.Core.TRect,System.String,System.String,System.String,System.String,TuiVision.Controls.TFileDialogMode)
+  - TuiVision.Controls.TFileDialog.CancelDecision
   - TuiVision.Controls.TFileDialog.ChangeDirectory(System.String)
   - TuiVision.Controls.TFileDialog.ChangeFilter(System.String)
+  - TuiVision.Controls.TFileDialog.ConfirmDecision
+  - TuiVision.Controls.TFileDialog.ConfirmDirectorySelection
   - TuiVision.Controls.TFileDialog.ConfirmSelection
   - TuiVision.Controls.TFileDialog.CurrentInfo
   - TuiVision.Controls.TFileDialog.Directories
   - TuiVision.Controls.TFileDialog.Files
+  - TuiVision.Controls.TFileDialog.FlowState
+  - TuiVision.Controls.TFileDialog.LastDecision
   - TuiVision.Controls.TFileDialog.Mode
   - TuiVision.Controls.TFileDialog.NavigateToFocusedDirectory
   - TuiVision.Controls.TFileDialog.PathInput
@@ -28,11 +33,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TFileDialog
     path: src/TuiVision.Controls/TFileDialog.cs
-    startLine: 26
+    startLine: 35
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -109,11 +114,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TFileDialog.cs
-    startLine: 39
+    startLine: 48
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -163,11 +168,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Mode
     path: src/TuiVision.Controls/TFileDialog.cs
-    startLine: 66
+    startLine: 75
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -184,6 +189,76 @@ items:
       type: TuiVision.Controls.TFileDialogMode
     content.vb: Public ReadOnly Property Mode As TFileDialogMode
   overload: TuiVision.Controls.TFileDialog.Mode*
+- uid: TuiVision.Controls.TFileDialog.LastDecision
+  commentId: P:TuiVision.Controls.TFileDialog.LastDecision
+  id: LastDecision
+  parent: TuiVision.Controls.TFileDialog
+  langs:
+  - csharp
+  - vb
+  name: LastDecision
+  nameWithType: TFileDialog.LastDecision
+  fullName: TuiVision.Controls.TFileDialog.LastDecision
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDialog.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: LastDecision
+    path: src/TuiVision.Controls/TFileDialog.cs
+    startLine: 82
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Das letzte explizite Dialogergebnis.
+
+
+    The last explicit dialog result.
+  example: []
+  syntax:
+    content: public TFileDecisionResult LastDecision { get; }
+    parameters: []
+    return:
+      type: TuiVision.Controls.TFileDecisionResult
+    content.vb: Public Property LastDecision As TFileDecisionResult
+  overload: TuiVision.Controls.TFileDialog.LastDecision*
+- uid: TuiVision.Controls.TFileDialog.FlowState
+  commentId: P:TuiVision.Controls.TFileDialog.FlowState
+  id: FlowState
+  parent: TuiVision.Controls.TFileDialog
+  langs:
+  - csharp
+  - vb
+  name: FlowState
+  nameWithType: TFileDialog.FlowState
+  fullName: TuiVision.Controls.TFileDialog.FlowState
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDialog.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: FlowState
+    path: src/TuiVision.Controls/TFileDialog.cs
+    startLine: 89
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Der synchronisierte Flow-Zustand.
+
+
+    The synchronized flow state.
+  example: []
+  syntax:
+    content: public StandardDialogFlowState FlowState { get; }
+    parameters: []
+    return:
+      type: TuiVision.Controls.StandardDialogFlowState
+    content.vb: Public Property FlowState As StandardDialogFlowState
+  overload: TuiVision.Controls.TFileDialog.FlowState*
 - uid: TuiVision.Controls.TFileDialog.PathInput
   commentId: P:TuiVision.Controls.TFileDialog.PathInput
   id: PathInput
@@ -198,11 +273,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: PathInput
     path: src/TuiVision.Controls/TFileDialog.cs
-    startLine: 73
+    startLine: 97
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -233,11 +308,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Directories
     path: src/TuiVision.Controls/TFileDialog.cs
-    startLine: 80
+    startLine: 104
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -268,11 +343,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Files
     path: src/TuiVision.Controls/TFileDialog.cs
-    startLine: 87
+    startLine: 111
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -303,11 +378,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: CurrentInfo
     path: src/TuiVision.Controls/TFileDialog.cs
-    startLine: 94
+    startLine: 118
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -338,11 +413,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: ChangeDirectory
     path: src/TuiVision.Controls/TFileDialog.cs
-    startLine: 102
+    startLine: 126
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -377,11 +452,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: ChangeFilter
     path: src/TuiVision.Controls/TFileDialog.cs
-    startLine: 114
+    startLine: 139
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -416,11 +491,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: SetTypedPath
     path: src/TuiVision.Controls/TFileDialog.cs
-    startLine: 125
+    startLine: 151
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -455,11 +530,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectFile
     path: src/TuiVision.Controls/TFileDialog.cs
-    startLine: 137
+    startLine: 164
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -494,11 +569,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: NavigateToFocusedDirectory
     path: src/TuiVision.Controls/TFileDialog.cs
-    startLine: 148
+    startLine: 176
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -526,11 +601,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: RecallHistory
     path: src/TuiVision.Controls/TFileDialog.cs
-    startLine: 162
+    startLine: 191
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -568,11 +643,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: ConfirmSelection
     path: src/TuiVision.Controls/TFileDialog.cs
-    startLine: 179
+    startLine: 209
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -589,6 +664,111 @@ items:
       description: Der aufgeloeste Zielpfad. / The resolved target path.
     content.vb: Public Function ConfirmSelection() As String
   overload: TuiVision.Controls.TFileDialog.ConfirmSelection*
+- uid: TuiVision.Controls.TFileDialog.ConfirmDecision
+  commentId: M:TuiVision.Controls.TFileDialog.ConfirmDecision
+  id: ConfirmDecision
+  parent: TuiVision.Controls.TFileDialog
+  langs:
+  - csharp
+  - vb
+  name: ConfirmDecision()
+  nameWithType: TFileDialog.ConfirmDecision()
+  fullName: TuiVision.Controls.TFileDialog.ConfirmDecision()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDialog.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: ConfirmDecision
+    path: src/TuiVision.Controls/TFileDialog.cs
+    startLine: 220
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Bestaetigt die aktuelle Auswahl als explizite Datei- oder Verzeichnisentscheidung.
+
+
+    Confirms the current selection as an explicit file or directory decision.
+  example: []
+  syntax:
+    content: public TFileDecisionResult ConfirmDecision()
+    return:
+      type: TuiVision.Controls.TFileDecisionResult
+      description: Das Dialogergebnis. / The dialog result.
+    content.vb: Public Function ConfirmDecision() As TFileDecisionResult
+  overload: TuiVision.Controls.TFileDialog.ConfirmDecision*
+- uid: TuiVision.Controls.TFileDialog.CancelDecision
+  commentId: M:TuiVision.Controls.TFileDialog.CancelDecision
+  id: CancelDecision
+  parent: TuiVision.Controls.TFileDialog
+  langs:
+  - csharp
+  - vb
+  name: CancelDecision()
+  nameWithType: TFileDialog.CancelDecision()
+  fullName: TuiVision.Controls.TFileDialog.CancelDecision()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDialog.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: CancelDecision
+    path: src/TuiVision.Controls/TFileDialog.cs
+    startLine: 240
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Bricht den Dialog mit einem expliziten Abbruchergebnis ab.
+
+
+    Cancels the dialog with an explicit cancellation result.
+  example: []
+  syntax:
+    content: public TFileDecisionResult CancelDecision()
+    return:
+      type: TuiVision.Controls.TFileDecisionResult
+      description: Das Abbruchergebnis. / The cancellation result.
+    content.vb: Public Function CancelDecision() As TFileDecisionResult
+  overload: TuiVision.Controls.TFileDialog.CancelDecision*
+- uid: TuiVision.Controls.TFileDialog.ConfirmDirectorySelection
+  commentId: M:TuiVision.Controls.TFileDialog.ConfirmDirectorySelection
+  id: ConfirmDirectorySelection
+  parent: TuiVision.Controls.TFileDialog
+  langs:
+  - csharp
+  - vb
+  name: ConfirmDirectorySelection()
+  nameWithType: TFileDialog.ConfirmDirectorySelection()
+  fullName: TuiVision.Controls.TFileDialog.ConfirmDirectorySelection()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDialog.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: ConfirmDirectorySelection
+    path: src/TuiVision.Controls/TFileDialog.cs
+    startLine: 254
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Bestaetigt das aktuell fokussierte Verzeichnis.
+
+
+    Confirms the currently focused directory.
+  example: []
+  syntax:
+    content: public TFileDecisionResult ConfirmDirectorySelection()
+    return:
+      type: TuiVision.Controls.TFileDecisionResult
+      description: Das Verzeichnisergebnis. / The directory result.
+    content.vb: Public Function ConfirmDirectorySelection() As TFileDecisionResult
+  overload: TuiVision.Controls.TFileDialog.ConfirmDirectorySelection*
 references:
 - uid: TuiVision.Controls
   commentId: N:TuiVision.Controls
@@ -1693,6 +1873,32 @@ references:
   name: Mode
   nameWithType: TFileDialog.Mode
   fullName: TuiVision.Controls.TFileDialog.Mode
+- uid: TuiVision.Controls.TFileDialog.LastDecision*
+  commentId: Overload:TuiVision.Controls.TFileDialog.LastDecision
+  href: TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_LastDecision
+  name: LastDecision
+  nameWithType: TFileDialog.LastDecision
+  fullName: TuiVision.Controls.TFileDialog.LastDecision
+- uid: TuiVision.Controls.TFileDecisionResult
+  commentId: T:TuiVision.Controls.TFileDecisionResult
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TFileDecisionResult.html
+  name: TFileDecisionResult
+  nameWithType: TFileDecisionResult
+  fullName: TuiVision.Controls.TFileDecisionResult
+- uid: TuiVision.Controls.TFileDialog.FlowState*
+  commentId: Overload:TuiVision.Controls.TFileDialog.FlowState
+  href: TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_FlowState
+  name: FlowState
+  nameWithType: TFileDialog.FlowState
+  fullName: TuiVision.Controls.TFileDialog.FlowState
+- uid: TuiVision.Controls.StandardDialogFlowState
+  commentId: T:TuiVision.Controls.StandardDialogFlowState
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.StandardDialogFlowState.html
+  name: StandardDialogFlowState
+  nameWithType: StandardDialogFlowState
+  fullName: TuiVision.Controls.StandardDialogFlowState
 - uid: TuiVision.Controls.TFileDialog.PathInput*
   commentId: Overload:TuiVision.Controls.TFileDialog.PathInput
   href: TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_PathInput
@@ -1798,3 +2004,21 @@ references:
   name: ConfirmSelection
   nameWithType: TFileDialog.ConfirmSelection
   fullName: TuiVision.Controls.TFileDialog.ConfirmSelection
+- uid: TuiVision.Controls.TFileDialog.ConfirmDecision*
+  commentId: Overload:TuiVision.Controls.TFileDialog.ConfirmDecision
+  href: TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_ConfirmDecision
+  name: ConfirmDecision
+  nameWithType: TFileDialog.ConfirmDecision
+  fullName: TuiVision.Controls.TFileDialog.ConfirmDecision
+- uid: TuiVision.Controls.TFileDialog.CancelDecision*
+  commentId: Overload:TuiVision.Controls.TFileDialog.CancelDecision
+  href: TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_CancelDecision
+  name: CancelDecision
+  nameWithType: TFileDialog.CancelDecision
+  fullName: TuiVision.Controls.TFileDialog.CancelDecision
+- uid: TuiVision.Controls.TFileDialog.ConfirmDirectorySelection*
+  commentId: Overload:TuiVision.Controls.TFileDialog.ConfirmDirectorySelection
+  href: TuiVision.Controls.TFileDialog.html#TuiVision_Controls_TFileDialog_ConfirmDirectorySelection
+  name: ConfirmDirectorySelection
+  nameWithType: TFileDialog.ConfirmDirectorySelection
+  fullName: TuiVision.Controls.TFileDialog.ConfirmDirectorySelection

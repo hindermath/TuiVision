@@ -4,10 +4,27 @@ items:
   commentId: N:TuiVision.Controls
   id: TuiVision.Controls
   children:
+  - TuiVision.Controls.ColorDisplaySelectionKind
+  - TuiVision.Controls.ColorDisplaySelectionState
+  - TuiVision.Controls.DialogCommandBinding
+  - TuiVision.Controls.DialogControlDescription
+  - TuiVision.Controls.DialogControlRoles
+  - TuiVision.Controls.DialogDescription
+  - TuiVision.Controls.DialogDescriptionFactory
+  - TuiVision.Controls.DialogDescriptionPersistenceAdapter
+  - TuiVision.Controls.DialogDescriptionValidationResult
+  - TuiVision.Controls.DialogDescriptionValidator
+  - TuiVision.Controls.FileDecisionKind
+  - TuiVision.Controls.FileSelectionTargetKind
   - TuiVision.Controls.ManagedClipboard
   - TuiVision.Controls.MenuLayoutSlot
   - TuiVision.Controls.ProgressBarState
   - TuiVision.Controls.ShellCommandIds
+  - TuiVision.Controls.StandardDialogFlowState
+  - TuiVision.Controls.StandardDialogInteractionState
+  - TuiVision.Controls.StandardDialogKind
+  - TuiVision.Controls.StandardDialogValidationMessage
+  - TuiVision.Controls.StandardDialogValidationSeverity
   - TuiVision.Controls.TApplication
   - TuiVision.Controls.TButton
   - TuiVision.Controls.TButtonFlags
@@ -25,6 +42,7 @@ items:
   - TuiVision.Controls.TDirListBox
   - TuiVision.Controls.TEditWindow
   - TuiVision.Controls.TEditor
+  - TuiVision.Controls.TFileDecisionResult
   - TuiVision.Controls.TFileDialog
   - TuiVision.Controls.TFileDialogMode
   - TuiVision.Controls.TFileEditor
@@ -140,6 +158,20 @@ references:
   name: TColorDisplay
   nameWithType: TColorDisplay
   fullName: TuiVision.Controls.TColorDisplay
+- uid: TuiVision.Controls.ColorDisplaySelectionKind
+  commentId: T:TuiVision.Controls.ColorDisplaySelectionKind
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.ColorDisplaySelectionKind.html
+  name: ColorDisplaySelectionKind
+  nameWithType: ColorDisplaySelectionKind
+  fullName: TuiVision.Controls.ColorDisplaySelectionKind
+- uid: TuiVision.Controls.ColorDisplaySelectionState
+  commentId: T:TuiVision.Controls.ColorDisplaySelectionState
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.ColorDisplaySelectionState.html
+  name: ColorDisplaySelectionState
+  nameWithType: ColorDisplaySelectionState
+  fullName: TuiVision.Controls.ColorDisplaySelectionState
 - uid: TuiVision.Controls.TColorGroup
   commentId: T:TuiVision.Controls.TColorGroup
   parent: TuiVision.Controls
@@ -187,6 +219,56 @@ references:
   name: TDialog
   nameWithType: TDialog
   fullName: TuiVision.Controls.TDialog
+- uid: TuiVision.Controls.DialogControlRoles
+  commentId: T:TuiVision.Controls.DialogControlRoles
+  href: TuiVision.Controls.DialogControlRoles.html
+  name: DialogControlRoles
+  nameWithType: DialogControlRoles
+  fullName: TuiVision.Controls.DialogControlRoles
+- uid: TuiVision.Controls.DialogControlDescription
+  commentId: T:TuiVision.Controls.DialogControlDescription
+  href: TuiVision.Controls.DialogControlDescription.html
+  name: DialogControlDescription
+  nameWithType: DialogControlDescription
+  fullName: TuiVision.Controls.DialogControlDescription
+- uid: TuiVision.Controls.DialogCommandBinding
+  commentId: T:TuiVision.Controls.DialogCommandBinding
+  href: TuiVision.Controls.DialogCommandBinding.html
+  name: DialogCommandBinding
+  nameWithType: DialogCommandBinding
+  fullName: TuiVision.Controls.DialogCommandBinding
+- uid: TuiVision.Controls.DialogDescription
+  commentId: T:TuiVision.Controls.DialogDescription
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.DialogDescription.html
+  name: DialogDescription
+  nameWithType: DialogDescription
+  fullName: TuiVision.Controls.DialogDescription
+- uid: TuiVision.Controls.DialogDescriptionFactory
+  commentId: T:TuiVision.Controls.DialogDescriptionFactory
+  href: TuiVision.Controls.DialogDescriptionFactory.html
+  name: DialogDescriptionFactory
+  nameWithType: DialogDescriptionFactory
+  fullName: TuiVision.Controls.DialogDescriptionFactory
+- uid: TuiVision.Controls.DialogDescriptionPersistenceAdapter
+  commentId: T:TuiVision.Controls.DialogDescriptionPersistenceAdapter
+  href: TuiVision.Controls.DialogDescriptionPersistenceAdapter.html
+  name: DialogDescriptionPersistenceAdapter
+  nameWithType: DialogDescriptionPersistenceAdapter
+  fullName: TuiVision.Controls.DialogDescriptionPersistenceAdapter
+- uid: TuiVision.Controls.DialogDescriptionValidationResult
+  commentId: T:TuiVision.Controls.DialogDescriptionValidationResult
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.DialogDescriptionValidationResult.html
+  name: DialogDescriptionValidationResult
+  nameWithType: DialogDescriptionValidationResult
+  fullName: TuiVision.Controls.DialogDescriptionValidationResult
+- uid: TuiVision.Controls.DialogDescriptionValidator
+  commentId: T:TuiVision.Controls.DialogDescriptionValidator
+  href: TuiVision.Controls.DialogDescriptionValidator.html
+  name: DialogDescriptionValidator
+  nameWithType: DialogDescriptionValidator
+  fullName: TuiVision.Controls.DialogDescriptionValidator
 - uid: TuiVision.Controls.TDirListBox
   commentId: T:TuiVision.Controls.TDirListBox
   parent: TuiVision.Controls
@@ -207,6 +289,27 @@ references:
   name: TEditWindow
   nameWithType: TEditWindow
   fullName: TuiVision.Controls.TEditWindow
+- uid: TuiVision.Controls.FileSelectionTargetKind
+  commentId: T:TuiVision.Controls.FileSelectionTargetKind
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.FileSelectionTargetKind.html
+  name: FileSelectionTargetKind
+  nameWithType: FileSelectionTargetKind
+  fullName: TuiVision.Controls.FileSelectionTargetKind
+- uid: TuiVision.Controls.FileDecisionKind
+  commentId: T:TuiVision.Controls.FileDecisionKind
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.FileDecisionKind.html
+  name: FileDecisionKind
+  nameWithType: FileDecisionKind
+  fullName: TuiVision.Controls.FileDecisionKind
+- uid: TuiVision.Controls.TFileDecisionResult
+  commentId: T:TuiVision.Controls.TFileDecisionResult
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.TFileDecisionResult.html
+  name: TFileDecisionResult
+  nameWithType: TFileDecisionResult
+  fullName: TuiVision.Controls.TFileDecisionResult
 - uid: TuiVision.Controls.TFileDialogMode
   commentId: T:TuiVision.Controls.TFileDialogMode
   parent: TuiVision.Controls
@@ -449,6 +552,41 @@ references:
   name: TScroller
   nameWithType: TScroller
   fullName: TuiVision.Controls.TScroller
+- uid: TuiVision.Controls.StandardDialogKind
+  commentId: T:TuiVision.Controls.StandardDialogKind
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.StandardDialogKind.html
+  name: StandardDialogKind
+  nameWithType: StandardDialogKind
+  fullName: TuiVision.Controls.StandardDialogKind
+- uid: TuiVision.Controls.StandardDialogInteractionState
+  commentId: T:TuiVision.Controls.StandardDialogInteractionState
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.StandardDialogInteractionState.html
+  name: StandardDialogInteractionState
+  nameWithType: StandardDialogInteractionState
+  fullName: TuiVision.Controls.StandardDialogInteractionState
+- uid: TuiVision.Controls.StandardDialogFlowState
+  commentId: T:TuiVision.Controls.StandardDialogFlowState
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.StandardDialogFlowState.html
+  name: StandardDialogFlowState
+  nameWithType: StandardDialogFlowState
+  fullName: TuiVision.Controls.StandardDialogFlowState
+- uid: TuiVision.Controls.StandardDialogValidationSeverity
+  commentId: T:TuiVision.Controls.StandardDialogValidationSeverity
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.StandardDialogValidationSeverity.html
+  name: StandardDialogValidationSeverity
+  nameWithType: StandardDialogValidationSeverity
+  fullName: TuiVision.Controls.StandardDialogValidationSeverity
+- uid: TuiVision.Controls.StandardDialogValidationMessage
+  commentId: T:TuiVision.Controls.StandardDialogValidationMessage
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.StandardDialogValidationMessage.html
+  name: StandardDialogValidationMessage
+  nameWithType: StandardDialogValidationMessage
+  fullName: TuiVision.Controls.StandardDialogValidationMessage
 - uid: TuiVision.Controls.TStaticText
   commentId: T:TuiVision.Controls.TStaticText
   parent: TuiVision.Controls

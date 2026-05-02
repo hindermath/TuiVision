@@ -1,0 +1,951 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.DialogDescription
+  commentId: T:TuiVision.Controls.DialogDescription
+  id: DialogDescription
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.DialogDescription.#ctor(System.String,System.Int32,System.String,System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogControlDescription},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogCommandBinding})
+  - TuiVision.Controls.DialogDescription.CommandBindings
+  - TuiVision.Controls.DialogDescription.Controls
+  - TuiVision.Controls.DialogDescription.DescriptionId
+  - TuiVision.Controls.DialogDescription.NavigationOrder
+  - TuiVision.Controls.DialogDescription.Title
+  - TuiVision.Controls.DialogDescription.Version
+  langs:
+  - csharp
+  - vb
+  name: DialogDescription
+  nameWithType: DialogDescription
+  fullName: TuiVision.Controls.DialogDescription
+  type: Class
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDialogDescription.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: DialogDescription
+    path: src/TuiVision.Controls/TDialogDescription.cs
+    startLine: 112
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Design-time Dialogbeschreibung fuer den Dialog-Designer.
+
+
+    Design-time dialog description for the dialog designer.
+  example: []
+  syntax:
+    content: 'public sealed record DialogDescription : IEquatable<DialogDescription>'
+    content.vb: Public NotInheritable Class DialogDescription Implements IEquatable(Of DialogDescription)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{TuiVision.Controls.DialogDescription}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TuiVision.Controls.DialogDescription.#ctor(System.String,System.Int32,System.String,System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogControlDescription},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogCommandBinding})
+  commentId: M:TuiVision.Controls.DialogDescription.#ctor(System.String,System.Int32,System.String,System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogControlDescription},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogCommandBinding})
+  id: '#ctor(System.String,System.Int32,System.String,System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogControlDescription},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogCommandBinding})'
+  parent: TuiVision.Controls.DialogDescription
+  langs:
+  - csharp
+  - vb
+  name: DialogDescription(string, int, string, IEnumerable<DialogControlDescription>, IEnumerable<string>, IEnumerable<DialogCommandBinding>)
+  nameWithType: DialogDescription.DialogDescription(string, int, string, IEnumerable<DialogControlDescription>, IEnumerable<string>, IEnumerable<DialogCommandBinding>)
+  fullName: TuiVision.Controls.DialogDescription.DialogDescription(string, int, string, System.Collections.Generic.IEnumerable<TuiVision.Controls.DialogControlDescription>, System.Collections.Generic.IEnumerable<string>, System.Collections.Generic.IEnumerable<TuiVision.Controls.DialogCommandBinding>)
+  type: Constructor
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDialogDescription.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: .ctor
+    path: src/TuiVision.Controls/TDialogDescription.cs
+    startLine: 125
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Erstellt eine Dialogbeschreibung.
+
+
+    Creates a dialog description.
+  example: []
+  syntax:
+    content: public DialogDescription(string descriptionId, int version, string title, IEnumerable<DialogControlDescription> controls, IEnumerable<string> navigationOrder, IEnumerable<DialogCommandBinding> commandBindings)
+    parameters:
+    - id: descriptionId
+      type: System.String
+      description: Die Beschreibungs-ID. / The description identifier.
+    - id: version
+      type: System.Int32
+      description: Die Modellversion. / The model version.
+    - id: title
+      type: System.String
+      description: Der Dialogtitel. / The dialog title.
+    - id: controls
+      type: System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogControlDescription}
+      description: Die Controls. / The controls.
+    - id: navigationOrder
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: Die Navigationsreihenfolge. / The navigation order.
+    - id: commandBindings
+      type: System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogCommandBinding}
+      description: Die Befehlsbindungen. / The command bindings.
+    content.vb: Public Sub New(descriptionId As String, version As Integer, title As String, controls As IEnumerable(Of DialogControlDescription), navigationOrder As IEnumerable(Of String), commandBindings As IEnumerable(Of DialogCommandBinding))
+  overload: TuiVision.Controls.DialogDescription.#ctor*
+  nameWithType.vb: DialogDescription.New(String, Integer, String, IEnumerable(Of DialogControlDescription), IEnumerable(Of String), IEnumerable(Of DialogCommandBinding))
+  fullName.vb: TuiVision.Controls.DialogDescription.New(String, Integer, String, System.Collections.Generic.IEnumerable(Of TuiVision.Controls.DialogControlDescription), System.Collections.Generic.IEnumerable(Of String), System.Collections.Generic.IEnumerable(Of TuiVision.Controls.DialogCommandBinding))
+  name.vb: New(String, Integer, String, IEnumerable(Of DialogControlDescription), IEnumerable(Of String), IEnumerable(Of DialogCommandBinding))
+- uid: TuiVision.Controls.DialogDescription.DescriptionId
+  commentId: P:TuiVision.Controls.DialogDescription.DescriptionId
+  id: DescriptionId
+  parent: TuiVision.Controls.DialogDescription
+  langs:
+  - csharp
+  - vb
+  name: DescriptionId
+  nameWithType: DialogDescription.DescriptionId
+  fullName: TuiVision.Controls.DialogDescription.DescriptionId
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDialogDescription.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: DescriptionId
+    path: src/TuiVision.Controls/TDialogDescription.cs
+    startLine: 142
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Die Beschreibungs-ID. / The description identifier.
+  example: []
+  syntax:
+    content: public string DescriptionId { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property DescriptionId As String
+  overload: TuiVision.Controls.DialogDescription.DescriptionId*
+- uid: TuiVision.Controls.DialogDescription.Version
+  commentId: P:TuiVision.Controls.DialogDescription.Version
+  id: Version
+  parent: TuiVision.Controls.DialogDescription
+  langs:
+  - csharp
+  - vb
+  name: Version
+  nameWithType: DialogDescription.Version
+  fullName: TuiVision.Controls.DialogDescription.Version
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDialogDescription.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Version
+    path: src/TuiVision.Controls/TDialogDescription.cs
+    startLine: 145
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Die Modellversion. / The model version.
+  example: []
+  syntax:
+    content: public int Version { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Version As Integer
+  overload: TuiVision.Controls.DialogDescription.Version*
+- uid: TuiVision.Controls.DialogDescription.Title
+  commentId: P:TuiVision.Controls.DialogDescription.Title
+  id: Title
+  parent: TuiVision.Controls.DialogDescription
+  langs:
+  - csharp
+  - vb
+  name: Title
+  nameWithType: DialogDescription.Title
+  fullName: TuiVision.Controls.DialogDescription.Title
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDialogDescription.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Title
+    path: src/TuiVision.Controls/TDialogDescription.cs
+    startLine: 148
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Der Dialogtitel. / The dialog title.
+  example: []
+  syntax:
+    content: public string Title { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Title As String
+  overload: TuiVision.Controls.DialogDescription.Title*
+- uid: TuiVision.Controls.DialogDescription.Controls
+  commentId: P:TuiVision.Controls.DialogDescription.Controls
+  id: Controls
+  parent: TuiVision.Controls.DialogDescription
+  langs:
+  - csharp
+  - vb
+  name: Controls
+  nameWithType: DialogDescription.Controls
+  fullName: TuiVision.Controls.DialogDescription.Controls
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDialogDescription.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Controls
+    path: src/TuiVision.Controls/TDialogDescription.cs
+    startLine: 151
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Die Control-Beschreibungen. / The control descriptions.
+  example: []
+  syntax:
+    content: public IReadOnlyList<DialogControlDescription> Controls { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{TuiVision.Controls.DialogControlDescription}
+    content.vb: Public ReadOnly Property Controls As IReadOnlyList(Of DialogControlDescription)
+  overload: TuiVision.Controls.DialogDescription.Controls*
+- uid: TuiVision.Controls.DialogDescription.NavigationOrder
+  commentId: P:TuiVision.Controls.DialogDescription.NavigationOrder
+  id: NavigationOrder
+  parent: TuiVision.Controls.DialogDescription
+  langs:
+  - csharp
+  - vb
+  name: NavigationOrder
+  nameWithType: DialogDescription.NavigationOrder
+  fullName: TuiVision.Controls.DialogDescription.NavigationOrder
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDialogDescription.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: NavigationOrder
+    path: src/TuiVision.Controls/TDialogDescription.cs
+    startLine: 154
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Die Navigationsreihenfolge. / The navigation order.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> NavigationOrder { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public ReadOnly Property NavigationOrder As IReadOnlyList(Of String)
+  overload: TuiVision.Controls.DialogDescription.NavigationOrder*
+- uid: TuiVision.Controls.DialogDescription.CommandBindings
+  commentId: P:TuiVision.Controls.DialogDescription.CommandBindings
+  id: CommandBindings
+  parent: TuiVision.Controls.DialogDescription
+  langs:
+  - csharp
+  - vb
+  name: CommandBindings
+  nameWithType: DialogDescription.CommandBindings
+  fullName: TuiVision.Controls.DialogDescription.CommandBindings
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TDialogDescription.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: CommandBindings
+    path: src/TuiVision.Controls/TDialogDescription.cs
+    startLine: 157
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Die Befehlsbindungen. / The command bindings.
+  example: []
+  syntax:
+    content: public IReadOnlyList<DialogCommandBinding> CommandBindings { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{TuiVision.Controls.DialogCommandBinding}
+    content.vb: Public ReadOnly Property CommandBindings As IReadOnlyList(Of DialogCommandBinding)
+  overload: TuiVision.Controls.DialogDescription.CommandBindings*
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{TuiVision.Controls.DialogDescription}
+  commentId: T:System.IEquatable{TuiVision.Controls.DialogDescription}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<DialogDescription>
+  nameWithType: IEquatable<DialogDescription>
+  fullName: System.IEquatable<TuiVision.Controls.DialogDescription>
+  nameWithType.vb: IEquatable(Of DialogDescription)
+  fullName.vb: System.IEquatable(Of TuiVision.Controls.DialogDescription)
+  name.vb: IEquatable(Of DialogDescription)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: TuiVision.Controls.DialogDescription
+    name: DialogDescription
+    href: TuiVision.Controls.DialogDescription.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Controls.DialogDescription
+    name: DialogDescription
+    href: TuiVision.Controls.DialogDescription.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TuiVision.Controls.DialogDescription.#ctor*
+  commentId: Overload:TuiVision.Controls.DialogDescription.#ctor
+  href: TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription__ctor_System_String_System_Int32_System_String_System_Collections_Generic_IEnumerable_TuiVision_Controls_DialogControlDescription__System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_TuiVision_Controls_DialogCommandBinding__
+  name: DialogDescription
+  nameWithType: DialogDescription.DialogDescription
+  fullName: TuiVision.Controls.DialogDescription.DialogDescription
+  nameWithType.vb: DialogDescription.New
+  fullName.vb: TuiVision.Controls.DialogDescription.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogControlDescription}
+  commentId: T:System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogControlDescription}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<DialogControlDescription>
+  nameWithType: IEnumerable<DialogControlDescription>
+  fullName: System.Collections.Generic.IEnumerable<TuiVision.Controls.DialogControlDescription>
+  nameWithType.vb: IEnumerable(Of DialogControlDescription)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of TuiVision.Controls.DialogControlDescription)
+  name.vb: IEnumerable(Of DialogControlDescription)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: TuiVision.Controls.DialogControlDescription
+    name: DialogControlDescription
+    href: TuiVision.Controls.DialogControlDescription.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Controls.DialogControlDescription
+    name: DialogControlDescription
+    href: TuiVision.Controls.DialogControlDescription.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogCommandBinding}
+  commentId: T:System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogCommandBinding}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<DialogCommandBinding>
+  nameWithType: IEnumerable<DialogCommandBinding>
+  fullName: System.Collections.Generic.IEnumerable<TuiVision.Controls.DialogCommandBinding>
+  nameWithType.vb: IEnumerable(Of DialogCommandBinding)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of TuiVision.Controls.DialogCommandBinding)
+  name.vb: IEnumerable(Of DialogCommandBinding)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: TuiVision.Controls.DialogCommandBinding
+    name: DialogCommandBinding
+    href: TuiVision.Controls.DialogCommandBinding.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Controls.DialogCommandBinding
+    name: DialogCommandBinding
+    href: TuiVision.Controls.DialogCommandBinding.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TuiVision.Controls.DialogDescription.DescriptionId*
+  commentId: Overload:TuiVision.Controls.DialogDescription.DescriptionId
+  href: TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_DescriptionId
+  name: DescriptionId
+  nameWithType: DialogDescription.DescriptionId
+  fullName: TuiVision.Controls.DialogDescription.DescriptionId
+- uid: TuiVision.Controls.DialogDescription.Version*
+  commentId: Overload:TuiVision.Controls.DialogDescription.Version
+  href: TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_Version
+  name: Version
+  nameWithType: DialogDescription.Version
+  fullName: TuiVision.Controls.DialogDescription.Version
+- uid: TuiVision.Controls.DialogDescription.Title*
+  commentId: Overload:TuiVision.Controls.DialogDescription.Title
+  href: TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_Title
+  name: Title
+  nameWithType: DialogDescription.Title
+  fullName: TuiVision.Controls.DialogDescription.Title
+- uid: TuiVision.Controls.DialogDescription.Controls*
+  commentId: Overload:TuiVision.Controls.DialogDescription.Controls
+  href: TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_Controls
+  name: Controls
+  nameWithType: DialogDescription.Controls
+  fullName: TuiVision.Controls.DialogDescription.Controls
+- uid: System.Collections.Generic.IReadOnlyList{TuiVision.Controls.DialogControlDescription}
+  commentId: T:System.Collections.Generic.IReadOnlyList{TuiVision.Controls.DialogControlDescription}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<DialogControlDescription>
+  nameWithType: IReadOnlyList<DialogControlDescription>
+  fullName: System.Collections.Generic.IReadOnlyList<TuiVision.Controls.DialogControlDescription>
+  nameWithType.vb: IReadOnlyList(Of DialogControlDescription)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of TuiVision.Controls.DialogControlDescription)
+  name.vb: IReadOnlyList(Of DialogControlDescription)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: TuiVision.Controls.DialogControlDescription
+    name: DialogControlDescription
+    href: TuiVision.Controls.DialogControlDescription.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Controls.DialogControlDescription
+    name: DialogControlDescription
+    href: TuiVision.Controls.DialogControlDescription.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TuiVision.Controls.DialogDescription.NavigationOrder*
+  commentId: Overload:TuiVision.Controls.DialogDescription.NavigationOrder
+  href: TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_NavigationOrder
+  name: NavigationOrder
+  nameWithType: DialogDescription.NavigationOrder
+  fullName: TuiVision.Controls.DialogDescription.NavigationOrder
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: TuiVision.Controls.DialogDescription.CommandBindings*
+  commentId: Overload:TuiVision.Controls.DialogDescription.CommandBindings
+  href: TuiVision.Controls.DialogDescription.html#TuiVision_Controls_DialogDescription_CommandBindings
+  name: CommandBindings
+  nameWithType: DialogDescription.CommandBindings
+  fullName: TuiVision.Controls.DialogDescription.CommandBindings
+- uid: System.Collections.Generic.IReadOnlyList{TuiVision.Controls.DialogCommandBinding}
+  commentId: T:System.Collections.Generic.IReadOnlyList{TuiVision.Controls.DialogCommandBinding}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<DialogCommandBinding>
+  nameWithType: IReadOnlyList<DialogCommandBinding>
+  fullName: System.Collections.Generic.IReadOnlyList<TuiVision.Controls.DialogCommandBinding>
+  nameWithType.vb: IReadOnlyList(Of DialogCommandBinding)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of TuiVision.Controls.DialogCommandBinding)
+  name.vb: IReadOnlyList(Of DialogCommandBinding)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: TuiVision.Controls.DialogCommandBinding
+    name: DialogCommandBinding
+    href: TuiVision.Controls.DialogCommandBinding.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TuiVision.Controls.DialogCommandBinding
+    name: DialogCommandBinding
+    href: TuiVision.Controls.DialogCommandBinding.html
+  - name: )

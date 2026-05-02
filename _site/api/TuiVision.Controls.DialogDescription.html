@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+      <title>Class DialogDescription | TuiVision Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class DialogDescription | TuiVision Documentation ">
+      
+      <meta name="description" content="Design-time Dialogbeschreibung fuer den Dialog-Designer. Design-time dialog description for the dialog designer.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <link rel="stylesheet" href="../public/accessibility.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/hindermath/TuiVision/new/010-standard-dialogs-designer/apiSpec/new?filename=TuiVision_Controls_DialogDescription.md&amp;value=---%0Auid%3A%20TuiVision.Controls.DialogDescription%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+      <script type="module" src="./../public/accessibility.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen / Skip to main content</a>
+    <a class="skip-link skip-link-secondary" href="#toc">Zum Inhaltsverzeichnis springen / Skip to table of contents</a>
+
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation" aria-label="Primary">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="TuiVision">
+            TuiVision
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots" aria-hidden="true"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search" aria-hidden="true"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl" id="main-content" tabindex="-1">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc" aria-label="Table of Contents"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list" aria-hidden="true"></i>
+          </button>
+
+          <nav id="breadcrumb" aria-label="Breadcrumb"></nav>
+        </div>
+
+        <article data-uid="TuiVision.Controls.DialogDescription">
+
+
+
+  <h1 id="TuiVision_Controls_DialogDescription" data-uid="TuiVision.Controls.DialogDescription" class="text-break">
+Class DialogDescription  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TDialogDescription.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TuiVision.html">TuiVision</a>.<a class="xref" href="TuiVision.Controls.html">Controls</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>TuiVision.Controls.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Design-time Dialogbeschreibung fuer den Dialog-Designer.</p>
+<p>Design-time dialog description for the dialog designer.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed record DialogDescription : IEquatable&lt;DialogDescription&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">DialogDescription</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="TuiVision.Controls.DialogDescription.html">DialogDescription</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="TuiVision_Controls_DialogDescription__ctor_" data-uid="TuiVision.Controls.DialogDescription.#ctor*"></a>
+
+  <h3 id="TuiVision_Controls_DialogDescription__ctor_System_String_System_Int32_System_String_System_Collections_Generic_IEnumerable_TuiVision_Controls_DialogControlDescription__System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_TuiVision_Controls_DialogCommandBinding__" data-uid="TuiVision.Controls.DialogDescription.#ctor(System.String,System.Int32,System.String,System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogControlDescription},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{TuiVision.Controls.DialogCommandBinding})">
+  DialogDescription(string, int, string, IEnumerable&lt;DialogControlDescription&gt;, IEnumerable&lt;string&gt;, IEnumerable&lt;DialogCommandBinding&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TDialogDescription.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Erstellt eine Dialogbeschreibung.</p>
+<p>Creates a dialog description.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DialogDescription(string descriptionId, int version, string title, IEnumerable&lt;DialogControlDescription&gt; controls, IEnumerable&lt;string&gt; navigationOrder, IEnumerable&lt;DialogCommandBinding&gt; commandBindings)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>descriptionId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Die Beschreibungs-ID. / The description identifier.</p>
+</dd>
+    <dt><code>version</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Die Modellversion. / The model version.</p>
+</dd>
+    <dt><code>title</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Der Dialogtitel. / The dialog title.</p>
+</dd>
+    <dt><code>controls</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="TuiVision.Controls.DialogControlDescription.html">DialogControlDescription</a>&gt;</dt>
+    <dd><p>Die Controls. / The controls.</p>
+</dd>
+    <dt><code>navigationOrder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>Die Navigationsreihenfolge. / The navigation order.</p>
+</dd>
+    <dt><code>commandBindings</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="TuiVision.Controls.DialogCommandBinding.html">DialogCommandBinding</a>&gt;</dt>
+    <dd><p>Die Befehlsbindungen. / The command bindings.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="TuiVision_Controls_DialogDescription_CommandBindings_" data-uid="TuiVision.Controls.DialogDescription.CommandBindings*"></a>
+
+  <h3 id="TuiVision_Controls_DialogDescription_CommandBindings" data-uid="TuiVision.Controls.DialogDescription.CommandBindings">
+  CommandBindings
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TDialogDescription.cs/#L158"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die Befehlsbindungen. / The command bindings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;DialogCommandBinding&gt; CommandBindings { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="TuiVision.Controls.DialogCommandBinding.html">DialogCommandBinding</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_DialogDescription_Controls_" data-uid="TuiVision.Controls.DialogDescription.Controls*"></a>
+
+  <h3 id="TuiVision_Controls_DialogDescription_Controls" data-uid="TuiVision.Controls.DialogDescription.Controls">
+  Controls
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TDialogDescription.cs/#L152"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die Control-Beschreibungen. / The control descriptions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;DialogControlDescription&gt; Controls { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="TuiVision.Controls.DialogControlDescription.html">DialogControlDescription</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_DialogDescription_DescriptionId_" data-uid="TuiVision.Controls.DialogDescription.DescriptionId*"></a>
+
+  <h3 id="TuiVision_Controls_DialogDescription_DescriptionId" data-uid="TuiVision.Controls.DialogDescription.DescriptionId">
+  DescriptionId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TDialogDescription.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die Beschreibungs-ID. / The description identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DescriptionId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_DialogDescription_NavigationOrder_" data-uid="TuiVision.Controls.DialogDescription.NavigationOrder*"></a>
+
+  <h3 id="TuiVision_Controls_DialogDescription_NavigationOrder" data-uid="TuiVision.Controls.DialogDescription.NavigationOrder">
+  NavigationOrder
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TDialogDescription.cs/#L155"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die Navigationsreihenfolge. / The navigation order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;string&gt; NavigationOrder { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_DialogDescription_Title_" data-uid="TuiVision.Controls.DialogDescription.Title*"></a>
+
+  <h3 id="TuiVision_Controls_DialogDescription_Title" data-uid="TuiVision.Controls.DialogDescription.Title">
+  Title
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TDialogDescription.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Der Dialogtitel. / The dialog title.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Title { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TuiVision_Controls_DialogDescription_Version_" data-uid="TuiVision.Controls.DialogDescription.Version*"></a>
+
+  <h3 id="TuiVision_Controls_DialogDescription_Version" data-uid="TuiVision.Controls.DialogDescription.Version">
+  Version
+  <a class="header-action link-secondary" title="View source" href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TDialogDescription.cs/#L146"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die Modellversion. / The model version.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Version { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/hindermath/TuiVision/blob/010-standard-dialogs-designer/src/TuiVision.Controls/TDialogDescription.cs/#L113" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix" aria-label="In this article"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

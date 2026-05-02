@@ -6,10 +6,17 @@ items:
   parent: TuiVision.Controls
   children:
   - TuiVision.Controls.TColorDialog.#ctor(TuiVision.Controls.TPalette)
+  - TuiVision.Controls.TColorDialog.CancelSelection
+  - TuiVision.Controls.TColorDialog.ConfirmSelection
+  - TuiVision.Controls.TColorDialog.FlowState
   - TuiVision.Controls.TColorDialog.Palette
   - TuiVision.Controls.TColorDialog.Preview
   - TuiVision.Controls.TColorDialog.SelectColor(System.ConsoleColor)
+  - TuiVision.Controls.TColorDialog.SelectDisplay(System.String)
+  - TuiVision.Controls.TColorDialog.SelectSymbolicCharset(System.String)
+  - TuiVision.Controls.TColorDialog.SelectionState
   - TuiVision.Controls.TColorDialog.Selector
+  - TuiVision.Controls.TColorDialog.UseFallback(TuiVision.Controls.ColorDisplaySelectionKind,System.String)
   langs:
   - csharp
   - vb
@@ -20,7 +27,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TColorDialog
     path: src/TuiVision.Controls/TColorDialog.cs
@@ -64,11 +71,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TColorDialog.cs
-    startLine: 20
+    startLine: 24
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -103,11 +110,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Palette
     path: src/TuiVision.Controls/TColorDialog.cs
-    startLine: 33
+    startLine: 44
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -138,11 +145,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Selector
     path: src/TuiVision.Controls/TColorDialog.cs
-    startLine: 40
+    startLine: 51
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -173,11 +180,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Preview
     path: src/TuiVision.Controls/TColorDialog.cs
-    startLine: 47
+    startLine: 58
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -194,6 +201,76 @@ items:
       type: TuiVision.Controls.TColorDisplay
     content.vb: Public ReadOnly Property Preview As TColorDisplay
   overload: TuiVision.Controls.TColorDialog.Preview*
+- uid: TuiVision.Controls.TColorDialog.SelectionState
+  commentId: P:TuiVision.Controls.TColorDialog.SelectionState
+  id: SelectionState
+  parent: TuiVision.Controls.TColorDialog
+  langs:
+  - csharp
+  - vb
+  name: SelectionState
+  nameWithType: TColorDialog.SelectionState
+  fullName: TuiVision.Controls.TColorDialog.SelectionState
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDialog.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SelectionState
+    path: src/TuiVision.Controls/TColorDialog.cs
+    startLine: 65
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Der synchronisierte Auswahlzustand.
+
+
+    The synchronized selection state.
+  example: []
+  syntax:
+    content: public ColorDisplaySelectionState SelectionState { get; }
+    parameters: []
+    return:
+      type: TuiVision.Controls.ColorDisplaySelectionState
+    content.vb: Public Property SelectionState As ColorDisplaySelectionState
+  overload: TuiVision.Controls.TColorDialog.SelectionState*
+- uid: TuiVision.Controls.TColorDialog.FlowState
+  commentId: P:TuiVision.Controls.TColorDialog.FlowState
+  id: FlowState
+  parent: TuiVision.Controls.TColorDialog
+  langs:
+  - csharp
+  - vb
+  name: FlowState
+  nameWithType: TColorDialog.FlowState
+  fullName: TuiVision.Controls.TColorDialog.FlowState
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDialog.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: FlowState
+    path: src/TuiVision.Controls/TColorDialog.cs
+    startLine: 72
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Der gemeinsame Standarddialog-Flow-Zustand.
+
+
+    The shared standard-dialog flow state.
+  example: []
+  syntax:
+    content: public StandardDialogFlowState FlowState { get; }
+    parameters: []
+    return:
+      type: TuiVision.Controls.StandardDialogFlowState
+    content.vb: Public Property FlowState As StandardDialogFlowState
+  overload: TuiVision.Controls.TColorDialog.FlowState*
 - uid: TuiVision.Controls.TColorDialog.SelectColor(System.ConsoleColor)
   commentId: M:TuiVision.Controls.TColorDialog.SelectColor(System.ConsoleColor)
   id: SelectColor(System.ConsoleColor)
@@ -208,11 +285,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectColor
     path: src/TuiVision.Controls/TColorDialog.cs
-    startLine: 55
+    startLine: 81
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -230,6 +307,196 @@ items:
       description: Die gewünschte Farbe. / The desired colour.
     content.vb: Public Sub SelectColor(color As ConsoleColor)
   overload: TuiVision.Controls.TColorDialog.SelectColor*
+- uid: TuiVision.Controls.TColorDialog.SelectDisplay(System.String)
+  commentId: M:TuiVision.Controls.TColorDialog.SelectDisplay(System.String)
+  id: SelectDisplay(System.String)
+  parent: TuiVision.Controls.TColorDialog
+  langs:
+  - csharp
+  - vb
+  name: SelectDisplay(string)
+  nameWithType: TColorDialog.SelectDisplay(string)
+  fullName: TuiVision.Controls.TColorDialog.SelectDisplay(string)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDialog.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SelectDisplay
+    path: src/TuiVision.Controls/TColorDialog.cs
+    startLine: 100
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Waehlt ein Anzeigeprofil aus.
+
+
+    Selects a display profile.
+  example: []
+  syntax:
+    content: public void SelectDisplay(string display)
+    parameters:
+    - id: display
+      type: System.String
+      description: Das Anzeigeprofil. / The display profile.
+    content.vb: Public Sub SelectDisplay(display As String)
+  overload: TuiVision.Controls.TColorDialog.SelectDisplay*
+  nameWithType.vb: TColorDialog.SelectDisplay(String)
+  fullName.vb: TuiVision.Controls.TColorDialog.SelectDisplay(String)
+  name.vb: SelectDisplay(String)
+- uid: TuiVision.Controls.TColorDialog.SelectSymbolicCharset(System.String)
+  commentId: M:TuiVision.Controls.TColorDialog.SelectSymbolicCharset(System.String)
+  id: SelectSymbolicCharset(System.String)
+  parent: TuiVision.Controls.TColorDialog
+  langs:
+  - csharp
+  - vb
+  name: SelectSymbolicCharset(string)
+  nameWithType: TColorDialog.SelectSymbolicCharset(string)
+  fullName: TuiVision.Controls.TColorDialog.SelectSymbolicCharset(string)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDialog.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SelectSymbolicCharset
+    path: src/TuiVision.Controls/TColorDialog.cs
+    startLine: 117
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Waehlt einen symbolischen Zeichensatzwert aus.
+
+
+    Selects a symbolic charset value.
+  example: []
+  syntax:
+    content: public void SelectSymbolicCharset(string charset)
+    parameters:
+    - id: charset
+      type: System.String
+      description: Der symbolische Zeichensatz. / The symbolic charset.
+    content.vb: Public Sub SelectSymbolicCharset(charset As String)
+  overload: TuiVision.Controls.TColorDialog.SelectSymbolicCharset*
+  nameWithType.vb: TColorDialog.SelectSymbolicCharset(String)
+  fullName.vb: TuiVision.Controls.TColorDialog.SelectSymbolicCharset(String)
+  name.vb: SelectSymbolicCharset(String)
+- uid: TuiVision.Controls.TColorDialog.UseFallback(TuiVision.Controls.ColorDisplaySelectionKind,System.String)
+  commentId: M:TuiVision.Controls.TColorDialog.UseFallback(TuiVision.Controls.ColorDisplaySelectionKind,System.String)
+  id: UseFallback(TuiVision.Controls.ColorDisplaySelectionKind,System.String)
+  parent: TuiVision.Controls.TColorDialog
+  langs:
+  - csharp
+  - vb
+  name: UseFallback(ColorDisplaySelectionKind, string)
+  nameWithType: TColorDialog.UseFallback(ColorDisplaySelectionKind, string)
+  fullName: TuiVision.Controls.TColorDialog.UseFallback(TuiVision.Controls.ColorDisplaySelectionKind, string)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDialog.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: UseFallback
+    path: src/TuiVision.Controls/TColorDialog.cs
+    startLine: 135
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Aktiviert einen begrenzten Fallback, wenn keine Option verfuegbar ist.
+
+
+    Activates a bounded fallback when no option is available.
+  example: []
+  syntax:
+    content: public void UseFallback(ColorDisplaySelectionKind kind, string reason)
+    parameters:
+    - id: kind
+      type: TuiVision.Controls.ColorDisplaySelectionKind
+      description: Die Auswahlart. / The selection kind.
+    - id: reason
+      type: System.String
+      description: Der Fallback-Grund. / The fallback reason.
+    content.vb: Public Sub UseFallback(kind As ColorDisplaySelectionKind, reason As String)
+  overload: TuiVision.Controls.TColorDialog.UseFallback*
+  nameWithType.vb: TColorDialog.UseFallback(ColorDisplaySelectionKind, String)
+  fullName.vb: TuiVision.Controls.TColorDialog.UseFallback(TuiVision.Controls.ColorDisplaySelectionKind, String)
+  name.vb: UseFallback(ColorDisplaySelectionKind, String)
+- uid: TuiVision.Controls.TColorDialog.ConfirmSelection
+  commentId: M:TuiVision.Controls.TColorDialog.ConfirmSelection
+  id: ConfirmSelection
+  parent: TuiVision.Controls.TColorDialog
+  langs:
+  - csharp
+  - vb
+  name: ConfirmSelection()
+  nameWithType: TColorDialog.ConfirmSelection()
+  fullName: TuiVision.Controls.TColorDialog.ConfirmSelection()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDialog.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: ConfirmSelection
+    path: src/TuiVision.Controls/TColorDialog.cs
+    startLine: 147
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Bestaetigt die aktuelle Auswahl.
+
+
+    Confirms the current selection.
+  example: []
+  syntax:
+    content: public ColorDisplaySelectionState ConfirmSelection()
+    return:
+      type: TuiVision.Controls.ColorDisplaySelectionState
+      description: Der bestaetigte Zustand. / The confirmed state.
+    content.vb: Public Function ConfirmSelection() As ColorDisplaySelectionState
+  overload: TuiVision.Controls.TColorDialog.ConfirmSelection*
+- uid: TuiVision.Controls.TColorDialog.CancelSelection
+  commentId: M:TuiVision.Controls.TColorDialog.CancelSelection
+  id: CancelSelection
+  parent: TuiVision.Controls.TColorDialog
+  langs:
+  - csharp
+  - vb
+  name: CancelSelection()
+  nameWithType: TColorDialog.CancelSelection()
+  fullName: TuiVision.Controls.TColorDialog.CancelSelection()
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorDialog.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: CancelSelection
+    path: src/TuiVision.Controls/TColorDialog.cs
+    startLine: 161
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Bricht die Auswahl ab und stellt den bestaetigten Wert wieder her.
+
+
+    Cancels the selection and restores the committed value.
+  example: []
+  syntax:
+    content: public ColorDisplaySelectionState CancelSelection()
+    return:
+      type: TuiVision.Controls.ColorDisplaySelectionState
+      description: Der wiederhergestellte Zustand. / The restored state.
+    content.vb: Public Function CancelSelection() As ColorDisplaySelectionState
+  overload: TuiVision.Controls.TColorDialog.CancelSelection*
 references:
 - uid: TuiVision.Controls
   commentId: N:TuiVision.Controls
@@ -514,6 +781,32 @@ references:
   name: TColorDisplay
   nameWithType: TColorDisplay
   fullName: TuiVision.Controls.TColorDisplay
+- uid: TuiVision.Controls.TColorDialog.SelectionState*
+  commentId: Overload:TuiVision.Controls.TColorDialog.SelectionState
+  href: TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_SelectionState
+  name: SelectionState
+  nameWithType: TColorDialog.SelectionState
+  fullName: TuiVision.Controls.TColorDialog.SelectionState
+- uid: TuiVision.Controls.ColorDisplaySelectionState
+  commentId: T:TuiVision.Controls.ColorDisplaySelectionState
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.ColorDisplaySelectionState.html
+  name: ColorDisplaySelectionState
+  nameWithType: ColorDisplaySelectionState
+  fullName: TuiVision.Controls.ColorDisplaySelectionState
+- uid: TuiVision.Controls.TColorDialog.FlowState*
+  commentId: Overload:TuiVision.Controls.TColorDialog.FlowState
+  href: TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_FlowState
+  name: FlowState
+  nameWithType: TColorDialog.FlowState
+  fullName: TuiVision.Controls.TColorDialog.FlowState
+- uid: TuiVision.Controls.StandardDialogFlowState
+  commentId: T:TuiVision.Controls.StandardDialogFlowState
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.StandardDialogFlowState.html
+  name: StandardDialogFlowState
+  nameWithType: StandardDialogFlowState
+  fullName: TuiVision.Controls.StandardDialogFlowState
 - uid: TuiVision.Controls.TColorDialog.SelectColor*
   commentId: Overload:TuiVision.Controls.TColorDialog.SelectColor
   href: TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_SelectColor_System_ConsoleColor_
@@ -528,3 +821,51 @@ references:
   name: ConsoleColor
   nameWithType: ConsoleColor
   fullName: System.ConsoleColor
+- uid: TuiVision.Controls.TColorDialog.SelectDisplay*
+  commentId: Overload:TuiVision.Controls.TColorDialog.SelectDisplay
+  href: TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_SelectDisplay_System_String_
+  name: SelectDisplay
+  nameWithType: TColorDialog.SelectDisplay
+  fullName: TuiVision.Controls.TColorDialog.SelectDisplay
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: TuiVision.Controls.TColorDialog.SelectSymbolicCharset*
+  commentId: Overload:TuiVision.Controls.TColorDialog.SelectSymbolicCharset
+  href: TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_SelectSymbolicCharset_System_String_
+  name: SelectSymbolicCharset
+  nameWithType: TColorDialog.SelectSymbolicCharset
+  fullName: TuiVision.Controls.TColorDialog.SelectSymbolicCharset
+- uid: TuiVision.Controls.TColorDialog.UseFallback*
+  commentId: Overload:TuiVision.Controls.TColorDialog.UseFallback
+  href: TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_UseFallback_TuiVision_Controls_ColorDisplaySelectionKind_System_String_
+  name: UseFallback
+  nameWithType: TColorDialog.UseFallback
+  fullName: TuiVision.Controls.TColorDialog.UseFallback
+- uid: TuiVision.Controls.ColorDisplaySelectionKind
+  commentId: T:TuiVision.Controls.ColorDisplaySelectionKind
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.ColorDisplaySelectionKind.html
+  name: ColorDisplaySelectionKind
+  nameWithType: ColorDisplaySelectionKind
+  fullName: TuiVision.Controls.ColorDisplaySelectionKind
+- uid: TuiVision.Controls.TColorDialog.ConfirmSelection*
+  commentId: Overload:TuiVision.Controls.TColorDialog.ConfirmSelection
+  href: TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_ConfirmSelection
+  name: ConfirmSelection
+  nameWithType: TColorDialog.ConfirmSelection
+  fullName: TuiVision.Controls.TColorDialog.ConfirmSelection
+- uid: TuiVision.Controls.TColorDialog.CancelSelection*
+  commentId: Overload:TuiVision.Controls.TColorDialog.CancelSelection
+  href: TuiVision.Controls.TColorDialog.html#TuiVision_Controls_TColorDialog_CancelSelection
+  name: CancelSelection
+  nameWithType: TColorDialog.CancelSelection
+  fullName: TuiVision.Controls.TColorDialog.CancelSelection

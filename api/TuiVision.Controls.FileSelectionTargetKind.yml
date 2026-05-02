@@ -1,0 +1,151 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.FileSelectionTargetKind
+  commentId: T:TuiVision.Controls.FileSelectionTargetKind
+  id: FileSelectionTargetKind
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.FileSelectionTargetKind.Directory
+  - TuiVision.Controls.FileSelectionTargetKind.File
+  - TuiVision.Controls.FileSelectionTargetKind.None
+  langs:
+  - csharp
+  - vb
+  name: FileSelectionTargetKind
+  nameWithType: FileSelectionTargetKind
+  fullName: TuiVision.Controls.FileSelectionTargetKind
+  type: Enum
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDecisionResult.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: FileSelectionTargetKind
+    path: src/TuiVision.Controls/TFileDecisionResult.cs
+    startLine: 10
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Zielart einer Datei- oder Verzeichnisentscheidung.
+
+
+    Target kind of a file or directory decision.
+  example: []
+  syntax:
+    content: public enum FileSelectionTargetKind
+    content.vb: Public Enum FileSelectionTargetKind
+- uid: TuiVision.Controls.FileSelectionTargetKind.None
+  commentId: F:TuiVision.Controls.FileSelectionTargetKind.None
+  id: None
+  parent: TuiVision.Controls.FileSelectionTargetKind
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: FileSelectionTargetKind.None
+  fullName: TuiVision.Controls.FileSelectionTargetKind.None
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDecisionResult.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: None
+    path: src/TuiVision.Controls/TFileDecisionResult.cs
+    startLine: 13
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Kein Ziel, zum Beispiel bei Abbruch. / No target, for example on cancel.
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: TuiVision.Controls.FileSelectionTargetKind
+- uid: TuiVision.Controls.FileSelectionTargetKind.File
+  commentId: F:TuiVision.Controls.FileSelectionTargetKind.File
+  id: File
+  parent: TuiVision.Controls.FileSelectionTargetKind
+  langs:
+  - csharp
+  - vb
+  name: File
+  nameWithType: FileSelectionTargetKind.File
+  fullName: TuiVision.Controls.FileSelectionTargetKind.File
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDecisionResult.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: File
+    path: src/TuiVision.Controls/TFileDecisionResult.cs
+    startLine: 16
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Dateiziel. / File target.
+  example: []
+  syntax:
+    content: File = 1
+    return:
+      type: TuiVision.Controls.FileSelectionTargetKind
+- uid: TuiVision.Controls.FileSelectionTargetKind.Directory
+  commentId: F:TuiVision.Controls.FileSelectionTargetKind.Directory
+  id: Directory
+  parent: TuiVision.Controls.FileSelectionTargetKind
+  langs:
+  - csharp
+  - vb
+  name: Directory
+  nameWithType: FileSelectionTargetKind.Directory
+  fullName: TuiVision.Controls.FileSelectionTargetKind.Directory
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDecisionResult.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Directory
+    path: src/TuiVision.Controls/TFileDecisionResult.cs
+    startLine: 19
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Verzeichnisziel. / Directory target.
+  example: []
+  syntax:
+    content: Directory = 2
+    return:
+      type: TuiVision.Controls.FileSelectionTargetKind
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: TuiVision.Controls.FileSelectionTargetKind
+  commentId: T:TuiVision.Controls.FileSelectionTargetKind
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.FileSelectionTargetKind.html
+  name: FileSelectionTargetKind
+  nameWithType: FileSelectionTargetKind
+  fullName: TuiVision.Controls.FileSelectionTargetKind

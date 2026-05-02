@@ -26,7 +26,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TConsoleBuffer.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TConsoleBuffer
     path: src/TuiVision.Core/TConsoleBuffer.cs
@@ -74,7 +74,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TConsoleBuffer.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Core/TConsoleBuffer.cs
@@ -129,7 +129,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TConsoleBuffer.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Width
     path: src/TuiVision.Core/TConsoleBuffer.cs
@@ -164,7 +164,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TConsoleBuffer.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Height
     path: src/TuiVision.Core/TConsoleBuffer.cs
@@ -199,7 +199,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TConsoleBuffer.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: this[]
     path: src/TuiVision.Core/TConsoleBuffer.cs
@@ -247,7 +247,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TConsoleBuffer.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: GetCell
     path: src/TuiVision.Core/TConsoleBuffer.cs
@@ -302,7 +302,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TConsoleBuffer.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: SetCell
     path: src/TuiVision.Core/TConsoleBuffer.cs
@@ -354,7 +354,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TConsoleBuffer.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TrySetCell
     path: src/TuiVision.Core/TConsoleBuffer.cs
@@ -409,7 +409,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TConsoleBuffer.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Clear
     path: src/TuiVision.Core/TConsoleBuffer.cs
@@ -441,7 +441,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TConsoleBuffer.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Clear
     path: src/TuiVision.Core/TConsoleBuffer.cs
@@ -477,7 +477,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TConsoleBuffer.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: WriteText
     path: src/TuiVision.Core/TConsoleBuffer.cs
@@ -532,7 +532,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Core/TConsoleBuffer.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Clone
     path: src/TuiVision.Core/TConsoleBuffer.cs

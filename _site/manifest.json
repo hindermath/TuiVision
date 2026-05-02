@@ -98,6 +98,174 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.ColorDisplaySelectionKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.ColorDisplaySelectionKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.ColorDisplaySelectionKind",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.ColorDisplaySelectionKind.yml\" sourcestartlinenumber=\"1\">Art einer Farb-, Anzeige- oder Zeichensatzwahl.</p>\n<p sourcefile=\"api/TuiVision.Controls.ColorDisplaySelectionKind.yml\" sourcestartlinenumber=\"3\">Kind of colour, display, or charset choice.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.ColorDisplaySelectionState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.ColorDisplaySelectionState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.ColorDisplaySelectionState",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.ColorDisplaySelectionState.yml\" sourcestartlinenumber=\"1\">Synchroner Auswahlzustand fuer Farbe, Anzeige und symbolischen Zeichensatz.</p>\n<p sourcefile=\"api/TuiVision.Controls.ColorDisplaySelectionState.yml\" sourcestartlinenumber=\"3\">Synchronous selection state for colour, display, and symbolic charset.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.DialogCommandBinding.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.DialogCommandBinding.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.DialogCommandBinding",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.DialogCommandBinding.yml\" sourcestartlinenumber=\"1\">Design-time Befehlsbindung fuer einen Dialog.</p>\n<p sourcefile=\"api/TuiVision.Controls.DialogCommandBinding.yml\" sourcestartlinenumber=\"3\">Design-time command binding for a dialog.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.DialogControlDescription.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.DialogControlDescription.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.DialogControlDescription",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.DialogControlDescription.yml\" sourcestartlinenumber=\"1\">Design-time Beschreibung eines Controls in einem Dialog.</p>\n<p sourcefile=\"api/TuiVision.Controls.DialogControlDescription.yml\" sourcestartlinenumber=\"3\">Design-time description of one control in a dialog.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.DialogControlRoles.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.DialogControlRoles.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.DialogControlRoles",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.DialogControlRoles.yml\" sourcestartlinenumber=\"1\">Unterstuetzte Rollen fuer design-time Dialog-Controls.</p>\n<p sourcefile=\"api/TuiVision.Controls.DialogControlRoles.yml\" sourcestartlinenumber=\"3\">Supported roles for design-time dialog controls.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.DialogDescription.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.DialogDescription.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.DialogDescription",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.DialogDescription.yml\" sourcestartlinenumber=\"1\">Design-time Dialogbeschreibung fuer den Dialog-Designer.</p>\n<p sourcefile=\"api/TuiVision.Controls.DialogDescription.yml\" sourcestartlinenumber=\"3\">Design-time dialog description for the dialog designer.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.DialogDescriptionFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.DialogDescriptionFactory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.DialogDescriptionFactory",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.DialogDescriptionFactory.yml\" sourcestartlinenumber=\"1\">Erzeugt Runtime-Dialoge aus validierten Dialogbeschreibungen.</p>\n<p sourcefile=\"api/TuiVision.Controls.DialogDescriptionFactory.yml\" sourcestartlinenumber=\"3\">Creates runtime dialogs from validated dialog descriptions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.DialogDescriptionPersistenceAdapter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.DialogDescriptionPersistenceAdapter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.DialogDescriptionPersistenceAdapter",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.DialogDescriptionPersistenceAdapter.yml\" sourcestartlinenumber=\"1\">Ordnet Controls-Dialogbeschreibungen auf persistierbare Serialization-Records ab.</p>\n<p sourcefile=\"api/TuiVision.Controls.DialogDescriptionPersistenceAdapter.yml\" sourcestartlinenumber=\"3\">Maps Controls dialog descriptions to persistable Serialization records.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.DialogDescriptionValidationResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.DialogDescriptionValidationResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.DialogDescriptionValidationResult",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.DialogDescriptionValidationResult.yml\" sourcestartlinenumber=\"1\">Ergebnis der Dialogbeschreibungsvalidierung.</p>\n<p sourcefile=\"api/TuiVision.Controls.DialogDescriptionValidationResult.yml\" sourcestartlinenumber=\"3\">Result of dialog-description validation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.DialogDescriptionValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.DialogDescriptionValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.DialogDescriptionValidator",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.DialogDescriptionValidator.yml\" sourcestartlinenumber=\"1\">Validiert Dialogbeschreibungen vor der Runtime-Erzeugung.</p>\n<p sourcefile=\"api/TuiVision.Controls.DialogDescriptionValidator.yml\" sourcestartlinenumber=\"3\">Validates dialog descriptions before runtime creation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.FileDecisionKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.FileDecisionKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.FileDecisionKind",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.FileDecisionKind.yml\" sourcestartlinenumber=\"1\">Art der caller-sichtbaren Dateidialogentscheidung.</p>\n<p sourcefile=\"api/TuiVision.Controls.FileDecisionKind.yml\" sourcestartlinenumber=\"3\">Kind of caller-visible file-dialog decision.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.FileSelectionTargetKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.FileSelectionTargetKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.FileSelectionTargetKind",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.FileSelectionTargetKind.yml\" sourcestartlinenumber=\"1\">Zielart einer Datei- oder Verzeichnisentscheidung.</p>\n<p sourcefile=\"api/TuiVision.Controls.FileSelectionTargetKind.yml\" sourcestartlinenumber=\"3\">Target kind of a file or directory decision.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Controls.Internal.FramedHostView.yml",
       "output": {
         ".html": {
@@ -179,6 +347,76 @@
       "IsMRef": true,
       "Title": "TuiVision.Controls.ShellCommandIds",
       "Summary": "<p sourcefile=\"api/TuiVision.Controls.ShellCommandIds.yml\" sourcestartlinenumber=\"1\">Definiert die standardmäßigen Shell-Befehl-IDs.</p>\n<p sourcefile=\"api/TuiVision.Controls.ShellCommandIds.yml\" sourcestartlinenumber=\"3\">Defines the standard shell command IDs.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.StandardDialogFlowState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.StandardDialogFlowState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.StandardDialogFlowState",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.StandardDialogFlowState.yml\" sourcestartlinenumber=\"1\">Gemeinsamer Zustandsnachweis fuer wiederverwendbare Standarddialoge.</p>\n<p sourcefile=\"api/TuiVision.Controls.StandardDialogFlowState.yml\" sourcestartlinenumber=\"3\">Shared state proof for reusable standard dialogs.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.StandardDialogInteractionState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.StandardDialogInteractionState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.StandardDialogInteractionState",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.StandardDialogInteractionState.yml\" sourcestartlinenumber=\"1\">Interaktionszustand eines Standarddialogs.</p>\n<p sourcefile=\"api/TuiVision.Controls.StandardDialogInteractionState.yml\" sourcestartlinenumber=\"3\">Interaction state of a standard dialog.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.StandardDialogKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.StandardDialogKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.StandardDialogKind",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.StandardDialogKind.yml\" sourcestartlinenumber=\"1\">Art eines wiederverwendbaren Standarddialog-Flows.</p>\n<p sourcefile=\"api/TuiVision.Controls.StandardDialogKind.yml\" sourcestartlinenumber=\"3\">Kind of reusable standard-dialog flow.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.StandardDialogValidationMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.StandardDialogValidationMessage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.StandardDialogValidationMessage",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.StandardDialogValidationMessage.yml\" sourcestartlinenumber=\"1\">Textorientierte Validierungsmeldung fuer Standarddialoge.</p>\n<p sourcefile=\"api/TuiVision.Controls.StandardDialogValidationMessage.yml\" sourcestartlinenumber=\"3\">Text-oriented validation message for standard dialogs.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.StandardDialogValidationSeverity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.StandardDialogValidationSeverity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.StandardDialogValidationSeverity",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.StandardDialogValidationSeverity.yml\" sourcestartlinenumber=\"1\">Schweregrad einer textorientierten Standarddialog-Validierung.</p>\n<p sourcefile=\"api/TuiVision.Controls.StandardDialogValidationSeverity.yml\" sourcestartlinenumber=\"3\">Severity of a text-oriented standard-dialog validation.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -417,6 +655,20 @@
       "IsMRef": true,
       "Title": "TuiVision.Controls.TEditor",
       "Summary": "<p sourcefile=\"api/TuiVision.Controls.TEditor.yml\" sourcestartlinenumber=\"1\">Wiederverwendbarer mehrzeiliger Texteditor mit Cursor-, Auswahl- und Suchlogik.</p>\n<p sourcefile=\"api/TuiVision.Controls.TEditor.yml\" sourcestartlinenumber=\"3\">Reusable multi-line text editor with cursor, selection, and search behaviour.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Controls.TFileDecisionResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Controls.TFileDecisionResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Controls.TFileDecisionResult",
+      "Summary": "<p sourcefile=\"api/TuiVision.Controls.TFileDecisionResult.yml\" sourcestartlinenumber=\"1\">Explizites Ergebnis eines Datei- oder Verzeichnisdialogs.</p>\n<p sourcefile=\"api/TuiVision.Controls.TFileDecisionResult.yml\" sourcestartlinenumber=\"3\">Explicit result of a file or directory dialog.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1512,6 +1764,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.PersistedDialogRepresentation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.PersistedDialogRepresentation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.PersistedDialogRepresentation",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.PersistedDialogRepresentation.yml\" sourcestartlinenumber=\"1\">Formatkonstanten fuer persistierte Dialogbeschreibungen.</p>\n<p sourcefile=\"api/TuiVision.Serialization.PersistedDialogRepresentation.yml\" sourcestartlinenumber=\"3\">Format constants for persisted dialog descriptions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TuiVision.Serialization.SerializationModule.yml",
       "output": {
         ".html": {
@@ -1551,6 +1817,48 @@
       "IsMRef": true,
       "Title": "TuiVision.Serialization.TBinaryArchiveWriter",
       "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveWriter.yml\" sourcestartlinenumber=\"1\">Schmaler BinaryWriter fuer deterministische Serialisierung.</p>\n<p sourcefile=\"api/TuiVision.Serialization.TBinaryArchiveWriter.yml\" sourcestartlinenumber=\"3\">Thin binary writer for deterministic serialization.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.TDialogCommandBindingRecord.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.TDialogCommandBindingRecord.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.TDialogCommandBindingRecord",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TDialogCommandBindingRecord.yml\" sourcestartlinenumber=\"1\">Persistierbare Command-Bindung ohne Controls-Abhaengigkeit.</p>\n<p sourcefile=\"api/TuiVision.Serialization.TDialogCommandBindingRecord.yml\" sourcestartlinenumber=\"3\">Persistable command binding without Controls dependency.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.TDialogControlDescriptionRecord.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.TDialogControlDescriptionRecord.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.TDialogControlDescriptionRecord",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TDialogControlDescriptionRecord.yml\" sourcestartlinenumber=\"1\">Persistierbare Control-Beschreibung ohne Controls-Abhaengigkeit.</p>\n<p sourcefile=\"api/TuiVision.Serialization.TDialogControlDescriptionRecord.yml\" sourcestartlinenumber=\"3\">Persistable control description without Controls dependency.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TuiVision.Serialization.TDialogDescriptionRecord.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TuiVision.Serialization.TDialogDescriptionRecord.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "TuiVision.Serialization.TDialogDescriptionRecord",
+      "Summary": "<p sourcefile=\"api/TuiVision.Serialization.TDialogDescriptionRecord.yml\" sourcestartlinenumber=\"1\">Persistierbare Minimaldarstellung einer Dialogbeschreibung.</p>\n<p sourcefile=\"api/TuiVision.Serialization.TDialogDescriptionRecord.yml\" sourcestartlinenumber=\"3\">Persistable minimal representation of a dialog description.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1813,6 +2121,116 @@
       "output": {
         ".html": {
           "relative_path": "docs/project-statistics.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/security/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/security/README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/security/adr/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/security/adr/README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/security/arc42-security.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/security/arc42-security.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/security/asvs-verification.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/security/asvs-verification.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/security/dependency-audit.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/security/dependency-audit.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/security/samm-assessment.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/security/samm-assessment.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/security/security-checklist.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/security/security-checklist.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/security/security-quality-scenarios.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/security/security-quality-scenarios.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/security/supply-chain-evidence.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/security/supply-chain-evidence.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/security/threat-model.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/security/threat-model.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/security/zero-trust-applicability.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/security/zero-trust-applicability.html"
         }
       },
       "version": ""

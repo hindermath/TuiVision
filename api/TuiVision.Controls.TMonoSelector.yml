@@ -6,6 +6,7 @@ items:
   parent: TuiVision.Controls
   children:
   - TuiVision.Controls.TMonoSelector.#ctor(System.Collections.Generic.IReadOnlyList{System.String})
+  - TuiVision.Controls.TMonoSelector.Items
   - TuiVision.Controls.TMonoSelector.Select(System.Int32)
   - TuiVision.Controls.TMonoSelector.SelectedIndex
   - TuiVision.Controls.TMonoSelector.SelectedItem
@@ -19,7 +20,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMonoSelector.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TMonoSelector
     path: src/TuiVision.Controls/TMonoSelector.cs
@@ -63,7 +64,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMonoSelector.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TMonoSelector.cs
@@ -102,7 +103,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMonoSelector.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectedIndex
     path: src/TuiVision.Controls/TMonoSelector.cs
@@ -137,7 +138,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMonoSelector.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectedItem
     path: src/TuiVision.Controls/TMonoSelector.cs
@@ -158,6 +159,41 @@ items:
       type: System.String
     content.vb: Public ReadOnly Property SelectedItem As String
   overload: TuiVision.Controls.TMonoSelector.SelectedItem*
+- uid: TuiVision.Controls.TMonoSelector.Items
+  commentId: P:TuiVision.Controls.TMonoSelector.Items
+  id: Items
+  parent: TuiVision.Controls.TMonoSelector
+  langs:
+  - csharp
+  - vb
+  name: Items
+  nameWithType: TMonoSelector.Items
+  fullName: TuiVision.Controls.TMonoSelector.Items
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TMonoSelector.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Items
+    path: src/TuiVision.Controls/TMonoSelector.cs
+    startLine: 48
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Die verfuegbaren Eintraege.
+
+
+    The available items.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> Items { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public ReadOnly Property Items As IReadOnlyList(Of String)
+  overload: TuiVision.Controls.TMonoSelector.Items*
 - uid: TuiVision.Controls.TMonoSelector.Select(System.Int32)
   commentId: M:TuiVision.Controls.TMonoSelector.Select(System.Int32)
   id: Select(System.Int32)
@@ -172,11 +208,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TMonoSelector.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Select
     path: src/TuiVision.Controls/TMonoSelector.cs
-    startLine: 49
+    startLine: 56
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -576,6 +612,12 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: TuiVision.Controls.TMonoSelector.Items*
+  commentId: Overload:TuiVision.Controls.TMonoSelector.Items
+  href: TuiVision.Controls.TMonoSelector.html#TuiVision_Controls_TMonoSelector_Items
+  name: Items
+  nameWithType: TMonoSelector.Items
+  fullName: TuiVision.Controls.TMonoSelector.Items
 - uid: TuiVision.Controls.TMonoSelector.Select*
   commentId: Overload:TuiVision.Controls.TMonoSelector.Select
   href: TuiVision.Controls.TMonoSelector.html#TuiVision_Controls_TMonoSelector_Select_System_Int32_

@@ -24,7 +24,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgressBar.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TProgressBar
     path: src/TuiVision.Controls/TProgressBar.cs
@@ -96,7 +96,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgressBar.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: .ctor
     path: src/TuiVision.Controls/TProgressBar.cs
@@ -141,7 +141,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgressBar.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Min
     path: src/TuiVision.Controls/TProgressBar.cs
@@ -176,7 +176,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgressBar.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Max
     path: src/TuiVision.Controls/TProgressBar.cs
@@ -211,7 +211,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgressBar.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Value
     path: src/TuiVision.Controls/TProgressBar.cs
@@ -246,7 +246,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgressBar.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: BarState
     path: src/TuiVision.Controls/TProgressBar.cs
@@ -281,7 +281,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgressBar.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: SetValue
     path: src/TuiVision.Controls/TProgressBar.cs
@@ -324,7 +324,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgressBar.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Complete
     path: src/TuiVision.Controls/TProgressBar.cs
@@ -356,7 +356,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgressBar.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Cancel
     path: src/TuiVision.Controls/TProgressBar.cs
@@ -388,7 +388,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TProgressBar.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Draw
     path: src/TuiVision.Controls/TProgressBar.cs

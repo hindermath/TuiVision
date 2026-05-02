@@ -1,0 +1,151 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.StandardDialogValidationSeverity
+  commentId: T:TuiVision.Controls.StandardDialogValidationSeverity
+  id: StandardDialogValidationSeverity
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.StandardDialogValidationSeverity.Error
+  - TuiVision.Controls.StandardDialogValidationSeverity.Info
+  - TuiVision.Controls.StandardDialogValidationSeverity.Warning
+  langs:
+  - csharp
+  - vb
+  name: StandardDialogValidationSeverity
+  nameWithType: StandardDialogValidationSeverity
+  fullName: TuiVision.Controls.StandardDialogValidationSeverity
+  type: Enum
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStandardDialogValidationMessage.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: StandardDialogValidationSeverity
+    path: src/TuiVision.Controls/TStandardDialogValidationMessage.cs
+    startLine: 10
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Schweregrad einer textorientierten Standarddialog-Validierung.
+
+
+    Severity of a text-oriented standard-dialog validation.
+  example: []
+  syntax:
+    content: public enum StandardDialogValidationSeverity
+    content.vb: Public Enum StandardDialogValidationSeverity
+- uid: TuiVision.Controls.StandardDialogValidationSeverity.Info
+  commentId: F:TuiVision.Controls.StandardDialogValidationSeverity.Info
+  id: Info
+  parent: TuiVision.Controls.StandardDialogValidationSeverity
+  langs:
+  - csharp
+  - vb
+  name: Info
+  nameWithType: StandardDialogValidationSeverity.Info
+  fullName: TuiVision.Controls.StandardDialogValidationSeverity.Info
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStandardDialogValidationMessage.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Info
+    path: src/TuiVision.Controls/TStandardDialogValidationMessage.cs
+    startLine: 13
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Hinweis. / Informational message.
+  example: []
+  syntax:
+    content: Info = 0
+    return:
+      type: TuiVision.Controls.StandardDialogValidationSeverity
+- uid: TuiVision.Controls.StandardDialogValidationSeverity.Warning
+  commentId: F:TuiVision.Controls.StandardDialogValidationSeverity.Warning
+  id: Warning
+  parent: TuiVision.Controls.StandardDialogValidationSeverity
+  langs:
+  - csharp
+  - vb
+  name: Warning
+  nameWithType: StandardDialogValidationSeverity.Warning
+  fullName: TuiVision.Controls.StandardDialogValidationSeverity.Warning
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStandardDialogValidationMessage.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Warning
+    path: src/TuiVision.Controls/TStandardDialogValidationMessage.cs
+    startLine: 16
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Warnung. / Warning.
+  example: []
+  syntax:
+    content: Warning = 1
+    return:
+      type: TuiVision.Controls.StandardDialogValidationSeverity
+- uid: TuiVision.Controls.StandardDialogValidationSeverity.Error
+  commentId: F:TuiVision.Controls.StandardDialogValidationSeverity.Error
+  id: Error
+  parent: TuiVision.Controls.StandardDialogValidationSeverity
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: StandardDialogValidationSeverity.Error
+  fullName: TuiVision.Controls.StandardDialogValidationSeverity.Error
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TStandardDialogValidationMessage.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Error
+    path: src/TuiVision.Controls/TStandardDialogValidationMessage.cs
+    startLine: 19
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Fehler. / Error.
+  example: []
+  syntax:
+    content: Error = 2
+    return:
+      type: TuiVision.Controls.StandardDialogValidationSeverity
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: TuiVision.Controls.StandardDialogValidationSeverity
+  commentId: T:TuiVision.Controls.StandardDialogValidationSeverity
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.StandardDialogValidationSeverity.html
+  name: StandardDialogValidationSeverity
+  nameWithType: StandardDialogValidationSeverity
+  fullName: TuiVision.Controls.StandardDialogValidationSeverity

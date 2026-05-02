@@ -15,12 +15,14 @@ namespace TuiVision.Controls;
 /// <param name="Exists">Gibt an, ob der Eintrag existiert. / Indicates whether the entry exists.</param>
 /// <param name="Length">Die Dateilaenge, wenn verfuegbar. / The file length when available.</param>
 /// <param name="LastWriteTimeUtc">Der letzte Schreibzeitpunkt, wenn verfuegbar. / The last write time when available.</param>
+/// <param name="FallbackMessage">Der optionale textorientierte Fallback. / The optional text-oriented fallback.</param>
 public readonly record struct TFileSelectionInfo(
     string ResolvedPath,
     TFileEntryKind Kind,
     bool Exists,
     long? Length,
-    DateTime? LastWriteTimeUtc);
+    DateTime? LastWriteTimeUtc,
+    string? FallbackMessage = null);
 
 /// <summary>
 /// Klassifiziert aktive Dateipfade in Dialogen.
@@ -104,7 +106,24 @@ public sealed class TFileList : TListBox
         _entries.Clear();
         List!.Clear();
 
-        foreach (string path in Directory.EnumerateFiles(CurrentDirectory, Wildcard).OrderBy(path => path, StringComparer.Ordinal))
+        IEnumerable<string> files;
+        try
+        {
+            files = Directory.EnumerateFiles(CurrentDirectory, Wildcard).OrderBy(path => path, StringComparer.Ordinal).ToArray();
+        }
+        catch (Exception exception) when (exception is IOException or UnauthorizedAccessException or DirectoryNotFoundException)
+        {
+            CurrentInfo = new TFileSelectionInfo(
+                CurrentDirectory,
+                TFileEntryKind.Missing,
+                false,
+                null,
+                null,
+                $"File list could not be read: {exception.GetType().Name}.");
+            return;
+        }
+
+        foreach (string path in files)
         {
             _entries.Add(path);
             List.Add(Path.GetFileName(path));
@@ -117,7 +136,7 @@ public sealed class TFileList : TListBox
         }
         else
         {
-            CurrentInfo = new TFileSelectionInfo(CurrentDirectory, TFileEntryKind.Directory, true, null, Directory.GetLastWriteTimeUtc(CurrentDirectory));
+            CurrentInfo = CreateDirectoryInfo(CurrentDirectory, "No entries match the active filter.");
         }
     }
 
@@ -134,7 +153,11 @@ public sealed class TFileList : TListBox
         {
             FocusItem(index);
             UpdateCurrentInfo(_entries[index]);
+            return;
         }
+
+        string stalePath = Path.GetFullPath(Path.Combine(CurrentDirectory, name));
+        CurrentInfo = new TFileSelectionInfo(stalePath, TFileEntryKind.Missing, false, null, null, "Selected entry is no longer visible.");
     }
 
     /// <summary>
@@ -170,17 +193,37 @@ public sealed class TFileList : TListBox
     {
         if (Directory.Exists(path))
         {
-            CurrentInfo = new TFileSelectionInfo(path, TFileEntryKind.Directory, true, null, Directory.GetLastWriteTimeUtc(path));
+            CurrentInfo = CreateDirectoryInfo(path, null);
             return;
         }
 
         if (File.Exists(path))
         {
-            FileInfo info = new(path);
-            CurrentInfo = new TFileSelectionInfo(path, TFileEntryKind.File, true, info.Length, info.LastWriteTimeUtc);
+            try
+            {
+                FileInfo info = new(path);
+                CurrentInfo = new TFileSelectionInfo(path, TFileEntryKind.File, true, info.Length, info.LastWriteTimeUtc);
+            }
+            catch (Exception exception) when (exception is IOException or UnauthorizedAccessException)
+            {
+                CurrentInfo = new TFileSelectionInfo(path, TFileEntryKind.File, true, null, null, $"Metadata could not be read: {exception.GetType().Name}.");
+            }
+
             return;
         }
 
-        CurrentInfo = new TFileSelectionInfo(path, TFileEntryKind.Missing, false, null, null);
+        CurrentInfo = new TFileSelectionInfo(path, TFileEntryKind.Missing, false, null, null, "Path does not exist.");
+    }
+
+    private static TFileSelectionInfo CreateDirectoryInfo(string path, string? fallback)
+    {
+        try
+        {
+            return new TFileSelectionInfo(path, TFileEntryKind.Directory, true, null, Directory.GetLastWriteTimeUtc(path), fallback);
+        }
+        catch (Exception exception) when (exception is IOException or UnauthorizedAccessException or DirectoryNotFoundException)
+        {
+            return new TFileSelectionInfo(path, TFileEntryKind.Directory, Directory.Exists(path), null, null, $"Directory metadata could not be read: {exception.GetType().Name}.");
+        }
     }
 }

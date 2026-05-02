@@ -38,4 +38,11 @@ public sealed class TColorDisplay
         Foreground = foreground;
         Background = background;
     }
+
+    /// <summary>
+    /// Der textorientierte Vorschauwert.
+    ///
+    /// The text-oriented preview value.
+    /// </summary>
+    public string PreviewValue => $"{Foreground}/{Background}";
 }

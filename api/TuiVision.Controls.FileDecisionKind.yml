@@ -1,0 +1,180 @@
+### YamlMime:ManagedReference
+items:
+- uid: TuiVision.Controls.FileDecisionKind
+  commentId: T:TuiVision.Controls.FileDecisionKind
+  id: FileDecisionKind
+  parent: TuiVision.Controls
+  children:
+  - TuiVision.Controls.FileDecisionKind.Canceled
+  - TuiVision.Controls.FileDecisionKind.Open
+  - TuiVision.Controls.FileDecisionKind.SaveTarget
+  - TuiVision.Controls.FileDecisionKind.Select
+  langs:
+  - csharp
+  - vb
+  name: FileDecisionKind
+  nameWithType: FileDecisionKind
+  fullName: TuiVision.Controls.FileDecisionKind
+  type: Enum
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDecisionResult.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: FileDecisionKind
+    path: src/TuiVision.Controls/TFileDecisionResult.cs
+    startLine: 27
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Art der caller-sichtbaren Dateidialogentscheidung.
+
+
+    Kind of caller-visible file-dialog decision.
+  example: []
+  syntax:
+    content: public enum FileDecisionKind
+    content.vb: Public Enum FileDecisionKind
+- uid: TuiVision.Controls.FileDecisionKind.Canceled
+  commentId: F:TuiVision.Controls.FileDecisionKind.Canceled
+  id: Canceled
+  parent: TuiVision.Controls.FileDecisionKind
+  langs:
+  - csharp
+  - vb
+  name: Canceled
+  nameWithType: FileDecisionKind.Canceled
+  fullName: TuiVision.Controls.FileDecisionKind.Canceled
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDecisionResult.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Canceled
+    path: src/TuiVision.Controls/TFileDecisionResult.cs
+    startLine: 30
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Abbruch. / Canceled.
+  example: []
+  syntax:
+    content: Canceled = 0
+    return:
+      type: TuiVision.Controls.FileDecisionKind
+- uid: TuiVision.Controls.FileDecisionKind.Open
+  commentId: F:TuiVision.Controls.FileDecisionKind.Open
+  id: Open
+  parent: TuiVision.Controls.FileDecisionKind
+  langs:
+  - csharp
+  - vb
+  name: Open
+  nameWithType: FileDecisionKind.Open
+  fullName: TuiVision.Controls.FileDecisionKind.Open
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDecisionResult.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Open
+    path: src/TuiVision.Controls/TFileDecisionResult.cs
+    startLine: 33
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Oeffnen eines vorhandenen Ziels. / Open an existing target.
+  example: []
+  syntax:
+    content: Open = 1
+    return:
+      type: TuiVision.Controls.FileDecisionKind
+- uid: TuiVision.Controls.FileDecisionKind.Select
+  commentId: F:TuiVision.Controls.FileDecisionKind.Select
+  id: Select
+  parent: TuiVision.Controls.FileDecisionKind
+  langs:
+  - csharp
+  - vb
+  name: Select
+  nameWithType: FileDecisionKind.Select
+  fullName: TuiVision.Controls.FileDecisionKind.Select
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDecisionResult.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Select
+    path: src/TuiVision.Controls/TFileDecisionResult.cs
+    startLine: 36
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Auswahl eines Datei- oder Verzeichnisziels. / Select a file or directory target.
+  example: []
+  syntax:
+    content: Select = 2
+    return:
+      type: TuiVision.Controls.FileDecisionKind
+- uid: TuiVision.Controls.FileDecisionKind.SaveTarget
+  commentId: F:TuiVision.Controls.FileDecisionKind.SaveTarget
+  id: SaveTarget
+  parent: TuiVision.Controls.FileDecisionKind
+  langs:
+  - csharp
+  - vb
+  name: SaveTarget
+  nameWithType: FileDecisionKind.SaveTarget
+  fullName: TuiVision.Controls.FileDecisionKind.SaveTarget
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDecisionResult.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SaveTarget
+    path: src/TuiVision.Controls/TFileDecisionResult.cs
+    startLine: 39
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Speicherziel, ohne Dateiinhalt zu schreiben. / Save target without writing file content.
+  example: []
+  syntax:
+    content: SaveTarget = 3
+    return:
+      type: TuiVision.Controls.FileDecisionKind
+references:
+- uid: TuiVision.Controls
+  commentId: N:TuiVision.Controls
+  href: TuiVision.html
+  name: TuiVision.Controls
+  nameWithType: TuiVision.Controls
+  fullName: TuiVision.Controls
+  spec.csharp:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+  spec.vb:
+  - uid: TuiVision
+    name: TuiVision
+    href: TuiVision.html
+  - name: .
+  - uid: TuiVision.Controls
+    name: Controls
+    href: TuiVision.Controls.html
+- uid: TuiVision.Controls.FileDecisionKind
+  commentId: T:TuiVision.Controls.FileDecisionKind
+  parent: TuiVision.Controls
+  href: TuiVision.Controls.FileDecisionKind.html
+  name: FileDecisionKind
+  nameWithType: FileDecisionKind
+  fullName: TuiVision.Controls.FileDecisionKind

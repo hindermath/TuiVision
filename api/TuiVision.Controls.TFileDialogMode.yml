@@ -7,6 +7,9 @@ items:
   children:
   - TuiVision.Controls.TFileDialogMode.Open
   - TuiVision.Controls.TFileDialogMode.Save
+  - TuiVision.Controls.TFileDialogMode.SaveTarget
+  - TuiVision.Controls.TFileDialogMode.Select
+  - TuiVision.Controls.TFileDialogMode.SelectDirectory
   langs:
   - csharp
   - vb
@@ -17,7 +20,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TFileDialogMode
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -48,7 +51,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Open
     path: src/TuiVision.Controls/TFileDialog.cs
@@ -60,6 +63,62 @@ items:
   example: []
   syntax:
     content: Open = 0
+    return:
+      type: TuiVision.Controls.TFileDialogMode
+- uid: TuiVision.Controls.TFileDialogMode.Select
+  commentId: F:TuiVision.Controls.TFileDialogMode.Select
+  id: Select
+  parent: TuiVision.Controls.TFileDialogMode
+  langs:
+  - csharp
+  - vb
+  name: Select
+  nameWithType: TFileDialogMode.Select
+  fullName: TuiVision.Controls.TFileDialogMode.Select
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDialog.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: Select
+    path: src/TuiVision.Controls/TFileDialog.cs
+    startLine: 18
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Datei oder Verzeichnis auswaehlen. / Select a file or directory.
+  example: []
+  syntax:
+    content: Select = 1
+    return:
+      type: TuiVision.Controls.TFileDialogMode
+- uid: TuiVision.Controls.TFileDialogMode.SelectDirectory
+  commentId: F:TuiVision.Controls.TFileDialogMode.SelectDirectory
+  id: SelectDirectory
+  parent: TuiVision.Controls.TFileDialogMode
+  langs:
+  - csharp
+  - vb
+  name: SelectDirectory
+  nameWithType: TFileDialogMode.SelectDirectory
+  fullName: TuiVision.Controls.TFileDialogMode.SelectDirectory
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDialog.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SelectDirectory
+    path: src/TuiVision.Controls/TFileDialog.cs
+    startLine: 21
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Verzeichnis auswaehlen. / Select directory.
+  example: []
+  syntax:
+    content: SelectDirectory = 2
     return:
       type: TuiVision.Controls.TFileDialogMode
 - uid: TuiVision.Controls.TFileDialogMode.Save
@@ -76,18 +135,46 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TFileDialog.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: Save
     path: src/TuiVision.Controls/TFileDialog.cs
-    startLine: 18
+    startLine: 24
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
   summary: Zieldatei waehlen. / Choose save target.
   example: []
   syntax:
-    content: Save = 1
+    content: Save = 3
+    return:
+      type: TuiVision.Controls.TFileDialogMode
+- uid: TuiVision.Controls.TFileDialogMode.SaveTarget
+  commentId: F:TuiVision.Controls.TFileDialogMode.SaveTarget
+  id: SaveTarget
+  parent: TuiVision.Controls.TFileDialogMode
+  langs:
+  - csharp
+  - vb
+  name: SaveTarget
+  nameWithType: TFileDialogMode.SaveTarget
+  fullName: TuiVision.Controls.TFileDialogMode.SaveTarget
+  type: Field
+  source:
+    remote:
+      path: src/TuiVision.Controls/TFileDialog.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SaveTarget
+    path: src/TuiVision.Controls/TFileDialog.cs
+    startLine: 27
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: Speicherziel waehlen, ohne Dateiinhalt zu schreiben. / Choose save target without writing file content.
+  example: []
+  syntax:
+    content: SaveTarget = 4
     return:
       type: TuiVision.Controls.TFileDialogMode
 references:

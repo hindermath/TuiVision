@@ -5,9 +5,13 @@ items:
   id: TuiVision.Serialization
   children:
   - TuiVision.Serialization.ITStreamSerializable
+  - TuiVision.Serialization.PersistedDialogRepresentation
   - TuiVision.Serialization.SerializationModule
   - TuiVision.Serialization.TBinaryArchiveReader
   - TuiVision.Serialization.TBinaryArchiveWriter
+  - TuiVision.Serialization.TDialogCommandBindingRecord
+  - TuiVision.Serialization.TDialogControlDescriptionRecord
+  - TuiVision.Serialization.TDialogDescriptionRecord
   - TuiVision.Serialization.THelpCrossReference
   - TuiVision.Serialization.THelpFile
   - TuiVision.Serialization.THelpIndex
@@ -84,6 +88,25 @@ references:
   name: TBinaryArchiveWriter
   nameWithType: TBinaryArchiveWriter
   fullName: TuiVision.Serialization.TBinaryArchiveWriter
+- uid: TuiVision.Serialization.TDialogControlDescriptionRecord
+  commentId: T:TuiVision.Serialization.TDialogControlDescriptionRecord
+  href: TuiVision.Serialization.TDialogControlDescriptionRecord.html
+  name: TDialogControlDescriptionRecord
+  nameWithType: TDialogControlDescriptionRecord
+  fullName: TuiVision.Serialization.TDialogControlDescriptionRecord
+- uid: TuiVision.Serialization.TDialogCommandBindingRecord
+  commentId: T:TuiVision.Serialization.TDialogCommandBindingRecord
+  href: TuiVision.Serialization.TDialogCommandBindingRecord.html
+  name: TDialogCommandBindingRecord
+  nameWithType: TDialogCommandBindingRecord
+  fullName: TuiVision.Serialization.TDialogCommandBindingRecord
+- uid: TuiVision.Serialization.TDialogDescriptionRecord
+  commentId: T:TuiVision.Serialization.TDialogDescriptionRecord
+  parent: TuiVision.Serialization
+  href: TuiVision.Serialization.TDialogDescriptionRecord.html
+  name: TDialogDescriptionRecord
+  nameWithType: TDialogDescriptionRecord
+  fullName: TuiVision.Serialization.TDialogDescriptionRecord
 - uid: TuiVision.Serialization.THelpFile
   commentId: T:TuiVision.Serialization.THelpFile
   parent: TuiVision.Serialization
@@ -112,6 +135,12 @@ references:
   name: THelpTopic
   nameWithType: THelpTopic
   fullName: TuiVision.Serialization.THelpTopic
+- uid: TuiVision.Serialization.PersistedDialogRepresentation
+  commentId: T:TuiVision.Serialization.PersistedDialogRepresentation
+  href: TuiVision.Serialization.PersistedDialogRepresentation.html
+  name: PersistedDialogRepresentation
+  nameWithType: PersistedDialogRepresentation
+  fullName: TuiVision.Serialization.PersistedDialogRepresentation
 - uid: TuiVision.Serialization.TRecordRegistry
   commentId: T:TuiVision.Serialization.TRecordRegistry
   parent: TuiVision.Serialization

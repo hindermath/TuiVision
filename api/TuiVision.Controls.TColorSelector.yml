@@ -6,7 +6,9 @@ items:
   parent: TuiVision.Controls
   children:
   - TuiVision.Controls.TColorSelector.SelectColor(System.ConsoleColor)
+  - TuiVision.Controls.TColorSelector.SelectColor(System.String)
   - TuiVision.Controls.TColorSelector.SelectedColor
+  - TuiVision.Controls.TColorSelector.SupportedColorNames
   langs:
   - csharp
   - vb
@@ -17,7 +19,7 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorSelector.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: TColorSelector
     path: src/TuiVision.Controls/TColorSelector.cs
@@ -47,6 +49,41 @@ items:
   - System.Object.GetType
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+- uid: TuiVision.Controls.TColorSelector.SupportedColorNames
+  commentId: P:TuiVision.Controls.TColorSelector.SupportedColorNames
+  id: SupportedColorNames
+  parent: TuiVision.Controls.TColorSelector
+  langs:
+  - csharp
+  - vb
+  name: SupportedColorNames
+  nameWithType: TColorSelector.SupportedColorNames
+  fullName: TuiVision.Controls.TColorSelector.SupportedColorNames
+  type: Property
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorSelector.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SupportedColorNames
+    path: src/TuiVision.Controls/TColorSelector.cs
+    startLine: 19
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Die unterstuetzten Konsolenfarben.
+
+
+    The supported console colours.
+  example: []
+  syntax:
+    content: public static IReadOnlyList<string> SupportedColorNames { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Shared ReadOnly Property SupportedColorNames As IReadOnlyList(Of String)
+  overload: TuiVision.Controls.TColorSelector.SupportedColorNames*
 - uid: TuiVision.Controls.TColorSelector.SelectedColor
   commentId: P:TuiVision.Controls.TColorSelector.SelectedColor
   id: SelectedColor
@@ -61,11 +98,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorSelector.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectedColor
     path: src/TuiVision.Controls/TColorSelector.cs
-    startLine: 19
+    startLine: 27
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -96,11 +133,11 @@ items:
   source:
     remote:
       path: src/TuiVision.Controls/TColorSelector.cs
-      branch: 009-controls-widgets-and-collections
+      branch: 010-standard-dialogs-designer
       repo: https://github.com/hindermath/TuiVision.git
     id: SelectColor
     path: src/TuiVision.Controls/TColorSelector.cs
-    startLine: 27
+    startLine: 35
   assemblies:
   - TuiVision.Controls
   namespace: TuiVision.Controls
@@ -118,6 +155,45 @@ items:
       description: Die gewünschte Farbe. / The desired colour.
     content.vb: Public Sub SelectColor(color As ConsoleColor)
   overload: TuiVision.Controls.TColorSelector.SelectColor*
+- uid: TuiVision.Controls.TColorSelector.SelectColor(System.String)
+  commentId: M:TuiVision.Controls.TColorSelector.SelectColor(System.String)
+  id: SelectColor(System.String)
+  parent: TuiVision.Controls.TColorSelector
+  langs:
+  - csharp
+  - vb
+  name: SelectColor(string)
+  nameWithType: TColorSelector.SelectColor(string)
+  fullName: TuiVision.Controls.TColorSelector.SelectColor(string)
+  type: Method
+  source:
+    remote:
+      path: src/TuiVision.Controls/TColorSelector.cs
+      branch: 010-standard-dialogs-designer
+      repo: https://github.com/hindermath/TuiVision.git
+    id: SelectColor
+    path: src/TuiVision.Controls/TColorSelector.cs
+    startLine: 43
+  assemblies:
+  - TuiVision.Controls
+  namespace: TuiVision.Controls
+  summary: >-
+    Waehlt eine Farbe anhand ihres Namens aus.
+
+
+    Selects a colour by its name.
+  example: []
+  syntax:
+    content: public void SelectColor(string colorName)
+    parameters:
+    - id: colorName
+      type: System.String
+      description: Der Farbname. / The colour name.
+    content.vb: Public Sub SelectColor(colorName As String)
+  overload: TuiVision.Controls.TColorSelector.SelectColor*
+  nameWithType.vb: TColorSelector.SelectColor(String)
+  fullName.vb: TuiVision.Controls.TColorSelector.SelectColor(String)
+  name.vb: SelectColor(String)
 references:
 - uid: TuiVision.Controls
   commentId: N:TuiVision.Controls
@@ -354,6 +430,112 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: TuiVision.Controls.TColorSelector.SupportedColorNames*
+  commentId: Overload:TuiVision.Controls.TColorSelector.SupportedColorNames
+  href: TuiVision.Controls.TColorSelector.html#TuiVision_Controls_TColorSelector_SupportedColorNames
+  name: SupportedColorNames
+  nameWithType: TColorSelector.SupportedColorNames
+  fullName: TuiVision.Controls.TColorSelector.SupportedColorNames
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: TuiVision.Controls.TColorSelector.SelectedColor*
   commentId: Overload:TuiVision.Controls.TColorSelector.SelectedColor
   href: TuiVision.Controls.TColorSelector.html#TuiVision_Controls_TColorSelector_SelectedColor
@@ -374,3 +556,14 @@ references:
   name: SelectColor
   nameWithType: TColorSelector.SelectColor
   fullName: TuiVision.Controls.TColorSelector.SelectColor
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
