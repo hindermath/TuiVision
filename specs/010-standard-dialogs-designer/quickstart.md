@@ -29,6 +29,10 @@ example ports.
 
 2. Run focused Controls validation after implementation:
 
+   Before this `dotnet test` command, increment the manual build counter in
+   `Directory.Build.props` according to the repository `Major.Minor.Patch.Build`
+   versioning rule.
+
    ```bash
    dotnet test tests/TuiVision.Controls.Tests/
    ```
@@ -49,6 +53,10 @@ example ports.
 
 3. Run focused Serialization validation after implementation:
 
+   Before this `dotnet test` command, increment the manual build counter in
+   `Directory.Build.props` according to the repository `Major.Minor.Patch.Build`
+   versioning rule.
+
    ```bash
    dotnet test tests/TuiVision.Serialization.Tests/
    ```
@@ -62,6 +70,10 @@ example ports.
    - semantic invalid-description rejection before runtime dialog creation
 
 4. Run repository validation:
+
+   Before each `dotnet build` and each `dotnet test` command below, increment
+   the manual build counter in `Directory.Build.props` according to the
+   repository `Major.Minor.Patch.Build` versioning rule.
 
    ```bash
    dotnet build --configuration Release

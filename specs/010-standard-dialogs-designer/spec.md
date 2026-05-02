@@ -256,10 +256,10 @@ FR-010a, FR-011, FR-013; SC-003, SC-003a, SC-004, SC-005, SC-007, SC-008.
 - **CR-005**: The feature MUST name its primary implementation language during
   planning and confirm that it is on the MSL allow-list in `constitution.md`,
   Principle XI.
-- **CR-006**: The feature MUST determine applicable security standards from
-  `constitution.md`, Principles XIV-XVIII, with `NIST SSDF` and `CWE Top 25`
-  mandatory for Level-2 work and non-applicable standards marked with
-  justification.
+- **CR-006**: The feature MUST determine applicable security standards and CRA
+  applicability from `constitution.md`, Principles XIV-XIX, with `NIST SSDF`
+  and `CWE Top 25` mandatory for Level-2 work and non-applicable standards
+  marked with justification.
 - **CR-007**: If the feature introduces web/API/HTTP/auth-bearing behavior, it
   MUST declare the selected `OWASP ASVS` level and verification scope.
 - **CR-008**: If the feature creates releasable or distributable artefacts, it

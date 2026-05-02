@@ -17,7 +17,7 @@
 
 **Purpose**: Prepare the feature branch, shared test support, and validation evidence locations before behavior work starts.
 
-- [ ] T001 Verify numbered-branch version alignment before the first implementation build in `Directory.Build.props`
+- [ ] T001 Verify the numbered-branch `Major.Minor.Patch.Build` version fields for the planned implementation-start commit in `Directory.Build.props`
 - [ ] T002 [P] Add shared standard-dialog test helpers for temporary directories, keyboard events, and text-first validation assertions in `tests/TuiVision.Controls.Tests/StandardDialogTestSupport.cs`
 - [ ] T003 [P] Add dialog-description serialization test helpers for malformed payloads and roundtrip fixtures in `tests/TuiVision.Serialization.Tests/DialogDescriptionTestSupport.cs`
 - [ ] T004 [P] Create the initial 010 implementation evidence notes section in `docs/guides/multi-mac-workflow.md`
@@ -124,9 +124,9 @@
 - [ ] T048 [US3] Add `DialogDescriptionValidationResult` with text-first validation messages in `src/TuiVision.Controls/TDialogDescriptionValidationResult.cs`
 - [ ] T049 [US3] Add `DialogDescriptionValidator` to reject invalid descriptions before runtime dialog creation in `src/TuiVision.Controls/TDialogDescriptionValidator.cs`
 - [ ] T050 [US3] Add `DialogDescriptionFactory` to create runtime `TDialog` instances only after validation succeeds in `src/TuiVision.Controls/TDialogDescriptionFactory.cs`
-- [ ] T051 [US3] Implement `ITStreamSerializable` persisted dialog-description record in `src/TuiVision.Serialization/TDialogDescriptionRecord.cs`
-- [ ] T052 [US3] Register and roundtrip dialog descriptions through `TRecordRegistry` and `TRecordSerializer` in `src/TuiVision.Serialization/TDialogDescriptionRecord.cs`
-- [ ] T053 [US3] Add malformed/truncated/unsupported-version/semantic rejection handling for persisted descriptions in `src/TuiVision.Serialization/TDialogDescriptionRecord.cs`
+- [ ] T051 [US3] Implement a Controls-independent `ITStreamSerializable` persisted dialog-description DTO in `src/TuiVision.Serialization/TDialogDescriptionRecord.cs`
+- [ ] T052 [US3] Add `DialogDescriptionPersistenceAdapter` to map between Controls `DialogDescription` objects and Serialization DTOs without adding a Serialization-to-Controls reference in `src/TuiVision.Controls/TDialogDescriptionPersistenceAdapter.cs`
+- [ ] T053 [US3] Register, roundtrip, and reject malformed/truncated/unsupported-version/semantic persisted DTO input through `TRecordRegistry` and `TRecordSerializer` in `src/TuiVision.Serialization/TDialogDescriptionRecord.cs`
 - [ ] T054 [US3] Add US3 downstream consumer classification proof for `dlgdsn` in `tests/TuiVision.Controls.Tests/DialogDesignerFlowTests.cs`
 - [ ] T055 [US3] Run focused Controls and Serialization tests for US3 using `tests/TuiVision.Controls.Tests/TuiVision.Controls.Tests.csproj` and `tests/TuiVision.Serialization.Tests/TuiVision.Serialization.Tests.csproj`
 
@@ -139,22 +139,25 @@
 **Purpose**: Validate the complete feature, update proof surfaces, and prepare the Lastenheft traceability handoff.
 
 - [ ] T056 [P] Update bilingual public XML documentation for all changed public APIs in `src/TuiVision.Controls/TFileDialog.cs`
-- [ ] T057 [P] Update bilingual public XML documentation for persisted dialog-description APIs in `src/TuiVision.Serialization/TDialogDescriptionRecord.cs`
-- [ ] T058 [P] Apply secure-coding review for file-path validation and persisted-input parsing in `specs/010-standard-dialogs-designer/checklists/plan-quality.md`
-- [ ] T059 [P] Record text-first and keyboard-only A11Y proof notes for 010 in `docs/guides/multi-mac-workflow.md`
-- [ ] T060 [P] Update final feature statistics and acceleration evidence in `docs/project-statistics.md`
-- [ ] T061 Run release build validation using `Directory.Build.props`
-- [ ] T062 Run focused Controls validation using `tests/TuiVision.Controls.Tests/TuiVision.Controls.Tests.csproj`
-- [ ] T063 Run focused Serialization validation using `tests/TuiVision.Serialization.Tests/TuiVision.Serialization.Tests.csproj`
-- [ ] T064 Run repository-wide test validation using `TuiVision.sln`
-- [ ] T065 Run coverage validation for the repo-wide 70 percent gate using `TuiVision.sln`
-- [ ] T066 Run formatting validation using `TuiVision.sln`
-- [ ] T067 [P] If public API XML comments changed, regenerate DocFX content using `docfx.json`
-- [ ] T068 [P] If DocFX was regenerated, run the DocFX web A11Y smoke checks using `tests/web-a11y/package.json`
-- [ ] T069 [P] Record Linux and Windows/WSL compatibility evidence when practical in `docs/guides/multi-mac-workflow.md`
-- [ ] T070 Rename `Lastenheft_02_StandardDialogsAndDesigner.md` to `Lastenheft_02_StandardDialogsAndDesigner.010-standard-dialogs-designer.md`
-- [ ] T071 [P] Review whether active feature context or shared agent guidance changed and update `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and `.github/agents/copilot-instructions.md` if affected
-- [ ] T072 [P] Move the `>>> NAECHSTER SCHRITT <<<` marker if 010 completion changes the effective priority in `Pflichtenheft.md`
+- [ ] T057 [P] Update bilingual public XML documentation for persisted dialog-description APIs in `src/TuiVision.Serialization/TDialogDescriptionRecord.cs` and `src/TuiVision.Controls/TDialogDescriptionPersistenceAdapter.cs`
+- [ ] T058 [P] Record the full 010 security standards applicability matrix from Constitution Principles XIV-XIX in `docs/security/security-checklist.md`, with NIST SSDF and CWE Top 25 mandatory; OWASP ASVS, Zero Trust, CAPEC, OWASP SAMM, OWASP Cheat Sheet Series / Proactive Controls, OpenSSF Scorecard, and CRA awareness marked applicable or N/A with justification; and SBOM/VEX/SLSA tied to release evidence
+- [ ] T059 [P] Apply secure-coding review for file-path validation and persisted-input parsing in `docs/security/security-checklist.md`
+- [ ] T060 [P] Update dependency and supply-chain evidence for no new dependencies plus release-time SBOM/VEX obligations in `docs/security/dependency-audit.md` and `docs/security/supply-chain-evidence.md`
+- [ ] T061 [P] Record text-first and keyboard-only A11Y proof notes for 010 in `docs/guides/multi-mac-workflow.md`
+- [ ] T062 [P] Update final feature statistics and acceleration evidence in `docs/project-statistics.md`
+- [ ] T063 Increment the manual build counter in `Directory.Build.props` before every `dotnet build` and every `dotnet test` validation command in T029, T040, T055, and T064-T068
+- [ ] T064 Run release build validation with `dotnet build --configuration Release`
+- [ ] T065 Run focused Controls validation with `dotnet test tests/TuiVision.Controls.Tests/`
+- [ ] T066 Run focused Serialization validation with `dotnet test tests/TuiVision.Serialization.Tests/`
+- [ ] T067 Run repository-wide test validation with `dotnet test`
+- [ ] T068 Run coverage validation for the repo-wide 70 percent gate with `dotnet test --collect:"XPlat Code Coverage"`
+- [ ] T069 Run formatting validation with `dotnet format --verify-no-changes`
+- [ ] T070 [P] If public API XML comments changed, regenerate DocFX content with `docfx docfx.json`
+- [ ] T071 [P] If DocFX was regenerated, run the DocFX web A11Y smoke checks with `cd tests/web-a11y && npm run test:docfx`
+- [ ] T072 [P] Record Linux and Windows/WSL compatibility evidence when practical in `docs/guides/multi-mac-workflow.md`
+- [ ] T073 [P] Review whether active feature context or shared agent guidance changed and update `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and `.github/agents/copilot-instructions.md` if affected
+- [ ] T074 [P] Move the `>>> NAECHSTER SCHRITT <<<` marker if 010 completion changes the effective priority in `Pflichtenheft.md`
+- [ ] T075 Rename `Lastenheft_02_StandardDialogsAndDesigner.md` to `Lastenheft_02_StandardDialogsAndDesigner.010-standard-dialogs-designer.md`
 
 ---
 
@@ -190,7 +193,7 @@
 - US2 tests T030 through T033 can be written in parallel before US2 implementation.
 - US3 tests T041 through T046 can be written in parallel before US3 implementation.
 - US1, US2, and US3 implementation can run in parallel after Phase 2 if each worker owns the files named in that phase and coordinates shared public API changes.
-- Polish documentation/evidence tasks T056 through T060 and T067 through T069 can run in parallel after the relevant code/test tasks are complete.
+- Polish documentation/evidence tasks T056 through T062 and conditional documentation/platform tasks T070 through T074 can run in parallel after the relevant code/test tasks are complete.
 
 ## Parallel Example: User Story 1
 
