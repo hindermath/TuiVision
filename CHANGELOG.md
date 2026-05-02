@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.0](https://github.com/hindermath/TuiVision/compare/v0.2.1...v0.3.0) (2026-05-02)
+
+
+### Features / Neue Funktionen
+
+* **controls:** implement standard dialog readiness ([6d8f4ff](https://github.com/hindermath/TuiVision/commit/6d8f4ff5f4152401814c5e39eeeec75036ff05c4))
+
+
+### Documentation / Dokumentation
+
+* **api:** regenerate standard dialog docs ([ee8e7e5](https://github.com/hindermath/TuiVision/commit/ee8e7e504581d1088a29d2801504bf85984bb8b7))
+* **spec:** record standard dialogs evidence ([af72515](https://github.com/hindermath/TuiVision/commit/af725157ae3b96c01ae17c778a89b6268a860116))
+
 ## [0.2.1](https://github.com/hindermath/TuiVision/compare/v0.2.0...v0.2.1) (2026-04-30)
 
 
