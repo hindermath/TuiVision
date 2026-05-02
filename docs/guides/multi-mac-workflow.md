@@ -558,6 +558,40 @@ Validation to be recorded when quality gates run in T024/T025.
 
 *(Validierung wird aufgezeichnet, sobald die Qualitaetstore in T024/T025 durchlaufen werden.)*
 
+## 010-standard-dialogs-designer - Validation Evidence
+
+Dieser Abschnitt dokumentiert die lokalen Nachweise fuer
+`010-standard-dialogs-designer` auf dem primaeren Multi-Mac-Pfad am
+2026-05-02.
+
+This section documents local evidence for `010-standard-dialogs-designer` on
+the primary Multi-Mac path on 2026-05-02.
+
+| Host | Build | Controls | Serialization | Notes |
+|------|-------|----------|---------------|-------|
+| MacBook Air M2 | PASS (`dotnet build --configuration Release`) | PASS, 281 Tests | PASS, 18 Tests | Keyboard-only, text-first, non-destructive file decisions, persisted-input rejection |
+| Mac mini M4 Pro | pending | pending | pending | Secondary Mac |
+| Linux / WSL Ubuntu 24.04 | pending | pending | pending | Supplemental |
+| Windows 10/11 WSL2 | pending | pending | pending | Supplemental |
+
+Additional MacBook Air M2 evidence: `dotnet test` passed with 439 tests, the
+gate-relevant Cobertura files reported `Core` 89.11 %, `Controls` 82.85 %,
+`Serialization` 87.00 %, `Compatibility` 80.95 %, and `Drivers.Console`
+76.76 % line coverage, `docfx docfx.json` passed, and `npm run test:docfx`
+passed with 2/2 Playwright/axe smoke tests. `dotnet format
+--verify-no-changes` passed after the repository line-ending rule was aligned
+to LF and the five MSTest settings files were normalized to UTF-8 without BOM.
+
+A11Y proof: standard-dialog flow tests assert keyboard reachability through
+`StandardDialogFlowState.KeyboardReachable`; validation and fallback states are
+plain text (`StandardDialogValidationMessage`, `FallbackMessage`,
+`FallbackReason`). No mouse-only acceptance path was added.
+
+Security proof: file dialogs return caller-visible decisions only and do not
+perform file content I/O. Persisted dialog descriptions reject truncated,
+trailing, unsupported-version, runtime-state, and semantic invalid input before
+runtime dialog creation.
+
 ## Troubleshooting
 
 ### `gh auth status` zeigt kein Login

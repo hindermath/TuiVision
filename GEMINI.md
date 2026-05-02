@@ -227,6 +227,7 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 - 006-close-phase8-gate: Analyse-Remediation eingearbeitet: `gate-docs.md` ist nun expliziter Bestandteil des Plan-Artefaktsets, `tests/TuiVision.Compatibility.Tests/` ist als feste Fallback-Suite benannt, und Skip-/Ignore-Faelle muessen in den Gate-Nachweisen auf ein dokumentiertes Tracking-Issue verweisen.
 - 007-port-wave1-examples: Welle 1 portiert: `desklogo`, `msgcls`, `tutorial` (16 token-basierte Schritte), `videomode`. 41 Smoke-Tests gruen, Release-Build sauber, `dotnet format --verify-no-changes` bestanden. `Pflichtenheft.md` Welle-1-Checkliste abgehakt, Marker auf Welle 2 vorgeschoben.
 - 008-controls-revision: Controls-Revision implementiert: `TSubMenu`, `TStatusDef`, `WindowFlags` neu; `TMenuBar`, `TStatusLine`, `TWindow`, `TDialog`, `TMenuItem`, `TView` erweitert; 338 Tests gruen, 84,02 % Abdeckung, Format-Gate bestanden; Nachweissurfaces aktualisiert, Lastenheft umbenannt.
+- 010-standard-dialogs-designer: Framework-Readiness fuer Standarddialoge und Dialog-Designer implementiert: Datei-/Verzeichnisentscheidungen ohne Dateiinhalt-I/O, Color-/Display-/symbolische Charset-Auswahl, validierte Dialogbeschreibung, persistierter Roundtrip und fehlerhafte Persistenzdaten-Ablehnung; fokussierte Controls- und Serialization-Tests gruen.
 
 ## Shared Parent Guidance
 

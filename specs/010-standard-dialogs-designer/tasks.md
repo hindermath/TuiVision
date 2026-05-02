@@ -17,11 +17,11 @@
 
 **Purpose**: Prepare the feature branch, shared test support, and validation evidence locations before behavior work starts.
 
-- [ ] T001 Verify the numbered-branch `Major.Minor.Patch.Build` version fields for the planned implementation-start commit in `Directory.Build.props`
-- [ ] T002 [P] Add shared standard-dialog test helpers for temporary directories, keyboard events, and text-first validation assertions in `tests/TuiVision.Controls.Tests/StandardDialogTestSupport.cs`
-- [ ] T003 [P] Add dialog-description serialization test helpers for malformed payloads and roundtrip fixtures in `tests/TuiVision.Serialization.Tests/DialogDescriptionTestSupport.cs`
-- [ ] T004 [P] Create the initial 010 implementation evidence notes section in `docs/guides/multi-mac-workflow.md`
-- [ ] T005 [P] Add a 010 implementation tracking entry scaffold to the bottom of `docs/project-statistics.md`
+- [x] T001 Verify the numbered-branch `Major.Minor.Patch.Build` version fields for the planned implementation-start commit in `Directory.Build.props`
+- [x] T002 [P] Add shared standard-dialog test helpers for temporary directories, keyboard events, and text-first validation assertions in `tests/TuiVision.Controls.Tests/StandardDialogTestSupport.cs`
+- [x] T003 [P] Add dialog-description serialization test helpers for malformed payloads and roundtrip fixtures in `tests/TuiVision.Serialization.Tests/DialogDescriptionTestSupport.cs`
+- [x] T004 [P] Create the initial 010 implementation evidence notes section in `docs/guides/multi-mac-workflow.md`
+- [x] T005 [P] Add a 010 implementation tracking entry scaffold to the bottom of `docs/project-statistics.md`
 
 ---
 
@@ -31,13 +31,13 @@
 
 **Critical**: No user story work should begin until this phase is complete.
 
-- [ ] T006 [P] Add `StandardDialogKind`, `StandardDialogInteractionState`, and `StandardDialogFlowState` with bilingual XML docs in `src/TuiVision.Controls/TStandardDialogFlowState.cs`
-- [ ] T007 [P] Add `StandardDialogValidationMessage` and text-first validation severity support with bilingual XML docs in `src/TuiVision.Controls/TStandardDialogValidationMessage.cs`
-- [ ] T008 [P] Add `FileSelectionTargetKind`, `FileDecisionKind`, and `TFileDecisionResult` with caller-decision semantics in `src/TuiVision.Controls/TFileDecisionResult.cs`
-- [ ] T009 [P] Add `ColorDisplaySelectionKind`, `ColorDisplaySelectionState`, and bounded fallback state in `src/TuiVision.Controls/TColorDisplaySelectionState.cs`
-- [ ] T010 [P] Add `DialogDescription`, `DialogControlDescription`, and `DialogCommandBinding` skeletons with validation-oriented constructors in `src/TuiVision.Controls/TDialogDescription.cs`
-- [ ] T011 [P] Add `PersistedDialogRepresentation` skeleton and format-version constants in `src/TuiVision.Serialization/TPersistedDialogRepresentation.cs`
-- [ ] T012 Update public API XML documentation coverage for new foundational types in `src/TuiVision.Controls/TStandardDialogFlowState.cs` and `src/TuiVision.Serialization/TPersistedDialogRepresentation.cs`
+- [x] T006 [P] Add `StandardDialogKind`, `StandardDialogInteractionState`, and `StandardDialogFlowState` with bilingual XML docs in `src/TuiVision.Controls/TStandardDialogFlowState.cs`
+- [x] T007 [P] Add `StandardDialogValidationMessage` and text-first validation severity support with bilingual XML docs in `src/TuiVision.Controls/TStandardDialogValidationMessage.cs`
+- [x] T008 [P] Add `FileSelectionTargetKind`, `FileDecisionKind`, and `TFileDecisionResult` with caller-decision semantics in `src/TuiVision.Controls/TFileDecisionResult.cs`
+- [x] T009 [P] Add `ColorDisplaySelectionKind`, `ColorDisplaySelectionState`, and bounded fallback state in `src/TuiVision.Controls/TColorDisplaySelectionState.cs`
+- [x] T010 [P] Add `DialogDescription`, `DialogControlDescription`, and `DialogCommandBinding` skeletons with validation-oriented constructors in `src/TuiVision.Controls/TDialogDescription.cs`
+- [x] T011 [P] Add `PersistedDialogRepresentation` skeleton and format-version constants in `src/TuiVision.Serialization/TPersistedDialogRepresentation.cs`
+- [x] T012 Update public API XML documentation coverage for new foundational types in `src/TuiVision.Controls/TStandardDialogFlowState.cs` and `src/TuiVision.Serialization/TPersistedDialogRepresentation.cs`
 
 **Checkpoint**: Shared state/result/description types exist with bilingual public docs; user-story implementation can proceed.
 
@@ -51,26 +51,26 @@
 
 ### Tests for User Story 1
 
-- [ ] T013 [P] [US1] Add failing tests for file open/select/save-target decisions and no file content I/O in `tests/TuiVision.Controls.Tests/TFileDialogTests.cs`
-- [ ] T014 [P] [US1] Add failing tests for directory navigation and directory select decisions in `tests/TuiVision.Controls.Tests/TDirListBoxTests.cs`
-- [ ] T015 [P] [US1] Add failing tests for invalid manual paths, stale entries, and empty filtered lists in `tests/TuiVision.Controls.Tests/TFileInputLineTests.cs`
-- [ ] T016 [P] [US1] Add failing tests for missing or unreadable metadata fallback in `tests/TuiVision.Controls.Tests/TFileListTests.cs`
-- [ ] T017 [P] [US1] Add failing tests for session-only history partitioning by history ID in `tests/TuiVision.Controls.Tests/THistoryTests.cs`
-- [ ] T018 [P] [US1] Add failing keyboard-only acceptance tests for file and directory flows in `tests/TuiVision.Controls.Tests/TStandardDialogFlowTests.cs`
+- [x] T013 [P] [US1] Add failing tests for file open/select/save-target decisions and no file content I/O in `tests/TuiVision.Controls.Tests/TFileDialogTests.cs`
+- [x] T014 [P] [US1] Add failing tests for directory navigation and directory select decisions in `tests/TuiVision.Controls.Tests/TDirListBoxTests.cs`
+- [x] T015 [P] [US1] Add failing tests for invalid manual paths, stale entries, and empty filtered lists in `tests/TuiVision.Controls.Tests/TFileInputLineTests.cs`
+- [x] T016 [P] [US1] Add failing tests for missing or unreadable metadata fallback in `tests/TuiVision.Controls.Tests/TFileListTests.cs`
+- [x] T017 [P] [US1] Add failing tests for session-only history partitioning by history ID in `tests/TuiVision.Controls.Tests/THistoryTests.cs`
+- [x] T018 [P] [US1] Add failing keyboard-only acceptance tests for file and directory flows in `tests/TuiVision.Controls.Tests/TStandardDialogFlowTests.cs`
 
 ### Implementation for User Story 1
 
-- [ ] T019 [US1] Extend `TFileDialogMode` with explicit open, select, and save-target semantics in `src/TuiVision.Controls/TFileDialog.cs`
-- [ ] T020 [US1] Integrate `TFileDecisionResult` into confirmation and cancellation outcomes in `src/TuiVision.Controls/TFileDialog.cs`
-- [ ] T021 [US1] Synchronize selected file, selected directory, manual path, metadata snapshot, validation state, and decision value in `src/TuiVision.Controls/TFileDialog.cs`
-- [ ] T022 [US1] Harden visible-entry refresh, wildcard filtering, stale-entry detection, and missing metadata fallback in `src/TuiVision.Controls/TFileList.cs`
-- [ ] T023 [US1] Harden directory navigation and directory selection state handoff in `src/TuiVision.Controls/TDirListBox.cs`
-- [ ] T024 [US1] Harden manual path normalization and non-destructive validation handoff in `src/TuiVision.Controls/TFileInputLine.cs`
-- [ ] T025 [US1] Ensure `TFileInfo` exposes text-first fallback state for missing or unreadable metadata in `src/TuiVision.Controls/TFileInfo.cs`
-- [ ] T026 [US1] Ensure standard-dialog history remains session-scoped and partitioned by history ID in `src/TuiVision.Controls/THistory.cs`
-- [ ] T027 [US1] Wire keyboard-only completion paths for file and directory dialog actions in `src/TuiVision.Controls/TFileDialog.cs`
-- [ ] T028 [US1] Add US1 downstream consumer classification proof for `demo`, `sdlg`, `sdlg2`, and `dlgdsn` in `tests/TuiVision.Controls.Tests/TStandardDialogFlowTests.cs`
-- [ ] T029 [US1] Run focused Controls tests for US1 using `tests/TuiVision.Controls.Tests/TuiVision.Controls.Tests.csproj`
+- [x] T019 [US1] Extend `TFileDialogMode` with explicit open, select, and save-target semantics in `src/TuiVision.Controls/TFileDialog.cs`
+- [x] T020 [US1] Integrate `TFileDecisionResult` into confirmation and cancellation outcomes in `src/TuiVision.Controls/TFileDialog.cs`
+- [x] T021 [US1] Synchronize selected file, selected directory, manual path, metadata snapshot, validation state, and decision value in `src/TuiVision.Controls/TFileDialog.cs`
+- [x] T022 [US1] Harden visible-entry refresh, wildcard filtering, stale-entry detection, and missing metadata fallback in `src/TuiVision.Controls/TFileList.cs`
+- [x] T023 [US1] Harden directory navigation and directory selection state handoff in `src/TuiVision.Controls/TDirListBox.cs`
+- [x] T024 [US1] Harden manual path normalization and non-destructive validation handoff in `src/TuiVision.Controls/TFileInputLine.cs`
+- [x] T025 [US1] Ensure `TFileInfo` exposes text-first fallback state for missing or unreadable metadata in `src/TuiVision.Controls/TFileInfo.cs`
+- [x] T026 [US1] Ensure standard-dialog history remains session-scoped and partitioned by history ID in `src/TuiVision.Controls/THistory.cs`
+- [x] T027 [US1] Wire keyboard-only completion paths for file and directory dialog actions in `src/TuiVision.Controls/TFileDialog.cs`
+- [x] T028 [US1] Add US1 downstream consumer classification proof for `demo`, `sdlg`, `sdlg2`, and `dlgdsn` in `tests/TuiVision.Controls.Tests/TStandardDialogFlowTests.cs`
+- [x] T029 [US1] Run focused Controls tests for US1 using `tests/TuiVision.Controls.Tests/TuiVision.Controls.Tests.csproj`
 
 **Checkpoint**: User Story 1 is independently testable and provides the MVP.
 
@@ -84,20 +84,20 @@
 
 ### Tests for User Story 2
 
-- [ ] T030 [P] [US2] Add failing tests for color group/value and preview synchronization in `tests/TuiVision.Controls.Tests/TColorDialogTests.cs`
-- [ ] T031 [P] [US2] Add failing tests for monochrome/display selection and bounded fallback in `tests/TuiVision.Controls.Tests/TColorDialogTests.cs`
-- [ ] T032 [P] [US2] Add failing tests for symbolic charset returned values without terminal rendering effects in `tests/TuiVision.Controls.Tests/TColorDialogTests.cs`
-- [ ] T033 [P] [US2] Add failing keyboard-only and cancel/confirm acceptance tests for color/display/charset flows in `tests/TuiVision.Controls.Tests/TStandardDialogFlowTests.cs`
+- [x] T030 [P] [US2] Add failing tests for color group/value and preview synchronization in `tests/TuiVision.Controls.Tests/TColorDialogTests.cs`
+- [x] T031 [P] [US2] Add failing tests for monochrome/display selection and bounded fallback in `tests/TuiVision.Controls.Tests/TColorDialogTests.cs`
+- [x] T032 [P] [US2] Add failing tests for symbolic charset returned values without terminal rendering effects in `tests/TuiVision.Controls.Tests/TColorDialogTests.cs`
+- [x] T033 [P] [US2] Add failing keyboard-only and cancel/confirm acceptance tests for color/display/charset flows in `tests/TuiVision.Controls.Tests/TStandardDialogFlowTests.cs`
 
 ### Implementation for User Story 2
 
-- [ ] T034 [US2] Extend `TColorDialog` to own committed, selected, preview, cancellation, and confirmation state in `src/TuiVision.Controls/TColorDialog.cs`
-- [ ] T035 [US2] Integrate `ColorDisplaySelectionState` into color and display decisions in `src/TuiVision.Controls/TColorDialog.cs`
-- [ ] T036 [US2] Add symbolic charset choice support as returned dialog data without terminal rendering effects in `src/TuiVision.Controls/TColorDialog.cs`
-- [ ] T037 [US2] Ensure `TColorSelector`, `TMonoSelector`, `TColorGroup`, and `TColorDisplay` stay synchronized through the composed flow in `src/TuiVision.Controls/TColorSelector.cs`
-- [ ] T038 [US2] Add bounded no-supported-option fallback handling in `src/TuiVision.Controls/TColorDisplaySelectionState.cs`
-- [ ] T039 [US2] Add US2 downstream consumer classification proof for `sdlg` and `sdlg2` in `tests/TuiVision.Controls.Tests/TStandardDialogFlowTests.cs`
-- [ ] T040 [US2] Run focused Controls tests for US2 using `tests/TuiVision.Controls.Tests/TuiVision.Controls.Tests.csproj`
+- [x] T034 [US2] Extend `TColorDialog` to own committed, selected, preview, cancellation, and confirmation state in `src/TuiVision.Controls/TColorDialog.cs`
+- [x] T035 [US2] Integrate `ColorDisplaySelectionState` into color and display decisions in `src/TuiVision.Controls/TColorDialog.cs`
+- [x] T036 [US2] Add symbolic charset choice support as returned dialog data without terminal rendering effects in `src/TuiVision.Controls/TColorDialog.cs`
+- [x] T037 [US2] Ensure `TColorSelector`, `TMonoSelector`, `TColorGroup`, and `TColorDisplay` stay synchronized through the composed flow in `src/TuiVision.Controls/TColorSelector.cs`
+- [x] T038 [US2] Add bounded no-supported-option fallback handling in `src/TuiVision.Controls/TColorDisplaySelectionState.cs`
+- [x] T039 [US2] Add US2 downstream consumer classification proof for `sdlg` and `sdlg2` in `tests/TuiVision.Controls.Tests/TStandardDialogFlowTests.cs`
+- [x] T040 [US2] Run focused Controls tests for US2 using `tests/TuiVision.Controls.Tests/TuiVision.Controls.Tests.csproj`
 
 **Checkpoint**: User Story 2 is independently testable and does not require a ported `sdlg` or `sdlg2`.
 
@@ -111,24 +111,24 @@
 
 ### Tests for User Story 3
 
-- [ ] T041 [P] [US3] Add failing tests for accepted and rejected dialog descriptions in `tests/TuiVision.Controls.Tests/DialogDesignerFlowTests.cs`
-- [ ] T042 [P] [US3] Add failing tests for duplicate control IDs and duplicate command bindings in `tests/TuiVision.Controls.Tests/DialogDesignerFlowTests.cs`
-- [ ] T043 [P] [US3] Add failing tests for unknown control roles, missing labels, invalid navigation order, and unsupported initial values in `tests/TuiVision.Controls.Tests/DialogDesignerFlowTests.cs`
-- [ ] T044 [P] [US3] Add failing tests for minimal persisted-description roundtrip in `tests/TuiVision.Serialization.Tests/DialogDescriptionPersistenceTests.cs`
-- [ ] T045 [P] [US3] Add failing tests for malformed, truncated, unsupported-version, unsupported-value, and semantically invalid persisted input in `tests/TuiVision.Serialization.Tests/DialogDescriptionPersistenceTests.cs`
-- [ ] T046 [P] [US3] Add failing keyboard-only designer-flow acceptance tests in `tests/TuiVision.Controls.Tests/DialogDesignerFlowTests.cs`
+- [x] T041 [P] [US3] Add failing tests for accepted and rejected dialog descriptions in `tests/TuiVision.Controls.Tests/DialogDesignerFlowTests.cs`
+- [x] T042 [P] [US3] Add failing tests for duplicate control IDs and duplicate command bindings in `tests/TuiVision.Controls.Tests/DialogDesignerFlowTests.cs`
+- [x] T043 [P] [US3] Add failing tests for unknown control roles, missing labels, invalid navigation order, and unsupported initial values in `tests/TuiVision.Controls.Tests/DialogDesignerFlowTests.cs`
+- [x] T044 [P] [US3] Add failing tests for minimal persisted-description roundtrip in `tests/TuiVision.Serialization.Tests/DialogDescriptionPersistenceTests.cs`
+- [x] T045 [P] [US3] Add failing tests for malformed, truncated, unsupported-version, unsupported-value, and semantically invalid persisted input in `tests/TuiVision.Serialization.Tests/DialogDescriptionPersistenceTests.cs`
+- [x] T046 [P] [US3] Add failing keyboard-only designer-flow acceptance tests in `tests/TuiVision.Controls.Tests/DialogDesignerFlowTests.cs`
 
 ### Implementation for User Story 3
 
-- [ ] T047 [US3] Implement dialog-description validation for IDs, labels, roles, navigation, command targets, keyboard triggers, and initial values in `src/TuiVision.Controls/TDialogDescription.cs`
-- [ ] T048 [US3] Add `DialogDescriptionValidationResult` with text-first validation messages in `src/TuiVision.Controls/TDialogDescriptionValidationResult.cs`
-- [ ] T049 [US3] Add `DialogDescriptionValidator` to reject invalid descriptions before runtime dialog creation in `src/TuiVision.Controls/TDialogDescriptionValidator.cs`
-- [ ] T050 [US3] Add `DialogDescriptionFactory` to create runtime `TDialog` instances only after validation succeeds in `src/TuiVision.Controls/TDialogDescriptionFactory.cs`
-- [ ] T051 [US3] Implement a Controls-independent `ITStreamSerializable` persisted dialog-description DTO in `src/TuiVision.Serialization/TDialogDescriptionRecord.cs`
-- [ ] T052 [US3] Add `DialogDescriptionPersistenceAdapter` to map between Controls `DialogDescription` objects and Serialization DTOs without adding a Serialization-to-Controls reference in `src/TuiVision.Controls/TDialogDescriptionPersistenceAdapter.cs`
-- [ ] T053 [US3] Register, roundtrip, and reject malformed/truncated/unsupported-version/semantic persisted DTO input through `TRecordRegistry` and `TRecordSerializer` in `src/TuiVision.Serialization/TDialogDescriptionRecord.cs`
-- [ ] T054 [US3] Add US3 downstream consumer classification proof for `dlgdsn` in `tests/TuiVision.Controls.Tests/DialogDesignerFlowTests.cs`
-- [ ] T055 [US3] Run focused Controls and Serialization tests for US3 using `tests/TuiVision.Controls.Tests/TuiVision.Controls.Tests.csproj` and `tests/TuiVision.Serialization.Tests/TuiVision.Serialization.Tests.csproj`
+- [x] T047 [US3] Implement dialog-description validation for IDs, labels, roles, navigation, command targets, keyboard triggers, and initial values in `src/TuiVision.Controls/TDialogDescription.cs`
+- [x] T048 [US3] Add `DialogDescriptionValidationResult` with text-first validation messages in `src/TuiVision.Controls/TDialogDescriptionValidationResult.cs`
+- [x] T049 [US3] Add `DialogDescriptionValidator` to reject invalid descriptions before runtime dialog creation in `src/TuiVision.Controls/TDialogDescriptionValidator.cs`
+- [x] T050 [US3] Add `DialogDescriptionFactory` to create runtime `TDialog` instances only after validation succeeds in `src/TuiVision.Controls/TDialogDescriptionFactory.cs`
+- [x] T051 [US3] Implement a Controls-independent `ITStreamSerializable` persisted dialog-description DTO in `src/TuiVision.Serialization/TDialogDescriptionRecord.cs`
+- [x] T052 [US3] Add `DialogDescriptionPersistenceAdapter` to map between Controls `DialogDescription` objects and Serialization DTOs without adding a Serialization-to-Controls reference in `src/TuiVision.Controls/TDialogDescriptionPersistenceAdapter.cs`
+- [x] T053 [US3] Register, roundtrip, and reject malformed/truncated/unsupported-version/semantic persisted DTO input through `TRecordRegistry` and `TRecordSerializer` in `src/TuiVision.Serialization/TDialogDescriptionRecord.cs`
+- [x] T054 [US3] Add US3 downstream consumer classification proof for `dlgdsn` in `tests/TuiVision.Controls.Tests/DialogDesignerFlowTests.cs`
+- [x] T055 [US3] Run focused Controls and Serialization tests for US3 using `tests/TuiVision.Controls.Tests/TuiVision.Controls.Tests.csproj` and `tests/TuiVision.Serialization.Tests/TuiVision.Serialization.Tests.csproj`
 
 **Checkpoint**: All three user stories are independently testable through framework-level evidence.
 
@@ -138,26 +138,26 @@
 
 **Purpose**: Validate the complete feature, update proof surfaces, and prepare the Lastenheft traceability handoff.
 
-- [ ] T056 [P] Update bilingual public XML documentation for all changed public APIs in `src/TuiVision.Controls/TFileDialog.cs`
-- [ ] T057 [P] Update bilingual public XML documentation for persisted dialog-description APIs in `src/TuiVision.Serialization/TDialogDescriptionRecord.cs` and `src/TuiVision.Controls/TDialogDescriptionPersistenceAdapter.cs`
-- [ ] T058 [P] Record the full 010 security standards applicability matrix from Constitution Principles XIV-XIX in `docs/security/security-checklist.md`, with NIST SSDF and CWE Top 25 mandatory; OWASP ASVS, Zero Trust, CAPEC, OWASP SAMM, OWASP Cheat Sheet Series / Proactive Controls, OpenSSF Scorecard, and CRA awareness marked applicable or N/A with justification; and SBOM/VEX/SLSA tied to release evidence
-- [ ] T059 [P] Apply secure-coding review for file-path validation and persisted-input parsing in `docs/security/security-checklist.md`
-- [ ] T060 [P] Update dependency and supply-chain evidence for no new dependencies plus release-time SBOM/VEX obligations in `docs/security/dependency-audit.md` and `docs/security/supply-chain-evidence.md`
-- [ ] T061 [P] Record text-first and keyboard-only A11Y proof notes for 010 in `docs/guides/multi-mac-workflow.md`
-- [ ] T062 [P] Update final feature statistics and acceleration evidence in `docs/project-statistics.md`
-- [ ] T063 Increment the manual build counter in `Directory.Build.props` before every `dotnet build` and every `dotnet test` validation command in T029, T040, T055, and T064-T068
-- [ ] T064 Run release build validation with `dotnet build --configuration Release`
-- [ ] T065 Run focused Controls validation with `dotnet test tests/TuiVision.Controls.Tests/`
-- [ ] T066 Run focused Serialization validation with `dotnet test tests/TuiVision.Serialization.Tests/`
-- [ ] T067 Run repository-wide test validation with `dotnet test`
-- [ ] T068 Run coverage validation for the repo-wide 70 percent gate with `dotnet test --collect:"XPlat Code Coverage"`
-- [ ] T069 Run formatting validation with `dotnet format --verify-no-changes`
-- [ ] T070 [P] If public API XML comments changed, regenerate DocFX content with `docfx docfx.json`
-- [ ] T071 [P] If DocFX was regenerated, run the DocFX web A11Y smoke checks with `cd tests/web-a11y && npm run test:docfx`
-- [ ] T072 [P] Record Linux and Windows/WSL compatibility evidence when practical in `docs/guides/multi-mac-workflow.md`
-- [ ] T073 [P] Review whether active feature context or shared agent guidance changed and update `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and `.github/agents/copilot-instructions.md` if affected
-- [ ] T074 [P] Move the `>>> NAECHSTER SCHRITT <<<` marker if 010 completion changes the effective priority in `Pflichtenheft.md`
-- [ ] T075 Rename `Lastenheft_02_StandardDialogsAndDesigner.md` to `Lastenheft_02_StandardDialogsAndDesigner.010-standard-dialogs-designer.md`
+- [x] T056 [P] Update bilingual public XML documentation for all changed public APIs in `src/TuiVision.Controls/TFileDialog.cs`
+- [x] T057 [P] Update bilingual public XML documentation for persisted dialog-description APIs in `src/TuiVision.Serialization/TDialogDescriptionRecord.cs` and `src/TuiVision.Controls/TDialogDescriptionPersistenceAdapter.cs`
+- [x] T058 [P] Record the full 010 security standards applicability matrix from Constitution Principles XIV-XIX in `docs/security/security-checklist.md`, with NIST SSDF and CWE Top 25 mandatory; OWASP ASVS, Zero Trust, CAPEC, OWASP SAMM, OWASP Cheat Sheet Series / Proactive Controls, OpenSSF Scorecard, and CRA awareness marked applicable or N/A with justification; and SBOM/VEX/SLSA tied to release evidence
+- [x] T059 [P] Apply secure-coding review for file-path validation and persisted-input parsing in `docs/security/security-checklist.md`
+- [x] T060 [P] Update dependency and supply-chain evidence for no new dependencies plus release-time SBOM/VEX obligations in `docs/security/dependency-audit.md` and `docs/security/supply-chain-evidence.md`
+- [x] T061 [P] Record text-first and keyboard-only A11Y proof notes for 010 in `docs/guides/multi-mac-workflow.md`
+- [x] T062 [P] Update final feature statistics and acceleration evidence in `docs/project-statistics.md`
+- [x] T063 Increment the manual build counter in `Directory.Build.props` before every `dotnet build` and every `dotnet test` validation command in T029, T040, T055, and T064-T068
+- [x] T064 Run release build validation with `dotnet build --configuration Release`
+- [x] T065 Run focused Controls validation with `dotnet test tests/TuiVision.Controls.Tests/`
+- [x] T066 Run focused Serialization validation with `dotnet test tests/TuiVision.Serialization.Tests/`
+- [x] T067 Run repository-wide test validation with `dotnet test`
+- [x] T068 Run coverage validation for the repo-wide 70 percent gate with `dotnet test --collect:"XPlat Code Coverage"`
+- [x] T069 Run formatting validation with `dotnet format --verify-no-changes`
+- [x] T070 [P] If public API XML comments changed, regenerate DocFX content with `docfx docfx.json`
+- [x] T071 [P] If DocFX was regenerated, run the DocFX web A11Y smoke checks with `cd tests/web-a11y && npm run test:docfx`
+- [x] T072 [P] Record Linux and Windows/WSL compatibility evidence when practical in `docs/guides/multi-mac-workflow.md`
+- [x] T073 [P] Review whether active feature context or shared agent guidance changed and update `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and `.github/agents/copilot-instructions.md` if affected
+- [x] T074 [P] Move the `>>> NAECHSTER SCHRITT <<<` marker if 010 completion changes the effective priority in `Pflichtenheft.md`
+- [x] T075 Rename `Lastenheft_02_StandardDialogsAndDesigner.md` to `Lastenheft_02_StandardDialogsAndDesigner.010-standard-dialogs-designer.md`
 
 ---
 

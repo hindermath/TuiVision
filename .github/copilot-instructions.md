@@ -130,7 +130,8 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Planning decisions now fixed: `TSubMenu` as a standalone declaration type; exactly one submenu level; `TStatusDef` with inclusive ranges, first-match-wins ordering, and neutral-empty fallback; explicit `HelpContext` on `TView` with `GetStatusHints()` retained only as a compatibility bridge for current callers such as `TEditor` and `TEditWindow` when no definitions are configured; `WindowFlags` limited to `Close` and `Move`; `Ctrl+F5` move mode; `Valid(ushort command)` for `TDialog`; same-change updates for the affected `docs/porting-status.md` rows, `docs/project-statistics.md`, and the `>>> NAECHSTER SCHRITT <<<` marker in `Pflichtenheft.md` when the effective next step changes.
 
 ### 010-standard-dialogs-designer
-- Align active work with `specs/010-standard-dialogs-designer/spec.md` and the planning artifacts in `specs/010-standard-dialogs-designer/`.
+- Current status: framework-readiness implemented on 2026-05-02; focused Controls and Serialization tests are green.
+- Keep future work aligned with `specs/010-standard-dialogs-designer/spec.md` and the planning artifacts in `specs/010-standard-dialogs-designer/`.
 - Scope is limited to hardening reusable `TuiVision.Controls` and `TuiVision.Serialization` dialog surfaces before downstream wave-2 examples; full `demo`, `sdlg`, `sdlg2`, and `dlgdsn` example ports remain out of scope for this increment.
 - File and directory dialogs must keep path entry, wildcard filtering, file-list metadata, directory navigation, save-target decisions, and session-only history synchronized without performing file content I/O.
 - Color, charset, and display selection must remain symbolic dialog-level state; terminal rendering, fonts, emulation, mouse behavior, editor/help behavior, and example-specific workflows are out of scope.

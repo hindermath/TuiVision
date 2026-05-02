@@ -240,7 +240,7 @@ Statuscheckliste Beispielwellen:
 - [x] **Welle 1 - Grundlegende Anwendungsstruktur**
   Reihenfolgehinweis: abgeschlossen (Branch `007-port-wave1-examples`); 4 Beispiele portiert, 41 Smoke-Tests gruen, Guides geliefert.
 - [ ] **Welle 2 - Controls und Dialoge**
-  Reihenfolgehinweis: nach Welle 1; zuerst Kernbeispiele mit breiter Abdeckung wie `demo`, dann Spezialfaelle.
+  Reihenfolgehinweis: nach Welle 1; Vorbereitungsfeatures `008-controls-revision`, `009-controls-widgets-and-collections` und `010-standard-dialogs-designer` sind frameworkseitig nachgewiesen; jetzt Kernbeispiele mit breiter Abdeckung wie `demo` und danach Spezialfaelle portieren.
 - [ ] **Welle 3 - Editor, Dateien, Hilfe und Streams**
   Reihenfolgehinweis: nach Welle 2; `tvedit`, `bhelp` und `helpdemo` eignen sich als fruehe Validierungsbeispiele fuer Phase 6.
 - [ ] **Welle 4 - Terminal-Emulation und erweiterte Zeichensaetze**
@@ -610,7 +610,7 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze
 
->>> NAECHSTER SCHRITT <<< Welle 2 – Controls und Dialoge: Controls-Revision (008-controls-revision) abgeschlossen — Menues, Statuszeile, Fenster und Dialog sind als Voraussetzung nachgewiesen; jetzt Welle-2-Planung starten und die 11 Controls-/Dialog-Beispiele portieren.
+>>> NAECHSTER SCHRITT <<< Welle 2 – Controls und Dialoge: Die Framework-Voraussetzungen aus `008-controls-revision`, `009-controls-widgets-and-collections` und `010-standard-dialogs-designer` sind nachgewiesen; jetzt die 11 Controls-/Dialog-Beispiele portieren, beginnend mit `demo` und den Standarddialog-Verbrauchern `sdlg`, `sdlg2` und `dlgdsn`.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.
