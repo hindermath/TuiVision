@@ -1,0 +1,89 @@
+schema_version: "1.0"
+
+preset:
+  id: "cross-platform-governance"
+  name: "Cross-Platform Governance"
+  version: "0.1.0"
+  description: "Adds Bash + PowerShell parity, Unix man-pages, bilingual comment-based help, and Verb-Noun Cmdlet discipline to Spec Kit-managed scripting projects."
+  author: "Thorsten Hindermann"
+  repository: "https://github.com/hindermath/spec-kit-preset-cross-platform-governance"
+  license: "MIT"
+
+requires:
+  speckit_version: ">=0.8.0"
+
+provides:
+  templates:
+    - type: "template"
+      name: "constitution-template"
+      file: "templates/constitution-addendum.md"
+      description: "Append cross-platform parity governance"
+      strategy: "append"
+
+    - type: "template"
+      name: "spec-template"
+      file: "templates/spec-addendum.md"
+      description: "Append cross-platform applicability section"
+      strategy: "append"
+
+    - type: "template"
+      name: "plan-template"
+      file: "templates/plan-addendum.md"
+      description: "Append cross-platform planning checks"
+      strategy: "append"
+
+    - type: "template"
+      name: "tasks-template"
+      file: "templates/tasks-addendum.md"
+      description: "Append cross-platform tasks for paired scripts, man-pages, help, and Cmdlets"
+      strategy: "append"
+
+    - type: "template"
+      name: "cross-platform-agent-guidance-addendum-template"
+      file: "templates/agent-file-addendum.md"
+      description: "Standalone agent guidance addendum for cross-platform parity"
+
+    - type: "template"
+      name: "script-parity-checklist-template"
+      file: "templates/script-parity-checklist-template.md"
+      description: "Starter checklist for verifying Bash/.sh and PowerShell/.ps1 parity"
+
+    - type: "template"
+      name: "man-page-template"
+      file: "templates/man-page-template.md"
+      description: "Starter Unix man-page (section 1) skeleton for paired Bash scripts"
+
+    - type: "template"
+      name: "powershell-help-template"
+      file: "templates/powershell-help-template.md"
+      description: "Starter bilingual comment-based help skeleton for paired PowerShell scripts"
+
+    - type: "command"
+      name: "speckit.specify"
+      file: "commands/speckit.specify.md"
+      description: "Wrap specify with cross-platform parity checks"
+      strategy: "wrap"
+
+    - type: "command"
+      name: "speckit.plan"
+      file: "commands/speckit.plan.md"
+      description: "Wrap plan with cross-platform parity checks"
+      strategy: "wrap"
+
+    - type: "command"
+      name: "speckit.tasks"
+      file: "commands/speckit.tasks.md"
+      description: "Wrap tasks with cross-platform parity checks"
+      strategy: "wrap"
+
+tags:
+  - "cross-platform"
+  - "governance"
+  - "bash"
+  - "powershell"
+  - "man-page"
+  - "cmdlet"
+  - "verb-noun"
+  - "windows"
+  - "macos"
+  - "linux"
