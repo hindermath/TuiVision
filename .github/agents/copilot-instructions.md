@@ -43,6 +43,16 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 
 
 <!-- MANUAL ADDITIONS START -->
+- Allgemeine Architektur-Governance: Wenn eine Aufgabe Struktur,
+  Schnittstellen, Qualitätsattribute, Laufzeitverhalten, Deployment,
+  Wartbarkeit oder technische Schulden betrifft, muss `spec.md`, `plan.md`
+  oder `tasks.md` festhalten, ob Evidenz unter `docs/architecture/`
+  erforderlich ist. `N/A` braucht eine kurze Begruendung.
+- General architecture governance: when work affects structure, interfaces,
+  quality attributes, runtime behavior, deployment, maintainability, or
+  technical debt, `spec.md`, `plan.md`, or `tasks.md` must state whether
+  evidence under `docs/architecture/` is required. `N/A` needs a short
+  rationale.
 <!-- MANUAL ADDITIONS END -->
 
 ## Shared Parent Guidance

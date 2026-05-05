@@ -269,6 +269,15 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - Änderungen an dieser Regel erfordern ein gemeinsames Update in `constitution.md`, `.specify/memory/constitution.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` und `.github/copilot-instructions.md`.
 
 *AI-generated and human-written software architecture MUST follow secure-architecture principles. Authoritative rules: `constitution.md`, Principle XIII. Core principles: trust boundaries (validate all input at system boundaries), defense in depth (at least two independent security layers), least privilege (minimum required permissions), fail-safe defaults (deny by default), attack surface reduction (disable unused features), separation of concerns (auth/logging/validation as cross-cutting concerns), secure configuration (secrets in secret stores, never in code or Git), supply-chain security (verified registries, lock files, no known-vulnerable dependencies). Principles XII + XIII together form the complete secure-development approach: XII = tactical code-level security, XIII = strategic architecture-level security. Changes require a joint update across `constitution.md`, `.specify/memory/constitution.md`, and all four agent guidance files.*
+## Allgemeine Architektur-Governance / General Architecture Governance (iSAQB / arc42)
+
+- Architektur MUSS als explizites Arbeitsergebnis behandelt werden, wenn Struktur, Schnittstellen, Qualitätsattribute, Laufzeitverhalten, Deployment, Wartbarkeit oder technische Schulden betroffen sind.
+- Verbindliche Regeln: siehe `constitution.md`, Prinzip XX; Architektur-Evidenz liegt standardmaessig unter `docs/architecture/`.
+- Relevante Artefakte: Architecture Vision, Context View, Building-Block View, Runtime View, Deployment View, Quality Scenarios, Architecture Decision Records und Architecture Risks/Technical Debt.
+- In `spec.md`, `plan.md` und `tasks.md` immer festhalten, ob Architektur-Evidenz erforderlich ist; `N/A` nur mit kurzer Begruendung.
+- Bei sicherheitsrelevanter Architektur zusaetzlich die Secure-Architecture- und Security-Evidenz aus `docs/security/` anwenden.
+
+*Architecture MUST be treated as an explicit work product when structure, interfaces, quality attributes, runtime behavior, deployment, maintainability, or technical debt are affected. Authoritative rules: `constitution.md`, Principle XX. Default evidence lives under `docs/architecture/`: architecture vision, context, building blocks, runtime, deployment, quality scenarios, ADRs, and architecture risks/technical debt. `spec.md`, `plan.md`, and `tasks.md` must state whether this evidence applies; `N/A` requires rationale. Security-relevant architecture also uses the secure-architecture evidence under `docs/security/`.*
 ## Sicherheitsdokumentation / Security Documentation (XII–XVIII Extensions)
 
 - Jedes Level-2-Projekt MUSS die folgenden Sicherheitsdokumente pflegen, basierend auf den Templates in `.specify/templates/`:

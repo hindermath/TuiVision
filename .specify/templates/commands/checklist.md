@@ -13,8 +13,10 @@ Use this command to generate review checklists for a feature or release.
    - .NET 10 + C# 14.0 toolchain alignment
    - NuGet dependency currency / pinning documentation
    - documentation completeness (bilingual + XML + DocFX when required)
+   - architecture evidence completeness (`docs/architecture/` or justified `N/A`)
 
 ## Validation Checklist
 
 - Checklist items are actionable and testable.
 - Each item maps to a concrete artifact or command output.
+- Architecture evidence checks map to concrete files or documented `N/A` rationale.

@@ -162,6 +162,8 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX Security hardening
 - [ ] TXXX [P] Verify AI-generated code against secure-coding rules in `constitution.md`, Principle XII (OWASP Top 10, language-specific best practices, cryptographic choices, error-handling exposure, dependency CVE status)
 - [ ] TXXX [P] Verify architecture against secure-architecture principles in `constitution.md`, Principle XIII (trust boundaries, defense in depth, least privilege, fail-safe defaults, attack surface reduction, separation of concerns, secure configuration, supply-chain security)
+- [ ] TXXX [P] Determine whether general architecture evidence is required under `constitution.md`, Principle XX; record `N/A` rationale or update `docs/architecture/`
+- [ ] TXXX [P] If architecture evidence applies, update relevant `docs/architecture/` artefacts: architecture vision, context view, building-block view, runtime view, deployment view, quality scenarios, ADRs, and architecture risks/technical debt
 - [ ] TXXX [P] Update mandatory security documentation in `docs/security/`: threat model, security checklist, dependency audit, arc42 security concepts, and security quality scenarios (SHOULD) - using templates from `.specify/templates/`
 - [ ] TXXX [P] Create or update Security Architecture Decision Records (S-ADR) in `docs/security/adr/` for any security-relevant architectural decisions made during this feature
 - [ ] TXXX [P] Record the applicable security standards from `constitution.md`, Principles XIV-XVIII, and mark non-applicable entries as `N/A` with justification

@@ -12,6 +12,7 @@ Use this command to create or update a feature specification.
    - NuGet dependency currency impact
    - coverage thresholds (`>=70%`, target `>=80%`)
    - layering/shared logic placement
+   - architecture-governance impact under `docs/architecture/`
    - bilingual documentation impact (German first, English second, CEFR B2)
    - XML documentation and DocFX impact
    - Red-Green-Refactor test impact
@@ -23,3 +24,4 @@ Use this command to create or update a feature specification.
 - Requirements are implementation-agnostic.
 - Constitution alignment items are complete and non-empty.
 - Toolchain/dependency/coverage constraints are explicit and measurable.
+- Architecture evidence need or `N/A` rationale is explicit.

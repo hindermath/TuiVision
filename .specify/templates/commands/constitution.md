@@ -20,6 +20,7 @@ Use this command when governance or project rules change.
    - `.NET 10` + `C# 14.0`
    - coverage gate `>=70%` with target `>=80%`
    - NuGet packages tracked against latest stable versions
+   - general architecture governance evidence under `docs/architecture/`
 
 ## Validation Checklist
 
@@ -28,3 +29,4 @@ Use this command when governance or project rules change.
 - Principles are declarative and auditable.
 - `main` protection workflow is respected (new branch + PR).
 - Toolchain/coverage/dependency rules are reflected in templates and guidance files.
+- Architecture-governance rules are reflected in plan/spec/tasks templates and guidance files.

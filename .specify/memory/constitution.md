@@ -1,16 +1,29 @@
 <!--
 Sync Impact Report
-Version change: 1.11.0 -> 1.12.0
+Version change: 1.12.0 -> 1.13.0
 Modified principles:
-- None (purely additive)
+- None renamed; new general architecture governance principle added
 Added sections:
-- None
+- Principle XX. General Architecture Governance (iSAQB / arc42)
 Removed sections:
 - None
 Templates requiring updates:
 - ✅ .specify/templates/plan-template.md
 - ✅ .specify/templates/spec-template.md
 - ✅ .specify/templates/tasks-template.md
+- ✅ .specify/templates/commands/checklist.md
+- ✅ .specify/templates/commands/constitution.md
+- ✅ .specify/templates/commands/plan.md
+- ✅ .specify/templates/commands/spec.md
+- ✅ .specify/templates/commands/tasks.md
+- ✅ .specify/templates/architecture-vision-template.md
+- ✅ .specify/templates/context-view-template.md
+- ✅ .specify/templates/building-block-view-template.md
+- ✅ .specify/templates/runtime-view-template.md
+- ✅ .specify/templates/deployment-view-template.md
+- ✅ .specify/templates/quality-scenarios-template.md
+- ✅ .specify/templates/architecture-decision-template.md
+- ✅ .specify/templates/architecture-risks-template.md
 - ✅ .specify/templates/asvs-verification-template.md
 - ✅ .specify/templates/supply-chain-evidence-template.md
 - ✅ .specify/templates/zero-trust-applicability-template.md
@@ -21,12 +34,14 @@ Runtime guidance requiring updates:
 - ✅ CLAUDE.md
 - ✅ GEMINI.md
 - ✅ .github/copilot-instructions.md
+- ✅ .github/agents/copilot-instructions.md
+- ✅ constitution.md
 - ✅ .specify/memory/constitution.md (mirror)
 Follow-up TODOs:
 - None
 -->
 
-# Constitution v1.12.0
+# Constitution v1.13.0
 
 # home-baseline Constitution
 
@@ -722,6 +737,52 @@ software placed on the EU market. Recording CRA applicability and aligning
 practices proactively reduces legal and reputational risk and builds on the
 security work already required by Principles XII–XVIII.
 
+### XX. General Architecture Governance (iSAQB / arc42)
+
+Software architecture MUST be treated as an explicit, reviewable work product
+whenever a change affects structure, interfaces, quality attributes, runtime
+behavior, deployment, long-term maintainability, or technical debt. This
+general architecture governance is separate from, and complementary to, the
+secure-architecture rules in Principle XIII.
+
+Mandatory rules:
+- Architecture work SHOULD follow lightweight iSAQB/CPSA-F method discipline
+  and arc42-compatible documentation where this improves reviewability.
+- Architecturally significant decisions MUST be documented as architecture
+  decision records under `docs/architecture/adr/`, unless the feature plan
+  records a justified `N/A` decision.
+- Architecture goals, system context, building blocks, runtime views,
+  deployment constraints, and interface boundaries MUST be documented when
+  they materially affect acceptance, maintenance, onboarding, or later change
+  decisions.
+- Quality attributes MUST be expressed as concrete scenarios with stimulus,
+  environment, response, and measurable outcome. Generic claims such as
+  "fast", "robust", or "maintainable" are not sufficient on their own.
+- Architecture risks, accepted trade-offs, and technical debt MUST be recorded
+  with owner, impact, mitigation, and review trigger when they remain after a
+  feature is completed.
+- The default architecture evidence location is `docs/architecture/`.
+  Templates are maintained in `.specify/templates/`:
+  `architecture-vision-template.md`, `context-view-template.md`,
+  `building-block-view-template.md`, `runtime-view-template.md`,
+  `deployment-view-template.md`, `quality-scenarios-template.md`,
+  `architecture-decision-template.md`, and
+  `architecture-risks-template.md`.
+- If a feature affects security-relevant architecture, Principle XIII and the
+  security evidence under `docs/security/` MUST also be applied. General
+  architecture ADRs and security ADRs MAY cross-reference each other but MUST
+  keep their evidence locations explicit.
+- Spec-Kit `spec.md`, `plan.md`, and `tasks.md` MUST record whether
+  architecture evidence is required. Silent omission is not allowed; `N/A`
+  decisions require a short rationale.
+
+**Rationale**: Security architecture alone does not cover all architectural
+work. TuiVision and the Level-2 workspace family also need visible reasoning
+about module boundaries, runtime behavior, documentation structure, quality
+attributes, and accepted technical debt. Lightweight iSAQB/arc42 evidence
+keeps these decisions reviewable without forcing heavyweight documentation for
+small changes.
+
 ## Level-2 Project Environment Registry / Level-2-Projektumgebungsregister
 
 This registry consolidates the constitution-relevant Level-2 project facts
@@ -812,11 +873,7 @@ allowed path.
 `.github/copilot-instructions.md` for per-agent operational guidance. This
 constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.12.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-04-24
-
-<!-- EN: constitution.md placeholder
-[DE-Zusammenfassung: constitution.md beschreibt die Prinzipien und Standards für alle home-baseline Workspaces.]
--->
+**Version**: 1.13.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-05-05
 
 ## Level-2 Project Environment Addendum / Level-2-Projektumgebung
 
