@@ -126,9 +126,9 @@ is implemented only where it blocks a required wave-2 example.
 - **Bilingual CEFR-B2 documentation scope**: Pass. Each new guide under
   `docs/guides/examples/` is DE-first/EN-second and readable at CEFR-B2.
 - **XML documentation + DocFX regeneration scope**: Pass. Public API additions
-  or XML-comment changes require complete bilingual XML docs; DocFX is only
-  regenerated when API/generated documentation output changes, followed by the
-  matching web A11Y smoke check.
+  or XML-comment changes require complete bilingual XML docs; DocFX is
+  regenerated when API output, generated documentation, or DocFX navigation
+  changes, followed by the matching web A11Y smoke check.
 - **Red-Green-Refactor testing scope**: Pass. Tasks must start with failing or
   missing smoke/test evidence for each example family, then implement the
   minimal required behavior and refactor only within touched boundaries.
@@ -240,7 +240,14 @@ docs/
 │   ├── architecture-risks.md
 │   └── adr/                 # only if new ADRs are needed
 └── security/
+    ├── asvs-verification.md
+    ├── arc42-security.md
+    ├── dependency-audit.md
+    ├── samm-assessment.md
+    ├── security-checklist.md
+    ├── security-quality-scenarios.md
     ├── supply-chain-evidence.md
+    ├── threat-model.md
     └── zero-trust-applicability.md
 ```
 
@@ -274,8 +281,9 @@ See [research.md](research.md). Key decisions:
   interaction, verify visible state, and assert clean completion.
 - `Demo` is broad but bounded: controls, dialogs, and gadget flows only.
 - `DlgDsn` proves structured dialog description creation/load, render, one
-  simple change, visible invalid-description rejection, and optional persisted
-  fixture through existing serialization.
+  simple change, visible rejection for malformed, incomplete, duplicate-control,
+  and invalid-navigation descriptions, and optional persisted fixture through
+  existing serialization.
 - `Sdlg`/`Sdlg2` prove scrollable dialog containers and do not own file/color/
   display/charset standard-dialog acceptance.
 - Guides, `examples/README.md`, `Pflichtenheft.md`, `docs/project-statistics.md`,
@@ -312,7 +320,7 @@ Every row must also appear in `examples/README.md`, the final wave-2 section of
 | Dynamic text | `dyntxt` | Predictable text/parameter update inside constrained bounds, including short and long values |
 | Scrollable dialogs | `sdlg`, `sdlg2` | Vertical scrolling for `sdlg`; horizontal and vertical scrolling for `sdlg2`; focus and visible state stay deterministic |
 | Standard dialogs | `demo`, `dlgdsn`, or another historically justified wave-2 flow | Local metadata, filters, manual path entry, cancellation, invalid paths, color/display/validation where represented, no file-content I/O |
-| Dynamic dialog design | `dlgdsn` | Structured description create/load, render, one simple change, visible rejection of malformed or incomplete descriptions |
+| Dynamic dialog design | `dlgdsn` | Structured description create/load, render, one simple change, visible rejection of malformed, incomplete, duplicate-control, and invalid-navigation descriptions |
 | Broad integration | `demo` | A coherent wave-2 controls/dialogs/gadget flow with editor/help/stream/terminal/mouse/charset behavior excluded or documented |
 
 ## Testing Strategy

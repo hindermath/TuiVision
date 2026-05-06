@@ -3,8 +3,10 @@
 ## Purpose
 
 Use this quickstart to validate the `011-port-wave2-examples` plan before task
-generation and again after implementation. The feature is accepted through
-eleven managed example projects, deterministic smoke tests, didactic guides, and
+generation where applicable and again after implementation. Command-based checks
+assume their matching setup or implementation tasks have created the required
+projects, references, and proof files. The feature is accepted through eleven
+managed example projects, deterministic smoke tests, didactic guides, and
 repository-visible proof updates.
 
 ## Prerequisites
@@ -39,7 +41,7 @@ repository-visible proof updates.
    - every accepted limitation has rationale, acceptance impact, earliest
      follow-up point, and traceable reference
 
-3. Verify example project registration:
+3. After T015 and T016, verify example project registration:
 
    ```bash
    dotnet sln TuiVision.sln list
@@ -84,7 +86,11 @@ repository-visible proof updates.
    dotnet format --verify-no-changes
    ```
 
-6. If public APIs, XML comments, or generated docs change:
+6. If public APIs, XML comments, generated docs, or DocFX navigation change:
+
+   Before generating documentation, keep new example/helper types internal when
+   no public API is intended. Public types that remain public need complete
+   German-first and English-second XML documentation.
 
    ```bash
    docfx docfx.json
@@ -101,8 +107,15 @@ repository-visible proof updates.
    - review existing `docs/security/` applicability files
    - record A11Y review path for terminal examples, smoke output, guides, and
      generated HTML docs when changed; otherwise record a justified N/A
+   - record platform evidence for current macOS validation plus Linux and
+     Windows/WSL where practical, or record an explicit N/A and follow-up path
+     for each missing environment
    - refresh agent context for Codex, Claude, Gemini, and Copilot after plan
      generation and again if implementation changes active context
+   - verify whether a matching `Lastenheft_*.md` exists; if yes, rename it with
+     `bash scripts/rename-lastenheft.sh <LH-file> 011-port-wave2-examples`,
+     otherwise record the explicit N/A rationale because this wave is driven
+     directly from `Pflichtenheft.md`
 
 ## Expected Outcomes
 

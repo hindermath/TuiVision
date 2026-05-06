@@ -7,6 +7,9 @@
 
 **Tests**: Required. The specification requires deterministic in-process smoke
 tests for every wave-2 example. Test tasks appear before implementation tasks.
+Before every `dotnet build` or `dotnet test` command in any task, increment the
+manual build counter in `Directory.Build.props` and keep `Version`,
+`AssemblyVersion`, and `FileVersion` aligned with the numbered-branch scheme.
 
 **Organization**: Tasks are grouped by setup/foundation, then by user story so
 each story can be implemented and validated independently.
@@ -29,7 +32,10 @@ source-review baseline shared by all stories.
   `git status --short --branch` is clean before implementation begins.
 - [ ] T002 Verify the installed Spec-Kit governance presets with
   `specify preset list`; confirm the all-six C#/.NET default or document an
-  exception in `specs/011-port-wave2-examples/quickstart.md`.
+  exception in `specs/011-port-wave2-examples/quickstart.md`. Also verify that
+  the `RiderProjects/TuiVision` row in the Level-2 Project Environment Registry
+  remains the binding runtime, build/test, A11Y, statistics, and agent-surface
+  context for this feature.
 - [ ] T003 Review original source files under
   `tv203s/contrib/tvision/examples/clipboard/`, `demo/`, `dlgdsn/`, `dyntxt/`,
   `inplis/`, `listvi/`, `progba/`, `sdlg/`, `sdlg2/`, `tcombo/`, and `tprogb/`;
@@ -104,16 +110,21 @@ that must exist before any user-story implementation is completed.
   introduced during implementation.
 - [ ] T024 Update `docs/security/supply-chain-evidence.md` to record that no
   new NuGet dependency is planned, or document any justified dependency found
-  during implementation.
+  during implementation; include the SBOM, VEX, SLSA/provenance, and releasable
+  example-artifact applicability decision for the new executable examples.
 - [ ] T025 Update `docs/security/zero-trust-applicability.md` to record that
   wave-2 local terminal examples do not introduce web/API/auth or remote service
   trust boundaries.
 - [ ] T026 Update or reference `docs/security/asvs-verification.md` with the
   justified `OWASP ASVS` N/A decision for this feature.
-- [ ] T027 Apply `NIST SSDF` and `CWE Top 25` review notes for generated code in
-  `docs/security/security-checklist.md`.
+- [ ] T027 Apply `NIST SSDF`, `CWE Top 25`, STRIDE, and CAPEC review notes for
+  generated code and local terminal-example trust boundaries in
+  `docs/security/security-checklist.md` and `docs/security/threat-model.md`.
 - [ ] T028 Run `dotnet list package --outdated` and record dependency-currency
-  evidence or N/A rationale in `docs/security/dependency-audit.md`.
+  evidence or N/A rationale in `docs/security/dependency-audit.md`; also update
+  or explicitly mark N/A for `docs/security/arc42-security.md`,
+  `docs/security/security-quality-scenarios.md`, and
+  `docs/security/samm-assessment.md`.
 
 **Checkpoint**: Shared smoke helpers and governance evidence are ready; story
 work can proceed in parallel.
@@ -127,7 +138,7 @@ proof, and historical scrollable dialog examples.
 
 **Independent Test**: Run
 `dotnet test tests/TuiVision.Examples.SmokeTests/ --filter
-"FullyQualifiedName~Demo|FullyQualifiedName~DlgDsn|FullyQualifiedName~Sdlg"`
+"FullyQualifiedName~Demo|FullyQualifiedName~DlgDsn|FullyQualifiedName~Sdlg|FullyQualifiedName~Sdlg2"`
 and confirm visible example-specific behavior for `demo`, `dlgdsn`, `sdlg`,
 and `sdlg2`.
 
@@ -137,11 +148,15 @@ and `sdlg2`.
 
 - [ ] T029 [P] [US1] Add `tests/TuiVision.Examples.SmokeTests/DemoSmokeTests.cs`
   covering startup, a broad controls/dialogs/gadget interaction, visible state,
-  and documented omission of editor/help/stream/terminal/mouse/charset behavior.
+  standard-dialog file/directory metadata without file-content I/O, wildcard
+  filtering, manual path entry, cancel and invalid-path decisions, color/display
+  selection, and documented omission of editor/help/stream/terminal/mouse/
+  charset behavior.
 - [ ] T030 [P] [US1] Add
   `tests/TuiVision.Examples.SmokeTests/DlgDsnSmokeTests.cs` covering structured
-  dialog description create/load, render, one simple change, and visible invalid
-  description rejection.
+  dialog description create/load, render, one simple change, and visible
+  rejection for malformed, incomplete, duplicate-control, and invalid-navigation
+  descriptions.
 - [ ] T031 [P] [US1] Add
   `tests/TuiVision.Examples.SmokeTests/SdlgSmokeTests.cs` covering vertical
   scrollable dialog behavior, deterministic focus movement, bounds, and visible
@@ -154,16 +169,20 @@ and `sdlg2`.
 ### Implementation for User Story 1
 
 - [ ] T033 [P] [US1] Implement `examples/Demo/DemoApp.cs` with wave-2-capable
-  controls, dialogs, and gadget flows only.
+  controls, standard dialogs, color/display selection, and gadget flows only;
+  keep file-dialog proof limited to local metadata, wildcard/manual-path state,
+  cancel/invalid decisions, and no file-content reads or writes.
 - [ ] T034 [US1] Implement `examples/Demo/Program.cs` and
   `examples/Demo/Demo.csproj` so `dotnet run --project examples/Demo` works and
   the app uses repository-wide .NET defaults.
 - [ ] T035 [P] [US1] Implement `examples/DlgDsn/DlgDsnApp.cs` with a structured
-  dialog description model, render flow, simple modification flow, and visible
-  invalid-description rejection.
+  dialog description model, render flow, simple modification flow, validated
+  symbolic dialog values, and visible rejection for malformed, incomplete,
+  duplicate-control, and invalid-navigation descriptions.
 - [ ] T036 [US1] Add source-controlled `dlgdsn` fixtures under
-  `examples/DlgDsn/Fixtures/` for one valid and one invalid dialog description,
-  using existing `TuiVision.Serialization`/resource primitives.
+  `examples/DlgDsn/Fixtures/` for one valid dialog description plus malformed,
+  incomplete, duplicate-control, and invalid-navigation rejection examples, using
+  existing `TuiVision.Serialization`/resource primitives.
 - [ ] T037 [US1] Implement `examples/DlgDsn/Program.cs` and
   `examples/DlgDsn/DlgDsn.csproj` so `dotnet run --project examples/DlgDsn`
   works and no new JSON/external format stack is introduced.
@@ -287,9 +306,9 @@ example has a guide, smoke evidence, and completion record.
 
 ### Tests and Review Tasks for User Story 3
 
-- [ ] T067 [P] [US3] Add text-first guide review notes to each new guide file
-  as part of the guide content, including expected interaction path and smoke or
-  run command.
+- [ ] T067 [P] [US3] Define the text-first guide review notes that T069-T079
+  must include in each new guide file, including expected interaction path and
+  smoke or run command.
 - [ ] T068 [US3] Review generated or user-facing documentation impact; if
   DocFX output changes, plan `docfx docfx.json` and
   `cd tests/web-a11y && npm run test:docfx`; otherwise record N/A rationale in
@@ -305,7 +324,8 @@ example has a guide, smoke evidence, and completion record.
   terminal/mouse/charset behavior, and validation command.
 - [ ] T071 [P] [US3] Create `docs/guides/examples/dlgdsn.md` with German
   section first, English section second, valid/invalid dialog description
-  workflow, accepted limitations, and validation command.
+  workflow, malformed/incomplete/duplicate-control/invalid-navigation rejection
+  notes, accepted limitations, and validation command.
 - [ ] T072 [P] [US3] Create `docs/guides/examples/dyntxt.md` with German
   section first, English section second, dynamic text workflow, boundary notes,
   and validation command.
@@ -332,59 +352,77 @@ example has a guide, smoke evidence, and completion record.
   validation command.
 - [ ] T080 [US3] Update `examples/README.md` with wave-2 example rows,
   original source folders, launch commands, and required support assets.
-- [ ] T081 [US3] Update `Pflichtenheft.md` to check off the wave-2 checklist
-  only after all examples, guides, and smoke tests pass.
-- [ ] T082 [US3] Move the `>>> NAECHSTER SCHRITT <<<` marker in
-  `Pflichtenheft.md` to wave 3 only after T081 is complete.
-- [ ] T083 [US3] Update `docs/project-statistics.md` with the completed
-  `011-port-wave2-examples` phase, observable work window, production/test/docs
-  line counts, evidence summary, and 80/125 lines-per-day comparison.
-- [ ] T084 [US3] Record final accepted limitations and Historical Example
+- [ ] T081 [US3] Update `docs/toc.yml` or the relevant DocFX navigation/index
+  surface so the new `docs/guides/examples/*.md` files are discoverable; if the
+  guides are intentionally indexed only through `examples/README.md`, record the
+  rationale in `docs/architecture/quality-scenarios.md`.
+- [ ] T082 [US3] Record final accepted limitations and Historical Example
   Parity Cleanup references in `docs/architecture/architecture-risks.md`.
-- [ ] T085 [US3] Refresh agent context for `codex`, `claude`, `gemini`, and
+- [ ] T083 [US3] Refresh agent context for `codex`, `claude`, `gemini`, and
   `copilot` with `.specify/scripts/bash/update-agent-context.sh` if active
   technologies, proof surfaces, next-step marker, or workflow guidance changed.
-- [ ] T086 [US3] If T085 changes shared guidance, synchronize affected
+- [ ] T084 [US3] If T083 changes shared guidance, synchronize affected
   `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`,
   `.github/copilot-instructions.md`, and
   `.github/agents/copilot-instructions.md` together.
 
-**Checkpoint**: US3 proof surfaces establish traceability from Pflichtenheft to
-examples, tests, guides, statistics, architecture, security, and A11Y evidence.
+**Checkpoint**: US3 proof surfaces establish traceability from examples to tests,
+guides, architecture, security, and A11Y evidence. Final Pflichtenheft marker,
+statistics, and PR evidence are completed only after Phase 6 validation passes.
 
 ---
 
 ## Phase 6: Final Validation And PR Preparation
 
 **Purpose**: Repository-level validation, coverage, formatting, dependency,
-documentation, and PR evidence.
+documentation, final proof updates, and PR evidence.
 
-- [ ] T087 Increment the manual build counter in `Directory.Build.props` before
-  the first implementation-phase `dotnet build` or `dotnet test` command.
-- [ ] T088 Run `dotnet build --configuration Release` and record the result in
+- [ ] T085 Increment the manual build counter in `Directory.Build.props` before
+  each final-validation `dotnet build` or `dotnet test` command below, and keep
+  `Version`, `AssemblyVersion`, and `FileVersion` aligned before the command
+  runs.
+- [ ] T086 Run `dotnet build --configuration Release` and record the result in
   the PR evidence.
-- [ ] T089 Run `dotnet test tests/TuiVision.Examples.SmokeTests/` and verify
+- [ ] T087 Run `dotnet test tests/TuiVision.Examples.SmokeTests/` and verify
   all 15 delivered examples are covered.
-- [ ] T090 Run `dotnet test` and record full-suite evidence.
-- [ ] T091 Run `dotnet test --collect:"XPlat Code Coverage"` and record
+- [ ] T088 Run `dotnet test` and record full-suite evidence.
+- [ ] T089 Run `dotnet test --collect:"XPlat Code Coverage"` and record
   assembly-specific evidence for the required `>=70%` coverage gate and the
   `>=80%` target tracking.
-- [ ] T092 Run `dotnet format --verify-no-changes` and record formatting
+- [ ] T090 Run `dotnet format --verify-no-changes` and record formatting
   evidence.
-- [ ] T093 If public APIs, XML comments, or generated docs changed, run
-  `docfx docfx.json`.
-- [ ] T094 If T093 ran, run `cd tests/web-a11y && npm run test:docfx` and record
+- [ ] T091 If public APIs, XML comments, generated docs, or DocFX navigation
+  changed, confirm new public types are either intentionally internalized or have
+  complete DE-first/EN-second XML docs, then run `docfx docfx.json`.
+- [ ] T092 If T091 ran, run `cd tests/web-a11y && npm run test:docfx` and record
   WCAG/text-first smoke evidence.
-- [ ] T095 Run `git diff --check` and resolve whitespace or conflict-marker
+- [ ] T093 Record platform evidence for the wave-2 examples: at minimum the
+  current macOS validation plus Linux and Windows/WSL command evidence where
+  practical; if Linux or Windows/WSL cannot be checked in this work item,
+  document the reason and follow-up path for each missing environment in the PR
+  evidence.
+- [ ] T094 Run `git diff --check` and resolve whitespace or conflict-marker
   issues.
-- [ ] T096 Review `.gitignore` and staged files to ensure no secrets, logs,
+- [ ] T095 Review `.gitignore` and staged files to ensure no secrets, logs,
   agent state, local history, generated cache, or `.specify/presets/.cache/`
   content is tracked.
-- [ ] T097 Prepare the PR summary with purpose, touched projects, tests run,
+- [ ] T096 Update `Pflichtenheft.md` to check off the wave-2 checklist only
+  after T086 through T095 pass or have a documented, accepted N/A rationale.
+- [ ] T097 Move the `>>> NAECHSTER SCHRITT <<<` marker in `Pflichtenheft.md` to
+  wave 3 only after T096 is complete.
+- [ ] T098 Update `docs/project-statistics.md` with the completed
+  `011-port-wave2-examples` phase, observable work window, production/test/docs
+  line counts, evidence summary, and 80/125 lines-per-day comparison.
+- [ ] T099 Prepare the PR summary with purpose, touched projects, tests run,
   coverage evidence, documentation/A11Y evidence, security/governance evidence,
   config/API impact, and accepted limitations.
-- [ ] T098 Confirm `Version`, `AssemblyVersion`, and `FileVersion` in
+- [ ] T100 Confirm `Version`, `AssemblyVersion`, and `FileVersion` in
   `Directory.Build.props` match the numbered-branch scheme before commit/push.
+- [ ] T101 As the last Polish task, verify whether a corresponding
+  `Lastenheft_*.md` exists for this feature; if yes, rename it with
+  `bash scripts/rename-lastenheft.sh <LH-file> 011-port-wave2-examples` and
+  include that rename before the final commit, otherwise document the explicit
+  N/A rationale because this wave is driven directly from `Pflichtenheft.md`.
 
 ---
 
@@ -397,9 +435,12 @@ documentation, and PR evidence.
 - Phase 3 US1 depends on Phase 2 and is the MVP.
 - Phase 4 US2 depends on Phase 2 and may run in parallel with US1 after shared
   infrastructure is ready.
-- Phase 5 US3 depends on implemented examples and smoke evidence for final
-  proof, but guide drafts can start in parallel once example scope is stable.
-- Phase 6 final validation depends on the desired story set being complete.
+- Phase 5 US3 depends on implemented examples and smoke evidence for guide,
+  architecture, security, and A11Y proof, but guide drafts can start in parallel
+  once example scope is stable.
+- Phase 6 final validation depends on the desired story set being complete and
+  owns the final Pflichtenheft marker, statistics ledger, PR evidence, and
+  Lastenheft rename or N/A decision.
 
 ### User Story Dependencies
 
@@ -425,7 +466,7 @@ documentation, and PR evidence.
 - T044-T050 can run in parallel.
 - T051/T053/T055/T057/T059/T061/T063 can run in parallel after their tests
   exist.
-- T069-T079 can run in parallel after example scope is stable.
+- T069-T081 can run in parallel after example scope is stable.
 
 ---
 
@@ -443,7 +484,7 @@ documentation, and PR evidence.
 1. Deliver core dialog/demo set (US1).
 2. Deliver focused widget set (US2).
 3. Deliver documentation and proof package (US3).
-4. Run final validation and prepare PR evidence.
+4. Run final validation, then update Pflichtenheft/statistics/PR evidence.
 
 ### Team Parallelization
 
