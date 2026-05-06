@@ -24,11 +24,22 @@ repository-visible proof updates.
    - `sdlg` and `sdlg2` are scrollable-dialog examples
    - `demo` and `dlgdsn` carry standard/dynamic dialog proof
    - no wave-3/4 example counts toward wave-2 completion
-   - no editor/help/terminal-emulation/runtime-mouse/real charset effect scope
+   - no editor/help/stream/terminal-emulation/runtime-mouse/real charset effect
+     scope
    - no file content I/O inside standard-dialog acceptance
    - broader `sdlg`/`sdlg2` parity cleanup is separated from wave-2 acceptance
 
-2. Verify example project registration:
+2. Review traceability before task generation:
+   - every Pflichtenheft wave-2 item maps to one planned project, smoke test,
+     guide, and proof path
+   - every `SC-001` through `SC-009` outcome maps to a concrete plan evidence
+     surface
+   - every interaction family from `SC-004` has an owning example and visible
+     proof path
+   - every accepted limitation has rationale, acceptance impact, earliest
+     follow-up point, and traceable reference
+
+3. Verify example project registration:
 
    ```bash
    dotnet sln TuiVision.sln list
@@ -38,7 +49,7 @@ repository-visible proof updates.
    Before `dotnet build`, increment the manual build counter in
    `Directory.Build.props` according to the repository versioning rule.
 
-3. Run focused smoke validation after implementation:
+4. Run focused smoke validation after implementation:
 
    ```bash
    dotnet test tests/TuiVision.Examples.SmokeTests/
@@ -51,11 +62,16 @@ repository-visible proof updates.
    - visible state is asserted for clipboard, list/input/history, combo,
      progress, dynamic text, scrollable dialogs, standard dialogs, dynamic
      dialog design, and broad demo integration
+   - boundary content is represented for lists, combo boxes, dynamic text, and
+     progress where the historical flow supports it
+   - dialog smoke paths include success plus applicable cancel, close, invalid,
+     or rejected states
+   - unavailable or isolated clipboard behavior is visible rather than skipped
    - `progba` reaches completion and `tprogb` reaches a visible canceled state
    - `sdlg` proves vertical scrollable-dialog behavior
    - `sdlg2` proves horizontal and vertical scrollable-dialog behavior
 
-4. Run repository validation:
+5. Run repository validation:
 
    Before each `dotnet build` and `dotnet test` command below, increment the
    manual build counter in `Directory.Build.props` according to the repository
@@ -68,7 +84,7 @@ repository-visible proof updates.
    dotnet format --verify-no-changes
    ```
 
-5. If public APIs, XML comments, or generated docs change:
+6. If public APIs, XML comments, or generated docs change:
 
    ```bash
    docfx docfx.json
@@ -76,14 +92,15 @@ repository-visible proof updates.
    npm run test:docfx
    ```
 
-6. Record completion evidence:
+7. Record completion evidence:
    - update `examples/README.md`
    - add eleven DE-first/EN-second guides under `docs/guides/examples/`
    - update `Pflichtenheft.md` wave-2 checklist and next-step marker
    - update `docs/project-statistics.md`
    - add/update lightweight architecture evidence under `docs/architecture/`
    - review existing `docs/security/` applicability files
-   - record A11Y review path for terminal examples and guides
+   - record A11Y review path for terminal examples, smoke output, guides, and
+     generated HTML docs when changed; otherwise record a justified N/A
    - refresh agent context for Codex, Claude, Gemini, and Copilot after plan
      generation and again if implementation changes active context
 

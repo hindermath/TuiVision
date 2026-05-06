@@ -60,6 +60,8 @@ in examples, tests, guides, and docs.
 - `FailureMode`
 - `HeadlessModeRequired`
 - `CrossPlatformNotes`
+- `BoundaryInputs`
+- `A11YReviewPath`
 
 **Validation rules**:
 - Startup plus clean exit is not sufficient.
@@ -68,6 +70,9 @@ in examples, tests, guides, and docs.
 - Assertions verify visible state or observable public example state, not
   private test-only implementation details.
 - Progress scenarios avoid wall-clock timing dependence.
+- Boundary inputs cover empty, minimal, first/last, constrained-width, or
+  maximum-value states where the example family supports them.
+- Smoke output remains text-first and keyboard-first.
 
 ## ExampleGuide
 
@@ -107,6 +112,8 @@ in examples, tests, guides, and docs.
 - Dynamic-dialog flows validate structured descriptions before rendering.
 - Scrollable-dialog flows prove scrolling, focus movement, bounds, and visible
   control state.
+- Dialog flows define visible success and non-success states, including cancel,
+  close, invalid selection, or failed validation where applicable.
 
 ## ScrollableDialogFlow
 
@@ -163,6 +170,49 @@ in examples, tests, guides, and docs.
 - `progba` reaches deterministic completion.
 - `tprogb` demonstrates progress plus abort/canceled state.
 - Tests must not depend on uncontrolled timers or wall-clock delay.
+
+## InteractionFamilyCoverage
+
+**Purpose**: Acceptance mapping from required interaction families to examples
+and proof paths.
+
+**Fields**:
+- `FamilyName`: `clipboard`, `list-input-history`, `combo`, `progress`,
+  `dynamic-text`, `scrollable-dialog`, `standard-dialog`, `dynamic-dialog`, or
+  `broad-demo`.
+- `OwningExamples`
+- `SmokeScenarios`
+- `GuidePaths`
+- `VisibleProof`
+- `BoundaryOrFailureCases`
+
+**Validation rules**:
+- Every family named in `SC-004` maps to at least one owning wave-2 example.
+- No family is satisfied only by startup or clean exit.
+- Standard-dialog proof cannot be assigned to `sdlg` or `sdlg2`.
+- Broad demo proof cannot count editor, help, stream, terminal, mouse, or real
+  charset behavior toward wave-2 acceptance.
+
+## AcceptedLimitation
+
+**Purpose**: Traceable record for intentionally reduced historical behavior.
+
+**Fields**:
+- `ExampleName`
+- `HistoricalBehavior`
+- `Reduction`
+- `Rationale`
+- `AcceptanceImpact`
+- `EarliestFollowUpPoint`
+- `TraceableReference`
+
+**Validation rules**:
+- Limitations cannot silently remove acceptance-critical behavior.
+- Limitations that affect later parity are referenced from the example guide or
+  architecture-risk notes.
+- `sdlg`/`sdlg2` limitations beyond their historical ScrollDialog/ScrollGroup
+  purpose are tracked as Historical Example Parity Cleanup and cannot block
+  wave-2 acceptance.
 
 ## HistoricalExampleParityCleanup
 

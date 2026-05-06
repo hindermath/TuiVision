@@ -21,8 +21,8 @@ generation.
 ## Scope Clarity
 
 - [x] CHK006 Wave-3/4 examples cannot satisfy wave-2 acceptance.
-- [x] CHK007 Editor, help, terminal emulation, runtime mouse, and real charset
-  effects are excluded from wave-2 acceptance.
+- [x] CHK007 Editor, help, stream, terminal emulation, runtime mouse, and real
+  charset effects are excluded from wave-2 acceptance.
 - [x] CHK008 File-content I/O is excluded from standard-dialog acceptance.
 - [x] CHK009 Historical Example Parity Cleanup is non-blocking and scheduled
   no earlier than after mandatory waves 1-4.

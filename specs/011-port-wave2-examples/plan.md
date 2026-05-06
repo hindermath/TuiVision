@@ -23,7 +23,8 @@ is implemented only where it blocks a required wave-2 example.
   `inplis`, `listvi`, `progba`, `sdlg`, `sdlg2`, `tcombo`, or `tprogb`.
 - **Historical purpose**: The observable behavior represented by the original
   example source under `tv203s/contrib/tvision/examples/`, excluding build
-  helper files and later-wave terminal, editor, help, mouse, or charset effects.
+  helper files and later-wave terminal, editor, help, stream, mouse, or charset
+  effects.
 - **Example-specific deterministic interaction**: A smoke-test path that sends
   or invokes at least one example-specific user-visible action and verifies the
   resulting visible state. Startup plus clean exit is insufficient.
@@ -43,40 +44,43 @@ is implemented only where it blocks a required wave-2 example.
 
 ## Technical Context
 
-**Language/Version**: C# `latest` / C# 14 on .NET 10 (`net10.0`)
-**Primary Dependencies**: Existing `TuiVision.Core`, `TuiVision.Controls`,
-`TuiVision.Serialization`, `TuiVision.Compatibility`, and
-`TuiVision.Drivers.Console`; existing Controls/Dialog/Serialization surfaces
-from features `008`, `009`, and `010`; MSTest 4.0.1; Coverlet collector for
-coverage; conditional DocFX and Playwright + axe documentation smoke tooling
-**Storage**: Runtime example state is in memory. Standard-dialog file flows use
-real local file-system metadata only. `dlgdsn` may use source-controlled
-fixtures for validated dialog descriptions. No database, no external service,
-and no user history persistence are planned.
-**Testing**: MSTest-based in-process smoke tests in
-`tests/TuiVision.Examples.SmokeTests/`, focused Controls/Serialization tests
-only if a missing framework behavior blocks an example, full repository
-`dotnet test`, Coverlet coverage evidence, `dotnet format --verify-no-changes`,
-and conditional DocFX + web A11Y smoke checks when API/docs output changes
-**Target Platform**: Managed terminal UI examples on macOS as the primary local
-workflow, with Linux and Windows/WSL compatibility evidence where practical
-**Project Type**: Multi-project .NET solution with reusable framework modules,
-console example applications, smoke-test project, guides, and proof documents
-**Performance Goals**: Example smoke interactions must be deterministic local
-event-loop flows with no unbounded background work. File-list examples may
-enumerate local metadata only for the selected directory/filter. Progress
-examples must advance predictably to completion or cancellation without timing-
-dependent assertions.
-**Constraints**: Preserve wave ordering; no wave-3/4 example counts toward
-wave-2 acceptance; no editor/help/terminal-emulation/runtime-mouse/real charset
-effect scope; no file content I/O in standard-dialog acceptance; keyboard-first
-and text-first flows; learner-facing guides are DE-first/EN-second at CEFR-B2;
-before implementation-phase build/test commands, increment the build counter in
-`Directory.Build.props` according to repository versioning rules
-**Scale/Scope**: 11 new example projects, 11 new example guides, smoke coverage
-for all 15 delivered examples after completion, updates to `examples/README.md`,
-`TuiVision.sln`, `Pflichtenheft.md`, `docs/project-statistics.md`, and required
-architecture/security/A11Y evidence
+- **Language/Version**: C# `latest` / C# 14 on .NET 10 (`net10.0`)
+- **Primary Dependencies**: Existing `TuiVision.Core`,
+  `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`,
+  and `TuiVision.Drivers.Console`; existing Controls/Dialog/Serialization
+  surfaces from features `008`, `009`, and `010`; MSTest 4.0.1; Coverlet
+  collector for coverage; conditional DocFX and Playwright + axe documentation
+  smoke tooling
+- **Storage**: Runtime example state is in memory. Standard-dialog file flows
+  use real local file-system metadata only. `dlgdsn` may use source-controlled
+  fixtures for validated dialog descriptions. No database, no external service,
+  and no user history persistence are planned.
+- **Testing**: MSTest-based in-process smoke tests in
+  `tests/TuiVision.Examples.SmokeTests/`, focused Controls/Serialization tests
+  only if a missing framework behavior blocks an example, full repository
+  `dotnet test`, Coverlet coverage evidence, `dotnet format --verify-no-changes`,
+  and conditional DocFX + web A11Y smoke checks when API/docs output changes
+- **Target Platform**: Managed terminal UI examples on macOS as the primary
+  local workflow, with Linux and Windows/WSL compatibility evidence where
+  practical
+- **Project Type**: Multi-project .NET solution with reusable framework modules,
+  console example applications, smoke-test project, guides, and proof documents
+- **Performance Goals**: Example smoke interactions must be deterministic local
+  event-loop flows with no unbounded background work. File-list examples may
+  enumerate local metadata only for the selected directory/filter. Progress
+  examples must advance predictably to completion or cancellation without
+  timing-dependent assertions.
+- **Constraints**: Preserve wave ordering; no wave-3/4 example counts toward
+  wave-2 acceptance; no editor/help/stream/terminal-emulation/runtime-mouse/real
+  charset effect scope; no file content I/O in standard-dialog acceptance;
+  keyboard-first and text-first flows; learner-facing guides are
+  DE-first/EN-second at CEFR-B2; before implementation-phase build/test
+  commands, increment the build counter in `Directory.Build.props` according to
+  repository versioning rules
+- **Scale/Scope**: 11 new example projects, 11 new example guides, smoke
+  coverage for all 15 delivered examples after completion, updates to
+  `examples/README.md`, `TuiVision.sln`, `Pflichtenheft.md`,
+  `docs/project-statistics.md`, and required architecture/security/A11Y evidence
 
 ## Constitution Check
 
@@ -181,7 +185,8 @@ specs/011-port-wave2-examples/
 │   └── wave2-example-acceptance.md
 ├── checklists/
 │   ├── requirements.md
-│   └── plan-quality.md
+│   ├── plan-quality.md
+│   └── plan-review.md
 └── tasks.md                 # created later by /speckit-tasks
 ```
 
@@ -256,7 +261,7 @@ See [research.md](research.md). Key decisions:
    in wave 2; record anything broader as Historical Example Parity Cleanup.
 4. Let `demo` and `dlgdsn` carry standard-dialog/dynamic-dialog proof.
 5. Keep file-content I/O, editor/help, terminal emulation, real charset effects,
-   and runtime mouse behavior out of wave-2 acceptance.
+   stream behavior, and runtime mouse behavior out of wave-2 acceptance.
 6. Reuse existing Serialization/resource primitives for `dlgdsn` fixtures.
 7. Treat architecture, security, A11Y, statistics, and guide updates as part of
    completion, not follow-up cleanup.
@@ -276,6 +281,39 @@ See [research.md](research.md). Key decisions:
 - Guides, `examples/README.md`, `Pflichtenheft.md`, `docs/project-statistics.md`,
   and architecture/security/A11Y evidence are updated in the same implementation
   phase.
+
+## Wave-2 Checklist Traceability
+
+| Pflichtenheft item | Project path | Smoke proof | Guide path | Primary acceptance proof |
+|-------------------|--------------|-------------|------------|--------------------------|
+| `clipboard` - Zwischenablage-Integration in Controls | `examples/Clipboard/` | `ClipboardSmokeTests.cs` | `docs/guides/examples/clipboard.md` | Copy/cut/paste, input-state update, unavailable or isolated clipboard state |
+| `demo` - Vollstaendige Turbo-Vision-Kerndemo | `examples/Demo/` | `DemoSmokeTests.cs` | `docs/guides/examples/demo.md` | Broad wave-2 controls/dialogs/gadget integration with later-wave behavior documented as omitted |
+| `dlgdsn` - Dialog-Designer | `examples/DlgDsn/` | `DlgDsnSmokeTests.cs` | `docs/guides/examples/dlgdsn.md` | Structured dialog description create/load, render, one simple change, invalid-description rejection |
+| `dyntxt` - Dynamisch erzeugter Text in Views | `examples/DynTxt/` | `DynTxtSmokeTests.cs` | `docs/guides/examples/dyntxt.md` | Dynamic text update inside constrained view bounds |
+| `inplis` - Eingabelisten mit `TInputLine` | `examples/InpLis/` | `InpLisSmokeTests.cs` | `docs/guides/examples/inplis.md` | Input/list/history synchronization with keyboard navigation |
+| `listvi` - Listenansichten mit `TListViewer` | `examples/ListVi/` | `ListViSmokeTests.cs` | `docs/guides/examples/listvi.md` | Visible selection movement and boundary navigation |
+| `progba` - Einfacher Fortschrittsbalken | `examples/ProgBa/` | `ProgBaSmokeTests.cs` | `docs/guides/examples/progba.md` | Deterministic progress through completion |
+| `sdlg` - Scrollbarer Dialog | `examples/Sdlg/` | `SdlgSmokeTests.cs` | `docs/guides/examples/sdlg.md` | Historical vertical `ScrollDialog`/`ScrollGroup` behavior |
+| `sdlg2` - Erweiterter scrollbarer Dialog | `examples/Sdlg2/` | `Sdlg2SmokeTests.cs` | `docs/guides/examples/sdlg2.md` | Historical horizontal and vertical `ScrollDialog`/`ScrollGroup` behavior |
+| `tcombo` - Kombinationsfelder | `examples/TCombo/` | `TComboSmokeTests.cs` | `docs/guides/examples/tcombo.md` | Combo-box selection and input synchronization |
+| `tprogb` - Erweiterter Fortschrittsbalken mit Abbruch | `examples/TProgB/` | `TProgBSmokeTests.cs` | `docs/guides/examples/tprogb.md` | Progress plus abort path with visible canceled state |
+
+Every row must also appear in `examples/README.md`, the final wave-2 section of
+`Pflichtenheft.md`, and the project statistics entry before wave 2 is accepted.
+
+## Interaction-Family Mapping
+
+| Interaction family | Planned examples | Required visible proof |
+|--------------------|------------------|------------------------|
+| Clipboard | `clipboard` | Copy, cut, paste, input state, and unavailable or isolated clipboard handling |
+| List/input/history | `inplis`, `listvi` | Keyboard navigation, selection movement, synchronized input/history/list state, empty and boundary content |
+| Combo box | `tcombo` | Keyboard selection, synchronized input value, visible selected value, empty and boundary choices |
+| Progress | `progba`, `tprogb` | Deterministic completion for `progba`; abort and visible canceled state for `tprogb`, without wall-clock assertions |
+| Dynamic text | `dyntxt` | Predictable text/parameter update inside constrained bounds, including short and long values |
+| Scrollable dialogs | `sdlg`, `sdlg2` | Vertical scrolling for `sdlg`; horizontal and vertical scrolling for `sdlg2`; focus and visible state stay deterministic |
+| Standard dialogs | `demo`, `dlgdsn`, or another historically justified wave-2 flow | Local metadata, filters, manual path entry, cancellation, invalid paths, color/display/validation where represented, no file-content I/O |
+| Dynamic dialog design | `dlgdsn` | Structured description create/load, render, one simple change, visible rejection of malformed or incomplete descriptions |
+| Broad integration | `demo` | A coherent wave-2 controls/dialogs/gadget flow with editor/help/stream/terminal/mouse/charset behavior excluded or documented |
 
 ## Testing Strategy
 
