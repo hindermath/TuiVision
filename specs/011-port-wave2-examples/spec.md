@@ -5,6 +5,16 @@
 **Status**: Draft  
 **Input**: User description: "Erstelle eine Spezifikation fuer `>>> NAECHSTER SCHRITT <<< Welle 2 - Controls und Dialoge` aus Pflichtenheft.md"
 
+## Clarifications
+
+### Session 2026-05-06
+
+- Q: What historical `demo` scope counts for wave-2 acceptance? -> A: `demo` ports only wave-2-capable controls, dialogs, and gadget flows; editor, help, terminal, and mouse-specific historical functions are documented as omitted or non-acceptance-relevant.
+- Q: What depth is required for wave-2 smoke tests? -> A: Each smoke test must trigger at least one example-specific deterministic interaction path and verify a visible result.
+- Q: What `dlgdsn` scope counts for wave-2 acceptance? -> A: `dlgdsn` must load or create a structured dialog description, show it as a dialog, demonstrate one simple change, and visibly reject invalid descriptions.
+- Q: What file-system scope counts for standard-dialog acceptance? -> A: Standard-dialog examples must show real file and directory metadata, filters, manual path entry, cancellation, and invalid paths; file-content I/O remains out of scope.
+- Q: What distinct progress behavior must `progba` and `tprogb` demonstrate? -> A: `progba` shows deterministic progress through completion; `tprogb` shows progress plus an abort path with a visible canceled state.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Run the core controls and dialogs demo set (Priority: P1)
@@ -13,13 +23,13 @@ As a maintainer, I want the wave-2 example set to run as reviewable applications
 
 **Why this priority**: `Pflichtenheft.md` marks wave 2 as the next required work item. The `demo`, `sdlg`, `sdlg2`, and `dlgdsn` examples are the broadest integration proof for the control and dialog layer.
 
-**Independent Test**: A reviewer can run the delivered wave-2 examples in headless or normal mode, observe deterministic startup and exit behavior, and verify that each example demonstrates its promised user flow without relying on private test-only behavior.
+**Independent Test**: A reviewer can run the delivered wave-2 examples in headless or normal mode, trigger at least one deterministic example-specific interaction path, observe the visible result, and verify that each example demonstrates its promised user flow without relying on private test-only behavior.
 
 **Acceptance Scenarios**:
 
 1. **Given** the wave-1 examples are already delivered, **When** a reviewer starts the wave-2 port set, **Then** all eleven wave-2 examples are present in the repository with consistent project metadata, executable entry points, and a short guide.
-2. **Given** `demo` is the broad integration example, **When** it is run, **Then** it presents a coherent controls-and-dialogs experience that exercises the wave-2 surface without pulling editor, help, terminal, or charset behavior into scope.
-3. **Given** `sdlg`, `sdlg2`, and `dlgdsn` are standard-dialog consumers, **When** they are run, **Then** file, directory, color, display, validation, and dynamic-dialog flows are visible as reusable user workflows.
+2. **Given** `demo` is the broad integration example, **When** it is run, **Then** it presents a coherent controls-and-dialogs experience that exercises the wave-2 surface without pulling editor, help, terminal, mouse-specific, or charset behavior into acceptance scope.
+3. **Given** `sdlg`, `sdlg2`, and `dlgdsn` are standard-dialog consumers, **When** they are run, **Then** file, directory, color, display, validation, and dynamic-dialog flows are visible as reusable user workflows, with standard file dialogs showing real metadata, filters, manual path entry, cancellation, and invalid-path handling without reading or writing file contents.
 
 ---
 
@@ -35,7 +45,7 @@ As a learner, I want each smaller wave-2 example to demonstrate one clear contro
 
 1. **Given** the `clipboard` example is selected, **When** the clipboard-oriented flow is exercised, **Then** the user can observe copy, cut, paste, and input-state behavior through the example surface.
 2. **Given** the `inplis`, `listvi`, and `tcombo` examples are selected, **When** keyboard navigation changes input, selection, history, or list state, **Then** the visible state stays synchronized and deterministic.
-3. **Given** the `progba` and `tprogb` examples are selected, **When** progress advances or cancellation is requested, **Then** the examples show running, completed, and canceled states without inconsistent labels or stale state.
+3. **Given** the `progba` and `tprogb` examples are selected, **When** progress advances or cancellation is requested, **Then** `progba` shows deterministic progress through completion and `tprogb` shows progress plus an abort path with a visible canceled state.
 4. **Given** the `dyntxt` example is selected, **When** dynamic values change, **Then** text output updates predictably and remains readable within the available view area.
 
 ---
@@ -61,6 +71,7 @@ As a project reviewer, I want wave-2 documentation, smoke evidence, and project 
 - Lists, combo boxes, and progress displays receive empty, very small, or boundary-sized content.
 - Clipboard access is unavailable or intentionally isolated in a headless test path.
 - A standard dialog points at a missing, unreadable, or manually entered path.
+- A standard dialog can inspect file or directory metadata but must not open, read, write, or save file contents as part of wave-2 acceptance.
 - A dynamic dialog description is malformed or incomplete.
 - Documentation generation or accessibility review is not affected by a specific example and therefore only needs recorded `N/A` reasoning.
 
@@ -69,14 +80,14 @@ As a project reviewer, I want wave-2 documentation, smoke evidence, and project 
 ### Functional Requirements
 
 - **FR-001**: The feature MUST deliver the eleven wave-2 examples named in `Pflichtenheft.md`: `clipboard`, `demo`, `dlgdsn`, `dyntxt`, `inplis`, `listvi`, `progba`, `sdlg`, `sdlg2`, `tcombo`, and `tprogb`.
-- **FR-002**: Each delivered example MUST have a runnable application surface, a deterministic smoke-test path, and a didactic guide.
+- **FR-002**: Each delivered example MUST have a runnable application surface, a deterministic smoke-test path, and a didactic guide. The smoke-test path MUST trigger at least one example-specific deterministic interaction and verify a visible result; startup plus clean exit alone is not sufficient for wave-2 completion.
 - **FR-003**: The wave-2 examples MUST prove controls and dialogs behavior only; editor, help, stream, terminal-emulation, charset, and runtime-mouse features MUST remain out of scope except where an example needs an explicit placeholder or documented limitation.
-- **FR-004**: `demo` MUST act as the broad integration example for wave-2 controls and dialogs and MUST not be accepted as complete if it only starts and exits without demonstrating meaningful user-visible flows.
-- **FR-005**: `sdlg` and `sdlg2` MUST demonstrate standard dialog flows for file or directory selection, color or display selection, validation, cancellation, and result reporting.
-- **FR-006**: `dlgdsn` MUST demonstrate dynamic or described dialog composition through a documented user workflow and MUST handle invalid or incomplete dialog descriptions as visible failures.
+- **FR-004**: `demo` MUST act as the broad integration example for wave-2 controls and dialogs and MUST not be accepted as complete if it only starts and exits without demonstrating meaningful user-visible flows. Historical `demo` functions outside wave 2, such as editor, help, terminal, mouse-specific, or charset behavior, MUST be documented as intentionally omitted or non-acceptance-relevant instead of being counted toward wave-2 completion.
+- **FR-005**: `sdlg` and `sdlg2` MUST demonstrate standard dialog flows for file or directory selection, color or display selection, validation, cancellation, and result reporting. File and directory dialogs MUST use real local file-system metadata, wildcard or filter behavior, manual path entry, cancellation, and invalid-path handling; opening, reading, writing, or saving file contents remains out of scope for wave-2 acceptance.
+- **FR-006**: `dlgdsn` MUST demonstrate dynamic or described dialog composition through a documented user workflow. It MUST load or create a structured dialog description, render it as a dialog, demonstrate one simple change to that description, and handle invalid or incomplete dialog descriptions as visible failures. Full historical property editors, code generation, and complete designer operation are not required for wave-2 acceptance.
 - **FR-007**: `clipboard` MUST demonstrate clipboard-oriented control interactions, including unavailable or isolated clipboard conditions.
 - **FR-008**: `inplis`, `listvi`, and `tcombo` MUST demonstrate input, list, history, selection, and combo-box interaction with synchronized visible state.
-- **FR-009**: `progba` and `tprogb` MUST demonstrate progress changes, completion, and cancellation or abort behavior.
+- **FR-009**: `progba` MUST demonstrate deterministic progress changes through completion. `tprogb` MUST demonstrate progress plus an abort path with a visible canceled state.
 - **FR-010**: `dyntxt` MUST demonstrate dynamic text or parameter output that updates predictably and stays readable within constrained view bounds.
 - **FR-011**: Every example guide MUST be German first and English second, use CEFR-B2-readable language, and remain useful in text-first assistive setups.
 - **FR-012**: The feature MUST update repository proof surfaces when scope changes, including the wave-2 checklist, the next-step marker, example documentation index points, and project statistics.
@@ -119,7 +130,7 @@ As a project reviewer, I want wave-2 documentation, smoke evidence, and project 
 
 ### Measurable Outcomes
 
-- **SC-001**: All eleven wave-2 examples can be started through their documented entry points and complete their smoke-test path without unhandled exceptions.
+- **SC-001**: All eleven wave-2 examples can be started through their documented entry points and complete an example-specific deterministic smoke-test interaction with a visible verified result and no unhandled exceptions.
 - **SC-002**: Each wave-2 example has one dedicated guide, so the number of example guides increases from 4 to 15.
 - **SC-003**: The example smoke suite includes coverage for all 15 delivered examples after this feature, including the 4 existing wave-1 examples and the 11 new wave-2 examples.
 - **SC-004**: At least one smoke scenario covers each required wave-2 interaction family: clipboard, list/input/history, combo box, progress, dynamic text, standard dialogs, dynamic dialog design, and broad demo integration.
