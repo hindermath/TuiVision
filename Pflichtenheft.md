@@ -275,8 +275,8 @@ Checkliste Welle 2:
 - [ ] `inplis` - Eingabelisten mit `TInputLine`
 - [ ] `listvi` - Listenansichten mit `TListViewer`
 - [ ] `progba` - Einfacher Fortschrittsbalken
-- [ ] `sdlg` - Standarddialoge (Datei-, Farb-, Zeichensatz-Auswahl)
-- [ ] `sdlg2` - Erweiterte Standarddialoge
+- [ ] `sdlg` - Scrollbarer Dialog mit `ScrollDialog`/`ScrollGroup` und vertikalem Scrollen
+- [ ] `sdlg2` - Erweiterter scrollbarer Dialog mit horizontalem und vertikalem Scrollen
 - [ ] `tcombo` - Kombinationsfelder (`TComboBox`)
 - [ ] `tprogb` - Erweiterter Fortschrittsbalken mit Abbruch
 
@@ -610,7 +610,7 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze
 
->>> NAECHSTER SCHRITT <<< Welle 2 – Controls und Dialoge: Die Framework-Voraussetzungen aus `008-controls-revision`, `009-controls-widgets-and-collections` und `010-standard-dialogs-designer` sind nachgewiesen; jetzt die 11 Controls-/Dialog-Beispiele portieren, beginnend mit `demo` und den Standarddialog-Verbrauchern `sdlg`, `sdlg2` und `dlgdsn`.
+>>> NAECHSTER SCHRITT <<< Welle 2 – Controls und Dialoge: Die Framework-Voraussetzungen aus `008-controls-revision`, `009-controls-widgets-and-collections` und `010-standard-dialogs-designer` sind nachgewiesen; jetzt die 11 Controls-/Dialog-Beispiele portieren, beginnend mit `demo`, dem dynamischen Dialog-Designer `dlgdsn` sowie den scrollbaren Dialogbeispielen `sdlg` und `sdlg2`.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

@@ -14,6 +14,8 @@
 - Q: What `dlgdsn` scope counts for wave-2 acceptance? -> A: `dlgdsn` must load or create a structured dialog description, show it as a dialog, demonstrate one simple change, and visibly reject invalid descriptions.
 - Q: What file-system scope counts for standard-dialog acceptance? -> A: Standard-dialog examples must show real file and directory metadata, filters, manual path entry, cancellation, and invalid paths; file-content I/O remains out of scope.
 - Q: What distinct progress behavior must `progba` and `tprogb` demonstrate? -> A: `progba` shows deterministic progress through completion; `tprogb` shows progress plus an abort path with a visible canceled state.
+- Q: What scope counts for `sdlg` and `sdlg2` acceptance? -> A: `sdlg` and `sdlg2` are accepted as complete wave-2 examples when they demonstrate their historical ScrollDialog and ScrollGroup behavior; standard-dialog flows are proven through `demo` or `dlgdsn`, and charset selection is only documented when not directly represented.
+- Q: When should parity work beyond the historical `sdlg` and `sdlg2` purpose be handled? -> A: Wave 2 completes `sdlg` and `sdlg2` for their real historical ScrollDialog and ScrollGroup purpose; anything beyond that is documented as separate Historical Example Parity Cleanup after the prioritized mandatory example waves.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -21,7 +23,7 @@
 
 As a maintainer, I want the wave-2 example set to run as reviewable applications so that the project can prove the controls and dialogs layer with real example flows instead of isolated component checks.
 
-**Why this priority**: `Pflichtenheft.md` marks wave 2 as the next required work item. The `demo`, `sdlg`, `sdlg2`, and `dlgdsn` examples are the broadest integration proof for the control and dialog layer.
+**Why this priority**: `Pflichtenheft.md` marks wave 2 as the next required work item. The `demo` and `dlgdsn` examples provide broad dialog and standard-dialog proof, while `sdlg` and `sdlg2` prove historical scrollable dialog containers.
 
 **Independent Test**: A reviewer can run the delivered wave-2 examples in headless or normal mode, trigger at least one deterministic example-specific interaction path, observe the visible result, and verify that each example demonstrates its promised user flow without relying on private test-only behavior.
 
@@ -29,7 +31,8 @@ As a maintainer, I want the wave-2 example set to run as reviewable applications
 
 1. **Given** the wave-1 examples are already delivered, **When** a reviewer starts the wave-2 port set, **Then** all eleven wave-2 examples are present in the repository with consistent project metadata, executable entry points, and a short guide.
 2. **Given** `demo` is the broad integration example, **When** it is run, **Then** it presents a coherent controls-and-dialogs experience that exercises the wave-2 surface without pulling editor, help, terminal, mouse-specific, or charset behavior into acceptance scope.
-3. **Given** `sdlg`, `sdlg2`, and `dlgdsn` are standard-dialog consumers, **When** they are run, **Then** file, directory, color, display, validation, and dynamic-dialog flows are visible as reusable user workflows, with standard file dialogs showing real metadata, filters, manual path entry, cancellation, and invalid-path handling without reading or writing file contents.
+3. **Given** `sdlg` and `sdlg2` are scrollable-dialog examples, **When** they are run, **Then** vertical and combined horizontal/vertical scrollable dialog behavior is visible through deterministic controls, bounds, focus, and scrolling state.
+4. **Given** `demo` and `dlgdsn` provide the wave-2 standard-dialog proof, **When** they are run, **Then** file, directory, color, display, validation, and dynamic-dialog flows are visible as reusable user workflows, with standard file dialogs showing real metadata, filters, manual path entry, cancellation, and invalid-path handling without reading or writing file contents; charset selection is documented as omitted or non-acceptance-relevant when it is not directly represented by the ported historical flow.
 
 ---
 
@@ -83,7 +86,8 @@ As a project reviewer, I want wave-2 documentation, smoke evidence, and project 
 - **FR-002**: Each delivered example MUST have a runnable application surface, a deterministic smoke-test path, and a didactic guide. The smoke-test path MUST trigger at least one example-specific deterministic interaction and verify a visible result; startup plus clean exit alone is not sufficient for wave-2 completion.
 - **FR-003**: The wave-2 examples MUST prove controls and dialogs behavior only; editor, help, stream, terminal-emulation, charset, and runtime-mouse features MUST remain out of scope except where an example needs an explicit placeholder or documented limitation.
 - **FR-004**: `demo` MUST act as the broad integration example for wave-2 controls and dialogs and MUST not be accepted as complete if it only starts and exits without demonstrating meaningful user-visible flows. Historical `demo` functions outside wave 2, such as editor, help, terminal, mouse-specific, or charset behavior, MUST be documented as intentionally omitted or non-acceptance-relevant instead of being counted toward wave-2 completion.
-- **FR-005**: `sdlg` and `sdlg2` MUST demonstrate standard dialog flows for file or directory selection, color or display selection, validation, cancellation, and result reporting. File and directory dialogs MUST use real local file-system metadata, wildcard or filter behavior, manual path entry, cancellation, and invalid-path handling; opening, reading, writing, or saving file contents remains out of scope for wave-2 acceptance.
+- **FR-005**: `sdlg` and `sdlg2` MUST be completed in wave 2 for their real historical ScrollDialog and ScrollGroup purpose, including vertical scrolling for `sdlg`, combined horizontal/vertical scrolling for `sdlg2`, focus movement, bounded content, and visible control state. That historical completion MUST NOT be deferred to a later wave, and the examples MUST NOT be used as the acceptance vehicle for unrelated file, color, display, or charset standard-dialog behavior.
+- **FR-005a**: Wave-2 standard-dialog proof MUST be demonstrated through `demo`, `dlgdsn`, or another historically justified wave-2 flow. File and directory dialogs MUST use real local file-system metadata, wildcard or filter behavior, manual path entry, cancellation, and invalid-path handling; opening, reading, writing, or saving file contents remains out of scope for wave-2 acceptance. Charset selection MUST be documented as omitted or non-acceptance-relevant when it is not directly represented by a ported historical wave-2 flow.
 - **FR-006**: `dlgdsn` MUST demonstrate dynamic or described dialog composition through a documented user workflow. It MUST load or create a structured dialog description, render it as a dialog, demonstrate one simple change to that description, and handle invalid or incomplete dialog descriptions as visible failures. Full historical property editors, code generation, and complete designer operation are not required for wave-2 acceptance.
 - **FR-007**: `clipboard` MUST demonstrate clipboard-oriented control interactions, including unavailable or isolated clipboard conditions.
 - **FR-008**: `inplis`, `listvi`, and `tcombo` MUST demonstrate input, list, history, selection, and combo-box interaction with synchronized visible state.
@@ -93,6 +97,7 @@ As a project reviewer, I want wave-2 documentation, smoke evidence, and project 
 - **FR-012**: The feature MUST update repository proof surfaces when scope changes, including the wave-2 checklist, the next-step marker, example documentation index points, and project statistics.
 - **FR-013**: The feature MUST record any skipped, deferred, or intentionally reduced historical behavior with a clear rationale and a traceable follow-up reference when it affects acceptance.
 - **FR-014**: The feature MUST preserve the wave ordering from `Pflichtenheft.md`: wave 3 cannot start until wave 2 is delivered and recorded.
+- **FR-015**: Any `sdlg` or `sdlg2` work beyond their historical ScrollDialog and ScrollGroup purpose MUST be documented as separate Historical Example Parity Cleanup, MUST NOT block wave-2 acceptance, and MUST be scheduled no earlier than after the prioritized mandatory example waves are complete.
 
 ### Constitution Requirements *(mandatory)*
 
@@ -125,6 +130,7 @@ As a project reviewer, I want wave-2 documentation, smoke evidence, and project 
 - **Dialog Flow**: A user-visible sequence for selecting, validating, cancelling, or reporting dialog state; key attributes are initial state, user action, result state, and failure behavior.
 - **Progress Flow**: A user-visible sequence for running, completing, or cancelling progress; key attributes are current value, final state, cancellation state, and visible text.
 - **Wave Proof Record**: The repository-visible evidence that the wave is complete; key attributes are checked Pflichtenheft item, updated next-step marker, statistics entry, and validation evidence.
+- **Historical Example Parity Cleanup**: A follow-up record for optional or expanded historical-example parity beyond wave acceptance; key attributes are affected example, omitted behavior, rationale, earliest scheduling point, and traceable reference.
 
 ## Success Criteria *(mandatory)*
 
@@ -133,11 +139,12 @@ As a project reviewer, I want wave-2 documentation, smoke evidence, and project 
 - **SC-001**: All eleven wave-2 examples can be started through their documented entry points and complete an example-specific deterministic smoke-test interaction with a visible verified result and no unhandled exceptions.
 - **SC-002**: Each wave-2 example has one dedicated guide, so the number of example guides increases from 4 to 15.
 - **SC-003**: The example smoke suite includes coverage for all 15 delivered examples after this feature, including the 4 existing wave-1 examples and the 11 new wave-2 examples.
-- **SC-004**: At least one smoke scenario covers each required wave-2 interaction family: clipboard, list/input/history, combo box, progress, dynamic text, standard dialogs, dynamic dialog design, and broad demo integration.
+- **SC-004**: At least one smoke scenario covers each required wave-2 interaction family: clipboard, list/input/history, combo box, progress, dynamic text, scrollable dialogs, standard dialogs, dynamic dialog design, and broad demo integration.
 - **SC-005**: A reviewer can trace every wave-2 checklist item in `Pflichtenheft.md` to an example project, a guide, and a smoke scenario.
 - **SC-006**: The feature records the next open work item after wave 2 by moving the next-step marker to wave 3 only after wave-2 proof is complete.
 - **SC-007**: No wave-3 or wave-4 example is counted toward wave-2 completion.
 - **SC-008**: User-facing documentation added by the feature passes a text-first review path and, when generated HTML is changed, the applicable accessibility smoke path is recorded.
+- **SC-009**: The wave-2 proof explicitly marks `sdlg` and `sdlg2` complete for their historical ScrollDialog and ScrollGroup purpose and separates any broader parity cleanup from wave-2 acceptance.
 
 ## Assumptions
 
@@ -147,3 +154,4 @@ As a project reviewer, I want wave-2 documentation, smoke evidence, and project 
 - Existing wave-1 smoke-test patterns remain the baseline for deterministic example validation.
 - Examples remain keyboard-first and text-first; terminal-mouse support is not required for wave-2 acceptance.
 - The feature may update documentation and statistics in the same work item because repository governance treats them as completion criteria.
+- Broader historical parity cleanup for `sdlg` and `sdlg2` is a follow-up topic after the prioritized mandatory example waves, not a reason to defer their wave-2 historical ScrollDialog and ScrollGroup completion.

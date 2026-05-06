@@ -33,5 +33,6 @@
 
 - Validation iteration 1 completed on 2026-05-05.
 - Validation iteration 2 completed on 2026-05-05 after Constitution v1.13.0; CR-011 and explicit `docs/architecture/` applicability are now reflected in the specification.
+- Validation iteration 3 completed on 2026-05-06 after clarification of `sdlg`/`sdlg2`; `Pflichtenheft.md` and the specification now both treat them as historical ScrollDialog/ScrollGroup examples, while broader parity cleanup is separated from wave-2 acceptance.
 - Governance details required by the local Spec-Kit preset are intentionally present in the Constitution Requirements and Governance Applicability sections. The primary language note is required by CR-005 and is not a design prescription.
-- No clarification markers remain; the feature is ready for `/speckit-clarify` or `/speckit-plan`.
+- No clarification markers remain; the feature is ready for `/speckit-plan`.
