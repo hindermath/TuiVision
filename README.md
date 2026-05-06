@@ -76,6 +76,39 @@ The historical Turbo Vision source tree used as input is located in:
 Use and redistribution of these files must follow their original licensing and
 copyright notices.
 
+## Spec-Kit-Governance-Presets / Spec Kit Governance Presets
+
+Alle sechs Governance-Presets sind seit 2026-05-04 im `github/spec-kit`
+Community-Katalog enthalten. Für C#/.NET-Level-2-Projekte ist die
+Standardentscheidung in dieser Workspace-Familie: alle sechs Presets
+installieren, sofern das Projekt keine begründete Ausnahme dokumentiert.
+
+Standard-Preset-Set:
+
+- `security-governance` v0.2.0, Priority 10
+- `architecture-governance` v0.2.0, Priority 20
+- `isaqb-architecture-governance` v0.1.0, Priority 30
+- `a11y-governance` v0.2.0, Priority 40
+- `cross-platform-governance` v0.1.0, Priority 50
+- `agent-parity-governance` v0.1.0, Priority 60
+
+Nach Installation oder Update prüfen:
+
+```bash
+specify preset list
+specify preset info security-governance
+specify preset resolve constitution-template.md
+```
+
+Wenn Presets Projekt-Policy sind, `.specify/presets/` und erzeugte
+Agenten-/Command-Dateien committen; `.specify/presets/.cache/` nicht committen.
+
+*All six governance presets are included in the `github/spec-kit` community
+catalog as of 2026-05-04. C#/.NET Level-2 projects default to all six presets
+unless a justified exception is documented. Commit `.specify/presets/` and
+generated agent/command files when presets are project policy; do not commit
+`.specify/presets/.cache/`.*
+
 ## Barrierefreiheit / Accessibility (A11Y)
 
 Dieses Projekt folgt grundlegenden Barrierefreiheitsstandards für alle

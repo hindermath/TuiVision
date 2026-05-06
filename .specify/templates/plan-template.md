@@ -78,6 +78,12 @@
   `docs/security/zero-trust-applicability.md`, and
   `docs/security/samm-assessment.md`. If the repository uses an equivalent
   governance location, state that path explicitly and justify the deviation.
+- **Spec-Kit presets**: List installed governance presets and confirm their
+  applicability. For C#/.NET Level-2 projects, default to all six
+  home-baseline presets (`security-governance`, `architecture-governance`,
+  `isaqb-architecture-governance`, `a11y-governance`,
+  `cross-platform-governance`, `agent-parity-governance`) unless a justified
+  exception is documented.
 - **Security-first**: Confirm no credential files, agent state, logs, history,
   or SQLite state are planned for tracking.
 - **Inclusion/A11Y**: Identify affected user-facing artefacts and the WCAG 2.2

@@ -846,11 +846,51 @@ Any expansion of the surgical subdirectory exception (Principle I) MUST include
 a security justification confirming no credentials are present in the newly
 allowed path.
 
+**Spec Kit preset governance**: The standard governance preset set for this
+workspace family consists of:
+
+| Preset | Version | Priority | Scope |
+|---|---:|---:|---|
+| `security-governance` | `v0.2.0` | `10` | secure development, MSL, SSDF, ASVS, SBOM/VEX/SLSA, CRA awareness |
+| `architecture-governance` | `v0.2.0` | `20` | secure architecture, STRIDE/CAPEC, Zero Trust, SAMM, S-ADR |
+| `isaqb-architecture-governance` | `v0.1.0` | `30` | general iSAQB/arc42 architecture governance |
+| `a11y-governance` | `v0.2.0` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts |
+| `cross-platform-governance` | `v0.1.0` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
+| `agent-parity-governance` | `v0.1.0` | `60` | synchronized agent guidance across declared AI-agent files |
+
+All six presets are published as standalone repositories under
+`https://github.com/hindermath/spec-kit-preset-*` and are included in the
+`github/spec-kit` community preset catalog as of 2026-05-04. New Level-2
+projects SHOULD install the applicable subset during Spec-Kit initialization.
+For C#/.NET Level-2 projects, the default subset is all six presets unless the
+project documents a narrow reason to omit one. Existing C# Level-2 projects
+`RiderProjects/TinyPl0`, `RiderProjects/TinyCalc`, `RiderProjects/TuiVision`,
+and `RiderProjects/InventarWorkerService` are the reference rollout set for
+all-six installation.
+
+Use the community catalog when supported by the local `specify` CLI. Use
+versioned GitHub ZIP URLs when a reproducible release pin is required. Commit
+`.specify/presets/` and all generated agent-command updates when presets are
+project policy. Do not commit `.specify/presets/.cache/`. Preset updates MUST
+be verified with `specify preset list`, at least one `specify preset info`, and
+where relevant `specify preset resolve`.
+
+Local working clones of the published preset repositories live under
+`~/SpecKitPresetProjects/`. Canonical scaffolds in this repository live under
+`specs/spec-kit-presets/` and `specs/spec-kit-preset-repos/`. Preset
+improvements SHOULD be made in the home-baseline scaffold first, propagated to
+the affected standalone preset repositories, committed, pushed, and smoke-tested
+via the GitHub ZIP URL before use in dependent projects. Preset-rule changes
+MUST review whether `constitution.md`, `.specify/memory/constitution.md`,
+`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and
+the relevant templates under `scripts/templates/` need matching updates.
+Community/catalog coordination is tracked in `github/spec-kit#2362`.
+
 **Runtime guidance**: Use `AGENTS.md` / `CLAUDE.md` / `GEMINI.md` /
 `.github/copilot-instructions.md` for per-agent operational guidance. This
 constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.13.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-05-05
+**Version**: 1.13.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-05-06
 
 ## Level-2 Project Environment Addendum / Level-2-Projektumgebung
 
