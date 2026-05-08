@@ -153,7 +153,8 @@ in examples, tests, guides, and docs.
 - Control IDs are unique within one description.
 - Required labels are present.
 - Navigation references known controls.
-- Invalid or incomplete descriptions are visibly rejected.
+- Malformed, incomplete, duplicate-control, or invalid-navigation descriptions
+  are visibly rejected.
 - One simple modification is demonstrable before or after rendering.
 
 ## ProgressFlow

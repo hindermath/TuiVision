@@ -22,7 +22,9 @@ repository-visible proof updates.
 ## Planned Validation Flow
 
 1. Confirm scope boundaries:
-   - exactly eleven wave-2 examples are added
+   - exactly eleven wave-2 examples are added: `clipboard`, `demo`, `dlgdsn`,
+     `dyntxt`, `inplis`, `listvi`, `progba`, `sdlg`, `sdlg2`, `tcombo`, and
+     `tprogb`
    - `sdlg` and `sdlg2` are scrollable-dialog examples
    - `demo` and `dlgdsn` carry standard/dynamic dialog proof, and no third
      example is admissible as a standard-dialog acceptance vehicle
@@ -67,8 +69,9 @@ repository-visible proof updates.
    - visible state is asserted for clipboard, list/input/history, combo,
      progress, dynamic text, scrollable dialogs, standard dialogs, dynamic
      dialog design, and broad demo integration
-   - boundary content is represented for lists, combo boxes, dynamic text, and
-     progress where the historical flow supports it
+   - boundary content is represented for lists, combo boxes, dynamic text,
+     progress, and scrollable-dialog bounds where the historical flow supports
+     it
    - dialog smoke paths include success plus applicable cancel, close, invalid,
      or rejected states
    - unavailable or isolated clipboard behavior is visible rather than skipped

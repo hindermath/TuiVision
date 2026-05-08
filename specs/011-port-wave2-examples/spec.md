@@ -75,7 +75,8 @@ As a project reviewer, I want wave-2 documentation, smoke evidence, and project 
 - Clipboard access is unavailable or intentionally isolated in a headless test path.
 - A standard dialog points at a missing, unreadable, or manually entered path.
 - A standard dialog can inspect file or directory metadata but must not open, read, write, or save file contents as part of wave-2 acceptance.
-- A dynamic dialog description is malformed or incomplete.
+- A dynamic dialog description is malformed, incomplete, has duplicate control
+  IDs, or references invalid navigation targets.
 - Documentation generation or accessibility review is not affected by a specific example and therefore only needs recorded `N/A` reasoning.
 
 ## Requirements *(mandatory)*
@@ -88,7 +89,7 @@ As a project reviewer, I want wave-2 documentation, smoke evidence, and project 
 - **FR-004**: `demo` MUST act as the broad integration example for wave-2 controls and dialogs and MUST not be accepted as complete if it only starts and exits without demonstrating meaningful user-visible flows. Historical `demo` functions outside wave 2, such as editor, help, terminal, mouse-specific, or charset behavior, MUST be documented as intentionally omitted or non-acceptance-relevant instead of being counted toward wave-2 completion.
 - **FR-005**: `sdlg` and `sdlg2` MUST be completed in wave 2 for their real historical ScrollDialog and ScrollGroup purpose, including vertical scrolling for `sdlg`, combined horizontal/vertical scrolling for `sdlg2`, focus movement, bounded content, and visible control state. That historical completion MUST NOT be deferred to a later wave, and the examples MUST NOT be used as the acceptance vehicle for unrelated file, color, display, or charset standard-dialog behavior.
 - **FR-005a**: Wave-2 standard-dialog proof MUST be demonstrated through `demo` and `dlgdsn`; no third example is permitted as a standard-dialog acceptance vehicle in wave 2. File and directory dialogs MUST use real local file-system metadata, wildcard or filter behavior, manual path entry, cancellation, and invalid-path handling; opening, reading, writing, or saving file contents remains out of scope for wave-2 acceptance. Charset selection MUST be documented as omitted or non-acceptance-relevant when it is not directly represented by a ported historical wave-2 flow.
-- **FR-006**: `dlgdsn` MUST demonstrate dynamic or described dialog composition through a documented user workflow. It MUST load or create a structured dialog description, render it as a dialog, demonstrate one simple change to that description, and handle invalid or incomplete dialog descriptions as visible failures. Full historical property editors, code generation, and complete designer operation are not required for wave-2 acceptance.
+- **FR-006**: `dlgdsn` MUST demonstrate dynamic or described dialog composition through a documented user workflow. It MUST load or create a structured dialog description, render it as a dialog, demonstrate one simple change to that description, and handle malformed, incomplete, duplicate-control, or invalid-navigation dialog descriptions as visible failures. Full historical property editors, code generation, and complete designer operation are not required for wave-2 acceptance.
 - **FR-007**: `clipboard` MUST demonstrate clipboard-oriented control interactions, including unavailable or isolated clipboard conditions.
 - **FR-008**: `inplis`, `listvi`, and `tcombo` MUST demonstrate input, list, history, selection, and combo-box interaction with synchronized visible state.
 - **FR-009**: `progba` MUST demonstrate deterministic progress changes through completion. `tprogb` MUST demonstrate progress plus an abort path with a visible canceled state.

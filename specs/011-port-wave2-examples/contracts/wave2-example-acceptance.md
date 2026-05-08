@@ -36,7 +36,8 @@ German-first and English-second XML documentation complete.
   editor, help, stream, terminal, runtime-mouse, or real charset-effect
   acceptance.
 - `dlgdsn`: creates or loads a structured dialog description, renders it,
-  demonstrates one simple change, and visibly rejects invalid descriptions.
+  demonstrates one simple change, and visibly rejects malformed, incomplete,
+  duplicate-control, or invalid-navigation descriptions.
 - `dyntxt`: demonstrates dynamic text or parameter output that updates
   predictably inside constrained view bounds.
 - `inplis`: demonstrates input-list behavior with `TInputLine`, synchronized
