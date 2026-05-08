@@ -947,6 +947,11 @@ modules.xml
 tests/web-a11y/playwright-report/
 tests/web-a11y/test-results/
 
+# Generated DocFX output
+/_site/
+/api/*
+!/api/index.md
+
 # Spec-Kit Presets (Policy-Dateien tracken, lokalen Cache ignorieren)
 !.specify/presets/
 !.specify/presets/**
