@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-05-09 (aktualisiert inklusive Branch `011-port-wave2-examples`, Wave-2-Beispielen und Lastenheft fuer interaktive Wave-2-Demos)
+Stand: 2026-05-09 (aktualisiert inklusive Branch `011-port-wave2-examples`, Wave-2-Beispielen, Lastenheft fuer interaktive Wave-2-Demos und DocFX-Generated-Output-Cleanup)
 
 ## Zweck und Pflege
 
@@ -77,17 +77,17 @@ fortgeschrieben.
 | Kennzahl | Wert |
 |---|---:|
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-05-09 |
-| Git-Commits gesamt | 298 |
+| Git-Commits gesamt | 299 |
 | Autoren laut Git | 1 |
 | Sichtbare Aktivtage inkl. aktuellem Working Tree | 20 |
 | Produktionscode aktuell | 159 Dateien / 18303 Zeilen |
 | Testcode aktuell | 96 Dateien / 12625 Zeilen |
-| Dokumentation aktuell | 310 Dateien / 37520 Zeilen |
+| Dokumentation aktuell | 310 Dateien / 37522 Zeilen |
 | Davon Spec-Kit-Artefakte | 104 Dateien / 18934 Zeilen |
 | Davon Governance/Agent-Dateien | 5 Dateien / 1534 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 68448 Zeilen |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 68450 Zeilen |
 | Erfahrener Entwickler, konservative Untergrenze | 855.6 Arbeitstage |
-| Erfahrener Entwickler, konservative Untergrenze in Stunden | 6673.7 Stunden (855.6 * 7.8) |
+| Erfahrener Entwickler, konservative Untergrenze in Stunden | 6673.9 Stunden (855.6 * 7.8) |
 | Erfahrener Entwickler, brutto | 39.8 Arbeitsmonate (21.5 Tage/Monat) |
 | Erfahrener Entwickler, TVoeD-Annahme | 45.0 Kalendermonate bzw. 3.8 Jahre |
 | Thorsten solo, erfahrungsadjustierte Untergrenze | 547.6 Arbeitstage |
@@ -419,7 +419,7 @@ fortgeschrieben.
 
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
-- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 68448 Zeilen
+- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 68450 Zeilen
   (Produktionscode + Tests + Dokumentation).
 - Selbst mit der fuer klassische Entwicklung guenstigen Obergrenze von
   80 manuell erstellten Zeilen pro Arbeitstag ergibt sich bereits eine
@@ -543,6 +543,7 @@ fortgeschrieben.
 | 2026-05-03 | Analyse-Follow-up fuer `010-standard-dialogs-designer` | Die drei vor dem Commit priorisierten Cross-Check-Funde wurden geschlossen: ein positiver Runtime-Factory-Test fuer gueltige Dialogbeschreibungen, ein Adapter-Test fuer semantisch ungueltige persistierte Dialogbeschreibungen und die Fortschreibung des finalen Gesamtstatistikblocks inklusive 010-Balken- und X/Y-Diagrammen. Validierung: `dotnet format --verify-no-changes`, `dotnet build --configuration Release`, `dotnet test` mit 441/441 Tests, `docfx docfx.json` und `npm run test:docfx` mit 2/2 Playwright/Axe-Smoke-Tests gruen. Sichtbares Arbeitsfenster: 1 kurze Agenten-Nacharbeit am 2026-05-03, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 | 2026-05-08 | `/speckit-implement` fuer `011-port-wave2-examples` | Welle 2 der MUSS-Beispiele wurde portiert: `clipboard`, `demo`, `dlgdsn`, `dyntxt`, `inplis`, `listvi`, `progba`, `sdlg`, `sdlg2`, `tcombo` und `tprogb`; zusaetzlich wurde `TScrollGroup` als minimale Controls-Basis fuer scrollbare Dialoge eingefuehrt. Validierung: `dotnet build --configuration Release` (0 Fehler, 0 Warnungen), `dotnet test tests/TuiVision.Examples.SmokeTests/` mit 58/58 Tests und allen 15 gelieferten Beispielen, `dotnet test` mit 463/463 Tests, `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings` mit gate-relevanten Cobertura-Werten (`Core` 89,74 %, `Controls` 83,82 %, `Serialization` 86,66 %, `Compatibility` 80,95 %, `Drivers.Console` 76,28 %), `dotnet format --verify-no-changes`, `docfx docfx.json`, `npm run test:docfx` mit 2/2 Playwright/Axe-Smoke-Tests und `git diff --check` gruen. Netto-Aenderungsvolumen ohne generierte DocFX-Ausgabe: `+1646` Produktions-/Beispielzeilen, `+710` Testzeilen, `+947` Dokumentations-/Nachweiszeilen; zusaetzlich `+5753` netto in generierten `api/`- und `_site/`-Artefakten sowie `+165` Loesungs-/Versionsmetadaten. Konservative Manualreferenz fuer die `3303` manuell zu pruefenden Netto-Zeilen: `41,3` Tage (ca. `322,0` Stunden); Thorsten-Solo-Referenz: `26,4` Tage (ca. `206,1` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-05-08, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 | 2026-05-09 | Lastenheft fuer interaktive Wave-2-Demos | Nach dem Merge von `011-port-wave2-examples` wurde `Lastenheft_Interactive-Wave2-Demos.md` als Eingabedatei fuer den naechsten Spec-Kit-Specify-Lauf angelegt. Das Dokument haelt die Review-Erkenntnis fest, dass die Wave-2-Beispiele zwar smoke-testbare Nachweisobjekte sind, beim normalen CLI-Start aber echte sichtbare Menue-/Tastaturpfade, Status-/Desktop-Rueckmeldungen und geskriptete UI-Event-Smokes benoetigen. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+288` Lastenheft-Dokumentationszeilen. Konservative Manualreferenz: 80 Zeilen/Tag = `3,6` Tage (ca. `28,1` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `2,3` Tage (ca. `18,0` Stunden); sichtbares Arbeitsfenster: kurze Agenten-Nacharbeit am 2026-05-09, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
+| 2026-05-09 | Generierte DocFX-Ausgabe aus dem Git-Tracking genommen | `_site/` und die generierten Dateien unter `api/` wurden als DocFX-Output in `.gitignore` verankert und mit `git rm -r --cached _site api` nur aus dem Git-Index entfernt. Lokal bleiben die Artefakte vorhanden und regenerierbar; neue `api/index.md`-Handseiten bleiben ausdruecklich trackbar. Netto-Aenderungsvolumen fuer die fachliche Handarbeitsbasis: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen; die 750 vormals getrackten Generated-Output-Dateien sind bewusst kein fachlicher Lieferumfang. Validierung: `git check-ignore` bestaetigt `_site/` und generierte `api/*.yml`, `git ls-files _site api` ist leer. |
 
 ## Gesamtstatistik
 
@@ -552,18 +553,18 @@ Phasenwerte aus den Abschnitten `## Gesamtstand des Repositories` und
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | `68448` Zeilen |
+| Artefaktbasis gesamt | `68450` Zeilen |
 | Produktions- und Testcode zusammen | `30928` Zeilen (`45.2 %`) |
-| Dokumentationsanteil | `37520` Zeilen (`54.8 %`) |
+| Dokumentationsanteil | `37522` Zeilen (`54.8 %`) |
 | Spec-Kit-Anteil innerhalb der Doku | `18934` Zeilen (`50.5 %`) |
 | Governance-/Agent-Anteil innerhalb der Doku | `1534` Zeilen (`4.1 %`) |
 | Beobachtbarer Projektzeitraum | `2026-02-08` bis `2026-05-09` |
-| Git-Commits pro sichtbarem Aktivtag | `14.9` (`298 / 20`) |
-| Dokumentierte Gesamtzeilen pro sichtbarem Aktivtag | `3422.4` (`68448 / 20`) |
-| Dokumentierte Gesamtzeilen pro Commit | `229.7` (`68448 / 298`) |
-| Konservative Einzelentwickler-Untergrenze | `855.6` Arbeitstage / `6673.7` Stunden |
+| Git-Commits pro sichtbarem Aktivtag | `15.0` (`299 / 20`) |
+| Dokumentierte Gesamtzeilen pro sichtbarem Aktivtag | `3422.5` (`68450 / 20`) |
+| Dokumentierte Gesamtzeilen pro Commit | `228.9` (`68450 / 299`) |
+| Konservative Einzelentwickler-Untergrenze | `855.6` Arbeitstage / `6673.9` Stunden |
 | Thorsten-Solo-Untergrenze | `547.6` Arbeitstage / `4271.3` Stunden |
-| Kleines 3er-Team mit Koordinationsaufschlag | `342.2` Arbeitstage |
+| Kleines 3er-Team mit Koordinationsaufschlag | `342.3` Arbeitstage |
 | Repo-weiter Speedup gg. 80-Zeilen-Referenz | `42.8x` |
 | Repo-weiter Speedup gg. Thorsten-Referenz | `27.4x` |
 
@@ -572,8 +573,8 @@ Die aktuell dokumentierte Basis zeigt weiter ein starkes Verhaeltnis zwischen
 Code (`45.2 %`) und Dokumentation (`54.8 %`). Welle 2 erhoeht den sichtbaren
 Beispiel- und Smoke-Test-Anteil deutlich, waehrend der Spec-Kit-/Nachweisanteil
 innerhalb der Doku weiterhin hoch bleibt. Der aktuelle Arbeitsbaum enthaelt
-jetzt auch `011-port-wave2-examples` und das Lastenheft fuer interaktive
-Wave-2-Demos im Snapshot. Die dokumentierten
+jetzt auch `011-port-wave2-examples`, das Lastenheft fuer interaktive
+Wave-2-Demos und den DocFX-Generated-Output-Cleanup im Snapshot. Die dokumentierten
 Beschleunigungsfaktoren zeigen dabei nicht eine Stoppuhr, sondern die sichtbare
 Verdichtung durch agentische KI plus Spec-Kit-/SDD-gestuetzte Artefakt- und
 Liefergeschwindigkeit.
@@ -584,7 +585,7 @@ Liefergeschwindigkeit.
 Artefaktmix nach aktuell dokumentiertem Snapshot (Zeilen)
 Produktion     | ###############                | 18303 | 26.7 %
 Tests          | ##########                     | 12625 | 18.4 %
-Dokumentation  | ############################## | 37520 | 54.8 %
+Dokumentation  | ############################## | 37522 | 54.8 %
 ```
 
 Der Artefaktmix zeigt, wie sich der aktuelle Repository-Snapshot auf
