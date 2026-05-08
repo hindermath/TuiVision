@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Coverlet runsettings for the repository-wide coverage gate.
+
+  Pflichtenheft / Spec-Kit binding:
+  - The hard gate (>=70% line coverage per required assembly) applies ONLY to
+    the five framework modules listed under <Include> below: TuiVision.Core,
+    TuiVision.Controls, TuiVision.Serialization, TuiVision.Compatibility, and
+    TuiVision.Drivers.Console.
+  - Example application assemblies (4 wave-1 + 11 wave-2) and every *.Tests
+    project are intentionally excluded from the gate aggregation. Smoke tests
+    remain required proof of behaviour but do not replace per-module coverage.
+  - The >=80% target documented in plan.md is informational tracking only and
+    does not block acceptance.
+
+  Usage: run dotnet test with the XPlat Code Coverage collector and this
+  repository-root coverlet.runsettings file. The exact command is documented in
+  specs/011-port-wave2-examples/tasks.md and quickstart.md.
+-->
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="XPlat code coverage">
+        <Configuration>
+          <Format>cobertura</Format>
+          <Include>[TuiVision.Core]*,[TuiVision.Controls]*,[TuiVision.Serialization]*,[TuiVision.Compatibility]*,[TuiVision.Drivers.Console]*</Include>
+          <Exclude>[Desklogo]*,[MsgCls]*,[Tutorial]*,[Videomode]*,[Clipboard]*,[Demo]*,[DlgDsn]*,[DynTxt]*,[InpLis]*,[ListVi]*,[ProgBa]*,[Sdlg]*,[Sdlg2]*,[TCombo]*,[TProgB]*,[TuiVision.Core.Tests]*,[TuiVision.Controls.Tests]*,[TuiVision.Serialization.Tests]*,[TuiVision.Compatibility.Tests]*,[TuiVision.Drivers.Tests]*,[TuiVision.Examples.SmokeTests]*</Exclude>
+          <ExcludeByAttribute>Obsolete,GeneratedCodeAttribute,CompilerGeneratedAttribute</ExcludeByAttribute>
+          <SingleHit>false</SingleHit>
+          <UseSourceLink>true</UseSourceLink>
+          <IncludeTestAssembly>false</IncludeTestAssembly>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>

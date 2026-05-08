@@ -15,3 +15,18 @@
 -->
 
 [Zu befuellen / To be populated — see template]
+
+## 011-port-wave2-examples
+
+Datum: 2026-05-08.
+
+OWASP ASVS ist fuer diese Feature-Arbeit N/A. Es wird kein Web-Frontend, keine
+HTTP-API, keine Authentifizierung, keine Session-Verwaltung und kein
+Berechtigungsmodell eingefuehrt. Die passenden Nachweise liegen stattdessen in
+`security-checklist.md`, `threat-model.md`, `dependency-audit.md` und den
+Smoke-/Controls-Tests.
+
+OWASP ASVS is N/A for this feature. It introduces no web frontend, HTTP API,
+authentication, session management, or authorization model. The relevant
+evidence instead lives in `security-checklist.md`, `threat-model.md`,
+`dependency-audit.md`, and the smoke/controls tests.

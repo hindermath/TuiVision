@@ -31,7 +31,7 @@ cd tests/web-a11y
 npm run test:docfx
 ```
 
-Coverage Gate (SC-003): `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, and `TuiVision.Drivers.Console` must each achieve at least 70% line coverage. Measure with Coverlet via `dotnet test --collect:"XPlat Code Coverage"`.
+Coverage Gate (SC-003): `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, and `TuiVision.Drivers.Console` must each achieve at least 70% line coverage. Measure from the repository root with Coverlet via `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings`. `coverlet.runsettings` is the canonical TuiVision coverage-gate configuration and MUST be kept in sync when gate-relevant assemblies, example assemblies, or test projects are added, renamed, or removed. Validate it with `xmllint --noout coverlet.runsettings` where available before relying on the coverage gate.
 
 CI runs on Ubuntu and macOS against .NET 10. Linux and Windows/WSL compatibility checks should be added or expanded where changes affect runtime behavior, terminal handling, or portability. The `tv203s/` directory is **excluded from all builds and tests**. CI triggers on pushes to `main`, `master`, and branches matching `codex/**`, `claude/**`, `gemini/**`, `copilot/**`, `opencode/**`.
 
@@ -137,6 +137,13 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Color, charset, and display selection must remain symbolic dialog-level state; terminal rendering, fonts, emulation, mouse behavior, editor/help behavior, and example-specific workflows are out of scope.
 - Dialog-designer readiness requires a minimal validated dialog-description model with unique control IDs and unique command bindings inside one dialog, plus a small persisted roundtrip through existing serialization/resource primitives and explicit malformed-input rejection.
 - Acceptance is framework-first in Controls/Serialization tests, with full keyboard operation required and mouse operation deferred unless already covered by existing generic event dispatch.
+
+### 011-port-wave2-examples
+- Current planning baseline: execute the Welle-2 example port from `specs/011-port-wave2-examples/spec.md` and `specs/011-port-wave2-examples/plan.md`.
+- Scope is limited to the eleven mandatory wave-2 examples under `examples/`: `clipboard`, `demo`, `dlgdsn`, `dyntxt`, `inplis`, `listvi`, `progba`, `sdlg`, `sdlg2`, `tcombo`, and `tprogb`; matching smoke tests in `tests/TuiVision.Examples.SmokeTests/`; guides in `docs/guides/examples/`; and the proof surfaces in `Pflichtenheft.md`, `examples/README.md`, `docs/project-statistics.md`, `docs/architecture/`, and applicable `docs/security/` notes.
+- `sdlg` and `sdlg2` must be completed in wave 2 for their real historical `ScrollDialog`/`ScrollGroup` purpose. Broader parity work is separate Historical Example Parity Cleanup and must not block wave-2 acceptance.
+- Every new example needs at least one deterministic in-process smoke path that triggers example-specific visible behavior; startup plus clean exit is not sufficient.
+- Standard-dialog proof belongs to `demo`, `dlgdsn`, or another historically justified wave-2 flow. File-content I/O, editor/help, terminal emulation, runtime mouse behavior, and real charset effects remain out of scope for wave-2 acceptance.
 
 ## Agent File Synchronization Policy
 
@@ -271,6 +278,15 @@ Diese Regeln gelten für alle Repositories in diesem Workspace. Projektspezifisc
 - Änderungen an dieser Regel erfordern ein gemeinsames Update in `constitution.md`, `.specify/memory/constitution.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` und `.github/copilot-instructions.md`.
 
 *AI-generated and human-written software architecture MUST follow secure-architecture principles. Authoritative rules: `constitution.md`, Principle XIII. Core principles: trust boundaries (validate all input at system boundaries), defense in depth (at least two independent security layers), least privilege (minimum required permissions), fail-safe defaults (deny by default), attack surface reduction (disable unused features), separation of concerns (auth/logging/validation as cross-cutting concerns), secure configuration (secrets in secret stores, never in code or Git), supply-chain security (verified registries, lock files, no known-vulnerable dependencies). Principles XII + XIII together form the complete secure-development approach: XII = tactical code-level security, XIII = strategic architecture-level security. Changes require a joint update across `constitution.md`, `.specify/memory/constitution.md`, and all four agent guidance files.*
+## Allgemeine Architektur-Governance / General Architecture Governance (iSAQB / arc42)
+
+- Architektur MUSS als explizites Arbeitsergebnis behandelt werden, wenn Struktur, Schnittstellen, Qualitätsattribute, Laufzeitverhalten, Deployment, Wartbarkeit oder technische Schulden betroffen sind.
+- Verbindliche Regeln: siehe `constitution.md`, Prinzip XX; Architektur-Evidenz liegt standardmaessig unter `docs/architecture/`.
+- Relevante Artefakte: Architecture Vision, Context View, Building-Block View, Runtime View, Deployment View, Quality Scenarios, Architecture Decision Records und Architecture Risks/Technical Debt.
+- In `spec.md`, `plan.md` und `tasks.md` immer festhalten, ob Architektur-Evidenz erforderlich ist; `N/A` nur mit kurzer Begruendung.
+- Bei sicherheitsrelevanter Architektur zusaetzlich die Secure-Architecture- und Security-Evidenz aus `docs/security/` anwenden.
+
+*Architecture MUST be treated as an explicit work product when structure, interfaces, quality attributes, runtime behavior, deployment, maintainability, or technical debt are affected. Authoritative rules: `constitution.md`, Principle XX. Default evidence lives under `docs/architecture/`: architecture vision, context, building blocks, runtime, deployment, quality scenarios, ADRs, and architecture risks/technical debt. `spec.md`, `plan.md`, and `tasks.md` must state whether this evidence applies; `N/A` requires rationale. Security-relevant architecture also uses the secure-architecture evidence under `docs/security/`.*
 ## Sicherheitsdokumentation / Security Documentation (XII–XVIII Extensions)
 
 - Jedes Level-2-Projekt MUSS die folgenden Sicherheitsdokumente pflegen, basierend auf den Templates in `.specify/templates/`:
@@ -310,6 +326,22 @@ Diese Regeln gelten für alle Repositories in diesem Workspace. Projektspezifisc
 - Default-Evidenzpfad: `docs/security/asvs-verification.md`, `docs/security/supply-chain-evidence.md`, `docs/security/zero-trust-applicability.md`, `docs/security/samm-assessment.md`; Abweichungen nur mit lokal dokumentierter Begründung.
 
 *Capture the applicable standards and the evidence path in `spec.md`, `plan.md`, and `tasks.md`. Use `STRIDE` as the base for threat modeling and add relevant `CAPEC` patterns for the highest-risk flows. For web/API work, record the chosen `ASVS` level and verification scope in `docs/security/` or equivalent project documentation. For release and artefact work, plan `SBOM`, `VEX`, provenance/SLSA evidence, and `OpenSSF Scorecard` review where applicable. For architectural changes, evaluate `Zero Trust`; for long-lived projects, consider `OWASP SAMM` follow-up actions. The default evidence path is `docs/security/asvs-verification.md`, `docs/security/supply-chain-evidence.md`, `docs/security/zero-trust-applicability.md`, and `docs/security/samm-assessment.md`, unless the repository documents a justified equivalent location.*
+
+## Spec-Kit-Preset-Pflege / Spec Kit Preset Maintenance
+
+- Standard-Preset-Set: `security-governance` v0.2.0 prio 10, `architecture-governance` v0.2.0 prio 20, `isaqb-architecture-governance` v0.1.0 prio 30, `a11y-governance` v0.2.0 prio 40, `cross-platform-governance` v0.1.0 prio 50, `agent-parity-governance` v0.1.0 prio 60.
+- Alle sechs Presets sind seit 2026-05-04 im `github/spec-kit` Community-Katalog enthalten und liegen zusätzlich als veröffentlichte Repos unter `https://github.com/hindermath/spec-kit-preset-*`.
+- Neue Level-2-Projekte SOLLEN bei der Spec-Kit-Initialisierung die passende Preset-Teilmenge installieren; C#/.NET-Level-2-Projekte verwenden standardmäßig alle sechs Presets, sofern keine begründete Ausnahme dokumentiert ist.
+- Referenz-Rollout für alle sechs Presets: `RiderProjects/TinyPl0`, `RiderProjects/TinyCalc`, `RiderProjects/TuiVision`, `RiderProjects/InventarWorkerService`.
+- Installation bevorzugt über den Community-Katalog, wenn `specify` das unterstützt; für reproduzierbare Pins die versionierten GitHub-ZIP-URLs aus `constitution.md`/`README.md` verwenden.
+- `.specify/presets/` und generierte Agenten-/Command-Dateien committen, wenn Presets Projekt-Policy sind; `.specify/presets/.cache/` nie committen.
+- Nach Installation oder Update prüfen: `specify preset list`, mindestens ein `specify preset info <id>`, bei Template-Fragen zusätzlich `specify preset resolve <template>`.
+- Die lokale Arbeitskopie der veröffentlichten Preset-Repos liegt unter `~/SpecKitPresetProjects/`; kanonische Scaffolds liegen im Level-0-Repo unter `specs/spec-kit-presets/` und `specs/spec-kit-preset-repos/`.
+- Verbesserungen an Presets zuerst im Level-0-Scaffold einarbeiten, dann in die passenden Repos unter `~/SpecKitPresetProjects/` übertragen, committen, pushen und mit GitHub-ZIP-URL smoke-testen.
+- Bei Änderungen an Preset-Regeln immer prüfen, ob `constitution.md`, `.specify/memory/constitution.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md` und relevante Templates ebenfalls aktualisiert werden müssen.
+- Community-/Katalog-Abstimmung läuft über `github/spec-kit#2362`.
+
+*Standard preset set: `security-governance` v0.2.0 prio 10, `architecture-governance` v0.2.0 prio 20, `isaqb-architecture-governance` v0.1.0 prio 30, `a11y-governance` v0.2.0 prio 40, `cross-platform-governance` v0.1.0 prio 50, and `agent-parity-governance` v0.1.0 prio 60. All six presets are in the `github/spec-kit` community catalog as of 2026-05-04 and are also published under `https://github.com/hindermath/spec-kit-preset-*`. New Level-2 projects should install the applicable subset; C#/.NET Level-2 projects default to all six unless a justified exception is documented. Commit `.specify/presets/` and generated agent command updates when presets are project policy, but never commit `.specify/presets/.cache/`. Verify installs with `specify preset list`, `specify preset info`, and where relevant `specify preset resolve`. Preset-rule changes require reviewing constitution, all agent guidance files, and relevant templates. Community/catalog coordination happens in `github/spec-kit#2362`.*
 
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,

@@ -4,3 +4,35 @@
   items:
     - name: Multi-Mac-Workflow
       href: guides/multi-mac-workflow.md
+    - name: Beispiel-Guides
+      items:
+        - name: Desklogo
+          href: guides/examples/desklogo.md
+        - name: MsgCls
+          href: guides/examples/msgcls.md
+        - name: Tutorial
+          href: guides/examples/tutorial.md
+        - name: Videomode
+          href: guides/examples/videomode.md
+        - name: Clipboard
+          href: guides/examples/clipboard.md
+        - name: Demo
+          href: guides/examples/demo.md
+        - name: DlgDsn
+          href: guides/examples/dlgdsn.md
+        - name: DynTxt
+          href: guides/examples/dyntxt.md
+        - name: InpLis
+          href: guides/examples/inplis.md
+        - name: ListVi
+          href: guides/examples/listvi.md
+        - name: ProgBa
+          href: guides/examples/progba.md
+        - name: Sdlg
+          href: guides/examples/sdlg.md
+        - name: Sdlg2
+          href: guides/examples/sdlg2.md
+        - name: TCombo
+          href: guides/examples/tcombo.md
+        - name: TProgB
+          href: guides/examples/tprogb.md

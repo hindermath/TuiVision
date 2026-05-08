@@ -946,3 +946,9 @@ modules.xml
 .opencode/node_modules/
 tests/web-a11y/playwright-report/
 tests/web-a11y/test-results/
+
+# Spec-Kit Presets (Policy-Dateien tracken, lokalen Cache ignorieren)
+!.specify/presets/
+!.specify/presets/**
+.specify/presets/.cache/
+.specify/presets/.cache/**

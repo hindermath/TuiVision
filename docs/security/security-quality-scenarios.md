@@ -15,3 +15,12 @@
 -->
 
 [Zu befuellen / To be populated — see template]
+
+## 011-port-wave2-examples
+
+| Szenario / Scenario | Erwartung / Expected Result |
+|---|---|
+| Fehlerhafte `dlgdsn`-Beschreibung | Malformed, incomplete, duplicate-control und invalid-navigation Varianten werden sichtbar abgelehnt. / Malformed, incomplete, duplicate-control, and invalid-navigation variants are visibly rejected. |
+| Ungueltiger Standarddialog-Pfad | `demo` zeigt eine sichtbare Invalid-Path-Entscheidung ohne Dateiinhalt zu lesen oder zu schreiben. / `demo` shows a visible invalid-path decision without reading or writing file content. |
+| Isoliertes Clipboard | `clipboard` zeigt einen Fallback-Zustand statt den Test still zu ueberspringen. / `clipboard` shows a fallback state instead of silently skipping the test. |
+| Fortschrittsabbruch | `tprogb` erreicht einen sichtbaren Abbruchzustand ohne Wall-Clock-Abhaengigkeit. / `tprogb` reaches a visible canceled state without wall-clock dependency. |

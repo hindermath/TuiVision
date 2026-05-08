@@ -33,3 +33,25 @@ remain tied to the next release process. No new dependencies were introduced.
 | SBOM | release-gebunden | beim naechsten Release aktualisieren / update at next release |
 | VEX | release-gebunden | nur mit Release-Artefakten sinnvoll / meaningful with release artifacts |
 | SLSA / Provenance | release-gebunden | CI-/Release-Pipeline bleibt Nachweisort / CI/release pipeline remains evidence location |
+
+## 011-port-wave2-examples
+
+Datum: 2026-05-08.
+
+Die elf neuen Beispielprojekte verwenden nur bestehende Projektmodule und
+fuehren keine neue NuGet-, npm- oder externe Laufzeitabhaengigkeit ein. Die
+Beispiele sind lokal ausfuehrbare Review-Artefakte; SBOM, VEX und
+SLSA-/Provenance-Nachweise bleiben an den naechsten Release-Prozess gekoppelt.
+
+The eleven new example projects use only existing project modules and introduce
+no new NuGet, npm, or external runtime dependency. The examples are locally
+runnable review artifacts; SBOM, VEX, and SLSA/provenance evidence remain tied
+to the next release process.
+
+| Nachweis / Evidence | Status | Notiz / Note |
+|---|---|---|
+| Dependency delta | PASS | keine neuen Abhaengigkeiten / no new dependencies |
+| SBOM | release-gebunden | keine Feature-lokale Release-Erzeugung / no feature-local release generation |
+| VEX | release-gebunden | bei Release-Artefakten nachziehen / update with release artifacts |
+| SLSA / Provenance | release-gebunden | CI-/Release-Pipeline bleibt Nachweisort / CI/release pipeline remains evidence location |
+| Beispiel-Artefakte / Example artifacts | review-only | `dotnet run --project examples/<Name>` ohne Paketveroeffentlichung / no package publishing |

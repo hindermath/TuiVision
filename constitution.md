@@ -1,16 +1,30 @@
 <!--
 Sync Impact Report
-Version change: 1.11.0 -> 1.12.0
+Version change: 1.12.0 -> 1.13.0
 Modified principles:
-- None (purely additive)
+- None renamed; new general architecture governance principle added
 Added sections:
-- None
+- Principle XIX. EU Cyber Resilience Act (CRA) Compliance Awareness (root sync)
+- Principle XX. General Architecture Governance (iSAQB / arc42)
 Removed sections:
 - None
 Templates requiring updates:
 - ✅ .specify/templates/plan-template.md
 - ✅ .specify/templates/spec-template.md
 - ✅ .specify/templates/tasks-template.md
+- ✅ .specify/templates/commands/checklist.md
+- ✅ .specify/templates/commands/constitution.md
+- ✅ .specify/templates/commands/plan.md
+- ✅ .specify/templates/commands/spec.md
+- ✅ .specify/templates/commands/tasks.md
+- ✅ .specify/templates/architecture-vision-template.md
+- ✅ .specify/templates/context-view-template.md
+- ✅ .specify/templates/building-block-view-template.md
+- ✅ .specify/templates/runtime-view-template.md
+- ✅ .specify/templates/deployment-view-template.md
+- ✅ .specify/templates/quality-scenarios-template.md
+- ✅ .specify/templates/architecture-decision-template.md
+- ✅ .specify/templates/architecture-risks-template.md
 - ✅ .specify/templates/asvs-verification-template.md
 - ✅ .specify/templates/supply-chain-evidence-template.md
 - ✅ .specify/templates/zero-trust-applicability-template.md
@@ -21,12 +35,14 @@ Runtime guidance requiring updates:
 - ✅ CLAUDE.md
 - ✅ GEMINI.md
 - ✅ .github/copilot-instructions.md
+- ✅ .github/agents/copilot-instructions.md
+- ✅ constitution.md
 - ✅ .specify/memory/constitution.md (mirror)
 Follow-up TODOs:
 - None
 -->
 
-# Constitution v1.12.0
+# Constitution v1.13.0
 
 # home-baseline Constitution
 
@@ -658,6 +674,92 @@ and cloud deployment; SAMM addresses the maturity of the development program
 itself. Together they keep security architecture and security process moving
 forward instead of freezing at a one-time baseline.
 
+### XIX. EU Cyber Resilience Act (CRA) Compliance Awareness
+
+Software placed on the EU market is subject to the Cyber Resilience Act
+(Regulation (EU) 2024/2847), which establishes mandatory cybersecurity
+requirements for products with digital elements. This principle requires
+that all workspace projects maintain awareness of CRA applicability and
+align their practices accordingly.
+
+Mandatory rules:
+- All projects MUST assess whether their software qualifies as a "product
+  with digital elements" under the CRA (commercial sale, licensing, or
+  free distribution for economic purposes within the EU market). Even
+  open-source projects distributed for economic benefit may fall in scope.
+- CRA-scoped projects MUST generate SBOMs for each released version (see
+  Principle XVI — this requirement applies at all levels for this reason).
+- CRA-scoped projects MUST implement a documented vulnerability disclosure
+  and handling process. Actively exploited vulnerabilities MUST be reported
+  to relevant authorities within 24 hours and patched within established
+  deadlines per the CRA.
+- CRA-scoped projects MUST document their conformity assessment approach
+  (self-assessment for most products; third-party assessment for critical
+  or important products under Annex III/IV of the CRA).
+- All projects SHOULD align security practices with CRA principles
+  regardless of formal scope applicability, as the CRA reflects emerging
+  industry baseline expectations for secure software development:
+  secure-by-design, secure-by-default, vulnerability management, lifecycle
+  transparency, and SBOM availability.
+- The CRA applicability decision MUST be recorded in `docs/security/` or
+  equivalent governance documentation (e.g., as a note in the supply-chain
+  evidence document or a dedicated S-ADR).
+
+**Rationale**: The EU Cyber Resilience Act (in force since December 2024,
+with compliance deadlines phased through 2027) is the most significant
+EU regulatory development in software security since GDPR. It codifies
+many existing best practices — SBOM, vulnerability disclosure, secure
+development lifecycle, security-by-design — as legal obligations for
+software placed on the EU market. Recording CRA applicability and aligning
+practices proactively reduces legal and reputational risk and builds on the
+security work already required by Principles XII–XVIII.
+
+### XX. General Architecture Governance (iSAQB / arc42)
+
+Software architecture MUST be treated as an explicit, reviewable work product
+whenever a change affects structure, interfaces, quality attributes, runtime
+behavior, deployment, long-term maintainability, or technical debt. This
+general architecture governance is separate from, and complementary to, the
+secure-architecture rules in Principle XIII.
+
+Mandatory rules:
+- Architecture work SHOULD follow lightweight iSAQB/CPSA-F method discipline
+  and arc42-compatible documentation where this improves reviewability.
+- Architecturally significant decisions MUST be documented as architecture
+  decision records under `docs/architecture/adr/`, unless the feature plan
+  records a justified `N/A` decision.
+- Architecture goals, system context, building blocks, runtime views,
+  deployment constraints, and interface boundaries MUST be documented when
+  they materially affect acceptance, maintenance, onboarding, or later change
+  decisions.
+- Quality attributes MUST be expressed as concrete scenarios with stimulus,
+  environment, response, and measurable outcome. Generic claims such as
+  "fast", "robust", or "maintainable" are not sufficient on their own.
+- Architecture risks, accepted trade-offs, and technical debt MUST be recorded
+  with owner, impact, mitigation, and review trigger when they remain after a
+  feature is completed.
+- The default architecture evidence location is `docs/architecture/`.
+  Templates are maintained in `.specify/templates/`:
+  `architecture-vision-template.md`, `context-view-template.md`,
+  `building-block-view-template.md`, `runtime-view-template.md`,
+  `deployment-view-template.md`, `quality-scenarios-template.md`,
+  `architecture-decision-template.md`, and
+  `architecture-risks-template.md`.
+- If a feature affects security-relevant architecture, Principle XIII and the
+  security evidence under `docs/security/` MUST also be applied. General
+  architecture ADRs and security ADRs MAY cross-reference each other but MUST
+  keep their evidence locations explicit.
+- Spec-Kit `spec.md`, `plan.md`, and `tasks.md` MUST record whether
+  architecture evidence is required. Silent omission is not allowed; `N/A`
+  decisions require a short rationale.
+
+**Rationale**: Security architecture alone does not cover all architectural
+work. TuiVision and the Level-2 workspace family also need visible reasoning
+about module boundaries, runtime behavior, documentation structure, quality
+attributes, and accepted technical debt. Lightweight iSAQB/arc42 evidence
+keeps these decisions reviewable without forcing heavyweight documentation for
+small changes.
+
 ## Level-2 Project Environment Registry / Level-2-Projektumgebungsregister
 
 This registry consolidates the constitution-relevant Level-2 project facts
@@ -744,15 +846,51 @@ Any expansion of the surgical subdirectory exception (Principle I) MUST include
 a security justification confirming no credentials are present in the newly
 allowed path.
 
+**Spec Kit preset governance**: The standard governance preset set for this
+workspace family consists of:
+
+| Preset | Version | Priority | Scope |
+|---|---:|---:|---|
+| `security-governance` | `v0.2.0` | `10` | secure development, MSL, SSDF, ASVS, SBOM/VEX/SLSA, CRA awareness |
+| `architecture-governance` | `v0.2.0` | `20` | secure architecture, STRIDE/CAPEC, Zero Trust, SAMM, S-ADR |
+| `isaqb-architecture-governance` | `v0.1.0` | `30` | general iSAQB/arc42 architecture governance |
+| `a11y-governance` | `v0.2.0` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts |
+| `cross-platform-governance` | `v0.1.0` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
+| `agent-parity-governance` | `v0.1.0` | `60` | synchronized agent guidance across declared AI-agent files |
+
+All six presets are published as standalone repositories under
+`https://github.com/hindermath/spec-kit-preset-*` and are included in the
+`github/spec-kit` community preset catalog as of 2026-05-04. New Level-2
+projects SHOULD install the applicable subset during Spec-Kit initialization.
+For C#/.NET Level-2 projects, the default subset is all six presets unless the
+project documents a narrow reason to omit one. Existing C# Level-2 projects
+`RiderProjects/TinyPl0`, `RiderProjects/TinyCalc`, `RiderProjects/TuiVision`,
+and `RiderProjects/InventarWorkerService` are the reference rollout set for
+all-six installation.
+
+Use the community catalog when supported by the local `specify` CLI. Use
+versioned GitHub ZIP URLs when a reproducible release pin is required. Commit
+`.specify/presets/` and all generated agent-command updates when presets are
+project policy. Do not commit `.specify/presets/.cache/`. Preset updates MUST
+be verified with `specify preset list`, at least one `specify preset info`, and
+where relevant `specify preset resolve`.
+
+Local working clones of the published preset repositories live under
+`~/SpecKitPresetProjects/`. Canonical scaffolds in this repository live under
+`specs/spec-kit-presets/` and `specs/spec-kit-preset-repos/`. Preset
+improvements SHOULD be made in the home-baseline scaffold first, propagated to
+the affected standalone preset repositories, committed, pushed, and smoke-tested
+via the GitHub ZIP URL before use in dependent projects. Preset-rule changes
+MUST review whether `constitution.md`, `.specify/memory/constitution.md`,
+`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and
+the relevant templates under `scripts/templates/` need matching updates.
+Community/catalog coordination is tracked in `github/spec-kit#2362`.
+
 **Runtime guidance**: Use `AGENTS.md` / `CLAUDE.md` / `GEMINI.md` /
 `.github/copilot-instructions.md` for per-agent operational guidance. This
 constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.12.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-04-24
-
-<!-- EN: constitution.md placeholder
-[DE-Zusammenfassung: constitution.md beschreibt die Prinzipien und Standards für alle home-baseline Workspaces.]
--->
+**Version**: 1.13.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-05-06
 
 ## Level-2 Project Environment Addendum / Level-2-Projektumgebung
 

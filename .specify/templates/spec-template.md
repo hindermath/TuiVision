@@ -126,6 +126,11 @@
   in `docs/security/` (`asvs-verification.md`, `supply-chain-evidence.md`,
   `zero-trust-applicability.md`, `samm-assessment.md`) or an explicitly
   justified equivalent governance location.
+- **CR-011**: The feature MUST state whether general architecture evidence is
+  required under `constitution.md`, Principle XX. If the feature affects
+  structure, interfaces, quality attributes, runtime behavior, deployment, or
+  technical debt, it MUST identify the expected evidence under
+  `docs/architecture/` or record a justified `N/A` decision.
 
 ### Key Entities *(include if feature involves data)*
 

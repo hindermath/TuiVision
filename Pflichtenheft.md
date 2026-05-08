@@ -239,8 +239,8 @@ Die nachfolgend aufgefuehrten Turbo-Pascal-Beispiele aus dem Repository (`TVDEMO
 Statuscheckliste Beispielwellen:
 - [x] **Welle 1 - Grundlegende Anwendungsstruktur**
   Reihenfolgehinweis: abgeschlossen (Branch `007-port-wave1-examples`); 4 Beispiele portiert, 41 Smoke-Tests gruen, Guides geliefert.
-- [ ] **Welle 2 - Controls und Dialoge**
-  Reihenfolgehinweis: nach Welle 1; Vorbereitungsfeatures `008-controls-revision`, `009-controls-widgets-and-collections` und `010-standard-dialogs-designer` sind frameworkseitig nachgewiesen; jetzt Kernbeispiele mit breiter Abdeckung wie `demo` und danach Spezialfaelle portieren.
+- [x] **Welle 2 - Controls und Dialoge**
+  Reihenfolgehinweis: abgeschlossen (Branch `011-port-wave2-examples`); 11 Controls-/Dialog-Beispiele portiert, alle 15 gelieferten Beispiele per Smoke-Test abgedeckt, Guides geliefert.
 - [ ] **Welle 3 - Editor, Dateien, Hilfe und Streams**
   Reihenfolgehinweis: nach Welle 2; `tvedit`, `bhelp` und `helpdemo` eignen sich als fruehe Validierungsbeispiele fuer Phase 6.
 - [ ] **Welle 4 - Terminal-Emulation und erweiterte Zeichensaetze**
@@ -267,18 +267,20 @@ Checkliste Welle 1:
 
 Benoetigt: Eingabezeilen, Listen, Scrollbars, Buttons, Checkboxes, RadioButtons, Dialoge.
 
+> Hinweis: `sdlg`/`sdlg2` konsumieren das neue managed `TScrollGroup` (siehe `docs/architecture/adr/0001-tscrollgroup-foundation.md`). / Note: `sdlg`/`sdlg2` consume the new managed `TScrollGroup` (see `docs/architecture/adr/0001-tscrollgroup-foundation.md`).
+
 Checkliste Welle 2:
-- [ ] `clipboard` - Zwischenablage-Integration in Controls
-- [ ] `demo` - Vollstaendige Turbo-Vision-Kerndemo (zeigt alle Basis-Controls)
-- [ ] `dlgdsn` - Dialog-Designer: dynamisch zusammengesetzte Dialoge
-- [ ] `dyntxt` - Dynamisch erzeugter Text in Views
-- [ ] `inplis` - Eingabelisten mit `TInputLine`
-- [ ] `listvi` - Listenansichten mit `TListViewer`
-- [ ] `progba` - Einfacher Fortschrittsbalken
-- [ ] `sdlg` - Standarddialoge (Datei-, Farb-, Zeichensatz-Auswahl)
-- [ ] `sdlg2` - Erweiterte Standarddialoge
-- [ ] `tcombo` - Kombinationsfelder (`TComboBox`)
-- [ ] `tprogb` - Erweiterter Fortschrittsbalken mit Abbruch
+- [x] `clipboard` - Zwischenablage-Integration in Controls
+- [x] `demo` - Vollstaendige Turbo-Vision-Kerndemo (zeigt alle Basis-Controls)
+- [x] `dlgdsn` - Dialog-Designer: dynamisch zusammengesetzte Dialoge
+- [x] `dyntxt` - Dynamisch erzeugter Text in Views
+- [x] `inplis` - Eingabelisten mit `TInputLine`
+- [x] `listvi` - Listenansichten mit `TListViewer`
+- [x] `progba` - Einfacher Fortschrittsbalken
+- [x] `sdlg` - Scrollbarer Dialog mit `ScrollDialog`/`ScrollGroup` und vertikalem Scrollen
+- [x] `sdlg2` - Erweiterter scrollbarer Dialog mit horizontalem und vertikalem Scrollen
+- [x] `tcombo` - Kombinationsfelder (`TComboBox`)
+- [x] `tprogb` - Erweiterter Fortschrittsbalken mit Abbruch
 
 **Welle 3 – Editor, Dateien, Hilfe und Streams** (nach Abschluss Phase 6: Editor/Datei/Hilfe/Streams)
 
@@ -606,11 +608,11 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - Die 25 Originalbeispiele aus `tv203s/contrib/tvision/examples` bleiben bis zur Abnahme der einzige verpflichtende Beispielumfang.
    - Die vier Wellen sind als vier eigenstaendige Unterphasen `3.1` bis `3.4` zu behandeln; sie werden nacheinander abgearbeitet und jeweils separat geplant, portiert, getestet und dokumentiert.
    - `3.1` = Welle 1: Grundlegende Anwendungsstruktur — ✓ ABGESCHLOSSEN
-   - `3.2` = Welle 2: Controls und Dialoge
+   - `3.2` = Welle 2: Controls und Dialoge — ✓ ABGESCHLOSSEN
    - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze
 
->>> NAECHSTER SCHRITT <<< Welle 2 – Controls und Dialoge: Die Framework-Voraussetzungen aus `008-controls-revision`, `009-controls-widgets-and-collections` und `010-standard-dialogs-designer` sind nachgewiesen; jetzt die 11 Controls-/Dialog-Beispiele portieren, beginnend mit `demo` und den Standarddialog-Verbrauchern `sdlg`, `sdlg2` und `dlgdsn`.
+>>> NAECHSTER SCHRITT <<< Welle 3 – Editor, Dateien, Hilfe und Streams: Welle 2 ist auf Branch `011-port-wave2-examples` abgeschlossen; als naechstes die Phase-6-Beispiele `bhelp`, `helpdemo`, `i18n`, `tvedit` und `tvhc` planen, portieren, testen und mit Guides nachweisen.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

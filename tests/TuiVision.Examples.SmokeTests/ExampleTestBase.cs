@@ -6,11 +6,12 @@ using TuiVision.Core;
 namespace TuiVision.Examples.SmokeTests;
 
 /// <summary>
-/// Gemeinsame Basisinfrastruktur für Wave-1-Beispiel-Smoke-Tests.
-/// Stellt Hilfsmethoden für Start-, Verhaltens- und Beendigungsassertionen bereit.
+/// Gemeinsame Basisinfrastruktur für Wave-1- und Wave-2-Beispiel-Smoke-Tests.
+/// Stellt Hilfsmethoden für Start-, Verhaltens-, Sichtbarkeits- und
+/// Beendigungsassertionen bereit.
 ///
-/// Shared base infrastructure for Wave 1 example smoke tests.
-/// Provides helper methods for launch, behaviour, and clean-exit assertions.
+/// Shared base infrastructure for Wave 1 and Wave 2 example smoke tests.
+/// Provides helper methods for launch, behaviour, visibility, and clean-exit assertions.
 /// </summary>
 public abstract class ExampleTestBase
 {
@@ -112,5 +113,60 @@ public abstract class ExampleTestBase
             actual,
             $"{description}: Erwartet '{expected}', erhalten '{actual}'. / " +
             $"{description}: expected '{expected}', got '{actual}'.");
+    }
+
+    /// <summary>
+    /// Stellt sicher, dass ein sichtbarer Textzustand eine erwartete Zeichenfolge enthaelt.
+    /// Wave-2-Beispiele muessen damit einen beispielspezifischen, textorientierten
+    /// Zustand nachweisen und duerfen nicht nur Start plus Ende pruefen.
+    ///
+    /// Asserts that a visible text state contains an expected string.
+    /// Wave 2 examples must use this pattern to prove example-specific,
+    /// text-first state and must not only verify startup plus exit.
+    /// </summary>
+    /// <param name="visibleText">Der sichtbare Textzustand. / The visible text state.</param>
+    /// <param name="expectedFragment">Das erwartete Fragment. / The expected fragment.</param>
+    /// <param name="description">Beschreibung fuer die Fehlermeldung. / Description for the failure message.</param>
+    protected static void AssertVisibleContains(string visibleText, string expectedFragment, string description)
+    {
+        Assert.IsTrue(
+            visibleText.Contains(expectedFragment, StringComparison.Ordinal),
+            $"{description}: sichtbarer Text enthaelt '{expectedFragment}' nicht. / " +
+            $"{description}: visible text does not contain '{expectedFragment}'. Actual: {visibleText}");
+    }
+
+    /// <summary>
+    /// Stellt sicher, dass ein Grenzwertzustand exakt den erwarteten Wert besitzt.
+    /// Dies wird fuer Listen, Kombinationsfelder, Fortschritt, dynamischen Text und
+    /// scrollbare Dialoge verwendet.
+    ///
+    /// Asserts that a boundary state has the exact expected value.
+    /// This is used for lists, combo boxes, progress, dynamic text, and scrollable dialogs.
+    /// </summary>
+    /// <typeparam name="T">Der Werttyp. / The value type.</typeparam>
+    /// <param name="expected">Der erwartete Wert. / The expected value.</param>
+    /// <param name="actual">Der beobachtete Wert. / The observed value.</param>
+    /// <param name="description">Beschreibung fuer die Fehlermeldung. / Description for the failure message.</param>
+    protected static void AssertBoundary<T>(T expected, T actual, string description) =>
+        AssertEqual(expected, actual, description);
+
+    /// <summary>
+    /// Stellt sicher, dass die textorientierte Ausgabe nicht leer ist.
+    /// Die kanonische Wave-1/Wave-2-Headless-Seam bleibt ein Konstruktorparameter
+    /// <c>bool headless</c> plus ein <c>GetEvent()</c>-Override, der Smoke-Tests
+    /// deterministisch in-process beendet.
+    ///
+    /// Asserts that text-first output is not empty.
+    /// The canonical Wave 1/Wave 2 headless seam remains a <c>bool headless</c>
+    /// constructor parameter plus a <c>GetEvent()</c> override that lets smoke
+    /// tests exit deterministically in process.
+    /// </summary>
+    /// <param name="visibleText">Der sichtbare Textzustand. / The visible text state.</param>
+    /// <param name="description">Beschreibung fuer die Fehlermeldung. / Description for the failure message.</param>
+    protected static void AssertTextFirstOutput(string visibleText, string description)
+    {
+        Assert.IsFalse(
+            string.IsNullOrWhiteSpace(visibleText),
+            $"{description}: textorientierte Ausgabe fehlt. / {description}: text-first output is missing.");
     }
 }
