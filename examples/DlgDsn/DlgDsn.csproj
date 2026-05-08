@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TuiVision.Examples.DlgDsn</RootNamespace>
+    <AssemblyName>DlgDsn</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\TuiVision.Core\TuiVision.Core.csproj" />
+    <ProjectReference Include="..\..\src\TuiVision.Controls\TuiVision.Controls.csproj" />
+    <ProjectReference Include="..\..\src\TuiVision.Serialization\TuiVision.Serialization.csproj" />
+    <ProjectReference Include="..\..\src\TuiVision.Drivers.Console\TuiVision.Drivers.Console.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Fixtures\*.tvdialog" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

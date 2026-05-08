@@ -15,3 +15,22 @@
 -->
 
 [Zu befuellen / To be populated — see template]
+
+## 011-port-wave2-examples
+
+Datum: 2026-05-08.
+
+Die Sicherheits-Querschnittskonzepte bleiben lokal und proportional:
+
+- Validierung vor Nutzung: `dlgdsn` validiert strukturierte
+  Dialogbeschreibungen vor Runtime-Erzeugung.
+- Nicht-destruktive Pfade: `demo` zeigt Dateisystem-Metadaten, Wildcards,
+  manuelle Pfade und Fehlerzustaende ohne Dateiinhalt-I/O.
+- Deterministische Ausfuehrung: Progress- und Smoke-Flows nutzen keine
+  unkontrollierten Timer oder Hintergrundarbeit.
+- Sichere Meldungen: sichtbare Fehlerzustaende enthalten keine Secrets,
+  Tokens, Stack-Traces oder lokalen privaten Verlaufsdaten.
+
+Security cross-cutting concepts remain local and proportional: validate before
+use, keep file paths non-destructive, make execution deterministic, and keep
+messages free of secrets or internal traces.

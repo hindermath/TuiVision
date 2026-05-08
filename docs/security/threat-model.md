@@ -15,3 +15,43 @@
 -->
 
 [Zu befuellen / To be populated — see template]
+
+## 011-port-wave2-examples
+
+### Assets / Schutzwerte
+
+- Lokale Dateisystem-Metadaten, die `demo` fuer Standarddialoge anzeigt.
+- Strukturierte `dlgdsn`-Beschreibungen und Quellfixtures.
+- Clipboard-Testzustand ueber `ManagedClipboard`.
+- Textorientierte Smoke-Test-Ausgaben und Guides.
+
+### Trust Boundaries / Vertrauensgrenzen
+
+Die Feature-Arbeit bleibt lokal. Es gibt keine Netzwerk-, Web-, Auth-,
+Remote-Service- oder Datenbankgrenze. Relevante Grenzen sind lokale Pfade,
+persistierte Dialogbeschreibungen und isolierte Zwischenablagezustaende.
+
+The feature remains local. It introduces no network, web, auth, remote service,
+or database boundary. Relevant boundaries are local paths, persisted dialog
+descriptions, and isolated clipboard states.
+
+### STRIDE/CAPEC Notes
+
+| Kategorie / Category | Bewertung / Assessment |
+|---|---|
+| Spoofing | N/A fuer lokale Beispiele ohne Identitaetssystem / N/A for local examples without identity system |
+| Tampering | Strukturierte Dialogbeschreibungen werden validiert und fehlerhafte Varianten sichtbar abgelehnt. / Structured dialog descriptions are validated and invalid variants are visibly rejected. |
+| Repudiation | N/A; keine Audit- oder Benutzerkontenfunktion. / N/A; no audit or user-account feature. |
+| Information Disclosure | Fehlermeldungen bleiben textorientiert und enthalten keine Secrets, Tokens oder Stack-Traces. / Messages stay text-first and contain no secrets, tokens, or stack traces. |
+| Denial of Service | Fortschritt und Smoke-Flows sind deterministisch und verwenden keine unbounded background work. / Progress and smoke flows are deterministic and use no unbounded background work. |
+| Elevation of Privilege | N/A; keine privilegierten Operationen. / N/A; no privileged operations. |
+
+### Outcome
+
+Das Restrisiko ist fuer Welle 2 akzeptiert, weil die Beispiele keine neue
+externe Angriffsoberflaeche schaffen und die relevanten lokalen Eingaben durch
+Tests und sichtbare Ablehnungszustaende abgedeckt werden.
+
+The residual risk is accepted for wave 2 because the examples create no new
+external attack surface and the relevant local inputs are covered by tests and
+visible rejection states.

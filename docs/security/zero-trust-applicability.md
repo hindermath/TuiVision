@@ -15,3 +15,20 @@
 -->
 
 [Zu befuellen / To be populated — see template]
+
+## 011-port-wave2-examples
+
+Datum: 2026-05-08.
+
+Zero Trust ist fuer diese Feature-Arbeit nicht als Service-Architektur
+anwendbar. Die Welle-2-Beispiele sind lokale Terminalprogramme ohne
+Identitaetsanbieter, Netzwerkdienst, API, Mandantenmodell oder Remotezugriff.
+Die relevanten Sicherheitsgrenzen sind lokale Dateipfade, strukturierte
+Dialogbeschreibungen und isolierte Clipboard-Zustaende; diese werden in Tests
+und im Threat Model behandelt.
+
+Zero Trust is not applicable as a service architecture for this feature. The
+wave-2 examples are local terminal programs without identity provider, network
+service, API, tenant model, or remote access. The relevant security boundaries
+are local file paths, structured dialog descriptions, and isolated clipboard
+states; these are covered in tests and in the threat model.

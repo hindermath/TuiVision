@@ -32,4 +32,19 @@
     <ProjectReference Include="..\..\examples\Videomode\Videomode.csproj" />
   </ItemGroup>
 
+  <!-- Wave-2-Beispielprojekte für In-Process-Smoke-Tests / Wave 2 example projects for in-process smoke tests -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\examples\Clipboard\Clipboard.csproj" />
+    <ProjectReference Include="..\..\examples\Demo\Demo.csproj" />
+    <ProjectReference Include="..\..\examples\DlgDsn\DlgDsn.csproj" />
+    <ProjectReference Include="..\..\examples\DynTxt\DynTxt.csproj" />
+    <ProjectReference Include="..\..\examples\InpLis\InpLis.csproj" />
+    <ProjectReference Include="..\..\examples\ListVi\ListVi.csproj" />
+    <ProjectReference Include="..\..\examples\ProgBa\ProgBa.csproj" />
+    <ProjectReference Include="..\..\examples\Sdlg\Sdlg.csproj" />
+    <ProjectReference Include="..\..\examples\Sdlg2\Sdlg2.csproj" />
+    <ProjectReference Include="..\..\examples\TCombo\TCombo.csproj" />
+    <ProjectReference Include="..\..\examples\TProgB\TProgB.csproj" />
+  </ItemGroup>
+
 </Project>

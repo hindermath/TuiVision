@@ -53,3 +53,39 @@ authentication, or database boundary was introduced.
 English summary: file and path handling is non-destructive, persisted dialog
 input is validated before runtime creation, malformed records are rejected, and
 user-facing messages stay text-first without leaking internal state.
+
+## 011-port-wave2-examples
+
+Datum: 2026-05-08. Scope: lokale Controls-/Dialog-Beispiele,
+Headless-Smoke-Tests, strukturierte `dlgdsn`-Beschreibung, Dateisystem-
+Metadaten in `demo` und keine neue Netzwerk-, Web-, Auth-, Service- oder
+Datenbankgrenze.
+
+Date: 2026-05-08. Scope: local controls/dialog examples, headless smoke tests,
+structured `dlgdsn` descriptions, file-system metadata in `demo`, and no new
+network, web, auth, service, or database boundary.
+
+| Standard | Status | Begruendung / Rationale |
+|---|---|---|
+| NIST SSDF | anwendbar | Tests werden vor Implementierung angelegt, Eingaben werden validiert, und Nachweise bleiben reviewbar. / Tests are created before implementation, inputs are validated, and evidence remains reviewable. |
+| CWE Top 25 | anwendbar | Lokale Pfade, strukturierte Beschreibungen und Clipboard-Fallbacks werden gegen fehlerhafte Eingaben geprueft. / Local paths, structured descriptions, and clipboard fallbacks are checked against invalid input. |
+| STRIDE | anwendbar proportional | Spoofing/Auth/Remote-Aspekte sind N/A; Tampering/DoS/Information Disclosure fuer lokale Daten werden begrenzt. / Spoofing/auth/remote aspects are N/A; tampering/DoS/information disclosure for local data are bounded. |
+| CAPEC | anwendbar proportional | Keine externe Angriffsoberflaeche; lokale malformed-input-Faelle bleiben relevant. / No external attack surface; local malformed-input cases remain relevant. |
+| OWASP ASVS | N/A | Kein Web/API/Auth-System. / No web/API/auth system. |
+| SBOM/VEX/SLSA | release-gebunden | Keine Feature-lokale Artefaktfreigabe. / No feature-local artifact release. |
+
+### Secure-Coding-Review
+
+- `demo` nutzt Dateisystem-Metadaten, Wildcards, manuelle Pfade und
+  Abbruch-/Invalid-Zustaende, fuehrt aber kein Dateiinhalt-I/O aus.
+- `dlgdsn` validiert strukturierte Beschreibungen vor Runtime-Erzeugung und
+  weist malformed, incomplete, duplicate-control und invalid-navigation sichtbar
+  zurueck.
+- Clipboard-Fallbacks werden als sichtbarer Zustand behandelt und nicht still
+  uebersprungen.
+- Fortschrittsbeispiele verwenden deterministische Schritte statt
+  unkontrollierter Timer oder Sleeps.
+
+English summary: wave-2 examples keep local data handling non-destructive,
+validate structured dialog input before rendering, expose clipboard fallback
+states, and keep progress flows deterministic.

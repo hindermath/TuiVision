@@ -45,53 +45,53 @@ required so the bare-name patterns in `coverlet.runsettings` (e.g., `[Demo]*`,
 Variant forms such as `<AssemblyName>TuiVision.Examples.Demo</AssemblyName>`
 silently break the Exclude filter and are not permitted.
 
-- [ ] T001 Confirm the worktree is on branch `011-port-wave2-examples` and that
+- [X] T001 Confirm the worktree is on branch `011-port-wave2-examples` and that
   `git status --short --branch` is clean before implementation begins.
-- [ ] T002 Verify the installed Spec-Kit governance presets with
+- [X] T002 Verify the installed Spec-Kit governance presets with
   `specify preset list`; confirm the all-six C#/.NET default or document an
   exception in `specs/011-port-wave2-examples/quickstart.md`. Also verify that
   the `RiderProjects/TuiVision` row in the Level-2 Project Environment Registry
   remains the binding runtime, build/test, A11Y, statistics, and agent-surface
   context for this feature.
-- [ ] T003 Review original source files under
+- [X] T003 Review original source files under
   `tv203s/contrib/tvision/examples/clipboard/`, `demo/`, `dlgdsn/`, `dyntxt/`,
   `inplis/`, `listvi/`, `progba/`, `sdlg/`, `sdlg2/`, `tcombo/`, and `tprogb/`;
   record any accepted historical limitations for later guide and risk tasks.
-- [ ] T004 [P] Create project directory and skeleton files
+- [X] T004 [P] Create project directory and skeleton files
   `examples/Clipboard/Clipboard.csproj`, `examples/Clipboard/Program.cs`, and
   `examples/Clipboard/ClipboardApp.cs`.
-- [ ] T005 [P] Create project directory and skeleton files
+- [X] T005 [P] Create project directory and skeleton files
   `examples/Demo/Demo.csproj`, `examples/Demo/Program.cs`, and
   `examples/Demo/DemoApp.cs`.
-- [ ] T006 [P] Create project directory and skeleton files
+- [X] T006 [P] Create project directory and skeleton files
   `examples/DlgDsn/DlgDsn.csproj`, `examples/DlgDsn/Program.cs`, and
   `examples/DlgDsn/DlgDsnApp.cs`.
-- [ ] T007 [P] Create project directory and skeleton files
+- [X] T007 [P] Create project directory and skeleton files
   `examples/DynTxt/DynTxt.csproj`, `examples/DynTxt/Program.cs`, and
   `examples/DynTxt/DynTxtApp.cs`.
-- [ ] T008 [P] Create project directory and skeleton files
+- [X] T008 [P] Create project directory and skeleton files
   `examples/InpLis/InpLis.csproj`, `examples/InpLis/Program.cs`, and
   `examples/InpLis/InpLisApp.cs`.
-- [ ] T009 [P] Create project directory and skeleton files
+- [X] T009 [P] Create project directory and skeleton files
   `examples/ListVi/ListVi.csproj`, `examples/ListVi/Program.cs`, and
   `examples/ListVi/ListViApp.cs`.
-- [ ] T010 [P] Create project directory and skeleton files
+- [X] T010 [P] Create project directory and skeleton files
   `examples/ProgBa/ProgBa.csproj`, `examples/ProgBa/Program.cs`, and
   `examples/ProgBa/ProgBaApp.cs`.
-- [ ] T011 [P] Create project directory and skeleton files
+- [X] T011 [P] Create project directory and skeleton files
   `examples/Sdlg/Sdlg.csproj`, `examples/Sdlg/Program.cs`, and
   `examples/Sdlg/SdlgApp.cs`.
-- [ ] T012 [P] Create project directory and skeleton files
+- [X] T012 [P] Create project directory and skeleton files
   `examples/Sdlg2/Sdlg2.csproj`, `examples/Sdlg2/Program.cs`, and
   `examples/Sdlg2/Sdlg2App.cs`.
-- [ ] T013 [P] Create project directory and skeleton files
+- [X] T013 [P] Create project directory and skeleton files
   `examples/TCombo/TCombo.csproj`, `examples/TCombo/Program.cs`, and
   `examples/TCombo/TComboApp.cs`.
-- [ ] T014 [P] Create project directory and skeleton files
+- [X] T014 [P] Create project directory and skeleton files
   `examples/TProgB/TProgB.csproj`, `examples/TProgB/Program.cs`, and
   `examples/TProgB/TProgBApp.cs`.
-- [ ] T015 [P] Add all eleven wave-2 projects to `TuiVision.sln`.
-- [ ] T016 [P] Add project references for all eleven wave-2 examples to
+- [X] T015 [P] Add all eleven wave-2 projects to `TuiVision.sln`.
+- [X] T016 [P] Add project references for all eleven wave-2 examples to
   `tests/TuiVision.Examples.SmokeTests/TuiVision.Examples.SmokeTests.csproj`.
   T015 and T016 touch different files (`TuiVision.sln` vs.
   `TuiVision.Examples.SmokeTests.csproj`) and may run in parallel; neither
@@ -109,25 +109,25 @@ that must exist before any user-story implementation is completed.
 
 **Critical**: No user story can be accepted until this phase is complete.
 
-- [ ] T017 Update `tests/TuiVision.Examples.SmokeTests/ExampleTestBase.cs` so
+- [X] T017 Update `tests/TuiVision.Examples.SmokeTests/ExampleTestBase.cs` so
   its XML docs and helper names describe wave-1 and wave-2 examples, not only
   wave 1. Document explicitly that all eleven wave-2 example apps MUST reuse
   the wave-1 headless seam contract: a `bool headless` constructor parameter
   plus a `GetEvent()` override so smoke tests can drive a deterministic
   in-process event stream. Variant seams across the new example apps are not
   permitted.
-- [ ] T018 Add shared smoke helpers in
+- [X] T018 Add shared smoke helpers in
   `tests/TuiVision.Examples.SmokeTests/ExampleTestBase.cs` for visible-state
   assertions, boundary-input assertions, and text-first output assertions.
   Provide a small helper or XML-doc note that names the wave-1 headless seam as
   the canonical interaction entry point for new wave-2 example tests.
-- [ ] T018a [P] Create the architecture-evidence directory tree before any
+- [X] T018a [P] Create the architecture-evidence directory tree before any
   Phase-2 file write touches it: ensure `docs/architecture/` and
   `docs/architecture/adr/` exist (e.g., `mkdir -p docs/architecture/adr`).
   T019, T020, T021, T022, and T023a (file writes inside that tree) MUST be
   preceded by T018a so no tool that lacks implicit `mkdir -p` semantics fails
   silently.
-- [ ] T019 Create `docs/architecture/architecture-vision.md` with the wave-2
+- [X] T019 Create `docs/architecture/architecture-vision.md` with the wave-2
   example-readiness context, DE-first and EN-second if learner-facing content is
   included. MUST satisfy the minimum-content bars in `plan.md`
   §"Architecture evidence": at least one ASCII context diagram showing
@@ -135,20 +135,20 @@ that must exist before any user-story implementation is completed.
   and the consumed framework modules (`TuiVision.Core`, `.Controls`,
   `.Serialization`, `.Compatibility`, `.Drivers.Console`); plus a clear
   in-scope / out-of-scope statement for wave 2.
-- [ ] T020 Create `docs/architecture/runtime-view.md` describing in-process
+- [X] T020 Create `docs/architecture/runtime-view.md` describing in-process
   headless smoke flows and normal console launch flows for wave-2 examples.
   MUST satisfy the minimum-content bars in `plan.md` §"Architecture evidence":
   one normal launch flow plus one headless smoke flow, with at least one
   sequence sketch each for a scrollable-dialog example (`sdlg` or `sdlg2`) and
   the dynamic-dialog example (`dlgdsn`).
-- [ ] T021 Create `docs/architecture/quality-scenarios.md` with quality
+- [X] T021 Create `docs/architecture/quality-scenarios.md` with quality
   scenarios for deterministic smoke tests, text-first operation, guide
   completeness, and no file-content I/O in standard dialogs. MUST satisfy the
   minimum-content bars in `plan.md` §"Architecture evidence": at least three
   scenarios — deterministic in-process smoke interaction, text-first /
   keyboard-first operation, and no file-content I/O in standard dialogs;
   additional scenarios are welcome but the three listed are mandatory.
-- [ ] T022 Create `docs/architecture/architecture-risks.md` with accepted
+- [X] T022 Create `docs/architecture/architecture-risks.md` with accepted
   limitation and Historical Example Parity Cleanup records discovered in T003.
   Each accepted limitation MUST follow the `AcceptedLimitation` field schema
   from `data-model.md` (`ExampleName`, `HistoricalBehavior`, `Reduction`,
@@ -162,11 +162,11 @@ that must exist before any user-story implementation is completed.
   one bullet per field, in the order given above. Do not invent alternative
   layouts (no tables, no fenced YAML) so reviewers can diff entries
   line-by-line.
-- [ ] T023 Review whether any new cross-cutting architecture decision needs an
+- [X] T023 Review whether any new cross-cutting architecture decision needs an
   ADR under `docs/architecture/adr/`; create the ADR only if a new decision is
   introduced during implementation. The mandatory ADR for Decision 11
   (`TScrollGroup` foundation) is owned by T023a below, not by this review task.
-- [ ] T023a [US1] Create
+- [X] T023a [US1] Create
   `docs/architecture/adr/0001-tscrollgroup-foundation.md` capturing
   Research Decision 11: a managed `TScrollGroup` (and a thin
   `TScrollableDialog` where needed) is added under `src/TuiVision.Controls/`
@@ -174,19 +174,19 @@ that must exist before any user-story implementation is completed.
   context, decision, alternatives (contingent T042/T043 path, example-local
   duplication, full Controls/Dialog redesign), consequences, and the link
   back to `research.md` Decision 11.
-- [ ] T023b [P] [US1] Add failing tests in
+- [X] T023b [P] [US1] Add failing tests in
   `tests/TuiVision.Controls.Tests/TScrollGroupTests.cs` covering vertical
   scrolling, horizontal scrolling, combined horizontal/vertical scrolling,
   deterministic focus movement across scroll positions, bounded content, and
   visible control state. These tests MUST be written and observed failing
   before T023c implements the framework surface.
-- [ ] T023c [US1] Implement `src/TuiVision.Controls/TScrollGroup.cs`
+- [X] T023c [US1] Implement `src/TuiVision.Controls/TScrollGroup.cs`
   (composing existing `TScroller`/`TScrollBar` over `TGroup` semantics) and,
   if `sdlg`/`sdlg2` cannot be expressed with a plain `TDialog` host, also
   `src/TuiVision.Controls/TScrollableDialog.cs`. Keep the surface minimal,
   managed-only, with full DE-first/EN-second XML docs. Run T023b after the
   implementation lands to confirm green; refactor only after green.
-- [ ] T023d [US1] Record the new `TScrollGroup` (and optional
+- [X] T023d [US1] Record the new `TScrollGroup` (and optional
   `TScrollableDialog`) as a Phase-5/Welle-2 controls-readiness entry. Do NOT
   insert it into the M-07 driver-consolidation `.cc` ledger inside
   `docs/porting-status.md`, because that ledger is reserved for historical
@@ -214,7 +214,7 @@ that must exist before any user-story implementation is completed.
   ledger and Phase-5 controls evidence"). Without that title refactor, option
   (a) is rejected.
   Pick exactly one location and document the decision in the same change.
-- [ ] T023e [P] Verify and lock `coverlet.runsettings` at the repository
+- [X] T023e [P] Verify and lock `coverlet.runsettings` at the repository
   root. The canonical file was created during planning; this task confirms it
   matches the constitution before T089 consumes it. The file MUST contain
   exactly:
@@ -237,7 +237,7 @@ that must exist before any user-story implementation is completed.
   Phase scope: T023e is a tooling prerequisite for **T089 in Phase 6 only**;
   it does NOT gate Phase-3 implementation tasks (T038/T040) and does NOT block
   US1/US2/US3 acceptance independent of T089.
-- [ ] T023f [P] Document the CI-coverage convention so the
+- [X] T023f [P] Document the CI-coverage convention so the
   `coverlet.runsettings` filter is not silently bypassed by future CI work.
   Today `.github/workflows/ci.yml` invokes `dotnet test "$target"
   --configuration Release --no-build --verbosity normal` — without
@@ -254,19 +254,19 @@ that must exist before any user-story implementation is completed.
   no `ci.yml` edit is required by this feature because the current CI does
   not run coverage. Phase scope: T023f is informational and does not gate any
   Phase-3/4/5 acceptance.
-- [ ] T024 Update `docs/security/supply-chain-evidence.md` to record that no
+- [X] T024 Update `docs/security/supply-chain-evidence.md` to record that no
   new NuGet dependency is planned, or document any justified dependency found
   during implementation; include the SBOM, VEX, SLSA/provenance, and releasable
   example-artifact applicability decision for the new executable examples.
-- [ ] T025 Update `docs/security/zero-trust-applicability.md` to record that
+- [X] T025 Update `docs/security/zero-trust-applicability.md` to record that
   wave-2 local terminal examples do not introduce web/API/auth or remote service
   trust boundaries.
-- [ ] T026 Update or reference `docs/security/asvs-verification.md` with the
+- [X] T026 Update or reference `docs/security/asvs-verification.md` with the
   justified `OWASP ASVS` N/A decision for this feature.
-- [ ] T027 Apply `NIST SSDF`, `CWE Top 25`, STRIDE, and CAPEC review notes for
+- [X] T027 Apply `NIST SSDF`, `CWE Top 25`, STRIDE, and CAPEC review notes for
   generated code and local terminal-example trust boundaries in
   `docs/security/security-checklist.md` and `docs/security/threat-model.md`.
-- [ ] T028 Run `dotnet list package --outdated` and record dependency-currency
+- [X] T028 Run `dotnet list package --outdated` and record dependency-currency
   evidence or N/A rationale in `docs/security/dependency-audit.md`; also update
   or explicitly mark N/A for `docs/security/arc42-security.md`,
   `docs/security/security-quality-scenarios.md`, and
@@ -296,7 +296,7 @@ and `sdlg2`.
 
 > Write these tests first and ensure they fail before implementation.
 
-- [ ] T029 [P] [US1] Add `tests/TuiVision.Examples.SmokeTests/DemoSmokeTests.cs`
+- [X] T029 [P] [US1] Add `tests/TuiVision.Examples.SmokeTests/DemoSmokeTests.cs`
   with the headless-seam contract from T017/T018 and at least the following
   separate `[TestMethod]` methods so each acceptance aspect has its own visible
   failure mode:
@@ -316,37 +316,37 @@ and `sdlg2`.
      asserting a guide/proof reference, not by exercising those behaviors).
   Standard-dialog acceptance for the wave is fully owned by `demo` and
   `dlgdsn`; this task MUST NOT delegate any aspect to a third example.
-- [ ] T030 [P] [US1] Add
+- [X] T030 [P] [US1] Add
   `tests/TuiVision.Examples.SmokeTests/DlgDsnSmokeTests.cs` covering structured
   dialog description create/load, render, one simple change, and visible
   rejection for malformed, incomplete, duplicate-control, and invalid-navigation
   descriptions.
-- [ ] T031 [P] [US1] Add
+- [X] T031 [P] [US1] Add
   `tests/TuiVision.Examples.SmokeTests/SdlgSmokeTests.cs` covering vertical
   scrollable dialog behavior, deterministic focus movement, bounds, and visible
   control state.
-- [ ] T032 [P] [US1] Add
+- [X] T032 [P] [US1] Add
   `tests/TuiVision.Examples.SmokeTests/Sdlg2SmokeTests.cs` covering horizontal
   and vertical scrollable dialog behavior, deterministic focus movement, bounds,
   and visible control state.
 
 ### Implementation for User Story 1
 
-- [ ] T033 [P] [US1] Implement `examples/Demo/DemoApp.cs` with wave-2-capable
+- [X] T033 [P] [US1] Implement `examples/Demo/DemoApp.cs` with wave-2-capable
   controls, standard dialogs, color/display selection, and gadget flows only;
   keep file-dialog proof limited to local metadata, wildcard/manual-path state,
   cancel/invalid decisions, and no file-content reads or writes.
-- [ ] T034 [US1] Implement `examples/Demo/Program.cs` and
+- [X] T034 [US1] Implement `examples/Demo/Program.cs` and
   `examples/Demo/Demo.csproj` so `dotnet run --project examples/Demo` works and
   the app uses repository-wide .NET defaults.
-- [ ] T035 [P] [US1] Implement `examples/DlgDsn/DlgDsnApp.cs` with a structured
+- [X] T035 [P] [US1] Implement `examples/DlgDsn/DlgDsnApp.cs` with a structured
   dialog description model, render flow, simple modification flow, validated
   symbolic dialog values, and visible rejection for malformed, incomplete,
   duplicate-control, and invalid-navigation descriptions. Depends on T036
   (fixtures must exist as inputs) before T030 can turn green; T035 itself may
   be authored in parallel with T036, but the smoke run of T030 cannot be
   declared green until T036 is complete.
-- [ ] T036 [US1] Add source-controlled `dlgdsn` fixtures under
+- [X] T036 [US1] Add source-controlled `dlgdsn` fixtures under
   `examples/DlgDsn/Fixtures/` for one valid dialog description plus malformed,
   incomplete, duplicate-control, and invalid-navigation rejection examples,
   using existing `TuiVision.Serialization`/resource primitives. The persisted
@@ -356,28 +356,28 @@ and `sdlg2`.
   complete before the T030 smoke run is asserted green and before T037 finishes
   the runnable launch path; this fixes the otherwise reversed implementation
   order between T035 (consumer) and T036 (input fixtures).
-- [ ] T037 [US1] Implement `examples/DlgDsn/Program.cs` and
+- [X] T037 [US1] Implement `examples/DlgDsn/Program.cs` and
   `examples/DlgDsn/DlgDsn.csproj` so `dotnet run --project examples/DlgDsn`
   works and no new JSON/external format stack is introduced.
-- [ ] T038 [P] [US1] Implement `examples/Sdlg/SdlgApp.cs` with historical
+- [X] T038 [P] [US1] Implement `examples/Sdlg/SdlgApp.cs` with historical
   vertical `ScrollDialog`/`ScrollGroup` behavior, consuming the managed
   `TScrollGroup` (and `TScrollableDialog` if introduced) surface from
   `src/TuiVision.Controls/`. Example-local duplicates of the scrollable
   container are not permitted; depend on T023b/T023c to be green first.
-- [ ] T039 [US1] Implement `examples/Sdlg/Program.cs` and
+- [X] T039 [US1] Implement `examples/Sdlg/Program.cs` and
   `examples/Sdlg/Sdlg.csproj` so `dotnet run --project examples/Sdlg` works.
-- [ ] T040 [P] [US1] Implement `examples/Sdlg2/Sdlg2App.cs` with historical
+- [X] T040 [P] [US1] Implement `examples/Sdlg2/Sdlg2App.cs` with historical
   horizontal and vertical `ScrollDialog`/`ScrollGroup` behavior, consuming the
   managed `TScrollGroup` (and `TScrollableDialog` if introduced) surface from
   `src/TuiVision.Controls/`. Example-local duplicates of the scrollable
   container are not permitted; depend on T023b/T023c to be green first.
-- [ ] T041 [US1] Implement `examples/Sdlg2/Program.cs` and
+- [X] T041 [US1] Implement `examples/Sdlg2/Program.cs` and
   `examples/Sdlg2/Sdlg2.csproj` so `dotnet run --project examples/Sdlg2` works.
-- [ ] T042 [US1] If any *additional* reusable control/dialog behavior beyond
+- [X] T042 [US1] If any *additional* reusable control/dialog behavior beyond
   `TScrollGroup`/`TScrollableDialog` (T023a-T023d) blocks US1, add focused
   failing tests in the affected `tests/TuiVision.Controls.Tests/` or
   `tests/TuiVision.Serialization.Tests/` file before changing `src/`.
-- [ ] T043 [US1] If T042 is needed, implement the minimal additional reusable
+- [X] T043 [US1] If T042 is needed, implement the minimal additional reusable
   framework behavior in the existing `src/TuiVision.Controls/` or
   `src/TuiVision.Serialization/` modules without example-local substitutes.
 
@@ -400,74 +400,74 @@ and confirm each example-specific visible result.
 
 > Write these tests first and ensure they fail before implementation.
 
-- [ ] T044 [P] [US2] Add
+- [X] T044 [P] [US2] Add
   `tests/TuiVision.Examples.SmokeTests/ClipboardSmokeTests.cs` covering copy,
   cut, paste, input state, and unavailable or isolated clipboard behavior.
-- [ ] T045 [P] [US2] Add
+- [X] T045 [P] [US2] Add
   `tests/TuiVision.Examples.SmokeTests/DynTxtSmokeTests.cs` covering dynamic
   text updates with short, long, and constrained-width values.
-- [ ] T046 [P] [US2] Add
+- [X] T046 [P] [US2] Add
   `tests/TuiVision.Examples.SmokeTests/InpLisSmokeTests.cs` covering input-list
   keyboard navigation, synchronized input/history/list state, and empty or
   minimal list contents.
-- [ ] T047 [P] [US2] Add
+- [X] T047 [P] [US2] Add
   `tests/TuiVision.Examples.SmokeTests/ListViSmokeTests.cs` covering visible
   selection movement, empty-list behavior, first/last boundary handling, and
   viewport-sized content.
-- [ ] T048 [P] [US2] Add
+- [X] T048 [P] [US2] Add
   `tests/TuiVision.Examples.SmokeTests/ProgBaSmokeTests.cs` covering
   deterministic progress through completion without wall-clock assertions.
-- [ ] T049 [P] [US2] Add
+- [X] T049 [P] [US2] Add
   `tests/TuiVision.Examples.SmokeTests/TComboSmokeTests.cs` covering combo-box
   selection, synchronized input value, visible selected value, empty choices,
   and boundary-sized choice lists.
-- [ ] T050 [P] [US2] Add
+- [X] T050 [P] [US2] Add
   `tests/TuiVision.Examples.SmokeTests/TProgBSmokeTests.cs` covering progress,
   abort, and visible canceled state without wall-clock assertions.
 
 ### Implementation for User Story 2
 
-- [ ] T051 [P] [US2] Implement `examples/Clipboard/ClipboardApp.cs` with
+- [X] T051 [P] [US2] Implement `examples/Clipboard/ClipboardApp.cs` with
   copy/cut/paste, visible input-state changes, and isolated clipboard fallback.
-- [ ] T052 [US2] Implement `examples/Clipboard/Program.cs` and
+- [X] T052 [US2] Implement `examples/Clipboard/Program.cs` and
   `examples/Clipboard/Clipboard.csproj` so
   `dotnet run --project examples/Clipboard` works.
-- [ ] T053 [P] [US2] Implement `examples/DynTxt/DynTxtApp.cs` with predictable
+- [X] T053 [P] [US2] Implement `examples/DynTxt/DynTxtApp.cs` with predictable
   dynamic text or parameter updates inside constrained view bounds.
-- [ ] T054 [US2] Implement `examples/DynTxt/Program.cs` and
+- [X] T054 [US2] Implement `examples/DynTxt/Program.cs` and
   `examples/DynTxt/DynTxt.csproj` so `dotnet run --project examples/DynTxt`
   works.
-- [ ] T055 [P] [US2] Implement `examples/InpLis/InpLisApp.cs` with
+- [X] T055 [P] [US2] Implement `examples/InpLis/InpLisApp.cs` with
   `TInputLine`-oriented input-list/history synchronization and keyboard
   navigation.
-- [ ] T056 [US2] Implement `examples/InpLis/Program.cs` and
+- [X] T056 [US2] Implement `examples/InpLis/Program.cs` and
   `examples/InpLis/InpLis.csproj` so `dotnet run --project examples/InpLis`
   works.
-- [ ] T057 [P] [US2] Implement `examples/ListVi/ListViApp.cs` with
+- [X] T057 [P] [US2] Implement `examples/ListVi/ListViApp.cs` with
   `TListViewer`-style navigation, boundary handling, and visible selection
   state.
-- [ ] T058 [US2] Implement `examples/ListVi/Program.cs` and
+- [X] T058 [US2] Implement `examples/ListVi/Program.cs` and
   `examples/ListVi/ListVi.csproj` so `dotnet run --project examples/ListVi`
   works.
-- [ ] T059 [P] [US2] Implement `examples/ProgBa/ProgBaApp.cs` with
+- [X] T059 [P] [US2] Implement `examples/ProgBa/ProgBaApp.cs` with
   deterministic progress through completion.
-- [ ] T060 [US2] Implement `examples/ProgBa/Program.cs` and
+- [X] T060 [US2] Implement `examples/ProgBa/Program.cs` and
   `examples/ProgBa/ProgBa.csproj` so `dotnet run --project examples/ProgBa`
   works.
-- [ ] T061 [P] [US2] Implement `examples/TCombo/TComboApp.cs` with combo-box
+- [X] T061 [P] [US2] Implement `examples/TCombo/TComboApp.cs` with combo-box
   selection, input synchronization, and visible selected value.
-- [ ] T062 [US2] Implement `examples/TCombo/Program.cs` and
+- [X] T062 [US2] Implement `examples/TCombo/Program.cs` and
   `examples/TCombo/TCombo.csproj` so `dotnet run --project examples/TCombo`
   works.
-- [ ] T063 [P] [US2] Implement `examples/TProgB/TProgBApp.cs` with progress,
+- [X] T063 [P] [US2] Implement `examples/TProgB/TProgBApp.cs` with progress,
   abort, and visible canceled state.
-- [ ] T064 [US2] Implement `examples/TProgB/Program.cs` and
+- [X] T064 [US2] Implement `examples/TProgB/Program.cs` and
   `examples/TProgB/TProgB.csproj` so `dotnet run --project examples/TProgB`
   works.
-- [ ] T065 [US2] If any reusable control/widget behavior blocks US2, add
+- [X] T065 [US2] If any reusable control/widget behavior blocks US2, add
   focused failing tests in `tests/TuiVision.Controls.Tests/` before changing
   `src/TuiVision.Controls/`.
-- [ ] T066 [US2] If T065 is needed, implement the minimal reusable control or
+- [X] T066 [US2] If T065 is needed, implement the minimal reusable control or
   widget behavior in `src/TuiVision.Controls/` without example-local
   substitutes.
 
@@ -486,67 +486,67 @@ example has a guide, smoke evidence, and completion record.
 
 ### Tests and Review Tasks for User Story 3
 
-- [ ] T067 [P] [US3] Define the text-first guide review notes that T069-T079
+- [X] T067 [P] [US3] Define the text-first guide review notes that T069-T079
   must include in each new guide file, including expected interaction path and
   smoke or run command.
-- [ ] T068 [US3] Review generated or user-facing documentation impact; if
+- [X] T068 [US3] Review generated or user-facing documentation impact; if
   DocFX output changes, plan `docfx docfx.json` and
   `cd tests/web-a11y && npm run test:docfx`; otherwise record N/A rationale in
   `docs/architecture/quality-scenarios.md` or a feature proof note.
 
 ### Implementation for User Story 3
 
-- [ ] T069 [P] [US3] Create `docs/guides/examples/clipboard.md` with German
+- [X] T069 [P] [US3] Create `docs/guides/examples/clipboard.md` with German
   section first, English section second, CEFR-B2 wording, expected interaction
   path, accessibility notes, and validation command.
-- [ ] T070 [P] [US3] Create `docs/guides/examples/demo.md` with German section
+- [X] T070 [P] [US3] Create `docs/guides/examples/demo.md` with German section
   first, English section second, accepted omissions for editor/help/stream/
   terminal/mouse/charset behavior, and validation command.
-- [ ] T071 [P] [US3] Create `docs/guides/examples/dlgdsn.md` with German
+- [X] T071 [P] [US3] Create `docs/guides/examples/dlgdsn.md` with German
   section first, English section second, valid/invalid dialog description
   workflow, malformed/incomplete/duplicate-control/invalid-navigation rejection
   notes, accepted limitations, and validation command.
-- [ ] T072 [P] [US3] Create `docs/guides/examples/dyntxt.md` with German
+- [X] T072 [P] [US3] Create `docs/guides/examples/dyntxt.md` with German
   section first, English section second, dynamic text workflow, boundary notes,
   and validation command.
-- [ ] T073 [P] [US3] Create `docs/guides/examples/inplis.md` with German
+- [X] T073 [P] [US3] Create `docs/guides/examples/inplis.md` with German
   section first, English section second, input/list/history workflow, boundary
   notes, and validation command.
-- [ ] T074 [P] [US3] Create `docs/guides/examples/listvi.md` with German
+- [X] T074 [P] [US3] Create `docs/guides/examples/listvi.md` with German
   section first, English section second, list navigation workflow, boundary
   notes, and validation command.
-- [ ] T075 [P] [US3] Create `docs/guides/examples/progba.md` with German
+- [X] T075 [P] [US3] Create `docs/guides/examples/progba.md` with German
   section first, English section second, deterministic completion workflow, and
   validation command.
-- [ ] T076 [P] [US3] Create `docs/guides/examples/sdlg.md` with German section
+- [X] T076 [P] [US3] Create `docs/guides/examples/sdlg.md` with German section
   first, English section second, historical vertical `ScrollDialog`/`ScrollGroup`
   scope, and validation command.
-- [ ] T077 [P] [US3] Create `docs/guides/examples/sdlg2.md` with German section
+- [X] T077 [P] [US3] Create `docs/guides/examples/sdlg2.md` with German section
   first, English section second, historical horizontal/vertical
   `ScrollDialog`/`ScrollGroup` scope, and validation command.
-- [ ] T078 [P] [US3] Create `docs/guides/examples/tcombo.md` with German
+- [X] T078 [P] [US3] Create `docs/guides/examples/tcombo.md` with German
   section first, English section second, combo-box workflow, boundary notes, and
   validation command.
-- [ ] T079 [P] [US3] Create `docs/guides/examples/tprogb.md` with German
+- [X] T079 [P] [US3] Create `docs/guides/examples/tprogb.md` with German
   section first, English section second, progress abort/canceled workflow, and
   validation command.
-- [ ] T080 [US3] Update `examples/README.md` with wave-2 example rows,
+- [X] T080 [US3] Update `examples/README.md` with wave-2 example rows,
   original source folders, launch commands, and required support assets.
-- [ ] T081 [US3] Update `docs/toc.yml` or the relevant DocFX navigation/index
+- [X] T081 [US3] Update `docs/toc.yml` or the relevant DocFX navigation/index
   surface so the new `docs/guides/examples/*.md` files are discoverable; if the
   guides are intentionally indexed only through `examples/README.md`, record the
   rationale in `docs/architecture/quality-scenarios.md`.
-- [ ] T082 [US3] Record final accepted limitations and Historical Example
+- [X] T082 [US3] Record final accepted limitations and Historical Example
   Parity Cleanup references in `docs/architecture/architecture-risks.md`,
   using the same `AcceptedLimitation` and `HistoricalExampleParityCleanup`
   field schemas required by T022 and the same labeled-bullet `**Field**:`
   presentation form (no free-text records, no alternative layouts). Cross-link
   each entry from the affected `docs/guides/examples/<example>.md` so reviewers
   can traverse from guide to risk record without searching.
-- [ ] T083 [US3] Refresh agent context for `codex`, `claude`, `gemini`, and
+- [X] T083 [US3] Refresh agent context for `codex`, `claude`, `gemini`, and
   `copilot` with `.specify/scripts/bash/update-agent-context.sh` if active
   technologies, proof surfaces, next-step marker, or workflow guidance changed.
-- [ ] T084 [US3] If T083 changes shared guidance, synchronize affected
+- [X] T084 [US3] If T083 changes shared guidance, synchronize affected
   `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`,
   `.github/copilot-instructions.md`, and
   `.github/agents/copilot-instructions.md` together.
@@ -562,14 +562,14 @@ statistics, and PR evidence are completed only after Phase 6 validation passes.
 **Purpose**: Repository-level validation, coverage, formatting, dependency,
 documentation, final proof updates, and PR evidence.
 
-- [ ] T085 Apply the [repository versioning rule](#versioning-rule) before each
+- [X] T085 Apply the [repository versioning rule](#versioning-rule) before each
   final-validation `dotnet build` or `dotnet test` command below; do not
   duplicate the rule text here.
-- [ ] T086 Run `dotnet build --configuration Release` and record the result in
+- [X] T086 Run `dotnet build --configuration Release` and record the result in
   the PR evidence.
-- [ ] T087 Run `dotnet test tests/TuiVision.Examples.SmokeTests/` and verify
+- [X] T087 Run `dotnet test tests/TuiVision.Examples.SmokeTests/` and verify
   all 15 delivered examples are covered.
-- [ ] T087a Verify `SC-007` explicitly: confirm that `examples/` contains
+- [X] T087a Verify `SC-007` explicitly: confirm that `examples/` contains
   exactly the 4 wave-1 example projects (`Desklogo`, `MsgCls`, `Tutorial`,
   `Videomode`) and the 11 wave-2 example projects from the `Pflichtenheft.md`
   wave-2 checklist (`Clipboard`, `Demo`, `DlgDsn`, `DynTxt`, `InpLis`,
@@ -601,8 +601,8 @@ documentation, final proof updates, and PR evidence.
   Capture the command output (empty stdout + exit status `0` for bash; empty
   PowerShell pipeline result) in the PR evidence as the SC-007 proof. Any
   line in the diff or any returned `Compare-Object` row is a hard fail.
-- [ ] T088 Run `dotnet test` and record full-suite evidence.
-- [ ] T089 Run
+- [X] T088 Run `dotnet test` and record full-suite evidence.
+- [X] T089 Run
   `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings`
   using the `coverlet.runsettings` file verified by T023e. **Working
   directory**: the command MUST be run from the repository root so that the
@@ -617,37 +617,37 @@ documentation, final proof updates, and PR evidence.
   `>=80%` value is informational tracking only and must not block acceptance;
   log it separately from the gate result. If `coverlet.runsettings` is
   missing, drifted, or invoked from a wrong working directory, T089 fails.
-- [ ] T090 Run `dotnet format --verify-no-changes` and record formatting
+- [X] T090 Run `dotnet format --verify-no-changes` and record formatting
   evidence.
-- [ ] T091 If public APIs, XML comments, generated docs, or DocFX navigation
+- [X] T091 If public APIs, XML comments, generated docs, or DocFX navigation
   changed, confirm new public types are either intentionally internalized or have
   complete DE-first/EN-second XML docs, then run `docfx docfx.json`.
-- [ ] T092 If T091 ran, run `cd tests/web-a11y && npm run test:docfx` and record
+- [X] T092 If T091 ran, run `cd tests/web-a11y && npm run test:docfx` and record
   WCAG/text-first smoke evidence.
-- [ ] T093 Record platform evidence for the wave-2 examples: at minimum the
+- [X] T093 Record platform evidence for the wave-2 examples: at minimum the
   current macOS validation plus Linux and Windows/WSL command evidence where
   practical; if Linux or Windows/WSL cannot be checked in this work item,
   document the reason and follow-up path for each missing environment in the PR
   evidence.
-- [ ] T094 Run `git diff --check` and resolve whitespace or conflict-marker
+- [X] T094 Run `git diff --check` and resolve whitespace or conflict-marker
   issues.
-- [ ] T095 Review `.gitignore` and staged files to ensure no secrets, logs,
+- [X] T095 Review `.gitignore` and staged files to ensure no secrets, logs,
   agent state, local history, generated cache, or `.specify/presets/.cache/`
   content is tracked.
-- [ ] T096 Update `Pflichtenheft.md` to check off the wave-2 checklist only
+- [X] T096 Update `Pflichtenheft.md` to check off the wave-2 checklist only
   after T086 through T095 pass or have a documented, accepted N/A rationale.
-- [ ] T097 Move the `>>> NAECHSTER SCHRITT <<<` marker in `Pflichtenheft.md` to
+- [X] T097 Move the `>>> NAECHSTER SCHRITT <<<` marker in `Pflichtenheft.md` to
   wave 3 only after T096 is complete.
-- [ ] T098 Update `docs/project-statistics.md` with the completed
+- [X] T098 Update `docs/project-statistics.md` with the completed
   `011-port-wave2-examples` phase, observable work window, production/test/docs
   line counts, evidence summary, and 80/125 lines-per-day comparison.
-- [ ] T099 Prepare the PR summary with purpose, touched projects, tests run,
+- [X] T099 Prepare the PR summary with purpose, touched projects, tests run,
   coverage evidence, documentation/A11Y evidence, security/governance evidence,
   config/API impact, and accepted limitations.
-- [ ] T100 Confirm `Directory.Build.props` matches the
+- [X] T100 Confirm `Directory.Build.props` matches the
   [repository versioning rule](#versioning-rule) (`1.11.<patch>.<build>`)
   before commit/push; the canonical wording lives in the preamble.
-- [ ] T100a Promote `coverlet.runsettings` from wave-2 validation support to the
+- [X] T100a Promote `coverlet.runsettings` from wave-2 validation support to the
   canonical TuiVision coverage-gate configuration before final commit: ensure
   `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`,
   `.github/copilot-instructions.md`, and
@@ -656,7 +656,7 @@ documentation, final proof updates, and PR evidence.
   from the repository root, require `coverlet.runsettings` maintenance when
   gate-relevant assemblies, example assemblies, or test projects change, and
   mention `xmllint --noout coverlet.runsettings` where available.
-- [ ] T101 As the last Polish task, verify whether a corresponding
+- [X] T101 As the last Polish task, verify whether a corresponding
   `Lastenheft_*.md` exists for this feature; if yes, rename it with
   `bash scripts/rename-lastenheft.sh <LH-file> 011-port-wave2-examples` and
   include that rename before the final commit, otherwise document the explicit
