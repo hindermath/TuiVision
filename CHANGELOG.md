@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.3.1](https://github.com/hindermath/TuiVision/compare/v0.3.0...v0.3.1) (2026-05-08)
+
+
+### Documentation / Dokumentation
+
+* add wave 2 implementation tasks ([36011f6](https://github.com/hindermath/TuiVision/commit/36011f6f67e7bdd805af57810eb341c1b23d1254))
+* add wave 2 plan artifacts ([29a69be](https://github.com/hindermath/TuiVision/commit/29a69bea22eb19be09a50126953d911ee54fd845))
+* clarify wave 2 example acceptance ([19edde2](https://github.com/hindermath/TuiVision/commit/19edde21a81d2ba57f25b4c0c3aedc9e930b51df))
+* clarify wave 2 scroll dialog scope ([c80ae23](https://github.com/hindermath/TuiVision/commit/c80ae231aa2f235605fcd0e162fcbecc74a783c3))
+* finalize wave 2 readiness checklist ([d830047](https://github.com/hindermath/TuiVision/commit/d8300478c72166ee8eb417f689c16e6673a46610))
+* refine wave 2 plan review ([bc0b4cf](https://github.com/hindermath/TuiVision/commit/bc0b4cf9bc407831a0c44482c06164e8a1cad516))
+* specify wave 2 examples and architecture governance ([1664558](https://github.com/hindermath/TuiVision/commit/1664558670d03f6c77e68d57b4515ad07745bff6))
+
+
+### Maintenance / Wartung
+
+* configure spec-kit governance presets ([5c6c473](https://github.com/hindermath/TuiVision/commit/5c6c473769335936bbb59b6526deb7637a33721f))
+
 ## [0.3.0](https://github.com/hindermath/TuiVision/compare/v0.2.1...v0.3.0) (2026-05-02)
 
 
