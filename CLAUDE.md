@@ -67,7 +67,7 @@ Align the three version fields in `Directory.Build.props` whenever a commit is c
 
 Tests use MSTest. Test projects mirror source projects (e.g., `TuiVision.Core.Tests` → `TuiVision.Core`). `TuiVision.Examples.SmokeTests` is for integration-level tests of ported example programs.
 
-**Coverage Gate (SC-003)**: `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, and `TuiVision.Drivers.Console` must each achieve ≥ 70 % Line Coverage (Pflichtenheft §9.4 Nr. 1). Measured with Coverlet (`coverlet.collector`): `dotnet test --collect:"XPlat Code Coverage"`. Do not merge to `main` without passing this gate.
+**Coverage Gate (SC-003)**: `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, and `TuiVision.Drivers.Console` must each achieve ≥ 70 % Line Coverage (Pflichtenheft §9.4 Nr. 1). Measure from the repository root with Coverlet (`coverlet.collector`): `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings`. `coverlet.runsettings` is the canonical TuiVision coverage-gate configuration and MUST be kept in sync when gate-relevant assemblies, example assemblies, or test projects are added, renamed, or removed. Validate it with `xmllint --noout coverlet.runsettings` where available before relying on the coverage gate. Do not merge to `main` without passing this gate.
 
 ### Documentation
 

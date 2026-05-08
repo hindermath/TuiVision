@@ -109,6 +109,8 @@ in examples, tests, guides, and docs.
 **Validation rules**:
 - Standard-dialog flows demonstrate decisions and validation, not file content
   operations.
+- Standard-dialog ownership is fixed to `demo` and `dlgdsn`; no third example
+  is permitted as a standard-dialog acceptance vehicle in wave 2.
 - Dynamic-dialog flows validate structured descriptions before rendering.
 - Scrollable-dialog flows prove scrolling, focus movement, bounds, and visible
   control state.
@@ -189,7 +191,8 @@ and proof paths.
 **Validation rules**:
 - Every family named in `SC-004` maps to at least one owning wave-2 example.
 - No family is satisfied only by startup or clean exit.
-- Standard-dialog proof cannot be assigned to `sdlg` or `sdlg2`.
+- Standard-dialog proof cannot be assigned to `sdlg` or `sdlg2`; it is fixed to
+  `demo` and `dlgdsn` and may not be reassigned to a third example.
 - Broad demo proof cannot count editor, help, stream, terminal, mouse, or real
   charset behavior toward wave-2 acceptance.
 

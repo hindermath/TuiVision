@@ -31,7 +31,7 @@ cd tests/web-a11y
 npm run test:docfx
 ```
 
-Coverage Gate (SC-003): `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, and `TuiVision.Drivers.Console` must each achieve at least 70% line coverage. Measure with Coverlet via `dotnet test --collect:"XPlat Code Coverage"`.
+Coverage Gate (SC-003): `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, and `TuiVision.Drivers.Console` must each achieve at least 70% line coverage. Measure from the repository root with Coverlet via `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings`. `coverlet.runsettings` is the canonical TuiVision coverage-gate configuration and MUST be kept in sync when gate-relevant assemblies, example assemblies, or test projects are added, renamed, or removed. Validate it with `xmllint --noout coverlet.runsettings` where available before relying on the coverage gate.
 
 CI runs on Ubuntu and macOS against .NET 10. Linux and Windows/WSL compatibility checks should be added or expanded where changes affect runtime behavior, terminal handling, or portability. The `tv203s/` directory is **excluded from all builds and tests**. CI triggers on pushes to `main`, `master`, and branches matching `codex/**`, `claude/**`, `gemini/**`, `copilot/**`, `opencode/**`.
 

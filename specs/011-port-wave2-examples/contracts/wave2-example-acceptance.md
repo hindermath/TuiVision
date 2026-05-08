@@ -58,8 +58,8 @@ German-first and English-second XML documentation complete.
 
 ## Standard-Dialog Contract
 
-- Standard-dialog proof is supplied through `demo`, `dlgdsn`, or another
-  historically justified wave-2 flow.
+- Standard-dialog proof is supplied through `demo` and `dlgdsn`; no third
+  example is admissible as a standard-dialog acceptance vehicle in wave 2.
 - File and directory dialogs use real local metadata, filters, manual path
   entry, cancellation, and invalid-path handling.
 - Standard-dialog acceptance does not include opening, reading, writing, or
@@ -75,8 +75,8 @@ German-first and English-second XML documentation complete.
 - Progress proof is owned by `progba` and `tprogb`.
 - Dynamic-text proof is owned by `dyntxt`.
 - Scrollable-dialog proof is owned by `sdlg` and `sdlg2`.
-- Standard-dialog proof is owned by `demo`, `dlgdsn`, or another historically
-  justified wave-2 flow.
+- Standard-dialog proof is owned by `demo` and `dlgdsn`; no third example is
+  admissible.
 - Dynamic-dialog-design proof is owned by `dlgdsn`.
 - Broad integration proof is owned by `demo`.
 

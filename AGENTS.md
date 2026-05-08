@@ -43,7 +43,9 @@ npm run test:docfx
 
 ### Coverage Gate (SC-003)
 - **Minimum**: ≥ 70 % Line Coverage jeweils in `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console` (Pflichtenheft §9.4 Nr. 1)
-- **Measurement**: Coverlet (`coverlet.collector` package) via `dotnet test --collect:"XPlat Code Coverage"`
+- **Measurement**: Coverlet (`coverlet.collector` package) via `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings` from the repository root
+- `coverlet.runsettings` is the canonical TuiVision coverage-gate configuration and MUST be kept in sync when gate-relevant assemblies, example assemblies, or test projects are added, renamed, or removed.
+- Validate `coverlet.runsettings` with `xmllint --noout coverlet.runsettings` where available before relying on the coverage gate.
 - Merging into `main` without passing the coverage gate is NOT permitted.
 
 ## Code Style Guidelines

@@ -7,9 +7,17 @@
 
 **Tests**: Required. The specification requires deterministic in-process smoke
 tests for every wave-2 example. Test tasks appear before implementation tasks.
-Before every `dotnet build` or `dotnet test` command in any task, increment the
-manual build counter in `Directory.Build.props` and keep `Version`,
-`AssemblyVersion`, and `FileVersion` aligned with the numbered-branch scheme.
+
+<!-- markdownlint-disable-next-line MD033 -- inline HTML anchor is intentional;
+     it provides a stable target for [versioning rule](#versioning-rule)
+     references in T085/T100 and `quickstart.md`. -->
+<a id="versioning-rule"></a>
+**Repository versioning rule (single source of truth, referenced from
+T085/T100 and `quickstart.md` instead of being repeated in each task):** Before
+every `dotnet build` or `dotnet test` command in any task, increment the manual
+build counter in `Directory.Build.props` and keep `Version`, `AssemblyVersion`,
+and `FileVersion` aligned with the numbered-branch scheme `1.11.<patch>.<build>`
+(branch `011` -> minor `11`).
 
 **Organization**: Tasks are grouped by setup/foundation, then by user story so
 each story can be implemented and validated independently.
@@ -27,6 +35,15 @@ each story can be implemented and validated independently.
 
 **Purpose**: Establish the wave-2 project skeleton, registration points, and
 source-review baseline shared by all stories.
+
+**Convention** (binding for T004–T014): Each new wave-2 example `.csproj`
+MUST set `<AssemblyName>` exactly to the example directory name in PascalCase
+(e.g., `<AssemblyName>Demo</AssemblyName>` for `examples/Demo/`). This matches
+the wave-1 convention (`Desklogo`, `MsgCls`, `Tutorial`, `Videomode`) and is
+required so the bare-name patterns in `coverlet.runsettings` (e.g., `[Demo]*`,
+`[Sdlg2]*`) actually exclude the example assemblies from the gate aggregation.
+Variant forms such as `<AssemblyName>TuiVision.Examples.Demo</AssemblyName>`
+silently break the Exclude filter and are not permitted.
 
 - [ ] T001 Confirm the worktree is on branch `011-port-wave2-examples` and that
   `git status --short --branch` is clean before implementation begins.
@@ -73,9 +90,12 @@ source-review baseline shared by all stories.
 - [ ] T014 [P] Create project directory and skeleton files
   `examples/TProgB/TProgB.csproj`, `examples/TProgB/Program.cs`, and
   `examples/TProgB/TProgBApp.cs`.
-- [ ] T015 Add all eleven wave-2 projects to `TuiVision.sln`.
-- [ ] T016 Add project references for all eleven wave-2 examples to
+- [ ] T015 [P] Add all eleven wave-2 projects to `TuiVision.sln`.
+- [ ] T016 [P] Add project references for all eleven wave-2 examples to
   `tests/TuiVision.Examples.SmokeTests/TuiVision.Examples.SmokeTests.csproj`.
+  T015 and T016 touch different files (`TuiVision.sln` vs.
+  `TuiVision.Examples.SmokeTests.csproj`) and may run in parallel; neither
+  task strictly requires the other to be complete first.
 
 **Checkpoint**: All wave-2 projects exist, are registered, and can be referenced
 by the smoke-test project.
@@ -91,23 +111,149 @@ that must exist before any user-story implementation is completed.
 
 - [ ] T017 Update `tests/TuiVision.Examples.SmokeTests/ExampleTestBase.cs` so
   its XML docs and helper names describe wave-1 and wave-2 examples, not only
-  wave 1.
+  wave 1. Document explicitly that all eleven wave-2 example apps MUST reuse
+  the wave-1 headless seam contract: a `bool headless` constructor parameter
+  plus a `GetEvent()` override so smoke tests can drive a deterministic
+  in-process event stream. Variant seams across the new example apps are not
+  permitted.
 - [ ] T018 Add shared smoke helpers in
   `tests/TuiVision.Examples.SmokeTests/ExampleTestBase.cs` for visible-state
   assertions, boundary-input assertions, and text-first output assertions.
+  Provide a small helper or XML-doc note that names the wave-1 headless seam as
+  the canonical interaction entry point for new wave-2 example tests.
+- [ ] T018a [P] Create the architecture-evidence directory tree before any
+  Phase-2 file write touches it: ensure `docs/architecture/` and
+  `docs/architecture/adr/` exist (e.g., `mkdir -p docs/architecture/adr`).
+  T019, T020, T021, T022, and T023a (file writes inside that tree) MUST be
+  preceded by T018a so no tool that lacks implicit `mkdir -p` semantics fails
+  silently.
 - [ ] T019 Create `docs/architecture/architecture-vision.md` with the wave-2
   example-readiness context, DE-first and EN-second if learner-facing content is
-  included.
+  included. MUST satisfy the minimum-content bars in `plan.md`
+  §"Architecture evidence": at least one ASCII context diagram showing
+  `examples/`, `tests/TuiVision.Examples.SmokeTests/`, `docs/guides/examples/`,
+  and the consumed framework modules (`TuiVision.Core`, `.Controls`,
+  `.Serialization`, `.Compatibility`, `.Drivers.Console`); plus a clear
+  in-scope / out-of-scope statement for wave 2.
 - [ ] T020 Create `docs/architecture/runtime-view.md` describing in-process
   headless smoke flows and normal console launch flows for wave-2 examples.
+  MUST satisfy the minimum-content bars in `plan.md` §"Architecture evidence":
+  one normal launch flow plus one headless smoke flow, with at least one
+  sequence sketch each for a scrollable-dialog example (`sdlg` or `sdlg2`) and
+  the dynamic-dialog example (`dlgdsn`).
 - [ ] T021 Create `docs/architecture/quality-scenarios.md` with quality
   scenarios for deterministic smoke tests, text-first operation, guide
-  completeness, and no file-content I/O in standard dialogs.
+  completeness, and no file-content I/O in standard dialogs. MUST satisfy the
+  minimum-content bars in `plan.md` §"Architecture evidence": at least three
+  scenarios — deterministic in-process smoke interaction, text-first /
+  keyboard-first operation, and no file-content I/O in standard dialogs;
+  additional scenarios are welcome but the three listed are mandatory.
 - [ ] T022 Create `docs/architecture/architecture-risks.md` with accepted
   limitation and Historical Example Parity Cleanup records discovered in T003.
+  Each accepted limitation MUST follow the `AcceptedLimitation` field schema
+  from `data-model.md` (`ExampleName`, `HistoricalBehavior`, `Reduction`,
+  `Rationale`, `AcceptanceImpact`, `EarliestFollowUpPoint`, and
+  `TraceableReference`). Each Historical Example Parity Cleanup entry MUST
+  follow the `HistoricalExampleParityCleanup` field schema (`AffectedExample`,
+  `DeferredBehavior`, `Rationale`, `EarliestSchedulingPoint`,
+  `TraceableReference`). Free-text records that omit any required field are
+  not acceptable. Required presentation form: render every record as a labeled
+  Markdown bullet list using `**Field**:` as the prefix for each schema field,
+  one bullet per field, in the order given above. Do not invent alternative
+  layouts (no tables, no fenced YAML) so reviewers can diff entries
+  line-by-line.
 - [ ] T023 Review whether any new cross-cutting architecture decision needs an
   ADR under `docs/architecture/adr/`; create the ADR only if a new decision is
-  introduced during implementation.
+  introduced during implementation. The mandatory ADR for Decision 11
+  (`TScrollGroup` foundation) is owned by T023a below, not by this review task.
+- [ ] T023a [US1] Create
+  `docs/architecture/adr/0001-tscrollgroup-foundation.md` capturing
+  Research Decision 11: a managed `TScrollGroup` (and a thin
+  `TScrollableDialog` where needed) is added under `src/TuiVision.Controls/`
+  as the reusable scrollable-container surface for `sdlg`/`sdlg2`. Record
+  context, decision, alternatives (contingent T042/T043 path, example-local
+  duplication, full Controls/Dialog redesign), consequences, and the link
+  back to `research.md` Decision 11.
+- [ ] T023b [P] [US1] Add failing tests in
+  `tests/TuiVision.Controls.Tests/TScrollGroupTests.cs` covering vertical
+  scrolling, horizontal scrolling, combined horizontal/vertical scrolling,
+  deterministic focus movement across scroll positions, bounded content, and
+  visible control state. These tests MUST be written and observed failing
+  before T023c implements the framework surface.
+- [ ] T023c [US1] Implement `src/TuiVision.Controls/TScrollGroup.cs`
+  (composing existing `TScroller`/`TScrollBar` over `TGroup` semantics) and,
+  if `sdlg`/`sdlg2` cannot be expressed with a plain `TDialog` host, also
+  `src/TuiVision.Controls/TScrollableDialog.cs`. Keep the surface minimal,
+  managed-only, with full DE-first/EN-second XML docs. Run T023b after the
+  implementation lands to confirm green; refactor only after green.
+- [ ] T023d [US1] Record the new `TScrollGroup` (and optional
+  `TScrollableDialog`) as a Phase-5/Welle-2 controls-readiness entry. Do NOT
+  insert it into the M-07 driver-consolidation `.cc` ledger inside
+  `docs/porting-status.md`, because that ledger is reserved for historical
+  driver `.cc` files and its top-level title is "Porting-Status / M-07 Proof
+  Ledger".
+  **Default location (option b, preferred)**: extend `Pflichtenheft.md`
+  Welle-2 prerequisites with one short DE-first / EN-second line OR a paired
+  `[^N]`-style Markdown footnote (DE primary footnote text immediately
+  followed by an EN companion sentence in the same footnote body) that links
+  `sdlg`/`sdlg2` to the new `TScrollGroup` framework surface and ADR-0001.
+  Concrete shape — pick exactly one of:
+  - Inline addendum directly under the existing Welle-2 `Benoetigt:` block,
+    e.g. `> Hinweis: `sdlg`/`sdlg2` konsumieren das neue managed `TScrollGroup`
+    (siehe ADR-0001). / Note: `sdlg`/`sdlg2` consume the new managed
+    `TScrollGroup` (see ADR-0001).`
+  - Or a Markdown footnote pair: append `[^tscrollgroup]` to the `sdlg` and
+    `sdlg2` checklist items and add the bilingual footnote body at the end of
+    the Welle-2 section.
+  Use exactly this option (b) unless the alternative is justified.
+  **Alternative location (option a, only with title refactor)**: extend
+  `docs/porting-status.md` with a clearly delimited new top-level section
+  "## Phase 5 Controls porting evidence (Welle 2)" AND, in the same change,
+  refactor the file's top-level title from "M-07 Proof Ledger" to a name that
+  covers both M-07 and Phase-5 evidence (e.g., "Porting-Status: M-07 driver
+  ledger and Phase-5 controls evidence"). Without that title refactor, option
+  (a) is rejected.
+  Pick exactly one location and document the decision in the same change.
+- [ ] T023e [P] Verify and lock `coverlet.runsettings` at the repository
+  root. The canonical file was created during planning; this task confirms it
+  matches the constitution before T089 consumes it. The file MUST contain
+  exactly:
+  - `<Include>[TuiVision.Core]*,[TuiVision.Controls]*,[TuiVision.Serialization]*,[TuiVision.Compatibility]*,[TuiVision.Drivers.Console]*</Include>`
+  - `<Exclude>` covering all 15 example assemblies (`Desklogo`, `MsgCls`,
+    `Tutorial`, `Videomode`, `Clipboard`, `Demo`, `DlgDsn`, `DynTxt`, `InpLis`,
+    `ListVi`, `ProgBa`, `Sdlg`, `Sdlg2`, `TCombo`, `TProgB`) AND every
+    `*.Tests` project (`TuiVision.Core.Tests`, `TuiVision.Controls.Tests`,
+    `TuiVision.Serialization.Tests`, `TuiVision.Compatibility.Tests`,
+    `TuiVision.Drivers.Tests`, `TuiVision.Examples.SmokeTests`)
+  - `<IncludeTestAssembly>false</IncludeTestAssembly>`
+  If the file is missing, drifted, or absent any of those entries, restore the
+  canonical content.
+  XML smoke validation: in the same task, additionally confirm the file is
+  well-formed XML so a typo cannot make T089 fail with an obscure Coverlet
+  error. Use `xmllint --noout coverlet.runsettings` where available, or
+  `dotnet test --list-tests --settings coverlet.runsettings` (which exits
+  non-zero on settings parse errors without running the suite). Record either
+  command's success in the PR evidence.
+  Phase scope: T023e is a tooling prerequisite for **T089 in Phase 6 only**;
+  it does NOT gate Phase-3 implementation tasks (T038/T040) and does NOT block
+  US1/US2/US3 acceptance independent of T089.
+- [ ] T023f [P] Document the CI-coverage convention so the
+  `coverlet.runsettings` filter is not silently bypassed by future CI work.
+  Today `.github/workflows/ci.yml` invokes `dotnet test "$target"
+  --configuration Release --no-build --verbosity normal` — without
+  `--collect:"XPlat Code Coverage"` and without `--settings
+  coverlet.runsettings` — so no coverage runs in CI right now and the gate is
+  a local-only validation step (T089). Add a short, explicit clause to
+  `docs/architecture/quality-scenarios.md` (or, if that file does not yet
+  cover CI, `docs/architecture/architecture-risks.md`) recording: "If the
+  repository CI is later extended to measure coverage, the invocation MUST
+  include `--collect:"XPlat Code Coverage" --settings coverlet.runsettings`,
+  run from the repository root. Without the `--settings` argument the
+  Include/Exclude filters in `coverlet.runsettings` are ignored and the
+  `>=70%`-per-required-assembly gate is invalid." This is documentation only;
+  no `ci.yml` edit is required by this feature because the current CI does
+  not run coverage. Phase scope: T023f is informational and does not gate any
+  Phase-3/4/5 acceptance.
 - [ ] T024 Update `docs/security/supply-chain-evidence.md` to record that no
   new NuGet dependency is planned, or document any justified dependency found
   during implementation; include the SBOM, VEX, SLSA/provenance, and releasable
@@ -124,7 +270,11 @@ that must exist before any user-story implementation is completed.
   evidence or N/A rationale in `docs/security/dependency-audit.md`; also update
   or explicitly mark N/A for `docs/security/arc42-security.md`,
   `docs/security/security-quality-scenarios.md`, and
-  `docs/security/samm-assessment.md`.
+  `docs/security/samm-assessment.md`. Offline fallback: if the Multi-Mac
+  workflow has no network access at the time T028 runs, record
+  `dependency-currency: N/A (offline; rerun planned)` in
+  `docs/security/dependency-audit.md` together with the planned follow-up
+  point, instead of leaving the task failed or skipped.
 
 **Checkpoint**: Shared smoke helpers and governance evidence are ready; story
 work can proceed in parallel.
@@ -147,11 +297,25 @@ and `sdlg2`.
 > Write these tests first and ensure they fail before implementation.
 
 - [ ] T029 [P] [US1] Add `tests/TuiVision.Examples.SmokeTests/DemoSmokeTests.cs`
-  covering startup, a broad controls/dialogs/gadget interaction, visible state,
-  standard-dialog file/directory metadata without file-content I/O, wildcard
-  filtering, manual path entry, cancel and invalid-path decisions, color/display
-  selection, and documented omission of editor/help/stream/terminal/mouse/
-  charset behavior.
+  with the headless-seam contract from T017/T018 and at least the following
+  separate `[TestMethod]` methods so each acceptance aspect has its own visible
+  failure mode:
+  1. `Demo_Starts_And_Runs_Broad_Controls_Dialogs_Gadgets_Flow` — startup plus
+     one broad controls/dialogs/gadget interaction, visible state asserted.
+  2. `Demo_StandardFileDialog_Shows_Real_Metadata_With_Wildcard_Filter` — file
+     and directory dialog shows real local metadata and wildcard/filter state,
+     with no file-content reads or writes.
+  3. `Demo_StandardFileDialog_Manual_Path_Entry_Visible_Decision` — manual
+     path entry produces a visible decision state.
+  4. `Demo_StandardFileDialog_Cancel_And_InvalidPath_Are_Visible` — cancel and
+     invalid-path decisions become visible without file-content I/O.
+  5. `Demo_Color_And_Display_Dialog_Selection_Is_Visible` — color and display
+     selection produces a visible result.
+  6. `Demo_Documents_Editor_Help_Stream_Terminal_Mouse_Charset_Omission` —
+     verifies the documented omission of out-of-scope behaviors (e.g., by
+     asserting a guide/proof reference, not by exercising those behaviors).
+  Standard-dialog acceptance for the wave is fully owned by `demo` and
+  `dlgdsn`; this task MUST NOT delegate any aspect to a third example.
 - [ ] T030 [P] [US1] Add
   `tests/TuiVision.Examples.SmokeTests/DlgDsnSmokeTests.cs` covering structured
   dialog description create/load, render, one simple change, and visible
@@ -178,27 +342,43 @@ and `sdlg2`.
 - [ ] T035 [P] [US1] Implement `examples/DlgDsn/DlgDsnApp.cs` with a structured
   dialog description model, render flow, simple modification flow, validated
   symbolic dialog values, and visible rejection for malformed, incomplete,
-  duplicate-control, and invalid-navigation descriptions.
+  duplicate-control, and invalid-navigation descriptions. Depends on T036
+  (fixtures must exist as inputs) before T030 can turn green; T035 itself may
+  be authored in parallel with T036, but the smoke run of T030 cannot be
+  declared green until T036 is complete.
 - [ ] T036 [US1] Add source-controlled `dlgdsn` fixtures under
   `examples/DlgDsn/Fixtures/` for one valid dialog description plus malformed,
-  incomplete, duplicate-control, and invalid-navigation rejection examples, using
-  existing `TuiVision.Serialization`/resource primitives.
+  incomplete, duplicate-control, and invalid-navigation rejection examples,
+  using existing `TuiVision.Serialization`/resource primitives. The persisted
+  roundtrip is required, not optional, because `FR-006` mandates loading or
+  creating a structured dialog description and the plan upgraded the fixture
+  from "optional" to "required" to align with this requirement. T036 MUST be
+  complete before the T030 smoke run is asserted green and before T037 finishes
+  the runnable launch path; this fixes the otherwise reversed implementation
+  order between T035 (consumer) and T036 (input fixtures).
 - [ ] T037 [US1] Implement `examples/DlgDsn/Program.cs` and
   `examples/DlgDsn/DlgDsn.csproj` so `dotnet run --project examples/DlgDsn`
   works and no new JSON/external format stack is introduced.
 - [ ] T038 [P] [US1] Implement `examples/Sdlg/SdlgApp.cs` with historical
-  vertical `ScrollDialog`/`ScrollGroup` behavior.
+  vertical `ScrollDialog`/`ScrollGroup` behavior, consuming the managed
+  `TScrollGroup` (and `TScrollableDialog` if introduced) surface from
+  `src/TuiVision.Controls/`. Example-local duplicates of the scrollable
+  container are not permitted; depend on T023b/T023c to be green first.
 - [ ] T039 [US1] Implement `examples/Sdlg/Program.cs` and
   `examples/Sdlg/Sdlg.csproj` so `dotnet run --project examples/Sdlg` works.
 - [ ] T040 [P] [US1] Implement `examples/Sdlg2/Sdlg2App.cs` with historical
-  horizontal and vertical `ScrollDialog`/`ScrollGroup` behavior.
+  horizontal and vertical `ScrollDialog`/`ScrollGroup` behavior, consuming the
+  managed `TScrollGroup` (and `TScrollableDialog` if introduced) surface from
+  `src/TuiVision.Controls/`. Example-local duplicates of the scrollable
+  container are not permitted; depend on T023b/T023c to be green first.
 - [ ] T041 [US1] Implement `examples/Sdlg2/Program.cs` and
   `examples/Sdlg2/Sdlg2.csproj` so `dotnet run --project examples/Sdlg2` works.
-- [ ] T042 [US1] If any reusable control/dialog behavior blocks US1, add
-  focused failing tests in the affected `tests/TuiVision.Controls.Tests/` or
+- [ ] T042 [US1] If any *additional* reusable control/dialog behavior beyond
+  `TScrollGroup`/`TScrollableDialog` (T023a-T023d) blocks US1, add focused
+  failing tests in the affected `tests/TuiVision.Controls.Tests/` or
   `tests/TuiVision.Serialization.Tests/` file before changing `src/`.
-- [ ] T043 [US1] If T042 is needed, implement the minimal reusable framework
-  behavior in the existing `src/TuiVision.Controls/` or
+- [ ] T043 [US1] If T042 is needed, implement the minimal additional reusable
+  framework behavior in the existing `src/TuiVision.Controls/` or
   `src/TuiVision.Serialization/` modules without example-local substitutes.
 
 **Checkpoint**: US1 examples run independently and their smoke tests prove
@@ -357,7 +537,12 @@ example has a guide, smoke evidence, and completion record.
   guides are intentionally indexed only through `examples/README.md`, record the
   rationale in `docs/architecture/quality-scenarios.md`.
 - [ ] T082 [US3] Record final accepted limitations and Historical Example
-  Parity Cleanup references in `docs/architecture/architecture-risks.md`.
+  Parity Cleanup references in `docs/architecture/architecture-risks.md`,
+  using the same `AcceptedLimitation` and `HistoricalExampleParityCleanup`
+  field schemas required by T022 and the same labeled-bullet `**Field**:`
+  presentation form (no free-text records, no alternative layouts). Cross-link
+  each entry from the affected `docs/guides/examples/<example>.md` so reviewers
+  can traverse from guide to risk record without searching.
 - [ ] T083 [US3] Refresh agent context for `codex`, `claude`, `gemini`, and
   `copilot` with `.specify/scripts/bash/update-agent-context.sh` if active
   technologies, proof surfaces, next-step marker, or workflow guidance changed.
@@ -377,18 +562,61 @@ statistics, and PR evidence are completed only after Phase 6 validation passes.
 **Purpose**: Repository-level validation, coverage, formatting, dependency,
 documentation, final proof updates, and PR evidence.
 
-- [ ] T085 Increment the manual build counter in `Directory.Build.props` before
-  each final-validation `dotnet build` or `dotnet test` command below, and keep
-  `Version`, `AssemblyVersion`, and `FileVersion` aligned before the command
-  runs.
+- [ ] T085 Apply the [repository versioning rule](#versioning-rule) before each
+  final-validation `dotnet build` or `dotnet test` command below; do not
+  duplicate the rule text here.
 - [ ] T086 Run `dotnet build --configuration Release` and record the result in
   the PR evidence.
 - [ ] T087 Run `dotnet test tests/TuiVision.Examples.SmokeTests/` and verify
   all 15 delivered examples are covered.
+- [ ] T087a Verify `SC-007` explicitly: confirm that `examples/` contains
+  exactly the 4 wave-1 example projects (`Desklogo`, `MsgCls`, `Tutorial`,
+  `Videomode`) and the 11 wave-2 example projects from the `Pflichtenheft.md`
+  wave-2 checklist (`Clipboard`, `Demo`, `DlgDsn`, `DynTxt`, `InpLis`,
+  `ListVi`, `ProgBa`, `Sdlg`, `Sdlg2`, `TCombo`, `TProgB`). No wave-3, wave-4,
+  wave-5, or wave-6 example may be present in the wave-2 acceptance set.
+  Canonical reproducible check (run from the repository root, in bash on
+  macOS / Linux / WSL — process substitution `<(...)` is bash-specific):
+
+  ```bash
+  diff \
+    <(ls -1 examples/ | grep -v '^README\.md$' | sort) \
+    <(printf '%s\n' Clipboard Demo DlgDsn DynTxt InpLis ListVi ProgBa \
+                    Sdlg Sdlg2 TCombo TProgB \
+                    Desklogo MsgCls Tutorial Videomode | sort)
+  ```
+
+  Equivalent Windows-Native PowerShell form (run from the repository root):
+
+  ```powershell
+  Compare-Object `
+    (Get-ChildItem examples -Directory | Select-Object -ExpandProperty Name | Sort-Object) `
+    (@('Clipboard','Demo','DlgDsn','DynTxt','InpLis','ListVi','ProgBa',
+       'Sdlg','Sdlg2','TCombo','TProgB',
+       'Desklogo','MsgCls','Tutorial','Videomode') | Sort-Object) `
+    -SyncWindow 0
+  ```
+
+  An empty diff (or no `Compare-Object` output) means SC-007 is satisfied.
+  Capture the command output (empty stdout + exit status `0` for bash; empty
+  PowerShell pipeline result) in the PR evidence as the SC-007 proof. Any
+  line in the diff or any returned `Compare-Object` row is a hard fail.
 - [ ] T088 Run `dotnet test` and record full-suite evidence.
-- [ ] T089 Run `dotnet test --collect:"XPlat Code Coverage"` and record
-  assembly-specific evidence for the required `>=70%` coverage gate and the
-  `>=80%` target tracking.
+- [ ] T089 Run
+  `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings`
+  using the `coverlet.runsettings` file verified by T023e. **Working
+  directory**: the command MUST be run from the repository root so that the
+  relative `--settings coverlet.runsettings` argument resolves; running from
+  a sub-folder silently falls back to the default Coverlet filter (no
+  Include/Exclude), which invalidates the gate. The Include whitelist MUST
+  contain exactly `TuiVision.Core`, `TuiVision.Controls`,
+  `TuiVision.Serialization`, `TuiVision.Compatibility`, and
+  `TuiVision.Drivers.Console`; the Exclude blocklist MUST cover all 15 example
+  assemblies (4 wave-1 + 11 wave-2) and every `*.Tests` project. Record
+  assembly-specific evidence for the required `>=70%` coverage gate. The
+  `>=80%` value is informational tracking only and must not block acceptance;
+  log it separately from the gate result. If `coverlet.runsettings` is
+  missing, drifted, or invoked from a wrong working directory, T089 fails.
 - [ ] T090 Run `dotnet format --verify-no-changes` and record formatting
   evidence.
 - [ ] T091 If public APIs, XML comments, generated docs, or DocFX navigation
@@ -416,8 +644,18 @@ documentation, final proof updates, and PR evidence.
 - [ ] T099 Prepare the PR summary with purpose, touched projects, tests run,
   coverage evidence, documentation/A11Y evidence, security/governance evidence,
   config/API impact, and accepted limitations.
-- [ ] T100 Confirm `Version`, `AssemblyVersion`, and `FileVersion` in
-  `Directory.Build.props` match the numbered-branch scheme before commit/push.
+- [ ] T100 Confirm `Directory.Build.props` matches the
+  [repository versioning rule](#versioning-rule) (`1.11.<patch>.<build>`)
+  before commit/push; the canonical wording lives in the preamble.
+- [ ] T100a Promote `coverlet.runsettings` from wave-2 validation support to the
+  canonical TuiVision coverage-gate configuration before final commit: ensure
+  `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`,
+  `.github/copilot-instructions.md`, and
+  `.github/agents/copilot-instructions.md` all require
+  `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings`
+  from the repository root, require `coverlet.runsettings` maintenance when
+  gate-relevant assemblies, example assemblies, or test projects change, and
+  mention `xmllint --noout coverlet.runsettings` where available.
 - [ ] T101 As the last Polish task, verify whether a corresponding
   `Lastenheft_*.md` exists for this feature; if yes, rename it with
   `bash scripts/rename-lastenheft.sh <LH-file> 011-port-wave2-examples` and
@@ -432,6 +670,22 @@ documentation, final proof updates, and PR evidence.
 
 - Phase 1 setup has no dependencies.
 - Phase 2 foundation depends on Phase 1 and blocks story acceptance.
+  T018a (the `docs/architecture/` directory creation) MUST run before any
+  Phase-2 file-write task that targets that tree (T019, T020, T021, T022,
+  T023a).
+  T023a-T023d (TScrollGroup ADR, failing tests, implementation, controls
+  porting-evidence record) belong to this phase and gate Phase-3 scrollable
+  examples: T023a and T023d (document tasks) MUST be **complete**, and
+  T023b/T023c (test + implementation) MUST be **green**, before T038/T040 in
+  Phase 3 start.
+  T023e (`coverlet.runsettings` verify-and-lock) is also Phase-2-staged for
+  early visibility, but is intentionally NOT a Phase-3 gate. It is a tooling
+  prerequisite for T089 in Phase 6 only and does not block T038/T040 or any
+  US1/US2/US3 smoke acceptance.
+  T023f (CI-coverage-convention documentation) is informational only: it
+  records how a future CI coverage extension MUST invoke the runsettings
+  filter, but it does not gate any Phase-3/4/5 work and does not require any
+  edit to `.github/workflows/ci.yml` in this feature.
 - Phase 3 US1 depends on Phase 2 and is the MVP.
 - Phase 4 US2 depends on Phase 2 and may run in parallel with US1 after shared
   infrastructure is ready.
@@ -451,18 +705,42 @@ documentation, final proof updates, and PR evidence.
 
 ### Red-Green-Refactor Rules
 
+- T023b (TScrollGroup tests) MUST be written and observed failing before T023c
+  implements the framework surface, and before T038/T040 implement
+  `sdlg`/`sdlg2`.
 - Smoke tests in T029-T032 and T044-T050 must be written and observed failing
   before their matching implementation tasks are completed.
-- Focused framework tests in T042/T065 must be written before framework changes
-  when a blocker is found.
+- Focused framework tests in T042/T065 must be written before *additional*
+  framework changes when a further blocker is found beyond the
+  `TScrollGroup` foundation.
 - Refactor only after the relevant smoke and focused tests are green.
 
 ### Parallel Opportunities
 
 - T004-T014 can run in parallel after T003.
-- T019-T028 can run in parallel where files do not overlap.
-- T029-T032 can run in parallel.
-- T033/T035/T038/T040 can run in parallel after their tests exist.
+- T015 and T016 can run in parallel with each other; T015 touches
+  `TuiVision.sln`, T016 touches the smoke-test `.csproj`, and the two files
+  are independent.
+- T018a (the `docs/architecture/` directory creation) is a one-shot Phase-2
+  prerequisite for T019, T020, T021, T022, and T023a. It can run in parallel
+  with T017 and T018, but must complete before any file-write task inside
+  `docs/architecture/` runs.
+- T019-T028 can run in parallel where files do not overlap. T023a, T023b,
+  T023c, T023d are sequential within themselves (ADR -> failing tests ->
+  implementation -> controls porting-evidence record) but can run in parallel
+  with T019-T022 and T024-T028 where files do not overlap. T023e (the
+  `coverlet.runsettings` verification) and T023f (CI-coverage-convention
+  documentation) each touch an independent path and can run in parallel with
+  all other Phase-2 tasks.
+  Marker convention note: the `[P]` on T023b means "parallel with non-T023x
+  Phase-2 tasks" (T019–T022, T024–T028). It does NOT mean parallel with
+  T023a/T023c — those are strictly sequential ahead of and after T023b inside
+  the TScrollGroup chain. The `[P]` on T023e/T023f means "parallel with all
+  other Phase-2 tasks" because their files do not overlap with any other
+  Phase-2 artifact.
+- T029-T032 can run in parallel after T023b/T023c are green for T031/T032.
+- T033/T035/T038/T040 can run in parallel after their tests exist; T038 and
+  T040 additionally require T023b/T023c to be green.
 - T044-T050 can run in parallel.
 - T051/T053/T055/T057/T059/T061/T063 can run in parallel after their tests
   exist.

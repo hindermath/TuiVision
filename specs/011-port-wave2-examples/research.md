@@ -65,17 +65,22 @@ purpose in wave 2 prevents incorrect scope from leaking into planning.
 
 ## Decision 5: Assign standard-dialog proof to `demo` and `dlgdsn`
 
-**Decision**: Standard-dialog proof is demonstrated through `demo`, `dlgdsn`,
-or another historically justified wave-2 flow, not through `sdlg`/`sdlg2`.
+**Decision**: Standard-dialog proof is demonstrated through `demo` and
+`dlgdsn`, not through `sdlg`/`sdlg2` and not through any unnamed third flow.
 
 **Rationale**: `demo` contains broad control/dialog workflows, and `dlgdsn`
 contains dynamic dialog and file-dialog usage. This aligns proof with actual
-historical responsibilities.
+historical responsibilities. Removing the open-ended "or another historically
+justified wave-2 flow" clause prevents dead optionality across the artifacts
+because no third example was ever named.
 
 **Alternatives considered**:
 - Force standard dialogs into `sdlg`/`sdlg2`: rejected as artificial behavior.
 - Drop standard-dialog proof from wave 2: rejected because the wave is
   "Controls and Dialogs" and feature `010` prepared that surface.
+- Keep the open-ended "or another historically justified wave-2 flow" clause:
+  rejected because no third example exists, and the open clause invited
+  inconsistency between artifacts.
 
 ## Decision 6: Keep file-content I/O out of standard-dialog acceptance
 
@@ -152,3 +157,32 @@ ambiguous.
 - Ship code/tests first and update docs later: rejected because wave completion
   depends on proof and guides.
 - Keep statistics outside feature scope: rejected by repository governance.
+
+## Decision 11: Provide `TScrollGroup` as reusable framework foundation for `sdlg`/`sdlg2`
+
+**Decision**: Add a managed `TScrollGroup` (and a thin `TScrollableDialog`
+where needed) under `src/TuiVision.Controls/` so that `sdlg` and `sdlg2`
+compose scrollable dialog containers from one reusable framework surface
+instead of re-implementing scroll behavior in example projects. The decision is
+recorded as ADR `docs/architecture/adr/0001-tscrollgroup-foundation.md`.
+
+**Rationale**: The original `tv203s/contrib/tvision/examples/sdlg/scrlgrp.cpp`
+and `sdlg2/scrlgrp.cpp` implement custom `ScrollGroup`/`ScrollDialog` classes;
+the managed C# framework currently exposes only `TScrollBar` and `TScroller`.
+The Common Example Contract forbids example-local duplication of reusable
+framework behavior, so the historical `sdlg`/`sdlg2` design implies a missing
+framework surface rather than an implementation detail. Pre-deciding this
+surface keeps `sdlg`/`sdlg2` honest, prevents three different example-local
+seams across parallelized teams, and lets later waves reuse the same surface.
+
+**Alternatives considered**:
+
+- Leave the surface contingent on T042/T043 ("only if a blocker is found"):
+  rejected because the historical sources make a custom scrollable container
+  the structurally certain, not speculative, blocker.
+- Implement scrollable behavior example-locally in `examples/Sdlg/` and
+  `examples/Sdlg2/`: rejected because it duplicates framework responsibilities
+  and weakens later wave reuse.
+- Reopen the full Controls/Dialog architecture: rejected as out of scope; only
+  the minimal `TScrollGroup` (plus optional `TScrollableDialog`) surface is
+  added.

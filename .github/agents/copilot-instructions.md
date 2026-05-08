@@ -28,6 +28,7 @@ docs/guides/examples/
 dotnet restore
 dotnet build --configuration Release
 dotnet test
+dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings
 dotnet format --verify-no-changes
 dotnet test tests/TuiVision.Examples.SmokeTests/
 cd tests/web-a11y && npm install && npx playwright install chromium && npm run test:docfx
@@ -55,6 +56,19 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
   technical debt, `spec.md`, `plan.md`, or `tasks.md` must state whether
   evidence under `docs/architecture/` is required. `N/A` needs a short
   rationale.
+- Coverage-Gate: `coverlet.runsettings` ist die kanonische
+  TuiVision-Coverage-Gate-Konfiguration. Coverage-Gates muessen aus dem
+  Repository-Root mit `dotnet test --collect:"XPlat Code Coverage" --settings
+  coverlet.runsettings` gemessen werden; die Datei muss bei Aenderungen an
+  gate-relevanten Assemblies, Beispiel-Assemblies oder Testprojekten gepflegt
+  und nach Moeglichkeit mit `xmllint --noout coverlet.runsettings` validiert
+  werden.
+- Coverage gate: `coverlet.runsettings` is the canonical TuiVision coverage-gate
+  configuration. Coverage gates must be measured from the repository root with
+  `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings`;
+  keep the file in sync when gate-relevant assemblies, example assemblies, or
+  test projects change, and validate it with `xmllint --noout
+  coverlet.runsettings` where available.
 <!-- MANUAL ADDITIONS END -->
 
 ## Shared Parent Guidance

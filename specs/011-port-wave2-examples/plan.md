@@ -33,8 +33,8 @@ is implemented only where it blocks a required wave-2 example.
   control state.
 - **Standard-dialog proof**: File, directory, color, display, validation,
   cancellation, invalid-path, and dynamic-dialog evidence supplied through
-  `demo`, `dlgdsn`, or another historically justified wave-2 flow; it is not
-  assigned to `sdlg`/`sdlg2`.
+  `demo` and `dlgdsn`; no third example is admissible as a standard-dialog
+  acceptance vehicle, and it is not assigned to `sdlg`/`sdlg2`.
 - **Historical Example Parity Cleanup**: A follow-up record for optional or
   expanded historical parity beyond wave-2 acceptance, scheduled no earlier
   than after mandatory waves 1-4 are complete.
@@ -87,9 +87,11 @@ is implemented only where it blocks a required wave-2 example.
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
 - **Branching and PR flow**: Pass. Work remains on numbered Spec-Kit branch
-  `011-port-wave2-examples`; before commit/push, keep `Version`,
-  `AssemblyVersion`, and `FileVersion` aligned to `1.11.<patch>.<build>` and
-  follow the existing Draft-PR-before-implementation workflow if a PR is opened.
+  `011-port-wave2-examples`; before commit/push, follow the canonical
+  repository versioning rule recorded in the `tasks.md` preamble (single
+  source of truth for `1.11.<patch>.<build>` alignment of `Version`,
+  `AssemblyVersion`, and `FileVersion`). Continue with the existing
+  Draft-PR-before-implementation workflow if a PR is opened.
 - **Level-2 environment**: Pass. Uses the `RiderProjects/TuiVision` registry
   context: .NET 10 / C# terminal UI framework, `dotnet restore/build/test`,
   MSTest, Coverlet, `dotnet format`, DocFX + Playwright/axe when docs output is
@@ -117,12 +119,24 @@ is implemented only where it blocks a required wave-2 example.
   under `docs/architecture/` for context/vision, runtime flows, quality
   scenarios, and architecture risks. ADRs are required only for new cross-
   cutting decisions discovered during implementation.
-- **Architecture evidence**: Pass with planned artifacts. Expected evidence:
-  `docs/architecture/architecture-vision.md`,
-  `docs/architecture/runtime-view.md`,
-  `docs/architecture/quality-scenarios.md`,
-  `docs/architecture/architecture-risks.md`, plus
-  `docs/architecture/adr/` only if a new decision is needed.
+- **Architecture evidence**: Pass with planned artifacts and minimum content
+  bars. Expected evidence:
+  - `docs/architecture/architecture-vision.md` — wave-2 example-readiness
+    scope, in-scope/out-of-scope statement, and at least one ASCII context
+    diagram showing `examples/`, `tests/TuiVision.Examples.SmokeTests/`,
+    `docs/guides/examples/`, and the consumed framework modules.
+  - `docs/architecture/runtime-view.md` — normal launch flow plus headless
+    smoke flow with at least one sequence sketch each for a scrollable-dialog
+    example (`sdlg` or `sdlg2`) and the dynamic-dialog example (`dlgdsn`).
+  - `docs/architecture/quality-scenarios.md` — at least three scenarios:
+    deterministic in-process smoke interaction, text-first/keyboard-first
+    operation, and no file-content I/O in standard dialogs.
+  - `docs/architecture/architecture-risks.md` — at least one risk per
+    accepted limitation for `sdlg`/`sdlg2` and one risk per Historical Example
+    Parity Cleanup item.
+  - `docs/architecture/adr/0001-tscrollgroup-foundation.md` — required ADR
+    capturing Decision 11 (managed `TScrollGroup` foundation). Further ADRs
+    only when an additional cross-cutting decision arises.
 - **Bilingual CEFR-B2 documentation scope**: Pass. Each new guide under
   `docs/guides/examples/` is DE-first/EN-second and readable at CEFR-B2.
 - **XML documentation + DocFX regeneration scope**: Pass. Public API additions
@@ -132,9 +146,19 @@ is implemented only where it blocks a required wave-2 example.
 - **Red-Green-Refactor testing scope**: Pass. Tasks must start with failing or
   missing smoke/test evidence for each example family, then implement the
   minimal required behavior and refactor only within touched boundaries.
-- **Coverage gate**: Pass with planned validation. Repository gate remains
-  >=70% line coverage per required assembly with >=80% target. Example smoke
-  tests are required proof but do not replace module coverage evidence.
+- **Coverage gate**: Pass with planned validation. The repository hard gate
+  remains `>=70%` line coverage per required assembly: `TuiVision.Core`,
+  `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`,
+  and `TuiVision.Drivers.Console`. Coverage measurement explicitly excludes
+  **all** example assemblies (4 wave-1: `Desklogo`, `MsgCls`, `Tutorial`,
+  `Videomode`; 11 wave-2: `Clipboard`, `Demo`, `DlgDsn`, `DynTxt`, `InpLis`,
+  `ListVi`, `ProgBa`, `Sdlg`, `Sdlg2`, `TCombo`, `TProgB`) and **all**
+  `*.Tests` projects (Core, Controls, Serialization, Compatibility, Drivers,
+  Examples.SmokeTests) from the gate aggregation. Enforcement file:
+  `coverlet.runsettings` at the repository root, delivered by tasks.md T023e
+  and consumed by T089 via `--settings coverlet.runsettings`. The `>=80%`
+  value is informational tracking only and does not block acceptance. Example
+  smoke tests are required proof but do not replace module coverage evidence.
 - **NuGet dependency currency and pinning exceptions**: Pass. No new NuGet
   dependency is planned. If implementation discovers a dependency need, it must
   be justified, current, pinned through normal project conventions, and reflected
@@ -193,6 +217,15 @@ specs/011-port-wave2-examples/
 ### Source Code (repository root)
 
 ```text
+src/TuiVision.Controls/
+├── TScrollGroup.cs              # new reusable scrollable-container surface
+└── TScrollableDialog.cs         # thin dialog wrapper over TScrollGroup; only
+                                 # if needed by sdlg/sdlg2 in addition to TDialog
+
+tests/TuiVision.Controls.Tests/
+└── TScrollGroupTests.cs         # failing-first tests for TScrollGroup before
+                                 # the sdlg/sdlg2 example implementations land
+
 examples/
 ├── Clipboard/
 ├── Demo/
@@ -238,7 +271,8 @@ docs/
 │   ├── runtime-view.md
 │   ├── quality-scenarios.md
 │   ├── architecture-risks.md
-│   └── adr/                 # only if new ADRs are needed
+│   └── adr/
+│       └── 0001-tscrollgroup-foundation.md  # required ADR, see Decision 11
 └── security/
     ├── asvs-verification.md
     ├── arc42-security.md
@@ -263,29 +297,47 @@ See [research.md](research.md). Key decisions:
 
 1. Use one managed project per historical example for traceability.
 2. Extend the existing in-process smoke-test style and require one
-   example-specific deterministic interaction per new example.
+   example-specific deterministic interaction per new example. New example apps
+   inherit the wave-1 headless seam (`bool headless` constructor + `GetEvent()`
+   override) so all eleven wave-2 examples share one deterministic test seam.
 3. Keep `sdlg` and `sdlg2` complete for historical scrollable-dialog behavior
    in wave 2; record anything broader as Historical Example Parity Cleanup.
-4. Let `demo` and `dlgdsn` carry standard-dialog/dynamic-dialog proof.
+4. Let `demo` and `dlgdsn` carry standard-dialog/dynamic-dialog proof; no third
+   example is admissible as a standard-dialog acceptance vehicle.
 5. Keep file-content I/O, editor/help, terminal emulation, real charset effects,
    stream behavior, and runtime mouse behavior out of wave-2 acceptance.
 6. Reuse existing Serialization/resource primitives for `dlgdsn` fixtures.
 7. Treat architecture, security, A11Y, statistics, and guide updates as part of
    completion, not follow-up cleanup.
+8. (Research Decision 11) Add a managed `TScrollGroup` (and a thin
+   `TScrollableDialog` where needed) under `src/TuiVision.Controls/` as the
+   reusable framework surface for `sdlg`/`sdlg2`; recorded as ADR
+   `docs/architecture/adr/0001-tscrollgroup-foundation.md`. Note: Plan-summary
+   indices 1-8 above are a curated subset — the canonical numbering is in
+   `research.md` (Decisions 1-11), where this entry is Decision 11.
 
 ## Phase 1 Design Overview
 
 - Example projects expose a normal console entry point plus a headless or
-  deterministic test surface aligned with wave-1 patterns.
+  deterministic test surface aligned with wave-1 patterns. Each new app reuses
+  the wave-1 seam contract: a `bool headless` constructor parameter plus a
+  `GetEvent()` override so smoke tests drive a deterministic event stream
+  in-process. Variant seams are not permitted across the eleven new examples.
 - Smoke tests instantiate examples in process, trigger one example-specific
   interaction, verify visible state, and assert clean completion.
 - `Demo` is broad but bounded: controls, dialogs, and gadget flows only.
 - `DlgDsn` proves structured dialog description creation/load, render, one
   simple change, visible rejection for malformed, incomplete, duplicate-control,
-  and invalid-navigation descriptions, and optional persisted fixture through
-  existing serialization.
+  and invalid-navigation descriptions, and a required persisted-fixture
+  roundtrip through existing serialization.
 - `Sdlg`/`Sdlg2` prove scrollable dialog containers and do not own file/color/
-  display/charset standard-dialog acceptance.
+  display/charset standard-dialog acceptance. They consume the new
+  `TScrollGroup` (and, where useful, `TScrollableDialog`) framework surface
+  added under `src/TuiVision.Controls/`; example-local duplicates of scrollable
+  containers are not permitted.
+- Architecture decision record `docs/architecture/adr/0001-tscrollgroup-foundation.md`
+  is created in the same implementation phase to capture the `TScrollGroup`
+  framework surface decision.
 - Guides, `examples/README.md`, `Pflichtenheft.md`, `docs/project-statistics.md`,
   and architecture/security/A11Y evidence are updated in the same implementation
   phase.
@@ -319,7 +371,7 @@ Every row must also appear in `examples/README.md`, the final wave-2 section of
 | Progress | `progba`, `tprogb` | Deterministic completion for `progba`; abort and visible canceled state for `tprogb`, without wall-clock assertions |
 | Dynamic text | `dyntxt` | Predictable text/parameter update inside constrained bounds, including short and long values |
 | Scrollable dialogs | `sdlg`, `sdlg2` | Vertical scrolling for `sdlg`; horizontal and vertical scrolling for `sdlg2`; focus and visible state stay deterministic |
-| Standard dialogs | `demo`, `dlgdsn`, or another historically justified wave-2 flow | Local metadata, filters, manual path entry, cancellation, invalid paths, color/display/validation where represented, no file-content I/O |
+| Standard dialogs | `demo`, `dlgdsn` | Local metadata, filters, manual path entry, cancellation, invalid paths, color/display/validation where represented, no file-content I/O; no third example is admissible |
 | Dynamic dialog design | `dlgdsn` | Structured description create/load, render, one simple change, visible rejection of malformed, incomplete, duplicate-control, and invalid-navigation descriptions |
 | Broad integration | `demo` | A coherent wave-2 controls/dialogs/gadget flow with editor/help/stream/terminal/mouse/charset behavior excluded or documented |
 
@@ -331,11 +383,14 @@ Every row must also appear in `examples/README.md`, the final wave-2 section of
   wave-2 example projects.
 - Preserve existing wave-1 smoke tests and ensure final smoke coverage includes
   15 delivered examples.
-- Add focused Controls/Serialization tests only when missing framework behavior
-  is required for a wave-2 example.
+- Add `TScrollGroupTests.cs` under `tests/TuiVision.Controls.Tests/` as
+  failing-first coverage for the new `TScrollGroup` foundation (Decision 11)
+  before any `sdlg`/`sdlg2` example code is written.
+- Add further focused Controls/Serialization tests only when additional missing
+  framework behavior is required for a wave-2 example beyond `TScrollGroup`.
 - Run validation after implementation:
   `dotnet build --configuration Release`, `dotnet test`,
-  `dotnet test --collect:"XPlat Code Coverage"`,
+  `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings`,
   `dotnet format --verify-no-changes`, plus conditional `docfx docfx.json` and
   `tests/web-a11y` smoke tests when docs output changes.
 
@@ -349,7 +404,7 @@ Every row must also appear in `examples/README.md`, the final wave-2 section of
 | SC-004 | Contract and smoke tests cover clipboard, list/input/history, combo, progress, dynamic text, scrollable dialogs, standard dialogs, dynamic dialog design, and demo integration |
 | SC-005 | `Pflichtenheft.md`, `examples/README.md`, guides, smoke tests, and project statistics cross-reference each wave-2 item |
 | SC-006 | Next-step marker moves to wave 3 only after implementation proof is complete |
-| SC-007 | Contract and plan exclude wave-3/4 examples from wave-2 completion |
+| SC-007 | Contract and plan exclude wave-3/4 examples from wave-2 completion; Phase 6 contains an explicit verification task that compares `examples/` contents against the wave-2 checklist in `Pflichtenheft.md` |
 | SC-008 | Guides and any generated HTML docs include text-first/WCAG path evidence |
 | SC-009 | `sdlg`/`sdlg2` proof marks historical ScrollDialog/ScrollGroup completion and separates broader parity cleanup |
 

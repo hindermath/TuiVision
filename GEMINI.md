@@ -56,6 +56,8 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
     *   Aktualisierung der Dokumentation erfolgt zeitgleich mit Codeänderungen.
 4.  **Testing:**
     *   Mindestens 70% Line Coverage jeweils fuer `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console`.
+    *   Die verbindliche Coverage-Messung erfolgt aus dem Repository-Root mit `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings`.
+    *   `coverlet.runsettings` ist die kanonische TuiVision-Coverage-Gate-Konfiguration und MUSS gepflegt werden, wenn gate-relevante Assemblies, Beispiel-Assemblies oder Testprojekte hinzukommen, umbenannt oder entfernt werden. Vor Nutzung des Gates nach Moeglichkeit mit `xmllint --noout coverlet.runsettings` validieren.
     *   Jedes Feature benötigt Unit-Tests (MSTest) und ggf. Smoke-Tests in den Beispielen.
 5.  **Keine Nativen Abhängigkeiten:** Alle Treiber müssen rein in verwaltetem Code implementiert sein (kein P/Invoke, wo vermeidbar).
 6.  **Lizenztreue:** Einhaltung der MIT-Lizenz für neuen Code; Respektierung der Original-Lizenzen im `tv203s` Ordner.

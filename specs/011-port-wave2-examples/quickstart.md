@@ -24,7 +24,8 @@ repository-visible proof updates.
 1. Confirm scope boundaries:
    - exactly eleven wave-2 examples are added
    - `sdlg` and `sdlg2` are scrollable-dialog examples
-   - `demo` and `dlgdsn` carry standard/dynamic dialog proof
+   - `demo` and `dlgdsn` carry standard/dynamic dialog proof, and no third
+     example is admissible as a standard-dialog acceptance vehicle
    - no wave-3/4 example counts toward wave-2 completion
    - no editor/help/stream/terminal-emulation/runtime-mouse/real charset effect
      scope
@@ -48,8 +49,10 @@ repository-visible proof updates.
    dotnet build --configuration Release
    ```
 
-   Before `dotnet build`, increment the manual build counter in
-   `Directory.Build.props` according to the repository versioning rule.
+   Apply the canonical repository versioning rule from
+   `tasks.md` -> "Repository versioning rule" anchor before any `dotnet build`
+   or `dotnet test` command in this quickstart. The rule is intentionally NOT
+   duplicated here.
 
 4. Run focused smoke validation after implementation:
 
@@ -73,16 +76,17 @@ repository-visible proof updates.
    - `sdlg` proves vertical scrollable-dialog behavior
    - `sdlg2` proves horizontal and vertical scrollable-dialog behavior
 
-5. Run repository validation:
-
-   Before each `dotnet build` and `dotnet test` command below, increment the
-   manual build counter in `Directory.Build.props` according to the repository
-   versioning rule.
+5. Run repository validation. Apply the canonical repository versioning rule
+   from the `tasks.md` preamble before each `dotnet build` and `dotnet test`
+   command below; the rule is intentionally NOT duplicated here. Run **from
+   the repository root** so that `--settings coverlet.runsettings` resolves
+   correctly; running from a sub-folder silently disables the
+   Include/Exclude filter and invalidates the coverage gate.
 
    ```bash
    dotnet build --configuration Release
    dotnet test
-   dotnet test --collect:"XPlat Code Coverage"
+   dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings
    dotnet format --verify-no-changes
    ```
 
