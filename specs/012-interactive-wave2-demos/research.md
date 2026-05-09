@@ -1,7 +1,7 @@
 # Research: Interactive Wave 2 Demos
 
 **Feature**: `012-interactive-wave2-demos`
-**Spec**: [spec.md](/Users/thorstenhindermann/RiderProjects/TuiVision/specs/012-interactive-wave2-demos/spec.md)
+**Spec**: [spec.md](./spec.md)
 **Date**: 2026-05-09
 
 ## Decision 1: Use `examples/Demo` as the first vertical slice

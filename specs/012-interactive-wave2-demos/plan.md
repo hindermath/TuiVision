@@ -1,7 +1,7 @@
 # Implementation Plan: Interactive Wave 2 Demos
 
-**Branch**: `012-interactive-wave2-demos` | **Date**: 2026-05-09 | **Spec**: [spec.md](/Users/thorstenhindermann/RiderProjects/TuiVision/specs/012-interactive-wave2-demos/spec.md)
-**Input**: Feature specification from `/specs/012-interactive-wave2-demos/spec.md`
+**Branch**: `012-interactive-wave2-demos` | **Date**: 2026-05-09 | **Spec**: [spec.md](./spec.md)
+**Input**: Feature specification from `./spec.md`
 
 **Note**: This document follows the Spec-Kit plan template and records the implementation baseline for `/speckit-plan`. It does not execute implementation tasks.
 
@@ -145,11 +145,11 @@ Directory.Build.props
 
 ## Phase 0: Research
 
-Research is captured in [research.md](/Users/thorstenhindermann/RiderProjects/TuiVision/specs/012-interactive-wave2-demos/research.md). All open implementation questions from the spec are resolved there: vertical-slice order, event-loop smoke design, shared helper boundaries, read-only file/fixture policy, documentation/A11Y evidence, and governance proof scope.
+Research is captured in [research.md](./research.md). All open implementation questions from the spec are resolved there: vertical-slice order, event-loop smoke design, shared helper boundaries, read-only file/fixture policy, documentation/A11Y evidence, and governance proof scope.
 
 ## Phase 1: Design and Contracts
 
-Design entities are captured in [data-model.md](/Users/thorstenhindermann/RiderProjects/TuiVision/specs/012-interactive-wave2-demos/data-model.md). Runtime and proof obligations are captured in [contracts/interactive-wave2-demo-acceptance.md](/Users/thorstenhindermann/RiderProjects/TuiVision/specs/012-interactive-wave2-demos/contracts/interactive-wave2-demo-acceptance.md). Implementation and validation entry points are captured in [quickstart.md](/Users/thorstenhindermann/RiderProjects/TuiVision/specs/012-interactive-wave2-demos/quickstart.md).
+Design entities are captured in [data-model.md](./data-model.md). Runtime and proof obligations are captured in [contracts/interactive-wave2-demo-acceptance.md](./contracts/interactive-wave2-demo-acceptance.md). Implementation and validation entry points are captured in [quickstart.md](./quickstart.md).
 
 ## Phase 2: Task Planning Approach
 
