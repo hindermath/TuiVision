@@ -5,6 +5,15 @@
 **Status**: Draft
 **Input**: User description: "Use `Lastenheft_Interactive-Wave2-Demos.md` as input. Create a feature for interactive Wave-2 demos."
 
+## Clarifications
+
+### Session 2026-05-09
+
+- Q: How strict must primary smoke tests be about exercising the real app event loop? -> A: Primary smoke proof per example must use `app.Run()` or the real app loop with injected `TEvent`, command, or key events; direct methods may only be setup or supplemental evidence.
+- Q: What side-effect boundary applies to file, path, and dialog-designer demo paths? -> A: File/path and dialog-designer paths remain read-only toward existing user data; they use source-controlled fixtures or test temp directories, do not read file contents as demo proof, and do not write persistent user data.
+- Q: Which repository-visible proof artifacts must be explicit completion criteria? -> A: `specs/012-interactive-wave2-demos/pr-evidence.md` must be maintained, and `examples/README.md` must be updated when the visible operation model changes.
+- Q: Which test commands are formal completion evidence for this feature? -> A: Completion requires both `dotnet test tests/TuiVision.Examples.SmokeTests/` as the fast Wave-2 smoke proof and a green full `dotnet test` run.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Demo as the visible vertical slice (Priority: P1)
@@ -74,6 +83,7 @@ As an apprentice or visually impaired learner, I want each updated guide to expl
 - The clipboard is unavailable, isolated, or intentionally simulated as unavailable.
 - A file or dialog operation is cancelled before a valid selection is made.
 - A manually entered path or dialog-description fixture is invalid and must be rejected visibly.
+- A file, path, or dialog-designer operation points at existing user data; the demo must keep the operation read-only, avoid file-content reads as proof, and avoid persistent writes.
 - Lists, combo boxes, and dynamic text examples receive empty, boundary-sized, or narrow-viewport content.
 - A progress example is completed, partially advanced, or cancelled.
 - Scrollable dialog examples target a control or cell outside the first visible viewport.
@@ -90,7 +100,7 @@ As an apprentice or visually impaired learner, I want each updated guide to expl
 - **FR-004**: Each executed example command MUST update visible state such as status text, desktop text, selection state, progress state, dialog result, or a user-readable error message.
 - **FR-005**: A behaviour MUST NOT count as interactive when it is only a direct method call, only a computed string, or only a smoke-test-only helper with no visible application path.
 - **FR-006**: The broad demo MUST serve as the P1 vertical slice and expose at least three existing Wave-2 behaviours through visible commands and result feedback.
-- **FR-007**: Every Wave-2 example MUST have at least one deterministic smoke scenario that verifies a command, key, or event path through the visible application loop.
+- **FR-007**: Every Wave-2 example MUST have at least one deterministic smoke scenario that verifies a command, key, or event path through `app.Run()` or the real application loop with injected `TEvent`, command, or key events.
 - **FR-008**: Existing direct proof helpers MAY remain as supporting evidence, but the primary acceptance proof for each example MUST be the visible application path.
 - **FR-009**: Shared command names, interaction labels, or testing utilities SHOULD be used when multiple examples need the same operation pattern; example-specific special cases MUST be justified by the example's purpose.
 - **FR-010**: The feature MUST NOT add Wave-3 or Wave-4 functionality, mandatory runtime mouse support, broad framework redesign, or unrelated documentation-platform changes.
@@ -104,6 +114,9 @@ As an apprentice or visually impaired learner, I want each updated guide to expl
 - **FR-018**: The eleven Wave-2 guides MUST be updated so normal startup, primary operation path, expected feedback, and accessibility notes are described in German first and English second.
 - **FR-019**: Proof artifacts MUST make clear that Wave 2 is fully learner- and review-ready only after this interactive showcase stage is complete.
 - **FR-020**: Project statistics and formal requirement/proof surfaces MUST be updated when the feature is implemented and validated.
+- **FR-021**: File, path, and dialog-designer demo paths MUST remain read-only toward existing user data, MUST use source-controlled fixtures or test temp directories for proof data, MUST NOT read file contents as the demo proof, and MUST NOT write persistent user data.
+- **FR-022**: `specs/012-interactive-wave2-demos/pr-evidence.md` MUST record local and CI evidence for this feature, and `examples/README.md` MUST be updated when the visible Wave-2 operation model changes.
+- **FR-023**: Completion evidence MUST include a successful `dotnet test tests/TuiVision.Examples.SmokeTests/` run and a successful full `dotnet test` run.
 
 ### Constitution Requirements *(mandatory)*
 
@@ -124,7 +137,7 @@ As an apprentice or visually impaired learner, I want each updated guide to expl
 - **Interactive Example**: One Wave-2 example application with a name, purpose, visible operation path, feedback state, guide, smoke scenario, and accepted limitations.
 - **Operation Path**: A user-facing route that starts at normal example startup and reaches a command, menu, keyboard action, or equivalent visible application command.
 - **Visible Feedback State**: The observable result after an operation path, such as status text, selected item, dialog result, progress value, cancellation state, or readable error message.
-- **Smoke Scenario**: A deterministic validation path that exercises the same application operation path a learner or reviewer can use and verifies the visible feedback state.
+- **Smoke Scenario**: A deterministic validation path that exercises the same application operation path a learner or reviewer can use through `app.Run()` or the real application loop with injected events, and verifies the visible feedback state.
 - **Guide Update**: A learner-facing documentation update that explains startup, operation path, expected feedback, accessibility notes, and proof notes in German and English.
 - **Omission Record**: A traceable note for historical behaviour that is intentionally out of scope, belongs to a later wave, or should be handled as separate parity cleanup.
 
@@ -134,7 +147,7 @@ As an apprentice or visually impaired learner, I want each updated guide to expl
 
 - **SC-001**: All eleven Wave-2 examples show at least one visible operation path from normal startup.
 - **SC-002**: The broad demo exposes at least three visible commands and three corresponding visible result states.
-- **SC-003**: The example smoke suite contains at least one visible application-path smoke scenario for each of the eleven Wave-2 examples.
+- **SC-003**: The example smoke suite contains at least one visible application-path smoke scenario for each of the eleven Wave-2 examples, and each primary scenario runs through `app.Run()` or the real application loop with injected events.
 - **SC-004**: The interactive smoke scenarios cover all required interaction families: clipboard, broad demo/dialog flow, dynamic dialog description, dynamic text, input/list/history, list bounds, combo selection, progress completion, progress abort, vertical scroll/focus, and horizontal/vertical scroll/focus.
 - **SC-005**: All eleven affected Wave-2 guides describe normal startup, operation path, expected feedback, and accessibility notes in German and English.
 - **SC-006**: A reviewer can trace every Wave-2 example from guide to visible operation path to smoke evidence.
@@ -142,6 +155,8 @@ As an apprentice or visually impaired learner, I want each updated guide to expl
 - **SC-008**: Existing Wave-2 proof coverage remains present or is replaced by stronger visible-path proof for the same behaviour.
 - **SC-009**: `Pflichtenheft.md` and project statistics reflect that Wave 2 is interactively review-ready only after this showcase stage is complete.
 - **SC-010**: When generated documentation is refreshed, the matching accessibility smoke path completes without serious accessibility violations.
+- **SC-011**: `pr-evidence.md` traces the completed interactive paths, validation evidence, and any CI proof, and `examples/README.md` is either updated for the changed operation model or explicitly recorded as unchanged.
+- **SC-012**: The fast Wave-2 smoke proof and the full repository test proof are both recorded as passing completion evidence.
 
 ## Assumptions
 
