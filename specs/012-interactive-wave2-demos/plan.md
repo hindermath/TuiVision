@@ -13,6 +13,13 @@ The implementation will use `examples/Demo` as the first P1 vertical slice becau
 
 The existing direct proof methods from 011 remain useful as setup or supplemental assertions, but they no longer count as the primary runtime proof. Guide, README, PR evidence, architecture, security, A11Y, and statistics surfaces must be updated only for the new interactive behavior and validation evidence. Generated DocFX `_site/` output and generated `api/*.yml` files remain uncommitted build artifacts.
 
+## Baseline Assumptions
+
+- The implementation starts from the merged `011-port-wave2-examples` plus the 011 review-cleanup baseline. This includes corrected dialog-designer fixture handling and scroll/focus proof for `Sdlg`/`Sdlg2`.
+- The later task list must not silently re-port Wave-2 behavior. Before routing a 011 proof method through a visible command, tasks should reference or verify that the underlying functional proof still exists.
+- The historical source review is both a general repository rule and a concrete 012 input. For 012, every example needs a per-example review note covering relevant `.c`/`.cc` files and important matching headers when declarations are needed.
+- The spec-level completion proof names the fast example smoke suite and full `dotnet test`. Repository merge evidence additionally includes the configured coverage gate, formatting gate, and DocFX/A11Y proof because this feature changes learner-facing documentation.
+
 ## Terminology
 
 **Interactive Example**: A Wave-2 example that exposes the historical/demo behavior through a visible runtime surface instead of only through direct helper methods.
@@ -27,7 +34,7 @@ The existing direct proof methods from 011 remain useful as setup or supplementa
 
 **Historical Source Review**: A per-example comparison against the relevant read-only `.c`/`.cc` files and any important matching headers under `tv203s/`, used to confirm the original demo intent, identify essential interaction paths, and record intentional deviations.
 
-**Proof Surface**: The repository artifact that records completion evidence, especially smoke tests, `pr-evidence.md`, guides, `examples/README.md`, architecture/security notes, and project statistics.
+**Proof Surface**: The repository artifact that records completion evidence, especially smoke tests, coverage/format evidence, DocFX/A11Y proof, `pr-evidence.md`, guides, `examples/README.md`, architecture/security notes, `Pflichtenheft.md`, and project statistics. If a proof surface intentionally stays unchanged, the unchanged or N/A rationale must be recorded.
 
 ## Technical Context
 
@@ -95,6 +102,7 @@ specs/012-interactive-wave2-demos/
 |-- research.md
 |-- data-model.md
 |-- quickstart.md
+|-- checklists/
 |-- pr-evidence.md
 `-- contracts/
     `-- interactive-wave2-demo-acceptance.md
@@ -147,14 +155,14 @@ Design entities are captured in [data-model.md](/Users/thorstenhindermann/RiderP
 
 The later `/speckit-tasks` run should produce tasks in this order:
 
-1. For each of the eleven examples, review the relevant historical `.c`/`.cc` source and any important matching headers under `tv203s/` as read-only reference and record the original interaction intent plus any planned deviation.
+1. For each of the eleven examples, review the relevant historical `.c`/`.cc` source and any important matching headers under `tv203s/` as read-only reference, record the original interaction intent plus any planned deviation, and reference or verify the reused 011 functional proof that will be routed through visible interaction.
 2. Establish the shared smoke-event and visible-feedback test pattern on `examples/Demo`.
 3. Implement the `Demo` P1 vertical slice and its runtime smoke tests.
 4. Apply the proven pattern to clipboard and text examples.
 5. Apply the proven pattern to list, input, combo, and boundary-state examples.
 6. Apply the proven pattern to progress and abort/cancel examples.
 7. Apply the proven pattern to dialog-designer and scroll-dialog examples.
-8. Update guides, README, evidence, architecture/security/A11Y/statistics surfaces, including the historical-source comparison outcome where user-visible behavior differs.
+8. Update guides, README, `pr-evidence.md`, `Pflichtenheft.md`, architecture/security/A11Y/statistics surfaces, including the historical-source comparison outcome where user-visible behavior differs and an unchanged/N/A rationale where a governance surface does not need content changes.
 9. Run the validation gate and record evidence.
 
 ## Complexity Tracking

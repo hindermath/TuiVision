@@ -73,7 +73,7 @@ Erwartung: Die Tests sind gruen, die Coverage-Grenze bleibt fuer die gate-releva
 
 ### 6. Dokumentation und A11Y pruefen
 
-Wenn Guides, DocFX-Inhalte oder Navigationsflaechen geaendert wurden:
+Da diese Funktion Guide- und Nachweisupdates erwartet, ist die DocFX-/A11Y-Pruefung als Merge-Evidenz einzuplanen:
 
 ```bash
 docfx docfx.json
@@ -97,7 +97,7 @@ docs/project-statistics.md
 Pflichtenheft.md
 ```
 
-Falls ein Pfad bewusst unveraendert bleibt, muss die Begruendung kurz in der PR-Evidenz oder im passenden Governance-Dokument stehen.
+Falls ein Pfad bewusst unveraendert bleibt, muss die Begruendung kurz in der PR-Evidenz oder im passenden Governance-Dokument stehen. Dasselbe gilt, wenn ein lokaler Validierungsbefehl nicht ausgefuehrt werden kann und durch CI- oder manuelle Evidenz ersetzt wird.
 
 ## English
 
@@ -169,7 +169,7 @@ Expected result: tests pass, coverage remains at least 70 percent for gate-relev
 
 ### 6. Validate documentation and A11Y
 
-When guides, DocFX content, or navigation surfaces changed:
+Because this feature expects guide and evidence updates, DocFX/A11Y validation should be planned as merge evidence:
 
 ```bash
 docfx docfx.json
@@ -193,4 +193,4 @@ docs/project-statistics.md
 Pflichtenheft.md
 ```
 
-If a path intentionally stays unchanged, record the reason briefly in PR evidence or the matching governance document.
+If a path intentionally stays unchanged, record the reason briefly in PR evidence or the matching governance document. The same applies when a local validation command cannot be run and must be replaced by CI or manual evidence.

@@ -138,13 +138,16 @@ Represents the evidence needed for PR review and merge readiness.
 - `CommandsRun`: Validation commands and outcomes.
 - `DocumentationUpdated`: Guide/README/evidence paths.
 - `HistoricalSourceReviewed`: Source comparison completed and deviations recorded.
+- `ValidationGateEvidence`: Example smoke, full test, coverage, formatting, and documentation/A11Y evidence or justified non-applicability.
 - `ArchitectureSecurityNotes`: Paths updated or confirmed unchanged.
+- `UnchangedEvidenceRationale`: Reason why an expected proof surface did not need content changes.
 - `ResidualRisk`: Remaining limitation or `None`.
 
 **Validation rules**:
 - `pr-evidence.md` must summarize all eleven examples.
 - Completion evidence must include example smokes and full `dotnet test`.
 - Repository governance evidence must be recorded before merge.
+- Unchanged governance or proof surfaces must carry an explicit rationale rather than being omitted silently.
 
 ## Entity: OmissionRecord
 

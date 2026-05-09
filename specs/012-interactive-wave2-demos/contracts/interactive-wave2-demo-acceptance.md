@@ -63,7 +63,7 @@ MUST demonstrate short, long, and constrained-width dynamic text states through 
 
 ### InpLis
 
-MUST demonstrate input/list interaction, selection changes, history or recall behavior where available, and boundary/empty feedback.
+MUST demonstrate editable input, list selection changes, any history or recall behavior that exists in the 011 proof baseline, and boundary/empty feedback.
 
 ### ListVi
 
@@ -83,7 +83,7 @@ MUST demonstrate scrolling or focus movement outside the initial viewport on bot
 
 ### TCombo
 
-MUST demonstrate combo selection, value change, and boundary or empty-state feedback.
+MUST demonstrate combo selection, visible value change, and boundary or empty-state feedback.
 
 ### TProgB
 
@@ -111,6 +111,7 @@ Implementation MUST update or confirm:
 - security evidence under `docs/security/` or a clear unchanged statement for NIST SSDF/CWE posture;
 - `docs/project-statistics.md` after the completed implementation phase;
 - `Pflichtenheft.md` next-step and feature-progress markers if this feature changes prioritized work status.
+- a clear unchanged or N/A rationale for any expected proof surface that does not need content changes.
 
 Generated `_site/`, generated `api/*.yml`, and transient DocFX files MUST NOT be committed.
 
@@ -127,7 +128,7 @@ docfx docfx.json
 cd tests/web-a11y && npm run test:docfx
 ```
 
-If a validation command cannot be run in the local environment, the reason and equivalent CI/manual evidence MUST be recorded in `pr-evidence.md`.
+Because this feature requires guide/documentation updates, DocFX and web A11Y validation are expected. If a validation command cannot be run in the local environment, the reason and equivalent CI/manual evidence MUST be recorded in `pr-evidence.md`.
 
 ## 7. Out-of-Scope Contract
 

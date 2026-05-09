@@ -14,6 +14,11 @@
 - Q: Which repository-visible proof artifacts must be explicit completion criteria? -> A: `specs/012-interactive-wave2-demos/pr-evidence.md` must be maintained, and `examples/README.md` must be updated when the visible operation model changes.
 - Q: Which test commands are formal completion evidence for this feature? -> A: Completion requires both `dotnet test tests/TuiVision.Examples.SmokeTests/` as the fast Wave-2 smoke proof and a green full `dotnet test` run.
 
+### Session 2026-05-10
+
+- Q: Which historical-source review obligation applies before task generation and implementation? -> A: Each Wave-2 example's planned interaction must be compared with the relevant read-only `.c`/`.cc` source under `tv203s/`, plus important matching headers when declarations are needed; intentional user-visible deviations must be recorded in guide or PR evidence.
+- Q: Which validation evidence supplements the fast smoke and full test completion proof? -> A: Repository merge evidence must also record the configured coverage gate, formatting gate, and DocFX/A11Y proof when documentation is refreshed; unavailable commands or unchanged evidence surfaces require a written rationale in `pr-evidence.md` or the matching governance artifact.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Demo as the visible vertical slice (Priority: P1)
@@ -117,6 +122,8 @@ As an apprentice or visually impaired learner, I want each updated guide to expl
 - **FR-021**: File, path, and dialog-designer demo paths MUST remain read-only toward existing user data, MUST use source-controlled fixtures or test temp directories for proof data, MUST NOT read file contents as the demo proof, and MUST NOT write persistent user data.
 - **FR-022**: `specs/012-interactive-wave2-demos/pr-evidence.md` MUST record local and CI evidence for this feature, and `examples/README.md` MUST be updated when the visible Wave-2 operation model changes.
 - **FR-023**: Completion evidence MUST include a successful `dotnet test tests/TuiVision.Examples.SmokeTests/` run and a successful full `dotnet test` run.
+- **FR-024**: Each Wave-2 example MUST include a historical source review against the relevant read-only `.c`/`.cc` files under `tv203s/`, and important matching headers when declarations are needed; the review MUST record the original demo intent and any intentional user-visible deviation.
+- **FR-025**: Repository merge evidence MUST record the configured coverage gate, formatting gate, and DocFX/A11Y validation when documentation is refreshed; unavailable commands or intentionally unchanged evidence surfaces MUST be justified in `pr-evidence.md` or the matching governance artifact.
 
 ### Constitution Requirements *(mandatory)*
 
@@ -139,6 +146,7 @@ As an apprentice or visually impaired learner, I want each updated guide to expl
 - **Visible Feedback State**: The observable result after an operation path, such as status text, selected item, dialog result, progress value, cancellation state, or readable error message.
 - **Smoke Scenario**: A deterministic validation path that exercises the same application operation path a learner or reviewer can use through `app.Run()` or the real application loop with injected events, and verifies the visible feedback state.
 - **Guide Update**: A learner-facing documentation update that explains startup, operation path, expected feedback, accessibility notes, and proof notes in German and English.
+- **Historical Source Review**: A per-example review that records the relevant `.c`/`.cc` source files, important matching headers when needed, original historical demo intent, planned interactive C# path, and intentional user-visible deviations.
 - **Omission Record**: A traceable note for historical behaviour that is intentionally out of scope, belongs to a later wave, or should be handled as separate parity cleanup.
 
 ## Success Criteria *(mandatory)*
@@ -157,11 +165,13 @@ As an apprentice or visually impaired learner, I want each updated guide to expl
 - **SC-010**: When generated documentation is refreshed, the matching accessibility smoke path completes without serious accessibility violations.
 - **SC-011**: `pr-evidence.md` traces the completed interactive paths, validation evidence, and any CI proof, and `examples/README.md` is either updated for the changed operation model or explicitly recorded as unchanged.
 - **SC-012**: The fast Wave-2 smoke proof and the full repository test proof are both recorded as passing completion evidence.
+- **SC-013**: Every Wave-2 example has traceable historical-source review evidence, and merge evidence records coverage, formatting, and DocFX/A11Y outcomes or justified non-applicability.
 
 ## Assumptions
 
 - The starting branch includes the merged Wave-2 port and review-cleanup baseline from 011, including the corrected dialog-designer fixture handling and scroll/focus proofs.
 - The eleven Wave-2 examples already have functional proof methods that can be reused or routed through visible commands.
+- Task generation should include a short prerequisite verification or reference for reused 011 proof methods before those methods are routed into visible interactive paths.
 - Keyboard-first operation is the acceptance baseline; mouse operation can remain optional or omitted.
 - The implementation may add minimal shared helpers for command routing, visible status, or smoke-event injection when that reduces duplication across examples.
 - Broad framework redesign is out of scope unless planning proves that a small reusable control or helper is necessary to expose the required interaction paths.
