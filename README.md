@@ -47,8 +47,8 @@ Agentic-AI workflows. It is not an official Turbo Vision continuation.
 - Die DocFX-HTML-Seite wird ueber `.github/workflows/pages.yml` in GitHub
   Actions gebaut, mit Playwright plus axe geprueft und als GitHub-Pages-Artefakt
   veroeffentlicht.
-- `_site/` und generierte `api/*`-Dateien bleiben bewusst aus Git heraus. Im
-  Repository liegen nur Quellen, `docfx.json`, Templates, Guides und
+- `_site/` und generierte `api/*.yml`-Dateien bleiben bewusst aus Git heraus.
+  Im Repository liegen nur Quellen, `docfx.json`, Templates, Guides und
   handgeschriebene Einstiegsseiten wie `api/index.md`.
 - In GitHub muss unter `Settings > Pages` die Quelle `GitHub Actions` aktiv sein.
   Nach dem ersten erfolgreichen Lauf auf `main` zeigt das Environment
@@ -57,9 +57,9 @@ Agentic-AI workflows. It is not an official Turbo Vision continuation.
 - The DocFX HTML site is built by `.github/workflows/pages.yml` in GitHub
   Actions, checked with Playwright plus axe, and published as a GitHub Pages
   artifact.
-- `_site/` and generated `api/*` files stay out of Git by design. The repository
-  keeps only sources, `docfx.json`, templates, guides, and handwritten entry
-  pages such as `api/index.md`.
+- `_site/` and generated `api/*.yml` files stay out of Git by design. The
+  repository keeps only sources, `docfx.json`, templates, guides, and
+  handwritten entry pages such as `api/index.md`.
 - In GitHub, `Settings > Pages` must use `GitHub Actions` as the source. After
   the first successful run on `main`, the `github-pages` environment shows the
   published URL.

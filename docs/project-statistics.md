@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-05-09 (aktualisiert inklusive Branch `011-port-wave2-examples`, Wave-2-Beispielen, Lastenheft fuer interaktive Wave-2-Demos, DocFX-Generated-Output-Cleanup, zweistufigem Beispielwellen-Liefermuster, Pflichtenheft-Abnahme fuer interaktive Beispielreife, 011-Review-Cleanup vor 012, Spec-Kit-Intake-Aufbereitung fuer 012 und GitHub-Pages-Artefaktworkflow fuer DocFX)
+Stand: 2026-05-09 (aktualisiert inklusive Branch `011-port-wave2-examples`, Wave-2-Beispielen, Lastenheft fuer interaktive Wave-2-Demos, DocFX-Generated-Output-Cleanup, zweistufigem Beispielwellen-Liefermuster, Pflichtenheft-Abnahme fuer interaktive Beispielreife, 011-Review-Cleanup vor 012, Spec-Kit-Intake-Aufbereitung fuer 012, GitHub-Pages-Artefaktworkflow fuer DocFX und PR-#26-Review-Cleanup)
 
 ## Zweck und Pflege
 
@@ -77,27 +77,27 @@ fortgeschrieben.
 | Kennzahl | Wert |
 |---|---:|
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-05-09 |
-| Git-Commits gesamt | 303 |
+| Git-Commits gesamt | 306 |
 | Autoren laut Git | 1 |
 | Sichtbare Aktivtage inkl. aktuellem Working Tree | 20 |
 | Produktionscode aktuell | 159 Dateien / 18347 Zeilen |
 | Testcode aktuell | 96 Dateien / 12645 Zeilen |
-| Dokumentation aktuell | 311 Dateien / 38074 Zeilen |
+| Dokumentation aktuell | 311 Dateien / 38081 Zeilen |
 | Davon Spec-Kit-Artefakte | 104 Dateien / 18934 Zeilen |
 | Davon Governance/Agent-Dateien | 5 Dateien / 1581 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 69066 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 863.3 Arbeitstage |
-| Erfahrener Entwickler, konservative Untergrenze in Stunden | 6733.9 Stunden (863.3 * 7.8) |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 69073 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 863.4 Arbeitstage |
+| Erfahrener Entwickler, konservative Untergrenze in Stunden | 6734.6 Stunden (863.4 * 7.8) |
 | Erfahrener Entwickler, brutto | 40.2 Arbeitsmonate (21.5 Tage/Monat) |
 | Erfahrener Entwickler, TVoeD-Annahme | 45.4 Kalendermonate bzw. 3.8 Jahre |
-| Thorsten solo, erfahrungsadjustierte Untergrenze | 552.5 Arbeitstage |
-| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 4309.7 Stunden (552.5 * 7.8) |
+| Thorsten solo, erfahrungsadjustierte Untergrenze | 552.6 Arbeitstage |
+| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 4310.3 Stunden (552.6 * 7.8) |
 | Thorsten solo, brutto | 25.7 Arbeitsmonate (21.5 Tage/Monat) |
 | Thorsten solo, TVoeD-Annahme | 29.1 Kalendermonate bzw. 2.4 Jahre |
 | Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 345.3 Arbeitstage |
 | Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 18.2 Kalendermonate |
-| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 43.2x (863.3 / 20 sichtbare Aktivtage) |
-| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 27.6x (552.5 / 20 sichtbare Aktivtage) |
+| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 43.2x (863.4 / 20 sichtbare Aktivtage) |
+| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 27.6x (552.6 / 20 sichtbare Aktivtage) |
 
 ## Phasen und Haupt-Branches
 
@@ -419,16 +419,16 @@ fortgeschrieben.
 
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
-- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 69066 Zeilen
+- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 69073 Zeilen
   (Produktionscode + Tests + Dokumentation).
 - Selbst mit der fuer klassische Entwicklung guenstigen Obergrenze von
   80 manuell erstellten Zeilen pro Arbeitstag ergibt sich bereits eine
-  Untergrenze von 863.3 Entwickler-Arbeitstagen.
+  Untergrenze von 863.4 Entwickler-Arbeitstagen.
 - Unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr entspricht das fuer einen
   erfahrenen Entwickler ca. 45.4 Kalendermonaten bzw. 3.8 Arbeitsjahren; fuer
   ein 3er-Team mit 20 % Koordinationsaufschlag ca. 18.0 Kalendermonaten.
 - Unter Einbezug von Thorstens Erfahrungsprofil sinkt die klassische
-  Solo-Referenz fuer dieses Repository auf ca. 552.5 Arbeitstage bzw.
+  Solo-Referenz fuer dieses Repository auf ca. 552.6 Arbeitstage bzw.
   29.1 TVoeD-Kalendermonate.
 - Gegen die sichtbaren 20 Aktivtage inklusive aktuellem Working Tree ergibt
   sich damit ein repo-weiter Beschleunigungsfaktor von ca. 43.2x gegen die
@@ -549,6 +549,7 @@ fortgeschrieben.
 | 2026-05-09 | 011-Review-Cleanup vor 012 | Die offenen Copilot-Review-Punkte aus PR #22 wurden vor dem Start von `012-interactive-wave2-demos` bereinigt: `DlgDsn` lehnt unsichere Fixture-Namen allow-list-basiert ab und meldet malformed-Deserialisierung diagnostisch, `Sdlg`/`Sdlg2` setzen echten `TScrollGroup`-Fokus, die zugehoerigen Smoke-Tests pruefen die neuen Fokus-Offsets und die 10 betroffenen Wave-2-Guides enthalten vollstaendige englische Proof-Bloecke. Validierung: gezielte DlgDsn/Sdlg/Sdlg2-Smoke-Tests `5/5` gruen, komplette Example-Smoke-Suite `59/59` gruen, `dotnet build --configuration Release` gruen, `dotnet test` gruen (`44` Core-, `288` Controls-, `37` Drivers-, `18` Compatibility-, `18` Serialization- und `59` Example-Smoke-Tests). Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `+44` Produktions-/Beispielcode-Zeilen, `+20` Testzeilen, `+109` Guide-Dokumentationszeilen; `Directory.Build.props` wurde nur als Build-Zaehler-Metadatum aktualisiert. Konservative Manualreferenz fuer `173` fachliche Netto-Zeilen: `2,2` Tage (ca. `16,9` Stunden); Thorsten-Solo-Referenz: `1,4` Tage (ca. `10,8` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-05-09, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 | 2026-05-09 | Lastenheft als Spec-Kit-Intake fuer 012 aufbereitet | `Lastenheft_Interactive-Wave2-Demos.md` wurde von einem Entwurfs-/Diskussionsdokument zu einer direkten Eingabedatei fuer `/speckit-specify` geschaerft: Intake-Zusammenfassung, PR-#24-Precondition, Beispiel-Matrix mit vorhandenen 011-Funktionen, priorisierte User Stories, zusaetzliche Requirements gegen Schein-Interaktion, erwartete Spec-Kit-Artefakte und ein aktualisierter kopierbarer Specify-Prompt fuer `012-interactive-wave2-demos`. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+235` Lastenheft-Dokumentationszeilen. Konservative Manualreferenz: 80 Zeilen/Tag = `2,9` Tage (ca. `22,9` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `1,9` Tage (ca. `14,7` Stunden); sichtbares Arbeitsfenster: kurze Agenten-Nacharbeit am 2026-05-09, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 | 2026-05-09 | GitHub-Pages-Artefaktworkflow fuer DocFX eingerichtet | Die DocFX-Dokumentation wird nun ueber `.github/workflows/pages.yml` in GitHub Actions gebaut, mit dem vorhandenen `tests/web-a11y/` Playwright-plus-axe-Smoke geprueft, als Pages-Artefakt aus `_site/` hochgeladen und ausserhalb von Pull Requests in das `github-pages`-Environment deployed. Der bestehende CI-DocFX-Schritt zeigt jetzt auf root-`docfx.json`; README, A11Y-README und gemeinsame Agent-Guidance halten fest, dass `_site/` und generierte `api/*.yml`-Dateien nicht committet werden. Validierung: `npm install` mit lokalem Node-25-Engine-Hinweis gegen erlaubte Node-20/22/24-Linien, `npx playwright install chromium`, danach `npm run test:docfx` mit DocFX `0` Warnungen/`0` Fehlern und Playwright/Axe `2/2` gruen. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+126` Workflow-/Dokumentations-/Guidance-Zeilen inklusive dieser Statistikfortschreibung. Konservative Manualreferenz: 80 Zeilen/Tag = `1,6` Tage (ca. `12,3` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `1,0` Tage (ca. `7,9` Stunden); sichtbares Arbeitsfenster: kurze Agenten-Nacharbeit am 2026-05-09, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
+| 2026-05-09 | PR-#26-Review-Cleanup fuer DocFX-Pages | Die beiden Copilot-Review-Punkte in PR #26 wurden eingearbeitet: `configure-pages` und `upload-pages-artifact` laufen nur noch ausserhalb von Pull Requests, waehrend DocFX-Build und A11Y-Smoke auch im PR weiterlaufen; die README spricht nun praezise von generierten `api/*.yml`-Dateien und laesst handgeschriebene Dateien wie `api/index.md` ausdruecklich unangetastet. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+7` Workflow-/Dokumentationszeilen. |
 
 ## Gesamtstatistik
 
@@ -558,17 +559,17 @@ Phasenwerte aus den Abschnitten `## Gesamtstand des Repositories` und
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | `69066` Zeilen |
+| Artefaktbasis gesamt | `69073` Zeilen |
 | Produktions- und Testcode zusammen | `30992` Zeilen (`44.9 %`) |
-| Dokumentationsanteil | `38074` Zeilen (`55.1 %`) |
+| Dokumentationsanteil | `38081` Zeilen (`55.1 %`) |
 | Spec-Kit-Anteil innerhalb der Doku | `18934` Zeilen (`49.7 %`) |
 | Governance-/Agent-Anteil innerhalb der Doku | `1581` Zeilen (`4.2 %`) |
 | Beobachtbarer Projektzeitraum | `2026-02-08` bis `2026-05-09` |
-| Git-Commits pro sichtbarem Aktivtag | `15.2` (`303 / 20`) |
-| Dokumentierte Gesamtzeilen pro sichtbarem Aktivtag | `3453.3` (`69066 / 20`) |
-| Dokumentierte Gesamtzeilen pro Commit | `227.9` (`69066 / 303`) |
-| Konservative Einzelentwickler-Untergrenze | `863.3` Arbeitstage / `6733.9` Stunden |
-| Thorsten-Solo-Untergrenze | `552.5` Arbeitstage / `4309.7` Stunden |
+| Git-Commits pro sichtbarem Aktivtag | `15.3` (`306 / 20`) |
+| Dokumentierte Gesamtzeilen pro sichtbarem Aktivtag | `3453.7` (`69073 / 20`) |
+| Dokumentierte Gesamtzeilen pro Commit | `225.7` (`69073 / 306`) |
+| Konservative Einzelentwickler-Untergrenze | `863.4` Arbeitstage / `6734.6` Stunden |
+| Thorsten-Solo-Untergrenze | `552.6` Arbeitstage / `4310.3` Stunden |
 | Kleines 3er-Team mit Koordinationsaufschlag | `345.3` Arbeitstage |
 | Repo-weiter Speedup gg. 80-Zeilen-Referenz | `43.2x` |
 | Repo-weiter Speedup gg. Thorsten-Referenz | `27.6x` |
@@ -592,7 +593,7 @@ Liefergeschwindigkeit.
 Artefaktmix nach aktuell dokumentiertem Snapshot (Zeilen)
 Produktion     | ###############                | 18347 | 26.6 %
 Tests          | ##########                     | 12645 | 18.3 %
-Dokumentation  | ############################## | 38074 | 55.1 %
+Dokumentation  | ############################## | 38081 | 55.1 %
 ```
 
 Der Artefaktmix zeigt, wie sich der aktuelle Repository-Snapshot auf
@@ -687,8 +688,8 @@ only a few documented active days.
 
 ```text
 Vergleich dokumentierter Gesamtaufwand / sichtbares KI-Lieferfenster
-Erfahren   | ############################## | 863.3 d
-Thorsten   | ###################            | 552.5 d
+Erfahren   | ############################## | 863.4 d
+Thorsten   | ###################            | 552.6 d
 KI sichtbar| #                              |  20.0 d
 ```
 
