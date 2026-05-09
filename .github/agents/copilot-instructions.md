@@ -1,6 +1,6 @@
 # TuiVision Development Guidelines
 
-Auto-generated from all feature plans. Last updated: 2026-05-08
+Auto-generated from all feature plans. Last updated: 2026-05-10
 
 ## Active Technologies
 - C# `latest` on .NET 10 (`net10.0`) + Existing `TuiVision.Core` geometry/event/buffer types; existing `TuiVision.Controls` shell foundation (`TView`, `TGroup`, `TProgram`, `TApplication`, `TMenuItem`, `TStatusItem`, `ShellCommandIds`); MSTest; Coverlet via `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings`; conditional `docfx docfx.json`; GitHub Actions for existing CI validation (008-controls-revision)
@@ -10,6 +10,8 @@ Auto-generated from all feature plans. Last updated: 2026-05-08
 - In-memory dialog state and session-only history; real local file-system metadata for file-listing/validation only; source-controlled tests/proof artifacts; minimal persisted dialog-description fixture through existing serialization/resource primitives; no database or external service storage (010-standard-dialogs-designer)
 - C# `latest` / C# 14 on .NET 10 (`net10.0`) + existing framework modules `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`; new wave-2 example projects under `examples/`; existing `tests/TuiVision.Examples.SmokeTests/`; MSTest; Coverlet; conditional DocFX and web A11Y smoke tooling (011-port-wave2-examples)
 - Runtime example state is in memory; standard-dialog file flows use real local file-system metadata only; `dlgdsn` may use source-controlled dialog-description fixtures through existing Serialization/resource primitives; no database, external service, persisted user history, or new dependency planned (011-port-wave2-examples)
+- C# `latest` / C# 14 on .NET 10 (`net10.0`) + Existing TuiVision modules only: `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`; existing MSTest and Coverlet test stack; existing DocFX plus Playwright/axe web A11Y tooling. No new runtime NuGet dependency is planned. (012-interactive-wave2-demos)
+- Runtime example state is in memory. Dialog-designer and file/path demonstrations use source-controlled fixtures, fixed repository paths, or test temporary directories. The examples must not persist user history, write user data as part of normal demonstration, read arbitrary user file contents as proof, or add a database/external service. (012-interactive-wave2-demos)
 
 - C# `latest` on .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, `TuiVision.Compatibility`; MSTest; Coverlet; docfx; wave-1 example projects under `examples/` (007-port-wave1-examples — Wave 1 delivered)
 
@@ -42,6 +44,7 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ## Recent Changes
+- 012-interactive-wave2-demos: Added C# `latest` / C# 14 on .NET 10 (`net10.0`) + Existing TuiVision modules only: `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`; existing MSTest and Coverlet test stack; existing DocFX plus Playwright/axe web A11Y tooling. No new runtime NuGet dependency is planned.
 - 011-port-wave2-examples: Added plan artifacts for wave 2: 11 new example projects, dedicated example smoke tests, DE-first/EN-second guides, architecture/security/A11Y evidence, and clarified `sdlg`/`sdlg2` scope as historical ScrollDialog/ScrollGroup examples.
 - 010-standard-dialogs-designer: Implemented framework readiness for standard dialogs and dialog designer: explicit file/directory decisions without file-content I/O, color/display/symbolic charset selection, validated dialog descriptions, persisted roundtrip, malformed-input rejection, and focused green Controls/Serialization tests.
 
@@ -66,6 +69,21 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
   scripted UI-event smoke tests. A wave is fully learner- and review-ready only
   after Stage 2 unless the scope explicitly asks for a minimal non-interactive
   proof.
+  Fuer jede Spec-Kit-Feature-Implementierung mit historisch abgeleitetem
+  Turbo-Vision-Verhalten muessen die relevanten Implementierungsdateien unter
+  `tv203s/` (`.c`, `.cc`) als Read-only-Referenz geprueft werden. Wenn
+  Deklarationen, Konstanten, Makros, Datenlayout, Vererbung oder Signaturen
+  wichtig sind, muessen auch passende C/C++-Header (`.h`, `.hpp`, `.hh`)
+  einbezogen werden. Wesentliche nutzer- oder API-sichtbare Abweichungen werden
+  in Spec, Plan, Tasks, Guide, PR-Evidence oder Architektur-/Security-Nachweis
+  dokumentiert; ohne historischen Bezug genuegt ein kurzes `N/A`.
+  For every Spec-Kit feature implementation with historically derived Turbo
+  Vision behavior, review the relevant implementation files under `tv203s/`
+  (`.c`, `.cc`) as read-only reference. When declarations, constants, macros,
+  data layout, inheritance, or signatures matter, also include matching C/C++
+  headers (`.h`, `.hpp`, `.hh`). Document material user-visible or API-visible
+  deviations in spec, plan, tasks, guide, PR evidence, or architecture/security
+  evidence; if there is no historical relevance, a short `N/A` is sufficient.
   Schnittstellen, Qualitätsattribute, Laufzeitverhalten, Deployment,
   Wartbarkeit oder technische Schulden betrifft, muss `spec.md`, `plan.md`
   oder `tasks.md` festhalten, ob Evidenz unter `docs/architecture/`

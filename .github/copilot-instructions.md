@@ -85,7 +85,7 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - **Test naming**: `ClassName_MethodName_Behavior` (e.g., `TRect_Contains_UsesTopLeftInclusiveBottomRightExclusive`).
 - **Branch naming**: Feature branches use either the agent-prefixed form `codex/<feature-description>` (or another supported agent prefix such as `claude/`, `gemini/`, `copilot/`, `opencode/`) or the numbered Spec-Kit form `NNN-short-description` when the Spec-Kit workflow creates the branch.
 - **Lastenheft traceability**: When a dedicated feature branch has implemented the requirements of a Lastenheft, rename that file to `Lastenheft_<topic>.<feature-branch>.md` so the delivered scope stays traceable.
-- **Porting guidance**: Consult `tv203s/contrib/tvision/` for original behavior when porting new classes. The C# port modernizes idioms — it does not translate line-for-line.
+- **Historical source reference policy**: For every Spec-Kit feature implementation that ports, extends, tests, documents, or fixes historically derived Turbo Vision behavior, consult the relevant read-only implementation files under `tv203s/` (`.c`, `.cc`) and, when declarations are needed, the matching C/C++ headers (`.h`, `.hpp`, `.hh`). Record the historical intent and material user-visible or API-visible deviations in `spec.md`, `plan.md`, `tasks.md`, guides, PR evidence, or architecture/security evidence. If the feature has no historical `tv203s` relevance, record a short `N/A` rationale. The C# port modernizes idioms; it does not translate line-for-line.
 - **Example wave delivery pattern**: Plan larger mandatory example waves as two Spec-Kit stages when porting/proof work and interactive runtime polish would otherwise be mixed. Stage 1 ports the historical behavior, closes framework prerequisites, and adds deterministic headless or in-process smoke paths with explicit follow-up notes for deferred interactivity. Stage 2 wires those proven functions into visible menus, status lines, desktop controls, dialogs, keyboard paths, and scripted UI-event smoke tests. Do not treat a wave as fully learner-facing complete until Stage 2 is delivered, unless the scope explicitly says the example is only a minimal non-interactive proof.
 
 ## Active Feature Context
@@ -146,6 +146,16 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - `sdlg` and `sdlg2` must be completed in wave 2 for their real historical `ScrollDialog`/`ScrollGroup` purpose. Broader parity work is separate Historical Example Parity Cleanup and must not block wave-2 acceptance.
 - Every new example needs at least one deterministic in-process smoke path that triggers example-specific visible behavior; startup plus clean exit is not sufficient.
 - Standard-dialog proof belongs to `demo`, `dlgdsn`, or another historically justified wave-2 flow. File-content I/O, editor/help, terminal emulation, runtime mouse behavior, and real charset effects remain out of scope for wave-2 acceptance.
+
+### 012-interactive-wave2-demos
+- Current planning baseline: execute the interactive Wave-2 demo polish from `specs/012-interactive-wave2-demos/spec.md` and `specs/012-interactive-wave2-demos/plan.md`.
+- Scope is limited to making the eleven Wave-2 examples visibly operable at normal runtime: `Clipboard`, `Demo`, `DlgDsn`, `DynTxt`, `InpLis`, `ListVi`, `ProgBa`, `Sdlg`, `Sdlg2`, `TCombo`, and `TProgB`; matching event-loop smoke tests in `tests/TuiVision.Examples.SmokeTests/`; guides, README, `pr-evidence.md`, and proportional architecture/security/A11Y/statistics evidence.
+- Before wiring or accepting each example, review the relevant historical `.c`/`.cc` source and any important matching headers under `tv203s/` as read-only reference, capture the original demo intent, and document intentional user-visible deviations in guide or PR evidence.
+- Every example must show first-screen purpose text, expose primary behavior through menu, keyboard, status, or command paths, and update visible text-first feedback after each demonstrated operation.
+- Primary smoke proof must run `app.Run()` or the equivalent real application loop with injected `TEvent`, command, or key events. Direct helper methods may support setup or supplemental assertions only.
+- `examples/Demo` is the P1 vertical slice and must prove at least three visible behaviors before the pattern is spread across the rest of the examples.
+- File/path and dialog-designer flows stay read-only toward user data: use source-controlled fixtures, fixed repository paths, or test temporary directories; do not read arbitrary user file contents or persist user history as proof.
+- Wave 3 and Wave 4 examples, mandatory mouse-only operation, broad framework redesign, new runtime dependencies, databases, external services, and DocFX publishing-model changes are out of scope.
 
 ## Agent File Synchronization Policy
 
