@@ -42,13 +42,39 @@ Agentic-AI workflows. It is not an official Turbo Vision continuation.
 - Treat every `docfx` regeneration as incomplete until the matching A11y smoke check has also passed.
 - Public API changes MUST include complete XML documentation updates in the same change.
 
+## GitHub-Pages-Veroeffentlichung / GitHub Pages Publishing
+
+- Die DocFX-HTML-Seite wird ueber `.github/workflows/pages.yml` in GitHub
+  Actions gebaut, mit Playwright plus axe geprueft und als GitHub-Pages-Artefakt
+  veroeffentlicht.
+- `_site/` und generierte `api/*`-Dateien bleiben bewusst aus Git heraus. Im
+  Repository liegen nur Quellen, `docfx.json`, Templates, Guides und
+  handgeschriebene Einstiegsseiten wie `api/index.md`.
+- In GitHub muss unter `Settings > Pages` die Quelle `GitHub Actions` aktiv sein.
+  Nach dem ersten erfolgreichen Lauf auf `main` zeigt das Environment
+  `github-pages` die veroeffentlichte URL.
+
+- The DocFX HTML site is built by `.github/workflows/pages.yml` in GitHub
+  Actions, checked with Playwright plus axe, and published as a GitHub Pages
+  artifact.
+- `_site/` and generated `api/*` files stay out of Git by design. The repository
+  keeps only sources, `docfx.json`, templates, guides, and handwritten entry
+  pages such as `api/index.md`.
+- In GitHub, `Settings > Pages` must use `GitHub Actions` as the source. After
+  the first successful run on `main`, the `github-pages` environment shows the
+  published URL.
+
 ## CI
 
 - GitHub Actions workflow:
   [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
-- The workflow validates restore/build/test and generates docfx documentation
+- GitHub Pages workflow: `.github/workflows/pages.yml`
+- The CI workflow validates restore/build/test and generates docfx documentation
   when `docfx.json` is present at repository root.
-- The workflow intentionally fails if no `.sln` or `.csproj` exists yet, to
+- The Pages workflow builds the same root DocFX configuration, runs the
+  `tests/web-a11y/` smoke test, uploads `_site` as a Pages artifact, and deploys
+  it only outside pull requests.
+- The CI workflow intentionally fails if no `.sln` or `.csproj` exists yet, to
   prevent false-green CI results.
 
 ## Legal and License Notice

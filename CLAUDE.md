@@ -84,6 +84,7 @@ Tests use MSTest. Test projects mirror source projects (e.g., `TuiVision.Core.Te
 - Run `docfx docfx.json` when root config exists and API/XML docs changed.
 - Keep the Playwright + `@axe-core/playwright` smoke tests in `tests/web-a11y/` aligned with the current DocFX structure and representative pages; use `lynx` as an additional text-browser spot check when available.
 - Treat every successful `docfx docfx.json` regeneration as incomplete until the matching `tests/web-a11y/` A11y smoke check has also passed in the same work item.
+- GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ### Reference Source
 

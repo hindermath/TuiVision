@@ -49,6 +49,7 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
     *   Erzeugte HTML-Dokumentation soll mindestens WCAG 2.2 Konformitaetsstufe AA als Barrierefreiheits-Basis anstreben.
     *   Die Smoke-Tests unter `tests/web-a11y/` mit Playwright und `@axe-core/playwright` muessen bei DocFX-Struktur- oder API-Doku-Aenderungen mitgezogen werden; `lynx` dient als zusaetzlicher Textbrowser-Gegencheck.
     *   Jeder DocFX-Neubau gilt erst dann als abgeschlossen, wenn der zugehoerige A11y-Smoke-Test ebenfalls erfolgreich war.
+    *   GitHub Pages wird aus `.github/workflows/pages.yml` veroeffentlicht: root-`docfx.json` bauen, `tests/web-a11y/` mit Playwright plus axe ausfuehren, `_site/` als Pages-Artefakt hochladen und `_site/` sowie generierte `api/*.yml`-Dateien aus Git heraushalten.
     *   Wichtige Aussagen duerfen nicht nur ueber Farbe, Layout oder Mauszeiger-Hinweise transportiert werden; bevorzugt werden semantische Ueberschriften, Listen, Tabellen und ASCII-/Textdiagramme.
     *   Bilinguale CEFR-B2-Lieferung und der dokumentierte A11Y-Nachweis gehoeren zur formalen Abschlusspruefung fuer lernrelevante Doku und aktive Anforderungsartefakte.
     *   Vollständige XML-Kommentare für alle öffentlichen APIs (`summary`, `param`, `returns`, `remarks`).
