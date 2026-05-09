@@ -27,3 +27,11 @@ predictably and clips long values to the visible width.
 Expected path: show a short value, clip a long value, and check a narrow
 viewport.
 
+Accessibility: The visible value is text and does not require color.
+
+Validation:
+
+```bash
+dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~DynTxt"
+dotnet run --project examples/DynTxt
+```

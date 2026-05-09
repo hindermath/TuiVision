@@ -25,10 +25,12 @@ public sealed class SdlgSmokeTests : ExampleTestBase
         AssertSmokeRunCompletes(() => app.Run());
 
         string visible = app.ScrollToControl(18);
-        string focus = app.FocusControl(31);
-
         AssertBoundary(18, app.ScrollOffset.Y, "Sdlg vertical offset");
         AssertVisibleContains(visible, "Control 19", "Sdlg visible control");
+
+        string focus = app.FocusControl(31);
+
+        AssertBoundary(26, app.ScrollOffset.Y, "Sdlg focused offset");
         AssertVisibleContains(focus, "Control 32", "Sdlg focused control");
         Assert.IsLessThanOrEqualTo(app.MaximumOffset.Y, app.ScrollOffset.Y);
     }

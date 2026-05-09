@@ -26,3 +26,15 @@ dotnet run --project examples/TProgB
 `tv203s/contrib/tvision/examples/tprogb/`. The managed version shows a
 deterministic progress value and a visible canceled state.
 
+Expected path: set partial progress, trigger abort, and verify canceled state.
+
+Accessibility: Progress and abort are visible as text.
+
+Accepted limitation: see `docs/architecture/architecture-risks.md`.
+
+Validation:
+
+```bash
+dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~TProgB"
+dotnet run --project examples/TProgB
+```

@@ -76,7 +76,9 @@ public sealed class SdlgApp : TApplication
     public string FocusControl(int zeroBasedIndex)
     {
         int index = Math.Clamp(zeroBasedIndex, 0, _controls.Count - 1);
-        return $"sdlg: focused {_controls[index].Text}";
+        TStaticText control = _controls[index];
+        _scrollGroup.SetFocus(control);
+        return $"sdlg: focused {control.Text}; visible {_scrollGroup.VisibleState}";
     }
 
     /// <inheritdoc />

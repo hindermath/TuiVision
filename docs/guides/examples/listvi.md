@@ -24,3 +24,14 @@ dotnet run --project examples/ListVi
 The example shows visible selection movement, first/last bounds, empty lists,
 and viewport state.
 
+Expected path: load three entries, jump to the last position, jump back to the
+first bound, and verify an empty list.
+
+Accessibility: The selection is reported as text state.
+
+Validation:
+
+```bash
+dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~ListVi"
+dotnet run --project examples/ListVi
+```

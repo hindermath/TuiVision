@@ -45,6 +45,25 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 
 
 <!-- MANUAL ADDITIONS START -->
+  Groessere verpflichtende Beispielwellen sollen als zweistufiges Spec-Kit-
+  Liefermuster geplant werden, wenn funktionale Portierung und interaktive
+  Runtime-Politur sonst vermischt wuerden. Stufe 1 portiert das Verhalten,
+  schliesst Framework-Voraussetzungen, liefert deterministische Headless- oder
+  In-Process-Smoke-Pfade und markiert bewusst verschobene Interaktion als
+  Follow-up. Stufe 2 haengt dieselben Funktionen an sichtbare Menues,
+  Statuszeilen, Desktop-Controls, Dialoge, Tastaturpfade und skriptbare
+  UI-Event-Smoke-Tests. Eine Beispielwelle ist erst nach Stufe 2 voll
+  lern- und reviewtauglich, sofern der Scope nicht ausdruecklich nur einen
+  minimalen nicht-interaktiven Nachweis verlangt.
+  Larger mandatory example waves should use a two-stage Spec-Kit delivery
+  pattern when functional porting and interactive runtime polish would
+  otherwise be mixed. Stage 1 ports behavior, closes framework prerequisites,
+  provides deterministic headless or in-process smoke paths, and marks deferred
+  interactivity as follow-up. Stage 2 wires the same proven functions into
+  visible menus, status lines, desktop controls, dialogs, keyboard paths, and
+  scripted UI-event smoke tests. A wave is fully learner- and review-ready only
+  after Stage 2 unless the scope explicitly asks for a minimal non-interactive
+  proof.
   Schnittstellen, Qualitätsattribute, Laufzeitverhalten, Deployment,
   Wartbarkeit oder technische Schulden betrifft, muss `spec.md`, `plan.md`
   oder `tasks.md` festhalten, ob Evidenz unter `docs/architecture/`

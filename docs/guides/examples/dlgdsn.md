@@ -34,3 +34,13 @@ Invalid fixtures for malformed, incomplete, duplicate-control, and
 invalid-navigation cases are visibly rejected. Fixture files live under
 `examples/DlgDsn/Fixtures/`.
 
+Accessibility: Rejection and success states are testable text-first.
+
+Accepted limitation: see `docs/architecture/architecture-risks.md`.
+
+Validation:
+
+```bash
+dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~DlgDsn"
+dotnet run --project examples/DlgDsn
+```

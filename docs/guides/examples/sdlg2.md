@@ -30,3 +30,15 @@ dotnet run --project examples/Sdlg2
 `tv203s/contrib/tvision/examples/sdlg2/`. The example consumes `TScrollGroup`
 and shows both scroll axes with visible cell/control output.
 
+Expected path: scroll to one cell, focus another cell, and verify bounds.
+
+Accessibility: Cell coordinates and focus are reported as text.
+
+Accepted limitation and cleanup: see `docs/architecture/architecture-risks.md`.
+
+Validation:
+
+```bash
+dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Sdlg2"
+dotnet run --project examples/Sdlg2
+```

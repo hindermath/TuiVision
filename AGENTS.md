@@ -138,6 +138,14 @@ npm run test:docfx
 - `Build` = manual build counter incremented by the bot before every `dotnet build` or `dotnet test`.
 - Before any commit or push on a numbered Spec-Kit branch, the repo-wide version fields in `Directory.Build.props` MUST be aligned to this scheme.
 
+## Example Wave Delivery Pattern
+
+- Groessere verpflichtende Beispielwellen SOLLEN als bewusstes zweistufiges Spec-Kit-Liefermuster geplant werden, wenn Portierungslogik, Framework-Luecken und interaktive Runtime-Politur sonst in einem Feature vermischt wuerden.
+- Stufe 1 ist der funktionale Portierungs- und Nachweis-Feature-Lauf: historische Beispielablaeufe portieren, Framework-Voraussetzungen schliessen, deterministische Headless- oder In-Process-Smoke-Pfade bereitstellen, Guides/Evidence ergaenzen und interaktive Runtime-Politur explizit als Follow-up markieren, wenn `dotnet run --project examples/<Name>` noch nicht die finale Demo zeigt.
+- Stufe 2 ist der interaktive Showcase-Feature-Lauf: die bewiesenen Funktionen ueber sichtbare Menues, Statuszeilen, Desktop-Controls, Dialoge, Tastaturpfade und skriptbare UI-Event-Smoke-Tests erreichbar machen.
+- Eine Beispielwelle gilt erst dann als vollstaendig lern- und reviewtauglich, wenn die interaktive Showcase-Stufe geliefert ist, sofern der Scope nicht ausdruecklich nur einen minimalen nicht-interaktiven Nachweis verlangt.
+- Stage-1-PR-Evidence, Specs und Guides muessen den bewusst verschobenen Interaktionsumfang klar nennen; Stage-2-Specs sollen die vorhandenen Nachweisfunktionen wiederverwenden statt Verhalten neu zu portieren.
+
 ## Active Feature Context
 
 ### 004-editor-file-help-streams

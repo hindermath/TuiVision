@@ -26,3 +26,15 @@ dotnet run --project examples/ProgBa
 `tv203s/contrib/tvision/examples/progba/`. The managed version reaches
 completion deterministically and without wall-clock assertions.
 
+Expected path: set the progress maximum and verify the visible completed state.
+
+Accessibility: The status is proven as text and numeric value.
+
+Accepted limitation: see `docs/architecture/architecture-risks.md`.
+
+Validation:
+
+```bash
+dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~ProgBa"
+dotnet run --project examples/ProgBa
+```
