@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-05-10 (aktualisiert inklusive Branch `011-port-wave2-examples`, Wave-2-Beispielen, Lastenheft fuer interaktive Wave-2-Demos, DocFX-Generated-Output-Cleanup, zweistufigem Beispielwellen-Liefermuster, Pflichtenheft-Abnahme fuer interaktive Beispielreife, 011-Review-Cleanup vor 012, Spec-Kit-Intake-Aufbereitung fuer 012, GitHub-Pages-Artefaktworkflow fuer DocFX, PR-#26-Review-Cleanup, `/speckit-specify`, `/speckit-clarify`, `/speckit-plan` und `/speckit-checklist` fuer 012 sowie allgemeiner historischer `tv203s`-Quellenreferenzregel)
+Stand: 2026-05-10 (aktualisiert inklusive Branch `011-port-wave2-examples`, Wave-2-Beispielen, Lastenheft fuer interaktive Wave-2-Demos, DocFX-Generated-Output-Cleanup, zweistufigem Beispielwellen-Liefermuster, Pflichtenheft-Abnahme fuer interaktive Beispielreife, 011-Review-Cleanup vor 012, Spec-Kit-Intake-Aufbereitung fuer 012, GitHub-Pages-Artefaktworkflow fuer DocFX, PR-#26-Review-Cleanup, `/speckit-specify`, `/speckit-clarify`, `/speckit-plan`, `/speckit-checklist` und `/speckit-tasks` fuer 012 sowie allgemeiner historischer `tv203s`-Quellenreferenzregel)
 
 ## Zweck und Pflege
 
@@ -82,22 +82,22 @@ fortgeschrieben.
 | Sichtbare Aktivtage inkl. aktuellem Working Tree | 21 |
 | Produktionscode aktuell | 159 Dateien / 18347 Zeilen |
 | Testcode aktuell | 96 Dateien / 12645 Zeilen |
-| Dokumentation aktuell | 318 Dateien / 39282 Zeilen |
-| Davon Spec-Kit-Artefakte | 112 Dateien / 20098 Zeilen |
+| Dokumentation aktuell | 319 Dateien / 39551 Zeilen |
+| Davon Spec-Kit-Artefakte | 113 Dateien / 20366 Zeilen |
 | Davon Governance/Agent-Dateien | 5 Dateien / 1689 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 70274 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 878.4 Arbeitstage |
-| Erfahrener Entwickler, konservative Untergrenze in Stunden | 6851.5 Stunden (878.4 * 7.8) |
-| Erfahrener Entwickler, brutto | 40.9 Arbeitsmonate (21.5 Tage/Monat) |
-| Erfahrener Entwickler, TVoeD-Annahme | 46.2 Kalendermonate bzw. 3.9 Jahre |
-| Thorsten solo, erfahrungsadjustierte Untergrenze | 562.2 Arbeitstage |
-| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 4385.2 Stunden (562.2 * 7.8) |
-| Thorsten solo, brutto | 26.1 Arbeitsmonate (21.5 Tage/Monat) |
-| Thorsten solo, TVoeD-Annahme | 29.6 Kalendermonate bzw. 2.5 Jahre |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 351.4 Arbeitstage |
-| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 18.5 Kalendermonate |
-| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 41.8x (878.4 / 21 sichtbare Aktivtage) |
-| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 26.8x (562.2 / 21 sichtbare Aktivtage) |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 70543 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 881.8 Arbeitstage |
+| Erfahrener Entwickler, konservative Untergrenze in Stunden | 6878.0 Stunden (881.8 * 7.8) |
+| Erfahrener Entwickler, brutto | 41.0 Arbeitsmonate (21.5 Tage/Monat) |
+| Erfahrener Entwickler, TVoeD-Annahme | 46.4 Kalendermonate bzw. 3.9 Jahre |
+| Thorsten solo, erfahrungsadjustierte Untergrenze | 564.3 Arbeitstage |
+| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 4401.5 Stunden (564.3 * 7.8) |
+| Thorsten solo, brutto | 26.2 Arbeitsmonate (21.5 Tage/Monat) |
+| Thorsten solo, TVoeD-Annahme | 29.7 Kalendermonate bzw. 2.5 Jahre |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 352.7 Arbeitstage |
+| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 18.6 Kalendermonate |
+| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 42.0x (881.8 / 21 sichtbare Aktivtage) |
+| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 26.9x (564.3 / 21 sichtbare Aktivtage) |
 
 ## Phasen und Haupt-Branches
 
@@ -419,20 +419,20 @@ fortgeschrieben.
 
 ## Einordnung der KI-/Spec-Kit-Wirkung
 
-- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 70274 Zeilen
+- Die beobachtbare manuelle Gesamtbasis liegt bereits bei 70543 Zeilen
   (Produktionscode + Tests + Dokumentation).
 - Selbst mit der fuer klassische Entwicklung guenstigen Obergrenze von
   80 manuell erstellten Zeilen pro Arbeitstag ergibt sich bereits eine
-  Untergrenze von 878.4 Entwickler-Arbeitstagen.
+  Untergrenze von 881.8 Entwickler-Arbeitstagen.
 - Unter TVoeD-Annahme mit 30 Urlaubstagen pro Jahr entspricht das fuer einen
-  erfahrenen Entwickler ca. 46.2 Kalendermonaten bzw. 3.9 Arbeitsjahren; fuer
-  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 18.5 Kalendermonaten.
+  erfahrenen Entwickler ca. 46.4 Kalendermonaten bzw. 3.9 Arbeitsjahren; fuer
+  ein 3er-Team mit 20 % Koordinationsaufschlag ca. 18.6 Kalendermonaten.
 - Unter Einbezug von Thorstens Erfahrungsprofil sinkt die klassische
-  Solo-Referenz fuer dieses Repository auf ca. 562.2 Arbeitstage bzw.
-  29.6 TVoeD-Kalendermonate.
+  Solo-Referenz fuer dieses Repository auf ca. 564.3 Arbeitstage bzw.
+  29.7 TVoeD-Kalendermonate.
 - Gegen die sichtbaren 21 Aktivtage inklusive aktuellem Working Tree ergibt
-  sich damit ein repo-weiter Beschleunigungsfaktor von ca. 41.8x gegen die
-  konservative Referenz und immer noch ca. 26.8x gegen die
+  sich damit ein repo-weiter Beschleunigungsfaktor von ca. 42.0x gegen die
+  konservative Referenz und immer noch ca. 26.9x gegen die
   erfahrungsadjustierte Thorsten-Referenz.
 - Die vorliegenden Git-Daten zeigen damit eine deutliche Verdichtung durch
   agentische KI und GitHub Spec-Kit: hoher Dokumentations- und Codeumfang in
@@ -554,6 +554,7 @@ fortgeschrieben.
 | 2026-05-09 | `/speckit-clarify` fuer `012-interactive-wave2-demos` | Die 012-Spezifikation wurde vor der Planung geschaerft: primaere Smoke-Nachweise muessen durch `app.Run()` oder die echte App-Schleife mit injizierten Events laufen, Datei-/Pfad- und Dialog-Designer-Pfade bleiben read-only gegenueber Nutzerdaten, `pr-evidence.md` und `examples/README.md` sind explizite Abschlussnachweise, und Example-Smoke-Suite plus voller `dotnet test`-Lauf sind formale Completion-Evidence. Zusaetzlich wurde `.specify/feature.json` von 011 auf `specs/012-interactive-wave2-demos` korrigiert, damit `check-prerequisites.sh --json --paths-only` fuer Plan/Tasks auf die richtige Feature-Spec zeigt. Validierung: korrigierter Prerequisite-Pfad, keine offenen Clarification-/TODO-Marker und `git diff --check` sauber. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+15` Spec-Kit-Dokumentationszeilen; `.specify/feature.json` und `Directory.Build.props` sind reine Pfad-/Versionsmetadaten. |
 | 2026-05-10 | `/speckit-plan` fuer `012-interactive-wave2-demos` und historische Quellenreferenzregel | Der 012-Plan wurde aus der geklaerten Spezifikation erzeugt: `plan.md`, `research.md`, `data-model.md`, `quickstart.md` und der Acceptance-Contract beschreiben Demo-Vertical-Slice, sichtbare Bedienpfade, Event-Loop-Smokes, Read-only-Fixture-Grenzen, Governance-Evidence und die Pflicht zur historischen Quellenpruefung. Die Quellenpruefung wurde zugleich als allgemeine Spec-Kit-Regel verankert: Bei historisch abgeleitetem Turbo-Vision-Verhalten sind relevante `.c`-/`.cc`-Dateien und bei Bedarf C/C++-Header unter `tv203s/` read-only zu pruefen; bewusste Abweichungen werden in Spec, Plan, Tasks, Guide, PR-Evidence oder Architektur-/Security-Nachweis dokumentiert. Validierung: `specify check`, korrigierter 012-Prerequisite-Pfad und `git diff --check`; keine Build-/Testausfuehrung, weil nur Planungs- und Guidance-Dokumente geaendert wurden. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+905` Dokumentations-/Guidance-Zeilen inklusive Statistikfortschreibung; `Directory.Build.props` steht fuer den dritten Branch-Commit auf `1.12.3.27`. Konservative Manualreferenz: 80 Zeilen/Tag = `11,3` Tage (ca. `88,2` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `7,2` Tage (ca. `56,5` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-05-10, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 | 2026-05-10 | `/speckit-checklist` fuer `012-interactive-wave2-demos` | Fuer den 012-Plan und die zugehoerigen Artefakte wurde `specs/012-interactive-wave2-demos/checklists/plan-quality.md` erstellt. Die neue Pruefliste enthaelt 36 Anforderungen-Qualitaetschecks mit ausfuehrlichem Durchfuehrungshinweis je Punkt und deckt Vollstaendigkeit, Klarheit, Konsistenz, Akzeptanzkriterien, Szenario-/Edge-Case-Abdeckung, Non-Functional Requirements, Abhaengigkeiten, Annahmen und Task-Readiness ab. Validierung: Spec-Kit-Prerequisite-Check zeigt auf 012, Checklist-Template und Planartefakte wurden gelesen, `git diff --check` sauber; keine Build-/Testausfuehrung, weil nur Planungsdokumentation geaendert wurde. `Directory.Build.props` steht fuer den vierten 012-Branch-Commit auf `1.12.4.27`. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+141` Spec-Kit-Checklistenzeilen plus diese Statistikfortschreibung. Konservative Manualreferenz fuer die neue Checkliste: 80 Zeilen/Tag = `1,8` Tage (ca. `13,7` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `1,1` Tage (ca. `8,8` Stunden); sichtbares Arbeitsfenster: kurze Agentennacharbeit am 2026-05-10, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
+| 2026-05-10 | `/speckit-tasks` fuer `012-interactive-wave2-demos` | Aus `spec.md`, `plan.md`, `research.md`, `data-model.md`, `quickstart.md` und `contracts/interactive-wave2-demo-acceptance.md` wurde eine umsetzbare `tasks.md` fuer interaktive Wave-2-Demos erzeugt: 87 Tasks insgesamt, davon 5 Setup-, 16 Foundation-, 7 US1-Demo-Vertical-Slice-, 22 US2-Runtime-Pfad-, 8 US3-Smoke-Proof-, 14 US4-Dokumentations- und 15 Polish-/Governance-Aufgaben. Die Aufgaben verankern historische `.c`-/`.cc`-/Header-Reviews je Beispiel, app-loop-basierte Smoke-Pfade, sichtbare Menue-/Status-/Command-Interaktion, Guide-Updates, PR-Evidence, DocFX/A11Y, Coverage, Format und finale Versionspflege. Validierung: 012-Prerequisite-Check, Planartefakte gelesen, 87/87 Aufgaben im Spec-Kit-Checkboxformat, keine Build-/Testausfuehrung, weil nur Aufgaben- und Statistikdokumentation geaendert wurde. `Directory.Build.props` steht fuer den fuenften 012-Branch-Commit auf `1.12.5.27`. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+268` Spec-Kit-Aufgabenzeilen plus diese Statistikfortschreibung. Konservative Manualreferenz fuer die neue Aufgabenliste: 80 Zeilen/Tag = `3,4` Tage (ca. `26,1` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `2,1` Tage (ca. `16,7` Stunden); sichtbares Arbeitsfenster: eine Agentensitzung am 2026-05-10, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 
 ## Gesamtstatistik
 
@@ -563,32 +564,32 @@ Phasenwerte aus den Abschnitten `## Gesamtstand des Repositories` und
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | `70274` Zeilen |
-| Produktions- und Testcode zusammen | `30992` Zeilen (`44.1 %`) |
-| Dokumentationsanteil | `39282` Zeilen (`55.9 %`) |
-| Spec-Kit-Anteil innerhalb der Doku | `20098` Zeilen (`51.2 %`) |
+| Artefaktbasis gesamt | `70543` Zeilen |
+| Produktions- und Testcode zusammen | `30992` Zeilen (`43.9 %`) |
+| Dokumentationsanteil | `39551` Zeilen (`56.1 %`) |
+| Spec-Kit-Anteil innerhalb der Doku | `20366` Zeilen (`51.5 %`) |
 | Governance-/Agent-Anteil innerhalb der Doku | `1689` Zeilen (`4.3 %`) |
 | Beobachtbarer Projektzeitraum | `2026-02-08` bis `2026-05-10` |
 | Git-Commits pro sichtbarem Aktivtag | `14.7` (`309 / 21`) |
-| Dokumentierte Gesamtzeilen pro sichtbarem Aktivtag | `3346.4` (`70274 / 21`) |
-| Dokumentierte Gesamtzeilen pro Commit | `227.4` (`70274 / 309`) |
-| Konservative Einzelentwickler-Untergrenze | `878.4` Arbeitstage / `6851.5` Stunden |
-| Thorsten-Solo-Untergrenze | `562.2` Arbeitstage / `4385.2` Stunden |
-| Kleines 3er-Team mit Koordinationsaufschlag | `351.4` Arbeitstage |
-| Repo-weiter Speedup gg. 80-Zeilen-Referenz | `41.8x` |
-| Repo-weiter Speedup gg. Thorsten-Referenz | `26.8x` |
+| Dokumentierte Gesamtzeilen pro sichtbarem Aktivtag | `3359.2` (`70543 / 21`) |
+| Dokumentierte Gesamtzeilen pro Commit | `228.3` (`70543 / 309`) |
+| Konservative Einzelentwickler-Untergrenze | `881.8` Arbeitstage / `6878.0` Stunden |
+| Thorsten-Solo-Untergrenze | `564.3` Arbeitstage / `4401.5` Stunden |
+| Kleines 3er-Team mit Koordinationsaufschlag | `352.7` Arbeitstage |
+| Repo-weiter Speedup gg. 80-Zeilen-Referenz | `42.0x` |
+| Repo-weiter Speedup gg. Thorsten-Referenz | `26.9x` |
 
 Kurzfazit:
 Die aktuell dokumentierte Basis zeigt weiter ein starkes Verhaeltnis zwischen
-Code (`44.1 %`) und Dokumentation (`55.9 %`). Welle 2 erhoeht den sichtbaren
+Code (`43.9 %`) und Dokumentation (`56.1 %`). Welle 2 erhoeht den sichtbaren
 Beispiel- und Smoke-Test-Anteil deutlich; das neue zweistufige Liefermuster
 haelt den interaktiven Follow-up-Weg jetzt auch in der formalen Abnahmebasis sichtbar. Der aktuelle Arbeitsbaum enthaelt
 jetzt auch `011-port-wave2-examples`, das Lastenheft fuer interaktive
 Wave-2-Demos, den DocFX-Generated-Output-Cleanup, den 011-Review-Cleanup
 vor 012, die Spec-Kit-Intake-Aufbereitung fuer 012, den GitHub-Pages-
 Artefaktworkflow, die 012-Spezifikation, die 012-Clarifications, den 012-Plan
-und die allgemeine historische `tv203s`-Quellenreferenzregel sowie die
-012-Planqualitaetscheckliste im Snapshot. Die dokumentierten
+und die allgemeine historische `tv203s`-Quellenreferenzregel, die
+012-Planqualitaetscheckliste sowie die 012-Aufgabenliste im Snapshot. Die dokumentierten
 Beschleunigungsfaktoren zeigen dabei nicht eine Stoppuhr, sondern die sichtbare
 Verdichtung durch agentische KI plus Spec-Kit-/SDD-gestuetzte Artefakt- und
 Liefergeschwindigkeit.
@@ -599,7 +600,7 @@ Liefergeschwindigkeit.
 Artefaktmix nach aktuell dokumentiertem Snapshot (Zeilen)
 Produktion     | ##############                 | 18347 | 26.1 %
 Tests          | ##########                     | 12645 | 18.0 %
-Dokumentation  | ############################## | 39282 | 55.9 %
+Dokumentation  | ############################## | 39551 | 56.1 %
 ```
 
 Der Artefaktmix zeigt, wie sich der aktuelle Repository-Snapshot auf
@@ -627,7 +628,7 @@ Branch-/Phasenvolumen nach dokumentierter Netto-Basis (Zeilen)
 10 009  | #                        |   231
 11 010  | ######################## | 12169
 12 011  | #######                  |  3303
-13 012p | ##                       |  1281
+13 012p | ###                      |  1550
 ```
 
 Dieses Diagramm zeigt die grob sichtbare Netto-Basis der dokumentierten
@@ -653,7 +654,7 @@ Konservative Handarbeits-Referenz je dokumentierter Phase (Arbeitstage)
 10 009  | #                        |   2.9 d
 11 010  | ######################## | 152.1 d
 12 011  | #######                  |  41.3 d
-13 012p | ##                       |  16.0 d
+13 012p | ###                      |  19.4 d
 ```
 
 Dieses Diagramm zeigt dieselben Pakete noch einmal, jetzt aber als
@@ -667,8 +668,8 @@ from a traditional non-agentic perspective.
 
 ```text
 Dokumentierte Beschleunigungsfaktoren durch agentische KI + Spec-Kit/SDD
-Repo 80 | #######                  |  41.8x
-Repo125 | #####                    |  26.8x
+Repo 80 | #######                  |  42.0x
+Repo125 | #####                    |  26.9x
 0 main  | ######                   |  31.9x
 1 001   | ###                      |  13.6x
 2 002   | ###                      |  14.2x
@@ -682,7 +683,7 @@ Repo125 | #####                    |  26.8x
 10 009  | #                        |   2.9x
 11 010  | ######################## | 152.1x
 12 011  | #######                  |  41.3x
-13 012p | ##                       |  16.0x
+13 012p | ###                      |  19.4x
 ```
 
 Dieses Diagramm zeigt die dokumentierten Beschleunigungsfaktoren. Hier wird
@@ -697,8 +698,8 @@ only a few documented active days.
 
 ```text
 Vergleich dokumentierter Gesamtaufwand / sichtbares KI-Lieferfenster
-Erfahren   | ############################## | 878.4 d
-Thorsten   | ###################            | 562.2 d
+Erfahren   | ############################## | 881.8 d
+Thorsten   | ###################            | 564.3 d
 KI sichtbar| #                              |  21.0 d
 ```
 
