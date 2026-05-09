@@ -53,6 +53,9 @@ issues, text-first readability, and representative HTML documentation pages.
   `http://127.0.0.1:8123/` zugreift.
 - `lynx` ist als zweiter, rein textueller Gegencheck vorgesehen. Hilfsskripte
   dafuer stehen in `package.json`.
+- Der GitHub-Pages-Workflow fuehrt denselben Smoke-Test nach dem DocFX-Build
+  aus und veroeffentlicht nur das erzeugte Pages-Artefakt, nicht `_site/` oder
+  generierte `api/*.yml`-Dateien.
 
 - Node `24.x` LTS is recommended. Node `20.x`, `22.x`, and `24.x` are the
   officially supported Playwright lines.
@@ -64,3 +67,6 @@ issues, text-first readability, and representative HTML documentation pages.
   while `lynx` accesses `http://127.0.0.1:8123/` from a second terminal.
 - `lynx` is intended as a second, purely text-based cross-check. Helper
   scripts for it are available in `package.json`.
+- The GitHub Pages workflow runs the same smoke test after the DocFX build and
+  publishes only the generated Pages artifact, not `_site/` or generated
+  `api/*.yml` files.

@@ -80,6 +80,7 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - **WCAG baseline**: Generated HTML documentation should target WCAG 2.2 conformance level AA, especially for page language, bypass blocks, keyboard focus visibility, non-text contrast, and readable landmark structure.
 - **DocFX A11y smoke path**: Keep the Playwright + `@axe-core/playwright` checks in `tests/web-a11y/` aligned with the current generated pages; use `lynx` as an extra text-browser review path when available.
 - **DocFX completion rule**: Treat every successful `docfx docfx.json` regeneration as incomplete until the matching `tests/web-a11y/` A11y smoke check has also passed.
+- **GitHub Pages publishing**: Publish DocFX through `.github/workflows/pages.yml`; build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 - **Formal documentation finish**: Treat bilingual CEFR-B2 delivery plus the documented A11Y proof path as completion criteria for learner-facing documentation and active requirement artifacts.
 - **Test naming**: `ClassName_MethodName_Behavior` (e.g., `TRect_Contains_UsesTopLeftInclusiveBottomRightExclusive`).
 - **Branch naming**: Feature branches use either the agent-prefixed form `codex/<feature-description>` (or another supported agent prefix such as `claude/`, `gemini/`, `copilot/`, `opencode/`) or the numbered Spec-Kit form `NNN-short-description` when the Spec-Kit workflow creates the branch.

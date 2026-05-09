@@ -122,6 +122,7 @@ npm run test:docfx
 - Builds and tests on Ubuntu and macOS runners; Windows oder WSL-basierte Kompatibilitaetschecks sollen bei relevanten Aenderungen zusaetzlich beruecksichtigt werden
 - Uses .NET 10 SDK
 - Tests are run using `dotnet test` command with Release configuration
+- GitHub Pages is published from `.github/workflows/pages.yml`: build `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git
 - Build and test validation is mandatory for all code changes
 
 ## Branching Convention
