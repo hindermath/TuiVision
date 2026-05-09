@@ -39,3 +39,16 @@ Editor, help, streams, terminal emulation, runtime mouse, and real charset
 effects are excluded from wave 2. They remain documented omissions linked from
 the architecture risks.
 
+Expected path: run the broad demo flow, show metadata with a wildcard, confirm
+a manual path, see cancel/invalid state, and verify color/display selection.
+
+Accessibility: All results are visible as text state.
+
+Accepted limitation: see `docs/architecture/architecture-risks.md`.
+
+Validation:
+
+```bash
+dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Demo"
+dotnet run --project examples/Demo
+```

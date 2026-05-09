@@ -25,11 +25,14 @@ public sealed class Sdlg2SmokeTests : ExampleTestBase
         AssertSmokeRunCompletes(() => app.Run());
 
         string visible = app.ScrollToCell(12, 9);
-        string focus = app.FocusControl(4, 14);
-
         AssertBoundary(12, app.ScrollOffset.X, "Sdlg2 horizontal offset");
         AssertBoundary(9, app.ScrollOffset.Y, "Sdlg2 vertical offset");
         AssertVisibleContains(visible, "Cell 12/09", "Sdlg2 visible cell");
+
+        string focus = app.FocusControl(4, 14);
+
+        AssertBoundary(4, app.ScrollOffset.X, "Sdlg2 focused horizontal offset");
+        AssertBoundary(10, app.ScrollOffset.Y, "Sdlg2 focused vertical offset");
         AssertVisibleContains(focus, "Cell 04/14", "Sdlg2 focused cell");
         Assert.IsLessThanOrEqualTo(app.MaximumOffset.X, app.ScrollOffset.X);
         Assert.IsLessThanOrEqualTo(app.MaximumOffset.Y, app.ScrollOffset.Y);

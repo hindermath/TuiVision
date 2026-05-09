@@ -63,6 +63,35 @@ The feature must not force a new broad framework revision. It shall use the
 existing controls and shell building blocks so the examples become usable
 applications and the same paths can be tested deterministically.
 
+### 2.1 Liefermuster fuer Beispielwellen / Delivery Pattern for Example Waves
+
+Dieses Lastenheft bildet bewusst die zweite Stufe eines zweistufigen
+Spec-Kit-Liefermusters. `011-port-wave2-examples` hat die fachlichen
+Beispielfunktionen, Nachweismethoden und deterministic smoke paths geliefert.
+`012-interactive-wave2-demos` soll darauf aufbauen und diese vorhandenen
+Funktionen ueber echte Menues, Statuszeilen, Desktop-Controls, Dialoge,
+Tastaturpfade und UI-Event-Smoke-Tests sichtbar machen.
+
+This requirements brief deliberately forms the second stage of a two-stage
+Spec-Kit delivery pattern. `011-port-wave2-examples` delivered the functional
+example behavior, proof methods, and deterministic smoke paths.
+`012-interactive-wave2-demos` shall build on that work and expose those
+existing functions through real menus, status lines, desktop controls, dialogs,
+keyboard paths, and UI-event smoke tests.
+
+Fuer kuenftige groessere Beispielwellen gilt dieses Muster als bevorzugte
+Planungsform, wenn Portierung/Nachweis und interaktive Runtime-Politur sonst
+zu gross oder zu riskant fuer einen einzelnen Feature-Lauf wuerden. Eine
+Beispielwelle ist erst dann vollstaendig lern- und reviewtauglich, wenn beide
+Stufen geliefert sind, sofern der Scope nicht ausdruecklich nur einen minimalen
+nicht-interaktiven Nachweis verlangt.
+
+For future larger example waves, use this pattern as the preferred planning
+model when porting/proof work and interactive runtime polish would otherwise
+be too large or risky for one feature run. An example wave is fully ready for
+learners and reviewers only after both stages are delivered, unless the scope
+explicitly asks for a minimal non-interactive proof.
+
 ---
 
 ## 3. Betroffene Beispiele / Affected Examples

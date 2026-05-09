@@ -14,6 +14,15 @@ namespace TuiVision.Examples.DlgDsn;
 /// </summary>
 public sealed class DlgDsnApp : TApplication
 {
+    private static readonly HashSet<string> KnownFixtureNames = new(StringComparer.Ordinal)
+    {
+        "valid.tvdialog",
+        "malformed.tvdialog",
+        "incomplete.tvdialog",
+        "duplicate-control.tvdialog",
+        "invalid-navigation.tvdialog"
+    };
+
     private readonly bool _headless;
     private bool _headlessEventFired;
 
@@ -115,7 +124,12 @@ public sealed class DlgDsnApp : TApplication
     /// <returns>Der sichtbare Ablehnungszustand. / The visible rejection state.</returns>
     public string TryLoadFixture(string fileName)
     {
-        string marker = File.ReadAllText(FixturePath(fileName)).Trim();
+        if (!TryValidateFixtureName(fileName, out string safeFileName))
+        {
+            return "dlgdsn: rejected fixture-name";
+        }
+
+        string marker = File.ReadAllText(FixturePath(safeFileName)).Trim();
         return marker switch
         {
             "malformed" => RejectMalformed(),
@@ -143,7 +157,8 @@ public sealed class DlgDsnApp : TApplication
 
     private static string FixturePath(string fileName)
     {
-        string local = Path.Combine(AppContext.BaseDirectory, "Fixtures", fileName);
+        string safeFileName = ValidateFixtureName(fileName);
+        string local = Path.Combine(AppContext.BaseDirectory, "Fixtures", safeFileName);
         if (File.Exists(local))
         {
             return local;
@@ -152,7 +167,7 @@ public sealed class DlgDsnApp : TApplication
         DirectoryInfo? current = new(AppContext.BaseDirectory);
         while (current is not null)
         {
-            string candidate = Path.Combine(current.FullName, "examples", "DlgDsn", "Fixtures", fileName);
+            string candidate = Path.Combine(current.FullName, "examples", "DlgDsn", "Fixtures", safeFileName);
             if (File.Exists(candidate))
             {
                 return candidate;
@@ -162,6 +177,31 @@ public sealed class DlgDsnApp : TApplication
         }
 
         return local;
+    }
+
+    private static string ValidateFixtureName(string fileName)
+    {
+        if (TryValidateFixtureName(fileName, out string safeFileName))
+        {
+            return safeFileName;
+        }
+
+        throw new InvalidDataException($"Fixture name '{fileName}' is not allowed.");
+    }
+
+    private static bool TryValidateFixtureName(string fileName, out string safeFileName)
+    {
+        safeFileName = fileName;
+        if (string.IsNullOrWhiteSpace(fileName)
+            || Path.IsPathRooted(fileName)
+            || !string.Equals(fileName, Path.GetFileName(fileName), StringComparison.Ordinal)
+            || !KnownFixtureNames.Contains(fileName))
+        {
+            safeFileName = string.Empty;
+            return false;
+        }
+
+        return true;
     }
 
     private static string RejectMalformed()
@@ -178,7 +218,7 @@ public sealed class DlgDsnApp : TApplication
             return "dlgdsn: rejected malformed";
         }
 
-        return "dlgdsn: rejected malformed";
+        return "dlgdsn: accepted malformed";
     }
 
     private static string RejectDescription(string label, DialogDescription description)

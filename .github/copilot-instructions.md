@@ -85,6 +85,7 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - **Branch naming**: Feature branches use either the agent-prefixed form `codex/<feature-description>` (or another supported agent prefix such as `claude/`, `gemini/`, `copilot/`, `opencode/`) or the numbered Spec-Kit form `NNN-short-description` when the Spec-Kit workflow creates the branch.
 - **Lastenheft traceability**: When a dedicated feature branch has implemented the requirements of a Lastenheft, rename that file to `Lastenheft_<topic>.<feature-branch>.md` so the delivered scope stays traceable.
 - **Porting guidance**: Consult `tv203s/contrib/tvision/` for original behavior when porting new classes. The C# port modernizes idioms — it does not translate line-for-line.
+- **Example wave delivery pattern**: Plan larger mandatory example waves as two Spec-Kit stages when porting/proof work and interactive runtime polish would otherwise be mixed. Stage 1 ports the historical behavior, closes framework prerequisites, and adds deterministic headless or in-process smoke paths with explicit follow-up notes for deferred interactivity. Stage 2 wires those proven functions into visible menus, status lines, desktop controls, dialogs, keyboard paths, and scripted UI-event smoke tests. Do not treat a wave as fully learner-facing complete until Stage 2 is delivered, unless the scope explicitly says the example is only a minimal non-interactive proof.
 
 ## Active Feature Context
 

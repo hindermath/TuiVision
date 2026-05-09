@@ -50,4 +50,19 @@ public sealed class DlgDsnSmokeTests : ExampleTestBase
         AssertVisibleContains(app.TryLoadFixture("duplicate-control.tvdialog"), "duplicate-control", "DlgDsn duplicate rejection");
         AssertVisibleContains(app.TryLoadFixture("invalid-navigation.tvdialog"), "invalid-navigation", "DlgDsn navigation rejection");
     }
+
+    /// <summary>
+    /// Prueft diagnostische Ablehnung fuer malformed und unsichere Fixture-Namen.
+    ///
+    /// Verifies diagnostic rejection for malformed and unsafe fixture names.
+    /// </summary>
+    [TestMethod]
+    public void DlgDsn_InvalidFixtures_AreDiagnosticAndPathConstrained()
+    {
+        DlgDsnApp app = new(DefaultBounds(), headless: true);
+
+        AssertEqual("dlgdsn: rejected malformed", app.TryLoadFixture("malformed.tvdialog"), "DlgDsn malformed diagnostic");
+        AssertEqual("dlgdsn: rejected fixture-name", app.TryLoadFixture("../valid.tvdialog"), "DlgDsn traversal rejection");
+        Assert.ThrowsExactly<InvalidDataException>(() => app.LoadFixture("../valid.tvdialog"));
+    }
 }

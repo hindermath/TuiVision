@@ -27,3 +27,11 @@ selection, input text, and history state.
 Expected path: load a list, move forward, commit input to history, and show
 empty lists visibly.
 
+Accessibility: The proof path is keyboard-first and text-first.
+
+Validation:
+
+```bash
+dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~InpLis"
+dotnet run --project examples/InpLis
+```

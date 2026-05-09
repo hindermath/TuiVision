@@ -98,7 +98,7 @@ Statuscheckliste Anforderungen:
 | M-07 | Portierung der Implementierungsdateien aus `tv203s/contrib/tvision/classes` | Alle `.cc`-Dateien aus dem Ordner `tv203s/contrib/tvision/classes` (z. B. `tview.cc`, `tgroup.cc`, `tapplica.cc`, `teditor.cc` u. v. m.) dienen als direkte C/C++-Vorlage fuer M-06; jede Datei wird gemaess Modulmapping (Abschnitt 7.2) einem Zielmodul (`TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` oder `TuiVision.Drivers.Console`) zugeordnet und portiert | Alle identifizierten `.cc`-Quelldateien aus `tv203s/contrib/tvision/classes` (einschliesslich der plattformspezifischen Unterordner fuer `TuiVision.Drivers.Console`) sind in den entsprechenden C#-Zielmodulen nachweisbar abgebildet und durch Unit-Tests abgesichert |
 | M-08 | Unit-Tests fuer portierte Klassen/Methoden mit MSTest | Testprojekte pro Modul, CI-faehig | Tests laufen lokal und in CI stabil durch |
 | M-09 | API-Dokumentation mit docfx | docfx-Konfiguration, API-Generierung und erneute Doku-Erstellung bei API-/XML-Kommentar-Aenderungen | Doku erzeugbar, verlinkt alle Kern-Namespaces und ist nach API-/XML-Aenderungen aktualisiert |
-| M-10 | Portierung der vorhandenen Beispiele | Alle 25 Originalbeispiele aus `tv203s/contrib/tvision/examples` als .NET-Beispiele abbilden; zusaetzlich koennen die Anschlusswellen aus `TVDEMOS/` und `TVFM/` nachgelagert portiert werden | Die 25 Originalbeispiele bauen und bestehen die definierten Smoke-Tests; die TP7-Anschlusswellen werden als Zusatzumfang separat verfolgt |
+| M-10 | Portierung der vorhandenen Beispiele | Alle 25 Originalbeispiele aus `tv203s/contrib/tvision/examples` als .NET-Beispiele abbilden; zusaetzlich koennen die Anschlusswellen aus `TVDEMOS/` und `TVFM/` nachgelagert portiert werden | Die 25 Originalbeispiele bauen, bestehen die definierten Smoke-Tests und zeigen bei interaktiv gedachten Beispielen einen sichtbaren normalen Startpfad; die TP7-Anschlusswellen werden als Zusatzumfang separat verfolgt |
 | M-11 | Qualitaetssicherung zusaetzlich zu Unit-Tests | Analyzer, Format- und Build-Gates | Qualitaets-Gates sind dokumentiert und aktiv |
 | M-12 | Keine nativen OS-Abhaengigkeiten | Keine P/Invoke-/Native-Library-Pflicht, keine OS-spezifischen Zusatzpakete | Build/Tests laufen mit .NET 10 Runtime ohne native Zusatzinstallation |
 | M-13 | Lizenz-Disclaimer fuer Beispielcharakter | Sichtbarer Hinweis in `LICENSE`/`README` | Hinweis beschreibt: Beispielprojekt, keine Konkurrenzabsicht, keine beabsichtigte Lizenzverletzung |
@@ -235,12 +235,15 @@ Kriterien und auf `docs/porting-status.md` als kanonische Nachweisflaeche.
 Zu portieren sind alle 25 vorhandenen Beispielordner, eingeteilt in vier Wellen nach technischer Abhaengigkeit.
 Fuer jedes portierte Beispiel ist eine eigene didaktische Dokumentationsseite in `docs/guides/examples/` bereitzustellen.
 Die nachfolgend aufgefuehrten Turbo-Pascal-Beispiele aus dem Repository (`TVDEMOS/`, `TVFM/`) erweitern diesen Umfang als Anschlusswellen, ersetzen aber nicht den MUSS-Nachweis fuer die 25 Originalbeispiele aus `tv203s/contrib/tvision/examples`.
+Fuer groessere Beispielwellen ist ein zweistufiges Spec-Kit-Liefermuster zulaessig und bevorzugt, wenn Portierungs-/Nachweisarbeit und interaktive Runtime-Politur sonst zu gross fuer einen einzelnen Feature-Lauf wuerden: Stufe 1 liefert den funktionalen Portierungs- und Smoke-Test-Nachweis, Stufe 2 macht dieselben Funktionen ueber sichtbare Menues, Statuszeilen, Desktop-Controls, Dialoge, Tastaturpfade und UI-Event-Smoke-Tests als echte Demo bedienbar. Eine Welle gilt fuer Lernende und manuelle Reviews erst nach der interaktiven Showcase-Stufe als vollstaendig reif, sofern der Scope nicht ausdruecklich nur einen minimalen nicht-interaktiven Nachweis verlangt.
 
 Statuscheckliste Beispielwellen:
 - [x] **Welle 1 - Grundlegende Anwendungsstruktur**
   Reihenfolgehinweis: abgeschlossen (Branch `007-port-wave1-examples`); 4 Beispiele portiert, 41 Smoke-Tests gruen, Guides geliefert.
 - [x] **Welle 2 - Controls und Dialoge**
-  Reihenfolgehinweis: abgeschlossen (Branch `011-port-wave2-examples`); 11 Controls-/Dialog-Beispiele portiert, alle 15 gelieferten Beispiele per Smoke-Test abgedeckt, Guides geliefert.
+  Reihenfolgehinweis: Portierungs-/Smoke-Nachweis abgeschlossen (Branch `011-port-wave2-examples`); 11 Controls-/Dialog-Beispiele portiert, alle 15 gelieferten Beispiele per Smoke-Test abgedeckt, Guides geliefert. Die interaktive Showcase-Stufe ist bewusst als separates Follow-up `012-interactive-wave2-demos` offen und nimmt den 011-Abschluss nicht zurueck.
+- [-] **Welle 2 - Interaktive Showcase-Stufe**
+  Reihenfolgehinweis: als Follow-up auf `011-port-wave2-examples` aus `Lastenheft_Interactive-Wave2-Demos.md` planen; normale Starts mit `dotnet run --project examples/<Name>` muessen sichtbare Bedienpfade und Rueckmeldungen zeigen.
 - [ ] **Welle 3 - Editor, Dateien, Hilfe und Streams**
   Reihenfolgehinweis: nach Welle 2; `tvedit`, `bhelp` und `helpdemo` eignen sich als fruehe Validierungsbeispiele fuer Phase 6.
 - [ ] **Welle 4 - Terminal-Emulation und erweiterte Zeichensaetze**
@@ -281,6 +284,8 @@ Checkliste Welle 2:
 - [x] `sdlg2` - Erweiterter scrollbarer Dialog mit horizontalem und vertikalem Scrollen
 - [x] `tcombo` - Kombinationsfelder (`TComboBox`)
 - [x] `tprogb` - Erweiterter Fortschrittsbalken mit Abbruch
+
+Abgrenzung: Die Welle-2-Checkliste dokumentiert den funktionalen Portierungs- und Smoke-Test-Nachweis aus `011-port-wave2-examples`. Die interaktive Demo-Reife fuer normale CLI-Starts wird in `012-interactive-wave2-demos` als eigene Showcase-Stufe nachgezogen.
 
 **Welle 3 – Editor, Dateien, Hilfe und Streams** (nach Abschluss Phase 6: Editor/Datei/Hilfe/Streams)
 
@@ -609,10 +614,11 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - Die vier Wellen sind als vier eigenstaendige Unterphasen `3.1` bis `3.4` zu behandeln; sie werden nacheinander abgearbeitet und jeweils separat geplant, portiert, getestet und dokumentiert.
    - `3.1` = Welle 1: Grundlegende Anwendungsstruktur — ✓ ABGESCHLOSSEN
    - `3.2` = Welle 2: Controls und Dialoge — ✓ ABGESCHLOSSEN
+   - `3.2a` = Welle 2: Interaktive Showcase-Stufe — OFFEN (`Lastenheft_Interactive-Wave2-Demos.md`)
    - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze
 
->>> NAECHSTER SCHRITT <<< Welle 3 – Editor, Dateien, Hilfe und Streams: Welle 2 ist auf Branch `011-port-wave2-examples` abgeschlossen; als naechstes die Phase-6-Beispiele `bhelp`, `helpdemo`, `i18n`, `tvedit` und `tvhc` planen, portieren, testen und mit Guides nachweisen.
+>>> NAECHSTER SCHRITT <<< Welle 2 – Interaktive Showcase-Stufe: Aus `Lastenheft_Interactive-Wave2-Demos.md` den Spec-Kit-Feature-Lauf `012-interactive-wave2-demos` starten, damit die in `011-port-wave2-examples` nachgewiesenen Funktionen beim normalen CLI-Start ueber Menues, Statuszeilen, Dialoge, Tastaturpfade und UI-Event-Smoke-Tests bedienbar werden.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.
@@ -635,6 +641,7 @@ Die Abnahme gilt als bestanden, wenn:
 - [-] Das Framework in C#/.NET 10 (net10.0) buildbar ist und die definierten Tests durchlaufen.
 - [x] Die API-Dokumentation mit docfx erzeugt wird.
 - [ ] Alle 25 identifizierten Original-Beispielprogramme in portierter Form vorliegen und mindestens per Smoke-Test validiert sind; TP7-Anschlussbeispiele werden zusaetzlich und getrennt nachverfolgt.
+- [ ] Interaktiv gedachte Beispielprogramme zeigen beim normalen Start ueber `dotnet run --project examples/<Name>` einen sichtbaren Bedienpfad mit Rueckmeldung; reine Headless-Seams oder direkte Testmethoden reichen fuer die finale Lern- und Review-Reife nicht aus.
 - [x] Das Projekt im GitHub-Repository `https://github.com/hindermath/TuiVision.git` nachvollziehbar versioniert ist.
 - [x] Der verbindliche Lizenz-/Disclaimer-Hinweis gemaess Abschnitt 10.2 sichtbar enthalten ist.
 - [ ] Die Gesamtdokumentation den didaktischen Standard gemaess Abschnitt 10.3 nachweisbar einhaelt.

@@ -24,3 +24,14 @@ dotnet run --project examples/TCombo
 The example shows selection, input-value synchronization, empty choices, and
 boundary choice lists.
 
+Expected path: load multiple values, select one value, verify input text, and
+make empty selection visible.
+
+Accessibility: Selection and input text are visible as text.
+
+Validation:
+
+```bash
+dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~TCombo"
+dotnet run --project examples/TCombo
+```

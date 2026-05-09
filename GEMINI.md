@@ -139,6 +139,13 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
     *   Ersatzumfang aus `TVDEMOS/` oder `TVFM/`
     *   fachfremde neue Framework-Features
 
+## Example Wave Delivery Pattern
+
+*   Groessere verpflichtende Beispielwellen SOLLEN als bewusstes zweistufiges Spec-Kit-Liefermuster geplant werden, wenn Portierungslogik, Framework-Luecken und interaktive Runtime-Politur sonst in einem Feature vermischt wuerden.
+*   Stufe 1 ist der funktionale Portierungs- und Nachweis-Feature-Lauf: historische Beispielablaeufe portieren, Framework-Voraussetzungen schliessen, deterministische Headless- oder In-Process-Smoke-Pfade bereitstellen, Guides/Evidence ergaenzen und interaktive Runtime-Politur explizit als Follow-up markieren, wenn `dotnet run --project examples/<Name>` noch nicht die finale Demo zeigt.
+*   Stufe 2 ist der interaktive Showcase-Feature-Lauf: die bewiesenen Funktionen ueber sichtbare Menues, Statuszeilen, Desktop-Controls, Dialoge, Tastaturpfade und skriptbare UI-Event-Smoke-Tests erreichbar machen.
+*   Eine Beispielwelle gilt erst nach Stufe 2 als vollstaendig lern- und reviewtauglich, sofern der Scope nicht ausdruecklich nur einen minimalen nicht-interaktiven Nachweis verlangt.
+
 ## 🔄 Synchronisationsregel für KI-Agenten-Dateien
 
 *   Wenn sich aktiver Feature-Kontext, Planungsstand oder gemeinsam genutzte Agenten-Hinweise ändern, müssen diese Dateien gemeinsam geprüft und bei Bedarf im selben Arbeitsgang aktualisiert werden:

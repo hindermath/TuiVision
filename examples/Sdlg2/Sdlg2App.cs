@@ -84,7 +84,9 @@ public sealed class Sdlg2App : TApplication
     {
         int clampedX = Math.Clamp(x, 0, 29);
         int clampedY = Math.Clamp(y, 0, 19);
-        return $"sdlg2: focused {_controls[(clampedX, clampedY)].Text}";
+        TStaticText control = _controls[(clampedX, clampedY)];
+        _scrollGroup.SetFocus(control);
+        return $"sdlg2: focused {control.Text}; visible {_scrollGroup.VisibleState}";
     }
 
     /// <inheritdoc />

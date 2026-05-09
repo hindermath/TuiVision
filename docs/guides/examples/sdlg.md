@@ -29,3 +29,15 @@ dotnet run --project examples/Sdlg
 `TScrollGroup` from `TuiVision.Controls` and shows vertical scrolling, focus
 state, bounds, and visible controls.
 
+Expected path: scroll to a later control and make another control focus visible.
+
+Accessibility: The visible state names the controls as text.
+
+Accepted limitation and cleanup: see `docs/architecture/architecture-risks.md`.
+
+Validation:
+
+```bash
+dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Sdlg"
+dotnet run --project examples/Sdlg
+```

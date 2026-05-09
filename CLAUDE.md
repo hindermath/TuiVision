@@ -123,6 +123,12 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - Gate closure must package explicit build, full-test, coverage, formatting, and conditional API-doc evidence and keep example waves blocked until the closure is formally recorded
 - Planning decisions now fixed for this feature: `docs/porting-status.md` stays the authoritative M-07 ledger; `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, and `TuiVision.Drivers.Console` must each satisfy the explicit 70 % line-coverage gate with assembly-specific evidence; `tests/TuiVision.Compatibility.Tests/` is the planned dedicated Compatibility fallback suite when shared tests are insufficient; placeholder-only or no-op-only modules cannot satisfy that gate; gate-scope removals must update the proof surfaces in the same change; skipped or ignored gate-scoped tests require recorded tracked-issue references; unresolved local-versus-CI coverage conflicts block closure; and the closure needs a dedicated gate-marker or commit reference
 
+## Example Wave Delivery Pattern
+
+- Larger mandatory example waves should use a deliberate two-stage Spec-Kit delivery model when framework gaps, porting logic, and interactive runtime polish would otherwise be mixed in one feature.
+- Stage 1 is the functional port/proof feature: port historical example behavior, close framework prerequisites, expose deterministic headless or in-process smoke paths, add guides/evidence, and explicitly mark interactive runtime polish as follow-up when normal `dotnet run --project examples/<Name>` is not yet the final demonstration.
+- Stage 2 is the interactive showcase feature: wire the proven functions into visible menus, status lines, desktop controls, dialogs, keyboard paths, and scripted UI-event smoke tests so the example is useful for learners and manual reviewers.
+- Do not call an example wave fully learner-facing complete until Stage 2 is delivered, unless the scope explicitly defines the example as a minimal non-interactive proof.
 
 ## Gemeinsame Governance-Ergaenzung / Shared Governance Addendum
 
