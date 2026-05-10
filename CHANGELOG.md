@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.4.0](https://github.com/hindermath/TuiVision/compare/v0.3.1...v0.4.0) (2026-05-10)
+
+
+### Features / Neue Funktionen
+
+* **examples:** implement interactive wave2 demos ([b123e43](https://github.com/hindermath/TuiVision/commit/b123e43ea594203dd33a7084f8050fbc3197839c))
+
+
+### Bug Fixes / Fehlerbehebungen
+
+* address docfx pages review feedback ([e5edf37](https://github.com/hindermath/TuiVision/commit/e5edf372e1c9d6e8cbc9a7d84c32fc7b51abcf72))
+* **examples:** address wave 2 review cleanup before 012 ([7ac92a9](https://github.com/hindermath/TuiVision/commit/7ac92a9cb7cfb30ba399221dd4d25e67948292db))
+
+
+### Documentation / Dokumentation
+
+* **plan:** add interactive wave 2 plan ([a825d9b](https://github.com/hindermath/TuiVision/commit/a825d9b3c597c3c632909b802ac4f89de97a285b))
+* **plan:** finalize interactive wave2 checklist review ([4ede0c7](https://github.com/hindermath/TuiVision/commit/4ede0c7d3f51ffabdbfdb59a60b48b878ff50632))
+* **pr:** address pr27 review cleanup ([1a159b5](https://github.com/hindermath/TuiVision/commit/1a159b5cf010ef93689284f8385cd5ea473453eb))
+* prepare 012 intake and docfx pages workflow ([e2bf0f8](https://github.com/hindermath/TuiVision/commit/e2bf0f82a940c9c2bb173cda9ce45f8eddbb11ac))
+* **spec:** clarify interactive wave 2 demos ([146df8f](https://github.com/hindermath/TuiVision/commit/146df8f0546b3054aa1ca9c2eb0386a7e5023a89))
+* **spec:** specify interactive wave 2 demos ([4be6695](https://github.com/hindermath/TuiVision/commit/4be6695bc13833057785adefe9166fe554337ef7))
+* **tasks:** add interactive wave2 task plan ([53711ae](https://github.com/hindermath/TuiVision/commit/53711ae445ef3f71f2fd5f3c1a2e2086a53b74b1))
+* **tasks:** remediate 012 analysis findings ([5ac28b3](https://github.com/hindermath/TuiVision/commit/5ac28b30fcd8b725f56c3018543bdd3c09bb3341))
+* **tasks:** remediate 012 analyze review ([a2dcc75](https://github.com/hindermath/TuiVision/commit/a2dcc75ab67c0d640ac1d033cf16643257e2259e))
+* **wave1:** add follow-up lastenhefte ([84a9219](https://github.com/hindermath/TuiVision/commit/84a9219331ebf24a9404f53a56b2edbd37bd1a8e))
+
 ## [0.3.1](https://github.com/hindermath/TuiVision/compare/v0.3.0...v0.3.1) (2026-05-08)
 
 
