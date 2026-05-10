@@ -1,6 +1,6 @@
 # Tasks: Interactive Wave 2 Demos
 
-**Input**: Design documents from `/specs/012-interactive-wave2-demos/`
+**Input**: Design documents from `specs/012-interactive-wave2-demos/`
 **Prerequisites**: `plan.md`, `spec.md`, `research.md`, `data-model.md`, `contracts/interactive-wave2-demo-acceptance.md`, `quickstart.md`
 **Feature Branch**: `012-interactive-wave2-demos`
 
@@ -132,7 +132,7 @@
 - [ ] T055 [P] [US3] Convert `tests/TuiVision.Examples.SmokeTests/DynTxtSmokeTests.cs`, `tests/TuiVision.Examples.SmokeTests/InpLisSmokeTests.cs`, and `tests/TuiVision.Examples.SmokeTests/ListViSmokeTests.cs` so primary assertions follow injected event paths before supplemental direct-helper assertions
 - [ ] T056 [P] [US3] Convert `tests/TuiVision.Examples.SmokeTests/ProgBaSmokeTests.cs` and `tests/TuiVision.Examples.SmokeTests/TProgBSmokeTests.cs` so primary assertions follow injected event paths before supplemental direct-helper assertions
 - [ ] T057 [P] [US3] Convert `tests/TuiVision.Examples.SmokeTests/SdlgSmokeTests.cs`, `tests/TuiVision.Examples.SmokeTests/Sdlg2SmokeTests.cs`, and `tests/TuiVision.Examples.SmokeTests/TComboSmokeTests.cs` so primary assertions follow injected event paths before supplemental direct-helper assertions
-- [ ] T058 [US3] Run the fast example smoke suite and record `dotnet test tests/TuiVision.Examples.SmokeTests/` output in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [ ] T058 [US3] Align `Directory.Build.props` build counter for this test run, run the fast example smoke suite with `dotnet test tests/TuiVision.Examples.SmokeTests/ --configuration Release`, and record output in `specs/012-interactive-wave2-demos/pr-evidence.md`
 
 **Checkpoint**: Smoke proof is aligned with the visible runtime path for all eleven examples.
 
@@ -174,16 +174,18 @@
 - [ ] T075 [P] Update the 012 implementation completion status, next-step marker, and interactive Wave-2 readiness in `Pflichtenheft.md`
 - [ ] T076 [P] Update project statistics for implementation scope, validation evidence, manual baseline, and acceleration notes in `docs/project-statistics.md`
 - [ ] T077 [P] Review agent guidance parity and update or record unchanged rationale for `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and `.github/agents/copilot-instructions.md`
-- [ ] T078 Run `dotnet test tests/TuiVision.Examples.SmokeTests/` and record command output in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T079 Run full `dotnet test` and record command output in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T080 Run coverage gate `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings` and record per-assembly coverage evidence in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T081 Run `dotnet format --verify-no-changes` and record command output in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T082 Run `docfx docfx.json` and confirm generated `_site/` and generated `api/*.yml` remain uncommitted in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T083 Run `npm run test:docfx` from `tests/web-a11y/` and record Playwright/axe evidence in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T084 Run representative manual startup checks for all eleven examples and record the `dotnet run --project examples/<Example>` results in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T085 Rename the intake file to include the feature branch suffix after implementation completion in `Lastenheft_Interactive-Wave2-Demos.012-interactive-wave2-demos.md`
-- [ ] T086 Align `Directory.Build.props` to the next branch version before the implementation commit in `Directory.Build.props`
-- [ ] T087 Run `git diff --check` and record the clean diff-check result in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [ ] T078 Align `Directory.Build.props` to the next branch version and record that the manual build counter must be incremented in `Directory.Build.props` before each final `dotnet build` or `dotnet test` command
+- [ ] T079 Run `dotnet build --configuration Release` and record command output in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [ ] T080 Run `dotnet test tests/TuiVision.Examples.SmokeTests/ --configuration Release` and record command output in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [ ] T081 Run full `dotnet test --configuration Release` and record command output in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [ ] T082 Run coverage gate `dotnet test --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings` and record per-assembly coverage evidence in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [ ] T083 Run `dotnet format --verify-no-changes` and record command output in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [ ] T084 Run `docfx docfx.json` and confirm generated `_site/` and generated `api/*.yml` remain uncommitted in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [ ] T085 Run `npm run test:docfx` from `tests/web-a11y/` and record Playwright/axe evidence in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [ ] T086 Run one manual startup check for each of the eleven examples, including the primary operation path, and record the `dotnet run --project examples/<Example>` results in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [ ] T087 Update the PR description with affected scripts/docs, final validation commands, sample console output for changed user-visible runtime output, and an explicit security-risk statement or unchanged-risk rationale
+- [ ] T088 Run `git diff --check` and record the clean diff-check result in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [ ] T089 Run `bash scripts/rename-lastenheft.sh Lastenheft_Interactive-Wave2-Demos.md 012-interactive-wave2-demos` or `pwsh scripts/rename-lastenheft.ps1 -File Lastenheft_Interactive-Wave2-Demos.md -BranchName 012-interactive-wave2-demos` as the final Polish step, and record the resulting `Lastenheft_Interactive-Wave2-Demos.012-interactive-wave2-demos.md` path in `specs/012-interactive-wave2-demos/pr-evidence.md`
 
 ---
 
@@ -258,11 +260,15 @@ Task: "T069 [P] [US4] Update TProgB runtime path, expected feedback, A11Y notes,
 ### Final Validation Commands
 
 ```bash
-dotnet test tests/TuiVision.Examples.SmokeTests/
-dotnet test
-dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings
+# Before each build/test command, align Directory.Build.props to the branch version
+# and increment the manual build counter.
+dotnet build --configuration Release
+dotnet test tests/TuiVision.Examples.SmokeTests/ --configuration Release
+dotnet test --configuration Release
+dotnet test --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings
 dotnet format --verify-no-changes
 docfx docfx.json
 cd tests/web-a11y && npm run test:docfx
 git diff --check
+bash scripts/rename-lastenheft.sh Lastenheft_Interactive-Wave2-Demos.md 012-interactive-wave2-demos
 ```

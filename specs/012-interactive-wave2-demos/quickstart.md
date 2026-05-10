@@ -55,21 +55,26 @@ Clipboard, Demo, DlgDsn, DynTxt, InpLis, ListVi, ProgBa, Sdlg, Sdlg2, TCombo, TP
 
 ### 4. Beispiel-Smokes ausfuehren
 
+Vor dem Testbefehl muss `Directory.Build.props` auf die Branch-Version ausgerichtet und der manuelle Build-Zaehler erhoeht werden.
+
 ```bash
-dotnet test tests/TuiVision.Examples.SmokeTests/
+dotnet test tests/TuiVision.Examples.SmokeTests/ --configuration Release
 ```
 
 Erwartung: Die primaeren Smoke-Tests starten die jeweilige App-Laufzeit und injizieren `TEvent`-, Command- oder Tastaturereignisse. Direkte Hilfsmethoden duerfen nur vorbereiten oder ergaenzend pruefen.
 
 ### 5. Vollstaendige Validierung ausfuehren
 
+Vor jedem Build- oder Testbefehl muss `Directory.Build.props` auf die Branch-Version ausgerichtet und der manuelle Build-Zaehler erhoeht werden.
+
 ```bash
-dotnet test
-dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings
+dotnet build --configuration Release
+dotnet test --configuration Release
+dotnet test --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings
 dotnet format --verify-no-changes
 ```
 
-Erwartung: Die Tests sind gruen, die Coverage-Grenze bleibt fuer die gate-relevanten Assemblies bei mindestens 70 Prozent, und die Formatpruefung meldet keine Aenderungen.
+Erwartung: Release-Build und Tests sind gruen, die Coverage-Grenze bleibt fuer die gate-relevanten Assemblies bei mindestens 70 Prozent, und die Formatpruefung meldet keine Aenderungen.
 
 ### 6. Dokumentation und A11Y pruefen
 
@@ -151,21 +156,26 @@ Clipboard, Demo, DlgDsn, DynTxt, InpLis, ListVi, ProgBa, Sdlg, Sdlg2, TCombo, TP
 
 ### 4. Run example smokes
 
+Before the test command, `Directory.Build.props` must be aligned to the branch version and the manual build counter must be incremented.
+
 ```bash
-dotnet test tests/TuiVision.Examples.SmokeTests/
+dotnet test tests/TuiVision.Examples.SmokeTests/ --configuration Release
 ```
 
 Expected result: primary smoke tests run the application loop and inject `TEvent`, command, or keyboard events. Direct helper methods may only set up or supplement assertions.
 
 ### 5. Run full validation
 
+Before each build or test command, `Directory.Build.props` must be aligned to the branch version and the manual build counter must be incremented.
+
 ```bash
-dotnet test
-dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings
+dotnet build --configuration Release
+dotnet test --configuration Release
+dotnet test --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings
 dotnet format --verify-no-changes
 ```
 
-Expected result: tests pass, coverage remains at least 70 percent for gate-relevant assemblies, and formatting is clean.
+Expected result: the Release build and tests pass, coverage remains at least 70 percent for gate-relevant assemblies, and formatting is clean.
 
 ### 6. Validate documentation and A11Y
 

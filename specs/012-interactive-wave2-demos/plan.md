@@ -44,7 +44,7 @@ The existing direct proof methods from 011 remain useful as setup or supplementa
 
 **Storage**: Runtime example state is in memory. Dialog-designer and file/path demonstrations use source-controlled fixtures, fixed repository paths, or test temporary directories. The examples must not persist user history, write user data as part of normal demonstration, read arbitrary user file contents as proof, or add a database/external service.
 
-**Testing**: Primary validation is `dotnet test tests/TuiVision.Examples.SmokeTests/`, full `dotnet test`, and the repository coverage gate via `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings` before merge. `dotnet format --verify-no-changes` remains the style gate. Because guide and documentation content will change, DocFX generation and `tests/web-a11y` smoke validation are planned evidence, with generated output excluded from commits.
+**Testing**: Primary validation is `dotnet build --configuration Release`, `dotnet test tests/TuiVision.Examples.SmokeTests/ --configuration Release`, full `dotnet test --configuration Release`, and the repository coverage gate via `dotnet test --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings` before merge. `Directory.Build.props` must be aligned to the branch version and build counter before these build/test commands. `dotnet format --verify-no-changes` remains the style gate. Because guide and documentation content will change, DocFX generation and `tests/web-a11y` smoke validation are planned evidence, with generated output excluded from commits.
 
 **Target Platform**: Terminal UI examples on the primary Multi-Mac workflow (`MacBook Air M2` and `Mac mini M4 Pro`), with Linux and Windows/WSL compatibility considered through existing CI or equivalent practical validation when runtime behavior is affected.
 
@@ -84,7 +84,7 @@ The existing direct proof methods from 011 remain useful as setup or supplementa
 
 - **Registry Row**: TuiVision Level-2 project, `.NET 10 / C# terminal UI framework and Turbo Vision port`.
 - **Runtime Baseline**: Existing .NET 10 solution and examples.
-- **Build/Test Baseline**: `dotnet restore`, `dotnet build --configuration Release`, `dotnet test`, coverage via Coverlet, `dotnet format`, DocFX plus Playwright/axe where docs change.
+- **Build/Test Baseline**: `dotnet restore`, branch-version/build-counter alignment in `Directory.Build.props`, `dotnet build --configuration Release`, Release-configuration example smokes and full tests, coverage via Coverlet, `dotnet format`, DocFX plus Playwright/axe where docs change.
 - **Statistics Baseline**: Experienced-developer baseline 80 lines/workday; Thorsten-solo C#/.NET baseline 125 lines/workday; AI-assisted visible work window recorded in `docs/project-statistics.md` after implementation.
 
 ### Post-Design Gate Review

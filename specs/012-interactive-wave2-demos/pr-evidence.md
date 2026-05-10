@@ -12,7 +12,7 @@ This file is the repository-local proof ledger required by the specification. It
 |---|---|---|
 | Specification | Created and clarified | `spec.md` |
 | Plan | Created and reviewed | `plan.md` |
-| Task plan | Created with 87 executable tasks | `tasks.md` |
+| Task plan | Created with 89 executable tasks after analysis remediation | `tasks.md` |
 | Plan-quality checklist | Completed with 36 checks | `checklists/plan-quality.md` |
 | Requirements checklist | Review-cleaned wording for governance/validation details | `checklists/requirements.md` |
 
@@ -38,9 +38,10 @@ This file is the repository-local proof ledger required by the specification. It
 |---|---|---|
 | `.specify/scripts/bash/check-prerequisites.sh --json --paths-only` | Passed for planning | Points to `specs/012-interactive-wave2-demos` |
 | `git diff --check` | Passed for planning | Used for spec, plan, checklist, and task artifacts |
-| `dotnet test tests/TuiVision.Examples.SmokeTests/` | Pending implementation | Required after interactive paths are wired |
-| `dotnet test` | Pending implementation | Required before merge |
-| `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings` | Pending implementation | Required before merge |
+| `dotnet build --configuration Release` | Pending implementation | Required before final test evidence |
+| `dotnet test tests/TuiVision.Examples.SmokeTests/ --configuration Release` | Pending implementation | Required after interactive paths are wired |
+| `dotnet test --configuration Release` | Pending implementation | Required before merge |
+| `dotnet test --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings` | Pending implementation | Required before merge |
 | `dotnet format --verify-no-changes` | Pending implementation | Required before merge |
 | `docfx docfx.json` | Pending implementation | Required when guide/docs updates are made |
 | `npm run test:docfx` in `tests/web-a11y/` | Pending implementation | Required when generated DocFX pages are refreshed |
@@ -50,3 +51,4 @@ This file is the repository-local proof ledger required by the specification. It
 - 2026-05-10: Added this evidence ledger before implementation so all references to `pr-evidence.md` resolve in the PR.
 - 2026-05-10: Replaced local absolute links in planning artifacts with repository-relative links.
 - 2026-05-10: Reworded the requirements checklist to distinguish user-facing behavioural requirements from required governance and validation-evidence details.
+- 2026-05-10: Remediated `/speckit-analyze` findings by adding explicit Release build/test evidence, pre-test version/build-counter ordering, PR-description completion evidence, and the scripted Lastenheft rename as the final Polish step.
