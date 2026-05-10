@@ -6,8 +6,10 @@
 `tv203s/contrib/tvision/examples/inplis/`. Das Beispiel synchronisiert
 Listenauswahl, Eingabetext und History-Zustand.
 
-Erwarteter Pfad: Liste laden, per Tastatur/Index weitergehen, Eingabe in die
-History uebernehmen und leere Listen sichtbar behandeln.
+Interaktiver Laufzeitpfad: `dotnet run --project examples/InpLis` zeigt
+Zwecktext und ein InpLis-Menue. Load, Next, Commit, Recall, Boundary und Empty
+zeigen Auswahl, Eingabe, session-only History, Grenzwerte und Leerzustand als
+Text. Es wird keine History auf Datentraeger geschrieben.
 
 Barrierefreiheit: Der Nachweis ist keyboard-first und text-first.
 
@@ -24,8 +26,10 @@ dotnet run --project examples/InpLis
 `tv203s/contrib/tvision/examples/inplis/`. The example synchronizes list
 selection, input text, and history state.
 
-Expected path: load a list, move forward, commit input to history, and show
-empty lists visibly.
+Interactive runtime path: `dotnet run --project examples/InpLis` shows purpose
+text and an InpLis menu. Load, Next, Commit, Recall, Boundary, and Empty show
+selection, input, session-only history, boundary values, and empty state as
+text. No history is written to disk.
 
 Accessibility: The proof path is keyboard-first and text-first.
 

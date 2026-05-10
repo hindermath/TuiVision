@@ -139,14 +139,15 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - Planning decisions now fixed for this feature: `docs/porting-status.md` stays the authoritative M-07 ledger; `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, and `TuiVision.Drivers.Console` must each satisfy the explicit 70 % line-coverage gate with assembly-specific evidence; `tests/TuiVision.Compatibility.Tests/` is the planned dedicated Compatibility fallback suite when shared tests are insufficient; placeholder-only or no-op-only modules cannot satisfy that gate; gate-scope removals must update the proof surfaces in the same change; skipped or ignored gate-scoped tests require recorded tracked-issue references; unresolved local-versus-CI coverage conflicts block closure; and the closure needs a dedicated gate-marker or commit reference
 
 ### 012-interactive-wave2-demos
-- Current planning baseline: execute the interactive Wave-2 demo polish from `specs/012-interactive-wave2-demos/spec.md` and `specs/012-interactive-wave2-demos/plan.md`.
-- Scope is limited to making the eleven Wave-2 examples visibly operable at normal runtime: `Clipboard`, `Demo`, `DlgDsn`, `DynTxt`, `InpLis`, `ListVi`, `ProgBa`, `Sdlg`, `Sdlg2`, `TCombo`, and `TProgB`; matching event-loop smoke tests in `tests/TuiVision.Examples.SmokeTests/`; guides, README, `pr-evidence.md`, and proportional architecture/security/A11Y/statistics evidence.
+- Current implementation status: interactive Wave-2 demo polish is implemented on branch `012-interactive-wave2-demos`; final validation evidence is tracked in `specs/012-interactive-wave2-demos/pr-evidence.md`.
+- Delivered scope is limited to making the eleven Wave-2 examples visibly operable at normal runtime: `Clipboard`, `Demo`, `DlgDsn`, `DynTxt`, `InpLis`, `ListVi`, `ProgBa`, `Sdlg`, `Sdlg2`, `TCombo`, and `TProgB`; matching event-loop smoke tests in `tests/TuiVision.Examples.SmokeTests/`; guides, README, `pr-evidence.md`, and proportional architecture/security/A11Y/statistics evidence.
 - Before wiring or accepting each example, review the relevant historical `.c`/`.cc` source and any important matching headers under `tv203s/` as read-only reference, capture the original demo intent, and document intentional user-visible deviations in guide or PR evidence.
 - Every example must show first-screen purpose text, expose primary behavior through menu, keyboard, status, or command paths, and update visible text-first feedback after each demonstrated operation.
 - Primary smoke proof must run `app.Run()` or the equivalent real application loop with injected `TEvent`, command, or key events. Direct helper methods may support setup or supplemental assertions only.
 - `examples/Demo` is the P1 vertical slice and must prove at least three visible behaviors before the pattern is spread across the rest of the examples.
 - File/path and dialog-designer flows stay read-only toward user data: use source-controlled fixtures, fixed repository paths, or test temporary directories; do not read arbitrary user file contents or persist user history as proof.
 - Wave 3 and Wave 4 examples, mandatory mouse-only operation, broad framework redesign, new runtime dependencies, databases, external services, and DocFX publishing-model changes are out of scope.
+- Next open mandatory example scope after this feature is Wave 3: editor, file, help, and stream demos such as `tvedit`, `bhelp`, and `helpdemo`.
 
 ## Example Wave Delivery Pattern
 
@@ -207,6 +208,7 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - 008-controls-revision: Controls-Revision implementiert: `TSubMenu`, `TStatusDef`, `WindowFlags` neu hinzugefuegt; `TMenuBar`, `TStatusLine`, `TWindow`, `TDialog`, `TMenuItem`, `TView` erweitert; 338 Tests gruen, `TuiVision.Controls`-Abdeckung 84,02 %, Format-Gate bestanden; `docs/porting-status.md`, `Pflichtenheft.md` und `docs/project-statistics.md` nachgezogen; `Lastenheft_ControlsRevision.md` umbenannt.
 - 010-standard-dialogs-designer: Framework-Readiness fuer Standarddialoge und Dialog-Designer implementiert: explizite Datei-/Verzeichnisentscheidungen ohne Dateiinhalt-I/O, Color-/Display-/symbolische Charset-Auswahl, validierte Dialogbeschreibung, persistierter Dialogbeschreibungs-Roundtrip und malformed-input rejection; fokussierte Controls- und Serialization-Tests gruen.
 - 011-port-wave2-examples: Planartefakte fuer Welle 2 erstellt: 11 neue Beispielprojekte, dedizierte Example-Smoke-Tests, DE-first/EN-second Guides, Architektur-/Security-/A11Y-Nachweise und klarer `sdlg`/`sdlg2`-Scope als historische ScrollDialog/ScrollGroup-Beispiele.
+- 012-interactive-wave2-demos: Interaktive Showcase-Stufe fuer Welle 2 implementiert: alle elf Wave-2-Beispiele besitzen sichtbare normale Runtime-Pfade, app-loop-basierte Smoke-Nachweise, aktualisierte Guides, README-, Architektur-/Security-/A11Y- und PR-Evidence.
 
 ## Agent File Synchronization Policy
 

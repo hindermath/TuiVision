@@ -18,11 +18,11 @@
 
 **Purpose**: Confirm the 012 workspace, capture the existing 011 proof baseline, and create the evidence surface before implementation starts.
 
-- [ ] T001 Record `.specify/scripts/bash/check-prerequisites.sh --json --paths-only` output, current branch, and the bound Level-2 Project Environment Registry row from `constitution.md` (CR-001: TuiVision Level-2, .NET 10 / C# terminal UI framework) in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T002 Record `dotnet restore` result and the no-new-runtime-dependency baseline in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T003 Review the 011 proof baseline in `specs/011-port-wave2-examples/pr-evidence.md` and list reusable direct proof helpers in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T004 Review existing Wave-2 smoke classes under `tests/TuiVision.Examples.SmokeTests/` and record which methods currently rely on direct helpers in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T005 Augment the existing per-example evidence matrix in `specs/012-interactive-wave2-demos/pr-evidence.md` so each row carries the 012-implementation status fields (smoke, runtime, guide, historical-source) for `Clipboard`, `Demo`, `DlgDsn`, `DynTxt`, `InpLis`, `ListVi`, `ProgBa`, `Sdlg`, `Sdlg2`, `TCombo`, and `TProgB` without duplicating the planning rows already created in 2026-05-10
+- [X] T001 Record `.specify/scripts/bash/check-prerequisites.sh --json --paths-only` output, current branch, and the bound Level-2 Project Environment Registry row from `constitution.md` (CR-001: TuiVision Level-2, .NET 10 / C# terminal UI framework) in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T002 Record `dotnet restore` result and the no-new-runtime-dependency baseline in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T003 Review the 011 proof baseline in `specs/011-port-wave2-examples/pr-evidence.md` and list reusable direct proof helpers in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T004 Review existing Wave-2 smoke classes under `tests/TuiVision.Examples.SmokeTests/` and record which methods currently rely on direct helpers in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T005 Augment the existing per-example evidence matrix in `specs/012-interactive-wave2-demos/pr-evidence.md` so each row carries the 012-implementation status fields (smoke, runtime, guide, historical-source) for `Clipboard`, `Demo`, `DlgDsn`, `DynTxt`, `InpLis`, `ListVi`, `ProgBa`, `Sdlg`, `Sdlg2`, `TCombo`, and `TProgB` without duplicating the planning rows already created in 2026-05-10
 
 ---
 
@@ -32,22 +32,22 @@
 
 **CRITICAL**: No user-story implementation should start until this phase records the historical source review and smoke-event foundation.
 
-- [ ] T006 Record the `Clipboard` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/clipboard/test.cc` and `tv203s/contrib/tvision/include/tv/osclipboard.h`
-- [ ] T007 Record the `Demo` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/demo/tvdemo1.cc`, `tv203s/contrib/tvision/examples/demo/tvdemo2.cc`, `tv203s/contrib/tvision/examples/demo/tvdemo3.cc`, `tv203s/contrib/tvision/examples/demo/tvdemo.h`, `tv203s/contrib/tvision/examples/demo/tvcmds.h`, `tv203s/contrib/tvision/examples/demo/gadgets.cc`, `tv203s/contrib/tvision/examples/demo/fileview.cc`, `tv203s/contrib/tvision/examples/demo/ascii.cc`, and `tv203s/contrib/tvision/examples/demo/calendar.cc`
-- [ ] T008 Record the `DlgDsn` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/dlgdsn/freedsgn.cc`, `tv203s/contrib/tvision/examples/dlgdsn/dsgobjs.cc`, `tv203s/contrib/tvision/examples/dlgdsn/propdlgs.cc`, `tv203s/contrib/tvision/examples/dlgdsn/propedit.cc`, `tv203s/contrib/tvision/examples/dlgdsn/strmoper.cc`, `tv203s/contrib/tvision/examples/dlgdsn/dsgdata.h`, and `tv203s/contrib/tvision/examples/dlgdsn/dsgobjs.h`
-- [ ] T009 Record the `DynTxt` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/dyntxt/dyntext.cpp`, `tv203s/contrib/tvision/examples/dyntxt/testdyn.cpp`, and `tv203s/contrib/tvision/examples/dyntxt/dyntext.h`
-- [ ] T010 Record the `InpLis` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/inplis/inplist.cpp`, `tv203s/contrib/tvision/examples/inplis/test.cpp`, and `tv203s/contrib/tvision/examples/inplis/inplist.h`
-- [ ] T011 Record the `ListVi` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/listvi/lst_view.cpp`, `tv203s/contrib/tvision/examples/listvi/listbox2.cpp`, `tv203s/contrib/tvision/examples/listvi/lst_view.h`, and `tv203s/contrib/tvision/classes/tlistvie.cc`
-- [ ] T012 Record the `ProgBa` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/progba/example.cpp`, `tv203s/contrib/tvision/examples/progba/tprogbar.cpp`, `tv203s/contrib/tvision/examples/progba/tprogbar.h`, `tv203s/contrib/tvision/examples/progba/makerez.cpp`, and `tv203s/contrib/tvision/examples/progba/readrez.cpp`
-- [ ] T013 Record the `Sdlg` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/sdlg/main.cpp`, `tv203s/contrib/tvision/examples/sdlg/scrldlg.cpp`, `tv203s/contrib/tvision/examples/sdlg/scrlgrp.cpp`, and `tv203s/contrib/tvision/examples/sdlg/dlg.h`
-- [ ] T014 Record the `Sdlg2` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/sdlg2/main.cpp`, `tv203s/contrib/tvision/examples/sdlg2/scrldlg.cpp`, `tv203s/contrib/tvision/examples/sdlg2/scrlgrp.cpp`, and `tv203s/contrib/tvision/examples/sdlg2/dlg.h`
-- [ ] T015 Record the `TCombo` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/tcombo/test.cpp`, `tv203s/contrib/tvision/examples/tcombo/tcombobx.cpp`, `tv203s/contrib/tvision/examples/tcombo/tcombobx.h`, `tv203s/contrib/tvision/examples/tcombo/tcmbovwr.cpp`, `tv203s/contrib/tvision/examples/tcombo/tcmbowin.cpp`, `tv203s/contrib/tvision/examples/tcombo/tsinputl.cpp`, and `tv203s/contrib/tvision/examples/tcombo/tsinputl.h`
-- [ ] T016 Record the `TProgB` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/tprogb/calc.cpp`, `tv203s/contrib/tvision/examples/tprogb/tprogbar.cpp`, and `tv203s/contrib/tvision/examples/tprogb/tprogbar.h`
-- [ ] T017 Add a shared scripted event helper for queued command/key events and deterministic quit handling in `tests/TuiVision.Examples.SmokeTests/InteractiveSmokeEventScript.cs`
-- [ ] T018 Define a `DirectHelperUsage` enum (`None`, `SetupOnly`, `SupplementalAssertion`), a `RecordDirectHelperUsage(DirectHelperUsage)` API, and an `AssertPrimaryAssertionUsedAppLoop()` helper, and update existing visible-feedback assertions to consume them in `tests/TuiVision.Examples.SmokeTests/ExampleTestBase.cs`; this classification API is the single source of truth that T029-T038 (new app-loop smokes) and T053-T057 (legacy-test conversion) rely on
-- [ ] T019 Define reserved example-local command IDs and command labels for the eleven examples in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T020 Audit read-only fixture and file/path proof boundaries for `examples/Demo/DemoApp.cs`, `examples/DlgDsn/DlgDsnApp.cs`, and `examples/DlgDsn/Fixtures/valid.tvdialog`, and confirm that `examples/InpLis/InpLisApp.cs` history state stays session-only with no disk persistence; record the audit result in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T021 Augment the existing validation evidence section in `specs/012-interactive-wave2-demos/pr-evidence.md` so it covers smoke, full test, coverage, format, DocFX, and A11Y commands without duplicating rows that were already created during planning
+- [X] T006 Record the `Clipboard` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/clipboard/test.cc` and `tv203s/contrib/tvision/include/tv/osclipboard.h`
+- [X] T007 Record the `Demo` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/demo/tvdemo1.cc`, `tv203s/contrib/tvision/examples/demo/tvdemo2.cc`, `tv203s/contrib/tvision/examples/demo/tvdemo3.cc`, `tv203s/contrib/tvision/examples/demo/tvdemo.h`, `tv203s/contrib/tvision/examples/demo/tvcmds.h`, `tv203s/contrib/tvision/examples/demo/gadgets.cc`, `tv203s/contrib/tvision/examples/demo/fileview.cc`, `tv203s/contrib/tvision/examples/demo/ascii.cc`, and `tv203s/contrib/tvision/examples/demo/calendar.cc`
+- [X] T008 Record the `DlgDsn` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/dlgdsn/freedsgn.cc`, `tv203s/contrib/tvision/examples/dlgdsn/dsgobjs.cc`, `tv203s/contrib/tvision/examples/dlgdsn/propdlgs.cc`, `tv203s/contrib/tvision/examples/dlgdsn/propedit.cc`, `tv203s/contrib/tvision/examples/dlgdsn/strmoper.cc`, `tv203s/contrib/tvision/examples/dlgdsn/dsgdata.h`, and `tv203s/contrib/tvision/examples/dlgdsn/dsgobjs.h`
+- [X] T009 Record the `DynTxt` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/dyntxt/dyntext.cpp`, `tv203s/contrib/tvision/examples/dyntxt/testdyn.cpp`, and `tv203s/contrib/tvision/examples/dyntxt/dyntext.h`
+- [X] T010 Record the `InpLis` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/inplis/inplist.cpp`, `tv203s/contrib/tvision/examples/inplis/test.cpp`, and `tv203s/contrib/tvision/examples/inplis/inplist.h`
+- [X] T011 Record the `ListVi` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/listvi/lst_view.cpp`, `tv203s/contrib/tvision/examples/listvi/listbox2.cpp`, `tv203s/contrib/tvision/examples/listvi/lst_view.h`, and `tv203s/contrib/tvision/classes/tlistvie.cc`
+- [X] T012 Record the `ProgBa` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/progba/example.cpp`, `tv203s/contrib/tvision/examples/progba/tprogbar.cpp`, `tv203s/contrib/tvision/examples/progba/tprogbar.h`, `tv203s/contrib/tvision/examples/progba/makerez.cpp`, and `tv203s/contrib/tvision/examples/progba/readrez.cpp`
+- [X] T013 Record the `Sdlg` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/sdlg/main.cpp`, `tv203s/contrib/tvision/examples/sdlg/scrldlg.cpp`, `tv203s/contrib/tvision/examples/sdlg/scrlgrp.cpp`, and `tv203s/contrib/tvision/examples/sdlg/dlg.h`
+- [X] T014 Record the `Sdlg2` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/sdlg2/main.cpp`, `tv203s/contrib/tvision/examples/sdlg2/scrldlg.cpp`, `tv203s/contrib/tvision/examples/sdlg2/scrlgrp.cpp`, and `tv203s/contrib/tvision/examples/sdlg2/dlg.h`
+- [X] T015 Record the `TCombo` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/tcombo/test.cpp`, `tv203s/contrib/tvision/examples/tcombo/tcombobx.cpp`, `tv203s/contrib/tvision/examples/tcombo/tcombobx.h`, `tv203s/contrib/tvision/examples/tcombo/tcmbovwr.cpp`, `tv203s/contrib/tvision/examples/tcombo/tcmbowin.cpp`, `tv203s/contrib/tvision/examples/tcombo/tsinputl.cpp`, and `tv203s/contrib/tvision/examples/tcombo/tsinputl.h`
+- [X] T016 Record the `TProgB` historical source review in `specs/012-interactive-wave2-demos/pr-evidence.md` using `tv203s/contrib/tvision/examples/tprogb/calc.cpp`, `tv203s/contrib/tvision/examples/tprogb/tprogbar.cpp`, and `tv203s/contrib/tvision/examples/tprogb/tprogbar.h`
+- [X] T017 Add a shared scripted event helper for queued command/key events and deterministic quit handling in `tests/TuiVision.Examples.SmokeTests/InteractiveSmokeEventScript.cs`
+- [X] T018 Define a `DirectHelperUsage` enum (`None`, `SetupOnly`, `SupplementalAssertion`), a `RecordDirectHelperUsage(DirectHelperUsage)` API, and an `AssertPrimaryAssertionUsedAppLoop()` helper, and update existing visible-feedback assertions to consume them in `tests/TuiVision.Examples.SmokeTests/ExampleTestBase.cs`; this classification API is the single source of truth that T029-T038 (new app-loop smokes) and T053-T057 (legacy-test conversion) rely on
+- [X] T019 Define reserved example-local command IDs and command labels for the eleven examples in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T020 Audit read-only fixture and file/path proof boundaries for `examples/Demo/DemoApp.cs`, `examples/DlgDsn/DlgDsnApp.cs`, and `examples/DlgDsn/Fixtures/valid.tvdialog`, and confirm that `examples/InpLis/InpLisApp.cs` history state stays session-only with no disk persistence; record the audit result in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T021 Augment the existing validation evidence section in `specs/012-interactive-wave2-demos/pr-evidence.md` so it covers smoke, full test, coverage, format, DocFX, and A11Y commands without duplicating rows that were already created during planning
 
 **Checkpoint**: Historical source review, smoke-event helper, command plan, fixture safety baseline, and evidence matrix are ready.
 
@@ -61,16 +61,16 @@
 
 ### Tests for User Story 1
 
-- [ ] T022 [US1] Add failing app-loop smoke coverage for Demo menu/command discovery and three visible result states in `tests/TuiVision.Examples.SmokeTests/DemoSmokeTests.cs`
-- [ ] T023 [US1] Add failing app-loop smoke coverage for Demo file/path metadata, cancel, invalid path, and color/display feedback in `tests/TuiVision.Examples.SmokeTests/DemoSmokeTests.cs`
+- [X] T022 [US1] Add failing app-loop smoke coverage for Demo menu/command discovery and three visible result states in `tests/TuiVision.Examples.SmokeTests/DemoSmokeTests.cs`
+- [X] T023 [US1] Add failing app-loop smoke coverage for Demo file/path metadata, cancel, invalid path, and color/display feedback in `tests/TuiVision.Examples.SmokeTests/DemoSmokeTests.cs`
 
 ### Implementation for User Story 1
 
-- [ ] T024 [US1] Add visible first-screen purpose text, menu commands, status-line command hints, and deterministic command dispatch to `examples/Demo/DemoApp.cs`
-- [ ] T025 [US1] Route Demo broad controls/dialog/gadget, file/path metadata, cancel/invalid, and color/display flows through visible command handlers in `examples/Demo/DemoApp.cs`; record any deliberately omitted historical Demo behavior in T028's PR-evidence note rather than as a runtime UI state
-- [ ] T026 [US1] Add deterministic injected-event sequencing for Demo headless mode without bypassing the runtime dispatch route in `examples/Demo/DemoApp.cs`
-- [ ] T027 [US1] Ensure normal startup remains usable through `dotnet run --project examples/Demo` by reviewing `examples/Demo/Program.cs`
-- [ ] T028 [US1] Record Demo command paths, visible feedback, historical-source deviations, and smoke results in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T024 [US1] Add visible first-screen purpose text, menu commands, status-line command hints, and deterministic command dispatch to `examples/Demo/DemoApp.cs`
+- [X] T025 [US1] Route Demo broad controls/dialog/gadget, file/path metadata, cancel/invalid, and color/display flows through visible command handlers in `examples/Demo/DemoApp.cs`; record any deliberately omitted historical Demo behavior in T028's PR-evidence note rather than as a runtime UI state
+- [X] T026 [US1] Add deterministic injected-event sequencing for Demo headless mode without bypassing the runtime dispatch route in `examples/Demo/DemoApp.cs`
+- [X] T027 [US1] Ensure normal startup remains usable through `dotnet run --project examples/Demo` by reviewing `examples/Demo/Program.cs`
+- [X] T028 [US1] Record Demo command paths, visible feedback, historical-source deviations, and smoke results in `specs/012-interactive-wave2-demos/pr-evidence.md`
 
 **Checkpoint**: Demo is a complete, independently testable vertical slice.
 
@@ -84,31 +84,31 @@
 
 ### Tests for User Story 2
 
-- [ ] T029 [P] [US2] Add failing app-loop smoke coverage for Clipboard copy, cut, paste, and unavailable feedback in `tests/TuiVision.Examples.SmokeTests/ClipboardSmokeTests.cs`
-- [ ] T030 [P] [US2] Add failing app-loop smoke coverage for DlgDsn load, render, visible change, malformed rejection, and invalid-description rejection in `tests/TuiVision.Examples.SmokeTests/DlgDsnSmokeTests.cs`
-- [ ] T031 [P] [US2] Add failing app-loop smoke coverage for DynTxt short, long, and constrained-width feedback in `tests/TuiVision.Examples.SmokeTests/DynTxtSmokeTests.cs`
-- [ ] T032 [P] [US2] Add failing app-loop smoke coverage for InpLis input, selection, history/recall, boundary, and empty feedback in `tests/TuiVision.Examples.SmokeTests/InpLisSmokeTests.cs`
-- [ ] T033 [P] [US2] Add failing app-loop smoke coverage for ListVi selection, first/last boundary, and empty feedback in `tests/TuiVision.Examples.SmokeTests/ListViSmokeTests.cs`
-- [ ] T034 [P] [US2] Add failing app-loop smoke coverage for ProgBa visible progress completion in `tests/TuiVision.Examples.SmokeTests/ProgBaSmokeTests.cs`
-- [ ] T035 [P] [US2] Add failing app-loop smoke coverage for Sdlg vertical scroll/focus movement outside the initial viewport in `tests/TuiVision.Examples.SmokeTests/SdlgSmokeTests.cs`
-- [ ] T036 [P] [US2] Add failing app-loop smoke coverage for Sdlg2 horizontal and vertical scroll/focus movement outside the initial viewport in `tests/TuiVision.Examples.SmokeTests/Sdlg2SmokeTests.cs`
-- [ ] T037 [P] [US2] Add failing app-loop smoke coverage for TCombo selection, visible value change, boundary, and empty feedback in `tests/TuiVision.Examples.SmokeTests/TComboSmokeTests.cs`
-- [ ] T038 [P] [US2] Add failing app-loop smoke coverage for TProgB partial progress, abort, and cancelled feedback in `tests/TuiVision.Examples.SmokeTests/TProgBSmokeTests.cs`
+- [X] T029 [P] [US2] Add failing app-loop smoke coverage for Clipboard copy, cut, paste, and unavailable feedback in `tests/TuiVision.Examples.SmokeTests/ClipboardSmokeTests.cs`
+- [X] T030 [P] [US2] Add failing app-loop smoke coverage for DlgDsn load, render, visible change, malformed rejection, and invalid-description rejection in `tests/TuiVision.Examples.SmokeTests/DlgDsnSmokeTests.cs`
+- [X] T031 [P] [US2] Add failing app-loop smoke coverage for DynTxt short, long, and constrained-width feedback in `tests/TuiVision.Examples.SmokeTests/DynTxtSmokeTests.cs`
+- [X] T032 [P] [US2] Add failing app-loop smoke coverage for InpLis input, selection, history/recall, boundary, and empty feedback in `tests/TuiVision.Examples.SmokeTests/InpLisSmokeTests.cs`
+- [X] T033 [P] [US2] Add failing app-loop smoke coverage for ListVi selection, first/last boundary, and empty feedback in `tests/TuiVision.Examples.SmokeTests/ListViSmokeTests.cs`
+- [X] T034 [P] [US2] Add failing app-loop smoke coverage for ProgBa visible progress completion in `tests/TuiVision.Examples.SmokeTests/ProgBaSmokeTests.cs`
+- [X] T035 [P] [US2] Add failing app-loop smoke coverage for Sdlg vertical scroll/focus movement outside the initial viewport in `tests/TuiVision.Examples.SmokeTests/SdlgSmokeTests.cs`
+- [X] T036 [P] [US2] Add failing app-loop smoke coverage for Sdlg2 horizontal and vertical scroll/focus movement outside the initial viewport in `tests/TuiVision.Examples.SmokeTests/Sdlg2SmokeTests.cs`
+- [X] T037 [P] [US2] Add failing app-loop smoke coverage for TCombo selection, visible value change, boundary, and empty feedback in `tests/TuiVision.Examples.SmokeTests/TComboSmokeTests.cs`
+- [X] T038 [P] [US2] Add failing app-loop smoke coverage for TProgB partial progress, abort, and cancelled feedback in `tests/TuiVision.Examples.SmokeTests/TProgBSmokeTests.cs`
 
 ### Implementation for User Story 2
 
-- [ ] T039 [P] [US2] Add visible first-screen purpose text, menu/status command paths, and command dispatch for copy, cut, paste, and unavailable feedback in `examples/Clipboard/ClipboardApp.cs`
-- [ ] T040 [P] [US2] Add visible first-screen purpose text, dialog-description command paths, render/change/reject feedback, and read-only fixture handling in `examples/DlgDsn/DlgDsnApp.cs`
-- [ ] T041 [P] [US2] Add visible first-screen purpose text, short/long/constrained command paths, and text-first feedback in `examples/DynTxt/DynTxtApp.cs`
-- [ ] T042 [P] [US2] Add visible first-screen purpose text, input/list/history command paths, boundary feedback, and empty feedback in `examples/InpLis/InpLisApp.cs`
-- [ ] T043 [P] [US2] Add visible first-screen purpose text, list selection command paths, boundary feedback, and empty feedback in `examples/ListVi/ListViApp.cs`
-- [ ] T044 [P] [US2] Add visible first-screen purpose text, progress-start command path, completion feedback, and deterministic quit path in `examples/ProgBa/ProgBaApp.cs`
-- [ ] T045 [P] [US2] Add visible first-screen purpose text, vertical scroll/focus command paths, boundary feedback, and deterministic quit path in `examples/Sdlg/SdlgApp.cs`
-- [ ] T046 [P] [US2] Add visible first-screen purpose text, horizontal/vertical scroll/focus command paths, boundary feedback, and deterministic quit path in `examples/Sdlg2/Sdlg2App.cs`
-- [ ] T047 [P] [US2] Add visible first-screen purpose text, combo selection/value command paths, boundary feedback, and empty feedback in `examples/TCombo/TComboApp.cs`
-- [ ] T048 [P] [US2] Add visible first-screen purpose text, partial progress, abort, cancelled command paths, and separate visible result states in `examples/TProgB/TProgBApp.cs`
-- [ ] T049 [US2] Review normal startup and terminal bounds handling for all Wave-2 `Program.cs` files under `examples/Clipboard/`, `examples/DlgDsn/`, `examples/DynTxt/`, `examples/InpLis/`, `examples/ListVi/`, `examples/ProgBa/`, `examples/Sdlg/`, `examples/Sdlg2/`, `examples/TCombo/`, and `examples/TProgB/`
-- [ ] T050 [US2] Record per-example operation path, visible feedback state, and accepted historical deviation notes in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T039 [P] [US2] Add visible first-screen purpose text, menu/status command paths, and command dispatch for copy, cut, paste, and unavailable feedback in `examples/Clipboard/ClipboardApp.cs`
+- [X] T040 [P] [US2] Add visible first-screen purpose text, dialog-description command paths, render/change/reject feedback, and read-only fixture handling in `examples/DlgDsn/DlgDsnApp.cs`
+- [X] T041 [P] [US2] Add visible first-screen purpose text, short/long/constrained command paths, and text-first feedback in `examples/DynTxt/DynTxtApp.cs`
+- [X] T042 [P] [US2] Add visible first-screen purpose text, input/list/history command paths, boundary feedback, and empty feedback in `examples/InpLis/InpLisApp.cs`
+- [X] T043 [P] [US2] Add visible first-screen purpose text, list selection command paths, boundary feedback, and empty feedback in `examples/ListVi/ListViApp.cs`
+- [X] T044 [P] [US2] Add visible first-screen purpose text, progress-start command path, completion feedback, and deterministic quit path in `examples/ProgBa/ProgBaApp.cs`
+- [X] T045 [P] [US2] Add visible first-screen purpose text, vertical scroll/focus command paths, boundary feedback, and deterministic quit path in `examples/Sdlg/SdlgApp.cs`
+- [X] T046 [P] [US2] Add visible first-screen purpose text, horizontal/vertical scroll/focus command paths, boundary feedback, and deterministic quit path in `examples/Sdlg2/Sdlg2App.cs`
+- [X] T047 [P] [US2] Add visible first-screen purpose text, combo selection/value command paths, boundary feedback, and empty feedback in `examples/TCombo/TComboApp.cs`
+- [X] T048 [P] [US2] Add visible first-screen purpose text, partial progress, abort, cancelled command paths, and separate visible result states in `examples/TProgB/TProgBApp.cs`
+- [X] T049 [US2] Review normal startup and terminal bounds handling for all Wave-2 `Program.cs` files under `examples/Clipboard/`, `examples/DlgDsn/`, `examples/DynTxt/`, `examples/InpLis/`, `examples/ListVi/`, `examples/ProgBa/`, `examples/Sdlg/`, `examples/Sdlg2/`, `examples/TCombo/`, and `examples/TProgB/`
+- [X] T050 [US2] Record per-example operation path, visible feedback state, and accepted historical deviation notes in `specs/012-interactive-wave2-demos/pr-evidence.md`
 
 **Checkpoint**: All Wave-2 examples are visibly operable from normal startup.
 
@@ -124,17 +124,17 @@
 
 ### Tests for User Story 3
 
-- [ ] T051 [US3] Add a Wave-2 interactive smoke matrix test that lists all eleven primary app-loop scenarios in `tests/TuiVision.Examples.SmokeTests/Wave2InteractiveSmokeMatrixTests.cs`
-- [ ] T052 [US3] Add direct-helper classification assertions for setup-only and supplemental-only helper usage in `tests/TuiVision.Examples.SmokeTests/Wave2InteractiveSmokeMatrixTests.cs`
+- [X] T051 [US3] Add a Wave-2 interactive smoke matrix test that lists all eleven primary app-loop scenarios in `tests/TuiVision.Examples.SmokeTests/Wave2InteractiveSmokeMatrixTests.cs`
+- [X] T052 [US3] Add direct-helper classification assertions for setup-only and supplemental-only helper usage in `tests/TuiVision.Examples.SmokeTests/Wave2InteractiveSmokeMatrixTests.cs`
 
 ### Implementation for User Story 3
 
-- [ ] T053 [US3] Convert `tests/TuiVision.Examples.SmokeTests/DemoSmokeTests.cs` so primary assertions on visible feedback now run through the injected app-loop event path; legacy direct-helper-only methods that no longer carry a primary proof MUST either be deleted or be classified as `SetupOnly` or `SupplementalAssertion` via T018's API
-- [ ] T054 [P] [US3] Convert `tests/TuiVision.Examples.SmokeTests/ClipboardSmokeTests.cs` and `tests/TuiVision.Examples.SmokeTests/DlgDsnSmokeTests.cs` so primary assertions on visible feedback now run through the injected app-loop event path; legacy direct-helper-only methods that no longer carry a primary proof MUST either be deleted or be classified as `SetupOnly` or `SupplementalAssertion` via T018's API
-- [ ] T055 [P] [US3] Convert `tests/TuiVision.Examples.SmokeTests/DynTxtSmokeTests.cs`, `tests/TuiVision.Examples.SmokeTests/InpLisSmokeTests.cs`, and `tests/TuiVision.Examples.SmokeTests/ListViSmokeTests.cs` so primary assertions on visible feedback now run through the injected app-loop event path; legacy direct-helper-only methods that no longer carry a primary proof MUST either be deleted or be classified as `SetupOnly` or `SupplementalAssertion` via T018's API
-- [ ] T056 [P] [US3] Convert `tests/TuiVision.Examples.SmokeTests/ProgBaSmokeTests.cs` and `tests/TuiVision.Examples.SmokeTests/TProgBSmokeTests.cs` so primary assertions on visible feedback now run through the injected app-loop event path; legacy direct-helper-only methods that no longer carry a primary proof MUST either be deleted or be classified as `SetupOnly` or `SupplementalAssertion` via T018's API
-- [ ] T057 [P] [US3] Convert `tests/TuiVision.Examples.SmokeTests/SdlgSmokeTests.cs`, `tests/TuiVision.Examples.SmokeTests/Sdlg2SmokeTests.cs`, and `tests/TuiVision.Examples.SmokeTests/TComboSmokeTests.cs` so primary assertions on visible feedback now run through the injected app-loop event path; legacy direct-helper-only methods that no longer carry a primary proof MUST either be deleted or be classified as `SetupOnly` or `SupplementalAssertion` via T018's API
-- [ ] T058 [US3] Align `Directory.Build.props` build counter for this test run, run the fast example smoke suite with `dotnet test tests/TuiVision.Examples.SmokeTests/ --configuration Release`, and record output in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T053 [US3] Convert `tests/TuiVision.Examples.SmokeTests/DemoSmokeTests.cs` so primary assertions on visible feedback now run through the injected app-loop event path; legacy direct-helper-only methods that no longer carry a primary proof MUST either be deleted or be classified as `SetupOnly` or `SupplementalAssertion` via T018's API
+- [X] T054 [P] [US3] Convert `tests/TuiVision.Examples.SmokeTests/ClipboardSmokeTests.cs` and `tests/TuiVision.Examples.SmokeTests/DlgDsnSmokeTests.cs` so primary assertions on visible feedback now run through the injected app-loop event path; legacy direct-helper-only methods that no longer carry a primary proof MUST either be deleted or be classified as `SetupOnly` or `SupplementalAssertion` via T018's API
+- [X] T055 [P] [US3] Convert `tests/TuiVision.Examples.SmokeTests/DynTxtSmokeTests.cs`, `tests/TuiVision.Examples.SmokeTests/InpLisSmokeTests.cs`, and `tests/TuiVision.Examples.SmokeTests/ListViSmokeTests.cs` so primary assertions on visible feedback now run through the injected app-loop event path; legacy direct-helper-only methods that no longer carry a primary proof MUST either be deleted or be classified as `SetupOnly` or `SupplementalAssertion` via T018's API
+- [X] T056 [P] [US3] Convert `tests/TuiVision.Examples.SmokeTests/ProgBaSmokeTests.cs` and `tests/TuiVision.Examples.SmokeTests/TProgBSmokeTests.cs` so primary assertions on visible feedback now run through the injected app-loop event path; legacy direct-helper-only methods that no longer carry a primary proof MUST either be deleted or be classified as `SetupOnly` or `SupplementalAssertion` via T018's API
+- [X] T057 [P] [US3] Convert `tests/TuiVision.Examples.SmokeTests/SdlgSmokeTests.cs`, `tests/TuiVision.Examples.SmokeTests/Sdlg2SmokeTests.cs`, and `tests/TuiVision.Examples.SmokeTests/TComboSmokeTests.cs` so primary assertions on visible feedback now run through the injected app-loop event path; legacy direct-helper-only methods that no longer carry a primary proof MUST either be deleted or be classified as `SetupOnly` or `SupplementalAssertion` via T018's API
+- [X] T058 [US3] Align `Directory.Build.props` build counter for this test run, run the fast example smoke suite with `dotnet test tests/TuiVision.Examples.SmokeTests/ --configuration Release`, and record output in `specs/012-interactive-wave2-demos/pr-evidence.md`
 
 **Checkpoint**: Smoke proof is aligned with the visible runtime path for all eleven examples.
 
@@ -148,20 +148,20 @@
 
 ### Documentation for User Story 4
 
-- [ ] T059 [P] [US4] Update Clipboard runtime path, expected feedback, A11Y notes, and historical-source outcome in `docs/guides/examples/clipboard.md`
-- [ ] T060 [P] [US4] Update Demo runtime path, expected feedback, A11Y notes, and historical-source outcome in `docs/guides/examples/demo.md`
-- [ ] T061 [P] [US4] Update DlgDsn runtime path, expected feedback, read-only fixture notes, A11Y notes, and historical-source outcome in `docs/guides/examples/dlgdsn.md`
-- [ ] T062 [P] [US4] Update DynTxt runtime path, expected feedback, A11Y notes, and historical-source outcome in `docs/guides/examples/dyntxt.md`
-- [ ] T063 [P] [US4] Update InpLis runtime path, expected feedback, A11Y notes, and historical-source outcome in `docs/guides/examples/inplis.md`
-- [ ] T064 [P] [US4] Update ListVi runtime path, expected feedback, A11Y notes, and historical-source outcome in `docs/guides/examples/listvi.md`
-- [ ] T065 [P] [US4] Update ProgBa runtime path, expected feedback, A11Y notes, and historical-source outcome in `docs/guides/examples/progba.md`
-- [ ] T066 [P] [US4] Update Sdlg runtime path, expected feedback, scroll/focus A11Y notes, and historical-source outcome in `docs/guides/examples/sdlg.md`
-- [ ] T067 [P] [US4] Update Sdlg2 runtime path, expected feedback, two-axis scroll/focus A11Y notes, and historical-source outcome in `docs/guides/examples/sdlg2.md`
-- [ ] T068 [P] [US4] Update TCombo runtime path, expected feedback, A11Y notes, and historical-source outcome in `docs/guides/examples/tcombo.md`
-- [ ] T069 [P] [US4] Update TProgB runtime path, expected feedback, A11Y notes, and historical-source outcome in `docs/guides/examples/tprogb.md`
-- [ ] T070 [US4] Update Wave-2 overview, run commands, and learner-ready status in `examples/README.md`
-- [ ] T071 [US4] Update the guide review notes for cross-example text-first and accessibility evidence in `docs/guides/examples/wave2-guide-review-notes.md`
-- [ ] T072 [US4] Record guide-to-operation-to-smoke traceability for all eleven examples in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T059 [P] [US4] Update Clipboard runtime path, expected feedback, A11Y notes, and historical-source outcome in `docs/guides/examples/clipboard.md`
+- [X] T060 [P] [US4] Update Demo runtime path, expected feedback, A11Y notes, and historical-source outcome in `docs/guides/examples/demo.md`
+- [X] T061 [P] [US4] Update DlgDsn runtime path, expected feedback, read-only fixture notes, A11Y notes, and historical-source outcome in `docs/guides/examples/dlgdsn.md`
+- [X] T062 [P] [US4] Update DynTxt runtime path, expected feedback, A11Y notes, and historical-source outcome in `docs/guides/examples/dyntxt.md`
+- [X] T063 [P] [US4] Update InpLis runtime path, expected feedback, A11Y notes, and historical-source outcome in `docs/guides/examples/inplis.md`
+- [X] T064 [P] [US4] Update ListVi runtime path, expected feedback, A11Y notes, and historical-source outcome in `docs/guides/examples/listvi.md`
+- [X] T065 [P] [US4] Update ProgBa runtime path, expected feedback, A11Y notes, and historical-source outcome in `docs/guides/examples/progba.md`
+- [X] T066 [P] [US4] Update Sdlg runtime path, expected feedback, scroll/focus A11Y notes, and historical-source outcome in `docs/guides/examples/sdlg.md`
+- [X] T067 [P] [US4] Update Sdlg2 runtime path, expected feedback, two-axis scroll/focus A11Y notes, and historical-source outcome in `docs/guides/examples/sdlg2.md`
+- [X] T068 [P] [US4] Update TCombo runtime path, expected feedback, A11Y notes, and historical-source outcome in `docs/guides/examples/tcombo.md`
+- [X] T069 [P] [US4] Update TProgB runtime path, expected feedback, A11Y notes, and historical-source outcome in `docs/guides/examples/tprogb.md`
+- [X] T070 [US4] Update Wave-2 overview, run commands, and learner-ready status in `examples/README.md`
+- [X] T071 [US4] Update the guide review notes for cross-example text-first and accessibility evidence in `docs/guides/examples/wave2-guide-review-notes.md`
+- [X] T072 [US4] Record guide-to-operation-to-smoke traceability for all eleven examples in `specs/012-interactive-wave2-demos/pr-evidence.md`
 
 **Checkpoint**: Documentation matches the real interactive runtime paths.
 
@@ -171,23 +171,23 @@
 
 **Purpose**: Complete governance evidence, statistics, final validation, versioning, and delivery preparation.
 
-- [ ] T073 [P] Verify architecture impact and update or record unchanged rationale for `docs/architecture/architecture-vision.md`, `docs/architecture/runtime-view.md`, `docs/architecture/quality-scenarios.md`, and `docs/architecture/architecture-risks.md`
-- [ ] T074 [P] Verify NIST SSDF/CWE posture and update or record unchanged rationale for `docs/security/security-checklist.md`, `docs/security/threat-model.md`, `docs/security/dependency-audit.md`, `docs/security/asvs-verification.md`, `docs/security/supply-chain-evidence.md`, `docs/security/zero-trust-applicability.md`, and `docs/security/samm-assessment.md`
-- [ ] T075 [P] Update the 012 implementation completion status, next-step marker, and interactive Wave-2 readiness in `Pflichtenheft.md`
-- [ ] T076 [P] Update project statistics for implementation scope, validation evidence, manual baseline, and acceleration notes in `docs/project-statistics.md`
-- [ ] T077 [P] Review agent guidance parity and update or record unchanged rationale for `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and `.github/agents/copilot-instructions.md`
-- [ ] T078 Align `Directory.Build.props` to the current branch version `1.12.<patch>.<build>` (Minor=12 derived from branch `012-interactive-wave2-demos`, Patch=current commit count on the branch after the present change, Build=manual counter) and record that the manual build counter MUST be incremented in `Directory.Build.props` before each final `dotnet build` or `dotnet test` command in this Polish phase
-- [ ] T079 Run `dotnet build --configuration Release` and record command output in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T080 Run `dotnet test tests/TuiVision.Examples.SmokeTests/ --configuration Release` as the final-evidence smoke run after Polish updates (distinct from the Phase-5 hardening run in T058) and record command output in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T081 Run full `dotnet test --configuration Release` and record command output in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T082 Run coverage gate `dotnet test --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings` and record per-assembly coverage evidence in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T083 Run `dotnet format --verify-no-changes` and record command output in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T084 Run `docfx docfx.json` and confirm generated `_site/` and generated `api/*.yml` remain uncommitted in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T085 Run `npm run test:docfx` from `tests/web-a11y/` and record Playwright/axe evidence in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T086 Run one manual startup check for each of the eleven Wave-2 examples (`Clipboard`, `Demo`, `DlgDsn`, `DynTxt`, `InpLis`, `ListVi`, `ProgBa`, `Sdlg`, `Sdlg2`, `TCombo`, `TProgB`), including the primary operation path, and record the `dotnet run --project examples/<Example>` results in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T087 Update the PR description with affected scripts/docs, final validation commands, 2-3 representative example console snippets (Demo plus one progress and one dialog example as a minimum) covering changed user-visible runtime output, an explicit security-risk statement or unchanged-risk rationale, and an explicit confirmation that no Wave-3 or Wave-4 example, mouse-only path, or framework redesign was added (FR-010, SC-007)
-- [ ] T088 Run `git diff --check` and record the clean diff-check result in `specs/012-interactive-wave2-demos/pr-evidence.md`
-- [ ] T089 Run `bash scripts/rename-lastenheft.sh Lastenheft_Interactive-Wave2-Demos.md 012-interactive-wave2-demos` or `pwsh scripts/rename-lastenheft.ps1 -File Lastenheft_Interactive-Wave2-Demos.md -BranchName 012-interactive-wave2-demos` as the final Polish step, and record the resulting `Lastenheft_Interactive-Wave2-Demos.012-interactive-wave2-demos.md` path in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T073 [P] Verify architecture impact and update or record unchanged rationale for `docs/architecture/architecture-vision.md`, `docs/architecture/runtime-view.md`, `docs/architecture/quality-scenarios.md`, and `docs/architecture/architecture-risks.md`
+- [X] T074 [P] Verify NIST SSDF/CWE posture and update or record unchanged rationale for `docs/security/security-checklist.md`, `docs/security/threat-model.md`, `docs/security/dependency-audit.md`, `docs/security/asvs-verification.md`, `docs/security/supply-chain-evidence.md`, `docs/security/zero-trust-applicability.md`, and `docs/security/samm-assessment.md`
+- [X] T075 [P] Update the 012 implementation completion status, next-step marker, and interactive Wave-2 readiness in `Pflichtenheft.md`
+- [X] T076 [P] Update project statistics for implementation scope, validation evidence, manual baseline, and acceleration notes in `docs/project-statistics.md`
+- [X] T077 [P] Review agent guidance parity and update or record unchanged rationale for `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and `.github/agents/copilot-instructions.md`
+- [X] T078 Align `Directory.Build.props` to the current branch version `1.12.<patch>.<build>` (Minor=12 derived from branch `012-interactive-wave2-demos`, Patch=current commit count on the branch after the present change, Build=manual counter) and record that the manual build counter MUST be incremented in `Directory.Build.props` before each final `dotnet build` or `dotnet test` command in this Polish phase
+- [X] T079 Run `dotnet build --configuration Release` and record command output in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T080 Run `dotnet test tests/TuiVision.Examples.SmokeTests/ --configuration Release` as the final-evidence smoke run after Polish updates (distinct from the Phase-5 hardening run in T058) and record command output in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T081 Run full `dotnet test --configuration Release` and record command output in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T082 Run coverage gate `dotnet test --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings` and record per-assembly coverage evidence in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T083 Run `dotnet format --verify-no-changes` and record command output in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T084 Run `docfx docfx.json` and confirm generated `_site/` and generated `api/*.yml` remain uncommitted in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T085 Run `npm run test:docfx` from `tests/web-a11y/` and record Playwright/axe evidence in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T086 Run one manual startup check for each of the eleven Wave-2 examples (`Clipboard`, `Demo`, `DlgDsn`, `DynTxt`, `InpLis`, `ListVi`, `ProgBa`, `Sdlg`, `Sdlg2`, `TCombo`, `TProgB`), including the primary operation path, and record the `dotnet run --project examples/<Example>` results in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T087 Update the PR description with affected scripts/docs, final validation commands, 2-3 representative example console snippets (Demo plus one progress and one dialog example as a minimum) covering changed user-visible runtime output, an explicit security-risk statement or unchanged-risk rationale, and an explicit confirmation that no Wave-3 or Wave-4 example, mouse-only path, or framework redesign was added (FR-010, SC-007)
+- [X] T088 Run `git diff --check` and record the clean diff-check result in `specs/012-interactive-wave2-demos/pr-evidence.md`
+- [X] T089 Run `bash scripts/rename-lastenheft.sh Lastenheft_Interactive-Wave2-Demos.md 012-interactive-wave2-demos` or `pwsh scripts/rename-lastenheft.ps1 -File Lastenheft_Interactive-Wave2-Demos.md -BranchName 012-interactive-wave2-demos` as the final Polish step, and record the resulting `Lastenheft_Interactive-Wave2-Demos.012-interactive-wave2-demos.md` path in `specs/012-interactive-wave2-demos/pr-evidence.md`
 
 ---
 

@@ -60,3 +60,23 @@ new dependency and the existing test packages cover the planned validation.
 | Outdated production packages | keine gemeldet / none reported |
 | Outdated test packages | bekannt, nicht feature-blockierend / known, not feature-blocking |
 | Dependency-currency status | PASS mit dokumentierter Testpaket-Verschiebung / PASS with documented test-package deferral |
+
+## 012-interactive-wave2-demos
+
+Datum: 2026-05-10.
+
+Keine neue NuGet-, npm- oder externe Runtime-Abhaengigkeit wurde eingefuehrt.
+Die interaktive Showcase-Stufe nutzt vorhandene Projektmodule, MSTest,
+Coverlet, DocFX und die bestehende Playwright/axe-A11Y-Infrastruktur.
+
+Date: 2026-05-10.
+
+No new NuGet, npm, or external runtime dependency was introduced. The
+interactive showcase stage uses existing project modules, MSTest, Coverlet,
+DocFX, and the existing Playwright/axe A11Y infrastructure.
+
+| Bereich / Area | Ergebnis / Result |
+|---|---|
+| Neue Produktionsabhaengigkeiten / New production dependencies | keine / none |
+| Neue Testabhaengigkeiten / New test dependencies | keine / none |
+| Dependency-currency status | unveraendert gegen 011 / unchanged from 011 |

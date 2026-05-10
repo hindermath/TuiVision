@@ -12,9 +12,11 @@ Ausgeschlossen fuer Welle 2 sind Editor, Hilfe, Streams, Terminalemulation,
 Runtime-Maus und echte Charset-Effekte. Diese Punkte bleiben dokumentierte
 Omissionen und sind in den Architekturrisiken verlinkt.
 
-Erwarteter Pfad: breiten Demo-Fluss ausfuehren, Metadaten mit Wildcard
-anzeigen, manuellen Pfad bestaetigen, Abbruch/Invalid-State sehen und
-Farb-/Displayauswahl pruefen.
+Interaktiver Laufzeitpfad: `dotnet run --project examples/Demo` zeigt
+Zwecktext und das Demo-Menue. Die Befehle Broad controls/dialogs, Metadata,
+Manual path, Cancel, Invalid path, Color/display und Omissions aktualisieren
+jeweils sichtbaren Text. Der primaere Smoke-Test fuehrt diese Befehle ueber
+die App-Schleife aus.
 
 Barrierefreiheit: Alle Ergebnisse sind als Textzustand sichtbar.
 
@@ -39,8 +41,10 @@ Editor, help, streams, terminal emulation, runtime mouse, and real charset
 effects are excluded from wave 2. They remain documented omissions linked from
 the architecture risks.
 
-Expected path: run the broad demo flow, show metadata with a wildcard, confirm
-a manual path, see cancel/invalid state, and verify color/display selection.
+Interactive runtime path: `dotnet run --project examples/Demo` shows purpose
+text and the Demo menu. The Broad controls/dialogs, Metadata, Manual path,
+Cancel, Invalid path, Color/display, and Omissions commands each update visible
+text. The primary smoke test runs these commands through the app loop.
 
 Accessibility: All results are visible as text state.
 

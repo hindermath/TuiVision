@@ -6,8 +6,10 @@
 `tv203s/contrib/tvision/examples/tcombo/`. Das Beispiel zeigt Auswahl,
 Synchronisierung des Eingabewerts, leere Auswahl und Grenzlisten.
 
-Erwarteter Pfad: mehrere Werte laden, einen Wert auswaehlen, Eingabetext
-pruefen und leere Auswahl sichtbar machen.
+Interaktiver Laufzeitpfad: `dotnet run --project examples/TCombo` zeigt
+Zwecktext und ein TCombo-Menue. Load, Select, Boundary und Empty zeigen die
+geladene Auswahl, den sichtbaren Eingabewert, einen ignorierten Grenzindex und
+leere Auswahlwerte.
 
 Barrierefreiheit: Auswahl und Eingabetext sind textuell sichtbar.
 
@@ -24,8 +26,9 @@ dotnet run --project examples/TCombo
 The example shows selection, input-value synchronization, empty choices, and
 boundary choice lists.
 
-Expected path: load multiple values, select one value, verify input text, and
-make empty selection visible.
+Interactive runtime path: `dotnet run --project examples/TCombo` shows purpose
+text and a TCombo menu. Load, Select, Boundary, and Empty show the loaded
+choices, visible input value, ignored boundary index, and empty choices.
 
 Accessibility: Selection and input text are visible as text.
 

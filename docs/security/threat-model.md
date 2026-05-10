@@ -55,3 +55,34 @@ Tests und sichtbare Ablehnungszustaende abgedeckt werden.
 The residual risk is accepted for wave 2 because the examples create no new
 external attack surface and the relevant local inputs are covered by tests and
 visible rejection states.
+
+## 012-interactive-wave2-demos
+
+### Assets / Schutzwerte
+
+- Sichtbare Beispielzustandsmeldungen und Menue-/Command-Pfade.
+- Source-controlled `DlgDsn`-Fixtures und lokale `Demo`-Metadatenpfade.
+- Session-only Eingabe-/History-Zustand in `InpLis`.
+- Smoke-Test-Evidence fuer app-loop-basierte Bedienpfade.
+
+### Trust Boundaries / Vertrauensgrenzen
+
+012 bleibt lokal. Es gibt keine neue Netzwerk-, Web-, Auth-, Remote-Service-
+oder Datenbankgrenze. Die bestehenden lokalen Grenzen aus 011 bleiben gueltig:
+Pfadmetadaten, Fixture-Namen, strukturierte Dialogbeschreibungen und
+Clipboard-Fallbacks.
+
+012 remains local. It introduces no new network, web, auth, remote service, or
+database boundary. The existing local boundaries from 011 remain valid: path
+metadata, fixture names, structured dialog descriptions, and clipboard
+fallbacks.
+
+### Outcome
+
+Restrisiko bleibt niedrig. Primaere Beweise laufen jetzt ueber `app.Run()` mit
+injizierten Commands; direkte Hilfsmethoden zaehlen nur als Setup oder
+ergaenzende Assertions.
+
+Residual risk remains low. Primary proof now runs through `app.Run()` with
+injected commands; direct helpers count only as setup or supplemental
+assertions.

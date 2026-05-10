@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-05-10 (aktualisiert inklusive Branch `011-port-wave2-examples`, Wave-2-Beispielen, Lastenheft fuer interaktive Wave-2-Demos, DocFX-Generated-Output-Cleanup, zweistufigem Beispielwellen-Liefermuster, Pflichtenheft-Abnahme fuer interaktive Beispielreife, 011-Review-Cleanup vor 012, Spec-Kit-Intake-Aufbereitung fuer 012, GitHub-Pages-Artefaktworkflow fuer DocFX, PR-#26-Review-Cleanup, `/speckit-specify`, `/speckit-clarify`, `/speckit-plan`, `/speckit-checklist`, `/speckit-tasks`, PR-#27-Review-Cleanup, `/speckit-analyze`-Remediation fuer 012, Wave-1-Folge-Lastenhefte, Claude-Code-Review-Remediation fuer 012-Tasks sowie allgemeiner historischer `tv203s`-Quellenreferenzregel)
+Stand: 2026-05-10 (aktualisiert inklusive Branch `011-port-wave2-examples`, Wave-2-Beispielen, Lastenheft fuer interaktive Wave-2-Demos, DocFX-Generated-Output-Cleanup, zweistufigem Beispielwellen-Liefermuster, Pflichtenheft-Abnahme fuer interaktive Beispielreife, 011-Review-Cleanup vor 012, Spec-Kit-Intake-Aufbereitung fuer 012, GitHub-Pages-Artefaktworkflow fuer DocFX, PR-#26-Review-Cleanup, `/speckit-specify`, `/speckit-clarify`, `/speckit-plan`, `/speckit-checklist`, `/speckit-tasks`, PR-#27-Review-Cleanup, `/speckit-analyze`-Remediation fuer 012, Wave-1-Folge-Lastenhefte, Claude-Code-Review-Remediation fuer 012-Tasks, `/speckit-implement` fuer `012-interactive-wave2-demos` sowie allgemeiner historischer `tv203s`-Quellenreferenzregel)
 
 ## Zweck und Pflege
 
@@ -560,6 +560,7 @@ fortgeschrieben.
 | 2026-05-10 | Wave-1-Folge-Lastenhefte fuer zweistufiges Beispielmuster | Zwei neue Spec-Kit-Intake-Dateien wurden als Folgefeatures nach `012-interactive-wave2-demos` angelegt: `Lastenheft_Wave1-Functional-Hardening.md` prueft und haertet Desklogo, MsgCls, Tutorial und Videomode fachlich gegen die historischen `.cc`-/`.cpp`-/Header-Quellen unter `tv203s/`; `Lastenheft_Interactive-Wave1-Demos.md` baut danach auf den gehaerteten Funktionen sichtbare normale CLI-Demos mit Menue-/Status-/Tastatur-/Command-Pfaden und app-loop-basierten Smoke-Tests. Damit bleibt 012 im Scope geschlossen, waehrend das aus 011/012 gewonnene zweistufige Muster fuer Wave 1 unmittelbar als Specify-Eingabe bereitsteht. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+674` Lastenheft-Dokumentationszeilen. Konservative Manualreferenz: 80 Zeilen/Tag = `8,4` Tage (ca. `65,7` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `5,4` Tage (ca. `42,1` Stunden); sichtbares Arbeitsfenster: kurze Agentennacharbeit am 2026-05-10, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 | 2026-05-10 | PR-#27-Versionserzaehlung und Wave-1-Lastenheft-Commit vorbereitet | Die zwei offenen Copilot-Threads zu PR #27 wurden lokal korrigiert: `Directory.Build.props` steht fuer den naechsten 012-Branch-Commit konsistent auf `1.12.8.27`, die fruehere Statistikzeile behauptet keine veraltete aktuelle Version mehr, und die PR-Beschreibung wird nach dem Push auf denselben Versionsstand aktualisiert. Die beiden neuen Wave-1-Lastenhefte bleiben im selben Commit enthalten, damit die Folgefeature-Intakes gemeinsam mit der Review-Korrektur versioniert werden. Validierung: `git diff --check`; keine Build-/Testausfuehrung, weil nur Dokumentation und Versionsmetadaten geaendert wurden. |
 | 2026-05-10 | Claude-Code-Review-Remediation fuer `012-interactive-wave2-demos`-Tasks | Die von Claude Code reviewten 012-Aufgaben wurden vor dem Implementierungsstart weiter geschaerft: `DirectHelperUsage` ist jetzt als explizite T018-API vor den app-loop-Smokes verankert, legacy direct-helper-only Tests muessen geloescht oder als Setup/Supplemental klassifiziert werden, historische Quellenreviews und Evidence-Matrix-Updates schreiben nicht mehr parallel in dieselben Markdown-Zeilen, Demo-Omissionen werden als PR-Evidence-Abweichung statt als Runtime-UI-State behandelt, und die finale Versionierung ist fuer den neunten 012-Branch-Commit auf `1.12.9.27` ausgerichtet. Validierung: `/speckit-analyze` Read-only-Gegenpruefung mit 100 % Requirements-Abdeckung, `git diff --check`; keine Build-/Testausfuehrung, weil nur Aufgaben- und Statistikdokumentation plus Versionsmetadaten geaendert wurden. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+3` Task-Dokumentationszeilen netto plus diese Statistikfortschreibung; `Directory.Build.props` ist reine Versionsmetadatenpflege. |
+| 2026-05-10 | `/speckit-implement` fuer `012-interactive-wave2-demos` | Die interaktive Showcase-Stufe fuer Welle 2 wurde umgesetzt: alle elf Wave-2-Beispiele besitzen sichtbare normale CLI-Startbildschirme, Menue-/Command-Pfade, text-first Rueckmeldungen und app-loop-basierte Smoke-Nachweise; direkte Helfer sind nur noch Setup- oder Supplemental-Proof. Aktualisiert wurden Beispielcode, Example-Smoke-Tests, Guides, README, `Pflichtenheft.md`, Architektur-/Security-Nachweise, Agent-Guidance und das umbenannte Lastenheft `Lastenheft_Interactive-Wave2-Demos.012-interactive-wave2-demos.md`. Validierung: `dotnet build --configuration Release` gruen, Example-Smoke `73/73`, voller Release-Testlauf `478/478`, Coverage-Gate (`Core` `89,78 %`, `Controls` `84,84 %`, `Serialization` `87,95 %`, `Compatibility` `80,55 %`, `Drivers.Console` `81,70 %`), `dotnet format --verify-no-changes`, `docfx docfx.json`, `npm run test:docfx` mit `2/2` Playwright/Axe-Smokes, elf manuelle `dotnet run --project examples/<Name> --configuration Release --no-build`-Startupchecks und `git diff --check`; nach der Commit-Freigabe wurde zusaetzlich der finale Versionierungs-Build auf `1.12.10.35` mit 0 Warnungen und 0 Fehlern ausgefuehrt. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: ca. `+1384` Produktions-/Beispielcode-Zeilen, `+505` Testzeilen inklusive zwei neuer Smoke-Hilfsdateien, ca. `+330` Dokumentations-/Nachweis-/Guidance-Zeilen plus diese Statistikfortschreibung; `Directory.Build.props` steht nach der branchkonformen Commit-Ausrichtung auf `1.12.10.35`. Konservative Manualreferenz fuer rund `2219` fachliche Netto-Zeilen: `27,7` Tage (ca. `216,4` Stunden); Thorsten-Solo-Referenz: `17,8` Tage (ca. `138,5` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-05-10, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 
 ## Gesamtstatistik
 
@@ -595,7 +596,8 @@ vor 012, die Spec-Kit-Intake-Aufbereitung fuer 012, den GitHub-Pages-
 Artefaktworkflow, die 012-Spezifikation, die 012-Clarifications, den 012-Plan
 und die allgemeine historische `tv203s`-Quellenreferenzregel, die
 012-Planqualitaetscheckliste, die 012-Aufgabenliste, den PR-#27-Review-
-Cleanup sowie zwei Wave-1-Folge-Lastenhefte im Snapshot. Die dokumentierten
+Cleanup, zwei Wave-1-Folge-Lastenhefte und die implementierte interaktive
+012-Showcase-Stufe im Snapshot. Die dokumentierten
 Beschleunigungsfaktoren zeigen dabei nicht eine Stoppuhr, sondern die sichtbare
 Verdichtung durch agentische KI plus Spec-Kit-/SDD-gestuetzte Artefakt- und
 Liefergeschwindigkeit.
@@ -635,6 +637,7 @@ Branch-/Phasenvolumen nach dokumentierter Netto-Basis (Zeilen)
 11 010  | ######################## | 12169
 12 011  | #######                  |  3303
 13 012p | ###                      |  1604
+14 012i | #####                    |  2219
 ```
 
 Dieses Diagramm zeigt die grob sichtbare Netto-Basis der dokumentierten
@@ -661,6 +664,7 @@ Konservative Handarbeits-Referenz je dokumentierter Phase (Arbeitstage)
 11 010  | ######################## | 152.1 d
 12 011  | #######                  |  41.3 d
 13 012p | ###                      |  20.1 d
+14 012i | #####                    |  27.7 d
 ```
 
 Dieses Diagramm zeigt dieselben Pakete noch einmal, jetzt aber als
@@ -690,6 +694,7 @@ Repo125 | #####                    |  26.9x
 11 010  | ######################## | 152.1x
 12 011  | #######                  |  41.3x
 13 012p | ###                      |  20.1x
+14 012i | #####                    |  27.7x
 ```
 
 Dieses Diagramm zeigt die dokumentierten Beschleunigungsfaktoren. Hier wird
@@ -725,14 +730,14 @@ understand.
 
 Wenn man einen Verlauf ueber die X-Achse sehen will, helfen X/Y-Diagramme
 zusaetzlich. Hier steht die X-Achse fuer die dokumentierten Phasen oder
-Branches (`0` bis `13`). Die Y-Achse zeigt je nach Diagramm Zeilen, Arbeitstage
+Branches (`0` bis `14`). Die Y-Achse zeigt je nach Diagramm Zeilen, Arbeitstage
 oder Beschleunigungsfaktoren. Die Sternpunkte sind bewusst grob gesetzt: Sie
 sollen Trends sichtbar machen, nicht mathematische Genauigkeit auf Plotter-
 Niveau liefern.
 
 If readers want to see progression across the X-axis, X/Y charts help as a
 second view. Here the X-axis stands for the documented phases or branches (`0`
-to `13`). Depending on the chart, the Y-axis shows lines, workdays, or
+to `14`). Depending on the chart, the Y-axis shows lines, workdays, or
 acceleration factors. The star markers are intentionally approximate: they are
 meant to reveal trends, not to deliver plotter-level mathematical precision.
 
@@ -744,11 +749,11 @@ X/Y-Diagramm: dokumentiertes Phasenvolumen (X = Phase/Branch, Y = Zeilen)
  7605.6 |                *
  6084.5 |            *
  4563.4 |  *   * *
- 3042.3 |    *                 *
+ 3042.3 |    *                 * *
  1521.1 |                  *
     0.0 |              *     * *
         +-------------------------
-         0 1 2 3 4 5 6 7 8 9 10 11 12 13
+         0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
 ```
 
 Dieses X/Y-Diagramm zeigt denselben Verlauf wie der Volumen-Balkenblock, aber
@@ -768,10 +773,10 @@ X/Y-Diagramm: konservative Handarbeits-Referenz (X = Phase/Branch, Y = Arbeitsta
    76.1 |            *
    57.0 |  *   * *
    38.0 |    *                 *
-   19.0 |                  *
+   19.0 |                  *   *
     0.0 |              *     * *
         +-------------------------
-         0 1 2 3 4 5 6 7 8 9 10 11 12 13
+         0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
 ```
 
 Dieses X/Y-Diagramm zeigt, wie sich die konservative manuelle Referenz ueber
@@ -794,10 +799,10 @@ X/Y-Diagramm: dokumentierte Beschleunigungsfaktoren (X = Phase/Branch, Y = Fakto
    76.1 |
    57.0 |      *     *       *
    38.0 |*
-   19.0 |  * *           * *
+   19.0 |  * *           * * *
     0.0 |          * *     *
         +-------------------------
-         0 1 2 3 5 7 8 9 10 11 12 13
+         0 1 2 3 5 7 8 9 10 11 12 13 14
 ```
 
 Dieses X/Y-Diagramm zeigt die dokumentierten Beschleunigungsfaktoren nur fuer

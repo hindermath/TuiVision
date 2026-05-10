@@ -6,8 +6,10 @@
 `tv203s/contrib/tvision/examples/tprogb/`. Die verwaltete Version zeigt einen
 deterministischen Fortschrittswert und einen sichtbaren Canceled-Zustand.
 
-Erwarteter Pfad: Teilfortschritt setzen, Abbruch ausloesen und Canceled-State
-pruefen.
+Interaktiver Laufzeitpfad: `dotnet run --project examples/TProgB` zeigt
+Zwecktext und ein TProgB-Menue. Partial, Abort und Cancelled melden
+Teilfortschritt, Abbruchanforderung und den separaten Cancelled-Zustand als
+Text.
 
 Barrierefreiheit: Fortschritt und Abbruch sind als Text sichtbar.
 
@@ -26,7 +28,9 @@ dotnet run --project examples/TProgB
 `tv203s/contrib/tvision/examples/tprogb/`. The managed version shows a
 deterministic progress value and a visible canceled state.
 
-Expected path: set partial progress, trigger abort, and verify canceled state.
+Interactive runtime path: `dotnet run --project examples/TProgB` shows purpose
+text and a TProgB menu. Partial, Abort, and Cancelled report partial progress,
+abort request, and the separate cancelled state as text.
 
 Accessibility: Progress and abort are visible as text.
 

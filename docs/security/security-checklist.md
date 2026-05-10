@@ -89,3 +89,26 @@ network, web, auth, service, or database boundary.
 English summary: wave-2 examples keep local data handling non-destructive,
 validate structured dialog input before rendering, expose clipboard fallback
 states, and keep progress flows deterministic.
+
+## 012-interactive-wave2-demos
+
+Datum: 2026-05-10. Scope: interaktive lokale Wave-2-Beispiele, Menue- und
+Command-Dispatch, app-loop-basierte Smoke-Tests, Guide-/Evidence-Updates.
+Keine neue Netzwerk-, Web-, Auth-, Service-, Datenbank- oder Paketgrenze wurde
+eingefuehrt.
+
+Date: 2026-05-10. Scope: interactive local Wave 2 examples, menu and command
+dispatch, app-loop smoke tests, guide/evidence updates. No network, web, auth,
+service, database, or package boundary was introduced.
+
+| Standard | Status | Begruendung / Rationale |
+|---|---|---|
+| NIST SSDF | anwendbar | Test-first App-Loop-Smokes und Review-Evidence sichern die lokale Runtime-Aenderung ab. / Test-first app-loop smokes and review evidence cover the local runtime change. |
+| CWE Top 25 | anwendbar | Relevante lokale Eingaben bleiben Pfade, Fixtures und Clipboard-Fallbacks; keine neue kritische Kategorie. / Relevant local inputs remain paths, fixtures, and clipboard fallbacks; no new critical category. |
+| OWASP ASVS | N/A | Kein Web/API/Auth-System. / No web/API/auth system. |
+| Zero Trust | N/A | Keine Service- oder Identitaetsgrenze. / No service or identity boundary. |
+| SBOM/VEX/SLSA | release-gebunden | Keine neue Abhaengigkeit und keine Feature-lokale Artefaktfreigabe. / No new dependency and no feature-local artifact release. |
+
+English summary: 012 changes local example command dispatch and documentation,
+keeps file/fixture handling bounded, and adds no new dependency or external
+trust boundary.

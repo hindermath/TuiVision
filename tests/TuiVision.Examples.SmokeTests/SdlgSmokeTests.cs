@@ -14,6 +14,29 @@ namespace TuiVision.Examples.SmokeTests;
 public sealed class SdlgSmokeTests : ExampleTestBase
 {
     /// <summary>
+    /// Prueft vertikales Scrollen und Fokus ausserhalb des Start-Viewports ueber die Anwendungsschleife.
+    ///
+    /// Verifies vertical scrolling and focus outside the initial viewport through the application loop.
+    /// </summary>
+    [TestMethod]
+    public void Sdlg_AppLoop_Dispatches_Vertical_Scroll_Focus_And_Boundary_Feedback()
+    {
+        SdlgApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(
+            SdlgApp.CmScrollVertical,
+            SdlgApp.CmFocusLowerControl,
+            SdlgApp.CmBoundary).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        string history = string.Join('\n', app.VisibleHistory);
+        AssertVisibleContainsFromAppLoop(history, "Control 19", "Sdlg app-loop scroll target");
+        AssertVisibleContainsFromAppLoop(history, "focused Control 32", "Sdlg app-loop focus target");
+        AssertVisibleContainsFromAppLoop(history, "Control 40", "Sdlg app-loop boundary target");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
     /// Prueft vertikales Scrollen, Fokusbewegung, Grenzen und sichtbaren Zustand.
     ///
     /// Verifies vertical scrolling, focus movement, bounds, and visible state.
@@ -21,6 +44,7 @@ public sealed class SdlgSmokeTests : ExampleTestBase
     [TestMethod]
     public void Sdlg_VerticalScrollableDialog_TracksFocusBoundsAndVisibleState()
     {
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         SdlgApp app = new(DefaultBounds(), headless: true);
         AssertSmokeRunCompletes(() => app.Run());
 

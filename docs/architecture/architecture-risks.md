@@ -18,6 +18,22 @@
 - **EarliestFollowUpPoint**: Welle 3 fuer Editor/Hilfe/Streams, Welle 4 fuer Terminal/Charset/Runtime-Maus.
 - **TraceableReference**: `docs/guides/examples/demo.md`
 
+## 012 Interactive Showcase Risk Review
+
+- **Risk**: Schein-Interaktion durch direkte Hilfsmethoden statt Runtime-Pfad.
+- **Mitigation**: Primaere Wave-2-Smokes nutzen `QueueEvents(...)`,
+  `app.Run()` und sichtbare `VisibleHistory`-Assertions; direkte Hilfen sind
+  nur als `SetupOnly` oder `SupplementalAssertion` klassifiziert.
+- **ResidualRisk**: Niedrig; normale Starts zeigen Menue-/Befehlspfade, und
+  die Smoke-Matrix listet alle elf App-Loop-Szenarien.
+
+- **Risk**: Datei-/Fixture-Beispiele koennten Nutzerdaten lesen oder
+  persistente History schreiben.
+- **Mitigation**: `Demo` prueft Metadaten ohne Dateiinhalt-I/O, `DlgDsn`
+  erlaubt nur source-controlled Fixture-Namen, und `InpLis` speichert History
+  nur im Speicher.
+- **ResidualRisk**: Niedrig; keine neue externe Trust-Boundary.
+
 - **ExampleName**: `dlgdsn`
 - **HistoricalBehavior**: Das Original enthaelt einen umfangreichen Designer mit Property-Editoren und Code-Builder-Anteilen.
 - **Reduction**: Die Portierung beweist strukturierte Beschreibung laden/erzeugen, rendern, einfach aendern und fehlerhafte Beschreibungen ablehnen.
@@ -61,4 +77,3 @@
 - **Rationale**: Diese Bereiche gehoeren zu spaeteren Pflichtwellen und duerfen Welle-2-Akzeptanz nicht verfaelschen.
 - **EarliestSchedulingPoint**: Welle 3 beziehungsweise Welle 4.
 - **TraceableReference**: `docs/guides/examples/demo.md`
-

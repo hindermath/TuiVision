@@ -55,3 +55,18 @@ to the next release process.
 | VEX | release-gebunden | bei Release-Artefakten nachziehen / update with release artifacts |
 | SLSA / Provenance | release-gebunden | CI-/Release-Pipeline bleibt Nachweisort / CI/release pipeline remains evidence location |
 | Beispiel-Artefakte / Example artifacts | review-only | `dotnet run --project examples/<Name>` ohne Paketveroeffentlichung / no package publishing |
+
+## 012-interactive-wave2-demos
+
+Datum: 2026-05-10.
+
+012 erzeugt keine neue Release-Artefaktklasse und fuehrt keine neue
+Abhaengigkeit ein. SBOM, VEX und Provenance bleiben an den regulaeren
+Release-Prozess gekoppelt; die lokalen Beispielprogramme sind Review- und
+Lernartefakte.
+
+Date: 2026-05-10.
+
+012 creates no new release artifact class and introduces no new dependency.
+SBOM, VEX, and provenance remain tied to the regular release process; the local
+example programs are review and learning artifacts.

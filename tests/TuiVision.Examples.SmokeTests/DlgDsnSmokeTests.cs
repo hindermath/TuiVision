@@ -2,6 +2,7 @@
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
 using TuiVision.Controls;
+using TuiVision.Core;
 using TuiVision.Examples.DlgDsn;
 
 namespace TuiVision.Examples.SmokeTests;
@@ -15,6 +16,31 @@ namespace TuiVision.Examples.SmokeTests;
 public sealed class DlgDsnSmokeTests : ExampleTestBase
 {
     /// <summary>
+    /// Prueft Laden, Rendern, Aendern und Ablehnungen ueber die Anwendungsschleife.
+    ///
+    /// Verifies loading, rendering, changing, and rejections through the application loop.
+    /// </summary>
+    [TestMethod]
+    public void DlgDsn_AppLoop_Loads_Renders_Changes_And_Rejects_Descriptions()
+    {
+        DlgDsnApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.FromEvents(
+            TEvent.CreateCommand(DlgDsnApp.CmLoadRender),
+            TEvent.CreateCommand(DlgDsnApp.CmChange, "Grace"),
+            TEvent.CreateCommand(DlgDsnApp.CmRejectMalformed),
+            TEvent.CreateCommand(DlgDsnApp.CmRejectInvalidDescription, "invalid-navigation.tvdialog")).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        string history = string.Join('\n', app.VisibleHistory);
+        AssertVisibleContainsFromAppLoop(history, "rendered Runtime dialog", "DlgDsn app-loop render");
+        AssertVisibleContainsFromAppLoop(history, "changed name=Grace", "DlgDsn app-loop change");
+        AssertVisibleContainsFromAppLoop(history, "rejected malformed", "DlgDsn app-loop malformed rejection");
+        AssertVisibleContainsFromAppLoop(history, "rejected invalid-navigation", "DlgDsn app-loop invalid-description rejection");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
     /// Prueft Erzeugen, Laden, Rendern und Aendern einer gueltigen Beschreibung.
     ///
     /// Verifies creating, loading, rendering, and modifying a valid description.
@@ -22,6 +48,7 @@ public sealed class DlgDsnSmokeTests : ExampleTestBase
     [TestMethod]
     public void DlgDsn_Loads_Renders_And_Modifies_Valid_Description()
     {
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         DlgDsnApp app = new(DefaultBounds(), headless: true);
         AssertSmokeRunCompletes(() => app.Run());
 
@@ -43,6 +70,7 @@ public sealed class DlgDsnSmokeTests : ExampleTestBase
     [TestMethod]
     public void DlgDsn_Rejects_Malformed_Incomplete_Duplicate_And_InvalidNavigation()
     {
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         DlgDsnApp app = new(DefaultBounds(), headless: true);
 
         AssertVisibleContains(app.TryLoadFixture("malformed.tvdialog"), "malformed", "DlgDsn malformed rejection");
@@ -59,6 +87,7 @@ public sealed class DlgDsnSmokeTests : ExampleTestBase
     [TestMethod]
     public void DlgDsn_InvalidFixtures_AreDiagnosticAndPathConstrained()
     {
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         DlgDsnApp app = new(DefaultBounds(), headless: true);
 
         AssertEqual("dlgdsn: rejected malformed", app.TryLoadFixture("malformed.tvdialog"), "DlgDsn malformed diagnostic");

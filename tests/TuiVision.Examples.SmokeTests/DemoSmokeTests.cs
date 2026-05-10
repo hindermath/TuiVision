@@ -2,6 +2,7 @@
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
 using TuiVision.Examples.Demo;
+using TuiVision.Core;
 
 namespace TuiVision.Examples.SmokeTests;
 
@@ -14,6 +15,58 @@ namespace TuiVision.Examples.SmokeTests;
 public sealed class DemoSmokeTests : ExampleTestBase
 {
     /// <summary>
+    /// Prueft Menue-/Befehlsrouting und drei sichtbare Ergebniszustaende ueber die App-Schleife.
+    ///
+    /// Verifies menu/command routing and three visible result states through the app loop.
+    /// </summary>
+    [TestMethod]
+    public void Demo_AppLoop_Dispatches_Three_Visible_Command_States()
+    {
+        DemoApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(
+            DemoApp.CmBroadFlow,
+            DemoApp.CmColorDisplay,
+            DemoApp.CmOmissions).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        string history = string.Join('\n', app.VisibleHistory);
+        AssertVisibleContainsFromAppLoop(history, "controls dialogs gadgets", "Demo app-loop broad flow");
+        AssertVisibleContainsFromAppLoop(history, "color blue-on-black display", "Demo app-loop color/display");
+        AssertVisibleContainsFromAppLoop(history, "omitted editor help stream", "Demo app-loop omission state");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft Datei-/Pfadmetadaten, Abbruch, ungueltige Pfade und manuelle Eingabe ueber die App-Schleife.
+    ///
+    /// Verifies file/path metadata, cancel, invalid paths, and manual entry through the app loop.
+    /// </summary>
+    [TestMethod]
+    public void Demo_AppLoop_Dispatches_File_Metadata_Cancel_Invalid_And_Manual_Path()
+    {
+        using TempDirectory temp = TempDirectory.Create();
+        string path = Path.Combine(temp.Path, "notes.txt");
+        File.WriteAllText(path, "do-not-read");
+        DemoApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.FromEvents(
+            TEvent.CreateCommand(DemoApp.CmFileMetadata, new DemoApp.FileMetadataRequest(temp.Path, "*.txt")),
+            TEvent.CreateCommand(DemoApp.CmCancelPath),
+            TEvent.CreateCommand(DemoApp.CmInvalidPath, "\0bad"),
+            TEvent.CreateCommand(DemoApp.CmManualPath, "/tmp/manual-wave2.txt")).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        string history = string.Join('\n', app.VisibleHistory);
+        AssertVisibleContainsFromAppLoop(history, "notes.txt", "Demo app-loop metadata");
+        AssertVisibleContainsFromAppLoop(history, "canceled", "Demo app-loop cancel");
+        AssertVisibleContainsFromAppLoop(history, "invalid-path", "Demo app-loop invalid path");
+        AssertVisibleContainsFromAppLoop(history, "manual-path accepted /tmp/manual-wave2.txt", "Demo app-loop manual path");
+        Assert.IsFalse(app.FileContentIoPerformed);
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
     /// Prueft Start und breiten Controls/Dialog/Gadget-Fluss.
     ///
     /// Verifies startup and broad controls/dialog/gadget flow.
@@ -21,6 +74,7 @@ public sealed class DemoSmokeTests : ExampleTestBase
     [TestMethod]
     public void Demo_Starts_And_Runs_Broad_Controls_Dialogs_Gadgets_Flow()
     {
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         DemoApp app = new(DefaultBounds(), headless: true);
         AssertSmokeRunCompletes(() => app.Run());
 
@@ -39,6 +93,7 @@ public sealed class DemoSmokeTests : ExampleTestBase
     [TestMethod]
     public void Demo_StandardFileDialog_Shows_Real_Metadata_With_Wildcard_Filter()
     {
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         using TempDirectory temp = TempDirectory.Create();
         string path = Path.Combine(temp.Path, "notes.txt");
         File.WriteAllText(path, "do-not-read");
@@ -59,6 +114,7 @@ public sealed class DemoSmokeTests : ExampleTestBase
     [TestMethod]
     public void Demo_StandardFileDialog_Manual_Path_Entry_Visible_Decision()
     {
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         DemoApp app = new(DefaultBounds(), headless: true);
 
         string visible = app.EnterManualPath("/tmp/manual-wave2.txt");
@@ -75,6 +131,7 @@ public sealed class DemoSmokeTests : ExampleTestBase
     [TestMethod]
     public void Demo_StandardFileDialog_Cancel_And_InvalidPath_Are_Visible()
     {
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         DemoApp app = new(DefaultBounds(), headless: true);
 
         string canceled = app.CancelFileDialog();
@@ -93,6 +150,7 @@ public sealed class DemoSmokeTests : ExampleTestBase
     [TestMethod]
     public void Demo_Color_And_Display_Dialog_Selection_Is_Visible()
     {
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         DemoApp app = new(DefaultBounds(), headless: true);
 
         string visible = app.SelectColorAndDisplay();
@@ -109,6 +167,7 @@ public sealed class DemoSmokeTests : ExampleTestBase
     [TestMethod]
     public void Demo_Documents_Editor_Help_Stream_Terminal_Mouse_Charset_Omission()
     {
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         DemoApp app = new(DefaultBounds(), headless: true);
 
         string visible = app.OutOfScopeOmissions();

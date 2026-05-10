@@ -14,6 +14,29 @@ namespace TuiVision.Examples.SmokeTests;
 public sealed class DynTxtSmokeTests : ExampleTestBase
 {
     /// <summary>
+    /// Prueft kurze, lange und breitenbegrenzte Texte ueber die Anwendungsschleife.
+    ///
+    /// Verifies short, long, and constrained-width text through the application loop.
+    /// </summary>
+    [TestMethod]
+    public void DynTxt_AppLoop_Dispatches_Short_Long_And_Constrained_Text()
+    {
+        DynTxtApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(
+            DynTxtApp.CmShortText,
+            DynTxtApp.CmLongText,
+            DynTxtApp.CmConstrainedText).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        string history = string.Join('\n', app.VisibleHistory);
+        AssertVisibleContainsFromAppLoop(history, "Ada", "DynTxt app-loop short text");
+        AssertVisibleContainsFromAppLoop(history, "0123456789ab", "DynTxt app-loop long clipped text");
+        AssertVisibleContainsFromAppLoop(history, "const", "DynTxt app-loop constrained text");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
     /// Prueft kurze, lange und breitebegrenzte Werte.
     ///
     /// Verifies short, long, and constrained-width values.
@@ -21,6 +44,7 @@ public sealed class DynTxtSmokeTests : ExampleTestBase
     [TestMethod]
     public void DynTxt_Updates_Short_Long_And_Constrained_Text()
     {
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         DynTxtApp app = new(DefaultBounds(), headless: true);
         AssertSmokeRunCompletes(() => app.Run());
 

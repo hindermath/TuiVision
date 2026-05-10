@@ -14,6 +14,18 @@ namespace TuiVision.Examples.DlgDsn;
 /// </summary>
 public sealed class DlgDsnApp : TApplication
 {
+    /// <summary>Laden/Rendern-Befehl. / Load/render command.</summary>
+    public const ushort CmLoadRender = 12200;
+
+    /// <summary>Aenderungsbefehl. / Change command.</summary>
+    public const ushort CmChange = 12201;
+
+    /// <summary>Malformed-Ablehnungsbefehl. / Malformed rejection command.</summary>
+    public const ushort CmRejectMalformed = 12202;
+
+    /// <summary>Ungueltige-Beschreibung-Ablehnungsbefehl. / Invalid-description rejection command.</summary>
+    public const ushort CmRejectInvalidDescription = 12203;
+
     private static readonly HashSet<string> KnownFixtureNames = new(StringComparer.Ordinal)
     {
         "valid.tvdialog",
@@ -24,7 +36,10 @@ public sealed class DlgDsnApp : TApplication
     };
 
     private readonly bool _headless;
+    private readonly Queue<TEvent> _scriptedEvents = [];
+    private readonly List<string> _visibleHistory = [];
     private bool _headlessEventFired;
+    private TStaticText? _visibleView;
 
     /// <summary>
     /// Erstellt die Beispielanwendung.
@@ -33,7 +48,41 @@ public sealed class DlgDsnApp : TApplication
     /// </summary>
     /// <param name="bounds">Anwendungsgrenzen. / Application bounds.</param>
     /// <param name="headless">Aktiviert den deterministischen Smoke-Pfad. / Enables the deterministic smoke path.</param>
-    public DlgDsnApp(TRect bounds, bool headless = false) : base(bounds) => _headless = headless;
+    public DlgDsnApp(TRect bounds, bool headless = false) : base(bounds)
+    {
+        _headless = headless;
+        SetVisibleState(
+            "DlgDsn: load, render, change, and reject dialog descriptions\n" +
+            "Commands use source-controlled fixtures only. Ctrl+Q quits.");
+    }
+
+    /// <summary>
+    /// Sichtbare Zustandsfolge seit Start.
+    ///
+    /// Visible state sequence since startup.
+    /// </summary>
+    public IReadOnlyList<string> VisibleHistory => _visibleHistory;
+
+    /// <summary>
+    /// Letzter sichtbarer Textzustand.
+    ///
+    /// Last visible text state.
+    /// </summary>
+    public string VisibleText { get; private set; } = string.Empty;
+
+    /// <summary>
+    /// Fuegt deterministische Ereignisse fuer den Headless-Lauf hinzu.
+    ///
+    /// Adds deterministic events for the headless run.
+    /// </summary>
+    /// <param name="events">Die Ereignisse. / The events.</param>
+    public void QueueEvents(IEnumerable<TEvent> events)
+    {
+        foreach (TEvent @event in events)
+        {
+            _scriptedEvents.Enqueue(@event);
+        }
+    }
 
     /// <summary>
     /// Erstellt die gueltige Beispielbeschreibung.
@@ -87,7 +136,7 @@ public sealed class DlgDsnApp : TApplication
     public string RenderDescription(DialogDescription description)
     {
         TDialog dialog = DialogDescriptionFactory.CreateRuntimeDialog(description);
-        return $"dlgdsn: rendered {dialog.Title}";
+        return SetVisibleState($"dlgdsn: rendered {dialog.Title}");
     }
 
     /// <summary>
@@ -116,6 +165,19 @@ public sealed class DlgDsnApp : TApplication
     }
 
     /// <summary>
+    /// Wendet eine sichtbare Beispielaenderung an.
+    ///
+    /// Applies a visible sample change.
+    /// </summary>
+    /// <param name="value">Der neue Wert. / The new value.</param>
+    /// <returns>Der sichtbare Zustand. / The visible state.</returns>
+    public string ApplyVisibleChange(string value)
+    {
+        DialogDescription modified = ApplySimpleChange(CreateValidDescription(), value);
+        return SetVisibleState($"dlgdsn: changed {modified.Controls[0].ControlId}={modified.Controls[0].InitialValue}");
+    }
+
+    /// <summary>
     /// Laedt eine ungueltige Fixture und liefert eine sichtbare Ablehnung.
     ///
     /// Loads an invalid fixture and returns a visible rejection.
@@ -126,15 +188,15 @@ public sealed class DlgDsnApp : TApplication
     {
         if (!TryValidateFixtureName(fileName, out string safeFileName))
         {
-            return "dlgdsn: rejected fixture-name";
+            return SetVisibleState("dlgdsn: rejected fixture-name");
         }
 
         string marker = File.ReadAllText(FixturePath(safeFileName)).Trim();
         return marker switch
         {
-            "malformed" => RejectMalformed(),
-            "incomplete" => RejectDescription("incomplete", new DialogDescription("incomplete", 1, string.Empty, [], [], [])),
-            "duplicate-control" => RejectDescription("duplicate-control", new DialogDescription(
+            "malformed" => SetVisibleState(RejectMalformed()),
+            "incomplete" => SetVisibleState(RejectDescription("incomplete", new DialogDescription("incomplete", 1, string.Empty, [], [], []))),
+            "duplicate-control" => SetVisibleState(RejectDescription("duplicate-control", new DialogDescription(
                 "duplicate",
                 1,
                 "Duplicate",
@@ -143,16 +205,60 @@ public sealed class DlgDsnApp : TApplication
                     new DialogControlDescription("name", DialogControlRoles.Button, "OK")
                 ],
                 ["name"],
-                [new DialogCommandBinding(ShellCommandIds.cmOK, "name", "confirm", "Enter")])),
-            "invalid-navigation" => RejectDescription("invalid-navigation", new DialogDescription(
+                [new DialogCommandBinding(ShellCommandIds.cmOK, "name", "confirm", "Enter")]))),
+            "invalid-navigation" => SetVisibleState(RejectDescription("invalid-navigation", new DialogDescription(
                 "invalid-navigation",
                 1,
                 "Invalid Navigation",
                 [new DialogControlDescription("name", DialogControlRoles.InputLine, "Name")],
                 ["missing"],
-                [new DialogCommandBinding(ShellCommandIds.cmOK, "name", "confirm", "Enter")])),
-            _ => "dlgdsn: rejected unknown"
+                [new DialogCommandBinding(ShellCommandIds.cmOK, "name", "confirm", "Enter")]))),
+            _ => SetVisibleState("dlgdsn: rejected unknown")
         };
+    }
+
+    /// <inheritdoc />
+    protected override TMenuBar InitMenuBar(TRect bounds)
+    {
+        TMenuItem dialogItems =
+            new("~L~oad/render", CmLoadRender,
+            new TMenuItem("~C~hange", CmChange,
+            new TMenuItem("Reject ~m~alformed", CmRejectMalformed,
+            new TMenuItem("Reject ~i~nvalid", CmRejectInvalidDescription))));
+
+        return new TMenuBar(bounds)
+        {
+            Menu = new TMenuItem("~D~lgDsn", 0, new TMenuItem("E~x~it", ShellCommandIds.cmQuit), dialogItems)
+        };
+    }
+
+    /// <inheritdoc />
+    public override void HandleEvent(TEvent @event)
+    {
+        if (@event.What == TEventKind.Command)
+        {
+            switch (@event.Message.Command)
+            {
+                case CmLoadRender:
+                    RenderDescription(LoadFixture("valid.tvdialog"));
+                    @event.Clear();
+                    return;
+                case CmChange:
+                    ApplyVisibleChange(@event.Message.Info as string ?? "Grace");
+                    @event.Clear();
+                    return;
+                case CmRejectMalformed:
+                    TryLoadFixture("malformed.tvdialog");
+                    @event.Clear();
+                    return;
+                case CmRejectInvalidDescription:
+                    TryLoadFixture(@event.Message.Info as string ?? "incomplete.tvdialog");
+                    @event.Clear();
+                    return;
+            }
+        }
+
+        base.HandleEvent(@event);
     }
 
     private static string FixturePath(string fileName)
@@ -230,6 +336,12 @@ public sealed class DlgDsnApp : TApplication
     /// <inheritdoc />
     public override void GetEvent(out TEvent @event)
     {
+        if (_headless && _scriptedEvents.Count > 0)
+        {
+            @event = _scriptedEvents.Dequeue();
+            return;
+        }
+
         if (_headless && !_headlessEventFired)
         {
             _headlessEventFired = true;
@@ -238,5 +350,26 @@ public sealed class DlgDsnApp : TApplication
         }
 
         base.GetEvent(out @event);
+    }
+
+    private string SetVisibleState(string text)
+    {
+        VisibleText = text;
+        _visibleHistory.Add(text);
+        if (Desktop is null)
+        {
+            return VisibleText;
+        }
+
+        if (_visibleView?.Owner == Desktop)
+        {
+            Desktop.Remove(_visibleView);
+        }
+
+        int width = Math.Max(1, Desktop.Size.X - 2);
+        int height = Math.Max(1, Math.Min(Desktop.Size.Y - 2, 6));
+        _visibleView = new TStaticText(new TRect(1, 1, 1 + width, 1 + height), VisibleText);
+        Desktop.Insert(_visibleView);
+        return VisibleText;
     }
 }

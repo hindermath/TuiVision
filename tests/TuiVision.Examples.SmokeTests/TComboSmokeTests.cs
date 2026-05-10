@@ -14,6 +14,31 @@ namespace TuiVision.Examples.SmokeTests;
 public sealed class TComboSmokeTests : ExampleTestBase
 {
     /// <summary>
+    /// Prueft Auswahl, sichtbare Wertveraenderung, Grenze und Leerzustand ueber die Anwendungsschleife.
+    ///
+    /// Verifies selection, visible value change, boundary, and empty state through the application loop.
+    /// </summary>
+    [TestMethod]
+    public void TCombo_AppLoop_Dispatches_Selection_Boundary_And_Empty_Feedback()
+    {
+        TComboApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(
+            TComboApp.CmLoadChoices,
+            TComboApp.CmSelectValue,
+            TComboApp.CmBoundary,
+            TComboApp.CmEmpty).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        string history = string.Join('\n', app.VisibleHistory);
+        AssertVisibleContainsFromAppLoop(history, "loaded 3 choices", "TCombo app-loop load");
+        AssertVisibleContainsFromAppLoop(history, "selected Gamma", "TCombo app-loop selected value");
+        AssertVisibleContainsFromAppLoop(history, "boundary retained Gamma", "TCombo app-loop boundary");
+        AssertVisibleContainsFromAppLoop(history, "empty choices", "TCombo app-loop empty state");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
     /// Prueft Auswahl, Eingabesynchronisierung, leere Auswahl und Grenzlisten.
     ///
     /// Verifies selection, input synchronisation, empty choices, and boundary lists.
@@ -21,6 +46,7 @@ public sealed class TComboSmokeTests : ExampleTestBase
     [TestMethod]
     public void TCombo_Selection_Synchronizes_Input_And_Handles_Boundaries()
     {
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         TComboApp app = new(DefaultBounds(), headless: true);
         AssertSmokeRunCompletes(() => app.Run());
 

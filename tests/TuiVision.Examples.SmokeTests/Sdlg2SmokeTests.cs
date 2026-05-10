@@ -14,6 +14,29 @@ namespace TuiVision.Examples.SmokeTests;
 public sealed class Sdlg2SmokeTests : ExampleTestBase
 {
     /// <summary>
+    /// Prueft zwei Scrollachsen und Fokus ausserhalb des Start-Viewports ueber die Anwendungsschleife.
+    ///
+    /// Verifies two scroll axes and focus outside the initial viewport through the application loop.
+    /// </summary>
+    [TestMethod]
+    public void Sdlg2_AppLoop_Dispatches_TwoAxis_Scroll_Focus_And_Boundary_Feedback()
+    {
+        Sdlg2App app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(
+            Sdlg2App.CmScrollBothAxes,
+            Sdlg2App.CmFocusFarCell,
+            Sdlg2App.CmBoundary).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        string history = string.Join('\n', app.VisibleHistory);
+        AssertVisibleContainsFromAppLoop(history, "Cell 12/09", "Sdlg2 app-loop two-axis scroll target");
+        AssertVisibleContainsFromAppLoop(history, "focused Cell 04/14", "Sdlg2 app-loop focus target");
+        AssertVisibleContainsFromAppLoop(history, "Cell 29/19", "Sdlg2 app-loop boundary target");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
     /// Prueft beide Scrollachsen, Fokusbewegung, Grenzen und sichtbaren Zustand.
     ///
     /// Verifies both scroll axes, focus movement, bounds, and visible state.
@@ -21,6 +44,7 @@ public sealed class Sdlg2SmokeTests : ExampleTestBase
     [TestMethod]
     public void Sdlg2_HorizontalAndVerticalScrollableDialog_TracksFocusBoundsAndVisibleState()
     {
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         Sdlg2App app = new(DefaultBounds(), headless: true);
         AssertSmokeRunCompletes(() => app.Run());
 

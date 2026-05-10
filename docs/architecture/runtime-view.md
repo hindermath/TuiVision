@@ -28,17 +28,23 @@ Clean shutdown
 MSTest smoke method
   |
   | new Sdlg2App(DefaultBounds(), headless: true)
+  | QueueEvents(command sequence)
   v
 Sdlg2App.GetEvent()
   |
-  | returns cmQuit after deterministic public scenario assertions
+  | returns queued command events, then cmQuit
   v
 TApplication.Run()
   |
+  | dispatches the same command route as normal runtime
   | exits in process, no shell process and no timing dependency
   v
 Assertions verify visible state
 ```
+
+012 note: Every Wave-2 primary smoke follows this queued command model. Startup
+plus quit remains useful as a liveness check, but primary assertions verify
+state produced by command dispatch inside `Run()`.
 
 ## Scrollbarer Dialog: `sdlg2`
 
@@ -81,4 +87,3 @@ DialogDescriptionFactory
   v
 Visible state and rejection messages
 ```
-

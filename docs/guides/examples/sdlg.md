@@ -7,8 +7,10 @@ aus `tv203s/contrib/tvision/examples/sdlg/`. Das Beispiel konsumiert das neue
 managed `TScrollGroup` aus `TuiVision.Controls` und zeigt vertikales Scrollen,
 Fokuszustand, Grenzen und sichtbare Controls.
 
-Erwarteter Pfad: zu einem spaeteren Control scrollen und einen weiteren
-Control-Fokus sichtbar machen.
+Interaktiver Laufzeitpfad: `dotnet run --project examples/Sdlg` zeigt
+Zwecktext und ein Sdlg-Menue. Scroll, Focus und Boundary bewegen den
+vertikalen Scrollzustand zu Controls ausserhalb des Start-Viewports und melden
+Control-Name sowie Offset als Text.
 
 Barrierefreiheit: Der sichtbare Zustand nennt die Controls textuell.
 
@@ -29,7 +31,10 @@ dotnet run --project examples/Sdlg
 `TScrollGroup` from `TuiVision.Controls` and shows vertical scrolling, focus
 state, bounds, and visible controls.
 
-Expected path: scroll to a later control and make another control focus visible.
+Interactive runtime path: `dotnet run --project examples/Sdlg` shows purpose
+text and an Sdlg menu. Scroll, Focus, and Boundary move the vertical scroll
+state to controls outside the initial viewport and report the control name plus
+offset as text.
 
 Accessibility: The visible state names the controls as text.
 

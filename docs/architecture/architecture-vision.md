@@ -61,3 +61,17 @@ TuiVision.Drivers.Console for managed console execution.
 - Wave-3, wave-4, wave-5, or wave-6 examples.
 - Native bindings or a one-to-one recreation of historical build helper files.
 
+## 012 Interactive Showcase Impact
+
+Die interaktive Showcase-Stufe `012-interactive-wave2-demos` fuegt keine neue
+Framework-Schicht hinzu. Die elf vorhandenen Wave-2-Beispiele erhalten
+beispiel-lokale Command-IDs, Menueeintraege, sichtbare Zweck-/Feedback-Texte
+und deterministische Event-Queues fuer Smoke-Tests. Direkte Hilfsmethoden aus
+011 bleiben als Setup oder ergaenzende Assertions erhalten, sind aber nicht
+mehr der primaere Akzeptanzpfad.
+
+The interactive showcase stage `012-interactive-wave2-demos` adds no new
+framework layer. The eleven existing Wave 2 examples receive example-local
+command IDs, menu entries, visible purpose/feedback text, and deterministic
+event queues for smoke tests. Direct helpers from 011 remain as setup or
+supplemental assertions, but they are no longer the primary acceptance path.
