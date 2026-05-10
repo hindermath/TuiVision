@@ -6,6 +6,34 @@ using TuiVision.Core;
 namespace TuiVision.Examples.SmokeTests;
 
 /// <summary>
+/// Klassifiziert direkte Hilfsmethoden in interaktiven Smoke-Tests.
+/// Primaere Wave-2-Beweise muessen ueber die Anwendungsschleife laufen.
+///
+/// Classifies direct helper methods in interactive smoke tests.
+/// Primary Wave 2 proof must run through the application loop.
+/// </summary>
+public enum DirectHelperUsage
+{
+    /// <summary>
+    /// Keine direkte Hilfsmethode wurde fuer den Beweis verwendet.
+    /// No direct helper was used for the proof.
+    /// </summary>
+    None,
+
+    /// <summary>
+    /// Direkte Hilfsmethoden bereiten nur den Zustand vor.
+    /// Direct helpers only prepare state.
+    /// </summary>
+    SetupOnly,
+
+    /// <summary>
+    /// Direkte Hilfsmethoden liefern nur ergaenzende Assertionen.
+    /// Direct helpers provide supplemental assertions only.
+    /// </summary>
+    SupplementalAssertion
+}
+
+/// <summary>
 /// Gemeinsame Basisinfrastruktur für Wave-1- und Wave-2-Beispiel-Smoke-Tests.
 /// Stellt Hilfsmethoden für Start-, Verhaltens-, Sichtbarkeits- und
 /// Beendigungsassertionen bereit.
@@ -15,6 +43,9 @@ namespace TuiVision.Examples.SmokeTests;
 /// </summary>
 public abstract class ExampleTestBase
 {
+    private DirectHelperUsage _directHelperUsage = DirectHelperUsage.None;
+    private bool _primaryAssertionUsedAppLoop;
+
     /// <summary>
     /// Erstellt Standard-Anwendungsgrenzen für Headless-Smoke-Tests (80 × 25 Zeichen).
     ///
@@ -42,7 +73,7 @@ public abstract class ExampleTestBase
     /// Die auszuführende Aktion, die den vollständigen Start- und Beendigungszyklus des Beispiels abdeckt.
     /// The action that covers the complete start and shutdown cycle of the example.
     /// </param>
-    protected static void AssertSmokeRunCompletes(Action runAction)
+    protected void AssertSmokeRunCompletes(Action runAction)
     {
         // Sicherstellen, dass kein unbehandelter Fehler den Smoke-Pfad unterbricht.
         // Ensure no unhandled error interrupts the smoke path.
@@ -60,6 +91,47 @@ public abstract class ExampleTestBase
             caught,
             $"Smoke-Ausführung hat eine unerwartete Ausnahme ausgelöst: {caught?.GetType().Name} — {caught?.Message}\n" +
             $"Smoke run threw an unexpected exception: {caught?.GetType().Name} — {caught?.Message}");
+    }
+
+    /// <summary>
+    /// Merkt, ob ein Test direkte Hilfsmethoden nur kontrolliert einsetzen darf.
+    ///
+    /// Records whether a test uses direct helper methods only in a controlled role.
+    /// </summary>
+    /// <param name="usage">Die Klassifikation. / The classification.</param>
+    protected void RecordDirectHelperUsage(DirectHelperUsage usage) => _directHelperUsage = usage;
+
+    /// <summary>
+    /// Merkt, dass die primaere sichtbare Assertion nach einem App-Loop-Pfad erfolgt ist.
+    ///
+    /// Records that the primary visible assertion followed an app-loop path.
+    /// </summary>
+    protected void RecordPrimaryAssertionUsedAppLoop() => _primaryAssertionUsedAppLoop = true;
+
+    /// <summary>
+    /// Prueft, dass ein Test seinen primaeren Beweis ueber die App-Schleife gefuehrt hat.
+    ///
+    /// Asserts that a test used the app loop for its primary proof.
+    /// </summary>
+    protected void AssertPrimaryAssertionUsedAppLoop()
+    {
+        Assert.IsTrue(
+            _primaryAssertionUsedAppLoop,
+            "Primaere Assertion muss ueber die Anwendungsschleife laufen. / Primary assertion must use the application loop.");
+    }
+
+    /// <summary>
+    /// Prueft die aufgezeichnete Klassifikation direkter Hilfsmethoden.
+    ///
+    /// Asserts the recorded classification for direct helpers.
+    /// </summary>
+    /// <param name="expected">Die erwartete Klassifikation. / The expected classification.</param>
+    protected void AssertDirectHelperUsage(DirectHelperUsage expected)
+    {
+        Assert.AreEqual(
+            expected,
+            _directHelperUsage,
+            $"Direkte Hilfsmethoden sind als {expected} erwartet. / Direct helper usage is expected as {expected}.");
     }
 
     /// <summary>
@@ -133,6 +205,20 @@ public abstract class ExampleTestBase
             visibleText.Contains(expectedFragment, StringComparison.Ordinal),
             $"{description}: sichtbarer Text enthaelt '{expectedFragment}' nicht. / " +
             $"{description}: visible text does not contain '{expectedFragment}'. Actual: {visibleText}");
+    }
+
+    /// <summary>
+    /// Prueft sichtbaren Text und markiert ihn als primaeren App-Loop-Beweis.
+    ///
+    /// Checks visible text and marks it as primary app-loop proof.
+    /// </summary>
+    /// <param name="visibleText">Der sichtbare Textzustand. / The visible text state.</param>
+    /// <param name="expectedFragment">Das erwartete Fragment. / The expected fragment.</param>
+    /// <param name="description">Beschreibung fuer die Fehlermeldung. / Description for the failure message.</param>
+    protected void AssertVisibleContainsFromAppLoop(string visibleText, string expectedFragment, string description)
+    {
+        AssertVisibleContains(visibleText, expectedFragment, description);
+        RecordPrimaryAssertionUsedAppLoop();
     }
 
     /// <summary>

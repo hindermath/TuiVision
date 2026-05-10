@@ -7,8 +7,10 @@
 Cut und Paste ueber `ManagedClipboard`. Ein isolierter oder nicht verfuegbarer
 Clipboard-Zustand wird sichtbar gemeldet und nicht still uebersprungen.
 
-Erwarteter Pfad: Text setzen, kopieren, ausschneiden, wieder einfuegen und den
-Fallback-Zustand pruefen.
+Interaktiver Laufzeitpfad: `dotnet run --project examples/Clipboard` startet
+mit Zwecktext und einem Clipboard-Menue. Die Befehle Copy, Cut, Paste und
+Unavailable aktualisieren den sichtbaren Textzustand; der Smoke-Test injiziert
+dieselben Befehle ueber die App-Schleife.
 
 Barrierefreiheit: Alle Nachweise sind text-first und keyboard-first. Farbe oder
 Maus ist nicht erforderlich.
@@ -29,10 +31,12 @@ dotnet run --project examples/Clipboard
 and paste through `ManagedClipboard`. An isolated or unavailable clipboard state
 is reported visibly instead of being skipped silently.
 
-Expected path: set text, copy, cut, paste back, and check the fallback state.
+Interactive runtime path: `dotnet run --project examples/Clipboard` starts
+with purpose text and a Clipboard menu. The Copy, Cut, Paste, and Unavailable
+commands update the visible text state; the smoke test injects the same
+commands through the app loop.
 
 Accessibility: all proof is text-first and keyboard-first. Color or mouse input
 is not required.
 
 Accepted limitation: see `docs/architecture/architecture-risks.md`.
-

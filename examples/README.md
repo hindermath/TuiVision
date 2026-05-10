@@ -30,27 +30,32 @@ not part of `TVDEMOS/` or `TVFM/`.
 ## Wave-2-Beispiele / Wave 2 Examples
 
 Die folgenden elf Beispiele gehoeren zur **zweiten Pflicht-Welle**
-(`011-port-wave2-examples`). Sie zeigen Controls, Dialoge, Listen,
+(`011-port-wave2-examples`) und sind durch `012-interactive-wave2-demos`
+interaktiv nachpoliert. Sie zeigen Controls, Dialoge, Listen,
 Kombinationsfelder, Fortschritt, dynamischen Text, Clipboard und scrollbare
-Dialoge.
+Dialoge. Beim normalen Start zeigen sie Zwecktext, ein Menue oder einen
+Befehlspfad und sichtbares text-first Feedback.
 
 The following eleven examples belong to the **second mandatory wave**
-(`011-port-wave2-examples`). They show controls, dialogs, lists, combo boxes,
-progress, dynamic text, clipboard, and scrollable dialogs.
+(`011-port-wave2-examples`) and were polished interactively by
+`012-interactive-wave2-demos`. They show controls, dialogs, lists, combo boxes,
+progress, dynamic text, clipboard, and scrollable dialogs. During normal
+startup they show purpose text, a menu or command path, and visible text-first
+feedback.
 
 | Verwalteter Name / Managed Name | Originalordner / Original Folder | Startbefehl / Launch Command | Pflichtunterstuetzung / Required Support Assets |
 |---|---|---|---|
-| `Clipboard` | `tv203s/contrib/tvision/examples/clipboard/` | `dotnet run --project examples/Clipboard` | Copy/Cut/Paste plus sichtbarer isolierter Clipboard-Fallback. |
-| `Demo` | `tv203s/contrib/tvision/examples/demo/` | `dotnet run --project examples/Demo` | Controls/Dialog/Gadget-Kern, Standarddialog-Metadaten, Farb-/Displayauswahl; Editor/Hilfe/Streams/Terminal/Maus/Charset bewusst ausserhalb Welle 2. |
-| `DlgDsn` | `tv203s/contrib/tvision/examples/dlgdsn/` | `dotnet run --project examples/DlgDsn` | Strukturierte Dialogbeschreibung und Fixtures unter `examples/DlgDsn/Fixtures/`. |
-| `DynTxt` | `tv203s/contrib/tvision/examples/dyntxt/` | `dotnet run --project examples/DynTxt` | Dynamischer Text mit Breitenbegrenzung. |
-| `InpLis` | `tv203s/contrib/tvision/examples/inplis/` | `dotnet run --project examples/InpLis` | Eingabe-/Listen-/History-Synchronisation. |
-| `ListVi` | `tv203s/contrib/tvision/examples/listvi/` | `dotnet run --project examples/ListVi` | Listenansicht, Auswahlbewegung, leere und Grenzlisten. |
-| `ProgBa` | `tv203s/contrib/tvision/examples/progba/` | `dotnet run --project examples/ProgBa` | Deterministischer Fortschritt bis Completed. |
-| `Sdlg` | `tv203s/contrib/tvision/examples/sdlg/` | `dotnet run --project examples/Sdlg` | Vertikaler `ScrollDialog`/`ScrollGroup`-Zweck via `TScrollGroup`. |
-| `Sdlg2` | `tv203s/contrib/tvision/examples/sdlg2/` | `dotnet run --project examples/Sdlg2` | Horizontaler und vertikaler `ScrollDialog`/`ScrollGroup`-Zweck via `TScrollGroup`. |
-| `TCombo` | `tv203s/contrib/tvision/examples/tcombo/` | `dotnet run --project examples/TCombo` | Kombinationsfeld-Auswahl und Eingabesynchronisation. |
-| `TProgB` | `tv203s/contrib/tvision/examples/tprogb/` | `dotnet run --project examples/TProgB` | Fortschritt plus sichtbarer Abbruchzustand. |
+| `Clipboard` | `tv203s/contrib/tvision/examples/clipboard/` | `dotnet run --project examples/Clipboard` | Menuebefehle Copy, Cut, Paste und Unavailable mit sichtbarem Clipboard-Fallback. |
+| `Demo` | `tv203s/contrib/tvision/examples/demo/` | `dotnet run --project examples/Demo` | Demo-Menue fuer Controls/Dialog/Gadget-Kern, Standarddialog-Metadaten, Abbruch/Invalid-State und Farb-/Displayauswahl; Editor/Hilfe/Streams/Terminal/Maus/Charset bewusst ausserhalb Welle 2. |
+| `DlgDsn` | `tv203s/contrib/tvision/examples/dlgdsn/` | `dotnet run --project examples/DlgDsn` | Menuebefehle fuer Load/render, Change und Reject; Fixtures bleiben unter `examples/DlgDsn/Fixtures/`. |
+| `DynTxt` | `tv203s/contrib/tvision/examples/dyntxt/` | `dotnet run --project examples/DynTxt` | Menuebefehle Short, Long und Constrained fuer dynamischen Text mit Breitenbegrenzung. |
+| `InpLis` | `tv203s/contrib/tvision/examples/inplis/` | `dotnet run --project examples/InpLis` | Menuebefehle fuer Eingabe, Auswahl, session-only History, Grenzen und leere Listen. |
+| `ListVi` | `tv203s/contrib/tvision/examples/listvi/` | `dotnet run --project examples/ListVi` | Menuebefehle fuer Listenansicht, Auswahlbewegung, erste/letzte Grenze und leere Liste. |
+| `ProgBa` | `tv203s/contrib/tvision/examples/progba/` | `dotnet run --project examples/ProgBa` | Menuebefehl Complete fuer deterministischen Fortschritt bis Completed. |
+| `Sdlg` | `tv203s/contrib/tvision/examples/sdlg/` | `dotnet run --project examples/Sdlg` | Menuebefehle Scroll, Focus und Boundary fuer vertikale `TScrollGroup`-Bewegung. |
+| `Sdlg2` | `tv203s/contrib/tvision/examples/sdlg2/` | `dotnet run --project examples/Sdlg2` | Menuebefehle Scroll both, Focus far und Boundary fuer horizontale und vertikale `TScrollGroup`-Bewegung. |
+| `TCombo` | `tv203s/contrib/tvision/examples/tcombo/` | `dotnet run --project examples/TCombo` | Menuebefehle Load, Select, Boundary und Empty fuer Kombinationsfeld-Auswahl und Eingabesynchronisation. |
+| `TProgB` | `tv203s/contrib/tvision/examples/tprogb/` | `dotnet run --project examples/TProgB` | Menuebefehle Partial, Abort und Cancelled fuer Fortschritt plus sichtbaren Abbruchzustand. |
 
 ---
 

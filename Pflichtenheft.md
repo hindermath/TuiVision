@@ -241,9 +241,9 @@ Statuscheckliste Beispielwellen:
 - [x] **Welle 1 - Grundlegende Anwendungsstruktur**
   Reihenfolgehinweis: abgeschlossen (Branch `007-port-wave1-examples`); 4 Beispiele portiert, 41 Smoke-Tests gruen, Guides geliefert.
 - [x] **Welle 2 - Controls und Dialoge**
-  Reihenfolgehinweis: Portierungs-/Smoke-Nachweis abgeschlossen (Branch `011-port-wave2-examples`); 11 Controls-/Dialog-Beispiele portiert, alle 15 gelieferten Beispiele per Smoke-Test abgedeckt, Guides geliefert. Die interaktive Showcase-Stufe ist bewusst als separates Follow-up `012-interactive-wave2-demos` offen und nimmt den 011-Abschluss nicht zurueck.
-- [-] **Welle 2 - Interaktive Showcase-Stufe**
-  Reihenfolgehinweis: als Follow-up auf `011-port-wave2-examples` aus `Lastenheft_Interactive-Wave2-Demos.md` planen; normale Starts mit `dotnet run --project examples/<Name>` muessen sichtbare Bedienpfade und Rueckmeldungen zeigen.
+  Reihenfolgehinweis: Portierungs-/Smoke-Nachweis abgeschlossen (Branch `011-port-wave2-examples`); 11 Controls-/Dialog-Beispiele portiert, alle 15 gelieferten Beispiele per Smoke-Test abgedeckt, Guides geliefert. Die interaktive Showcase-Stufe wurde im Follow-up `012-interactive-wave2-demos` nachgezogen.
+- [x] **Welle 2 - Interaktive Showcase-Stufe**
+  Reihenfolgehinweis: abgeschlossen (Branch `012-interactive-wave2-demos`); die elf Wave-2-Beispiele zeigen beim normalen Start sichtbare Menue-/Command-Pfade mit text-first Rueckmeldung und besitzen app-loop-basierte Smoke-Nachweise.
 - [ ] **Welle 3 - Editor, Dateien, Hilfe und Streams**
   Reihenfolgehinweis: nach Welle 2; `tvedit`, `bhelp` und `helpdemo` eignen sich als fruehe Validierungsbeispiele fuer Phase 6.
 - [ ] **Welle 4 - Terminal-Emulation und erweiterte Zeichensaetze**
@@ -614,11 +614,11 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - Die vier Wellen sind als vier eigenstaendige Unterphasen `3.1` bis `3.4` zu behandeln; sie werden nacheinander abgearbeitet und jeweils separat geplant, portiert, getestet und dokumentiert.
    - `3.1` = Welle 1: Grundlegende Anwendungsstruktur — ✓ ABGESCHLOSSEN
    - `3.2` = Welle 2: Controls und Dialoge — ✓ ABGESCHLOSSEN
-   - `3.2a` = Welle 2: Interaktive Showcase-Stufe — OFFEN (`Lastenheft_Interactive-Wave2-Demos.md`)
+   - `3.2a` = Welle 2: Interaktive Showcase-Stufe — ✓ ABGESCHLOSSEN (Branch `012-interactive-wave2-demos`)
    - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze
 
->>> NAECHSTER SCHRITT <<< Welle 2 – Interaktive Showcase-Stufe: Aus `Lastenheft_Interactive-Wave2-Demos.md` den Spec-Kit-Feature-Lauf `012-interactive-wave2-demos` starten, damit die in `011-port-wave2-examples` nachgewiesenen Funktionen beim normalen CLI-Start ueber Menues, Statuszeilen, Dialoge, Tastaturpfade und UI-Event-Smoke-Tests bedienbar werden.
+>>> NAECHSTER SCHRITT <<< Welle 3 - Editor, Dateien, Hilfe und Streams: Den naechsten Spec-Kit-Feature-Lauf fuer `tvedit`, `bhelp` und `helpdemo` vorbereiten, nachdem Welle 2 inklusive interaktiver Showcase-Stufe abgeschlossen ist.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

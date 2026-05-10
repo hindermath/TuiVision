@@ -6,8 +6,9 @@
 `tv203s/contrib/tvision/examples/progba/`. Die verwaltete Version erreicht die
 Fertigstellung deterministisch und ohne Wall-Clock-Assertions.
 
-Erwarteter Pfad: Fortschrittsmaximum setzen und sichtbaren Completed-Zustand
-pruefen.
+Interaktiver Laufzeitpfad: `dotnet run --project examples/ProgBa` zeigt
+Zwecktext und ein ProgBa-Menue. Complete setzt den Fortschritt deterministisch
+auf `10/10` und meldet den Completed-Zustand sichtbar.
 
 Barrierefreiheit: Der Status wird als Text und numerischer Wert nachgewiesen.
 
@@ -26,7 +27,9 @@ dotnet run --project examples/ProgBa
 `tv203s/contrib/tvision/examples/progba/`. The managed version reaches
 completion deterministically and without wall-clock assertions.
 
-Expected path: set the progress maximum and verify the visible completed state.
+Interactive runtime path: `dotnet run --project examples/ProgBa` shows purpose
+text and a ProgBa menu. Complete deterministically sets progress to `10/10` and
+reports the completed state visibly.
 
 Accessibility: The status is proven as text and numeric value.
 

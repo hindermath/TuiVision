@@ -147,6 +147,20 @@ npm run test:docfx
 - Eine Beispielwelle gilt erst dann als vollstaendig lern- und reviewtauglich, wenn die interaktive Showcase-Stufe geliefert ist, sofern der Scope nicht ausdruecklich nur einen minimalen nicht-interaktiven Nachweis verlangt.
 - Stage-1-PR-Evidence, Specs und Guides muessen den bewusst verschobenen Interaktionsumfang klar nennen; Stage-2-Specs sollen die vorhandenen Nachweisfunktionen wiederverwenden statt Verhalten neu zu portieren.
 
+## Historical Source Reference Policy
+
+- Fuer jede Spec-Kit-Feature-Implementierung, die historisch abgeleitetes Turbo-Vision-Verhalten portiert, erweitert, testet, dokumentiert oder korrigiert, muessen die relevanten historischen Implementierungsdateien unter `tv203s/` als Read-only-Referenz geprueft werden. Das betrifft mindestens passende `.c`- und `.cc`-Dateien.
+- Falls Typen, Konstanten, Makros, Datenlayout, Vererbung, Funktionssignaturen oder Kontext nur ueber Deklarationen klar werden, muessen auch die relevanten C/C++-Header wie `.h`, `.hpp` oder `.hh` geprueft werden.
+- `tv203s/` wird nicht veraendert. Die C#-Portierung bleibt eine moderne, idiomatische Umsetzung der historischen Absicht und keine mechanische 1:1-Uebersetzung.
+- `spec.md`, `plan.md`, `tasks.md`, Guides, PR-Evidence oder Architektur-/Security-Nachweise muessen bei relevanten Features festhalten, welcher historische Zweck uebernommen wird und welche wesentlichen nutzer- oder API-sichtbaren Abweichungen bewusst sind.
+- Wenn ein Feature keinen historischen `tv203s`-Bezug hat, genuegt ein kurzes `N/A` mit Begruendung in Plan, Aufgaben oder Evidence.
+
+- For every Spec-Kit feature implementation that ports, extends, tests, documents, or fixes historically derived Turbo Vision behavior, review the relevant historical implementation files under `tv203s/` as read-only reference. This includes at least the matching `.c` and `.cc` files.
+- When types, constants, macros, data layout, inheritance, function signatures, or context are only clear from declarations, also review the relevant C/C++ headers such as `.h`, `.hpp`, or `.hh`.
+- Do not modify `tv203s/`. The C# port remains a modern idiomatic implementation of the historical intent, not a mechanical line-by-line translation.
+- For relevant features, `spec.md`, `plan.md`, `tasks.md`, guides, PR evidence, or architecture/security evidence must record which historical intent is followed and which material user-visible or API-visible deviations are intentional.
+- If a feature has no historical `tv203s` relevance, a short `N/A` rationale in plan, tasks, or evidence is sufficient.
+
 ## Active Feature Context
 
 ### 004-editor-file-help-streams
@@ -175,6 +189,17 @@ npm run test:docfx
 - Every historical `.cc` row in `docs/porting-status.md` must end in a final proof state of `portiert + getestet` or `bewusst ausgelassen + Begruendung`; no `portiert + Test ausstehend` rows may remain once the gate is claimed closed
 - Gate closure must provide explicit build, full-test, coverage, formatting, and conditional API-doc evidence, and must keep the mandatory example waves blocked until the closure is formally recorded
 - Planning decisions now fixed for this feature: `docs/porting-status.md` remains the authoritative M-07 ledger; `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, and `TuiVision.Drivers.Console` must each satisfy the explicit 70 % line-coverage gate with assembly-specific evidence; `tests/TuiVision.Compatibility.Tests/` is the planned dedicated Compatibility fallback suite when shared tests are insufficient; placeholder-only or no-op-only modules cannot satisfy that gate; gate-scope removals must update the proof surfaces in the same change; skipped or ignored gate-scoped tests require recorded tracked-issue references; unresolved local-versus-CI coverage conflicts block closure; and the final Phase-8 decision requires a dedicated closure marker or commit reference
+
+### 012-interactive-wave2-demos
+- Current implementation status: interactive Wave-2 demo polish is implemented on branch `012-interactive-wave2-demos`; final validation evidence is tracked in `specs/012-interactive-wave2-demos/pr-evidence.md`.
+- Delivered scope is limited to making the eleven Wave-2 examples visibly operable at normal runtime: `Clipboard`, `Demo`, `DlgDsn`, `DynTxt`, `InpLis`, `ListVi`, `ProgBa`, `Sdlg`, `Sdlg2`, `TCombo`, and `TProgB`; matching event-loop smoke tests in `tests/TuiVision.Examples.SmokeTests/`; guides, README, `pr-evidence.md`, and proportional architecture/security/A11Y/statistics evidence.
+- Before wiring or accepting each example, review the relevant historical `.c`/`.cc` source and any important matching headers under `tv203s/` as read-only reference, capture the original demo intent, and document intentional user-visible deviations in guide or PR evidence.
+- Every example must show first-screen purpose text, expose primary behavior through menu, keyboard, status, or command paths, and update visible text-first feedback after each demonstrated operation.
+- Primary smoke proof must run `app.Run()` or the equivalent real application loop with injected `TEvent`, command, or key events. Direct helper methods may support setup or supplemental assertions only.
+- `examples/Demo` is the P1 vertical slice and must prove at least three visible behaviors before the pattern is spread across the rest of the examples.
+- File/path and dialog-designer flows stay read-only toward user data: use source-controlled fixtures, fixed repository paths, or test temporary directories; do not read arbitrary user file contents or persist user history as proof.
+- Wave 3 and Wave 4 examples, mandatory mouse-only operation, broad framework redesign, new runtime dependencies, databases, external services, and DocFX publishing-model changes are out of scope.
+- Next open mandatory example scope after this feature is Wave 3: editor, file, help, and stream demos such as `tvedit`, `bhelp`, and `helpdemo`.
 
 ## Agent File Synchronization Policy
 
@@ -244,6 +269,8 @@ npm run test:docfx
 - In-memory dialog state and session-only history; real local file-system metadata for file-listing/validation only; source-controlled tests/proof artifacts; minimal persisted dialog-description fixture through existing serialization/resource primitives; no database or external service storage (010-standard-dialogs-designer)
 - C# `latest` / C# 14 on .NET 10 (`net10.0`) + existing framework modules `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`; new wave-2 example projects under `examples/`; existing `tests/TuiVision.Examples.SmokeTests/`; MSTest; Coverlet; conditional DocFX and web A11Y smoke tooling (011-port-wave2-examples)
 - Runtime example state is in memory; standard-dialog file flows use real local file-system metadata only; `dlgdsn` may use source-controlled dialog-description fixtures through existing Serialization/resource primitives; no database, external service, persisted user history, or new dependency planned (011-port-wave2-examples)
+- C# `latest` / C# 14 on .NET 10 (`net10.0`) + Existing TuiVision modules only: `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`; existing MSTest and Coverlet test stack; existing DocFX plus Playwright/axe web A11Y tooling. No new runtime NuGet dependency is planned. (012-interactive-wave2-demos)
+- Runtime example state is in memory. Dialog-designer and file/path demonstrations use source-controlled fixtures, fixed repository paths, or test temporary directories. The examples must not persist user history, write user data as part of normal demonstration, read arbitrary user file contents as proof, or add a database/external service. (012-interactive-wave2-demos)
 
 ### 007-port-wave1-examples
 - Current status: Wave 1 delivered (2026-03-28). `desklogo`, `msgcls`, `tutorial` (16 steps), `videomode` are ported, smoke-tested, and guide-documented.
@@ -269,6 +296,7 @@ npm run test:docfx
 - 008-controls-revision: Controls-Revision implementiert: `TSubMenu`, `TStatusDef`, `WindowFlags` neu hinzugefuegt; `TMenuBar`, `TStatusLine`, `TWindow`, `TDialog`, `TMenuItem`, `TView` erweitert; 338 Tests gruen, `TuiVision.Controls`-Abdeckung 84,02 %, Format-Gate bestanden; `docs/porting-status.md`, `Pflichtenheft.md` und `docs/project-statistics.md` nachgezogen; `Lastenheft_ControlsRevision.md` umbenannt.
 - 010-standard-dialogs-designer: Framework-Readiness fuer Standarddialoge und Dialog-Designer implementiert: explizite Datei-/Verzeichnisentscheidungen ohne Dateiinhalt-I/O, Color-/Display-/symbolische Charset-Auswahl, validierte Dialogbeschreibung, persistierter Dialogbeschreibungs-Roundtrip und malformed-input rejection; fokussierte Controls- und Serialization-Tests gruen.
 - 011-port-wave2-examples: Planartefakte fuer Welle 2 erstellt: 11 neue Beispielprojekte, dedizierte Example-Smoke-Tests, DE-first/EN-second Guides, Architektur-/Security-/A11Y-Nachweise und klarer `sdlg`/`sdlg2`-Scope als historische ScrollDialog/ScrollGroup-Beispiele.
+- 012-interactive-wave2-demos: Interaktive Showcase-Stufe fuer Welle 2 implementiert: alle elf Wave-2-Beispiele besitzen sichtbare normale Runtime-Pfade, app-loop-basierte Smoke-Nachweise, aktualisierte Guides, README-, Architektur-/Security-/A11Y- und PR-Evidence.
 
 ## Shared Parent Guidance
 

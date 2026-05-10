@@ -31,3 +31,20 @@ feature does not need a full local SAMM maturity assessment. The concrete
 activities are test-first smoke/controls evidence, dependency audit,
 threat-model notes, architecture risks, and release-bound SBOM/VEX/SLSA
 decision.
+
+## 012-interactive-wave2-demos
+
+Datum: 2026-05-10.
+
+OWASP SAMM bleibt als leichter Governance-Leitfaden anwendbar. Die relevanten
+Aktivitaeten sind test-first App-Loop-Smokes, Dependency-Unveraendertheit,
+Threat-Model-Notiz, Architecture-Risk-Update und release-gebundene
+SBOM/VEX/SLSA-Entscheidung. Ein vollstaendiges feature-lokales
+Reifegradassessment ist nicht erforderlich.
+
+Date: 2026-05-10.
+
+OWASP SAMM remains applicable as a lightweight governance guide. The relevant
+activities are test-first app-loop smokes, unchanged dependency posture,
+threat-model note, architecture-risk update, and release-bound SBOM/VEX/SLSA
+decision. A full feature-local maturity assessment is not required.

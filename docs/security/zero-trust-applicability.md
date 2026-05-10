@@ -32,3 +32,17 @@ wave-2 examples are local terminal programs without identity provider, network
 service, API, tenant model, or remote access. The relevant security boundaries
 are local file paths, structured dialog descriptions, and isolated clipboard
 states; these are covered in tests and in the threat model.
+
+## 012-interactive-wave2-demos
+
+Datum: 2026-05-10.
+
+Zero Trust bleibt fuer 012 N/A als Service-Architektur. Die Aenderung macht
+lokale Beispiele ueber Menues und Commands bedienbar, fuehrt aber keinen
+Identitaetsanbieter, Remotezugriff, Mandantenkontext oder Netzwerkdienst ein.
+
+Date: 2026-05-10.
+
+Zero Trust remains N/A for 012 as a service architecture. The change makes
+local examples operable through menus and commands, but introduces no identity
+provider, remote access, tenant context, or network service.

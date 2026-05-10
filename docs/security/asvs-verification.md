@@ -30,3 +30,15 @@ OWASP ASVS is N/A for this feature. It introduces no web frontend, HTTP API,
 authentication, session management, or authorization model. The relevant
 evidence instead lives in `security-checklist.md`, `threat-model.md`,
 `dependency-audit.md`, and the smoke/controls tests.
+
+## 012-interactive-wave2-demos
+
+Datum: 2026-05-10.
+
+OWASP ASVS bleibt N/A. 012 fuegt kein Web-Frontend, keine HTTP-API, keine
+Authentifizierung, keine Session-Verwaltung und kein Berechtigungsmodell hinzu.
+
+Date: 2026-05-10.
+
+OWASP ASVS remains N/A. 012 adds no web frontend, HTTP API, authentication,
+session management, or authorization model.

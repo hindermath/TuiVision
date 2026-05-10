@@ -8,8 +8,10 @@
 `TScrollGroup` und zeigt beide Scrollachsen mit sichtbarer Zell-/Control-
 Ausgabe.
 
-Erwarteter Pfad: zu einer Zelle scrollen, eine andere Zelle fokussieren und
-Bounds pruefen.
+Interaktiver Laufzeitpfad: `dotnet run --project examples/Sdlg2` zeigt
+Zwecktext und ein Sdlg2-Menue. Scroll both, Focus far und Boundary bewegen
+horizontale und vertikale Offsets zu Zellen ausserhalb des Start-Viewports und
+melden Zellkoordinaten als Text.
 
 Barrierefreiheit: Zellkoordinaten und Fokus werden als Text gemeldet.
 
@@ -30,7 +32,10 @@ dotnet run --project examples/Sdlg2
 `tv203s/contrib/tvision/examples/sdlg2/`. The example consumes `TScrollGroup`
 and shows both scroll axes with visible cell/control output.
 
-Expected path: scroll to one cell, focus another cell, and verify bounds.
+Interactive runtime path: `dotnet run --project examples/Sdlg2` shows purpose
+text and an Sdlg2 menu. Scroll both, Focus far, and Boundary move horizontal
+and vertical offsets to cells outside the initial viewport and report cell
+coordinates as text.
 
 Accessibility: Cell coordinates and focus are reported as text.
 

@@ -6,8 +6,9 @@
 `tv203s/contrib/tvision/examples/listvi/`. Das Beispiel zeigt sichtbare
 Auswahlbewegung, erste/letzte Grenze, leere Listen und Viewport-Zustand.
 
-Erwarteter Pfad: drei Eintraege laden, zur letzten Position springen, zur
-ersten Grenze zurueckspringen und leere Liste pruefen.
+Interaktiver Laufzeitpfad: `dotnet run --project examples/ListVi` zeigt
+Zwecktext und ein ListVi-Menue. Load, Last, First und Empty zeigen Auswahl,
+erste/letzte Grenze und leere Liste als sichtbaren Textzustand.
 
 Barrierefreiheit: Die Auswahl wird als Textzustand gemeldet.
 
@@ -24,8 +25,9 @@ dotnet run --project examples/ListVi
 The example shows visible selection movement, first/last bounds, empty lists,
 and viewport state.
 
-Expected path: load three entries, jump to the last position, jump back to the
-first bound, and verify an empty list.
+Interactive runtime path: `dotnet run --project examples/ListVi` shows purpose
+text and a ListVi menu. Load, Last, First, and Empty show selection, first/last
+boundary, and empty list as visible text state.
 
 Accessibility: The selection is reported as text state.
 

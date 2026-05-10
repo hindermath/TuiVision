@@ -14,6 +14,30 @@ namespace TuiVision.Examples.SmokeTests;
 public sealed class ListViSmokeTests : ExampleTestBase
 {
     /// <summary>
+    /// Prueft Auswahl, erste/letzte Grenze und Leerzustand ueber die Anwendungsschleife.
+    ///
+    /// Verifies selection, first/last boundary, and empty state through the application loop.
+    /// </summary>
+    [TestMethod]
+    public void ListVi_AppLoop_Dispatches_Selection_Boundaries_And_Empty_Feedback()
+    {
+        ListViApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(
+            ListViApp.CmLoadItems,
+            ListViApp.CmSelectLast,
+            ListViApp.CmSelectFirst,
+            ListViApp.CmEmpty).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        string history = string.Join('\n', app.VisibleHistory);
+        AssertVisibleContainsFromAppLoop(history, "selected last", "ListVi app-loop last boundary");
+        AssertVisibleContainsFromAppLoop(history, "selected first", "ListVi app-loop first boundary");
+        AssertVisibleContainsFromAppLoop(history, "empty list", "ListVi app-loop empty state");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
     /// Prueft Auswahlbewegung, leere Listen, erste/letzte Grenze und Viewport-Inhalt.
     ///
     /// Verifies selection movement, empty lists, first/last bounds, and viewport content.
@@ -21,6 +45,7 @@ public sealed class ListViSmokeTests : ExampleTestBase
     [TestMethod]
     public void ListVi_SelectionMovement_EmptyAndBoundaryStates_AreVisible()
     {
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         ListViApp app = new(DefaultBounds(), headless: true);
         AssertSmokeRunCompletes(() => app.Run());
 

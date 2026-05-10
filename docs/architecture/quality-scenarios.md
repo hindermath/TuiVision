@@ -10,6 +10,15 @@ A smoke test creates the example application with `headless: true`, performs at
 least one example-specific action, and exits through the `GetEvent()` quit path.
 Startup plus clean exit alone does not count.
 
+012-Ergebnis: Die primaeren Wave-2-Smokes injizieren lokale Command-Events in
+die App-Queue, lassen `app.Run()` dispatchen und pruefen danach
+`VisibleHistory`. Direkte Hilfsmethoden werden ueber `DirectHelperUsage`
+klassifiziert.
+
+012 outcome: The primary Wave 2 smokes inject local command events into the app
+queue, let `app.Run()` dispatch them, and then verify `VisibleHistory`. Direct
+helpers are classified through `DirectHelperUsage`.
+
 ## Text-First Und Keyboard-First
 
 Jede pruefbare Interaktion liefert textorientierte sichtbare Zustandswerte.
@@ -47,11 +56,13 @@ assembly gate is invalid.
 
 ## DocFX-Auswirkung
 
-Diese Feature-Arbeit fuegt mit `TScrollGroup` eine neue oeffentliche Controls-
-Oberflaeche hinzu. Deshalb ist DocFX nach der finalen Validierung zu
-regenerieren und mit dem vorhandenen Playwright/axe-Smoke-Test zu pruefen.
+011 fuegte mit `TScrollGroup` eine neue oeffentliche Controls-Oberflaeche
+hinzu. 012 aendert Guides und Nachweisflaechen, aber keine neue oeffentliche
+Framework-API. DocFX ist wegen der Dokumentationsaenderungen trotzdem nach der
+finalen Validierung zu regenerieren und mit dem vorhandenen Playwright/axe-
+Smoke-Test zu pruefen.
 
-This feature work adds `TScrollGroup` as a new public Controls surface.
-Therefore DocFX must be regenerated after final validation and checked with the
-existing Playwright/axe smoke test.
-
+011 added `TScrollGroup` as a new public Controls surface. 012 changes guides
+and evidence surfaces, but no new public framework API. DocFX still has to be
+regenerated after final validation because documentation changed, and it must
+be checked with the existing Playwright/axe smoke test.

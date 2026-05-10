@@ -14,6 +14,33 @@ namespace TuiVision.Examples.SmokeTests;
 public sealed class ClipboardSmokeTests : ExampleTestBase
 {
     /// <summary>
+    /// Prueft Copy, Cut, Paste und Fallback ueber die Anwendungsschleife.
+    ///
+    /// Verifies copy, cut, paste, and fallback through the application loop.
+    /// </summary>
+    [TestMethod]
+    public void Clipboard_AppLoop_Dispatches_Copy_Cut_Paste_And_Unavailable_Feedback()
+    {
+        ClipboardApp app = new(DefaultBounds(), headless: true);
+        RecordDirectHelperUsage(DirectHelperUsage.SetupOnly);
+        app.SetInput("wave2");
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(
+            ClipboardApp.CmCopy,
+            ClipboardApp.CmCut,
+            ClipboardApp.CmPaste,
+            ClipboardApp.CmUnavailable).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        string history = string.Join('\n', app.VisibleHistory);
+        AssertVisibleContainsFromAppLoop(history, "copied 'wave2'", "Clipboard app-loop copy");
+        AssertVisibleContainsFromAppLoop(history, "cut 'wave2'", "Clipboard app-loop cut");
+        AssertVisibleContainsFromAppLoop(history, "pasted 'wave2'", "Clipboard app-loop paste");
+        AssertVisibleContainsFromAppLoop(history, "isolated fallback", "Clipboard app-loop unavailable");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
     /// Prueft Copy, Cut, Paste, Eingabezustand und isolierten Clipboard-Fallback.
     ///
     /// Verifies copy, cut, paste, input state, and isolated clipboard fallback.
@@ -21,6 +48,7 @@ public sealed class ClipboardSmokeTests : ExampleTestBase
     [TestMethod]
     public void Clipboard_Copy_Cut_Paste_And_IsolatedClipboard_AreVisible()
     {
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         ClipboardApp app = new(DefaultBounds(), headless: true);
         AssertSmokeRunCompletes(() => app.Run());
 
