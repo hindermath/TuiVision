@@ -1,6 +1,6 @@
 # Lastenheft: Maussupport und Interaktions-Haertung zwischen Beispielwelle 3 und 4
 
-**Dokument-Status:** Entwurf
+**Dokument-Status:** Spec-Kit-Eingabedatei, bereit fuer `/speckit-specify`
 **Erstellt:** 2026-03-30
 **Betrifft:** `src/TuiVision.Core/`, `src/TuiVision.Controls/`, `src/TuiVision.Drivers.Console/`, `src/TuiVision.Compatibility/`, `tests/TuiVision.Core.Tests/`, `tests/TuiVision.Controls.Tests/`, `tests/TuiVision.Drivers.Tests/`, `tests/TuiVision.Examples.SmokeTests/`
 **Empfohlene Prioritaet:** nach stabiler Wave-3-Basis und vor Wave-4-Terminal-/Emulationsarbeiten abarbeiten
@@ -203,3 +203,36 @@ creates the stable framework precursor on which `terminal`, `xterm`, and later
   mouse clicks locally or translate them into commands through local glue code.
 - Unsupported environments remain usable and reviewable in keyboard-centric
   mode instead of exposing half-activated mouse states.
+
+---
+
+## 7. Spec-Kit-Readiness / Spec-Kit Readiness
+
+Dieses Lastenheft ist als direkte Eingabedatei fuer `/speckit-specify`
+verwendbar. Der spaetere Spec-Kit-Lauf muss die Anforderungen Deutsch zuerst
+und Englisch danach uebernehmen, auf CEFR-B2-Niveau formulieren und
+text-first A11Y-Anforderungen fuer Tastaturfallbacks, Statusmeldungen,
+Host-Grenzen und Guides sichtbar halten.
+
+This requirements document can be used directly as input for
+`/speckit-specify`. The later Spec-Kit run must carry the requirements in
+German first and English second, use CEFR-B2 language, and keep text-first
+accessibility requirements visible for keyboard fallbacks, status messages,
+host limits, and guides.
+
+---
+
+## 8. Kopierbarer Specify-Prompt / Copyable Specify Prompt
+
+```text
+/speckit-specify Nutze Lastenheft_04_MouseSupportAndInteraction.md als verbindliche Eingabe. Erstelle die Feature-Spezifikation fuer einen Maussupport- und Interaktions-Hardening-Lauf zwischen Wave 3 und Wave 4.
+
+Ziel: Das Framework braucht einen begrenzten, getesteten und host-bewussten Mausereignispfad, damit Beispiele wie demo, sdlg, helpdemo, tvedit, terminal und xterm keine lokalen Mouse-Helper erfinden muessen.
+
+Pflicht:
+- Anforderungen Deutsch zuerst und Englisch danach, CEFR-B2 und text-first A11Y formulieren.
+- Tastaturbedienung bleibt der verlaessliche Fallback und muss in Status, Guide und Tests sichtbar bleiben.
+- Umfang bewusst begrenzen: Click-to-focus, Click-to-activate, Doppelklick und begruendete einfache Drag-Pfade; Hover/Wheel nur mit ausdruecklicher Begruendung.
+- Framework-, Integrations- und Host-Evidence fuer Multi-Mac, Linux und Windows/WSL planen.
+- Keine vollstaendige XTerm-/Raw-Mausprotokoll-Paritaet und keine TP7-Mausdemo-Portierung in diesen Lauf ziehen.
+```

@@ -1,6 +1,6 @@
 # Lastenheft: Controls-Schicht-Revision — Portierungslücken schließen
 
-**Dokument-Status:** Entwurf
+**Dokument-Status:** Spec-Kit-Eingabedatei, bereit fuer `/speckit-specify`
 **Erstellt:** 2026-03-28
 **Betrifft:** `src/TuiVision.Controls/`, `tests/TuiVision.Controls.Tests/`
 **Ziel-Branch:** `008-controls-revision` (vorgesehen)
@@ -296,5 +296,38 @@ keine falsche Position.
 - [ ] `porting-status.md` aktualisiert: betroffene Einträge spiegeln den tatsächlichen Implementierungsstand wider
 
 ---
+
+---
+
+## 9. Spec-Kit-Readiness / Spec-Kit Readiness
+
+Dieses Lastenheft ist als direkte Eingabedatei fuer `/speckit-specify`
+verwendbar. Der spaetere Spec-Kit-Lauf muss die Anforderungen Deutsch zuerst
+und Englisch danach uebernehmen, auf CEFR-B2-Niveau formulieren und
+text-first A11Y-Anforderungen fuer Menues, Statuszeilen, Fenster und
+Tastaturpfade sichtbar halten.
+
+This requirements document can be used directly as input for
+`/speckit-specify`. The later Spec-Kit run must carry the requirements in
+German first and English second, use CEFR-B2 language, and keep text-first
+accessibility requirements visible for menus, status lines, windows, and
+keyboard paths.
+
+---
+
+## 10. Kopierbarer Specify-Prompt / Copyable Specify Prompt
+
+```text
+/speckit-specify Nutze Lastenheft_ControlsRevision.008-controls-revision.md als verbindliche Eingabe. Erstelle die Feature-Spezifikation fuer `008-controls-revision`.
+
+Ziel: Die Controls-Schicht muss fuer Menue-Navigation, Untermenue-Hervorhebung, StatusLine-Kontext, Window-Close, Window-Move und TMenuBar-Resize gehaertet werden, damit spaetere Beispielwellen darauf stabil aufbauen.
+
+Pflicht:
+- Anforderungen Deutsch zuerst und Englisch danach, CEFR-B2 und text-first A11Y formulieren.
+- Historisch abgeleitete Controls gegen die relevanten Turbo-Vision-Quellen pruefen und bewusste Abweichungen dokumentieren.
+- Tastaturpfade, sichtbare Auswahl-/Statuszustaende und automatisierte Tests als primaere Akzeptanz definieren.
+- `dotnet build --configuration Release`, `dotnet test`, Coverage-Gate und `dotnet format --verify-no-changes` als Validierung vorsehen.
+- Maus-Support nur als bewusst ausgeschlossenen Follow-up markieren, nicht in diesen Lauf ziehen.
+```
 
 *Ende des Lastenhefts / End of requirements document*

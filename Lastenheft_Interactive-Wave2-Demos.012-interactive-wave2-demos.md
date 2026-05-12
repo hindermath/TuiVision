@@ -508,12 +508,12 @@ small reusable Controls extension is needed.
 
 ---
 
-## 8. Eingabehinweis fuer Spec-Kit Specify / Input Hint For Spec-Kit Specify
+## 8. Kopierbarer Specify-Prompt / Copyable Specify Prompt
 
 Empfohlener `/speckit-specify`-Input:
 
 ```text
-Nutze Lastenheft_Interactive-Wave2-Demos.012-interactive-wave2-demos.md als Eingabe. Erstelle ein Feature
+/speckit-specify Nutze Lastenheft_Interactive-Wave2-Demos.012-interactive-wave2-demos.md als Eingabe. Erstelle ein Feature
 `012-interactive-wave2-demos` fuer interaktive Wave-2-Demos. Ausgangspunkt ist
 `main` nach PR #24: Die elf bereits portierten Wave-2-Beispiele besitzen
 funktionale 011-Nachweise und sollen jetzt beim normalen CLI-Start sichtbare,
@@ -534,7 +534,7 @@ aus dieser Datei uebernehmen.
 Recommended `/speckit-specify` input:
 
 ```text
-Use Lastenheft_Interactive-Wave2-Demos.012-interactive-wave2-demos.md as input. Create a feature for
+/speckit-specify Use Lastenheft_Interactive-Wave2-Demos.012-interactive-wave2-demos.md as input. Create a feature for
 `012-interactive-wave2-demos` for interactive wave-2 demos. The starting point
 is `main` after PR #24: the eleven already ported wave-2 examples have
 functional 011 proof and shall now show visible, usable menu/key/command paths

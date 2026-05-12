@@ -25,8 +25,8 @@ deviations, and harden tests where the current proof relies too much on
 startup, string, or headless-helper paths.
 
 - Feature-Ziel: Wave-1-Funktionen gegen historische Quellen haerten.
-- Folgefeature: `Lastenheft_Interactive-Wave1-Demos.md` baut danach auf diesem
-  gehaerteten Funktionsstand auf.
+- Folgefeature: `Lastenheft_Wave1-Visual-Component-Remediation.md` baut danach
+  auf diesem gehaerteten Funktionsstand auf.
 - Nichtziel: Keine interaktive Demo-Politur in diesem Feature; keine neue
   Wave-2-/Wave-3-/Wave-4-Funktionalitaet.
 - Abschlussgrenze: Fuer jedes Wave-1-Beispiel ist klar, welche historische
@@ -191,7 +191,8 @@ Guide oder Evidence dokumentiert werden. Das gilt besonders fuer:
 Dieses Feature darf vorbereiten und klassifizieren, welche Funktionen spaeter
 interaktiv verdrahtet werden muessen. Es soll aber noch keine neuen
 Menues, Statuszeilen, Desktop-Control-Flows oder UI-Event-Smokes als
-Abschlussziel erzwingen. Das gehoert in `Lastenheft_Interactive-Wave1-Demos.md`.
+Abschlussziel erzwingen. Das gehoert in
+`Lastenheft_Wave1-Visual-Component-Remediation.md`.
 
 ### FH-06: Evidence und Guides bleiben lernbar
 
@@ -293,7 +294,7 @@ sichtbar machen.
 ## 10. Kopierbarer Specify-Prompt / Copyable Specify Prompt
 
 ```text
-Erstelle eine Spec-Kit-Spezifikation fuer Wave-1 Functional Hardening.
+/speckit-specify Erstelle eine Spec-Kit-Spezifikation fuer Wave-1 Functional Hardening.
 
 Nutze `Lastenheft_Wave1-Functional-Hardening.md` als verbindliche Eingabe.
 Der Feature-Lauf soll nach `012-interactive-wave2-demos` stattfinden und die
@@ -314,5 +315,5 @@ Headless-/Helper-Pfade klassifiziert sind; und ob Abweichungen in Guide oder
 PR-Evidence dokumentiert sind.
 
 Nicht im Scope: interaktive Menue-/Status-/UI-Event-Demo-Politur. Diese folgt
-spaeter ueber `Lastenheft_Interactive-Wave1-Demos.md`.
+spaeter ueber `Lastenheft_Wave1-Visual-Component-Remediation.md`.
 ```

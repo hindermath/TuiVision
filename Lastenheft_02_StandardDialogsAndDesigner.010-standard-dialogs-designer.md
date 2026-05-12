@@ -1,6 +1,6 @@
 # Lastenheft: Standarddialoge und Dialog-Designer fuer Beispielwelle 2
 
-**Dokument-Status:** Entwurf
+**Dokument-Status:** Spec-Kit-Eingabedatei, bereit fuer `/speckit-specify`
 **Erstellt:** 2026-03-29
 **Betrifft:** `src/TuiVision.Controls/`, `src/TuiVision.Serialization/`, `tests/TuiVision.Controls.Tests/`, `tests/TuiVision.Examples.SmokeTests/`
 **Empfohlene Prioritaet:** vor Start der Wave-2-Portierung abarbeiten
@@ -174,3 +174,36 @@ and designer readiness for wave 2.
   logic instead of inventing new dialog scaffolding.
 - Persisted or dynamic dialog definitions use a documented, testable
   intermediate representation.
+
+---
+
+## 7. Spec-Kit-Readiness / Spec-Kit Readiness
+
+Dieses Lastenheft ist als direkte Eingabedatei fuer `/speckit-specify`
+verwendbar. Der spaetere Spec-Kit-Lauf muss die Anforderungen Deutsch zuerst
+und Englisch danach uebernehmen, auf CEFR-B2-Niveau formulieren und
+text-first A11Y-Anforderungen fuer Dialoge, Statusmeldungen, Guides und
+Reviews sichtbar halten.
+
+This requirements document can be used directly as input for
+`/speckit-specify`. The later Spec-Kit run must carry the requirements in
+German first and English second, use CEFR-B2 language, and keep text-first
+accessibility requirements visible for dialogs, status messages, guides, and
+reviews.
+
+---
+
+## 8. Kopierbarer Specify-Prompt / Copyable Specify Prompt
+
+```text
+/speckit-specify Nutze Lastenheft_02_StandardDialogsAndDesigner.010-standard-dialogs-designer.md als verbindliche Eingabe. Erstelle die Feature-Spezifikation fuer einen Standarddialog- und Dialog-Designer-Hardening-Lauf als Voraussetzung fuer Wave-2-Beispiele.
+
+Ziel: Datei-, Farb-, Scroll-, Designer- und dynamische Dialogfluesse muessen als gemeinsame Framework-Bausteine gehaertet werden, bevor demo, sdlg, sdlg2 und dlgdsn darauf aufbauen.
+
+Pflicht:
+- Anforderungen Deutsch zuerst und Englisch danach, CEFR-B2 und text-first A11Y formulieren.
+- Dialoge muessen sichtbare Validierung, Status-/Fehlerpfade und kontrollierte Persistenzgrenzen haben.
+- `dlgdsn` muss zwischen Dialogbeschreibung, Laufzeitobjekten und optional persistierter Form trennen.
+- Primaere Akzeptanz auf Framework-/Integrationstests fuer Standarddialoge, Designer-Flows und Serialisierungsgrenzen stuetzen.
+- Keine Editor-/Help-, Terminal-/Charset- oder Runtime-Maus-Arbeit in diesen Lauf ziehen.
+```

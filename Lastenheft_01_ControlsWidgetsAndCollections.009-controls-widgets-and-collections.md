@@ -1,6 +1,6 @@
 # Lastenheft: Controls-Widgets und Collections fuer Beispielwelle 2
 
-**Dokument-Status:** Entwurf
+**Dokument-Status:** Spec-Kit-Eingabedatei, bereit fuer `/speckit-specify`
 **Erstellt:** 2026-03-29
 **Betrifft:** `src/TuiVision.Controls/`, `tests/TuiVision.Controls.Tests/`, `tests/TuiVision.Examples.SmokeTests/`
 **Empfohlene Prioritaet:** vor Start der Wave-2-Portierung abarbeiten
@@ -184,3 +184,35 @@ explicitly out of scope here.
   written as comparatively thin application ports.
 - No wave-2 example introduces a second competing implementation for combo,
   progress, clipboard, or list logic.
+
+---
+
+## 7. Spec-Kit-Readiness / Spec-Kit Readiness
+
+Dieses Lastenheft ist als direkte Eingabedatei fuer `/speckit-specify`
+verwendbar. Der spaetere Spec-Kit-Lauf muss die Anforderungen Deutsch zuerst
+und Englisch danach uebernehmen, auf CEFR-B2-Niveau formulieren und
+text-first A11Y-Anforderungen fuer Guides, Statusmeldungen und Reviews
+sichtbar halten.
+
+This requirements document can be used directly as input for
+`/speckit-specify`. The later Spec-Kit run must carry the requirements in
+German first and English second, use CEFR-B2 language, and keep text-first
+accessibility requirements visible for guides, status messages, and reviews.
+
+---
+
+## 8. Kopierbarer Specify-Prompt / Copyable Specify Prompt
+
+```text
+/speckit-specify Nutze Lastenheft_01_ControlsWidgetsAndCollections.009-controls-widgets-and-collections.md als verbindliche Eingabe. Erstelle die Feature-Spezifikation fuer einen Controls-, Widgets- und Collections-Hardening-Lauf als Voraussetzung fuer Wave-2-Beispiele.
+
+Ziel: Die Framework-Bausteine fuer Clipboard-, Listen-, Combo-/History-, ParamText- und Progress-Beispiele muessen vor der Beispielportierung mit fokussierten Tests gehaertet werden.
+
+Pflicht:
+- Anforderungen Deutsch zuerst und Englisch danach, CEFR-B2 und text-first A11Y formulieren.
+- Primaere Akzeptanz auf Framework-Tests fuer die gemeinsamen Controls stuetzen, nicht auf beispielspezifische Ersatzimplementierungen.
+- Betroffene Wave-2-Beispiele als Konsumenten behandeln: clipboard, inplis, listvi, tcombo, progba und tprogb.
+- Guides, README, Evidence und Statistik im spaeteren Feature-Lauf aktualisieren, wenn daraus user-facing Verhalten entsteht.
+- Keine Dialog-/Designer-, Editor-/Help-, Terminal-/Charset- oder Runtime-Maus-Arbeit in diesen Lauf ziehen.
+```

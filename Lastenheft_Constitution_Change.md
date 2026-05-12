@@ -1,65 +1,190 @@
-# 1.Aktuell
-## Core Principles
+# Lastenheft: Constitution Change fuer didaktische und sprachliche Klarheit
 
-### I. Didaktische Klarheit (Pedagogical Clarity)
+**Dokument-Status:** Spec-Kit-Eingabedatei, bereit fuer `/speckit-specify`
+**Erstellt:** 2026-03-28
+**Bereinigt:** 2026-05-11
+**Betrifft:** `.specify/memory/constitution.md`, `.specify/templates/`,
+`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`,
+`.github/agents/copilot-instructions.md`, `docfx.json`, Dokumentations- und
+XML-Kommentarregeln
+**Empfohlene Prioritaet:** vor neuen grossen Spec-Kit-Features pruefen, wenn
+Dokumentations-, Sprach- oder Governance-Regeln geaendert werden
 
-Code MUST prioritize readability and educational value over performance or cleverness.
-All source code, comments, and documentation MUST be written in German (the project's target audience
-is German-speaking Fachinformatiker trainees). Every compiler phase (Lexer, Parser, Symbol Table,
-Code Generator, VM) MUST remain clearly separated and independently comprehensible.
-Implementation shortcuts that obscure the learning path are forbidden.
+---
 
-**Rationale**: TinyPl0 is a teaching artefact. A trainee reading the code must be able to trace
-the full compilation pipeline step-by-step without expert guidance.
+## 0. Spec-Kit-Intake-Zusammenfassung / Spec-Kit Intake Summary
 
-# 2. Änderungen
-Hinzufügen/Änderungen zu ### I. Didaktische Klarheit (Pedagogical Clarity)
-- Texte zusätzlich in Englisch. Der deutsche Textblock zuerst und danach der englische Textblock.
-- die deutsche und englischen Texte sollen dem Sprachniveau B2 (nach Gemeinsamer Europäischer Referenzrahmen für Sprachen – abgekürzt GER bzw. international CEFR (Common European Framework of Reference for Languages). ) entsprechen, da auch nicht-muttersprachliche Auszubildenden an diesem Projekt ausgebildet werden und sollen alles in dem Projekt verstehen können.
-- I. Didaktische Klarheit (Pedagogical Clarity) ändern zu I. Didaktische und sprachliche Klarheit (Pedagogical and Linguistic Clarity)
-- XML-Kommentare sollen für alle Methoden, Klassen, Variablen  etc. im Quellcode verwendet werden.
-- An geeigneten Stellen kann der Quellcode darüber hinaus noch mit Block- oder Zeilen-Kommentaren versehen werden um auf wichtige Didaktische Aspekte hinzuweisen. Auch diese in Deutsch und Englisch.
-- All documentation — code, API reference, guides, and examples — MUST serve as learning material for IT application-development specialists (Fachinformatiker Anwendungsentwicklung):
-- Every public type, member, parameter, and return value MUST carry complete XML documentation (<summary>, <param>, <returns>, and <exception> where applicable; <remarks> and <example> where instructive).
-Comments explain the why (decision, trade-off, constraint), not only the what.
-- Missing XML documentation for public API members is treated as a build error (CS1591 MUST NOT be suppressed globally).
-- When API signatures or XML comments change, the docfx output MUST be regenerated in the same commit/PR.
-- Use CLAUDE.md, GEMINI.md, copilot-instructions.md and AGENTS.md for runtime agent-specific development guidance.
-- Es sollte imer nochmal überprüft werden, ob die Dokumentationsrichtlinien eingehalten worden sind. Wenn nicht, sollen die Fehlende Dokumentation nachgeholt werden.
-- Bei Änderungen an der Dokumentation soll ein docfx-Lauf mit dem externen Befehl docfx stattfinden. Die docfx.json befindet sich im Projecthauptverzeichnis.
+Dieses Lastenheft beschreibt eine Governance-Aenderung: Die Projektverfassung
+und die abhaengigen Templates sollen klarer festlegen, dass TuiVision
+didaktisch, zweisprachig und barrierearm dokumentiert wird. Deutsch steht
+zuerst, Englisch danach. Beide Sprachfassungen sollen ungefaehr CEFR-B2
+erreichen, damit auch nicht-muttersprachliche Auszubildende die Inhalte
+verstehen koennen.
 
-# 3. Erklärung für das Sprachniveau B2
-Ein Auszubildender sollte mindestens das Sprachniveau B1, besser B2, besitzen, um eine Ausbildung zum Fachinformatiker erfolgreich absolvieren zu können. Das ergibt sich nicht aus einer expliziten gesetzlichen Vorgabe, sondern aus den tatsächlichen Anforderungen der Ausbildungsordnung und des Berufsschulunterrichts.
-## 3.1🧩 Warum B1 das Minimum ist
-Die Ausbildungsordnung für Fachinformatiker verlangt u.a.:
-- Sachverhalte präsentieren und kommunizieren, auch mit Kunden
-  (z.B. „Kunden informieren sowie Sachverhalte präsentieren und dabei deutsche und englische Fachbegriffe anwenden“)
-- Arbeitsaufträge verstehen, analysieren und dokumentieren
-- Teamarbeit, Abstimmung, Problemlösung
-- Berufsschulunterricht in Fächern wie Wirtschaft, Sozialkunde, Informatik, Englisch
-  Diese Tätigkeiten setzen voraus, dass ein Auszubildender zusammenhängende Texte verstehen, sich mündlich verständigen und schriftlich klar ausdrücken kann – typische Merkmale des Niveaus B1.
+This requirements document describes a governance change: the project
+constitution and dependent templates shall state more clearly that TuiVision is
+documented in an educational, bilingual, and accessible way. German comes
+first, followed by English. Both language versions should be roughly CEFR-B2 so
+non-native trainees can understand the material.
 
-## 3.2🧠 Warum B2 deutlich besser ist
-In der Praxis zeigt sich, dass Auszubildende mit B2:
-- komplexe technische Inhalte schneller erfassen
-- Projektdokumentationen sicherer schreiben
-- Prüfungsaufgaben (insbesondere die schriftlichen) besser bewältigen
-- im Kundenkontakt souveräner auftreten
-- weniger sprachbedingte Lernhürden haben
-  Gerade die Abschlussprüfung enthält viele textlastige Aufgaben, die ein gutes Sprachverständnis erfordern.
+- Feature-Ziel: Constitution, Templates und Agent-Guidance fuer didaktische
+  und sprachliche Klarheit harmonisieren.
+- Nichtziel: Keine fachliche Framework-Portierung, keine Beispielwelle, keine
+  DocFX-Generierung als Selbstzweck.
+- Abschlussgrenze: Die Regeln sind in Constitution, Templates und betroffenen
+  Agent-Dateien konsistent sichtbar; ein spaeteres Feature weiss, welche
+  Dokumentations- und A11Y-Pflichten gelten.
 
-## 3.3📘 Anforderungen der Berufsschule
-Berufsschulen orientieren sich in der Regel an B1–B2, weil:
-- Fachtexte gelesen und verstanden werden müssen
-- Präsentationen und Projektberichte verlangt werden
-- Englisch als Fachsprache genutzt wird
-- Prüfungen sprachlich anspruchsvoll sind
-## 3.4 Empfehlung für die Praxis
-- B1 → Ausbildung ist möglich, aber der Azubi braucht oft zusätzliche Sprachförderung.
-- B2 → Idealer Startpunkt für eine erfolgreiche Ausbildung ohne größere sprachliche Hürden.
-- C1 → Vorteilhaft, aber nicht notwendig.
+- Feature goal: harmonize constitution, templates, and agent guidance for
+  educational and linguistic clarity.
+- Non-goal: no functional framework port, no example wave, no DocFX generation
+  for its own sake.
+- Completion boundary: the rules are consistently visible in the constitution,
+  templates, and affected agent files; later features know which documentation
+  and accessibility duties apply.
 
-## 4. Unit Tests
-- Unit Tests sollen möglichst TDD-konform von Rot nach Grün entwickelt werden. 
-- Bei allen neuen Features sollen möglichst zuerst die Tests erstellt werden und kompiliert werden. Das ergibt rot. Danach soll gegen die Tests entwickelt werden, so dass dieses nach und ach alle grün werden. Das zeigt den Auszubildenden, wie Test Driven Defelopment durchgeführt werden soll.
-- 
+---
+
+## 1. Ausgangslage und Problemstellung / Background and Problem Statement
+
+TuiVision ist ein Lern- und Portierungsprojekt. Code, Tests, Beispiele und
+Dokumentation sollen nicht nur funktionieren, sondern auch fuer Auszubildende
+nachvollziehbar sein. Die bisherigen Notizen forderten bereits Deutsch und
+Englisch, CEFR-B2-Naehe, XML-Dokumentation, DocFX und didaktische Kommentare.
+Diese Anforderungen muessen als klare Governance-Regeln in die Spec-Kit-
+Oberflaechen uebertragen werden.
+
+TuiVision is a learning and porting project. Code, tests, examples, and
+documentation must not only work; trainees must also be able to understand
+them. Earlier notes already required German and English, approximate CEFR-B2
+language, XML documentation, DocFX, and educational comments. These
+requirements must become clear governance rules in the Spec-Kit surfaces.
+
+---
+
+## 2. Anforderungen / Requirements
+
+### CC-01: Didaktische und sprachliche Klarheit
+
+Die Constitution soll das Prinzip "Didaktische Klarheit" zu "Didaktische und
+sprachliche Klarheit" erweitern. Dokumentation, Guides, API-Texte und
+lernerorientierte Kommentare muessen Deutsch zuerst und Englisch danach
+liefern.
+
+The constitution shall extend the principle "Pedagogical Clarity" to
+"Pedagogical and Linguistic Clarity". Documentation, guides, API text, and
+learner-oriented comments must provide German first and English second.
+
+### CC-02: CEFR-B2 als Lesbarkeitsziel
+
+Deutsche und englische Texte sollen ungefaehr CEFR-B2 erreichen. Das Ziel ist
+nicht akademische Vereinfachung, sondern klare Fachsprache fuer angehende
+Fachinformatikerinnen und Fachinformatiker.
+
+German and English text should roughly reach CEFR-B2. The goal is not academic
+oversimplification, but clear technical language for future IT application
+development specialists.
+
+### CC-03: XML-Dokumentation fuer oeffentliche APIs
+
+Oeffentliche Typen, Member, Parameter, Rueckgabewerte und relevante
+Ausnahmen muessen vollstaendige XML-Dokumentation erhalten. `summary`,
+`param`, `returns` und `exception` sind zu nutzen, wenn sie fachlich passen.
+
+Public types, members, parameters, return values, and relevant exceptions must
+have complete XML documentation. `summary`, `param`, `returns`, and
+`exception` shall be used where they are meaningful.
+
+### CC-04: Kommentare erklaeren Entscheidungen
+
+Block- oder Zeilenkommentare sollen dort eingesetzt werden, wo sie eine
+didaktische Entscheidung, einen Trade-off oder eine Einschraenkung erklaeren.
+Sie sollen nicht triviale Codezeilen wiederholen.
+
+Block or line comments should be used where they explain an educational
+decision, trade-off, or constraint. They should not repeat trivial code lines.
+
+### CC-05: Dokumentationsaenderungen ziehen Validierung nach sich
+
+Wenn API-Signaturen, XML-Kommentare, DocFX-Navigation oder sichtbare
+Dokumentationsausgabe geaendert werden, muss der passende DocFX- und
+A11Y-Pruefpfad im selben Arbeitsgang geplant werden.
+
+If API signatures, XML comments, DocFX navigation, or visible documentation
+output change, the matching DocFX and accessibility validation path must be
+planned in the same work item.
+
+### CC-06: Agent-Guidance bleibt synchron
+
+Wenn die Constitution oder die Spec-Kit-Templates diese Regeln aendern,
+muessen die betroffenen Agent-Dateien im selben Feature-Lauf geprueft und bei
+Bedarf synchronisiert werden.
+
+If the constitution or Spec-Kit templates change these rules, the affected
+agent guidance files must be checked and synchronized in the same feature run
+where needed.
+
+### CC-07: Tests bleiben didaktisch nachvollziehbar
+
+Neue Features sollen, wo sinnvoll, testgetrieben geplant werden: erst ein
+roter oder fehlender Nachweis, danach die Implementierung, danach gruene
+Validierung. Aufgaben und Evidence sollen diesen Weg fuer Lernende sichtbar
+machen.
+
+New features should be planned test-first where useful: first a red or missing
+proof, then implementation, then green validation. Tasks and evidence should
+make this path visible for learners.
+
+---
+
+## 3. Nicht im Scope / Out of Scope
+
+- keine konkrete Beispielwelle
+- keine neue Controls-, Driver- oder Serialization-Funktion
+- keine generierten DocFX-Artefakte im Commit
+- keine Absenkung der bestehenden A11Y- oder Coverage-Gates
+- keine rein kosmetische Umschreibung ohne Governance-Wirkung
+
+- no concrete example wave
+- no new controls, driver, or serialization feature
+- no generated DocFX artifacts in the commit
+- no lowering of existing accessibility or coverage gates
+- no purely cosmetic rewrite without governance effect
+
+---
+
+## 4. Akzeptanzkriterien / Acceptance Criteria
+
+- Constitution und relevante Templates nennen Deutsch zuerst, Englisch danach,
+  CEFR-B2-Orientierung und text-first A11Y als Completion-Kriterien.
+- Betroffene Agent-Guidance-Dateien sind geprueft und bei Bedarf
+  synchronisiert.
+- Public-API-Dokumentationspflichten und DocFX-/A11Y-Validierung sind klar
+  beschrieben.
+- Der spaetere Spec-Kit-Lauf dokumentiert, welche Dateien geaendert wurden und
+  warum keine fachliche Framework-Portierung im Scope liegt.
+
+- The constitution and relevant templates name German-first, English-second,
+  CEFR-B2 orientation, and text-first accessibility as completion criteria.
+- Affected agent guidance files are checked and synchronized where needed.
+- Public API documentation duties and DocFX/accessibility validation are
+  described clearly.
+- The later Spec-Kit run documents which files changed and why no functional
+  framework port is in scope.
+
+---
+
+## 5. Kopierbarer Specify-Prompt / Copyable Specify Prompt
+
+```text
+/speckit-specify Nutze Lastenheft_Constitution_Change.md als verbindliche Eingabe. Erstelle die Feature-Spezifikation fuer eine Governance-Aenderung zu didaktischer und sprachlicher Klarheit in TuiVision.
+
+Ziel: Constitution, Spec-Kit-Templates und betroffene Agent-Guidance sollen konsistent festlegen, dass user-facing Dokumentation und Public-API-Dokumentation Deutsch zuerst und Englisch danach liefern, ungefaehr CEFR-B2 erreichen und text-first A11Y als Completion-Kriterium behandeln.
+
+Pflicht:
+- Anforderungen Deutsch zuerst und Englisch danach, CEFR-B2 und text-first A11Y formulieren.
+- Constitution, Templates und Agent-Guidance gemeinsam pruefen und betroffene Dateien synchronisieren.
+- Public-API-XML-Dokumentation, didaktische Kommentare, DocFX-Validierung und web-a11y-Smoke als Governance-Regeln klaeren.
+- TDD-/Test-first-Nachweise dort verlangen, wo sie Lernenden den Entwicklungsweg zeigen.
+- Keine konkrete Beispielwelle, keine Framework-Portierung und keine generierten DocFX-Artefakte in diesen Lauf ziehen.
+```

@@ -1,6 +1,6 @@
 # Lastenheft: Terminal-, Zeichensatz- und Emulations-Haertung fuer Beispielwelle 4
 
-**Dokument-Status:** Entwurf
+**Dokument-Status:** Spec-Kit-Eingabedatei, bereit fuer `/speckit-specify`
 **Erstellt:** 2026-03-29
 **Betrifft:** `src/TuiVision.Drivers.Console/`, `src/TuiVision.Compatibility/`, `src/TuiVision.Controls/`, `tests/TuiVision.Drivers.Tests/`, `tests/TuiVision.Examples.SmokeTests/`
 **Empfohlene Prioritaet:** jetzt anlegen, aber erst nach Wave-3-Basis abarbeiten
@@ -151,3 +151,36 @@ readiness remain the separate preparation block for wave 4 here.
   specific behaviour on shared infrastructure instead of raw console access.
 - Platform-specific differences are visible in tests or review documents rather
   than hidden implicitly in runtime behaviour.
+
+---
+
+## 7. Spec-Kit-Readiness / Spec-Kit Readiness
+
+Dieses Lastenheft ist als direkte Eingabedatei fuer `/speckit-specify`
+verwendbar. Der spaetere Spec-Kit-Lauf muss die Anforderungen Deutsch zuerst
+und Englisch danach uebernehmen, auf CEFR-B2-Niveau formulieren und
+text-first A11Y-Anforderungen fuer Terminal-, Charset-, Fallback- und
+Host-Grenzen sichtbar halten.
+
+This requirements document can be used directly as input for
+`/speckit-specify`. The later Spec-Kit run must carry the requirements in
+German first and English second, use CEFR-B2 language, and keep text-first
+accessibility requirements visible for terminal, charset, fallback, and host
+limits.
+
+---
+
+## 8. Kopierbarer Specify-Prompt / Copyable Specify Prompt
+
+```text
+/speckit-specify Nutze Lastenheft_05_TerminalCharsetAndEmulation.md als verbindliche Eingabe. Erstelle die Feature-Spezifikation fuer einen Terminal-, Charset- und Emulations-Hardening-Lauf als Voraussetzung fuer Wave-4-Beispiele.
+
+Ziel: Terminal-Sitzungsmodell, Escape-Umfang, Charset-/Font-Mapping und Host-Fallbacks muessen definiert und getestet werden, bevor terminal, eterm, xterm, fonts und cyrillic als sichtbare Wave-4-Beispiele portiert werden.
+
+Pflicht:
+- Anforderungen Deutsch zuerst und Englisch danach, CEFR-B2 und text-first A11Y formulieren.
+- Strukturierte Terminal-/Presentation-Vertraege statt direkter unstrukturierter Konsolenzugriffe verlangen.
+- Escape-Sequenzen, Cursorbewegungen, Attribute, Charset-Mapping, Ersatzzeichen und Plattformgrenzen bewusst zuschneiden.
+- Multi-Mac, Linux und Windows/WSL als Review-Kontext beruecksichtigen.
+- Keine Editor-/Help-Flows, keine Dialog-/Widget-Nacharbeit und keinen dedizierten Runtime-Maussupport in diesen Lauf ziehen.
+```

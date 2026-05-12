@@ -1,6 +1,6 @@
 # Lastenheft: Barrierefreiheits-Fundament TuiVision (A11Y Framework Layer)
 
-**Dokument-Status:** Entwurf
+**Dokument-Status:** Spec-Kit-Eingabedatei, bereit fuer `/speckit-specify`
 **Erstellt:** 2026-03-31
 **Betrifft:** `src/TuiVision.Core/`, `src/TuiVision.Controls/`,
 `src/TuiVision.Drivers.Console/`, `tests/TuiVision.Core.Tests/`,
@@ -275,3 +275,36 @@ framework. An interface like `IAccessibleWidget` is not a full screen reader —
 
 The key lesson: accessibility is not retrofitted in one large PR. It emerges from many small,
 consistent decisions — and from the right timing (after Wave 4, not before).
+
+---
+
+## 10. Spec-Kit-Readiness / Spec-Kit Readiness
+
+Dieses Lastenheft ist als direkte Eingabedatei fuer `/speckit-specify`
+verwendbar. Der spaetere Spec-Kit-Lauf muss die Anforderungen Deutsch zuerst
+und Englisch danach uebernehmen, auf CEFR-B2-Niveau formulieren und die
+text-first A11Y-Strategie ausdruecklich als Architektur- und Testthema
+behandeln.
+
+This requirements document can be used directly as input for
+`/speckit-specify`. The later Spec-Kit run must carry the requirements in
+German first and English second, use CEFR-B2 language, and treat the
+text-first accessibility strategy explicitly as an architecture and testing
+topic.
+
+---
+
+## 11. Kopierbarer Specify-Prompt / Copyable Specify Prompt
+
+```text
+/speckit-specify Nutze Lastenheft_06_A11Y_Framework.md als verbindliche Eingabe. Erstelle die Feature-Spezifikation fuer ein TuiVision-A11Y-Framework-Fundament nach Abschluss der MUSS-Wellen 1 bis 4.
+
+Ziel: TuiVision braucht ein text-first A11Y-Fundament mit semantischen Widget-Metadaten, Fokus-/Status-Textsignalen, Shortcut-Vertraegen, High-Contrast-Optionen und passenden Tests.
+
+Pflicht:
+- Anforderungen Deutsch zuerst und Englisch danach, CEFR-B2 formulieren.
+- Terminal-UI-A11Y realistisch begrenzen: Playwright/axe fuer DocFX-HTML, FakeDriver- und prozessbasierte Tests fuer Terminal-UI-Verhalten.
+- `IAccessibleWidget`, Fokuswechsel-Text-Events, Shortcut-Registrierung, Tastaturnavigation und High-Contrast-ColorScheme als pruefbare Architekturthemen behandeln.
+- WCAG 2.2 AA fuer generierte HTML-Dokumentation als Baseline nutzen; Terminal-Einschraenkungen dokumentieren statt ueberbehaupten.
+- Keine Aenderung am Porting-Scope der Wellen 1 bis 4 und keine Maus als primaeren Eingabekanal in diesen Lauf ziehen.
+```

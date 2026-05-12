@@ -1,6 +1,6 @@
 # Lastenheft: Editor-, Hilfe- und Ressourcen-Haertung fuer Beispielwelle 3
 
-**Dokument-Status:** Entwurf
+**Dokument-Status:** Spec-Kit-Eingabedatei, bereit fuer `/speckit-specify`
 **Erstellt:** 2026-03-29
 **Betrifft:** `src/TuiVision.Controls/`, `src/TuiVision.Serialization/`, `tests/TuiVision.Controls.Tests/`, `tests/TuiVision.Serialization.Tests/`, `tests/TuiVision.Examples.SmokeTests/`
 **Empfohlene Prioritaet:** jetzt anlegen, aber erst nach Wave-2-Basis abarbeiten
@@ -150,3 +150,36 @@ Wave-3 examples may present these failures, but must not hide them.
 - The document remains explicitly tied back to
   `specs/004-editor-file-help-streams/` instead of creating a competing
   parallel plan.
+
+---
+
+## 7. Spec-Kit-Readiness / Spec-Kit Readiness
+
+Dieses Lastenheft ist als direkte Eingabedatei fuer `/speckit-specify`
+verwendbar. Der spaetere Spec-Kit-Lauf muss die Anforderungen Deutsch zuerst
+und Englisch danach uebernehmen, auf CEFR-B2-Niveau formulieren und
+text-first A11Y-Anforderungen fuer Editor-, Help-, Resource- und
+Compiler-Flows sichtbar halten.
+
+This requirements document can be used directly as input for
+`/speckit-specify`. The later Spec-Kit run must carry the requirements in
+German first and English second, use CEFR-B2 language, and keep text-first
+accessibility requirements visible for editor, help, resource, and compiler
+flows.
+
+---
+
+## 8. Kopierbarer Specify-Prompt / Copyable Specify Prompt
+
+```text
+/speckit-specify Nutze Lastenheft_03_EditorHelpAndResourcesHardening.md als verbindliche Eingabe. Erstelle die Feature-Spezifikation fuer einen Editor-, Help- und Resources-Hardening-Lauf als Voraussetzung fuer Wave-3-Beispiele.
+
+Ziel: Die End-to-End-Vertraege fuer Editor, Datei, Hilfe, Ressourcen, Help-Compiler und i18n muessen gehaertet werden, damit bhelp, helpdemo, i18n, tvedit und tvhc spaeter als sichtbare Wave-3-Beispiele portiert werden koennen.
+
+Pflicht:
+- Anforderungen Deutsch zuerst und Englisch danach, CEFR-B2 und text-first A11Y formulieren.
+- Feature 004 bleibt die fachliche Basis; dieses Lastenheft ist eine Haertungsschicht, keine konkurrierende Parallelplanung.
+- Editor-, Help-, Resource-, Compiler- und Fehlerpfade muessen als zusammenhaengende Anwendungspfade testbar sein.
+- Fehler wie unbekannte Topics, ungueltige Cross-References, trunkierte Streams, fehlende Ressourcen und Compiler-Fehler sichtbar und reviewbar halten.
+- Keine Wave-4-Terminal-/Charset-Arbeit und keinen Runtime-Maussupport in diesen Lauf ziehen.
+```
