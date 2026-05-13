@@ -1,6 +1,6 @@
 # Lastenheft: Wave-1 Functional Hardening
 
-**Dokument-Status:** Spec-Kit-Eingabedatei, vorbereitet fuer einen Folge-Feature-Lauf nach `012-interactive-wave2-demos`
+**Dokument-Status:** Spec-Kit-Eingabedatei, bereit fuer `/speckit-specify`
 **Erstellt:** 2026-05-10
 **Betrifft:** `examples/Desklogo/`, `examples/MsgCls/`, `examples/Tutorial/`, `examples/Videomode/`, `tests/TuiVision.Examples.SmokeTests/`, `docs/guides/examples/`
 **Empfohlene Prioritaet:** nach Abschluss von `012-interactive-wave2-demos`, vor einer interaktiven Wave-1-Demo-Politur
