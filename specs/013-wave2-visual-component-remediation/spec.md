@@ -5,6 +5,21 @@
 **Status**: Draft  
 **Input**: User description: "Use `Lastenheft_Wave2-Visual-Component-Remediation.md` as input. Create a feature specification for `013-wave2-visual-component-remediation`. The eleven Wave-2 examples must show real visible TuiVision controls, dialogs, windows, or view groups. The 012 implementation with app-loop menus and text-first feedback is the baseline but is no longer sufficient as primary parity proof."
 
+## Clarifications
+
+### Session 2026-05-22
+
+- Q: How shall `013-wave2-visual-component-remediation` formally handle the new AI-SBOM governance? -> A: `AI-SBOM: N/A` for this feature because only development and agent tooling are used; no runtime or product AI is delivered. If planning or implementation introduces runtime AI, models, datasets, AI infrastructure, or delivered AI components, the AI-SBOM decision MUST be re-evaluated.
+- Q: How strictly shall primary smoke tests prove the visible UI composition? -> A: Each primary smoke test MUST run through the real app loop, verify concrete control/dialog/focus/selection/scroll/progress state, and include at least one stable rendered visibility proof.
+- Q: How binding shall the description path be in each example app? -> A: Each app MUST provide a consistently named, keyboard-reachable runtime description path such as `Help`, `Description`, or `About`; a primary or supplemental smoke test MUST verify reachability and text content.
+- Q: How shall the 013 run handle missing or weak TuiVision control capabilities? -> A: Only the smallest necessary shared control/status/test seams are allowed; larger framework gaps MUST be documented as intentional deviations and are not solved in 013.
+- Q: Which validation shall count as formal completion evidence for 013? -> A: Completion evidence MUST include Release build, fast Example-Smoke suite, full Release test run, Coverlet coverage gate, and `dotnet format --verify-no-changes`; DocFX plus web-a11y are additionally required when guides, DocFX content, navigation, or API documentation are affected.
+- Q: Which runtime description path shall be canonical for all eleven examples? -> A: All examples MUST use `Help -> Description` as the canonical runtime description path; `About` may provide supplemental context but is not the primary description path.
+- Q: How binding shall the status line be for short dynamic status? -> A: A real `TStatusLine` is the primary status-feedback surface in each app; an equivalent status area is allowed only as a documented deviation.
+- Q: Which three visible minimum flows must `Demo` prove in 013? -> A: `Demo` MUST prove three distinct flow families: `Dialog/Control`, `File/Path metadata`, and `Display/Color/Gadget`; additional demo flows are optional.
+- Q: Which data sources may be used for file/path, dialog-designer, and clipboard-adjacent proof? -> A: Only source-controlled fixtures and test temporary directories may be used; arbitrary user files, persistent user history, and external proof paths are not allowed.
+- Q: What counts as a stable rendered visibility proof for primary smokes? -> A: A primary smoke proof MUST combine a view-tree proof with a buffer/cell snapshot that shows control-specific content at the expected position or region.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Visible component parity per example (Priority: P1)
@@ -43,9 +58,8 @@ documented historical purpose.
 ### User Story 2 - Three-layer runtime experience (Priority: P1)
 
 As a reviewer, I want every example to follow the same three-layer model of
-main component, status line or status area, and description path, so that Wave
-2 uses one consistent quality standard instead of a different rule per
-example.
+main component, `TStatusLine` feedback, and description path, so that Wave 2
+uses one consistent quality standard instead of a different rule per example.
 
 **Why this priority**: The user explicitly wants the earlier text feedback to
 remain useful without counting as primary parity proof. The three-layer model
@@ -62,9 +76,10 @@ without reading the source.
    visual runtime state.
 2. **Given** the example changes selection, focus, scroll position, progress,
    dialog state, or validation state, **When** the change occurs, **Then** the
-   status line or equivalent status area reports a short text-first state.
-3. **Given** a learner needs explanation, **When** the learner uses the
-   description, help, or about path, **Then** the text explains the visible
+   `TStatusLine` reports a short text-first state unless a documented
+   deviation uses an equivalent status area.
+3. **Given** a learner needs explanation, **When** the learner uses
+   `Help -> Description`, **Then** the text explains the visible
    component, operation path, historical intent, and accessible review path in
    clear German-first and English-second wording.
 
@@ -144,7 +159,8 @@ deviations.
   including vertical-only and horizontal-plus-vertical movement.
 - A historical visual behavior depends on capability that is not yet present
   in the framework; the feature may add only the smallest necessary shared
-  capability or must document the limitation as intentional.
+  control, status, or test seam, while larger framework gaps must be
+  documented as intentional deviations and remain out of 013 scope.
 - A learner uses a text-first setup and cannot rely on layout or color alone;
   status and description paths must still explain the result.
 - A future reviewer tries to count `VisibleText` or `VisibleHistory` alone as
@@ -161,26 +177,29 @@ deviations.
   stable visual runtime state during normal startup that corresponds to the
   example's historical visual intent.
 - **FR-003**: Each covered example MUST follow the three-layer model: visible
-  main component, short status-line or equivalent status-area feedback, and a
-  reachable description path.
+  main component, short `TStatusLine` feedback, and a consistently named,
+  keyboard-reachable runtime description path named `Help -> Description`.
+  An equivalent status area is allowed only as a documented deviation.
 - **FR-004**: A text-only status, visible text history, or direct helper proof
   MUST NOT count as the primary parity proof for any example whose historical
   purpose demonstrates a visual component.
 - **FR-005**: Short status sentences already introduced by the 012 work MUST
-  remain available as status-line or equivalent status-area feedback where
-  they help text-first review.
+  remain available as `TStatusLine` feedback where they help text-first
+  review. An equivalent status area is allowed only as a documented deviation.
 - **FR-006**: Each primary smoke proof MUST verify a concrete visible state,
   such as a view, dialog, window, focus target, selection, scroll position,
   input value, history state, progress state, dialog-description result, or
-  rejection state.
+  rejection state, and MUST include at least one stable rendered visibility
+  proof that combines a view-tree proof with a buffer/cell snapshot showing
+  control-specific content at the expected position or region.
 - **FR-007**: Primary smoke proofs MUST exercise the real application path
   through the normal application loop, command, key, or event path; direct
   helpers MAY support setup or supplemental assertions only.
 - **FR-008**: `Clipboard` MUST show a visible text or input component before
   and after copy, cut, paste, and unavailable-clipboard paths.
-- **FR-009**: `Demo` MUST show at least three visible demo flows that represent
-  broad controls, dialogs, file/path metadata, display/color behavior, or
-  gadget-like historical intent.
+- **FR-009**: `Demo` MUST show at least three distinct visible demo flow
+  families: `Dialog/Control`, `File/Path metadata`, and
+  `Display/Color/Gadget`. Additional demo flows are optional.
 - **FR-010**: `DlgDsn` MUST show a visible dialog or control tree for valid
   dialog descriptions and visible rejection feedback for invalid controlled
   fixtures.
@@ -210,10 +229,12 @@ deviations.
   user-visible deviations.
 - **FR-020**: The feature MAY add a small shared control, status, or test seam
   only when it is necessary to expose the visible Wave-2 composition; broad
-  framework redesign is out of scope.
+  framework redesign is out of scope. Larger framework gaps MUST be documented
+  as intentional deviations instead of being solved in 013.
 - **FR-021**: File, path, clipboard, and dialog-designer proof paths MUST use
-  controlled repository fixtures or test temporary locations and MUST NOT read
-  arbitrary user file contents or write persistent user data as proof.
+  source-controlled fixtures or test temporary directories and MUST NOT read
+  arbitrary user file contents, rely on external proof paths, or write
+  persistent user history as proof.
 - **FR-022**: Guides and `examples/README.md` MUST identify each example's
   visible main component, operation path, status feedback, description path,
   accessibility notes, and historical-source relationship.
@@ -221,10 +242,16 @@ deviations.
   to visible target state to smoke proof and MUST record validation commands,
   known deviations, security rationale, architecture rationale, and A11Y
   rationale.
-- **FR-024**: The feature MUST NOT add Wave-3 or Wave-4 behavior, mandatory
+- **FR-024**: Each covered example MUST provide a consistently named,
+  keyboard-reachable runtime description path named `Help -> Description` that
+  explains the visible component and operation path. `About` MAY provide
+  supplemental context but MUST NOT replace `Help -> Description` as the
+  primary description path. A primary or supplemental smoke test MUST verify
+  the path's reachability and text content.
+- **FR-025**: The feature MUST NOT add Wave-3 or Wave-4 behavior, mandatory
   runtime mouse support, databases, external services, network dependencies,
   or unrelated documentation-platform changes.
-- **FR-025**: Project proof surfaces, including project statistics and any
+- **FR-026**: Project proof surfaces, including project statistics and any
   relevant requirement or evidence markers, MUST be updated when the feature
   is implemented.
 
@@ -253,15 +280,20 @@ deviations.
 - **CR-008**: `SBOM`, `VEX`, and `SLSA` evidence use the repository's normal
   build, release, and supply-chain evidence path unless planning introduces a
   new releasable artefact or dependency.
-- **CR-009**: `CAPEC` and `Zero Trust` are `N/A` unless planning introduces a
+- **CR-009**: `AI-SBOM` is `N/A` for this feature because the feature uses AI
+  only as development or agent tooling and does not deliver runtime AI,
+  product AI, models, datasets, AI infrastructure, or AI components. If
+  planning or implementation introduces any delivered AI element, this
+  decision MUST be re-evaluated.
+- **CR-010**: `CAPEC` and `Zero Trust` are `N/A` unless planning introduces a
   changed trust boundary, externally reachable flow, or service architecture.
-- **CR-010**: Security evidence defaults to `docs/security/`:
+- **CR-011**: Security evidence defaults to `docs/security/`:
   `security-checklist.md`, `asvs-verification.md`,
   `supply-chain-evidence.md`, `threat-model.md`, and
   `zero-trust-applicability.md` are updated only when plan or implementation
   changes make existing evidence incomplete; otherwise feature evidence records
   the unchanged-risk rationale.
-- **CR-011**: General architecture evidence is required because the feature
+- **CR-012**: General architecture evidence is required because the feature
   affects runtime behavior, visible UI composition, testable interaction
   contracts, accessibility quality attributes, and technical-debt boundaries.
   Expected evidence belongs under `docs/architecture/` or the feature's
@@ -273,7 +305,9 @@ deviations.
   relevant as repository baselines. OWASP ASVS is N/A for this feature because
   no web/API/auth-bearing surface is added. SBOM, VEX, and SLSA stay on the
   existing repository evidence path unless planning adds a new dependency,
-  packaged artefact, or release change.
+  packaged artefact, or release change. AI-SBOM is N/A because no runtime or
+  product AI is delivered; this decision must be re-evaluated if delivered AI
+  elements enter scope.
 - **Architecture Governance**: Runtime behavior, visible UI composition,
   interaction testing, and accessibility quality attributes are affected.
   Trust boundaries are not expected to change because no external services,
@@ -309,13 +343,18 @@ deviations.
 - **Status Feedback**: A short text-first status-line or equivalent status
   area message that reports current selection, scroll position, progress,
   error, validation state, or next operation without replacing the main
-  component.
-- **Description Path**: A reachable help, description, or about path that
+  component. The primary runtime surface is a real `TStatusLine`; equivalent
+  status areas require documented deviation evidence.
+- **Description Path**: The canonical `Help -> Description` runtime path that
   explains the visible component, operation path, historical intent, and A11Y
-  expectations.
+  expectations. It is a consistently named, keyboard-reachable runtime path,
+  not only a guide or evidence entry. `About` may provide supplemental context
+  only.
 - **Primary Smoke Proof**: A deterministic validation scenario that exercises
-  the visible application path and verifies the visible component or state as
-  the primary proof.
+  the visible application path through the real app loop, verifies concrete
+  control/dialog/focus/selection/scroll/progress state, and includes a stable
+  rendered visibility proof built from both view-tree proof and a buffer/cell
+  snapshot with control-specific content at the expected position or region.
 - **Historical Source Review**: A per-example record of the relevant read-only
   C/C++ source and header files, the historical visual purpose, the C# target
   state, and any intentional user-visible deviation.
@@ -330,31 +369,41 @@ deviations.
 - **SC-001**: All eleven scoped examples show a visible main component or
   stable visual runtime state from normal startup.
 - **SC-002**: All eleven examples provide the three-layer model: main
-  component, status-line or equivalent status-area feedback, and reachable
-  description path.
+  component, `TStatusLine` feedback, and reachable description path. Any
+  equivalent status-area fallback has documented deviation evidence.
 - **SC-003**: All eleven primary smoke proofs verify a visible component or
-  visible runtime state, and zero primary smoke proofs rely only on
-  `VisibleText`, `VisibleHistory`, or direct helper output.
+  visible runtime state through both concrete state assertions and stable
+  rendered visibility assertions that combine view-tree proof with buffer/cell
+  snapshots at expected positions or regions. Zero primary smoke proofs rely
+  only on `VisibleText`, `VisibleHistory`, or direct helper output.
 - **SC-004**: The smoke coverage includes every required visual family:
-  clipboard text/input state, broad demo flows, dialog-description rendering
-  or rejection, dynamic text, input/list/history, list selection or boundary,
-  progress completion, scroll-dialog focus or offset, two-axis scroll state,
-  combo/input selection, and progress abort/cancel state.
+  clipboard text/input state, the three required `Demo` flow families,
+  dialog-description rendering or rejection, dynamic text, input/list/history,
+  list selection or boundary, progress completion, scroll-dialog focus or
+  offset, two-axis scroll state, combo/input selection, and progress
+  abort/cancel state.
 - **SC-005**: Every scoped example has historical-source review evidence that
   names the relevant source files, historical visual intent, target visible
   state, and intentional deviations.
 - **SC-006**: All affected guides and `examples/README.md` describe startup,
   visible main component, operation path, expected status feedback, description
   path, and accessibility notes in German first and English second.
-- **SC-007**: A reviewer can trace every example from historical source to
+- **SC-007**: All eleven apps provide a consistently named,
+  keyboard-reachable `Help -> Description` runtime description path, and a
+  primary or supplemental smoke test verifies reachability and text content.
+- **SC-008**: A reviewer can trace every example from historical source to
   visible runtime state to smoke proof to guide/evidence entry.
-- **SC-008**: No Wave-3 or Wave-4 behavior is required, implemented, or counted
+- **SC-009**: No Wave-3 or Wave-4 behavior is required, implemented, or counted
   toward completion.
-- **SC-009**: Completion evidence records successful fast example-smoke
-  validation and successful full repository test validation.
-- **SC-010**: Formatting, coverage, security, architecture, and A11Y evidence
-  are either updated or explicitly recorded as unchanged or not applicable with
-  rationale.
+- **SC-010**: Completion evidence records successful Release build, fast
+  Example-Smoke suite, full Release test run, Coverlet coverage gate, and
+  `dotnet format --verify-no-changes`.
+- **SC-011**: Formatting, coverage, security, architecture, supply-chain,
+  AI-SBOM, and A11Y evidence are either updated or explicitly recorded as
+  unchanged or not applicable with rationale.
+- **SC-012**: DocFX generation and the web-a11y smoke path are successful when
+  guides, DocFX content, documentation navigation, or API documentation are
+  affected.
 
 ## Assumptions
 
@@ -366,10 +415,13 @@ deviations.
 - Keyboard operation is the mandatory user path. Mouse-only operation is out of
   scope.
 - The feature may add narrowly scoped shared support only when required to
-  expose the visible Wave-2 composition and keep tests stable.
+  expose the visible Wave-2 composition and keep tests stable. Larger
+  framework gaps are documented as intentional deviations and stay out of
+  scope for 013.
 - Existing generated DocFX output remains untracked; DocFX and web A11Y checks
   are required only when documentation output or navigation changes.
 - Controlled fixtures and test temporary directories are acceptable proof data
-  boundaries. Arbitrary user-file content is not an acceptable proof source.
+  boundaries. Arbitrary user-file content, persistent user history, and
+  external proof paths are not acceptable proof sources.
 - No new external service, database, network dependency, or persistent user
   history is required.
