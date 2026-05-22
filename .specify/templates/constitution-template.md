@@ -45,9 +45,11 @@
 <!--
   If this project uses Spec-Kit governance presets, list the installed presets,
   versions, priorities, and evidence paths here. The home-baseline default set is:
-  security-governance v0.2.0 prio 10, architecture-governance v0.2.0 prio 20,
+  security-governance v0.3.0 prio 10, architecture-governance v0.2.0 prio 20,
   isaqb-architecture-governance v0.1.0 prio 30, a11y-governance v0.2.0 prio 40,
   cross-platform-governance v0.1.0 prio 50, agent-parity-governance v0.1.0 prio 60.
+  security-governance v0.3.0 adds conditional AI-SBOM evidence: development-tool-only
+  AI usage is N/A; AI runtime/product components require G7/BSI cluster evidence.
   C#/.NET Level-2 projects default to all six unless a justified exception is documented.
 -->
 
