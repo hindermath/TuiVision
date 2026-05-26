@@ -340,14 +340,33 @@ default; explicit enforcement at the governance level is required.
 Mandatory rules:
 - Generated code MUST avoid known vulnerability classes from the OWASP Top 10
   and the language-specific CWE lists relevant to the project runtime.
-- Language-specific secure-coding standards MUST be applied:
+- Language-specific secure-coding standards MUST be applied (see
+  `.specify/templates/secure-coding-language-rules-template.md` for the
+  detailed checklist):
   - **C / C89 (cc65)**: bounds checking on all buffer operations, no `gets()`,
     no unchecked `sprintf()`/`strcpy()`, integer overflow guards, CERT C Coding
     Standard where applicable.
-  - **C# / .NET**: parameterised queries (no string-concatenated SQL),
-    output encoding against XSS, anti-forgery tokens for forms, secure
-    deserialisation defaults, `SecureString` or modern alternatives for
-    in-memory secrets, Microsoft Secure Coding Guidelines.
+  - **C# / .NET**: parameterised queries, output encoding against XSS,
+    anti-forgery tokens for forms, policy-based authorisation, secure
+    deserialisation defaults, `HttpClient` timeout/SSRF review, Microsoft
+    Secure Coding Guidelines.
+  - **Rust**: isolate and justify `unsafe`, avoid panic paths from untrusted
+    input, validate deserialised data, use reviewed cryptography, and run
+    `cargo audit` or equivalent advisory scanning.
+  - **Go**: propagate `context`, set HTTP server/client timeouts, prevent SSRF,
+    use `crypto/rand`, constrain file paths, and run `govulncheck` or
+    equivalent.
+  - **Swift**: avoid force unwraps on untrusted data, validate decoded input,
+    use Keychain/CryptoKit/platform TLS defaults, and constrain file URLs.
+  - **Java / Kotlin**: validate DTOs, parameterise persistence access, restrict
+    deserialisation, enforce framework authentication, authorisation, CSRF,
+    CORS, and session settings.
+  - **Python**: validate boundary input, avoid unsafe deserialisation and
+    dynamic execution, constrain subprocess/file access, keep TLS verification
+    enabled, and run dependency auditing.
+  - **TypeScript / JavaScript**: validate runtime input, prevent XSS,
+    prototype pollution and SSRF, avoid dynamic code execution, review auth,
+    cookie and CSP settings, and audit lock files.
   - **SQL**: parameterised statements only, least-privilege access patterns,
     no dynamic SQL from untrusted input.
   - **Bash**: quoted variable expansions (`"$var"`), no `eval` on untrusted
@@ -842,14 +861,14 @@ workspace family consists of:
 
 | Preset | Version | Priority | Scope |
 |---|---:|---:|---|
-| `security-governance` | `v0.3.0` | `10` | secure development, MSL, SSDF, ASVS, SBOM/VEX/SLSA, AI-SBOM, CRA awareness |
+| `security-governance` | `v0.4.0` | `10` | secure development, MSL, language-specific secure coding, SSDF, ASVS, SBOM/VEX/SLSA, AI-SBOM, CRA awareness |
 | `architecture-governance` | `v0.2.0` | `20` | secure architecture, STRIDE/CAPEC, Zero Trust, SAMM, S-ADR |
 | `isaqb-architecture-governance` | `v0.1.0` | `30` | general iSAQB/arc42 architecture governance |
 | `a11y-governance` | `v0.2.0` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts |
 | `cross-platform-governance` | `v0.1.0` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
 | `agent-parity-governance` | `v0.1.0` | `60` | synchronized agent guidance across declared AI-agent files |
 
-`security-governance` v0.3.0 adds conditional `AI-SBOM` evidence: development-tool-only AI usage is `N/A`, while AI runtime/product components require G7/BSI AI-SBOM cluster evidence.
+`security-governance` v0.4.0 keeps conditional `AI-SBOM` evidence and adds language-specific secure-coding profiles for Rust, Go, Swift, Java/Kotlin, Python, and TypeScript/JavaScript: development-tool-only AI usage is `N/A`, while AI runtime/product components require G7/BSI AI-SBOM cluster evidence.
 
 All six presets are published as standalone repositories under
 `https://github.com/hindermath/spec-kit-preset-*` and are included in the

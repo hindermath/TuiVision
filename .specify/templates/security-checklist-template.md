@@ -8,11 +8,11 @@
 
 <!--
   Diese Checkliste wird bei Code-Reviews für sicherheitsrelevante Änderungen verwendet.
-  Wähle den sprachspezifischen Abschnitt passend zum Level-2-Projekt.
+  Wähle den sprachspezifischen Abschnitt passend zum Level-2-Projekt und pflege die Detailpruefung in secure-coding-language-rules-template.md.
   Nicht zutreffende Punkte mit N/A markieren und begründen.
 
   This checklist is used during code reviews for security-relevant changes.
-  Select the language-specific section matching the Level-2 project.
+  Select the language-specific section matching the Level-2 project and record the detailed review in secure-coding-language-rules-template.md.
   Mark non-applicable items as N/A with justification.
 -->
 
@@ -54,6 +54,12 @@
 - [ ] Secrets in plattformgeeignetem Secret-Store (Key Vault, Keychain, CI-Secrets)
 
 ---
+
+## Detaillierte Sprachprofile / Detailed Language Profiles
+
+- [ ] Die anwendbaren Detailregeln aus `secure-coding-language-rules-template.md` wurden ausgefuellt oder als N/A begruendet.
+- [ ] MSL-Status wurde nicht als Ersatz fuer die sprachspezifische Secure-Coding-Pruefung verwendet.
+- [ ] Rust, Go, Swift, Java/Kotlin, Python und TypeScript/JavaScript wurden bei Bedarf gegen die neuen Profile geprueft.
 
 ## C# / .NET — Spezifische Prüfpunkte / C# / .NET Specific Checks
 
