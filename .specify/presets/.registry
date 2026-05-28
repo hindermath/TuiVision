@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "presets": {
     "security-governance": {
-      "version": "0.3.0",
+      "version": "0.4.0",
       "source": "local",
-      "manifest_hash": "sha256:a6b516c8ce2ad3d5ee54e241c6230a4cd31ffdae8b019c8fb1295895a6465975",
+      "manifest_hash": "sha256:320bc61d740c75ebe53a89715a43241d3ae17d5568693476f8d21342f4428d8d",
       "enabled": true,
       "priority": 10,
       "registered_commands": {
