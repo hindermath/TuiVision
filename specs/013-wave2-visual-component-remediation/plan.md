@@ -97,8 +97,10 @@ specs/013-wave2-visual-component-remediation/
 |-- research.md
 |-- data-model.md
 |-- quickstart.md
+|-- pr-evidence.md          # later implementation/PR evidence, created or updated when implementation starts
 |-- checklists/
-|   `-- requirements.md
+|   |-- requirements.md
+|   `-- plan-quality.md
 |-- contracts/
 |   `-- wave2-visual-component-acceptance.md
 `-- tasks.md                 # later /speckit-tasks output, not created by /speckit-plan
@@ -159,7 +161,7 @@ The later `/speckit-tasks` run should produce tasks in this order:
 6. Apply the model to `ProgBa` and `TProgB` for completion, partial progress, abort, and cancelled states.
 7. Apply the model to `DlgDsn`, `Sdlg`, and `Sdlg2` for dialog rendering/rejection, one-axis scroll/focus, and two-axis scroll/focus states.
 8. Add or adjust `Help -> Description` in every app and verify reachability plus content through primary or supplemental smokes.
-9. Update affected guides, `examples/README.md`, feature evidence, architecture/security/A11Y/supply-chain/AI-SBOM rationale, `docs/project-statistics.md`, and `Pflichtenheft.md` markers where applicable. Security evidence must name the `security-governance` v0.4.0 baseline and confirm that the added Rust/Go/Swift/Java/Kotlin/Python/TypeScript/JavaScript secure-coding profiles are not applicable to the C#/.NET implementation.
+9. Update affected guides, `examples/README.md`, feature or PR evidence such as `specs/013-wave2-visual-component-remediation/pr-evidence.md`, architecture/security/A11Y/supply-chain/AI-SBOM rationale, `docs/project-statistics.md`, and `Pflichtenheft.md` markers where applicable. Security evidence must name the `security-governance` v0.4.0 baseline and confirm that the added Rust/Go/Swift/Java/Kotlin/Python/TypeScript/JavaScript secure-coding profiles are not applicable to the C#/.NET implementation. Review `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and `.github/agents/copilot-instructions.md` together if implementation changes active feature context, technologies, project structure, or shared workflow rules.
 10. Run and record the formal validation gate: Release build, fast Example-Smoke suite, full Release test run, Coverlet coverage gate, `dotnet format --verify-no-changes`, plus DocFX/web-a11y when documentation output or navigation changes.
 
 ## Complexity Tracking

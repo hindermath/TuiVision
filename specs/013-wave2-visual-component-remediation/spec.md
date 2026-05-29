@@ -11,7 +11,7 @@
 
 - Q: How shall `013-wave2-visual-component-remediation` formally handle the new AI-SBOM governance? -> A: `AI-SBOM: N/A` for this feature because only development and agent tooling are used; no runtime or product AI is delivered. If planning or implementation introduces runtime AI, models, datasets, AI infrastructure, or delivered AI components, the AI-SBOM decision MUST be re-evaluated.
 - Q: How strictly shall primary smoke tests prove the visible UI composition? -> A: Each primary smoke test MUST run through the real app loop, verify concrete control/dialog/focus/selection/scroll/progress state, and include at least one stable rendered visibility proof.
-- Q: How binding shall the description path be in each example app? -> A: Each app MUST provide a consistently named, keyboard-reachable runtime description path such as `Help`, `Description`, or `About`; a primary or supplemental smoke test MUST verify reachability and text content.
+- Q: How binding shall the description path be in each example app? -> A: Each app MUST provide a consistently named, keyboard-reachable runtime description path; a primary or supplemental smoke test MUST verify reachability and text content. The later clarification in this session fixes that canonical path as `Help -> Description`.
 - Q: How shall the 013 run handle missing or weak TuiVision control capabilities? -> A: Only the smallest necessary shared control/status/test seams are allowed; larger framework gaps MUST be documented as intentional deviations and are not solved in 013.
 - Q: Which validation shall count as formal completion evidence for 013? -> A: Completion evidence MUST include Release build, fast Example-Smoke suite, full Release test run, Coverlet coverage gate, and `dotnet format --verify-no-changes`; DocFX plus web-a11y are additionally required when guides, DocFX content, navigation, or API documentation are affected.
 - Q: Which runtime description path shall be canonical for all eleven examples? -> A: All examples MUST use `Help -> Description` as the canonical runtime description path; `About` may provide supplemental context but is not the primary description path.
@@ -273,6 +273,11 @@ deviations.
   shared workflow rules.
 - **CR-005**: The primary implementation language is C#, which is memory-safe
   and on the project's MSL allow-list. No non-memory-safe language is planned.
+  Under `security-governance` v0.4.0, the additional Rust, Go, Swift,
+  Java/Kotlin, Python, and TypeScript/JavaScript secure-coding profiles do not
+  create implementation obligations for this C#/.NET feature; the C#/.NET
+  secure-coding baseline and existing TuiVision project rules continue to
+  apply.
 - **CR-006**: `NIST SSDF` and `CWE Top 25` apply as Level-2 secure-development
   baselines and must be considered in feature evidence.
 - **CR-007**: `OWASP ASVS` is `N/A` because this feature does not introduce a
@@ -301,13 +306,16 @@ deviations.
 
 ### Governance Applicability
 
-- **Security Governance**: C# is memory-safe. NIST SSDF and CWE Top 25 are
-  relevant as repository baselines. OWASP ASVS is N/A for this feature because
-  no web/API/auth-bearing surface is added. SBOM, VEX, and SLSA stay on the
-  existing repository evidence path unless planning adds a new dependency,
-  packaged artefact, or release change. AI-SBOM is N/A because no runtime or
-  product AI is delivered; this decision must be re-evaluated if delivered AI
-  elements enter scope.
+- **Security Governance**: The installed and applicable baseline is
+  `security-governance` v0.4.0. C# is memory-safe. NIST SSDF and CWE Top 25
+  are relevant as repository baselines. The v0.4.0 secure-coding profiles for
+  Rust, Go, Swift, Java/Kotlin, Python, and TypeScript/JavaScript do not create
+  implementation obligations for this C#/.NET feature. OWASP ASVS is N/A for
+  this feature because no web/API/auth-bearing surface is added. SBOM, VEX,
+  and SLSA stay on the existing repository evidence path unless planning adds a
+  new dependency, packaged artefact, or release change. AI-SBOM is N/A because
+  no runtime or product AI is delivered; this decision must be re-evaluated if
+  delivered AI elements enter scope.
 - **Architecture Governance**: Runtime behavior, visible UI composition,
   interaction testing, and accessibility quality attributes are affected.
   Trust boundaries are not expected to change because no external services,
@@ -358,9 +366,10 @@ deviations.
 - **Historical Source Review**: A per-example record of the relevant read-only
   C/C++ source and header files, the historical visual purpose, the C# target
   state, and any intentional user-visible deviation.
-- **Evidence Surface**: The guide, README, project statistics, feature
-  evidence, security rationale, architecture rationale, and A11Y rationale
-  that make completion reviewable.
+- **Evidence Surface**: The guide, README, project statistics, feature or PR
+  evidence under the feature directory, security rationale, architecture
+  rationale, supply-chain/AI-SBOM rationale, and A11Y rationale that make
+  completion reviewable.
 
 ## Success Criteria *(mandatory)*
 

@@ -82,6 +82,9 @@ Each `Help -> Description` path MUST:
 - provide German-first and English-second content at roughly CEFR-B2 for learner-facing text;
 - be verified by a primary or supplemental smoke test for reachability and content.
 
+`About` MAY provide supplemental context, but it MUST NOT replace the
+canonical `Help -> Description` runtime path.
+
 Visible behavior MUST NOT rely on color, layout, or pointer-only affordances alone.
 
 ## 6. Fixture and Data Contract
@@ -107,14 +110,15 @@ Implementation MUST update or explicitly mark unchanged/N/A:
 
 - affected guide pages under `docs/guides/examples/`;
 - `examples/README.md`;
-- feature evidence under `specs/013-wave2-visual-component-remediation/`;
+- feature or PR evidence under `specs/013-wave2-visual-component-remediation/`, normally `pr-evidence.md` once implementation evidence is collected;
 - architecture evidence under `docs/architecture/` or the feature evidence path;
 - security evidence under `docs/security/` or unchanged-risk rationale, naming `security-governance` v0.4.0 as the active baseline;
 - supply-chain, SBOM/VEX/SLSA, and AI-SBOM applicability rationale;
 - confirmation that the v0.4.0 Rust/Go/Swift/Java/Kotlin/Python/TypeScript/JavaScript secure-coding profiles do not apply to this C#/.NET implementation;
 - A11Y evidence for terminal UI and generated HTML where changed;
 - `docs/project-statistics.md`;
-- `Pflichtenheft.md` next-step and progress markers where implementation changes the prioritized work state.
+- `Pflichtenheft.md` next-step and progress markers where implementation changes the prioritized work state;
+- shared agent guidance surfaces (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `.github/agents/copilot-instructions.md`) when implementation changes active feature context, technologies, project structure, or shared workflow rules.
 
 Generated `_site/`, generated `api/*.yml`, build output, test output, and transient local caches MUST NOT be committed.
 

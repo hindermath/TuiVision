@@ -97,13 +97,19 @@ Vor Review oder PR muessen diese Flaechen aktualisiert oder mit begruendetem `N/
 
 ```text
 specs/013-wave2-visual-component-remediation/
+specs/013-wave2-visual-component-remediation/pr-evidence.md
 examples/README.md
 docs/guides/examples/
 docs/architecture/
 docs/security/
 docs/project-statistics.md
 Pflichtenheft.md
+AGENTS.md, CLAUDE.md, GEMINI.md, .github/copilot-instructions.md, .github/agents/copilot-instructions.md
 ```
+
+Die Agent-Guidance-Dateien sind nur dann zu aktualisieren, wenn aktive
+Feature-Kontexte, Technologien, Projektstruktur oder gemeinsame Workflow-Regeln
+geandert werden.
 
 AI-SBOM bleibt fuer diese Funktion `N/A`, solange keine Runtime-/Produkt-KI, Modelle, Datensaetze, AI-Infrastruktur oder ausgelieferten AI-Komponenten eingefuehrt werden. Die aktive Security-Governance-Basis ist `security-governance` v0.4.0. Deren neue Sprachprofile fuer Rust, Go, Swift, Java/Kotlin, Python und TypeScript/JavaScript erzeugen fuer diese C#/.NET-Umsetzung keine neue Pflicht; C#/.NET-Secure-Coding und die bestehenden TuiVision-Regeln gelten weiter.
 
@@ -201,12 +207,17 @@ Before review or PR, these surfaces must be updated or marked with justified `N/
 
 ```text
 specs/013-wave2-visual-component-remediation/
+specs/013-wave2-visual-component-remediation/pr-evidence.md
 examples/README.md
 docs/guides/examples/
 docs/architecture/
 docs/security/
 docs/project-statistics.md
 Pflichtenheft.md
+AGENTS.md, CLAUDE.md, GEMINI.md, .github/copilot-instructions.md, .github/agents/copilot-instructions.md
 ```
+
+The agent guidance files must be updated only when active feature context,
+technologies, project structure, or shared workflow rules change.
 
 AI-SBOM remains `N/A` for this feature as long as no runtime/product AI, models, datasets, AI infrastructure, or delivered AI components are introduced. The active security-governance baseline is `security-governance` v0.4.0. Its new language profiles for Rust, Go, Swift, Java/Kotlin, Python, and TypeScript/JavaScript create no new duty for this C#/.NET implementation; C#/.NET secure coding and the existing TuiVision rules continue to apply.

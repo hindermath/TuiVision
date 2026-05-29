@@ -18,6 +18,7 @@ Represents one scoped Wave-2 example application.
 - `DescriptionPath`: Canonical runtime path `Help -> Description`.
 - `PrimarySmokeProof`: Main app-loop proof with concrete state and rendered visibility assertions.
 - `GuidePath`: Matching guide page under `docs/guides/examples/`.
+- `FeatureEvidencePath`: Feature or PR evidence record under `specs/013-wave2-visual-component-remediation/`, normally `pr-evidence.md` once implementation evidence is collected.
 - `EvidenceRecords`: Feature, architecture, security, A11Y, supply-chain, AI-SBOM, and statistics evidence or N/A rationale.
 
 **Validation rules**:
@@ -141,6 +142,7 @@ Represents a reviewable completion record.
 - `SmokeTest`: Test class/method proving the target.
 - `HistoricalSourceReviewed`: Source comparison completed and deviations recorded.
 - `DocumentationUpdated`: Guide/README/description path content updated or N/A rationale.
+- `FeatureEvidencePath`: Feature or PR evidence entry that traces the example from historical intent to visible runtime proof.
 - `ValidationGateEvidence`: Build, tests, coverage, format, DocFX/A11Y as applicable.
 - `GovernanceEvidence`: Security, architecture, supply-chain, AI-SBOM, A11Y, statistics, and Pflichtenheft evidence or unchanged rationale.
 - `ResidualRisk`: Remaining limitation or `None`.
