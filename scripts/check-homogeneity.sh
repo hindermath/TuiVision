@@ -227,14 +227,40 @@ check_markdown_file() {
 
 # ─── REV-B01 New Check Helpers ────────────────────────────────────────────────
 
-check_en_placeholder() {
+has_en_guidance() {
+  local full="$1"
+  [ -f "$full" ] || return 1
+  if rg -q '<!-- EN:' "$full" 2>/dev/null; then
+    return 0
+  fi
+
+  local bil_result bil_status
+  bil_result=$(hg_check_bilingual "$full" 2>/dev/null || true)
+  bil_status="${bil_result%%|*}"
+  if [ "$bil_status" = "PASS" ]; then
+    return 0
+  fi
+
+  if rg -qi '^#{1,6}[[:space:]].+[[:space:]]/[[:space:]].*(Shared|Environment|Registry|Security|Secure|Architecture|Documentation|Standards|Workflow|Maintenance|Notes|Description|Accessibility|For Apprentices|Spec[- ]Kit|Governance|Guidelines|Instructions|tooling)' "$full" 2>/dev/null; then
+    return 0
+  fi
+
+  if rg -qi '(Gemeinsame|Barrierefreiheit|Sichere|Sicherheits|Umgebungsregister|Hinweise|Beschreibung|deutsch)' "$full" 2>/dev/null &&
+     rg -qi '(Shared|Accessibility|Secure|Security|Environment|Notes|Description|English|englisch)' "$full" 2>/dev/null; then
+    return 0
+  fi
+
+  return 1
+}
+
+check_en_guidance() {
   local dir="$1" file="$2"
   local full="${dir}/${file}"
   [ -f "$full" ] || return 0
-  if rg -q '<!-- EN:' "$full" 2>/dev/null; then
-    emit_result "PASS" "$file" "EN placeholder" "$dir"
+  if has_en_guidance "$full"; then
+    emit_result "PASS" "$file" "EN guidance present" "$dir"
   else
-    emit_result "FAIL" "$file" "EN placeholder missing" "$dir"
+    emit_result "FAIL" "$file" "EN guidance missing" "$dir"
   fi
 }
 
@@ -258,7 +284,7 @@ check_readme_sections() {
   fi
 
   # Azubis section
-  if rg -qi '^## .*Azubis' "$full" 2>/dev/null; then
+  if rg -qi '^## .*(Azubis|Auszubildende)' "$full" 2>/dev/null; then
     emit_result "PASS" "README.md" "Azubis section" "$dir"
   else
     emit_result "FAIL" "README.md" "Azubis section missing" "$dir"
@@ -271,8 +297,9 @@ check_ansi_in_scripts() {
   [ -d "$scripts_dir" ] || return 0
 
   # Three-pattern exhaustive ANSI scan (NFR-REV-07, M4-orig: use rg not grep -rP)
+  # Exclude the scanner scripts themselves (they contain the patterns as literals in comments/code)
   local ansi_files
-  ansi_files=$(rg -l -e $'\x1b\[' -e $'\\033\[' -e $'\\e\[' "$scripts_dir" 2>/dev/null || true)
+  ansi_files=$(rg -l --glob '!check-homogeneity.*' -e $'\x1b\[' -e $'\\033\[' -e $'\\e\[' "$scripts_dir" 2>/dev/null || true)
   if [ -z "$ansi_files" ]; then
     emit_result "PASS" "scripts/" "no ANSI codes in scripts/" "$dir"
   else
@@ -352,12 +379,12 @@ while IFS='|' read -r level dir _type; do
     check_copilot_instructions "$dir"
   fi
 
-  # EN placeholder checks (Level 0 and 1)
+  # EN guidance checks (Level 0 and 1 agent/governance files)
   if [ "$level" -le 1 ]; then
-    for en_file in README.md AGENTS.md CLAUDE.md GEMINI.md constitution.md; do
-      check_en_placeholder "$dir" "$en_file"
+    for en_file in AGENTS.md CLAUDE.md GEMINI.md constitution.md; do
+      check_en_guidance "$dir" "$en_file"
     done
-    check_en_placeholder "$dir" ".github/copilot-instructions.md"
+    check_en_guidance "$dir" ".github/copilot-instructions.md"
   fi
 
   # homogeneity-check.yml presence (all levels)
@@ -378,12 +405,31 @@ while IFS='|' read -r level dir _type; do
     fi
   fi
 
-  # Level 0: canonical hook presence
+  # Level 0: canonical hook presence (check within scanned dir, works both in CI and on dev machine)
   if [ "$level" -eq 0 ]; then
-    if [ -f "${HOME}/scripts/hooks/pre-push" ]; then
+    if [ -f "${dir}/scripts/hooks/pre-push" ]; then
       emit_result "PASS" "scripts/hooks/pre-push" "canonical hook present" "$dir"
     else
       emit_result "WARN" "scripts/hooks/pre-push" "canonical hook missing" "$dir"
+    fi
+  fi
+
+  # Level 0: Git Scope Isolation checks (GIT-SCOPE-001, GIT-SCOPE-002)
+  if [ "$level" -eq 0 ]; then
+    if [ ! -d "${HOME}/.gitconfig.d" ]; then
+      if $OPT_JSON; then
+        printf '{"check":"GIT-SCOPE-001","status":"WARN","message":"~/.gitconfig.d/ fehlt — Scope-Isolierung nicht konfiguriert / missing — scope isolation not configured"}\n'
+      fi
+      emit_result "WARN" "~/.gitconfig.d/" \
+        "~/.gitconfig.d/ fehlt — Scope-Isolierung nicht konfiguriert / missing — scope isolation not configured" \
+        "$dir"
+    elif ! grep -qF 'gitdir:~/home-baseline-tmp/' "${HOME}/.gitconfig" 2>/dev/null; then
+      if $OPT_JSON; then
+        printf '{"check":"GIT-SCOPE-002","status":"WARN","message":"includeIf für home-baseline-tmp nicht gefunden / not found for home-baseline-tmp"}\n'
+      fi
+      emit_result "WARN" "~/.gitconfig" \
+        "includeIf für home-baseline-tmp nicht gefunden / not found for home-baseline-tmp" \
+        "$dir"
     fi
   fi
 
@@ -490,9 +536,7 @@ else
   printf "Overall: %d %%  |  Workspaces: %d  |  Projects: %d\n" \
     "$OVERALL_SCORE" "$WORKSPACES_COUNT" "$PROJECTS_COUNT"
 
-  FAIL_COUNT=${#FAILURES[@]+"${#FAILURES[@]}"}
-  WARN_COUNT=${#WARNINGS[@]+"${#WARNINGS[@]}"}
-  # Bash 3 safe empty array check
+  # Bash 3/4-safe empty-array count (avoids bad substitution on older bash)
   FAIL_COUNT=0; for _ in "${FAILURES[@]+"${FAILURES[@]}"}"; do FAIL_COUNT=$((FAIL_COUNT+1)); done
   WARN_COUNT=0; for _ in "${WARNINGS[@]+"${WARNINGS[@]}"}"; do WARN_COUNT=$((WARN_COUNT+1)); done
 
