@@ -150,20 +150,20 @@
 
 ### Documentation for User Story 4
 
-- [ ] T063 [P] [US4] Update visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, and deviation notes in `docs/guides/examples/clipboard.md`
-- [ ] T064 [P] [US4] Update visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, and deviation notes in `docs/guides/examples/demo.md`
-- [ ] T065 [P] [US4] Update visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, fixture boundaries, and deviation notes in `docs/guides/examples/dlgdsn.md`
-- [ ] T066 [P] [US4] Update visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, and deviation notes in `docs/guides/examples/dyntxt.md`
-- [ ] T067 [P] [US4] Update visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, and deviation notes in `docs/guides/examples/inplis.md`
-- [ ] T068 [P] [US4] Update visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, and deviation notes in `docs/guides/examples/listvi.md`
-- [ ] T069 [P] [US4] Update visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, and deviation notes in `docs/guides/examples/progba.md`
-- [ ] T070 [P] [US4] Update visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, scroll/focus explanation, and deviation notes in `docs/guides/examples/sdlg.md`
-- [ ] T071 [P] [US4] Update visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, two-axis scroll/focus explanation, and deviation notes in `docs/guides/examples/sdlg2.md`
-- [ ] T072 [P] [US4] Update visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, and deviation notes in `docs/guides/examples/tcombo.md`
-- [ ] T073 [P] [US4] Update visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, and deviation notes in `docs/guides/examples/tprogb.md`
-- [ ] T074 [US4] Update Wave-2 overview and learner-ready visual-remediation status in `examples/README.md`
-- [ ] T075 [US4] Update cross-example text-first/A11Y and guide-review notes in `docs/guides/examples/wave2-guide-review-notes.md`
-- [ ] T076 [US4] Record guide-to-runtime-to-smoke traceability for all eleven examples in `specs/013-wave2-visual-component-remediation/pr-evidence.md`
+- [ ] T063 [P] [US4] Update German-first/English-second CEFR-B2 guide content for visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, and deviation notes in `docs/guides/examples/clipboard.md`
+- [ ] T064 [P] [US4] Update German-first/English-second CEFR-B2 guide content for visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, and deviation notes in `docs/guides/examples/demo.md`
+- [ ] T065 [P] [US4] Update German-first/English-second CEFR-B2 guide content for visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, fixture boundaries, and deviation notes in `docs/guides/examples/dlgdsn.md`
+- [ ] T066 [P] [US4] Update German-first/English-second CEFR-B2 guide content for visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, and deviation notes in `docs/guides/examples/dyntxt.md`
+- [ ] T067 [P] [US4] Update German-first/English-second CEFR-B2 guide content for visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, and deviation notes in `docs/guides/examples/inplis.md`
+- [ ] T068 [P] [US4] Update German-first/English-second CEFR-B2 guide content for visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, and deviation notes in `docs/guides/examples/listvi.md`
+- [ ] T069 [P] [US4] Update German-first/English-second CEFR-B2 guide content for visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, and deviation notes in `docs/guides/examples/progba.md`
+- [ ] T070 [P] [US4] Update German-first/English-second CEFR-B2 guide content for visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, scroll/focus explanation, and deviation notes in `docs/guides/examples/sdlg.md`
+- [ ] T071 [P] [US4] Update German-first/English-second CEFR-B2 guide content for visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, two-axis scroll/focus explanation, and deviation notes in `docs/guides/examples/sdlg2.md`
+- [ ] T072 [P] [US4] Update German-first/English-second CEFR-B2 guide content for visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, and deviation notes in `docs/guides/examples/tcombo.md`
+- [ ] T073 [P] [US4] Update German-first/English-second CEFR-B2 guide content for visible main component, operation path, status feedback, `Help -> Description`, A11Y notes, historical-source relationship, and deviation notes in `docs/guides/examples/tprogb.md`
+- [ ] T074 [US4] Update German-first/English-second CEFR-B2 Wave-2 overview and learner-ready visual-remediation status in `examples/README.md`
+- [ ] T075 [US4] Update cross-example German-first/English-second CEFR-B2 text-first/A11Y and guide-review notes in `docs/guides/examples/wave2-guide-review-notes.md`
+- [ ] T076 [US4] Record guide-to-runtime-to-smoke traceability, German-first/English-second CEFR-B2 evidence, and A11Y review status for all eleven examples in `specs/013-wave2-visual-component-remediation/pr-evidence.md`
 
 **Checkpoint**: User Story 4 is independently testable: documentation and evidence explain the visible runtime behavior.
 
@@ -185,12 +185,12 @@
 - [ ] T086 Run full `dotnet test --configuration Release` and record command output in `specs/013-wave2-visual-component-remediation/pr-evidence.md`
 - [ ] T087 Run coverage gate `dotnet test --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings` and record per-assembly coverage evidence in `specs/013-wave2-visual-component-remediation/pr-evidence.md`
 - [ ] T088 Run `dotnet format --verify-no-changes` and record command output in `specs/013-wave2-visual-component-remediation/pr-evidence.md`
-- [ ] T089 If guides, DocFX content, navigation, or API documentation changed, run `docfx docfx.json` and record generated-output hygiene for `_site/` and `api/*.yml` in `specs/013-wave2-visual-component-remediation/pr-evidence.md`
-- [ ] T090 If T089 ran, run `npm run test:docfx` from `tests/web-a11y/` and record Playwright/axe evidence in `specs/013-wave2-visual-component-remediation/pr-evidence.md`
+- [ ] T089 Because US4 changes guide/README documentation, run `docfx docfx.json` unless implementation evidence explicitly proves DocFX output/navigation is unaffected, and record generated-output hygiene for `_site/` and `api/*.yml` in `specs/013-wave2-visual-component-remediation/pr-evidence.md`
+- [ ] T090 If T089 runs, run `npm run test:docfx` from `tests/web-a11y/` and record Playwright/axe evidence in `specs/013-wave2-visual-component-remediation/pr-evidence.md`; if T089 is explicitly N/A, record the N/A rationale there instead
 - [ ] T091 Run one manual startup check with `dotnet run --project examples/Clipboard --configuration Release --no-build`, `dotnet run --project examples/Demo --configuration Release --no-build`, `dotnet run --project examples/DlgDsn --configuration Release --no-build`, `dotnet run --project examples/DynTxt --configuration Release --no-build`, `dotnet run --project examples/InpLis --configuration Release --no-build`, `dotnet run --project examples/ListVi --configuration Release --no-build`, `dotnet run --project examples/ProgBa --configuration Release --no-build`, `dotnet run --project examples/Sdlg --configuration Release --no-build`, `dotnet run --project examples/Sdlg2 --configuration Release --no-build`, `dotnet run --project examples/TCombo --configuration Release --no-build`, and `dotnet run --project examples/TProgB --configuration Release --no-build`, including primary visible operation path and `Help -> Description`, then record results in `specs/013-wave2-visual-component-remediation/pr-evidence.md`
 - [ ] T092 Run `git diff --check` and record the clean diff-check result in `specs/013-wave2-visual-component-remediation/pr-evidence.md`
-- [ ] T093 Run `bash scripts/rename-lastenheft.sh Lastenheft_Wave2-Visual-Component-Remediation.md 013-wave2-visual-component-remediation` or `pwsh scripts/rename-lastenheft.ps1 -File Lastenheft_Wave2-Visual-Component-Remediation.md -BranchName 013-wave2-visual-component-remediation`, then record the resulting Lastenheft path in `specs/013-wave2-visual-component-remediation/pr-evidence.md`
-- [ ] T094 Update PR description or final feature evidence with changed examples, validation commands, representative visual snippets, security-risk statement, AI-SBOM `N/A`, and explicit confirmation that no Wave-3/Wave-4 behavior, mouse-only path, broad framework redesign, database, external service, network dependency, or persistent user history was added in `specs/013-wave2-visual-component-remediation/pr-evidence.md`
+- [ ] T093 Update PR description or final feature evidence with changed examples, validation commands, representative visual snippets, security-risk statement, AI-SBOM `N/A`, and explicit confirmation that no Wave-3/Wave-4 behavior, mouse-only path, broad framework redesign, database, external service, network dependency, or persistent user history was added in `specs/013-wave2-visual-component-remediation/pr-evidence.md`
+- [ ] T094 Run `bash scripts/rename-lastenheft.sh Lastenheft_Wave2-Visual-Component-Remediation.md 013-wave2-visual-component-remediation` or `pwsh scripts/rename-lastenheft.ps1 -File Lastenheft_Wave2-Visual-Component-Remediation.md -BranchName 013-wave2-visual-component-remediation`, then record the resulting Lastenheft path in `specs/013-wave2-visual-component-remediation/pr-evidence.md`
 
 ---
 
@@ -240,9 +240,9 @@ Task: "T024 [P] [US1] Add failing app-loop rendered-visibility smokes for ProgBa
 ## Parallel Example: User Story 4
 
 ```text
-Task: "T063 [P] [US4] Update visible main component, operation path, status feedback, Help -> Description, A11Y notes, historical-source relationship, and deviation notes in docs/guides/examples/clipboard.md"
-Task: "T065 [P] [US4] Update visible main component, operation path, status feedback, Help -> Description, A11Y notes, historical-source relationship, fixture boundaries, and deviation notes in docs/guides/examples/dlgdsn.md"
-Task: "T073 [P] [US4] Update visible main component, operation path, status feedback, Help -> Description, A11Y notes, historical-source relationship, and deviation notes in docs/guides/examples/tprogb.md"
+Task: "T063 [P] [US4] Update German-first/English-second CEFR-B2 guide content for visible main component, operation path, status feedback, Help -> Description, A11Y notes, historical-source relationship, and deviation notes in docs/guides/examples/clipboard.md"
+Task: "T065 [P] [US4] Update German-first/English-second CEFR-B2 guide content for visible main component, operation path, status feedback, Help -> Description, A11Y notes, historical-source relationship, fixture boundaries, and deviation notes in docs/guides/examples/dlgdsn.md"
+Task: "T073 [P] [US4] Update German-first/English-second CEFR-B2 guide content for visible main component, operation path, status feedback, Help -> Description, A11Y notes, historical-source relationship, and deviation notes in docs/guides/examples/tprogb.md"
 ```
 
 ## Implementation Strategy

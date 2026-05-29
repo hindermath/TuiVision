@@ -9,7 +9,7 @@ This contract defines the observable runtime, smoke-test, documentation, and gov
 
 Each scoped Wave-2 example MUST:
 
-- start as a meaningful terminal UI demo through `dotnet run --project examples/<Example>`;
+- start as a meaningful terminal UI demo through `dotnet run --project` for each scoped example project under `examples/`;
 - show a visible main component or stable visual runtime state that represents the historical visual idea;
 - include a real `TStatusLine` for short dynamic feedback unless an equivalent status area is documented as a deviation;
 - provide the canonical `Help -> Description` runtime path;
