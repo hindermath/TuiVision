@@ -37,6 +37,28 @@ public sealed class ClipboardSmokeTests : ExampleTestBase
         AssertVisibleContainsFromAppLoop(history, "cut 'wave2'", "Clipboard app-loop cut");
         AssertVisibleContainsFromAppLoop(history, "pasted 'wave2'", "Clipboard app-loop paste");
         AssertVisibleContainsFromAppLoop(history, "isolated fallback", "Clipboard app-loop unavailable");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TInputLine", "Clipboard input view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "isolated fallback", "Clipboard rendered fallback input");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft Statuszeile und Help -> Description.
+    ///
+    /// Verifies status line and Help -> Description.
+    /// </summary>
+    [TestMethod]
+    public void Clipboard_AppLoop_Shows_StatusLine_And_HelpDescription()
+    {
+        ClipboardApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(ClipboardApp.CmDescription).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertVisibleContainsFromAppLoop(app.LastStatusMessage, "Help -> Description", "Clipboard status-line description hint");
+        AssertVisibleContainsFromAppLoop(app.LastVisibleMessage, "Clipboard description", "Clipboard Help -> Description content");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "Clipboard description view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "Clipboard description", "Clipboard rendered description");
         AssertPrimaryAssertionUsedAppLoop();
     }
 

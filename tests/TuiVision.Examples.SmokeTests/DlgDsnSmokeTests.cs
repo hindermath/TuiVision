@@ -37,6 +37,28 @@ public sealed class DlgDsnSmokeTests : ExampleTestBase
         AssertVisibleContainsFromAppLoop(history, "changed name=Grace", "DlgDsn app-loop change");
         AssertVisibleContainsFromAppLoop(history, "rejected malformed", "DlgDsn app-loop malformed rejection");
         AssertVisibleContainsFromAppLoop(history, "rejected invalid-navigation", "DlgDsn app-loop invalid-description rejection");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TDialog", "DlgDsn rejection dialog view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "invalid-navigation", "DlgDsn rendered invalid-navigation rejection");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft Statuszeile und Help -> Description.
+    ///
+    /// Verifies status line and Help -> Description.
+    /// </summary>
+    [TestMethod]
+    public void DlgDsn_AppLoop_Shows_StatusLine_And_HelpDescription()
+    {
+        DlgDsnApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(DlgDsnApp.CmDescription).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertVisibleContainsFromAppLoop(app.LastStatusMessage, "Help -> Description", "DlgDsn status-line description hint");
+        AssertVisibleContainsFromAppLoop(app.VisibleText, "DlgDsn description", "DlgDsn Help -> Description content");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "DlgDsn description view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "DlgDsn description", "DlgDsn rendered description");
         AssertPrimaryAssertionUsedAppLoop();
     }
 

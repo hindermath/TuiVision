@@ -48,3 +48,21 @@ OWASP SAMM remains applicable as a lightweight governance guide. The relevant
 activities are test-first app-loop smokes, unchanged dependency posture,
 threat-model note, architecture-risk update, and release-bound SBOM/VEX/SLSA
 decision. A full feature-local maturity assessment is not required.
+
+## 013-wave2-visual-component-remediation
+
+Datum: 2026-05-30.
+
+OWASP SAMM bleibt als leichter Governance-Leitfaden anwendbar. Die Aktivitaeten
+sind Test-first-App-Loop-Smokes mit Buffer-Nachweis, unveraenderte Dependency-
+Posture, Threat-Model-Notiz, Architecture-Risk-Review, AI-SBOM-`N/A`-Rationale
+und release-gebundene SBOM/VEX/SLSA-Entscheidung. Ein vollstaendiges
+feature-lokales Reifegradassessment ist nicht erforderlich.
+
+Date: 2026-05-30.
+
+OWASP SAMM remains applicable as a lightweight governance guide. Activities are
+test-first app-loop smokes with buffer proof, unchanged dependency posture,
+threat-model note, architecture-risk review, AI-SBOM `N/A` rationale, and
+release-bound SBOM/VEX/SLSA decision. A full feature-local maturity assessment
+is not required.

@@ -70,3 +70,18 @@ Date: 2026-05-10.
 012 creates no new release artifact class and introduces no new dependency.
 SBOM, VEX, and provenance remain tied to the regular release process; the local
 example programs are review and learning artifacts.
+
+## 013-wave2-visual-component-remediation
+
+Datum: 2026-05-30.
+
+013 erzeugt keine neue Release-Artefaktklasse und keine neue Abhaengigkeit.
+SBOM, VEX und SLSA/Provenance bleiben release-gebunden. AI-SBOM ist `N/A`,
+weil keine Produkt- oder Runtime-KI ausgeliefert wird; Codex/Spec-Kit sind
+Entwicklungswerkzeuge.
+
+Date: 2026-05-30.
+
+013 creates no new release artifact class and no new dependency. SBOM, VEX,
+and SLSA/provenance remain release-bound. AI-SBOM is `N/A` because no product
+or runtime AI is shipped; Codex/Spec-Kit are development tools.

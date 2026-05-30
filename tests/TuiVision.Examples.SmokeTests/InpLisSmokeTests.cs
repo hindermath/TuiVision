@@ -39,6 +39,28 @@ public sealed class InpLisSmokeTests : ExampleTestBase
         AssertVisibleContainsFromAppLoop(history, "recalled Barbara", "InpLis app-loop history recall");
         AssertVisibleContainsFromAppLoop(history, "boundary selected Barbara", "InpLis app-loop boundary");
         AssertVisibleContainsFromAppLoop(history, "empty list", "InpLis app-loop empty state");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TDialog", "InpLis dialog composition view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "empty list", "InpLis rendered empty dialog");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft Statuszeile und Help -> Description.
+    ///
+    /// Verifies status line and Help -> Description.
+    /// </summary>
+    [TestMethod]
+    public void InpLis_AppLoop_Shows_StatusLine_And_HelpDescription()
+    {
+        InpLisApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(InpLisApp.CmDescription).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertVisibleContainsFromAppLoop(app.LastStatusMessage, "Help -> Description", "InpLis status-line description hint");
+        AssertVisibleContainsFromAppLoop(app.VisibleText, "InpLis description", "InpLis Help -> Description content");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "InpLis description view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "InpLis description", "InpLis rendered description");
         AssertPrimaryAssertionUsedAppLoop();
     }
 

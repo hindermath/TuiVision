@@ -75,3 +75,19 @@ framework layer. The eleven existing Wave 2 examples receive example-local
 command IDs, menu entries, visible purpose/feedback text, and deterministic
 event queues for smoke tests. Direct helpers from 011 remain as setup or
 supplemental assertions, but they are no longer the primary acceptance path.
+
+## 013 Visual Remediation Impact
+
+013 fuegt keine neue oeffentliche Framework-Schicht hinzu. Die neue
+`examples/Shared/Wave2Runtime.cs`-Datei wird nur in die elf Beispielprojekte
+gelinkt und bleibt beispielinterne Runtime-Hilfe fuer Statuszeile,
+Beschreibungspfad und absolute Buffer-Regionen. Die Architekturgrenze bleibt:
+Beispiele nutzen vorhandene Controls; `src/`-Framework-APIs werden nicht
+ausgeweitet.
+
+013 adds no new public framework layer. The new
+`examples/Shared/Wave2Runtime.cs` file is linked only into the eleven example
+projects and remains example-internal runtime glue for status line,
+description path, and absolute buffer regions. The architecture boundary
+remains: examples use existing controls; `src/` framework APIs are not
+expanded.

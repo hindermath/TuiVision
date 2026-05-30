@@ -3,6 +3,7 @@
 
 using TuiVision.Controls;
 using TuiVision.Core;
+using TuiVision.Examples.Shared;
 using TuiVision.Serialization;
 
 namespace TuiVision.Examples.DlgDsn;
@@ -26,6 +27,9 @@ public sealed class DlgDsnApp : TApplication
     /// <summary>Ungueltige-Beschreibung-Ablehnungsbefehl. / Invalid-description rejection command.</summary>
     public const ushort CmRejectInvalidDescription = 12203;
 
+    /// <summary>Help -> Description-Befehl. / Help -> Description command.</summary>
+    public const ushort CmDescription = 12204;
+
     private static readonly HashSet<string> KnownFixtureNames = new(StringComparer.Ordinal)
     {
         "valid.tvdialog",
@@ -39,6 +43,7 @@ public sealed class DlgDsnApp : TApplication
     private readonly Queue<TEvent> _scriptedEvents = [];
     private readonly List<string> _visibleHistory = [];
     private bool _headlessEventFired;
+    private TView? _mainView;
     private TStaticText? _visibleView;
 
     /// <summary>
@@ -53,7 +58,10 @@ public sealed class DlgDsnApp : TApplication
         _headless = headless;
         SetVisibleState(
             "DlgDsn: load, render, change, and reject dialog descriptions\n" +
-            "Commands use source-controlled fixtures only. Ctrl+Q quits.");
+            "Commands use source-controlled fixtures only. Ctrl+Q quits.",
+            "ready",
+            CreateRejectionDialog("dlgdsn: ready"),
+            "TDialog");
     }
 
     /// <summary>
@@ -69,6 +77,19 @@ public sealed class DlgDsnApp : TApplication
     /// Last visible text state.
     /// </summary>
     public string VisibleText { get; private set; } = string.Empty;
+
+    /// <summary>Letzter Hauptkomponententyp. / Last main component type.</summary>
+    public string LastVisibleComponentKind { get; private set; } = "TDialog";
+
+    /// <summary>Bereich der letzten Hauptkomponente. / Region of the last main component.</summary>
+    public TRect LastVisibleRegion { get; private set; } = new(0, 0, 0, 0);
+
+    /// <summary>Letzter Statuszeilentext. / Last status-line text.</summary>
+    public string LastStatusMessage { get; private set; } = string.Empty;
+
+    /// <summary>Beschreibungstext fuer Help -> Description. / Description text for Help -> Description.</summary>
+    public string DescriptionText =>
+        "DlgDsn description: source-controlled dialog descriptions are loaded, rendered, changed, and rejected visibly.";
 
     /// <summary>
     /// Fuegt deterministische Ereignisse fuer den Headless-Lauf hinzu.
@@ -136,7 +157,8 @@ public sealed class DlgDsnApp : TApplication
     public string RenderDescription(DialogDescription description)
     {
         TDialog dialog = DialogDescriptionFactory.CreateRuntimeDialog(description);
-        return SetVisibleState($"dlgdsn: rendered {dialog.Title}");
+        dialog.MoveTo(2, 1);
+        return SetVisibleState($"dlgdsn: rendered {dialog.Title}", "rendered dialog", dialog, "TDialog");
     }
 
     /// <summary>
@@ -174,7 +196,9 @@ public sealed class DlgDsnApp : TApplication
     public string ApplyVisibleChange(string value)
     {
         DialogDescription modified = ApplySimpleChange(CreateValidDescription(), value);
-        return SetVisibleState($"dlgdsn: changed {modified.Controls[0].ControlId}={modified.Controls[0].InitialValue}");
+        TDialog dialog = DialogDescriptionFactory.CreateRuntimeDialog(modified);
+        dialog.MoveTo(2, 1);
+        return SetVisibleState($"dlgdsn: changed {modified.Controls[0].ControlId}={modified.Controls[0].InitialValue}", "changed dialog", dialog, "TDialog");
     }
 
     /// <summary>
@@ -188,15 +212,15 @@ public sealed class DlgDsnApp : TApplication
     {
         if (!TryValidateFixtureName(fileName, out string safeFileName))
         {
-            return SetVisibleState("dlgdsn: rejected fixture-name");
+            return SetVisibleState("dlgdsn: rejected fixture-name", "rejected fixture name", CreateRejectionDialog("dlgdsn: rejected fixture-name"), "TDialog");
         }
 
         string marker = File.ReadAllText(FixturePath(safeFileName)).Trim();
         return marker switch
         {
-            "malformed" => SetVisibleState(RejectMalformed()),
-            "incomplete" => SetVisibleState(RejectDescription("incomplete", new DialogDescription("incomplete", 1, string.Empty, [], [], []))),
-            "duplicate-control" => SetVisibleState(RejectDescription("duplicate-control", new DialogDescription(
+            "malformed" => SetVisibleState(RejectMalformed(), "rejected malformed", CreateRejectionDialog(RejectMalformed()), "TDialog"),
+            "incomplete" => RejectWithDialog(RejectDescription("incomplete", new DialogDescription("incomplete", 1, string.Empty, [], [], []))),
+            "duplicate-control" => RejectWithDialog(RejectDescription("duplicate-control", new DialogDescription(
                 "duplicate",
                 1,
                 "Duplicate",
@@ -206,16 +230,21 @@ public sealed class DlgDsnApp : TApplication
                 ],
                 ["name"],
                 [new DialogCommandBinding(ShellCommandIds.cmOK, "name", "confirm", "Enter")]))),
-            "invalid-navigation" => SetVisibleState(RejectDescription("invalid-navigation", new DialogDescription(
+            "invalid-navigation" => RejectWithDialog(RejectDescription("invalid-navigation", new DialogDescription(
                 "invalid-navigation",
                 1,
                 "Invalid Navigation",
                 [new DialogControlDescription("name", DialogControlRoles.InputLine, "Name")],
                 ["missing"],
                 [new DialogCommandBinding(ShellCommandIds.cmOK, "name", "confirm", "Enter")]))),
-            _ => SetVisibleState("dlgdsn: rejected unknown")
+            _ => SetVisibleState("dlgdsn: rejected unknown", "rejected unknown", CreateRejectionDialog("dlgdsn: rejected unknown"), "TDialog")
         };
     }
+
+    /// <summary>Zeigt Help -> Description. / Shows Help -> Description.</summary>
+    /// <returns>Der sichtbare Zustand. / The visible state.</returns>
+    public string ShowDescription() =>
+        SetVisibleState(DescriptionText, "description visible", CreateDescriptionWindow("DlgDsn", DescriptionText), "TWindow");
 
     /// <inheritdoc />
     protected override TMenuBar InitMenuBar(TRect bounds)
@@ -228,9 +257,13 @@ public sealed class DlgDsnApp : TApplication
 
         return new TMenuBar(bounds)
         {
-            Menu = new TMenuItem("~D~lgDsn", 0, new TMenuItem("E~x~it", ShellCommandIds.cmQuit), dialogItems)
+            Menu = new TMenuItem("~D~lgDsn", 0, Wave2Runtime.HelpMenu(CmDescription, new TMenuItem("E~x~it", ShellCommandIds.cmQuit)), dialogItems)
         };
     }
+
+    /// <inheritdoc />
+    protected override TStatusLine InitStatusLine(TRect bounds) =>
+        new Wave2StatusLine(bounds, Wave2Runtime.Status("DlgDsn", "ready"));
 
     /// <inheritdoc />
     public override void HandleEvent(TEvent @event)
@@ -253,6 +286,10 @@ public sealed class DlgDsnApp : TApplication
                     return;
                 case CmRejectInvalidDescription:
                     TryLoadFixture(@event.Message.Info as string ?? "incomplete.tvdialog");
+                    @event.Clear();
+                    return;
+                case CmDescription:
+                    ShowDescription();
                     @event.Clear();
                     return;
             }
@@ -352,13 +389,20 @@ public sealed class DlgDsnApp : TApplication
         base.GetEvent(out @event);
     }
 
-    private string SetVisibleState(string text)
+    private string SetVisibleState(string text, string status, TView? mainView = null, string componentKind = "TStaticText")
     {
         VisibleText = text;
         _visibleHistory.Add(text);
+        LastStatusMessage = Wave2Runtime.Status("DlgDsn", status);
+        Wave2Runtime.SetStatus(StatusLine, LastStatusMessage);
         if (Desktop is null)
         {
             return VisibleText;
+        }
+
+        if (_mainView?.Owner == Desktop)
+        {
+            Desktop.Remove(_mainView);
         }
 
         if (_visibleView?.Owner == Desktop)
@@ -366,10 +410,41 @@ public sealed class DlgDsnApp : TApplication
             Desktop.Remove(_visibleView);
         }
 
-        int width = Math.Max(1, Desktop.Size.X - 2);
-        int height = Math.Max(1, Math.Min(Desktop.Size.Y - 2, 6));
-        _visibleView = new TStaticText(new TRect(1, 1, 1 + width, 1 + height), VisibleText);
+        _mainView = mainView ?? new TStaticText(Wave2Runtime.MainRegion(Desktop), VisibleText);
+        LastVisibleComponentKind = componentKind;
+        LastVisibleRegion = Wave2Runtime.ScreenRegion(Desktop, _mainView);
+        Desktop.Insert(_mainView);
+
+        _visibleView = new TStaticText(Wave2Runtime.DetailRegion(Desktop), VisibleText);
         Desktop.Insert(_visibleView);
         return VisibleText;
+    }
+
+    private string RejectWithDialog(string text) =>
+        SetVisibleState(text, "rejected description", CreateRejectionDialog(text), "TDialog");
+
+    private TDialog? CreateRejectionDialog(string text)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        TDialog dialog = new(Wave2Runtime.MainRegion(Desktop, width: 52, height: 8), "Dialog description");
+        dialog.Insert(new TStaticText(new TRect(2, 2, 48, 5), text));
+        return dialog;
+    }
+
+    private TWindow? CreateDescriptionWindow(string title, string body)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        TRect region = Wave2Runtime.MainRegion(Desktop, width: 62, height: 7);
+        TWindow window = new($"{title} Help", region.A.X, region.A.Y, region.Width, region.Height);
+        window.Insert(new TStaticText(new TRect(2, 2, region.Width - 2, region.Height - 1), body));
+        return window;
     }
 }

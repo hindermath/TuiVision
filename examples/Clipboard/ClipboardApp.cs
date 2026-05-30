@@ -3,6 +3,7 @@
 
 using TuiVision.Controls;
 using TuiVision.Core;
+using TuiVision.Examples.Shared;
 
 namespace TuiVision.Examples.Clipboard;
 
@@ -25,10 +26,14 @@ public sealed class ClipboardApp : TApplication
     /// <summary>Fallback-Befehl fuer nicht verfuegbare Zwischenablagen. / Fallback command for unavailable clipboards.</summary>
     public const ushort CmUnavailable = 12103;
 
+    /// <summary>Help -> Description-Befehl. / Help -> Description command.</summary>
+    public const ushort CmDescription = 12104;
+
     private readonly bool _headless;
     private readonly Queue<TEvent> _scriptedEvents = [];
     private readonly List<string> _visibleHistory = [];
     private bool _headlessEventFired;
+    private TView? _mainView;
     private TStaticText? _visibleView;
 
     /// <summary>
@@ -43,7 +48,10 @@ public sealed class ClipboardApp : TApplication
         _headless = headless;
         SetVisibleState(
             "Clipboard: copy, cut, paste, and fallback feedback\n" +
-            "Commands: copy, cut, paste, unavailable clipboard. Ctrl+Q quits.");
+            "Commands: copy, cut, paste, unavailable clipboard. Ctrl+Q quits.",
+            "ready",
+            CreateInputView("clipboard ready"),
+            "TInputLine");
     }
 
     /// <summary>
@@ -59,6 +67,19 @@ public sealed class ClipboardApp : TApplication
     /// Last visible result text.
     /// </summary>
     public string LastVisibleMessage { get; private set; } = "clipboard: ready";
+
+    /// <summary>Letzter Hauptkomponententyp. / Last main component type.</summary>
+    public string LastVisibleComponentKind { get; private set; } = "TInputLine";
+
+    /// <summary>Bereich der letzten Hauptkomponente. / Region of the last main component.</summary>
+    public TRect LastVisibleRegion { get; private set; } = new(0, 0, 0, 0);
+
+    /// <summary>Letzter Statuszeilentext. / Last status-line text.</summary>
+    public string LastStatusMessage { get; private set; } = string.Empty;
+
+    /// <summary>Beschreibungstext fuer Help -> Description. / Description text for Help -> Description.</summary>
+    public string DescriptionText =>
+        "Clipboard description: a visible input line shows copy, cut, paste, and unavailable clipboard states.";
 
     /// <summary>
     /// Sichtbare Zustandsfolge seit Start.
@@ -98,7 +119,7 @@ public sealed class ClipboardApp : TApplication
     public string CopyInput()
     {
         ManagedClipboard.SetText(InputText);
-        return SetVisibleState($"clipboard: copied '{InputText}'");
+        return SetVisibleState($"clipboard: copied '{InputText}'", "copied", CreateInputView(InputText), "TInputLine");
     }
 
     /// <summary>
@@ -112,7 +133,7 @@ public sealed class ClipboardApp : TApplication
         ManagedClipboard.SetText(InputText);
         string cut = InputText;
         InputText = string.Empty;
-        return SetVisibleState($"clipboard: cut '{cut}'");
+        return SetVisibleState($"clipboard: cut '{cut}'", "cut", CreateInputView($"cut {cut}"), "TInputLine");
     }
 
     /// <summary>
@@ -124,7 +145,7 @@ public sealed class ClipboardApp : TApplication
     public string PasteIntoInput()
     {
         InputText = ManagedClipboard.GetText() ?? string.Empty;
-        return SetVisibleState($"clipboard: pasted '{InputText}'");
+        return SetVisibleState($"clipboard: pasted '{InputText}'", "pasted", CreateInputView(InputText), "TInputLine");
     }
 
     /// <summary>
@@ -135,8 +156,13 @@ public sealed class ClipboardApp : TApplication
     /// <returns>Der sichtbare Fallback-Zustand. / The visible fallback state.</returns>
     public string SimulateUnavailableClipboard()
     {
-        return SetVisibleState("clipboard: isolated fallback visible");
+        return SetVisibleState("clipboard: isolated fallback visible", "unavailable fallback", CreateInputView("isolated fallback visible"), "TInputLine");
     }
+
+    /// <summary>Zeigt Help -> Description. / Shows Help -> Description.</summary>
+    /// <returns>Der sichtbare Zustand. / The visible state.</returns>
+    public string ShowDescription() =>
+        SetVisibleState(DescriptionText, "description visible", CreateDescriptionWindow("Clipboard", DescriptionText), "TWindow");
 
     /// <inheritdoc />
     protected override TMenuBar InitMenuBar(TRect bounds)
@@ -149,9 +175,13 @@ public sealed class ClipboardApp : TApplication
 
         return new TMenuBar(bounds)
         {
-            Menu = new TMenuItem("~C~lipboard", 0, new TMenuItem("E~x~it", ShellCommandIds.cmQuit), clipboardItems)
+            Menu = new TMenuItem("~C~lipboard", 0, Wave2Runtime.HelpMenu(CmDescription, new TMenuItem("E~x~it", ShellCommandIds.cmQuit)), clipboardItems)
         };
     }
+
+    /// <inheritdoc />
+    protected override TStatusLine InitStatusLine(TRect bounds) =>
+        new Wave2StatusLine(bounds, Wave2Runtime.Status("Clipboard", "ready"));
 
     /// <inheritdoc />
     public override void HandleEvent(TEvent @event)
@@ -174,6 +204,10 @@ public sealed class ClipboardApp : TApplication
                     return;
                 case CmUnavailable:
                     SimulateUnavailableClipboard();
+                    @event.Clear();
+                    return;
+                case CmDescription:
+                    ShowDescription();
                     @event.Clear();
                     return;
             }
@@ -201,13 +235,20 @@ public sealed class ClipboardApp : TApplication
         base.GetEvent(out @event);
     }
 
-    private string SetVisibleState(string text)
+    private string SetVisibleState(string text, string status, TView? mainView = null, string componentKind = "TStaticText")
     {
         LastVisibleMessage = text;
         _visibleHistory.Add(text);
+        LastStatusMessage = Wave2Runtime.Status("Clipboard", status);
+        Wave2Runtime.SetStatus(StatusLine, LastStatusMessage);
         if (Desktop is null)
         {
             return LastVisibleMessage;
+        }
+
+        if (_mainView?.Owner == Desktop)
+        {
+            Desktop.Remove(_mainView);
         }
 
         if (_visibleView?.Owner == Desktop)
@@ -215,10 +256,38 @@ public sealed class ClipboardApp : TApplication
             Desktop.Remove(_visibleView);
         }
 
-        int width = Math.Max(1, Desktop.Size.X - 2);
-        int height = Math.Max(1, Math.Min(Desktop.Size.Y - 2, 6));
-        _visibleView = new TStaticText(new TRect(1, 1, 1 + width, 1 + height), LastVisibleMessage);
+        _mainView = mainView ?? new TStaticText(Wave2Runtime.MainRegion(Desktop), LastVisibleMessage);
+        LastVisibleComponentKind = componentKind;
+        LastVisibleRegion = Wave2Runtime.ScreenRegion(Desktop, _mainView);
+        Desktop.Insert(_mainView);
+
+        _visibleView = new TStaticText(Wave2Runtime.DetailRegion(Desktop), LastVisibleMessage);
         Desktop.Insert(_visibleView);
         return LastVisibleMessage;
+    }
+
+    private TInputLine? CreateInputView(string text)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        TRect region = Wave2Runtime.MainRegion(Desktop, width: 38, height: 1);
+        TInputLine input = new(region, 60) { Data = text };
+        return input;
+    }
+
+    private TWindow? CreateDescriptionWindow(string title, string body)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        TRect region = Wave2Runtime.MainRegion(Desktop, width: 56, height: 7);
+        TWindow window = new($"{title} Help", region.A.X, region.A.Y, region.Width, region.Height);
+        window.Insert(new TStaticText(new TRect(2, 2, region.Width - 2, region.Height - 1), body));
+        return window;
     }
 }

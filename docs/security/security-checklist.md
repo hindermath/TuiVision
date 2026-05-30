@@ -112,3 +112,23 @@ service, database, or package boundary was introduced.
 English summary: 012 changes local example command dispatch and documentation,
 keeps file/fixture handling bounded, and adds no new dependency or external
 trust boundary.
+
+## 013-wave2-visual-component-remediation
+
+Datum: 2026-05-30. Scope: lokale sichtbare Welle-2-Beispielkomponenten,
+Statuszeile, `Help -> Description`, app-loop-Smokes mit Buffer-Nachweis und
+Guide-/Evidence-Aktualisierung. Keine neue Netzwerk-, Web-, Auth-, Service-,
+Datenbank-, Paket- oder KI-Runtime-Grenze wurde eingefuehrt.
+
+Date: 2026-05-30. Scope: local visible Wave 2 example components, status line,
+`Help -> Description`, app-loop smokes with buffer proof, and guide/evidence
+updates. No new network, web, auth, service, database, package, or AI runtime
+boundary was introduced.
+
+| Standard | Status | Begruendung / Rationale |
+|---|---|---|
+| NIST SSDF | anwendbar | Test-first Smokes, Evidence und Review-Notizen decken die lokale Aenderung ab. / Test-first smokes, evidence, and review notes cover the local change. |
+| CWE Top 25 | anwendbar | Lokale Inputs bleiben Pfade, Fixtures, Commands und Clipboard-Fallbacks. / Local inputs remain paths, fixtures, commands, and clipboard fallbacks. |
+| OWASP ASVS | N/A | Kein Web/API/Auth-System. / No web/API/auth system. |
+| Zero Trust | N/A | Keine Service- oder Identitaetsgrenze. / No service or identity boundary. |
+| AI-SBOM | N/A | Keine ausgelieferte Produkt-/Runtime-KI. / No shipped product/runtime AI. |

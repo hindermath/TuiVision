@@ -33,6 +33,28 @@ public sealed class SdlgSmokeTests : ExampleTestBase
         AssertVisibleContainsFromAppLoop(history, "Control 19", "Sdlg app-loop scroll target");
         AssertVisibleContainsFromAppLoop(history, "focused Control 32", "Sdlg app-loop focus target");
         AssertVisibleContainsFromAppLoop(history, "Control 40", "Sdlg app-loop boundary target");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TScrollGroup", "Sdlg scroll group view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "Control 40", "Sdlg rendered boundary scroll group");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft Statuszeile und Help -> Description.
+    ///
+    /// Verifies status line and Help -> Description.
+    /// </summary>
+    [TestMethod]
+    public void Sdlg_AppLoop_Shows_StatusLine_And_HelpDescription()
+    {
+        SdlgApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(SdlgApp.CmDescription).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertVisibleContainsFromAppLoop(app.LastStatusMessage, "Help -> Description", "Sdlg status-line description hint");
+        AssertVisibleContainsFromAppLoop(app.VisibleText, "Sdlg description", "Sdlg Help -> Description content");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "Sdlg description view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "Sdlg description", "Sdlg rendered description");
         AssertPrimaryAssertionUsedAppLoop();
     }
 
@@ -46,7 +68,6 @@ public sealed class SdlgSmokeTests : ExampleTestBase
     {
         RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         SdlgApp app = new(DefaultBounds(), headless: true);
-        AssertSmokeRunCompletes(() => app.Run());
 
         string visible = app.ScrollToControl(18);
         AssertBoundary(18, app.ScrollOffset.Y, "Sdlg vertical offset");

@@ -20,6 +20,24 @@ dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Dy
 dotnet run --project examples/DynTxt
 ```
 
+## 013 Sichtbarer Nachweis / 013 Visible Proof
+
+Deutsch: `DynTxt` zeigt die dynamischen Werte jetzt als echte `TStaticText`-
+Hauptkomponente. Short, Long und Constrained beweisen Aenderung, Clipping und
+enge Breite. Die Statuszeile nennt den aktuellen Breitenzustand, und
+`Help -> Description` erklaert die sichtbare Textflaeche. Der Smoke-Test nutzt
+`app.Run()`, View-Baum und Buffer-Region. Historisch folgt dies `dyntext.cpp`
+und `testdyn.cpp`. Abweichung: Die Eingabe wird per deterministischem Command
+gesetzt, nicht ueber einen langen modalen Editierdialog.
+
+English: `DynTxt` now shows dynamic values as a real `TStaticText` main
+component. Short, Long, and Constrained prove change, clipping, and narrow
+width. The status line names the current width state, and
+`Help -> Description` explains the visible text area. The smoke test uses
+`app.Run()`, view tree, and buffer region. This follows `dyntext.cpp` and
+`testdyn.cpp`. Deviation: input is set by deterministic commands, not by a
+long modal editing dialog.
+
 ## English
 
 `DynTxt` ports the dynamic text purpose from

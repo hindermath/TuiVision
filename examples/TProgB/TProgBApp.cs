@@ -3,6 +3,7 @@
 
 using TuiVision.Controls;
 using TuiVision.Core;
+using TuiVision.Examples.Shared;
 
 namespace TuiVision.Examples.TProgB;
 
@@ -22,11 +23,15 @@ public sealed class TProgBApp : TApplication
     /// <summary>Abgebrochenen Zustand zeigen. / Show cancelled state.</summary>
     public const ushort CmCancelled = 13002;
 
+    /// <summary>Help -> Description-Befehl. / Help -> Description command.</summary>
+    public const ushort CmDescription = 13003;
+
     private readonly bool _headless;
     private readonly Queue<TEvent> _scriptedEvents = [];
     private readonly List<string> _visibleHistory = [];
     private bool _headlessEventFired;
     private TProgressBar _bar = new(new TRect(0, 0, 20, 1), 0, 10);
+    private TView? _mainView;
     private TStaticText? _visibleView;
 
     /// <summary>
@@ -41,7 +46,10 @@ public sealed class TProgBApp : TApplication
         _headless = headless;
         SetVisibleState(
             "TProgB: partial progress, abort, and cancelled feedback\n" +
-            "Commands partial/abort/cancelled. Ctrl+Q quits.");
+            "Commands partial/abort/cancelled. Ctrl+Q quits.",
+            "ready",
+            CreateProgressWindow("tprogb: ready", 0, 10, cancel: false),
+            "TWindow");
     }
 
     /// <summary>
@@ -57,6 +65,19 @@ public sealed class TProgBApp : TApplication
     /// Last visible text state.
     /// </summary>
     public string VisibleText { get; private set; } = string.Empty;
+
+    /// <summary>Letzter Hauptkomponententyp. / Last main component type.</summary>
+    public string LastVisibleComponentKind { get; private set; } = "TWindow";
+
+    /// <summary>Bereich der letzten Hauptkomponente. / Region of the last main component.</summary>
+    public TRect LastVisibleRegion { get; private set; } = new(0, 0, 0, 0);
+
+    /// <summary>Letzter Statuszeilentext. / Last status-line text.</summary>
+    public string LastStatusMessage { get; private set; } = string.Empty;
+
+    /// <summary>Beschreibungstext fuer Help -> Description. / Description text for Help -> Description.</summary>
+    public string DescriptionText =>
+        "TProgB description: a progress window shows partial progress, abort requests, and cancelled state.";
 
     /// <summary>
     /// Sichtbare Zustandsfolge seit Start.
@@ -89,9 +110,10 @@ public sealed class TProgBApp : TApplication
     /// <returns>Der sichtbare Zustand. / The visible state.</returns>
     public string RunTo(int value, int maximum)
     {
-        _bar = new TProgressBar(new TRect(0, 0, 20, 1), 0, maximum);
+        _bar = new TProgressBar(new TRect(2, 2, 42, 3), 0, maximum);
         _bar.SetValue(value);
-        return SetVisibleState($"tprogb: progress {value}/{maximum}");
+        string text = $"tprogb: progress {value}/{maximum}";
+        return SetVisibleState(text, $"progress {value}/{maximum}", CreateProgressWindow(text, value, maximum, cancel: false), "TWindow");
     }
 
     /// <summary>
@@ -103,7 +125,8 @@ public sealed class TProgBApp : TApplication
     public string Abort()
     {
         _bar.Cancel();
-        return SetVisibleState("tprogb: abort requested; canceled");
+        string text = "tprogb: abort requested; canceled";
+        return SetVisibleState(text, "abort requested", CreateProgressWindow(text, _bar.Value, _bar.Max, cancel: true), "TWindow");
     }
 
     /// <summary>
@@ -115,8 +138,14 @@ public sealed class TProgBApp : TApplication
     public string ShowCancelled()
     {
         _bar.Cancel();
-        return SetVisibleState("tprogb: cancelled state visible");
+        string text = "tprogb: cancelled state visible";
+        return SetVisibleState(text, "cancelled", CreateProgressWindow(text, _bar.Value, _bar.Max, cancel: true), "TWindow");
     }
+
+    /// <summary>Zeigt Help -> Description. / Shows Help -> Description.</summary>
+    /// <returns>Der sichtbare Zustand. / The visible state.</returns>
+    public string ShowDescription() =>
+        SetVisibleState(DescriptionText, "description visible", CreateDescriptionWindow("TProgB", DescriptionText), "TWindow");
 
     /// <inheritdoc />
     protected override TMenuBar InitMenuBar(TRect bounds)
@@ -128,9 +157,13 @@ public sealed class TProgBApp : TApplication
 
         return new TMenuBar(bounds)
         {
-            Menu = new TMenuItem("~T~ProgB", 0, new TMenuItem("E~x~it", ShellCommandIds.cmQuit), progressItems)
+            Menu = new TMenuItem("~T~ProgB", 0, Wave2Runtime.HelpMenu(CmDescription, new TMenuItem("E~x~it", ShellCommandIds.cmQuit)), progressItems)
         };
     }
+
+    /// <inheritdoc />
+    protected override TStatusLine InitStatusLine(TRect bounds) =>
+        new Wave2StatusLine(bounds, Wave2Runtime.Status("TProgB", "ready"));
 
     /// <inheritdoc />
     public override void HandleEvent(TEvent @event)
@@ -149,6 +182,10 @@ public sealed class TProgBApp : TApplication
                     return;
                 case CmCancelled:
                     ShowCancelled();
+                    @event.Clear();
+                    return;
+                case CmDescription:
+                    ShowDescription();
                     @event.Clear();
                     return;
             }
@@ -176,13 +213,20 @@ public sealed class TProgBApp : TApplication
         base.GetEvent(out @event);
     }
 
-    private string SetVisibleState(string text)
+    private string SetVisibleState(string text, string status, TView? mainView = null, string componentKind = "TStaticText")
     {
         VisibleText = text;
         _visibleHistory.Add(text);
+        LastStatusMessage = Wave2Runtime.Status("TProgB", status);
+        Wave2Runtime.SetStatus(StatusLine, LastStatusMessage);
         if (Desktop is null)
         {
             return VisibleText;
+        }
+
+        if (_mainView?.Owner == Desktop)
+        {
+            Desktop.Remove(_mainView);
         }
 
         if (_visibleView?.Owner == Desktop)
@@ -190,10 +234,47 @@ public sealed class TProgBApp : TApplication
             Desktop.Remove(_visibleView);
         }
 
-        int width = Math.Max(1, Desktop.Size.X - 2);
-        int height = Math.Max(1, Math.Min(Desktop.Size.Y - 2, 6));
-        _visibleView = new TStaticText(new TRect(1, 1, 1 + width, 1 + height), VisibleText);
+        _mainView = mainView ?? new TStaticText(Wave2Runtime.MainRegion(Desktop), VisibleText);
+        LastVisibleComponentKind = componentKind;
+        LastVisibleRegion = Wave2Runtime.ScreenRegion(Desktop, _mainView);
+        Desktop.Insert(_mainView);
+
+        _visibleView = new TStaticText(Wave2Runtime.DetailRegion(Desktop), VisibleText);
         Desktop.Insert(_visibleView);
         return VisibleText;
+    }
+
+    private TWindow? CreateProgressWindow(string stateText, int value, int maximum, bool cancel)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        TRect region = Wave2Runtime.MainRegion(Desktop, width: 58, height: 8);
+        TWindow window = new("Progress with abort", region.A.X, region.A.Y, region.Width, region.Height);
+        _bar = new TProgressBar(new TRect(2, 2, 44, 3), 0, maximum);
+        _bar.SetValue(value);
+        if (cancel)
+        {
+            _bar.Cancel();
+        }
+
+        window.Insert(_bar);
+        window.Insert(new TStaticText(new TRect(2, 4, region.Width - 2, region.Height - 1), stateText));
+        return window;
+    }
+
+    private TWindow? CreateDescriptionWindow(string title, string body)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        TRect region = Wave2Runtime.MainRegion(Desktop, width: 60, height: 7);
+        TWindow window = new($"{title} Help", region.A.X, region.A.Y, region.Width, region.Height);
+        window.Insert(new TStaticText(new TRect(2, 2, region.Width - 2, region.Height - 1), body));
+        return window;
     }
 }

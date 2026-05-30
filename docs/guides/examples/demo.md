@@ -29,6 +29,27 @@ dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~De
 dotnet run --project examples/Demo
 ```
 
+## 013 Sichtbarer Nachweis / 013 Visible Proof
+
+Deutsch: `Demo` zeigt jetzt drei sichtbare Familien: `TDialog` fuer
+Dialog/Controls und Datei-/Pfadmetadaten sowie `TWindow` fuer Farb-,
+Display- und Gadget-Zustaende. Die Demo-Commands aktualisieren eine echte
+Statuszeile. `Help -> Description` beschreibt den sichtbaren Umfang in der App.
+Der Smoke-Test beweist `app.Run()`, konkrete Zustandswerte, View-Typen und
+gerenderte Buffer-Regionen. Historisch folgt dies den Demo-Quellen unter
+`tv203s/contrib/tvision/examples/demo/`. Abweichung: Editor, Help-Streams,
+Terminal, Maus, Charset und grosse Spezialdemos bleiben bewusst ausserhalb
+von Welle 2.
+
+English: `Demo` now shows three visible families: `TDialog` for
+dialog/control and file/path metadata, and `TWindow` for colour, display, and
+gadget state. Demo commands update a real status line. `Help -> Description`
+describes the visible scope inside the app. The smoke test proves `app.Run()`,
+concrete state values, view types, and rendered buffer regions. This follows
+the historical demo sources under `tv203s/contrib/tvision/examples/demo/`.
+Deviation: editor, help streams, terminal, mouse, charset, and large special
+demos stay intentionally outside Wave 2.
+
 ## English
 
 `Demo` ports the wave-2-relevant core of the historical demo from

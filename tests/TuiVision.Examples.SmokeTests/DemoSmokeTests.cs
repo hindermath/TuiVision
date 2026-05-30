@@ -34,6 +34,8 @@ public sealed class DemoSmokeTests : ExampleTestBase
         AssertVisibleContainsFromAppLoop(history, "controls dialogs gadgets", "Demo app-loop broad flow");
         AssertVisibleContainsFromAppLoop(history, "color blue-on-black display", "Demo app-loop color/display");
         AssertVisibleContainsFromAppLoop(history, "omitted editor help stream", "Demo app-loop omission state");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "Demo final omission window");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "omitted editor help stream", "Demo rendered omission window");
         AssertPrimaryAssertionUsedAppLoop();
     }
 
@@ -62,7 +64,92 @@ public sealed class DemoSmokeTests : ExampleTestBase
         AssertVisibleContainsFromAppLoop(history, "canceled", "Demo app-loop cancel");
         AssertVisibleContainsFromAppLoop(history, "invalid-path", "Demo app-loop invalid path");
         AssertVisibleContainsFromAppLoop(history, "manual-path accepted /tmp/manual-wave2.txt", "Demo app-loop manual path");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TDialog", "Demo final manual-path dialog");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "manual-path accepted", "Demo rendered manual path dialog");
         Assert.IsFalse(app.FileContentIoPerformed);
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft sichtbare Dialog-/Control-Komposition durch den App-Loop.
+    ///
+    /// Verifies visible dialog/control composition through the app loop.
+    /// </summary>
+    [TestMethod]
+    public void Demo_AppLoop_Renders_Dialog_Control_Family()
+    {
+        DemoApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(DemoApp.CmBroadFlow).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertVisibleContainsFromAppLoop(app.VisibleText, "controls dialogs gadgets", "Demo visible dialog/control state");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TDialog", "Demo dialog/control view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "controls dialogs gadgets", "Demo dialog/control rendered region");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft sichtbare Datei-/Pfadmetadaten durch den App-Loop.
+    ///
+    /// Verifies visible file/path metadata through the app loop.
+    /// </summary>
+    [TestMethod]
+    public void Demo_AppLoop_Renders_File_Path_Metadata_Family()
+    {
+        using TempDirectory temp = TempDirectory.Create();
+        string path = Path.Combine(temp.Path, "notes.txt");
+        File.WriteAllText(path, "do-not-read");
+        DemoApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.FromEvents(
+            TEvent.CreateCommand(DemoApp.CmFileMetadata, new DemoApp.FileMetadataRequest(temp.Path, "*.txt"))).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertVisibleContainsFromAppLoop(app.VisibleText, "notes.txt", "Demo metadata visible state");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TDialog", "Demo metadata view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "notes.txt", "Demo rendered metadata dialog");
+        Assert.IsFalse(app.FileContentIoPerformed);
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft sichtbare Farb-/Display-/Gadget-Komposition durch den App-Loop.
+    ///
+    /// Verifies visible colour/display/gadget composition through the app loop.
+    /// </summary>
+    [TestMethod]
+    public void Demo_AppLoop_Renders_Display_Color_Gadget_Family()
+    {
+        DemoApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(DemoApp.CmColorDisplay).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertVisibleContainsFromAppLoop(app.VisibleText, "color blue-on-black display", "Demo color/display visible state");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "Demo color/display view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "blue-on-black", "Demo rendered color/display window");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft echte Statuszeile und Help -> Description durch den App-Loop.
+    ///
+    /// Verifies the real status line and Help -> Description through the app loop.
+    /// </summary>
+    [TestMethod]
+    public void Demo_AppLoop_Shows_StatusLine_And_HelpDescription()
+    {
+        DemoApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(DemoApp.CmBroadFlow, DemoApp.CmDescription).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertVisibleContainsFromAppLoop(app.LastStatusMessage, "Help -> Description", "Demo status-line description hint");
+        AssertVisibleContainsFromAppLoop(app.VisibleText, "Demo description", "Demo Help -> Description content");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "Demo description view tree");
+        AssertRenderedContainsFromAppLoop(app.Driver.BackBuffer, "Help -> Description", "Demo rendered status-line hint");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "Demo description", "Demo rendered Help -> Description window");
         AssertPrimaryAssertionUsedAppLoop();
     }
 

@@ -35,6 +35,28 @@ public sealed class TProgBSmokeTests : ExampleTestBase
         AssertVisibleContainsFromAppLoop(history, "abort requested", "TProgB app-loop abort");
         AssertVisibleContainsFromAppLoop(history, "cancelled state visible", "TProgB app-loop cancelled");
         AssertEqual(ProgressBarState.Canceled, app.ProgressState, "TProgB app-loop canceled state");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "TProgB progress window view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "cancelled state visible", "TProgB rendered cancelled progress window");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft Statuszeile und Help -> Description.
+    ///
+    /// Verifies status line and Help -> Description.
+    /// </summary>
+    [TestMethod]
+    public void TProgB_AppLoop_Shows_StatusLine_And_HelpDescription()
+    {
+        TProgBApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(TProgBApp.CmDescription).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertVisibleContainsFromAppLoop(app.LastStatusMessage, "Help -> Description", "TProgB status-line description hint");
+        AssertVisibleContainsFromAppLoop(app.VisibleText, "TProgB description", "TProgB Help -> Description content");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "TProgB description view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "TProgB description", "TProgB rendered description");
         AssertPrimaryAssertionUsedAppLoop();
     }
 

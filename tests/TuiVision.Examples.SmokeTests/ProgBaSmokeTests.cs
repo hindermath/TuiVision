@@ -30,6 +30,28 @@ public sealed class ProgBaSmokeTests : ExampleTestBase
         string history = string.Join('\n', app.VisibleHistory);
         AssertVisibleContainsFromAppLoop(history, "completed 10/10", "ProgBa app-loop completion");
         AssertEqual(ProgressBarState.Completed, app.ProgressState, "ProgBa app-loop completion state");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TProgressBar", "ProgBa progress-bar view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "=", "ProgBa rendered completed progress bar");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft Statuszeile und Help -> Description.
+    ///
+    /// Verifies status line and Help -> Description.
+    /// </summary>
+    [TestMethod]
+    public void ProgBa_AppLoop_Shows_StatusLine_And_HelpDescription()
+    {
+        ProgBaApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(ProgBaApp.CmDescription).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertVisibleContainsFromAppLoop(app.LastStatusMessage, "Help -> Description", "ProgBa status-line description hint");
+        AssertVisibleContainsFromAppLoop(app.VisibleText, "ProgBa description", "ProgBa Help -> Description content");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "ProgBa description view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "ProgBa description", "ProgBa rendered description");
         AssertPrimaryAssertionUsedAppLoop();
     }
 

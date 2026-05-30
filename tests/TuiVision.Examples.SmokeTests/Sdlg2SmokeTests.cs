@@ -33,6 +33,28 @@ public sealed class Sdlg2SmokeTests : ExampleTestBase
         AssertVisibleContainsFromAppLoop(history, "Cell 12/09", "Sdlg2 app-loop two-axis scroll target");
         AssertVisibleContainsFromAppLoop(history, "focused Cell 04/14", "Sdlg2 app-loop focus target");
         AssertVisibleContainsFromAppLoop(history, "Cell 29/19", "Sdlg2 app-loop boundary target");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TScrollGroup", "Sdlg2 scroll group view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "Cell 29/19", "Sdlg2 rendered boundary scroll group");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft Statuszeile und Help -> Description.
+    ///
+    /// Verifies status line and Help -> Description.
+    /// </summary>
+    [TestMethod]
+    public void Sdlg2_AppLoop_Shows_StatusLine_And_HelpDescription()
+    {
+        Sdlg2App app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(Sdlg2App.CmDescription).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertVisibleContainsFromAppLoop(app.LastStatusMessage, "Help -> Description", "Sdlg2 status-line description hint");
+        AssertVisibleContainsFromAppLoop(app.VisibleText, "Sdlg2 description", "Sdlg2 Help -> Description content");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "Sdlg2 description view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "Sdlg2 description", "Sdlg2 rendered description");
         AssertPrimaryAssertionUsedAppLoop();
     }
 
@@ -46,7 +68,6 @@ public sealed class Sdlg2SmokeTests : ExampleTestBase
     {
         RecordDirectHelperUsage(DirectHelperUsage.SupplementalAssertion);
         Sdlg2App app = new(DefaultBounds(), headless: true);
-        AssertSmokeRunCompletes(() => app.Run());
 
         string visible = app.ScrollToCell(12, 9);
         AssertBoundary(12, app.ScrollOffset.X, "Sdlg2 horizontal offset");

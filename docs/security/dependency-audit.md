@@ -80,3 +80,19 @@ DocFX, and the existing Playwright/axe A11Y infrastructure.
 | Neue Produktionsabhaengigkeiten / New production dependencies | keine / none |
 | Neue Testabhaengigkeiten / New test dependencies | keine / none |
 | Dependency-currency status | unveraendert gegen 011 / unchanged from 011 |
+
+## 013-wave2-visual-component-remediation
+
+Datum: 2026-05-30.
+
+Keine neue NuGet-, npm- oder externe Runtime-Abhaengigkeit wurde eingefuehrt.
+`examples/Shared/Wave2Runtime.cs` ist gelinkter Quellcode innerhalb der
+Beispielprojekte. Test- und Dokumentationswerkzeuge bleiben die bestehenden
+MSTest-, Coverlet-, DocFX- und Playwright/axe-Pfade.
+
+Date: 2026-05-30.
+
+No new NuGet, npm, or external runtime dependency was introduced.
+`examples/Shared/Wave2Runtime.cs` is linked source code inside the example
+projects. Test and documentation tooling stays on the existing MSTest,
+Coverlet, DocFX, and Playwright/axe paths.

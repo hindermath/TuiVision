@@ -3,6 +3,7 @@
 
 using TuiVision.Controls;
 using TuiVision.Core;
+using TuiVision.Examples.Shared;
 
 namespace TuiVision.Examples.InpLis;
 
@@ -31,12 +32,16 @@ public sealed class InpLisApp : TApplication
     /// <summary>Leeren Zustand zeigen. / Show empty state.</summary>
     public const ushort CmEmpty = 12405;
 
+    /// <summary>Help -> Description-Befehl. / Help -> Description command.</summary>
+    public const ushort CmDescription = 12406;
+
     private readonly bool _headless;
     private readonly Queue<TEvent> _scriptedEvents = [];
     private readonly List<string> _visibleHistory = [];
     private bool _headlessEventFired;
     private readonly List<string> _items = [];
     private int _selectedIndex;
+    private TView? _mainView;
     private TStaticText? _visibleView;
 
     /// <summary>
@@ -51,7 +56,10 @@ public sealed class InpLisApp : TApplication
         _headless = headless;
         SetVisibleState(
             "InpLis: input, list selection, and session-only history\n" +
-            "Commands load/select/commit/recall/boundary/empty. Ctrl+Q quits.");
+            "Commands load/select/commit/recall/boundary/empty. Ctrl+Q quits.",
+            "ready",
+            CreateDialogView("ready"),
+            "TDialog");
     }
 
     /// <summary>
@@ -74,6 +82,19 @@ public sealed class InpLisApp : TApplication
     /// Last visible text state.
     /// </summary>
     public string VisibleText { get; private set; } = string.Empty;
+
+    /// <summary>Letzter Hauptkomponententyp. / Last main component type.</summary>
+    public string LastVisibleComponentKind { get; private set; } = "TDialog";
+
+    /// <summary>Bereich der letzten Hauptkomponente. / Region of the last main component.</summary>
+    public TRect LastVisibleRegion { get; private set; } = new(0, 0, 0, 0);
+
+    /// <summary>Letzter Statuszeilentext. / Last status-line text.</summary>
+    public string LastStatusMessage { get; private set; } = string.Empty;
+
+    /// <summary>Beschreibungstext fuer Help -> Description. / Description text for Help -> Description.</summary>
+    public string DescriptionText =>
+        "InpLis description: a dialog combines a list, input line, and session-only history feedback.";
 
     /// <summary>
     /// Sichtbare Zustandsfolge seit Start.
@@ -109,7 +130,8 @@ public sealed class InpLisApp : TApplication
         _items.AddRange(items ?? []);
         _selectedIndex = 0;
         InputText = _items.Count == 0 ? string.Empty : _items[0];
-        return SetVisibleState(_items.Count == 0 ? "inplis: empty list" : $"inplis: selected {InputText}");
+        string text = _items.Count == 0 ? "inplis: empty list" : $"inplis: selected {InputText}";
+        return SetVisibleState(text, _items.Count == 0 ? "empty list" : $"selected {InputText}", CreateDialogView(text), "TDialog");
     }
 
     /// <summary>
@@ -122,12 +144,13 @@ public sealed class InpLisApp : TApplication
     {
         if (_items.Count == 0)
         {
-            return SetVisibleState("inplis: empty list");
+            return SetVisibleState("inplis: empty list", "empty list", CreateDialogView("inplis: empty list"), "TDialog");
         }
 
         _selectedIndex = Math.Min(_items.Count - 1, _selectedIndex + 1);
         InputText = _items[_selectedIndex];
-        return SetVisibleState($"inplis: selected {InputText}");
+        string text = $"inplis: selected {InputText}";
+        return SetVisibleState(text, $"selected {InputText}", CreateDialogView(text), "TDialog");
     }
 
     /// <summary>
@@ -141,7 +164,8 @@ public sealed class InpLisApp : TApplication
     {
         InputText = text ?? string.Empty;
         HistoryText = string.IsNullOrEmpty(HistoryText) ? InputText : $"{HistoryText};{InputText}";
-        return SetVisibleState($"inplis: committed {InputText}");
+        string visible = $"inplis: committed {InputText}";
+        return SetVisibleState(visible, $"committed {InputText}", CreateDialogView(visible), "TDialog");
     }
 
     /// <summary>
@@ -151,7 +175,11 @@ public sealed class InpLisApp : TApplication
     /// </summary>
     /// <returns>Der sichtbare Zustand. / The visible state.</returns>
     public string RecallHistory() =>
-        SetVisibleState(string.IsNullOrEmpty(HistoryText) ? "inplis: history empty" : $"inplis: recalled {HistoryText.Split(';')[^1]}");
+        SetVisibleState(
+            string.IsNullOrEmpty(HistoryText) ? "inplis: history empty" : $"inplis: recalled {HistoryText.Split(';')[^1]}",
+            "history recall",
+            CreateDialogView(string.IsNullOrEmpty(HistoryText) ? "inplis: history empty" : $"inplis: recalled {HistoryText.Split(';')[^1]}"),
+            "TDialog");
 
     /// <summary>
     /// Waehlt den letzten Eintrag als Grenzzustand.
@@ -163,13 +191,19 @@ public sealed class InpLisApp : TApplication
     {
         if (_items.Count == 0)
         {
-            return SetVisibleState("inplis: empty list");
+            return SetVisibleState("inplis: empty list", "empty list", CreateDialogView("inplis: empty list"), "TDialog");
         }
 
         _selectedIndex = _items.Count - 1;
         InputText = _items[_selectedIndex];
-        return SetVisibleState($"inplis: boundary selected {InputText}");
+        string text = $"inplis: boundary selected {InputText}";
+        return SetVisibleState(text, $"boundary selected {InputText}", CreateDialogView(text), "TDialog");
     }
+
+    /// <summary>Zeigt Help -> Description. / Shows Help -> Description.</summary>
+    /// <returns>Der sichtbare Zustand. / The visible state.</returns>
+    public string ShowDescription() =>
+        SetVisibleState(DescriptionText, "description visible", CreateDescriptionWindow("InpLis", DescriptionText), "TWindow");
 
     /// <inheritdoc />
     protected override TMenuBar InitMenuBar(TRect bounds)
@@ -184,9 +218,13 @@ public sealed class InpLisApp : TApplication
 
         return new TMenuBar(bounds)
         {
-            Menu = new TMenuItem("~I~npLis", 0, new TMenuItem("E~x~it", ShellCommandIds.cmQuit), inputItems)
+            Menu = new TMenuItem("~I~npLis", 0, Wave2Runtime.HelpMenu(CmDescription, new TMenuItem("E~x~it", ShellCommandIds.cmQuit)), inputItems)
         };
     }
+
+    /// <inheritdoc />
+    protected override TStatusLine InitStatusLine(TRect bounds) =>
+        new Wave2StatusLine(bounds, Wave2Runtime.Status("InpLis", "ready"));
 
     /// <inheritdoc />
     public override void HandleEvent(TEvent @event)
@@ -219,6 +257,10 @@ public sealed class InpLisApp : TApplication
                     LoadItems([]);
                     @event.Clear();
                     return;
+                case CmDescription:
+                    ShowDescription();
+                    @event.Clear();
+                    return;
             }
         }
 
@@ -244,13 +286,20 @@ public sealed class InpLisApp : TApplication
         base.GetEvent(out @event);
     }
 
-    private string SetVisibleState(string text)
+    private string SetVisibleState(string text, string status, TView? mainView = null, string componentKind = "TStaticText")
     {
         VisibleText = text;
         _visibleHistory.Add(text);
+        LastStatusMessage = Wave2Runtime.Status("InpLis", status);
+        Wave2Runtime.SetStatus(StatusLine, LastStatusMessage);
         if (Desktop is null)
         {
             return VisibleText;
+        }
+
+        if (_mainView?.Owner == Desktop)
+        {
+            Desktop.Remove(_mainView);
         }
 
         if (_visibleView?.Owner == Desktop)
@@ -258,10 +307,49 @@ public sealed class InpLisApp : TApplication
             Desktop.Remove(_visibleView);
         }
 
-        int width = Math.Max(1, Desktop.Size.X - 2);
-        int height = Math.Max(1, Math.Min(Desktop.Size.Y - 2, 6));
-        _visibleView = new TStaticText(new TRect(1, 1, 1 + width, 1 + height), VisibleText);
+        _mainView = mainView ?? new TStaticText(Wave2Runtime.MainRegion(Desktop), VisibleText);
+        LastVisibleComponentKind = componentKind;
+        LastVisibleRegion = Wave2Runtime.ScreenRegion(Desktop, _mainView);
+        Desktop.Insert(_mainView);
+
+        _visibleView = new TStaticText(Wave2Runtime.DetailRegion(Desktop), VisibleText);
         Desktop.Insert(_visibleView);
         return VisibleText;
+    }
+
+    private TDialog? CreateDialogView(string stateText)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        TDialog dialog = new(Wave2Runtime.MainRegion(Desktop, width: 52, height: 10), "Input/List");
+        TStringList list = new();
+        foreach (string item in _items)
+        {
+            list.Add(item);
+        }
+
+        TListBox listBox = new(new TRect(2, 2, 20, 6), 1, null) { List = list };
+        listBox.FocusItem(_items.Count == 0 ? 0 : _selectedIndex);
+        TInputLine input = new(new TRect(22, 2, 48, 3), 60) { Data = InputText };
+        dialog.Insert(listBox);
+        dialog.Insert(input);
+        dialog.Insert(new TStaticText(new TRect(22, 4, 48, 8), $"{stateText}\nhistory {HistoryText}"));
+        return dialog;
+    }
+
+    private TWindow? CreateDescriptionWindow(string title, string body)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        TRect region = Wave2Runtime.MainRegion(Desktop, width: 58, height: 7);
+        TWindow window = new($"{title} Help", region.A.X, region.A.Y, region.Width, region.Height);
+        window.Insert(new TStaticText(new TRect(2, 2, region.Width - 2, region.Height - 1), body));
+        return window;
     }
 }

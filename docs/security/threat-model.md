@@ -86,3 +86,16 @@ ergaenzende Assertions.
 Residual risk remains low. Primary proof now runs through `app.Run()` with
 injected commands; direct helpers count only as setup or supplemental
 assertions.
+
+## 013-wave2-visual-component-remediation
+
+013 bleibt lokal. Die neuen sichtbaren Komponenten verarbeiten nur
+deterministische Commands, kontrollierte Fixtures, Test-Temp-Pfade fuer
+Metadaten und managed Clipboard-Fallbacks. Es gibt keine Netzwerk-, Web-,
+Auth-, Remote-Service-, Datenbank- oder persistente Nutzer-History-Grenze.
+Restrisiko bleibt niedrig.
+
+013 remains local. The new visible components process only deterministic
+commands, controlled fixtures, test temporary paths for metadata, and managed
+clipboard fallbacks. There is no network, web, auth, remote service, database,
+or persistent user-history boundary. Residual risk remains low.

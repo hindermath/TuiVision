@@ -3,6 +3,7 @@
 
 using TuiVision.Controls;
 using TuiVision.Core;
+using TuiVision.Examples.Shared;
 
 namespace TuiVision.Examples.Sdlg2;
 
@@ -22,12 +23,16 @@ public sealed class Sdlg2App : TApplication
     /// <summary>Grenzzustand zeigen. / Show boundary state.</summary>
     public const ushort CmBoundary = 12802;
 
+    /// <summary>Help -> Description-Befehl. / Help -> Description command.</summary>
+    public const ushort CmDescription = 12803;
+
     private readonly bool _headless;
     private readonly Queue<TEvent> _scriptedEvents = [];
     private readonly List<string> _visibleHistory = [];
     private bool _headlessEventFired;
     private readonly TScrollGroup _scrollGroup;
     private readonly Dictionary<(int X, int Y), TStaticText> _controls = [];
+    private TView? _mainView;
     private TStaticText? _visibleView;
 
     /// <summary>
@@ -41,10 +46,10 @@ public sealed class Sdlg2App : TApplication
     {
         _headless = headless;
         _scrollGroup = new TScrollGroup(
-            new TRect(0, 0, 8, 5),
-            new TScrollBar(new TRect(0, 5, 8, 6), horizontal: true),
-            new TScrollBar(new TRect(8, 0, 9, 5)));
-        _scrollGroup.SetLimit(new TPoint(30, 20));
+            new TRect(2, 1, 12, 6),
+            new TScrollBar(new TRect(2, 6, 12, 7), horizontal: true),
+            new TScrollBar(new TRect(12, 1, 13, 6)));
+        _scrollGroup.SetLimit(new TPoint(39, 24));
         for (int y = 0; y < 20; y++)
         {
             for (int x = 0; x < 30; x++)
@@ -57,7 +62,10 @@ public sealed class Sdlg2App : TApplication
 
         SetVisibleState(
             "Sdlg2: two-axis scroll and focus outside the first viewport\n" +
-            "Commands scroll both axes, focus far cell, and boundary. Ctrl+Q quits.");
+            "Commands scroll both axes, focus far cell, and boundary. Ctrl+Q quits.",
+            "ready",
+            _scrollGroup,
+            "TScrollGroup");
     }
 
     /// <summary>
@@ -80,6 +88,19 @@ public sealed class Sdlg2App : TApplication
     /// Last visible text state.
     /// </summary>
     public string VisibleText { get; private set; } = string.Empty;
+
+    /// <summary>Letzter Hauptkomponententyp. / Last main component type.</summary>
+    public string LastVisibleComponentKind { get; private set; } = "TScrollGroup";
+
+    /// <summary>Bereich der letzten Hauptkomponente. / Region of the last main component.</summary>
+    public TRect LastVisibleRegion { get; private set; } = new(0, 0, 0, 0);
+
+    /// <summary>Letzter Statuszeilentext. / Last status-line text.</summary>
+    public string LastStatusMessage { get; private set; } = string.Empty;
+
+    /// <summary>Beschreibungstext fuer Help -> Description. / Description text for Help -> Description.</summary>
+    public string DescriptionText =>
+        "Sdlg2 description: a two-axis scroll group shows horizontal and vertical movement with focus tracking.";
 
     /// <summary>
     /// Sichtbare Zustandsfolge seit Start.
@@ -113,7 +134,7 @@ public sealed class Sdlg2App : TApplication
     public string ScrollToCell(int x, int y)
     {
         _scrollGroup.ScrollTo(new TPoint(x, y));
-        return SetVisibleState($"sdlg2: {_scrollGroup.VisibleState}");
+        return SetVisibleState($"sdlg2: {_scrollGroup.VisibleState}", $"scroll {x}/{y}", _scrollGroup, "TScrollGroup");
     }
 
     /// <summary>
@@ -130,8 +151,13 @@ public sealed class Sdlg2App : TApplication
         int clampedY = Math.Clamp(y, 0, 19);
         TStaticText control = _controls[(clampedX, clampedY)];
         _scrollGroup.SetFocus(control);
-        return SetVisibleState($"sdlg2: focused {control.Text}; visible {_scrollGroup.VisibleState}");
+        return SetVisibleState($"sdlg2: focused {control.Text}; visible {_scrollGroup.VisibleState}", $"focused {control.Text}", _scrollGroup, "TScrollGroup");
     }
+
+    /// <summary>Zeigt Help -> Description. / Shows Help -> Description.</summary>
+    /// <returns>Der sichtbare Zustand. / The visible state.</returns>
+    public string ShowDescription() =>
+        SetVisibleState(DescriptionText, "description visible", CreateDescriptionWindow("Sdlg2", DescriptionText), "TWindow");
 
     /// <inheritdoc />
     protected override TMenuBar InitMenuBar(TRect bounds)
@@ -143,9 +169,13 @@ public sealed class Sdlg2App : TApplication
 
         return new TMenuBar(bounds)
         {
-            Menu = new TMenuItem("~S~dlg2", 0, new TMenuItem("E~x~it", ShellCommandIds.cmQuit), scrollItems)
+            Menu = new TMenuItem("~S~dlg2", 0, Wave2Runtime.HelpMenu(CmDescription, new TMenuItem("E~x~it", ShellCommandIds.cmQuit)), scrollItems)
         };
     }
+
+    /// <inheritdoc />
+    protected override TStatusLine InitStatusLine(TRect bounds) =>
+        new Wave2StatusLine(bounds, Wave2Runtime.Status("Sdlg2", "ready"));
 
     /// <inheritdoc />
     public override void HandleEvent(TEvent @event)
@@ -164,6 +194,10 @@ public sealed class Sdlg2App : TApplication
                     return;
                 case CmBoundary:
                     ScrollToCell(999, 999);
+                    @event.Clear();
+                    return;
+                case CmDescription:
+                    ShowDescription();
                     @event.Clear();
                     return;
             }
@@ -191,13 +225,20 @@ public sealed class Sdlg2App : TApplication
         base.GetEvent(out @event);
     }
 
-    private string SetVisibleState(string text)
+    private string SetVisibleState(string text, string status, TView? mainView = null, string componentKind = "TStaticText")
     {
         VisibleText = text;
         _visibleHistory.Add(text);
+        LastStatusMessage = Wave2Runtime.Status("Sdlg2", status);
+        Wave2Runtime.SetStatus(StatusLine, LastStatusMessage);
         if (Desktop is null)
         {
             return VisibleText;
+        }
+
+        if (_mainView?.Owner == Desktop)
+        {
+            Desktop.Remove(_mainView);
         }
 
         if (_visibleView?.Owner == Desktop)
@@ -205,10 +246,26 @@ public sealed class Sdlg2App : TApplication
             Desktop.Remove(_visibleView);
         }
 
-        int width = Math.Max(1, Desktop.Size.X - 2);
-        int height = Math.Max(1, Math.Min(Desktop.Size.Y - 2, 6));
-        _visibleView = new TStaticText(new TRect(1, 1, 1 + width, 1 + height), VisibleText);
+        _mainView = mainView ?? new TStaticText(Wave2Runtime.MainRegion(Desktop), VisibleText);
+        LastVisibleComponentKind = componentKind;
+        LastVisibleRegion = Wave2Runtime.ScreenRegion(Desktop, _mainView);
+        Desktop.Insert(_mainView);
+
+        _visibleView = new TStaticText(Wave2Runtime.DetailRegion(Desktop), VisibleText);
         Desktop.Insert(_visibleView);
         return VisibleText;
+    }
+
+    private TWindow? CreateDescriptionWindow(string title, string body)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        TRect region = Wave2Runtime.MainRegion(Desktop, width: 64, height: 7);
+        TWindow window = new($"{title} Help", region.A.X, region.A.Y, region.Width, region.Height);
+        window.Insert(new TStaticText(new TRect(2, 2, region.Width - 2, region.Height - 1), body));
+        return window;
     }
 }

@@ -21,6 +21,22 @@ dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Pr
 dotnet run --project examples/ProgBa
 ```
 
+## 013 Sichtbarer Nachweis / 013 Visible Proof
+
+Deutsch: `ProgBa` rendert jetzt einen echten `TProgressBar` als
+Hauptkomponente. Der Complete-Befehl setzt den Balken auf Completed, die
+Statuszeile meldet den Abschluss, und `Help -> Description` beschreibt den
+Progress-Pfad. Der Smoke-Test beweist `app.Run()`, `ProgressBarState.Completed`,
+View-Typ und `=`-Zellen im BackBuffer. Historisch folgt dies `tprogbar.cpp`.
+Abweichung: Ressourcen-/Stream-Beispiele bleiben ausserhalb 013.
+
+English: `ProgBa` now renders a real `TProgressBar` as the main component. The
+Complete command sets the bar to Completed, the status line reports completion,
+and `Help -> Description` describes the progress path. The smoke test proves
+`app.Run()`, `ProgressBarState.Completed`, view type, and `=` cells in the
+back buffer. This follows `tprogbar.cpp`. Deviation: resource/stream examples
+stay outside 013.
+
 ## English
 
 `ProgBa` ports the simple progress bar from

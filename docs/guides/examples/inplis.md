@@ -20,6 +20,23 @@ dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~In
 dotnet run --project examples/InpLis
 ```
 
+## 013 Sichtbarer Nachweis / 013 Visible Proof
+
+Deutsch: `InpLis` nutzt eine sichtbare `TDialog`-Komposition mit `TListBox`,
+`TInputLine` und text-first History-/Grenzzustand. Load, Next, Commit, Recall,
+Boundary und Empty aktualisieren Dialog und Statuszeile. `Help -> Description`
+erklaert die Liste, Eingabe und session-only History. Der Smoke-Test beweist
+`app.Run()`, View-Typ und gerenderte Region. Historisch folgt dies
+`inplist.cpp`. Abweichung: Die History bleibt nur im Speicher und wird nicht
+persistiert.
+
+English: `InpLis` uses a visible `TDialog` composition with `TListBox`,
+`TInputLine`, and text-first history/boundary state. Load, Next, Commit,
+Recall, Boundary, and Empty update the dialog and status line.
+`Help -> Description` explains the list, input, and session-only history. The
+smoke test proves `app.Run()`, view type, and rendered region. This follows
+`inplist.cpp`. Deviation: history is memory-only and is not persisted.
+
 ## English
 
 `InpLis` ports input-list behavior from

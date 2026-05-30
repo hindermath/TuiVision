@@ -77,3 +77,18 @@
 - **Rationale**: Diese Bereiche gehoeren zu spaeteren Pflichtwellen und duerfen Welle-2-Akzeptanz nicht verfaelschen.
 - **EarliestSchedulingPoint**: Welle 3 beziehungsweise Welle 4.
 - **TraceableReference**: `docs/guides/examples/demo.md`
+
+## 013 Visual Proof Risk Review
+
+- **Risk**: Primaere Welle-2-Smokes koennten wieder nur Text-History statt
+  gerenderter Komponenten zaehlen.
+- **Mitigation**: `Wave2InteractiveSmokeMatrix_PrimaryProof_Is_Not_TextOnly_Or_DirectHelperOnly`
+  verlangt verifizierten View-Baum- und Buffer-/Cell-Nachweis.
+- **ResidualRisk**: Niedrig; direkte Hilfsmethoden sind Setup oder
+  Ergaenzung, nicht primaerer Paritaetspfad.
+
+- **Risk**: Kleine beispielinterne Status-/Description-Hilfe koennte wie eine
+  Framework-Erweiterung wirken.
+- **Mitigation**: `examples/Shared/Wave2Runtime.cs` ist gelinkter
+  Beispielcode, intern und ohne neue NuGet-Abhaengigkeit.
+- **ResidualRisk**: Niedrig; keine oeffentliche `src/`-API wurde erweitert.
