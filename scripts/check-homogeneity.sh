@@ -417,16 +417,10 @@ while IFS='|' read -r level dir _type; do
   # Level 0: Git Scope Isolation checks (GIT-SCOPE-001, GIT-SCOPE-002)
   if [ "$level" -eq 0 ]; then
     if [ ! -d "${HOME}/.gitconfig.d" ]; then
-      if $OPT_JSON; then
-        printf '{"check":"GIT-SCOPE-001","status":"WARN","message":"~/.gitconfig.d/ fehlt — Scope-Isolierung nicht konfiguriert / missing — scope isolation not configured"}\n'
-      fi
       emit_result "WARN" "~/.gitconfig.d/" \
         "~/.gitconfig.d/ fehlt — Scope-Isolierung nicht konfiguriert / missing — scope isolation not configured" \
         "$dir"
     elif ! grep -qF 'gitdir:~/home-baseline-tmp/' "${HOME}/.gitconfig" 2>/dev/null; then
-      if $OPT_JSON; then
-        printf '{"check":"GIT-SCOPE-002","status":"WARN","message":"includeIf für home-baseline-tmp nicht gefunden / not found for home-baseline-tmp"}\n'
-      fi
       emit_result "WARN" "~/.gitconfig" \
         "includeIf für home-baseline-tmp nicht gefunden / not found for home-baseline-tmp" \
         "$dir"

@@ -198,3 +198,24 @@ T094 Lastenheft archival:
 - Result: PASS, commit `cafcca2` (`chore: rename Lastenheft to Lastenheft_Wave2-Visual-Component-Remediation.013-wave2-visual-component-remediation.md`).
 - Resulting Lastenheft path: `Lastenheft_Wave2-Visual-Component-Remediation.013-wave2-visual-component-remediation.md`.
 - Post-T094 regular feature commit preparation: `Directory.Build.props` was aligned for the twelfth 013 branch commit to `1.13.12.46` before staging and committing the remaining feature files.
+
+## 10. PR Review Remediation
+
+Copilot review comments `discussion_r3329102655` and `discussion_r3329102658`
+reported that `scripts/check-homogeneity.sh` printed extra JSON objects in
+`--json` mode for `GIT-SCOPE-001` and `GIT-SCOPE-002`, while the script contract
+requires one final summary JSON object. The direct `printf` calls were removed.
+Both warnings now flow only through `emit_result` and the final summary JSON.
+`Directory.Build.props` was aligned for the thirteenth 013 branch commit to
+`1.13.13.46`.
+
+Review-fix validation:
+
+- Command: `./scripts/check-homogeneity.sh --json --dry-run .`
+- Result: PASS for the review-specific JSON contract on stdout. The command
+  writes exactly one final summary JSON object and no longer emits separate
+  `GIT-SCOPE-001` or `GIT-SCOPE-002` JSON records.
+- Existing caveat outside this review fix: stderr still reports missing
+  `hg_scan` helper functions because `scripts/lib/hg-*.sh` is not present in
+  this repository snapshot. No homogeneity-framework repair was made in this
+  Copilot-comment remediation.
