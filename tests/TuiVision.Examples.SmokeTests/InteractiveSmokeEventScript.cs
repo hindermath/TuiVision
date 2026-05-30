@@ -24,7 +24,8 @@ public sealed class InteractiveSmokeEventScript
     /// <summary>
     /// Die zu injizierenden Ereignisse.
     ///
-    /// The events to inject.
+    /// The events to inject. The deterministic quit path is intentionally owned
+    /// by each headless example after this script has been drained.
     /// </summary>
     public IReadOnlyList<TEvent> Events => _events;
 
@@ -46,4 +47,23 @@ public sealed class InteractiveSmokeEventScript
     /// <param name="events">Die Ereignisse. / The events.</param>
     /// <returns>Die Ereignisfolge. / The event sequence.</returns>
     public static InteractiveSmokeEventScript FromEvents(params TEvent[] events) => new(events);
+
+    /// <summary>
+    /// Erzeugt eine neue Folge mit zusaetzlichen Befehlen am Ende.
+    ///
+    /// Creates a new sequence with additional commands appended.
+    /// </summary>
+    /// <param name="commands">Die Befehls-IDs. / The command IDs.</param>
+    /// <returns>Die erweiterte Ereignisfolge. / The extended event sequence.</returns>
+    public InteractiveSmokeEventScript ThenCommands(params ushort[] commands) =>
+        new(_events.Concat(commands.Select(command => TEvent.CreateCommand(command))));
+
+    /// <summary>
+    /// Erzeugt eine neue Folge mit zusaetzlichen Ereignissen am Ende.
+    ///
+    /// Creates a new sequence with additional events appended.
+    /// </summary>
+    /// <param name="events">Die Ereignisse. / The events.</param>
+    /// <returns>Die erweiterte Ereignisfolge. / The extended event sequence.</returns>
+    public InteractiveSmokeEventScript ThenEvents(params TEvent[] events) => new(_events.Concat(events));
 }

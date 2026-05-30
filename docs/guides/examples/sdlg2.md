@@ -25,6 +25,24 @@ dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Sd
 dotnet run --project examples/Sdlg2
 ```
 
+## 013 Sichtbarer Nachweis / 013 Visible Proof
+
+Deutsch: `Sdlg2` zeigt eine sichtbare zweiachsige `TScrollGroup`. Scroll both,
+Focus far und Boundary pruefen horizontale und vertikale Bewegung sowie
+Fokusverfolgung. Die Statuszeile meldet Ziel und Fokus, `Help -> Description`
+erklaert beide Achsen. Der Smoke-Test beweist `app.Run()`, `TScrollGroup`,
+Offset-Werte und eine gerenderte Region mit `Cell 29/19`. Historisch folgt
+dies `scrldlg.cpp` und `scrlgrp.cpp` aus `sdlg2`. Abweichung: Die Bewegung ist
+deterministisch statt modal-interaktiv.
+
+English: `Sdlg2` shows a visible two-axis `TScrollGroup`. Scroll both, Focus
+far, and Boundary prove horizontal and vertical movement plus focus tracking.
+The status line reports target and focus, and `Help -> Description` explains
+both axes. The smoke test proves `app.Run()`, `TScrollGroup`, offset values,
+and a rendered region with `Cell 29/19`. This follows `scrldlg.cpp` and
+`scrlgrp.cpp` from `sdlg2`. Deviation: movement is deterministic instead of
+modal-interactive.
+
 ## English
 
 `Sdlg2` ports the historical horizontally and vertically scrollable

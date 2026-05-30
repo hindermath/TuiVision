@@ -87,3 +87,19 @@ DialogDescriptionFactory
   v
 Visible state and rejection messages
 ```
+
+## 013 Runtime View Addendum
+
+Deutsch: 013 ergaenzt in jedem Welle-2-Beispiel dasselbe Laufzeitmodell:
+sichtbare Hauptkomponente, echte `TStatusLine`-Rueckmeldung und
+`Help -> Description`. Die primaeren Smokes injizieren Commands in `app.Run()`
+und pruefen konkrete Zustandswerte, View-Baum-Typen sowie BackBuffer-Regionen.
+Die neue Hilfsdatei unter `examples/Shared/` bleibt beispielintern und erzeugt
+keine neue Runtime-Abhaengigkeit.
+
+English: 013 adds the same runtime model to each Wave 2 example: visible main
+component, real `TStatusLine` feedback, and `Help -> Description`. Primary
+smokes inject commands into `app.Run()` and verify concrete state values,
+view-tree types, and back-buffer regions. The new helper file under
+`examples/Shared/` remains example-internal and creates no new runtime
+dependency.

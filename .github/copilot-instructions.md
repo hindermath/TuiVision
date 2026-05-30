@@ -159,8 +159,9 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Next open mandatory example scope after this feature is Wave 3: editor, file, help, and stream demos such as `tvedit`, `bhelp`, and `helpdemo`.
 
 ### 013-wave2-visual-component-remediation
-- Current planning baseline: execute the visual remediation from `specs/013-wave2-visual-component-remediation/spec.md` and `specs/013-wave2-visual-component-remediation/plan.md`.
+- Current implementation status: visual component remediation is implemented on branch `013-wave2-visual-component-remediation`; final validation evidence is tracked in `specs/013-wave2-visual-component-remediation/pr-evidence.md`.
 - Scope is limited to the eleven Wave-2 examples: `Clipboard`, `Demo`, `DlgDsn`, `DynTxt`, `InpLis`, `ListVi`, `ProgBa`, `Sdlg`, `Sdlg2`, `TCombo`, and `TProgB`.
+- Shared runtime support for the remediated examples lives in `examples/Shared/Wave2Runtime.cs` and is linked into the eleven scoped example projects.
 - The primary parity proof is the visible UI composition itself: controls, dialogs, windows, view groups, scroll groups, progress displays, input/list/combo composition, or another stable visible runtime state.
 - Each example must use the three-layer model: visible main component, real `TStatusLine` feedback, and keyboard-reachable `Help -> Description`.
 - Primary smokes must drive the real app loop and combine concrete state assertions with view-tree proof plus buffer/cell rendered visibility proof at expected positions or regions.

@@ -19,6 +19,23 @@ dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Li
 dotnet run --project examples/ListVi
 ```
 
+## 013 Sichtbarer Nachweis / 013 Visible Proof
+
+Deutsch: `ListVi` zeigt die Liste jetzt in einem sichtbaren `TDialog` mit
+`TListBox` und text-first Auswahl-/Leerzustand. Load, First, Last und Empty
+aktualisieren die Liste und die echte Statuszeile. `Help -> Description`
+beschreibt Auswahl, Grenze und Leerliste. Der Smoke-Test beweist `app.Run()`,
+View-Typ und Buffer-Region. Historisch folgt dies den List-Viewer-Quellen und
+`tlistvie.cc`. Abweichung: Ein fokussierter Listenbeweis ersetzt den
+historischen Mehrlisten-Dialog.
+
+English: `ListVi` now shows the list in a visible `TDialog` with `TListBox`
+and text-first selection/empty state. Load, First, Last, and Empty update the
+list and the real status line. `Help -> Description` describes selection,
+boundary, and empty list. The smoke test proves `app.Run()`, view type, and
+buffer region. This follows the list viewer sources and `tlistvie.cc`.
+Deviation: one focused list proof replaces the historical multi-list dialog.
+
 ## English
 
 `ListVi` ports list viewers from `tv203s/contrib/tvision/examples/listvi/`.

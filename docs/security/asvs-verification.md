@@ -42,3 +42,18 @@ Date: 2026-05-10.
 
 OWASP ASVS remains N/A. 012 adds no web frontend, HTTP API, authentication,
 session management, or authorization model.
+
+## 013-wave2-visual-component-remediation
+
+Datum: 2026-05-30.
+
+OWASP ASVS bleibt N/A. 013 fuegt kein Web-Frontend, keine HTTP-API, keine
+Authentifizierung, keine Session-Verwaltung und kein Berechtigungsmodell hinzu.
+Die relevante Evidenz liegt in lokalen App-Loop-Smokes, Threat Model,
+Dependency Audit und Supply-Chain-Evidence.
+
+Date: 2026-05-30.
+
+OWASP ASVS remains N/A. 013 adds no web frontend, HTTP API, authentication,
+session management, or authorization model. Relevant evidence lives in local
+app-loop smokes, threat model, dependency audit, and supply-chain evidence.

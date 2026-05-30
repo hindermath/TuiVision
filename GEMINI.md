@@ -175,8 +175,9 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 *   Next open mandatory example scope after this feature is Wave 3: editor, file, help, and stream demos such as `tvedit`, `bhelp`, and `helpdemo`.
 
 ### 013-wave2-visual-component-remediation
-*   Current planning baseline: execute the visual remediation from `specs/013-wave2-visual-component-remediation/spec.md` and `specs/013-wave2-visual-component-remediation/plan.md`.
+*   Current implementation status: visual component remediation is implemented on branch `013-wave2-visual-component-remediation`; final validation evidence is tracked in `specs/013-wave2-visual-component-remediation/pr-evidence.md`.
 *   Scope is limited to the eleven Wave-2 examples: `Clipboard`, `Demo`, `DlgDsn`, `DynTxt`, `InpLis`, `ListVi`, `ProgBa`, `Sdlg`, `Sdlg2`, `TCombo`, and `TProgB`.
+*   Shared runtime support for the remediated examples lives in `examples/Shared/Wave2Runtime.cs` and is linked into the eleven scoped example projects.
 *   The primary parity proof is the visible UI composition itself: controls, dialogs, windows, view groups, scroll groups, progress displays, input/list/combo composition, or another stable visible runtime state.
 *   Each example must use the three-layer model: visible main component, real `TStatusLine` feedback, and keyboard-reachable `Help -> Description`.
 *   Primary smokes must drive the real app loop and combine concrete state assertions with view-tree proof plus buffer/cell rendered visibility proof at expected positions or regions.
@@ -264,7 +265,7 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 - Planning decisions now fixed: headless smoke seam via `bool headless` constructor parameter + `GetEvent()` override; in-process MSTest execution without external process spawning; bilingual German-first/English-second XML docs and comments at CEFR-B2; `DisplayModeCoordinator.ProbeResizeSupport()` cross-platform probe with CA1416 suppressed.
 
 ## Recent Changes
-- 013-wave2-visual-component-remediation: Planartefakte (`plan.md`, `research.md`, `data-model.md`, `quickstart.md`, `contracts/wave2-visual-component-acceptance.md`) fuer die sichtbare Wave-2-Remediation, das Drei-Schichten-Modell, strengere App-Loop-Smokes, kontrollierte Fixture-Grenzen, AI-SBOM-N/A und synchronisierten Agent-Kontext erstellt.
+- 013-wave2-visual-component-remediation: Sichtbare Hauptkomponenten oder stabile visuelle Runtime-Zustaende, echte `TStatusLine`, `Help -> Description`, gemeinsames `examples/Shared/Wave2Runtime.cs`, strengere app-loop-basierte Render-Smokes, Guides, README, Architektur-/Security-Evidence, Statistik und PR-Evidence fuer alle elf Wave-2-Beispiele umgesetzt.
 - 004-editor-file-help-streams: Spezifikation und Requirements-Checklist fuer Phase 6 (Editor/Datei/Hilfe/Streams) angelegt.
 - 004-editor-file-help-streams: Planartefakte (`plan.md`, `research.md`, `data-model.md`, `quickstart.md`, `contracts/public-api.md`) erstellt und gemeinsame Agent-Hinweise auf den Post-Plan-Stand synchronisiert.
 - 004-editor-file-help-streams: Plan-Review-Klarstellungen fuer Safe-Close vs. Overwrite, Wildcard-Filter in Dateidialogen, explizite Stream-Fehlerfaelle und nicht-funktionale Abgrenzungen eingearbeitet.

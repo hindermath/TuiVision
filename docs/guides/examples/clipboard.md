@@ -40,3 +40,23 @@ Accessibility: all proof is text-first and keyboard-first. Color or mouse input
 is not required.
 
 Accepted limitation: see `docs/architecture/architecture-risks.md`.
+
+## 013 Sichtbarer Nachweis / 013 Visible Proof
+
+Deutsch: In 013 ist `Clipboard` nicht mehr nur ein Textprotokoll. Die
+Hauptkomponente ist eine sichtbare `TInputLine`. Copy, Cut, Paste und
+Unavailable aktualisieren diese Eingabezeile und die Statuszeile. Der Pfad
+`Help -> Description` erklaert den sichtbaren Zweck direkt in der Anwendung.
+Der Smoke-Test prueft `app.Run()`, den View-Typ und eine gerenderte
+Buffer-Region. Die historische Idee aus `test.cc` und `osclipboard.h` bleibt:
+Clipboard-Zustaende sollen sichtbar sein. Abweichung: Der Beweis nutzt die
+verwaltete Clipboard-Schicht und einen deterministischen Fallback, nicht die
+live OS-Zwischenablage.
+
+English: In 013, `Clipboard` is no longer only a text log. The main component
+is a visible `TInputLine`. Copy, Cut, Paste, and Unavailable update that input
+line and the status line. `Help -> Description` explains the visible purpose
+inside the app. The smoke test checks `app.Run()`, the view type, and a rendered
+buffer region. The historical idea from `test.cc` and `osclipboard.h` remains:
+clipboard states must be visible. Deviation: proof uses the managed clipboard
+layer and a deterministic fallback, not the live OS clipboard.

@@ -35,6 +35,28 @@ public sealed class TComboSmokeTests : ExampleTestBase
         AssertVisibleContainsFromAppLoop(history, "selected Gamma", "TCombo app-loop selected value");
         AssertVisibleContainsFromAppLoop(history, "boundary retained Gamma", "TCombo app-loop boundary");
         AssertVisibleContainsFromAppLoop(history, "empty choices", "TCombo app-loop empty state");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TDialog", "TCombo combo dialog view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "empty choices", "TCombo rendered empty dialog");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft Statuszeile und Help -> Description.
+    ///
+    /// Verifies status line and Help -> Description.
+    /// </summary>
+    [TestMethod]
+    public void TCombo_AppLoop_Shows_StatusLine_And_HelpDescription()
+    {
+        TComboApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(TComboApp.CmDescription).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertVisibleContainsFromAppLoop(app.LastStatusMessage, "Help -> Description", "TCombo status-line description hint");
+        AssertVisibleContainsFromAppLoop(app.VisibleText, "TCombo description", "TCombo Help -> Description content");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "TCombo description view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "TCombo description", "TCombo rendered description");
         AssertPrimaryAssertionUsedAppLoop();
     }
 

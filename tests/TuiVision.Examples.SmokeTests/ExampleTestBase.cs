@@ -1,6 +1,7 @@
 // Copyright (c) 2026 Thorsten Hindermann / TuiVision Contributors.
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
+using System.Text;
 using TuiVision.Core;
 
 namespace TuiVision.Examples.SmokeTests;
@@ -219,6 +220,134 @@ public abstract class ExampleTestBase
     {
         AssertVisibleContains(visibleText, expectedFragment, description);
         RecordPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft den aufgezeichneten View-Baum-Zieltyp eines primaeren sichtbaren Wave-2-Beweises.
+    ///
+    /// Asserts the recorded view-tree target type of a primary visible Wave 2 proof.
+    /// </summary>
+    /// <param name="actualKind">Der beobachtete View-Typ. / The observed view type.</param>
+    /// <param name="expectedKind">Der erwartete View-Typ. / The expected view type.</param>
+    /// <param name="description">Beschreibung fuer die Fehlermeldung. / Description for the failure message.</param>
+    protected void AssertViewTreeProofFromAppLoop(string actualKind, string expectedKind, string description)
+    {
+        AssertEqual(expectedKind, actualKind, description);
+        RecordPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft, dass ein Renderpuffer einen erwarteten, control-spezifischen Text enthaelt.
+    ///
+    /// Asserts that a render buffer contains expected control-specific text.
+    /// </summary>
+    /// <param name="buffer">Der Renderpuffer. / The render buffer.</param>
+    /// <param name="expectedFragment">Das erwartete Fragment. / The expected fragment.</param>
+    /// <param name="description">Beschreibung fuer die Fehlermeldung. / Description for the failure message.</param>
+    protected void AssertRenderedContainsFromAppLoop(TConsoleBuffer buffer, string expectedFragment, string description)
+    {
+        AssertRenderedContains(buffer, expectedFragment, description);
+        RecordPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft, dass ein Renderpuffer einen erwarteten, control-spezifischen Text enthaelt.
+    ///
+    /// Asserts that a render buffer contains expected control-specific text.
+    /// </summary>
+    /// <param name="buffer">Der Renderpuffer. / The render buffer.</param>
+    /// <param name="expectedFragment">Das erwartete Fragment. / The expected fragment.</param>
+    /// <param name="description">Beschreibung fuer die Fehlermeldung. / Description for the failure message.</param>
+    protected static void AssertRenderedContains(TConsoleBuffer buffer, string expectedFragment, string description)
+    {
+        string text = BufferToText(buffer);
+        Assert.IsTrue(
+            text.Contains(expectedFragment, StringComparison.Ordinal),
+            $"{description}: Renderpuffer enthaelt '{expectedFragment}' nicht. / " +
+            $"{description}: render buffer does not contain '{expectedFragment}'. Actual: {text}");
+    }
+
+    /// <summary>
+    /// Prueft eine stabile Region im Renderpuffer.
+    ///
+    /// Asserts a stable region in the render buffer.
+    /// </summary>
+    /// <param name="buffer">Der Renderpuffer. / The render buffer.</param>
+    /// <param name="region">Die zu pruefende Region. / The region to check.</param>
+    /// <param name="expectedFragment">Das erwartete Fragment. / The expected fragment.</param>
+    /// <param name="description">Beschreibung fuer die Fehlermeldung. / Description for the failure message.</param>
+    protected void AssertRenderedRegionContainsFromAppLoop(
+        TConsoleBuffer buffer,
+        TRect region,
+        string expectedFragment,
+        string description)
+    {
+        string text = BufferRegionToText(buffer, region);
+        Assert.IsTrue(
+            text.Contains(expectedFragment, StringComparison.Ordinal),
+            $"{description}: Renderregion enthaelt '{expectedFragment}' nicht. / " +
+            $"{description}: render region does not contain '{expectedFragment}'. Actual: {text}");
+        RecordPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Wandelt einen Renderpuffer in zeilenweisen Text fuer stabile Smoke-Assertions um.
+    ///
+    /// Converts a render buffer into line-based text for stable smoke assertions.
+    /// </summary>
+    /// <param name="buffer">Der Renderpuffer. / The render buffer.</param>
+    /// <returns>Der zeilenweise Text. / The line-based text.</returns>
+    protected static string BufferToText(TConsoleBuffer buffer)
+    {
+        StringBuilder builder = new();
+        for (int y = 0; y < buffer.Height; y++)
+        {
+            if (y > 0)
+            {
+                builder.Append('\n');
+            }
+
+            for (int x = 0; x < buffer.Width; x++)
+            {
+                char glyph = buffer.GetCell(x, y).Glyph;
+                builder.Append(glyph == '\0' ? ' ' : glyph);
+            }
+        }
+
+        return builder.ToString();
+    }
+
+    /// <summary>
+    /// Wandelt eine stabile Renderpufferregion in zeilenweisen Text um.
+    ///
+    /// Converts a stable render-buffer region into line-based text.
+    /// </summary>
+    /// <param name="buffer">Der Renderpuffer. / The render buffer.</param>
+    /// <param name="region">Die Region. / The region.</param>
+    /// <returns>Der Regionstext. / The region text.</returns>
+    protected static string BufferRegionToText(TConsoleBuffer buffer, TRect region)
+    {
+        int left = Math.Clamp(region.A.X, 0, buffer.Width);
+        int top = Math.Clamp(region.A.Y, 0, buffer.Height);
+        int right = Math.Clamp(region.B.X, left, buffer.Width);
+        int bottom = Math.Clamp(region.B.Y, top, buffer.Height);
+
+        StringBuilder builder = new();
+        for (int y = top; y < bottom; y++)
+        {
+            if (y > top)
+            {
+                builder.Append('\n');
+            }
+
+            for (int x = left; x < right; x++)
+            {
+                char glyph = buffer.GetCell(x, y).Glyph;
+                builder.Append(glyph == '\0' ? ' ' : glyph);
+            }
+        }
+
+        return builder.ToString();
     }
 
     /// <summary>

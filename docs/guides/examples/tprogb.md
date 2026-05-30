@@ -22,6 +22,24 @@ dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~TP
 dotnet run --project examples/TProgB
 ```
 
+## 013 Sichtbarer Nachweis / 013 Visible Proof
+
+Deutsch: `TProgB` zeigt Fortschritt in einem sichtbaren `TWindow` mit
+`TProgressBar`. Partial, Abort und Cancelled pruefen Teilfortschritt,
+Abbruchanforderung und abgebrochenen Zustand. Die Statuszeile meldet den
+aktuellen Schritt, `Help -> Description` erklaert den Ablauf. Der Smoke-Test
+beweist `app.Run()`, View-Typ und gerenderte Region. Historisch folgt dies dem
+Progress-Dialog-Zweck aus `calc.cpp` und `tprogbar.cpp`. Abweichung: Kein
+langlaufender Worker; die Progress-Zustaende sind deterministisch.
+
+English: `TProgB` shows progress in a visible `TWindow` with `TProgressBar`.
+Partial, Abort, and Cancelled prove partial progress, abort request, and
+cancelled state. The status line reports the current step, and
+`Help -> Description` explains the flow. The smoke test proves `app.Run()`,
+view type, and rendered region. This follows the progress-dialog purpose from
+`calc.cpp` and `tprogbar.cpp`. Deviation: there is no long-running worker; the
+progress states are deterministic.
+
 ## English
 
 `TProgB` ports the extended progress bar with abort from

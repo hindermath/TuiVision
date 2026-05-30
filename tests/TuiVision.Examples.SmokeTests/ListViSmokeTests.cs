@@ -34,6 +34,28 @@ public sealed class ListViSmokeTests : ExampleTestBase
         AssertVisibleContainsFromAppLoop(history, "selected last", "ListVi app-loop last boundary");
         AssertVisibleContainsFromAppLoop(history, "selected first", "ListVi app-loop first boundary");
         AssertVisibleContainsFromAppLoop(history, "empty list", "ListVi app-loop empty state");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TDialog", "ListVi list dialog view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "empty list", "ListVi rendered empty dialog");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft Statuszeile und Help -> Description.
+    ///
+    /// Verifies status line and Help -> Description.
+    /// </summary>
+    [TestMethod]
+    public void ListVi_AppLoop_Shows_StatusLine_And_HelpDescription()
+    {
+        ListViApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(ListViApp.CmDescription).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertVisibleContainsFromAppLoop(app.LastStatusMessage, "Help -> Description", "ListVi status-line description hint");
+        AssertVisibleContainsFromAppLoop(app.VisibleState, "ListVi description", "ListVi Help -> Description content");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "ListVi description view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "ListVi description", "ListVi rendered description");
         AssertPrimaryAssertionUsedAppLoop();
     }
 

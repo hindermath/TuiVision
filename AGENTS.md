@@ -202,8 +202,9 @@ npm run test:docfx
 - Next open mandatory example scope after this feature is Wave 3: editor, file, help, and stream demos such as `tvedit`, `bhelp`, and `helpdemo`.
 
 ### 013-wave2-visual-component-remediation
-- Current planning baseline: execute the visual remediation from `specs/013-wave2-visual-component-remediation/spec.md` and `specs/013-wave2-visual-component-remediation/plan.md`.
+- Current implementation status: visual component remediation is implemented on branch `013-wave2-visual-component-remediation`; final validation evidence is tracked in `specs/013-wave2-visual-component-remediation/pr-evidence.md`.
 - Scope is limited to the eleven Wave-2 examples: `Clipboard`, `Demo`, `DlgDsn`, `DynTxt`, `InpLis`, `ListVi`, `ProgBa`, `Sdlg`, `Sdlg2`, `TCombo`, and `TProgB`.
+- Shared runtime support for the remediated examples lives in `examples/Shared/Wave2Runtime.cs` and is linked into the eleven scoped example projects.
 - The primary parity proof is the visible UI composition itself: controls, dialogs, windows, view groups, scroll groups, progress displays, input/list/combo composition, or another stable visible runtime state.
 - Each example must use the three-layer model: visible main component, real `TStatusLine` feedback, and keyboard-reachable `Help -> Description`.
 - Primary smokes must drive the real app loop and combine concrete state assertions with view-tree proof plus buffer/cell rendered visibility proof at expected positions or regions.
@@ -290,7 +291,7 @@ npm run test:docfx
 - Planning decisions now fixed: headless smoke seam via `bool headless` constructor parameter + `GetEvent()` override; in-process MSTest execution without external process spawning; bilingual German-first/English-second XML docs and comments at CEFR-B2; `DisplayModeCoordinator.ProbeResizeSupport()` cross-platform probe with CA1416 suppressed.
 
 ## Recent Changes
-- 013-wave2-visual-component-remediation: Added `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, and `contracts/wave2-visual-component-acceptance.md` to plan the visible Wave-2 remediation, three-layer runtime model, stricter app-loop smoke proof, controlled fixture boundary, AI-SBOM N/A rationale, and synchronized agent context.
+- 013-wave2-visual-component-remediation: Implemented visible main components or stable visual runtime states, real `TStatusLine` feedback, `Help -> Description`, shared `examples/Shared/Wave2Runtime.cs`, stricter app-loop rendered-visibility smokes, guides, README, architecture/security evidence, statistics, and PR evidence for all eleven Wave-2 examples.
 - 004-editor-file-help-streams: Added the phase-6 specification and requirements checklist for editor, file, help, stream, and resource components.
 - 004-editor-file-help-streams: Added `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, and `contracts/public-api.md`; synchronized shared agent guidance to the post-plan baseline.
 - 004-editor-file-help-streams: Applied plan-review clarifications for safe-close vs. overwrite handling, wildcard-filtered file dialogs, explicit malformed-stream cases, and non-functional scope boundaries.

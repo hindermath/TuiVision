@@ -3,6 +3,7 @@
 
 using TuiVision.Controls;
 using TuiVision.Core;
+using TuiVision.Examples.Shared;
 
 namespace TuiVision.Examples.DynTxt;
 
@@ -22,10 +23,14 @@ public sealed class DynTxtApp : TApplication
     /// <summary>Breitenbegrenzter Textbefehl. / Constrained-width text command.</summary>
     public const ushort CmConstrainedText = 12302;
 
+    /// <summary>Help -> Description-Befehl. / Help -> Description command.</summary>
+    public const ushort CmDescription = 12303;
+
     private readonly bool _headless;
     private readonly Queue<TEvent> _scriptedEvents = [];
     private readonly List<string> _visibleHistory = [];
     private bool _headlessEventFired;
+    private TView? _mainView;
     private TStaticText? _visibleView;
 
     /// <summary>
@@ -40,7 +45,10 @@ public sealed class DynTxtApp : TApplication
         _headless = headless;
         SetVisibleState(
             "DynTxt: dynamic short, long, and constrained-width text\n" +
-            "Commands update text through the app loop. Ctrl+Q quits.");
+            "Commands update text through the app loop. Ctrl+Q quits.",
+            "ready",
+            CreateTextView("DynTxt ready", 14),
+            "TStaticText");
     }
 
     /// <summary>
@@ -49,6 +57,19 @@ public sealed class DynTxtApp : TApplication
     /// Current visible text.
     /// </summary>
     public string VisibleText { get; private set; } = string.Empty;
+
+    /// <summary>Letzter Hauptkomponententyp. / Last main component type.</summary>
+    public string LastVisibleComponentKind { get; private set; } = "TStaticText";
+
+    /// <summary>Bereich der letzten Hauptkomponente. / Region of the last main component.</summary>
+    public TRect LastVisibleRegion { get; private set; } = new(0, 0, 0, 0);
+
+    /// <summary>Letzter Statuszeilentext. / Last status-line text.</summary>
+    public string LastStatusMessage { get; private set; } = string.Empty;
+
+    /// <summary>Beschreibungstext fuer Help -> Description. / Description text for Help -> Description.</summary>
+    public string DescriptionText =>
+        "DynTxt description: a dynamic text view shows changed, clipped, and constrained text.";
 
     /// <summary>
     /// Sichtbare Zustandsfolge seit Start.
@@ -84,8 +105,13 @@ public sealed class DynTxtApp : TApplication
         int effectiveWidth = Math.Max(0, width);
         string text = value ?? string.Empty;
         string visible = text.Length <= effectiveWidth ? text.PadRight(effectiveWidth) : text[..effectiveWidth];
-        return SetVisibleState(visible);
+        return SetVisibleState(visible, $"width {effectiveWidth}", CreateTextView(visible, Math.Max(1, effectiveWidth)), "TStaticText");
     }
+
+    /// <summary>Zeigt Help -> Description. / Shows Help -> Description.</summary>
+    /// <returns>Der sichtbare Zustand. / The visible state.</returns>
+    public string ShowDescription() =>
+        SetVisibleState(DescriptionText, "description visible", CreateDescriptionWindow("DynTxt", DescriptionText), "TWindow");
 
     /// <inheritdoc />
     protected override TMenuBar InitMenuBar(TRect bounds)
@@ -97,9 +123,13 @@ public sealed class DynTxtApp : TApplication
 
         return new TMenuBar(bounds)
         {
-            Menu = new TMenuItem("~D~ynTxt", 0, new TMenuItem("E~x~it", ShellCommandIds.cmQuit), textItems)
+            Menu = new TMenuItem("~D~ynTxt", 0, Wave2Runtime.HelpMenu(CmDescription, new TMenuItem("E~x~it", ShellCommandIds.cmQuit)), textItems)
         };
     }
+
+    /// <inheritdoc />
+    protected override TStatusLine InitStatusLine(TRect bounds) =>
+        new Wave2StatusLine(bounds, Wave2Runtime.Status("DynTxt", "ready"));
 
     /// <inheritdoc />
     public override void HandleEvent(TEvent @event)
@@ -118,6 +148,10 @@ public sealed class DynTxtApp : TApplication
                     return;
                 case CmConstrainedText:
                     UpdateText("constrained", width: 5);
+                    @event.Clear();
+                    return;
+                case CmDescription:
+                    ShowDescription();
                     @event.Clear();
                     return;
             }
@@ -145,13 +179,20 @@ public sealed class DynTxtApp : TApplication
         base.GetEvent(out @event);
     }
 
-    private string SetVisibleState(string text)
+    private string SetVisibleState(string text, string status, TView? mainView = null, string componentKind = "TStaticText")
     {
         VisibleText = text;
         _visibleHistory.Add(text);
+        LastStatusMessage = Wave2Runtime.Status("DynTxt", status);
+        Wave2Runtime.SetStatus(StatusLine, LastStatusMessage);
         if (Desktop is null)
         {
             return VisibleText;
+        }
+
+        if (_mainView?.Owner == Desktop)
+        {
+            Desktop.Remove(_mainView);
         }
 
         if (_visibleView?.Owner == Desktop)
@@ -159,10 +200,37 @@ public sealed class DynTxtApp : TApplication
             Desktop.Remove(_visibleView);
         }
 
-        int width = Math.Max(1, Desktop.Size.X - 2);
-        int height = Math.Max(1, Math.Min(Desktop.Size.Y - 2, 6));
-        _visibleView = new TStaticText(new TRect(1, 1, 1 + width, 1 + height), VisibleText);
+        _mainView = mainView ?? new TStaticText(Wave2Runtime.MainRegion(Desktop), VisibleText);
+        LastVisibleComponentKind = componentKind;
+        LastVisibleRegion = Wave2Runtime.ScreenRegion(Desktop, _mainView);
+        Desktop.Insert(_mainView);
+
+        _visibleView = new TStaticText(Wave2Runtime.DetailRegion(Desktop), VisibleText);
         Desktop.Insert(_visibleView);
         return VisibleText;
+    }
+
+    private TStaticText? CreateTextView(string text, int width)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        int actualWidth = Math.Clamp(width, 1, Math.Max(1, Desktop.Size.X - 4));
+        return new TStaticText(new TRect(2, 1, 2 + actualWidth, 2), text);
+    }
+
+    private TWindow? CreateDescriptionWindow(string title, string body)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        TRect region = Wave2Runtime.MainRegion(Desktop, width: 56, height: 7);
+        TWindow window = new($"{title} Help", region.A.X, region.A.Y, region.Width, region.Height);
+        window.Insert(new TStaticText(new TRect(2, 2, region.Width - 2, region.Height - 1), body));
+        return window;
     }
 }

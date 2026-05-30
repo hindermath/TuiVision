@@ -66,3 +66,16 @@ Smoke-Test zu pruefen.
 and evidence surfaces, but no new public framework API. DocFX still has to be
 regenerated after final validation because documentation changed, and it must
 be checked with the existing Playwright/axe smoke test.
+
+## 013 Qualitaetsszenarien / 013 Quality Scenarios
+
+Deutsch: 013 schaerft die Akzeptanzqualitaet fuer Welle 2. Jeder primaere
+Smoke muss konkrete Zustandswerte, View-Baum-Nachweis und Buffer-/Cell-Region
+kombinieren. `VisibleText` und `VisibleHistory` sind nur noch Ergaenzung. Da
+Guides und README geaendert werden, bleiben DocFX und Playwright/axe fuer die
+finale Validierung erforderlich.
+
+English: 013 raises the acceptance quality for Wave 2. Each primary smoke must
+combine concrete state values, view-tree proof, and buffer/cell region.
+`VisibleText` and `VisibleHistory` are supplemental only. Because guides and
+README change, DocFX and Playwright/axe remain required for final validation.

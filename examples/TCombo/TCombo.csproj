@@ -5,6 +5,7 @@
     <AssemblyName>TCombo</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\Shared\Wave2Runtime.cs" Link="Wave2Runtime.cs" />
     <ProjectReference Include="..\..\src\TuiVision.Core\TuiVision.Core.csproj" />
     <ProjectReference Include="..\..\src\TuiVision.Controls\TuiVision.Controls.csproj" />
     <ProjectReference Include="..\..\src\TuiVision.Drivers.Console\TuiVision.Drivers.Console.csproj" />

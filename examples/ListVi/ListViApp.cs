@@ -3,6 +3,7 @@
 
 using TuiVision.Controls;
 using TuiVision.Core;
+using TuiVision.Examples.Shared;
 
 namespace TuiVision.Examples.ListVi;
 
@@ -25,12 +26,16 @@ public sealed class ListViApp : TApplication
     /// <summary>Leere Liste zeigen. / Show empty list.</summary>
     public const ushort CmEmpty = 12503;
 
+    /// <summary>Help -> Description-Befehl. / Help -> Description command.</summary>
+    public const ushort CmDescription = 12504;
+
     private readonly bool _headless;
     private readonly Queue<TEvent> _scriptedEvents = [];
     private readonly List<string> _visibleHistory = [];
     private bool _headlessEventFired;
     private readonly List<string> _items = [];
     private int _selectedIndex;
+    private TView? _mainView;
     private TStaticText? _visibleView;
 
     /// <summary>
@@ -45,7 +50,10 @@ public sealed class ListViApp : TApplication
         _headless = headless;
         SetVisibleState(
             "ListVi: list selection, first/last boundaries, and empty feedback\n" +
-            "Commands load/select first/select last/empty. Ctrl+Q quits.");
+            "Commands load/select first/select last/empty. Ctrl+Q quits.",
+            "ready",
+            CreateListDialog("listvi: empty"),
+            "TDialog");
     }
 
     /// <summary>
@@ -54,6 +62,19 @@ public sealed class ListViApp : TApplication
     /// Visible selection state.
     /// </summary>
     public string VisibleState { get; private set; } = "listvi: empty";
+
+    /// <summary>Letzter Hauptkomponententyp. / Last main component type.</summary>
+    public string LastVisibleComponentKind { get; private set; } = "TDialog";
+
+    /// <summary>Bereich der letzten Hauptkomponente. / Region of the last main component.</summary>
+    public TRect LastVisibleRegion { get; private set; } = new(0, 0, 0, 0);
+
+    /// <summary>Letzter Statuszeilentext. / Last status-line text.</summary>
+    public string LastStatusMessage { get; private set; } = string.Empty;
+
+    /// <summary>Beschreibungstext fuer Help -> Description. / Description text for Help -> Description.</summary>
+    public string DescriptionText =>
+        "ListVi description: a visible list box shows selection, first/last boundaries, and empty feedback.";
 
     /// <summary>
     /// Sichtbare Zustandsfolge seit Start.
@@ -88,9 +109,10 @@ public sealed class ListViApp : TApplication
         _items.Clear();
         _items.AddRange(items ?? []);
         _selectedIndex = 0;
-        return SetVisibleState(_items.Count == 0
+        string text = _items.Count == 0
             ? "listvi: empty list"
-            : $"listvi: selected {_items[0]} viewport={Math.Min(3, _items.Count)}");
+            : $"listvi: selected {_items[0]} viewport={Math.Min(3, _items.Count)}";
+        return SetVisibleState(text, _items.Count == 0 ? "empty list" : $"selected {_items[0]}", CreateListDialog(text), "TDialog");
     }
 
     /// <summary>
@@ -104,12 +126,18 @@ public sealed class ListViApp : TApplication
     {
         if (_items.Count == 0)
         {
-            return SetVisibleState("listvi: empty list");
+            return SetVisibleState("listvi: empty list", "empty list", CreateListDialog("listvi: empty list"), "TDialog");
         }
 
         _selectedIndex = Math.Clamp(_selectedIndex + delta, 0, _items.Count - 1);
-        return SetVisibleState($"listvi: selected {_items[_selectedIndex]} index={_selectedIndex}");
+        string text = $"listvi: selected {_items[_selectedIndex]} index={_selectedIndex}";
+        return SetVisibleState(text, $"selected {_items[_selectedIndex]}", CreateListDialog(text), "TDialog");
     }
+
+    /// <summary>Zeigt Help -> Description. / Shows Help -> Description.</summary>
+    /// <returns>Der sichtbare Zustand. / The visible state.</returns>
+    public string ShowDescription() =>
+        SetVisibleState(DescriptionText, "description visible", CreateDescriptionWindow("ListVi", DescriptionText), "TWindow");
 
     /// <inheritdoc />
     protected override TMenuBar InitMenuBar(TRect bounds)
@@ -122,9 +150,13 @@ public sealed class ListViApp : TApplication
 
         return new TMenuBar(bounds)
         {
-            Menu = new TMenuItem("~L~istVi", 0, new TMenuItem("E~x~it", ShellCommandIds.cmQuit), listItems)
+            Menu = new TMenuItem("~L~istVi", 0, Wave2Runtime.HelpMenu(CmDescription, new TMenuItem("E~x~it", ShellCommandIds.cmQuit)), listItems)
         };
     }
+
+    /// <inheritdoc />
+    protected override TStatusLine InitStatusLine(TRect bounds) =>
+        new Wave2StatusLine(bounds, Wave2Runtime.Status("ListVi", "ready"));
 
     /// <inheritdoc />
     public override void HandleEvent(TEvent @event)
@@ -147,6 +179,10 @@ public sealed class ListViApp : TApplication
                     return;
                 case CmEmpty:
                     LoadItems([]);
+                    @event.Clear();
+                    return;
+                case CmDescription:
+                    ShowDescription();
                     @event.Clear();
                     return;
             }
@@ -174,13 +210,20 @@ public sealed class ListViApp : TApplication
         base.GetEvent(out @event);
     }
 
-    private string SetVisibleState(string text)
+    private string SetVisibleState(string text, string status, TView? mainView = null, string componentKind = "TStaticText")
     {
         VisibleState = text;
         _visibleHistory.Add(text);
+        LastStatusMessage = Wave2Runtime.Status("ListVi", status);
+        Wave2Runtime.SetStatus(StatusLine, LastStatusMessage);
         if (Desktop is null)
         {
             return VisibleState;
+        }
+
+        if (_mainView?.Owner == Desktop)
+        {
+            Desktop.Remove(_mainView);
         }
 
         if (_visibleView?.Owner == Desktop)
@@ -188,10 +231,47 @@ public sealed class ListViApp : TApplication
             Desktop.Remove(_visibleView);
         }
 
-        int width = Math.Max(1, Desktop.Size.X - 2);
-        int height = Math.Max(1, Math.Min(Desktop.Size.Y - 2, 6));
-        _visibleView = new TStaticText(new TRect(1, 1, 1 + width, 1 + height), VisibleState);
+        _mainView = mainView ?? new TStaticText(Wave2Runtime.MainRegion(Desktop), VisibleState);
+        LastVisibleComponentKind = componentKind;
+        LastVisibleRegion = Wave2Runtime.ScreenRegion(Desktop, _mainView);
+        Desktop.Insert(_mainView);
+
+        _visibleView = new TStaticText(Wave2Runtime.DetailRegion(Desktop), VisibleState);
         Desktop.Insert(_visibleView);
         return VisibleState;
+    }
+
+    private TDialog? CreateListDialog(string stateText)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        TDialog dialog = new(Wave2Runtime.MainRegion(Desktop, width: 44, height: 9), "List viewer");
+        TStringList list = new();
+        foreach (string item in _items)
+        {
+            list.Add(item);
+        }
+
+        TListBox listBox = new(new TRect(2, 2, 20, 6), 1, null) { List = list };
+        listBox.FocusItem(_items.Count == 0 ? 0 : _selectedIndex);
+        dialog.Insert(listBox);
+        dialog.Insert(new TStaticText(new TRect(22, 2, 40, 6), stateText));
+        return dialog;
+    }
+
+    private TWindow? CreateDescriptionWindow(string title, string body)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        TRect region = Wave2Runtime.MainRegion(Desktop, width: 58, height: 7);
+        TWindow window = new($"{title} Help", region.A.X, region.A.Y, region.Width, region.Height);
+        window.Insert(new TStaticText(new TRect(2, 2, region.Width - 2, region.Height - 1), body));
+        return window;
     }
 }

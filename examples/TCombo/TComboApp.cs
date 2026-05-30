@@ -3,6 +3,7 @@
 
 using TuiVision.Controls;
 using TuiVision.Core;
+using TuiVision.Examples.Shared;
 
 namespace TuiVision.Examples.TCombo;
 
@@ -25,11 +26,15 @@ public sealed class TComboApp : TApplication
     /// <summary>Leeren Zustand zeigen. / Show empty state.</summary>
     public const ushort CmEmpty = 12903;
 
+    /// <summary>Help -> Description-Befehl. / Help -> Description command.</summary>
+    public const ushort CmDescription = 12904;
+
     private readonly bool _headless;
     private readonly Queue<TEvent> _scriptedEvents = [];
     private readonly List<string> _visibleHistory = [];
     private bool _headlessEventFired;
     private TComboBox? _combo;
+    private TView? _mainView;
     private TStaticText? _visibleView;
 
     /// <summary>
@@ -44,7 +49,10 @@ public sealed class TComboApp : TApplication
         _headless = headless;
         SetVisibleState(
             "TCombo: combo choices, visible value change, boundary, and empty feedback\n" +
-            "Commands load/select/boundary/empty. Ctrl+Q quits.");
+            "Commands load/select/boundary/empty. Ctrl+Q quits.",
+            "ready",
+            CreateComboDialog("tcombo: ready"),
+            "TDialog");
     }
 
     /// <summary>
@@ -60,6 +68,19 @@ public sealed class TComboApp : TApplication
     /// Last visible text state.
     /// </summary>
     public string VisibleText { get; private set; } = string.Empty;
+
+    /// <summary>Letzter Hauptkomponententyp. / Last main component type.</summary>
+    public string LastVisibleComponentKind { get; private set; } = "TDialog";
+
+    /// <summary>Bereich der letzten Hauptkomponente. / Region of the last main component.</summary>
+    public TRect LastVisibleRegion { get; private set; } = new(0, 0, 0, 0);
+
+    /// <summary>Letzter Statuszeilentext. / Last status-line text.</summary>
+    public string LastStatusMessage { get; private set; } = string.Empty;
+
+    /// <summary>Beschreibungstext fuer Help -> Description. / Description text for Help -> Description.</summary>
+    public string DescriptionText =>
+        "TCombo description: a visible combo/input composition shows selected, retained, boundary, and empty states.";
 
     /// <summary>
     /// Sichtbare Zustandsfolge seit Start.
@@ -97,8 +118,14 @@ public sealed class TComboApp : TApplication
             list.Add(choice);
         }
 
-        _combo = new TComboBox(new TRect(0, 0, 20, 1), 40, list);
-        return SetVisibleState(list.Count == 0 ? "tcombo: empty choices" : $"tcombo: loaded {list.Count} choices");
+        _combo = new TComboBox(new TRect(2, 2, 24, 3), 40, list);
+        if (list.Count > 0)
+        {
+            _combo.SelectIndex(0);
+        }
+
+        string text = list.Count == 0 ? "tcombo: empty choices" : $"tcombo: loaded {list.Count} choices";
+        return SetVisibleState(text, list.Count == 0 ? "empty choices" : $"loaded {list.Count} choices", CreateComboDialog(text), "TDialog");
     }
 
     /// <summary>
@@ -111,7 +138,8 @@ public sealed class TComboApp : TApplication
     public string SelectIndex(int index)
     {
         _combo?.SelectIndex(index);
-        return SetVisibleState($"tcombo: selected {InputValue}");
+        string text = $"tcombo: selected {InputValue}";
+        return SetVisibleState(text, $"selected {InputValue}", CreateComboDialog(text), "TDialog");
     }
 
     /// <summary>
@@ -129,8 +157,14 @@ public sealed class TComboApp : TApplication
 
         string before = InputValue;
         _combo?.SelectIndex(99);
-        return SetVisibleState($"tcombo: boundary retained {before}");
+        string text = $"tcombo: boundary retained {before}";
+        return SetVisibleState(text, $"boundary retained {before}", CreateComboDialog(text), "TDialog");
     }
+
+    /// <summary>Zeigt Help -> Description. / Shows Help -> Description.</summary>
+    /// <returns>Der sichtbare Zustand. / The visible state.</returns>
+    public string ShowDescription() =>
+        SetVisibleState(DescriptionText, "description visible", CreateDescriptionWindow("TCombo", DescriptionText), "TWindow");
 
     /// <inheritdoc />
     protected override TMenuBar InitMenuBar(TRect bounds)
@@ -143,9 +177,13 @@ public sealed class TComboApp : TApplication
 
         return new TMenuBar(bounds)
         {
-            Menu = new TMenuItem("~T~Combo", 0, new TMenuItem("E~x~it", ShellCommandIds.cmQuit), comboItems)
+            Menu = new TMenuItem("~T~Combo", 0, Wave2Runtime.HelpMenu(CmDescription, new TMenuItem("E~x~it", ShellCommandIds.cmQuit)), comboItems)
         };
     }
+
+    /// <inheritdoc />
+    protected override TStatusLine InitStatusLine(TRect bounds) =>
+        new Wave2StatusLine(bounds, Wave2Runtime.Status("TCombo", "ready"));
 
     /// <inheritdoc />
     public override void HandleEvent(TEvent @event)
@@ -175,6 +213,10 @@ public sealed class TComboApp : TApplication
                     LoadChoices([]);
                     @event.Clear();
                     return;
+                case CmDescription:
+                    ShowDescription();
+                    @event.Clear();
+                    return;
             }
         }
 
@@ -200,13 +242,20 @@ public sealed class TComboApp : TApplication
         base.GetEvent(out @event);
     }
 
-    private string SetVisibleState(string text)
+    private string SetVisibleState(string text, string status, TView? mainView = null, string componentKind = "TStaticText")
     {
         VisibleText = text;
         _visibleHistory.Add(text);
+        LastStatusMessage = Wave2Runtime.Status("TCombo", status);
+        Wave2Runtime.SetStatus(StatusLine, LastStatusMessage);
         if (Desktop is null)
         {
             return VisibleText;
+        }
+
+        if (_mainView?.Owner == Desktop)
+        {
+            Desktop.Remove(_mainView);
         }
 
         if (_visibleView?.Owner == Desktop)
@@ -214,10 +263,49 @@ public sealed class TComboApp : TApplication
             Desktop.Remove(_visibleView);
         }
 
-        int width = Math.Max(1, Desktop.Size.X - 2);
-        int height = Math.Max(1, Math.Min(Desktop.Size.Y - 2, 6));
-        _visibleView = new TStaticText(new TRect(1, 1, 1 + width, 1 + height), VisibleText);
+        _mainView = mainView ?? new TStaticText(Wave2Runtime.MainRegion(Desktop), VisibleText);
+        LastVisibleComponentKind = componentKind;
+        LastVisibleRegion = Wave2Runtime.ScreenRegion(Desktop, _mainView);
+        Desktop.Insert(_mainView);
+
+        _visibleView = new TStaticText(Wave2Runtime.DetailRegion(Desktop), VisibleText);
         Desktop.Insert(_visibleView);
         return VisibleText;
+    }
+
+    private TDialog? CreateComboDialog(string stateText)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        TDialog dialog = new(Wave2Runtime.MainRegion(Desktop, width: 48, height: 8), "Combo");
+        if (_combo is not null)
+        {
+            TComboBox combo = new(new TRect(2, 2, 28, 3), 40, _combo.Choices);
+            if (!string.IsNullOrEmpty(_combo.Data))
+            {
+                combo.Data = _combo.Data;
+            }
+
+            dialog.Insert(combo);
+        }
+
+        dialog.Insert(new TStaticText(new TRect(2, 4, 44, 7), stateText));
+        return dialog;
+    }
+
+    private TWindow? CreateDescriptionWindow(string title, string body)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        TRect region = Wave2Runtime.MainRegion(Desktop, width: 60, height: 7);
+        TWindow window = new($"{title} Help", region.A.X, region.A.Y, region.Width, region.Height);
+        window.Insert(new TStaticText(new TRect(2, 2, region.Width - 2, region.Height - 1), body));
+        return window;
     }
 }

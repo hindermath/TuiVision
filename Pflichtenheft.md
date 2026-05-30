@@ -244,6 +244,8 @@ Statuscheckliste Beispielwellen:
   Reihenfolgehinweis: Portierungs-/Smoke-Nachweis abgeschlossen (Branch `011-port-wave2-examples`); 11 Controls-/Dialog-Beispiele portiert, alle 15 gelieferten Beispiele per Smoke-Test abgedeckt, Guides geliefert. Die interaktive Showcase-Stufe wurde im Follow-up `012-interactive-wave2-demos` nachgezogen.
 - [x] **Welle 2 - Interaktive Showcase-Stufe**
   Reihenfolgehinweis: abgeschlossen (Branch `012-interactive-wave2-demos`); die elf Wave-2-Beispiele zeigen beim normalen Start sichtbare Menue-/Command-Pfade mit text-first Rueckmeldung und besitzen app-loop-basierte Smoke-Nachweise.
+- [x] **Welle 2 - Sichtbarer Komponenten-Nachweis**
+  Reihenfolgehinweis: abgeschlossen (Branch `013-wave2-visual-component-remediation`); die elf Wave-2-Beispiele besitzen echte sichtbare Hauptkomponenten, echte `TStatusLine`-Rueckmeldung, `Help -> Description` und primaere App-Loop-Smokes mit View-Baum- plus Buffer-/Cell-Nachweis.
 - [ ] **Welle 3 - Editor, Dateien, Hilfe und Streams**
   Reihenfolgehinweis: nach Welle 2; `tvedit`, `bhelp` und `helpdemo` eignen sich als fruehe Validierungsbeispiele fuer Phase 6.
 - [ ] **Welle 4 - Terminal-Emulation und erweiterte Zeichensaetze**
@@ -285,7 +287,7 @@ Checkliste Welle 2:
 - [x] `tcombo` - Kombinationsfelder (`TComboBox`)
 - [x] `tprogb` - Erweiterter Fortschrittsbalken mit Abbruch
 
-Abgrenzung: Die Welle-2-Checkliste dokumentiert den funktionalen Portierungs- und Smoke-Test-Nachweis aus `011-port-wave2-examples`. Die interaktive Demo-Reife fuer normale CLI-Starts wird in `012-interactive-wave2-demos` als eigene Showcase-Stufe nachgezogen.
+Abgrenzung: Die Welle-2-Checkliste dokumentiert den funktionalen Portierungs- und Smoke-Test-Nachweis aus `011-port-wave2-examples`. Die interaktive Demo-Reife fuer normale CLI-Starts wurde in `012-interactive-wave2-demos` als eigene Showcase-Stufe nachgezogen. Der sichtbare Komponenten-Nachweis aus `013-wave2-visual-component-remediation` schaerft die Abnahme: echte Hauptkomponente, echte `TStatusLine`, `Help -> Description` und gerenderter Buffer-/Cell-Nachweis sind nun dokumentiert.
 
 **Welle 3 – Editor, Dateien, Hilfe und Streams** (nach Abschluss Phase 6: Editor/Datei/Hilfe/Streams)
 
@@ -615,10 +617,11 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.1` = Welle 1: Grundlegende Anwendungsstruktur — ✓ ABGESCHLOSSEN
    - `3.2` = Welle 2: Controls und Dialoge — ✓ ABGESCHLOSSEN
    - `3.2a` = Welle 2: Interaktive Showcase-Stufe — ✓ ABGESCHLOSSEN (Branch `012-interactive-wave2-demos`)
+   - `3.2b` = Welle 2: Sichtbarer Komponenten-Nachweis — ✓ ABGESCHLOSSEN (Branch `013-wave2-visual-component-remediation`)
    - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze
 
->>> NAECHSTER SCHRITT <<< Welle 3 - Editor, Dateien, Hilfe und Streams: Den naechsten Spec-Kit-Feature-Lauf fuer `tvedit`, `bhelp` und `helpdemo` vorbereiten, nachdem Welle 2 inklusive interaktiver Showcase-Stufe abgeschlossen ist.
+>>> NAECHSTER SCHRITT <<< Welle 3 - Editor, Dateien, Hilfe und Streams: Den naechsten Spec-Kit-Feature-Lauf fuer `tvedit`, `bhelp` und `helpdemo` vorbereiten, nachdem Welle 2 inklusive sichtbarem Komponenten-Nachweis abgeschlossen ist.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

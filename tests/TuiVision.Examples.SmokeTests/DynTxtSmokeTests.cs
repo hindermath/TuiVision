@@ -33,6 +33,28 @@ public sealed class DynTxtSmokeTests : ExampleTestBase
         AssertVisibleContainsFromAppLoop(history, "Ada", "DynTxt app-loop short text");
         AssertVisibleContainsFromAppLoop(history, "0123456789ab", "DynTxt app-loop long clipped text");
         AssertVisibleContainsFromAppLoop(history, "const", "DynTxt app-loop constrained text");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TStaticText", "DynTxt static text view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "const", "DynTxt rendered constrained text");
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft Statuszeile und Help -> Description.
+    ///
+    /// Verifies status line and Help -> Description.
+    /// </summary>
+    [TestMethod]
+    public void DynTxt_AppLoop_Shows_StatusLine_And_HelpDescription()
+    {
+        DynTxtApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(DynTxtApp.CmDescription).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertVisibleContainsFromAppLoop(app.LastStatusMessage, "Help -> Description", "DynTxt status-line description hint");
+        AssertVisibleContainsFromAppLoop(app.VisibleText, "DynTxt description", "DynTxt Help -> Description content");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "DynTxt description view tree");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "DynTxt description", "DynTxt rendered description");
         AssertPrimaryAssertionUsedAppLoop();
     }
 

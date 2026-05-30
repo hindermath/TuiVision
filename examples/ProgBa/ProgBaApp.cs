@@ -3,6 +3,7 @@
 
 using TuiVision.Controls;
 using TuiVision.Core;
+using TuiVision.Examples.Shared;
 
 namespace TuiVision.Examples.ProgBa;
 
@@ -16,10 +17,14 @@ public sealed class ProgBaApp : TApplication
     /// <summary>Fortschritt bis zur Fertigstellung starten. / Start progress through completion.</summary>
     public const ushort CmComplete = 12600;
 
+    /// <summary>Help -> Description-Befehl. / Help -> Description command.</summary>
+    public const ushort CmDescription = 12601;
+
     private readonly bool _headless;
     private readonly Queue<TEvent> _scriptedEvents = [];
     private readonly List<string> _visibleHistory = [];
     private bool _headlessEventFired;
+    private TView? _mainView;
     private TStaticText? _visibleView;
 
     /// <summary>
@@ -34,7 +39,10 @@ public sealed class ProgBaApp : TApplication
         _headless = headless;
         SetVisibleState(
             "ProgBa: deterministic progress completion\n" +
-            "Command completes the progress bar. Ctrl+Q quits.");
+            "Command completes the progress bar. Ctrl+Q quits.",
+            "ready",
+            CreateProgressBar(0, 10, complete: false),
+            "TProgressBar");
     }
 
     /// <summary>
@@ -57,6 +65,19 @@ public sealed class ProgBaApp : TApplication
     /// Last visible text state.
     /// </summary>
     public string VisibleText { get; private set; } = string.Empty;
+
+    /// <summary>Letzter Hauptkomponententyp. / Last main component type.</summary>
+    public string LastVisibleComponentKind { get; private set; } = "TProgressBar";
+
+    /// <summary>Bereich der letzten Hauptkomponente. / Region of the last main component.</summary>
+    public TRect LastVisibleRegion { get; private set; } = new(0, 0, 0, 0);
+
+    /// <summary>Letzter Statuszeilentext. / Last status-line text.</summary>
+    public string LastStatusMessage { get; private set; } = string.Empty;
+
+    /// <summary>Beschreibungstext fuer Help -> Description. / Description text for Help -> Description.</summary>
+    public string DescriptionText =>
+        "ProgBa description: a visible progress bar advances deterministically to completion.";
 
     /// <summary>
     /// Sichtbare Zustandsfolge seit Start.
@@ -88,12 +109,17 @@ public sealed class ProgBaApp : TApplication
     /// <returns>Der sichtbare Zustand. / The visible state.</returns>
     public string RunToCompletion(int maximum)
     {
-        TProgressBar bar = new(new TRect(0, 0, 20, 1), 0, maximum);
+        TProgressBar bar = CreateProgressBar(0, maximum, complete: true) ?? new TProgressBar(new TRect(0, 0, 20, 1), 0, maximum);
         bar.Complete();
         ProgressValue = bar.Value;
         ProgressState = bar.BarState;
-        return SetVisibleState($"progba: completed {ProgressValue}/{maximum}");
+        return SetVisibleState($"progba: completed {ProgressValue}/{maximum}", "completed", bar, "TProgressBar");
     }
+
+    /// <summary>Zeigt Help -> Description. / Shows Help -> Description.</summary>
+    /// <returns>Der sichtbare Zustand. / The visible state.</returns>
+    public string ShowDescription() =>
+        SetVisibleState(DescriptionText, "description visible", CreateDescriptionWindow("ProgBa", DescriptionText), "TWindow");
 
     /// <inheritdoc />
     protected override TMenuBar InitMenuBar(TRect bounds)
@@ -101,9 +127,13 @@ public sealed class ProgBaApp : TApplication
         TMenuItem progressItems = new("~C~omplete", CmComplete);
         return new TMenuBar(bounds)
         {
-            Menu = new TMenuItem("~P~rogBa", 0, new TMenuItem("E~x~it", ShellCommandIds.cmQuit), progressItems)
+            Menu = new TMenuItem("~P~rogBa", 0, Wave2Runtime.HelpMenu(CmDescription, new TMenuItem("E~x~it", ShellCommandIds.cmQuit)), progressItems)
         };
     }
+
+    /// <inheritdoc />
+    protected override TStatusLine InitStatusLine(TRect bounds) =>
+        new Wave2StatusLine(bounds, Wave2Runtime.Status("ProgBa", "ready"));
 
     /// <inheritdoc />
     public override void HandleEvent(TEvent @event)
@@ -111,6 +141,13 @@ public sealed class ProgBaApp : TApplication
         if (@event.What == TEventKind.Command && @event.Message.Command == CmComplete)
         {
             RunToCompletion(maximum: 10);
+            @event.Clear();
+            return;
+        }
+
+        if (@event.What == TEventKind.Command && @event.Message.Command == CmDescription)
+        {
+            ShowDescription();
             @event.Clear();
             return;
         }
@@ -137,13 +174,20 @@ public sealed class ProgBaApp : TApplication
         base.GetEvent(out @event);
     }
 
-    private string SetVisibleState(string text)
+    private string SetVisibleState(string text, string status, TView? mainView = null, string componentKind = "TStaticText")
     {
         VisibleText = text;
         _visibleHistory.Add(text);
+        LastStatusMessage = Wave2Runtime.Status("ProgBa", status);
+        Wave2Runtime.SetStatus(StatusLine, LastStatusMessage);
         if (Desktop is null)
         {
             return VisibleText;
+        }
+
+        if (_mainView?.Owner == Desktop)
+        {
+            Desktop.Remove(_mainView);
         }
 
         if (_visibleView?.Owner == Desktop)
@@ -151,10 +195,46 @@ public sealed class ProgBaApp : TApplication
             Desktop.Remove(_visibleView);
         }
 
-        int width = Math.Max(1, Desktop.Size.X - 2);
-        int height = Math.Max(1, Math.Min(Desktop.Size.Y - 2, 6));
-        _visibleView = new TStaticText(new TRect(1, 1, 1 + width, 1 + height), VisibleText);
+        _mainView = mainView ?? new TStaticText(Wave2Runtime.MainRegion(Desktop), VisibleText);
+        LastVisibleComponentKind = componentKind;
+        LastVisibleRegion = Wave2Runtime.ScreenRegion(Desktop, _mainView);
+        Desktop.Insert(_mainView);
+
+        _visibleView = new TStaticText(Wave2Runtime.DetailRegion(Desktop), VisibleText);
         Desktop.Insert(_visibleView);
         return VisibleText;
+    }
+
+    private TProgressBar? CreateProgressBar(int value, int maximum, bool complete)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        TProgressBar bar = new(new TRect(2, 2, 42, 3), 0, maximum);
+        if (complete)
+        {
+            bar.Complete();
+        }
+        else
+        {
+            bar.SetValue(value);
+        }
+
+        return bar;
+    }
+
+    private TWindow? CreateDescriptionWindow(string title, string body)
+    {
+        if (Desktop is null)
+        {
+            return null;
+        }
+
+        TRect region = Wave2Runtime.MainRegion(Desktop, width: 58, height: 7);
+        TWindow window = new($"{title} Help", region.A.X, region.A.Y, region.Width, region.Height);
+        window.Insert(new TStaticText(new TRect(2, 2, region.Width - 2, region.Height - 1), body));
+        return window;
     }
 }

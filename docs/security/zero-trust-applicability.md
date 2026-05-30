@@ -46,3 +46,19 @@ Date: 2026-05-10.
 Zero Trust remains N/A for 012 as a service architecture. The change makes
 local examples operable through menus and commands, but introduces no identity
 provider, remote access, tenant context, or network service.
+
+## 013-wave2-visual-component-remediation
+
+Datum: 2026-05-30.
+
+Zero Trust bleibt N/A als Service-Architektur. 013 macht lokale Terminal-
+Beispiele sichtbarer und besser pruefbar, fuehrt aber keinen
+Identitaetsanbieter, Remotezugriff, Mandantenkontext, Netzwerkdienst oder
+Policy-Enforcement-Point ein.
+
+Date: 2026-05-30.
+
+Zero Trust remains N/A as a service architecture. 013 makes local terminal
+examples more visible and easier to verify, but introduces no identity
+provider, remote access, tenant context, network service, or policy enforcement
+point.
