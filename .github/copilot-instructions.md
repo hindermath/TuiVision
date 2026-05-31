@@ -169,6 +169,15 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - AI-SBOM is `N/A` for this feature while AI is only development/agent tooling; re-evaluate if runtime/product AI, models, datasets, AI infrastructure, or delivered AI components enter scope.
 - Wave 3/4 functionality, broad framework redesign, mandatory mouse-only operation, arbitrary user-file proof, external proof paths, persistent user history, databases, external services, and new runtime dependencies are out of scope.
 
+### 014-wave1-functional-hardening
+- Current planning baseline: execute the Wave-1 functional hardening plan from `specs/014-wave1-functional-hardening/spec.md` and `specs/014-wave1-functional-hardening/plan.md`.
+- Scope is limited to `Desklogo`, `MsgCls`, `Tutorial` steps `tvguid01` through `tvguid16`, and `Videomode`.
+- The primary proof surface is `specs/014-wave1-functional-hardening/pr-evidence.md`, which must record historical source, C# behavior, proof method, helper classification, negative/fallback proof, missing-core decisions, and intentional deviations.
+- Managed runtime behavior requires executable smoke proof; evidence-only proof is allowed only for explicitly documented no-runtime-target deviations.
+- Helper or headless paths may be `PrimaryProof` only when they execute real example or application logic through public commands, events, application methods, or stable public state with concrete assertions.
+- Historical C/C++ sources under `tv203s/` remain read-only intent references. `set-logo.cc` and `tv_logo.cc` are Desklogo asset/generator boundary context only.
+- Wave-1 visual remediation, Wave 2/3/4 behavior, broad framework redesign, mouse-only operation, arbitrary user-file proof, external proof paths, persistent user history, databases, external services, new runtime dependencies, and runtime/product AI are out of scope.
+
 ## Agent File Synchronization Policy
 
 - When active feature context, plan-derived implementation guidance, or other shared AI-agent instructions change, review and update these files together when affected:
@@ -401,5 +410,5 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read
-`specs/013-wave2-visual-component-remediation/plan.md`.
+`specs/014-wave1-functional-hardening/plan.md`.
 <!-- SPECKIT END -->

@@ -185,6 +185,15 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 *   AI-SBOM is `N/A` for this feature while AI is only development/agent tooling; re-evaluate if runtime/product AI, models, datasets, AI infrastructure, or delivered AI components enter scope.
 *   Wave 3/4 functionality, broad framework redesign, mandatory mouse-only operation, arbitrary user-file proof, external proof paths, persistent user history, databases, external services, and new runtime dependencies are out of scope.
 
+### 014-wave1-functional-hardening
+*   Current planning baseline: execute the Wave-1 functional hardening plan from `specs/014-wave1-functional-hardening/spec.md` and `specs/014-wave1-functional-hardening/plan.md`.
+*   Scope is limited to `Desklogo`, `MsgCls`, `Tutorial` steps `tvguid01` through `tvguid16`, and `Videomode`.
+*   The primary proof surface is `specs/014-wave1-functional-hardening/pr-evidence.md`, which must record historical source, C# behavior, proof method, helper classification, negative/fallback proof, missing-core decisions, and intentional deviations.
+*   Managed runtime behavior requires executable smoke proof; evidence-only proof is allowed only for explicitly documented no-runtime-target deviations.
+*   Helper or headless paths may be `PrimaryProof` only when they execute real example or application logic through public commands, events, application methods, or stable public state with concrete assertions.
+*   Historical C/C++ sources under `tv203s/` remain read-only intent references. `set-logo.cc` and `tv_logo.cc` are Desklogo asset/generator boundary context only.
+*   Wave-1 visual remediation, Wave 2/3/4 behavior, broad framework redesign, mouse-only operation, arbitrary user-file proof, external proof paths, persistent user history, databases, external services, new runtime dependencies, and runtime/product AI are out of scope.
+
 ## 🔄 Synchronisationsregel für KI-Agenten-Dateien
 
 *   Wenn sich aktiver Feature-Kontext, Planungsstand oder gemeinsam genutzte Agenten-Hinweise ändern, müssen diese Dateien gemeinsam geprüft und bei Bedarf im selben Arbeitsgang aktualisiert werden:
@@ -257,6 +266,8 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 - C# `latest` / C# 14 on .NET 10 (`net10.0`) + Existing TuiVision modules only: `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`; existing MSTest and Coverlet test stack; existing DocFX plus Playwright/axe web A11Y tooling. No new runtime NuGet dependency is planned. (012-interactive-wave2-demos)
 - Runtime example state is in memory. Dialog-designer and file/path demonstrations use source-controlled fixtures, fixed repository paths, or test temporary directories. The examples must not persist user history, write user data as part of normal demonstration, read arbitrary user file contents as proof, or add a database/external service. (012-interactive-wave2-demos)
 - Runtime example state remains in memory. Controlled examples may use source-controlled fixtures, fixed repository paths, or test temporary directories for metadata, rendering, validation, or rejection proof. The feature must not add a database, external service, network dependency, persistent user history, or arbitrary user-file content reads. (013-wave2-visual-component-remediation)
+- C# `latest` / C# 14 on .NET 10 (`net10.0`) + Existing TuiVision modules only: `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`; existing MSTest and Coverlet stack; existing DocFX plus Playwright/axe web A11Y tooling. No new runtime NuGet dependency is planned. (014-wave1-functional-hardening)
+- Runtime example state remains in memory. Proof data is limited to existing source-controlled files, controlled example fixtures if needed, or test temporary directories. No database, external service, network dependency, persistent user history, arbitrary user-file content reads, or runtime/product AI storage is planned. (014-wave1-functional-hardening)
 
 ### 007-port-wave1-examples
 - Current status: Wave 1 delivered (2026-03-28). `desklogo`, `msgcls`, `tutorial` (16 steps), `videomode` are ported, smoke-tested, and guide-documented.
@@ -265,6 +276,7 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 - Planning decisions now fixed: headless smoke seam via `bool headless` constructor parameter + `GetEvent()` override; in-process MSTest execution without external process spawning; bilingual German-first/English-second XML docs and comments at CEFR-B2; `DisplayModeCoordinator.ProbeResizeSupport()` cross-platform probe with CA1416 suppressed.
 
 ## Recent Changes
+- 014-wave1-functional-hardening: Planartefakte fuer Wave-1 Functional Hardening ergaenzt, inklusive historischer Proof-Matrix, Smoke-Proof, Helper-Klassifikation, Fallback-, Missing-Core-, Dokumentations- und Governance-Planung.
 - 013-wave2-visual-component-remediation: Sichtbare Hauptkomponenten oder stabile visuelle Runtime-Zustaende, echte `TStatusLine`, `Help -> Description`, gemeinsames `examples/Shared/Wave2Runtime.cs`, strengere app-loop-basierte Render-Smokes, Guides, README, Architektur-/Security-Evidence, Statistik und PR-Evidence fuer alle elf Wave-2-Beispiele umgesetzt.
 - 004-editor-file-help-streams: Spezifikation und Requirements-Checklist fuer Phase 6 (Editor/Datei/Hilfe/Streams) angelegt.
 - 004-editor-file-help-streams: Planartefakte (`plan.md`, `research.md`, `data-model.md`, `quickstart.md`, `contracts/public-api.md`) erstellt und gemeinsame Agent-Hinweise auf den Post-Plan-Stand synchronisiert.
@@ -583,5 +595,5 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read
-`specs/013-wave2-visual-component-remediation/plan.md`.
+`specs/014-wave1-functional-hardening/plan.md`.
 <!-- SPECKIT END -->
