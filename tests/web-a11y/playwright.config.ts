@@ -11,6 +11,7 @@ const config = defineConfig({
   fullyParallel: true,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 2 : 0,
+  timeout: 60_000,
   reporter: [
     ['list'],
     ['html', { open: 'never', outputFolder: path.join(__dirname, 'playwright-report') }]
@@ -20,7 +21,7 @@ const config = defineConfig({
     headless: true,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    video: 'retain-on-failure'
+    video: 'off'
   },
   projects: [
     {
