@@ -19,6 +19,8 @@ jobs:
     name: Build DocFX site
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      PLAYWRIGHT_CHROMIUM_CHANNEL: chrome
 
     permissions:
       contents: read
@@ -59,23 +61,8 @@ jobs:
         working-directory: tests/web-a11y
         run: npm ci
 
-      - name: Cache Playwright browsers
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('tests/web-a11y/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-playwright-
-
-      - name: Install Playwright system dependencies
-        working-directory: tests/web-a11y
-        timeout-minutes: 10
-        run: npx playwright install-deps chromium
-
-      - name: Install Playwright Chromium
-        working-directory: tests/web-a11y
-        timeout-minutes: 15
-        run: npx playwright install chromium --only-shell
+      - name: Verify system Chrome
+        run: google-chrome --version
 
       - name: Run DocFX accessibility smoke tests
         working-directory: tests/web-a11y

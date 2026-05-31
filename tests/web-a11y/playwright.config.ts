@@ -4,6 +4,7 @@ import { defineConfig, devices } from '@playwright/test';
 const port = Number.parseInt(process.env.PLAYWRIGHT_DOCFX_PORT ?? '8123', 10);
 const baseURL = process.env.PLAYWRIGHT_BASE_URL ?? `http://127.0.0.1:${port}`;
 const skipWebServer = process.env.PLAYWRIGHT_SKIP_WEBSERVER === '1';
+const chromiumChannel = process.env.PLAYWRIGHT_CHROMIUM_CHANNEL;
 
 const config = defineConfig({
   testDir: path.join(__dirname, 'specs'),
@@ -24,7 +25,10 @@ const config = defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] }
+      use: {
+        ...devices['Desktop Chrome'],
+        ...(chromiumChannel ? { channel: chromiumChannel } : {})
+      }
     }
   ]
 });
