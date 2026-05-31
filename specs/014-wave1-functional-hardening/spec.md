@@ -5,6 +5,17 @@
 **Status**: Draft
 **Input**: User description: "Use `Lastenheft_Wave1-Functional-Hardening.md` as the binding input. Create the specification for `014-wave1-functional-hardening`. Harden the delivered Wave-1 examples against their historical sources, document ported, replaced, and intentionally omitted core behavior, strengthen smoke proof where startup, string, or headless-helper paths prove too much, and keep Wave-1 visual remediation and later waves out of scope."
 
+## Clarifications
+
+### Session 2026-05-31
+
+- Q: Which proof rule applies when a historical Wave-1 core point is didactic or has no directly executable managed runtime behavior? → A: Executable smoke proof is required whenever managed runtime behavior exists; evidence-only proof is allowed only for explicitly documented no-runtime-target deviations.
+- Q: Where is the binding historical proof matrix for Wave 1 maintained? → A: The feature MUST maintain `specs/014-wave1-functional-hardening/pr-evidence.md` as the primary proof matrix; guides and README updates may summarize or link to it but do not replace it.
+- Q: When may a helper or headless path count as `PrimaryProof`? → A: `PrimaryProof` is allowed only when the path executes real example or application logic through public commands, events, application methods, or stable public state and contains concrete assertions; paths that merely prepare state, inspect private details, or bypass behavior must be classified as `SetupOnly`, `SupplementalProof`, or `LegacyOrTemporary`.
+- Q: How must relevant negative or fallback paths be proven? → A: Each relevant negative or fallback path MUST either be reproducible by smoke proof or, when the environment cannot trigger it deterministically, be documented in `specs/014-wave1-functional-hardening/pr-evidence.md` with trigger, expected deviation, observed fallback, and proof boundary.
+- Q: What happens when historical review finds a missing core function in the current managed example? → A: Missing historical core function MUST be implemented and smoke-proven when necessary for the existing Wave-1 functional purpose and feasible without broad framework work, visual remediation, or new dependencies; otherwise it MUST be recorded in `specs/014-wave1-functional-hardening/pr-evidence.md` as an intentional deviation or follow-up.
+- Q: When must learner-facing guides or `examples/README.md` be updated instead of keeping details only in `pr-evidence.md`? → A: Guides or `examples/README.md` MUST be updated when runtime behavior, usage path, visible output, historical deviation, or learner-facing proof explanation changes; review-only classification details MAY remain only in `specs/014-wave1-functional-hardening/pr-evidence.md`.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Historical proof matrix for Wave 1 (Priority: P1)
@@ -17,16 +28,18 @@ instead of re-reading the original sources from scratch.
 reviewers cannot tell whether current behavior is historically grounded,
 modernized on purpose, or accidentally thin.
 
-**Independent Test**: A reviewer can inspect the feature evidence and find one
-complete row or section for `Desklogo`, `MsgCls`, `Videomode`, and each of the
-16 `Tutorial` steps.
+**Independent Test**: A reviewer can inspect
+`specs/014-wave1-functional-hardening/pr-evidence.md` and find one complete
+row or section for `Desklogo`, `MsgCls`, `Videomode`, and each of the 16
+`Tutorial` steps.
 
 **Acceptance Scenarios**:
 
-1. **Given** a reviewer inspects the Wave-1 hardening evidence, **When** they
-   choose any Wave-1 example area, **Then** they can identify the historical
-   source, historical core function, current managed behavior, proof method,
-   and intentional deviations.
+1. **Given** a reviewer inspects
+   `specs/014-wave1-functional-hardening/pr-evidence.md`, **When** they choose
+   any Wave-1 example area, **Then** they can identify the historical source,
+   historical core function, current managed behavior, proof method, helper
+   classification, and intentional deviations.
 2. **Given** a reviewer inspects `Tutorial`, **When** they check the 16
    historical steps, **Then** each step remains individually traceable instead
    of being collapsed into one generic tutorial statement.
@@ -87,9 +100,10 @@ paths and see one classification for each: `SetupOnly`, `PrimaryProof`,
    **Then** it is marked `SetupOnly` and not counted as proof of historical
    behavior.
 2. **Given** a helper currently verifies the main behavior, **When** it is
-   reviewed, **Then** it is marked `PrimaryProof` only if that is acceptable
-   for functional hardening, or `LegacyOrTemporary` if later visual remediation
-   must replace it.
+   reviewed, **Then** it is marked `PrimaryProof` only if it exercises real
+   example or application logic through public commands, events, application
+   methods, or stable public state with concrete assertions, or
+   `LegacyOrTemporary` if later visual remediation must replace it.
 3. **Given** a helper adds extra assertions around a real smoke path, **When**
    it is reviewed, **Then** it is marked `SupplementalProof`.
 
@@ -106,9 +120,11 @@ original C/C++ examples.
 delivered examples. The proof must be readable by learners and accessible
 reviewers, not only by maintainers.
 
-**Independent Test**: A learner can open the relevant guide or evidence and
-find German-first/English-second traceability, deviation, and proof notes for
-each Wave-1 area.
+**Independent Test**: A learner can open the relevant guide, README summary, or
+the primary feature evidence in
+`specs/014-wave1-functional-hardening/pr-evidence.md` and find
+German-first/English-second traceability, deviation, and proof notes for each
+Wave-1 area.
 
 **Acceptance Scenarios**:
 
@@ -119,7 +135,11 @@ each Wave-1 area.
    reviewer reads the evidence, **Then** the text explains why that proof is
    acceptable for functional hardening or why it is deferred to visual
    remediation.
-3. **Given** the current project next-step marker still points to Wave 3,
+3. **Given** runtime behavior, usage path, visible output, historical
+   deviation, or learner-facing proof explanation changes, **When** the
+   feature is documented, **Then** the affected guide or `examples/README.md`
+   is updated in German first and English second.
+4. **Given** the current project next-step marker still points to Wave 3,
    **When** this feature is documented, **Then** the documentation states that
    this is a Wave-1 quality follow-up and does not complete or replace Wave 3.
 
@@ -139,6 +159,13 @@ each Wave-1 area.
   source layout.
 - A future reviewer tries to treat this feature as the Wave-1 visual
   remediation or as permission to start Wave-3 implementation.
+- A relevant negative or fallback path cannot be triggered deterministically in
+  local or CI validation, but still affects whether the historical behavior is
+  accepted, replaced, or intentionally omitted.
+- Historical review finds a missing core function in the current managed
+  example, but implementing it would require broad framework work, visual
+  remediation, a new dependency, or behavior outside this feature's Wave-1
+  functional scope.
 
 ## Requirements *(mandatory)*
 
@@ -157,9 +184,11 @@ each Wave-1 area.
 - **FR-005**: The historical review MUST include `tutorial/tvguid01.cc`
   through `tutorial/tvguid16.cc`.
 - **FR-006**: The historical review MUST include `videomode/test.cc`.
-- **FR-007**: The feature MUST produce or update evidence that records, for
-  every covered example area, the historical core function, current managed
-  behavior, proof method, and intentional deviation or omission.
+- **FR-007**: The feature MUST create and maintain
+  `specs/014-wave1-functional-hardening/pr-evidence.md` as the primary
+  evidence surface that records, for every covered example area, the
+  historical source, historical core function, current managed behavior, proof
+  method, helper classification, and intentional deviation or omission.
 - **FR-008**: The feature MUST keep all 16 `Tutorial` steps individually
   traceable, selectable, and reviewable.
 - **FR-009**: The feature MUST require at least one meaningful functional
@@ -180,8 +209,11 @@ each Wave-1 area.
 - **FR-015**: The feature MUST classify every Wave-1 helper, headless, or
   direct proof path used by the relevant smokes as `SetupOnly`,
   `PrimaryProof`, `SupplementalProof`, or `LegacyOrTemporary`.
-- **FR-016**: Any helper classified as `PrimaryProof` MUST have a documented
-  reason why that is acceptable for functional hardening.
+- **FR-016**: Any helper classified as `PrimaryProof` MUST execute real
+  example or application logic through public commands, events, application
+  methods, or stable public state, MUST include concrete behavior assertions,
+  and MUST have a documented reason why that is acceptable for functional
+  hardening.
 - **FR-017**: Any helper classified as `LegacyOrTemporary` MUST identify the
   later visual-remediation responsibility it prepares.
 - **FR-018**: Guide and evidence updates MUST document intentional historical
@@ -194,6 +226,37 @@ each Wave-1 area.
   is follow-up context and not part of this feature's acceptance boundary.
 - **FR-022**: The feature MUST state that the current Wave-3 next-step marker
   remains open and is not completed by this Wave-1 quality follow-up.
+- **FR-023**: When managed runtime behavior exists for a covered historical
+  core point, the feature MUST provide executable smoke proof. Evidence-only
+  proof MAY satisfy didactic or historical-only cases only when the evidence
+  explicitly records that no direct managed runtime target exists and documents
+  the intentional deviation or omission.
+- **FR-024**: Guide and README updates MAY summarize or link to the Wave-1
+  hardening matrix, but acceptance of historical proof, helper classification,
+  and deviation decisions MUST be based on
+  `specs/014-wave1-functional-hardening/pr-evidence.md`.
+- **FR-025**: Helper or headless paths that only prepare controlled state,
+  inspect private implementation details, or bypass the behavior under review
+  MUST NOT be accepted as `PrimaryProof`; they MUST be classified as
+  `SetupOnly`, `SupplementalProof`, or `LegacyOrTemporary` according to their
+  role.
+- **FR-026**: Every relevant negative or fallback path that affects acceptance
+  MUST either be reproducible by smoke proof or, when local or CI validation
+  cannot trigger it deterministically, be documented in
+  `specs/014-wave1-functional-hardening/pr-evidence.md` with trigger, expected
+  deviation, observed fallback, and proof boundary.
+- **FR-027**: When historical review finds a missing core function, the
+  feature MUST implement and smoke-prove it if it is necessary for the
+  existing Wave-1 functional purpose and feasible without broad framework
+  work, visual remediation, new runtime dependencies, or behavior outside this
+  feature's scope; otherwise the feature MUST record it in
+  `specs/014-wave1-functional-hardening/pr-evidence.md` as an intentional
+  deviation or follow-up.
+- **FR-028**: Affected learner-facing guides or `examples/README.md` MUST be
+  updated when the feature changes runtime behavior, usage path, visible
+  output, historical deviation, or learner-facing proof explanation; review-only
+  helper classifications, proof boundaries, and traceability details MAY remain
+  only in `specs/014-wave1-functional-hardening/pr-evidence.md`.
 
 ### Constitution Requirements *(mandatory)*
 
@@ -236,8 +299,10 @@ each Wave-1 area.
 
 ### Key Entities *(include if feature involves data)*
 
-- **Wave1FunctionalReview**: One review record for each covered example area;
-  identifies historical intent, current behavior, proof status, and deviation
+- **Wave1FunctionalReview**: One primary evidence record in
+  `specs/014-wave1-functional-hardening/pr-evidence.md` for each covered
+  example area; identifies historical intent, current behavior, proof status,
+  helper classification, negative or fallback proof status, and deviation
   status.
 - **TutorialStepReview**: One review record for each token from `tvguid01` to
   `tvguid16`; preserves individual learning-target traceability.
@@ -247,29 +312,55 @@ each Wave-1 area.
   behavior proof from startup, static text, setup, or supplemental proof.
 - **HelperClassification**: A classification of helper or headless proof paths
   as `SetupOnly`, `PrimaryProof`, `SupplementalProof`, or
-  `LegacyOrTemporary`.
+  `LegacyOrTemporary`, with `PrimaryProof` reserved for paths that execute real
+  example or application logic through public commands, events, application
+  methods, or stable public state.
 - **IntentionalDeviationRecord**: A documented difference between historical
   behavior and the managed example, including the reason and learner-facing
-  explanation requirement.
+  explanation requirement and whether a guide or README update is required.
+- **NegativeFallbackProof**: A smoke-backed or evidence-backed record for a
+  relevant unsupported, invalid, undersized, or platform-limited path,
+  including trigger, expected deviation, observed fallback, and proof boundary.
+- **MissingCoreFunctionDecision**: A primary evidence record for a historical
+  core function that is not fully present in the current managed example;
+  identifies whether the function is implemented in this feature, intentionally
+  omitted, or deferred as follow-up, with the reason and proof status.
 
 ## Success Criteria *(mandatory)*
 
 ### Measurable Outcomes
 
-- **SC-001**: 100% of the four Wave-1 example areas have a documented
-  historical source, current behavior, proof method, and deviation or omission
-  decision.
+- **SC-001**: 100% of the four Wave-1 example areas have a documented primary
+  evidence record in `specs/014-wave1-functional-hardening/pr-evidence.md`
+  with historical source, current behavior, proof method, helper
+  classification, and deviation or omission decision.
 - **SC-002**: 16 of 16 `Tutorial` steps remain individually traceable,
   selectable, and covered by step-specific proof.
 - **SC-003**: Each Wave-1 example area has at least one proof that verifies a
   historically relevant function rather than only launch or static text.
 - **SC-004**: 100% of Wave-1 helper or headless proof paths used by the
-  relevant smokes are classified with one of the four accepted labels.
+  relevant smokes are classified with one of the four accepted labels, and no
+  path that only prepares state, inspects private implementation details, or
+  bypasses behavior is counted as `PrimaryProof`.
 - **SC-005**: 100% of intentional historical deviations found during this
   feature are documented in evidence or learner-facing guidance.
-- **SC-006**: A reviewer can determine from the feature evidence whether each
-  Wave-1 behavior is ready for later visual remediation, already adequately
-  proven for functional hardening, or intentionally out of scope.
+- **SC-006**: A reviewer can determine from
+  `specs/014-wave1-functional-hardening/pr-evidence.md` whether each Wave-1
+  behavior is ready for later visual remediation, already adequately proven for
+  functional hardening, or intentionally out of scope.
+- **SC-007**: 100% of relevant negative or fallback paths that affect
+  acceptance have either deterministic smoke proof or a primary evidence record
+  in `specs/014-wave1-functional-hardening/pr-evidence.md` with trigger,
+  expected deviation, observed fallback, and proof boundary.
+- **SC-008**: 100% of missing historical core functions found during review
+  have a `MissingCoreFunctionDecision` in
+  `specs/014-wave1-functional-hardening/pr-evidence.md`; all decisions marked
+  implemented in this feature include matching smoke proof.
+- **SC-009**: 100% of runtime behavior, usage path, visible output, historical
+  deviation, and learner-facing proof explanation changes are reflected in the
+  affected guide or `examples/README.md`; review-only classification details
+  are present in the primary evidence matrix when no guide or README update is
+  required.
 
 ## Assumptions
 
@@ -282,3 +373,5 @@ each Wave-1 area.
   project governance.
 - No new runtime dependency, database, network service, runtime AI component,
   mouse-only requirement, or broad framework redesign is expected.
+- Existing guides and `examples/README.md` remain learner-facing summaries;
+  they supplement but do not replace the primary feature proof matrix.
