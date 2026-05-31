@@ -75,7 +75,7 @@ jobs:
       - name: Install Playwright Chromium
         working-directory: tests/web-a11y
         timeout-minutes: 15
-        run: npx playwright install chromium
+        run: npx playwright install chromium --only-shell
 
       - name: Run DocFX accessibility smoke tests
         working-directory: tests/web-a11y
