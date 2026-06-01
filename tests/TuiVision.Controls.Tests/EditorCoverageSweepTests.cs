@@ -39,6 +39,7 @@ public sealed class EditorCoverageSweepTests
     /// Verifies history isolation across different buckets.
     /// </summary>
     [TestMethod]
+    [DoNotParallelize]
     public void EditorCoverage_History_IsolatedByHistoryId()
     {
         THistory.ClearAll();

@@ -11,6 +11,7 @@ namespace TuiVision.Controls.Tests;
 /// Tests for file dialog synchronisation, history, and confirmation.
 /// </summary>
 [TestClass]
+[DoNotParallelize]
 public sealed class TFileDialogTests
 {
     /// <summary>
