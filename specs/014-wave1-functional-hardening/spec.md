@@ -188,7 +188,9 @@ Wave-1 area.
   `specs/014-wave1-functional-hardening/pr-evidence.md` as the primary
   evidence surface that records, for every covered example area, the
   historical source, historical core function, current managed behavior, proof
-  method, helper classification, and intentional deviation or omission.
+  method, helper classification, negative or fallback proof status,
+  missing-core-function decision, intentional deviation or omission,
+  documentation trigger, validation evidence, and evidence location.
 - **FR-008**: The feature MUST keep all 16 `Tutorial` steps individually
   traceable, selectable, and reviewable.
 - **FR-009**: The feature MUST require at least one meaningful functional
@@ -302,8 +304,9 @@ Wave-1 area.
 - **Wave1FunctionalReview**: One primary evidence record in
   `specs/014-wave1-functional-hardening/pr-evidence.md` for each covered
   example area; identifies historical intent, current behavior, proof status,
-  helper classification, negative or fallback proof status, and deviation
-  status.
+  helper classification, negative or fallback proof status,
+  missing-core-function decision, documentation trigger, validation evidence,
+  and deviation status.
 - **TutorialStepReview**: One review record for each token from `tvguid01` to
   `tvguid16`; preserves individual learning-target traceability.
 - **HistoricalSourceReference**: A read-only source reference used to justify a

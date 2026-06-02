@@ -17,7 +17,7 @@ The feature stays narrow: no Wave 2, Wave 3, Wave 4, broad framework redesign, v
 
 - The existing Wave-1 delivery remains accepted; this feature improves functional proof quality and traceability.
 - Historical files under `tv203s/` are read-only intent references and are never modified.
-- `specs/014-wave1-functional-hardening/pr-evidence.md` is the primary proof matrix for historical source, C# behavior, smoke proof, helper classification, missing-core decisions, negative/fallback proof, and intentional deviations.
+- `specs/014-wave1-functional-hardening/pr-evidence.md` is the primary proof matrix for historical source, historical core function, current C# behavior, proof method, smoke test name where applicable, helper classification, missing-core decisions, negative/fallback proof, intentional deviations, learner-facing documentation triggers, validation evidence or blockers, and evidence locations.
 - Existing guides and `examples/README.md` remain learner-facing summaries. They are updated only when runtime behavior, usage path, visible output, historical deviation, or learner-facing proof explanation changes.
 - `Lastenheft_Wave1-Visual-Component-Remediation.md` is follow-up context only. The current Pflichtenheft next-step marker for Wave 3 is not completed or replaced by this feature.
 - No generated DocFX output, generated `api/*.yml`, local test output, agent state, credential material, or local history is planned for tracking.
@@ -103,7 +103,7 @@ specs/014-wave1-functional-hardening/
 |-- quickstart.md
 |-- pr-evidence.md          # later implementation/PR evidence, created when implementation starts
 |-- checklists/
-|   `-- requirements.md
+|   `-- plan-quality.md
 |-- contracts/
 |   `-- wave1-functional-hardening-acceptance.md
 `-- tasks.md                 # later /speckit-tasks output, not created by /speckit-plan
@@ -159,7 +159,7 @@ Design entities are captured in [data-model.md](./data-model.md). Acceptance obl
 
 The later `/speckit-tasks` run should produce tasks in this order:
 
-1. Create `specs/014-wave1-functional-hardening/pr-evidence.md` with the required matrix headings and setup evidence.
+1. Create `specs/014-wave1-functional-hardening/pr-evidence.md` with the required matrix headings: historical source, historical core function, current managed C# behavior, proof method, smoke test name where applicable, helper classification, negative or fallback proof, missing-core-function decision, intentional deviation or omission, learner-facing documentation trigger, validation evidence or blocker, evidence location, and setup evidence.
 2. Review historical sources for `Desklogo`, `MsgCls`, `Tutorial` `tvguid01` through `tvguid16`, and `Videomode` as read-only material; record intent, current C# behavior, proof target, missing-core decisions, and deviations.
 3. Audit existing Wave-1 smoke tests and helper/headless paths; classify every used proof path as `SetupOnly`, `PrimaryProof`, `SupplementalProof`, or `LegacyOrTemporary`.
 4. Add or sharpen failing smoke proof first where managed runtime behavior exists but current proof is only startup, static text, or helper-only.

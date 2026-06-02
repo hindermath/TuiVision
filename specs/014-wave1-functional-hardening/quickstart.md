@@ -41,7 +41,8 @@ specs/014-wave1-functional-hardening/pr-evidence.md
 Die Matrix muss fuer jedes Wave-1-Gebiet mindestens historische Quelle,
 historische Kernfunktion, aktuelle C#-Abbildung, Proof-Methode,
 Helper-Klassifikation, negative/Fallback-Nachweise, fehlende Kernfunktionen und
-bewusste Abweichungen festhalten.
+bewusste Abweichungen festhalten. Sie muss ausserdem Dokumentations-Trigger,
+Validierungsnachweis oder Blocker und die jeweilige Evidence-Stelle nennen.
 
 ### 4. Historische Quellen pruefen
 
@@ -207,7 +208,8 @@ specs/014-wave1-functional-hardening/pr-evidence.md
 For each Wave-1 area, the matrix must record at least historical source,
 historical core function, current C# mapping, proof method, helper
 classification, negative/fallback proof, missing core functions, and intentional
-deviations.
+deviations. It must also name documentation triggers, validation evidence or
+blockers, and the matching evidence location.
 
 ### 4. Review historical sources
 

@@ -21,12 +21,13 @@ Represents one primary evidence record for a covered Wave-1 example area.
 - `MissingCoreFunctionDecision`: Optional decision when historical behavior is not fully present.
 - `IntentionalDeviationRecords`: Intentional differences from historical behavior.
 - `DocumentationTrigger`: Whether a guide or `examples/README.md` update is required.
+- `ValidationEvidence`: Final command output, failure, blocker, or equivalent CI/manual evidence for this record.
 - `EvidencePath`: Primary path `specs/014-wave1-functional-hardening/pr-evidence.md`.
 
 **Validation rules**:
 - `ExampleArea` must be one of the four scoped Wave-1 areas.
 - Every scoped area must have at least one `Wave1FunctionalReview`.
-- Each review must identify historical source, current managed behavior, proof method, helper classification, and deviation or omission decision.
+- Each review must identify historical source, current managed behavior, proof method, helper classification, negative/fallback proof status, missing-core-function decision when applicable, documentation trigger, validation evidence, and deviation or omission decision.
 - Acceptance uses `pr-evidence.md` as the primary matrix even when guides summarize the result.
 
 ## Entity: TutorialStepReview
@@ -41,11 +42,13 @@ Represents one review record for a tutorial step token.
 - `ProofMethod`: Executable smoke proof or evidence-only proof with no-runtime-target rationale.
 - `SequenceRelationship`: How the step relates to earlier/later tutorial steps.
 - `IntentionalDeviationRecords`: Didactic or runtime differences.
+- `EvidencePath`: Primary matrix location for this individual step record.
 
 **Validation rules**:
 - Exactly 16 step tokens must be individually traceable.
 - No tutorial proof may collapse all steps into one generic statement.
 - Every step must have a step-specific learning target or behavior proof.
+- Every step must map to its own `pr-evidence.md` record or sub-record.
 
 ## Entity: HistoricalSourceReference
 
@@ -170,6 +173,11 @@ Represents the condition that determines whether learner-facing documentation mu
 | `MsgCls` | `msgcls/testdyn.cpp`, `msgcls/tlnmsg.cpp`, `msgcls/tlnmsg.h` | Custom message triggering, routing, observable result, repeated-trigger stability |
 | `Tutorial` | `tutorial/tvguid01.cc` through `tutorial/tvguid16.cc` | Individual step learning target or behavior, token identity, sequence relationship |
 | `Videomode` | `videomode/test.cc` | Real display capability outcome or honest fallback with post-transition usability |
+
+Tutorial step records are required for these exact tokens: `tvguid01`,
+`tvguid02`, `tvguid03`, `tvguid04`, `tvguid05`, `tvguid06`, `tvguid07`,
+`tvguid08`, `tvguid09`, `tvguid10`, `tvguid11`, `tvguid12`, `tvguid13`,
+`tvguid14`, `tvguid15`, and `tvguid16`.
 
 ## State Transitions
 

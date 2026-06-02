@@ -16,7 +16,7 @@
 
 ## Decision 2: Maintain `pr-evidence.md` as the primary proof matrix
 
-**Decision**: The implementation creates and maintains `specs/014-wave1-functional-hardening/pr-evidence.md` as the authoritative proof matrix for historical source, C# behavior, proof method, helper classification, missing-core decisions, negative/fallback proof, and deviations.
+**Decision**: The implementation creates and maintains `specs/014-wave1-functional-hardening/pr-evidence.md` as the authoritative proof matrix for historical source, historical core function, current C# behavior, proof method, smoke test name where applicable, helper classification, negative/fallback proof, missing-core decisions, deviations, learner-facing documentation triggers, validation evidence or blockers, and evidence locations.
 
 **Rationale**: A single feature-local matrix gives reviewers and later Wave-1 visual remediation a stable evidence surface. Guides and README pages remain learner-facing summaries and should not become the only place where acceptance proof is reconstructed.
 
@@ -66,7 +66,7 @@
 
 ## Decision 7: Preserve all 16 tutorial steps as individual proof records
 
-**Decision**: `Tutorial` is modeled as one example area with 16 individually traceable step records, one for each `tvguid01` through `tvguid16`.
+**Decision**: `Tutorial` is modeled as one example area with 16 individually traceable step records, one for each of these exact tokens: `tvguid01`, `tvguid02`, `tvguid03`, `tvguid04`, `tvguid05`, `tvguid06`, `tvguid07`, `tvguid08`, `tvguid09`, `tvguid10`, `tvguid11`, `tvguid12`, `tvguid13`, `tvguid14`, `tvguid15`, and `tvguid16`.
 
 **Rationale**: The tutorial series is didactic and sequential. Collapsing it into one generic row would lose the learning-target evidence that later hardening and remediation need.
 
