@@ -47,7 +47,7 @@
   versions, priorities, and evidence paths here. The home-baseline default set is:
   security-governance v0.4.0 prio 10, architecture-governance v0.2.0 prio 20,
   isaqb-architecture-governance v0.1.0 prio 30, a11y-governance v0.2.0 prio 40,
-  cross-platform-governance v0.1.0 prio 50, agent-parity-governance v0.1.0 prio 60.
+  cross-platform-governance v0.1.0 prio 50, agent-parity-governance v0.2.0 prio 60.
   security-governance v0.4.0 keeps conditional AI-SBOM evidence and adds
   language-specific secure-coding profiles for Rust, Go, Swift, Java/Kotlin,
   Python, and TypeScript/JavaScript. Development-tool-only AI usage is N/A;

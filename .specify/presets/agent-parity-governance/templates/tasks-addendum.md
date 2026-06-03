@@ -7,6 +7,9 @@
   `.specify/memory/constitution.md`.
 - Add a parity-verification task using
   `agent-parity-checklist-template`.
+- If model-routing guidance changes, add a task that confirms no
+  provider-specific model names were written into `spec.md`, `plan.md`,
+  `tasks.md`, or individual feature specs.
 - Add a documentation task for any intentional deviation between
   surfaces.
 - Add a final review task that confirms no maintained surface was

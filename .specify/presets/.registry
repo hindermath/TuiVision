@@ -227,9 +227,9 @@
       "installed_at": "2026-05-04T06:24:34.923002+00:00"
     },
     "agent-parity-governance": {
-      "version": "0.1.0",
+      "version": "0.2.0",
       "source": "local",
-      "manifest_hash": "sha256:043c8875f717174f0fdf27f61c7e8fcdc8e658f5fddca9142d10e90ce52c060a",
+      "manifest_hash": "sha256:5e0a6d59cb5291092173e9acee873e808f3ec176bcb81a7a913ac300b420796d",
       "enabled": true,
       "priority": 60,
       "registered_commands": {

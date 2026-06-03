@@ -37,6 +37,25 @@ surfaces declared by the project are mandatory for that project.
 - Runtime guidance text MUST name all maintained agent surfaces — never
   list only one or two.
 
+### Spec-Kit model routing
+
+Spec-Kit model routing guidance is part of shared agent guidance. It MUST
+stay agent-neutral and MUST NOT pin provider-specific model names in
+feature artifacts.
+
+- `spec.md`, `plan.md`, `tasks.md`, and individual feature specs MUST NOT
+  encode model names as requirements.
+- Each agent SHOULD map the routing guidance to its currently available
+  models.
+- Specification, clarification, planning, task generation, and analysis
+  SHOULD use the strongest available frontier reasoning/coding model.
+- Complete long-running implementation runs SHOULD use the strongest
+  available long-running agent model, unless maximum judgment quality is
+  more important than runtime stability.
+- Focused review and CI fixes SHOULD use a coding-optimized model.
+- Trivial cleanup, formatting, or low-risk mechanical edits MAY use a
+  fast small coding model.
+
 ### Atomic change discipline
 
 A single pull request or commit that touches shared agent guidance MUST

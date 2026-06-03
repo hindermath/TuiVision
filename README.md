@@ -116,7 +116,7 @@ Standard-Preset-Set:
 - `isaqb-architecture-governance` v0.1.0, Priority 30
 - `a11y-governance` v0.2.0, Priority 40
 - `cross-platform-governance` v0.1.0, Priority 50
-- `agent-parity-governance` v0.1.0, Priority 60
+- `agent-parity-governance` v0.2.0, Priority 60
 
 `security-governance` v0.4.0 behandelt `AI-SBOM` bedingt: reine KI-Nutzung als Entwicklungswerkzeug ist `N/A` mit kurzer Toolchain-Begründung; KI-Runtime-/Produktkomponenten im ausgelieferten oder betriebenen System benötigen Supply-Chain-Evidenz nach den G7/BSI AI-SBOM-Clustern.
 

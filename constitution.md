@@ -866,7 +866,7 @@ workspace family consists of:
 | `isaqb-architecture-governance` | `v0.1.0` | `30` | general iSAQB/arc42 architecture governance |
 | `a11y-governance` | `v0.2.0` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts |
 | `cross-platform-governance` | `v0.1.0` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
-| `agent-parity-governance` | `v0.1.0` | `60` | synchronized agent guidance across declared AI-agent files |
+| `agent-parity-governance` | `v0.2.0` | `60` | synchronized agent guidance and agent-neutral Spec-Kit model routing across declared AI-agent files |
 
 `security-governance` v0.4.0 keeps conditional `AI-SBOM` evidence and adds language-specific secure-coding profiles for Rust, Go, Swift, Java/Kotlin, Python, and TypeScript/JavaScript: development-tool-only AI usage is `N/A`, while AI runtime/product components require G7/BSI AI-SBOM cluster evidence.
 
