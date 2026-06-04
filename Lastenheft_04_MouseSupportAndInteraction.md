@@ -206,6 +206,32 @@ creates the stable framework precursor on which `terminal`, `xterm`, and later
 
 ---
 
+## 6.1 Framework-Usage- und Remediation-Gate / Framework Usage and Remediation Gate
+
+Der spaetere Spec-Kit-Lauf muss pro Maus-/Interaktionsvertrag dokumentieren,
+welche bestehende TuiVision-Framework-Komponente genutzt wird: `TEvent`,
+`TMouseEvent`, View-Dispatch, Driver-Ingress, Fokuswechsel oder
+Aktivierungslogik. Lokale Maus-Helper in `examples/` sind nur als Test-Setup
+oder Beispiel-Komposition erlaubt. Wenn sie Framework-Verhalten ersetzen oder
+in mehreren Beispielen nuetzlich waeren, muessen sie als `SmallFrameworkFix`
+geschlossen oder als `FollowUpHardening` dokumentiert werden.
+
+The later Spec-Kit run must document for each mouse/interaction contract which
+existing TuiVision framework component is used: `TEvent`, `TMouseEvent`, view
+dispatch, driver ingress, focus changes, or activation logic. Local mouse
+helpers in `examples/` are only allowed as test setup or example composition.
+If they replace framework behavior or would be useful for multiple examples,
+they must be closed as `SmallFrameworkFix` or recorded as `FollowUpHardening`.
+
+Zulaessige Entscheidungen / Allowed decisions:
+
+- `UseExistingFramework`: vorhandene Framework-Komponente reicht.
+- `SmallFrameworkFix`: kleine laufbezogene Framework-Korrektur mit Test.
+- `IntentionalDeviation`: bewusste Abweichung mit Guide- oder Evidence-Bezug.
+- `FollowUpHardening`: zu gross fuer diesen Lauf, eigenes Hardening-Follow-up.
+
+---
+
 ## 7. Spec-Kit-Readiness / Spec-Kit Readiness
 
 Dieses Lastenheft ist als direkte Eingabedatei fuer `/speckit-specify`
@@ -234,5 +260,7 @@ Pflicht:
 - Tastaturbedienung bleibt der verlaessliche Fallback und muss in Status, Guide und Tests sichtbar bleiben.
 - Umfang bewusst begrenzen: Click-to-focus, Click-to-activate, Doppelklick und begruendete einfache Drag-Pfade; Hover/Wheel nur mit ausdruecklicher Begruendung.
 - Framework-, Integrations- und Host-Evidence fuer Multi-Mac, Linux und Windows/WSL planen.
+- Framework-Usage-Gate aufnehmen: pro Interaktionsvertrag bestehende Framework-Komponente, lokale Sonderlogik, Remediation-Entscheidung und Evidence-Pfad dokumentieren.
+- Wiederverwendbare Logik nicht dauerhaft als lokale `examples/`-Sonderloesung belassen; bei Wiederholung als Framework-Fix oder Follow-up-Hardening behandeln.
 - Keine vollstaendige XTerm-/Raw-Mausprotokoll-Paritaet und keine TP7-Mausdemo-Portierung in diesen Lauf ziehen.
 ```

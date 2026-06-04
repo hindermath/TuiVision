@@ -390,6 +390,32 @@ properties.
 
 ---
 
+## 7.1 Framework-Usage- und Remediation-Gate / Framework Usage and Remediation Gate
+
+Der spaetere Spec-Kit-Lauf muss pro Wave-3-Beispiel dokumentieren, welche
+bestehende TuiVision-Framework-Komponente die sichtbare Hauptkomposition,
+Statuszeile, Bedienpfade, Datei-/Help-/Resource-Flows und Smoke-Beweise
+traegt. Lokale Sonderlogik in `examples/` ist nur als Beispiel-Komposition
+erlaubt. Wenn sie Framework-Verhalten ersetzt oder in mehreren Beispielen
+nuetzlich waere, muss sie als `SmallFrameworkFix` geschlossen oder als
+`FollowUpHardening` dokumentiert werden.
+
+The later Spec-Kit run must document for each wave-3 example which existing
+TuiVision framework component carries the visible main composition, status
+line, operation paths, file/help/resource flows, and smoke proof. Local special
+logic in `examples/` is only allowed as example composition. If it replaces
+framework behavior or would be useful for multiple examples, it must be closed
+as `SmallFrameworkFix` or recorded as `FollowUpHardening`.
+
+Zulaessige Entscheidungen / Allowed decisions:
+
+- `UseExistingFramework`: vorhandene Framework-Komponente reicht.
+- `SmallFrameworkFix`: kleine laufbezogene Framework-Korrektur mit Test.
+- `IntentionalDeviation`: bewusste Abweichung mit Guide- oder Evidence-Bezug.
+- `FollowUpHardening`: zu gross fuer diesen Lauf, eigenes Hardening-Follow-up.
+
+---
+
 ## 8. Nichtziele / Non-Goals
 
 - keine Wave-4-Terminal-/Charset- oder Emulationsarbeit
@@ -485,6 +511,8 @@ Pflicht:
 - Beschreibungspfad mit Deutsch zuerst, Englisch danach, CEFR-B2 und text-first A11Y bereitstellen.
 - Primaere Smokes ueber app.Run() oder reale Event-/Command-/Key-Dispatch-Pfade ausfuehren; direkte Helfer nur fuer Setup oder Zusatzbeweis nutzen.
 - tvedit und tvhc duerfen keine beliebigen Nutzerdaten lesen oder ueberschreiben; Fixtures, feste Repo-Pfade oder Testtemp-Verzeichnisse verwenden.
+- Framework-Usage-Gate aufnehmen: pro Beispiel bestehende Framework-Komponente, lokale Sonderlogik, Remediation-Entscheidung und Evidence-Pfad dokumentieren.
+- Wiederverwendbare Logik nicht dauerhaft als lokale `examples/`-Sonderloesung belassen; bei Wiederholung als Framework-Fix oder Follow-up-Hardening behandeln.
 - Guides, examples/README.md, pr-evidence.md, Pflichtenheft.md und docs/project-statistics.md im selben Feature-Lauf aktualisieren.
 - Keine Wave-4-Funktionalitaet, keine Runtime-Mauspflicht, keine TP7-Anschlusswellen und keine breite Framework-Revision in diesen Lauf ziehen.
 ```

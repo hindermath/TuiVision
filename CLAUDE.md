@@ -81,6 +81,9 @@ Tests use MSTest. Test projects mirror source projects (e.g., `TuiVision.Core.Te
 - Prefer semantic headings, lists, tables, and ASCII/text-first diagrams; do not encode essential meaning only through color, layout, or pointer-only affordances.
 - Treat bilingual CEFR-B2 delivery and the documented A11Y proof path as formal completion criteria for learner-facing documentation and active requirement artifacts.
 - Public API changes must include complete XML documentation updates.
+- New or changed non-trivial logic must be reviewed for didactic inline-comment value when it affects learner understanding or maintainability, especially central framework flows and smoke-test helpers.
+- Inline comments explain why a decision, trade-off, constraint, historical deviation, or proof boundary exists; do not add comments that merely restate obvious code.
+- Keep inline-comment intensity moderate: normally 1-3 lines before a non-trivial block, with German-first/English-second CEFR-B2 text for didactic explanation blocks.
 - Run `docfx docfx.json` when root config exists and API/XML docs changed.
 - Keep the Playwright + `@axe-core/playwright` smoke tests in `tests/web-a11y/` aligned with the current DocFX structure and representative pages; use `lynx` as an additional text-browser spot check when available.
 - Treat every successful `docfx docfx.json` regeneration as incomplete until the matching `tests/web-a11y/` A11y smoke check has also passed in the same work item.
@@ -175,6 +178,8 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - Stage 1 is the functional port/proof feature: port historical example behavior, close framework prerequisites, expose deterministic headless or in-process smoke paths, add guides/evidence, and explicitly mark interactive runtime polish as follow-up when normal `dotnet run --project examples/<Name>` is not yet the final demonstration.
 - Stage 2 is the interactive showcase feature: wire the proven functions into visible menus, status lines, desktop controls, dialogs, keyboard paths, and scripted UI-event smoke tests so the example is useful for learners and manual reviewers.
 - Do not call an example wave fully learner-facing complete until Stage 2 is delivered, unless the scope explicitly defines the example as a minimal non-interactive proof.
+- Future Lastenhefte for example waves or example-adjacent framework hardening MUST include a framework-usage and remediation gate. The later Spec-Kit run must document, per example or contract area, which existing TuiVision framework component is used, whether local special logic exists, and which decision applies: `UseExistingFramework`, `SmallFrameworkFix`, `IntentionalDeviation`, or `FollowUpHardening`.
+- Reusable logic must not remain permanently as a local `examples/` special solution. If the same local logic would be useful in multiple examples or replaces framework behavior, move it into a small framework fix or record it as a dedicated follow-up hardening item.
 
 ## Gemeinsame Governance-Ergaenzung / Shared Governance Addendum
 

@@ -103,6 +103,9 @@ npm run test:docfx
 - Prefer semantic headings, lists, tables, and ASCII/text-first diagrams; do not encode essential meaning only through color, layout, or pointer-only affordances
 - Treat bilingual CEFR-B2 delivery and the documented A11Y proof path as formal completion criteria for learner-facing documentation and active requirement artifacts
 - Public APIs must include complete XML documentation (`summary`, `param`, `returns`, `exception` where needed)
+- New or changed non-trivial logic must be reviewed for didactic inline-comment value when it affects learner understanding or maintainability, especially central framework flows and smoke-test helpers.
+- Inline comments explain why a decision, trade-off, constraint, historical deviation, or proof boundary exists; do not add comments that merely restate obvious code.
+- Keep inline-comment intensity moderate: normally 1-3 lines before a non-trivial block, with German-first/English-second CEFR-B2 text for didactic explanation blocks.
 - Update documentation in the same change when API signatures or XML comments change
 
 ## Testing Guidelines
@@ -146,6 +149,8 @@ npm run test:docfx
 - Stufe 2 ist der interaktive Showcase-Feature-Lauf: die bewiesenen Funktionen ueber sichtbare Menues, Statuszeilen, Desktop-Controls, Dialoge, Tastaturpfade und skriptbare UI-Event-Smoke-Tests erreichbar machen.
 - Eine Beispielwelle gilt erst dann als vollstaendig lern- und reviewtauglich, wenn die interaktive Showcase-Stufe geliefert ist, sofern der Scope nicht ausdruecklich nur einen minimalen nicht-interaktiven Nachweis verlangt.
 - Stage-1-PR-Evidence, Specs und Guides muessen den bewusst verschobenen Interaktionsumfang klar nennen; Stage-2-Specs sollen die vorhandenen Nachweisfunktionen wiederverwenden statt Verhalten neu zu portieren.
+- Kuenftige Lastenhefte fuer Beispielwellen oder beispielnahe Framework-Vorhaertungen MUESSEN ein Framework-Usage- und Remediation-Gate enthalten. Der spaetere Spec-Kit-Lauf muss pro Beispiel oder Vertragsbereich dokumentieren, welche bestehende TuiVision-Framework-Komponente genutzt wird, ob lokale Sonderlogik existiert und welche Entscheidung gilt: `UseExistingFramework`, `SmallFrameworkFix`, `IntentionalDeviation` oder `FollowUpHardening`.
+- Wiederverwendbare Logik darf nicht dauerhaft als lokale `examples/`-Sonderloesung verbleiben. Wenn dieselbe lokale Logik in mehreren Beispielen nuetzlich waere oder Framework-Verhalten ersetzt, gehoert sie in einen kleinen Framework-Fix oder in ein eigenes Follow-up-Hardening.
 
 ## Historical Source Reference Policy
 

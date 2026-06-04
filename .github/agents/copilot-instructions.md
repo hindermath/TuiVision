@@ -43,7 +43,7 @@ docfx docfx.json && cd tests/web-a11y && npm run test:docfx
 
 ## Code Style
 
-C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs and explanatory comments must be bilingual: German first, English second, CEFR-B2 readability. Large normative documents such as `Pflichtenheft*.md` and `Lastenheft*.md` may use a synchronized English sidecar with suffix `.EN.md` instead of an oversized inline-bilingual file; the German version remains canonical unless explicitly marked otherwise. Follow `Programmierung #include<everyone>`: guides, statistics, examples, and generated API docs must stay usable in text-first assistive setups such as Braille displays, screen readers, and text browsers. Generated HTML documentation should target WCAG 2.2 conformance level AA. Keep the Playwright + `@axe-core/playwright` smoke checks in `tests/web-a11y/` aligned with the current DocFX structure and use `lynx` as an extra text-browser spot check when available. Every successful `docfx docfx.json` regeneration must be followed by the matching `tests/web-a11y/` A11y smoke check in the same work item. Treat bilingual CEFR-B2 delivery plus the documented A11Y proof path as formal completion criteria for learner-facing documentation and active requirement artifacts.
+C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs and explanatory comments must be bilingual: German first, English second, CEFR-B2 readability. Large normative documents such as `Pflichtenheft*.md` and `Lastenheft*.md` may use a synchronized English sidecar with suffix `.EN.md` instead of an oversized inline-bilingual file; the German version remains canonical unless explicitly marked otherwise. Follow `Programmierung #include<everyone>`: guides, statistics, examples, and generated API docs must stay usable in text-first assistive setups such as Braille displays, screen readers, and text browsers. Generated HTML documentation should target WCAG 2.2 conformance level AA. Keep the Playwright + `@axe-core/playwright` smoke checks in `tests/web-a11y/` aligned with the current DocFX structure and use `lynx` as an extra text-browser spot check when available. Every successful `docfx docfx.json` regeneration must be followed by the matching `tests/web-a11y/` A11y smoke check in the same work item. Treat bilingual CEFR-B2 delivery plus the documented A11Y proof path as formal completion criteria for learner-facing documentation and active requirement artifacts. New or changed non-trivial logic must be reviewed for didactic inline-comment value when it affects learner understanding or maintainability, especially central framework flows and smoke-test helpers. Inline comments explain why a decision, trade-off, constraint, historical deviation, or proof boundary exists; do not add comments that merely restate obvious code. Keep inline-comment intensity moderate: normally 1-3 lines before a non-trivial block, with German-first/English-second CEFR-B2 text for didactic explanation blocks.
 
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
@@ -73,6 +73,25 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
   scripted UI-event smoke tests. A wave is fully learner- and review-ready only
   after Stage 2 unless the scope explicitly asks for a minimal non-interactive
   proof.
+  Kuenftige Lastenhefte fuer Beispielwellen oder beispielnahe Framework-
+  Vorhaertungen muessen ein Framework-Usage- und Remediation-Gate enthalten.
+  Der spaetere Spec-Kit-Lauf muss pro Beispiel oder Vertragsbereich
+  dokumentieren, welche bestehende TuiVision-Framework-Komponente genutzt wird,
+  ob lokale Sonderlogik existiert und welche Entscheidung gilt:
+  `UseExistingFramework`, `SmallFrameworkFix`, `IntentionalDeviation` oder
+  `FollowUpHardening`. Wiederverwendbare Logik darf nicht dauerhaft als lokale
+  `examples/`-Sonderloesung verbleiben; wiederholte oder Framework-Verhalten
+  ersetzende Logik gehoert in einen kleinen Framework-Fix oder in ein eigenes
+  Follow-up-Hardening.
+  Future Lastenhefte for example waves or example-adjacent framework hardening
+  must include a framework-usage and remediation gate. The later Spec-Kit run
+  must document, per example or contract area, which existing TuiVision
+  framework component is used, whether local special logic exists, and which
+  decision applies: `UseExistingFramework`, `SmallFrameworkFix`,
+  `IntentionalDeviation`, or `FollowUpHardening`. Reusable logic must not
+  remain permanently as a local `examples/` special solution; move repeated or
+  framework-replacing logic into a small framework fix or a dedicated follow-up
+  hardening item.
   Fuer jede Spec-Kit-Feature-Implementierung mit historisch abgeleitetem
   Turbo-Vision-Verhalten muessen die relevanten Implementierungsdateien unter
   `tv203s/` (`.c`, `.cc`) als Read-only-Referenz geprueft werden. Wenn
