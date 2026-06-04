@@ -33,25 +33,25 @@
 
 **CRITICAL**: No user-story implementation should start until the historical source review and current smoke-proof audit are recorded.
 
-- [ ] T007 [P] Record the `Desklogo` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/desklogo/desklogo.cc`, with `tv203s/contrib/tvision/examples/desklogo/set-logo.cc` and `tv203s/contrib/tvision/examples/desklogo/tv_logo.cc` only for asset/generator boundary rationale
-- [ ] T008 [P] Record the `MsgCls` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/msgcls/testdyn.cpp`, `tv203s/contrib/tvision/examples/msgcls/tlnmsg.cpp`, and `tv203s/contrib/tvision/examples/msgcls/tlnmsg.h`
-- [ ] T009 [P] Record the `Tutorial` `tvguid01` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid01.cc`
-- [ ] T010 [P] Record the `Tutorial` `tvguid02` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid02.cc`
-- [ ] T011 [P] Record the `Tutorial` `tvguid03` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid03.cc`
-- [ ] T012 [P] Record the `Tutorial` `tvguid04` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid04.cc`
-- [ ] T013 [P] Record the `Tutorial` `tvguid05` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid05.cc`
-- [ ] T014 [P] Record the `Tutorial` `tvguid06` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid06.cc`
-- [ ] T015 [P] Record the `Tutorial` `tvguid07` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid07.cc`
-- [ ] T016 [P] Record the `Tutorial` `tvguid08` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid08.cc`
-- [ ] T017 [P] Record the `Tutorial` `tvguid09` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid09.cc`
-- [ ] T018 [P] Record the `Tutorial` `tvguid10` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid10.cc`
-- [ ] T019 [P] Record the `Tutorial` `tvguid11` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid11.cc`
-- [ ] T020 [P] Record the `Tutorial` `tvguid12` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid12.cc`
-- [ ] T021 [P] Record the `Tutorial` `tvguid13` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid13.cc`
-- [ ] T022 [P] Record the `Tutorial` `tvguid14` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid14.cc`
-- [ ] T023 [P] Record the `Tutorial` `tvguid15` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid15.cc`
-- [ ] T024 [P] Record the `Tutorial` `tvguid16` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid16.cc`
-- [ ] T025 [P] Record the `Videomode` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/videomode/test.cc`
+- [ ] T007 Record the `Desklogo` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/desklogo/desklogo.cc`, with `tv203s/contrib/tvision/examples/desklogo/set-logo.cc` and `tv203s/contrib/tvision/examples/desklogo/tv_logo.cc` only for asset/generator boundary rationale
+- [ ] T008 Record the `MsgCls` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/msgcls/testdyn.cpp`, `tv203s/contrib/tvision/examples/msgcls/tlnmsg.cpp`, and `tv203s/contrib/tvision/examples/msgcls/tlnmsg.h`
+- [ ] T009 Record the `Tutorial` `tvguid01` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid01.cc`
+- [ ] T010 Record the `Tutorial` `tvguid02` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid02.cc`
+- [ ] T011 Record the `Tutorial` `tvguid03` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid03.cc`
+- [ ] T012 Record the `Tutorial` `tvguid04` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid04.cc`
+- [ ] T013 Record the `Tutorial` `tvguid05` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid05.cc`
+- [ ] T014 Record the `Tutorial` `tvguid06` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid06.cc`
+- [ ] T015 Record the `Tutorial` `tvguid07` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid07.cc`
+- [ ] T016 Record the `Tutorial` `tvguid08` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid08.cc`
+- [ ] T017 Record the `Tutorial` `tvguid09` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid09.cc`
+- [ ] T018 Record the `Tutorial` `tvguid10` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid10.cc`
+- [ ] T019 Record the `Tutorial` `tvguid11` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid11.cc`
+- [ ] T020 Record the `Tutorial` `tvguid12` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid12.cc`
+- [ ] T021 Record the `Tutorial` `tvguid13` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid13.cc`
+- [ ] T022 Record the `Tutorial` `tvguid14` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid14.cc`
+- [ ] T023 Record the `Tutorial` `tvguid15` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid15.cc`
+- [ ] T024 Record the `Tutorial` `tvguid16` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/tutorial/tvguid16.cc`
+- [ ] T025 Record the `Videomode` read-only source review in `specs/014-wave1-functional-hardening/pr-evidence.md` using `tv203s/contrib/tvision/examples/videomode/test.cc`
 - [ ] T026 Record any additional `tv203s/` header/declaration review needed for constants, macros, data layout, inheritance, or signatures in `specs/014-wave1-functional-hardening/pr-evidence.md`; record `N/A` there if no additional header is needed
 - [ ] T027 Audit existing Wave-1 smoke proof in `tests/TuiVision.Examples.SmokeTests/DesklogoSmokeTests.cs`, `tests/TuiVision.Examples.SmokeTests/MsgClsSmokeTests.cs`, `tests/TuiVision.Examples.SmokeTests/TutorialSmokeTests.cs`, and `tests/TuiVision.Examples.SmokeTests/VideomodeSmokeTests.cs`, then record startup-only, static-text-only, helper-only, and missing-proof gaps in `specs/014-wave1-functional-hardening/pr-evidence.md`
 - [ ] T028 Audit existing helper infrastructure in `tests/TuiVision.Examples.SmokeTests/ExampleTestBase.cs` and `tests/TuiVision.Examples.SmokeTests/InteractiveSmokeEventScript.cs`, then record whether current helper taxonomy covers `SetupOnly`, `PrimaryProof`, `SupplementalProof`, and `LegacyOrTemporary` in `specs/014-wave1-functional-hardening/pr-evidence.md`
@@ -88,8 +88,8 @@
 
 - [ ] T034 [P] [US2] Add or sharpen failing `Desklogo` smoke assertions in `tests/TuiVision.Examples.SmokeTests/DesklogoSmokeTests.cs` so proof covers logo/desktop intent, asset replacement rationale, and undersized-display fallback rather than only startup
 - [ ] T035 [P] [US2] Add or sharpen failing `MsgCls` smoke assertions in `tests/TuiVision.Examples.SmokeTests/MsgClsSmokeTests.cs` so proof covers custom message triggering, routing, observable result, and repeated-trigger stability
-- [ ] T036 [P] [US2] Add or sharpen failing `Tutorial` smoke assertions for `tvguid01` through `tvguid08` in `tests/TuiVision.Examples.SmokeTests/TutorialSmokeTests.cs` so each token has step-specific learning-target or behavior proof beyond startup
-- [ ] T037 [P] [US2] Add or sharpen failing `Tutorial` smoke assertions for `tvguid09` through `tvguid16` in `tests/TuiVision.Examples.SmokeTests/TutorialSmokeTests.cs` so each token has step-specific learning-target or behavior proof beyond startup
+- [ ] T036 [US2] Add or sharpen failing `Tutorial` smoke assertions for `tvguid01` through `tvguid08` in `tests/TuiVision.Examples.SmokeTests/TutorialSmokeTests.cs` so each token has step-specific learning-target or behavior proof beyond startup
+- [ ] T037 [US2] Add or sharpen failing `Tutorial` smoke assertions for `tvguid09` through `tvguid16` in `tests/TuiVision.Examples.SmokeTests/TutorialSmokeTests.cs` so each token has step-specific learning-target or behavior proof beyond startup
 - [ ] T038 [P] [US2] Add or sharpen failing `Videomode` smoke assertions in `tests/TuiVision.Examples.SmokeTests/VideomodeSmokeTests.cs` so proof covers real capability outcome or clear fallback, post-transition usability, and platform limitation
 
 ### Implementation for User Story 2
@@ -154,22 +154,22 @@
 
 **Purpose**: Complete governance evidence, versioning, final validation, statistics, Pflichtenheft state, agent parity review, and Lastenheft archiving.
 
-- [ ] T061 [P] Record architecture impact and unchanged-risk or changed-risk rationale in `specs/014-wave1-functional-hardening/pr-evidence.md`; update `docs/architecture/architecture-vision.md`, `docs/architecture/runtime-view.md`, `docs/architecture/quality-scenarios.md`, and `docs/architecture/architecture-risks.md` only if implementation changes architecture-facing facts
-- [ ] T062 [P] Record security governance evidence for C#/.NET secure coding, NIST SSDF, CWE Top 25, ASVS `N/A`, CAPEC `N/A`, Zero Trust `N/A`, SBOM/VEX/SLSA unchanged, and AI-SBOM `N/A` in `specs/014-wave1-functional-hardening/pr-evidence.md`; update `docs/security/security-checklist.md`, `docs/security/threat-model.md`, `docs/security/dependency-audit.md`, and `docs/security/supply-chain-evidence.md` only if implementation changes risk, dependency, release, or supply-chain facts
-- [ ] T063 [P] Record `security-governance` v0.4.0, `architecture-governance` v0.2.0, `isaqb-architecture-governance` v0.1.0, `a11y-governance` v0.2.0, `cross-platform-governance` v0.1.0, and `agent-parity-governance` v0.2.0 applicability in `specs/014-wave1-functional-hardening/pr-evidence.md`
-- [ ] T064 [P] Review agent guidance parity for `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and `.github/agents/copilot-instructions.md`; update those files only if active feature context, technologies, project structure, or shared workflow rules changed, otherwise record unchanged rationale in `specs/014-wave1-functional-hardening/pr-evidence.md`
-- [ ] T065 [P] Update `Pflichtenheft.md` only if implementation changes the prioritized next-step marker, Wave-1 hardening status, or evidence status; otherwise record unchanged rationale in `specs/014-wave1-functional-hardening/pr-evidence.md`
-- [ ] T066 [P] Update `docs/project-statistics.md` for the 014 tasks/implementation scope, validation evidence, manual baselines, and acceleration notes after implementation is complete
-- [ ] T067 Run `dotnet restore` and record output or blocker in `specs/014-wave1-functional-hardening/pr-evidence.md`
-- [ ] T068 Align `Directory.Build.props` to branch version `1.14.<patch>.<build>` and increment the manual build counter immediately before `dotnet build --configuration Release`, then record the version and build output in `specs/014-wave1-functional-hardening/pr-evidence.md`
-- [ ] T069 Align `Directory.Build.props` to branch version `1.14.<patch>.<build>` and increment the manual build counter immediately before `dotnet test tests/TuiVision.Examples.SmokeTests/ --configuration Release`, then record output in `specs/014-wave1-functional-hardening/pr-evidence.md`
-- [ ] T070 Align `Directory.Build.props` to branch version `1.14.<patch>.<build>` and increment the manual build counter immediately before `dotnet test --configuration Release`, then record output in `specs/014-wave1-functional-hardening/pr-evidence.md`
-- [ ] T071 Align `Directory.Build.props` to branch version `1.14.<patch>.<build>` and increment the manual build counter immediately before `dotnet test --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings`, then record coverage output in `specs/014-wave1-functional-hardening/pr-evidence.md`
-- [ ] T072 Run `dotnet format --verify-no-changes` and record output or blocker in `specs/014-wave1-functional-hardening/pr-evidence.md`
-- [ ] T073 If T054-T058 changed guides, README, DocFX content, documentation navigation, or API documentation, run `docfx docfx.json` and record output plus generated-output hygiene for `_site/` and `api/*.yml` in `specs/014-wave1-functional-hardening/pr-evidence.md`; otherwise record DocFX `N/A` rationale there
-- [ ] T074 If T073 ran DocFX, run `npm run test:docfx` from `tests/web-a11y/` and record Playwright/axe output in `specs/014-wave1-functional-hardening/pr-evidence.md`; otherwise record web-a11y `N/A` rationale there
-- [ ] T075 Run `git diff --check` and record the clean result or blocker in `specs/014-wave1-functional-hardening/pr-evidence.md`
-- [ ] T076 Update final PR evidence in `specs/014-wave1-functional-hardening/pr-evidence.md` with changed examples, changed tests, documentation changes, validation commands, security-risk statement, AI-SBOM `N/A`, and confirmation that no visual remediation, Wave 2/3/4 behavior, new dependency, database, external service, network path, persistent history, or runtime/product AI was added
+- [ ] T061 Record architecture impact and unchanged-risk or changed-risk rationale in `specs/014-wave1-functional-hardening/pr-evidence.md`; update `docs/architecture/architecture-vision.md`, `docs/architecture/runtime-view.md`, `docs/architecture/quality-scenarios.md`, and `docs/architecture/architecture-risks.md` only if implementation changes architecture-facing facts
+- [ ] T062 Record security governance evidence for C#/.NET secure coding, NIST SSDF, CWE Top 25, ASVS `N/A`, CAPEC `N/A`, Zero Trust `N/A`, SBOM/VEX/SLSA unchanged, and AI-SBOM `N/A` in `specs/014-wave1-functional-hardening/pr-evidence.md`; update `docs/security/security-checklist.md`, `docs/security/threat-model.md`, `docs/security/dependency-audit.md`, and `docs/security/supply-chain-evidence.md` only if implementation changes risk, dependency, release, or supply-chain facts
+- [ ] T063 Record `security-governance` v0.4.0, `architecture-governance` v0.2.0, `isaqb-architecture-governance` v0.1.0, `a11y-governance` v0.2.0, `cross-platform-governance` v0.1.0, and `agent-parity-governance` v0.2.0 applicability in `specs/014-wave1-functional-hardening/pr-evidence.md`
+- [ ] T064 Review agent guidance parity for `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and `.github/agents/copilot-instructions.md`; update those files only if active feature context, technologies, project structure, or shared workflow rules changed, otherwise record unchanged rationale in `specs/014-wave1-functional-hardening/pr-evidence.md`
+- [ ] T065 Update `Pflichtenheft.md` only if implementation changes the prioritized next-step marker, Wave-1 hardening status, or evidence status; otherwise record unchanged rationale in `specs/014-wave1-functional-hardening/pr-evidence.md`
+- [ ] T066 Run `dotnet restore` and record output or blocker in `specs/014-wave1-functional-hardening/pr-evidence.md`
+- [ ] T067 Align `Directory.Build.props` to branch version `1.14.<patch>.<build>` and increment the manual build counter immediately before `dotnet build --configuration Release`, then record the version and build output in `specs/014-wave1-functional-hardening/pr-evidence.md`
+- [ ] T068 Align `Directory.Build.props` to branch version `1.14.<patch>.<build>` and increment the manual build counter immediately before `dotnet test tests/TuiVision.Examples.SmokeTests/ --configuration Release`, then record output in `specs/014-wave1-functional-hardening/pr-evidence.md`
+- [ ] T069 Align `Directory.Build.props` to branch version `1.14.<patch>.<build>` and increment the manual build counter immediately before `dotnet test --configuration Release`, then record output in `specs/014-wave1-functional-hardening/pr-evidence.md`
+- [ ] T070 Align `Directory.Build.props` to branch version `1.14.<patch>.<build>` and increment the manual build counter immediately before `dotnet test --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings`, then record coverage output in `specs/014-wave1-functional-hardening/pr-evidence.md`
+- [ ] T071 Run `dotnet format --verify-no-changes` and record output or blocker in `specs/014-wave1-functional-hardening/pr-evidence.md`
+- [ ] T072 If T054-T058 changed guides, README, DocFX content, documentation navigation, or API documentation, run `docfx docfx.json` and record output plus generated-output hygiene for `_site/` and `api/*.yml` in `specs/014-wave1-functional-hardening/pr-evidence.md`; otherwise record DocFX `N/A` rationale there
+- [ ] T073 If T072 ran DocFX, run `npm run test:docfx` from `tests/web-a11y/` and record Playwright/axe output in `specs/014-wave1-functional-hardening/pr-evidence.md`; otherwise record web-a11y `N/A` rationale there
+- [ ] T074 Run `git diff --check` and record the clean result or blocker in `specs/014-wave1-functional-hardening/pr-evidence.md`
+- [ ] T075 Update final PR evidence in `specs/014-wave1-functional-hardening/pr-evidence.md` with changed examples, changed tests, documentation changes, validation commands, security-risk statement, AI-SBOM `N/A`, and confirmation that no visual remediation, Wave 2/3/4 behavior, new dependency, database, external service, network path, persistent history, or runtime/product AI was added
+- [ ] T076 Update `docs/project-statistics.md` after implementation validation is complete, using the final 014 implementation scope, changed production/test/documentation line counts, validation evidence from `specs/014-wave1-functional-hardening/pr-evidence.md`, manual baselines, and acceleration notes
 - [ ] T077 Run `bash scripts/rename-lastenheft.sh Lastenheft_Wave1-Functional-Hardening.md 014-wave1-functional-hardening` or `pwsh scripts/rename-lastenheft.ps1 -File Lastenheft_Wave1-Functional-Hardening.md -BranchName 014-wave1-functional-hardening`, then record the resulting Lastenheft path in `specs/014-wave1-functional-hardening/pr-evidence.md`
 - [ ] T078 Verify `Lastenheft_Wave1-Visual-Component-Remediation.md` remains an unrenamed follow-up intake and record that boundary in `specs/014-wave1-functional-hardening/pr-evidence.md`
 - [ ] T079 Perform a final self-check that all task acceptance surfaces in `specs/014-wave1-functional-hardening/pr-evidence.md`, `tests/TuiVision.Examples.SmokeTests/`, affected guides, `examples/README.md`, `docs/project-statistics.md`, `Pflichtenheft.md`, and renamed Lastenheft path are complete
@@ -204,15 +204,13 @@
 
 ---
 
-## Parallel Examples
+## Parallelization Notes
 
-### Foundation Source Reviews
+### Shared Evidence Work
 
 ```text
-T007 Desklogo source review in pr-evidence.md
-T008 MsgCls source review in pr-evidence.md
-T009-T024 Tutorial source reviews in pr-evidence.md
-T025 Videomode source review in pr-evidence.md
+T007-T025 source reviews may be read independently, but evidence edits are serialized through pr-evidence.md and are intentionally not marked [P].
+T061-T065 governance and status checks are serialized because they also update pr-evidence.md and may touch shared governance/status artifacts.
 ```
 
 ### US2 Smoke Proof Work
@@ -220,8 +218,8 @@ T025 Videomode source review in pr-evidence.md
 ```text
 T034 Desklogo smoke hardening in DesklogoSmokeTests.cs
 T035 MsgCls smoke hardening in MsgClsSmokeTests.cs
-T036-T037 Tutorial smoke hardening in TutorialSmokeTests.cs
 T038 Videomode smoke hardening in VideomodeSmokeTests.cs
+T036-T037 are serialized because both edit TutorialSmokeTests.cs.
 ```
 
 ### US4 Documentation Work
@@ -256,5 +254,5 @@ T057 docs/guides/examples/videomode.md
 
 1. One engineer owns `pr-evidence.md` structure and final consistency.
 2. Independent reviewers can process historical sources per area after Setup.
-3. Independent implementers can harden `Desklogo`, `MsgCls`, `Tutorial`, and `Videomode` smoke paths after Foundation.
+3. Independent implementers can harden `[P]`-marked area-specific smoke paths after Foundation; shared `TutorialSmokeTests.cs` and `pr-evidence.md` edits must be serialized.
 4. Documentation work starts only after the corresponding proof facts are stable.
