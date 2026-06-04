@@ -762,30 +762,36 @@ understand.
 
 Wenn man einen Verlauf ueber die X-Achse sehen will, helfen X/Y-Diagramme
 zusaetzlich. Hier steht die X-Achse fuer die dokumentierten Phasen oder
-Branches (`0` bis `15`). Die Y-Achse zeigt je nach Diagramm Zeilen, Arbeitstage
-oder Beschleunigungsfaktoren. Die Sternpunkte sind bewusst grob gesetzt: Sie
-sollen Trends sichtbar machen, nicht mathematische Genauigkeit auf Plotter-
-Niveau liefern.
+Branches. Die X-Positionen nutzen feste Slots: jede Phase behaelt ihren Platz,
+auch wenn einzelne Datenpunkte fehlen. Wenn weitere Spec-Kit-Laeufe die Achse
+zu breit machen, wird sie in Bloecke wie `0..15`, `16..31` und `32..47`
+geteilt; jeder Block bekommt eine eigene Achsenlinie und eigene X-Labels. Die
+Y-Achse zeigt je nach Diagramm Zeilen, Arbeitstage oder Beschleunigungsfaktoren.
+Die Sternpunkte bleiben grob gebinnt: Sie sollen Trends sichtbar machen, nicht
+mathematische Genauigkeit auf Plotter-Niveau liefern.
 
 If readers want to see progression across the X-axis, X/Y charts help as a
-second view. Here the X-axis stands for the documented phases or branches (`0`
-to `15`). Depending on the chart, the Y-axis shows lines, workdays, or
-acceleration factors. The star markers are intentionally approximate: they are
-meant to reveal trends, not to deliver plotter-level mathematical precision.
+second view. Here the X-axis stands for the documented phases or branches. The
+X positions use fixed slots: each phase keeps its place, even when individual
+data points are missing. When future Spec-Kit runs make the axis too wide, split
+it into blocks such as `0..15`, `16..31`, and `32..47`; each block gets its own
+axis line and X labels. Depending on the chart, the Y-axis shows lines, workdays,
+or acceleration factors. The star markers stay roughly binned: they reveal
+trends, not plotter-level mathematical precision.
 
 ```text
 X/Y-Diagramm: dokumentiertes Phasenvolumen (X = Phase/Branch, Y = Zeilen)
-12169.0 |                      *
-10647.9 |*         *
- 9126.8 |
- 7605.6 |                *
- 6084.5 |            *
- 4563.4 |  *   * *
- 3042.3 |    *                 * *
- 1521.1 |                  *
-    0.0 |              *     * *
-        +-------------------------
-         0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+12169.0 |                                             *                  |
+10647.9 | *                                                              |
+ 9126.8 |                     *                                          |
+ 7605.6 |                                                                |
+ 6084.5 |                         *       *                              |
+ 4563.4 |     *           *                                              |
+ 3042.3 |             *                                   *              |
+ 1521.1 |         *                           *               *   *   *  |
+    0.0 |                             *           *                      |
+        +----------------------------------------------------------------+
+          0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
 ```
 
 Dieses X/Y-Diagramm zeigt denselben Verlauf wie der Volumen-Balkenblock, aber
@@ -798,17 +804,17 @@ between directly neighboring packages.
 
 ```text
 X/Y-Diagramm: konservative Handarbeits-Referenz (X = Phase/Branch, Y = Arbeitstage)
-  152.1 |                      *
-  133.1 |*         *
-  114.1 |
-   95.1 |                *
-   76.1 |            *
-   57.0 |  *   * *
-   38.0 |    *                 *
-   19.0 |                  *   *
-    0.0 |              *     * *
-        +-------------------------
-         0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+152.1 |                                             *                  |
+133.1 | *                                                              |
+114.1 |                     *                                          |
+ 95.1 |                                                                |
+ 76.1 |                         *       *                              |
+ 57.0 |     *           *                                              |
+ 38.0 |             *                                   *              |
+ 19.0 |         *                           *               *   *   *  |
+  0.0 |                             *           *                      |
+      +----------------------------------------------------------------+
+        0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
 ```
 
 Dieses X/Y-Diagramm zeigt, wie sich die konservative manuelle Referenz ueber
@@ -824,17 +830,17 @@ small code change implies the same teaching or coordination effort.
 
 ```text
 X/Y-Diagramm: dokumentierte Beschleunigungsfaktoren (X = Phase/Branch, Y = Faktor)
-  152.1 |                    *
-  133.1 |
-  114.1 |        *
-   95.1 |
-   76.1 |
-   57.0 |      *     *       *
-   38.0 |*
-   19.0 |  * *           * * *
-    0.0 |          * *     *
-        +-------------------------
-         0 1 2 3 5 7 8 9 10 11 12 13 14 15
+152.1 |                                             *                  |
+133.1 |                                                                |
+114.1 |                     *                                          |
+ 95.1 |                                                                |
+ 76.1 |                                                                |
+ 57.0 |                                                                |
+ 38.0 | *           *                   *               *              |
+ 19.0 |     *   *                           *               *   *   *  |
+  0.0 |                             *           *                      |
+      +----------------------------------------------------------------+
+        0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
 ```
 
 Dieses X/Y-Diagramm zeigt die dokumentierten Beschleunigungsfaktoren nur fuer
