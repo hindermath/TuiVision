@@ -9,6 +9,8 @@ Before continuing, apply the Architecture Governance preset:
 
 - convert architecture obligations into explicit tasks
 - include `docs/security/` evidence updates
+- add BSI C3A cloud autonomy applicability tasks when cloud services or
+  provider-dependent deployments are in scope
 - do not leave threat-modeling or ADR work implicit
 
 Before continuing, apply the iSAQB Architecture Governance preset:
@@ -57,6 +59,8 @@ Use this command to generate an executable task list from `plan.md` and `spec.md
    - bilingual updates (German block first, then English)
    - XML documentation completeness
    - `docfx docfx.json` run when API/XML docs changed
+   - architecture evidence under `docs/architecture/` when structure, interfaces,
+     quality attributes, runtime behavior, deployment, or technical debt changes
 4. Include coverage and dependency tasks:
    - coverage evidence for `>=70%` minimum and `>=80%` target tracking
    - `dotnet list package --outdated` review and update tasks
@@ -68,9 +72,4 @@ Use this command to generate an executable task list from `plan.md` and `spec.md
 - Documentation and governance tasks are present.
 - Task ordering supports incremental, verifiable delivery.
 - Coverage and dependency currency tasks are explicitly scheduled.
-
-
-
-
-
-
+- Architecture evidence and `N/A` rationale tasks are explicitly scheduled.
