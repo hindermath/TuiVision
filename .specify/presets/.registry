@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "presets": {
     "security-governance": {
-      "version": "0.4.0",
+      "version": "0.5.0",
       "source": "local",
-      "manifest_hash": "sha256:320bc61d740c75ebe53a89715a43241d3ae17d5568693476f8d21342f4428d8d",
+      "manifest_hash": "sha256:cf6a2b055a8cae5343579d54d7136fac8169ca37b9f809469c3df3d8558741de",
       "enabled": true,
       "priority": 10,
       "registered_commands": {
@@ -227,9 +227,9 @@
       "installed_at": "2026-05-04T06:24:35.517774+00:00"
     },
     "architecture-governance": {
-      "version": "0.3.0",
+      "version": "0.4.0",
       "source": "local",
-      "manifest_hash": "sha256:a3ad3f79a35ce7d141585ae705b63c18a849865436dd2ebac2eee9fede20cee0",
+      "manifest_hash": "sha256:f9bba1e6645c6c08d7fbb0b844d13b688741d2a9047c49655475581124c1bdcc",
       "enabled": true,
       "priority": 20,
       "registered_commands": {
