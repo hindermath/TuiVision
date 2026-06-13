@@ -111,16 +111,16 @@ installieren, sofern das Projekt keine begründete Ausnahme dokumentiert.
 
 Standard-Preset-Set:
 
-- `security-governance` v0.4.0, Priority 10
-- `architecture-governance` v0.2.0, Priority 20
+- `security-governance` v0.5.0, Priority 10
+- `architecture-governance` v0.4.0, Priority 20
 - `isaqb-architecture-governance` v0.1.0, Priority 30
-- `a11y-governance` v0.2.0, Priority 40
+- `a11y-governance` v0.3.0, Priority 40
 - `cross-platform-governance` v0.1.0, Priority 50
 - `agent-parity-governance` v0.2.0, Priority 60
 
-`security-governance` v0.4.0 behandelt `AI-SBOM` bedingt: reine KI-Nutzung als Entwicklungswerkzeug ist `N/A` mit kurzer Toolchain-Begründung; KI-Runtime-/Produktkomponenten im ausgelieferten oder betriebenen System benötigen Supply-Chain-Evidenz nach den G7/BSI AI-SBOM-Clustern.
+`security-governance` v0.5.0 behandelt `AI-SBOM` bedingt und ergänzt die regulatorische Anwendbarkeitsprüfung für NIS2, CRA, EU AI Act und DORA. `architecture-governance` v0.4.0 ergänzt bedingte BSI-C3A-/BSI-C5-Nachweise. `a11y-governance` v0.3.0 macht didaktische Inline-Code-Kommentarprüfung für neue oder geänderte nicht-triviale Logik explizit.
 
-*`security-governance` v0.4.0 treats `AI-SBOM` as conditional: development-tool-only AI usage is `N/A` with a short toolchain rationale; AI runtime/product components in the released or operated system require supply-chain evidence using the G7/BSI AI-SBOM clusters.*
+*`security-governance` v0.5.0 treats `AI-SBOM` as conditional and adds regulatory applicability screening for NIS2, CRA, EU AI Act, and DORA. `architecture-governance` v0.4.0 adds conditional BSI C3A / BSI C5 evidence. `a11y-governance` v0.3.0 makes didactic inline-code-comment review explicit for new or changed non-trivial logic.*
 
 Nach Installation oder Update prüfen:
 
@@ -135,7 +135,7 @@ Agenten-/Command-Dateien committen; `.specify/presets/.cache/` nicht committen.
 
 *All six governance presets are included in the `github/spec-kit` community
 catalog as of 2026-05-04. C#/.NET Level-2 projects default to all six presets
-unless a justified exception is documented. `security-governance` v0.4.0 keeps conditional `AI-SBOM` evidence and adds language-specific secure-coding profiles. Commit `.specify/presets/` and
+unless a justified exception is documented. `security-governance` v0.5.0 keeps conditional `AI-SBOM` evidence, language-specific secure-coding profiles, and regulatory applicability screening; `a11y-governance` v0.3.0 adds didactic inline-code-comment governance. Commit `.specify/presets/` and
 generated agent/command files when presets are project policy; do not commit
 `.specify/presets/.cache/`.*
 

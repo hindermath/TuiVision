@@ -91,51 +91,6 @@
       ],
       "installed_at": "2026-05-04T06:24:33.781261+00:00"
     },
-    "a11y-governance": {
-      "version": "0.2.0",
-      "source": "local",
-      "manifest_hash": "sha256:2abc48037fc6c269f5d0e1ca0b0032803bb2c9fba14355b6bb909ecdfdcfa49e",
-      "enabled": true,
-      "priority": 40,
-      "registered_commands": {
-        "agy": [
-          "speckit.specify",
-          "speckit.plan",
-          "speckit.tasks"
-        ],
-        "claude": [
-          "speckit.specify",
-          "speckit.plan",
-          "speckit.tasks"
-        ],
-        "codex": [
-          "speckit.specify",
-          "speckit.plan",
-          "speckit.tasks"
-        ],
-        "copilot": [
-          "speckit.specify",
-          "speckit.plan",
-          "speckit.tasks"
-        ],
-        "gemini": [
-          "speckit.specify",
-          "speckit.plan",
-          "speckit.tasks"
-        ],
-        "opencode": [
-          "speckit.specify",
-          "speckit.plan",
-          "speckit.tasks"
-        ]
-      },
-      "registered_skills": [
-        "speckit-specify",
-        "speckit-plan",
-        "speckit-tasks"
-      ],
-      "installed_at": "2026-05-04T06:24:34.343316+00:00"
-    },
     "cross-platform-governance": {
       "version": "0.1.0",
       "source": "local",
@@ -270,6 +225,51 @@
         "speckit-tasks"
       ],
       "installed_at": "2026-06-11T08:24:57.490810+00:00"
+    },
+    "a11y-governance": {
+      "version": "0.3.0",
+      "source": "local",
+      "manifest_hash": "sha256:1a3a9c15d7080dac962fe2ee3c976e550381c3d454a299ed46b1976b4e92b120",
+      "enabled": true,
+      "priority": 40,
+      "registered_commands": {
+        "agy": [
+          "speckit.specify",
+          "speckit.plan",
+          "speckit.tasks"
+        ],
+        "claude": [
+          "speckit.specify",
+          "speckit.plan",
+          "speckit.tasks"
+        ],
+        "codex": [
+          "speckit.specify",
+          "speckit.plan",
+          "speckit.tasks"
+        ],
+        "copilot": [
+          "speckit.specify",
+          "speckit.plan",
+          "speckit.tasks"
+        ],
+        "gemini": [
+          "speckit.specify",
+          "speckit.plan",
+          "speckit.tasks"
+        ],
+        "opencode": [
+          "speckit.specify",
+          "speckit.plan",
+          "speckit.tasks"
+        ]
+      },
+      "registered_skills": [
+        "speckit-specify",
+        "speckit-plan",
+        "speckit-tasks"
+      ],
+      "installed_at": "2026-06-13T17:49:41.017410+00:00"
     }
   }
 }
