@@ -31,6 +31,10 @@ public sealed class DesklogoSmokeTests : ExampleTestBase
         DesklogoApp app = new(DefaultBounds(), headless: true);
 
         AssertSmokeRunCompletes(() => app.Run());
+        RecordPrimaryAssertionUsedAppLoop();
+        RecordDirectHelperUsage(DirectHelperUsage.PrimaryProof);
+        AssertPrimaryAssertionUsedAppLoop();
+        AssertDirectHelperUsage(DirectHelperUsage.PrimaryProof);
     }
 
     /// <summary>
@@ -55,6 +59,21 @@ public sealed class DesklogoSmokeTests : ExampleTestBase
 
         AssertNotNull(desktop, "DesklogoDesktop");
         AssertTrue(desktop!.LogoLines.Length > 0, "LogoLines muss Zeilen enthalten / LogoLines must contain lines");
+        AssertTrue(
+            desktop.LogoLines.Any(line => line.Length >= 64),
+            "LogoLines muessen ein breites Desktop-Logo statt nur Starttext beweisen / " +
+            "LogoLines must prove a wide desktop logo instead of only startup text");
+
+        desktop.Draw();
+        AssertEqual(
+            desktop.LogoLines.Length,
+            desktop.RenderedLineCount,
+            "Normalgroesse muss alle Logo-Zeilen rendern / Default size must render every logo line");
+        AssertTrue(
+            desktop.LastVisibleLogoColumnCount >= 64,
+            "Normalgroesse muss die volle Logo-Breite sichtbar machen / Default size must show the full logo width");
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalProof);
+        AssertDirectHelperUsage(DirectHelperUsage.SupplementalProof);
     }
 
     /// <summary>
@@ -72,6 +91,24 @@ public sealed class DesklogoSmokeTests : ExampleTestBase
         DesklogoApp app = new(DefaultBounds(width: 16, height: 5), headless: true);
 
         AssertSmokeRunCompletes(() => app.Run());
+
+        DesklogoApp freshApp = new(DefaultBounds(width: 16, height: 5), headless: true);
+        DesklogoDesktop? desktop = freshApp.Desktop as DesklogoDesktop;
+        AssertNotNull(desktop, "DesklogoDesktop");
+
+        desktop!.Draw();
+        AssertTrue(
+            desktop.RenderedLineCount > 0,
+            "Kleinterminal muss mindestens eine Logo-Zeile sichtbar machen / Small terminal must show at least one logo line");
+        AssertTrue(
+            desktop.RenderedLineCount < desktop.LogoLines.Length,
+            "Kleinterminal muss die Logo-Zeilen kontrolliert abschneiden / Small terminal must clip logo lines in a controlled way");
+        AssertEqual(
+            16,
+            desktop.LastVisibleLogoColumnCount,
+            "Kleinterminal schneidet die Logo-Breite kontrolliert ab / Small terminal clips logo width in a controlled way");
+        RecordDirectHelperUsage(DirectHelperUsage.PrimaryProof);
+        AssertDirectHelperUsage(DirectHelperUsage.PrimaryProof);
     }
 
     /// <summary>
@@ -96,5 +133,7 @@ public sealed class DesklogoSmokeTests : ExampleTestBase
         });
 
         AssertTrue(completed, "Run() muss vor dem Test-Timeout zurückkehren / Run() must return before test timeout");
+        RecordPrimaryAssertionUsedAppLoop();
+        AssertPrimaryAssertionUsedAppLoop();
     }
 }

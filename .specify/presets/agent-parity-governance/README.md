@@ -1,6 +1,6 @@
 # Agent Parity Governance Preset
 
-Version: `0.1.0`
+Version: `0.2.0`
 Requires: `spec-kit >= 0.8.0` (uses the `wrap` and `append` composition
 strategies introduced in 0.8.x).
 
@@ -9,6 +9,8 @@ Purpose:
 - prevent silent process drift between AI-agent guidance files
 - enforce that shared rules land atomically across the project's
   declared AI-agent guidance surfaces
+- keep Spec-Kit model-routing guidance agent-neutral and out of
+  reproducible feature artifacts
 
 Primary source chapter from `home-baseline` constitution:
 
@@ -20,6 +22,7 @@ What it covers:
 - atomic-change discipline (one change → all surfaces)
 - propagation into project templates and `.specify/memory/constitution.md`
 - explicit documentation of intentional deviations
+- agent-neutral Spec-Kit model routing by work type
 - parity-verification artefact (`agent-parity-checklist-template`)
 
 Preset strategy:
@@ -39,6 +42,8 @@ When to use:
   instructions
 - any project where AI-agent surfaces are part of the contributor
   contract
+- any project that wants model routing guidance without pinning a
+  provider-specific model in specs, plans, or tasks
 
 Common surfaces include `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`,
 `.github/copilot-instructions.md`, `.cursorrules`, `.windsurfrules`,
@@ -52,4 +57,4 @@ When not to use:
 
 Recommended standalone install priority:
 
-- `40`
+- `60`

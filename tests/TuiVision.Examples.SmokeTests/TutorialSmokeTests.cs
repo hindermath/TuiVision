@@ -18,6 +18,27 @@ namespace TuiVision.Examples.SmokeTests;
 [TestClass]
 public sealed class TutorialSmokeTests : ExampleTestBase
 {
+    private static readonly IReadOnlyDictionary<string, string> ExpectedTitleFragments =
+        new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["tvguid01"] = "Minimal TApplication",
+            ["tvguid02"] = "Menu bar with submenus",
+            ["tvguid03"] = "Menu command handling",
+            ["tvguid04"] = "Opening a TWindow",
+            ["tvguid05"] = "Drawing content into a window",
+            ["tvguid06"] = "Vertical scroll bar",
+            ["tvguid07"] = "Horizontal and vertical scroll bars",
+            ["tvguid08"] = "Scroll bars and delta point",
+            ["tvguid09"] = "Multiple windows",
+            ["tvguid10"] = "Opening a TDialog",
+            ["tvguid11"] = "Buttons in a dialog",
+            ["tvguid12"] = "Input line in a dialog",
+            ["tvguid13"] = "Two buttons",
+            ["tvguid14"] = "Check boxes and radio buttons",
+            ["tvguid15"] = "Saving dialog data",
+            ["tvguid16"] = "Save and restore dialog data"
+        };
+
     // ── Katalog-Struktur-Tests / Catalog structure tests ──────────────────────────
 
     /// <summary>
@@ -29,6 +50,8 @@ public sealed class TutorialSmokeTests : ExampleTestBase
     public void Tutorial_Catalog_Contains16Steps()
     {
         AssertEqual(16, TutorialStepCatalog.All.Count, "Katalog muss 16 Schritte enthalten / Catalog must contain 16 steps");
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalProof);
+        AssertDirectHelperUsage(DirectHelperUsage.SupplementalProof);
     }
 
     /// <summary>
@@ -45,6 +68,9 @@ public sealed class TutorialSmokeTests : ExampleTestBase
             AssertEqual(i + 1, ordered[i].SequenceNumber,
                 $"Schritt {i + 1} muss Sequenznummer {i + 1} haben / Step {i + 1} must have sequence number {i + 1}");
         }
+
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalProof);
+        AssertDirectHelperUsage(DirectHelperUsage.SupplementalProof);
     }
 
     /// <summary>
@@ -59,6 +85,14 @@ public sealed class TutorialSmokeTests : ExampleTestBase
     {
         TutorialApp launcher = new("tvguidXX", DefaultBounds(), headless: true);
         AssertSmokeRunCompletes(() => launcher.Run());
+        AssertTrue(
+            launcher.LastRunUsedFallback,
+            "Unbekanntes Token muss den Fallback-Pfad markieren / Unknown token must mark the fallback path");
+        Assert.IsNull(
+            launcher.LastRunStepToken,
+            "Fallback darf keinen ausgefuehrten Tutorial-Schritt melden. / Fallback must not report an executed tutorial step.");
+        RecordDirectHelperUsage(DirectHelperUsage.PrimaryProof);
+        AssertDirectHelperUsage(DirectHelperUsage.PrimaryProof);
     }
 
     // ── tvguid01–tvguid08 / Steps 01–08 ──────────────────────────────────────────
@@ -167,7 +201,20 @@ public sealed class TutorialSmokeTests : ExampleTestBase
             AssertTrue(
                 !string.IsNullOrWhiteSpace(step.Title),
                 $"Schritt '{token}' muss einen nicht-leeren Titel haben / Step '{token}' must have a non-empty title");
+            AssertVisibleContains(
+                step.Title,
+                ExpectedTitleFragments[token],
+                $"Schritt '{token}' muss sein spezifisches Lernziel im Titel tragen / " +
+                $"Step '{token}' must carry its specific learning target in the title");
+            AssertVisibleContains(
+                step.Description,
+                " / ",
+                $"Schritt '{token}' muss eine zweisprachige Beschreibung tragen / " +
+                $"Step '{token}' must carry a bilingual description");
         }
+
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalProof);
+        AssertDirectHelperUsage(DirectHelperUsage.SupplementalProof);
     }
 
     // ── Hilfsmethode / Helper method ──────────────────────────────────────────────
@@ -180,7 +227,35 @@ public sealed class TutorialSmokeTests : ExampleTestBase
             TutorialStepCatalog.All.ContainsKey(token),
             $"Token '{token}' muss im Katalog vorhanden sein / Token '{token}' must exist in catalog");
 
+        ITutorialStep step = TutorialStepCatalog.All[token];
+        int expectedSequence = int.Parse(token[^2..], System.Globalization.CultureInfo.InvariantCulture);
+        AssertEqual(
+            expectedSequence,
+            step.SequenceNumber,
+            $"Token '{token}' muss die passende Sequenznummer tragen / Token '{token}' must carry the matching sequence number");
+        AssertVisibleContains(
+            step.Title,
+            ExpectedTitleFragments[token],
+            $"Token '{token}' muss ein schrittspezifisches Lernziel beweisen / " +
+            $"Token '{token}' must prove a step-specific learning target");
+        AssertVisibleContains(
+            step.Description,
+            " / ",
+            $"Token '{token}' muss einen zweisprachigen Lernzieltext besitzen / " +
+            $"Token '{token}' must have bilingual learning-target text");
+
         TutorialApp launcher = new(token, DefaultBounds(), headless: true);
         AssertSmokeRunCompletes(() => launcher.Run());
+        AssertEqual(
+            token,
+            launcher.LastRunStepToken,
+            $"Launcher muss genau '{token}' ausgefuehrt haben / Launcher must have executed exactly '{token}'");
+        Assert.IsFalse(
+            launcher.LastRunUsedFallback,
+            $"Token '{token}' darf keinen Fallback nutzen. / Token '{token}' must not use fallback.");
+        RecordPrimaryAssertionUsedAppLoop();
+        RecordDirectHelperUsage(DirectHelperUsage.PrimaryProof);
+        AssertPrimaryAssertionUsedAppLoop();
+        AssertDirectHelperUsage(DirectHelperUsage.PrimaryProof);
     }
 }

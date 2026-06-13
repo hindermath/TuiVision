@@ -153,6 +153,32 @@ Wave-3 examples may present these failures, but must not hide them.
 
 ---
 
+## 6.1 Framework-Usage- und Remediation-Gate / Framework Usage and Remediation Gate
+
+Der spaetere Spec-Kit-Lauf muss pro Vertragsbereich dokumentieren, welche
+bestehende TuiVision-Framework-Komponente genutzt wird: Editor, Datei,
+Hilfesystem, Ressourcen, Help-Compiler und i18n. Lokale Sonderlogik in
+spaeteren Beispielen ist nur als Beispiel-Komposition erlaubt. Wenn sie
+Framework-Verhalten ersetzt oder in mehreren Beispielen nuetzlich waere, muss
+sie als `SmallFrameworkFix` geschlossen oder als `FollowUpHardening`
+dokumentiert werden.
+
+The later Spec-Kit run must document for each contract area which existing
+TuiVision framework component is used: editor, file, help system, resources,
+help compiler, and i18n. Local special logic in later examples is only allowed
+as example composition. If it replaces framework behavior or would be useful
+for multiple examples, it must be closed as `SmallFrameworkFix` or recorded as
+`FollowUpHardening`.
+
+Zulaessige Entscheidungen / Allowed decisions:
+
+- `UseExistingFramework`: vorhandene Framework-Komponente reicht.
+- `SmallFrameworkFix`: kleine laufbezogene Framework-Korrektur mit Test.
+- `IntentionalDeviation`: bewusste Abweichung mit Guide- oder Evidence-Bezug.
+- `FollowUpHardening`: zu gross fuer diesen Lauf, eigenes Hardening-Follow-up.
+
+---
+
 ## 7. Spec-Kit-Readiness / Spec-Kit Readiness
 
 Dieses Lastenheft ist als direkte Eingabedatei fuer `/speckit-specify`
@@ -180,6 +206,8 @@ Pflicht:
 - Anforderungen Deutsch zuerst und Englisch danach, CEFR-B2 und text-first A11Y formulieren.
 - Feature 004 bleibt die fachliche Basis; dieses Lastenheft ist eine Haertungsschicht, keine konkurrierende Parallelplanung.
 - Editor-, Help-, Resource-, Compiler- und Fehlerpfade muessen als zusammenhaengende Anwendungspfade testbar sein.
+- Framework-Usage-Gate aufnehmen: pro Vertragsbereich bestehende Framework-Komponente, lokale Sonderlogik, Remediation-Entscheidung und Evidence-Pfad dokumentieren.
+- Wiederverwendbare Logik nicht dauerhaft als lokale `examples/`-Sonderloesung belassen; bei Wiederholung als Framework-Fix oder Follow-up-Hardening behandeln.
 - Fehler wie unbekannte Topics, ungueltige Cross-References, trunkierte Streams, fehlende Ressourcen und Compiler-Fehler sichtbar und reviewbar halten.
 - Keine Wave-4-Terminal-/Charset-Arbeit und keinen Runtime-Maussupport in diesen Lauf ziehen.
 ```

@@ -1,6 +1,7 @@
 // Copyright (c) 2026 Thorsten Hindermann / TuiVision Contributors.
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
+using TuiVision.Core;
 using TuiVision.Examples.MsgCls;
 
 namespace TuiVision.Examples.SmokeTests;
@@ -28,6 +29,10 @@ public sealed class MsgClsSmokeTests : ExampleTestBase
         MsgClsApp app = new(DefaultBounds(), headless: true);
 
         AssertSmokeRunCompletes(() => app.Run());
+        RecordPrimaryAssertionUsedAppLoop();
+        RecordDirectHelperUsage(DirectHelperUsage.PrimaryProof);
+        AssertPrimaryAssertionUsedAppLoop();
+        AssertDirectHelperUsage(DirectHelperUsage.PrimaryProof);
     }
 
     /// <summary>
@@ -43,6 +48,8 @@ public sealed class MsgClsSmokeTests : ExampleTestBase
         MsgClsApp app = new(DefaultBounds(), headless: true);
 
         AssertNotNull(app.MsgWindow, "MsgWindow");
+        RecordDirectHelperUsage(DirectHelperUsage.SetupOnly);
+        AssertDirectHelperUsage(DirectHelperUsage.SetupOnly);
     }
 
     /// <summary>
@@ -61,6 +68,40 @@ public sealed class MsgClsSmokeTests : ExampleTestBase
             app.MsgWindow.MessageCount > 0,
             "MsgWindow muss nach Headless-Init mindestens eine Nachricht enthalten / " +
             "MsgWindow must contain at least one message after headless init");
+        AssertEqual(
+            "Testnachricht / Test message",
+            app.MsgWindow.Messages[^1],
+            "Headless-Initialisierung muss die Testnachricht routen / Headless initialization must route the test message");
+        RecordDirectHelperUsage(DirectHelperUsage.PrimaryProof);
+        AssertDirectHelperUsage(DirectHelperUsage.PrimaryProof);
+    }
+
+    /// <summary>
+    /// Stellt sicher, dass der oeffentliche Menuebefehl den Lorem-Ipsum-Text
+    /// ueber den echten Command- und Broadcast-Pfad in das Fenster leitet.
+    ///
+    /// Asserts that the public menu command routes the Lorem Ipsum text through
+    /// the real command and broadcast path into the window.
+    /// </summary>
+    [TestMethod]
+    public void MsgCls_CommandEventRoutesLoremIpsumToWindow()
+    {
+        MsgClsApp app = new(DefaultBounds(), headless: true);
+        int countBefore = app.MsgWindow.MessageCount;
+
+        TEvent command = TEvent.CreateCommand(MsgClsEvents.cmPostLoremIpsum);
+        app.HandleEvent(command);
+
+        AssertEqual(
+            countBefore + 1,
+            app.MsgWindow.MessageCount,
+            "Menuebefehl muss genau eine Nachricht einfuegen / Menu command must insert exactly one message");
+        AssertEqual(
+            "Lorem Ipsum dolor sit amet.",
+            app.MsgWindow.Messages[^1],
+            "Menuebefehl muss den Lorem-Ipsum-Text sichtbar routen / Menu command must route the Lorem Ipsum text visibly");
+        RecordDirectHelperUsage(DirectHelperUsage.PrimaryProof);
+        AssertDirectHelperUsage(DirectHelperUsage.PrimaryProof);
     }
 
     /// <summary>
@@ -84,6 +125,12 @@ public sealed class MsgClsSmokeTests : ExampleTestBase
             app.MsgWindow.MessageCount,
             "Nach drei weiteren Nachrichten muss MessageCount um 3 gestiegen sein / " +
             "MessageCount must have increased by 3 after three more messages");
+        AssertEqual(
+            "Nachricht 3 / Message 3",
+            app.MsgWindow.Messages[^1],
+            "Letzte Nachricht muss in Empfangsreihenfolge sichtbar sein / Last message must be visible in receive order");
+        RecordDirectHelperUsage(DirectHelperUsage.PrimaryProof);
+        AssertDirectHelperUsage(DirectHelperUsage.PrimaryProof);
     }
 
     /// <summary>
@@ -104,5 +151,7 @@ public sealed class MsgClsSmokeTests : ExampleTestBase
         });
 
         AssertTrue(completed, "Run() muss sauber zurückkehren / Run() must return cleanly");
+        RecordPrimaryAssertionUsedAppLoop();
+        AssertPrimaryAssertionUsedAppLoop();
     }
 }

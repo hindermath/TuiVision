@@ -81,6 +81,9 @@ Tests use MSTest. Test projects mirror source projects (e.g., `TuiVision.Core.Te
 - Prefer semantic headings, lists, tables, and ASCII/text-first diagrams; do not encode essential meaning only through color, layout, or pointer-only affordances.
 - Treat bilingual CEFR-B2 delivery and the documented A11Y proof path as formal completion criteria for learner-facing documentation and active requirement artifacts.
 - Public API changes must include complete XML documentation updates.
+- New or changed non-trivial logic must be reviewed for didactic inline-comment value when it affects learner understanding or maintainability, especially central framework flows and smoke-test helpers.
+- Inline comments explain why a decision, trade-off, constraint, historical deviation, or proof boundary exists; do not add comments that merely restate obvious code.
+- Keep inline-comment intensity moderate: normally 1-3 lines before a non-trivial block, with German-first/English-second CEFR-B2 text for didactic explanation blocks.
 - Run `docfx docfx.json` when root config exists and API/XML docs changed.
 - Keep the Playwright + `@axe-core/playwright` smoke tests in `tests/web-a11y/` aligned with the current DocFX structure and representative pages; use `lynx` as an additional text-browser spot check when available.
 - Treat every successful `docfx docfx.json` regeneration as incomplete until the matching `tests/web-a11y/` A11y smoke check has also passed in the same work item.
@@ -160,12 +163,25 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - AI-SBOM is `N/A` for this feature while AI is only development/agent tooling; re-evaluate if runtime/product AI, models, datasets, AI infrastructure, or delivered AI components enter scope.
 - Wave 3/4 functionality, broad framework redesign, mandatory mouse-only operation, arbitrary user-file proof, external proof paths, persistent user history, databases, external services, and new runtime dependencies are out of scope.
 
+### 014-wave1-functional-hardening
+- Current implementation status: Wave-1 functional hardening is implemented on branch `014-wave1-functional-hardening`; final validation evidence is tracked in `specs/014-wave1-functional-hardening/pr-evidence.md`.
+- Scope is limited to `Desklogo`, `MsgCls`, `Tutorial` steps `tvguid01` through `tvguid16`, and `Videomode`.
+- The primary proof surface is `specs/014-wave1-functional-hardening/pr-evidence.md`, which records historical source, C# behavior, proof method, helper classification, negative/fallback proof, missing-core decisions, intentional deviations, validation, and the archived Lastenheft path.
+- Managed runtime behavior is proven by executable smoke tests; evidence-only proof remains allowed only for explicitly documented no-runtime-target deviations.
+- Helper or headless paths may be `PrimaryProof` only when they execute real example or application logic through public commands, events, application methods, or stable public state with concrete assertions; 014 added `PrimaryProof`, `SupplementalProof`, `SetupOnly`, and `LegacyOrTemporary` helper taxonomy.
+- Historical C/C++ sources under `tv203s/` remain read-only intent references. `set-logo.cc` and `tv_logo.cc` are Desklogo asset/generator boundary context only.
+- Validation baseline: targeted Wave-1 smokes 38/38 passed, full example smokes 91/91 passed, full Release tests 496/496 passed, coverage gate exceeded 70% for all required assemblies, `docfx docfx.json` passed with 0 warnings/errors, and Playwright/axe DocFX smoke passed 2/2 via explicit local-server workaround when sandboxed webserver startup is blocked.
+- Next open example-adjacent step is `Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.md`; it remains before `Lastenheft_Wave1-Visual-Component-Remediation.md`.
+- Wave-1 visual remediation, Wave 2/3/4 behavior, broad framework redesign, mouse-only operation, arbitrary user-file proof, external proof paths, persistent user history, databases, external services, new runtime dependencies, and runtime/product AI are out of scope.
+
 ## Example Wave Delivery Pattern
 
 - Larger mandatory example waves should use a deliberate two-stage Spec-Kit delivery model when framework gaps, porting logic, and interactive runtime polish would otherwise be mixed in one feature.
 - Stage 1 is the functional port/proof feature: port historical example behavior, close framework prerequisites, expose deterministic headless or in-process smoke paths, add guides/evidence, and explicitly mark interactive runtime polish as follow-up when normal `dotnet run --project examples/<Name>` is not yet the final demonstration.
 - Stage 2 is the interactive showcase feature: wire the proven functions into visible menus, status lines, desktop controls, dialogs, keyboard paths, and scripted UI-event smoke tests so the example is useful for learners and manual reviewers.
 - Do not call an example wave fully learner-facing complete until Stage 2 is delivered, unless the scope explicitly defines the example as a minimal non-interactive proof.
+- Future Lastenhefte for example waves or example-adjacent framework hardening MUST include a framework-usage and remediation gate. The later Spec-Kit run must document, per example or contract area, which existing TuiVision framework component is used, whether local special logic exists, and which decision applies: `UseExistingFramework`, `SmallFrameworkFix`, `IntentionalDeviation`, or `FollowUpHardening`.
+- Reusable logic must not remain permanently as a local `examples/` special solution. If the same local logic would be useful in multiple examples or replaces framework behavior, move it into a small framework fix or record it as a dedicated follow-up hardening item.
 
 ## Gemeinsame Governance-Ergaenzung / Shared Governance Addendum
 
@@ -195,6 +211,8 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - C# `latest` / C# 14 on .NET 10 (`net10.0`) + Existing TuiVision modules only: `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`; existing MSTest and Coverlet test stack; existing DocFX plus Playwright/axe web A11Y tooling. No new runtime NuGet dependency is planned. (012-interactive-wave2-demos)
 - Runtime example state is in memory. Dialog-designer and file/path demonstrations use source-controlled fixtures, fixed repository paths, or test temporary directories. The examples must not persist user history, write user data as part of normal demonstration, read arbitrary user file contents as proof, or add a database/external service. (012-interactive-wave2-demos)
 - Runtime example state remains in memory. Controlled examples may use source-controlled fixtures, fixed repository paths, or test temporary directories for metadata, rendering, validation, or rejection proof. The feature must not add a database, external service, network dependency, persistent user history, or arbitrary user-file content reads. (013-wave2-visual-component-remediation)
+- C# `latest` / C# 14 on .NET 10 (`net10.0`) + Existing TuiVision modules only: `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`; existing MSTest and Coverlet stack; existing DocFX plus Playwright/axe web A11Y tooling. No new runtime NuGet dependency is planned. (014-wave1-functional-hardening)
+- Runtime example state remains in memory. Proof data is limited to existing source-controlled files, controlled example fixtures if needed, or test temporary directories. No database, external service, network dependency, persistent user history, arbitrary user-file content reads, or runtime/product AI storage is planned. (014-wave1-functional-hardening)
 
 ### 007-port-wave1-examples
 - Current status: Wave 1 delivered (2026-03-28). `desklogo`, `msgcls`, `tutorial` (16 steps), `videomode` are ported, smoke-tested, and guide-documented.
@@ -203,6 +221,7 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - Planning decisions now fixed: headless smoke seam via `bool headless` constructor parameter + `GetEvent()` override; in-process MSTest execution without external process spawning; bilingual German-first/English-second XML docs and comments at CEFR-B2; `DisplayModeCoordinator.ProbeResizeSupport()` cross-platform probe with CA1416 suppressed.
 
 ## Recent Changes
+- 014-wave1-functional-hardening: Added plan artifacts for Wave-1 functional hardening, including historical proof matrix, smoke-proof, helper-classification, fallback, missing-core, documentation, and governance planning.
 - 013-wave2-visual-component-remediation: Implemented visible main components or stable visual runtime states, real `TStatusLine` feedback, `Help -> Description`, shared `examples/Shared/Wave2Runtime.cs`, stricter app-loop rendered-visibility smokes, guides, README, architecture/security evidence, statistics, and PR evidence for all eleven Wave-2 examples.
 - 004-editor-file-help-streams: Added the phase-6 specification and requirements checklist for editor, file, help, stream, and resource components.
 - 004-editor-file-help-streams: Added `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, and `contracts/public-api.md`; synchronized shared agent guidance to the post-plan baseline.
@@ -243,6 +262,7 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - Inside that final `## Gesamtstatistik` block, maintain compact ASCII-only trend diagrams that show at least the current artifact mix, the documented branch/phase curves, the documented acceleration factors from agentic-AI plus Spec-Kit/SDD support, and a direct comparison between experienced-developer effort, Thorsten-solo effort, and the visible AI-assisted delivery window; refresh them whenever the statistics ledger changes.
 - Keep each short CEFR-B2 explanation directly adjacent to its matching ASCII diagram group, ideally immediately before or after it, so apprentices do not need to scroll between explanation and diagram.
 - When the data benefits from progression across an X-axis, add simple ASCII X/Y charts as a second visualization layer; keep them approximate, readable in plain Markdown, and explained in CEFR-B2 language.
+- ASCII X/Y charts must use fixed-width X slots: every documented phase keeps its slot, missing values stay blank, and overly wide future series are split into labelled blocks such as `0..15`, `16..31`, and `32..47`, each with its own axis line and X labels.
 - Keep the statistics section plain-text friendly for Braille displays, screen readers, and text browsers; the ASCII diagrams and their explanations must stay understandable without relying on color or visual layout alone.
 - When DocFX content, documentation navigation, or API presentation changes, validate representative `_site/` pages through a text-oriented review path, preferably with a local Playwright accessibility snapshot.
 - Use WCAG 2.2 AA as the concrete review baseline for generated HTML documentation, especially for page language, bypass blocks, keyboard focus visibility, non-text contrast, and readable landmark structure.
@@ -402,7 +422,7 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 
 ## Spec-Kit-Preset-Pflege / Spec Kit Preset Maintenance
 
-- Standard-Preset-Set: `security-governance` v0.4.0 prio 10, `architecture-governance` v0.2.0 prio 20, `isaqb-architecture-governance` v0.1.0 prio 30, `a11y-governance` v0.2.0 prio 40, `cross-platform-governance` v0.1.0 prio 50, `agent-parity-governance` v0.1.0 prio 60.
+- Standard-Preset-Set: `security-governance` v0.4.0 prio 10, `architecture-governance` v0.2.0 prio 20, `isaqb-architecture-governance` v0.1.0 prio 30, `a11y-governance` v0.2.0 prio 40, `cross-platform-governance` v0.1.0 prio 50, `agent-parity-governance` v0.2.0 prio 60.
 - `security-governance` v0.4.0 fuehrt `AI-SBOM` weiter als bedingt anwendbare Supply-Chain-Evidenz und ergaenzt sprachspezifische Secure-Coding-Profile fuer Rust, Go, Swift, Java/Kotlin, Python und TypeScript/JavaScript. Reine Entwicklungswerkzeug-Nutzung bleibt `N/A`; KI-Runtime-/Produktkomponenten benoetigen Evidenz nach G7/BSI AI-SBOM-Clustern.
 - Alle sechs Presets sind seit 2026-05-04 im `github/spec-kit` Community-Katalog enthalten und liegen zusätzlich als veröffentlichte Repos unter `https://github.com/hindermath/spec-kit-preset-*`.
 - Neue Level-2-Projekte SOLLEN bei der Spec-Kit-Initialisierung die passende Preset-Teilmenge installieren; C#/.NET-Level-2-Projekte verwenden standardmäßig alle sechs Presets, sofern keine begründete Ausnahme dokumentiert ist.
@@ -415,7 +435,7 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 - Bei Änderungen an Preset-Regeln immer prüfen, ob `constitution.md`, `.specify/memory/constitution.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md` und `scripts/templates/*` ebenfalls aktualisiert werden müssen.
 - Community-/Katalog-Abstimmung läuft über `github/spec-kit#2362`.
 
-*Standard preset set: `security-governance` v0.4.0 prio 10, `architecture-governance` v0.2.0 prio 20, `isaqb-architecture-governance` v0.1.0 prio 30, `a11y-governance` v0.2.0 prio 40, `cross-platform-governance` v0.1.0 prio 50, and `agent-parity-governance` v0.1.0 prio 60. `security-governance` v0.4.0 keeps conditional `AI-SBOM` evidence and adds language-specific secure-coding profiles for Rust, Go, Swift, Java/Kotlin, Python, and TypeScript/JavaScript: development-tool-only AI usage is `N/A`, while AI runtime/product components require G7/BSI AI-SBOM cluster evidence. All six presets are in the `github/spec-kit` community catalog as of 2026-05-04 and are also published under `https://github.com/hindermath/spec-kit-preset-*`. New Level-2 projects should install the applicable subset; C#/.NET Level-2 projects default to all six unless a justified exception is documented. Commit `.specify/presets/` and generated agent command updates when presets are project policy, but never commit `.specify/presets/.cache/`. Verify installs with `specify preset list`, `specify preset info`, and where relevant `specify preset resolve`. Improve presets in the home-baseline scaffold first, propagate to standalone preset repos, then commit, push, and smoke-test via GitHub ZIP URL. Preset-rule changes require reviewing constitution, all agent guidance files, and relevant templates. Community/catalog coordination happens in `github/spec-kit#2362`.*
+*Standard preset set: `security-governance` v0.4.0 prio 10, `architecture-governance` v0.2.0 prio 20, `isaqb-architecture-governance` v0.1.0 prio 30, `a11y-governance` v0.2.0 prio 40, `cross-platform-governance` v0.1.0 prio 50, and `agent-parity-governance` v0.2.0 prio 60. `security-governance` v0.4.0 keeps conditional `AI-SBOM` evidence and adds language-specific secure-coding profiles for Rust, Go, Swift, Java/Kotlin, Python, and TypeScript/JavaScript: development-tool-only AI usage is `N/A`, while AI runtime/product components require G7/BSI AI-SBOM cluster evidence. All six presets are in the `github/spec-kit` community catalog as of 2026-05-04 and are also published under `https://github.com/hindermath/spec-kit-preset-*`. New Level-2 projects should install the applicable subset; C#/.NET Level-2 projects default to all six unless a justified exception is documented. Commit `.specify/presets/` and generated agent command updates when presets are project policy, but never commit `.specify/presets/.cache/`. Verify installs with `specify preset list`, `specify preset info`, and where relevant `specify preset resolve`. Improve presets in the home-baseline scaffold first, propagate to standalone preset repos, then commit, push, and smoke-test via GitHub ZIP URL. Preset-rule changes require reviewing constitution, all agent guidance files, and relevant templates. Community/catalog coordination happens in `github/spec-kit#2362`.*
 
 ## Hinweise / Notes
 
@@ -425,5 +445,5 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read
-`specs/013-wave2-visual-component-remediation/plan.md`.
+`specs/014-wave1-functional-hardening/plan.md`.
 <!-- SPECKIT END -->

@@ -8,5 +8,8 @@
   affected.
 - Record whether any intentional deviation between surfaces is required
   and why.
+- If the feature changes Spec-Kit model-routing guidance, record it as an
+  agent-guidance change. Do not write provider-specific model names into
+  feature requirements.
 - Record any justified `N/A` decisions with rationale. Silent omission
   is not allowed.

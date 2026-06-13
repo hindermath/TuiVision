@@ -98,6 +98,23 @@ MsgClsApp (TApplication)
 
 ---
 
+## Nachweisstatus / Proof Status
+
+Der funktionale Nachweis fuer `014-wave1-functional-hardening` prueft den
+echten Command- und Broadcast-Pfad. Ein Smoke-Test sendet den
+`cmPostLoremIpsum`-Befehl an `MsgClsApp.HandleEvent()`, danach muss
+`MsgClsWindow.Messages` den Text `Lorem Ipsum dolor sit amet.` enthalten.
+Weitere Tests pruefen die Headless-Initialnachricht und wiederholtes
+`PostMessage()` in Empfangsreihenfolge.
+
+The functional proof for `014-wave1-functional-hardening` checks the real
+command and broadcast path. A smoke test sends the `cmPostLoremIpsum` command
+to `MsgClsApp.HandleEvent()`, after which `MsgClsWindow.Messages` must contain
+`Lorem Ipsum dolor sit amet.` Further tests verify the headless startup message
+and repeated `PostMessage()` calls in receive order.
+
+---
+
 ## Übungen / Exercises
 
 1. Fügen Sie eine zweite Fensterkategorie hinzu (z. B. Fehlermeldungen in Rot).

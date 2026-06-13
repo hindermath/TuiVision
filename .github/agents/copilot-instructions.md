@@ -1,6 +1,6 @@
 # TuiVision Development Guidelines
 
-Auto-generated from all feature plans. Last updated: 2026-05-30
+Auto-generated from all feature plans. Last updated: 2026-06-13
 
 ## Active Technologies
 - C# `latest` on .NET 10 (`net10.0`) + Existing `TuiVision.Core` geometry/event/buffer types; existing `TuiVision.Controls` shell foundation (`TView`, `TGroup`, `TProgram`, `TApplication`, `TMenuItem`, `TStatusItem`, `ShellCommandIds`); MSTest; Coverlet via `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings`; conditional `docfx docfx.json`; GitHub Actions for existing CI validation (008-controls-revision)
@@ -14,6 +14,8 @@ Auto-generated from all feature plans. Last updated: 2026-05-30
 - Runtime example state is in memory. Dialog-designer and file/path demonstrations use source-controlled fixtures, fixed repository paths, or test temporary directories. The examples must not persist user history, write user data as part of normal demonstration, read arbitrary user file contents as proof, or add a database/external service. (012-interactive-wave2-demos)
 - C# `latest` / C# 14 on .NET 10 (`net10.0`) + Existing TuiVision modules only; shared example support in `examples/Shared/Wave2Runtime.cs`; existing MSTest/Coverlet, DocFX, and Playwright/axe tooling. No new runtime NuGet dependency was added. (013-wave2-visual-component-remediation)
 - Runtime example state remains in memory. Controlled examples may use source-controlled fixtures, fixed repository paths, or test temporary directories for metadata, rendering, validation, or rejection proof. The feature must not add a database, external service, network dependency, persistent user history, or arbitrary user-file content reads. (013-wave2-visual-component-remediation)
+- C# `latest` / C# 14 on .NET 10 (`net10.0`) + Existing TuiVision modules only: `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`; existing MSTest and Coverlet stack; existing DocFX plus Playwright/axe web A11Y tooling. No new runtime NuGet dependency was added. (014-wave1-functional-hardening implemented)
+- Runtime example state remains in memory. Proof data is limited to existing source-controlled files, controlled example fixtures if needed, or test temporary directories. No database, external service, network dependency, persistent user history, arbitrary user-file content reads, or runtime/product AI storage was added. (014-wave1-functional-hardening implemented)
 
 - C# `latest` on .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, `TuiVision.Compatibility`; MSTest; Coverlet; docfx; wave-1 example projects under `examples/` (007-port-wave1-examples — Wave 1 delivered)
 
@@ -41,11 +43,12 @@ docfx docfx.json && cd tests/web-a11y && npm run test:docfx
 
 ## Code Style
 
-C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs and explanatory comments must be bilingual: German first, English second, CEFR-B2 readability. Large normative documents such as `Pflichtenheft*.md` and `Lastenheft*.md` may use a synchronized English sidecar with suffix `.EN.md` instead of an oversized inline-bilingual file; the German version remains canonical unless explicitly marked otherwise. Follow `Programmierung #include<everyone>`: guides, statistics, examples, and generated API docs must stay usable in text-first assistive setups such as Braille displays, screen readers, and text browsers. Generated HTML documentation should target WCAG 2.2 conformance level AA. Keep the Playwright + `@axe-core/playwright` smoke checks in `tests/web-a11y/` aligned with the current DocFX structure and use `lynx` as an extra text-browser spot check when available. Every successful `docfx docfx.json` regeneration must be followed by the matching `tests/web-a11y/` A11y smoke check in the same work item. Treat bilingual CEFR-B2 delivery plus the documented A11Y proof path as formal completion criteria for learner-facing documentation and active requirement artifacts.
+C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs and explanatory comments must be bilingual: German first, English second, CEFR-B2 readability. Large normative documents such as `Pflichtenheft*.md` and `Lastenheft*.md` may use a synchronized English sidecar with suffix `.EN.md` instead of an oversized inline-bilingual file; the German version remains canonical unless explicitly marked otherwise. Follow `Programmierung #include<everyone>`: guides, statistics, examples, and generated API docs must stay usable in text-first assistive setups such as Braille displays, screen readers, and text browsers. Generated HTML documentation should target WCAG 2.2 conformance level AA. Keep the Playwright + `@axe-core/playwright` smoke checks in `tests/web-a11y/` aligned with the current DocFX structure and use `lynx` as an extra text-browser spot check when available. Every successful `docfx docfx.json` regeneration must be followed by the matching `tests/web-a11y/` A11y smoke check in the same work item. Treat bilingual CEFR-B2 delivery plus the documented A11Y proof path as formal completion criteria for learner-facing documentation and active requirement artifacts. New or changed non-trivial logic must be reviewed for didactic inline-comment value when it affects learner understanding or maintainability, especially central framework flows and smoke-test helpers. Inline comments explain why a decision, trade-off, constraint, historical deviation, or proof boundary exists; do not add comments that merely restate obvious code. Keep inline-comment intensity moderate: normally 1-3 lines before a non-trivial block, with German-first/English-second CEFR-B2 text for didactic explanation blocks.
 
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ## Recent Changes
+- 014-wave1-functional-hardening: Implemented Wave-1 functional hardening for `Desklogo`, `MsgCls`, `Tutorial` steps `tvguid01` through `tvguid16`, and `Videomode`; final proof is in `specs/014-wave1-functional-hardening/pr-evidence.md`. Helper taxonomy now includes `PrimaryProof`, `SupplementalProof`, `SetupOnly`, and `LegacyOrTemporary`. Next example-adjacent step is `Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.md` before Wave-1 visual remediation.
 - 013-wave2-visual-component-remediation: Implemented visible main components or stable visual runtime states, real `TStatusLine` feedback, `Help -> Description`, shared `examples/Shared/Wave2Runtime.cs`, stricter app-loop rendered-visibility smokes, guides, README, architecture/security evidence, statistics, and PR evidence for all eleven Wave-2 examples.
 - 012-interactive-wave2-demos: Interaktive Showcase-Stufe fuer Welle 2 implementiert: alle elf Wave-2-Beispiele besitzen sichtbare normale Runtime-Pfade, app-loop-basierte Smoke-Nachweise, aktualisierte Guides, README-, Architektur-/Security-/A11Y- und PR-Evidence.
 
@@ -70,6 +73,25 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
   scripted UI-event smoke tests. A wave is fully learner- and review-ready only
   after Stage 2 unless the scope explicitly asks for a minimal non-interactive
   proof.
+  Kuenftige Lastenhefte fuer Beispielwellen oder beispielnahe Framework-
+  Vorhaertungen muessen ein Framework-Usage- und Remediation-Gate enthalten.
+  Der spaetere Spec-Kit-Lauf muss pro Beispiel oder Vertragsbereich
+  dokumentieren, welche bestehende TuiVision-Framework-Komponente genutzt wird,
+  ob lokale Sonderlogik existiert und welche Entscheidung gilt:
+  `UseExistingFramework`, `SmallFrameworkFix`, `IntentionalDeviation` oder
+  `FollowUpHardening`. Wiederverwendbare Logik darf nicht dauerhaft als lokale
+  `examples/`-Sonderloesung verbleiben; wiederholte oder Framework-Verhalten
+  ersetzende Logik gehoert in einen kleinen Framework-Fix oder in ein eigenes
+  Follow-up-Hardening.
+  Future Lastenhefte for example waves or example-adjacent framework hardening
+  must include a framework-usage and remediation gate. The later Spec-Kit run
+  must document, per example or contract area, which existing TuiVision
+  framework component is used, whether local special logic exists, and which
+  decision applies: `UseExistingFramework`, `SmallFrameworkFix`,
+  `IntentionalDeviation`, or `FollowUpHardening`. Reusable logic must not
+  remain permanently as a local `examples/` special solution; move repeated or
+  framework-replacing logic into a small framework fix or a dedicated follow-up
+  hardening item.
   Fuer jede Spec-Kit-Feature-Implementierung mit historisch abgeleitetem
   Turbo-Vision-Verhalten muessen die relevanten Implementierungsdateien unter
   `tv203s/` (`.c`, `.cc`) als Read-only-Referenz geprueft werden. Wenn

@@ -61,6 +61,19 @@ Ohne Argument wird `tvguid01` gestartet / Without argument, `tvguid01` is starte
 dotnet run --project examples/Tutorial
 ```
 
+Der funktionale Nachweis fuer `014-wave1-functional-hardening` prueft alle 16
+Tokens einzeln. Nach `TutorialApp.Run()` meldet der Launcher ueber
+`LastRunStepToken`, welcher Schritt wirklich gestartet wurde; unbekannte Tokens
+setzen stattdessen den Fallback-Zustand. Die Smoke-Tests pruefen ausserdem
+Sequenznummer, zweisprachige Beschreibung und ein schrittspezifisches
+Lernziel-Fragment fuer jeden Eintrag.
+
+The functional proof for `014-wave1-functional-hardening` checks all 16 tokens
+individually. After `TutorialApp.Run()`, the launcher reports the actually
+started step through `LastRunStepToken`; unknown tokens set the fallback state
+instead. The smoke tests also check sequence number, bilingual description, and
+a step-specific learning-target fragment for every entry.
+
 ---
 
 ## Schritt-Übersicht / Step Overview

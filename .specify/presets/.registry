@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "presets": {
     "security-governance": {
-      "version": "0.4.0",
+      "version": "0.5.0",
       "source": "local",
-      "manifest_hash": "sha256:320bc61d740c75ebe53a89715a43241d3ae17d5568693476f8d21342f4428d8d",
+      "manifest_hash": "sha256:cf6a2b055a8cae5343579d54d7136fac8169ca37b9f809469c3df3d8558741de",
       "enabled": true,
       "priority": 10,
       "registered_commands": {
@@ -45,51 +45,6 @@
         "speckit-tasks"
       ],
       "installed_at": "2026-05-04T06:24:32.178462+00:00"
-    },
-    "architecture-governance": {
-      "version": "0.2.0",
-      "source": "local",
-      "manifest_hash": "sha256:e3f142100588f477940de2259a0a256d087262d3f4376e76f78111e135f1553f",
-      "enabled": true,
-      "priority": 20,
-      "registered_commands": {
-        "agy": [
-          "speckit.specify",
-          "speckit.plan",
-          "speckit.tasks"
-        ],
-        "claude": [
-          "speckit.specify",
-          "speckit.plan",
-          "speckit.tasks"
-        ],
-        "codex": [
-          "speckit.specify",
-          "speckit.plan",
-          "speckit.tasks"
-        ],
-        "copilot": [
-          "speckit.specify",
-          "speckit.plan",
-          "speckit.tasks"
-        ],
-        "gemini": [
-          "speckit.specify",
-          "speckit.plan",
-          "speckit.tasks"
-        ],
-        "opencode": [
-          "speckit.specify",
-          "speckit.plan",
-          "speckit.tasks"
-        ]
-      },
-      "registered_skills": [
-        "speckit-specify",
-        "speckit-plan",
-        "speckit-tasks"
-      ],
-      "installed_at": "2026-05-04T06:24:32.963344+00:00"
     },
     "isaqb-architecture-governance": {
       "version": "0.1.0",
@@ -227,9 +182,9 @@
       "installed_at": "2026-05-04T06:24:34.923002+00:00"
     },
     "agent-parity-governance": {
-      "version": "0.1.0",
+      "version": "0.2.0",
       "source": "local",
-      "manifest_hash": "sha256:043c8875f717174f0fdf27f61c7e8fcdc8e658f5fddca9142d10e90ce52c060a",
+      "manifest_hash": "sha256:5e0a6d59cb5291092173e9acee873e808f3ec176bcb81a7a913ac300b420796d",
       "enabled": true,
       "priority": 60,
       "registered_commands": {
@@ -270,6 +225,51 @@
         "speckit-tasks"
       ],
       "installed_at": "2026-05-04T06:24:35.517774+00:00"
+    },
+    "architecture-governance": {
+      "version": "0.4.0",
+      "source": "local",
+      "manifest_hash": "sha256:f9bba1e6645c6c08d7fbb0b844d13b688741d2a9047c49655475581124c1bdcc",
+      "enabled": true,
+      "priority": 20,
+      "registered_commands": {
+        "agy": [
+          "speckit.specify",
+          "speckit.plan",
+          "speckit.tasks"
+        ],
+        "claude": [
+          "speckit.specify",
+          "speckit.plan",
+          "speckit.tasks"
+        ],
+        "codex": [
+          "speckit.specify",
+          "speckit.plan",
+          "speckit.tasks"
+        ],
+        "copilot": [
+          "speckit.specify",
+          "speckit.plan",
+          "speckit.tasks"
+        ],
+        "gemini": [
+          "speckit.specify",
+          "speckit.plan",
+          "speckit.tasks"
+        ],
+        "opencode": [
+          "speckit.specify",
+          "speckit.plan",
+          "speckit.tasks"
+        ]
+      },
+      "registered_skills": [
+        "speckit-specify",
+        "speckit-plan",
+        "speckit-tasks"
+      ],
+      "installed_at": "2026-06-11T08:24:57.490810+00:00"
     }
   }
 }

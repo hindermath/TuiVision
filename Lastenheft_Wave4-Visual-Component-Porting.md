@@ -398,6 +398,32 @@ description path, platform assumptions, fallbacks, and historical source.
 
 ---
 
+## 7.1 Framework-Usage- und Remediation-Gate / Framework Usage and Remediation Gate
+
+Der spaetere Spec-Kit-Lauf muss pro Wave-4-Beispiel dokumentieren, welche
+bestehende TuiVision-Framework-Komponente die sichtbare Terminal-, Charset-,
+Font-, Resource- oder Emulationskomposition traegt. Lokale Sonderlogik in
+`examples/` ist nur als Beispiel-Komposition erlaubt. Wenn sie Framework-,
+Driver-, Buffer-, Mapping- oder Resource-Verhalten ersetzt oder in mehreren
+Beispielen nuetzlich waere, muss sie als `SmallFrameworkFix` geschlossen oder
+als `FollowUpHardening` dokumentiert werden.
+
+The later Spec-Kit run must document for each wave-4 example which existing
+TuiVision framework component carries the visible terminal, charset, font,
+resource, or emulation composition. Local special logic in `examples/` is only
+allowed as example composition. If it replaces framework, driver, buffer,
+mapping, or resource behavior or would be useful for multiple examples, it
+must be closed as `SmallFrameworkFix` or recorded as `FollowUpHardening`.
+
+Zulaessige Entscheidungen / Allowed decisions:
+
+- `UseExistingFramework`: vorhandene Framework-Komponente reicht.
+- `SmallFrameworkFix`: kleine laufbezogene Framework-Korrektur mit Test.
+- `IntentionalDeviation`: bewusste Abweichung mit Guide- oder Evidence-Bezug.
+- `FollowUpHardening`: zu gross fuer diesen Lauf, eigenes Hardening-Follow-up.
+
+---
+
 ## 8. Nichtziele / Non-Goals
 
 - keine Welle-3-Editor-/Help-/Stream-Arbeit
@@ -500,6 +526,8 @@ Pflicht:
 - Primaere Smokes auf strukturierte TuiVision-/Driver-Puffer, View-Zustaende, Resource-Werte, Zeichenraster, Cursor-/Statuszustaende oder Fallbacks stuetzen; Host-Screenshots nur als Zusatzbeweis nutzen.
 - Keine dauerhaften Host-Terminal-, Font-, Keyboard- oder Codepage-Einstellungen veraendern.
 - Plattformgrenzen fuer Multi-Mac, Linux und Windows/WSL in Spec, Plan, Tasks oder Evidence sichtbar machen.
+- Framework-Usage-Gate aufnehmen: pro Beispiel bestehende Framework-Komponente, lokale Sonderlogik, Remediation-Entscheidung und Evidence-Pfad dokumentieren.
+- Wiederverwendbare Logik nicht dauerhaft als lokale `examples/`-Sonderloesung belassen; bei Wiederholung als Framework-Fix oder Follow-up-Hardening behandeln.
 - Guides, examples/README.md, pr-evidence.md, Pflichtenheft.md und docs/project-statistics.md im selben Feature-Lauf aktualisieren.
 - Keine Wave-3-Arbeit, keine TP7-Anschlusswellen, keine native Komplett-Emulator-Neuschreibung und keine breite Framework-Revision in diesen Lauf ziehen.
 ```

@@ -75,6 +75,22 @@ public class TutorialApp
     public bool IsHeadless { get; }
 
     /// <summary>
+    /// Das Token des zuletzt tatsaechlich gestarteten Tutorial-Schritts.
+    /// Der Wert bleibt <c>null</c>, wenn ein unbekanntes Token den Fallback ausgeloest hat.
+    ///
+    /// The token of the most recently started tutorial step.
+    /// The value remains <c>null</c> when an unknown token triggered fallback.
+    /// </summary>
+    public string? LastRunStepToken { get; private set; }
+
+    /// <summary>
+    /// Gibt an, ob der letzte Lauf die Fallback-Anwendung fuer ein unbekanntes Token genutzt hat.
+    ///
+    /// Indicates whether the last run used the fallback application for an unknown token.
+    /// </summary>
+    public bool LastRunUsedFallback { get; private set; }
+
+    /// <summary>
     /// Führt den Tutorial-Schritt aus.
     /// Wenn das Token unbekannt ist, wird eine Fallback-Anwendung gestartet.
     ///
@@ -86,12 +102,16 @@ public class TutorialApp
         if (CurrentStep != null)
         {
             // Bekannten Schritt starten / Start known step
+            LastRunStepToken = CurrentStep.Token;
+            LastRunUsedFallback = false;
             TApplication app = CurrentStep.CreateApp(_bounds, IsHeadless);
             app.Run();
         }
         else
         {
             // Fallback-Anwendung für unbekanntes Token starten / Start fallback application for unknown token
+            LastRunStepToken = null;
+            LastRunUsedFallback = true;
             FallbackApp fallback = new(_bounds, Token, IsHeadless);
             fallback.Run();
         }

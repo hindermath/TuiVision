@@ -54,12 +54,42 @@ public class DesklogoDesktop : TDesktop
 
     /// <summary>
     /// Die Anzahl der gerenderten Logo-Zeilen nach dem ersten Zeichenvorgang.
+    /// Bei kleinen Puffern entspricht der Wert der sichtbaren, nicht abgeschnittenen Zeilenzahl.
     /// Der Wert ist 0 bis zum ersten Aufruf von <see cref="Draw"/>.
     ///
     /// The number of rendered logo lines after the first draw call.
+    /// On small buffers, the value is the visible, non-clipped line count.
     /// The value is 0 until <see cref="Draw"/> is called for the first time.
     /// </summary>
     public int RenderedLineCount { get; private set; }
+
+    /// <summary>
+    /// Die groesste sichtbare Logo-Breite nach dem letzten Zeichenvorgang.
+    /// Dieser Wert hilft Smoke-Tests, abgeschnittene Kleinterminals nachzuweisen.
+    ///
+    /// The largest visible logo width after the last draw call.
+    /// This value helps smoke tests prove clipping on undersized terminals.
+    /// </summary>
+    public int LastVisibleLogoColumnCount { get; private set; }
+
+    /// <summary>
+    /// Berechnet, wie viele Logo-Zeilen in der angegebenen Hoehe sichtbar sind.
+    ///
+    /// Calculates how many logo lines are visible in the specified height.
+    /// </summary>
+    /// <param name="height">Die verfuegbare Hoehe in Zeichen. / The available height in characters.</param>
+    /// <returns>Die sichtbare Logo-Zeilenzahl. / The visible logo line count.</returns>
+    public int CalculateVisibleLogoLineCount(int height) => Math.Min(LogoLines.Length, Math.Max(0, height));
+
+    /// <summary>
+    /// Berechnet, wie breit das Logo in der angegebenen Breite sichtbar ist.
+    ///
+    /// Calculates how wide the logo is visible in the specified width.
+    /// </summary>
+    /// <param name="width">Die verfuegbare Breite in Zeichen. / The available width in characters.</param>
+    /// <returns>Die sichtbare Logo-Spaltenzahl. / The visible logo column count.</returns>
+    public int CalculateVisibleLogoColumnCount(int width) =>
+        Math.Min(LogoLines.Max(line => line.Length), Math.Max(0, width));
 
     /// <summary>
     /// Zeichnet den Desktop-Hintergrund und das ASCII-Logo.
@@ -70,6 +100,9 @@ public class DesklogoDesktop : TDesktop
     /// </summary>
     public override void Draw()
     {
+        RenderedLineCount = CalculateVisibleLogoLineCount(Size.Y);
+        LastVisibleLogoColumnCount = CalculateVisibleLogoColumnCount(Size.X);
+
         // Hintergrund füllen und Kind-Views zeichnen (TDesktop.Draw → TGroup.Draw)
         // Fill background and draw child views (TDesktop.Draw → TGroup.Draw)
         base.Draw();
@@ -92,9 +125,6 @@ public class DesklogoDesktop : TDesktop
                 buffer.WriteText(startX, row, line.AsSpan(), ConsoleColor.White, ConsoleColor.Blue);
             }
         }
-
-        // Logo wurde gerendert – Zähler aktualisieren / Logo has been rendered – update counter
-        RenderedLineCount = LogoLines.Length;
     }
 
     #region Lösung Übung 1 – Logo-Muster ändern / Solution Exercise 1 – Change the logo pattern

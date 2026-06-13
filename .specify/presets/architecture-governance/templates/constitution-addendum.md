@@ -56,6 +56,42 @@ together — secure code without secure architecture is not sufficient.
   improvement plans across Governance, Design, Implementation,
   Verification, and Operations.
 
+### Cloud autonomy and digital sovereignty
+
+- `BSI C3A` (Criteria enabling Cloud Computing Autonomy) applicability MUST
+  be evaluated explicitly when a project selects, operates, or materially
+  depends on cloud services, including SaaS, PaaS, IaaS, managed services,
+  container registries, artifact hosting, or provider-dependent deployments.
+- C3A is a guiding transparency framework for self-determined cloud use,
+  not a direct legal obligation by itself. Record the decision as
+  `Applicable`, `N/A`, or `Open` using
+  `cloud-autonomy-applicability-template`.
+- When applicable, architecture evidence MUST identify cloud-service
+  selection rationale, provider dependencies, available audit or assurance
+  evidence, autonomy and lock-in risks, exit or portability concerns, and
+  links to related S-ADRs, Zero Trust notes, or C5/C3A evidence.
+- Cloud use limited to generic development infrastructure (for example
+  GitHub/GitLab hosting without released or operated cloud runtime) MAY be
+  documented as `N/A` with a short toolchain rationale.
+
+### Cloud compliance assurance
+
+- `BSI C5` (Cloud Computing Compliance Criteria Catalogue) applicability
+  SHOULD be evaluated explicitly when a project selects, operates, or
+  materially depends on cloud services, including SaaS, PaaS, IaaS, managed
+  services, container registries, artifact hosting, or provider-dependent
+  deployments.
+- C5 is an assurance and auditability framework for cloud use, not a blanket
+  requirement for private learning projects. Record the decision as
+  `Applicable`, `N/A`, or `Open` using
+  `cloud-compliance-assurance-template`.
+- When applicable, architecture evidence SHOULD identify C5 testat/report
+  status, assurance scope, shared-responsibility gaps, provider and
+  subprocessor dependencies, data location, logging, backup, incident
+  evidence, and links to related C3A records, Zero Trust notes, or S-ADRs.
+- Cloud use limited to generic development infrastructure MAY be documented
+  as `N/A` with a short toolchain rationale.
+
 ### Memory-safe language interaction
 
 - Treat `MSL` feasibility as an architectural runtime constraint when
@@ -68,5 +104,6 @@ together — secure code without secure architecture is not sufficient.
 - Architecture evidence defaults to `docs/security/`.
 - S-ADRs default to `docs/security/adr/` as one file per decision.
 - Threat models, arc42 security concepts, Zero Trust notes, SAMM
-  assessments, and security quality scenarios live alongside in
+  assessments, cloud autonomy applicability records, cloud compliance
+  assurance records, and security quality scenarios live alongside in
   `docs/security/`.

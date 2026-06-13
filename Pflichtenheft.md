@@ -240,16 +240,26 @@ Fuer groessere Beispielwellen ist ein zweistufiges Spec-Kit-Liefermuster zulaess
 Statuscheckliste Beispielwellen:
 - [x] **Welle 1 - Grundlegende Anwendungsstruktur**
   Reihenfolgehinweis: abgeschlossen (Branch `007-port-wave1-examples`); 4 Beispiele portiert, 41 Smoke-Tests gruen, Guides geliefert.
+- [x] **Welle 1 - Funktionaler Nachweisnachlauf**
+  Reihenfolgehinweis: abgeschlossen (Branch `014-wave1-functional-hardening`); Desklogo, MsgCls, Tutorial und Videomode sind fachlich gegen die historischen Quellen, gehaertete Smokes, Helper-Klassifikation und `specs/014-wave1-functional-hardening/pr-evidence.md` nachgewiesen.
+- [ ] **Didaktische Inline-Code-Kommentar-Haertung**
+  Reihenfolgehinweis: nach `014-wave1-functional-hardening` ueber `Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.md`; haertet zentrale Framework-Flows und Smoke-Test-Helfer didaktisch, bevor die sichtbare Wave-1-Remediation und die folgenden Beispielwellen darauf aufbauen.
+- [ ] **Welle 1 - Sichtbarer Komponenten-Nachweis**
+  Reihenfolgehinweis: nach der didaktischen Inline-Code-Kommentar-Haertung ueber `Lastenheft_Wave1-Visual-Component-Remediation.md`; erst danach weitere Beispielwellen fortsetzen, damit Welle 1 und Welle 2 denselben sichtbaren Qualitaetsmassstab besitzen.
 - [x] **Welle 2 - Controls und Dialoge**
   Reihenfolgehinweis: Portierungs-/Smoke-Nachweis abgeschlossen (Branch `011-port-wave2-examples`); 11 Controls-/Dialog-Beispiele portiert, alle 15 gelieferten Beispiele per Smoke-Test abgedeckt, Guides geliefert. Die interaktive Showcase-Stufe wurde im Follow-up `012-interactive-wave2-demos` nachgezogen.
 - [x] **Welle 2 - Interaktive Showcase-Stufe**
   Reihenfolgehinweis: abgeschlossen (Branch `012-interactive-wave2-demos`); die elf Wave-2-Beispiele zeigen beim normalen Start sichtbare Menue-/Command-Pfade mit text-first Rueckmeldung und besitzen app-loop-basierte Smoke-Nachweise.
 - [x] **Welle 2 - Sichtbarer Komponenten-Nachweis**
   Reihenfolgehinweis: abgeschlossen (Branch `013-wave2-visual-component-remediation`); die elf Wave-2-Beispiele besitzen echte sichtbare Hauptkomponenten, echte `TStatusLine`-Rueckmeldung, `Help -> Description` und primaere App-Loop-Smokes mit View-Baum- plus Buffer-/Cell-Nachweis.
-- [ ] **Welle 3 - Editor, Dateien, Hilfe und Streams**
-  Reihenfolgehinweis: nach Welle 2; `tvedit`, `bhelp` und `helpdemo` eignen sich als fruehe Validierungsbeispiele fuer Phase 6.
-- [ ] **Welle 4 - Terminal-Emulation und erweiterte Zeichensaetze**
-  Reihenfolgehinweis: zuletzt; haengt direkt an der noch offenen Treiberkonsolidierung aus Phase 7.
+- [ ] **Welle 3 - Editor-/Hilfe-/Ressourcen-Vorhaertung**
+  Reihenfolgehinweis: nach Welle-1-Visual-Remediation ueber `Lastenheft_03_EditorHelpAndResourcesHardening.md`; haertet Editor-, Datei-, Help-, Resource-, Compiler- und i18n-End-to-End-Vertraege vor dem sichtbaren Wave-3-Port.
+- [ ] **Welle 3 - Visual Component Porting**
+  Reihenfolgehinweis: nach der Wave-3-Vorhaertung ueber `Lastenheft_Wave3-Visual-Component-Porting.md`; `tvedit`, `bhelp`, `helpdemo`, `tvhc` und `i18n` muessen direkt als sichtbare Drei-Schichten-Demos portiert werden.
+- [ ] **Welle 4 - Terminal-/Charset-/Plattform-Vorhaertung**
+  Reihenfolgehinweis: nach Welle 3 ueber `Lastenheft_05_TerminalCharsetAndEmulation.md`; haertet Terminal-Session, Buffer-/Cell-Proof, Charset-/Font-Mapping, Resource-/Config-Fallbacks und Plattformgrenzen vor dem sichtbaren Wave-4-Port.
+- [ ] **Welle 4 - Visual Component Porting**
+  Reihenfolgehinweis: nach der Wave-4-Vorhaertung ueber `Lastenheft_Wave4-Visual-Component-Porting.md`; die terminalnahen Beispiele duerfen nicht auf Host-Screenshots oder unstrukturierte Konsolenzugriffe als Primaerbeweis bauen.
 - [ ] **Welle 5 - Turbo-Pascal-Demos aus TP7 (`TVDEMOS/`)**
   Reihenfolgehinweis: erst nach Abschluss der MUSS-Wellen 1 bis 4; bevorzugt nach stabilen Portierungen von `tvdemo`, `tvedit`, Hilfesystem und Dialogschicht.
 - [ ] **Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`**
@@ -293,6 +303,14 @@ Abgrenzung: Die Welle-2-Checkliste dokumentiert den funktionalen Portierungs- un
 
 Benoetigt: `TEditor`, `TFileDialog`, `THelpViewer`, Stream- und Ressourcen-Infrastruktur.
 
+Vor der sichtbaren Beispielportierung ist die Vorhaertung aus
+`Lastenheft_03_EditorHelpAndResourcesHardening.md` verpflichtend
+abzuarbeiten oder im Spec-Kit-Plan als explizite vorgelagerte Task-Gruppe zu
+fuehren. Dadurch sollen `tvedit`, `bhelp`, `helpdemo`, `tvhc` und `i18n`
+nicht zu Framework-Suchlaeufen werden, sondern als sichtbare
+Drei-Schichten-Demos auf belastbaren Editor-/Help-/Resource-Vertraegen
+aufbauen.
+
 Checkliste Welle 3:
 - [ ] `bhelp` - Grundlegendes Hilfesystem mit kontextsensitiven Themen
 - [ ] `helpdemo` - Interaktive Demonstration des Hilfesystems
@@ -303,6 +321,16 @@ Checkliste Welle 3:
 **Welle 4 – Terminal-Emulation und erweiterte Zeichensaetze** (nach Abschluss Phase 7: Treiberkonsolidierung)
 
 Benoetigt: Managed Console-Treiber, plattformunabhaengige Zeichensatz- und Terminalpufferverwaltung.
+
+Vor der sichtbaren Beispielportierung ist die eigene Wave-4-Vorhaertung aus
+`Lastenheft_05_TerminalCharsetAndEmulation.md` verpflichtend abzuarbeiten oder
+im Spec-Kit-Plan als explizite vorgelagerte Task-Gruppe zu fuehren. Diese
+Vorhaertung muss Terminal-Session-Vertrag, strukturierte Buffer-/Cell-Proofs,
+Charset-/Font-Mapping, Resource-/Config-Fallbacks, Plattformgrenzen fuer
+Multi-Mac, Linux und Windows/WSL sowie klare Sicherheitsgrenzen gegen
+persistente Host-Terminal-Manipulationen festlegen. Erst danach kann
+`Lastenheft_Wave4-Visual-Component-Porting.md` die sichtbaren Beispiele
+portieren.
 
 Checkliste Welle 4:
 - [ ] `cyrillic` - Kyrillische Zeichensatz-Unterstuetzung im Textpuffer
@@ -431,10 +459,13 @@ Fuer den Lehr- und Beispielcharakter gilt fuer den TuiVision-Quellcode:
 1. Jede fachlich gepflegte Quelldatei in `src/` beginnt mit einem kurzen Datei-/Modulkommentar (1 bis 3 Zeilen, Deutsch zuerst, Englisch danach). Der Kommentar benennt mindestens: a) die Hauptverantwortung der Datei, b) ihren technischen oder fachlichen Kontext im TuiVision-System und c) bei Bedarf die wichtigste Abgrenzung zu anderen Modulen. Diese Pflicht gilt ausdruecklich auch fuer von KI-Agenten sowie in Spec-/SDD-Workflows erzeugte Quelldateien. Ausgenommen sind nur rein technische, vollautomatisch regenerierbare Artefakte. Triviale Kommentare ohne Zusatznutzen, insbesondere blosse Wiederholungen von Klassen-, Typ- oder Dateinamen, gelten nicht als Erfuellung dieses Kriteriums.
 2. Methoden mit nicht-trivialer Logik (z. B. mehrere Verzweigungen, komplexe Zustandswechsel, nicht offensichtliche Algorithmen) erhalten erklaerende Kommentare.
 3. Kommentare erklaeren das Warum (Entscheidung, Randbedingung, Trade-off), nicht nur das Was.
-4. Interne Invarianten, Vorbedingungen und Nachbedingungen werden bei komplexer Logik explizit dokumentiert.
-5. Relevante Nebenwirkungen, Fehlerfaelle und Verhaltensgrenzen werden am Codepunkt beschrieben.
-6. Historische Portierungsentscheidungen und bewusst abweichendes Verhalten zum Original werden am Codepunkt begruendet.
-7. Kommentare werden bei Codeaenderungen im selben Arbeitsgang aktualisiert; veraltete Kommentare gelten als Qualitaetsmangel.
+4. Didaktische Inline-Kommentare werden moderat eingesetzt: 1 bis 3 Zeilen fuer einen nicht-trivialen Block reichen im Regelfall. Mehrzeilige Kommentare sind komplexen Flows, historischen Abweichungen, Sicherheits-/A11Y-Randbedingungen oder Test-Proof-Pfaden vorbehalten.
+5. Triviale Kommentare, die nur Namen, Operatoren, offensichtliche Zuweisungen oder den unmittelbar sichtbaren Code wiederholen, gelten nicht als Erfuellung des didaktischen Standards.
+6. Zentrale Framework-Flows und Smoke-Test-Helfer, insbesondere Event-/Command-Dispatch, Fokuswechsel, StatusLine, Dialogzustand, Buffer-/Cell-Proofs, Rendering-/Fallbackpfade und historische Abweichungen, muessen bei Aenderungen auf didaktischen Kommentarbedarf geprueft werden.
+7. Interne Invarianten, Vorbedingungen und Nachbedingungen werden bei komplexer Logik explizit dokumentiert.
+8. Relevante Nebenwirkungen, Fehlerfaelle und Verhaltensgrenzen werden am Codepunkt beschrieben.
+9. Historische Portierungsentscheidungen und bewusst abweichendes Verhalten zum Original werden am Codepunkt begruendet.
+10. Kommentare werden bei Codeaenderungen im selben Arbeitsgang aktualisiert; veraltete Kommentare gelten als Qualitaetsmangel.
 
 ## 10.6 Standard fuer lokalen Multi-Mac-Workflow (verbindlich)
 Fuer die Arbeitsumgebungen `MacBook Air M2` und `Mac mini M4 Pro` gilt:
@@ -615,13 +646,16 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - Die 25 Originalbeispiele aus `tv203s/contrib/tvision/examples` bleiben bis zur Abnahme der einzige verpflichtende Beispielumfang.
    - Die vier Wellen sind als vier eigenstaendige Unterphasen `3.1` bis `3.4` zu behandeln; sie werden nacheinander abgearbeitet und jeweils separat geplant, portiert, getestet und dokumentiert.
    - `3.1` = Welle 1: Grundlegende Anwendungsstruktur — ✓ ABGESCHLOSSEN
+   - `3.1a` = Welle 1: Funktionaler Nachweisnachlauf — ✓ ABGESCHLOSSEN (Branch `014-wave1-functional-hardening`)
+   - `3.1b` = Didaktische Inline-Code-Kommentar-Haertung — NAECHSTER SCHRITT, vor Welle-1-Visual-Remediation
+   - `3.1c` = Welle 1: Sichtbarer Komponenten-Nachweis
    - `3.2` = Welle 2: Controls und Dialoge — ✓ ABGESCHLOSSEN
    - `3.2a` = Welle 2: Interaktive Showcase-Stufe — ✓ ABGESCHLOSSEN (Branch `012-interactive-wave2-demos`)
    - `3.2b` = Welle 2: Sichtbarer Komponenten-Nachweis — ✓ ABGESCHLOSSEN (Branch `013-wave2-visual-component-remediation`)
    - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze
 
->>> NAECHSTER SCHRITT <<< Welle 3 - Editor, Dateien, Hilfe und Streams: Den naechsten Spec-Kit-Feature-Lauf fuer `tvedit`, `bhelp` und `helpdemo` vorbereiten, nachdem Welle 2 inklusive sichtbarem Komponenten-Nachweis abgeschlossen ist.
+>>> NAECHSTER SCHRITT <<< Didaktische Inline-Code-Kommentar-Haertung starten: `Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.md` als naechsten Spec-Kit-Lauf umsetzen, bevor `Lastenheft_Wave1-Visual-Component-Remediation.md`, Wave-3- und Wave-4-Vorhaertungen folgen.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

@@ -82,6 +82,24 @@ DesklogoApp (TApplication)
 
 ---
 
+## Nachweisstatus / Proof Status
+
+Der funktionale Nachweis fuer `014-wave1-functional-hardening` prueft mehr als
+den Start. Die Smoke-Tests bestaetigen, dass `DesklogoDesktop` ein breites
+Logo-Muster rendert, dass die eingebetteten `LogoLines` die historischen
+Generator-Dateien ersetzen, und dass ein kleines Terminal das Logo kontrolliert
+abschneidet. `set-logo.cc` und `tv_logo.cc` bleiben historische
+Asset-/Generator-Kontexte und werden nicht als Runtime-Abhaengigkeit portiert.
+
+The functional proof for `014-wave1-functional-hardening` checks more than
+startup. The smoke tests confirm that `DesklogoDesktop` renders a wide logo
+pattern, that the embedded `LogoLines` replace the historical generator files,
+and that a small terminal clips the logo in a controlled way. `set-logo.cc` and
+`tv_logo.cc` remain historical asset/generator context and are not ported as a
+runtime dependency.
+
+---
+
 ## Übungen / Exercises
 
 1. Ändern Sie das Logo-Muster in `DesklogoDesktop.LogoLines[]`.

@@ -18,7 +18,7 @@ English: Implementation starts on the correct 013 branch. The Spec-Kit prerequis
 | Available docs | `research.md`, `data-model.md`, `contracts/`, `quickstart.md`, `tasks.md` |
 | `requirements.md` checklist | 16 total, 16 complete, 0 incomplete, PASS |
 | `plan-quality.md` checklist | 40 total, 40 complete, 0 incomplete, PASS |
-| `specify preset list` | `security-governance` v0.4.0, `architecture-governance` v0.2.0, `isaqb-architecture-governance` v0.1.0, `a11y-governance` v0.2.0, `cross-platform-governance` v0.1.0, `agent-parity-governance` v0.1.0 all enabled |
+| `specify preset list` | `security-governance` v0.4.0, `architecture-governance` v0.2.0, `isaqb-architecture-governance` v0.1.0, `a11y-governance` v0.2.0, `cross-platform-governance` v0.1.0, `agent-parity-governance` v0.2.0 all enabled |
 | `dotnet restore` | PASS: all projects up to date |
 | New runtime dependencies | None added for setup |
 

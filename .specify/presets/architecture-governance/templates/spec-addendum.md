@@ -19,5 +19,12 @@
   reviewed for new or changed distributed, service-based, or
   remote-access flows.
 - Identify whether the `OWASP SAMM` improvement plan is affected.
+- Identify whether `BSI C3A` cloud autonomy applicability must be reviewed
+  for cloud-service selection, SaaS/PaaS/IaaS, managed services,
+  container/artifact hosting, or provider-dependent deployments.
+- Identify whether `BSI C5` cloud compliance assurance must be reviewed for
+  cloud-service selection, SaaS/PaaS/IaaS, managed services,
+  container/artifact hosting, provider-dependent deployments, or cloud
+  assurance reviews.
 - Record any justified `N/A` decisions with rationale. Silent omission is
   not allowed.

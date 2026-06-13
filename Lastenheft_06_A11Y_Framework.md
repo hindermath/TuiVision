@@ -227,6 +227,34 @@ terminal UI itself (a platform limitation), mouse as primary input, changes to t
 
 ---
 
+## 6.1 Framework-Pattern- und Remediation-Gate / Framework Pattern and Remediation Gate
+
+Der spaetere Spec-Kit-Lauf muss pro A11Y-Vertragsbereich dokumentieren, welche
+bestehende TuiVision-Framework-Komponente genutzt oder erweitert wird:
+Accessible-Interface, Fokus-/Statusereignisse, Shortcut-Registrierung,
+High-Contrast-Theme, Dokumentations-HTML oder Test-Infrastruktur. Lokale
+Sonderlogik in Beispielen, Guides oder Tests ist nur als Setup oder
+Demonstration erlaubt. Wenn sie wiederverwendbares Framework-Verhalten
+ersetzt, muss sie als `SmallFrameworkFix` geschlossen oder als
+`FollowUpHardening` dokumentiert werden.
+
+The later Spec-Kit run must document for each A11Y contract area which
+existing TuiVision framework component is used or extended: accessible
+interface, focus/status events, shortcut registration, high-contrast theme,
+documentation HTML, or test infrastructure. Local special logic in examples,
+guides, or tests is only allowed as setup or demonstration. If it replaces
+reusable framework behavior, it must be closed as `SmallFrameworkFix` or
+recorded as `FollowUpHardening`.
+
+Zulaessige Entscheidungen / Allowed decisions:
+
+- `UseExistingFramework`: vorhandene Framework-Komponente reicht.
+- `SmallFrameworkFix`: kleine laufbezogene Framework-Korrektur mit Test.
+- `IntentionalDeviation`: bewusste Abweichung mit Guide- oder Evidence-Bezug.
+- `FollowUpHardening`: zu gross fuer diesen Lauf, eigenes Hardening-Follow-up.
+
+---
+
 ## 7. Pflichtenheft-Einträge (nach Umsetzung einzutragen)
 
 Nach Abschluss der Umsetzung dieses Lastenhefte sind folgende Einträge in
@@ -306,5 +334,7 @@ Pflicht:
 - Terminal-UI-A11Y realistisch begrenzen: Playwright/axe fuer DocFX-HTML, FakeDriver- und prozessbasierte Tests fuer Terminal-UI-Verhalten.
 - `IAccessibleWidget`, Fokuswechsel-Text-Events, Shortcut-Registrierung, Tastaturnavigation und High-Contrast-ColorScheme als pruefbare Architekturthemen behandeln.
 - WCAG 2.2 AA fuer generierte HTML-Dokumentation als Baseline nutzen; Terminal-Einschraenkungen dokumentieren statt ueberbehaupten.
+- Framework-Usage-Gate aufnehmen: pro A11Y-Vertragsbereich bestehende Framework-Komponente, lokale Sonderlogik, Remediation-Entscheidung und Evidence-Pfad dokumentieren.
+- Wiederverwendbare Logik nicht dauerhaft als lokale Beispiel-, Guide- oder Test-Sonderloesung belassen; bei Wiederholung als Framework-Fix oder Follow-up-Hardening behandeln.
 - Keine Aenderung am Porting-Scope der Wellen 1 bis 4 und keine Maus als primaeren Eingabekanal in diesen Lauf ziehen.
 ```

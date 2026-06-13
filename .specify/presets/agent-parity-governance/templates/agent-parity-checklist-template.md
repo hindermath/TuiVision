@@ -32,6 +32,15 @@ confirm whether the shared rule landed.
 | Agent guidance addendum template (if maintained) | | |
 | Other template (name): | | |
 
+## Model Routing
+
+| Check | Done? | Notes |
+|-------|-------|-------|
+| Model-routing guidance, if changed, is present in all maintained agent surfaces | | |
+| Guidance is agent-neutral and does not require a specific provider or model | | |
+| `spec.md`, `plan.md`, `tasks.md`, and feature specs contain no model-name requirements | | |
+| Routing distinguishes planning/analyze, long-running implementation, focused fixes, and trivial mechanical edits | | |
+
 ## Intentional Deviations
 
 | Surface | What deviates | Why | Expected lifetime |

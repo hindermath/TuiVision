@@ -410,6 +410,31 @@ Deutsch zuerst und Englisch danach.
 
 ---
 
+## 8.1 Framework-Usage- und Remediation-Gate / Framework Usage and Remediation Gate
+
+Der spaetere Spec-Kit-Lauf muss pro Beispiel dokumentieren, welche bestehende
+TuiVision-Framework-Komponente fuer Hauptflaeche, Statuszeile, Bedienpfade und
+Smoke-Beweise genutzt wird. Lokale Sonderlogik in `examples/` ist nur als
+Beispiel-Komposition erlaubt. Wenn sie Framework-Verhalten ersetzt oder sich
+in mehreren Beispielen wiederholt, muss sie als `SmallFrameworkFix`
+geschlossen oder als `FollowUpHardening` dokumentiert werden.
+
+The later Spec-Kit run must document for each example which existing
+TuiVision framework component is used for the main area, status line,
+operation paths, and smoke proof. Local special logic in `examples/` is only
+allowed as example composition. If it replaces framework behavior or repeats
+across multiple examples, it must be closed as `SmallFrameworkFix` or recorded
+as `FollowUpHardening`.
+
+Zulaessige Entscheidungen / Allowed decisions:
+
+- `UseExistingFramework`: vorhandene Framework-Komponente reicht.
+- `SmallFrameworkFix`: kleine laufbezogene Framework-Korrektur mit Test.
+- `IntentionalDeviation`: bewusste Abweichung mit Guide- oder Evidence-Bezug.
+- `FollowUpHardening`: zu gross fuer diesen Lauf, eigenes Hardening-Follow-up.
+
+---
+
 ## 9. Nichtziele / Non-Goals
 
 - keine erneute funktionale Komplettportierung der Wave-1-Beispiele
@@ -492,6 +517,8 @@ Wichtig:
 - Primaere Smokes muessen sichtbare Runtime-Zustaende pruefen, nicht nur direkte Hilfsmethoden oder Startup.
 - Kurze bisherige Statussaetze sollen in Statuszeile oder Statusbereich wandern.
 - Jede App braucht einen Beschreibungspfad wie Hilfe, Beschreibung oder About.
+- Framework-Usage-Gate aufnehmen: pro Beispiel bestehende Framework-Komponente, lokale Sonderlogik, Remediation-Entscheidung und Evidence-Pfad dokumentieren.
+- Wiederverwendbare Logik nicht dauerhaft als lokale `examples/`-Sonderloesung belassen; bei Wiederholung als Framework-Fix oder Follow-up-Hardening behandeln.
 - Bewusste historische Abweichungen muessen in Spec, Plan, Guide oder PR-Evidence dokumentiert werden.
 - Keine Wave-2-/Wave-3-/Wave-4-Funktionalitaet und keine breite Framework-Revision in diesen Lauf ziehen.
 ```
