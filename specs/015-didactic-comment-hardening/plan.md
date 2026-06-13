@@ -9,7 +9,7 @@
 
 Run a selective didactic inline-code-comment hardening pass across central TuiVision framework flows and relevant smoke-test helper/proof paths. The implementation will review the required hotspot categories, decide whether code-near explanation is useful, update only non-trivial `//` or `/* */` comments where needed, and maintain `specs/015-didactic-comment-hardening/pr-evidence.md` as the primary review and acceptance surface.
 
-The feature is explicitly not a runtime hardening, API, framework revision, visual remediation, or example-porting feature. XML comments remain the primary API and DocFX explanation surface. Pure inline/block comment hardening does not trigger DocFX; XML/API/docs/navigation changes do.
+The feature is explicitly not a runtime hardening, API, framework revision, visual remediation, or example-porting feature. XML comments remain the primary API and DocFX explanation surface. Pure inline/block comment hardening does not trigger DocFX; XML/API/docs/navigation or learner-facing guide changes do.
 
 The plan applies the current local preset matrix: `security-governance` v0.5.0, `architecture-governance` v0.4.0, `isaqb-architecture-governance` v0.1.0, `a11y-governance` v0.3.0, `cross-platform-governance` v0.1.0, and `agent-parity-governance` v0.2.0.
 
@@ -19,7 +19,7 @@ The plan applies the current local preset matrix: `security-governance` v0.5.0, 
 - Comment updates must be moderate: normally 1 to 3 lines for file/module or non-trivial block explanation.
 - New or updated didactic comments explain why, trade-off, constraint, historical deviation, or proof boundary; they do not restate obvious code.
 - German-first/English-second CEFR-B2 applies to didactic explanation blocks. Technical license, generator, marker, and tool-owned lines remain unchanged.
-- `pr-evidence.md` is the binding feature evidence file. It records reviewed areas, hotspot category, decision, rationale, comment need, change summary, validation/proof boundary, and follow-up boundary.
+- `pr-evidence.md` is the binding feature evidence file. It records reviewed areas, hotspot category, decision, rationale, comment need, changed/unchanged comment state, change summary, validation/proof boundary, and follow-up boundary.
 - The exact file inventory is finalized during tasks and implementation, but hotspot category coverage is already fixed by the spec.
 - No generated `_site/`, `api/*.yml`, test output, local caches, logs, credentials, agent state, or history are planned for tracking.
 
@@ -43,7 +43,7 @@ The plan applies the current local preset matrix: `security-governance` v0.5.0, 
 
 **Storage**: Source-controlled Markdown evidence and guidance files only. Production code state and tests keep their current storage model. No database, external service, network dependency, persistent user history, runtime/product AI storage, or arbitrary user-file proof path is planned.
 
-**Testing**: Planning artifacts are validated with placeholder scans, consistency checks, and `git diff --check`. Later implementation must run proportional validation for no-runtime-change comment hardening: targeted tests for touched modules or smoke helpers, full `dotnet test --configuration Release` when shared behavior or broad test helpers are touched, coverage gate when code/test files are changed, `dotnet format --verify-no-changes`, and conditional DocFX plus `tests/web-a11y` when XML/API/generated documentation/navigation/guides change. Before any build/test command, `Directory.Build.props` must be aligned to branch version `1.15.<patch>.<build>` and the manual build counter incremented.
+**Testing**: Planning artifacts are validated with placeholder scans, consistency checks, and `git diff --check`. Later implementation must run proportional validation for no-runtime-change comment hardening: targeted tests for touched modules or smoke helpers, full `dotnet test --configuration Release` when shared behavior or broad test helpers are touched, coverage gate when code/test files are changed, `dotnet format --verify-no-changes`, and conditional DocFX plus `tests/web-a11y` when XML/API/generated documentation/navigation/guides change. Before any build/test command, commit, or push on the numbered branch, `Directory.Build.props` must be aligned to branch version `1.15.<patch>.<build>`; the manual build counter is incremented only before build/test commands.
 
 **Target Platform**: TuiVision terminal framework and tests on the primary Multi-Mac workflow, with Linux and Windows/WSL compatibility considered where comments touch terminal fallback, driver behavior, scripts, or portability evidence. Pure comment-only changes do not create new runtime platform obligations.
 
@@ -106,7 +106,8 @@ specs/015-didactic-comment-hardening/
 |-- pr-evidence.md          # later implementation/PR evidence, created when implementation starts
 |-- checklists/
 |   |-- requirements.md
-|   `-- plan-quality.md
+|   |-- plan-quality.md
+|   `-- plan-review.md
 |-- contracts/
 |   `-- didactic-comment-hardening-acceptance.md
 `-- tasks.md                 # later /speckit-tasks output, not created by /speckit-plan
@@ -160,17 +161,18 @@ Evidence and review entities are captured in [data-model.md](./data-model.md). A
 
 The later `/speckit-tasks` run should produce tasks in this order:
 
-1. Create or update `specs/015-didactic-comment-hardening/pr-evidence.md` with required columns for review area, hotspot category, decision, rationale, comment need, changed/unchanged state, proof/validation boundary, and follow-up boundary.
+1. Create or update `specs/015-didactic-comment-hardening/pr-evidence.md` with required columns for review area, hotspot category, decision, rationale, comment need, changed/unchanged comment state, change summary, proof/validation boundary, and follow-up boundary.
 2. Build the initial review inventory across the required hotspot categories, mapping candidate files or named flow areas in `src/` and relevant smoke-test helper areas in `tests/`.
 3. Review historical Turbo Vision deviations only where they explain a modern code path or proof boundary; keep `tv203s/` read-only.
 4. Review central framework flows first: event/command dispatch, focus transitions, view hierarchy, status/help/description paths, dialog state, validation/rejection, serialization/resource behavior, console-driver fallback, and compatibility boundaries.
 5. Review smoke-test helper and proof areas: app-loop proof, command/event/key driving, view-tree checks, buffer/cell proof, rendered snapshots, terminal fallback, setup-only helpers, supplemental helpers, and proof-boundary wording.
 6. For each reviewed area, record exactly one decision from `CommentAdequate`, `CommentNeeded`, `NoCommentNeeded`, `UpdateExistingComment`, or `FollowUpHardening`.
 7. Apply only the needed comment changes. Keep comments concise, German-first/English-second for didactic explanation blocks, and focused on why/trade-off/constraint/history/proof boundary.
-8. Record `NoCommentNeeded` decisions for self-explaining areas instead of adding noise. Record `FollowUpHardening` for real framework/test/design issues outside this feature without changing runtime behavior.
+8. Record `CommentAdequate` for useful existing comments and `NoCommentNeeded` for self-explaining areas instead of adding noise. Record `FollowUpHardening` for real framework/test/design issues outside this feature without changing runtime behavior.
 9. Review shared guidance surfaces if project-wide comment guidance changes; update all maintained agent files together or record unchanged/intentional divergence rationale in `pr-evidence.md`.
 10. Record governance, DocFX/A11Y, architecture/security, statistics, and validation evidence with explicit trigger-based `N/A` decisions where applicable.
-11. Run final validation scaled to touched files: `git diff --check`, targeted tests for changed source/test-helper files, full Release tests and coverage gate if shared code/test proof is touched broadly, `dotnet format --verify-no-changes`, and conditional `docfx docfx.json` plus `tests/web-a11y` when XML/API/generated docs/navigation/guides changed.
+11. Serialize tasks that edit shared evidence or shared agent guidance, especially `pr-evidence.md` and the maintained agent guidance files, so later task execution does not create conflicting parallel edits.
+12. Run final validation scaled to touched files: `git diff --check`, targeted tests for changed source/test-helper files, full Release tests and coverage gate if shared code/test proof is touched broadly, `dotnet format --verify-no-changes`, and conditional `docfx docfx.json` plus `tests/web-a11y` when XML/API/generated docs/navigation/guides changed.
 
 ## Complexity Tracking
 

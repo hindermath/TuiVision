@@ -30,7 +30,8 @@ specs/015-didactic-comment-hardening/pr-evidence.md
 ```
 
 Jeder Eintrag muss Review-Bereich, Hotspot-Kategorie, Entscheidung,
-Begruendung, Kommentarbedarf, Aenderung, Validierungs- oder Proof-Grenze und
+Begruendung, Kommentarbedarf, geaenderten oder ungeaenderten Kommentarzustand,
+Aenderungszusammenfassung, Validierungs- oder Proof-Grenze und
 Follow-up-Grenze festhalten.
 
 ### 3. Hotspot-Inventar erstellen
@@ -116,6 +117,10 @@ Vor jedem Build- oder Testbefehl muss `Directory.Build.props` gemaess
 Branch-Version `1.15.<patch>.<build>` ausgerichtet und der manuelle
 Build-Zaehler nach Repository-Regel erhoeht werden.
 
+Vor jedem Commit oder Push auf dem nummerierten Branch muss
+`Directory.Build.props` ebenfalls auf `1.15.<patch>.<build>` ausgerichtet
+sein; der manuelle Build-Zaehler wird dabei nicht erhoeht.
+
 Minimal fuer reine Kommentar-/Evidence-Aenderungen:
 
 ```bash
@@ -179,7 +184,8 @@ specs/015-didactic-comment-hardening/pr-evidence.md
 ```
 
 Each entry records review area, hotspot category, decision, rationale, comment
-need, change summary, validation or proof boundary, and follow-up boundary.
+need, changed or unchanged comment state, change summary, validation or proof
+boundary, and follow-up boundary.
 
 ### 3. Create the hotspot inventory
 
@@ -260,6 +266,10 @@ why no further guidance change was needed.
 Before every build or test command, align `Directory.Build.props` to branch
 version `1.15.<patch>.<build>` and increment the manual build counter according
 to the repository rule.
+
+Before every commit or push on the numbered branch, also align
+`Directory.Build.props` to `1.15.<patch>.<build>`; do not increment the manual
+build counter for commit-only or push-only work.
 
 Minimum for pure comment/evidence changes:
 

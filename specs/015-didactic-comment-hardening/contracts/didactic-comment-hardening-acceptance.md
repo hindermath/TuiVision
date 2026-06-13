@@ -40,6 +40,7 @@ Each evidence entry MUST record:
 - rationale;
 - comment need;
 - changed or unchanged comment state;
+- change summary;
 - validation or proof boundary;
 - follow-up boundary where applicable;
 - governance, DocFX/A11Y, statistics, or agent-guidance trigger where applicable.
@@ -98,7 +99,7 @@ New or changed didactic comments MUST:
 
 ## 6. Smoke Helper and Proof Boundary Contract
 
-Reviewed smoke helpers MUST make proof purpose and proof boundary understandable when the helper name and assertions are not enough.
+Reviewed smoke helpers MUST make proof purpose, stability reason, and proof boundary understandable when the helper name and assertions are not enough.
 
 Evidence or code-near comments MUST clarify non-obvious:
 
@@ -178,7 +179,7 @@ dotnet test --configuration Release
 dotnet test --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings
 ```
 
-When build or test commands are run on the numbered branch, `Directory.Build.props` MUST be aligned to `1.15.<patch>.<build>` and the manual build counter MUST be incremented first.
+Before build or test commands, commits, or pushes on the numbered branch, `Directory.Build.props` MUST be aligned to `1.15.<patch>.<build>`. The manual build counter MUST be incremented before build or test commands.
 
 If a validation command cannot run locally, the reason and equivalent CI/manual evidence MUST be recorded in `pr-evidence.md`.
 

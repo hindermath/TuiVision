@@ -95,6 +95,7 @@ Represents the acceptance record for one review area.
 - `Decision`
 - `Rationale`
 - `CommentNeed`
+- `CommentState`: `Changed`, `Unchanged`, `Removed`, or `NotApplicable`.
 - `ChangeSummary`
 - `ValidationOrProofBoundary`
 - `FollowUpBoundary`
@@ -103,6 +104,7 @@ Represents the acceptance record for one review area.
 **Validation rules**:
 - Required evidence path is `specs/015-didactic-comment-hardening/pr-evidence.md`.
 - Every reviewed area has one evidence entry or a clearly linked sub-entry.
+- `CommentState` is required so unchanged adequate comments, intentionally absent comments, removed trivial comments, and real changes are distinguishable.
 - `ValidationOrProofBoundary` is required for smoke-test helpers, rendering snapshots, buffer/cell proof, and terminal fallbacks.
 - `FollowUpBoundary` is required when `Decision == FollowUpHardening`.
 
@@ -130,14 +132,14 @@ Represents a modern TuiVision difference from historical Turbo Vision behavior t
 **Fields**:
 - `HistoricalReference`: `tv203s/` source path or named historical behavior.
 - `ModernArea`: C# path or flow.
-- `DeviationKind`: `IntentionalModernization`, `PlatformConstraint`, `ProofBoundary`, `UnavailableHistoricalFeature`, or `FollowUp`.
+- `DeviationKind`: `IntentionalModernization`, `PlatformConstraint`, `ProofBoundary`, `UnavailableHistoricalFeature`, or `DeferredHardening`.
 - `ExplanationNeed`: `Comment`, `EvidenceOnly`, `GuideOrDoc`, or `None`.
 - `Rationale`
 
 **Validation rules**:
 - Historical references are read-only.
 - Only comprehension-relevant deviations need records.
-- Runtime parity fixes are out of scope; real issues use `FollowUpHardening`.
+- Runtime parity fixes are out of scope; real issues use `FollowUpHardening` as the comment-review decision.
 
 ## Entity: AgentGuidanceReview
 
