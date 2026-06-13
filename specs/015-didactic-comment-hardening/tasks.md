@@ -131,7 +131,7 @@
 - [ ] T061 [US3] Apply `UpdateExistingComment` changes for reviewed comments that are stale, misleading, too broad, or trivial; correct, replace, or remove the comment without changing executable code.
 - [ ] T062 [US3] Verify every `CommentNeeded` evidence row has a matching code-near comment change or a same-feature evidence correction that changes the row to another approved decision.
 - [ ] T063 [US3] Verify every `FollowUpHardening` evidence row names the real issue, explains why it is outside 015, and identifies the later work item or evidence boundary that should carry it.
-- [ ] T064 [US3] Review added or updated comments for the normal 1-to-3-line intensity target; record rationale in `pr-evidence.md` for any longer comment.
+- [ ] T064 [US3] Review added or updated comments for the normal 1-to-3-line intensity target; record total new/updated didactic comment count, longer-comment count, the resulting percentage, and rationale for any longer comment in `pr-evidence.md`.
 - [ ] T065 [US3] Review didactic explanation blocks for German-first/English-second CEFR-B2 wording; keep technical license, generated-file, tool-owned, and marker lines unchanged.
 - [ ] T066 [US3] Review `git diff --word-diff` or an equivalent focused diff to confirm executable statements, public APIs, dependencies, project files, and example scope did not change as part of US3.
 
@@ -200,7 +200,7 @@
 
 **Purpose**: Prepare a reviewable final change set with evidence, statistics, version alignment, and PR text.
 
-- [ ] T098 Add the final acceptance summary to `specs/015-didactic-comment-hardening/pr-evidence.md`, covering purpose, touched projects, changed files or flow areas, decision counts by review model value, validation commands, DocFX/A11Y trigger result, governance N/A decisions, agent guidance result, statistics result, config/API impact, and follow-up boundaries.
+- [ ] T098 Add the final acceptance summary to `specs/015-didactic-comment-hardening/pr-evidence.md`, covering purpose, touched projects, changed files or flow areas, decision counts by review model value, line-budget counts for the 90% SC-004 threshold, validation commands, DocFX/A11Y trigger result, governance N/A decisions, agent guidance result, statistics result, config/API impact, and follow-up boundaries.
 - [ ] T099 Before final commit or push, align `Directory.Build.props` to the current branch version `1.15.<patch>.<build>` without incrementing the build counter unless another build or test command is run.
 - [ ] T100 Run `git status --short --branch -uall` and review untracked files; keep only intended source, test, evidence, guidance, statistics, version, and Lastenheft archive changes.
 - [ ] T101 Prepare the PR description from `specs/015-didactic-comment-hardening/pr-evidence.md`, including scope, changed areas, validation evidence, governance applicability, and no-runtime-change statement.
