@@ -243,48 +243,67 @@ surfaces, with no silent divergence.
 - **CR-004**: The feature MUST state in evidence whether
   `docs/project-statistics.md` and shared AI-agent guidance were updated,
   unchanged by rationale, or deferred to implementation completion.
-- **CR-005**: The primary implementation language is C# on .NET for TuiVision.
-  C# is on the memory-safe-language allow-list, so no non-MSL justification is
-  required.
-- **CR-006**: `NIST SSDF` and `CWE Top 25` apply because this is Level-2 work.
-  `OWASP ASVS` is `N/A` unless the feature unexpectedly changes web, API,
-  HTTP, or authentication-bearing behavior. `SBOM`, `VEX`, and `SLSA` remain
-  governed by the existing release and build process; no new supply-chain
-  evidence is expected unless dependencies, release artefacts, or build
-  integrity change. `AI-SBOM` is `N/A` because AI is used only as development
-  or agent tooling and no runtime AI, model, dataset, inference
-  infrastructure, or product AI component is delivered.
+- **CR-005**: Security Governance v0.5.0 applies. The primary implementation
+  language remains C# on .NET for TuiVision. C# is on the memory-safe-language
+  allow-list, so no non-MSL justification is required; normal C#/.NET secure
+  coding discipline remains applicable when comments touch non-trivial logic.
+- **CR-006**: `NIST SSDF` and `CWE Top 25` apply as Level-2 secure-development
+  review context. No new feature-specific security checklist is required for
+  pure comment and evidence hardening unless implementation changes
+  security-relevant logic, input handling, dependency state, distribution
+  artefacts, or vulnerability-handling evidence.
 - **CR-007**: `OWASP ASVS` verification scope is `N/A` for the planned feature
-  because no web, API, HTTP, or authentication-bearing service is added or
-  changed.
-- **CR-008**: `SBOM`, `VEX`, and `SLSA` do not need new feature-specific
-  artefacts for pure comment and evidence hardening. If implementation changes
-  dependencies, release output, or build provenance, the plan MUST update the
-  default supply-chain evidence path in `docs/security/`.
-- **CR-009**: Runtime/product AI is absent from the delivered system. If any
-  runtime AI component, model, dataset, inference infrastructure, or AI service
-  enters scope later, the `AI-SBOM` decision MUST be reopened and documented.
-- **CR-010**: Trust boundaries, externally reachable flows, distributed
-  service architecture, CAPEC mapping, Zero Trust applicability, BSI C3A cloud
-  autonomy, and BSI C5 cloud assurance are `N/A` for the planned feature
-  because it changes comments, evidence, and guidance rather than runtime
-  boundaries, cloud services, or deployment topology.
-- **CR-011**: Default security evidence remains under `docs/security/`.
-  No new security file is expected for pure comment hardening; the plan MUST
-  update `docs/security/security-checklist.md`,
-  `docs/security/supply-chain-evidence.md`,
-  `docs/security/threat-model.md`, or
-  `docs/security/zero-trust-applicability.md` only if implementation changes
-  security-relevant logic, dependencies, distribution evidence, trust
-  boundaries, or externally reachable behavior.
-- **CR-012**: All six installed governance presets apply by default:
-  `security-governance`, `architecture-governance`,
-  `isaqb-architecture-governance`, `a11y-governance`,
-  `cross-platform-governance`, and `agent-parity-governance`. The
-  cross-platform script-specific requirements are `N/A` because this feature
-  does not add, change, or remove script-shaped tools; therefore no Bash/Pwsh
-  pair, man page, Cmdlet `Verb-Noun` name, `--dry-run`, or `-WhatIf` parity is
-  planned.
+  because no web, API, HTTP, authentication, or authorization-bearing service
+  is added or changed.
+- **CR-008**: `SBOM`, `VEX`, `SLSA`, and `OpenSSF Scorecard` remain governed by
+  the existing release, dependency, CI, and public-repository posture. This
+  feature does not need new feature-specific supply-chain artefacts unless the
+  plan later changes dependencies, release output, build provenance, or public
+  OSS risk posture.
+- **CR-009**: `AI-SBOM` is `N/A` because AI is used only as development or
+  agent tooling. No runtime AI, model, dataset, inference infrastructure, AI
+  service, or product AI component is delivered. If any of those enter scope,
+  the AI-SBOM decision MUST be reopened and documented.
+- **CR-010**: Regulatory screening for `NIS2`, `CRA`, `EU AI Act`, and `DORA`
+  is `N/A` for this comment-only feature because it does not change market
+  placement, customer handover, vulnerability-handling process, cloud
+  operation, financial-sector ICT dependency, regulated customer flow, or
+  runtime/product AI. If implementation changes any of those triggers, the
+  plan MUST add regulatory applicability evidence.
+- **CR-011**: Architecture Governance v0.4.0 applies as an applicability gate.
+  Trust-boundary changes, data flows across trust boundaries, distributed
+  service architecture, `STRIDE`/`CIA`/`CAPEC` threat-model entries, S-ADRs,
+  arc42 security concepts, Zero Trust, SAMM, and iSAQB security quality
+  scenarios are `N/A` because the feature changes comments, evidence, and
+  guidance rather than runtime behavior, service boundaries, or deployment
+  topology.
+- **CR-012**: `BSI C3A` cloud autonomy and `BSI C5` cloud compliance assurance
+  are `N/A` because this feature does not select, change, or operate cloud
+  services, SaaS/PaaS/IaaS, managed services, container or artifact hosting,
+  provider-dependent deployments, cloud assurance reviews, or related audit
+  evidence.
+- **CR-013**: A11Y Governance v0.3.0 applies. The affected artefacts are
+  code-near didactic comments, feature evidence, checklists, and shared
+  guidance. Didactic inline-code comments are required only where new or
+  changed non-trivial logic affects learner understanding or maintainability.
+  Generated HTML, DocFX output, or navigation evidence is required only if
+  XML comments, public API documentation, guides, or generated documentation
+  are changed.
+- **CR-014**: Agent Parity Governance v0.2.0 applies when shared comment
+  guidance changes. The maintained agent surfaces are `AGENTS.md`,
+  `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and
+  `.github/agents/copilot-instructions.md`; any intentional divergence MUST
+  be recorded in feature evidence. Project templates under
+  `.specify/templates/` are `N/A` for this feature unless the later plan
+  explicitly changes repository-owned templates.
+- **CR-015**: Cross-Platform Governance v0.1.0 script-specific requirements
+  are `N/A` because this feature does not add, change, or remove
+  script-shaped tools; therefore no Bash/Pwsh pair, man page, Cmdlet
+  `Verb-Noun` name, `--dry-run`, or `-WhatIf` parity is planned.
+- **CR-016**: All six installed governance presets apply by default:
+  `security-governance` v0.5.0, `architecture-governance` v0.4.0,
+  `isaqb-architecture-governance` v0.1.0, `a11y-governance` v0.3.0,
+  `cross-platform-governance` v0.1.0, and `agent-parity-governance` v0.2.0.
 
 ### Key Entities *(include if feature involves data)*
 
