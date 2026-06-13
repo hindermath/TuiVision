@@ -240,8 +240,8 @@ Fuer groessere Beispielwellen ist ein zweistufiges Spec-Kit-Liefermuster zulaess
 Statuscheckliste Beispielwellen:
 - [x] **Welle 1 - Grundlegende Anwendungsstruktur**
   Reihenfolgehinweis: abgeschlossen (Branch `007-port-wave1-examples`); 4 Beispiele portiert, 41 Smoke-Tests gruen, Guides geliefert.
-- [ ] **Welle 1 - Funktionaler Nachweisnachlauf**
-  Reihenfolgehinweis: aktueller Spec-Kit-Lauf `014-wave1-functional-hardening`; haertet Desklogo, MsgCls, Tutorial und Videomode fachlich gegen die historischen Quellen, bevor die sichtbare Remediation beginnt.
+- [x] **Welle 1 - Funktionaler Nachweisnachlauf**
+  Reihenfolgehinweis: abgeschlossen (Branch `014-wave1-functional-hardening`); Desklogo, MsgCls, Tutorial und Videomode sind fachlich gegen die historischen Quellen, gehaertete Smokes, Helper-Klassifikation und `specs/014-wave1-functional-hardening/pr-evidence.md` nachgewiesen.
 - [ ] **Didaktische Inline-Code-Kommentar-Haertung**
   Reihenfolgehinweis: nach `014-wave1-functional-hardening` ueber `Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.md`; haertet zentrale Framework-Flows und Smoke-Test-Helfer didaktisch, bevor die sichtbare Wave-1-Remediation und die folgenden Beispielwellen darauf aufbauen.
 - [ ] **Welle 1 - Sichtbarer Komponenten-Nachweis**
@@ -646,8 +646,8 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - Die 25 Originalbeispiele aus `tv203s/contrib/tvision/examples` bleiben bis zur Abnahme der einzige verpflichtende Beispielumfang.
    - Die vier Wellen sind als vier eigenstaendige Unterphasen `3.1` bis `3.4` zu behandeln; sie werden nacheinander abgearbeitet und jeweils separat geplant, portiert, getestet und dokumentiert.
    - `3.1` = Welle 1: Grundlegende Anwendungsstruktur — ✓ ABGESCHLOSSEN
-   - `3.1a` = Welle 1: Funktionaler Nachweisnachlauf — LAUFEND (`014-wave1-functional-hardening`)
-   - `3.1b` = Didaktische Inline-Code-Kommentar-Haertung — nach `014`, vor Welle-1-Visual-Remediation
+   - `3.1a` = Welle 1: Funktionaler Nachweisnachlauf — ✓ ABGESCHLOSSEN (Branch `014-wave1-functional-hardening`)
+   - `3.1b` = Didaktische Inline-Code-Kommentar-Haertung — NAECHSTER SCHRITT, vor Welle-1-Visual-Remediation
    - `3.1c` = Welle 1: Sichtbarer Komponenten-Nachweis
    - `3.2` = Welle 2: Controls und Dialoge — ✓ ABGESCHLOSSEN
    - `3.2a` = Welle 2: Interaktive Showcase-Stufe — ✓ ABGESCHLOSSEN (Branch `012-interactive-wave2-demos`)
@@ -655,7 +655,7 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze
 
->>> NAECHSTER SCHRITT <<< Welle 1 - Funktionaler Nachweisnachlauf abschliessen: Den laufenden Spec-Kit-Feature-Lauf `014-wave1-functional-hardening` umsetzen und danach `Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.md` starten, bevor `Lastenheft_Wave1-Visual-Component-Remediation.md`, Wave-3- und Wave-4-Vorhaertungen folgen.
+>>> NAECHSTER SCHRITT <<< Didaktische Inline-Code-Kommentar-Haertung starten: `Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.md` als naechsten Spec-Kit-Lauf umsetzen, bevor `Lastenheft_Wave1-Visual-Component-Remediation.md`, Wave-3- und Wave-4-Vorhaertungen folgen.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

@@ -73,6 +73,19 @@ aber klar dokumentiert (Erfolg oder Fallback). Die Anwendung bleibt stabil.
 If the terminal is too small, the transition attempt is still made but the result
 is clearly documented (success or fallback). The application remains stable.
 
+Der funktionale Nachweis fuer `014-wave1-functional-hardening` prueft den
+gespeicherten Ergebniszustand. `DisplayModeCoordinator.LastOutcome` und
+`VideomodeView.LastShownOutcome` muessen zusammenpassen; bei nicht
+unterstuetzten Terminals muss `VisibleFallback` mit einer textorientierten
+Meldung sichtbar werden. Ein weiterer Smoke-Test zeigt, dass die Anwendung nach
+einem erneuten Uebergangsversuch weiter lauffaehig bleibt.
+
+The functional proof for `014-wave1-functional-hardening` checks the stored
+outcome state. `DisplayModeCoordinator.LastOutcome` and
+`VideomodeView.LastShownOutcome` must match; unsupported terminals must expose
+`VisibleFallback` with a text-first message. Another smoke test shows that the
+application remains runnable after another transition attempt.
+
 ---
 
 ## Unterstützter Übergangsablauf / Supported Transition Flow

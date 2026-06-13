@@ -28,10 +28,37 @@ public enum DirectHelperUsage
     SetupOnly,
 
     /// <summary>
-    /// Direkte Hilfsmethoden liefern nur ergaenzende Assertionen.
-    /// Direct helpers provide supplemental assertions only.
+    /// Direkte Hilfsmethoden sind Teil des primaeren Beweises, weil sie echte
+    /// Beispiel- oder Anwendungslogik ueber eine oeffentliche Flaeche ausfuehren.
+    ///
+    /// Direct helpers are part of the primary proof because they execute real
+    /// example or application logic through a public surface.
     /// </summary>
-    SupplementalAssertion
+    PrimaryProof,
+
+    /// <summary>
+    /// Direkte Hilfsmethoden liefern nur ergaenzende Assertionen.
+    /// Direct helpers provide supplemental proof assertions only.
+    /// </summary>
+    SupplementalProof,
+
+    /// <summary>
+    /// Alte Bezeichnung fuer <see cref="SupplementalProof"/>.
+    /// Bestehende Wave-2-Tests behalten damit ihre Bedeutung.
+    ///
+    /// Old name for <see cref="SupplementalProof"/>.
+    /// Existing Wave 2 tests keep their meaning.
+    /// </summary>
+    SupplementalAssertion = SupplementalProof,
+
+    /// <summary>
+    /// Direkte Hilfsmethoden sind nur temporaer akzeptiert und muessen spaeter
+    /// durch sichtbare Runtime-Beweise ersetzt werden.
+    ///
+    /// Direct helpers are accepted only temporarily and must later be replaced
+    /// by visible runtime proof.
+    /// </summary>
+    LegacyOrTemporary
 }
 
 /// <summary>

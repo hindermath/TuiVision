@@ -29,6 +29,10 @@ public sealed class VideomodeSmokeTests : ExampleTestBase
         VideomodeApp app = new(DefaultBounds(), headless: true);
 
         AssertSmokeRunCompletes(() => app.Run());
+        RecordPrimaryAssertionUsedAppLoop();
+        RecordDirectHelperUsage(DirectHelperUsage.PrimaryProof);
+        AssertPrimaryAssertionUsedAppLoop();
+        AssertDirectHelperUsage(DirectHelperUsage.PrimaryProof);
     }
 
     /// <summary>
@@ -50,6 +54,8 @@ public sealed class VideomodeSmokeTests : ExampleTestBase
         // Der Wert (true oder false) ist laufzeitabhängig; wir prüfen nur, dass die Prüfung abgeschlossen wurde.
         // The value (true or false) is runtime-dependent; we only verify that probing completed.
         bool _ = app.Coordinator.IsResizeSupported; // Keine Exception / No exception
+        RecordDirectHelperUsage(DirectHelperUsage.SetupOnly);
+        AssertDirectHelperUsage(DirectHelperUsage.SetupOnly);
     }
 
     /// <summary>
@@ -71,6 +77,12 @@ public sealed class VideomodeSmokeTests : ExampleTestBase
             outcome == DisplayModeOutcome.RealTransition || outcome == DisplayModeOutcome.VisibleFallback,
             $"TryTransition muss RealTransition oder VisibleFallback zurückgeben, nicht '{outcome}' / " +
             $"TryTransition must return RealTransition or VisibleFallback, not '{outcome}'");
+        AssertEqual(
+            outcome,
+            app.Coordinator.LastOutcome,
+            "Koordinator muss das letzte Ergebnis speichern / Coordinator must store the last outcome");
+        RecordDirectHelperUsage(DirectHelperUsage.PrimaryProof);
+        AssertDirectHelperUsage(DirectHelperUsage.PrimaryProof);
     }
 
     /// <summary>
@@ -88,6 +100,49 @@ public sealed class VideomodeSmokeTests : ExampleTestBase
         AssertTrue(
             !string.IsNullOrWhiteSpace(app.Coordinator.FallbackMessage),
             "FallbackMessage muss nicht-leer sein / FallbackMessage must be non-empty");
+        AssertVisibleContains(
+            app.Coordinator.FallbackMessage,
+            "This terminal does not support resizing.",
+            "FallbackMessage muss die Plattformgrenze textorientiert erklaeren / " +
+            "FallbackMessage must explain the platform limitation as text");
+        RecordDirectHelperUsage(DirectHelperUsage.SupplementalProof);
+        AssertDirectHelperUsage(DirectHelperUsage.SupplementalProof);
+    }
+
+    /// <summary>
+    /// Stellt sicher, dass die Anwendung den initialen Übergangsversuch sichtbar in der View speichert.
+    ///
+    /// Asserts that the application stores the initial transition attempt visibly in the view.
+    /// </summary>
+    [TestMethod]
+    public void Videomode_InitialTransitionOutcomeIsVisible()
+    {
+        VideomodeApp app = new(DefaultBounds(), headless: true);
+
+        AssertNotNull(app.View, "VideomodeView");
+        Assert.AreEqual(
+            app.Coordinator.LastOutcome,
+            app.View.LastShownOutcome,
+            "View muss das Koordinator-Ergebnis anzeigen. / View must display the coordinator outcome.");
+        AssertTrue(
+            !string.IsNullOrWhiteSpace(app.View.LastShownMessage),
+            "View muss eine sichtbare Ergebnisnachricht speichern / View must store a visible outcome message");
+
+        if (!app.Coordinator.IsResizeSupported)
+        {
+            AssertEqual(
+                DisplayModeOutcome.VisibleFallback,
+                app.View.LastShownOutcome!.Value,
+                "Nicht unterstuetzte Terminals muessen sichtbaren Fallback zeigen / " +
+                "Unsupported terminals must show visible fallback");
+            AssertEqual(
+                app.Coordinator.FallbackMessage,
+                app.View.LastShownMessage!,
+                "Fallback-Meldung muss in der View erscheinen / Fallback message must appear in the view");
+        }
+
+        RecordDirectHelperUsage(DirectHelperUsage.PrimaryProof);
+        AssertDirectHelperUsage(DirectHelperUsage.PrimaryProof);
     }
 
     /// <summary>
@@ -104,9 +159,25 @@ public sealed class VideomodeSmokeTests : ExampleTestBase
 
         // Übergangsversuch im Headless-Modus / Transition attempt in headless mode
         DisplayModeOutcome outcome = app.Coordinator.TryTransition(80, 25);
+        string message = outcome == DisplayModeOutcome.RealTransition
+            ? "Übergang erfolgreich / Transition successful"
+            : app.Coordinator.FallbackMessage;
+        app.View.ShowOutcome(outcome, message);
+
+        AssertEqual(
+            outcome,
+            app.View.LastShownOutcome!.Value,
+            "View muss nach erneutem Uebergang das Ergebnis halten / View must keep the result after another transition");
+        AssertTrue(
+            !string.IsNullOrWhiteSpace(app.View.LastShownMessage),
+            "View muss nach erneutem Uebergang benutzbar bleiben / View must remain usable after another transition");
 
         // Anwendung bleibt nach dem Übergang lauffähig / Application remains runnable after transition
         AssertSmokeRunCompletes(() => app.Run());
+        RecordPrimaryAssertionUsedAppLoop();
+        RecordDirectHelperUsage(DirectHelperUsage.PrimaryProof);
+        AssertPrimaryAssertionUsedAppLoop();
+        AssertDirectHelperUsage(DirectHelperUsage.PrimaryProof);
     }
 
     /// <summary>
@@ -120,6 +191,9 @@ public sealed class VideomodeSmokeTests : ExampleTestBase
         VideomodeApp app = new(DefaultBounds(width: 16, height: 5), headless: true);
 
         AssertSmokeRunCompletes(() => app.Run());
+        AssertNotNull(app.View.LastShownMessage, "LastShownMessage");
+        RecordDirectHelperUsage(DirectHelperUsage.PrimaryProof);
+        AssertDirectHelperUsage(DirectHelperUsage.PrimaryProof);
     }
 
     /// <summary>
@@ -140,5 +214,7 @@ public sealed class VideomodeSmokeTests : ExampleTestBase
         });
 
         AssertTrue(completed, "Run() muss sauber zurückkehren / Run() must return cleanly");
+        RecordPrimaryAssertionUsedAppLoop();
+        AssertPrimaryAssertionUsedAppLoop();
     }
 }

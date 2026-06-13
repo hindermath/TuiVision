@@ -18,6 +18,20 @@ The following four examples belong to the **first mandatory wave** (`007-port-wa
 They originate directly from the original folder `tv203s/contrib/tvision/examples/` and are
 not part of `TVDEMOS/` or `TVFM/`.
 
+`014-wave1-functional-hardening` ist der funktionale Nachweisnachlauf fuer diese
+vier Beispiele. Die primaere Beweismatrix liegt in
+`specs/014-wave1-functional-hardening/pr-evidence.md`. Sie dokumentiert die
+historischen Quellen, die aktuellen C#-Pfadentscheidungen, die Smoke-Nachweise,
+Helper-Klassifikationen und die Grenzen zu Wave-1-Visual-Remediation, Wave 3 und
+Wave 4.
+
+`014-wave1-functional-hardening` is the functional proof follow-up for these
+four examples. The primary proof matrix is
+`specs/014-wave1-functional-hardening/pr-evidence.md`. It documents the
+historical sources, current C# path decisions, smoke proof, helper
+classifications, and the boundary to Wave-1 visual remediation, Wave 3, and
+Wave 4.
+
 | Verwalteter Name / Managed Name | Originalordner / Original Folder | Startbefehl / Launch Command | Pflichtunterstützung / Required Support Assets |
 |---|---|---|---|
 | `Desklogo` | `tv203s/contrib/tvision/examples/desklogo/` | `dotnet run --project examples/Desklogo` | `desklogo.cc` (Hauptprogramm / main program) **erforderlich**. `set-logo.cc` und `tv_logo.cc` sind Hilfswerkzeuge für Logo-Generierung — **nicht erforderlich** für die verwaltete Portierung, da das Logo als Zeichenkettenkonstante eingebettet ist. |

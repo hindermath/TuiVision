@@ -164,12 +164,14 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - Wave 3/4 functionality, broad framework redesign, mandatory mouse-only operation, arbitrary user-file proof, external proof paths, persistent user history, databases, external services, and new runtime dependencies are out of scope.
 
 ### 014-wave1-functional-hardening
-- Current planning baseline: execute the Wave-1 functional hardening plan from `specs/014-wave1-functional-hardening/spec.md` and `specs/014-wave1-functional-hardening/plan.md`.
+- Current implementation status: Wave-1 functional hardening is implemented on branch `014-wave1-functional-hardening`; final validation evidence is tracked in `specs/014-wave1-functional-hardening/pr-evidence.md`.
 - Scope is limited to `Desklogo`, `MsgCls`, `Tutorial` steps `tvguid01` through `tvguid16`, and `Videomode`.
-- The primary proof surface is `specs/014-wave1-functional-hardening/pr-evidence.md`, which must record historical source, C# behavior, proof method, helper classification, negative/fallback proof, missing-core decisions, and intentional deviations.
-- Managed runtime behavior requires executable smoke proof; evidence-only proof is allowed only for explicitly documented no-runtime-target deviations.
-- Helper or headless paths may be `PrimaryProof` only when they execute real example or application logic through public commands, events, application methods, or stable public state with concrete assertions.
+- The primary proof surface is `specs/014-wave1-functional-hardening/pr-evidence.md`, which records historical source, C# behavior, proof method, helper classification, negative/fallback proof, missing-core decisions, intentional deviations, validation, and the archived Lastenheft path.
+- Managed runtime behavior is proven by executable smoke tests; evidence-only proof remains allowed only for explicitly documented no-runtime-target deviations.
+- Helper or headless paths may be `PrimaryProof` only when they execute real example or application logic through public commands, events, application methods, or stable public state with concrete assertions; 014 added `PrimaryProof`, `SupplementalProof`, `SetupOnly`, and `LegacyOrTemporary` helper taxonomy.
 - Historical C/C++ sources under `tv203s/` remain read-only intent references. `set-logo.cc` and `tv_logo.cc` are Desklogo asset/generator boundary context only.
+- Validation baseline: targeted Wave-1 smokes 38/38 passed, full example smokes 91/91 passed, full Release tests 496/496 passed, coverage gate exceeded 70% for all required assemblies, `docfx docfx.json` passed with 0 warnings/errors, and Playwright/axe DocFX smoke passed 2/2 via explicit local-server workaround when sandboxed webserver startup is blocked.
+- Next open example-adjacent step is `Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.md`; it remains before `Lastenheft_Wave1-Visual-Component-Remediation.md`.
 - Wave-1 visual remediation, Wave 2/3/4 behavior, broad framework redesign, mouse-only operation, arbitrary user-file proof, external proof paths, persistent user history, databases, external services, new runtime dependencies, and runtime/product AI are out of scope.
 
 ## Example Wave Delivery Pattern
