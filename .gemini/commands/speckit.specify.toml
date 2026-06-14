@@ -373,4 +373,46 @@ Success criteria must be:
 - "Database can handle 1000 TPS" (implementation detail, use user-facing metric)
 - "React components render efficiently" (framework-specific)
 - "Redis cache hit rate above 80%" (technology-specific)
+
+
+Audit-ready evidence requirement:
+
+- Ensure this specify wrapper requires concrete Markdown evidence/checklist updates for every applicable checkpoint.
+- If a checkpoint does not apply in the current Spec-Kit run, require `N/A` with a short rationale instead of omitting it.
+- If a checkpoint is undecided, require `Open` with owner, follow-up, and re-evaluation trigger.
+
+
+Audit-ready evidence requirement:
+
+- Ensure this specify wrapper requires concrete Markdown evidence/checklist updates for every applicable checkpoint.
+- If a checkpoint does not apply in the current Spec-Kit run, require `N/A` with a short rationale instead of omitting it.
+- If a checkpoint is undecided, require `Open` with owner, follow-up, and re-evaluation trigger.
+
+
+Audit-ready evidence requirement:
+
+- Ensure this specify wrapper requires concrete Markdown evidence/checklist updates for every applicable checkpoint.
+- If a checkpoint does not apply in the current Spec-Kit run, require `N/A` with a short rationale instead of omitting it.
+- If a checkpoint is undecided, require `Open` with owner, follow-up, and re-evaluation trigger.
+
+
+Audit-ready evidence requirement:
+
+- Ensure this specify wrapper requires concrete Markdown evidence/checklist updates for every applicable checkpoint.
+- If a checkpoint does not apply in the current Spec-Kit run, require `N/A` with a short rationale instead of omitting it.
+- If a checkpoint is undecided, require `Open` with owner, follow-up, and re-evaluation trigger.
+
+
+Audit-ready evidence requirement:
+
+- Ensure this specify wrapper requires concrete Markdown evidence/checklist updates for every applicable checkpoint.
+- If a checkpoint does not apply in the current Spec-Kit run, require `N/A` with a short rationale instead of omitting it.
+- If a checkpoint is undecided, require `Open` with owner, follow-up, and re-evaluation trigger.
+
+
+Audit-ready evidence requirement:
+
+- Ensure this specify wrapper requires concrete Markdown evidence/checklist updates for every applicable checkpoint.
+- If a checkpoint does not apply in the current Spec-Kit run, require `N/A` with a short rationale instead of omitting it.
+- If a checkpoint is undecided, require `Open` with owner, follow-up, and re-evaluation trigger.
 """

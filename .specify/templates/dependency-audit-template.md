@@ -1,5 +1,31 @@
 # Abhängigkeits-Audit / Dependency Audit: [PROJECT]
 
+## Spec-Kit-Laufnachweis / Spec-Kit Run Evidence
+
+- Feature / Spec-ID:
+- Spec-Kit-Phase / Spec-Kit phase: [specify / plan / tasks / implement / review / release]
+- Branch / Commit / PR:
+- Datum des Laufs / Run date:
+- Evidenzverantwortliche*r / Evidence owner:
+- Reviewende Person / Reviewer:
+- Gepruefte Standards/Kriterien / Standards or criteria checked: NIST SSDF, SBOM/VEX, SLSA, OpenSSF Scorecard, package ecosystem audit, license compliance
+- Entscheidung / Decision: [Applicable / N/A / Open]
+- Evidenzpfad / Evidence path:
+- N/A-Begruendung, falls nicht anwendbar / N/A rationale, if not applicable:
+- Offene Folgeaktion mit Owner und Ausloeser / Open follow-up owner and trigger:
+- Ausloeser fuer Neubewertung / Re-evaluation trigger:
+- Belastbarkeitsnotiz / Assurance note: Diese Datei dokumentiert den konkreten Spec-Kit-Lauf als interne Audit- und Zertifizierungsvorbereitung. Sie ersetzt keine externe Auditierung, Rechtsberatung oder formale Zertifizierung.
+
+## Audit-Evidenzmatrix / Audit Evidence Matrix
+
+| Pruefpunkt / Checkpoint | Anwendbarkeit / Applicability | Erzeugte oder verlinkte Evidenz / Evidence produced or linked | Ergebnis / Result | Restrisiko oder Begruendung / Residual risk or rationale |
+|---|---|---|---|---|
+| Spec-Kit-Lauf und Scope sind identifiziert / Spec-Kit run and scope are identified | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Standard- oder Kriterienbezug ist zugeordnet / Standard or criteria mapping is recorded | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Evidenzpfad ist dokumentiert / Evidence path is documented | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Nichtanwendbarkeit ist begruendet / Non-applicability is justified | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Offene Punkte haben Owner und Ausloeser / Open findings have owner and trigger | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+
 **Projekt / Project**: [Level-2 project name]
 **Sprache / Language**: [Primary language from Level-2 registry]
 **Prüfer / Reviewer**: [Name]
@@ -7,14 +33,26 @@
 **Constitution-Referenz / Constitution Reference**: Principle XII (A.8.28), Principle XIII (A.8.27)
 
 <!--
-  Dieses Dokument erfasst den Audit-Status aller direkten und transitiven
-  Abhängigkeiten des Projekts. Es wird vor jedem Release und mindestens
-  monatlich aktualisiert. Nicht zutreffende Abschnitte mit N/A markieren.
+  Dieses Dokument dient als statischer Snapshot des Audit-Zustands.
+  Da Abhängigkeiten, CVEs und Lizenzen sich laufend ändern, ist statische
+  Dokumentation allein nicht ausreichend. Bevorzuge automatisierte Werkzeuge
+  (z. B. Dependency Track, Renovatebot, Dependabot) und nutze dieses
+  Dokument als Ergänzung für Entscheidungen, Ausnahmen und Release-Nachweise.
 
-  This document captures the audit status of all direct and transitive
-  dependencies of the project. It is updated before each release and at
-  least monthly. Mark non-applicable sections as N/A.
+  This document serves as a static snapshot of the audit state.
+  Since dependencies, CVEs, and licenses change continuously, static
+  documentation alone is insufficient. Prefer automated tooling
+  (e.g., Dependency Track, Renovatebot, Dependabot) and use this document
+  as a supplement for decisions, exceptions, and release evidence.
 -->
+
+> **Empfehlung / Recommendation**: Statische Dokumentation ersetzen oder ergänzen durch:
+>
+> - **[Dependency Track](https://dependencytrack.org/)** — nimmt SBOM-Artefakte aus CI-Pipelines entgegen und trackt CVEs sowie Lizenz-Compliance automatisch und kontinuierlich.
+> - **[Renovatebot](https://docs.renovatebot.com/)** / **[Dependabot](https://docs.github.com/en/code-security/dependabot)** — erstellen automatisch PRs für veraltete oder verwundbare Abhängigkeiten (Best Practice für alle Projekte).
+> - Diese Datei dient dann primär als Evidenz-Dokument für Release-Entscheidungen, Ausnahmen und Risikoakzeptanz.
+>
+> *Replace or supplement static documentation with automated tooling: Dependency Track for continuous SBOM/CVE/license tracking, Renovatebot or Dependabot for automated dependency update PRs. This file then serves primarily as an evidence document for release decisions, exceptions, and risk acceptance.*
 
 ## 1. Audit-Werkzeuge / Audit Tools
 

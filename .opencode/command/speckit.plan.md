@@ -78,3 +78,45 @@ Use this command to produce an implementation plan from an approved specificatio
 - No gate is left unresolved without rationale.
 - Test, coverage, dependency, and documentation impacts are planned before implementation.
 - Architecture evidence and justified `N/A` decisions are planned before implementation.
+
+
+Audit-ready evidence requirement:
+
+- Ensure this plan wrapper requires concrete Markdown evidence/checklist updates for every applicable checkpoint.
+- If a checkpoint does not apply in the current Spec-Kit run, require `N/A` with a short rationale instead of omitting it.
+- If a checkpoint is undecided, require `Open` with owner, follow-up, and re-evaluation trigger.
+
+
+Audit-ready evidence requirement:
+
+- Ensure this plan wrapper requires concrete Markdown evidence/checklist updates for every applicable checkpoint.
+- If a checkpoint does not apply in the current Spec-Kit run, require `N/A` with a short rationale instead of omitting it.
+- If a checkpoint is undecided, require `Open` with owner, follow-up, and re-evaluation trigger.
+
+
+Audit-ready evidence requirement:
+
+- Ensure this plan wrapper requires concrete Markdown evidence/checklist updates for every applicable checkpoint.
+- If a checkpoint does not apply in the current Spec-Kit run, require `N/A` with a short rationale instead of omitting it.
+- If a checkpoint is undecided, require `Open` with owner, follow-up, and re-evaluation trigger.
+
+
+Audit-ready evidence requirement:
+
+- Ensure this plan wrapper requires concrete Markdown evidence/checklist updates for every applicable checkpoint.
+- If a checkpoint does not apply in the current Spec-Kit run, require `N/A` with a short rationale instead of omitting it.
+- If a checkpoint is undecided, require `Open` with owner, follow-up, and re-evaluation trigger.
+
+
+Audit-ready evidence requirement:
+
+- Ensure this plan wrapper requires concrete Markdown evidence/checklist updates for every applicable checkpoint.
+- If a checkpoint does not apply in the current Spec-Kit run, require `N/A` with a short rationale instead of omitting it.
+- If a checkpoint is undecided, require `Open` with owner, follow-up, and re-evaluation trigger.
+
+
+Audit-ready evidence requirement:
+
+- Ensure this plan wrapper requires concrete Markdown evidence/checklist updates for every applicable checkpoint.
+- If a checkpoint does not apply in the current Spec-Kit run, require `N/A` with a short rationale instead of omitting it.
+- If a checkpoint is undecided, require `Open` with owner, follow-up, and re-evaluation trigger.

@@ -1,6 +1,6 @@
 # Cross-Platform Governance Preset
 
-Version: `0.1.0`
+Version: `0.2.0`
 Requires: `spec-kit >= 0.8.0` (uses the `wrap` and `append` composition
 strategies introduced in 0.8.x).
 
@@ -43,6 +43,7 @@ Preset strategy:
 
 Evidence templates included:
 
+- Spec-Kit run evidence fields are embedded in the evidence templates to support audit-ready applicability, N/A rationale, reviewer, and follow-up records.
 - `script-parity-checklist-template`
 - `man-page-template` (groff section 1)
 - `powershell-help-template` (bilingual `<# ... #>` block + Cmdlet
@@ -65,6 +66,10 @@ When not to use:
 
 - projects targeting only a single OS with no plan to support others
 - repositories with no script-shaped tooling
+
+Release notes:
+
+- `v0.2.0` adds audit-ready Spec-Kit run evidence fields so generated Markdown documents and checklists can record applicability, N/A rationale, reviewer, evidence path, residual risk, and follow-up per standards-relevant Spec-Kit run.
 
 Recommended standalone install priority:
 

@@ -1,6 +1,6 @@
 # Agent Parity Governance Preset
 
-Version: `0.2.0`
+Version: `0.3.0`
 Requires: `spec-kit >= 0.8.0` (uses the `wrap` and `append` composition
 strategies introduced in 0.8.x).
 
@@ -54,6 +54,10 @@ When not to use:
 
 - projects with only one agent guidance file and no plans to add another
 - one-off prototypes without long-term agent contributors
+
+Release notes:
+
+- `v0.3.0` adds audit-ready Spec-Kit run evidence fields so generated Markdown documents and checklists can record applicability, N/A rationale, reviewer, evidence path, residual risk, and follow-up per standards-relevant Spec-Kit run.
 
 Recommended standalone install priority:
 
