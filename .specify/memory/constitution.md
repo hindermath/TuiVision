@@ -861,14 +861,21 @@ workspace family consists of:
 
 | Preset | Version | Priority | Scope |
 |---|---:|---:|---|
-| `security-governance` | `v0.5.0` | `10` | secure development, MSL, language-specific secure coding, SSDF, ASVS, SBOM/VEX/SLSA, AI-SBOM, CRA/NIS2/EU AI Act/DORA awareness |
-| `architecture-governance` | `v0.4.0` | `20` | secure architecture, STRIDE/CAPEC, Zero Trust, SAMM, S-ADR, BSI C3A/C5 evidence |
-| `isaqb-architecture-governance` | `v0.1.0` | `30` | general iSAQB/arc42 architecture governance |
-| `a11y-governance` | `v0.3.0` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts, didactic inline-code-comment review |
-| `cross-platform-governance` | `v0.1.0` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
-| `agent-parity-governance` | `v0.2.0` | `60` | synchronized agent guidance and agent-neutral Spec-Kit model routing across declared AI-agent files |
+| `security-governance` | `v0.6.0` | `10` | secure development, MSL, language-specific secure coding, SSDF, ASVS, SBOM/VEX/SLSA, AI-SBOM, CRA/regulatory applicability |
+| `architecture-governance` | `v0.5.0` | `20` | secure architecture, STRIDE/CAPEC, Zero Trust, SAMM, S-ADR, BSI C3A cloud autonomy, BSI C5 cloud assurance |
+| `isaqb-architecture-governance` | `v0.2.0` | `30` | general iSAQB/arc42 architecture governance |
+| `a11y-governance` | `v0.4.0` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts, didactic inline-code-comment review |
+| `cross-platform-governance` | `v0.2.0` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
+| `agent-parity-governance` | `v0.3.0` | `60` | synchronized agent guidance and agent-neutral Spec-Kit model routing across declared AI-agent files |
 
-`security-governance` v0.5.0 keeps conditional `AI-SBOM` evidence, language-specific secure-coding profiles, and regulatory applicability screening for NIS2, CRA, EU AI Act, and DORA: development-tool-only AI usage is `N/A`, AI runtime/product components require G7/BSI AI-SBOM cluster evidence, and private training projects record regulatory `N/A` when no regulated scope exists. `architecture-governance` v0.4.0 adds conditional `BSI C3A` cloud-autonomy evidence and `BSI C5` cloud-compliance assurance evidence for cloud-service selection, provider dependencies, audit/assurance status, shared responsibility, and operational evidence. `a11y-governance` v0.3.0 adds didactic inline-code-comment governance for new or changed non-trivial logic.
+All six governance presets MUST produce or require audit-ready Spec-Kit run evidence for applicable checks. Each relevant checkpoint is recorded as `Applicable`, `N/A`, or `Open` with rationale, evidence path, reviewer, residual risk, and follow-up for the current Spec-Kit run.
+
+This matrix is the authoritative source for preset IDs, versions, priorities,
+and scope. Any preset version or priority change MUST update the matching
+compact overview and installation snippets in `README.md`,
+`.specify/memory/constitution.md`, the four agent guidance files,
+`scripts/templates/speckit-workflow-section.md`, and the matching agent
+templates under `scripts/templates/` in the same change.
 
 All six presets are published as standalone repositories under
 `https://github.com/hindermath/spec-kit-preset-*` and are included in the

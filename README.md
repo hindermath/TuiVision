@@ -111,16 +111,16 @@ installieren, sofern das Projekt keine begründete Ausnahme dokumentiert.
 
 Standard-Preset-Set:
 
-- `security-governance` v0.5.0, Priority 10
-- `architecture-governance` v0.4.0, Priority 20
-- `isaqb-architecture-governance` v0.1.0, Priority 30
-- `a11y-governance` v0.3.0, Priority 40
-- `cross-platform-governance` v0.1.0, Priority 50
-- `agent-parity-governance` v0.2.0, Priority 60
+- `security-governance` v0.6.0, Priority 10
+- `architecture-governance` v0.5.0, Priority 20
+- `isaqb-architecture-governance` v0.2.0, Priority 30
+- `a11y-governance` v0.4.0, Priority 40
+- `cross-platform-governance` v0.2.0, Priority 50
+- `agent-parity-governance` v0.3.0, Priority 60
 
-`security-governance` v0.5.0 behandelt `AI-SBOM` bedingt und ergänzt die regulatorische Anwendbarkeitsprüfung für NIS2, CRA, EU AI Act und DORA. `architecture-governance` v0.4.0 ergänzt bedingte BSI-C3A-/BSI-C5-Nachweise. `a11y-governance` v0.3.0 macht didaktische Inline-Code-Kommentarprüfung für neue oder geänderte nicht-triviale Logik explizit.
+`architecture-governance` v0.5.0 ergaenzt `BSI C3A` als bedingte Cloud-Autonomie-Evidenz und `BSI C5` als bedingte Cloud-Compliance-Assurance-Evidenz. `security-governance` v0.6.0 fuehrt `AI-SBOM` weiter als bedingt anwendbare Supply-Chain-Evidenz, ergaenzt sprachspezifische Secure-Coding-Profile und ergaenzt regulatorische Anwendbarkeit fuer NIS2, CRA, EU AI Act und DORA. `a11y-governance` v0.4.0 ergaenzt didaktische Inline-Code-Kommentar-Governance. Alle sechs Presets erzeugen oder verlangen audit-ready Spec-Kit-Run-Evidenz mit `Applicable` / `N/A` / `Open`, Begruendung, Evidenzpfad, Reviewer, Restrisiko und Follow-up.
 
-*`security-governance` v0.5.0 treats `AI-SBOM` as conditional and adds regulatory applicability screening for NIS2, CRA, EU AI Act, and DORA. `architecture-governance` v0.4.0 adds conditional BSI C3A / BSI C5 evidence. `a11y-governance` v0.3.0 makes didactic inline-code-comment review explicit for new or changed non-trivial logic.*
+*`architecture-governance` v0.5.0 adds conditional `BSI C3A` cloud-autonomy evidence and `BSI C5` cloud-compliance assurance evidence. `security-governance` v0.6.0 keeps conditional `AI-SBOM` evidence, adds language-specific secure-coding profiles, and adds regulatory applicability screening for NIS2, CRA, EU AI Act, and DORA. `a11y-governance` v0.4.0 adds didactic inline-code-comment governance. All six presets produce or require audit-ready Spec-Kit run evidence with `Applicable` / `N/A` / `Open`, rationale, evidence path, reviewer, residual risk, and follow-up.*
 
 Nach Installation oder Update prüfen:
 
@@ -135,10 +135,11 @@ Agenten-/Command-Dateien committen; `.specify/presets/.cache/` nicht committen.
 
 *All six governance presets are included in the `github/spec-kit` community
 catalog as of 2026-05-04. C#/.NET Level-2 projects default to all six presets
-unless a justified exception is documented. `security-governance` v0.5.0 keeps conditional `AI-SBOM` evidence, language-specific secure-coding profiles, and regulatory applicability screening; `a11y-governance` v0.3.0 adds didactic inline-code-comment governance. Commit `.specify/presets/` and
+unless a justified exception is documented. Commit `.specify/presets/` and
 generated agent/command files when presets are project policy; do not commit
 `.specify/presets/.cache/`.*
-
+generated agent/command files when presets are project policy; do not commit
+`.specify/presets/.cache/`.*
 ## Barrierefreiheit / Accessibility (A11Y)
 
 Dieses Projekt folgt grundlegenden Barrierefreiheitsstandards für alle

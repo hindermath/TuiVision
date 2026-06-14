@@ -1,5 +1,31 @@
 # Bedrohungsmodell / Threat Model: [FEATURE / PROJECT]
 
+## Spec-Kit-Laufnachweis / Spec-Kit Run Evidence
+
+- Feature / Spec-ID:
+- Spec-Kit-Phase / Spec-Kit phase: [specify / plan / tasks / implement / review / release]
+- Branch / Commit / PR:
+- Datum des Laufs / Run date:
+- Evidenzverantwortliche*r / Evidence owner:
+- Reviewende Person / Reviewer:
+- Gepruefte Standards/Kriterien / Standards or criteria checked: STRIDE, CAPEC, ISO 27001/27002 A.8.27, NIST SSDF, secure architecture risk evidence
+- Entscheidung / Decision: [Applicable / N/A / Open]
+- Evidenzpfad / Evidence path:
+- N/A-Begruendung, falls nicht anwendbar / N/A rationale, if not applicable:
+- Offene Folgeaktion mit Owner und Ausloeser / Open follow-up owner and trigger:
+- Ausloeser fuer Neubewertung / Re-evaluation trigger:
+- Belastbarkeitsnotiz / Assurance note: Diese Datei dokumentiert den konkreten Spec-Kit-Lauf als interne Audit- und Zertifizierungsvorbereitung. Sie ersetzt keine externe Auditierung, Rechtsberatung oder formale Zertifizierung.
+
+## Audit-Evidenzmatrix / Audit Evidence Matrix
+
+| Pruefpunkt / Checkpoint | Anwendbarkeit / Applicability | Erzeugte oder verlinkte Evidenz / Evidence produced or linked | Ergebnis / Result | Restrisiko oder Begruendung / Residual risk or rationale |
+|---|---|---|---|---|
+| Spec-Kit-Lauf und Scope sind identifiziert / Spec-Kit run and scope are identified | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Standard- oder Kriterienbezug ist zugeordnet / Standard or criteria mapping is recorded | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Evidenzpfad ist dokumentiert / Evidence path is documented | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Nichtanwendbarkeit ist begruendet / Non-applicability is justified | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Offene Punkte haben Owner und Ausloeser / Open findings have owner and trigger | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+
 **Projekt / Project**: [Level-2 project name]
 **Feature-Branch**: `[###-feature-name]`
 **Erstellt / Created**: [DATE]
@@ -11,6 +37,39 @@
 [Beschreibe, welches System, Feature oder welche Komponente dieses Bedrohungsmodell abdeckt.]
 
 *[Describe which system, feature, or component this threat model covers.]*
+
+---
+
+## Asset-Inventar & CIA-Matrix / Asset Inventory & CIA Matrix
+
+<!--
+  Liste alle relevanten Funktionalitäten und Datenwerte auf.
+  Bewerte jedes Asset nach Confidentiality (Vertraulichkeit), Integrity (Integrität)
+  und Availability (Verfügbarkeit): H = Hoch, M = Mittel, N = Niedrig, - = Nicht anwendbar.
+  Der CIA-Wert bestimmt den Schutzbedarf und leitet die STRIDE-Prioritäten.
+
+  List all relevant functionalities and data assets.
+  Rate each asset for Confidentiality, Integrity, and Availability:
+  H = High, M = Medium, L = Low, - = Not applicable.
+  The CIA rating determines protection needs and guides STRIDE priorities.
+-->
+
+| Asset / Funktionalität | Beschreibung / Description | Vertraulichkeit / Confidentiality | Integrität / Integrity | Verfügbarkeit / Availability | Gesamt-Schutzbedarf / Overall |
+|---|---|:---:|:---:|:---:|:---:|
+| [z. B. Benutzerdaten / User data] | [Personenbezogene Daten, PII] | H | H | M | **H** |
+| [z. B. Authentifizierungs-Token / Auth token] | [Session- und JWT-Tokens] | H | H | M | **H** |
+| [z. B. Konfiguration / Configuration] | [API-Keys, Verbindungszeichenketten] | H | M | L | **H** |
+| [z. B. Audit-Log / Audit log] | [Sicherheitsereignisse, Änderungsprotokoll] | M | H | M | **H** |
+| [z. B. Öffentliche API / Public API] | [Read-only Endpunkte] | - | M | H | **M** |
+
+**Legende / Legend**: H = Hoch/High · M = Mittel/Medium · L = Niedrig/Low · - = Nicht anwendbar/Not applicable
+
+> **Hinweis / Note**: Assets mit H in Confidentiality oder Integrity erfordern mindestens Defense-in-Depth
+> (Prinzip XIII) und sind bevorzugt in der STRIDE-Analyse abzudecken.
+> *Assets rated H in Confidentiality or Integrity require at least Defense-in-Depth (Principle XIII)
+> and should be prioritised in the STRIDE analysis.*
+
+---
 
 ## Trust Boundaries / Vertrauensgrenzen
 
