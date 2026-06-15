@@ -8,23 +8,23 @@
 - Datum des Laufs / Run date:
 - Evidenzverantwortliche*r / Evidence owner:
 - Reviewende Person / Reviewer:
-- Gepruefte Standards/Kriterien / Standards or criteria checked: STRIDE, CAPEC, ISO 27001/27002 A.8.27, NIST SSDF, secure architecture risk evidence
+- Geprüfte Standards/Kriterien / Standards or criteria checked: STRIDE, CAPEC, ISO 27001/27002 A.8.27, NIST SSDF, secure architecture risk evidence
 - Entscheidung / Decision: [Applicable / N/A / Open]
 - Evidenzpfad / Evidence path:
-- N/A-Begruendung, falls nicht anwendbar / N/A rationale, if not applicable:
-- Offene Folgeaktion mit Owner und Ausloeser / Open follow-up owner and trigger:
-- Ausloeser fuer Neubewertung / Re-evaluation trigger:
+- N/A-Begründung, falls nicht anwendbar / N/A rationale, if not applicable:
+- Offene Folgeaktion mit Owner und Auslöser / Open follow-up owner and trigger:
+- Auslöser für Neubewertung / Re-evaluation trigger:
 - Belastbarkeitsnotiz / Assurance note: Diese Datei dokumentiert den konkreten Spec-Kit-Lauf als interne Audit- und Zertifizierungsvorbereitung. Sie ersetzt keine externe Auditierung, Rechtsberatung oder formale Zertifizierung.
 
 ## Audit-Evidenzmatrix / Audit Evidence Matrix
 
-| Pruefpunkt / Checkpoint | Anwendbarkeit / Applicability | Erzeugte oder verlinkte Evidenz / Evidence produced or linked | Ergebnis / Result | Restrisiko oder Begruendung / Residual risk or rationale |
+| Prüfpunkt / Checkpoint | Anwendbarkeit / Applicability | Erzeugte oder verlinkte Evidenz / Evidence produced or linked | Ergebnis / Result | Restrisiko oder Begründung / Residual risk or rationale |
 |---|---|---|---|---|
 | Spec-Kit-Lauf und Scope sind identifiziert / Spec-Kit run and scope are identified | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
 | Standard- oder Kriterienbezug ist zugeordnet / Standard or criteria mapping is recorded | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
 | Evidenzpfad ist dokumentiert / Evidence path is documented | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
-| Nichtanwendbarkeit ist begruendet / Non-applicability is justified | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
-| Offene Punkte haben Owner und Ausloeser / Open findings have owner and trigger | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Nichtanwendbarkeit ist begründet / Non-applicability is justified | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Offene Punkte haben Owner und Auslöser / Open findings have owner and trigger | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
 
 **Projekt / Project**: [Level-2 project name]
 **Feature-Branch**: `[###-feature-name]`
@@ -45,7 +45,7 @@
 <!--
   Liste alle relevanten Funktionalitäten und Datenwerte auf.
   Bewerte jedes Asset nach Confidentiality (Vertraulichkeit), Integrity (Integrität)
-  und Availability (Verfügbarkeit): H = Hoch, M = Mittel, N = Niedrig, - = Nicht anwendbar.
+  und Availability (Verfügbarkeit): H = Hoch, M = Mittel, L = Niedrig, - = Nicht anwendbar.
   Der CIA-Wert bestimmt den Schutzbedarf und leitet die STRIDE-Prioritäten.
 
   List all relevant functionalities and data assets.
@@ -138,8 +138,8 @@ TB = Trust Boundary / Vertrauensgrenze
 ## CAPEC-Referenzen / CAPEC References
 
 <!--
-  Verweise auf relevante CAPEC-Angriffsmuster fuer die risikoreichsten
-  Angriffswege. Keine Vollstaendigkeit erforderlich; Fokus auf realistische
+  Verweise auf relevante CAPEC-Angriffsmuster für die risikoreichsten
+  Angriffswege. Keine Vollständigkeit erforderlich; Fokus auf realistische
   Angriffstechniken.
 
   Reference relevant CAPEC attack patterns for the highest-risk attack paths.
@@ -183,5 +183,5 @@ TB = Trust Boundary / Vertrauensgrenze
 - CAPEC: [capec.mitre.org](https://capec.mitre.org/)
 
 <!-- EN: threat-model-template.md
-[DE-Zusammenfassung: Template fuer Bedrohungsmodelle basierend auf STRIDE-Methodik, ISO 27002 A.8.26/A.8.27.]
+[DE-Zusammenfassung: Template für Bedrohungsmodelle basierend auf STRIDE-Methodik, ISO 27002 A.8.26/A.8.27.]
 -->

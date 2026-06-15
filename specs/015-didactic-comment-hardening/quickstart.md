@@ -5,12 +5,12 @@
 
 ## Deutsch
 
-Dieser Quickstart beschreibt, wie die spaetere Umsetzung lokal vorbereitet,
-ausgefuehrt und geprueft werden soll. Ziel ist ein selektiver
-Kommentar-Haertungslauf fuer zentrale Framework-Flows und Smoke-Test-Helfer,
-nicht eine Runtime-Aenderung.
+Dieser Quickstart beschreibt, wie die spätere Umsetzung lokal vorbereitet,
+ausgeführt und geprüft werden soll. Ziel ist ein selektiver
+Kommentar-Härtungslauf für zentrale Framework-Flows und Smoke-Test-Helfer,
+nicht eine Runtime-Änderung.
 
-### 1. Arbeitszweig und Spec-Kit-Werkzeuge pruefen
+### 1. Arbeitszweig und Spec-Kit-Werkzeuge prüfen
 
 ```bash
 git checkout 015-didactic-comment-hardening
@@ -21,22 +21,22 @@ specify check
 Erwartung: Der ausgegebene Spec-Pfad zeigt auf
 `specs/015-didactic-comment-hardening/spec.md`.
 
-### 2. Evidence-Ledger anlegen oder pruefen
+### 2. Evidence-Ledger anlegen oder prüfen
 
-Die spaetere Implementierung fuehrt die verbindliche Review-Evidence hier:
+Die spätere Implementierung führt die verbindliche Review-Evidence hier:
 
 ```text
 specs/015-didactic-comment-hardening/pr-evidence.md
 ```
 
 Jeder Eintrag muss Review-Bereich, Hotspot-Kategorie, Entscheidung,
-Begruendung, Kommentarbedarf, geaenderten oder ungeaenderten Kommentarzustand,
-Aenderungszusammenfassung, Validierungs- oder Proof-Grenze und
+Begründung, Kommentarbedarf, geänderten oder ungeänderten Kommentarzustand,
+Änderungszusammenfassung, Validierungs- oder Proof-Grenze und
 Follow-up-Grenze festhalten.
 
 ### 3. Hotspot-Inventar erstellen
 
-Pruefe mindestens diese Kategorien:
+Prüfe mindestens diese Kategorien:
 
 ```text
 Event-/Command-/Dispatch-Flows
@@ -50,11 +50,11 @@ Smoke-Test-Helfer
 ```
 
 Wenn eine Kategorie aktuell keinen Kommentarbedarf hat, dokumentiert
-`pr-evidence.md` die `NoCommentNeeded`- oder `CommentAdequate`-Begruendung.
+`pr-evidence.md` die `NoCommentNeeded`- oder `CommentAdequate`-Begründung.
 
 ### 4. Kommentarentscheidung je Bereich treffen
 
-Erlaubt ist genau eine primaere Entscheidung:
+Erlaubt ist genau eine primäre Entscheidung:
 
 ```text
 CommentAdequate
@@ -65,27 +65,27 @@ FollowUpHardening
 ```
 
 `FollowUpHardening` beschreibt echte Framework-, Test-, Visual- oder
-Proof-Probleme, die ausserhalb dieses Kommentar-Laufs bleiben.
+Proof-Probleme, die außerhalb dieses Kommentar-Laufs bleiben.
 
-### 5. Kommentare nur dort aendern, wo sie Lernwert haben
+### 5. Kommentare nur dort ändern, wo sie Lernwert haben
 
-Neue oder geaenderte didaktische Kommentare:
+Neue oder geänderte didaktische Kommentare:
 
-- erklaeren Warum, Trade-off, Randbedingung, historische Abweichung oder
+- erklären Warum, Trade-off, Randbedingung, historische Abweichung oder
   Proof-Grenze;
 - wiederholen nicht offensichtliche Identifier, Operatoren, Zuweisungen oder
   Assertions;
 - bleiben normalerweise bei 1 bis 3 Zeilen;
-- sind bei didaktischen Erklaerbloecken German-first/English-second und etwa
+- sind bei didaktischen Erklärblöcken German-first/English-second und etwa
   CEFR-B2;
-- lassen technische Lizenz-, Generator- und Markerzeilen unveraendert.
+- lassen technische Lizenz-, Generator- und Markerzeilen unverändert.
 
-### 6. DocFX- und A11Y-Trigger pruefen
+### 6. DocFX- und A11Y-Trigger prüfen
 
-Pure `//`- oder `/* */`-Kommentarhaertung loest keinen DocFX-Zwang aus.
+Pure `//`- oder `/* */`-Kommentarhärtung löst keinen DocFX-Zwang aus.
 
 Wenn XML-Kommentare, API-Signaturen, generierte API-Dokumentation,
-Dokumentationsnavigation oder learner-facing Guides geaendert werden:
+Dokumentationsnavigation oder learner-facing Guides geändert werden:
 
 ```bash
 docfx docfx.json
@@ -95,9 +95,9 @@ npm run test:docfx
 
 Generierte `_site/`- und `api/*.yml`-Dateien bleiben aus dem Commit heraus.
 
-### 7. Agent-Guidance pruefen
+### 7. Agent-Guidance prüfen
 
-Wenn projektweite Kommentarregeln geaendert werden, sind diese Dateien zusammen
+Wenn projektweite Kommentarregeln geändert werden, sind diese Dateien zusammen
 zu aktualisieren:
 
 ```text
@@ -109,26 +109,26 @@ GEMINI.md
 ```
 
 Wenn nur feature-lokale Kommentare und Evidence betroffen sind, dokumentiert
-`pr-evidence.md`, warum keine erneute Guidance-Aenderung noetig war.
+`pr-evidence.md`, warum keine erneute Guidance-Änderung nötig war.
 
-### 8. Validierung ausfuehren
+### 8. Validierung ausführen
 
-Vor jedem Build- oder Testbefehl muss `Directory.Build.props` gemaess
+Vor jedem Build- oder Testbefehl muss `Directory.Build.props` gemäß
 Branch-Version `1.15.<patch>.<build>` ausgerichtet und der manuelle
-Build-Zaehler nach Repository-Regel erhoeht werden.
+Build-Zähler nach Repository-Regel erhöht werden.
 
 Vor jedem Commit oder Push auf dem nummerierten Branch muss
 `Directory.Build.props` ebenfalls auf `1.15.<patch>.<build>` ausgerichtet
-sein; der manuelle Build-Zaehler wird dabei nicht erhoeht.
+sein; der manuelle Build-Zähler wird dabei nicht erhöht.
 
-Minimal fuer reine Kommentar-/Evidence-Aenderungen:
+Minimal für reine Kommentar-/Evidence-Änderungen:
 
 ```bash
 git diff --check
 dotnet format --verify-no-changes
 ```
 
-Wenn Source- oder Test-Helferdateien beruehrt werden, fuehre passende gezielte
+Wenn Source- oder Test-Helferdateien berührt werden, führe passende gezielte
 Tests aus, zum Beispiel:
 
 ```bash
@@ -140,14 +140,14 @@ dotnet test tests/TuiVision.Compatibility.Tests/ --configuration Release
 dotnet test tests/TuiVision.Examples.SmokeTests/ --configuration Release
 ```
 
-Wenn gemeinsame Logik oder breite Smoke-Helfer beruehrt werden:
+Wenn gemeinsame Logik oder breite Smoke-Helfer berührt werden:
 
 ```bash
 dotnet test --configuration Release
 dotnet test --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings
 ```
 
-### 9. Governance-Evidence abschliessen
+### 9. Governance-Evidence abschließen
 
 `pr-evidence.md` muss festhalten:
 
@@ -156,7 +156,7 @@ dotnet test --configuration Release --collect:"XPlat Code Coverage" --settings c
   DORA, STRIDE/CIA/CAPEC, S-ADR, Zero Trust, SAMM, BSI C3A/C5 und
   Cross-Platform-Script-Parity bleiben `N/A`, solange ihre Trigger nicht
   eintreten;
-- geaenderte Evidence und Guidance bleiben text-first und barrierearm lesbar.
+- geänderte Evidence und Guidance bleiben text-first und barrierearm lesbar.
 
 ## English
 

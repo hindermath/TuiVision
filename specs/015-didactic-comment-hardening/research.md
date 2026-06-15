@@ -116,6 +116,6 @@
 
 ## Entscheidung / Decision Summary
 
-Deutsch: Der Plan macht 015 zu einem gezielten Kommentar-Haertungslauf: zentrale Hotspots werden geprueft, jede Entscheidung wird belegt, notwendige Kommentare erklaeren Gruende statt Code zu wiederholen, und Scope-Ausweitungen werden als Follow-up dokumentiert.
+Deutsch: Der Plan macht 015 zu einem gezielten Kommentar-Härtungslauf: zentrale Hotspots werden geprüft, jede Entscheidung wird belegt, notwendige Kommentare erklären Gründe statt Code zu wiederholen, und Scope-Ausweitungen werden als Follow-up dokumentiert.
 
 English: The plan makes 015 a targeted comment-hardening run: central hotspots are reviewed, every decision is evidenced, needed comments explain reasons instead of repeating code, and scope expansions are documented as follow-up.

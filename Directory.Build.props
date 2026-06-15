@@ -5,9 +5,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <Version>1.15.11.55</Version>
-    <AssemblyVersion>1.15.11.55</AssemblyVersion>
-    <FileVersion>1.15.11.55</FileVersion>
+    <Version>1.15.13.55</Version>
+    <AssemblyVersion>1.15.13.55</AssemblyVersion>
+    <FileVersion>1.15.13.55</FileVersion>
     <!-- Fehlende XML-Docs sind in Release ein Build-Fehler (Constitution §III). -->
     <!-- Missing XML documentation is a build error in Release (Constitution §III). -->
     <WarningsAsErrors Condition="'$(Configuration)' == 'Release'">CS1591</WarningsAsErrors>
