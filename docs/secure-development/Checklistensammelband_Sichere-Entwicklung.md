@@ -1,0 +1,12815 @@
+# Checklistensammelband Sichere Entwicklung / Secure Development Checklist Compendium
+
+**Stand / Date:** 2026-06-17  
+**Quelle / Source:** generisch abgeleitet aus `~/RL_Sichere-Entwicklung` / generically derived from `~/RL_Sichere-Entwicklung`
+
+## Zweck / Purpose
+
+**DE:** Dieser Sammelband fuehrt die zwoelf Checklisten fuer sichere Entwicklung zusammen. Er ist fuer Fachinformatik-Auszubildende, Entwickler*innen, Reviewer und KI-Agenten gedacht. Er ist bewusst organisationsneutral und verlangt trotzdem eine belastbare Nachweisfuehrung.
+
+**EN:** This compendium combines the twelve secure-development checklists. It is intended for IT specialist apprentices, developers, reviewers, and AI agents. It is deliberately organization-neutral while still requiring reliable evidence.
+
+## Bewertungslogik / Assessment Logic
+
+- **Erfuellt / Fulfilled:** Die Anforderung ist umgesetzt und ein pruefbarer Nachweis ist genannt.
+- **Teilweise erfuellt / Partly fulfilled:** Die Anforderung ist teilweise umgesetzt; Restarbeiten sind dokumentiert.
+- **Nicht erfuellt / Not fulfilled:** Die Anforderung ist nicht umgesetzt oder der Nachweis fehlt; eine naechste Massnahme ist erforderlich.
+- **N/A:** Die Anforderung ist fuer den konkreten Spec-Kit-Lauf oder das Projekt nicht anwendbar; die Begruendung ist dokumentiert.
+
+## Pflichtfelder je Pruefpunkt / Required Fields per Review Item
+
+Status, Begruendung, Evidenzpfad oder Link, naechste Massnahme mit verantwortlicher Person und Zieltermin.
+
+## Kapitelueberblick / Chapter Overview
+
+- [CL_01_Standards-Anwendbarkeit](checklisten/CL_01_Standards-Anwendbarkeit.md)
+- [CL_02_Sichere-Softwarearchitektur](checklisten/CL_02_Sichere-Softwarearchitektur.md)
+- [CL_03_Krypto-Mindestvorgaben](checklisten/CL_03_Krypto-Mindestvorgaben.md)
+- [CL_04_Bedrohungsmodellierung](checklisten/CL_04_Bedrohungsmodellierung.md)
+- [CL_05_Lieferkette-Build-Integritaet](checklisten/CL_05_Lieferkette-Build-Integritaet.md)
+- [CL_06_Schwachstellenoffenlegung](checklisten/CL_06_Schwachstellenoffenlegung.md)
+- [CL_07_CRA-Anwendbarkeit](checklisten/CL_07_CRA-Anwendbarkeit.md)
+- [CL_08_Sicherheits-Code-Review](checklisten/CL_08_Sicherheits-Code-Review.md)
+- [CL_09_KI-Codeerzeugung](checklisten/CL_09_KI-Codeerzeugung.md)
+- [CL_10_Sichere-Entwicklungsumgebung](checklisten/CL_10_Sichere-Entwicklungsumgebung.md)
+- [CL_11_Datenschutz-Folgenabschaetzung](checklisten/CL_11_Datenschutz-Folgenabschaetzung.md)
+- [CL_12_Agentische-KI-Sandbox](checklisten/CL_12_Agentische-KI-Sandbox.md)
+
+
+---
+
+<!--
+Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
+Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+This document is organization-neutral and written as a generic training and review baseline.
+-->
+
+> **DE:** Diese Checkliste ist generisch und projektunabhaengig. Sie ist als Ausbildungs-, Review- und Haertungsgrundlage gedacht. Eine Nichtanwendbarkeit muss als `N/A` mit kurzer Begruendung dokumentiert werden.
+>
+> **EN:** This checklist is generic and project-independent. It is intended as a training, review, and hardening baseline. Non-applicability must be documented as `N/A` with a short rationale.
+
+## Checkliste 01 – Standards-Anwendbarkeit / Standards Applicability
+
+### Zweck / Purpose
+
+**DE:** Diese Checkliste hilft dem Projektteam, die anwendbaren Sicherheitsstandards
+für ein Software- oder Service-Vorhaben zu bestimmen und die Auswahl
+nachvollziehbar zu dokumentieren. Sie ist mitgeltend zur Richtlinie „Sichere
+Entwicklung" und unterstützt die Audit-Vorbereitung für ISO/IEC 27001:2022.
+
+**EN:** This checklist helps the project team identify the applicable security
+standards for a software or service project and document the choice in a
+traceable way. It supports the guideline "Secure Development" and helps prepare
+audits for ISO/IEC 27001:2022.
+
+### Geltungsbereich / Scope
+
+**DE:** Gilt für alle neuen und bestehenden Entwicklungsvorhaben, die unter die
+Richtlinie „Sichere Entwicklung" fallen. Anwendung zu Projektbeginn und bei
+jeder größeren Änderung der Architektur oder des Liefermodells.
+
+**EN:** Applies to all new and existing development projects covered by the
+"Secure Development" guideline. Use at project start and after every major
+change in architecture or delivery model.
+
+### Mitgeltende Dokumente / Related Documents
+
+- RL Sichere-Entwicklung
+- ISO/IEC 27001:2022 Annex A.5.8, A.8.25–A.8.33
+- NIST SP 800-218 (SSDF)
+- OWASP ASVS, OWASP SAMM
+- NIST SP 800-207 (Zero Trust)
+- Richtlinie (EU) 2022/2555 (NIS2)
+- Verordnung (EU) 2022/2554 (DORA)
+- Verordnung (EU) 2024/1689 (EU AI Act)
+
+#### URL-/Ablageverweise / URLs and Storage Locations
+
+**DE:** Diese Links helfen beim Review. Projekt- oder organisationsinterne Dokumente koennen als lokale Arbeitskopie oder als Verweis auf den festgelegten Ablageort ergaenzt werden.
+
+**EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
+
+- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
+- **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
+- **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
+- **Secure coding guideline:** this guide or an equivalent project-specific guideline
+- **CISA Memory Safe Roadmaps:** [lokale Textfassung des CISA-Dokuments / local text version of the CISA document](../THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.txt), [CISA-Webseite zum Dokument / CISA webpage for the document](https://www.cisa.gov/resources-tools/resources/case-memory-safe-roadmaps)
+- **ISO/IEC 27001:2022:** [offizielle ISO-Webseite zur ISO/IEC 27001:2022 / official ISO webpage for ISO/IEC 27001:2022](https://www.iso.org/standard/27001)
+- **ISO/IEC 27002:2022:** [offizielle ISO-Webseite zur ISO/IEC 27002:2022 / official ISO webpage for ISO/IEC 27002:2022](https://www.iso.org/standard/75652.html)
+- **NIST SSDF SP 800-218:** [NIST-Veröffentlichung SP 800-218 Secure Software Development Framework / NIST publication SP 800-218 Secure Software Development Framework](https://csrc.nist.gov/publications/detail/sp/800-218/final)
+- **NIST Zero Trust SP 800-207:** [NIST-Veröffentlichung SP 800-207 Zero Trust Architecture / NIST publication SP 800-207 Zero Trust Architecture](https://csrc.nist.gov/publications/detail/sp/800-207/final)
+- **OWASP ASVS:** [OWASP-Projektseite Application Security Verification Standard / OWASP project page Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)
+- **OWASP Cheat Sheet Series:** [OWASP Cheat Sheet Series Projektseite / OWASP Cheat Sheet Series project page](https://cheatsheetseries.owasp.org/)
+- **OWASP Proactive Controls:** [OWASP Proactive Controls Projektseite / OWASP Proactive Controls project page](https://owasp.org/www-project-proactive-controls/)
+- **OWASP SAMM:** [OWASP SAMM Projektseite / OWASP SAMM project page](https://owaspsamm.org/)
+- **OWASP Top 10 for LLM Applications:** [OWASP Top 10 for LLM Applications Projektseite / OWASP Top 10 for LLM Applications project page](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- **CWE Top 25:** [MITRE CWE Top 25 Übersicht / MITRE CWE Top 25 overview](https://cwe.mitre.org/top25/)
+- **CAPEC:** [MITRE CAPEC Katalog / MITRE CAPEC catalogue](https://capec.mitre.org/)
+- **CycloneDX:** [CycloneDX SBOM-Standard Projektseite / CycloneDX SBOM standard project page](https://cyclonedx.org/)
+- **SPDX:** [SPDX SBOM-Standard Projektseite / SPDX SBOM standard project page](https://spdx.dev/)
+- **CSAF/VEX:** [OASIS CSAF und VEX Dokumentation / OASIS CSAF and VEX documentation](https://oasis-open.github.io/csaf-documentation/)
+- **SLSA:** [SLSA Supply-chain Levels for Software Artifacts Projektseite / SLSA project page](https://slsa.dev/)
+- **OpenSSF Scorecard:** [OpenSSF Scorecard Projektseite / OpenSSF Scorecard project page](https://scorecard.dev/)
+- **RFC 9116 security.txt:** [RFC 9116 zu security.txt / RFC 9116 for security.txt](https://www.rfc-editor.org/rfc/rfc9116)
+- **NIST AI Risk Management Framework:** [NIST AI Risk Management Framework Webseite / NIST AI Risk Management Framework webpage](https://www.nist.gov/itl/ai-risk-management-framework)
+- **NIS2-Richtlinie:** [EUR-Lex Richtlinie (EU) 2022/2555 / EUR-Lex Directive (EU) 2022/2555](https://eur-lex.europa.eu/eli/dir/2022/2555/oj)
+- **DORA:** [EUR-Lex Verordnung (EU) 2022/2554 / EUR-Lex Regulation (EU) 2022/2554](https://eur-lex.europa.eu/eli/reg/2022/2554/oj)
+- **EU AI Act:** [EUR-Lex Verordnung (EU) 2024/1689 / EUR-Lex Regulation (EU) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+- **EU Cyber Resilience Act:** [EU-Amtsblatt zum Cyber Resilience Act / EU Official Journal for the Cyber Resilience Act](https://eur-lex.europa.eu/eli/reg/2024/2847/oj)
+- **BSI TR-02102:** [BSI-Webseite zur Technischen Richtlinie TR-02102 / BSI webpage for Technical Guideline TR-02102](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Technische-Richtlinien/TR-nach-Thema-sortiert/tr02102/tr-02102.html)
+
+### Bewertung und Dokumentation / Assessment and Documentation
+
+**DE:** Jeder Prüfpunkt bekommt genau einen Status. Schreibe die Begründung so, dass eine neue Kollegin oder ein neuer Kollege den Entscheid später ohne Rückfrage versteht.
+
+**EN:** Each checklist item gets exactly one status. Write the explanation so that a new team member can understand the decision later without asking again.
+
+- **Erfüllt / Fulfilled:** Die Anforderung ist umgesetzt und es gibt einen prüfbaren Nachweis.
+- **Nicht erfüllt / Not fulfilled:** Die Anforderung ist noch nicht umgesetzt oder der Nachweis fehlt. Es muss eine Aufgabe mit Verantwortlicher Person und Termin geben.
+- **Nicht anwendbar / Not applicable:** Die Anforderung passt nicht zum Projekt. Das ist erlaubt, aber nur mit kurzer Begründung.
+
+**Pflichtfelder je Prüfpunkt / Required fields per item:** Status, Begründung, Evidenzpfad oder Link, nächste Maßnahme mit Verantwortlicher Person und Zieltermin.
+
+### Durchführungshinweise / Implementation Guidance
+
+**DE:** Nutze diese Checkliste nicht als reine Ja/Nein-Liste. Sie ist ein Arbeits- und Auditdokument. Prüfe jeden Punkt gegen reale Artefakte: Code, Pull Request, Architekturdiagramm, Build-Log, Scan-Ergebnis, Ticket, Betriebsdokumentation oder Freigabeprotokoll. Wenn ein Nachweis noch fehlt, markiere den Punkt als „nicht erfüllt" und lege eine konkrete Folgeaufgabe an.
+
+**EN:** Do not use this checklist as a simple yes/no list. It is a working and audit document. Check each item against real artefacts: code, pull request, architecture diagram, build log, scan result, ticket, operations document, or approval record. If evidence is missing, mark the item as "not fulfilled" and create a concrete follow-up task.
+
+**DE:** Schreibe kurze, klare Begründungen. Vermeide Abkürzungen ohne Erklärung. Wenn ein Punkt technisch schwierig ist, beschreibe den aktuellen Stand, das Risiko und den nächsten machbaren Schritt.
+
+**EN:** Write short and clear explanations. Avoid unexplained abbreviations. If an item is technically difficult, describe the current state, the risk, and the next feasible step.
+
+**DE:** Jeder Prüfpunkt muss deshalb drei Fragen beantworten: Was bedeutet die Anforderung im Projektalltag? Was ist konkret zu tun oder zu entscheiden? Welcher Nachweis zeigt das Ergebnis? Verwende Standard-IDs, Toolnamen und Abkürzungen nur zusammen mit einer kurzen Erklärung in Alltagssprache. Wenn ein Punkt für Auszubildende oder neue Teammitglieder nicht selbsterklärend ist, ergänze eine kurze Erklärung in der Begründung.
+
+**EN:** Each item must therefore answer three questions: What does the requirement mean in daily project work? What exactly must be done or decided? Which evidence shows the result? Use standard IDs, tool names, and abbreviations only together with a short plain-language explanation. If an item is not self-explanatory for apprentices or new team members, add a short explanation in the rationale.
+
+### Beispiel / Example
+
+**DE:** Ein internes Web-Portal mit Login wählt ASVS Level 2. SBOM ist erforderlich, weil ein Release-Artefakt gebaut wird. OpenSSF Scorecard ist „nicht anwendbar", wenn keine öffentliche OSS-Abhängigkeit bewertet wird; die Begründung nennt dann die betroffenen internen Repositories.
+
+**EN:** An internal web portal with login selects ASVS Level 2. An SBOM is required because a release artefact is built. OpenSSF Scorecard is "not applicable" if no public OSS dependency is assessed; the explanation then names the affected internal repositories.
+
+### A11Y-Hinweise / A11Y Notes
+
+**DE:** Beim Ausfüllen dieser Checkliste müssen alle Nachweise auch textlich verständlich sein. Verweise sollen beschreibende Linktexte haben. Screenshots, Diagramme oder Scan-Auszüge brauchen eine kurze Textbeschreibung. Der Status darf nicht nur über Farbe erkennbar sein.
+
+**EN:** When this checklist is filled in, all evidence must also be understandable as text. References should use descriptive link text. Screenshots, diagrams, or scan extracts need a short text description. The status must not be shown by color alone.
+
+### Wichtige Begriffe / Key Terms
+
+**DE:** Die folgenden Begriffe kommen in dieser Checkliste vor. Die Links springen zum Glossar dieses Kapitels, damit Auszubildende und Entwickler:innen ohne Sicherheits-Spezialwissen die Begriffe direkt nachlesen können.
+
+**EN:** The following terms appear in this checklist. The links jump to this chapter's glossary so that apprentices and developers without specialist security knowledge can look them up directly.
+
+- [ISO/IEC 27001](#cl-01-glossar-iso-27001)
+- [NIST SSDF](#cl-01-glossar-nist-ssdf)
+- [CWE Top 25](#cl-01-glossar-cwe-top-25)
+- [OWASP ASVS](#cl-01-glossar-owasp-asvs)
+- [OWASP SAMM](#cl-01-glossar-owasp-samm)
+- [SBOM / Software Bill of Materials](#cl-01-glossar-sbom)
+- [VEX / Vulnerability Exploitability eXchange](#cl-01-glossar-vex)
+- [SLSA](#cl-01-glossar-slsa)
+- [Zero Trust](#cl-01-glossar-zero-trust)
+- [CAPEC](#cl-01-glossar-capec)
+- [OpenSSF Scorecard](#cl-01-glossar-openssf-scorecard)
+- [CRA / Cyber Resilience Act](#cl-01-glossar-cra)
+- [NIS2](#cl-01-glossar-nis2)
+- [DORA](#cl-01-glossar-dora)
+- [EU AI Act](#cl-01-glossar-eu-ai-act)
+- [SoA / Statement of Applicability / Anwendbarkeitserklärung](#cl-01-glossar-soa)
+- [Nicht anwendbar / N/A](#cl-01-glossar-nicht-anwendbar)
+
+### Checkliste / Checklist
+
+#### 1. NIST SSDF und CWE Top 25 / NIST SSDF and CWE Top 25
+
+- **DE:** Dieser Punkt legt die Sicherheitsbasis für jedes Projekt fest.
+  NIST SSDF (NIST SP 800-218) beschreibt, wie sichere Software
+  geplant, gebaut und gepflegt wird. Die CWE Top 25 sind eine Liste
+  häufiger und gefährlicher Programmierfehler, zum Beispiel Cross-Site
+  Scripting, SQL Injection, unsichere Speicherzugriffe und Path
+  Traversal. Für das Projekt bedeutet das: Im Projektplan steht,
+  welche SSDF-Praktiken genutzt werden. In der Code-Review-Vorlage,
+  im Linter oder im Security-Scan steht, wie die CWE Top 25 geprüft
+  werden.
+- **EN:** This item defines the security baseline for every project.
+  NIST SSDF (NIST SP 800-218) describes how secure software is planned,
+  built, and maintained. The CWE Top 25 are a list of common and
+  dangerous programming mistakes, for example cross-site scripting,
+  SQL injection, unsafe memory access, and path traversal. For the
+  project this means: the project plan states which SSDF practices are
+  used. The code review template, linter, or security scan states how
+  the CWE Top 25 are checked.
+- **Mindestprüfung / Minimum check:** PO.1 dokumentiert
+  Sicherheitsanforderungen im Plan. PS.1 schützt die Integrität des
+  Quellcodes, zum Beispiel durch signierte Commits (`git commit -S`,
+  GPG oder Sigstore). PW.4 verankert sichere Codierungsregeln im
+  Style-Guide. PW.7 verlangt Code-Review mit Sicherheits-Fokus. PW.8
+  nutzt statische Analyse, zum Beispiel Semgrep, SonarQube oder
+  CodeQL. RV.1 verfolgt Schwachstellen in einem Issue-System mit
+  Reaktionsfrist. / PO.1 documents security requirements in the plan.
+  PS.1 protects source-code integrity, for example with signed commits
+  (`git commit -S`, GPG, or Sigstore). PW.4 places secure coding rules
+  in the style guide. PW.7 requires security-focused code review. PW.8
+  uses static analysis, for example Semgrep, SonarQube, or CodeQL.
+  RV.1 tracks vulnerabilities in an issue system with a response time.
+- **Akzeptanz / Acceptance:** Der Projektplan nennt die genutzten
+  SSDF-Praktiken mit ID und kurzer Alltagserklärung. Die Code-Review-
+  Vorlage, der Linter-Regelsatz oder der Scan-Bericht zeigt, wie die
+  CWE Top 25 geprüft werden. / The project plan lists the used SSDF
+  practices with ID and a short plain-language explanation. The code
+  review template, linter rule set, or scan report shows how the CWE
+  Top 25 are checked.
+- **Referenz / Reference:** ISO 27002 A.8.28; Verfassung XII, XIV.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 2. OWASP ASVS-Level / OWASP ASVS Level
+
+- **DE:** Für Web-, API-, HTTP- oder authentifizierte Dienste den ASVS-Level
+  (Application Security Verification Standard, derzeit stabile Version 5.0.0)
+  festlegen. **L1** passt für einfache interne Hilfswerkzeuge,
+  Read-Only-Dashboards und geringes Risiko. **L2** ist der Standard für
+  regelmäßig betriebene Fachanwendungen mit personen- oder geschäftsbezogenen
+  Daten. **L3** ist für besonders sensible Dienste vorgesehen, zum Beispiel
+  Finanztransaktionen, Gesundheitsdaten oder kritische Infrastruktur.
+  Die erfüllten und offenen Anforderungen werden mit versionierten ASVS-IDs
+  dokumentiert, zum Beispiel `v5.0.0-1.2.5`. Werkzeuge: ASVS-Checkliste von
+  OWASP, ASVS-Tracker in Jira oder Git, Mapping in Bedrohungsmodellen.
+- **EN:** For web, API, HTTP, or authenticated services pick the ASVS level
+  (Application Security Verification Standard, currently stable version 5.0.0).
+  **L1** fits simple internal helpers, read-only dashboards, and low risk.
+  **L2** is the default for regularly operated business applications with
+  personal or business data. **L3** is for highly sensitive services such as
+  financial transactions, healthcare data, or critical infrastructure.
+  Fulfilled and open requirements are documented with versioned ASVS IDs,
+  for example `v5.0.0-1.2.5`. Tooling: ASVS checklist from OWASP, ASVS tracker
+  in Jira or Git, mapping in threat models.
+- **Akzeptanz / Acceptance:** Level (L1/L2/L3) und Begründung in
+  `docs/security/asvs-verification.md`; Mapping der erfüllten und offenen
+  ASVS-IDs mit Versionspräfix vorhanden. / Level (L1/L2/L3) and justification
+  in `docs/security/asvs-verification.md`; mapping of fulfilled and open ASVS
+  IDs with version prefix available.
+- **Referenz / Reference:** Verfassung XV.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 3. SBOM / Software Bill of Materials
+
+- **DE:** Für jedes auslieferbare Artefakt eine SBOM (Software Bill of
+  Materials) in CycloneDX (JSON `bom.json` oder XML, OWASP-Format) oder
+  SPDX (JSON `*.spdx.json` oder Tag-Value, Linux-Foundation-Format)
+  pflegen. SBOM bei jedem Release aktualisieren und mitveröffentlichen.
+  Werkzeuge: `syft` (Anchore, sprachübergreifend), `cdxgen` (CycloneDX
+  Generator, viele Sprachen), `cyclonedx-bom` (Python),
+  `cyclonedx-dotnet` (.NET), `cyclonedx-maven-plugin` (Java),
+  `@cyclonedx/cyclonedx-npm` (Node.js), `cyclonedx-gomod` (Go).
+  Container-SBOM mit `docker sbom` (Docker Desktop), `syft` oder
+  `trivy sbom`. Pflichtfelder: Komponenten-Name, Version, Lizenz,
+  Hash (SHA-256), Lieferant, Beziehungs-Typ. Die SBOM wird im
+  CI/CD-Pipeline-Build erzeugt, signiert (z. B. Cosign) und zusammen
+  mit dem Artefakt veröffentlicht.
+- **EN:** Maintain a CycloneDX (JSON `bom.json` or XML, OWASP format) or
+  SPDX (JSON `*.spdx.json` or tag-value, Linux Foundation format) SBOM
+  for every shipped artefact. Refresh and publish the SBOM at every
+  release. Tooling: `syft` (Anchore, multi-language), `cdxgen`
+  (CycloneDX Generator, many languages), `cyclonedx-bom` (Python),
+  `cyclonedx-dotnet` (.NET), `cyclonedx-maven-plugin` (Java),
+  `@cyclonedx/cyclonedx-npm` (Node.js), `cyclonedx-gomod` (Go).
+  Container SBOM via `docker sbom` (Docker Desktop), `syft`, or
+  `trivy sbom`. Required fields: component name, version, licence,
+  hash (SHA-256), supplier, relationship type. The SBOM is generated
+  in the CI/CD pipeline build, signed (e.g. Cosign), and published
+  alongside the artefact.
+- **Akzeptanz / Acceptance:** SBOM-Datei im Release-Artefakt; Format
+  (CycloneDX oder SPDX), Erzeugungs-Werkzeug, Signaturpfad in
+  `docs/security/supply-chain-evidence.md`. / SBOM file in the release
+  artefact; format (CycloneDX or SPDX), generation tool, signature
+  path in `docs/security/supply-chain-evidence.md`.
+- **Referenz / Reference:** ISO 27002 A.8.30; Verfassung XVI.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 4. VEX / Vulnerability Exploitability eXchange
+
+- **DE:** VEX (Vulnerability Exploitability eXchange) ist ein maschinen-
+  lesbares Dokument, das je CVE/Komponente einen Status nennt:
+  **not_affected** (Code wird nicht ausgeführt), **affected** (verwundbar),
+  **fixed** (Patch eingespielt), **under_investigation**. Formate:
+  CSAF 2.0 (OASIS, JSON-Schema), CycloneDX VEX (Inline in der SBOM oder
+  separat), OpenVEX (Spezifikation der OpenSSF). Werkzeuge: `vexctl`
+  (Chainguard) zum Erzeugen und Signieren; `csaf-tools` für CSAF;
+  Dependency-Track als zentrale Plattform mit VEX-Aufnahme; Trivy und
+  Grype können VEX zum Filtern unterdrückbarer Findings verwenden.
+  Begründung im VEX nennt den `justification`-Code (z. B.
+  `vulnerable_code_not_in_execute_path`,
+  `vulnerable_code_cannot_be_controlled_by_adversary`,
+  `inline_mitigations_already_exist`). Pflicht, sobald ein Scan eine
+  CVE in einer Lieferkomponente meldet, die nicht unmittelbar gepatcht
+  wird.
+- **EN:** VEX (Vulnerability Exploitability eXchange) is a machine-
+  readable document that states a status per CVE/component:
+  **not_affected** (code not executed), **affected** (vulnerable),
+  **fixed** (patch applied), **under_investigation**. Formats: CSAF 2.0
+  (OASIS, JSON schema), CycloneDX VEX (inline in the SBOM or separate),
+  OpenVEX (OpenSSF specification). Tooling: `vexctl` (Chainguard) to
+  generate and sign; `csaf-tools` for CSAF; Dependency-Track as a
+  central platform with VEX intake; Trivy and Grype can use VEX to
+  filter suppressed findings. The justification cites a
+  `justification` code (e.g.
+  `vulnerable_code_not_in_execute_path`,
+  `vulnerable_code_cannot_be_controlled_by_adversary`,
+  `inline_mitigations_already_exist`). Required as soon as a scan
+  reports a CVE in a shipped component that is not immediately patched.
+- **Akzeptanz / Acceptance:** VEX-Datei im Release-Artefakt mit Format,
+  Pfad, Justification-Codes, oder N/A mit kurzer Begründung. / VEX
+  file in the release artefact with format, path, justification codes,
+  or N/A with short justification.
+- **Referenz / Reference:** Verfassung XVI.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 5. SLSA-Build-Level / SLSA Build Level
+
+- **DE:** SLSA v1.2 trennt Anforderungen in Tracks. Für diese Richtlinie ist
+  der Build-Track maßgeblich. **Build L1** bedeutet: Provenance ist vorhanden
+  und beschreibt Artefakt, Quelle und Build. **Build L2** ergänzt einen
+  gehosteten Build-Dienst und signierte, überprüfbare Provenance.
+  **Build L3** verlangt eine gehärtete Build-Plattform mit stärkerer Isolation
+  und nicht fälschbarer Provenance. Das Ziel-Level wird je Release festgelegt.
+  Werkzeuge: `slsa-verifier`, Sigstore `cosign verify-attestation`,
+  in-toto-Attestations und geeignete SLSA-Generatoren für die jeweilige CI.
+  Die Attestation wird neben dem Artefakt veröffentlicht.
+- **EN:** SLSA v1.2 separates requirements into tracks. This guideline uses
+  the Build track. **Build L1** means that provenance exists and describes the
+  artefact, source, and build. **Build L2** adds a hosted build service and
+  signed, verifiable provenance. **Build L3** requires a hardened build
+  platform with stronger isolation and non-forgeable provenance. The target
+  level is selected per release. Tooling: `slsa-verifier`, Sigstore
+  `cosign verify-attestation`, in-toto attestations, and suitable SLSA
+  generators for the CI system. Publish the attestation alongside the artefact.
+- **Akzeptanz / Acceptance:** Ziel-SLSA-Build-Level (Build L1, Build L2 oder
+  Build L3), Builder-Werkzeug, Pfad zur Attestation und Verifikationsbefehl in
+  `docs/security/supply-chain-evidence.md`. / Target SLSA Build level
+  (Build L1, Build L2, or Build L3), builder tool, path to the attestation,
+  and verification command in `docs/security/supply-chain-evidence.md`.
+- **Referenz / Reference:** Verfassung XVI.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 6. Zero Trust / Zero Trust
+
+- **DE:** Zero Trust nach NIST SP 800-207 ersetzt das implizite Vertrauen
+  innerhalb eines Netzes durch explizite Prüfung jeder Zugriffs-
+  Anforderung. Sieben Prinzipien: alle Datenquellen und Dienste sind
+  Ressourcen; jede Kommunikation wird geschützt; Zugriff je Sitzung;
+  dynamische Policy auf Basis von Identität, Gerätezustand und
+  Verhalten; Asset-Integrität wird kontinuierlich gemessen;
+  Authentifizierung und Autorisierung vor jedem Zugriff; ständiges
+  Verbessern der Sicherheitslage. Konkrete Bausteine: Identitäts-
+  Provider mit MFA und kurzlebigen Tokens (z. B. Azure AD/Entra,
+  Okta, Keycloak); Service-Mesh mit mTLS (Istio, Linkerd, Consul);
+  BeyondCorp- oder ZTNA-Gateway statt VPN (Cloudflare Access, Tailscale,
+  Pomerium, Teleport); SPIFFE/SPIRE für maschinelle Identitäten; OPA/
+  Rego für Policy-Engines; eBPF-basiertes Monitoring (Cilium Tetragon,
+  Falco). Bei Mikroservices, Cloud, Remote-Verwaltung oder
+  Hybrid-Setups ist Zero Trust ausdrücklich zu prüfen.
+- **EN:** Zero Trust per NIST SP 800-207 replaces implicit trust within a
+  network with explicit verification of every access request. Seven
+  tenets: all data sources and services are resources; all
+  communication is protected; access per session; dynamic policy
+  based on identity, device posture, and behaviour; asset integrity
+  is continuously measured; authentication and authorization before
+  every access; continuous improvement of the security posture.
+  Concrete building blocks: identity provider with MFA and short-lived
+  tokens (e.g. Azure AD/Entra, Okta, Keycloak); service mesh with mTLS
+  (Istio, Linkerd, Consul); BeyondCorp- or ZTNA-gateway instead of VPN
+  (Cloudflare Access, Tailscale, Pomerium, Teleport); SPIFFE/SPIRE
+  for machine identities; OPA/Rego for policy engines; eBPF-based
+  monitoring (Cilium Tetragon, Falco). For microservices, cloud,
+  remote management, or hybrid setups, Zero Trust must be explicitly
+  evaluated.
+- **Akzeptanz / Acceptance:** `docs/security/zero-trust-applicability.md`
+  mit Bewertung pro Prinzip, gewählten Werkzeugen oder N/A mit
+  Begründung. / `docs/security/zero-trust-applicability.md` with
+  assessment per tenet, chosen tooling, or N/A with justification.
+- **Referenz / Reference:** Verfassung XVIII.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 7. CAPEC im Bedrohungsmodell / CAPEC in the Threat Model
+
+- **DE:** CAPEC (Common Attack Pattern Enumeration and Classification, MITRE)
+  bietet einen Katalog von ca. 600 Angriffsmustern, hierarchisch von
+  Meta-Mustern (z. B. CAPEC-1000 „Mechanism of Attack") bis zu detaillierten
+  Mustern (z. B. CAPEC-66 SQL Injection, CAPEC-242 Code Injection,
+  CAPEC-63 Cross-Site Scripting, CAPEC-94 Adversary in the Middle,
+  CAPEC-115 Authentication Bypass, CAPEC-22 Exploiting Trust in Client,
+  CAPEC-148 Content Spoofing). Im Bedrohungsmodell wird je STRIDE-Kategorie
+  und je Trust-Boundary mindestens ein passendes CAPEC-Muster als
+  Angriffsweg benannt; je Muster werden Voraussetzungen, Skill-Level
+  des Angreifers, mögliche Auswirkungen und Gegenmaßnahmen dokumentiert.
+  Werkzeuge: MITRE-CAPEC-Webseite (HTML- und XML-Export); ATT&CK-CAPEC-
+  Mapping für TTP-Verbindung; Threat Modeling Tool (Microsoft) und
+  pytm (Python) unterstützen CAPEC-Annotation.
+- **EN:** CAPEC (Common Attack Pattern Enumeration and Classification,
+  MITRE) is a catalogue of ~600 attack patterns, hierarchical from meta
+  patterns (e.g. CAPEC-1000 "Mechanism of Attack") to detailed patterns
+  (e.g. CAPEC-66 SQL Injection, CAPEC-242 Code Injection, CAPEC-63
+  Cross-Site Scripting, CAPEC-94 Adversary in the Middle, CAPEC-115
+  Authentication Bypass, CAPEC-22 Exploiting Trust in Client,
+  CAPEC-148 Content Spoofing). In the threat model, at least one
+  matching CAPEC pattern is named as an attack path per STRIDE
+  category and per trust boundary; per pattern, preconditions,
+  attacker skill level, possible impacts, and mitigations are
+  documented. Tooling: MITRE CAPEC website (HTML and XML export);
+  ATT&CK-CAPEC mapping for TTP linkage; Threat Modeling Tool
+  (Microsoft) and pytm (Python) support CAPEC annotation.
+- **Akzeptanz / Acceptance:** Bedrohungsmodell nennt mindestens drei
+  CAPEC-IDs für die risikoreichsten Flows, jeweils mit Gegenmaßnahme. /
+  Threat model names at least three CAPEC IDs for the highest-risk
+  flows, each with a mitigation.
+- **Referenz / Reference:** Verfassung XVII.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 8. OWASP SAMM / OWASP SAMM
+
+- **DE:** OWASP SAMM (Software Assurance Maturity Model, derzeit Version 2.x)
+  bewertet die Sicherheitsreife eines Projekts oder einer Organisation in
+  fünf Geschäftsfunktionen: **Governance** (Strategy & Metrics, Policy &
+  Compliance, Education & Guidance), **Design** (Threat Assessment,
+  Security Requirements, Security Architecture), **Implementation**
+  (Secure Build, Secure Deployment, Defect Management), **Verification**
+  (Architecture Assessment, Requirements-driven Testing, Security
+  Testing), **Operations** (Incident Management, Environment Management,
+  Operational Management). Je Praktik gibt es drei Reifestufen
+  (1 = ad-hoc, 2 = strukturiert, 3 = kontinuierlich verbessert).
+  Werkzeuge: SAMM-Toolbox als Excel oder Web-App
+  (`https://owaspsamm.org/assessment/`); SAMMY (interaktiv); GitHub-
+  Repository `OWASP/samm` mit Modellen und Beispielen. Verbesserungsplan
+  benennt Ist-Stufe je Praktik, Ziel-Stufe in 6–12 Monaten,
+  Maßnahmen und Verantwortliche.
+- **EN:** OWASP SAMM (Software Assurance Maturity Model, currently version
+  2.x) assesses security maturity of a project or organisation across
+  five business functions: **Governance** (Strategy & Metrics, Policy
+  & Compliance, Education & Guidance), **Design** (Threat Assessment,
+  Security Requirements, Security Architecture), **Implementation**
+  (Secure Build, Secure Deployment, Defect Management), **Verification**
+  (Architecture Assessment, Requirements-driven Testing, Security
+  Testing), **Operations** (Incident Management, Environment
+  Management, Operational Management). Each practice has three
+  maturity levels (1 = ad-hoc, 2 = structured, 3 = continuously
+  improved). Tooling: SAMM Toolbox as Excel or web app
+  (`https://owaspsamm.org/assessment/`); SAMMY (interactive); GitHub
+  repository `OWASP/samm` with models and examples. The improvement
+  plan names current level per practice, target level in 6–12 months,
+  actions, and owners.
+- **Akzeptanz / Acceptance:** SAMM-Bewertung mit Datum, Ist- und Ziel-
+  Reifegrad je Praktik und Folgeaufgabenliste in
+  `docs/security/samm-assessment.md`. / SAMM assessment with date,
+  current and target maturity per practice, and follow-up task list in
+  `docs/security/samm-assessment.md`.
+- **Referenz / Reference:** Verfassung XVIII.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 9. OpenSSF Scorecard / OpenSSF Scorecard
+
+- **DE:** OpenSSF Scorecard prüft öffentliche Git-Repositories anhand von
+  ca. 19 automatischen Checks und liefert eine Punktzahl 0–10. Wichtige
+  Checks: **Branch-Protection** (Schutz von `main`/`master`), **Code-
+  Review** (≥ 2 Reviewer für Merges), **Signed-Commits** (signierte
+  Commits oder Tags), **Token-Permissions** (CI-Token mit minimalen
+  Rechten), **Vulnerabilities** (offene CVEs), **SAST** (statische
+  Analyse aktiv), **Pinned-Dependencies** (Abhängigkeiten mit Hash
+  gepinnt), **Dangerous-Workflow** (unsichere CI-Patterns),
+  **Maintained** (Aktivität in den letzten 90 Tagen). Werkzeuge:
+  CLI `scorecard --repo=github.com/<org>/<repo>`; GitHub Action
+  `ossf/scorecard-action`; Web-Frontend
+  `https://scorecard.dev/`. Schwellwert: ≥ 7 für kritische
+  Abhängigkeiten, ≥ 5 als Mindestmaß. Niedrige Werte sind ein Risiko-
+  Signal, kein automatischer Ausschluss; sie führen zu einem
+  Risikoeintrag und ggf. zu einem Fork mit Härtung.
+- **EN:** OpenSSF Scorecard rates public Git repositories via ~19
+  automated checks and yields a score 0–10. Key checks: **Branch
+  Protection** (protect `main`/`master`), **Code Review** (≥ 2
+  reviewers for merges), **Signed Commits** (signed commits or tags),
+  **Token Permissions** (CI tokens with minimum rights),
+  **Vulnerabilities** (open CVEs), **SAST** (static analysis active),
+  **Pinned Dependencies** (deps pinned by hash), **Dangerous Workflow**
+  (unsafe CI patterns), **Maintained** (activity in the last 90 days).
+  Tooling: CLI `scorecard --repo=github.com/<org>/<repo>`; GitHub
+  Action `ossf/scorecard-action`; web frontend
+  `https://scorecard.dev/`. Threshold: ≥ 7 for critical dependencies,
+  ≥ 5 as the minimum bar. Low scores are a risk signal, not an
+  automatic exclusion; they drive a risk entry and possibly a hardened
+  fork.
+- **Akzeptanz / Acceptance:** Scorecard-Wert je kritische Abhängigkeit
+  mit Datum und Schwellwert dokumentiert, oder N/A mit Begründung. /
+  Scorecard score per critical dependency with date and threshold
+  documented, or N/A with justification.
+- **Referenz / Reference:** Verfassung XVI.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 10. OWASP Cheat Sheets und Proactive Controls / OWASP Cheat Sheets and Proactive Controls
+
+- **DE:** **OWASP Cheat Sheet Series** liefert über 80 thematische
+  Anleitungen mit konkreten Empfehlungen, z. B. „Authentication Cheat
+  Sheet", „Cross-Site Scripting Prevention", „SQL Injection Prevention",
+  „Password Storage", „Input Validation", „Secure Headers", „REST
+  Security", „GraphQL Security", „File Upload", „Cryptographic
+  Storage", „Session Management". **OWASP Proactive Controls** (aktuell
+  v3.0) gibt zehn entwicklerorientierte Kontrollen vor: C1
+  Implementierungsstandards, C2 Bibliotheken und Frameworks, C3
+  Authentifizierung, C4 Sitzungsmanagement, C5 Zugriffskontrolle, C6
+  Verschlüsselung, C7 Validierung & Sanitization, C8 Logging & Audit,
+  C9 Sicherheitskonfigurationen, C10 Fehler- und Ausnahmebehandlung.
+  Im Review-Leitfaden werden die thematisch relevanten Cheat Sheets
+  pro Pull-Request-Typ (Auth-Änderung, neue Endpoint, Crypto-Code)
+  als Pflichtlektüre verlinkt; Proactive Controls erscheinen als
+  Definition-of-Done-Checkliste. PR-Templates verweisen direkt auf
+  die jeweils anzuwendenden Cheat-Sheet-URLs.
+- **EN:** **OWASP Cheat Sheet Series** offers over 80 topic guides with
+  concrete recommendations, e.g. "Authentication Cheat Sheet",
+  "Cross-Site Scripting Prevention", "SQL Injection Prevention",
+  "Password Storage", "Input Validation", "Secure Headers", "REST
+  Security", "GraphQL Security", "File Upload", "Cryptographic
+  Storage", "Session Management". **OWASP Proactive Controls**
+  (currently v3.0) defines ten developer-focused controls: C1
+  implementation standards, C2 libraries and frameworks, C3
+  authentication, C4 session management, C5 access control, C6
+  encryption, C7 validation & sanitization, C8 logging & audit, C9
+  security configuration, C10 error and exception handling. In the
+  review guide, the topical Cheat Sheets per pull request type (auth
+  change, new endpoint, crypto code) are linked as required reading;
+  Proactive Controls appear as a Definition-of-Done checklist. PR
+  templates link directly to the applicable Cheat Sheet URLs.
+- **Akzeptanz / Acceptance:** Code-Review-Leitfaden bzw. PR-Template
+  enthält direkte Links zu den thematisch relevanten Cheat Sheets
+  und Proactive Controls. / Code review guide or PR template
+  contains direct links to the topical Cheat Sheets and Proactive
+  Controls.
+- **Referenz / Reference:** Verfassung XII.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 11. Nichtanwendbarkeit dokumentieren / Document Non-Applicability
+
+- **DE:** Jeder nicht angewandte Standard wird ausdrücklich als „N/A" mit
+  ein bis zwei Sätzen Begründung dokumentiert. Beispiele: „ASVS = N/A,
+  weil das Projekt eine reine CLI ohne HTTP- oder Auth-Komponenten ist";
+  „SBOM = N/A, weil dieses Repository nur Konfigurationsdateien
+  enthält und keine ausführbaren Artefakte erzeugt"; „Zero Trust = N/A,
+  weil das System ein lokal laufendes Single-User-Tool ohne
+  Netzwerk-Komponenten ist"; „Scorecard = N/A, weil keine externen
+  OSS-Abhängigkeiten genutzt werden". Die N/A-Einträge stehen im
+  selben Dokument wie die erfüllten Anforderungen
+  (`docs/security/standards-applicability.md` oder die jeweilige
+  Standard-Datei). Stille Auslassung würde im Audit als Lücke
+  bewertet. Bei Unsicherheit lieber „nicht erfüllt" als „N/A" wählen
+  und eine Folgeaufgabe anlegen.
+- **EN:** Every standard that does not apply is explicitly recorded as
+  "N/A" with a one- or two-sentence justification. Examples: "ASVS =
+  N/A because this project is a pure CLI with no HTTP or auth
+  components"; "SBOM = N/A because this repository only contains
+  configuration files and produces no executable artefacts"; "Zero
+  Trust = N/A because the system is a locally running single-user
+  tool without network components"; "Scorecard = N/A because no
+  external OSS dependencies are used". N/A entries live in the same
+  document as the fulfilled requirements
+  (`docs/security/standards-applicability.md` or the respective
+  standard file). Silent omission would be treated as a gap during
+  audit. When uncertain, prefer "not fulfilled" over "N/A" and
+  create a follow-up task.
+- **Akzeptanz / Acceptance:** Jeder Punkt der Anwendbarkeits-Checkliste
+  hat einen Status; N/A-Einträge tragen eine kurze Begründung. /
+  Every item of the applicability checklist has a status; N/A
+  entries carry a short justification.
+- **Referenz / Reference:** Verfassung XIV.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 12. Regulatorische Anwendbarkeit / Regulatory Applicability
+
+- **DE:** Für jedes Projekt wird zusätzlich zur technischen Standardauswahl
+  geprüft, ob NIS2, CRA, EU AI Act, DORA oder sektor- und
+  kundenspezifische Regeln anwendbar sind. Die Entscheidung wird als
+  `anwendbar`, `nicht anwendbar` oder `offen` dokumentiert. Für private
+  Lern-, Referenz- oder interne Tooling-Projekte darf `nicht anwendbar`
+  gewählt werden, wenn das Projekt nicht als regulierter Dienst betrieben
+  wird, nicht als reguliertes Produkt in Verkehr gebracht wird, nicht an
+  regulierte Kunden geliefert wird und nicht Teil einer regulierten
+  Lieferkette ist. Diese Begründung wird ausdrücklich festgehalten.
+- **EN:** Every project checks, in addition to the technical standards
+  selection, whether NIS2, CRA, the EU AI Act, DORA, or sector- and
+  customer-specific rules apply. The decision is documented as
+  `applicable`, `not applicable`, or `open`. For private learning,
+  reference, or internal tooling projects, `not applicable` may be used
+  when the project is not operated as a regulated service, not placed on
+  the market as a regulated product, not delivered to regulated customers,
+  and not part of a regulated supply chain. This rationale is recorded
+  explicitly.
+- **Akzeptanz / Acceptance:** `docs/security/regulatory-applicability.md`
+  oder ein gleichwertiges Spec-Kit-Artefakt enthält eine Matrix zu NIS2,
+  CRA, EU AI Act, DORA und kundenspezifischen Regeln mit Entscheidung,
+  Begründung, Evidenzpfad, verantwortlicher Person und Wiedervorlage. /
+  `docs/security/regulatory-applicability.md` or an equivalent Spec Kit
+  artefact contains a matrix for NIS2, CRA, EU AI Act, DORA, and
+  customer-specific rules with decision, rationale, evidence path, owner,
+  and re-review trigger.
+- **Referenz / Reference:** Spec-Kit `security-governance`, Template
+  `regulatory-applicability-template`.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Regulatory-Matrix, Spec-Kit-Artefakt, Ticket oder N/A-Begründung nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name regulatory matrix, Spec Kit artefact, ticket, or N/A rationale. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+### Akzeptanzkriterien gesamt / Overall Acceptance
+
+**DE:** Die Checkliste ist erfüllt, wenn alle Punkte mit „erfüllt" oder „N/A
+mit Begründung" abgeschlossen sind und die Evidenzpfade in
+`docs/security/` aufrufbar sind. Regulatorische Entscheidungen sind
+ausdrücklich dokumentiert und offene Fragen haben eine verantwortliche
+Person und Wiedervorlage.
+
+**EN:** The checklist is fulfilled when every item is closed as "done" or
+"N/A with justification" and the evidence paths under `docs/security/` are
+reachable. Regulatory decisions are documented explicitly, and open
+questions have an owner and re-review trigger.
+
+### Glossar / Glossary
+
+**DE:** Dieses Glossar erklärt die wichtigsten Begriffe dieser Checkliste in Alltagssprache. Es ändert keine Anforderungen, sondern macht die vorhandenen Prüfpunkte leichter verständlich.
+
+**EN:** This glossary explains the most important terms in this checklist in plain language. It does not change requirements; it makes the existing review items easier to understand.
+
+<a id="cl-01-glossar-iso-27001"></a>
+
+#### ISO/IEC 27001
+
+- **DE:** ISO/IEC 27001 ist ein internationaler Standard für Sicherheitsnachweisprozesse. Er fordert gesteuerte Prozesse, Risikobehandlung, Nachweise und regelmäßige Verbesserung.
+- **EN:** ISO/IEC 27001 is an international standard for security evidence processs. It requires controlled processes, risk treatment, evidence, and regular improvement.
+
+<a id="cl-01-glossar-nist-ssdf"></a>
+
+#### NIST SSDF
+
+- **DE:** NIST SSDF ist ein Rahmenwerk für sichere Softwareentwicklung. Es beschreibt, wie Teams Software sicher planen, bauen, prüfen und nach Schwachstellen verbessern.
+- **EN:** NIST SSDF is a framework for secure software development. It describes how teams plan, build, review, and improve software after vulnerabilities.
+
+<a id="cl-01-glossar-cwe-top-25"></a>
+
+#### CWE Top 25
+
+- **DE:** Die CWE Top 25 ist eine Liste häufiger und gefährlicher Programmierfehler. Beispiele sind Cross-Site Scripting, SQL Injection, Path Traversal und unsichere Speicherzugriffe.
+- **EN:** The CWE Top 25 is a list of common and dangerous programming mistakes. Examples are cross-site scripting, SQL injection, path traversal, and unsafe memory access.
+
+<a id="cl-01-glossar-owasp-asvs"></a>
+
+#### OWASP ASVS
+
+- **DE:** OWASP ASVS ist ein Prüfkatalog für Anwendungssicherheit. Er hilft, passende Sicherheitsanforderungen für Web-Anwendungen und APIs festzulegen.
+- **EN:** OWASP ASVS is an application security verification catalogue. It helps define suitable security requirements for web applications and APIs.
+
+<a id="cl-01-glossar-owasp-samm"></a>
+
+#### OWASP SAMM
+
+- **DE:** OWASP SAMM ist ein Reifegradmodell für sichere Softwareentwicklung. Es zeigt, wie Teams ihre Sicherheitsprozesse schrittweise verbessern können.
+- **EN:** OWASP SAMM is a maturity model for secure software development. It shows how teams can improve their security processes step by step.
+
+<a id="cl-01-glossar-sbom"></a>
+
+#### SBOM / Software Bill of Materials
+
+- **DE:** Eine SBOM ist eine Stückliste für Software. Sie nennt Komponenten, Versionen und oft Lizenzen, damit Risiken und Schwachstellen schneller gefunden werden.
+- **EN:** An SBOM is a bill of materials for software. It lists components, versions, and often licences so that risks and vulnerabilities can be found faster.
+
+<a id="cl-01-glossar-vex"></a>
+
+#### VEX / Vulnerability Exploitability eXchange
+
+- **DE:** VEX erklärt, ob eine bekannte Schwachstelle in einem konkreten Produkt wirklich ausnutzbar ist. Das verhindert unnötige Alarmarbeit.
+- **EN:** VEX explains whether a known vulnerability is actually exploitable in a specific product. This prevents unnecessary alert handling.
+
+<a id="cl-01-glossar-slsa"></a>
+
+#### SLSA
+
+- **DE:** SLSA beschreibt Schutzstufen für Software-Lieferketten. Es geht vor allem um nachvollziehbare Builds, Herkunftsnachweise und Schutz gegen Manipulation.
+- **EN:** SLSA describes protection levels for software supply chains. It mainly covers traceable builds, provenance evidence, and protection against tampering.
+
+<a id="cl-01-glossar-zero-trust"></a>
+
+#### Zero Trust
+
+- **DE:** Zero Trust bedeutet: Nicht automatisch vertrauen, nur weil etwas im internen Netz ist. Zugriff wird geprüft, begrenzt und laufend kontrolliert.
+- **EN:** Zero Trust means: do not trust something automatically just because it is inside the internal network. Access is checked, limited, and continuously controlled.
+
+<a id="cl-01-glossar-capec"></a>
+
+#### CAPEC
+
+- **DE:** CAPEC ist ein Katalog bekannter Angriffsmuster. Er hilft beim Bedrohungsmodell, typische Angriffe systematisch zu erkennen.
+- **EN:** CAPEC is a catalogue of known attack patterns. It helps threat models identify typical attacks systematically.
+
+<a id="cl-01-glossar-openssf-scorecard"></a>
+
+#### OpenSSF Scorecard
+
+- **DE:** OpenSSF Scorecard ist ein Werkzeug, das öffentliche Repositories auf Sicherheitspraktiken prüft, zum Beispiel Branch-Schutz, Abhängigkeiten und CI-Konfiguration.
+- **EN:** OpenSSF Scorecard is a tool that checks public repositories for security practices, for example branch protection, dependencies, and CI configuration.
+
+<a id="cl-01-glossar-cra"></a>
+
+#### CRA / Cyber Resilience Act
+
+- **DE:** Der Cyber Resilience Act ist eine EU-Verordnung für Produkte mit digitalen Elementen. Er verlangt Sicherheitsanforderungen, Schwachstellenbehandlung und bestimmte Meldungen.
+- **EN:** The Cyber Resilience Act is an EU regulation for products with digital elements. It requires security requirements, vulnerability handling, and certain reports.
+
+<a id="cl-01-glossar-nis2"></a>
+
+#### NIS2
+
+- **DE:** NIS2 ist eine EU-Richtlinie für Cybersicherheit wichtiger und besonders wichtiger Einrichtungen. Sie kann Meldewege, Risikomanagement und Lieferkettenschutz beeinflussen.
+- **EN:** NIS2 is an EU directive for cybersecurity of important and essential entities. It can affect reporting paths, risk management, and supply-chain protection.
+
+<a id="cl-01-glossar-dora"></a>
+
+#### DORA
+
+- **DE:** DORA ist eine EU-Verordnung zur digitalen Betriebsstabilität im Finanzsektor. Sie kann Anforderungen an IT-Risiken, Dienstleister und Sicherheitsvorfälle auslösen.
+- **EN:** DORA is an EU regulation on digital operational resilience in the financial sector. It can trigger requirements for IT risks, service providers, and security incidents.
+
+<a id="cl-01-glossar-eu-ai-act"></a>
+
+#### EU AI Act
+
+- **DE:** Der EU AI Act ist eine EU-Verordnung für KI-Systeme. Er kann Pflichten zu Risiko, Dokumentation, Transparenz und menschlicher Aufsicht auslösen.
+- **EN:** The EU AI Act is an EU regulation for AI systems. It can trigger duties for risk, documentation, transparency, and human oversight.
+
+<a id="cl-01-glossar-soa"></a>
+
+#### SoA / Statement of Applicability / Anwendbarkeitserklärung
+
+- **DE:** Die SoA ist die zentrale Liste der ISO-27001-Controls. Sie zeigt, welche Controls gelten, welche nicht gelten, warum das so ist und wie der Umsetzungsstand ist.
+- **EN:** The SoA is the central list of ISO 27001 controls. It shows which controls apply, which do not apply, why this is the case, and what the implementation status is.
+
+<a id="cl-01-glossar-nicht-anwendbar"></a>
+
+#### Nicht anwendbar / N/A
+
+- **DE:** Nicht anwendbar bedeutet, dass ein Prüfpunkt sachlich nicht zum Projekt passt. Diese Entscheidung braucht immer eine kurze und nachvollziehbare Begründung.
+- **EN:** Not applicable means that a review item does not fit the project. This decision always needs a short and traceable reason.
+
+### Versionshistorie / Version History
+
+- **Version 1.0 (2026-04-27):** Erstfassung / Initial version
+- **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
+- **Version 1.2 (2026-04-30):** ASVS 5.0.0 und SLSA v1.2 Build-Track aktualisiert / Updated ASVS 5.0.0 and SLSA v1.2 Build track
+- **Version 1.3 (2026-06-15):** Prüfpunkt 12 zur regulatorischen Anwendbarkeit von NIS2, CRA, EU AI Act, DORA und kundenspezifischen Regeln ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Added item 12 for regulatory applicability of NIS2, CRA, EU AI Act, DORA, and customer-specific rules; synchronized with RL Sichere-Entwicklung v2.9.0.
+
+- **Version 1.4 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
+
+- **Version 1.5 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
+
+---
+
+
+---
+
+<!--
+Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
+Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+This document is organization-neutral and written as a generic training and review baseline.
+-->
+
+> **DE:** Diese Checkliste ist generisch und projektunabhaengig. Sie ist als Ausbildungs-, Review- und Haertungsgrundlage gedacht. Eine Nichtanwendbarkeit muss als `N/A` mit kurzer Begruendung dokumentiert werden.
+>
+> **EN:** This checklist is generic and project-independent. It is intended as a training, review, and hardening baseline. Non-applicability must be documented as `N/A` with a short rationale.
+
+## Checkliste 02 – Sichere Softwarearchitektur / Secure Software Architecture
+
+### Zweck / Purpose
+
+**DE:** Diese Checkliste prüft, ob ein Software-Vorhaben die acht Prinzipien
+sicherer Architektur einhält und ob die Architekturentscheidungen
+nachvollziehbar dokumentiert sind.
+
+**EN:** This checklist verifies that a software project follows the eight
+secure architecture principles and that architectural decisions are
+documented in a traceable way.
+
+### Geltungsbereich / Scope
+
+**DE:** Pflicht für jedes Projekt mit eigener Architektur (neu oder im Umbau).
+Kein Pflichtdokument für reine Bugfix-Pakete ohne Architekturwirkung.
+
+**EN:** Mandatory for every project with its own architecture (new or
+refactor). Not required for pure bugfix releases without architectural
+impact.
+
+### Mitgeltende Dokumente / Related Documents
+
+- RL Sichere-Entwicklung
+- ISO/IEC 27002:2022 A.8.27
+- arc42-Vorlage Abschnitt 8 (Sicherheits-Querschnittskonzepte)
+- Security Architecture Decision Records (S-ADR)
+- BSI C3A (Criteria enabling Cloud Computing Autonomy)
+- BSI C5 (Cloud Computing Compliance Criteria Catalogue)
+
+#### URL-/Ablageverweise / URLs and Storage Locations
+
+**DE:** Diese Links helfen beim Review. Projekt- oder organisationsinterne Dokumente koennen als lokale Arbeitskopie oder als Verweis auf den festgelegten Ablageort ergaenzt werden.
+
+**EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
+
+- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
+- **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
+- **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
+- **Secure coding guideline:** this guide or an equivalent project-specific guideline
+- **CISA Memory Safe Roadmaps:** [lokale Textfassung des CISA-Dokuments / local text version of the CISA document](../THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.txt), [CISA-Webseite zum Dokument / CISA webpage for the document](https://www.cisa.gov/resources-tools/resources/case-memory-safe-roadmaps)
+- **ISO/IEC 27001:2022:** [offizielle ISO-Webseite zur ISO/IEC 27001:2022 / official ISO webpage for ISO/IEC 27001:2022](https://www.iso.org/standard/27001)
+- **ISO/IEC 27002:2022:** [offizielle ISO-Webseite zur ISO/IEC 27002:2022 / official ISO webpage for ISO/IEC 27002:2022](https://www.iso.org/standard/75652.html)
+- **NIST SSDF SP 800-218:** [NIST-Veröffentlichung SP 800-218 Secure Software Development Framework / NIST publication SP 800-218 Secure Software Development Framework](https://csrc.nist.gov/publications/detail/sp/800-218/final)
+- **NIST Zero Trust SP 800-207:** [NIST-Veröffentlichung SP 800-207 Zero Trust Architecture / NIST publication SP 800-207 Zero Trust Architecture](https://csrc.nist.gov/publications/detail/sp/800-207/final)
+- **OWASP ASVS:** [OWASP-Projektseite Application Security Verification Standard / OWASP project page Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)
+- **OWASP Cheat Sheet Series:** [OWASP Cheat Sheet Series Projektseite / OWASP Cheat Sheet Series project page](https://cheatsheetseries.owasp.org/)
+- **OWASP Proactive Controls:** [OWASP Proactive Controls Projektseite / OWASP Proactive Controls project page](https://owasp.org/www-project-proactive-controls/)
+- **OWASP SAMM:** [OWASP SAMM Projektseite / OWASP SAMM project page](https://owaspsamm.org/)
+- **OWASP Top 10 for LLM Applications:** [OWASP Top 10 for LLM Applications Projektseite / OWASP Top 10 for LLM Applications project page](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- **CWE Top 25:** [MITRE CWE Top 25 Übersicht / MITRE CWE Top 25 overview](https://cwe.mitre.org/top25/)
+- **CAPEC:** [MITRE CAPEC Katalog / MITRE CAPEC catalogue](https://capec.mitre.org/)
+- **CycloneDX:** [CycloneDX SBOM-Standard Projektseite / CycloneDX SBOM standard project page](https://cyclonedx.org/)
+- **SPDX:** [SPDX SBOM-Standard Projektseite / SPDX SBOM standard project page](https://spdx.dev/)
+- **CSAF/VEX:** [OASIS CSAF und VEX Dokumentation / OASIS CSAF and VEX documentation](https://oasis-open.github.io/csaf-documentation/)
+- **SLSA:** [SLSA Supply-chain Levels for Software Artifacts Projektseite / SLSA project page](https://slsa.dev/)
+- **OpenSSF Scorecard:** [OpenSSF Scorecard Projektseite / OpenSSF Scorecard project page](https://scorecard.dev/)
+- **RFC 9116 security.txt:** [RFC 9116 zu security.txt / RFC 9116 for security.txt](https://www.rfc-editor.org/rfc/rfc9116)
+- **NIST AI Risk Management Framework:** [NIST AI Risk Management Framework Webseite / NIST AI Risk Management Framework webpage](https://www.nist.gov/itl/ai-risk-management-framework)
+- **EU Cyber Resilience Act:** [EU-Amtsblatt zum Cyber Resilience Act / EU Official Journal for the Cyber Resilience Act](https://eur-lex.europa.eu/eli/reg/2024/2847/oj)
+- **BSI TR-02102:** [BSI-Webseite zur Technischen Richtlinie TR-02102 / BSI webpage for Technical Guideline TR-02102](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Technische-Richtlinien/TR-nach-Thema-sortiert/tr02102/tr-02102.html)
+
+### Bewertung und Dokumentation / Assessment and Documentation
+
+**DE:** Jeder Prüfpunkt bekommt genau einen Status. Schreibe die Begründung so, dass eine neue Kollegin oder ein neuer Kollege den Entscheid später ohne Rückfrage versteht.
+
+**EN:** Each checklist item gets exactly one status. Write the explanation so that a new team member can understand the decision later without asking again.
+
+- **Erfüllt / Fulfilled:** Die Anforderung ist umgesetzt und es gibt einen prüfbaren Nachweis.
+- **Nicht erfüllt / Not fulfilled:** Die Anforderung ist noch nicht umgesetzt oder der Nachweis fehlt. Es muss eine Aufgabe mit Verantwortlicher Person und Termin geben.
+- **Nicht anwendbar / Not applicable:** Die Anforderung passt nicht zum Projekt. Das ist erlaubt, aber nur mit kurzer Begründung.
+
+**Pflichtfelder je Prüfpunkt / Required fields per item:** Status, Begründung, Evidenzpfad oder Link, nächste Maßnahme mit Verantwortlicher Person und Zieltermin.
+
+### Durchführungshinweise / Implementation Guidance
+
+**DE:** Nutze diese Checkliste nicht als reine Ja/Nein-Liste. Sie ist ein Arbeits- und Auditdokument. Prüfe jeden Punkt gegen reale Artefakte: Code, Pull Request, Architekturdiagramm, Build-Log, Scan-Ergebnis, Ticket, Betriebsdokumentation oder Freigabeprotokoll. Wenn ein Nachweis noch fehlt, markiere den Punkt als „nicht erfüllt" und lege eine konkrete Folgeaufgabe an.
+
+**EN:** Do not use this checklist as a simple yes/no list. It is a working and audit document. Check each item against real artefacts: code, pull request, architecture diagram, build log, scan result, ticket, operations document, or approval record. If evidence is missing, mark the item as "not fulfilled" and create a concrete follow-up task.
+
+**DE:** Schreibe kurze, klare Begründungen. Vermeide Abkürzungen ohne Erklärung. Wenn ein Punkt technisch schwierig ist, beschreibe den aktuellen Stand, das Risiko und den nächsten machbaren Schritt.
+
+**EN:** Write short and clear explanations. Avoid unexplained abbreviations. If an item is technically difficult, describe the current state, the risk, and the next feasible step.
+
+**DE:** Jeder Prüfpunkt muss deshalb drei Fragen beantworten: Was bedeutet die Anforderung im Projektalltag? Was ist konkret zu tun oder zu entscheiden? Welcher Nachweis zeigt das Ergebnis? Verwende Standard-IDs, Toolnamen und Abkürzungen nur zusammen mit einer kurzen Erklärung in Alltagssprache. Wenn ein Punkt für Auszubildende oder neue Teammitglieder nicht selbsterklärend ist, ergänze eine kurze Erklärung in der Begründung.
+
+**EN:** Each item must therefore answer three questions: What does the requirement mean in daily project work? What exactly must be done or decided? Which evidence shows the result? Use standard IDs, tool names, and abbreviations only together with a short plain-language explanation. If an item is not self-explanatory for apprentices or new team members, add a short explanation in the rationale.
+
+### Beispiel / Example
+
+**DE:** Bei einer REST-API ist die Browser/API-Grenze eine Vertrauensgrenze. Eingaben werden im Controller validiert und im Datenzugriff nochmals durch parametrisierte Queries geschuetzt. Das sind zwei Schichten und damit ein Defense-in-Depth-Beispiel.
+
+**EN:** For a REST API, the browser/API boundary is a trust boundary. Inputs are validated in the controller and protected again in the data layer by parameterised queries. These are two layers and therefore an example of defense in depth.
+
+### A11Y-Hinweise / A11Y Notes
+
+**DE:** Beim Ausfüllen dieser Checkliste müssen alle Nachweise auch textlich verständlich sein. Verweise sollen beschreibende Linktexte haben. Screenshots, Diagramme oder Scan-Auszüge brauchen eine kurze Textbeschreibung. Der Status darf nicht nur über Farbe erkennbar sein.
+
+**EN:** When this checklist is filled in, all evidence must also be understandable as text. References should use descriptive link text. Screenshots, diagrams, or scan extracts need a short text description. The status must not be shown by color alone.
+
+### Wichtige Begriffe / Key Terms
+
+**DE:** Die folgenden Begriffe kommen in dieser Checkliste vor. Die Links springen zum Glossar dieses Kapitels, damit Auszubildende und Entwickler:innen ohne Sicherheits-Spezialwissen die Begriffe direkt nachlesen können.
+
+**EN:** The following terms appear in this checklist. The links jump to this chapter's glossary so that apprentices and developers without specialist security knowledge can look them up directly.
+
+- [Vertrauensgrenze / Trust Boundary](#cl-02-glossar-trust-boundary)
+- [Tiefenverteidigung / Defense in Depth](#cl-02-glossar-defense-in-depth)
+- [Geringste Rechte / Least Privilege](#cl-02-glossar-least-privilege)
+- [Angriffsfläche / Attack Surface](#cl-02-glossar-attack-surface)
+- [API](#cl-02-glossar-api)
+- [ADR / S-ADR](#cl-02-glossar-adr-sadr)
+- [arc42](#cl-02-glossar-arc42)
+- [BSI C3A](#cl-02-glossar-bsi-c3a)
+- [BSI C5](#cl-02-glossar-bsi-c5)
+- [Technische Dokumentation / Technical Documentation](#cl-02-glossar-technical-documentation)
+- [Evidenz / Evidence](#cl-02-glossar-evidenz)
+
+### Checkliste / Checklist
+
+#### 1. Vertrauensgrenzen / Trust Boundaries
+
+- **DE:** Vertrauensgrenzen (Trust Boundaries) trennen Bereiche mit
+  unterschiedlichem Vertrauenslevel: Internet ↔ DMZ, DMZ ↔ Anwendungs-
+  Backend, Anwendungs-Backend ↔ Datenbank, Container ↔ Host, Container A
+  ↔ Container B, Browser ↔ Server. Jede Grenze ist im Architekturbild
+  (z. B. C4-Modell, arc42-Bausteinsicht, Threat-Modeling-Diagramm in
+  Microsoft Threat Modeling Tool oder pytm) markiert. An jeder Grenze
+  gibt es einen Validierungspunkt: HTTP-Eingang validiert mit
+  `jakarta.validation` (Bean Validation, Spring), Pydantic-Modellen
+  (FastAPI), `FluentValidation` (.NET), `Joi`/`Zod` (Node.js); SQL-
+  Eingaben werden parametrisiert (PreparedStatement, Entity Framework,
+  SQLAlchemy); HTML-Output wird kontextspezifisch encoded
+  (Thymeleaf-Auto-Escape, Razor-`@`-Operator, React-JSX-Default,
+  DOMPurify für rich content). API-Schemas (OpenAPI/JSON Schema) sind
+  als Single-Source-of-Truth im Repo, und Generatoren erzeugen Server-
+  und Client-Validierung.
+- **EN:** Trust boundaries separate zones with different trust levels:
+  Internet ↔ DMZ, DMZ ↔ application backend, application backend ↔
+  database, container ↔ host, container A ↔ container B, browser ↔
+  server. Each boundary is marked in the architecture diagram (e.g.
+  C4 model, arc42 building-block view, threat modeling diagram in
+  Microsoft Threat Modeling Tool or pytm). At every boundary there is
+  a validation point: HTTP input validated with `jakarta.validation`
+  (Bean Validation, Spring), Pydantic models (FastAPI),
+  `FluentValidation` (.NET), `Joi`/`Zod` (Node.js); SQL input is
+  parameterised (PreparedStatement, Entity Framework, SQLAlchemy);
+  HTML output is context-encoded (Thymeleaf auto-escape, Razor `@`
+  operator, React JSX default, DOMPurify for rich content). API
+  schemas (OpenAPI/JSON Schema) live as single source of truth in
+  the repo, and generators produce server and client validation.
+- **Akzeptanz / Acceptance:** Architekturbild zeigt alle Grenzen;
+  Validierungs-Bibliothek je Grenze und Eingangsformat benannt;
+  OpenAPI/JSON-Schema im Repo. / Architecture diagram shows all
+  boundaries; validation library per boundary and input format
+  named; OpenAPI/JSON Schema in the repo.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 2. Tiefenverteidigung / Defense in Depth
+
+- **DE:** Defense in Depth bedeutet: ein Schutzmechanismus reicht nicht,
+  weil jeder Mechanismus versagen kann. Beispiel-Schichten für ein
+  Web-Backend: (1) Web Application Firewall oder Reverse Proxy mit
+  Rate-Limiting (nginx, Cloudflare, AWS WAF, ModSecurity); (2)
+  Eingangsvalidierung im Application-Code (Bean Validation, Pydantic,
+  FluentValidation); (3) parametrisierte SQL-Queries; (4) Datenbank-
+  Berechtigungen mit Read-Only-Rollen je nach Anwendungsfall; (5)
+  Datenbank-Verschlüsselung at-rest (TDE in PostgreSQL/SQL Server,
+  AWS RDS Encryption); (6) Audit-Logging mit unveränderlichem Speicher
+  (Append-Only-Log, S3 Object Lock). Beispiel für ein API-Token:
+  HTTPS + kurze TTL + Audience-Claim + Token-Revocation-Liste.
+  Beispiel für Container: signiertes Image (Cosign) + Image-Scanner
+  (Trivy, Grype) + Pod Security Standards + Network Policy +
+  Runtime-Schutz (Falco, Cilium Tetragon). Schichten sollen aus
+  unterschiedlichen Komponenten bestehen, sodass ein einzelner Bug
+  nicht alle Schichten gleichzeitig kompromittiert.
+- **EN:** Defense in depth means: a single mechanism is not enough,
+  because every mechanism can fail. Example layers for a web backend:
+  (1) web application firewall or reverse proxy with rate limiting
+  (nginx, Cloudflare, AWS WAF, ModSecurity); (2) input validation in
+  application code (Bean Validation, Pydantic, FluentValidation);
+  (3) parameterised SQL queries; (4) database privileges with
+  read-only roles per use case; (5) database encryption at rest
+  (TDE in PostgreSQL/SQL Server, AWS RDS encryption); (6) audit
+  logging with immutable storage (append-only log, S3 Object Lock).
+  Example for an API token: HTTPS + short TTL + audience claim +
+  token revocation list. Example for containers: signed image
+  (Cosign) + image scanner (Trivy, Grype) + Pod Security Standards
+  + network policy + runtime protection (Falco, Cilium Tetragon).
+  Layers should be built from different components so a single bug
+  cannot bypass them all at once.
+- **Akzeptanz / Acceptance:** Tabelle mit kritischen Assets, je Asset
+  mindestens zwei unabhängige Schutzschichten und zugehörige Tools. /
+  Table of critical assets, with at least two independent protection
+  layers and the matching tools per asset.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 3. Geringste Rechte / Least Privilege
+
+- **DE:** Least Privilege heißt: jede Komponente und jedes Konto bekommt
+  genau die Rechte, die für die Aufgabe nötig sind, nicht mehr.
+  Beispiele: Container laufen als Nicht-Root-User
+  (`USER 1000:1000` im Dockerfile, `runAsNonRoot: true` in der
+  PodSecurity-Policy); Datenbank-Konten haben getrennte Rollen
+  (`app_read`, `app_write`, `app_admin`); Kubernetes ServiceAccounts
+  je Pod mit eigener RBAC-Rolle (`Role` und `RoleBinding`); AWS-IAM-
+  Rollen je Service mit IAM-Policies, die nur benötigte Aktionen
+  erlauben (kein `Action: "*"`); Linux-Capabilities reduziert
+  (`securityContext.capabilities.drop: ["ALL"]`); Windows-Service-
+  Konten nicht in `Administratoren`-Gruppe; CI-Tokens auf einzelne
+  Repositories und einzelne Aktionen beschränkt
+  (`permissions: contents: read` in GitHub Actions). Werkzeuge zur
+  Prüfung: `kubescape`, `polaris`, `cloudsplaining` (AWS-IAM-
+  Analyse), `iam-policy-validator` (AWS Access Analyzer).
+  Berechtigungen werden mindestens einmal pro Quartal geprüft und
+  bei Personal- oder Funktionswechsel sofort angepasst.
+- **EN:** Least privilege means: every component and account gets
+  exactly the rights needed for the task, no more. Examples:
+  containers run as non-root user (`USER 1000:1000` in the
+  Dockerfile, `runAsNonRoot: true` in the PodSecurity policy);
+  database accounts use separate roles (`app_read`, `app_write`,
+  `app_admin`); Kubernetes ServiceAccounts per pod with their own
+  RBAC role (`Role` and `RoleBinding`); AWS IAM roles per service
+  with IAM policies that allow only required actions (no
+  `Action: "*"`); Linux capabilities dropped
+  (`securityContext.capabilities.drop: ["ALL"]`); Windows service
+  accounts not in `Administrators` group; CI tokens scoped to
+  individual repositories and individual actions
+  (`permissions: contents: read` in GitHub Actions). Verification
+  tooling: `kubescape`, `polaris`, `cloudsplaining` (AWS IAM
+  analysis), `iam-policy-validator` (AWS Access Analyzer).
+  Permissions are reviewed at least once per quarter and adjusted
+  immediately on staff or function changes.
+- **Akzeptanz / Acceptance:** Rollen- und Rechte-Tabelle je Komponente
+  mit Begründung; letzter Review-Zeitpunkt dokumentiert. / Role and
+  permissions table per component with justification; last review
+  date documented.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 4. Sichere Voreinstellungen / Fail-Safe Defaults
+
+- **DE:** Fail-Safe Defaults heißt: ohne explizite Regel wird Zugriff
+  abgelehnt; ein Fehler darf den geschützten Zustand niemals öffnen.
+  Beispiele: Spring Security mit `http.authorizeHttpRequests().anyRequest().authenticated()`;
+  ASP.NET Core mit `[Authorize]` als globale Default-Policy; Kubernetes
+  NetworkPolicy mit Default-Deny (`policyTypes: Ingress`, leere
+  `from:`-Liste); AWS Security Group ohne offene Inbound-Regeln; CSP-
+  Header `default-src 'none'` und explizite Allow-Liste je
+  Ressourcen-Typ; Feature-Flags „off by default", aktiviert nur
+  bewusst pro Umgebung. Fehlerbehandlung: bei einer Exception wird
+  die Sitzung beendet, kein Fallback auf anonyme Rolle, kein
+  „silent allow" bei abgelaufenem Token. In Datenbanken: Spalten
+  haben `NOT NULL` und sinnvolle Defaults, sodass eine
+  unvollständige Eingabe nicht in einen halbgültigen Zustand führt.
+  Anti-Pattern: `try { authorize() } catch { return ALLOWED; }`.
+- **EN:** Fail-safe defaults means: without an explicit rule access is
+  denied; an error must never open the protected state. Examples:
+  Spring Security with
+  `http.authorizeHttpRequests().anyRequest().authenticated()`; ASP.NET
+  Core with `[Authorize]` as global default policy; Kubernetes
+  NetworkPolicy with default-deny (`policyTypes: Ingress`, empty
+  `from:` list); AWS Security Group with no open inbound rules; CSP
+  header `default-src 'none'` plus explicit allow list per resource
+  type; feature flags "off by default", enabled only deliberately
+  per environment. Error handling: on an exception, the session
+  ends, no fallback to an anonymous role, no "silent allow" on an
+  expired token. In databases: columns are `NOT NULL` with sensible
+  defaults so partial input cannot leave the system half-valid.
+  Anti-pattern: `try { authorize() } catch { return ALLOWED; }`.
+- **Akzeptanz / Acceptance:** Default-Deny-Konfigurationen für
+  Authentifizierung, Netzwerk und CSP dokumentiert; Fehlerpfade
+  prüfen den sicheren Endzustand. / Default-deny configuration for
+  authentication, network, and CSP documented; error paths verify
+  the safe end state.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 5. Angriffsfläche reduzieren / Reduce Attack Surface
+
+- **DE:** In Produktion sind ungenutzte Endpunkte, Test-Routen, Debug-
+  Endpunkte und Verwaltungs-UIs deaktiviert oder durch Authentifizierung
+  geschützt. Konkrete Beispiele: Spring Boot Actuator-Endpunkte
+  (`/actuator/heapdump`, `/actuator/env`) per
+  `management.endpoints.web.exposure.include` einschränken; ASP.NET
+  Core Swagger-UI nur in `Development` einbinden
+  (`if (app.Environment.IsDevelopment()) { app.UseSwaggerUI(); }`);
+  Django `DEBUG = False` in Produktion; Express `app.disable('x-powered-by')`;
+  Container-Image ohne Build-Tools, Shells oder Paketmanager
+  (`distroless`, `chainguard images`); Kubernetes ohne unnötige
+  ServiceTypes (kein `LoadBalancer`, wenn Ingress reicht); SSH und
+  RDP nur bei Bedarf, sonst über Bastion-Host oder ZTNA. Werkzeuge:
+  `nmap` für Port-Scan; `nikto` für Web-Endpunkte; `kube-bench` für
+  Kubernetes-CIS-Benchmark; SBOM-Diff zeigt überflüssige Pakete.
+  Default-Passwörter und vorinstallierte Demo-Accounts sind vor
+  Go-Live entfernt.
+- **EN:** In production, unused endpoints, test routes, debug endpoints,
+  and management UIs are disabled or protected by authentication.
+  Concrete examples: Spring Boot Actuator endpoints
+  (`/actuator/heapdump`, `/actuator/env`) restricted via
+  `management.endpoints.web.exposure.include`; ASP.NET Core Swagger
+  UI only in `Development`
+  (`if (app.Environment.IsDevelopment()) { app.UseSwaggerUI(); }`);
+  Django `DEBUG = False` in production; Express
+  `app.disable('x-powered-by')`; container image without build tools,
+  shells, or package managers (`distroless`, `chainguard images`);
+  Kubernetes without unnecessary ServiceTypes (no `LoadBalancer`
+  when Ingress suffices); SSH and RDP only when needed, otherwise
+  via bastion or ZTNA. Tooling: `nmap` for port scans; `nikto` for
+  web endpoints; `kube-bench` for the Kubernetes CIS benchmark;
+  SBOM diff shows superfluous packages. Default passwords and
+  preinstalled demo accounts are removed before go-live.
+- **Akzeptanz / Acceptance:** Liste deaktivierter Funktionen und
+  Endpunkte je Umgebung; Scan-Bericht ohne unbeabsichtigte
+  Endpunkte. / List of disabled functions and endpoints per
+  environment; scan report shows no unintended endpoints.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 6. Trennung von Belangen / Separation of Concerns
+
+- **DE:** Querschnittsfunktionen werden zentral implementiert, nicht je
+  Endpoint neu erfunden. Konkrete Bausteine: **Authentifizierung** in
+  einem Filter/Middleware (`spring-security`-FilterChain, ASP.NET
+  Core `app.UseAuthentication()`, FastAPI `Depends(get_current_user)`,
+  Express `passport.authenticate(..)`); **Autorisierung** als
+  zentrale Policy (Spring `@PreAuthorize`, ASP.NET Core `[Authorize]`-
+  Attribute mit Policies, OPA/Rego als externer Policy-Service, Casbin);
+  **Logging** über strukturierten Logger (SLF4J + Logback in Java,
+  `Microsoft.Extensions.Logging` in .NET, `structlog` in Python,
+  `pino` in Node.js) mit MDC/Correlation-IDs und ohne PII;
+  **Eingabevalidierung** mit Bibliotheken (Bean Validation, Pydantic,
+  FluentValidation, Joi/Zod) zentral je Endpoint-DTO; **Fehlerbehandlung**
+  über globalen Handler (`@ControllerAdvice` in Spring,
+  `app.UseExceptionHandler` in ASP.NET, `errorhandler` in Express);
+  **Audit/Tracing** über OpenTelemetry mit gemeinsamem Service-Name.
+  Anti-Pattern: in jeder Controller-Methode JWT manuell parsen oder
+  `try/catch` mit individueller Antwort.
+- **EN:** Cross-cutting concerns are implemented centrally, not
+  reinvented per endpoint. Concrete building blocks:
+  **Authentication** in a filter/middleware (`spring-security`
+  filter chain, ASP.NET Core `app.UseAuthentication()`, FastAPI
+  `Depends(get_current_user)`, Express `passport.authenticate(..)`);
+  **Authorisation** as a central policy (Spring `@PreAuthorize`,
+  ASP.NET Core `[Authorize]` attribute with policies, OPA/Rego as
+  external policy service, Casbin); **Logging** via a structured
+  logger (SLF4J + Logback in Java, `Microsoft.Extensions.Logging`
+  in .NET, `structlog` in Python, `pino` in Node.js) with
+  MDC/correlation IDs and without PII; **Input validation** using
+  libraries (Bean Validation, Pydantic, FluentValidation, Joi/Zod)
+  centrally per endpoint DTO; **Error handling** via a global
+  handler (`@ControllerAdvice` in Spring,
+  `app.UseExceptionHandler` in ASP.NET, `errorhandler` in
+  Express); **Audit/tracing** via OpenTelemetry with a shared
+  service name. Anti-pattern: parsing the JWT manually in every
+  controller method or `try/catch` with bespoke responses.
+- **Akzeptanz / Acceptance:** Pro Querschnittsfunktion ein zentrales
+  Modul/Bibliothek benannt; je Funktion ein Verweis auf die
+  Implementierung im Repo. / Per cross-cutting concern a central
+  module/library named; per concern a reference to the
+  implementation in the repo.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 7. Sichere Konfiguration / Secure Configuration
+
+- **DE:** Geheimnisse (Passwörter, API-Keys, Tokens, Verschlüsselungs-
+  Schlüssel, Datenbank-Credentials) liegen in geeigneten Secret-Stores
+  und nie im Quellcode oder in `.env`-Dateien im Git-Repo. Konkrete
+  Stores: HashiCorp Vault, AWS Secrets Manager, Azure Key Vault,
+  Google Secret Manager, Kubernetes External Secrets Operator,
+  Doppler, 1Password Connect. Konfiguration nicht-geheimer Werte:
+  in YAML/JSON mit Umgebungs-Overlay (Spring `application-prod.yaml`,
+  ASP.NET `appsettings.Production.json`, Helm-`values-prod.yaml`).
+  Pre-Commit-Schutz: `gitleaks`, `trufflehog`, `detect-secrets`,
+  GitHub-Native-Secret-Scanning. Bei einem Leak: sofort rotieren,
+  Audit-Trail prüfen, Vorfall im Sicherheits-Logbuch eintragen,
+  Push-Protection für die Zukunft aktivieren. Container-Secrets
+  werden über Volume-Mount oder Secrets-Manager-Sidecar (Vault Agent
+  Injector, External Secrets Operator) eingebracht, nicht über
+  Umgebungsvariablen, die in Process-Listings sichtbar sind.
+- **EN:** Secrets (passwords, API keys, tokens, encryption keys,
+  database credentials) live in suitable secret stores and never in
+  source code or `.env` files inside the Git repo. Concrete stores:
+  HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, Google
+  Secret Manager, Kubernetes External Secrets Operator, Doppler,
+  1Password Connect. Configuration of non-secret values: in YAML/
+  JSON with environment overlays (Spring `application-prod.yaml`,
+  ASP.NET `appsettings.Production.json`, Helm `values-prod.yaml`).
+  Pre-commit protection: `gitleaks`, `trufflehog`, `detect-secrets`,
+  GitHub native secret scanning. On a leak: rotate immediately,
+  review audit trail, record the incident in the security log,
+  enable push protection going forward. Container secrets are
+  injected via volume mount or secrets-manager sidecar (Vault Agent
+  Injector, External Secrets Operator), not via environment
+  variables that appear in process listings.
+- **Akzeptanz / Acceptance:** Secret-Store-Pfad, Inject-Mechanismus
+  und Pre-Commit-Scanner-Konfiguration je Repository
+  dokumentiert. / Secret store path, injection mechanism, and
+  pre-commit scanner configuration documented per repository.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 8. Lieferketten-Sicherheit / Supply-Chain Security
+
+- **DE:** Abhängigkeiten kommen aus geprüften, vertrauenswürdigen Registries:
+  Maven Central, npm Registry mit `npm audit signatures`, NuGet.org,
+  PyPI mit Sigstore, Docker Hub Verified Publishers, GitHub Container
+  Registry, eigener Artifactory/Nexus-Proxy. Lock-Dateien sind
+  eingecheckt: `package-lock.json` (npm), `yarn.lock` (Yarn),
+  `pnpm-lock.yaml` (pnpm), `poetry.lock` / `requirements.txt` mit
+  Hash (Python), `Pipfile.lock` (Pipenv), `go.sum` (Go),
+  `Cargo.lock` (Rust), `Gemfile.lock` (Ruby), `packages.lock.json`
+  (NuGet). CVE-Scanning: GitHub Dependabot, Snyk, Trivy,
+  OWASP Dependency-Check, `pip-audit`, `npm audit`,
+  `dotnet list package --vulnerable`, `cargo audit`. Container-Image-
+  Scanning mit Trivy oder Grype gegen die SBOM. Verwundbare
+  Abhängigkeiten mit CVSS ≥ 7.0 müssen vor Release gepatcht oder mit
+  VEX als nicht-ausnutzbar dokumentiert werden. Pinning per Hash
+  (z. B. `pip install --require-hashes`, `npm install --package-lock-only`)
+  schützt gegen Repository-Manipulation; Renovate oder Dependabot
+  hält Abhängigkeiten aktiv und automatisiert PRs.
+- **EN:** Dependencies come from vetted, trusted registries: Maven
+  Central, npm Registry with `npm audit signatures`, NuGet.org, PyPI
+  with Sigstore, Docker Hub Verified Publishers, GitHub Container
+  Registry, own Artifactory/Nexus proxy. Lock files are committed:
+  `package-lock.json` (npm), `yarn.lock` (Yarn), `pnpm-lock.yaml`
+  (pnpm), `poetry.lock` / `requirements.txt` with hashes (Python),
+  `Pipfile.lock` (Pipenv), `go.sum` (Go), `Cargo.lock` (Rust),
+  `Gemfile.lock` (Ruby), `packages.lock.json` (NuGet). CVE
+  scanning: GitHub Dependabot, Snyk, Trivy, OWASP Dependency-Check,
+  `pip-audit`, `npm audit`, `dotnet list package --vulnerable`,
+  `cargo audit`. Container image scanning with Trivy or Grype
+  against the SBOM. Vulnerable dependencies with CVSS ≥ 7.0 must
+  be patched before release or documented as non-exploitable via
+  VEX. Pinning by hash (e.g. `pip install --require-hashes`,
+  `npm install --package-lock-only`) protects against registry
+  manipulation; Renovate or Dependabot keeps dependencies active
+  and automates PRs.
+- **Akzeptanz / Acceptance:** Registry-Liste, Lock-Datei und aktueller
+  CVE-Scan-Bericht im Repository; Update-Bot konfiguriert. /
+  Registry list, lock file, and current CVE scan report in the
+  repository; update bot configured.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 9. Sprachspezifische Architekturhinweise / Language-Specific Notes
+
+- **DE:** Pro genutzter Sprache und Framework werden die etablierten
+  Sicherheitsbibliotheken eingesetzt: **Java/Spring**: Spring Security
+  für Auth, Spring Validation für Input, Hibernate Validator,
+  BouncyCastle für Krypto-Erweiterungen, OWASP Java HTML Sanitizer
+  gegen XSS; **Java/Jakarta EE**: Jakarta Security, Jakarta Bean
+  Validation; **.NET**: ASP.NET Core Identity (oder Duende
+  IdentityServer), `[Authorize]`-Attribute mit Policies, Antiforgery-
+  Tokens, `Microsoft.AspNetCore.DataProtection`, FluentValidation;
+  **Python/Django**: `django.contrib.auth`, CSRF-Middleware, Django
+  ORM-Parameter-Binding, `django-axes` gegen Brute-Force; **Python/
+  FastAPI**: Pydantic, OAuth2-Flows aus FastAPI-Security, Dependency-
+  Injection für Auth; **Python/Flask**: Flask-Login, Flask-WTF mit
+  CSRF, SQLAlchemy mit Parameter-Binding; **Node.js/Express**:
+  `helmet` für Security-Header, `express-rate-limit`, `passport.js`
+  für Auth, Joi/Zod für Validierung; **Go**: `crypto/*`, `net/http`
+  mit `httprouter`/Chi und Middleware-Chain, `sqlx`/`pgx` für
+  parametrisierte Queries; **Rust**: `ring`/`rustls`, `serde` mit
+  Validatoren, `actix-web`/`axum` mit Tower-Middleware; **TypeScript/
+  NestJS**: `@nestjs/passport`, Class-Validator, Helmet-Modul.
+  Eigenimplementierungen von Auth, Krypto oder CSRF-Schutz sind
+  verboten.
+- **EN:** For each language and framework in use, established security
+  libraries are applied: **Java/Spring**: Spring Security for auth,
+  Spring Validation for input, Hibernate Validator, BouncyCastle for
+  crypto extensions, OWASP Java HTML Sanitizer against XSS;
+  **Java/Jakarta EE**: Jakarta Security, Jakarta Bean Validation;
+  **.NET**: ASP.NET Core Identity (or Duende IdentityServer),
+  `[Authorize]` attribute with policies, antiforgery tokens,
+  `Microsoft.AspNetCore.DataProtection`, FluentValidation;
+  **Python/Django**: `django.contrib.auth`, CSRF middleware, Django
+  ORM parameter binding, `django-axes` against brute force;
+  **Python/FastAPI**: Pydantic, OAuth2 flows from FastAPI Security,
+  dependency injection for auth; **Python/Flask**: Flask-Login,
+  Flask-WTF with CSRF, SQLAlchemy with parameter binding;
+  **Node.js/Express**: `helmet` for security headers,
+  `express-rate-limit`, `passport.js` for auth, Joi/Zod for
+  validation; **Go**: `crypto/*`, `net/http` with `httprouter`/Chi
+  and a middleware chain, `sqlx`/`pgx` for parameterised queries;
+  **Rust**: `ring`/`rustls`, `serde` with validators, `actix-web`/
+  `axum` with Tower middleware; **TypeScript/NestJS**:
+  `@nestjs/passport`, class-validator, Helmet module. Custom
+  implementations of auth, crypto, or CSRF protection are
+  forbidden.
+- **Akzeptanz / Acceptance:** Pro Sprache und Framework drei bis fünf
+  Muster mit Bibliothek im Architekturdokument benannt. / Per
+  language and framework, three to five patterns with library named
+  in the architecture document.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 10. S-ADR-Pflicht / S-ADR Obligation
+
+- **DE:** Sicherheits-ADRs (Security Architecture Decision Records) sind
+  kurze Markdown-Dateien mit fester Struktur: **Status** (Proposed,
+  Accepted, Deprecated, Superseded by), **Kontext**, **Entscheidung**,
+  **Optionen** mit Vor- und Nachteilen, **Folgen** und **Compliance-
+  Bezug** (z. B. „erfüllt ASVS V2.1.1, V6.2.3" oder „adressiert
+  CAPEC-66"). Werkzeuge: `adr-tools` von Nat Pryce
+  (`adr new "Choose JWT vs Session"`); MADR-Template aus
+  `https://github.com/adr/madr`; Log4brains für Web-Visualisierung.
+  Pflichtfälle für ein S-ADR: Wechsel des Authentifizierungs-Modells
+  (Session ↔ JWT ↔ OAuth2), Wahl des Verschlüsselungs-Schlüssel-
+  Stores, Einführung eines neuen Trust Boundary, Wechsel der TLS-
+  Bibliothek, Entscheidung gegen einen empfohlenen Standard mit
+  Risikobewertung. S-ADRs liegen versioniert in
+  `docs/security/adr/0001-titel.md` und werden in PRs mit verlinkt.
+  Rückwärtsbezug: spätere ADRs verweisen mit „Supersedes ADR-0007"
+  auf abgelöste Entscheidungen.
+- **EN:** Security ADRs (Security Architecture Decision Records) are
+  short Markdown files with a fixed structure: **Status** (Proposed,
+  Accepted, Deprecated, Superseded by), **Context**, **Decision**,
+  **Options** with pros and cons, **Consequences**, and
+  **Compliance reference** (e.g. "satisfies ASVS V2.1.1, V6.2.3" or
+  "addresses CAPEC-66"). Tooling: `adr-tools` by Nat Pryce
+  (`adr new "Choose JWT vs Session"`); MADR template from
+  `https://github.com/adr/madr`; Log4brains for web visualisation.
+  Mandatory cases for an S-ADR: change of authentication model
+  (session ↔ JWT ↔ OAuth2), choice of encryption key store,
+  introduction of a new trust boundary, change of TLS library,
+  decision to deviate from a recommended standard with a risk
+  assessment. S-ADRs live versioned in
+  `docs/security/adr/0001-title.md` and are linked from PRs.
+  Back-reference: later ADRs use "Supersedes ADR-0007" to point to
+  retired decisions.
+- **Akzeptanz / Acceptance:** S-ADR-Verzeichnis vorhanden mit
+  mindestens den Pflichtfällen aus dem Projekt; jedes S-ADR enthält
+  Compliance-Bezug. / S-ADR directory present with at least the
+  mandatory cases for the project; every S-ADR contains a
+  compliance reference.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 11. arc42 Abschnitt 8 / arc42 Section 8
+
+- **DE:** arc42 ist ein freies Architektur-Template (12 Abschnitte) von
+  Gernot Starke und Peter Hruschka. Abschnitt 8 „Querschnittliche
+  Konzepte" beschreibt wiederverwendete Konzepte. Der Sicherheits-
+  Anteil je Thema sollte konkrete Antworten geben:
+  **Authentifizierung** — gewähltes Verfahren (OAuth2/OIDC, SAML,
+  Session+Cookie, mTLS), Identity-Provider, MFA-Pflicht, Token-TTL;
+  **Autorisierung** — Modell (RBAC, ABAC, ReBAC), Bibliothek (Spring
+  Security, ASP.NET Authorization, OPA, Casbin), Default-Deny;
+  **Verschlüsselung** — Bibliothek je Sprache, AES-Modus, TLS-Version,
+  Schlüssel-Store, Schlüssel-Rotation; **Eingabevalidierung** —
+  zentrales Validierungsmodul, Schema-Quelle (OpenAPI/JSON Schema);
+  **Fehlerbehandlung** — globaler Handler, kein Stack-Trace im API-
+  Output, einheitliches Error-Response-Schema (`application/problem+json`,
+  RFC 7807); **Logging** — Log-Format (JSON, Logfmt), Levels,
+  Sensitivitätsfilter, Aufbewahrungsfrist, zentrale Plattform (ELK,
+  Loki/Grafana, Splunk, Datadog); **Abhängigkeiten** — Registry,
+  Lock-Files, CVE-Scanner, Update-Bot; **Deployment** — Pipeline,
+  Image-Signatur, Provenance, Rollback-Plan. Werkzeuge:
+  arc42-Template (Markdown, AsciiDoc) von `https://arc42.org/`,
+  Structurizr DSL für C4-Diagramme, dokumentationsgetriebene
+  Architektur mit Diátaxis-Struktur.
+- **EN:** arc42 is a free architecture template (12 sections) by
+  Gernot Starke and Peter Hruschka. Section 8 "Cross-cutting
+  Concepts" describes reusable concepts. The security portion per
+  topic should give concrete answers: **Authentication** — chosen
+  scheme (OAuth2/OIDC, SAML, session+cookie, mTLS), identity
+  provider, MFA requirement, token TTL; **Authorization** — model
+  (RBAC, ABAC, ReBAC), library (Spring Security, ASP.NET
+  Authorization, OPA, Casbin), default-deny; **Encryption** —
+  library per language, AES mode, TLS version, key store, key
+  rotation; **Input validation** — central validation module,
+  schema source (OpenAPI/JSON Schema); **Error handling** — global
+  handler, no stack trace in API output, unified error response
+  schema (`application/problem+json`, RFC 7807); **Logging** — log
+  format (JSON, logfmt), levels, sensitivity filter, retention,
+  central platform (ELK, Loki/Grafana, Splunk, Datadog);
+  **Dependencies** — registry, lock files, CVE scanner, update bot;
+  **Deployment** — pipeline, image signature, provenance, rollback
+  plan. Tooling: arc42 template (Markdown, AsciiDoc) from
+  `https://arc42.org/`, Structurizr DSL for C4 diagrams,
+  documentation-driven architecture with the Diátaxis structure.
+- **Akzeptanz / Acceptance:** arc42 §8 mit allen acht
+  Sicherheitsthemen oder N/A mit Begründung; Diagramm-Referenzen
+  und Tool-Namen je Thema. / arc42 §8 with all eight security
+  topics or N/A with justification; diagram references and tool
+  names per topic.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 12. Cloud-Autonomie und digitale Souveränität / Cloud Autonomy and Digital Sovereignty
+
+- **DE:** Wenn ein Projekt Cloud-Dienste, SaaS, PaaS, IaaS, verwaltete
+  Dienste, Container-Registries, Artefakt-Hosting oder providergebundene
+  Deployments wesentlich nutzt oder bereitstellt, wird BSI C3A als
+  Bewertungsrahmen für selbstbestimmte Cloud-Nutzung geprüft. Die
+  Architektur dokumentiert Provider-Abhängigkeiten, Lock-in-Risiken,
+  Exit- oder Portabilitätsoptionen, Daten- und Betriebsstandorte sowie
+  betroffene S-ADRs. Reine Entwicklungsinfrastruktur darf mit kurzer
+  Toolchain-Begründung als `nicht anwendbar` dokumentiert werden.
+- **EN:** If a project materially uses or provides cloud services, SaaS,
+  PaaS, IaaS, managed services, container registries, artefact hosting, or
+  provider-dependent deployments, BSI C3A is checked as an assessment
+  framework for self-determined cloud use. The architecture documents
+  provider dependencies, lock-in risks, exit or portability options, data
+  and operation locations, and affected S-ADRs. Generic development
+  infrastructure may be documented as `not applicable` with a short
+  toolchain rationale.
+- **Akzeptanz / Acceptance:** `docs/security/cloud-autonomy-applicability.md`
+  oder ein gleichwertiges Spec-Kit-Artefakt nennt Entscheidung, Cloud-
+  Service-Scope, Provider-Abhängigkeiten, Lock-in-/Portabilitätsrisiken,
+  Exit-Optionen, S-ADR-Links und N/A-Begründung. / `docs/security/cloud-
+  autonomy-applicability.md` or an equivalent Spec Kit artefact states the
+  decision, cloud-service scope, provider dependencies, lock-in and
+  portability risks, exit options, S-ADR links, and N/A rationale.
+- **Referenz / Reference:** Spec-Kit `architecture-governance`, Template
+  `cloud-autonomy-applicability-template`.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Cloud-Autonomie-Nachweis, S-ADR, Architekturentscheidung oder N/A-Begründung nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name cloud autonomy evidence, S-ADR, architecture decision, or N/A rationale. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 13. Cloud-Compliance-Assurance / Cloud Compliance Assurance
+
+- **DE:** Wenn ein Projekt Cloud-Dienste wesentlich nutzt oder bereitstellt,
+  wird BSI C5 als Assurance-Rahmen geprüft. Die Architektur dokumentiert,
+  ob ein C5-Testat oder ein gleichwertiger Nachweis vorliegt, welchen
+  Umfang dieser Nachweis abdeckt, welche Shared-Responsibility-Lücken
+  bleiben, welche Subdienstleister betroffen sind und welche
+  Kundenpflichten offen sind. Fehlt ein C5-Nachweis, werden Ersatznachweise
+  und Restrisiken dokumentiert.
+- **EN:** If a project materially uses or provides cloud services, BSI C5
+  is checked as an assurance framework. The architecture documents whether
+  a C5 attestation or equivalent evidence exists, which scope it covers,
+  which shared-responsibility gaps remain, which subprocessors are
+  involved, and which customer-side duties remain open. If C5 evidence is
+  missing, substitute evidence and residual risks are documented.
+- **Akzeptanz / Acceptance:** `docs/security/cloud-compliance-assurance.md`
+  oder ein gleichwertiges Spec-Kit-Artefakt nennt C5-/Assurance-Status,
+  Scope, Provider/Subdienstleister, Shared-Responsibility-Gaps,
+  Datenstandort, Logging-/Backup-Nachweise, S-ADR-Links und offene Risiken.
+  / `docs/security/cloud-compliance-assurance.md` or an equivalent Spec Kit
+  artefact states C5 or assurance status, scope, provider/subprocessors,
+  shared-responsibility gaps, data location, logging and backup evidence,
+  S-ADR links, and open risks.
+- **Referenz / Reference:** Spec-Kit `architecture-governance`, Template
+  `cloud-compliance-assurance-template`.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _C5-Testat, Assurance-Bericht, Architekturentscheidung, Risikoeintrag oder N/A-Begründung nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name C5 attestation, assurance report, architecture decision, risk entry, or N/A rationale. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+### Akzeptanzkriterien gesamt / Overall Acceptance
+
+**DE:** Erfüllt, wenn alle Punkte abgeschlossen sind und die Evidenz unter
+`docs/security/` und `docs/security/adr/` auffindbar ist. Bei wesentlicher
+Cloud-Nutzung sind C3A- und C5-Entscheidungen dokumentiert oder begründet
+als nicht anwendbar markiert.
+
+**EN:** Fulfilled when every item is closed and the evidence under
+`docs/security/` and `docs/security/adr/` is findable. For material cloud
+use, C3A and C5 decisions are documented or marked as not applicable with
+rationale.
+
+### Glossar / Glossary
+
+**DE:** Dieses Glossar erklärt die wichtigsten Begriffe dieser Checkliste in Alltagssprache. Es ändert keine Anforderungen, sondern macht die vorhandenen Prüfpunkte leichter verständlich.
+
+**EN:** This glossary explains the most important terms in this checklist in plain language. It does not change requirements; it makes the existing review items easier to understand.
+
+<a id="cl-02-glossar-trust-boundary"></a>
+
+#### Vertrauensgrenze / Trust Boundary
+
+- **DE:** Eine Vertrauensgrenze trennt Bereiche mit unterschiedlichem Schutzbedarf oder unterschiedlicher Kontrolle. Daten, die diese Grenze überschreiten, brauchen besondere Prüfung.
+- **EN:** A trust boundary separates areas with different protection needs or different control. Data crossing this boundary needs special review.
+
+<a id="cl-02-glossar-defense-in-depth"></a>
+
+#### Tiefenverteidigung / Defense in Depth
+
+- **DE:** Tiefenverteidigung bedeutet mehrere Schutzschichten. Wenn eine Maßnahme ausfällt, sollen weitere Maßnahmen den Schaden begrenzen.
+- **EN:** Defense in depth means several layers of protection. If one measure fails, other measures should limit the damage.
+
+<a id="cl-02-glossar-least-privilege"></a>
+
+#### Geringste Rechte / Least Privilege
+
+- **DE:** Geringste Rechte bedeutet, dass Personen, Dienste und Programme nur die Berechtigungen bekommen, die sie für ihre Aufgabe wirklich brauchen.
+- **EN:** Least privilege means that people, services, and programs get only the permissions they really need for their task.
+
+<a id="cl-02-glossar-attack-surface"></a>
+
+#### Angriffsfläche / Attack Surface
+
+- **DE:** Die Angriffsfläche umfasst alle Stellen, über die ein System angegriffen werden kann, zum Beispiel APIs, Login-Seiten, Ports, Dateien oder Abhängigkeiten.
+- **EN:** The attack surface includes all places where a system can be attacked, for example APIs, login pages, ports, files, or dependencies.
+
+<a id="cl-02-glossar-api"></a>
+
+#### API
+
+- **DE:** Eine API ist eine Schnittstelle, über die Programme miteinander sprechen. APIs brauchen klare Regeln für Authentifizierung, Eingaben, Fehler und Berechtigungen.
+- **EN:** An API is an interface through which programs communicate. APIs need clear rules for authentication, inputs, errors, and permissions.
+
+<a id="cl-02-glossar-adr-sadr"></a>
+
+#### ADR / S-ADR
+
+- **DE:** Ein ADR dokumentiert eine Architekturentscheidung. Ein S-ADR ist ein ADR mit Sicherheitsbezug, zum Beispiel zu Authentifizierung, Kryptografie oder Netzwerkgrenzen.
+- **EN:** An ADR documents an architecture decision. An S-ADR is an ADR with security relevance, for example authentication, cryptography, or network boundaries.
+
+<a id="cl-02-glossar-arc42"></a>
+
+#### arc42
+
+- **DE:** arc42 ist eine Vorlage für Architekturdokumentation. Sie hilft, Struktur, Schnittstellen, Risiken und Entscheidungen eines Systems nachvollziehbar zu beschreiben.
+- **EN:** arc42 is a template for architecture documentation. It helps describe a system’s structure, interfaces, risks, and decisions in a traceable way.
+
+<a id="cl-02-glossar-bsi-c3a"></a>
+
+#### BSI C3A
+
+- **DE:** BSI C3A ist eine BSI-Hilfestellung für Cloud-Anforderungen. In dieser Checkliste wird sie genutzt, um Cloud-Autonomie und digitale Souveränität zu prüfen.
+- **EN:** BSI C3A is BSI guidance for cloud requirements. In this checklist it is used to review cloud autonomy and digital sovereignty.
+
+<a id="cl-02-glossar-bsi-c5"></a>
+
+#### BSI C5
+
+- **DE:** BSI C5 ist ein Kriterienkatalog für Cloud-Sicherheit. Er hilft, Cloud-Anbieter und Cloud-Dienste anhand nachvollziehbarer Kontrollen zu bewerten.
+- **EN:** BSI C5 is a criteria catalogue for cloud security. It helps assess cloud providers and services using traceable controls.
+
+<a id="cl-02-glossar-technical-documentation"></a>
+
+#### Technische Dokumentation / Technical Documentation
+
+- **DE:** Technische Dokumentation beschreibt Produkt, Architektur, Risiken, Sicherheitsmaßnahmen, Tests und Nachweise so, dass Prüfung und Wartung möglich sind.
+- **EN:** Technical documentation describes product, architecture, risks, security measures, tests, and evidence so that review and maintenance are possible.
+
+<a id="cl-02-glossar-evidenz"></a>
+
+#### Evidenz / Evidence
+
+- **DE:** Evidenz ist ein prüfbarer Nachweis. Das kann ein Link, Ticket, Scan-Bericht, Pull Request, Protokoll, Architekturdiagramm oder Dokument sein.
+- **EN:** Evidence is verifiable proof. It can be a link, ticket, scan report, pull request, record, architecture diagram, or document.
+
+### Versionshistorie / Version History
+
+- **Version 1.0 (2026-04-27):** Erstfassung / Initial version
+- **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
+- **Version 1.2 (2026-06-15):** Prüfpunkte 12 und 13 zu BSI C3A Cloud-Autonomie und BSI C5 Cloud-Compliance-Assurance ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Added items 12 and 13 for BSI C3A cloud autonomy and BSI C5 cloud compliance assurance; synchronized with RL Sichere-Entwicklung v2.9.0.
+
+- **Version 1.3 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
+
+- **Version 1.4 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
+
+---
+
+
+---
+
+<!--
+Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
+Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+This document is organization-neutral and written as a generic training and review baseline.
+-->
+
+> **DE:** Diese Checkliste ist generisch und projektunabhaengig. Sie ist als Ausbildungs-, Review- und Haertungsgrundlage gedacht. Eine Nichtanwendbarkeit muss als `N/A` mit kurzer Begruendung dokumentiert werden.
+>
+> **EN:** This checklist is generic and project-independent. It is intended as a training, review, and hardening baseline. Non-applicability must be documented as `N/A` with a short rationale.
+
+## Checkliste 03 – Kryptografische Mindestvorgaben / Cryptographic Minimum Requirements
+
+### Zweck / Purpose
+
+**DE:** Diese Checkliste benennt die einheitlichen Mindestalgorithmen und
+Schlüssellängen für Verschlüsselung, Signatur, Hashing und Schlüsselverwaltung.
+Sie ergänzt die Richtlinie „Sichere Entwicklung" und das mitgeltende Dokument
+„Gebrauch kryptografischer Maßnahmen".
+
+**EN:** This checklist lists the uniform minimum algorithms and key sizes
+for encryption, signing, hashing, and key management. It complements the
+"Secure Development" guideline and the related document "Gebrauch
+kryptografischer Maßnahmen".
+
+### Geltungsbereich / Scope
+
+**DE:** Pflicht für alle Projekte, die Kryptografie einsetzen — auch indirekt
+über Bibliotheken, Frameworks oder externe Dienste.
+
+**EN:** Mandatory for all projects that use cryptography — including
+indirectly via libraries, frameworks, or external services.
+
+### Mitgeltende Dokumente / Related Documents
+
+- RL Sichere-Entwicklung
+- Gebrauch kryptografischer Maßnahmen (interne Vorgabe)
+- BSI TR-02102-1 (Kryptografische Verfahren: Empfehlungen und Schlüssellängen)
+- NIST SP 800-131A Rev. 2 (Transitioning the Use of Cryptographic Algorithms)
+- NIST SP 800-175B Rev. 1 (Guideline for Using Cryptographic Standards)
+- ISO/IEC 27002:2022 A.8.24
+
+#### URL-/Ablageverweise / URLs and Storage Locations
+
+**DE:** Diese Links helfen beim Review. Projekt- oder organisationsinterne Dokumente koennen als lokale Arbeitskopie oder als Verweis auf den festgelegten Ablageort ergaenzt werden.
+
+**EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
+
+- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
+- **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
+- **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
+- **Secure coding guideline:** this guide or an equivalent project-specific guideline
+- **CISA Memory Safe Roadmaps:** [lokale Textfassung des CISA-Dokuments / local text version of the CISA document](../THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.txt), [CISA-Webseite zum Dokument / CISA webpage for the document](https://www.cisa.gov/resources-tools/resources/case-memory-safe-roadmaps)
+- **ISO/IEC 27001:2022:** [offizielle ISO-Webseite zur ISO/IEC 27001:2022 / official ISO webpage for ISO/IEC 27001:2022](https://www.iso.org/standard/27001)
+- **ISO/IEC 27002:2022:** [offizielle ISO-Webseite zur ISO/IEC 27002:2022 / official ISO webpage for ISO/IEC 27002:2022](https://www.iso.org/standard/75652.html)
+- **NIST SSDF SP 800-218:** [NIST-Veröffentlichung SP 800-218 Secure Software Development Framework / NIST publication SP 800-218 Secure Software Development Framework](https://csrc.nist.gov/publications/detail/sp/800-218/final)
+- **NIST Zero Trust SP 800-207:** [NIST-Veröffentlichung SP 800-207 Zero Trust Architecture / NIST publication SP 800-207 Zero Trust Architecture](https://csrc.nist.gov/publications/detail/sp/800-207/final)
+- **OWASP ASVS:** [OWASP-Projektseite Application Security Verification Standard / OWASP project page Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)
+- **OWASP Cheat Sheet Series:** [OWASP Cheat Sheet Series Projektseite / OWASP Cheat Sheet Series project page](https://cheatsheetseries.owasp.org/)
+- **OWASP Proactive Controls:** [OWASP Proactive Controls Projektseite / OWASP Proactive Controls project page](https://owasp.org/www-project-proactive-controls/)
+- **OWASP SAMM:** [OWASP SAMM Projektseite / OWASP SAMM project page](https://owaspsamm.org/)
+- **OWASP Top 10 for LLM Applications:** [OWASP Top 10 for LLM Applications Projektseite / OWASP Top 10 for LLM Applications project page](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- **CWE Top 25:** [MITRE CWE Top 25 Übersicht / MITRE CWE Top 25 overview](https://cwe.mitre.org/top25/)
+- **CAPEC:** [MITRE CAPEC Katalog / MITRE CAPEC catalogue](https://capec.mitre.org/)
+- **CycloneDX:** [CycloneDX SBOM-Standard Projektseite / CycloneDX SBOM standard project page](https://cyclonedx.org/)
+- **SPDX:** [SPDX SBOM-Standard Projektseite / SPDX SBOM standard project page](https://spdx.dev/)
+- **CSAF/VEX:** [OASIS CSAF und VEX Dokumentation / OASIS CSAF and VEX documentation](https://oasis-open.github.io/csaf-documentation/)
+- **SLSA:** [SLSA Supply-chain Levels for Software Artifacts Projektseite / SLSA project page](https://slsa.dev/)
+- **OpenSSF Scorecard:** [OpenSSF Scorecard Projektseite / OpenSSF Scorecard project page](https://scorecard.dev/)
+- **RFC 9116 security.txt:** [RFC 9116 zu security.txt / RFC 9116 for security.txt](https://www.rfc-editor.org/rfc/rfc9116)
+- **NIST AI Risk Management Framework:** [NIST AI Risk Management Framework Webseite / NIST AI Risk Management Framework webpage](https://www.nist.gov/itl/ai-risk-management-framework)
+- **EU Cyber Resilience Act:** [EU-Amtsblatt zum Cyber Resilience Act / EU Official Journal for the Cyber Resilience Act](https://eur-lex.europa.eu/eli/reg/2024/2847/oj)
+- **BSI TR-02102:** [BSI-Webseite zur Technischen Richtlinie TR-02102 / BSI webpage for Technical Guideline TR-02102](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Technische-Richtlinien/TR-nach-Thema-sortiert/tr02102/tr-02102.html)
+
+### Bewertung und Dokumentation / Assessment and Documentation
+
+**DE:** Jeder Prüfpunkt bekommt genau einen Status. Schreibe die Begründung so, dass eine neue Kollegin oder ein neuer Kollege den Entscheid später ohne Rückfrage versteht.
+
+**EN:** Each checklist item gets exactly one status. Write the explanation so that a new team member can understand the decision later without asking again.
+
+- **Erfüllt / Fulfilled:** Die Anforderung ist umgesetzt und es gibt einen prüfbaren Nachweis.
+- **Nicht erfüllt / Not fulfilled:** Die Anforderung ist noch nicht umgesetzt oder der Nachweis fehlt. Es muss eine Aufgabe mit Verantwortlicher Person und Termin geben.
+- **Nicht anwendbar / Not applicable:** Die Anforderung passt nicht zum Projekt. Das ist erlaubt, aber nur mit kurzer Begründung.
+
+**Pflichtfelder je Prüfpunkt / Required fields per item:** Status, Begründung, Evidenzpfad oder Link, nächste Maßnahme mit Verantwortlicher Person und Zieltermin.
+
+### Durchführungshinweise / Implementation Guidance
+
+**DE:** Nutze diese Checkliste nicht als reine Ja/Nein-Liste. Sie ist ein Arbeits- und Auditdokument. Prüfe jeden Punkt gegen reale Artefakte: Code, Pull Request, Architekturdiagramm, Build-Log, Scan-Ergebnis, Ticket, Betriebsdokumentation oder Freigabeprotokoll. Wenn ein Nachweis noch fehlt, markiere den Punkt als „nicht erfüllt" und lege eine konkrete Folgeaufgabe an.
+
+**EN:** Do not use this checklist as a simple yes/no list. It is a working and audit document. Check each item against real artefacts: code, pull request, architecture diagram, build log, scan result, ticket, operations document, or approval record. If evidence is missing, mark the item as "not fulfilled" and create a concrete follow-up task.
+
+**DE:** Schreibe kurze, klare Begründungen. Vermeide Abkürzungen ohne Erklärung. Wenn ein Punkt technisch schwierig ist, beschreibe den aktuellen Stand, das Risiko und den nächsten machbaren Schritt.
+
+**EN:** Write short and clear explanations. Avoid unexplained abbreviations. If an item is technically difficult, describe the current state, the risk, and the next feasible step.
+
+**DE:** Jeder Prüfpunkt muss deshalb drei Fragen beantworten: Was bedeutet die Anforderung im Projektalltag? Was ist konkret zu tun oder zu entscheiden? Welcher Nachweis zeigt das Ergebnis? Verwende Standard-IDs, Toolnamen und Abkürzungen nur zusammen mit einer kurzen Erklärung in Alltagssprache. Wenn ein Punkt für Auszubildende oder neue Teammitglieder nicht selbsterklärend ist, ergänze eine kurze Erklärung in der Begründung.
+
+**EN:** Each item must therefore answer three questions: What does the requirement mean in daily project work? What exactly must be done or decided? Which evidence shows the result? Use standard IDs, tool names, and abbreviations only together with a short plain-language explanation. If an item is not self-explanatory for apprentices or new team members, add a short explanation in the rationale.
+
+### Beispiel / Example
+
+**DE:** Ein Dienst speichert API-Tokens verschlüsselt. Die Evidenz nennt AES-256-GCM, den Secret Store, den Rotationsplan und den letzten TLS-Scan. Wenn ein Altsystem noch SHA-1 braucht, ist das „nicht erfüllt" oder nur mit befristeter Risikoakzeptanz zulässig.
+
+**EN:** A service stores API tokens encrypted. The evidence names AES-256-GCM, the secret store, the rotation plan, and the latest TLS scan. If a legacy system still needs SHA-1, this is "not fulfilled" or only allowed with temporary risk acceptance.
+
+### A11Y-Hinweise / A11Y Notes
+
+**DE:** Beim Ausfüllen dieser Checkliste müssen alle Nachweise auch textlich verständlich sein. Verweise sollen beschreibende Linktexte haben. Screenshots, Diagramme oder Scan-Auszüge brauchen eine kurze Textbeschreibung. Der Status darf nicht nur über Farbe erkennbar sein.
+
+**EN:** When this checklist is filled in, all evidence must also be understandable as text. References should use descriptive link text. Screenshots, diagrams, or scan extracts need a short text description. The status must not be shown by color alone.
+
+### Wichtige Begriffe / Key Terms
+
+**DE:** Die folgenden Begriffe kommen in dieser Checkliste vor. Die Links springen zum Glossar dieses Kapitels, damit Auszubildende und Entwickler:innen ohne Sicherheits-Spezialwissen die Begriffe direkt nachlesen können.
+
+**EN:** The following terms appear in this checklist. The links jump to this chapter's glossary so that apprentices and developers without specialist security knowledge can look them up directly.
+
+- [BSI TR-02102](#cl-03-glossar-bsi-tr-02102)
+- [AES-GCM](#cl-03-glossar-aes-gcm)
+- [AEAD](#cl-03-glossar-aead)
+- [RSA](#cl-03-glossar-rsa)
+- [ECDSA / EdDSA](#cl-03-glossar-ecdsa-eddsa)
+- [SHA-256](#cl-03-glossar-sha-256)
+- [HMAC](#cl-03-glossar-hmac)
+- [Argon2 / bcrypt / scrypt](#cl-03-glossar-password-hashing)
+- [TLS](#cl-03-glossar-tls)
+- [CSPRNG](#cl-03-glossar-csprng)
+- [KMS](#cl-03-glossar-kms)
+- [HSM](#cl-03-glossar-hsm)
+- [MD5](#cl-03-glossar-md5)
+- [Post-Quanten-Krypto / PQC](#cl-03-glossar-pqc)
+- [Evidenz / Evidence](#cl-03-glossar-evidenz)
+
+### Checkliste / Checklist
+
+#### 1. Symmetrische Verschlüsselung / Symmetric Encryption
+
+- **DE:** Eingesetzt wird AES-256 in einem authentisierten Modus (AEAD), vorzugsweise
+  AES-GCM oder AES-GCM-SIV; alternativ ChaCha20-Poly1305 (z. B. auf Plattformen ohne
+  AES-NI). Konkret: in Java `Cipher.getInstance("AES/GCM/NoPadding")`, in .NET
+  `System.Security.Cryptography.AesGcm`, in Python `cryptography.hazmat.primitives.ciphers.aead.AESGCM`,
+  in Go `crypto/cipher.NewGCM`, in libsodium `crypto_aead_chacha20poly1305_ietf_encrypt`.
+  Eine Nonce wird je Schlüssel niemals wiederverwendet (12 Byte Zufalls-Nonce für
+  AES-GCM oder ein streng monoton steigender Zähler). Modi ohne Authentisierung
+  (AES-CBC, AES-CTR ohne separaten MAC) sind verboten.
+- **EN:** Use AES-256 in an authenticated mode (AEAD), preferably AES-GCM or
+  AES-GCM-SIV; ChaCha20-Poly1305 is the alternative (e.g. on platforms without
+  AES-NI). Concretely: Java `Cipher.getInstance("AES/GCM/NoPadding")`, .NET
+  `System.Security.Cryptography.AesGcm`, Python `cryptography.hazmat.primitives.ciphers.aead.AESGCM`,
+  Go `crypto/cipher.NewGCM`, libsodium `crypto_aead_chacha20poly1305_ietf_encrypt`.
+  A nonce is never reused per key (12-byte random nonce for AES-GCM or a strictly
+  monotonic counter). Non-authenticated modes (AES-CBC or AES-CTR without a
+  separate MAC) are forbidden.
+- **Akzeptanz / Acceptance:** Algorithmus, Modus, Nonce-Strategie und Bibliothek
+  je Modul dokumentiert. / Algorithm, mode, nonce strategy, and library
+  documented per module.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 2. Asymmetrische Verschlüsselung und Signatur / Asymmetric Encryption and Signature
+
+- **DE:** RSA mit mindestens 3072 Bit, ECDSA mit Kurve P-256 (secp256r1) oder höher,
+  oder Ed25519 (bevorzugt für neue Signaturen). Für Schlüsseltausch: ECDH (P-256
+  oder höher) oder X25519. RSA-Verschlüsselung verwendet RSA-OAEP mit SHA-256
+  (`Cipher.getInstance("RSA/ECB/OAEPWithSHA-256AndMGF1Padding")` in Java,
+  `RSA.encrypt(..., padding=OAEP(SHA256()))` in Python `cryptography`,
+  `RSAEncryptionPadding.OaepSHA256` in .NET); RSA-PKCS#1 v1.5 ist für neue
+  Anwendungen verboten. ECDSA-Signaturen sollen RFC 6979 (deterministisch)
+  oder einen geprüften CSPRNG verwenden, um Nonce-Kollisionen zu vermeiden.
+  Verbotene Kurven: P-192 (secp192r1), brainpoolP160 und kürzere.
+- **EN:** RSA with at least 3072 bit, ECDSA with curve P-256 (secp256r1) or
+  higher, or Ed25519 (preferred for new signatures). For key exchange: ECDH
+  (P-256 or higher) or X25519. RSA encryption uses RSA-OAEP with SHA-256
+  (`Cipher.getInstance("RSA/ECB/OAEPWithSHA-256AndMGF1Padding")` in Java,
+  `RSA.encrypt(..., padding=OAEP(SHA256()))` in Python `cryptography`,
+  `RSAEncryptionPadding.OaepSHA256` in .NET); RSA-PKCS#1 v1.5 is forbidden
+  for new applications. ECDSA signatures should use RFC 6979 (deterministic)
+  or a vetted CSPRNG to avoid nonce collisions. Forbidden curves: P-192
+  (secp192r1), brainpoolP160, and shorter.
+- **Akzeptanz / Acceptance:** Algorithmus, Kurve, Padding und Bibliothek je
+  Modul dokumentiert. / Algorithm, curve, padding, and library documented
+  per module.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 3. Hash-Funktionen / Hash Functions
+
+- **DE:** SHA-256 oder höher (SHA-384, SHA-512, SHA-3-Familie wie SHA3-256,
+  SHA3-512, oder BLAKE2/BLAKE3). Konkret: in Python `hashlib.sha256()`, in
+  Java `MessageDigest.getInstance("SHA-256")`, in .NET `SHA256.HashData(..)`,
+  in Go `crypto/sha256.Sum256(..)`, in Node.js `crypto.createHash("sha256")`.
+  MD5 und SHA-1 sind für Sicherheitszwecke (Signaturen, Integritätsprüfung
+  von vertraulichen Daten, Passwort-Ableitung, HMAC-Schlüsselableitung)
+  verboten. Nicht-sicherheitsrelevante Anwendungen wie Cache-Schlüssel,
+  Datei-Deduplizierung oder ETags sind erlaubt, müssen aber als „nicht
+  sicherheitsrelevant" gekennzeichnet sein.
+- **EN:** SHA-256 or higher (SHA-384, SHA-512, SHA-3 family such as SHA3-256
+  or SHA3-512, or BLAKE2/BLAKE3). Concretely: Python `hashlib.sha256()`,
+  Java `MessageDigest.getInstance("SHA-256")`, .NET `SHA256.HashData(..)`,
+  Go `crypto/sha256.Sum256(..)`, Node.js `crypto.createHash("sha256")`.
+  MD5 and SHA-1 are forbidden for security purposes (signatures, integrity
+  checks of confidential data, password derivation, HMAC key derivation).
+  Non-security uses like cache keys, file deduplication, or ETags are
+  allowed but must be flagged as "not security-relevant".
+- **Akzeptanz / Acceptance:** Hash-Algorithmus, Bibliothek und Anwendungsfall
+  („sicherheitsrelevant" oder „nicht sicherheitsrelevant") je Modul
+  dokumentiert. / Hash algorithm, library, and use case ("security-relevant"
+  or "not security-relevant") documented per module.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 4. Passwort-Hashing / Password Hashing
+
+- **DE:** Argon2id (bevorzugt) mit Mindest-Parametern m = 64 MiB Speicher,
+  t = 3 Iterationen, p = 1 (oder vergleichbare Profile nach OWASP Password
+  Storage Cheat Sheet). Alternativ scrypt mit N ≥ 2^17, r = 8, p = 1, oder
+  bcrypt mit Cost-Faktor ≥ 12. Salz mit mindestens 16 Byte aus einem CSPRNG.
+  Konkret: in Python `argon2.PasswordHasher` (Paket `argon2-cffi`) oder
+  `passlib.hash.argon2`, in Java `org.bouncycastle.crypto.generators.Argon2BytesGenerator`
+  oder `de.mkammerer:argon2-jvm`, in .NET `Konscious.Security.Cryptography.Argon2id`,
+  in Node.js das Paket `argon2`. Plaintext-Speicherung von Passwörtern und
+  einfache Hashes ohne Salz (z. B. `SHA-256(password)`) sind verboten. Alte
+  schnelle Hash-Funktionen (MD5, SHA-1, SHA-256) sind als Passwort-Hash
+  verboten, weil sie GPU- und ASIC-Angriffe nicht ausreichend bremsen.
+- **EN:** Argon2id (preferred) with minimum parameters m = 64 MiB memory,
+  t = 3 iterations, p = 1 (or comparable profiles from the OWASP Password
+  Storage Cheat Sheet). Alternative: scrypt with N ≥ 2^17, r = 8, p = 1,
+  or bcrypt with cost factor ≥ 12. Salt of at least 16 bytes from a CSPRNG.
+  Concretely: Python `argon2.PasswordHasher` (package `argon2-cffi`) or
+  `passlib.hash.argon2`, Java `org.bouncycastle.crypto.generators.Argon2BytesGenerator`
+  or `de.mkammerer:argon2-jvm`, .NET `Konscious.Security.Cryptography.Argon2id`,
+  Node.js the `argon2` package. Plaintext password storage and plain hashes
+  without salt (e.g. `SHA-256(password)`) are forbidden. Old fast hash
+  functions (MD5, SHA-1, SHA-256) are forbidden as password hashes because
+  they do not slow down GPU and ASIC attacks enough.
+- **Akzeptanz / Acceptance:** Algorithmus, Parameter (m, t, p oder cost),
+  Bibliothek und Salz-Quelle je Anwendung dokumentiert. / Algorithm,
+  parameters (m, t, p or cost), library, and salt source documented per
+  application.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 5. Message Authentication Code (MAC) / MAC
+
+- **DE:** HMAC mit SHA-256 oder höher (HMAC-SHA-256, HMAC-SHA-384,
+  HMAC-SHA-512). Für SHA-3-Familien zusätzlich KMAC. Konkret: in Python
+  `hmac.new(key, msg, hashlib.sha256)` oder `cryptography.hazmat.primitives.hmac.HMAC`,
+  in Java `Mac.getInstance("HmacSHA256")`, in .NET `HMACSHA256`, in Go
+  `crypto/hmac.New(sha256.New, key)`, in Node.js `crypto.createHmac("sha256", key)`.
+  Schlüssel mindestens so lang wie der Hash-Output (32 Byte für SHA-256).
+  HMAC-MD5 und HMAC-SHA1 sind für neue Anwendungen verboten. Vergleiche
+  müssen zeit-konstant sein (`hmac.compare_digest`, `MessageDigest.isEqual`,
+  `CryptographicOperations.FixedTimeEquals`); einfaches `==` öffnet ein
+  Timing-Seitenkanal-Risiko. Für AEAD-Verfahren (AES-GCM, ChaCha20-Poly1305)
+  entfällt ein separater MAC, da die Authentisierung integriert ist.
+- **EN:** HMAC with SHA-256 or higher (HMAC-SHA-256, HMAC-SHA-384,
+  HMAC-SHA-512). For SHA-3 families also KMAC. Concretely: Python
+  `hmac.new(key, msg, hashlib.sha256)` or
+  `cryptography.hazmat.primitives.hmac.HMAC`, Java
+  `Mac.getInstance("HmacSHA256")`, .NET `HMACSHA256`, Go
+  `crypto/hmac.New(sha256.New, key)`, Node.js
+  `crypto.createHmac("sha256", key)`. Keys at least as long as the hash
+  output (32 bytes for SHA-256). HMAC-MD5 and HMAC-SHA1 are forbidden for
+  new applications. Comparisons must be constant-time (`hmac.compare_digest`,
+  `MessageDigest.isEqual`, `CryptographicOperations.FixedTimeEquals`);
+  plain `==` opens a timing side-channel. AEAD modes (AES-GCM,
+  ChaCha20-Poly1305) do not need a separate MAC because authentication is
+  integrated.
+- **Akzeptanz / Acceptance:** MAC-Verfahren, Bibliothek und
+  Vergleichsfunktion je Schnittstelle dokumentiert. / MAC scheme, library,
+  and comparison function documented per interface.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 6. Verbotene oder eingeschränkte Verfahren / Forbidden or Restricted Algorithms
+
+- **DE:** Verboten sind: MD5 und SHA-1 für jede Sicherheitsfunktion (Signaturen,
+  Zertifikate, HMAC-Schlüssel-Ableitung); DES und 3DES (Triple-DES) als
+  Block-Cipher; RC4 als Stromchiffre; RSA-PKCS#1 v1.5 (Padding) für
+  Verschlüsselung in neuen Anwendungen; AES im ECB-Modus
+  (`Cipher.getInstance("AES/ECB/...")`, `AES.new(key, AES.MODE_ECB)`); statische
+  IVs in CBC-/CTR-Modi; selbstgebaute Hash-Konstruktionen (`H(secret || data)`
+  ohne HMAC); kürzere elliptische Kurven als P-256 (P-192, brainpoolP160).
+  Beispiel-Anti-Patterns: `MessageDigest.getInstance("MD5")` für
+  Passwort-Hash, `Cipher.getInstance("DES")`, `Cipher.getInstance("AES/ECB/PKCS5Padding")`,
+  `crypto.createHash("sha1")` für Token-Validierung. Ausnahmen brauchen
+  eine dokumentierte Risikoakzeptanz mit Ablaufdatum, Verantwortlicher und
+  Migrationsplan im Risikoregister.
+- **EN:** Forbidden: MD5 and SHA-1 for any security function (signatures,
+  certificates, HMAC key derivation); DES and 3DES (Triple-DES) as block
+  ciphers; RC4 as a stream cipher; RSA-PKCS#1 v1.5 (padding) for encryption
+  in new applications; AES in ECB mode (`Cipher.getInstance("AES/ECB/...")`,
+  `AES.new(key, AES.MODE_ECB)`); static IVs in CBC/CTR modes; self-built
+  hash constructions (`H(secret || data)` without HMAC); elliptic curves
+  shorter than P-256 (P-192, brainpoolP160). Example anti-patterns:
+  `MessageDigest.getInstance("MD5")` for password hashing,
+  `Cipher.getInstance("DES")`, `Cipher.getInstance("AES/ECB/PKCS5Padding")`,
+  `crypto.createHash("sha1")` for token validation. Exceptions need a
+  documented risk acceptance with expiry date, owner, and migration plan in
+  the risk register.
+- **Akzeptanz / Acceptance:** Code-Scan oder Linter-Bericht ohne Treffer; bei
+  Ausnahme: Risikoregister-Eintrag mit Migrationspfad. / Code scan or
+  linter report with no findings; for exceptions: risk register entry with
+  migration path.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 7. TLS-Konfiguration / TLS Configuration
+
+- **DE:** TLS 1.2 ist das Mindestmaß, TLS 1.3 ist bevorzugt. SSLv2, SSLv3,
+  TLS 1.0 und TLS 1.1 sind deaktiviert. Empfohlene TLS 1.3 Cipher-Suites:
+  `TLS_AES_256_GCM_SHA384`, `TLS_CHACHA20_POLY1305_SHA256`,
+  `TLS_AES_128_GCM_SHA256`. Empfohlene TLS 1.2 Suites mit Forward Secrecy:
+  `ECDHE-ECDSA-AES256-GCM-SHA384`, `ECDHE-RSA-AES256-GCM-SHA384`,
+  `ECDHE-ECDSA-CHACHA20-POLY1305`, `ECDHE-RSA-CHACHA20-POLY1305`.
+  Konfigurationsbeispiele: in nginx `ssl_protocols TLSv1.2 TLSv1.3;
+  ssl_ciphers ECDHE+AESGCM:ECDHE+CHACHA20; ssl_prefer_server_ciphers on;`,
+  in Apache `SSLProtocol -all +TLSv1.2 +TLSv1.3`, in Spring Boot
+  `server.ssl.enabled-protocols=TLSv1.2,TLSv1.3`, in Kestrel
+  `SslProtocols = SslProtocols.Tls12 | SslProtocols.Tls13`. HSTS
+  (`Strict-Transport-Security: max-age=31536000; includeSubDomains`) ist
+  für öffentliche Endpunkte gesetzt. Zertifikate aus einer CA, die im
+  CT-Log (Certificate Transparency) erscheint; selbstsignierte Zertifikate
+  nur in geschlossenen Test-/Entwicklungsumgebungen.
+- **EN:** TLS 1.2 is the minimum, TLS 1.3 is preferred. SSLv2, SSLv3,
+  TLS 1.0, and TLS 1.1 are disabled. Recommended TLS 1.3 cipher suites:
+  `TLS_AES_256_GCM_SHA384`, `TLS_CHACHA20_POLY1305_SHA256`,
+  `TLS_AES_128_GCM_SHA256`. Recommended TLS 1.2 suites with forward
+  secrecy: `ECDHE-ECDSA-AES256-GCM-SHA384`, `ECDHE-RSA-AES256-GCM-SHA384`,
+  `ECDHE-ECDSA-CHACHA20-POLY1305`, `ECDHE-RSA-CHACHA20-POLY1305`.
+  Configuration examples: nginx `ssl_protocols TLSv1.2 TLSv1.3;
+  ssl_ciphers ECDHE+AESGCM:ECDHE+CHACHA20; ssl_prefer_server_ciphers on;`,
+  Apache `SSLProtocol -all +TLSv1.2 +TLSv1.3`, Spring Boot
+  `server.ssl.enabled-protocols=TLSv1.2,TLSv1.3`, Kestrel
+  `SslProtocols = SslProtocols.Tls12 | SslProtocols.Tls13`. HSTS
+  (`Strict-Transport-Security: max-age=31536000; includeSubDomains`) is
+  set for public endpoints. Certificates from a CA that appears in CT
+  logs (Certificate Transparency); self-signed certificates only in closed
+  test or development environments.
+- **Akzeptanz / Acceptance:** TLS-Scan-Bericht pro Endpunkt (z. B.
+  `testssl.sh`, Qualys SSL Labs, `sslyze`) mit Mindest-Note A oder
+  vergleichbar. / TLS scan report per endpoint (e.g. `testssl.sh`,
+  Qualys SSL Labs, `sslyze`) with at least an "A" rating or equivalent.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 8. Zufallszahlen / Random Numbers
+
+- **DE:** Sicherheitsrelevante Zufallszahlen kommen aus kryptografisch
+  sicheren Quellen (`/dev/urandom`, `getrandom()`, `CryptGenRandom`,
+  Bibliotheks-CSPRNG). Vorhersagbare Quellen wie `Math.random` oder
+  `rand()` werden nicht verwendet.
+- **EN:** Security-relevant random numbers come from cryptographically secure
+  sources (`/dev/urandom`, `getrandom()`, `CryptGenRandom`, library CSPRNG).
+  Predictable sources like `Math.random` or `rand()` are not used.
+- **Akzeptanz / Acceptance:** Quelle je Modul benannt.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 9. Schlüsselverwaltung / Key Management
+
+- **DE:** Schlüssel liegen in einem geeigneten Secret Store: HashiCorp Vault,
+  AWS KMS, Azure Key Vault, Google Cloud KMS, hardware-basiertes HSM (z. B.
+  Thales Luna, AWS CloudHSM, YubiHSM), OS-Keychain (macOS Keychain,
+  Windows DPAPI/Credential Manager, libsecret unter Linux), oder Kubernetes
+  Secrets mit aktivierter Encryption at Rest. Schlüssel liegen niemals im
+  Quellcode, in `.env`-Dateien, in Git-versionierten Konfigurationen, in
+  Container-Images, in Build-Logs oder in CI-Variablen ohne Maskierung.
+  Zugriff folgt dem Least-Privilege-Prinzip: getrennte Rollen für lesen,
+  schreiben, rotieren, löschen; Audit-Log aller Zugriffe. Pre-Commit-Hooks
+  oder Scanner wie `gitleaks`, `trufflehog`, `detect-secrets` blockieren
+  versehentliche Commits. Bei Geheimnis-Kompromittierung wird sofort
+  rotiert und der Vorfall im Sicherheits-Logbuch dokumentiert.
+- **EN:** Keys live in a suitable secret store: HashiCorp Vault, AWS KMS,
+  Azure Key Vault, Google Cloud KMS, hardware HSM (e.g. Thales Luna, AWS
+  CloudHSM, YubiHSM), OS keychain (macOS Keychain, Windows DPAPI/Credential
+  Manager, libsecret on Linux), or Kubernetes Secrets with encryption at
+  rest enabled. Keys are never in source code, `.env` files, Git-tracked
+  configuration, container images, build logs, or unmasked CI variables.
+  Access follows least privilege: separate roles for read, write, rotate,
+  delete; audit log of all access. Pre-commit hooks or scanners like
+  `gitleaks`, `trufflehog`, `detect-secrets` block accidental commits. On
+  secret compromise, immediate rotation and incident logging in the
+  security record.
+- **Akzeptanz / Acceptance:** Secret-Store-Name, Zugriffsmodell (Rollen,
+  Berechtigungen), Audit-Log-Pfad und Scanner-Konfiguration je Projekt
+  dokumentiert. / Secret store name, access model (roles, permissions),
+  audit log path, and scanner configuration documented per project.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 10. Schlüsselrotation / Key Rotation
+
+- **DE:** Festgelegte Rotationsfristen je Schlüsseltyp: TLS-Server-Zertifikate
+  ≤ 397 Tage (Browser-Limit ab 2020), idealerweise per ACME (Let's Encrypt,
+  ZeroSSL) alle 60–90 Tage automatisiert; API- und Service-Tokens 90 Tage;
+  Datenbank-Verschlüsselungsschlüssel (DEK) jährlich oder häufiger;
+  Master-/Wrapping-Keys (KEK) im KMS jährlich mit Versionierung;
+  Signaturschlüssel projektabhängig (oft mehrere Jahre, aber mit
+  Migrationspfad). Rotation funktioniert mit überlappender Gültigkeit
+  (Old-Key + New-Key gleichzeitig akzeptieren), bis alle Verbraucher
+  umgestellt sind. Werkzeuge: AWS KMS Automatic Key Rotation, Azure Key
+  Vault Auto-Rotation, HashiCorp Vault `vault rotate`, cert-manager unter
+  Kubernetes. Bei Verdacht auf Kompromittierung wird sofort rotiert,
+  betroffene Sitzungen werden invalidiert, und der Vorfall geht in
+  Incident Response.
+- **EN:** Defined rotation periods per key type: TLS server certificates
+  ≤ 397 days (browser limit since 2020), ideally automated via ACME
+  (Let's Encrypt, ZeroSSL) every 60–90 days; API and service tokens 90
+  days; database encryption keys (DEK) yearly or more often; master /
+  wrapping keys (KEK) in the KMS yearly with versioning; signing keys
+  project-dependent (often multi-year, but with a migration path).
+  Rotation uses overlapping validity (old + new key both accepted) until
+  all consumers have switched. Tools: AWS KMS Automatic Key Rotation,
+  Azure Key Vault Auto-Rotation, HashiCorp Vault `vault rotate`,
+  cert-manager on Kubernetes. On suspected compromise, immediate
+  rotation, invalidate affected sessions, escalate to incident response.
+- **Akzeptanz / Acceptance:** Rotationsplan mit Frist je Schlüsseltyp,
+  Werkzeug, letztem Rotations-Datum und Verantwortlicher Person
+  dokumentiert. / Rotation plan with period per key type, tooling, last
+  rotation date, and owner documented.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 11. Keine eigene Krypto / No Custom Crypto
+
+- **DE:** Eingesetzt werden geprüfte, aktiv gepflegte Bibliotheken: in Java
+  JCA/JCE der Standard-JDK plus optional BouncyCastle (`org.bouncycastle`)
+  oder Tink (`com.google.crypto.tink`); in .NET der Namensraum
+  `System.Security.Cryptography` (z. B. `AesGcm`, `RSA`, `ECDsa`); in Python
+  `cryptography` (Paket `cryptography` von der PyCA), `pynacl` oder Tink;
+  in Go die Standardpakete `crypto/*` plus `golang.org/x/crypto`; in
+  Node.js das eingebaute `crypto`-Modul oder `libsodium-wrappers`; in C/C++
+  libsodium oder OpenSSL/BoringSSL via API-Wrapper. Eigenimplementierungen
+  von Block-Ciphern, Hash-Funktionen, MACs, Schlüsselableitung, Padding,
+  Konstanzvergleich oder Zufallszahlengenerator sind nicht zulässig — auch
+  nicht „nur als Lernprojekt" im Produktivcode. Veraltete oder nicht
+  gepflegte Bibliotheken (z. B. JCE-Provider ohne Sicherheitsupdates seit
+  > 12 Monaten) müssen ersetzt werden.
+- **EN:** Use vetted, actively maintained libraries: Java JCA/JCE in the
+  JDK plus optional BouncyCastle (`org.bouncycastle`) or Tink
+  (`com.google.crypto.tink`); .NET namespace `System.Security.Cryptography`
+  (e.g. `AesGcm`, `RSA`, `ECDsa`); Python `cryptography` (PyCA package),
+  `pynacl`, or Tink; Go standard `crypto/*` plus `golang.org/x/crypto`;
+  Node.js built-in `crypto` or `libsodium-wrappers`; C/C++ libsodium or
+  OpenSSL/BoringSSL via API wrappers. Custom implementations of block
+  ciphers, hash functions, MACs, key derivation, padding, constant-time
+  comparison, or random number generators are not allowed — not even "as
+  a learning project" in production code. Outdated or unmaintained
+  libraries (e.g. JCE providers without security updates for > 12 months)
+  must be replaced.
+- **Akzeptanz / Acceptance:** Bibliothek mit Versionsnummer je Sprache und
+  Modul; SBOM (CycloneDX/SPDX) listet sie. / Library with version per
+  language and module; SBOM (CycloneDX/SPDX) lists them.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 12. Hardware-Unterstützung / Hardware Support
+
+- **DE:** Wo möglich werden Hardware-gestützte Schlüsselspeicher genutzt:
+  TPM 2.0 (Trusted Platform Module) auf Servern und Notebooks für lokale
+  Geräteschlüssel; HSM (Hardware Security Module) wie Thales Luna,
+  Utimaco, AWS CloudHSM, YubiHSM 2 für hochwertige Master- oder
+  Signaturschlüssel; Cloud-KMS (AWS KMS, Azure Key Vault Premium, Google
+  Cloud KMS HSM-Tier) als verwaltete HSM-Variante; Smartcards oder
+  USB-Token (YubiKey, NitroKey, FIDO2/WebAuthn) für persönliche
+  Authentifizierung und Code-Signing. Schlüssel werden auf der Hardware
+  erzeugt und verlassen sie niemals im Klartext (Schlüssel als
+  „non-exportable" markiert). Beispiele: Code-Signing-Schlüssel auf einem
+  HSM mit FIPS 140-2 Level 3 oder höher; SSH-Schlüssel auf einem YubiKey
+  mit Resident-Key-Funktion; TLS-Schlüssel im Cloud-KMS mit
+  Auto-Rotation. Bei nicht-realisierbarer Hardware-Bindung wird die
+  Begründung (z. B. Container-Plattform ohne TPM-Passthrough) im S-ADR
+  dokumentiert.
+- **EN:** Where feasible, hardware-backed key stores are used: TPM 2.0
+  (Trusted Platform Module) on servers and notebooks for local device
+  keys; HSM (Hardware Security Module) such as Thales Luna, Utimaco,
+  AWS CloudHSM, YubiHSM 2 for high-value master or signing keys; cloud
+  KMS (AWS KMS, Azure Key Vault Premium, Google Cloud KMS HSM tier) as
+  managed HSM variant; smartcards or USB tokens (YubiKey, NitroKey,
+  FIDO2/WebAuthn) for personal authentication and code signing. Keys are
+  generated on the hardware and never leave it in cleartext (keys flagged
+  "non-exportable"). Examples: code-signing key on an HSM with FIPS
+  140-2 Level 3 or higher; SSH key on a YubiKey with resident-key
+  feature; TLS key in cloud KMS with auto-rotation. If hardware binding
+  is not feasible, the justification (e.g. container platform without
+  TPM passthrough) is documented in an S-ADR.
+- **Akzeptanz / Acceptance:** Hardware-Typ, Sicherheitsstufe (z. B. FIPS
+  140-2/3 Level), Konfiguration und Begründung je Schlüssel
+  dokumentiert. / Hardware type, security level (e.g. FIPS 140-2/3
+  level), configuration, and justification documented per key.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 13. Krypto-Agilität / Crypto Agility
+
+- **DE:** Algorithmen, Schlüssellängen, Cipher-Suites, Hash-Funktionen und
+  KDF-Parameter sind in der Konfiguration änderbar, ohne den Code zu
+  ändern. So lässt sich auf neue BSI-/NIST-Empfehlungen oder akute
+  Schwächen reagieren. Konkret: Cipher-Suites in `application.yaml`,
+  `appsettings.json`, `nginx.conf` oder zentralem Config-Service; Argon2-
+  Parameter (m, t, p) als Konfigurationswert mit Versions-Tag
+  („argon2id-v1") im Hash-Präfix für Multi-Version-Support; in
+  Verschlüsselungs-Bibliotheken Versionsfeld pro Geheimnis (z. B.
+  `{"v": 2, "alg": "AES-256-GCM", "kid": "...", "ct": "..."}`), sodass
+  alte und neue Verfahren parallel entschlüsselt werden können. Pro
+  Algorithmus existiert ein Migrationspfad (alt akzeptieren, neu
+  schreiben, später alt löschen). Vermeide hartkodierte
+  `Cipher.getInstance("...")`-Strings über das ganze Projekt verteilt;
+  zentralisiere die Auswahl in einer Krypto-Service-Schicht.
+- **EN:** Algorithms, key sizes, cipher suites, hash functions, and KDF
+  parameters are configurable without code changes, so the system can
+  react to new BSI/NIST guidance or acute weaknesses. Concretely: cipher
+  suites in `application.yaml`, `appsettings.json`, `nginx.conf`, or a
+  central config service; Argon2 parameters (m, t, p) as configuration
+  with a version tag ("argon2id-v1") in the hash prefix for multi-version
+  support; in encryption libraries a version field per ciphertext (e.g.
+  `{"v": 2, "alg": "AES-256-GCM", "kid": "...", "ct": "..."}`) so old
+  and new schemes can be decrypted side by side. Each algorithm has a
+  migration path (accept old, write new, later remove old). Avoid
+  hard-coded `Cipher.getInstance("...")` strings scattered across the
+  project; centralise the choice in a crypto service layer.
+- **Akzeptanz / Acceptance:** Konfigurationspunkt(e) und
+  Versionsfeld-Format dokumentiert; Test zeigt Wechsel ohne Code-
+  Deployment. / Configuration point(s) and version-field format
+  documented; test demonstrates switch without code deployment.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 14. Vorbereitung auf Post-Quanten-Krypto / Preparing for Post-Quantum Crypto
+
+- **DE:** Für langlebige Daten (Aufbewahrung > 5 Jahre) und langlebige
+  Signaturen wird die Migration auf quantensichere Verfahren beobachtet:
+  NIST PQC-Standards FIPS 203 (ML-KEM, vormals Kyber, für Schlüsseltausch),
+  FIPS 204 (ML-DSA, vormals Dilithium, für Signaturen) und FIPS 205
+  (SLH-DSA, vormals SPHINCS+, hash-basierte Signaturen). Verfügbare
+  Bibliotheken: liboqs (Open Quantum Safe) mit Bindings für C, Python,
+  Java und Go; BouncyCastle ab Version 1.78; AWS-LC und Cloudflare
+  CIRCL. Hybrid-Modi (klassisch + PQC, z. B. X25519+ML-KEM) werden für
+  Übergangsphase bevorzugt. Ein Übergangsplan benennt: betroffene
+  Datenklassen (z. B. archivierte Verträge, signierte Software-Releases),
+  Zeitfenster („harvest now, decrypt later"-Risiko), bevorzugte PQC-
+  Verfahren je Anwendungsfall, Pilotprojekt und Roll-out-Zeitplan.
+- **EN:** For long-lived data (retention > 5 years) and long-lived
+  signatures, the migration to quantum-safe schemes is tracked: NIST
+  PQC standards FIPS 203 (ML-KEM, formerly Kyber, for key exchange),
+  FIPS 204 (ML-DSA, formerly Dilithium, for signatures), and FIPS 205
+  (SLH-DSA, formerly SPHINCS+, hash-based signatures). Available
+  libraries: liboqs (Open Quantum Safe) with bindings for C, Python,
+  Java, and Go; BouncyCastle from version 1.78; AWS-LC and Cloudflare
+  CIRCL. Hybrid modes (classical + PQC, e.g. X25519+ML-KEM) are
+  preferred during the transition. A transition plan names: affected
+  data classes (e.g. archived contracts, signed software releases),
+  exposure window ("harvest now, decrypt later" risk), preferred PQC
+  schemes per use case, pilot project, and roll-out schedule.
+- **Akzeptanz / Acceptance:** S-ADR oder Notiz mit Migrationspfad,
+  Datenklassifikation und Zeitplan vorhanden. / S-ADR or note with
+  migration path, data classification, and schedule available.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 15. Audit der Krypto-Nutzung / Crypto Usage Audit
+
+- **DE:** Mindestens jährlich werden Algorithmen, Schlüssellängen, TLS-
+  Konfigurationen, Cipher-Suites, Bibliotheksversionen und Schlüssel-
+  Lebenszyklen gegen aktuelle BSI TR-02102, NIST SP 800-131A und
+  CWE Top 25 geprüft. Werkzeuge: TLS-Scan mit `testssl.sh`, `sslyze`
+  oder Qualys SSL Labs; Abhängigkeits-Scan mit `pip-audit`,
+  `npm audit`, `dotnet list package --vulnerable`, OWASP Dependency-
+  Check, Trivy oder Snyk; statische Code-Analyse für Krypto-Anti-
+  Patterns mit Semgrep-Regelsatz `r/security`, SonarQube-Krypto-
+  Regeln oder CodeQL; SBOM-Vergleich mit CycloneDX-Tool und VEX-
+  Bewertung neuer CVEs. Im Audit-Bericht: Datum, geprüfte Komponenten,
+  Abweichungen von Vorgaben, Risikobewertung, Folgeaufgaben mit
+  Verantwortlicher Person und Termin. Bei kritischen Funden (z. B.
+  bekannte CVE in Crypto-Bibliothek mit CVSS ≥ 7.0) erfolgt ein
+  außerordentlicher Audit innerhalb von 30 Tagen.
+- **EN:** At least once a year, algorithms, key sizes, TLS
+  configurations, cipher suites, library versions, and key lifecycles
+  are checked against current BSI TR-02102, NIST SP 800-131A, and
+  CWE Top 25. Tooling: TLS scan with `testssl.sh`, `sslyze`, or
+  Qualys SSL Labs; dependency scan with `pip-audit`, `npm audit`,
+  `dotnet list package --vulnerable`, OWASP Dependency-Check, Trivy,
+  or Snyk; static code analysis for crypto anti-patterns with the
+  Semgrep rule set `r/security`, SonarQube crypto rules, or CodeQL;
+  SBOM comparison via CycloneDX tooling and VEX assessment of new
+  CVEs. The audit report contains: date, components reviewed,
+  deviations from requirements, risk rating, follow-up tasks with
+  owner and target date. On critical findings (e.g. known CVE in a
+  crypto library with CVSS ≥ 7.0), an out-of-cycle audit happens
+  within 30 days.
+- **Akzeptanz / Acceptance:** Audit-Bericht mit Datum, geprüften
+  Werkzeugen, Befunden und Folgeaufgaben im Sicherheitsdokumenten-
+  bestand. / Audit report with date, tooling used, findings, and
+  follow-up tasks in the security evidence set.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+### Akzeptanzkriterien gesamt / Overall Acceptance
+
+**DE:** Erfüllt, wenn alle Punkte abgeschlossen sind, das mitgeltende Dokument
+„Gebrauch kryptografischer Maßnahmen" verlinkt ist und der jüngste Audit-
+Bericht im Sicherheitsdokumentenbestand abgelegt ist.
+
+**EN:** Fulfilled when every item is closed, the related document "Gebrauch
+kryptografischer Maßnahmen" is linked, and the latest audit report is
+stored in the security evidence set.
+
+### Glossar / Glossary
+
+**DE:** Dieses Glossar erklärt die wichtigsten Begriffe dieser Checkliste in Alltagssprache. Es ändert keine Anforderungen, sondern macht die vorhandenen Prüfpunkte leichter verständlich.
+
+**EN:** This glossary explains the most important terms in this checklist in plain language. It does not change requirements; it makes the existing review items easier to understand.
+
+<a id="cl-03-glossar-bsi-tr-02102"></a>
+
+#### BSI TR-02102
+
+- **DE:** BSI TR-02102 ist eine technische Richtlinie zu kryptografischen Verfahren. Sie hilft zu entscheiden, welche Algorithmen und Schlüssellängen aktuell geeignet sind.
+- **EN:** BSI TR-02102 is a technical guideline for cryptographic methods. It helps decide which algorithms and key lengths are currently suitable.
+
+<a id="cl-03-glossar-aes-gcm"></a>
+
+#### AES-GCM
+
+- **DE:** AES-GCM ist ein modernes Verfahren für symmetrische Verschlüsselung mit Integritätsschutz. Es schützt Inhalt und erkennt Manipulation.
+- **EN:** AES-GCM is a modern method for symmetric encryption with integrity protection. It protects content and detects tampering.
+
+<a id="cl-03-glossar-aead"></a>
+
+#### AEAD
+
+- **DE:** AEAD bezeichnet Verschlüsselungsverfahren, die Vertraulichkeit und Manipulationsschutz zusammen liefern. AES-GCM ist ein häufiges Beispiel.
+- **EN:** AEAD means encryption methods that provide confidentiality and tamper protection together. AES-GCM is a common example.
+
+<a id="cl-03-glossar-rsa"></a>
+
+#### RSA
+
+- **DE:** RSA ist ein asymmetrisches Kryptoverfahren. Es ist nur mit passenden Parametern und sicheren Padding-Verfahren zulässig.
+- **EN:** RSA is an asymmetric cryptographic method. It is only acceptable with suitable parameters and secure padding methods.
+
+<a id="cl-03-glossar-ecdsa-eddsa"></a>
+
+#### ECDSA / EdDSA
+
+- **DE:** ECDSA und EdDSA sind Signaturverfahren auf Basis elliptischer Kurven. Sie werden genutzt, um Herkunft und Integrität digital zu prüfen.
+- **EN:** ECDSA and EdDSA are signature methods based on elliptic curves. They are used to verify digital origin and integrity.
+
+<a id="cl-03-glossar-sha-256"></a>
+
+#### SHA-256
+
+- **DE:** SHA-256 ist eine kryptografische Hashfunktion. Sie erzeugt einen festen Prüfwert und wird zum Beispiel für Integritätsprüfungen genutzt.
+- **EN:** SHA-256 is a cryptographic hash function. It creates a fixed digest and is used for integrity checks, for example.
+
+<a id="cl-03-glossar-hmac"></a>
+
+#### HMAC
+
+- **DE:** HMAC ist ein Verfahren zur Integritätsprüfung mit geheimem Schlüssel. Es zeigt, ob eine Nachricht verändert wurde und vom erwarteten Absender stammt.
+- **EN:** HMAC is a method for integrity checking with a secret key. It shows whether a message was changed and came from the expected sender.
+
+<a id="cl-03-glossar-password-hashing"></a>
+
+#### Argon2 / bcrypt / scrypt
+
+- **DE:** Argon2, bcrypt und scrypt sind Verfahren zum sicheren Speichern von Passwörtern. Sie sind absichtlich langsam, damit Passwort-Raten erschwert wird.
+- **EN:** Argon2, bcrypt, and scrypt are methods for storing passwords securely. They are intentionally slow to make password guessing harder.
+
+<a id="cl-03-glossar-tls"></a>
+
+#### TLS
+
+- **DE:** TLS schützt Netzwerkverbindungen durch Verschlüsselung und Identitätsprüfung. Es wird zum Beispiel für HTTPS und viele API-Verbindungen genutzt.
+- **EN:** TLS protects network connections through encryption and identity checks. It is used for HTTPS and many API connections, for example.
+
+<a id="cl-03-glossar-csprng"></a>
+
+#### CSPRNG
+
+- **DE:** Ein CSPRNG ist ein kryptografisch sicherer Zufallszahlengenerator. Er wird für Schlüssel, Tokens, Nonces und andere Sicherheitswerte benötigt.
+- **EN:** A CSPRNG is a cryptographically secure random number generator. It is needed for keys, tokens, nonces, and other security values.
+
+<a id="cl-03-glossar-kms"></a>
+
+#### KMS
+
+- **DE:** Ein KMS ist ein Dienst zur Verwaltung kryptografischer Schlüssel. Es schützt Schlüssel, steuert Zugriff und protokolliert Nutzung.
+- **EN:** A KMS is a service for managing cryptographic keys. It protects keys, controls access, and logs usage.
+
+<a id="cl-03-glossar-hsm"></a>
+
+#### HSM
+
+- **DE:** Ein HSM ist spezielle Hardware zum Schutz kryptografischer Schlüssel. Es wird genutzt, wenn Schlüssel besonders stark geschützt werden müssen.
+- **EN:** An HSM is special hardware for protecting cryptographic keys. It is used when keys need especially strong protection.
+
+<a id="cl-03-glossar-md5"></a>
+
+#### MD5
+
+- **DE:** MD5 ist eine veraltete Hashfunktion. Sie ist für Sicherheitszwecke nicht mehr geeignet und darf nicht für Integrität oder Signaturen verwendet werden.
+- **EN:** MD5 is an outdated hash function. It is no longer suitable for security purposes and must not be used for integrity or signatures.
+
+<a id="cl-03-glossar-pqc"></a>
+
+#### Post-Quanten-Krypto / PQC
+
+- **DE:** Post-Quanten-Krypto bezeichnet Verfahren, die auch gegen zukünftige Quantencomputer widerstandsfähig sein sollen. Heute geht es meist um Vorbereitung und Migrationsfähigkeit.
+- **EN:** Post-quantum cryptography means methods intended to resist future quantum computers. Today it mostly concerns preparation and migration ability.
+
+<a id="cl-03-glossar-evidenz"></a>
+
+#### Evidenz / Evidence
+
+- **DE:** Evidenz ist ein prüfbarer Nachweis. Das kann ein Link, Ticket, Scan-Bericht, Pull Request, Protokoll, Architekturdiagramm oder Dokument sein.
+- **EN:** Evidence is verifiable proof. It can be a link, ticket, scan report, pull request, record, architecture diagram, or document.
+
+### Versionshistorie / Version History
+
+- **Version 1.0 (2026-04-27):** Erstfassung / Initial version
+- **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
+
+- **Version 1.2 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
+
+- **Version 1.3 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
+
+---
+
+
+---
+
+<!--
+Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
+Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+This document is organization-neutral and written as a generic training and review baseline.
+-->
+
+> **DE:** Diese Checkliste ist generisch und projektunabhaengig. Sie ist als Ausbildungs-, Review- und Haertungsgrundlage gedacht. Eine Nichtanwendbarkeit muss als `N/A` mit kurzer Begruendung dokumentiert werden.
+>
+> **EN:** This checklist is generic and project-independent. It is intended as a training, review, and hardening baseline. Non-applicability must be documented as `N/A` with a short rationale.
+
+## Checkliste 04 – Bedrohungsmodellierung / Threat Modeling
+
+### Zweck / Purpose
+
+**DE:** Diese Checkliste sichert ein vollständiges, nachvollziehbares
+Bedrohungsmodell auf STRIDE-Basis mit CIA-Bewertung und CAPEC-Bezug. Sie
+ist mitgeltend zur Richtlinie „Sichere Entwicklung".
+
+**EN:** This checklist ensures a complete, traceable threat model based on
+STRIDE, with CIA rating and CAPEC references. It accompanies the guideline
+"Secure Development".
+
+### Geltungsbereich / Scope
+
+**DE:** Pflicht für jedes Vorhaben mit eigener Architektur. Aktualisierung
+bei wesentlichen Änderungen (neue Schnittstelle, neue Datenklasse, neuer
+Auftragsverarbeiter, neue Vertrauensgrenze).
+
+**EN:** Mandatory for every project with its own architecture. Update on
+material changes (new interface, new data class, new processor, new trust
+boundary).
+
+### Mitgeltende Dokumente / Related Documents
+
+- RL Sichere-Entwicklung
+- ISO/IEC 27002:2022 A.8.27, A.8.28
+- STRIDE (Microsoft Threat Modeling)
+- CAPEC – Common Attack Pattern Enumeration and Classification
+- arc42 Section 8
+
+#### URL-/Ablageverweise / URLs and Storage Locations
+
+**DE:** Diese Links helfen beim Review. Projekt- oder organisationsinterne Dokumente koennen als lokale Arbeitskopie oder als Verweis auf den festgelegten Ablageort ergaenzt werden.
+
+**EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
+
+- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
+- **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
+- **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
+- **Secure coding guideline:** this guide or an equivalent project-specific guideline
+- **CISA Memory Safe Roadmaps:** [lokale Textfassung des CISA-Dokuments / local text version of the CISA document](../THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.txt), [CISA-Webseite zum Dokument / CISA webpage for the document](https://www.cisa.gov/resources-tools/resources/case-memory-safe-roadmaps)
+- **ISO/IEC 27001:2022:** [offizielle ISO-Webseite zur ISO/IEC 27001:2022 / official ISO webpage for ISO/IEC 27001:2022](https://www.iso.org/standard/27001)
+- **ISO/IEC 27002:2022:** [offizielle ISO-Webseite zur ISO/IEC 27002:2022 / official ISO webpage for ISO/IEC 27002:2022](https://www.iso.org/standard/75652.html)
+- **NIST SSDF SP 800-218:** [NIST-Veröffentlichung SP 800-218 Secure Software Development Framework / NIST publication SP 800-218 Secure Software Development Framework](https://csrc.nist.gov/publications/detail/sp/800-218/final)
+- **NIST Zero Trust SP 800-207:** [NIST-Veröffentlichung SP 800-207 Zero Trust Architecture / NIST publication SP 800-207 Zero Trust Architecture](https://csrc.nist.gov/publications/detail/sp/800-207/final)
+- **OWASP ASVS:** [OWASP-Projektseite Application Security Verification Standard / OWASP project page Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)
+- **OWASP Cheat Sheet Series:** [OWASP Cheat Sheet Series Projektseite / OWASP Cheat Sheet Series project page](https://cheatsheetseries.owasp.org/)
+- **OWASP Proactive Controls:** [OWASP Proactive Controls Projektseite / OWASP Proactive Controls project page](https://owasp.org/www-project-proactive-controls/)
+- **OWASP SAMM:** [OWASP SAMM Projektseite / OWASP SAMM project page](https://owaspsamm.org/)
+- **OWASP Top 10 for LLM Applications:** [OWASP Top 10 for LLM Applications Projektseite / OWASP Top 10 for LLM Applications project page](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- **CWE Top 25:** [MITRE CWE Top 25 Übersicht / MITRE CWE Top 25 overview](https://cwe.mitre.org/top25/)
+- **CAPEC:** [MITRE CAPEC Katalog / MITRE CAPEC catalogue](https://capec.mitre.org/)
+- **CycloneDX:** [CycloneDX SBOM-Standard Projektseite / CycloneDX SBOM standard project page](https://cyclonedx.org/)
+- **SPDX:** [SPDX SBOM-Standard Projektseite / SPDX SBOM standard project page](https://spdx.dev/)
+- **CSAF/VEX:** [OASIS CSAF und VEX Dokumentation / OASIS CSAF and VEX documentation](https://oasis-open.github.io/csaf-documentation/)
+- **SLSA:** [SLSA Supply-chain Levels for Software Artifacts Projektseite / SLSA project page](https://slsa.dev/)
+- **OpenSSF Scorecard:** [OpenSSF Scorecard Projektseite / OpenSSF Scorecard project page](https://scorecard.dev/)
+- **RFC 9116 security.txt:** [RFC 9116 zu security.txt / RFC 9116 for security.txt](https://www.rfc-editor.org/rfc/rfc9116)
+- **NIST AI Risk Management Framework:** [NIST AI Risk Management Framework Webseite / NIST AI Risk Management Framework webpage](https://www.nist.gov/itl/ai-risk-management-framework)
+- **EU Cyber Resilience Act:** [EU-Amtsblatt zum Cyber Resilience Act / EU Official Journal for the Cyber Resilience Act](https://eur-lex.europa.eu/eli/reg/2024/2847/oj)
+- **BSI TR-02102:** [BSI-Webseite zur Technischen Richtlinie TR-02102 / BSI webpage for Technical Guideline TR-02102](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Technische-Richtlinien/TR-nach-Thema-sortiert/tr02102/tr-02102.html)
+
+### Bewertung und Dokumentation / Assessment and Documentation
+
+**DE:** Jeder Prüfpunkt bekommt genau einen Status. Schreibe die Begründung so, dass eine neue Kollegin oder ein neuer Kollege den Entscheid später ohne Rückfrage versteht.
+
+**EN:** Each checklist item gets exactly one status. Write the explanation so that a new team member can understand the decision later without asking again.
+
+- **Erfüllt / Fulfilled:** Die Anforderung ist umgesetzt und es gibt einen prüfbaren Nachweis.
+- **Nicht erfüllt / Not fulfilled:** Die Anforderung ist noch nicht umgesetzt oder der Nachweis fehlt. Es muss eine Aufgabe mit Verantwortlicher Person und Termin geben.
+- **Nicht anwendbar / Not applicable:** Die Anforderung passt nicht zum Projekt. Das ist erlaubt, aber nur mit kurzer Begründung.
+
+**Pflichtfelder je Prüfpunkt / Required fields per item:** Status, Begründung, Evidenzpfad oder Link, nächste Maßnahme mit Verantwortlicher Person und Zieltermin.
+
+### Durchführungshinweise / Implementation Guidance
+
+**DE:** Nutze diese Checkliste nicht als reine Ja/Nein-Liste. Sie ist ein Arbeits- und Auditdokument. Prüfe jeden Punkt gegen reale Artefakte: Code, Pull Request, Architekturdiagramm, Build-Log, Scan-Ergebnis, Ticket, Betriebsdokumentation oder Freigabeprotokoll. Wenn ein Nachweis noch fehlt, markiere den Punkt als „nicht erfüllt" und lege eine konkrete Folgeaufgabe an.
+
+**EN:** Do not use this checklist as a simple yes/no list. It is a working and audit document. Check each item against real artefacts: code, pull request, architecture diagram, build log, scan result, ticket, operations document, or approval record. If evidence is missing, mark the item as "not fulfilled" and create a concrete follow-up task.
+
+**DE:** Schreibe kurze, klare Begründungen. Vermeide Abkürzungen ohne Erklärung. Wenn ein Punkt technisch schwierig ist, beschreibe den aktuellen Stand, das Risiko und den nächsten machbaren Schritt.
+
+**EN:** Write short and clear explanations. Avoid unexplained abbreviations. If an item is technically difficult, describe the current state, the risk, and the next feasible step.
+
+**DE:** Jeder Prüfpunkt muss deshalb drei Fragen beantworten: Was bedeutet die Anforderung im Projektalltag? Was ist konkret zu tun oder zu entscheiden? Welcher Nachweis zeigt das Ergebnis? Verwende Standard-IDs, Toolnamen und Abkürzungen nur zusammen mit einer kurzen Erklärung in Alltagssprache. Wenn ein Punkt für Auszubildende oder neue Teammitglieder nicht selbsterklärend ist, ergänze eine kurze Erklärung in der Begründung.
+
+**EN:** Each item must therefore answer three questions: What does the requirement mean in daily project work? What exactly must be done or decided? Which evidence shows the result? Use standard IDs, tool names, and abbreviations only together with a short plain-language explanation. If an item is not self-explanatory for apprentices or new team members, add a short explanation in the rationale.
+
+### Beispiel / Example
+
+**DE:** Ein Upload-Endpunkt verarbeitet Dateien von externen Personen. Das DFD zeigt Browser, API, Virenscanner, Dateispeicher und Datenbank. STRIDE prueft Spoofing, Tampering und Information Disclosure; CAPEC verweist auf passende Upload- und Injection-Muster.
+
+**EN:** An upload endpoint processes files from external users. The DFD shows browser, API, virus scanner, file storage, and database. STRIDE checks spoofing, tampering, and information disclosure; CAPEC points to matching upload and injection patterns.
+
+### A11Y-Hinweise / A11Y Notes
+
+**DE:** Beim Ausfüllen dieser Checkliste müssen alle Nachweise auch textlich verständlich sein. Verweise sollen beschreibende Linktexte haben. Screenshots, Diagramme oder Scan-Auszüge brauchen eine kurze Textbeschreibung. Der Status darf nicht nur über Farbe erkennbar sein.
+
+**EN:** When this checklist is filled in, all evidence must also be understandable as text. References should use descriptive link text. Screenshots, diagrams, or scan extracts need a short text description. The status must not be shown by color alone.
+
+### Wichtige Begriffe / Key Terms
+
+**DE:** Die folgenden Begriffe kommen in dieser Checkliste vor. Die Links springen zum Glossar dieses Kapitels, damit Auszubildende und Entwickler:innen ohne Sicherheits-Spezialwissen die Begriffe direkt nachlesen können.
+
+**EN:** The following terms appear in this checklist. The links jump to this chapter's glossary so that apprentices and developers without specialist security knowledge can look them up directly.
+
+- [Bedrohungsmodell / Threat Model](#cl-04-glossar-threat-model)
+- [Asset / Schutzwert](#cl-04-glossar-asset)
+- [Vertrauensgrenze / Trust Boundary](#cl-04-glossar-trust-boundary)
+- [Datenfluss / Data Flow](#cl-04-glossar-data-flow)
+- [STRIDE](#cl-04-glossar-stride)
+- [CAPEC](#cl-04-glossar-capec)
+- [Risikobewertung / Risk Rating](#cl-04-glossar-risk-rating)
+- [Maßnahme / Mitigation](#cl-04-glossar-mitigation)
+- [Evidenz / Evidence](#cl-04-glossar-evidenz)
+- [Audit](#cl-04-glossar-audit)
+
+### Checkliste / Checklist
+
+#### 1. Werte und Schutzbedarf / Assets and Protection Need
+
+- **DE:** Eine Asset-Liste benennt alle schützenswerten Werte: personen-
+  bezogene Daten (PII), Geschäftsgeheimnisse, Authentifizierungs-
+  Geheimnisse (API-Keys, Passwort-Hashes, Session-Tokens), kryptografische
+  Schlüssel, Geschäftsprozesse, Verfügbarkeit kritischer Endpunkte,
+  Quellcode mit kompetitivem Vorteil. Für jedes Asset wird die CIA-
+  Matrix mit Schutzbedarf-Klassen ausgefüllt: Vertraulichkeit
+  (öffentlich, intern, vertraulich, streng vertraulich), Integrität
+  (Manipulation tolerierbar, geschäftsstörend, gefährdend),
+  Verfügbarkeit (Ausfall < 1 Tag, < 4 Stunden, < 1 Stunde). Beispiele
+  für Klassifikations-Schemata: BSI Schutzbedarfsfeststellung
+  (normal, hoch, sehr hoch), ISO/IEC 27001 Annex A.5.12, Microsoft
+  Data Classification (Public, General, Confidential, Highly
+  Confidential), TLP (Traffic Light Protocol). Werkzeuge:
+  Tabellenkalkulation oder strukturiertes YAML/JSON im Repo;
+  pytm-Threat-Model-Code mit `Asset()`-Klassen; Microsoft Threat
+  Modeling Tool mit Asset-Properties. Pro Asset wird der Owner
+  benannt — die Person oder Rolle, die für Schutz verantwortlich ist.
+- **EN:** An asset list names all values worth protecting: personally
+  identifiable information (PII), trade secrets, authentication
+  secrets (API keys, password hashes, session tokens), cryptographic
+  keys, business processes, availability of critical endpoints,
+  source code with competitive advantage. For each asset, the CIA
+  matrix is filled with protection-need classes: confidentiality
+  (public, internal, confidential, strictly confidential), integrity
+  (tampering tolerable, business-disruptive, dangerous),
+  availability (downtime < 1 day, < 4 hours, < 1 hour). Examples of
+  classification schemes: BSI protection-need assessment (normal,
+  high, very high), ISO/IEC 27001 Annex A.5.12, Microsoft Data
+  Classification (Public, General, Confidential, Highly
+  Confidential), TLP (Traffic Light Protocol). Tooling: spreadsheet
+  or structured YAML/JSON in the repo; pytm threat-model code with
+  `Asset()` classes; Microsoft Threat Modeling Tool with asset
+  properties. Per asset, an owner is named — the person or role
+  responsible for protection.
+- **Akzeptanz / Acceptance:** Asset-Liste mit Klassifikations-Schema,
+  CIA-Bewertung und Owner je Asset. / Asset list with classification
+  scheme, CIA rating, and owner per asset.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 2. Vertrauensgrenzen und Datenflüsse / Trust Boundaries and Data Flows
+
+- **DE:** Ein Datenflussdiagramm (DFD) zeigt fünf Element-Typen:
+  **External Entity** (Akteur, z. B. Browser-Nutzer, Drittsystem),
+  **Process** (Verarbeitungseinheit, z. B. Microservice, API-Endpunkt),
+  **Data Store** (Datenbank, Cache, Datei, Queue), **Data Flow**
+  (Pfeil zwischen Elementen mit Protokoll und Inhalt), **Trust
+  Boundary** (gestrichelte Linie zwischen Vertrauensbereichen). Jede
+  Trust Boundary trägt eine kurze Begründung: „HTTPS-Eingang aus
+  Internet", „mTLS zwischen Service A und B", „Datenbank-Verbindung
+  mit Service-Account". Werkzeuge: Microsoft Threat Modeling Tool
+  (kostenlos, Windows-only, mit STRIDE-Templates); OWASP Threat
+  Dragon (Web/Electron, Open Source); pytm (Python, Code-as-Threat-
+  Model mit textbasiertem DSL); IriusRisk (kommerziell);
+  draw.io/diagrams.net mit STRIDE-Vorlagen; Mermaid `flowchart`-
+  Diagramme im Markdown. Das DFD wird im Repo gepflegt
+  (`docs/security/dfd.md` oder `docs/security/dfd.drawio`),
+  Diagramm und Quelldatei werden gemeinsam versioniert.
+- **EN:** A data flow diagram (DFD) shows five element types:
+  **External Entity** (actor, e.g. browser user, third-party system),
+  **Process** (processing unit, e.g. microservice, API endpoint),
+  **Data Store** (database, cache, file, queue), **Data Flow**
+  (arrow between elements with protocol and payload), **Trust
+  Boundary** (dashed line between trust zones). Each trust boundary
+  carries a short justification: "HTTPS ingress from Internet",
+  "mTLS between service A and B", "database connection with
+  service account". Tooling: Microsoft Threat Modeling Tool (free,
+  Windows-only, with STRIDE templates); OWASP Threat Dragon (web/
+  Electron, open source); pytm (Python, threat-model-as-code with
+  text DSL); IriusRisk (commercial); draw.io/diagrams.net with
+  STRIDE stencils; Mermaid `flowchart` diagrams in Markdown. The
+  DFD lives in the repo (`docs/security/dfd.md` or
+  `docs/security/dfd.drawio`); diagram and source file are
+  versioned together.
+- **Akzeptanz / Acceptance:** DFD mit allen fünf Element-Typen,
+  Trust-Boundary-Begründung und versionierten Quelldateien im
+  Repository. / DFD with all five element types, trust-boundary
+  justification, and versioned source files in the repository.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 3. STRIDE pro Element / STRIDE per Element
+
+- **DE:** STRIDE (Microsoft, 1999) bietet sechs Bedrohungs-Kategorien
+  mit klaren Sicherheitseigenschaften, die sie verletzen:
+  **Spoofing** (Identitäts-Vortäuschung) verletzt **Authentifizierung**;
+  **Tampering** (Manipulation) verletzt **Integrität**;
+  **Repudiation** (Abstreitbarkeit) verletzt **Nicht-Abstreitbarkeit**;
+  **Information Disclosure** verletzt **Vertraulichkeit**;
+  **Denial of Service** verletzt **Verfügbarkeit**;
+  **Elevation of Privilege** verletzt **Autorisierung**. Pro DFD-
+  Element werden die zutreffenden Buchstaben geprüft: **External
+  Entity** typisch S, R; **Process** typisch S, T, R, I, D, E (alle);
+  **Data Store** typisch T, R, I, D; **Data Flow** typisch T, I, D.
+  Beispiel-Bedrohungen: Spoofing — Angreifer fälscht JWT mit
+  schwachem HMAC-Secret (Gegenmaßnahme: starkes Secret im KMS,
+  Algorithmus auf RS256/ES256); Tampering — SQL-Injection
+  manipuliert Daten (Gegenmaßnahme: parametrisierte Queries);
+  Information Disclosure — Stack-Trace im API-Response (Gegenmaßnahme:
+  globaler Error-Handler, Production-Logging); Elevation of Privilege
+  — Path-Traversal liest beliebige Dateien (Gegenmaßnahme:
+  Allow-Listen, kanonische Pfad-Validierung). Werkzeuge: Microsoft
+  Threat Modeling Tool generiert STRIDE-Vorschläge je Element;
+  pytm `Threat()` mit STRIDE-Klassifikation.
+- **EN:** STRIDE (Microsoft, 1999) provides six threat categories
+  with clear security properties they violate: **Spoofing**
+  (identity forgery) violates **Authentication**; **Tampering**
+  (manipulation) violates **Integrity**; **Repudiation**
+  (deniability) violates **Non-Repudiation**; **Information
+  Disclosure** violates **Confidentiality**; **Denial of Service**
+  violates **Availability**; **Elevation of Privilege** violates
+  **Authorisation**. Per DFD element, the applicable letters are
+  evaluated: **External Entity** typically S, R; **Process**
+  typically S, T, R, I, D, E (all); **Data Store** typically T, R,
+  I, D; **Data Flow** typically T, I, D. Example threats: Spoofing
+  — attacker forges JWT with weak HMAC secret (mitigation: strong
+  secret in KMS, algorithm to RS256/ES256); Tampering — SQL
+  injection manipulates data (mitigation: parameterised queries);
+  Information Disclosure — stack trace in API response
+  (mitigation: global error handler, production logging);
+  Elevation of Privilege — path traversal reads arbitrary files
+  (mitigation: allow-lists, canonical path validation). Tooling:
+  Microsoft Threat Modeling Tool generates STRIDE suggestions per
+  element; pytm `Threat()` with STRIDE classification.
+- **Akzeptanz / Acceptance:** STRIDE-Tabelle je DFD-Element
+  vollständig ausgefüllt; je Bedrohung mindestens eine
+  Gegenmaßnahme. / STRIDE table per DFD element fully filled;
+  per threat at least one mitigation.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 4. CAPEC-Zuordnung / CAPEC Mapping
+
+- **DE:** Während STRIDE die Bedrohungs-Kategorien benennt, liefert CAPEC
+  konkrete Angriffsmuster — quasi „so läuft der Angriff in der Realität
+  ab". Typische CAPEC-Muster pro STRIDE-Kategorie: **Spoofing** —
+  CAPEC-148 Content Spoofing, CAPEC-151 Identity Spoofing, CAPEC-115
+  Authentication Bypass; **Tampering** — CAPEC-66 SQL Injection,
+  CAPEC-242 Code Injection, CAPEC-233 Privilege Escalation;
+  **Repudiation** — CAPEC-67 String Format Overflow im Logging,
+  CAPEC-93 Log Injection; **Information Disclosure** — CAPEC-118
+  Collect and Analyze Information, CAPEC-37 Retrieve Embedded
+  Sensitive Data; **Denial of Service** — CAPEC-125 Flooding,
+  CAPEC-130 Excessive Allocation, CAPEC-227 Sustained Client
+  Engagement; **Elevation of Privilege** — CAPEC-233 Privilege
+  Escalation, CAPEC-22 Exploiting Trust in Client, CAPEC-94
+  Adversary in the Middle. Pro Hochrisiko-Fluss werden mindestens
+  drei CAPEC-IDs benannt — mit Voraussetzungen („Angreifer hat
+  Netzwerkzugang"), Skill-Level (Low/Medium/High), Auswirkung und
+  konkreten Gegenmaßnahmen. Werkzeuge: MITRE-CAPEC-Webseite mit
+  XML-Export; Threat-Dragon und IriusRisk haben CAPEC-Bibliotheken;
+  pytm-Threats können CAPEC-IDs als Tags tragen.
+- **EN:** While STRIDE names threat categories, CAPEC delivers concrete
+  attack patterns — essentially "how the attack actually plays out".
+  Typical CAPEC patterns per STRIDE category: **Spoofing** — CAPEC-148
+  Content Spoofing, CAPEC-151 Identity Spoofing, CAPEC-115
+  Authentication Bypass; **Tampering** — CAPEC-66 SQL Injection,
+  CAPEC-242 Code Injection, CAPEC-233 Privilege Escalation;
+  **Repudiation** — CAPEC-67 String Format Overflow in logging,
+  CAPEC-93 Log Injection; **Information Disclosure** — CAPEC-118
+  Collect and Analyze Information, CAPEC-37 Retrieve Embedded
+  Sensitive Data; **Denial of Service** — CAPEC-125 Flooding,
+  CAPEC-130 Excessive Allocation, CAPEC-227 Sustained Client
+  Engagement; **Elevation of Privilege** — CAPEC-233 Privilege
+  Escalation, CAPEC-22 Exploiting Trust in Client, CAPEC-94
+  Adversary in the Middle. Per high-risk flow, at least three CAPEC
+  IDs are named — with preconditions ("attacker has network
+  access"), skill level (low/medium/high), impact, and concrete
+  mitigations. Tooling: MITRE CAPEC website with XML export;
+  Threat Dragon and IriusRisk have CAPEC libraries; pytm threats
+  can carry CAPEC IDs as tags.
+- **Akzeptanz / Acceptance:** Mindestens drei CAPEC-IDs je Hochrisiko-
+  Fluss mit Voraussetzungen, Skill-Level, Auswirkung und
+  Gegenmaßnahme. / At least three CAPEC IDs per high-risk flow with
+  preconditions, skill level, impact, and mitigation.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 5. Risikobewertung / Risk Rating
+
+- **DE:** Jede Bedrohung wird nach Eintrittswahrscheinlichkeit
+  (Likelihood) und Auswirkung (Impact) bewertet. Empfohlene Schemata:
+  **DREAD** (Damage, Reproducibility, Exploitability, Affected Users,
+  Discoverability — Skala 1–10) — einfach, aber subjektiv; **CVSS v3.1
+  / v4.0** (Common Vulnerability Scoring System) — objektive Metriken
+  für Attack Vector, Complexity, Privileges, User Interaction, Scope,
+  CIA-Impact (0,0–10,0); **OWASP Risk Rating Methodology** —
+  unterteilt Likelihood (Threat Agent + Vulnerability) und Impact
+  (Technical + Business); **NIST SP 800-30** mit qualitativen Stufen
+  (Very Low–Very High). Für agile Teams reicht oft eine 3×3- oder
+  5×5-Matrix mit niedrig/mittel/hoch je Achse, kombiniert zu kritisch/
+  hoch/mittel/niedrig. Pro Bedrohung wird die Begründung in zwei bis
+  drei Sätzen festgehalten (Voraussetzungen, technische Details,
+  bestehende Schutzschichten). Werkzeuge: CVSS-Online-Calculator
+  von FIRST (`https://www.first.org/cvss/calculator/4.0`);
+  Threat-Dragon-Risk-Editor; pytm berechnet Risiko aus Likelihood
+  und Impact-Tags.
+- **EN:** Each threat is rated by likelihood and impact. Recommended
+  schemes: **DREAD** (Damage, Reproducibility, Exploitability,
+  Affected Users, Discoverability — scale 1–10) — simple but
+  subjective; **CVSS v3.1 / v4.0** (Common Vulnerability Scoring
+  System) — objective metrics for Attack Vector, Complexity,
+  Privileges, User Interaction, Scope, CIA impact (0.0–10.0);
+  **OWASP Risk Rating Methodology** — splits likelihood (threat
+  agent + vulnerability) and impact (technical + business);
+  **NIST SP 800-30** with qualitative tiers (Very Low–Very High).
+  For agile teams, a 3×3 or 5×5 matrix with low/medium/high per
+  axis is often enough, combined to critical/high/medium/low. Per
+  threat, the justification is captured in two to three sentences
+  (preconditions, technical details, existing protection layers).
+  Tooling: FIRST CVSS online calculator
+  (`https://www.first.org/cvss/calculator/4.0`); Threat Dragon
+  risk editor; pytm computes risk from likelihood and impact tags.
+- **Akzeptanz / Acceptance:** Risikomatrix mit gewähltem Schema,
+  Likelihood- und Impact-Skala und Begründung je Bedrohung. / Risk
+  matrix with chosen scheme, likelihood and impact scale, and
+  justification per threat.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 6. Maßnahmen / Mitigations
+
+- **DE:** Risikobehandlung folgt vier Strategien (ISO/IEC 27005,
+  NIST SP 800-30): **Vermeiden** — die riskante Funktion wird gestrichen
+  (z. B. „kein File-Upload" statt „File-Upload mit Hardening");
+  **Vermindern** — durch technische Maßnahmen (Validierung,
+  Verschlüsselung, Rate-Limiting, WAF, MFA) oder organisatorische
+  Maßnahmen (Berechtigungs-Reviews, Trainings); **Übertragen** —
+  durch Versicherung, Outsourcing an spezialisierten Dienstleister,
+  oder Cloud-Provider mit SLA; **Akzeptieren** — Risiko wird
+  bewusst getragen, dokumentiert mit Begründung, Ablaufdatum,
+  Reviewer und Eskalations-Pfad. Pro Bedrohung wird die gewählte
+  Strategie und mindestens eine konkrete Maßnahme benannt; Maßnahmen
+  verlinken auf S-ADRs, User Stories oder Konfigurations-Dateien.
+  Beispiel: SQL-Injection (CAPEC-66) → vermindern durch
+  parametrisierte Queries (PreparedStatement, ORM) + WAF + DB-User
+  ohne `DROP`-Recht. Risiko-Akzeptanzen brauchen die Unterschrift
+  einer befugten Person (Product Owner, Security Lead, Risk Manager) und
+  ein Ablaufdatum, nach dem die Akzeptanz neu bewertet wird.
+- **EN:** Risk treatment follows four strategies (ISO/IEC 27005,
+  NIST SP 800-30): **Avoid** — the risky function is removed (e.g.
+  "no file upload" rather than "file upload with hardening");
+  **Reduce** — via technical controls (validation, encryption, rate
+  limiting, WAF, MFA) or organisational controls (permission
+  reviews, training); **Transfer** — via insurance, outsourcing to
+  a specialised provider, or cloud provider SLA; **Accept** — risk
+  is deliberately carried, documented with justification, expiry
+  date, reviewer, and escalation path. Per threat, the chosen
+  strategy and at least one concrete mitigation are named;
+  mitigations link to S-ADRs, user stories, or configuration files.
+  Example: SQL injection (CAPEC-66) → reduce via parameterised
+  queries (PreparedStatement, ORM) + WAF + DB user without `DROP`
+  privilege. Risk acceptances require the signature of an
+  authorised person (Product Owner, Security Lead, Risk Manager) and an
+  expiry date after which the acceptance is re-evaluated.
+- **Akzeptanz / Acceptance:** Maßnahme je Bedrohung mit Strategie,
+  Verlinkung zu S-ADR/Story/Config; Risiko-Akzeptanzen mit
+  Unterschrift und Ablaufdatum. / Mitigation per threat with
+  strategy and link to S-ADR/story/config; risk acceptances signed
+  with expiry date.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 7. Verbindung zu Anforderungen / Link to Requirements
+
+- **DE:** Bedrohungsmodelle ohne Verbindung zu Anforderungen verstauben
+  schnell. Jede Maßnahme verlinkt direkt auf ein Artefakt im
+  Issue-Tracker oder Repo: GitHub-Issue/PR-URL, Jira-Ticket-ID,
+  Git-Issue, Azure-DevOps-Work-Item, Linear-Ticket, S-ADR-Pfad,
+  User-Story im Backlog. Beispiel-Verlinkung im Bedrohungsmodell:
+  „Threat T-12: SQL Injection im Suchfeld → Mitigation: PreparedStatement
+  in `SearchRepository.findByTerm()` → Story APP-456, S-ADR-0007,
+  Test `SearchRepositoryTest.preventsInjection()`". Werkzeuge:
+  Bidirektionale Links — Bedrohungsmodell verweist auf Issue,
+  Issue-Beschreibung verweist zurück auf den Threat-ID; pytm kann
+  Mitigationen mit URLs annotieren; Threat Dragon hat ein
+  Mitigation-Feld; CI-Linter (z. B. eigene `verify-threat-links.sh`)
+  prüft, ob alle Threat-IDs einen offenen oder geschlossenen Bezug
+  haben. Beim Schließen einer Story wird der Status der zugehörigen
+  Threat-ID im Bedrohungsmodell aktualisiert.
+- **EN:** Threat models without a link to requirements quickly become
+  shelf-ware. Each mitigation links directly to an artefact in the
+  issue tracker or repo: GitHub issue/PR URL, Jira ticket ID,
+  Git issue, Azure DevOps work item, Linear ticket, S-ADR path,
+  user story in the backlog. Example linkage in the threat model:
+  "Threat T-12: SQL injection in the search field → mitigation:
+  PreparedStatement in `SearchRepository.findByTerm()` → story
+  APP-456, S-ADR-0007, test `SearchRepositoryTest.preventsInjection()`".
+  Tooling: bidirectional links — threat model points to the issue,
+  the issue description links back to the threat ID; pytm can
+  annotate mitigations with URLs; Threat Dragon has a mitigation
+  field; a CI linter (e.g. a custom `verify-threat-links.sh`)
+  checks that every threat ID has an open or closed reference. On
+  story completion, the status of the matching threat ID in the
+  threat model is updated.
+- **Akzeptanz / Acceptance:** Pro Maßnahme mindestens ein
+  bidirektionaler Link zu Issue, Story, S-ADR oder Test;
+  Status-Sync dokumentiert. / Per mitigation, at least one
+  bidirectional link to issue, story, S-ADR, or test; status sync
+  documented.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 8. Aktualisierungspflicht / Update Obligation
+
+- **DE:** Das Bedrohungsmodell wird bei jeder wesentlichen Änderung geprüft
+  und bei Bedarf aktualisiert. Datum und Auslöser sind festgehalten.
+  Konkrete Auslöser-Ereignisse (Trigger):
+  - Architekturänderung: neue Komponente, neue Schnittstelle, neuer Datenfluss,
+    neue Vertrauensgrenze, neuer Auftragsverarbeiter, neuer Cloud-Provider,
+    neuer Subdienstleister oder neue providergebundene Deployment-Abhängigkeit.
+  - Neue Datenklasse: zusätzliche personenbezogene Daten, Geheimnisse,
+    Schlüsselmaterial oder Daten mit höherer Schutzbedarfsstufe.
+  - Neue Bedrohungslage: relevante CVE, neue CAPEC-Pattern, neue Angreifergruppe,
+    BSI-Lagebericht, MITRE ATT&CK Updates.
+  - Vorfall (Incident): nach Sicherheitsvorfall, Lessons-Learned-Review,
+    Penetrationstest-Ergebnissen oder Audit-Findings.
+  - Compliance-Wechsel: neue Regulierung oder neuer Scope (CRA, NIS2, EU AI
+    Act, DORA, DSGVO-Update), geänderte interne Richtlinien, BSI-C3A- oder
+    BSI-C5-Relevanz.
+  - Zeitlich: mindestens halbjährliche oder jährliche Routineüberprüfung.
+  Werkzeugunterstützung:
+  - Versionierung im Git-Repo mit Semantic Versioning (`v1.0.0` → `v1.1.0` bei
+    Erweiterung, `v2.0.0` bei Architekturwechsel) und `CHANGELOG.md`.
+  - GitHub Actions / Git CI Workflow `threat-model-reminder.yml`, das auf
+    PRs mit Pfaden wie `arc42/`, `docs/architecture/`, `**/*.proto` oder
+    `infrastructure/` automatisch einen Kommentar setzt: „Bedrohungsmodell prüfen!".
+  - Tabelle „Versionshistorie / Change Log" am Ende des Bedrohungsmodells:
+    Version, Datum, Auslöser, Änderung, Autor.
+  - Cron-Erinnerung über Issue-Bot (z. B. `actions/github-script` mit Schedule
+    `0 9 1 */6 *`) für halbjährliche Routineprüfung.
+- **EN:** The threat model is reviewed on every material change and updated
+  when needed. The date and trigger are recorded.
+  Concrete trigger events:
+  - Architecture change: new component, new interface, new data flow, new
+    trust boundary, new processor, new cloud provider, new subprocessor, or
+    new provider-dependent deployment dependency.
+  - New data class: additional personal data, secrets, key material, or data
+    with a higher protection class.
+  - New threat landscape: relevant CVE, new CAPEC patterns, new threat actor,
+    BSI threat report, MITRE ATT&CK updates.
+  - Incident: after a security incident, lessons-learned review, pentest
+    findings, or audit findings.
+  - Compliance change: new regulation or new scope (CRA, NIS2, EU AI Act,
+    DORA, GDPR update), changed internal policy, BSI C3A relevance, or BSI
+    C5 relevance.
+  - Time-based: at least every six months or annual routine review.
+  Tool support:
+  - Git versioning with semantic versioning (`v1.0.0` → `v1.1.0` for extension,
+    `v2.0.0` for architecture change) and a `CHANGELOG.md`.
+  - GitHub Actions / Git CI workflow `threat-model-reminder.yml` that posts
+    an automatic PR comment when paths like `arc42/`, `docs/architecture/`,
+    `**/*.proto`, or `infrastructure/` are touched: "Review threat model!".
+  - "Version History / Change Log" table at the end of the threat model:
+    version, date, trigger, change, author.
+  - Cron reminder via issue bot (e.g. `actions/github-script` with schedule
+    `0 9 1 */6 *`) for semi-annual routine review.
+- **Akzeptanz / Acceptance:** Versions- oder Änderungstabelle mit Spalten
+  Version, Datum, Auslöser, Änderung, Autor vorhanden; letzte Prüfung nicht
+  älter als sechs Monate; CI-Reminder oder Cron-Job konfiguriert; Cloud-,
+  Provider- und regulatorische Trigger sind als mögliche Auslöser benannt. /
+  Version or change table with columns for version, date, trigger, change,
+  and author exists; latest review is not older than six months; CI reminder
+  or cron job is configured; cloud, provider, and regulatory triggers are
+  named as possible triggers.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 9. Review / Review
+
+- **DE:** Mindestens eine zweite Person (z. B. Security-Architekt, Senior
+  Engineer) hat das Modell geprüft und freigegeben.
+  Geeignete Reviewer-Rollen:
+  - Security-Architekt:in (CISSP, ISO 27001 Lead Implementer, iSAQB CPSA-A).
+  - Senior Engineer mit Domänenkenntnis und Erfahrung in STRIDE/CAPEC.
+  - Externer Reviewer bei Hochrisiko-Systemen (Penetrationstester:in,
+    BSI-zertifizierte:r Auditor:in).
+  - Datenschutzbeauftragte:r (DSB) bei personenbezogenen Daten (DSGVO Art. 35
+    DSFA).
+  Review-Methoden und -Werkzeuge:
+  - Pull-Request-Review im Git-Repo: Reviewer kommentiert in `threat-model.md`
+    direkt an Stellen, fordert Änderungen an oder genehmigt mit Approve.
+  - CODEOWNERS-Datei mit `docs/security/threat-model.md @security-team` für
+    automatisches Reviewer-Routing.
+  - Strukturierter Review-Bogen: STRIDE-Vollständigkeit, CAPEC-Bezug,
+    DREAD/CVSS-Konsistenz, Mitigation-Realismus, Restrisiko-Akzeptanz.
+  - Vier-Augen-Prinzip dokumentiert mit elektronischer Signatur (z. B.
+    GPG-signierter Commit, signierter PDF-Export, Confluence-Approval-Workflow).
+  Review-Ergebnis-Dokumentation:
+  - Review-Block am Ende des Modells: Reviewer-Name, Rolle, Datum,
+    Empfehlungen, Status (genehmigt / mit Auflagen / abgelehnt).
+  - Bei Auflagen: Tickets im Issue-Tracker mit Verweis auf Threat-IDs.
+  - Bei abgelehnter Risikoakzeptanz: Eskalation an verantwortliche Leitung mit
+    schriftlicher Begründung.
+- **EN:** At least one second person (e.g. security architect, senior
+  engineer) has reviewed and approved the model.
+  Suitable reviewer roles:
+  - Security architect (CISSP, ISO 27001 Lead Implementer, iSAQB CPSA-A).
+  - Senior engineer with domain knowledge and experience in STRIDE/CAPEC.
+  - External reviewer for high-risk systems (penetration tester, BSI-certified
+    auditor).
+  - Data protection officer (DPO) for personal data (GDPR Art. 35 DPIA).
+  Review methods and tools:
+  - Pull request review in the Git repo: reviewer comments inline in
+    `threat-model.md`, requests changes, or approves with Approve.
+  - CODEOWNERS file with `docs/security/threat-model.md @security-team` for
+    automatic reviewer routing.
+  - Structured review checklist: STRIDE completeness, CAPEC reference,
+    DREAD/CVSS consistency, mitigation realism, residual-risk acceptance.
+  - Four-eyes principle documented with electronic signature (e.g. GPG-signed
+    commit, signed PDF export, Confluence approval workflow).
+  Review-result documentation:
+  - Review block at the end of the model: reviewer name, role, date,
+    recommendations, status (approved / approved with conditions / rejected).
+  - For conditions: tickets in the issue tracker referencing threat IDs.
+  - For rejected risk acceptance: escalation to management with written
+    justification.
+- **Akzeptanz / Acceptance:** Review-Vermerk mit Name, Rolle, Datum, Status,
+  optional GPG-Signatur oder PDF-Approval; CODEOWNERS oder gleichwertige
+  Routing-Regel im Repository.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 10. Ablage und Auffindbarkeit / Storage and Findability
+
+- **DE:** Das Bedrohungsmodell liegt unter `docs/security/threat-model.md`
+  oder in einem gleichwertig dokumentierten Pfad.
+  Empfohlene Ablagestruktur im Projekt-Repo:
+  - `docs/security/threat-model.md` – Hauptdokument im Markdown-Format.
+  - `docs/security/dfd/` – Datenflussdiagramme als PlantUML, Mermaid,
+    `.drawio` oder `.tm7` (Microsoft Threat Modeling Tool).
+  - `docs/security/adr/` – Security ADRs, die aus dem Modell hervorgehen.
+  - `docs/security/asvs-verification.md`, `supply-chain-evidence.md`,
+    `zero-trust-applicability.md` als Quervernetzung.
+  Verlinkung und Auffindbarkeit:
+  - In `README.md` Abschnitt „Sicherheit" mit Link zum Bedrohungsmodell.
+  - In `spec.md` Abschnitt „Sicherheit" und in `plan.md` Abschnitt „Risiken"
+    konkrete Pfade nennen.
+  - In `tasks.md` Verweis auf relevante Threat-IDs bei sicherheitskritischen
+    Tasks.
+  - Im internen Wiki (Confluence, Git Wiki, GitHub Wiki) Querverweis und
+    Kurzfassung der Top-Risiken.
+  - In `arc42 Section 8 Sicherheit` (`docs/architecture/08-concepts.md`)
+    Verweis auf das Bedrohungsmodell.
+  Alternative gleichwertige Pfade (mit Begründung dokumentiert):
+  - In Compliance-Schwerpunkt-Repos: `compliance/threat-model.md`.
+  - Bei mehreren Bounded Contexts: `services/<service>/docs/threat-model.md`
+    pro Service mit übergreifender `docs/security/threat-model-overview.md`.
+  Schutz vor Vergessen:
+  - Linter-Regel im CI (`docs-linter.sh`), die das Vorhandensein von
+    `docs/security/threat-model.md` prüft und bei Fehlen den Build fehlschlagen
+    lässt.
+- **EN:** The threat model lives under `docs/security/threat-model.md` or
+  an equivalent documented path.
+  Recommended storage structure in the project repo:
+  - `docs/security/threat-model.md` – main document in Markdown.
+  - `docs/security/dfd/` – data flow diagrams as PlantUML, Mermaid, `.drawio`,
+    or `.tm7` (Microsoft Threat Modeling Tool).
+  - `docs/security/adr/` – security ADRs derived from the model.
+  - `docs/security/asvs-verification.md`, `supply-chain-evidence.md`,
+    `zero-trust-applicability.md` for cross-linking.
+  Linking and findability:
+  - In `README.md` section "Security" with a link to the threat model.
+  - In `spec.md` section "Security" and in `plan.md` section "Risks" name
+    concrete paths.
+  - In `tasks.md` reference relevant threat IDs for security-critical tasks.
+  - In the internal wiki (Confluence, Git Wiki, GitHub Wiki) cross-reference
+    and short version of the top risks.
+  - In `arc42 Section 8 Security` (`docs/architecture/08-concepts.md`)
+    reference to the threat model.
+  Alternative equivalent paths (with documented justification):
+  - In compliance-focused repos: `compliance/threat-model.md`.
+  - For multiple bounded contexts: `services/<service>/docs/threat-model.md`
+    per service with an overarching `docs/security/threat-model-overview.md`.
+  Protection against omission:
+  - Linter rule in CI (`docs-linter.sh`) that checks for the presence of
+    `docs/security/threat-model.md` and fails the build if missing.
+- **Akzeptanz / Acceptance:** Dateipfad in `README.md`, `spec.md`, `plan.md`,
+  `tasks.md` und `arc42 Section 8` erwähnt; CI-Linter prüft Existenz; DFD
+  versioniert und im Repo abgelegt.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+### Akzeptanzkriterien gesamt / Overall Acceptance
+
+**DE:** Erfüllt, wenn alle Punkte abgeschlossen sind, das Modell unterschrieben
+ist und Risikoakzeptanzen schriftlich vorliegen.
+
+**EN:** Fulfilled when every item is closed, the model is signed off, and
+accepted risks are documented in writing.
+
+### Glossar / Glossary
+
+**DE:** Dieses Glossar erklärt die wichtigsten Begriffe dieser Checkliste in Alltagssprache. Es ändert keine Anforderungen, sondern macht die vorhandenen Prüfpunkte leichter verständlich.
+
+**EN:** This glossary explains the most important terms in this checklist in plain language. It does not change requirements; it makes the existing review items easier to understand.
+
+<a id="cl-04-glossar-threat-model"></a>
+
+#### Bedrohungsmodell / Threat Model
+
+- **DE:** Ein Bedrohungsmodell beschreibt, was geschützt werden muss, welche Angriffe möglich sind und welche Maßnahmen diese Risiken reduzieren.
+- **EN:** A threat model describes what must be protected, which attacks are possible, and which measures reduce these risks.
+
+<a id="cl-04-glossar-asset"></a>
+
+#### Asset / Schutzwert
+
+- **DE:** Ein Asset ist etwas Wertvolles, das geschützt werden muss, zum Beispiel Daten, ein Dienst, ein Schlüssel, ein System oder Verfügbarkeit.
+- **EN:** An asset is something valuable that must be protected, for example data, a service, a key, a system, or availability.
+
+<a id="cl-04-glossar-trust-boundary"></a>
+
+#### Vertrauensgrenze / Trust Boundary
+
+- **DE:** Eine Vertrauensgrenze trennt Bereiche mit unterschiedlichem Schutzbedarf oder unterschiedlicher Kontrolle. Daten, die diese Grenze überschreiten, brauchen besondere Prüfung.
+- **EN:** A trust boundary separates areas with different protection needs or different control. Data crossing this boundary needs special review.
+
+<a id="cl-04-glossar-data-flow"></a>
+
+#### Datenfluss / Data Flow
+
+- **DE:** Ein Datenfluss zeigt, welche Daten zwischen Komponenten, Personen oder Systemen übertragen werden. Er hilft, Risiken an Schnittstellen zu erkennen.
+- **EN:** A data flow shows which data is transferred between components, people, or systems. It helps identify risks at interfaces.
+
+<a id="cl-04-glossar-stride"></a>
+
+#### STRIDE
+
+- **DE:** STRIDE ist eine Methode zur Bedrohungsanalyse. Sie fragt nach Spoofing, Manipulation, Abstreiten, Informationsabfluss, Dienstverweigerung und Rechteausweitung.
+- **EN:** STRIDE is a threat analysis method. It asks about spoofing, tampering, repudiation, information disclosure, denial of service, and elevation of privilege.
+
+<a id="cl-04-glossar-capec"></a>
+
+#### CAPEC
+
+- **DE:** CAPEC ist ein Katalog bekannter Angriffsmuster. Er hilft beim Bedrohungsmodell, typische Angriffe systematisch zu erkennen.
+- **EN:** CAPEC is a catalogue of known attack patterns. It helps threat models identify typical attacks systematically.
+
+<a id="cl-04-glossar-risk-rating"></a>
+
+#### Risikobewertung / Risk Rating
+
+- **DE:** Eine Risikobewertung ordnet ein Risiko nach Wahrscheinlichkeit und Auswirkung ein. Daraus folgt, welche Maßnahmen zuerst umgesetzt werden müssen.
+- **EN:** A risk rating classifies a risk by likelihood and impact. It shows which measures must be implemented first.
+
+<a id="cl-04-glossar-mitigation"></a>
+
+#### Maßnahme / Mitigation
+
+- **DE:** Eine Maßnahme reduziert ein Risiko. Sie kann technisch, organisatorisch oder prozessbezogen sein und braucht meist einen Nachweis.
+- **EN:** A mitigation reduces a risk. It can be technical, organisational, or process-related and usually needs evidence.
+
+<a id="cl-04-glossar-evidenz"></a>
+
+#### Evidenz / Evidence
+
+- **DE:** Evidenz ist ein prüfbarer Nachweis. Das kann ein Link, Ticket, Scan-Bericht, Pull Request, Protokoll, Architekturdiagramm oder Dokument sein.
+- **EN:** Evidence is verifiable proof. It can be a link, ticket, scan report, pull request, record, architecture diagram, or document.
+
+<a id="cl-04-glossar-audit"></a>
+
+#### Audit
+
+- **DE:** Ein Audit ist eine formelle Prüfung. Dabei wird kontrolliert, ob Regeln eingehalten wurden und ob die Nachweise verständlich und auffindbar sind.
+- **EN:** An audit is a formal review. It checks whether rules were followed and whether the evidence is understandable and findable.
+
+### Versionshistorie / Version History
+
+- **Version 1.0 (2026-04-27):** Erstfassung / Initial version
+- **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
+- **Version 1.2 (2026-06-15):** Aktualisierungspflicht um Cloud-/Provider-Wechsel, BSI C3A/C5, EU AI Act und DORA als Trigger ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Extended update obligation with cloud/provider changes, BSI C3A/C5, EU AI Act, and DORA as triggers; synchronized with RL Sichere-Entwicklung v2.9.0.
+
+- **Version 1.3 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
+
+- **Version 1.4 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
+
+---
+
+
+---
+
+<!--
+Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
+Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+This document is organization-neutral and written as a generic training and review baseline.
+-->
+
+> **DE:** Diese Checkliste ist generisch und projektunabhaengig. Sie ist als Ausbildungs-, Review- und Haertungsgrundlage gedacht. Eine Nichtanwendbarkeit muss als `N/A` mit kurzer Begruendung dokumentiert werden.
+>
+> **EN:** This checklist is generic and project-independent. It is intended as a training, review, and hardening baseline. Non-applicability must be documented as `N/A` with a short rationale.
+
+## Checkliste 05 – Lieferkette und Build-Integritaet / Supply Chain and Build Integrity
+
+### Zweck / Purpose
+
+**DE:** Diese Checkliste prüft, ob das Projekt seine Lieferkette transparent
+hält (SBOM, VEX), die Build-Integrität nachweist (SLSA) und die Pflege der
+Abhängigkeiten sicher steuert.
+
+**EN:** This checklist verifies that the project keeps its supply chain
+transparent (SBOM, VEX), proves build integrity (SLSA), and manages
+dependency upkeep safely.
+
+### Geltungsbereich / Scope
+
+**DE:** Pflicht für alle releasefähigen oder verteilbaren Artefakte. Empfohlen
+für interne Bibliotheken, sobald sie von mehreren Teams genutzt werden.
+
+**EN:** Mandatory for all releasable or distributable artefacts. Recommended
+for internal libraries as soon as more than one team uses them.
+
+### Mitgeltende Dokumente / Related Documents
+
+- RL Sichere-Entwicklung
+- ISO/IEC 27002:2022 A.5.21, A.8.30
+- CycloneDX, SPDX (SBOM-Formate)
+- CSAF (VEX-Format)
+- SLSA Framework
+- OpenSSF Scorecard
+- G7 „Software Bill of Materials for AI – Minimum Elements" (2026)
+
+#### URL-/Ablageverweise / URLs and Storage Locations
+
+**DE:** Diese Links helfen beim Review. Projekt- oder organisationsinterne Dokumente koennen als lokale Arbeitskopie oder als Verweis auf den festgelegten Ablageort ergaenzt werden.
+
+**EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
+
+- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
+- **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
+- **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
+- **Secure coding guideline:** this guide or an equivalent project-specific guideline
+- **CISA Memory Safe Roadmaps:** [lokale Textfassung des CISA-Dokuments / local text version of the CISA document](../THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.txt), [CISA-Webseite zum Dokument / CISA webpage for the document](https://www.cisa.gov/resources-tools/resources/case-memory-safe-roadmaps)
+- **ISO/IEC 27001:2022:** [offizielle ISO-Webseite zur ISO/IEC 27001:2022 / official ISO webpage for ISO/IEC 27001:2022](https://www.iso.org/standard/27001)
+- **ISO/IEC 27002:2022:** [offizielle ISO-Webseite zur ISO/IEC 27002:2022 / official ISO webpage for ISO/IEC 27002:2022](https://www.iso.org/standard/75652.html)
+- **NIST SSDF SP 800-218:** [NIST-Veröffentlichung SP 800-218 Secure Software Development Framework / NIST publication SP 800-218 Secure Software Development Framework](https://csrc.nist.gov/publications/detail/sp/800-218/final)
+- **NIST Zero Trust SP 800-207:** [NIST-Veröffentlichung SP 800-207 Zero Trust Architecture / NIST publication SP 800-207 Zero Trust Architecture](https://csrc.nist.gov/publications/detail/sp/800-207/final)
+- **OWASP ASVS:** [OWASP-Projektseite Application Security Verification Standard / OWASP project page Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)
+- **OWASP Cheat Sheet Series:** [OWASP Cheat Sheet Series Projektseite / OWASP Cheat Sheet Series project page](https://cheatsheetseries.owasp.org/)
+- **OWASP Proactive Controls:** [OWASP Proactive Controls Projektseite / OWASP Proactive Controls project page](https://owasp.org/www-project-proactive-controls/)
+- **OWASP SAMM:** [OWASP SAMM Projektseite / OWASP SAMM project page](https://owaspsamm.org/)
+- **OWASP Top 10 for LLM Applications:** [OWASP Top 10 for LLM Applications Projektseite / OWASP Top 10 for LLM Applications project page](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- **CWE Top 25:** [MITRE CWE Top 25 Übersicht / MITRE CWE Top 25 overview](https://cwe.mitre.org/top25/)
+- **CAPEC:** [MITRE CAPEC Katalog / MITRE CAPEC catalogue](https://capec.mitre.org/)
+- **CycloneDX:** [CycloneDX SBOM-Standard Projektseite / CycloneDX SBOM standard project page](https://cyclonedx.org/)
+- **SPDX:** [SPDX SBOM-Standard Projektseite / SPDX SBOM standard project page](https://spdx.dev/)
+- **CSAF/VEX:** [OASIS CSAF und VEX Dokumentation / OASIS CSAF and VEX documentation](https://oasis-open.github.io/csaf-documentation/)
+- **SLSA:** [SLSA Supply-chain Levels for Software Artifacts Projektseite / SLSA project page](https://slsa.dev/)
+- **OpenSSF Scorecard:** [OpenSSF Scorecard Projektseite / OpenSSF Scorecard project page](https://scorecard.dev/)
+- **RFC 9116 security.txt:** [RFC 9116 zu security.txt / RFC 9116 for security.txt](https://www.rfc-editor.org/rfc/rfc9116)
+- **NIST AI Risk Management Framework:** [NIST AI Risk Management Framework Webseite / NIST AI Risk Management Framework webpage](https://www.nist.gov/itl/ai-risk-management-framework)
+- **EU Cyber Resilience Act:** [EU-Amtsblatt zum Cyber Resilience Act / EU Official Journal for the Cyber Resilience Act](https://eur-lex.europa.eu/eli/reg/2024/2847/oj)
+- **BSI TR-02102:** [BSI-Webseite zur Technischen Richtlinie TR-02102 / BSI webpage for Technical Guideline TR-02102](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Technische-Richtlinien/TR-nach-Thema-sortiert/tr02102/tr-02102.html)
+
+### Bewertung und Dokumentation / Assessment and Documentation
+
+**DE:** Jeder Prüfpunkt bekommt genau einen Status. Schreibe die Begründung so, dass eine neue Kollegin oder ein neuer Kollege den Entscheid später ohne Rückfrage versteht.
+
+**EN:** Each checklist item gets exactly one status. Write the explanation so that a new team member can understand the decision later without asking again.
+
+- **Erfüllt / Fulfilled:** Die Anforderung ist umgesetzt und es gibt einen prüfbaren Nachweis.
+- **Nicht erfüllt / Not fulfilled:** Die Anforderung ist noch nicht umgesetzt oder der Nachweis fehlt. Es muss eine Aufgabe mit Verantwortlicher Person und Termin geben.
+- **Nicht anwendbar / Not applicable:** Die Anforderung passt nicht zum Projekt. Das ist erlaubt, aber nur mit kurzer Begründung.
+
+**Pflichtfelder je Prüfpunkt / Required fields per item:** Status, Begründung, Evidenzpfad oder Link, nächste Maßnahme mit Verantwortlicher Person und Zieltermin.
+
+### Durchführungshinweise / Implementation Guidance
+
+**DE:** Nutze diese Checkliste nicht als reine Ja/Nein-Liste. Sie ist ein Arbeits- und Auditdokument. Prüfe jeden Punkt gegen reale Artefakte: Code, Pull Request, Architekturdiagramm, Build-Log, Scan-Ergebnis, Ticket, Betriebsdokumentation oder Freigabeprotokoll. Wenn ein Nachweis noch fehlt, markiere den Punkt als „nicht erfüllt" und lege eine konkrete Folgeaufgabe an.
+
+**EN:** Do not use this checklist as a simple yes/no list. It is a working and audit document. Check each item against real artefacts: code, pull request, architecture diagram, build log, scan result, ticket, operations document, or approval record. If evidence is missing, mark the item as "not fulfilled" and create a concrete follow-up task.
+
+**DE:** Schreibe kurze, klare Begründungen. Vermeide Abkürzungen ohne Erklärung. Wenn ein Punkt technisch schwierig ist, beschreibe den aktuellen Stand, das Risiko und den nächsten machbaren Schritt.
+
+**EN:** Write short and clear explanations. Avoid unexplained abbreviations. If an item is technically difficult, describe the current state, the risk, and the next feasible step.
+
+**DE:** Jeder Prüfpunkt muss deshalb drei Fragen beantworten: Was bedeutet die Anforderung im Projektalltag? Was ist konkret zu tun oder zu entscheiden? Welcher Nachweis zeigt das Ergebnis? Verwende Standard-IDs, Toolnamen und Abkürzungen nur zusammen mit einer kurzen Erklärung in Alltagssprache. Wenn ein Punkt für Auszubildende oder neue Teammitglieder nicht selbsterklärend ist, ergänze eine kurze Erklärung in der Begründung.
+
+**EN:** Each item must therefore answer three questions: What does the requirement mean in daily project work? What exactly must be done or decided? Which evidence shows the result? Use standard IDs, tool names, and abbreviations only together with a short plain-language explanation. If an item is not self-explanatory for apprentices or new team members, add a short explanation in the rationale.
+
+### Beispiel / Example
+
+**DE:** Ein .NET-Release enthaelt eine CycloneDX-SBOM, eine signierte Build-Provenance und einen Lizenzbericht. Eine bekannte CVE in einer Bibliothek ist per VEX als „nicht betroffen" begründet, weil die verwundbare Funktion nicht genutzt wird.
+
+**EN:** A .NET release contains a CycloneDX SBOM, signed build provenance, and a licence report. A known CVE in a library is explained by VEX as "not affected" because the vulnerable function is not used.
+
+### A11Y-Hinweise / A11Y Notes
+
+**DE:** Beim Ausfüllen dieser Checkliste müssen alle Nachweise auch textlich verständlich sein. Verweise sollen beschreibende Linktexte haben. Screenshots, Diagramme oder Scan-Auszüge brauchen eine kurze Textbeschreibung. Der Status darf nicht nur über Farbe erkennbar sein.
+
+**EN:** When this checklist is filled in, all evidence must also be understandable as text. References should use descriptive link text. Screenshots, diagrams, or scan extracts need a short text description. The status must not be shown by color alone.
+
+### Wichtige Begriffe / Key Terms
+
+**DE:** Die folgenden Begriffe kommen in dieser Checkliste vor. Die Links springen zum Glossar dieses Kapitels, damit Auszubildende und Entwickler:innen ohne Sicherheits-Spezialwissen die Begriffe direkt nachlesen können.
+
+**EN:** The following terms appear in this checklist. The links jump to this chapter's glossary so that apprentices and developers without specialist security knowledge can look them up directly.
+
+- [SBOM / Software Bill of Materials](#cl-05-glossar-sbom)
+- [AI-SBOM / ML-BOM](#cl-05-glossar-ai-sbom-ml-bom)
+- [CycloneDX](#cl-05-glossar-cyclonedx)
+- [SPDX](#cl-05-glossar-spdx)
+- [VEX / Vulnerability Exploitability eXchange](#cl-05-glossar-vex)
+- [CSAF](#cl-05-glossar-csaf)
+- [SLSA](#cl-05-glossar-slsa)
+- [Provenance / Herkunftsnachweis](#cl-05-glossar-provenance)
+- [Attestation / Bescheinigung](#cl-05-glossar-attestation)
+- [Sigstore / Cosign](#cl-05-glossar-sigstore-cosign)
+- [in-toto](#cl-05-glossar-in-toto)
+- [CVE](#cl-05-glossar-cve)
+- [CVSS](#cl-05-glossar-cvss)
+- [EPSS](#cl-05-glossar-epss)
+- [KEV](#cl-05-glossar-kev)
+- [NVD](#cl-05-glossar-nvd)
+- [OpenSSF Scorecard](#cl-05-glossar-openssf-scorecard)
+- [Secret Store](#cl-05-glossar-secret-store)
+
+### Checkliste / Checklist
+
+#### 1. SBOM-Format und -Erzeugung / SBOM Format and Generation
+
+- **DE:** SBOM wird automatisiert im Build erzeugt, in CycloneDX oder SPDX
+  abgelegt und mit dem Release-Artefakt verbunden.
+  Konkrete Werkzeuge je Sprache und Plattform:
+  - Sprachunabhängig: `syft` (Anchore) – `syft packages dir:. -o cyclonedx-json`,
+    `cdxgen` (OWASP) – Multi-Sprach-CycloneDX-Generator.
+  - .NET: `dotnet CycloneDX` – `dotnet CycloneDX --json --output ./sbom`.
+  - Java/Maven: `cyclonedx-maven-plugin` – `mvn cyclonedx:makeAggregateBom`.
+  - Java/Gradle: `cyclonedx-gradle-plugin` – `./gradlew cyclonedxBom`.
+  - Node.js: `@cyclonedx/cdxgen` – `cdxgen -t nodejs -o sbom.json`.
+  - Python: `cyclonedx-py` – `cyclonedx-py -p -o sbom.xml`,
+    `pip-audit --format=cyclonedx-json`.
+  - Go: `cyclonedx-gomod` – `cyclonedx-gomod app -output sbom.xml`.
+  - Rust: `cargo-cyclonedx` – `cargo cyclonedx`.
+  - Container: `syft <image>:<tag> -o spdx-json`,
+    `docker sbom <image>:<tag>` (Docker Desktop).
+  Verbindung zum Release-Artefakt:
+  - SBOM-Datei mit Release-Tag versionieren: `release/v1.2.3/sbom.cdx.json`.
+  - SBOM in OCI-Registry als Attestation anhängen: `cosign attest --type cyclonedx`.
+  - SBOM-Hash in Release-Notes oder GitHub Release Asset.
+  CI-Integration:
+  - GitHub Actions: `anchore/sbom-action` oder `CycloneDX/gh-dotnet-generate-sbom`.
+  - Git CI: SBOM-Job mit `syft` und Artifact-Upload.
+- **EN:** SBOM is generated automatically in the build, stored in CycloneDX
+  or SPDX, and linked to the release artefact.
+  Concrete tools per language and platform:
+  - Language-independent: `syft` (Anchore) – `syft packages dir:. -o cyclonedx-json`,
+    `cdxgen` (OWASP) – multi-language CycloneDX generator.
+  - .NET: `dotnet CycloneDX` – `dotnet CycloneDX --json --output ./sbom`.
+  - Java/Maven: `cyclonedx-maven-plugin` – `mvn cyclonedx:makeAggregateBom`.
+  - Java/Gradle: `cyclonedx-gradle-plugin` – `./gradlew cyclonedxBom`.
+  - Node.js: `@cyclonedx/cdxgen` – `cdxgen -t nodejs -o sbom.json`.
+  - Python: `cyclonedx-py` – `cyclonedx-py -p -o sbom.xml`,
+    `pip-audit --format=cyclonedx-json`.
+  - Go: `cyclonedx-gomod` – `cyclonedx-gomod app -output sbom.xml`.
+  - Rust: `cargo-cyclonedx` – `cargo cyclonedx`.
+  - Container: `syft <image>:<tag> -o spdx-json`,
+    `docker sbom <image>:<tag>` (Docker Desktop).
+  Linking to the release artefact:
+  - Version SBOM file with release tag: `release/v1.2.3/sbom.cdx.json`.
+  - Attach SBOM as attestation in OCI registry: `cosign attest --type cyclonedx`.
+  - SBOM hash in release notes or GitHub Release asset.
+  CI integration:
+  - GitHub Actions: `anchore/sbom-action` or `CycloneDX/gh-dotnet-generate-sbom`.
+  - Git CI: SBOM job with `syft` and artifact upload.
+- **Akzeptanz / Acceptance:** SBOM-Datei (CycloneDX 1.5+ oder SPDX 2.3+) je
+  Release vorhanden, im Repo oder als Release-Asset; CI-Job-Log zeigt
+  erfolgreiche Erzeugung; SBOM mit Artefakt-Hash verknüpft.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 2. SBOM-Inhalt / SBOM Content
+
+- **DE:** Die SBOM listet direkte und transitive Abhängigkeiten mit Name,
+  Version, Lizenz und (wenn möglich) Hash.
+  Pflichtfelder pro Komponente:
+  - `name` (z. B. `log4j-core`).
+  - `version` (z. B. `2.17.1`, exakt, keine Range).
+  - `purl` (Package URL, z. B. `pkg:maven/org.apache.logging.log4j/log4j-core@2.17.1`).
+  - `cpe` (Common Platform Enumeration, z. B.
+    `cpe:2.3:a:apache:log4j:2.17.1:*:*:*:*:*:*:*`).
+  - `hashes` (z. B. SHA-256 oder SHA-512 des Artefakts).
+  - `licenses` (SPDX-Identifier wie `Apache-2.0`, `MIT`, `GPL-3.0-only`).
+  - `supplier` und `originator` für Compliance-Nachweise (CRA, ISO 27036).
+  - `dependencies`-Graph für transitive Beziehungen.
+  Validierung der Vollständigkeit:
+  - Tool `cyclonedx validate --input-file sbom.json` prüft Schema-Konformität.
+  - Tool `sbomqs` (Interlynk) bewertet Qualität: `sbomqs score sbom.json`.
+  - NTIA Minimum Elements Test: Author, Component Name, Version, Unique
+    Identifier, Dependency Relationship, Author of SBOM, Timestamp.
+  - Stichprobenprüfung: zufällig 5–10 Komponenten gegen `Pipfile.lock`,
+    `package-lock.json` oder `pom.xml` querprüfen.
+  Häufige Lücken vermeiden:
+  - Native-Bibliotheken (Glibc, OpenSSL) in Container-SBOM ergänzen
+    (`syft` mit `--scope all-layers`).
+  - Build-Tools und Test-Abhängigkeiten kennzeichnen, aber nicht
+    fälschlich als Runtime-Dependencies listen.
+- **EN:** The SBOM lists direct and transitive dependencies with name,
+  version, licence, and (where possible) hash.
+  Mandatory fields per component:
+  - `name` (e.g. `log4j-core`).
+  - `version` (e.g. `2.17.1`, exact, no ranges).
+  - `purl` (Package URL, e.g. `pkg:maven/org.apache.logging.log4j/log4j-core@2.17.1`).
+  - `cpe` (Common Platform Enumeration, e.g.
+    `cpe:2.3:a:apache:log4j:2.17.1:*:*:*:*:*:*:*`).
+  - `hashes` (e.g. SHA-256 or SHA-512 of the artefact).
+  - `licenses` (SPDX identifiers like `Apache-2.0`, `MIT`, `GPL-3.0-only`).
+  - `supplier` and `originator` for compliance evidence (CRA, ISO 27036).
+  - `dependencies` graph for transitive relationships.
+  Completeness validation:
+  - Tool `cyclonedx validate --input-file sbom.json` checks schema
+    conformance.
+  - Tool `sbomqs` (Interlynk) scores quality: `sbomqs score sbom.json`.
+  - NTIA Minimum Elements test: author, component name, version, unique
+    identifier, dependency relationship, SBOM author, timestamp.
+  - Sample check: cross-check 5–10 random components against `Pipfile.lock`,
+    `package-lock.json`, or `pom.xml`.
+  Avoid common gaps:
+  - Add native libraries (Glibc, OpenSSL) to container SBOM
+    (`syft` with `--scope all-layers`).
+  - Mark build tools and test dependencies, but do not list them as runtime
+    dependencies by mistake.
+- **Akzeptanz / Acceptance:** Stichprobe je Release prüft Vollständigkeit
+  (mindestens NTIA Minimum Elements); `sbomqs score >= 7.0`; SBOM enthält
+  `purl` oder `cpe` für 100 % der Komponenten.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 3. VEX bei bekannten Schwachstellen / VEX for Known Vulnerabilities
+
+- **DE:** Wenn Komponenten bekannte CVEs haben, wird ein VEX-Dokument (CSAF)
+  erzeugt, das die Ausnutzbarkeit erklärt (z. B. „nicht betroffen").
+  VEX-Formate und -Werkzeuge:
+  - **CSAF 2.0** (OASIS) – maschinenlesbares JSON-Format mit `csaf-validator`.
+  - **OpenVEX** – kompaktes JSON-Format von OpenSSF, Tool `vexctl create`.
+  - **CycloneDX VEX** – integriert in CycloneDX-Format.
+  - **SPDX VEX** – als Annotation im SPDX-Dokument.
+  Pflicht-Status-Werte je CVE:
+  - `not_affected` (nicht betroffen, mit Begründung).
+  - `affected` (betroffen, ohne Mitigation).
+  - `fixed` (behoben in Version X).
+  - `under_investigation` (in Untersuchung, max. 30 Tage).
+  Begründungen für `not_affected` (CSAF `justification`):
+  - `component_not_present` (Komponente gar nicht enthalten).
+  - `vulnerable_code_not_present` (verwundbarer Code-Pfad nicht enthalten).
+  - `vulnerable_code_not_in_execute_path` (Code nicht erreichbar).
+  - `vulnerable_code_cannot_be_controlled_by_adversary`.
+  - `inline_mitigations_already_exist` (Mitigation vorhanden).
+  Beispiel-Workflow:
+  - `vexctl create --product "pkg:maven/org.apache/log4j-core@2.17.1"
+    --vuln "CVE-2021-44228" --status "not_affected"
+    --justification "vulnerable_code_not_in_execute_path"`.
+  - VEX-Datei mit SBOM verknüpfen und im Release-Asset hochladen.
+  - Bei `affected`: Mitigation oder Workaround in `action_statement`.
+  Verknüpfung mit Scanner:
+  - Trivy, Grype, Dependency-Track lesen VEX und unterdrücken
+    Falsch-Positive automatisch.
+- **EN:** When components have known CVEs, a VEX document (CSAF) is created
+  that explains exploitability (e.g. "not affected").
+  VEX formats and tools:
+  - **CSAF 2.0** (OASIS) – machine-readable JSON format with `csaf-validator`.
+  - **OpenVEX** – compact JSON format from OpenSSF, tool `vexctl create`.
+  - **CycloneDX VEX** – integrated in CycloneDX format.
+  - **SPDX VEX** – as annotation in the SPDX document.
+  Mandatory status values per CVE:
+  - `not_affected` (not affected, with justification).
+  - `affected` (affected, no mitigation).
+  - `fixed` (fixed in version X).
+  - `under_investigation` (under investigation, max. 30 days).
+  Justifications for `not_affected` (CSAF `justification`):
+  - `component_not_present`.
+  - `vulnerable_code_not_present`.
+  - `vulnerable_code_not_in_execute_path`.
+  - `vulnerable_code_cannot_be_controlled_by_adversary`.
+  - `inline_mitigations_already_exist`.
+  Example workflow:
+  - `vexctl create --product "pkg:maven/org.apache/log4j-core@2.17.1"
+    --vuln "CVE-2021-44228" --status "not_affected"
+    --justification "vulnerable_code_not_in_execute_path"`.
+  - Link the VEX file to the SBOM and upload as release asset.
+  - For `affected`: mitigation or workaround in `action_statement`.
+  Scanner integration:
+  - Trivy, Grype, Dependency-Track read VEX and automatically suppress
+    false positives.
+- **Akzeptanz / Acceptance:** VEX-Datei (CSAF 2.0 oder OpenVEX) vorhanden,
+  alle bekannten CVEs aus dem Scanner-Bericht haben einen Status mit
+  Begründung; oder N/A, wenn keine bekannten CVEs vorliegen, mit Verweis
+  auf den letzten Scan-Report.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 4. SLSA-Provenance / SLSA Provenance
+
+- **DE:** Für jedes Release liegt eine SLSA-Provenance-Datei vor (Build-System,
+  Quelle, Eingaben, Hashes). Das Ziel im SLSA-v1.2-Build-Track ist benannt.
+  SLSA-Build-Level und Anforderungen:
+  - **Build L1**: Provenance ist vorhanden und beschreibt Artefakt, Quelle und
+    Build.
+  - **Build L2**: Provenance ist signiert und stammt aus einem gehosteten
+    Build-Dienst mit nachvollziehbarer Identität.
+  - **Build L3**: Die Build-Plattform ist gehärtet. Sie trennt Builds stärker
+    voneinander und erzeugt nicht fälschbare Provenance.
+  Werkzeuge zur Provenance-Erzeugung:
+  - **GitHub Actions**: `slsa-framework/slsa-github-generator` (offiziell,
+    für hohe SLSA-Build-Level geeignet).
+  - **Git CI**: `slsa-provenance-action` oder eigene Builder mit `cosign`.
+  - **Container**: `cosign attest --type slsaprovenance --predicate ...`.
+  - **in-toto**: `in-toto-attestation` für allgemeine Build-Belege.
+  Pflichtfelder im Provenance-Statement (in-toto v1):
+  - `_type`: `https://in-toto.io/Statement/v1`.
+  - `subject[].name`, `subject[].digest.sha256`.
+  - `predicateType`: `https://slsa.dev/provenance/v1`.
+  - `predicate.buildDefinition.buildType` (z. B.
+    `https://github.com/actions/runner/...`).
+  - `predicate.runDetails.builder.id` (z. B. URL zum Builder).
+  - `predicate.runDetails.metadata.invocationId`.
+  Verifikation beim Konsumenten:
+  - `cosign verify-attestation --type slsaprovenance --certificate-identity ...`.
+  - `slsa-verifier verify-artifact <artefact> --provenance-path <provenance>
+    --source-uri <repo>`.
+- **EN:** Each release has a SLSA provenance file (build system, source,
+  inputs, hashes). The target in the SLSA v1.2 Build track is named.
+  SLSA Build levels and requirements:
+  - **Build L1**: provenance exists and describes the artefact, source, and
+    build.
+  - **Build L2**: provenance is signed and comes from a hosted build service
+    with a traceable identity.
+  - **Build L3**: the build platform is hardened. It separates builds more
+    strongly and creates non-forgeable provenance.
+  Tools for provenance generation:
+  - **GitHub Actions**: `slsa-framework/slsa-github-generator` (official,
+    suitable for high SLSA Build levels).
+  - **Git CI**: `slsa-provenance-action` or custom builders with `cosign`.
+  - **Container**: `cosign attest --type slsaprovenance --predicate ...`.
+  - **in-toto**: `in-toto-attestation` for general build evidence.
+  Mandatory fields in the provenance statement (in-toto v1):
+  - `_type`: `https://in-toto.io/Statement/v1`.
+  - `subject[].name`, `subject[].digest.sha256`.
+  - `predicateType`: `https://slsa.dev/provenance/v1`.
+  - `predicate.buildDefinition.buildType` (e.g.
+    `https://github.com/actions/runner/...`).
+  - `predicate.runDetails.builder.id` (e.g. URL of the builder).
+  - `predicate.runDetails.metadata.invocationId`.
+  Verification by the consumer:
+  - `cosign verify-attestation --type slsaprovenance --certificate-identity ...`.
+  - `slsa-verifier verify-artifact <artefact> --provenance-path <provenance>
+    --source-uri <repo>`.
+- **Akzeptanz / Acceptance:** Provenance-Datei (in-toto v1 + SLSA Provenance
+  v1) je Release-Artefakt; Ziel-Level (z. B. SLSA Build L2 oder Build L3)
+  explizit dokumentiert; Konsumenten-Verifikation in Release-Notes oder
+  `verify.sh` beigelegt.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 5. Reproduzierbare Builds / Reproducible Builds
+
+- **DE:** Wo möglich werden reproduzierbare Builds angestrebt (gleicher Input
+  → gleicher Output). Abweichungen sind dokumentiert.
+  Voraussetzungen für Reproducible Builds:
+  - Fixierte Toolchain-Versionen (Compiler, Linker, Build-Tools).
+  - Deterministische Zeitstempel: `SOURCE_DATE_EPOCH` (Reproducible Builds
+    Standard).
+  - Fixierte Eingaben: Lock-Dateien, Container-Image-Pinning per Digest
+    (`@sha256:...`).
+  - Stabile Dateireihenfolge in Archiven (z. B. `tar --sort=name`).
+  - Keine eingebetteten Build-Pfade oder Hostnamen.
+  Sprach- und Plattform-Werkzeuge:
+  - **Java/Maven**: `reproducible-build-maven-plugin`,
+    `<project.build.outputTimestamp>2026-01-01T00:00:00Z</project.build.outputTimestamp>`.
+  - **Go**: `-trimpath -ldflags="-buildid="` für deterministische Builds.
+  - **Rust**: `--remap-path-prefix`, `RUSTFLAGS="-C codegen-units=1"`.
+  - **Node.js/npm**: `npm ci` (statt `npm install`) für lockfile-genaue
+    Installation.
+  - **Container**: `kaniko` oder `buildah` mit `--source-date-epoch`,
+    `docker buildx` mit `--provenance=true`.
+  Verifikation:
+  - Build zweimal in unterschiedlichen Umgebungen ausführen, Hashes vergleichen.
+  - Tool `diffoscope` für detaillierten Unterschiedsbericht bei Abweichung.
+  - [Reproducible-Builds Test-Suite](https://reproducible-builds.org/tools/).
+  Dokumentation von Abweichungen:
+  - Falls reproducible nicht erreicht: Begründung im Release-Report
+    (z. B. eingebettetes JIT-Cache, externes Time-Stamping).
+  - Plan zur Verbesserung mit Zieltermin.
+- **EN:** Where possible, reproducible builds are targeted (same input → same
+  output). Deviations are documented.
+  Prerequisites for reproducible builds:
+  - Pinned toolchain versions (compiler, linker, build tools).
+  - Deterministic timestamps: `SOURCE_DATE_EPOCH` (Reproducible Builds
+    standard).
+  - Pinned inputs: lock files, container image pinning by digest
+    (`@sha256:...`).
+  - Stable file order in archives (e.g. `tar --sort=name`).
+  - No embedded build paths or hostnames.
+  Language- and platform-specific tools:
+  - **Java/Maven**: `reproducible-build-maven-plugin`,
+    `<project.build.outputTimestamp>2026-01-01T00:00:00Z</project.build.outputTimestamp>`.
+  - **Go**: `-trimpath -ldflags="-buildid="` for deterministic builds.
+  - **Rust**: `--remap-path-prefix`, `RUSTFLAGS="-C codegen-units=1"`.
+  - **Node.js/npm**: `npm ci` (instead of `npm install`) for lockfile-exact
+    installation.
+  - **Container**: `kaniko` or `buildah` with `--source-date-epoch`,
+    `docker buildx` with `--provenance=true`.
+  Verification:
+  - Run the build twice in different environments and compare hashes.
+  - Tool `diffoscope` for detailed difference report on deviation.
+  - [Reproducible Builds test suite](https://reproducible-builds.org/tools/).
+  Documenting deviations:
+  - If reproducibility cannot be achieved: justification in the release
+    report (e.g. embedded JIT cache, external time-stamping).
+  - Improvement plan with target date.
+- **Akzeptanz / Acceptance:** Reproducible-Build-Status im Release-Bericht
+  (`reproducible: yes/partial/no`); bei `partial`/`no` konkrete Abweichungen
+  und Verbesserungsplan; mindestens zwei Build-Hashes für Vergleich
+  dokumentiert.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 6. Verifizierte Registries / Verified Registries
+
+- **DE:** Abhängigkeiten kommen ausschließlich aus geprüften Registries
+  (z. B. interner Proxy, offizielle Registries mit Prüfung).
+  Empfohlene interne Proxy-Lösungen:
+  - **Sonatype Nexus Repository** – Multi-Sprach-Proxy für Maven, npm, PyPI,
+    NuGet, Docker.
+  - **JFrog Artifactory** – Enterprise-Repository mit Vulnerability-Scan
+    (Xray).
+  - **Azure Artifacts** / **GitHub Packages** / **Git Package Registry**
+    – Cloud-Optionen mit Zugriffskontrolle.
+  - **Verdaccio** (npm) – schlanker self-hosted npm-Proxy.
+  Registry-Konfigurationen je Sprache:
+  - **npm**: `.npmrc` mit `registry=https://nexus.example.org/repository/npm-proxy/`,
+    `always-auth=true`, kein direkter Zugriff auf `registry.npmjs.org`.
+  - **Maven**: `settings.xml` mit `<mirrorOf>*</mirrorOf>` auf interner Nexus.
+  - **PyPI**: `pip.conf` mit `index-url = https://nexus.example.org/repository/pypi-proxy/simple`.
+  - **NuGet**: `nuget.config` mit `<clear />` und nur internem Feed.
+  - **Docker**: `~/.docker/config.json` mit `auths` für interne Registry;
+    `daemon.json` mit `registry-mirrors`.
+  - **Cargo**: `.cargo/config.toml` mit `[source.crates-io] replace-with = "internal"`.
+  Sicherheitsmerkmale verifizierter Registries:
+  - Signaturprüfung (Maven Central GPG, npm Package Signatures, Sigstore).
+  - Vulnerability-Scan beim Eintreten in den Proxy (z. B. Nexus IQ, Xray).
+  - Quarantäne neuer Pakete (Cooldown-Zeit von 24–72 h gegen
+    Typosquatting/Dependency-Confusion).
+  - Audit-Log aller Downloads.
+  Schutz gegen Dependency Confusion:
+  - Interne Pakete in eigenem Scope (`@gwdg/*`) und Scope-Routing
+    auf privaten Feed.
+  - npm: `publishConfig.registry` für interne Pakete.
+- **EN:** Dependencies come only from verified registries (e.g. internal
+  proxy, official registries with verification).
+  Recommended internal proxy solutions:
+  - **Sonatype Nexus Repository** – multi-language proxy for Maven, npm,
+    PyPI, NuGet, Docker.
+  - **JFrog Artifactory** – enterprise repository with vulnerability scan
+    (Xray).
+  - **Azure Artifacts** / **GitHub Packages** / **Git Package Registry**
+    – cloud options with access control.
+  - **Verdaccio** (npm) – lightweight self-hosted npm proxy.
+  Registry configurations per language:
+  - **npm**: `.npmrc` with `registry=https://nexus.example.org/repository/npm-proxy/`,
+    `always-auth=true`, no direct access to `registry.npmjs.org`.
+  - **Maven**: `settings.xml` with `<mirrorOf>*</mirrorOf>` to internal Nexus.
+  - **PyPI**: `pip.conf` with `index-url = https://nexus.example.org/repository/pypi-proxy/simple`.
+  - **NuGet**: `nuget.config` with `<clear />` and internal feed only.
+  - **Docker**: `~/.docker/config.json` with `auths` for internal registry;
+    `daemon.json` with `registry-mirrors`.
+  - **Cargo**: `.cargo/config.toml` with `[source.crates-io] replace-with = "internal"`.
+  Security features of verified registries:
+  - Signature checking (Maven Central GPG, npm Package Signatures, Sigstore).
+  - Vulnerability scan on ingestion (e.g. Nexus IQ, Xray).
+  - Quarantine of new packages (24–72 h cooldown against
+    typosquatting/dependency confusion).
+  - Audit log of all downloads.
+  Protection against dependency confusion:
+  - Internal packages in their own scope (`@gwdg/*`) with scope routing
+    to a private feed.
+  - npm: `publishConfig.registry` for internal packages.
+- **Akzeptanz / Acceptance:** Registry-Liste in `docs/security/supply-chain-evidence.md`
+  mit Proxy-URL, Auth-Methode, Scan-Tool und Quarantäne-Zeit; Konfigurationsdatei
+  je Sprache (`.npmrc`, `settings.xml`, `pip.conf`, `nuget.config`) im Repo;
+  Pre-Push-Hook prüft, dass keine externen Registries verwendet werden.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 7. Lock-Dateien / Lock Files
+
+- **DE:** Lock- oder Pin-Dateien (z. B. `package-lock.json`, `poetry.lock`,
+  `Cargo.lock`, `pom.xml` mit fixierten Versionen) sind im Repository
+  eingecheckt.
+  Lock-Dateien je Ökosystem:
+  - **npm**: `package-lock.json` (npm) oder `yarn.lock` (Yarn) oder
+    `pnpm-lock.yaml` (pnpm).
+  - **Python**: `poetry.lock` (Poetry), `Pipfile.lock` (pipenv),
+    `requirements.txt` mit `pip-compile` (pip-tools, Hash-Pinning),
+    `uv.lock` (uv).
+  - **Rust**: `Cargo.lock` (für Binaries committen, für Libraries optional).
+  - **Go**: `go.sum` (Cryptographic Hashes für `go.mod`-Module).
+  - **Java/Maven**: `pom.xml` mit fixierten Versionen, optional
+    `dependency-lock-maven-plugin`.
+  - **Java/Gradle**: `gradle/dependency-locks/*.lockfile` mit
+    `dependencyLocking { lockAllConfigurations() }`.
+  - **.NET/NuGet**: `packages.lock.json` mit `<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>`.
+  - **Ruby**: `Gemfile.lock`.
+  - **PHP/Composer**: `composer.lock`.
+  - **Container**: `Dockerfile` mit `FROM image:tag@sha256:digest`.
+  Hash-Pinning (zusätzliche Sicherheit):
+  - npm: `package-lock.json` enthält `integrity`-Felder (SHA-512).
+  - pip: `pip install --require-hashes -r requirements.txt`.
+  - Maven: `<dependencyManagement>` mit `<checksum>` über
+    `pgp-maven-plugin`.
+  CI-Erzwingung:
+  - `npm ci` (statt `npm install`) bricht ab, wenn `package-lock.json` und
+    `package.json` divergieren.
+  - `pip install --no-deps -r requirements.txt --require-hashes` schlägt
+    fehl bei Hash-Mismatch.
+  - GitHub Actions Workflow mit `npm ci`/`yarn install --frozen-lockfile`.
+  - Pre-Commit-Hook: prüft, dass Lock-Datei vorhanden und nicht aus
+    `.gitignore` ausgeschlossen ist.
+- **EN:** Lock or pin files (e.g. `package-lock.json`, `poetry.lock`,
+  `Cargo.lock`, `pom.xml` with pinned versions) are committed to the
+  repository.
+  Lock files per ecosystem:
+  - **npm**: `package-lock.json` (npm), `yarn.lock` (Yarn), or
+    `pnpm-lock.yaml` (pnpm).
+  - **Python**: `poetry.lock` (Poetry), `Pipfile.lock` (pipenv),
+    `requirements.txt` with `pip-compile` (pip-tools, hash pinning),
+    `uv.lock` (uv).
+  - **Rust**: `Cargo.lock` (commit for binaries, optional for libraries).
+  - **Go**: `go.sum` (cryptographic hashes for `go.mod` modules).
+  - **Java/Maven**: `pom.xml` with pinned versions, optionally
+    `dependency-lock-maven-plugin`.
+  - **Java/Gradle**: `gradle/dependency-locks/*.lockfile` with
+    `dependencyLocking { lockAllConfigurations() }`.
+  - **.NET/NuGet**: `packages.lock.json` with `<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>`.
+  - **Ruby**: `Gemfile.lock`.
+  - **PHP/Composer**: `composer.lock`.
+  - **Container**: `Dockerfile` with `FROM image:tag@sha256:digest`.
+  Hash pinning (additional security):
+  - npm: `package-lock.json` contains `integrity` fields (SHA-512).
+  - pip: `pip install --require-hashes -r requirements.txt`.
+  - Maven: `<dependencyManagement>` with `<checksum>` via
+    `pgp-maven-plugin`.
+  CI enforcement:
+  - `npm ci` (instead of `npm install`) fails when `package-lock.json` and
+    `package.json` diverge.
+  - `pip install --no-deps -r requirements.txt --require-hashes` fails on
+    hash mismatch.
+  - GitHub Actions workflow with `npm ci`/`yarn install --frozen-lockfile`.
+  - Pre-commit hook: checks that the lock file exists and is not excluded
+    by `.gitignore`.
+- **Akzeptanz / Acceptance:** Lock-Datei je Sprache im Repo vorhanden, im
+  Build-Prozess strikt verwendet (`npm ci`, `--frozen-lockfile`,
+  `--require-hashes`); CI-Job-Log zeigt erfolgreichen Strict-Mode-Install.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 8. Automatisierte Aktualisierungen / Automated Updates
+
+- **DE:** Renovate, Dependabot oder ein gleichwertiges Werkzeug ist aktiv
+  und ein Verfahren zur Bewertung der Pull Requests ist beschrieben.
+  Verfügbare Werkzeuge:
+  - **Dependabot** (GitHub-nativ, kostenlos) – `.github/dependabot.yml`.
+  - **Renovate** (Mend, OSS) – `renovate.json` mit feingranularer
+    Steuerung (Schedules, Grouping, Auto-Merge).
+  - **Git Dependency Scanning** + Auto-Merge-Regeln.
+  - **Snyk** – kommerziell, mit CVE-Datenbank-Integration.
+  Empfohlene Konfiguration (Dependabot):
+  ```yaml
+  version: 2
+  updates:
+    - package-ecosystem: "npm"
+      directory: "/"
+      schedule:
+        interval: "weekly"
+      open-pull-requests-limit: 10
+      groups:
+        prod-deps:
+          dependency-type: "production"
+        dev-deps:
+          dependency-type: "development"
+      labels:
+        - "dependencies"
+        - "security"
+  ```
+  Empfohlene Konfiguration (Renovate):
+  - `extends: ["config:recommended"]` + `:dependencyDashboard`.
+  - `schedule: ["before 5am on monday"]` für vorhersehbare Update-Fenster.
+  - `automergeType: "branch"` für Patch-Updates mit grünem CI.
+  - `vulnerabilityAlerts.enabled: true` für sofortige Sicherheits-PRs.
+  Triage-Verfahren:
+  - **Patch-Updates** (z. B. `1.2.3 → 1.2.4`): Auto-Merge bei grünem CI.
+  - **Minor-Updates** (`1.2.x → 1.3.0`): manueller Review, kurzer
+    Smoke-Test.
+  - **Major-Updates** (`1.x → 2.0`): geplanter Slot mit Refactoring-Zeit.
+  - **Security-Updates**: SLA z. B. 24 h Critical, 7 Tage High,
+    30 Tage Medium.
+  - PR-Reviewer aus CODEOWNERS, Stakeholder bei kritischen Libraries.
+  Schutz vor Supply-Chain-Angriffen:
+  - Renovate `prConcurrentLimit: 5` gegen Update-Flut.
+  - `minimumReleaseAge: "3 days"` (Cooldown gegen kompromittierte Releases).
+  - `gitAuthor: "renovate[bot] <renovate@example.org>"` mit GPG-Signatur.
+- **EN:** Renovate, Dependabot, or an equivalent tool is active, and a
+  process to triage the pull requests is described.
+  Available tools:
+  - **Dependabot** (GitHub-native, free) – `.github/dependabot.yml`.
+  - **Renovate** (Mend, open source) – `renovate.json` with fine-grained
+    control (schedules, grouping, auto-merge).
+  - **Git Dependency Scanning** + auto-merge rules.
+  - **Snyk** – commercial, with CVE-database integration.
+  Recommended configuration (Dependabot):
+  ```yaml
+  version: 2
+  updates:
+    - package-ecosystem: "npm"
+      directory: "/"
+      schedule:
+        interval: "weekly"
+      open-pull-requests-limit: 10
+      groups:
+        prod-deps:
+          dependency-type: "production"
+        dev-deps:
+          dependency-type: "development"
+      labels:
+        - "dependencies"
+        - "security"
+  ```
+  Recommended configuration (Renovate):
+  - `extends: ["config:recommended"]` + `:dependencyDashboard`.
+  - `schedule: ["before 5am on monday"]` for predictable update windows.
+  - `automergeType: "branch"` for patch updates with green CI.
+  - `vulnerabilityAlerts.enabled: true` for immediate security PRs.
+  Triage process:
+  - **Patch updates** (e.g. `1.2.3 → 1.2.4`): auto-merge on green CI.
+  - **Minor updates** (`1.2.x → 1.3.0`): manual review, short smoke test.
+  - **Major updates** (`1.x → 2.0`): planned slot with refactoring time.
+  - **Security updates**: SLA e.g. 24 h critical, 7 days high,
+    30 days medium.
+  - PR reviewers from CODEOWNERS, stakeholders for critical libraries.
+  Protection against supply-chain attacks:
+  - Renovate `prConcurrentLimit: 5` against update floods.
+  - `minimumReleaseAge: "3 days"` (cooldown against compromised releases).
+  - `gitAuthor: "renovate[bot] <renovate@example.org>"` with GPG signature.
+- **Akzeptanz / Acceptance:** Konfigurationsdatei (`dependabot.yml` oder
+  `renovate.json`) im Repository, dokumentiertes Triage-Verfahren mit
+  SLAs für Patch/Minor/Major/Security, Auto-Merge-Regeln nur bei grünem
+  CI, Cooldown-Zeit konfiguriert.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 9. CVE-Überwachung / CVE Monitoring
+
+- **DE:** Eine Stelle (z. B. Dependency Track, OSV-Scanner, GitHub Advanced
+  Security) überwacht laufend bekannte Schwachstellen der Abhängigkeiten.
+  Werkzeuge zur CVE-Überwachung:
+  - **OWASP Dependency-Track** (self-hosted) – konsumiert SBOMs, integriert
+    NVD/OSV, dashboard-basiert.
+  - **OSV-Scanner** (Google) – CLI-Tool, Lockfile-basiert,
+    `osv-scanner --lockfile=package-lock.json`.
+  - **GitHub Advanced Security / Dependabot Alerts** – integriert in GitHub.
+  - **Git Dependency Scanning** – integriert in Git CI.
+  - **Trivy** (Aqua Security) – Container, Filesystem, Repos.
+  - **Grype** (Anchore) – `grype dir:.` oder `grype <image>`.
+  - **Snyk** – kommerziell, sehr gute Sprach- und Container-Abdeckung.
+  - **JFrog Xray** – Enterprise-Lösung mit Artifactory-Integration.
+  Datenquellen für Schwachstellen:
+  - **NVD** (NIST National Vulnerability Database) – offizielle CVE-Quelle.
+  - **OSV.dev** (Google) – ökosystemspezifische Vulnerabilities.
+  - **GHSA** (GitHub Security Advisories).
+  - **CISA KEV** (Known Exploited Vulnerabilities Catalog) – aktiv ausgenutzte CVEs.
+  - **EPSS** (Exploit Prediction Scoring System) für Priorisierung.
+  Reaktionsfristen (SLA-Beispiel):
+  - **Critical (CVSS ≥ 9.0)**: Patch oder Mitigation in 24 h.
+  - **High (CVSS 7.0–8.9)**: Patch in 7 Tagen.
+  - **Medium (CVSS 4.0–6.9)**: Patch in 30 Tagen.
+  - **Low (CVSS < 4.0)**: nächster Release-Zyklus.
+  - Bei CISA-KEV-Eintrag: sofortige Eskalation, unabhängig von CVSS.
+  CI-Integration:
+  - GitHub Actions: `actions/checkout@v4` + `osv-scanner-action`,
+    `aquasecurity/trivy-action`.
+  - Git CI: `dependency_scanning` Template.
+  - Pre-Push-Hook: `osv-scanner` blockiert Push bei `CRITICAL`.
+- **EN:** A tool (e.g. Dependency Track, OSV-Scanner, GitHub Advanced
+  Security) continuously monitors known dependency vulnerabilities.
+  CVE monitoring tools:
+  - **OWASP Dependency-Track** (self-hosted) – consumes SBOMs, integrates
+    NVD/OSV, dashboard-based.
+  - **OSV-Scanner** (Google) – CLI tool, lockfile-based,
+    `osv-scanner --lockfile=package-lock.json`.
+  - **GitHub Advanced Security / Dependabot Alerts** – integrated in GitHub.
+  - **Git Dependency Scanning** – integrated in Git CI.
+  - **Trivy** (Aqua Security) – container, filesystem, repos.
+  - **Grype** (Anchore) – `grype dir:.` or `grype <image>`.
+  - **Snyk** – commercial, very good language and container coverage.
+  - **JFrog Xray** – enterprise solution with Artifactory integration.
+  Vulnerability data sources:
+  - **NVD** (NIST National Vulnerability Database) – official CVE source.
+  - **OSV.dev** (Google) – ecosystem-specific vulnerabilities.
+  - **GHSA** (GitHub Security Advisories).
+  - **CISA KEV** (Known Exploited Vulnerabilities Catalog) – actively exploited CVEs.
+  - **EPSS** (Exploit Prediction Scoring System) for prioritisation.
+  Response SLAs (example):
+  - **Critical (CVSS ≥ 9.0)**: patch or mitigation within 24 h.
+  - **High (CVSS 7.0–8.9)**: patch within 7 days.
+  - **Medium (CVSS 4.0–6.9)**: patch within 30 days.
+  - **Low (CVSS < 4.0)**: next release cycle.
+  - On CISA KEV entry: immediate escalation regardless of CVSS.
+  CI integration:
+  - GitHub Actions: `actions/checkout@v4` + `osv-scanner-action`,
+    `aquasecurity/trivy-action`.
+  - Git CI: `dependency_scanning` template.
+  - Pre-push hook: `osv-scanner` blocks push on `CRITICAL`.
+- **Akzeptanz / Acceptance:** Werkzeug benannt und konfiguriert (z. B.
+  Dependency-Track URL oder OSV-Scanner-Job), Reaktionsfristen pro CVSS-Stufe
+  in `docs/security/dependency-audit.md` dokumentiert; CI-Job-Log zeigt
+  laufenden Scan; CISA-KEV-Watchlist aktiv.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 10. OpenSSF Scorecard / OpenSSF Scorecard
+
+- **DE:** Für öffentliche OSS-Repositories oder kritische Abhängigkeiten ist
+  der Scorecard-Wert dokumentiert; ein Mindestwert ist als Schwelle gesetzt.
+  OpenSSF Scorecard – Werkzeuge:
+  - CLI: `scorecard --repo=github.com/owner/repo --format=json`.
+  - GitHub Action: `ossf/scorecard-action` mit Wochenlauf, Ergebnis als
+    SARIF in Code Scanning.
+  - Online: [OpenSSF Scorecard Viewer](https://scorecard.dev/viewer/?uri=github.com/owner/repo).
+  - API: `https://api.securityscorecards.dev/projects/github.com/<owner>/<repo>`.
+  Scorecard-Checks (Auswahl, jeweils 0–10 Punkte):
+  - **Maintained** – aktive Entwicklung in den letzten 90 Tagen.
+  - **Code-Review** – Code-Reviews durch zweite Person.
+  - **Branch-Protection** – Schutz von `main`/`master`.
+  - **Token-Permissions** – minimale `GITHUB_TOKEN`-Rechte in CI.
+  - **Vulnerabilities** – keine offenen Vulnerabilities.
+  - **Dependency-Update-Tool** – Dependabot/Renovate aktiv.
+  - **Pinned-Dependencies** – Actions per SHA gepinnt, nicht per Tag.
+  - **SAST** – statische Analyse aktiv (CodeQL, Semgrep).
+  - **Signed-Releases** – Releases mit Cosign/GPG signiert.
+  - **License** – Lizenz vorhanden und SPDX-konform.
+  Empfohlene Schwellwerte:
+  - Eigene OSS-Repos: Score ≥ 8.0 (Streben nach 9.0).
+  - Kritische Abhängigkeiten: Score ≥ 7.0, sonst Audit oder Ersatz.
+  - Optionale Abhängigkeiten: Score ≥ 5.0.
+  - Scorecard-Wert in `dependency-audit.md` mit Datum dokumentieren.
+  Eskalation bei niedrigem Score:
+  - Score < 5.0: Suche nach Alternative oder Fork mit eigener Pflege.
+  - Score < 3.0 (kritisch): Eskalation an Security-Team, möglicher Ersatz.
+- **EN:** For public OSS repositories or critical dependencies, the
+  Scorecard value is documented and a minimum value is set as threshold.
+  OpenSSF Scorecard tools:
+  - CLI: `scorecard --repo=github.com/owner/repo --format=json`.
+  - GitHub Action: `ossf/scorecard-action` with weekly run, result as
+    SARIF in code scanning.
+  - Online: [OpenSSF Scorecard Viewer](https://scorecard.dev/viewer/?uri=github.com/owner/repo).
+  - API: `https://api.securityscorecards.dev/projects/github.com/<owner>/<repo>`.
+  Scorecard checks (selection, 0–10 points each):
+  - **Maintained** – active development in the last 90 days.
+  - **Code-Review** – code reviews by a second person.
+  - **Branch-Protection** – protection of `main`/`master`.
+  - **Token-Permissions** – minimal `GITHUB_TOKEN` permissions in CI.
+  - **Vulnerabilities** – no open vulnerabilities.
+  - **Dependency-Update-Tool** – Dependabot/Renovate active.
+  - **Pinned-Dependencies** – actions pinned by SHA, not by tag.
+  - **SAST** – static analysis active (CodeQL, Semgrep).
+  - **Signed-Releases** – releases signed with Cosign/GPG.
+  - **License** – present and SPDX-conformant.
+  Recommended thresholds:
+  - Own OSS repos: score ≥ 8.0 (aim for 9.0).
+  - Critical dependencies: score ≥ 7.0, otherwise audit or replace.
+  - Optional dependencies: score ≥ 5.0.
+  - Document the Scorecard value with date in `dependency-audit.md`.
+  Escalation on low score:
+  - Score < 5.0: look for an alternative or fork with own maintenance.
+  - Score < 3.0 (critical): escalate to security team, possible replacement.
+- **Akzeptanz / Acceptance:** Scorecard-Wert (mit Datum) und Mindestschwelle
+  in `docs/security/dependency-audit.md` für jede kritische Abhängigkeit;
+  GitHub Action `ossf/scorecard-action` für eigene OSS-Repos aktiv;
+  Eskalationsverfahren bei Unterschreitung dokumentiert.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 11. Lizenz-Compliance / Licence Compliance
+
+- **DE:** Die SBOM wird auf erlaubte Lizenzen geprüft. Verbotene oder
+  unklare Lizenzen werden vor Release ersetzt oder durch Rechtsabstimmung
+  freigegeben.
+  Werkzeuge zur Lizenzprüfung:
+  - **`license-checker`** (npm) – `license-checker --json --out licenses.json`.
+  - **`pip-licenses`** (Python) – `pip-licenses --format=json`.
+  - **`license-maven-plugin`** – `mvn license:aggregate-third-party-report`.
+  - **`cargo-deny`** (Rust) – Lizenz-Allowlist in `deny.toml`.
+  - **`dotnet list package --include-transitive`** + Skript für SPDX-Mapping.
+  - **`syft`** + **`grype`** – SBOM enthält SPDX-Lizenzen.
+  - **FOSSA**, **Black Duck**, **JFrog Xray** – kommerziell.
+  Empfohlene Lizenz-Klassifikation:
+  - **Erlaubt (Allowlist)** – permissive, kompatibel:
+    `MIT`, `Apache-2.0`, `BSD-2-Clause`, `BSD-3-Clause`, `ISC`, `Zlib`,
+    `Unlicense`, `CC0-1.0`.
+  - **Bedingt erlaubt (Review)** – Copyleft, prüfbar:
+    `LGPL-2.1`, `LGPL-3.0`, `MPL-2.0`, `EPL-2.0` (nur dynamisch gelinkt).
+  - **Verboten (Denylist)** – starkes Copyleft, kommerziell unverträglich:
+    `GPL-2.0`, `GPL-3.0`, `AGPL-3.0`, `SSPL-1.0`, `BUSL-1.1`, `Commons Clause`,
+    proprietäre Lizenzen ohne klare Nutzungsrechte.
+  - **Unklar** – `UNKNOWN`, fehlende SPDX-ID: zwingend manuell klären.
+  Allowlist-Konfiguration (Beispiel `cargo-deny`):
+  ```toml
+  [licenses]
+  unlicensed = "deny"
+  allow = ["MIT", "Apache-2.0", "BSD-3-Clause", "ISC", "Unicode-DFS-2016"]
+  copyleft = "deny"
+  confidence-threshold = 0.93
+  ```
+  Rechtsabstimmungs-Workflow:
+  - Bei Verstoß: Ticket „Legal Review" mit SPDX-ID, Komponentenname,
+    Verwendungskontext (statisch/dynamisch gelinkt, modifiziert/unmodifiziert).
+  - Freigabe-Dokument vom Rechtsteam mit Geltungsdauer (z. B. ein Jahr).
+  - Ablage in `docs/security/license-exceptions.md`.
+- **EN:** The SBOM is checked for permitted licences. Forbidden or unclear
+  licences are replaced before release or cleared with legal review.
+  Licence checking tools:
+  - **`license-checker`** (npm) – `license-checker --json --out licenses.json`.
+  - **`pip-licenses`** (Python) – `pip-licenses --format=json`.
+  - **`license-maven-plugin`** – `mvn license:aggregate-third-party-report`.
+  - **`cargo-deny`** (Rust) – licence allowlist in `deny.toml`.
+  - **`dotnet list package --include-transitive`** + script for SPDX mapping.
+  - **`syft`** + **`grype`** – SBOM contains SPDX licences.
+  - **FOSSA**, **Black Duck**, **JFrog Xray** – commercial.
+  Recommended licence classification:
+  - **Allowed (allowlist)** – permissive, compatible:
+    `MIT`, `Apache-2.0`, `BSD-2-Clause`, `BSD-3-Clause`, `ISC`, `Zlib`,
+    `Unlicense`, `CC0-1.0`.
+  - **Conditional (review)** – copyleft, reviewable:
+    `LGPL-2.1`, `LGPL-3.0`, `MPL-2.0`, `EPL-2.0` (dynamic linking only).
+  - **Forbidden (denylist)** – strong copyleft, commercially incompatible:
+    `GPL-2.0`, `GPL-3.0`, `AGPL-3.0`, `SSPL-1.0`, `BUSL-1.1`, `Commons Clause`,
+    proprietary licences without clear usage rights.
+  - **Unclear** – `UNKNOWN`, missing SPDX ID: must be clarified manually.
+  Allowlist configuration (example `cargo-deny`):
+  ```toml
+  [licenses]
+  unlicensed = "deny"
+  allow = ["MIT", "Apache-2.0", "BSD-3-Clause", "ISC", "Unicode-DFS-2016"]
+  copyleft = "deny"
+  confidence-threshold = 0.93
+  ```
+  Legal review workflow:
+  - On violation: ticket "Legal Review" with SPDX ID, component name,
+    usage context (statically/dynamically linked, modified/unmodified).
+  - Release document from legal team with validity period (e.g. one year).
+  - Storage in `docs/security/license-exceptions.md`.
+- **Akzeptanz / Acceptance:** Lizenz-Bericht je Release im SPDX/CycloneDX-Format
+  vorhanden, Allowlist/Denylist in `deny.toml` oder gleichwertiger
+  Konfiguration; alle Komponenten haben gültige SPDX-IDs; Ausnahmen mit
+  Rechtsfreigabe in `docs/security/license-exceptions.md` dokumentiert.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 12. Geheimnisse im Build / Secrets in Build
+
+- **DE:** Build-Pipelines verwenden Secret-Stores; Secrets erscheinen nicht
+  in Logs oder Artefakten. Pre-Commit- und CI-Scans laufen.
+  Secret-Stores in CI/CD:
+  - **GitHub Actions Secrets** + **Environments** mit Approval-Schutz.
+  - **Git CI Variables** mit `protected` und `masked` Flags.
+  - **Azure Key Vault** + **Azure DevOps Variable Groups**.
+  - **HashiCorp Vault** mit OIDC-Auth aus CI heraus.
+  - **AWS Secrets Manager** + IAM-Role für Build-Runner.
+  - **OIDC-Federation** (statt langlebiger Tokens):
+    `permissions: id-token: write` in GitHub Actions.
+  Secret-Scanner (Pre-Commit und CI):
+  - **gitleaks** – `gitleaks detect --source . --verbose`.
+  - **trufflehog** – `trufflehog filesystem . --only-verified`.
+  - **detect-secrets** (Yelp) – `detect-secrets scan --baseline .secrets.baseline`.
+  - **GitHub Secret Scanning** + **Push Protection** (kostenfrei für Public,
+    GitHub Advanced Security für Private Repos).
+  - **Git Secret Detection** Template.
+  Pre-Commit-Hook (`.pre-commit-config.yaml`):
+  ```yaml
+  repos:
+    - repo: https://github.com/gitleaks/gitleaks
+      rev: v8.18.0
+      hooks:
+        - id: gitleaks
+    - repo: https://github.com/Yelp/detect-secrets
+      rev: v1.4.0
+      hooks:
+        - id: detect-secrets
+          args: ['--baseline', '.secrets.baseline']
+  ```
+  Log-Schutz:
+  - GitHub Actions maskiert Secrets automatisch in Logs.
+  - Eigene Logs: keine Variablen-Dumps (`set` in Bash, `Get-ChildItem env:`
+    in PowerShell) ausgeben.
+  - `--silent` oder `--no-progress` für Tools, die Tokens in URLs ausgeben.
+  Artefakt-Schutz:
+  - Container-Layer prüfen: `dive <image>` oder `trivy image --scanners secret`.
+  - Build-Artefakte vor Veröffentlichung: `trufflehog filesystem dist/`.
+  - `.dockerignore` und `.gitignore` mit `**/secrets/`, `*.pem`, `*.key`,
+    `.env*`.
+- **EN:** Build pipelines use secret stores; secrets do not appear in logs
+  or artefacts. Pre-commit and CI scans are running.
+  Secret stores in CI/CD:
+  - **GitHub Actions Secrets** + **Environments** with approval protection.
+  - **Git CI Variables** with `protected` and `masked` flags.
+  - **Azure Key Vault** + **Azure DevOps Variable Groups**.
+  - **HashiCorp Vault** with OIDC auth from CI.
+  - **AWS Secrets Manager** + IAM role for build runner.
+  - **OIDC federation** (instead of long-lived tokens):
+    `permissions: id-token: write` in GitHub Actions.
+  Secret scanners (pre-commit and CI):
+  - **gitleaks** – `gitleaks detect --source . --verbose`.
+  - **trufflehog** – `trufflehog filesystem . --only-verified`.
+  - **detect-secrets** (Yelp) – `detect-secrets scan --baseline .secrets.baseline`.
+  - **GitHub Secret Scanning** + **Push Protection** (free for public,
+    GitHub Advanced Security for private repos).
+  - **Git Secret Detection** template.
+  Pre-commit hook (`.pre-commit-config.yaml`):
+  ```yaml
+  repos:
+    - repo: https://github.com/gitleaks/gitleaks
+      rev: v8.18.0
+      hooks:
+        - id: gitleaks
+    - repo: https://github.com/Yelp/detect-secrets
+      rev: v1.4.0
+      hooks:
+        - id: detect-secrets
+          args: ['--baseline', '.secrets.baseline']
+  ```
+  Log protection:
+  - GitHub Actions automatically masks secrets in logs.
+  - Custom logs: do not dump variables (`set` in bash, `Get-ChildItem env:`
+    in PowerShell).
+  - `--silent` or `--no-progress` for tools that print tokens in URLs.
+  Artefact protection:
+  - Inspect container layers: `dive <image>` or `trivy image --scanners secret`.
+  - Build artefacts before publishing: `trufflehog filesystem dist/`.
+  - `.dockerignore` and `.gitignore` with `**/secrets/`, `*.pem`, `*.key`,
+    `.env*`.
+- **Akzeptanz / Acceptance:** Secret-Store-Konfiguration (z. B. GitHub
+  Environments, Azure Key Vault) dokumentiert; Pre-Commit-Hook mit
+  `gitleaks` oder `detect-secrets` aktiv; CI-Scan-Job mit Ergebnis-Bericht
+  pro Release; keine Secrets in Logs oder Artefakten (verifiziert mit
+  `trufflehog`).
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 13. KI-Komponenten in der SBOM / AI Components in the SBOM
+
+- **DE:** Bindet ein release- oder verteilbares Artefakt ein KI-Modell
+  oder einen KI-Dienst ein, wird diese KI-Abhängigkeit in der SBOM bzw.
+  im Lieferketten-Evidenz-Dokument geführt. CycloneDX bildet dies über
+  Komponenten des Typs `machine-learning-model` bzw. `service` ab
+  (ML-BOM). Erfasst werden Anbieter, Modell- oder Dienst-Identifikator,
+  Version oder Endpunkt sowie ein Verweis auf Model Card oder AI-SBOM
+  des Anbieters. Für fremdbezogene Modelle wird keine eigene Modell-
+  oder Trainingsdaten-SBOM erzeugt; maßgeblich ist die
+  Anbieter-Transparenz (siehe CL_KI-Codeerzeugung, Prüfpunkt 15).
+  Bezugsrahmen ist die G7-Leitlinie „Software Bill of Materials for AI –
+  Minimum Elements" (2026).
+- **EN:** If a release or distributable artefact embeds an AI model or
+  AI service, this AI dependency is recorded in the SBOM or the
+  supply-chain evidence document. CycloneDX represents this through
+  components of type `machine-learning-model` or `service` (ML-BOM).
+  Recorded are the provider, model or service identifier, version or
+  endpoint, and a link to the provider's model card or AI-SBOM. For
+  externally sourced models no own model or training-data SBOM is
+  generated; the provider transparency is authoritative (see
+  CL_KI-Codeerzeugung, item 15). The reference framework is the G7
+  guideline "Software Bill of Materials for AI – Minimum Elements"
+  (2026).
+- **Akzeptanz / Acceptance:** Enthält das Artefakt eine KI-Abhängigkeit,
+  ist sie in der SBOM als KI-Komponente geführt und auf die
+  Anbieter-Transparenzquelle verwiesen; zusätzlich ist der Nachweis im
+  Lieferketten-Evidenzdokument oder in einem gleichwertigen Spec-Kit-
+  Artefakt referenziert; andernfalls „nicht anwendbar" mit Begründung. /
+  If the artefact contains an AI dependency, it is recorded in the SBOM as
+  an AI component with a link to the provider transparency source; the
+  evidence is also referenced in the supply-chain evidence document or in
+  an equivalent Spec Kit artefact; otherwise "not applicable" with
+  justification.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+### Akzeptanzkriterien gesamt / Overall Acceptance
+
+**DE:** Erfüllt, wenn alle Punkte abgeschlossen sind und SBOM, VEX (oder
+N/A), SLSA-Provenance, Lock-Dateien sowie Scorecard-Werte je Release
+auffindbar sind. KI-Komponenten und Preset-Nachweise sind im
+Lieferketten-Evidenzdokument verlinkt, wenn sie anwendbar sind.
+
+**EN:** Fulfilled when every item is closed and SBOM, VEX (or N/A), SLSA
+provenance, lock files, and Scorecard values are findable per release. AI
+components and preset evidence are linked in the supply-chain evidence
+document where applicable.
+
+### Glossar / Glossary
+
+**DE:** Dieses Glossar erklärt die wichtigsten Begriffe dieser Checkliste in Alltagssprache. Es ändert keine Anforderungen, sondern macht die vorhandenen Prüfpunkte leichter verständlich.
+
+**EN:** This glossary explains the most important terms in this checklist in plain language. It does not change requirements; it makes the existing review items easier to understand.
+
+<a id="cl-05-glossar-sbom"></a>
+
+#### SBOM / Software Bill of Materials
+
+- **DE:** Eine SBOM ist eine Stückliste für Software. Sie nennt Komponenten, Versionen und oft Lizenzen, damit Risiken und Schwachstellen schneller gefunden werden.
+- **EN:** An SBOM is a bill of materials for software. It lists components, versions, and often licences so that risks and vulnerabilities can be found faster.
+
+<a id="cl-05-glossar-ai-sbom-ml-bom"></a>
+
+#### AI-SBOM / ML-BOM
+
+- **DE:** Eine AI-SBOM oder ML-BOM beschreibt KI-Bestandteile, zum Beispiel Modelle, Datensätze, Frameworks und externe Dienste. Sie macht KI-Lieferketten nachvollziehbar.
+- **EN:** An AI-SBOM or ML-BOM describes AI parts, for example models, datasets, frameworks, and external services. It makes AI supply chains traceable.
+
+<a id="cl-05-glossar-cyclonedx"></a>
+
+#### CycloneDX
+
+- **DE:** CycloneDX ist ein Standardformat für SBOMs. Es wird häufig genutzt, um Komponenten, Abhängigkeiten und Sicherheitsinformationen maschinenlesbar zu dokumentieren.
+- **EN:** CycloneDX is a standard format for SBOMs. It is often used to document components, dependencies, and security information in a machine-readable way.
+
+<a id="cl-05-glossar-spdx"></a>
+
+#### SPDX
+
+- **DE:** SPDX ist ein Standardformat für SBOMs und Lizenzinformationen. Es hilft, Software-Komponenten maschinenlesbar zu beschreiben.
+- **EN:** SPDX is a standard format for SBOMs and licence information. It helps describe software components in a machine-readable way.
+
+<a id="cl-05-glossar-vex"></a>
+
+#### VEX / Vulnerability Exploitability eXchange
+
+- **DE:** VEX erklärt, ob eine bekannte Schwachstelle in einem konkreten Produkt wirklich ausnutzbar ist. Das verhindert unnötige Alarmarbeit.
+- **EN:** VEX explains whether a known vulnerability is actually exploitable in a specific product. This prevents unnecessary alert handling.
+
+<a id="cl-05-glossar-csaf"></a>
+
+#### CSAF
+
+- **DE:** CSAF ist ein maschinenlesbares Format für Sicherheitsmeldungen. Es kann Hinweise zu Produkten, Schwachstellen, Bewertungen und Maßnahmen enthalten.
+- **EN:** CSAF is a machine-readable format for security advisories. It can contain information on products, vulnerabilities, ratings, and actions.
+
+<a id="cl-05-glossar-slsa"></a>
+
+#### SLSA
+
+- **DE:** SLSA beschreibt Schutzstufen für Software-Lieferketten. Es geht vor allem um nachvollziehbare Builds, Herkunftsnachweise und Schutz gegen Manipulation.
+- **EN:** SLSA describes protection levels for software supply chains. It mainly covers traceable builds, provenance evidence, and protection against tampering.
+
+<a id="cl-05-glossar-provenance"></a>
+
+#### Provenance / Herkunftsnachweis
+
+- **DE:** Provenance beschreibt, woher ein Artefakt kommt und wie es gebaut wurde. Dazu gehören Quelle, Build-Umgebung, Zeit und verwendete Abhängigkeiten.
+- **EN:** Provenance describes where an artefact comes from and how it was built. This includes source, build environment, time, and used dependencies.
+
+<a id="cl-05-glossar-attestation"></a>
+
+#### Attestation / Bescheinigung
+
+- **DE:** Eine Attestation ist ein signierter Nachweis über eine Aussage, zum Beispiel wer ein Artefakt gebaut hat oder welche Prüfung gelaufen ist.
+- **EN:** An attestation is signed evidence for a statement, for example who built an artefact or which check was run.
+
+<a id="cl-05-glossar-sigstore-cosign"></a>
+
+#### Sigstore / Cosign
+
+- **DE:** Sigstore ist ein Werkzeug-Ökosystem für Signaturen und Nachweise. Cosign wird oft genutzt, um Container-Images oder Artefakte zu signieren.
+- **EN:** Sigstore is a tool ecosystem for signatures and evidence. Cosign is often used to sign container images or artefacts.
+
+<a id="cl-05-glossar-in-toto"></a>
+
+#### in-toto
+
+- **DE:** in-toto ist ein Rahmenwerk für Lieferketten-Nachweise. Es dokumentiert, welche Schritte ein Artefakt durchlaufen hat und wer dafür verantwortlich war.
+- **EN:** in-toto is a framework for supply-chain evidence. It documents which steps an artefact went through and who was responsible.
+
+<a id="cl-05-glossar-cve"></a>
+
+#### CVE
+
+- **DE:** Eine CVE ist eine weltweit eindeutige Kennung für eine bekannte Schwachstelle. Sie hilft, dieselbe Schwachstelle in Tools, Tickets und Meldungen eindeutig zu benennen.
+- **EN:** A CVE is a globally unique identifier for a known vulnerability. It helps name the same vulnerability clearly in tools, tickets, and advisories.
+
+<a id="cl-05-glossar-cvss"></a>
+
+#### CVSS
+
+- **DE:** CVSS ist ein Bewertungssystem für die Schwere von Schwachstellen. Es beschreibt technische Eigenschaften und liefert einen Zahlenwert.
+- **EN:** CVSS is a rating system for vulnerability severity. It describes technical properties and provides a numeric score.
+
+<a id="cl-05-glossar-epss"></a>
+
+#### EPSS
+
+- **DE:** EPSS schätzt, wie wahrscheinlich eine Schwachstelle bald ausgenutzt wird. Es ergänzt CVSS, weil hohe Schwere nicht immer hohe Ausnutzungswahrscheinlichkeit bedeutet.
+- **EN:** EPSS estimates how likely a vulnerability is to be exploited soon. It complements CVSS because high severity does not always mean high exploit likelihood.
+
+<a id="cl-05-glossar-kev"></a>
+
+#### KEV
+
+- **DE:** KEV steht für Known Exploited Vulnerabilities. Der Katalog enthält Schwachstellen, die nachweislich bereits ausgenutzt wurden.
+- **EN:** KEV means Known Exploited Vulnerabilities. The catalogue contains vulnerabilities that have already been exploited in practice.
+
+<a id="cl-05-glossar-nvd"></a>
+
+#### NVD
+
+- **DE:** Die NVD ist eine öffentliche Schwachstellendatenbank. Sie enthält Informationen zu CVEs, Bewertungen und betroffenen Produkten.
+- **EN:** The NVD is a public vulnerability database. It contains information on CVEs, ratings, and affected products.
+
+<a id="cl-05-glossar-openssf-scorecard"></a>
+
+#### OpenSSF Scorecard
+
+- **DE:** OpenSSF Scorecard ist ein Werkzeug, das öffentliche Repositories auf Sicherheitspraktiken prüft, zum Beispiel Branch-Schutz, Abhängigkeiten und CI-Konfiguration.
+- **EN:** OpenSSF Scorecard is a tool that checks public repositories for security practices, for example branch protection, dependencies, and CI configuration.
+
+<a id="cl-05-glossar-secret-store"></a>
+
+#### Secret Store
+
+- **DE:** Ein Secret Store speichert Geheimnisse wie Passwörter, API-Schlüssel oder Tokens geschützt. Geheimnisse sollen nicht im Code, in Logs oder in Tickets stehen.
+- **EN:** A secret store protects secrets such as passwords, API keys, or tokens. Secrets should not be in code, logs, or tickets.
+
+### Versionshistorie / Version History
+
+- **Version 1.0 (2026-04-27):** Erstfassung / Initial version
+- **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
+- **Version 1.2 (2026-04-30):** SLSA v1.2 Build-Track präzisiert / Clarified SLSA v1.2 Build track
+- **Version 1.3 (2026-05-19):** Prüfpunkt 13 „KI-Komponenten in der SBOM" ergänzt; Mitgeltende Dokumente um die G7-Leitlinie „Software Bill of Materials for AI – Minimum Elements" (2026) erweitert; synchron mit RL Sichere-Entwicklung v2.4.0. / Added checklist item 13 "AI Components in the SBOM"; extended related documents with the G7 guideline "Software Bill of Materials for AI – Minimum Elements" (2026); synchronized with RL Sichere-Entwicklung v2.4.0.
+- **Version 1.4 (2026-06-15):** Prüfpunkt 13 um Lieferketten-Evidenz und gleichwertige Spec-Kit-Preset-Nachweise präzisiert; synchron mit RL Sichere-Entwicklung v2.9.0. / Refined item 13 with supply-chain evidence and equivalent Spec Kit preset evidence; synchronized with RL Sichere-Entwicklung v2.9.0.
+
+- **Version 1.5 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
+
+- **Version 1.6 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
+
+---
+
+
+---
+
+<!--
+Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
+Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+This document is organization-neutral and written as a generic training and review baseline.
+-->
+
+> **DE:** Diese Checkliste ist generisch und projektunabhaengig. Sie ist als Ausbildungs-, Review- und Haertungsgrundlage gedacht. Eine Nichtanwendbarkeit muss als `N/A` mit kurzer Begruendung dokumentiert werden.
+>
+> **EN:** This checklist is generic and project-independent. It is intended as a training, review, and hardening baseline. Non-applicability must be documented as `N/A` with a short rationale.
+
+## Checkliste 06 – Schwachstellenoffenlegung / Vulnerability Disclosure
+
+### Zweck / Purpose
+
+**DE:** Diese Checkliste sichert ein einheitliches Verfahren zur Aufnahme,
+Bewertung und Behebung gemeldeter Schwachstellen, einschließlich der
+Pflichten aus dem EU Cyber Resilience Act (CRA).
+
+**EN:** This checklist ensures a uniform process to receive, assess, and fix
+reported vulnerabilities, including the obligations of the EU Cyber
+Resilience Act (CRA).
+
+### Geltungsbereich / Scope
+
+**DE:** Pflicht für alle nach außen sichtbaren Dienste und für alle
+auslieferbaren Produkte. Empfehlung für interne Werkzeuge.
+
+**EN:** Mandatory for all externally visible services and for all shipped
+products. Recommended for internal tooling.
+
+### Mitgeltende Dokumente / Related Documents
+
+- RL Sichere-Entwicklung
+- ISO/IEC 27002:2022 A.5.7, A.5.25–A.5.28, A.8.8
+- RFC 9116 (security.txt)
+- Coordinated Vulnerability Disclosure (CVD)
+- Verordnung (EU) 2024/2847 (CRA)
+
+#### URL-/Ablageverweise / URLs and Storage Locations
+
+**DE:** Diese Links helfen beim Review. Projekt- oder organisationsinterne Dokumente koennen als lokale Arbeitskopie oder als Verweis auf den festgelegten Ablageort ergaenzt werden.
+
+**EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
+
+- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
+- **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
+- **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
+- **Secure coding guideline:** this guide or an equivalent project-specific guideline
+- **CISA Memory Safe Roadmaps:** [lokale Textfassung des CISA-Dokuments / local text version of the CISA document](../THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.txt), [CISA-Webseite zum Dokument / CISA webpage for the document](https://www.cisa.gov/resources-tools/resources/case-memory-safe-roadmaps)
+- **ISO/IEC 27001:2022:** [offizielle ISO-Webseite zur ISO/IEC 27001:2022 / official ISO webpage for ISO/IEC 27001:2022](https://www.iso.org/standard/27001)
+- **ISO/IEC 27002:2022:** [offizielle ISO-Webseite zur ISO/IEC 27002:2022 / official ISO webpage for ISO/IEC 27002:2022](https://www.iso.org/standard/75652.html)
+- **NIST SSDF SP 800-218:** [NIST-Veröffentlichung SP 800-218 Secure Software Development Framework / NIST publication SP 800-218 Secure Software Development Framework](https://csrc.nist.gov/publications/detail/sp/800-218/final)
+- **NIST Zero Trust SP 800-207:** [NIST-Veröffentlichung SP 800-207 Zero Trust Architecture / NIST publication SP 800-207 Zero Trust Architecture](https://csrc.nist.gov/publications/detail/sp/800-207/final)
+- **OWASP ASVS:** [OWASP-Projektseite Application Security Verification Standard / OWASP project page Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)
+- **OWASP Cheat Sheet Series:** [OWASP Cheat Sheet Series Projektseite / OWASP Cheat Sheet Series project page](https://cheatsheetseries.owasp.org/)
+- **OWASP Proactive Controls:** [OWASP Proactive Controls Projektseite / OWASP Proactive Controls project page](https://owasp.org/www-project-proactive-controls/)
+- **OWASP SAMM:** [OWASP SAMM Projektseite / OWASP SAMM project page](https://owaspsamm.org/)
+- **OWASP Top 10 for LLM Applications:** [OWASP Top 10 for LLM Applications Projektseite / OWASP Top 10 for LLM Applications project page](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- **CWE Top 25:** [MITRE CWE Top 25 Übersicht / MITRE CWE Top 25 overview](https://cwe.mitre.org/top25/)
+- **CAPEC:** [MITRE CAPEC Katalog / MITRE CAPEC catalogue](https://capec.mitre.org/)
+- **CycloneDX:** [CycloneDX SBOM-Standard Projektseite / CycloneDX SBOM standard project page](https://cyclonedx.org/)
+- **SPDX:** [SPDX SBOM-Standard Projektseite / SPDX SBOM standard project page](https://spdx.dev/)
+- **CSAF/VEX:** [OASIS CSAF und VEX Dokumentation / OASIS CSAF and VEX documentation](https://oasis-open.github.io/csaf-documentation/)
+- **SLSA:** [SLSA Supply-chain Levels for Software Artifacts Projektseite / SLSA project page](https://slsa.dev/)
+- **OpenSSF Scorecard:** [OpenSSF Scorecard Projektseite / OpenSSF Scorecard project page](https://scorecard.dev/)
+- **RFC 9116 security.txt:** [RFC 9116 zu security.txt / RFC 9116 for security.txt](https://www.rfc-editor.org/rfc/rfc9116)
+- **NIST AI Risk Management Framework:** [NIST AI Risk Management Framework Webseite / NIST AI Risk Management Framework webpage](https://www.nist.gov/itl/ai-risk-management-framework)
+- **EU Cyber Resilience Act:** [EU-Amtsblatt zum Cyber Resilience Act / EU Official Journal for the Cyber Resilience Act](https://eur-lex.europa.eu/eli/reg/2024/2847/oj)
+- **BSI TR-02102:** [BSI-Webseite zur Technischen Richtlinie TR-02102 / BSI webpage for Technical Guideline TR-02102](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Technische-Richtlinien/TR-nach-Thema-sortiert/tr02102/tr-02102.html)
+
+### Bewertung und Dokumentation / Assessment and Documentation
+
+**DE:** Jeder Prüfpunkt bekommt genau einen Status. Schreibe die Begründung so, dass eine neue Kollegin oder ein neuer Kollege den Entscheid später ohne Rückfrage versteht.
+
+**EN:** Each checklist item gets exactly one status. Write the explanation so that a new team member can understand the decision later without asking again.
+
+- **Erfüllt / Fulfilled:** Die Anforderung ist umgesetzt und es gibt einen prüfbaren Nachweis.
+- **Nicht erfüllt / Not fulfilled:** Die Anforderung ist noch nicht umgesetzt oder der Nachweis fehlt. Es muss eine Aufgabe mit Verantwortlicher Person und Termin geben.
+- **Nicht anwendbar / Not applicable:** Die Anforderung passt nicht zum Projekt. Das ist erlaubt, aber nur mit kurzer Begründung.
+
+**Pflichtfelder je Prüfpunkt / Required fields per item:** Status, Begründung, Evidenzpfad oder Link, nächste Maßnahme mit Verantwortlicher Person und Zieltermin.
+
+### Durchführungshinweise / Implementation Guidance
+
+**DE:** Nutze diese Checkliste nicht als reine Ja/Nein-Liste. Sie ist ein Arbeits- und Auditdokument. Prüfe jeden Punkt gegen reale Artefakte: Code, Pull Request, Architekturdiagramm, Build-Log, Scan-Ergebnis, Ticket, Betriebsdokumentation oder Freigabeprotokoll. Wenn ein Nachweis noch fehlt, markiere den Punkt als „nicht erfüllt" und lege eine konkrete Folgeaufgabe an.
+
+**EN:** Do not use this checklist as a simple yes/no list. It is a working and audit document. Check each item against real artefacts: code, pull request, architecture diagram, build log, scan result, ticket, operations document, or approval record. If evidence is missing, mark the item as "not fulfilled" and create a concrete follow-up task.
+
+**DE:** Schreibe kurze, klare Begründungen. Vermeide Abkürzungen ohne Erklärung. Wenn ein Punkt technisch schwierig ist, beschreibe den aktuellen Stand, das Risiko und den nächsten machbaren Schritt.
+
+**EN:** Write short and clear explanations. Avoid unexplained abbreviations. If an item is technically difficult, describe the current state, the risk, and the next feasible step.
+
+**DE:** Jeder Prüfpunkt muss deshalb drei Fragen beantworten: Was bedeutet die Anforderung im Projektalltag? Was ist konkret zu tun oder zu entscheiden? Welcher Nachweis zeigt das Ergebnis? Verwende Standard-IDs, Toolnamen und Abkürzungen nur zusammen mit einer kurzen Erklärung in Alltagssprache. Wenn ein Punkt für Auszubildende oder neue Teammitglieder nicht selbsterklärend ist, ergänze eine kurze Erklärung in der Begründung.
+
+**EN:** Each item must therefore answer three questions: What does the requirement mean in daily project work? What exactly must be done or decided? Which evidence shows the result? Use standard IDs, tool names, and abbreviations only together with a short plain-language explanation. If an item is not self-explanatory for apprentices or new team members, add a short explanation in the rationale.
+
+### Beispiel / Example
+
+**DE:** Eine externe Person meldet eine kritische Schwachstelle. Das Team bestaetigt den Eingang innerhalb der definierten Frist, bewertet mit CVSS, legt ein Ticket an, plant den Fix und dokumentiert nach Abschluss eine Lessons-Learned-Notiz.
+
+**EN:** An external person reports a critical vulnerability. The team confirms receipt within the defined time, rates it with CVSS, creates a ticket, plans the fix, and documents a lessons-learned note after closure.
+
+### A11Y-Hinweise / A11Y Notes
+
+**DE:** Beim Ausfüllen dieser Checkliste müssen alle Nachweise auch textlich verständlich sein. Verweise sollen beschreibende Linktexte haben. Screenshots, Diagramme oder Scan-Auszüge brauchen eine kurze Textbeschreibung. Der Status darf nicht nur über Farbe erkennbar sein.
+
+**EN:** When this checklist is filled in, all evidence must also be understandable as text. References should use descriptive link text. Screenshots, diagrams, or scan extracts need a short text description. The status must not be shown by color alone.
+
+### Wichtige Begriffe / Key Terms
+
+**DE:** Die folgenden Begriffe kommen in dieser Checkliste vor. Die Links springen zum Glossar dieses Kapitels, damit Auszubildende und Entwickler:innen ohne Sicherheits-Spezialwissen die Begriffe direkt nachlesen können.
+
+**EN:** The following terms appear in this checklist. The links jump to this chapter's glossary so that apprentices and developers without specialist security knowledge can look them up directly.
+
+- [CVD / Coordinated Vulnerability Disclosure](#cl-06-glossar-cvd)
+- [security.txt](#cl-06-glossar-security-txt)
+- [RFC](#cl-06-glossar-rfc)
+- [CVE](#cl-06-glossar-cve)
+- [CVSS](#cl-06-glossar-cvss)
+- [EPSS](#cl-06-glossar-epss)
+- [KEV](#cl-06-glossar-kev)
+- [SLA](#cl-06-glossar-sla)
+- [CRA / Cyber Resilience Act](#cl-06-glossar-cra)
+- [DORA](#cl-06-glossar-dora)
+- [CSAF](#cl-06-glossar-csaf)
+- [VEX / Vulnerability Exploitability eXchange](#cl-06-glossar-vex)
+- [Advisory / Sicherheitshinweis](#cl-06-glossar-advisory)
+- [Patch](#cl-06-glossar-patch)
+- [Evidenz / Evidence](#cl-06-glossar-evidenz)
+
+### Checkliste / Checklist
+
+#### 1. Veröffentlichte CVD-Richtlinie / Published CVD Policy
+
+- **DE:** Eine kurze, öffentliche Richtlinie beschreibt, wie Schwachstellen
+  gemeldet werden, was Melder erwarten können und welche Fristen gelten.
+  Pflichtinhalte einer CVD-Richtlinie (Coordinated Vulnerability Disclosure):
+  - **Scope (in/out)**: welche Produkte, Domains, Repositories sind im Umfang.
+  - **Out-of-Scope**: explizit (z. B. Marketing-Website, Drittanbieter-Hosting).
+  - **Meldekanal**: E-Mail, Formular, HackerOne/Bugcrowd, signed `security@`.
+  - **Erwartete Inhalte einer Meldung**: Beschreibung, PoC, Auswirkung,
+    betroffene Version, Reproduktionsschritte.
+  - **Bestätigungsfrist** (z. B. 3 Werktage).
+  - **Triage- und Reaktionszeiten** je Schweregrad.
+  - **Safe-Harbor-Klausel**: rechtlicher Schutz für Melder bei gutgläubiger
+    Forschung.
+  - **Anerkennung**: Hall of Fame, optionale Veröffentlichung des Namens.
+  - **Sprache**: Englisch + Deutsch oder weitere Sprachen.
+  Etablierte Vorlagen und Standards:
+  - [disclose.io Open Source Templates](https://disclose.io/).
+  - **GitHub Security Policy** (`SECURITY.md`) – wird auf Repo-Tab automatisch
+    angezeigt.
+  - **ISO/IEC 29147:2018** „Vulnerability Disclosure" als Referenz.
+  - **ISO/IEC 30111:2019** „Vulnerability Handling Processes" als Referenz.
+  Veröffentlichungsorte:
+  - Repository: `SECURITY.md` im Root.
+  - Website: `https://example.org/security` (stabile URL).
+  - `security.txt` verweist per `Policy:`-Feld auf die URL.
+  - In Release-Notes oder README verlinken.
+- **EN:** A short, public policy describes how to report vulnerabilities,
+  what reporters can expect, and which timelines apply.
+  Mandatory contents of a CVD policy (coordinated vulnerability disclosure):
+  - **Scope (in/out)**: which products, domains, repositories are in scope.
+  - **Out of scope**: explicit (e.g. marketing site, third-party hosting).
+  - **Reporting channel**: e-mail, form, HackerOne/Bugcrowd, signed
+    `security@`.
+  - **Expected report contents**: description, PoC, impact, affected
+    version, reproduction steps.
+  - **Acknowledgement deadline** (e.g. 3 business days).
+  - **Triage and response times** per severity.
+  - **Safe-harbour clause**: legal protection for good-faith researchers.
+  - **Acknowledgement**: hall of fame, optional name publication.
+  - **Language**: English + German or further languages.
+  Established templates and standards:
+  - [disclose.io open-source templates](https://disclose.io/).
+  - **GitHub Security Policy** (`SECURITY.md`) – shown automatically on
+    the security tab.
+  - **ISO/IEC 29147:2018** "Vulnerability Disclosure" as reference.
+  - **ISO/IEC 30111:2019** "Vulnerability Handling Processes" as reference.
+  Publication locations:
+  - Repository: `SECURITY.md` at the root.
+  - Website: `https://example.org/security` (stable URL).
+  - `security.txt` references the URL via `Policy:`.
+  - Linked from release notes or README.
+- **Akzeptanz / Acceptance:** Richtlinie unter einem stabilen Pfad
+  (z. B. `/security`, `SECURITY.md`) öffentlich erreichbar; alle Pflicht-
+  inhalte vorhanden; Safe-Harbor-Klausel; mindestens DE und EN; verlinkt aus
+  `security.txt` und Repository-Tab.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 2. security.txt nach RFC 9116 / security.txt per RFC 9116
+
+- **DE:** Webdienste stellen `/.well-known/security.txt` bereit. Die Datei
+  enthält Kontakt, Richtlinien-Link, Sprachen und Ablaufdatum.
+  Pflichtfelder nach RFC 9116:
+  - `Contact:` (mindestens eines, mehrfach erlaubt) – `mailto:`,
+    `https://`, `tel:`.
+  - `Expires:` (Pflicht, ISO 8601 Datum, max. ein Jahr in der Zukunft).
+  - `Encryption:` – Link zum öffentlichen PGP-Schlüssel.
+  - `Acknowledgments:` – Hall-of-Fame oder Danksagungen.
+  - `Preferred-Languages:` – z. B. `de, en`.
+  - `Canonical:` – kanonische URL der security.txt-Datei.
+  - `Policy:` – URL zur ausführlichen CVD-Policy.
+  - `Hiring:` – optionaler Link zu Stellenangeboten Security.
+  - `CSAF:` – URL zur CSAF-Provider-Metadata-Datei.
+  Beispiel `security.txt`:
+  ```text
+  Contact: mailto:security@gwdg.de
+  Contact: https://www.gwdg.de/security/report
+  Expires: 2027-04-27T00:00:00.000Z
+  Encryption: https://www.gwdg.de/.well-known/pgp-key.txt
+  Preferred-Languages: de, en
+  Canonical: https://www.gwdg.de/.well-known/security.txt
+  Policy: https://www.gwdg.de/security/policy
+  Acknowledgments: https://www.gwdg.de/security/hall-of-fame
+  ```
+  Bereitstellung:
+  - Pfad: **muss** `/.well-known/security.txt` sein (RFC 9116).
+  - Über HTTPS, gültiges Zertifikat, kein Redirect auf eine andere Domain.
+  - Optional: digitale Signatur (`security.txt.asc`) per GPG.
+  Validierung:
+  - Online-Validator: [securitytxt.org](https://securitytxt.org/).
+  - CLI: `curl https://example.org/.well-known/security.txt`.
+  - Monitoring: Alarm 60 Tage vor `Expires` (z. B. via Cron, GitHub Action
+    `securitytxt-validator`).
+- **EN:** Web services provide `/.well-known/security.txt`. The file lists
+  contact, policy link, languages, and an expiry date.
+  Mandatory fields per RFC 9116:
+  - `Contact:` (at least one, multiple allowed) – `mailto:`, `https://`,
+    `tel:`.
+  - `Expires:` (mandatory, ISO 8601 date, max. one year in the future).
+  - `Encryption:` – link to the public PGP key.
+  - `Acknowledgments:` – hall of fame or thanks.
+  - `Preferred-Languages:` – e.g. `de, en`.
+  - `Canonical:` – canonical URL of the security.txt file.
+  - `Policy:` – URL of the detailed CVD policy.
+  - `Hiring:` – optional link to security job openings.
+  - `CSAF:` – URL of the CSAF provider metadata file.
+  Example `security.txt`:
+  ```text
+  Contact: mailto:security@gwdg.de
+  Contact: https://www.gwdg.de/security/report
+  Expires: 2027-04-27T00:00:00.000Z
+  Encryption: https://www.gwdg.de/.well-known/pgp-key.txt
+  Preferred-Languages: de, en
+  Canonical: https://www.gwdg.de/.well-known/security.txt
+  Policy: https://www.gwdg.de/security/policy
+  Acknowledgments: https://www.gwdg.de/security/hall-of-fame
+  ```
+  Deployment:
+  - Path: **must** be `/.well-known/security.txt` (RFC 9116).
+  - Over HTTPS, valid certificate, no redirect to a different domain.
+  - Optional: digital signature (`security.txt.asc`) via GPG.
+  Validation:
+  - Online validator: [securitytxt.org](https://securitytxt.org/).
+  - CLI: `curl https://example.org/.well-known/security.txt`.
+  - Monitoring: alert 60 days before `Expires` (e.g. via cron, GitHub
+    Action `securitytxt-validator`).
+- **Akzeptanz / Acceptance:** `security.txt` unter `/.well-known/security.txt`
+  erreichbar mit allen Pflichtfeldern; `Expires` ≤ 1 Jahr; Erinnerungs-Job
+  60 Tage vor Ablauf konfiguriert; PGP-Schlüssel für `Encryption:` gültig.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 3. Eingangskanal und Postfach / Reporting Channel and Mailbox
+
+- **DE:** Es gibt eine überwachte Kontaktadresse oder ein Formular. Eingehende
+  Meldungen werden innerhalb einer festgelegten Frist bestätigt.
+  Empfohlene Eingangskanäle:
+  - **Funktionspostfach** `security@<domain>` – mehrere Personen lesen
+    mit, kein Single Point of Failure.
+  - **Verschlüsselter Kanal**: PGP-Schlüssel auf `/.well-known/pgp-key.txt`
+    veröffentlicht, Fingerprint in `security.txt`.
+  - **HackerOne / Bugcrowd / Intigriti** – kommerzielle Plattformen mit
+    Triage-Service.
+  - **GitHub Private Vulnerability Reporting** (GitHub-Repos) – aktivieren
+    in Settings → Code security.
+  - **Git Confidential Issues** – mit Label `security`.
+  - **Webformular** mit reCAPTCHA, Verschlüsselung serverseitig.
+  Mailbox-Anforderungen:
+  - Erreichbarkeit Mo–Fr 09:00–17:00 (mindestens), 24/7 für `critical`.
+  - Eingang automatisiert in Ticket-System (z. B. OTRS, Jira Service Desk,
+    Zammad) verlinkt.
+  - Auto-Responder mit Bestätigung in DE/EN.
+  - Eskalation an Bereitschaft bei `critical`-Schlüsselwörtern im Betreff.
+  Bestätigungsfrist (Beispiele):
+  - **3 Werktage** – Standard für Initial-ACK.
+  - **24 h** – bei „aktiv ausgenutzt" / „critical".
+  - **5 Werktage** – bei niedriger Komplexität, klarer Backlog.
+  Vorlage Auto-Responder:
+  ```text
+  Vielen Dank für Ihre Sicherheitsmeldung. Wir haben Ihre Nachricht
+  erhalten und melden uns innerhalb von 3 Werktagen mit einer
+  qualifizierten Antwort. Bitte verschlüsseln Sie weitere Informationen
+  mit unserem PGP-Schlüssel: https://www.gwdg.de/.well-known/pgp-key.txt
+  ```
+- **EN:** A monitored contact address or form exists. Incoming reports are
+  acknowledged within a defined deadline.
+  Recommended reporting channels:
+  - **Functional mailbox** `security@<domain>` – multiple people read,
+    no single point of failure.
+  - **Encrypted channel**: PGP key published at `/.well-known/pgp-key.txt`,
+    fingerprint in `security.txt`.
+  - **HackerOne / Bugcrowd / Intigriti** – commercial platforms with triage
+    service.
+  - **GitHub Private Vulnerability Reporting** (GitHub repos) – enable in
+    Settings → Code security.
+  - **Git Confidential Issues** – with label `security`.
+  - **Web form** with reCAPTCHA, server-side encryption.
+  Mailbox requirements:
+  - Availability Mon–Fri 09:00–17:00 (at minimum), 24/7 for `critical`.
+  - Inbound automatically linked into a ticket system (e.g. OTRS, Jira
+    Service Desk, Zammad).
+  - Auto-responder with acknowledgement in DE/EN.
+  - Escalation to on-call for `critical` keywords in the subject.
+  Acknowledgement deadline (examples):
+  - **3 business days** – standard for initial ACK.
+  - **24 h** – for "actively exploited" / "critical".
+  - **5 business days** – for low-complexity issues with a clear backlog.
+  Auto-responder template:
+  ```text
+  Thank you for your security report. We have received your message and
+  will respond with a qualified reply within 3 business days. Please
+  encrypt further information with our PGP key:
+  https://www.gwdg.de/.well-known/pgp-key.txt
+  ```
+- **Akzeptanz / Acceptance:** Kontakt (Funktionspostfach + Plattform-Channel)
+  benannt; Bestätigungsfrist je Schweregrad in der CVD-Policy festgelegt
+  (z. B. 24 h für critical, 3 Werktage Standard); Auto-Responder DE/EN
+  aktiv; Eingang in Ticket-System verlinkt.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 4. Triage und Schweregrad / Triage and Severity
+
+- **DE:** Jede Meldung wird klassifiziert (z. B. CVSS-Wert, intern definierte
+  Stufen). Die Klassifikation steuert Reaktion und Frist.
+  Bewertungsmethoden:
+  - **CVSS v4.0** (Common Vulnerability Scoring System) – verbindliche
+    Zielmethode für neue Bewertungen. CVSS v3.1 darf übergangsweise genutzt
+    werden, wenn externe Quellen noch keinen v4.0-Score liefern.
+    Tools: [FIRST CVSS Calculator](https://www.first.org/cvss/calculator/),
+    `cvss-rs`.
+    Beispiel-Vector: `CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H = 10.0 critical`.
+  - **EPSS** (Exploit Prediction Scoring System) – Wahrscheinlichkeit
+    der Ausnutzung in 30 Tagen, FIRST-Standard.
+  - **CISA KEV** (Known Exploited Vulnerabilities) – sofortige Eskalation,
+    wenn ein gemeldetes CVE in der KEV-Liste auftaucht.
+  - **OWASP Risk Rating** – Likelihood × Impact (technisch + business).
+  - **DREAD** als interner Ergänzungswert für Triage-Geschwindigkeit.
+  Schwellwerte (Beispiel-Skala):
+  - **Critical (CVSS 9.0–10.0)** oder CISA-KEV: SLA Bestätigung 24 h, Fix 7 Tage.
+  - **High (CVSS 7.0–8.9)**: SLA Bestätigung 48 h, Fix 30 Tage.
+  - **Medium (CVSS 4.0–6.9)**: SLA Bestätigung 3 Werktage, Fix 90 Tage.
+  - **Low (CVSS < 4.0)**: SLA Bestätigung 5 Werktage, Fix nächster Release.
+  Triage-Workflow:
+  - Erstreview: ist die Meldung im Scope, reproduzierbar, eindeutig?
+  - Duplikatscheck gegen offene Tickets.
+  - CVSS-Score und CVSS-Vektor berechnen, in Ticket dokumentieren.
+  - Bei Hochrisiko: Sofortbenachrichtigung Stakeholder + Bereitschaft.
+  - Klassifikation in Ticket-Feld (z. B. `Severity: critical`, `CVSS: 9.8`).
+  Werkzeuge:
+  - Jira mit Custom-Feldern für CVSS-Vector, Severity, EPSS-Score.
+  - GitHub Issues mit Labels `severity:critical` … `severity:low`.
+  - Dependency-Track integriert CVSS automatisch aus NVD.
+- **EN:** Every report is classified (e.g. CVSS score, internally defined
+  levels). The classification drives response and deadline.
+  Scoring methods:
+  - **CVSS v4.0** (Common Vulnerability Scoring System) – mandatory target
+    method for new ratings. CVSS v3.1 may be used during transition if
+    external sources do not yet provide a v4.0 score.
+    Tools: [FIRST CVSS Calculator](https://www.first.org/cvss/calculator/),
+    `cvss-rs`.
+    Example vector: `CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H = 10.0 critical`.
+  - **EPSS** (Exploit Prediction Scoring System) – probability of
+    exploitation in 30 days, FIRST standard.
+  - **CISA KEV** (Known Exploited Vulnerabilities) – immediate escalation
+    when a reported CVE appears on the KEV list.
+  - **OWASP Risk Rating** – likelihood × impact (technical + business).
+  - **DREAD** as internal supplementary value for triage speed.
+  Thresholds (example scale):
+  - **Critical (CVSS 9.0–10.0)** or CISA KEV: SLA ack 24 h, fix 7 days.
+  - **High (CVSS 7.0–8.9)**: SLA ack 48 h, fix 30 days.
+  - **Medium (CVSS 4.0–6.9)**: SLA ack 3 business days, fix 90 days.
+  - **Low (CVSS < 4.0)**: SLA ack 5 business days, fix next release.
+  Triage workflow:
+  - First review: is the report in scope, reproducible, clear?
+  - Duplicate check against open tickets.
+  - Calculate CVSS score and CVSS vector, document both in the ticket.
+  - For high risk: immediate stakeholder + on-call notification.
+  - Classification in ticket field (e.g. `Severity: critical`, `CVSS: 9.8`).
+  Tools:
+  - Jira with custom fields for CVSS vector, severity, EPSS score.
+  - GitHub Issues with labels `severity:critical` … `severity:low`.
+  - Dependency-Track integrates CVSS automatically from NVD.
+- **Akzeptanz / Acceptance:** Schwellwerte und Reaktionsfristen je Stufe
+  schriftlich in der CVD-Policy oder Runbook; CVSS v4.0 als verbindliche
+  Zielmethode; Score und Vektor im Ticket; Triage-Workflow im Ticket-System
+  abgebildet; CISA-KEV-Watchlist aktiv.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 5. Reaktionsfristen / Response SLAs
+
+- **DE:** Pro Schweregrad sind Maximalzeiten für Bestätigung, Fix und
+  Veröffentlichung festgelegt (z. B. kritisch in 7 Tagen, hoch in 30 Tagen).
+  Beispiel-SLA-Tabelle:
+  | Stufe | Bestätigung | Triage | Fix | Disclosure |
+  |---|---|---|---|---|
+  | Critical (CVSS 9.0+) | 24 h | 48 h | 7 Tage | 14 Tage |
+  | High (CVSS 7.0–8.9) | 48 h | 5 Werktage | 30 Tage | 60 Tage |
+  | Medium (CVSS 4.0–6.9) | 3 Werktage | 10 Werktage | 90 Tage | 120 Tage |
+  | Low (CVSS < 4.0) | 5 Werktage | 15 Werktage | nächster Release | 180 Tage |
+  Externe Referenzen für SLA-Setzung:
+  - **Project Zero** (Google) – 90-Tage-Regel + 30 Tage Grace.
+  - **CERT/CC** – 45-Tage-Regel als Standard.
+  - **ZDI** (Zero Day Initiative) – 120-Tage-Regel.
+  - **Industriestandard**: 90 Tage Disclosure-Frist als verbreitete Norm.
+  SLA-Überwachung:
+  - Ticket-System mit SLA-Tracking (Jira SLA, ServiceNow SLA Engine).
+  - Eskalations-Trigger bei 75 % der SLA-Frist.
+  - Wöchentlicher Review offener Tickets durch Security-Team.
+  - Quartalsweiser SLA-Compliance-Bericht für verantwortliche Leitung.
+  Ausnahmen:
+  - SLA-Verlängerung nur mit schriftlicher Begründung (z. B. Hersteller-
+    Abhängigkeit, Komplexität, Restrisiko).
+  - Zustimmung des Melders vor Fristverlängerung einholen.
+  - Bei `affected, no fix possible`: VEX-Statement + Kommunikation an
+    Anwender.
+- **EN:** Per severity level, maximum times for acknowledgement, fix, and
+  publication are set (e.g. critical in 7 days, high in 30 days).
+  Example SLA table:
+  | Severity | Ack | Triage | Fix | Disclosure |
+  |---|---|---|---|---|
+  | Critical (CVSS 9.0+) | 24 h | 48 h | 7 days | 14 days |
+  | High (CVSS 7.0–8.9) | 48 h | 5 business days | 30 days | 60 days |
+  | Medium (CVSS 4.0–6.9) | 3 business days | 10 business days | 90 days | 120 days |
+  | Low (CVSS < 4.0) | 5 business days | 15 business days | next release | 180 days |
+  External references for SLA setting:
+  - **Project Zero** (Google) – 90-day rule + 30-day grace.
+  - **CERT/CC** – 45-day rule as default.
+  - **ZDI** (Zero Day Initiative) – 120-day rule.
+  - **Industry standard**: 90-day disclosure deadline as widespread norm.
+  SLA monitoring:
+  - Ticket system with SLA tracking (Jira SLA, ServiceNow SLA Engine).
+  - Escalation trigger at 75 % of SLA window.
+  - Weekly review of open tickets by the security team.
+  - Quarterly SLA compliance report to management.
+  Exceptions:
+  - SLA extension only with written justification (e.g. vendor dependency,
+    complexity, residual risk).
+  - Obtain reporter consent before extending the deadline.
+  - On `affected, no fix possible`: VEX statement + user communication.
+- **Akzeptanz / Acceptance:** SLA-Tabelle in der CVD-Policy und im Runbook;
+  Ticket-System mit automatischer SLA-Verfolgung; Eskalation bei 75 %
+  Frist; quartalsweiser Compliance-Bericht.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 6. Koordinierte Veröffentlichung / Coordinated Disclosure
+
+- **DE:** Vor der Veröffentlichung einer Schwachstelle wird der Melder
+  einbezogen. Embargos sind erlaubt; sie haben ein Enddatum.
+  Coordinated Disclosure Workflow:
+  1. **Bestätigung** des Eingangs (siehe Item 3).
+  2. **Triage** und CVSS-Berechnung (siehe Item 4).
+  3. **Embargo-Vereinbarung**: Endtermin, kommunizierte Inhalte, Sprecher.
+  4. **Fix-Entwicklung** im privaten Branch / Security Advisory Draft.
+  5. **CVE-Reservierung** über CNA (CVE Numbering Authority): MITRE,
+     GitHub, NVD, oder eigener CNA-Status.
+  6. **Pre-Notification** an wichtige Anwender (Beta, ENISA, BSI CERT-Bund).
+  7. **Patch-Release** und gleichzeitige Advisory-Veröffentlichung.
+  8. **Public Disclosure** mit Anerkennung des Melders (sofern gewünscht).
+  Embargo-Regeln:
+  - Standard-Embargo: 90 Tage ab Erstkontakt (verhandelbar).
+  - Verlängerung nur mit Zustimmung des Melders.
+  - Notfall-Veröffentlichung bei aktiver Ausnutzung (CISA-KEV-Eintrag).
+  - Bei Nichteinhaltung durch Hersteller: Melder kann nach Embargo-Ende
+    selbst veröffentlichen.
+  Werkzeuge und Plattformen:
+  - **GitHub Security Advisories** – privater Draft, CVE-Anforderung,
+    automatische Disclosure-Veröffentlichung.
+  - **Git Security Advisories** – Private Issues mit Confidentiality.
+  - **CVD-Tracker**: HackerOne Reports, eigene Confluence-Seite.
+  - **CSAF Document** für maschinenlesbare Advisories.
+  - **OSV.dev** für ökosystemspezifische Veröffentlichung.
+  Inhalt einer Advisory:
+  - CVE-Nummer, CVSS-Vector, Schwere.
+  - Betroffene Versionen, Fixed-Version.
+  - Beschreibung in laienverständlicher Sprache.
+  - Workaround / Mitigation.
+  - Patch-Link, Release-Notes-Verweis.
+  - Melder-Anerkennung.
+  - Zeitleiste (Eingang, Bestätigung, Fix, Disclosure).
+- **EN:** Before publishing a vulnerability, the reporter is involved.
+  Embargoes are allowed; they have an end date.
+  Coordinated disclosure workflow:
+  1. **Acknowledge** receipt (see item 3).
+  2. **Triage** and CVSS scoring (see item 4).
+  3. **Embargo agreement**: end date, communicated content, spokesperson.
+  4. **Fix development** in a private branch / security advisory draft.
+  5. **CVE reservation** through CNA (CVE Numbering Authority): MITRE,
+     GitHub, NVD, or own CNA status.
+  6. **Pre-notification** to key consumers (beta, ENISA, BSI CERT-Bund).
+  7. **Patch release** and simultaneous advisory publication.
+  8. **Public disclosure** with reporter acknowledgement (if desired).
+  Embargo rules:
+  - Standard embargo: 90 days from first contact (negotiable).
+  - Extension only with reporter consent.
+  - Emergency disclosure on active exploitation (CISA KEV entry).
+  - On vendor non-compliance: reporter may publish after embargo end.
+  Tools and platforms:
+  - **GitHub Security Advisories** – private draft, CVE request,
+    automatic disclosure publication.
+  - **Git Security Advisories** – private issues with confidentiality.
+  - **CVD tracker**: HackerOne reports, own Confluence page.
+  - **CSAF document** for machine-readable advisories.
+  - **OSV.dev** for ecosystem-specific publication.
+  Advisory content:
+  - CVE number, CVSS vector, severity.
+  - Affected versions, fixed version.
+  - Description in plain language.
+  - Workaround / mitigation.
+  - Patch link, release-notes reference.
+  - Reporter acknowledgement.
+  - Timeline (ingress, ack, fix, disclosure).
+- **Akzeptanz / Acceptance:** Veröffentlichungsprozess in Runbook
+  dokumentiert; CVE-CNA-Pfad benannt; GitHub/Git Security Advisories
+  konfiguriert; Embargo-Regeln und Pre-Notification-Liste vorhanden;
+  Advisory-Vorlage mit allen Pflichtfeldern.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 7. CRA-Pflichtmeldung 24 Stunden / CRA 24-Hour Notification
+
+- **DE:** Bei aktiv ausgenutzten Schwachstellen oder schweren Sicherheitsvorfällen
+  wird die zuständige CSIRT/ENISA innerhalb von 24 Stunden vorab informiert
+  (Frühwarnung), gefolgt von 72-Stunden-Meldung und Schlussbericht.
+  Cyber Resilience Act (CRA) Pflichtmeldungen (Art. 14 Verordnung (EU) 2024/2847):
+  - **Frühwarnung (24 h)**: Mitteilung an ENISA und nationale CSIRT, dass
+    eine aktiv ausgenutzte Schwachstelle bekannt ist.
+  - **Vulnerability Notification (72 h)**: detaillierte Beschreibung,
+    Schweregrad, betroffene Produkte, Mitigation, ggf. PoC.
+  - **Schlussbericht für aktiv ausgenutzte Schwachstellen**: spätestens
+    14 Tage nach Bereitstellung des Patches, mit Ursachenanalyse,
+    Auswirkungen, getroffenen Maßnahmen und Lessons Learned.
+  - **Schlussbericht für schwere Sicherheitsvorfälle**: spätestens einen
+    Monat nach der 72-Stunden-Meldung.
+  Meldewege:
+  - **ENISA** – Single Reporting Platform (geplant ab 2026).
+  - **CSIRT-Bund (BSI)** – `cert@bsi.bund.de`,
+    [BSI-Meldeformular](https://www.bsi.bund.de/DE/Service/Meldestelle).
+  - **Nationale CSIRT** je EU-Mitgliedstaat (CSIRT-Network).
+  - **CIRCL** (Luxemburg), **CERT-FR** (Frankreich), **CERT.at** (Österreich).
+  Pflichtinhalte der Meldung:
+  - Hersteller-Identifikation (Name, Anschrift, Kontakt).
+  - Produkt-Identifikation (Name, Version, betroffene Versionen).
+  - Schwachstellen-Beschreibung (Typ, CWE, CVSS, CVE, falls vergeben).
+  - Aktiv-Ausnutzungs-Indikatoren (IOCs, Quelle, Zeitpunkt).
+  - Geografische Reichweite, Anzahl betroffener Anwender.
+  - Mitigation und Patch-Verfügbarkeit.
+  - Ansprechperson für Rückfragen (Name, E-Mail, Telefon, ggf. PGP).
+  Krisen-Runbook:
+  - 24/7 Bereitschaft mit Eskalationskette: Engineer -> Lead -> Security Lead -> GF.
+  - Vorlagen-Texte für ENISA-Meldung in DE und EN bereit.
+  - Decision-Tree: aktiv ausgenutzt oder schwerer Sicherheitsvorfall?
+    Dann 24-h-Frühwarnung, 72-h-Meldung und Schlussbericht.
+  - Tabletop-Übung mindestens jährlich (siehe Item 11).
+  Synergien mit anderen Pflichten:
+  - **NIS2-Richtlinie** Art. 23: 24-h-Frühwarnung, 72-h-Lagebericht,
+    1 Monat Schlussbericht.
+  - **DORA**: für Finanzunternehmen und relevante IKT-Drittparteien
+    können zusätzliche Klassifizierungs-, Melde- und Testpflichten gelten.
+  - **DSGVO Art. 33**: 72-h-Meldung an Datenschutzbehörde bei
+    Datenpanne mit personenbezogenen Daten.
+  - **TKG/IT-Sicherheitsgesetz** für regulierte Branchen.
+- **EN:** For actively exploited vulnerabilities or severe incidents, the
+  responsible CSIRT/ENISA receives an early warning within 24 hours, followed
+  by a 72-hour report and a final report.
+  Cyber Resilience Act (CRA) mandatory notifications (Art. 14 Regulation (EU)
+  2024/2847):
+  - **Early warning (24 h)**: notify ENISA and national CSIRT that an
+    actively exploited vulnerability is known.
+  - **Vulnerability notification (72 h)**: detailed description, severity,
+    affected products, mitigation, possibly PoC.
+  - **Final report for actively exploited vulnerabilities**: no later than
+    14 days after patch availability, with root cause analysis, impact,
+    measures taken, and lessons learned.
+  - **Final report for severe incidents**: no later than one month after
+    the 72-hour notification.
+  Reporting channels:
+  - **ENISA** – Single Reporting Platform (planned from 2026).
+  - **CSIRT-Bund (BSI)** – `cert@bsi.bund.de`,
+    [BSI reporting form](https://www.bsi.bund.de/DE/Service/Meldestelle).
+  - **National CSIRTs** per EU member state (CSIRT Network).
+  - **CIRCL** (Luxembourg), **CERT-FR** (France), **CERT.at** (Austria).
+  Mandatory report contents:
+  - Manufacturer identification (name, address, contact).
+  - Product identification (name, version, affected versions).
+  - Vulnerability description (type, CWE, CVSS, CVE if assigned).
+  - Active-exploitation indicators (IOCs, source, time).
+  - Geographic scope, number of affected users.
+  - Mitigation and patch availability.
+  - Contact person for follow-up (name, email, phone, PGP if available).
+  Crisis runbook:
+  - 24/7 on-call with escalation chain: engineer -> lead -> Security Lead ->
+    management.
+  - Template texts for ENISA notification ready in DE and EN.
+  - Decision tree: actively exploited or severe incident? Then 24-hour
+    early warning, 72-hour notification, and final report.
+  - Tabletop drill at least annually (see item 11).
+  Synergies with other obligations:
+  - **NIS2 Directive** Art. 23: 24-h early warning, 72-h status report,
+    1-month final report.
+  - **DORA**: for financial entities and relevant ICT third-party
+    providers, additional classification, reporting, and testing duties may
+    apply.
+  - **GDPR Art. 33**: 72-h notification to data protection authority for
+    breaches involving personal data.
+  - **TKG/IT-Sicherheitsgesetz** for regulated industries.
+- **Akzeptanz / Acceptance:** Meldewege (ENISA, BSI CSIRT-Bund) in der
+  Krisenanleitung benannt; 24/72/14-Tage-Workflow als Decision-Tree;
+  Vorlagentext DE/EN; 24/7-Bereitschaft mit Eskalationskette; Tabletop-
+  Übung jährlich nachgewiesen; CL_01-Regulatory-Screening zeigt, ob NIS2,
+  DORA, DSGVO oder kundenspezifische Meldewege zusätzlich anwendbar sind. /
+  Reporting channels (ENISA, BSI CSIRT-Bund) are named in the crisis
+  procedure; 24/72/14-day workflow as a decision tree; DE/EN template text;
+  24/7 on-call with escalation chain; annual tabletop drill evidenced;
+  CL_01 regulatory screening shows whether NIS2, DORA, GDPR, or customer-
+  specific reporting paths additionally apply.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 8. Anwendererklärung und Hinweise / User Notification and Advisories
+
+- **DE:** Betroffene Anwender erhalten verständliche Hinweise mit
+  Lösungsschritten. Wo nötig wird ein VEX-Dokument aktualisiert.
+  Inhaltsstruktur einer Anwender-Advisory:
+  - **Titel** (z. B. „CVE-2026-XXXX: SQL-Injection in WidgetService").
+  - **Schweregrad** (CVSS, optional EPSS).
+  - **Betroffene Produkte/Versionen**.
+  - **Beschreibung in Laiensprache** (was passieren kann, ohne
+    PoC-Details vor Patch).
+  - **Empfohlene Maßnahmen** (Update auf Version X, Workaround,
+    Konfigurationsänderung).
+  - **Zeitleiste** (Eingang, Bestätigung, Patch, Disclosure).
+  - **Anerkennung** des Melders.
+  - **Referenzen** (CVE, NVD, GitHub Advisory, Hersteller-Hinweis).
+  - **Kontakt** für Rückfragen.
+  Verteilkanäle:
+  - **GitHub Security Advisories** – Email-Notification an Watcher.
+  - **Mailing-Liste** für Sicherheits-Advisories (`security-announce@`).
+  - **RSS/Atom-Feed** unter `/security/advisories.xml`.
+  - **CSAF-Provider-Metadata** unter `/.well-known/csaf/provider-metadata.json`.
+  - **Customer-Portal**, Newsletter, Banner in Software bei Login.
+  - **CERT-Bund WID-Meldungen** für DE-weite Verteilung.
+  Vorlagen:
+  - **CSAF 2.0 Document** für maschinenlesbare Veröffentlichung.
+  - **GitHub Security Advisory** mit YAML-Frontmatter.
+  - **Markdown-Vorlage** für Webseite/Blog.
+  - **Email-Vorlage** mit PGP-Signatur des Sender-Postfachs.
+  Verbindung zu VEX:
+  - VEX-Dokument bei jeder neuen Version aktualisieren.
+  - VEX in Release-Asset und CSAF-Document referenzieren.
+  - Anwender-Werkzeuge (Trivy, Dependency-Track) lesen VEX automatisch.
+  Mehrsprachigkeit und Barrierefreiheit:
+  - Mindestens DE und EN.
+  - HTML mit semantischem Markup (h1, h2, lists), kein PDF-Only.
+  - WCAG 2.2 AA-konform; Farbe nicht alleinige Information für Schwere.
+- **EN:** Affected users receive understandable advisories with mitigation
+  steps. Where needed, a VEX document is updated.
+  User advisory structure:
+  - **Title** (e.g. "CVE-2026-XXXX: SQL injection in WidgetService").
+  - **Severity** (CVSS, optionally EPSS).
+  - **Affected products/versions**.
+  - **Plain-language description** (what can happen, without PoC details
+    before patch).
+  - **Recommended actions** (update to version X, workaround, configuration
+    change).
+  - **Timeline** (ingress, ack, patch, disclosure).
+  - **Reporter acknowledgement**.
+  - **References** (CVE, NVD, GitHub advisory, vendor advisory).
+  - **Contact** for follow-up.
+  Distribution channels:
+  - **GitHub Security Advisories** – email notifications to watchers.
+  - **Mailing list** for security advisories (`security-announce@`).
+  - **RSS/Atom feed** at `/security/advisories.xml`.
+  - **CSAF provider metadata** at `/.well-known/csaf/provider-metadata.json`.
+  - **Customer portal**, newsletter, in-app banner on login.
+  - **CERT-Bund WID alerts** for Germany-wide distribution.
+  Templates:
+  - **CSAF 2.0 document** for machine-readable publication.
+  - **GitHub Security Advisory** with YAML frontmatter.
+  - **Markdown template** for website/blog.
+  - **Email template** with PGP signature of the sender mailbox.
+  Connection to VEX:
+  - Update the VEX document with every new version.
+  - Reference VEX in the release asset and CSAF document.
+  - User tools (Trivy, Dependency-Track) read VEX automatically.
+  Multilingualism and accessibility:
+  - At least DE and EN.
+  - HTML with semantic markup (h1, h2, lists), no PDF-only.
+  - WCAG 2.2 AA conformant; colour is not the sole indicator of severity.
+- **Akzeptanz / Acceptance:** Vorlage in DE/EN vorhanden (Markdown, CSAF,
+  Email, GitHub Advisory); Mailing-Liste und CSAF-Provider-Metadata
+  konfiguriert; VEX-Dokument synchron aktualisiert; WCAG 2.2 AA-konforme
+  Webdarstellung der Advisory.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 9. Patch-Bereitstellung / Patch Availability
+
+- **DE:** Sicherheits-Patches werden für die unterstützten Versionen
+  bereitgestellt. Der unterstützte Lebenszyklus ist veröffentlicht.
+  Lifecycle-Modelle:
+  - **Semantic Versioning** (`MAJOR.MINOR.PATCH`) mit klaren Support-Fenstern.
+  - **LTS-Modell** (Long Term Support) – z. B. Ubuntu LTS 5+5 Jahre,
+    Node.js Active LTS 18 Monate + Maintenance LTS 12 Monate.
+  - **N/N-1-Modell**: aktuelle Major + vorletzte Major werden gepflegt.
+  - **Release-Train**: festgelegte Release-Kadenz (z. B. quartalsweise).
+  Lifecycle-Tabelle (Beispiel):
+  | Version | Erstrelease | Aktiv-Support bis | Security-Support bis | EOL |
+  |---|---|---|---|---|
+  | 3.x | 2025-10-01 | 2027-04-01 | 2028-10-01 | 2028-10-01 |
+  | 2.x | 2024-04-01 | 2025-10-01 | 2027-04-01 | 2027-04-01 |
+  | 1.x | 2023-01-01 | 2024-04-01 | 2025-10-01 | 2025-10-01 |
+  Patch-Bereitstellung:
+  - Patches als Backport in alle aktiv und security-supporteten Branches.
+  - Versionierung: Patch-Release `3.2.4` für Security-Fix in 3.x.
+  - Container-Images mit semantischen Tags (`3.2`, `3.2.4`, `3.2.4-202604`)
+    plus `latest`.
+  - Hash-pinned Releases (SHA-256) und Cosign-Signaturen.
+  Kommunikation:
+  - Lifecycle-Seite öffentlich: `/lifecycle` oder `SECURITY.md`.
+  - Deprecation-Hinweis in Software bei EOL-Approach (z. B. 6 Monate vorher).
+  - Migration-Guide für Major-Upgrades.
+  - LTS-Verlängerungen kommerziell anbieten, falls anwendbar.
+  CRA-Anforderungen:
+  - Mindestens 5 Jahre Security-Support nach dem Release oder über die
+    erwartete Produktlebenszeit (CRA Art. 13).
+  - Bei vorzeitigem EOL: schriftliche Begründung und Migrationspfad.
+- **EN:** Security patches are provided for supported versions. The
+  supported lifecycle is published.
+  Lifecycle models:
+  - **Semantic Versioning** (`MAJOR.MINOR.PATCH`) with clear support
+    windows.
+  - **LTS model** (long-term support) – e.g. Ubuntu LTS 5+5 years,
+    Node.js Active LTS 18 months + Maintenance LTS 12 months.
+  - **N/N-1 model**: current major + previous major are maintained.
+  - **Release train**: defined release cadence (e.g. quarterly).
+  Lifecycle table (example):
+  | Version | First release | Active support until | Security support until | EOL |
+  |---|---|---|---|---|
+  | 3.x | 2025-10-01 | 2027-04-01 | 2028-10-01 | 2028-10-01 |
+  | 2.x | 2024-04-01 | 2025-10-01 | 2027-04-01 | 2027-04-01 |
+  | 1.x | 2023-01-01 | 2024-04-01 | 2025-10-01 | 2025-10-01 |
+  Patch delivery:
+  - Patches as backports in all actively and security-supported branches.
+  - Versioning: patch release `3.2.4` for a security fix in 3.x.
+  - Container images with semantic tags (`3.2`, `3.2.4`, `3.2.4-202604`)
+    plus `latest`.
+  - Hash-pinned releases (SHA-256) and Cosign signatures.
+  Communication:
+  - Public lifecycle page: `/lifecycle` or `SECURITY.md`.
+  - Deprecation notice in software approaching EOL (e.g. 6 months prior).
+  - Migration guide for major upgrades.
+  - Offer commercial LTS extensions where applicable.
+  CRA requirements:
+  - At least 5 years of security support after release or for the expected
+    product lifetime (CRA Art. 13).
+  - On early EOL: written justification and migration path.
+- **Akzeptanz / Acceptance:** Lifecycle-Tabelle in `SECURITY.md` oder
+  `/lifecycle`-Seite; Patch-Plan mit Backport-Strategie dokumentiert;
+  Container-Tags + Cosign-Signatur; CRA-konformer Mindest-Support-Zeitraum
+  (≥ 5 Jahre) eingehalten oder begründet abweichend.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 10. Nachverfolgung und Lessons Learned / Tracking and Lessons Learned
+
+- **DE:** Jeder Fall wird in einem Tracker geführt. Nach Abschluss wird eine
+  kurze Lessons-Learned-Notiz erstellt; wiederkehrende Muster fließen in das
+  Bedrohungsmodell zurück.
+  Tracker-Optionen:
+  - **Jira Service Management** mit Custom-Workflow (New → Triage →
+    Validated → Fix-in-Progress → Embargo → Disclosed → Closed).
+  - **GitHub Issues** mit Labels `vuln/critical`, `vuln/high`,
+    `cvd/embargo`, `cvd/disclosed`.
+  - **Git Issues** mit Confidentiality-Flag und Custom-Status.
+  - **HackerOne / Bugcrowd** als externe Plattform.
+  - **OTRS / Zammad** für E-Mail-basiertes Tracking.
+  Pflichtfelder pro Fall:
+  - Eindeutige ID (z. B. `VULN-2026-001`).
+  - Eingangsdatum, Quelle, Reporter (mit Einverständnis).
+  - CVSS-Vector, Severity, EPSS, ggf. CISA-KEV-Status.
+  - Status, SLA-Frist, Eskalation.
+  - Zuständige Person (Engineer + Owner).
+  - Affected Versions, Fixed-in-Version, CVE-ID.
+  - Verlinkung zu PR, Test, Advisory, Release.
+  - Embargo-Endtermin.
+  Lessons-Learned-Format:
+  - Kurzbeschreibung (2–4 Sätze).
+  - Root Cause Analysis (5-Whys oder Fishbone).
+  - Was hat funktioniert? Was hat nicht funktioniert?
+  - Verbesserungsmaßnahmen mit Owner und Termin.
+  - Übertragbare Muster (z. B. „Input-Validierung in Search-Endpoints").
+  Rückfluss in Bedrohungsmodell:
+  - Bei wiederkehrenden Mustern: neue STRIDE-Kategorie oder CAPEC-Pattern
+    ergänzen.
+  - Linter-Regel oder Test ergänzen, falls Pattern automatisch erkennbar
+    (z. B. Semgrep-Rule für die spezifische Schwachstelle).
+  - Threat-Model-Update mit Verweis auf Lessons-Learned-Dokument.
+  Reporting:
+  - Quartalsweiser CVD-Bericht: Anzahl Meldungen, Durchschnitts-Triage-Zeit,
+    Fix-Zeit, SLA-Compliance, Top-Schwachstellentypen.
+  - Trend-Analyse über 4 Quartale für verantwortliche Leitung.
+- **EN:** Every case is tracked. After closure, a short lessons-learned
+  note is written; recurring patterns flow back into the threat model.
+  Tracker options:
+  - **Jira Service Management** with custom workflow (new → triage →
+    validated → fix in progress → embargo → disclosed → closed).
+  - **GitHub Issues** with labels `vuln/critical`, `vuln/high`,
+    `cvd/embargo`, `cvd/disclosed`.
+  - **Git Issues** with confidentiality flag and custom status.
+  - **HackerOne / Bugcrowd** as external platforms.
+  - **OTRS / Zammad** for email-based tracking.
+  Mandatory fields per case:
+  - Unique ID (e.g. `VULN-2026-001`).
+  - Ingress date, source, reporter (with consent).
+  - CVSS vector, severity, EPSS, possibly CISA KEV status.
+  - Status, SLA deadline, escalation.
+  - Responsible person (engineer + owner).
+  - Affected versions, fixed-in version, CVE ID.
+  - Links to PR, test, advisory, release.
+  - Embargo end date.
+  Lessons-learned format:
+  - Short description (2–4 sentences).
+  - Root cause analysis (5 whys or fishbone).
+  - What worked? What did not work?
+  - Improvement actions with owner and date.
+  - Transferable patterns (e.g. "input validation in search endpoints").
+  Feedback into the threat model:
+  - For recurring patterns: add a new STRIDE category or CAPEC pattern.
+  - Add a linter rule or test if the pattern is automatically detectable
+    (e.g. Semgrep rule for the specific issue).
+  - Threat model update with reference to the lessons-learned document.
+  Reporting:
+  - Quarterly CVD report: number of reports, average triage time, fix
+    time, SLA compliance, top vulnerability types.
+  - Trend analysis over 4 quarters for management.
+- **Akzeptanz / Acceptance:** Tracker (Jira/GitHub/Git) mit Pflichtfeldern
+  und Custom-Workflow konfiguriert; Lessons-Learned-Vorlage vorhanden;
+  jeder geschlossene Fall hat verlinkte Lessons-Learned-Notiz; Quartalsbericht
+  in `docs/security/cvd-quarterly-report-YYYY-Q.md`.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 11. Übungen und Tests / Drills and Tests
+
+- **DE:** Mindestens einmal im Jahr wird der Meldeprozess geübt
+  (Tabletop-Übung oder echter Testbericht).
+  Übungstypen:
+  - **Tabletop-Übung**: Discussion-based, 2–4 h, Szenario auf Papier.
+    Teilnehmer: Security-Team, Entwicklung, Kommunikation, Recht, Geschäfts-
+    leitung.
+  - **Functional Drill**: aktive Simulation mit Test-Meldung über `security@`,
+    Verfolgung durch Triage-Workflow.
+  - **Red Team / Penetration Test**: externer Test mit anschließender
+    CVD-Meldung, prüft End-to-End-Prozess.
+  - **Capture the Flag (CTF)** für interne Awareness.
+  - **CRA-spezifische Übung**: 24-h-Meldung an ENISA-Test-Endpoint.
+  Beispiel-Szenarien:
+  - **Szenario A**: aktiv ausgenutzte SQL-Injection wird intern entdeckt,
+    24-h-Frühwarnung an BSI durchspielen.
+  - **Szenario B**: externer Forscher meldet kritische RCE während des
+    Wochenendes, Bereitschaftskette aktivieren.
+  - **Szenario C**: Embargo-Verletzung durch Wettbewerber, Notfall-
+    Disclosure planen.
+  - **Szenario D**: Reporter unterhält ungültige Identität, Prüfung
+    Verifikation.
+  Übungs-Werkzeuge:
+  - **CISA Tabletop Exercise Packages (CTEPs)** – kostenlose Vorlagen.
+  - **ENISA Cybersecurity Exercise Material**.
+  - **MITRE Caldera** für automatisierte Adversary Emulation.
+  - **TheHive / Cortex** für Incident-Response-Plattform-Übung.
+  Übungsprotokoll:
+  - Datum, Teilnehmende, Szenario, Dauer.
+  - Beobachtungen je Phase (Eingang, Triage, Patch, Disclosure).
+  - Identifizierte Lücken (z. B. „PGP-Schlüssel abgelaufen", „kein 24/7-
+    Kontakt für ENISA").
+  - Maßnahmen mit Owner und Termin.
+  - Nächste Übung geplant für ...
+  Mindest-Frequenz:
+  - Tabletop: jährlich.
+  - Functional Drill: alle 2 Jahre.
+  - Penetrationstest: jährlich oder bei Major-Release.
+  - CRA-Frühwarn-Übung: alle 6 Monate (Empfehlung).
+- **EN:** At least once a year, the reporting process is exercised
+  (tabletop drill or real test report).
+  Drill types:
+  - **Tabletop drill**: discussion-based, 2–4 h, scenario on paper.
+    Participants: security team, engineering, communications, legal,
+    management.
+  - **Functional drill**: active simulation with a test report to
+    `security@`, tracked through the triage workflow.
+  - **Red team / penetration test**: external test followed by a CVD
+    submission; tests the end-to-end process.
+  - **Capture the Flag (CTF)** for internal awareness.
+  - **CRA-specific exercise**: 24-h notification to an ENISA test
+    endpoint.
+  Example scenarios:
+  - **Scenario A**: actively exploited SQL injection discovered internally,
+    rehearse a 24-h early warning to the BSI.
+  - **Scenario B**: external researcher reports a critical RCE on the
+    weekend, activate the on-call chain.
+  - **Scenario C**: embargo break by a competitor, plan emergency
+    disclosure.
+  - **Scenario D**: reporter has an invalid identity, test verification
+    procedure.
+  Exercise tools:
+  - **CISA Tabletop Exercise Packages (CTEPs)** – free templates.
+  - **ENISA cybersecurity exercise material**.
+  - **MITRE Caldera** for automated adversary emulation.
+  - **TheHive / Cortex** for incident response platform drills.
+  Exercise log:
+  - Date, participants, scenario, duration.
+  - Observations per phase (ingress, triage, patch, disclosure).
+  - Identified gaps (e.g. "PGP key expired", "no 24/7 contact for ENISA").
+  - Actions with owner and deadline.
+  - Next exercise planned for ...
+  Minimum frequency:
+  - Tabletop: annually.
+  - Functional drill: every 2 years.
+  - Penetration test: annually or on major release.
+  - CRA early-warning drill: every 6 months (recommended).
+- **Akzeptanz / Acceptance:** Übungsprotokoll mit Datum, Szenario,
+  Teilnehmenden, Beobachtungen und Folgemaßnahmen; Tabletop jährlich,
+  Functional Drill alle 2 Jahre, Pentest jährlich oder bei Major-Release;
+  identifizierte Lücken in Folge-Tickets überführt.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+### Akzeptanzkriterien gesamt / Overall Acceptance
+
+**DE:** Erfüllt, wenn alle Punkte abgeschlossen sind, security.txt erreichbar
+ist, SLAs definiert sind und der CRA-Meldeweg trainiert wurde.
+
+**EN:** Fulfilled when every item is closed, security.txt is reachable,
+SLAs are defined, and the CRA reporting path has been rehearsed.
+
+### Glossar / Glossary
+
+**DE:** Dieses Glossar erklärt die wichtigsten Begriffe dieser Checkliste in Alltagssprache. Es ändert keine Anforderungen, sondern macht die vorhandenen Prüfpunkte leichter verständlich.
+
+**EN:** This glossary explains the most important terms in this checklist in plain language. It does not change requirements; it makes the existing review items easier to understand.
+
+<a id="cl-06-glossar-cvd"></a>
+
+#### CVD / Coordinated Vulnerability Disclosure
+
+- **DE:** CVD ist ein koordinierter Prozess zur Meldung und Behebung von Schwachstellen. Ziel ist, Betroffene zu schützen und Informationen verantwortungsvoll zu veröffentlichen.
+- **EN:** CVD is a coordinated process for reporting and fixing vulnerabilities. The goal is to protect affected parties and publish information responsibly.
+
+<a id="cl-06-glossar-security-txt"></a>
+
+#### security.txt
+
+- **DE:** security.txt ist eine standardisierte Datei auf einer Website. Sie nennt, wie Sicherheitsforschende Schwachstellen melden können.
+- **EN:** security.txt is a standardised file on a website. It states how security researchers can report vulnerabilities.
+
+<a id="cl-06-glossar-rfc"></a>
+
+#### RFC
+
+- **DE:** Ein RFC ist ein technisches Dokument, das Internet-Standards oder Verfahren beschreibt. Viele Web- und Sicherheitsstandards sind als RFC veröffentlicht.
+- **EN:** An RFC is a technical document describing internet standards or methods. Many web and security standards are published as RFCs.
+
+<a id="cl-06-glossar-cve"></a>
+
+#### CVE
+
+- **DE:** Eine CVE ist eine weltweit eindeutige Kennung für eine bekannte Schwachstelle. Sie hilft, dieselbe Schwachstelle in Tools, Tickets und Meldungen eindeutig zu benennen.
+- **EN:** A CVE is a globally unique identifier for a known vulnerability. It helps name the same vulnerability clearly in tools, tickets, and advisories.
+
+<a id="cl-06-glossar-cvss"></a>
+
+#### CVSS
+
+- **DE:** CVSS ist ein Bewertungssystem für die Schwere von Schwachstellen. Es beschreibt technische Eigenschaften und liefert einen Zahlenwert.
+- **EN:** CVSS is a rating system for vulnerability severity. It describes technical properties and provides a numeric score.
+
+<a id="cl-06-glossar-epss"></a>
+
+#### EPSS
+
+- **DE:** EPSS schätzt, wie wahrscheinlich eine Schwachstelle bald ausgenutzt wird. Es ergänzt CVSS, weil hohe Schwere nicht immer hohe Ausnutzungswahrscheinlichkeit bedeutet.
+- **EN:** EPSS estimates how likely a vulnerability is to be exploited soon. It complements CVSS because high severity does not always mean high exploit likelihood.
+
+<a id="cl-06-glossar-kev"></a>
+
+#### KEV
+
+- **DE:** KEV steht für Known Exploited Vulnerabilities. Der Katalog enthält Schwachstellen, die nachweislich bereits ausgenutzt wurden.
+- **EN:** KEV means Known Exploited Vulnerabilities. The catalogue contains vulnerabilities that have already been exploited in practice.
+
+<a id="cl-06-glossar-sla"></a>
+
+#### SLA
+
+- **DE:** Ein SLA beschreibt verbindliche Service- oder Reaktionszeiten. Bei Schwachstellen legt es fest, wie schnell bewertet oder reagiert werden muss.
+- **EN:** An SLA describes binding service or response times. For vulnerabilities it defines how quickly assessment or response must happen.
+
+<a id="cl-06-glossar-cra"></a>
+
+#### CRA / Cyber Resilience Act
+
+- **DE:** Der Cyber Resilience Act ist eine EU-Verordnung für Produkte mit digitalen Elementen. Er verlangt Sicherheitsanforderungen, Schwachstellenbehandlung und bestimmte Meldungen.
+- **EN:** The Cyber Resilience Act is an EU regulation for products with digital elements. It requires security requirements, vulnerability handling, and certain reports.
+
+<a id="cl-06-glossar-dora"></a>
+
+#### DORA
+
+- **DE:** DORA ist eine EU-Verordnung zur digitalen Betriebsstabilität im Finanzsektor. Sie kann Anforderungen an IT-Risiken, Dienstleister und Sicherheitsvorfälle auslösen.
+- **EN:** DORA is an EU regulation on digital operational resilience in the financial sector. It can trigger requirements for IT risks, service providers, and security incidents.
+
+<a id="cl-06-glossar-csaf"></a>
+
+#### CSAF
+
+- **DE:** CSAF ist ein maschinenlesbares Format für Sicherheitsmeldungen. Es kann Hinweise zu Produkten, Schwachstellen, Bewertungen und Maßnahmen enthalten.
+- **EN:** CSAF is a machine-readable format for security advisories. It can contain information on products, vulnerabilities, ratings, and actions.
+
+<a id="cl-06-glossar-vex"></a>
+
+#### VEX / Vulnerability Exploitability eXchange
+
+- **DE:** VEX erklärt, ob eine bekannte Schwachstelle in einem konkreten Produkt wirklich ausnutzbar ist. Das verhindert unnötige Alarmarbeit.
+- **EN:** VEX explains whether a known vulnerability is actually exploitable in a specific product. This prevents unnecessary alert handling.
+
+<a id="cl-06-glossar-advisory"></a>
+
+#### Advisory / Sicherheitshinweis
+
+- **DE:** Ein Advisory ist ein Sicherheitshinweis an Nutzende oder Kundinnen und Kunden. Es erklärt Risiko, betroffene Versionen und empfohlene Maßnahmen.
+- **EN:** An advisory is a security notice to users or customers. It explains risk, affected versions, and recommended actions.
+
+<a id="cl-06-glossar-patch"></a>
+
+#### Patch
+
+- **DE:** Ein Patch ist eine Änderung, die einen Fehler oder eine Schwachstelle behebt. Für Audits zählt meist auch der Nachweis, wann der Patch bereitgestellt wurde.
+- **EN:** A patch is a change that fixes a bug or vulnerability. For audits, evidence of when the patch was provided usually also matters.
+
+<a id="cl-06-glossar-evidenz"></a>
+
+#### Evidenz / Evidence
+
+- **DE:** Evidenz ist ein prüfbarer Nachweis. Das kann ein Link, Ticket, Scan-Bericht, Pull Request, Protokoll, Architekturdiagramm oder Dokument sein.
+- **EN:** Evidence is verifiable proof. It can be a link, ticket, scan report, pull request, record, architecture diagram, or document.
+
+### Versionshistorie / Version History
+
+- **Version 1.0 (2026-04-27):** Erstfassung / Initial version
+- **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
+- **Version 1.2 (2026-04-30):** CVSS-v4.0-Zielmethode und CRA-Schlussberichte präzisiert / Clarified CVSS v4.0 target method and CRA final reports
+- **Version 1.3 (2026-06-15):** Prüfpunkt 7 um DORA-Screening und CL_01-Verknüpfung zu zusätzlichen Meldewegen ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Extended item 7 with DORA screening and CL_01 linkage to additional reporting paths; synchronized with RL Sichere-Entwicklung v2.9.0.
+
+- **Version 1.4 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
+
+- **Version 1.5 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
+
+---
+
+
+---
+
+<!--
+Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
+Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+This document is organization-neutral and written as a generic training and review baseline.
+-->
+
+> **DE:** Diese Checkliste ist generisch und projektunabhaengig. Sie ist als Ausbildungs-, Review- und Haertungsgrundlage gedacht. Eine Nichtanwendbarkeit muss als `N/A` mit kurzer Begruendung dokumentiert werden.
+>
+> **EN:** This checklist is generic and project-independent. It is intended as a training, review, and hardening baseline. Non-applicability must be documented as `N/A` with a short rationale.
+
+## Checkliste 07 – EU Cyber Resilience Act – Anwendbarkeit / EU Cyber Resilience Act – Applicability
+
+### Zweck / Purpose
+
+**DE:** Diese Checkliste hilft dabei, festzustellen, ob ein Produkt oder
+Dienst unter den EU Cyber Resilience Act (CRA, Verordnung (EU) 2024/2847)
+fällt, welche Pflichten gelten und bis wann sie umzusetzen sind.
+
+**EN:** This checklist helps determine whether a product or service falls
+under the EU Cyber Resilience Act (CRA, Regulation (EU) 2024/2847), which
+duties apply, and the implementation deadline.
+
+### Geltungsbereich / Scope
+
+**DE:** Alle Produkte mit digitalen Elementen (Hardware, Software, Cloud-
+Komponenten), die in der EU bereitgestellt werden. Auch interne Werkzeuge
+sollten geprüft werden, falls sie an Externe abgegeben werden.
+
+**EN:** All products with digital elements (hardware, software, cloud
+components) made available in the EU. Internal tools should also be
+checked if they are shared with external parties.
+
+### Mitgeltende Dokumente / Related Documents
+
+- RL Sichere-Entwicklung
+- Verordnung (EU) 2024/2847 (CRA)
+- ISO/IEC 27001:2022, A.5.31, A.5.32
+- ENISA-Leitfäden zur CRA-Umsetzung
+
+### Wichtige Termine / Key Dates
+
+- **DE:** In Kraft seit 10. Dezember 2024. Regeln zu
+  Konformitätsbewertungsstellen gelten ab 11. Juni 2026. Die Pflicht zur
+  Schwachstellen- und Vorfallmeldung gilt ab 11. September 2026. Die übrigen
+  Pflichten gelten ab 11. Dezember 2027.
+- **EN:** In force since 10 December 2024. Rules for conformity assessment
+  bodies apply from 11 June 2026. Vulnerability and incident reporting duties
+  apply from 11 September 2026. The remaining duties apply from
+  11 December 2027.
+
+#### URL-/Ablageverweise / URLs and Storage Locations
+
+**DE:** Diese Links helfen beim Review. Projekt- oder organisationsinterne Dokumente koennen als lokale Arbeitskopie oder als Verweis auf den festgelegten Ablageort ergaenzt werden.
+
+**EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
+
+- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
+- **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
+- **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
+- **Secure coding guideline:** this guide or an equivalent project-specific guideline
+- **CISA Memory Safe Roadmaps:** [lokale Textfassung des CISA-Dokuments / local text version of the CISA document](../THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.txt), [CISA-Webseite zum Dokument / CISA webpage for the document](https://www.cisa.gov/resources-tools/resources/case-memory-safe-roadmaps)
+- **ISO/IEC 27001:2022:** [offizielle ISO-Webseite zur ISO/IEC 27001:2022 / official ISO webpage for ISO/IEC 27001:2022](https://www.iso.org/standard/27001)
+- **ISO/IEC 27002:2022:** [offizielle ISO-Webseite zur ISO/IEC 27002:2022 / official ISO webpage for ISO/IEC 27002:2022](https://www.iso.org/standard/75652.html)
+- **NIST SSDF SP 800-218:** [NIST-Veröffentlichung SP 800-218 Secure Software Development Framework / NIST publication SP 800-218 Secure Software Development Framework](https://csrc.nist.gov/publications/detail/sp/800-218/final)
+- **NIST Zero Trust SP 800-207:** [NIST-Veröffentlichung SP 800-207 Zero Trust Architecture / NIST publication SP 800-207 Zero Trust Architecture](https://csrc.nist.gov/publications/detail/sp/800-207/final)
+- **OWASP ASVS:** [OWASP-Projektseite Application Security Verification Standard / OWASP project page Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)
+- **OWASP Cheat Sheet Series:** [OWASP Cheat Sheet Series Projektseite / OWASP Cheat Sheet Series project page](https://cheatsheetseries.owasp.org/)
+- **OWASP Proactive Controls:** [OWASP Proactive Controls Projektseite / OWASP Proactive Controls project page](https://owasp.org/www-project-proactive-controls/)
+- **OWASP SAMM:** [OWASP SAMM Projektseite / OWASP SAMM project page](https://owaspsamm.org/)
+- **OWASP Top 10 for LLM Applications:** [OWASP Top 10 for LLM Applications Projektseite / OWASP Top 10 for LLM Applications project page](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- **CWE Top 25:** [MITRE CWE Top 25 Übersicht / MITRE CWE Top 25 overview](https://cwe.mitre.org/top25/)
+- **CAPEC:** [MITRE CAPEC Katalog / MITRE CAPEC catalogue](https://capec.mitre.org/)
+- **CycloneDX:** [CycloneDX SBOM-Standard Projektseite / CycloneDX SBOM standard project page](https://cyclonedx.org/)
+- **SPDX:** [SPDX SBOM-Standard Projektseite / SPDX SBOM standard project page](https://spdx.dev/)
+- **CSAF/VEX:** [OASIS CSAF und VEX Dokumentation / OASIS CSAF and VEX documentation](https://oasis-open.github.io/csaf-documentation/)
+- **SLSA:** [SLSA Supply-chain Levels for Software Artifacts Projektseite / SLSA project page](https://slsa.dev/)
+- **OpenSSF Scorecard:** [OpenSSF Scorecard Projektseite / OpenSSF Scorecard project page](https://scorecard.dev/)
+- **RFC 9116 security.txt:** [RFC 9116 zu security.txt / RFC 9116 for security.txt](https://www.rfc-editor.org/rfc/rfc9116)
+- **NIST AI Risk Management Framework:** [NIST AI Risk Management Framework Webseite / NIST AI Risk Management Framework webpage](https://www.nist.gov/itl/ai-risk-management-framework)
+- **EU Cyber Resilience Act:** [EU-Amtsblatt zum Cyber Resilience Act / EU Official Journal for the Cyber Resilience Act](https://eur-lex.europa.eu/eli/reg/2024/2847/oj)
+- **BSI TR-02102:** [BSI-Webseite zur Technischen Richtlinie TR-02102 / BSI webpage for Technical Guideline TR-02102](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Technische-Richtlinien/TR-nach-Thema-sortiert/tr02102/tr-02102.html)
+
+### Bewertung und Dokumentation / Assessment and Documentation
+
+**DE:** Jeder Prüfpunkt bekommt genau einen Status. Schreibe die Begründung so, dass eine neue Kollegin oder ein neuer Kollege den Entscheid später ohne Rückfrage versteht.
+
+**EN:** Each checklist item gets exactly one status. Write the explanation so that a new team member can understand the decision later without asking again.
+
+- **Erfüllt / Fulfilled:** Die Anforderung ist umgesetzt und es gibt einen prüfbaren Nachweis.
+- **Nicht erfüllt / Not fulfilled:** Die Anforderung ist noch nicht umgesetzt oder der Nachweis fehlt. Es muss eine Aufgabe mit Verantwortlicher Person und Termin geben.
+- **Nicht anwendbar / Not applicable:** Die Anforderung passt nicht zum Projekt. Das ist erlaubt, aber nur mit kurzer Begründung.
+
+**Pflichtfelder je Prüfpunkt / Required fields per item:** Status, Begründung, Evidenzpfad oder Link, nächste Maßnahme mit Verantwortlicher Person und Zieltermin.
+
+### Durchführungshinweise / Implementation Guidance
+
+**DE:** Nutze diese Checkliste nicht als reine Ja/Nein-Liste. Sie ist ein Arbeits- und Auditdokument. Prüfe jeden Punkt gegen reale Artefakte: Code, Pull Request, Architekturdiagramm, Build-Log, Scan-Ergebnis, Ticket, Betriebsdokumentation oder Freigabeprotokoll. Wenn ein Nachweis noch fehlt, markiere den Punkt als „nicht erfüllt" und lege eine konkrete Folgeaufgabe an.
+
+**EN:** Do not use this checklist as a simple yes/no list. It is a working and audit document. Check each item against real artefacts: code, pull request, architecture diagram, build log, scan result, ticket, operations document, or approval record. If evidence is missing, mark the item as "not fulfilled" and create a concrete follow-up task.
+
+**DE:** Schreibe kurze, klare Begründungen. Vermeide Abkürzungen ohne Erklärung. Wenn ein Punkt technisch schwierig ist, beschreibe den aktuellen Stand, das Risiko und den nächsten machbaren Schritt.
+
+**EN:** Write short and clear explanations. Avoid unexplained abbreviations. If an item is technically difficult, describe the current state, the risk, and the next feasible step.
+
+**DE:** Jeder Prüfpunkt muss deshalb drei Fragen beantworten: Was bedeutet die Anforderung im Projektalltag? Was ist konkret zu tun oder zu entscheiden? Welcher Nachweis zeigt das Ergebnis? Verwende Standard-IDs, Toolnamen und Abkürzungen nur zusammen mit einer kurzen Erklärung in Alltagssprache. Wenn ein Punkt für Auszubildende oder neue Teammitglieder nicht selbsterklärend ist, ergänze eine kurze Erklärung in der Begründung.
+
+**EN:** Each item must therefore answer three questions: What does the requirement mean in daily project work? What exactly must be done or decided? Which evidence shows the result? Use standard IDs, tool names, and abbreviations only together with a short plain-language explanation. If an item is not self-explanatory for apprentices or new team members, add a short explanation in the rationale.
+
+### Beispiel / Example
+
+**DE:** Eine intern betriebene reine SaaS-Anwendung kann für CRA „nicht direkt anwendbar" sein. Wird dieselbe Software aber als Produkt oder installierbares Paket an Dritte abgegeben, muss die CRA-Anwendbarkeit neu bewertet und begründet werden.
+
+**EN:** An internally operated pure SaaS application may be "not directly applicable" for CRA. If the same software is delivered to third parties as a product or installable package, CRA applicability must be reassessed and explained.
+
+### A11Y-Hinweise / A11Y Notes
+
+**DE:** Beim Ausfüllen dieser Checkliste müssen alle Nachweise auch textlich verständlich sein. Verweise sollen beschreibende Linktexte haben. Screenshots, Diagramme oder Scan-Auszüge brauchen eine kurze Textbeschreibung. Der Status darf nicht nur über Farbe erkennbar sein.
+
+**EN:** When this checklist is filled in, all evidence must also be understandable as text. References should use descriptive link text. Screenshots, diagrams, or scan extracts need a short text description. The status must not be shown by color alone.
+
+### Wichtige Begriffe / Key Terms
+
+**DE:** Die folgenden Begriffe kommen in dieser Checkliste vor. Die Links springen zum Glossar dieses Kapitels, damit Auszubildende und Entwickler:innen ohne Sicherheits-Spezialwissen die Begriffe direkt nachlesen können.
+
+**EN:** The following terms appear in this checklist. The links jump to this chapter's glossary so that apprentices and developers without specialist security knowledge can look them up directly.
+
+- [CRA / Cyber Resilience Act](#cl-07-glossar-cra)
+- [Produkt mit digitalen Elementen / Product with Digital Elements](#cl-07-glossar-product-digital-elements)
+- [Kritisches Produkt / Critical Product](#cl-07-glossar-critical-product)
+- [Konformitätsbewertung / Conformity Assessment](#cl-07-glossar-conformity-assessment)
+- [CE-Kennzeichnung / CE Marking](#cl-07-glossar-ce-marking)
+- [Technische Dokumentation / Technical Documentation](#cl-07-glossar-technical-documentation)
+- [SBOM / Software Bill of Materials](#cl-07-glossar-sbom)
+- [Schwachstellenbehandlung / Vulnerability Handling](#cl-07-glossar-vulnerability-handling)
+- [Nicht anwendbar / N/A](#cl-07-glossar-nicht-anwendbar)
+- [Evidenz / Evidence](#cl-07-glossar-evidenz)
+
+### Checkliste / Checklist
+
+#### 1. Produktart bestimmen / Determine Product Class
+
+- **DE:** Ist das Produkt ein „Produkt mit digitalen Elementen" gemäß CRA?
+  Reine SaaS-Dienste fallen nicht direkt darunter, eingebettete Komponenten
+  hingegen schon.
+  Definition nach CRA Art. 3 Nr. 1:
+  - „Produkt mit digitalen Elementen" = Software- oder Hardware-Produkt
+    und seine Daten-Fernverarbeitungslösungen, das/die in Verkehr gebracht
+    werden, mit direkter oder indirekter Daten- oder Funktionsverbindung
+    zu Geräten oder Netzen.
+  Typische CRA-relevante Kategorien:
+  - **Hardware mit eingebetteter Software**: Router, IoT-Geräte, Smart-Home-
+    Systeme, Industriesteuerungen, medizinische Geräte (im Kontext CRA).
+  - **Software-Produkte**: Betriebssysteme, Browser, Anwendungssoftware,
+    Mobile Apps, Kommando-Zeilen-Tools, Desktop-Anwendungen.
+  - **Standalone-Komponenten**: Bibliotheken, die separat verkauft werden,
+    SDKs, Firmware-Images.
+  Ausnahmen (CRA gilt nicht oder anders):
+  - **Reine SaaS** (Software as a Service ohne Endkunden-Installation)
+    fällt unter NIS2 statt CRA.
+  - **Open Source** ohne kommerzielle Tätigkeit (nicht-monetarisierte
+    Beiträge), aber mit Sonderrolle „Open Source Software Steward".
+  - **Medizinprodukte (MDR/IVDR)**, **Kfz-Typgenehmigung**, **Luftfahrt**,
+    **Marine-Equipment** – haben eigene Regulatorien.
+  - **Sicherheitskritische Verteidigungsprodukte** – nicht im CRA-Scope.
+  Klassifikations-Workflow:
+  1. Liefert die Organisation ein Produkt aus oder bietet es kommerziell an?
+  2. Hat das Produkt digitale Elemente (Software, Firmware, Daten-
+     verbindung)?
+  3. Wird es im EU-Binnenmarkt in Verkehr gebracht?
+  4. Falls ja: CRA gilt grundsätzlich → Klassifikation gemäß Anhang III/IV
+     prüfen.
+  Werkzeuge:
+  - **CRA Self-Assessment Toolkit** der EU-Kommission (geplant 2026).
+  - **CEN/CENELEC Harmonised Standards** als Konformitätsvermutung.
+  - Interne Klassifikations-Matrix in `docs/security/cra-applicability.md`.
+- **EN:** Is the product a "product with digital elements" per the CRA?
+  Pure SaaS services are not directly covered, but embedded components are.
+  Definition per CRA Art. 3(1):
+  - "Product with digital elements" = software or hardware product and its
+    remote data-processing solutions placed on the market, with direct or
+    indirect data or functional connection to devices or networks.
+  Typical CRA-relevant categories:
+  - **Hardware with embedded software**: routers, IoT devices, smart-home
+    systems, industrial controls, medical devices (in CRA context).
+  - **Software products**: operating systems, browsers, application
+    software, mobile apps, command-line tools, desktop applications.
+  - **Standalone components**: libraries sold separately, SDKs, firmware
+    images.
+  Exceptions (CRA does not apply or applies differently):
+  - **Pure SaaS** (no customer installation) falls under NIS2 instead of
+    CRA.
+  - **Open source** without commercial activity (non-monetised
+    contributions), with special role "open-source software steward".
+  - **Medical devices (MDR/IVDR)**, **vehicle type approval**, **aviation**,
+    **marine equipment** – have their own regulations.
+  - **Security-critical defence products** – outside CRA scope.
+  Classification workflow:
+  1. Does the organisation deliver or commercially offer a product?
+  2. Does the product have digital elements (software, firmware, data
+     connection)?
+  3. Is it placed on the EU internal market?
+  4. If yes: CRA applies in principle → check classification per Annex
+     III/IV.
+  Tools:
+  - **CRA Self-Assessment Toolkit** by the EU Commission (planned 2026).
+  - **CEN/CENELEC harmonised standards** as presumption of conformity.
+  - Internal classification matrix in `docs/security/cra-applicability.md`.
+- **Akzeptanz / Acceptance:** Klassifikation in `docs/security/cra-applicability.md`
+  mit Begründung; Mapping zu Art. 3 Nr. 1 CRA und Ausnahmen-Prüfung;
+  von Geschäftsleitung freigegeben (Datum + Unterschrift).
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 2. Kritikalität nach Anhang III / Criticality per Annex III
+
+- **DE:** Prüfen, ob das Produkt zu den „wichtigen" Klassen I oder II nach
+  Anhang III gehört (z. B. Identitätsmanagement, VPN, EDR, Boot-Manager).
+  Anhang III — Klasse I (wichtige Produkte mit höherem Risiko):
+  - **Identitätsmanagement-Systeme** (IAM, SSO, MFA, Authentifizierungs-
+    server).
+  - **Privileged Access Management (PAM)**, Single-Sign-On.
+  - **Standalone & Embedded Browser**.
+  - **Kennwortmanager**.
+  - **Antivirus-Software**.
+  - **VPN-Produkte** (auch Site-to-Site, Client).
+  - **Netzwerkmanagement-Systeme**.
+  - **SIEM** (Security Information & Event Management).
+  - **Boot-Manager**, Firmware-Loader.
+  - **Public Key Infrastructure (PKI)**, digitale Zertifikatsdienste.
+  - **Physikalische Netzwerk-Schnittstellen** (Router, Switches —
+    konsumentennah).
+  - **Operating Systems** für Unternehmens-Geräte.
+  - **Microcontroller mit sicherheitsrelevanten Funktionen**.
+  - **ASICs/FPGAs** für sicherheitsrelevante Verarbeitung.
+  - **Industrielle Automatisierung & Steuerungssysteme** (PLCs, DCS, HMI).
+  Anhang III — Klasse II (wichtige Produkte mit höherem Risiko):
+  - **Hypervisoren / Container-Runtime-Systeme**.
+  - **Firewalls, IPS, IDS**.
+  - **Manipulationssichere Microprozessoren** (Tamper-resistant).
+  - **Manipulationssichere Microcontroller**.
+  Konsequenzen der Klassifikation:
+  - **Klasse I**: Konformitätsbewertung über Modul A (interne
+    Produktionskontrolle) oder mit harmonisierten Normen.
+  - **Klasse II**: Modul B (EU-Baumusterprüfung) + Modul C oder Modul H
+    (volle Qualitätssicherung) — externe Notified Body erforderlich.
+  Werkzeuge:
+  - Aktuelle Anhang-III-Listen aus Verordnung (EU) 2024/2847.
+  - CEN/CENELEC harmonisierte Normen als Stand der Technik.
+  - [NANDO-Datenbank für Notified Bodies](https://ec.europa.eu/growth/tools-databases/nando/).
+- **EN:** Check whether the product belongs to "important" class I or II
+  per Annex III (e.g. identity management, VPN, EDR, boot managers).
+  Annex III — Class I (important products with higher risk):
+  - **Identity-management systems** (IAM, SSO, MFA, authentication
+    servers).
+  - **Privileged Access Management (PAM)**, single sign-on.
+  - **Standalone and embedded browsers**.
+  - **Password managers**.
+  - **Antivirus software**.
+  - **VPN products** (including site-to-site, client).
+  - **Network management systems**.
+  - **SIEM** (security information & event management).
+  - **Boot managers**, firmware loaders.
+  - **Public-key infrastructure (PKI)**, digital certificate services.
+  - **Physical network interfaces** (routers, switches — consumer-grade).
+  - **Operating systems** for enterprise devices.
+  - **Microcontrollers with security-relevant functions**.
+  - **ASICs/FPGAs** for security-relevant processing.
+  - **Industrial automation & control systems** (PLCs, DCS, HMI).
+  Annex III — Class II (important products with higher risk):
+  - **Hypervisors / container runtime systems**.
+  - **Firewalls, IPS, IDS**.
+  - **Tamper-resistant microprocessors**.
+  - **Tamper-resistant microcontrollers**.
+  Consequences of classification:
+  - **Class I**: conformity assessment via Module A (internal production
+    control) or with harmonised standards.
+  - **Class II**: Module B (EU type examination) + Module C, or Module H
+    (full quality assurance) — external notified body required.
+  Tools:
+  - Up-to-date Annex III lists from Regulation (EU) 2024/2847.
+  - CEN/CENELEC harmonised standards as state of the art.
+  - [NANDO database for notified bodies](https://ec.europa.eu/growth/tools-databases/nando/).
+- **Akzeptanz / Acceptance:** Anhang-III-Zuordnung schriftlich in
+  `docs/security/cra-applicability.md`; bei Klasse II: Notified Body
+  benannt; harmonisierte Normen referenziert; Begründung der gewählten
+  Konformitätsbewertungsmodul.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 3. Kritisch nach Anhang IV / Critical per Annex IV
+
+- **DE:** Prüfen, ob das Produkt zu den „kritischen" Produkten nach
+  Anhang IV gehört (z. B. Hardware-Sicherheitsmodule, Smart Meter Gateways).
+  Diese Klasse erfordert eine externe Konformitätsbewertung.
+  Anhang IV — kritische Produkte mit digitalen Elementen:
+  - **Hardware-Sicherheitsmodule (HSM)** mit Schlüsselgenerierungs-Funktion.
+  - **Smart-Card-IC** und sichere Elemente für Authentifizierung.
+  - **Smart-Meter-Gateways** in intelligenten Messsystemen.
+  - **Andere Produkte**, die per delegiertem Rechtsakt der Kommission als
+    kritisch eingestuft werden (Liste kann sich erweitern).
+  Anforderungen für kritische Produkte:
+  - **Verpflichtende externe Konformitätsbewertung** durch Notified Body
+    (Modul B/C oder H, nicht Selbstbewertung).
+  - **Cybersecurity-Zertifikat** im Rahmen eines europäischen Zertifizierungs-
+    schemas (CSA, gem. Verordnung (EU) 2019/881).
+  - **Common Criteria EAL4+** oder gleichwertige Zertifizierung für HSMs.
+  - **Schutzprofile (Protection Profiles)** wie z. B. PP-SSCD (Secure
+    Signature Creation Device), PP-Smart Meter Gateway.
+  - Höhere Anforderungen an Penetrationstests, Side-Channel-Analyse,
+    Fault-Injection-Tests.
+  Notified-Body-Auswahl:
+  - **NIST-akkreditierte CC-Labs** für Common Criteria.
+  - **DEKRA**, **TÜV Süd**, **TÜV Rheinland**, **Bureau Veritas** mit
+    CRA-Notifikation.
+  - **CCRA Mutual Recognition** beachten für internationale Anerkennung.
+  Werkzeuge:
+  - **CC Tools**: AIS-Liste BSI, BSI Schutzprofile,
+    [Common Criteria Portal](https://www.commoncriteriaportal.org/).
+  - **EUCC** (European Cybersecurity Certification scheme on Common
+    Criteria) als CSA-Implementierung.
+  Falls nicht zutreffend:
+  - Explizit als „nicht in Anhang IV gelistet" begründen, mit Verweis auf
+    Anhang-III- oder Standard-Klassifikation.
+- **EN:** Check whether the product belongs to "critical" products per
+  Annex IV (e.g. hardware security modules, smart meter gateways). This
+  class requires an external conformity assessment.
+  Annex IV — critical products with digital elements:
+  - **Hardware security modules (HSM)** with key-generation function.
+  - **Smart-card ICs** and secure elements for authentication.
+  - **Smart-meter gateways** in smart metering systems.
+  - **Other products** classified as critical via delegated act by the
+    Commission (the list may expand).
+  Requirements for critical products:
+  - **Mandatory external conformity assessment** by a notified body
+    (Module B/C or H, not self-assessment).
+  - **Cybersecurity certificate** under a European certification scheme
+    (CSA, per Regulation (EU) 2019/881).
+  - **Common Criteria EAL4+** or equivalent for HSMs.
+  - **Protection profiles** like PP-SSCD (Secure Signature Creation
+    Device), PP-Smart Meter Gateway.
+  - Higher requirements for penetration testing, side-channel analysis,
+    fault-injection testing.
+  Notified-body selection:
+  - **NIST-accredited CC labs** for Common Criteria.
+  - **DEKRA**, **TÜV Süd**, **TÜV Rheinland**, **Bureau Veritas** with
+    CRA notification.
+  - **CCRA mutual recognition** for international acceptance.
+  Tools:
+  - **CC tools**: BSI AIS list, BSI protection profiles,
+    [Common Criteria Portal](https://www.commoncriteriaportal.org/).
+  - **EUCC** (European Cybersecurity Certification scheme on Common
+    Criteria) as CSA implementation.
+  If not applicable:
+  - Explicitly justify "not listed in Annex IV" referring to the Annex III
+    or standard classification.
+- **Akzeptanz / Acceptance:** Anhang-IV-Prüfung in
+  `docs/security/cra-applicability.md` dokumentiert; bei Treffer: Notified
+  Body, Schutzprofil, geplantes Zertifikat (z. B. EUCC EAL4+) benannt; bei
+  Nicht-Treffer: explizite Begründung mit Verweis auf gewählte Klasse.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 4. Sicherheits-Anforderungen Anhang I Teil I / Annex I Part I Requirements
+
+- **DE:** Die wesentlichen Sicherheitsanforderungen werden umgesetzt:
+  Zugangskontrolle, Vertraulichkeit, Integrität, Verfügbarkeit, sichere
+  Voreinstellungen, Update-Fähigkeit, Datensparsamkeit.
+  CRA Anhang I, Teil I — wesentliche Cybersicherheitsanforderungen
+  (Auswahl):
+  - **Risikobasiertes Design** (Art. 1.1): Sicherheit auf Basis der
+    Risikobewertung (Art. 13 Abs. 2).
+  - **Keine bekannten Schwachstellen** beim Inverkehrbringen
+    (Art. 1.2 lit. a).
+  - **Sichere Standardkonfiguration** (Art. 1.2 lit. b): Default-Settings
+    sicher, Reset auf sicheren Zustand möglich.
+  - **Schutz vor unbefugtem Zugriff** (Art. 1.2 lit. c): Authentifizierung,
+    Identitätsmanagement.
+  - **Vertraulichkeitsschutz** (Art. 1.2 lit. d): Verschlüsselung in
+    Ruhe und im Transit.
+  - **Integritätsschutz** (Art. 1.2 lit. e): von Daten, Befehlen,
+    Konfigurationen, Code.
+  - **Datensparsamkeit** (Art. 1.2 lit. f): nur erforderliche personen-
+    bezogene Daten verarbeiten.
+  - **Verfügbarkeit** (Art. 1.2 lit. g): Schutz vor DoS-Angriffen.
+  - **Reduzierung der Angriffsfläche** (Art. 1.2 lit. h): minimaler
+    Funktionsumfang im Standard.
+  - **Logging und Monitoring** (Art. 1.2 lit. i): Aufzeichnung
+    sicherheitsrelevanter Ereignisse.
+  - **Update-Mechanismus** (Art. 1.2 lit. j): sichere automatische oder
+    manuelle Updates, signierte Updates.
+  - **Sichere Stilllegung / Datenlöschung** (Art. 1.2 lit. k).
+  Anforderungs-Mapping (Beispiel-Tabelle in `docs/security/cra-anhang-i-mapping.md`):
+  | CRA Anf. | Umsetzung | Evidenz |
+  |---|---|---|
+  | 1.2.a Keine bekannten Schwachstellen | OSV-Scan vor Release | `release/v1.2.3/scan-report.json` |
+  | 1.2.b Sichere Defaults | TLS 1.2+, MFA an, Telemetrie aus | `config/defaults.yaml` |
+  | 1.2.c Zugangskontrolle | OAuth 2.1 + RBAC | `arc42/section-08-security.md` |
+  | 1.2.d Vertraulichkeit | AES-GCM in Ruhe, TLS 1.3 in Transit | `security-quality-scenarios.md` |
+  | 1.2.j Update-Mechanismus | Signed Updates via Cosign | `update-mechanism.md` |
+  Harmonisierte Normen als Konformitätsvermutung:
+  - **EN 18031** (Cybersecurity for connected radio equipment).
+  - **ETSI EN 303 645** (IoT Consumer Cybersecurity).
+  - **IEC 62443** (Industrial Security).
+- **EN:** Essential cybersecurity requirements are implemented: access
+  control, confidentiality, integrity, availability, secure defaults,
+  updatability, data minimisation.
+  CRA Annex I, Part I — essential cybersecurity requirements (selection):
+  - **Risk-based design** (Art. 1.1): security based on the risk
+    assessment (Art. 13(2)).
+  - **No known vulnerabilities** when placed on the market
+    (Art. 1.2(a)).
+  - **Secure default configuration** (Art. 1.2(b)): default settings are
+    secure, reset to secure state possible.
+  - **Protection against unauthorised access** (Art. 1.2(c)): authentication,
+    identity management.
+  - **Confidentiality protection** (Art. 1.2(d)): encryption at rest and
+    in transit.
+  - **Integrity protection** (Art. 1.2(e)): of data, commands,
+    configurations, code.
+  - **Data minimisation** (Art. 1.2(f)): process only necessary personal
+    data.
+  - **Availability** (Art. 1.2(g)): protection against DoS attacks.
+  - **Attack-surface reduction** (Art. 1.2(h)): minimal functionality by
+    default.
+  - **Logging and monitoring** (Art. 1.2(i)): recording of security-
+    relevant events.
+  - **Update mechanism** (Art. 1.2(j)): secure automatic or manual
+    updates, signed updates.
+  - **Secure decommissioning / data deletion** (Art. 1.2(k)).
+  Requirement mapping (example table in `docs/security/cra-annex-i-mapping.md`):
+  | CRA req. | Implementation | Evidence |
+  |---|---|---|
+  | 1.2.a No known vulnerabilities | OSV scan before release | `release/v1.2.3/scan-report.json` |
+  | 1.2.b Secure defaults | TLS 1.2+, MFA on, telemetry off | `config/defaults.yaml` |
+  | 1.2.c Access control | OAuth 2.1 + RBAC | `arc42/section-08-security.md` |
+  | 1.2.d Confidentiality | AES-GCM at rest, TLS 1.3 in transit | `security-quality-scenarios.md` |
+  | 1.2.j Update mechanism | Signed updates via Cosign | `update-mechanism.md` |
+  Harmonised standards as presumption of conformity:
+  - **EN 18031** (cybersecurity for connected radio equipment).
+  - **ETSI EN 303 645** (IoT consumer cybersecurity).
+  - **IEC 62443** (industrial security).
+- **Akzeptanz / Acceptance:** Anforderungs-Mapping je Anhang-I-Punkt mit
+  Umsetzung und Evidenz in `docs/security/cra-annex-i-mapping.md`;
+  harmonisierte Normen referenziert; Risikobewertung in
+  `docs/security/risk-assessment.md` verlinkt.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 5. Schwachstellenbehandlung Anhang I Teil II / Annex I Part II Vulnerability Handling
+
+- **DE:** Es gibt eine SBOM, einen Meldeweg, einen Patch-Prozess, eine
+  Sicherheitsrichtlinie und Tests vor Auslieferung.
+  CRA Anhang I, Teil II — Schwachstellenbehandlungs-Anforderungen:
+  - **Schwachstellen identifizieren und dokumentieren** (Art. 2.1 lit. a):
+    SBOM mit allen Komponenten und Versionen.
+  - **Schwachstellen unverzüglich beheben** (Art. 2.1 lit. b): Patch-
+    Prozess mit definierten SLA.
+  - **Sicherheitsmaßnahmen regelmäßig testen** (Art. 2.1 lit. c):
+    Pentests, SAST, DAST, Fuzzing.
+  - **Patches kostenlos und unverzüglich bereitstellen** (Art. 2.1 lit. d):
+    keine Paywall für Sicherheits-Updates.
+  - **Sicherheits-Advisory veröffentlichen** (Art. 2.1 lit. e): CSAF/CVE-
+    Format.
+  - **Coordinated Vulnerability Disclosure Policy** (Art. 2.1 lit. f):
+    siehe Schwachstellenoffenlegung-Checkliste.
+  - **Maßnahmen zur Erleichterung der Meldung** (Art. 2.1 lit. g):
+    `security.txt`, `security@`-Postfach.
+  - **Sichere Update-Verteilung** (Art. 2.1 lit. h): signierte Updates,
+    Rollback-Möglichkeit.
+  Erforderliche Artefakte:
+  - **SBOM** (CycloneDX/SPDX) je Release — siehe Lieferkette-Checkliste.
+  - **Coordinated Vulnerability Disclosure Policy** —
+    `docs/security/cvd-policy.md` und `SECURITY.md`.
+  - **Security.txt** unter `/.well-known/security.txt`.
+  - **Patch-Prozess** in `docs/security/patch-management.md` mit SLA-
+    Tabelle.
+  - **Test-Evidenzen**: Pentest-Bericht (jährlich), SAST/DAST-Reports
+    (CI), Fuzzing-Logs (kontinuierlich).
+  - **Advisory-Vorlage** (CSAF 2.0).
+  Werkzeuge:
+  - **Dependency-Track** mit SBOM-Upload und CVE-Tracking.
+  - **GitHub Security Advisories** + **Dependabot Alerts**.
+  - **CSAF Provider Metadata** für maschinenlesbare Advisories.
+  - **SARIF**-Format für SAST-Ergebnisse.
+- **EN:** There is an SBOM, a reporting channel, a patch process, a
+  security policy, and tests before delivery.
+  CRA Annex I, Part II — vulnerability handling requirements:
+  - **Identify and document vulnerabilities** (Art. 2.1(a)): SBOM with
+    all components and versions.
+  - **Address vulnerabilities without delay** (Art. 2.1(b)): patch
+    process with defined SLAs.
+  - **Test security measures regularly** (Art. 2.1(c)): pentests, SAST,
+    DAST, fuzzing.
+  - **Provide patches free of charge and without delay** (Art. 2.1(d)):
+    no paywall for security updates.
+  - **Publish security advisories** (Art. 2.1(e)): CSAF/CVE format.
+  - **Coordinated vulnerability disclosure policy** (Art. 2.1(f)): see
+    vulnerability disclosure checklist.
+  - **Measures to facilitate reporting** (Art. 2.1(g)): `security.txt`,
+    `security@` mailbox.
+  - **Secure update distribution** (Art. 2.1(h)): signed updates,
+    rollback capability.
+  Required artefacts:
+  - **SBOM** (CycloneDX/SPDX) per release — see supply-chain checklist.
+  - **Coordinated vulnerability disclosure policy** —
+    `docs/security/cvd-policy.md` and `SECURITY.md`.
+  - **`security.txt`** at `/.well-known/security.txt`.
+  - **Patch process** in `docs/security/patch-management.md` with SLA
+    table.
+  - **Test evidence**: pentest report (annual), SAST/DAST reports (CI),
+    fuzzing logs (continuous).
+  - **Advisory template** (CSAF 2.0).
+  Tools:
+  - **Dependency-Track** with SBOM upload and CVE tracking.
+  - **GitHub Security Advisories** + **Dependabot alerts**.
+  - **CSAF provider metadata** for machine-readable advisories.
+  - **SARIF** format for SAST results.
+- **Akzeptanz / Acceptance:** SBOM, security.txt, CVD-Policy, Patch-Prozess
+  mit SLA, Test-Evidenzen, Advisory-Vorlage je Punkt mit Pfad zur Evidenz
+  in `docs/security/cra-annex-ii-mapping.md` dokumentiert.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 6. Konformitätsbewertung / Conformity Assessment
+
+- **DE:** Der passende Bewertungspfad ist gewählt: Selbstbewertung,
+  EU-Baumusterprüfung oder vollständige Qualitätssicherung. Die Wahl ist
+  begründet.
+  Konformitätsbewertungsmodule (CRA Anhang VIII):
+  - **Modul A — Interne Produktionskontrolle (Selbstbewertung)**:
+    - Geeignet für Standard-Produkte (nicht Anhang III oder IV).
+    - Hersteller dokumentiert Konformität intern.
+    - Keine Notified Body erforderlich.
+  - **Modul B — EU-Baumusterprüfung + Modul C — Konformität mit Baumuster**:
+    - Pflicht für Anhang IV und Klasse II nach Anhang III ohne
+      harmonisierte Normen.
+    - Notified Body prüft Baumuster und Serienfertigung.
+  - **Modul H — Vollständige Qualitätssicherung**:
+    - Alternative für Klasse II und kritische Produkte.
+    - Notified Body zertifiziert das gesamte Qualitätsmanagementsystem.
+  - **Europäisches Cybersicherheitszertifikat (CSA, EUCC)**:
+    - Für kritische Produkte nach Anhang IV mit höchsten Anforderungen.
+  Auswahl-Workflow:
+  1. Klasse bestimmen (Anhang III/IV/Standard).
+  2. Harmonisierte Normen verfügbar?
+     - Ja → Modul A (mit Konformitätsvermutung) für Standard und
+       Klasse I möglich.
+     - Nein → externe Bewertung (Modul B+C oder H).
+  3. Klasse II oder Anhang IV → externe Bewertung verpflichtend.
+  4. Bei kritischen Funktionen: zusätzliches CSA/EUCC-Zertifikat.
+  Notified-Body-Auswahl:
+  - [NANDO-Datenbank für Notified and Designated Organisations](https://ec.europa.eu/growth/tools-databases/nando/).
+  - Bekannte CRA-notifizierte Bodies (Stand 2026): TÜV Rheinland,
+    DEKRA, Bureau Veritas, SGS, BSI Group.
+  - Auswahlkriterien: Akkreditierung, Sprache (DE), Branchenexpertise,
+    Lieferzeit, Kosten.
+  Begründungs-Dokument:
+  - Welche Klasse?
+  - Welches Modul?
+  - Welcher Notified Body? (falls anwendbar)
+  - Welche harmonisierten Normen?
+  - Geplanter Zeitplan für Erst-Zertifizierung und Re-Zertifizierung.
+- **EN:** The right assessment route is chosen: self-assessment, EU type-
+  examination, or full quality assurance. The choice is justified.
+  Conformity assessment modules (CRA Annex VIII):
+  - **Module A — internal production control (self-assessment)**:
+    - Suitable for standard products (not Annex III or IV).
+    - Manufacturer documents conformity internally.
+    - No notified body required.
+  - **Module B — EU type-examination + Module C — conformity to type**:
+    - Mandatory for Annex IV and Annex III Class II without harmonised
+      standards.
+    - Notified body assesses type and serial production.
+  - **Module H — full quality assurance**:
+    - Alternative for Class II and critical products.
+    - Notified body certifies the complete quality management system.
+  - **European Cybersecurity Certificate (CSA, EUCC)**:
+    - For critical products per Annex IV with highest requirements.
+  Selection workflow:
+  1. Determine class (Annex III/IV/standard).
+  2. Are harmonised standards available?
+     - Yes → Module A (with presumption of conformity) for standard and
+       Class I possible.
+     - No → external assessment (Module B+C or H).
+  3. Class II or Annex IV → external assessment mandatory.
+  4. For critical functions: additional CSA/EUCC certificate.
+  Notified-body selection:
+  - [NANDO database for Notified and Designated Organisations](https://ec.europa.eu/growth/tools-databases/nando/).
+  - Known CRA-notified bodies (status 2026): TÜV Rheinland, DEKRA,
+    Bureau Veritas, SGS, BSI Group.
+  - Selection criteria: accreditation, language (German), domain
+    expertise, lead time, cost.
+  Justification document:
+  - Which class?
+  - Which module?
+  - Which notified body? (if applicable)
+  - Which harmonised standards?
+  - Planned schedule for initial and re-certification.
+- **Akzeptanz / Acceptance:** Bewertungspfad und Notified Body (falls
+  anwendbar) in `docs/security/cra-conformity-assessment.md` mit
+  Begründung; harmonisierte Normen referenziert; Zeitplan für Zertifizierung
+  enthalten.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 7. CE-Kennzeichnung / CE Marking
+
+- **DE:** Vor Inverkehrbringen wird die CE-Kennzeichnung mit
+  Konformitätserklärung vorbereitet (sofern anwendbar).
+  CE-Kennzeichnungs-Anforderungen:
+  - **Anbringung der CE-Kennzeichnung** (CRA Art. 32):
+    - Auf dem Produkt selbst (sichtbar, lesbar, dauerhaft).
+    - Bei Software: in der Software (Splash-Screen, Settings, Help) und
+      auf der Verpackung / im Online-Shop.
+    - Mindestgröße: 5 mm Höhe; bei kleineren Geräten zulässig kleiner.
+  - **EU-Konformitätserklärung (DoC)** (CRA Art. 28, Anhang V):
+    - Pflichtfelder:
+      - Hersteller-Name und -Anschrift, ggf. Bevollmächtigter.
+      - Produktname, Modell-/Typennummer, Seriennummer / Charge.
+      - „Diese Konformitätserklärung wird unter alleiniger Verantwortung
+        des Herstellers ausgestellt."
+      - Verweis auf CRA: „Verordnung (EU) 2024/2847".
+      - Liste der angewandten harmonisierten Normen.
+      - Bei Notified Body: Name, Identifikationsnummer, Typ der
+        Bescheinigung.
+      - Ort, Datum, Unterschrift, Funktion.
+    - Sprache: in der/den Sprache(n) der Mitgliedstaaten, in denen
+      vermarktet wird.
+  - **Begleitende Informationen** (CRA Art. 13, Anhang II):
+    - Sicherheits-Hinweise, sichere Inbetriebnahme.
+    - Update-Mechanismen, Lifetime, Support-Zeitraum.
+    - Liste angeschlossener Dienste.
+    - Reset-Anleitung auf sicheren Zustand.
+    - Kontakt für Schwachstellenmeldungen.
+  Vorlage einer DoC:
+  ```text
+  EU-Konformitätserklärung
+  
+  Hersteller: Organisation, Beispielstrasse 1, 12345 Beispielstadt, Deutschland
+  Produkt: WidgetService 3.2.4
+  Erklärung: Wir erklären in alleiniger Verantwortung, dass das oben
+  bezeichnete Produkt allen einschlägigen Bestimmungen der Verordnung
+  (EU) 2024/2847 (Cyber Resilience Act) entspricht.
+  Angewandte harmonisierte Normen: EN 18031:2024, ETSI EN 303 645
+  Notified Body: TÜV Rheinland, ID 0197, Modul B+C
+  Zertifikat-Nr.: TR-CRA-2026-XXXX
+  Ort, Datum: Beispielstadt, 2026-04-27
+  Unterschrift: ____________________ Geschäftsführer
+  ```
+- **EN:** Before placing on the market, CE marking with declaration of
+  conformity is prepared (if applicable).
+  CE marking requirements:
+  - **Affixing CE marking** (CRA Art. 32):
+    - On the product itself (visible, legible, durable).
+    - For software: in the software (splash screen, settings, help) and
+      on the packaging / online shop.
+    - Minimum size: 5 mm height; smaller is permitted on small devices.
+  - **EU Declaration of Conformity (DoC)** (CRA Art. 28, Annex V):
+    - Mandatory fields:
+      - Manufacturer name and address, possibly authorised representative.
+      - Product name, model/type number, serial number / batch.
+      - "This declaration of conformity is issued under the sole
+        responsibility of the manufacturer."
+      - Reference to CRA: "Regulation (EU) 2024/2847".
+      - List of harmonised standards applied.
+      - For notified body: name, identification number, type of
+        certificate.
+      - Place, date, signature, role.
+    - Language: in the language(s) of the member states where marketed.
+  - **Accompanying information** (CRA Art. 13, Annex II):
+    - Safety advice, secure setup.
+    - Update mechanisms, lifetime, support period.
+    - List of connected services.
+    - Reset instructions to a secure state.
+    - Contact for vulnerability reports.
+  DoC template:
+  ```text
+  EU Declaration of Conformity
+  
+  Manufacturer: Organisation, Example Street 1, 12345 Example City, Germany
+  Product: WidgetService 3.2.4
+  Statement: We declare under our sole responsibility that the product
+  identified above complies with all relevant provisions of Regulation
+  (EU) 2024/2847 (Cyber Resilience Act).
+  Applied harmonised standards: EN 18031:2024, ETSI EN 303 645
+  Notified Body: TÜV Rheinland, ID 0197, Module B+C
+  Certificate No.: TR-CRA-2026-XXXX
+  Place, Date: Beispielstadt, 2026-04-27
+  Signature: ____________________ Managing Director
+  ```
+- **Akzeptanz / Acceptance:** EU-DoC im Release-Paket (PDF + Markdown);
+  CE-Kennzeichnung im Produkt sichtbar (Splash, Settings); Begleit-
+  informationen nach Anhang II vollständig; Sprache in DE und EN
+  (mindestens).
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 8. Technische Dokumentation / Technical Documentation
+
+- **DE:** Die technische Dokumentation umfasst Risikobewertung,
+  Bedrohungsmodell, SBOM, Architekturbeschreibung, Test- und Patch-Belege.
+  Pflichtinhalte (CRA Anhang VII):
+  - **Allgemeine Beschreibung des Produkts**: Funktion, Komponenten, Schnitt-
+    stellen, Lebenszyklus.
+  - **Konzeption, Entwicklung, Herstellungsprozess**: Architekturdiagramm
+    (arc42), Datenflussdiagramm, Komponentendiagramm.
+  - **Risikobewertung** (Cybersecurity Risk Assessment) mit:
+    - Bedrohungsmodell (STRIDE + CAPEC).
+    - Schutzziele (CIA + Authentizität, Nicht-Abstreitbarkeit).
+    - Restrisiken mit Akzeptanz und Begründung.
+  - **Anwendung der wesentlichen Anforderungen** aus Anhang I:
+    Mapping-Tabelle je Anforderung mit Umsetzung.
+  - **Anwendbarkeit harmonisierter Normen**: Liste mit Versionen.
+  - **Konformitätsbewertungsbericht**: Ergebnis je Modul, ggf. Notified-
+    Body-Bescheinigung.
+  - **Test-Evidenz**: SAST, DAST, Pentest, Fuzzing, Vulnerability-Scan-
+    Reports.
+  - **SBOM** (CycloneDX/SPDX) je Release-Version.
+  - **Patch-Management-Plan** und Lifecycle-Tabelle.
+  - **Coordinated Vulnerability Disclosure Policy**.
+  - **Konformitätserklärung (DoC)** Kopie.
+  Empfohlene Ordnerstruktur:
+  ```text
+  docs/
+    cra-dossier/
+      00-overview.md
+      01-product-description.md
+      02-architecture/
+        arc42-section-08.md
+        dfd.drawio
+      03-risk-assessment/
+        threat-model.md
+        risk-register.md
+      04-annex-i-mapping/
+        annex-i-part-i.md
+        annex-i-part-ii.md
+      05-conformity/
+        module-a-self-assessment.md
+        notified-body-certificate.pdf
+      06-test-evidence/
+        sast-report-2026-04.sarif
+        pentest-2026-q1.pdf
+        sbom-v3.2.4.cdx.json
+      07-lifecycle/
+        patch-management.md
+        eol-policy.md
+      08-cvd-policy.md
+      09-doc-2026-04-27.pdf
+  ```
+  Aufbewahrungsfristen:
+  - **Mindestens 10 Jahre** nach Inverkehrbringen (CRA Art. 7).
+  - **Audit-fest**: WORM-Storage, Cloud-Storage mit Object-Lock,
+    qualifiziertes elektronisches Siegel.
+- **EN:** Technical documentation includes risk assessment, threat model,
+  SBOM, architecture description, test evidence, and patch evidence.
+  Mandatory contents (CRA Annex VII):
+  - **General description of the product**: function, components,
+    interfaces, lifecycle.
+  - **Design, development, manufacturing process**: architecture diagram
+    (arc42), data-flow diagram, component diagram.
+  - **Risk assessment** (cybersecurity risk assessment) with:
+    - Threat model (STRIDE + CAPEC).
+    - Security objectives (CIA + authenticity, non-repudiation).
+    - Residual risks with acceptance and justification.
+  - **Application of essential requirements** from Annex I: mapping
+    table per requirement with implementation.
+  - **Applicability of harmonised standards**: list with versions.
+  - **Conformity assessment report**: result per module, possibly
+    notified-body certificate.
+  - **Test evidence**: SAST, DAST, pentest, fuzzing, vulnerability scan
+    reports.
+  - **SBOM** (CycloneDX/SPDX) per release version.
+  - **Patch management plan** and lifecycle table.
+  - **Coordinated vulnerability disclosure policy**.
+  - **Declaration of Conformity (DoC)** copy.
+  Recommended folder structure:
+  ```text
+  docs/
+    cra-dossier/
+      00-overview.md
+      01-product-description.md
+      02-architecture/
+        arc42-section-08.md
+        dfd.drawio
+      03-risk-assessment/
+        threat-model.md
+        risk-register.md
+      04-annex-i-mapping/
+        annex-i-part-i.md
+        annex-i-part-ii.md
+      05-conformity/
+        module-a-self-assessment.md
+        notified-body-certificate.pdf
+      06-test-evidence/
+        sast-report-2026-04.sarif
+        pentest-2026-q1.pdf
+        sbom-v3.2.4.cdx.json
+      07-lifecycle/
+        patch-management.md
+        eol-policy.md
+      08-cvd-policy.md
+      09-doc-2026-04-27.pdf
+  ```
+  Retention periods:
+  - **At least 10 years** after placing on the market (CRA Art. 7).
+  - **Audit-proof**: WORM storage, cloud storage with Object Lock,
+    qualified electronic seal.
+- **Akzeptanz / Acceptance:** CRA-Dossier vollständig in
+  `docs/cra-dossier/` mit allen Anhang-VII-Inhalten; 10-Jahre-Retention
+  konfiguriert (z. B. S3 Object Lock); audit-feste Ablage; Index-Dokument
+  `00-overview.md` mit Verweisen.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 9. Meldepflichten 24 / 72 Stunden / 24- and 72-hour Reports
+
+- **DE:** Verfahren für Frühwarnung (24 Stunden), Update-Meldung
+  (72 Stunden) und Schlussbericht an CSIRT/ENISA sind eingerichtet.
+  CRA Art. 14 — Meldepflichten:
+  - **24 Stunden** nach Bekanntwerden einer aktiv ausgenutzten
+    Schwachstelle: Frühwarnung (Early Warning) an ENISA + nationale
+    CSIRT.
+  - **72 Stunden**: Vulnerability Notification mit detaillierter
+    Beschreibung, Schwere, betroffene Versionen, Mitigation.
+  - **14 Tage** nach Patch-Bereitstellung: Schlussbericht zu aktiv
+    ausgenutzten Schwachstellen mit Root Cause, getroffenen Maßnahmen und
+    Lessons Learned.
+  - **Ein Monat** nach der 72-Stunden-Meldung: Schlussbericht zu schweren
+    Sicherheitsvorfällen.
+  - **24 Stunden** bei schwerwiegendem Sicherheitsvorfall (Incident
+    Notification) – separat von Vulnerability Notification.
+  Erforderliche Verfahren:
+  - **Krisen-Runbook** mit Eskalationskette: Engineer -> Lead -> Security Lead ->
+    Geschäftsleitung.
+  - **24/7-Bereitschaft** mit definiertem On-Call-Schedule (z. B.
+    PagerDuty, Opsgenie).
+  - **Kommunikationsmatrix**: wer benachrichtigt ENISA, BSI, Kunden,
+    Pressestelle, Recht.
+  - **Vorlagentexte** in DE und EN für ENISA- und BSI-Meldungen.
+  - **Decision-Tree** zur Klassifikation: aktiv ausgenutzt / potenziell
+    ausnutzbar / kein Risiko.
+  - **Übungen** mindestens halbjährlich (siehe Schwachstellen-Checkliste
+    Item 11).
+  Meldekanäle:
+  - **ENISA Single Reporting Platform** (geplant ab 2026).
+  - **BSI CSIRT-Bund**: `cert@bsi.bund.de`,
+    [BSI-Meldeformular](https://www.bsi.bund.de/DE/Service/Meldestelle).
+  - **Nationale CSIRT** je Mitgliedstaat (CSIRT-Network).
+  - **CSAF Document** für maschinenlesbare Meldungen.
+  Pflichtfelder einer Frühwarnung:
+  - Hersteller-Identifikation.
+  - Produkt-Identifikation (Name, Version).
+  - Kurzbeschreibung der Schwachstelle/des Vorfalls.
+  - Hinweise auf aktive Ausnutzung (IOCs, Quelle).
+  - Vorläufige CVSS-Bewertung.
+  - Bekannte Mitigationen oder Workaround.
+  - Ansprechperson + 24/7-Kontakt.
+  Werkzeuge:
+  - **TheHive / Cortex** für Incident-Response-Plattform.
+  - **MISP** für Threat-Intelligence-Sharing.
+  - **CSAF Provider Tools** für maschinenlesbare Veröffentlichung.
+- **EN:** Procedures for early warning (24 hours), update notification
+  (72 hours), and final report to CSIRT/ENISA are in place.
+  CRA Art. 14 — reporting obligations:
+  - **24 hours** after becoming aware of an actively exploited
+    vulnerability: early warning to ENISA + national CSIRT.
+  - **72 hours**: vulnerability notification with detailed description,
+    severity, affected versions, mitigation.
+  - **14 days** after patch availability: final report for actively exploited
+    vulnerabilities with root cause, measures taken, and lessons learned.
+  - **One month** after the 72-hour notification: final report for severe
+    incidents.
+  - **24 hours** for severe security incident (incident notification) –
+    separate from vulnerability notification.
+  Required procedures:
+  - **Crisis runbook** with escalation chain: engineer -> lead -> Security Lead ->
+    management.
+  - **24/7 on-call** with defined schedule (e.g. PagerDuty, Opsgenie).
+  - **Communication matrix**: who notifies ENISA, BSI, customers,
+    press, legal.
+  - **Template texts** in DE and EN for ENISA and BSI notifications.
+  - **Decision tree** for classification: actively exploited / potentially
+    exploitable / no risk.
+  - **Exercises** at least semi-annually (see vulnerability checklist
+    item 11).
+  Reporting channels:
+  - **ENISA Single Reporting Platform** (planned from 2026).
+  - **BSI CSIRT-Bund**: `cert@bsi.bund.de`,
+    [BSI reporting form](https://www.bsi.bund.de/DE/Service/Meldestelle).
+  - **National CSIRTs** per member state (CSIRT Network).
+  - **CSAF document** for machine-readable notifications.
+  Mandatory fields of an early warning:
+  - Manufacturer identification.
+  - Product identification (name, version).
+  - Short description of the vulnerability/incident.
+  - Indicators of active exploitation (IOCs, source).
+  - Preliminary CVSS score.
+  - Known mitigations or workaround.
+  - Contact person + 24/7 number.
+  Tools:
+  - **TheHive / Cortex** for incident-response platform.
+  - **MISP** for threat-intelligence sharing.
+  - **CSAF provider tools** for machine-readable publication.
+- **Akzeptanz / Acceptance:** Krisen-Runbook in
+  `docs/security/incident-response.md`; 24/7-On-Call-Schedule
+  konfiguriert; Vorlagentexte DE/EN; Decision-Tree für 24/72-h-Klassifikation;
+  letzte Übung ≤ 6 Monate.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 10. Lebenszyklus und Support / Lifecycle and Support
+
+- **DE:** Die erwartete Nutzungsdauer (Expected Product Lifetime) und der
+  Support-Zeitraum sind festgelegt und öffentlich kommuniziert. Gemäß CRA
+  Art. 13(8) sind Sicherheits-Updates mindestens über den Support-Zeitraum
+  oder mindestens 5 Jahre (je nachdem, was länger ist) bereitzustellen.
+  Lifecycle-Modelle: Semantic Versioning (Major/Minor/Patch) mit klarer
+  Deprecation-Policy; Long-Term-Support (LTS) für stabile Versionen mit
+  definiertem Sicherheits-Patch-Zeitraum (z. B. Ubuntu LTS 5–10 Jahre, .NET
+  LTS 3 Jahre); N/N-1-Support (aktuelle und vorherige Major-Version).
+  Beispieltabelle: `v1.0` Released 2025-01, EOS (End of Sale) 2027-01, EOL
+  (End of Life) 2030-01, EOSS (End of Security Support) 2030-01. Mindestens
+  12 Monate vor EOL angekündigt (EOL-Notice). Kommunikationskanäle:
+  Produkt-Website unter `Lifecycle Policy`, Release Notes, Customer Portal,
+  E-Mail-Verteiler, Security Advisories. Migrationsleitfaden zur Nachfolge-
+  Version mitgeliefert. Einstellung der Sicherheits-Updates dokumentiert
+  in `docs/lifecycle-policy.md` mit Versionsmatrix.
+- **EN:** Expected product lifetime and support period are defined and
+  publicly communicated. Per CRA Art. 13(8), security updates must be
+  provided for at least the support period or at least 5 years (whichever
+  is longer). Lifecycle models: Semantic Versioning (Major/Minor/Patch)
+  with clear deprecation policy; Long-Term Support (LTS) for stable
+  versions with defined security patch window (e.g. Ubuntu LTS 5–10 years,
+  .NET LTS 3 years); N/N-1 support (current and previous major version).
+  Example table: `v1.0` Released 2025-01, EOS (End of Sale) 2027-01, EOL
+  (End of Life) 2030-01, EOSS (End of Security Support) 2030-01. Announced
+  at least 12 months before EOL (EOL notice). Communication channels:
+  product website under `Lifecycle Policy`, release notes, customer
+  portal, email distribution list, security advisories. Migration guide
+  to successor version provided. End of security updates documented in
+  `docs/lifecycle-policy.md` with version matrix.
+- **Akzeptanz / Acceptance:** `docs/lifecycle-policy.md` mit Versions-
+  Matrix (Released, EOS, EOL, EOSS); öffentliche Lifecycle-Seite mit
+  Mindestsupport ≥ 5 Jahre gemäß CRA Art. 13(8); EOL-Notice ≥ 12 Monate
+  vor Abschaltung; Migrationsleitfaden für Nachfolge-Version. /
+  `docs/lifecycle-policy.md` with version matrix (Released, EOS, EOL,
+  EOSS); public lifecycle page with minimum support ≥ 5 years per CRA
+  Art. 13(8); EOL notice ≥ 12 months before shutdown; migration guide
+  for successor version.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 11. Hersteller-Pflichten und -Verträge / Manufacturer Duties and Contracts
+
+- **DE:** Verträge mit Zulieferern (Komponenten-Lieferanten, OSS-Wartungs-
+  vertragspartner, Dienstleister) und mit dem Vertrieb (Distributoren,
+  Importeure, Reseller) decken die CRA-Pflichten ab. Verbindliche
+  Vertragsklauseln für Zulieferer: (1) Schwachstellenmeldung an Hersteller
+  innerhalb von 24 h nach Kenntnis; (2) Bereitstellung von
+  Sicherheits-Updates mindestens über den Produkt-Lifecycle des
+  Endprodukts; (3) SBOM-Lieferung mit jeder Komponentenversion (CycloneDX
+  oder SPDX); (4) Audit-Recht für CRA-Konformitätsprüfung; (5) Haftung und
+  Gewährleistung für Sicherheitsmängel; (6) Coordinated Vulnerability
+  Disclosure (CVD) Policy; (7) Right to Repair / Source-Code-Hinterlegung
+  bei Insolvenz (Escrow). Klauseln für Distributoren/Importeure (CRA Art.
+  19, 20): Pflicht zur Konformitätsprüfung, Aufbewahrung der Konformitäts-
+  erklärung, Weiterleitung von Sicherheitsmeldungen, Nichtinverkehrbringen
+  bei Bedenken. Vertragsvorlagen verfügbar als `vendor-security-clauses.md`
+  und `distributor-cra-clauses.md`. Bestehende Verträge per Addendum oder
+  Vertragsänderung an CRA-Pflichten angepasst. Lieferantenmanagement-
+  Datenbank (z. B. SAP Ariba, Coupa) hält Compliance-Status pro Lieferant.
+- **EN:** Contracts with suppliers (component suppliers, OSS maintenance
+  partners, service providers) and with distributors (distributors,
+  importers, resellers) cover the CRA duties. Mandatory contractual
+  clauses for suppliers: (1) vulnerability notification to the manufacturer
+  within 24 h of knowledge; (2) security updates for at least the
+  end-product lifecycle; (3) SBOM delivery with every component version
+  (CycloneDX or SPDX); (4) audit right for CRA conformity; (5) liability
+  and warranty for security defects; (6) Coordinated Vulnerability
+  Disclosure (CVD) policy; (7) right to repair / source-code escrow on
+  insolvency. Clauses for distributors/importers (CRA Art. 19, 20):
+  conformity check duty, retention of declaration of conformity,
+  forwarding of security notifications, non-placement on concerns.
+  Contract templates available as `vendor-security-clauses.md` and
+  `distributor-cra-clauses.md`. Existing contracts adapted via addendum
+  or amendment to CRA duties. Vendor management database (e.g. SAP Ariba,
+  Coupa) holds compliance status per supplier.
+- **Akzeptanz / Acceptance:** Vertragsklauseln in `vendor-security-clauses.md`
+  und `distributor-cra-clauses.md`; alle bestehenden Verträge mit
+  CRA-relevantem Bezug aktualisiert oder per Addendum erweitert;
+  Lieferantenliste mit CRA-Compliance-Status gepflegt. /
+  Contractual clauses in `vendor-security-clauses.md` and
+  `distributor-cra-clauses.md`; all existing contracts with CRA-relevant
+  scope updated or extended via addendum; supplier list with CRA
+  compliance status maintained.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 12. Nichtanwendbarkeit dokumentieren / Document Non-Applicability
+
+- **DE:** Wenn der CRA für ein Produkt oder eine Komponente nicht anwendbar
+  ist, wird dies im Anwendbarkeitsbericht (`docs/cra-applicability.md`) mit
+  ausführlicher Begründung festgehalten. Die Entscheidung verweist auf das
+  regulatorische Screening nach CL_Standards-Anwendbarkeit. Pflichtfelder
+  pro Eintrag: (1)
+  Produktname und Version; (2) Begründung der Nichtanwendbarkeit mit
+  Verweis auf konkrete CRA-Ausnahmeklausel (z. B. Art. 2 Abs. 2: SaaS-
+  Dienste; Art. 2 Abs. 3: MDR/IVDR-Medizinprodukte; Art. 2 Abs. 4:
+  Verteidigungsprodukte; Art. 2 Abs. 5: Produkte rein für nationale
+  Sicherheit); (3) Datum der Bewertung; (4) Verantwortliche Person mit
+  Name und Funktion; (5) Vier-Augen-Prüfung (zweite Person); (6) Datum der
+  nächsten Überprüfung (mindestens jährlich oder bei Produktänderung); (7)
+  Rechtsbeistand oder Compliance-Officer hinzugezogen (ja/nein). Beispiel-
+  Eintrag: „Produkt: organisationsinterne Cloud-Storage SaaS v3.1 — Begründung: SaaS-Dienst
+  ohne Bereitstellung als Produkt mit digitalen Elementen, fällt unter
+  NIS2-Richtlinie (RL (EU) 2022/2555) Art. 21, nicht unter CRA Art. 1.
+  Bewertet am 2026-04-15 durch Anna Schmidt (Security Lead), gegengeprüft durch
+  Markus Weber (Datenschutzbeauftragter), nächste Überprüfung 2027-04-15.
+  Rechtsabteilung konsultiert: ja, Aktenzeichen LE-2026-042." Stillschwei-
+  gende Auslassung (kein Eintrag) ist nicht zulässig.
+- **EN:** If the CRA is not applicable to a product or component, this is
+  recorded in the applicability report (`docs/cra-applicability.md`) with
+  detailed justification. The decision references the regulatory screening
+  under CL_Standards-Anwendbarkeit. Mandatory fields per entry: (1) product name
+  and version; (2) justification with reference to the specific CRA
+  exemption clause (e.g. Art. 2(2): SaaS services; Art. 2(3): MDR/IVDR
+  medical devices; Art. 2(4): defence products; Art. 2(5): national
+  security only); (3) date of assessment; (4) responsible person with
+  name and function; (5) four-eyes review (second person); (6) date of
+  next review (at least annually or on product change); (7) legal counsel
+  or compliance officer consulted (yes/no). Example entry: „Product: Organisation
+  Cloud Storage SaaS v3.1 — Justification: SaaS service without provision
+  as a product with digital elements, falls under NIS2 Directive (Dir.
+  (EU) 2022/2555) Art. 21, not under CRA Art. 1. Assessed on 2026-04-15
+  by Anna Schmidt (Security Lead), countersigned by Markus Weber (Data Protection
+  Officer), next review 2027-04-15. Legal department consulted: yes,
+  reference LE-2026-042." Silent omission (no entry) is not permitted.
+- **Akzeptanz / Acceptance:** `docs/cra-applicability.md` enthält je
+  ausgenommenes Produkt einen Eintrag mit allen sieben Pflichtfeldern
+  (Produkt+Version, CRA-Ausnahmeklausel, Datum, verantwortliche Person,
+  Vier-Augen-Prüfer, nächste Überprüfung, Rechtsbeistand-Konsultation);
+  jährliche Wiedervorlage aktiv; CL_01-Regulatory-Screening ist verlinkt
+  oder inhaltlich gleichwertig enthalten. / `docs/cra-applicability.md` contains
+  one entry per exempted product with all seven mandatory fields
+  (product+version, CRA exemption clause, date, responsible person,
+  four-eyes reviewer, next review, legal counsel consultation); annual
+  re-review active; CL_01 regulatory screening is linked or included in an
+  equivalent way.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+### Akzeptanzkriterien gesamt / Overall Acceptance
+
+**DE:** Erfüllt, wenn alle Punkte abgeschlossen sind und das CRA-Dossier
+revisionsfest abgelegt ist.
+
+**EN:** Fulfilled when every item is closed and the CRA dossier is stored
+in an audit-ready way.
+
+### Glossar / Glossary
+
+**DE:** Dieses Glossar erklärt die wichtigsten Begriffe dieser Checkliste in Alltagssprache. Es ändert keine Anforderungen, sondern macht die vorhandenen Prüfpunkte leichter verständlich.
+
+**EN:** This glossary explains the most important terms in this checklist in plain language. It does not change requirements; it makes the existing review items easier to understand.
+
+<a id="cl-07-glossar-cra"></a>
+
+#### CRA / Cyber Resilience Act
+
+- **DE:** Der Cyber Resilience Act ist eine EU-Verordnung für Produkte mit digitalen Elementen. Er verlangt Sicherheitsanforderungen, Schwachstellenbehandlung und bestimmte Meldungen.
+- **EN:** The Cyber Resilience Act is an EU regulation for products with digital elements. It requires security requirements, vulnerability handling, and certain reports.
+
+<a id="cl-07-glossar-product-digital-elements"></a>
+
+#### Produkt mit digitalen Elementen / Product with Digital Elements
+
+- **DE:** Ein Produkt mit digitalen Elementen ist Software oder Hardware mit Softwarebezug, die unter den CRA fallen kann.
+- **EN:** A product with digital elements is software or hardware with software relevance that may fall under the CRA.
+
+<a id="cl-07-glossar-critical-product"></a>
+
+#### Kritisches Produkt / Critical Product
+
+- **DE:** Ein kritisches Produkt ist nach CRA besonders sicherheitsrelevant. Die Einstufung kann strengere Prüf- und Dokumentationspflichten auslösen.
+- **EN:** A critical product is especially security-relevant under the CRA. The classification can trigger stricter review and documentation duties.
+
+<a id="cl-07-glossar-conformity-assessment"></a>
+
+#### Konformitätsbewertung / Conformity Assessment
+
+- **DE:** Eine Konformitätsbewertung prüft, ob ein Produkt die geltenden Anforderungen erfüllt. Beim CRA kann sie Voraussetzung für die Bereitstellung sein.
+- **EN:** A conformity assessment checks whether a product meets applicable requirements. Under the CRA it can be required before making the product available.
+
+<a id="cl-07-glossar-ce-marking"></a>
+
+#### CE-Kennzeichnung / CE Marking
+
+- **DE:** Die CE-Kennzeichnung zeigt, dass ein Produkt nach Erklärung des Herstellers die einschlägigen EU-Anforderungen erfüllt.
+- **EN:** CE marking shows that, according to the manufacturer’s declaration, a product meets the relevant EU requirements.
+
+<a id="cl-07-glossar-technical-documentation"></a>
+
+#### Technische Dokumentation / Technical Documentation
+
+- **DE:** Technische Dokumentation beschreibt Produkt, Architektur, Risiken, Sicherheitsmaßnahmen, Tests und Nachweise so, dass Prüfung und Wartung möglich sind.
+- **EN:** Technical documentation describes product, architecture, risks, security measures, tests, and evidence so that review and maintenance are possible.
+
+<a id="cl-07-glossar-sbom"></a>
+
+#### SBOM / Software Bill of Materials
+
+- **DE:** Eine SBOM ist eine Stückliste für Software. Sie nennt Komponenten, Versionen und oft Lizenzen, damit Risiken und Schwachstellen schneller gefunden werden.
+- **EN:** An SBOM is a bill of materials for software. It lists components, versions, and often licences so that risks and vulnerabilities can be found faster.
+
+<a id="cl-07-glossar-vulnerability-handling"></a>
+
+#### Schwachstellenbehandlung / Vulnerability Handling
+
+- **DE:** Schwachstellenbehandlung umfasst Erkennen, Bewerten, Beheben und Kommunizieren von Schwachstellen. Sie braucht klare Zuständigkeiten und Fristen.
+- **EN:** Vulnerability handling covers identifying, assessing, fixing, and communicating vulnerabilities. It needs clear responsibilities and deadlines.
+
+<a id="cl-07-glossar-nicht-anwendbar"></a>
+
+#### Nicht anwendbar / N/A
+
+- **DE:** Nicht anwendbar bedeutet, dass ein Prüfpunkt sachlich nicht zum Projekt passt. Diese Entscheidung braucht immer eine kurze und nachvollziehbare Begründung.
+- **EN:** Not applicable means that a review item does not fit the project. This decision always needs a short and traceable reason.
+
+<a id="cl-07-glossar-evidenz"></a>
+
+#### Evidenz / Evidence
+
+- **DE:** Evidenz ist ein prüfbarer Nachweis. Das kann ein Link, Ticket, Scan-Bericht, Pull Request, Protokoll, Architekturdiagramm oder Dokument sein.
+- **EN:** Evidence is verifiable proof. It can be a link, ticket, scan report, pull request, record, architecture diagram, or document.
+
+### Versionshistorie / Version History
+
+- **Version 1.0 (2026-04-27):** Erstfassung / Initial version
+- **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
+- **Version 1.2 (2026-04-30):** CRA-Stichtage und Schlussbericht-Fristen konkretisiert / Clarified CRA key dates and final-report deadlines
+- **Version 1.3 (2026-06-15):** Nichtanwendbarkeitsentscheidung mit CL_01-Regulatory-Screening verknüpft; synchron mit RL Sichere-Entwicklung v2.9.0. / Linked non-applicability decisions to CL_01 regulatory screening; synchronized with RL Sichere-Entwicklung v2.9.0.
+
+- **Version 1.4 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
+
+- **Version 1.5 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
+
+---
+
+
+---
+
+<!--
+Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
+Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+This document is organization-neutral and written as a generic training and review baseline.
+-->
+
+> **DE:** Diese Checkliste ist generisch und projektunabhaengig. Sie ist als Ausbildungs-, Review- und Haertungsgrundlage gedacht. Eine Nichtanwendbarkeit muss als `N/A` mit kurzer Begruendung dokumentiert werden.
+>
+> **EN:** This checklist is generic and project-independent. It is intended as a training, review, and hardening baseline. Non-applicability must be documented as `N/A` with a short rationale.
+
+## Checkliste 08 – Sicherheits-Code-Review / Security Code Review
+
+### Zweck / Purpose
+
+**DE:** Diese Checkliste leitet Reviewer durch die wichtigsten Sicherheitsthemen
+beim Code-Review. Sie deckt sprachunabhängige und sprachspezifische Punkte ab.
+
+**EN:** This checklist guides reviewers through the key security topics in
+a code review. It covers both language-independent and language-specific
+items.
+
+### Geltungsbereich / Scope
+
+**DE:** Anzuwenden auf jeden Pull Request, der Produktivcode oder Konfigurationen
+ändert. Bei reinen Dokumentationsänderungen entfällt die Checkliste.
+
+**EN:** Applies to every pull request that changes production code or
+configuration. Pure documentation changes are exempt.
+
+### Mitgeltende Dokumente / Related Documents
+
+- RL Sichere-Entwicklung
+- Leitlinie für sichere Programmierung (mit Anhängen je Sprache)
+- ISO/IEC 27002:2022 A.8.28
+- OWASP Cheat Sheet Series, OWASP Proactive Controls, OWASP Top 10
+- CWE Top 25
+
+#### URL-/Ablageverweise / URLs and Storage Locations
+
+**DE:** Diese Links helfen beim Review. Projekt- oder organisationsinterne Dokumente koennen als lokale Arbeitskopie oder als Verweis auf den festgelegten Ablageort ergaenzt werden.
+
+**EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
+
+- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
+- **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
+- **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
+- **Secure coding guideline:** this guide or an equivalent project-specific guideline
+- **CISA Memory Safe Roadmaps:** [lokale Textfassung des CISA-Dokuments / local text version of the CISA document](../THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.txt), [CISA-Webseite zum Dokument / CISA webpage for the document](https://www.cisa.gov/resources-tools/resources/case-memory-safe-roadmaps)
+- **ISO/IEC 27001:2022:** [offizielle ISO-Webseite zur ISO/IEC 27001:2022 / official ISO webpage for ISO/IEC 27001:2022](https://www.iso.org/standard/27001)
+- **ISO/IEC 27002:2022:** [offizielle ISO-Webseite zur ISO/IEC 27002:2022 / official ISO webpage for ISO/IEC 27002:2022](https://www.iso.org/standard/75652.html)
+- **NIST SSDF SP 800-218:** [NIST-Veröffentlichung SP 800-218 Secure Software Development Framework / NIST publication SP 800-218 Secure Software Development Framework](https://csrc.nist.gov/publications/detail/sp/800-218/final)
+- **OWASP Cheat Sheet Series:** [OWASP Cheat Sheet Series Projektseite / OWASP Cheat Sheet Series project page](https://cheatsheetseries.owasp.org/)
+- **OWASP Proactive Controls:** [OWASP Proactive Controls Projektseite / OWASP Proactive Controls project page](https://owasp.org/www-project-proactive-controls/)
+- **OWASP Top 10 for LLM Applications:** [OWASP Top 10 for LLM Applications Projektseite / OWASP Top 10 for LLM Applications project page](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- **CWE Top 25:** [MITRE CWE Top 25 Übersicht / MITRE CWE Top 25 overview](https://cwe.mitre.org/top25/)
+
+### Bewertung und Dokumentation / Assessment and Documentation
+
+**DE:** Jeder Prüfpunkt bekommt genau einen Status. Schreibe die Begründung so, dass eine neue Kollegin oder ein neuer Kollege den Entscheid später ohne Rückfrage versteht.
+
+**EN:** Each checklist item gets exactly one status. Write the explanation so that a new team member can understand the decision later without asking again.
+
+- **Erfüllt / Fulfilled:** Die Anforderung ist umgesetzt und es gibt einen prüfbaren Nachweis.
+- **Nicht erfüllt / Not fulfilled:** Die Anforderung ist noch nicht umgesetzt oder der Nachweis fehlt. Es muss eine Aufgabe mit verantwortlicher Person und Termin geben.
+- **Nicht anwendbar / Not applicable:** Die Anforderung passt nicht zum Projekt. Das ist erlaubt, aber nur mit kurzer Begründung.
+
+**Pflichtfelder je Prüfpunkt / Required fields per item:** Status, Begründung, Evidenzpfad oder Link, nächste Maßnahme mit verantwortlicher Person und Zieltermin.
+
+### Durchführungshinweise / Implementation Guidance
+
+**DE:** Nutze diese Checkliste nicht als reine Ja/Nein-Liste. Sie ist ein Arbeits- und Auditdokument. Prüfe jeden Punkt gegen reale Artefakte: Code, Pull Request, Architekturdiagramm, Build-Log, Scan-Ergebnis, Ticket, Betriebsdokumentation oder Freigabeprotokoll. Wenn ein Nachweis noch fehlt, markiere den Punkt als „nicht erfüllt" und lege eine konkrete Folgeaufgabe an.
+
+**EN:** Do not use this checklist as a simple yes/no list. It is a working and audit document. Check each item against real artefacts: code, pull request, architecture diagram, build log, scan result, ticket, operations document, or approval record. If evidence is missing, mark the item as "not fulfilled" and create a concrete follow-up task.
+
+**DE:** Schreibe kurze, klare Begründungen. Vermeide Abkürzungen ohne Erklärung. Wenn ein Punkt technisch schwierig ist, beschreibe den aktuellen Stand, das Risiko und den nächsten machbaren Schritt.
+
+**EN:** Write short and clear explanations. Avoid unexplained abbreviations. If an item is technically difficult, describe the current state, the risk, and the next feasible step.
+
+**DE:** Jeder Prüfpunkt muss deshalb drei Fragen beantworten: Was bedeutet die Anforderung im Projektalltag? Was ist konkret zu tun oder zu entscheiden? Welcher Nachweis zeigt das Ergebnis? Verwende Standard-IDs, Toolnamen und Abkürzungen nur zusammen mit einer kurzen Erklärung in Alltagssprache. Wenn ein Punkt für Auszubildende oder neue Teammitglieder nicht selbsterklärend ist, ergänze eine kurze Erklärung in der Begründung.
+
+**EN:** Each item must therefore answer three questions: What does the requirement mean in daily project work? What exactly must be done or decided? Which evidence shows the result? Use standard IDs, tool names, and abbreviations only together with a short plain-language explanation. If an item is not self-explanatory for apprentices or new team members, add a short explanation in the rationale.
+
+### Beispiel / Example
+
+**DE:** Ein Pull Request ändert eine SQL-Abfrage. Die Review-Evidenz zeigt parametrisierte Queries, negative Tests gegen SQL-Injection und eine Fehlermeldung ohne interne Details. Wenn ein Test fehlt, wird der Punkt „nicht erfüllt" markiert und eine konkrete Nacharbeit mit verantwortlicher Person und Zieltermin angelegt.
+
+**EN:** A pull request changes an SQL query. The review evidence shows parameterised queries, negative tests against SQL injection, and an error message without internal details. If a test is missing, the item is marked as "not fulfilled" and a concrete follow-up with owner and target date is created.
+
+### A11Y-Hinweise / A11Y Notes
+
+**DE:** Beim Ausfüllen dieser Checkliste müssen alle Nachweise auch textlich verständlich sein. Verweise sollen beschreibende Linktexte haben. Screenshots, Diagramme oder Scan-Auszüge brauchen eine kurze Textbeschreibung. Der Status darf nicht nur über Farbe erkennbar sein.
+
+**EN:** When this checklist is filled in, all evidence must also be understandable as text. References should use descriptive link text. Screenshots, diagrams, or scan extracts need a short text description. The status must not be shown by color alone.
+
+### Wichtige Begriffe / Key Terms
+
+**DE:** Die folgenden Begriffe kommen in dieser Checkliste vor. Die Links springen zum Glossar dieses Kapitels, damit Auszubildende und Entwickler:innen ohne Sicherheits-Spezialwissen die Begriffe direkt nachlesen können.
+
+**EN:** The following terms appear in this checklist. The links jump to this chapter's glossary so that apprentices and developers without specialist security knowledge can look them up directly.
+
+- [Code Review](#cl-08-glossar-code-review)
+- [Eingabevalidierung / Input Validation](#cl-08-glossar-input-validation)
+- [Ausgabe-Codierung / Output Encoding](#cl-08-glossar-output-encoding)
+- [Authentifizierung / Authentication](#cl-08-glossar-authentication)
+- [Autorisierung / Authorisation](#cl-08-glossar-authorisation)
+- [Sitzungsverwaltung / Session Management](#cl-08-glossar-session-management)
+- [Secret Store](#cl-08-glossar-secret-store)
+- [Logging und Audit / Logging and Audit](#cl-08-glossar-logging-audit)
+- [Abhängigkeit / Dependency](#cl-08-glossar-dependency)
+- [SAST](#cl-08-glossar-sast)
+- [DAST](#cl-08-glossar-dast)
+- [Linter](#cl-08-glossar-linter)
+- [CodeQL](#cl-08-glossar-codeql)
+- [Semgrep](#cl-08-glossar-semgrep)
+- [SonarQube](#cl-08-glossar-sonarqube)
+- [XSS / Cross-Site Scripting](#cl-08-glossar-xss)
+- [SQL Injection](#cl-08-glossar-sql-injection)
+- [Path Traversal](#cl-08-glossar-path-traversal)
+- [Spec Kit](#cl-08-glossar-spec-kit)
+
+### Allgemeine Punkte / General Items
+
+#### 1. Eingabevalidierung / Input Validation
+
+- **DE:** Alle Eingaben aus nicht vertrauenswürdigen Quellen (HTTP-Anfragen,
+  Datei-Uploads, externe APIs, Message-Queues, Datenbankfelder mit Nutzer-
+  inhalt) werden auf Typ, Länge, Format und Wertebereich geprüft. Validierung
+  erfolgt am Vertrauensgrenzen-Übergang nach dem Allowlist-Prinzip
+  (akzeptierte Werte definieren, nicht nur verbotene blockieren). Konkrete
+  Bibliotheken: Java/Spring `@Valid` mit `jakarta.validation` (`@NotBlank`,
+  `@Size`, `@Pattern`, `@Email`); Hibernate Validator für JSR-303/380;
+  C#/.NET `System.ComponentModel.DataAnnotations` (`[Required]`,
+  `[StringLength]`, `[RegularExpression]`, `[Range]`) mit `ModelState.IsValid`;
+  FluentValidation für komplexe Regeln; Python `pydantic` v2 mit
+  `BaseModel` und Type-Hints; `marshmallow`-Schemas; Go `validator/v10`
+  (`validate:"required,email,max=255"`); JavaScript/TypeScript `zod`,
+  `joi`, `yup`. Eingaben werden vor Verarbeitung kanonisiert (Unicode-
+  Normalisierung NFC, Pfad-Normalisierung, Trimming). Maximale Größen für
+  HTTP-Body (z. B. `MaxRequestBodySize` in ASP.NET Core, `client_max_body_size`
+  in Nginx, `spring.servlet.multipart.max-file-size`) gesetzt. Referenzen:
+  OWASP Input Validation Cheat Sheet, OWASP ASVS V5, CWE-20, CWE-1287.
+- **EN:** All inputs from untrusted sources (HTTP requests, file uploads,
+  external APIs, message queues, database fields with user content) are
+  validated for type, length, format, and value range. Validation runs at
+  the trust boundary using the allowlist principle (define accepted
+  values, not only forbidden ones). Concrete libraries: Java/Spring
+  `@Valid` with `jakarta.validation` (`@NotBlank`, `@Size`, `@Pattern`,
+  `@Email`); Hibernate Validator for JSR-303/380; C#/.NET
+  `System.ComponentModel.DataAnnotations` (`[Required]`,
+  `[StringLength]`, `[RegularExpression]`, `[Range]`) with
+  `ModelState.IsValid`; FluentValidation for complex rules; Python
+  `pydantic` v2 with `BaseModel` and type hints; `marshmallow` schemas;
+  Go `validator/v10` (`validate:"required,email,max=255"`);
+  JavaScript/TypeScript `zod`, `joi`, `yup`. Inputs are canonicalised
+  before processing (Unicode NFC, path normalisation, trimming). Maximum
+  sizes for HTTP body (e.g. `MaxRequestBodySize` in ASP.NET Core,
+  `client_max_body_size` in Nginx, `spring.servlet.multipart.max-file-size`)
+  are set. References: OWASP Input Validation Cheat Sheet, OWASP ASVS V5,
+  CWE-20, CWE-1287.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 2. Ausgabe-Codierung / Output Encoding
+
+- **DE:** Ausgaben werden kontextgerecht codiert (HTML-Body, HTML-Attribut,
+  JavaScript-String, URL-Parameter, CSS, SQL, LDAP, XML/XPath, Shell), um
+  Injektionen (XSS, SQLi, LDAPi, OS-Command-Injection) zu verhindern.
+  Konkrete Hilfsmittel: Java OWASP Encoder (`Encode.forHtml(...)`,
+  `Encode.forHtmlAttribute(...)`, `Encode.forJavaScript(...)`,
+  `Encode.forUriComponent(...)`); Spring `HtmlUtils.htmlEscape`; JSP/JSF
+  Auto-Escaping in Templates (`<c:out>`, `EL ${value}`); C#/.NET
+  `System.Web.HttpUtility.HtmlEncode`, `JavaScriptEncoder.Default.Encode`,
+  `UrlEncoder.Default`, Razor `@variable` Auto-Escaping; Python
+  `markupsafe.escape`, Jinja2 Auto-Escape (`autoescape=True`); Go
+  `html/template` (kontextsensitives Auto-Escaping) statt `text/template`;
+  JavaScript DOM-API (`textContent` statt `innerHTML`), Frameworks React/
+  Vue/Angular escapen per Default in JSX/Templates (Vorsicht bei
+  `dangerouslySetInnerHTML`, `v-html`, `[innerHTML]`). Content-Security-
+  Policy (CSP) als zweite Verteidigungsschicht: `Content-Security-Policy:
+  default-src 'self'; script-src 'self' 'nonce-{random}'`. SQL: ausschließ-
+  lich Prepared Statements / parametrisierte Queries (siehe Punkt SQL).
+  Referenzen: OWASP XSS Prevention Cheat Sheet, OWASP Output Encoding,
+  CWE-79, CWE-89.
+- **EN:** Outputs are encoded for the right context (HTML body, HTML
+  attribute, JavaScript string, URL parameter, CSS, SQL, LDAP, XML/XPath,
+  shell) to prevent injection (XSS, SQLi, LDAPi, OS command injection).
+  Concrete helpers: Java OWASP Encoder (`Encode.forHtml(...)`,
+  `Encode.forHtmlAttribute(...)`, `Encode.forJavaScript(...)`,
+  `Encode.forUriComponent(...)`); Spring `HtmlUtils.htmlEscape`; JSP/JSF
+  auto-escaping in templates (`<c:out>`, `EL ${value}`); C#/.NET
+  `System.Web.HttpUtility.HtmlEncode`, `JavaScriptEncoder.Default.Encode`,
+  `UrlEncoder.Default`, Razor `@variable` auto-escaping; Python
+  `markupsafe.escape`, Jinja2 auto-escape (`autoescape=True`); Go
+  `html/template` (context-aware auto-escaping) instead of `text/template`;
+  JavaScript DOM API (`textContent` instead of `innerHTML`), frameworks
+  React/Vue/Angular escape by default in JSX/templates (caution with
+  `dangerouslySetInnerHTML`, `v-html`, `[innerHTML]`). Content Security
+  Policy (CSP) as second defence layer: `Content-Security-Policy:
+  default-src 'self'; script-src 'self' 'nonce-{random}'`. SQL:
+  parameterised queries only (see SQL item). References: OWASP XSS
+  Prevention Cheat Sheet, OWASP Output Encoding, CWE-79, CWE-89.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 3. Authentifizierung / Authentication
+
+- **DE:** Es wird ein etabliertes Authentifizierungsverfahren genutzt
+  (OAuth 2.1, OpenID Connect, SAML 2.0, WebAuthn/Passkeys, Kerberos für
+  interne Domänen). Eigene Krypto- oder Passwort-Implementierungen werden
+  vermieden. Konkrete Frameworks: Spring Security 6 (`SecurityFilterChain`
+  mit `oauth2Login`, `formLogin`); Keycloak / Authentik / Auth0 / Azure AD /
+  Entra ID als Identity Provider; ASP.NET Core Identity mit `Microsoft.
+  AspNetCore.Authentication.JwtBearer` und `OpenIdConnect`; Python `Authlib`,
+  `python-social-auth`, FastAPI `OAuth2PasswordBearer`; Node.js `passport.js`
+  mit Strategien (`passport-oauth2`, `passport-saml`, `passport-jwt`).
+  Passwort-Hashing nur mit modernen KDFs: Argon2id (RFC 9106) als bevorzugt
+  (z. B. `argon2-cffi` Python, `Argon2.NET`, `argon2-jvm`); alternativ
+  bcrypt mit cost ≥ 12 oder scrypt; PBKDF2-SHA256 mit ≥ 600 000 Iterationen
+  (OWASP-Empfehlung 2024). Multi-Faktor-Authentifizierung (MFA) für
+  privilegierte Zugänge Pflicht (TOTP per RFC 6238, FIDO2/WebAuthn). Brute-
+  Force-Schutz: Account-Lockout nach 5 Fehlversuchen, Delay-basiertes
+  Rate-Limiting (z. B. `bucket4j` Java, `slowapi` Python, `IpRateLimit`
+  ASP.NET). Referenzen: OWASP Authentication Cheat Sheet, NIST SP 800-63B,
+  OWASP ASVS V2, CWE-287, CWE-307.
+- **EN:** An established authentication method is used (OAuth 2.1, OpenID
+  Connect, SAML 2.0, WebAuthn/Passkeys, Kerberos for internal domains).
+  Custom crypto or password implementations are avoided. Concrete
+  frameworks: Spring Security 6 (`SecurityFilterChain` with `oauth2Login`,
+  `formLogin`); Keycloak / Authentik / Auth0 / Azure AD / Entra ID as
+  identity providers; ASP.NET Core Identity with
+  `Microsoft.AspNetCore.Authentication.JwtBearer` and `OpenIdConnect`;
+  Python `Authlib`, `python-social-auth`, FastAPI `OAuth2PasswordBearer`;
+  Node.js `passport.js` with strategies (`passport-oauth2`,
+  `passport-saml`, `passport-jwt`). Password hashing only with modern KDFs:
+  Argon2id (RFC 9106) as preferred (e.g. `argon2-cffi` Python, `Argon2.NET`,
+  `argon2-jvm`); alternatively bcrypt with cost ≥ 12 or scrypt;
+  PBKDF2-SHA256 with ≥ 600,000 iterations (OWASP recommendation 2024).
+  Multi-factor authentication (MFA) for privileged access mandatory (TOTP
+  per RFC 6238, FIDO2/WebAuthn). Brute-force protection: account lockout
+  after 5 failed attempts, delay-based rate limiting (e.g. `bucket4j` Java,
+  `slowapi` Python, `IpRateLimit` ASP.NET). References: OWASP Authentication
+  Cheat Sheet, NIST SP 800-63B, OWASP ASVS V2, CWE-287, CWE-307.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 4. Autorisierung / Authorisation
+
+- **DE:** Berechtigungen werden serverseitig auf jeder geschützten Ressource
+  und Aktion geprüft, nicht nur in der UI (Client-Code ist manipulierbar).
+  Standardregel: Default-Deny — explizite Zulassung für jede Operation.
+  Modelle: Role-Based Access Control (RBAC) für statische Rollen-
+  zuweisungen, Attribute-Based Access Control (ABAC) für dynamische
+  Regeln, Relationship-Based Access Control (ReBAC) für Multi-Tenant.
+  Konkrete Implementierungen: Spring Security `@PreAuthorize("hasRole('ADMIN')
+  and #user.id == authentication.principal.id")` und `@PostAuthorize`;
+  ASP.NET Core `[Authorize(Policy = "AdminOrOwner")]` mit
+  `IAuthorizationHandler` und `AuthorizationHandlerContext`; Python FastAPI
+  Dependencies (`Depends(get_current_active_user)`) mit Custom Permission
+  Decorators; Node.js `casbin` für RBAC/ABAC mit `enforce(sub, obj, act)`;
+  Open Policy Agent (OPA) mit Rego-Policies für sprachunabhängige
+  Autorisierung. Insecure Direct Object References (IDOR) verhindern:
+  Ownership-Check vor Zugriff auf Ressource (z. B. `if document.owner_id !=
+  current_user.id: abort(403)`); UUIDs statt sequentieller IDs für
+  öffentliche URLs. Vertikale (Privilege Escalation) und horizontale
+  (User-A greift auf User-B zu) Eskalation per Test abdecken. Referenzen:
+  OWASP Authorization Cheat Sheet, OWASP ASVS V4, CWE-285, CWE-639,
+  CWE-862, OWASP Top 10 A01:2021 Broken Access Control.
+- **EN:** Permissions are checked on the server for every protected
+  resource and action, not only in the UI (client code can be manipulated).
+  Default rule: deny by default — explicit allow for every operation.
+  Models: Role-Based Access Control (RBAC) for static role assignments,
+  Attribute-Based Access Control (ABAC) for dynamic rules, Relationship-
+  Based Access Control (ReBAC) for multi-tenant. Concrete implementations:
+  Spring Security `@PreAuthorize("hasRole('ADMIN') and #user.id ==
+  authentication.principal.id")` and `@PostAuthorize`; ASP.NET Core
+  `[Authorize(Policy = "AdminOrOwner")]` with `IAuthorizationHandler` and
+  `AuthorizationHandlerContext`; Python FastAPI dependencies
+  (`Depends(get_current_active_user)`) with custom permission decorators;
+  Node.js `casbin` for RBAC/ABAC with `enforce(sub, obj, act)`; Open Policy
+  Agent (OPA) with Rego policies for language-agnostic authorization.
+  Prevent Insecure Direct Object References (IDOR): ownership check
+  before resource access (e.g. `if document.owner_id != current_user.id:
+  abort(403)`); UUIDs instead of sequential IDs for public URLs. Cover
+  vertical (privilege escalation) and horizontal (User-A accesses User-B)
+  escalation by tests. References: OWASP Authorization Cheat Sheet, OWASP
+  ASVS V4, CWE-285, CWE-639, CWE-862, OWASP Top 10 A01:2021 Broken Access
+  Control.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 5. Sitzungsverwaltung / Session Management
+
+- **DE:** Sitzungs-IDs werden mit kryptografisch sicheren Zufallsquellen
+  erzeugt (CSPRNG), sind mindestens 128 Bit lang (Base64-codiert ≥ 22
+  Zeichen, hex ≥ 32 Zeichen) und sind ablaufgesichert (absolute Lebenszeit
+  und Idle-Timeout). Sie werden bei jedem Privilegienwechsel (Login,
+  Logout, Passwort-Änderung, MFA-Aktivierung, Rollen-Eskalation) erneuert
+  (Session Fixation verhindern). Konkrete Defaults: Spring Session
+  (Redis/JDBC) mit `server.servlet.session.timeout=30m`,
+  `server.servlet.session.cookie.secure=true`, `http-only=true`,
+  `same-site=Lax`; ASP.NET Core `services.AddSession(options =>
+  options.IdleTimeout = TimeSpan.FromMinutes(20))`,
+  `Cookie.SecurePolicy = CookieSecurePolicy.Always`,
+  `Cookie.HttpOnly = true`, `Cookie.SameSite = SameSiteMode.Lax`; Django
+  `SESSION_COOKIE_SECURE = True`, `SESSION_COOKIE_HTTPONLY = True`,
+  `SESSION_COOKIE_SAMESITE = 'Lax'`, `SESSION_EXPIRE_AT_BROWSER_CLOSE`;
+  Express.js `express-session` mit `cookie: { secure: true, httpOnly: true,
+  sameSite: 'lax', maxAge: 1800000 }`. Cookie-Flags Pflicht: `Secure`
+  (nur über HTTPS), `HttpOnly` (kein JS-Zugriff), `SameSite=Lax` oder
+  `Strict` (CSRF-Schutz). JWT als Bearer-Token: kurze Lebensdauer
+  (15 min Access-Token, 7 Tage Refresh-Token mit Rotation), serverseitige
+  Revocation-Liste oder JWE-Verschlüsselung sensitiver Claims, Algorithmus
+  ES256 oder RS256 (kein `alg=none`, kein HS256 wenn Key-Sharing nötig).
+  Logout invalidiert Session serverseitig (nicht nur Cookie löschen).
+  Referenzen: OWASP Session Management Cheat Sheet, OWASP ASVS V3,
+  CWE-384, CWE-613, CWE-1004.
+- **EN:** Session IDs are generated with cryptographically secure random
+  sources (CSPRNG), are at least 128 bits long (Base64-encoded ≥ 22
+  characters, hex ≥ 32 characters), and have expiration (absolute lifetime
+  and idle timeout). They are rotated on every privilege change (login,
+  logout, password change, MFA activation, role escalation) to prevent
+  session fixation. Concrete defaults: Spring Session (Redis/JDBC) with
+  `server.servlet.session.timeout=30m`,
+  `server.servlet.session.cookie.secure=true`, `http-only=true`,
+  `same-site=Lax`; ASP.NET Core `services.AddSession(options =>
+  options.IdleTimeout = TimeSpan.FromMinutes(20))`,
+  `Cookie.SecurePolicy = CookieSecurePolicy.Always`,
+  `Cookie.HttpOnly = true`, `Cookie.SameSite = SameSiteMode.Lax`; Django
+  `SESSION_COOKIE_SECURE = True`, `SESSION_COOKIE_HTTPONLY = True`,
+  `SESSION_COOKIE_SAMESITE = 'Lax'`, `SESSION_EXPIRE_AT_BROWSER_CLOSE`;
+  Express.js `express-session` with `cookie: { secure: true, httpOnly:
+  true, sameSite: 'lax', maxAge: 1800000 }`. Mandatory cookie flags:
+  `Secure` (HTTPS only), `HttpOnly` (no JS access), `SameSite=Lax` or
+  `Strict` (CSRF protection). JWT as bearer token: short lifetime (15 min
+  access token, 7 days refresh token with rotation), server-side
+  revocation list or JWE encryption of sensitive claims, algorithm ES256
+  or RS256 (no `alg=none`, no HS256 if key sharing required). Logout
+  invalidates session server-side (not only cookie deletion). References:
+  OWASP Session Management Cheat Sheet, OWASP ASVS V3, CWE-384, CWE-613,
+  CWE-1004.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 6. Kryptografie / Cryptography
+
+- **DE:** Aktuelle Algorithmen werden verwendet: AES-256-GCM oder
+  ChaCha20-Poly1305 für symmetrische Verschlüsselung (AEAD bevorzugt);
+  RSA mindestens 3072 Bit oder ECDSA P-256/P-384 oder Ed25519 für
+  Signaturen; ECDH P-256 oder X25519 für Schlüsselaustausch; SHA-256, SHA-
+  384, SHA-512 oder SHA-3 für Hashing; HMAC-SHA-256 für Nachrichten-
+  authentifizierung. Veraltete Verfahren — MD5, SHA-1 (für Signaturen und
+  Zertifikate, weiterhin OK für HMAC mit Hinweis), DES/3DES, RC4, MD2 — sind
+  verboten oder mit dokumentierter Risikobegründung in `docs/security/
+  crypto-exceptions.md` markiert. Konkrete Bibliotheken: Java JCA mit
+  Bouncy Castle Provider (`Cipher.getInstance("AES/GCM/NoPadding")`,
+  `Signature.getInstance("Ed25519", "BC")`); Tink (Google) für High-Level
+  API; C#/.NET `System.Security.Cryptography` (`AesGcm`, `RSACng`,
+  `ECDsaCng`, `ECDiffieHellman`); Python `cryptography` Bibliothek
+  (`Fernet` für symmetrisch, `hazmat.primitives` für Low-Level); Go
+  `crypto/aes`, `crypto/cipher` (`cipher.NewGCM`), `crypto/ed25519`,
+  `golang.org/x/crypto/chacha20poly1305`. TLS-Konfiguration: TLS 1.3 als
+  Minimum (Fallback TLS 1.2 nur mit AEAD-Ciphern), HSTS-Header
+  (`Strict-Transport-Security: max-age=31536000; includeSubDomains;
+  preload`), OCSP Stapling. Schlüsselverwaltung: Hardware Security Module
+  (HSM) PKCS#11, Cloud-KMS (AWS KMS, Azure Key Vault, GCP Cloud KMS) oder
+  HashiCorp Vault. Schlüssel-Rotation alle 90 Tage für aktive Keys.
+  Referenzen: NIST SP 800-131A Rev. 2, BSI TR-02102-1, OWASP Cryptographic
+  Storage Cheat Sheet, ENISA Cryptographic Guidelines.
+- **EN:** Current algorithms are used: AES-256-GCM or ChaCha20-Poly1305
+  for symmetric encryption (AEAD preferred); RSA at least 3072 bits or
+  ECDSA P-256/P-384 or Ed25519 for signatures; ECDH P-256 or X25519 for
+  key exchange; SHA-256, SHA-384, SHA-512, or SHA-3 for hashing;
+  HMAC-SHA-256 for message authentication. Deprecated methods — MD5, SHA-1
+  (for signatures and certificates, still OK for HMAC with caveat),
+  DES/3DES, RC4, MD2 — are forbidden or flagged with documented risk
+  justification in `docs/security/crypto-exceptions.md`. Concrete
+  libraries: Java JCA with Bouncy Castle Provider
+  (`Cipher.getInstance("AES/GCM/NoPadding")`,
+  `Signature.getInstance("Ed25519", "BC")`); Tink (Google) for high-level
+  API; C#/.NET `System.Security.Cryptography` (`AesGcm`, `RSACng`,
+  `ECDsaCng`, `ECDiffieHellman`); Python `cryptography` library (`Fernet`
+  for symmetric, `hazmat.primitives` for low-level); Go `crypto/aes`,
+  `crypto/cipher` (`cipher.NewGCM`), `crypto/ed25519`,
+  `golang.org/x/crypto/chacha20poly1305`. TLS configuration: TLS 1.3 as
+  minimum (TLS 1.2 fallback only with AEAD ciphers), HSTS header
+  (`Strict-Transport-Security: max-age=31536000; includeSubDomains;
+  preload`), OCSP Stapling. Key management: Hardware Security Module
+  (HSM) PKCS#11, cloud KMS (AWS KMS, Azure Key Vault, GCP Cloud KMS), or
+  HashiCorp Vault. Key rotation every 90 days for active keys. References:
+  NIST SP 800-131A Rev. 2, BSI TR-02102-1, OWASP Cryptographic Storage
+  Cheat Sheet, ENISA Cryptographic Guidelines.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 7. Geheimnisse / Secrets
+
+- **DE:** Es liegen keine Schlüssel, API-Tokens, Passwörter, Connection-
+  Strings, Private Keys, Cloud-Credentials oder Webhook-URLs im Code, in
+  Konfigurationsdateien, Logs, Tests, Kommentaren oder Git-History.
+  Geheimnisse werden ausschließlich aus plattformgeeigneten Secret-Stores
+  gelesen: HashiCorp Vault, AWS Secrets Manager / Parameter Store, Azure
+  Key Vault, GCP Secret Manager, Kubernetes Secrets (mit Sealed Secrets
+  oder External Secrets Operator), GitHub Environments / Encrypted
+  Secrets, Git CI/CD Variables (masked + protected). Lokal
+  Entwicklungs-Secrets in `.env`-Dateien, die per `.gitignore`
+  ausgeschlossen sind; oder OS-Credential-Stores (macOS Keychain, Windows
+  Credential Manager, Linux Secret Service / `pass`). Secret-Scanner sind
+  pre-commit und in CI aktiv: gitleaks (`gitleaks detect --redact`),
+  trufflehog (`trufflehog filesystem . --no-update`), detect-secrets
+  (`detect-secrets scan --baseline .secrets.baseline`), GitHub Secret
+  Scanning + Push Protection, Git Secret Detection. Pre-commit-Hook in
+  `.pre-commit-config.yaml`: `repos: - repo: https://github.com/gitleaks/
+  gitleaks rev: v8.x hooks: - id: gitleaks`. Bei Verdacht auf Leak:
+  sofortige Rotation des Geheimnisses, Audit-Log-Prüfung auf Missbrauch,
+  Git-History-Bereinigung mit `git filter-repo` und Force-Push (nur nach
+  Team-Abstimmung), Incident-Ticket. Referenzen: OWASP Secrets Management
+  Cheat Sheet, CWE-798, CWE-321, CWE-540.
+- **EN:** No keys, API tokens, passwords, connection strings, private
+  keys, cloud credentials, or webhook URLs in code, configuration files,
+  logs, tests, comments, or git history. Secrets are read exclusively from
+  platform-appropriate secret stores: HashiCorp Vault, AWS Secrets Manager
+  / Parameter Store, Azure Key Vault, GCP Secret Manager, Kubernetes
+  Secrets (with Sealed Secrets or External Secrets Operator), GitHub
+  Environments / Encrypted Secrets, Git CI/CD Variables (masked +
+  protected). Local development secrets in `.env` files excluded via
+  `.gitignore`; or OS credential stores (macOS Keychain, Windows
+  Credential Manager, Linux Secret Service / `pass`). Secret scanners are
+  active pre-commit and in CI: gitleaks (`gitleaks detect --redact`),
+  trufflehog (`trufflehog filesystem . --no-update`), detect-secrets
+  (`detect-secrets scan --baseline .secrets.baseline`), GitHub Secret
+  Scanning + Push Protection, Git Secret Detection. Pre-commit hook in
+  `.pre-commit-config.yaml`: `repos: - repo: https://github.com/gitleaks/
+  gitleaks rev: v8.x hooks: - id: gitleaks`. On suspected leak: immediate
+  rotation of the secret, audit-log review for misuse, git history cleanup
+  with `git filter-repo` and force-push (only after team coordination),
+  incident ticket. References: OWASP Secrets Management Cheat Sheet,
+  CWE-798, CWE-321, CWE-540.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 8. Fehlerbehandlung / Error Handling
+
+- **DE:** Fehlertexte für Endbenutzer enthalten keine Stack-Traces,
+  Datenbank-Verbindungszeichenketten, internen Pfade, Versions-Strings,
+  Debug-Informationen oder personenbezogene Daten anderer Nutzer. Generische
+  Fehlermeldungen mit eindeutiger Korrelations-ID (Request-ID, Trace-ID),
+  die im internen Log nachverfolgbar ist. Konkrete Implementierung: Spring
+  Boot `@ControllerAdvice` mit `@ExceptionHandler` und `ProblemDetail`
+  (RFC 9457); ASP.NET Core `IExceptionHandler` mit
+  `ProblemDetailsFactory`, `app.UseExceptionHandler("/error")` (in
+  Production keine Developer Exception Page); Python FastAPI
+  `@app.exception_handler(Exception)` mit JSONResponse; Express.js
+  Error-Middleware `app.use((err, req, res, next) => { logger.error(err);
+  res.status(500).json({ error: 'Internal Error', traceId: req.id }); })`.
+  HTTP-Status-Codes konsistent: 400 Bad Request für Validierungsfehler,
+  401 Unauthorized für fehlende Authentifizierung, 403 Forbidden für
+  fehlende Berechtigung, 404 Not Found (auch bei Authorisierungsfehler,
+  um Existenz nicht zu verraten), 500 Internal Server Error für
+  Server-Probleme. Production-Konfiguration: `ASPNETCORE_ENVIRONMENT=
+  Production`, `spring.profiles.active=prod`, `DEBUG=False` (Django),
+  `NODE_ENV=production`. Stack-Traces nur in internem Log mit erhöhter
+  Schutzklasse (Audit-Log). Fail-Safe: bei Krypto- oder Auth-Fehlern keine
+  Hinweise, ob z. B. Username oder Passwort falsch war (Constant-Time-
+  Vergleich). Referenzen: OWASP Error Handling Cheat Sheet, CWE-209,
+  CWE-754, CWE-755.
+- **EN:** Error messages shown to end users contain no stack traces,
+  database connection strings, internal paths, version strings, debug
+  information, or other users' personal data. Generic error messages with
+  a unique correlation ID (request ID, trace ID) that is traceable in the
+  internal log. Concrete implementation: Spring Boot `@ControllerAdvice`
+  with `@ExceptionHandler` and `ProblemDetail` (RFC 9457); ASP.NET Core
+  `IExceptionHandler` with `ProblemDetailsFactory`,
+  `app.UseExceptionHandler("/error")` (no Developer Exception Page in
+  production); Python FastAPI `@app.exception_handler(Exception)` with
+  JSONResponse; Express.js error middleware `app.use((err, req, res, next)
+  => { logger.error(err); res.status(500).json({ error: 'Internal
+  Error', traceId: req.id }); })`. Consistent HTTP status codes: 400 Bad
+  Request for validation errors, 401 Unauthorized for missing
+  authentication, 403 Forbidden for missing authorization, 404 Not Found
+  (also for authorization errors, to not reveal existence), 500 Internal
+  Server Error for server issues. Production configuration:
+  `ASPNETCORE_ENVIRONMENT=Production`, `spring.profiles.active=prod`,
+  `DEBUG=False` (Django), `NODE_ENV=production`. Stack traces only in
+  internal log with increased protection class (audit log). Fail-safe: on
+  crypto or auth errors no hints whether e.g. username or password was
+  wrong (constant-time comparison). References: OWASP Error Handling
+  Cheat Sheet, CWE-209, CWE-754, CWE-755.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 9. Logging und Audit / Logging and Audit
+
+- **DE:** Sicherheitsrelevante Ereignisse werden geloggt: erfolgreiche und
+  fehlgeschlagene Logins, Logout, Passwort-Änderungen, MFA-Aktivierung,
+  Rechteänderungen, Rollen-Zuweisungen, Zugriffe auf sensible Ressourcen,
+  Konfigurationsänderungen, Admin-Aktionen, Anomalien (Geo-Sprünge,
+  ungewöhnliche User-Agents), kryptografische Schlüssel-Operationen,
+  CRUD-Operationen auf personenbezogenen Daten (DSGVO Art. 30
+  Verzeichnis). Pflichtfelder pro Log-Event: ISO-8601-Zeitstempel mit
+  Zeitzone, Korrelations-ID (Trace-ID/Request-ID), Akteur (User-ID,
+  Service-Account, Source-IP), Aktion, Ressource, Ergebnis (success/
+  failure), Fehlerursache. Strukturierte Logs (JSON) statt Plaintext.
+  Konkrete Tools: Java SLF4J + Logback mit `MDC.put("traceId", ...)`;
+  C#/.NET `ILogger<T>` mit `Microsoft.Extensions.Logging` und
+  `LogContext.PushProperty`; Python `structlog` oder `python-json-logger`;
+  Go `slog` (stdlib seit 1.21) oder `zap`/`zerolog`; Node.js `pino` oder
+  `winston`. Zentralisierung: ELK-Stack (Elasticsearch + Logstash +
+  Kibana), Splunk, Grafana Loki, Datadog, Azure Monitor. Es werden keine
+  Geheimnisse (Passwörter, Tokens, Session-IDs, Schlüssel, Kreditkarten-
+  nummern) oder übermäßigen personenbezogenen Daten geloggt — Sanitisierung
+  per Logger-Filter (z. B. `logback` `<MaskingFilter>`, Serilog
+  `Destructure.ByMaskingProperties`). Aufbewahrung: 90 Tage operativ,
+  1 Jahr Sicherheitsereignisse, 10 Jahre für CRA-Vorfälle. Integrität:
+  WORM-Storage, S3 Object Lock, Hash-Chain für Audit-Logs.
+  Referenzen: OWASP Logging Cheat Sheet, NIST SP 800-92, CWE-117,
+  CWE-532, CWE-778.
+- **EN:** Security-relevant events are logged: successful and failed
+  logins, logout, password changes, MFA activation, permission changes,
+  role assignments, access to sensitive resources, configuration changes,
+  admin actions, anomalies (geo jumps, unusual user agents), cryptographic
+  key operations, CRUD operations on personal data (GDPR Art. 30 register).
+  Mandatory fields per log event: ISO-8601 timestamp with timezone,
+  correlation ID (trace ID/request ID), actor (user ID, service account,
+  source IP), action, resource, result (success/failure), error cause.
+  Structured logs (JSON) instead of plaintext. Concrete tools: Java SLF4J
+  + Logback with `MDC.put("traceId", ...)`; C#/.NET `ILogger<T>` with
+  `Microsoft.Extensions.Logging` and `LogContext.PushProperty`; Python
+  `structlog` or `python-json-logger`; Go `slog` (stdlib since 1.21) or
+  `zap`/`zerolog`; Node.js `pino` or `winston`. Centralisation: ELK
+  stack (Elasticsearch + Logstash + Kibana), Splunk, Grafana Loki,
+  Datadog, Azure Monitor. No secrets (passwords, tokens, session IDs,
+  keys, credit card numbers) or excess personal data are logged —
+  sanitisation via logger filter (e.g. `logback` `<MaskingFilter>`,
+  Serilog `Destructure.ByMaskingProperties`). Retention: 90 days
+  operational, 1 year security events, 10 years for CRA incidents.
+  Integrity: WORM storage, S3 Object Lock, hash chain for audit logs.
+  References: OWASP Logging Cheat Sheet, NIST SP 800-92, CWE-117,
+  CWE-532, CWE-778.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 10. Datei- und Netzwerk-I/O / File and Network I/O
+
+- **DE:** Pfade werden gegen Path-Traversal (`../`-Sequenzen, absolute
+  Pfade, Unicode-Tricks, NULL-Bytes) geschützt: Eingaben kanonisieren
+  (`Path.toAbsolutePath().normalize()` Java, `Path.GetFullPath` C#,
+  `os.path.realpath` Python, `filepath.Clean` Go), gegen erlaubtes Basis-
+  Verzeichnis prüfen (`startsWith(BASE_DIR)`), Allowlist von
+  Dateinamen-Mustern, Container/Chroot oder seccomp für Hard-Limits.
+  URLs werden gegen Server-Side Request Forgery (SSRF) abgesichert:
+  Allowlist erlaubter Hosts, Verbot von privaten IP-Ranges
+  (RFC 1918: 10/8, 172.16/12, 192.168/16; Loopback 127/8; Link-Local
+  169.254/16; Cloud-Metadata 169.254.169.254 AWS/Azure, metadata.google.
+  internal GCP), DNS-Rebinding-Schutz (Resolved-IP nach DNS-Auflösung
+  validieren), keine Redirects ohne Re-Validation. Bibliotheken: Java
+  `java.net.http.HttpClient` mit Custom `Authenticator`, Python
+  `requests` mit `allowed_hosts`, Go `net/http` mit Custom `Transport`,
+  Node.js `ssrf-req-filter`. Up- und Downloads prüfen Größe (Maximum vor
+  Empfang über `Content-Length`-Header und Streaming-Limit), MIME-Typ
+  (Magic-Byte-Erkennung mit `Apache Tika`, `python-magic`, `file(1)`
+  statt nur Header-Vertrauen), Dateierweiterung-Allowlist, Antivirus-Scan
+  (ClamAV, VirusTotal API), Speicherung außerhalb des Webroots oder mit
+  zufälligen Dateinamen, Image-Stripping von Metadaten (EXIF) und
+  Re-Encoding (ImageMagick mit Policy gegen RCE-CVEs). XML/JSON Parser:
+  XXE-Schutz (`DocumentBuilderFactory.setFeature("http://apache.org/xml/
+  features/disallow-doctype-decl", true)` Java; `defusedxml` Python),
+  JSON-Bomben-Schutz (Tiefen- und Größenlimit). Referenzen: OWASP File
+  Upload Cheat Sheet, OWASP SSRF Cheat Sheet, CWE-22, CWE-918, CWE-434,
+  CWE-611.
+- **EN:** Paths are protected against path traversal (`../` sequences,
+  absolute paths, Unicode tricks, NULL bytes): canonicalise inputs
+  (`Path.toAbsolutePath().normalize()` Java, `Path.GetFullPath` C#,
+  `os.path.realpath` Python, `filepath.Clean` Go), check against allowed
+  base directory (`startsWith(BASE_DIR)`), allowlist of filename patterns,
+  container/chroot or seccomp for hard limits. URLs are protected against
+  Server-Side Request Forgery (SSRF): allowlist of allowed hosts,
+  prohibition of private IP ranges (RFC 1918: 10/8, 172.16/12, 192.168/16;
+  loopback 127/8; link-local 169.254/16; cloud metadata 169.254.169.254
+  AWS/Azure, metadata.google.internal GCP), DNS rebinding protection
+  (validate resolved IP after DNS resolution), no redirects without
+  re-validation. Libraries: Java `java.net.http.HttpClient` with custom
+  `Authenticator`, Python `requests` with `allowed_hosts`, Go `net/http`
+  with custom `Transport`, Node.js `ssrf-req-filter`. Uploads and
+  downloads check size (maximum before receiving via `Content-Length`
+  header and streaming limit), MIME type (magic-byte detection with
+  `Apache Tika`, `python-magic`, `file(1)` instead of trusting headers
+  only), file-extension allowlist, antivirus scan (ClamAV, VirusTotal
+  API), storage outside the webroot or with random filenames, image
+  metadata stripping (EXIF) and re-encoding (ImageMagick with policy
+  against RCE CVEs). XML/JSON parser: XXE protection
+  (`DocumentBuilderFactory.setFeature("http://apache.org/xml/features/
+  disallow-doctype-decl", true)` Java; `defusedxml` Python), JSON-bomb
+  protection (depth and size limits). References: OWASP File Upload Cheat
+  Sheet, OWASP SSRF Cheat Sheet, CWE-22, CWE-918, CWE-434, CWE-611.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 11. Abhängigkeiten / Dependencies
+
+- **DE:** Neue Abhängigkeiten sind aktiv gepflegt (letzte Veröffentlichung
+  ≤ 12 Monate, keine archivierten Repositories), ohne bekannte kritische
+  CVEs (CVSS ≥ 9.0) oder Hochstufungen, mit erlaubter Lizenz und
+  vertrauenswürdigem Maintainer-Track-Record. Lock-Dateien sind committet
+  und aktualisiert: `package-lock.json`/`yarn.lock`/`pnpm-lock.yaml`,
+  `poetry.lock`/`uv.lock`/`Pipfile.lock`/`requirements.txt` mit Hashes
+  (`pip install --require-hashes`), `Cargo.lock`, `go.sum`, `Gemfile.lock`,
+  `composer.lock`, `packages.lock.json` (NuGet mit `RestorePackagesWithLockFile`).
+  Strict-Mode in CI: `npm ci`, `yarn install --frozen-lockfile`, `pnpm
+  install --frozen-lockfile`, `cargo build --locked`, `go mod verify`.
+  Container-Images mit Digest-Pinning (`@sha256:...`) statt mutable Tags.
+  CVE-Scanning bei jedem Build und PR: GitHub Dependabot Alerts,
+  Git Dependency Scanning, Snyk, Mend (WhiteSource), JFrog Xray, OWASP
+  Dependency-Check, OSV-Scanner (Google), Trivy, Grype. SBOM-Generierung
+  pro Build (CycloneDX 1.5+ oder SPDX 2.3+) — siehe CL_Lieferkette-Build-
+  Integritaet. Konkrete Quellen: NVD (`nvd.nist.gov`), OSV.dev, GitHub
+  Security Advisories (GHSA), CISA Known Exploited Vulnerabilities (KEV),
+  EPSS-Score (Exploit Prediction Scoring System). Update-Strategie:
+  Renovate oder Dependabot mit `minimumReleaseAge: "3 days"` (Cooldown
+  gegen Supply-Chain-Angriffe), Auto-Merge nur für Patch-Updates mit
+  grünem CI; Major-Updates manuell mit Changelog-Review. Verbotene
+  Quellen: typosquatted Pakete, gelöschte/verlassene Maintainer,
+  unbestätigte Mirror-Repos. Referenzen: OWASP Top 10 A06:2021 Vulnerable
+  and Outdated Components, CWE-1104, CWE-1395, NIST SSDF PW.4.
+- **EN:** New dependencies are actively maintained (last release ≤ 12
+  months, no archived repositories), free of known critical CVEs (CVSS
+  ≥ 9.0) or upgrade flags, with allowed license and trusted maintainer
+  track record. Lock files are committed and up to date:
+  `package-lock.json`/`yarn.lock`/`pnpm-lock.yaml`,
+  `poetry.lock`/`uv.lock`/`Pipfile.lock`/`requirements.txt` with hashes
+  (`pip install --require-hashes`), `Cargo.lock`, `go.sum`,
+  `Gemfile.lock`, `composer.lock`, `packages.lock.json` (NuGet with
+  `RestorePackagesWithLockFile`). Strict mode in CI: `npm ci`,
+  `yarn install --frozen-lockfile`, `pnpm install --frozen-lockfile`,
+  `cargo build --locked`, `go mod verify`. Container images with digest
+  pinning (`@sha256:...`) instead of mutable tags. CVE scanning on every
+  build and PR: GitHub Dependabot Alerts, Git Dependency Scanning,
+  Snyk, Mend (WhiteSource), JFrog Xray, OWASP Dependency-Check,
+  OSV-Scanner (Google), Trivy, Grype. SBOM generation per build
+  (CycloneDX 1.5+ or SPDX 2.3+) — see CL_Lieferkette-Build-Integritaet.
+  Concrete sources: NVD (`nvd.nist.gov`), OSV.dev, GitHub Security
+  Advisories (GHSA), CISA Known Exploited Vulnerabilities (KEV), EPSS
+  score (Exploit Prediction Scoring System). Update strategy: Renovate or
+  Dependabot with `minimumReleaseAge: "3 days"` (cooldown against
+  supply-chain attacks), auto-merge only for patch updates with green CI;
+  major updates manual with changelog review. Forbidden sources:
+  typosquatted packages, deleted/abandoned maintainers, unverified mirror
+  repos. References: OWASP Top 10 A06:2021 Vulnerable and Outdated
+  Components, CWE-1104, CWE-1395, NIST SSDF PW.4.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 12. Tests / Tests
+
+- **DE:** Sicherheitsrelevante Pfade (Authentifizierung, Autorisierung,
+  Eingabevalidierung, Ausgabe-Codierung, Krypto-Operationen, Session-
+  Verwaltung, Fehlerbehandlung, File/Network-I/O) haben automatisierte
+  Tests in zwei Varianten: positive Fälle (erwartetes Verhalten bei
+  zulässiger Eingabe) und negative Fälle (Ablehnung bei Angriffsversuchen,
+  Boundary-Werten, NULL/leeren Werten, Unicode-Edge-Cases). Test-
+  Frameworks: Java JUnit 5 + Mockito + AssertJ + REST Assured; Spring
+  Boot `@WebMvcTest` und `@SpringBootTest`; C#/.NET xUnit + Moq + FluentAssertions
+  + WebApplicationFactory; Python pytest + pytest-mock + httpx; Go
+  `testing` + testify; Node.js Jest + supertest. Security-spezifische
+  Tools: OWASP ZAP für DAST in CI (`zap-baseline.py`), Burp Suite für
+  manuelle Pentests, Semgrep für SAST mit OWASP Top 10 Rules
+  (`semgrep --config p/owasp-top-ten`), CodeQL für GitHub-native SAST,
+  SonarQube/SonarCloud, Snyk Code, Checkmarx. Coverage-Minimum für
+  sicherheitskritische Module: mindestens 85 % oder besser Branch
+  Coverage. Integrationstests decken mindestens 80 % oder besser der
+  dokumentierten öffentlichen Schnittstellen (zum Beispiel REST APIs,
+  CLI-Kommandos oder vergleichbare externe Schnittstellen) und mindestens
+  80 % oder besser der dokumentierten kritischen UI-Flows ab. Jede neue
+  oder geänderte öffentliche Schnittstelle hat mindestens einen positiven
+  und einen negativen Integrationstest. Property-Based Testing für
+  Validierung (Java `jqwik`, Python `hypothesis`, Go `testing/quick`);
+  Fuzz-Testing für Parser und Eingabeverarbeitung (Go-Fuzz, libFuzzer,
+  Atheris für Python, Jazzer für Java). Beispiele
+  für negative Tests: SQL-Injection-Strings (`' OR 1=1--`), XSS-Payloads
+  (`<script>alert(1)</script>`), Path-Traversal (`../../etc/passwd`),
+  Buffer-Overflow-Strings (10 000 Zeichen), Authentifizierung mit
+  ungültigem Token, Autorisierung mit fremder User-ID. Continuous Security
+  Testing: GitHub Actions Workflow mit SAST + SCA + DAST + Secret Scanning
+  bei jedem PR. Referenzen: OWASP Testing Guide v4.2, OWASP ASVS V12,
+  NIST SP 800-53 SA-11, ISO/IEC 27001 A.8.29.
+- **EN:** Security-relevant paths (authentication, authorization, input
+  validation, output encoding, crypto operations, session management,
+  error handling, file/network I/O) have automated tests in two variants:
+  positive cases (expected behaviour on valid input) and negative cases
+  (rejection on attack attempts, boundary values, NULL/empty values,
+  Unicode edge cases). Test frameworks: Java JUnit 5 + Mockito +
+  AssertJ + REST Assured; Spring Boot `@WebMvcTest` and `@SpringBootTest`;
+  C#/.NET xUnit + Moq + FluentAssertions + WebApplicationFactory; Python
+  pytest + pytest-mock + httpx; Go `testing` + testify; Node.js Jest +
+  supertest. Security-specific tools: OWASP ZAP for DAST in CI
+  (`zap-baseline.py`), Burp Suite for manual pentest, Semgrep for SAST
+  with OWASP Top 10 rules (`semgrep --config p/owasp-top-ten`), CodeQL
+  for GitHub-native SAST, SonarQube/SonarCloud, Snyk Code, Checkmarx.
+  Coverage minimum for security-critical modules: at least 85 % or
+  better branch coverage. Integration tests cover at least 80 % or
+  better of the documented public interfaces (for example REST APIs,
+  CLI commands, or comparable external interfaces) and at least 80 % or
+  better of the documented critical UI flows. Every new or changed
+  public interface has at least one positive and one negative integration
+  test. Property-based testing for validation (Java `jqwik`, Python
+  `hypothesis`, Go `testing/quick`); fuzz testing for parsers and input
+  processing (Go-Fuzz, libFuzzer, Atheris for Python, Jazzer for Java).
+  Examples of negative tests: SQL injection strings (`' OR 1=1--`), XSS
+  payloads (`<script>alert(1)</script>`), path traversal
+  (`../../etc/passwd`), buffer-overflow strings (10,000 characters),
+  authentication with invalid token, authorization with foreign user ID.
+  Continuous security testing: GitHub Actions workflow with SAST + SCA +
+  DAST + secret scanning on every PR. References: OWASP Testing Guide
+  v4.2, OWASP ASVS V12, NIST SP 800-53 SA-11, ISO/IEC 27001 A.8.29.
+- **Akzeptanz / Acceptance:** Coverage-Bericht zeigt mindestens 85 %
+  oder besser Branch Coverage für sicherheitskritische Module; Test-
+  oder Traceability-Report zeigt mindestens 80 % oder besser Abdeckung
+  der dokumentierten öffentlichen Schnittstellen und kritischen UI-Flows;
+  jede neue oder geänderte öffentliche Schnittstelle hat mindestens
+  einen positiven und einen negativen Integrationstest. / Coverage report
+  shows at least 85 % or better branch coverage for security-critical
+  modules; test or traceability report shows at least 80 % or better
+  coverage of documented public interfaces and critical UI flows; every
+  new or changed public interface has at least one positive and one
+  negative integration test.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+### Sprachspezifische Punkte / Language-Specific Items
+
+#### Java / Java
+
+- **DE:** Spring Security 6 oder gleichwertig (Apache Shiro, Quarkus
+  Security) korrekt konfiguriert: explizite `SecurityFilterChain`-Bean,
+  `authorizeHttpRequests` mit Default-Deny, CSRF-Schutz aktiv für Web
+  (`http.csrf(Customizer.withDefaults())` mit `CookieCsrfTokenRepository`).
+  SQL: `Statement` durch `PreparedStatement` mit `?`-Platzhaltern ersetzt;
+  JPA/Hibernate mit JPQL-Parametern (`:param`) statt String-Konkatenation;
+  jOOQ als typsicheres Builder-Framework. Sichere Deserialisierung: kein
+  blindes `ObjectInputStream`; `ValidatingObjectInputStream` mit Allowlist
+  (`apache-commons-io`); JSON-Deserialisierung mit Jackson und
+  `@JsonTypeInfo` ohne `Default Typing` (`ObjectMapper.activateDefaultTyping`
+  vermeiden); SnakeYAML mit `SafeConstructor`; XML mit
+  `disallow-doctype-decl=true`. Build mit Java 21 LTS; `--enable-preview`
+  nur für Tests; Pattern Matching, Records und sealed Classes für sichere
+  Datentypen. Statische Analyse: SpotBugs + FindSecBugs Plugin, Error
+  Prone, PMD mit Security Ruleset, SonarQube. Beispiel sichere Query:
+  `var stmt = conn.prepareStatement("SELECT * FROM users WHERE email = ?");
+  stmt.setString(1, email);`.
+- **EN:** Spring Security 6 or equivalent (Apache Shiro, Quarkus Security)
+  configured correctly: explicit `SecurityFilterChain` bean,
+  `authorizeHttpRequests` with default-deny, CSRF protection on for web
+  (`http.csrf(Customizer.withDefaults())` with `CookieCsrfTokenRepository`).
+  SQL: `Statement` replaced by `PreparedStatement` with `?` placeholders;
+  JPA/Hibernate with JPQL parameters (`:param`) instead of string
+  concatenation; jOOQ as type-safe builder framework. Safe deserialisation:
+  no blind `ObjectInputStream`; `ValidatingObjectInputStream` with
+  allowlist (`apache-commons-io`); JSON deserialisation with Jackson and
+  `@JsonTypeInfo` without default typing (avoid
+  `ObjectMapper.activateDefaultTyping`); SnakeYAML with `SafeConstructor`;
+  XML with `disallow-doctype-decl=true`. Build with Java 21 LTS;
+  `--enable-preview` only for tests; pattern matching, records, and sealed
+  classes for safe data types. Static analysis: SpotBugs + FindSecBugs
+  plugin, Error Prone, PMD with security ruleset, SonarQube. Example safe
+  query: `var stmt = conn.prepareStatement("SELECT * FROM users WHERE
+  email = ?"); stmt.setString(1, email);`.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### C# / .NET / C# / .NET
+
+- **DE:** Parametrisierte Datenbankzugriffe per ADO.NET
+  (`SqlCommand.Parameters.AddWithValue`/`Add` mit `SqlDbType`), Dapper
+  (`connection.Query<User>("SELECT ... WHERE id = @id", new { id })`),
+  Entity Framework Core mit LINQ und `FromSqlInterpolated` (sicher) statt
+  `FromSqlRaw` (unsicher bei String-Konkatenation). Anti-Forgery-Token in
+  Web: ASP.NET Core `services.AddAntiforgery()`, `[ValidateAntiForgeryToken]`
+  auf Controller-Actions, Razor `@Html.AntiForgeryToken()` in Forms,
+  Header `X-XSRF-TOKEN` für SPAs. Sichere JSON-Deserialisierung mit
+  `System.Text.Json` (`JsonSerializerOptions { PropertyNameCaseInsensitive
+  = true, AllowTrailingCommas = false }`); bei `Newtonsoft.Json`
+  `TypeNameHandling = None` setzen (CVE-2017-9785, CVE-2020-7060). XML
+  mit `XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit,
+  XmlResolver = null }` gegen XXE. `HttpClient` als Singleton oder per
+  `IHttpClientFactory` (Socket-Erschöpfung vermeiden); Polly für
+  Retry/Circuit-Breaker. `Set-StrictMode -Version Latest` in PowerShell-
+  Hilfsskripten. Async/await durchgängig (kein `.Result`/`.Wait()` —
+  Deadlock-Gefahr); `CancellationToken` propagieren. Nullable Reference
+  Types aktivieren (`<Nullable>enable</Nullable>` in `.csproj`).
+  Logging mit `ILogger<T>` und Source-Generators (kein String-Format mit
+  User-Input). Build: .NET 8 LTS oder neuer; SDK-Style `.csproj` mit
+  `<TreatWarningsAsErrors>true</TreatWarningsAsErrors>`; Roslyn-Analyzer
+  `Microsoft.CodeAnalysis.NetAnalyzers` mit Security-Regeln (CA5xxx),
+  Security Code Scan, SonarAnalyzer.
+- **EN:** Parameterised database access via ADO.NET
+  (`SqlCommand.Parameters.AddWithValue`/`Add` with `SqlDbType`), Dapper
+  (`connection.Query<User>("SELECT ... WHERE id = @id", new { id })`),
+  Entity Framework Core with LINQ and `FromSqlInterpolated` (safe) instead
+  of `FromSqlRaw` (unsafe with string concatenation). Anti-forgery tokens
+  in web: ASP.NET Core `services.AddAntiforgery()`,
+  `[ValidateAntiForgeryToken]` on controller actions, Razor
+  `@Html.AntiForgeryToken()` in forms, header `X-XSRF-TOKEN` for SPAs.
+  Safe JSON deserialisation with `System.Text.Json`
+  (`JsonSerializerOptions { PropertyNameCaseInsensitive = true,
+  AllowTrailingCommas = false }`); with `Newtonsoft.Json` set
+  `TypeNameHandling = None` (CVE-2017-9785, CVE-2020-7060). XML with
+  `XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit,
+  XmlResolver = null }` against XXE. `HttpClient` as singleton or via
+  `IHttpClientFactory` (avoid socket exhaustion); Polly for
+  retry/circuit-breaker. `Set-StrictMode -Version Latest` in PowerShell
+  helper scripts. Async/await throughout (no `.Result`/`.Wait()` —
+  deadlock risk); propagate `CancellationToken`. Enable nullable reference
+  types (`<Nullable>enable</Nullable>` in `.csproj`). Logging with
+  `ILogger<T>` and source generators (no string format with user input).
+  Build: .NET 8 LTS or newer; SDK-style `.csproj` with
+  `<TreatWarningsAsErrors>true</TreatWarningsAsErrors>`; Roslyn analyzer
+  `Microsoft.CodeAnalysis.NetAnalyzers` with security rules (CA5xxx),
+  Security Code Scan, SonarAnalyzer.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### Python / Python
+
+- **DE:** Bibliothek `cryptography` (PyCA, mit moderner High-Level-API
+  `Fernet`, Low-Level `hazmat.primitives`) statt eigener Krypto-
+  Implementierung oder veralteter `pycrypto`-Fork. Sichere Parser:
+  `defusedxml` für XML (verhindert XXE, Billion Laughs, External Entity
+  Injection); `defusedjson` für sichere JSON-Tiefe; `ruamel.yaml` mit
+  `safe_load` oder `yaml.safe_load` (kein `yaml.load` ohne Loader).
+  Kein `eval`, `exec`, `compile` oder `pickle.loads` auf nicht
+  vertrauenswürdigen Eingaben (RCE-Risiko); Alternativen: `ast.literal_eval`
+  für Literale, JSON, msgpack, Protocol Buffers für Datenaustausch.
+  `subprocess` ohne `shell=True` für nicht vertrauenswürdige Eingaben:
+  `subprocess.run([cmd, arg1, arg2], capture_output=True, text=True,
+  check=True)` mit Listen-Argumenten; bei Bedarf `shlex.quote(arg)`.
+  HTTP-Requests mit `requests` und `verify=True` (Default), Timeout setzen
+  (`timeout=10`); SSRF-Schutz mit Allowlist. Frameworks: FastAPI mit
+  `pydantic` v2 für Validierung, Starlette mit
+  `SecurityHeaders`-Middleware; Django mit `SecurityMiddleware`,
+  `CsrfViewMiddleware`, ORM (`Model.objects.filter` statt rohem SQL).
+  Type-Hints (`mypy --strict`) und `ruff` Linter mit Security-Rules
+  (`bandit`-Integration). Build: Python 3.12+ (3.13 bevorzugt); virtuelle
+  Umgebungen (`venv`, `uv`, `poetry`); Lock-File `requirements.txt` mit
+  `pip-compile --generate-hashes` oder `uv lock`. Statische Analyse:
+  bandit, semgrep, ruff, mypy, pylint mit Security-Plugin.
+- **EN:** `cryptography` library (PyCA, with modern high-level API
+  `Fernet`, low-level `hazmat.primitives`) instead of custom crypto
+  implementation or deprecated `pycrypto` fork. Safe parsers:
+  `defusedxml` for XML (prevents XXE, billion laughs, external entity
+  injection); `defusedjson` for safe JSON depth; `ruamel.yaml` with
+  `safe_load` or `yaml.safe_load` (no `yaml.load` without loader). No
+  `eval`, `exec`, `compile`, or `pickle.loads` on untrusted inputs (RCE
+  risk); alternatives: `ast.literal_eval` for literals, JSON, msgpack,
+  Protocol Buffers for data exchange. `subprocess` without `shell=True`
+  for untrusted inputs: `subprocess.run([cmd, arg1, arg2],
+  capture_output=True, text=True, check=True)` with list arguments;
+  `shlex.quote(arg)` if needed. HTTP requests with `requests` and
+  `verify=True` (default), set timeout (`timeout=10`); SSRF protection
+  with allowlist. Frameworks: FastAPI with `pydantic` v2 for validation,
+  Starlette with `SecurityHeaders` middleware; Django with
+  `SecurityMiddleware`, `CsrfViewMiddleware`, ORM (`Model.objects.filter`
+  instead of raw SQL). Type hints (`mypy --strict`) and `ruff` linter with
+  security rules (`bandit` integration). Build: Python 3.12+ (3.13
+  preferred); virtual environments (`venv`, `uv`, `poetry`); lock file
+  `requirements.txt` with `pip-compile --generate-hashes` or `uv lock`.
+  Static analysis: bandit, semgrep, ruff, mypy, pylint with security
+  plugin.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### Go / Go
+
+- **DE:** Kontextgebundene HTTP-Templates (`html/template`,
+  kontextsensitives Auto-Escaping pro Output-Stelle: HTML-Body, Attribut,
+  JS, URL, CSS) statt `text/template` für HTML-Output. `database/sql` mit
+  Platzhaltern (`db.QueryContext(ctx, "SELECT * FROM users WHERE id = $1",
+  id)`) statt `fmt.Sprintf` mit User-Input; ORM-Bibliotheken `sqlc`
+  (typsicher, Code-Generator), `gorm` mit `Where("name = ?", name)` oder
+  `ent` (Facebook). `crypto/rand` (CSPRNG) statt `math/rand` für
+  Sicherheits-Token, Session-IDs, Salts (`b := make([]byte, 32);
+  crypto/rand.Read(b)`). `math/rand/v2` (Go 1.22+) nur für nicht-
+  sicherheitsrelevante Zufallswerte. Race-Detector im Test:
+  `go test -race ./...` in CI Pflicht (Datenrennen-Bugs sind häufig
+  Sicherheitslücken). Web-Frameworks: `net/http` mit
+  `http.TimeoutHandler` und `Server.ReadTimeout`/`WriteTimeout`/`IdleTimeout`
+  gegen Slowloris; `chi`, `echo`, `gin`, `fiber` mit Security-
+  Middleware (CSRF, CORS, Security Headers). Kontext-Propagation
+  (`context.Context`) für Cancellation und Deadlines durchgängig. Statische
+  Analyse: `go vet`, `staticcheck`, `gosec` (Security-Linter mit Regeln
+  G101-G505), `golangci-lint` mit `gosec`-Plugin. Build: Go 1.22 oder
+  neuer; `go.sum` committen; `go mod verify` in CI; `go build -trimpath`
+  (Pfade aus Binary entfernen); `-buildmode=pie` für ASLR. Verbotene
+  Pakete: `unsafe` ohne dokumentierte Begründung, `os/exec` mit `Shell`-
+  Wrapper, eigene HTTP-Parser.
+- **EN:** Context-aware HTML templates (`html/template`, context-sensitive
+  auto-escaping per output position: HTML body, attribute, JS, URL, CSS)
+  instead of `text/template` for HTML output. `database/sql` with
+  placeholders (`db.QueryContext(ctx, "SELECT * FROM users WHERE id = $1",
+  id)`) instead of `fmt.Sprintf` with user input; ORM libraries `sqlc`
+  (type-safe, code generator), `gorm` with `Where("name = ?", name)`, or
+  `ent` (Facebook). `crypto/rand` (CSPRNG) instead of `math/rand` for
+  security tokens, session IDs, salts (`b := make([]byte, 32);
+  crypto/rand.Read(b)`). `math/rand/v2` (Go 1.22+) only for
+  non-security-relevant random values. Race detector in tests:
+  `go test -race ./...` mandatory in CI (data races are often security
+  bugs). Web frameworks: `net/http` with `http.TimeoutHandler` and
+  `Server.ReadTimeout`/`WriteTimeout`/`IdleTimeout` against slowloris;
+  `chi`, `echo`, `gin`, `fiber` with security middleware (CSRF, CORS,
+  security headers). Context propagation (`context.Context`) for
+  cancellation and deadlines throughout. Static analysis: `go vet`,
+  `staticcheck`, `gosec` (security linter with rules G101-G505),
+  `golangci-lint` with `gosec` plugin. Build: Go 1.22 or newer; commit
+  `go.sum`; `go mod verify` in CI; `go build -trimpath` (remove paths
+  from binary); `-buildmode=pie` for ASLR. Forbidden packages: `unsafe`
+  without documented justification, `os/exec` with shell wrapper, custom
+  HTTP parsers.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### Swift / Swift
+
+- **DE:** Keychain-Services (`Security.framework`) für Geheimnisse mit
+  passenden Accessibility-Klassen
+  (`kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly` für Server-Tokens,
+  `kSecAttrAccessibleWhenUnlockedThisDeviceOnly` für interaktive
+  Daten); kein `UserDefaults` für Geheimnisse. `URLSession` mit
+  korrekter TLS-Konfiguration: ATS (App Transport Security) aktiv lassen;
+  TLS 1.3 minimum
+  (`URLSessionConfiguration.tlsMinimumSupportedProtocolVersion = .TLSv13`);
+  Public Key Pinning oder Certificate Pinning per
+  `URLSessionDelegate.urlSession(_:didReceive:completionHandler:)` für
+  kritische Endpunkte; Hostname-Validierung nicht deaktivieren. Speicher-
+  sichere Initialisierungen für Strings und Daten (Swift ist standardmäßig
+  speichersicher; Vorsicht bei Bridging zu C-APIs): `Data` und `String`
+  statt `UnsafeMutableBufferPointer`; bei Schlüsseln/Passwörtern explizit
+  zero-out nach Gebrauch (`data.resetBytes(in: 0..<data.count)`); kein
+  blindes `unsafeBitCast` oder Pointer-Arithmetik. Crypto:
+  `CryptoKit` (iOS 13+, macOS 10.15+) statt CommonCrypto; `SymmetricKey`,
+  `ChaChaPoly.seal`, `Curve25519.Signing` für moderne Algorithmen.
+  Concurrency: `async/await` und Actors statt manueller Locks; `Sendable`-
+  Protokolle für Thread-Safety. Frameworks: SwiftUI mit `@AppStorage`
+  (kein Secret-Speicher), Combine; Vapor für Server-Side Swift mit
+  Security-Middleware. Build: Swift 5.9+ oder Swift 6 mit `Strict
+  Concurrency Checking`; SwiftLint mit Security-Regeln; Xcode Static
+  Analyzer; Address Sanitizer + Thread Sanitizer in Tests.
+- **EN:** Keychain services (`Security.framework`) for secrets with
+  appropriate accessibility classes
+  (`kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly` for server tokens,
+  `kSecAttrAccessibleWhenUnlockedThisDeviceOnly` for interactive data);
+  no `UserDefaults` for secrets. `URLSession` with correct TLS
+  configuration: leave ATS (App Transport Security) on; TLS 1.3 minimum
+  (`URLSessionConfiguration.tlsMinimumSupportedProtocolVersion = .TLSv13`);
+  public key pinning or certificate pinning via
+  `URLSessionDelegate.urlSession(_:didReceive:completionHandler:)` for
+  critical endpoints; do not disable hostname validation. Memory-safe
+  initialisation for strings and data (Swift is memory-safe by default;
+  caution when bridging to C APIs): `Data` and `String` instead of
+  `UnsafeMutableBufferPointer`; for keys/passwords explicitly zero out
+  after use (`data.resetBytes(in: 0..<data.count)`); no blind
+  `unsafeBitCast` or pointer arithmetic. Crypto: `CryptoKit` (iOS 13+,
+  macOS 10.15+) instead of CommonCrypto; `SymmetricKey`, `ChaChaPoly.seal`,
+  `Curve25519.Signing` for modern algorithms. Concurrency: `async/await`
+  and actors instead of manual locks; `Sendable` protocols for thread
+  safety. Frameworks: SwiftUI with `@AppStorage` (no secret store),
+  Combine; Vapor for server-side Swift with security middleware. Build:
+  Swift 5.9+ or Swift 6 with strict concurrency checking; SwiftLint with
+  security rules; Xcode Static Analyzer; Address Sanitizer + Thread
+  Sanitizer in tests.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### SQL / SQL
+
+- **DE:** Keine dynamischen SQL-Strings aus Benutzereingaben — niemals
+  String-Konkatenation, `String.format`, Template-Strings (`${var}`,
+  `f"..."`, `"..."+"..."`) oder ORM-Methoden, die rohen SQL durchreichen
+  (`@Query(value="...", nativeQuery=true)` JPA, `cursor.execute("..." %
+  user_input)` Python). Nur parametrisierte Statements (Prepared
+  Statements) mit Platzhaltern (`?` JDBC, `@param` ADO.NET, `:name` JPA,
+  `$1` PostgreSQL/Go, `%s` Python DB-API) oder geprüfte Stored Procedures
+  mit typisierten Parametern. Identifier-Werte (Tabellennamen, Spalten-
+  namen, ORDER-BY-Klauseln), die nicht parametrisiert werden können,
+  ausschließlich aus Allowlist
+  (`if (sortField !in setOf("name", "date")) throw IllegalArgumentException`).
+  Beispiele: PostgreSQL `SELECT * FROM users WHERE email = $1` mit
+  `pgx.Conn.QueryRow(ctx, sql, email)`; MySQL `SELECT * FROM users
+  WHERE id = ?` mit `stmt.setInt(1, id)`; SQL Server
+  `SELECT * FROM users WHERE id = @id` mit `cmd.Parameters.Add("@id",
+  SqlDbType.Int).Value = id`. Stored Procedures: ein `EXECUTE
+  sp_GetUser @userId = ?` mit Parameter, `WITH RECOMPILE` nur wenn
+  nötig. Least-Privilege-DB-User pro Anwendung (kein `dbo`, `root`,
+  `postgres` superuser); separate Read-/Write-Rollen. SQL-Injection-Test:
+  Sleep-Test (`'; WAITFOR DELAY '00:00:05'--`), Boolean-Blind, Time-Based,
+  UNION-Based mit `sqlmap` in Pentests. Defensive Tools: SonarQube SQL-
+  Injection-Regeln, Semgrep `tainted-sql-string`, GitHub CodeQL
+  `cs/sql-injection`, Checkmarx, Veracode. Referenzen: OWASP SQL
+  Injection Prevention Cheat Sheet, OWASP ASVS V5.3, CWE-89.
+- **EN:** No dynamic SQL strings from user input — never string
+  concatenation, `String.format`, template strings (`${var}`, `f"..."`,
+  `"..."+"..."`), or ORM methods that pass through raw SQL
+  (`@Query(value="...", nativeQuery=true)` JPA, `cursor.execute("..." %
+  user_input)` Python). Only parameterised statements (prepared
+  statements) with placeholders (`?` JDBC, `@param` ADO.NET, `:name` JPA,
+  `$1` PostgreSQL/Go, `%s` Python DB-API) or reviewed stored procedures
+  with typed parameters. Identifier values (table names, column names,
+  ORDER BY clauses) that cannot be parameterised exclusively from
+  allowlist (`if (sortField !in setOf("name", "date")) throw
+  IllegalArgumentException`). Examples: PostgreSQL `SELECT * FROM users
+  WHERE email = $1` with `pgx.Conn.QueryRow(ctx, sql, email)`; MySQL
+  `SELECT * FROM users WHERE id = ?` with `stmt.setInt(1, id)`; SQL
+  Server `SELECT * FROM users WHERE id = @id` with
+  `cmd.Parameters.Add("@id", SqlDbType.Int).Value = id`. Stored
+  procedures: an `EXECUTE sp_GetUser @userId = ?` with parameter, `WITH
+  RECOMPILE` only when needed. Least-privilege DB user per application
+  (no `dbo`, `root`, `postgres` superuser); separate read/write roles.
+  SQL injection test: sleep test (`'; WAITFOR DELAY '00:00:05'--`),
+  boolean blind, time-based, UNION-based with `sqlmap` in pentests.
+  Defensive tools: SonarQube SQL-injection rules, Semgrep
+  `tainted-sql-string`, GitHub CodeQL `cs/sql-injection`, Checkmarx,
+  Veracode. References: OWASP SQL Injection Prevention Cheat Sheet,
+  OWASP ASVS V5.3, CWE-89.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### Bash / Bash
+
+- **DE:** Variablen immer in doppelten Anführungszeichen (`"$var"`,
+  `"${var}"`, `"$@"` statt `$@` oder `$*`); kein `eval` auf nicht
+  vertrauenswürdigen Eingaben (Code-Injection-Risiko); `--` als
+  Optionsbegrenzer (`rm -- "$file"`, `cd -- "$dir"`) gegen Datei-Namen,
+  die mit `-` beginnen; `set -euo pipefail` am Skriptstart (`-e` Exit bei
+  Fehler, `-u` Fehler bei undefinierten Variablen, `-o pipefail` Exit-Code
+  der gescheiterten Pipeline-Stufe). Zusätzlich `IFS=$'\n\t'` für
+  vorhersehbares Word-Splitting. Verwende `[[ ... ]]` (Bash-Builtin) statt
+  `[ ... ]` (POSIX) für sicherere Tests; arithmetisch `(( ... ))` statt
+  `expr`. Kein Globbing auf User-Input ohne Prüfung (`set -f`/`set +f`
+  oder Quoting). `mktemp` für temporäre Dateien (`mktemp -t myapp.XXXXXX`)
+  statt `/tmp/$$.tmp`. Heredocs mit Quoting (`<<'EOF'`) gegen Variablen-
+  Expansion. Subshells für Side-Effect-Isolation (`( cd dir && cmd )`).
+  Externe Befehle: `command -v` für Existenzprüfung; vollständige Pfade
+  (`/usr/bin/env`) bei Sicherheits-relevanten Skripten. Statische Analyse:
+  `shellcheck` (Pflicht in CI, mindestens Severity warning); `bashate`;
+  `shfmt` für Formatierung. Bash-Version: 4+ für `mapfile`, `[[ -v ]]`;
+  Bash 5+ für `EPOCHSECONDS`. Beispiel sichere Argumente:
+  `if [[ "$1" =~ ^[A-Za-z0-9_-]+$ ]]; then ...`. Verbotene Konstrukte:
+  `cmd | sh`, `wget -O- url | bash`, `eval "$user_input"`,
+  `unquoted glob *.txt` mit User-Input.
+- **EN:** Always quote variables in double quotes (`"$var"`, `"${var}"`,
+  `"$@"` instead of `$@` or `$*`); no `eval` on untrusted input (code
+  injection risk); `--` as option terminator (`rm -- "$file"`,
+  `cd -- "$dir"`) against filenames starting with `-`; `set -euo
+  pipefail` at script start (`-e` exit on error, `-u` error on undefined
+  variables, `-o pipefail` exit code of failed pipeline stage). Also
+  `IFS=$'\n\t'` for predictable word splitting. Use `[[ ... ]]` (bash
+  builtin) instead of `[ ... ]` (POSIX) for safer tests; arithmetic
+  `(( ... ))` instead of `expr`. No globbing on user input without check
+  (`set -f`/`set +f` or quoting). `mktemp` for temporary files
+  (`mktemp -t myapp.XXXXXX`) instead of `/tmp/$$.tmp`. Heredocs with
+  quoting (`<<'EOF'`) against variable expansion. Subshells for
+  side-effect isolation (`( cd dir && cmd )`). External commands:
+  `command -v` for existence check; full paths (`/usr/bin/env`) in
+  security-relevant scripts. Static analysis: `shellcheck` (mandatory in
+  CI, at least severity warning); `bashate`; `shfmt` for formatting.
+  Bash version: 4+ for `mapfile`, `[[ -v ]]`; Bash 5+ for
+  `EPOCHSECONDS`. Example safe arguments: `if [[ "$1" =~
+  ^[A-Za-z0-9_-]+$ ]]; then ...`. Forbidden constructs: `cmd | sh`,
+  `wget -O- url | bash`, `eval "$user_input"`, unquoted glob `*.txt`
+  with user input.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### PowerShell / PowerShell
+
+- **DE:** `Set-StrictMode -Version Latest` und
+  `$ErrorActionPreference = 'Stop'` am Skriptanfang (Erkennung
+  undeklarierter Variablen, Eigenschaften und Argumentfehler;
+  Fehler nicht stillschweigend ignorieren). Validierte Parameter via
+  `[CmdletBinding()]`-Funktion mit Validation-Attributen:
+  `[ValidateNotNullOrEmpty()]`, `[ValidateSet('Foo','Bar')]`,
+  `[ValidatePattern('^[A-Za-z0-9_-]+$')]`, `[ValidateRange(1,100)]`,
+  `[ValidateScript({Test-Path $_})]`. Kein `Invoke-Expression` auf nicht
+  vertrauenswürdigen Eingaben (RCE-Risiko); Alternativen: Splatting
+  (`& $command @parameters`), `Start-Process -ArgumentList`. PowerShell
+  Execution Policy auf Servern mindestens `RemoteSigned`, idealerweise
+  `AllSigned` mit Code-Signing-Zertifikat (Authenticode). PowerShell-
+  Skripte mit `.psd1`-Manifest und Module-Manifest-Felder. Sichere
+  Strings für Geheimnisse: `Read-Host -AsSecureString` und
+  `ConvertFrom-SecureString -Key $key`; `[System.Net.NetworkCredential]`
+  zur Konvertierung. Web-Anfragen: `Invoke-RestMethod` und
+  `Invoke-WebRequest` mit `-UseBasicParsing`,
+  `-SkipCertificateCheck` nur in Tests; TLS 1.2+ erzwingen
+  (`[Net.ServicePointManager]::SecurityProtocol =
+  [Net.SecurityProtocolType]::Tls12 -bor [Net.SecurityProtocolType]::Tls13`).
+  PowerShell 7+ (Cross-Platform Core, nicht Windows PowerShell 5.1) für
+  neue Skripte. Comment-Based Help (`<#  .SYNOPSIS ... #>`) und
+  Pester-Tests (Pflicht für jede Funktion). Statische Analyse:
+  `PSScriptAnalyzer` mit Security-Regeln (`Invoke-ScriptAnalyzer -Path
+  . -Severity Error,Warning`); `Pester` mit Code-Coverage;
+  Inject- und Constrained-Language-Mode bei sensitiven Hosts.
+  Logging: `Start-Transcript`, `Write-Verbose`, `Write-Information`
+  (kein `Write-Host` für strukturierte Ausgabe). Tipp: `pwsh -NoProfile`
+  in CI und Subprozessen, um Profile-Side-Effects zu verhindern.
+- **EN:** `Set-StrictMode -Version Latest` and
+  `$ErrorActionPreference = 'Stop'` at script start (detection of
+  undeclared variables, properties, and argument errors; do not silently
+  ignore errors). Validated parameters via `[CmdletBinding()]` function
+  with validation attributes: `[ValidateNotNullOrEmpty()]`,
+  `[ValidateSet('Foo','Bar')]`,
+  `[ValidatePattern('^[A-Za-z0-9_-]+$')]`, `[ValidateRange(1,100)]`,
+  `[ValidateScript({Test-Path $_})]`. No `Invoke-Expression` on
+  untrusted input (RCE risk); alternatives: splatting (`& $command
+  @parameters`), `Start-Process -ArgumentList`. PowerShell execution
+  policy on servers at least `RemoteSigned`, ideally `AllSigned` with
+  code-signing certificate (Authenticode). PowerShell scripts with
+  `.psd1` manifest and module manifest fields. SecureStrings for
+  secrets: `Read-Host -AsSecureString` and `ConvertFrom-SecureString
+  -Key $key`; `[System.Net.NetworkCredential]` for conversion. Web
+  requests: `Invoke-RestMethod` and `Invoke-WebRequest` with
+  `-UseBasicParsing`, `-SkipCertificateCheck` only in tests; force TLS
+  1.2+ (`[Net.ServicePointManager]::SecurityProtocol =
+  [Net.SecurityProtocolType]::Tls12 -bor
+  [Net.SecurityProtocolType]::Tls13`). PowerShell 7+ (cross-platform
+  Core, not Windows PowerShell 5.1) for new scripts. Comment-based help
+  (`<#  .SYNOPSIS ... #>`) and Pester tests (mandatory for every
+  function). Static analysis: `PSScriptAnalyzer` with security rules
+  (`Invoke-ScriptAnalyzer -Path . -Severity Error,Warning`); `Pester`
+  with code coverage; inject and constrained-language mode on sensitive
+  hosts. Logging: `Start-Transcript`, `Write-Verbose`,
+  `Write-Information` (no `Write-Host` for structured output). Tip:
+  `pwsh -NoProfile` in CI and subprocesses to prevent profile side
+  effects.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### C / C89 / C / C89
+
+- **DE:** Bounds-Checking bei jedem Array-Zugriff und String-Operation
+  (Buffer-Overflows sind die Hauptursache von Memory-Safety-CVEs in
+  C/C89). Kein `gets()` (entfernt aus C11; verwende `fgets(buf, sizeof
+  buf, stdin)`). Kein ungeprüftes `sprintf()` oder `strcpy()`/`strcat()`
+  — Alternativen: `snprintf(buf, sizeof buf, "%s", input)`,
+  `strncpy_s`/`strcat_s` (C11 Annex K, optional), `strlcpy`/`strlcat`
+  (BSD), oder eigene gepuffte Wrapper mit expliziter Längenprüfung.
+  Keine `scanf("%s", buf)` (immer Längenbegrenzung `scanf("%99s", buf)`).
+  Integer-Overflows prüfen vor `malloc(n * size)`: `if (n > SIZE_MAX /
+  size) abort();`. `free`-Pointer nach Freigabe auf `NULL` setzen
+  (`free(p); p = NULL;`); kein Double-Free, kein Use-After-Free.
+  CERT-C-Regeln (Top-Verstöße im Review prüfen): STR31-C (sufficient
+  buffer), ARR30-C (no out-of-bounds index), INT30-C (unsigned overflow),
+  MEM30-C (no use after free), MSC24-C (avoid deprecated functions).
+  Statische Analyse Pflicht: `clang-tidy` mit `bugprone-*`,
+  `cert-*`-Checks; `cppcheck`; PVS-Studio; Coverity Scan;
+  `gcc -Wall -Wextra -Wpedantic -Werror -fanalyzer`. Sanitizer in Tests:
+  Address Sanitizer (`-fsanitize=address`), Undefined Behavior Sanitizer
+  (`-fsanitize=undefined`), Memory Sanitizer (`-fsanitize=memory`).
+  Fuzzing mit `libFuzzer`, AFL++, Honggfuzz. Compiler-Härtung:
+  `-D_FORTIFY_SOURCE=3`, `-fstack-protector-strong`, `-fPIE -pie`,
+  `-Wl,-z,relro,-z,now`, `-Wl,-z,noexecstack`. Begründung CRA: C ist
+  nicht MSL — Begründung in `constitution.md` halten (z. B. cc65/C89-
+  Retro-Plattform). Referenzen: SEI CERT C Coding Standard, MISRA C 2023,
+  CWE-787 (Out-of-bounds Write), CWE-125 (Out-of-bounds Read), CWE-416
+  (Use After Free), CWE-119, ISO/IEC 9899:2018 Annex K.
+- **EN:** Bounds checking on every array access and string operation
+  (buffer overflows are the main cause of memory-safety CVEs in C/C89).
+  No `gets()` (removed from C11; use `fgets(buf, sizeof buf, stdin)`).
+  No unchecked `sprintf()` or `strcpy()`/`strcat()` — alternatives:
+  `snprintf(buf, sizeof buf, "%s", input)`,
+  `strncpy_s`/`strcat_s` (C11 Annex K, optional), `strlcpy`/`strlcat`
+  (BSD), or custom buffered wrappers with explicit length check. No
+  `scanf("%s", buf)` (always length-limit `scanf("%99s", buf)`). Check
+  integer overflows before `malloc(n * size)`: `if (n > SIZE_MAX / size)
+  abort();`. Set `free`-pointers to `NULL` after free (`free(p); p =
+  NULL;`); no double-free, no use-after-free. CERT C rules (top
+  violations to check in review): STR31-C (sufficient buffer), ARR30-C
+  (no out-of-bounds index), INT30-C (unsigned overflow), MEM30-C (no use
+  after free), MSC24-C (avoid deprecated functions). Mandatory static
+  analysis: `clang-tidy` with `bugprone-*`, `cert-*` checks; `cppcheck`;
+  PVS-Studio; Coverity Scan; `gcc -Wall -Wextra -Wpedantic -Werror
+  -fanalyzer`. Sanitizers in tests: Address Sanitizer
+  (`-fsanitize=address`), Undefined Behavior Sanitizer
+  (`-fsanitize=undefined`), Memory Sanitizer (`-fsanitize=memory`).
+  Fuzzing with `libFuzzer`, AFL++, Honggfuzz. Compiler hardening:
+  `-D_FORTIFY_SOURCE=3`, `-fstack-protector-strong`, `-fPIE -pie`,
+  `-Wl,-z,relro,-z,now`, `-Wl,-z,noexecstack`. CRA justification: C is
+  not MSL — keep justification in `constitution.md` (e.g. cc65/C89 retro
+  platform). References: SEI CERT C Coding Standard, MISRA C 2023,
+  CWE-787 (Out-of-bounds Write), CWE-125 (Out-of-bounds Read), CWE-416
+  (Use After Free), CWE-119, ISO/IEC 9899:2018 Annex K.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 13. Spec-Kit-Secure-Coding-Profile / Spec Kit Secure Coding Profiles
+
+- **DE:** Bei sicherheitsrelevanten Änderungen wird geprüft, ob ein
+  sprachspezifisches Secure-Coding-Profil aus dem Spec-Kit-Preset
+  `security-governance` ausgefüllt oder gleichwertig abgedeckt ist. Dies
+  gilt besonders für Änderungen an Eingabevalidierung, Ausgabe-Codierung,
+  Authentifizierung, Autorisierung, Kryptografie, Datei-I/O, Netzwerk-I/O,
+  Datenbankzugriff, Logging, Dependency Handling oder Shell-/Script-Code.
+  Der Status „Memory-Safe Language" ersetzt diese Prüfung nicht; er
+  reduziert nur bestimmte Speicherfehler-Risiken.
+- **EN:** For security-relevant changes, check whether a language-specific
+  secure-coding profile from the Spec Kit `security-governance` preset has
+  been completed or covered in an equivalent way. This applies especially
+  to changes in input validation, output encoding, authentication,
+  authorisation, cryptography, file I/O, network I/O, database access,
+  logging, dependency handling, or shell/script code. "Memory-safe
+  language" status does not replace this review; it only reduces certain
+  memory-error risks.
+- **Akzeptanz / Acceptance:** Pull Request, Review-Dokument oder
+  Spec-Kit-Artefakt verweist auf die ausgefüllten Profile für die
+  betroffenen Sprachen (z. B. C/C89, C#/.NET, Rust, Go, Swift,
+  Java/Kotlin, Python, TypeScript/JavaScript, SQL, Bash, PowerShell) oder
+  begründet die Nichtanwendbarkeit. / Pull request, review document, or
+  Spec Kit artefact links the completed profiles for affected languages
+  (for example C/C89, C#/.NET, Rust, Go, Swift, Java/Kotlin, Python,
+  TypeScript/JavaScript, SQL, Bash, PowerShell) or justifies
+  non-applicability.
+- **Referenz / Reference:** Spec-Kit `security-governance`, Template
+  `secure-coding-language-rules-template`.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Review, PR, Spec-Kit-Artefakt oder N/A-Begründung nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name review, PR, Spec Kit artefact, or N/A rationale. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+### Abschluss / Closure
+
+**DE:** Reviewer trägt Datum, Name und Ergebnis (akzeptiert / Änderungen
+nötig) ein. Bei „Änderungen nötig" werden konkrete Punkte als Kommentar
+am Pull Request hinterlegt.
+
+**EN:** Reviewer records date, name, and result (accepted / changes
+needed). For "changes needed", concrete points are left as comments on the
+pull request.
+
+### Glossar / Glossary
+
+**DE:** Dieses Glossar erklärt die wichtigsten Begriffe dieser Checkliste in Alltagssprache. Es ändert keine Anforderungen, sondern macht die vorhandenen Prüfpunkte leichter verständlich.
+
+**EN:** This glossary explains the most important terms in this checklist in plain language. It does not change requirements; it makes the existing review items easier to understand.
+
+<a id="cl-08-glossar-code-review"></a>
+
+#### Code Review
+
+- **DE:** Ein Code Review ist die Prüfung von Änderungen durch andere Personen. Beim Sicherheits-Code-Review wird besonders auf Risiken, Eingaben, Berechtigungen, Fehlerbehandlung und Abhängigkeiten geachtet.
+- **EN:** A code review is the review of changes by other people. Security code review focuses especially on risks, inputs, permissions, error handling, and dependencies.
+
+<a id="cl-08-glossar-input-validation"></a>
+
+#### Eingabevalidierung / Input Validation
+
+- **DE:** Eingabevalidierung prüft, ob Daten das erwartete Format, die erlaubte Länge und den erlaubten Wertebereich haben. Sie schützt vor fehlerhaften oder gefährlichen Eingaben.
+- **EN:** Input validation checks whether data has the expected format, allowed length, and allowed value range. It protects against wrong or dangerous input.
+
+<a id="cl-08-glossar-output-encoding"></a>
+
+#### Ausgabe-Codierung / Output Encoding
+
+- **DE:** Ausgabe-Codierung stellt Daten passend für den Zielkontext dar, zum Beispiel HTML, JSON oder SQL. Sie verhindert, dass Daten versehentlich als Code ausgeführt werden.
+- **EN:** Output encoding represents data correctly for the target context, for example HTML, JSON, or SQL. It prevents data from accidentally being executed as code.
+
+<a id="cl-08-glossar-authentication"></a>
+
+#### Authentifizierung / Authentication
+
+- **DE:** Authentifizierung prüft, wer jemand ist oder welcher Dienst sich anmeldet. Beispiele sind Passwort, Zertifikat, Token, MFA oder Single Sign-on.
+- **EN:** Authentication checks who a person is or which service signs in. Examples are password, certificate, token, MFA, or single sign-on.
+
+<a id="cl-08-glossar-authorisation"></a>
+
+#### Autorisierung / Authorisation
+
+- **DE:** Autorisierung entscheidet, was eine angemeldete Person oder ein Dienst tun darf. Sie muss serverseitig geprüft werden und folgt nach der Authentifizierung.
+- **EN:** Authorisation decides what an authenticated person or service may do. It must be checked server-side and happens after authentication.
+
+<a id="cl-08-glossar-session-management"></a>
+
+#### Sitzungsverwaltung / Session Management
+
+- **DE:** Sitzungsverwaltung steuert angemeldete Sitzungen, zum Beispiel Cookies, Ablaufzeiten, Abmeldung und Schutz gegen Session-Übernahme.
+- **EN:** Session management controls signed-in sessions, for example cookies, expiry times, logout, and protection against session takeover.
+
+<a id="cl-08-glossar-secret-store"></a>
+
+#### Secret Store
+
+- **DE:** Ein Secret Store speichert Geheimnisse wie Passwörter, API-Schlüssel oder Tokens geschützt. Geheimnisse sollen nicht im Code, in Logs oder in Tickets stehen.
+- **EN:** A secret store protects secrets such as passwords, API keys, or tokens. Secrets should not be in code, logs, or tickets.
+
+<a id="cl-08-glossar-logging-audit"></a>
+
+#### Logging und Audit / Logging and Audit
+
+- **DE:** Logging zeichnet wichtige Ereignisse auf. Audit-Fähigkeit bedeutet, dass diese Aufzeichnungen verständlich, geschützt und für Prüfungen nutzbar sind.
+- **EN:** Logging records important events. Audit capability means these records are understandable, protected, and usable for reviews.
+
+<a id="cl-08-glossar-dependency"></a>
+
+#### Abhängigkeit / Dependency
+
+- **DE:** Eine Abhängigkeit ist fremder Code oder ein Paket, das ein Projekt nutzt. Abhängigkeiten brauchen Pflege, Lizenzprüfung und Schwachstellenprüfung.
+- **EN:** A dependency is third-party code or a package used by a project. Dependencies need maintenance, licence review, and vulnerability checks.
+
+<a id="cl-08-glossar-sast"></a>
+
+#### SAST
+
+- **DE:** SAST ist statische Codeanalyse. Der Code wird untersucht, ohne dass das Programm läuft, zum Beispiel auf unsichere Funktionen oder Datenflüsse.
+- **EN:** SAST is static code analysis. The code is inspected without running the program, for example for unsafe functions or data flows.
+
+<a id="cl-08-glossar-dast"></a>
+
+#### DAST
+
+- **DE:** DAST ist dynamische Anwendungssicherheitsprüfung. Die laufende Anwendung wird von außen getestet, ähnlich wie ein Angreifer sie sehen würde.
+- **EN:** DAST is dynamic application security testing. The running application is tested from the outside, similar to how an attacker would see it.
+
+<a id="cl-08-glossar-linter"></a>
+
+#### Linter
+
+- **DE:** Ein Linter prüft Quellcode automatisch gegen Regeln. Das können Stilregeln, mögliche Fehler oder Sicherheitsregeln sein.
+- **EN:** A linter checks source code automatically against rules. These can be style rules, possible bugs, or security rules.
+
+<a id="cl-08-glossar-codeql"></a>
+
+#### CodeQL
+
+- **DE:** CodeQL ist ein Werkzeug für statische Analyse. Es sucht Muster und Datenflüsse im Code, die auf Sicherheitsprobleme hinweisen können.
+- **EN:** CodeQL is a static analysis tool. It searches code patterns and data flows that may indicate security issues.
+
+<a id="cl-08-glossar-semgrep"></a>
+
+#### Semgrep
+
+- **DE:** Semgrep ist ein Werkzeug für statische Analyse mit gut lesbaren Regeln. Teams können eigene Regeln für sichere Codierung ergänzen.
+- **EN:** Semgrep is a static analysis tool with readable rules. Teams can add their own rules for secure coding.
+
+<a id="cl-08-glossar-sonarqube"></a>
+
+#### SonarQube
+
+- **DE:** SonarQube prüft Codequalität und Sicherheitsaspekte. Ergebnisse müssen bewertet werden, weil nicht jeder Fund automatisch ein echter Fehler ist.
+- **EN:** SonarQube checks code quality and security aspects. Results must be assessed because not every finding is automatically a real defect.
+
+<a id="cl-08-glossar-xss"></a>
+
+#### XSS / Cross-Site Scripting
+
+- **DE:** XSS ist ein Angriff, bei dem fremder Skriptcode im Browser anderer Personen ausgeführt wird. Häufige Ursachen sind fehlende Ausgabe-Codierung und ungeprüfte Eingaben.
+- **EN:** XSS is an attack where foreign script code runs in other people’s browsers. Common causes are missing output encoding and unchecked input.
+
+<a id="cl-08-glossar-sql-injection"></a>
+
+#### SQL Injection
+
+- **DE:** SQL Injection ist ein Angriff, bei dem Eingaben Datenbankbefehle verändern. Schutz bieten parametrisierte Abfragen und gute Eingabeprüfung.
+- **EN:** SQL injection is an attack where input changes database commands. Protection includes parameterised queries and good input checks.
+
+<a id="cl-08-glossar-path-traversal"></a>
+
+#### Path Traversal
+
+- **DE:** Path Traversal ist ein Angriff auf Dateipfade. Angreifende versuchen, auf Dateien außerhalb des erlaubten Bereichs zuzugreifen.
+- **EN:** Path traversal is an attack on file paths. Attackers try to access files outside the allowed area.
+
+<a id="cl-08-glossar-spec-kit"></a>
+
+#### Spec Kit
+
+- **DE:** Spec Kit ist ein werkzeuggestützter Ablauf für spezifikationsgetriebene Entwicklung. Es erzeugt und nutzt Markdown-Artefakte wie Spezifikation, Plan, Aufgaben und Analysen.
+- **EN:** Spec Kit is a tool-supported flow for specification-driven development. It creates and uses Markdown artefacts such as specification, plan, tasks, and analyses.
+
+### Versionshistorie / Version History
+
+- **Version 1.0 (2026-04-27):** Erstfassung / Initial version
+- **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
+- **Version 1.2 (2026-06-15):** Prüfpunkt 13 für Spec-Kit-Secure-Coding-Profile ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Added item 13 for Spec Kit secure-coding profiles; synchronized with RL Sichere-Entwicklung v2.9.0.
+
+- **Version 1.3 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
+
+- **Version 1.4 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
+- **Version 1.5 (2026-06-17):** Test-KPIs an RL Sichere-Entwicklung v2.10.0 angepasst: sicherheitskritische Module mindestens 85 % Branch Coverage; Integrationstest-Abdeckung öffentlicher Schnittstellen und kritischer UI-Flows mindestens 80 %. / Aligned test KPIs with Secure Development Guideline v2.10.0: security-critical modules at least 85 % branch coverage; integration-test coverage of public interfaces and critical UI flows at least 80 %.
+
+---
+
+
+---
+
+<!--
+Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
+Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+This document is organization-neutral and written as a generic training and review baseline.
+-->
+
+> **DE:** Diese Checkliste ist generisch und projektunabhaengig. Sie ist als Ausbildungs-, Review- und Haertungsgrundlage gedacht. Eine Nichtanwendbarkeit muss als `N/A` mit kurzer Begruendung dokumentiert werden.
+>
+> **EN:** This checklist is generic and project-independent. It is intended as a training, review, and hardening baseline. Non-applicability must be documented as `N/A` with a short rationale.
+
+## Checkliste 09 – KI-gestuetzte Codeerzeugung / AI-Assisted Code Generation
+
+### Zweck / Purpose
+
+**DE:** Diese Checkliste regelt den sicheren Einsatz von KI-Assistenten beim
+Schreiben, Vervollständigen oder Refaktorieren von Code. KI-Werkzeuge können
+Produktivität steigern, erzeugen aber nicht zuverlässig sicheren Code. Eine
+explizite Prüfung ist daher Pflicht.
+
+**EN:** This checklist governs the safe use of AI assistants for writing,
+completing, or refactoring code. AI tools can boost productivity, but they
+do not reliably produce secure code. Explicit review is therefore mandatory.
+
+### Geltungsbereich / Scope
+
+**DE:** Anzuwenden auf jeden Einsatz von KI-Code-Assistenten, lokalen LLMs
+oder Agenten, deren Ausgabe in Produktivcode oder produktnahe Skripte fließt.
+
+**EN:** Applies to every use of AI code assistants, local LLMs, or agents
+whose output flows into production code or production-near scripts.
+
+### Mitgeltende Dokumente / Related Documents
+
+- RL Sichere-Entwicklung
+- CL_12_Agentische-KI-Sandbox
+- Leitlinie für sichere Programmierung
+- ISO/IEC 27002:2022 A.8.28
+- OWASP Top 10 for Large Language Model Applications
+- NIST AI Risk Management Framework (AI RMF 1.0)
+- G7 „Software Bill of Materials for AI – Minimum Elements" (2026)
+
+#### URL-/Ablageverweise / URLs and Storage Locations
+
+**DE:** Diese Links helfen beim Review. Projekt- oder organisationsinterne Dokumente koennen als lokale Arbeitskopie oder als Verweis auf den festgelegten Ablageort ergaenzt werden.
+
+**EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
+
+- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
+- **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
+- **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
+- **Secure coding guideline:** this guide or an equivalent project-specific guideline
+- **CISA Memory Safe Roadmaps:** [lokale Textfassung des CISA-Dokuments / local text version of the CISA document](../THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.txt), [CISA-Webseite zum Dokument / CISA webpage for the document](https://www.cisa.gov/resources-tools/resources/case-memory-safe-roadmaps)
+- **ISO/IEC 27001:2022:** [offizielle ISO-Webseite zur ISO/IEC 27001:2022 / official ISO webpage for ISO/IEC 27001:2022](https://www.iso.org/standard/27001)
+- **ISO/IEC 27002:2022:** [offizielle ISO-Webseite zur ISO/IEC 27002:2022 / official ISO webpage for ISO/IEC 27002:2022](https://www.iso.org/standard/75652.html)
+- **NIST SSDF SP 800-218:** [NIST-Veröffentlichung SP 800-218 Secure Software Development Framework / NIST publication SP 800-218 Secure Software Development Framework](https://csrc.nist.gov/publications/detail/sp/800-218/final)
+- **NIST Zero Trust SP 800-207:** [NIST-Veröffentlichung SP 800-207 Zero Trust Architecture / NIST publication SP 800-207 Zero Trust Architecture](https://csrc.nist.gov/publications/detail/sp/800-207/final)
+- **OWASP ASVS:** [OWASP-Projektseite Application Security Verification Standard / OWASP project page Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)
+- **OWASP Cheat Sheet Series:** [OWASP Cheat Sheet Series Projektseite / OWASP Cheat Sheet Series project page](https://cheatsheetseries.owasp.org/)
+- **OWASP Proactive Controls:** [OWASP Proactive Controls Projektseite / OWASP Proactive Controls project page](https://owasp.org/www-project-proactive-controls/)
+- **OWASP SAMM:** [OWASP SAMM Projektseite / OWASP SAMM project page](https://owaspsamm.org/)
+- **OWASP Top 10 for LLM Applications:** [OWASP Top 10 for LLM Applications Projektseite / OWASP Top 10 for LLM Applications project page](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- **CWE Top 25:** [MITRE CWE Top 25 Übersicht / MITRE CWE Top 25 overview](https://cwe.mitre.org/top25/)
+- **CAPEC:** [MITRE CAPEC Katalog / MITRE CAPEC catalogue](https://capec.mitre.org/)
+- **CycloneDX:** [CycloneDX SBOM-Standard Projektseite / CycloneDX SBOM standard project page](https://cyclonedx.org/)
+- **SPDX:** [SPDX SBOM-Standard Projektseite / SPDX SBOM standard project page](https://spdx.dev/)
+- **CSAF/VEX:** [OASIS CSAF und VEX Dokumentation / OASIS CSAF and VEX documentation](https://oasis-open.github.io/csaf-documentation/)
+- **SLSA:** [SLSA Supply-chain Levels for Software Artifacts Projektseite / SLSA project page](https://slsa.dev/)
+- **OpenSSF Scorecard:** [OpenSSF Scorecard Projektseite / OpenSSF Scorecard project page](https://scorecard.dev/)
+- **RFC 9116 security.txt:** [RFC 9116 zu security.txt / RFC 9116 for security.txt](https://www.rfc-editor.org/rfc/rfc9116)
+- **NIST AI Risk Management Framework:** [NIST AI Risk Management Framework Webseite / NIST AI Risk Management Framework webpage](https://www.nist.gov/itl/ai-risk-management-framework)
+- **EU Cyber Resilience Act:** [EU-Amtsblatt zum Cyber Resilience Act / EU Official Journal for the Cyber Resilience Act](https://eur-lex.europa.eu/eli/reg/2024/2847/oj)
+- **BSI TR-02102:** [BSI-Webseite zur Technischen Richtlinie TR-02102 / BSI webpage for Technical Guideline TR-02102](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Technische-Richtlinien/TR-nach-Thema-sortiert/tr02102/tr-02102.html)
+
+### Bewertung und Dokumentation / Assessment and Documentation
+
+**DE:** Jeder Prüfpunkt bekommt genau einen Status. Schreibe die Begründung so, dass eine neue Kollegin oder ein neuer Kollege den Entscheid später ohne Rückfrage versteht.
+
+**EN:** Each checklist item gets exactly one status. Write the explanation so that a new team member can understand the decision later without asking again.
+
+- **Erfüllt / Fulfilled:** Die Anforderung ist umgesetzt und es gibt einen prüfbaren Nachweis.
+- **Nicht erfüllt / Not fulfilled:** Die Anforderung ist noch nicht umgesetzt oder der Nachweis fehlt. Es muss eine Aufgabe mit Verantwortlicher Person und Termin geben.
+- **Nicht anwendbar / Not applicable:** Die Anforderung passt nicht zum Projekt. Das ist erlaubt, aber nur mit kurzer Begründung.
+
+**Pflichtfelder je Prüfpunkt / Required fields per item:** Status, Begründung, Evidenzpfad oder Link, nächste Maßnahme mit Verantwortlicher Person und Zieltermin.
+
+### Durchführungshinweise / Implementation Guidance
+
+**DE:** Nutze diese Checkliste nicht als reine Ja/Nein-Liste. Sie ist ein Arbeits- und Auditdokument. Prüfe jeden Punkt gegen reale Artefakte: Code, Pull Request, Architekturdiagramm, Build-Log, Scan-Ergebnis, Ticket, Betriebsdokumentation oder Freigabeprotokoll. Wenn ein Nachweis noch fehlt, markiere den Punkt als „nicht erfüllt" und lege eine konkrete Folgeaufgabe an.
+
+**EN:** Do not use this checklist as a simple yes/no list. It is a working and audit document. Check each item against real artefacts: code, pull request, architecture diagram, build log, scan result, ticket, operations document, or approval record. If evidence is missing, mark the item as "not fulfilled" and create a concrete follow-up task.
+
+**DE:** Schreibe kurze, klare Begründungen. Vermeide Abkürzungen ohne Erklärung. Wenn ein Punkt technisch schwierig ist, beschreibe den aktuellen Stand, das Risiko und den nächsten machbaren Schritt.
+
+**EN:** Write short and clear explanations. Avoid unexplained abbreviations. If an item is technically difficult, describe the current state, the risk, and the next feasible step.
+
+**DE:** Wenn agentische KI eine wesentliche Feature-Implementierung übernimmt, gilt zusätzlich `CL_12_Agentische-KI-Sandbox`. Das Feature soll über GitHub Spec Kit im Spec-Driven-Development-Ablauf (SDD) gesteuert werden. Dazu gehören Spezifikation, Klärung, Plan, Checkliste, Aufgaben, Analyse und Implementierung sowie die sechs Governance-Presets. Installation, Nachweis, Aktualität und inhaltliche Abdeckung der Governance-Presets werden in `CL_12_Agentische-KI-Sandbox` bewertet. Wenn die Spec-Kit-Artefakte die anwendbaren Prüfpunkte vollständig über eine Nachweis-Matrix abdecken, kann die separate manuelle Ausfüllung dieser Checkliste entfallen.
+
+**EN:** If agentic AI performs a material feature implementation, `CL_12_Agentische-KI-Sandbox` also applies. The feature should be controlled through GitHub Spec Kit in the spec-driven development (SDD) flow. This includes specification, clarification, plan, checklist, tasks, analysis, implementation, and the six governance presets. Installation, evidence, currency, and content coverage of the governance presets are assessed in `CL_12_Agentische-KI-Sandbox`. If the Spec Kit artefacts fully cover the applicable review points through an evidence matrix, separate manual completion of this checklist may be omitted.
+
+**DE:** Jeder Prüfpunkt muss deshalb drei Fragen beantworten: Was bedeutet die Anforderung im Projektalltag? Was ist konkret zu tun oder zu entscheiden? Welcher Nachweis zeigt das Ergebnis? Verwende Standard-IDs, Toolnamen und Abkürzungen nur zusammen mit einer kurzen Erklärung in Alltagssprache. Wenn ein Punkt für Auszubildende oder neue Teammitglieder nicht selbsterklärend ist, ergänze eine kurze Erklärung in der Begründung.
+
+**EN:** Each item must therefore answer three questions: What does the requirement mean in daily project work? What exactly must be done or decided? Which evidence shows the result? Use standard IDs, tool names, and abbreviations only together with a short plain-language explanation. If an item is not self-explanatory for apprentices or new team members, add a short explanation in the rationale.
+
+### Beispiel / Example
+
+**DE:** Eine KI schlaegt eine neue Bibliothek vor. Vor dem Merge prueft das Team, ob das Paket wirklich existiert, gepflegt ist, keine kritischen CVEs hat und lizenzrechtlich erlaubt ist. Der PR markiert den KI-Anteil.
+
+**EN:** An AI suggests a new library. Before merge, the team checks that the package really exists, is maintained, has no critical CVEs, and is allowed by licence. The PR marks the AI contribution.
+
+### A11Y-Hinweise / A11Y Notes
+
+**DE:** Beim Ausfüllen dieser Checkliste müssen alle Nachweise auch textlich verständlich sein. Verweise sollen beschreibende Linktexte haben. Screenshots, Diagramme oder Scan-Auszüge brauchen eine kurze Textbeschreibung. Der Status darf nicht nur über Farbe erkennbar sein.
+
+**EN:** When this checklist is filled in, all evidence must also be understandable as text. References should use descriptive link text. Screenshots, diagrams, or scan extracts need a short text description. The status must not be shown by color alone.
+
+### Wichtige Begriffe / Key Terms
+
+**DE:** Die folgenden Begriffe kommen in dieser Checkliste vor. Die Links springen zum Glossar dieses Kapitels, damit Auszubildende und Entwickler:innen ohne Sicherheits-Spezialwissen die Begriffe direkt nachlesen können.
+
+**EN:** The following terms appear in this checklist. The links jump to this chapter's glossary so that apprentices and developers without specialist security knowledge can look them up directly.
+
+- [KI-Code-Assistenz / AI Coding Assistance](#cl-09-glossar-ai-code-assistenz)
+- [LLM / Large Language Model](#cl-09-glossar-llm)
+- [Prompt](#cl-09-glossar-prompt)
+- [Menschliche Prüfung / Human Review](#cl-09-glossar-human-review)
+- [Vier-Augen-Prinzip / Four-Eyes Rule](#cl-09-glossar-four-eyes)
+- [CVE](#cl-09-glossar-cve)
+- [Halluziniertes Paket / Hallucinated Package](#cl-09-glossar-hallucinated-package)
+- [Abhängigkeit / Dependency](#cl-09-glossar-dependency)
+- [Personenbezogene Daten / Personal Data](#cl-09-glossar-personal-data)
+- [Telemetrie / Telemetry](#cl-09-glossar-telemetry)
+- [Audit-Spur / Audit Trail](#cl-09-glossar-audit-trail)
+- [AI-SBOM / ML-BOM](#cl-09-glossar-ai-sbom-ml-bom)
+- [EU AI Act](#cl-09-glossar-eu-ai-act)
+- [Spec Kit](#cl-09-glossar-spec-kit)
+- [SDD / Specification-Driven Development](#cl-09-glossar-sdd)
+- [Preset](#cl-09-glossar-preset)
+- [Nachweis-Matrix / Evidence Matrix](#cl-09-glossar-nachweis-matrix)
+
+### Checkliste / Checklist
+
+#### 1. Genehmigte KI-Werkzeuge / Approved AI Tools
+
+- **DE:** Es kommen nur Werkzeuge zum Einsatz, die in der Liste der
+  genehmigten Software stehen. Cloud-basierte und lokale Werkzeuge sind
+  getrennt freigegeben, weil sie unterschiedliche Datenschutz-, Lizenz-
+  und Auftragsverarbeitungs-Profile haben. Genehmigte Cloud-Werkzeuge
+  (Beispielkatalog mit Auftragsverarbeitung gemäß DSGVO Art. 28):
+  GitHub Copilot Business und Enterprise (kein Training auf Kundendaten,
+  Indemnification, EU-Datenresidenz Enterprise), Microsoft 365 Copilot
+  (DPA, EU Data Boundary), Anthropic Claude (Enterprise-Plan mit Zero
+  Data Retention nach Verhandlung), OpenAI ChatGPT Enterprise/Team mit
+  ZDR, Google Gemini Code Assist (Enterprise-DPA), JetBrains AI Assistant
+  (Enterprise-Plan, Datenresidenz EU), AWS Bedrock/Q Developer in eigener
+  AWS-Region, Azure OpenAI Service in EU-Region. Genehmigte lokale
+  Werkzeuge ohne Cloud-Datenfluss: Continue.dev mit lokalem Ollama,
+  Tabby ML mit eigener GPU, Codeium Self-Hosted, llama.cpp mit Code Llama
+  70B/Qwen2.5-Coder/DeepSeek-Coder-V2/StarCoder2, LM Studio, vLLM, GPT4All.
+  Verboten ohne explizite Freigabe: kostenlose Web-Chat-Bots ohne DPA,
+  Browser-Plugins unbekannter Herkunft, Forks aus inoffiziellen Stores.
+  Software-Inventar (CMDB Snipe-IT, ServiceNow CMDB, Atlassian Insight)
+  pflegt pro Werkzeug: Hersteller, Lizenztyp (Pro/Business/Enterprise),
+  EU/US-Datenresidenz, ZDR-Status (Zero Data Retention), Trainings-Opt-out,
+  DPA-Datum, Vendor-Risk-Score. SBOM-Eintrag (CycloneDX) für jede lokale
+  Modell-Datei mit SHA-256-Hash. Beispiel für `docs/security/ai-tools-inventory.md`:
+  Tabelle mit Spalten: Werkzeug, Variante, Vendor, EU-DPA-Datum, ZDR,
+  `excludeFiles`-Profil, freigegeben-bis-Datum, Owner Security Champion.
+  Vierteljährliche Re-Evaluation, neue Werkzeuge nur nach
+  Vendor-Security-Assessment (CAIQ, SOC 2 Type II, ISO/IEC 27001-Zertifikat,
+  ISO/IEC 42001 AI-Management-System falls verfügbar). Referenzen:
+  ISO/IEC 27001 A.5.23 (Cloud-Services), DSGVO Art. 28, NIST AI RMF
+  GOVERN-1.1, OWASP LLM Top 10 LLM05 (Improper Output Handling), EU AI
+  Act Verordnung (EU) 2024/1689.
+- **EN:** Only tools listed in the approved software inventory are used.
+  Cloud-based and local tools are approved separately because they have
+  different data protection, licensing, and data processing profiles.
+  Approved cloud tools (example catalogue with data processing under GDPR
+  Art. 28): GitHub Copilot Business and Enterprise (no training on
+  customer data, indemnification, EU data residency in Enterprise),
+  Microsoft 365 Copilot (DPA, EU Data Boundary), Anthropic Claude
+  (Enterprise plan with Zero Data Retention after negotiation), OpenAI
+  ChatGPT Enterprise/Team with ZDR, Google Gemini Code Assist (Enterprise
+  DPA), JetBrains AI Assistant (Enterprise plan, EU data residency), AWS
+  Bedrock/Q Developer in own AWS region, Azure OpenAI Service in EU
+  region. Approved local tools without cloud data flow: Continue.dev with
+  local Ollama, Tabby ML with own GPU, Codeium Self-Hosted, llama.cpp
+  with Code Llama 70B/Qwen2.5-Coder/DeepSeek-Coder-V2/StarCoder2, LM
+  Studio, vLLM, GPT4All. Forbidden without explicit approval: free web
+  chatbots without DPA, browser plugins of unknown origin, forks from
+  unofficial stores. Software inventory (CMDB Snipe-IT, ServiceNow CMDB,
+  Atlassian Insight) maintains per tool: vendor, licence type
+  (Pro/Business/Enterprise), EU/US data residency, ZDR (Zero Data
+  Retention) status, training opt-out, DPA date, vendor risk score. SBOM
+  entry (CycloneDX) for each local model file with SHA-256 hash. Example
+  for `docs/security/ai-tools-inventory.md`: table with columns: tool,
+  variant, vendor, EU DPA date, ZDR, `excludeFiles` profile, approved-
+  until date, security champion owner. Quarterly re-evaluation, new tools
+  only after vendor security assessment (CAIQ, SOC 2 Type II, ISO/IEC
+  27001 certificate, ISO/IEC 42001 AI management system if available).
+  References: ISO/IEC 27001 A.5.23 (cloud services), GDPR Art. 28, NIST
+  AI RMF GOVERN-1.1, OWASP LLM Top 10 LLM05 (Improper Output Handling),
+  EU AI Act Regulation (EU) 2024/1689.
+- **Akzeptanz / Acceptance:** `docs/security/ai-tools-inventory.md`
+  vorhanden mit Vendor, Lizenztyp, EU-DPA-Datum, ZDR-Status, freigegeben-bis-Datum,
+  Owner; pro Werkzeug Datenschutzhinweis und SOC 2/ISO 27001-Nachweis;
+  vierteljährliche Re-Evaluation dokumentiert.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 2. Pflicht zur menschlichen Überprüfung / Mandatory Human Review
+
+- **DE:** Jede KI-Ausgabe wird vor dem Commit von einer Person gelesen
+  und inhaltlich geprüft. Ein Blind-Commit ist nicht zulässig. Reviewer-
+  Pflichten: jeder vorgeschlagene Codeblock zeilenweise lesen, gegen
+  Anforderung in Issue/Ticket abgleichen, auf Halluzinationen prüfen
+  (existiert die API-Funktion wirklich? — gegen offizielle Doku
+  verifizieren, MDN, JavaDoc, Microsoft Learn, devdocs.io), Sicherheits-
+  Implikationen bewerten (Eingabe-Validierung, Output-Encoding, Auth/Authz,
+  Krypto), Tests selber lesen (KI-Tests können tautologisch sein:
+  `assertEqual(getValue(), getValue())`). Blind-Commit-Verbot gilt auch
+  für vermeintlich triviale Vervollständigungen — IDE-Autocompletion mit
+  Tab-Bestätigung ist eine bewusste Annahme, kein passiver Akt. Commit-
+  Trailer für KI-Beteiligung: `Co-developed-with: Claude` oder `Assisted-by:
+  GitHub Copilot` als nachvollziehbarer Hinweis (wie `Co-Authored-By` für
+  Pair Programming). Pull-Request-Beschreibung enthält Abschnitt „AI
+  Assistance" mit Werkzeug, Umfang (z. B. „Boilerplate Test Setup",
+  „Refactoring", „Implementierung kompletter Funktion X"), Reviewer-
+  Vermerk „Manuell zeilenweise geprüft am YYYY-MM-DD von <Name>".
+  Code-Owner-Review (`CODEOWNERS`-Datei) erzwingt Pflicht-Reviewer für
+  Sicherheitsbereiche. PR-Template (`.github/pull_request_template.md`)
+  enthält Checkbox „Ich habe alle KI-Vorschläge zeilenweise gelesen und
+  verstanden". Tooling: GitHub Copilot Code Review (Vorschläge, nicht
+  Ersatz), CodeRabbit, Sourcery — diese ergänzen menschliche Reviews,
+  ersetzen sie nicht. Anti-Patterns: „LGTM" ohne Detail, Approval mit
+  >500 Zeilen Diff in <2 min, Auto-Merge unmittelbar nach KI-Generierung.
+  Referenzen: NIST AI RMF MEASURE-2.7 (Human Oversight), OWASP LLM Top
+  10 LLM09 (Overreliance), ISO/IEC 27001 A.8.4 (Access to source code),
+  CRA Anhang I Teil II 2.4 (sichere Standardkonfigurationen,
+  Code-Review).
+- **EN:** Every AI output is read and reviewed by a person before commit.
+  Blind commits are not allowed. Reviewer duties: read each suggested
+  code block line by line, compare against the requirement in the
+  issue/ticket, check for hallucinations (does the API function really
+  exist? — verify against official docs, MDN, JavaDoc, Microsoft Learn,
+  devdocs.io), evaluate security implications (input validation, output
+  encoding, auth/authz, crypto), read the tests yourself (AI tests can
+  be tautological: `assertEqual(getValue(), getValue())`). The
+  blind-commit ban also applies to seemingly trivial completions — IDE
+  autocompletion with tab confirmation is a deliberate acceptance, not a
+  passive act. Commit trailer for AI involvement: `Co-developed-with:
+  Claude` or `Assisted-by: GitHub Copilot` as a traceable note (like
+  `Co-Authored-By` for pair programming). Pull request description
+  contains an "AI Assistance" section with tool, scope (e.g., "boilerplate
+  test setup", "refactoring", "full implementation of function X"),
+  reviewer note "Manually reviewed line by line on YYYY-MM-DD by <name>".
+  Code owner review (`CODEOWNERS` file) enforces mandatory reviewers for
+  security areas. PR template (`.github/pull_request_template.md`)
+  contains a checkbox "I have read and understood all AI suggestions
+  line by line". Tooling: GitHub Copilot Code Review (suggestions, not
+  replacement), CodeRabbit, Sourcery — these complement human reviews,
+  they do not replace them. Anti-patterns: "LGTM" without detail,
+  approval with >500 lines diff in <2 min, auto-merge immediately after
+  AI generation. References: NIST AI RMF MEASURE-2.7 (Human Oversight),
+  OWASP LLM Top 10 LLM09 (Overreliance), ISO/IEC 27001 A.8.4 (Access to
+  source code), CRA Annex I Part II 2.4 (secure default configurations,
+  code review).
+- **Akzeptanz / Acceptance:** Pull-Request-Vermerk oder Commit-Trailer
+  mit Reviewer-Hinweis vorhanden; PR-Template-Checkbox „zeilenweise
+  geprüft" abgehakt; CODEOWNERS-Pflicht-Review für Sicherheitsbereiche
+  erzwungen; keine Auto-Merges direkt nach KI-Generierung.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 3. Vier-Augen-Prinzip bei kritischer Logik / Four-Eyes Rule for Critical Logic
+
+- **DE:** Sicherheitskritische Logik (Authentifizierung, Autorisierung,
+  Eingabevalidierung, Krypto, Sitzungsverwaltung, Zahlungspfade,
+  PII-Verarbeitung, Audit-Logging, Datei-Upload-Pfade, Datenbank-
+  Migrationen, Berechtigungs-Änderungen, Lieferketten-Konfiguration wie
+  CI/CD-YAML, Dockerfile, terraform .tf) wird zusätzlich von einer
+  zweiten Person geprüft. Vier-Augen erzwingen via Branch Protection
+  `required_approving_review_count: 2` für `main`/`release/*`-Branches
+  oder via `CODEOWNERS` mit Pflicht-Reviewern aus Security-Team:
+  ```text
+  /src/auth/                  @security-team @platform-team
+  /src/crypto/                @security-team @senior-architect
+  /src/payment/               @security-team @finance-engineering
+  /infrastructure/terraform/  @platform-team @security-team
+  /.github/workflows/         @security-team @devops-team
+  /Dockerfile                 @security-team @devops-team
+  /db/migrations/             @senior-backend @security-team
+  /docs/security/             @security-team
+  ```
+  Zweiter Reviewer ist nicht der Pull-Request-Autor (GitHub `dismiss_stale_reviews:
+  true` und `require_review_from_code_owners: true`). Bei KI-generierter
+  sicherheitskritischer Logik gilt zusätzlich: Senior-Engineer mit
+  domänenspezifischer Erfahrung als zweiter Reviewer (kein Junior + Junior).
+  Threat-Modeling-Ergänzung im PR: Welche STRIDE-Kategorie ist betroffen
+  (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of
+  Service, Elevation of Privilege)? Statisch-Analyse-Ergebnisse (Semgrep
+  mit `p/security-audit`, CodeQL mit `security-extended` Suite, SonarQube
+  mit Security Hotspots, Snyk Code) müssen vor Approval gezeigt werden.
+  Beispielhafter PR-Workflow: Autor pusht KI-Vorschlag → CI läuft (SAST,
+  DAST, Tests) → 1. Reviewer (Senior Domain) prüft fachlich → 2. Reviewer
+  (Security Champion oder Security-Team) prüft Threat-Surface → Merge
+  nur, wenn beide approven und alle CI-Gates grün. Referenzen: ISO/IEC
+  27001 A.8.30 (Outsourced Development — auch für KI-„Mitautoren"
+  anwendbar), NIST SSDF SP 800-218 PW.7.1 (peer review), OWASP ASVS V1.1.4
+  (multiple-eyes review for security-critical logic), CRA Anhang I Teil
+  II 2.5 (Sicherheitstests vor Inbetriebnahme).
+- **EN:** Security-critical logic (auth, input validation, crypto,
+  session management, payment paths, PII processing, audit logging, file
+  upload paths, database migrations, permission changes, supply chain
+  configuration such as CI/CD YAML, Dockerfile, terraform .tf) is
+  reviewed by a second person on top. Enforce four-eyes via branch
+  protection `required_approving_review_count: 2` for `main`/`release/*`
+  branches or via `CODEOWNERS` with mandatory reviewers from the
+  security team:
+  ```text
+  /src/auth/                  @security-team @platform-team
+  /src/crypto/                @security-team @senior-architect
+  /src/payment/               @security-team @finance-engineering
+  /infrastructure/terraform/  @platform-team @security-team
+  /.github/workflows/         @security-team @devops-team
+  /Dockerfile                 @security-team @devops-team
+  /db/migrations/             @senior-backend @security-team
+  /docs/security/             @security-team
+  ```
+  The second reviewer is not the PR author (GitHub `dismiss_stale_reviews:
+  true` and `require_review_from_code_owners: true`). For AI-generated
+  security-critical logic an additional rule applies: senior engineer
+  with domain experience as second reviewer (no Junior + Junior).
+  Threat modeling addition in the PR: which STRIDE category is affected
+  (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of
+  Service, Elevation of Privilege)? Static analysis results (Semgrep
+  with `p/security-audit`, CodeQL with `security-extended` suite,
+  SonarQube with security hotspots, Snyk Code) must be shown before
+  approval. Example PR workflow: author pushes AI suggestion → CI runs
+  (SAST, DAST, tests) → 1st reviewer (senior domain) reviews
+  functionally → 2nd reviewer (security champion or security team)
+  reviews threat surface → merge only if both approve and all CI gates
+  are green. References: ISO/IEC 27001 A.8.30 (outsourced development —
+  applicable to AI "co-authors" as well), NIST SSDF SP 800-218 PW.7.1
+  (peer review), OWASP ASVS V1.1.4 (multiple-eyes review for security-
+  critical logic), CRA Annex I Part II 2.5 (security tests before
+  release).
+- **Akzeptanz / Acceptance:** Zweite Review-Signatur im Pull Request
+  durch Senior/Security-Team via CODEOWNERS erzwungen; Branch Protection
+  `required_approving_review_count: 2` für main/release/*; STRIDE-Bewertung
+  und SAST-Ergebnis im PR dokumentiert.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 4. CVE-Prüfung für vorgeschlagene Abhängigkeiten / CVE Check for Suggested Dependencies
+
+- **DE:** Wenn die KI eine neue Abhängigkeit vorschlägt, wird die
+  Bibliothek auf Existenz, Pflegezustand und bekannte CVEs geprüft,
+  bevor sie aufgenommen wird. Konkrete Prüfschritte: (1) Existenz auf
+  offizieller Registry verifizieren — `npm view <package>`, `pip show
+  <package>` und `pypi.org/project/<name>`, `cargo info <crate>` und
+  `crates.io`, `go list -m <module>`, Maven Central
+  `search.maven.org/artifact/...`, NuGet `nuget.org/packages/...`. (2)
+  Pflegezustand: letzter Commit ≤ 6 Monate, ≥ 1 Maintainer (kein
+  Single-Maintainer-Risiko bei kritischen Abhängigkeiten),
+  Repository-Aktivität, GitHub Stars als grobe Heuristik (nicht
+  ausschließlich), Issues-Antwortzeit. (3) CVE-Prüfung über NVD
+  `nvd.nist.gov/vuln/search`, GitHub Advisory Database
+  `github.com/advisories`, OSV-Datenbank `osv.dev`, Snyk Vulnerability
+  DB, EPSS-Score (Exploit Prediction Scoring System) bei `epss.cyentia.com`
+  — Score > 0.7 bedeutet hohe Ausnutzungswahrscheinlichkeit. (4)
+  OpenSSF Scorecard `securityscorecards.dev` — Score < 5 ist
+  Warnsignal: prüft Maintained, CI-Tests, Code-Review, Branch-Protection,
+  signierte Releases, Vulnerabilities, SAST. (5) deps.dev (Google) für
+  transitive Abhängigkeiten und Lizenzen. (6) Mindestalter (z. B. via
+  npm `minimumReleaseAge: "3 days"`) gegen Typosquatting/Malware-Pakete
+  in frischen Releases. Tooling-Pipeline-Integration: `npm audit
+  --audit-level=high`, `pip-audit`, `cargo audit`, `govulncheck`, OSV-
+  Scanner, Trivy, Grype, Dependabot/Renovate Auto-PRs, Snyk Open Source.
+  Risiko-Klassen für Reviewer-Entscheidung: blockierend bei kritischer
+  CVE ohne Patch (CVSS ≥ 9.0), bei Single-Maintainer mit verlassener
+  Maintenance, bei OpenSSF Scorecard < 3, bei abweichendem
+  Maintainer-Profil zwischen Vorschlag und Realität (mögliches
+  Halluzinations-Indiz). PR-Vermerk: „Dependency Audit: <package>
+  v<version>, Last commit YYYY-MM-DD, OpenSSF Score X/10, CVEs: keine,
+  EPSS-Max: 0.X, Lizenz: MIT, Mindestalter: 14 Tage, Reviewer: <Name>".
+  Referenzen: NIST SP 800-161r1 (C-SCRM Cybersecurity Supply Chain Risk
+  Management), OWASP Top 10 A06:2021 (Vulnerable and Outdated
+  Components), CRA Anhang I Teil II 2.2 (Schwachstellenmanagement).
+- **EN:** When the AI suggests a new dependency, the library is checked
+  for existence, maintenance status, and known CVEs before adoption.
+  Concrete check steps: (1) Verify existence on the official registry —
+  `npm view <package>`, `pip show <package>` and
+  `pypi.org/project/<name>`, `cargo info <crate>` and `crates.io`, `go
+  list -m <module>`, Maven Central `search.maven.org/artifact/...`,
+  NuGet `nuget.org/packages/...`. (2) Maintenance status: last commit ≤
+  6 months, ≥ 1 maintainer (no single-maintainer risk for critical
+  dependencies), repository activity, GitHub stars as a rough heuristic
+  (not exclusively), issue response time. (3) CVE check via NVD
+  `nvd.nist.gov/vuln/search`, GitHub Advisory Database
+  `github.com/advisories`, OSV database `osv.dev`, Snyk Vulnerability
+  DB, EPSS score (Exploit Prediction Scoring System) at
+  `epss.cyentia.com` — score > 0.7 means high exploitation likelihood.
+  (4) OpenSSF Scorecard `securityscorecards.dev` — score < 5 is a
+  warning signal: checks maintained, CI tests, code review, branch
+  protection, signed releases, vulnerabilities, SAST. (5) deps.dev
+  (Google) for transitive dependencies and licences. (6) Minimum age
+  (e.g., via npm `minimumReleaseAge: "3 days"`) against typosquatting
+  and malware packages in fresh releases. Tooling pipeline integration:
+  `npm audit --audit-level=high`, `pip-audit`, `cargo audit`,
+  `govulncheck`, OSV-Scanner, Trivy, Grype, Dependabot/Renovate auto
+  PRs, Snyk Open Source. Risk classes for reviewer decision: blocking
+  on critical CVE without patch (CVSS ≥ 9.0), single maintainer with
+  abandoned maintenance, OpenSSF Scorecard < 3, deviating maintainer
+  profile between suggestion and reality (possible hallucination
+  indicator). PR note: "Dependency Audit: <package> v<version>, Last
+  commit YYYY-MM-DD, OpenSSF Score X/10, CVEs: none, EPSS-Max: 0.X,
+  Licence: MIT, Minimum age: 14 days, Reviewer: <name>". References:
+  NIST SP 800-161r1 (C-SCRM Cybersecurity Supply Chain Risk
+  Management), OWASP Top 10 A06:2021 (Vulnerable and Outdated
+  Components), CRA Annex I Part II 2.2 (vulnerability management).
+- **Akzeptanz / Acceptance:** Prüfvermerk im PR oder im Abhängigkeits-Audit
+  mit CVE-Status (NVD/OSV/Snyk), OpenSSF Scorecard, EPSS, Lizenz,
+  Mindestalter, Maintainer-Profil; CI-Gate via `npm audit`/`pip-audit`/
+  `osv-scanner`/Trivy.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 5. Schutz vor halluzinierten Paketen / Protection Against Hallucinated Packages
+
+- **DE:** KI-Modelle erfinden manchmal Bibliotheken
+  („Slopsquatting"-Risiko). Vorgeschlagene Paketnamen werden gegen die
+  offizielle Registry geprüft, weil Angreifer halluzinierte Paketnamen
+  als typosquatted Schadpakete registrieren können (Beispiel-Vorfälle:
+  `huggingface-cli` Halluzinationen führten 2024 zu Schadpaket-Anmeldungen
+  auf PyPI; gleicher Angriffsvektor auf npm mit `node-fetch-2`,
+  `aws-sdk-s3-helper` etc.). Prüfschritte: (1) Existenz auf offizieller
+  Registry verifizieren (siehe Item 4); (2) Veröffentlichungsdatum
+  prüfen — Pakete < 30 Tage alt mit verdächtigem Namen sind starkes
+  Red-Flag, automatische Sperrung via npm `minimumReleaseAge: "30
+  days"` für Lock-Dateien oder Renovate `minimumReleaseAge`-Regel; (3)
+  Maintainer-Profil prüfen — neue Account ohne andere Pakete oder
+  Verbindung zur erwarteten Organisation ist verdächtig (`npm owner ls
+  <package>`, `pip show <package> | grep Author`, GitHub-Profil-Alter
+  und -Aktivität); (4) Download-Statistik prüfen — < 100 Downloads/Woche
+  bei vermeintlich populärem Paketnamen ist Halluzinations-Indiz; (5)
+  Cross-Check Levenshtein-Distanz zu populären Paketen
+  (`packagename-typosquat-detector`, npm `package-name-similarity`,
+  `pip-audit --vulnerability-service all`); (6) GitHub-Repository-Link
+  und README aufrufen — fehlende oder generisch wirkende Inhalte sind
+  Red Flags. Bekannte Halluzinations-Muster: Bindestrich-Variationen
+  (`requests-http` statt `requests`), Singular/Plural-Wechsel (`eslint-plugin-react`
+  vs. `eslint-plugins-react`), Versions-Suffixe (`lodash3`, `react-dom2`),
+  scope-Verschiebungen (`@aws-sdk/s3` vs. `@aws-sdks/s3`). Automatisierte
+  Verteidigung: `socket.dev` (Supply-chain-Sicherheit, prüft neue
+  Pakete auf Anomalien wie obfuscated code, install scripts,
+  Telemetrie-Code, typosquatting), `phylum.io`,
+  `apiiro/dependency-combobulator`, GitHub Native (npm provenance,
+  PyPI Trusted Publishers via OIDC). CI-Gate: `npm install` mit
+  `--ignore-scripts` standardmäßig, danach manuelle Allowlist für
+  bekannte sichere `postinstall`-Skripte. Referenzen: OWASP LLM Top 10
+  LLM05 (Improper Output Handling), Lasso Security (Slopsquatting-
+  Forschung 2024), JFrog SecurityResearch (PyPI-Halluzinations-Studie),
+  CRA Anhang I Teil II 2.2 (Schwachstellenmanagement Lieferkette).
+- **EN:** AI models sometimes invent libraries ("slopsquatting" risk).
+  Suggested package names are verified against the official registry,
+  because attackers can register hallucinated package names as
+  typosquatted malicious packages (example incidents: `huggingface-cli`
+  hallucinations led to malicious package uploads on PyPI in 2024;
+  same attack vector on npm with `node-fetch-2`, `aws-sdk-s3-helper`,
+  etc.). Check steps: (1) Verify existence on the official registry
+  (see item 4); (2) Check publication date — packages < 30 days old
+  with suspicious names are a strong red flag, auto-block via npm
+  `minimumReleaseAge: "30 days"` for lock files or Renovate
+  `minimumReleaseAge` rule; (3) Check maintainer profile — new account
+  without other packages or connection to the expected organization is
+  suspicious (`npm owner ls <package>`, `pip show <package> | grep
+  Author`, GitHub profile age and activity); (4) Check download
+  statistics — < 100 downloads/week for an allegedly popular package
+  name is a hallucination indicator; (5) Cross-check Levenshtein
+  distance to popular packages
+  (`packagename-typosquat-detector`, npm `package-name-similarity`,
+  `pip-audit --vulnerability-service all`); (6) Open the GitHub
+  repository link and README — missing or generic content is a red
+  flag. Known hallucination patterns: hyphen variations
+  (`requests-http` instead of `requests`), singular/plural swaps
+  (`eslint-plugin-react` vs. `eslint-plugins-react`), version suffixes
+  (`lodash3`, `react-dom2`), scope shifts (`@aws-sdk/s3` vs.
+  `@aws-sdks/s3`). Automated defence: `socket.dev` (supply-chain
+  security, checks new packages for anomalies like obfuscated code,
+  install scripts, telemetry code, typosquatting), `phylum.io`,
+  `apiiro/dependency-combobulator`, GitHub Native (npm provenance, PyPI
+  Trusted Publishers via OIDC). CI gate: `npm install` with
+  `--ignore-scripts` by default, then a manual allowlist for known-safe
+  `postinstall` scripts. References: OWASP LLM Top 10 LLM05 (Improper
+  Output Handling), Lasso Security (slopsquatting research 2024),
+  JFrog Security Research (PyPI hallucination study), CRA Annex I Part
+  II 2.2 (supply chain vulnerability management).
+- **Akzeptanz / Acceptance:** Registry-Prüfung dokumentiert mit
+  Veröffentlichungsdatum, Maintainer-Profil, Download-Statistik,
+  Levenshtein-Cross-Check zu populären Paketen; CI-Gate `socket.dev`/
+  `phylum.io` aktiv; `--ignore-scripts` als Default mit Allowlist.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 6. Lizenz-Klärung / Licence Clearance
+
+- **DE:** KI-erzeugte Codeschnipsel können Lizenzfragen aufwerfen,
+  weil das Modell auf Trainingsdaten mit unterschiedlichen Lizenzen
+  (MIT, Apache-2.0, BSD, GPLv2, GPLv3, AGPL, proprietär ohne Lizenz)
+  trainiert wurde und längere wörtliche Zitate aus GPL-Code rechtlich
+  problematisch sein können (vgl. Doe v. GitHub Sammelklage 2022,
+  weiterhin offen). Zweifelhafte Schnipsel werden umgeschrieben oder
+  durch einen klar lizenzierten Block ersetzt. Konkrete Maßnahmen: (1)
+  Tools mit Code-Reference-Filter aktivieren — GitHub Copilot
+  „Suggestions matching public code: Block" (Settings → Copilot → Block
+  matching public code), AWS CodeWhisperer/Q Developer „Reference
+  Tracker", Tabnine „Restrict suggestions matching public code"; (2)
+  Bei längeren Code-Vorschlägen (≥ 5 Zeilen, nicht-trivial)
+  Plagiats-Suche durchführen — `grep` durch GitHub-Suche
+  (`https://github.com/search?type=code&q="<10-15 Token Schnipsel>"`),
+  CodeProbe, BlueOak, FOSSology, ScanCode Toolkit, Black Duck Code Sight,
+  Synopsys Code Insight; (3) Bei Treffer mit GPL/AGPL/CC-BY-SA: Block
+  umschreiben oder Lizenz beachten (eigenes Projekt muss kompatible
+  Lizenz haben; AGPL ist für SaaS besonders restriktiv); (4)
+  Lizenz-Verträglichkeit für gesamtes Projekt prüfen — Lizenz-Matrix in
+  `LICENSE-COMPATIBILITY.md` mit erlaubten Lizenzen (MIT, BSD-2/3-Clause,
+  Apache-2.0, ISC, MPL-2.0), bedingt erlaubt (LGPL bei dynamischer
+  Verlinkung), verboten (GPL/AGPL für proprietäre Produkte, WTFPL
+  unprofessionell, „Public Domain" rechtlich unklar in DE/EU); (5)
+  Vendor-Indemnification nutzen — GitHub Copilot Business/Enterprise
+  übernimmt Rechtsbeistand bei Lizenz-Streit, AWS Q Developer Pro mit
+  IP-Indemnification, Anthropic Claude Enterprise mit IP-Indemnity nach
+  Verhandlung. (6) Author-Trailer im Commit: `Co-developed-with: <Tool>
+  v<Version>` als nachvollziehbarer Hinweis. SBOM-Eintrag (CycloneDX
+  oder SPDX) für jede neue Abhängigkeit mit `licenseId` und SPDX-
+  Lizenz-Identifikator. Tooling: SCANCODE-TOOLKIT, REUSE-Tool für
+  SPDX-konforme Lizenzkennzeichnung in Quelldateien (SPDX-License-Identifier-
+  Header), `pip-licenses`, `license-checker` (npm), `cargo-deny`,
+  `go-licenses`. Referenzen: SPDX `spdx.org/licenses/`, OpenChain ISO/IEC
+  5230 (Open Source License Compliance Management), REUSE Software
+  `reuse.software/`, Linux Foundation TODO Group, ISO/IEC 27001 A.5.32
+  (intellectual property rights), CRA Anhang I Teil II 1.f (sichere
+  Standardkonfiguration und keine bekannten Schwachstellen).
+- **EN:** AI-generated code snippets can raise licence questions,
+  because the model was trained on data with different licences (MIT,
+  Apache-2.0, BSD, GPLv2, GPLv3, AGPL, proprietary without licence) and
+  longer verbatim quotes from GPL code can be legally problematic (cf.
+  Doe v. GitHub class action 2022, still open). Doubtful snippets are
+  rewritten or replaced by a clearly licensed block. Concrete measures:
+  (1) Enable code reference filters in tools — GitHub Copilot
+  "Suggestions matching public code: Block" (Settings → Copilot → Block
+  matching public code), AWS CodeWhisperer/Q Developer "Reference
+  Tracker", Tabnine "Restrict suggestions matching public code"; (2)
+  For longer code suggestions (≥ 5 lines, non-trivial) perform
+  plagiarism search — `grep` through GitHub search
+  (`https://github.com/search?type=code&q="<10-15 token snippet>"`),
+  CodeProbe, BlueOak, FOSSology, ScanCode Toolkit, Black Duck Code
+  Sight, Synopsys Code Insight; (3) On hit with GPL/AGPL/CC-BY-SA:
+  rewrite the block or honour the licence (your project needs a
+  compatible licence; AGPL is particularly restrictive for SaaS); (4)
+  Check licence compatibility for the entire project — licence matrix
+  in `LICENSE-COMPATIBILITY.md` with allowed licences (MIT, BSD-2/3-
+  Clause, Apache-2.0, ISC, MPL-2.0), conditionally allowed (LGPL for
+  dynamic linking), forbidden (GPL/AGPL for proprietary products, WTFPL
+  unprofessional, "Public Domain" legally unclear in DE/EU); (5) Use
+  vendor indemnification — GitHub Copilot Business/Enterprise covers
+  legal defence in licence disputes, AWS Q Developer Pro with IP
+  indemnification, Anthropic Claude Enterprise with IP indemnity after
+  negotiation. (6) Author trailer in commit: `Co-developed-with:
+  <tool> v<version>` as a traceable note. SBOM entry (CycloneDX or
+  SPDX) for each new dependency with `licenseId` and SPDX licence
+  identifier. Tooling: SCANCODE-TOOLKIT, REUSE Tool for SPDX-compliant
+  licence labelling in source files (SPDX-License-Identifier headers),
+  `pip-licenses`, `license-checker` (npm), `cargo-deny`,
+  `go-licenses`. References: SPDX `spdx.org/licenses/`, OpenChain ISO/IEC
+  5230 (Open Source License Compliance Management), REUSE Software
+  `reuse.software/`, Linux Foundation TODO Group, ISO/IEC 27001 A.5.32
+  (intellectual property rights), CRA Annex I Part II 1.f (secure
+  default configuration and no known vulnerabilities).
+- **Akzeptanz / Acceptance:** Hinweis im PR, wenn KI-Vorschlag
+  übernommen wurde, mit Lizenz-Check (Plagiats-Suche bei ≥ 5 Zeilen,
+  Tool-Reference-Filter aktiv); SPDX-License-Identifier in Quelldateien;
+  Lizenz-Matrix `LICENSE-COMPATIBILITY.md`; SBOM mit `licenseId` für
+  jede Abhängigkeit.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 7. Datenschutz in Prompts / Data Protection in Prompts
+
+- **DE:** Personenbezogene Daten, Geheimnisse, Tokens,
+  Kundenzeichnungen oder vertrauliche Konfigurationen gehören nicht in
+  Prompts an externe KI-Dienste, weil das Senden eine Übermittlung an
+  einen Dritten gemäß DSGVO Art. 4(2) und ggf. eine Drittlandübermittlung
+  Art. 44–46 darstellt und den DPA-Vertragsumfang sprengen kann.
+  Verbotene Inhalte in Prompts: (a) Klartext-Passwörter, API-Tokens
+  (AWS Access Keys `AKIA[0-9A-Z]{16}`, GitHub PAT `ghp_*`/`gho_*`,
+  Slack `xox[baprs]-*`, OpenAI `sk-*`, Stripe `sk_live_*`, Twilio AC*,
+  generic `Bearer eyJ...`-Tokens), Datenbank-Connection-Strings mit
+  Credentials, private SSH-Keys (`-----BEGIN OPENSSH PRIVATE KEY-----`,
+  `-----BEGIN RSA PRIVATE KEY-----`), TLS-Privatschlüssel; (b)
+  personenbezogene Daten DSGVO Art. 4(1) — Namen + E-Mail + Adresse +
+  Telefon + Geburtsdatum + IBAN + Steuer-ID + Sozialversicherungsnummer
+  + IP-Adressen mit Personenbezug + Standortdaten; (c) besondere
+  Datenkategorien Art. 9 — Gesundheits-, Religions-, Gewerkschafts-,
+  ethnische, biometrische, sexuelle Daten (zusätzlich strengere
+  Anforderungen); (d) vertrauliche Geschäftsdaten — interne
+  Architekturdiagramme mit Secrets, unveröffentlichte
+  Sicherheitslücken/CVE-Drafts, M&A-Inhalte, Kundenverträge,
+  Tariflohn-Daten, interne Strategiedokumente; (e) regulatorisch
+  geschützte Daten — PCI-DSS-Karteninhaber-Daten (PAN, CVV2),
+  HIPAA-PHI (Patient Health Information), KRITIS-Detail-Topologien.
+  Konkrete Schutzmaßnahmen: (1) Pre-Commit-Hook mit gitleaks,
+  detect-secrets, trufflehog (siehe CL_Sichere-Entwicklungsumgebung Item
+  6); (2) IDE-Plugin-Härtung — GitHub Copilot Business
+  `excludeFiles`-Profil in `.copilotignore` oder `.github/copilot.yml`
+  ausschließt: `*.env*`, `**/secrets/**`, `**/.aws/**`, `**/.ssh/**`,
+  `**/*.pem`, `**/*.p12`, `**/credentials.json`, `**/private/**`; (3)
+  DLP (Data Loss Prevention) am Netzwerk — Netskope, Microsoft Purview
+  DLP, Forcepoint, Symantec DLP — blockiert Prompts mit erkannten
+  Mustern an `*.openai.com`, `*.anthropic.com`, `*.copilot.github.com`;
+  (4) Lokale LLM-Alternative für sensible Daten (Continue.dev mit
+  Ollama, vLLM, Tabby Self-Hosted) statt Cloud-Modell; (5) Schulung
+  „Was darf ich in Prompts schreiben?" mit konkreten Beispielen vor
+  Tool-Aktivierung. (6) Anonymisierung-Vorprozess: Hashen statt
+  einfügen — Hash-Funktion zu Beispiel-Daten, Faker-Bibliotheken für
+  realistische aber synthetische Beispiele. Logging und Audit:
+  Cloud-LLM-Audit-Logs (Copilot Audit Log, Claude Console, ChatGPT
+  Enterprise Compliance API) wöchentlich auf Anomalien prüfen. Vorfall-
+  Reaktion: Bei versehentlichem Prompt-Leak — sofort Token rotieren
+  (alle exposed credentials), Vendor kontaktieren mit Löschungsantrag
+  DSGVO Art. 17, Vorfall in Sicherheits-Register dokumentieren, ggf.
+  Meldung an Datenschutzbehörde DSGVO Art. 33 binnen 72 h.
+  Referenzen: DSGVO Art. 4/6/9/25/28/32/33/44, OWASP LLM Top 10 LLM02
+  (Sensitive Information Disclosure), OWASP LLM Top 10 LLM06 (Excessive
+  Agency), NIST AI RMF MAP-1.6 (Privacy), ISO/IEC 27018 (Privacy in
+  Cloud), BSI TR-03161, EU AI Act Verordnung (EU) 2024/1689 Art. 10
+  (Data Governance).
+- **EN:** Personal data, secrets, tokens, customer identifiers, or
+  confidential configuration must not appear in prompts to external AI
+  services, because sending constitutes a transfer to a third party
+  under GDPR Art. 4(2) and potentially a third-country transfer
+  Art. 44–46, and may exceed the DPA contract scope. Forbidden prompt
+  content: (a) plaintext passwords, API tokens (AWS access keys
+  `AKIA[0-9A-Z]{16}`, GitHub PAT `ghp_*`/`gho_*`, Slack
+  `xox[baprs]-*`, OpenAI `sk-*`, Stripe `sk_live_*`, Twilio AC*,
+  generic `Bearer eyJ...` tokens), database connection strings with
+  credentials, private SSH keys (`-----BEGIN OPENSSH PRIVATE KEY-----`,
+  `-----BEGIN RSA PRIVATE KEY-----`), TLS private keys; (b) personal
+  data per GDPR Art. 4(1) — names + email + address + phone + birthdate
+  + IBAN + tax ID + social security number + IP addresses with personal
+  reference + location data; (c) special categories Art. 9 — health,
+  religion, union, ethnic, biometric, sexual data (additional stricter
+  requirements); (d) confidential business data — internal architecture
+  diagrams with secrets, unpublished vulnerabilities/CVE drafts, M&A
+  content, customer contracts, salary data, internal strategy documents;
+  (e) regulatory protected data — PCI-DSS cardholder data (PAN, CVV2),
+  HIPAA PHI (Patient Health Information), KRITIS detailed topologies.
+  Concrete protection measures: (1) pre-commit hook with gitleaks,
+  detect-secrets, trufflehog (see CL_Sichere-Entwicklungsumgebung item
+  6); (2) IDE plugin hardening — GitHub Copilot Business
+  `excludeFiles` profile in `.copilotignore` or `.github/copilot.yml`
+  excludes: `*.env*`, `**/secrets/**`, `**/.aws/**`, `**/.ssh/**`,
+  `**/*.pem`, `**/*.p12`, `**/credentials.json`, `**/private/**`; (3)
+  network DLP (Data Loss Prevention) — Netskope, Microsoft Purview
+  DLP, Forcepoint, Symantec DLP — blocks prompts with detected patterns
+  to `*.openai.com`, `*.anthropic.com`, `*.copilot.github.com`; (4)
+  local LLM alternative for sensitive data (Continue.dev with Ollama,
+  vLLM, Tabby Self-Hosted) instead of cloud model; (5) training "What
+  may I write in prompts?" with concrete examples before tool
+  activation. (6) anonymization preprocess: hash instead of paste —
+  hash function over example data, Faker libraries for realistic but
+  synthetic examples. Logging and audit: weekly review of cloud LLM
+  audit logs (Copilot Audit Log, Claude Console, ChatGPT Enterprise
+  Compliance API) for anomalies. Incident response: on accidental
+  prompt leak — immediately rotate tokens (all exposed credentials),
+  contact vendor with GDPR Art. 17 deletion request, document incident
+  in security register, possibly notify supervisory authority within 72
+  h per GDPR Art. 33. References: GDPR Art. 4/6/9/25/28/32/33/44,
+  OWASP LLM Top 10 LLM02 (Sensitive Information Disclosure), OWASP LLM
+  Top 10 LLM06 (Excessive Agency), NIST AI RMF MAP-1.6 (Privacy),
+  ISO/IEC 27018 (Privacy in Cloud), BSI TR-03161, EU AI Act Regulation
+  (EU) 2024/1689 Art. 10 (Data Governance).
+- **Akzeptanz / Acceptance:** Schulung absolviert mit Beispielkatalog;
+  Pre-Commit-Schutz (gitleaks/detect-secrets) aktiv; `excludeFiles`-Profil
+  in IDE-Konfiguration; DLP für Cloud-LLM-Endpunkte aktiv; Audit-Log-Review
+  wöchentlich; Incident-Response-Plan für Prompt-Leak.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 8. Keine eigene Krypto durch KI / No Custom Crypto from AI
+
+- **DE:** Die KI darf keine eigenen Krypto-Implementierungen
+  vorschlagen, weil LLMs typischerweise alte oder fehlerhafte Beispiele
+  reproduzieren (statisch initialisierte IVs, fehlende Authentifizierung,
+  Padding-Oracle-Anfälligkeit, fehlende Constant-Time-Operationen,
+  schwache Key-Derivation, ECB-Modus, MD5/SHA-1 für Signaturen). Es
+  werden bewährte Bibliotheken verwendet (siehe
+  „CL_Krypto-Mindestvorgaben"). Anti-Patterns, die KIs häufig
+  produzieren und die Reviewer aktiv ablehnen: (a) eigene
+  AES-Implementierung in der Anwendung („educational AES"-Code), (b)
+  RSA `Cipher.getInstance("RSA")` ohne Padding (PKCS1Padding ist
+  unsicher gegen Bleichenbacher → OAEP zwingend), (c)
+  `MessageDigest.getInstance("MD5")` für Passwörter (statt Argon2id), (d)
+  `new SecretKeySpec("hardcodedkey".getBytes(), "AES")` (hardcodierte
+  Schlüssel), (e) `Random` statt `SecureRandom`, (f) `==` für
+  Hash-Vergleiche statt Constant-Time-Vergleich (Java
+  `MessageDigest.isEqual`, .NET `CryptographicOperations.FixedTimeEquals`,
+  Python `hmac.compare_digest`, Go `subtle.ConstantTimeCompare`), (g)
+  ECB-Modus, (h) AES-CBC ohne MAC oder ohne korrekte
+  Authenticated-Encryption (AES-GCM/AES-CCM/ChaCha20-Poly1305 zwingend),
+  (i) statisch initialisierte IV/Nonce, (j) selbst implementiertes JWT
+  ohne Bibliothek, (k) `crypto.randomBytes(16)` als Passwort-Hash
+  (kein KDF), (l) eigene Padding-Implementierung. Erlaubte Bibliotheken
+  (siehe CL_Krypto-Mindestvorgaben Item 14): Java — `javax.crypto` mit
+  Bouncy Castle, Google Tink, JCA/JCE Sun-Provider; .NET —
+  `System.Security.Cryptography` (.NET 8+) und Konscious.Argon2 für
+  Passwörter; Python — `cryptography` (PyCA), `pynacl` (libsodium),
+  `argon2-cffi`; Go — `golang.org/x/crypto/...`, Standard `crypto/...`
+  (außer abgekündigte Funktionen); JavaScript/TypeScript — Web Crypto
+  API `crypto.subtle`, `node:crypto`, `libsodium-wrappers`; Rust —
+  `ring`, `RustCrypto/*` (z. B. `aes-gcm`, `chacha20poly1305`),
+  `rustls`. Reviewer-Pflichten: jede neue Verwendung kryptografischer
+  Primitive im Diff markieren, gegen NIST SP 800-131A Rev. 2 und BSI
+  TR-02102-1 abgleichen, Hardcoded-Key-Detektion via Semgrep
+  (`p/secrets`, `p/owasp-top-ten`, `p/insecure-transport`),
+  CodeQL-Queries (`security/cwe-327`, `security/cwe-329`,
+  `security/cwe-330`, `security/cwe-916`), Snyk Code, SonarQube
+  Security Hotspots. Kryptografie-Code im PR braucht erkennbare
+  Bibliotheks-Aufrufe, keine eigene Bit-Operation. Bei legitimen
+  Sonderfällen (HSM-Integration, FIPS-zertifizierte Module): explizite
+  S-ADR (Security Architecture Decision Record) mit Begründung,
+  Cryptographic Officer Review, dokumentierte Schlüsselverwaltung gemäß
+  NIST SP 800-57. Referenzen: NIST SP 800-131A Rev. 2, NIST SP 800-57
+  Part 1 Rev. 5, BSI TR-02102-1, BSI TR-02102-2, OWASP ASVS V6
+  (Stored Cryptography), OWASP Cheat Sheet Cryptographic Storage,
+  OWASP Cheat Sheet Key Management, ISO/IEC 27001 A.8.24
+  (Cryptographic controls), CRA Anhang I Teil II 2.1 lit. e (Schutz
+  durch Verschlüsselung).
+- **EN:** The AI must not suggest custom crypto, because LLMs typically
+  reproduce old or flawed examples (static IVs, missing authentication,
+  padding oracle vulnerability, missing constant-time operations, weak
+  key derivation, ECB mode, MD5/SHA-1 for signatures). Use vetted
+  libraries (see "CL_Krypto-Mindestvorgaben"). Anti-patterns AIs
+  frequently produce and reviewers must actively reject: (a) own AES
+  implementation in the application ("educational AES" code), (b) RSA
+  `Cipher.getInstance("RSA")` without padding (PKCS1Padding is insecure
+  against Bleichenbacher → OAEP mandatory), (c)
+  `MessageDigest.getInstance("MD5")` for passwords (instead of
+  Argon2id), (d) `new SecretKeySpec("hardcodedkey".getBytes(), "AES")`
+  (hardcoded keys), (e) `Random` instead of `SecureRandom`, (f) `==`
+  for hash comparisons instead of constant-time comparison (Java
+  `MessageDigest.isEqual`, .NET `CryptographicOperations.FixedTimeEquals`,
+  Python `hmac.compare_digest`, Go `subtle.ConstantTimeCompare`), (g)
+  ECB mode, (h) AES-CBC without MAC or without proper authenticated
+  encryption (AES-GCM/AES-CCM/ChaCha20-Poly1305 mandatory), (i)
+  statically initialized IV/nonce, (j) self-implemented JWT without
+  library, (k) `crypto.randomBytes(16)` as password hash (no KDF), (l)
+  own padding implementation. Allowed libraries (see
+  CL_Krypto-Mindestvorgaben item 14): Java — `javax.crypto` with Bouncy
+  Castle, Google Tink, JCA/JCE Sun provider; .NET —
+  `System.Security.Cryptography` (.NET 8+) and Konscious.Argon2 for
+  passwords; Python — `cryptography` (PyCA), `pynacl` (libsodium),
+  `argon2-cffi`; Go — `golang.org/x/crypto/...`, standard `crypto/...`
+  (except deprecated functions); JavaScript/TypeScript — Web Crypto API
+  `crypto.subtle`, `node:crypto`, `libsodium-wrappers`; Rust — `ring`,
+  `RustCrypto/*` (e.g., `aes-gcm`, `chacha20poly1305`), `rustls`.
+  Reviewer duties: flag every new use of cryptographic primitives in
+  the diff, compare against NIST SP 800-131A Rev. 2 and BSI TR-02102-1,
+  hardcoded key detection via Semgrep (`p/secrets`, `p/owasp-top-ten`,
+  `p/insecure-transport`), CodeQL queries (`security/cwe-327`,
+  `security/cwe-329`, `security/cwe-330`, `security/cwe-916`), Snyk
+  Code, SonarQube security hotspots. Crypto code in the PR needs
+  recognisable library calls, not own bit operations. For legitimate
+  exceptions (HSM integration, FIPS-certified modules): explicit S-ADR
+  (Security Architecture Decision Record) with justification,
+  cryptographic officer review, documented key management per NIST SP
+  800-57. References: NIST SP 800-131A Rev. 2, NIST SP 800-57 Part 1
+  Rev. 5, BSI TR-02102-1, BSI TR-02102-2, OWASP ASVS V6 (Stored
+  Cryptography), OWASP Cheat Sheet Cryptographic Storage, OWASP Cheat
+  Sheet Key Management, ISO/IEC 27001 A.8.24 (cryptographic controls),
+  CRA Annex I Part II 2.1 lit. e (protection by encryption).
+- **Akzeptanz / Acceptance:** Review prüft jede Krypto-Codestelle aus
+  KI-Quelle gegen erlaubte Bibliotheken; SAST-Gate (Semgrep/CodeQL/Snyk
+  Code) ohne Hardcoded-Key/Weak-Algo-Findings; S-ADR bei Sonderfällen
+  vorhanden; keine eigenen AES/Hash-Implementierungen.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 9. Tests für KI-erzeugten Code / Tests for AI-Generated Code
+
+- **DE:** KI-erzeugter Code wird durch automatisierte Tests abgedeckt
+  (positive und negative Fälle). Eine erfolgreiche Pipeline ist
+  Voraussetzung für den Merge. Test-Pflicht-Klassen: (a) Unit-Tests für
+  jede neue Funktion oder Methode mit mindestens 80 % oder besser Line
+  Coverage und mindestens 80 % oder besser Branch Coverage; (b) negative
+  Tests für jede Eingabe-Schranke (null,
+  empty, oversized, malformed UTF-8, NUL-byte, path traversal `../`,
+  XSS-Payloads `<script>`, SQL-Injection `' OR '1'='1`,
+  XXE-Payloads, deserialization gadgets); (c) Property-based Tests
+  (jqwik Java, hypothesis Python, fast-check JavaScript, proptest Rust,
+  QuickCheck Haskell) für komplexe Eingaberäume; (d) Mutation-Testing
+  zur Aufdeckung tautologischer Tests, wenn es technisch sinnvoll und im
+  Projektwerkzeug verfügbar ist (PIT für Java, Stryker für JavaScript,
+  mutmut für Python, go-mutesting für Go) — Mutation-Score mindestens
+  70 % oder besser; (e) Sicherheitsspezifische Tests bei Auth/Crypto/Validation:
+  OWASP ZAP DAST in CI, Burp Suite Pro für manuelle Pentests vor Major
+  Release; (f) Fuzz-Tests bei Parser, Deserialisierung, Datei-Upload —
+  libFuzzer (C/C++/Rust), AFL++ (C/C++), Atheris (Python), Jazzer
+  (Java), `go test -fuzz` (Go), cargo-fuzz (Rust); (g) Snapshot-Tests
+  und Golden-File-Tests für deterministische Ausgaben; (h) bei Änderungen
+  an öffentlichen Schnittstellen, REST APIs, CLI-Kommandos oder kritischen
+  UI-Flows mindestens 80 % oder besser Integrationstest-Abdeckung der
+  dokumentierten betroffenen Schnittstellen und Flows; jede neue oder
+  geänderte öffentliche Schnittstelle hat mindestens einen positiven und
+  einen negativen Integrationstest; (i)
+  Integrations-Tests gegen reale Datenbanken (Testcontainers, no
+  mocks-only — vgl. Memory-Eintrag „integration tests must hit a real
+  database"). Test-Frameworks je Sprache: Java — JUnit 5 + Mockito +
+  AssertJ + Awaitility + Testcontainers; .NET — xUnit + Moq + FluentAssertions
+  + Bogus; Python — pytest + pytest-cov + responses + freezegun + faker;
+  JavaScript/TypeScript — Vitest/Jest + supertest + msw + faker;
+  Go — testing + testify + gomock + testcontainers-go; Rust —
+  built-in `#[test]` + proptest + insta; Swift — XCTest + Swift Testing
+  (Swift 6); C/C++ — Unity, CMock, Google Test, Catch2. KI-Tests müssen
+  insbesondere geprüft werden auf: tautologische Assertions
+  (`assertEqual(getValue(), getValue())`), fehlende Edge Cases (null,
+  Maximalwerte, leere Listen), keine reine Mock-Verifikation ohne
+  Verhaltensprüfung, kein „Test mit gleicher Implementierung wie
+  Production-Code". CI-Gate-Pipeline-Beispiel (GitHub Actions):
+  ```yaml
+  jobs:
+    test:
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-java@v4
+        - run: mvn test
+        - run: mvn jacoco:report
+        - uses: codecov/codecov-action@v4
+        - run: mvn org.pitest:pitest-maven:mutationCoverage
+    sast:
+      steps:
+        - uses: github/codeql-action/init@v3
+        - uses: github/codeql-action/analyze@v3
+        - uses: returntocorp/semgrep-action@v1
+    dast:
+      steps:
+        - uses: zaproxy/action-baseline@v0
+  ```
+  Coverage-Berichte in PR (codecov, coveralls, SonarCloud), Coverage-
+  Gate `coverage_decrease_threshold: 0.0%`, Mutation-Score-Gate
+  mindestens 70 % oder besser, wenn Mutation Testing angewendet wird.
+  Referenzen: ISO/IEC 25010 (Quality model), ISO/IEC 29119
+  (Software Testing), OWASP Testing Guide v4.2, NIST SP 800-218 PW.7
+  (Review and/or Test of Code), CRA Anhang I Teil II 2.5 (Tests vor
+  Auslieferung).
+- **EN:** AI-generated code is covered by automated tests (positive and
+  negative cases). A green pipeline is required before merging.
+  Mandatory test classes: (a) unit tests for every new function or
+  method with at least 80 % or better line coverage and at least 80 %
+  or better branch coverage; (b) negative tests for every input boundary
+  (null, empty, oversized,
+  malformed UTF-8, NUL byte, path traversal `../`, XSS payloads
+  `<script>`, SQL injection `' OR '1'='1`, XXE payloads, deserialization
+  gadgets); (c) property-based tests (jqwik Java, hypothesis Python,
+  fast-check JavaScript, proptest Rust, QuickCheck Haskell) for complex
+  input spaces; (d) mutation testing to detect tautological tests when it
+  is technically useful and available in the project tooling (PIT for
+  Java, Stryker for JavaScript, mutmut for Python, go-mutesting for Go) —
+  mutation score at least 70 % or better; (e) security-specific tests for
+  auth/crypto/validation: OWASP ZAP DAST in CI, Burp Suite Pro for
+  manual pentests before major release; (f) fuzz tests for parsers,
+  deserialization, file upload — libFuzzer (C/C++/Rust), AFL++
+  (C/C++), Atheris (Python), Jazzer (Java), `go test -fuzz` (Go),
+  cargo-fuzz (Rust); (g) snapshot tests and golden file tests for
+  deterministic outputs; (h) for changes to public interfaces, REST APIs,
+  CLI commands, or critical UI flows, at least 80 % or better integration
+  test coverage of the documented affected interfaces and flows; every
+  new or changed public interface has at least one positive and one
+  negative integration test; (i) integration tests against real databases
+  (Testcontainers, no mocks-only — cf. memory entry "integration tests
+  must hit a real database"). Test frameworks by language: Java —
+  JUnit 5 + Mockito + AssertJ + Awaitility + Testcontainers; .NET —
+  xUnit + Moq + FluentAssertions + Bogus; Python — pytest + pytest-cov
+  + responses + freezegun + faker; JavaScript/TypeScript —
+  Vitest/Jest + supertest + msw + faker; Go — testing + testify +
+  gomock + testcontainers-go; Rust — built-in `#[test]` + proptest +
+  insta; Swift — XCTest + Swift Testing (Swift 6); C/C++ — Unity,
+  CMock, Google Test, Catch2. AI tests must especially be checked for:
+  tautological assertions (`assertEqual(getValue(), getValue())`),
+  missing edge cases (null, maximum values, empty lists), no pure mock
+  verification without behavioural checks, no "test with the same
+  implementation as production code". Example CI gate pipeline (GitHub
+  Actions):
+  ```yaml
+  jobs:
+    test:
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-java@v4
+        - run: mvn test
+        - run: mvn jacoco:report
+        - uses: codecov/codecov-action@v4
+        - run: mvn org.pitest:pitest-maven:mutationCoverage
+    sast:
+      steps:
+        - uses: github/codeql-action/init@v3
+        - uses: github/codeql-action/analyze@v3
+        - uses: returntocorp/semgrep-action@v1
+    dast:
+      steps:
+        - uses: zaproxy/action-baseline@v0
+  ```
+  Coverage reports in the PR (codecov, coveralls, SonarCloud), coverage
+  gate `coverage_decrease_threshold: 0.0%`, mutation score gate at least
+  70 % or better when mutation testing is used.
+  References: ISO/IEC 25010 (quality model), ISO/IEC 29119 (software
+  testing), OWASP Testing Guide v4.2, NIST SP 800-218 PW.7 (review
+  and/or test of code), CRA Annex I Part II 2.5 (tests before
+  delivery).
+- **Akzeptanz / Acceptance:** Coverage-Wert je betroffenem Modul
+  gepflegt mit Line Coverage mindestens 80 % oder besser und Branch
+  Coverage mindestens 80 % oder besser; wenn Mutation Testing technisch
+  sinnvoll und verfügbar ist, Mutation-Score mindestens 70 % oder besser;
+  bei Änderungen an öffentlichen Schnittstellen oder kritischen UI-Flows
+  mindestens 80 % oder besser Integrationstest-Abdeckung der dokumentierten
+  betroffenen Schnittstellen und Flows; SAST/DAST-Gates grün; negative
+  Tests für jede Eingabe-Schranke; keine tautologischen Assertions. /
+  Coverage value is maintained per affected module with line coverage at
+  least 80 % or better and branch coverage at least 80 % or better; where
+  mutation testing is technically useful and available, mutation score at
+  least 70 % or better; for changes to public interfaces or critical UI
+  flows, at least 80 % or better integration-test coverage of documented
+  affected interfaces and flows; SAST/DAST gates are green; negative tests
+  cover every input boundary; no tautological assertions.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 10. Markierung im PR / Mark in the PR
+
+- **DE:** Ist ein wesentlicher Teil eines Pull Requests durch KI
+  vorgeschlagen worden, wird das im PR-Beschreibungstext oder Label
+  vermerkt, weil dies für Audit-Spur, Lizenz-Klärung, Reviewer-
+  Aufmerksamkeit und Lessons-Learned-Statistik (Anteil KI-generierten
+  Codes über Zeit, Bug-Korrelation) wichtig ist. Schwellenwert
+  „wesentlich": ≥ 25 % der LoC im PR aus KI-Vorschlägen, oder
+  vollständige Implementierung einer Funktion ≥ 20 LoC, oder eine
+  Architekturentscheidung aus KI-Empfehlung, oder
+  sicherheitsrelevanter Codepfad. Markierungs-Methoden: (a) GitHub-Labels
+  `ai-assisted`, `ai-major`, `ai-trivial` definieren in
+  `.github/labels.yml` und automatisch via GitHub Actions setzen; (b)
+  PR-Template-Pflichtabschnitt:
+  ```markdown
+  ## AI Assistance / KI-Beteiligung
+  - [ ] Kein KI-Beitrag / no AI contribution
+  - [ ] Trivial (<25% LoC, IDE-Autocompletion) / trivial completion
+  - [ ] Wesentlich / substantial — Tool: <Copilot|Claude|Gemini|...>
+        Version: <version>
+        Umfang: <Beschreibung in 1–3 Sätzen>
+        Manuell zeilenweise geprüft am: <YYYY-MM-DD> von <Reviewer>
+  ```
+  (c) Commit-Trailer: `Co-developed-with: GitHub-Copilot/4.x` oder
+  `Assisted-by: Claude Opus 4.7` analog zu `Co-Authored-By:`-Pattern;
+  (d) Code-Kommentar bei umfangreichen KI-generierten Blöcken (≥ 50
+  LoC) mit Tool-Vermerk und Review-Datum (sparsam, nur wo Audit-
+  Relevanz besteht); (e) Repository-Statistik via Skript (z. B.
+  `git log --grep "Co-developed-with" --since=YYYY-MM-DD`) für
+  monatlichen Bericht KI-Anteil. Anti-Pattern: KI-Anteil verschweigen,
+  „Squashing" zur Verschleierung der KI-Spur, Trailer-Entfernung beim
+  Rebase, Standard-Label-Setzung ohne Inhaltsprüfung. Tooling: GitHub
+  ProBot mit eigener Action, Git CI-Lint-Check, Pull Request
+  Validator (Bot prüft PR-Beschreibung gegen Template) — Fehlend führt
+  zu Status-Check „failed". Reporting: monatliches Dashboard für
+  Engineering-Lead und Security-Lead mit KI-Anteil pro Repository,
+  Bug-Korrelation (CVE/Bug-Findings je Code-Anteil-Klasse),
+  Review-Geschwindigkeit. Referenzen: ISO/IEC 27001 A.5.34 (Privacy
+  and protection of PII — analoge Transparenz-Pflicht), NIST AI RMF
+  GOVERN-1.4 (Transparenz), EU AI Act Art. 50 (Transparenz-Pflichten),
+  Linux Foundation Best Practices Generative AI.
+- **EN:** When a substantial part of a pull request was AI-suggested,
+  this is recorded in the PR description or via a label, because this
+  is important for audit trail, licence clearance, reviewer attention,
+  and lessons-learned statistics (share of AI-generated code over time,
+  bug correlation). "Substantial" threshold: ≥ 25 % of LoC in the PR
+  from AI suggestions, or full implementation of a function ≥ 20 LoC,
+  or an architecture decision from AI recommendation, or a security-
+  relevant code path. Marking methods: (a) define GitHub labels
+  `ai-assisted`, `ai-major`, `ai-trivial` in `.github/labels.yml` and
+  set automatically via GitHub Actions; (b) mandatory section in the
+  PR template:
+  ```markdown
+  ## AI Assistance / KI-Beteiligung
+  - [ ] Kein KI-Beitrag / no AI contribution
+  - [ ] Trivial (<25% LoC, IDE autocompletion) / trivial completion
+  - [ ] Wesentlich / substantial — Tool: <Copilot|Claude|Gemini|...>
+        Version: <version>
+        Scope: <description in 1–3 sentences>
+        Manually reviewed line by line on: <YYYY-MM-DD> by <reviewer>
+  ```
+  (c) commit trailer: `Co-developed-with: GitHub-Copilot/4.x` or
+  `Assisted-by: Claude Opus 4.7`, analogous to the `Co-Authored-By:`
+  pattern; (d) code comment on extensive AI-generated blocks (≥ 50
+  LoC) with tool note and review date (sparingly, only where audit
+  relevance exists); (e) repository statistics via script (e.g., `git
+  log --grep "Co-developed-with" --since=YYYY-MM-DD`) for monthly AI
+  share report. Anti-pattern: hiding AI involvement, "squashing" to
+  obscure the AI trail, trailer removal during rebase, default label
+  setting without content review. Tooling: GitHub ProBot with custom
+  action, Git CI lint check, Pull Request Validator (bot checks PR
+  description against template) — missing results in "failed" status
+  check. Reporting: monthly dashboard for engineering lead and security
+  lead with AI share per repository, bug correlation (CVE/bug findings
+  per code share class), review speed. References: ISO/IEC 27001
+  A.5.34 (privacy and protection of PII — analogous transparency
+  obligation), NIST AI RMF GOVERN-1.4 (transparency), EU AI Act Art. 50
+  (transparency obligations), Linux Foundation Best Practices for
+  Generative AI.
+- **Akzeptanz / Acceptance:** Label `ai-assisted`/`ai-major`/`ai-trivial`
+  oder Beschreibungstext mit Tool, Version, Umfang, Reviewer und
+  Review-Datum sichtbar; PR-Validator-Bot prüft Pflichtabschnitt;
+  Commit-Trailer `Co-developed-with`/`Assisted-by` bei wesentlichen
+  Beiträgen; monatliches Dashboard.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 11. Werkzeug-Konfiguration und Telemetrie / Tool Configuration and Telemetry
+
+- **DE:** Telemetrie und Daten-Sharing der KI-Werkzeuge sind nach
+  Vorgabe konfiguriert. Sensible Code-Bereiche werden vom KI-Werkzeug
+  per Konfiguration ausgenommen, weil Cloud-Werkzeuge je nach Tier
+  Telemetrie an den Anbieter senden (Latenz-Metriken, Akzeptanz-Raten,
+  Fehler-Logs) und manche zusätzlich Code-Snippets für Modell-
+  Verbesserung. Konkrete Konfigurations-Profile je Werkzeug:
+
+  **GitHub Copilot Business/Enterprise** — Org-Admin-Settings:
+  - Suggestions matching public code: `Block`
+  - Allow GitHub to use my code snippets for product improvements:
+    `false` (default in Business/Enterprise, in Individual variabel)
+  - Content exclusions in `.copilotignore` oder via Org-Settings
+    (Repo-Pfade): `*.env*`, `**/secrets/**`, `**/.aws/**`, `**/.ssh/**`,
+    `**/*.pem`, `**/*.p12`, `**/*.pfx`, `**/credentials.json`,
+    `**/*.kdbx`, `**/.gnupg/**`, `**/security/**`, `**/private/**`,
+    `**/personal-data/**`
+  - VS-Code-Setting: `"github.copilot.advanced": { "secret_key": "..." }`
+    nicht einrichten; `"github.copilot.editor.enableAutoCompletions":
+    true` aktiviert lassen
+  - JetBrains Plugin: Settings → GitHub Copilot → Block public code:
+    enabled
+  - Audit Log via GitHub REST API
+    `/orgs/{org}/copilot/usage` und Compliance API
+
+  **JetBrains AI Assistant** — Settings → Tools → AI Assistant:
+  - „Allow detail data collection": disabled
+  - „Connect to local model only" wenn DSGVO-kritisch
+  - Codebase-Indexing-Ausschluss-Patterns analog `excludeFiles`
+
+  **Anthropic Claude (Code/Console)** — Workspace-Settings:
+  - Zero Data Retention (ZDR) aktiviert (Enterprise-Verhandlung
+    erforderlich)
+  - Trainings-Opt-out aktiviert
+  - System-Prompt: „Do not access files in /secrets, /.env, /.aws,
+    /.ssh"
+
+  **OpenAI ChatGPT Enterprise/Team** — Admin-Console:
+  - „Use my data for training": disabled
+  - SOC 2 Type II + ISO/IEC 27001-Nachweis vorhanden
+  - SSO/SAML mit IdP-Conditional-Access
+
+  **AWS Q Developer Pro** — IAM-Identity-Center-Setup:
+  - Customizations: blockierte Repos via Allowlist
+  - Reference tracker: enabled
+
+  **Continue.dev (lokal)** — `~/.continue/config.yaml`:
+  - Provider: `ollama` mit `localhost:11434`
+  - Telemetry: disabled (`allowAnonymousTelemetry: false`)
+  - System-Prompt mit Pfad-Ausschluss
+
+  **Tabnine** — Self-Hosted oder Enterprise mit zero retention.
+
+  Versioniertes Konfigurations-Profil in Repo: `.github/copilot.yml`
+  oder `.copilotignore`/`.aiderignore`/`.cursorignore` je Werkzeug,
+  zusätzlich Org-weit dokumentiert in `docs/security/ai-tool-config.md`
+  mit Owner, letztem Review-Datum und Drift-Detection-Skript (Vergleich
+  Org-API-Settings vs. Soll-Zustand). Audit: monatlicher Vergleich der
+  Live-Konfiguration gegen Soll mittels GitHub REST/JetBrains-Audit/
+  Anthropic-Console-API; Abweichung erzeugt Ticket. Referenzen: DSGVO
+  Art. 25 (Privacy by Design and by Default), Art. 32 (Sicherheit der
+  Verarbeitung), ISO/IEC 27001 A.5.23 (Cloud-Services), A.8.10
+  (Information deletion), NIST AI RMF MEASURE-2.10 (data privacy
+  measurement), EU AI Act Art. 10 (Data Governance).
+- **EN:** Telemetry and data sharing of AI tools are configured per
+  policy. Sensitive code areas are excluded from the AI tool by
+  configuration, because cloud tools send telemetry to the vendor
+  depending on tier (latency metrics, acceptance rates, error logs)
+  and some additionally send code snippets for model improvement.
+  Concrete configuration profiles per tool:
+
+  **GitHub Copilot Business/Enterprise** — org admin settings:
+  - Suggestions matching public code: `Block`
+  - Allow GitHub to use my code snippets for product improvements:
+    `false` (default in Business/Enterprise, variable in Individual)
+  - Content exclusions in `.copilotignore` or via org settings (repo
+    paths): `*.env*`, `**/secrets/**`, `**/.aws/**`, `**/.ssh/**`,
+    `**/*.pem`, `**/*.p12`, `**/*.pfx`, `**/credentials.json`,
+    `**/*.kdbx`, `**/.gnupg/**`, `**/security/**`, `**/private/**`,
+    `**/personal-data/**`
+  - VS Code setting: do not configure
+    `"github.copilot.advanced": { "secret_key": "..." }`; leave
+    `"github.copilot.editor.enableAutoCompletions": true`
+  - JetBrains plugin: Settings → GitHub Copilot → Block public code:
+    enabled
+  - Audit log via GitHub REST API
+    `/orgs/{org}/copilot/usage` and Compliance API
+
+  **JetBrains AI Assistant** — Settings → Tools → AI Assistant:
+  - "Allow detail data collection": disabled
+  - "Connect to local model only" when GDPR-critical
+  - Codebase indexing exclusion patterns analogous to `excludeFiles`
+
+  **Anthropic Claude (Code/Console)** — workspace settings:
+  - Zero Data Retention (ZDR) enabled (enterprise negotiation
+    required)
+  - Training opt-out enabled
+  - System prompt: "Do not access files in /secrets, /.env, /.aws,
+    /.ssh"
+
+  **OpenAI ChatGPT Enterprise/Team** — admin console:
+  - "Use my data for training": disabled
+  - SOC 2 Type II + ISO/IEC 27001 certificate available
+  - SSO/SAML with IdP conditional access
+
+  **AWS Q Developer Pro** — IAM Identity Center setup:
+  - Customizations: blocked repos via allowlist
+  - Reference tracker: enabled
+
+  **Continue.dev (local)** — `~/.continue/config.yaml`:
+  - Provider: `ollama` with `localhost:11434`
+  - Telemetry: disabled (`allowAnonymousTelemetry: false`)
+  - System prompt with path exclusion
+
+  **Tabnine** — self-hosted or enterprise with zero retention.
+
+  Versioned configuration profile in repo: `.github/copilot.yml` or
+  `.copilotignore`/`.aiderignore`/`.cursorignore` per tool,
+  additionally org-wide documented in `docs/security/ai-tool-config.md`
+  with owner, last review date, and drift detection script
+  (comparison of org API settings vs. target state). Audit: monthly
+  comparison of live configuration vs. target via GitHub REST/JetBrains
+  audit/Anthropic Console API; deviation creates a ticket. References:
+  GDPR Art. 25 (Privacy by Design and by Default), Art. 32 (Security
+  of Processing), ISO/IEC 27001 A.5.23 (cloud services), A.8.10
+  (information deletion), NIST AI RMF MEASURE-2.10 (data privacy
+  measurement), EU AI Act Art. 10 (Data Governance).
+- **Akzeptanz / Acceptance:** Konfigurations-Profil im Repository
+  (`.copilotignore`/`.github/copilot.yml`/`.continue/config.yaml`); Org-
+  Admin-Settings für Trainings-Opt-out und Public-Code-Block aktiv;
+  monatlicher Drift-Audit dokumentiert; Owner und Review-Datum in
+  `docs/security/ai-tool-config.md`.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 12. Schulung / Training
+
+- **DE:** Entwicklerinnen und Entwickler erhalten eine Schulung zu Stärken, Schwächen
+  und Risiken von KI-Code-Assistenten. Auffrischung mindestens jährlich.
+  Schulungs-Curriculum: (a) Stärken — Beschleunigung von Boilerplate,
+  Test-Skelette, Doku-Generierung, Refactoring-Vorschläge,
+  Sprach-/Framework-Onboarding, Code-Erklärung; (b) Schwächen —
+  Halluzinationen (erfundene APIs, falsche Bibliotheksnamen, falsche
+  Versions-Annahmen), veraltete Trainingsdaten (typischer Cut-off Monate
+  bis Jahre vor Modell-Release), Übergeneralisierung („Standardlösung"
+  passt nicht zum Kontext), tautologische Tests, unsicherer Default-
+  Code (siehe Item 8 — Krypto-Anti-Patterns); (c) Risiken — Slopsquatting
+  (Item 5), Lizenz-Probleme (Item 6), Prompt-Datenleck (Item 7),
+  Übervertrauen (NIST AI RMF MEASURE-2.7), schwächere
+  Programmier-Fertigkeiten bei Junior-Entwicklern bei Dauernutzung
+  („skill atrophy", Stanford 2024), Verzerrungen aus Trainingsdaten,
+  Halluzinations-Wiederholungen bei iterativen Prompts; (d) Praktiken
+  — präzise Prompts mit Kontext, Context-Window-Management, manuelle
+  zeilenweise Prüfung, Kreuz-Verifikation gegen offizielle Dokumentation,
+  Schulungs-Übungen mit absichtlich falschen KI-Vorschlägen
+  („Spot-the-Bug"-Übungen). Empfohlene Schulungsformate: 4-Stunden-
+  Onboarding (mit Praxisteil zu allen Items dieser Checkliste),
+  jährliche Auffrischung 2 h, Just-in-Time-Mikro-Trainings bei neuen
+  Tool-Versionen oder bekannten KI-Vorfällen (z. B. „Slopsquatting-
+  Vorfall huggingface-cli"), Capture-the-Flag mit absichtlich
+  fehlerhaften KI-Vorschlägen halbjährlich. Schulungs-Plattformen:
+  SecureFlag (Modul „AI-Assisted Development"), Kontra Application
+  Security, GitHub Skills (kostenlose „Copilot for Pull Requests"-
+  Pfade), Anthropic Skill-Quests (kostenlos), interne Workshops mit
+  Security Champions. Empfohlene Lektüre: OWASP Top 10 for LLM
+  Applications (`genai.owasp.org/llm-top-10`), Stanford Study „Do
+  Users Write More Insecure Code with AI Assistants?" (Perry et al.
+  2023), GitHub Octoverse Reports zu Copilot-Adoption und Bug-Korrelation.
+  Nachweisführung: Schulungsmatrix in HR/LMS (Workday, SAP
+  SuccessFactors, Cornerstone OnDemand, Moodle, TalentLMS), automatische
+  Eskalation bei Frist-Überschreitung (30-Tage-Nachfrist, dann
+  Sperrung des KI-Tool-Zugriffs via Microsoft Entra ID/Okta SCIM).
+  Onboarding-Pflicht: KI-Tool-Zugriff erst nach abgeschlossener
+  Schulung. Referenzen: NIST SP 800-50 (Building IT Security Awareness
+  and Training Program), NIST SP 800-181 (NICE Workforce Framework),
+  NIST AI RMF MAP-3.5 (skill awareness), ISO/IEC 27001 A.6.3 (Awareness,
+  Education, Training), BSI ORP.3, EU AI Act Art. 4 (AI Literacy).
+- **EN:** Developers receive training on strengths, weaknesses, and
+  risks of AI code assistants. Refreshed at least once a year. Training
+  curriculum: (a) strengths — boilerplate acceleration, test
+  skeletons, documentation generation, refactoring suggestions,
+  language/framework onboarding, code explanation; (b) weaknesses —
+  hallucinations (invented APIs, wrong library names, wrong version
+  assumptions), outdated training data (typical cut-off months to
+  years before model release), overgeneralization ("standard solution"
+  does not fit the context), tautological tests, unsafe default code
+  (see item 8 — crypto anti-patterns); (c) risks — slopsquatting (item
+  5), licence issues (item 6), prompt data leakage (item 7), over-
+  reliance (NIST AI RMF MEASURE-2.7), weaker programming skills in
+  junior developers under continuous use ("skill atrophy", Stanford
+  2024), biases from training data, hallucination repetition under
+  iterative prompts; (d) practices — precise prompts with context,
+  context window management, manual line-by-line review, cross-
+  verification against official documentation, training exercises with
+  intentionally wrong AI suggestions ("spot the bug" exercises).
+  Recommended training formats: 4-hour onboarding (with hands-on for
+  all items in this checklist), annual refresher 2 h, just-in-time
+  micro trainings on new tool versions or known AI incidents (e.g.,
+  "slopsquatting incident huggingface-cli"), capture-the-flag with
+  intentionally flawed AI suggestions semi-annually. Training
+  platforms: SecureFlag (module "AI-Assisted Development"), Kontra
+  Application Security, GitHub Skills (free "Copilot for Pull
+  Requests" paths), Anthropic Skill Quests (free), internal workshops
+  with security champions. Recommended reading: OWASP Top 10 for LLM
+  Applications (`genai.owasp.org/llm-top-10`), Stanford Study "Do
+  Users Write More Insecure Code with AI Assistants?" (Perry et al.
+  2023), GitHub Octoverse reports on Copilot adoption and bug
+  correlation. Proof: training matrix in HR/LMS (Workday, SAP
+  SuccessFactors, Cornerstone OnDemand, Moodle, TalentLMS), automatic
+  escalation on deadline overrun (30-day grace period, then AI tool
+  access suspension via Microsoft Entra ID/Okta SCIM). Onboarding
+  obligation: AI tool access only after completed training.
+  References: NIST SP 800-50 (Building IT Security Awareness and
+  Training Program), NIST SP 800-181 (NICE Workforce Framework), NIST
+  AI RMF MAP-3.5 (skill awareness), ISO/IEC 27001 A.6.3 (awareness,
+  education, training), BSI ORP.3, EU AI Act Art. 4 (AI Literacy).
+- **Akzeptanz / Acceptance:** Schulungsnachweis pro Person in HR/LMS
+  vorhanden; Onboarding vor erstem KI-Tool-Zugriff abgeschlossen;
+  jährliche Auffrischung dokumentiert; CTF/Spot-the-Bug-Übungen
+  halbjährlich; Erfüllungsquote ≥ 95 % im Quartalsbericht.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 13. Audit-Spur der Werkzeugnutzung / Audit Trail of Tool Usage
+
+- **DE:** Die Nutzung der KI-Werkzeuge ist nachvollziehbar
+  (Werkzeugname, Zeitraum, beteiligte Personen). Zentrale Logs des
+  Werkzeugs werden für Audits aufbewahrt, soweit möglich. Konkrete
+  Audit-Quellen je Werkzeug:
+
+  **GitHub Copilot Business/Enterprise:** REST-API
+  `/orgs/{org}/copilot/usage` (täglich aggregierte Nutzungsmetriken),
+  `/enterprises/{enterprise}/copilot/usage`, Audit Log API
+  `/orgs/{org}/audit-log` mit Action-Patterns
+  `copilot.cfb_seat_*`/`copilot_user_*`, Compliance API für PR-bezogene
+  Suggestions-Akzeptanz, GitHub Webhook auf
+  `copilot_seat_management`-Events. Logs in eigenen S3-Bucket via
+  GitHub Actions oder direkt in SIEM (Splunk, Microsoft Sentinel,
+  Elastic) replizieren.
+
+  **JetBrains AI Assistant:** Audit-Events in JetBrains Toolbox
+  Enterprise Console; lokale Logs in `~/Library/Logs/JetBrains/...`
+  (macOS) bzw. `%APPDATA%/JetBrains/...` (Windows) bei Bedarf
+  per MDM einsammeln.
+
+  **Anthropic Claude Console (Workspaces):** Console → Settings →
+  Activity Logs (90-180 Tage Retention), Audit-Log-Export via API,
+  Webhooks für Workspace-Events; `claude code`-CLI lokal:
+  `.claude/projects/<repo-hash>/*.jsonl` lokal vorhanden, optional
+  zentralisierbar.
+
+  **OpenAI ChatGPT Enterprise/Team:** Compliance API für Conversations,
+  Workspace Activity Logs, SIEM-Integration via API-Polling.
+
+  **AWS Q Developer Pro:** AWS CloudTrail-Events, IAM Identity Center
+  Access Logs, Q Developer Customizations Audit.
+
+  **Git Duo:** Git Audit Events Stream (`Audit Streaming`-Feature
+  mit JSONL-Export an SIEM-Endpunkt), Project-Level-Events.
+
+  **Continue.dev/Tabby/Ollama lokal:** `~/.continue/sessions/*.json`,
+  Ollama-Logs in `journalctl -u ollama` oder
+  `~/Library/Logs/Ollama/server.log`.
+
+  Aufbewahrungsfristen-Pflicht: ≥ 1 Jahr für Standard-Audits, ≥ 6
+  Jahre für DSGVO-Compliance-Bezüge, ≥ 10 Jahre für CRA-Vorfall-
+  Verläufe (Verordnung (EU) 2024/2847 Art. 14). Speicherort: zentraler
+  SIEM (Splunk Enterprise Security mit `audit_logs`-Index, Microsoft
+  Sentinel Workspace mit DCR-Rules, Elastic Security mit dedicated
+  data stream, IBM QRadar AQL-Query-Repository), append-only mit WORM
+  (S3 Object Lock compliance mode, Azure Immutable Blob Storage with
+  Time-based Retention, Google Cloud Storage Bucket Lock). Zugriffs-
+  Modell: nur Security-Team und Compliance-Officer (RBAC), Vier-Augen
+  für Löschungen vor Ablauf der Retention. Korrelation: KI-Tool-Logs
+  mit Git-Commit-Logs (via `Co-developed-with`-Trailer aus Item 10)
+  und PR-Metadaten matchen, um KI-Anteil je Vorfall zu bestimmen.
+  Beispiel-SIEM-Query (Splunk):
+  ```text
+  index=audit_logs sourcetype=github_audit
+  action=copilot_user.* user=<dev>
+  | stats count by action _time
+  ```
+  Datenschutz-Konformität: Logs enthalten typischerweise Username/E-Mail
+  → in Verzeichnis von Verarbeitungstätigkeiten (DSGVO Art. 30) als
+  Verarbeitung „Audit-Logging KI-Tool-Nutzung" eintragen, technische
+  und organisatorische Maßnahmen Art. 32 dokumentieren, Betriebsrat-
+  Information bei Mitbestimmungsrecht (BetrVG § 87 Abs. 1 Nr. 6 in DE).
+  Referenzen: ISO/IEC 27001 A.8.15 (Logging) und A.5.34 (Privacy and
+  protection of PII), NIST SP 800-92 (Log Management), DSGVO Art. 30,
+  CRA Anhang I Teil II 2.1 lit. c (Logging), BSI IT-Grundschutz
+  OPS.1.1.5 (Protokollierung), EU AI Act Art. 12 (Record-keeping).
+- **EN:** AI tool use is traceable (tool name, time frame, people
+  involved). Where feasible, central tool logs are retained for
+  audits. Concrete audit sources per tool:
+
+  **GitHub Copilot Business/Enterprise:** REST API
+  `/orgs/{org}/copilot/usage` (daily aggregated usage metrics),
+  `/enterprises/{enterprise}/copilot/usage`, Audit Log API
+  `/orgs/{org}/audit-log` with action patterns
+  `copilot.cfb_seat_*`/`copilot_user_*`, Compliance API for PR-
+  related suggestions acceptance, GitHub webhook on
+  `copilot_seat_management` events. Replicate logs to your own S3
+  bucket via GitHub Actions or directly to SIEM (Splunk, Microsoft
+  Sentinel, Elastic).
+
+  **JetBrains AI Assistant:** audit events in JetBrains Toolbox
+  Enterprise console; local logs in `~/Library/Logs/JetBrains/...`
+  (macOS) or `%APPDATA%/JetBrains/...` (Windows) collected via MDM if
+  needed.
+
+  **Anthropic Claude Console (Workspaces):** Console → Settings →
+  Activity Logs (90–180 days retention), audit log export via API,
+  webhooks for workspace events; `claude code` CLI locally:
+  `.claude/projects/<repo-hash>/*.jsonl` available locally, optionally
+  centralizable.
+
+  **OpenAI ChatGPT Enterprise/Team:** Compliance API for conversations,
+  workspace activity logs, SIEM integration via API polling.
+
+  **AWS Q Developer Pro:** AWS CloudTrail events, IAM Identity Center
+  access logs, Q Developer Customizations audit.
+
+  **Git Duo:** Git Audit Events stream (`Audit Streaming` feature
+  with JSONL export to SIEM endpoint), project-level events.
+
+  **Continue.dev/Tabby/Ollama locally:** `~/.continue/sessions/*.json`,
+  Ollama logs in `journalctl -u ollama` or
+  `~/Library/Logs/Ollama/server.log`.
+
+  Retention period requirements: ≥ 1 year for standard audits, ≥ 6
+  years for GDPR compliance ties, ≥ 10 years for CRA incident histories
+  (Regulation (EU) 2024/2847 Art. 14). Storage location: central SIEM
+  (Splunk Enterprise Security with `audit_logs` index, Microsoft
+  Sentinel workspace with DCR rules, Elastic Security with dedicated
+  data stream, IBM QRadar AQL query repository), append-only with
+  WORM (S3 Object Lock compliance mode, Azure Immutable Blob Storage
+  with time-based retention, Google Cloud Storage Bucket Lock). Access
+  model: security team and compliance officer only (RBAC), four-eyes
+  for deletions before retention expiry. Correlation: match AI tool
+  logs with git commit logs (via `Co-developed-with` trailer from item
+  10) and PR metadata to determine AI share per incident. Example
+  SIEM query (Splunk):
+  ```text
+  index=audit_logs sourcetype=github_audit
+  action=copilot_user.* user=<dev>
+  | stats count by action _time
+  ```
+  Data protection compliance: logs typically contain usernames/email
+  → enter in record of processing activities (GDPR Art. 30) as
+  processing "audit logging AI tool usage", document technical and
+  organizational measures per Art. 32, works council notification on
+  co-determination right (BetrVG § 87(1) No. 6 in DE). References:
+  ISO/IEC 27001 A.8.15 (logging) and A.5.34 (privacy and protection of
+  PII), NIST SP 800-92 (Log Management), GDPR Art. 30, CRA Annex I
+  Part II 2.1 lit. c (logging), BSI IT-Grundschutz OPS.1.1.5
+  (Protokollierung), EU AI Act Art. 12 (record-keeping).
+- **Akzeptanz / Acceptance:** Aufbewahrungsfrist und Pfad festgelegt
+  (≥ 1 Jahr Standard, ≥ 6 Jahre DSGVO, ≥ 10 Jahre CRA);
+  Werkzeug-spezifische Audit-Quellen in SIEM angebunden; WORM-Speicher
+  aktiv; Verzeichnis von Verarbeitungstätigkeiten mit KI-Tool-Logging-
+  Eintrag.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 14. Ausnahmen und Risikoakzeptanz / Exceptions and Risk Acceptance
+
+- **DE:** Eine Abweichung von dieser Checkliste wird mit Begründung und
+  Unterschrift festgehalten. Eine Risikoakzeptanz hat ein Ablaufdatum.
+  Pflichtfelder je Risikoakzeptanz-Eintrag: (1) Eindeutige ID
+  (`RA-AI-YYYY-NNN`), (2) betroffener Checklisten-Punkt (z. B. „Item 7
+  Datenschutz: Prompt mit Kunden-ID an externe KI"), (3) Beschreibung
+  der Abweichung (technisch und prozessual), (4) Begründung warum
+  Standard-Anforderung nicht erfüllbar ist (zeitliche, technische,
+  vertragliche Gründe), (5) Risikobewertung (CVSS-ähnliche Bewertung
+  oder qualitative Skala niedrig/mittel/hoch/kritisch mit Begründung),
+  (6) kompensierende Maßnahmen (zusätzliche Kontrollen, manuelle
+  Überprüfung, eingeschränkter Anwendungsbereich), (7) Ablaufdatum
+  (max. 6 Monate für mittlere Risiken, max. 3 Monate für hohe Risiken,
+  max. 4 Wochen für kritische Risiken), (8) verantwortliche Person
+  (Engineering Manager / Tech Lead), (9) Genehmiger (Security Lead/Security
+  Lead bei mittlerem+, verantwortliche Leitung bei hohem+), (10)
+  Genehmigungsdatum mit digitaler Signatur (S/MIME, GPG, oder
+  qualifizierte elektronische Signatur via Adobe Sign/DocuSign mit
+  eIDAS-Niveau). Vorlage in `docs/security/risk-register.md` mit
+  Tabellenstruktur:
+  ```text
+  | ID         | Item    | Risiko | Ablauf     | Owner   | Status |
+  |------------|---------|--------|------------|---------|--------|
+  | RA-AI-2026-001 | Item 7 | mittel | 2026-10-01 | M.Mustermann | aktiv |
+  ```
+  Tooling: ServiceNow GRC, Archer IRM, OneTrust GRC, Diligent HighBond,
+  einfacher Markdown-Tabellen-Eintrag mit signierten Commits. Vor
+  Ablauf 30 Tage automatische Erinnerung an Owner; vor Ablauf 7 Tage
+  Eskalation an Security Lead. Bei Ablauf ohne Verlängerung: KI-Tool-Zugriff
+  oder betroffene Funktion automatisch sperren. Vier-Augen-Prinzip
+  für Genehmigungen: Engineering Manager + Security Lead bei mittel+,
+  Engineering Manager + Security Lead + Security Lead bei hoch+, zusätzlich
+  verantwortliche Leitung/Vorstand bei kritisch. Quartalsbericht an
+  verantwortliche Leitung mit allen aktiven Risikoakzeptanzen, Trend, Lessons
+  Learned. Audit-Spur: alle Änderungen im Risikoregister im Git-Log
+  oder GRC-Audit-Log nachvollziehbar; Zugriffsbeschränkung auf
+  Security-Team und Compliance-Officer. Referenzen: ISO/IEC 27001
+  A.5.7 (Threat intelligence), A.5.13 (Labelling of information),
+  A.5.36 (Compliance), ISO/IEC 27005 (Information Security Risk
+  Management), NIST SP 800-30 (Guide for Conducting Risk Assessments),
+  NIST SP 800-37 (RMF), NIST AI RMF MANAGE-1.1 (risk acceptance), CRA
+  Anhang VII (Konformitätsbewertung mit Risiko-Dokumentation),
+  EU AI Act Art. 9 (Risk Management System).
+- **EN:** A deviation from this checklist is recorded with
+  justification and signature. A risk acceptance has an expiry date.
+  Mandatory fields per risk acceptance entry: (1) unique ID
+  (`RA-AI-YYYY-NNN`), (2) affected checklist item (e.g., "Item 7 data
+  protection: prompt with customer ID to external AI"), (3) description
+  of the deviation (technical and procedural), (4) justification why
+  the standard requirement is not feasible (time, technical, contractual
+  reasons), (5) risk assessment (CVSS-like rating or qualitative scale
+  low/medium/high/critical with justification), (6) compensating
+  controls (additional measures, manual review, restricted scope), (7)
+  expiry date (max 6 months for medium risk, max 3 months for high
+  risk, max 4 weeks for critical risk), (8) responsible person
+  (Engineering Manager / Tech Lead), (9) approver (Security Lead/Security Lead
+  for medium+, board for high+), (10) approval date with digital
+  signature (S/MIME, GPG, or qualified electronic signature via Adobe
+  Sign/DocuSign with eIDAS level). Template in
+  `docs/security/risk-register.md` with table structure:
+  ```text
+  | ID         | Item    | Risk   | Expiry     | Owner   | Status |
+  |------------|---------|--------|------------|---------|--------|
+  | RA-AI-2026-001 | Item 7 | medium | 2026-10-01 | M.Mustermann | active |
+  ```
+  Tooling: ServiceNow GRC, Archer IRM, OneTrust GRC, Diligent
+  HighBond, simple markdown table entry with signed commits. Automatic
+  reminder to owner 30 days before expiry; escalation to Security Lead 7 days
+  before expiry. On expiry without renewal: AI tool access or affected
+  function blocked automatically. Four-eyes principle for approvals:
+  Engineering Manager + Security Lead for medium+, Engineering Manager
+  + Security Lead + Security Lead for high+, additionally executive board for
+  critical. Quarterly report to executive board with all active risk
+  acceptances, trend, lessons learned. Audit trail: all changes in the
+  risk register traceable in git log or GRC audit log; access
+  restriction to security team and compliance officer. References:
+  ISO/IEC 27001 A.5.7 (threat intelligence), A.5.13 (labelling of
+  information), A.5.36 (compliance), ISO/IEC 27005 (Information
+  Security Risk Management), NIST SP 800-30 (Guide for Conducting Risk
+  Assessments), NIST SP 800-37 (RMF), NIST AI RMF MANAGE-1.1 (risk
+  acceptance), CRA Annex VII (conformity assessment with risk
+  documentation), EU AI Act Art. 9 (Risk Management System).
+- **Akzeptanz / Acceptance:** Eintrag im Sicherheits-/Risikoregister
+  mit eindeutiger ID, betroffenem Item, Risikobewertung, Ablaufdatum,
+  Owner, Genehmiger und digitaler Signatur; Vier-Augen-Genehmigung;
+  automatische Erinnerung 30/7 Tage vor Ablauf; Quartalsbericht an
+  verantwortliche Leitung.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 15. KI-Lieferkettentransparenz / AI Supply-Chain Transparency
+
+- **DE:** Für jedes eingesetzte KI-Werkzeug, jeden KI-Dienst und jedes
+  Modell werden die vom Anbieter verfügbaren Transparenzangaben im
+  KI-Werkzeug-Inventar erfasst oder verlinkt: Modell-Identität und
+  -Version, Verweis auf Model Card oder AI-SBOM des Anbieters, Trainings-
+  und Feinabstimmungsverfahren sowie Herkunft und Sensitivität der
+  Trainingsdaten soweit veröffentlicht, und KI-spezifische
+  Sicherheitseigenschaften. Die Organisation erstellt für fremdbezogene Modelle
+  keine eigene AI-SBOM; sie fordert die Angaben als Lieferketten-Nachweis
+  an und dokumentiert, wo eine Angabe vom Anbieter nicht verfügbar ist.
+  Bezugsrahmen ist die G7-Leitlinie „Software Bill of Materials for AI –
+  Minimum Elements" (2026).
+- **EN:** For every AI tool, AI service, and model in use, the
+  transparency information available from the provider is recorded or
+  linked in the AI tool inventory: model identity and version, a link to
+  the provider's model card or AI-SBOM, training and fine-tuning method,
+  the origin and sensitivity of the training data as far as published,
+  and AI-specific security properties. Organisation does not produce its own
+  AI-SBOM for externally sourced models; it requests the information as
+  supply-chain evidence and documents where a provider does not make an
+  item available. The reference framework is the G7 guideline "Software
+  Bill of Materials for AI – Minimum Elements" (2026).
+- **Akzeptanz / Acceptance:** Das KI-Werkzeug-Inventar nennt je Modell
+  bzw. Dienst die Anbieter-Transparenzquelle (Model Card oder AI-SBOM)
+  oder begründet deren Fehlen; offene Angaben sind als solche markiert. /
+  The AI tool inventory names, per model or service, the provider
+  transparency source (model card or AI-SBOM) or justifies its absence;
+  open items are marked as such.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 16. KI-Regulierungs-Screening / AI Regulatory Screening
+
+- **DE:** Bei KI-Werkzeugen, KI-Diensten, Modellen oder KI-Komponenten wird
+  geprüft, ob neben dieser Checkliste auch regulatorische Anforderungen aus
+  CL_Standards-Anwendbarkeit anwendbar sind. Das betrifft insbesondere EU
+  AI Act, CRA, NIS2, DORA sowie Kunden- oder Sektorvorgaben. Reine Nutzung
+  von KI als Entwicklungswerkzeug kann als `nicht anwendbar` dokumentiert
+  werden, wenn kein KI-System, Modell oder Dienst Teil des ausgelieferten
+  oder betriebenen Systems ist.
+- **EN:** For AI tools, AI services, models, or AI components, check
+  whether regulatory requirements from CL_Standards-Anwendbarkeit also
+  apply. This covers in particular the EU AI Act, CRA, NIS2, DORA, and
+  customer or sector rules. Pure use of AI as a development tool may be
+  documented as `not applicable` when no AI system, model, or service is
+  part of the released or operated system.
+- **Akzeptanz / Acceptance:** KI-Inventar, Lieferkettennachweis oder
+  Spec-Kit-Artefakt verlinkt das CL_01-Regulatory-Screening und nennt, ob
+  die KI-Nutzung nur Werkzeugnutzung oder Bestandteil des Produkts bzw.
+  Dienstes ist. / AI inventory, supply-chain evidence, or Spec Kit artefact
+  links the CL_01 regulatory screening and states whether the AI use is
+  tool-only use or part of the product or service.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _KI-Inventar, CL_01-Screening, Spec-Kit-Artefakt oder N/A-Begründung nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name AI inventory, CL_01 screening, Spec Kit artefact, or N/A rationale. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 17. Didaktische Kommentare bei nichttrivialer Logik / Didactic Comments for Non-Trivial Logic
+
+- **DE:** Bei KI-erzeugter oder KI-veränderter nichttrivialer Logik wird
+  geprüft, ob kurze didaktische Kommentare den Review, die Wartung oder
+  die Ausbildung unterstützen. Kommentare erklären das Warum, eine
+  Randbedingung, eine Abwägung oder eine bekannte Grenze. Sie wiederholen
+  nicht den offensichtlichen Codeablauf. Für lernende oder
+  nutzerorientierte Artefakte bleiben Erklärungen Deutsch zuerst, Englisch
+  danach und auf CEFR-B2-Niveau.
+- **EN:** For AI-generated or AI-changed non-trivial logic, check whether
+  short didactic comments support review, maintenance, or training.
+  Comments explain the why, a boundary condition, a trade-off, or a known
+  limit. They do not repeat the obvious code flow. For learner-facing or
+  user-facing artefacts, explanations remain German first, English second,
+  and at CEFR B2 level.
+- **Akzeptanz / Acceptance:** Review oder PR zeigt, dass nichttriviale
+  Logik auf sinnvolle Kommentare geprüft wurde; fehlende Kommentare sind
+  begründet, übermäßige Kommentarflut wurde vermieden. / Review or PR
+  shows that non-trivial logic was checked for useful comments; missing
+  comments are justified, and excessive comment noise was avoided.
+- **Referenz / Reference:** Spec-Kit `a11y-governance`,
+  `didactic-code-comment-check-template`.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _PR, Review-Kommentar, Spec-Kit-Artefakt oder N/A-Begründung nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name PR, review comment, Spec Kit artefact, or N/A rationale. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+### Akzeptanzkriterien gesamt / Overall Acceptance
+
+**DE:** Erfüllt, wenn alle Punkte abgeschlossen sind und je Pull Request
+mit nennenswertem KI-Anteil ein Reviewer-Vermerk vorliegt. KI-Regulatory-
+Screening, KI-Lieferkettentransparenz und didaktische Kommentarprüfung sind
+verlinkt oder begründet nicht anwendbar.
+
+**EN:** Fulfilled when every item is closed and a reviewer note exists for
+every pull request with a notable AI share. AI regulatory screening, AI
+supply-chain transparency, and didactic comment review are linked or
+justified as not applicable.
+
+### Glossar / Glossary
+
+**DE:** Dieses Glossar erklärt die wichtigsten Begriffe dieser Checkliste in Alltagssprache. Es ändert keine Anforderungen, sondern macht die vorhandenen Prüfpunkte leichter verständlich.
+
+**EN:** This glossary explains the most important terms in this checklist in plain language. It does not change requirements; it makes the existing review items easier to understand.
+
+<a id="cl-09-glossar-ai-code-assistenz"></a>
+
+#### KI-Code-Assistenz / AI Coding Assistance
+
+- **DE:** KI-Code-Assistenz unterstützt beim Schreiben, Erklären oder Ändern von Code. Die Vorschläge müssen geprüft werden, weil sie falsch oder unsicher sein können.
+- **EN:** AI coding assistance helps write, explain, or change code. The suggestions must be reviewed because they can be wrong or insecure.
+
+<a id="cl-09-glossar-llm"></a>
+
+#### LLM / Large Language Model
+
+- **DE:** Ein LLM ist ein großes Sprachmodell. Es erzeugt Text oder Code aus Prompts, versteht aber nicht automatisch Projektregeln oder Sicherheitsanforderungen.
+- **EN:** An LLM is a large language model. It generates text or code from prompts but does not automatically understand project rules or security requirements.
+
+<a id="cl-09-glossar-prompt"></a>
+
+#### Prompt
+
+- **DE:** Ein Prompt ist die Eingabe an ein KI-System. Er darf keine geheimen oder unzulässigen personenbezogenen Daten enthalten.
+- **EN:** A prompt is the input to an AI system. It must not contain secrets or impermissible personal data.
+
+<a id="cl-09-glossar-human-review"></a>
+
+#### Menschliche Prüfung / Human Review
+
+- **DE:** Menschliche Prüfung bedeutet, dass eine verantwortliche Person das Ergebnis bewertet. Bei KI-Ergebnissen ersetzt diese Prüfung kein Tool automatisch.
+- **EN:** Human review means that a responsible person assesses the result. For AI outputs, this review is not automatically replaced by a tool.
+
+<a id="cl-09-glossar-four-eyes"></a>
+
+#### Vier-Augen-Prinzip / Four-Eyes Rule
+
+- **DE:** Das Vier-Augen-Prinzip verlangt eine zweite qualifizierte Prüfung. Es ist besonders wichtig bei kritischer Logik, Sicherheit und Datenschutz.
+- **EN:** The four-eyes rule requires a second qualified review. It is especially important for critical logic, security, and data protection.
+
+<a id="cl-09-glossar-cve"></a>
+
+#### CVE
+
+- **DE:** Eine CVE ist eine weltweit eindeutige Kennung für eine bekannte Schwachstelle. Sie hilft, dieselbe Schwachstelle in Tools, Tickets und Meldungen eindeutig zu benennen.
+- **EN:** A CVE is a globally unique identifier for a known vulnerability. It helps name the same vulnerability clearly in tools, tickets, and advisories.
+
+<a id="cl-09-glossar-hallucinated-package"></a>
+
+#### Halluziniertes Paket / Hallucinated Package
+
+- **DE:** Ein halluziniertes Paket ist eine von KI vorgeschlagene Abhängigkeit, die nicht echt ist oder nicht zum Projekt passt. Vor Installation muss die Quelle geprüft werden.
+- **EN:** A hallucinated package is an AI-suggested dependency that is not real or does not fit the project. The source must be checked before installation.
+
+<a id="cl-09-glossar-dependency"></a>
+
+#### Abhängigkeit / Dependency
+
+- **DE:** Eine Abhängigkeit ist fremder Code oder ein Paket, das ein Projekt nutzt. Abhängigkeiten brauchen Pflege, Lizenzprüfung und Schwachstellenprüfung.
+- **EN:** A dependency is third-party code or a package used by a project. Dependencies need maintenance, licence review, and vulnerability checks.
+
+<a id="cl-09-glossar-personal-data"></a>
+
+#### Personenbezogene Daten / Personal Data
+
+- **DE:** Personenbezogene Daten sind Informationen, die sich auf eine identifizierte oder identifizierbare Person beziehen, zum Beispiel Name, Kennung, IP-Adresse oder Standortdaten.
+- **EN:** Personal data is information relating to an identified or identifiable person, for example name, identifier, IP address, or location data.
+
+<a id="cl-09-glossar-telemetry"></a>
+
+#### Telemetrie / Telemetry
+
+- **DE:** Telemetrie sind Nutzungs- oder Diagnosedaten, die ein Werkzeug sendet. Sie muss zu Datenschutz, Vertraulichkeit und Freigabe passen.
+- **EN:** Telemetry is usage or diagnostic data sent by a tool. It must fit data protection, confidentiality, and approval rules.
+
+<a id="cl-09-glossar-audit-trail"></a>
+
+#### Audit-Spur / Audit Trail
+
+- **DE:** Eine Audit-Spur zeigt nachvollziehbar, wer was wann getan oder entschieden hat. Sie hilft bei Prüfung, Fehlersuche und Verantwortung.
+- **EN:** An audit trail traceably shows who did or decided what and when. It helps with review, troubleshooting, and accountability.
+
+<a id="cl-09-glossar-ai-sbom-ml-bom"></a>
+
+#### AI-SBOM / ML-BOM
+
+- **DE:** Eine AI-SBOM oder ML-BOM beschreibt KI-Bestandteile, zum Beispiel Modelle, Datensätze, Frameworks und externe Dienste. Sie macht KI-Lieferketten nachvollziehbar.
+- **EN:** An AI-SBOM or ML-BOM describes AI parts, for example models, datasets, frameworks, and external services. It makes AI supply chains traceable.
+
+<a id="cl-09-glossar-eu-ai-act"></a>
+
+#### EU AI Act
+
+- **DE:** Der EU AI Act ist eine EU-Verordnung für KI-Systeme. Er kann Pflichten zu Risiko, Dokumentation, Transparenz und menschlicher Aufsicht auslösen.
+- **EN:** The EU AI Act is an EU regulation for AI systems. It can trigger duties for risk, documentation, transparency, and human oversight.
+
+<a id="cl-09-glossar-spec-kit"></a>
+
+#### Spec Kit
+
+- **DE:** Spec Kit ist ein werkzeuggestützter Ablauf für spezifikationsgetriebene Entwicklung. Es erzeugt und nutzt Markdown-Artefakte wie Spezifikation, Plan, Aufgaben und Analysen.
+- **EN:** Spec Kit is a tool-supported flow for specification-driven development. It creates and uses Markdown artefacts such as specification, plan, tasks, and analyses.
+
+<a id="cl-09-glossar-sdd"></a>
+
+#### SDD / Specification-Driven Development
+
+- **DE:** SDD bedeutet spezifikationsgetriebene Entwicklung. Erst werden Anforderungen, Plan und Prüfpunkte dokumentiert, danach wird umgesetzt.
+- **EN:** SDD means specification-driven development. Requirements, plan, and review points are documented first; implementation follows afterwards.
+
+<a id="cl-09-glossar-preset"></a>
+
+#### Preset
+
+- **DE:** Ein Preset ist eine vordefinierte Regel- oder Vorlagensammlung. Bei Spec Kit steuert es Governance, Prüfpunkte und erwartete Artefakte.
+- **EN:** A preset is a predefined set of rules or templates. In Spec Kit it controls governance, review points, and expected artefacts.
+
+<a id="cl-09-glossar-nachweis-matrix"></a>
+
+#### Nachweis-Matrix / Evidence Matrix
+
+- **DE:** Eine Nachweis-Matrix verbindet Prüfpunkte mit konkreten Belegen. Sie zeigt, welches Dokument, Ticket oder Artefakt welchen Prüfpunkt abdeckt.
+- **EN:** An evidence matrix connects review points with concrete evidence. It shows which document, ticket, or artefact covers which review item.
+
+### Versionshistorie / Version History
+
+- **Version 1.0 (2026-04-27):** Erstfassung / Initial version
+- **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
+- **Version 1.2 (2026-04-30):** Barrierearme Personenbezeichnung ergänzt / Added accessible person wording
+- **Version 1.3 (2026-05-19):** Prüfpunkt 15 „KI-Lieferkettentransparenz" ergänzt; Mitgeltende Dokumente um die G7-Leitlinie „Software Bill of Materials for AI – Minimum Elements" (2026) erweitert; synchron mit RL Sichere-Entwicklung v2.4.0. / Added checklist item 15 "AI Supply-Chain Transparency"; extended related documents with the G7 guideline "Software Bill of Materials for AI – Minimum Elements" (2026); synchronized with RL Sichere-Entwicklung v2.4.0.
+- **Version 1.4 (2026-05-22):** Durchführungshinweise um Querverweis auf CL_12 und GitHub Spec Kit SDD für wesentliche Feature-Implementierungen mit agentischer KI ergänzt; synchron mit RL Sichere-Entwicklung v2.5.0. / Added implementation guidance cross-reference to CL_12 and GitHub Spec Kit SDD for material feature implementations with agentic AI; synchronized with RL Sichere-Entwicklung v2.5.0.
+- **Version 1.5 (2026-06-12):** Durchführungshinweise präzisiert: Installation und Nachweis der Spec-Kit-Governance-Presets werden in CL_12 bewertet; synchron mit RL Sichere-Entwicklung v2.6.0. / Refined implementation guidance: installation and evidence of the Spec Kit governance presets are assessed in CL_12; synchronized with RL Sichere-Entwicklung v2.6.0.
+- **Version 1.6 (2026-06-14):** Durchführungshinweise präzisiert: Aktualität und inhaltliche Abdeckung der Spec-Kit-Governance-Presets werden in CL_12 bewertet; synchron mit RL Sichere-Entwicklung v2.7.0. / Refined implementation guidance: currency and content coverage of the Spec Kit governance presets are assessed in CL_12; synchronized with RL Sichere-Entwicklung v2.7.0.
+- **Version 1.7 (2026-06-14):** Durchführungshinweise präzisiert: Vollständige Spec-Kit-Artefakte mit Nachweis-Matrix können die separate manuelle Ausfüllung ersetzen; synchron mit RL Sichere-Entwicklung v2.8.0. / Refined implementation guidance: complete Spec Kit artefacts with an evidence matrix may replace separate manual completion; synchronized with RL Sichere-Entwicklung v2.8.0.
+- **Version 1.8 (2026-06-15):** Prüfpunkte 16 und 17 zu KI-Regulierungs-Screening und didaktischen Kommentaren ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Added items 16 and 17 for AI regulatory screening and didactic comments; synchronized with RL Sichere-Entwicklung v2.9.0.
+
+- **Version 1.9 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
+
+- **Version 1.10 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
+- **Version 1.11 (2026-06-17):** Test-KPIs an RL Sichere-Entwicklung v2.10.0 angepasst: KI-Code mindestens 80 % Line und Branch Coverage; Integrationstest-Abdeckung öffentlicher Schnittstellen und kritischer UI-Flows ergänzt. / Aligned test KPIs with Secure Development Guideline v2.10.0: AI code at least 80 % line and branch coverage; added integration-test coverage for public interfaces and critical UI flows.
+
+---
+
+
+---
+
+<!--
+Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
+Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+This document is organization-neutral and written as a generic training and review baseline.
+-->
+
+> **DE:** Diese Checkliste ist generisch und projektunabhaengig. Sie ist als Ausbildungs-, Review- und Haertungsgrundlage gedacht. Eine Nichtanwendbarkeit muss als `N/A` mit kurzer Begruendung dokumentiert werden.
+>
+> **EN:** This checklist is generic and project-independent. It is intended as a training, review, and hardening baseline. Non-applicability must be documented as `N/A` with a short rationale.
+
+## Checkliste 10 – Sichere Entwicklungsumgebung / Secure Development Environment
+
+### Zweck / Purpose
+
+**DE:** Diese Checkliste prüft, ob die Entwicklungs-, Build- und Test-Umgebungen
+sicher konfiguriert sind. Sie deckt Arbeitsplatz, Quellcode-Verwaltung,
+CI/CD-Pipelines und Geheimnisverwaltung ab.
+
+**EN:** This checklist verifies that development, build, and test environments
+are configured securely. It covers the developer workstation, source control,
+CI/CD pipelines, and secret management.
+
+### Geltungsbereich / Scope
+
+**DE:** Pflicht für alle Projektteams, die unter die Richtlinie „Sichere
+Entwicklung" fallen. Mindestens jährlich und nach jeder größeren Toolchain-
+Änderung erneut prüfen.
+
+**EN:** Mandatory for every project team covered by the "Secure Development"
+guideline. Re-check at least once a year and after every major toolchain
+change.
+
+### Mitgeltende Dokumente / Related Documents
+
+- RL Sichere-Entwicklung
+- ISO/IEC 27002:2022 A.8.31, A.8.32
+- NIST SP 800-218 (SSDF)
+- Verfassung XII, XIII
+
+#### URL-/Ablageverweise / URLs and Storage Locations
+
+**DE:** Diese Links helfen beim Review. Projekt- oder organisationsinterne Dokumente koennen als lokale Arbeitskopie oder als Verweis auf den festgelegten Ablageort ergaenzt werden.
+
+**EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
+
+- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
+- **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
+- **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
+- **Secure coding guideline:** this guide or an equivalent project-specific guideline
+- **CISA Memory Safe Roadmaps:** [lokale Textfassung des CISA-Dokuments / local text version of the CISA document](../THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.txt), [CISA-Webseite zum Dokument / CISA webpage for the document](https://www.cisa.gov/resources-tools/resources/case-memory-safe-roadmaps)
+- **ISO/IEC 27001:2022:** [offizielle ISO-Webseite zur ISO/IEC 27001:2022 / official ISO webpage for ISO/IEC 27001:2022](https://www.iso.org/standard/27001)
+- **ISO/IEC 27002:2022:** [offizielle ISO-Webseite zur ISO/IEC 27002:2022 / official ISO webpage for ISO/IEC 27002:2022](https://www.iso.org/standard/75652.html)
+- **NIST SSDF SP 800-218:** [NIST-Veröffentlichung SP 800-218 Secure Software Development Framework / NIST publication SP 800-218 Secure Software Development Framework](https://csrc.nist.gov/publications/detail/sp/800-218/final)
+- **NIST Zero Trust SP 800-207:** [NIST-Veröffentlichung SP 800-207 Zero Trust Architecture / NIST publication SP 800-207 Zero Trust Architecture](https://csrc.nist.gov/publications/detail/sp/800-207/final)
+- **OWASP ASVS:** [OWASP-Projektseite Application Security Verification Standard / OWASP project page Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)
+- **OWASP Cheat Sheet Series:** [OWASP Cheat Sheet Series Projektseite / OWASP Cheat Sheet Series project page](https://cheatsheetseries.owasp.org/)
+- **OWASP Proactive Controls:** [OWASP Proactive Controls Projektseite / OWASP Proactive Controls project page](https://owasp.org/www-project-proactive-controls/)
+- **OWASP SAMM:** [OWASP SAMM Projektseite / OWASP SAMM project page](https://owaspsamm.org/)
+- **OWASP Top 10 for LLM Applications:** [OWASP Top 10 for LLM Applications Projektseite / OWASP Top 10 for LLM Applications project page](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- **CWE Top 25:** [MITRE CWE Top 25 Übersicht / MITRE CWE Top 25 overview](https://cwe.mitre.org/top25/)
+- **CAPEC:** [MITRE CAPEC Katalog / MITRE CAPEC catalogue](https://capec.mitre.org/)
+- **CycloneDX:** [CycloneDX SBOM-Standard Projektseite / CycloneDX SBOM standard project page](https://cyclonedx.org/)
+- **SPDX:** [SPDX SBOM-Standard Projektseite / SPDX SBOM standard project page](https://spdx.dev/)
+- **CSAF/VEX:** [OASIS CSAF und VEX Dokumentation / OASIS CSAF and VEX documentation](https://oasis-open.github.io/csaf-documentation/)
+- **SLSA:** [SLSA Supply-chain Levels for Software Artifacts Projektseite / SLSA project page](https://slsa.dev/)
+- **OpenSSF Scorecard:** [OpenSSF Scorecard Projektseite / OpenSSF Scorecard project page](https://scorecard.dev/)
+- **RFC 9116 security.txt:** [RFC 9116 zu security.txt / RFC 9116 for security.txt](https://www.rfc-editor.org/rfc/rfc9116)
+- **NIST AI Risk Management Framework:** [NIST AI Risk Management Framework Webseite / NIST AI Risk Management Framework webpage](https://www.nist.gov/itl/ai-risk-management-framework)
+- **EU Cyber Resilience Act:** [EU-Amtsblatt zum Cyber Resilience Act / EU Official Journal for the Cyber Resilience Act](https://eur-lex.europa.eu/eli/reg/2024/2847/oj)
+- **BSI TR-02102:** [BSI-Webseite zur Technischen Richtlinie TR-02102 / BSI webpage for Technical Guideline TR-02102](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Technische-Richtlinien/TR-nach-Thema-sortiert/tr02102/tr-02102.html)
+
+### Bewertung und Dokumentation / Assessment and Documentation
+
+**DE:** Jeder Prüfpunkt bekommt genau einen Status. Schreibe die Begründung so, dass eine neue Kollegin oder ein neuer Kollege den Entscheid später ohne Rückfrage versteht.
+
+**EN:** Each checklist item gets exactly one status. Write the explanation so that a new team member can understand the decision later without asking again.
+
+- **Erfüllt / Fulfilled:** Die Anforderung ist umgesetzt und es gibt einen prüfbaren Nachweis.
+- **Nicht erfüllt / Not fulfilled:** Die Anforderung ist noch nicht umgesetzt oder der Nachweis fehlt. Es muss eine Aufgabe mit Verantwortlicher Person und Termin geben.
+- **Nicht anwendbar / Not applicable:** Die Anforderung passt nicht zum Projekt. Das ist erlaubt, aber nur mit kurzer Begründung.
+
+**Pflichtfelder je Prüfpunkt / Required fields per item:** Status, Begründung, Evidenzpfad oder Link, nächste Maßnahme mit Verantwortlicher Person und Zieltermin.
+
+### Durchführungshinweise / Implementation Guidance
+
+**DE:** Nutze diese Checkliste nicht als reine Ja/Nein-Liste. Sie ist ein Arbeits- und Auditdokument. Prüfe jeden Punkt gegen reale Artefakte: Code, Pull Request, Architekturdiagramm, Build-Log, Scan-Ergebnis, Ticket, Betriebsdokumentation oder Freigabeprotokoll. Wenn ein Nachweis noch fehlt, markiere den Punkt als „nicht erfüllt" und lege eine konkrete Folgeaufgabe an.
+
+**EN:** Do not use this checklist as a simple yes/no list. It is a working and audit document. Check each item against real artefacts: code, pull request, architecture diagram, build log, scan result, ticket, operations document, or approval record. If evidence is missing, mark the item as "not fulfilled" and create a concrete follow-up task.
+
+**DE:** Schreibe kurze, klare Begründungen. Vermeide Abkürzungen ohne Erklärung. Wenn ein Punkt technisch schwierig ist, beschreibe den aktuellen Stand, das Risiko und den nächsten machbaren Schritt.
+
+**EN:** Write short and clear explanations. Avoid unexplained abbreviations. If an item is technically difficult, describe the current state, the risk, and the next feasible step.
+
+**DE:** Jeder Prüfpunkt muss deshalb drei Fragen beantworten: Was bedeutet die Anforderung im Projektalltag? Was ist konkret zu tun oder zu entscheiden? Welcher Nachweis zeigt das Ergebnis? Verwende Standard-IDs, Toolnamen und Abkürzungen nur zusammen mit einer kurzen Erklärung in Alltagssprache. Wenn ein Punkt für Auszubildende oder neue Teammitglieder nicht selbsterklärend ist, ergänze eine kurze Erklärung in der Begründung.
+
+**EN:** Each item must therefore answer three questions: What does the requirement mean in daily project work? What exactly must be done or decided? Which evidence shows the result? Use standard IDs, tool names, and abbreviations only together with a short plain-language explanation. If an item is not self-explanatory for apprentices or new team members, add a short explanation in the rationale.
+
+### Beispiel / Example
+
+**DE:** Fuer ein Projekt wird nachgewiesen: Branch-Schutz ist aktiv, MFA ist erzwungen, Secret-Scanning blockiert Pushes, Runner haben minimale Rechte, und der letzte Wiederherstellungstest ist datiert.
+
+**EN:** For a project, evidence shows: branch protection is active, MFA is enforced, secret scanning blocks pushes, runners have least privilege, and the latest recovery test has a date.
+
+### A11Y-Hinweise / A11Y Notes
+
+**DE:** Beim Ausfüllen dieser Checkliste müssen alle Nachweise auch textlich verständlich sein. Verweise sollen beschreibende Linktexte haben. Screenshots, Diagramme oder Scan-Auszüge brauchen eine kurze Textbeschreibung. Der Status darf nicht nur über Farbe erkennbar sein.
+
+**EN:** When this checklist is filled in, all evidence must also be understandable as text. References should use descriptive link text. Screenshots, diagrams, or scan extracts need a short text description. The status must not be shown by color alone.
+
+### Wichtige Begriffe / Key Terms
+
+**DE:** Die folgenden Begriffe kommen in dieser Checkliste vor. Die Links springen zum Glossar dieses Kapitels, damit Auszubildende und Entwickler:innen ohne Sicherheits-Spezialwissen die Begriffe direkt nachlesen können.
+
+**EN:** The following terms appear in this checklist. The links jump to this chapter's glossary so that apprentices and developers without specialist security knowledge can look them up directly.
+
+- [Festplattenverschlüsselung / Full-Disk Encryption](#cl-10-glossar-full-disk-encryption)
+- [MFA](#cl-10-glossar-mfa)
+- [IDE](#cl-10-glossar-ide)
+- [Branch-Schutz / Branch Protection](#cl-10-glossar-branch-protection)
+- [Signierte Commits / Signed Commits](#cl-10-glossar-signed-commits)
+- [GPG](#cl-10-glossar-gpg)
+- [Sigstore / Cosign](#cl-10-glossar-sigstore-cosign)
+- [Secret Scanning](#cl-10-glossar-secret-scanning)
+- [Secret Store](#cl-10-glossar-secret-store)
+- [CI/CD](#cl-10-glossar-ci-cd)
+- [Umgebungstrennung / Environment Separation](#cl-10-glossar-environment-separation)
+- [Testdaten / Test Data](#cl-10-glossar-test-data)
+- [Audit-Spur / Audit Trail](#cl-10-glossar-audit-trail)
+- [Zugriffsrezertifizierung / Access Recertification](#cl-10-glossar-access-recertification)
+- [Endpoint-Schutz / Endpoint Protection](#cl-10-glossar-endpoint-protection)
+- [Backup und Restore](#cl-10-glossar-backup-restore)
+- [Cross-Platform-Skript](#cl-10-glossar-cross-platform-script)
+
+### Checkliste / Checklist
+
+#### 1. Festplattenverschlüsselung / Full-Disk Encryption
+
+- **DE:** Entwickler-Notebooks und Build-Server haben aktive
+  Festplattenverschlüsselung mit modernen Algorithmen (AES-XTS-256). Per
+  Plattform: macOS FileVault 2 (`fdesetup status` zeigt `On`),
+  Windows BitLocker (XTS-AES 256, `manage-bde -status` zeigt
+  `Percentage Encrypted: 100,0%`, `Conversion Status: Fully Encrypted`),
+  Linux LUKS2 (`cryptsetup luksDump /dev/sdaX`, AES-XTS-Plain64 mit
+  PBKDF2/Argon2id-Schlüsselableitung). Recovery-Keys per Mobile Device
+  Management (Microsoft Intune, Jamf Pro, Workspace ONE) zentral
+  hinterlegt; Offline-Recovery-Code beim Geräteempfang dokumentiert.
+  Pre-Boot-Authentifizierung Pflicht (TPM-PIN, Smartcard, FIDO2-Token);
+  Ruhezustand und Hibernation-File ebenfalls verschlüsselt
+  (`powercfg /h on` + BitLocker; macOS `pmset -a destroyfvkeyonstandby 1`).
+  Entfernbare Datenträger nur mit BitLocker-To-Go oder LUKS verschlüsselt.
+  Nachweis durch MDM-Reports oder `osquery`-Abfrage (`SELECT * FROM
+  disk_encryption`). Referenzen: NIST SP 800-111, BSI IT-Grundschutz
+  SYS.2.1.A8, ISO/IEC 27001 A.7.10.
+- **EN:** Developer laptops and build servers have active full-disk
+  encryption with modern algorithms (AES-XTS-256). Per platform: macOS
+  FileVault 2 (`fdesetup status` shows `On`), Windows BitLocker
+  (XTS-AES 256, `manage-bde -status` shows `Percentage Encrypted:
+  100.0%`, `Conversion Status: Fully Encrypted`), Linux LUKS2
+  (`cryptsetup luksDump /dev/sdaX`, AES-XTS-Plain64 with PBKDF2/Argon2id
+  key derivation). Recovery keys centrally stored via Mobile Device
+  Management (Microsoft Intune, Jamf Pro, Workspace ONE); offline
+  recovery code documented at device handout. Pre-boot authentication
+  mandatory (TPM PIN, smartcard, FIDO2 token); sleep and hibernation
+  file also encrypted (`powercfg /h on` + BitLocker; macOS
+  `pmset -a destroyfvkeyonstandby 1`). Removable drives only encrypted
+  with BitLocker-To-Go or LUKS. Evidence via MDM reports or `osquery`
+  query (`SELECT * FROM disk_encryption`). References: NIST SP 800-111,
+  BSI IT-Grundschutz SYS.2.1.A8, ISO/IEC 27001 A.7.10.
+- **Akzeptanz / Acceptance:** Status pro Gerät im MDM dokumentiert
+  (`encryption_status: encrypted`, Algorithmus AES-XTS-256, Recovery-Key
+  hinterlegt); jährlicher Audit-Bericht mit Liste aller verschlüsselten
+  und ggf. Ausnahme-Geräten. / Status per device documented in MDM
+  (`encryption_status: encrypted`, AES-XTS-256 algorithm, recovery key
+  on file); annual audit report with list of all encrypted and any
+  exempted devices.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 2. Bildschirmsperre und MFA / Screen Lock and MFA
+
+- **DE:** Automatische Bildschirmsperre nach maximal 10 Minuten Inaktivität
+  ist per MDM-Policy erzwungen (macOS `sudo defaults write
+  com.apple.screensaver askForPassword 1; askForPasswordDelay 0`; Windows
+  Group Policy `Computer Configuration > Administrative Templates > Control
+  Panel > Personalization > Screen saver timeout = 600`; GNOME `gsettings
+  set org.gnome.desktop.session idle-delay 600`). Konten für Quellcode-
+  Plattform (GitHub, Git, Bitbucket), Build-System (Jenkins, GitHub
+  Actions, Git CI, Azure DevOps), Cloud (AWS, Azure, GCP), Identity
+  Provider (Entra ID, Okta, Keycloak), Paket-Registry (npm, PyPI,
+  Maven Central, NuGet) und VPN nutzen Multi-Faktor-Authentifizierung
+  (MFA). Phishing-resistente MFA bevorzugt: FIDO2/WebAuthn-Hardware-Keys
+  (YubiKey 5, Google Titan, SoloKeys), Passkeys, Smartcard mit PKCS#11.
+  TOTP (RFC 6238) als Fallback (Google Authenticator, Microsoft
+  Authenticator, Authy); SMS-OTP nur als letzte Option und nicht für
+  privilegierte Konten (SIM-Swapping-Risiko). Push-Notifications mit
+  Number-Matching gegen MFA-Fatigue (Microsoft Authenticator,
+  Duo Security). Conditional Access in Entra ID erzwingt MFA für alle
+  riskanten Anmeldungen. Notfall-Konten (`break-glass`) ohne MFA-
+  Sperrungsmöglichkeit aber mit Hardware-Key-Pflicht. Beispiel macOS-MDM-
+  Profile: `com.apple.screensaver` mit `idleTime=600`,
+  `askForPassword=1`. Referenzen: NIST SP 800-63B AAL2/AAL3, OWASP MFA
+  Cheat Sheet, BSI TR-03107.
+- **EN:** Automatic screen lock after max. 10 minutes of inactivity is
+  enforced via MDM policy (macOS `sudo defaults write
+  com.apple.screensaver askForPassword 1; askForPasswordDelay 0`;
+  Windows Group Policy `Computer Configuration > Administrative
+  Templates > Control Panel > Personalization > Screen saver timeout =
+  600`; GNOME `gsettings set org.gnome.desktop.session idle-delay 600`).
+  Accounts for source platform (GitHub, Git, Bitbucket), build system
+  (Jenkins, GitHub Actions, Git CI, Azure DevOps), cloud (AWS, Azure,
+  GCP), identity provider (Entra ID, Okta, Keycloak), package registry
+  (npm, PyPI, Maven Central, NuGet), and VPN use multi-factor
+  authentication (MFA). Phishing-resistant MFA preferred: FIDO2/WebAuthn
+  hardware keys (YubiKey 5, Google Titan, SoloKeys), passkeys, smartcard
+  with PKCS#11. TOTP (RFC 6238) as fallback (Google Authenticator,
+  Microsoft Authenticator, Authy); SMS OTP only as last resort and not
+  for privileged accounts (SIM-swapping risk). Push notifications with
+  number matching against MFA fatigue (Microsoft Authenticator, Duo
+  Security). Conditional Access in Entra ID enforces MFA for all risky
+  sign-ins. Emergency accounts (`break-glass`) without MFA lockout but
+  with hardware-key requirement. Example macOS MDM profile:
+  `com.apple.screensaver` with `idleTime=600`, `askForPassword=1`.
+  References: NIST SP 800-63B AAL2/AAL3, OWASP MFA Cheat Sheet, BSI
+  TR-03107.
+- **Akzeptanz / Acceptance:** MFA-Status je Plattform geprüft und in
+  `docs/security/mfa-coverage.md` dokumentiert (Plattform, Account-Typ,
+  MFA-Methode, Erzwingung); ≥ 95 % MFA-Coverage; phishing-resistente MFA
+  für privilegierte Rollen Pflicht; MDM-Policy Bildschirmsperre ≤ 10 min
+  aktiv. / MFA status checked per platform and documented in
+  `docs/security/mfa-coverage.md` (platform, account type, MFA method,
+  enforcement); ≥ 95 % MFA coverage; phishing-resistant MFA mandatory
+  for privileged roles; MDM screen-lock policy ≤ 10 min active.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 3. IDE-Härtung / IDE Hardening
+
+- **DE:** IDE-Plugins kommen aus geprüften Quellen (offizielle Marketplaces
+  mit Verifizierten Publishern: VS Code Marketplace, JetBrains Plugin
+  Repository, Visual Studio Marketplace, Eclipse Marketplace). Plugins aus
+  unbekannten Quellen oder mit niedrigen Download-Zahlen sind verboten;
+  jedes Plugin durchläuft Security-Review (Berechtigungen, Code-Signatur,
+  Maintainer-Reputation, OpenSSF Scorecard ≥ 7.0). Sandboxing für KI-
+  Plugins (Restricted Mode in VS Code: `security.workspace.trust.enabled =
+  true`). Telemetrie und KI-Funktionen sind nach Vorgabe konfiguriert:
+  GitHub Copilot Business/Enterprise mit deaktivierter Code-Suggestion-
+  Telemetrie für sensitive Repositories (`github.copilot.advanced.
+  excludeFiles`); JetBrains AI Assistant mit `Send code data` deaktiviert
+  oder selbst-gehostetem LLM (Continue, OpenWebUI, LocalAI); VS Code
+  Telemetrie reduziert (`telemetry.telemetryLevel = "off"` oder `crash`);
+  Allgemeine IDE-Telemetrie per Enterprise-Policy abgeschaltet. Lokale
+  Code-Caches sind bekannt und gesichert: Speicherorte dokumentiert
+  (VS Code `~/.vscode/extensions/`, `~/Library/Application Support/Code/`;
+  JetBrains `~/.cache/JetBrains/`, `~/Library/Caches/JetBrains/`); Caches
+  liegen auf der verschlüsselten Festplatte; bei Geräte-Rückgabe oder
+  Personalwechsel Cache und IDE-Workspace-State per `IDE Reset`-Skript
+  gelöscht. SSH-Agent Forwarding nur restriktiv per
+  `~/.ssh/config Match` und `IdentityAgent`. Standardprofil als
+  `.editorconfig`, `.vscode/settings.json` (im Repository),
+  `.idea/codeStyles/` versioniert. Pre-Commit-Hooks (`husky`,
+  `pre-commit`) für Format/Lint vor jedem Commit. Referenzen: OWASP IDE
+  Security, NIST SP 800-218 PW.6.
+- **EN:** IDE plugins come from trusted sources (official marketplaces
+  with verified publishers: VS Code Marketplace, JetBrains Plugin
+  Repository, Visual Studio Marketplace, Eclipse Marketplace). Plugins
+  from unknown sources or with low download counts are forbidden; every
+  plugin undergoes security review (permissions, code signature,
+  maintainer reputation, OpenSSF Scorecard ≥ 7.0). Sandboxing for AI
+  plugins (Restricted Mode in VS Code:
+  `security.workspace.trust.enabled = true`). Telemetry and AI features
+  are configured per policy: GitHub Copilot Business/Enterprise with
+  disabled code-suggestion telemetry for sensitive repositories
+  (`github.copilot.advanced.excludeFiles`); JetBrains AI Assistant with
+  `Send code data` disabled or self-hosted LLM (Continue, OpenWebUI,
+  LocalAI); VS Code telemetry reduced (`telemetry.telemetryLevel = "off"`
+  or `crash`); general IDE telemetry disabled via enterprise policy.
+  Local code caches are known and protected: storage locations
+  documented (VS Code `~/.vscode/extensions/`, `~/Library/Application
+  Support/Code/`; JetBrains `~/.cache/JetBrains/`,
+  `~/Library/Caches/JetBrains/`); caches reside on the encrypted disk; on
+  device return or staff change, cache and IDE workspace state cleared
+  via `IDE Reset` script. SSH agent forwarding restrictively only via
+  `~/.ssh/config Match` and `IdentityAgent`. Standard profile versioned
+  as `.editorconfig`, `.vscode/settings.json` (in repository),
+  `.idea/codeStyles/`. Pre-commit hooks (`husky`, `pre-commit`) for
+  format/lint before each commit. References: OWASP IDE Security, NIST
+  SP 800-218 PW.6.
+- **Akzeptanz / Acceptance:** IDE-Standardprofil im Repository
+  (`.vscode/settings.json` oder `.idea/`); Plugin-Allowlist im MDM oder
+  zentral verwalteter Marketplace; Telemetrie- und KI-Konfiguration
+  dokumentiert; quartalsweiser Plugin-Audit. / IDE standard profile in
+  repository (`.vscode/settings.json` or `.idea/`); plugin allowlist in
+  MDM or centrally managed marketplace; telemetry and AI configuration
+  documented; quarterly plugin audit.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 4. Branch-Schutz / Branch Protection
+
+- **DE:** Schutzregeln für `main`/`master` (und Release-Branches) sind
+  aktiv: (1) Pull-Request-Pflicht (kein Direkt-Push, auch nicht für
+  Repository-Admins via `enforce_admins`); (2) mindestens 2 Code-Owner-
+  Reviews bei kritischen Repositories, mindestens 1 Review sonst; (3)
+  alle Status-Checks (CI, SAST, SCA, DAST, Tests) müssen grün sein
+  (`requires_status_checks` mit `strict: true` für Up-to-date-Branch);
+  (4) lineare Historie ohne Merge-Commits (`require_linear_history`);
+  (5) signierte Commits Pflicht (`required_signatures`); (6) Force-Push
+  und Branch-Löschung verboten (`allow_force_pushes: false`,
+  `allow_deletions: false`); (7) Konversations-Resolution Pflicht
+  (`required_conversation_resolution`); (8) Stale-Reviews werden bei
+  neuen Commits zurückgesetzt (`dismiss_stale_reviews`); (9) Review von
+  Nicht-Code-Owners zählt nicht (`require_code_owner_reviews`); (10)
+  Bypass nur für definierte Bot-Accounts (`bypass_pull_request_allowances`).
+  GitHub: Settings > Branches > Branch protection rules; per API
+  `gh api -X PUT repos/{owner}/{repo}/branches/main/protection` mit JSON-
+  Konfiguration. Git: Project > Settings > Repository > Protected
+  branches, plus Push Rules (`reject_unsigned_commits: true`,
+  `commit_message_regex`). Bitbucket: Repository settings > Branch
+  permissions. CODEOWNERS-Datei in `.github/CODEOWNERS` oder
+  `.git/CODEOWNERS` (z. B. `/security/ @security-team @ciso`).
+  Repository-Rulesets (GitHub Enterprise) für organisationsweite
+  Durchsetzung. Beispiel JSON für GitHub: `{ "required_pull_request_reviews":
+  { "required_approving_review_count": 2,
+  "require_code_owner_reviews": true,
+  "dismiss_stale_reviews": true }, "enforce_admins": true,
+  "required_linear_history": true, "required_signatures": true }`.
+  Referenzen: SLSA Source Track Level 3, OpenSSF Branch-Protection-Check,
+  NIST SP 800-218 PW.7.
+- **EN:** Protection rules for `main`/`master` (and release branches)
+  are active: (1) pull request required (no direct push, not even for
+  repository admins via `enforce_admins`); (2) at least 2 code-owner
+  reviews on critical repositories, at least 1 review otherwise; (3) all
+  status checks (CI, SAST, SCA, DAST, tests) must be green
+  (`requires_status_checks` with `strict: true` for up-to-date branch);
+  (4) linear history without merge commits
+  (`require_linear_history`); (5) signed commits mandatory
+  (`required_signatures`); (6) force-push and branch deletion forbidden
+  (`allow_force_pushes: false`, `allow_deletions: false`); (7)
+  conversation resolution required (`required_conversation_resolution`);
+  (8) stale reviews dismissed on new commits (`dismiss_stale_reviews`);
+  (9) review from non-code-owners does not count
+  (`require_code_owner_reviews`); (10) bypass only for defined bot
+  accounts (`bypass_pull_request_allowances`). GitHub: Settings >
+  Branches > Branch protection rules; via API `gh api -X PUT
+  repos/{owner}/{repo}/branches/main/protection` with JSON
+  configuration. Git: Project > Settings > Repository > Protected
+  branches, plus push rules (`reject_unsigned_commits: true`,
+  `commit_message_regex`). Bitbucket: Repository settings > Branch
+  permissions. CODEOWNERS file in `.github/CODEOWNERS` or
+  `.git/CODEOWNERS` (e.g. `/security/ @security-team @ciso`).
+  Repository rulesets (GitHub Enterprise) for organisation-wide
+  enforcement. Example JSON for GitHub: `{ "required_pull_request_reviews":
+  { "required_approving_review_count": 2,
+  "require_code_owner_reviews": true,
+  "dismiss_stale_reviews": true }, "enforce_admins": true,
+  "required_linear_history": true, "required_signatures": true }`.
+  References: SLSA Source Track Level 3, OpenSSF Branch-Protection
+  check, NIST SP 800-218 PW.7.
+- **Akzeptanz / Acceptance:** Schutzregeln per Plattform-Screenshot
+  oder API-Auszug (`gh api repos/.../branches/main/protection`) für
+  jedes geschützte Repository nachweisbar; alle 10 Schutzregeln aktiv;
+  CODEOWNERS-Datei vorhanden und aktuell. / Protection rules
+  evidenced via platform screenshot or API extract (`gh api
+  repos/.../branches/main/protection`) for every protected repository;
+  all 10 protection rules active; CODEOWNERS file present and
+  up to date.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 5. Signierte Commits / Signed Commits
+
+- **DE:** Commits werden mit GPG, S/MIME oder SSH signiert. Verifizierte
+  Commits sind als Branch-Schutz-Voraussetzung gesetzt
+  (`required_signatures: true`). SSH-Signaturen seit Git 2.34 bevorzugt
+  (einfacher als GPG, gleiche Hardware-Keys nutzbar). Konfiguration
+  Beispiele: GPG mit `gpg --full-generate-key` (Ed25519 oder RSA-4096),
+  `git config --global user.signingkey 0xKEYID`, `git config --global
+  commit.gpgsign true`, `git config --global tag.gpgsign true`; Public
+  Key auf GitHub/Git hochgeladen (Settings > SSH and GPG keys).
+  S/MIME mit X.509-Zertifikat, `git config --global gpg.format x509`,
+  `git config --global gpg.x509.program /usr/local/bin/smimesign`. SSH
+  mit Ed25519-Schlüssel, `git config --global gpg.format ssh`,
+  `git config --global user.signingkey ~/.ssh/id_ed25519.pub`,
+  `git config --global gpg.ssh.allowedSignersFile ~/.config/git/allowed_signers`;
+  Public Key in `allowed_signers`-Datei (`E-Mail ssh-ed25519 AAAA...`).
+  Hardware-Token (YubiKey) als Schlüsselträger: GPG mit `gpg --card-edit`
+  + `keytocard`; SSH mit `ssh-keygen -t ed25519-sk` (FIDO2-resident); per
+  Tap signieren. Mit Sigstore `gitsign` ist passwortlose, kurzlebige
+  OIDC-basierte Signatur möglich (keine lokalen Schlüssel) — empfohlen für
+  Cloud-CI. Tag-Signing für Releases zwingend (`git tag -s v1.0.0`).
+  Verifikation: `git log --show-signature`; GitHub-Badge `Verified` neben
+  Commit; Git-Badge `Verified` und `Signed by`. CI prüft Signaturen
+  zusätzlich (`git verify-commit HEAD`). Schlüssel-Rotation alle 24
+  Monate; abgelaufene Schlüssel werden in `revocation-list.md`
+  dokumentiert. Referenzen: SLSA Source Track Level 3, GitHub Commit
+  Signature Verification, BSI TR-03109.
+- **EN:** Commits are signed with GPG, S/MIME, or SSH. Verified commits
+  are required by branch protection (`required_signatures: true`). SSH
+  signatures preferred since Git 2.34 (simpler than GPG, can use same
+  hardware keys). Configuration examples: GPG with `gpg
+  --full-generate-key` (Ed25519 or RSA-4096), `git config --global
+  user.signingkey 0xKEYID`, `git config --global commit.gpgsign true`,
+  `git config --global tag.gpgsign true`; public key uploaded to
+  GitHub/Git (Settings > SSH and GPG keys). S/MIME with X.509
+  certificate, `git config --global gpg.format x509`, `git config
+  --global gpg.x509.program /usr/local/bin/smimesign`. SSH with Ed25519
+  key, `git config --global gpg.format ssh`, `git config --global
+  user.signingkey ~/.ssh/id_ed25519.pub`, `git config --global
+  gpg.ssh.allowedSignersFile ~/.config/git/allowed_signers`; public key
+  in `allowed_signers` file (`email ssh-ed25519 AAAA...`). Hardware
+  tokens (YubiKey) as key carrier: GPG with `gpg --card-edit` +
+  `keytocard`; SSH with `ssh-keygen -t ed25519-sk` (FIDO2 resident);
+  sign by tap. With Sigstore `gitsign`, passwordless short-lived
+  OIDC-based signing is possible (no local keys) — recommended for
+  cloud CI. Tag signing for releases mandatory (`git tag -s v1.0.0`).
+  Verification: `git log --show-signature`; GitHub `Verified` badge
+  next to commit; Git `Verified` and `Signed by` badges. CI
+  additionally verifies signatures (`git verify-commit HEAD`). Key
+  rotation every 24 months; expired keys documented in
+  `revocation-list.md`. References: SLSA Source Track Level 3, GitHub
+  Commit Signature Verification, BSI TR-03109.
+- **Akzeptanz / Acceptance:** Signaturen für ≥ 95 % der Commits in
+  geschützten Branches sichtbar (`Verified` Badge in der Plattform);
+  Branch-Schutz-Regel `required_signatures` aktiv; Schlüssel- und
+  Zertifikatsverwaltung dokumentiert. / Signatures visible for ≥ 95 %
+  of commits in protected branches (`Verified` badge in platform);
+  branch protection rule `required_signatures` active; key and
+  certificate management documented.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 6. Secret-Scanning vor Push / Secret Scanning Before Push
+
+- **DE:** Pre-Commit-, Pre-Push- und Server-Side-Hooks blockieren
+  Geheimnisse vor Veröffentlichung. Lokale Pre-Commit-Hooks per
+  `.pre-commit-config.yaml`: gitleaks, trufflehog, detect-secrets,
+  ggshield (GitGuardian). Beispiel: `repos: - repo: https://github.com/
+  gitleaks/gitleaks rev: v8.x hooks: - id: gitleaks - repo:
+  https://github.com/Yelp/detect-secrets rev: v1.5.0 hooks: - id:
+  detect-secrets args: ['--baseline', '.secrets.baseline']`. Server-Side:
+  GitHub Advanced Security (GHAS) Secret Scanning + Push Protection
+  (verhindert Push bekannter Secret-Patterns wie AWS Keys, GitHub PATs,
+  Stripe Keys, Slack Tokens — über 200 Provider unterstützt); Git
+  Secret Detection (Free) und Secret Push Protection (Ultimate);
+  Bitbucket Secret Scanning; Azure DevOps Credential Scanner.
+  Selbstgehostet: gitleaks im CI (`gitleaks detect --redact --report-format
+  sarif --report-path leaks.sarif`); trufflehog (`trufflehog filesystem
+  . --no-update --json`). Custom Patterns für interne Secrets
+  (`.gitleaks.toml`): `[[rules]] id = "gwdg-internal-token" regex =
+  '''gwdg_[a-z0-9]{32}'''`. Ausnahmen über `.gitleaksignore` mit Hash
+  und Begründung. Bei Treffer: sofortige Rotation des Geheimnisses,
+  History-Bereinigung mit `git filter-repo --replace-text` (nur nach
+  Team-Abstimmung, da Force-Push), Audit-Log-Prüfung,
+  Incident-Ticket. Pre-Push-Hook im Repository als ausführbare
+  Datei `.git/hooks/pre-push` mit Pattern-Check (siehe `home-baseline`-
+  Repository `scripts/hooks/pre-push`). Quartalsweiser Scan der
+  gesamten Git-Historie mit `gitleaks detect --log-opts="--all"`.
+  Referenzen: OWASP Secrets Management Cheat Sheet, NIST SP 800-218
+  PW.6.
+- **EN:** Pre-commit, pre-push, and server-side hooks block secrets
+  before publication. Local pre-commit hooks via
+  `.pre-commit-config.yaml`: gitleaks, trufflehog, detect-secrets,
+  ggshield (GitGuardian). Example: `repos: - repo: https://github.com/
+  gitleaks/gitleaks rev: v8.x hooks: - id: gitleaks - repo:
+  https://github.com/Yelp/detect-secrets rev: v1.5.0 hooks: - id:
+  detect-secrets args: ['--baseline', '.secrets.baseline']`. Server
+  side: GitHub Advanced Security (GHAS) Secret Scanning + Push
+  Protection (prevents push of known secret patterns like AWS keys,
+  GitHub PATs, Stripe keys, Slack tokens — over 200 providers
+  supported); Git Secret Detection (Free) and Secret Push Protection
+  (Ultimate); Bitbucket Secret Scanning; Azure DevOps Credential
+  Scanner. Self-hosted: gitleaks in CI (`gitleaks detect --redact
+  --report-format sarif --report-path leaks.sarif`); trufflehog
+  (`trufflehog filesystem . --no-update --json`). Custom patterns for
+  internal secrets (`.gitleaks.toml`): `[[rules]] id =
+  "gwdg-internal-token" regex = '''gwdg_[a-z0-9]{32}'''`. Exceptions
+  via `.gitleaksignore` with hash and justification. On hit:
+  immediate rotation of the secret, history cleanup with `git
+  filter-repo --replace-text` (only after team coordination, as it is
+  force-push), audit-log review, incident ticket. Pre-push hook in
+  repository as executable file `.git/hooks/pre-push` with pattern
+  check (see `home-baseline` repository `scripts/hooks/pre-push`).
+  Quarterly scan of entire git history with `gitleaks detect
+  --log-opts="--all"`. References: OWASP Secrets Management Cheat
+  Sheet, NIST SP 800-218 PW.6.
+- **Akzeptanz / Acceptance:** Hook-Skripte sichtbar im Repository
+  (`.pre-commit-config.yaml`, `.git/hooks/pre-push`); aktuelle
+  Scan-Logs (≤ 7 Tage); Server-Side Push Protection aktiv;
+  Vollhistorien-Scan vierteljährlich. / Hook scripts visible in
+  repository (`.pre-commit-config.yaml`, `.git/hooks/pre-push`);
+  current scan logs (≤ 7 days); server-side push protection
+  active; quarterly full-history scan.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 7. Geheimnis-Speicher / Secret Store
+
+- **DE:** Lokal werden Geheimnisse im System-Schlüsselspeicher gehalten:
+  macOS Keychain (`security add-generic-password -a $USER -s servicename
+  -w`); Windows Credential Manager (`cmdkey /add:server /user:user
+  /pass:secret`, PowerShell `Get-Credential` und `Export-Clixml`
+  benutzerverschlüsselt); Linux GNOME Keyring oder KDE KWallet via
+  `secret-tool` und `libsecret`; CLI-übergreifend `pass` (auf GPG-
+  Verschlüsselung) oder `keepassxc-cli`. Niemals in `.env`-Dateien
+  ungeschützt im Klartext (`.env` per `.gitignore` ausschließen, lokale
+  Dateien per Festplattenverschlüsselung schützen). Im Build dienen
+  Secret-Manager: HashiCorp Vault (Self-Hosted oder HCP) mit
+  AppRole/Kubernetes/JWT-Auth, Dynamic Secrets, Secret Engines
+  (KV-v2, PKI, Database, Transit); AWS Secrets Manager und AWS Systems
+  Manager Parameter Store mit IAM-Rollen; Azure Key Vault mit Managed
+  Identities; GCP Secret Manager mit Workload Identity Federation;
+  Kubernetes Secrets mit Sealed Secrets (Bitnami) oder External Secrets
+  Operator; SOPS (Mozilla) für GitOps mit AGE/PGP/KMS-Verschlüsselung
+  am Ruheort. CI/CD-Plattform-Secrets: GitHub Actions Encrypted Secrets
+  + Environment Secrets (mit Required Reviewers), GitHub OIDC für
+  passwortlosen Cloud-Zugriff (`permissions: id-token: write`); Git
+  CI/CD Variables (Masked + Protected + File-Type); Azure DevOps Variable
+  Groups + Azure Key Vault Integration; Jenkins Credentials Plugin mit
+  Vault-Plugin. Geheimnisse niemals in Logs (Maskierung erzwingen),
+  niemals als CLI-Argumente (`ps`-Liste sichtbar), nur per ENV oder
+  Pipe. Rotation: 90 Tage für statische Secrets, sofort bei
+  Personalwechsel. Referenzen: OWASP Secrets Management Cheat Sheet,
+  NIST SP 800-57, BSI TR-02102-2.
+- **EN:** Locally, secrets live in the system keystore: macOS Keychain
+  (`security add-generic-password -a $USER -s servicename -w`); Windows
+  Credential Manager (`cmdkey /add:server /user:user /pass:secret`,
+  PowerShell `Get-Credential` and `Export-Clixml` user-encrypted);
+  Linux GNOME Keyring or KDE KWallet via `secret-tool` and
+  `libsecret`; CLI-cross `pass` (on GPG encryption) or `keepassxc-cli`.
+  Never in `.env` files unprotected in plaintext (exclude `.env` via
+  `.gitignore`, protect local files via full-disk encryption). In CI/CD,
+  use secret managers: HashiCorp Vault (self-hosted or HCP) with
+  AppRole/Kubernetes/JWT auth, dynamic secrets, secret engines (KV-v2,
+  PKI, Database, Transit); AWS Secrets Manager and AWS Systems Manager
+  Parameter Store with IAM roles; Azure Key Vault with managed
+  identities; GCP Secret Manager with Workload Identity Federation;
+  Kubernetes Secrets with Sealed Secrets (Bitnami) or External Secrets
+  Operator; SOPS (Mozilla) for GitOps with AGE/PGP/KMS encryption at
+  rest. CI/CD platform secrets: GitHub Actions Encrypted Secrets +
+  Environment Secrets (with required reviewers), GitHub OIDC for
+  passwordless cloud access (`permissions: id-token: write`); Git
+  CI/CD variables (masked + protected + file-type); Azure DevOps
+  variable groups + Azure Key Vault integration; Jenkins Credentials
+  Plugin with Vault plugin. Secrets never in logs (enforce masking),
+  never as CLI arguments (visible in `ps` list), only via ENV or pipe.
+  Rotation: 90 days for static secrets, immediately on staff change.
+  References: OWASP Secrets Management Cheat Sheet, NIST SP 800-57,
+  BSI TR-02102-2.
+- **Akzeptanz / Acceptance:** Konfiguration je Umgebung in
+  `docs/security/secrets-architecture.md` dokumentiert (lokal:
+  Keychain/Credential Manager/Keyring; CI: Vault/KMS/Cloud Secret
+  Manager); kein Geheimnis in `.env`-Datei oder Quellcode; Rotation
+  alle 90 Tage. / Configuration per environment documented in
+  `docs/security/secrets-architecture.md` (local: Keychain/Credential
+  Manager/Keyring; CI: Vault/KMS/cloud secret manager); no secret in
+  `.env` file or source code; rotation every 90 days.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 8. CI/CD-Pipeline-Härtung / CI/CD Pipeline Hardening
+
+- **DE:** Pipelines laufen mit minimalen Rechten (Least Privilege) in
+  isolierten Runnern. GitHub Actions: Job-Level `permissions:` Block mit
+  `contents: read` als Default; nur explizit erweitern (z. B. `id-token:
+  write` für OIDC, `packages: write` für GHCR-Push). Git: Job-Level
+  `id_tokens:` und `secrets:` mit Vault-OIDC; Protected Branches und
+  Protected Variables. Isolierte Runner: ephemerale Single-Use-Runner pro
+  Job (GitHub Actions ARC mit Kubernetes, Git Auto-Scaling Runner mit
+  Docker-Machine), keine Shared State zwischen Jobs; bevorzugt Container-
+  Runner (Linux Container, Windows Container) statt Bare-Metal;
+  Confidential Computing für hochsensitive Builds. Reusable Workflows /
+  CI Components versioniert mit Tag oder Commit-SHA pinnen, niemals
+  `@main` oder `@latest` (`uses: org/repo/.github/workflows/build.yml@
+  abc123def`); GitHub Allowed Actions auf Allowlist beschränken (Settings >
+  Actions > General > Allow specified actions). Netzwerk-Egress
+  kontrolliert: Outbound-Firewall im Runner-VPC mit Allowlist (z. B.
+  Maven Central, npm Registry, GitHub-API, Cloud-APIs); ausgehende
+  Verbindungen zu unbekannten Hosts blockiert; Step Security Harden-
+  Runner Action (`step-security/harden-runner@v2 with: egress-policy:
+  audit` zum Lernen, dann `block`); StepSecurity oder Datadog für
+  Detection. Pipeline-Definitionen sind versioniert: `.github/workflows/`,
+  `.git-ci.yml`, `azure-pipelines.yml`, `Jenkinsfile` im Repository
+  unter Branch-Schutz; Änderungen per PR mit Code-Owner-Review;
+  CODEOWNERS für Pipeline-Dateien (`*.yml @devops-team`). Secrets-Zugriff
+  per OIDC-Federation (kein Long-Lived Cloud-Credential): GitHub OIDC zu
+  AWS IAM Role, Azure Federated Credentials, GCP Workload Identity. Build
+  Provenance (SLSA Build L3): `slsa-framework/slsa-github-generator` für
+  Attestations. Referenzen: SLSA Build Track L3, OpenSSF SCM Best
+  Practices, NIST SP 800-218 PO.5.
+- **EN:** Pipelines run with least privilege in isolated runners. GitHub
+  Actions: job-level `permissions:` block with `contents: read` as
+  default; only explicitly extend (e.g. `id-token: write` for OIDC,
+  `packages: write` for GHCR push). Git: job-level `id_tokens:` and
+  `secrets:` with Vault OIDC; protected branches and protected
+  variables. Isolated runners: ephemeral single-use runners per job
+  (GitHub Actions ARC with Kubernetes, Git auto-scaling runner with
+  Docker Machine), no shared state between jobs; prefer container
+  runners (Linux container, Windows container) over bare metal;
+  Confidential Computing for highly sensitive builds. Reusable
+  workflows / CI components versioned with tag or commit SHA pin,
+  never `@main` or `@latest` (`uses:
+  org/repo/.github/workflows/build.yml@abc123def`); GitHub Allowed
+  Actions restricted to allowlist (Settings > Actions > General > Allow
+  specified actions). Network egress controlled: outbound firewall in
+  runner VPC with allowlist (e.g. Maven Central, npm Registry, GitHub
+  API, cloud APIs); outbound connections to unknown hosts blocked; Step
+  Security Harden-Runner action (`step-security/harden-runner@v2 with:
+  egress-policy: audit` to learn, then `block`); StepSecurity or
+  Datadog for detection. Pipeline definitions are versioned:
+  `.github/workflows/`, `.git-ci.yml`, `azure-pipelines.yml`,
+  `Jenkinsfile` in repository under branch protection; changes via PR
+  with code-owner review; CODEOWNERS for pipeline files (`*.yml
+  @devops-team`). Secret access via OIDC federation (no long-lived
+  cloud credentials): GitHub OIDC to AWS IAM role, Azure federated
+  credentials, GCP Workload Identity. Build provenance (SLSA Build
+  L3): `slsa-framework/slsa-github-generator` for attestations.
+  References: SLSA Build Track L3, OpenSSF SCM best practices, NIST SP
+  800-218 PO.5.
+- **Akzeptanz / Acceptance:** Runner-Profile (ephemeral, isolated) und
+  Egress-Regeln (Allowlist) benannt; `permissions:` mit
+  Least-Privilege in jedem Job; OIDC-Federation für Cloud-Zugriff;
+  Pipeline-Dateien unter Branch-Schutz mit CODEOWNERS. / Runner
+  profiles (ephemeral, isolated) and egress rules (allowlist) named;
+  `permissions:` with least privilege in every job; OIDC federation
+  for cloud access; pipeline files under branch protection with
+  CODEOWNERS.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 9. Reproducible-CI / Reproducible CI
+
+- **DE:** Build- und Testumgebungen werden aus Container-Images oder
+  versionierten Konfigurationen aufgebaut. Container-Images mit Digest-
+  Pinning (`FROM ubuntu:22.04@sha256:abc123...`); Multi-Stage-Build für
+  schlanke Final-Images; Distroless-Images (`gcr.io/distroless/static-
+  debian12`) oder Chainguard Images für minimalen Angriffsfläche; OCI-
+  Image-Signatur mit cosign. Toolchain-Versionen versioniert in
+  `.tool-versions` (asdf), `mise.toml`, `.python-version`, `.nvmrc`,
+  `rust-toolchain.toml`, `go.mod` mit `go 1.22.x` Direktive. Devcontainer-
+  Definition (`.devcontainer/devcontainer.json`) für reproduzierbare
+  Entwicklungsumgebungen lokal und in Codespaces. Konfigurations-
+  Management (Infrastructure as Code): Terraform/OpenTofu mit State-
+  Locking, Pulumi, Ansible, Chef, Puppet — alle versioniert; `terraform
+  fmt` und `terraform validate` in CI; `tfsec`, `checkov`, `kics`,
+  `terrascan` als IaC-Security-Scanner. Drift wird erkannt: Terraform
+  `terraform plan` täglich gegen Live-State (`drift detection` in
+  Terraform Cloud, OpenTofu, Spacelift); AWS Config Rules; Azure Policy
+  Compliance; GCP Asset Inventory; Open Policy Agent (OPA) mit Conftest
+  für Policy-as-Code; HashiCorp Sentinel. Beispiel GitHub Action für
+  Drift Detection: `name: Drift Detection on: schedule: - cron: '0 6 *
+  * *'`. Reproducible Builds: deterministische Build-Ergebnisse durch
+  fixierte Toolchain, `SOURCE_DATE_EPOCH`, Verifikation mit
+  `diffoscope`. Referenzen: SLSA Build L3, NIST SP 800-218 PS.3, ISO/IEC
+  27001 A.8.32.
+- **EN:** Build and test environments come from container images or
+  versioned configurations. Container images with digest pinning
+  (`FROM ubuntu:22.04@sha256:abc123...`); multi-stage build for slim
+  final images; distroless images (`gcr.io/distroless/static-
+  debian12`) or Chainguard images for minimal attack surface; OCI
+  image signature with cosign. Toolchain versions versioned in
+  `.tool-versions` (asdf), `mise.toml`, `.python-version`, `.nvmrc`,
+  `rust-toolchain.toml`, `go.mod` with `go 1.22.x` directive.
+  Devcontainer definition (`.devcontainer/devcontainer.json`) for
+  reproducible development environments locally and in Codespaces.
+  Configuration management (Infrastructure as Code): Terraform/OpenTofu
+  with state locking, Pulumi, Ansible, Chef, Puppet — all versioned;
+  `terraform fmt` and `terraform validate` in CI; `tfsec`, `checkov`,
+  `kics`, `terrascan` as IaC security scanners. Drift detected:
+  Terraform `terraform plan` daily against live state (drift detection
+  in Terraform Cloud, OpenTofu, Spacelift); AWS Config Rules; Azure
+  Policy Compliance; GCP Asset Inventory; Open Policy Agent (OPA) with
+  Conftest for policy as code; HashiCorp Sentinel. Example GitHub
+  Action for drift detection: `name: Drift Detection on: schedule: -
+  cron: '0 6 * * *'`. Reproducible builds: deterministic build
+  results via fixed toolchain, `SOURCE_DATE_EPOCH`, verification with
+  `diffoscope`. References: SLSA Build L3, NIST SP 800-218 PS.3,
+  ISO/IEC 27001 A.8.32.
+- **Akzeptanz / Acceptance:** Container-Image-Tags mit Digest gepinnt;
+  IaC-Konfiguration unter Versionierung; tägliches Drift-Detection-
+  Job mit Report; reproducible-build-fähige Toolchain-Pinning. /
+  Container image tags pinned with digest; IaC configuration under
+  version control; daily drift-detection job with report; reproducible-
+  build capable toolchain pinning.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 10. Trennung der Umgebungen / Environment Separation
+
+- **DE:** Entwicklung, Test, Vorabnahme und Produktion sind in allen
+  Dimensionen getrennt: (1) Daten — separate Datenbanken, kein Prod-Daten
+  in Dev/Test (siehe Item 11); (2) Berechtigungen — eigene Identity-
+  Provider-Gruppen, RBAC-Rollen pro Stage, JIT-Access (Just-in-Time) für
+  Production; (3) Netzwerke — getrennte VPCs/VNets/Projects mit Network
+  Policies, keine direkte Konnektivität; (4) Cloud-Konten — separate AWS
+  Accounts (AWS Organizations OU pro Stage), Azure Subscriptions, GCP
+  Projects; (5) DNS und Endpoints — getrennte Domains
+  (`dev.example.com`, `staging.example.com`, `example.com`); (6) Secrets
+  — eigene Vault-Mounts oder Key Vaults pro Stage; (7) Build-Artefakte
+  — getrennte Container-Registries oder Pfade (`registry.example.com/
+  dev/`, `staging/`, `prod/`). Promotion-Prozess: Artefakte werden vom
+  Test über Staging zu Production befördert (kein Re-Build), digital
+  signiert und attestiert (cosign + SLSA Provenance). Manuelle Approval-
+  Gates für Production-Deployment (GitHub Environments mit Required
+  Reviewers; Git Manual Jobs; Argo CD Sync Policies). Production-
+  Zugang nur per PIM (Privileged Identity Management) mit zeitlich
+  begrenzter Eskalation und Begründung. Beispielarchitektur: Dev-VPC
+  10.10.0.0/16, Staging-VPC 10.20.0.0/16, Prod-VPC 10.30.0.0/16; keine
+  VPC-Peering zwischen Dev und Prod. Audit-Trail aller Stage-Übergänge.
+  Referenzen: NIST SP 800-218 PO.5, ISO/IEC 27001 A.8.31, ENISA Cloud
+  Security Guide.
+- **EN:** Development, test, staging, and production are separated in
+  all dimensions: (1) data — separate databases, no prod data in
+  dev/test (see Item 11); (2) permissions — separate identity provider
+  groups, RBAC roles per stage, JIT (Just-in-Time) access for
+  production; (3) networks — separate VPCs/VNets/projects with network
+  policies, no direct connectivity; (4) cloud accounts — separate AWS
+  accounts (AWS Organizations OU per stage), Azure subscriptions, GCP
+  projects; (5) DNS and endpoints — separate domains
+  (`dev.example.com`, `staging.example.com`, `example.com`); (6)
+  secrets — separate Vault mounts or Key Vaults per stage; (7) build
+  artefacts — separate container registries or paths
+  (`registry.example.com/dev/`, `staging/`, `prod/`). Promotion process:
+  artefacts promoted from test through staging to production (no
+  rebuild), digitally signed and attested (cosign + SLSA provenance).
+  Manual approval gates for production deployment (GitHub Environments
+  with required reviewers; Git manual jobs; Argo CD sync policies).
+  Production access only via PIM (Privileged Identity Management) with
+  time-limited elevation and justification. Example architecture: Dev
+  VPC 10.10.0.0/16, Staging VPC 10.20.0.0/16, Prod VPC 10.30.0.0/16; no
+  VPC peering between dev and prod. Audit trail of all stage
+  transitions. References: NIST SP 800-218 PO.5, ISO/IEC 27001 A.8.31,
+  ENISA Cloud Security Guide.
+- **Akzeptanz / Acceptance:** Trennung im Architekturbild
+  (`docs/architecture/environments.md`) beschrieben mit Diagramm
+  (Mermaid oder C4); separate Cloud-Konten/VPCs/Identity-Gruppen pro
+  Stage; Manual Approval Gate für Production-Deployment; Audit-Trail
+  aller Promotions. / Separation described in architecture diagram
+  (`docs/architecture/environments.md`) with diagram (Mermaid or C4);
+  separate cloud accounts/VPCs/identity groups per stage; manual
+  approval gate for production deployment; audit trail of all
+  promotions.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 11. Schutz von Testdaten / Test Data Protection
+
+- **DE:** Echtdaten (insbesondere personenbezogene Daten gemäß DSGVO Art.
+  4 Nr. 1, Gesundheitsdaten, Finanzdaten) werden in Test- und
+  Entwicklungsumgebungen nur in anonymisierter (DSGVO ErwGr. 26) oder
+  pseudonymisierter Form verwendet. Anonymisierungstechniken:
+  Generalisation (z. B. Geburtsjahr statt -datum), Suppression (Löschen
+  einzelner Werte), k-Anonymität, l-Diversität, t-Closeness,
+  Differential Privacy. Pseudonymisierung mit kryptografischem Hash
+  (HMAC-SHA-256 mit Schlüssel im Vault), Tokenisierung, Format-
+  Preserving Encryption (FPE-FF1/FF3 nach NIST SP 800-38G). Synthetische
+  Testdaten bevorzugt — Tools: Faker (Python `faker`, JS `@faker-js/
+  faker`, Java `datafaker`, .NET `Bogus`); Mockaroo (web); Synthea
+  (Healthcare-Daten); GAN-basierte Synthese (Gretel.ai, MOSTLY AI,
+  YData) für statistisch repräsentative Synthese; SDV (Synthetic Data
+  Vault). Datenmaskierung beim Daten-Refresh aus Production: Delphix,
+  Informatica TDM, IBM InfoSphere Optim, Open-Source `pgmasker` für
+  PostgreSQL, `mysql_masking` für MariaDB. DSGVO-Compliance:
+  Auftragsverarbeitungsvertrag (AV-Vertrag) bei externen Tools;
+  Verarbeitungsverzeichnis nach Art. 30; Löschkonzept gemäß Art. 17;
+  Datenschutz-Folgenabschätzung (DSFA) nach Art. 35 für hochriskante
+  Verarbeitungen. Verfahren dokumentiert in
+  `docs/security/test-data-policy.md` mit Datenklassifikation, Maskie-
+  rungsregel pro Tabelle/Feld, Refresh-Frequenz, Verantwortlichen.
+  Audit-Trail jedes Refreshs. Bei Verstoß sofortige Eskalation an DSB
+  und Incident Response. Referenzen: DSGVO Art. 4, 25, 32, 35; ISO/IEC
+  27018; ENISA Pseudonymisation Techniques and Best Practices; BSI TR-
+  03161.
+- **EN:** Real data (especially personal data per GDPR Art. 4(1),
+  health data, financial data) is used in test and development
+  environments only in anonymised (GDPR Recital 26) or pseudonymised
+  form. Anonymisation techniques: generalisation (e.g. birth year
+  instead of date), suppression (deletion of individual values),
+  k-anonymity, l-diversity, t-closeness, differential privacy.
+  Pseudonymisation with cryptographic hash (HMAC-SHA-256 with key in
+  vault), tokenisation, format-preserving encryption (FPE-FF1/FF3 per
+  NIST SP 800-38G). Synthetic test data preferred — tools: Faker
+  (Python `faker`, JS `@faker-js/faker`, Java `datafaker`, .NET
+  `Bogus`); Mockaroo (web); Synthea (healthcare data); GAN-based
+  synthesis (Gretel.ai, MOSTLY AI, YData) for statistically
+  representative synthesis; SDV (Synthetic Data Vault). Data masking on
+  data refresh from production: Delphix, Informatica TDM, IBM
+  InfoSphere Optim, open-source `pgmasker` for PostgreSQL,
+  `mysql_masking` for MariaDB. GDPR compliance: data processing
+  agreement (DPA) with external tools; processing register per Art. 30;
+  deletion concept per Art. 17; data protection impact assessment
+  (DPIA) per Art. 35 for high-risk processing. Procedure documented in
+  `docs/security/test-data-policy.md` with data classification, masking
+  rule per table/field, refresh frequency, owner. Audit trail of every
+  refresh. On violation: immediate escalation to DPO and incident
+  response. References: GDPR Art. 4, 25, 32, 35; ISO/IEC 27018; ENISA
+  Pseudonymisation Techniques and Best Practices; BSI TR-03161.
+- **Akzeptanz / Acceptance:** `docs/security/test-data-policy.md` mit
+  Maskierungsregel pro Tabelle und Feld; synthetische oder
+  anonymisierte Testdaten in Dev/Test; AV-Vertrag und DSFA bei
+  Bedarf; jährliche Wirksamkeitsprüfung. /
+  `docs/security/test-data-policy.md` with masking rule per table and
+  field; synthetic or anonymised test data in dev/test; DPA and DPIA
+  where applicable; annual effectiveness review.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 12. Audit-Logs der Plattform / Platform Audit Logs
+
+- **DE:** Quellcode-Plattform, Build-System und Cloud erzeugen Audit-
+  Logs für alle sicherheitsrelevanten Ereignisse: Anmeldungen, Repo-
+  Zugriffe, Permission-Änderungen, Branch-Schutz-Bypass, Secret-Zugriffe,
+  Pipeline-Ausführungen, Cloud-API-Calls, IAM-Änderungen.
+  Plattform-Quellen: GitHub Audit Log (Org Settings > Audit Log; per API
+  `gh api orgs/{org}/audit-log`); GitHub Enterprise Cloud `audit_log_api`
+  Streaming nach Splunk/Datadog/Azure Monitor/AWS S3; Git Audit
+  Events (`Admin > Monitoring > Audit Events`, API
+  `/api/v4/audit_events`); Bitbucket Cloud Audit Logs; Azure DevOps
+  Auditing (Project Settings > Auditing); AWS CloudTrail (Multi-Region
+  Trail mit S3-Zielort, KMS-Verschlüsselung, Log File Validation aktiv);
+  Azure Monitor / Log Analytics + Microsoft Sentinel; GCP Cloud Audit
+  Logs (Admin Activity, Data Access, System Event, Policy Denied).
+  Zentralisierung: SIEM-Integration (Splunk Enterprise Security,
+  Microsoft Sentinel, IBM QRadar, Elastic Security, Sumo Logic) mit
+  korrelations-Regeln für Anomalie-Erkennung. Schutz gegen Änderung:
+  Write-Once-Read-Many (WORM) Storage — AWS S3 Object Lock im
+  Compliance-Mode (kann auch Root nicht löschen) für ≥ 1 Jahr; Azure Blob
+  Immutable Storage; GCP Bucket Lock; Hash-Chain mit täglichem Anchoring
+  in TSA (Time-Stamping Authority); Kryptografische Signatur jedes Logs
+  mit Vault Transit Engine. Aufbewahrung: ≥ 1 Jahr operativ, 10 Jahre
+  für CRA-relevante Vorfälle (CRA Art. 14), 6 Jahre für DSGVO-relevante
+  Verarbeitungen, 10 Jahre für SOX-Pflichten falls anwendbar. Zugriff
+  per Need-to-Know; Audit-Log-Zugriff selbst geloggt
+  (Meta-Audit). Beispiel CloudTrail-Konfiguration: `{ "IsMultiRegionTrail":
+  true, "IncludeGlobalServiceEvents": true, "EnableLogFileValidation":
+  true, "KmsKeyId": "..." }`. Referenzen: NIST SP 800-92, ISO/IEC 27001
+  A.8.15, A.8.34, BSI IT-Grundschutz OPS.1.1.5, CRA Art. 14.
+- **EN:** Source platform, build system, and cloud produce audit logs
+  for all security-relevant events: logins, repo access, permission
+  changes, branch protection bypass, secret access, pipeline
+  executions, cloud API calls, IAM changes. Platform sources: GitHub
+  Audit Log (Org Settings > Audit Log; via API `gh api
+  orgs/{org}/audit-log`); GitHub Enterprise Cloud `audit_log_api`
+  streaming to Splunk/Datadog/Azure Monitor/AWS S3; Git Audit Events
+  (`Admin > Monitoring > Audit Events`, API `/api/v4/audit_events`);
+  Bitbucket Cloud audit logs; Azure DevOps auditing (Project Settings
+  > Auditing); AWS CloudTrail (multi-region trail with S3 target, KMS
+  encryption, log file validation active); Azure Monitor / Log
+  Analytics + Microsoft Sentinel; GCP Cloud Audit Logs (Admin Activity,
+  Data Access, System Event, Policy Denied). Centralisation: SIEM
+  integration (Splunk Enterprise Security, Microsoft Sentinel, IBM
+  QRadar, Elastic Security, Sumo Logic) with correlation rules for
+  anomaly detection. Protection against modification: Write-Once-Read-
+  Many (WORM) storage — AWS S3 Object Lock in compliance mode (cannot
+  even be deleted by root) for ≥ 1 year; Azure Blob Immutable Storage;
+  GCP Bucket Lock; hash chain with daily anchoring in TSA (Time-
+  Stamping Authority); cryptographic signature of every log with Vault
+  Transit engine. Retention: ≥ 1 year operational, 10 years for
+  CRA-relevant incidents (CRA Art. 14), 6 years for GDPR-relevant
+  processing, 10 years for SOX duties if applicable. Access on
+  need-to-know basis; access to audit log itself logged (meta-audit).
+  Example CloudTrail configuration: `{ "IsMultiRegionTrail": true,
+  "IncludeGlobalServiceEvents": true, "EnableLogFileValidation": true,
+  "KmsKeyId": "..." }`. References: NIST SP 800-92, ISO/IEC 27001
+  A.8.15, A.8.34, BSI IT-Grundschutz OPS.1.1.5, CRA Art. 14.
+- **Akzeptanz / Acceptance:** Aufbewahrungsfrist (≥ 1 Jahr operativ,
+  10 Jahre CRA) und Schutzmaßnahme (WORM, Object Lock, Hash-Chain)
+  in `docs/security/audit-log-retention.md` benannt; SIEM-Integration
+  aktiv; Zugriff geloggt; jährliche Integritätsprüfung. / Retention
+  period (≥ 1 year operational, 10 years CRA) and protection measure
+  (WORM, Object Lock, hash chain) named in
+  `docs/security/audit-log-retention.md`; SIEM integration active;
+  access logged; annual integrity check.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 13. Zugriffsrezertifizierung / Access Recertification
+
+- **DE:** Mindestens halbjährlich werden Zugriffe auf Repositories,
+  Build-Systeme, Secret-Stores, Cloud-Konten und Produktivumgebungen
+  überprüft (Access Recertification, User Access Review nach ISO/IEC
+  27001 A.5.18). Trigger für ad-hoc-Rezertifizierung: Personalwechsel,
+  Rollenwechsel, Sicherheitsvorfall, M&A, Audit-Befund. Verfahren: (1)
+  IAM-System exportiert je User: Repository-Berechtigung, Build-System-
+  Rolle, Vault-Policy, Cloud-IAM-Rolle, Group-Mitgliedschaft; (2)
+  Manager bestätigt oder widerruft je Zugriff (`grant`/`revoke`); (3)
+  inaktive Konten (kein Login ≥ 90 Tage) automatisch deaktiviert; (4)
+  verwaiste Konten (z. B. ausgeschiedener Mitarbeiter) sofort entfernt;
+  (5) Service-Account-Credentials rotiert und Begründung dokumentiert;
+  (6) Bericht an Security Lead mit Übersicht Granted/Revoked/Pending/Expired.
+  Tools: Microsoft Entra ID Access Reviews (Quartalsweise konfigurierbar
+  mit Self-Review oder Manager-Review); Okta Lifecycle Management +
+  Access Certification; SailPoint IdentityNow; ServiceNow GRC; Saviynt;
+  HashiCorp Vault `vault token list` + `vault list auth/`; AWS IAM
+  Access Analyzer Last-Accessed; Azure RBAC Activity-Log-Analyse; GitHub
+  Audit-Log für inaktive Mitglieder; Git Inactive User Cleanup.
+  Automatische Deprovisionierung bei HR-Workflow-Trigger (Workday,
+  SAP SuccessFactors → SCIM → Okta/Entra ID). Beispiel-Skript: `az ad
+  user list --query "[?accountEnabled && signInActivity.lastSignInDateTime
+  < '2025-12-01']"`. Privileged-Access-Reviews (Admins, Production-
+  Deploy, Secret-Rotate) monatlich oder bei jeder PIM-Eskalation.
+  Referenzen: ISO/IEC 27001 A.5.18, NIST SP 800-53 AC-2, BSI ORP.4,
+  SOX Sec. 404.
+- **EN:** At least every six months, access to repositories, build
+  systems, secret stores, cloud accounts, and production environments
+  is reviewed (access recertification, user access review per ISO/IEC
+  27001 A.5.18). Triggers for ad-hoc recertification: staff change,
+  role change, security incident, M&A, audit finding. Procedure: (1)
+  IAM system exports per user: repository permission, build system
+  role, Vault policy, cloud IAM role, group membership; (2) manager
+  confirms or revokes each access (`grant`/`revoke`); (3) inactive
+  accounts (no login ≥ 90 days) automatically disabled; (4) orphaned
+  accounts (e.g. departed employee) removed immediately; (5)
+  service-account credentials rotated and justification documented;
+  (6) report to Security Lead with overview granted/revoked/pending/expired.
+  Tools: Microsoft Entra ID Access Reviews (quarterly configurable
+  with self-review or manager review); Okta Lifecycle Management +
+  Access Certification; SailPoint IdentityNow; ServiceNow GRC;
+  Saviynt; HashiCorp Vault `vault token list` + `vault list auth/`;
+  AWS IAM Access Analyzer last-accessed; Azure RBAC activity log
+  analysis; GitHub audit log for inactive members; Git Inactive
+  User Cleanup. Automatic deprovisioning on HR workflow trigger
+  (Workday, SAP SuccessFactors → SCIM → Okta/Entra ID). Example
+  script: `az ad user list --query "[?accountEnabled &&
+  signInActivity.lastSignInDateTime < '2025-12-01']"`. Privileged
+  access reviews (admins, production deploy, secret rotate) monthly
+  or on every PIM elevation. References: ISO/IEC 27001 A.5.18, NIST SP
+  800-53 AC-2, BSI ORP.4, SOX Sec. 404.
+- **Akzeptanz / Acceptance:** Letzter Rezertifizierungsbericht ≤ 6
+  Monate alt, mit Übersicht aller Plattformen, Granted/Revoked-Anzahl
+  und Security-Sign-off; automatische Deaktivierung inaktiver Konten;
+  Privileged-Access monatlich. / Last recertification report ≤ 6
+  months old, with overview of all platforms, granted/revoked count,
+  and security sign-off; automatic deactivation of inactive accounts;
+  privileged access monthly.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 14. Endpoint-Schutz / Endpoint Protection
+
+- **DE:** Entwickler-Geräte haben aktuelle OS- und Anwendungs-Patches
+  (kritische Patches innerhalb 7 Tagen, hohe innerhalb 30 Tagen
+  installiert; Auto-Update aktiviert wo möglich), aktive Endpoint-
+  Sicherheitslösungen (Endpoint Detection and Response, EDR — Microsoft
+  Defender for Endpoint, CrowdStrike Falcon, SentinelOne, Sophos
+  Intercept X, Trend Micro Apex One; mit Tamper-Protection,
+  Echtzeit-Scanning, Cloud-Lookup); aktive Host-Firewall (macOS Application
+  Firewall + pf, Windows Defender Firewall, Linux nftables/ufw); aktive
+  DNS-Filter (Cisco Umbrella, Cloudflare for Teams, Quad9); USB-Storage-
+  Restriktion per MDM. Mobile Device Management (MDM) mit Compliance-
+  Policies: Microsoft Intune, Jamf Pro, Workspace ONE, Kandji, Mosyle.
+  Konformitätsregeln: OS-Version min., Festplattenverschlüsselung,
+  Bildschirmsperre, Patch-Level, EDR aktiv, kein Jailbreak/Root.
+  Conditional Access (Entra ID): Geräte ohne Konformität dürfen nicht
+  auf Source-Code-Plattform oder Cloud zugreifen. Zentrales Inventar
+  per CMDB (Microsoft Configuration Manager, Jamf, ServiceNow CMDB,
+  Snipe-IT, Ralph) mit Felder: Gerätetyp, Seriennummer, Hostname,
+  Eigentümer, OS-Version, EDR-Status, Verschlüsselungsstatus, Patch-
+  Datum, Garantieende. Asset-Inventar gemäß ISO/IEC 27001 A.5.9.
+  Regelmäßige Schwachstellen-Scans (z. B. Tenable Nessus,
+  Qualys VMDR, Microsoft Defender Vulnerability Management, Rapid7
+  InsightVM) für Endpoints. Bei Geräteverlust/-diebstahl Remote Wipe
+  per MDM (`Microsoft Endpoint Manager > Devices > Remote actions >
+  Wipe`); Offboarding-Prozess mit Geräterückgabe und Wipe-Bestätigung.
+  Patch-Reporting per WSUS, Microsoft Endpoint Manager, Jamf, AWS
+  Systems Manager Patch Manager, Ansible. Referenzen: NIST SP 800-128,
+  ISO/IEC 27001 A.5.9, A.8.7, A.8.8, BSI IT-Grundschutz SYS.1.1, SYS.2.1.
+- **EN:** Developer devices have current OS and application patches
+  (critical patches installed within 7 days, high within 30 days;
+  auto-update enabled where possible), active endpoint security
+  solutions (Endpoint Detection and Response, EDR — Microsoft Defender
+  for Endpoint, CrowdStrike Falcon, SentinelOne, Sophos Intercept X,
+  Trend Micro Apex One; with tamper protection, real-time scanning,
+  cloud lookup); active host firewall (macOS Application Firewall + pf,
+  Windows Defender Firewall, Linux nftables/ufw); active DNS filter
+  (Cisco Umbrella, Cloudflare for Teams, Quad9); USB storage
+  restriction via MDM. Mobile Device Management (MDM) with compliance
+  policies: Microsoft Intune, Jamf Pro, Workspace ONE, Kandji, Mosyle.
+  Compliance rules: minimum OS version, full-disk encryption, screen
+  lock, patch level, EDR active, no jailbreak/root. Conditional Access
+  (Entra ID): non-compliant devices may not access source platform or
+  cloud. Central inventory via CMDB (Microsoft Configuration Manager,
+  Jamf, ServiceNow CMDB, Snipe-IT, Ralph) with fields: device type,
+  serial number, hostname, owner, OS version, EDR status, encryption
+  status, patch date, warranty end. Asset inventory per ISO/IEC 27001
+  A.5.9. Regular vulnerability scans (e.g. Tenable Nessus, Qualys
+  VMDR, Microsoft Defender Vulnerability Management, Rapid7 InsightVM)
+  for endpoints. On device loss/theft remote wipe via MDM (`Microsoft
+  Endpoint Manager > Devices > Remote actions > Wipe`); offboarding
+  process with device return and wipe confirmation. Patch reporting
+  via WSUS, Microsoft Endpoint Manager, Jamf, AWS Systems Manager
+  Patch Manager, Ansible. References: NIST SP 800-128, ISO/IEC 27001
+  A.5.9, A.8.7, A.8.8, BSI IT-Grundschutz SYS.1.1, SYS.2.1.
+- **Akzeptanz / Acceptance:** CMDB-Inventar-Auszug mit allen
+  Entwickler-Geräten und Status-Feldern; ≥ 95 % Compliance-Quote;
+  Patch-SLA: kritisch ≤ 7 Tage, hoch ≤ 30 Tage; EDR aktiv auf 100 %
+  der Endpunkte. / CMDB inventory extract with all developer devices
+  and status fields; ≥ 95 % compliance rate; patch SLA: critical
+  ≤ 7 days, high ≤ 30 days; EDR active on 100 % of endpoints.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 15. Datensicherung und Wiederherstellung / Backup and Recovery
+
+- **DE:** Quellcode, Konfiguration (IaC, Pipeline-Definitionen,
+  Secret-Schemata), Build-Artefakte (Container-Images, Binaries),
+  CI/CD-Konfiguration, Vault-Snapshots und Datenbank-Schemata werden
+  regelmäßig gesichert nach 3-2-1-Regel (3 Kopien, 2 Medien, 1 offsite).
+  Backup-Quellen: GitHub-Repos per `gh repo clone --bare` oder
+  GitHub Backup (Backblaze, Rewind, BackHub); Git Backup
+  (`git-backup create` oder Geo-Replikation für Self-Hosted);
+  Bitbucket Backup; Azure DevOps mit Continuous Export; Container-
+  Registries (ECR, GCR, ACR, GHCR) per `crane` oder `skopeo` Mirror in
+  Cold-Storage; Vault per `vault operator raft snapshot save`; Cloud
+  Resources per Terraform-State (verschlüsselt im Backend mit
+  Versionierung) und Backup-Tools (AWS Backup, Azure Backup, Velero
+  für Kubernetes). Backup-Storage: verschlüsselt am Ruheort
+  (AES-256 mit eigenem KMS-Key), separater Cloud-Account/Region für
+  Offsite; Object Lock / Immutable Storage gegen Ransomware; Versionierung
+  und Versions-Aufbewahrung 90 Tage täglich, 12 Monate monatlich, 7
+  Jahre jährlich. Wiederherstellungs-Ziele: RTO (Recovery Time
+  Objective) Quellcode 4 Stunden, Build-System 8 Stunden, Cloud-
+  Infrastruktur 24 Stunden; RPO (Recovery Point Objective) Quellcode
+  1 Stunde, Build-Artefakte 24 Stunden. Wiederherstellungstests
+  mindestens jährlich (besser quartalsweise) per Game-Day: vollständige
+  Wiederherstellung in isolierter Umgebung, dokumentiert mit Start-/End-
+  Zeit, Vollständigkeitsprüfung, Hash-Vergleich, RTO/RPO-Validierung.
+  Beispiel-Skript: `gh repo list org --json name --jq '.[].name' |
+  xargs -I {} gh repo clone org/{} --mirror`. Disaster-Recovery-Plan
+  in `docs/security/disaster-recovery.md` mit Runbook, Verantwortlichen,
+  Eskalationskette. Tests dokumentieren Lessons Learned. Referenzen:
+  ISO/IEC 27001 A.8.13, NIST SP 800-34, BSI IT-Grundschutz CON.3
+  (Datensicherungskonzept), CRA Anhang I Teil II 2.1 lit. b.
+- **EN:** Source code, configuration (IaC, pipeline definitions,
+  secret schemas), build artefacts (container images, binaries),
+  CI/CD configuration, Vault snapshots, and database schemas are
+  regularly backed up following the 3-2-1 rule (3 copies, 2 media,
+  1 offsite). Backup sources: GitHub repos via `gh repo clone --bare`
+  or GitHub Backup (Backblaze, Rewind, BackHub); Git Backup
+  (`git-backup create` or Geo replication for self-hosted);
+  Bitbucket Backup; Azure DevOps with continuous export; container
+  registries (ECR, GCR, ACR, GHCR) via `crane` or `skopeo` mirror to
+  cold storage; Vault via `vault operator raft snapshot save`; cloud
+  resources via Terraform state (encrypted in backend with versioning)
+  and backup tools (AWS Backup, Azure Backup, Velero for Kubernetes).
+  Backup storage: encrypted at rest (AES-256 with own KMS key),
+  separate cloud account/region for offsite; Object Lock / immutable
+  storage against ransomware; versioning and version retention 90 days
+  daily, 12 months monthly, 7 years yearly. Recovery objectives: RTO
+  (Recovery Time Objective) source code 4 hours, build system 8 hours,
+  cloud infrastructure 24 hours; RPO (Recovery Point Objective) source
+  code 1 hour, build artefacts 24 hours. Recovery tests at least
+  yearly (better quarterly) via game day: full restore in isolated
+  environment, documented with start/end time, completeness check,
+  hash comparison, RTO/RPO validation. Example script: `gh repo list
+  org --json name --jq '.[].name' | xargs -I {} gh repo clone org/{}
+  --mirror`. Disaster recovery plan in
+  `docs/security/disaster-recovery.md` with runbook, owners, escalation
+  chain. Tests document lessons learned. References: ISO/IEC 27001
+  A.8.13, NIST SP 800-34, BSI IT-Grundschutz CON.3 (Backup concept),
+  CRA Annex I Part II 2.1 lit. b.
+- **Akzeptanz / Acceptance:** Letzter erfolgreicher
+  Wiederherstellungstest ≤ 12 Monate alt, mit Datum, Umfang,
+  Erfolgskriterien und Lessons Learned in
+  `docs/security/disaster-recovery-tests.md`; 3-2-1-Backup-Strategie
+  aktiv; RTO/RPO-Werte definiert. / Last successful recovery test
+  ≤ 12 months old, with date, scope, success criteria, and lessons
+  learned in `docs/security/disaster-recovery-tests.md`; 3-2-1 backup
+  strategy active; RTO/RPO values defined.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 16. Schulung / Training
+
+- **DE:** Alle Entwickler erhalten regelmäßig verpflichtende Schulungen
+  zu sicherer Entwicklung und sicherem Umgang mit der Toolchain.
+  Pflicht-Themen: Secure Coding (OWASP Top 10 2021, CWE Top 25,
+  sprachspezifische Sicherheitspraktiken: Java/Spring Security,
+  C#/.NET, Python/PyCA, Go, JavaScript/TypeScript), Threat Modeling
+  (STRIDE-Methodik, Microsoft Threat Modeling Tool, OWASP Threat Dragon,
+  IriusRisk), Datenschutz (DSGVO Art. 25 „Privacy by Design", Art. 32
+  technische und organisatorische Maßnahmen, Datenschutz-Folgenabschätzung
+  Art. 35), CRA-Bewusstsein (Verordnung (EU) 2024/2847, Hersteller-Pflichten
+  Art. 13/14, Konformitätsbewertung Module A/B+C/H, Schwachstellenmeldung
+  binnen 24 h Art. 14(2)), Geheimnis-Hygiene (Pre-Commit-Hooks gitleaks,
+  GitHub Push Protection, Secret Manager Vault/AWS Secrets Manager/Azure
+  Key Vault), Social Engineering und Phishing (Vishing, Smishing, Spear
+  Phishing, Business Email Compromise, KnowBe4-Simulationen mindestens
+  vierteljährlich), Supply-Chain-Sicherheit (typosquatting, dependency
+  confusion, SLSA-Levels, SBOM CycloneDX/SPDX, signierte Commits, Sigstore
+  cosign), IDE- und KI-Tool-Sicherheit (GitHub Copilot Business
+  `excludeFiles`, JetBrains AI Telemetrie, Plugin-Risiken), sichere
+  Konfiguration und Härtung. Schulungsformate: verpflichtendes
+  Onboarding-Sicherheitstraining vor erstem Repository-Zugriff (4 h),
+  jährliche Auffrischung (mindestens 2 h, dokumentiert), Just-in-Time
+  Mikro-Trainings (5–15 min Videos zu aktuellen Vorfällen, neuen CVEs,
+  Tool-Updates), Capture-the-Flag-Übungen (CTF, mindestens halbjährlich),
+  Tabletop-Übungen mit Incident-Response-Team (Ransomware-, Lieferketten-,
+  Insider-Bedrohungs-Szenarien). Schulungs-Plattformen: SecureFlag, Kontra
+  Application Security, Avatao, Hack The Box, OWASP WebGoat, OWASP Juice
+  Shop, PortSwigger Web Security Academy, eigene Inhalte in LMS (Moodle,
+  TalentLMS, SAP SuccessFactors Learning, Cornerstone OnDemand, Workday
+  Learning). Empfohlene Zertifizierungen je Rolle: ISC2 SSCP/CSSLP, OffSec
+  OSCP/OSWE, GIAC GSSP-JAVA/.NET/PYTHON, iSAQB CPSA-A, CompTIA Security+/
+  CySA+, ISC2 CISSP für Architekten, Certified Ethical Hacker (CEH),
+  Microsoft SC-100 Cybersecurity Architect Expert. Schulungs-Matrix je
+  Rolle: Junior Developer (Onboarding 4 h + jährlich 2 h Refresher + 4 CTF
+  pro Jahr), Senior Developer (zusätzlich Threat-Modeling-Workshop 8 h
+  jährlich, eine Zertifizierung im Jahr 1), Tech Lead/Architect
+  (zusätzlich CSSLP oder iSAQB CPSA-A, Mentoring von Junioren),
+  DevOps/Platform Engineer (zusätzlich Cloud-Sicherheit AWS Security
+  Specialty/AZ-500/GCP Professional Cloud Security Engineer, Kubernetes
+  CKS), Security Champion (zusätzlich 16 h Vertiefung pro Jahr,
+  Bug-Bounty-Teilnahme, OffSec-Zertifizierung). Nachweisführung in
+  HR-System (Workday, SAP SuccessFactors, Personio) oder LMS mit
+  automatischer Eskalation bei Überschreitung der Frist (30 Tage
+  Nachfrist, dann Sperrung des Repository-Zugriffs via SCIM-Deprovisioning
+  in Entra ID/Okta). Jahresbericht an Security Lead mit Erfüllungsquote pro Team,
+  Trend gegenüber Vorjahr, Lessons Learned aus CTF und Tabletops. Referenzen:
+  NIST SP 800-50 (Building an Information Technology Security Awareness
+  and Training Program), NIST SP 800-181 (NICE Workforce Framework),
+  ISO/IEC 27001 A.6.3 (Informationssicherheitsbewusstsein, -ausbildung
+  und -training), BSI IT-Grundschutz ORP.3 (Sensibilisierung und Schulung),
+  CRA Anhang I Teil II 2.1 (Awareness empfohlen).
+- **EN:** All developers receive regular mandatory training on secure
+  development and safe use of the toolchain. Mandatory topics: Secure
+  Coding (OWASP Top 10 2021, CWE Top 25, language-specific practices:
+  Java/Spring Security, C#/.NET, Python/PyCA cryptography, Go,
+  JavaScript/TypeScript), Threat Modeling (STRIDE methodology, Microsoft
+  Threat Modeling Tool, OWASP Threat Dragon, IriusRisk), Data Protection
+  (GDPR Art. 25 Privacy by Design, Art. 32 technical and organizational
+  measures, Data Protection Impact Assessment Art. 35), CRA Awareness
+  (Regulation (EU) 2024/2847, manufacturer obligations Art. 13/14,
+  conformity assessment Modules A/B+C/H, vulnerability reporting within
+  24 h Art. 14(2)), Secret Hygiene (pre-commit hooks gitleaks, GitHub
+  Push Protection, secret managers Vault/AWS Secrets Manager/Azure Key
+  Vault), Social Engineering and Phishing (vishing, smishing, spear
+  phishing, business email compromise, KnowBe4 simulations at least
+  quarterly), Supply Chain Security (typosquatting, dependency confusion,
+  SLSA levels, SBOM CycloneDX/SPDX, signed commits, Sigstore cosign), IDE
+  and AI Tool Security (GitHub Copilot Business `excludeFiles`, JetBrains
+  AI telemetry, plugin risks), secure configuration and hardening.
+  Training formats: mandatory onboarding security training before first
+  repository access (4 h), annual refresher (at least 2 h, documented),
+  just-in-time micro-trainings (5–15 min videos on current incidents, new
+  CVEs, tool updates), capture-the-flag exercises (CTF, at least
+  semi-annually), tabletop exercises with incident response team
+  (ransomware, supply chain, insider threat scenarios). Training
+  platforms: SecureFlag, Kontra Application Security, Avatao, Hack The
+  Box, OWASP WebGoat, OWASP Juice Shop, PortSwigger Web Security Academy,
+  custom content in LMS (Moodle, TalentLMS, SAP SuccessFactors Learning,
+  Cornerstone OnDemand, Workday Learning). Recommended certifications by
+  role: ISC2 SSCP/CSSLP, OffSec OSCP/OSWE, GIAC GSSP-JAVA/.NET/PYTHON,
+  iSAQB CPSA-A, CompTIA Security+/CySA+, ISC2 CISSP for architects,
+  Certified Ethical Hacker (CEH), Microsoft SC-100 Cybersecurity
+  Architect Expert. Training matrix by role: Junior Developer (onboarding
+  4 h + annual 2 h refresher + 4 CTFs per year), Senior Developer
+  (additionally threat modeling workshop 8 h annually, one certification
+  in year 1), Tech Lead/Architect (additionally CSSLP or iSAQB CPSA-A,
+  mentoring of juniors), DevOps/Platform Engineer (additionally cloud
+  security AWS Security Specialty/AZ-500/GCP Professional Cloud Security
+  Engineer, Kubernetes CKS), Security Champion (additionally 16 h
+  in-depth per year, bug bounty participation, OffSec certification).
+  Proof in HR system (Workday, SAP SuccessFactors, Personio) or LMS with
+  automatic escalation on deadline overrun (30-day grace period, then
+  repository access suspension via SCIM deprovisioning in Entra ID/Okta).
+  Annual report to Security Lead with completion rate per team, trend versus prior
+  year, lessons learned from CTFs and tabletops. References: NIST SP
+  800-50 (Building an Information Technology Security Awareness and
+  Training Program), NIST SP 800-181 (NICE Workforce Framework), ISO/IEC
+  27001 A.6.3 (Information security awareness, education and training),
+  BSI IT-Grundschutz ORP.3 (Sensibilisierung und Schulung), CRA Annex I
+  Part II 2.1 (awareness recommended).
+- **Akzeptanz / Acceptance:** Schulungsmatrix in `docs/security/training-matrix.md`
+  je Rolle, Erfüllungsquote ≥ 95 % je Quartal in HR-System/LMS abrufbar,
+  Onboarding-Training vor Repository-Zugriff abgeschlossen, jährliche
+  Refresher und CTF/Tabletop-Übungen dokumentiert, Jahresbericht an Security Lead
+  mit Trend und Lessons Learned vorhanden.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 17. Cross-Platform-Skriptparität / Cross-Platform Script Parity
+
+- **DE:** Kritische Skript-Werkzeuge, die Entwicklungs-, Build-,
+  Prüf-, SBOM-, Audit- oder Bootstrap-Aufgaben ausführen, werden für
+  macOS/Linux und Windows gleichwertig bereitgestellt oder ausdrücklich
+  als plattformspezifisch begründet. Standard ist ein Bash-Skript für
+  macOS/Linux und ein PowerShell-7+-Skript für Windows. Beide Varianten
+  haben gleiche Argumente, gleiche Defaults, gleiche Exitcodes, gleiches
+  Ausgabeformat, gleiche Nebenwirkungen und gleichwertigen Trockenlauf
+  (`--dry-run` in Bash, `-WhatIf` in PowerShell).
+- **EN:** Critical script tools that perform development, build, review,
+  SBOM, audit, or bootstrap tasks are provided equivalently for
+  macOS/Linux and Windows or explicitly justified as platform-specific.
+  The default is a Bash script for macOS/Linux and a PowerShell 7+ script
+  for Windows. Both variants have the same arguments, same defaults, same
+  exit codes, same output format, same side effects, and equivalent dry-run
+  behaviour (`--dry-run` in Bash, `-WhatIf` in PowerShell).
+- **Akzeptanz / Acceptance:** Für jedes kritische Skript gibt es eine
+  Paritätsprüfung mit Dateipfaden, getesteten Plattformen, Help-Oberflächen
+  und N/A-Begründung. Bash-Skripte haben `-h`/`--help` und bei dauerhafter
+  Nutzung eine Unix-Manpage unter `docs/man/`. PowerShell-Skripte haben
+  deutsch/englische comment-based help, `Get-Help`-Nachweis und bei Cmdlets
+  ein genehmigtes `Verb-Noun`-Namensschema. / For every critical script
+  there is a parity check with file paths, tested platforms, help surfaces,
+  and N/A rationale. Bash scripts have `-h`/`--help` and, for permanent
+  use, a Unix man page under `docs/man/`. PowerShell scripts have German/
+  English comment-based help, `Get-Help` evidence, and for cmdlets an
+  approved `Verb-Noun` naming scheme.
+- **Referenz / Reference:** Spec-Kit `cross-platform-governance`,
+  Template `script-parity-checklist-template`.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Skriptpfade, Paritätscheck, Manpage, Get-Help-Ausgabe, Testnachweis oder N/A-Begründung nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name script paths, parity check, man page, Get-Help output, test evidence, or N/A rationale. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+### Akzeptanzkriterien gesamt / Overall Acceptance
+
+**DE:** Erfüllt, wenn alle Punkte abgeschlossen sind und die Belege im
+Sicherheits- oder Qualitätsmanagement-System auffindbar sind. Kritische
+Skripte sind plattformparitätisch geprüft oder begründet nicht anwendbar.
+
+**EN:** Fulfilled when every item is closed and the evidence is findable
+in the security or quality management system. Critical scripts have
+platform-parity evidence or justified non-applicability.
+
+### Glossar / Glossary
+
+**DE:** Dieses Glossar erklärt die wichtigsten Begriffe dieser Checkliste in Alltagssprache. Es ändert keine Anforderungen, sondern macht die vorhandenen Prüfpunkte leichter verständlich.
+
+**EN:** This glossary explains the most important terms in this checklist in plain language. It does not change requirements; it makes the existing review items easier to understand.
+
+<a id="cl-10-glossar-full-disk-encryption"></a>
+
+#### Festplattenverschlüsselung / Full-Disk Encryption
+
+- **DE:** Festplattenverschlüsselung schützt Daten auf einem Gerät, wenn es verloren geht oder gestohlen wird. Der Schutz wirkt vor allem bei ausgeschaltetem oder gesperrtem Gerät.
+- **EN:** Full-disk encryption protects data on a device if it is lost or stolen. It mainly protects when the device is powered off or locked.
+
+<a id="cl-10-glossar-mfa"></a>
+
+#### MFA
+
+- **DE:** MFA bedeutet Anmeldung mit mehreren Faktoren. Neben Passwort oder Schlüssel wird ein weiterer Nachweis verlangt, zum Beispiel App-Bestätigung oder Hardware-Token.
+- **EN:** MFA means login with multiple factors. In addition to password or key, another proof is required, for example app approval or hardware token.
+
+<a id="cl-10-glossar-ide"></a>
+
+#### IDE
+
+- **DE:** Eine IDE ist eine Entwicklungsumgebung, zum Beispiel VS Code oder IntelliJ. Sie sollte sicher konfiguriert und nicht mit unnötigen Erweiterungen belastet sein.
+- **EN:** An IDE is a development environment, for example VS Code or IntelliJ. It should be securely configured and not overloaded with unnecessary extensions.
+
+<a id="cl-10-glossar-branch-protection"></a>
+
+#### Branch-Schutz / Branch Protection
+
+- **DE:** Branch-Schutz verhindert unkontrollierte Änderungen an wichtigen Branches. Typische Regeln verlangen Reviews, erfolgreiche Checks und eingeschränkte Schreibrechte.
+- **EN:** Branch protection prevents uncontrolled changes to important branches. Typical rules require reviews, passing checks, and restricted write access.
+
+<a id="cl-10-glossar-signed-commits"></a>
+
+#### Signierte Commits / Signed Commits
+
+- **DE:** Signierte Commits enthalten einen kryptografischen Nachweis der Urheberschaft. Sie helfen, Manipulation und falsche Identitäten zu erkennen.
+- **EN:** Signed commits contain cryptographic proof of authorship. They help detect tampering and false identities.
+
+<a id="cl-10-glossar-gpg"></a>
+
+#### GPG
+
+- **DE:** GPG ist ein Werkzeug für Signaturen und Verschlüsselung. In Git kann es genutzt werden, um Commits oder Tags zu signieren.
+- **EN:** GPG is a tool for signatures and encryption. In Git it can be used to sign commits or tags.
+
+<a id="cl-10-glossar-sigstore-cosign"></a>
+
+#### Sigstore / Cosign
+
+- **DE:** Sigstore ist ein Werkzeug-Ökosystem für Signaturen und Nachweise. Cosign wird oft genutzt, um Container-Images oder Artefakte zu signieren.
+- **EN:** Sigstore is a tool ecosystem for signatures and evidence. Cosign is often used to sign container images or artefacts.
+
+<a id="cl-10-glossar-secret-scanning"></a>
+
+#### Secret Scanning
+
+- **DE:** Secret Scanning sucht versehentlich veröffentlichte Geheimnisse, zum Beispiel Tokens oder Passwörter. Es sollte vor Push und in der Plattform laufen.
+- **EN:** Secret scanning searches for accidentally published secrets, for example tokens or passwords. It should run before push and in the platform.
+
+<a id="cl-10-glossar-secret-store"></a>
+
+#### Secret Store
+
+- **DE:** Ein Secret Store speichert Geheimnisse wie Passwörter, API-Schlüssel oder Tokens geschützt. Geheimnisse sollen nicht im Code, in Logs oder in Tickets stehen.
+- **EN:** A secret store protects secrets such as passwords, API keys, or tokens. Secrets should not be in code, logs, or tickets.
+
+<a id="cl-10-glossar-ci-cd"></a>
+
+#### CI/CD
+
+- **DE:** CI/CD automatisiert Bauen, Testen und Ausliefern von Software. Weil diese Pipeline Artefakte erzeugt, muss sie besonders geschützt und nachvollziehbar sein.
+- **EN:** CI/CD automates building, testing, and delivering software. Because this pipeline creates artefacts, it must be especially protected and traceable.
+
+<a id="cl-10-glossar-environment-separation"></a>
+
+#### Umgebungstrennung / Environment Separation
+
+- **DE:** Umgebungstrennung hält Entwicklung, Test und Produktion getrennt. Dadurch gelangen Testdaten, Experimente oder unsichere Einstellungen nicht in Produktion.
+- **EN:** Environment separation keeps development, test, and production apart. This prevents test data, experiments, or unsafe settings from reaching production.
+
+<a id="cl-10-glossar-test-data"></a>
+
+#### Testdaten / Test Data
+
+- **DE:** Testdaten sind Daten für Entwicklung und Tests. Personenbezogene Echtdaten dürfen nur genutzt werden, wenn es erlaubt, begründet und geschützt ist.
+- **EN:** Test data is data for development and testing. Real personal data may only be used when it is allowed, justified, and protected.
+
+<a id="cl-10-glossar-audit-trail"></a>
+
+#### Audit-Spur / Audit Trail
+
+- **DE:** Eine Audit-Spur zeigt nachvollziehbar, wer was wann getan oder entschieden hat. Sie hilft bei Prüfung, Fehlersuche und Verantwortung.
+- **EN:** An audit trail traceably shows who did or decided what and when. It helps with review, troubleshooting, and accountability.
+
+<a id="cl-10-glossar-access-recertification"></a>
+
+#### Zugriffsrezertifizierung / Access Recertification
+
+- **DE:** Zugriffsrezertifizierung ist die regelmäßige Prüfung, ob Berechtigungen noch nötig sind. Nicht mehr benötigte Zugriffe werden entfernt.
+- **EN:** Access recertification is the regular review of whether permissions are still needed. Unneeded access is removed.
+
+<a id="cl-10-glossar-endpoint-protection"></a>
+
+#### Endpoint-Schutz / Endpoint Protection
+
+- **DE:** Endpoint-Schutz schützt Geräte wie Laptops oder Server. Beispiele sind Malware-Schutz, Härtung, Updates und Überwachung.
+- **EN:** Endpoint protection protects devices such as laptops or servers. Examples are malware protection, hardening, updates, and monitoring.
+
+<a id="cl-10-glossar-backup-restore"></a>
+
+#### Backup und Restore
+
+- **DE:** Backup sichert Daten. Restore ist die Wiederherstellung. Für Sicherheit zählt, dass Wiederherstellung regelmäßig getestet wird.
+- **EN:** Backup saves data. Restore is recovery. For security, it matters that recovery is tested regularly.
+
+<a id="cl-10-glossar-cross-platform-script"></a>
+
+#### Cross-Platform-Skript
+
+- **DE:** Ein Cross-Platform-Skript funktioniert auf mehreren Betriebssystemen oder hat gleichwertige Varianten. Unterschiede müssen dokumentiert und getestet werden.
+- **EN:** A cross-platform script works on several operating systems or has equivalent variants. Differences must be documented and tested.
+
+### Versionshistorie / Version History
+
+- **Version 1.0 (2026-04-27):** Erstfassung / Initial version
+- **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
+- **Version 1.2 (2026-06-15):** Prüfpunkt 17 zur Cross-Platform-Skriptparität ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Added item 17 for cross-platform script parity; synchronized with RL Sichere-Entwicklung v2.9.0.
+
+- **Version 1.3 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
+
+- **Version 1.4 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
+
+---
+
+
+---
+
+<!--
+Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
+Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+This document is organization-neutral and written as a generic training and review baseline.
+-->
+
+> **DE:** Diese Checkliste ist generisch und projektunabhaengig. Sie ist als Ausbildungs-, Review- und Haertungsgrundlage gedacht. Eine Nichtanwendbarkeit muss als `N/A` mit kurzer Begruendung dokumentiert werden.
+>
+> **EN:** This checklist is generic and project-independent. It is intended as a training, review, and hardening baseline. Non-applicability must be documented as `N/A` with a short rationale.
+
+## Checkliste 11 – Datenschutz-Folgenabschaetzung (DSGVO Art. 35) / Data Protection Impact Assessment (GDPR Art. 35)
+
+### Zweck / Purpose
+
+**DE:** Diese Checkliste sichert eine vollständige, nachvollziehbare
+Datenschutz-Folgenabschätzung (Data Protection Impact Assessment, DPIA)
+gemäß DSGVO Art. 35 für Neuentwicklungen und wesentliche Änderungen, die
+personenbezogene Daten (pbD) verarbeiten. Sie ist mitgeltend zur
+Richtlinie „Sichere Entwicklung" und zur Datenschutzleitlinie der Organisation.
+
+**EN:** This checklist ensures a complete, traceable Data Protection
+Impact Assessment (DPIA) per GDPR Art. 35 for new developments and
+material changes processing personal data. It accompanies the guideline
+"Secure Development" and the data-protection guideline.
+
+### Geltungsbereich / Scope
+
+**DE:** Pflicht für jedes Vorhaben, das personenbezogene Daten (pbD) im
+Sinne der Datenschutz-Grundverordnung (DSGVO, Verordnung (EU) 2016/679)
+verarbeitet. Die Schwellwertanalyse (Abschnitt 1) ist immer
+durchzuführen. Liegt ein voraussichtlich hohes Risiko vor, sind alle
+weiteren Abschnitte verpflichtend. Aktualisierung bei wesentlichen
+Änderungen (neue Datenkategorien, neue Empfänger, neue Drittlands-
+übermittlung, neue Technologie, neuer Zweck).
+
+**EN:** Mandatory for every project that processes personal data under
+the General Data Protection Regulation (GDPR, Regulation (EU) 2016/679).
+The threshold analysis (section 1) is always required. If a high risk
+is likely, all further sections are mandatory. Update on material
+changes (new data categories, new recipients, new third-country
+transfers, new technology, new purpose).
+
+### Mitgeltende Dokumente / Related Documents
+
+- RL Sichere-Entwicklung
+- Datenschutzleitlinie der Organisation
+- DSGVO (Verordnung (EU) 2016/679), Art. 5, 25, 28, 30, 32, 35, 36
+- ISO/IEC 27701:2019 Privacy Information Management
+- ISO/IEC 29134:2017 Guidelines for Privacy Impact Assessment
+- Bundesdatenschutzgesetz (BDSG) und Niedersächsisches Datenschutzgesetz
+  (NDSG), soweit anwendbar
+- WP 248 rev.01 — Leitlinien zur Datenschutz-Folgenabschätzung (Art. 29-
+  Datenschutzgruppe, vom EDSA bestätigt)
+- CL_Bedrohungsmodellierung (Verbindung Bedrohungsmodell ↔ DPIA)
+
+#### URL-/Ablageverweise / URLs and Storage Locations
+
+**DE:** Diese Links helfen beim Review. Projekt- oder organisationsinterne Dokumente koennen als lokale Arbeitskopie oder als Verweis auf den festgelegten Ablageort ergaenzt werden.
+lokale Arbeitskopie oder Dokumentationsablage-Verweis zu verstehen. Wenn eine interne
+Dokumentationsablage-URL existiert, wird sie in der finalen Dokumentenlenkung ergänzt.
+
+**EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
+listed as local working copies or Dokumentationsablage references. If an internal Dokumentationsablage URL
+exists, it is added during final document control.
+
+- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
+- **CL_Bedrohungsmodellierung:** [lokale Arbeitskopie der Checkliste Bedrohungsmodellierung / local working copy of the threat-modeling checklist](CL_Bedrohungsmodellierung.md)
+- **DSGVO (EUR-Lex):** [Verordnung (EU) 2016/679 / Regulation (EU) 2016/679](https://eur-lex.europa.eu/eli/reg/2016/679/oj)
+- **EDSA / EDPB:** [Europäischer Datenschutzausschuss / European Data Protection Board](https://edpb.europa.eu/)
+- **WP 248 rev.01 (DPIA-Leitlinien):** [WP 248 rev.01 Leitlinien zur Datenschutz-Folgenabschätzung / WP 248 rev.01 Guidelines on DPIA](https://ec.europa.eu/newsroom/article29/items/611236)
+- **LfD Niedersachsen — Liste mit DPIA-Pflicht:** [Liste der Verarbeitungstätigkeiten mit DPIA-Pflicht (Niedersachsen) / list of processing activities requiring a DPIA (Lower Saxony)](https://lfd.niedersachsen.de/startseite/themen/datenschutz_in_organisationen/datenschutz_folgenabschatzung/datenschutz-folgenabschaetzung-179116.html)
+- **CNIL PIA-Tool (Open Source):** [CNIL Open-Source Privacy-Impact-Assessment-Tool / CNIL open-source PIA tool](https://www.cnil.fr/en/open-source-pia-software-helps-carry-out-data-protection-impact-assessment)
+- **ENISA Empfehlungen Datenschutz und Sicherheit:** [ENISA Datenschutz- und Sicherheitsleitfäden / ENISA privacy and security guidelines](https://www.enisa.europa.eu/topics/data-protection)
+- **ISO/IEC 27701:2019 (Webseite):** [offizielle ISO-Webseite zu ISO/IEC 27701 / official ISO webpage for ISO/IEC 27701](https://www.iso.org/standard/71670.html)
+- **ISO/IEC 29134:2017 (Webseite):** [offizielle ISO-Webseite zu ISO/IEC 29134 / official ISO webpage for ISO/IEC 29134](https://www.iso.org/standard/62289.html)
+
+### Bewertung und Dokumentation / Assessment and Documentation
+
+**DE:** Jeder Prüfpunkt bekommt genau einen Status. Schreibe die
+Begründung so, dass eine neue Kollegin oder ein neuer Kollege den
+Entscheid später ohne Rückfrage versteht.
+
+**EN:** Each checklist item gets exactly one status. Write the
+explanation so that a new team member can understand the decision
+later without asking again.
+
+- **Erfüllt / Fulfilled:** Die Anforderung ist umgesetzt und es gibt
+  einen prüfbaren Nachweis.
+- **Nicht erfüllt / Not fulfilled:** Die Anforderung ist noch nicht
+  umgesetzt oder der Nachweis fehlt. Es muss eine Aufgabe mit
+  Verantwortlicher Person und Termin geben.
+- **Nicht anwendbar / Not applicable:** Die Anforderung passt nicht zum
+  Projekt. Das ist erlaubt, aber nur mit kurzer Begründung.
+
+**Pflichtfelder je Prüfpunkt / Required fields per item:** Status,
+Begründung, Evidenzpfad oder Link, nächste Maßnahme mit Verantwortlicher
+Person und Zieltermin.
+
+### Durchführungshinweise / Implementation Guidance
+
+**DE:** Nutze diese Checkliste nicht als reine Ja/Nein-Liste. Sie ist
+ein Arbeits- und Auditdokument. Prüfe jeden Punkt gegen reale
+Artefakte: Verarbeitungsverzeichnis-Eintrag, DPIA-Bericht, Stellungnahme
+der oder des Datenschutzbeauftragten, Auftragsverarbeitungsvertrag,
+Datenflussdiagramm, Architektur-Entscheidung (S-ADR), Bedrohungsmodell
+oder Freigabeprotokoll. Wenn ein Nachweis noch fehlt, markiere den Punkt
+als „nicht erfüllt" und lege eine konkrete Folgeaufgabe an.
+
+**EN:** Do not use this checklist as a simple yes/no list. It is a
+working and audit document. Check each item against real artefacts:
+record of processing activity, DPIA report, opinion of the data
+protection officer, processor agreement, data flow diagram,
+architecture decision (S-ADR), threat model, or approval record. If
+evidence is missing, mark the item as "not fulfilled" and create a
+concrete follow-up task.
+
+**DE:** Schreibe kurze, klare Begründungen. Vermeide Abkürzungen ohne
+Erklärung. Wenn ein Punkt rechtlich oder fachlich schwierig ist,
+beschreibe den aktuellen Stand, das Risiko und den nächsten machbaren
+Schritt.
+
+**EN:** Write short and clear explanations. Avoid unexplained
+abbreviations. If an item is legally or technically difficult, describe
+the current state, the risk, and the next feasible step.
+
+**DE:** Die DPIA wird zusammen mit dem Bedrohungsmodell geführt: Die
+DPIA betrachtet Risiken aus Sicht der Betroffenen, das Bedrohungsmodell
+betrachtet Risiken aus Sicht der Organisation und ihrer Schutzziele. Beide
+Sichten werden konsistent gehalten und gemeinsam aktualisiert.
+
+**EN:** The DPIA runs alongside the threat model: the DPIA looks at
+risks from the data subject's perspective, the threat model looks at
+risks from the Organisation perspective and its protection goals. Both views
+are kept consistent and updated together.
+
+**DE:** Jeder Prüfpunkt muss deshalb drei Fragen beantworten: Was bedeutet die Anforderung im Projektalltag? Was ist konkret zu tun oder zu entscheiden? Welcher Nachweis zeigt das Ergebnis? Verwende Standard-IDs, Toolnamen und Abkürzungen nur zusammen mit einer kurzen Erklärung in Alltagssprache. Wenn ein Punkt für Auszubildende oder neue Teammitglieder nicht selbsterklärend ist, ergänze eine kurze Erklärung in der Begründung.
+
+**EN:** Each item must therefore answer three questions: What does the requirement mean in daily project work? What exactly must be done or decided? Which evidence shows the result? Use standard IDs, tool names, and abbreviations only together with a short plain-language explanation. If an item is not self-explanatory for apprentices or new team members, add a short explanation in the rationale.
+
+### Beispiel / Example
+
+**DE:** Eine neue Web-Anwendung verwaltet Schulungsanmeldungen für
+Mitarbeitende externer Forschungseinrichtungen. Sie verarbeitet Name, dienstliche
+E-Mail-Adresse, Institutszugehörigkeit, optional Allergiehinweise.
+Die Schwellwertanalyse zeigt: keine besonderen Kategorien gemäß Art. 9
+DSGVO im Pflichtteil, optionale Allergiehinweise (Gesundheitsdaten)
+sind sensibel; insgesamt mittleres Risiko, aber wegen besonderer
+Kategorien wird eine DPIA erstellt. Die DPIA dokumentiert:
+Verarbeitungszweck (Schulungsorganisation), Rechtsgrundlage
+(Art. 6 Abs. 1 lit. b DSGVO für Vertragsdurchführung, Art. 9 Abs. 2
+lit. a für Einwilligung zu Allergiehinweisen), Datenkategorien,
+Empfänger (Schulungsleitung, Catering), Speicherfristen, Maßnahmen
+(Verschlüsselung at-rest und in-transit, getrennte Speicherung der
+Allergiehinweise, Pseudonymisierung im Catering-Export, Löschung 90
+Tage nach Schulung). Konsultation der oder des Datenschutzbeauftragten
+erfolgt vor Go-live.
+
+**EN:** A new web application manages training registrations for staff
+from external research institutes. It processes name, work email, institute
+affiliation, optionally allergy notes. The threshold analysis shows: no
+special categories per Art. 9 GDPR in the mandatory part, optional
+allergy notes (health data) are sensitive; overall medium risk but
+because of special categories a DPIA is performed. The DPIA documents:
+purpose (training organisation), legal basis (Art. 6(1)(b) GDPR for
+contract performance, Art. 9(2)(a) for consent to allergy notes), data
+categories, recipients (training lead, catering), retention periods,
+measures (encryption at-rest and in-transit, separate storage for
+allergy notes, pseudonymisation in the catering export, deletion 90
+days after the training). The data protection officer is consulted
+before go-live.
+
+### A11Y-Hinweise / A11Y Notes
+
+**DE:** Beim Ausfüllen dieser Checkliste müssen alle Nachweise auch
+textlich verständlich sein. Verweise sollen beschreibende Linktexte
+haben. Datenflussdiagramme und Risikomatrizen brauchen eine kurze
+Textbeschreibung. Der Status darf nicht nur über Farbe erkennbar sein.
+
+**EN:** When this checklist is filled in, all evidence must also be
+understandable as text. References should use descriptive link text.
+Data flow diagrams and risk matrices need a short text description. The
+status must not be shown by color alone.
+
+### Wichtige Begriffe / Key Terms
+
+**DE:** Die folgenden Begriffe kommen in dieser Checkliste vor. Die Links springen zum Glossar dieses Kapitels, damit Auszubildende und Entwickler:innen ohne Sicherheits-Spezialwissen die Begriffe direkt nachlesen können.
+
+**EN:** The following terms appear in this checklist. The links jump to this chapter's glossary so that apprentices and developers without specialist security knowledge can look them up directly.
+
+- [DSGVO / GDPR](#cl-11-glossar-dsgvo-gdpr)
+- [DPIA / DSFA](#cl-11-glossar-dpia-dsfa)
+- [Personenbezogene Daten / Personal Data](#cl-11-glossar-personal-data)
+- [Verarbeitung / Processing](#cl-11-glossar-processing)
+- [Betroffene Person / Data Subject](#cl-11-glossar-data-subject)
+- [Risikobewertung / Risk Rating](#cl-11-glossar-risk-rating)
+- [Maßnahme / Mitigation](#cl-11-glossar-mitigation)
+- [DSB / DPO](#cl-11-glossar-dpo-dsb)
+- [Aufsichtsbehörde / Supervisory Authority](#cl-11-glossar-supervisory-authority)
+- [Verzeichnis der Verarbeitungstätigkeiten / RoPA](#cl-11-glossar-ropa)
+- [Auftragsverarbeitung / DPA](#cl-11-glossar-dpa-avv)
+- [Datenschutz durch Technikgestaltung / Privacy by Design](#cl-11-glossar-privacy-by-design)
+- [Betroffenenrechte / Data Subject Rights](#cl-11-glossar-data-subject-rights)
+- [Evidenz / Evidence](#cl-11-glossar-evidenz)
+
+### Checkliste / Checklist
+
+#### 1. Schwellwertanalyse / Threshold Analysis
+
+- **DE:** Zu Projektbeginn wird eine dokumentierte Schwellwertanalyse
+  durchgeführt. Sie prüft die in DSGVO Art. 35 Abs. 3 genannten Fälle:
+  systematische und umfassende Bewertung persönlicher Aspekte
+  einschließlich Profiling, umfangreiche Verarbeitung besonderer
+  Kategorien gemäß Art. 9 (Gesundheits-, biometrische,
+  Gewerkschaftsdaten u. a.) oder von Art. 10 (strafrechtliche
+  Verurteilungen), systematische Überwachung öffentlich zugänglicher
+  Bereiche. Zusätzlich wird die Positivliste der zuständigen
+  Aufsichtsbehörde geprüft (in Niedersachsen: LfD Niedersachsen). Die
+  Analyse berücksichtigt die WP-248-rev.01-Kriterien (neun Kriterien
+  des EDSA): Bewerten/Scoring, automatisierte Entscheidung mit
+  rechtlicher Wirkung, systematische Überwachung, sensible Daten oder
+  hochpersönliche Daten, umfangreiche Verarbeitung, Abgleich oder
+  Verkettung von Datensätzen, schutzbedürftige Personen,
+  innovative Nutzung neuer Technologien, Verarbeitungen, die
+  Betroffene an der Wahrnehmung von Rechten oder der Nutzung von
+  Diensten hindern. Werden zwei oder mehr dieser Kriterien erfüllt,
+  ist in der Regel eine DPIA durchzuführen.
+- **EN:** At project start a documented threshold analysis is
+  performed. It checks the cases listed in GDPR Art. 35(3): systematic
+  and extensive evaluation of personal aspects including profiling,
+  large-scale processing of special categories per Art. 9 (health,
+  biometric, union data, etc.) or Art. 10 (criminal convictions),
+  systematic monitoring of publicly accessible areas. The positive
+  list of the competent supervisory authority is also reviewed (Lower
+  Saxony: LfD Niedersachsen). The analysis considers the WP 248
+  rev.01 criteria (nine EDPB criteria): evaluation/scoring, automated
+  decision-making with legal effect, systematic monitoring, sensitive
+  or highly personal data, large-scale processing, matching or
+  combining datasets, vulnerable subjects, innovative use of new
+  technologies, processing preventing subjects from exercising rights
+  or using a service. Two or more criteria typically trigger a DPIA.
+- **Akzeptanz / Acceptance:** Schwellwertanalyse als datiertes
+  Dokument im Sicherheits- oder Datenschutz-Dokumentenbestand des
+  Projekts; klares Ergebnis (DPIA erforderlich / nicht erforderlich)
+  mit Begründung. / Threshold analysis as a dated document in the
+  project's security or data-protection document set; clear outcome
+  (DPIA required / not required) with justification.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Pfad, Link, Ticket, Schwellwertanalyse-Dokument oder Stellungnahme nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name path, link, ticket, threshold analysis document, or opinion. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 2. Systematische Beschreibung der Verarbeitung / Systematic Description of Processing
+
+- **DE:** Die DPIA enthält eine systematische Beschreibung der geplanten
+  Verarbeitungsvorgänge gemäß DSGVO Art. 35 Abs. 7 lit. a. Mindestinhalte:
+  Verantwortliche\*r und gegebenenfalls gemeinsam Verantwortliche
+  (Art. 26), Zwecke der Verarbeitung einschließlich der berechtigten
+  Interessen (sofern Art. 6 Abs. 1 lit. f), Kategorien personenbezogener
+  Daten und Kategorien Betroffener, Empfänger oder Empfängerkategorien
+  (auch in Drittländer), geplante Speicherfristen, beteiligte Systeme
+  und Schnittstellen, Datenflüsse mit Trust Boundaries (Verbindung zur
+  Bedrohungsmodellierung), eingesetzte Technologien (insbesondere
+  innovative oder neuartige Technologien wie KI/Machine Learning,
+  biometrische Verfahren, Tracking). Die Beschreibung wird mit dem
+  Eintrag im Verzeichnis von Verarbeitungstätigkeiten (Art. 30)
+  konsistent gehalten.
+- **EN:** The DPIA contains a systematic description of the planned
+  processing per GDPR Art. 35(7)(a). Minimum content: controller and
+  any joint controllers (Art. 26), purposes of processing including
+  legitimate interests (if Art. 6(1)(f)), categories of personal data
+  and data subjects, recipients or categories of recipients (including
+  third countries), planned retention periods, systems and interfaces
+  involved, data flows with trust boundaries (link to threat
+  modeling), technologies used (especially innovative or novel
+  technologies such as AI/machine learning, biometrics, tracking).
+  The description is kept consistent with the record of processing
+  activities (Art. 30).
+- **Akzeptanz / Acceptance:** Vollständige Beschreibung mit allen
+  genannten Mindestinhalten; Querverweis auf Verarbeitungsverzeichnis
+  und auf Datenflussdiagramm. / Complete description with all listed
+  minimum content; cross-reference to record of processing and data
+  flow diagram.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Pfad, Link, Ticket, DPIA-Bericht oder Verzeichnis-Eintrag nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name path, link, ticket, DPIA report, or RoPA entry. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 3. Notwendigkeits- und Verhältnismäßigkeitsbewertung / Necessity and Proportionality Assessment
+
+- **DE:** Bewertung der Notwendigkeit und Verhältnismäßigkeit der
+  Verarbeitung gemäß DSGVO Art. 35 Abs. 7 lit. b. Geprüft werden:
+  Rechtsgrundlage gemäß Art. 6 (und ggf. Art. 9, 10), Spezifizität und
+  Eindeutigkeit der Zwecke (Zweckbindung, Art. 5 Abs. 1 lit. b),
+  Datenminimierung (Art. 5 Abs. 1 lit. c), Richtigkeit (Art. 5 Abs. 1
+  lit. d), Speicherbegrenzung mit konkreten Löschfristen (Art. 5
+  Abs. 1 lit. e), Information der Betroffenen (Art. 13/14),
+  Maßnahmen zur Wahrung der Betroffenenrechte (Art. 12–22),
+  internationale Übermittlungen (Art. 44 ff., Standardvertragsklauseln,
+  Angemessenheitsbeschluss). Wenn weniger eingriffsintensive
+  Alternativen möglich sind (zum Beispiel Pseudonymisierung,
+  Aggregation, lokale Verarbeitung statt Cloud-Übermittlung), werden
+  sie bewertet und das Ergebnis dokumentiert.
+- **EN:** Assessment of necessity and proportionality per GDPR Art.
+  35(7)(b). Reviews: legal basis per Art. 6 (and Art. 9, 10 where
+  applicable), specificity and clarity of purposes (purpose limitation,
+  Art. 5(1)(b)), data minimisation (Art. 5(1)(c)), accuracy
+  (Art. 5(1)(d)), storage limitation with concrete deletion periods
+  (Art. 5(1)(e)), information to data subjects (Art. 13/14), measures
+  to safeguard data subject rights (Art. 12–22), international
+  transfers (Art. 44 ff., SCCs, adequacy decision). If less intrusive
+  alternatives are possible (for example pseudonymisation, aggregation,
+  local processing instead of cloud transfer), they are assessed and
+  the outcome is documented.
+- **Akzeptanz / Acceptance:** Dokumentierte Bewertung mit Rechts-
+  grundlage, Zwecken, Datenminimierungs-Argument und Löschfristen je
+  Datenkategorie. / Documented assessment with legal basis, purposes,
+  data-minimisation argument, and deletion periods per data category.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Pfad, Link, Ticket, DPIA-Bericht oder Rechtsmemorandum nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name path, link, ticket, DPIA report, or legal memo. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 4. Risikobewertung für Betroffene / Risk Assessment for Data Subjects
+
+- **DE:** Bewertung der Risiken für die Rechte und Freiheiten
+  natürlicher Personen gemäß DSGVO Art. 35 Abs. 7 lit. c. Für jeden
+  Verarbeitungsschritt werden die typischen Datenschutzrisiken
+  betrachtet: unrechtmäßiger Zugriff (Vertraulichkeitsverlust),
+  unbefugte Veränderung (Integritätsverlust), Datenverlust oder
+  Nichtverfügbarkeit (Verfügbarkeitsverlust). Folgen für Betroffene
+  werden konkret beschrieben (Diskriminierung, Identitätsdiebstahl,
+  finanzielle Verluste, Rufschädigung, Verlust der Kontrolle über
+  eigene Daten, Beeinträchtigung der Wahrnehmung von Rechten).
+  Eintrittswahrscheinlichkeit und Schwere werden in einer Risikomatrix
+  klassifiziert (zum Beispiel niedrig, mittel, hoch). Die Bewertung
+  greift auf das Bedrohungsmodell zurück und ergänzt es um die
+  Betroffenen-Sicht. Werkzeuge: CNIL PIA-Tool, ISO/IEC 29134-konforme
+  Vorlagen, ENISA-Methodik.
+- **EN:** Assessment of risks to the rights and freedoms of natural
+  persons per GDPR Art. 35(7)(c). For each processing step the typical
+  privacy risks are considered: unlawful access (loss of
+  confidentiality), unauthorised alteration (loss of integrity), loss
+  or unavailability of data (loss of availability). Consequences for
+  data subjects are described concretely (discrimination, identity
+  theft, financial loss, reputational harm, loss of control over their
+  own data, impairment of exercising rights). Likelihood and severity
+  are classified in a risk matrix (for example low, medium, high). The
+  assessment draws on the threat model and adds the data-subject
+  perspective. Tooling: CNIL PIA tool, templates aligned with ISO/IEC
+  29134, ENISA methodology.
+- **Akzeptanz / Acceptance:** Vollständige Risikomatrix je Verarbeitung
+  mit Eintrittswahrscheinlichkeit, Schwere, betroffenem Schutzziel und
+  konkreter Folgebeschreibung. / Complete risk matrix per processing
+  step with likelihood, severity, affected protection goal, and
+  concrete consequence description.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Pfad, Link, Ticket, Risikomatrix oder DPIA-Bericht nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name path, link, ticket, risk matrix, or DPIA report. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 5. Geplante Abhilfemaßnahmen / Planned Mitigation Measures
+
+- **DE:** Zu jedem identifizierten Risiko werden geplante Abhilfe-
+  maßnahmen gemäß DSGVO Art. 35 Abs. 7 lit. d dokumentiert. Sie
+  umfassen technische und organisatorische Maßnahmen (TOM) gemäß
+  Art. 32 sowie spezifische datenschutzfreundliche Maßnahmen (Privacy
+  Enhancing Technologies, PET): Verschlüsselung at-rest und in-transit,
+  Pseudonymisierung, Anonymisierung, k-Anonymität, differential
+  privacy, Zugriffskontrolle nach Least Privilege, Protokollierung,
+  Auftragsverarbeitungsverträge gemäß Art. 28, Maßnahmen zur Wahrung
+  der Betroffenenrechte (Auskunfts-, Berichtigungs-, Löschungs-,
+  Datenübertragbarkeits-Schnittstellen), Schulung der beteiligten
+  Personen. Restrisiken werden bewertet und mit Risikoeigner\*in
+  versehen. Ist das Restrisiko trotz Maßnahmen weiterhin hoch, ist die
+  Aufsichtsbehörde gemäß Art. 36 vor Verarbeitungsbeginn zu
+  konsultieren.
+- **EN:** For every identified risk, planned mitigation measures are
+  documented per GDPR Art. 35(7)(d). They cover technical and
+  organisational measures (TOM) per Art. 32 plus specific privacy-
+  enhancing technologies (PET): encryption at-rest and in-transit,
+  pseudonymisation, anonymisation, k-anonymity, differential privacy,
+  least-privilege access control, logging, processor agreements per
+  Art. 28, data-subject-rights mechanisms (access, rectification,
+  erasure, portability), training of the personnel involved. Residual
+  risks are assessed and assigned a risk owner. If the residual risk
+  remains high despite the measures, the supervisory authority must be
+  consulted before processing starts (Art. 36).
+- **Akzeptanz / Acceptance:** Maßnahmenliste mit Zuordnung zum Risiko,
+  Verantwortlicher Person, Umsetzungsstand und Restrisiko-Bewertung;
+  Verbindung zu S-ADR oder Bedrohungsmodell-Maßnahmen. / Mitigation
+  list mapped to risks, with owner, implementation status, and
+  residual-risk rating; linked to S-ADR or threat-model mitigations.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Pfad, Link, Ticket, Maßnahmenliste oder S-ADR nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name path, link, ticket, mitigation list, or S-ADR. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 6. Konsultation der oder des Datenschutzbeauftragten / Consultation of the Data Protection Officer
+
+- **DE:** Die DPIA wird gemäß DSGVO Art. 35 Abs. 2 unter Beteiligung
+  der Datenschutzrolle erstellt. Die
+  Stellungnahme der oder des DSB wird in die DPIA-Dokumentation
+  aufgenommen. Sie enthält mindestens: Beurteilung der DPIA-Methodik,
+  Beurteilung der Vollständigkeit, Empfehlungen zu Maßnahmen,
+  Hinweise auf weitergehenden Beratungs- oder Konsultationsbedarf,
+  abschließende Bewertung (zum Beispiel keine Bedenken, Bedenken mit
+  Auflagen, erhebliche Bedenken). Wenn die Empfehlung der oder des DSB
+  nicht oder nicht vollständig umgesetzt wird, wird dies begründet
+  dokumentiert.
+- **EN:** The DPIA is prepared with involvement of the Organisation data
+  protection officer (DPO) per GDPR Art. 35(2). The DPO opinion is
+  included in the DPIA documentation. It contains at least: assessment
+  of DPIA methodology, completeness assessment, recommendations on
+  measures, indication of any further advice or consultation needs,
+  final assessment (for example no concerns, concerns with conditions,
+  significant concerns). If the DPO recommendation is not or not fully
+  implemented, the reasons are documented.
+- **Akzeptanz / Acceptance:** Datierte und unterschriebene Stellungnahme
+  der oder des DSB als Anlage zur DPIA; Antwortdokument bei
+  Abweichungen. / Dated and signed DPO opinion attached to the DPIA;
+  response document where there are deviations.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Pfad, Link, Ticket, DSB-Stellungnahme nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name path, link, ticket, DPO opinion. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 7. Konsultation der Aufsichtsbehörde / Consultation of the Supervisory Authority
+
+- **DE:** Wenn die DPIA trotz geplanter Maßnahmen ein verbleibendes
+  hohes Risiko ergibt, wird die zuständige Aufsichtsbehörde gemäß
+  DSGVO Art. 36 vor Verarbeitungsbeginn konsultiert. Für die Organisation ist
+  dies in der Regel die Landesbeauftragte für den Datenschutz
+  Niedersachsen. Die Konsultation umfasst die DPIA, die Beschreibung
+  der Verarbeitung, die Aufgabenverteilung zwischen Verantwortlichen
+  und Auftragsverarbeitern, geplante Schutzmaßnahmen und alle
+  weiteren von der Behörde angeforderten Informationen. Die Antwort
+  der Aufsichtsbehörde wird in der DPIA-Dokumentation abgelegt; die
+  Verarbeitung beginnt erst nach Klärung.
+- **EN:** If the DPIA shows residual high risk despite planned measures,
+  the competent supervisory authority is consulted before processing
+  starts per GDPR Art. 36. For the Organisation this is typically the State
+  Commissioner for Data Protection of Lower Saxony. The consultation
+  includes the DPIA, the processing description, the allocation of
+  responsibilities between controllers and processors, planned
+  protective measures, and any further information requested by the
+  authority. The authority's response is filed with the DPIA
+  documentation; processing only begins after the matter is settled.
+- **Akzeptanz / Acceptance:** Konsultationsanfrage und Antwort der
+  Aufsichtsbehörde dokumentiert; Verarbeitung erst nach abgeschlossener
+  Konsultation aufgenommen. / Consultation request and authority
+  response documented; processing only started after the consultation
+  is closed.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Pfad, Link, Ticket, Schriftverkehr mit Aufsichtsbehörde nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name path, link, ticket, correspondence with the authority. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 8. Verzeichnis der Verarbeitungstätigkeiten / Record of Processing Activities
+
+- **DE:** Jede Verarbeitung personenbezogener Daten wird im zentralen
+  Verzeichnis der Verarbeitungstätigkeiten (Records of Processing
+  Activities, RoPA) der Organisation gemäß DSGVO Art. 30 geführt.
+  Mindestinhalte: Name und Kontaktdaten der verantwortlichen Stelle,
+  Zwecke der Verarbeitung, Kategorien Betroffener, Kategorien
+  personenbezogener Daten, Empfängerkategorien, Drittlandsübermittlungen
+  einschließlich Garantien, geplante Löschfristen, allgemeine
+  Beschreibung der TOM gemäß Art. 32. Die DPIA ist mit dem RoPA-Eintrag
+  verknüpft, sodass die Auditspur eindeutig ist. Werkzeuge: organisationsinterne 
+  internes RoPA-System; alternativ DSGVO-konforme Drittsysteme; in
+  Spezialfällen tabellarische Vorlagen mit Versionierung im Dokumentationsablage.
+- **EN:** Every processing of personal data is registered in the Organisation
+  central record of processing activities (RoPA) per GDPR Art. 30.
+  Minimum content: name and contact details of the controller,
+  purposes of processing, categories of data subjects, categories of
+  personal data, categories of recipients, third-country transfers
+  with safeguards, planned deletion periods, general description of
+  technical and organisational measures per Art. 32. The DPIA is
+  linked to the RoPA entry to keep the audit trail unambiguous.
+  Tooling: organisationsinterne internal RoPA system; otherwise GDPR-compliant
+  third-party systems; in special cases tabular templates with
+  versioning in the Dokumentationsablage.
+- **Akzeptanz / Acceptance:** RoPA-Eintrag mit allen Mindestinhalten
+  und Verknüpfung zur DPIA; mindestens jährliche Überprüfung. / RoPA
+  entry with all minimum content and link to the DPIA; at least
+  annual review.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Pfad, Link, Ticket, RoPA-Eintrag nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name path, link, ticket, RoPA entry. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 9. Auftragsverarbeitung / Processor Agreements
+
+- **DE:** Werden externe Auftragsverarbeiter eingebunden (zum Beispiel
+  Cloud-Dienste, externe Entwicklungspartner, Hosting-Provider,
+  Logging-Dienste, Mailversand), liegt vor Verarbeitungsbeginn ein
+  Auftragsverarbeitungsvertrag (Data Processing Agreement, DPA) gemäß
+  DSGVO Art. 28 Abs. 3 vor. Mindestinhalte: Gegenstand und Dauer der
+  Verarbeitung, Art und Zweck, Datenkategorien, Pflichten und Rechte
+  des Verantwortlichen, Vertraulichkeit, Sicherheitsmaßnahmen gemäß
+  Art. 32, Sub-Auftragsverarbeiter (mit Genehmigungsregelung),
+  Unterstützung bei Betroffenenrechten, Unterstützung bei Sicherheits-
+  und Meldepflichten gemäß Art. 32–36, Löschung oder Rückgabe nach
+  Vertragsende, Auditrechte. Bei Drittlandsübermittlungen werden
+  geeignete Garantien sichergestellt (Angemessenheitsbeschluss,
+  Standardvertragsklauseln plus Transfer Impact Assessment, BCR).
+- **EN:** When external processors are involved (for example cloud
+  services, external development partners, hosting providers, logging
+  services, mail dispatch), a data processing agreement (DPA) per GDPR
+  Art. 28(3) is in place before processing starts. Minimum content:
+  subject matter and duration of processing, nature and purpose,
+  categories of data, controller's obligations and rights,
+  confidentiality, security measures per Art. 32, sub-processors (with
+  authorisation regime), assistance with data-subject rights,
+  assistance with security and notification duties per Art. 32–36,
+  deletion or return after contract end, audit rights. For third-
+  country transfers, appropriate safeguards are ensured (adequacy
+  decision, SCCs plus Transfer Impact Assessment, BCRs).
+- **Akzeptanz / Acceptance:** Unterschriebener DPA je Auftrags-
+  verarbeiter; Liste der Auftragsverarbeiter und Sub-Auftragsverarbeiter
+  aktuell und im Dokumentationsablage abgelegt. / Signed DPA per processor; list of
+  processors and sub-processors current and stored in the Dokumentationsablage.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Pfad, Link, Ticket, DPA-Dokument nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name path, link, ticket, DPA document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 10. Datenschutz durch Technikgestaltung und Voreinstellungen / Privacy by Design and by Default
+
+- **DE:** Die Verarbeitung wird von Beginn an datenschutzfreundlich
+  gestaltet (DSGVO Art. 25 Abs. 1, Privacy by Design) und mit
+  datenschutzfreundlichen Voreinstellungen ausgeliefert (Art. 25 Abs. 2,
+  Privacy by Default). Konkrete Anforderungen: Datenminimierung in
+  Eingaben und Speicherung, Pseudonymisierung wo möglich, kürzeste
+  zweckdienliche Speicherfristen als Default, Zugriff nur für die
+  benötigten Rollen, datenschutzkonforme Logging-Strategie, klare
+  Trennung zwischen Stamm-, Verkehrs- und Inhaltsdaten,
+  altersangemessene Voreinstellungen wo Minderjährige betroffen sind.
+  Die acht Architekturprinzipien aus dem Abschnitt „Sichere
+  Softwarearchitektur" der RL Sichere-Entwicklung werden um diese
+  datenschutzspezifischen Punkte ergänzt; relevante Entscheidungen
+  werden als S-ADR mit Datenschutz-Bezug festgehalten.
+- **EN:** Processing is designed in a privacy-friendly way from the
+  start (GDPR Art. 25(1), Privacy by Design) and shipped with
+  privacy-friendly defaults (Art. 25(2), Privacy by Default). Concrete
+  requirements: data minimisation in input and storage, pseudonymisation
+  where possible, shortest fit-for-purpose retention as default, access
+  only for required roles, privacy-compliant logging strategy, clear
+  separation between identity, traffic, and content data, age-
+  appropriate defaults where minors are involved. The eight
+  architecture principles in the "Secure Software Architecture"
+  section of the secure-development guideline are extended by these
+  privacy-specific items; relevant decisions are recorded as
+  privacy-related S-ADRs.
+- **Akzeptanz / Acceptance:** Privacy-by-Design-Maßnahmen sind in
+  Architektur und Default-Konfiguration umgesetzt; entsprechende S-ADRs
+  liegen vor. / Privacy-by-design measures implemented in architecture
+  and default configuration; corresponding S-ADRs in place.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Pfad, Link, Ticket, S-ADR oder Architektur-Dokument nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name path, link, ticket, S-ADR, or architecture document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 11. Betroffenenrechte / Data Subject Rights
+
+- **DE:** Die Wahrnehmung der Betroffenenrechte gemäß DSGVO Art. 12–22
+  wird technisch und organisatorisch sichergestellt. Geprüft werden:
+  transparente Information bei Erhebung (Art. 13/14), Auskunftsrecht
+  (Art. 15), Recht auf Berichtigung (Art. 16), Recht auf Löschung
+  („Recht auf Vergessenwerden", Art. 17), Recht auf Einschränkung
+  (Art. 18), Mitteilungspflicht bei Berichtigung/Löschung (Art. 19),
+  Recht auf Datenübertragbarkeit (Art. 20), Widerspruchsrecht
+  (Art. 21), keine ausschließlich automatisierte Entscheidung mit
+  rechtlicher Wirkung ohne Schutzvorkehrungen (Art. 22).
+  Implementierung: Selfservice-Portal für Auskunft und Export, klare
+  Kontaktstelle für formlose Anfragen, dokumentierter Workflow zur
+  Bearbeitung mit Einhaltung der Frist (Monat, mit zweimonatiger
+  Verlängerungsoption gemäß Art. 12 Abs. 3), Identitätsprüfung der
+  Antragsstellenden, Lösch- und Sperrkonzept für jede Datenkategorie.
+- **EN:** The exercise of data-subject rights per GDPR Art. 12–22 is
+  ensured technically and organisationally. Reviews: transparent
+  information at collection (Art. 13/14), right of access (Art. 15),
+  rectification (Art. 16), erasure ("right to be forgotten", Art. 17),
+  restriction (Art. 18), notification of recipients (Art. 19),
+  portability (Art. 20), objection (Art. 21), no solely automated
+  decision with legal effect without safeguards (Art. 22).
+  Implementation: self-service portal for access and export, clear
+  contact point for informal requests, documented handling workflow
+  meeting the deadline (one month, with two-month extension per Art.
+  12(3)), identity verification of requesters, erasure and blocking
+  concept per data category.
+- **Akzeptanz / Acceptance:** Dokumentierte Prozesse und Schnittstellen
+  für jedes Betroffenenrecht; Frist- und Identitätsprüfung im
+  Workflow. / Documented processes and interfaces for every data-
+  subject right; deadline and identity check in the workflow.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Pfad, Link, Ticket, Prozessdokument oder Self-Service-Spezifikation nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name path, link, ticket, process document, or self-service specification. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 12. Fortschreibung und Aktualisierung / Maintenance and Update
+
+- **DE:** Die DPIA ist ein lebendes Dokument. Sie wird mindestens
+  jährlich auf Aktualität geprüft und bei jeder wesentlichen Änderung
+  der Verarbeitung außerplanmäßig aktualisiert. Wesentliche Änderungen
+  sind insbesondere: neue Datenkategorien, neue Empfänger oder neue
+  Drittlandsübermittlungen, neue Auftragsverarbeiter, Wechsel der
+  Rechtsgrundlage, neue Zwecke, Einsatz neuer Technologien (zum
+  Beispiel KI/Machine-Learning, Verschlüsselungs- oder Anonymisierungs-
+  verfahren), Erweiterung des Verarbeitungsumfangs (Skalierung), neue
+  Schwellwertanalyse-relevante Erkenntnisse aus Vorfällen, Audits oder
+  Schwachstellen. Die Versionshistorie der DPIA wird in der
+  Dokumentation geführt; jede Version wird mit Datum, Autor\*in und
+  Stellungnahme der oder des DSB versehen.
+- **EN:** The DPIA is a living document. It is reviewed at least
+  annually and updated outside the regular cycle on any material change
+  of the processing. Material changes include new data categories, new
+  recipients or third-country transfers, new processors, change of legal
+  basis, new purposes, use of new technologies (for example AI/machine
+  learning, encryption or anonymisation), expansion of the processing
+  scope (scaling), new threshold-analysis-relevant findings from
+  incidents, audits, or vulnerabilities. The DPIA version history is
+  kept in the documentation; each version carries date, author, and
+  DPO opinion.
+- **Akzeptanz / Acceptance:** DPIA mit aktueller Versionsangabe;
+  jährliche Überprüfung dokumentiert; Auslöser für außerplanmäßige
+  Aktualisierungen festgelegt. / DPIA with current version; annual
+  review documented; triggers for unplanned updates defined.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Pfad, Link, Ticket, Versionshistorie der DPIA nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name path, link, ticket, DPIA version history. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+### Glossar / Glossary
+
+**DE:** Dieses Glossar erklärt die wichtigsten Begriffe dieser Checkliste in Alltagssprache. Es ändert keine Anforderungen, sondern macht die vorhandenen Prüfpunkte leichter verständlich.
+
+**EN:** This glossary explains the most important terms in this checklist in plain language. It does not change requirements; it makes the existing review items easier to understand.
+
+<a id="cl-11-glossar-dsgvo-gdpr"></a>
+
+#### DSGVO / GDPR
+
+- **DE:** Die DSGVO ist die EU-Datenschutz-Grundverordnung. Sie schützt personenbezogene Daten und verlangt klare Zwecke, Rechtsgrundlagen, Schutzmaßnahmen und Nachweise.
+- **EN:** The GDPR is the EU General Data Protection Regulation. It protects personal data and requires clear purposes, legal bases, safeguards, and evidence.
+
+<a id="cl-11-glossar-dpia-dsfa"></a>
+
+#### DPIA / DSFA
+
+- **DE:** Eine DSFA oder DPIA prüft vorab, ob eine Verarbeitung personenbezogener Daten hohe Risiken für betroffene Personen hat und welche Gegenmaßnahmen nötig sind.
+- **EN:** A DPIA checks in advance whether processing personal data creates high risks for data subjects and which safeguards are needed.
+
+<a id="cl-11-glossar-personal-data"></a>
+
+#### Personenbezogene Daten / Personal Data
+
+- **DE:** Personenbezogene Daten sind Informationen, die sich auf eine identifizierte oder identifizierbare Person beziehen, zum Beispiel Name, Kennung, IP-Adresse oder Standortdaten.
+- **EN:** Personal data is information relating to an identified or identifiable person, for example name, identifier, IP address, or location data.
+
+<a id="cl-11-glossar-processing"></a>
+
+#### Verarbeitung / Processing
+
+- **DE:** Verarbeitung meint jeden Umgang mit personenbezogenen Daten, zum Beispiel Erheben, Speichern, Anzeigen, Verändern, Übermitteln oder Löschen.
+- **EN:** Processing means any handling of personal data, for example collecting, storing, displaying, changing, transmitting, or deleting.
+
+<a id="cl-11-glossar-data-subject"></a>
+
+#### Betroffene Person / Data Subject
+
+- **DE:** Eine betroffene Person ist die Person, auf die sich personenbezogene Daten beziehen. Sie hat nach DSGVO bestimmte Rechte.
+- **EN:** A data subject is the person to whom personal data relates. Under the GDPR, this person has specific rights.
+
+<a id="cl-11-glossar-risk-rating"></a>
+
+#### Risikobewertung / Risk Rating
+
+- **DE:** Eine Risikobewertung ordnet ein Risiko nach Wahrscheinlichkeit und Auswirkung ein. Daraus folgt, welche Maßnahmen zuerst umgesetzt werden müssen.
+- **EN:** A risk rating classifies a risk by likelihood and impact. It shows which measures must be implemented first.
+
+<a id="cl-11-glossar-mitigation"></a>
+
+#### Maßnahme / Mitigation
+
+- **DE:** Eine Maßnahme reduziert ein Risiko. Sie kann technisch, organisatorisch oder prozessbezogen sein und braucht meist einen Nachweis.
+- **EN:** A mitigation reduces a risk. It can be technical, organisational, or process-related and usually needs evidence.
+
+<a id="cl-11-glossar-dpo-dsb"></a>
+
+#### DSB / DPO
+
+- **DE:** DSB oder DPO bezeichnet die Datenschutzbeauftragte oder den Datenschutzbeauftragten. Diese Rolle berät und kontrolliert Datenschutzfragen unabhängig.
+- **EN:** DSB or DPO is the data protection officer. This role advises on and monitors data protection topics independently.
+
+<a id="cl-11-glossar-supervisory-authority"></a>
+
+#### Aufsichtsbehörde / Supervisory Authority
+
+- **DE:** Eine Aufsichtsbehörde überwacht die Einhaltung des Datenschutzrechts. In bestimmten Fällen muss sie informiert oder konsultiert werden.
+- **EN:** A supervisory authority monitors compliance with data protection law. In certain cases it must be informed or consulted.
+
+<a id="cl-11-glossar-ropa"></a>
+
+#### Verzeichnis der Verarbeitungstätigkeiten / RoPA
+
+- **DE:** Das Verzeichnis der Verarbeitungstätigkeiten beschreibt, welche personenbezogenen Daten für welche Zwecke verarbeitet werden und welche Rollen beteiligt sind.
+- **EN:** The record of processing activities describes which personal data is processed for which purposes and which roles are involved.
+
+<a id="cl-11-glossar-dpa-avv"></a>
+
+#### Auftragsverarbeitung / DPA
+
+- **DE:** Auftragsverarbeitung liegt vor, wenn ein Dienstleister personenbezogene Daten im Auftrag verarbeitet. Dann braucht es klare vertragliche Regeln und Kontrollen.
+- **EN:** Processor processing exists when a service provider processes personal data on behalf of another party. Clear contract rules and controls are then required.
+
+<a id="cl-11-glossar-privacy-by-design"></a>
+
+#### Datenschutz durch Technikgestaltung / Privacy by Design
+
+- **DE:** Privacy by Design bedeutet, Datenschutz bereits beim Entwurf einzuplanen, zum Beispiel durch Datensparsamkeit, Löschkonzepte und sichere Voreinstellungen.
+- **EN:** Privacy by Design means planning data protection during design, for example through data minimisation, deletion concepts, and secure defaults.
+
+<a id="cl-11-glossar-data-subject-rights"></a>
+
+#### Betroffenenrechte / Data Subject Rights
+
+- **DE:** Betroffenenrechte sind Rechte von Personen an ihren Daten, zum Beispiel Auskunft, Berichtigung, Löschung, Einschränkung und Widerspruch.
+- **EN:** Data subject rights are people’s rights regarding their data, for example access, correction, deletion, restriction, and objection.
+
+<a id="cl-11-glossar-evidenz"></a>
+
+#### Evidenz / Evidence
+
+- **DE:** Evidenz ist ein prüfbarer Nachweis. Das kann ein Link, Ticket, Scan-Bericht, Pull Request, Protokoll, Architekturdiagramm oder Dokument sein.
+- **EN:** Evidence is verifiable proof. It can be a link, ticket, scan report, pull request, record, architecture diagram, or document.
+
+### Versionshistorie / Version History
+
+- **Version 1.0 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
+
+- **Version 1.1 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
+
+---
+
+
+---
+
+<!--
+Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
+Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+This document is organization-neutral and written as a generic training and review baseline.
+-->
+
+> **DE:** Diese Checkliste ist generisch und projektunabhaengig. Sie ist als Ausbildungs-, Review- und Haertungsgrundlage gedacht. Eine Nichtanwendbarkeit muss als `N/A` mit kurzer Begruendung dokumentiert werden.
+>
+> **EN:** This checklist is generic and project-independent. It is intended as a training, review, and hardening baseline. Non-applicability must be documented as `N/A` with a short rationale.
+
+## Checkliste 12 – Agentische KI in Sandbox-Umgebungen / Agentic AI in Sandbox Environments
+
+### Zweck / Purpose
+
+**DE:** Diese Checkliste prüft, ob agentische KI-Werkzeuge wie OpenCode oder Codex sicher, nachvollziehbar und nur in freigegebenen Sandbox-Umgebungen eingesetzt werden. Sie ergänzt die Regeln zur KI-Codeerzeugung, weil Agenten selbständig Dateien ändern, Befehle ausführen und Projektkontext lesen können.
+
+**EN:** This checklist verifies that agentic AI tools such as OpenCode or Codex are used securely, traceably, and only in approved sandbox environments. It extends the rules for AI-assisted code generation because agents can change files, run commands, and read project context.
+
+### Geltungsbereich / Scope
+
+**DE:** Pflicht für jedes Projekt, in dem agentische KI für Analyse, Spezifikation, Planung, Refaktorierung, Tests oder Codeänderungen eingesetzt wird. Die Checkliste gilt auch für Sandbox-Umgebungen, die noch in der Feinabstimmung sind.
+
+**EN:** Mandatory for every project that uses agentic AI for analysis, specification, planning, refactoring, tests, or code changes. The checklist also applies to sandbox environments that are still being tuned.
+
+### Mitgeltende Dokumente / Related Documents
+
+- RL Sichere-Entwicklung, Abschnitt „Agentische KI in Sandbox-Umgebungen" (ab Version 2.2.0)
+- CL_KI-Codeerzeugung
+- CL_Sichere-Entwicklungsumgebung
+- GitHub Spec Kit und projektlokale Spec-Kit-Artefakte
+- Governance-Presets: `security-governance`, `architecture-governance`, `isaqb-architecture-governance`, `a11y-governance`, `cross-platform-governance`, `agent-parity-governance`
+- ISO/IEC 27001:2022 Annex A: A.5.23, A.8.25, A.8.28, A.8.31
+- NIST AI Risk Management Framework (AI RMF 1.0)
+- OWASP Top 10 for Large Language Model Applications
+- Beispielhafte Sandbox-Referenz: `ade-dev-sandbox`
+
+#### URL-/Ablageverweise / URLs and Storage Locations
+
+**DE:** Diese Links helfen beim Review. Projekt- oder organisationsinterne Dokumente koennen als lokale Arbeitskopie oder als Verweis auf den festgelegten Ablageort ergaenzt werden.
+
+**EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
+
+- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md)
+- **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
+- **GitHub Spec Kit Presets:** [offizielle Spec-Kit-Preset-Referenz / official Spec Kit preset reference](https://github.github.com/spec-kit/reference/presets.html)
+- **Spec-Kit Community Presets:** [Community-Presets im GitHub-Spec-Kit-Repository / community presets in the GitHub Spec Kit repository](https://github.com/github/spec-kit/blob/main/docs/community/presets.md)
+- **Beispielhafte Sandbox-Referenz:** `ade-dev-sandbox` als lokale Arbeitskopie in Feinabstimmung / local working copy under tuning
+
+### Bewertung und Dokumentation / Assessment and Documentation
+
+**DE:** Jeder Prüfpunkt bekommt genau einen Status. Die Begründung nennt den geprüften Projektpfad, die Sandbox-Art, das eingesetzte Werkzeug und die relevante Evidenz.
+
+**EN:** Each checklist item gets exactly one status. The explanation names the checked project path, sandbox type, tool, and relevant evidence.
+
+- **Erfüllt / Fulfilled:** Die Anforderung ist umgesetzt und prüfbar belegt.
+- **Nicht erfüllt / Not fulfilled:** Die Anforderung fehlt oder der Nachweis fehlt. Es muss eine Aufgabe mit Verantwortlicher Person und Termin geben.
+- **Nicht anwendbar / Not applicable:** Der Punkt passt nicht zum Projekt. Die Begründung muss konkret sein.
+
+**Pflichtfelder je Prüfpunkt / Required fields per item:** Status, Begründung, Evidenzpfad oder Link, nächste Maßnahme mit Verantwortlicher Person und Zieltermin.
+
+### Durchführungshinweise / Implementation Guidance
+
+**DE:** Prüfe reale Artefakte, nicht nur Absichtserklärungen. Geeignete Nachweise sind Sandbox-Dokumentation, Container- oder VM-Konfiguration, Mount-Liste, Tool-Konfiguration, Spec-Kit-Verzeichnis, Preset-Liste, Preset-Versionen und Prioritäten, Preset-Update-Protokoll, Pull Request, Review-Protokoll und Ticket.
+
+**EN:** Check real artefacts, not only intent statements. Suitable evidence includes sandbox documentation, container or VM configuration, mount list, tool configuration, Spec-Kit directory, preset list, preset versions and priorities, preset update record, pull request, review record, and ticket.
+
+**DE:** Jeder Prüfpunkt muss deshalb drei Fragen beantworten: Was bedeutet die Anforderung im Projektalltag? Was ist konkret zu tun oder zu entscheiden? Welcher Nachweis zeigt das Ergebnis? Verwende Standard-IDs, Toolnamen und Abkürzungen nur zusammen mit einer kurzen Erklärung in Alltagssprache. Wenn ein Punkt für Auszubildende oder neue Teammitglieder nicht selbsterklärend ist, ergänze eine kurze Erklärung in der Begründung.
+
+**EN:** Each item must therefore answer three questions: What does the requirement mean in daily project work? What exactly must be done or decided? Which evidence shows the result? Use standard IDs, tool names, and abbreviations only together with a short plain-language explanation. If an item is not self-explanatory for apprentices or new team members, add a short explanation in the rationale.
+
+### Beispiel / Example
+
+**DE:** Ein Projekt nutzt OpenCode oder Codex in einer Container-Sandbox. Das Projektverzeichnis ist als Host-Mount eingebunden. Agentendaten, Caches und Zugangsdaten liegen in getrennten Sandbox-Speichern. Spec Kit ist im Projekt initialisiert, alle sechs Governance-Presets sind installiert, und der Pull Request enthält menschliches Review.
+
+**EN:** A project uses OpenCode or Codex in a container sandbox. The project directory is mounted from the host. Agent data, caches, and credentials are stored in separate sandbox storage. Spec Kit is initialized in the project, all six governance presets are installed, and the pull request contains human review.
+
+### A11Y-Hinweise / A11Y Notes
+
+**DE:** Evidenz muss textlich verständlich sein. Screenshots brauchen eine kurze Beschreibung. Linktexte müssen das Ziel beschreiben. Statuswerte dürfen nicht nur über Farbe dargestellt werden.
+
+**EN:** Evidence must be understandable as text. Screenshots need a short description. Link text must describe the target. Status values must not be shown by color alone.
+
+### Wichtige Begriffe / Key Terms
+
+**DE:** Die folgenden Begriffe kommen in dieser Checkliste vor. Die Links springen zum Glossar dieses Kapitels, damit Auszubildende und Entwickler:innen ohne Sicherheits-Spezialwissen die Begriffe direkt nachlesen können.
+
+**EN:** The following terms appear in this checklist. The links jump to this chapter's glossary so that apprentices and developers without specialist security knowledge can look them up directly.
+
+- [Agentische KI / Agentic AI](#cl-12-glossar-agentische-ki)
+- [Sandbox](#cl-12-glossar-sandbox)
+- [Container](#cl-12-glossar-container)
+- [VM / Virtuelle Maschine](#cl-12-glossar-vm)
+- [MicroVM](#cl-12-glossar-microvm)
+- [Host-Mount](#cl-12-glossar-host-mount)
+- [Isolationsnachweis / Isolation Evidence](#cl-12-glossar-isolation-evidence)
+- [Egress-Policy](#cl-12-glossar-egress-policy)
+- [Secret Store](#cl-12-glossar-secret-store)
+- [Gepinnte Werkzeuge und Modelle / Pinned Tools and Models](#cl-12-glossar-pinned-tools)
+- [Provider](#cl-12-glossar-provider)
+- [LLM / Large Language Model](#cl-12-glossar-llm)
+- [Spec Kit](#cl-12-glossar-spec-kit)
+- [SDD / Specification-Driven Development](#cl-12-glossar-sdd)
+- [Preset](#cl-12-glossar-preset)
+- [Nachweis-Matrix / Evidence Matrix](#cl-12-glossar-nachweis-matrix)
+- [Menschliche Prüfung / Human Review](#cl-12-glossar-human-review)
+- [Audit-Spur / Audit Trail](#cl-12-glossar-audit-trail)
+- [Re-Validierung / Re-Validation](#cl-12-glossar-revalidation)
+
+### Checkliste / Checklist
+
+#### 1. Initialfreigabe der Sandbox / Initial Sandbox Approval
+
+- **DE:** Die agentische KI läuft nur in einer formell freigegebenen Sandbox. Die Freigabe stammt von der oder dem Security-Verantwortlichen (Security-Verantwortliche*r) oder von der oder dem KI-Verantwortlichen. Direkte Ausführung auf dem Entwickler-Laptop, auf gemeinsam genutzten Servern oder in produktionsnahen Umgebungen ist nicht zulässig.
+- **EN:** Agentic AI runs only in a formally approved sandbox. Approval is given by the Information Security Officer (Security-Verantwortliche*r) or the AI Officer (KI-Verantwortliche*r). Direct execution on developer laptops, on shared servers, or in production-near environments is not allowed.
+- **Akzeptanz / Acceptance:** Freigabe-Notiz nennt Sandbox-Typ (gemäß RL-Typologie), technischen Identifikator (zum Beispiel Image-Digest oder VM-Snapshot-Hash), genehmigte Werkzeuge und Modelle, genehmigte Mount-Liste, verantwortliche Person und Ablaufdatum. / Approval note states sandbox type (per guideline typology), technical identifier (for example image digest or VM snapshot hash), approved tools and models, approved mount list, responsible person, and expiry date.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Pfad, Link, Ticket oder Konfiguration nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name path, link, ticket, or configuration. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 2. Begrenzte Host-Mounts / Limited Host Mounts
+
+- **DE:** Codeänderungen erfolgen nur über ausdrücklich gemountete Host-Verzeichnisse. Der Agent hat keinen allgemeinen Zugriff auf Home-Verzeichnis, Desktop, Downloads oder andere projektfremde Pfade.
+- **EN:** Code changes happen only through explicitly mounted host directories. The agent has no general access to the home directory, desktop, downloads, or unrelated paths.
+- **Akzeptanz / Acceptance:** Mount-Liste nennt Host-Pfad, Sandbox-Pfad, Zweck und Schreibrechte. / Mount list names host path, sandbox path, purpose, and write permissions.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Mount-Konfiguration oder Betriebsdokument nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name mount configuration or operations document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 3. Trennung von Agentendaten und Projektcode / Separation of Agent Data and Project Code
+
+- **DE:** Agentendaten, Sitzungen, Caches und lokale Werkzeugzustände liegen nicht im Projekt-Repository. Sie werden in getrennten Sandbox-Speichern oder nicht versionierten lokalen Bereichen gehalten.
+- **EN:** Agent data, sessions, caches, and local tool state are not stored in the project repository. They are kept in separate sandbox storage or unversioned local areas.
+- **Akzeptanz / Acceptance:** Repository-Status zeigt keine Agenten-Caches oder privaten Sitzungsdaten. / Repository status shows no agent caches or private session data.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Git-Status, Ignore-Regeln oder Speicherbeschreibung nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name Git status, ignore rules, or storage description. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 4. Schutz von Geheimnissen / Secrets Protection
+
+- **DE:** Secrets, API-Keys, Token, Kundendaten und personenbezogene Daten werden nicht in Prompts, Logs, Screenshots oder Projektdateien übernommen. Secret-Dateien sind lokal geschützt und werden nicht committed. Geheimnisse werden über einen Secret Store oder geschützte Umgebungsvariablen in die Sandbox eingebracht, nicht als Klartext-Datei im Projektartefakt.
+- **EN:** Secrets, API keys, tokens, customer data, and personal data are not copied into prompts, logs, screenshots, or project files. Secret files are locally protected and not committed. Secrets are injected into the sandbox through a secret store or protected environment variables, not as plain-text files within the project artefact.
+- **Akzeptanz / Acceptance:** Secret-Schutz ist dokumentiert; Git-Status und Secret-Scan (zum Beispiel `gitleaks`, `trufflehog`) sind unauffällig; Injektionsweg ist im Sicherheitsdokument benannt. / Secret protection is documented; Git status and secret scan (for example `gitleaks`, `trufflehog`) show no findings; the injection path is named in the security document.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Scan-Ergebnis, `.gitignore`, Ticket oder Freigabe nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name scan result, `.gitignore`, ticket, or approval. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 5. Genehmigte und gepinnte Werkzeuge und Modelle / Approved and Pinned Tools and Models
+
+- **DE:** Eingesetzte agentische KI-Werkzeuge (zum Beispiel OpenCode, Codex), Provider, Modelle und Konfigurationen sind im KI-Werkzeug-Inventar der Organisation geführt und freigegeben. Werkzeug-Versionen, Container-Image-Digests und Modell-Identifikatoren sind reproduzierbar gepinnt. Selbst-aktualisierende Mechanismen sind deaktiviert.
+- **EN:** Agentic AI tools in use (for example OpenCode, Codex), providers, models, and configurations are listed in the Organisation AI tool inventory and approved. Tool versions, container image digests, and model identifiers are reproducibly pinned. Self-updating mechanisms are disabled.
+- **Akzeptanz / Acceptance:** Inventar-Eintrag, Versionsausgabe (`tool --version`), Image-Digest und Modell-IDs sind dokumentiert; im Werkzeug ist kein Auto-Update aktiv; die KI-Lieferkettentransparenz nach CL_KI-Codeerzeugung Prüfpunkt 15 ist berücksichtigt. / Inventory entry, version output (`tool --version`), image digest, and model IDs are documented; auto-update is disabled in the tool; AI supply-chain transparency per CL_KI-Codeerzeugung item 15 is taken into account.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Freigabe, Konfiguration oder Versionsausgabe nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name approval, configuration, or version output. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 6. GitHub Spec Kit und Governance-Presets / GitHub Spec Kit and Governance Presets
+
+- **DE:** Wenn agentische KI Feature-Implementierungen oder andere strukturierte Entwicklungsarbeit übernimmt, ist GitHub Spec Kit im Projekt initialisiert. Feature-Implementierungen folgen dem Spec-Driven-Development-Ablauf (SDD): `/speckit.constitution`, `/speckit.specify`, `/speckit.clarify`, `/speckit.plan`, `/speckit.checklist`, `/speckit.tasks`, `/speckit.analyze`, `/speckit.implement`. Die sechs Governance-Presets sind installiert oder eine begründete Ausnahme ist dokumentiert. Bei dauerhafter Nutzung ist `.specify/presets/` Teil der Projekt-Policy; lokale Caches wie `.specify/presets/.cache/` werden nicht versioniert. Wenn die Spec-Kit-Artefakte die anwendbaren Prüfpunkte vollständig abdecken, gelten sie als gleichwertige Nachweisführung zur separaten manuellen Ausfüllung.
+- **EN:** If agentic AI performs feature implementations or other structured development work, GitHub Spec Kit is initialized in the project. Feature implementations follow the spec-driven development (SDD) flow: `/speckit.constitution`, `/speckit.specify`, `/speckit.clarify`, `/speckit.plan`, `/speckit.checklist`, `/speckit.tasks`, `/speckit.analyze`, `/speckit.implement`. The six governance presets are installed or a justified exception is documented. For permanent use, `.specify/presets/` is part of the project policy; local caches such as `.specify/presets/.cache/` are not versioned. If the Spec Kit artefacts fully cover the applicable review points, they count as equivalent evidence instead of separate manual completion.
+- **Akzeptanz / Acceptance:** Spec-Kit-Artefakte zum Feature (`specs/<feature>/spec.md`, `plan.md`, `tasks.md`), Checklisten- oder Analyseergebnis, Preset-Liste (zum Beispiel `specify preset list`) sowie dokumentierte Preset-Versionen und Prioritäten sind vorhanden; alternativ liegt ein genehmigtes Ausnahme-Ticket vor. Detailprüfungen wie `specify preset info ...` oder `specify preset resolve ...` liegen bei Prüfbedarf vor. Eine Nachweis-Matrix oder ein eindeutiger Verweis ordnet die anwendbaren CL-Prüfpunkte den Spec-Kit-Artefakten, Review-Nachweisen und Preset-Nachweisen zu. / Spec Kit artefacts for the feature (`specs/<feature>/spec.md`, `plan.md`, `tasks.md`), checklist or analysis result, preset list (for example `specify preset list`), and documented preset versions and priorities are available; alternatively an approved exception ticket exists. Detail checks such as `specify preset info ...` or `specify preset resolve ...` are available when needed for audit. An evidence matrix or clear reference maps the applicable CL review points to the Spec Kit artefacts, review evidence, and preset evidence.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Spec-Kit-Artefakte, SDD-Checklisten- oder Analyseergebnis, Nachweis-Matrix, Preset-Liste, Preset-Versionen und Prioritäten, Projekt-Policy-Pfad `.specify/presets/`, Cache-Ausschluss oder Ticket nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name Spec Kit artefacts, SDD checklist or analysis result, evidence matrix, preset list, preset versions and priorities, project policy path `.specify/presets/`, cache exclusion, or ticket. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 7. Menschliche Prüfung / Human Review
+
+- **DE:** Agentische Änderungen werden vor Commit und Merge durch Menschen geprüft. Sicherheitskritische Logik wird zusätzlich nach dem Vier-Augen-Prinzip geprüft.
+- **EN:** Agentic changes are reviewed by humans before commit and merge. Security-critical logic is also reviewed under the four-eyes rule.
+- **Akzeptanz / Acceptance:** Pull Request, Review oder Freigabeprotokoll zeigt Prüfumfang und Ergebnis. / Pull request, review, or approval record shows review scope and result.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _PR, Review-Protokoll oder Ticket nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name PR, review record, or ticket. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 8. Audit-Spur und Nachvollziehbarkeit / Audit Trail and Traceability
+
+- **DE:** Die Agentennutzung ist nachvollziehbar. Dokumentiert werden Werkzeug, Sandbox-Typ, Sandbox-Identifikator (zum Beispiel Image-Digest oder VM-Snapshot-Hash), Projektpfad, Zeitraum, verantwortliche Person, Ziel der Änderung, Review-Ergebnis und relevante Spec-Kit-Artefakte.
+- **EN:** Agent use is traceable. Document the tool, sandbox type, sandbox identifier (for example image digest or VM snapshot hash), project path, time period, responsible person, purpose of the change, review result, and relevant Spec-Kit artefacts.
+- **Akzeptanz / Acceptance:** Audit-Eintrag oder Projektakte enthält alle Mindestangaben einschließlich des technischen Sandbox-Identifikators. / Audit entry or project record contains all minimum information including the technical sandbox identifier.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Audit-Eintrag, Projektakte, Ticket oder PR nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name audit entry, project record, ticket, or PR. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 9. Sandbox-Typologie und Isolationsnachweis / Sandbox Typology and Isolation Evidence
+
+- **DE:** Die Sandbox gehört zu einem der in der Richtlinie definierten Typen: Container-Sandbox, MicroVM-Sandbox, klassische VM-Sandbox oder dedizierter Workstation-Host. Andere Isolationsmechanismen sind zulässig, wenn ein vergleichbares Schutzniveau im Sicherheits- oder Architekturdokument der Sandbox nachgewiesen ist.
+- **EN:** The sandbox belongs to one of the types defined in the guideline: container sandbox, microVM sandbox, classic VM sandbox, or dedicated workstation host. Other isolation mechanisms are allowed if a comparable protection level is evidenced in the sandbox security or architecture document.
+- **Akzeptanz / Acceptance:** Sandbox-Typ ist benannt; technischer Isolationsmechanismus (zum Beispiel nicht-privilegierte Container-Ausführung, hardware-unterstützte Virtualisierung) und Schutzniveau-Begründung sind dokumentiert. / Sandbox type is named; technical isolation mechanism (for example unprivileged container execution, hardware-assisted virtualization) and protection-level reasoning are documented.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Architektur- oder Sicherheitsdokument der Sandbox nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name sandbox architecture or security document. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 10. Netzwerkrestriktion / Network Restriction
+
+- **DE:** Netzwerkzugriffe der Sandbox sind auf die nötigen Ziele beschränkt: genehmigte Modell-Endpunkte, genehmigte Paketregistries, projektbezogene VCS-Endpunkte. Andere ausgehende Verbindungen sind blockiert oder dokumentiert begründet.
+- **EN:** Sandbox network access is restricted to the required targets: approved model endpoints, approved package registries, project-related VCS endpoints. Other outbound connections are blocked or documented with reasoning.
+- **Akzeptanz / Acceptance:** Egress-Policy ist beschrieben (Allow-List, Proxy oder begründete Offenheit mit Ablaufdatum); Konfiguration ist nachvollziehbar (zum Beispiel Compose-/Pod-Network-Block, Firewall-Regel). / Egress policy is described (allow-list, proxy, or documented openness with expiry date); configuration is traceable (for example Compose/Pod network block, firewall rule).
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Netzwerkkonfiguration, Proxy-Regel, Sicherheitsentscheid nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name network configuration, proxy rule, or security decision. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 11. Re-Validierungsstand und Lebenszyklus / Re-Validation Status and Lifecycle
+
+- **DE:** Die letzte Freigabe ist höchstens zwölf Monate alt. Außerplanmäßige Re-Validierungen nach Änderungen an Werkzeug-Versionen, Modell-Liste, Mount-Liste, Provider-Auswahl oder Netzwerkrichtlinie sind nachweisbar. Ein Entzug der Freigabe ist mit Datum, Grund und Wiederinbetriebnahme-Bedingung dokumentiert, falls eingetreten.
+- **EN:** The latest approval is at most twelve months old. Unscheduled re-validations after changes to tool versions, model list, mount list, provider selection, or network policy are evidenced. A withdrawal of approval, if it occurred, is documented with date, reason, and re-entry condition.
+- **Akzeptanz / Acceptance:** Freigabedatum und Ablaufdatum sind dokumentiert; bei Pilotbetrieb ist der Pilotcharakter benannt; Re-Validierungs- und Entzugsereignisse sind im Sicherheitsregister oder Projektakte vermerkt. / Approval date and expiry date are documented; for pilot operation the pilot status is named; re-validation and withdrawal events are recorded in the security register or project record.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Freigabe-Notiz, Re-Validierungsprotokoll oder Sicherheitsregister-Eintrag nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name approval note, re-validation record, or security-register entry. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+#### 12. Preset-Aktualisierung und Inhaltsabdeckung / Preset Updates and Content Coverage
+
+- **DE:** Die sechs Spec-Kit-Governance-Presets werden mindestens quartalsweise und anlassbezogen auf Aktualität geprüft. Anlassbezogen ist die Prüfung nötig, wenn sich Preset-Kataloge, Preset-Inhalte, Prioritäten, projektlokale Overrides oder RL-/CL-Dokumentation zu Spec Kit ändern. Preset-Änderungen werden nicht automatisch übernommen, sondern mit Quelle, Version, Priorität, wirksamer Auflösung und Review-Ergebnis dokumentiert.
+- **EN:** The six Spec Kit governance presets are checked for currency at least quarterly and when triggered by a relevant change. A triggered check is required when preset catalogs, preset contents, priorities, project-local overrides, or RL/CL documentation about Spec Kit change. Preset changes are not applied automatically; they are documented with source, version, priority, effective resolution, and review result.
+- **Preset-zu-CL-Mapping / Preset-to-CL mapping:** `security-governance` -> CL_01, CL_05, CL_06, CL_07, CL_08, CL_09; `architecture-governance` -> CL_02, CL_04; `isaqb-architecture-governance` -> CL_02; `a11y-governance` -> A11Y-Hinweise im Sammelband, CL_06 bei Advisories, CL_09 bei didaktischen Kommentaren, CL_10 bei CLI-/Tooling-Artefakten; `cross-platform-governance` -> CL_08 und CL_10; `agent-parity-governance` -> CL_12, AGENTS.md und Spec-Kit-Templates.
+- **Akzeptanz / Acceptance:** `specify preset list`, `specify preset info ...` und relevante `specify preset resolve ...`-Nachweise liegen vor; Preset-Quelle oder Katalogeintrag wurde vor Installation oder Aktualisierung geprüft; Update- oder Ausnahme-Ticket nennt Review-Datum, verantwortliche Person und betroffene RL-/CL-Prüfpunkte. Die Mapping-Prüfung nennt Preset-Versionen, Prioritäten, wirksame Auflösung, Evidence-Matrix, offene Mapping-Lücken und begründete N/A-Entscheidungen. Sie zeigt, ob die Spec-Kit-Dokumentation die separate Checklisten-Ausfüllung vollständig ersetzt oder welche Prüfpunkte separat nachzudokumentieren sind. / `specify preset list`, `specify preset info ...`, and relevant `specify preset resolve ...` evidence are available; the preset source or catalog entry was reviewed before installation or update; the update or exception ticket names the review date, responsible person, and affected RL/CL review points. The mapping check names preset versions, priorities, effective resolution, evidence matrix, open mapping gaps, and justified N/A decisions. It shows whether the Spec Kit documentation fully replaces separate checklist completion or which review points need separate follow-up documentation.
+- **Bewertung / Assessment:**
+  - [ ] erfüllt / fulfilled
+  - [ ] nicht erfüllt / not fulfilled
+  - [ ] nicht anwendbar / not applicable
+- **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
+- **Evidenz / Evidence:** _Preset-Liste, Info-/Resolve-Ausgabe, Update-Protokoll, Mapping, PR oder Ausnahme-Ticket nennen. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name preset list, info/resolve output, update record, mapping, PR, or exception ticket. If the evidence is not self-explanatory, briefly describe what it shows._
+- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+
+### Akzeptanzkriterien gesamt / Overall Acceptance
+
+**DE:** Erfüllt, wenn agentische KI nur in formell freigegebenen Sandbox-Umgebungen läuft, der Sandbox-Typ und der Isolationsnachweis dokumentiert sind, Host-Mounts und Netzwerkzugriffe begrenzt sind, Werkzeuge und Modelle reproduzierbar gepinnt sind, Secrets über einen Secret Store oder geschützte Umgebungsvariablen eingebracht werden, Feature-Implementierungen über Spec Kit mit SDD-Ablauf und nachweisbar dokumentierten Governance-Presets gesteuert werden oder eine Ausnahme dokumentiert ist, Preset-Aktualität und Inhaltsabdeckung geprüft sind, eine vollständige Nachweis-Matrix die anwendbaren Prüfpunkte abdeckt oder offene Punkte separat dokumentiert, menschliches Review nachweisbar erfolgt und die Freigabe gültig (höchstens zwölf Monate alt) ist.
+
+**EN:** Fulfilled when agentic AI runs only in formally approved sandbox environments, sandbox type and isolation evidence are documented, host mounts and network access are limited, tools and models are reproducibly pinned, secrets are injected via a secret store or protected environment variables, feature implementations are controlled through Spec Kit with the SDD flow and governance presets documented with evidence or an exception is documented, preset currency and content coverage are checked, a complete evidence matrix covers the applicable review points or open points are documented separately, human review is evidenced, and the approval is valid (no older than twelve months).
+
+### Glossar / Glossary
+
+**DE:** Dieses Glossar erklärt die wichtigsten Begriffe dieser Checkliste in Alltagssprache. Es ändert keine Anforderungen, sondern macht die vorhandenen Prüfpunkte leichter verständlich.
+
+**EN:** This glossary explains the most important terms in this checklist in plain language. It does not change requirements; it makes the existing review items easier to understand.
+
+<a id="cl-12-glossar-agentische-ki"></a>
+
+#### Agentische KI / Agentic AI
+
+- **DE:** Agentische KI kann mehrere Schritte selbst planen und Werkzeuge ausführen, zum Beispiel Dateien ändern oder Befehle starten. Darum braucht sie klare Grenzen und Review.
+- **EN:** Agentic AI can plan several steps and run tools itself, for example changing files or starting commands. Therefore it needs clear limits and review.
+
+<a id="cl-12-glossar-sandbox"></a>
+
+#### Sandbox
+
+- **DE:** Eine Sandbox ist eine begrenzte Umgebung für riskante oder kontrollpflichtige Arbeiten. Sie trennt Agent, Werkzeuge und Projektzugriffe vom normalen Arbeitsplatz.
+- **EN:** A sandbox is a limited environment for risky or controlled work. It separates agent, tools, and project access from the normal workstation.
+
+<a id="cl-12-glossar-container"></a>
+
+#### Container
+
+- **DE:** Ein Container ist eine isolierte Laufzeitumgebung für Prozesse und Abhängigkeiten. Er ist leichter als eine VM, aber nicht automatisch eine vollständige Sicherheitsgrenze.
+- **EN:** A container is an isolated runtime environment for processes and dependencies. It is lighter than a VM but not automatically a complete security boundary.
+
+<a id="cl-12-glossar-vm"></a>
+
+#### VM / Virtuelle Maschine
+
+- **DE:** Eine VM ist ein virtueller Computer mit eigenem Betriebssystem. Sie kann stärkere Trennung bieten als ein einfacher Container.
+- **EN:** A VM is a virtual computer with its own operating system. It can provide stronger separation than a simple container.
+
+<a id="cl-12-glossar-microvm"></a>
+
+#### MicroVM
+
+- **DE:** Eine MicroVM ist eine besonders schlanke virtuelle Maschine. Sie wird genutzt, wenn kurze Startzeit und stärkere Isolation kombiniert werden sollen.
+- **EN:** A MicroVM is a very lightweight virtual machine. It is used when fast startup and stronger isolation should be combined.
+
+<a id="cl-12-glossar-host-mount"></a>
+
+#### Host-Mount
+
+- **DE:** Ein Host-Mount bindet ein Verzeichnis des Host-Systems in eine Sandbox oder einen Container ein. Er muss begrenzt sein, weil darüber Dateien verändert werden können.
+- **EN:** A host mount connects a host-system directory into a sandbox or container. It must be limited because files can be changed through it.
+
+<a id="cl-12-glossar-isolation-evidence"></a>
+
+#### Isolationsnachweis / Isolation Evidence
+
+- **DE:** Ein Isolationsnachweis zeigt, welche technische Trennung wirklich aktiv ist. Beispiele sind Container-/VM-Konfiguration, Netzwerkregeln oder Sicherheitsprofile.
+- **EN:** Isolation evidence shows which technical separation is actually active. Examples are container or VM configuration, network rules, or security profiles.
+
+<a id="cl-12-glossar-egress-policy"></a>
+
+#### Egress-Policy
+
+- **DE:** Eine Egress-Policy regelt ausgehende Netzwerkverbindungen. Sie legt fest, welche Ziele eine Sandbox oder Anwendung erreichen darf.
+- **EN:** An egress policy controls outbound network connections. It defines which destinations a sandbox or application may reach.
+
+<a id="cl-12-glossar-secret-store"></a>
+
+#### Secret Store
+
+- **DE:** Ein Secret Store speichert Geheimnisse wie Passwörter, API-Schlüssel oder Tokens geschützt. Geheimnisse sollen nicht im Code, in Logs oder in Tickets stehen.
+- **EN:** A secret store protects secrets such as passwords, API keys, or tokens. Secrets should not be in code, logs, or tickets.
+
+<a id="cl-12-glossar-pinned-tools"></a>
+
+#### Gepinnte Werkzeuge und Modelle / Pinned Tools and Models
+
+- **DE:** Gepinnt bedeutet, dass Versionen festgelegt sind. Dadurch ist später nachvollziehbar, mit welchem Werkzeug, Modell oder Image gearbeitet wurde.
+- **EN:** Pinned means that versions are fixed. This makes it traceable later which tool, model, or image was used.
+
+<a id="cl-12-glossar-provider"></a>
+
+#### Provider
+
+- **DE:** Ein Provider ist ein externer oder interner Dienstanbieter, zum Beispiel für Cloud, KI-Modell, Paketregistry oder Identitätsdienst.
+- **EN:** A provider is an external or internal service provider, for example for cloud, AI model, package registry, or identity service.
+
+<a id="cl-12-glossar-llm"></a>
+
+#### LLM / Large Language Model
+
+- **DE:** Ein LLM ist ein großes Sprachmodell. Es erzeugt Text oder Code aus Prompts, versteht aber nicht automatisch Projektregeln oder Sicherheitsanforderungen.
+- **EN:** An LLM is a large language model. It generates text or code from prompts but does not automatically understand project rules or security requirements.
+
+<a id="cl-12-glossar-spec-kit"></a>
+
+#### Spec Kit
+
+- **DE:** Spec Kit ist ein werkzeuggestützter Ablauf für spezifikationsgetriebene Entwicklung. Es erzeugt und nutzt Markdown-Artefakte wie Spezifikation, Plan, Aufgaben und Analysen.
+- **EN:** Spec Kit is a tool-supported flow for specification-driven development. It creates and uses Markdown artefacts such as specification, plan, tasks, and analyses.
+
+<a id="cl-12-glossar-sdd"></a>
+
+#### SDD / Specification-Driven Development
+
+- **DE:** SDD bedeutet spezifikationsgetriebene Entwicklung. Erst werden Anforderungen, Plan und Prüfpunkte dokumentiert, danach wird umgesetzt.
+- **EN:** SDD means specification-driven development. Requirements, plan, and review points are documented first; implementation follows afterwards.
+
+<a id="cl-12-glossar-preset"></a>
+
+#### Preset
+
+- **DE:** Ein Preset ist eine vordefinierte Regel- oder Vorlagensammlung. Bei Spec Kit steuert es Governance, Prüfpunkte und erwartete Artefakte.
+- **EN:** A preset is a predefined set of rules or templates. In Spec Kit it controls governance, review points, and expected artefacts.
+
+<a id="cl-12-glossar-nachweis-matrix"></a>
+
+#### Nachweis-Matrix / Evidence Matrix
+
+- **DE:** Eine Nachweis-Matrix verbindet Prüfpunkte mit konkreten Belegen. Sie zeigt, welches Dokument, Ticket oder Artefakt welchen Prüfpunkt abdeckt.
+- **EN:** An evidence matrix connects review points with concrete evidence. It shows which document, ticket, or artefact covers which review item.
+
+<a id="cl-12-glossar-human-review"></a>
+
+#### Menschliche Prüfung / Human Review
+
+- **DE:** Menschliche Prüfung bedeutet, dass eine verantwortliche Person das Ergebnis bewertet. Bei KI-Ergebnissen ersetzt diese Prüfung kein Tool automatisch.
+- **EN:** Human review means that a responsible person assesses the result. For AI outputs, this review is not automatically replaced by a tool.
+
+<a id="cl-12-glossar-audit-trail"></a>
+
+#### Audit-Spur / Audit Trail
+
+- **DE:** Eine Audit-Spur zeigt nachvollziehbar, wer was wann getan oder entschieden hat. Sie hilft bei Prüfung, Fehlersuche und Verantwortung.
+- **EN:** An audit trail traceably shows who did or decided what and when. It helps with review, troubleshooting, and accountability.
+
+<a id="cl-12-glossar-revalidation"></a>
+
+#### Re-Validierung / Re-Validation
+
+- **DE:** Re-Validierung ist eine erneute Prüfung nach Zeitablauf oder Änderung. Sie stellt sicher, dass eine frühere Freigabe noch passt.
+- **EN:** Re-validation is a renewed review after time passes or changes occur. It ensures that an earlier approval still fits.
+
+### Versionshistorie / Version History
+
+- **Version 1.0 (2026-05-07):** Erstfassung zur agentischen KI-Nutzung in Sandbox-Umgebungen / Initial version for agentic AI use in sandbox environments
+- **Version 1.1 (2026-05-14):** Prüfpunkte 1, 4, 5 und 8 mit Sandbox-Identifikator, Secret-Store-Pflicht und reproduzierbarem Pinning präzisiert; drei neue Prüfpunkte ergänzt: 9 Sandbox-Typologie und Isolationsnachweis, 10 Netzwerkrestriktion, 11 Re-Validierungsstand und Lebenszyklus; Mitgeltende Dokumente um ISO/IEC 27001:2022 Annex A, NIST AI RMF und OWASP LLM Top 10 ergänzt; synchron mit RL Sichere-Entwicklung v2.2.0. / Refined checklist items 1, 4, 5, and 8 with sandbox identifier, secret-store requirement, and reproducible pinning; added three new checklist items: 9 sandbox typology and isolation evidence, 10 network restriction, 11 re-validation status and lifecycle; extended related documents with ISO/IEC 27001:2022 Annex A, NIST AI RMF, and OWASP LLM Top 10; synchronized with RL Sichere-Entwicklung v2.2.0.
+- **Version 1.2 (2026-05-19):** Prüfpunkt 1 erweitert: Die Initialfreigabe der Sandbox kann neben der oder dem Security-Verantwortlichen (Security-Verantwortliche*r) auch durch die oder den KI-Verantwortlichen erteilt werden; synchron mit RL Sichere-Entwicklung v2.3.0. / Extended checklist item 1: initial sandbox approval may be granted not only by the Information Security Officer (Security-Verantwortliche*r) but also by the AI Officer (KI-Verantwortliche*r); synchronized with RL Sichere-Entwicklung v2.3.0.
+- **Version 1.3 (2026-05-19):** Prüfpunkt 5 um einen Querverweis auf die KI-Lieferkettentransparenz (CL_KI-Codeerzeugung Prüfpunkt 15) erweitert; synchron mit RL Sichere-Entwicklung v2.4.0. / Extended checklist item 5 with a cross-reference to AI supply-chain transparency (CL_KI-Codeerzeugung item 15); synchronized with RL Sichere-Entwicklung v2.4.0.
+- **Version 1.4 (2026-05-22):** Prüfpunkt 6 präzisiert: Feature-Implementierungen mit agentischer KI folgen dem Spec-Kit-SDD-Ablauf und weisen Spec-Kit-Artefakte, Analyse- oder Checklisten-Ergebnisse sowie die Governance-Presets nach; synchron mit RL Sichere-Entwicklung v2.5.0. / Refined checklist item 6: feature implementations with agentic AI follow the Spec Kit SDD flow and evidence Spec Kit artefacts, analysis or checklist results, and the governance presets; synchronized with RL Sichere-Entwicklung v2.5.0.
+- **Version 1.5 (2026-06-12):** Prüfpunkt 6 präzisiert: Preset-Liste, Preset-Versionen und Prioritäten sind als Nachweise zu führen; `.specify/presets/` ist bei dauerhafter Nutzung Projekt-Policy, lokale Preset-Caches werden nicht versioniert; synchron mit RL Sichere-Entwicklung v2.6.0. / Refined checklist item 6: preset list, preset versions, and priorities must be evidenced; `.specify/presets/` is project policy for permanent use, local preset caches are not versioned; synchronized with RL Sichere-Entwicklung v2.6.0.
+- **Version 1.6 (2026-06-14):** Prüfpunkt 12 ergänzt: Spec-Kit-Governance-Presets werden mindestens quartalsweise und anlassbezogen auf Aktualität, wirksame Auflösung und Abdeckung durch RL-/CL-Prüfpunkte geprüft; synchron mit RL Sichere-Entwicklung v2.7.0. / Added checklist item 12: Spec Kit governance presets are checked at least quarterly and on relevant changes for currency, effective resolution, and coverage by RL/CL review points; synchronized with RL Sichere-Entwicklung v2.7.0.
+- **Version 1.7 (2026-06-14):** Prüfpunkt 6 und 12 präzisiert: Vollständige Spec-Kit-Artefakte mit Nachweis-Matrix gelten als gleichwertige Nachweisführung und können die separate manuelle Checklisten-Ausfüllung ersetzen; synchron mit RL Sichere-Entwicklung v2.8.0. / Refined checklist items 6 and 12: complete Spec Kit artefacts with an evidence matrix count as equivalent evidence and may replace separate manual checklist completion; synchronized with RL Sichere-Entwicklung v2.8.0.
+- **Version 1.8 (2026-06-15):** Prüfpunkt 12 mit erweitertem Preset-zu-CL-Mapping, Preset-Versionen, Prioritäten, wirksamer Auflösung und offenen Mapping-Lücken präzisiert; synchron mit RL Sichere-Entwicklung v2.9.0. / Refined item 12 with extended preset-to-CL mapping, preset versions, priorities, effective resolution, and open mapping gaps; synchronized with RL Sichere-Entwicklung v2.9.0.
+- **Version 1.9 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
+
+- **Version 1.10 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
+
+---
+
+
+
+---
+
+## Versionshistorie / Version History
+
+| Version | Datum / Date | Aenderung / Change |
+|---|---|---|
+| 1.0.0 | 2026-06-17 | Generische, organisationsneutrale Erstfassung aus Richtlinie und Checklisten abgeleitet; ISO-/Secure-Development-Schaerfe beibehalten. / Generic, organization-neutral first version derived from guideline and checklists; ISO/secure-development rigor preserved. |
