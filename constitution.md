@@ -409,6 +409,10 @@ Mandatory security documentation (Principle XII extensions):
   (`security-quality-scenarios-template.md`) following iSAQB CPSA-F quality
   attribute scenario methodology to make security requirements testable and
   measurable.
+- Secure-code reviews MUST use the matching checklist chapters from
+  `docs/secure-development/` as the reusable review and hardening baseline
+  when the checklist scope applies. The filled project evidence remains in
+  `docs/security/` or the active Spec-Kit artefacts.
 - Templates for these documents are located in `.specify/templates/` and
   project-specific instances are maintained in `docs/security/`.
 
@@ -499,6 +503,10 @@ Mandatory security documentation (Principle XIII extensions):
   authentication strategy, authorisation model, encryption (in-transit and
   at-rest), input validation, error handling, logging/audit trail, dependency
   management, and deployment security.
+- Secure-architecture reviews MUST use the matching checklist chapters from
+  `docs/secure-development/` as the reusable review and hardening baseline
+  when the checklist scope applies. The filled project evidence remains in
+  `docs/security/` or the active Spec-Kit artefacts.
 - Templates for these documents are located in `.specify/templates/` and
   project-specific instances are maintained in `docs/security/`.
 - S-ADRs are stored as individual files in `docs/security/adr/`.
@@ -509,6 +517,13 @@ The following standards matrix defines which secure-development and
 software-architecture standards are mandatory, recommended, or dependent on
 the project type. Every Level-2 feature, plan, task list, review, and release
 MUST use this matrix to determine which standards apply.
+
+The generic secure-development guide in `docs/secure-development/` is the
+reusable training, review, and hardening baseline for Level-2 work. Spec-Kit
+runs MUST consider the relevant guideline, individual checklist, and compendium
+items as review context. The guide does not replace project-specific evidence
+in `docs/security/`; it defines the shared assessment logic, checklist context,
+and `N/A` rationale expectations.
 
 | Standard / guide | Priority | Applies when | Minimum expectation |
 |---|---|---|---|
