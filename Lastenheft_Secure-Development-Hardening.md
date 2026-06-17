@@ -3,6 +3,7 @@
 **Repository:** TuiVision  
 **Dokumenttyp:** Spec-Kit Intake / Lastenheft  
 **Status:** vorbereitet fuer separaten Spec-Kit-Haertungslauf  
+**Empfohlene Prioritaet:** nach `Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.md`, vor `Lastenheft_Wave1-Visual-Component-Remediation.md`
 **Stand:** 2026-06-17
 
 ## 1. Zweck
@@ -10,6 +11,8 @@
 Dieses Lastenheft beschreibt den Eingangsumfang fuer einen spaeteren Spec-Kit-Haertungslauf. Ziel ist zu pruefen, ob TuiVision den Vorgaben aus `docs/secure-development/`, der Projekt-Constitution und den installierten Governance-Presets genuegt, und wo Nachweise oder Haertungen noch fehlen.
 
 Das Lastenheft selbst nimmt keine Umsetzung vor. Es erzeugt nur den verbindlichen Pruef- und Dokumentationsrahmen fuer den spaeteren Lauf.
+
+Der Lauf ist bewusst als querschnittlicher Nachweis- und Haertungsschritt zwischen der didaktischen Inline-Code-Kommentar-Haertung und der sichtbaren Wave-1-Remediation eingeordnet. Dadurch wird die neue sichere-Entwicklung-Basis projektweit gegen TuiVision geprueft, bevor weitere sichtbare Beispiel- und Framework-Arbeit auf ihr aufbaut.
 
 ## 2. Ausgangslage
 
