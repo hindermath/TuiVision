@@ -8962,8 +8962,8 @@ whose output flows into production code or production-near scripts.
   (AWS Access Keys `AKIA[0-9A-Z]{16}`, GitHub PAT `ghp_*`/`gho_*`,
   Slack `xox[baprs]-*`, OpenAI `sk-*`, Stripe `sk_live_*`, Twilio AC*,
   generic `Bearer eyJ...`-Tokens), Datenbank-Connection-Strings mit
-  Credentials, private SSH-Keys (`-----BEGIN OPENSSH PRIVATE KEY-----`,
-  `-----BEGIN RSA PRIVATE KEY-----`), TLS-Privatschlüssel; (b)
+  Credentials, private SSH-Keys (Marker wie `OPENSSH PRIVATE KEY` oder
+  `RSA PRIVATE KEY`), TLS-Privatschlüssel; (b)
   personenbezogene Daten DSGVO Art. 4(1) — Namen + E-Mail + Adresse +
   Telefon + Geburtsdatum + IBAN + Steuer-ID + Sozialversicherungsnummer
   + IP-Adressen mit Personenbezug + Standortdaten; (c) besondere
@@ -9010,8 +9010,8 @@ whose output flows into production code or production-near scripts.
   `AKIA[0-9A-Z]{16}`, GitHub PAT `ghp_*`/`gho_*`, Slack
   `xox[baprs]-*`, OpenAI `sk-*`, Stripe `sk_live_*`, Twilio AC*,
   generic `Bearer eyJ...` tokens), database connection strings with
-  credentials, private SSH keys (`-----BEGIN OPENSSH PRIVATE KEY-----`,
-  `-----BEGIN RSA PRIVATE KEY-----`), TLS private keys; (b) personal
+  credentials, private SSH keys (markers such as `OPENSSH PRIVATE KEY`
+  or `RSA PRIVATE KEY`), TLS private keys; (b) personal
   data per GDPR Art. 4(1) — names + email + address + phone + birthdate
   + IBAN + tax ID + social security number + IP addresses with personal
   reference + location data; (c) special categories Art. 9 — health,

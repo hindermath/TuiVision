@@ -8,23 +8,23 @@
 - Datum des Laufs / Run date:
 - Evidenzverantwortliche*r / Evidence owner:
 - Reviewende Person / Reviewer:
-- Gepruefte Standards/Kriterien / Standards or criteria checked: ISO 27001/27002 A.8.27/A.8.28, ADR, S-ADR, arc42, threat model references
+- Geprüfte Standards/Kriterien / Standards or criteria checked: ISO 27001/27002 A.8.27/A.8.28, ADR, S-ADR, arc42, threat model references
 - Entscheidung / Decision: [Applicable / N/A / Open]
 - Evidenzpfad / Evidence path:
-- N/A-Begruendung, falls nicht anwendbar / N/A rationale, if not applicable:
-- Offene Folgeaktion mit Owner und Ausloeser / Open follow-up owner and trigger:
-- Ausloeser fuer Neubewertung / Re-evaluation trigger:
+- N/A-Begründung, falls nicht anwendbar / N/A rationale, if not applicable:
+- Offene Folgeaktion mit Owner und Auslöser / Open follow-up owner and trigger:
+- Auslöser für Neubewertung / Re-evaluation trigger:
 - Belastbarkeitsnotiz / Assurance note: Diese Datei dokumentiert den konkreten Spec-Kit-Lauf als interne Audit- und Zertifizierungsvorbereitung. Sie ersetzt keine externe Auditierung, Rechtsberatung oder formale Zertifizierung.
 
 ## Audit-Evidenzmatrix / Audit Evidence Matrix
 
-| Pruefpunkt / Checkpoint | Anwendbarkeit / Applicability | Erzeugte oder verlinkte Evidenz / Evidence produced or linked | Ergebnis / Result | Restrisiko oder Begruendung / Residual risk or rationale |
+| Prüfpunkt / Checkpoint | Anwendbarkeit / Applicability | Erzeugte oder verlinkte Evidenz / Evidence produced or linked | Ergebnis / Result | Restrisiko oder Begründung / Residual risk or rationale |
 |---|---|---|---|---|
 | Spec-Kit-Lauf und Scope sind identifiziert / Spec-Kit run and scope are identified | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
 | Standard- oder Kriterienbezug ist zugeordnet / Standard or criteria mapping is recorded | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
 | Evidenzpfad ist dokumentiert / Evidence path is documented | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
-| Nichtanwendbarkeit ist begruendet / Non-applicability is justified | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
-| Offene Punkte haben Owner und Ausloeser / Open findings have owner and trigger | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Nichtanwendbarkeit ist begründet / Non-applicability is justified | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Offene Punkte haben Owner und Auslöser / Open findings have owner and trigger | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
 
 **Status**: [Vorgeschlagen / Proposed | Akzeptiert / Accepted | Veraltet / Deprecated | Ersetzt / Superseded by ADR-XXX]
 **Datum / Date**: [YYYY-MM-DD]
@@ -118,5 +118,5 @@
 - Plan: [Link oder Pfad]
 
 <!-- EN: adr-template.md
-[DE-Zusammenfassung: Template fuer Security Architecture Decision Records (S-ADR), ISO 27002 A.8.27, iSAQB-aligned.]
+[DE-Zusammenfassung: Template für Security Architecture Decision Records (S-ADR), ISO 27002 A.8.27, iSAQB-aligned.]
 -->
