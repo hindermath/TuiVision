@@ -43,6 +43,8 @@ Die Lenkung dieses Dokuments erfolgt gemäß ISO/IEC 27001:2022 Klausel 7.5 („
 - [Leitlinie für sicheres Softwaredesign](mitgeltende-dokumente/Leitlinie_Sicheres-Softwaredesign.md)
 - [BCM-/Notfallhandbuch](mitgeltende-dokumente/BCM-Notfallhandbuch.md)
 - [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.pdf)
+- [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR EN-Markdown](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.EN.md)
+- [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR DE-Lernfassung](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.DE.md)
 
 ## Mitgeltende Checklisten
 
@@ -721,6 +723,8 @@ This document is controlled according to ISO/IEC 27001:2022 clause 7.5 ("Documen
 - [Secure software design guideline](mitgeltende-dokumente/Leitlinie_Sicheres-Softwaredesign.md)
 - [BCM and emergency handbook](mitgeltende-dokumente/BCM-Notfallhandbuch.md)
 - [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.pdf)
+- [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR EN Markdown](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.EN.md)
+- [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR DE learning version](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.DE.md)
 
 ## Related Checklists
 

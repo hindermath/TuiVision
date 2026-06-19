@@ -488,7 +488,7 @@ status must not be shown by color alone.
   personenbezogener Daten, Empfängerkategorien, Drittlandsübermittlungen
   einschließlich Garantien, geplante Löschfristen, allgemeine
   Beschreibung der TOM gemäß Art. 32. Die DPIA ist mit dem RoPA-Eintrag
-  verknüpft, sodass die Auditspur eindeutig ist. Werkzeuge: organisationsinterne 
+  verknüpft, sodass die Auditspur eindeutig ist. Werkzeuge: organisationsinterne
   internes RoPA-System; alternativ DSGVO-konforme Drittsysteme; in
   Spezialfällen tabellarische Vorlagen mit Versionierung im Dokumentationsablage.
 - **EN:** Every processing of personal data is registered in the Organisation

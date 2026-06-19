@@ -26,6 +26,8 @@
 | [Leitlinie_Sicheres-Softwaredesign.md](Leitlinie_Sicheres-Softwaredesign.md) | Sicheres Design und Architekturentscheidungen / Secure design and architecture decisions |
 | [BCM-Notfallhandbuch.md](BCM-Notfallhandbuch.md) | Betriebsstabilitaet und Notfallfaehigkeit / Resilience and emergency readiness |
 | [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.pdf](THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.pdf) | CISA-Referenz zu Memory-Safe Roadmaps / CISA reference on memory-safe roadmaps |
+| [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.EN.md](THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.EN.md) | Extrahierte englische Markdown-Arbeitsfassung / Extracted English Markdown working copy |
+| [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.DE.md](THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.DE.md) | Deutsche CEFR-B2-Lernfassung fuer Auszubildende / German CEFR-B2 learning version for apprentices |
 | [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.sha256](THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.sha256) | Integritaetsnachweis fuer die lokale PDF-Kopie / Integrity evidence for the local PDF copy |
 
 ## Abgleich mit Spec-Kit-Presets / Alignment With Spec Kit Presets
