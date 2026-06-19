@@ -30,16 +30,19 @@ Die Lenkung dieses Dokuments erfolgt gemäß ISO/IEC 27001:2022 Klausel 7.5 („
 
 ## Mitgeltende Dokumente
 
-- Checkliste Secure Development Life Cycle
-- Gebrauch kryptografischer Maßnahmen
-- Kompetenzprofile
-- Leitlinie für sichere Programmierung
-- Richtlinie Secure Development Life Cycle
-- RL Changemanagement
-- RL Dienstleister- und Lieferantenbeziehungen
-- RL Testmanagement
-- RL Zugangssteuerung
-- THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR
+- [Checkliste Secure Development Life Cycle](mitgeltende-dokumente/Checkliste_Secure-Development-Life-Cycle.md)
+- [Gebrauch kryptografischer Maßnahmen](mitgeltende-dokumente/Gebrauch_kryptografischer_Massnahmen.md)
+- [Kompetenzprofile und Schulungsplan für sichere Entwicklung](mitgeltende-dokumente/Kompetenzprofile_und_Schulungsplan_Sichere-Entwicklung.md)
+- [Leitlinie für sichere Programmierung](mitgeltende-dokumente/Leitlinie_Sichere-Programmierung.md)
+- [Richtlinie Secure Development Life Cycle](mitgeltende-dokumente/Richtlinie_Secure-Development-Life-Cycle.md)
+- [Richtlinie Changemanagement](mitgeltende-dokumente/Richtlinie_Changemanagement.md)
+- [Richtlinie Dienstleister- und Lieferantenbeziehungen](mitgeltende-dokumente/Richtlinie_Dienstleister-und-Lieferantenbeziehungen.md)
+- [Richtlinie Testmanagement](mitgeltende-dokumente/Richtlinie_Testmanagement.md)
+- [Richtlinie Zugangssteuerung](mitgeltende-dokumente/Richtlinie_Zugangssteuerung.md)
+- [Datenschutzleitlinie](mitgeltende-dokumente/Datenschutzleitlinie.md)
+- [Leitlinie für sicheres Softwaredesign](mitgeltende-dokumente/Leitlinie_Sicheres-Softwaredesign.md)
+- [BCM-/Notfallhandbuch](mitgeltende-dokumente/BCM-Notfallhandbuch.md)
+- [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.pdf)
 
 ## Mitgeltende Checklisten
 
@@ -221,7 +224,7 @@ Für jeden Einsatz von Kryptografie gelten einheitliche Mindestvorgaben für Alg
 - Für langlebige Daten und Signaturen wird die Migration auf quantensichere Verfahren beobachtet (NIST PQC: ML-KEM, ML-DSA, SLH-DSA). Ein Übergangsplan wird je betroffenem Projekt geführt.
 - Mindestens jährlich werden Algorithmen, Schlüssellängen, TLS-Konfigurationen und Bibliotheksversionen gegen aktuelle BSI- und NIST-Empfehlungen geprüft.
 
-Mitgeltende Dokumente: Gebrauch kryptografischer Maßnahmen.
+Mitgeltende Dokumente: [Gebrauch kryptografischer Maßnahmen](mitgeltende-dokumente/Gebrauch_kryptografischer_Massnahmen.md).
 Mitgeltende Checkliste: CL_Krypto-Mindestvorgaben (siehe `Checklistensammelband_Sichere-Entwicklung.md`, Kapitel 03).
 
 ## Entwicklungsumgebung
@@ -247,7 +250,7 @@ Die Entwicklungsumgebung ist eine kritische Infrastruktur für die Lieferfähigk
 - **Lieferanten und externe Abhängigkeiten:** Die Verfügbarkeit externer Paketregistries, externer Identitätsanbieter und externer Code-Signaturdienste wird in den BCM-Plan einbezogen. Mirror- oder Caching-Strategien (zum Beispiel interner Nexus, Artifactory) werden bevorzugt, um Lieferkettenausfälle abzufedern.
 - **Dokumentation und Übung:** BCM-Pläne werden im Sicherheits- oder Betriebsdokumentenbestand des jeweiligen Systems geführt. Verantwortungs- und Eskalationspfade werden in regelmäßigen Übungen (mindestens Tabletop) getestet.
 
-Mitgeltende Dokumente: BCM-/Notfallhandbuch der Organisation; mitgeltende Checkliste: CL_Sichere-Entwicklungsumgebung (siehe `Checklistensammelband_Sichere-Entwicklung.md`, Kapitel 10).
+Mitgeltende Dokumente: [BCM-/Notfallhandbuch](mitgeltende-dokumente/BCM-Notfallhandbuch.md); mitgeltende Checkliste: CL_Sichere-Entwicklungsumgebung (siehe `Checklistensammelband_Sichere-Entwicklung.md`, Kapitel 10).
 
 ## Programmierung
 
@@ -407,7 +410,7 @@ Bei den Tests gilt das Vier-Augen-Prinzip. Es wird mit den Mechanismen von Git u
 
 Die Abnahme von Code beziehungsweise die Übergabe an die Kundschaft wird in einem Abnahmeprotokoll dokumentiert, das auch eventuelle Nachbesserungswünsche festhält. Die durchgeführten Testfälle werden gemäß dem Testmanagement der Organisation dokumentiert.
 
-Mitgeltende Dokumente: RL Testmanagement; mitgeltende Checkliste: CL_Code-Review-Sicherheit für Pull-Request-Reviews (siehe `Checklistensammelband_Sichere-Entwicklung.md`, Kapitel 08).
+Mitgeltende Dokumente: [Richtlinie Testmanagement](mitgeltende-dokumente/Richtlinie_Testmanagement.md); mitgeltende Checkliste: CL_Code-Review-Sicherheit für Pull-Request-Reviews (siehe `Checklistensammelband_Sichere-Entwicklung.md`, Kapitel 08).
 
 ### Schutz während Audit-Tests und Sicherheitsprüfungen
 
@@ -419,13 +422,13 @@ Audit-, Penetrations- und Schwachstellentests werden so durchgeführt, dass der 
 - Prüfwerkzeuge und Auswertungen (Scan-Ergebnisse, Logs, Exports) werden vertraulich behandelt, geordnet abgelegt und nach Abschluss gemäß Aufbewahrungsfrist gelöscht oder archiviert. Zugriff ist auf den Prüfteam-Kreis und die zuständigen organisationsinterne Stellen begrenzt.
 - Auftraggebende, Prüfende und betroffene Betriebsteams werden benannt und in einem kurzen Abschlussbericht zusammengeführt. Befunde fließen in den kontinuierlichen Verbesserungsprozess (siehe Abschnitt „Einordnung im ISMS", Klausel 10) zurück.
 
-Mitgeltende Dokumente: RL Testmanagement, RL Zugangssteuerung.
+Mitgeltende Dokumente: [Richtlinie Testmanagement](mitgeltende-dokumente/Richtlinie_Testmanagement.md), [Richtlinie Zugangssteuerung](mitgeltende-dokumente/Richtlinie_Zugangssteuerung.md).
 
 ## Ausgelagerte Entwicklungsprojekte
 
 Manche Entwicklungsprojekte werden aus Kapazitätsgründen ausgelagert. Die für die Organisation tätigen externen Entwicklerinnen und Entwickler werden regelmäßig auf Qualität geprüft. Vor dem Produktivsetzen erfolgt ein Code-Review durch erfahrene interne Entwicklerinnen und Entwickler der Organisation. Die Software durchläuft denselben System- und Abnahmetest wie interne Projekte. Für die Lieferanten gelten zusätzlich die Regeln des Lieferantenmanagements.
 
-Mitgeltende Dokumente: RL Dienstleister- und Lieferantenbeziehungen.
+Mitgeltende Dokumente: [Richtlinie Dienstleister- und Lieferantenbeziehungen](mitgeltende-dokumente/Richtlinie_Dienstleister-und-Lieferantenbeziehungen.md).
 
 ## Trennung von Entwicklungs-, Test- und Betriebsumgebungen
 
@@ -497,7 +500,7 @@ Für Neuentwicklungen und wesentliche Erweiterungen von Anwendungen, die persone
 
 Die Verbindung zwischen DPIA und Bedrohungsmodellierung wird im Sicherheitsdokumentenbestand des Projekts hergestellt: Die DPIA betrachtet Risiken aus Sicht der Betroffenen, das Bedrohungsmodell betrachtet Risiken aus Sicht der Organisation und ihrer Schutzziele. Beide Sichten werden konsistent geführt.
 
-Mitgeltende Dokumente: Datenschutzleitlinie der Organisation; mitgeltende Checkliste: CL_Datenschutz-Folgenabschaetzung (siehe `Checklistensammelband_Sichere-Entwicklung.md`, Kapitel 11).
+Mitgeltende Dokumente: [Datenschutzleitlinie](mitgeltende-dokumente/Datenschutzleitlinie.md); mitgeltende Checkliste: CL_Datenschutz-Folgenabschaetzung (siehe `Checklistensammelband_Sichere-Entwicklung.md`, Kapitel 11).
 
 ## KPI für Sicherheit und Testabdeckung
 
@@ -521,7 +524,7 @@ Das im Scope befindliche IDM-Portal verfügt über eine große Zahl an Tests, um
 
 Abweichungen werden mit Begründung im Sicherheits- oder Risikoregister festgehalten und mit einem Ablaufdatum versehen.
 
-Mitgeltende Dokumente: RL Testmanagement.
+Mitgeltende Dokumente: [Richtlinie Testmanagement](mitgeltende-dokumente/Richtlinie_Testmanagement.md).
 
 Mitgeltende Checklisten: CL_Lieferkette-Build-Integritaet, CL_Code-Review-Sicherheit, CL_KI-Codeerzeugung, CL_Schwachstellenoffenlegung (siehe `Checklistensammelband_Sichere-Entwicklung.md`, Kapitel 05, 08, 09 und 06).
 
@@ -705,16 +708,19 @@ This document is controlled according to ISO/IEC 27001:2022 clause 7.5 ("Documen
 
 ## Related Documents
 
-- Secure Development Life Cycle Checklist
-- Use of cryptographic measures
-- Competence profiles
-- Organisation secure programming guideline
-- Secure Development Life Cycle guideline
-- Change management guideline
-- Service-provider and supplier-relationship guideline
-- Test management guideline
-- Access control guideline
-- THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR
+- [Secure Development Life Cycle Checklist](mitgeltende-dokumente/Checkliste_Secure-Development-Life-Cycle.md)
+- [Use of cryptographic measures](mitgeltende-dokumente/Gebrauch_kryptografischer_Massnahmen.md)
+- [Competency profiles and training plan for secure development](mitgeltende-dokumente/Kompetenzprofile_und_Schulungsplan_Sichere-Entwicklung.md)
+- [Secure programming guideline](mitgeltende-dokumente/Leitlinie_Sichere-Programmierung.md)
+- [Secure Development Life Cycle policy](mitgeltende-dokumente/Richtlinie_Secure-Development-Life-Cycle.md)
+- [Change management policy](mitgeltende-dokumente/Richtlinie_Changemanagement.md)
+- [Service-provider and supplier-relationship policy](mitgeltende-dokumente/Richtlinie_Dienstleister-und-Lieferantenbeziehungen.md)
+- [Test management policy](mitgeltende-dokumente/Richtlinie_Testmanagement.md)
+- [Access control policy](mitgeltende-dokumente/Richtlinie_Zugangssteuerung.md)
+- [Privacy guideline](mitgeltende-dokumente/Datenschutzleitlinie.md)
+- [Secure software design guideline](mitgeltende-dokumente/Leitlinie_Sicheres-Softwaredesign.md)
+- [BCM and emergency handbook](mitgeltende-dokumente/BCM-Notfallhandbuch.md)
+- [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.pdf)
 
 ## Related Checklists
 
