@@ -26,3 +26,15 @@
 - `Applicable`: gilt und ist mit Evidenz zu bearbeiten / applies and must be handled with evidence
 - `N/A`: gilt nicht und ist begruendet / does not apply and has a rationale
 - `Open`: gilt oder ist unklar und braucht Folgearbeit / applies or is unclear and needs follow-up
+
+## Für Auszubildende kurz erklärt / Short Explanation for Apprentices
+
+**DE:** Diese Checkliste ist der schnelle SDLC-Überblick. Sie zeigt, ob ein Entwicklungsdurchlauf vom Ziel bis zur Freigabe nachvollziehbar ist. Sie ersetzt die zwölf Hauptchecklisten nicht, sondern hilft beim Einstieg.
+
+**EN:** This checklist is the quick SDLC overview. It shows whether a development run is traceable from goal to release. It does not replace the twelve main checklists; it helps with the first pass.
+
+## Bezug zur Verzahnungsdatei / Relation to the Alignment File
+
+**DE:** Wenn ein Punkt unklar ist, nutze [Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md](Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md). Dort steht, welche Richtlinie, welche Checkliste und welches Preset die Detailprüfung steuert.
+
+**EN:** If an item is unclear, use [Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md](Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md). It shows which guideline, checklist, and preset controls the detailed review.

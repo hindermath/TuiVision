@@ -1,6 +1,6 @@
 # Checklistensammelband Sichere Entwicklung / Secure Development Checklist Compendium
 
-**Stand / Date:** 2026-06-17
+**Stand / Date:** 2026-06-20
 **Quelle / Source:** generisch abgeleitet aus `~/RL_Sichere-Entwicklung` / generically derived from `~/RL_Sichere-Entwicklung`
 
 ## Zweck / Purpose
@@ -19,6 +19,16 @@
 ## Pflichtfelder je Pruefpunkt / Required Fields per Review Item
 
 Status, Begruendung, Evidenzpfad oder Link, naechste Massnahme mit verantwortlicher Person und Zieltermin.
+
+## Verzahnung mit mitgeltenden Dokumenten und Presets / Alignment With Related Documents and Presets
+
+**DE:** Die Datei [Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md](mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md) verbindet diesen Sammelband mit der Richtlinie, den mitgeltenden Dokumenten und den sechs GitHub-Spec-Kit-Governance-Presets. Sie ist die erste Orientierung, wenn ein Spec-Kit-Lauf vorbereitet wird oder wenn unklar ist, welche Checkliste zu einem Dokument oder Preset gehört.
+
+**EN:** The file [Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md](mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md) connects this compendium with the guideline, related documents, and the six GitHub Spec Kit governance presets. It is the first orientation when preparing a Spec Kit run or when it is unclear which checklist belongs to a document or preset.
+
+**DE:** Swift wird als Memory-Safe Language (MSL) berücksichtigt. Das gilt besonders für Apple-Plattformen. Trotzdem müssen Swift-Projekte die Swift-spezifischen Secure-Coding-Punkte prüfen; MSL-Status allein ist kein Sicherheitsnachweis.
+
+**EN:** Swift is considered a memory-safe language (MSL), especially for Apple platforms. Swift projects still need Swift-specific secure-coding review; MSL status alone is not security evidence.
 
 ## Kapitelueberblick / Chapter Overview
 

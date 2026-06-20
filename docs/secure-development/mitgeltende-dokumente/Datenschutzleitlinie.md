@@ -25,6 +25,19 @@
 
 **EN:** Suitable evidence includes data-flow notes, DPIA checklist, test-data concept, logging review, or `N/A` rationale.
 
+## Für Auszubildende kurz erklärt / Short Explanation for Apprentices
+
+**DE:** Datenschutz bedeutet nicht nur „keine Daten verlieren". Es bedeutet auch: Nur nötige personenbezogene Daten verarbeiten, Testdaten bewusst wählen, Logs sauber halten und Betroffene nicht unnötig gefährden.
+
+**EN:** Privacy does not only mean "do not lose data". It also means: process only needed personal data, choose test data carefully, keep logs clean, and avoid unnecessary risk for people.
+
+## Prüf- und Evidenzhinweise / Review and Evidence Notes
+
+- **DE:** `Applicable`, sobald personenbezogene Daten, Benutzerkonten, Logs mit Personenbezug oder produktionsnahe Testdaten vorkommen.
+- **EN:** `Applicable` as soon as personal data, user accounts, person-related logs, or production-like test data are involved.
+- **DE:** `N/A` braucht eine kurze Aussage, warum keine personenbezogenen Daten verarbeitet werden.
+- **EN:** `N/A` needs a short statement why no personal data is processed.
+
 ## Preset-Bezug / Preset Alignment
 
 - `security-governance`: Standards Applicability, ASVS, Regulatory Applicability.

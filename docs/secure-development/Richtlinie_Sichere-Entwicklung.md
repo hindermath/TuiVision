@@ -42,9 +42,12 @@ Die Lenkung dieses Dokuments erfolgt gemäß ISO/IEC 27001:2022 Klausel 7.5 („
 - [Datenschutzleitlinie](mitgeltende-dokumente/Datenschutzleitlinie.md)
 - [Leitlinie für sicheres Softwaredesign](mitgeltende-dokumente/Leitlinie_Sicheres-Softwaredesign.md)
 - [BCM-/Notfallhandbuch](mitgeltende-dokumente/BCM-Notfallhandbuch.md)
+- [Verzahnung Richtlinie, Checklisten und Spec-Kit-Presets](mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md)
 - [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.pdf)
 - [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR EN-Markdown](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.EN.md)
 - [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR DE-Lernfassung](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.DE.md)
+
+Die zentrale Verzahnungsdatei ist die verbindliche Leseführung für spätere Spec-Kit-Läufe und Reviews. Sie ordnet mitgeltende Dokumente den Richtlinienabschnitten, Checklisten, Governance-Presets und typischen Evidenzpfaden zu. Dadurch können auch Auszubildende ab dem ersten Lehrjahr und Entwickler*innen ohne Sicherheits-Spezialwissen erkennen, warum ein Prüfpunkt gilt und welcher Nachweis erwartet wird.
 
 ## Mitgeltende Checklisten
 
@@ -129,7 +132,7 @@ Der Quellcode entsteht in Übereinstimmung mit der „Leitlinie für sichere Pro
 
 Während der Spezifikation und des Entwurfs werden gängige Sicherheitstechniken und -standards beachtet. Die Softwarearchitektinnen und Softwarearchitekten folgen dem mitgeltenden Dokument „Leitlinie für sicheres Softwaredesign".
 
-Die eingesetzten Programmiersprachen orientieren sich an dem mitgeltenden Dokument „THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR". Der Anhang dieses Dokuments führt empfohlene speichersichere Sprachen (Memory Safe Languages, MSL) auf. Bei der Organisation werden vor allem Java, C# und Python eingesetzt.
+Die eingesetzten Programmiersprachen orientieren sich an dem mitgeltenden Dokument „THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR". Der Anhang dieses Dokuments führt empfohlene speichersichere Sprachen (Memory Safe Languages, MSL) auf. Swift ist dort als MSL berücksichtigt und gilt in dieser Richtlinie als speichersichere Sprache, insbesondere für Apple-Plattformen. Bei Ausbildungs- und Level-2-Projekten werden vor allem Java, C#, Python und bei passender Zielplattform auch Swift als MSL betrachtet. Eine MSL ersetzt keine sprachspezifische Secure-Coding-Prüfung.
 
 Die Entwicklerinnen und Entwickler schreiben ihren Quellcode gemäß den Empfehlungen der „Leitlinie für sichere Programmierung".
 
@@ -340,6 +343,7 @@ Andere Isolationsmechanismen sind zulässig, wenn sie nachweislich ein vergleich
 - Bei Feature-Implementierungen mit agentischer KI wird GitHub Spec Kit für Spec-Driven Development (SDD) verwendet. Der Ablauf erfolgt nacheinander über `/speckit.constitution`, `/speckit.specify`, `/speckit.clarify`, `/speckit.plan`, `/speckit.checklist`, `/speckit.tasks`, `/speckit.analyze` und `/speckit.implement`. Die sechs Governance-Presets `security-governance`, `architecture-governance`, `isaqb-architecture-governance`, `a11y-governance`, `cross-platform-governance` und `agent-parity-governance` werden installiert und nachweisbar dokumentiert, sofern kein begründeter Projektausnahmefall dokumentiert ist.
 - Die Presets werden mindestens quartalsweise und anlassbezogen kontrolliert aktualisiert. Anlassbezogen ist eine Prüfung nötig, wenn sich Spec-Kit-Preset-Kataloge, Preset-Inhalte, Prioritäten oder projektlokale Overrides ändern. Die Prüfung umfasst Preset-Liste, Preset-Informationen, wirksame Template-Auflösung und die Zuordnung der Preset-Inhalte zu den anwendbaren Checklisten. Erforderliche Änderungen werden in dieser Richtlinie und in den Checklisten eingearbeitet oder als begründete Ausnahme dokumentiert.
 - Die inhaltliche Preset-Abdeckung wird als eigene Auditfrage behandelt. Abgedeckt werden insbesondere regulatorisches Screening (NIS2, CRA, EU AI Act, DORA), BSI C3A, BSI C5, konkrete WCAG-2.2-AA-Prüfung, CLI-Barrierefreiheit, Cross-Platform-Skriptparität, sprachspezifische Secure-Coding-Profile und Agent-Guidance-Parität. Nicht anwendbare Preset-Prüfpunkte werden ausdrücklich mit Begründung dokumentiert.
+- Die Verzahnungsdatei der mitgeltenden Dokumente wird als Standardbrücke zwischen Richtlinienabschnitten, Checklisten-Kapiteln, mitgeltenden Dokumenten, Governance-Presets und Evidenzpfaden genutzt. Ein Spec-Kit-Lauf darf auf diese Datei verweisen, statt die gesamte Zuordnung zu wiederholen, muss aber weiterhin die konkrete Projektentscheidung und Evidenz dokumentieren.
 - Wenn ein Spec-Kit-Lauf mit aktuellen geprüften Presets die anwendbaren Prüfpunkte vollständig, nachvollziehbar und als Markdown-Artefakte dokumentiert, kann die separate manuelle Ausfüllung der Checklisten entfallen. Voraussetzung ist eine eindeutige Nachweis-Matrix oder ein eindeutiger Verweis im Spec-Kit-Artefakt, der die anwendbaren CL-Prüfpunkte auf `spec.md`, `plan.md`, `tasks.md`, Analyse- oder Checklistenergebnis, Review und Preset-Nachweise abbildet. Nicht abgedeckte, nicht anwendbare oder bewusst abweichende Prüfpunkte werden weiterhin ausdrücklich dokumentiert. Diese Erleichterung ersetzt keine Sandbox-Freigabe, kein menschliches Review, kein Vier-Augen-Prinzip, keine Ausnahmegenehmigung und keine Preset-Aktualitätsprüfung.
 - Agentische Änderungen werden vor Commit und Merge durch Menschen geprüft. Sicherheitskritische Logik unterliegt dem Vier-Augen-Prinzip.
 - Die Nutzung wird nachvollziehbar dokumentiert: Werkzeug, Sandbox-Typ, Sandbox-Identifikator (zum Beispiel Image-Digest oder VM-Snapshot-Hash), Projektpfad, Zeitraum, verantwortliche Person, Review-Ergebnis und relevante Spec-Kit-Artefakte.
@@ -722,9 +726,12 @@ This document is controlled according to ISO/IEC 27001:2022 clause 7.5 ("Documen
 - [Privacy guideline](mitgeltende-dokumente/Datenschutzleitlinie.md)
 - [Secure software design guideline](mitgeltende-dokumente/Leitlinie_Sicheres-Softwaredesign.md)
 - [BCM and emergency handbook](mitgeltende-dokumente/BCM-Notfallhandbuch.md)
+- [Guideline, checklist, and Spec Kit preset alignment](mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md)
 - [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.pdf)
 - [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR EN Markdown](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.EN.md)
 - [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR DE learning version](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.DE.md)
+
+The central alignment file is the binding reading guide for later Spec Kit runs and reviews. It maps related documents to guideline sections, checklists, governance presets, and typical evidence paths. This helps first-year apprentices and developers without security specialist knowledge understand why a review item applies and which evidence is expected.
 
 ## Related Checklists
 
@@ -814,7 +821,7 @@ Source code is created in line with the Organisation secure programming guidelin
 
 Common security techniques and standards are considered during specification and design. Software architects follow the related document "Organisation guideline for secure software design".
 
-The programming languages used follow the related document "THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR". Its annex lists recommended memory-safe languages (MSL). At Organisation, Java, C#, and Python are used especially often.
+The programming languages used follow the related document "THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR". Its annex lists recommended memory-safe languages (MSL). Swift is included there as an MSL and is treated in this guideline as a memory-safe language, especially for Apple platforms. In training and level-2 projects, Java, C#, Python, and Swift where the target platform fits are considered MSL choices. An MSL does not replace language-specific secure-coding review.
 
 Developers write source code according to the Organisation secure programming guideline.
 
@@ -1024,6 +1031,7 @@ Other isolation mechanisms are allowed if they demonstrably reach a comparable p
 - For feature implementations with agentic AI, GitHub Spec Kit is used for spec-driven development (SDD). The flow is run in sequence through `/speckit.constitution`, `/speckit.specify`, `/speckit.clarify`, `/speckit.plan`, `/speckit.checklist`, `/speckit.tasks`, `/speckit.analyze`, and `/speckit.implement`. The six governance presets `security-governance`, `architecture-governance`, `isaqb-architecture-governance`, `a11y-governance`, `cross-platform-governance`, and `agent-parity-governance` are installed and documented with evidence unless a justified project exception is documented.
 - The presets are updated in a controlled way at least quarterly and when triggered by a relevant change. A triggered check is required when Spec Kit preset catalogs, preset contents, priorities, or project-local overrides change. The check covers the preset list, preset information, effective template resolution, and mapping of preset contents to the applicable checklists. Required changes are integrated into this guideline and into the checklists or documented as a justified exception.
 - Preset content coverage is treated as its own audit question. The coverage includes, in particular, regulatory screening (NIS2, CRA, EU AI Act, DORA), BSI C3A, BSI C5, concrete WCAG 2.2 AA review, CLI accessibility, cross-platform script parity, language-specific secure-coding profiles, and agent-guidance parity. Preset review points that do not apply are documented explicitly with a rationale.
+- The related-document alignment file is used as the default bridge between guideline sections, checklist chapters, related documents, governance presets, and evidence paths. A Spec Kit run may reference that file instead of repeating the whole mapping, but it must still record the concrete project decision and evidence.
 - If a Spec Kit run with current checked presets documents the applicable review points fully, traceably, and as Markdown artefacts, separate manual checklist completion may be omitted. This requires a clear evidence matrix or a clear reference in the Spec Kit artefact that maps the applicable CL review points to `spec.md`, `plan.md`, `tasks.md`, analysis or checklist result, review, and preset evidence. Review points that are not covered, not applicable, or intentionally deviated from are still documented explicitly. This simplification does not replace sandbox approval, human review, the four-eyes rule, exception approval, or preset currency checks.
 - Agentic changes are reviewed by humans before commit and merge. Security-critical logic follows the four-eyes rule.
 - Use is documented traceably: tool, sandbox type, sandbox identifier (for example image digest or VM snapshot hash), project path, time period, responsible person, review result, and relevant Spec-Kit artefacts.

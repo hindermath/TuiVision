@@ -196,6 +196,13 @@ Java, Kotlin, Go, Swift, Python, JavaScript und TypeScript können je nach
 Plattform ebenfalls geeignet sein. Entscheidend ist nicht der Name der Sprache,
 sondern ob sie zur Aufgabe passt und sicher genutzt wird.
 
+Swift ist in der CISA-Unterlage im Appendix als MSL aufgeführt. Für
+Ausbildungsprojekte ist das besonders wichtig, wenn Apps oder Tools für iOS,
+watchOS oder macOS entwickelt werden. Swift reduziert viele Speicherfehler,
+aber Swift-Code muss weiterhin sicher programmiert werden. Dazu gehören
+validierte Eingaben, vorsichtiger Umgang mit Force-Unwraps, sichere Datei-URLs,
+Keychain/CryptoKit, Netzwerk-I/O und gepflegte Abhängigkeiten.
+
 ## Personal, Schulung und Ressourcen
 
 Eine MSL-Migration kostet Zeit. Teams müssen neue Spracheigenschaften,
@@ -318,6 +325,8 @@ In einem Spec-Kit-Lauf sollte deshalb immer geprüft werden:
 
 - Welche Sprache nutzt das Projekt?
 - Ist diese Sprache eine MSL?
+- Wenn Swift genutzt wird: Sind Force-Unwraps, Datei-URLs, Keychain/CryptoKit,
+  Netzwerk-I/O und Dependencies geprüft?
 - Wenn nein: Gibt es eine dokumentierte Begründung?
 - Gibt es native oder unsichere Bibliotheken?
 - Werden Eingaben, Ausgaben und Fehler sicher behandelt?

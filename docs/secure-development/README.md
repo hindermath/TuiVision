@@ -1,6 +1,6 @@
 # Generischer Leitfaden Sichere Entwicklung / Generic Secure Development Guide
 
-**Stand / Date:** 2026-06-17
+**Stand / Date:** 2026-06-20
 **Zielgruppe / Audience:** Fachinformatik-Auszubildende, Entwickler*innen, Reviewer und KI-Agenten in Level-2-Projekten / IT specialist apprentices, developers, reviewers, and AI agents in level-2 projects
 
 ## Zweck / Purpose
@@ -24,6 +24,17 @@
 | [checklisten/](checklisten/) | Zwoelf Einzelchecklisten fuer fokussierte Pruefungen / Twelve individual checklists for focused reviews |
 | [Checklistensammelband_Sichere-Entwicklung.md](Checklistensammelband_Sichere-Entwicklung.md) | Zusammengefuehrter Sammelband fuer vollstaendige Reviews / Combined compendium for full reviews |
 | [mitgeltende-dokumente/](mitgeltende-dokumente/) | Mitgeltende Leitlinien, Richtlinien und externe Referenzen / Related guidelines, policies, and external references |
+| [mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md](mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md) | Zentrale Mapping-Datei fuer Richtlinie, Checklisten, mitgeltende Dokumente und Governance-Presets / Central mapping file for guideline, checklists, related documents, and governance presets |
+
+## Spec-Kit-Verzahnung / Spec Kit Alignment
+
+**DE:** Bei einem Spec-Kit-Lauf zuerst die zentrale Verzahnungsdatei lesen. Sie zeigt, welche mitgeltenden Dokumente, Checklisten und Governance-Presets zu einem Pruefbereich gehoeren. Dadurch muessen Auszubildende und Reviewer die Zuordnung nicht neu erfinden. Das Ergebnis des Laufs bleibt trotzdem projektspezifisch: konkrete Evidenz liegt im jeweiligen Feature, Review, Test, Scan oder in `docs/security/`.
+
+**EN:** At the start of a Spec Kit run, read the central alignment file first. It shows which related documents, checklists, and governance presets belong to a review area. Apprentices and reviewers do not need to invent the mapping again. The run result remains project-specific: concrete evidence lives in the feature, review, test, scan, or `docs/security/`.
+
+**DE:** Swift ist in dieser Basis als Memory-Safe Language beruecksichtigt. Das folgt aus der zentralen MSL-Erlaubnisliste und der CISA-Unterlage zu Memory-Safe Roadmaps. Swift-Projekte brauchen trotzdem die Swift-spezifische Secure-Coding-Pruefung.
+
+**EN:** Swift is considered a memory-safe language in this baseline. This follows from the central MSL allow-list and the CISA memory-safe roadmaps document. Swift projects still need Swift-specific secure-coding review.
 
 ## Grenzen / Boundaries
 

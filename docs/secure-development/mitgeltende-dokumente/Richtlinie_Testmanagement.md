@@ -27,6 +27,19 @@
 - **DE:** Testausgaben sollen textorientiert nutzbar sein.
 - **EN:** Test output should remain usable in text-oriented environments.
 
+## Für Auszubildende kurz erklärt / Short Explanation for Apprentices
+
+**DE:** Tests zeigen nicht nur, dass etwas funktioniert. Sie zeigen auch, dass typische Fehler, Grenzfälle und Sicherheitsrisiken bedacht wurden. Ein fehlender Test ist erlaubt, aber nur mit guter Begründung.
+
+**EN:** Tests do not only show that something works. They also show that typical errors, boundaries, and security risks were considered. A missing test is allowed, but only with a good rationale.
+
+## Prüf- und Evidenzhinweise / Review and Evidence Notes
+
+- **DE:** `Applicable`, wenn Logik, Schnittstellen, UI, CLI, Build, Security-Verhalten oder Dokumentationsausgabe geändert werden.
+- **EN:** `Applicable` when logic, interfaces, UI, CLI, build, security behavior, or documentation output changes.
+- **DE:** Typische Evidenz: Testliste, CI-Lauf, Coverage-Bericht, Security-Test, A11Y-Smoke-Test, begründetes `N/A`.
+- **EN:** Typical evidence: test list, CI run, coverage report, security test, A11Y smoke test, justified `N/A`.
+
 ## Preset-Bezug / Preset Alignment
 
 - `security-governance`: Security Checklist, ASVS, Dependency Audit.

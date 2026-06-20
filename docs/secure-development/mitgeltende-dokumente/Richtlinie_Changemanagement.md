@@ -28,6 +28,19 @@
 | Tests | Passende Tests oder begruendetes `N/A` / Suitable tests or justified `N/A` |
 | Nachlauf | Offene Punkte und Restrisiken dokumentiert / Open items and residual risks documented |
 
+## Für Auszubildende kurz erklärt / Short Explanation for Apprentices
+
+**DE:** Changemanagement bedeutet: Eine Änderung soll nicht zufällig passieren. Ziel, Risiko, Review, Test und Ergebnis müssen nachvollziehbar sein. Das schützt vor Fehlern und hilft später beim Audit.
+
+**EN:** Change management means: a change should not happen by accident. Goal, risk, review, test, and result must be traceable. This prevents errors and helps later in audits.
+
+## Prüf- und Evidenzhinweise / Review and Evidence Notes
+
+- **DE:** `Applicable`, sobald Code, Konfiguration, Dokumentation, Pipeline, Agentenregeln oder Sicherheitsnachweise geändert werden.
+- **EN:** `Applicable` when code, configuration, documentation, pipeline, agent rules, or security evidence changes.
+- **DE:** Typische Evidenz: Commit, Pull Request, Review-Kommentar, Testausgabe, Freigabe- oder Folgeaufgaben-Notiz.
+- **EN:** Typical evidence: commit, pull request, review comment, test output, approval or follow-up note.
+
 ## Preset-Bezug / Preset Alignment
 
 - `agent-parity-governance`: gemeinsame Guidance synchron halten.

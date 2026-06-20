@@ -27,6 +27,21 @@
 - **DE:** Ausfaelle von Cloud-, Provider- oder Tool-Abhaengigkeiten werden als Risiko bewertet.
 - **EN:** Outages of cloud, provider, or tool dependencies are assessed as risk.
 
+## Für Auszubildende kurz erklärt / Short Explanation for Apprentices
+
+**DE:** BCM bedeutet: Ein Projekt soll nach einem Ausfall wieder arbeitsfähig werden. Dazu muss klar sein, wo Code, Build-Anleitung, Tests, Secrets und wichtige Dokumente liegen und wie sie wiederhergestellt werden.
+
+**EN:** BCM means: a project should become usable again after an outage. The team must know where code, build instructions, tests, secrets, and important documents are stored and how to restore them.
+
+## Prüf- und Evidenzhinweise / Review and Evidence Notes
+
+- **DE:** `Applicable`, wenn das Projekt gebaut, verteilt, betrieben oder als Lernbasis dauerhaft genutzt wird.
+- **EN:** `Applicable` when the project is built, distributed, operated, or used as a long-lived learning baseline.
+- **DE:** Typische Evidenz: Repository-Remote, CI-Konfiguration, Backup-/Restore-Notiz, Runbook, Dependency-Lockfile, Provider-Risiko.
+- **EN:** Typical evidence: repository remote, CI configuration, backup/restore note, runbook, dependency lockfile, provider risk.
+- **DE:** `N/A` ist nur plausibel bei sehr kleinen Wegwerf-Experimenten ohne dauerhafte Nutzung.
+- **EN:** `N/A` is only plausible for very small throw-away experiments without long-term use.
+
 ## Preset-Bezug / Preset Alignment
 
 - `architecture-governance`: Resilienz, Cloud-Autonomie, C3A/C5, Zero Trust.

@@ -26,6 +26,19 @@
 - **DE:** Jede Entscheidung nennt Kontext, Entscheidung, Alternativen, Folgen und Restrisiko.
 - **EN:** Each decision names context, decision, alternatives, consequences, and residual risk.
 
+## Für Auszubildende kurz erklärt / Short Explanation for Apprentices
+
+**DE:** Sicheres Design bedeutet: Sicherheit wird vor dem Code mitgedacht. Ein Projekt muss wissen, welche Daten wichtig sind, wo Grenzen liegen, wer Zugriff hat und was bei Fehlern sicher passieren soll.
+
+**EN:** Secure design means: security is considered before code is written. A project must know which data matters, where boundaries are, who has access, and what should safely happen on errors.
+
+## Prüf- und Evidenzhinweise / Review and Evidence Notes
+
+- **DE:** `Applicable`, wenn Architektur, Datenfluss, Deployment, Rollen, externe Dienste oder Trust Boundaries geändert werden.
+- **EN:** `Applicable` when architecture, data flow, deployment, roles, external services, or trust boundaries change.
+- **DE:** Typische Evidenz: S-ADR, Threat Model, arc42-Abschnitt, Architekturdiagramm in Textform, Qualitäts- oder Risikoszenario.
+- **EN:** Typical evidence: S-ADR, threat model, arc42 section, text-based architecture diagram, quality or risk scenario.
+
 ## Preset-Bezug / Preset Alignment
 
 - `architecture-governance`: Secure Architecture, Threat Model, S-ADR, Zero Trust, SAMM, C3A/C5.

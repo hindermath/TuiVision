@@ -34,6 +34,19 @@
 - **DE:** Offene Lernpunkte werden nicht versteckt, sondern als Folgeaufgabe dokumentiert.
 - **EN:** Open learning points are not hidden; they are recorded as follow-up tasks.
 
+## Für Auszubildende kurz erklärt / Short Explanation for Apprentices
+
+**DE:** Dieses Dokument zeigt, was gelernt und geübt werden soll. Ein Review ist nicht nur Kontrolle. Es ist auch Lernnachweis: Welche Sicherheitsentscheidung wurde verstanden, angewendet und dokumentiert?
+
+**EN:** This document shows what should be learned and practiced. A review is not only a control. It is also learning evidence: which security decision was understood, applied, and documented?
+
+## Prüf- und Evidenzhinweise / Review and Evidence Notes
+
+- **DE:** `Applicable`, wenn ein Spec-Kit-Lauf, Code-Review, KI-Agenten-Lauf oder Härtungslauf Lernwirkung hat.
+- **EN:** `Applicable` when a Spec Kit run, code review, AI-agent run, or hardening run has learning value.
+- **DE:** Typische Evidenz: Lernzielnotiz, Review-Kommentar, Aufgabenliste, kurze Reflexion, Schulungs- oder Pairing-Nachweis.
+- **EN:** Typical evidence: learning-goal note, review comment, task list, short reflection, training or pairing evidence.
+
 ## Preset-Bezug / Preset Alignment
 
 - `a11y-governance`: Lesbarkeit, DE/EN, WCAG.

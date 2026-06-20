@@ -26,6 +26,19 @@
 - **DE:** Neue externe Dienste werden mit `Applicable`, `N/A` oder `Open` bewertet.
 - **EN:** New external services are assessed as `Applicable`, `N/A`, or `Open`.
 
+## Für Auszubildende kurz erklärt / Short Explanation for Apprentices
+
+**DE:** Eine Dependency ist fremder Code im eigenen Projekt. Sie spart Arbeit, bringt aber auch Risiko mit. Deshalb wird geprüft: Woher kommt sie? Wird sie gepflegt? Ist sie verwundbar? Welche Daten sieht sie?
+
+**EN:** A dependency is external code in your own project. It saves work, but also brings risk. Therefore review: where does it come from? Is it maintained? Is it vulnerable? Which data can it see?
+
+## Prüf- und Evidenzhinweise / Review and Evidence Notes
+
+- **DE:** `Applicable`, sobald neue Bibliotheken, Container-Images, APIs, Cloud-Dienste, KI-Dienste oder Provider-Abhängigkeiten genutzt werden.
+- **EN:** `Applicable` when new libraries, container images, APIs, cloud services, AI services, or provider dependencies are used.
+- **DE:** Typische Evidenz: Dependency-Audit, SBOM, VEX, Lizenznotiz, C3A-/C5-Entscheidung, AI-SBOM- oder `N/A`-Begründung.
+- **EN:** Typical evidence: dependency audit, SBOM, VEX, license note, C3A/C5 decision, AI-SBOM or `N/A` rationale.
+
 ## Preset-Bezug / Preset Alignment
 
 - `security-governance`: Dependency Audit, SBOM, VEX, CRA, regulatorische Anwendbarkeit.

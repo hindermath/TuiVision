@@ -26,6 +26,19 @@
 - **DE:** Jede neue kryptografische Nutzung wird im Review mit Zweck, Datenart, Algorithmus, Schluesselablage und Fehlermodus dokumentiert.
 - **EN:** Each new cryptographic use is reviewed with purpose, data type, algorithm, key storage, and failure mode.
 
+## Für Auszubildende kurz erklärt / Short Explanation for Apprentices
+
+**DE:** Kryptografie ist ein Werkzeugkasten für Schutz von Vertraulichkeit, Integrität und Authentizität. Der wichtigste Grundsatz lautet: Keine eigene Kryptografie bauen. Nutze geprüfte Bibliotheken und sichere Standardkonfigurationen.
+
+**EN:** Cryptography is a toolbox for confidentiality, integrity, and authenticity. The main rule is: do not build your own cryptography. Use reviewed libraries and safe defaults.
+
+## Prüf- und Evidenzhinweise / Review and Evidence Notes
+
+- **DE:** Prüfe immer Zweck, Datenart, Algorithmus, Schlüsselablage, Rotation und Fehlerverhalten.
+- **EN:** Always review purpose, data type, algorithm, key storage, rotation, and error behavior.
+- **DE:** Typische Evidenz: S-ADR, Code-Review, Threat Model, Konfigurationsdatei, Test für Fehlerpfade.
+- **EN:** Typical evidence: S-ADR, code review, threat model, configuration file, test for error paths.
+
 ## Nachweise / Evidence
 
 - **DE:** Geeignete Evidenzpfade sind Code-Review, Security-Checkliste, Dependency-Audit, Threat Model, S-ADR oder Testnachweis.
