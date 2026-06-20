@@ -411,3 +411,11 @@ Pflicht:
 - Kontrollierte Fixtures und Test-Temp-Verzeichnisse nutzen; keine beliebigen Nutzerdaten, keine externen Proof-Pfade, keine persistenten Host-Terminal-/Shell-/Font-/Codepage-Aenderungen.
 - Keine sichtbare Wave-4-Beispielportierung, keine Wave-3-Editor-/Help-/Stream-Arbeit, keine TP7-Anschlusswellen und keine breite Framework-Revision in diesen Lauf ziehen.
 ```
+
+---
+
+## Spec-Kit-Intake-Reife / Spec Kit Intake Readiness
+
+Dieses Lastenheft enthaelt bereits einen kopierbaren `/speckit-specify`-Prompt. Vor dem Start muss der aktuelle Repository-Stand trotzdem geprueft werden. Bereits erledigte oder branch-suffig archivierte Punkte werden nicht erneut umgesetzt; offene Punkte werden als `Applicable`, `AlreadySatisfied`, `N/A`, `Open` oder `FollowUp` klassifiziert.
+
+*This requirements document already contains a copyable `/speckit-specify` prompt. Before starting, still check the current repository state. Completed or branch-suffixed archived items are not implemented again; open items are classified as `Applicable`, `AlreadySatisfied`, `N/A`, `Open`, or `FollowUp`.*

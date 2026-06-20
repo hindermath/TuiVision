@@ -522,3 +522,11 @@ Wichtig:
 - Bewusste historische Abweichungen muessen in Spec, Plan, Guide oder PR-Evidence dokumentiert werden.
 - Keine Wave-2-/Wave-3-/Wave-4-Funktionalitaet und keine breite Framework-Revision in diesen Lauf ziehen.
 ```
+
+---
+
+## Spec-Kit-Intake-Reife / Spec Kit Intake Readiness
+
+Dieses Lastenheft enthaelt bereits einen kopierbaren `/speckit-specify`-Prompt. Vor dem Start muss der aktuelle Repository-Stand trotzdem geprueft werden. Bereits erledigte oder branch-suffig archivierte Punkte werden nicht erneut umgesetzt; offene Punkte werden als `Applicable`, `AlreadySatisfied`, `N/A`, `Open` oder `FollowUp` klassifiziert.
+
+*This requirements document already contains a copyable `/speckit-specify` prompt. Before starting, still check the current repository state. Completed or branch-suffixed archived items are not implemented again; open items are classified as `Applicable`, `AlreadySatisfied`, `N/A`, `Open`, or `FollowUp`.*
