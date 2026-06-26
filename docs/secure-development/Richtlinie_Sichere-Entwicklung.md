@@ -132,7 +132,7 @@ Der Quellcode entsteht in Übereinstimmung mit der „Leitlinie für sichere Pro
 
 Während der Spezifikation und des Entwurfs werden gängige Sicherheitstechniken und -standards beachtet. Die Softwarearchitektinnen und Softwarearchitekten folgen dem mitgeltenden Dokument „Leitlinie für sicheres Softwaredesign".
 
-Die eingesetzten Programmiersprachen orientieren sich an dem mitgeltenden Dokument „THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR". Der Anhang dieses Dokuments führt empfohlene speichersichere Sprachen (Memory Safe Languages, MSL) auf. Swift ist dort als MSL berücksichtigt und gilt in dieser Richtlinie als speichersichere Sprache, insbesondere für Apple-Plattformen. Bei Ausbildungs- und Level-2-Projekten werden vor allem Java, C#, Python und bei passender Zielplattform auch Swift als MSL betrachtet. Eine MSL ersetzt keine sprachspezifische Secure-Coding-Prüfung.
+Die eingesetzten Programmiersprachen orientieren sich an dem mitgeltenden Dokument „THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR". Der Anhang dieses Dokuments führt empfohlene speichersichere Sprachen (Memory Safe Languages, MSL) auf. Swift ist dort als MSL berücksichtigt und gilt in dieser Richtlinie als speichersichere Sprache, insbesondere für Apple-Plattformen. Bei Ausbildungs- und Level-2-Projekten werden vor allem Java, C#, Python, Go, Rust und bei passender Zielplattform auch Swift als MSL betrachtet. Eine MSL ersetzt keine sprachspezifische Secure-Coding-Prüfung.
 
 Die Entwicklerinnen und Entwickler schreiben ihren Quellcode gemäß den Empfehlungen der „Leitlinie für sichere Programmierung".
 
@@ -192,6 +192,9 @@ Die Softwarearchitektur folgt etablierten sicheren Architekturprinzipien gemäß
 - Java: zentrale Servlet-Filter beziehungsweise Spring-Security-Konfiguration für Authentifizierung, Autorisierung und CSRF-Schutz; Bean-Validation für Eingaben; keine Java-Serialisierung nicht vertrauenswürdiger Daten.
 - C# / .NET: ASP.NET-Core-Middleware-Pipeline für Authentifizierung, Autorisierung, CORS und Anti-Forgery; Dependency Injection für sicherheitsrelevante Dienste; IDataProtectionProvider für Verschlüsselung at-rest; UseHttpsRedirection für Transport-Härtung.
 - Python: WSGI- oder ASGI-Middleware-Schichten; Sicherheits-Defaults der Frameworks aktiv halten (Django mit CSRF/XSS-Schutz, FastAPI mit Pydantic-Validierung).
+- Go: `context` konsequent durch Netzwerk-, Datenbank- und Hintergrundoperationen führen; HTTP-Timeouts setzen; `crypto/rand` für Geheimnisse nutzen; Goroutine- und Channel-Lebenszyklen begrenzen; Datenbankzugriffe parametrisieren.
+- Rust: `unsafe` isolieren und begründen; Ownership- und Lifetime-Grenzen als Sicherheitsgrenze nutzen; `serde`-Deserialisierung mit Domain-Validierung kombinieren; `rustls` oder geprüfte Crypto-Crates verwenden.
+- Swift / Apple-Plattformen: Keychain für Geheimnisse, CryptoKit für Kryptografie, App Sandbox und Entitlements prüfen; URL- und File-Scope-Zugriffe begrenzen; Swift Concurrency zur Vermeidung unkontrolliert geteilter veränderbarer Zustände nutzen.
 
 Sicherheitsrelevante Architekturentscheidungen werden als Security Architecture Decision Records (S-ADR) festgehalten. Sie enthalten Kontext, Entscheidung, Begründung, Alternativen, Konsequenzen und eine kurze Compliance-Tabelle. Die Sicherheits-Querschnittskonzepte werden gemäß arc42 Abschnitt 8 dokumentiert: Authentifizierung, Autorisierung, Verschlüsselung in-transit und at-rest, Eingabevalidierung, Fehlerbehandlung, Logging und Audit-Trail, Abhängigkeitsmanagement, Deployment-Sicherheit.
 
@@ -259,7 +262,7 @@ Mitgeltende Dokumente: [BCM-/Notfallhandbuch](mitgeltende-dokumente/BCM-Notfallh
 
 ## Programmierung
 
-Neuer Code wird in den bei der Organisation üblichen, speichersicheren Sprachen Java, C# und Python geschrieben oder in der Sprache, die die Kundschaft verlangt. Bei der Weiterentwicklung wird die jeweils vorhandene Sprache der Anwendung genutzt. Der Code wird ausreichend kommentiert (gemäß „Leitlinie für sichere Programmierung") und regelmäßig auf Schwachstellen getestet. Die Programmierung folgt dem Stand der Technik. Ein Wechsel des Paradigmas (zum Beispiel der Programmiersprache) wird gesondert dokumentiert und begründet.
+Neuer Code wird in den bei der Organisation üblichen, speichersicheren Sprachen Java, C#, Python, Go, Rust und bei passender Zielplattform Swift geschrieben oder in der Sprache, die die Kundschaft verlangt. Bei der Weiterentwicklung wird die jeweils vorhandene Sprache der Anwendung genutzt. Der Code wird ausreichend kommentiert (gemäß „Leitlinie für sichere Programmierung") und regelmäßig auf Schwachstellen getestet. Die Programmierung folgt dem Stand der Technik. Ein Wechsel des Paradigmas (zum Beispiel der Programmiersprache) wird gesondert dokumentiert und begründet.
 
 Eine ordentliche Dokumentation ist im Team selbstverständlich. Wir achten auf modulare Programmierung. Der Code ist gut strukturiert, oft in wiederverwendbaren Codeblöcken angeordnet.
 
@@ -685,6 +688,7 @@ Die Versionshistorie dokumentiert wesentliche Änderungen dieser Richtlinie gem�
 | 2.8.1 | 15.06.2026 | Security-Verantwortliche*r | Verweise auf den Checklistensammelband von der Dokumentennummer `RL-SE-001-CL` auf den Dateinamen `Checklistensammelband_Sichere-Entwicklung.md` umgestellt; README.md und AGENTS.md synchronisiert |
 | 2.9.0 | 15.06.2026 | Security-Verantwortliche*r | Neueste Spec-Kit-Governance-Preset-Prüfpunkte als auditfähige RL-/CL-Abdeckung nachgezogen: regulatorisches Screening, BSI C3A/C5, A11Y-/CLI-Prüfung, Cross-Platform-Parität, Secure-Coding-Profile und Agent-Guidance-Parität; Checklistensammelband auf Version 1.9.0 synchronisiert |
 | 2.10.0 | 17.06.2026 | Security-Verantwortliche*r | KPI-Werte für Testabdeckung angehoben und präzisiert: Unit-Test Line Coverage mindestens 80 %, sicherheitskritische Module mindestens 85 % Branch Coverage, KI-Code mindestens 80 % Line und Branch Coverage, Integrationstest-Abdeckung öffentlicher Schnittstellen und kritischer UI-Flows mindestens 80 %; CL_08, CL_09 und Checklistensammelband synchronisiert |
+| 2.10.1 | 26.06.2026 | Security-Verantwortliche*r | MSL-Beispielliste in Grundsätzen und Programmierungsabschnitt um Go, Rust und Swift bei passender Zielplattform präzisiert; sprachspezifische Architekturhinweise für Go, Rust und Swift ergänzt |
 
 **Genehmigung der aktuellen Fassung:**
 
@@ -821,7 +825,7 @@ Source code is created in line with the Organisation secure programming guidelin
 
 Common security techniques and standards are considered during specification and design. Software architects follow the related document "Organisation guideline for secure software design".
 
-The programming languages used follow the related document "THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR". Its annex lists recommended memory-safe languages (MSL). Swift is included there as an MSL and is treated in this guideline as a memory-safe language, especially for Apple platforms. In training and level-2 projects, Java, C#, Python, and Swift where the target platform fits are considered MSL choices. An MSL does not replace language-specific secure-coding review.
+The programming languages used follow the related document "THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR". Its annex lists recommended memory-safe languages (MSL). Swift is included there as an MSL and is treated in this guideline as a memory-safe language, especially for Apple platforms. In training and level-2 projects, Java, C#, Python, Go, Rust, and Swift where the target platform fits are considered MSL choices. An MSL does not replace language-specific secure-coding review.
 
 Developers write source code according to the Organisation secure programming guideline.
 
@@ -881,6 +885,9 @@ Software architecture follows established secure architecture principles accordi
 - Java: central servlet filters or Spring Security configuration for authentication, authorization, and CSRF protection; bean validation for inputs; no Java serialization of untrusted data.
 - C# / .NET: ASP.NET Core middleware for authentication, authorization, CORS, and anti-forgery; dependency injection for security-relevant services; IDataProtectionProvider for encryption at rest; UseHttpsRedirection for transport hardening.
 - Python: WSGI or ASGI middleware layers; keep framework security defaults active, for example Django CSRF/XSS protection and FastAPI Pydantic validation.
+- Go: pass `context` through network, database, and background operations; set HTTP timeouts; use `crypto/rand` for secrets; bound goroutine and channel lifecycles; parameterize database access.
+- Rust: isolate and justify `unsafe`; use ownership and lifetime boundaries as security boundaries; combine `serde` deserialization with domain validation; use `rustls` or reviewed crypto crates.
+- Swift / Apple platforms: use Keychain for secrets, CryptoKit for cryptography, and review App Sandbox plus entitlements; constrain URL and file-scope access; use Swift Concurrency to avoid uncontrolled shared mutable state.
 
 Security-relevant architecture decisions are recorded as Security Architecture Decision Records (S-ADRs). They include context, decision, rationale, alternatives, consequences, and a short compliance table. Security cross-cutting concepts are documented according to arc42 section 8: authentication, authorization, encryption in transit and at rest, input validation, error handling, logging and audit trail, dependency management, and deployment security.
 
@@ -947,7 +954,7 @@ Related documents: Organisation BCM/emergency manual. Related checklist: CL_Sich
 
 ## Programming
 
-New code is written in the memory-safe languages commonly used at Organisation, namely Java, C#, and Python, or in the language requested by the customer. For further development, the existing application language is used. Code is commented sufficiently according to the Organisation secure programming guideline and regularly tested for vulnerabilities. Programming follows the state of the art. A change of paradigm, for example a change of programming language, is documented and justified separately.
+New code is written in the memory-safe languages commonly used at Organisation, namely Java, C#, Python, Go, Rust, and Swift where the target platform fits, or in the language requested by the customer. For further development, the existing application language is used. Code is commented sufficiently according to the Organisation secure programming guideline and regularly tested for vulnerabilities. Programming follows the state of the art. A change of paradigm, for example a change of programming language, is documented and justified separately.
 
 Proper documentation is expected in the team. Modular programming is used. Code is well structured and often arranged in reusable code blocks.
 
@@ -1370,6 +1377,7 @@ The version history documents material changes to this guideline according to IS
 | 2.8.1 | 2026-06-15 | Security-Verantwortliche*r | Switched references to the checklist compendium from the document number `RL-SE-001-CL` to the file name `Checklistensammelband_Sichere-Entwicklung.md`; synchronized README.md and AGENTS.md |
 | 2.9.0 | 2026-06-15 | Security-Verantwortliche*r | Added audit-ready RL/CL coverage for the latest Spec Kit governance preset review points: regulatory screening, BSI C3A/C5, A11Y/CLI review, cross-platform parity, secure-coding profiles, and agent-guidance parity; synchronized checklist compendium version 1.9.0 |
 | 2.10.0 | 2026-06-17 | Security-Verantwortliche*r | Raised and clarified test-coverage KPIs: unit-test line coverage at least 80%, security-critical modules at least 85% branch coverage, AI code at least 80% line and branch coverage, integration-test coverage of public interfaces and critical UI flows at least 80%; synchronized CL_08, CL_09, and checklist compendium |
+| 2.10.1 | 2026-06-26 | Security-Verantwortliche*r | Clarified MSL examples in principles and programming sections with Go, Rust, and Swift where the target platform fits; added language-specific architecture notes for Go, Rust, and Swift |
 
 **Approval of the current version:**
 

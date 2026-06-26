@@ -1,6 +1,6 @@
 # Leitlinie fuer sichere Programmierung / Secure Programming Guideline
 
-**Stand / Date:** 2026-06-19
+**Stand / Date:** 2026-06-26
 
 ## Zweck / Purpose
 
@@ -35,9 +35,9 @@
 
 ## Für Auszubildende kurz erklärt / Short Explanation for Apprentices
 
-**DE:** Eine sichere Sprache hilft, aber sie entscheidet nicht alles. Auch in C#, Java, Python, Swift oder Rust kann unsicherer Code entstehen, wenn Eingaben nicht geprüft, Fehler falsch behandelt oder Secrets falsch gespeichert werden.
+**DE:** Eine sichere Sprache hilft, aber sie entscheidet nicht alles. Auch in C#, Java, Python, Go, Swift oder Rust kann unsicherer Code entstehen, wenn Eingaben nicht geprüft, Fehler falsch behandelt oder Secrets falsch gespeichert werden.
 
-**EN:** A safe language helps, but it does not decide everything. C#, Java, Python, Swift, or Rust code can still be unsafe when input is not checked, errors are mishandled, or secrets are stored incorrectly.
+**EN:** A safe language helps, but it does not decide everything. C#, Java, Python, Go, Swift, or Rust code can still be unsafe when input is not checked, errors are mishandled, or secrets are stored incorrectly.
 
 ## Review-Fragen / Review Questions
 
