@@ -5,9 +5,9 @@
 
 ## Zweck / Purpose
 
-**DE:** Dieser Ordner enthaelt die mitgeltenden Dokumente zur generischen Richtlinie Sichere Entwicklung. Die Dokumente sind als Ausbildungs-, Review- und Haertungsgrundlage gedacht. Sie konkretisieren die Richtlinie und die zwoelf Checklisten, ohne einen Organisations- oder QISMS-Bezug vorauszusetzen.
+**DE:** Dieser Ordner enthaelt die mitgeltenden Dokumente zur generischen Richtlinie Sichere Entwicklung. Die Dokumente sind als Ausbildungs-, Review- und Haertungsgrundlage gedacht. Sie konkretisieren die Richtlinie und die zwoelf Checklisten, ohne eine konkrete Organisation oder ein konkretes Managementsystem vorauszusetzen.
 
-**EN:** This folder contains the related documents for the generic Secure Development Guideline. The documents support training, review, and hardening work. They refine the guideline and the twelve checklists without assuming a specific organization or QISMS system.
+**EN:** This folder contains the related documents for the generic Secure Development Guideline. The documents support training, review, and hardening work. They refine the guideline and the twelve checklists without assuming a specific organization or management system.
 
 ## Dokumentenliste / Document List
 

@@ -1,7 +1,7 @@
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -33,7 +33,7 @@ indirectly via libraries, frameworks, or external services.
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - Gebrauch kryptografischer Maßnahmen (interne Vorgabe)
 - BSI TR-02102-1 (Kryptografische Verfahren: Empfehlungen und Schlüssellängen)
 - NIST SP 800-131A Rev. 2 (Transitioning the Use of Cryptographic Algorithms)
@@ -46,7 +46,7 @@ indirectly via libraries, frameworks, or external services.
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](../Richtlinie_Sichere-Entwicklung.md)
 - **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline

@@ -1,7 +1,7 @@
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -43,7 +43,7 @@ transfers, new technology, new purpose).
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - Datenschutzleitlinie der Organisation
 - DSGVO (Verordnung (EU) 2016/679), Art. 5, 25, 28, 30, 32, 35, 36
 - ISO/IEC 27701:2019 Privacy Information Management
@@ -64,13 +64,13 @@ Dokumentationsablage-URL existiert, wird sie in der finalen Dokumentenlenkung er
 listed as local working copies or Dokumentationsablage references. If an internal Dokumentationsablage URL
 exists, it is added during final document control.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](../Richtlinie_Sichere-Entwicklung.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **CL_Bedrohungsmodellierung:** [lokale Arbeitskopie der Checkliste Bedrohungsmodellierung / local working copy of the threat-modeling checklist](CL_Bedrohungsmodellierung.md)
 - **DSGVO (EUR-Lex):** [Verordnung (EU) 2016/679 / Regulation (EU) 2016/679](https://eur-lex.europa.eu/eli/reg/2016/679/oj)
 - **EDSA / EDPB:** [Europäischer Datenschutzausschuss / European Data Protection Board](https://edpb.europa.eu/)
 - **WP 248 rev.01 (DPIA-Leitlinien):** [WP 248 rev.01 Leitlinien zur Datenschutz-Folgenabschätzung / WP 248 rev.01 Guidelines on DPIA](https://ec.europa.eu/newsroom/article29/items/611236)
-- **LfD Niedersachsen — Liste mit DPIA-Pflicht:** [Liste der Verarbeitungstätigkeiten mit DPIA-Pflicht (Niedersachsen) / list of processing activities requiring a DPIA (Lower Saxony)](https://lfd.niedersachsen.de/startseite/themen/datenschutz_in_organisationen/datenschutz_folgenabschatzung/datenschutz-folgenabschaetzung-179116.html)
+- **Zuständige Datenschutzaufsichtsbehörde / Competent supervisory authority:** projektspezifisch bestimmen; relevante nationale oder regionale DPIA-Listen im Projekt verlinken. / Determine per project; link relevant national or regional DPIA lists in the project.
 - **CNIL PIA-Tool (Open Source):** [CNIL Open-Source Privacy-Impact-Assessment-Tool / CNIL open-source PIA tool](https://www.cnil.fr/en/open-source-pia-software-helps-carry-out-data-protection-impact-assessment)
 - **ENISA Empfehlungen Datenschutz und Sicherheit:** [ENISA Datenschutz- und Sicherheitsleitfäden / ENISA privacy and security guidelines](https://www.enisa.europa.eu/topics/data-protection)
 - **ISO/IEC 27701:2019 (Webseite):** [offizielle ISO-Webseite zu ISO/IEC 27701 / official ISO webpage for ISO/IEC 27701](https://www.iso.org/standard/71670.html)
@@ -216,7 +216,7 @@ status must not be shown by color alone.
   Gewerkschaftsdaten u. a.) oder von Art. 10 (strafrechtliche
   Verurteilungen), systematische Überwachung öffentlich zugänglicher
   Bereiche. Zusätzlich wird die Positivliste der zuständigen
-  Aufsichtsbehörde geprüft (in Niedersachsen: LfD Niedersachsen). Die
+  Aufsichtsbehörde geprüft (im jeweiligen Projekt- oder Sitzland: zuständige Datenschutzaufsichtsbehörde). Die
   Analyse berücksichtigt die WP-248-rev.01-Kriterien (neun Kriterien
   des EDSA): Bewerten/Scoring, automatisierte Entscheidung mit
   rechtlicher Wirkung, systematische Überwachung, sensible Daten oder
@@ -232,8 +232,7 @@ status must not be shown by color alone.
   large-scale processing of special categories per Art. 9 (health,
   biometric, union data, etc.) or Art. 10 (criminal convictions),
   systematic monitoring of publicly accessible areas. The positive
-  list of the competent supervisory authority is also reviewed (Lower
-  Saxony: LfD Niedersachsen). The analysis considers the WP 248
+  list of the competent supervisory authority in the relevant project or seat jurisdiction is also reviewed. The analysis considers the WP 248
   rev.01 criteria (nine EDPB criteria): evaluation/scoring, automated
   decision-making with legal effect, systematic monitoring, sensitive
   or highly personal data, large-scale processing, matching or
@@ -449,8 +448,7 @@ status must not be shown by color alone.
 - **DE:** Wenn die DPIA trotz geplanter Maßnahmen ein verbleibendes
   hohes Risiko ergibt, wird die zuständige Aufsichtsbehörde gemäß
   DSGVO Art. 36 vor Verarbeitungsbeginn konsultiert. Für die Organisation ist
-  dies in der Regel die Landesbeauftragte für den Datenschutz
-  Niedersachsen. Die Konsultation umfasst die DPIA, die Beschreibung
+  dies die zuständige Datenschutzaufsichtsbehörde des Projekt- oder Sitzlandes. Die Konsultation umfasst die DPIA, die Beschreibung
   der Verarbeitung, die Aufgabenverteilung zwischen Verantwortlichen
   und Auftragsverarbeitern, geplante Schutzmaßnahmen und alle
   weiteren von der Behörde angeforderten Informationen. Die Antwort
@@ -458,8 +456,7 @@ status must not be shown by color alone.
   Verarbeitung beginnt erst nach Klärung.
 - **EN:** If the DPIA shows residual high risk despite planned measures,
   the competent supervisory authority is consulted before processing
-  starts per GDPR Art. 36. For the Organisation this is typically the State
-  Commissioner for Data Protection of Lower Saxony. The consultation
+  starts per GDPR Art. 36. For the organisation this is the competent data protection supervisory authority of the project or seat jurisdiction. The consultation
   includes the DPIA, the processing description, the allocation of
   responsibilities between controllers and processors, planned
   protective measures, and any further information requested by the
@@ -565,7 +562,7 @@ status must not be shown by color alone.
   Trennung zwischen Stamm-, Verkehrs- und Inhaltsdaten,
   altersangemessene Voreinstellungen wo Minderjährige betroffen sind.
   Die acht Architekturprinzipien aus dem Abschnitt „Sichere
-  Softwarearchitektur" der RL Sichere-Entwicklung werden um diese
+  Softwarearchitektur" der Richtlinie Sichere Entwicklung werden um diese
   datenschutzspezifischen Punkte ergänzt; relevante Entscheidungen
   werden als S-ADR mit Datenschutz-Bezug festgehalten.
 - **EN:** Processing is designed in a privacy-friendly way from the

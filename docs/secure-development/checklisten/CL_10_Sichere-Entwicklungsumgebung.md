@@ -1,7 +1,7 @@
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -33,7 +33,7 @@ change.
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - ISO/IEC 27002:2022 A.8.31, A.8.32
 - NIST SP 800-218 (SSDF)
 - Verfassung XII, XIII
@@ -44,7 +44,7 @@ change.
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](../Richtlinie_Sichere-Entwicklung.md)
 - **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
@@ -473,8 +473,8 @@ change.
   Selbstgehostet: gitleaks im CI (`gitleaks detect --redact --report-format
   sarif --report-path leaks.sarif`); trufflehog (`trufflehog filesystem
   . --no-update --json`). Custom Patterns für interne Secrets
-  (`.gitleaks.toml`): `[[rules]] id = "gwdg-internal-token" regex =
-  '''gwdg_[a-z0-9]{32}'''`. Ausnahmen über `.gitleaksignore` mit Hash
+  (`.gitleaks.toml`): `[[rules]] id = "org-internal-token" regex =
+  '''org_[a-z0-9]{32}'''`. Ausnahmen über `.gitleaksignore` mit Hash
   und Begründung. Bei Treffer: sofortige Rotation des Geheimnisses,
   History-Bereinigung mit `git filter-repo --replace-text` (nur nach
   Team-Abstimmung, da Force-Push), Audit-Log-Prüfung,
@@ -500,7 +500,7 @@ change.
   --report-format sarif --report-path leaks.sarif`); trufflehog
   (`trufflehog filesystem . --no-update --json`). Custom patterns for
   internal secrets (`.gitleaks.toml`): `[[rules]] id =
-  "gwdg-internal-token" regex = '''gwdg_[a-z0-9]{32}'''`. Exceptions
+  "org-internal-token" regex = '''org_[a-z0-9]{32}'''`. Exceptions
   via `.gitleaksignore` with hash and justification. On hit:
   immediate rotation of the secret, history cleanup with `git
   filter-repo --replace-text` (only after team coordination, as it is
@@ -1437,7 +1437,7 @@ platform-parity evidence or justified non-applicability.
 
 - **Version 1.0 (2026-04-27):** Erstfassung / Initial version
 - **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
-- **Version 1.2 (2026-06-15):** Prüfpunkt 17 zur Cross-Platform-Skriptparität ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Added item 17 for cross-platform script parity; synchronized with RL Sichere-Entwicklung v2.9.0.
+- **Version 1.2 (2026-06-15):** Prüfpunkt 17 zur Cross-Platform-Skriptparität ergänzt; synchron mit Richtlinie Sichere Entwicklung v2.9.0. / Added item 17 for cross-platform script parity; synchronized with Richtlinie Sichere Entwicklung v2.9.0.
 
 - **Version 1.3 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
 

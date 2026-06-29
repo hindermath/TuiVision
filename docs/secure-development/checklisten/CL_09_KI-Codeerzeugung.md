@@ -1,7 +1,7 @@
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -32,7 +32,7 @@ whose output flows into production code or production-near scripts.
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - CL_12_Agentische-KI-Sandbox
 - Leitlinie für sichere Programmierung
 - ISO/IEC 27002:2022 A.8.28
@@ -46,7 +46,7 @@ whose output flows into production code or production-near scripts.
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](../Richtlinie_Sichere-Entwicklung.md)
 - **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
@@ -1788,16 +1788,16 @@ justified as not applicable.
 - **Version 1.0 (2026-04-27):** Erstfassung / Initial version
 - **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
 - **Version 1.2 (2026-04-30):** Barrierearme Personenbezeichnung ergänzt / Added accessible person wording
-- **Version 1.3 (2026-05-19):** Prüfpunkt 15 „KI-Lieferkettentransparenz" ergänzt; Mitgeltende Dokumente um die G7-Leitlinie „Software Bill of Materials for AI – Minimum Elements" (2026) erweitert; synchron mit RL Sichere-Entwicklung v2.4.0. / Added checklist item 15 "AI Supply-Chain Transparency"; extended related documents with the G7 guideline "Software Bill of Materials for AI – Minimum Elements" (2026); synchronized with RL Sichere-Entwicklung v2.4.0.
-- **Version 1.4 (2026-05-22):** Durchführungshinweise um Querverweis auf CL_12 und GitHub Spec Kit SDD für wesentliche Feature-Implementierungen mit agentischer KI ergänzt; synchron mit RL Sichere-Entwicklung v2.5.0. / Added implementation guidance cross-reference to CL_12 and GitHub Spec Kit SDD for material feature implementations with agentic AI; synchronized with RL Sichere-Entwicklung v2.5.0.
-- **Version 1.5 (2026-06-12):** Durchführungshinweise präzisiert: Installation und Nachweis der Spec-Kit-Governance-Presets werden in CL_12 bewertet; synchron mit RL Sichere-Entwicklung v2.6.0. / Refined implementation guidance: installation and evidence of the Spec Kit governance presets are assessed in CL_12; synchronized with RL Sichere-Entwicklung v2.6.0.
-- **Version 1.6 (2026-06-14):** Durchführungshinweise präzisiert: Aktualität und inhaltliche Abdeckung der Spec-Kit-Governance-Presets werden in CL_12 bewertet; synchron mit RL Sichere-Entwicklung v2.7.0. / Refined implementation guidance: currency and content coverage of the Spec Kit governance presets are assessed in CL_12; synchronized with RL Sichere-Entwicklung v2.7.0.
-- **Version 1.7 (2026-06-14):** Durchführungshinweise präzisiert: Vollständige Spec-Kit-Artefakte mit Nachweis-Matrix können die separate manuelle Ausfüllung ersetzen; synchron mit RL Sichere-Entwicklung v2.8.0. / Refined implementation guidance: complete Spec Kit artefacts with an evidence matrix may replace separate manual completion; synchronized with RL Sichere-Entwicklung v2.8.0.
-- **Version 1.8 (2026-06-15):** Prüfpunkte 16 und 17 zu KI-Regulierungs-Screening und didaktischen Kommentaren ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Added items 16 and 17 for AI regulatory screening and didactic comments; synchronized with RL Sichere-Entwicklung v2.9.0.
+- **Version 1.3 (2026-05-19):** Prüfpunkt 15 „KI-Lieferkettentransparenz" ergänzt; Mitgeltende Dokumente um die G7-Leitlinie „Software Bill of Materials for AI – Minimum Elements" (2026) erweitert; synchron mit Richtlinie Sichere Entwicklung v2.4.0. / Added checklist item 15 "AI Supply-Chain Transparency"; extended related documents with the G7 guideline "Software Bill of Materials for AI – Minimum Elements" (2026); synchronized with Richtlinie Sichere Entwicklung v2.4.0.
+- **Version 1.4 (2026-05-22):** Durchführungshinweise um Querverweis auf CL_12 und GitHub Spec Kit SDD für wesentliche Feature-Implementierungen mit agentischer KI ergänzt; synchron mit Richtlinie Sichere Entwicklung v2.5.0. / Added implementation guidance cross-reference to CL_12 and GitHub Spec Kit SDD for material feature implementations with agentic AI; synchronized with Richtlinie Sichere Entwicklung v2.5.0.
+- **Version 1.5 (2026-06-12):** Durchführungshinweise präzisiert: Installation und Nachweis der Spec-Kit-Governance-Presets werden in CL_12 bewertet; synchron mit Richtlinie Sichere Entwicklung v2.6.0. / Refined implementation guidance: installation and evidence of the Spec Kit governance presets are assessed in CL_12; synchronized with Richtlinie Sichere Entwicklung v2.6.0.
+- **Version 1.6 (2026-06-14):** Durchführungshinweise präzisiert: Aktualität und inhaltliche Abdeckung der Spec-Kit-Governance-Presets werden in CL_12 bewertet; synchron mit Richtlinie Sichere Entwicklung v2.7.0. / Refined implementation guidance: currency and content coverage of the Spec Kit governance presets are assessed in CL_12; synchronized with Richtlinie Sichere Entwicklung v2.7.0.
+- **Version 1.7 (2026-06-14):** Durchführungshinweise präzisiert: Vollständige Spec-Kit-Artefakte mit Nachweis-Matrix können die separate manuelle Ausfüllung ersetzen; synchron mit Richtlinie Sichere Entwicklung v2.8.0. / Refined implementation guidance: complete Spec Kit artefacts with an evidence matrix may replace separate manual completion; synchronized with Richtlinie Sichere Entwicklung v2.8.0.
+- **Version 1.8 (2026-06-15):** Prüfpunkte 16 und 17 zu KI-Regulierungs-Screening und didaktischen Kommentaren ergänzt; synchron mit Richtlinie Sichere Entwicklung v2.9.0. / Added items 16 and 17 for AI regulatory screening and didactic comments; synchronized with Richtlinie Sichere Entwicklung v2.9.0.
 
 - **Version 1.9 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
 
 - **Version 1.10 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
-- **Version 1.11 (2026-06-17):** Test-KPIs an RL Sichere-Entwicklung v2.10.0 angepasst: KI-Code mindestens 80 % Line und Branch Coverage; Integrationstest-Abdeckung öffentlicher Schnittstellen und kritischer UI-Flows ergänzt. / Aligned test KPIs with Secure Development Guideline v2.10.0: AI code at least 80 % line and branch coverage; added integration-test coverage for public interfaces and critical UI flows.
+- **Version 1.11 (2026-06-17):** Test-KPIs an Richtlinie Sichere Entwicklung v2.10.0 angepasst: KI-Code mindestens 80 % Line und Branch Coverage; Integrationstest-Abdeckung öffentlicher Schnittstellen und kritischer UI-Flows ergänzt. / Aligned test KPIs with Secure Development Guideline v2.10.0: AI code at least 80 % line and branch coverage; added integration-test coverage for public interfaces and critical UI flows.
 
 ---

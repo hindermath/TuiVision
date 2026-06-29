@@ -1,7 +1,7 @@
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -31,7 +31,7 @@ products. Recommended for internal tooling.
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - ISO/IEC 27002:2022 A.5.7, A.5.25–A.5.28, A.8.8
 - RFC 9116 (security.txt)
 - Coordinated Vulnerability Disclosure (CVD)
@@ -43,7 +43,7 @@ products. Recommended for internal tooling.
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](../Richtlinie_Sichere-Entwicklung.md)
 - **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
@@ -213,14 +213,14 @@ products. Recommended for internal tooling.
   - `CSAF:` – URL zur CSAF-Provider-Metadata-Datei.
   Beispiel `security.txt`:
   ```text
-  Contact: mailto:security@gwdg.de
-  Contact: https://www.gwdg.de/security/report
+  Contact: mailto:security@example.org
+  Contact: https://example.org/security/report
   Expires: 2027-04-27T00:00:00.000Z
-  Encryption: https://www.gwdg.de/.well-known/pgp-key.txt
+  Encryption: https://example.org/.well-known/pgp-key.txt
   Preferred-Languages: de, en
-  Canonical: https://www.gwdg.de/.well-known/security.txt
-  Policy: https://www.gwdg.de/security/policy
-  Acknowledgments: https://www.gwdg.de/security/hall-of-fame
+  Canonical: https://example.org/.well-known/security.txt
+  Policy: https://example.org/security/policy
+  Acknowledgments: https://example.org/security/hall-of-fame
   ```
   Bereitstellung:
   - Pfad: **muss** `/.well-known/security.txt` sein (RFC 9116).
@@ -246,14 +246,14 @@ products. Recommended for internal tooling.
   - `CSAF:` – URL of the CSAF provider metadata file.
   Example `security.txt`:
   ```text
-  Contact: mailto:security@gwdg.de
-  Contact: https://www.gwdg.de/security/report
+  Contact: mailto:security@example.org
+  Contact: https://example.org/security/report
   Expires: 2027-04-27T00:00:00.000Z
-  Encryption: https://www.gwdg.de/.well-known/pgp-key.txt
+  Encryption: https://example.org/.well-known/pgp-key.txt
   Preferred-Languages: de, en
-  Canonical: https://www.gwdg.de/.well-known/security.txt
-  Policy: https://www.gwdg.de/security/policy
-  Acknowledgments: https://www.gwdg.de/security/hall-of-fame
+  Canonical: https://example.org/.well-known/security.txt
+  Policy: https://example.org/security/policy
+  Acknowledgments: https://example.org/security/hall-of-fame
   ```
   Deployment:
   - Path: **must** be `/.well-known/security.txt` (RFC 9116).
@@ -305,7 +305,7 @@ products. Recommended for internal tooling.
   Vielen Dank für Ihre Sicherheitsmeldung. Wir haben Ihre Nachricht
   erhalten und melden uns innerhalb von 3 Werktagen mit einer
   qualifizierten Antwort. Bitte verschlüsseln Sie weitere Informationen
-  mit unserem PGP-Schlüssel: https://www.gwdg.de/.well-known/pgp-key.txt
+  mit unserem PGP-Schlüssel: https://example.org/.well-known/pgp-key.txt
   ```
 - **EN:** A monitored contact address or form exists. Incoming reports are
   acknowledged within a defined deadline.
@@ -335,7 +335,7 @@ products. Recommended for internal tooling.
   Thank you for your security report. We have received your message and
   will respond with a qualified reply within 3 business days. Please
   encrypt further information with our PGP key:
-  https://www.gwdg.de/.well-known/pgp-key.txt
+  https://example.org/.well-known/pgp-key.txt
   ```
 - **Akzeptanz / Acceptance:** Kontakt (Funktionspostfach + Plattform-Channel)
   benannt; Bestätigungsfrist je Schweregrad in der CVD-Policy festgelegt
@@ -1122,7 +1122,7 @@ SLAs are defined, and the CRA reporting path has been rehearsed.
 - **Version 1.0 (2026-04-27):** Erstfassung / Initial version
 - **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
 - **Version 1.2 (2026-04-30):** CVSS-v4.0-Zielmethode und CRA-Schlussberichte präzisiert / Clarified CVSS v4.0 target method and CRA final reports
-- **Version 1.3 (2026-06-15):** Prüfpunkt 7 um DORA-Screening und CL_01-Verknüpfung zu zusätzlichen Meldewegen ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Extended item 7 with DORA screening and CL_01 linkage to additional reporting paths; synchronized with RL Sichere-Entwicklung v2.9.0.
+- **Version 1.3 (2026-06-15):** Prüfpunkt 7 um DORA-Screening und CL_01-Verknüpfung zu zusätzlichen Meldewegen ergänzt; synchron mit Richtlinie Sichere Entwicklung v2.9.0. / Extended item 7 with DORA screening and CL_01 linkage to additional reporting paths; synchronized with Richtlinie Sichere Entwicklung v2.9.0.
 
 - **Version 1.4 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
 

@@ -1,7 +1,7 @@
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -35,7 +35,7 @@ change in architecture or delivery model.
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - ISO/IEC 27001:2022 Annex A.5.8, A.8.25–A.8.33
 - NIST SP 800-218 (SSDF)
 - OWASP ASVS, OWASP SAMM
@@ -50,7 +50,7 @@ change in architecture or delivery model.
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](../Richtlinie_Sichere-Entwicklung.md)
 - **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
@@ -790,7 +790,7 @@ questions have an owner and re-review trigger.
 - **Version 1.0 (2026-04-27):** Erstfassung / Initial version
 - **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
 - **Version 1.2 (2026-04-30):** ASVS 5.0.0 und SLSA v1.2 Build-Track aktualisiert / Updated ASVS 5.0.0 and SLSA v1.2 Build track
-- **Version 1.3 (2026-06-15):** Prüfpunkt 12 zur regulatorischen Anwendbarkeit von NIS2, CRA, EU AI Act, DORA und kundenspezifischen Regeln ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Added item 12 for regulatory applicability of NIS2, CRA, EU AI Act, DORA, and customer-specific rules; synchronized with RL Sichere-Entwicklung v2.9.0.
+- **Version 1.3 (2026-06-15):** Prüfpunkt 12 zur regulatorischen Anwendbarkeit von NIS2, CRA, EU AI Act, DORA und kundenspezifischen Regeln ergänzt; synchron mit Richtlinie Sichere Entwicklung v2.9.0. / Added item 12 for regulatory applicability of NIS2, CRA, EU AI Act, DORA, and customer-specific rules; synchronized with Richtlinie Sichere Entwicklung v2.9.0.
 
 - **Version 1.4 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
 

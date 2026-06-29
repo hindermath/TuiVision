@@ -1,7 +1,7 @@
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -19,7 +19,7 @@ This document is organization-neutral and written as a generic training and revi
 | Versionsnummer | 1.0.0 |
 | Freigabedatum | 17.06.2026 |
 | Inkrafttreten | 17.06.2026 |
-| Dokumentenklassifikation | intern |
+| Dokumentenklassifikation | öffentlich nutzbare Ausbildungs- und Prüfgrundlage |
 | Verantwortliche Stelle | Projekt- oder Ausbildungsverantwortliche mit Security-Review |
 | Freigegeben durch | Projekt- oder Ausbildungsverantwortliche nach Sicherheitsreview |
 | Nächster Review-Termin | 07.05.2027 (jährlich, ungeplant bei wesentlichen Änderungen) |
@@ -118,7 +118,7 @@ Die Richtlinie wird einmal pro Jahr auf Aktualität und Gültigkeit überprüft.
 
 ## Sprache und Barrierefreiheit
 
-Diese Datei ist die deutsche Fassung der Richtlinie. Die englische Fassung wird separat als `RL Sichere-Entwicklung.EN.md` gepflegt. Fachliche Änderungen werden künftig in beiden Sprachfassungen synchron nachgezogen. Das Zielniveau ist CEFR B2: kurze Sätze, klare Begriffe und erklärte Abkürzungen. Fachbegriffe werden beim ersten Auftreten ausgeschrieben.
+Diese Datei enthält die deutsche und englische Fassung der Richtlinie. Fachliche Änderungen werden in beiden Sprachfassungen synchron nachgezogen. Das Zielniveau ist CEFR B2: kurze Sätze, klare Begriffe und erklärte Abkürzungen. Fachbegriffe werden beim ersten Auftreten ausgeschrieben.
 
 Dokumente, Checklisten, Meldungen und Vorlagen werden barrierearm erstellt. Markdown-Dateien verwenden eine klare Überschriftenhierarchie, beschreibende Linktexte und Listen statt Layout-Tabellen. Informationen dürfen nicht nur über Farbe, Sonderzeichen oder Bilder vermittelt werden. Screenshots und Diagramme brauchen eine kurze Textbeschreibung.
 
@@ -445,11 +445,11 @@ Mitgeltende Dokumente: [Richtlinie Dienstleister- und Lieferantenbeziehungen](mi
 
 Bei selbst entwickelter Software trennt die Organisation Entwicklungs-, Test- und Produktivsysteme strikt voneinander. Beim Einsatz fertiger Lösungen ohne Eigenentwicklung sind mindestens Test- und Produktivsysteme strikt getrennt.
 
-Aufbau und Wiederherstellung der Systeme erfolgen über Puppet-Konfigurationen in getrennten Repositorien für Test/Stage und Produktion. Diese Repositorien liegen im [internen Git der Organisation](http://git.intern.gwdg.de/). So ist die Trennung zwischen dem öffentlichen Git für Kundenprojekte ([git-ce.gwdg.de](https://git-ce.gwdg.de/) und [git.gwdg.de](https://git.gwdg.de)) und dem internen Git für Serverkonfigurationen gewährleistet. Die Trennung wird in möglichst allen Projekten umgesetzt.
+Aufbau und Wiederherstellung der Systeme erfolgen über versionierte Infrastruktur- oder Konfigurationsartefakte in getrennten Repositorien für Test/Stage und Produktion. Projektquellcode, Betriebs- und Serverkonfigurationen werden logisch getrennt verwaltet. Die Trennung wird in möglichst allen Projekten umgesetzt.
 
 Test- beziehungsweise Stage- und Produktivsysteme sind je mit einem eigenen Branch im Git-Repository verbunden. Erste Änderungen finden im Entwicklungssystem statt. Sind sie stabil genug, werden sie per Merge Request in den Test- beziehungsweise Stage-Branch übernommen. Sind die Tests erfolgreich und treten keine schweren Fehler auf, werden sie per Merge Request und nach RfC (siehe nächster Absatz) in das Produktivsystem überführt.
 
-Dieser letzte Schritt erfolgt erst nach Ankündigung und Genehmigung über einen [Request for Change](https://it-goettingen.de/rfc/) im vorgesehenen Wartungsfenster.
+Dieser letzte Schritt erfolgt erst nach Ankündigung und Genehmigung über einen dokumentierten Request for Change im vorgesehenen Wartungsfenster.
 
 Die Systeme sind als virtuelle Maschinen umgesetzt. Bei Bedarf (zum Beispiel bei Cluster-Systemen) liegen sie auf getrennten VMware-Hostsystemen. Test- und Stage-Systeme liegen in einem dafür vorgesehenen Bereich der Virtualisierungsumgebung. Produktivsysteme liegen im Standardfall ebenfalls in einem dafür vorgesehenen Bereich; bei besonders wichtigen oder kritischen Systemen liegen sie im Hochverfügbarkeitsbereich.
 
@@ -500,7 +500,7 @@ Für Neuentwicklungen und wesentliche Erweiterungen von Anwendungen, die persone
 
 **Verbindliche Regelungen:**
 
-- **Schwellwertanalyse zu Projektbeginn:** Jedes Vorhaben mit Verarbeitung personenbezogener Daten startet mit einer dokumentierten Schwellwertanalyse. Sie prüft die in DSGVO Art. 35 Abs. 3 genannten Fälle (systematische und umfassende Bewertung persönlicher Aspekte, umfangreiche Verarbeitung besonderer Kategorien, systematische Überwachung öffentlich zugänglicher Bereiche), die Positivliste der Aufsichtsbehörde des Sitzlandes (in der Regel Landesbeauftragte für den Datenschutz Niedersachsen) und gegebenenfalls die DPIA-Liste des Europäischen Datenschutzausschusses.
+- **Schwellwertanalyse zu Projektbeginn:** Jedes Vorhaben mit Verarbeitung personenbezogener Daten startet mit einer dokumentierten Schwellwertanalyse. Sie prüft die in DSGVO Art. 35 Abs. 3 genannten Fälle (systematische und umfassende Bewertung persönlicher Aspekte, umfangreiche Verarbeitung besonderer Kategorien, systematische Überwachung öffentlich zugänglicher Bereiche), die Positivliste der zuständigen Datenschutzaufsichtsbehörde des Projekt- oder Sitzlandes und gegebenenfalls die DPIA-Liste des Europäischen Datenschutzausschusses.
 - **DPIA-Pflicht bei hohem Risiko:** Wenn die Schwellwertanalyse ein voraussichtlich hohes Risiko ergibt, ist eine DPIA gemäß DSGVO Art. 35 Abs. 7 mit folgenden Mindestbestandteilen zu erstellen: systematische Beschreibung der Verarbeitung, Bewertung der Notwendigkeit und Verhältnismäßigkeit, Bewertung der Risiken für Betroffene, geplante Abhilfemaßnahmen.
 - **Beteiligung der oder des Datenschutzbeauftragten:** Die oder der Datenschutzbeauftragte der Organisation wird gemäß DSGVO Art. 35 Abs. 2 in jeder DPIA konsultiert. Die Stellungnahme wird Teil der DPIA-Dokumentation.
 - **Konsultation der Aufsichtsbehörde:** Verbleibt nach den geplanten Maßnahmen ein hohes Restrisiko, wird die zuständige Aufsichtsbehörde gemäß DSGVO Art. 36 vor Verarbeitungsbeginn konsultiert.
@@ -517,7 +517,7 @@ Mitgeltende Dokumente: [Datenschutzleitlinie](mitgeltende-dokumente/Datenschutzl
 
 Die Programmierprojekte der Organisation werden mit Unit- und Integrationstests fortlaufend geprüft. Sobald ein Projekt in das Git-Repository eingecheckt wird, prüfen Unit-Tests die interne API. Integrationstests prüfen die dokumentierten öffentlichen Schnittstellen (zum Beispiel REST API, CLI oder vergleichbare externe API) und die dokumentierten kritischen UI-Flows. So bleibt sichergestellt, dass eine Code-Änderung die Funktionalität von API, Schnittstellen und UI nicht bricht. Erst nach erfolgreichen Tests startet das Deployment.
 
-Das im Scope befindliche IDM-Portal verfügt über eine große Zahl an Tests, um die Funktionalität der Web-Anwendung zu sichern. Das Test-Ergebnis dient auch als KPI und ist im [Test-Report des IDM-Portals](https://git-ce.gwdg.de/idm/idm-portal/-/pipelines/468928/test_report) abrufbar.
+Das im Scope befindliche Projekt verfügt über nachvollziehbare Tests, um die Funktionalität der Anwendung zu sichern. Die Testergebnisse dienen auch als KPI und werden als Build-, Test- oder Qualitätsbericht im jeweiligen Repository oder im vorgesehenen Nachweisspeicher abgelegt.
 
 **Verbindliche Mindestschwellen:** Für jedes Projekt im Geltungsbereich gelten messbare Zielwerte. Sie werden je Release erhoben und im Sicherheits- oder Qualitätsmanagement-System abgelegt.
 
@@ -541,12 +541,11 @@ Mitgeltende Checklisten: CL_Lieferkette-Build-Integritaet, CL_Code-Review-Sicher
 
 ## Verweise
 
-**Interne Verweise:**
+**Lokale und mitgeltende Verweise:**
 
-- [Liste der genehmigten Software](https://doku.it-goettingen.de/x/VB_7Ag), abgerufen am 09.05.2025
-- [Git-Repository IDM-Portal](https://git-ce.gwdg.de/idm/idm-portal), abgerufen am 09.05.2025
-- [IDM-Portal Test-Resultate](https://git-ce.gwdg.de/idm/idm-portal/-/pipelines/468928/test_report), abgerufen am 14.05.2025
 - Checklistensammelband zur Richtlinie Sichere Entwicklung: `Checklistensammelband_Sichere-Entwicklung.md`, Kapitel 01 bis 12 (mitgeltend zu dieser Richtlinie)
+- Mitgeltende Dokumente in `docs/secure-development/mitgeltende-dokumente/`
+- Projektspezifische Listen genehmigter Werkzeuge, Repositories, Testberichte und Freigaben werden bei Bedarf lokal im jeweiligen Projekt verlinkt.
 
 **Normen und Standards:**
 
@@ -679,7 +678,7 @@ Die Versionshistorie dokumentiert wesentliche Änderungen dieser Richtlinie gem�
 | 1.2.0 | 27.04.2026 | Security-Verantwortliche*r | Sichere Softwarearchitektur (A.8.27), Krypto-Mindestvorgaben, KI-Codeerzeugung, Bedrohungsmodellierung, Lieferkettentransparenz, CRA-Bezug ergänzt; mitgeltende Checklisten eingeführt |
 | 2.0.0 | 30.04.2026 | Security-Verantwortliche*r | Dokumenten-Metadaten und Versionshistorie eingeführt; Abschnitt „Einordnung im ISMS" mit ISO 27001-Klauseln ergänzt; Abschnitt „Geschäftsfortführung der Entwicklungsumgebung" (A.5.30) hinzugefügt; Abschnitt „Datenschutz-Folgenabschätzung" (DSGVO Art. 35) hinzugefügt; Daten-Maskierung (A.8.11), Malware-Scan in der Lieferkette (A.8.7) und Schutz während Audit-Tests (A.8.34) ergänzt; neue Checkliste CL_Datenschutz-Folgenabschaetzung in den Satz mitgeltender Checklisten aufgenommen |
 | 2.0.1 | 02.05.2026 | Security-Verantwortliche*r | Verweise auf frühere Einzelablage durch Checklistensammelband `RL-SE-001-CL`, Kapitel 01 bis 11, ersetzt; SoA-/Anwendbarkeitserklärungs-Schnittstelle zum optionale ISO-27001-Nachweisfuehrung ergänzt |
-| 2.1.0 | 07.05.2026 | Security-Verantwortliche*r | Abschnitt „Agentische KI in Sandbox-Umgebungen" ergänzt; Verbot direkter Agentenausführung auf Entwickler-Laptops, Mount-Grenzen, OpenCode-/Codex-Nutzung und GitHub-Spec-Kit-Governance-Presets geregelt; neue Checkliste CL_Agentische-KI-Sandbox aufgenommen; englische Fassung als separate Datei `RL Sichere-Entwicklung.EN.md` angelegt |
+| 2.1.0 | 07.05.2026 | Security-Verantwortliche*r | Abschnitt „Agentische KI in Sandbox-Umgebungen" ergänzt; Verbot direkter Agentenausführung auf Entwickler-Laptops, Mount-Grenzen, OpenCode-/Codex-Nutzung und GitHub-Spec-Kit-Governance-Presets geregelt; neue Checkliste CL_Agentische-KI-Sandbox aufgenommen; englische Fassung ergänzt |
 | 2.2.0 | 14.05.2026 | Security-Verantwortliche*r | Abschnitt „Agentische KI in Sandbox-Umgebungen" um vier zulässige Sandbox-Typen (Container, MicroVM, klassische VM, dedizierter Workstation-Host), formellen Freigabe- und Lebenszyklusprozess (Initialfreigabe, jährliche Re-Validierung, außerplanmäßige Re-Validierung, Entzug, Pilotbetrieb) und Normbezüge zu ISO/IEC 27001:2022 Annex A, NIST AI RMF und OWASP LLM Top 10 erweitert; Netzwerk-Restriktion und reproduzierbares Tool-Pinning als verbindliche Regelungen ergänzt; CL_12 v1.1 mit erweiterten Prüfpunkten synchronisiert |
 | 2.3.0 | 19.05.2026 | Security-Verantwortliche*r | Abschnitt „Agentische KI in Sandbox-Umgebungen": Initialfreigabe und Entzug von Sandbox-Umgebungen können neben der oder dem Security-Verantwortliche*r auch durch die oder den KI-Verantwortlichen erfolgen; Abkürzungsverzeichnis um KI-Verantwortliche*r ergänzt; mit CL_12 v1.2 synchronisiert |
 | 2.4.0 | 19.05.2026 | Security-Verantwortliche*r | KI-Lieferkettentransparenz nach der G7-Leitlinie „Software Bill of Materials for AI – Minimum Elements" (2026) aufgenommen: Abschnitt „KI-gestützte Codeerzeugung" um Geltungsbereichs-Abgrenzung (KI-Nutzung gegenüber KI-Bereitstellung) und AI-SBOM-Lieferantentransparenz erweitert; Abschnitt „Lieferkettentransparenz und Build-Integrität" um KI-Komponenten in der SBOM ergänzt; G7-Leitlinie als Rahmenwerk aufgenommen; CL_05, CL_09 und CL_12 synchronisiert |
@@ -710,7 +709,7 @@ Die Versionshistorie dokumentiert wesentliche Änderungen dieser Richtlinie gem�
 | Version | 2.10.0 |
 | Release date | 2026-06-17 |
 | Effective date | 2026-06-17 |
-| Document classification | internal |
+| Document classification | publicly usable training and review baseline |
 | Responsible unit | Project or training owner with security review |
 | Approved by | Project or training owner after security review |
 | Next review date | 2027-05-07 (annually, and ad hoc after material changes) |
@@ -814,7 +813,7 @@ This guideline is reviewed once per year for currency and validity.
 
 ## Language and Accessibility
 
-This file is the English version of the guideline. The German version is maintained separately as `RL Sichere-Entwicklung.md`. Subject-matter changes are maintained in both language versions from now on. The target language level is CEFR B2: short sentences, clear terms, and explained abbreviations. Technical terms are written out at first use.
+This file contains the German and English versions of the guideline. Subject-matter changes are maintained in both language versions. The target language level is CEFR B2: short sentences, clear terms, and explained abbreviations. Technical terms are written out at first use.
 
 Documents, checklists, notifications, and templates are created in an accessibility-oriented way. Markdown files use a clear heading hierarchy, descriptive link text, and lists instead of layout tables. Information must not be conveyed only by color, special characters, or images. Screenshots and diagrams need a short text description.
 
@@ -1140,7 +1139,7 @@ Related documents: service-provider and supplier-relationship guideline.
 
 For self-developed software, Organisation strictly separates development, test, and production systems. When ready-made solutions without custom development are used, at least test and production systems are strictly separated.
 
-Systems are built and restored through Puppet configurations in separate repositories for test/stage and production. These repositories are in the internal Organisation Git. This separates the public Git for customer projects from the internal Git for server configurations. The separation is implemented in as many projects as possible.
+Systems are built and restored through versioned infrastructure or configuration artefacts in separate repositories for test/stage and production. Project source code, operations configuration, and server configuration are managed with logical separation. The separation is implemented in as many projects as possible.
 
 Test or stage and production systems each use a dedicated branch in the Git repository. Initial changes happen in the development system. When stable enough, they are merged into the test or stage branch. If tests succeed and no severe defects occur, they are merged into production after an RfC.
 
@@ -1195,7 +1194,7 @@ For new developments and material extensions of applications that process person
 
 **Binding rules:**
 
-- **Threshold analysis at project start:** Every project processing personal data starts with documented threshold analysis. It checks the cases named in GDPR Art. 35(3), the positive list of the supervisory authority of the seat state, normally the Lower Saxony data-protection authority, and where relevant the EDPB DPIA list.
+- **Threshold analysis at project start:** Every project processing personal data starts with documented threshold analysis. It checks the cases named in GDPR Art. 35(3), the positive list of the competent data protection supervisory authority of the project or seat jurisdiction, and where relevant the EDPB DPIA list.
 - **DPIA obligation in case of high risk:** If the threshold analysis shows a likely high risk, a DPIA according to GDPR Art. 35(7) is created with at least: systematic description of processing, assessment of necessity and proportionality, assessment of risks for data subjects, and planned mitigation measures.
 - **Involvement of the Data Protection Officer:** The Organisation Data Protection Officer is consulted in every DPIA according to GDPR Art. 35(2). The opinion becomes part of the DPIA documentation.
 - **Consultation of supervisory authority:** If a high residual risk remains after planned measures, the competent supervisory authority is consulted before processing begins, according to GDPR Art. 36.
@@ -1212,7 +1211,7 @@ Related documents: data-protection guideline. Related checklist: CL_Datenschutz-
 
 Organisation programming projects are continuously checked with unit and integration tests. As soon as a project is checked into the Git repository, unit tests check the internal API. Integration tests check the documented public interfaces, for example REST API, CLI, or comparable external API, and the documented critical UI flows. This ensures that a code change does not break API, interface, or UI functionality. Deployment starts only after successful tests.
 
-The IDM portal in scope has many tests to secure web-application functionality. The test result also serves as KPI and is available in the IDM portal test report.
+The project in scope has traceable tests to secure application functionality. Test results also serve as KPIs and are stored as build, test, or quality reports in the repository or in the defined evidence location.
 
 **Binding minimum thresholds:** For every project in scope, measurable target values apply. They are collected per release and stored in the security or quality management system.
 
@@ -1234,12 +1233,11 @@ Related documents: test management guideline. Related checklists: CL_Lieferkette
 
 ## References
 
-**Internal references:**
+**Local and related references:**
 
-- [List of approved software](https://doku.it-goettingen.de/x/VB_7Ag), accessed 2025-05-09
-- [Git repository IDM portal](https://git-ce.gwdg.de/idm/idm-portal), accessed 2025-05-09
-- [IDM portal test results](https://git-ce.gwdg.de/idm/idm-portal/-/pipelines/468928/test_report), accessed 2025-05-14
 - Checklist compendium for the Secure Development guideline: `Checklistensammelband_Sichere-Entwicklung.md`, chapters 01 to 12 (related to this guideline)
+- Related documents in `docs/secure-development/mitgeltende-dokumente/`
+- Project-specific lists of approved tools, repositories, test reports, and approvals are linked locally in the respective project when needed.
 
 **Norms and standards:**
 
@@ -1371,7 +1369,7 @@ The version history documents material changes to this guideline according to IS
 | 1.2.0 | 2026-04-27 | Security-Verantwortliche*r | Added secure software architecture (A.8.27), cryptographic minimum requirements, AI-assisted code generation, threat modeling, supply-chain transparency, CRA reference, and related checklists |
 | 2.0.0 | 2026-04-30 | Security-Verantwortliche*r | Added document metadata and version history; added ISMS positioning with ISO 27001 clauses; added business continuity of the development environment (A.5.30); added DPIA section (GDPR Art. 35); added data masking (A.8.11), malware scanning in the supply chain (A.8.7), and protection during audit testing (A.8.34); added CL_Datenschutz-Folgenabschaetzung |
 | 2.0.1 | 2026-05-02 | Security-Verantwortliche*r | Replaced references to former individual checklist storage with checklist compendium `RL-SE-001-CL`, chapters 01 to 11; added SoA interface to the optional ISO 27001 evidence management |
-| 2.1.0 | 2026-05-07 | Security-Verantwortliche*r | Added section "Agentic AI in Sandbox Environments"; regulated prohibition of direct agent execution on developer laptops, mount boundaries, OpenCode/Codex use, and GitHub Spec Kit governance presets; added CL_Agentische-KI-Sandbox; created English version as separate file `RL Sichere-Entwicklung.EN.md` |
+| 2.1.0 | 2026-05-07 | Security-Verantwortliche*r | Added section "Agentic AI in Sandbox Environments"; regulated prohibition of direct agent execution on developer laptops, mount boundaries, OpenCode/Codex use, and GitHub Spec Kit governance presets; added CL_Agentische-KI-Sandbox; added English version |
 | 2.2.0 | 2026-05-14 | Security-Verantwortliche*r | Extended section "Agentic AI in Sandbox Environments" with four permitted sandbox types (container, microVM, classic VM, dedicated workstation host), a formal approval and lifecycle process (initial approval, annual re-validation, unscheduled re-validation, withdrawal, pilot operation), and references to ISO/IEC 27001:2022 Annex A, NIST AI RMF, and OWASP LLM Top 10; added network restriction and reproducible tool pinning as binding rules; synchronized with CL_12 v1.1 |
 | 2.3.0 | 2026-05-19 | Security-Verantwortliche*r | Section "Agentic AI in Sandbox Environments": initial approval and withdrawal of sandbox environments may be issued not only by the Security-Verantwortliche*r but also by the AI Officer (KI-Verantwortliche*r); added KI-Verantwortliche*r to the list of abbreviations; synchronized with CL_12 v1.2 |
 | 2.4.0 | 2026-05-19 | Security-Verantwortliche*r | Added AI supply-chain transparency following the G7 guideline "Software Bill of Materials for AI – Minimum Elements" (2026): extended section "AI-Assisted Code Generation" with a scope delimitation (AI use versus AI provision) and AI-SBOM supplier transparency; added AI components in the SBOM to the supply-chain transparency section; added the G7 guideline as a framework; synchronized with CL_05, CL_09, and CL_12 |

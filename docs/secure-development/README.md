@@ -5,9 +5,9 @@
 
 ## Zweck / Purpose
 
-**DE:** Dieser Ordner stellt eine generische, auditfaehige Grundlage fuer sichere Softwareentwicklung bereit. Er wurde aus dem Projekt `RL_Sichere-Entwicklung` abgeleitet, aber bewusst von konkreten Organisations- und Dokumentenmanagement-Bezuegen geloest. Die fachliche Schaerfe der ISO/IEC-27001-/27002-orientierten sicheren Entwicklung bleibt erhalten.
+**DE:** Dieser Ordner stellt eine generische, auditfaehige Grundlage fuer sichere Softwareentwicklung bereit. Er ist bewusst ohne konkrete Organisations-, Firmen-, System- oder Dokumentenmanagement-Bezuege formuliert. Die fachliche Schaerfe der ISO/IEC-27001-/27002-orientierten sicheren Entwicklung bleibt erhalten.
 
-**EN:** This folder provides a generic, audit-ready baseline for secure software development. It was derived from the `RL_Sichere-Entwicklung` project, but deliberately removes organization-specific and document-management bindings. The ISO/IEC 27001/27002-oriented secure-development rigor is preserved.
+**EN:** This folder provides a generic, audit-ready baseline for secure software development. It deliberately avoids concrete organization, company, system, or document-management references. The ISO/IEC 27001/27002-oriented secure-development rigor is preserved.
 
 ## Nutzung / Usage
 

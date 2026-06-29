@@ -1,7 +1,7 @@
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -31,7 +31,7 @@ for internal libraries as soon as more than one team uses them.
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - ISO/IEC 27002:2022 A.5.21, A.8.30
 - CycloneDX, SPDX (SBOM-Formate)
 - CSAF (VEX-Format)
@@ -45,7 +45,7 @@ for internal libraries as soon as more than one team uses them.
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](../Richtlinie_Sichere-Entwicklung.md)
 - **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
@@ -488,7 +488,7 @@ for internal libraries as soon as more than one team uses them.
     Typosquatting/Dependency-Confusion).
   - Audit-Log aller Downloads.
   Schutz gegen Dependency Confusion:
-  - Interne Pakete in eigenem Scope (`@gwdg/*`) und Scope-Routing
+  - Interne Pakete in eigenem Scope (`@internal/*`) und Scope-Routing
     auf privaten Feed.
   - npm: `publishConfig.registry` für interne Pakete.
 - **EN:** Dependencies come only from verified registries (e.g. internal
@@ -517,7 +517,7 @@ for internal libraries as soon as more than one team uses them.
     typosquatting/dependency confusion).
   - Audit log of all downloads.
   Protection against dependency confusion:
-  - Internal packages in their own scope (`@gwdg/*`) with scope routing
+  - Internal packages in their own scope (`@internal/*`) with scope routing
     to a private feed.
   - npm: `publishConfig.registry` for internal packages.
 - **Akzeptanz / Acceptance:** Registry-Liste in `docs/security/supply-chain-evidence.md`
@@ -1217,8 +1217,8 @@ document where applicable.
 - **Version 1.0 (2026-04-27):** Erstfassung / Initial version
 - **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
 - **Version 1.2 (2026-04-30):** SLSA v1.2 Build-Track präzisiert / Clarified SLSA v1.2 Build track
-- **Version 1.3 (2026-05-19):** Prüfpunkt 13 „KI-Komponenten in der SBOM" ergänzt; Mitgeltende Dokumente um die G7-Leitlinie „Software Bill of Materials for AI – Minimum Elements" (2026) erweitert; synchron mit RL Sichere-Entwicklung v2.4.0. / Added checklist item 13 "AI Components in the SBOM"; extended related documents with the G7 guideline "Software Bill of Materials for AI – Minimum Elements" (2026); synchronized with RL Sichere-Entwicklung v2.4.0.
-- **Version 1.4 (2026-06-15):** Prüfpunkt 13 um Lieferketten-Evidenz und gleichwertige Spec-Kit-Preset-Nachweise präzisiert; synchron mit RL Sichere-Entwicklung v2.9.0. / Refined item 13 with supply-chain evidence and equivalent Spec Kit preset evidence; synchronized with RL Sichere-Entwicklung v2.9.0.
+- **Version 1.3 (2026-05-19):** Prüfpunkt 13 „KI-Komponenten in der SBOM" ergänzt; Mitgeltende Dokumente um die G7-Leitlinie „Software Bill of Materials for AI – Minimum Elements" (2026) erweitert; synchron mit Richtlinie Sichere Entwicklung v2.4.0. / Added checklist item 13 "AI Components in the SBOM"; extended related documents with the G7 guideline "Software Bill of Materials for AI – Minimum Elements" (2026); synchronized with Richtlinie Sichere Entwicklung v2.4.0.
+- **Version 1.4 (2026-06-15):** Prüfpunkt 13 um Lieferketten-Evidenz und gleichwertige Spec-Kit-Preset-Nachweise präzisiert; synchron mit Richtlinie Sichere Entwicklung v2.9.0. / Refined item 13 with supply-chain evidence and equivalent Spec Kit preset evidence; synchronized with Richtlinie Sichere Entwicklung v2.9.0.
 
 - **Version 1.5 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
 

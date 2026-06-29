@@ -1,7 +1,7 @@
 # Checklistensammelband Sichere Entwicklung / Secure Development Checklist Compendium
 
 **Stand / Date:** 2026-06-20
-**Quelle / Source:** generisch abgeleitet aus `~/RL_Sichere-Entwicklung` / generically derived from `~/RL_Sichere-Entwicklung`
+**Quelle / Source:** generische Ausbildungs- und Pruefgrundlage / generic training and review baseline
 
 ## Zweck / Purpose
 
@@ -49,9 +49,9 @@ Status, Begruendung, Evidenzpfad oder Link, naechste Massnahme mit verantwortlic
 ---
 
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -85,7 +85,7 @@ change in architecture or delivery model.
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - ISO/IEC 27001:2022 Annex A.5.8, A.8.25–A.8.33
 - NIST SP 800-218 (SSDF)
 - OWASP ASVS, OWASP SAMM
@@ -100,7 +100,7 @@ change in architecture or delivery model.
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](Richtlinie_Sichere-Entwicklung.md)
 - **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
@@ -840,7 +840,7 @@ questions have an owner and re-review trigger.
 - **Version 1.0 (2026-04-27):** Erstfassung / Initial version
 - **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
 - **Version 1.2 (2026-04-30):** ASVS 5.0.0 und SLSA v1.2 Build-Track aktualisiert / Updated ASVS 5.0.0 and SLSA v1.2 Build track
-- **Version 1.3 (2026-06-15):** Prüfpunkt 12 zur regulatorischen Anwendbarkeit von NIS2, CRA, EU AI Act, DORA und kundenspezifischen Regeln ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Added item 12 for regulatory applicability of NIS2, CRA, EU AI Act, DORA, and customer-specific rules; synchronized with RL Sichere-Entwicklung v2.9.0.
+- **Version 1.3 (2026-06-15):** Prüfpunkt 12 zur regulatorischen Anwendbarkeit von NIS2, CRA, EU AI Act, DORA und kundenspezifischen Regeln ergänzt; synchron mit Richtlinie Sichere Entwicklung v2.9.0. / Added item 12 for regulatory applicability of NIS2, CRA, EU AI Act, DORA, and customer-specific rules; synchronized with Richtlinie Sichere Entwicklung v2.9.0.
 
 - **Version 1.4 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
 
@@ -852,9 +852,9 @@ questions have an owner and re-review trigger.
 ---
 
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -885,7 +885,7 @@ impact.
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - ISO/IEC 27002:2022 A.8.27
 - arc42-Vorlage Abschnitt 8 (Sicherheits-Querschnittskonzepte)
 - Security Architecture Decision Records (S-ADR)
@@ -898,7 +898,7 @@ impact.
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](Richtlinie_Sichere-Entwicklung.md)
 - **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
@@ -1678,7 +1678,7 @@ rationale.
 
 - **Version 1.0 (2026-04-27):** Erstfassung / Initial version
 - **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
-- **Version 1.2 (2026-06-15):** Prüfpunkte 12 und 13 zu BSI C3A Cloud-Autonomie und BSI C5 Cloud-Compliance-Assurance ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Added items 12 and 13 for BSI C3A cloud autonomy and BSI C5 cloud compliance assurance; synchronized with RL Sichere-Entwicklung v2.9.0.
+- **Version 1.2 (2026-06-15):** Prüfpunkte 12 und 13 zu BSI C3A Cloud-Autonomie und BSI C5 Cloud-Compliance-Assurance ergänzt; synchron mit Richtlinie Sichere Entwicklung v2.9.0. / Added items 12 and 13 for BSI C3A cloud autonomy and BSI C5 cloud compliance assurance; synchronized with Richtlinie Sichere Entwicklung v2.9.0.
 
 - **Version 1.3 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
 
@@ -1690,9 +1690,9 @@ rationale.
 ---
 
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -1724,7 +1724,7 @@ indirectly via libraries, frameworks, or external services.
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - Gebrauch kryptografischer Maßnahmen (interne Vorgabe)
 - BSI TR-02102-1 (Kryptografische Verfahren: Empfehlungen und Schlüssellängen)
 - NIST SP 800-131A Rev. 2 (Transitioning the Use of Cryptographic Algorithms)
@@ -1737,7 +1737,7 @@ indirectly via libraries, frameworks, or external services.
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](Richtlinie_Sichere-Entwicklung.md)
 - **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
@@ -2500,9 +2500,9 @@ stored in the security evidence set.
 ---
 
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -2534,7 +2534,7 @@ boundary).
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - ISO/IEC 27002:2022 A.8.27, A.8.28
 - STRIDE (Microsoft Threat Modeling)
 - CAPEC – Common Attack Pattern Enumeration and Classification
@@ -2546,7 +2546,7 @@ boundary).
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](Richtlinie_Sichere-Entwicklung.md)
 - **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
@@ -3253,7 +3253,7 @@ accepted risks are documented in writing.
 
 - **Version 1.0 (2026-04-27):** Erstfassung / Initial version
 - **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
-- **Version 1.2 (2026-06-15):** Aktualisierungspflicht um Cloud-/Provider-Wechsel, BSI C3A/C5, EU AI Act und DORA als Trigger ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Extended update obligation with cloud/provider changes, BSI C3A/C5, EU AI Act, and DORA as triggers; synchronized with RL Sichere-Entwicklung v2.9.0.
+- **Version 1.2 (2026-06-15):** Aktualisierungspflicht um Cloud-/Provider-Wechsel, BSI C3A/C5, EU AI Act und DORA als Trigger ergänzt; synchron mit Richtlinie Sichere Entwicklung v2.9.0. / Extended update obligation with cloud/provider changes, BSI C3A/C5, EU AI Act, and DORA as triggers; synchronized with Richtlinie Sichere Entwicklung v2.9.0.
 
 - **Version 1.3 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
 
@@ -3265,9 +3265,9 @@ accepted risks are documented in writing.
 ---
 
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -3297,7 +3297,7 @@ for internal libraries as soon as more than one team uses them.
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - ISO/IEC 27002:2022 A.5.21, A.8.30
 - CycloneDX, SPDX (SBOM-Formate)
 - CSAF (VEX-Format)
@@ -3311,7 +3311,7 @@ for internal libraries as soon as more than one team uses them.
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](Richtlinie_Sichere-Entwicklung.md)
 - **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
@@ -3754,7 +3754,7 @@ for internal libraries as soon as more than one team uses them.
     Typosquatting/Dependency-Confusion).
   - Audit-Log aller Downloads.
   Schutz gegen Dependency Confusion:
-  - Interne Pakete in eigenem Scope (`@gwdg/*`) und Scope-Routing
+  - Interne Pakete in eigenem Scope (`@internal/*`) und Scope-Routing
     auf privaten Feed.
   - npm: `publishConfig.registry` für interne Pakete.
 - **EN:** Dependencies come only from verified registries (e.g. internal
@@ -3783,7 +3783,7 @@ for internal libraries as soon as more than one team uses them.
     typosquatting/dependency confusion).
   - Audit log of all downloads.
   Protection against dependency confusion:
-  - Internal packages in their own scope (`@gwdg/*`) with scope routing
+  - Internal packages in their own scope (`@internal/*`) with scope routing
     to a private feed.
   - npm: `publishConfig.registry` for internal packages.
 - **Akzeptanz / Acceptance:** Registry-Liste in `docs/security/supply-chain-evidence.md`
@@ -4483,8 +4483,8 @@ document where applicable.
 - **Version 1.0 (2026-04-27):** Erstfassung / Initial version
 - **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
 - **Version 1.2 (2026-04-30):** SLSA v1.2 Build-Track präzisiert / Clarified SLSA v1.2 Build track
-- **Version 1.3 (2026-05-19):** Prüfpunkt 13 „KI-Komponenten in der SBOM" ergänzt; Mitgeltende Dokumente um die G7-Leitlinie „Software Bill of Materials for AI – Minimum Elements" (2026) erweitert; synchron mit RL Sichere-Entwicklung v2.4.0. / Added checklist item 13 "AI Components in the SBOM"; extended related documents with the G7 guideline "Software Bill of Materials for AI – Minimum Elements" (2026); synchronized with RL Sichere-Entwicklung v2.4.0.
-- **Version 1.4 (2026-06-15):** Prüfpunkt 13 um Lieferketten-Evidenz und gleichwertige Spec-Kit-Preset-Nachweise präzisiert; synchron mit RL Sichere-Entwicklung v2.9.0. / Refined item 13 with supply-chain evidence and equivalent Spec Kit preset evidence; synchronized with RL Sichere-Entwicklung v2.9.0.
+- **Version 1.3 (2026-05-19):** Prüfpunkt 13 „KI-Komponenten in der SBOM" ergänzt; Mitgeltende Dokumente um die G7-Leitlinie „Software Bill of Materials for AI – Minimum Elements" (2026) erweitert; synchron mit Richtlinie Sichere Entwicklung v2.4.0. / Added checklist item 13 "AI Components in the SBOM"; extended related documents with the G7 guideline "Software Bill of Materials for AI – Minimum Elements" (2026); synchronized with Richtlinie Sichere Entwicklung v2.4.0.
+- **Version 1.4 (2026-06-15):** Prüfpunkt 13 um Lieferketten-Evidenz und gleichwertige Spec-Kit-Preset-Nachweise präzisiert; synchron mit Richtlinie Sichere Entwicklung v2.9.0. / Refined item 13 with supply-chain evidence and equivalent Spec Kit preset evidence; synchronized with Richtlinie Sichere Entwicklung v2.9.0.
 
 - **Version 1.5 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
 
@@ -4496,9 +4496,9 @@ document where applicable.
 ---
 
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -4528,7 +4528,7 @@ products. Recommended for internal tooling.
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - ISO/IEC 27002:2022 A.5.7, A.5.25–A.5.28, A.8.8
 - RFC 9116 (security.txt)
 - Coordinated Vulnerability Disclosure (CVD)
@@ -4540,7 +4540,7 @@ products. Recommended for internal tooling.
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](Richtlinie_Sichere-Entwicklung.md)
 - **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
@@ -4710,14 +4710,14 @@ products. Recommended for internal tooling.
   - `CSAF:` – URL zur CSAF-Provider-Metadata-Datei.
   Beispiel `security.txt`:
   ```text
-  Contact: mailto:security@gwdg.de
-  Contact: https://www.gwdg.de/security/report
+  Contact: mailto:security@example.org
+  Contact: https://example.org/security/report
   Expires: 2027-04-27T00:00:00.000Z
-  Encryption: https://www.gwdg.de/.well-known/pgp-key.txt
+  Encryption: https://example.org/.well-known/pgp-key.txt
   Preferred-Languages: de, en
-  Canonical: https://www.gwdg.de/.well-known/security.txt
-  Policy: https://www.gwdg.de/security/policy
-  Acknowledgments: https://www.gwdg.de/security/hall-of-fame
+  Canonical: https://example.org/.well-known/security.txt
+  Policy: https://example.org/security/policy
+  Acknowledgments: https://example.org/security/hall-of-fame
   ```
   Bereitstellung:
   - Pfad: **muss** `/.well-known/security.txt` sein (RFC 9116).
@@ -4743,14 +4743,14 @@ products. Recommended for internal tooling.
   - `CSAF:` – URL of the CSAF provider metadata file.
   Example `security.txt`:
   ```text
-  Contact: mailto:security@gwdg.de
-  Contact: https://www.gwdg.de/security/report
+  Contact: mailto:security@example.org
+  Contact: https://example.org/security/report
   Expires: 2027-04-27T00:00:00.000Z
-  Encryption: https://www.gwdg.de/.well-known/pgp-key.txt
+  Encryption: https://example.org/.well-known/pgp-key.txt
   Preferred-Languages: de, en
-  Canonical: https://www.gwdg.de/.well-known/security.txt
-  Policy: https://www.gwdg.de/security/policy
-  Acknowledgments: https://www.gwdg.de/security/hall-of-fame
+  Canonical: https://example.org/.well-known/security.txt
+  Policy: https://example.org/security/policy
+  Acknowledgments: https://example.org/security/hall-of-fame
   ```
   Deployment:
   - Path: **must** be `/.well-known/security.txt` (RFC 9116).
@@ -4802,7 +4802,7 @@ products. Recommended for internal tooling.
   Vielen Dank für Ihre Sicherheitsmeldung. Wir haben Ihre Nachricht
   erhalten und melden uns innerhalb von 3 Werktagen mit einer
   qualifizierten Antwort. Bitte verschlüsseln Sie weitere Informationen
-  mit unserem PGP-Schlüssel: https://www.gwdg.de/.well-known/pgp-key.txt
+  mit unserem PGP-Schlüssel: https://example.org/.well-known/pgp-key.txt
   ```
 - **EN:** A monitored contact address or form exists. Incoming reports are
   acknowledged within a defined deadline.
@@ -4832,7 +4832,7 @@ products. Recommended for internal tooling.
   Thank you for your security report. We have received your message and
   will respond with a qualified reply within 3 business days. Please
   encrypt further information with our PGP key:
-  https://www.gwdg.de/.well-known/pgp-key.txt
+  https://example.org/.well-known/pgp-key.txt
   ```
 - **Akzeptanz / Acceptance:** Kontakt (Funktionspostfach + Plattform-Channel)
   benannt; Bestätigungsfrist je Schweregrad in der CVD-Policy festgelegt
@@ -5619,7 +5619,7 @@ SLAs are defined, and the CRA reporting path has been rehearsed.
 - **Version 1.0 (2026-04-27):** Erstfassung / Initial version
 - **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
 - **Version 1.2 (2026-04-30):** CVSS-v4.0-Zielmethode und CRA-Schlussberichte präzisiert / Clarified CVSS v4.0 target method and CRA final reports
-- **Version 1.3 (2026-06-15):** Prüfpunkt 7 um DORA-Screening und CL_01-Verknüpfung zu zusätzlichen Meldewegen ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Extended item 7 with DORA screening and CL_01 linkage to additional reporting paths; synchronized with RL Sichere-Entwicklung v2.9.0.
+- **Version 1.3 (2026-06-15):** Prüfpunkt 7 um DORA-Screening und CL_01-Verknüpfung zu zusätzlichen Meldewegen ergänzt; synchron mit Richtlinie Sichere Entwicklung v2.9.0. / Extended item 7 with DORA screening and CL_01 linkage to additional reporting paths; synchronized with Richtlinie Sichere Entwicklung v2.9.0.
 
 - **Version 1.4 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
 
@@ -5631,9 +5631,9 @@ SLAs are defined, and the CRA reporting path has been rehearsed.
 ---
 
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -5665,7 +5665,7 @@ checked if they are shared with external parties.
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - Verordnung (EU) 2024/2847 (CRA)
 - ISO/IEC 27001:2022, A.5.31, A.5.32
 - ENISA-Leitfäden zur CRA-Umsetzung
@@ -5687,7 +5687,7 @@ checked if they are shared with external parties.
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](Richtlinie_Sichere-Entwicklung.md)
 - **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
@@ -6832,7 +6832,7 @@ in an audit-ready way.
 - **Version 1.0 (2026-04-27):** Erstfassung / Initial version
 - **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
 - **Version 1.2 (2026-04-30):** CRA-Stichtage und Schlussbericht-Fristen konkretisiert / Clarified CRA key dates and final-report deadlines
-- **Version 1.3 (2026-06-15):** Nichtanwendbarkeitsentscheidung mit CL_01-Regulatory-Screening verknüpft; synchron mit RL Sichere-Entwicklung v2.9.0. / Linked non-applicability decisions to CL_01 regulatory screening; synchronized with RL Sichere-Entwicklung v2.9.0.
+- **Version 1.3 (2026-06-15):** Nichtanwendbarkeitsentscheidung mit CL_01-Regulatory-Screening verknüpft; synchron mit Richtlinie Sichere Entwicklung v2.9.0. / Linked non-applicability decisions to CL_01 regulatory screening; synchronized with Richtlinie Sichere Entwicklung v2.9.0.
 
 - **Version 1.4 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
 
@@ -6844,9 +6844,9 @@ in an audit-ready way.
 ---
 
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -6875,7 +6875,7 @@ configuration. Pure documentation changes are exempt.
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - Leitlinie für sichere Programmierung (mit Anhängen je Sprache)
 - ISO/IEC 27002:2022 A.8.28
 - OWASP Cheat Sheet Series, OWASP Proactive Controls, OWASP Top 10
@@ -6887,7 +6887,7 @@ configuration. Pure documentation changes are exempt.
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](Richtlinie_Sichere-Entwicklung.md)
 - **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
@@ -8330,12 +8330,12 @@ pull request.
 
 - **Version 1.0 (2026-04-27):** Erstfassung / Initial version
 - **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
-- **Version 1.2 (2026-06-15):** Prüfpunkt 13 für Spec-Kit-Secure-Coding-Profile ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Added item 13 for Spec Kit secure-coding profiles; synchronized with RL Sichere-Entwicklung v2.9.0.
+- **Version 1.2 (2026-06-15):** Prüfpunkt 13 für Spec-Kit-Secure-Coding-Profile ergänzt; synchron mit Richtlinie Sichere Entwicklung v2.9.0. / Added item 13 for Spec Kit secure-coding profiles; synchronized with Richtlinie Sichere Entwicklung v2.9.0.
 
 - **Version 1.3 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
 
 - **Version 1.4 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
-- **Version 1.5 (2026-06-17):** Test-KPIs an RL Sichere-Entwicklung v2.10.0 angepasst: sicherheitskritische Module mindestens 85 % Branch Coverage; Integrationstest-Abdeckung öffentlicher Schnittstellen und kritischer UI-Flows mindestens 80 %. / Aligned test KPIs with Secure Development Guideline v2.10.0: security-critical modules at least 85 % branch coverage; integration-test coverage of public interfaces and critical UI flows at least 80 %.
+- **Version 1.5 (2026-06-17):** Test-KPIs an Richtlinie Sichere Entwicklung v2.10.0 angepasst: sicherheitskritische Module mindestens 85 % Branch Coverage; Integrationstest-Abdeckung öffentlicher Schnittstellen und kritischer UI-Flows mindestens 80 %. / Aligned test KPIs with Secure Development Guideline v2.10.0: security-critical modules at least 85 % branch coverage; integration-test coverage of public interfaces and critical UI flows at least 80 %.
 
 ---
 
@@ -8343,9 +8343,9 @@ pull request.
 ---
 
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -8376,7 +8376,7 @@ whose output flows into production code or production-near scripts.
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - CL_12_Agentische-KI-Sandbox
 - Leitlinie für sichere Programmierung
 - ISO/IEC 27002:2022 A.8.28
@@ -8390,7 +8390,7 @@ whose output flows into production code or production-near scripts.
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](Richtlinie_Sichere-Entwicklung.md)
 - **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
@@ -10132,17 +10132,17 @@ justified as not applicable.
 - **Version 1.0 (2026-04-27):** Erstfassung / Initial version
 - **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
 - **Version 1.2 (2026-04-30):** Barrierearme Personenbezeichnung ergänzt / Added accessible person wording
-- **Version 1.3 (2026-05-19):** Prüfpunkt 15 „KI-Lieferkettentransparenz" ergänzt; Mitgeltende Dokumente um die G7-Leitlinie „Software Bill of Materials for AI – Minimum Elements" (2026) erweitert; synchron mit RL Sichere-Entwicklung v2.4.0. / Added checklist item 15 "AI Supply-Chain Transparency"; extended related documents with the G7 guideline "Software Bill of Materials for AI – Minimum Elements" (2026); synchronized with RL Sichere-Entwicklung v2.4.0.
-- **Version 1.4 (2026-05-22):** Durchführungshinweise um Querverweis auf CL_12 und GitHub Spec Kit SDD für wesentliche Feature-Implementierungen mit agentischer KI ergänzt; synchron mit RL Sichere-Entwicklung v2.5.0. / Added implementation guidance cross-reference to CL_12 and GitHub Spec Kit SDD for material feature implementations with agentic AI; synchronized with RL Sichere-Entwicklung v2.5.0.
-- **Version 1.5 (2026-06-12):** Durchführungshinweise präzisiert: Installation und Nachweis der Spec-Kit-Governance-Presets werden in CL_12 bewertet; synchron mit RL Sichere-Entwicklung v2.6.0. / Refined implementation guidance: installation and evidence of the Spec Kit governance presets are assessed in CL_12; synchronized with RL Sichere-Entwicklung v2.6.0.
-- **Version 1.6 (2026-06-14):** Durchführungshinweise präzisiert: Aktualität und inhaltliche Abdeckung der Spec-Kit-Governance-Presets werden in CL_12 bewertet; synchron mit RL Sichere-Entwicklung v2.7.0. / Refined implementation guidance: currency and content coverage of the Spec Kit governance presets are assessed in CL_12; synchronized with RL Sichere-Entwicklung v2.7.0.
-- **Version 1.7 (2026-06-14):** Durchführungshinweise präzisiert: Vollständige Spec-Kit-Artefakte mit Nachweis-Matrix können die separate manuelle Ausfüllung ersetzen; synchron mit RL Sichere-Entwicklung v2.8.0. / Refined implementation guidance: complete Spec Kit artefacts with an evidence matrix may replace separate manual completion; synchronized with RL Sichere-Entwicklung v2.8.0.
-- **Version 1.8 (2026-06-15):** Prüfpunkte 16 und 17 zu KI-Regulierungs-Screening und didaktischen Kommentaren ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Added items 16 and 17 for AI regulatory screening and didactic comments; synchronized with RL Sichere-Entwicklung v2.9.0.
+- **Version 1.3 (2026-05-19):** Prüfpunkt 15 „KI-Lieferkettentransparenz" ergänzt; Mitgeltende Dokumente um die G7-Leitlinie „Software Bill of Materials for AI – Minimum Elements" (2026) erweitert; synchron mit Richtlinie Sichere Entwicklung v2.4.0. / Added checklist item 15 "AI Supply-Chain Transparency"; extended related documents with the G7 guideline "Software Bill of Materials for AI – Minimum Elements" (2026); synchronized with Richtlinie Sichere Entwicklung v2.4.0.
+- **Version 1.4 (2026-05-22):** Durchführungshinweise um Querverweis auf CL_12 und GitHub Spec Kit SDD für wesentliche Feature-Implementierungen mit agentischer KI ergänzt; synchron mit Richtlinie Sichere Entwicklung v2.5.0. / Added implementation guidance cross-reference to CL_12 and GitHub Spec Kit SDD for material feature implementations with agentic AI; synchronized with Richtlinie Sichere Entwicklung v2.5.0.
+- **Version 1.5 (2026-06-12):** Durchführungshinweise präzisiert: Installation und Nachweis der Spec-Kit-Governance-Presets werden in CL_12 bewertet; synchron mit Richtlinie Sichere Entwicklung v2.6.0. / Refined implementation guidance: installation and evidence of the Spec Kit governance presets are assessed in CL_12; synchronized with Richtlinie Sichere Entwicklung v2.6.0.
+- **Version 1.6 (2026-06-14):** Durchführungshinweise präzisiert: Aktualität und inhaltliche Abdeckung der Spec-Kit-Governance-Presets werden in CL_12 bewertet; synchron mit Richtlinie Sichere Entwicklung v2.7.0. / Refined implementation guidance: currency and content coverage of the Spec Kit governance presets are assessed in CL_12; synchronized with Richtlinie Sichere Entwicklung v2.7.0.
+- **Version 1.7 (2026-06-14):** Durchführungshinweise präzisiert: Vollständige Spec-Kit-Artefakte mit Nachweis-Matrix können die separate manuelle Ausfüllung ersetzen; synchron mit Richtlinie Sichere Entwicklung v2.8.0. / Refined implementation guidance: complete Spec Kit artefacts with an evidence matrix may replace separate manual completion; synchronized with Richtlinie Sichere Entwicklung v2.8.0.
+- **Version 1.8 (2026-06-15):** Prüfpunkte 16 und 17 zu KI-Regulierungs-Screening und didaktischen Kommentaren ergänzt; synchron mit Richtlinie Sichere Entwicklung v2.9.0. / Added items 16 and 17 for AI regulatory screening and didactic comments; synchronized with Richtlinie Sichere Entwicklung v2.9.0.
 
 - **Version 1.9 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
 
 - **Version 1.10 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
-- **Version 1.11 (2026-06-17):** Test-KPIs an RL Sichere-Entwicklung v2.10.0 angepasst: KI-Code mindestens 80 % Line und Branch Coverage; Integrationstest-Abdeckung öffentlicher Schnittstellen und kritischer UI-Flows ergänzt. / Aligned test KPIs with Secure Development Guideline v2.10.0: AI code at least 80 % line and branch coverage; added integration-test coverage for public interfaces and critical UI flows.
+- **Version 1.11 (2026-06-17):** Test-KPIs an Richtlinie Sichere Entwicklung v2.10.0 angepasst: KI-Code mindestens 80 % Line und Branch Coverage; Integrationstest-Abdeckung öffentlicher Schnittstellen und kritischer UI-Flows ergänzt. / Aligned test KPIs with Secure Development Guideline v2.10.0: AI code at least 80 % line and branch coverage; added integration-test coverage for public interfaces and critical UI flows.
 
 ---
 
@@ -10150,9 +10150,9 @@ justified as not applicable.
 ---
 
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -10184,7 +10184,7 @@ change.
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - ISO/IEC 27002:2022 A.8.31, A.8.32
 - NIST SP 800-218 (SSDF)
 - Verfassung XII, XIII
@@ -10195,7 +10195,7 @@ change.
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](Richtlinie_Sichere-Entwicklung.md)
 - **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
@@ -10624,8 +10624,8 @@ change.
   Selbstgehostet: gitleaks im CI (`gitleaks detect --redact --report-format
   sarif --report-path leaks.sarif`); trufflehog (`trufflehog filesystem
   . --no-update --json`). Custom Patterns für interne Secrets
-  (`.gitleaks.toml`): `[[rules]] id = "gwdg-internal-token" regex =
-  '''gwdg_[a-z0-9]{32}'''`. Ausnahmen über `.gitleaksignore` mit Hash
+  (`.gitleaks.toml`): `[[rules]] id = "org-internal-token" regex =
+  '''org_[a-z0-9]{32}'''`. Ausnahmen über `.gitleaksignore` mit Hash
   und Begründung. Bei Treffer: sofortige Rotation des Geheimnisses,
   History-Bereinigung mit `git filter-repo --replace-text` (nur nach
   Team-Abstimmung, da Force-Push), Audit-Log-Prüfung,
@@ -10651,7 +10651,7 @@ change.
   --report-format sarif --report-path leaks.sarif`); trufflehog
   (`trufflehog filesystem . --no-update --json`). Custom patterns for
   internal secrets (`.gitleaks.toml`): `[[rules]] id =
-  "gwdg-internal-token" regex = '''gwdg_[a-z0-9]{32}'''`. Exceptions
+  "org-internal-token" regex = '''org_[a-z0-9]{32}'''`. Exceptions
   via `.gitleaksignore` with hash and justification. On hit:
   immediate rotation of the secret, history cleanup with `git
   filter-repo --replace-text` (only after team coordination, as it is
@@ -11588,7 +11588,7 @@ platform-parity evidence or justified non-applicability.
 
 - **Version 1.0 (2026-04-27):** Erstfassung / Initial version
 - **Version 1.1 (2026-04-27):** Erweiterte Durchführungshinweise, Quellen-URLs, Statusfelder und Beispiele / Extended guidance, source URLs, status fields, and examples
-- **Version 1.2 (2026-06-15):** Prüfpunkt 17 zur Cross-Platform-Skriptparität ergänzt; synchron mit RL Sichere-Entwicklung v2.9.0. / Added item 17 for cross-platform script parity; synchronized with RL Sichere-Entwicklung v2.9.0.
+- **Version 1.2 (2026-06-15):** Prüfpunkt 17 zur Cross-Platform-Skriptparität ergänzt; synchron mit Richtlinie Sichere Entwicklung v2.9.0. / Added item 17 for cross-platform script parity; synchronized with Richtlinie Sichere Entwicklung v2.9.0.
 
 - **Version 1.3 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
 
@@ -11600,9 +11600,9 @@ platform-parity evidence or justified non-applicability.
 ---
 
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -11644,7 +11644,7 @@ transfers, new technology, new purpose).
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung
+- Richtlinie Sichere Entwicklung
 - Datenschutzleitlinie der Organisation
 - DSGVO (Verordnung (EU) 2016/679), Art. 5, 25, 28, 30, 32, 35, 36
 - ISO/IEC 27701:2019 Privacy Information Management
@@ -11665,13 +11665,13 @@ Dokumentationsablage-URL existiert, wird sie in der finalen Dokumentenlenkung er
 listed as local working copies or Dokumentationsablage references. If an internal Dokumentationsablage URL
 exists, it is added during final document control.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md), [lokale Word-Arbeitsfassung der Richtlinie / local Word working copy of the guideline](../../RL%20Sichere-Entwicklung.docx)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](Richtlinie_Sichere-Entwicklung.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **CL_Bedrohungsmodellierung:** [lokale Arbeitskopie der Checkliste Bedrohungsmodellierung / local working copy of the threat-modeling checklist](CL_Bedrohungsmodellierung.md)
 - **DSGVO (EUR-Lex):** [Verordnung (EU) 2016/679 / Regulation (EU) 2016/679](https://eur-lex.europa.eu/eli/reg/2016/679/oj)
 - **EDSA / EDPB:** [Europäischer Datenschutzausschuss / European Data Protection Board](https://edpb.europa.eu/)
 - **WP 248 rev.01 (DPIA-Leitlinien):** [WP 248 rev.01 Leitlinien zur Datenschutz-Folgenabschätzung / WP 248 rev.01 Guidelines on DPIA](https://ec.europa.eu/newsroom/article29/items/611236)
-- **LfD Niedersachsen — Liste mit DPIA-Pflicht:** [Liste der Verarbeitungstätigkeiten mit DPIA-Pflicht (Niedersachsen) / list of processing activities requiring a DPIA (Lower Saxony)](https://lfd.niedersachsen.de/startseite/themen/datenschutz_in_organisationen/datenschutz_folgenabschatzung/datenschutz-folgenabschaetzung-179116.html)
+- **Zuständige Datenschutzaufsichtsbehörde / Competent supervisory authority:** projektspezifisch bestimmen; relevante nationale oder regionale DPIA-Listen im Projekt verlinken. / Determine per project; link relevant national or regional DPIA lists in the project.
 - **CNIL PIA-Tool (Open Source):** [CNIL Open-Source Privacy-Impact-Assessment-Tool / CNIL open-source PIA tool](https://www.cnil.fr/en/open-source-pia-software-helps-carry-out-data-protection-impact-assessment)
 - **ENISA Empfehlungen Datenschutz und Sicherheit:** [ENISA Datenschutz- und Sicherheitsleitfäden / ENISA privacy and security guidelines](https://www.enisa.europa.eu/topics/data-protection)
 - **ISO/IEC 27701:2019 (Webseite):** [offizielle ISO-Webseite zu ISO/IEC 27701 / official ISO webpage for ISO/IEC 27701](https://www.iso.org/standard/71670.html)
@@ -11817,7 +11817,7 @@ status must not be shown by color alone.
   Gewerkschaftsdaten u. a.) oder von Art. 10 (strafrechtliche
   Verurteilungen), systematische Überwachung öffentlich zugänglicher
   Bereiche. Zusätzlich wird die Positivliste der zuständigen
-  Aufsichtsbehörde geprüft (in Niedersachsen: LfD Niedersachsen). Die
+  Aufsichtsbehörde geprüft (im jeweiligen Projekt- oder Sitzland: zuständige Datenschutzaufsichtsbehörde). Die
   Analyse berücksichtigt die WP-248-rev.01-Kriterien (neun Kriterien
   des EDSA): Bewerten/Scoring, automatisierte Entscheidung mit
   rechtlicher Wirkung, systematische Überwachung, sensible Daten oder
@@ -11833,8 +11833,7 @@ status must not be shown by color alone.
   large-scale processing of special categories per Art. 9 (health,
   biometric, union data, etc.) or Art. 10 (criminal convictions),
   systematic monitoring of publicly accessible areas. The positive
-  list of the competent supervisory authority is also reviewed (Lower
-  Saxony: LfD Niedersachsen). The analysis considers the WP 248
+  list of the competent supervisory authority in the relevant project or seat jurisdiction is also reviewed. The analysis considers the WP 248
   rev.01 criteria (nine EDPB criteria): evaluation/scoring, automated
   decision-making with legal effect, systematic monitoring, sensitive
   or highly personal data, large-scale processing, matching or
@@ -12050,8 +12049,7 @@ status must not be shown by color alone.
 - **DE:** Wenn die DPIA trotz geplanter Maßnahmen ein verbleibendes
   hohes Risiko ergibt, wird die zuständige Aufsichtsbehörde gemäß
   DSGVO Art. 36 vor Verarbeitungsbeginn konsultiert. Für die Organisation ist
-  dies in der Regel die Landesbeauftragte für den Datenschutz
-  Niedersachsen. Die Konsultation umfasst die DPIA, die Beschreibung
+  dies die zuständige Datenschutzaufsichtsbehörde des Projekt- oder Sitzlandes. Die Konsultation umfasst die DPIA, die Beschreibung
   der Verarbeitung, die Aufgabenverteilung zwischen Verantwortlichen
   und Auftragsverarbeitern, geplante Schutzmaßnahmen und alle
   weiteren von der Behörde angeforderten Informationen. Die Antwort
@@ -12059,8 +12057,7 @@ status must not be shown by color alone.
   Verarbeitung beginnt erst nach Klärung.
 - **EN:** If the DPIA shows residual high risk despite planned measures,
   the competent supervisory authority is consulted before processing
-  starts per GDPR Art. 36. For the Organisation this is typically the State
-  Commissioner for Data Protection of Lower Saxony. The consultation
+  starts per GDPR Art. 36. For the organisation this is the competent data protection supervisory authority of the project or seat jurisdiction. The consultation
   includes the DPIA, the processing description, the allocation of
   responsibilities between controllers and processors, planned
   protective measures, and any further information requested by the
@@ -12166,7 +12163,7 @@ status must not be shown by color alone.
   Trennung zwischen Stamm-, Verkehrs- und Inhaltsdaten,
   altersangemessene Voreinstellungen wo Minderjährige betroffen sind.
   Die acht Architekturprinzipien aus dem Abschnitt „Sichere
-  Softwarearchitektur" der RL Sichere-Entwicklung werden um diese
+  Softwarearchitektur" der Richtlinie Sichere Entwicklung werden um diese
   datenschutzspezifischen Punkte ergänzt; relevante Entscheidungen
   werden als S-ADR mit Datenschutz-Bezug festgehalten.
 - **EN:** Processing is designed in a privacy-friendly way from the
@@ -12385,9 +12382,9 @@ status must not be shown by color alone.
 ---
 
 <!--
-Quelle / Source: abgeleitet aus ~/RL_Sichere-Entwicklung, generisch bereinigt am 2026-06-17.
+Quelle / Source: generische Ausbildungs- und Pruefgrundlage, bereinigt am 2026-06-17.
 Dieses Dokument ist organisationsneutral und als generische Ausbildungs- und Pruefgrundlage formuliert.
-Source: derived from ~/RL_Sichere-Entwicklung and generalized on 2026-06-17.
+Source: generic training and review baseline, generalized on 2026-06-17.
 This document is organization-neutral and written as a generic training and review baseline.
 -->
 
@@ -12411,7 +12408,7 @@ This document is organization-neutral and written as a generic training and revi
 
 ### Mitgeltende Dokumente / Related Documents
 
-- RL Sichere-Entwicklung, Abschnitt „Agentische KI in Sandbox-Umgebungen" (ab Version 2.2.0)
+- Richtlinie Sichere Entwicklung, Abschnitt „Agentische KI in Sandbox-Umgebungen" (ab Version 2.2.0)
 - Leitlinie Sichere Entwicklungs-Sandbox
 - CL_KI-Codeerzeugung
 - CL_Sichere-Entwicklungsumgebung
@@ -12428,7 +12425,7 @@ This document is organization-neutral and written as a generic training and revi
 
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
-- **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md)
+- **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](Richtlinie_Sichere-Entwicklung.md)
 - **Leitlinie Sichere Entwicklungs-Sandbox:** [mitgeltendes Dokument fuer Sandbox-Profile / related document for sandbox profiles](mitgeltende-dokumente/Leitlinie_Sichere-Entwicklungs-Sandbox.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **GitHub Spec Kit Presets:** [offizielle Spec-Kit-Preset-Referenz / official Spec Kit preset reference](https://github.github.com/spec-kit/reference/presets.html)
@@ -12802,14 +12799,14 @@ This document is organization-neutral and written as a generic training and revi
 ### Versionshistorie / Version History
 
 - **Version 1.0 (2026-05-07):** Erstfassung zur agentischen KI-Nutzung in Sandbox-Umgebungen / Initial version for agentic AI use in sandbox environments
-- **Version 1.1 (2026-05-14):** Prüfpunkte 1, 4, 5 und 8 mit Sandbox-Identifikator, Secret-Store-Pflicht und reproduzierbarem Pinning präzisiert; drei neue Prüfpunkte ergänzt: 9 Sandbox-Typologie und Isolationsnachweis, 10 Netzwerkrestriktion, 11 Re-Validierungsstand und Lebenszyklus; Mitgeltende Dokumente um ISO/IEC 27001:2022 Annex A, NIST AI RMF und OWASP LLM Top 10 ergänzt; synchron mit RL Sichere-Entwicklung v2.2.0. / Refined checklist items 1, 4, 5, and 8 with sandbox identifier, secret-store requirement, and reproducible pinning; added three new checklist items: 9 sandbox typology and isolation evidence, 10 network restriction, 11 re-validation status and lifecycle; extended related documents with ISO/IEC 27001:2022 Annex A, NIST AI RMF, and OWASP LLM Top 10; synchronized with RL Sichere-Entwicklung v2.2.0.
-- **Version 1.2 (2026-05-19):** Prüfpunkt 1 erweitert: Die Initialfreigabe der Sandbox kann neben der oder dem Security-Verantwortlichen (Security-Verantwortliche*r) auch durch die oder den KI-Verantwortlichen erteilt werden; synchron mit RL Sichere-Entwicklung v2.3.0. / Extended checklist item 1: initial sandbox approval may be granted not only by the Information Security Officer (Security-Verantwortliche*r) but also by the AI Officer (KI-Verantwortliche*r); synchronized with RL Sichere-Entwicklung v2.3.0.
-- **Version 1.3 (2026-05-19):** Prüfpunkt 5 um einen Querverweis auf die KI-Lieferkettentransparenz (CL_KI-Codeerzeugung Prüfpunkt 15) erweitert; synchron mit RL Sichere-Entwicklung v2.4.0. / Extended checklist item 5 with a cross-reference to AI supply-chain transparency (CL_KI-Codeerzeugung item 15); synchronized with RL Sichere-Entwicklung v2.4.0.
-- **Version 1.4 (2026-05-22):** Prüfpunkt 6 präzisiert: Feature-Implementierungen mit agentischer KI folgen dem Spec-Kit-SDD-Ablauf und weisen Spec-Kit-Artefakte, Analyse- oder Checklisten-Ergebnisse sowie die Governance-Presets nach; synchron mit RL Sichere-Entwicklung v2.5.0. / Refined checklist item 6: feature implementations with agentic AI follow the Spec Kit SDD flow and evidence Spec Kit artefacts, analysis or checklist results, and the governance presets; synchronized with RL Sichere-Entwicklung v2.5.0.
-- **Version 1.5 (2026-06-12):** Prüfpunkt 6 präzisiert: Preset-Liste, Preset-Versionen und Prioritäten sind als Nachweise zu führen; `.specify/presets/` ist bei dauerhafter Nutzung Projekt-Policy, lokale Preset-Caches werden nicht versioniert; synchron mit RL Sichere-Entwicklung v2.6.0. / Refined checklist item 6: preset list, preset versions, and priorities must be evidenced; `.specify/presets/` is project policy for permanent use, local preset caches are not versioned; synchronized with RL Sichere-Entwicklung v2.6.0.
-- **Version 1.6 (2026-06-14):** Prüfpunkt 12 ergänzt: Spec-Kit-Governance-Presets werden mindestens quartalsweise und anlassbezogen auf Aktualität, wirksame Auflösung und Abdeckung durch RL-/CL-Prüfpunkte geprüft; synchron mit RL Sichere-Entwicklung v2.7.0. / Added checklist item 12: Spec Kit governance presets are checked at least quarterly and on relevant changes for currency, effective resolution, and coverage by RL/CL review points; synchronized with RL Sichere-Entwicklung v2.7.0.
-- **Version 1.7 (2026-06-14):** Prüfpunkt 6 und 12 präzisiert: Vollständige Spec-Kit-Artefakte mit Nachweis-Matrix gelten als gleichwertige Nachweisführung und können die separate manuelle Checklisten-Ausfüllung ersetzen; synchron mit RL Sichere-Entwicklung v2.8.0. / Refined checklist items 6 and 12: complete Spec Kit artefacts with an evidence matrix count as equivalent evidence and may replace separate manual checklist completion; synchronized with RL Sichere-Entwicklung v2.8.0.
-- **Version 1.8 (2026-06-15):** Prüfpunkt 12 mit erweitertem Preset-zu-CL-Mapping, Preset-Versionen, Prioritäten, wirksamer Auflösung und offenen Mapping-Lücken präzisiert; synchron mit RL Sichere-Entwicklung v2.9.0. / Refined item 12 with extended preset-to-CL mapping, preset versions, priorities, effective resolution, and open mapping gaps; synchronized with RL Sichere-Entwicklung v2.9.0.
+- **Version 1.1 (2026-05-14):** Prüfpunkte 1, 4, 5 und 8 mit Sandbox-Identifikator, Secret-Store-Pflicht und reproduzierbarem Pinning präzisiert; drei neue Prüfpunkte ergänzt: 9 Sandbox-Typologie und Isolationsnachweis, 10 Netzwerkrestriktion, 11 Re-Validierungsstand und Lebenszyklus; Mitgeltende Dokumente um ISO/IEC 27001:2022 Annex A, NIST AI RMF und OWASP LLM Top 10 ergänzt; synchron mit Richtlinie Sichere Entwicklung v2.2.0. / Refined checklist items 1, 4, 5, and 8 with sandbox identifier, secret-store requirement, and reproducible pinning; added three new checklist items: 9 sandbox typology and isolation evidence, 10 network restriction, 11 re-validation status and lifecycle; extended related documents with ISO/IEC 27001:2022 Annex A, NIST AI RMF, and OWASP LLM Top 10; synchronized with Richtlinie Sichere Entwicklung v2.2.0.
+- **Version 1.2 (2026-05-19):** Prüfpunkt 1 erweitert: Die Initialfreigabe der Sandbox kann neben der oder dem Security-Verantwortlichen (Security-Verantwortliche*r) auch durch die oder den KI-Verantwortlichen erteilt werden; synchron mit Richtlinie Sichere Entwicklung v2.3.0. / Extended checklist item 1: initial sandbox approval may be granted not only by the Information Security Officer (Security-Verantwortliche*r) but also by the AI Officer (KI-Verantwortliche*r); synchronized with Richtlinie Sichere Entwicklung v2.3.0.
+- **Version 1.3 (2026-05-19):** Prüfpunkt 5 um einen Querverweis auf die KI-Lieferkettentransparenz (CL_KI-Codeerzeugung Prüfpunkt 15) erweitert; synchron mit Richtlinie Sichere Entwicklung v2.4.0. / Extended checklist item 5 with a cross-reference to AI supply-chain transparency (CL_KI-Codeerzeugung item 15); synchronized with Richtlinie Sichere Entwicklung v2.4.0.
+- **Version 1.4 (2026-05-22):** Prüfpunkt 6 präzisiert: Feature-Implementierungen mit agentischer KI folgen dem Spec-Kit-SDD-Ablauf und weisen Spec-Kit-Artefakte, Analyse- oder Checklisten-Ergebnisse sowie die Governance-Presets nach; synchron mit Richtlinie Sichere Entwicklung v2.5.0. / Refined checklist item 6: feature implementations with agentic AI follow the Spec Kit SDD flow and evidence Spec Kit artefacts, analysis or checklist results, and the governance presets; synchronized with Richtlinie Sichere Entwicklung v2.5.0.
+- **Version 1.5 (2026-06-12):** Prüfpunkt 6 präzisiert: Preset-Liste, Preset-Versionen und Prioritäten sind als Nachweise zu führen; `.specify/presets/` ist bei dauerhafter Nutzung Projekt-Policy, lokale Preset-Caches werden nicht versioniert; synchron mit Richtlinie Sichere Entwicklung v2.6.0. / Refined checklist item 6: preset list, preset versions, and priorities must be evidenced; `.specify/presets/` is project policy for permanent use, local preset caches are not versioned; synchronized with Richtlinie Sichere Entwicklung v2.6.0.
+- **Version 1.6 (2026-06-14):** Prüfpunkt 12 ergänzt: Spec-Kit-Governance-Presets werden mindestens quartalsweise und anlassbezogen auf Aktualität, wirksame Auflösung und Abdeckung durch RL-/CL-Prüfpunkte geprüft; synchron mit Richtlinie Sichere Entwicklung v2.7.0. / Added checklist item 12: Spec Kit governance presets are checked at least quarterly and on relevant changes for currency, effective resolution, and coverage by RL/CL review points; synchronized with Richtlinie Sichere Entwicklung v2.7.0.
+- **Version 1.7 (2026-06-14):** Prüfpunkt 6 und 12 präzisiert: Vollständige Spec-Kit-Artefakte mit Nachweis-Matrix gelten als gleichwertige Nachweisführung und können die separate manuelle Checklisten-Ausfüllung ersetzen; synchron mit Richtlinie Sichere Entwicklung v2.8.0. / Refined checklist items 6 and 12: complete Spec Kit artefacts with an evidence matrix count as equivalent evidence and may replace separate manual checklist completion; synchronized with Richtlinie Sichere Entwicklung v2.8.0.
+- **Version 1.8 (2026-06-15):** Prüfpunkt 12 mit erweitertem Preset-zu-CL-Mapping, Preset-Versionen, Prioritäten, wirksamer Auflösung und offenen Mapping-Lücken präzisiert; synchron mit Richtlinie Sichere Entwicklung v2.9.0. / Refined item 12 with extended preset-to-CL mapping, preset versions, priorities, effective resolution, and open mapping gaps; synchronized with Richtlinie Sichere Entwicklung v2.9.0.
 - **Version 1.9 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
 
 - **Version 1.10 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
