@@ -1,6 +1,6 @@
 # Mitgeltende Dokumente / Related Documents
 
-**Stand / Date:** 2026-06-20
+**Stand / Date:** 2026-06-26
 **Zielgruppe / Audience:** Fachinformatiker*innen in Ausbildung, Entwickler*innen, Reviewer und KI-Agenten / IT specialist apprentices, developers, reviewers, and AI agents
 
 ## Zweck / Purpose
@@ -16,6 +16,7 @@
 | [Gebrauch_kryptografischer_Massnahmen.md](Gebrauch_kryptografischer_Massnahmen.md) | Mindestvorgaben fuer Kryptografie / Minimum cryptography rules |
 | [Kompetenzprofile_und_Schulungsplan_Sichere-Entwicklung.md](Kompetenzprofile_und_Schulungsplan_Sichere-Entwicklung.md) | Rollen, Lernziele und Schulungsplan / Roles, learning goals, and training plan |
 | [Leitlinie_Sichere-Programmierung.md](Leitlinie_Sichere-Programmierung.md) | Sprachuebergreifende sichere Programmierung / Cross-language secure programming |
+| [Leitlinie_Sichere-Entwicklungs-Sandbox.md](Leitlinie_Sichere-Entwicklungs-Sandbox.md) | Sichere Entwicklungs-Sandbox fuer KI-Agenten und MSL-basierte Level-2-Projekte / Secure development sandbox for AI agents and MSL-based level-2 projects |
 | [Richtlinie_Secure-Development-Life-Cycle.md](Richtlinie_Secure-Development-Life-Cycle.md) | Sicherer Entwicklungsprozess / Secure development process |
 | [Checkliste_Secure-Development-Life-Cycle.md](Checkliste_Secure-Development-Life-Cycle.md) | Kompakte SDLC-Pruefung / Compact SDLC review |
 | [Richtlinie_Changemanagement.md](Richtlinie_Changemanagement.md) | Sichere Aenderungen / Secure changes |
@@ -43,12 +44,12 @@
 
 | Preset | Relevante Dokumente / Relevant Documents |
 |---|---|
-| `security-governance` | Kryptografie, sichere Programmierung, SDLC, Lieferanten, Zugang, CISA Memory-Safe Roadmaps |
-| `architecture-governance` | Sicheres Softwaredesign, BCM, SDLC, Changemanagement |
+| `security-governance` | Kryptografie, sichere Programmierung, Entwicklungs-Sandbox, SDLC, Lieferanten, Zugang, CISA Memory-Safe Roadmaps |
+| `architecture-governance` | Sicheres Softwaredesign, Entwicklungs-Sandbox, BCM, SDLC, Changemanagement |
 | `isaqb-architecture-governance` | Sicheres Softwaredesign, BCM, Testmanagement |
 | `a11y-governance` | Alle Markdown-Dokumente: DE/EN, CEFR B2, WCAG 2.2 AA |
-| `agent-parity-governance` | Agenten-Dateien, Templates und Skript-Hinweise synchron halten |
-| `cross-platform-governance` | Bash-/PowerShell-Paritaet und dokumentierte Bedienbarkeit |
+| `agent-parity-governance` | Agenten-Dateien, Sandbox-Guidance, Templates und Skript-Hinweise synchron halten |
+| `cross-platform-governance` | Bash-/PowerShell-Paritaet, Sandbox-Bedienbarkeit und dokumentierte Bedienbarkeit |
 
 ## Didaktische Mindeststruktur / Teaching Minimum Structure
 

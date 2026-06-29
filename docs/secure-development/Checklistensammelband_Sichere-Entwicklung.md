@@ -12412,6 +12412,7 @@ This document is organization-neutral and written as a generic training and revi
 ### Mitgeltende Dokumente / Related Documents
 
 - RL Sichere-Entwicklung, Abschnitt „Agentische KI in Sandbox-Umgebungen" (ab Version 2.2.0)
+- Leitlinie Sichere Entwicklungs-Sandbox
 - CL_KI-Codeerzeugung
 - CL_Sichere-Entwicklungsumgebung
 - GitHub Spec Kit und projektlokale Spec-Kit-Artefakte
@@ -12419,7 +12420,7 @@ This document is organization-neutral and written as a generic training and revi
 - ISO/IEC 27001:2022 Annex A: A.5.23, A.8.25, A.8.28, A.8.31
 - NIST AI Risk Management Framework (AI RMF 1.0)
 - OWASP Top 10 for Large Language Model Applications
-- Beispielhafte Sandbox-Referenz: `ade-dev-sandbox`
+- Beispielhafte Sandbox-Referenz: `absdd-image-sandbox`
 
 #### URL-/Ablageverweise / URLs and Storage Locations
 
@@ -12428,10 +12429,11 @@ This document is organization-neutral and written as a generic training and revi
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
 - **RL Sichere-Entwicklung:** [lokale Markdown-Arbeitsfassung der Richtlinie / local Markdown working copy of the guideline](../RL%20Sichere-Entwicklung.md)
+- **Leitlinie Sichere Entwicklungs-Sandbox:** [mitgeltendes Dokument fuer Sandbox-Profile / related document for sandbox profiles](mitgeltende-dokumente/Leitlinie_Sichere-Entwicklungs-Sandbox.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
 - **GitHub Spec Kit Presets:** [offizielle Spec-Kit-Preset-Referenz / official Spec Kit preset reference](https://github.github.com/spec-kit/reference/presets.html)
 - **Spec-Kit Community Presets:** [Community-Presets im GitHub-Spec-Kit-Repository / community presets in the GitHub Spec Kit repository](https://github.com/github/spec-kit/blob/main/docs/community/presets.md)
-- **Beispielhafte Sandbox-Referenz:** `ade-dev-sandbox` als lokale Arbeitskopie in Feinabstimmung / local working copy under tuning
+- **Beispielhafte Sandbox-Referenz:** `absdd-image-sandbox` als oeffentlichkeitsfaehiges Ausbildungsprofil / as a public-ready training profile
 
 ### Bewertung und Dokumentation / Assessment and Documentation
 
@@ -12811,6 +12813,7 @@ This document is organization-neutral and written as a generic training and revi
 - **Version 1.9 (2026-06-16):** Verständlichkeit der Durchführungshinweise, Begründungs-, Evidenz- und Maßnahmenfelder für Entwickler:innen und Auszubildende präzisiert; CEFR-B2- und WCAG-2.2-AA-konforme Ausfüllhilfe ergänzt. / Refined understandability of implementation guidance, rationale, evidence, and action fields for developers and apprentices; added CEFR B2 and WCAG 2.2 AA conformant completion help.
 
 - **Version 1.10 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
+- **Version 1.11 (2026-06-26):** Mitgeltende Leitlinie Sichere Entwicklungs-Sandbox und Referenzprofil `absdd-image-sandbox` ergaenzt; MSL-basierte Level-2-Entwicklung mit KI-Agenten als Sandbox-Zielbild eingeordnet. / Added related Secure Development Sandbox Guideline and `absdd-image-sandbox` reference profile; positioned MSL-based level-2 development with AI agents as the sandbox target picture.
 
 ---
 

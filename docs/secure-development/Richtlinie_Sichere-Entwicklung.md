@@ -335,6 +335,8 @@ Der Zugriff der Sandbox auf Quellcode erfolgt ausschließlich über ausdrücklic
 
 Andere Isolationsmechanismen sind zulässig, wenn sie nachweislich ein vergleichbares Schutzniveau erreichen. Der Nachweis erfolgt im Sicherheits- oder Architekturdokument der jeweiligen Sandbox.
 
+Konkrete Referenzprofile, Mindestnachweise und Ausbildungsanforderungen fuer sichere Entwicklungs-Sandboxen werden in der mitgeltenden Leitlinie [Leitlinie Sichere Entwicklungs-Sandbox](mitgeltende-dokumente/Leitlinie_Sichere-Entwicklungs-Sandbox.md) beschrieben. Sie ordnet insbesondere MSL-basierte Level-2-Projekte, KI-Agenten, Spec Kit und oeffentlichkeitsfaehige Sandbox-Referenzumgebungen ein.
+
 **Verbindliche Regelungen:**
 
 - Die Sandbox trennt Agentenlaufzeit, Werkzeugdaten, Cache, Sitzungsdaten und Zugangsdaten vom Host-System.
@@ -369,7 +371,7 @@ Andere Isolationsmechanismen sind zulässig, wenn sie nachweislich ein vergleich
 - BSI C3A und BSI C5 als Bewertungsrahmen für Cloud-Autonomie, digitale Souveränität und Cloud-Compliance-Assurance, soweit Cloud-Dienste wesentlich genutzt oder bereitgestellt werden.
 - G7 „Software Bill of Materials for AI – Minimum Elements" (2026) als Zielarchitektur für Transparenz in der KI-Lieferkette; nicht rechtsverbindlich, aber anschlussfähig an CRA, EU AI Act und NIS2.
 
-Mitgeltende Checkliste: CL_Agentische-KI-Sandbox (siehe `Checklistensammelband_Sichere-Entwicklung.md`, Kapitel 12).
+Mitgeltende Dokumente: [Leitlinie Sichere Entwicklungs-Sandbox](mitgeltende-dokumente/Leitlinie_Sichere-Entwicklungs-Sandbox.md); mitgeltende Checkliste: CL_Agentische-KI-Sandbox (siehe `Checklistensammelband_Sichere-Entwicklung.md`, Kapitel 12).
 
 ## Bedrohungsmodellierung
 
@@ -689,6 +691,7 @@ Die Versionshistorie dokumentiert wesentliche Änderungen dieser Richtlinie gem�
 | 2.9.0 | 15.06.2026 | Security-Verantwortliche*r | Neueste Spec-Kit-Governance-Preset-Prüfpunkte als auditfähige RL-/CL-Abdeckung nachgezogen: regulatorisches Screening, BSI C3A/C5, A11Y-/CLI-Prüfung, Cross-Platform-Parität, Secure-Coding-Profile und Agent-Guidance-Parität; Checklistensammelband auf Version 1.9.0 synchronisiert |
 | 2.10.0 | 17.06.2026 | Security-Verantwortliche*r | KPI-Werte für Testabdeckung angehoben und präzisiert: Unit-Test Line Coverage mindestens 80 %, sicherheitskritische Module mindestens 85 % Branch Coverage, KI-Code mindestens 80 % Line und Branch Coverage, Integrationstest-Abdeckung öffentlicher Schnittstellen und kritischer UI-Flows mindestens 80 %; CL_08, CL_09 und Checklistensammelband synchronisiert |
 | 2.10.1 | 26.06.2026 | Security-Verantwortliche*r | MSL-Beispielliste in Grundsätzen und Programmierungsabschnitt um Go, Rust und Swift bei passender Zielplattform präzisiert; sprachspezifische Architekturhinweise für Go, Rust und Swift ergänzt |
+| 2.10.2 | 26.06.2026 | Security-Verantwortliche*r | Mitgeltende Leitlinie fuer sichere Entwicklungs-Sandboxen ergaenzt; Sandbox-Referenzprofil fuer MSL-basierte Level-2-Projekte, KI-Agenten, Spec Kit und Ausbildung eingeordnet; CL_12 und Sammelband synchronisiert |
 
 **Genehmigung der aktuellen Fassung:**
 
@@ -1027,6 +1030,8 @@ The sandbox accesses source code only through explicitly mounted host directorie
 
 Other isolation mechanisms are allowed if they demonstrably reach a comparable protection level. The evidence is recorded in the security or architecture document of the respective sandbox.
 
+Concrete reference profiles, minimum evidence, and training requirements for secure development sandboxes are described in the related [Secure Development Sandbox Guideline](mitgeltende-dokumente/Leitlinie_Sichere-Entwicklungs-Sandbox.md). It positions MSL-based level-2 projects, AI agents, Spec Kit, and public-ready sandbox reference environments.
+
 **Binding rules:**
 
 - The sandbox separates agent runtime, tool data, cache, session data, and credentials from the host system.
@@ -1061,7 +1066,7 @@ Other isolation mechanisms are allowed if they demonstrably reach a comparable p
 - BSI C3A and BSI C5 as assessment frameworks for cloud autonomy, digital sovereignty, and cloud compliance assurance where cloud services are materially used or provided.
 - G7 "Software Bill of Materials for AI – Minimum Elements" (2026) as a target architecture for AI supply-chain transparency; not legally binding, but compatible with the CRA, the EU AI Act, and NIS2.
 
-Related checklist: CL_Agentische-KI-Sandbox (see `Checklistensammelband_Sichere-Entwicklung.md`, chapter 12).
+Related document: [Secure Development Sandbox Guideline](mitgeltende-dokumente/Leitlinie_Sichere-Entwicklungs-Sandbox.md); related checklist: CL_Agentische-KI-Sandbox (see `Checklistensammelband_Sichere-Entwicklung.md`, chapter 12).
 
 ## Threat Modeling
 
@@ -1378,6 +1383,7 @@ The version history documents material changes to this guideline according to IS
 | 2.9.0 | 2026-06-15 | Security-Verantwortliche*r | Added audit-ready RL/CL coverage for the latest Spec Kit governance preset review points: regulatory screening, BSI C3A/C5, A11Y/CLI review, cross-platform parity, secure-coding profiles, and agent-guidance parity; synchronized checklist compendium version 1.9.0 |
 | 2.10.0 | 2026-06-17 | Security-Verantwortliche*r | Raised and clarified test-coverage KPIs: unit-test line coverage at least 80%, security-critical modules at least 85% branch coverage, AI code at least 80% line and branch coverage, integration-test coverage of public interfaces and critical UI flows at least 80%; synchronized CL_08, CL_09, and checklist compendium |
 | 2.10.1 | 2026-06-26 | Security-Verantwortliche*r | Clarified MSL examples in principles and programming sections with Go, Rust, and Swift where the target platform fits; added language-specific architecture notes for Go, Rust, and Swift |
+| 2.10.2 | 2026-06-26 | Security-Verantwortliche*r | Added related guideline for secure development sandboxes; positioned sandbox reference profile for MSL-based level-2 projects, AI agents, Spec Kit, and training; synchronized CL_12 and compendium |
 
 **Approval of the current version:**
 

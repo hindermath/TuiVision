@@ -30,6 +30,7 @@
 | `Gebrauch_kryptografischer_Massnahmen.md` | Kryptografische Mindestvorgaben, sichere Programmierung | CL_03, CL_08, CL_09 | `security-governance`, `architecture-governance` | Krypto-Review, S-ADR, Threat Model, Code-Review, Testnachweis |
 | `Kompetenzprofile_und_Schulungsplan_Sichere-Entwicklung.md` | Qualifikation, Schulung, didaktische Nachvollziehbarkeit | CL_08, CL_09, CL_10, CL_12 | `a11y-governance`, `agent-parity-governance`, `security-governance` | Lernzielnotiz, Review-Protokoll, Aufgabenliste, Schulungsnachweis |
 | `Leitlinie_Sichere-Programmierung.md` | Secure Coding, MSL, Fehlerbehandlung, Eingaben, Abhängigkeiten | CL_01, CL_05, CL_08, CL_09 | `security-governance` | Secure-Coding-Check, Sprachprofil, Dependency-Audit, MSL-Entscheidung |
+| `Leitlinie_Sichere-Entwicklungs-Sandbox.md` | Sandbox-Freigabe, MSL-Toolchains, KI-Agenten, Mounts, Netzwerk, Public-Readiness | CL_05, CL_09, CL_10, CL_12 | `security-governance`, `architecture-governance`, `a11y-governance`, `cross-platform-governance`, `agent-parity-governance` | Sandbox-Freigabe, Isolationsnachweis, MSL-Support-Matrix, SBOM/Scan, Netzwerkentscheidung, Lastenheft |
 | `Richtlinie_Secure-Development-Life-Cycle.md` | SDLC, Spezifikation, Planung, Umsetzung, Freigabe | CL_01 bis CL_12 | alle sechs Presets | `spec.md`, `plan.md`, `tasks.md`, Review- und Abschlussnotiz |
 | `Checkliste_Secure-Development-Life-Cycle.md` | Kompakter SDLC-Review | CL_01 bis CL_12 | alle sechs Presets | Ausgefüllte SDLC-Kurzprüfung mit Status und Evidenzpfad |
 | `Richtlinie_Changemanagement.md` | Nachvollziehbare Änderungen, Freigaben, Tests | CL_06, CL_08, CL_10, CL_12 | `agent-parity-governance`, `cross-platform-governance`, `security-governance` | Commit, PR/MR, Review, Testlauf, Änderungsnotiz |
@@ -56,6 +57,12 @@
 | Welche Presets liefern passende Artefakte? / Which presets provide matching artefacts? | Preset-Liste, Versionen und relevante Templates dokumentieren. / Document preset list, versions, and relevant templates. |
 | Wo liegt die Evidenz? / Where is the evidence? | Pfad, Link, PR, Test, Scan oder `docs/security/`-Artefakt nennen. / Name path, link, PR, test, scan, or `docs/security/` artefact. |
 | Gibt es `N/A`? / Are there `N/A` decisions? | Kurze technische oder fachliche Begründung notieren. / Record a short technical or functional rationale. |
+
+## Lastenheft als Spec-Kit-Intake / Requirements Document as Spec Kit Intake
+
+**DE:** Ein Lastenheft, das spaeter direkt fuer `/speckit-specify` genutzt wird, soll die spaetere Pruefung bereits vorbereiten. Es nennt Zweck, Ausgangslage, Zielbild, Scope, Nicht-Ziele, Anforderungen, erwartete Artefakte, Akzeptanzkriterien und einen kopierbaren Prompt. Wenn Sicherheits-, Architektur-, A11Y-, Supply-Chain- oder Agenten-Governance betroffen ist, muss der Prompt `Applicable`, `N/A`, `Open`, Evidenzpfad und Begruendungspflicht ausdruecklich verlangen.
+
+**EN:** A requirements document that will later be used directly with `/speckit-specify` should prepare the later review already. It names purpose, context, target state, scope, non-goals, requirements, expected artefacts, acceptance criteria, and a copyable prompt. If security, architecture, accessibility, supply chain, or agent governance is affected, the prompt must explicitly require `Applicable`, `N/A`, `Open`, evidence paths, and rationale duties.
 
 ## Didaktische Regel / Teaching Rule
 
