@@ -668,7 +668,7 @@ checked if they are shared with external parties.
   ```text
   EU-Konformitätserklärung
 
-  Hersteller: Organisation, Beispielstrasse 1, 12345 Beispielstadt, Deutschland
+  Hersteller: <Organisation>, <Adresse>, <PLZ Ort>, <Land>
   Produkt: WidgetService 3.2.4
   Erklärung: Wir erklären in alleiniger Verantwortung, dass das oben
   bezeichnete Produkt allen einschlägigen Bestimmungen der Verordnung
@@ -676,7 +676,7 @@ checked if they are shared with external parties.
   Angewandte harmonisierte Normen: EN 18031:2024, ETSI EN 303 645
   Notified Body: TÜV Rheinland, ID 0197, Modul B+C
   Zertifikat-Nr.: TR-CRA-2026-XXXX
-  Ort, Datum: Beispielstadt, 2026-04-27
+  Ort, Datum: <Ort>, <Datum>
   Unterschrift: ____________________ Geschäftsführer
   ```
 - **EN:** Before placing on the market, CE marking with declaration of
@@ -709,7 +709,7 @@ checked if they are shared with external parties.
   ```text
   EU Declaration of Conformity
 
-  Manufacturer: Organisation, Example Street 1, 12345 Example City, Germany
+  Manufacturer: <organization>, <address>, <postal code and city>, <country>
   Product: WidgetService 3.2.4
   Statement: We declare under our sole responsibility that the product
   identified above complies with all relevant provisions of Regulation
@@ -717,7 +717,7 @@ checked if they are shared with external parties.
   Applied harmonised standards: EN 18031:2024, ETSI EN 303 645
   Notified Body: TÜV Rheinland, ID 0197, Module B+C
   Certificate No.: TR-CRA-2026-XXXX
-  Place, Date: Beispielstadt, 2026-04-27
+  Place, Date: <place>, <date>
   Signature: ____________________ Managing Director
   ```
 - **Akzeptanz / Acceptance:** EU-DoC im Release-Paket (PDF + Markdown);
@@ -1068,12 +1068,12 @@ checked if they are shared with external parties.
   Name und Funktion; (5) Vier-Augen-Prüfung (zweite Person); (6) Datum der
   nächsten Überprüfung (mindestens jährlich oder bei Produktänderung); (7)
   Rechtsbeistand oder Compliance-Officer hinzugezogen (ja/nein). Beispiel-
-  Eintrag: „Produkt: organisationsinterne Cloud-Storage SaaS v3.1 — Begründung: SaaS-Dienst
+  Eintrag: „Produkt: <interner oder externer Cloud-Storage-SaaS-Dienst> — Begründung: SaaS-Dienst
   ohne Bereitstellung als Produkt mit digitalen Elementen, fällt unter
   NIS2-Richtlinie (RL (EU) 2022/2555) Art. 21, nicht unter CRA Art. 1.
-  Bewertet am 2026-04-15 durch Anna Schmidt (Security Lead), gegengeprüft durch
-  Markus Weber (Datenschutzbeauftragter), nächste Überprüfung 2027-04-15.
-  Rechtsabteilung konsultiert: ja, Aktenzeichen LE-2026-042." Stillschwei-
+  Bewertet am <Datum> durch <Rolle 1>, gegengeprüft durch
+  <Rolle 2>, nächste Überprüfung <Datum>.
+  Rechtsbeistand oder Compliance-Rolle konsultiert: ja/nein, Aktenzeichen <Referenz>." Stillschwei-
   gende Auslassung (kein Eintrag) ist nicht zulässig.
 - **EN:** If the CRA is not applicable to a product or component, this is
   recorded in the applicability report (`docs/cra-applicability.md`) with
@@ -1085,13 +1085,13 @@ checked if they are shared with external parties.
   security only); (3) date of assessment; (4) responsible person with
   name and function; (5) four-eyes review (second person); (6) date of
   next review (at least annually or on product change); (7) legal counsel
-  or compliance officer consulted (yes/no). Example entry: „Product: Organisation
-  Cloud Storage SaaS v3.1 — Justification: SaaS service without provision
-  as a product with digital elements, falls under NIS2 Directive (Dir.
-  (EU) 2022/2555) Art. 21, not under CRA Art. 1. Assessed on 2026-04-15
-  by Anna Schmidt (Security Lead), countersigned by Markus Weber (Data Protection
-  Officer), next review 2027-04-15. Legal department consulted: yes,
-  reference LE-2026-042." Silent omission (no entry) is not permitted.
+  or compliance officer consulted (yes/no). Example entry: „Product: <cloud
+  storage SaaS service> — Justification: SaaS service without provision as a
+  product with digital elements, falls under NIS2 Directive (Dir. (EU)
+  2022/2555) Art. 21, not under CRA Art. 1. Assessed on <date> by
+  <responsible role>, countersigned by <second reviewer role>, next review
+  <date>. Legal department consulted: yes/no, reference <reference>." Silent
+  omission (no entry) is not permitted.
 - **Akzeptanz / Acceptance:** `docs/cra-applicability.md` enthält je
   ausgenommenes Produkt einen Eintrag mit allen sieben Pflichtfeldern
   (Produkt+Version, CRA-Ausnahmeklausel, Datum, verantwortliche Person,

@@ -56,13 +56,9 @@ transfers, new technology, new purpose).
 
 #### URL-/Ablageverweise / URLs and Storage Locations
 
-**DE:** Diese Links helfen beim Review. Projekt- oder organisationsinterne Dokumente koennen als lokale Arbeitskopie oder als Verweis auf den festgelegten Ablageort ergaenzt werden.
-lokale Arbeitskopie oder Dokumentationsablage-Verweis zu verstehen. Wenn eine interne
-Dokumentationsablage-URL existiert, wird sie in der finalen Dokumentenlenkung ergänzt.
+**DE:** Diese Links helfen beim Review. Projekt- oder organisationsinterne Dokumente koennen als lokale Arbeitskopie oder als Verweis auf den festgelegten Nachweisspeicher ergaenzt werden. Wenn ein interner Nachweisspeicher existiert, wird der Verweis in der finalen Dokumentenlenkung ergänzt.
 
-**EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
-listed as local working copies or Dokumentationsablage references. If an internal Dokumentationsablage URL
-exists, it is added during final document control.
+**EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined evidence location. If an internal evidence location exists, the reference is added during final document control.
 
 - **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](../Richtlinie_Sichere-Entwicklung.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
@@ -485,9 +481,9 @@ status must not be shown by color alone.
   personenbezogener Daten, Empfängerkategorien, Drittlandsübermittlungen
   einschließlich Garantien, geplante Löschfristen, allgemeine
   Beschreibung der TOM gemäß Art. 32. Die DPIA ist mit dem RoPA-Eintrag
-  verknüpft, sodass die Auditspur eindeutig ist. Werkzeuge: organisationsinterne
+  verknüpft, sodass die Auditspur eindeutig ist. Werkzeuge: projektspezifisches
   internes RoPA-System; alternativ DSGVO-konforme Drittsysteme; in
-  Spezialfällen tabellarische Vorlagen mit Versionierung im Dokumentationsablage.
+  Spezialfällen tabellarische Vorlagen mit Versionierung im definierten Nachweisspeicher.
 - **EN:** Every processing of personal data is registered in the Organisation
   central record of processing activities (RoPA) per GDPR Art. 30.
   Minimum content: name and contact details of the controller,
@@ -496,9 +492,9 @@ status must not be shown by color alone.
   with safeguards, planned deletion periods, general description of
   technical and organisational measures per Art. 32. The DPIA is
   linked to the RoPA entry to keep the audit trail unambiguous.
-  Tooling: organisationsinterne internal RoPA system; otherwise GDPR-compliant
+  Tooling: project-specific internal RoPA system; otherwise GDPR-compliant
   third-party systems; in special cases tabular templates with
-  versioning in the Dokumentationsablage.
+  versioning in the defined evidence location.
 - **Akzeptanz / Acceptance:** RoPA-Eintrag mit allen Mindestinhalten
   und Verknüpfung zur DPIA; mindestens jährliche Überprüfung. / RoPA
   entry with all minimum content and link to the DPIA; at least
@@ -540,8 +536,8 @@ status must not be shown by color alone.
   decision, SCCs plus Transfer Impact Assessment, BCRs).
 - **Akzeptanz / Acceptance:** Unterschriebener DPA je Auftrags-
   verarbeiter; Liste der Auftragsverarbeiter und Sub-Auftragsverarbeiter
-  aktuell und im Dokumentationsablage abgelegt. / Signed DPA per processor; list of
-  processors and sub-processors current and stored in the Dokumentationsablage.
+  aktuell und im definierten Nachweisspeicher abgelegt. / Signed DPA per processor; list of
+  processors and sub-processors current and stored in the defined evidence location.
 - **Bewertung / Assessment:**
   - [ ] erfüllt / fulfilled
   - [ ] nicht erfüllt / not fulfilled

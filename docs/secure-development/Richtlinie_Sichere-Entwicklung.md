@@ -86,7 +86,7 @@ Diese Richtlinie ist eine bereichsspezifische Sicherheitsrichtlinie im Sinne von
 **Bezug zu den ISO/IEC 27001:2022-Klauseln:**
 
 - **Klausel 6.1 (Maßnahmen zum Umgang mit Risiken und Chancen):** Die Risikobewertung für Entwicklungsvorhaben erfolgt im Rahmen des projektbezogenen Risikomanagementprozesses der Organisation. Sie orientiert sich an ISO/IEC 27005:2022 und den BSI-IT-Grundschutz-Methoden. Projekttypische Risiken werden im jeweiligen Bedrohungsmodell des Projekts vertieft (siehe Abschnitt „Bedrohungsmodellierung"). Restrisiken werden im zentralen Risikoregister der Organisation geführt und mit den entsprechenden Risikoeignerinnen und Risikoeignern abgestimmt.
-- **Klausel 7.5 (Dokumentierte Information):** Diese Richtlinie unterliegt der formalen Dokumentenlenkung der Organisation. Versionierung, Freigabe, Verteilung und geordnete Archivierung erfolgen in der festgelegten Dokumentationsablage. Änderungen werden in der Versionshistorie am Ende dieses Dokuments festgehalten.
+- **Klausel 7.5 (Dokumentierte Information):** Diese Richtlinie unterliegt der formalen Dokumentenlenkung der Organisation. Versionierung, Freigabe, Verteilung und geordnete Archivierung erfolgen im festgelegten Nachweisspeicher. Änderungen werden in der Versionshistorie am Ende dieses Dokuments festgehalten.
 - **Klausel 8 (Betrieb):** Die Richtlinie steuert den operativen Sicherheitsteil des Softwareentwicklungs-Prozesses. Die zugehörigen Checklisten dienen als prüfbare Arbeitsmittel und liefern Belege für interne und externe Audits.
 - **Klausel 9.2 (Internes Audit):** Die Einhaltung dieser Richtlinie ist Gegenstand des jährlichen internen Sicherheitsreviews. Der Sammelband `Checklistensammelband_Sichere-Entwicklung.md`, Kapitel 01 bis 12, ist das primäre Auditmittel je Projekt. Stichproben werden nach Risiko, Kritikalitaet und Aenderungsumfang gezogen.
 - **Klausel 9.3 (Managementbewertung):** Die Wirksamkeit dieser Richtlinie wird mindestens einmal jährlich im Rahmen eines Sicherheitsreviews auf Basis von KPI (siehe Abschnitt „KPI für Sicherheit und Testabdeckung"), Auditfeststellungen, Vorfällen und Schwachstellenstatistiken geprüft.
@@ -136,7 +136,7 @@ Die eingesetzten Programmiersprachen orientieren sich an dem mitgeltenden Dokume
 
 Die Entwicklerinnen und Entwickler schreiben ihren Quellcode gemäß den Empfehlungen der „Leitlinie für sichere Programmierung".
 
-Bei der Organisation werden Entwicklungsumgebungen (Integrated Development Environments, IDEs) eingesetzt, die in der „Richtlinie zur Installation von Software" beschrieben sind und in der Liste der genehmigten Software für die Nutzung freigegeben wurden. Die IDEs laufen möglichst auf den drei Hauptplattformen Windows, macOS und Linux. Die Hersteller aktualisieren die IDEs regelmäßig mit neuen Funktionen und Sicherheitsupdates.
+Bei der Organisation werden Entwicklungsumgebungen (Integrated Development Environments, IDEs) eingesetzt, die in der „Richtlinie zur sicheren Entwicklungsumgebung" beschrieben sind und in der projektspezifischen Liste genehmigter Werkzeuge für die Nutzung freigegeben wurden. Die IDEs laufen möglichst auf den drei Hauptplattformen Windows, macOS und Linux. Die Hersteller aktualisieren die IDEs regelmäßig mit neuen Funktionen und Sicherheitsupdates.
 
 Der entwickelte Quellcode wird in den von der Organisation selbst betriebenen Versionskontrollsystemen (Git) verwaltet. Zugriff und Transport sind abgesichert. Der Zugriff erfolgt mit Single Sign-On (SSO) für das Web-Interface und mit Security-Token oder SSH-Login für die IDEs. Das Webinterface ist zusätzlich durch ein Server-Zertifikat aus der geeignete öffentliche oder interne PKI geschützt. Das Server-Zertifikat wird vollautomatisch durch eine Bot-Software über das ACME-Protokoll verwaltet und 30 Tage vor Ablauf erneuert.
 
@@ -304,7 +304,7 @@ Diese Richtlinie regelt die Nutzung von KI in der Anwendungsentwicklung der Orga
 
 **Verbindliche Regelungen:**
 
-- Genehmigte Werkzeuge: Es kommen nur Werkzeuge zum Einsatz, die in der Liste der genehmigten Software stehen. Cloud-basierte und lokale Werkzeuge werden getrennt freigegeben.
+- Genehmigte Werkzeuge: Es kommen nur Werkzeuge zum Einsatz, die in der projektspezifischen Liste genehmigter Werkzeuge stehen. Cloud-basierte und lokale Werkzeuge werden getrennt freigegeben.
 - KI-Lieferkettentransparenz: Für eingesetzte KI-Dienste und Modelle werden die vom Anbieter verfügbaren Transparenzangaben im KI-Werkzeug-Inventar erfasst oder verlinkt — Modell-Identität und -Version, Verweis auf Model Card oder AI-SBOM des Anbieters, Trainings- und Feinabstimmungsverfahren sowie Herkunft und Sensitivität der Trainingsdaten soweit veröffentlicht, und KI-spezifische Sicherheitseigenschaften. Für fremdbezogene Modelle erstellt die Organisation keine eigene AI-SBOM; sie fordert die Angaben als Lieferketten-Nachweis an. Bezugsrahmen ist die G7-Leitlinie „Software Bill of Materials for AI – Minimum Elements" (2026).
 - Menschliche Überprüfung: Jede KI-Ausgabe wird vor dem Commit von einer Person inhaltlich geprüft. Ein Blind-Commit ist nicht zulässig.
 - Vier-Augen-Prinzip bei kritischer Logik: Sicherheitsrelevante Logik (Authentifizierung, Autorisierung, Eingabevalidierung, Krypto, Sitzungsverwaltung, Zahlungspfade) wird zusätzlich von einer zweiten Person geprüft.
@@ -430,7 +430,7 @@ Audit-, Penetrations- und Schwachstellentests werden so durchgeführt, dass der 
 - Aktive Tests (Schwachstellenscans, Penetrationstests, Lasttests, Forensik-Übungen) finden bevorzugt auf dedizierten Test- oder Stage-Systemen statt. Tests gegen Produktivsysteme werden nur mit ausdrücklicher Genehmigung durchgeführt.
 - Audit- und Prüfungskonten werden als Read-only-Konten mit minimal nötigen Rechten angelegt und nach Abschluss der Prüfung deaktiviert oder gelöscht. Schreibzugriffe sind nur möglich, wenn dies der Prüfauftrag ausdrücklich vorsieht.
 - Prüf- und Auditfenster werden vorab schriftlich abgestimmt, mit Zeitfenster, Scope, eingesetzten Werkzeugen, Ansprechpersonen und Eskalationsweg.
-- Prüfwerkzeuge und Auswertungen (Scan-Ergebnisse, Logs, Exports) werden vertraulich behandelt, geordnet abgelegt und nach Abschluss gemäß Aufbewahrungsfrist gelöscht oder archiviert. Zugriff ist auf den Prüfteam-Kreis und die zuständigen organisationsinterne Stellen begrenzt.
+- Prüfwerkzeuge und Auswertungen (Scan-Ergebnisse, Logs, Exports) werden vertraulich behandelt, geordnet abgelegt und nach Abschluss gemäß Aufbewahrungsfrist gelöscht oder archiviert. Zugriff ist auf den Prüfteam-Kreis und die zuständigen organisationsinternen Stellen begrenzt.
 - Auftraggebende, Prüfende und betroffene Betriebsteams werden benannt und in einem kurzen Abschlussbericht zusammengeführt. Befunde fließen in den kontinuierlichen Verbesserungsprozess (siehe Abschnitt „Einordnung im ISMS", Klausel 10) zurück.
 
 Mitgeltende Dokumente: [Richtlinie Testmanagement](mitgeltende-dokumente/Richtlinie_Testmanagement.md), [Richtlinie Zugangssteuerung](mitgeltende-dokumente/Richtlinie_Zugangssteuerung.md).
@@ -608,7 +608,7 @@ Mitgeltende Checklisten: CL_Lieferkette-Build-Integritaet, CL_Code-Review-Sicher
 | CVE | Common Vulnerabilities and Exposures |
 | CVSS | Common Vulnerability Scoring System |
 | CWE | Common Weakness Enumeration |
-| Dokumentationsablage | Dokumentenmanagementsystem |
+| Nachweisspeicher | definierter Speicherort fuer Freigaben, Nachweise und Protokolle |
 | DPIA | Data Protection Impact Assessment (Datenschutz-Folgenabschätzung) |
 | DR | Disaster Recovery |
 | DSGVO | Datenschutz-Grundverordnung (Verordnung (EU) 2016/679) |
@@ -616,7 +616,7 @@ Mitgeltende Checklisten: CL_Lieferkette-Build-Integritaet, CL_Code-Review-Sicher
 | FPE | Format-Preserving Encryption |
 | GCM | Galois/Counter Mode (Block-Cipher-Modus mit AEAD) |
 | PKI | Public key infrastructure reference |
-| Organisation | Gesellschaft für wissenschaftliche Datenverarbeitung mbH Beispielstadt |
+| Organisation | Beispielorganisation fuer Ausbildungs- und Reviewzwecke |
 | HPC | High Performance Computing |
 | HSM | Hardware Security Module |
 | IDE | Integrated Development Environment |
@@ -659,7 +659,7 @@ Mitgeltende Checklisten: CL_Lieferkette-Build-Integritaet, CL_Code-Review-Sicher
 | SSH | Secure Shell |
 | SSO | Single Sign-On |
 | STRIDE | Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege |
-| TCS | Trusted Certificate Service |
+| CA | Certification Authority |
 | TLS | Transport Layer Security |
 | TPM | Trusted Platform Module |
 | UI | User Interface |
@@ -716,7 +716,7 @@ Die Versionshistorie dokumentiert wesentliche Änderungen dieser Richtlinie gem�
 | Document number / file reference | RL-SE-001 |
 | ISMS reference | Part of the security evidence process according to ISO/IEC 27001:2022 |
 
-This document is controlled according to ISO/IEC 27001:2022 clause 7.5 ("Documented Information"). Changes are recorded in the version history at the end of this document. The valid version is stored in the official Organisation document management system (Dokumentationsablage). Local working copies are only valid for ongoing editing.
+This document is controlled according to ISO/IEC 27001:2022 clause 7.5 ("Documented Information"). Changes are recorded in the version history at the end of this document. The valid version is stored in the defined evidence location. Local working copies are only valid for ongoing editing.
 
 ## Related Documents
 
@@ -765,12 +765,7 @@ The detailed requirements and audit checks for this guideline are defined in the
 
 ## Scope
 
-Organisation develops software in several working groups:
-
-- Working group N: network infrastructure.
-- Working group I: data-center infrastructure.
-- Working group E: software for research in life sciences.
-- Working group C: software for high performance computing (HPC).
+Organisation develops software in project or domain teams, for example infrastructure, application development, data processing, platform operations, or specialist application domains.
 
 This guideline applies to all persons who develop software for Organisation or on behalf of Organisation. It also applies to the adaptation of standard software, for example open-source software.
 
@@ -781,17 +776,17 @@ This guideline is a domain-specific security policy according to ISO/IEC 27001:2
 **References to ISO/IEC 27001:2022 clauses:**
 
 - **Clause 6.1 (Actions to address risks and opportunities):** Risk assessment for development projects is performed in the central Organisation ISMS risk-management process. It follows ISO/IEC 27005:2022 and BSI IT-Grundschutz methods. Project-specific risks are deepened in the project threat model. Residual risks are recorded in the central Organisation risk register and agreed with the relevant risk owners.
-- **Clause 7.5 (Documented information):** This guideline is subject to Organisation document control. Versioning, approval, distribution, and orderly archiving are handled through the Dokumentationsablage. Changes are recorded in the version history.
+- **Clause 7.5 (Documented information):** This guideline is subject to a defined document-control process. Versioning, approval, distribution, and orderly archiving are handled through the defined evidence location. Changes are recorded in the version history.
 - **Clause 8 (Operation):** The guideline controls the operational security part of the software-development process. The related checklists are auditable work aids and provide evidence for internal and external audits.
-- **Clause 9.2 (Internal audit):** Compliance with this guideline is part of the annual internal ISMS audit. The compendium file `Checklistensammelband_Sichere-Entwicklung.md`, chapters 01 to 12, is the primary audit tool per project. Samples are taken per working group (D, N, I, E, C).
+- **Clause 9.2 (Internal audit):** Compliance with this guideline is part of the annual internal ISMS audit. The compendium file `Checklistensammelband_Sichere-Entwicklung.md`, chapters 01 to 12, is the primary audit tool per project. Samples are selected by risk, criticality, and change scope.
 - **Clause 9.3 (Management review):** The effectiveness of this guideline is reviewed annually in the ISMS management review, based on KPIs, audit findings, incidents, and vulnerability statistics.
 - **Clause 10 (Improvement):** Findings from audits, incidents, and vulnerability triage are fed back into this guideline and its checklists through continual improvement.
 
 **Responsibilities:**
 
 - The Security-Verantwortliche*r of Organisation is responsible for maintaining the guideline.
-- The Management Board approves the guideline and provides the required resources.
-- The heads of working groups D, N, I, E, and C are responsible for implementation in their areas.
+- The responsible leadership approves the guideline and provides the required resources.
+- Project or domain leads are responsible for implementation in their areas.
 - The Data Protection Officer is involved in all projects that process personal data.
 
 **Interface to the Statement of Applicability (SoA):**
@@ -831,11 +826,11 @@ The programming languages used follow the related document "THE-CASE-FOR-MEMORY-
 
 Developers write source code according to the Organisation secure programming guideline.
 
-Organisation uses integrated development environments (IDEs) that are described in the "software installation guideline" and approved in the list of approved software. IDEs should run on the three main platforms Windows, macOS, and Linux. Vendors regularly update the IDEs with new functions and security updates.
+Organisation uses integrated development environments (IDEs) that are described in the "secure development environment guideline" and approved in the project-specific list of approved tools. IDEs should run on the three main platforms Windows, macOS, and Linux. Vendors regularly update the IDEs with new functions and security updates.
 
-Developed source code is managed in organisationsinterne operated version-control systems (Git). Access and transport are secured. Access uses single sign-on (SSO) for the web interface and security tokens or SSH login for IDEs. The web interface is also protected by a server certificate from the GEANT TCS PKI. The server certificate is managed automatically by bot software via ACME and renewed 30 days before expiry.
+Developed source code is managed in organization-operated version-control systems (Git). Access and transport are secured. Access uses single sign-on (SSO) for the web interface and security tokens or SSH login for IDEs. The web interface is also protected by a server certificate from the suitable public or internal PKI. The server certificate is managed automatically by bot software via ACME and renewed 30 days before expiry.
 
-When hiring new developers, Organisation checks the required skills and existing expertise. The development team is trained regularly according to process "10 - Employee qualification and training". External training or the Organisation Academy may be used.
+When hiring new developers, Organisation checks the required skills and existing expertise. The development team is trained regularly according to process "10 - Employee qualification and training". External training or the approved learning resources may be used.
 
 The rules from the access control guideline apply. The test management guideline additionally applies to controlled test management.
 
@@ -956,7 +951,7 @@ Related documents: Organisation BCM/emergency manual. Related checklist: CL_Sich
 
 ## Programming
 
-New code is written in the memory-safe languages commonly used at Organisation, namely Java, C#, Python, Go, Rust, and Swift where the target platform fits, or in the language requested by the customer. For further development, the existing application language is used. Code is commented sufficiently according to the Organisation secure programming guideline and regularly tested for vulnerabilities. Programming follows the state of the art. A change of paradigm, for example a change of programming language, is documented and justified separately.
+New code is written in the memory-safe languages common for the project context, namely Java, C#, Python, Go, Rust, and Swift where the target platform fits, or in the language requested by the customer. For further development, the existing application language is used. Code is commented sufficiently according to the Organisation secure programming guideline and regularly tested for vulnerabilities. Programming follows the state of the art. A change of paradigm, for example a change of programming language, is documented and justified separately.
 
 Proper documentation is expected in the team. Modular programming is used. Code is well structured and often arranged in reusable code blocks.
 
@@ -982,7 +977,7 @@ Masking and anonymization procedures are documented in the project test-data con
 
 ### Versioning and Change Management
 
-Source-code changes are managed in organisationsinterne operated Git version-control systems. Access is granted or removed according to the access control guideline. Change-management rules apply. Further security details for the VCS are in the operations concept of the respective application. Changes are documented traceably. New functions or modules are added to the operations concept.
+Source-code changes are managed in organization-operated Git version-control systems. Access is granted or removed according to the access control guideline. Change-management rules apply. Further security details for the VCS are in the operations concept of the respective application. Changes are documented traceably. New functions or modules are added to the operations concept.
 
 Before changes to the hosting operating system or software stack, tests are performed. This preserves stability and security. Deep changes are limited to what is necessary. They are performed only when security for the operating system, application, and customer data is ensured. Tests are recorded in test documentation, for example vulnerability tests.
 
@@ -1284,7 +1279,7 @@ Related documents: test management guideline. Related checklists: CL_Lieferkette
 | ACME | Automated Certificate Management Environment |
 | ADR | Architecture Decision Record |
 | AEAD | Authenticated Encryption with Associated Data |
-| AG | Working group |
+| PG | Project group |
 | API | Application Programming Interface |
 | ASVS | Application Security Verification Standard (OWASP) |
 | BCM | Business Continuity Management |
@@ -1300,15 +1295,14 @@ Related documents: test management guideline. Related checklists: CL_Lieferkette
 | CVE | Common Vulnerabilities and Exposures |
 | CVSS | Common Vulnerability Scoring System |
 | CWE | Common Weakness Enumeration |
-| Dokumentationsablage | Document Management System |
+| Evidence location | defined location for approvals, evidence, and logs |
 | DPIA | Data Protection Impact Assessment |
 | DR | Disaster Recovery |
 | ECDSA | Elliptic Curve Digital Signature Algorithm |
 | FPE | Format-Preserving Encryption |
 | GCM | Galois/Counter Mode |
 | GDPR | General Data Protection Regulation (Regulation (EU) 2016/679) |
-| GEANT | Public key infrastructure reference |
-| Organisation | Gesellschaft fuer wissenschaftliche Datenverarbeitung mbH Example City |
+| Organisation | Example organization for training and review purposes |
 | HPC | High Performance Computing |
 | HSM | Hardware Security Module |
 | IDE | Integrated Development Environment |
@@ -1350,7 +1344,6 @@ Related documents: test management guideline. Related checklists: CL_Lieferkette
 | SSH | Secure Shell |
 | SSO | Single Sign-On |
 | STRIDE | Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege |
-| TCS | Trusted Certificate Service (GEANT) |
 | TLS | Transport Layer Security |
 | TPM | Trusted Platform Module |
 | UI | User Interface |
@@ -1386,8 +1379,8 @@ The version history documents material changes to this guideline according to IS
 **Approval of the current version:**
 
 - Subject-matter creation and maintenance: Organisation Information Security Officer (Security-Verantwortliche*r)
-- Consultation: Organisation Data Protection Officer, heads of working groups D, N, I, E, and C
-- Approval: Organisation Management Board
-- Storage of approval documentation: central document management system (Dokumentationsablage)
+- Consultation: Organisation Data Protection Officer, project or domain leads
+- Approval: responsible leadership
+- Storage of approval documentation: defined evidence location
 
-**Distribution and publication:** This guideline is provided to all staff of the affected working groups through the Dokumentationsablage and intranet. External development partners receive the guideline as an annex to the contract documents.
+**Distribution and publication:** This guideline is provided to all staff of the affected project or domain teams through the defined evidence location and intranet. External development partners receive the guideline as an annex to the contract documents.

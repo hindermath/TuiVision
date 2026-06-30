@@ -6300,7 +6300,7 @@ checked if they are shared with external parties.
   ```text
   EU-Konformitätserklärung
 
-  Hersteller: Organisation, Beispielstrasse 1, 12345 Beispielstadt, Deutschland
+  Hersteller: <Organisation>, <Adresse>, <PLZ Ort>, <Land>
   Produkt: WidgetService 3.2.4
   Erklärung: Wir erklären in alleiniger Verantwortung, dass das oben
   bezeichnete Produkt allen einschlägigen Bestimmungen der Verordnung
@@ -6308,7 +6308,7 @@ checked if they are shared with external parties.
   Angewandte harmonisierte Normen: EN 18031:2024, ETSI EN 303 645
   Notified Body: TÜV Rheinland, ID 0197, Modul B+C
   Zertifikat-Nr.: TR-CRA-2026-XXXX
-  Ort, Datum: Beispielstadt, 2026-04-27
+  Ort, Datum: <Ort>, <Datum>
   Unterschrift: ____________________ Geschäftsführer
   ```
 - **EN:** Before placing on the market, CE marking with declaration of
@@ -6341,7 +6341,7 @@ checked if they are shared with external parties.
   ```text
   EU Declaration of Conformity
 
-  Manufacturer: Organisation, Example Street 1, 12345 Example City, Germany
+  Manufacturer: <organization>, <address>, <postal code and city>, <country>
   Product: WidgetService 3.2.4
   Statement: We declare under our sole responsibility that the product
   identified above complies with all relevant provisions of Regulation
@@ -6349,7 +6349,7 @@ checked if they are shared with external parties.
   Applied harmonised standards: EN 18031:2024, ETSI EN 303 645
   Notified Body: TÜV Rheinland, ID 0197, Module B+C
   Certificate No.: TR-CRA-2026-XXXX
-  Place, Date: Beispielstadt, 2026-04-27
+  Place, Date: <place>, <date>
   Signature: ____________________ Managing Director
   ```
 - **Akzeptanz / Acceptance:** EU-DoC im Release-Paket (PDF + Markdown);
@@ -6700,12 +6700,12 @@ checked if they are shared with external parties.
   Name und Funktion; (5) Vier-Augen-Prüfung (zweite Person); (6) Datum der
   nächsten Überprüfung (mindestens jährlich oder bei Produktänderung); (7)
   Rechtsbeistand oder Compliance-Officer hinzugezogen (ja/nein). Beispiel-
-  Eintrag: „Produkt: organisationsinterne Cloud-Storage SaaS v3.1 — Begründung: SaaS-Dienst
+  Eintrag: „Produkt: <interner oder externer Cloud-Storage-SaaS-Dienst> — Begründung: SaaS-Dienst
   ohne Bereitstellung als Produkt mit digitalen Elementen, fällt unter
   NIS2-Richtlinie (RL (EU) 2022/2555) Art. 21, nicht unter CRA Art. 1.
-  Bewertet am 2026-04-15 durch Anna Schmidt (Security Lead), gegengeprüft durch
-  Markus Weber (Datenschutzbeauftragter), nächste Überprüfung 2027-04-15.
-  Rechtsabteilung konsultiert: ja, Aktenzeichen LE-2026-042." Stillschwei-
+  Bewertet am <Datum> durch <Rolle 1>, gegengeprüft durch
+  <Rolle 2>, nächste Überprüfung <Datum>.
+  Rechtsbeistand oder Compliance-Rolle konsultiert: ja/nein, Aktenzeichen <Referenz>." Stillschwei-
   gende Auslassung (kein Eintrag) ist nicht zulässig.
 - **EN:** If the CRA is not applicable to a product or component, this is
   recorded in the applicability report (`docs/cra-applicability.md`) with
@@ -6717,13 +6717,13 @@ checked if they are shared with external parties.
   security only); (3) date of assessment; (4) responsible person with
   name and function; (5) four-eyes review (second person); (6) date of
   next review (at least annually or on product change); (7) legal counsel
-  or compliance officer consulted (yes/no). Example entry: „Product: Organisation
-  Cloud Storage SaaS v3.1 — Justification: SaaS service without provision
-  as a product with digital elements, falls under NIS2 Directive (Dir.
-  (EU) 2022/2555) Art. 21, not under CRA Art. 1. Assessed on 2026-04-15
-  by Anna Schmidt (Security Lead), countersigned by Markus Weber (Data Protection
-  Officer), next review 2027-04-15. Legal department consulted: yes,
-  reference LE-2026-042." Silent omission (no entry) is not permitted.
+  or compliance officer consulted (yes/no). Example entry: „Product: <cloud
+  storage SaaS service> — Justification: SaaS service without provision as a
+  product with digital elements, falls under NIS2 Directive (Dir. (EU)
+  2022/2555) Art. 21, not under CRA Art. 1. Assessed on <date> by
+  <responsible role>, countersigned by <second reviewer role>, next review
+  <date>. Legal department consulted: yes/no, reference <reference>." Silent
+  omission (no entry) is not permitted.
 - **Akzeptanz / Acceptance:** `docs/cra-applicability.md` enthält je
   ausgenommenes Produkt einen Eintrag mit allen sieben Pflichtfeldern
   (Produkt+Version, CRA-Ausnahmeklausel, Datum, verantwortliche Person,
@@ -11657,13 +11657,9 @@ transfers, new technology, new purpose).
 
 #### URL-/Ablageverweise / URLs and Storage Locations
 
-**DE:** Diese Links helfen beim Review. Projekt- oder organisationsinterne Dokumente koennen als lokale Arbeitskopie oder als Verweis auf den festgelegten Ablageort ergaenzt werden.
-lokale Arbeitskopie oder Dokumentationsablage-Verweis zu verstehen. Wenn eine interne
-Dokumentationsablage-URL existiert, wird sie in der finalen Dokumentenlenkung ergänzt.
+**DE:** Diese Links helfen beim Review. Projekt- oder organisationsinterne Dokumente koennen als lokale Arbeitskopie oder als Verweis auf den festgelegten Nachweisspeicher ergaenzt werden. Wenn ein interner Nachweisspeicher existiert, wird der Verweis in der finalen Dokumentenlenkung ergänzt.
 
-**EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
-listed as local working copies or Dokumentationsablage references. If an internal Dokumentationsablage URL
-exists, it is added during final document control.
+**EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined evidence location. If an internal evidence location exists, the reference is added during final document control.
 
 - **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](Richtlinie_Sichere-Entwicklung.md)
 - **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
@@ -12086,9 +12082,9 @@ status must not be shown by color alone.
   personenbezogener Daten, Empfängerkategorien, Drittlandsübermittlungen
   einschließlich Garantien, geplante Löschfristen, allgemeine
   Beschreibung der TOM gemäß Art. 32. Die DPIA ist mit dem RoPA-Eintrag
-  verknüpft, sodass die Auditspur eindeutig ist. Werkzeuge: organisationsinterne
+  verknüpft, sodass die Auditspur eindeutig ist. Werkzeuge: projektspezifisches
   internes RoPA-System; alternativ DSGVO-konforme Drittsysteme; in
-  Spezialfällen tabellarische Vorlagen mit Versionierung im Dokumentationsablage.
+  Spezialfällen tabellarische Vorlagen mit Versionierung im definierten Nachweisspeicher.
 - **EN:** Every processing of personal data is registered in the Organisation
   central record of processing activities (RoPA) per GDPR Art. 30.
   Minimum content: name and contact details of the controller,
@@ -12097,9 +12093,9 @@ status must not be shown by color alone.
   with safeguards, planned deletion periods, general description of
   technical and organisational measures per Art. 32. The DPIA is
   linked to the RoPA entry to keep the audit trail unambiguous.
-  Tooling: organisationsinterne internal RoPA system; otherwise GDPR-compliant
+  Tooling: project-specific internal RoPA system; otherwise GDPR-compliant
   third-party systems; in special cases tabular templates with
-  versioning in the Dokumentationsablage.
+  versioning in the defined evidence location.
 - **Akzeptanz / Acceptance:** RoPA-Eintrag mit allen Mindestinhalten
   und Verknüpfung zur DPIA; mindestens jährliche Überprüfung. / RoPA
   entry with all minimum content and link to the DPIA; at least
@@ -12141,8 +12137,8 @@ status must not be shown by color alone.
   decision, SCCs plus Transfer Impact Assessment, BCRs).
 - **Akzeptanz / Acceptance:** Unterschriebener DPA je Auftrags-
   verarbeiter; Liste der Auftragsverarbeiter und Sub-Auftragsverarbeiter
-  aktuell und im Dokumentationsablage abgelegt. / Signed DPA per processor; list of
-  processors and sub-processors current and stored in the Dokumentationsablage.
+  aktuell und im definierten Nachweisspeicher abgelegt. / Signed DPA per processor; list of
+  processors and sub-processors current and stored in the defined evidence location.
 - **Bewertung / Assessment:**
   - [ ] erfüllt / fulfilled
   - [ ] nicht erfüllt / not fulfilled
