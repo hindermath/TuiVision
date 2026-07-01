@@ -39,9 +39,10 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 11 | `Lastenheft_Wave4-Visual-Component-Porting.md` | Kernlogik/Runtime | aktiv / active |
 | 12 | `Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.md` | UI/A11Y/Dokumentation | aktiv / active |
 | 13 | `Lastenheft_RL-SE-Checklist-Selbstpruefung.md` | RL-SE-/Checklist-Selbstpruefung | aktiv / active |
-| 14 | `Lastenheft_Secure-Development-Hardening.md` | Secure-Development-Hardening | aktiv / active |
-| 15 | `Lastenheft_02_StandardDialogsAndDesigner.010-standard-dialogs-designer.md` | Weitere Anforderungen | archiviert oder abgeschlossen / archived or completed |
-| 16 | `Lastenheft_03_EditorHelpAndResourcesHardening.md` | Weitere Anforderungen | aktiv / active |
-| 17 | `Lastenheft_04_MouseSupportAndInteraction.md` | Weitere Anforderungen | aktiv / active |
-| 18 | `Lastenheft_05_TerminalCharsetAndEmulation.md` | Weitere Anforderungen | aktiv / active |
+| 14 | `Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md` | GSDB-Spec-Kit-Intensivpruefung | aktiv / active |
+| 15 | `Lastenheft_Secure-Development-Hardening.md` | Secure-Development-Hardening | aktiv / active |
+| 16 | `Lastenheft_02_StandardDialogsAndDesigner.010-standard-dialogs-designer.md` | Weitere Anforderungen | archiviert oder abgeschlossen / archived or completed |
+| 17 | `Lastenheft_03_EditorHelpAndResourcesHardening.md` | Weitere Anforderungen | aktiv / active |
+| 18 | `Lastenheft_04_MouseSupportAndInteraction.md` | Weitere Anforderungen | aktiv / active |
+| 19 | `Lastenheft_05_TerminalCharsetAndEmulation.md` | Weitere Anforderungen | aktiv / active |
 <!-- secure-development-hardening-order:end -->
