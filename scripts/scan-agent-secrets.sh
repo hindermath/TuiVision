@@ -33,6 +33,42 @@ fi
 
 workspace_root="$(cd "$workspace_root" && pwd)"
 
+gitleaks_high=0
+high_count=0
+medium_count=0
+low_count=0
+
+print_result() {
+  local risk="$1"
+  local path="$2"
+  local reason="$3"
+  printf '%-6s | %s | %s\n' "$risk" "$path" "$reason"
+}
+
+run_gitleaks_worktree_scan() {
+  if ! command -v gitleaks >/dev/null 2>&1; then
+    echo "INFO   | gitleaks | not installed; regex fallback remains active"
+    return 0
+  fi
+
+  if ! git -C "$workspace_root" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    echo "INFO   | gitleaks | skipped; workspace root is not a git repository"
+    return 0
+  fi
+
+  set +e
+  gitleaks git --redact --no-banner --no-color --log-level warn --exit-code 2 --pre-commit "$workspace_root"
+  local status=$?
+  set -e
+
+  if [ "$status" -eq 0 ]; then
+    echo "OK     | gitleaks | no secrets in current git diff"
+  else
+    gitleaks_high=1
+    print_result "high" "gitleaks" "possible secret in current git diff or gitleaks scan error"
+  fi
+}
+
 agent_dir_patterns=(
   '.claude'
   '.codex'
@@ -40,6 +76,8 @@ agent_dir_patterns=(
   '.junie'
   '.opencode'
 )
+
+run_gitleaks_worktree_scan
 
 declare -a agent_dirs=()
 while IFS= read -r dir; do
@@ -53,22 +91,16 @@ done < <(
 
 if [ "${#agent_dirs[@]}" -eq 0 ]; then
   echo "No agent directories found under $workspace_root"
+  echo
+  echo "Summary: high=$gitleaks_high medium=0 low=0 total_agent_dirs=0 gitleaks_high=$gitleaks_high"
+  if [ "$fail_on_high" -eq 1 ] && [ "$gitleaks_high" -gt 0 ]; then
+    exit 2
+  fi
   exit 0
 fi
 
 secret_name_regex='(^|/)(auth\.json|\.env(\..*)?|[^/]*(secret|credential|creds)[^/]*|[^/]*id_rsa[^/]*|[^/]*\.(pem|key|p12|pfx))$'
 secret_content_regex='(id_token|access_token|refresh_token|api[_-]?key|client[_-]?secret|password|authorization:|bearer|sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AIza[0-9A-Za-z_-]{20,}|AKIA[0-9A-Z]{16}|-----BEGIN (RSA|OPENSSH|EC|DSA) PRIVATE KEY-----)'
-
-high_count=0
-medium_count=0
-low_count=0
-
-print_result() {
-  local risk="$1"
-  local path="$2"
-  local reason="$3"
-  printf '%-6s | %s | %s\n' "$risk" "$path" "$reason"
-}
 
 join_reasons() {
   local first=1
@@ -165,8 +197,9 @@ for dir in "${agent_dirs[@]}"; do
 done
 
 echo
-echo "Summary: high=$high_count medium=$medium_count low=$low_count total=${#agent_dirs[@]}"
+total_high=$((high_count + gitleaks_high))
+echo "Summary: high=$total_high medium=$medium_count low=$low_count total_agent_dirs=${#agent_dirs[@]} gitleaks_high=$gitleaks_high"
 
-if [ "$fail_on_high" -eq 1 ] && [ "$high_count" -gt 0 ]; then
+if [ "$fail_on_high" -eq 1 ] && [ "$total_high" -gt 0 ]; then
   exit 2
 fi
