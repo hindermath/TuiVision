@@ -17,14 +17,14 @@
   the iteration process.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
+**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]
+**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]
+**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]
+**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]
 **Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [e.g., library/cli/web-service/mobile-app/compiler/desktop-app or NEEDS CLARIFICATION]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
+**Project Type**: [e.g., library/cli/web-service/mobile-app/compiler/desktop-app or NEEDS CLARIFICATION]
+**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]
+**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]
 **Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
 
 ## Constitution Check
@@ -55,11 +55,13 @@
   dependency audit, security quality scenarios). State whether `docs/security/`
   needs new or updated documents. Templates: `.specify/templates/`.
 - **Security standards applicability**: Determine which standards from
-  `constitution.md`, Principles XIV-XVIII apply. `NIST SSDF` and `CWE Top 25`
+  `constitution.md`, Principles XIV-XIX apply. `NIST SSDF` and `CWE Top 25`
   always apply to Level-2; add `OWASP ASVS`, `SBOM`, `VEX`, `SLSA`, `CAPEC`,
-  `AI-SBOM`, `NIST Zero Trust`, `OWASP SAMM`, `OWASP Cheat Sheet Series` /
-  `OWASP Proactive Controls`, and `OpenSSF Scorecard` where relevant. Mark
-  non-applicable standards as `N/A` with justification.
+  `AI-SBOM`, `NIST Zero Trust`, `BSI C3A`, `BSI C5`, `OWASP SAMM`,
+  regulatory applicability (`NIS2`, `CRA`, `EU AI Act`, `DORA`),
+  `OWASP Cheat Sheet Series` / `OWASP Proactive Controls`, and
+  `OpenSSF Scorecard` where relevant. Mark non-applicable standards as `N/A`
+  with justification.
 - **AI-SBOM applicability**: State whether AI is used only as a development
   tool, absent from the released/operated system, or present as a runtime or
   product component. If AI runtime or product components are present, plan the
@@ -69,12 +71,18 @@
 - **Release / supply-chain evidence**: State whether the feature requires
   ASVS verification notes, SBOM/VEX artefacts, AI-SBOM evidence,
   provenance/SLSA evidence, CAPEC references, Zero-Trust applicability notes,
-  or SAMM follow-up items, and where that evidence will live.
+  BSI C3A cloud-autonomy applicability, BSI C5 cloud-compliance assurance,
+  regulatory applicability, or SAMM follow-up items, and where that evidence
+  will live.
 - **Default evidence files**: Prefer `docs/security/asvs-verification.md`,
   `docs/security/supply-chain-evidence.md`,
-  `docs/security/zero-trust-applicability.md`, and
-  `docs/security/samm-assessment.md`. If the repository uses an equivalent
-  governance location, state that path explicitly and justify the deviation.
+  `docs/security/zero-trust-applicability.md`,
+  `docs/security/samm-assessment.md`, and
+  `docs/security/cloud-autonomy-applicability.md`,
+  `docs/security/cloud-compliance-assurance.md`, and
+  `docs/security/regulatory-applicability.md`. If the repository uses an
+  equivalent governance location, state that path explicitly and justify the
+  deviation.
 - **Spec-Kit presets**: List installed governance presets and confirm their
   applicability. For C#/.NET Level-2 projects, default to all six
   home-baseline presets (`security-governance`, `architecture-governance`,
