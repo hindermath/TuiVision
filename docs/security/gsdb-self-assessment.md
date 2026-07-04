@@ -1,7 +1,7 @@
 # GSDB Self-Assessment / GSDB Preflight
 
 **Projekt / Project:** TuiVision
-**Datum / Date:** 2026-07-01
+**Datum / Date:** 2026-07-04
 **Repository:** `/Users/thorstenhindermann/RiderProjects/TuiVision`
 **Primaersprache / Primary language:** C#
 
@@ -30,9 +30,9 @@ not a formal approval.*
 | OK | Projektspezifischer Nachweisort | `docs/security/` | Nachweisordner vorhanden | - |
 | OK | RL-SE-/Checklist-Selbstpruefungs-Intake | `Lastenheft_RL-SE-Checklist-Selbstpruefung.md` | vorhanden | - |
 | OK | Secure-Development-Hardening-Intake | `Lastenheft_Secure-Development-Hardening.md` | vorhanden | - |
-| Open | GSDB-Spec-Kit-Intensivpruefungs-Intake | `Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md` | Intake fehlt | durch diesen Checker erzeugen lassen |
+| OK | GSDB-Spec-Kit-Intensivpruefungs-Intake | `Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md` | Intake vorhanden | - |
 
 ## Ergebnis / Result
 
-- Offene Punkte / Open findings: 1
+- Offene Punkte / Open findings: 0
 - Naechster Schritt / Next step: `Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md` spaeter manuell mit `/speckit-specify` starten, wenn die intensive Pruefung erfolgen soll.

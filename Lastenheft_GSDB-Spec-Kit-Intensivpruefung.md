@@ -1,7 +1,7 @@
 <!-- gsdb-spec-kit-intensivpruefung:start -->
 # Lastenheft GSDB-Spec-Kit-Intensivpruefung fuer TuiVision
 
-**Stand / Date:** 2026-07-01
+**Stand / Date:** 2026-07-04
 
 ## Zweck / Purpose
 
