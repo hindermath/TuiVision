@@ -1,0 +1,48 @@
+# gitleaks-Konfiguration / gitleaks configuration
+#
+# DE: Diese Datei wird als `.gitleaks.toml` in den Repo-Root von Projekten kopiert,
+#     die den Gitleaks-Workflow nutzen und die didaktische Basis unter
+#     `docs/secure-development/` enthalten. gitleaks lädt eine `.gitleaks.toml`
+#     im Scan-Wurzelverzeichnis automatisch (auch in gitleaks-action).
+# EN: This file is copied as `.gitleaks.toml` into the repo root of projects that
+#     use the Gitleaks workflow and contain the teaching base under
+#     `docs/secure-development/`. gitleaks auto-loads a `.gitleaks.toml` from the
+#     scan root (also within gitleaks-action).
+#
+# WARUM / WHY:
+#   DE: Die Lehrdokumente enthalten bewusst Beispiel-Muster — etwa einen
+#       PEM-/OpenSSH-Schlüssel-Blockkopf als Negativbeispiel oder erklärenden
+#       Fließtext mit Framework-Namen —, die den Regeln für private Schlüssel und
+#       generische Zugangsschlüssel als Falsch-Positiv auffallen. Es sind keine
+#       echten Secrets.
+#   EN: The teaching documents intentionally contain example patterns — e.g. a
+#       PEM/OpenSSH key block header used as a negative example, or explanatory
+#       prose containing framework names — that the private-key and generic
+#       access-token rules flag as false positives. They are not real secrets.
+#
+#   DE: `push`-Läufe scannen nur den Push-Range und übersehen die alten Doc-Commits;
+#       `pull_request`-Läufe scannen den vollen Basis..Head-Range und schlagen an.
+#       Fingerprints (`.gitleaksignore`) sind commit-/repo-spezifisch und damit
+#       nicht portabel — deshalb erlaubt diese Konfiguration die Lehrpfade
+#       pfadbasiert und SHA-unabhängig.
+#   EN: `push` runs scan only the push range and miss the old doc commits;
+#       `pull_request` runs scan the full base..head range and fail. Fingerprints
+#       (`.gitleaksignore`) are commit-/repo-specific and thus not portable — so
+#       this config allowlists the teaching paths by path, independent of the SHA.
+
+title = "Repository gitleaks config"
+
+# DE: Standardregeln von gitleaks weiter verwenden, nur um die Allowlist ergänzen.
+# EN: Keep gitleaks' default rules; only extend them with the allowlist below.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "False positives in secure-development teaching documentation (illustrative example patterns, not real secrets)"
+# DE: Nur Markdown-Lehrmaterial unter docs/secure-development/ ausnehmen — echter
+#     Code/echte Konfiguration außerhalb dieses Pfads wird weiterhin voll gescannt.
+# EN: Only exempt Markdown teaching material under docs/secure-development/ — real
+#     code/config outside this path is still fully scanned.
+paths = [
+  '''docs/secure-development/.*\.md$''',
+]
