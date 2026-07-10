@@ -11,6 +11,15 @@ This document is organization-neutral and written as a generic training and revi
 
 ## Checkliste 06 – Schwachstellenoffenlegung / Vulnerability Disclosure
 
+**Dokument-ID / Document ID:** CL-06
+**Version / Version:** 2.0.0
+**Baseline-Version / Baseline version:** 3.0.0
+**Dokumenttyp / Document type:** Kanonische, wiederverwendbare Pruefvorlage / Canonical reusable review template
+
+### Nachweisinstanz / Evidence Instance
+
+Diese Datei ist eine wiederverwendbare Vorlage. Ausgefüllte Projektnachweise werden unter `docs/security/secure-development/<datum>-<scope>/` abgelegt und nennen Projekt, Scope, Prüfdatum, Baseline-Version, verantwortliche Person und Reviewer. / This file is a reusable template. Completed project evidence is stored under `docs/security/secure-development/<date>-<scope>/` and names project, scope, review date, baseline version, responsible person, and reviewer.
+
 ### Zweck / Purpose
 
 **DE:** Diese Checkliste sichert ein einheitliches Verfahren zur Aufnahme,
@@ -44,8 +53,8 @@ products. Recommended for internal tooling.
 **EN:** These links help during reviews. Project or organization-internal documents can be added as local working copies or references to the defined storage location.
 
 - **Richtlinie Sichere Entwicklung / Secure Development Guideline:** [lokale Arbeitsfassung in diesem Repository / local working copy in this repository](../Richtlinie_Sichere-Entwicklung.md)
-- **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
-- **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](README.md)
+- **Verfassung / Constitution:** [lokale Arbeitskopie der Verfassung / local working copy of the constitution](../../../constitution.md), [Verfassung im GitHub-Repository home-baseline / constitution in the home-baseline GitHub repository](https://github.com/hindermath/home-baseline/blob/main/constitution.md)
+- **Checklisten-Index / Checklist index:** [Übersicht aller Checklisten / overview of all checklists](../README.md)
 - **Leitlinie fuer sichere Programmierung / Secure coding guideline:** dieser Leitfaden oder eine projektspezifische gleichwertige Leitlinie / this guide or an equivalent project-specific guideline
 - **Secure coding guideline:** this guide or an equivalent project-specific guideline
 - **CISA Memory Safe Roadmaps:** [lokale PDF-Kopie des CISA-Dokuments / local PDF copy of the CISA document](../mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.pdf), [EN-Markdown](../mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.EN.md), [DE-Lernfassung](../mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.DE.md), [CISA-Webseite zum Dokument / CISA webpage for the document](https://www.cisa.gov/resources-tools/resources/case-memory-safe-roadmaps)
@@ -72,21 +81,20 @@ products. Recommended for internal tooling.
 
 ### Bewertung und Dokumentation / Assessment and Documentation
 
-**DE:** Jeder Prüfpunkt bekommt genau einen Status. Schreibe die Begründung so, dass eine neue Kollegin oder ein neuer Kollege den Entscheid später ohne Rückfrage versteht.
+**DE:** Jeder Prüfpunkt bekommt genau einen Wert je Statusachse. Schreibe die Begründung so, dass eine neue Kollegin oder ein neuer Kollege den Entscheid später ohne Rückfrage versteht.
 
-**EN:** Each checklist item gets exactly one status. Write the explanation so that a new team member can understand the decision later without asking again.
+**EN:** Each checklist item gets exactly one value per status axis. Write the explanation so that a new team member can understand the decision later without asking again.
 
-- **Erfüllt / Fulfilled:** Die Anforderung ist umgesetzt und es gibt einen prüfbaren Nachweis.
-- **Nicht erfüllt / Not fulfilled:** Die Anforderung ist noch nicht umgesetzt oder der Nachweis fehlt. Es muss eine Aufgabe mit Verantwortlicher Person und Termin geben.
-- **Nicht anwendbar / Not applicable:** Die Anforderung passt nicht zum Projekt. Das ist erlaubt, aber nur mit kurzer Begründung.
+- **Anwendbarkeit / Applicability:** `Applicable`, `N/A` oder `Open`.
+- **Umsetzungsstatus / Implementation status:** `Fulfilled`, `Partly Fulfilled`, `Not Fulfilled` oder `Not Assessed`.
 
-**Pflichtfelder je Prüfpunkt / Required fields per item:** Status, Begründung, Evidenzpfad oder Link, nächste Maßnahme mit Verantwortlicher Person und Zieltermin.
+**Pflichtfelder je Prüfpunkt / Required fields per item:** Anwendbarkeit, Umsetzungsstatus, Lernstufe, verantwortliche Rolle, Begründung, Evidenzpfad oder Link, Restrisiko, Neubewertungs-Trigger und nächste Maßnahme mit Zieltermin.
 
 ### Durchführungshinweise / Implementation Guidance
 
-**DE:** Nutze diese Checkliste nicht als reine Ja/Nein-Liste. Sie ist ein Arbeits- und Auditdokument. Prüfe jeden Punkt gegen reale Artefakte: Code, Pull Request, Architekturdiagramm, Build-Log, Scan-Ergebnis, Ticket, Betriebsdokumentation oder Freigabeprotokoll. Wenn ein Nachweis noch fehlt, markiere den Punkt als „nicht erfüllt" und lege eine konkrete Folgeaufgabe an.
+**DE:** Nutze diese Checkliste nicht als reine Ja/Nein-Liste. Sie ist ein Arbeits- und Auditdokument. Prüfe jeden Punkt gegen reale Artefakte: Code, Pull Request, Architekturdiagramm, Build-Log, Scan-Ergebnis, Ticket, Betriebsdokumentation oder Freigabeprotokoll. Wenn ein Nachweis noch fehlt, setze den Umsetzungsstatus auf `Not Assessed` oder `Not Fulfilled` und lege eine konkrete Folgeaufgabe an.
 
-**EN:** Do not use this checklist as a simple yes/no list. It is a working and audit document. Check each item against real artefacts: code, pull request, architecture diagram, build log, scan result, ticket, operations document, or approval record. If evidence is missing, mark the item as "not fulfilled" and create a concrete follow-up task.
+**EN:** Do not use this checklist as a simple yes/no list. It is a working and audit document. Check each item against real artefacts: code, pull request, architecture diagram, build log, scan result, ticket, operations document, or approval record. If evidence is missing, set the implementation status to `Not Assessed` or `Not Fulfilled` and create a concrete follow-up task.
 
 **DE:** Schreibe kurze, klare Begründungen. Vermeide Abkürzungen ohne Erklärung. Wenn ein Punkt technisch schwierig ist, beschreibe den aktuellen Stand, das Risiko und den nächsten machbaren Schritt.
 
@@ -132,7 +140,7 @@ products. Recommended for internal tooling.
 
 ### Checkliste / Checklist
 
-#### 1. Veröffentlichte CVD-Richtlinie / Published CVD Policy
+#### CL-06-01: Veröffentlichte CVD-Richtlinie / Published CVD Policy
 
 - **DE:** Eine kurze, öffentliche Richtlinie beschreibt, wie Schwachstellen
   gemeldet werden, was Melder erwarten können und welche Fristen gelten.
@@ -188,15 +196,24 @@ products. Recommended for internal tooling.
   (z. B. `/security`, `SECURITY.md`) öffentlich erreichbar; alle Pflicht-
   inhalte vorhanden; Safe-Harbor-Klausel; mindestens DE und EN; verlinkt aus
   `security.txt` und Repository-Tab.
-- **Bewertung / Assessment:**
-  - [ ] erfüllt / fulfilled
-  - [ ] nicht erfüllt / not fulfilled
-  - [ ] nicht anwendbar / not applicable
+- **Lernstufe / Learning stage:** _Grundlage, Aufbau oder Vertiefung gemaess Lernpfad dokumentieren. / Record foundation, intermediate, or advanced according to the learning path._
+- **Verantwortliche Rolle / Responsible role:** _Lernende Person, ausbildende Person, Projektverantwortung oder Security-Rolle benennen. / Name learner, instructor, project owner, or security role._
+- **Anwendbarkeit / Applicability:**
+  - [ ] `Applicable`
+  - [ ] `N/A`
+  - [ ] `Open`
+- **Umsetzungsstatus / Implementation status:**
+  - [ ] `Fulfilled`
+  - [ ] `Partly Fulfilled`
+  - [ ] `Not Fulfilled`
+  - [ ] `Not Assessed`
 - **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
 - **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
-- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+- **Restrisiko / Residual risk:** _Verbleibendes Risiko oder `None` mit kurzer Begründung dokumentieren. / Record remaining risk or `None` with a short rationale._
+- **Neubewertungs-Trigger / Re-evaluation trigger:** _Aenderung, Termin oder Ereignis nennen, das eine erneute Prüfung auslöst. / Name the change, date, or event that triggers renewed review._
+- **Nächste Maßnahme / Next action:** _Bei `Open`, `Partly Fulfilled`, `Not Fulfilled` oder `Not Assessed` ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill for `Open`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`: concrete task, owner, target date, and expected evidence._
 
-#### 2. security.txt nach RFC 9116 / security.txt per RFC 9116
+#### CL-06-02: security.txt nach RFC 9116 / security.txt per RFC 9116
 
 - **DE:** Webdienste stellen `/.well-known/security.txt` bereit. Die Datei
   enthält Kontakt, Richtlinien-Link, Sprachen und Ablaufdatum.
@@ -267,15 +284,24 @@ products. Recommended for internal tooling.
 - **Akzeptanz / Acceptance:** `security.txt` unter `/.well-known/security.txt`
   erreichbar mit allen Pflichtfeldern; `Expires` ≤ 1 Jahr; Erinnerungs-Job
   60 Tage vor Ablauf konfiguriert; PGP-Schlüssel für `Encryption:` gültig.
-- **Bewertung / Assessment:**
-  - [ ] erfüllt / fulfilled
-  - [ ] nicht erfüllt / not fulfilled
-  - [ ] nicht anwendbar / not applicable
+- **Lernstufe / Learning stage:** _Grundlage, Aufbau oder Vertiefung gemaess Lernpfad dokumentieren. / Record foundation, intermediate, or advanced according to the learning path._
+- **Verantwortliche Rolle / Responsible role:** _Lernende Person, ausbildende Person, Projektverantwortung oder Security-Rolle benennen. / Name learner, instructor, project owner, or security role._
+- **Anwendbarkeit / Applicability:**
+  - [ ] `Applicable`
+  - [ ] `N/A`
+  - [ ] `Open`
+- **Umsetzungsstatus / Implementation status:**
+  - [ ] `Fulfilled`
+  - [ ] `Partly Fulfilled`
+  - [ ] `Not Fulfilled`
+  - [ ] `Not Assessed`
 - **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
 - **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
-- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+- **Restrisiko / Residual risk:** _Verbleibendes Risiko oder `None` mit kurzer Begründung dokumentieren. / Record remaining risk or `None` with a short rationale._
+- **Neubewertungs-Trigger / Re-evaluation trigger:** _Aenderung, Termin oder Ereignis nennen, das eine erneute Prüfung auslöst. / Name the change, date, or event that triggers renewed review._
+- **Nächste Maßnahme / Next action:** _Bei `Open`, `Partly Fulfilled`, `Not Fulfilled` oder `Not Assessed` ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill for `Open`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`: concrete task, owner, target date, and expected evidence._
 
-#### 3. Eingangskanal und Postfach / Reporting Channel and Mailbox
+#### CL-06-03: Eingangskanal und Postfach / Reporting Channel and Mailbox
 
 - **DE:** Es gibt eine überwachte Kontaktadresse oder ein Formular. Eingehende
   Meldungen werden innerhalb einer festgelegten Frist bestätigt.
@@ -341,15 +367,24 @@ products. Recommended for internal tooling.
   benannt; Bestätigungsfrist je Schweregrad in der CVD-Policy festgelegt
   (z. B. 24 h für critical, 3 Werktage Standard); Auto-Responder DE/EN
   aktiv; Eingang in Ticket-System verlinkt.
-- **Bewertung / Assessment:**
-  - [ ] erfüllt / fulfilled
-  - [ ] nicht erfüllt / not fulfilled
-  - [ ] nicht anwendbar / not applicable
+- **Lernstufe / Learning stage:** _Grundlage, Aufbau oder Vertiefung gemaess Lernpfad dokumentieren. / Record foundation, intermediate, or advanced according to the learning path._
+- **Verantwortliche Rolle / Responsible role:** _Lernende Person, ausbildende Person, Projektverantwortung oder Security-Rolle benennen. / Name learner, instructor, project owner, or security role._
+- **Anwendbarkeit / Applicability:**
+  - [ ] `Applicable`
+  - [ ] `N/A`
+  - [ ] `Open`
+- **Umsetzungsstatus / Implementation status:**
+  - [ ] `Fulfilled`
+  - [ ] `Partly Fulfilled`
+  - [ ] `Not Fulfilled`
+  - [ ] `Not Assessed`
 - **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
 - **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
-- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+- **Restrisiko / Residual risk:** _Verbleibendes Risiko oder `None` mit kurzer Begründung dokumentieren. / Record remaining risk or `None` with a short rationale._
+- **Neubewertungs-Trigger / Re-evaluation trigger:** _Aenderung, Termin oder Ereignis nennen, das eine erneute Prüfung auslöst. / Name the change, date, or event that triggers renewed review._
+- **Nächste Maßnahme / Next action:** _Bei `Open`, `Partly Fulfilled`, `Not Fulfilled` oder `Not Assessed` ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill for `Open`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`: concrete task, owner, target date, and expected evidence._
 
-#### 4. Triage und Schweregrad / Triage and Severity
+#### CL-06-04: Triage und Schweregrad / Triage and Severity
 
 - **DE:** Jede Meldung wird klassifiziert (z. B. CVSS-Wert, intern definierte
   Stufen). Die Klassifikation steuert Reaktion und Frist.
@@ -415,15 +450,24 @@ products. Recommended for internal tooling.
   schriftlich in der CVD-Policy oder Runbook; CVSS v4.0 als verbindliche
   Zielmethode; Score und Vektor im Ticket; Triage-Workflow im Ticket-System
   abgebildet; CISA-KEV-Watchlist aktiv.
-- **Bewertung / Assessment:**
-  - [ ] erfüllt / fulfilled
-  - [ ] nicht erfüllt / not fulfilled
-  - [ ] nicht anwendbar / not applicable
+- **Lernstufe / Learning stage:** _Grundlage, Aufbau oder Vertiefung gemaess Lernpfad dokumentieren. / Record foundation, intermediate, or advanced according to the learning path._
+- **Verantwortliche Rolle / Responsible role:** _Lernende Person, ausbildende Person, Projektverantwortung oder Security-Rolle benennen. / Name learner, instructor, project owner, or security role._
+- **Anwendbarkeit / Applicability:**
+  - [ ] `Applicable`
+  - [ ] `N/A`
+  - [ ] `Open`
+- **Umsetzungsstatus / Implementation status:**
+  - [ ] `Fulfilled`
+  - [ ] `Partly Fulfilled`
+  - [ ] `Not Fulfilled`
+  - [ ] `Not Assessed`
 - **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
 - **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
-- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+- **Restrisiko / Residual risk:** _Verbleibendes Risiko oder `None` mit kurzer Begründung dokumentieren. / Record remaining risk or `None` with a short rationale._
+- **Neubewertungs-Trigger / Re-evaluation trigger:** _Aenderung, Termin oder Ereignis nennen, das eine erneute Prüfung auslöst. / Name the change, date, or event that triggers renewed review._
+- **Nächste Maßnahme / Next action:** _Bei `Open`, `Partly Fulfilled`, `Not Fulfilled` oder `Not Assessed` ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill for `Open`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`: concrete task, owner, target date, and expected evidence._
 
-#### 5. Reaktionsfristen / Response SLAs
+#### CL-06-05: Reaktionsfristen / Response SLAs
 
 - **DE:** Pro Schweregrad sind Maximalzeiten für Bestätigung, Fix und
   Veröffentlichung festgelegt (z. B. kritisch in 7 Tagen, hoch in 30 Tagen).
@@ -477,15 +521,24 @@ products. Recommended for internal tooling.
 - **Akzeptanz / Acceptance:** SLA-Tabelle in der CVD-Policy und im Runbook;
   Ticket-System mit automatischer SLA-Verfolgung; Eskalation bei 75 %
   Frist; quartalsweiser Compliance-Bericht.
-- **Bewertung / Assessment:**
-  - [ ] erfüllt / fulfilled
-  - [ ] nicht erfüllt / not fulfilled
-  - [ ] nicht anwendbar / not applicable
+- **Lernstufe / Learning stage:** _Grundlage, Aufbau oder Vertiefung gemaess Lernpfad dokumentieren. / Record foundation, intermediate, or advanced according to the learning path._
+- **Verantwortliche Rolle / Responsible role:** _Lernende Person, ausbildende Person, Projektverantwortung oder Security-Rolle benennen. / Name learner, instructor, project owner, or security role._
+- **Anwendbarkeit / Applicability:**
+  - [ ] `Applicable`
+  - [ ] `N/A`
+  - [ ] `Open`
+- **Umsetzungsstatus / Implementation status:**
+  - [ ] `Fulfilled`
+  - [ ] `Partly Fulfilled`
+  - [ ] `Not Fulfilled`
+  - [ ] `Not Assessed`
 - **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
 - **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
-- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+- **Restrisiko / Residual risk:** _Verbleibendes Risiko oder `None` mit kurzer Begründung dokumentieren. / Record remaining risk or `None` with a short rationale._
+- **Neubewertungs-Trigger / Re-evaluation trigger:** _Aenderung, Termin oder Ereignis nennen, das eine erneute Prüfung auslöst. / Name the change, date, or event that triggers renewed review._
+- **Nächste Maßnahme / Next action:** _Bei `Open`, `Partly Fulfilled`, `Not Fulfilled` oder `Not Assessed` ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill for `Open`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`: concrete task, owner, target date, and expected evidence._
 
-#### 6. Koordinierte Veröffentlichung / Coordinated Disclosure
+#### CL-06-06: Koordinierte Veröffentlichung / Coordinated Disclosure
 
 - **DE:** Vor der Veröffentlichung einer Schwachstelle wird der Melder
   einbezogen. Embargos sind erlaubt; sie haben ein Enddatum.
@@ -556,15 +609,24 @@ products. Recommended for internal tooling.
   dokumentiert; CVE-CNA-Pfad benannt; GitHub/Git Security Advisories
   konfiguriert; Embargo-Regeln und Pre-Notification-Liste vorhanden;
   Advisory-Vorlage mit allen Pflichtfeldern.
-- **Bewertung / Assessment:**
-  - [ ] erfüllt / fulfilled
-  - [ ] nicht erfüllt / not fulfilled
-  - [ ] nicht anwendbar / not applicable
+- **Lernstufe / Learning stage:** _Grundlage, Aufbau oder Vertiefung gemaess Lernpfad dokumentieren. / Record foundation, intermediate, or advanced according to the learning path._
+- **Verantwortliche Rolle / Responsible role:** _Lernende Person, ausbildende Person, Projektverantwortung oder Security-Rolle benennen. / Name learner, instructor, project owner, or security role._
+- **Anwendbarkeit / Applicability:**
+  - [ ] `Applicable`
+  - [ ] `N/A`
+  - [ ] `Open`
+- **Umsetzungsstatus / Implementation status:**
+  - [ ] `Fulfilled`
+  - [ ] `Partly Fulfilled`
+  - [ ] `Not Fulfilled`
+  - [ ] `Not Assessed`
 - **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
 - **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
-- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+- **Restrisiko / Residual risk:** _Verbleibendes Risiko oder `None` mit kurzer Begründung dokumentieren. / Record remaining risk or `None` with a short rationale._
+- **Neubewertungs-Trigger / Re-evaluation trigger:** _Aenderung, Termin oder Ereignis nennen, das eine erneute Prüfung auslöst. / Name the change, date, or event that triggers renewed review._
+- **Nächste Maßnahme / Next action:** _Bei `Open`, `Partly Fulfilled`, `Not Fulfilled` oder `Not Assessed` ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill for `Open`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`: concrete task, owner, target date, and expected evidence._
 
-#### 7. CRA-Pflichtmeldung 24 Stunden / CRA 24-Hour Notification
+#### CL-06-07: CRA-Pflichtmeldung 24 Stunden / CRA 24-Hour Notification
 
 - **DE:** Bei aktiv ausgenutzten Schwachstellen oder schweren Sicherheitsvorfällen
   wird die zuständige CSIRT/ENISA innerhalb von 24 Stunden vorab informiert
@@ -661,15 +723,24 @@ products. Recommended for internal tooling.
   24/7 on-call with escalation chain; annual tabletop drill evidenced;
   CL_01 regulatory screening shows whether NIS2, DORA, GDPR, or customer-
   specific reporting paths additionally apply.
-- **Bewertung / Assessment:**
-  - [ ] erfüllt / fulfilled
-  - [ ] nicht erfüllt / not fulfilled
-  - [ ] nicht anwendbar / not applicable
+- **Lernstufe / Learning stage:** _Grundlage, Aufbau oder Vertiefung gemaess Lernpfad dokumentieren. / Record foundation, intermediate, or advanced according to the learning path._
+- **Verantwortliche Rolle / Responsible role:** _Lernende Person, ausbildende Person, Projektverantwortung oder Security-Rolle benennen. / Name learner, instructor, project owner, or security role._
+- **Anwendbarkeit / Applicability:**
+  - [ ] `Applicable`
+  - [ ] `N/A`
+  - [ ] `Open`
+- **Umsetzungsstatus / Implementation status:**
+  - [ ] `Fulfilled`
+  - [ ] `Partly Fulfilled`
+  - [ ] `Not Fulfilled`
+  - [ ] `Not Assessed`
 - **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
 - **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
-- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+- **Restrisiko / Residual risk:** _Verbleibendes Risiko oder `None` mit kurzer Begründung dokumentieren. / Record remaining risk or `None` with a short rationale._
+- **Neubewertungs-Trigger / Re-evaluation trigger:** _Aenderung, Termin oder Ereignis nennen, das eine erneute Prüfung auslöst. / Name the change, date, or event that triggers renewed review._
+- **Nächste Maßnahme / Next action:** _Bei `Open`, `Partly Fulfilled`, `Not Fulfilled` oder `Not Assessed` ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill for `Open`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`: concrete task, owner, target date, and expected evidence._
 
-#### 8. Anwendererklärung und Hinweise / User Notification and Advisories
+#### CL-06-08: Anwendererklärung und Hinweise / User Notification and Advisories
 
 - **DE:** Betroffene Anwender erhalten verständliche Hinweise mit
   Lösungsschritten. Wo nötig wird ein VEX-Dokument aktualisiert.
@@ -743,15 +814,24 @@ products. Recommended for internal tooling.
   Email, GitHub Advisory); Mailing-Liste und CSAF-Provider-Metadata
   konfiguriert; VEX-Dokument synchron aktualisiert; WCAG 2.2 AA-konforme
   Webdarstellung der Advisory.
-- **Bewertung / Assessment:**
-  - [ ] erfüllt / fulfilled
-  - [ ] nicht erfüllt / not fulfilled
-  - [ ] nicht anwendbar / not applicable
+- **Lernstufe / Learning stage:** _Grundlage, Aufbau oder Vertiefung gemaess Lernpfad dokumentieren. / Record foundation, intermediate, or advanced according to the learning path._
+- **Verantwortliche Rolle / Responsible role:** _Lernende Person, ausbildende Person, Projektverantwortung oder Security-Rolle benennen. / Name learner, instructor, project owner, or security role._
+- **Anwendbarkeit / Applicability:**
+  - [ ] `Applicable`
+  - [ ] `N/A`
+  - [ ] `Open`
+- **Umsetzungsstatus / Implementation status:**
+  - [ ] `Fulfilled`
+  - [ ] `Partly Fulfilled`
+  - [ ] `Not Fulfilled`
+  - [ ] `Not Assessed`
 - **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
 - **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
-- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+- **Restrisiko / Residual risk:** _Verbleibendes Risiko oder `None` mit kurzer Begründung dokumentieren. / Record remaining risk or `None` with a short rationale._
+- **Neubewertungs-Trigger / Re-evaluation trigger:** _Aenderung, Termin oder Ereignis nennen, das eine erneute Prüfung auslöst. / Name the change, date, or event that triggers renewed review._
+- **Nächste Maßnahme / Next action:** _Bei `Open`, `Partly Fulfilled`, `Not Fulfilled` oder `Not Assessed` ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill for `Open`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`: concrete task, owner, target date, and expected evidence._
 
-#### 9. Patch-Bereitstellung / Patch Availability
+#### CL-06-09: Patch-Bereitstellung / Patch Availability
 
 - **DE:** Sicherheits-Patches werden für die unterstützten Versionen
   bereitgestellt. Der unterstützte Lebenszyklus ist veröffentlicht.
@@ -816,15 +896,24 @@ products. Recommended for internal tooling.
   `/lifecycle`-Seite; Patch-Plan mit Backport-Strategie dokumentiert;
   Container-Tags + Cosign-Signatur; CRA-konformer Mindest-Support-Zeitraum
   (≥ 5 Jahre) eingehalten oder begründet abweichend.
-- **Bewertung / Assessment:**
-  - [ ] erfüllt / fulfilled
-  - [ ] nicht erfüllt / not fulfilled
-  - [ ] nicht anwendbar / not applicable
+- **Lernstufe / Learning stage:** _Grundlage, Aufbau oder Vertiefung gemaess Lernpfad dokumentieren. / Record foundation, intermediate, or advanced according to the learning path._
+- **Verantwortliche Rolle / Responsible role:** _Lernende Person, ausbildende Person, Projektverantwortung oder Security-Rolle benennen. / Name learner, instructor, project owner, or security role._
+- **Anwendbarkeit / Applicability:**
+  - [ ] `Applicable`
+  - [ ] `N/A`
+  - [ ] `Open`
+- **Umsetzungsstatus / Implementation status:**
+  - [ ] `Fulfilled`
+  - [ ] `Partly Fulfilled`
+  - [ ] `Not Fulfilled`
+  - [ ] `Not Assessed`
 - **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
 - **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
-- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+- **Restrisiko / Residual risk:** _Verbleibendes Risiko oder `None` mit kurzer Begründung dokumentieren. / Record remaining risk or `None` with a short rationale._
+- **Neubewertungs-Trigger / Re-evaluation trigger:** _Aenderung, Termin oder Ereignis nennen, das eine erneute Prüfung auslöst. / Name the change, date, or event that triggers renewed review._
+- **Nächste Maßnahme / Next action:** _Bei `Open`, `Partly Fulfilled`, `Not Fulfilled` oder `Not Assessed` ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill for `Open`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`: concrete task, owner, target date, and expected evidence._
 
-#### 10. Nachverfolgung und Lessons Learned / Tracking and Lessons Learned
+#### CL-06-10: Nachverfolgung und Lessons Learned / Tracking and Lessons Learned
 
 - **DE:** Jeder Fall wird in einem Tracker geführt. Nach Abschluss wird eine
   kurze Lessons-Learned-Notiz erstellt; wiederkehrende Muster fließen in das
@@ -900,15 +989,24 @@ products. Recommended for internal tooling.
   und Custom-Workflow konfiguriert; Lessons-Learned-Vorlage vorhanden;
   jeder geschlossene Fall hat verlinkte Lessons-Learned-Notiz; Quartalsbericht
   in `docs/security/cvd-quarterly-report-YYYY-Q.md`.
-- **Bewertung / Assessment:**
-  - [ ] erfüllt / fulfilled
-  - [ ] nicht erfüllt / not fulfilled
-  - [ ] nicht anwendbar / not applicable
+- **Lernstufe / Learning stage:** _Grundlage, Aufbau oder Vertiefung gemaess Lernpfad dokumentieren. / Record foundation, intermediate, or advanced according to the learning path._
+- **Verantwortliche Rolle / Responsible role:** _Lernende Person, ausbildende Person, Projektverantwortung oder Security-Rolle benennen. / Name learner, instructor, project owner, or security role._
+- **Anwendbarkeit / Applicability:**
+  - [ ] `Applicable`
+  - [ ] `N/A`
+  - [ ] `Open`
+- **Umsetzungsstatus / Implementation status:**
+  - [ ] `Fulfilled`
+  - [ ] `Partly Fulfilled`
+  - [ ] `Not Fulfilled`
+  - [ ] `Not Assessed`
 - **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
 - **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
-- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+- **Restrisiko / Residual risk:** _Verbleibendes Risiko oder `None` mit kurzer Begründung dokumentieren. / Record remaining risk or `None` with a short rationale._
+- **Neubewertungs-Trigger / Re-evaluation trigger:** _Aenderung, Termin oder Ereignis nennen, das eine erneute Prüfung auslöst. / Name the change, date, or event that triggers renewed review._
+- **Nächste Maßnahme / Next action:** _Bei `Open`, `Partly Fulfilled`, `Not Fulfilled` oder `Not Assessed` ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill for `Open`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`: concrete task, owner, target date, and expected evidence._
 
-#### 11. Übungen und Tests / Drills and Tests
+#### CL-06-11: Übungen und Tests / Drills and Tests
 
 - **DE:** Mindestens einmal im Jahr wird der Meldeprozess geübt
   (Tabletop-Übung oder echter Testbericht).
@@ -990,13 +1088,22 @@ products. Recommended for internal tooling.
   Teilnehmenden, Beobachtungen und Folgemaßnahmen; Tabletop jährlich,
   Functional Drill alle 2 Jahre, Pentest jährlich oder bei Major-Release;
   identifizierte Lücken in Folge-Tickets überführt.
-- **Bewertung / Assessment:**
-  - [ ] erfüllt / fulfilled
-  - [ ] nicht erfüllt / not fulfilled
-  - [ ] nicht anwendbar / not applicable
+- **Lernstufe / Learning stage:** _Grundlage, Aufbau oder Vertiefung gemaess Lernpfad dokumentieren. / Record foundation, intermediate, or advanced according to the learning path._
+- **Verantwortliche Rolle / Responsible role:** _Lernende Person, ausbildende Person, Projektverantwortung oder Security-Rolle benennen. / Name learner, instructor, project owner, or security role._
+- **Anwendbarkeit / Applicability:**
+  - [ ] `Applicable`
+  - [ ] `N/A`
+  - [ ] `Open`
+- **Umsetzungsstatus / Implementation status:**
+  - [ ] `Fulfilled`
+  - [ ] `Partly Fulfilled`
+  - [ ] `Not Fulfilled`
+  - [ ] `Not Assessed`
 - **Begründung / Explanation:** _Kurz erklären: Was wurde geprüft? Warum passt der Status? Welche Annahme gilt? Schreibe so, dass eine neue Entwicklerin, ein neuer Entwickler oder eine auszubildende Person den Entscheid ohne Spezialwissen versteht. / Briefly explain: What was checked? Why does the status fit? Which assumption applies? Write so that a new developer or apprentice can understand the decision without specialist security knowledge._
 - **Evidenz / Evidence:** _Konkreten Nachweis nennen: Pfad, Link, Ticket, Pull Request, Scan-Report, Konfigurationsdatei, Spec-Kit-Artefakt oder anderes Dokument. Wenn der Nachweis nicht selbsterklärend ist, kurz beschreiben, was er zeigt. / Name concrete evidence: path, link, ticket, pull request, scan report, configuration file, Spec Kit artefact, or other document. If the evidence is not self-explanatory, briefly describe what it shows._
-- **Nächste Maßnahme / Next action:** _Nur bei „nicht erfüllt" ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill only for "not fulfilled": concrete task, owner, target date, and expected evidence._
+- **Restrisiko / Residual risk:** _Verbleibendes Risiko oder `None` mit kurzer Begründung dokumentieren. / Record remaining risk or `None` with a short rationale._
+- **Neubewertungs-Trigger / Re-evaluation trigger:** _Aenderung, Termin oder Ereignis nennen, das eine erneute Prüfung auslöst. / Name the change, date, or event that triggers renewed review._
+- **Nächste Maßnahme / Next action:** _Bei `Open`, `Partly Fulfilled`, `Not Fulfilled` oder `Not Assessed` ausfüllen: konkrete Aufgabe, verantwortliche Person, Zieltermin und erwarteter Nachweis. / Fill for `Open`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`: concrete task, owner, target date, and expected evidence._
 
 ### Akzeptanzkriterien gesamt / Overall Acceptance
 
@@ -1129,3 +1236,5 @@ SLAs are defined, and the CRA reporting path has been rehearsed.
 - **Version 1.5 (2026-06-17):** Glossar und Begriff-Links für Entwickler:innen und Fachinformatik-Auszubildende ergänzt; wichtige Abkürzungen und Technologien in CEFR-B2-Sprache erklärt. / Added glossary and term links for developers and IT specialist apprentices; explained important abbreviations and technologies in CEFR B2 language.
 
 ---
+
+- **Version 2.0.0 (2026-07-10):** Einheitliches zweiachsiges Statusmodell, stabile CL-IDs, Lernstufe, Rollen-, Evidenz-, Restrisiko- und Neubewertungsfelder sowie klare Trennung zwischen Vorlage und Projektnachweis eingeführt; synchron mit sichere-Entwicklung-Basis 3.0.0. / Added the unified two-axis status model, stable CL IDs, learning-stage, role, evidence, residual-risk, and re-evaluation fields, plus clear separation between template and project evidence; synchronized with secure-development baseline 3.0.0.

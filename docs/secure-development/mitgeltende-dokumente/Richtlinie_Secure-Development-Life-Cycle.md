@@ -1,6 +1,10 @@
 # Richtlinie Secure Development Life Cycle / Secure Development Life Cycle Policy
 
-**Stand / Date:** 2026-06-19
+**Stand / Date:** 2026-07-10
+**Version / Version:** 1.0.0
+**Baseline-Version / Baseline version:** 3.0.0
+**Verantwortliche Rolle / Responsible role:** Projekt- oder Ausbildungsverantwortung mit Security-Review / Project or training owner with security review
+**Review-Zyklus / Review cycle:** jährlich und bei wesentlichen Änderungen / annually and after material changes
 
 ## Zweck / Purpose
 
@@ -28,6 +32,21 @@
 - **DE:** Die Verzahnungsdatei ordnet SDLC-Prüfbereiche den mitgeltenden Dokumenten, Checklisten und Presets zu.
 - **EN:** The alignment file maps SDLC review areas to related documents, checklists, and presets.
 
+## Rollen und Gates / Roles and Gates
+
+| Gate | Verantwortliche Rollen / Responsible Roles | Mindestentscheidung / Minimum Decision |
+|---|---|---|
+| Intake bereit / Intake ready | Auftraggebende oder Projektverantwortung, Lernbegleitung | Scope, Nicht-Ziele, Lernstufe, Standards und Risiken sind verständlich. / Scope, non-goals, learning stage, standards, and risks are understandable. |
+| Design bereit / Design ready | Entwicklung und Architektur-/Security-Review | Trust Boundaries, Bedrohungen, Daten, Abhängigkeiten und Teststrategie sind behandelt. / Boundaries, threats, data, dependencies, and test strategy are addressed. |
+| Umsetzung bereit / Implementation ready | Entwicklung und Reviewer | Aufgaben enthalten Secure Coding, Tests, A11Y und Evidenzpfade. / Tasks include secure coding, tests, accessibility, and evidence paths. |
+| Freigabe bereit / Release ready | Projektverantwortung und unabhängige Review-Rolle | Befunde, Restrisiken, Ausnahmen und Folgeaufgaben sind entschieden. / Findings, residual risks, exceptions, and follow-ups are decided. |
+
+Eine Person darf in kleinen Lernprojekten mehrere Rollen ausfüllen. Kritische Eigenfreigaben werden durch eine zweite Person geprüft. / One person may hold several roles in small training projects. Critical self-approvals receive a second-person review.
+
+## Ausnahmen und Aufbewahrung / Exceptions and Retention
+
+Eine Ausnahme nennt Regel, Grund, Risiko, Ersatzmaßnahme, Owner, Ablaufdatum und erneuten Prüfzeitpunkt. Nachweise bleiben mindestens für die Lebensdauer des bewerteten Releases oder entsprechend einer projektspezifischen Aufbewahrungsentscheidung erhalten. / An exception names the rule, reason, risk, compensating control, owner, expiry date, and review date. Evidence is retained at least for the lifetime of the assessed release or according to a project-specific retention decision.
+
 ## Nachweise / Evidence
 
 **DE:** Geeignete Nachweise sind `spec.md`, `plan.md`, `tasks.md`, Checklisten, Testprotokolle, S-ADRs, Dependency-Audits, Threat Models und `docs/security/`-Artefakte.
@@ -46,3 +65,10 @@
 - **EN:** `Applicable` for every non-trivial Spec Kit run, hardening run, release, or security-relevant review.
 - **DE:** `N/A` ist nur möglich, wenn es keine Entwicklungs-, Prüf- oder Freigabeaktivität gibt.
 - **EN:** `N/A` is only possible when there is no development, review, or release activity.
+
+
+## Versionshistorie / Version History
+
+| Version | Datum / Date | Änderung / Change |
+|---|---|---|
+| 1.0.0 | 2026-07-10 | Erstes kontrolliertes Release als mitgeltendes Dokument der sichere-Entwicklung-Basis 3.0.0. / First controlled release as a related document of secure-development baseline 3.0.0. |

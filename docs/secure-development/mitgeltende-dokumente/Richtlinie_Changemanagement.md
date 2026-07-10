@@ -1,6 +1,10 @@
 # Richtlinie Changemanagement / Change Management Policy
 
-**Stand / Date:** 2026-06-19
+**Stand / Date:** 2026-07-10
+**Version / Version:** 1.0.0
+**Baseline-Version / Baseline version:** 3.0.0
+**Verantwortliche Rolle / Responsible role:** Projekt- oder Ausbildungsverantwortung mit Security-Review / Project or training owner with security review
+**Review-Zyklus / Review cycle:** jährlich und bei wesentlichen Änderungen / annually and after material changes
 
 ## Zweck / Purpose
 
@@ -28,6 +32,21 @@
 | Tests | Passende Tests oder begruendetes `N/A` / Suitable tests or justified `N/A` |
 | Nachlauf | Offene Punkte und Restrisiken dokumentiert / Open items and residual risks documented |
 
+## Änderungsklassen und Ablauf / Change Classes and Workflow
+
+| Klasse / Class | Beispiel / Example | Mindestweg / Minimum Path |
+|---|---|---|
+| Standard | Dokumentation oder risikoarme, wiederholbare Wartung / Documentation or low-risk repeatable maintenance | Scope, automatisierte Prüfungen, Review bei betroffenen Regeln |
+| Normal | Feature, Dependency, Konfiguration oder Pipeline / Feature, dependency, configuration, or pipeline | Risikoanalyse, Testplan, Peer Review, Rückfallweg |
+| Kritisch | Auth, Crypto, Rechte, personenbezogene Daten, Build-/Release-Vertrauen / Auth, crypto, permissions, personal data, build/release trust | Security-Review, Vier-Augen-Freigabe, expliziter Rollback, Nachkontrolle |
+| Notfall | Sofortige Begrenzung eines aktiven Risikos / Immediate containment of an active risk | Begründete Abkürzung, Protokoll, nachträglicher Review innerhalb festgelegter Frist |
+
+Jede Änderung durchläuft Intake, Auswirkungs- und Risikoprüfung, Umsetzung, Test, Review, Freigabe und Nachkontrolle. Der Rückfallweg wird vor der Freigabe geprüft oder als `N/A` begründet. / Every change passes intake, impact and risk assessment, implementation, test, review, approval, and follow-up. The rollback path is checked before release or justified as `N/A`.
+
+## Trennung und Schutz / Separation and Protection
+
+Wer eine kritische Änderung erstellt, darf sie nicht allein als sicher freigeben. Branch-Schutz, signierte oder nachvollziehbare Commits, begrenzte CI-Rechte und unveränderte Audit-Logs unterstützen diese Trennung. / The author of a critical change must not approve it alone as secure. Branch protection, signed or traceable commits, limited CI permissions, and protected audit logs support separation.
+
 ## Für Auszubildende kurz erklärt / Short Explanation for Apprentices
 
 **DE:** Changemanagement bedeutet: Eine Änderung soll nicht zufällig passieren. Ziel, Risiko, Review, Test und Ergebnis müssen nachvollziehbar sein. Das schützt vor Fehlern und hilft später beim Audit.
@@ -46,3 +65,10 @@
 - `agent-parity-governance`: gemeinsame Guidance synchron halten.
 - `cross-platform-governance`: Skriptaenderungen fuer Bash und PowerShell gemeinsam pruefen.
 - `security-governance`: Sicherheitsrelevanz und Evidenzpflicht klaeren.
+
+
+## Versionshistorie / Version History
+
+| Version | Datum / Date | Änderung / Change |
+|---|---|---|
+| 1.0.0 | 2026-07-10 | Erstes kontrolliertes Release als mitgeltendes Dokument der sichere-Entwicklung-Basis 3.0.0. / First controlled release as a related document of secure-development baseline 3.0.0. |

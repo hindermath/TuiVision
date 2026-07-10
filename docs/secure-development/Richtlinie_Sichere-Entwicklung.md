@@ -16,13 +16,13 @@ This document is organization-neutral and written as a generic training and revi
 | Feld | Wert |
 |---|---|
 | Titel | Richtlinie zur sicheren Softwareentwicklung |
-| Versionsnummer | 1.0.0 |
-| Freigabedatum | 17.06.2026 |
-| Inkrafttreten | 17.06.2026 |
+| Versionsnummer | 3.0.0 |
+| Freigabedatum | 10.07.2026 |
+| Inkrafttreten | 10.07.2026 |
 | Dokumentenklassifikation | öffentlich nutzbare Ausbildungs- und Prüfgrundlage |
 | Verantwortliche Stelle | Projekt- oder Ausbildungsverantwortliche mit Security-Review |
 | Freigegeben durch | Projekt- oder Ausbildungsverantwortliche nach Sicherheitsreview |
-| Nächster Review-Termin | 07.05.2027 (jährlich, ungeplant bei wesentlichen Änderungen) |
+| Nächster Review-Termin | 10.07.2027 (jährlich, ungeplant bei wesentlichen Änderungen) |
 | Dokumentennummer / Aktenzeichen | RL-SE-001 |
 | Nutzungskontext | Generischer Leitfaden fuer sichere Entwicklung und Ausbildungsprojekte |
 
@@ -42,6 +42,8 @@ Die Lenkung dieses Dokuments erfolgt gemäß ISO/IEC 27001:2022 Klausel 7.5 („
 - [Datenschutzleitlinie](mitgeltende-dokumente/Datenschutzleitlinie.md)
 - [Leitlinie für sicheres Softwaredesign](mitgeltende-dokumente/Leitlinie_Sicheres-Softwaredesign.md)
 - [BCM-/Notfallhandbuch](mitgeltende-dokumente/BCM-Notfallhandbuch.md)
+- [Standardsregister Sichere Entwicklung](mitgeltende-dokumente/Standardsregister_Sichere-Entwicklung.md)
+- [Lernpfad Sichere Entwicklung Lehrjahr 1 bis 3](Lernpfad_Sichere-Entwicklung_Lehrjahr-1-bis-3.md)
 - [Verzahnung Richtlinie, Checklisten und Spec-Kit-Presets](mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md)
 - [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.pdf)
 - [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR EN-Markdown](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.EN.md)
@@ -51,7 +53,9 @@ Die zentrale Verzahnungsdatei ist die verbindliche Leseführung für spätere Sp
 
 ## Mitgeltende Checklisten
 
-Die Detail- und Prüfanforderungen zu dieser Richtlinie sind im mitgeltenden Sammelband `Checklistensammelband_Sichere-Entwicklung.md` geregelt. Der Sammelband enthält die zwölf eigenständig auditierbaren Checklisten als Kapitel 01 bis 12 und ersetzt die frühere Einzelablage. Die CL-Kurzbezeichnungen bleiben als stabile Referenzen erhalten.
+Die zwölf Einzeldateien unter `checklisten/` sind die kanonischen Prüfvorlagen. Der Sammelband `Checklistensammelband_Sichere-Entwicklung.md` wird daraus automatisch erzeugt und bietet dieselben Inhalte als Gesamtsicht. Er wird nicht direkt bearbeitet. Stabile IDs wie `CL-08-03` bleiben in Einzeldateien und Sammelband identisch.
+
+Ausgefüllte Projektnachweise werden nicht in den Vorlagen gespeichert. Sie liegen unter `docs/security/secure-development/<datum>-<scope>/` und nennen Projekt, Scope, Prüfdatum, Baseline-Version, verantwortliche Person und Reviewer.
 
 - Kapitel 01 / CL_Standards-Anwendbarkeit: Auswahl der anwendbaren Sicherheitsstandards und regulatorische Anwendbarkeit je Projekt.
 - Kapitel 02 / CL_Sichere-Softwarearchitektur: acht Architekturprinzipien, S-ADR-Pflicht, arc42 Abschnitt 8, Cloud-Autonomie und Cloud-Compliance-Assurance.
@@ -69,8 +73,8 @@ Die Detail- und Prüfanforderungen zu dieser Richtlinie sind im mitgeltenden Sam
 ## Ziele
 
 - Vertraulichkeit, Integrität und Verfügbarkeit von Daten und Diensten sicherstellen.
-- Kundenzufriedenheit erhöhen.
-- Position der Organisation als verlässliche Kooperationspartnerin und IT-Dienstleisterin stärken.
+- Verlässliche, nachvollziehbare und lernwirksame Entwicklungsarbeit ermöglichen.
+- Sicherheitskompetenz ab dem ersten Ausbildungs- und Entwicklungsauftrag aufbauen.
 - Widerstandskraft der IT-Infrastruktur erhöhen.
 
 ## Geltungsbereich
@@ -81,21 +85,21 @@ Diese Richtlinie gilt fuer alle Personen, die Software entwickeln, pruefen, wart
 
 ## Einordnung als generischer Sicherheitsleitfaden
 
-Diese Richtlinie ist eine bereichsspezifische Sicherheitsrichtlinie im Sinne von ISO/IEC 27001:2022 Klausel 5.2 und Anhang A Control A.5.1. Sie ergänzt die übergeordnete Informationssicherheitsleitlinie der Organisation und konkretisiert die Anforderungen an einen sicheren Softwareentwicklungs-Lebenszyklus (Secure Development Life Cycle, SDLC) gemäß ISO/IEC 27002:2022 Control A.8.25.
+Diese Richtlinie kann als bereichsspezifische Sicherheitsrichtlinie im Sinne von ISO/IEC 27001:2022 Klausel 5.2 und Anhang A Control A.5.1 eingesetzt werden. Sie konkretisiert einen sicheren Softwareentwicklungs-Lebenszyklus (Secure Development Life Cycle, SDLC) gemäß ISO/IEC 27002:2022 Control A.8.25, ohne ein bestimmtes Managementsystem vorauszusetzen.
 
 **Bezug zu den ISO/IEC 27001:2022-Klauseln:**
 
-- **Klausel 6.1 (Maßnahmen zum Umgang mit Risiken und Chancen):** Die Risikobewertung für Entwicklungsvorhaben erfolgt im Rahmen des projektbezogenen Risikomanagementprozesses der Organisation. Sie orientiert sich an ISO/IEC 27005:2022 und den BSI-IT-Grundschutz-Methoden. Projekttypische Risiken werden im jeweiligen Bedrohungsmodell des Projekts vertieft (siehe Abschnitt „Bedrohungsmodellierung"). Restrisiken werden im zentralen Risikoregister der Organisation geführt und mit den entsprechenden Risikoeignerinnen und Risikoeignern abgestimmt.
-- **Klausel 7.5 (Dokumentierte Information):** Diese Richtlinie unterliegt der formalen Dokumentenlenkung der Organisation. Versionierung, Freigabe, Verteilung und geordnete Archivierung erfolgen im festgelegten Nachweisspeicher. Änderungen werden in der Versionshistorie am Ende dieses Dokuments festgehalten.
+- **Klausel 6.1 (Maßnahmen zum Umgang mit Risiken und Chancen):** Die Risikobewertung erfolgt im projektspezifischen Nachweisprozess. Projektrisiken werden im Bedrohungsmodell vertieft. Restrisiken erhalten Owner, Behandlung, Evidenzpfad und nächsten Prüftermin.
+- **Klausel 7.5 (Dokumentierte Information):** Versionierung, Freigabe, Verteilung und Archivierung werden im Repository oder einem festgelegten Nachweisspeicher nachvollziehbar geführt.
 - **Klausel 8 (Betrieb):** Die Richtlinie steuert den operativen Sicherheitsteil des Softwareentwicklungs-Prozesses. Die zugehörigen Checklisten dienen als prüfbare Arbeitsmittel und liefern Belege für interne und externe Audits.
-- **Klausel 9.2 (Internes Audit):** Die Einhaltung dieser Richtlinie ist Gegenstand des jährlichen internen Sicherheitsreviews. Der Sammelband `Checklistensammelband_Sichere-Entwicklung.md`, Kapitel 01 bis 12, ist das primäre Auditmittel je Projekt. Stichproben werden nach Risiko, Kritikalitaet und Aenderungsumfang gezogen.
-- **Klausel 9.3 (Managementbewertung):** Die Wirksamkeit dieser Richtlinie wird mindestens einmal jährlich im Rahmen eines Sicherheitsreviews auf Basis von KPI (siehe Abschnitt „KPI für Sicherheit und Testabdeckung"), Auditfeststellungen, Vorfällen und Schwachstellenstatistiken geprüft.
+- **Klausel 9.2 (Internes Audit):** Einzelchecklisten und Sammelband sind die primären Reviewmittel. Stichproben richten sich nach Risiko, Kritikalität und Änderungsumfang.
+- **Klausel 9.3 (Managementbewertung):** Die Wirksamkeit wird mindestens jährlich anhand von KPI, Befunden, Vorfällen und Schwachstellenstatistiken bewertet, soweit dieser Prozess für das Projekt anwendbar ist.
 - **Klausel 10 (Verbesserung):** Befunde aus Audits, Vorfällen und Schwachstellen-Triagen werden über den kontinuierlichen Verbesserungsprozess in diese Richtlinie und ihre Checklisten zurückgespielt.
 
 **Verantwortlichkeiten:**
 
-- Die fachliche Pflege der Richtlinie liegt bei der zuständigen Security-Verantwortung oder Projektverantwortung.
-- Die verantwortliche Leitung gibt die Richtlinie frei und stellt die nötigen Ressourcen bereit (ISO/IEC 27001:2022 Klausel 5.1).
+- Die fachliche Pflege liegt bei der Projekt- oder Ausbildungsverantwortung mit Security-Review.
+- Eine verantwortliche Rolle gibt die Richtlinie oder ihre projektspezifische Anwendung frei und stellt nötige Ressourcen bereit.
 - Projektverantwortliche und Tech Leads verantworten die Umsetzung in ihren Projekten.
 - Die Datenschutzrolle ist bei allen Vorhaben zu beteiligen, die personenbezogene Daten verarbeiten (siehe Abschnitt „Datenschutz-Folgenabschätzung").
 
@@ -104,13 +108,13 @@ Diese Richtlinie ist eine bereichsspezifische Sicherheitsrichtlinie im Sinne von
 Diese Richtlinie und der Sammelband `Checklistensammelband_Sichere-Entwicklung.md` liefern bereichsspezifische Nachweise fuer eine projektbezogene Anwendbarkeitsnotiz oder eine optionale ISO-27001-Nachweisfuehrung. Eine vollstaendige ISO/IEC-27001:2022-Annex-A-Matrix kann in einem projektspezifischen Nachweisprozess gefuehrt werden und wird hier nicht dupliziert. Für Entwicklungsvorhaben liefern Richtlinie und Sammelband je Projekt mindestens folgende SoA-Eingaben:
 
 - ISO/IEC-27001:2022-Annex-A-Control-ID oder einschlägiger externer Standard.
-- Anwendbarkeit: `anwendbar`, `nicht anwendbar` oder `projektabhängig`.
-- Implementierungsstatus: `umgesetzt`, `teilweise umgesetzt`, `offen` oder `nicht anwendbar`.
+- Anwendbarkeit: `Applicable`, `N/A` oder `Open`.
+- Umsetzungsstatus: `Fulfilled`, `Partly Fulfilled`, `Not Fulfilled` oder `Not Assessed`.
 - Begründung für Auswahl, Nichtanwendbarkeit oder Abweichung.
 - Evidenzpfad, zum Beispiel S-ADR, Bedrohungsmodell, ASVS-Nachweis, SBOM, VEX, DPIA, Auditbericht, Ticket oder Betriebsdokumentation.
 - Risikoregister- oder Maßnahmen-ID, verantwortliche Person und nächster Review-Termin.
 
-Wenn ein Projekt neue Risiken, neue Kontrollen oder begründete Nichtanwendbarkeit für Annex-A-Controls sichtbar macht, wird die projektbezogene Anwendbarkeitsnotiz im Nachweisprozess durch Security-Verantwortliche*r oder die zuständige Sicherheitsrolle aktualisiert. Der Sammelband dient dabei als operative Evidenzquelle; die SoA bleibt das führende Steuerungsdokument für Annex-A-Abdeckung, Implementierungsstatus und Ausschlussbegründungen.
+Wenn ein Projekt neue Risiken, Kontrollen oder begründete Nichtanwendbarkeit sichtbar macht, wird die projektbezogene Anwendbarkeitsnotiz aktualisiert. In einem ISO-27001-Kontext bleibt die organisationsweite SoA das führende Steuerungsdokument; außerhalb eines solchen Kontexts ist die projektbezogene Nachweismatrix ausreichend, ohne eine Zertifizierung zu behaupten.
 
 ## Evaluation
 
@@ -126,21 +130,19 @@ Für Web-Inhalte und veröffentlichte Sicherheitsinformationen gilt WCAG 2.2 Lev
 
 ## Grundsätze
 
-Die Organisation nutzt aktuelle Best Practices und Entwurfsmuster. Dazu gehören insbesondere das Wasserfallmodell, die objektorientierte Programmierung (OOP), Model-View-Controller (MVC), Model-View-View-Model (MVVM) und Microservice-Architekturen. Diese Muster erfüllen die Anforderungen interner und externer Kundschaft sowie liefernder Organisationen. Sie gelten für Neuentwicklungen und für die Weiterentwicklung von Quellcode.
+Projekte wählen Vorgehensmodell, Architektur und Entwurfsmuster passend zu Ziel, Risiko und Lernstand. Kein Prozessmodell oder Entwurfsmuster ist automatisch sicher. Sicherheitsanforderungen, Trust Boundaries, Fehlermodi und Nachweise werden ausdrücklich geplant.
 
-Der Quellcode entsteht in Übereinstimmung mit der „Leitlinie für sichere Programmierung". Die dort empfohlenen speichersicheren Programmiersprachen werden bevorzugt. Die Organisation hat einen hohen Qualitätsanspruch in der Softwareentwicklung. In jedem Projekt achten wir auf Informationssicherheit und Datenschutz.
+Der Quellcode folgt der „Leitlinie für sichere Programmierung". Speichersichere Programmiersprachen werden bevorzugt, wenn Zielplattform und Aufgabe dies erlauben. Informationssicherheit und Datenschutz beginnen mit dem ersten Repository-Zugriff und der ersten Programmieraufgabe, nicht erst vor einer Freigabe.
 
-Während der Spezifikation und des Entwurfs werden gängige Sicherheitstechniken und -standards beachtet. Die Softwarearchitektinnen und Softwarearchitekten folgen dem mitgeltenden Dokument „Leitlinie für sicheres Softwaredesign".
+Während Spezifikation und Entwurf gelten die „Leitlinie für sicheres Softwaredesign", das Bedrohungsmodell und die anwendbaren Checklisten. Lernende erhalten eine zum Lehrjahr passende Anleitung und ein menschliches Review.
 
 Die eingesetzten Programmiersprachen orientieren sich an dem mitgeltenden Dokument „THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR". Der Anhang dieses Dokuments führt empfohlene speichersichere Sprachen (Memory Safe Languages, MSL) auf. Swift ist dort als MSL berücksichtigt und gilt in dieser Richtlinie als speichersichere Sprache, insbesondere für Apple-Plattformen. Bei Ausbildungs- und Level-2-Projekten werden vor allem Java, C#, Python, Go, Rust und bei passender Zielplattform auch Swift als MSL betrachtet. Eine MSL ersetzt keine sprachspezifische Secure-Coding-Prüfung.
 
-Die Entwicklerinnen und Entwickler schreiben ihren Quellcode gemäß den Empfehlungen der „Leitlinie für sichere Programmierung".
+Entwicklungswerkzeuge stehen in einer projektspezifischen Liste genehmigter Werkzeuge, werden aktuell gehalten und mit minimalen Rechten betrieben. Plattformunterschiede für Windows, macOS und Linux werden geprüft, wenn das Projekt diese Plattformen unterstützt.
 
-Bei der Organisation werden Entwicklungsumgebungen (Integrated Development Environments, IDEs) eingesetzt, die in der „Richtlinie zur sicheren Entwicklungsumgebung" beschrieben sind und in der projektspezifischen Liste genehmigter Werkzeuge für die Nutzung freigegeben wurden. Die IDEs laufen möglichst auf den drei Hauptplattformen Windows, macOS und Linux. Die Hersteller aktualisieren die IDEs regelmäßig mit neuen Funktionen und Sicherheitsupdates.
+Quellcode wird in Git oder einem gleichwertigen Versionskontrollsystem verwaltet. Zugriff und Transport sind abgesichert; MFA, Token oder SSH-Schlüssel werden passend zur Plattform eingesetzt. Branch-Schutz, Reviews und CI-Rechte folgen dem Projektrisiko. Konkrete Hosting-, PKI- oder Zertifikatslösungen werden projektspezifisch dokumentiert.
 
-Der entwickelte Quellcode wird in den von der Organisation selbst betriebenen Versionskontrollsystemen (Git) verwaltet. Zugriff und Transport sind abgesichert. Der Zugriff erfolgt mit Single Sign-On (SSO) für das Web-Interface und mit Security-Token oder SSH-Login für die IDEs. Das Webinterface ist zusätzlich durch ein Server-Zertifikat aus der geeignete öffentliche oder interne PKI geschützt. Das Server-Zertifikat wird vollautomatisch durch eine Bot-Software über das ACME-Protokoll verwaltet und 30 Tage vor Ablauf erneuert.
-
-Bei der Einstellung neuer Entwicklerinnen und Entwickler achtet die Organisation auf die benötigten Fachkenntnisse und auf vorhandene Expertise. Das Entwicklungsteam wird gemäß dem Prozess „10 - Qualifizierung und Schulung der Mitarbeiter" regelmäßig geschult. Es kann externe Schulungen oder externe oder interne Lernangebote nutzen.
+Der [Lernpfad Sichere Entwicklung](Lernpfad_Sichere-Entwicklung_Lehrjahr-1-bis-3.md) und der Schulungsplan führen Lernende vom ersten Lehrjahr bis zur selbstständigen evidenzbasierten Prüfung. Offene Lernpunkte werden als Folgeaufgabe sichtbar gemacht.
 
 Die Regelungen aus der „Richtlinie zur Zugangssteuerung" werden angewendet. Ergänzend gilt die „Richtlinie zum Testmanagement" für ein geregeltes Testmanagement.
 
@@ -247,7 +249,7 @@ Mitgeltende Checkliste: CL_Sichere-Entwicklungsumgebung (siehe `Checklistensamme
 
 ### Geschäftsfortführung der Entwicklungsumgebung
 
-Die Entwicklungsumgebung ist eine kritische Infrastruktur für die Lieferfähigkeit der Organisation. Sie wird in den Geschäftsfortführungs- und Notfallplan (Business Continuity Management, BCM, sowie Disaster Recovery, DR) der Organisation einbezogen. Die Anforderungen orientieren sich an ISO/IEC 27002:2022 Control A.5.30 („IKT-Bereitschaft für Geschäftsfortführung") und an ISO/IEC 27031.
+Die Entwicklungsumgebung ist eine kritische Infrastruktur für die Lieferfähigkeit des Projekts oder der nutzenden Organisation. Sie wird in den Geschäftsfortführungs- und Notfallplan (Business Continuity Management, BCM, sowie Disaster Recovery, DR) des Projekts oder der nutzenden Organisation einbezogen. Die Anforderungen orientieren sich an ISO/IEC 27002:2022 Control A.5.30 („IKT-Bereitschaft für Geschäftsfortführung") und an ISO/IEC 27031.
 
 **Verbindliche Mindestvorgaben:**
 
@@ -262,11 +264,11 @@ Mitgeltende Dokumente: [BCM-/Notfallhandbuch](mitgeltende-dokumente/BCM-Notfallh
 
 ## Programmierung
 
-Neuer Code wird in den bei der Organisation üblichen, speichersicheren Sprachen Java, C#, Python, Go, Rust und bei passender Zielplattform Swift geschrieben oder in der Sprache, die die Kundschaft verlangt. Bei der Weiterentwicklung wird die jeweils vorhandene Sprache der Anwendung genutzt. Der Code wird ausreichend kommentiert (gemäß „Leitlinie für sichere Programmierung") und regelmäßig auf Schwachstellen getestet. Die Programmierung folgt dem Stand der Technik. Ein Wechsel des Paradigmas (zum Beispiel der Programmiersprache) wird gesondert dokumentiert und begründet.
+Neuer Code wird vorzugsweise in einer für Zielplattform und Aufgabe geeigneten speichersicheren Sprache geschrieben. Häufige Ausbildungsprofile sind C#/.NET, Rust, Go, Swift, Java/Kotlin, Python und TypeScript/JavaScript. Bei Weiterentwicklung kann die bestehende Sprache nötig sein; eine Nicht-MSL-Primärsprache braucht dann eine technische Begründung, zusätzliche Schutzmaßnahmen und einen Risikobehandlungs- oder Migrationsweg. Sprachspezifische Secure-Coding-Regeln bleiben immer Pflicht.
 
 Eine ordentliche Dokumentation ist im Team selbstverständlich. Wir achten auf modulare Programmierung. Der Code ist gut strukturiert, oft in wiederverwendbaren Codeblöcken angeordnet.
 
-Die Entwicklerinnen und Entwickler können Schwachstellen finden und in der Regel selbst beheben. Werkzeuge wie Issue-Tracker unterstützen das Team dabei.
+Lernende und Entwickler*innen melden erkannte Schwachstellen sofort, dokumentieren sie nachvollziehbar und beheben sie innerhalb ihres Kompetenz- und Freigaberahmens. Unklare oder kritische Befunde werden an eine erfahrene Review-Rolle eskaliert.
 
 Mitgeltende Checkliste: CL_Code-Review-Sicherheit (siehe `Checklistensammelband_Sichere-Entwicklung.md`, Kapitel 08).
 
@@ -288,24 +290,22 @@ Maskierungs- und Anonymisierungsverfahren werden im Testdatenkonzept des Projekt
 
 ### Versionierung und Änderungsmanagement
 
-Änderungen am Quellcode werden mit dem von der Organisation selbst betriebenen Versionskontrollsystem (VCS) Git verwaltet. Zugriffe werden gemäß der „Richtlinie zur Zugangssteuerung" gewährt oder entzogen. Es gelten die Regelungen zum Changemanagement. Weitere Sicherheitsdetails zum VCS finden sich im IT-Betriebskonzept der jeweiligen Anwendung. Änderungen werden nachvollziehbar dokumentiert. Neue Funktionen oder Module werden im IT-Betriebskonzept nachgezogen.
+Änderungen am Quellcode werden mit Git oder einem gleichwertigen Versionskontrollsystem verwaltet. Zugriffe werden gemäß der „Richtlinie Zugangssteuerung" gewährt oder entzogen. Sicherheitsrelevante Änderungen nennen Scope, Risiko, Tests, Review, Evidenz und Rückfallweg oder eine begründete Nichtanwendbarkeit.
 
 Bei Änderungen am hostenden Betriebssystem oder am Software-Stack der Anwendung werden vorher Tests durchgeführt. So bleiben Stabilität und Sicherheit erhalten. Tiefgreifende Änderungen werden auf das Notwendige beschränkt. Sie erfolgen nur, wenn Sicherheit für Betriebssystem, Anwendung und Daten der Kundschaft gewährleistet ist. Tests werden in der Testdokumentation festgehalten (zum Beispiel Schwachstellentests).
 
-Bei nötigen Änderungen, vor allem an Produktivsystemen, werden Requests for Change (RfC) eingereicht. Erst wenn alle Tests in der Entwicklungs- und Testumgebung erfolgreich waren, wird per RfC ein Termin festgelegt und die Änderung an dem Termin durchgeführt. Der genaue Ablauf steht in den Regelungen zum Changemanagement. Die zugehörigen IT-Betriebskonzepte werden regelmäßig aktualisiert.
-
-Alle zwei Wochen findet ein „Team Anwendungsentwicklung"-Treffen statt. Dort werden Fortschritt, Sicherheits-Themen und Pflegemaßnahmen für Software und betriebsnotwendige Systeme besprochen.
+Bei produktionsnahen oder kritischen Änderungen wird ein projektspezifischer Change-Nachweis geführt. Erst nach erfolgreichen Pflichtprüfungen oder einer ausdrücklich genehmigten Ausnahme erfolgt die Freigabe. Betriebs- und Sicherheitsdokumentation werden im selben Änderungsvorgang aktualisiert.
 
 ## KI-gestützte Codeerzeugung
 
-KI-Code-Assistenten und Large Language Models (LLM) werden bei der Organisation nur in geregelter Form eingesetzt. Sie können die Produktivität erhöhen, erzeugen aber nicht zuverlässig sicheren Code. Eine ausdrückliche Prüfung jeder KI-Ausgabe ist daher Pflicht.
+KI-Code-Assistenten und Large Language Models (LLM) werden nur in geregelter Form eingesetzt. Sie können die Produktivität erhöhen, erzeugen aber nicht zuverlässig sicheren Code. Eine ausdrückliche Prüfung jeder KI-Ausgabe ist daher Pflicht.
 
-Diese Richtlinie regelt die Nutzung von KI in der Anwendungsentwicklung der Organisation. Das Bereitstellen von KI-Diensten, Modellen und Modell-Hosting durch die Organisation (zum Beispiel genehmigter KI-Dienst, Hosting von Hugging-Face-Modellen) ist Gegenstand der dafür zuständigen Betriebs- und Dienstleistungsdokumente und fällt nicht in den Geltungsbereich dieser Richtlinie.
+Diese Richtlinie regelt die Nutzung von KI in der Softwareentwicklung. Das Bereitstellen eigener KI-Dienste, Modelle oder Modell-Hosting benötigt zusätzliche produkt- und betriebsspezifische Nachweise und ist nicht automatisch durch diese Nutzungsregeln abgedeckt.
 
 **Verbindliche Regelungen:**
 
 - Genehmigte Werkzeuge: Es kommen nur Werkzeuge zum Einsatz, die in der projektspezifischen Liste genehmigter Werkzeuge stehen. Cloud-basierte und lokale Werkzeuge werden getrennt freigegeben.
-- KI-Lieferkettentransparenz: Für eingesetzte KI-Dienste und Modelle werden die vom Anbieter verfügbaren Transparenzangaben im KI-Werkzeug-Inventar erfasst oder verlinkt — Modell-Identität und -Version, Verweis auf Model Card oder AI-SBOM des Anbieters, Trainings- und Feinabstimmungsverfahren sowie Herkunft und Sensitivität der Trainingsdaten soweit veröffentlicht, und KI-spezifische Sicherheitseigenschaften. Für fremdbezogene Modelle erstellt die Organisation keine eigene AI-SBOM; sie fordert die Angaben als Lieferketten-Nachweis an. Bezugsrahmen ist die G7-Leitlinie „Software Bill of Materials for AI – Minimum Elements" (2026).
+- KI-Lieferkettentransparenz: Für eingesetzte KI-Dienste und Modelle werden verfügbare Angaben erfasst oder verlinkt: Modell-Identität und -Version, Model Card oder AI-SBOM, Trainings- und Feinabstimmungsverfahren, veröffentlichte Datenherkunft und Sicherheitseigenschaften. Für fremdbezogene Modelle wird keine eigene Hersteller-AI-SBOM erfunden; fehlende Angaben werden als Lieferkettenlücke dokumentiert. Bezugsrahmen ist die G7-Leitlinie „Software Bill of Materials for AI – Minimum Elements" (2026).
 - Menschliche Überprüfung: Jede KI-Ausgabe wird vor dem Commit von einer Person inhaltlich geprüft. Ein Blind-Commit ist nicht zulässig.
 - Vier-Augen-Prinzip bei kritischer Logik: Sicherheitsrelevante Logik (Authentifizierung, Autorisierung, Eingabevalidierung, Krypto, Sitzungsverwaltung, Zahlungspfade) wird zusätzlich von einer zweiten Person geprüft.
 - Abhängigkeiten: Schlägt die KI eine neue Bibliothek vor, wird diese auf Existenz, Pflegezustand und bekannte CVEs geprüft, bevor sie aufgenommen wird. Vorgeschlagene Paketnamen werden gegen die offizielle Registry geprüft, um halluzinierte Pakete („Slopsquatting"-Risiko) auszuschließen.
@@ -322,7 +322,7 @@ Mitgeltende Checkliste: CL_KI-Codeerzeugung (siehe `Checklistensammelband_Sicher
 
 ## Agentische KI in Sandbox-Umgebungen
 
-**Geltungsanlass:** Agentische KI-Werkzeuge wie OpenCode oder Codex können Dateien ändern, Befehle ausführen und Projektkontext lesen. Sie sind damit nicht mehr ein passiver Assistent, sondern ein aktiver Akteur im Entwicklungsprozess. Aus diesem Grund werden sie ausschließlich in isolierten und formell freigegebenen Sandbox-Umgebungen betrieben. Eine direkte Ausführung auf Entwickler-Laptops, gemeinsam genutzten Servern oder in produktionsnahen Umgebungen ist nicht zulässig.
+**Geltungsanlass:** Agentische KI-Werkzeuge wie OpenCode oder Codex können Dateien ändern, Befehle ausführen und Projektkontext lesen. Sie werden deshalb ausschließlich in isolierten und freigegebenen Sandbox-Umgebungen betrieben. Die Sandbox darf als Container, VM oder gleichwertige Isolation auf einem Entwicklungsrechner laufen. Nicht zulässig ist der Agentenprozess außerhalb dieser Isolation mit unbeschränktem Host-, Home- oder produktionsnahem Zugriff.
 
 Der Zugriff der Sandbox auf Quellcode erfolgt ausschließlich über ausdrücklich gemountete Host-Verzeichnisse. Der Agent darf nur Dateien ändern, die über diese Mounts für das jeweilige Projekt freigegeben sind.
 
@@ -344,7 +344,7 @@ Konkrete Referenzprofile, Mindestnachweise und Ausbildungsanforderungen fuer sic
 - Netzwerkzugriffe der Sandbox sind auf die Mindestmenge der nötigen Ziele eingeschränkt (zum Beispiel genehmigte Modell-Endpunkte, genehmigte Paketregistries). Andere ausgehende Verbindungen sind blockiert oder dokumentiert und begründet.
 - Geheimnisse werden nicht in Prompts, Projektdateien, Logs oder Screenshots übernommen. Lokale Secret-Dateien bleiben außerhalb der versionierten Projektartefakte und werden über einen Secret Store oder geschützte Umgebungsvariablen eingebunden.
 - KI-Werkzeuge und ihre Konfigurationen sind reproduzierbar gepinnt (Versionen, Image-Digests, Modell-Identifikatoren). Selbst-aktualisierende Mechanismen der Werkzeuge sind deaktiviert.
-- Genehmigte KI-Werkzeuge, Provider, Modelle und Konfigurationen werden im KI-Werkzeug-Inventar der Organisation geführt (siehe Abschnitt „KI-gestützte Codeerzeugung").
+- Genehmigte KI-Werkzeuge, Provider, Modelle und Konfigurationen werden im KI-Werkzeug-Inventar des Projekts oder der nutzenden Organisation geführt (siehe Abschnitt „KI-gestützte Codeerzeugung").
 - Bei Feature-Implementierungen mit agentischer KI wird GitHub Spec Kit für Spec-Driven Development (SDD) verwendet. Der Ablauf erfolgt nacheinander über `/speckit.constitution`, `/speckit.specify`, `/speckit.clarify`, `/speckit.plan`, `/speckit.checklist`, `/speckit.tasks`, `/speckit.analyze` und `/speckit.implement`. Die sechs Governance-Presets `security-governance`, `architecture-governance`, `isaqb-architecture-governance`, `a11y-governance`, `cross-platform-governance` und `agent-parity-governance` werden installiert und nachweisbar dokumentiert, sofern kein begründeter Projektausnahmefall dokumentiert ist.
 - Die Presets werden mindestens quartalsweise und anlassbezogen kontrolliert aktualisiert. Anlassbezogen ist eine Prüfung nötig, wenn sich Spec-Kit-Preset-Kataloge, Preset-Inhalte, Prioritäten oder projektlokale Overrides ändern. Die Prüfung umfasst Preset-Liste, Preset-Informationen, wirksame Template-Auflösung und die Zuordnung der Preset-Inhalte zu den anwendbaren Checklisten. Erforderliche Änderungen werden in dieser Richtlinie und in den Checklisten eingearbeitet oder als begründete Ausnahme dokumentiert.
 - Die inhaltliche Preset-Abdeckung wird als eigene Auditfrage behandelt. Abgedeckt werden insbesondere regulatorisches Screening (NIS2, CRA, EU AI Act, DORA), BSI C3A, BSI C5, konkrete WCAG-2.2-AA-Prüfung, CLI-Barrierefreiheit, Cross-Platform-Skriptparität, sprachspezifische Secure-Coding-Profile und Agent-Guidance-Parität. Nicht anwendbare Preset-Prüfpunkte werden ausdrücklich mit Begründung dokumentiert.
@@ -365,7 +365,7 @@ Konkrete Referenzprofile, Mindestnachweise und Ausbildungsanforderungen fuer sic
 
 - ISO/IEC 27001:2022 Annex A: A.5.23 (Informationssicherheit beim Einsatz von Cloud-Diensten), A.8.25 (sicherer Entwicklungs-Lebenszyklus), A.8.28 (sichere Codierung), A.8.31 (Trennung von Entwicklungs-, Test- und Produktionsumgebungen).
 - NIST AI Risk Management Framework (AI RMF 1.0), insbesondere die Funktionen GOVERN, MAP, MEASURE und MANAGE.
-- OWASP Top 10 for Large Language Model Applications, insbesondere LLM02 (Insecure Output Handling), LLM05 (Improper Output Handling) und LLM09 (Overreliance).
+- OWASP Top 10 for LLM Applications 2025, insbesondere `LLM02:2025 Sensitive Information Disclosure`, `LLM05:2025 Improper Output Handling`, `LLM06:2025 Excessive Agency` und `LLM09:2025 Misinformation`.
 - Verordnung (EU) 2024/1689 (EU AI Act), soweit die jeweilige Nutzung in ihren Anwendungsbereich fällt.
 - Verordnung (EU) 2022/2554 (DORA) und Richtlinie (EU) 2022/2555 (NIS2), soweit Projekt, Kunde oder Lieferkette in deren Anwendungsbereich fallen.
 - BSI C3A und BSI C5 als Bewertungsrahmen für Cloud-Autonomie, digitale Souveränität und Cloud-Compliance-Assurance, soweit Cloud-Dienste wesentlich genutzt oder bereitgestellt werden.
@@ -419,7 +419,7 @@ Vor Einführung neuer Technologien werden diese auf Sicherheitsrisiken und Schwa
 
 Bei den Tests gilt das Vier-Augen-Prinzip. Es wird mit den Mechanismen von Git umgesetzt. Erst wenn eine zweite Person die Änderung geprüft und getestet hat, wird sie für das Deployment auf das nächste System freigegeben. Das gilt für die Stufen Entwicklung -> Test und Test -> Produktiv. Bei Beanstandungen geht die Änderung zurück in die Entwicklung.
 
-Die Abnahme von Code beziehungsweise die Übergabe an die Kundschaft wird in einem Abnahmeprotokoll dokumentiert, das auch eventuelle Nachbesserungswünsche festhält. Die durchgeführten Testfälle werden gemäß dem Testmanagement der Organisation dokumentiert.
+Die Abnahme von Code beziehungsweise die Übergabe an die Kundschaft wird in einem Abnahmeprotokoll dokumentiert, das auch eventuelle Nachbesserungswünsche festhält. Die durchgeführten Testfälle werden gemäß dem Testmanagement des Projekts oder der nutzenden Organisation dokumentiert.
 
 Mitgeltende Dokumente: [Richtlinie Testmanagement](mitgeltende-dokumente/Richtlinie_Testmanagement.md); mitgeltende Checkliste: CL_Code-Review-Sicherheit für Pull-Request-Reviews (siehe `Checklistensammelband_Sichere-Entwicklung.md`, Kapitel 08).
 
@@ -437,13 +437,13 @@ Mitgeltende Dokumente: [Richtlinie Testmanagement](mitgeltende-dokumente/Richtli
 
 ## Ausgelagerte Entwicklungsprojekte
 
-Manche Entwicklungsprojekte werden aus Kapazitätsgründen ausgelagert. Die für die Organisation tätigen externen Entwicklerinnen und Entwickler werden regelmäßig auf Qualität geprüft. Vor dem Produktivsetzen erfolgt ein Code-Review durch erfahrene interne Entwicklerinnen und Entwickler der Organisation. Die Software durchläuft denselben System- und Abnahmetest wie interne Projekte. Für die Lieferanten gelten zusätzlich die Regeln des Lieferantenmanagements.
+Manche Entwicklungsprojekte werden aus Kapazitätsgründen ausgelagert. Die für die nutzende Organisation tätigen externen Entwicklerinnen und Entwickler werden regelmäßig auf Qualität geprüft. Vor dem Produktivsetzen erfolgt ein Code-Review durch erfahrene interne Entwicklerinnen und Entwickler des Projekts oder der nutzenden Organisation. Die Software durchläuft denselben System- und Abnahmetest wie interne Projekte. Für die Lieferanten gelten zusätzlich die Regeln des Lieferantenmanagements.
 
 Mitgeltende Dokumente: [Richtlinie Dienstleister- und Lieferantenbeziehungen](mitgeltende-dokumente/Richtlinie_Dienstleister-und-Lieferantenbeziehungen.md).
 
 ## Trennung von Entwicklungs-, Test- und Betriebsumgebungen
 
-Bei selbst entwickelter Software trennt die Organisation Entwicklungs-, Test- und Produktivsysteme strikt voneinander. Beim Einsatz fertiger Lösungen ohne Eigenentwicklung sind mindestens Test- und Produktivsysteme strikt getrennt.
+Bei selbst entwickelter Software trennt die nutzende Organisation Entwicklungs-, Test- und Produktivsysteme strikt voneinander. Beim Einsatz fertiger Lösungen ohne Eigenentwicklung sind mindestens Test- und Produktivsysteme strikt getrennt.
 
 Aufbau und Wiederherstellung der Systeme erfolgen über versionierte Infrastruktur- oder Konfigurationsartefakte in getrennten Repositorien für Test/Stage und Produktion. Projektquellcode, Betriebs- und Serverkonfigurationen werden logisch getrennt verwaltet. Die Trennung wird in möglichst allen Projekten umgesetzt.
 
@@ -463,7 +463,7 @@ Mitgeltende Checkliste: CL_Sichere-Entwicklungsumgebung (siehe `Checklistensamme
 
 ## Schwachstellenoffenlegung und -behandlung
 
-Die Organisation betreibt einen dokumentierten Prozess für die Aufnahme, Bewertung und Behebung gemeldeter Schwachstellen, sowohl intern als auch extern. Der Prozess folgt dem Prinzip der Coordinated Vulnerability Disclosure (CVD).
+Das Projekt oder die nutzende Organisation betreibt einen dokumentierten Prozess für die Aufnahme, Bewertung und Behebung gemeldeter Schwachstellen, sowohl intern als auch extern. Der Prozess folgt dem Prinzip der Coordinated Vulnerability Disclosure (CVD).
 
 **Verbindliche Regelungen:**
 
@@ -488,7 +488,7 @@ Für jedes Entwicklungsprojekt wird bewertet, ob die Software als „Produkt mit
 - Dokumentierte Konformitätsbewertung: Selbstbewertung für die Mehrzahl der Produkte; Drittbewertung für kritische beziehungsweise wichtige Produkte gemäß Anhang III/IV der Verordnung.
 - Kennzeichnung, technische Dokumentation und Konformitätserklärung gemäß CRA-Anforderungen werden vor der Marktbereitstellung erstellt.
 
-Auch außerhalb des formalen CRA-Anwendungsbereichs richtet die Organisation ihre Praxis an den CRA-Grundprinzipien aus: Secure-by-Design, Secure-by-Default, fortlaufendes Schwachstellenmanagement, Lebenszyklus-Transparenz und SBOM-Verfügbarkeit. Die CRA-Anwendbarkeitsentscheidung wird im Sicherheitsdokumentenbestand des Projekts festgehalten (zum Beispiel im Lieferketten-Evidenz-Dokument oder als S-ADR).
+Auch außerhalb des formalen CRA-Anwendungsbereichs richtet die nutzende Organisation ihre Praxis an den CRA-Grundprinzipien aus: Secure-by-Design, Secure-by-Default, fortlaufendes Schwachstellenmanagement, Lebenszyklus-Transparenz und SBOM-Verfügbarkeit. Die CRA-Anwendbarkeitsentscheidung wird im Sicherheitsdokumentenbestand des Projekts festgehalten (zum Beispiel im Lieferketten-Evidenz-Dokument oder als S-ADR).
 
 **Zeitlicher Rahmen:** Die Verordnung ist seit dem 10. Dezember 2024 in Kraft. Die Regeln zu Konformitätsbewertungsstellen gelten ab dem 11. Juni 2026. Die Meldepflichten nach Artikel 14 gelten ab dem 11. September 2026. Die übrigen Pflichten gelten ab dem 11. Dezember 2027.
 
@@ -502,20 +502,20 @@ Für Neuentwicklungen und wesentliche Erweiterungen von Anwendungen, die persone
 
 - **Schwellwertanalyse zu Projektbeginn:** Jedes Vorhaben mit Verarbeitung personenbezogener Daten startet mit einer dokumentierten Schwellwertanalyse. Sie prüft die in DSGVO Art. 35 Abs. 3 genannten Fälle (systematische und umfassende Bewertung persönlicher Aspekte, umfangreiche Verarbeitung besonderer Kategorien, systematische Überwachung öffentlich zugänglicher Bereiche), die Positivliste der zuständigen Datenschutzaufsichtsbehörde des Projekt- oder Sitzlandes und gegebenenfalls die DPIA-Liste des Europäischen Datenschutzausschusses.
 - **DPIA-Pflicht bei hohem Risiko:** Wenn die Schwellwertanalyse ein voraussichtlich hohes Risiko ergibt, ist eine DPIA gemäß DSGVO Art. 35 Abs. 7 mit folgenden Mindestbestandteilen zu erstellen: systematische Beschreibung der Verarbeitung, Bewertung der Notwendigkeit und Verhältnismäßigkeit, Bewertung der Risiken für Betroffene, geplante Abhilfemaßnahmen.
-- **Beteiligung der oder des Datenschutzbeauftragten:** Die oder der Datenschutzbeauftragte der Organisation wird gemäß DSGVO Art. 35 Abs. 2 in jeder DPIA konsultiert. Die Stellungnahme wird Teil der DPIA-Dokumentation.
+- **Beteiligung der oder des Datenschutzbeauftragten:** Die oder der Datenschutzbeauftragte des Projekts oder der nutzenden Organisation wird gemäß DSGVO Art. 35 Abs. 2 in jeder DPIA konsultiert. Die Stellungnahme wird Teil der DPIA-Dokumentation.
 - **Konsultation der Aufsichtsbehörde:** Verbleibt nach den geplanten Maßnahmen ein hohes Restrisiko, wird die zuständige Aufsichtsbehörde gemäß DSGVO Art. 36 vor Verarbeitungsbeginn konsultiert.
-- **Verzeichnis der Verarbeitungstätigkeiten (DSGVO Art. 30):** Jede Verarbeitung personenbezogener Daten wird im zentralen Verzeichnis von Verarbeitungstätigkeiten der Organisation geführt. DPIA-Ergebnisse werden mit dem Eintrag verknüpft.
+- **Verzeichnis der Verarbeitungstätigkeiten (DSGVO Art. 30):** Jede Verarbeitung personenbezogener Daten wird im zentralen Verzeichnis von Verarbeitungstätigkeiten des Projekts oder der nutzenden Organisation geführt. DPIA-Ergebnisse werden mit dem Eintrag verknüpft.
 - **Auftragsverarbeitung (DSGVO Art. 28):** Werden externe Auftragsverarbeiter eingebunden (zum Beispiel Cloud-Dienste, externe Entwicklungspartner), liegt ein gültiger Auftragsverarbeitungsvertrag vor, der die Anforderungen aus DSGVO Art. 28 Abs. 3 erfüllt.
 - **Datenschutz durch Technikgestaltung (DSGVO Art. 25):** Privacy by Design und Privacy by Default sind Pflicht in Architektur und Default-Konfiguration. Die acht Architekturprinzipien aus dem Abschnitt „Sichere Softwarearchitektur" werden um datenschutzspezifische Maßnahmen ergänzt: Datenminimierung, Zweckbindung, Speicherbegrenzung, Pseudonymisierung wo möglich, transparente Information der Betroffenen, einfache Wahrnehmung von Betroffenenrechten.
 - **Fortschreibung:** Die DPIA wird bei wesentlichen Änderungen der Verarbeitung (neue Datenkategorien, neue Empfänger, neue Übermittlung in Drittländer, neue Technologie, neue Zweckbestimmung) erneut geprüft und gegebenenfalls aktualisiert. Die regelmäßige Fortschreibung erfolgt mindestens jährlich.
 
-Die Verbindung zwischen DPIA und Bedrohungsmodellierung wird im Sicherheitsdokumentenbestand des Projekts hergestellt: Die DPIA betrachtet Risiken aus Sicht der Betroffenen, das Bedrohungsmodell betrachtet Risiken aus Sicht der Organisation und ihrer Schutzziele. Beide Sichten werden konsistent geführt.
+Die Verbindung zwischen DPIA und Bedrohungsmodellierung wird im Sicherheitsdokumentenbestand des Projekts hergestellt: Die DPIA betrachtet Risiken aus Sicht der Betroffenen, das Bedrohungsmodell betrachtet Risiken aus Sicht des Projekts oder der nutzenden Organisation und ihrer Schutzziele. Beide Sichten werden konsistent geführt.
 
 Mitgeltende Dokumente: [Datenschutzleitlinie](mitgeltende-dokumente/Datenschutzleitlinie.md); mitgeltende Checkliste: CL_Datenschutz-Folgenabschaetzung (siehe `Checklistensammelband_Sichere-Entwicklung.md`, Kapitel 11).
 
 ## KPI für Sicherheit und Testabdeckung
 
-Die Programmierprojekte der Organisation werden mit Unit- und Integrationstests fortlaufend geprüft. Sobald ein Projekt in das Git-Repository eingecheckt wird, prüfen Unit-Tests die interne API. Integrationstests prüfen die dokumentierten öffentlichen Schnittstellen (zum Beispiel REST API, CLI oder vergleichbare externe API) und die dokumentierten kritischen UI-Flows. So bleibt sichergestellt, dass eine Code-Änderung die Funktionalität von API, Schnittstellen und UI nicht bricht. Erst nach erfolgreichen Tests startet das Deployment.
+Die Programmierprojekte des Projekts oder der nutzenden Organisation werden mit Unit- und Integrationstests fortlaufend geprüft. Sobald ein Projekt in das Git-Repository eingecheckt wird, prüfen Unit-Tests die interne API. Integrationstests prüfen die dokumentierten öffentlichen Schnittstellen (zum Beispiel REST API, CLI oder vergleichbare externe API) und die dokumentierten kritischen UI-Flows. So bleibt sichergestellt, dass eine Code-Änderung die Funktionalität von API, Schnittstellen und UI nicht bricht. Erst nach erfolgreichen Tests startet das Deployment.
 
 Das im Scope befindliche Projekt verfügt über nachvollziehbare Tests, um die Funktionalität der Anwendung zu sichern. Die Testergebnisse dienen auch als KPI und werden als Build-, Test- oder Qualitätsbericht im jeweiligen Repository oder im vorgesehenen Nachweisspeicher abgelegt.
 
@@ -616,7 +616,7 @@ Mitgeltende Checklisten: CL_Lieferkette-Build-Integritaet, CL_Code-Review-Sicher
 | FPE | Format-Preserving Encryption |
 | GCM | Galois/Counter Mode (Block-Cipher-Modus mit AEAD) |
 | PKI | Public key infrastructure reference |
-| Organisation | Beispielorganisation fuer Ausbildungs- und Reviewzwecke |
+| Nutzende Organisation | Generischer Projektkontext fuer Ausbildungs- und Reviewzwecke |
 | HPC | High Performance Computing |
 | HSM | Hardware Security Module |
 | IDE | Integrated Development Environment |
@@ -671,7 +671,7 @@ Mitgeltende Checklisten: CL_Lieferkette-Build-Integritaet, CL_Code-Review-Sicher
 
 Die Versionshistorie dokumentiert wesentliche Änderungen dieser Richtlinie gemäß ISO/IEC 27001:2022 Klausel 7.5. Geringfügige redaktionelle Anpassungen werden nicht einzeln aufgeführt.
 
-| Version | Datum | 2026-06-17 |
+| Version | Datum | Verantwortliche Rolle | Änderung |
 |---|---|---|---|
 | 1.0.0 | 09.05.2025 | Security-Verantwortliche*r | Erstfassung der Richtlinie zur sicheren Softwareentwicklung |
 | 1.1.0 | 14.05.2025 | Security-Verantwortliche*r | KPI-Abschnitt mit messbaren Mindestschwellen ergänzt |
@@ -691,11 +691,12 @@ Die Versionshistorie dokumentiert wesentliche Änderungen dieser Richtlinie gem�
 | 2.10.0 | 17.06.2026 | Security-Verantwortliche*r | KPI-Werte für Testabdeckung angehoben und präzisiert: Unit-Test Line Coverage mindestens 80 %, sicherheitskritische Module mindestens 85 % Branch Coverage, KI-Code mindestens 80 % Line und Branch Coverage, Integrationstest-Abdeckung öffentlicher Schnittstellen und kritischer UI-Flows mindestens 80 %; CL_08, CL_09 und Checklistensammelband synchronisiert |
 | 2.10.1 | 26.06.2026 | Security-Verantwortliche*r | MSL-Beispielliste in Grundsätzen und Programmierungsabschnitt um Go, Rust und Swift bei passender Zielplattform präzisiert; sprachspezifische Architekturhinweise für Go, Rust und Swift ergänzt |
 | 2.10.2 | 26.06.2026 | Security-Verantwortliche*r | Mitgeltende Leitlinie fuer sichere Entwicklungs-Sandboxen ergaenzt; Sandbox-Referenzprofil fuer MSL-basierte Level-2-Projekte, KI-Agenten, Spec Kit und Ausbildung eingeordnet; CL_12 und Sammelband synchronisiert |
+| 3.0.0 | 10.07.2026 | Projekt- oder Ausbildungsverantwortung mit Security-Review | Organisationsneutrale Ausbildungsbasis konsolidiert; 157 stabile CL-IDs, zweiachsiges Statusmodell, manifestgesteuerte Dokumente, generierter Sammelband, Standardsregister, Lernpfad und vertiefte mitgeltende Dokumente eingeführt. |
 
 **Genehmigung der aktuellen Fassung:**
 
-- Fachliche Erstellung und Pflege: Security-Verantwortliche*r
-- Freigabe: verantwortliche Leitung
+- Fachliche Erstellung und Pflege: Projekt- oder Ausbildungsverantwortung mit Security-Review
+- Freigabe: verantwortliche Rolle im jeweiligen Nutzungskontext
 
 ---
 
@@ -706,15 +707,15 @@ Die Versionshistorie dokumentiert wesentliche Änderungen dieser Richtlinie gem�
 | Field | Value |
 |---|---|
 | Title | Secure Software Development Guideline |
-| Version | 2.10.0 |
-| Release date | 2026-06-17 |
-| Effective date | 2026-06-17 |
+| Version | 3.0.0 |
+| Release date | 2026-07-10 |
+| Effective date | 2026-07-10 |
 | Document classification | publicly usable training and review baseline |
 | Responsible unit | Project or training owner with security review |
 | Approved by | Project or training owner after security review |
-| Next review date | 2027-05-07 (annually, and ad hoc after material changes) |
+| Next review date | 2027-07-10 (annually, and ad hoc after material changes) |
 | Document number / file reference | RL-SE-001 |
-| ISMS reference | Part of the security evidence process according to ISO/IEC 27001:2022 |
+| Usage context | Generic guideline for secure development and training projects |
 
 This document is controlled according to ISO/IEC 27001:2022 clause 7.5 ("Documented Information"). Changes are recorded in the version history at the end of this document. The valid version is stored in the defined evidence location. Local working copies are only valid for ongoing editing.
 
@@ -732,6 +733,8 @@ This document is controlled according to ISO/IEC 27001:2022 clause 7.5 ("Documen
 - [Privacy guideline](mitgeltende-dokumente/Datenschutzleitlinie.md)
 - [Secure software design guideline](mitgeltende-dokumente/Leitlinie_Sicheres-Softwaredesign.md)
 - [BCM and emergency handbook](mitgeltende-dokumente/BCM-Notfallhandbuch.md)
+- [Secure Development Standards Register](mitgeltende-dokumente/Standardsregister_Sichere-Entwicklung.md)
+- [Secure Development Learning Path for Training Years 1 to 3](Lernpfad_Sichere-Entwicklung_Lehrjahr-1-bis-3.md)
 - [Guideline, checklist, and Spec Kit preset alignment](mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md)
 - [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.pdf)
 - [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR EN Markdown](mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.EN.md)
@@ -741,7 +744,9 @@ The central alignment file is the binding reading guide for later Spec Kit runs 
 
 ## Related Checklists
 
-The detailed requirements and audit checks for this guideline are defined in the related compendium file `Checklistensammelband_Sichere-Entwicklung.md`. The compendium contains twelve separately auditable checklists as chapters 01 to 12 and replaces the former individual checklist storage. The checklist short names remain stable references.
+The twelve files under `checklisten/` are the canonical review templates. The compendium `Checklistensammelband_Sichere-Entwicklung.md` is generated from them and provides the same content as one complete view. It is not edited directly. Stable IDs such as `CL-08-03` remain identical in individual files and the compendium.
+
+Completed project evidence is not stored in the templates. It lives under `docs/security/secure-development/<date>-<scope>/` and names project, scope, review date, baseline version, owner, and reviewer.
 
 - Chapter 01 / CL_Standards-Anwendbarkeit: selection of applicable security standards and regulatory applicability per project.
 - Chapter 02 / CL_Sichere-Softwarearchitektur: eight architecture principles, S-ADR obligation, arc42 section 8, cloud autonomy, and cloud compliance assurance.
@@ -759,33 +764,31 @@ The detailed requirements and audit checks for this guideline are defined in the
 ## Objectives
 
 - Ensure confidentiality, integrity, and availability of data and services.
-- Increase customer satisfaction.
-- Strengthen Organisation's position as a reliable cooperation partner and IT service provider.
+- Enable reliable, traceable, and effective learning and development work.
+- Build security competence from the first training and development task.
 - Increase the resilience of IT infrastructure.
 
 ## Scope
 
-Organisation develops software in project or domain teams, for example infrastructure, application development, data processing, platform operations, or specialist application domains.
-
-This guideline applies to all persons who develop software for Organisation or on behalf of Organisation. It also applies to the adaptation of standard software, for example open-source software.
+This guideline is organization-neutral and applies to everyone who develops, reviews, maintains, or creates software with AI agents. It covers new development, further development, and adaptation of standard or open-source software.
 
 ## Position in the security evidence process
 
-This guideline is a domain-specific security policy according to ISO/IEC 27001:2022 clause 5.2 and Annex A control A.5.1. It extends the overarching Organisation information security policy and defines requirements for a secure software development life cycle (SDLC) according to ISO/IEC 27002:2022 control A.8.25.
+This guideline can be used as a domain-specific security policy according to ISO/IEC 27001:2022 clause 5.2 and Annex A control A.5.1. It defines a secure software development life cycle (SDLC) according to ISO/IEC 27002:2022 control A.8.25 without requiring a specific management system.
 
 **References to ISO/IEC 27001:2022 clauses:**
 
-- **Clause 6.1 (Actions to address risks and opportunities):** Risk assessment for development projects is performed in the central Organisation ISMS risk-management process. It follows ISO/IEC 27005:2022 and BSI IT-Grundschutz methods. Project-specific risks are deepened in the project threat model. Residual risks are recorded in the central Organisation risk register and agreed with the relevant risk owners.
+- **Clause 6.1 (Actions to address risks and opportunities):** Risk assessment is performed in the project evidence process. Project risks are detailed in the threat model. Residual risks receive an owner, treatment, evidence path, and next review date.
 - **Clause 7.5 (Documented information):** This guideline is subject to a defined document-control process. Versioning, approval, distribution, and orderly archiving are handled through the defined evidence location. Changes are recorded in the version history.
 - **Clause 8 (Operation):** The guideline controls the operational security part of the software-development process. The related checklists are auditable work aids and provide evidence for internal and external audits.
-- **Clause 9.2 (Internal audit):** Compliance with this guideline is part of the annual internal ISMS audit. The compendium file `Checklistensammelband_Sichere-Entwicklung.md`, chapters 01 to 12, is the primary audit tool per project. Samples are selected by risk, criticality, and change scope.
-- **Clause 9.3 (Management review):** The effectiveness of this guideline is reviewed annually in the ISMS management review, based on KPIs, audit findings, incidents, and vulnerability statistics.
+- **Clause 9.2 (Internal audit):** Individual checklists and the compendium are the primary review tools. Samples are selected by risk, criticality, and change scope.
+- **Clause 9.3 (Management review):** Effectiveness is reviewed at least annually using KPIs, findings, incidents, and vulnerability statistics where this process applies.
 - **Clause 10 (Improvement):** Findings from audits, incidents, and vulnerability triage are fed back into this guideline and its checklists through continual improvement.
 
 **Responsibilities:**
 
-- The Security-Verantwortliche*r of Organisation is responsible for maintaining the guideline.
-- The responsible leadership approves the guideline and provides the required resources.
+- The project or training owner with security review maintains the guideline.
+- A responsible role approves the guideline or its project-specific application and provides required resources.
 - Project or domain leads are responsible for implementation in their areas.
 - The Data Protection Officer is involved in all projects that process personal data.
 
@@ -794,13 +797,13 @@ This guideline is a domain-specific security policy according to ISO/IEC 27001:2
 This guideline and the compendium file `Checklistensammelband_Sichere-Entwicklung.md` provide domain-specific evidence for a project applicability note or optional ISO 27001 evidence management. The full ISO/IEC 27001:2022 Annex A matrix with all 93 controls is maintained in the Nachweisprozess and is not duplicated here. For development projects, the guideline and compendium provide at least the following SoA inputs:
 
 - ISO/IEC 27001:2022 Annex A control ID or relevant external standard.
-- Applicability: `applicable`, `not applicable`, or `project-dependent`.
-- Implementation status: `implemented`, `partly implemented`, `open`, or `not applicable`.
+- Applicability: `Applicable`, `N/A`, or `Open`.
+- Implementation status: `Fulfilled`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`.
 - Reason for selection, non-applicability, or deviation.
 - Evidence path, for example S-ADR, threat model, ASVS evidence, SBOM, VEX, DPIA, audit report, ticket, or operations documentation.
 - Risk-register or action ID, responsible person, and next review date.
 
-If a project identifies new risks, new controls, or justified non-applicability for Annex A controls, the project applicability note is updated in the Nachweisprozess by the Security-Verantwortliche*r or the responsible ISMS role. The compendium is an operational evidence source. The SoA remains authoritative for Annex A coverage, implementation status, and exclusion reasons.
+If a project identifies new risks, controls, or justified non-applicability, its applicability record is updated. In an ISO 27001 context, the organization-wide SoA remains authoritative. Outside that context, a project evidence matrix is sufficient and must not claim certification.
 
 ## Evaluation
 
@@ -816,21 +819,19 @@ For web content and published security information, WCAG 2.2 Level AA applies wh
 
 ## Principles
 
-Organisation uses current best practices and design patterns. These include the waterfall model, object-oriented programming (OOP), Model-View-Controller (MVC), Model-View-View-Model (MVVM), and microservice architectures. These patterns meet the requirements of internal and external customers and suppliers. They apply to new development and further development of source code.
+Projects choose their process model, architecture, and design patterns according to goal, risk, and learning stage. No process model or pattern is automatically secure. Security requirements, trust boundaries, failure modes, and evidence are planned explicitly.
 
-Source code is created in line with the Organisation secure programming guideline. The memory-safe programming languages recommended there are preferred. Organisation has a high quality standard in software development. Information security and data protection are considered in every project.
+Source code follows the secure programming guideline. Memory-safe languages are preferred when the target platform and task allow them. Information security and privacy start with the first repository access and coding task, not only before release.
 
-Common security techniques and standards are considered during specification and design. Software architects follow the related document "Organisation guideline for secure software design".
+During specification and design, the secure software design guideline, threat model, and applicable checklists are used. Learners receive guidance appropriate to their training year and a human review.
 
 The programming languages used follow the related document "THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR". Its annex lists recommended memory-safe languages (MSL). Swift is included there as an MSL and is treated in this guideline as a memory-safe language, especially for Apple platforms. In training and level-2 projects, Java, C#, Python, Go, Rust, and Swift where the target platform fits are considered MSL choices. An MSL does not replace language-specific secure-coding review.
 
-Developers write source code according to the Organisation secure programming guideline.
+Development tools are listed in a project-specific approved-tool inventory, kept current, and run with minimum permissions. Platform differences for Windows, macOS, and Linux are reviewed when the project supports those platforms.
 
-Organisation uses integrated development environments (IDEs) that are described in the "secure development environment guideline" and approved in the project-specific list of approved tools. IDEs should run on the three main platforms Windows, macOS, and Linux. Vendors regularly update the IDEs with new functions and security updates.
+Source code is managed in Git or an equivalent version-control system. Access and transport are secured; MFA, tokens, or SSH keys are used as appropriate. Branch protection, reviews, and CI permissions follow project risk. Specific hosting, PKI, and certificate solutions are documented per project.
 
-Developed source code is managed in organization-operated version-control systems (Git). Access and transport are secured. Access uses single sign-on (SSO) for the web interface and security tokens or SSH login for IDEs. The web interface is also protected by a server certificate from the suitable public or internal PKI. The server certificate is managed automatically by bot software via ACME and renewed 30 days before expiry.
-
-When hiring new developers, Organisation checks the required skills and existing expertise. The development team is trained regularly according to process "10 - Employee qualification and training". External training or the approved learning resources may be used.
+The [Secure Development Learning Path](Lernpfad_Sichere-Entwicklung_Lehrjahr-1-bis-3.md) and training plan guide learners from year one to independent evidence-based review. Open learning needs are recorded as follow-up work.
 
 The rules from the access control guideline apply. The test management guideline additionally applies to controlled test management.
 
@@ -926,7 +927,7 @@ Related documents: Use of cryptographic measures. Related checklist: CL_Krypto-M
 
 ## Development Environment
 
-Development environments are divided into development, test (sometimes called stage), and production. These systems are secured according to the state of the art. Organisation uses firewalls, antivirus solutions, automatic operating-system updates, and encrypted disks.
+Development environments are divided into development, test (sometimes called stage), and production. These systems are secured according to the state of the art. The project or adopting organization uses appropriate endpoint protection, automatic operating-system updates, and encrypted disks.
 
 Test and development environments that are no longer needed are deleted promptly according to the state of the art. Test accounts are created only when needed and deleted according to policy. Production data is used only when there is no alternative; by default it is not used. Repositories are regularly checked for vulnerabilities. Developed software is subjected to security review at milestones, for example code review.
 
@@ -936,7 +937,7 @@ Related checklist: CL_Sichere-Entwicklungsumgebung (see `Checklistensammelband_S
 
 ### Business Continuity of the Development Environment
 
-The development environment is critical infrastructure for Organisation delivery capability. It is included in Organisation's business continuity management (BCM) and disaster recovery (DR) planning. Requirements follow ISO/IEC 27002:2022 control A.5.30 and ISO/IEC 27031.
+The development environment is critical infrastructure for the project or adopting organization delivery capability. It is included in the project or adopting organization's business continuity management (BCM) and disaster recovery (DR) planning. Requirements follow ISO/IEC 27002:2022 control A.5.30 and ISO/IEC 27031.
 
 **Binding minimum requirements:**
 
@@ -947,15 +948,15 @@ The development environment is critical infrastructure for Organisation delivery
 - **Suppliers and external dependencies:** Availability of external package registries, identity providers, and code-signing services is included in the BCM plan. Mirror or caching strategies are preferred.
 - **Documentation and exercise:** BCM plans are kept in the security or operations documentation of the respective system. Responsibilities and escalation paths are tested in regular exercises, at least tabletop exercises.
 
-Related documents: Organisation BCM/emergency manual. Related checklist: CL_Sichere-Entwicklungsumgebung (see `Checklistensammelband_Sichere-Entwicklung.md`, chapter 10).
+Related documents: the project or adopting organization BCM/emergency manual. Related checklist: CL_Sichere-Entwicklungsumgebung (see `Checklistensammelband_Sichere-Entwicklung.md`, chapter 10).
 
 ## Programming
 
-New code is written in the memory-safe languages common for the project context, namely Java, C#, Python, Go, Rust, and Swift where the target platform fits, or in the language requested by the customer. For further development, the existing application language is used. Code is commented sufficiently according to the Organisation secure programming guideline and regularly tested for vulnerabilities. Programming follows the state of the art. A change of paradigm, for example a change of programming language, is documented and justified separately.
+New code is preferably written in a memory-safe language suited to the target platform and task. Common training profiles are C#/.NET, Rust, Go, Swift, Java/Kotlin, Python, and TypeScript/JavaScript. Existing systems may require another language; a non-MSL primary language then needs a technical rationale, additional controls, and a risk-treatment or migration path. Language-specific secure-coding rules always remain mandatory.
 
 Proper documentation is expected in the team. Modular programming is used. Code is well structured and often arranged in reusable code blocks.
 
-Developers can find vulnerabilities and usually fix them themselves. Tools such as issue trackers support the team.
+Learners and developers report identified vulnerabilities immediately, document them traceably, and fix them within their competence and approval scope. Unclear or critical findings are escalated to an experienced review role.
 
 Related checklist: CL_Code-Review-Sicherheit (see `Checklistensammelband_Sichere-Entwicklung.md`, chapter 08).
 
@@ -977,24 +978,22 @@ Masking and anonymization procedures are documented in the project test-data con
 
 ### Versioning and Change Management
 
-Source-code changes are managed in organization-operated Git version-control systems. Access is granted or removed according to the access control guideline. Change-management rules apply. Further security details for the VCS are in the operations concept of the respective application. Changes are documented traceably. New functions or modules are added to the operations concept.
+Source-code changes are managed in Git or an equivalent version-control system. Access is granted or removed according to the access control policy. Security-relevant changes name scope, risk, tests, review, evidence, and rollback path or a justified non-applicability.
 
 Before changes to the hosting operating system or software stack, tests are performed. This preserves stability and security. Deep changes are limited to what is necessary. They are performed only when security for the operating system, application, and customer data is ensured. Tests are recorded in test documentation, for example vulnerability tests.
 
-For necessary changes, especially in production systems, requests for change (RfC) are submitted. Only after all tests in development and test environments succeed, an RfC sets a date and the change is performed on that date. The exact process is defined in change-management rules. The related operations concepts are updated regularly.
-
-Every two weeks, the "Application Development Team" meeting discusses progress, security topics, and maintenance measures for software and operational systems.
+Production-near or critical changes use a project-specific change record. Release occurs only after mandatory checks pass or an explicit exception is approved. Operations and security documentation are updated in the same change.
 
 ## AI-Assisted Code Generation
 
-AI code assistants and large language models (LLMs) are used at Organisation only in a controlled way. They can increase productivity, but they do not reliably produce secure code. Explicit review of every AI output is mandatory.
+AI code assistants and large language models (LLMs) are used only in a controlled way. They can increase productivity, but they do not reliably produce secure code. Explicit review of every AI output is mandatory.
 
-This guideline governs the use of AI in Organisation application development. The provision of AI services, models, and model hosting by Organisation (for example genehmigter KI-Dienst, hosting of Hugging Face models) is subject to the responsible operations and service documents and is outside the scope of this guideline.
+This guideline governs the use of AI in software development. Providing AI services, models, or model hosting requires additional product and operations evidence and is not automatically covered by these usage rules.
 
 **Binding rules:**
 
 - Approved tools: Only tools from the approved software list are used. Cloud-based and local tools are approved separately.
-- AI supply-chain transparency: For AI services and models in use, the transparency information available from the provider is recorded or linked in the AI tool inventory — model identity and version, a link to the provider's model card or AI-SBOM, training and fine-tuning method, the origin and sensitivity of the training data as far as published, and AI-specific security properties. Organisation does not produce its own AI-SBOM for externally sourced models; it requests the information as supply-chain evidence. The reference framework is the G7 guideline "Software Bill of Materials for AI – Minimum Elements" (2026).
+- AI supply-chain transparency: For AI services and models, available information is recorded or linked: model identity and version, model card or AI-SBOM, training and fine-tuning methods, published data origin, and security properties. The project does not invent a manufacturer AI-SBOM for externally sourced models; missing information is recorded as a supply-chain gap. The reference framework is the G7 guideline "Software Bill of Materials for AI – Minimum Elements" (2026).
 - Human review: Every AI output is reviewed by a person before commit. Blind commits are not allowed.
 - Four-eyes rule for critical logic: Security-relevant logic, including authentication, authorization, input validation, cryptography, session management, and payment paths, is also reviewed by a second person.
 - Dependencies: If AI proposes a new library, its existence, maintenance status, and known CVEs are checked before adoption. Proposed package names are checked against the official registry to prevent hallucinated packages ("slopsquatting").
@@ -1011,7 +1010,7 @@ Related checklist: CL_KI-Codeerzeugung (see `Checklistensammelband_Sichere-Entwi
 
 ## Agentic AI in Sandbox Environments
 
-**Reason for scope:** Agentic AI tools such as OpenCode or Codex can change files, run commands, and read project context. They are therefore no longer a passive assistant but an active actor in the development process. For this reason they are operated only in isolated and formally approved sandbox environments. Direct execution on developer laptops, on shared servers, or in production-near environments is not allowed.
+**Reason for scope:** Agentic AI tools such as OpenCode or Codex can change files, run commands, and read project context. They therefore run only in isolated and approved sandbox environments. The sandbox may run as a container, VM, or equivalent isolation on a development workstation. What is prohibited is the agent process outside that isolation with unrestricted host, home-directory, or production-near access.
 
 The sandbox accesses source code only through explicitly mounted host directories. The agent may only change files that are exposed through these mounts for the relevant project.
 
@@ -1033,7 +1032,7 @@ Concrete reference profiles, minimum evidence, and training requirements for sec
 - Sandbox network access is restricted to the minimum set of required targets (for example approved model endpoints, approved package registries). Other outbound connections are blocked or documented with reasoning.
 - Secrets are not copied into prompts, project files, logs, or screenshots. Local secret files remain outside versioned project artefacts and are injected via a secret store or protected environment variables.
 - AI tools and their configurations are reproducibly pinned (versions, image digests, model identifiers). Self-updating mechanisms of the tools are disabled.
-- Approved AI tools, providers, models, and configurations are tracked in the Organisation AI tool inventory (see section "AI-Assisted Code Generation").
+- Approved AI tools, providers, models, and configurations are tracked in the project or adopting organization AI tool inventory (see section "AI-Assisted Code Generation").
 - For feature implementations with agentic AI, GitHub Spec Kit is used for spec-driven development (SDD). The flow is run in sequence through `/speckit.constitution`, `/speckit.specify`, `/speckit.clarify`, `/speckit.plan`, `/speckit.checklist`, `/speckit.tasks`, `/speckit.analyze`, and `/speckit.implement`. The six governance presets `security-governance`, `architecture-governance`, `isaqb-architecture-governance`, `a11y-governance`, `cross-platform-governance`, and `agent-parity-governance` are installed and documented with evidence unless a justified project exception is documented.
 - The presets are updated in a controlled way at least quarterly and when triggered by a relevant change. A triggered check is required when Spec Kit preset catalogs, preset contents, priorities, or project-local overrides change. The check covers the preset list, preset information, effective template resolution, and mapping of preset contents to the applicable checklists. Required changes are integrated into this guideline and into the checklists or documented as a justified exception.
 - Preset content coverage is treated as its own audit question. The coverage includes, in particular, regulatory screening (NIS2, CRA, EU AI Act, DORA), BSI C3A, BSI C5, concrete WCAG 2.2 AA review, CLI accessibility, cross-platform script parity, language-specific secure-coding profiles, and agent-guidance parity. Preset review points that do not apply are documented explicitly with a rationale.
@@ -1054,7 +1053,7 @@ Concrete reference profiles, minimum evidence, and training requirements for sec
 
 - ISO/IEC 27001:2022 Annex A: A.5.23 (cloud service security), A.8.25 (secure development life cycle), A.8.28 (secure coding), A.8.31 (separation of development, test, and production environments).
 - NIST AI Risk Management Framework (AI RMF 1.0), in particular the functions GOVERN, MAP, MEASURE, and MANAGE.
-- OWASP Top 10 for Large Language Model Applications, in particular LLM02 (Insecure Output Handling), LLM05 (Improper Output Handling), and LLM09 (Overreliance).
+- OWASP Top 10 for LLM Applications 2025, especially `LLM02:2025 Sensitive Information Disclosure`, `LLM05:2025 Improper Output Handling`, `LLM06:2025 Excessive Agency`, and `LLM09:2025 Misinformation`.
 - Regulation (EU) 2024/1689 (EU AI Act), where the specific use falls within its scope.
 - Regulation (EU) 2022/2554 (DORA) and Directive (EU) 2022/2555 (NIS2), where the project, customer, or supply chain falls within their scope.
 - BSI C3A and BSI C5 as assessment frameworks for cloud autonomy, digital sovereignty, and cloud compliance assurance where cloud services are materially used or provided.
@@ -1108,7 +1107,7 @@ Before new technologies are introduced, they are assessed for security risks and
 
 The four-eyes rule applies to tests. It is implemented with Git mechanisms. A change is released to the next system only after a second person has reviewed and tested it. This applies to the development-to-test and test-to-production stages. If there are objections, the change goes back to development.
 
-Code acceptance and handover to the customer are documented in an acceptance record that also lists any rework requests. Test cases are documented according to Organisation test management.
+Code acceptance and handover to the customer are documented in an acceptance record that also lists any rework requests. Test cases are documented according to the project or adopting organization test management.
 
 Related documents: test management guideline. Related checklist: CL_Code-Review-Sicherheit for pull-request reviews (see `Checklistensammelband_Sichere-Entwicklung.md`, chapter 08).
 
@@ -1119,20 +1118,20 @@ Audit, penetration, and vulnerability tests are performed so that production ope
 - Active tests such as vulnerability scans, penetration tests, load tests, and forensic exercises preferably run on dedicated test or stage systems. Tests against production systems require explicit approval.
 - Audit and test accounts are created as read-only accounts with minimum rights and are disabled or deleted after the test. Write access is possible only when explicitly required by the audit assignment.
 - Audit and test windows are agreed in writing in advance, including time window, scope, tools, contact persons, and escalation path.
-- Test tools and results, including scan results, logs, and exports, are handled confidentially, stored in an orderly way, and deleted or archived according to retention periods. Access is limited to the audit team and responsible Organisation units.
+- Test tools and results, including scan results, logs, and exports, are handled confidentially, stored in an orderly way, and deleted or archived according to retention periods. Access is limited to the audit team and responsible project or adopting-organization units.
 - Customers, auditors, and affected operations teams are named and included in a short final report. Findings are fed into continual improvement.
 
 Related documents: test management guideline, access control guideline.
 
 ## Outsourced Development Projects
 
-Some development projects are outsourced due to capacity constraints. External developers working for Organisation are regularly checked for quality. Before production deployment, experienced internal Organisation developers perform a code review. The software goes through the same system and acceptance test as internal projects. Supplier management rules also apply to suppliers.
+Some development projects are outsourced due to capacity constraints. External developers working for the project or adopting organization are regularly checked for quality. Before production deployment, experienced internal project or adopting-organization developers perform a code review. The software goes through the same system and acceptance test as internal projects. Supplier management rules also apply to suppliers.
 
 Related documents: service-provider and supplier-relationship guideline.
 
 ## Separation of Development, Test, and Operations Environments
 
-For self-developed software, Organisation strictly separates development, test, and production systems. When ready-made solutions without custom development are used, at least test and production systems are strictly separated.
+For self-developed software, the project or adopting organization strictly separates development, test, and production systems. When ready-made solutions without custom development are used, at least test and production systems are strictly separated.
 
 Systems are built and restored through versioned infrastructure or configuration artefacts in separate repositories for test/stage and production. Project source code, operations configuration, and server configuration are managed with logical separation. The separation is implemented in as many projects as possible.
 
@@ -1152,7 +1151,7 @@ Related checklist: CL_Sichere-Entwicklungsumgebung (see `Checklistensammelband_S
 
 ## Vulnerability Disclosure and Handling
 
-Organisation operates a documented process for receiving, assessing, and fixing reported vulnerabilities, both internally and externally. The process follows coordinated vulnerability disclosure (CVD).
+The project or adopting organization operates a documented process for receiving, assessing, and fixing reported vulnerabilities, both internally and externally. The process follows coordinated vulnerability disclosure (CVD).
 
 **Binding rules:**
 
@@ -1177,7 +1176,7 @@ Each development project is assessed to determine whether the software is a "pro
 - Documented conformity assessment: self-assessment for most products; third-party assessment for critical or important products according to Annex III/IV.
 - Marking, technical documentation, and declaration of conformity according to CRA requirements before market provision.
 
-Even outside the formal CRA scope, Organisation aligns its practice with CRA principles: secure by design, secure by default, continuous vulnerability management, lifecycle transparency, and SBOM availability. The CRA applicability decision is recorded in the project's security documentation, for example in the supply-chain evidence document or as an S-ADR.
+Even outside the formal CRA scope, the project or adopting organization aligns its practice with CRA principles: secure by design, secure by default, continuous vulnerability management, lifecycle transparency, and SBOM availability. The CRA applicability decision is recorded in the project's security documentation, for example in the supply-chain evidence document or as an S-ADR.
 
 **Timeline:** The regulation has been in force since 2024-12-10. Rules on conformity-assessment bodies apply from 2026-06-11. Reporting obligations under Article 14 apply from 2026-09-11. The remaining obligations apply from 2027-12-11.
 
@@ -1191,20 +1190,20 @@ For new developments and material extensions of applications that process person
 
 - **Threshold analysis at project start:** Every project processing personal data starts with documented threshold analysis. It checks the cases named in GDPR Art. 35(3), the positive list of the competent data protection supervisory authority of the project or seat jurisdiction, and where relevant the EDPB DPIA list.
 - **DPIA obligation in case of high risk:** If the threshold analysis shows a likely high risk, a DPIA according to GDPR Art. 35(7) is created with at least: systematic description of processing, assessment of necessity and proportionality, assessment of risks for data subjects, and planned mitigation measures.
-- **Involvement of the Data Protection Officer:** The Organisation Data Protection Officer is consulted in every DPIA according to GDPR Art. 35(2). The opinion becomes part of the DPIA documentation.
+- **Involvement of the Data Protection Officer:** The responsible privacy role is consulted in every DPIA according to GDPR Art. 35(2). The opinion becomes part of the DPIA documentation.
 - **Consultation of supervisory authority:** If a high residual risk remains after planned measures, the competent supervisory authority is consulted before processing begins, according to GDPR Art. 36.
-- **Record of processing activities (GDPR Art. 30):** Every processing activity involving personal data is kept in the central Organisation record of processing activities. DPIA results are linked to the entry.
+- **Record of processing activities (GDPR Art. 30):** Every processing activity involving personal data is linked to the applicable record of processing activities. DPIA results are linked to that record.
 - **Processing on behalf (GDPR Art. 28):** If external processors are involved, for example cloud services or external development partners, a valid data-processing agreement exists and meets GDPR Art. 28(3).
 - **Data protection by design and by default (GDPR Art. 25):** Privacy by design and privacy by default are mandatory in architecture and default configuration. The eight architecture principles are extended by data-protection measures: data minimization, purpose limitation, storage limitation, pseudonymization where possible, transparent information for data subjects, and simple exercise of data-subject rights.
 - **Maintenance:** The DPIA is reviewed and updated where necessary after material processing changes, for example new data categories, new recipients, new third-country transfer, new technology, or new purpose. Regular maintenance takes place at least annually.
 
-The link between DPIA and threat modeling is established in the project's security documentation. The DPIA considers risks from the perspective of data subjects. The threat model considers risks from the perspective of Organisation and its protection objectives. Both views are kept consistent.
+The link between DPIA and threat modeling is established in the project's security documentation. The DPIA considers risks from the perspective of data subjects. The threat model considers risks from the perspective of the project or adopting organization and its protection objectives. Both views are kept consistent.
 
 Related documents: data-protection guideline. Related checklist: CL_Datenschutz-Folgenabschaetzung (see `Checklistensammelband_Sichere-Entwicklung.md`, chapter 11).
 
 ## KPIs for Security and Test Coverage
 
-Organisation programming projects are continuously checked with unit and integration tests. As soon as a project is checked into the Git repository, unit tests check the internal API. Integration tests check the documented public interfaces, for example REST API, CLI, or comparable external API, and the documented critical UI flows. This ensures that a code change does not break API, interface, or UI functionality. Deployment starts only after successful tests.
+The project or adopting organization programming projects are continuously checked with unit and integration tests. As soon as a project is checked into the Git repository, unit tests check the internal API. Integration tests check the documented public interfaces, for example REST API, CLI, or comparable external API, and the documented critical UI flows. This ensures that a code change does not break API, interface, or UI functionality. Deployment starts only after successful tests.
 
 The project in scope has traceable tests to secure application functionality. Test results also serve as KPIs and are stored as build, test, or quality reports in the repository or in the defined evidence location.
 
@@ -1302,7 +1301,7 @@ Related documents: test management guideline. Related checklists: CL_Lieferkette
 | FPE | Format-Preserving Encryption |
 | GCM | Galois/Counter Mode |
 | GDPR | General Data Protection Regulation (Regulation (EU) 2016/679) |
-| Organisation | Example organization for training and review purposes |
+| Adopting organization | Generic project context for training and review purposes |
 | HPC | High Performance Computing |
 | HSM | Hardware Security Module |
 | IDE | Integrated Development Environment |
@@ -1355,7 +1354,7 @@ Related documents: test management guideline. Related checklists: CL_Lieferkette
 
 The version history documents material changes to this guideline according to ISO/IEC 27001:2022 clause 7.5. Minor editorial changes are not listed individually.
 
-| Version | Date | 2026-06-17 |
+| Version | Date | Responsible Role | Change |
 |---|---|---|---|
 | 1.0.0 | 2025-05-09 | Security-Verantwortliche*r | Initial version of the secure software development guideline |
 | 1.1.0 | 2025-05-14 | Security-Verantwortliche*r | Added KPI section with measurable minimum thresholds |
@@ -1375,12 +1374,13 @@ The version history documents material changes to this guideline according to IS
 | 2.10.0 | 2026-06-17 | Security-Verantwortliche*r | Raised and clarified test-coverage KPIs: unit-test line coverage at least 80%, security-critical modules at least 85% branch coverage, AI code at least 80% line and branch coverage, integration-test coverage of public interfaces and critical UI flows at least 80%; synchronized CL_08, CL_09, and checklist compendium |
 | 2.10.1 | 2026-06-26 | Security-Verantwortliche*r | Clarified MSL examples in principles and programming sections with Go, Rust, and Swift where the target platform fits; added language-specific architecture notes for Go, Rust, and Swift |
 | 2.10.2 | 2026-06-26 | Security-Verantwortliche*r | Added related guideline for secure development sandboxes; positioned sandbox reference profile for MSL-based level-2 projects, AI agents, Spec Kit, and training; synchronized CL_12 and compendium |
+| 3.0.0 | 2026-07-10 | Project or training owner with security review | Consolidated an organization-neutral training baseline; introduced 157 stable CL IDs, the two-axis status model, manifest-controlled documents, generated compendium, standards register, learning path, and expanded related documents. |
 
 **Approval of the current version:**
 
-- Subject-matter creation and maintenance: Organisation Information Security Officer (Security-Verantwortliche*r)
-- Consultation: Organisation Data Protection Officer, project or domain leads
-- Approval: responsible leadership
+- Subject-matter creation and maintenance: project or training owner with security review
+- Consultation: responsible privacy, architecture, security, and project roles as applicable
+- Approval: responsible role in the adopting context
 - Storage of approval documentation: defined evidence location
 
-**Distribution and publication:** This guideline is provided to all staff of the affected project or domain teams through the defined evidence location and intranet. External development partners receive the guideline as an annex to the contract documents.
+**Distribution and publication:** The controlled version is stored in the repository or defined evidence location. People and external contributors receive access before security-relevant work starts.

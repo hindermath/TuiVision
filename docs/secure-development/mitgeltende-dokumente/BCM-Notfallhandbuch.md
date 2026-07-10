@@ -1,6 +1,10 @@
 # BCM-/Notfallhandbuch / BCM and Emergency Handbook
 
-**Stand / Date:** 2026-06-19
+**Stand / Date:** 2026-07-10
+**Version / Version:** 1.0.0
+**Baseline-Version / Baseline version:** 3.0.0
+**Verantwortliche Rolle / Responsible role:** Projekt- oder Ausbildungsverantwortung mit Security-Review / Project or training owner with security review
+**Review-Zyklus / Review cycle:** jährlich und bei wesentlichen Änderungen / annually and after material changes
 
 ## Zweck / Purpose
 
@@ -27,6 +31,18 @@
 - **DE:** Ausfaelle von Cloud-, Provider- oder Tool-Abhaengigkeiten werden als Risiko bewertet.
 - **EN:** Outages of cloud, provider, or tool dependencies are assessed as risk.
 
+## Vorbereitung und Wiederanlauf / Preparation and Recovery
+
+1. **Schutzbedarf bestimmen / Determine criticality:** Benenne Dienste, Daten und Werkzeuge, deren Ausfall Lernen, Entwicklung oder Betrieb stoppt.
+2. **Ziele festlegen / Set objectives:** Dokumentiere eine begründete Wiederanlaufzeit (RTO) und einen höchstens tolerierbaren Datenverlust (RPO).
+3. **Verantwortung klären / Assign responsibility:** Benenne Alarmierung, technische Wiederherstellung, Kommunikation und Freigabe.
+4. **Reihenfolge dokumentieren / Document sequence:** Stelle zuerst Identitäten und Secrets, dann Repository, Build, Tests und Verteilung wieder her.
+5. **Üben / Exercise:** Prüfe mindestens jährlich und nach wesentlichen Änderungen einen Restore oder einen nachvollziehbaren Tabletop-Test.
+
+## Notfallprotokoll / Incident Record
+
+Ein Ereignisprotokoll nennt Startzeit, Auslöser, betroffene Werte, Entscheidungen, Wiederanlaufschritte, RTO-/RPO-Ergebnis, Restrisiken und Lessons Learned. Lernprojekte dürfen vereinfachte Werte verwenden, müssen diese aber begründen. / An incident record names start time, trigger, affected assets, decisions, recovery steps, RTO/RPO result, residual risks, and lessons learned. Training projects may use simplified values, but must justify them.
+
 ## Für Auszubildende kurz erklärt / Short Explanation for Apprentices
 
 **DE:** BCM bedeutet: Ein Projekt soll nach einem Ausfall wieder arbeitsfähig werden. Dazu muss klar sein, wo Code, Build-Anleitung, Tests, Secrets und wichtige Dokumente liegen und wie sie wiederhergestellt werden.
@@ -47,3 +63,10 @@
 - `architecture-governance`: Resilienz, Cloud-Autonomie, C3A/C5, Zero Trust.
 - `isaqb-architecture-governance`: Deployment View, Runtime View, Qualitaetsszenarien.
 - `security-governance`: Supply Chain Evidence, SLSA, Dependency Audit.
+
+
+## Versionshistorie / Version History
+
+| Version | Datum / Date | Änderung / Change |
+|---|---|---|
+| 1.0.0 | 2026-07-10 | Erstes kontrolliertes Release als mitgeltendes Dokument der sichere-Entwicklung-Basis 3.0.0. / First controlled release as a related document of secure-development baseline 3.0.0. |

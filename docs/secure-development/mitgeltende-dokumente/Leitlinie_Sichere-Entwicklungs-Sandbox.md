@@ -1,6 +1,10 @@
 # Leitlinie Sichere Entwicklungs-Sandbox / Secure Development Sandbox Guideline
 
-**Stand / Date:** 2026-06-26
+**Stand / Date:** 2026-07-10
+**Version / Version:** 1.0.0
+**Baseline-Version / Baseline version:** 3.0.0
+**Verantwortliche Rolle / Responsible role:** Projekt- oder Ausbildungsverantwortung mit Security-Review / Project or training owner with security review
+**Review-Zyklus / Review cycle:** jährlich und bei wesentlichen Änderungen / annually and after material changes
 **Zielgruppe / Audience:** Fachinformatiker*innen in Ausbildung, Entwickler*innen, Reviewer und KI-Agenten / IT specialist apprentices, developers, reviewers, and AI agents
 **Dokumenttyp / Document type:** Mitgeltendes Dokument zur Richtlinie Sichere Entwicklung / Related document for the Secure Development Guideline
 
@@ -15,6 +19,10 @@
 **DE:** Die zentrale Richtlinie legt die Pflicht fest: agentische KI darf nur in freigegebenen Sandbox-Umgebungen arbeiten. Diese Leitlinie beschreibt das wiederverwendbare Sandbox-Profil. Projektspezifische Nachweise bleiben im jeweiligen Projekt, typischerweise unter `docs/security/`.
 
 **EN:** The central guideline defines the rule: agentic AI may work only in approved sandbox environments. This guideline describes the reusable sandbox profile. Project-specific evidence stays in the respective project, typically under `docs/security/`.
+
+**DE:** Die Sandbox darf als Container, VM oder gleichwertige Isolation auf dem Entwicklungsrechner laufen. Verbotene direkte Ausführung bedeutet: Der KI-Agentenprozess läuft außerhalb der freigegebenen Isolation mit unbeschränktem Zugriff auf Host, Home-Verzeichnis oder produktionsnahe Ressourcen. Ein bewusst freigegebener, begrenzter Projekt-Mount macht die Sandbox nicht zu einer direkten Host-Ausführung.
+
+**EN:** The sandbox may run as a container, VM, or equivalent isolation on the developer workstation. Prohibited direct execution means that the AI-agent process runs outside approved isolation with unrestricted access to the host, home directory, or production-near resources. An approved, limited project mount does not turn the sandbox into direct host execution.
 
 ## Referenzprofil absdd-image-sandbox / absdd-image-sandbox Reference Profile
 
@@ -116,7 +124,7 @@
 |---|---|
 | `CL_10_Sichere-Entwicklungsumgebung.md` | Entwicklungsumgebung, Toolchains, reproduzierbare Arbeitsweise |
 | `CL_12_Agentische-KI-Sandbox.md` | Agentische KI, Sandbox-Freigabe, Mounts, Netzwerk, Review |
-| `CL_05_Lieferkette_und_Abhaengigkeiten.md` | SBOM, Abhaengigkeiten, Images, Paketquellen |
+| `CL_05_Lieferkette-Build-Integritaet.md` | SBOM, Abhaengigkeiten, Images, Paketquellen |
 | `CL_09_KI-Codeerzeugung.md` | KI-Werkzeuge, KI-Code, AI-SBOM-Anwendbarkeit |
 | `security-governance` | Secure Coding, SBOM, AI-SBOM, regulatorische Anwendbarkeit |
 | `architecture-governance` | Schutzgrenzen, Cloud-/Provider-Abhaengigkeiten, C3A/C5 |
@@ -130,8 +138,23 @@
 
 **EN:** Non-applicable points must not disappear silently. They are documented as `N/A` with a short, concrete rationale. Example: a private learning sandbox may rate NIS2 or DORA as `N/A` when there is no regulated service, market product, or regulated customer role.
 
+## Preflight für Lernende / Learner Preflight
+
+Vor dem ersten Agentenlauf prüft die lernende Person: richtige Sandbox-ID, aktuelles Image, begrenzter Projekt-Mount, keine eingebundenen Secret-Dateien, erwartete Netzwerkregel, Schreibgrenzen des Agenten und vorhandener Rückfallweg über Git. Das Ergebnis wird mit `CL-12` dokumentiert und von einer betreuenden Person stichprobenartig geprüft. / Before the first agent run, the learner checks the sandbox ID, current image, limited project mount, absence of mounted secret files, expected network rule, agent write boundaries, and a Git-based recovery path. The result is documented with `CL-12` and sampled by a supervisor.
+
+## Stop-Regeln / Stop Rules
+
+Der Lauf wird sofort beendet, wenn Secrets sichtbar werden, unerwartete Host-Pfade beschreibbar sind, die Isolation unklar ist, Netzwerkzugriff den freigegebenen Scope überschreitet oder der Agent produktionsnahe Systeme anspricht. Danach werden Zugangsdaten rotiert, Logs gesichert und die Sandbox vor Wiederverwendung neu validiert. / Stop immediately if secrets become visible, unexpected host paths are writable, isolation is unclear, network access exceeds the approved scope, or the agent reaches production-near systems. Then rotate credentials, preserve logs, and revalidate the sandbox before reuse.
+
 ## Pflege / Maintenance
 
 **DE:** Aenderungen an dieser Leitlinie muessen zusammen mit Richtlinie, `CL_12`, Sammelband, Verzahnungsdokument, README und betroffenen Lastenheften geprueft werden. Technische Sandbox-Haertung bleibt ein separater Spec-Kit-Lauf.
 
 **EN:** Changes to this guideline must be reviewed together with the guideline, `CL_12`, compendium, alignment document, README, and affected Lastenhefte. Technical sandbox hardening remains a separate Spec Kit run.
+
+
+## Versionshistorie / Version History
+
+| Version | Datum / Date | Änderung / Change |
+|---|---|---|
+| 1.0.0 | 2026-07-10 | Erstes kontrolliertes Release als mitgeltendes Dokument der sichere-Entwicklung-Basis 3.0.0. / First controlled release as a related document of secure-development baseline 3.0.0. |

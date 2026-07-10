@@ -1,6 +1,7 @@
 # Generischer Leitfaden Sichere Entwicklung / Generic Secure Development Guide
 
-**Stand / Date:** 2026-06-20
+**Stand / Date:** 2026-07-10
+**Baseline-Version / Baseline version:** 3.0.0
 **Zielgruppe / Audience:** Fachinformatik-Auszubildende, Entwickler*innen, Reviewer und KI-Agenten in Level-2-Projekten / IT specialist apprentices, developers, reviewers, and AI agents in level-2 projects
 
 ## Zweck / Purpose
@@ -13,8 +14,8 @@
 
 - **DE:** Nutze die Richtlinie als verbindliche fachliche Orientierung fuer Level-2-Haertungen, Spec-Kit-Laeufe, Code-Reviews und Ausbildungsaufgaben. Nutze die Einzelchecklisten fuer gezielte Pruefungen und den Sammelband fuer eine vollstaendige Projektdurchsicht.
 - **EN:** Use the guideline as the binding technical orientation for level-2 hardening, Spec Kit runs, code reviews, and training tasks. Use the individual checklists for focused reviews and the compendium for a full project review.
-- **DE:** Jeder pruefbare Punkt wird mit Status, Begruendung, Evidenzpfad und naechster Massnahme dokumentiert. Nicht anwendbare Punkte werden nicht geloescht, sondern als `N/A` mit Begruendung festgehalten.
-- **EN:** Every review item records status, rationale, evidence path, and next action. Non-applicable items are not removed; they are marked as `N/A` with a rationale.
+- **DE:** Jeder Prüfpunkt erhält genau einen Wert je Statusachse: Anwendbarkeit (`Applicable`, `N/A`, `Open`) und Umsetzung (`Fulfilled`, `Partly Fulfilled`, `Not Fulfilled`, `Not Assessed`). Dazu kommen Begründung, Evidenzpfad, Owner, Restrisiko, Neubewertungs-Trigger und nächste Maßnahme.
+- **EN:** Every review item receives exactly one value per status axis: applicability and implementation. It also records rationale, evidence path, owner, residual risk, re-evaluation trigger, and next action.
 
 ## Neutralitaetsregel / Neutrality Rule
 
@@ -29,6 +30,8 @@
 | [Richtlinie_Sichere-Entwicklung.md](Richtlinie_Sichere-Entwicklung.md) | Richtlinienaehnliche Grundlage fuer sichere Entwicklung / Policy-like secure-development baseline |
 | [checklisten/](checklisten/) | Zwoelf Einzelchecklisten fuer fokussierte Pruefungen / Twelve individual checklists for focused reviews |
 | [Checklistensammelband_Sichere-Entwicklung.md](Checklistensammelband_Sichere-Entwicklung.md) | Zusammengefuehrter Sammelband fuer vollstaendige Reviews / Combined compendium for full reviews |
+| [baseline-manifest.json](baseline-manifest.json) | Kanonische Dateiliste, Versionen, Statusmodell und erwartete 157 CL-IDs / Canonical file list, versions, status model, and expected 157 CL IDs |
+| [Lernpfad_Sichere-Entwicklung_Lehrjahr-1-bis-3.md](Lernpfad_Sichere-Entwicklung_Lehrjahr-1-bis-3.md) | Sicherheit ab dem ersten Lehrjahr mit wachsender Selbstständigkeit / Security from training year one with increasing independence |
 | [mitgeltende-dokumente/](mitgeltende-dokumente/) | Mitgeltende Leitlinien, Richtlinien und externe Referenzen / Related guidelines, policies, and external references |
 | [mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md](mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md) | Zentrale Mapping-Datei fuer Richtlinie, Checklisten, mitgeltende Dokumente und Governance-Presets / Central mapping file for guideline, checklists, related documents, and governance presets |
 
@@ -48,9 +51,21 @@
 
 **EN:** Swift is considered a memory-safe language in this baseline. This follows from the central MSL allow-list and the CISA memory-safe roadmaps document. Swift projects still need Swift-specific secure-coding review.
 
-**DE:** Lastenhefte fuer spaetere Spec-Kit-Laeufe sollen selbst schon auditfaehig vorbereitet sein. Dazu gehoeren Zweck, Ausgangslage, Zielbild, Scope, Nicht-Ziele, Anforderungen, erwartete Artefakte, Akzeptanzkriterien und ein kopierbarer `/speckit-specify`-Prompt. Der Prompt soll `Applicable`, `N/A`, `Open`, Evidenzpfad und Begruendungspflicht ausdruecklich nennen, wenn Sicherheits- oder Governance-Punkte betroffen sind.
+**DE:** Lastenhefte fuer spaetere Spec-Kit-Laeufe sollen selbst schon auditfaehig vorbereitet sein. Dazu gehoeren Zweck, Ausgangslage, Zielbild, Scope, Nicht-Ziele, Anforderungen, erwartete Artefakte, Akzeptanzkriterien und ein kopierbarer `/speckit-specify`-Prompt. Der Prompt verlangt bei Sicherheits- oder Governance-Punkten beide Statusachsen, Begründung, Evidenzpfad, Owner, Restrisiko und Neubewertungs-Trigger.
 
-**EN:** Requirements documents for later Spec Kit runs should already be prepared in an audit-ready form. They include purpose, context, target state, scope, non-goals, requirements, expected artefacts, acceptance criteria, and a copyable `/speckit-specify` prompt. The prompt should explicitly mention `Applicable`, `N/A`, `Open`, evidence paths, and rationale duties when security or governance items are affected.
+**EN:** Requirements documents for later Spec Kit runs should already be prepared in an audit-ready form. They include purpose, context, target state, scope, non-goals, requirements, expected artefacts, acceptance criteria, and a copyable `/speckit-specify` prompt. For security or governance items, the prompt requires both status axes, rationale, evidence path, owner, residual risk, and re-evaluation trigger.
+
+## Quelle und Erzeugung / Source and Generation
+
+**DE:** Die zwölf Dateien unter `checklisten/` sind die kanonische Quelle. Der Sammelband wird mit `bash scripts/build-secure-development-docs.sh` oder der funktional gleichen PowerShell-Variante erzeugt. `--check` beziehungsweise `-Check` prüft in CI, dass Manifest, Versionen, 157 stabile IDs und Sammelband übereinstimmen. Direkte Änderungen am Sammelband sind nicht zulässig.
+
+**EN:** The twelve files under `checklisten/` are canonical. The compendium is generated with the Bash or functionally equivalent PowerShell generator. Check mode verifies that manifest, versions, 157 stable IDs, and compendium match. Direct compendium edits are not allowed.
+
+## Projektnachweise / Project Evidence
+
+**DE:** Diese Dateien sind Vorlagen. Ausgefüllte Nachweise liegen unter `docs/security/secure-development/<datum>-<scope>/`. Eine positive Aussage ist nur belastbar, wenn die genannte Evidenz existiert und zum geprüften Stand gehört. `N/A` ist eine begründete Anwendbarkeitsentscheidung, kein Ersatz für eine fehlende Umsetzung.
+
+**EN:** These files are templates. Completed evidence lives under `docs/security/secure-development/<date>-<scope>/`. A positive statement is reliable only when the cited evidence exists and belongs to the assessed state. `N/A` is a justified applicability decision, not a substitute for missing implementation.
 
 ## Grenzen / Boundaries
 

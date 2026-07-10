@@ -1,6 +1,10 @@
 # Gebrauch kryptografischer Massnahmen / Use of Cryptographic Measures
 
-**Stand / Date:** 2026-06-19
+**Stand / Date:** 2026-07-10
+**Version / Version:** 1.0.0
+**Baseline-Version / Baseline version:** 3.0.0
+**Verantwortliche Rolle / Responsible role:** Projekt- oder Ausbildungsverantwortung mit Security-Review / Project or training owner with security review
+**Review-Zyklus / Review cycle:** jährlich und bei wesentlichen Änderungen / annually and after material changes
 
 ## Zweck / Purpose
 
@@ -26,6 +30,20 @@
 - **DE:** Jede neue kryptografische Nutzung wird im Review mit Zweck, Datenart, Algorithmus, Schluesselablage und Fehlermodus dokumentiert.
 - **EN:** Each new cryptographic use is reviewed with purpose, data type, algorithm, key storage, and failure mode.
 
+## Entscheidungsweg / Decision Path
+
+1. Kläre das Schutzziel: Vertraulichkeit, Integrität, Authentizität oder Passwortschutz.
+2. Nutze zuerst eine gepflegte Plattformfunktion oder ein etabliertes Protokoll, zum Beispiel TLS, .NET Cryptography, Java Cryptography Architecture, Go `crypto`, RustCrypto oder Apple CryptoKit/Keychain.
+3. Dokumentiere Algorithmus, Modus, Schlüsselherkunft, Speicherung, Rotation, Widerruf und sicheren Fehlerfall.
+4. Vermeide feste Schlüssel, wiederverwendete Nonces, deaktivierte Zertifikatsprüfung und eigene Protokolle.
+5. Hole Fachreview ein, wenn Schlüssel geteilt werden, Signaturen rechtliche Wirkung haben, Langzeitschutz nötig ist oder Standards widersprüchlich wirken.
+
+*Clarify the protection goal; prefer maintained platform APIs and established protocols; document algorithm, key lifecycle, rotation, revocation, and safe failure; avoid hard-coded keys, nonce reuse, disabled certificate checks, and custom protocols; request specialist review for high-impact or unclear use.*
+
+## Schlüssel-Lebenszyklus / Key Lifecycle
+
+Der Nachweis umfasst Erzeugung, Verteilung, Speicherung, Nutzung, Rotation, Sperrung, Wiederherstellung und sichere Löschung. Entwickler*innen dürfen keine geheimen Schlüssel in Beispielcode, Tickets oder Screenshots übernehmen. / Evidence covers generation, distribution, storage, use, rotation, revocation, recovery, and secure deletion. Developers must not place secret keys in sample code, tickets, or screenshots.
+
 ## Für Auszubildende kurz erklärt / Short Explanation for Apprentices
 
 **DE:** Kryptografie ist ein Werkzeugkasten für Schutz von Vertraulichkeit, Integrität und Authentizität. Der wichtigste Grundsatz lautet: Keine eigene Kryptografie bauen. Nutze geprüfte Bibliotheken und sichere Standardkonfigurationen.
@@ -50,3 +68,10 @@
 
 - `security-governance`: Secure Coding, ASVS, Dependency Audit, Supply Chain Evidence.
 - `architecture-governance`: Trust Boundaries, Secure Configuration, S-ADR.
+
+
+## Versionshistorie / Version History
+
+| Version | Datum / Date | Änderung / Change |
+|---|---|---|
+| 1.0.0 | 2026-07-10 | Erstes kontrolliertes Release als mitgeltendes Dokument der sichere-Entwicklung-Basis 3.0.0. / First controlled release as a related document of secure-development baseline 3.0.0. |

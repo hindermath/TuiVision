@@ -1,7 +1,8 @@
 # Mitgeltende Dokumente / Related Documents
 
-**Stand / Date:** 2026-06-26
+**Stand / Date:** 2026-07-10
 **Zielgruppe / Audience:** Fachinformatiker*innen in Ausbildung, Entwickler*innen, Reviewer und KI-Agenten / IT specialist apprentices, developers, reviewers, and AI agents
+**Baseline-Version / Baseline version:** 3.0.0
 
 ## Zweck / Purpose
 
@@ -26,6 +27,8 @@
 | [Datenschutzleitlinie.md](Datenschutzleitlinie.md) | Datenschutz in Entwicklungsprojekten / Privacy in development projects |
 | [Leitlinie_Sicheres-Softwaredesign.md](Leitlinie_Sicheres-Softwaredesign.md) | Sicheres Design und Architekturentscheidungen / Secure design and architecture decisions |
 | [BCM-Notfallhandbuch.md](BCM-Notfallhandbuch.md) | Betriebsstabilitaet und Notfallfaehigkeit / Resilience and emergency readiness |
+| [Standardsregister_Sichere-Entwicklung.md](Standardsregister_Sichere-Entwicklung.md) | Kontrollierte Standardfassungen, Primärquellen und Prüftage / Controlled standard versions, primary sources, and review dates |
+| [Lernpfad Lehrjahr 1 bis 3](../Lernpfad_Sichere-Entwicklung_Lehrjahr-1-bis-3.md) | Lernprogression für sichere Entwicklung ab dem ersten Ausbildungsjahr / Secure-development progression from the first training year |
 | [Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md](Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md) | Mapping zwischen Richtlinie, Checklisten, mitgeltenden Dokumenten und Spec-Kit-Presets / Mapping between guideline, checklists, related documents, and Spec Kit presets |
 | [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.pdf](THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.pdf) | CISA-Referenz zu Memory-Safe Roadmaps / CISA reference on memory-safe roadmaps |
 | [THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.EN.md](THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.EN.md) | Extrahierte englische Markdown-Arbeitsfassung / Extracted English Markdown working copy |
@@ -34,9 +37,9 @@
 
 ## Abgleich mit Spec-Kit-Presets / Alignment With Spec Kit Presets
 
-**DE:** Die Dokumente duerfen den sechs Governance-Presets nicht widersprechen. Bei neuen Spec-Kit-Laeufen gelten sie als fachliche Eingabe fuer die Anwendbarkeitspruefung. Nicht anwendbare Punkte werden als `N/A` mit kurzer Begruendung dokumentiert.
+**DE:** Die Dokumente duerfen den sechs Governance-Presets nicht widersprechen. Bei neuen Spec-Kit-Laeufen gelten sie als fachliche Eingabe. Jeder Prüfpunkt erhält getrennt eine Anwendbarkeit (`Applicable`, `N/A`, `Open`) und einen Umsetzungsstatus (`Fulfilled`, `Partly Fulfilled`, `Not Fulfilled`, `Not Assessed`). Nicht anwendbare Punkte werden als `N/A` mit kurzer Begründung dokumentiert.
 
-**EN:** The documents must not conflict with the six governance presets. In new Spec Kit runs, they are input for applicability review. Non-applicable items are recorded as `N/A` with a short rationale.
+**EN:** The documents must not conflict with the six governance presets. In new Spec Kit runs, they are technical input. Each item receives a separate applicability and implementation status. Non-applicable items are recorded as `N/A` with a short rationale.
 
 **DE:** Die Datei [Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md](Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md) ist die zentrale Lesefuehrung. Sie zeigt fuer jedes mitgeltende Dokument den Richtlinienbezug, die passenden Checklisten, die betroffenen Presets und typische Evidenzpfade. Nutze sie zuerst, wenn ein Spec-Kit-Lauf oder Review vorbereitet wird.
 
@@ -68,3 +71,5 @@
 **DE:** Aenderungen an diesen Dokumenten werden zusammen mit Richtlinie, Checklisten, Sammelband, Agenten-Dateien und betroffenen Skripten geprueft. Projektspezifische Nachweise bleiben in `docs/security/` des jeweiligen Projekts.
 
 **EN:** Changes to these documents are reviewed together with the guideline, checklists, compendium, agent files, and affected scripts. Project-specific evidence stays in each project's `docs/security/` folder.
+
+Die kanonische Dateiliste und alle Versionen stehen in [`../baseline-manifest.json`](../baseline-manifest.json). Der Sammelband wird ausschließlich aus den zwölf Einzelchecklisten erzeugt; direkte Änderungen am Sammelband werden beim Generatorcheck verworfen. / The canonical file list and all versions are stored in [`../baseline-manifest.json`](../baseline-manifest.json). The compendium is generated only from the twelve individual checklists; direct compendium changes fail the generator check.

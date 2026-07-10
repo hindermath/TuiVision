@@ -1,6 +1,10 @@
 # Datenschutzleitlinie / Privacy Guideline
 
-**Stand / Date:** 2026-06-19
+**Stand / Date:** 2026-07-10
+**Version / Version:** 1.0.0
+**Baseline-Version / Baseline version:** 3.0.0
+**Verantwortliche Rolle / Responsible role:** Projekt- oder Ausbildungsverantwortung mit Security-Review / Project or training owner with security review
+**Review-Zyklus / Review cycle:** jährlich und bei wesentlichen Änderungen / annually and after material changes
 
 ## Zweck / Purpose
 
@@ -25,6 +29,20 @@
 
 **EN:** Suitable evidence includes data-flow notes, DPIA checklist, test-data concept, logging review, or `N/A` rationale.
 
+## Praktischer Ablauf / Practical Workflow
+
+1. Erstelle ein kleines Dateninventar: Datenart, betroffene Person, Zweck, Quelle, Empfänger und Aufbewahrung.
+2. Prüfe Datenminimierung, Zugriff, Löschung und sichere Voreinstellungen bereits in Spezifikation und Design.
+3. Verwende synthetische Testdaten. Reale Daten benötigen eine dokumentierte Ausnahme und zusätzlichen Schutz.
+4. Prüfe Logs, Exporte, Backups, Telemetrie und KI-Prompts auf personenbezogene Daten.
+5. Nutze `CL-11` für die Schwellenwertprüfung einer Datenschutz-Folgenabschätzung. Rechtliche Unsicherheit wird an eine zuständige Datenschutzrolle eskaliert.
+
+*Create a small data inventory; check minimisation, access, deletion, and privacy-friendly defaults during specification and design; use synthetic test data; review logs, exports, backups, telemetry, and AI prompts; and use `CL-11` for the DPIA threshold review. Escalate legal uncertainty to a responsible privacy role.*
+
+## Betroffenenrechte und Aufbewahrung / Data Subject Rights and Retention
+
+Wenn das Projekt personenbezogene Daten speichert, muss es erklären, wie Auskunft, Berichtigung, Löschung und Export technisch unterstützt oder an eine zuständige Stelle übergeben werden. Aufbewahrungsfristen haben einen Zweck und einen Löschweg; „für immer“ ist kein sicherer Standard. / If the project stores personal data, it must explain how access, correction, deletion, and export are technically supported or handed to a responsible role. Retention periods need a purpose and a deletion path; “forever” is not a safe default.
+
 ## Für Auszubildende kurz erklärt / Short Explanation for Apprentices
 
 **DE:** Datenschutz bedeutet nicht nur „keine Daten verlieren". Es bedeutet auch: Nur nötige personenbezogene Daten verarbeiten, Testdaten bewusst wählen, Logs sauber halten und Betroffene nicht unnötig gefährden.
@@ -43,3 +61,10 @@
 - `security-governance`: Standards Applicability, ASVS, Regulatory Applicability.
 - `architecture-governance`: Trust Boundaries, Threat Model.
 - `a11y-governance`: Verstaendliche, barrierearme Datenschutzhinweise.
+
+
+## Versionshistorie / Version History
+
+| Version | Datum / Date | Änderung / Change |
+|---|---|---|
+| 1.0.0 | 2026-07-10 | Erstes kontrolliertes Release als mitgeltendes Dokument der sichere-Entwicklung-Basis 3.0.0. / First controlled release as a related document of secure-development baseline 3.0.0. |
