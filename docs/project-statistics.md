@@ -81,21 +81,21 @@ fortgeschrieben.
 | Kennzahl | Wert |
 |---|---:|
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-11 |
-| Git-Commits gesamt | 409 |
+| Git-Commits gesamt | 410 |
 | Autoren laut Git | 1 |
 | Sichtbare Aktivtage inkl. aktuellem Working Tree | 68 |
 | Produktionscode aktuell | 160 Dateien / 20766 Zeilen |
 | Testcode aktuell | 98 Dateien / 14047 Zeilen |
-| Dokumentation aktuell | 485 Dateien / 176911 Zeilen |
-| Davon Spec-Kit-Artefakte | 290 Dateien / 38818 Zeilen |
+| Dokumentation aktuell | 485 Dateien / 176913 Zeilen |
+| Davon Spec-Kit-Artefakte | 290 Dateien / 38819 Zeilen |
 | Davon Governance/Agent-Dateien | 5 Dateien / 2246 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 211724 Zeilen |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 211726 Zeilen |
 | Erfahrener Entwickler, konservative Untergrenze | 2646.6 Arbeitstage |
-| Erfahrener Entwickler, konservative Untergrenze in Stunden | 20643.1 Stunden (211724 / 80 * 7.8) |
+| Erfahrener Entwickler, konservative Untergrenze in Stunden | 20643.3 Stunden (211726 / 80 * 7.8) |
 | Erfahrener Entwickler, brutto | 123.1 Arbeitsmonate (21.5 Tage/Monat) |
 | Erfahrener Entwickler, TVoeD-Annahme | 139.3 Kalendermonate bzw. 11.6 Jahre |
 | Thorsten solo, erfahrungsadjustierte Untergrenze | 1693.8 Arbeitstage |
-| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 13211.6 Stunden (211724 / 125 * 7.8) |
+| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 13211.7 Stunden (211726 / 125 * 7.8) |
 | Thorsten solo, brutto | 78.8 Arbeitsmonate (21.5 Tage/Monat) |
 | Thorsten solo, TVoeD-Annahme | 89.1 Kalendermonate bzw. 7.4 Jahre |
 | Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 1058.6 Arbeitstage |
@@ -614,6 +614,7 @@ fortgeschrieben.
 | 2026-07-11 | Tasks- und Analyze-Konvergenz für `016-secure-development-hardening` | `/speckit-tasks` erzeugte 148 fortlaufende, bewusst serialisierte Aufgaben: 28 für die auditfähige 157-Control-Basis, 20 für bounded Remediation, 18 für Supply Chain/SBOM, 17 für Bash-/PowerShell- und Agent-Parität, 9 für text-first A11Y sowie Setup-, Governance-, Validierungs- und Remote-Delivery-Aufgaben bis Merge und lokalem `main`-Sync. Der erste Analyze-Pass fand drei mittlere Reihenfolgeprobleme; `pr-evidence.md` entsteht nun vor jedem Preflight-Nachweis, aktive Kontexte/Archiv/Statistik werden vor DocFX aktualisiert und Agent-Parität wird danach geprüft. Ein zweiter Pass ergänzte das exakte Statusvokabular in T009. Der abschließende read-only Pass meldet 66/66 FR-/CR-/SC-Anforderungen abgedeckt, 148/148 gültige Tasks, keine unmapped Tasks, keine Constitution-Abweichung und keine CRITICAL-, HIGH-, MEDIUM- oder implementierungsrelevanten LOW-Funde. `Directory.Build.props` wurde ohne Build-/Testausführung auf `1.16.3.60` für den dritten 016-Branch-Commit ausgerichtet; `git diff --check` ist sauber. |
 | 2026-07-11 | `/speckit-implement` fuer `016-secure-development-hardening` | Der querschnittliche Secure-Development-Lauf bewertete alle 157 Kontrollen mit 65 `Applicable`, 13 `AlreadySatisfied`, 38 `N/A`, 36 human-only `Open` und 5 benannten `FollowUp`. Sieben Funde wurden begrenzt behoben: sechs Medium-Funde zu Security-Evidence, immutable GitHub-Action-Pins, Disclosure-/Dependency-/SBOM-Automation, sicherer Bash-/PowerShell-Archivierung und negativer persistierter Counts sowie ein Low-Fund zur DocFX-Ressourcenpublikation. Neue Runtime-Pakete, Produkt-AI, Cloud- oder Rechtsclaims wurden nicht eingefuehrt. Die Lastenheft-Datei wurde commit-frei als `Lastenheft_Secure-Development-Hardening.016-secure-development-hardening.md` archiviert; Agent-Kontexte und Pflichtenheft zeigen auf die Wave-1-Visual-Remediation. Lokale Validierung: Format/Diff/YAML/Shell sauber, 498/498 Release-Tests, Coverage Core 89,78 %, Controls 84,84 %, Serialization 88,44 %, Compatibility 80,55 % und Drivers.Console 81,70 %, DocFX 0 Warnungen/0 Fehler sowie Playwright/axe 2/2. Finales Implementierungsvolumen ohne diese Statistikdatei: `+1932/-935` Zeilen, darunter `+14` Produktions-C#, `+200` Testcode einschließlich Script-Contract-Harness, `+1332/-866` Dokumentation/Evidence/Guidance und `+386/-69` Automation/Metadaten; der gesamte 016-Lauf seit `main` liegt ohne Statistikpflege bei `+3449/-800` beziehungsweise `2649` Nettozeilen. Konservative Manualreferenz fuer die `1932` hinzugefuegten oder aktualisierten Implementierungszeilen: 80 Zeilen/Tag = `24,2` Tage (ca. `188,4` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `15,5` Tage (ca. `120,6` Stunden). Sichtbares Arbeitsfenster: autonome Spec-Kit-/Implementierungssitzung am 2026-07-11; `24,2x` und `15,5x` sind blended repository speedups, keine Stoppuhrmessung. |
 | 2026-07-11 | PR-#33-Windows-CI-Nacharbeit fuer `016-secure-development-hardening` | Beide Windows-2022-Homogeneity-Jobs zeigten denselben plattformspezifischen Contract-Harness-Fehler: Git Bash übergab den MSYS-Pfad `/d/...` an Windows PowerShell, sodass `Get-Help` und nachfolgende `-File`-Aufrufe das Skript nicht auflösen konnten. Der Harness normalisiert deshalb ausschließlich unter `OS=Windows_NT` und vorhandenem `cygpath` den PowerShell-Pfad mit `cygpath -w`; macOS/Linux und die Produktionsskripte bleiben unverändert. Lokale Revalidierung: Bash-Syntax sauber und 18/18 Rename-Vertragsassertions grün; der erneute Windows-Matrixlauf bleibt Merge-Gate. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `+7` Test-Harness-Zeilen und `+3` Feature-Evidence-Zeilen. `Directory.Build.props` steht nach einem Testlauf und vor dem sechsten Branch-Commit auf `1.16.6.69`. |
+| 2026-07-11 | PR-#33-CI-/Review-Konvergenz fuer `016-secure-development-hardening` | Der erneute Lauf ist auf Ubuntu, macOS und Windows einschließlich Build/Test, DocFX, Supply Chain, Homogeneity, Gitleaks, Agent-Secret-Scan und Claude Review vollständig grün; beide korrigierten Windows-Jobs bestätigen den nativen PowerShell-Pfad. Der thread-aware Review-Abruf meldet 0 Review-Threads und 0 Konversationskommentare. Copilot konnte wegen ausgeschöpfter Nutzerquota keinen Review erzeugen und lieferte keinen Codefund; die erforderliche Human-Approval-Regel bleibt deshalb als einziger Merge-State-Block sichtbar. T146 ist abgeschlossen, `Directory.Build.props` steht für den siebten Branch-Commit ohne weiteren Testlauf auf `1.16.7.69`. |
 
 ## Gesamtstatistik
 
@@ -623,15 +624,15 @@ nächsten Statistiklauf eine dokumentierte Momentaufnahme.
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | 211724 Zeilen |
+| Artefaktbasis gesamt | 211726 Zeilen |
 | Produktions- und Testcode zusammen | 34813 Zeilen (16.4 %) |
-| Dokumentationsanteil | 176911 Zeilen (83.6 %) |
-| Spec-Kit-Anteil innerhalb der Doku | 38818 Zeilen (21.9 %) |
+| Dokumentationsanteil | 176913 Zeilen (83.6 %) |
+| Spec-Kit-Anteil innerhalb der Doku | 38819 Zeilen (21.9 %) |
 | Governance-/Agent-Anteil innerhalb der Doku | 2246 Zeilen (1.3 %) |
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-11 |
-| Git-Commits / sichtbare Aktivtage | 409 / 68 |
+| Git-Commits / sichtbare Aktivtage | 410 / 68 |
 | Gesamtzeilen pro sichtbarem Aktivtag | 3113.6 |
-| Gesamtzeilen pro Commit | 517.7 |
+| Gesamtzeilen pro Commit | 516.4 |
 | Konservative Einzelentwickler-Untergrenze | 2646.6 Arbeitstage / 20643.1 Stunden |
 | Thorsten-Solo-Untergrenze | 1693.8 Arbeitstage / 13211.3 Stunden |
 | Kleines 3er-Team mit Koordinationsaufschlag | 1058.6 Arbeitstage |
@@ -656,7 +657,7 @@ measure personal working time.
 Artefaktmix nach Snapshot (Zeilen)
 Produktion     | ###                           |  20766 |  9.8 %
 Tests          | ##                            |  14047 |  6.6 %
-Dokumentation  | ##############################| 176911 | 83.6 %
+Dokumentation  | ##############################| 176913 | 83.6 %
 ```
 
 Die Balken verwenden dieselbe Skala. Die Zahlen bleiben der genaue,

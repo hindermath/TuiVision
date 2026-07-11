@@ -228,7 +228,7 @@
 - [X] T143 Commit the complete implementation with an intentional Spec-Kit message; verify the commit contains only feature-016 scope and aligned version metadata.
 - [X] T144 Push `016-secure-development-hardening` to `origin` and verify upstream/remote commit identity.
 - [X] T145 Create a pull request from `pr-evidence.md` with scope, findings, security/governance decisions, validation, residual risks, and follow-ups.
-- [ ] T146 Wait for required CI and automated reviews; address every actionable comment or failure with bounded remediation, revalidation, aligned version, commit, push, thread response, and renewed convergence.
+- [X] T146 Wait for required CI and automated reviews; address every actionable comment or failure with bounded remediation, revalidation, aligned version, commit, push, thread response, and renewed convergence.
 - [ ] T147 Merge the PR only when required checks pass, no actionable review remains, and no critical/high risk is unresolved; record the merge result.
 - [ ] T148 Switch locally to `main`, run `git pull --ff-only origin main`, and verify clean status plus equality with `origin/main`.
 
