@@ -1,5 +1,31 @@
 # Supply-Chain-Evidenz / Supply Chain Evidence: [PROJECT]
 
+## Spec-Kit-Laufnachweis / Spec-Kit Run Evidence
+
+- Feature / Spec-ID:
+- Spec-Kit-Phase / Spec-Kit phase: [specify / plan / tasks / implement / review / release]
+- Branch / Commit / PR:
+- Datum des Laufs / Run date:
+- Evidenzverantwortliche*r / Evidence owner:
+- Reviewende Person / Reviewer:
+- Geprüfte Standards/Kriterien / Standards or criteria checked: SBOM, AI-SBOM, VEX, SLSA provenance, OpenSSF Scorecard, CRA applicability where relevant
+- Entscheidung / Decision: [Applicable / N/A / Open]
+- Evidenzpfad / Evidence path:
+- N/A-Begründung, falls nicht anwendbar / N/A rationale, if not applicable:
+- Offene Folgeaktion mit Owner und Auslöser / Open follow-up owner and trigger:
+- Auslöser für Neubewertung / Re-evaluation trigger:
+- Belastbarkeitsnotiz / Assurance note: Diese Datei dokumentiert den konkreten Spec-Kit-Lauf als interne Audit- und Zertifizierungsvorbereitung. Sie ersetzt keine externe Auditierung, Rechtsberatung oder formale Zertifizierung.
+
+## Audit-Evidenzmatrix / Audit Evidence Matrix
+
+| Prüfpunkt / Checkpoint | Anwendbarkeit / Applicability | Erzeugte oder verlinkte Evidenz / Evidence produced or linked | Ergebnis / Result | Restrisiko oder Begründung / Residual risk or rationale |
+|---|---|---|---|---|
+| Spec-Kit-Lauf und Scope sind identifiziert / Spec-Kit run and scope are identified | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Standard- oder Kriterienbezug ist zugeordnet / Standard or criteria mapping is recorded | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Evidenzpfad ist dokumentiert / Evidence path is documented | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Nichtanwendbarkeit ist begründet / Non-applicability is justified | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Offene Punkte haben Owner und Auslöser / Open findings have owner and trigger | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+
 **Projekt / Project**: [Level-2 project name]
 **Artefakt / Artefact scope**: [Release / package / container / binary / docs]
 **Reviewer**: [Name]
@@ -7,7 +33,7 @@
 **Constitution-Referenz / Constitution Reference**: Principle XIV, Principle XVI
 
 <!--
-  Dieses Dokument buendelt die Evidenz fuer SBOM, AI-SBOM, VEX,
+  Dieses Dokument bündelt die Evidenz für SBOM, AI-SBOM, VEX,
   Provenance/SLSA und gegebenenfalls OpenSSF Scorecard in einem Ort.
 
   This document consolidates evidence for SBOM, AI-SBOM, VEX,
@@ -34,7 +60,7 @@
 
 **Anwendbarkeit / Applicability**: [Gilt / N/A]
 
-**Begruendung / Rationale**: [KI nur Entwicklungswerkzeug / keine KI im ausgelieferten oder betriebenen System / KI-Runtime-Komponente vorhanden / andere Begruendung]
+**Begründung / Rationale**: [KI nur Entwicklungswerkzeug / keine KI im ausgelieferten oder betriebenen System / KI-Runtime-Komponente vorhanden / andere Begründung]
 
 | G7/BSI Cluster | Evidenz / Evidence | Status |
 |---|---|---|
@@ -43,12 +69,12 @@
 | Models | [Modellname, Version, Anbieter, Lizenz/Nutzung] | |
 | Datasets | [Trainings-, Fine-Tuning-, Embedding- oder RAG-Daten, soweit bekannt] | |
 | Infrastructure | [Inference-Provider, Hosting, Runtime, Deployment-Region] | |
-| Security properties | [Zugriff, Logging, Datenfluesse, Schutzmassnahmen, Abuse Controls] | |
-| Key performance indicators | [Qualitaets-, Sicherheits- oder Betriebs-KPIs] | |
+| Security properties | [Zugriff, Logging, Datenflüsse, Schutzmaßnahmen, Abuse Controls] | |
+| Key performance indicators | [Qualitäts-, Sicherheits- oder Betriebs-KPIs] | |
 
 Hinweis / Note: Wenn KI nur als Entwicklungswerkzeug genutzt wird und keine
 KI-Komponente Teil des ausgelieferten oder betriebenen Systems ist, `AI-SBOM`
-als `N/A` mit kurzer Toolchain-Begruendung dokumentieren.
+als `N/A` mit kurzer Toolchain-Begründung dokumentieren.
 
 ## 4. VEX / Vulnerability Exploitability eXchange
 
@@ -84,5 +110,5 @@ als `N/A` mit kurzer Toolchain-Begruendung dokumentieren.
 - OpenSSF Scorecard: [openssf.org/projects/scorecard](https://openssf.org/projects/scorecard/)
 
 <!-- EN: supply-chain-evidence-template.md
-[DE-Zusammenfassung: Template fuer SBOM-, AI-SBOM-, VEX-, Provenance/SLSA- und OpenSSF-Scorecard-Evidenz an einer zentralen Stelle.]
+[DE-Zusammenfassung: Template für SBOM-, AI-SBOM-, VEX-, Provenance/SLSA- und OpenSSF-Scorecard-Evidenz an einer zentralen Stelle.]
 -->

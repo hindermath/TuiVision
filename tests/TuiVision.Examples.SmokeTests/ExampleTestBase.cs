@@ -354,6 +354,8 @@ public abstract class ExampleTestBase
     /// <returns>Der Regionstext. / The region text.</returns>
     protected static string BufferRegionToText(TConsoleBuffer buffer, TRect region)
     {
+        // Clipping macht die Assertion bei kleinen Terminals stabil, beweist aber nur den sichtbaren Schnittbereich.
+        // Clipping keeps the assertion stable on small terminals but proves only the visible intersection.
         int left = Math.Clamp(region.A.X, 0, buffer.Width);
         int top = Math.Clamp(region.A.Y, 0, buffer.Height);
         int right = Math.Clamp(region.B.X, left, buffer.Width);

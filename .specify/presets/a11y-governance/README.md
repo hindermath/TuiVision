@@ -1,6 +1,6 @@
 # A11Y Governance Preset
 
-Version: `0.2.0`
+Version: `0.4.0`
 Requires: `spec-kit >= 0.8.0` (uses the `wrap` and `append` composition
 strategies introduced in 0.8.x).
 
@@ -8,6 +8,8 @@ Purpose:
 
 - inject accessibility, bilingual-delivery, and CEFR-B2 readability
   expectations into Spec Kit
+- make didactic inline-code-comment review explicit for new or changed
+  non-trivial logic
 - preserve the `Programmierung #include<everyone>` principle as a
   reusable preset instead of a local-only policy
 
@@ -25,6 +27,8 @@ Standards and rules in scope:
 - `CEFR Level B2` readability target for user-facing prose
 - German orthographic correctness (umlauts and `ß`, no ASCII fallbacks)
 - Code-block language tagging discipline (no bare ` ``` ` fences)
+- Didactic inline-code comments for non-trivial logic when learning
+  comprehension or maintainability benefits
 - Agent-file parity across `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and
   `.github/copilot-instructions.md`
 - A11Y coverage for `CLI`, `documentation`, `HTML`, `UI`, and generated
@@ -43,12 +47,15 @@ Preset strategy:
 
 Evidence templates included:
 
+- Spec-Kit run evidence fields are embedded in the evidence templates to support audit-ready applicability, N/A rationale, reviewer, and follow-up records.
 - `a11y-checklist-template` (WCAG 2.2 AA criteria coverage)
 - `bilingual-content-check-template` (DE/EN headings, German
   orthography, CEFR-B2 readability, `*.EN.md` companion guidance)
 - `cli-a11y-review-template` (text mode, `NO_COLOR`, screen reader,
   Braille)
 - `a11y-evidence-template`
+- `didactic-code-comment-check-template` (comment-needed review for
+  non-trivial code logic)
 
 Default evidence location: `docs/accessibility/`.
 
@@ -58,6 +65,8 @@ When to use:
   `UI`, or generated templates
 - teams that want accessibility, bilingual delivery, and readability
   treated as first-class planning concerns
+- learning, training, or reference projects where non-trivial code logic
+  should remain understandable for apprentices and future maintainers
 
 When not to use:
 
@@ -70,6 +79,10 @@ Coverage note:
   read or edit them
 - CLI output, review checklists, and bilingual delivery all belong to
   the preset's scope
+
+Release notes:
+
+- `v0.4.0` adds audit-ready Spec-Kit run evidence fields so generated Markdown documents and checklists can record applicability, N/A rationale, reviewer, evidence path, residual risk, and follow-up per standards-relevant Spec-Kit run.
 
 Recommended standalone install priority:
 

@@ -95,6 +95,8 @@ public sealed class THelpViewer : TScroller
             return false;
         }
 
+        // Der Ausgangskontext wird vor der Fallback-Auflösung gesichert, damit Zurück immer zum sichtbaren Thema führt.
+        // The source context is saved before fallback resolution so Back always returns to the visible topic.
         _navigationHistory.Push(CurrentTopic.Context);
         OpenContext(CurrentTopic.CrossReferences[SelectedReferenceIndex].TargetContext);
         return true;

@@ -1,5 +1,31 @@
 # Sicherheits-Checkliste / Security Checklist: [PROJECT / FEATURE]
 
+## Spec-Kit-Laufnachweis / Spec-Kit Run Evidence
+
+- Feature / Spec-ID:
+- Spec-Kit-Phase / Spec-Kit phase: [specify / plan / tasks / implement / review / release]
+- Branch / Commit / PR:
+- Datum des Laufs / Run date:
+- Evidenzverantwortliche*r / Evidence owner:
+- Reviewende Person / Reviewer:
+- Geprüfte Standards/Kriterien / Standards or criteria checked: ISO 27001/27002 A.8.28, secure-coding language profile, CWE Top 25, OWASP Proactive Controls
+- Entscheidung / Decision: [Applicable / N/A / Open]
+- Evidenzpfad / Evidence path:
+- N/A-Begründung, falls nicht anwendbar / N/A rationale, if not applicable:
+- Offene Folgeaktion mit Owner und Auslöser / Open follow-up owner and trigger:
+- Auslöser für Neubewertung / Re-evaluation trigger:
+- Belastbarkeitsnotiz / Assurance note: Diese Datei dokumentiert den konkreten Spec-Kit-Lauf als interne Audit- und Zertifizierungsvorbereitung. Sie ersetzt keine externe Auditierung, Rechtsberatung oder formale Zertifizierung.
+
+## Audit-Evidenzmatrix / Audit Evidence Matrix
+
+| Prüfpunkt / Checkpoint | Anwendbarkeit / Applicability | Erzeugte oder verlinkte Evidenz / Evidence produced or linked | Ergebnis / Result | Restrisiko oder Begründung / Residual risk or rationale |
+|---|---|---|---|---|
+| Spec-Kit-Lauf und Scope sind identifiziert / Spec-Kit run and scope are identified | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Standard- oder Kriterienbezug ist zugeordnet / Standard or criteria mapping is recorded | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Evidenzpfad ist dokumentiert / Evidence path is documented | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Nichtanwendbarkeit ist begründet / Non-applicability is justified | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Offene Punkte haben Owner und Auslöser / Open findings have owner and trigger | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+
 **Projekt / Project**: [Level-2 project name]
 **Sprache / Language**: [Primary language from Level-2 registry]
 **Prüfer / Reviewer**: [Name]
@@ -8,7 +34,7 @@
 
 <!--
   Diese Checkliste wird bei Code-Reviews für sicherheitsrelevante Änderungen verwendet.
-  Wähle den sprachspezifischen Abschnitt passend zum Level-2-Projekt und pflege die Detailpruefung in secure-coding-language-rules-template.md.
+  Wähle den sprachspezifischen Abschnitt passend zum Level-2-Projekt und pflege die Detailprüfung in secure-coding-language-rules-template.md.
   Nicht zutreffende Punkte mit N/A markieren und begründen.
 
   This checklist is used during code reviews for security-relevant changes.
@@ -57,9 +83,9 @@
 
 ## Detaillierte Sprachprofile / Detailed Language Profiles
 
-- [ ] Die anwendbaren Detailregeln aus `secure-coding-language-rules-template.md` wurden ausgefuellt oder als N/A begruendet.
-- [ ] MSL-Status wurde nicht als Ersatz fuer die sprachspezifische Secure-Coding-Pruefung verwendet.
-- [ ] Rust, Go, Swift, Java/Kotlin, Python und TypeScript/JavaScript wurden bei Bedarf gegen die neuen Profile geprueft.
+- [ ] Die anwendbaren Detailregeln aus `secure-coding-language-rules-template.md` wurden ausgefüllt oder als N/A begründet.
+- [ ] MSL-Status wurde nicht als Ersatz für die sprachspezifische Secure-Coding-Prüfung verwendet.
+- [ ] Rust, Go, Swift, Java/Kotlin, Python und TypeScript/JavaScript wurden bei Bedarf gegen die neuen Profile geprüft.
 
 ## C# / .NET — Spezifische Prüfpunkte / C# / .NET Specific Checks
 
@@ -123,5 +149,5 @@
 [Freitext für Anmerkungen / Free text for notes]
 
 <!-- EN: security-checklist-template.md
-[DE-Zusammenfassung: Sprachspezifische Sicherheits-Checkliste fuer Code-Reviews, abgeleitet aus Constitution Principle XII.]
+[DE-Zusammenfassung: Sprachspezifische Sicherheits-Checkliste für Code-Reviews, abgeleitet aus Constitution Principle XII.]
 -->

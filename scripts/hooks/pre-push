@@ -6,30 +6,157 @@
 set -euo pipefail
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
+zero_sha="0000000000000000000000000000000000000000"
+regex_files=()
 
-secret_content_regex='(id_token|access_token|refresh_token|api[_-]?key|client[_-]?secret|password\s*=|authorization:\s*bearer|bearer\s+[A-Za-z0-9\-._~+/]+=*|sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AIza[0-9A-Za-z_-]{20,}|AKIA[0-9A-Z]{16}|-----BEGIN (RSA|OPENSSH|EC|DSA) PRIVATE KEY-----)'
+secret_content_regex='(id_token|access_token|refresh_token|api[_-]?key|client[_-]?secret|password[[:space:]]*=|authorization:[[:space:]]*bearer|bearer[[:space:]]+[A-Za-z0-9._~+/=-]*|sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AIza[0-9A-Za-z_-]{20,}|AKIA[0-9A-Z]{16}|-----BEGIN (RSA|OPENSSH|EC|DSA) PRIVATE KEY-----)'
 secret_name_regex='(auth\.json|(^|\/)\.env(\.[^.]+)?$|[^/]*(secret|credential|creds)[^/]*\.(json|yaml|yml|xml|ini|cfg|conf|toml)|[^/]*id_rsa[^/]*|[^/]*\.(pem|key|p12|pfx))$'
+allowed_secret_name_regex='(^|/)\.env\.(example|sample|template|dist)$'
+allowed_secret_content_path_regex='(^|/)scripts/(hooks/pre-push|scan-agent-secrets\.(sh|ps1)|lib/hg-secrets\.(sh|ps1))$'
 
 echo "pre-push: Prüfe git-getrackte Dateien auf Secrets …"
 
-# Nur Dateien prüfen, die git kennt (respektiert .gitignore)
+regex_file_known() {
+  local candidate="$1"
+  local existing
+  for existing in "${regex_files[@]+"${regex_files[@]}"}"; do
+    [ "$existing" = "$candidate" ] && return 0
+  done
+  return 1
+}
+
+add_regex_file() {
+  local rel_file="$1"
+  local abs_file=""
+
+  [ -n "$rel_file" ] || return 0
+  if ! git -C "$REPO_ROOT" ls-files --error-unmatch -- "$rel_file" >/dev/null 2>&1; then
+    return 0
+  fi
+
+  abs_file="$REPO_ROOT/$rel_file"
+  regex_file_known "$abs_file" && return 0
+  regex_files+=("$abs_file")
+}
+
+collect_regex_files_for_existing_ref() {
+  local remote_sha="$1"
+  local local_sha="$2"
+  local rel_file
+
+  while IFS= read -r rel_file; do
+    add_regex_file "$rel_file"
+  done < <(git -C "$REPO_ROOT" diff --name-only "$remote_sha..$local_sha" 2>/dev/null || true)
+}
+
+collect_regex_files_for_new_ref() {
+  local local_sha="$1"
+  local commit rel_file
+  local commits=""
+
+  commits="$(git -C "$REPO_ROOT" rev-list "$local_sha" --not --remotes 2>/dev/null || true)"
+  if [ -z "$commits" ]; then
+    commits="$(git -C "$REPO_ROOT" rev-list --max-count=1 "$local_sha" 2>/dev/null || true)"
+  fi
+
+  while IFS= read -r commit; do
+    [ -n "$commit" ] || continue
+    while IFS= read -r rel_file; do
+      add_regex_file "$rel_file"
+    done < <(git -C "$REPO_ROOT" diff-tree --root --no-commit-id --name-only -r "$commit" 2>/dev/null || true)
+  done < <(printf '%s\n' "$commits")
+}
+
+run_gitleaks_range_scan() {
+  local gitleaks_available=1
+  if ! command -v gitleaks >/dev/null 2>&1; then
+    echo "pre-push: gitleaks nicht gefunden; Regex-Fallback bleibt aktiv."
+    gitleaks_available=0
+  fi
+
+  local local_ref local_sha remote_ref remote_sha
+  local scanned=0
+  local status=0
+  local log_opts=""
+
+  while read -r local_ref local_sha remote_ref remote_sha; do
+    [ -n "${local_sha:-}" ] || continue
+
+    if [ "$local_sha" = "$zero_sha" ]; then
+      continue
+    fi
+
+    if [ "${remote_sha:-$zero_sha}" = "$zero_sha" ]; then
+      if [ -n "$(git -C "$REPO_ROOT" rev-list --max-count=1 "$local_sha" --not --remotes 2>/dev/null || true)" ]; then
+        log_opts="$local_sha --not --remotes"
+        collect_regex_files_for_new_ref "$local_sha"
+      else
+        continue
+      fi
+    else
+      if [ -z "$(git -C "$REPO_ROOT" rev-list --max-count=1 "$remote_sha..$local_sha" 2>/dev/null || true)" ]; then
+        continue
+      fi
+      log_opts="$remote_sha..$local_sha"
+      collect_regex_files_for_existing_ref "$remote_sha" "$local_sha"
+    fi
+
+    scanned=1
+    if [ "$gitleaks_available" -eq 1 ]; then
+      echo "pre-push: gitleaks prüft zu pushende Commits (${remote_ref:-$local_ref}) …"
+      set +e
+      gitleaks git --redact --no-banner --no-color --log-level warn --exit-code 2 --log-opts="$log_opts" "$REPO_ROOT"
+      status=$?
+      set -e
+
+      if [ "$status" -ne 0 ]; then
+        echo "  HIGH: gitleaks hat mögliche Secrets in zu pushenden Commits gefunden oder konnte den Scan nicht abschließen." >&2
+        return 2
+      fi
+    fi
+  done
+
+  if [ "$gitleaks_available" -eq 0 ]; then
+    return 0
+  elif [ "$scanned" -eq 0 ]; then
+    echo "pre-push: gitleaks hatte keine neuen Commit-Ranges zu prüfen."
+  else
+    echo "pre-push: gitleaks-Scan ohne Befund."
+  fi
+}
+
+if ! run_gitleaks_range_scan; then
+  echo "" >&2
+  echo "╔══════════════════════════════════════════════════════════════╗" >&2
+  echo "║  PUSH ABGEBROCHEN: gitleaks hat Secrets erkannt!            ║" >&2
+  echo "║  Bitte Befund bereinigen, Secret rotieren und erneut pushen. ║" >&2
+  echo "╚══════════════════════════════════════════════════════════════╝" >&2
+  exit 2
+fi
+
+# Nur geaenderte Dateien aus den Push-Ranges pruefen, die git kennt (respektiert .gitignore).
 tracked_files=()
-while IFS= read -r f; do
-  tracked_files+=("$REPO_ROOT/$f")
-done < <(git -C "$REPO_ROOT" ls-files)
+for f in "${regex_files[@]+"${regex_files[@]}"}"; do
+  tracked_files+=("$f")
+done
 
 if [ "${#tracked_files[@]}" -eq 0 ]; then
-  echo "pre-push: Keine getrackten Dateien gefunden. Push wird fortgesetzt."
-  exit 0
+  echo "pre-push: Keine geänderten getrackten Dateien für Regex-Fallback gefunden."
 fi
 
 found_high=0
 
 # Dateinamen mit Secret-ähnlichen Namen
 name_hits=()
-while IFS= read -r f; do
-  name_hits+=("$f")
-done < <(printf '%s\n' "${tracked_files[@]}" | grep -Ei "$secret_name_regex" | grep -v '\.github/workflows/' || true)
+if [ "${#tracked_files[@]}" -gt 0 ]; then
+  while IFS= read -r f; do
+    [ -n "$f" ] || continue
+    if printf '%s\n' "$f" | grep -Eiq "$allowed_secret_name_regex"; then
+      continue
+    fi
+    name_hits+=("$f")
+  done < <(printf '%s\n' "${tracked_files[@]}" | grep -Ei "$secret_name_regex" | grep -v '\.github/workflows/' || true)
+fi
 
 if [ "${#name_hits[@]}" -gt 0 ]; then
   found_high=1
@@ -39,14 +166,33 @@ fi
 
 # Dateiinhalte mit Secret-Mustern
 content_hits=()
-while IFS= read -r f; do
-  content_hits+=("$f")
-done < <(grep -rEl --include='*' "$secret_content_regex" "${tracked_files[@]}" 2>/dev/null || true)
+if [ "${#tracked_files[@]}" -gt 0 ]; then
+  while IFS= read -r f; do
+    if printf '%s\n' "$f" | grep -Eiq "$allowed_secret_content_path_regex"; then
+      continue
+    fi
+    content_hits+=("$f")
+  done < <(grep -rEl --include='*' "$secret_content_regex" "${tracked_files[@]}" 2>/dev/null || true)
+fi
 
 if [ "${#content_hits[@]}" -gt 0 ]; then
   found_high=1
   echo "  HIGH: Secret-Muster im Dateiinhalt gefunden:" >&2
   printf '       %s\n' "${content_hits[@]}" >&2
+fi
+
+# ~/.gitconfig.d/ auf Credential-Muster scannen
+gitconfig_d="${HOME}/.gitconfig.d"
+if [ -d "$gitconfig_d" ]; then
+  inc_hits=()
+  while IFS= read -r f; do
+    inc_hits+=("$f")
+  done < <(grep -rEl --include='*.inc' "$secret_content_regex" "$gitconfig_d" 2>/dev/null || true)
+  if [ "${#inc_hits[@]}" -gt 0 ]; then
+    found_high=1
+    echo "  HIGH: Secret-Muster in ~/.gitconfig.d/ gefunden / Secret patterns found in ~/.gitconfig.d/:" >&2
+    printf '       %s\n' "${inc_hits[@]}" >&2
+  fi
 fi
 
 if [ "$found_high" -eq 1 ]; then

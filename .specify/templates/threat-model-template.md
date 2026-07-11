@@ -1,5 +1,31 @@
 # Bedrohungsmodell / Threat Model: [FEATURE / PROJECT]
 
+## Spec-Kit-Laufnachweis / Spec-Kit Run Evidence
+
+- Feature / Spec-ID:
+- Spec-Kit-Phase / Spec-Kit phase: [specify / plan / tasks / implement / review / release]
+- Branch / Commit / PR:
+- Datum des Laufs / Run date:
+- Evidenzverantwortliche*r / Evidence owner:
+- Reviewende Person / Reviewer:
+- Geprüfte Standards/Kriterien / Standards or criteria checked: STRIDE, CAPEC, ISO 27001/27002 A.8.27, NIST SSDF, secure architecture risk evidence
+- Entscheidung / Decision: [Applicable / N/A / Open]
+- Evidenzpfad / Evidence path:
+- N/A-Begründung, falls nicht anwendbar / N/A rationale, if not applicable:
+- Offene Folgeaktion mit Owner und Auslöser / Open follow-up owner and trigger:
+- Auslöser für Neubewertung / Re-evaluation trigger:
+- Belastbarkeitsnotiz / Assurance note: Diese Datei dokumentiert den konkreten Spec-Kit-Lauf als interne Audit- und Zertifizierungsvorbereitung. Sie ersetzt keine externe Auditierung, Rechtsberatung oder formale Zertifizierung.
+
+## Audit-Evidenzmatrix / Audit Evidence Matrix
+
+| Prüfpunkt / Checkpoint | Anwendbarkeit / Applicability | Erzeugte oder verlinkte Evidenz / Evidence produced or linked | Ergebnis / Result | Restrisiko oder Begründung / Residual risk or rationale |
+|---|---|---|---|---|
+| Spec-Kit-Lauf und Scope sind identifiziert / Spec-Kit run and scope are identified | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Standard- oder Kriterienbezug ist zugeordnet / Standard or criteria mapping is recorded | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Evidenzpfad ist dokumentiert / Evidence path is documented | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Nichtanwendbarkeit ist begründet / Non-applicability is justified | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+| Offene Punkte haben Owner und Auslöser / Open findings have owner and trigger | [Applicable / N/A / Open] | | [OK / Open / N/A] | |
+
 **Projekt / Project**: [Level-2 project name]
 **Feature-Branch**: `[###-feature-name]`
 **Erstellt / Created**: [DATE]
@@ -11,6 +37,39 @@
 [Beschreibe, welches System, Feature oder welche Komponente dieses Bedrohungsmodell abdeckt.]
 
 *[Describe which system, feature, or component this threat model covers.]*
+
+---
+
+## Asset-Inventar & CIA-Matrix / Asset Inventory & CIA Matrix
+
+<!--
+  Liste alle relevanten Funktionalitäten und Datenwerte auf.
+  Bewerte jedes Asset nach Confidentiality (Vertraulichkeit), Integrity (Integrität)
+  und Availability (Verfügbarkeit): H = Hoch, M = Mittel, L = Niedrig, - = Nicht anwendbar.
+  Der CIA-Wert bestimmt den Schutzbedarf und leitet die STRIDE-Prioritäten.
+
+  List all relevant functionalities and data assets.
+  Rate each asset for Confidentiality, Integrity, and Availability:
+  H = High, M = Medium, L = Low, - = Not applicable.
+  The CIA rating determines protection needs and guides STRIDE priorities.
+-->
+
+| Asset / Funktionalität | Beschreibung / Description | Vertraulichkeit / Confidentiality | Integrität / Integrity | Verfügbarkeit / Availability | Gesamt-Schutzbedarf / Overall |
+|---|---|:---:|:---:|:---:|:---:|
+| [z. B. Benutzerdaten / User data] | [Personenbezogene Daten, PII] | H | H | M | **H** |
+| [z. B. Authentifizierungs-Token / Auth token] | [Session- und JWT-Tokens] | H | H | M | **H** |
+| [z. B. Konfiguration / Configuration] | [API-Keys, Verbindungszeichenketten] | H | M | L | **H** |
+| [z. B. Audit-Log / Audit log] | [Sicherheitsereignisse, Änderungsprotokoll] | M | H | M | **H** |
+| [z. B. Öffentliche API / Public API] | [Read-only Endpunkte] | - | M | H | **M** |
+
+**Legende / Legend**: H = Hoch/High · M = Mittel/Medium · L = Niedrig/Low · - = Nicht anwendbar/Not applicable
+
+> **Hinweis / Note**: Assets mit H in Confidentiality oder Integrity erfordern mindestens Defense-in-Depth
+> (Prinzip XIII) und sind bevorzugt in der STRIDE-Analyse abzudecken.
+> *Assets rated H in Confidentiality or Integrity require at least Defense-in-Depth (Principle XIII)
+> and should be prioritised in the STRIDE analysis.*
+
+---
 
 ## Trust Boundaries / Vertrauensgrenzen
 
@@ -79,8 +138,8 @@ TB = Trust Boundary / Vertrauensgrenze
 ## CAPEC-Referenzen / CAPEC References
 
 <!--
-  Verweise auf relevante CAPEC-Angriffsmuster fuer die risikoreichsten
-  Angriffswege. Keine Vollstaendigkeit erforderlich; Fokus auf realistische
+  Verweise auf relevante CAPEC-Angriffsmuster für die risikoreichsten
+  Angriffswege. Keine Vollständigkeit erforderlich; Fokus auf realistische
   Angriffstechniken.
 
   Reference relevant CAPEC attack patterns for the highest-risk attack paths.
@@ -124,5 +183,5 @@ TB = Trust Boundary / Vertrauensgrenze
 - CAPEC: [capec.mitre.org](https://capec.mitre.org/)
 
 <!-- EN: threat-model-template.md
-[DE-Zusammenfassung: Template fuer Bedrohungsmodelle basierend auf STRIDE-Methodik, ISO 27002 A.8.26/A.8.27.]
+[DE-Zusammenfassung: Template für Bedrohungsmodelle basierend auf STRIDE-Methodik, ISO 27002 A.8.26/A.8.27.]
 -->

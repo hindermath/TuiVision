@@ -80,6 +80,8 @@ public static class ControlTestContext
     {
         ArgumentNullException.ThrowIfNull(group);
 
+        // Der Klon trennt den Beweiszeitpunkt von späteren Draws; er ist kein vollständiger visueller Vergleich.
+        // The clone separates the proof moment from later draws; it is not a complete visual comparison.
         group.Draw();
         TConsoleBuffer? buffer = BufferField.GetValue(group) as TConsoleBuffer;
         if (buffer is null)

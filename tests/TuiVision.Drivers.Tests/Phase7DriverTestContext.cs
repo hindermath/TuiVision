@@ -159,8 +159,8 @@ internal static class Phase7DriverTestContext
     {
         if (!primaryTarget.Contains("(geplant)", StringComparison.Ordinal))
             return false;
-        // Driver targets are acceptable as "geplant" only if they point to a concrete driver path
-        // Non-driver geplant targets lack documented rationale
+        // Ein konkreter Treiberpfad ist prüfbar; andere geplante Ziele bleiben ohne separate Begründung nur Platzhalter.
+        // A concrete driver path is reviewable; other planned targets remain placeholders without separate rationale.
         return !primaryTarget.Contains("TuiVision.Drivers", StringComparison.Ordinal);
     }
 

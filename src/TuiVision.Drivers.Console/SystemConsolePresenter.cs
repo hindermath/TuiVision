@@ -37,7 +37,8 @@ public sealed class SystemConsolePresenter : IConsolePresenter
 
             for (int x = 0; x < frame.Width; x++)
             {
-                // Letzte Zelle überspringen, um auto-scroll zu vermeiden / Skip last cell to avoid auto-scroll
+                // Manche Terminals scrollen beim Schreiben der letzten Zelle; Auslassen hält die Frame-Geometrie stabil.
+                // Some terminals scroll when the last cell is written; skipping it keeps frame geometry stable.
                 if (y == frame.Height - 1 && x == frame.Width - 1)
                 {
                     break;

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "baselineVersion": "3.0.0",
+  "releaseDate": "2026-07-10",
+  "checklistItemCount": 157,
+  "guideline": {
+    "path": "Richtlinie_Sichere-Entwicklung.md",
+    "version": "3.0.0"
+  },
+  "compendium": {
+    "path": "Checklistensammelband_Sichere-Entwicklung.md",
+    "version": "2.0.0",
+    "generated": true
+  },
+  "statusModel": {
+    "applicability": ["Applicable", "N/A", "Open"],
+    "implementation": ["Fulfilled", "Partly Fulfilled", "Not Fulfilled", "Not Assessed"]
+  },
+  "checklists": [
+    { "id": "CL-01", "path": "checklisten/CL_01_Standards-Anwendbarkeit.md", "version": "2.0.0" },
+    { "id": "CL-02", "path": "checklisten/CL_02_Sichere-Softwarearchitektur.md", "version": "2.0.0" },
+    { "id": "CL-03", "path": "checklisten/CL_03_Krypto-Mindestvorgaben.md", "version": "2.0.0" },
+    { "id": "CL-04", "path": "checklisten/CL_04_Bedrohungsmodellierung.md", "version": "2.0.0" },
+    { "id": "CL-05", "path": "checklisten/CL_05_Lieferkette-Build-Integritaet.md", "version": "2.0.0" },
+    { "id": "CL-06", "path": "checklisten/CL_06_Schwachstellenoffenlegung.md", "version": "2.0.0" },
+    { "id": "CL-07", "path": "checklisten/CL_07_CRA-Anwendbarkeit.md", "version": "2.0.0" },
+    { "id": "CL-08", "path": "checklisten/CL_08_Sicherheits-Code-Review.md", "version": "2.0.0" },
+    { "id": "CL-09", "path": "checklisten/CL_09_KI-Codeerzeugung.md", "version": "2.0.0" },
+    { "id": "CL-10", "path": "checklisten/CL_10_Sichere-Entwicklungsumgebung.md", "version": "2.0.0" },
+    { "id": "CL-11", "path": "checklisten/CL_11_Datenschutz-Folgenabschaetzung.md", "version": "2.0.0" },
+    { "id": "CL-12", "path": "checklisten/CL_12_Agentische-KI-Sandbox.md", "version": "2.0.0" }
+  ],
+  "relatedDocuments": [
+    { "path": "mitgeltende-dokumente/BCM-Notfallhandbuch.md", "version": "1.0.0" },
+    { "path": "mitgeltende-dokumente/Checkliste_Secure-Development-Life-Cycle.md", "version": "1.0.0" },
+    { "path": "mitgeltende-dokumente/Datenschutzleitlinie.md", "version": "1.0.0" },
+    { "path": "mitgeltende-dokumente/Gebrauch_kryptografischer_Massnahmen.md", "version": "1.0.0" },
+    { "path": "mitgeltende-dokumente/Kompetenzprofile_und_Schulungsplan_Sichere-Entwicklung.md", "version": "1.0.0" },
+    { "path": "mitgeltende-dokumente/Leitlinie_Sichere-Entwicklungs-Sandbox.md", "version": "1.0.0" },
+    { "path": "mitgeltende-dokumente/Leitlinie_Sichere-Programmierung.md", "version": "1.0.0" },
+    { "path": "mitgeltende-dokumente/Leitlinie_Sicheres-Softwaredesign.md", "version": "1.0.0" },
+    { "path": "mitgeltende-dokumente/Richtlinie_Changemanagement.md", "version": "1.0.0" },
+    { "path": "mitgeltende-dokumente/Richtlinie_Dienstleister-und-Lieferantenbeziehungen.md", "version": "1.0.0" },
+    { "path": "mitgeltende-dokumente/Richtlinie_Secure-Development-Life-Cycle.md", "version": "1.0.0" },
+    { "path": "mitgeltende-dokumente/Richtlinie_Testmanagement.md", "version": "1.0.0" },
+    { "path": "mitgeltende-dokumente/Richtlinie_Zugangssteuerung.md", "version": "1.0.0" },
+    { "path": "mitgeltende-dokumente/Standardsregister_Sichere-Entwicklung.md", "version": "1.0.0" },
+    { "path": "mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md", "version": "1.0.0" }
+  ],
+  "learningDocuments": [
+    { "path": "Lernpfad_Sichere-Entwicklung_Lehrjahr-1-bis-3.md", "version": "1.0.0" }
+  ],
+  "managedBinaryFiles": [
+    "mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.pdf",
+    "mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.sha256"
+  ],
+  "managedReferenceFiles": [
+    "README.md",
+    "mitgeltende-dokumente/README.md",
+    "mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.DE.md",
+    "mitgeltende-dokumente/THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.EN.md"
+  ]
+}

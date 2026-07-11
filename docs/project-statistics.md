@@ -1,6 +1,10 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-06-13 (aktualisiert inklusive Branch `011-port-wave2-examples`, Wave-2-Beispielen, Lastenheft fuer interaktive Wave-2-Demos, DocFX-Generated-Output-Cleanup, zweistufigem Beispielwellen-Liefermuster, Pflichtenheft-Abnahme fuer interaktive Beispielreife, 011-Review-Cleanup vor 012, Spec-Kit-Intake-Aufbereitung fuer 012, GitHub-Pages-Artefaktworkflow fuer DocFX, PR-#26-Review-Cleanup, `/speckit-specify`, `/speckit-clarify`, `/speckit-plan`, `/speckit-checklist`, `/speckit-tasks`, PR-#27-Review-Cleanup, `/speckit-analyze`-Remediation fuer 012, Wave-1-Folge-Lastenhefte, Wave-1-Visual-Component-Remediation-Umbenennung, Wave-3-/Wave-4-Visual-Component-Porting-Intakes, Lastenheft-Specify-Readiness-Harmonisierung, C#-Dev-Kit-Language-Service-Cache-Ignore, Claude-Code-Review-Remediation fuer 012-Tasks, `/speckit-implement` fuer `012-interactive-wave2-demos`, Lastenheft fuer Wave-2-Visual-Component-Remediation, `/speckit-specify`, zwei `/speckit-clarify`-Laeufe, `/speckit-plan`, gezieltem `security-governance`-v0.4.0-Plan-Nachlauf, `/speckit-checklist`, `/speckit-tasks`, `/speckit-analyze`-Remediation und `/speckit-implement` fuer `013-wave2-visual-component-remediation`, PR-#29-Copilot-Review-Cleanup, `/speckit-specify` fuer `014-wave1-functional-hardening`, zwei `/speckit-clarify`-Laeufe, `/speckit-plan`, `/speckit-checklist`, Planqualitaets-Remediation, `/speckit-tasks`, zwei `/speckit-analyze`-Remediation-Laeufe und `/speckit-implement` fuer `014-wave1-functional-hardening`, PR-#30-DocFX-Playwright-Install-Hardening, PR-#30-DocFX-System-Chrome-Fallback, PR-#30-DocFX-A11Y-Smoke-Remediation, AI-SBOM-Governance-Preset-Rollout, allgemeiner historischer `tv203s`-Quellenreferenzregel, Pflichtenheft-Reihenfolge fuer Wave-1-Visual-/Wave-3-/Wave-4-Vorhaertung und Wave-4-Terminal-/Charset-/Plattform-Hardening-Intake, Framework-Usage-/Remediation-Gate fuer offene Lastenhefte und synchronisierte Agent-Guidance sowie Spec-Kit-Intake fuer didaktische Inline-Code-Kommentar-Haertung)
+Stand: 2026-07-11 (aktualisiert einschließlich der vollständigen `/speckit-implement`-Lieferung für `015-didactic-comment-hardening`, Governance v0.6/v0.5/v0.2/v0.4/v0.2/v0.3, gezielter Release-Validierung, Agent-Parität, Lastenheft-Archivierung und aktuellem Repository-Snapshot)
+
+Aktueller Zusatz: Feature 015 dokumentiert 24 Review-Bereiche, 13 kurze
+didaktische Kommentarblöcke, 27 Governance-Entscheidungen und 478/478 grüne
+gezielte Release-Tests ohne Runtime-Verhaltensänderung.
 
 ## Zweck und Pflege
 
@@ -76,28 +80,28 @@ fortgeschrieben.
 
 | Kennzahl | Wert |
 |---|---:|
-| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-06-13 |
-| Git-Commits gesamt | 314 |
+| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-11 |
+| Git-Commits gesamt | 397 |
 | Autoren laut Git | 1 |
-| Sichtbare Aktivtage inkl. aktuellem Working Tree | 23 |
-| Produktionscode aktuell | 160 Dateien / 19377 Zeilen |
-| Testcode aktuell | 98 Dateien / 13496 Zeilen |
-| Dokumentation aktuell | 321 Dateien / 40386 Zeilen |
-| Davon Spec-Kit-Artefakte | 115 Dateien / 20876 Zeilen |
-| Davon Governance/Agent-Dateien | 5 Dateien / 2009 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 73259 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 915.7 Arbeitstage |
-| Erfahrener Entwickler, konservative Untergrenze in Stunden | 7142.8 Stunden (73259 / 80 * 7.8) |
-| Erfahrener Entwickler, brutto | 42.6 Arbeitsmonate (21.5 Tage/Monat) |
-| Erfahrener Entwickler, TVoeD-Annahme | 48.2 Kalendermonate bzw. 4.0 Jahre |
-| Thorsten solo, erfahrungsadjustierte Untergrenze | 586.1 Arbeitstage |
-| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 4571.0 Stunden (73259 / 125 * 7.8) |
-| Thorsten solo, brutto | 27.3 Arbeitsmonate (21.5 Tage/Monat) |
-| Thorsten solo, TVoeD-Annahme | 31.0 Kalendermonate bzw. 2.6 Jahre |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 366.3 Arbeitstage |
-| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 19.4 Kalendermonate |
-| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 39.8x (915.7 / 23 sichtbare Aktivtage) |
-| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 25.5x (586.1 / 23 sichtbare Aktivtage) |
+| Sichtbare Aktivtage inkl. aktuellem Working Tree | 68 |
+| Produktionscode aktuell | 160 Dateien / 20752 Zeilen |
+| Testcode aktuell | 98 Dateien / 14009 Zeilen |
+| Dokumentation aktuell | 467 Dateien / 174724 Zeilen |
+| Davon Spec-Kit-Artefakte | 277 Dateien / 36775 Zeilen |
+| Davon Governance/Agent-Dateien | 5 Dateien / 2194 Zeilen |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 209485 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 2618.6 Arbeitstage |
+| Erfahrener Entwickler, konservative Untergrenze in Stunden | 20424.8 Stunden (209485 / 80 * 7.8) |
+| Erfahrener Entwickler, brutto | 121.8 Arbeitsmonate (21.5 Tage/Monat) |
+| Erfahrener Entwickler, TVoeD-Annahme | 137.8 Kalendermonate bzw. 11.5 Jahre |
+| Thorsten solo, erfahrungsadjustierte Untergrenze | 1675.9 Arbeitstage |
+| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 13071.9 Stunden (209485 / 125 * 7.8) |
+| Thorsten solo, brutto | 77.9 Arbeitsmonate (21.5 Tage/Monat) |
+| Thorsten solo, TVoeD-Annahme | 88.2 Kalendermonate bzw. 7.4 Jahre |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 1047.4 Arbeitstage |
+| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 55.1 Kalendermonate |
+| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 38.5x (2618.6 / 68 sichtbare Aktivtage) |
+| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 24.6x (1675.9 / 68 sichtbare Aktivtage) |
 
 ## Phasen und Haupt-Branches
 
@@ -594,272 +598,188 @@ fortgeschrieben.
 | 2026-06-13 | Zweiter `/speckit-analyze`-Praezisierungsnachlauf fuer `014-wave1-functional-hardening` | Die nach erneutem read-only Analyze gemeldeten Tasks-Unklarheiten wurden in `specs/014-wave1-functional-hardening/tasks.md` nachgeschaerft: `Tutorial`-Smokes muessen nun auch die selektierbare Step-Identitaet ueber Catalog-, CLI-Token- oder gleichwertige oeffentliche Auswahlpfade beweisen; negative/Fallback-Nachweise umfassen auch `MsgCls` oder ein explizites `N/A`; kleine Implementierungsaufgaben verweisen auf die FR-027-Grenze mit `IntentionalDeviation`/`FollowUp` als Alternative; der zweite targeted Smoke-Lauf darf T046 nur wiederverwenden, wenn die Helper-Klassifikationsassertions darin enthalten sind; T004 nennt die vier konkreten Wave-1-`*.csproj`-Dateien statt eines nicht passenden `examples/*.csproj`-Glob; T076 nennt den finalen `## Gesamtstatistik`-Block mit ASCII-Diagrammen und CEFR-B2-Erklaertexten explizit; T078 wiederholt `git diff --check` nach finaler PR-Evidence und Statistikpflege; und die Lastenheft-Archivierung wurde als T079 zum letzten Polish-Schritt verschoben, damit die Constitution-Vorgabe fuer den Rename als letzten Polish-Schritt erfuellt ist. `Directory.Build.props` wurde fuer den neunzehnten 014-Branch-Commit auf `1.14.19.48` ausgerichtet. Validierung: gezielte Task-Suchchecks, konkrete Projektpfade, Lastenheft-Reihenfolge, Task-ID-Zaehler und `git diff --check`; keine Build-/Testausfuehrung, weil nur Aufgaben-, Statistik- und Versionsmetadaten geaendert wurden. |
 | 2026-06-13 | `/speckit-implement` fuer `014-wave1-functional-hardening` | Die Wave-1-Funktionshaertung wurde umgesetzt: `pr-evidence.md` als primaere Proof-Matrix angelegt, historische Quellen fuer Desklogo, MsgCls, alle 16 Tutorial-Schritte und Videomode dokumentiert, Desklogo-Rendermetriken und Tutorial-Launcher-Nachweiszustand minimal ergaenzt, Wave-1-Smokes auf Logo-/Clipping-, Broadcast-, Token-/Lernziel- und Videomode-Fallback-/Usability-Beweise geschaerft, Helper-Klassifikation auf `PrimaryProof`, `SupplementalProof`, `SetupOnly` und `LegacyOrTemporary` erweitert und Guides/README text-first nachgezogen. Targeted Release-Smokes liefen mit 38/38 gruen; die Sandbox blockierte MSBuild-IPC und wurde als Validation-Boundary dokumentiert. Nach dem Abschluss wurden die synchronisierten Agent-Guidance-Dateien vom 014-Planungsstand auf Implementierungsstand und den naechsten Schritt `Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.md` aktualisiert. Der abschliessende Lastenheft-Rename archivierte `Lastenheft_Wave1-Functional-Hardening.md` als `Lastenheft_Wave1-Functional-Hardening.014-wave1-functional-hardening.md` (Rename-Commit `acfa1a5`). Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: ca. `+50` Produktionscode-Zeilen, `+266` Testcode-Zeilen und rund `+240` Dokumentations-/Evidence-Zeilen inklusive Guide-/README-/Evidence-/Agent-Guidance-Pflege. Konservative Manualreferenz fuer rund `556` Zeilen: 80 Zeilen/Tag = `7,0` Tage (ca. `54,2` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `4,4` Tage (ca. `34,7` Stunden); sichtbares Arbeitsfenster: Implementierungssitzung am 2026-06-13, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 
+| 2026-06-13 | Spec-Kit-Preset-Propagation fuer `015-didactic-comment-hardening` | Die sechs installierten Governance-Presets wurden gegen `~/home-baseline-tmp` abgeglichen. `security-governance` v0.5.0, `architecture-governance` v0.4.0, `isaqb-architecture-governance` v0.1.0, `cross-platform-governance` v0.1.0 und `agent-parity-governance` v0.2.0 waren bereits auf der aktuellen Preset-Dateiebene vorhanden; `a11y-governance` wurde von v0.2.0 auf v0.3.0 aktualisiert und bringt nun das Template `didactic-code-comment-check-template.md` sowie Spec-/Plan-/Tasks-/Agent-Addenda fuer didaktische Inline-Code-Kommentarpruefung bei neuer oder geaenderter nicht-trivialer Logik mit. Die generierten Spec-Kit-Skills und Agent-Command-Dateien wurden durch `specify preset remove/add` nachgezogen, die aktive Preset-Matrix in README, Constitution-Spiegel und Agent-Guidance wurde auf die neuesten Versionen synchronisiert, und `Directory.Build.props` wurde im PR-Verlauf branchkonform fortgeschrieben. Validierung: `specify preset list`, `specify preset info a11y-governance`, gezielte Preset-/Guidance-Suchchecks; vollstaendige Build-/Testlaeufe sind nicht erforderlich, weil nur Preset-, Guidance-, Statistik- und Versionsmetadaten geaendert wurden. |
+| 2026-06-14 | PR-#31-Copilot-Review-Nacharbeit fuer `015-didactic-comment-hardening` | Der erneute Copilot-Review-Treffer wurde bereinigt: `.specify/presets/a11y-governance/LICENSE` wurde mit dem gleichen MIT-Lizenztext wie die anderen lokalen Presets wiederhergestellt, damit das `license: "MIT"`-Manifest redistributions- und compliance-tauglich bleibt. Die veraltete offene Versionsmeldung wurde durch aktuelle Branch-Metadaten entschärft: `Directory.Build.props` steht fuer den siebten 015-Branch-Commit auf `1.15.7.55`, und der Statistik-Ledger vermeidet alte 015-Zwischenversionen als aktuelle PR-Metadaten. Validierung: Review-Thread-Abruf ueber GitHub GraphQL, Lizenzdatei-Suchcheck, Versionssuchcheck und `git diff --check`; keine Build-/Testausfuehrung, weil nur Preset-Lizenz-, Statistik- und Versionsmetadaten geaendert wurden. |
+| 2026-06-14 | Plan-Review-Pruefliste fuer `015-didactic-comment-hardening` | Fuer `specs/015-didactic-comment-hardening/plan.md` und die zugehoerigen Artefakte wurde `specs/015-didactic-comment-hardening/checklists/plan-review.md` als zusaetzliche Review-Pruefliste erstellt. Die Liste umfasst 40 offene Checkpunkte mit jeweils einem konkreten Durchfuehrungshinweis zu Artifact-Traceability, Evidence-Ledger, Hotspot-Coverage, Kommentarentscheidungen, Smoke-Proof-Grenzen, historischen Abweichungen, Governance, DocFX/A11Y, Agent-Parity, Validierung, Versionierung und Task-Readiness. `Directory.Build.props` wurde fuer den achten 015-Branch-Commit auf `1.15.8.55` ausgerichtet. Validierung: Prerequisite-Pfade auf 015, vorhandene Planartefakte gelesen, Checklisten-Nummerierung CHK001 bis CHK040, Platzhalter-Suchcheck und `git diff --check`; keine Build-/Testausfuehrung, weil nur Spec-Kit-Checklist-, Statistik- und Versionsmetadaten geaendert wurden. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+123` Spec-Kit-Checklistenzeilen plus diese Statistikfortschreibung; `Directory.Build.props` ist reine Versionsmetadatenpflege. Konservative Manualreferenz fuer die `123` Checklistenzeilen: 80 Zeilen/Tag = `1,5` Tage (ca. `12,0` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `1,0` Tage (ca. `7,7` Stunden); sichtbares Arbeitsfenster: kurze Checklist-Sitzung am 2026-06-14, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
+| 2026-06-14 | Plan-Review-Durcharbeitung fuer `015-didactic-comment-hardening` | Die 40 Punkte aus `specs/015-didactic-comment-hardening/checklists/plan-review.md` wurden gegen `plan.md`, `spec.md`, `research.md`, `data-model.md`, `quickstart.md`, den Acceptance-Contract, die Preset-Registry und `AGENTS.md` abgearbeitet und anschliessend abgehakt. Nachgeschaerft wurden die Dokumentationsstruktur um `plan-review.md`, das Evidence-Modell um einen expliziten `CommentState`, die Nicht-Aenderungsentscheidungen `CommentAdequate`/`NoCommentNeeded`, die Commit-/Push-Versionierungsgrenze fuer `Directory.Build.props`, die Smoke-Helper-Stability-Wording-Grenze und die Serialisierung spaeterer Tasks fuer Shared-Evidence-/Agent-Guidance-Dateien. `Directory.Build.props` wurde fuer den neunten 015-Branch-Commit auf `1.15.9.55` ausgerichtet. Validierung: gezielte Suchchecks fuer Decision-Vokabular, Governance-Trigger, DocFX/A11Y, `.specify/templates`, Versionierung, `FollowUp`-Synonyme und Platzhalter sowie `git diff --check`; keine Build-/Testausfuehrung, weil nur Planungs-, Checklisten-, Statistik- und Versionsmetadaten geaendert wurden. |
+| 2026-06-14 | `/speckit-tasks` fuer `015-didactic-comment-hardening` | Aus `spec.md`, `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, dem Acceptance-Contract sowie den Requirements-, Plan-Quality- und Plan-Review-Checklisten wurde `specs/015-didactic-comment-hardening/tasks.md` erzeugt. Die Aufgabenliste enthaelt 102 offene Tasks: Setup und Foundation fuer `pr-evidence.md`, P1-Slices fuer zentrale Framework-Flows und Smoke-Test-Helfer, P2-Rauschkontrolle mit getrennten `CommentAdequate`-/`NoCommentNeeded`-Nachweisen, P3-Agent-Guidance-Grenzen sowie Governance-, Validierungs-, Statistik-, Versionierungs- und PR-Aufgaben. Sie nutzt bewusst keine Parallel-Task-Marker, damit gemeinsame Evidence- und Guidance-Dateien serialisiert bleiben. `Directory.Build.props` wurde fuer den zehnten 015-Branch-Commit auf `1.15.10.55` ausgerichtet. Validierung: Task-ID-Sequenz `102`, keine offenen Platzhalter oder Clarification-Marker, kein Parallel-Task-Marker, Whitespace-Suchcheck und `git diff --check` sauber; keine Build-/Testausfuehrung, weil nur Aufgaben-, Statistik- und Versionsmetadaten geaendert wurden. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, neue `229`-Zeilen-Spec-Kit-Aufgabenliste plus diese Statistikfortschreibung; `Directory.Build.props` ist reine Versionsmetadatenpflege. Sichtbares Arbeitsfenster: kurze Tasks-Sitzung am 2026-06-14, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
+| 2026-06-14 | Analyze-Remediation fuer `015-didactic-comment-hardening` | Die zwei mittelstarken Funde aus dem wiederholten read-only `/speckit-analyze` wurden vor `/speckit-implement` bereinigt: `plan.md` verwendet nun dieselbe Coverage-Gate-Schwelle wie Contract, Quickstart und Tasks, naemlich volle Release-Tests plus Coverage nur bei materieller Beruehrung gemeinsamer Logik oder breiter Smoke-Helper-Proofs; `tasks.md` verlangt in T064/T098 explizite Line-Budget-Zaehler fuer den 90-%-SC-004-Nachweis. `Directory.Build.props` wurde fuer den elften 015-Branch-Commit auf `1.15.11.55` ausgerichtet. Validierung: gezielte Suchchecks fuer Coverage-Gate-Schwelle, SC-004-Line-Budget, Task-ID-Sequenz und `git diff --check`; keine Build-/Testausfuehrung, weil nur Planungs-, Aufgaben-, Statistik- und Versionsmetadaten geaendert wurden. |
+| 2026-06-15 | PR-#31-Copilot-Orthografie- und Template-Cleanup für `015-didactic-comment-hardening` | Die sieben aktiven Copilot-Review-Threads in PR #31 wurden lokal bereinigt: README, Quickstart und Research verwenden in den betroffenen deutschen Abschnitten korrekte Umlaute statt ASCII-Umschreibungen, die doppelte README-Preset-Passage wurde entfernt, das Bedrohungsmodell-Template nutzt `Geprüfte`, `Prüfpunkt`, weitere deutsche Umlautformen und eine einheitliche CIA-Legende mit `L = Niedrig/Low`. `Directory.Build.props` wurde für den dreizehnten 015-Branch-Commit auf `1.15.13.55` ausgerichtet; die PR-Beschreibung wird nach dem Push auf dieselbe Branch-Metadatenlinie aktualisiert. Validierung: Review-Thread-Abruf über GitHub GraphQL, gezielte Orthografie-/Versionssuchchecks und `git diff --check`; keine Build-/Testausführung, weil nur README-, Spec-Kit-Planungs-, Template-, Statistik- und Versionsmetadaten geändert wurden. |
+| 2026-06-17 | Secure-Development-Hardening in Restarbeitsreihenfolge verankert | Die drei vorherigen Dokumentcommits wurden in der Statistikfortschreibung mitberuecksichtigt: `3569a11` fuegte `docs/secure-development/` mit README, Richtlinie, 12 Einzelchecklisten und Checklistensammelband hinzu (`15` neue Dateien, `26.930` Dokumentationszeilen), `96791a9` verankerte diese sichere-Entwicklung-Basis in `constitution.md` und `.specify/memory/constitution.md` (`+30` Zeilen), und `7e9e0e3` legte `Lastenheft_Secure-Development-Hardening.md` als eigenen Intake an (`+98` Zeilen). In der aktuellen Nacharbeit wurde dieses Lastenheft als querschnittlicher Spec-Kit-Haertungslauf nach `Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.md` und vor `Lastenheft_Wave1-Visual-Component-Remediation.md` eingeordnet; `Pflichtenheft.md` fuehrt den Schritt nun in der Beispielwellen-Statuscheckliste, als Unterphase `3.1c` und im `>>> NAECHSTER SCHRITT <<<`-Marker als Folgeschritt nach 015. `Directory.Build.props` wurde fuer den siebzehnten 015-Branch-Commit auf `1.15.17.55` ausgerichtet. Validierung: Commit-Statistik der letzten Dokumentcommits, Reihenfolge-Suchchecks und `git diff --check`; keine Build-/Testausfuehrung, weil nur Pflichtenheft-, Lastenheft-, Constitution-/Secure-Development- und Statistikdokumentation betroffen ist. |
+| 2026-06-18 | PR-31-CI- und Copilot-Review-Nacharbeit fuer `015-didactic-comment-hardening` | Die offenen GitHub-Actions-/Copilot-Review-Hinweise zu PR #31 wurden gezielt nachgezogen: die Secure-Development-Dokumente nennen private SSH-Key-Beispiele nun ohne echte Key-Delimiter-Literale, damit keine neuen Gitleaks-`private-key`-False-Positive-Treffer entstehen; die zwei historischen False-Positive-Fingerprints aus Commit `3569a11` wurden in `.gitleaksignore` dokumentiert, weil der GitHub-Action-Job die PR-Commit-Historie scannt; `docs/secure-development/README.md` und die audit-/lernorientierten Spec-Kit-Templates wurden auf deutsche Orthografie mit Umlauten/ß normalisiert; und `standard-applicability-template.md` wurde German-first/English-second formuliert. `Directory.Build.props` wurde fuer den achtzehnten 015-Branch-Commit auf `1.15.18.55` ausgerichtet. Validierung: gezielte Review-Suchchecks, Private-Key-Delimiter-Suchcheck und `git diff --check`; keine Build-/Testausfuehrung, weil nur Markdown-, Template-, Statistik- und Versionsmetadaten betroffen sind. |
+| 2026-07-11 | Governance-Remediation vor `/speckit-implement` fuer `015-didactic-comment-hardening` | Die nach dem letzten Analyze-Lauf aktualisierte lokale Preset-Matrix wurde in den bestehenden 015-Artefakten in-place nachgezogen: `security-governance` v0.6.0, `architecture-governance` v0.5.0, `isaqb-architecture-governance` v0.2.0, `a11y-governance` v0.4.0, `cross-platform-governance` v0.2.0 und `agent-parity-governance` v0.3.0. Spec, Plan, Datenmodell, Acceptance-Contract und die unverändert 102 Tasks trennen nun Kommentarentscheidungen von auditfähiger Governance-Evidence mit `Applicable`/`N/A`/`Open`, Evidence-Pfad, Owner/Reviewer, Review-Datum, Ergebnis, Restrisiko, Follow-up und Neubewertungstrigger. Research, Quickstart und bestehende Checklisten wurden minimal synchronisiert; Runtime-, API-, Dependency-, Beispiel- und DocFX-Scope bleiben unverändert. Validierung: installierte Preset-Matrix abgeglichen, 102 fortlaufende Tasks, Checklisten `21/21`, `40/40` und `16/16`, keine Platzhalter oder Parallelmarker und `git diff --check` sauber. Der wiederholte read-only Analyze-Abgleich meldet 34/34 FR-/SC-Anforderungen und 16/16 Constitution-Anforderungen abgedeckt, keine unmapped Tasks und keine CRITICAL-, HIGH- oder MEDIUM-Funde. `Directory.Build.props` wurde fuer den erwarteten 36. Branch-Commit ohne Build-Counter-Erhoehung auf `1.15.36.55` ausgerichtet. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen und `+131/-38` Spec-Kit-/Governance-Dokumentationszeilen (`+93` netto). Konservative Manualreferenz fuer `131` hinzugefuegte oder nachgeschaerfte Dokumentationszeilen: 80 Zeilen/Tag = `1,6` Tage (ca. `12,8` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `1,0` Tage (ca. `8,2` Stunden). Sichtbares Arbeitsfenster: kurze Governance-Remediation am 2026-07-11, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
+| 2026-07-11 | `/speckit-implement` fuer `015-didactic-comment-hardening` | Der selektive Kommentar-Haertungslauf wurde ohne Runtime-, API-, Dependency- oder Beispielumfangsänderung umgesetzt. `pr-evidence.md` dokumentiert 24 benannte Review-Bereiche mit 6 `CommentAdequate`, 9 `CommentNeeded`, 3 `NoCommentNeeded`, 5 `UpdateExistingComment` und 1 `FollowUpHardening`; 13/13 neue oder aktualisierte didaktische Blöcke liegen im 1-bis-3-Zeilen-Ziel. Geändert wurden ausschließlich Kommentare in zentralen Controls-, Core-, Serialization- und Driver-Flows sowie vier Proof-Helfern; Agent-Kontexte und Pflichtenheft zeigen synchron auf `Lastenheft_Secure-Development-Hardening.md`. Das Lastenheft wurde als `Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.015-didactic-comment-hardening.md` archiviert. Validierung: `git diff --check` und `dotnet format --verify-no-changes` grün; gezielte Release-Tests Core 44/44, Controls 288/288, Serialization 18/18, Drivers 37/37 und Example-Smokes 91/91, zusammen 478/478. Full Suite/Coverage und DocFX/Web-A11Y blieben triggerbasiert `N/A`. Nach fünf Testläufen stand `Directory.Build.props` auf `1.15.36.60`; für den abschließenden 37. Branch-Commit wurde es ohne weiteren Build auf `1.15.37.60` ausgerichtet. Sichtbarer Artefaktmix dieses Laufs vor Statistikpflege: netto etwa `+4` Produktionskommentar-, `+6` Testkommentar- und `+273` Dokumentations-/Evidence-/Guidance-Zeilen. Ohne den reinen Lastenheft-Rename und die Statistikneuberechnung wurden rund 428 Zeilen hinzugefügt oder aktualisiert; das ergibt konservativ `5,4` Arbeitstage beziehungsweise `41,7` Stunden bei 80 Zeilen/Tag und `3,4` Arbeitstage beziehungsweise `26,7` Stunden bei 125 Zeilen/Tag. Das sichtbare Arbeitsfenster ist eine Implementierungssitzung am 2026-07-11; die Faktoren `5,4x` und `3,4x` sind blended repository speedups, keine Stoppuhrmessung. |
+
 ## Gesamtstatistik
 
-Basis dieses Schlussblocks sind die aktuell dokumentierten Snapshot- und
-Phasenwerte aus den Abschnitten `## Gesamtstand des Repositories` und
-`## Phasen und Haupt-Branches` weiter oben.
+Basis dieses Schlussblocks ist der Repository-Snapshot vom 2026-07-11. Die
+Werte schließen den aktuellen Working Tree ein und bleiben deshalb bis zum
+nächsten Statistiklauf eine dokumentierte Momentaufnahme.
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | `73259` Zeilen |
-| Produktions- und Testcode zusammen | `32873` Zeilen (`44.9 %`) |
-| Dokumentationsanteil | `40386` Zeilen (`55.1 %`) |
-| Spec-Kit-Anteil innerhalb der Doku | `20876` Zeilen (`51.7 %`) |
-| Governance-/Agent-Anteil innerhalb der Doku | `2009` Zeilen (`5.0 %`) |
-| Beobachtbarer Projektzeitraum | `2026-02-08` bis `2026-06-13` |
-| Git-Commits pro sichtbarem Aktivtag | `13.7` (`314 / 23`) |
-| Dokumentierte Gesamtzeilen pro sichtbarem Aktivtag | `3185.2` (`73259 / 23`) |
-| Dokumentierte Gesamtzeilen pro Commit | `233.3` (`73259 / 314`) |
-| Konservative Einzelentwickler-Untergrenze | `915.7` Arbeitstage / `7142.8` Stunden |
-| Thorsten-Solo-Untergrenze | `586.1` Arbeitstage / `4571.0` Stunden |
-| Kleines 3er-Team mit Koordinationsaufschlag | `366.3` Arbeitstage |
-| Repo-weiter Speedup gg. 80-Zeilen-Referenz | `39.8x` |
-| Repo-weiter Speedup gg. Thorsten-Referenz | `25.5x` |
+| Artefaktbasis gesamt | 209485 Zeilen |
+| Produktions- und Testcode zusammen | 34761 Zeilen (16.6 %) |
+| Dokumentationsanteil | 174724 Zeilen (83.4 %) |
+| Spec-Kit-Anteil innerhalb der Doku | 36775 Zeilen (21.0 %) |
+| Governance-/Agent-Anteil innerhalb der Doku | 2194 Zeilen (1.3 %) |
+| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-11 |
+| Git-Commits / sichtbare Aktivtage | 397 / 68 |
+| Gesamtzeilen pro sichtbarem Aktivtag | 3080.7 |
+| Gesamtzeilen pro Commit | 527.7 |
+| Konservative Einzelentwickler-Untergrenze | 2618.6 Arbeitstage / 20424.8 Stunden |
+| Thorsten-Solo-Untergrenze | 1675.9 Arbeitstage / 13071.9 Stunden |
+| Kleines 3er-Team mit Koordinationsaufschlag | 1047.4 Arbeitstage |
+| Repo-Speedup gegen 80-Zeilen-Referenz | 38.5x |
+| Repo-Speedup gegen Thorsten-Referenz | 24.6x |
 
-Kurzfazit:
-Die aktuell dokumentierte Basis zeigt weiter ein starkes Verhaeltnis zwischen
-Code (`44.9 %`) und Dokumentation (`55.1 %`). Welle 2 erhoeht den sichtbaren
-Beispiel- und Smoke-Test-Anteil deutlich; das neue zweistufige Liefermuster
-haelt den interaktiven Follow-up-Weg jetzt auch in der formalen Abnahmebasis sichtbar. `014-wave1-functional-hardening` ergaenzt diese Basis um nachweisbar schaerfere Wave-1-Smokes und eine eigene Proof-Matrix. Der aktuelle Arbeitsbaum enthaelt
-jetzt auch `011-port-wave2-examples`, das Lastenheft fuer interaktive
-Wave-2-Demos, den DocFX-Generated-Output-Cleanup, den 011-Review-Cleanup
-vor 012, die Spec-Kit-Intake-Aufbereitung fuer 012, den GitHub-Pages-
-Artefaktworkflow, die 012-Spezifikation, die 012-Clarifications, den 012-Plan
-und die allgemeine historische `tv203s`-Quellenreferenzregel, die
-012-Planqualitaetscheckliste, die 012-Aufgabenliste, den PR-#27-Review-
-Cleanup, zwei Wave-1-Folge-Lastenhefte, die implementierte interaktive
-012-Showcase-Stufe, die 013-Spezifikation fuer echte sichtbare Wave-2-
-Komponenten, den AI-SBOM-Governance-Rollout, beide 013-Clarify-Paesse und die
-umgesetzte 013-Visual-Component-Remediation im
-Snapshot. Die dokumentierten
-Beschleunigungsfaktoren zeigen dabei nicht eine Stoppuhr, sondern die sichtbare
-Verdichtung durch agentische KI plus Spec-Kit-/SDD-gestuetzte Artefakt- und
-Liefergeschwindigkeit.
+Die hohe Dokumentationsquote enthält die umfangreiche Secure-Development-,
+Governance- und Spec-Kit-Basis. Feature 015 selbst ist klein: Es ergänzt
+selektive Erklärungen und auditfähige Evidence, ohne ausführbares Verhalten zu
+verändern. Die Speedups vergleichen sichtbaren Umfang mit Git-Aktivtagen und
+sind keine Messung persönlicher Arbeitszeit.
+
+The high documentation share includes the extensive secure-development,
+governance, and Spec-Kit baseline. Feature 015 itself is small: it adds
+selective explanations and audit-ready evidence without changing executable
+behaviour. Speedups compare visible scope with Git active days and do not
+measure personal working time.
 
 ### ASCII-Diagramme
 
 ```text
-Artefaktmix nach aktuell dokumentiertem Snapshot (Zeilen)
-Produktion     | ##############                 | 19377 | 26.5 %
-Tests          | ##########                     | 13496 | 18.4 %
-Dokumentation  | ############################## | 40386 | 55.1 %
+Artefaktmix nach Snapshot (Zeilen)
+Produktion     | ###                           |  20752 |  9.9 %
+Tests          | ##                            |  14009 |  6.7 %
+Dokumentation  | ##############################| 174724 | 83.4 %
 ```
 
-Der Artefaktmix zeigt, wie sich der aktuelle Repository-Snapshot auf
-Produktionscode, Testcode und Dokumentation verteilt. Lange Balken bedeuten
-mehr Zeilen innerhalb derselben Vergleichsgruppe. So sieht man schnell, ob der
-aktuelle Stand eher von Code oder eher von Dokumentation gepraegt ist.
+Die Balken verwenden dieselbe Skala. Die Zahlen bleiben der genaue,
+textorientierte Nachweis für Screenreader und Braille-Zeilen.
 
-The artifact mix shows how the current repository snapshot is split between
-production code, test code, and documentation. Longer bars mean more lines
-inside the same comparison group. This helps readers see quickly whether the
-current state is driven more by code or by documentation.
+The bars use one shared scale. The numbers remain the exact text-first evidence
+for screen readers and Braille displays.
 
 ```text
 Branch-/Phasenvolumen nach dokumentierter Netto-Basis (Zeilen)
-0 main  | ######################## | 10211
-1 001   | ##########               |  4353
-2 002   | #####                    |  2274
-3 003   | ########                 |  3572
-4 004   | ###########              |  4747
-5 005   | #######################  |  9659
-6 006   | ##############           |  5796
-7 007v  | #                        |    35
-8 007ex | ################         |  6778
-9 008   | ####                     |  1550
-10 009  | #                        |   231
-11 010  | ######################## | 12169
-12 011  | #######                  |  3303
-13 012p | ###                      |  1604
-14 012i | #####                    |  2219
-15 013i | #####                    |  2105
-16 014i | #                        |   556
+0 main  | #################### | 10211
+1 001   | #########            |  4353
+2 002   | #####                |  2274
+3 003   | #######              |  3572
+4 004   | #########            |  4747
+5 005   | ###################  |  9659
+6 006   | ###########          |  5796
+7 007v  | #                    |    35
+8 007ex | #############        |  6778
+9 008   | ###                  |  1550
+10 009  | #                    |   231
+11 010  | #################### | 12169
+12 011  | ######               |  3303
+13 012p | ###                  |  1604
+14 012i | ####                 |  2219
+15 013i | ####                 |  2105
+16 014i | #                    |   556
+17 015i | #                    |   283
 ```
 
-Dieses Diagramm zeigt die grob sichtbare Netto-Basis der dokumentierten
-Branch- und Phasenpakete. Es beantwortet die Frage, welches Paket im
-Repository besonders viel sichtbaren Umfang erzeugt hat.
+Feature 015 bleibt im Phasenvergleich bewusst klein. Der Umfang liegt
+überwiegend in Evidence und Review-Entscheidungen, nicht in Codewachstum.
 
-This chart shows the visible net size of the documented branch and phase
-packages. It answers the question which package created especially large visible
-scope in the repository.
+Feature 015 intentionally stays small in the phase comparison. Most of its
+scope is evidence and review decisions rather than code growth.
 
 ```text
-Konservative Handarbeits-Referenz je dokumentierter Phase (Arbeitstage)
-0 main  | ######################## | 127.6 d
-1 001   | ##########               |  54.4 d
-2 002   | #####                    |  28.4 d
-3 003   | ########                 |  44.7 d
-4 004   | ###########              |  59.3 d
-5 005   | #######################  | 120.7 d
-6 006   | ##############           |  72.5 d
-7 007v  | #                        |   0.4 d
-8 007ex | ################         |  84.7 d
-9 008   | ####                     |  19.4 d
-10 009  | #                        |   2.9 d
-11 010  | ######################## | 152.1 d
-12 011  | #######                  |  41.3 d
-13 012p | ###                      |  20.1 d
-14 012i | #####                    |  27.7 d
-15 013i | #####                    |  26.3 d
-16 014i | #                        |   7.0 d
+Konservative Handarbeits-Referenz je dokumentierter Phase
+0 main  | #################    | 127.6 d
+1 001   | #######              |  54.4 d
+2 002   | ####                 |  28.4 d
+3 003   | ######               |  44.7 d
+4 004   | ########             |  59.3 d
+5 005   | ################     | 120.7 d
+6 006   | ##########           |  72.5 d
+7 007v  | #                    |   0.4 d
+8 007ex | ###########          |  84.7 d
+9 008   | ###                  |  19.4 d
+10 009  | #                    |   2.9 d
+11 010  | #################### | 152.1 d
+12 011  | #####                |  41.3 d
+13 012p | ###                  |  20.1 d
+14 012i | ####                 |  27.7 d
+15 013i | ###                  |  26.3 d
+16 014i | #                    |   7.0 d
+17 015i | #                    |   3.5 d
 ```
 
-Dieses Diagramm zeigt dieselben Pakete noch einmal, jetzt aber als
-konservative manuelle Referenz in Arbeitstagen. Damit wird sichtbar, wie gross
-derselbe Lieferumfang ohne agentische Unterstuetzung aus klassischer Sicht
-waere.
+Die Referenz rechnet Phasenumfang mit 80 Zeilen pro Arbeitstag. Für 015 zeigt
+der Balken die Netto-Basis; der Ledger nennt zusätzlich 5,4 Tage für alle
+hinzugefügten oder aktualisierten Zeilen.
 
-This chart shows the same packages again, now as a conservative manual
-reference in workdays. It makes visible how large the same delivery would look
-from a traditional non-agentic perspective.
+The reference converts phase scope at 80 lines per workday. For 015, the bar
+shows the net basis; the ledger also records 5.4 days for all added or updated
+lines.
 
 ```text
 Dokumentierte Beschleunigungsfaktoren durch agentische KI + Spec-Kit/SDD
-Repo 80 | #######                  |  39.8x
-Repo125 | #####                    |  25.5x
-0 main  | ######                   |  31.9x
-1 001   | ###                      |  13.6x
-2 002   | ###                      |  14.2x
-3 003   | #########                |  44.7x
-4 004   | n/a                      |  keine belastbare Git-Aktivtag-Basis
-5 005   | ######################## | 120.7x
-6 006   | n/a                      |  kein expliziter Branch-Speedup dokumentiert
-7 007v  | #                        |   0.4x
-8 007ex | ########                 |  42.3x
-9 008   | ####                     |  19.4x
-10 009  | #                        |   2.9x
-11 010  | ######################## | 152.1x
-12 011  | #######                  |  41.3x
-13 012p | ###                      |  20.1x
-14 012i | #####                    |  27.7x
-15 013i | #####                    |  26.3x
-16 014i | #                        |   7.0x
+Repo 80 | ############################## | 38.5x
+Repo125 | ###################            | 24.6x
+014i    | #####                          |  7.0x
+015i-80 | ####                           |  5.4x
+015i125 | ###                            |  3.4x
 ```
 
-Dieses Diagramm zeigt die dokumentierten Beschleunigungsfaktoren. Hier wird
-nicht echte Uhrzeit gemessen. Stattdessen wird die sichtbare Verdichtung des
-Lieferumfangs gegen die gewaehlten manuellen Referenzen verglichen. Hohe Werte
-bedeuten also: viel sichtbarer Output in wenigen dokumentierten Aktivtagen.
+Die 015-Werte beziehen sich auf einen sichtbaren Implementierungstag. Sie
+beschreiben Lieferdichte, nicht die Dauer einzelner Denk-, Review- oder
+Wartephasen.
 
-This chart shows the documented acceleration factors. It does not measure real
-clock time. Instead, it compares visible delivery density against the chosen
-manual references. Higher values therefore mean a lot of visible output within
-only a few documented active days.
+The 015 values use one visible implementation day. They describe delivery
+density, not the duration of individual thinking, review, or waiting phases.
 
 ```text
-Vergleich dokumentierter Gesamtaufwand / sichtbares KI-Lieferfenster
-Erfahren   | ############################## | 915.7 d
-Thorsten   | ###################            | 586.1 d
-KI sichtbar| #                              |  23.0 d
+Vergleich Gesamtaufwand / sichtbares KI-Lieferfenster
+Erfahren    | ############################## | 2618.6 d
+Thorsten    | ###################            | 1675.9 d
+KI sichtbar | #                              |   68.0 d
 ```
 
-Dieses Diagramm vergleicht die drei Gesamtperspektiven direkt: `Erfahren`
-steht fuer die konservative 80-Zeilen-Referenz eines erfahrenen Entwicklers,
-`Thorsten` fuer die erfahrungsadjustierte Solo-Referenz, und `KI sichtbar` fuer
-das im Repository belegte Aktivfenster. Der Abstand zwischen den Balken macht
-die dokumentierte Verdichtung durch agentische KI und Spec-Kit/SDD besonders
-leicht lesbar.
+Der Direktvergleich stellt die konservative 80-Zeilen-Basis, die
+Thorsten-Solo-Basis mit 125 Zeilen pro Tag und die sichtbaren Git-Aktivtage
+nebeneinander.
 
-This chart compares the three overall perspectives directly: `Erfahren` stands
-for the conservative 80-lines-per-day reference of an experienced developer,
-`Thorsten` for the experience-adjusted solo reference, and `KI sichtbar` for
-the repository-visible activity window. The distance between the bars makes the
-documented compression through agentic AI and Spec-Kit/SDD easier to
-understand.
+The direct comparison places the conservative 80-line baseline, the
+Thorsten-solo baseline at 125 lines per day, and visible Git active days next
+to one another.
 
-Wenn man einen Verlauf ueber die X-Achse sehen will, helfen X/Y-Diagramme
-zusaetzlich. Hier steht die X-Achse fuer die dokumentierten Phasen oder
-Branches. Die X-Positionen nutzen feste Slots: jede Phase behaelt ihren Platz,
-auch wenn einzelne Datenpunkte fehlen. Wenn weitere Spec-Kit-Laeufe die Achse
-zu breit machen, wird sie in Bloecke wie `0..15`, `16..31` und `32..47`
-geteilt; jeder Block bekommt eine eigene Achsenlinie und eigene X-Labels. Die
-Y-Achse zeigt je nach Diagramm Zeilen, Arbeitstage oder Beschleunigungsfaktoren.
-Die Sternpunkte bleiben grob gebinnt: Sie sollen Trends sichtbar machen, nicht
-mathematische Genauigkeit auf Plotter-Niveau liefern.
+### X/Y-Verlauf
 
-If readers want to see progression across the X-axis, X/Y charts help as a
-second view. Here the X-axis stands for the documented phases or branches. The
-X positions use fixed slots: each phase keeps its place, even when individual
-data points are missing. When future Spec-Kit runs make the axis too wide, split
-it into blocks such as `0..15`, `16..31`, and `32..47`; each block gets its own
-axis line and X labels. Depending on the chart, the Y-axis shows lines, workdays,
-or acceleration factors. The star markers stay roughly binned: they reveal
-trends, not plotter-level mathematical precision.
+Die X-Achse hat feste Slots. Nicht belegte zukünftige Phasen bleiben leer; der
+zweite Block hält bereits Platz bis Phase 31 frei.
+
+The X-axis uses fixed slots. Unused future phases stay blank; the second block
+already preserves space through phase 31.
 
 ```text
-X/Y-Diagramm: dokumentiertes Phasenvolumen (X = Phase/Branch, Y = Zeilen)
-12169.0 |                                             *                  |
-10647.9 | *                                                              |
- 9126.8 |                     *                                          |
- 7605.6 |                                                                |
- 6084.5 |                         *       *                              |
- 4563.4 |     *           *                                              |
- 3042.3 |             *                                   *              |
- 1521.1 |         *                           *               *   *   *  *|
-    0.0 |                             *           *                      |
-        +----------------------------------------------------------------+
-          0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15 16
+X/Y: Phasenvolumen 0..15 (Y ungefaehr in Zeilen)
+12000 |                      *         |
+ 9000 |*         *                     |
+ 6000 |            *   *               |
+ 3000 |  *   * *       *       *       |
+    0 |    *     *   *   * * *   * * * |
+      +--------------------------------+
+       0 1 2 3 4 5 6 7 8 9 A B C D E F
 ```
-
-Dieses X/Y-Diagramm zeigt denselben Verlauf wie der Volumen-Balkenblock, aber
-als Punktkurve ueber die Phasenachse. Damit sieht man leichter, wo groessere
-Spruenge oder Einbrueche zwischen direkt benachbarten Paketen liegen.
-
-This X/Y chart shows the same progression as the volume bar block, but as a
-point curve across the phase axis. It helps readers spot bigger jumps or drops
-between directly neighboring packages.
 
 ```text
-X/Y-Diagramm: konservative Handarbeits-Referenz (X = Phase/Branch, Y = Arbeitstage)
-152.1 |                                             *                  |
-133.1 | *                                                              |
-114.1 |                     *                                          |
- 95.1 |                                                                |
- 76.1 |                         *       *                              |
- 57.0 |     *           *                                              |
- 38.0 |             *                                   *              |
- 19.0 |         *                           *               *   *   *  *|
-  0.0 |                             *           *                      |
-      +----------------------------------------------------------------+
-        0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15 16
+X/Y: Phasenvolumen 16..31 (Y ungefaehr in Zeilen)
+ 600 |*                               |
+ 300 |  *                             |
+   0 |                                |
+     +--------------------------------+
+      G H I J K L M N O P Q R S T U V
+      16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
 ```
 
-Dieses X/Y-Diagramm zeigt, wie sich die konservative manuelle Referenz ueber
-die dokumentierten Pakete verteilt. Der Nutzen fuer Auszubildende liegt hier
-vor allem im Vergleich: Ein hoher Zeilenwert und ein hoher Arbeitstagewert
-laufen oft parallel, aber nicht jede kleine Aenderung hat automatisch denselben
-didaktischen oder organisatorischen Aufwand.
+Die beiden Blöcke zeigen den Verlauf ohne eine zu breite Zeile. G steht für
+Phase 16 und H für Phase 17; alle späteren Slots sind bewusst leer.
 
-This X/Y chart shows how the conservative manual reference is distributed across
-the documented packages. Its value for apprentices is mainly comparative: a
-high line count and a high workday count often move together, but not every
-small code change implies the same teaching or coordination effort.
-
-```text
-X/Y-Diagramm: dokumentierte Beschleunigungsfaktoren (X = Phase/Branch, Y = Faktor)
-152.1 |                                             *                  |
-133.1 |                                                                |
-114.1 |                     *                                          |
- 95.1 |                                                                |
- 76.1 |                                                                |
- 57.0 |                                                                |
- 38.0 | *           *                   *               *              |
- 19.0 |     *   *                           *               *   *   *  |
-  0.0 |                             *           *                     *|
-      +----------------------------------------------------------------+
-        0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15 16
-```
-
-Dieses X/Y-Diagramm zeigt die dokumentierten Beschleunigungsfaktoren nur fuer
-die Pakete, bei denen im Dokument eine belastbare Aktivtag-Basis oder ein
-expliziter Faktor genannt ist. Fehlende Punkte bedeuten also nicht automatisch
-schlechte Leistung, sondern nur: Hier liegt im aktuellen Statistikstand keine
-saubere Basis fuer denselben Vergleich vor.
-
-This X/Y chart shows the documented acceleration factors only for packages
-where the document already provides a reliable active-day basis or an explicit
-factor. Missing points therefore do not automatically mean poor performance;
-they only mean that the current statistics state does not provide a clean base
-for the same comparison.
+The two blocks show progression without an overly wide line. G represents
+phase 16 and H phase 17; all later slots are intentionally empty.

@@ -34,6 +34,8 @@ public static class SerializationTestSupport
     public static TRecordRegistry CreateStreamRegistry()
     {
         TRecordRegistry registry = CreateArchiveRegistry();
+        // Paar und Knoten trennen Shared-Reference-Beweis von Zyklus-Ablehnung in derselben stabilen Testform.
+        // Pair and node separate shared-reference proof from cycle rejection in one stable test shape.
         registry.RegisterStream(
             "graph-node",
             stream =>

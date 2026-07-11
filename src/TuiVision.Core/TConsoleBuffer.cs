@@ -194,6 +194,8 @@ public sealed class TConsoleBuffer
             return;
         }
 
+        // Quelle und Ziel werden gemeinsam verschoben, damit links abgeschnittener Text nicht inhaltlich verrutscht.
+        // Source and destination move together so text clipped on the left does not shift semantically.
         int destinationStart = Math.Max(x, 0);
         int sourceOffset = destinationStart - x;
         int writeCount = Math.Min(Width - destinationStart, text.Length - sourceOffset);

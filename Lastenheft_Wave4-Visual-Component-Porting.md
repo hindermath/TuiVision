@@ -531,3 +531,11 @@ Pflicht:
 - Guides, examples/README.md, pr-evidence.md, Pflichtenheft.md und docs/project-statistics.md im selben Feature-Lauf aktualisieren.
 - Keine Wave-3-Arbeit, keine TP7-Anschlusswellen, keine native Komplett-Emulator-Neuschreibung und keine breite Framework-Revision in diesen Lauf ziehen.
 ```
+
+---
+
+## Spec-Kit-Intake-Reife / Spec Kit Intake Readiness
+
+Dieses Lastenheft enthaelt bereits einen kopierbaren `/speckit-specify`-Prompt. Vor dem Start muss der aktuelle Repository-Stand trotzdem geprueft werden. Bereits erledigte oder branch-suffig archivierte Punkte werden nicht erneut umgesetzt; offene Punkte werden als `Applicable`, `AlreadySatisfied`, `N/A`, `Open` oder `FollowUp` klassifiziert.
+
+*This requirements document already contains a copyable `/speckit-specify` prompt. Before starting, still check the current repository state. Completed or branch-suffixed archived items are not implemented again; open items are classified as `Applicable`, `AlreadySatisfied`, `N/A`, `Open`, or `FollowUp`.*
