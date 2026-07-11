@@ -19,6 +19,36 @@ namespace TuiVision.Examples.SmokeTests;
 public sealed class MsgClsSmokeTests : ExampleTestBase
 {
     /// <summary>
+    /// Prueft den vollstaendigen sichtbaren Command-, Broadcast-, Status- und
+    /// Beschreibungspfad ueber die Anwendungsschleife.
+    ///
+    /// Verifies the complete visible command, broadcast, status, and description
+    /// path through the application loop.
+    /// </summary>
+    [TestMethod]
+    public void MsgCls_AppLoop_Renders_RoutedMessage_Status_And_Description()
+    {
+        MsgClsApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(
+            MsgClsEvents.cmPostLoremIpsum,
+            MsgClsApp.CmDescription).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertTrue(app.MsgWindow.Messages.Contains("Lorem Ipsum dolor sit amet."), "App-Loop command routes message");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "MsgCls visible window kind");
+        AssertRenderedRegionContainsFromAppLoop(
+            app.Driver.BackBuffer,
+            app.LastVisibleRegion,
+            "MsgCls description",
+            "MsgCls rendered description region");
+        AssertVisibleContainsFromAppLoop(app.LastStatusMessage, "Help -> Description", "MsgCls status-line hint");
+        AssertRenderedContainsFromAppLoop(app.Driver.BackBuffer, "Help -> Description", "MsgCls rendered status line");
+        AssertDirectHelperUsage(DirectHelperUsage.None);
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
     /// Stellt sicher, dass <see cref="MsgClsApp"/> ohne Ausnahme startet und sauber beendet wird.
     ///
     /// Asserts that <see cref="MsgClsApp"/> starts and exits cleanly without exception.

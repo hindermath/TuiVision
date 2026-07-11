@@ -22,12 +22,12 @@ public sealed class TvGuid09Step : ITutorialStep
     public int SequenceNumber => 9;
 
     /// <inheritdoc/>
-    public string Title => "Mehrere Fenster / Multiple windows";
+    public string Title => "Mehrere Inhaltsbereiche / Multiple panes";
 
     /// <inheritdoc/>
     public string Description =>
-        "Öffnet mehrere Fenster und zeigt die Z-Reihenfolge. / " +
-        "Opens multiple windows and demonstrates Z-order.";
+        "Teilt ein Fenster in mehrere sichtbare Inhaltsbereiche. / " +
+        "Splits one window into multiple visible content panes.";
 
     /// <inheritdoc/>
     public TApplication CreateApp(TRect bounds, bool headless) => new TvGuid09App(bounds, headless);

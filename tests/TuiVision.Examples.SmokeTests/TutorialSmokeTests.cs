@@ -1,6 +1,7 @@
 // Copyright (c) 2026 Thorsten Hindermann / TuiVision Contributors.
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
+using TuiVision.Core;
 using TuiVision.Examples.Tutorial;
 using TuiVision.Examples.Tutorial.Steps;
 
@@ -22,22 +23,103 @@ public sealed class TutorialSmokeTests : ExampleTestBase
         new Dictionary<string, string>(StringComparer.Ordinal)
         {
             ["tvguid01"] = "Minimal TApplication",
-            ["tvguid02"] = "Menu bar with submenus",
-            ["tvguid03"] = "Menu command handling",
+            ["tvguid02"] = "Status-line item",
+            ["tvguid03"] = "Menu and command handling",
             ["tvguid04"] = "Opening a TWindow",
             ["tvguid05"] = "Drawing content into a window",
-            ["tvguid06"] = "Vertical scroll bar",
-            ["tvguid07"] = "Horizontal and vertical scroll bars",
+            ["tvguid06"] = "Scrollable content introduction",
+            ["tvguid07"] = "Improved two-axis content",
             ["tvguid08"] = "Scroll bars and delta point",
-            ["tvguid09"] = "Multiple windows",
-            ["tvguid10"] = "Opening a TDialog",
-            ["tvguid11"] = "Buttons in a dialog",
-            ["tvguid12"] = "Input line in a dialog",
+            ["tvguid09"] = "Multiple panes",
+            ["tvguid10"] = "Resize constraints",
+            ["tvguid11"] = "Non-modal dialog",
+            ["tvguid12"] = "Modal dialog behaviour",
             ["tvguid13"] = "Two buttons",
             ["tvguid14"] = "Check boxes and radio buttons",
-            ["tvguid15"] = "Saving dialog data",
-            ["tvguid16"] = "Save and restore dialog data"
+            ["tvguid15"] = "Input line",
+            ["tvguid16"] = "Dialog data transfer and validation"
         };
+
+    private static readonly IReadOnlyDictionary<string, string> ExpectedVisualKinds =
+        new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["tvguid01"] = "TStaticText",
+            ["tvguid02"] = "TStaticText",
+            ["tvguid03"] = "TWindow",
+            ["tvguid04"] = "TWindow",
+            ["tvguid05"] = "TWindow",
+            ["tvguid06"] = "TWindow",
+            ["tvguid07"] = "TWindow",
+            ["tvguid08"] = "TScrollGroup",
+            ["tvguid09"] = "TWindow",
+            ["tvguid10"] = "TWindow",
+            ["tvguid11"] = "TDialog",
+            ["tvguid12"] = "TDialog",
+            ["tvguid13"] = "TDialog",
+            ["tvguid14"] = "TDialog",
+            ["tvguid15"] = "TInputLine",
+            ["tvguid16"] = "TDialog"
+        };
+
+    /// <summary>
+    /// Prueft alle 16 visuellen Lernpfade durch den App-Loop.
+    ///
+    /// Verifies all 16 visual learning paths through the app loop.
+    /// </summary>
+    [TestMethod]
+    public void Tutorial_AppLoop_Renders_All16_Distinct_VisualSteps()
+    {
+        HashSet<string> signatures = new(StringComparer.Ordinal);
+
+        for (int i = 1; i <= 16; i++)
+        {
+            string token = $"tvguid{i:D2}";
+            TutorialApp launcher = new(token, DefaultBounds(), headless: true);
+            launcher.QueueEvents(InteractiveSmokeEventScript.Commands(TutorialApp.CmPrimary).Events);
+
+            AssertSmokeRunCompletes(() => launcher.Run());
+
+            AssertEqual(token, launcher.LastRunStepToken!, $"Tutorial token {token}");
+            AssertTrue(signatures.Add(launcher.LastVisualSignature), $"Tutorial signature {token} must be unique");
+            AssertViewTreeProofFromAppLoop(
+                launcher.LastVisibleComponentKind,
+                ExpectedVisualKinds[token],
+                $"Tutorial view kind {token}");
+            AssertRenderedRegionContainsFromAppLoop(
+                launcher.LastRenderedBuffer!,
+                launcher.LastVisibleRegion,
+                token,
+                $"Tutorial rendered token {token}");
+            AssertVisibleContainsFromAppLoop(launcher.LastStatusMessage, "Help -> Description", $"Tutorial status {token}");
+        }
+
+        AssertEqual(16, signatures.Count, "Tutorial distinct visual signatures");
+        AssertDirectHelperUsage(DirectHelperUsage.None);
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft Help -> Description fuer einen datenorientierten spaeten Schritt.
+    ///
+    /// Verifies Help -> Description for a later data-oriented step.
+    /// </summary>
+    [TestMethod]
+    public void Tutorial_AppLoop_Renders_StepDescription()
+    {
+        TutorialApp launcher = new("tvguid16", DefaultBounds(), headless: true);
+        launcher.QueueEvents(InteractiveSmokeEventScript.Commands(TutorialApp.CmDescription).Events);
+
+        AssertSmokeRunCompletes(() => launcher.Run());
+
+        AssertViewTreeProofFromAppLoop(launcher.LastVisibleComponentKind, "TWindow", "Tutorial description kind");
+        AssertRenderedRegionContainsFromAppLoop(
+            launcher.LastRenderedBuffer!,
+            launcher.LastVisibleRegion,
+            "Tutorial description",
+            "Tutorial rendered description");
+        AssertDirectHelperUsage(DirectHelperUsage.None);
+        AssertPrimaryAssertionUsedAppLoop();
+    }
 
     // ── Katalog-Struktur-Tests / Catalog structure tests ──────────────────────────
 

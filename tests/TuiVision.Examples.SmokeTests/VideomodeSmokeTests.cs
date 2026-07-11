@@ -19,6 +19,58 @@ namespace TuiVision.Examples.SmokeTests;
 public sealed class VideomodeSmokeTests : ExampleTestBase
 {
     /// <summary>
+    /// Prueft Probe, Wiederholung, kanonischen Ergebniszustand und sichtbare Beweise ueber den App-Loop.
+    ///
+    /// Verifies probe, retry, canonical result state, and visible proof through the app loop.
+    /// </summary>
+    [TestMethod]
+    public void Videomode_AppLoop_Renders_ProbeResult_Status_And_RemainsUsable()
+    {
+        VideomodeApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(VideomodeApp.CmProbe).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        string[] allowedStates = ["supported", "fallback", "rejected", "unchanged"];
+        AssertTrue(allowedStates.Contains(app.CanonicalResultState), "Videomode canonical result state");
+        AssertEqual(2, app.Coordinator.TransitionAttemptCount, "Videomode app-loop retry count");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, nameof(VideomodeView), "Videomode view kind");
+        AssertRenderedRegionContainsFromAppLoop(
+            app.Driver.BackBuffer,
+            app.LastVisibleRegion,
+            app.CanonicalResultState,
+            "Videomode rendered canonical state");
+        AssertVisibleContainsFromAppLoop(app.LastStatusMessage, app.CanonicalResultState, "Videomode status result");
+        AssertRenderedContainsFromAppLoop(app.Driver.BackBuffer, "Help -> Description", "Videomode rendered status line");
+        AssertDirectHelperUsage(DirectHelperUsage.None);
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft die tastaturerreichbare, ehrliche Beschreibung der Terminalgrenze.
+    ///
+    /// Verifies the keyboard-reachable, honest description of the terminal boundary.
+    /// </summary>
+    [TestMethod]
+    public void Videomode_AppLoop_Renders_HelpDescription()
+    {
+        VideomodeApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(VideomodeApp.CmDescription).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "Videomode description kind");
+        AssertRenderedRegionContainsFromAppLoop(
+            app.Driver.BackBuffer,
+            app.LastVisibleRegion,
+            "Videomode Description",
+            "Videomode rendered description region");
+        AssertVisibleContainsFromAppLoop(app.DescriptionText, "Terminal", "Videomode description platform boundary");
+        AssertDirectHelperUsage(DirectHelperUsage.None);
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
     /// Stellt sicher, dass <see cref="VideomodeApp"/> ohne Ausnahme startet und sauber beendet wird.
     ///
     /// Asserts that <see cref="VideomodeApp"/> starts and exits cleanly without exception.

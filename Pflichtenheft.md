@@ -246,8 +246,8 @@ Statuscheckliste Beispielwellen:
   Reihenfolgehinweis: abgeschlossen (Branch `015-didactic-comment-hardening`); zentrale Framework-Flows und Smoke-Test-Helfer wurden selektiv didaktisch gehaertet und in `specs/015-didactic-comment-hardening/pr-evidence.md` nachgewiesen.
 - [x] **Secure-Development-Hardening**
   Reihenfolgehinweis: abgeschlossen (Branch `016-secure-development-hardening`); die `docs/secure-development/`-Basis, Governance-Anwendbarkeit, 157 Kontrollen und projektweite Sicherheitsnachweise wurden geprueft und gehaertet.
-- [ ] **Welle 1 - Sichtbarer Komponenten-Nachweis**
-  Reihenfolgehinweis: nach Secure-Development-Hardening ueber `Lastenheft_Wave1-Visual-Component-Remediation.md`; erst danach weitere Beispielwellen fortsetzen, damit Welle 1 und Welle 2 denselben sichtbaren Qualitaetsmassstab besitzen.
+- [x] **Welle 1 - Sichtbarer Komponenten-Nachweis**
+  Reihenfolgehinweis: abgeschlossen (Branch `017-wave1-visual-component-remediation`); Welle 1 und Welle 2 besitzen denselben sichtbaren Drei-Schichten- und App-Loop-Qualitätsmaßstab.
 - [x] **Welle 2 - Controls und Dialoge**
   Reihenfolgehinweis: Portierungs-/Smoke-Nachweis abgeschlossen (Branch `011-port-wave2-examples`); 11 Controls-/Dialog-Beispiele portiert, alle 15 gelieferten Beispiele per Smoke-Test abgedeckt, Guides geliefert. Die interaktive Showcase-Stufe wurde im Follow-up `012-interactive-wave2-demos` nachgezogen.
 - [x] **Welle 2 - Interaktive Showcase-Stufe**
@@ -651,14 +651,14 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.1a` = Welle 1: Funktionaler Nachweisnachlauf — ✓ ABGESCHLOSSEN (Branch `014-wave1-functional-hardening`)
    - `3.1b` = Didaktische Inline-Code-Kommentar-Haertung — ✓ ABGESCHLOSSEN (Branch `015-didactic-comment-hardening`)
    - `3.1c` = Secure-Development-Hardening — ✓ ABGESCHLOSSEN (Branch `016-secure-development-hardening`)
-   - `3.1d` = Welle 1: Sichtbarer Komponenten-Nachweis — NAECHSTER SCHRITT
+   - `3.1d` = Welle 1: Sichtbarer Komponenten-Nachweis — ✓ ABGESCHLOSSEN (Branch `017-wave1-visual-component-remediation`)
    - `3.2` = Welle 2: Controls und Dialoge — ✓ ABGESCHLOSSEN
    - `3.2a` = Welle 2: Interaktive Showcase-Stufe — ✓ ABGESCHLOSSEN (Branch `012-interactive-wave2-demos`)
    - `3.2b` = Welle 2: Sichtbarer Komponenten-Nachweis — ✓ ABGESCHLOSSEN (Branch `013-wave2-visual-component-remediation`)
-   - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams
+   - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams — NAECHSTER SCHRITT: Vorhärtung
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze
 
->>> NAECHSTER SCHRITT <<< Welle-1-Visual-Component-Remediation starten: `Lastenheft_Wave1-Visual-Component-Remediation.md` umsetzen. Danach folgen Wave-3- und Wave-4-Vorhaertungen.
+>>> NAECHSTER SCHRITT <<< Wave-3-Vorhärtung starten: `Lastenheft_03_EditorHelpAndResourcesHardening.md` umsetzen. Danach folgt `Lastenheft_Wave3-Visual-Component-Porting.md`.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

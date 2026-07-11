@@ -62,6 +62,15 @@ public class DisplayModeCoordinator
     public DisplayModeOutcome LastOutcome { get; private set; } = DisplayModeOutcome.Unknown;
 
     /// <summary>
+    /// Der letzte kanonische, nutzerorientierte Zustand.
+    /// The latest canonical user-facing state.
+    /// </summary>
+    public string LastResultState { get; private set; } = "unchanged";
+
+    /// <summary>Anzahl der echten Übergangsversuche. / Number of actual transition attempts.</summary>
+    public int TransitionAttemptCount { get; private set; }
+
+    /// <summary>
     /// Die Fallback-Meldung, die angezeigt wird, wenn keine echte Größenänderung möglich ist.
     ///
     /// The fallback message displayed when no real resize is possible.
@@ -83,24 +92,39 @@ public class DisplayModeCoordinator
     /// <returns>Das Ergebnis des Übergangsversuchs. / The outcome of the transition attempt.</returns>
     public DisplayModeOutcome TryTransition(int width, int height)
     {
+        TransitionAttemptCount++;
+
+        if (!IsResizeSupported)
+        {
+            LastResultState = "fallback";
+            LastOutcome = DisplayModeOutcome.VisibleFallback;
+            return LastOutcome;
+        }
+
         if (IsResizeSupported)
         {
             try
             {
+                bool targetAlreadyActive = Console.WindowWidth == width && Console.WindowHeight == height;
+
                 // Konsolengröße setzen / Set console size
 #pragma warning disable CA1416 // Nur aufgerufen, wenn IsResizeSupported = true / Only called when IsResizeSupported = true
                 Console.SetWindowSize(width, height);
 #pragma warning restore CA1416
+                LastResultState = targetAlreadyActive ? "unchanged" : "supported";
                 LastOutcome = DisplayModeOutcome.RealTransition;
                 return LastOutcome;
             }
             catch
             {
-                // Größenänderung ist trotz Sondierung fehlgeschlagen / Resize failed despite probing
+                // Eine positive Sonde garantiert keinen spaeteren Wechsel; diese Ablehnung bleibt sichtbar.
+                // A positive probe does not guarantee a later resize; the rejection remains visible.
+                LastResultState = "rejected";
             }
         }
 
-        // Fallback: echter Übergang nicht möglich / Fallback: real transition not possible
+        // Der bestehende Enum-Vertrag fasst Ablehnung und Fallback zusammen; der Textzustand trennt beides.
+        // The existing enum contract groups rejection and fallback; the text state distinguishes them.
         LastOutcome = DisplayModeOutcome.VisibleFallback;
         return LastOutcome;
     }

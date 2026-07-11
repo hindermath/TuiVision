@@ -18,6 +18,51 @@ namespace TuiVision.Examples.SmokeTests;
 public sealed class DesklogoSmokeTests : ExampleTestBase
 {
     /// <summary>
+    /// Prueft Logo, Desktop-Typ und Statuszeile nach dem echten App-Loop.
+    ///
+    /// Verifies the logo, desktop type, and status line after the real app loop.
+    /// </summary>
+    [TestMethod]
+    public void Desklogo_AppLoop_Renders_Logo_And_StatusLine()
+    {
+        DesklogoApp app = new(DefaultBounds(), headless: true);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertTrue(app.LogoDesktop.RenderedLineCount > 0, "Desklogo rendered logo rows");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "DesklogoDesktop", "Desklogo desktop kind");
+        AssertRenderedContainsFromAppLoop(app.Driver.BackBuffer, "████", "Desklogo rendered logo cells");
+        AssertVisibleContainsFromAppLoop(app.LastStatusMessage, "Help -> Description", "Desklogo status-line hint");
+        AssertRenderedContainsFromAppLoop(app.Driver.BackBuffer, "Help -> Description", "Desklogo rendered status line");
+        AssertDirectHelperUsage(DirectHelperUsage.None);
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
+    /// Prueft die tastaturerreichbare Beschreibung ohne kuenstliche Logo-Mutation.
+    ///
+    /// Verifies the keyboard-reachable description without artificial logo mutation.
+    /// </summary>
+    [TestMethod]
+    public void Desklogo_AppLoop_Renders_HelpDescription()
+    {
+        DesklogoApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents(InteractiveSmokeEventScript.Commands(DesklogoApp.CmDescription).Events);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        AssertEqual('█', app.LogoDesktop.LogoLines[0][0], "Embedded logo remains unchanged");
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, "TWindow", "Desklogo description kind");
+        AssertRenderedRegionContainsFromAppLoop(
+            app.Driver.BackBuffer,
+            app.LastVisibleRegion,
+            "Desklogo description",
+            "Desklogo rendered description region");
+        AssertDirectHelperUsage(DirectHelperUsage.None);
+        AssertPrimaryAssertionUsedAppLoop();
+    }
+
+    /// <summary>
     /// Stellt sicher, dass <see cref="DesklogoApp"/> ohne Ausnahme gestartet
     /// und sauber beendet werden kann.
     ///

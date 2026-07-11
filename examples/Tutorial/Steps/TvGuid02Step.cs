@@ -22,12 +22,12 @@ public sealed class TvGuid02Step : ITutorialStep
     public int SequenceNumber => 2;
 
     /// <inheritdoc/>
-    public string Title => "Menüleiste mit Untermenüs / Menu bar with submenus";
+    public string Title => "Statuszeilen-Eintrag / Status-line item";
 
     /// <inheritdoc/>
     public string Description =>
-        "Fügt eine Menüleiste mit Untermenüs und Menüpunkten hinzu. / " +
-        "Adds a menu bar with submenus and menu items.";
+        "Fügt einen sichtbaren Befehlshinweis in der Statuszeile hinzu. / " +
+        "Adds a visible command hint to the status line.";
 
     /// <inheritdoc/>
     public TApplication CreateApp(TRect bounds, bool headless) => new TvGuid02App(bounds, headless);

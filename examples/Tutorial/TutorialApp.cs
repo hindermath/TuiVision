@@ -20,7 +20,14 @@ namespace TuiVision.Examples.Tutorial;
 /// </summary>
 public class TutorialApp
 {
+    /// <summary>Primaerer sichtbarer Lektionsbefehl. / Primary visible lesson command.</summary>
+    public const ushort CmPrimary = 17021;
+
+    /// <summary>Help-Description-Befehl. / Help description command.</summary>
+    public const ushort CmDescription = 17022;
+
     private readonly TRect _bounds;
+    private readonly Queue<TEvent> _scriptedEvents = [];
 
     /// <summary>
     /// Initialisiert eine neue Instanz der <see cref="TutorialApp"/>-Klasse.
@@ -90,6 +97,30 @@ public class TutorialApp
     /// </summary>
     public bool LastRunUsedFallback { get; private set; }
 
+    /// <summary>Letzter visueller Komponententyp. / Last visual component type.</summary>
+    public string LastVisibleComponentKind { get; private set; } = string.Empty;
+
+    /// <summary>Letzte sichtbare Region. / Last visible region.</summary>
+    public TRect LastVisibleRegion { get; private set; }
+
+    /// <summary>Letzter Statuszeilentext. / Last status-line message.</summary>
+    public string LastStatusMessage { get; private set; } = string.Empty;
+
+    /// <summary>Eindeutige visuelle Signatur. / Unique visual signature.</summary>
+    public string LastVisualSignature { get; private set; } = string.Empty;
+
+    /// <summary>Letzter gerenderter Puffer. / Last rendered buffer.</summary>
+    public TConsoleBuffer? LastRenderedBuffer { get; private set; }
+
+    /// <summary>Fuegt deterministische Ereignisse hinzu. / Adds deterministic events.</summary>
+    public void QueueEvents(IEnumerable<TEvent> events)
+    {
+        foreach (TEvent @event in events)
+        {
+            _scriptedEvents.Enqueue(@event);
+        }
+    }
+
     /// <summary>
     /// Führt den Tutorial-Schritt aus.
     /// Wenn das Token unbekannt ist, wird eine Fallback-Anwendung gestartet.
@@ -104,8 +135,14 @@ public class TutorialApp
             // Bekannten Schritt starten / Start known step
             LastRunStepToken = CurrentStep.Token;
             LastRunUsedFallback = false;
-            TApplication app = CurrentStep.CreateApp(_bounds, IsHeadless);
+            TutorialVisualApp app = new(CurrentStep, _bounds, IsHeadless);
+            app.QueueEvents(_scriptedEvents);
             app.Run();
+            LastVisibleComponentKind = app.LastVisibleComponentKind;
+            LastVisibleRegion = app.LastVisibleRegion;
+            LastStatusMessage = app.LastStatusMessage;
+            LastVisualSignature = app.LastVisualSignature;
+            LastRenderedBuffer = app.Driver.BackBuffer;
         }
         else
         {
@@ -114,6 +151,9 @@ public class TutorialApp
             LastRunUsedFallback = true;
             FallbackApp fallback = new(_bounds, Token, IsHeadless);
             fallback.Run();
+            LastVisibleComponentKind = "TWindow";
+            LastVisualSignature = $"{Token}:fallback";
+            LastRenderedBuffer = fallback.Driver.BackBuffer;
         }
     }
 }

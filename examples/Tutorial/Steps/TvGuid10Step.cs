@@ -22,12 +22,12 @@ public sealed class TvGuid10Step : ITutorialStep
     public int SequenceNumber => 10;
 
     /// <inheritdoc/>
-    public string Title => "Ein TDialog öffnen / Opening a TDialog";
+    public string Title => "Grenzen beim Ändern der Größe / Resize constraints";
 
     /// <inheritdoc/>
     public string Description =>
-        "Zeigt, wie ein modaler Dialog geöffnet wird. / " +
-        "Shows how to open a modal dialog.";
+        "Zeigt minimale und maximale Grenzen beim Ändern einer Fenstergröße. / " +
+        "Shows minimum and maximum limits while resizing a window.";
 
     /// <inheritdoc/>
     public TApplication CreateApp(TRect bounds, bool headless) => new TvGuid10App(bounds, headless);

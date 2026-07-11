@@ -22,7 +22,7 @@ public sealed class TvGuid03Step : ITutorialStep
     public int SequenceNumber => 3;
 
     /// <inheritdoc/>
-    public string Title => "Menübefehl-Verarbeitung / Menu command handling";
+    public string Title => "Menü und Befehlsverarbeitung / Menu and command handling";
 
     /// <inheritdoc/>
     public string Description =>

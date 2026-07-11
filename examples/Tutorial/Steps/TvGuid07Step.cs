@@ -22,12 +22,12 @@ public sealed class TvGuid07Step : ITutorialStep
     public int SequenceNumber => 7;
 
     /// <inheritdoc/>
-    public string Title => "Horizontale und vertikale Bildlaufleisten / Horizontal and vertical scroll bars";
+    public string Title => "Verbesserter Inhalt auf zwei Achsen / Improved two-axis content";
 
     /// <inheritdoc/>
     public string Description =>
-        "Fügt beide Bildlaufleisten zu einem Fenster hinzu. / " +
-        "Adds both scroll bars to a window.";
+        "Verbessert Zeichnen und Größenverhalten für Inhalt auf zwei Achsen. / " +
+        "Improves drawing and resize behaviour for two-axis content.";
 
     /// <inheritdoc/>
     public TApplication CreateApp(TRect bounds, bool headless) => new TvGuid07App(bounds, headless);

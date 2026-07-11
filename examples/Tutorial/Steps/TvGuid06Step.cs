@@ -22,12 +22,12 @@ public sealed class TvGuid06Step : ITutorialStep
     public int SequenceNumber => 6;
 
     /// <inheritdoc/>
-    public string Title => "Vertikale Bildlaufleiste / Vertical scroll bar";
+    public string Title => "Einführung in scrollbaren Inhalt / Scrollable content introduction";
 
     /// <inheritdoc/>
     public string Description =>
-        "Fügt eine vertikale Bildlaufleiste zu einem Fenster hinzu. / " +
-        "Adds a vertical scroll bar to a window.";
+        "Zeigt längeren Fensterinhalt mit einem vertikalen Scroll-Hinweis. / " +
+        "Shows longer window content with a vertical scrolling hint.";
 
     /// <inheritdoc/>
     public TApplication CreateApp(TRect bounds, bool headless) => new TvGuid06App(bounds, headless);
