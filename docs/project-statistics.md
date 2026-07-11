@@ -81,21 +81,21 @@ fortgeschrieben.
 | Kennzahl | Wert |
 |---|---:|
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-11 |
-| Git-Commits gesamt | 407 |
+| Git-Commits gesamt | 408 |
 | Autoren laut Git | 1 |
 | Sichtbare Aktivtage inkl. aktuellem Working Tree | 68 |
 | Produktionscode aktuell | 160 Dateien / 20766 Zeilen |
 | Testcode aktuell | 98 Dateien / 14047 Zeilen |
-| Dokumentation aktuell | 485 Dateien / 176906 Zeilen |
-| Davon Spec-Kit-Artefakte | 290 Dateien / 38814 Zeilen |
+| Dokumentation aktuell | 485 Dateien / 176907 Zeilen |
+| Davon Spec-Kit-Artefakte | 290 Dateien / 38815 Zeilen |
 | Davon Governance/Agent-Dateien | 5 Dateien / 2246 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 211719 Zeilen |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 211720 Zeilen |
 | Erfahrener Entwickler, konservative Untergrenze | 2646.5 Arbeitstage |
-| Erfahrener Entwickler, konservative Untergrenze in Stunden | 20642.6 Stunden (211719 / 80 * 7.8) |
+| Erfahrener Entwickler, konservative Untergrenze in Stunden | 20642.7 Stunden (211720 / 80 * 7.8) |
 | Erfahrener Entwickler, brutto | 123.1 Arbeitsmonate (21.5 Tage/Monat) |
 | Erfahrener Entwickler, TVoeD-Annahme | 139.3 Kalendermonate bzw. 11.6 Jahre |
 | Thorsten solo, erfahrungsadjustierte Untergrenze | 1693.8 Arbeitstage |
-| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 13211.3 Stunden (211719 / 125 * 7.8) |
+| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 13211.3 Stunden (211720 / 125 * 7.8) |
 | Thorsten solo, brutto | 78.8 Arbeitsmonate (21.5 Tage/Monat) |
 | Thorsten solo, TVoeD-Annahme | 89.1 Kalendermonate bzw. 7.4 Jahre |
 | Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 1058.6 Arbeitstage |
@@ -622,15 +622,15 @@ nächsten Statistiklauf eine dokumentierte Momentaufnahme.
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | 211719 Zeilen |
+| Artefaktbasis gesamt | 211720 Zeilen |
 | Produktions- und Testcode zusammen | 34813 Zeilen (16.4 %) |
-| Dokumentationsanteil | 176906 Zeilen (83.6 %) |
-| Spec-Kit-Anteil innerhalb der Doku | 38814 Zeilen (21.9 %) |
+| Dokumentationsanteil | 176907 Zeilen (83.6 %) |
+| Spec-Kit-Anteil innerhalb der Doku | 38815 Zeilen (21.9 %) |
 | Governance-/Agent-Anteil innerhalb der Doku | 2246 Zeilen (1.3 %) |
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-11 |
-| Git-Commits / sichtbare Aktivtage | 407 / 68 |
+| Git-Commits / sichtbare Aktivtage | 408 / 68 |
 | Gesamtzeilen pro sichtbarem Aktivtag | 3113.5 |
-| Gesamtzeilen pro Commit | 520.2 |
+| Gesamtzeilen pro Commit | 518.9 |
 | Konservative Einzelentwickler-Untergrenze | 2646.5 Arbeitstage / 20642.6 Stunden |
 | Thorsten-Solo-Untergrenze | 1693.8 Arbeitstage / 13211.3 Stunden |
 | Kleines 3er-Team mit Koordinationsaufschlag | 1058.6 Arbeitstage |
@@ -655,7 +655,7 @@ measure personal working time.
 Artefaktmix nach Snapshot (Zeilen)
 Produktion     | ###                           |  20766 |  9.8 %
 Tests          | ##                            |  14047 |  6.6 %
-Dokumentation  | ##############################| 176906 | 83.6 %
+Dokumentation  | ##############################| 176907 | 83.6 %
 ```
 
 Die Balken verwenden dieselbe Skala. Die Zahlen bleiben der genaue,

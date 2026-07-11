@@ -272,6 +272,7 @@ The homogeneity workflow runs it on Ubuntu, macOS, and Windows runners.
 | V-030 | Bash and PowerShell agent-secret scans; Gitleaks staged-diff and full-directory scans | Final secret boundary | Tracked/untracked worktree and agent directories | `1.16.4.68` | macOS | PASS | 0 High; PowerShell and both Gitleaks modes clean; Bash classified local untracked `.claude/settings.local.json` as the expected Medium platform-permission file and six prompt/template/empty directories as Low | No scan report retained; values redacted | CI repeats history/provider boundary; local platform settings remain untracked and human-owned |
 | V-031 | Five-surface policy/context/marker parity scan | Final agent synchronization | AGENTS, Claude, Gemini, Copilot instruction and Copilot agent files | N/A | macOS | PASS | All five contain 157-control, 498-test, human-only, evidence, and next-intake facts; four Spec-Kit marker pairs and one manual marker pair are balanced; all referenced paths exist | Tracked guidance only | Generator changes require a repeated parity check |
 | V-032 | Post-implementation Analyze plus final version/status/generated-output/historical-source/scope scan | PR evidence completion | 66 requirements, 148 tasks, 47 changed paths | `1.16.4.68` | macOS | PASS | Analyze found no new issue; T001-T142 complete except delivery action T143 onward; patch 4 and all three version fields align; diff check clean; no generated report/output, credential, cache/log, dependency/example, or `tv203s/` change remains | Only source-controlled feature scope retained | Remote CI/review may require bounded follow-up commits |
+| V-033 | `git push --set-upstream` and `gh pr create` | Remote delivery | Branch and PR #33 | `1.16.4.68` | GitHub | PASS | Initial remote HEAD matched local implementation commit; PR #33 created from the final evidence summary with `main` as base | Remote Git/PR metadata | Delivery metadata commit is pushed next and CI/review convergence remains T146 |
 
 ## Anforderungs-Traceability / Requirement Traceability
 
@@ -311,7 +312,7 @@ The homogeneity workflow runs it on Ubuntu, macOS, and Windows runners.
 | US4 Cross-platform und Agents | T089-T105 | 17 | Complete; final active-context parity is repeated in T133/T139 |
 | US5 A11Y und Didaktik | T106-T114 | 9 | Complete |
 | Governance und Validierung / Governance and validation | T115-T140 | 26 | Complete |
-| Remote Delivery | T141-T148 | 3 | T144-T148 remain after the implementation commit |
+| Remote Delivery | T141-T148 | 5 | T146-T148 remain |
 
 ## Finale PR-Zusammenfassung / Final PR Summary
 
