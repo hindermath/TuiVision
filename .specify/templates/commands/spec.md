@@ -17,6 +17,9 @@ Use this command to create or update a feature specification.
    - XML documentation and DocFX impact
    - Red-Green-Refactor test impact
    - data contract implications
+5. Define explicit in-scope and out-of-scope boundaries plus any controlled
+   decision vocabulary needed to route discoveries to implementation, `N/A`,
+   or named follow-up work.
 
 ## Validation Checklist
 
@@ -25,3 +28,4 @@ Use this command to create or update a feature specification.
 - Constitution alignment items are complete and non-empty.
 - Toolchain/dependency/coverage constraints are explicit and measurable.
 - Architecture evidence need or `N/A` rationale is explicit.
+- An autonomous run can enforce scope without inventing new requirements.

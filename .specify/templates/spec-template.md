@@ -137,6 +137,11 @@
 - **CR-012**: The feature MUST state which installed Spec-Kit governance
   presets apply. C#/.NET Level-2 projects default to all six home-baseline
   presets unless a justified exception is documented.
+- **CR-013**: The feature MUST define explicit in-scope and out-of-scope
+  boundaries plus any controlled decision vocabulary needed to route discovered
+  work to implementation, `N/A`, or a named follow-up. Operational delivery
+  authority remains outside user-facing requirements and belongs in the plan
+  and run evidence.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -169,3 +174,18 @@
 - [Assumption about scope boundaries, e.g., "Mobile support is out of scope for v1"]
 - [Assumption about data/environment, e.g., "Existing authentication system will be reused"]
 - [Dependency on existing system/service, e.g., "Requires access to the existing user profile API"]
+
+## Scope Boundaries
+
+### In Scope
+
+- [Accepted feature outcome]
+
+### Out of Scope
+
+- [Explicit boundary that an autonomous run must not expand]
+
+### Decision and Follow-up Model
+
+- [List feature-specific decision terms, or state that normal requirement and
+  issue tracking is sufficient]
