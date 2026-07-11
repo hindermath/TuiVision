@@ -494,6 +494,11 @@ reported no current-diff secret, the agent scan reported high=0 (one known local
 `git diff --check` passed, and the pre-push hook completed with no commit range
 yet available. The actual push reruns the hook against committed history.
 
+Implementation commit: `3a4934c` (`[Spec Kit] Implement Wave-1 visual
+remediation`). Its scope contains the complete accepted feature, archived
+Lastenheft, local validation evidence, and no prohibited generated output. This
+causal follow-up aligns the two-commit branch version to `1.17.2.94`.
+
 ## PR Description
 
 ### Summary
