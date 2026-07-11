@@ -499,6 +499,11 @@ remediation`). Its scope contains the complete accepted feature, archived
 Lastenheft, local validation evidence, and no prohibited generated output. This
 causal follow-up aligns the two-commit branch version to `1.17.2.94`.
 
+Remote delivery: branch `017-wave1-visual-component-remediation` pushed with a
+clean pre-push secret scan; PR #39 opened against `main` at
+`https://github.com/hindermath/TuiVision/pull/39`. No merge completion is claimed
+at this point. This causal PR-evidence commit aligns version `1.17.3.94`.
+
 ## PR Description
 
 ### Summary
