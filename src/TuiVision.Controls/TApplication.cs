@@ -28,23 +28,22 @@ public class TApplication : TProgram
     /// <param name="bounds">Die Grenzen der Anwendung. / The bounds of the application.</param>
     public TApplication(TRect bounds) : base(bounds)
     {
-        // 1. Menüleiste (Höhe 1, oben) / Menu bar (height 1, top)
+        // Die Randzeilen bleiben für globale Befehle reserviert; der Desktop erhält nur den sicheren Arbeitsbereich.
+        // The edge rows stay reserved for global commands; the desktop receives only the safe workspace.
         TRect menuBounds = new(bounds.A.X, bounds.A.Y, bounds.B.X, bounds.A.Y + 1);
         MenuBar = InitMenuBar(menuBounds);
         Insert(MenuBar);
 
-        // 2. Statuszeile (Höhe 1, unten) / Status line (height 1, bottom)
         TRect statusBounds = new(bounds.A.X, bounds.B.Y - 1, bounds.B.X, bounds.B.Y);
         StatusLine = InitStatusLine(statusBounds);
         Insert(StatusLine);
 
-        // 3. Desktop (füllt den Rest) / Desktop (fills remaining rows)
         TRect desktopBounds = new(bounds.A.X, bounds.A.Y + 1, bounds.B.X, bounds.B.Y - 1);
         Desktop = InitDesktop(desktopBounds);
         Insert(Desktop);
 
-        // Initialen Fokus auf Desktop setzen (data-model §Shell Lifecycle: initialized → interactive).
-        // Set initial focus to desktop (data-model §Shell Lifecycle: initialized → interactive).
+        // Der Desktop startet fokussiert, damit Tastaturbefehle sofort einen stabilen Shell-Empfänger haben.
+        // The desktop starts focused so keyboard commands immediately have a stable shell receiver.
         SetFocus(Desktop);
     }
 

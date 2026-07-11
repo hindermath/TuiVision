@@ -225,11 +225,11 @@ npm run test:docfx
 - Helper or headless paths may be `PrimaryProof` only when they execute real example or application logic through public commands, events, application methods, or stable public state with concrete assertions; 014 added `PrimaryProof`, `SupplementalProof`, `SetupOnly`, and `LegacyOrTemporary` helper taxonomy.
 - Historical C/C++ sources under `tv203s/` remain read-only intent references. `set-logo.cc` and `tv_logo.cc` are Desklogo asset/generator boundary context only.
 - Validation baseline: targeted Wave-1 smokes 38/38 passed, full example smokes 91/91 passed, full Release tests 496/496 passed, coverage gate exceeded 70% for all required assemblies, `docfx docfx.json` passed with 0 warnings/errors, and Playwright/axe DocFX smoke passed 2/2 via explicit local-server workaround when sandboxed webserver startup is blocked.
-- Next open example-adjacent step is `Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.md`; it remains before `Lastenheft_Wave1-Visual-Component-Remediation.md`.
+- Feature 015 completed the didactic comment pass; the next open cross-cutting step is `Lastenheft_Secure-Development-Hardening.md` before Wave-1 visual remediation.
 - Wave-1 visual remediation, Wave 2/3/4 behavior, broad framework redesign, mouse-only operation, arbitrary user-file proof, external proof paths, persistent user history, databases, external services, new runtime dependencies, and runtime/product AI are out of scope.
 
 ### 015-didactic-comment-hardening
-- Current planning baseline: execute the didactic inline-code-comment hardening from `specs/015-didactic-comment-hardening/spec.md` and `specs/015-didactic-comment-hardening/plan.md`.
+- Current implementation status: the selective didactic inline-code-comment hardening is implemented; final evidence is in `specs/015-didactic-comment-hardening/pr-evidence.md`.
 - Scope is limited to selective didactic inline, block, file, or module comments, feature evidence in `specs/015-didactic-comment-hardening/pr-evidence.md`, and affected guidance/evidence surfaces.
 - Review must cover central framework flows and relevant smoke-test helpers: event/command/dispatch, focus transitions, view hierarchy, StatusLine, Help/Description, dialog state, validation/rejection, buffer/cell proof, rendering snapshots, terminal fallbacks, historical Turbo Vision deviations, and proof helpers.
 - Each reviewed area must receive exactly one decision: `CommentAdequate`, `CommentNeeded`, `NoCommentNeeded`, `UpdateExistingComment`, or `FollowUpHardening`.

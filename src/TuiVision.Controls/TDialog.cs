@@ -147,6 +147,8 @@ public class TDialog : TGroup
     /// <param name="event">Das zu verarbeitende Ereignis. / The event to process.</param>
     public override void HandleEvent(TEvent @event)
     {
+        // Die Basis kann das Ereignis leeren; die Kopie bewahrt dennoch Tab-, Escape- und Außenklick-Semantik.
+        // The base handler may clear the event; the copy still preserves Tab, Escape, and outside-click semantics.
         TEventKind originalKind = @event.What;
         TKeyDownEvent originalKeyDown = @event.KeyDown;
         TMouseEvent originalMouse = @event.Mouse;

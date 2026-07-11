@@ -3,7 +3,7 @@
 **Repository:** TuiVision  
 **Dokumenttyp:** Spec-Kit Intake / Lastenheft  
 **Status:** vorbereitet fuer separaten Spec-Kit-Haertungslauf  
-**Empfohlene Prioritaet:** nach `Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.md`, vor `Lastenheft_Wave1-Visual-Component-Remediation.md`
+**Empfohlene Prioritaet:** nach dem abgeschlossenen Feature `015-didactic-comment-hardening`, vor `Lastenheft_Wave1-Visual-Component-Remediation.md`
 **Stand:** 2026-06-17
 
 ## 1. Zweck

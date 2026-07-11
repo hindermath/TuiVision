@@ -311,7 +311,6 @@ public class TGroup : TView
             throw new ArgumentException("The view does not belong to this group.", nameof(view));
         }
 
-        // Already focused — No-Op / Bereits fokussiert — No-Op
         if (Current == view)
         {
             return;
@@ -357,7 +356,8 @@ public class TGroup : TView
         TView start = Current ?? First()!;
         TView candidate = forward ? start.Next! : FindPrev(start);
 
-        // Maximal n Iterationen, um Endlosschleife zu verhindern / Max n iterations to prevent infinite loop
+        // Die Kinderliste ist zirkulär; die feste Obergrenze schützt auch bei ausschließlich ungeeigneten Views.
+        // The child list is circular; the fixed bound also protects when every view is ineligible.
         int count = 0;
         int total = CountChildren();
         while (count < total)
@@ -526,14 +526,14 @@ public class TGroup : TView
     /// <param name="event">Das zu verarbeitende Ereignis. / The event to process.</param>
     public override void HandleEvent(TEvent @event)
     {
-        // FR-019 Disabled-Guard wird von base.HandleEvent abgedeckt / handled by base.HandleEvent
+        // Vor- und Nachverarbeitung rahmen den fokussierten Empfänger ein; ein geleertes Ereignis beendet die Kette.
+        // Pre- and post-processing surround the focused receiver; a cleared event stops the chain.
         base.HandleEvent(@event);
         if (@event.What == TEventKind.Nothing)
         {
             return;
         }
 
-        // Phase 1: PreProcess
         Phase = DrawPhase.PreProcess;
         ForEach(v =>
         {
@@ -545,19 +545,16 @@ public class TGroup : TView
             }
         });
 
-        // Phase 2: Focused
         if (@event.What != TEventKind.Nothing)
         {
             Phase = DrawPhase.Focused;
 
-            // Tastatur-Ereignisse gehen an Current / Keyboard events go to Current
             if ((@event.What & (TEventKind.KeyDown | TEventKind.Command)) != 0)
             {
                 Current?.HandleEvent(@event);
             }
             else
             {
-                // Sonstige Ereignisse an alle / All other events to all children
                 ForEach(v =>
                 {
                     if (@event.What != TEventKind.Nothing)
@@ -568,7 +565,6 @@ public class TGroup : TView
             }
         }
 
-        // Phase 3: PostProcess
         if (@event.What != TEventKind.Nothing)
         {
             Phase = DrawPhase.PostProcess;

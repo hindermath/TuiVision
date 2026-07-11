@@ -86,6 +86,8 @@ public sealed class opstream : pstream
             return;
         }
 
+        // Aktive Referenzen sind Zyklen; abgeschlossene Referenzen dürfen dagegen ihre Objektidentität teilen.
+        // Active references are cycles; completed references may instead preserve shared object identity.
         if (_referenceIds.TryGetValue(value, out int existingReferenceId))
         {
             if (_activeObjects.Contains(value))

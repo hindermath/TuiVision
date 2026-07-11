@@ -649,8 +649,8 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - Die vier Wellen sind als vier eigenstaendige Unterphasen `3.1` bis `3.4` zu behandeln; sie werden nacheinander abgearbeitet und jeweils separat geplant, portiert, getestet und dokumentiert.
    - `3.1` = Welle 1: Grundlegende Anwendungsstruktur — ✓ ABGESCHLOSSEN
    - `3.1a` = Welle 1: Funktionaler Nachweisnachlauf — ✓ ABGESCHLOSSEN (Branch `014-wave1-functional-hardening`)
-   - `3.1b` = Didaktische Inline-Code-Kommentar-Haertung — NAECHSTER SCHRITT, vor Secure-Development-Hardening
-   - `3.1c` = Secure-Development-Hardening — nach 015, vor Welle-1-Visual-Remediation
+   - `3.1b` = Didaktische Inline-Code-Kommentar-Haertung — ✓ ABGESCHLOSSEN (Branch `015-didactic-comment-hardening`)
+   - `3.1c` = Secure-Development-Hardening — NAECHSTER SCHRITT, vor Welle-1-Visual-Remediation
    - `3.1d` = Welle 1: Sichtbarer Komponenten-Nachweis
    - `3.2` = Welle 2: Controls und Dialoge — ✓ ABGESCHLOSSEN
    - `3.2a` = Welle 2: Interaktive Showcase-Stufe — ✓ ABGESCHLOSSEN (Branch `012-interactive-wave2-demos`)
@@ -658,7 +658,7 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze
 
->>> NAECHSTER SCHRITT <<< Didaktische Inline-Code-Kommentar-Haertung starten: `Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.md` als naechsten Spec-Kit-Lauf umsetzen. Danach `Lastenheft_Secure-Development-Hardening.md` als querschnittlichen Secure-Development-/Evidence-Lauf einordnen, bevor `Lastenheft_Wave1-Visual-Component-Remediation.md`, Wave-3- und Wave-4-Vorhaertungen folgen.
+>>> NAECHSTER SCHRITT <<< Secure-Development-Hardening starten: `Lastenheft_Secure-Development-Hardening.md` als querschnittlichen Secure-Development-/Evidence-Lauf umsetzen. Danach folgen `Lastenheft_Wave1-Visual-Component-Remediation.md`, Wave-3- und Wave-4-Vorhaertungen.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.
