@@ -159,8 +159,8 @@ stream, resource, help, compiler, and lookup classes.
 ## Phase 11: Authorized Delivery and Sync
 
 - [X] T092 Align `Directory.Build.props` to `1.18.<post-commit-patch>.<current-build>` without incrementing Build and verify all three fields match before commit
-- [ ] T093 Stage the intentional feature diff, verify no forbidden files, commit the complete 018 implementation with a Spec-Kit message, and record the commit in `specs/018-editor-help-resources-hardening/pr-evidence.md`
-- [ ] T094 Recalculate the post-commit patch, align `Directory.Build.props` if required, commit version alignment only when the prior commit count changed the required value, and verify clean staged scope
+- [X] T093 Stage the intentional feature diff, verify no forbidden files, commit the complete 018 implementation with a Spec-Kit message, and record the commit in `specs/018-editor-help-resources-hardening/pr-evidence.md`
+- [X] T094 Recalculate the post-commit patch, align `Directory.Build.props` if required, commit version alignment only when the prior commit count changed the required value, and verify clean staged scope
 - [ ] T095 Push `018-editor-help-resources-hardening` and create a ready feature PR using `pr-evidence.md` as the description source
 - [ ] T096 Monitor required CI, Claude/Copilot review availability, review comments, and GraphQL thread state to convergence; remediate actionable findings and record state in `specs/018-editor-help-resources-hardening/pr-evidence.md`
 - [ ] T097 Use the explicitly authorized narrow admin bypass only if all required checks are green, actionable threads are zero, and the sole remaining block is the human-approval rule; record the exact reason in `specs/018-editor-help-resources-hardening/pr-evidence.md`

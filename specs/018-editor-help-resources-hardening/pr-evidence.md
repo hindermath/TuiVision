@@ -164,6 +164,7 @@ the observable missing-contract proof, not an accepted product failure.
 | N/A | `cd tests/web-a11y && npm run test:docfx` | Pass (2/2) | DocFX rebuilt with 0 warnings/errors; landing and representative API/statistics pages have no serious axe findings. |
 | N/A | `lynx -dump -nolist _site/api/TuiVision.Serialization.THelpSourceCompiler.html` | Pass | Text view exposes bilingual skip links, class heading, summary, constructors, methods, parameters, and returns. |
 | N/A | `git clean -fdX -- _site api` | Pass | Generated DocFX output removed; none will be tracked. |
+| `1.18.1.106` | Implementation commit | Pass | `5b4e533` (`[Spec Kit] Implement editor help resources hardening`), 30 files, no forbidden staged path. |
 
 ## Didactic Comment Review
 
@@ -218,5 +219,6 @@ clear blocks `NoCommentNeeded`, and no `FollowUpHardening`.
   task to name its evidence path. The latter already prevented four malformed
   remote tasks during Analyze remediation.
 - **Resume state**: Local implementation and all triggered validation gates are
-  complete. Next step is version alignment, commit, PR review convergence,
-  merge/sync, then the 018 Home-Baseline workitem.
+  complete. Implementation commit `5b4e533` exists; next step is the
+  `1.18.2.106` evidence/version commit, PR review convergence, merge/sync, then
+  the 018 Home-Baseline workitem.
