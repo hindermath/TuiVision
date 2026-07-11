@@ -6,6 +6,13 @@ set -euo pipefail
 repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 bash_script="$repo_root/scripts/rename-lastenheft.sh"
 pwsh_script="$repo_root/scripts/rename-lastenheft.ps1"
+
+# Git Bash liefert MSYS-Pfade; pwsh auf Windows braucht fuer Get-Help und -File den nativen Pfad.
+# Git Bash returns MSYS paths; Windows pwsh needs the native path for Get-Help and -File.
+if [ "${OS:-}" = Windows_NT ] && command -v cygpath >/dev/null 2>&1; then
+  pwsh_script=$(cygpath -w "$pwsh_script")
+fi
+
 temp_root=$(mktemp -d)
 trap 'rm -rf "$temp_root"' EXIT
 

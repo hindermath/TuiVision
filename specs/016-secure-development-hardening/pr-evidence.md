@@ -59,6 +59,7 @@ architecture changes remain human-only or follow-up.*
 | F-005 | CL-01-03, CL-05-01, CL-05-08 | `.config/`, `.github/dependabot.yml` | Medium | Kein gepinnter lokaler SBOM-Generator und keine Update-Automation. / No pinned local SBOM generator or update automation. | Release-Transparenz und Dependency-Freshness. | Remediate | Maintainer | Codex | 2026-07-11 | Clean-checkout CycloneDX und Dependabot-Konfiguration. | Low | T071-T080 | Tool-/Paketoberfläche ändert sich |
 | F-006 | CL-08-01, CL-08-08, CL-08-12 | `TResourceFile.Load`, `THelpIndex.LoadFrom` | Medium | Negative persistierte Counts wurden als leere Collections akzeptiert. / Negative persisted counts were accepted as empty collections. | Malformed resource/help input could bypass explicit rejection. | Remediate | Maintainer | Codex | 2026-07-11 | Two red tests then explicit `InvalidDataException`; targeted rerun PASS. | Low | None | New persisted count reader is added |
 | F-007 | CL-08-04, CL-10-11 | `docfx.json`, `docs/secure-development/README.md` | Low | Vorhandene Secure-Development-Ressourcen und die Constitution lagen außerhalb des DocFX-Publishing-Satzes; zwei Verzeichnislinks hatten kein konkretes HTML-Ziel. / Existing secure-development resources and the constitution were outside the DocFX publishing set; two directory links lacked concrete HTML targets. | Generated documentation emitted 51 link warnings. | Remediate | Maintainer | Codex | 2026-07-11 | Include existing resources/content and use concrete index targets; repeat DocFX with zero warnings. | Low | None | DocFX content/resource topology changes |
+| F-008 | CL-08-10, CL-10-17 | `tests/scripts/rename-lastenheft-tests.sh` | Medium | Git Bash übergab den MSYS-Pfad `/d/...` unverändert an Windows PowerShell. / Git Bash passed the MSYS `/d/...` path unchanged to Windows PowerShell. | Windows contract CI could not resolve `Get-Help` or later `-File` targets. | Remediate | Maintainer | Codex | 2026-07-11 | Convert only the PowerShell script path with `cygpath -w` on Windows; preserve Unix paths elsewhere. | Low | None | Bash-hosted PowerShell invocation changes |
 
 ## Remediation
 
@@ -69,6 +70,7 @@ architecture changes remain human-only or follow-up.*
 | R-005 | F-005 | CL-01-03, CL-05-01, CL-05-08 | `.config/dotnet-tools.json`, `.github/dependabot.yml`, `security-supply-chain.yml` | Tool/CI | Pinned local tool and read-only repository workflow; no runtime package | Adds reproducible SBOM and update review only | CommentNeeded: two-line temporary-output rationale in workflow | V-010, V-011, V-012 | PASS | Low |
 | R-003 | F-003 | CL-08-10, CL-10-17 | `scripts/rename-lastenheft.*`, `tests/scripts/`, `docs/man/`, homogeneity workflow | Script/Test/CI/Docs | Repository-local, reversible contract hardening | Default commit preserved; preview/NoCommit/path isolation added | CommentNeeded: short bilingual commit-isolation rationale | V-013, V-014, V-015 | PASS | Low |
 | R-007 | F-007 | CL-08-04, CL-10-11 | `docfx.json`, `docs/secure-development/README.md` | Docs/Config | Existing tracked resources and constitution only; no content or runtime expansion | Generated links/resources become complete | NoCommentNeeded: declarative file lists and concrete links are self-explanatory | V-028 | PASS | Low |
+| R-008 | F-008 | CL-08-10, CL-10-17 | `tests/scripts/rename-lastenheft-tests.sh` | Test/CI | Host-path adaptation only; production scripts and contract semantics stay unchanged | Windows PowerShell receives a native path while macOS/Linux keep POSIX paths | CommentNeeded: two-line German-first/English-second platform constraint | V-034 and renewed Windows CI | PASS locally | Low until remote Windows rerun |
 
 ## Evidenzartefakte / Evidence Artifacts
 
@@ -121,7 +123,7 @@ architecture changes remain human-only or follow-up.*
 |---|---:|---:|---:|---:|
 | Critical | 0 | 0 | 0 | 0 |
 | High | 0 | 0 | 0 | 0 |
-| Medium | 6 | 6 | 0 | 0 |
+| Medium | 7 | 7 | 0 | 0 |
 | Low | 1 | 1 | 0 | 0 |
 
 All implementation changes map to F-001 through F-007. The only executable
@@ -241,10 +243,10 @@ The homogeneity workflow runs it on Ubuntu, macOS, and Windows runners.
   claim, unbalanced fence, or trailing whitespace was found.
 - Security evidence is German-first/English-second where learner-facing; dense
   control rows preserve bilingual source titles and rationales.
-- Five new non-trivial inline comment blocks were reviewed: two serialization
-  guards, Bash/PowerShell commit isolation, and temporary workflow output. All
-  five are German-first/English-second, explain why/proof boundary, and use two
-  lines (100% within the 1-to-3-line target).
+- Six new non-trivial inline comment blocks were reviewed: two serialization
+  guards, Bash/PowerShell commit isolation, temporary workflow output, and the
+  Windows PowerShell path boundary. All six are German-first/English-second,
+  explain why/proof boundary, and use two lines (100% within the 1-to-3-line target).
 - The sample trace for `CL-05-01` remains understandable without layout or
   color and explicitly separates SBOM inventory from vulnerability/provenance.
 - Generated samples `_site/docs/security/control-assessment.html` and
@@ -273,6 +275,7 @@ The homogeneity workflow runs it on Ubuntu, macOS, and Windows runners.
 | V-031 | Five-surface policy/context/marker parity scan | Final agent synchronization | AGENTS, Claude, Gemini, Copilot instruction and Copilot agent files | N/A | macOS | PASS | All five contain 157-control, 498-test, human-only, evidence, and next-intake facts; four Spec-Kit marker pairs and one manual marker pair are balanced; all referenced paths exist | Tracked guidance only | Generator changes require a repeated parity check |
 | V-032 | Post-implementation Analyze plus final version/status/generated-output/historical-source/scope scan | PR evidence completion | 66 requirements, 148 tasks, 47 changed paths | `1.16.4.68` | macOS | PASS | Analyze found no new issue; T001-T142 complete except delivery action T143 onward; patch 4 and all three version fields align; diff check clean; no generated report/output, credential, cache/log, dependency/example, or `tv203s/` change remains | Only source-controlled feature scope retained | Remote CI/review may require bounded follow-up commits |
 | V-033 | `git push --set-upstream` and `gh pr create` | Remote delivery | Branch and PR #33 | `1.16.4.68` | GitHub | PASS | Initial remote HEAD matched local implementation commit; PR #33 created from the final evidence summary with `main` as base | Remote Git/PR metadata | Delivery metadata commit is pushed next and CI/review convergence remains T146 |
+| V-034 | Windows Homogeneity CI log review; `bash -n`; local rename contract rerun | Actionable CI remediation | Bash-hosted PowerShell path boundary | `1.16.5.69` | GitHub Windows log plus macOS local | PASS locally | Both Windows jobs failed because `Get-Help` received an MSYS `/d/...` path; bounded `cygpath -w` normalization added; syntax clean and 18/18 local contract assertions pass | CI logs remain remote; no local report retained | Renewed Windows-2022 matrix must pass before T146 closes |
 
 ## Anforderungs-Traceability / Requirement Traceability
 
@@ -321,7 +324,7 @@ closes every repository-actionable finding discovered in the bounded review.
 
 - **Control decisions**: 157/157 rows, comprising 65 `Applicable`, 13
   `AlreadySatisfied`, 38 `N/A`, 36 human-only `Open`, and 5 `FollowUp`.
-- **Findings**: seven found and seven remediated; six Medium and one Low; zero
+- **Findings**: eight found and eight remediated; seven Medium and one Low; zero
   unresolved Critical, High, Medium, or actionable Low findings.
 - **Technical changes**: explicit rejection of negative persisted counts,
   immutable workflow dependencies, pinned CycloneDX plus dependency automation,
