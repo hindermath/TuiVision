@@ -234,9 +234,9 @@
 - [X] T139 Run final secret/credential filename review, `bash scripts/scan-agent-secrets.sh --fail-on-high .`, `git diff --check`, and the repository pre-push validation path; record results in `specs/017-wave1-visual-component-remediation/pr-evidence.md`.
 - [X] T140 Commit all accepted feature changes with a Spec-Kit implementation commit, verify commit scope, and record the commit SHA in `specs/017-wave1-visual-component-remediation/pr-evidence.md` through a follow-up commit only if causally necessary.
 - [X] T141 Push branch `017-wave1-visual-component-remediation`, create the PR from the evidence description, and record the PR number without claiming merge completion.
-- [ ] T142 Monitor all required GitHub checks and Copilot/Claude review surfaces; address actionable findings, rerun affected local gates with version increments, realign `Directory.Build.props` before every remediation commit/push, reply to and resolve review threads, and repeat until no actionable finding or failing required check remains.
-- [ ] T143 Merge the green PR, delete the remote feature branch where permitted, switch locally to `main`, pull `origin/main`, and verify local `main` equals `origin/main`.
-- [ ] T144 Record T141-T143 causal outcomes only after they occur; if the merged commit cannot contain those facts, create and merge a minimal closeout PR, then verify `tasks.md` is 144/144 complete and local `main` is clean and synchronized.
+- [X] T142 Monitor all required GitHub checks and Copilot/Claude review surfaces; address actionable findings, rerun affected local gates with version increments, realign `Directory.Build.props` before every remediation commit/push, reply to and resolve review threads, and repeat until no actionable finding or failing required check remains.
+- [X] T143 Merge the green PR, delete the remote feature branch where permitted, switch locally to `main`, pull `origin/main`, and verify local `main` equals `origin/main`.
+- [X] T144 Record T141-T143 causal outcomes only after they occur; if the merged commit cannot contain those facts, create and merge a minimal closeout PR, then verify `tasks.md` is 144/144 complete and local `main` is clean and synchronized.
 
 ---
 
