@@ -195,8 +195,8 @@ clear blocks `NoCommentNeeded`, and no `FollowUpHardening`.
 
 | Item | Result | Evidence |
 |---|---|---|
-| Push | Open | Feature branch pending |
-| Pull request | Open | Ready PR pending |
+| Push | Pass | `origin/018-editor-help-resources-hardening` |
+| Pull request | Pass | PR #42: `https://github.com/hindermath/TuiVision/pull/42` |
 | Required checks | Open | Await PR |
 | Review threads | Open | Await GraphQL review |
 | Unavailable reviews | Open | Record quota/provider limitation as missing review |
@@ -219,6 +219,6 @@ clear blocks `NoCommentNeeded`, and no `FollowUpHardening`.
   task to name its evidence path. The latter already prevented four malformed
   remote tasks during Analyze remediation.
 - **Resume state**: Local implementation and all triggered validation gates are
-  complete. Implementation commit `5b4e533` exists; next step is the
-  `1.18.2.106` evidence/version commit, PR review convergence, merge/sync, then
-  the 018 Home-Baseline workitem.
+  complete. Implementation commit `5b4e533` and evidence commit `1b723fd`
+  exist; PR #42 is open. Next step is remote review convergence, merge/sync,
+  then the 018 Home-Baseline workitem.
