@@ -118,6 +118,13 @@ public sealed class TResourceFile
         TResourceFile resourceFile = new(registry);
         using TBinaryArchiveReader reader = new(stream, leaveOpen: true);
         int count = reader.ReadInt32();
+        // Negative Zähler würden sonst wie eine gültige leere Ressourcendatei wirken.
+        // Negative counts would otherwise look like a valid empty resource file.
+        if (count < 0)
+        {
+            throw new InvalidDataException("Resource entry count must be non-negative.");
+        }
+
         for (int index = 0; index < count; index++)
         {
             string key = reader.ReadString();

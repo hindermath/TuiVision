@@ -1,0 +1,61 @@
+name: Security Supply Chain
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "23 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package-and-sbom:
+    name: Package and SBOM evidence
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore solution and local tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          dotnet restore TuiVision.sln
+          dotnet tool restore
+
+      - name: Review vulnerable and deprecated packages
+        shell: bash
+        run: |
+          set -euo pipefail
+          dotnet list TuiVision.sln package --vulnerable --include-transitive
+          dotnet list TuiVision.sln package --deprecated --include-transitive
+
+      - name: Generate and validate temporary CycloneDX SBOM
+        shell: bash
+        run: |
+          set -euo pipefail
+          sbom_dir="$(mktemp -d)"
+          trap 'rm -rf "$sbom_dir"' EXIT
+
+          # Die BOM bleibt temporär, damit Git nie veraltete Build-Ausgabe enthält.
+          # The BOM stays temporary so Git never contains stale build output.
+          dotnet tool run dotnet-CycloneDX -- \
+            TuiVision.sln \
+            --output "$sbom_dir" \
+            --output-format Json \
+            --spec-version 1.7 \
+            --configuration Release \
+            --disable-package-restore
+
+          jq -e \
+            '.bomFormat == "CycloneDX" and .specVersion == "1.7" and (.components | length > 0)' \
+            "$sbom_dir/bom.json" > /dev/null

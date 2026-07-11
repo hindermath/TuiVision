@@ -1,38 +1,36 @@
-# GSDB Self-Assessment / GSDB Preflight
+# GSDB-Selbstbewertung / GSDB Self-Assessment
 
-**Projekt / Project:** TuiVision
-**Datum / Date:** 2026-07-04
-**Repository:** `/Users/thorstenhindermann/RiderProjects/TuiVision`
-**Primaersprache / Primary language:** C#
-
-Dieses Dokument ist ein Preflight-Bericht. Es startet keinen Spec-Kit-Lauf und
-ist keine formale Freigabe.
-
-*This document is a preflight report. It does not start a Spec Kit run and is
-not a formal approval.*
-
-| Status | Pruefpunkt / Check | Evidenzpfad / Evidence path | Begruendung / Rationale | Follow-up |
-|---|---|---|---|---|
-| OK | GSDB README | `docs/secure-development/README.md` | vorhanden | - |
-| OK | GSDB Richtlinie | `docs/secure-development/Richtlinie_Sichere-Entwicklung.md` | vorhanden | - |
-| OK | GSDB Checklistensammelband | `docs/secure-development/Checklistensammelband_Sichere-Entwicklung.md` | vorhanden | - |
-| OK | GSDB mitgeltende Dokumente | `docs/secure-development/mitgeltende-dokumente/README.md` | vorhanden | - |
-| OK | GSDB Preset-Verzahnung | `docs/secure-development/mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md` | vorhanden | - |
-| OK | CL_01 bis CL_12 | `docs/secure-development/checklisten/` | alle 12 Checklisten vorhanden | - |
-| OK | MSL-Status | `constitution.md` | Primaersprache ist auf der MSL-Allowlist | - |
-| OK | Spec Kit initialisiert | `.specify/` | Spec-Kit-Verzeichnis vorhanden | - |
-| OK | Preset security-governance | `.specify/presets/` | per specify preset list nachweisbar | - |
-| OK | Preset architecture-governance | `.specify/presets/` | per specify preset list nachweisbar | - |
-| OK | Preset isaqb-architecture-governance | `.specify/presets/` | per specify preset list nachweisbar | - |
-| OK | Preset a11y-governance | `.specify/presets/` | per specify preset list nachweisbar | - |
-| OK | Preset cross-platform-governance | `.specify/presets/` | per specify preset list nachweisbar | - |
-| OK | Preset agent-parity-governance | `.specify/presets/` | per specify preset list nachweisbar | - |
-| OK | Projektspezifischer Nachweisort | `docs/security/` | Nachweisordner vorhanden | - |
-| OK | RL-SE-/Checklist-Selbstpruefungs-Intake | `Lastenheft_RL-SE-Checklist-Selbstpruefung.md` | vorhanden | - |
-| OK | Secure-Development-Hardening-Intake | `Lastenheft_Secure-Development-Hardening.md` | vorhanden | - |
-| OK | GSDB-Spec-Kit-Intensivpruefungs-Intake | `Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md` | Intake vorhanden | - |
+**Projekt / Project**: TuiVision
+**Stand / Current as of**: 2026-07-11
+**Run**: `016-secure-development-hardening`
 
 ## Ergebnis / Result
 
-- Offene Punkte / Open findings: 0
-- Naechster Schritt / Next step: `Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md` spaeter manuell mit `/speckit-specify` starten, wenn die intensive Pruefung erfolgen soll.
+Die sichere-Entwicklung-Basis ist nicht mehr nur als vorhandene Richtlinie
+bewertet. Feature 016 ordnet jede der 157 stabilen Kontrollen aus CL-01 bis
+CL-12 einem vollständigen Projektstatus zu und verknüpft positive Aussagen mit
+Repository-Evidenz.
+
+*The secure-development baseline is no longer assessed only as an existing
+policy. Feature 016 maps all 157 stable controls from CL-01 through CL-12 to a
+complete project status and links positive claims to repository evidence.*
+
+| Prüfbereich / Review area | Ergebnis / Result | Evidenz / Evidence |
+|---|---|---|
+| Richtlinie, Sammelband, 12 Checklisten | PASS | `docs/secure-development/` |
+| 157 eindeutige Kontrollen | PASS | `control-assessment.md` |
+| Sechs Presets in aktuellen Versionen | PASS | Constitution, `.specify/presets/`, feature evidence |
+| Projektweite Security-Dokumente | PASS after 016 consolidation | `docs/security/README.md` |
+| Bounded Findings | Tracked | `specs/016-secure-development-hardening/pr-evidence.md` |
+| Human-only und Follow-up | Explicit | Control and feature ledgers |
+
+## Abgrenzung / Boundary
+
+Diese Selbstbewertung ist keine Zertifizierung, Rechtsberatung, formale
+Freigabe oder Provider-Assurance. `Open`-Kontrollen bleiben Human-only.
+
+*This self-assessment is not certification, legal advice, formal approval, or
+provider assurance. `Open` controls remain human-only.*
+
+Re-evaluate when checklist sources, preset versions, trust boundaries,
+dependencies, release scope, regulated scope, or agent/platform controls change.

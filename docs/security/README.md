@@ -1,46 +1,50 @@
 # Sicherheitsdokumentation / Security Documentation
 
-**Repository**: TuiVision (Level-2)
-**Constitution-Referenz / Constitution Reference**: Principle XII (A.8.28), Principle XIII (A.8.27), Principle XIV-XVIII
+**Repository**: TuiVision (Level 2)
+**Stand / Current as of**: 2026-07-11
+**Owner**: TuiVision Maintainers
+**Review**: Feature `016-secure-development-hardening`
 
 ## Zweck / Purpose
 
-Dieses Verzeichnis enthält die projektspezifische Sicherheitsdokumentation
-fuer TuiVision. Die Templates stammen aus `.specify/templates/` und
-werden hier mit projektspezifischen Inhalten befuellt.
+Dieses Verzeichnis enthält die langlebige projektspezifische
+Sicherheitsevidenz. Richtlinie und generische Checklisten liegen unter
+`docs/secure-development/`; Feature-Befehle und Laufdetails liegen im
+jeweiligen `specs/<feature>/pr-evidence.md`.
 
-*This directory contains project-specific security documentation for
-TuiVision. Templates originate from `.specify/templates/` and are
-populated here with project-specific content.*
+*This directory contains durable project-specific security evidence. Policy
+and generic checklists live under `docs/secure-development/`; feature commands
+and run details live in the matching `specs/<feature>/pr-evidence.md`.*
 
 ## Dokumente / Documents
 
-| Dokument / Document | Template-Quelle / Template Source | Status |
+| Dokument / Document | Aktueller Zweck / Current purpose | Status |
 |---|---|---|
-| [threat-model.md](threat-model.md) | `threat-model-template.md` | Stub |
-| [security-checklist.md](security-checklist.md) | `security-checklist-template.md` | Stub |
-| [arc42-security.md](arc42-security.md) | `arc42-security-template.md` | Stub |
-| [dependency-audit.md](dependency-audit.md) | `dependency-audit-template.md` | Stub |
-| [security-quality-scenarios.md](security-quality-scenarios.md) | `security-quality-scenarios-template.md` | Stub |
-| [asvs-verification.md](asvs-verification.md) | `asvs-verification-template.md` | Stub |
-| [supply-chain-evidence.md](supply-chain-evidence.md) | `supply-chain-evidence-template.md` | Stub |
-| [zero-trust-applicability.md](zero-trust-applicability.md) | `zero-trust-applicability-template.md` | Stub |
-| [samm-assessment.md](samm-assessment.md) | `samm-assessment-template.md` | Stub |
+| [control-assessment.md](control-assessment.md) | 157 Kontrollen aus CL-01 bis CL-12 / 157 controls from CL-01 to CL-12 | Current |
+| [gsdb-self-assessment.md](gsdb-self-assessment.md) | GSDB- und Preset-Abdeckung / GSDB and preset coverage | Current |
+| [threat-model.md](threat-model.md) | STRIDE/CIA/CAPEC und Trust Boundaries | Current |
+| [arc42-security.md](arc42-security.md) | Sicherheits-Querschnittskonzepte / Security cross-cutting concepts | Current |
+| [security-quality-scenarios.md](security-quality-scenarios.md) | Messbare Sicherheitsszenarien / Measurable security scenarios | Current |
+| [security-checklist.md](security-checklist.md) | Verdichtetes Gate / Consolidated gate | Current |
+| [dependency-audit.md](dependency-audit.md) | Paket- und CVE-Nachweis / Package and CVE evidence | Current |
+| [supply-chain-evidence.md](supply-chain-evidence.md) | SBOM, VEX, SLSA, Scorecard, Actions | Current |
+| [asvs-verification.md](asvs-verification.md) | ASVS-Anwendbarkeit / ASVS applicability | Current `N/A` |
+| [zero-trust-applicability.md](zero-trust-applicability.md) | Zero-Trust-Anwendbarkeit / Zero Trust applicability | Current `N/A` |
+| [samm-assessment.md](samm-assessment.md) | Leichtes Reifegradbild / Lightweight maturity view | Current |
+| [cloud-autonomy-applicability.md](cloud-autonomy-applicability.md) | BSI C3A | Current `N/A` |
+| [cloud-compliance-assurance.md](cloud-compliance-assurance.md) | BSI C5 | Current `N/A` |
+| [regulatory-applicability.md](regulatory-applicability.md) | NIS2, CRA, EU AI Act, DORA, DPIA | Current |
+| [adr/README.md](adr/README.md) | Security-ADR-Index und Trigger / Security ADR index and trigger | Current |
 
-## Anwendungshinweise / Usage Notes
+## Evidenzregeln / Evidence Rules
 
-- ADRs werden im Verzeichnis `docs/security/adr/` als einzelne Dateien abgelegt.
-- Die Templates in `.specify/templates/` sind die kanonische Quelle.
-- Default-Evidenzort fuer neue Standards: `docs/security/`.
-- Falls dieses Repo einen gleichwertigen Governance-Pfad statt `docs/security/`
-  nutzt, muss diese Abweichung hier dokumentiert und verlinkt werden.
+- `Applicable` und `AlreadySatisfied` benötigen aktuelle direkte Evidenz.
+- `N/A` benötigt Fakten und einen Neubewertungstrigger.
+- `Open` ist Human-only und benötigt Owner, Risiko und Aktion.
+- `FollowUp` benennt einen konkreten späteren Scope.
+- Generierte SBOM-, Scan-, DocFX-, Test- und Coverage-Ausgaben bleiben außerhalb
+  von Git.
 
-*ADRs are stored as individual files in `docs/security/adr/`.
-The templates in `.specify/templates/` are the canonical source.
-The default evidence location for newly added standards is `docs/security/`.
-If this repository uses an equivalent governance path instead, that deviation
-must be documented and linked here.*
-
-<!-- EN: docs/security/README.md
-[DE-Zusammenfassung: Index der projektspezifischen Sicherheitsdokumentation fuer TuiVision.]
--->
+*Positive states need current direct evidence. Non-applicability needs facts and
+a trigger. Open decisions remain human-owned. Follow-ups name a later scope.
+Generated security and validation output stays outside Git.*

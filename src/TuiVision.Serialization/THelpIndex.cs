@@ -61,6 +61,13 @@ public sealed class THelpIndex : ITStreamSerializable
     {
         THelpIndex index = new();
         int count = reader.ReadInt32();
+        // Ein negativer Zähler ist beschädigte Eingabe und kein leerer Index.
+        // A negative count is malformed input, not an empty index.
+        if (count < 0)
+        {
+            throw new InvalidDataException("Help-index entry count must be non-negative.");
+        }
+
         for (int current = 0; current < count; current++)
         {
             index.Add(reader.ReadInt32(), reader.ReadInt32());

@@ -1,0 +1,74 @@
+.TH RENAME-LASTENHEFT 1 "2026-07-11" "TuiVision" "Repository Tools"
+.SH NAME
+rename-lastenheft \- Lastenheft sicher archivieren / safely archive a Lastenheft
+.SH SYNOPSIS
+.B bash scripts/rename-lastenheft.sh
+.RI [ --dry-run ]
+.RI [ --no-commit ]
+.I lh-file branch-name
+.PP
+.B pwsh scripts/rename-lastenheft.ps1
+.BI -File " lh-file"
+.BI -BranchName " branch-name"
+.RI [ -NoCommit ]
+.RI [ -WhatIf ]
+.SH BESCHREIBUNG / DESCRIPTION
+Das Werkzeug benennt eine von Git verfolgte Datei
+.B Lastenheft*.md
+in
+.B Lastenheft*.<branch-name>.md
+um. Schraegstriche im Branchnamen werden zu Bindestrichen.
+.PP
+The tool renames a Git-tracked
+.B Lastenheft*.md
+file to
+.B Lastenheft*.<branch-name>.md.
+Slashes in the branch name become hyphens.
+.PP
+Standardmaessig entsteht ein Commit, der nur die alte und neue
+Lastenheft-Datei umfasst. Andere bereits vorgemerkte Aenderungen bleiben im
+Index. By default, the tool creates a commit containing only the old and new
+Lastenheft paths. Other staged changes remain in the index.
+.SH OPTIONEN / OPTIONS
+.TP
+.BR --dry-run ", " -WhatIf
+Zeigt den Zielpfad ohne Datei-, Index- oder Commit-Aenderung.
+Shows the target path without changing file, index, or commits.
+.TP
+.BR --no-commit ", " -NoCommit
+Fuehrt nur
+.B git mv
+aus. Der Rename bleibt fuer einen spaeteren gemeinsamen Commit vorgemerkt.
+Runs only
+.BR "git mv" .
+The rename stays staged for a later combined commit.
+.TP
+.BR -h ", " --help ", " Get-Help
+Zeigt Hilfe / Shows help.
+.SH SICHERHEIT / SAFETY
+Die Quelle muss existieren, dem Muster
+.B Lastenheft*.md
+entsprechen und von Git verfolgt sein. Unsichere Branchnamen, Backslashes,
+Punkt-Punkt-Segmente und bestehende Zieldateien werden vor Mutation abgelehnt.
+.PP
+The source must exist, match
+.BR Lastenheft*.md ,
+and be tracked by Git. Unsafe branch names, backslashes, dot-dot segments, and
+existing targets are rejected before mutation.
+.SH EXIT STATUS
+0 bedeutet Erfolg oder idempotenten No-op. 1 bedeutet Eingabe-, Git- oder
+Dateifehler. 2 bedeutet ungueltige Optionen oder fehlende Argumente.
+.PP
+0 means success or an idempotent no-op. 1 means an input, Git, or file error.
+2 means invalid options or missing arguments.
+.SH BEISPIELE / EXAMPLES
+.nf
+bash scripts/rename-lastenheft.sh --no-commit Lastenheft_Test.md 016-test
+pwsh scripts/rename-lastenheft.ps1 -File Lastenheft_Test.md -BranchName 016-test -WhatIf
+.fi
+.SH FILES
+.I scripts/rename-lastenheft.sh
+.br
+.I scripts/rename-lastenheft.ps1
+.br
+.I tests/scripts/rename-lastenheft-tests.sh

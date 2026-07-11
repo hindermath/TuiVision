@@ -237,6 +237,14 @@ npm run test:docfx
 - XML comments remain the API/DocFX surface; pure `//` or `/* */` hardening does not trigger DocFX. XML/API/generated docs/navigation/guides changes trigger the normal DocFX plus A11Y path.
 - No runtime behavior change, API change, new dependency, new example porting, broad framework revision, Wave-1 visual remediation, or runtime/product AI is in scope.
 
+### 016-secure-development-hardening
+- Current implementation status: the project-wide secure-development hardening is implemented; final evidence is in `specs/016-secure-development-hardening/pr-evidence.md`.
+- The durable control matrix covers all 157 `CL-XX-NN` controls with `Applicable`, `AlreadySatisfied`, `N/A`, `Open`, or `FollowUp` and complete ownership, risk, evidence, and re-evaluation fields.
+- Delivered remediation is bounded to explicit malformed persistence rejection, immutable workflow dependencies, supply-chain automation, root disclosure guidance, and safe Bash/PowerShell archive-script parity.
+- Local acceptance is 498/498 Release tests plus line coverage above 70% for Core, Controls, Serialization, Compatibility, and Drivers.Console; DocFX/axe and remote OS/CI proof remain delivery gates.
+- Human legal, provider, organization, and agent-platform decisions remain `Open`; release provenance, reproducible-build/lock maturity, and RFC 9116 remain named follow-ups rather than implicit claims.
+- The next open prioritized intake is `Lastenheft_Wave1-Visual-Component-Remediation.md`.
+
 ## Agent File Synchronization Policy
 
 - When active feature context, implementation plans, or project-wide agent guidance changes, the following AI-agent files MUST be reviewed and updated together in the same work item if they are affected:
@@ -318,6 +326,8 @@ npm run test:docfx
 - Runtime example state remains in memory. Proof data is limited to existing source-controlled files, controlled example fixtures if needed, or test temporary directories. No database, external service, network dependency, persistent user history, arbitrary user-file content reads, or runtime/product AI storage is planned. (014-wave1-functional-hardening)
 - C# `latest` / C# 14 on .NET 10 (`net10.0`) + Existing TuiVision modules only: `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`; existing MSTest/Coverlet validation; existing DocFX plus Playwright/axe web A11Y tooling when documentation triggers apply. No new runtime NuGet dependency is planned. (015-didactic-comment-hardening)
 - Source-controlled Markdown evidence and guidance files only. Production code state and tests keep their current storage model. No database, external service, network dependency, persistent user history, runtime/product AI storage, or arbitrary user-file proof path is planned. (015-didactic-comment-hardening)
+- C# `latest` / C# 14 on .NET 10 (`net10.0`); Bash and PowerShell 7 for repository tooling + Existing TuiVision projects, MSTest, Coverlet, DocFX, Playwright/axe, GitHub Actions, Gitleaks, and CycloneDX for .NET 6.2.0 as a repository-local tool. No new runtime package is planned. (016-secure-development-hardening)
+- Source-controlled Markdown, YAML, shell/PowerShell scripts, a local .NET tool manifest, and test fixtures. Generated evidence is written to temporary or ignored directories. No database, service, credential, runtime AI, or user-data store is introduced. (016-secure-development-hardening)
 
 ### 007-port-wave1-examples
 - Current status: Wave 1 delivered (2026-03-28). `desklogo`, `msgcls`, `tutorial` (16 steps), `videomode` are ported, smoke-tested, and guide-documented.
@@ -508,7 +518,8 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
-shell commands, and other important information, read the current plan
+shell commands, and other important information, read
+`specs/016-secure-development-hardening/plan.md`.
 <!-- SPECKIT END -->
 
 ## Hinweise / Notes

@@ -1,36 +1,51 @@
-# Sicherheits-Querschnittskonzepte / Security Cross-Cutting Concepts: TuiVision
+# arc42 Abschnitt 8: Sicherheitskonzepte / Security Concepts
 
-**Projekt / Project**: TuiVision (Level-2)
-**Datum / Date**: 2026-04-24
-**Status**: Stub — mit projektspezifischen Inhalten zu befuellen / Stub — to be populated
-**Template-Quelle / Template Source**: `.specify/templates/arc42-security-template.md`
+**Stand / Current as of**: 2026-07-11
+**Projekt / Project**: TuiVision (Level 2)
 
-<!--
-  Dieses Dokument ist ein Stub. Die vollstaendige Struktur findet sich im
-  Template unter .specify/templates/arc42-security-template.md. Bei der Befuellung das Template als Vorlage
-  verwenden.
+## Kontext / Context
 
-  This document is a stub. The complete structure can be found in the
-  template at .specify/templates/arc42-security-template.md. Use the template as a guide when populating.
--->
+TuiVision ist ein lokales .NET-10-Terminal-UI-Framework. Die primären
+Sicherheitsgrenzen sind Terminaleingabe, Event-/Command-Dispatch,
+Datei-/Ressourcenpfade, Serialisierung, generierte Ausgabe, Dependencies,
+Repository-Scripts, CI und Agentenwerkzeuge.
 
-[Zu befuellen / To be populated — see template]
+*TuiVision is a local .NET 10 terminal UI framework. Its primary security
+boundaries are terminal input, event/command dispatch, file/resource paths,
+serialization, generated output, dependencies, repository scripts, CI, and
+agent tooling.*
 
-## 011-port-wave2-examples
+## Querschnittskonzepte / Cross-Cutting Concepts
 
-Datum: 2026-05-08.
+| Prinzip / Principle | TuiVision-Anwendung / TuiVision application | Evidenz / Evidence |
+|---|---|---|
+| Trust boundaries | Eingaben an Terminal-, Datei-, Ressourcen-, Serialisierungs- und Toolgrenzen validieren. | [threat-model.md](threat-model.md), tests |
+| Defense in depth | Managed Speicher, Validierung, sichere Ablehnung und Tests wirken gemeinsam. | Core/Controls/Serialization/Driver tests |
+| Least privilege | Keine neuen Runtime-Rechte; Workflows erhalten minimale deklarierte Permissions. | `.github/workflows/` |
+| Fail-safe defaults | Malformed/unsupported Input wird sichtbar abgelehnt oder fällt auf sichere lokale Modi zurück. | Negative tests, driver fallbacks |
+| Attack surface reduction | Kein Web/API/Auth/Cloud/Database/Runtime-AI-Scope. | Applicability documents |
+| Separation of concerns | Core events, Controls, Serialization, Console driver und Compatibility bleiben getrennte Module. | `src/`, `TuiVision.sln` |
+| Secure configuration | Keine Credentials in Git; tool-owned/generated output bleibt untracked. | Secret scans, `.gitignore` |
+| Supply-chain security | Package review, immutable Actions, local CycloneDX tool and update review. | [supply-chain-evidence.md](supply-chain-evidence.md) |
 
-Die Sicherheits-Querschnittskonzepte bleiben lokal und proportional:
+## Runtime- und Deployment-Sicht / Runtime and Deployment View
 
-- Validierung vor Nutzung: `dlgdsn` validiert strukturierte
-  Dialogbeschreibungen vor Runtime-Erzeugung.
-- Nicht-destruktive Pfade: `demo` zeigt Dateisystem-Metadaten, Wildcards,
-  manuelle Pfade und Fehlerzustaende ohne Dateiinhalt-I/O.
-- Deterministische Ausfuehrung: Progress- und Smoke-Flows nutzen keine
-  unkontrollierten Timer oder Hintergrundarbeit.
-- Sichere Meldungen: sichtbare Fehlerzustaende enthalten keine Secrets,
-  Tokens, Stack-Traces oder lokalen privaten Verlaufsdaten.
+Die Runtime bleibt ein lokaler Prozess. Es gibt keine Remote-Identität,
+Mandanten-, Service- oder Cloud-Deployment-Grenze. CI und GitHub sind
+Entwicklungs-/Lieferketten-Infrastruktur und keine Produkt-Runtime.
 
-Security cross-cutting concepts remain local and proportional: validate before
-use, keep file paths non-destructive, make execution deterministic, and keep
-messages free of secrets or internal traces.
+## Entscheidungen, Risiken und Debt / Decisions, Risks, and Debt
+
+- Das bestehende Modulmodell bleibt unverändert; Feature 016 führt keine neue
+  Architektur ein.
+- CycloneDX ist ein lokales Build-/Review-Werkzeug, keine Runtime-Abhängigkeit.
+- Release-Provenance, reproduzierbare Builds und vollständige NuGet-Lock-Policy
+  bleiben benannte Supply-Chain-Follow-ups.
+- Provider-, Sandbox-, Rechts- und Organisationskontrollen bleiben Human-only.
+
+Eine neue S-ADR ist nur erforderlich, wenn eine spätere Änderung Trust
+Boundaries, Auth, Krypto, Persistenz, Cloud/Provider oder Release-Architektur
+materiell ändert.
+
+*A new S-ADR is required only when a later change materially changes trust
+boundaries, auth, crypto, persistence, cloud/provider, or release architecture.*

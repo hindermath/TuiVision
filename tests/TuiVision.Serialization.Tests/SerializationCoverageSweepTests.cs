@@ -76,6 +76,44 @@ public sealed class SerializationCoverageSweepTests
         AssertEx.Throws<InvalidDataException>(() => TResourceFile.Load(stream, registry));
     }
 
+    /// <summary>
+    /// Prüft, dass ein negativer Ressourcen-Zähler nicht als leere Datei gilt.
+    ///
+    /// Verifies that a negative resource count is not treated as an empty file.
+    /// </summary>
+    [TestMethod]
+    public void SerializationCoverage_ResourceLoad_RejectsNegativeEntryCount()
+    {
+        TRecordRegistry registry = SerializationTestSupport.CreateStreamRegistry();
+        using MemoryStream stream = new();
+        using (TBinaryArchiveWriter writer = new(stream, leaveOpen: true))
+        {
+            writer.WriteInt32(-1);
+        }
+
+        stream.Position = 0;
+        AssertEx.Throws<InvalidDataException>(() => TResourceFile.Load(stream, registry));
+    }
+
+    /// <summary>
+    /// Prüft, dass ein negativer Hilfeindex-Zähler explizit abgelehnt wird.
+    ///
+    /// Verifies that a negative help-index count is rejected explicitly.
+    /// </summary>
+    [TestMethod]
+    public void SerializationCoverage_HelpIndexLoad_RejectsNegativeEntryCount()
+    {
+        using MemoryStream stream = new();
+        using (TBinaryArchiveWriter writer = new(stream, leaveOpen: true))
+        {
+            writer.WriteInt32(-1);
+        }
+
+        stream.Position = 0;
+        using TBinaryArchiveReader reader = new(stream, leaveOpen: true);
+        AssertEx.Throws<InvalidDataException>(() => THelpIndex.LoadFrom(reader));
+    }
+
     private static class AssertEx
     {
         public static void Throws<TException>(Action action)
