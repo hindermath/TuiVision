@@ -189,7 +189,7 @@ no empty starter decision remains.
 | 017-G16 | a11y-governance | 0.4.0 | DE-first/EN-second CEFR-B2 | Applicable | Learner-facing runtime descriptions and guides change | Four guides, README, source descriptions | TuiVision maintainers | GitHub PR reviewer | 2026-07-11 | Pass: bilingual learner-facing diff reviewed | Translation drift | PR review | Learner-facing text changes |
 | 017-G17 | a11y-governance | 0.4.0 | DocFX/WCAG/axe | Applicable | Guide output changes trigger generated-doc validation | `docfx.json`; `tests/web-a11y/` | TuiVision maintainers | GitHub PR reviewer | 2026-07-11 | Pass: DocFX 0/0 and Playwright/axe 2/2 | Browser-tool deprecation warnings only | Monitor CI | Documentation output changes |
 | 017-G18 | a11y-governance | 0.4.0 | Didactic inline comments | Applicable | New non-trivial visual factories and proof helpers may need why/proof-boundary comments | Changed C# files | TuiVision maintainers | GitHub PR reviewer | 2026-07-11 | Pass: feature-015 decision review recorded | Over/under-commenting | PR review | Non-trivial logic changes |
-| 017-G19 | cross-platform-governance | 0.2.0 | macOS/Linux/Windows terminal behavior | Applicable | Videomode and rendering vary by platform | Local tests and GitHub CI | TuiVision maintainers | GitHub PR reviewer | 2026-07-11 | Open: local macOS build/tests/PTY passed; remote Linux/Windows required | Host capability variance | Monitor PR matrix | Terminal/runtime behavior changes |
+| 017-G19 | cross-platform-governance | 0.2.0 | macOS/Linux/Windows terminal behavior | Applicable | Videomode and rendering vary by platform | Local tests and GitHub CI | TuiVision maintainers | GitHub PR reviewer | 2026-07-11 | Pass: local macOS plus remote Ubuntu/Windows checks | Host capability variance | Preserve honest canonical states | Terminal/runtime behavior changes |
 | 017-G20 | cross-platform-governance | 0.2.0 | Script parity/man pages | N/A | No script-shaped tooling is planned | Git diff and this evidence | TuiVision maintainers | GitHub PR reviewer | 2026-07-11 | N/A confirmed | None identified | None | Bash/PowerShell/script change enters diff |
 | 017-G21 | agent-parity-governance | 0.3.0 | Five maintained agent surfaces | Applicable | Active feature context changes | Five agent guidance files | TuiVision maintainers | GitHub PR reviewer | 2026-07-11 | Pass: delivery and next-step context synchronized | Surface drift | Recheck final diff | Active context/shared guidance changes |
 | 017-G22 | agent-parity-governance | 0.3.0 | `.specify/templates/` | N/A | No repository-owned template change is planned | Git diff and this evidence | TuiVision maintainers | GitHub PR reviewer | 2026-07-11 | N/A confirmed | None identified | None | Template change enters diff |
@@ -503,6 +503,20 @@ Remote delivery: branch `017-wave1-visual-component-remediation` pushed with a
 clean pre-push secret scan; PR #39 opened against `main` at
 `https://github.com/hindermath/TuiVision/pull/39`. No merge completion is claimed
 at this point. This causal PR-evidence commit aligns version `1.17.3.94`.
+
+Remote closure: all required GitHub checks passed, including Ubuntu/macOS
+Build/Test, Windows/Linux/macOS repository tooling, DocFX, SBOM, Gitleaks,
+agent-secret scan, and Claude Review. Thread-aware review inspection found zero
+review threads and zero conversation comments. Copilot reported exhausted user
+quota and produced no code finding. The only branch-protection block was the
+non-automatable human approval rule; PR #39 was therefore merged with the same
+authorized admin-bypass boundary used for feature 016. Merge commit:
+`7e14a49245e9c971b6c1dd7f436b1dbe7c29511b`. The remote feature branch was
+deleted, and local `main` matched `origin/main` before this causal closeout.
+
+This minimal closeout changes only the task ledger, evidence, and statistics.
+All 144 tasks are complete; no runtime, test, dependency, or version change is
+part of the closeout.
 
 ## PR Description
 
