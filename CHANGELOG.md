@@ -1,5 +1,58 @@
 # Changelog
 
+## [0.5.0](https://github.com/hindermath/TuiVision/compare/v0.4.0...v0.5.0) (2026-07-11)
+
+
+### Features / Neue Funktionen
+
+* complete wave2 visual component remediation ([a275df3](https://github.com/hindermath/TuiVision/commit/a275df32767eaf54743fa645ca177349c4872c70))
+* implement wave1 functional hardening ([dfde46b](https://github.com/hindermath/TuiVision/commit/dfde46b503d65ae2df88922f180ae57b5ff82698))
+* update architecture governance preset to v0.3.0 ([9e30b6b](https://github.com/hindermath/TuiVision/commit/9e30b6b306ad18120a7ae7171e92d12962f30ea8))
+
+
+### Bug Fixes / Fehlerbehebungen
+
+* **ci:** allow release bot in Claude review ([972746f](https://github.com/hindermath/TuiVision/commit/972746f828182f390c0b22dd4bd270c41a6cec72))
+* **ci:** skip unavailable Claude reviews ([71d3751](https://github.com/hindermath/TuiVision/commit/71d37515910d518ec954a32009f38001d93e5639))
+* preserve homogeneity JSON contract ([ac38a68](https://github.com/hindermath/TuiVision/commit/ac38a68a601959704544ae552c5134676665df43))
+* relax homogeneity EN guidance detection ([2b83660](https://github.com/hindermath/TuiVision/commit/2b83660a1f551b10b866c846048789ff6256c0eb))
+
+
+### Documentation / Dokumentation
+
+* add 013 Wave 2 visual remediation tasks ([cae3c68](https://github.com/hindermath/TuiVision/commit/cae3c681e2434397f3c46456e8effa923acd312d))
+* add 014 implementation tasks ([c0d1316](https://github.com/hindermath/TuiVision/commit/c0d1316c31fc5e4f343f1188e47efbcdacb14d61))
+* add GitHub and GitLab CLI-first guidance ([36e1caf](https://github.com/hindermath/TuiVision/commit/36e1caf0b904c9dce89075ee3795c028c115458c))
+* add Spec-Kit model routing guidance ([38283ea](https://github.com/hindermath/TuiVision/commit/38283ea66bb5c1185cf0b85ecf4a8ef364f8461f))
+* add wave hardening guidance intakes ([1acff62](https://github.com/hindermath/TuiVision/commit/1acff62283e563fae4cd38fe75b6d4a34984da2d))
+* add wave1 hardening plan checklist ([c6be5b7](https://github.com/hindermath/TuiVision/commit/c6be5b7ecc68d397948b38252da2d2058249bc99))
+* add wave2 visual remediation spec ([6cc3022](https://github.com/hindermath/TuiVision/commit/6cc302237f2143fe7e42ded2f7b3680a711de809))
+* align statistics x-y diagrams ([58f1b39](https://github.com/hindermath/TuiVision/commit/58f1b3975969bc38240b2cad7d85039a44fb5361))
+* align wave1-functional-hardening status with specify intake style ([7dfe753](https://github.com/hindermath/TuiVision/commit/7dfe75326f7912b2511e0e1b7ea91ad4f34dc092))
+* clarify wave1 hardening spec ([1b46a3b](https://github.com/hindermath/TuiVision/commit/1b46a3b9c78d437dbfa16bccebd84f30178588a3))
+* clarify wave2 visual remediation spec ([e8b1f61](https://github.com/hindermath/TuiVision/commit/e8b1f610bb4abbdf05eedd2960421ec59f358fac))
+* complete 013 plan quality checklist ([f2e3b36](https://github.com/hindermath/TuiVision/commit/f2e3b361b7067e7be9a4a3b5f105452efa3ae1f7))
+* expand 014 plan checklist guidance ([237fce9](https://github.com/hindermath/TuiVision/commit/237fce9031970deba08601ac6fd539f558cdc835))
+* finalize 013 analyze remediation ([5c3e671](https://github.com/hindermath/TuiVision/commit/5c3e671ac483f4b96d649f2d431126c0aee2e4d7))
+* finalize 014 analyze remediation ([dfce123](https://github.com/hindermath/TuiVision/commit/dfce1232bedf6e32d517856a2f22d3fe053fdf2c))
+* harmonize lastenheft specify intakes ([1181864](https://github.com/hindermath/TuiVision/commit/118186455dbd78dfd8dcdc982280eabfd4d47dcf))
+* plan wave1 functional hardening ([a582cdf](https://github.com/hindermath/TuiVision/commit/a582cdf6979339333439f4ed448afa0918fc024e))
+* propagate AI-SBOM governance ([774eafb](https://github.com/hindermath/TuiVision/commit/774eafb3a01ac46b13131e5ba97c9f88d8c84ffe))
+* propagate security-governance v0.4.0 ([0d602ec](https://github.com/hindermath/TuiVision/commit/0d602ecf0eebfae6a66fe5532b7f697c747d5c3b))
+* remediate 014 analyze findings ([7948090](https://github.com/hindermath/TuiVision/commit/7948090726e9e3f16fb22c7aa268d545dbee6a62))
+* remediate 014 plan quality checklist ([1d0d6a0](https://github.com/hindermath/TuiVision/commit/1d0d6a01dd98053df54a49f4ed544b2410108978))
+* sync 013 governance plan baseline ([5d02358](https://github.com/hindermath/TuiVision/commit/5d023588d10e7317146afb08e1cabd3ce711b48d))
+
+
+### Maintenance / Wartung
+
+* ignore *.lscache and update project statistics ([df08414](https://github.com/hindermath/TuiVision/commit/df0841435eace1ca495ff4e96bd9a07ce35bfbfe))
+* rename Lastenheft to Lastenheft_Wave1-Functional-Hardening.014-wave1-functional-hardening.md ([acfa1a5](https://github.com/hindermath/TuiVision/commit/acfa1a5f290710e3715697edc3aab5c38a3efdda))
+* rename Lastenheft to Lastenheft_Wave2-Visual-Component-Remediation.013-wave2-visual-component-remediation.md ([cafcca2](https://github.com/hindermath/TuiVision/commit/cafcca2f7f3abfbb68de6b80297c7816941e3c41))
+* **security:** add gitleaks.toml allowlist for secure-development teaching docs ([3333e48](https://github.com/hindermath/TuiVision/commit/3333e48105f93818b9ae7cd5bd667de6cc5dea20))
+* update agent parity governance to v0.2.0 ([3dfb218](https://github.com/hindermath/TuiVision/commit/3dfb218d996ab48c28222b8d80e079249eb8cc3e))
+* update governance presets ([248b3ab](https://github.com/hindermath/TuiVision/commit/248b3ab8cc4f346eb058d329dadc95b779fffbc1))
+
 ## [0.4.0](https://github.com/hindermath/TuiVision/compare/v0.3.1...v0.4.0) (2026-05-10)
 
 
