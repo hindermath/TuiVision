@@ -32,7 +32,8 @@
 ## Notes
 
 - Validation iteration 1 passed on 2026-06-13.
-- Validation iteration 2 passed on 2026-06-13 after refreshing the specification against the updated local preset matrix: `security-governance` v0.5.0, `architecture-governance` v0.4.0, `isaqb-architecture-governance` v0.1.0, `a11y-governance` v0.3.0, `cross-platform-governance` v0.1.0, and `agent-parity-governance` v0.2.0.
+- Validation iteration 2 passed on 2026-06-13 against the then-current local preset matrix.
 - Validation iteration 3 passed on 2026-06-13 after aligning checklist wording with the established `014-wave1-functional-hardening` pattern from Copilot review feedback.
+- Validation iteration 4 passed on 2026-07-11 after refreshing the specification to `security-governance` v0.6.0, `architecture-governance` v0.5.0, `isaqb-architecture-governance` v0.2.0, `a11y-governance` v0.4.0, `cross-platform-governance` v0.2.0, and `agent-parity-governance` v0.3.0 and adding audit-ready governance evidence requirements.
 - The specification intentionally names TuiVision module groups, governance surfaces, and evidence paths because the binding Lastenheft and constitution require those scope boundaries. It does not prescribe code-level implementation strategy.
 - No clarification questions are open.

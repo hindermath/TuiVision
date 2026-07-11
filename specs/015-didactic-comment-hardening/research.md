@@ -96,9 +96,9 @@
 
 ## Decision 10: Keep governance evidence proportional and trigger based
 
-**Decision**: Record NIST SSDF and CWE Top 25 as Level-2 context. Mark ASVS, SBOM, VEX, SLSA, OpenSSF Scorecard, AI-SBOM, NIS2, CRA, EU AI Act, DORA, STRIDE/CIA/CAPEC, S-ADR, arc42 security concepts, Zero Trust, SAMM, BSI C3A, BSI C5, and cross-platform script requirements as `N/A` unless their trigger conditions change.
+**Decision**: Record NIST SSDF and CWE Top 25 as Level-2 context. Mark ASVS, SBOM, VEX, SLSA, OpenSSF Scorecard, AI-SBOM, NIS2, CRA, EU AI Act, DORA, STRIDE/CIA/CAPEC, S-ADR, arc42 security concepts, Zero Trust, SAMM, BSI C3A, BSI C5, and cross-platform script requirements as `N/A` unless their trigger conditions change. Keep governance applicability separate from comment decisions and record every checkpoint as `Applicable`, `N/A`, or `Open` with preset version, rationale, evidence path, owner, reviewer, review date, result, residual risk, follow-up, and re-evaluation trigger.
 
-**Rationale**: The feature changes comments, evidence, and possible guidance. It does not change dependencies, release artifacts, cloud/provider posture, service boundaries, scripts, or runtime AI.
+**Rationale**: The feature changes comments, evidence, and possible guidance. It does not change dependencies, release artifacts, cloud/provider posture, service boundaries, scripts, or runtime AI. Audit-ready fields make that proportional decision reviewable without creating unrelated security or architecture work.
 
 **Alternatives considered**:
 - Skip governance evidence. Rejected because Level-2 Spec-Kit features require explicit applicability decisions.

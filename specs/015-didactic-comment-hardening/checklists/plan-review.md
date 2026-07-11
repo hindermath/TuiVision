@@ -74,8 +74,8 @@
 
 ## Governance Applicability
 
-- [x] CHK025 Are all six local Spec-Kit presets named with the current versions in the plan? [Completeness, Plan §Summary]
-  - Durchfuehrungshinweis: Gleiche die sechs Versionsnummern mit `.specify/presets/.registry` oder `specify preset list` ab, falls spaeter Zweifel entstehen. EN: Compare preset versions with local preset metadata if needed.
+- [x] CHK025 Are all six local Spec-Kit presets named with the current versions and an audit-ready evidence schema in the plan? [Completeness, Plan §Summary]
+  - Durchfuehrungshinweis: Gleiche die sechs Versionsnummern mit den lokalen `preset.yml`-Dateien ab und prüfe `Applicable`/`N/A`/`Open`, Evidence-Pfad, Reviewer, Datum, Restrisiko und Follow-up. EN: Compare versions with local preset metadata and verify the audit-ready fields.
 - [x] CHK026 Are NIST SSDF and CWE Top 25 retained as Level-2 context without creating artificial implementation tasks? [Governance, Plan §Constitution Check]
   - Durchfuehrungshinweis: Pruefe, ob sie als Kontext, nicht als neue Code-/Security-Arbeit formuliert sind. EN: Confirm they are context, not new implementation work.
 - [x] CHK027 Are ASVS, SBOM, VEX, SLSA, OpenSSF Scorecard, AI-SBOM, NIS2, CRA, EU AI Act, and DORA `N/A` decisions trigger-based? [Governance, Contract §10]

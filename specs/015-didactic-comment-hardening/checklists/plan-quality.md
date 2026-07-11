@@ -29,7 +29,7 @@
 
 ## Governance Quality
 
-- [x] CHK013 Are all six local presets named with current versions and applicability rationale? [Governance]
+- [x] CHK013 Are all six local presets named with current versions and an audit-ready `Applicable`/`N/A`/`Open` evidence model? [Governance]
 - [x] CHK014 Are NIST SSDF and CWE Top 25 retained as Level-2 context without inventing feature-specific security work? [Governance]
 - [x] CHK015 Are ASVS, SBOM, VEX, SLSA, OpenSSF Scorecard, AI-SBOM, NIS2, CRA, EU AI Act, and DORA given trigger-based `N/A` rationale? [Governance]
 - [x] CHK016 Are STRIDE/CIA/CAPEC, S-ADR, arc42, Zero Trust, SAMM, BSI C3A, and BSI C5 `N/A` decisions tied to unchanged architecture/cloud/deployment boundaries? [Governance]
@@ -37,7 +37,7 @@
 
 ## Acceptance Criteria Quality
 
-- [x] CHK018 Are success criteria measurable through hotspot coverage, decision coverage, comment quality, and validation evidence? [Acceptance]
+- [x] CHK018 Are success criteria measurable through hotspot coverage, decision coverage, comment quality, governance-evidence completeness, and validation evidence? [Acceptance]
 - [x] CHK019 Can a reviewer decide within the plan whether a comment was adequate, needed, intentionally absent, updated, or deferred? [Acceptance]
 - [x] CHK020 Are follow-up issues bounded so they cannot become hidden runtime implementation inside this feature? [Acceptance]
 - [x] CHK021 Are future tasks able to derive setup, inventory, review, comment-edit, guidance, governance, and validation tasks without new requirements decisions? [Readiness]

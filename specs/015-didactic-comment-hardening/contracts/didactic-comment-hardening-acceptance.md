@@ -45,6 +45,12 @@ Each evidence entry MUST record:
 - follow-up boundary where applicable;
 - governance, DocFX/A11Y, statistics, or agent-guidance trigger where applicable.
 
+Governance evidence MUST use a separate audit table. Each governance row MUST
+record the Spec-Kit run, preset and version, checkpoint, `Applicable`/`N/A`/
+`Open` decision, rationale, evidence path, owner, reviewer, review date, result,
+residual risk, follow-up, and re-evaluation trigger. Governance applicability
+values MUST NOT replace or extend the five-value comment decision model.
+
 Guides, code comments, and PR discussion may summarize evidence, but they do not replace the feature evidence ledger.
 
 ## 3. Hotspot Coverage Contract
@@ -153,6 +159,15 @@ If shared guidance is not changed, `pr-evidence.md` MUST record the unchanged ra
 
 ## 10. Governance Contract
 
+Implementation MUST use the current preset matrix:
+
+- Security Governance v0.6.0;
+- Architecture Governance v0.5.0;
+- iSAQB Architecture Governance v0.2.0;
+- A11Y Governance v0.4.0;
+- Cross-Platform Governance v0.2.0;
+- Agent Parity Governance v0.3.0.
+
 Implementation MUST record:
 
 - NIST SSDF and CWE Top 25 as Level-2 secure-development context;
@@ -162,6 +177,13 @@ Implementation MUST record:
 - NIS2/CRA/EU AI Act/DORA `N/A` unless regulated scope triggers change;
 - STRIDE/CIA/CAPEC, S-ADR, arc42 security concepts, Zero Trust, SAMM, BSI C3A, and BSI C5 `N/A` unless architecture, trust boundary, cloud, provider, or deployment topology changes;
 - cross-platform script requirements `N/A` unless script-shaped tools are added or changed.
+
+Every relevant checkpoint MUST have one audit-ready governance row. `N/A`
+requires a short rationale and re-evaluation trigger. `Open` is temporary and
+requires an owner, concrete follow-up, and re-evaluation trigger. `Applicable`
+requires a concrete evidence path and result. Every row records reviewer,
+review date, and residual risk; silent omission and unfilled starter rows do
+not satisfy this contract.
 
 ## 11. Validation Contract
 

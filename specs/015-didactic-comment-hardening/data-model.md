@@ -108,6 +108,42 @@ Represents the acceptance record for one review area.
 - `ValidationOrProofBoundary` is required for smoke-test helpers, rendering snapshots, buffer/cell proof, and terminal fallbacks.
 - `FollowUpBoundary` is required when `Decision == FollowUpHardening`.
 
+## Entity: GovernanceEvidenceEntry
+
+Represents the audit-ready record for one checkpoint from an installed
+governance preset. Governance applicability is deliberately separate from the
+five-value comment decision model.
+
+**Fields**:
+- `RunId`: `015-didactic-comment-hardening`.
+- `PresetName`
+- `PresetVersion`
+- `Checkpoint`
+- `Applicability`: `Applicable`, `N/A`, or `Open`.
+- `Rationale`
+- `EvidencePath`
+- `Owner`
+- `Reviewer`
+- `ReviewDate`
+- `Result`: `OK`, `N/A`, or `Open`.
+- `ResidualRisk`
+- `FollowUp`
+- `ReevaluationTrigger`
+
+**Validation rules**:
+- Every relevant checkpoint from all six installed presets has one entry; no
+  checkpoint may be silently omitted.
+- Every entry records preset/version, rationale, evidence path, owner, reviewer,
+  review date, result, and residual risk.
+- `Applicability == N/A` requires a short rationale and a re-evaluation
+  trigger.
+- `Applicability == Open` requires an owner, concrete follow-up, and a
+  re-evaluation trigger.
+- `Applicability == Applicable` requires a concrete evidence path and a result.
+- `CommentAdequate`, `CommentNeeded`, `NoCommentNeeded`,
+  `UpdateExistingComment`, and `FollowUpHardening` are not valid governance
+  applicability values.
+
 ## Entity: SmokeProofBoundary
 
 Represents the proof purpose and limit for a smoke-test helper or proof path.
@@ -185,6 +221,7 @@ Specified
   -> CommentsAddedUpdatedRemovedOrOmitted
   -> FollowUpsRecorded
   -> GuidanceReviewed
+  -> GovernanceEvidenceCompleted
   -> ValidationRecorded
   -> Accepted
 ```
@@ -193,7 +230,10 @@ Specified
 - `HotspotInventoryCompleted` requires every required hotspot category to be mapped or explicitly rationalized.
 - `ReviewAreasClassified` requires exactly one approved decision per reviewed area.
 - `CommentsAddedUpdatedRemovedOrOmitted` requires comment style and DocFX trigger checks.
-- `Accepted` requires final validation evidence and no unbounded follow-up claims.
+- `GovernanceEvidenceCompleted` requires one complete audit-ready entry per
+  relevant checkpoint and no unowned `Open` decision.
+- `Accepted` requires final validation evidence, complete governance evidence,
+  and no unbounded follow-up claims.
 
 ## Deutsch / English
 

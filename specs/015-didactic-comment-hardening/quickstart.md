@@ -151,12 +151,20 @@ dotnet test --configuration Release --collect:"XPlat Code Coverage" --settings c
 
 `pr-evidence.md` muss festhalten:
 
+- alle sechs Presets mit der aktuellen Version und jeden relevanten Prüfpunkt
+  als `Applicable`, `N/A` oder `Open`;
+- Run-ID, Begründung, Evidence-Pfad, Owner, Reviewer, Review-Datum, Ergebnis,
+  Restrisiko, Follow-up und Neubewertungstrigger für die Governance-Zeilen;
 - NIST SSDF und CWE Top 25 bleiben Level-2-Kontext;
 - ASVS, SBOM, VEX, SLSA, OpenSSF Scorecard, AI-SBOM, NIS2, CRA, EU AI Act,
   DORA, STRIDE/CIA/CAPEC, S-ADR, Zero Trust, SAMM, BSI C3A/C5 und
   Cross-Platform-Script-Parity bleiben `N/A`, solange ihre Trigger nicht
   eintreten;
 - geänderte Evidence und Guidance bleiben text-first und barrierearm lesbar.
+
+`N/A` benötigt eine Begründung und einen Neubewertungstrigger. `Open` benötigt
+zusätzlich einen Owner und ein konkretes Follow-up. Leere Starter-Zeilen oder
+still ausgelassene Prüfpunkte gelten nicht als Evidence.
 
 ## English
 
@@ -284,6 +292,12 @@ and the Coverlet coverage gate.
 
 ### 9. Finish governance evidence
 
-`pr-evidence.md` records that NIST SSDF and CWE Top 25 remain Level-2 context,
-and that the other governance standards remain `N/A` unless their triggers
-change. Changed evidence and guidance stay text-first and accessible.
+`pr-evidence.md` records all six presets with their current versions and every
+relevant checkpoint as `Applicable`, `N/A`, or `Open`. Each governance row
+contains the run ID, rationale, evidence path, owner, reviewer, review date,
+result, residual risk, follow-up, and re-evaluation trigger. NIST SSDF and CWE
+Top 25 remain Level-2 context; the other governance standards remain `N/A`
+unless their triggers change. `N/A` requires rationale and a re-evaluation
+trigger. `Open` additionally requires an owner and concrete follow-up. Empty
+starter rows or silently omitted checkpoints are not evidence. Changed
+evidence and guidance stay text-first and accessible.

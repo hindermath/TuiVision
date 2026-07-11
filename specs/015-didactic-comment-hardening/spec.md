@@ -243,7 +243,7 @@ surfaces, with no silent divergence.
 - **CR-004**: The feature MUST state in evidence whether
   `docs/project-statistics.md` and shared AI-agent guidance were updated,
   unchanged by rationale, or deferred to implementation completion.
-- **CR-005**: Security Governance v0.5.0 applies. The primary implementation
+- **CR-005**: Security Governance v0.6.0 applies. The primary implementation
   language remains C# on .NET for TuiVision. C# is on the memory-safe-language
   allow-list, so no non-MSL justification is required; normal C#/.NET secure
   coding discipline remains applicable when comments touch non-trivial logic.
@@ -270,7 +270,7 @@ surfaces, with no silent divergence.
   operation, financial-sector ICT dependency, regulated customer flow, or
   runtime/product AI. If implementation changes any of those triggers, the
   plan MUST add regulatory applicability evidence.
-- **CR-011**: Architecture Governance v0.4.0 applies as an applicability gate.
+- **CR-011**: Architecture Governance v0.5.0 applies as an applicability gate.
   Trust-boundary changes, data flows across trust boundaries, distributed
   service architecture, `STRIDE`/`CIA`/`CAPEC` threat-model entries, S-ADRs,
   arc42 security concepts, Zero Trust, SAMM, and iSAQB security quality
@@ -282,28 +282,33 @@ surfaces, with no silent divergence.
   services, SaaS/PaaS/IaaS, managed services, container or artifact hosting,
   provider-dependent deployments, cloud assurance reviews, or related audit
   evidence.
-- **CR-013**: A11Y Governance v0.3.0 applies. The affected artefacts are
+- **CR-013**: A11Y Governance v0.4.0 applies. The affected artefacts are
   code-near didactic comments, feature evidence, checklists, and shared
   guidance. Didactic inline-code comments are required only where new or
   changed non-trivial logic affects learner understanding or maintainability.
   Generated HTML, DocFX output, or navigation evidence is required only if
   XML comments, public API documentation, guides, or generated documentation
   are changed.
-- **CR-014**: Agent Parity Governance v0.2.0 applies when shared comment
+- **CR-014**: Agent Parity Governance v0.3.0 applies when shared comment
   guidance changes. The maintained agent surfaces are `AGENTS.md`,
   `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and
   `.github/agents/copilot-instructions.md`; any intentional divergence MUST
   be recorded in feature evidence. Project templates under
   `.specify/templates/` are `N/A` for this feature unless the later plan
   explicitly changes repository-owned templates.
-- **CR-015**: Cross-Platform Governance v0.1.0 script-specific requirements
+- **CR-015**: Cross-Platform Governance v0.2.0 script-specific requirements
   are `N/A` because this feature does not add, change, or remove
   script-shaped tools; therefore no Bash/Pwsh pair, man page, Cmdlet
   `Verb-Noun` name, `--dry-run`, or `-WhatIf` parity is planned.
 - **CR-016**: All six installed governance presets apply by default:
-  `security-governance` v0.5.0, `architecture-governance` v0.4.0,
-  `isaqb-architecture-governance` v0.1.0, `a11y-governance` v0.3.0,
-  `cross-platform-governance` v0.1.0, and `agent-parity-governance` v0.2.0.
+  `security-governance` v0.6.0, `architecture-governance` v0.5.0,
+  `isaqb-architecture-governance` v0.2.0, `a11y-governance` v0.4.0,
+  `cross-platform-governance` v0.2.0, and `agent-parity-governance` v0.3.0.
+  Every relevant governance checkpoint MUST be recorded as `Applicable`,
+  `N/A`, or `Open` with an evidence path, owner, reviewer, review date,
+  result, residual risk, and follow-up information where applicable. `N/A`
+  decisions require a rationale and re-evaluation trigger; `Open` decisions
+  require an owner, follow-up, and re-evaluation trigger.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -320,6 +325,10 @@ surfaces, with no silent divergence.
 - **Feature Evidence Entry**: The review record for one area. It links the
   area, decision, rationale, changed or unchanged comment state, validation
   result, and follow-up boundary.
+- **Governance Evidence Entry**: The audit record for one preset checkpoint.
+  It keeps `Applicable`, `N/A`, and `Open` decisions separate from comment
+  decisions and records the preset version, rationale, evidence path,
+  owner, reviewer, review date, result, residual risk, and follow-up trigger.
 - **Follow-up Boundary**: A documented issue or improvement discovered during
   review that is real but outside this comment-hardening scope.
 
@@ -348,6 +357,10 @@ surfaces, with no silent divergence.
   deferred as follow-up.
 - **SC-008**: All changed shared guidance surfaces are synchronized, or the
   feature evidence records an explicit intentional divergence.
+- **SC-009**: 100% of relevant governance checkpoints for the six installed
+  presets have an audit-ready `Applicable`, `N/A`, or `Open` entry; no entry
+  omits its required rationale, evidence path, owner, reviewer/date, residual-risk,
+  or follow-up fields.
 
 ## Assumptions
 
