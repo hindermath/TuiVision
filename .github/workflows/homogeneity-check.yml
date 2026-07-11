@@ -6,7 +6,7 @@ on:
 
 jobs:
   check:
-    name: Agent Secret Scan (${{ matrix.os }})
+    name: Repository Tooling (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
 
@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
       - name: Install ripgrep (Ubuntu)
         if: runner.os == 'Linux'
@@ -40,3 +40,7 @@ jobs:
         if: runner.os == 'Windows'
         shell: bash
         run: bash scripts/scan-agent-secrets.sh --fail-on-high .
+
+      - name: Run Lastenheft Rename Contract
+        shell: bash
+        run: bash tests/scripts/rename-lastenheft-tests.sh

@@ -1,25 +1,28 @@
 # Security Architecture Decision Records (S-ADR)
 
-**Repository**: TuiVision (Level-2)
-**Template-Quelle / Template Source**: `.specify/templates/adr-template.md`
-**Constitution-Referenz / Constitution Reference**: Principle XII (A.8.28), Principle XIII (A.8.27), Principle XIV-XVIII
+**Repository**: TuiVision (Level 2)
+**Stand / Current as of**: 2026-07-11
 
 ## Zweck / Purpose
 
-Dieses Verzeichnis enthält architektonische Entscheidungen mit
-Sicherheitsbezug fuer TuiVision. Jede Entscheidung wird als
-einzelne Datei im Format `ADR-NNN-titel.md` abgelegt.
+Eine S-ADR ist erforderlich, wenn eine Entscheidung Trust Boundaries,
+Authentifizierung/Autorisierung, Kryptografie, Persistenz, Cloud/Provider,
+Release-Provenance oder ein vergleichbares Architekturmerkmal materiell ändert.
+Normale Evidence-Aktualisierungen erzeugen keine künstliche ADR.
 
-*This directory contains security-related architecture decisions
-for TuiVision. Each decision is stored as an individual file
-in the format `ADR-NNN-title.md`.*
+*An S-ADR is required when a decision materially changes trust boundaries,
+authentication/authorization, cryptography, persistence, cloud/provider,
+release provenance, or a comparable architecture property. Routine evidence
+updates do not create artificial ADRs.*
 
 ## Index
 
-| ADR | Titel / Title | Status | Datum / Date |
-|---|---|---|---|
-| — | Noch keine ADRs erstellt / No ADRs created yet | — | — |
+| ADR | Titel / Title | Status | Datum / Date | Ergebnis / Result |
+|---|---|---|---|---|
+| `N/A-016` | Feature 016 evidence/tooling hardening | `N/A` for new S-ADR | 2026-07-11 | No runtime architecture or trust boundary changed |
 
-<!-- EN: docs/security/adr/README.md
-[DE-Zusammenfassung: Index der Security Architecture Decision Records fuer TuiVision.]
--->
+Wenn der Trigger eintritt, wird eine Datei `ADR-NNN-title.md` nach dem
+Repository-Template angelegt und hier verlinkt.
+
+*When the trigger occurs, create `ADR-NNN-title.md` from the repository
+template and link it here.*

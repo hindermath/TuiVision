@@ -1,59 +1,21 @@
-# ASVS-Verifikation / ASVS Verification: TuiVision
+# ASVS-Anwendbarkeit / ASVS Applicability
 
-**Projekt / Project**: TuiVision (Level-2)
-**Datum / Date**: 2026-04-24
-**Status**: Stub — mit projektspezifischen Inhalten zu befuellen / Stub — to be populated
-**Template-Quelle / Template Source**: `.specify/templates/asvs-verification-template.md`
+**Stand / Current as of**: 2026-07-11
+**Status**: `N/A`
 
-<!--
-  Dieses Dokument ist ein Stub. Die vollstaendige Struktur findet sich im
-  Template unter .specify/templates/asvs-verification-template.md. Bei der Befuellung das Template als Vorlage
-  verwenden.
+TuiVision liefert ein lokales Terminal-UI-Framework. Es enthält keine
+Produkt-Webanwendung, HTTP-API, Authentifizierung, Autorisierung,
+Session-Verwaltung oder Mandantengrenze. Deshalb wird kein ASVS-Level gewählt
+und keine ASVS-Verification-Matrix behauptet.
 
-  This document is a stub. The complete structure can be found in the
-  template at .specify/templates/asvs-verification-template.md. Use the template as a guide when populating.
--->
+*TuiVision ships a local terminal UI framework. It has no product web
+application, HTTP API, authentication, authorization, session management, or
+tenant boundary. Therefore no ASVS level or verification matrix is claimed.*
 
-[Zu befuellen / To be populated — see template]
+Relevante lokale Sicherheitsnachweise liegen in `security-checklist.md`,
+`threat-model.md`, Source-/Test-Reviews und Package-Evidence.
 
-## 011-port-wave2-examples
+**Neubewertung / Re-evaluation**: web, API, HTTP, authentication,
+authorization, sessions, or remotely reachable service scope enters TuiVision.
 
-Datum: 2026-05-08.
-
-OWASP ASVS ist fuer diese Feature-Arbeit N/A. Es wird kein Web-Frontend, keine
-HTTP-API, keine Authentifizierung, keine Session-Verwaltung und kein
-Berechtigungsmodell eingefuehrt. Die passenden Nachweise liegen stattdessen in
-`security-checklist.md`, `threat-model.md`, `dependency-audit.md` und den
-Smoke-/Controls-Tests.
-
-OWASP ASVS is N/A for this feature. It introduces no web frontend, HTTP API,
-authentication, session management, or authorization model. The relevant
-evidence instead lives in `security-checklist.md`, `threat-model.md`,
-`dependency-audit.md`, and the smoke/controls tests.
-
-## 012-interactive-wave2-demos
-
-Datum: 2026-05-10.
-
-OWASP ASVS bleibt N/A. 012 fuegt kein Web-Frontend, keine HTTP-API, keine
-Authentifizierung, keine Session-Verwaltung und kein Berechtigungsmodell hinzu.
-
-Date: 2026-05-10.
-
-OWASP ASVS remains N/A. 012 adds no web frontend, HTTP API, authentication,
-session management, or authorization model.
-
-## 013-wave2-visual-component-remediation
-
-Datum: 2026-05-30.
-
-OWASP ASVS bleibt N/A. 013 fuegt kein Web-Frontend, keine HTTP-API, keine
-Authentifizierung, keine Session-Verwaltung und kein Berechtigungsmodell hinzu.
-Die relevante Evidenz liegt in lokalen App-Loop-Smokes, Threat Model,
-Dependency Audit und Supply-Chain-Evidence.
-
-Date: 2026-05-30.
-
-OWASP ASVS remains N/A. 013 adds no web frontend, HTTP API, authentication,
-session management, or authorization model. Relevant evidence lives in local
-app-loop smokes, threat model, dependency audit, and supply-chain evidence.
+**Restrisiko / Residual risk**: Low while these facts remain unchanged.

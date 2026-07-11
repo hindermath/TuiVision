@@ -1,87 +1,62 @@
-# Supply-Chain-Evidenz / Supply Chain Evidence: TuiVision
+# Lieferketten-Evidenz / Supply-Chain Evidence
 
-**Projekt / Project**: TuiVision (Level-2)
-**Datum / Date**: 2026-04-24
-**Status**: Stub — mit projektspezifischen Inhalten zu befuellen / Stub — to be populated
-**Template-Quelle / Template Source**: `.specify/templates/supply-chain-evidence-template.md`
+**Stand / Current as of**: 2026-07-11
+**Scope**: TuiVision source, NuGet/npm tools, GitHub Actions, release readiness
 
-<!--
-  Dieses Dokument ist ein Stub. Die vollstaendige Struktur findet sich im
-  Template unter .specify/templates/supply-chain-evidence-template.md. Bei der Befuellung das Template als Vorlage
-  verwenden.
+## CycloneDX-SBOM
 
-  This document is a stub. The complete structure can be found in the
-  template at .specify/templates/supply-chain-evidence-template.md. Use the template as a guide when populating.
--->
+CycloneDX for .NET 6.2.0 ist in `.config/dotnet-tools.json` gepinnt. Eine BOM
+wird aus `TuiVision.sln` in einem temporären Verzeichnis erzeugt und danach
+gelöscht.
 
-## 010-standard-dialogs-designer
+*CycloneDX for .NET 6.2.0 is pinned in `.config/dotnet-tools.json`. A BOM is
+generated from `TuiVision.sln` in a temporary directory and then deleted.*
 
-Datum: 2026-05-02.
+```bash
+dotnet tool restore
+sbom_dir="$(mktemp -d)"
+dotnet tool run dotnet-CycloneDX -- \
+  TuiVision.sln \
+  --output "$sbom_dir" \
+  --output-format Json \
+  --spec-version 1.7 \
+  --configuration Release
+jq -e '.bomFormat == "CycloneDX" and .specVersion == "1.7" and (.components | length > 0)' \
+  "$sbom_dir/bom.json"
+rm -rf "$sbom_dir"
+```
 
-Diese Feature-Arbeit erzeugt kein Release-Artefakt. Deshalb werden SBOM, VEX
-und SLSA-/Provenance-Nachweise nicht lokal in diesem Branch erzeugt, sondern
-bleiben an den naechsten Release-Prozess gekoppelt. Fuer die Implementierung
-wurden keine neuen Abhaengigkeiten eingefuehrt.
+Observed result: CycloneDX 1.7 JSON, metadata component `TuiVision`, 21
+components, 22 dependency nodes, zero tracked BOM files.
 
-This feature work does not produce a release artifact. SBOM, VEX, and
-SLSA/provenance evidence are therefore not generated locally in this branch and
-remain tied to the next release process. No new dependencies were introduced.
+## Statusübersicht / Status Overview
 
-| Nachweis / Evidence | Status | Notiz / Note |
+| Control | Status | Evidence and boundary |
 |---|---|---|
-| Dependency delta | PASS | keine neuen Abhaengigkeiten / no new dependencies |
-| SBOM | release-gebunden | beim naechsten Release aktualisieren / update at next release |
-| VEX | release-gebunden | nur mit Release-Artefakten sinnvoll / meaningful with release artifacts |
-| SLSA / Provenance | release-gebunden | CI-/Release-Pipeline bleibt Nachweisort / CI/release pipeline remains evidence location |
+| Dependency vulnerability/deprecation | PASS at 2026-07-11 | No vulnerable/deprecated direct or transitive package reported; see `dependency-audit.md` |
+| SBOM | `Applicable`, PASS | Reproducible local tool and CI command; generated output untracked |
+| VEX | `N/A` | No known vulnerability in evaluated/shipped components; trigger on any vulnerability finding |
+| SLSA provenance | `FollowUp` | Current release-please workflow does not emit attestable package provenance; do not fabricate it |
+| Reproducible build | `FollowUp` | Deterministic build evidence is not yet a formal release contract |
+| NuGet lock policy | `FollowUp` | npm has a lock file; NuGet lock-mode policy is not established |
+| Verified registries | `AlreadySatisfied` with boundary | NuGet/npm/GitHub sources are standard; local source details are not copied into Git |
+| Automated updates | `Applicable`, PASS | Dependabot covers NuGet, GitHub Actions, and `tests/web-a11y` npm |
+| CVE monitoring | `Applicable`, PASS | Local commands and `security-supply-chain.yml`; provider alerts remain human-owned |
+| OpenSSF Scorecard | `Applicable`, partial | Public API returned no indexed result at review; publication/provider settings remain Human-only `Open` |
+| GitHub Actions integrity | PASS | Every `uses:` reference is a full immutable SHA with readable alias comment |
+| Build secrets | PASS with provider boundary | No new secrets; Gitleaks/agent scans remain gates; provider secret values are not evidence |
+| AI-SBOM | `N/A` | AI is development tooling only; trigger on delivered models/services/datasets/inference assets |
 
-## 011-port-wave2-examples
+## CI-Nachweis / CI Evidence
 
-Datum: 2026-05-08.
+`.github/workflows/security-supply-chain.yml` restores the solution and local
+tool, checks vulnerable/deprecated packages, generates the BOM under `mktemp`,
+validates JSON with `jq`, and removes output through a trap. It uses read-only
+repository permissions and immutable Actions.
 
-Die elf neuen Beispielprojekte verwenden nur bestehende Projektmodule und
-fuehren keine neue NuGet-, npm- oder externe Laufzeitabhaengigkeit ein. Die
-Beispiele sind lokal ausfuehrbare Review-Artefakte; SBOM, VEX und
-SLSA-/Provenance-Nachweise bleiben an den naechsten Release-Prozess gekoppelt.
+## Release- und Retention-Grenze / Release and Retention Boundary
 
-The eleven new example projects use only existing project modules and introduce
-no new NuGet, npm, or external runtime dependency. The examples are locally
-runnable review artifacts; SBOM, VEX, and SLSA/provenance evidence remain tied
-to the next release process.
-
-| Nachweis / Evidence | Status | Notiz / Note |
-|---|---|---|
-| Dependency delta | PASS | keine neuen Abhaengigkeiten / no new dependencies |
-| SBOM | release-gebunden | keine Feature-lokale Release-Erzeugung / no feature-local release generation |
-| VEX | release-gebunden | bei Release-Artefakten nachziehen / update with release artifacts |
-| SLSA / Provenance | release-gebunden | CI-/Release-Pipeline bleibt Nachweisort / CI/release pipeline remains evidence location |
-| Beispiel-Artefakte / Example artifacts | review-only | `dotnet run --project examples/<Name>` ohne Paketveroeffentlichung / no package publishing |
-
-## 012-interactive-wave2-demos
-
-Datum: 2026-05-10.
-
-012 erzeugt keine neue Release-Artefaktklasse und fuehrt keine neue
-Abhaengigkeit ein. SBOM, VEX und Provenance bleiben an den regulaeren
-Release-Prozess gekoppelt; die lokalen Beispielprogramme sind Review- und
-Lernartefakte.
-
-Date: 2026-05-10.
-
-012 creates no new release artifact class and introduces no new dependency.
-SBOM, VEX, and provenance remain tied to the regular release process; the local
-example programs are review and learning artifacts.
-
-## 013-wave2-visual-component-remediation
-
-Datum: 2026-05-30.
-
-013 erzeugt keine neue Release-Artefaktklasse und keine neue Abhaengigkeit.
-SBOM, VEX und SLSA/Provenance bleiben release-gebunden. AI-SBOM ist `N/A`,
-weil keine Produkt- oder Runtime-KI ausgeliefert wird; Codex/Spec-Kit sind
-Entwicklungswerkzeuge.
-
-Date: 2026-05-30.
-
-013 creates no new release artifact class and no new dependency. SBOM, VEX,
-and SLSA/provenance remain release-bound. AI-SBOM is `N/A` because no product
-or runtime AI is shipped; Codex/Spec-Kit are development tools.
+Feature 016 creates no new release artifact or legal conformity statement.
+Generated BOMs may be CI/release artifacts in a future release design but are
+not source files. Re-evaluate VEX, SLSA, Scorecard publication, licence report,
+and artifact hashes when a distributable release pipeline is hardened.

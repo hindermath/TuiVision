@@ -1,101 +1,59 @@
 # Bedrohungsmodell / Threat Model: TuiVision
 
-**Projekt / Project**: TuiVision (Level-2)
-**Datum / Date**: 2026-04-24
-**Status**: Stub — mit projektspezifischen Inhalten zu befuellen / Stub — to be populated
-**Template-Quelle / Template Source**: `.specify/templates/threat-model-template.md`
+**Stand / Current as of**: 2026-07-11
+**Methode / Method**: STRIDE with CIA impact and selected CAPEC patterns
+**Scope**: Local terminal UI framework, tests, examples, repository tooling, CI
 
-<!--
-  Dieses Dokument ist ein Stub. Die vollstaendige Struktur findet sich im
-  Template unter .specify/templates/threat-model-template.md. Bei der Befuellung das Template als Vorlage
-  verwenden.
+## Schutzwerte / Assets
 
-  This document is a stub. The complete structure can be found in the
-  template at .specify/templates/threat-model-template.md. Use the template as a guide when populating.
--->
+- Integrität von Terminalzustand, Events, Commands, View-Hierarchie und
+  gerenderten Zellen.
+- Integrität und Verfügbarkeit serialisierter Ressourcen, Hilfe- und
+  Dialogdaten sowie lokaler Dateipfade.
+- Vertraulichkeit von Credentials, Tokens, lokalen Nutzerdaten und
+  Agent-/CI-Konfiguration.
+- Integrität von Quellcode, Dependencies, Workflows, Releases und Evidence.
 
-[Zu befuellen / To be populated — see template]
+*Assets include terminal state, event and view integrity, serialized resources,
+local paths, credentials, source, dependencies, workflows, releases, and
+evidence.*
 
-## 011-port-wave2-examples
+## Vertrauensgrenzen / Trust Boundaries
 
-### Assets / Schutzwerte
+```text
+Terminal input -> Console driver -> Core events -> Controls/application
+Local path/resource -> Validation -> Serialization/file controls
+NuGet/npm/GitHub Actions -> Restore/CI -> Build/test/release evidence
+Agent/tool input -> Repository sandbox -> Review/commit/PR
+Generated output -> Temporary/ignored storage -> Evidence summary
+```
 
-- Lokale Dateisystem-Metadaten, die `demo` fuer Standarddialoge anzeigt.
-- Strukturierte `dlgdsn`-Beschreibungen und Quellfixtures.
-- Clipboard-Testzustand ueber `ManagedClipboard`.
-- Textorientierte Smoke-Test-Ausgaben und Guides.
+Es gibt keine Produkt-Web-API, keine Authentifizierung, keinen Cloud-Service,
+keine Datenbank und keine Runtime-KI. Diese fehlenden Grenzen begründen ASVS-,
+Zero-Trust-, C3A-, C5-, DPIA- und AI-SBOM-`N/A`, nicht aber ein allgemeines
+Security-`N/A`.
 
-### Trust Boundaries / Vertrauensgrenzen
+## STRIDE, CIA und CAPEC / STRIDE, CIA, and CAPEC
 
-Die Feature-Arbeit bleibt lokal. Es gibt keine Netzwerk-, Web-, Auth-,
-Remote-Service- oder Datenbankgrenze. Relevante Grenzen sind lokale Pfade,
-persistierte Dialogbeschreibungen und isolierte Zwischenablagezustaende.
+| Bereich / Area | STRIDE/CIA | Relevante Angriffsmuster / Relevant patterns | Mitigation und Evidenz / Mitigation and evidence | Restrisiko / Residual risk |
+|---|---|---|---|---|
+| Terminal-/Eventeingabe | Tampering, DoS; I/A | CAPEC-10 Buffer Overflow, CAPEC-20 Input Data Manipulation | Begrenzte managed Buffer, Eventvalidierung, Tests in Core/Controls/Drivers | Low |
+| Datei-/Ressourcenpfade | Tampering, Information Disclosure; C/I/A | CAPEC-126 Path Traversal, CAPEC-153 Input Data Manipulation | Pfadvalidierung, kontrollierte Fixtures, sichere Ablehnung, keine beliebigen Dateiinhalte als Proof | Low |
+| Serialisierte Daten | Tampering, DoS; I/A | CAPEC-130 Excessive Allocation, CAPEC-153 | Truncated/trailing/unknown/cyclic rejection tests, Typregistrierung | Low |
+| Fehlermeldungen/Output | Information Disclosure; C | CAPEC-215 Fuzzing for sensitive output | Keine Secrets/Stack-Traces in nutzerseitiger Ausgabe, Secret-Scans | Low |
+| Repository-Scripts | Tampering, Elevation via workflow; I | CAPEC-15 Command Delimiters, CAPEC-126 | Strikte Argument-/Pfadprüfung, Preview, isolierter Commit, Paritätstests | Low after 016 |
+| Dependencies/Actions | Tampering, Spoofing; I/A | CAPEC-438 Supply Chain | Immutable Action-SHAs, Package-Audit, CycloneDX, Update-Automation | Low; provenance follow-up |
+| Agent-/CI-Grenze | Information Disclosure, Tampering; C/I | CAPEC-37 Retrieve Embedded Sensitive Data | Kein Agent-State in Git, Secret-Scan, Review, begrenzte Evidence | Medium human-owned sandbox controls |
 
-The feature remains local. It introduces no network, web, auth, remote service,
-or database boundary. Relevant boundaries are local paths, persisted dialog
-descriptions, and isolated clipboard states.
+## Risikobehandlung / Risk Treatment
 
-### STRIDE/CAPEC Notes
+- Critical/High: vor Merge beheben und beweisen oder Merge blockieren.
+- Medium: begrenzt beheben oder mit Owner und konkreter Grenze dokumentieren.
+- Human-only: nicht durch Agentenevidenz schließen.
+- Modell neu bewerten bei Netzwerk-/Cloud-/Auth-/Runtime-AI-Scope, neuer
+  Persistenz, neuen Paketen, Sicherheitsvorfall oder relevanter Architektur.
 
-| Kategorie / Category | Bewertung / Assessment |
-|---|---|
-| Spoofing | N/A fuer lokale Beispiele ohne Identitaetssystem / N/A for local examples without identity system |
-| Tampering | Strukturierte Dialogbeschreibungen werden validiert und fehlerhafte Varianten sichtbar abgelehnt. / Structured dialog descriptions are validated and invalid variants are visibly rejected. |
-| Repudiation | N/A; keine Audit- oder Benutzerkontenfunktion. / N/A; no audit or user-account feature. |
-| Information Disclosure | Fehlermeldungen bleiben textorientiert und enthalten keine Secrets, Tokens oder Stack-Traces. / Messages stay text-first and contain no secrets, tokens, or stack traces. |
-| Denial of Service | Fortschritt und Smoke-Flows sind deterministisch und verwenden keine unbounded background work. / Progress and smoke flows are deterministic and use no unbounded background work. |
-| Elevation of Privilege | N/A; keine privilegierten Operationen. / N/A; no privileged operations. |
-
-### Outcome
-
-Das Restrisiko ist fuer Welle 2 akzeptiert, weil die Beispiele keine neue
-externe Angriffsoberflaeche schaffen und die relevanten lokalen Eingaben durch
-Tests und sichtbare Ablehnungszustaende abgedeckt werden.
-
-The residual risk is accepted for wave 2 because the examples create no new
-external attack surface and the relevant local inputs are covered by tests and
-visible rejection states.
-
-## 012-interactive-wave2-demos
-
-### Assets / Schutzwerte
-
-- Sichtbare Beispielzustandsmeldungen und Menue-/Command-Pfade.
-- Source-controlled `DlgDsn`-Fixtures und lokale `Demo`-Metadatenpfade.
-- Session-only Eingabe-/History-Zustand in `InpLis`.
-- Smoke-Test-Evidence fuer app-loop-basierte Bedienpfade.
-
-### Trust Boundaries / Vertrauensgrenzen
-
-012 bleibt lokal. Es gibt keine neue Netzwerk-, Web-, Auth-, Remote-Service-
-oder Datenbankgrenze. Die bestehenden lokalen Grenzen aus 011 bleiben gueltig:
-Pfadmetadaten, Fixture-Namen, strukturierte Dialogbeschreibungen und
-Clipboard-Fallbacks.
-
-012 remains local. It introduces no new network, web, auth, remote service, or
-database boundary. The existing local boundaries from 011 remain valid: path
-metadata, fixture names, structured dialog descriptions, and clipboard
-fallbacks.
-
-### Outcome
-
-Restrisiko bleibt niedrig. Primaere Beweise laufen jetzt ueber `app.Run()` mit
-injizierten Commands; direkte Hilfsmethoden zaehlen nur als Setup oder
-ergaenzende Assertions.
-
-Residual risk remains low. Primary proof now runs through `app.Run()` with
-injected commands; direct helpers count only as setup or supplemental
-assertions.
-
-## 013-wave2-visual-component-remediation
-
-013 bleibt lokal. Die neuen sichtbaren Komponenten verarbeiten nur
-deterministische Commands, kontrollierte Fixtures, Test-Temp-Pfade fuer
-Metadaten und managed Clipboard-Fallbacks. Es gibt keine Netzwerk-, Web-,
-Auth-, Remote-Service-, Datenbank- oder persistente Nutzer-History-Grenze.
-Restrisiko bleibt niedrig.
-
-013 remains local. The new visible components process only deterministic
-commands, controlled fixtures, test temporary paths for metadata, and managed
-clipboard fallbacks. There is no network, web, auth, remote service, database,
-or persistent user-history boundary. Residual risk remains low.
+*Critical/high risks block merge. Medium risks are remediated or explicitly
+owned. Human-only controls are not closed by agent evidence. Re-evaluate on
+new network, cloud, auth, runtime AI, persistence, package, incident, or
+architecture scope.*

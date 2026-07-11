@@ -52,12 +52,20 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ## Recent Changes
-- 016-secure-development-hardening: Added C# `latest` / C# 14 on .NET 10 (`net10.0`); Bash and PowerShell 7 for repository tooling + Existing TuiVision projects, MSTest, Coverlet, DocFX, Playwright/axe, GitHub Actions, Gitleaks, and CycloneDX for .NET 6.2.0 as a repository-local tool. No new runtime package is planned.
+- 016-secure-development-hardening: Implemented the 157-control secure-development baseline, bounded persistence/script/workflow/supply-chain remediation, and local Release/coverage proof; next is `Lastenheft_Wave1-Visual-Component-Remediation.md`.
 - 015-didactic-comment-hardening: Implemented selective didactic comments and audit-ready evidence without runtime, API, dependency, or example-scope changes; next is `Lastenheft_Secure-Development-Hardening.md`.
 - 014-wave1-functional-hardening: Implemented Wave-1 functional hardening for `Desklogo`, `MsgCls`, `Tutorial` steps `tvguid01` through `tvguid16`, and `Videomode`; final proof is in `specs/014-wave1-functional-hardening/pr-evidence.md`. Helper taxonomy includes `PrimaryProof`, `SupplementalProof`, `SetupOnly`, and `LegacyOrTemporary`.
 
 
 <!-- MANUAL ADDITIONS START -->
+## 016 Secure Development Delivery Context
+
+- Final evidence is in `specs/016-secure-development-hardening/pr-evidence.md`; the durable matrix records all 157 controls with complete status, ownership, risk, evidence, and re-evaluation fields.
+- Remediation is bounded to malformed persistence rejection, immutable workflow dependencies, supply-chain automation, root disclosure guidance, and Bash/PowerShell archive-script parity.
+- Local acceptance is 498/498 Release tests and coverage above 70% for all five required assemblies; DocFX/axe and remote OS/CI proof remain delivery gates.
+- Human legal, provider, organization, and agent-platform decisions remain `Open`; release provenance, reproducible-build/lock maturity, and RFC 9116 remain named follow-ups.
+- The next open prioritized intake is `Lastenheft_Wave1-Visual-Component-Remediation.md`.
+
   Groessere verpflichtende Beispielwellen sollen als zweistufiges Spec-Kit-
   Liefermuster geplant werden, wenn funktionale Portierung und interaktive
   Runtime-Politur sonst vermischt wuerden. Stufe 1 portiert das Verhalten,

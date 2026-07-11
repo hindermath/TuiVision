@@ -29,6 +29,7 @@
       {
         "files": [
           "index.md",
+          "constitution.md",
           "toc.yml",
           "README.md",
           "docs/**/*.md",
@@ -41,6 +42,9 @@
       {
         "files": [
           "docs/**/images/**",
+          "docs/secure-development/**/*.json",
+          "docs/secure-development/**/*.pdf",
+          "docs/secure-development/**/*.sha256",
           "LICENSE",
           ".github/workflows/ci.yml"
         ]

@@ -210,6 +210,14 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 *   XML comments remain the API/DocFX surface; pure `//` or `/* */` hardening does not trigger DocFX. XML/API/generated docs/navigation/guides changes trigger the normal DocFX plus A11Y path.
 *   No runtime behavior change, API change, new dependency, new example porting, broad framework revision, Wave-1 visual remediation, or runtime/product AI is in scope.
 
+### 016-secure-development-hardening
+*   Current implementation status: the project-wide secure-development hardening is implemented; final evidence is in `specs/016-secure-development-hardening/pr-evidence.md`.
+*   The durable control matrix covers all 157 `CL-XX-NN` controls with `Applicable`, `AlreadySatisfied`, `N/A`, `Open`, or `FollowUp` and complete ownership, risk, evidence, and re-evaluation fields.
+*   Delivered remediation is bounded to explicit malformed persistence rejection, immutable workflow dependencies, supply-chain automation, root disclosure guidance, and safe Bash/PowerShell archive-script parity.
+*   Local acceptance is 498/498 Release tests plus line coverage above 70% for Core, Controls, Serialization, Compatibility, and Drivers.Console; DocFX/axe and remote OS/CI proof remain delivery gates.
+*   Human legal, provider, organization, and agent-platform decisions remain `Open`; release provenance, reproducible-build/lock maturity, and RFC 9116 remain named follow-ups rather than implicit claims.
+*   The next open prioritized intake is `Lastenheft_Wave1-Visual-Component-Remediation.md`.
+
 ## 🔄 Synchronisationsregel für KI-Agenten-Dateien
 
 *   Wenn sich aktiver Feature-Kontext, Planungsstand oder gemeinsam genutzte Agenten-Hinweise ändern, müssen diese Dateien gemeinsam geprüft und bei Bedarf im selben Arbeitsgang aktualisiert werden:

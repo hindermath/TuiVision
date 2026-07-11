@@ -1,10 +1,10 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-07-11 (aktualisiert einschließlich der vollständigen `/speckit-implement`-Lieferung für `015-didactic-comment-hardening`, Governance v0.6/v0.5/v0.2/v0.4/v0.2/v0.3, gezielter Release-Validierung, Agent-Parität, Lastenheft-Archivierung und aktuellem Repository-Snapshot)
+Stand: 2026-07-11 (aktualisiert einschließlich der vollständigen `/speckit-implement`-Lieferung für `016-secure-development-hardening`, Governance v0.6/v0.5/v0.2/v0.4/v0.2/v0.3, Security-/Supply-Chain-Nachweisen, Script-Parität, Release-/Coverage-Validierung, Agent-Parität, Lastenheft-Archivierung und aktuellem Repository-Snapshot)
 
-Aktueller Zusatz: Feature 015 dokumentiert 24 Review-Bereiche, 13 kurze
-didaktische Kommentarblöcke, 27 Governance-Entscheidungen und 478/478 grüne
-gezielte Release-Tests ohne Runtime-Verhaltensänderung.
+Aktueller Zusatz: Feature 016 dokumentiert 157/157 Secure-Development-
+Kontrollen, sechs behobene Medium-Funde, 498/498 grüne Release-Tests und eine
+Coverage von mindestens 80,55 % in allen fünf Gate-Assemblies.
 
 ## Zweck und Pflege
 
@@ -81,27 +81,27 @@ fortgeschrieben.
 | Kennzahl | Wert |
 |---|---:|
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-11 |
-| Git-Commits gesamt | 397 |
+| Git-Commits gesamt | 407 |
 | Autoren laut Git | 1 |
 | Sichtbare Aktivtage inkl. aktuellem Working Tree | 68 |
-| Produktionscode aktuell | 160 Dateien / 20752 Zeilen |
-| Testcode aktuell | 98 Dateien / 14009 Zeilen |
-| Dokumentation aktuell | 467 Dateien / 174724 Zeilen |
-| Davon Spec-Kit-Artefakte | 277 Dateien / 36775 Zeilen |
-| Davon Governance/Agent-Dateien | 5 Dateien / 2194 Zeilen |
-| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 209485 Zeilen |
-| Erfahrener Entwickler, konservative Untergrenze | 2618.6 Arbeitstage |
-| Erfahrener Entwickler, konservative Untergrenze in Stunden | 20424.8 Stunden (209485 / 80 * 7.8) |
-| Erfahrener Entwickler, brutto | 121.8 Arbeitsmonate (21.5 Tage/Monat) |
-| Erfahrener Entwickler, TVoeD-Annahme | 137.8 Kalendermonate bzw. 11.5 Jahre |
-| Thorsten solo, erfahrungsadjustierte Untergrenze | 1675.9 Arbeitstage |
-| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 13071.9 Stunden (209485 / 125 * 7.8) |
-| Thorsten solo, brutto | 77.9 Arbeitsmonate (21.5 Tage/Monat) |
-| Thorsten solo, TVoeD-Annahme | 88.2 Kalendermonate bzw. 7.4 Jahre |
-| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 1047.4 Arbeitstage |
-| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 55.1 Kalendermonate |
-| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 38.5x (2618.6 / 68 sichtbare Aktivtage) |
-| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 24.6x (1675.9 / 68 sichtbare Aktivtage) |
+| Produktionscode aktuell | 160 Dateien / 20766 Zeilen |
+| Testcode aktuell | 98 Dateien / 14047 Zeilen |
+| Dokumentation aktuell | 485 Dateien / 176906 Zeilen |
+| Davon Spec-Kit-Artefakte | 290 Dateien / 38814 Zeilen |
+| Davon Governance/Agent-Dateien | 5 Dateien / 2246 Zeilen |
+| Gesamtbasis fuer Handschaetzung (inkl. Dokumentation) | 211719 Zeilen |
+| Erfahrener Entwickler, konservative Untergrenze | 2646.5 Arbeitstage |
+| Erfahrener Entwickler, konservative Untergrenze in Stunden | 20642.6 Stunden (211719 / 80 * 7.8) |
+| Erfahrener Entwickler, brutto | 123.1 Arbeitsmonate (21.5 Tage/Monat) |
+| Erfahrener Entwickler, TVoeD-Annahme | 139.3 Kalendermonate bzw. 11.6 Jahre |
+| Thorsten solo, erfahrungsadjustierte Untergrenze | 1693.8 Arbeitstage |
+| Thorsten solo, erfahrungsadjustierte Untergrenze in Stunden | 13211.3 Stunden (211719 / 125 * 7.8) |
+| Thorsten solo, brutto | 78.8 Arbeitsmonate (21.5 Tage/Monat) |
+| Thorsten solo, TVoeD-Annahme | 89.1 Kalendermonate bzw. 7.4 Jahre |
+| Kleines Team (3 Personen, +20 % Koordination), Untergrenze | 1058.6 Arbeitstage |
+| Kleines Team (3 Personen, +20 % Koordination), TVoeD-Annahme | 55.7 Kalendermonate |
+| Repo-weiter Beschleunigungsfaktor vs. konservative Referenz | 38.9x (2646.5 / 68 sichtbare Aktivtage) |
+| Repo-weiter Beschleunigungsfaktor vs. Thorsten-Referenz | 24.9x (1693.8 / 68 sichtbare Aktivtage) |
 
 ## Phasen und Haupt-Branches
 
@@ -612,6 +612,7 @@ fortgeschrieben.
 | 2026-07-11 | Specify- und Clarify-Konvergenz für `016-secure-development-hardening` | Aus `Lastenheft_Secure-Development-Hardening.md` wurde die neue Feature-Spezifikation mit fünf priorisierten Nutzergeschichten, 36 funktionalen Anforderungen, 16 Constitution-Anforderungen und 14 messbaren Erfolgskriterien erstellt. Die Spezifikation bindet alle zwölf Secure-Development-Checklisten und die sechs lokalen Governance-Presets ein, trennt die fünf Kontrollstatus eindeutig und begrenzt autonome Remediation auf kleine und mittlere, reversible Repository-Änderungen. Zwei fokussierte Clarify-Prüfungen fanden keine verbleibende planungswirksame Unklarheit; Human-only-, Rechts-, Provider- und unbehobene kritische Risiken besitzen explizite Stop- oder Follow-up-Grenzen. Die Requirements-Checkliste ist vollständig, Marker- und Whitespace-Prüfung sind sauber. `Directory.Build.props` wurde ohne Build-Ausführung auf `1.16.1.60` für den ersten 016-Branch-Commit ausgerichtet. |
 | 2026-07-11 | Plan- und Checklist-Konvergenz für `016-secure-development-hardening` | `/speckit-plan` konkretisiert die projektweite Haertung als 157 eindeutige `CL-XX-NN`-Kontrollbewertungen, langlebige Security-Evidence, reproduzierbare CycloneDX-SBOM-Erzeugung, immutable GitHub-Action-Pins, Disclosure-/Dependency-Automation und einen sicheren Bash/PowerShell-Rename-Vertrag. Research, Datenmodell, Quickstart und Acceptance-Contract trennen Repository-Remediation von Human-only-, Provider- und Rechtsentscheidungen. Die vier optionalen Reviewlisten wurden vollständig abgearbeitet: Planqualität `16/16`, Security-Anwendbarkeit `18/18`, Human-only-Grenzen `15/15` und Implementierungsreife `18/18`; der einzige Fund war die ergänzte explizite Aufnahme von `docs/security/gsdb-self-assessment.md` in den langlebigen Evidence-Contract. Die Agent-Kontexte wurden für Codex, Claude, Gemini und Copilot aktualisiert, die vier Planmarker zeigen auf 016 und ein doppelter Copilot-Endmarker wurde entfernt. `Directory.Build.props` wurde ohne Build-/Testausführung auf `1.16.2.60` für den zweiten 016-Branch-Commit ausgerichtet; `git diff --check` ist sauber. |
 | 2026-07-11 | Tasks- und Analyze-Konvergenz für `016-secure-development-hardening` | `/speckit-tasks` erzeugte 148 fortlaufende, bewusst serialisierte Aufgaben: 28 für die auditfähige 157-Control-Basis, 20 für bounded Remediation, 18 für Supply Chain/SBOM, 17 für Bash-/PowerShell- und Agent-Parität, 9 für text-first A11Y sowie Setup-, Governance-, Validierungs- und Remote-Delivery-Aufgaben bis Merge und lokalem `main`-Sync. Der erste Analyze-Pass fand drei mittlere Reihenfolgeprobleme; `pr-evidence.md` entsteht nun vor jedem Preflight-Nachweis, aktive Kontexte/Archiv/Statistik werden vor DocFX aktualisiert und Agent-Parität wird danach geprüft. Ein zweiter Pass ergänzte das exakte Statusvokabular in T009. Der abschließende read-only Pass meldet 66/66 FR-/CR-/SC-Anforderungen abgedeckt, 148/148 gültige Tasks, keine unmapped Tasks, keine Constitution-Abweichung und keine CRITICAL-, HIGH-, MEDIUM- oder implementierungsrelevanten LOW-Funde. `Directory.Build.props` wurde ohne Build-/Testausführung auf `1.16.3.60` für den dritten 016-Branch-Commit ausgerichtet; `git diff --check` ist sauber. |
+| 2026-07-11 | `/speckit-implement` fuer `016-secure-development-hardening` | Der querschnittliche Secure-Development-Lauf bewertete alle 157 Kontrollen mit 65 `Applicable`, 13 `AlreadySatisfied`, 38 `N/A`, 36 human-only `Open` und 5 benannten `FollowUp`. Sieben Funde wurden begrenzt behoben: sechs Medium-Funde zu Security-Evidence, immutable GitHub-Action-Pins, Disclosure-/Dependency-/SBOM-Automation, sicherer Bash-/PowerShell-Archivierung und negativer persistierter Counts sowie ein Low-Fund zur DocFX-Ressourcenpublikation. Neue Runtime-Pakete, Produkt-AI, Cloud- oder Rechtsclaims wurden nicht eingefuehrt. Die Lastenheft-Datei wurde commit-frei als `Lastenheft_Secure-Development-Hardening.016-secure-development-hardening.md` archiviert; Agent-Kontexte und Pflichtenheft zeigen auf die Wave-1-Visual-Remediation. Lokale Validierung: Format/Diff/YAML/Shell sauber, 498/498 Release-Tests, Coverage Core 89,78 %, Controls 84,84 %, Serialization 88,44 %, Compatibility 80,55 % und Drivers.Console 81,70 %, DocFX 0 Warnungen/0 Fehler sowie Playwright/axe 2/2. Finales Implementierungsvolumen ohne diese Statistikdatei: `+1932/-935` Zeilen, darunter `+14` Produktions-C#, `+200` Testcode einschließlich Script-Contract-Harness, `+1332/-866` Dokumentation/Evidence/Guidance und `+386/-69` Automation/Metadaten; der gesamte 016-Lauf seit `main` liegt ohne Statistikpflege bei `+3449/-800` beziehungsweise `2649` Nettozeilen. Konservative Manualreferenz fuer die `1932` hinzugefuegten oder aktualisierten Implementierungszeilen: 80 Zeilen/Tag = `24,2` Tage (ca. `188,4` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `15,5` Tage (ca. `120,6` Stunden). Sichtbares Arbeitsfenster: autonome Spec-Kit-/Implementierungssitzung am 2026-07-11; `24,2x` und `15,5x` sind blended repository speedups, keine Stoppuhrmessung. |
 
 ## Gesamtstatistik
 
@@ -621,40 +622,40 @@ nächsten Statistiklauf eine dokumentierte Momentaufnahme.
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | 209485 Zeilen |
-| Produktions- und Testcode zusammen | 34761 Zeilen (16.6 %) |
-| Dokumentationsanteil | 174724 Zeilen (83.4 %) |
-| Spec-Kit-Anteil innerhalb der Doku | 36775 Zeilen (21.0 %) |
-| Governance-/Agent-Anteil innerhalb der Doku | 2194 Zeilen (1.3 %) |
+| Artefaktbasis gesamt | 211719 Zeilen |
+| Produktions- und Testcode zusammen | 34813 Zeilen (16.4 %) |
+| Dokumentationsanteil | 176906 Zeilen (83.6 %) |
+| Spec-Kit-Anteil innerhalb der Doku | 38814 Zeilen (21.9 %) |
+| Governance-/Agent-Anteil innerhalb der Doku | 2246 Zeilen (1.3 %) |
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-11 |
-| Git-Commits / sichtbare Aktivtage | 397 / 68 |
-| Gesamtzeilen pro sichtbarem Aktivtag | 3080.7 |
-| Gesamtzeilen pro Commit | 527.7 |
-| Konservative Einzelentwickler-Untergrenze | 2618.6 Arbeitstage / 20424.8 Stunden |
-| Thorsten-Solo-Untergrenze | 1675.9 Arbeitstage / 13071.9 Stunden |
-| Kleines 3er-Team mit Koordinationsaufschlag | 1047.4 Arbeitstage |
-| Repo-Speedup gegen 80-Zeilen-Referenz | 38.5x |
-| Repo-Speedup gegen Thorsten-Referenz | 24.6x |
+| Git-Commits / sichtbare Aktivtage | 407 / 68 |
+| Gesamtzeilen pro sichtbarem Aktivtag | 3113.5 |
+| Gesamtzeilen pro Commit | 520.2 |
+| Konservative Einzelentwickler-Untergrenze | 2646.5 Arbeitstage / 20642.6 Stunden |
+| Thorsten-Solo-Untergrenze | 1693.8 Arbeitstage / 13211.3 Stunden |
+| Kleines 3er-Team mit Koordinationsaufschlag | 1058.6 Arbeitstage |
+| Repo-Speedup gegen 80-Zeilen-Referenz | 38.9x |
+| Repo-Speedup gegen Thorsten-Referenz | 24.9x |
 
 Die hohe Dokumentationsquote enthält die umfangreiche Secure-Development-,
-Governance- und Spec-Kit-Basis. Feature 015 selbst ist klein: Es ergänzt
-selektive Erklärungen und auditfähige Evidence, ohne ausführbares Verhalten zu
-verändern. Die Speedups vergleichen sichtbaren Umfang mit Git-Aktivtagen und
-sind keine Messung persönlicher Arbeitszeit.
+Governance- und Spec-Kit-Basis. Feature 016 verbindet diese Kontrollbasis mit
+begrenzter technischer Remediation und klar getrennten Human-/Follow-up-
+Entscheidungen. Die Speedups vergleichen sichtbaren Umfang mit Git-Aktivtagen
+und sind keine Messung persönlicher Arbeitszeit.
 
 The high documentation share includes the extensive secure-development,
-governance, and Spec-Kit baseline. Feature 015 itself is small: it adds
-selective explanations and audit-ready evidence without changing executable
-behaviour. Speedups compare visible scope with Git active days and do not
+governance, and Spec-Kit baseline. Feature 016 combines that control baseline
+with bounded technical remediation and separately owned human/follow-up
+decisions. Speedups compare visible scope with Git active days and do not
 measure personal working time.
 
 ### ASCII-Diagramme
 
 ```text
 Artefaktmix nach Snapshot (Zeilen)
-Produktion     | ###                           |  20752 |  9.9 %
-Tests          | ##                            |  14009 |  6.7 %
-Dokumentation  | ##############################| 174724 | 83.4 %
+Produktion     | ###                           |  20766 |  9.8 %
+Tests          | ##                            |  14047 |  6.6 %
+Dokumentation  | ##############################| 176906 | 83.6 %
 ```
 
 Die Balken verwenden dieselbe Skala. Die Zahlen bleiben der genaue,
@@ -683,13 +684,16 @@ Branch-/Phasenvolumen nach dokumentierter Netto-Basis (Zeilen)
 15 013i | ####                 |  2105
 16 014i | #                    |   556
 17 015i | #                    |   283
+18 016i | ####                 |  2649
 ```
 
-Feature 015 bleibt im Phasenvergleich bewusst klein. Der Umfang liegt
-überwiegend in Evidence und Review-Entscheidungen, nicht in Codewachstum.
+Feature 016 ist größer als die beiden vorherigen Hardening-Nachläufe, weil die
+157 Kontrollentscheidungen, Evidence-Konsolidierung und Automation gemeinsam
+geliefert werden; der Produktionscode-Anteil bleibt klein.
 
-Feature 015 intentionally stays small in the phase comparison. Most of its
-scope is evidence and review decisions rather than code growth.
+Feature 016 is larger than the two preceding hardening passes because 157
+control decisions, evidence consolidation, and automation are delivered
+together; its production-code share remains small.
 
 ```text
 Konservative Handarbeits-Referenz je dokumentierter Phase
@@ -711,36 +715,40 @@ Konservative Handarbeits-Referenz je dokumentierter Phase
 15 013i | ###                  |  26.3 d
 16 014i | #                    |   7.0 d
 17 015i | #                    |   3.5 d
+18 016i | ####                 |  33.1 d
 ```
 
-Die Referenz rechnet Phasenumfang mit 80 Zeilen pro Arbeitstag. Für 015 zeigt
-der Balken die Netto-Basis; der Ledger nennt zusätzlich 5,4 Tage für alle
-hinzugefügten oder aktualisierten Zeilen.
+Die Referenz rechnet den Netto-Phasenumfang mit 80 Zeilen pro Arbeitstag. Für
+016 zeigt der Balken die kumulative Netto-Basis; der Ledger nennt zusätzlich
+24,2 Tage für die hinzugefügten oder aktualisierten Implementierungszeilen.
 
-The reference converts phase scope at 80 lines per workday. For 015, the bar
-shows the net basis; the ledger also records 5.4 days for all added or updated
-lines.
+The reference converts net phase scope at 80 lines per workday. For 016, the
+bar shows the cumulative net baseline; the ledger also records 24.2 days for
+added or updated implementation lines.
 
 ```text
 Dokumentierte Beschleunigungsfaktoren durch agentische KI + Spec-Kit/SDD
-Repo 80 | ############################## | 38.5x
-Repo125 | ###################            | 24.6x
+Repo 80 | ############################## | 38.9x
+Repo125 | ###################            | 24.9x
 014i    | #####                          |  7.0x
 015i-80 | ####                           |  5.4x
 015i125 | ###                            |  3.4x
+016i-80 | ###################            | 24.2x
+016i125 | ############                   | 15.5x
 ```
 
-Die 015-Werte beziehen sich auf einen sichtbaren Implementierungstag. Sie
-beschreiben Lieferdichte, nicht die Dauer einzelner Denk-, Review- oder
+Die 016-Werte beziehen sich auf einen sichtbaren autonomen Implementierungstag.
+Sie beschreiben Lieferdichte, nicht die Dauer einzelner Denk-, Review-, CI- oder
 Wartephasen.
 
-The 015 values use one visible implementation day. They describe delivery
-density, not the duration of individual thinking, review, or waiting phases.
+The 016 values use one visible autonomous implementation day. They describe
+delivery density, not the duration of individual thinking, review, CI, or
+waiting phases.
 
 ```text
 Vergleich Gesamtaufwand / sichtbares KI-Lieferfenster
-Erfahren    | ############################## | 2618.6 d
-Thorsten    | ###################            | 1675.9 d
+Erfahren    | ############################## | 2646.5 d
+Thorsten    | ###################            | 1693.8 d
 KI sichtbar | #                              |   68.0 d
 ```
 
@@ -773,6 +781,8 @@ X/Y: Phasenvolumen 0..15 (Y ungefaehr in Zeilen)
 
 ```text
 X/Y: Phasenvolumen 16..31 (Y ungefaehr in Zeilen)
+3000 |    *                           |
+1500 |                                |
  600 |*                               |
  300 |  *                             |
    0 |                                |
@@ -781,8 +791,8 @@ X/Y: Phasenvolumen 16..31 (Y ungefaehr in Zeilen)
       16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
 ```
 
-Die beiden Blöcke zeigen den Verlauf ohne eine zu breite Zeile. G steht für
-Phase 16 und H für Phase 17; alle späteren Slots sind bewusst leer.
+Die beiden Blöcke zeigen den Verlauf ohne eine zu breite Zeile. G, H und I
+stehen für die Phasen 16, 17 und 18; alle späteren Slots sind bewusst leer.
 
-The two blocks show progression without an overly wide line. G represents
-phase 16 and H phase 17; all later slots are intentionally empty.
+The two blocks show progression without an overly wide line. G, H, and I
+represent phases 16, 17, and 18; all later slots are intentionally empty.

@@ -1,0 +1,35 @@
+version: 2
+updates:
+  - package-ecosystem: nuget
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      dotnet-test-tooling:
+        patterns:
+          - MSTest
+          - coverlet.collector
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  - package-ecosystem: npm
+    directory: /tests/web-a11y
+    schedule:
+      interval: weekly
+    groups:
+      web-a11y-tooling:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
