@@ -18,9 +18,14 @@ Use this command to produce an implementation plan from an approved specificatio
    - serialization/data conventions
 3. Document concrete project structure for this feature.
 4. Record justified exceptions in Complexity Tracking.
+5. Complete the Autonomous Execution Contract with delivery authority,
+   evidence-first setup, one representative vertical slice, convergence gates,
+   shared single-writer files, trigger-based validation, scope firewall, and
+   remote closeout when delegated.
 
 ## Validation Checklist
 
 - No gate is left unresolved without rationale.
 - Test, coverage, dependency, and documentation impacts are planned before implementation.
 - Architecture evidence and justified `N/A` decisions are planned before implementation.
+- Evidence exists before implementation and each iterative stage has a measurable stop condition.

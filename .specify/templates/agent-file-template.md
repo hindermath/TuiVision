@@ -36,6 +36,15 @@ Auto-generated from all feature plans. Last updated: [DATE]
 
 *Model choice is operational agent-routing guidance, not a feature requirement. Do not pin model names in `spec.md`, `plan.md`, `tasks.md`, or individual feature specs; those artifacts must stay reproducible even when model names change or another AI agent is used. Each agent should map these recommendations to its currently available models; do not derive a fixed vendor or model requirement. For Spec-Kit specification, clarification, planning, task generation, and analysis (`/speckit-specify`, `/speckit-clarify`, `/speckit-plan`, `/speckit-tasks`, `/speckit-analyze`; or `/speckit.specify` etc. depending on the agent surface), prefer the strongest available frontier reasoning/coding model. For complete long-running `/speckit-implement` runs, prefer the strongest available long-running agent model; use the frontier model when maximum judgment quality is more important than runtime stability. For focused review or CI fixes, prefer a coding-optimized model. For trivial cleanup, formatting, or low-risk mechanical edits, a fast small coding model is acceptable.*
 
+## Autonome Spec-Kit-Läufe / Autonomous Spec-Kit Runs
+
+- Vollständig delegierte Spec-Kit-Läufe folgen `docs/spec-kit-autonomous-runbook.md` und verwenden den projektgebundenen Skill `$speckit-autonomous`.
+- Der aktuelle Benutzerauftrag bestimmt `LocalImplementation`, `PublishPR` oder `MergeAndSync`; allgemeine Autonomie erteilt keine stillschweigende Remote-Schreib- oder Merge-Berechtigung.
+- Evidence entsteht vor der Implementierung. Iterative Stufen laufen bis zur definierten Konvergenz, ein vertikaler Slice kommt vor breiter Wiederholung und gemeinsame Schreiber bleiben serialisiert.
+- Scope-Firewall, triggerbasierte Validierung und eine kurze Retrospektive sind Pflichtbestandteile jedes autonomen Laufs.
+
+*Fully delegated Spec-Kit runs follow `docs/spec-kit-autonomous-runbook.md` and use the repository-local `$speckit-autonomous` skill. The current user request determines `LocalImplementation`, `PublishPR`, or `MergeAndSync`; general autonomy does not grant implicit remote write or merge authority. Create evidence before implementation, iterate to defined convergence, prove a vertical slice before broad rollout, serialize shared writers, protect scope, validate by trigger, and record a short retrospective.*
+
 ## Spec-Kit Governance Presets
 
 If this project installs governance presets, keep this section synchronized
