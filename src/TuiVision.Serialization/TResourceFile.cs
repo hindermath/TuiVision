@@ -128,7 +128,19 @@ public sealed class TResourceFile
         for (int index = 0; index < count; index++)
         {
             string key = reader.ReadString();
+            // Doppelte persistierte Keys duerfen nicht still die zuvor validierte Ressource ersetzen.
+            // Duplicate persisted keys must not silently replace a previously validated resource.
+            if (string.IsNullOrWhiteSpace(key) || resourceFile.Resources.Keys.Contains(key, StringComparer.Ordinal))
+            {
+                throw new InvalidDataException($"Resource key '{key}' is missing or duplicated.");
+            }
+
             int payloadLength = reader.ReadInt32();
+            if (payloadLength < 0)
+            {
+                throw new InvalidDataException("Resource payload length must be non-negative.");
+            }
+
             byte[] payload = reader.ReadBytes(payloadLength);
             using MemoryStream payloadStream = new(payload, writable: false);
             using ipstream payloadReader = new(payloadStream, registry, leaveOpen: true);

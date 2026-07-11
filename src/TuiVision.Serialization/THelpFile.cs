@@ -117,11 +117,17 @@ public sealed class THelpFile : ITStreamSerializable
     {
         THelpFile helpFile = new();
         int topicCount = reader.ReadInt32();
+        if (topicCount < 0)
+        {
+            throw new InvalidDataException("Help-file topic count must be non-negative.");
+        }
+
         for (int index = 0; index < topicCount; index++)
         {
             helpFile.AddTopic(THelpTopic.LoadFrom(reader));
         }
 
+        ValidateGraph(helpFile);
         return helpFile;
     }
 
@@ -136,7 +142,9 @@ public sealed class THelpFile : ITStreamSerializable
     {
         using FileStream stream = File.OpenRead(path);
         using TBinaryArchiveReader reader = new(stream);
-        return LoadFrom(reader);
+        THelpFile helpFile = LoadFrom(reader);
+        reader.EnsureFullyConsumed();
+        return helpFile;
     }
 
     /// <summary>
@@ -153,17 +161,7 @@ public sealed class THelpFile : ITStreamSerializable
         registry.Register("help-file", LoadFrom);
         registry.RegisterStream(
             "help-file",
-            stream =>
-            {
-                THelpFile helpFile = new();
-                int topicCount = stream.ReadInt32();
-                for (int index = 0; index < topicCount; index++)
-                {
-                    helpFile.AddTopic(stream.ReadObject<THelpTopic>() ?? throw new InvalidDataException("Help topic payload is missing."));
-                }
-
-                return helpFile;
-            },
+            ReadFromStream,
             (stream, helpFile) =>
             {
                 stream.WriteInt32(helpFile._topics.Count);
@@ -172,6 +170,55 @@ public sealed class THelpFile : ITStreamSerializable
                     stream.WriteObject(topic);
                 }
             });
+    }
+
+    private static THelpFile ReadFromStream(ipstream stream)
+    {
+        THelpFile helpFile = new();
+        int topicCount = stream.ReadInt32();
+        if (topicCount < 0)
+        {
+            throw new InvalidDataException("Help-file topic count must be non-negative.");
+        }
+
+        for (int index = 0; index < topicCount; index++)
+        {
+            helpFile.AddTopic(stream.ReadObject<THelpTopic>() ?? throw new InvalidDataException("Help topic payload is missing."));
+        }
+
+        ValidateGraph(helpFile);
+        return helpFile;
+    }
+
+    private static void ValidateGraph(THelpFile helpFile)
+    {
+        HashSet<int> contexts = [];
+        foreach (THelpTopic topic in helpFile._topics)
+        {
+            if (!contexts.Add(topic.Context))
+            {
+                throw new InvalidDataException($"Help context '{topic.Context}' is duplicated.");
+            }
+        }
+
+        // Referenzen werden erst nach allen Themen geprueft, damit gueltige Vorwaertsziele erhalten bleiben.
+        // References are checked after all topics so valid forward targets remain supported.
+        foreach (THelpTopic topic in helpFile._topics)
+        {
+            int textLength = topic.Paragraphs.Sum(paragraph => paragraph.Length);
+            foreach (THelpCrossReference reference in topic.CrossReferences)
+            {
+                if (!contexts.Contains(reference.TargetContext))
+                {
+                    throw new InvalidDataException($"Help cross reference target '{reference.TargetContext}' is missing.");
+                }
+
+                if (reference.Offset < 0 || reference.Length < 0 || reference.Offset > textLength - reference.Length)
+                {
+                    throw new InvalidDataException("Help cross reference range is outside topic text.");
+                }
+            }
+        }
     }
 
     private static THelpTopic CreateFallback(int context)

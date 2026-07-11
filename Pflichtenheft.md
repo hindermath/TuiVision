@@ -254,8 +254,8 @@ Statuscheckliste Beispielwellen:
   Reihenfolgehinweis: abgeschlossen (Branch `012-interactive-wave2-demos`); die elf Wave-2-Beispiele zeigen beim normalen Start sichtbare Menue-/Command-Pfade mit text-first Rueckmeldung und besitzen app-loop-basierte Smoke-Nachweise.
 - [x] **Welle 2 - Sichtbarer Komponenten-Nachweis**
   Reihenfolgehinweis: abgeschlossen (Branch `013-wave2-visual-component-remediation`); die elf Wave-2-Beispiele besitzen echte sichtbare Hauptkomponenten, echte `TStatusLine`-Rueckmeldung, `Help -> Description` und primaere App-Loop-Smokes mit View-Baum- plus Buffer-/Cell-Nachweis.
-- [ ] **Welle 3 - Editor-/Hilfe-/Ressourcen-Vorhaertung**
-  Reihenfolgehinweis: nach Welle-1-Visual-Remediation ueber `Lastenheft_03_EditorHelpAndResourcesHardening.md`; haertet Editor-, Datei-, Help-, Resource-, Compiler- und i18n-End-to-End-Vertraege vor dem sichtbaren Wave-3-Port.
+- [x] **Welle 3 - Editor-/Hilfe-/Ressourcen-Vorhaertung**
+  Reihenfolgehinweis: abgeschlossen (Branch `018-editor-help-resources-hardening`); Editor-/Datei- und Runtime-Help-Flows sind zusammenhaengend nachgewiesen, der Help-Source-Compiler und sprachabhaengige Resource-Lookup sind wiederverwendbar gehaertet.
 - [ ] **Welle 3 - Visual Component Porting**
   Reihenfolgehinweis: nach der Wave-3-Vorhaertung ueber `Lastenheft_Wave3-Visual-Component-Porting.md`; `tvedit`, `bhelp`, `helpdemo`, `tvhc` und `i18n` muessen direkt als sichtbare Drei-Schichten-Demos portiert werden.
 - [ ] **Welle 4 - Terminal-/Charset-/Plattform-Vorhaertung**
@@ -305,13 +305,11 @@ Abgrenzung: Die Welle-2-Checkliste dokumentiert den funktionalen Portierungs- un
 
 Benoetigt: `TEditor`, `TFileDialog`, `THelpViewer`, Stream- und Ressourcen-Infrastruktur.
 
-Vor der sichtbaren Beispielportierung ist die Vorhaertung aus
-`Lastenheft_03_EditorHelpAndResourcesHardening.md` verpflichtend
-abzuarbeiten oder im Spec-Kit-Plan als explizite vorgelagerte Task-Gruppe zu
-fuehren. Dadurch sollen `tvedit`, `bhelp`, `helpdemo`, `tvhc` und `i18n`
-nicht zu Framework-Suchlaeufen werden, sondern als sichtbare
-Drei-Schichten-Demos auf belastbaren Editor-/Help-/Resource-Vertraegen
-aufbauen.
+Die Vorhaertung aus
+`Lastenheft_03_EditorHelpAndResourcesHardening.018-editor-help-resources-hardening.md`
+ist abgeschlossen. `tvedit`, `bhelp`, `helpdemo`, `tvhc` und `i18n` koennen
+deshalb als sichtbare Drei-Schichten-Demos auf den nachgewiesenen Editor-,
+Help-, Compiler-, Resource- und i18n-Vertraegen aufbauen.
 
 Checkliste Welle 3:
 - [ ] `bhelp` - Grundlegendes Hilfesystem mit kontextsensitiven Themen
@@ -655,10 +653,11 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.2` = Welle 2: Controls und Dialoge — ✓ ABGESCHLOSSEN
    - `3.2a` = Welle 2: Interaktive Showcase-Stufe — ✓ ABGESCHLOSSEN (Branch `012-interactive-wave2-demos`)
    - `3.2b` = Welle 2: Sichtbarer Komponenten-Nachweis — ✓ ABGESCHLOSSEN (Branch `013-wave2-visual-component-remediation`)
-   - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams — NAECHSTER SCHRITT: Vorhärtung
+   - `3.3a` = Welle 3: Editor-/Hilfe-/Ressourcen-Vorhaertung — ✓ ABGESCHLOSSEN (Branch `018-editor-help-resources-hardening`)
+   - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams — NAECHSTER SCHRITT: Visual Component Porting
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze
 
->>> NAECHSTER SCHRITT <<< Wave-3-Vorhärtung starten: `Lastenheft_03_EditorHelpAndResourcesHardening.md` umsetzen. Danach folgt `Lastenheft_Wave3-Visual-Component-Porting.md`.
+>>> NAECHSTER SCHRITT <<< Wave-3 Visual Component Porting starten: `Lastenheft_Wave3-Visual-Component-Porting.md` umsetzen. Danach folgt `Lastenheft_04_MouseSupportAndInteraction.md`.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

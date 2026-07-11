@@ -124,12 +124,22 @@ public sealed class THelpTopic : ITStreamSerializable
     {
         THelpTopic topic = new(reader.ReadInt32(), reader.ReadString());
         int paragraphCount = reader.ReadInt32();
+        if (paragraphCount < 0)
+        {
+            throw new InvalidDataException("Help-topic paragraph count must be non-negative.");
+        }
+
         for (int index = 0; index < paragraphCount; index++)
         {
             topic.AddParagraph(reader.ReadString());
         }
 
         int referenceCount = reader.ReadInt32();
+        if (referenceCount < 0)
+        {
+            throw new InvalidDataException("Help-topic reference count must be non-negative.");
+        }
+
         for (int index = 0; index < referenceCount; index++)
         {
             topic.AddCrossReference(new THelpCrossReference(
@@ -146,12 +156,22 @@ public sealed class THelpTopic : ITStreamSerializable
     {
         THelpTopic topic = new(stream.ReadInt32(), stream.ReadString());
         int paragraphCount = stream.ReadInt32();
+        if (paragraphCount < 0)
+        {
+            throw new InvalidDataException("Help-topic paragraph count must be non-negative.");
+        }
+
         for (int index = 0; index < paragraphCount; index++)
         {
             topic.AddParagraph(stream.ReadString());
         }
 
         int referenceCount = stream.ReadInt32();
+        if (referenceCount < 0)
+        {
+            throw new InvalidDataException("Help-topic reference count must be non-negative.");
+        }
+
         for (int index = 0; index < referenceCount; index++)
         {
             topic.AddCrossReference(new THelpCrossReference(
