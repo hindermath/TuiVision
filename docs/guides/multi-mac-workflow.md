@@ -14,7 +14,7 @@ Verwendete Tools:
 - `codex` (Codex CLI, authentifiziert)
 - `claude` (Claude Code CLI, authentifiziert)
 - `copilot` (Copilot CLI, authentifiziert)
-- `gemini` (Gemini CLI, authentifiziert)
+- `gemini` (Antigravity CLI, authentifiziert)
 - `node` 24 LTS und `npm` fuer `tests/web-a11y/`
 - Playwright + `@axe-core/playwright` als lokaler DocFX-A11y-Pruefpfad
 - `lynx` als textbasierter Browser-Gegencheck
@@ -39,7 +39,7 @@ specify check
 codex --version || codex --help
 claude --version || claude --help
 copilot --version || copilot --help
-gemini --version || gemini --help
+agy --version || gemini --help
 dotnet --version || dotnet --help
 node --version
 npm --version
@@ -57,7 +57,7 @@ Erwartung:
 - `codex --version` (oder alternativ `codex --help`) liefert eine gueltige Ausgabe.
 - `claude --version` (oder alternativ `claude --help`) liefert eine gueltige Ausgabe.
 - `copilot --version` (oder alternativ `copilot --help`) liefert eine gueltige Ausgabe.
-- `gemini --version` (oder alternativ `gemini --help`) liefert eine gueltige Ausgabe.
+- `agy --version` (oder alternativ `gemini --help`) liefert eine gueltige Ausgabe.
 - `node --version` liefert eine gueltige LTS-Ausgabe, bevorzugt `24.x`.
 - `npm --version` liefert eine gueltige Ausgabe.
 - `lynx -version` liefert eine gueltige Ausgabe.
@@ -152,7 +152,7 @@ copilot
 
 ```bash
 direnv allow
-gemini
+agy
 ```
 
 Projektlokale Einstellung:

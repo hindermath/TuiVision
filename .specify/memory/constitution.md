@@ -64,7 +64,7 @@ Non-negotiable rules:
   .claude/*
   !.claude/commands/
   ```
-  Currently allowed subdirectories: `.claude/commands/` and `.gemini/commands/`
+  Currently allowed subdirectories: `.claude/commands/` and `.agents/skills/`
   (Spec-Kit command definitions only).
 - Every workspace MUST have a `pre-push` hook installed that blocks pushes
   containing secret-like filenames or credential patterns (tokens matching
@@ -136,7 +136,7 @@ are excluded by the whitelist `.gitignore`):
 | Documentation | `README.md`, `.gitignore`, `.gitconfig`, `docs/` |
 | AI agent guidance | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md` |
 | Spec-Kit tooling | `.specify/` (config, templates, memory/constitution), `.agents/skills/`, `.github/agents/`, `.github/prompts/` |
-| Agent Spec-Kit commands | `.claude/commands/`, `.gemini/commands/` |
+| Agent Spec-Kit commands | `.claude/commands/`, `.agents/skills/` |
 
 Rules:
 - Changes to `home-baseline` scripts do NOT auto-propagate to child workspaces;

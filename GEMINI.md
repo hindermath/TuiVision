@@ -257,7 +257,7 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 *   Der Marker muss immer auf den aktuell hoechstprioren offenen Arbeitsschritt im Abschnitt der priorisierten Restarbeiten zeigen und bei Fortschritt entsprechend weitergeschoben werden.
 
 ---
-*Hinweis: Dieses Dokument wurde automatisch von Gemini CLI generiert und dient als Instruktionsbasis.*
+*Hinweis: Dieses Dokument wurde automatisch von Antigravity CLI generiert und dient als Instruktionsbasis.*
 
 
 ## Gemeinsame Governance-Ergaenzung / Shared Governance Addendum
@@ -545,7 +545,7 @@ Prüfen: PowerShell `$line.Length` oder `wc -m` (Bash) für jede Rahmen-Zeile.
 
 ### Spec-Kit-Verzeichnis initialisieren / Initialize the Spec-Kit Directory
 Nie manuell aus `~/home-baseline-tmp/` kopieren. Stattdessen:
-`specify init --here --force --integration {agent}` je Agent für `gemini`, `opencode`, `claude`, `copilot` und `codex` ausführen.
+`specify init --here --force --integration {agent}` je Agent für `agy`, `opencode`, `claude`, `copilot` und `codex` ausführen.
 
 ### Spec-Kit-Updates repo-weit / Repository-Wide Spec-Kit Updates
 Fuer Level 0, Level 1 und Level 2 nicht mehr per Hand in jedem Repo nachziehen.

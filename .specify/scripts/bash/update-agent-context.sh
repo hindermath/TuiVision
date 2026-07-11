@@ -619,7 +619,7 @@ update_specific_agent() {
             update_agent_file "$CLAUDE_FILE" "Claude Code" || return 1
             ;;
         gemini)
-            update_agent_file "$GEMINI_FILE" "Gemini CLI" || return 1
+            update_agent_file "$GEMINI_FILE" "Antigravity CLI" || return 1
             ;;
         copilot)
             update_agent_file "$COPILOT_FILE" "GitHub Copilot" || return 1
@@ -735,7 +735,7 @@ update_all_existing_agents() {
     local _all_ok=true
 
     _update_if_new "$CLAUDE_FILE" "Claude Code"           || _all_ok=false
-    _update_if_new "$GEMINI_FILE" "Gemini CLI"             || _all_ok=false
+    _update_if_new "$GEMINI_FILE" "Antigravity CLI"             || _all_ok=false
     _update_if_new "$COPILOT_FILE" "GitHub Copilot"        || _all_ok=false
     _update_if_new "$CURSOR_FILE" "Cursor IDE"             || _all_ok=false
     _update_if_new "$QWEN_FILE" "Qwen Code"                || _all_ok=false

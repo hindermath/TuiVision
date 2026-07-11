@@ -960,3 +960,9 @@ tests/web-a11y/test-results/
 !.specify/presets/**
 .specify/presets/.cache/
 .specify/presets/.cache/**
+
+# Antigravity/Codex Spec-Kit skills; all other .agents state stays local
+!.agents/
+.agents/*
+!.agents/skills/
+!.agents/skills/**
