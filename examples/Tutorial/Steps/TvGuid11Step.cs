@@ -22,12 +22,12 @@ public sealed class TvGuid11Step : ITutorialStep
     public int SequenceNumber => 11;
 
     /// <inheritdoc/>
-    public string Title => "Schaltflächen im Dialog / Buttons in a dialog";
+    public string Title => "Nicht-modaler Dialog / Non-modal dialog";
 
     /// <inheritdoc/>
     public string Description =>
-        "Fügt Schaltflächen in einen Dialog ein. / " +
-        "Inserts buttons into a dialog.";
+        "Fügt einen Dialog als sichtbare nicht-modale Desktop-Ansicht ein. / " +
+        "Inserts a dialog as a visible non-modal desktop view.";
 
     /// <inheritdoc/>
     public TApplication CreateApp(TRect bounds, bool headless) => new TvGuid11App(bounds, headless);

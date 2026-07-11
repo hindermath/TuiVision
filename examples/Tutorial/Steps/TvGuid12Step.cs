@@ -22,12 +22,12 @@ public sealed class TvGuid12Step : ITutorialStep
     public int SequenceNumber => 12;
 
     /// <inheritdoc/>
-    public string Title => "Eingabefeld im Dialog / Input line in a dialog";
+    public string Title => "Modales Dialogverhalten / Modal dialog behaviour";
 
     /// <inheritdoc/>
     public string Description =>
-        "Fügt ein Eingabefeld in einen Dialog ein. / " +
-        "Adds an input line to a dialog.";
+        "Führt den Dialog modal aus und wertet sein Ergebnis aus. / " +
+        "Runs the dialog modally and evaluates its result.";
 
     /// <inheritdoc/>
     public TApplication CreateApp(TRect bounds, bool headless) => new TvGuid12App(bounds, headless);

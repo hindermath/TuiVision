@@ -42,23 +42,31 @@ the contained texts.
 dotnet run --project examples/MsgCls
 ```
 
-Das Programm öffnet ein Nachrichtenfenster auf dem Desktop. Nachrichten können
-über den Menüeintrag (wenn vorhanden) oder programmatisch über `PostMessage()` gepostet werden.
+Das Programm öffnet ein Nachrichtenfenster auf dem Desktop. `Message -> Post`
+sendet eine Nachricht über den Command- und Broadcast-Pfad. Der Vorgang kann
+wiederholt werden. Die Statuszeile meldet den letzten sichtbaren Zustand;
+`Help -> Description` erklärt die View-Hierarchie.
 
-The program opens a message window on the desktop. Messages can be posted via the menu entry
-(if present) or programmatically via `PostMessage()`.
+The program opens a message window on the desktop. `Message -> Post` sends a
+message through the command and broadcast path. The operation can be repeated.
+The status line reports the latest visible state; `Help -> Description` explains
+the view hierarchy.
 
 ---
 
 ## Trigger-Ablauf / Trigger Flow
 
-1. `MsgClsApp.PostMessage(text)` erzeugt ein Broadcast-Ereignis mit `MsgClsEvents.cmPostToMsgWindow`.
-2. Das Ereignis wird über `HandleEvent()` an alle Kindansichten der Anwendung gesendet.
-3. `MsgClsWindow.HandleEvent()` fängt den Broadcast ab und fügt den Text zu `Messages` hinzu.
+1. Der Befehl `cmPostLoremIpsum` erreicht `MsgClsApp.HandleEvent()`.
+2. `MsgClsApp.PostMessage(text)` erzeugt ein Broadcast-Ereignis mit `MsgClsEvents.cmPostToMsgWindow`.
+3. Das Ereignis wird über `HandleEvent()` an die View-Hierarchie gesendet.
+4. `MsgClsWindow.HandleEvent()` fängt den Broadcast ab, ergänzt `Messages` und macht das Ergebnis sichtbar.
+5. Die Anwendung aktualisiert die Statuszeile; Wiederholungen bleiben in Empfangsreihenfolge erhalten.
 
-1. `MsgClsApp.PostMessage(text)` creates a broadcast event with `MsgClsEvents.cmPostToMsgWindow`.
-2. The event is sent to all child views of the application via `HandleEvent()`.
-3. `MsgClsWindow.HandleEvent()` intercepts the broadcast and adds the text to `Messages`.
+1. The `cmPostLoremIpsum` command reaches `MsgClsApp.HandleEvent()`.
+2. `MsgClsApp.PostMessage(text)` creates a broadcast event with `MsgClsEvents.cmPostToMsgWindow`.
+3. The event is sent through the view hierarchy via `HandleEvent()`.
+4. `MsgClsWindow.HandleEvent()` intercepts the broadcast, adds to `Messages`, and makes the result visible.
+5. The application updates the status line; repeated messages keep receive order.
 
 ---
 
@@ -100,11 +108,11 @@ MsgClsApp (TApplication)
 
 ## Nachweisstatus / Proof Status
 
-Der funktionale Nachweis fuer `014-wave1-functional-hardening` prueft den
+Der funktionale Nachweis für `014-wave1-functional-hardening` prüft den
 echten Command- und Broadcast-Pfad. Ein Smoke-Test sendet den
 `cmPostLoremIpsum`-Befehl an `MsgClsApp.HandleEvent()`, danach muss
 `MsgClsWindow.Messages` den Text `Lorem Ipsum dolor sit amet.` enthalten.
-Weitere Tests pruefen die Headless-Initialnachricht und wiederholtes
+Weitere Tests prüfen die Headless-Initialnachricht und wiederholtes
 `PostMessage()` in Empfangsreihenfolge.
 
 The functional proof for `014-wave1-functional-hardening` checks the real
@@ -112,6 +120,27 @@ command and broadcast path. A smoke test sends the `cmPostLoremIpsum` command
 to `MsgClsApp.HandleEvent()`, after which `MsgClsWindow.Messages` must contain
 `Lorem Ipsum dolor sit amet.` Further tests verify the headless startup message
 and repeated `PostMessage()` calls in receive order.
+
+`017-wave1-visual-component-remediation` prüft zusätzlich den vollständigen
+App-Loop. Der primäre Test stellt den Befehl und `Help -> Description` in die
+Ereignisfolge, prüft die konkrete Nachrichtenliste, den sichtbaren `TWindow`-Typ,
+die Beschreibungsregion und die gerenderte Statuszeile. Direkte Helfer sind für
+diesen primären Nachweis nicht erforderlich.
+
+`017-wave1-visual-component-remediation` also verifies the complete app loop.
+The primary test queues the command and `Help -> Description`, then verifies the
+concrete message list, visible `TWindow` type, description region, and rendered
+status line. Direct helpers are not needed for this primary proof.
+
+## Barrierearmer Bedienpfad / Accessible Operation Path
+
+Posten, Wiederholen, Status, Beschreibung und Beenden sind per Tastatur
+erreichbar. Reihenfolge und Ergebnis werden als Text dargestellt und hängen
+nicht nur von Fokusfarbe, Maus oder Fensterposition ab.
+
+Posting, repeating, status, description, and quitting are keyboard reachable.
+Order and result are presented as text and do not depend only on focus colour,
+pointer input, or window position.
 
 ---
 

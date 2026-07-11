@@ -243,7 +243,16 @@ npm run test:docfx
 - Delivered remediation is bounded to explicit malformed persistence rejection, immutable workflow dependencies, supply-chain automation, root disclosure guidance, and safe Bash/PowerShell archive-script parity.
 - Local acceptance is 498/498 Release tests plus line coverage above 70% for Core, Controls, Serialization, Compatibility, and Drivers.Console; DocFX/axe and remote OS/CI proof remain delivery gates.
 - Human legal, provider, organization, and agent-platform decisions remain `Open`; release provenance, reproducible-build/lock maturity, and RFC 9116 remain named follow-ups rather than implicit claims.
-- The next open prioritized intake is `Lastenheft_Wave1-Visual-Component-Remediation.md`.
+- The next open prioritized intake is `Lastenheft_03_EditorHelpAndResourcesHardening.md` before Wave-3 visual porting.
+
+### 017-wave1-visual-component-remediation
+- Current implementation status: Wave-1 visual component remediation is implemented; final evidence is in `specs/017-wave1-visual-component-remediation/pr-evidence.md`.
+- `Desklogo`, `MsgCls`, all 16 Tutorial tokens, and `Videomode` now use the three-layer model: visible main state, real `TStatusLine`, and keyboard-reachable `Help -> Description`.
+- Primary proof runs through `app.Run()` and combines concrete state, view-tree identity, and rendered buffer/cell evidence. The acceptance matrix contains four app rows plus 16 unique Tutorial rows; direct helpers are not primary proof.
+- Shared composition in `examples/Shared/Wave1Runtime.cs` uses existing framework controls. Desklogo and MsgCls are `UseExistingFramework`; Tutorial and Videomode are bounded `IntentionalDeviation` decisions.
+- Historical sources under `tv203s/` remain read-only. No functional re-port, Wave-2/3/4 behavior, broad framework redesign, new dependency, persistence, external service, or runtime/product AI entered scope.
+- The complete example-smoke suite passes 101/101 locally; final repository, coverage, DocFX, A11Y, and remote checks remain delivery gates until recorded in feature evidence.
+- The next prioritized intake is `Lastenheft_03_EditorHelpAndResourcesHardening.md` before Wave-3 visual porting.
 
 ## Agent File Synchronization Policy
 
@@ -328,6 +337,8 @@ npm run test:docfx
 - Source-controlled Markdown evidence and guidance files only. Production code state and tests keep their current storage model. No database, external service, network dependency, persistent user history, runtime/product AI storage, or arbitrary user-file proof path is planned. (015-didactic-comment-hardening)
 - C# `latest` / C# 14 on .NET 10 (`net10.0`); Bash and PowerShell 7 for repository tooling + Existing TuiVision projects, MSTest, Coverlet, DocFX, Playwright/axe, GitHub Actions, Gitleaks, and CycloneDX for .NET 6.2.0 as a repository-local tool. No new runtime package is planned. (016-secure-development-hardening)
 - Source-controlled Markdown, YAML, shell/PowerShell scripts, a local .NET tool manifest, and test fixtures. Generated evidence is written to temporary or ignored directories. No database, service, credential, runtime AI, or user-data store is introduced. (016-secure-development-hardening)
+- C# `latest` / C# 14 on .NET 10 (`net10.0`) + existing TuiVision modules, shared Wave-1 example composition, MSTest/Coverlet, DocFX, and Playwright/axe; no new package (017-wave1-visual-component-remediation)
+- Runtime example state remains in-process and session-only; proof and governance use source-controlled Markdown, with no database, external service, persistent user history, arbitrary user-file proof, or runtime/product AI (017-wave1-visual-component-remediation)
 
 ### 007-port-wave1-examples
 - Current status: Wave 1 delivered (2026-03-28). `desklogo`, `msgcls`, `tutorial` (16 steps), `videomode` are ported, smoke-tested, and guide-documented.
@@ -519,7 +530,7 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read
-`specs/016-secure-development-hardening/plan.md`.
+`specs/017-wave1-visual-component-remediation/plan.md`.
 <!-- SPECKIT END -->
 
 ## Hinweise / Notes

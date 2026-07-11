@@ -22,12 +22,12 @@ public sealed class TvGuid16Step : ITutorialStep
     public int SequenceNumber => 16;
 
     /// <inheritdoc/>
-    public string Title => "Dialogdaten speichern und wiederherstellen / Save and restore dialog data";
+    public string Title => "Dialogdaten übertragen und validieren / Dialog data transfer and validation";
 
     /// <inheritdoc/>
     public string Description =>
-        "Speichert und stellt Dialogdaten wieder her. / " +
-        "Saves and restores dialog data.";
+        "Überträgt, speichert, stellt wieder her und validiert Dialogdaten. / " +
+        "Transfers, saves, restores, and validates dialog data.";
 
     /// <inheritdoc/>
     public TApplication CreateApp(TRect bounds, bool headless) => new TvGuid16App(bounds, headless);

@@ -42,6 +42,9 @@ public class VideomodeView : TWindow
     /// </summary>
     public string? LastShownMessage { get; private set; }
 
+    /// <summary>Der kanonische sichtbare Zustand. / The canonical visible state.</summary>
+    public string CanonicalResultState { get; private set; } = "unchanged";
+
     /// <summary>
     /// Zeigt das Ergebnis des Videomode-Übergangs an und speichert es für Abfragen.
     ///
@@ -49,11 +52,22 @@ public class VideomodeView : TWindow
     /// </summary>
     /// <param name="outcome">Das Ergebnis des Übergangsversuchs. / The outcome of the transition attempt.</param>
     /// <param name="message">Die zum Ergebnis gehörende Meldung. / The message associated with the outcome.</param>
-    public void ShowOutcome(DisplayModeOutcome outcome, string message)
+    public void ShowOutcome(DisplayModeOutcome outcome, string message) =>
+        ShowOutcome(outcome, message, "unchanged");
+
+    /// <summary>
+    /// Zeigt Ergebnis, Meldung und kanonischen Textzustand an.
+    /// Displays outcome, message, and canonical text state.
+    /// </summary>
+    /// <param name="outcome">Das Ergebnis des Übergangsversuchs. / The transition outcome.</param>
+    /// <param name="message">Die sichtbare Meldung. / The visible message.</param>
+    /// <param name="canonicalResultState">Der kanonische Textzustand. / The canonical text state.</param>
+    public void ShowOutcome(DisplayModeOutcome outcome, string message, string canonicalResultState)
     {
         // Ergebnis für spätere Abfragen zwischenspeichern / Cache outcome for later queries
         LastShownOutcome = outcome;
         LastShownMessage = message;
+        CanonicalResultState = canonicalResultState;
 
         // Ansicht neu zeichnen, um das Ergebnis sichtbar zu machen / Redraw view to make outcome visible
         DrawView();
@@ -76,7 +90,13 @@ public class VideomodeView : TWindow
         }
 
         int innerWidth = buffer.Width - 2;
+        string stateLine = $"Result: {CanonicalResultState}";
+        ReadOnlySpan<char> state = stateLine.AsSpan(0, Math.Min(stateLine.Length, innerWidth));
         ReadOnlySpan<char> text = LastShownMessage.AsSpan(0, Math.Min(LastShownMessage.Length, innerWidth));
-        buffer.WriteText(1, 1, text, ConsoleColor.White, ConsoleColor.DarkBlue);
+        buffer.WriteText(1, 1, state, ConsoleColor.Yellow, ConsoleColor.DarkBlue);
+        if (buffer.Height > 3)
+        {
+            buffer.WriteText(1, 2, text, ConsoleColor.White, ConsoleColor.DarkBlue);
+        }
     }
 }

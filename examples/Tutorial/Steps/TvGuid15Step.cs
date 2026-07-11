@@ -22,12 +22,12 @@ public sealed class TvGuid15Step : ITutorialStep
     public int SequenceNumber => 15;
 
     /// <inheritdoc/>
-    public string Title => "Dialogdaten speichern / Saving dialog data";
+    public string Title => "Eingabezeile / Input line";
 
     /// <inheritdoc/>
     public string Description =>
-        "Speichert Dialoginhalte in einer Struktur. / " +
-        "Saves dialog contents to a structure.";
+        "Ergänzt eine sichtbare Eingabezeile im Dialog. / " +
+        "Adds a visible input line to the dialog.";
 
     /// <inheritdoc/>
     public TApplication CreateApp(TRect bounds, bool headless) => new TvGuid15App(bounds, headless);

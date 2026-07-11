@@ -3,6 +3,7 @@
 
 using TuiVision.Controls;
 using TuiVision.Core;
+using TuiVision.Examples.Shared;
 
 namespace TuiVision.Examples.MsgCls;
 
@@ -17,10 +18,15 @@ namespace TuiVision.Examples.MsgCls;
 /// </summary>
 public class MsgClsApp : TApplication
 {
+    /// <summary>Help-Description-Befehl. / Help description command.</summary>
+    public const ushort CmDescription = 17011;
+
     // Headless-Modus für automatisierte Smoke-Tests.
     // Headless mode for automated smoke tests.
     private readonly bool _headless;
+    private readonly Queue<TEvent> _scriptedEvents = [];
     private bool _headlessEventFired;
+    private TView? _descriptionView;
 
     /// <summary>
     /// Initialisiert eine neue Instanz der <see cref="MsgClsApp"/>-Klasse.
@@ -54,6 +60,9 @@ public class MsgClsApp : TApplication
 
         MsgWindow = new MsgClsWindow(windowBounds);
         Desktop?.Insert(MsgWindow);
+        LastVisibleComponentKind = "TWindow";
+        LastVisibleRegion = Desktop is null ? new TRect(0, 0, 0, 0) : Wave1Runtime.ScreenRegion(Desktop, MsgWindow);
+        SetStatus("ready for routed messages");
 
         // Headless: Testnachricht sofort posten, damit der Smoke-Test den Routing-Pfad prüfen kann
         // Headless: post a test message immediately so the smoke test can verify the routing path
@@ -70,6 +79,29 @@ public class MsgClsApp : TApplication
     /// </summary>
     public MsgClsWindow MsgWindow { get; }
 
+    /// <summary>Letzter sichtbarer Komponententyp. / Last visible component type.</summary>
+    public string LastVisibleComponentKind { get; private set; }
+
+    /// <summary>Letzte stabile sichtbare Region. / Last stable visible region.</summary>
+    public TRect LastVisibleRegion { get; private set; }
+
+    /// <summary>Letzter Statuszeilentext. / Last status-line message.</summary>
+    public string LastStatusMessage { get; private set; } = string.Empty;
+
+    /// <summary>Text fuer Help -> Description. / Text for Help -> Description.</summary>
+    public string DescriptionText =>
+        "MsgCls description: Eine Command-Nachricht wird als Broadcast durch die View-Hierarchie geroutet. / " +
+        "A command message is routed as a broadcast through the view hierarchy.";
+
+    /// <summary>Fuegt deterministische App-Loop-Ereignisse hinzu. / Adds deterministic app-loop events.</summary>
+    public void QueueEvents(IEnumerable<TEvent> events)
+    {
+        foreach (TEvent @event in events)
+        {
+            _scriptedEvents.Enqueue(@event);
+        }
+    }
+
     /// <summary>
     /// Sendet eine Broadcast-Nachricht mit dem angegebenen Text an das Nachrichtenfenster.
     ///
@@ -82,6 +114,7 @@ public class MsgClsApp : TApplication
         // Create broadcast event and route it through HandleEvent
         TEvent broadcast = TEvent.CreateBroadcast(MsgClsEvents.cmPostToMsgWindow, text);
         HandleEvent(broadcast);
+        SetStatus($"routed message {MsgWindow.MessageCount}");
     }
 
     /// <summary>
@@ -99,10 +132,18 @@ public class MsgClsApp : TApplication
     {
         TMenuBar bar = new(bounds)
         {
-            Menu = new TMenuItem("~N~achricht posten / ~P~ost message", MsgClsEvents.cmPostLoremIpsum)
+            Menu = new TMenuItem(
+                "~N~achricht / ~M~essage",
+                0,
+                Wave1Runtime.HelpMenu(CmDescription, new TMenuItem("~E~nde / E~x~it", ShellCommandIds.cmQuit)),
+                new TMenuItem("~P~osten / ~P~ost", MsgClsEvents.cmPostLoremIpsum))
         };
         return bar;
     }
+
+    /// <inheritdoc />
+    protected override TStatusLine InitStatusLine(TRect bounds) =>
+        new Wave1StatusLine(bounds, Wave1Runtime.Status("MsgCls", "ready"));
 
     /// <summary>
     /// Verarbeitet Ereignisse. Reagiert auf <see cref="MsgClsEvents.cmPostLoremIpsum"/>,
@@ -122,6 +163,13 @@ public class MsgClsApp : TApplication
             return;
         }
 
+        if (@event.What == TEventKind.Command && @event.Message.Command == CmDescription)
+        {
+            ShowDescription();
+            @event.Clear();
+            return;
+        }
+
         base.HandleEvent(@event);
     }
 
@@ -135,6 +183,12 @@ public class MsgClsApp : TApplication
     /// <param name="event">Das abgerufene Ereignis. / The retrieved event.</param>
     public override void GetEvent(out TEvent @event)
     {
+        if (_headless && _scriptedEvents.Count > 0)
+        {
+            @event = _scriptedEvents.Dequeue();
+            return;
+        }
+
         // Headless-Pfad: einmaliges Quit-Signal für den Smoke-Test / Headless path: one-time quit signal for smoke test
         if (_headless && !_headlessEventFired)
         {
@@ -144,6 +198,36 @@ public class MsgClsApp : TApplication
         }
 
         base.GetEvent(out @event);
+    }
+
+    private void ShowDescription()
+    {
+        if (Desktop is null)
+        {
+            return;
+        }
+
+        if (_descriptionView?.Owner == Desktop)
+        {
+            Desktop.Remove(_descriptionView);
+        }
+
+        _descriptionView = Wave1Runtime.CreateDescriptionWindow(Desktop, "MsgCls", DescriptionText);
+        if (_descriptionView is null)
+        {
+            return;
+        }
+
+        Desktop.Insert(_descriptionView);
+        LastVisibleComponentKind = "TWindow";
+        LastVisibleRegion = Wave1Runtime.ScreenRegion(Desktop, _descriptionView);
+        SetStatus("description visible");
+    }
+
+    private void SetStatus(string state)
+    {
+        LastStatusMessage = Wave1Runtime.Status("MsgCls", state);
+        Wave1Runtime.SetStatus(StatusLine, LastStatusMessage);
     }
 
     #region Lösung Übung 2 – Nachrichten in Datei speichern / Solution Exercise 2 – Persist messages to file

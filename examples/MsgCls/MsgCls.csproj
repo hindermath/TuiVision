@@ -5,6 +5,7 @@
     <AssemblyName>MsgCls</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\Shared\Wave1Runtime.cs" Link="Wave1Runtime.cs" />
     <ProjectReference Include="..\..\src\TuiVision.Core\TuiVision.Core.csproj" />
     <ProjectReference Include="..\..\src\TuiVision.Controls\TuiVision.Controls.csproj" />
     <ProjectReference Include="..\..\src\TuiVision.Drivers.Console\TuiVision.Drivers.Console.csproj" />

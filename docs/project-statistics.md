@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-07-11 (aktualisiert einschließlich der vollständigen `/speckit-implement`-Lieferung für `016-secure-development-hardening`, Governance v0.6/v0.5/v0.2/v0.4/v0.2/v0.3, Security-/Supply-Chain-Nachweisen, Script-Parität, Release-/Coverage-Validierung, Agent-Parität, Lastenheft-Archivierung und aktuellem Repository-Snapshot)
+Stand: 2026-07-11 (aktualisiert einschließlich der Implementierung von `017-wave1-visual-component-remediation`, der 20-Zeilen-Visual-Matrix, 101 Example-Smokes, synchronisierter Agent-Guidance und aktuellem Vorvalidierungs-Snapshot)
 
 Aktueller Zusatz: Feature 016 dokumentiert 157/157 Secure-Development-
 Kontrollen, sechs behobene Medium-Funde, 498/498 grüne Release-Tests und eine
@@ -616,6 +616,8 @@ fortgeschrieben.
 | 2026-07-11 | PR-#33-Windows-CI-Nacharbeit fuer `016-secure-development-hardening` | Beide Windows-2022-Homogeneity-Jobs zeigten denselben plattformspezifischen Contract-Harness-Fehler: Git Bash übergab den MSYS-Pfad `/d/...` an Windows PowerShell, sodass `Get-Help` und nachfolgende `-File`-Aufrufe das Skript nicht auflösen konnten. Der Harness normalisiert deshalb ausschließlich unter `OS=Windows_NT` und vorhandenem `cygpath` den PowerShell-Pfad mit `cygpath -w`; macOS/Linux und die Produktionsskripte bleiben unverändert. Lokale Revalidierung: Bash-Syntax sauber und 18/18 Rename-Vertragsassertions grün; der erneute Windows-Matrixlauf bleibt Merge-Gate. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `+7` Test-Harness-Zeilen und `+3` Feature-Evidence-Zeilen. `Directory.Build.props` steht nach einem Testlauf und vor dem sechsten Branch-Commit auf `1.16.6.69`. |
 | 2026-07-11 | PR-#33-CI-/Review-Konvergenz fuer `016-secure-development-hardening` | Der erneute Lauf ist auf Ubuntu, macOS und Windows einschließlich Build/Test, DocFX, Supply Chain, Homogeneity, Gitleaks, Agent-Secret-Scan und Claude Review vollständig grün; beide korrigierten Windows-Jobs bestätigen den nativen PowerShell-Pfad. Der thread-aware Review-Abruf meldet 0 Review-Threads und 0 Konversationskommentare. Copilot konnte wegen ausgeschöpfter Nutzerquota keinen Review erzeugen und lieferte keinen Codefund; die erforderliche Human-Approval-Regel bleibt deshalb als einziger Merge-State-Block sichtbar. T146 ist abgeschlossen, `Directory.Build.props` steht für den siebten Branch-Commit ohne weiteren Testlauf auf `1.16.7.69`. |
 | 2026-07-11 | Post-Merge-Ledger-Abschluss fuer `016-secure-development-hardening` | PR #33 wurde nach vollständig grünen Schutzregeln und ohne actionable Review-Thread per autorisiertem Admin-Bypass ausschließlich über die nicht erfüllbare Human-Approval-Regel gemergt. Merge-Commit ist `5f22dbc`; der Remote-Featurebranch wurde gelöscht und der lokale saubere `main`-Stand entsprach danach exakt `origin/main`. T147/T148 werden deshalb kausal nach dem Merge in einem separaten Closeout-PR abgehakt. Der aktualisierte Snapshot enthält außerdem die während 016 unabhängig auf Remote-`main` gelieferte Antigravity-Migration; diese Fremdänderung wurde nicht durch 016 verändert. |
+| 2026-07-11 | `/speckit-implement` für `017-wave1-visual-component-remediation` | Die sichtbare zweite Stufe für Desklogo, MsgCls, alle 16 Tutorial-Token und Videomode wurde umgesetzt: reale Hauptkomponenten, echte `TStatusLine`, `Help -> Description`, app-loop-basierte View-/Buffer-Proofs und eine maschinenprüfbare 20-Zeilen-Matrix. Der Vorvalidierungs-Snapshot vor dieser Statistikzeile umfasst `+755/-38` Produktions-/Beispielcodezeilen, `+370/-10` Testzeilen, `+2427/-119` Dokumentations-/Evidence-/Guidance-Zeilen sowie `+8/-4` Metadatenzeilen, zusammen `+3560/-171` beziehungsweise `3389` Nettozeilen; Branch-Commitzahl aktuell `0`. Konservative Manualreferenz für 3560 hinzugefügte oder aktualisierte Zeilen: 80 Zeilen/Tag = `44,5` Tage beziehungsweise `347,1` Stunden; Thorsten-Solo-Referenz: 125 Zeilen/Tag = `28,5` Tage beziehungsweise `222,1` Stunden bei 7,8 Stunden pro Arbeitstag. Sichtbares Arbeitsfenster: eine autonome Spec-Kit-/Implementierungssitzung am 2026-07-11; `44,5x` und `28,5x` sind blended repository speedups, keine Stoppuhrmessung. Finaler Repository-, Coverage-, DocFX-/A11Y- und Remote-Abschluss folgt in derselben Feature-Evidence. |
+| 2026-07-11 | 017 Archiv- und Statistikabschluss vor Commit | `Lastenheft_Wave1-Visual-Component-Remediation.017-wave1-visual-component-remediation.md` ist über den PowerShell-Workflow archiviert. Der finale Snapshot vor dieser Ledger-Zeile umfasst `+764/-38` Produktions-/Beispielcode, `+370/-10` Tests, `+2535/-132` Dokumentation/Evidence/Guidance und `+8/-4` Metadaten, zusammen `+3677/-184` beziehungsweise `3493` Nettozeilen; Feature-Commitzahl vor T140 weiterhin `0`. Manualreferenz: `46,0` Tage beziehungsweise `358,5` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `29,4` Tage beziehungsweise `229,4` Stunden bei 125 Zeilen/Tag und 7,8 Stunden pro Tag. Das sichtbare Fenster bleibt eine autonome Sitzung; `46,0x` und `29,4x` sind blended repository speedups. |
 
 ## Gesamtstatistik
 
@@ -625,20 +627,20 @@ nächsten Statistiklauf eine dokumentierte Momentaufnahme.
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | 211816 Zeilen |
-| Produktions- und Testcode zusammen | 34813 Zeilen (16.4 %) |
-| Dokumentationsanteil | 177003 Zeilen (83.6 %) |
-| Spec-Kit-Anteil innerhalb der Doku | 38820 Zeilen (21.9 %) |
-| Governance-/Agent-Anteil innerhalb der Doku | 2246 Zeilen (1.3 %) |
+| Artefaktbasis gesamt | 215309 Zeilen |
+| Produktions- und Testcode zusammen | 35899 Zeilen (16.7 %) |
+| Dokumentationsanteil | 179410 Zeilen (83.3 %) |
+| Spec-Kit-Anteil innerhalb der Doku | 41002 Zeilen (22.9 %) |
+| Governance-/Agent-Anteil innerhalb der Doku | 2300 Zeilen (1.3 %) |
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-11 |
 | Git-Commits / sichtbare Aktivtage | 413 / 68 |
-| Gesamtzeilen pro sichtbarem Aktivtag | 3114.9 |
-| Gesamtzeilen pro Commit | 512.9 |
-| Konservative Einzelentwickler-Untergrenze | 2647.7 Arbeitstage / 20652.1 Stunden |
-| Thorsten-Solo-Untergrenze | 1694.5 Arbeitstage / 13217.3 Stunden |
-| Kleines 3er-Team mit Koordinationsaufschlag | 1059.1 Arbeitstage |
-| Repo-Speedup gegen 80-Zeilen-Referenz | 38.9x |
-| Repo-Speedup gegen Thorsten-Referenz | 24.9x |
+| Gesamtzeilen pro sichtbarem Aktivtag | 3166.3 |
+| Gesamtzeilen pro Commit | 521.3 |
+| Konservative Einzelentwickler-Untergrenze | 2691.4 Arbeitstage / 20992.9 Stunden |
+| Thorsten-Solo-Untergrenze | 1722.5 Arbeitstage / 13435.3 Stunden |
+| Kleines 3er-Team mit Koordinationsaufschlag | 1076.6 Arbeitstage |
+| Repo-Speedup gegen 80-Zeilen-Referenz | 39.6x |
+| Repo-Speedup gegen Thorsten-Referenz | 25.3x |
 
 Die hohe Dokumentationsquote enthält die umfangreiche Secure-Development-,
 Governance- und Spec-Kit-Basis. Feature 016 verbindet diese Kontrollbasis mit
@@ -656,9 +658,9 @@ measure personal working time.
 
 ```text
 Artefaktmix nach Snapshot (Zeilen)
-Produktion     | ###                           |  20766 |  9.8 %
-Tests          | ##                            |  14047 |  6.6 %
-Dokumentation  | ##############################| 177003 | 83.6 %
+Produktion     | ###                           |  21492 | 10.0 %
+Tests          | ##                            |  14407 |  6.7 %
+Dokumentation  | ##############################| 179410 | 83.3 %
 ```
 
 Die Balken verwenden dieselbe Skala. Die Zahlen bleiben der genaue,
@@ -688,15 +690,16 @@ Branch-/Phasenvolumen nach dokumentierter Netto-Basis (Zeilen)
 16 014i | #                    |   556
 17 015i | #                    |   283
 18 016i | ####                 |  2659
+19 017i | #####                |  3493
 ```
 
-Feature 016 ist größer als die beiden vorherigen Hardening-Nachläufe, weil die
-157 Kontrollentscheidungen, Evidence-Konsolidierung und Automation gemeinsam
-geliefert werden; der Produktionscode-Anteil bleibt klein.
+Feature 017 kombiniert einen kleinen beispielinternen Runtime-Anteil mit einer
+vergleichbar großen Spec-Kit-, Evidence-, Test- und Guide-Fläche. Die sichtbare
+Lieferung bleibt auf vier Wave-1-Apps und 16 Tutorial-Zustände begrenzt.
 
-Feature 016 is larger than the two preceding hardening passes because 157
-control decisions, evidence consolidation, and automation are delivered
-together; its production-code share remains small.
+Feature 017 combines a small example-internal runtime part with a similarly
+large Spec-Kit, evidence, test, and guide surface. Visible delivery remains
+limited to four Wave 1 apps and 16 Tutorial states.
 
 ```text
 Konservative Handarbeits-Referenz je dokumentierter Phase
@@ -719,6 +722,7 @@ Konservative Handarbeits-Referenz je dokumentierter Phase
 16 014i | #                    |   7.0 d
 17 015i | #                    |   3.5 d
 18 016i | ####                 |  33.2 d
+19 017i | #####                |  43.7 d
 ```
 
 Die Referenz rechnet den Netto-Phasenumfang mit 80 Zeilen pro Arbeitstag. Für
@@ -731,27 +735,29 @@ added or updated implementation lines.
 
 ```text
 Dokumentierte Beschleunigungsfaktoren durch agentische KI + Spec-Kit/SDD
-Repo 80 | ############################## | 38.9x
-Repo125 | ###################            | 24.9x
+Repo 80 | ############################## | 39.6x
+Repo125 | ###################            | 25.3x
 014i    | #####                          |  7.0x
 015i-80 | ####                           |  5.4x
 015i125 | ###                            |  3.4x
 016i-80 | ###################            | 24.2x
 016i125 | ############                   | 15.5x
+017i-80 | ############################## | 46.0x
+017i125 | ###################            | 29.4x
 ```
 
-Die 016-Werte beziehen sich auf einen sichtbaren autonomen Implementierungstag.
+Die 017-Werte beziehen sich auf einen sichtbaren autonomen Implementierungstag.
 Sie beschreiben Lieferdichte, nicht die Dauer einzelner Denk-, Review-, CI- oder
 Wartephasen.
 
-The 016 values use one visible autonomous implementation day. They describe
+The 017 values use one visible autonomous implementation day. They describe
 delivery density, not the duration of individual thinking, review, CI, or
 waiting phases.
 
 ```text
 Vergleich Gesamtaufwand / sichtbares KI-Lieferfenster
-Erfahren    | ############################## | 2647.7 d
-Thorsten    | ###################            | 1694.5 d
+Erfahren    | ############################## | 2691.4 d
+Thorsten    | ###################            | 1722.5 d
 KI sichtbar | #                              |   68.0 d
 ```
 
@@ -784,6 +790,7 @@ X/Y: Phasenvolumen 0..15 (Y ungefaehr in Zeilen)
 
 ```text
 X/Y: Phasenvolumen 16..31 (Y ungefaehr in Zeilen)
+3500 |      *                         |
 3000 |    *                           |
 1500 |                                |
  600 |*                               |
@@ -794,8 +801,8 @@ X/Y: Phasenvolumen 16..31 (Y ungefaehr in Zeilen)
       16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
 ```
 
-Die beiden Blöcke zeigen den Verlauf ohne eine zu breite Zeile. G, H und I
-stehen für die Phasen 16, 17 und 18; alle späteren Slots sind bewusst leer.
+Die beiden Blöcke zeigen den Verlauf ohne eine zu breite Zeile. G, H, I und J
+stehen für die Phasen 16 bis 19; alle späteren Slots sind bewusst leer.
 
-The two blocks show progression without an overly wide line. G, H, and I
-represent phases 16, 17, and 18; all later slots are intentionally empty.
+The two blocks show progression without an overly wide line. G, H, I, and J
+represent phases 16 through 19; all later slots are intentionally empty.

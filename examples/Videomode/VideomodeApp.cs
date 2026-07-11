@@ -3,6 +3,7 @@
 
 using TuiVision.Controls;
 using TuiVision.Core;
+using TuiVision.Examples.Shared;
 
 namespace TuiVision.Examples.Videomode;
 
@@ -15,10 +16,18 @@ namespace TuiVision.Examples.Videomode;
 /// </summary>
 public class VideomodeApp : TApplication
 {
+    /// <summary>Probe-/Wiederholungsbefehl. / Probe/retry command.</summary>
+    public const ushort CmProbe = 17031;
+
+    /// <summary>Help-Description-Befehl. / Help description command.</summary>
+    public const ushort CmDescription = 17032;
+
     // Headless-Modus für automatisierte Smoke-Tests.
     // Headless mode for automated smoke tests.
     private readonly bool _headless;
+    private readonly Queue<TEvent> _scriptedEvents = [];
     private bool _headlessEventFired;
+    private TView? _descriptionView;
 
     /// <summary>
     /// Initialisiert eine neue Instanz der <see cref="VideomodeApp"/>-Klasse.
@@ -55,14 +64,12 @@ public class VideomodeApp : TApplication
 
         View = new VideomodeView(viewBounds);
         Desktop?.Insert(View);
+        LastVisibleComponentKind = nameof(VideomodeView);
+        LastVisibleRegion = Desktop is null ? new TRect(0, 0, 0, 0) : Wave1Runtime.ScreenRegion(Desktop, View);
 
         // Übergangsversuch immer sofort ausführen und Ergebnis anzeigen (interaktiv und headless).
         // Always execute the transition attempt immediately and show the result (interactive and headless).
-        DisplayModeOutcome outcome = Coordinator.TryTransition(80, 25);
-        string message = outcome == DisplayModeOutcome.RealTransition
-            ? "Übergang erfolgreich / Transition successful"
-            : Coordinator.FallbackMessage;
-        View.ShowOutcome(outcome, message);
+        ApplyProbe();
     }
 
     /// <summary>
@@ -79,6 +86,66 @@ public class VideomodeApp : TApplication
     /// </summary>
     public VideomodeView View { get; }
 
+    /// <summary>Letzter kanonischer Ergebniszustand. / Latest canonical result state.</summary>
+    public string CanonicalResultState => Coordinator.LastResultState;
+
+    /// <summary>Letzter sichtbarer Komponententyp. / Last visible component type.</summary>
+    public string LastVisibleComponentKind { get; private set; }
+
+    /// <summary>Letzte stabile sichtbare Region. / Last stable visible region.</summary>
+    public TRect LastVisibleRegion { get; private set; }
+
+    /// <summary>Letzter Statuszeilentext. / Last status-line message.</summary>
+    public string LastStatusMessage { get; private set; } = string.Empty;
+
+    /// <summary>Text fuer Help -> Description. / Text for Help -> Description.</summary>
+    public string DescriptionText =>
+        "Videomode description: Die Anwendung prueft eine Terminalgroesse, meldet supported, fallback, rejected oder unchanged und behauptet keinen plattformweiten Moduswechsel. / " +
+        "The application probes a terminal size, reports supported, fallback, rejected, or unchanged, and does not claim a platform-wide mode switch.";
+
+    /// <summary>Fuegt deterministische App-Loop-Ereignisse hinzu. / Adds deterministic app-loop events.</summary>
+    public void QueueEvents(IEnumerable<TEvent> events)
+    {
+        foreach (TEvent @event in events)
+        {
+            _scriptedEvents.Enqueue(@event);
+        }
+    }
+
+    /// <inheritdoc />
+    protected override TMenuBar InitMenuBar(TRect bounds) => new(bounds)
+    {
+        Menu = new TMenuItem(
+            "~V~ideomode",
+            0,
+            Wave1Runtime.HelpMenu(CmDescription, new TMenuItem("~E~nde / E~x~it", ShellCommandIds.cmQuit)),
+            new TMenuItem("~P~ruefen / ~P~robe", CmProbe))
+    };
+
+    /// <inheritdoc />
+    protected override TStatusLine InitStatusLine(TRect bounds) =>
+        new Wave1StatusLine(bounds, Wave1Runtime.Status("Videomode", "probing"));
+
+    /// <inheritdoc />
+    public override void HandleEvent(TEvent @event)
+    {
+        if (@event.What == TEventKind.Command && @event.Message.Command == CmProbe)
+        {
+            ApplyProbe();
+            @event.Clear();
+            return;
+        }
+
+        if (@event.What == TEventKind.Command && @event.Message.Command == CmDescription)
+        {
+            ShowDescription();
+            @event.Clear();
+            return;
+        }
+
+        base.HandleEvent(@event);
+    }
+
     /// <summary>
     /// Ruft das nächste Ereignis ab.
     /// Im Headless-Modus wird beim ersten Aufruf ein Quit-Befehl zurückgegeben.
@@ -89,6 +156,12 @@ public class VideomodeApp : TApplication
     /// <param name="event">Das abgerufene Ereignis. / The retrieved event.</param>
     public override void GetEvent(out TEvent @event)
     {
+        if (_headless && _scriptedEvents.Count > 0)
+        {
+            @event = _scriptedEvents.Dequeue();
+            return;
+        }
+
         // Headless-Pfad: einmaliges Quit-Signal für den Smoke-Test / Headless path: one-time quit signal for smoke test
         if (_headless && !_headlessEventFired)
         {
@@ -98,6 +171,58 @@ public class VideomodeApp : TApplication
         }
 
         base.GetEvent(out @event);
+    }
+
+    private void ApplyProbe()
+    {
+        DisplayModeOutcome outcome = Coordinator.TryTransition(80, 25);
+        string state = Coordinator.LastResultState;
+        string message = state switch
+        {
+            "supported" => "Groessenwechsel unterstuetzt. / Resize supported.",
+            "unchanged" => "Zielgroesse bereits aktiv. / Target size already active.",
+            "rejected" => "Groessenwechsel wurde abgelehnt. / Resize was rejected.",
+            _ => Coordinator.FallbackMessage
+        };
+
+        View.ShowOutcome(outcome, message, state);
+        if (Desktop is not null)
+        {
+            LastVisibleRegion = Wave1Runtime.ScreenRegion(Desktop, View);
+        }
+
+        LastVisibleComponentKind = nameof(VideomodeView);
+        SetStatus(state);
+    }
+
+    private void ShowDescription()
+    {
+        if (Desktop is null)
+        {
+            return;
+        }
+
+        if (_descriptionView?.Owner == Desktop)
+        {
+            Desktop.Remove(_descriptionView);
+        }
+
+        _descriptionView = Wave1Runtime.CreateDescriptionWindow(Desktop, "Videomode", DescriptionText);
+        if (_descriptionView is null)
+        {
+            return;
+        }
+
+        Desktop.Insert(_descriptionView);
+        LastVisibleComponentKind = "TWindow";
+        LastVisibleRegion = Wave1Runtime.ScreenRegion(Desktop, _descriptionView);
+        SetStatus("description visible");
+    }
+
+    private void SetStatus(string state)
+    {
+        LastStatusMessage = Wave1Runtime.Status("Videomode", state);
+        Wave1Runtime.SetStatus(StatusLine, LastStatusMessage);
     }
 
     #region Lösung Übung 1 – Menüeintrag für Terminalgrößen / Solution Exercise 1 – Menu entry for terminal sizes

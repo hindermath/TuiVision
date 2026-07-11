@@ -18,8 +18,8 @@ The following four examples belong to the **first mandatory wave** (`007-port-wa
 They originate directly from the original folder `tv203s/contrib/tvision/examples/` and are
 not part of `TVDEMOS/` or `TVFM/`.
 
-`014-wave1-functional-hardening` ist der funktionale Nachweisnachlauf fuer diese
-vier Beispiele. Die primaere Beweismatrix liegt in
+`014-wave1-functional-hardening` ist der funktionale Nachweisnachlauf für diese
+vier Beispiele. Die primäre Beweismatrix liegt in
 `specs/014-wave1-functional-hardening/pr-evidence.md`. Sie dokumentiert die
 historischen Quellen, die aktuellen C#-Pfadentscheidungen, die Smoke-Nachweise,
 Helper-Klassifikationen und die Grenzen zu Wave-1-Visual-Remediation, Wave 3 und
@@ -32,23 +32,41 @@ historical sources, current C# path decisions, smoke proof, helper
 classifications, and the boundary to Wave-1 visual remediation, Wave 3, and
 Wave 4.
 
+`017-wave1-visual-component-remediation` schließt die sichtbare zweite Stufe ab.
+Jedes Wave-1-Beispiel besitzt nun eine reale Hauptkomponente, eine echte
+`TStatusLine` und den tastaturerreichbaren Pfad `Help -> Description`. Primäre
+Smokes führen `app.Run()` aus und verbinden konkreten Zustand, View-Typ und
+gerenderte Terminalzellen. Die 20-Zeilen-Matrix aus vier App- und 16
+Tutorial-Token-Zeilen liegt in
+`tests/TuiVision.Examples.SmokeTests/Wave1VisualSmokeMatrixTests.cs`; die
+Review-Evidence liegt in
+`specs/017-wave1-visual-component-remediation/pr-evidence.md`.
+
+`017-wave1-visual-component-remediation` completes the visible second stage.
+Every Wave 1 example now has a real main component, a real `TStatusLine`, and the
+keyboard-reachable `Help -> Description` path. Primary smokes run `app.Run()` and
+combine concrete state, view type, and rendered terminal cells. The 20-row
+matrix of four app and 16 Tutorial token rows is in
+`tests/TuiVision.Examples.SmokeTests/Wave1VisualSmokeMatrixTests.cs`; review
+evidence is in `specs/017-wave1-visual-component-remediation/pr-evidence.md`.
+
 | Verwalteter Name / Managed Name | Originalordner / Original Folder | Startbefehl / Launch Command | Pflichtunterstützung / Required Support Assets |
 |---|---|---|---|
-| `Desklogo` | `tv203s/contrib/tvision/examples/desklogo/` | `dotnet run --project examples/Desklogo` | `desklogo.cc` (Hauptprogramm / main program) **erforderlich**. `set-logo.cc` und `tv_logo.cc` sind Hilfswerkzeuge für Logo-Generierung — **nicht erforderlich** für die verwaltete Portierung, da das Logo als Zeichenkettenkonstante eingebettet ist. |
-| `MsgCls` | `tv203s/contrib/tvision/examples/msgcls/` | `dotnet run --project examples/MsgCls` | `testdyn.cpp` (Hauptprogramm / main program) mit `tlnmsg.cpp`/`tlnmsg.h` (Nachrichtenfenster-Klassen) **erforderlich** für vollständiges Broadcast-Routing. `readme.txt` — Dokumentation, **nicht erforderlich** als Laufzeitdatei. |
-| `Tutorial` | `tv203s/contrib/tvision/examples/tutorial/` | `dotnet run --project examples/Tutorial -- tvguid01` | `tvguid01.cc` bis `tvguid16.cc` (16 Lernschritte / 16 tutorial steps) **alle erforderlich** — jeder Schritt demonstriert ein eigenständiges Lernziel. Nur `.cc`-Dateien sind Scope; Build-Hilfsdateien (`.bmk`, `.mkf`, `.imk`, `.umk`, `.gpr`) **nicht erforderlich**. |
-| `Videomode` | `tv203s/contrib/tvision/examples/videomode/` | `dotnet run --project examples/Videomode` | `test.cc` (Hauptprogramm / main program) **erforderlich**. Keine weiteren Hilfswerkzeuge — **kein** externer Hilfscode erforderlich. |
+| `Desklogo` | `tv203s/contrib/tvision/examples/desklogo/` | `dotnet run --project examples/Desklogo` | Eingebettetes Logo, kontrolliertes Clipping, Status und Beschreibung. `set-logo.cc` und `tv_logo.cc` bleiben read-only Generator-Kontext. |
+| `MsgCls` | `tv203s/contrib/tvision/examples/msgcls/` | `dotnet run --project examples/MsgCls` | Sichtbarer Command-/Broadcast-Pfad mit wiederholbaren Nachrichten, Status und Beschreibung; `testdyn.cpp`, `tlnmsg.cpp` und `tlnmsg.h` bleiben Absichtsreferenz. |
+| `Tutorial` | `tv203s/contrib/tvision/examples/tutorial/` | `dotnet run --project examples/Tutorial -- tvguid01` | 16 eindeutige repräsentative Komponenten/Zustände mit Aktion, Status und Beschreibung; `tvguid01.cc` bis `tvguid16.cc` bleiben read-only Referenz. |
+| `Videomode` | `tv203s/contrib/tvision/examples/videomode/` | `dotnet run --project examples/Videomode` | Sichtbare Probe/Wiederholung mit `supported`, `fallback`, `rejected` oder `unchanged`, Status und ehrlicher Plattformbeschreibung. |
 
 ---
 
 ## Wave-2-Beispiele / Wave 2 Examples
 
-Die folgenden elf Beispiele gehoeren zur **zweiten Pflicht-Welle**
+Die folgenden elf Beispiele gehören zur **zweiten Pflicht-Welle**
 (`011-port-wave2-examples`) und sind durch `012-interactive-wave2-demos`
-interaktiv nachpoliert. `013-wave2-visual-component-remediation` ergaenzt den
+interaktiv nachpoliert. `013-wave2-visual-component-remediation` ergänzt den
 strengeren sichtbaren Nachweis: Jedes Beispiel besitzt eine echte sichtbare
 Hauptkomponente, eine echte `TStatusLine`-Rueckmeldung und den einheitlichen
-Pfad `Help -> Description`. Die primaeren Smokes pruefen `app.Run()`, konkrete
+Pfad `Help -> Description`. Die primären Smokes prüfen `app.Run()`, konkrete
 Zustaende, View-Baum-Typen und gerenderte Buffer-Regionen.
 
 The following eleven examples belong to the **second mandatory wave**
@@ -61,10 +79,10 @@ buffer regions.
 
 | Verwalteter Name / Managed Name | Originalordner / Original Folder | Startbefehl / Launch Command | Pflichtunterstuetzung / Required Support Assets |
 |---|---|---|---|
-| `Clipboard` | `tv203s/contrib/tvision/examples/clipboard/` | `dotnet run --project examples/Clipboard` | Sichtbare `TInputLine`, Statuszeile und `Help -> Description` fuer Copy, Cut, Paste und Unavailable. |
-| `Demo` | `tv203s/contrib/tvision/examples/demo/` | `dotnet run --project examples/Demo` | Sichtbare `TDialog`/`TWindow`-Familien fuer Controls/Dialog/Gadget, Datei-/Pfadmetadaten und Farb-/Displayauswahl; Welle-3/4 bleibt ausser Scope. |
+| `Clipboard` | `tv203s/contrib/tvision/examples/clipboard/` | `dotnet run --project examples/Clipboard` | Sichtbare `TInputLine`, Statuszeile und `Help -> Description` für Copy, Cut, Paste und Unavailable. |
+| `Demo` | `tv203s/contrib/tvision/examples/demo/` | `dotnet run --project examples/Demo` | Sichtbare `TDialog`/`TWindow`-Familien für Controls/Dialog/Gadget, Datei-/Pfadmetadaten und Farb-/Displayauswahl; Welle 3/4 bleibt außer Scope. |
 | `DlgDsn` | `tv203s/contrib/tvision/examples/dlgdsn/` | `dotnet run --project examples/DlgDsn` | Sichtbare Runtime-Dialoge und Rejection-Dialoge; Fixtures bleiben unter `examples/DlgDsn/Fixtures/`. |
-| `DynTxt` | `tv203s/contrib/tvision/examples/dyntxt/` | `dotnet run --project examples/DynTxt` | Sichtbare `TStaticText`-Hauptkomponente fuer Short, Long und Constrained. |
+| `DynTxt` | `tv203s/contrib/tvision/examples/dyntxt/` | `dotnet run --project examples/DynTxt` | Sichtbare `TStaticText`-Hauptkomponente für Short, Long und Constrained. |
 | `InpLis` | `tv203s/contrib/tvision/examples/inplis/` | `dotnet run --project examples/InpLis` | Sichtbarer Dialog mit Liste, Eingabe, session-only History, Grenzen und leeren Listen. |
 | `ListVi` | `tv203s/contrib/tvision/examples/listvi/` | `dotnet run --project examples/ListVi` | Sichtbarer Listen-Dialog mit Auswahlbewegung, erster/letzter Grenze und leerer Liste. |
 | `ProgBa` | `tv203s/contrib/tvision/examples/progba/` | `dotnet run --project examples/ProgBa` | Sichtbarer `TProgressBar` bis Completed. |
