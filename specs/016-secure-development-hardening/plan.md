@@ -134,8 +134,8 @@ Pflichtenheft.md
 5. Implement the pinned CycloneDX local-tool path, dependency update configuration, immutable workflow pins, and bounded supply-chain checks.
 6. Harden both Lastenheft rename scripts and execute isolated parity tests before archiving this feature's binding Lastenheft.
 7. Route broad or human-only findings to complete `Open`/`FollowUp` rows; block on unresolved critical/high risk.
-8. Run formatting, package, SBOM, script, secret, full Release, coverage, DocFX, web-A11Y, artifact, and parity validations in dependency order.
-9. Update agent context, statistics, progress markers, archive state, and PR evidence; then run repeated Analyze until actionable-clean.
+8. Complete agent context, progress markers, archive state, and final statistics before generated-document validation so DocFX/web-A11Y sees the accepted documentation state.
+9. Run formatting, package, SBOM, script, secret, full Release, coverage, DocFX, web-A11Y, artifact, parity, and PR-evidence validation in dependency order; then run repeated Analyze until actionable-clean.
 
 Shared files such as `control-assessment.md`, `pr-evidence.md`, workflows, agent guidance, statistics, version metadata, and progress markers must be edited serially.
 

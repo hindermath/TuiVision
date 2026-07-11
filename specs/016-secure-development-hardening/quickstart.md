@@ -150,6 +150,13 @@ dotnet test TuiVision.sln --configuration Release \
 
 Verify each required assembly reaches at least 70% line coverage using the repository's canonical aggregation method.
 
+Before generated-document validation, complete all documentation-bearing
+metadata: synchronize affected agent context, move the `Pflichtenheft.md`
+next-step marker, archive the binding Lastenheft with commit-free mode, and
+write the final `docs/project-statistics.md` entry. This ordering ensures the
+DocFX/A11Y result covers the accepted documentation state rather than an
+earlier intermediate snapshot.
+
 Because `docs/security/` changes, run after another version increment if the DocFX command builds projects:
 
 ```bash
