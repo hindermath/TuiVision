@@ -169,8 +169,8 @@ agent guidance and delivery state.
 ## Phase 11: Authorized GitHub Delivery
 
 - [X] T129 Align version to `1.23.<branch-commit-count>.<build>` without incrementing Build
-- [ ] T130 Commit intentional implementation scope and record observed hash externally if self-referential
-- [ ] T131 Re-align version with bounded follow-up commit only if branch commit count requires it
+- [X] T130 Commit intentional implementation scope and record observed hash externally if self-referential
+- [X] T131 Re-align version with bounded follow-up commit only if branch commit count requires it
 - [ ] T132 Push `023-a11y-framework`
 - [ ] T133 Create ready PR from `pr-evidence.md`
 - [ ] T134 Monitor PR-context required checks, Claude/Copilot availability and GraphQL threads

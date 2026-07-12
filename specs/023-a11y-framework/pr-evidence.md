@@ -33,6 +33,10 @@
 | Validate | 1 | Pass | 24 targeted, 140 examples, 686 full; coverage/docs/A11Y green | Remote checks |
 | Deliver | 1 | Open | pending | PR/review/merge/sync |
 
+Primary implementation commit: `04bd2d6`. The bounded alignment commit closes
+task status and sets the pre-push version to the final two-commit branch count;
+its own hash remains external to avoid self-reference.
+
 `speckit-constitution` is unchanged because the accepted constitution already
 covers this feature. `speckit-taskstoissues` is `N/A`: one dependency-ordered
 feature PR is the authorized delivery unit.
