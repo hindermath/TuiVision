@@ -31,7 +31,7 @@ to the reviewed feature head without changing and invalidating that head.
 |---|---|
 | Merge commit | `8f50c07760f1622e4ff13ec055e2ad25cd433038` from PR #51 on 2026-07-12 |
 | Remote feature branch | Deleted and pruned |
-| Evidence-only closeout PR | Required because reviewed-head and post-merge facts are self-invalidating on the feature head; populate after creation |
+| Evidence-only closeout PR | Ready PR [#52](https://github.com/hindermath/TuiVision/pull/52); required because reviewed-head and post-merge facts are self-invalidating on the feature head |
 | Local `main` | Fast-forwarded after merge and before creating the closeout branch |
 | `HEAD == origin/main` | Pass at `8f50c07760f1622e4ff13ec055e2ad25cd433038` before closeout branch creation |
 | Working tree | Clean except the pre-named untracked closeout artifact before closeout branch creation |
@@ -45,4 +45,7 @@ to the reviewed feature head without changing and invalidating that head.
   and the narrow admin-bypass preconditions were verified.
 - T164 is complete through merge, remote branch deletion, prune, and synchronized
   local `main`.
-- T165-T166 remain open until the evidence-only closeout PR is created.
+- T165 is complete through non-empty evidence-only PR #52.
+- T166 is complete: the Feature-021 evidence record is ready for retrospective
+  evaluation and Home-Baseline handoff after PR #52 merges and local `main` is
+  synchronized again.

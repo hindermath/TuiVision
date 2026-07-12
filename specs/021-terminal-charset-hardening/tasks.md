@@ -204,8 +204,8 @@ are used where ownership could overlap.
 - [X] T162 Remediate every actionable remote finding with focused validation and record response/thread resolution
 - [X] T163 Use the authorized narrow admin bypass only after green required checks, zero actionable threads, and a sole human-approval block; record exact boundary
 - [X] T164 Merge with a merge commit, delete the remote feature branch, switch to local `main`, fetch/prune/pull fast-forward, and prove clean `HEAD == origin/main`
-- [ ] T165 Record post-merge facts through a non-empty evidence-only closeout PR using `specs/021-terminal-charset-hardening/closeout-evidence.md` only when causally necessary; otherwise document in the pre-merge ledger why none is needed
-- [ ] T166 Finish with synchronized clean `main` and a complete Feature-021 evidence record, ready for the separate retrospective and Home-Baseline handoff
+- [X] T165 Record post-merge facts through a non-empty evidence-only closeout PR using `specs/021-terminal-charset-hardening/closeout-evidence.md` only when causally necessary; otherwise document in the pre-merge ledger why none is needed
+- [X] T166 Finish with synchronized clean `main` and a complete Feature-021 evidence record, ready for the separate retrospective and Home-Baseline handoff
 
 ## Dependencies and Execution Order
 
