@@ -46,6 +46,7 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 18 | `Lastenheft_04_MouseSupportAndInteraction.020-mouse-support-interaction.md` | Weitere Anforderungen | archiviert oder abgeschlossen / archived or completed |
 | 19 | `Lastenheft_05_TerminalCharsetAndEmulation.021-terminal-charset-hardening.md` | Weitere Anforderungen | archiviert oder abgeschlossen / archived or completed |
 | 20 | `Lastenheft_08_TV203-FreeVision-Conformance-Audit.024-tv203-freevision-conformance-audit.md` | Framework-Konformitätsaudit | archiviert oder abgeschlossen / archived or completed |
+| 21 | `Lastenheft_09_Pre-Wave5-Conformance-Closure.md` | Pre-Wave-5-Konformitätsabschluss | nächster Intake / next intake |
 <!-- secure-development-hardening-order:end -->
 
 ## Verbindliche Folge vor Wave 5 / Binding Sequence Before Wave 5
