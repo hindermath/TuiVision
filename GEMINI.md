@@ -282,6 +282,14 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 - Historical Turbo Vision has no direct equivalent for the modern semantic A11Y contracts; relevant focus/menu/status sources are read-only intent context only.
 - After Feature 023 delivery, Wave 5 remains the next fachliche intake; do not start Feature 024 as part of this run.
 
+### 024-tv203-freevision-conformance-audit
+- Current implementation status: audit-only Feature 024 is complete; final evidence is in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`.
+- Borland documentation and `tv203s/` remain primary; official Free Vision commit `ffc03b34d8cafb85ddcf0686de1c5551601dacb2` is external secondary evidence only.
+- The exact inventory is 151 historical `.cc` rows, 119 maintained production `.cs` files, 176 exported public types, 16 domains, and 48 contracts.
+- Decisions are 13 `Aligned`, 34 `IntentionalModernization`, 1 `ConsciouslyOmitted`, 0 `BehavioralDrift`, and 0 `EvidenceGap`; Free Vision relations are recorded independently.
+- `Core025` and `ComponentData026` owner sets are empty, so no Feature 025 or 026 branch or PR may be created. `027-pre-wave5-conformance-closure` is the mandatory next intake and Wave 5 remains blocked.
+- No runtime, API, dependency, package, example, generated-output, or historical-source change entered 024; the external Free Vision worktree remains outside Git.
+
 
 ### Autonomous Red-Proof Completeness
 - Before the first red test batch, review imports, public XML docs, harness helpers, focus/ownership assertions, and linked-source assembly identity.
@@ -380,6 +388,8 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 - Embedded/source-controlled learning content and test-owned temporary files only (019-wave3-visual-component-porting)
 - C# 14 on .NET 10 + Existing `TuiVision.Core`, `TuiVision.Drivers.Console`, `TuiVision.Controls`, and reviewed `TuiVision.Compatibility` key translation; no new packages (021-terminal-charset-hardening)
 - In-memory session/history state plus source-controlled JSON and raw 8x16 fixtures (021-terminal-charset-hardening)
+- C# / .NET 10 for durable test-only validation; Markdown and JSON for evidence + existing framework assemblies, MSTest, `System.Text.Json`, Git, official pinned FPC source checkout (024-tv203-freevision-conformance-audit)
+- repository-owned JSON and Markdown evidence; external Free Vision worktree under `/tmp`, never tracked (024-tv203-freevision-conformance-audit)
 
 ### 007-port-wave1-examples
 - Current status: Wave 1 delivered (2026-03-28). `desklogo`, `msgcls`, `tutorial` (16 steps), `videomode` are ported, smoke-tested, and guide-documented.
@@ -726,7 +736,7 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read
-`specs/018-editor-help-resources-hardening/plan.md`.
+`specs/024-tv203-freevision-conformance-audit/plan.md`.
 <!-- SPECKIT END -->
 
 ## Hinweise / Notes

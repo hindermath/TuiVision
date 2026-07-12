@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-07-12 (aktualisiert einschließlich Intake-Vorbereitung für Feature 024)
+Stand: 2026-07-12 (aktualisiert einschließlich Konformitätsaudit Feature 024)
 
 Aktueller Zusatz: Feature 016 dokumentiert 157/157 Secure-Development-
 Kontrollen, sechs behobene Medium-Funde, 498/498 grüne Release-Tests und eine
@@ -37,10 +37,11 @@ Google-Agentenoberfläche. Gemini CLI bleibt nur als historische oder ausdrückl
 benötigte Enterprise-/API-Kompatibilität dokumentiert; `GEMINI.md` und der
 Herstellerpfad `~/.gemini/antigravity-cli/` bleiben erhalten.
 
-Die Vorbereitung für Feature 024 stellt vor Wave 5 ein reines
-Framework-Konformitätsaudit. Borland und `tv203s/` bleiben primär; Free Vision
-wird nur am gepinnten offiziellen Commit als sekundäre Gegenprüfung verwendet.
-025 und 026 erhalten erst nach dem Audit einen nicht leeren Findings-Scope.
+Feature 024 schließt vor Wave 5 das reine Framework-Konformitätsaudit ab.
+Borland und `tv203s/` bleiben primär; Free Vision wird nur am gepinnten
+offiziellen Commit als sekundäre Gegenprüfung verwendet. Die geprüften
+Finding-Mengen für 025 und 026 sind leer. Feature 027 bleibt deshalb der nächste
+verpflichtende Closure-Lauf.
 
 ## Zweck und Pflege
 
@@ -677,6 +678,7 @@ fortgeschrieben.
 | 2026-07-12 | Öffentliches Preset in TuiVision adoptiert | `autonomous-run-governance` v0.1.0 wurde mit Priorität 70 aus dem veröffentlichten Tag-ZIP installiert und ergänzt die unveränderte Standard-Sechsermatrix. Der öffentliche Payload stimmt bytegenau mit der Installation überein; beide Commands sind auf Codex-, Claude-, Copilot- und OpenCode-Flächen jeweils eindeutig. Der vorhandene Codex-Orchestrierungs-Skill bleibt als einzelner lokaler Override erhalten, weil er zusätzliche TuiVision-Verträge für nummerierte Branches, Build-Zähler, DocFX/A11Y und historische Quellen trägt. Der Vor-Statistik-Snapshot umfasst `+1212/-0`, also 1212 Nettozeilen in Preset, Registry, generierten Agent-Flächen, Guidance, Template und Adoption-Evidence, ohne Runtime-, Test-, Paket-, Beispiel- oder `tv203s/`-Änderung. Konservative Manualreferenz: `15,2` Tage beziehungsweise `118,2` Stunden bei 80 hinzugefügten Zeilen/Tag; Thorsten-Solo: `9,7` Tage beziehungsweise `75,6` Stunden bei 125 Zeilen/Tag. `specify check`, siebenfaches Preset-Resolve, Payload-/Checksum-, Override-, Eindeutigkeits-, Agentenparitäts-, Diff-, Secret-, DocFX-, Playwright/Axe- und Lynx-Evidence bilden den Abschluss; `.NET`-Build, Tests und Coverage werden mangels ausführbarer Änderung nicht ausgelöst. |
 | 2026-07-12 | Antigravity-Folgeabgleich nach Preset-Adoption | Die aktiven Betriebsflächen verwenden jetzt `agy` statt direkter Gemini-CLI-Aufrufe: Installationspflicht, Agent-Kontextpflege, Multi-Mac-Guide und `agy/**`-CI-Branchfilter sind ausgerichtet; `gemini/**` bleibt ausdrücklich legacy-kompatibel. Alle fünf Agent-Dateien tragen dieselbe Übergangsregel. `GEMINI.md`, `~/.gemini/antigravity-cli/`, historische Specs und Ledger-Einträge sowie Enterprise-/Cloud-/API-Kompatibilität bleiben erhalten. Die Adoption-Evidence trennt reales Antigravity-Dogfooding von der historisch wahren v0.1.0-Gemini-Kompatibilitätsprüfung. Der Vor-Statistik-Snapshot umfasst `+75/-24`, also 51 Nettozeilen, davon 50 Markdown- und eine Workflow-Zeile; Runtime, Tests, Pakete, Beispiele, Preset-Payload und `tv203s/` bleiben unverändert. Konservative Manualreferenz für 75 hinzugefügte oder aktualisierte Zeilen: `0,9` Tage beziehungsweise `7,3` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `0,6` Tage beziehungsweise `4,7` Stunden bei 125 Zeilen/Tag. |
 | 2026-07-12 | Intake-Vorbereitung für `024-tv203-freevision-conformance-audit` | Das neue Lastenheft verankert ein reines Pre-Wave-5-Konformitätsaudit mit Borland/`tv203s` als Primärreferenz und dem gepinnten offiziellen Free-Vision-Commit nur als sekundärer Gegenprüfung. Die Reihenfolge wird auf 024, ausschließlich findings-basierte 025/026, das verpflichtende Closure 027 und danach Wave 5 ausgerichtet; veraltete aktive Verweise auf bereits archivierte 018–023-Lastenhefte werden korrigiert. Der Vor-Statistik-Snapshot umfasst `+402/-12`, also 390 Netto-Dokumentzeilen ohne Produktions-, Test-, Paket-, Beispiel-, Agent-, Preset- oder historische Source-Änderung. Konservative Manualreferenz für 402 hinzugefügte oder aktualisierte Zeilen: `5,0` Tage beziehungsweise `39,2` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `3,2` Tage beziehungsweise `25,1` Stunden bei 125 Zeilen/Tag. |
+| 2026-07-12 | `/speckit-autonomous` für `024-tv203-freevision-conformance-audit` | Feature 024 inventarisiert 151 historische `.cc`-Dateien, 119 gepflegte Produktionsdateien, 176 exportierte öffentliche Typen und 48 Verträge in 16 Domänen. Die Primärentscheidungen sind 13 `Aligned`, 34 `IntentionalModernization`, 1 `ConsciouslyOmitted`, 0 `BehavioralDrift` und 0 `EvidenceGap`; 15 gepinnte Free-Vision-Quellen bleiben unabhängige Sekundärevidence. Damit sind die Finding-Mengen für 025 und 026 leer, während 027 als verpflichtender Closure-Lauf offen bleibt. Der Vor-Statistik-Snapshot umfasst `+0/-0` Produktionscode, `+528/-0` Tests und Testprojekt, `+9352/-17` Dokumentation/Evidence/Guidance sowie `+4/-4` Metadaten, zusammen `+9884/-21` beziehungsweise 9863 Nettozeilen. Konservative Manualreferenz für 9884 hinzugefügte oder aktualisierte Zeilen: `123,6` Tage beziehungsweise `963,7` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `79,1` Tage beziehungsweise `616,8` Stunden bei 125 Zeilen/Tag. Lokale Abnahme: Audit-Tests 11/11, Volltests 698/698, Coverage Core 90,45 %, Controls 83,89 %, Serialization 89,50 %, Compatibility 80,55 % und Drivers.Console 89,18 %. Produktcode, öffentliche API, Pakete, Beispiele, historische Quellen und der externe Free-Vision-Worktree bleiben unverändert. |
 
 ## Gesamtstatistik
 
@@ -686,21 +688,21 @@ nächsten Statistiklauf eine dokumentierte Momentaufnahme.
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | 238582 Zeilen |
-| Produktions- und Testcode zusammen | 45793 Zeilen (19.2 %) |
-| Dokumentationsanteil | 192789 Zeilen (80.8 %) |
-| Spec-Kit-Anteil innerhalb der Doku | 57692 Zeilen (29.9 %) |
-| Zentrale Governance-/Agent-Dateien | 3669 Zeilen (1.9 % der Doku) |
-| Projektgebundene Agent-Skills | 2485 Zeilen (1.3 % der Doku) |
+| Artefaktbasis gesamt | 248512 Zeilen |
+| Produktions- und Testcode zusammen | 46318 Zeilen (18.6 %) |
+| Dokumentationsanteil | 202194 Zeilen (81.4 %) |
+| Spec-Kit-Anteil innerhalb der Doku | 49761 Zeilen (24.6 %) |
+| Zentrale Governance-/Agent-Dateien | 3669 Zeilen (1.8 % der Doku) |
+| Projektgebundene Agent-Skills | 2485 Zeilen (1.2 % der Doku) |
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-12 |
-| Git-Commits / sichtbare Aktivtage | 477 / 69 |
-| Gesamtzeilen pro sichtbarem Aktivtag | 3457.7 |
-| Gesamtzeilen pro Commit | 500.2 |
-| Konservative Einzelentwickler-Untergrenze | 2982.3 Arbeitstage / 23261.7 Stunden |
-| Thorsten-Solo-Untergrenze | 1908.7 Arbeitstage / 14887.5 Stunden |
-| Kleines 3er-Team mit Koordinationsaufschlag | 1192.9 Arbeitstage |
-| Repo-Speedup gegen 80-Zeilen-Referenz | 43.2x |
-| Repo-Speedup gegen Thorsten-Referenz | 27.7x |
+| Git-Commits / sichtbare Aktivtage | 485 / 69 |
+| Gesamtzeilen pro sichtbarem Aktivtag | 3601.6 |
+| Gesamtzeilen pro Commit | 512.4 |
+| Konservative Einzelentwickler-Untergrenze | 3106.4 Arbeitstage / 24229.9 Stunden |
+| Thorsten-Solo-Untergrenze | 1988.1 Arbeitstage / 15507.1 Stunden |
+| Kleines 3er-Team mit Koordinationsaufschlag | 1242.6 Arbeitstage |
+| Repo-Speedup gegen 80-Zeilen-Referenz | 45.0x |
+| Repo-Speedup gegen Thorsten-Referenz | 28.8x |
 
 Die hohe Dokumentationsquote enthält die umfangreiche Secure-Development-,
 Governance- und Spec-Kit-Basis. Das autonome Runbook und der neue
@@ -723,9 +725,9 @@ personal time.
 
 ```text
 Artefaktmix nach Snapshot (Zeilen)
-Produktion     | ####                          |  27449 | 11.6 %
-Tests          | ###                           |  18344 |  7.7 %
-Dokumentation  | ##############################| 192789 | 80.8 %
+Produktion     | ####                          |  27449 | 11.0 %
+Tests          | ###                           |  18869 |  7.6 %
+Dokumentation  | ##############################| 202194 | 81.4 %
 ```
 
 Die Balken verwenden dieselbe Skala. Die Zahlen bleiben der genaue,
@@ -770,6 +772,7 @@ Branch-/Phasenvolumen nach dokumentierter Netto-Basis (Zeilen)
 31 adopt| ##                   |  1212
 32 agy  | #                    |    51
 33 024p | #                    |   390
+34 024i | ################     |  9863
 ```
 
 Feature 017 kombiniert einen kleinen beispielinternen Runtime-Anteil mit einer
@@ -821,6 +824,15 @@ ohne bereits Remediation oder Wave-5-Verhalten zu implementieren.
 The 024 intake preparation establishes the historical comparison and closure
 gate without implementing remediation or Wave-5 behavior.
 
+Feature 024 selbst liefert eine vollständige, maschinenprüfbare Vertragsmatrix
+und trennt Primärentscheidung, Free-Vision-Gegenprüfung und Finding-Routing. Die
+leeren Finding-Mengen verhindern bewusst inhaltslose Features 025 und 026.
+
+Feature 024 itself delivers a complete machine-verifiable contract matrix and
+keeps primary decisions, Free Vision corroboration, and finding routing
+separate. Empty finding sets intentionally suppress content-free Features 025
+and 026.
+
 ```text
 Konservative Handarbeits-Referenz je dokumentierter Phase
 0 main  | #################    | 127.6 d
@@ -857,6 +869,7 @@ Konservative Handarbeits-Referenz je dokumentierter Phase
 31 adopt| ##                   |  15.2 d
 32 agy  | #                    |   0.9 d
 33 024p | #                    |   4.9 d
+34 024i | #################### | 123.3 d
 ```
 
 Die Referenz rechnet den Netto-Phasenumfang mit 80 Zeilen pro Arbeitstag. Für
@@ -870,8 +883,8 @@ before statistics maintenance. The ledger also records added or updated lines.
 
 ```text
 Dokumentierte Beschleunigungsfaktoren durch agentische KI + Spec-Kit/SDD
-Repo 80 | ############################## | 43.1x
-Repo125 | ###################            | 27.6x
+Repo 80 | ############################## | 45.0x
+Repo125 | ###################            | 28.8x
 014i    | #####                          |  7.0x
 015i-80 | ####                           |  5.4x
 015i125 | ###                            |  3.4x
@@ -907,22 +920,24 @@ AGY-80  | #                              |  0.9x
 AGY125  | #                              |  0.6x
 024P-80 | ####                           |  5.0x
 024P125 | ###                            |  3.2x
+024I-80 | ############################## | 123.6x
+024I125 | ###################            | 79.1x
 ```
 
 Die 017-, AUTO-, 018-, 019-, 020-, 021-, 022-, 023-, ADOPT-, AGY- und
-024P-Werte
+024P- und 024I-Werte
 beziehen sich jeweils auf einen sichtbaren autonomen Arbeitstag. Sie
 beschreiben Lieferdichte, nicht die Dauer einzelner Denk-, Review-, CI- oder
 Wartephasen.
 
-The 017, AUTO, 018, 019, 020, 021, 022, 023, ADOPT, AGY, and 024P values each use one
+The 017, AUTO, 018, 019, 020, 021, 022, 023, ADOPT, AGY, 024P, and 024I values each use one
 visible autonomous workday. They describe delivery density, not the duration
 of individual thinking, review, CI, or waiting phases.
 
 ```text
 Vergleich Gesamtaufwand / sichtbares KI-Lieferfenster
-Erfahren    | ############################## | 2982.3 d
-Thorsten    | ###################            | 1908.7 d
+Erfahren    | ############################## | 3106.4 d
+Thorsten    | ###################            | 1988.1 d
 KI sichtbar | #                              |   69.0 d
 ```
 
@@ -985,18 +1000,20 @@ adoption.
 
 ```text
 X/Y: Phasenvolumen 32..47 (Y ungefähr in Zeilen)
- 400 |  *                             |
- 200 |                                |
-  50 |*                               |
-   0 |                                |
+10000 |    *                           |
+  400 |  *                             |
+  200 |                                |
+   50 |*                               |
+    0 |                                |
      +--------------------------------+
       W X Y Z a b c d e f g h i j k l
       32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
 ```
 
-W steht für den Antigravity-Folgeabgleich und X für die Intake-Vorbereitung des
-Konformitätsaudits; die übrigen Slots bleiben für spätere dokumentierte Phasen
-frei.
+W steht für den Antigravity-Folgeabgleich, X für die Intake-Vorbereitung und Y
+für die Implementierung des Konformitätsaudits; die übrigen Slots bleiben für
+spätere dokumentierte Phasen frei.
 
-W represents the Antigravity follow-up and X the conformance-audit intake
-preparation; the remaining slots stay free for later documented phases.
+W represents the Antigravity follow-up, X the conformance-audit intake
+preparation, and Y its implementation; the remaining slots stay free for later
+documented phases.

@@ -45,19 +45,22 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 17 | `Lastenheft_03_EditorHelpAndResourcesHardening.018-editor-help-resources-hardening.md` | Weitere Anforderungen | archiviert oder abgeschlossen / archived or completed |
 | 18 | `Lastenheft_04_MouseSupportAndInteraction.020-mouse-support-interaction.md` | Weitere Anforderungen | archiviert oder abgeschlossen / archived or completed |
 | 19 | `Lastenheft_05_TerminalCharsetAndEmulation.021-terminal-charset-hardening.md` | Weitere Anforderungen | archiviert oder abgeschlossen / archived or completed |
-| 20 | `Lastenheft_08_TV203-FreeVision-Conformance-Audit.md` | Framework-Konformitätsaudit | nächster Intake / next intake |
+| 20 | `Lastenheft_08_TV203-FreeVision-Conformance-Audit.024-tv203-freevision-conformance-audit.md` | Framework-Konformitätsaudit | archiviert oder abgeschlossen / archived or completed |
 <!-- secure-development-hardening-order:end -->
 
 ## Verbindliche Folge vor Wave 5 / Binding Sequence Before Wave 5
 
-1. `024-tv203-freevision-conformance-audit` führt das reine Audit aus.
-2. `025-core-runtime-conformance-hardening` entsteht nur aus nicht leeren,
-   akzeptierten Core-Findings des Audits.
-3. `026-component-data-conformance-hardening` entsteht nur aus nicht leeren,
-   akzeptierten Component-/Data-Findings des Audits.
-4. `027-pre-wave5-conformance-closure` prüft alle Findings und Gates erneut.
+1. `024-tv203-freevision-conformance-audit` ist mit 48 geprüften Verträgen und
+   ohne `BehavioralDrift`- oder `EvidenceGap`-Finding abgeschlossen.
+2. `025-core-runtime-conformance-hardening` wird nicht angelegt, weil die
+   akzeptierte Core-Finding-Menge leer ist.
+3. `026-component-data-conformance-hardening` wird nicht angelegt, weil die
+   akzeptierte Component-/Data-Finding-Menge leer ist.
+4. `027-pre-wave5-conformance-closure` ist der nächste verpflichtende Intake
+   und prüft Audit, Integration und Gates erneut.
 5. Wave 5 beginnt erst nach bestandenem Feature 027, voraussichtlich als
    Feature 028.
 
-*Feature 024 performs the audit. Features 025 and 026 exist only for accepted
-non-empty findings. Feature 027 closes the gate, and Wave 5 starts afterwards.*
+*Feature 024 completed 48 contract decisions without a drift or evidence-gap
+finding. Features 025 and 026 are therefore suppressed. Feature 027 is the next
+mandatory closure gate, and Wave 5 starts only afterwards.*

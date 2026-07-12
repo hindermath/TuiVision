@@ -20,8 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\TuiVision.Core\TuiVision.Core.csproj" />
+    <ProjectReference Include="..\..\src\TuiVision.Controls\TuiVision.Controls.csproj" />
     <ProjectReference Include="..\..\src\TuiVision.Compatibility\TuiVision.Compatibility.csproj" />
     <ProjectReference Include="..\..\src\TuiVision.Drivers.Console\TuiVision.Drivers.Console.csproj" />
+    <ProjectReference Include="..\..\src\TuiVision.Serialization\TuiVision.Serialization.csproj" />
   </ItemGroup>
 
   <ItemGroup>
