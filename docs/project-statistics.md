@@ -681,6 +681,7 @@ fortgeschrieben.
 | 2026-07-12 | `/speckit-autonomous` für `024-tv203-freevision-conformance-audit` | Feature 024 inventarisiert 151 historische `.cc`-Dateien, 119 gepflegte Produktionsdateien, 176 exportierte öffentliche Typen und 48 Verträge in 16 Domänen. Die Primärentscheidungen sind 13 `Aligned`, 34 `IntentionalModernization`, 1 `ConsciouslyOmitted`, 0 `BehavioralDrift` und 0 `EvidenceGap`; 15 gepinnte Free-Vision-Quellen bleiben unabhängige Sekundärevidence. Damit sind die Finding-Mengen für 025 und 026 leer, während 027 als verpflichtender Closure-Lauf offen bleibt. Der Vor-Statistik-Snapshot umfasst `+0/-0` Produktionscode, `+528/-0` Tests und Testprojekt, `+9352/-17` Dokumentation/Evidence/Guidance sowie `+4/-4` Metadaten, zusammen `+9884/-21` beziehungsweise 9863 Nettozeilen. Konservative Manualreferenz für 9884 hinzugefügte oder aktualisierte Zeilen: `123,6` Tage beziehungsweise `963,7` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `79,1` Tage beziehungsweise `616,8` Stunden bei 125 Zeilen/Tag. Lokale Abnahme: Audit-Tests 11/11, Volltests 698/698, Coverage Core 90,45 %, Controls 83,89 %, Serialization 89,50 %, Compatibility 80,55 % und Drivers.Console 89,18 %. Produktcode, öffentliche API, Pakete, Beispiele, historische Quellen und der externe Free-Vision-Worktree bleiben unverändert. |
 | 2026-07-12 | Closeout und autonome Retrospektive nach Feature 024 | Feature-PR #62 wurde als `5c0a4d7` gemergt; der kausale Closeout-PR #63 blieb genau ein Evidence-Commit und wurde als `f3fd98f` gemergt. Beide PRs bestanden alle technischen Gates und Claude, Copilot blieb wegen Nutzerquota ein fehlender Review, GraphQL meldete null Threads und nur Human Approval erforderte den eng autorisierten Bypass. Der Closeout und diese Retrospektive umfassen einschließlich Statistikpflege `+113/-46`, also 67 Netto-Dokumentzeilen. Konservative Manualreferenz: `1,4` Tage beziehungsweise `11,0` Stunden bei 80 hinzugefügten Zeilen/Tag; Thorsten-Solo: `0,9` Tage beziehungsweise `7,1` Stunden bei 125 Zeilen/Tag. Home-Baseline-Commit `db2bd86` korrigiert den reproduzierten PowerShell-Error-Channel-Defekt; die portable Preset-Regel war bereits vorhanden. 132/132 Tasks sind abgeschlossen, 025/026 bleiben unterdrückt und 027 ist der nächste verpflichtende Intake. |
 | 2026-07-12 | Intake-Vorbereitung für `027-pre-wave5-conformance-closure` | Das audit-abgeleitete Lastenheft definiert den verpflichtenden Revalidation-, Integrations- und Release-Gate-Abschluss bei unverändertem Produkt-Scope. Es bindet 16 Domänen, 48 Contracts, 151/119/176 Inventare, 15 Free-Vision-Records, 94 Proof-Referenzen und die Entscheidungsmengen 13/34/1/0/0. Jede neue Drift stoppt Closure und öffnet zuerst eine reviewte Audit-Revision; leere 025-/026-Features bleiben verboten. Der gesamte Branch-Diff einschließlich Statistikpflege umfasst `+262/-19`, also 243 Netto-Dokumentzeilen. Konservative Manualreferenz: `3,3` Tage beziehungsweise `25,5` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `2,1` Tage beziehungsweise `16,3` Stunden bei 125 Zeilen/Tag. Wave 5 bleibt bis zum gemergten Feature 027 blockiert. |
+| 2026-07-12 | `/speckit-autonomous` für `027-pre-wave5-conformance-closure` | Feature 027 revalidiert den gemergten Auditstand exakt: 16 Domänen, 48 Contracts, Inventare 151/119/176, 15 gepinnte Free-Vision-Quellen, 94 Proof-Referenzen, Entscheidungen 13/34/1/0/0 und null Findings. 025/026 bleiben unterdrückt. Lokale Abnahme: Audit 11/11, Volltests 698/698, Coverage Core 90,45 %, Controls 83,89 %, Serialization 89,50 %, Compatibility 80,55 % und Drivers.Console 89,18 %, DocFX 0/0, Playwright/Axe 2/2, UTF-8-Lynx 4/4 und Secrets high 0. Der Vor-Statistik-Snapshot umfasst `+1155/-25`, also 1130 Nettozeilen ausschließlich in Spec-Kit-, Evidence-, Status-, Agent- und Versionsflächen. Konservative Manualreferenz für 1155 hinzugefügte oder aktualisierte Zeilen: `14,4` Tage beziehungsweise `112,6` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `9,2` Tage beziehungsweise `72,1` Stunden bei 125 Zeilen/Tag. Produktcode, API, Pakete, Beispiele und historische Quellen bleiben unverändert; der reviewte Merge ist die letzte Wave-5-Freigabegrenze. |
 
 ## Gesamtstatistik
 
@@ -690,21 +691,21 @@ nächsten Statistiklauf eine dokumentierte Momentaufnahme.
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | 248822 Zeilen |
-| Produktions- und Testcode zusammen | 46318 Zeilen (18.6 %) |
-| Dokumentationsanteil | 202504 Zeilen (81.4 %) |
-| Spec-Kit-Anteil innerhalb der Doku | 49785 Zeilen (24.6 %) |
-| Zentrale Governance-/Agent-Dateien | 3669 Zeilen (1.8 % der Doku) |
+| Artefaktbasis gesamt | 249959 Zeilen |
+| Produktions- und Testcode zusammen | 46318 Zeilen (18.5 %) |
+| Dokumentationsanteil | 203641 Zeilen (81.5 %) |
+| Spec-Kit-Anteil innerhalb der Doku | 50876 Zeilen (25.0 %) |
+| Zentrale Governance-/Agent-Dateien | 3704 Zeilen (1.8 % der Doku) |
 | Projektgebundene Agent-Skills | 2485 Zeilen (1.2 % der Doku) |
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-12 |
-| Git-Commits / sichtbare Aktivtage | 494 / 69 |
-| Gesamtzeilen pro sichtbarem Aktivtag | 3606.1 |
-| Gesamtzeilen pro Commit | 503.7 |
-| Konservative Einzelentwickler-Untergrenze | 3110.3 Arbeitstage / 24260.1 Stunden |
-| Thorsten-Solo-Untergrenze | 1990.6 Arbeitstage / 15526.5 Stunden |
-| Kleines 3er-Team mit Koordinationsaufschlag | 1244.1 Arbeitstage |
-| Repo-Speedup gegen 80-Zeilen-Referenz | 45.1x |
-| Repo-Speedup gegen Thorsten-Referenz | 28.8x |
+| Git-Commits / sichtbare Aktivtage | 498 / 69 |
+| Gesamtzeilen pro sichtbarem Aktivtag | 3622.6 |
+| Gesamtzeilen pro Commit | 501.9 |
+| Konservative Einzelentwickler-Untergrenze | 3124.5 Arbeitstage / 24371.0 Stunden |
+| Thorsten-Solo-Untergrenze | 1999.7 Arbeitstage / 15597.4 Stunden |
+| Kleines 3er-Team mit Koordinationsaufschlag | 1249.8 Arbeitstage |
+| Repo-Speedup gegen 80-Zeilen-Referenz | 45.3x |
+| Repo-Speedup gegen Thorsten-Referenz | 29.0x |
 
 Die hohe Dokumentationsquote enthält die umfangreiche Secure-Development-,
 Governance- und Spec-Kit-Basis. Das autonome Runbook und der neue
@@ -723,13 +724,17 @@ source-governed conformance gate before Wave 5 without pre-creating remediation
 scope. Speedups compare visible scope with Git active days and do not measure
 personal time.
 
+Feature 027 confirms that the merged audit remains stable and that every local
+release gate passes without product changes. This releases Wave 5 as the next
+domain intake only after the reviewed Feature-027 merge.
+
 ### ASCII-Diagramme
 
 ```text
 Artefaktmix nach Snapshot (Zeilen)
 Produktion     | ####                          |  27449 | 11.0 %
-Tests          | ###                           |  18869 |  7.6 %
-Dokumentation  | ##############################| 202504 | 81.4 %
+Tests          | ###                           |  18869 |  7.5 %
+Dokumentation  | ##############################| 203641 | 81.5 %
 ```
 
 Die Balken verwenden dieselbe Skala. Die Zahlen bleiben der genaue,
@@ -778,6 +783,7 @@ Branch-/Phasenvolumen nach dokumentierter Netto-Basis (Zeilen)
 35 024c | #                    |     8
 36 024r | #                    |    59
 37 027p | #                    |   243
+38 027i | ##                   |  1130
 ```
 
 Feature 017 kombiniert einen kleinen beispielinternen Runtime-Anteil mit einer
@@ -892,6 +898,7 @@ Konservative Handarbeits-Referenz je dokumentierter Phase
 35 024c | #                    |   0.1 d
 36 024r | #                    |   0.7 d
 37 027p | #                    |   3.0 d
+38 027i | ##                   |  14.4 d
 ```
 
 Die Referenz rechnet den Netto-Phasenumfang mit 80 Zeilen pro Arbeitstag. Für

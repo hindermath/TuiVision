@@ -9,18 +9,18 @@ revision.
 
 ## Phase 1: Setup and Evidence Foundation
 
-- [ ] T001 Verify clean branch `027-pre-wave5-conformance-closure`, `HEAD` ancestry from merged PR #65, and `.specify/feature.json` ownership; record in `specs/027-pre-wave5-conformance-closure/closure-evidence.md`
-- [ ] T002 Run `specify check` and record tool availability in `specs/027-pre-wave5-conformance-closure/closure-evidence.md`
-- [ ] T003 Run `.specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks` and record exact feature/task resolution in `specs/027-pre-wave5-conformance-closure/closure-evidence.md`
-- [ ] T004 Verify all four feature checklists have zero incomplete items and record that actual execution results are owned by `closure-evidence.md`
-- [ ] T005 Read AGENTS, Constitution, Lastenheft 09, all 027 artifacts, all 024 artifacts, and the archived Lastenheft 08; record the accepted source hierarchy
-- [ ] T006 Create `specs/027-pre-wave5-conformance-closure/closure-evidence.md` with identity, authority, baseline, revalidation, governance, validation, gate, delivery, resume, and retrospective sections
-- [ ] T007 Create `specs/027-pre-wave5-conformance-closure/pr-evidence.md` as the PR-facing summary that references `closure-evidence.md` without duplicating current-head facts
-- [ ] T008 Record explicit `MergeAndSync` authority, stop boundaries, no-empty 025/026 rule, causal closeout path, and narrow bypass boundary
-- [ ] T009 Record the seven resolved preset layers with exact versions and template composition results
-- [ ] T010 Record immutable protected-path baselines for `src/`, `examples/`, package/project metadata, `tv203s/`, `TVDEMOS/`, and `TVFM/`
-- [ ] T011 Record accepted post-audit evidence/status path classes and the Feature-024 product baseline SHA in `closure-evidence.md`
-- [ ] T012 Run first static `git diff --check`, checklist marker scan, and secret preflight; record results before validation commands
+- [X] T001 Verify clean branch `027-pre-wave5-conformance-closure`, `HEAD` ancestry from merged PR #65, and `.specify/feature.json` ownership; record in `specs/027-pre-wave5-conformance-closure/closure-evidence.md`
+- [X] T002 Run `specify check` and record tool availability in `specs/027-pre-wave5-conformance-closure/closure-evidence.md`
+- [X] T003 Run `.specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks` and record exact feature/task resolution in `specs/027-pre-wave5-conformance-closure/closure-evidence.md`
+- [X] T004 Verify all four feature checklists have zero incomplete items and record that actual execution results are owned by `closure-evidence.md`
+- [X] T005 Read AGENTS, Constitution, Lastenheft 09, all 027 artifacts, all 024 artifacts, and the archived Lastenheft 08; record the accepted source hierarchy
+- [X] T006 Create `specs/027-pre-wave5-conformance-closure/closure-evidence.md` with identity, authority, baseline, revalidation, governance, validation, gate, delivery, resume, and retrospective sections
+- [X] T007 Create `specs/027-pre-wave5-conformance-closure/pr-evidence.md` as the PR-facing summary that references `closure-evidence.md` without duplicating current-head facts
+- [X] T008 Record explicit `MergeAndSync` authority, stop boundaries, no-empty 025/026 rule, causal closeout path, and narrow bypass boundary
+- [X] T009 Record the seven resolved preset layers with exact versions and template composition results
+- [X] T010 Record immutable protected-path baselines for `src/`, `examples/`, package/project metadata, `tv203s/`, `TVDEMOS/`, and `TVFM/`
+- [X] T011 Record accepted post-audit evidence/status path classes and the Feature-024 product baseline SHA in `closure-evidence.md`
+- [X] T012 Run first static `git diff --check`, checklist marker scan, and secret preflight; record results before validation commands
 
 ---
 
@@ -32,24 +32,24 @@ findings, and owner sets on the closure head.
 **Independent Test**: Focused conformance evidence suite plus independent JSON,
 path, reflection, and protected-diff checks.
 
-- [ ] T013 Record Feature-024 run ID, schema identity, 16 domain IDs, and 48 contract IDs from `conformance-audit.json`
-- [ ] T014 Verify and record 151 unique historical items against `docs/porting-status.md`
-- [ ] T015 Verify and record 119 maintained production C# files against live tracked `src/` paths
-- [ ] T016 Verify and record 176 exported public types through the existing reflection-backed validator
-- [ ] T017 Verify and record 15 external Free Vision source records and pinned commit `ffc03b34d8cafb85ddcf0686de1c5551601dacb2`
-- [ ] T018 Verify and record all 94 concrete `path::method` proof references
-- [ ] T019 Verify primary decisions are exactly 13 `Aligned`, 34 `IntentionalModernization`, 1 `ConsciouslyOmitted`, 0 `BehavioralDrift`, and 0 `EvidenceGap`
-- [ ] T020 Verify Free Vision relations are exactly 22 `CorroboratesOriginal`, 10 `CorroboratesModernization`, 3 `DivergesFromOriginal`, and 13 `NotApplicable`
-- [ ] T021 Verify findings and `Core025`, `ComponentData026`, `AcceptedFollowUp`, and `ProductDecision` owner sets are exactly empty
-- [ ] T022 Verify no `specs/025-*`, `specs/026-*`, local/remote 025/026 branch, or open/merged 025/026 PR exists; record no-empty-work evidence
-- [ ] T023 Compare protected product and historical paths between Feature-024 product merge `5c0a4d7` and current head; classify every path or stop
-- [ ] T024 Verify post-audit changes are limited to evidence, closeout, retrospective, intake, specification, agent context, version, and statistics surfaces
-- [ ] T025 Revalidate the external Free Vision checkout hash when available; otherwise record the exact local provenance proof limit without fetching new source into Git
-- [ ] T026 Align `Directory.Build.props` to the current `1.27.<patch>.<build>` version and increment the manual build counter once before the focused test command
-- [ ] T027 Run focused Release `ConformanceAuditEvidenceTests` and record exact pass/fail/skip totals and version in `closure-evidence.md`
-- [ ] T028 Run independent `jq` cardinality queries and compare them with focused test results
-- [ ] T029 Mark baseline revalidation checks `Pass` only when all T013-T028 results agree; otherwise set Wave 5 `Blocked` and stop
-- [ ] T030 Mark the User Story 1 revalidation rows complete in `closure-evidence.md`
+- [X] T013 Record Feature-024 run ID, schema identity, 16 domain IDs, and 48 contract IDs from `conformance-audit.json`
+- [X] T014 Verify and record 151 unique historical items against `docs/porting-status.md`
+- [X] T015 Verify and record 119 maintained production C# files against live tracked `src/` paths
+- [X] T016 Verify and record 176 exported public types through the existing reflection-backed validator
+- [X] T017 Verify and record 15 external Free Vision source records and pinned commit `ffc03b34d8cafb85ddcf0686de1c5551601dacb2`
+- [X] T018 Verify and record all 94 concrete `path::method` proof references
+- [X] T019 Verify primary decisions are exactly 13 `Aligned`, 34 `IntentionalModernization`, 1 `ConsciouslyOmitted`, 0 `BehavioralDrift`, and 0 `EvidenceGap`
+- [X] T020 Verify Free Vision relations are exactly 22 `CorroboratesOriginal`, 10 `CorroboratesModernization`, 3 `DivergesFromOriginal`, and 13 `NotApplicable`
+- [X] T021 Verify findings and `Core025`, `ComponentData026`, `AcceptedFollowUp`, and `ProductDecision` owner sets are exactly empty
+- [X] T022 Verify no `specs/025-*`, `specs/026-*`, local/remote 025/026 branch, or open/merged 025/026 PR exists; record no-empty-work evidence
+- [X] T023 Compare protected product and historical paths between Feature-024 product merge `5c0a4d7` and current head; classify every path or stop
+- [X] T024 Verify post-audit changes are limited to evidence, closeout, retrospective, intake, specification, agent context, version, and statistics surfaces
+- [X] T025 Revalidate the external Free Vision checkout hash when available; otherwise record the exact local provenance proof limit without fetching new source into Git
+- [X] T026 Align `Directory.Build.props` to the current `1.27.<patch>.<build>` version and increment the manual build counter once before the focused test command
+- [X] T027 Run focused Release `ConformanceAuditEvidenceTests` and record exact pass/fail/skip totals and version in `closure-evidence.md`
+- [X] T028 Run independent `jq` cardinality queries and compare them with focused test results
+- [X] T029 Mark baseline revalidation checks `Pass` only when all T013-T028 results agree; otherwise set Wave 5 `Blocked` and stop
+- [X] T030 Mark the User Story 1 revalidation rows complete in `closure-evidence.md`
 
 ---
 
@@ -60,26 +60,26 @@ path, reflection, and protected-diff checks.
 **Independent Test**: Full Release, canonical coverage, documentation/A11Y,
 security, and protected-scope gates all pass.
 
-- [ ] T031 Run `git diff --check` after baseline evidence edits and record result
-- [ ] T032 Run `dotnet format --verify-no-changes --no-restore` and record result
-- [ ] T033 Align the numbered version and increment the manual build counter once before the full Release test command
-- [ ] T034 Run the full Release test suite in one explicit invocation and record project-level and total pass/fail/skip counts
-- [ ] T035 Validate `coverlet.runsettings` with `xmllint --noout` and record the gate assembly set
-- [ ] T036 Align the numbered version and increment the manual build counter once before the canonical coverage command
-- [ ] T037 Run the canonical Coverlet command in one explicit invocation and preserve only transient local result files
-- [ ] T038 Extract and record assembly-specific Core line coverage from its canonical report
-- [ ] T039 Extract and record assembly-specific Controls line coverage from its canonical report
-- [ ] T040 Extract and record assembly-specific Serialization line coverage from its canonical report
-- [ ] T041 Extract and record assembly-specific Compatibility line coverage from its canonical report
-- [ ] T042 Extract and record assembly-specific Drivers.Console line coverage from its canonical report
-- [ ] T043 Verify each required assembly is at least 70 percent and classify excluded example collector notices separately
-- [ ] T044 Run `docfx docfx.json` and record warning/error totals
-- [ ] T045 Run `tests/web-a11y` DocFX plus Playwright/Axe smoke and record page/test totals
-- [ ] T046 Run UTF-8 Lynx over landing, project statistics, retrospective, and representative API pages; record semantic text findings
-- [ ] T047 Run `scripts/scan-agent-secrets.sh --fail-on-high` and record high/medium/low boundaries
-- [ ] T048 Remove transient TestResults, DocFX, Playwright, and cache outputs; verify no generated output is tracked
-- [ ] T049 Re-run dependency, package, API, runtime, example, external-source, and historical-source diff scans and record exact empty protected sets
-- [ ] T050 Mark User Story 2 validation rows complete in `closure-evidence.md` only when T031-T049 pass
+- [X] T031 Run `git diff --check` after baseline evidence edits and record result
+- [X] T032 Run `dotnet format --verify-no-changes --no-restore` and record result
+- [X] T033 Align the numbered version and increment the manual build counter once before the full Release test command
+- [X] T034 Run the full Release test suite in one explicit invocation and record project-level and total pass/fail/skip counts
+- [X] T035 Validate `coverlet.runsettings` with `xmllint --noout` and record the gate assembly set
+- [X] T036 Align the numbered version and increment the manual build counter once before the canonical coverage command
+- [X] T037 Run the canonical Coverlet command in one explicit invocation and preserve only transient local result files
+- [X] T038 Extract and record assembly-specific Core line coverage from its canonical report
+- [X] T039 Extract and record assembly-specific Controls line coverage from its canonical report
+- [X] T040 Extract and record assembly-specific Serialization line coverage from its canonical report
+- [X] T041 Extract and record assembly-specific Compatibility line coverage from its canonical report
+- [X] T042 Extract and record assembly-specific Drivers.Console line coverage from its canonical report
+- [X] T043 Verify each required assembly is at least 70 percent and classify excluded example collector notices separately
+- [X] T044 Run `docfx docfx.json` and record warning/error totals
+- [X] T045 Run `tests/web-a11y` DocFX plus Playwright/Axe smoke and record page/test totals
+- [X] T046 Run UTF-8 Lynx over landing, project statistics, retrospective, and representative API pages; record semantic text findings
+- [X] T047 Run `scripts/scan-agent-secrets.sh --fail-on-high` and record high/medium/low boundaries
+- [X] T048 Remove transient TestResults, DocFX, Playwright, and cache outputs; verify no generated output is tracked
+- [X] T049 Re-run dependency, package, API, runtime, example, external-source, and historical-source diff scans and record exact empty protected sets
+- [X] T050 Mark User Story 2 validation rows complete in `closure-evidence.md` only when T031-T049 pass
 
 ---
 
@@ -90,21 +90,21 @@ security, and protected-scope gates all pass.
 **Independent Test**: All maintained status and agent surfaces agree, 025/026
 remain absent, and Wave 5 is named as the next eligible intake.
 
-- [ ] T051 Reconcile all `CL-027-*` checks with one result and complete owner, reviewer, date, residual-risk, follow-up, and re-evaluation fields
-- [ ] T052 Record final local gate decision `Passed` or `Blocked`; continue release tasks only for `Passed`
-- [ ] T053 Update `specs/024-tv203-freevision-conformance-audit/pre-wave5-gate.md` with the reviewed Feature-027 local closure state without rewriting 024 decisions
-- [ ] T054 Mark the Pre-Wave-5 Framework audit and hardening item complete in `Pflichtenheft.md`
-- [ ] T055 Update `Lastenheft_Abarbeitungsreihenfolge.md` to mark 027 completed and Wave 5 as the next eligible intake
-- [ ] T056 Replace planning context with completed Feature-027 context in `AGENTS.md`
-- [ ] T057 Apply the identical completed Feature-027 context to `CLAUDE.md`
-- [ ] T058 Apply the identical completed Feature-027 context to `GEMINI.md`
-- [ ] T059 Apply the identical completed Feature-027 context to `.github/copilot-instructions.md`
-- [ ] T060 Apply the identical completed Feature-027 context to `.github/agents/copilot-instructions.md`
-- [ ] T061 Verify byte-identical Feature-027 blocks across all five maintained agent surfaces
-- [ ] T062 Update `docs/project-statistics.md` with chronological 027 implementation evidence, final totals, diagrams, and CEFR-B2 explanations while keeping `Gesamtstatistik` last
-- [ ] T063 Prepare the bilingual PR summary, exact closure counts, non-triggered governance checks, residual risk, and Wave-5 release boundary in `pr-evidence.md`
-- [ ] T064 Archive `Lastenheft_09_Pre-Wave5-Conformance-Closure.md` with `bash scripts/rename-lastenheft.sh --no-commit Lastenheft_09_Pre-Wave5-Conformance-Closure.md 027-pre-wave5-conformance-closure` after local closure passes
-- [ ] T065 Mark User Story 3 and all local closure rows complete in `closure-evidence.md`, leaving remote, retrospective, and handoff rows open
+- [X] T051 Reconcile all `CL-027-*` checks with one result and complete owner, reviewer, date, residual-risk, follow-up, and re-evaluation fields
+- [X] T052 Record final local gate decision `Passed` or `Blocked`; continue release tasks only for `Passed`
+- [X] T053 Update `specs/024-tv203-freevision-conformance-audit/pre-wave5-gate.md` with the reviewed Feature-027 local closure state without rewriting 024 decisions
+- [X] T054 Mark the Pre-Wave-5 Framework audit and hardening item complete in `Pflichtenheft.md`
+- [X] T055 Update `Lastenheft_Abarbeitungsreihenfolge.md` to mark 027 completed and Wave 5 as the next eligible intake
+- [X] T056 Replace planning context with completed Feature-027 context in `AGENTS.md`
+- [X] T057 Apply the identical completed Feature-027 context to `CLAUDE.md`
+- [X] T058 Apply the identical completed Feature-027 context to `GEMINI.md`
+- [X] T059 Apply the identical completed Feature-027 context to `.github/copilot-instructions.md`
+- [X] T060 Apply the identical completed Feature-027 context to `.github/agents/copilot-instructions.md`
+- [X] T061 Verify byte-identical Feature-027 blocks across all five maintained agent surfaces
+- [X] T062 Update `docs/project-statistics.md` with chronological 027 implementation evidence, final totals, diagrams, and CEFR-B2 explanations while keeping `Gesamtstatistik` last
+- [X] T063 Prepare the bilingual PR summary, exact closure counts, non-triggered governance checks, residual risk, and Wave-5 release boundary in `pr-evidence.md`
+- [X] T064 Archive `Lastenheft_09_Pre-Wave5-Conformance-Closure.md` with `bash scripts/rename-lastenheft.sh --no-commit Lastenheft_09_Pre-Wave5-Conformance-Closure.md 027-pre-wave5-conformance-closure` after local closure passes
+- [X] T065 Mark User Story 3 and all local closure rows complete in `closure-evidence.md`, leaving remote, retrospective, and handoff rows open
 
 ---
 
@@ -112,13 +112,13 @@ remain absent, and Wave 5 is named as the next eligible intake.
 
 **Goal**: Deliver under explicit authority and complete reusable learning.
 
-- [ ] T066 Re-run `docfx docfx.json` after final published status changes and record 0-error result
-- [ ] T067 Re-run Playwright/Axe after the final DocFX regeneration and record result
-- [ ] T068 Re-run UTF-8 Lynx on all changed published pages and record result
-- [ ] T069 Re-run final secret, generated-output, protected-scope, dependency, API, example, and historical-source scans
-- [ ] T070 Re-run `git diff --check`, `dotnet format --verify-no-changes --no-restore`, checklist completeness, marker, and task-count checks
-- [ ] T071 Align `Directory.Build.props` to final pre-commit `1.27.<patch>.<build>` without incrementing build unless another explicit build/test ran
-- [ ] T072 Commit the complete local closure with the Constitution-required Copilot co-author trailer
+- [X] T066 Re-run `docfx docfx.json` after final published status changes and record 0-error result
+- [X] T067 Re-run Playwright/Axe after the final DocFX regeneration and record result
+- [X] T068 Re-run UTF-8 Lynx on all changed published pages and record result
+- [X] T069 Re-run final secret, generated-output, protected-scope, dependency, API, example, and historical-source scans
+- [X] T070 Re-run `git diff --check`, `dotnet format --verify-no-changes --no-restore`, checklist completeness, marker, and task-count checks
+- [X] T071 Align `Directory.Build.props` to final pre-commit `1.27.<patch>.<build>` without incrementing build unless another explicit build/test ran
+- [X] T072 Commit the complete local closure with the Constitution-required Copilot co-author trailer
 - [ ] T073 Push `027-pre-wave5-conformance-closure` and open the feature PR with `pr-evidence.md` summary
 - [ ] T074 Monitor PR-context technical checks to completion; classify duplicate push runs as operational noise
 - [ ] T075 Record Claude and Copilot availability honestly and inspect conversation comments

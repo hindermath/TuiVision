@@ -318,11 +318,11 @@ npm run test:docfx
 - No runtime, API, dependency, package, example, generated-output, or historical-source change entered 024; the external Free Vision worktree remains outside Git.
 
 ### 027-pre-wave5-conformance-closure
-- Current planning baseline: execute the mandatory closure from `specs/027-pre-wave5-conformance-closure/` and `Lastenheft_09_Pre-Wave5-Conformance-Closure.md`.
-- Revalidate the merged Feature-024 baseline exactly: 16 domains, 48 contracts, inventories 151/119/176, 15 external source records, 94 proof references, decisions 13/34/1/0/0, and zero findings.
-- Features 025 and 026 remain suppressed while their accepted owner sets are empty. Any new drift or evidence gap stops 027 and requires a reviewed audit revision; do not repair runtime behavior inside closure.
-- Run focused audit, full Release, five assembly coverage gates, format, DocFX/Axe/Lynx, secret, scope, and remote checks before releasing Wave 5.
-- No runtime, public API, dependency, package, example behavior, historical source, or Wave-5 implementation change is permitted. Wave 5 becomes the next intake only after 027 merges.
+- Current implementation status: the mandatory local closure is complete; final evidence is in `specs/027-pre-wave5-conformance-closure/closure-evidence.md`.
+- The merged Feature-024 baseline revalidated exactly: 16 domains, 48 contracts, inventories 151/119/176, 15 external source records, 94 proof references, decisions 13/34/1/0/0, and zero findings.
+- Features 025 and 026 remain suppressed because their accepted owner sets are empty. Any later drift or evidence gap requires a reviewed audit revision rather than an implicit runtime repair.
+- Focused audit, 698/698 full Release tests, all five coverage gates, format, DocFX/Axe/Lynx, secret, and protected-scope checks passed locally.
+- No runtime, public API, dependency, package, example behavior, historical source, or Wave-5 implementation change entered 027. Wave 5 is the next fachliche intake after the reviewed 027 merge.
 
 
 ### Autonomous Red-Proof Completeness
