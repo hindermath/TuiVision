@@ -100,3 +100,29 @@ Feature 021 must verify remote checks and threads before merge without
 invalidating that reviewed head through another feature commit. Tasks must name
 the single closeout evidence path before remote delivery. A script remains
 deferred until a stack-neutral deterministic detector is proven.
+
+## 022 Wave-4 Visual Component Porting
+
+**Feature:** `022-wave4-visual-component-porting`
+**Feature-PR:** [#53](https://github.com/hindermath/TuiVision/pull/53)
+**Closeout-PR:** [#54](https://github.com/hindermath/TuiVision/pull/54)
+
+| Beobachtung | Entscheidung | Umsetzung oder Grenze |
+|---|---|---|
+| Der Closeout blieb genau ein Evidence-Commit, weil seine eigene PR-URL, sein Checkstand und sein Merge nicht zurück in dieselbe Datei geschrieben wurden. Damit ist die in 020/021 entstandene Self-Invalidation-Grenze positiv bestätigt. | `RunbookClarification`, `SkillCorrection`, `TemplateCorrection`, `AgentPolicyCorrection`, `PresetFollowUp` mit `Promote` | Runbook, Skill, Tasks-/Evidence-Template und fünf Agentenflächen verlangen jetzt einen evidence-only, single-commit-fähigen Closeout ohne rekursive Selbstreferenz. Terminale Closeout-Fakten werden extern geprüft. |
+| Bei Feature- und Closeout-PR starteten Push und PR jeweils gleichartige Workflow-Sätze. Dasselbe Verhalten war bereits in 021 sichtbar. | `RunbookClarification`, `SkillCorrection`, `TemplateCorrection`, `AgentPolicyCorrection`, `PresetFollowUp` mit `Promote` | Der PR-Kontext ist der Delivery-Gate-Satz; Push-Duplikate werden als operatives Rauschen dokumentiert. Abbruch oder Workflow-Unterdrückung bleibt ohne expliziten sicheren Concurrency-Vertrag unzulässig. |
+| Der erste Coverage-Aufruf teilte den mehrteiligen Collector-Namen in zwei Argumente und stoppte vor Testausführung. | `PresetFollowUp` mit `ObserveAgain` | Noch keine neue Regel: Repository-Dokumentation und AGENTS nennen die korrekte Quotierung bereits. Feature 023 soll zeigen, ob Command-/Skill-Metadaten eine argv-sichere Darstellung benötigen. |
+| Die neutrale Wave-4-DTO-Matrix lief durch echte App-Loops, setzte aber den separaten Primary-Proof-Harness-Marker zunächst nicht. | `PresetFollowUp` mit `ObserveAgain` | Der Test wurde lokal mit einer konkreten View-Tree-App-Loop-Assertion korrigiert. Eine generische Harness-API-Änderung wartet auf einen zweiten unabhängigen Fund. |
+| Copilot war erneut wegen Nutzerquota nicht verfügbar; Claude, Pflichtchecks und null GraphQL-Threads ließen nur Human Approval offen. | `NoPromotion` | Die bestehende Review- und enge Admin-Bypass-Grenze funktionierte bei Feature- und Closeout-PR unverändert. |
+
+### Nächster Prüfschritt / Next Check
+
+Feature 023 prüft, ob Closeout weiterhin ohne Selbstreferenz in einem Commit
+bleibt und doppelte Workflow-Sätze korrekt klassifiziert werden. Coverage-argv
+und Primary-Proof-Marker bleiben Beobachtungen, bis ein zweiter Feldlauf ihre
+Verallgemeinerung rechtfertigt.
+
+Feature 023 verifies that closeout remains one commit without self-reference
+and that duplicate workflow sets are classified correctly. Coverage argv and
+the primary-proof marker remain observations until a second field run justifies
+promotion.

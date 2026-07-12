@@ -219,6 +219,14 @@ retrospective.
   onto that same feature branch when the commit would immediately invalidate
   the reviewed head and its claim. Route such self-invalidating facts and true
   post-merge facts to one named closeout evidence path.
+- Keep a causally required closeout evidence-only and single-commit-capable. Do
+  not require its own PR URL, reviewed-head result, or merge commit inside that
+  same repository file; verify those terminal facts externally so closeout does
+  not recurse or retrigger itself.
+- When both push and pull-request events start equivalent workflow sets, use the
+  pull-request-context result as the delivery gate and record duplicate runs as
+  operational noise. Do not cancel or suppress them unless the repository owns
+  an explicit safe workflow/concurrency contract.
 
 ## Validierungsmatrix / Validation Matrix
 
