@@ -263,6 +263,14 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Historical Turbo Vision has no direct equivalent for the modern semantic A11Y contracts; relevant focus/menu/status sources are read-only intent context only.
 - After Feature 023 delivery, Wave 5 remains the next fachliche intake; do not start Feature 024 as part of this run.
 
+### 024-tv203-freevision-conformance-audit
+- Current planning baseline: execute the audit-only feature from `specs/024-tv203-freevision-conformance-audit/` and `Lastenheft_08_TV203-FreeVision-Conformance-Audit.md`.
+- Borland documentation and `tv203s/` are primary historical intent; official Free Vision commit `ffc03b34d8cafb85ddcf0686de1c5551601dacb2` is external secondary evidence only and cannot override Borland.
+- Scope is inventory, contract decisions, source manifest, findings, pre-Wave-5 gate, evidence, and test-only completeness validation. No runtime, API, dependency, example, or historical-source change is permitted.
+- Every historical row, maintained source file, and exported public type gets unique inventory ownership; every contract gets exactly one primary decision and one Free Vision relation.
+- Only `BehavioralDrift` and `EvidenceGap` create findings. Features 025 and 026 exist only for non-empty accepted finding sets; Feature 027 is mandatory closure.
+- The external Free Vision worktree stays outside Git; no source, substantial excerpt, or mechanical translation enters the repository.
+
 
 ### Autonomous Red-Proof Completeness
 - Before the first red test batch, review imports, public XML docs, harness helpers, focus/ownership assertions, and linked-source assembly identity.
@@ -533,5 +541,5 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read
-`specs/018-editor-help-resources-hardening/plan.md`.
+`specs/024-tv203-freevision-conformance-audit/plan.md`.
 <!-- SPECKIT END -->
