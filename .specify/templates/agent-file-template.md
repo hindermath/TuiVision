@@ -69,5 +69,20 @@ build-counter, DocFX/A11Y, and historical-source contracts. The preset command,
 retrospective skill, project runbook, and adoption evidence remain the portable
 and shared proof surfaces.*
 
+## Antigravity-CLI-Übergang / Antigravity CLI Transition
+
+- Aktive Google-Agentenoberfläche ist Antigravity CLI mit Befehl `agy` und
+  Spec-Kit-Integration `agy`.
+- `GEMINI.md` und `~/.gemini/antigravity-cli/` bleiben
+  Antigravity-kompatible Oberflächen.
+- Direkte `gemini`-Befehle sind nur historische oder ausdrücklich benötigte
+  Enterprise-/API-Kompatibilität und keine lokale Pflicht.
+
+*The active Google agent surface is Antigravity CLI through the `agy` command
+and Spec Kit `agy` integration. `GEMINI.md` and
+`~/.gemini/antigravity-cli/` remain Antigravity-compatible surfaces. Direct
+`gemini` commands are historical or explicitly required enterprise/API
+compatibility, not a local requirement.*
+
 <!-- MANUAL ADDITIONS START -->
 <!-- MANUAL ADDITIONS END -->

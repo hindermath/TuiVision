@@ -109,7 +109,7 @@ Tests use MSTest. Test projects mirror source projects (e.g., `TuiVision.Core.Te
 
 ## Branching Convention
 
-Feature branches use either the agent-prefixed form `codex/<feature-description>` (or another supported agent prefix such as `claude/`, `gemini/`, `copilot/`, `opencode/`) or the numbered Spec-Kit form `NNN-short-description` when the Spec-Kit workflow creates the branch. CI runs on pushes to `main`, `master`, `codex/**`, `claude/**`, `gemini/**`, `opencode/**`, and `copilot/**` branches.
+Feature branches use either the agent-prefixed form `codex/<feature-description>` (or another supported agent prefix such as `claude/`, `agy/`, legacy-compatible `gemini/`, `copilot/`, `opencode/`) or the numbered Spec-Kit form `NNN-short-description` when the Spec-Kit workflow creates the branch. CI runs on pushes to `main`, `master`, `codex/**`, `claude/**`, `agy/**`, legacy-compatible `gemini/**`, `opencode/**`, and `copilot/**` branches.
 When a dedicated feature branch has implemented the requirements of a Lastenheft, rename that file to `Lastenheft_<topic>.<feature-branch>.md` so the delivered scope stays traceable.
 
 ## Active Feature Context
@@ -377,8 +377,8 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 ## Workflow Platforms
 
 - The Multi-Mac setup on `MacBook Air M2` and `Mac mini M4 Pro` is the primary development and day-to-day test workflow.
-- Keep `gh`, `specify`, `codex`, `claude`, `copilot`, and `gemini` installed on both Macs; before Spec-Kit work or Spec-Kit updates, run `specify check` to confirm the required toolchain is available.
-- After every `/speckit-plan` run or equivalent plan refresh that changes active technologies, project structure, or agent context, run `.specify/scripts/bash/update-agent-context.sh` for `codex`, `claude`, `gemini`, and `copilot` in the same work item by default. Treat this multi-agent context refresh as routine maintenance that does not need a separate user prompt.
+- Keep `gh`, `specify`, `codex`, `claude`, `copilot`, and `agy` installed on both Macs; before Spec-Kit work or Spec-Kit updates, run `specify check` to confirm the required toolchain is available.
+- After every `/speckit-plan` run or equivalent plan refresh that changes active technologies, project structure, or agent context, run `.specify/scripts/bash/update-agent-context.sh` for `codex`, `claude`, `agy`, and `copilot` in the same work item by default. Treat this multi-agent context refresh as routine maintenance that does not need a separate user prompt.
 - Linux and Windows are additional compatibility-validation environments; on Windows, prefer WSL with a current Ubuntu release, currently `Ubuntu 24.04`.
 - When changes affect runtime behavior, build reliability, terminal behavior, or portability, include Linux and Windows/WSL compatibility checks where practical and reflect them in CI or equivalent validation evidence when feasible.
 
@@ -544,6 +544,9 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 - Optional installiert: `autonomous-run-governance` v0.1.0 prio 70 aus dem öffentlichen Tag-ZIP. Der projektgebundene Codex-Skill `$speckit-autonomous` bleibt am selben eindeutigen Pfad als lokaler Override bestehen, weil er TuiVision-spezifische Nummerierungs-, Build-Zähler-, DocFX-/A11Y- und historische Source-Verträge ergänzt; Preset-Command, Retrospektiv-Skill, Runbook und Adoption-Evidence bleiben die portablen beziehungsweise gemeinsamen Nachweisflächen.
 
 *Optional installed preset: `autonomous-run-governance` v0.1.0 at priority 70 comes from the public tag ZIP. The project-owned Codex `$speckit-autonomous` skill stays at its single path as a local override because it adds TuiVision-specific numbering, build-counter, DocFX/A11Y, and historical-source contracts. The preset command, retrospective skill, runbook, and adoption evidence remain the portable or shared proof surfaces.*
+- Aktive Google-Agentenoberfläche ist Antigravity CLI mit Befehl `agy` und Spec-Kit-Integration `agy`. `GEMINI.md` und `~/.gemini/antigravity-cli/` bleiben Antigravity-kompatible Oberflächen; direkte `gemini`-Befehle sind nur historische oder ausdrücklich benötigte Enterprise-/API-Kompatibilität und keine lokale Pflicht.
+
+*The active Google agent surface is Antigravity CLI through the `agy` command and Spec Kit `agy` integration. `GEMINI.md` and `~/.gemini/antigravity-cli/` remain Antigravity-compatible surfaces; direct `gemini` commands are historical or explicitly required enterprise/API compatibility, not a local requirement.*
 - `a11y-governance` v0.4.0 ergaenzt didaktische Inline-Code-Kommentar-Governance fuer neue oder geaenderte nicht-triviale Logik.
 - `security-governance` v0.6.0 fuehrt `AI-SBOM` weiter als bedingt anwendbare Supply-Chain-Evidenz, ergaenzt sprachspezifische Secure-Coding-Profile und ergaenzt regulatorische Anwendbarkeit fuer NIS2, CRA, EU AI Act und DORA. Reine Entwicklungswerkzeug-Nutzung bleibt `N/A`; KI-Runtime-/Produktkomponenten benoetigen Evidenz nach G7/BSI AI-SBOM-Clustern; private Ausbildungsprojekte dokumentieren regulatorische Nichtanwendbarkeit mit kurzer Begruendung.
 - `architecture-governance` v0.5.0 ergaenzt `BSI C3A` als bedingte Cloud-Autonomie-Evidenz und `BSI C5` als bedingte Cloud-Compliance-Assurance-Evidenz fuer Cloud-Service-Auswahl, Provider-Abhaengigkeiten, Audit-/Nachweisstand, Shared Responsibility und Betriebsnachweise.

@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-07-12 (aktualisiert einschließlich öffentlicher Preset-Adoption)
+Stand: 2026-07-12 (aktualisiert einschließlich Antigravity-Folgeabgleich)
 
 Aktueller Zusatz: Feature 016 dokumentiert 157/157 Secure-Development-
 Kontrollen, sechs behobene Medium-Funde, 498/498 grüne Release-Tests und eine
@@ -31,6 +31,11 @@ Das aus sechs Feldläufen entstandene `autonomous-run-governance` v0.1.0 ist
 jetzt zusätzlich zu den sechs Standard-Presets aus dem öffentlichen Tag-ZIP
 installiert. Der TuiVision-spezifische Codex-Skill bleibt bis zur vollständigen
 portablen Parität als einzelner lokaler Override erhalten.
+
+Der begrenzte Folgeabgleich führt Antigravity CLI mit `agy` als aktive
+Google-Agentenoberfläche. Gemini CLI bleibt nur als historische oder ausdrücklich
+benötigte Enterprise-/API-Kompatibilität dokumentiert; `GEMINI.md` und der
+Herstellerpfad `~/.gemini/antigravity-cli/` bleiben erhalten.
 
 ## Zweck und Pflege
 
@@ -665,6 +670,7 @@ fortgeschrieben.
 | 2026-07-12 | `/speckit-autonomous` für `023-a11y-framework` | Feature 023 liefert opt-in `IAccessibleWidget`-Texte, genau einen typisierten und bis zur Shell propagierten Fokus-Broadcast, unveränderliche Shortcut-Abfragen für Menü und Status, explizites `TColorScheme.HighContrast`, eine vollständige siebenzeilige Tastaturinventur sowie die sichtbare `A11yFramework`-Referenz-App mit App-Loop-/Zustands-/View-/Cell-Proof. Der finale Vor-Statistik-Snapshot umfasst `+813/-27` Produktions-/Beispielcode, `+521/-0` Tests, `+1030/-1` Dokumentation/Evidence/Guidance und `+39/-5` Metadaten, zusammen `+2403/-33` beziehungsweise 2370 Nettozeilen. Konservative Manualreferenz für 2403 hinzugefügte oder aktualisierte Zeilen: `30,0` Tage beziehungsweise `234,3` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `19,2` Tage beziehungsweise `149,9` Stunden bei 125 Zeilen/Tag. Sichtbares Arbeitsfenster ist der autonome Lauf am 2026-07-12; `30,0x` und `19,2x` beschreiben Lieferdichte, keine Stoppuhrzeit. Lokale Abnahme: 24/24 Feature-Targets, 140/140 Beispiel-Smokes, final 687/687 Volltests, Coverage Core 90,45 %, Controls 83,89 %, Serialization 89,50 %, Compatibility 80,55 % und Drivers.Console 89,18 %, DocFX 0 Warnungen/0 Fehler, Playwright/Axe 2/2 sowie UTF-8-Lynx-Review. Native Plattform-Brücken und Vollmigration bleiben ehrliche Follow-ups; Wave 5 ist der nächste fachliche Intake, Feature 024 wurde nicht begonnen. |
 | 2026-07-12 | Closeout und autonome Retrospektive nach Feature 023 | Feature-PR #56 wurde als Merge `7f90fda` geliefert; der kausale Closeout-PR #57 blieb mit 72 Evidence-Zeilen genau ein Commit und wurde als `0437e3e` gemergt. Beide PRs bestanden Pflichtchecks und Claude; Copilot blieb wegen Nutzerquota ein fehlender Review, GraphQL meldete null Threads und nur Human Approval erforderte den eng autorisierten Admin-Bypass. Die Retrospektive ändert vor dieser Statistikzeile `+118/-6`, also 112 Nettozeilen in Runbook, Skill, Templates, Agentenflächen, Retrospektive und fail-closed Homogeneity-Wrappern. Konservative Manualreferenz: `1,5` Tage beziehungsweise `11,5` Stunden bei 80 hinzugefügten Zeilen/Tag; Thorsten-Solo: `0,9` Tage beziehungsweise `7,4` Stunden bei 125 Zeilen/Tag. Validierung: Skill-Schema, `specify check`, Preset-Matrix, Agentenparität, Diff und Secret-Scan grün; Bash- und PowerShell-Syntax bestanden, beide Wrapper liefern bei fehlenden Helpern erwartungsgemäß Exitcode 2 und laufen mit dem vollständigen Home-Baseline-Helfersatz ohne Abhängigkeitsfehler. DocFX bestand zweimal mit 0 Warnungen/0 Fehlern, Playwright/Axe 2/2 sowie drei UTF-8-Lynx-Seiten. Keine .NET-Ausführung wurde ausgelöst, weil keine C#-Runtime oder Tests betroffen sind. |
 | 2026-07-12 | Öffentliches Preset in TuiVision adoptiert | `autonomous-run-governance` v0.1.0 wurde mit Priorität 70 aus dem veröffentlichten Tag-ZIP installiert und ergänzt die unveränderte Standard-Sechsermatrix. Der öffentliche Payload stimmt bytegenau mit der Installation überein; beide Commands sind auf Codex-, Claude-, Copilot- und OpenCode-Flächen jeweils eindeutig. Der vorhandene Codex-Orchestrierungs-Skill bleibt als einzelner lokaler Override erhalten, weil er zusätzliche TuiVision-Verträge für nummerierte Branches, Build-Zähler, DocFX/A11Y und historische Quellen trägt. Der Vor-Statistik-Snapshot umfasst `+1212/-0`, also 1212 Nettozeilen in Preset, Registry, generierten Agent-Flächen, Guidance, Template und Adoption-Evidence, ohne Runtime-, Test-, Paket-, Beispiel- oder `tv203s/`-Änderung. Konservative Manualreferenz: `15,2` Tage beziehungsweise `118,2` Stunden bei 80 hinzugefügten Zeilen/Tag; Thorsten-Solo: `9,7` Tage beziehungsweise `75,6` Stunden bei 125 Zeilen/Tag. `specify check`, siebenfaches Preset-Resolve, Payload-/Checksum-, Override-, Eindeutigkeits-, Agentenparitäts-, Diff-, Secret-, DocFX-, Playwright/Axe- und Lynx-Evidence bilden den Abschluss; `.NET`-Build, Tests und Coverage werden mangels ausführbarer Änderung nicht ausgelöst. |
+| 2026-07-12 | Antigravity-Folgeabgleich nach Preset-Adoption | Die aktiven Betriebsflächen verwenden jetzt `agy` statt direkter Gemini-CLI-Aufrufe: Installationspflicht, Agent-Kontextpflege, Multi-Mac-Guide und `agy/**`-CI-Branchfilter sind ausgerichtet; `gemini/**` bleibt ausdrücklich legacy-kompatibel. Alle fünf Agent-Dateien tragen dieselbe Übergangsregel. `GEMINI.md`, `~/.gemini/antigravity-cli/`, historische Specs und Ledger-Einträge sowie Enterprise-/Cloud-/API-Kompatibilität bleiben erhalten. Die Adoption-Evidence trennt reales Antigravity-Dogfooding von der historisch wahren v0.1.0-Gemini-Kompatibilitätsprüfung. Der Vor-Statistik-Snapshot umfasst `+75/-24`, also 51 Nettozeilen, davon 50 Markdown- und eine Workflow-Zeile; Runtime, Tests, Pakete, Beispiele, Preset-Payload und `tv203s/` bleiben unverändert. Konservative Manualreferenz für 75 hinzugefügte oder aktualisierte Zeilen: `0,9` Tage beziehungsweise `7,3` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `0,6` Tage beziehungsweise `4,7` Stunden bei 125 Zeilen/Tag. |
 
 ## Gesamtstatistik
 
@@ -674,19 +680,19 @@ nächsten Statistiklauf eine dokumentierte Momentaufnahme.
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | 238109 Zeilen |
+| Artefaktbasis gesamt | 238192 Zeilen |
 | Produktions- und Testcode zusammen | 45793 Zeilen (19.2 %) |
-| Dokumentationsanteil | 192316 Zeilen (80.8 %) |
-| Spec-Kit-Anteil innerhalb der Doku | 57656 Zeilen (30.0 %) |
-| Zentrale Governance-/Agent-Dateien | 3654 Zeilen (1.9 % der Doku) |
+| Dokumentationsanteil | 192399 Zeilen (80.8 %) |
+| Spec-Kit-Anteil innerhalb der Doku | 57692 Zeilen (30.0 %) |
+| Zentrale Governance-/Agent-Dateien | 3669 Zeilen (1.9 % der Doku) |
 | Projektgebundene Agent-Skills | 2485 Zeilen (1.3 % der Doku) |
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-12 |
-| Git-Commits / sichtbare Aktivtage | 467 / 69 |
-| Gesamtzeilen pro sichtbarem Aktivtag | 3450.9 |
-| Gesamtzeilen pro Commit | 509.9 |
-| Konservative Einzelentwickler-Untergrenze | 2976.4 Arbeitstage / 23215.6 Stunden |
-| Thorsten-Solo-Untergrenze | 1904.9 Arbeitstage / 14858.0 Stunden |
-| Kleines 3er-Team mit Koordinationsaufschlag | 1190.6 Arbeitstage |
+| Git-Commits / sichtbare Aktivtage | 468 / 69 |
+| Gesamtzeilen pro sichtbarem Aktivtag | 3452.1 |
+| Gesamtzeilen pro Commit | 509.0 |
+| Konservative Einzelentwickler-Untergrenze | 2977.4 Arbeitstage / 23223.7 Stunden |
+| Thorsten-Solo-Untergrenze | 1905.5 Arbeitstage / 14863.2 Stunden |
+| Kleines 3er-Team mit Koordinationsaufschlag | 1191.0 Arbeitstage |
 | Repo-Speedup gegen 80-Zeilen-Referenz | 43.1x |
 | Repo-Speedup gegen Thorsten-Referenz | 27.6x |
 
@@ -711,7 +717,7 @@ active days and do not measure personal time.
 Artefaktmix nach Snapshot (Zeilen)
 Produktion     | ####                          |  27449 | 11.6 %
 Tests          | ###                           |  18344 |  7.7 %
-Dokumentation  | ##############################| 192316 | 80.8 %
+Dokumentation  | ##############################| 192399 | 80.8 %
 ```
 
 Die Balken verwenden dieselbe Skala. Die Zahlen bleiben der genaue,
@@ -754,6 +760,7 @@ Branch-/Phasenvolumen nach dokumentierter Netto-Basis (Zeilen)
 29 023c | #                    |    72
 30 023r | #                    |   112
 31 adopt| ##                   |  1212
+32 agy  | #                    |    51
 ```
 
 Feature 017 kombiniert einen kleinen beispielinternen Runtime-Anteil mit einer
@@ -793,6 +800,12 @@ siebte Schicht und hält den projektspezifischen Codex-Override bewusst fest.
 The adoption phase installs the publicly released preset as the seventh layer
 and intentionally retains the project-specific Codex override.
 
+Der Antigravity-Folgeabgleich richtet die aktiven Agenten- und CI-Flächen auf
+`agy` aus, ohne historische Gemini-Kompatibilität zu löschen.
+
+The Antigravity follow-up aligns active agent and CI surfaces with `agy`
+without deleting historical Gemini compatibility.
+
 ```text
 Konservative Handarbeits-Referenz je dokumentierter Phase
 0 main  | #################    | 127.6 d
@@ -827,6 +840,7 @@ Konservative Handarbeits-Referenz je dokumentierter Phase
 29 023c | #                    |   0.9 d
 30 023r | #                    |   1.4 d
 31 adopt| ##                   |  15.2 d
+32 agy  | #                    |   0.9 d
 ```
 
 Die Referenz rechnet den Netto-Phasenumfang mit 80 Zeilen pro Arbeitstag. Für
@@ -840,8 +854,8 @@ before statistics maintenance. The ledger also records added or updated lines.
 
 ```text
 Dokumentierte Beschleunigungsfaktoren durch agentische KI + Spec-Kit/SDD
-Repo 80 | ############################## | 42.9x
-Repo125 | ###################            | 27.5x
+Repo 80 | ############################## | 43.1x
+Repo125 | ###################            | 27.6x
 014i    | #####                          |  7.0x
 015i-80 | ####                           |  5.4x
 015i125 | ###                            |  3.4x
@@ -873,20 +887,23 @@ AUTO125 | ###                            |  5.0x
 023r125 | #                              |  0.9x
 ADOPT80 | ##########                     | 15.2x
 ADOPT125| ######                         |  9.7x
+AGY-80  | #                              |  0.9x
+AGY125  | #                              |  0.6x
 ```
 
-Die 017-, AUTO-, 018-, 019-, 020-, 021-, 022-, 023- und ADOPT-Werte beziehen
-sich jeweils auf einen sichtbaren autonomen Arbeitstag. Sie beschreiben
-Lieferdichte, nicht die Dauer einzelner Denk-, Review-, CI- oder Wartephasen.
+Die 017-, AUTO-, 018-, 019-, 020-, 021-, 022-, 023-, ADOPT- und AGY-Werte
+beziehen sich jeweils auf einen sichtbaren autonomen Arbeitstag. Sie
+beschreiben Lieferdichte, nicht die Dauer einzelner Denk-, Review-, CI- oder
+Wartephasen.
 
-The 017, AUTO, 018, 019, 020, 021, 022, 023, and ADOPT values each use one
+The 017, AUTO, 018, 019, 020, 021, 022, 023, ADOPT, and AGY values each use one
 visible autonomous workday. They describe delivery density, not the duration
 of individual thinking, review, CI, or waiting phases.
 
 ```text
 Vergleich Gesamtaufwand / sichtbares KI-Lieferfenster
-Erfahren    | ############################## | 2976.4 d
-Thorsten    | ###################            | 1904.9 d
+Erfahren    | ############################## | 2977.4 d
+Thorsten    | ###################            | 1905.5 d
 KI sichtbar | #                              |   69.0 d
 ```
 
@@ -901,10 +918,10 @@ to one another.
 ### X/Y-Verlauf
 
 Die X-Achse hat feste Slots. Nicht belegte zukünftige Phasen bleiben leer; der
-zweite Block hält bereits Platz bis Phase 31 frei.
+dritte Block hält bereits Platz bis Phase 47 frei.
 
-The X-axis uses fixed slots. Unused future phases stay blank; the second block
-already preserves space through phase 31.
+The X-axis uses fixed slots. Unused future phases stay blank; the third block
+already preserves space through phase 47.
 
 ```text
 X/Y: Phasenvolumen 0..15 (Y ungefähr in Zeilen)
@@ -946,3 +963,19 @@ represents Feature 021, P represents Feature 022, Q represents its closeout, R
 represents its retrospective, S represents Feature 023, T represents its
 closeout, U represents its retrospective, and V represents the public preset
 adoption.
+
+```text
+X/Y: Phasenvolumen 32..47 (Y ungefähr in Zeilen)
+ 100 |                                |
+  50 |*                               |
+   0 |                                |
+     +--------------------------------+
+      W X Y Z a b c d e f g h i j k l
+      32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+```
+
+W steht für den Antigravity-Folgeabgleich; die übrigen Slots bleiben für
+spätere dokumentierte Phasen frei.
+
+W represents the Antigravity follow-up; the remaining slots stay free for
+later documented phases.
