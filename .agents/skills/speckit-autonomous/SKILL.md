@@ -66,6 +66,14 @@ triggers, residual risks, review state, and follow-ups current during the run.
 - Deliver one representative vertical slice with its test and proof before
   spreading a repeated pattern.
 - Use test-first proof where a contract can fail observably.
+- Before the first red batch, check the complete compile surface: imports,
+  public XML docs, harness helpers, focus/ownership assertions, and linked-source
+  assembly identity.
+- Group independent negative cases into one bounded project-local red matrix
+  only when every expected failure remains explicit and ownership stays local.
+- Do not assume shared CLR type identity when one source file is linked into
+  multiple assemblies; prove through public contracts or state delegates, or
+  use one intentionally shared compiled assembly when the architecture allows.
 - Group tasks by independently reviewable outcome. Do not create one task per
   evidence cell when one bounded task can update a complete matrix slice.
 - Require every remote or delivery task to name the exact repository evidence

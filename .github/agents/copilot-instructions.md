@@ -101,6 +101,11 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - Mouse interaction, terminal/charset/font work, Wave 4, broad redesign, services, new dependencies, and runtime/product AI remain outside 019.
 - The next prioritized intake is `Lastenheft_04_MouseSupportAndInteraction.md`.
 
+### Autonomous Red-Proof Completeness
+- Before the first red test batch, review imports, public XML docs, harness helpers, focus/ownership assertions, and linked-source assembly identity.
+- Group independent negative cases only as a bounded project-local red matrix with explicit failure boundaries and shared ownership.
+- When source is linked into multiple assemblies, cross-project proof uses public contracts or state delegates and does not assume one CLR type identity.
+
   Groessere verpflichtende Beispielwellen sollen als zweistufiges Spec-Kit-
   Liefermuster geplant werden, wenn funktionale Portierung und interaktive
   Runtime-Politur sonst vermischt wuerden. Stufe 1 portiert das Verhalten,

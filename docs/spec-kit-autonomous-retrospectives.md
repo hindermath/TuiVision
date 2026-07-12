@@ -46,3 +46,30 @@ allgemeinen Ablaufvertrag werden.
 Feature 019 rechecks exact evidence paths on remote tasks and whether a grouped
 red proof can reduce build cycles without weakening test-first traceability.
 Only repeated evidence may promote that efficiency preference.
+
+## 019 Wave-3 Visual Component Porting
+
+**Feature:** `019-wave3-visual-component-porting`
+**Feature-PR:** [#45](https://github.com/hindermath/TuiVision/pull/45)
+**Closeout-PR:** [#46](https://github.com/hindermath/TuiVision/pull/46)
+
+| Beobachtung | Entscheidung | Umsetzung oder Grenze |
+|---|---|---|
+| Die gebündelten Help- sowie I18n/TvHc-Red-Matrizen lokalisierten die fehlenden Implementierungstypen mit je einem erwarteten Lauf und wurden danach mit je einem grünen Lauf geschlossen. Damit ist die 018-Beobachtung zum zweiten Mal bestätigt. | `RunbookClarification`, `SkillCorrection`, `TemplateCorrection`, `AgentPolicyCorrection`, `PresetFollowUp` mit `Promote` | Runbook, Skill, Task-Template und Agentenflächen erlauben vollständige projektlokale Red-Matrizen bei expliziten Einzelgrenzen und gemeinsamer Ownership. |
+| Der TvEdit-Slice lief vor vollständiger Prüfung von Imports, öffentlichen XML-Dokumentationen, Harness-Helfern sowie Fokus-/Ownership-Assertionen. Daraus entstanden vermeidbare Compile- und Harness-Zyklen. | `SkillCorrection`, `TemplateCorrection`, `PresetFollowUp` mit `Promote` | Vor dem ersten Red-Befehl ist jetzt ein Compile-Surface-Check Pflicht. Er ändert keine test-first-Reihenfolge, sondern vervollständigt den geplanten roten Vertrag. |
+| `Wave3Runtime.cs` wird in fünf Beispiel-Assemblies gelinkt. Der erste Matrix-Helfer behandelte die fünf Basistypkopien irrtümlich als eine CLR-Typidentität. | `RunbookClarification`, `SkillCorrection`, `TemplateCorrection`, `PresetFollowUp` mit `Promote` | Cross-Projekt-Proof nutzt bei mehrfach gelinktem Quellcode öffentliche Verträge oder Zustandsdelegaten. Eine gemeinsame Assembly ist nur bei bewusster Architekturentscheidung zulässig. |
+| Alle Remote-Tasks trugen den exakten 019-Evidence-Pfad; Resume und Closeout blieben eindeutig. | `NoPromotion` | Die in 018 sofort korrigierte Evidence-Regel ist im zweiten Lauf bestätigt und benötigt keine weitere lokale Änderung. |
+| Copilot war erneut wegen Nutzerquota nicht verfügbar; grüne Pflichtchecks, Claude und null GraphQL-Threads ließen nur Human Approval offen. | `NoPromotion` | Die vorhandene Bypass-Grenze funktionierte für Feature- und Closeout-PR ohne Ausweitung. |
+
+### Nächster Prüfschritt / Next Check
+
+Feature 020 prüft, ob der Compile-Surface-Check vor dem ersten Red-Lauf
+vollständig durchgeführt wird und ob gebündelte negative Fälle weiterhin
+weniger administrative Builds benötigen, ohne Fehlergrenzen oder Ownership zu
+verwischen. Die Linked-Source-Regel wird nur ausgelöst, wenn Feature 020 solche
+Quellen tatsächlich berührt.
+
+Feature 020 verifies that the compile-surface check happens before the first
+red batch and that grouped negative cases still reduce administrative builds
+without hiding failure boundaries or ownership. The linked-source rule is
+triggered only if Feature 020 actually touches such source composition.

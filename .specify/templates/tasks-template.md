@@ -35,6 +35,16 @@ description: "Task list template for feature implementation"
   per evidence cell when a bounded task can complete a coherent matrix slice.
 - Put a failing or missing proof before implementation when the contract is
   observable.
+- Before the first red test command, add a compile-surface review task covering
+  imports, public XML docs, harness helpers, focus/ownership assertions, and
+  linked-source assembly identity.
+- Group independent negative cases into a bounded project-local red matrix only
+  when each expected failure remains explicit and file/evidence ownership does
+  not cross the group boundary.
+- When source is linked into multiple assemblies, shape cross-project proof
+  around public contracts or state delegates instead of assuming shared CLR
+  type identity; use a shared compiled assembly only when the plan owns that
+  architecture decision.
 - Serialize tasks that write shared evidence, version, statistics, workflow,
   agent-guidance, or the same source/test file. Do not mark them `[P]`.
 - Add trigger-based validation tasks and an explicit rationale for every
