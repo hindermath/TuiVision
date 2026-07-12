@@ -162,10 +162,10 @@ stream, resource, help, compiler, and lookup classes.
 - [X] T093 Stage the intentional feature diff, verify no forbidden files, commit the complete 018 implementation with a Spec-Kit message, and record the commit in `specs/018-editor-help-resources-hardening/pr-evidence.md`
 - [X] T094 Recalculate the post-commit patch, align `Directory.Build.props` if required, commit version alignment only when the prior commit count changed the required value, and verify clean staged scope
 - [X] T095 Push `018-editor-help-resources-hardening` and create a ready feature PR using `pr-evidence.md` as the description source
-- [ ] T096 Monitor required CI, Claude/Copilot review availability, review comments, and GraphQL thread state to convergence; remediate actionable findings and record state in `specs/018-editor-help-resources-hardening/pr-evidence.md`
-- [ ] T097 Use the explicitly authorized narrow admin bypass only if all required checks are green, actionable threads are zero, and the sole remaining block is the human-approval rule; record the exact reason in `specs/018-editor-help-resources-hardening/pr-evidence.md`
-- [ ] T098 Merge with a merge commit, delete the remote feature branch, switch locally to `main`, fetch/prune/pull fast-forward, and prove clean `HEAD == origin/main`
-- [ ] T099 Record truthful post-merge facts in `specs/018-editor-help-resources-hardening/pr-evidence.md` through a non-empty closeout PR only if they could not be recorded before merge; otherwise explicitly record no closeout PR needed
+- [X] T096 Monitor required CI, Claude/Copilot review availability, review comments, and GraphQL thread state to convergence; remediate actionable findings and record state in `specs/018-editor-help-resources-hardening/pr-evidence.md`
+- [X] T097 Use the explicitly authorized narrow admin bypass only if all required checks are green, actionable threads are zero, and the sole remaining block is the human-approval rule; record the exact reason in `specs/018-editor-help-resources-hardening/pr-evidence.md`
+- [X] T098 Merge with a merge commit, delete the remote feature branch, switch locally to `main`, fetch/prune/pull fast-forward, and prove clean `HEAD == origin/main`
+- [X] T099 Record truthful post-merge facts in `specs/018-editor-help-resources-hardening/pr-evidence.md` through a non-empty closeout PR only if they could not be recorded before merge; otherwise explicitly record no closeout PR needed
 
 ## Dependencies and Story Order
 
