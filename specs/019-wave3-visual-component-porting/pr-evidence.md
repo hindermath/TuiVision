@@ -35,7 +35,7 @@ Home-Baseline package, adoption PRs, merge/sync, and a narrowly bounded admin by
 | Analyze | 2 | Pass | FR 32/32; CR 14/14; SC 13/13; tasks 109/109; remote paths 10/10; C/H/M 0 | None |
 | Implement | 1 | Closed | T001-T088 complete | Five examples, proof matrix, guides, governance, routing, and statistics complete |
 | Validate | 1 | Closed | T089-T098 complete | Diff, format, tests, coverage, DocFX/A11Y, lynx, secrets, hygiene, and archive pass |
-| Deliver | 1 | Open | Remote Delivery table | Run after local completion |
+| Deliver | 1 | Closed | Remote Delivery table | Feature PR merged and synchronized; closeout records causal post-merge facts |
 
 `speckit-taskstoissues` is `N/A`: one dependency-ordered feature PR is the
 accepted delivery unit; 109 remote issues would add state without proof value.
@@ -140,7 +140,7 @@ accepted delivery unit; 109 remote issues would add state without proof value.
 | SC-010 | [Generated Output Hygiene](#generated-output-hygiene) and final scope diff | Pass |
 | SC-011 | [Governance Applicability](#governance-applicability) and unchanged-evidence review | Pass locally; remote rows pending |
 | SC-012 | [Run Gates](#run-gates) Analyze pass 2 | Pass |
-| SC-013 | [Remote Delivery](#remote-delivery) | Pending |
+| SC-013 | [Remote Delivery](#remote-delivery) | Pass; evidence-only closeout in progress |
 
 ## Validation
 
@@ -213,10 +213,10 @@ the narrow T107 approval-rule bypass is considered.
 | Required checks | Pass on `9243bcd` | Ubuntu/macOS CI, macOS/Linux/Windows homogeneity, DocFX build, supply chain, Gitleaks, agent-secret scan, and Claude Review passed; PR-only Pages deploy skipped by design |
 | Review threads | Pass | GraphQL `reviewThreads.totalCount=0`; 0 conversation comments and no actionable Claude finding |
 | Unavailable reviews | Copilot unavailable | Two Copilot review attempts reported user quota exhaustion; recorded as missing review, not success |
-| Merge | Open | Merge commit pending |
-| Remote branch | Open | Cleanup pending |
-| Local `main` sync | Open | Clean `HEAD == origin/main` pending |
-| Post-merge closeout | Open | Evidence-only if causally required |
+| Merge | Pass with narrow bypass | PR #45 merged by merge commit `60f59511f0e546f9ddde169bb3cee87c27dc6b30`; admin bypass applied only to the remaining human-approval rule after all checks passed and GraphQL showed 0 threads |
+| Remote branch | Pass | `origin/019-wave3-visual-component-porting` deleted and fetch/prune confirmed removal |
+| Local `main` sync | Pass | Clean local `main` equals `origin/main` at `60f59511f0e546f9ddde169bb3cee87c27dc6b30` after fast-forward pull |
+| Post-merge closeout | Pass | Non-empty evidence-only PR [#46](https://github.com/hindermath/TuiVision/pull/46) records T107/T108 facts that could not truthfully exist before merge; T109 closes all 109 tasks |
 
 ## Generated Output Hygiene
 

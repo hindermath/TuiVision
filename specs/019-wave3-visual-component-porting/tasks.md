@@ -140,9 +140,9 @@ Every checkbox is marked only after its acceptance condition is satisfied.
 - [X] T104 Create a ready feature PR from `specs/019-wave3-visual-component-porting/pr-evidence.md`, record the URL in that evidence file, re-align version, commit the PR-reference update, and push it
 - [X] T105 Monitor required CI, Claude/Copilot availability, review comments, and GraphQL threads to convergence; record each state in `specs/019-wave3-visual-component-porting/pr-evidence.md`
 - [X] T106 Remediate every actionable remote finding through focused tests/validation and record finding, response, and thread resolution in `specs/019-wave3-visual-component-porting/pr-evidence.md`
-- [ ] T107 Use the authorized narrow admin bypass only after green required checks, zero actionable threads, and a sole human-approval block; record the exact boundary in `specs/019-wave3-visual-component-porting/pr-evidence.md`
-- [ ] T108 Merge with a merge commit, delete the remote feature branch, switch locally to `main`, fetch/prune/pull fast-forward, prove clean `HEAD == origin/main`, and capture those observed facts for the T109 update to `specs/019-wave3-visual-component-porting/pr-evidence.md`
-- [ ] T109 Record post-merge facts through a non-empty evidence-only closeout PR only when they could not truthfully be recorded before merge; otherwise record why no closeout PR is needed in `specs/019-wave3-visual-component-porting/pr-evidence.md`
+- [X] T107 Use the authorized narrow admin bypass only after green required checks, zero actionable threads, and a sole human-approval block; record the exact boundary in `specs/019-wave3-visual-component-porting/pr-evidence.md`
+- [X] T108 Merge with a merge commit, delete the remote feature branch, switch locally to `main`, fetch/prune/pull fast-forward, prove clean `HEAD == origin/main`, and capture those observed facts for the T109 update to `specs/019-wave3-visual-component-porting/pr-evidence.md`
+- [X] T109 Record post-merge facts through a non-empty evidence-only closeout PR only when they could not truthfully be recorded before merge; otherwise record why no closeout PR is needed in `specs/019-wave3-visual-component-porting/pr-evidence.md`
 
 ## Dependencies and Execution Order
 
