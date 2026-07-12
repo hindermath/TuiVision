@@ -314,15 +314,15 @@ npm run test:docfx
 - Borland documentation and `tv203s/` remain primary; official Free Vision commit `ffc03b34d8cafb85ddcf0686de1c5551601dacb2` is external secondary evidence only.
 - The exact inventory is 151 historical `.cc` rows, 119 maintained production `.cs` files, 176 exported public types, 16 domains, and 48 contracts.
 - Decisions are 13 `Aligned`, 34 `IntentionalModernization`, 1 `ConsciouslyOmitted`, 0 `BehavioralDrift`, and 0 `EvidenceGap`; Free Vision relations are recorded independently.
-- `Core025` and `ComponentData026` owner sets are empty, so no Feature 025 or 026 branch or PR may be created. `027-pre-wave5-conformance-closure` is the mandatory next intake and Wave 5 remains blocked.
+- `Core025` and `ComponentData026` owner sets are empty, so no Feature 025 or 026 branch or PR was created. Feature 027 completed the mandatory closure; Wave 5 is now eligible.
 - No runtime, API, dependency, package, example, generated-output, or historical-source change entered 024; the external Free Vision worktree remains outside Git.
 
 ### 027-pre-wave5-conformance-closure
-- Current implementation status: the mandatory local closure is complete; final evidence is in `specs/027-pre-wave5-conformance-closure/closure-evidence.md`.
+- Current implementation status: the mandatory closure is complete and merged as `35414af`; final evidence is in `specs/027-pre-wave5-conformance-closure/closure-evidence.md`.
 - The merged Feature-024 baseline revalidated exactly: 16 domains, 48 contracts, inventories 151/119/176, 15 external source records, 94 proof references, decisions 13/34/1/0/0, and zero findings.
 - Features 025 and 026 remain suppressed because their accepted owner sets are empty. Any later drift or evidence gap requires a reviewed audit revision rather than an implicit runtime repair.
 - Focused audit, 698/698 full Release tests, all five coverage gates, format, DocFX/Axe/Lynx, secret, and protected-scope checks passed locally.
-- No runtime, public API, dependency, package, example behavior, historical source, or Wave-5 implementation change entered 027. Wave 5 is the next fachliche intake after the reviewed 027 merge.
+- No runtime, public API, dependency, package, example behavior, historical source, or Wave-5 implementation change entered 027. Merge `35414af` completed the gate; Wave 5 is now the next fachliche intake.
 
 
 ### Autonomous Red-Proof Completeness

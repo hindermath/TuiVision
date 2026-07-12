@@ -57,11 +57,11 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
    akzeptierte Core-Finding-Menge leer ist.
 3. `026-component-data-conformance-hardening` wird nicht angelegt, weil die
    akzeptierte Component-/Data-Finding-Menge leer ist.
-4. `027-pre-wave5-conformance-closure` hat Audit, Integration und lokale Gates
-   erneut bestanden; sein reviewter Merge ist die letzte Freigabegrenze.
-5. Wave 5 ist danach der nächste fachliche Intake, voraussichtlich als Feature
+4. `027-pre-wave5-conformance-closure` hat Audit, Integration, lokale und
+   remote Gates erneut bestanden und ist als Merge `35414af` abgeschlossen.
+5. Wave 5 ist jetzt der nächste fachliche Intake, voraussichtlich als Feature
    028.
 
 *Feature 024 completed 48 contract decisions without a drift or evidence-gap
-finding. Features 025 and 026 are therefore suppressed. Feature 027 passed its
-local closure gates; after its reviewed merge, Wave 5 is the next intake.*
+finding. Features 025 and 026 are therefore suppressed. Feature 027 passed and
+merged after its closure gates; Wave 5 is now the next intake.*

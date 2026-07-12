@@ -119,23 +119,23 @@ remain absent, and Wave 5 is named as the next eligible intake.
 - [X] T070 Re-run `git diff --check`, `dotnet format --verify-no-changes --no-restore`, checklist completeness, marker, and task-count checks
 - [X] T071 Align `Directory.Build.props` to final pre-commit `1.27.<patch>.<build>` without incrementing build unless another explicit build/test ran
 - [X] T072 Commit the complete local closure with the Constitution-required Copilot co-author trailer
-- [ ] T073 Push `027-pre-wave5-conformance-closure` and open the feature PR with `pr-evidence.md` summary
-- [ ] T074 Monitor PR-context technical checks to completion; classify duplicate push runs as operational noise
-- [ ] T075 Record Claude and Copilot availability honestly and inspect conversation comments
-- [ ] T076 Query GraphQL review threads and remediate every actionable item within accepted scope
-- [ ] T077 Re-run affected local gates after any review remediation and align version before additional commit/push
-- [ ] T078 Verify all technical checks green, zero actionable threads, and exact reviewed head before merge
-- [ ] T079 Merge with merge commit, using the narrow admin bypass only if Human Approval is the sole blocker
-- [ ] T080 Delete remote feature branch, switch to `main`, fetch/prune/pull fast-forward, and prove clean `HEAD == origin/main`
-- [ ] T081 Create one non-recursive evidence-only closeout branch because merge and synchronized-main facts became true post-merge
-- [ ] T082 Record feature PR, checks, unavailable reviews, threads, bypass, merge SHA, branch deletion, and synchronized main in `closure-evidence.md`
-- [ ] T083 Mark post-feature-merge delivery tasks T073-T082 and matching `closure-evidence.md` rows complete in the single closeout commit; leave later retrospective/handoff and self-referential closeout-provider facts to their actual boundaries
-- [ ] T084 Push and open the non-empty closeout PR without writing its own PR URL or merge result into repository evidence
+- [X] T073 Push `027-pre-wave5-conformance-closure` and open the feature PR with `pr-evidence.md` summary
+- [X] T074 Monitor PR-context technical checks to completion; classify duplicate push runs as operational noise
+- [X] T075 Record Claude and Copilot availability honestly and inspect conversation comments
+- [X] T076 Query GraphQL review threads and remediate every actionable item within accepted scope
+- [X] T077 Re-run affected local gates after any review remediation and align version before additional commit/push
+- [X] T078 Verify all technical checks green, zero actionable threads, and exact reviewed head before merge
+- [X] T079 Merge with merge commit, using the narrow admin bypass only if Human Approval is the sole blocker
+- [X] T080 Delete remote feature branch, switch to `main`, fetch/prune/pull fast-forward, and prove clean `HEAD == origin/main`
+- [X] T081 Create one non-recursive evidence-only closeout branch because merge and synchronized-main facts became true post-merge
+- [X] T082 Record feature PR, checks, unavailable reviews, threads, bypass, merge SHA, branch deletion, and synchronized main in `closure-evidence.md`
+- [X] T083 Mark post-feature-merge delivery tasks T073-T082 and matching `closure-evidence.md` rows complete in the single closeout commit; leave later retrospective/handoff and self-referential closeout-provider facts to their actual boundaries
+- [X] T084 Push and open the non-empty closeout PR without writing its own PR URL or merge result into repository evidence
 - [ ] T085 Converge closeout technical checks and threads, merge under the same narrow authority, delete branch, and synchronize main
-- [ ] T086 Run `$speckit-autonomous-retrospective` and classify every observation; create no TuiVision branch if no non-empty local improvement exists
-- [ ] T087 Re-run Home-Baseline PowerShell and Bash homogeneity JSON/error-channel proof from its current package branch and record result
-- [ ] T088 Update the Home-Baseline Feature-027 workitem/field input only for a real reproducible portable observation; otherwise record `NoPromotion`
-- [ ] T089 Update `github/spec-kit#3479` only if a published/revalidated preset improvement now exists; otherwise leave the issue unchanged with rationale
+- [X] T086 Run `$speckit-autonomous-retrospective` and classify every observation; create no TuiVision branch if no non-empty local improvement exists
+- [X] T087 Re-run Home-Baseline PowerShell and Bash homogeneity JSON/error-channel proof from its current package branch and record result
+- [X] T088 Update the Home-Baseline Feature-027 workitem/field input only for a real reproducible portable observation; otherwise record `NoPromotion`
+- [X] T089 Update `github/spec-kit#3479` only if a published/revalidated preset improvement now exists; otherwise leave the issue unchanged with rationale
 - [ ] T090 Finish with T001-T090 status, changed files, exact counts, validation, review, PR/merge identifiers, preset decision, and clean synchronized `main`; do not start Wave 5
 
 ## Dependencies and Execution Order

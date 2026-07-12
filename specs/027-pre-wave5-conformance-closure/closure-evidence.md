@@ -89,8 +89,8 @@ and statistics. Any protected product-path change blocks closure.
 | CL-027-014 | Documentation/A11Y | DocFX/Axe/Lynx pass | Pass | DocFX 0/0; Playwright/Axe 2/2; four UTF-8 Lynx pages readable | Maintainer | Codex | 2026-07-12 | representative-page sampling | rerun after final status edits | docs change |
 | CL-027-015 | Security/generated scope | high secrets 0; output untracked | Pass | gitleaks high 0; known local `.claude` medium; no tracked generated output; protected diff empty | Maintainer | Codex | 2026-07-12 | local agent config remains intentionally untracked | rerun final scanners | diff changes |
 | CL-027-016 | Formal status | maintained surfaces agree | Pass | gate, Pflichtenheft, order, statistics, archived intake, and five byte-identical agent blocks aligned | Maintainer | Codex | 2026-07-12 | remote merge is still the formal release boundary | record post-merge state in causal closeout | status changes |
-| CL-027-017 | Remote delivery | checks green; threads 0 | Open | GitHub PR context | Maintainer | Codex | 2026-07-12 | provider state | run T073-T085 | reviewed head changes |
-| CL-027-018 | Retrospective/handoff | classified, no empty work | Open | retro and Home Baseline | Maintainer | Codex | 2026-07-12 | pending completion | run T086-T089 | portable finding |
+| CL-027-017 | Remote delivery | checks green; threads 0 | Pass | PR #66 head `27fc5f3`; all technical checks green; Claude passed; Copilot quota unavailable; GraphQL threads 0; merge `35414af` | Maintainer | Codex | 2026-07-12 | Human Approval required narrow bypass | retain external closeout-PR terminal facts | reviewed head changes |
+| CL-027-018 | Retrospective/handoff | classified, no empty work | Pass | Home-Baseline PR #60 merge `7b2911d`; public preset v0.1.1; ZIP SHA-256 `517e3b2...44032`; issue #3479 updated | Maintainer | Codex | 2026-07-12 | external maintainer response remains non-blocking | observe community feedback | portable finding |
 
 ## Governance Applicability
 
@@ -103,7 +103,7 @@ and statistics. Any protected product-path change blocks closure.
 | a11y 0.4.0 | bilingual text-first evidence | Applicable | status documentation changes | Pass | final changed pages need rerun | rerun DocFX/Axe/Lynx | documentation changes |
 | cross-platform 0.2.0 | script parity | N/A | no repository script change; external helper is revalidated only | Pass | helper drift | run external proof | script scope changes |
 | agent parity 0.3.0 | five maintained surfaces | Applicable | active context and final status change | Pass | future agent-specific drift | retain byte-hash proof | shared guidance changes |
-| autonomous 0.1.0 | authority/convergence/closeout/retro | Applicable | complete delegated run | Open | local and remote gates pending | finish T001-T090 | authority/provider changes |
+| autonomous 0.1.0 | authority/convergence/closeout/retro | Applicable | complete delegated run | Pass | closeout PR terminal facts remain external by design | finish non-recursive closeout | authority/provider changes |
 
 ## Validation Log
 
@@ -130,28 +130,29 @@ and statistics. Any protected product-path change blocks closure.
 | final `npm run test:docfx` | N/A | Pass | final DocFX rebuild and Playwright/Axe 2 passed |
 | final UTF-8 Lynx review | N/A | Pass | all four representative pages remained non-empty and semantic |
 | final consistency suite | `1.27.4.212` | Pass | secrets high 0, generated/protected diffs empty, diff/format/checklists pass; marker scan only matched normative SC-009 text |
+| corrected gate-status validator | `1.27.4.213` | Pass | targeted `Test_FindingsAndPreWave5GateAreConsistent`: 1 passed, 0 failed, 0 skipped |
 
 ## Wave-5 Gate
 
 | Field | Current value |
 |---|---|
-| Decision | `LocalPassed`; Wave 5 remains blocked only until reviewed Feature-027 merge |
+| Decision | `Passed`; Wave 5 is the next eligible fachliche intake |
 | `Core025` | 0; suppressed |
 | `ComponentData026` | 0; suppressed |
-| Next required feature | complete Feature-027 remote delivery |
-| Release condition | technical PR checks pass, actionable threads are zero, and Feature 027 merges |
+| Next required feature | Wave 5, expected as Feature 028 |
+| Release condition | satisfied by Feature-027 merge `35414aff7958ccfda87a5edcd768ad7f96963fc9` |
 
 ## Delivery and Resume
 
 | Item | State | Evidence |
 |---|---|---|
-| Feature PR | Open | not created |
-| Required checks | Open | pending PR |
-| Review threads | Open | pending PR |
-| Merge/main sync | Open | pending local completion |
-| Causal closeout | Planned | `closure-evidence.md` plus `tasks.md`, one evidence-only commit |
-| Retrospective/handoff | Open | after synchronized feature merge |
+| Feature PR | Pass | [#66](https://github.com/hindermath/TuiVision/pull/66), reviewed head `27fc5f3` |
+| Required checks | Pass | macOS/Linux CI, DocFX, SBOM, tooling, gitleaks, secret scan, and Claude green; Pages deploy expected skip |
+| Review threads | Pass | GraphQL returned zero threads; Copilot quota recorded as unavailable review |
+| Merge/main sync | Pass | merge `35414af`; feature branch deleted; local `main == origin/main` and clean |
+| Causal closeout | In progress | `codex/closeout-027-conformance`; one amended causal commit without self-reference; initial CI rejected stale gate-validator expectation |
+| Retrospective/handoff | Pass | Home-Baseline PR #60 merged; v0.1.1 released and ZIP-tested; issue #3479 comment `4951808691` published |
 
-- Last passing boundary: T071 final documentation, A11Y, text, security, scope, format, checklist, marker-boundary, task-count, and version checks passed.
-- Next exact action: T072 create the complete local closure commit.
+- Last passing boundary: targeted validator 1/1, Home-Baseline PR #60, public v0.1.1 ZIP smoke, and issue #3479 update passed.
+- Next exact action: amend the single closeout commit and reconverge PR #67; keep its own terminal facts external.
 - Stop if any protected count, finding set, proof, or product path drifts.

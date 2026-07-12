@@ -179,3 +179,32 @@ Feature 027 rechecks the corrected Home-Baseline helper during autonomous
 preflight and determines whether command, checklist, or template language is
 actually missing from the preset. Only such evidence justifies a new preset
 version or another upstream contribution.
+
+## 027 Pre-Wave-5 Conformance Closure
+
+**Feature:** `027-pre-wave5-conformance-closure`
+
+**Feature-PR:** [#66](https://github.com/hindermath/TuiVision/pull/66)
+
+| Beobachtung | Entscheidung | Umsetzung oder Grenze |
+|---|---|---|
+| Der in 024 korrigierte Home-Baseline-Scanner liefert in PowerShell und Bash jeweils Exitcode 0, genau ein parsebares JSON-Dokument und einen leeren Fehlerkanal. | `ValidationAutomation`, `PresetFollowUp` mit `NoPromotion` | Die Korrektur ist unabhängig bestätigt. Die portable Preset-Regel war bereits vollständig; Payload und Version bleiben unverändert. |
+| Exakte Audit-, Integrations-, Coverage-, Dokumentations-, A11Y-, Security- und Scope-Gates konvergierten ohne Produktänderung. | `NoPromotion` | Bestehende Readiness-, Evidence- und Stop-Grenzen waren ausreichend. Es fehlt kein Command-, Skill-, Template-, Checklist- oder Skriptvertrag. |
+| Leere Findings hielten 025 und 026 unterdrückt; nur der verpflichtende 027-Abschluss wurde geliefert. | `NoPromotion` | Die No-empty-work-Regel vermeidet weiterhin inhaltslose Branches und Pull Requests. |
+| Alle technischen PR-Checks und Claude waren grün, GraphQL meldete null Threads, Copilot blieb quota-bedingt nicht verfügbar und nur Human Approval blockierte. | `NoPromotion` | Der genehmigte Admin-Bypass blieb auf genau diese eine Branch-Protection-Regel begrenzt. |
+| Die Remote-Fakten werden in einem nicht rekursiven Evidence-Closeout dokumentiert. | `NoPromotion` | Der Closeout schreibt weder seine eigene PR-URL noch seinen eigenen Merge zurück und bleibt dadurch single-commit-fähig. |
+| Der erste Closeout-Head änderte den Gate-Marker von `Blocked` auf `Eligible`, während ein ausführbarer Audit-Test noch den Vorzustand verlangte. Lokale Docs-/A11Y-Prüfung erkannte diese Kopplung nicht; Linux und macOS CI stoppten korrekt. | `ValidationAutomation`, `PresetFollowUp` mit `Promote` | Status- oder Evidence-only Änderungen müssen vor dem Skip von Runtime-Tests nach bestehenden Validatoren suchen, die geänderte Marker oder Dateien lesen. Betroffene Validatoren werden im selben Commit aktualisiert und gezielt ausgeführt. |
+
+### Abschluss / Closure
+
+Feature 027 bestätigt die Kernverträge, findet aber eine portable
+Validation-Trigger-Lücke für statuslesende ausführbare Tests. Das
+Home-Baseline-PR #60 liefert diesen Follow-up als öffentliches Preset v0.1.1;
+der versionierte GitHub-ZIP ist geprüft und Issue `github/spec-kit#3479`
+enthält den nicht blockierenden Upstream-Hinweis. Wave 5 ist der nächste Intake.
+
+Feature 027 validates the core contracts but finds one portable validation
+trigger gap for executable tests that read status evidence. Home-Baseline PR
+#60 delivers the follow-up as public preset v0.1.1, verified through its
+versioned GitHub ZIP. Issue `github/spec-kit#3479` carries the non-blocking
+upstream update. Wave 5 is the next domain intake.
