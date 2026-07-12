@@ -264,8 +264,10 @@ Statuscheckliste Beispielwellen:
   Reihenfolgehinweis: abgeschlossen (Branch `021-terminal-charset-hardening`); kontrollierte Terminal-Session, begrenztes Emulations-Subset, KOI8-R-/Unicode-Mapping, rohe 8x16-Fixture, geschlossene Profile und App-Loop-/Cell-Proof sind frameworkweit nachgewiesen.
 - [x] **Welle 4 - Visual Component Porting**
   Reihenfolgehinweis: abgeschlossen (Branch `022-wave4-visual-component-porting`); `terminal`, `cyrillic`, `fonts`, `eterm` und `xterm` sind sichtbare Drei-Schichten-Demos mit App-Loop-, Zustands-, View- und Buffer-/Cell-Proof sowie ehrlichen Host-Fallbacks.
+- [ ] **Pre-Wave-5 Framework-Konformitätsaudit und Findings-Härtung**
+  Reihenfolgehinweis: Feature `024-tv203-freevision-conformance-audit` prüft zuerst das vollständige Framework ohne Runtime-Änderung gegen Borland/`tv203s` und sekundär gegen einen gepinnten Free-Vision-Stand. Nur nicht leere akzeptierte Findings dürfen 025 oder 026 erzeugen; Feature 027 schließt das Gate.
 - [ ] **Welle 5 - Turbo-Pascal-Demos aus TP7 (`TVDEMOS/`)**
-  Reihenfolgehinweis: erst nach Abschluss der MUSS-Wellen 1 bis 4; bevorzugt nach stabilen Portierungen von `tvdemo`, `tvedit`, Hilfesystem und Dialogschicht.
+  Reihenfolgehinweis: erst nach Abschluss der MUSS-Wellen 1 bis 4 und bestandenem `027-pre-wave5-conformance-closure`; bevorzugt nach stabilen Portierungen von `tvdemo`, `tvedit`, Hilfesystem und Dialogschicht.
 - [ ] **Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`**
   Reihenfolgehinweis: zuletzt; setzt die Erkenntnisse aus Welle 5, Datei-/Verzeichnisdialoge, Drag/Drop-Analoga und eine robuste Event-/Fensterintegration voraus.
 - [ ] Beispiel-Guides unter `docs/guides/examples/`
@@ -528,11 +530,16 @@ Die Nutzerdokumentation speist sich aus folgenden Quellen in absteigender Priori
    - `tv203s/contrib/tvision/` als massgebliche Referenz fuer das Originalverhalten
    - Wird genutzt, um Verhalten zu erklaeren und bewusste Abweichungen der C#-Portierung zu begruenden
 
-4. **C# Quellcode und XML-Kommentare (Tier 3 – API-Dokumentation)**
+4. **Free Vision am audit-gepinnten FPC-Commit (Tier 2b – sekundäre Vergleichsquelle)**
+   - Offizielles Free-Pascal-Repository `https://gitlab.com/freepascal.org/fpc/source.git`, Paket `packages/fv/`
+   - Dient nur als unabhängige Object-Pascal-Gegenprüfung für historische Lesart oder moderne Anpassung; Borland und `tv203s/` bleiben vorrangig
+   - Kein Vendoring, keine Quelltextübernahme und keine mechanische Übersetzung; geprüfter Commit und Pfade werden in der Feature-Evidence festgehalten
+
+5. **C# Quellcode und XML-Kommentare (Tier 3 – API-Dokumentation)**
    - Primaerquelle fuer alle API-Referenzseiten; docfx erzeugt daraus automatisch die API-Doku
    - XML-Kommentare muessen vollstaendig und didaktisch gemaess Abschnitt 10.1 sein
 
-5. **Portierte Beispielprogramme (Tier 4 – Nutzungsszenarien)**
+6. **Portierte Beispielprogramme (Tier 4 – Nutzungsszenarien)**
    - `examples/` liefert konkrete Anwendungsszenarien fuer Tutorials und konzeptuelle Guides
 
 ### Sprache und Stil
@@ -661,15 +668,19 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.3c` = Terminal-/Charset-/Plattform-Vorhärtung — ✓ ABGESCHLOSSEN (Branch `021-terminal-charset-hardening`)
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze — ✓ ABGESCHLOSSEN (Branch `022-wave4-visual-component-porting`)
 
-   - `3.5` = A11Y-Framework — Umsetzung in Branch `023-a11y-framework`
+   - `3.5` = A11Y-Framework — ✓ ABGESCHLOSSEN (Branch `023-a11y-framework`)
      - **PF-A11Y-001**: `IAccessibleWidget` stellt opt-in Bezeichnung, Beschreibung und aktuelle Fokusfähigkeit bereit.
      - **PF-A11Y-002**: Echte Fokuswechsel liefern genau einen typisierten `cmFocusChanged`-Payload; nicht migrierte Views erhalten kein erfundenes Label.
      - **PF-A11Y-003**: `TMenuBar` und `TStatusLine` stellen ausführbare Shortcuts mit Taste, Text, Befehl und Quelle strukturiert bereit.
      - **PF-A11Y-004**: Jede inventarisierte fokussierbare Control-Familie besitzt für Tab, Shift+Tab, Pfeile, Enter und Direkt-Shortcut einen automatisierten Proof oder ein begründetes `N/A`.
      - **PF-A11Y-005**: `TColorScheme.HighContrast` ist explizit aktivierbar; der aktive Modus bleibt zusätzlich textbasiert erkennbar.
      - **PF-A11Y-006**: DocFX-Seiten werden im vorhandenen Pages-Workflow bei `main` und Pull Requests mit Playwright/Axe geprüft; Fehler blockieren den Nachweis.
+   - `3.6` = TV203-/Free-Vision-Konformitätsaudit — NÄCHSTER SCHRITT (Feature `024-tv203-freevision-conformance-audit`)
+   - `3.6a` = Core-Runtime-Konformitätshärtung — nur bei nicht leeren Findings aus 024 (Feature 025)
+   - `3.6b` = Component-/Data-Konformitätshärtung — nur bei nicht leeren Findings aus 024 (Feature 026)
+   - `3.6c` = Pre-Wave-5-Konformitätsabschluss — verpflichtendes Gate (Feature 027)
 
->>> NAECHSTER SCHRITT <<< Feature 023 abschliessen; danach bleibt Wave 5 der nächste fachliche Intake. Feature 024 wird in diesem Lauf nicht begonnen.
+>>> NAECHSTER SCHRITT <<< Feature 024 als reines Framework-Konformitätsaudit ausführen. Wave 5 beginnt erst nach dem findings-basierten Hardening und bestandenem Feature 027.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.
