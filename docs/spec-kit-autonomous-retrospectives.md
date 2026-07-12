@@ -154,3 +154,28 @@ The two promoted rules are handed to the Home Baseline work item
 metadata. The homogeneity deployment contract must also prove that wrappers
 and helper libraries are installed together and that Bash and PowerShell both
 fail closed when helpers are missing.
+
+## 024 TV203 and Free Vision Conformance Audit
+
+**Feature:** `024-tv203-freevision-conformance-audit`
+**Feature-PR:** [#62](https://github.com/hindermath/TuiVision/pull/62)
+**Closeout-PR:** [#63](https://github.com/hindermath/TuiVision/pull/63)
+
+| Beobachtung | Entscheidung | Umsetzung oder Grenze |
+|---|---|---|
+| Der Home-Baseline-PowerShell-Scanner lieferte trotz 108 `PropertyNotFoundException`-Zeilen Exitcode 0 und nominales JSON. Ursache waren skalare oder leere `Select-String`-Resultate, deren `.Count` direkt gelesen wurde. | `ValidationAutomation`, `PresetFollowUp` mit `Promote` | Home-Baseline-Commit `db2bd86` normalisiert die Resultate array-sicher. Zero-/One-/Many-Fixtures sowie der vollständige PowerShell- und Bash-Lauf liefern parsebares JSON und einen leeren Fehlerkanal. Die portable Preset-Regel war bereits korrekt und wird nicht erweitert. |
+| Das Audit erzeugte weder `BehavioralDrift` noch `EvidenceGap`; die Finding-Mengen für 025 und 026 blieben leer. | `NoPromotion` | Die No-empty-work-Regel verhinderte zwei inhaltslose Features und PRs. Nur das verpflichtende Closure-Feature 027 wird fortgesetzt. |
+| Feature- und Closeout-PR hielten alle technischen Gates ein; Copilot blieb ein Quota-bedingt fehlender Review, GraphQL meldete null Threads und nur Human Approval erforderte den eng autorisierten Bypass. | `NoPromotion` | Berechtigungs-, Reviewer- und Bypass-Regeln funktionieren unverändert und werden nicht ausgeweitet. |
+| Der Closeout blieb ein einzelner Evidence-Commit ohne Selbstreferenz; doppelte Push-/PR-Workflow-Sätze wurden nicht abgebrochen. | `NoPromotion` | Die bereits promovierten Closeout- und Duplicate-Run-Regeln sind erneut bestätigt. |
+
+### Nächster Prüfschritt / Next Check
+
+Feature 027 prüft, ob der korrigierte Home-Baseline-Helfer im nächsten
+autonomen Preflight ohne Error Record bleibt und ob dem Preset tatsächlich
+Command-, Checklist- oder Template-Sprache fehlt. Nur dann entsteht eine neue
+Preset-Version oder ein weiterer Upstream-Beitrag.
+
+Feature 027 rechecks the corrected Home-Baseline helper during autonomous
+preflight and determines whether command, checklist, or template language is
+actually missing from the preset. Only such evidence justifies a new preset
+version or another upstream contribution.

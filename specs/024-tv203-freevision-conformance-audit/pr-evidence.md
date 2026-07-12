@@ -104,7 +104,7 @@ presets separately from the optional autonomous preset; no hard-coded
 | a11y-governance | 0.4.0 | bilingual text-first evidence | Applicable | evidence is learner-facing and must remain readable without layout or color | all feature Markdown | Maintainer | Codex | 2026-07-12 | Pass | future generated-site drift | rerun DocFX/Axe/Lynx | documentation changes |
 | cross-platform-governance | 0.2.0 | script parity | N/A | no repository script is added or changed; proof is managed MSTest | final script diff | Maintainer | Codex | 2026-07-12 | Pass | platform-specific test behavior | remote matrix | script scope appears |
 | agent-parity-governance | 0.3.0 | five maintained surfaces | Applicable | active Feature-024 context changed | five agent files | Maintainer | Codex | 2026-07-12 | Pass | later completion context may drift | rerun parity review | shared guidance changes |
-| autonomous-run-governance | 0.1.0 | authority, convergence, delivery, retrospective | Applicable | the run is delegated through merge and sync | plan, tasks, this ledger | Maintainer | Codex | 2026-07-12 | Open | remote provider state | converge all gates | authority or provider state changes |
+| autonomous-run-governance | 0.1.0 | authority, convergence, delivery, retrospective | Applicable | the run is delegated through merge and sync | plan, tasks, this ledger | Maintainer | Codex | 2026-07-12 | Pass | future provider or preset drift | re-evaluate in 027 | authority, provider state, or preset changes |
 
 ## Validierung / Validation
 
@@ -168,7 +168,7 @@ presets separately from the optional autonomous preset; no hard-coded
 | Free Vision second opinion | 48/48 contracts have exactly one relation; 22 original, 10 modernization, 3 divergence, 13 not applicable; 15 pinned source hashes |
 | Findings and downstream routing | 0 findings; `Core025` 0 and suppressed; `ComponentData026` 0 and suppressed; `Closure027` required; Wave 5 blocked |
 | Proof | 94 concrete `path::method` references plus historical intent, observed behavior, C# rationale, risk, and source relationships on every contract |
-| Governance | 8 checkpoint rows: 7 Pass and 1 Open pending retrospective/handoff completion; 3 rows have trigger-based `N/A` applicability with rationale and re-evaluation trigger |
+| Governance | 8 checkpoint rows: 8 Pass; 3 rows have trigger-based `N/A` applicability with rationale and re-evaluation trigger |
 | Agent parity | completed Feature-024 block is byte-identical across 5/5 maintained agent surfaces |
 | Local validation | focused audit 11/11; full Release 698/698; five coverage gates above 70%; DocFX 0/0; Playwright/Axe 2/2; three UTF-8 Lynx pages; high-severity secret findings 0 |
 | Hard scope | no product runtime, public API, package, example, generated output, external source, or historical source change |
@@ -197,9 +197,9 @@ head, and merge result to prevent recursive closeout.
 
 ## Fortsetzung / Resume
 
-- Last passing gate: T130 Feature PR #62 merged and clean local `main` equals `origin/main`.
-- Next exact action: T131 run the autonomous retrospective for Feature 024.
-- Residual risk: reusable retrospective classification and Home-Baseline handoff remain open.
+- Last passing gate: T132 retrospective classification and Home-Baseline handoff commit `db2bd86` are complete.
+- Next exact action: start mandatory `027-pre-wave5-conformance-closure`; do not create Features 025 or 026.
+- Residual risk: Feature 027 must re-evaluate later drift and close the Wave-5 gate.
 - Stop boundaries: unreachable pin, public product decision, material governance conflict, required-check failure, or runtime implementation pressure.
 
 ## Foundation-Scopeprüfung / Foundation Scope Check
@@ -224,7 +224,23 @@ head, and merge result to prevent recursive closeout.
 | TuiVision exclusions | no framework, Free Vision, feature-number, or product rule is promoted |
 | Confidence | High; correctness/evidence-integrity defects may be promoted after one reproducible occurrence |
 | Upstream boundary | Do not update `github/spec-kit#3479` until the reusable fix is implemented, published, and independently revalidated |
-| Handoff | `home-baseline-tmp/specs/autonomous-run-governance/workitems/024-tv203-freevision-conformance-audit.md` after Feature-024 merge |
+| Handoff | Home-Baseline commit `db2bd86` on `codex/autonomous-run-governance-package`; workitem `specs/autonomous-run-governance/workitems/024-tv203-freevision-conformance-audit.md` |
+
+## Laufretrospektive / Run Retrospective
+
+Deutsch: Der Auditlauf bestätigte die No-empty-, kausale Closeout-,
+Reviewer- und Berechtigungsgrenze. Die einzige neue portable Korrektur betrifft
+PowerShell-Evidence: Ein nominaler Exitcode 0 darf Error Records nicht
+verdecken, und optionale Resultate müssen vor Kardinalitätsprüfungen
+array-sicher normalisiert werden. Die TuiVision-Guidance war bereits korrekt;
+der konkrete Fix und ein reproduzierbares Workitem liegen in Home Baseline.
+
+English: The audit run confirmed the no-empty-work, causal-closeout, reviewer,
+and permission boundaries. The only new portable correction concerns
+PowerShell evidence: a nominal zero exit code cannot hide error records, and
+optional results must be normalized safely before cardinality checks. TuiVision
+guidance already contained the rule; Home Baseline owns the concrete fix and
+reproducible work item.
 
 ## Vorläufige PR-Zusammenfassung / Provisional PR Summary
 
