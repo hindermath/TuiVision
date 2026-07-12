@@ -68,8 +68,8 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 
 ## 🌿 Branch-Konvention
 
-*   Feature-Branches verwenden entweder die agentenpraefixierte Form `codex/<feature-description>` (oder ein anderes unterstuetztes Praefix wie `claude/`, `gemini/`, `copilot/`, `opencode/`) oder die nummerierte Spec-Kit-Form `NNN-short-description`, wenn der Spec-Kit-Workflow diesen Branch-Typ erzeugt.
-*   CI reagiert auf Pushes nach `main`, `master`, `codex/**`, `claude/**`, `gemini/**`, `copilot/**` und `opencode/**`.
+*   Feature-Branches verwenden entweder die agentenpraefixierte Form `codex/<feature-description>` (oder ein anderes unterstuetztes Praefix wie `claude/`, `agy/`, das legacy-kompatible `gemini/`, `copilot/`, `opencode/`) oder die nummerierte Spec-Kit-Form `NNN-short-description`, wenn der Spec-Kit-Workflow diesen Branch-Typ erzeugt.
+*   CI reagiert auf Pushes nach `main`, `master`, `codex/**`, `claude/**`, `agy/**`, das legacy-kompatible `gemini/**`, `copilot/**` und `opencode/**`.
 *   Die repo-weite Versionslogik liegt in `Directory.Build.props`: `Version`, `AssemblyVersion` und `FileVersion` folgen `Major.Minor.Patch.Build`, wobei `Minor` die numerisch interpretierte Spec-Kit-Feature-/Branch-Nummer als kanonische PR-Nummer verwendet (`007` -> `7`), `Patch` der Commit-Anzahl im Feature-/PR-Branch nach dem aktuellen Commit entspricht und `Build` nur vor `dotnet build` oder `dotnet test` manuell erhoeht wird.
 *   Wenn ein dedizierter Feature-Branch die Anforderungen eines Lastenhefts umgesetzt hat, wird die Datei in `Lastenheft_<Thema>.<feature-branch>.md` umbenannt, damit der gelieferte Umfang im Repository nachvollziehbar bleibt.
 
@@ -326,8 +326,8 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 ## 🖥 Workflow-Plattformen
 
 *   Der Multi-Mac-Aufbau auf `MacBook Air M2` und `Mac mini M4 Pro` ist der primaere Entwicklungs- und Alltagstest-Workflow.
-*   Auf beiden Macs muessen `gh`, `specify`, `codex`, `claude`, `copilot` und `gemini` installiert sein; vor Spec-Kit-Arbeiten oder Spec-Kit-Updates ist `specify check` auszufuehren, damit die benoetigte Werkzeugkette bestaetigt ist.
-*   Nach jedem `/speckit-plan`-Lauf oder einer gleichwertigen Plan-Aktualisierung, die aktive Technologien, Projektstruktur oder Agent-Kontext aendert, ist `.specify/scripts/bash/update-agent-context.sh` standardmaessig fuer `codex`, `claude`, `gemini` und `copilot` im selben Arbeitsgang auszufuehren. Diese Multi-Agenten-Kontextaktualisierung gilt in diesem Repository als vorab freigegebene Wartungsroutine und braucht keine gesonderte Rueckfrage.
+*   Auf beiden Macs muessen `gh`, `specify`, `codex`, `claude`, `copilot` und `agy` installiert sein; vor Spec-Kit-Arbeiten oder Spec-Kit-Updates ist `specify check` auszufuehren, damit die benoetigte Werkzeugkette bestaetigt ist.
+*   Nach jedem `/speckit-plan`-Lauf oder einer gleichwertigen Plan-Aktualisierung, die aktive Technologien, Projektstruktur oder Agent-Kontext aendert, ist `.specify/scripts/bash/update-agent-context.sh` standardmaessig fuer `codex`, `claude`, `agy` und `copilot` im selben Arbeitsgang auszufuehren. Diese Multi-Agenten-Kontextaktualisierung gilt in diesem Repository als vorab freigegebene Wartungsroutine und braucht keine gesonderte Rueckfrage.
 *   Linux und Windows dienen zusaetzlich als Kompatibilitaets- und Validierungsumgebungen; unter Windows ist WSL mit einer aktuellen Ubuntu-Version, derzeit bevorzugt `Ubuntu 24.04`, der empfohlene Weg.
 *   Wenn Aenderungen Laufzeitverhalten, Build-Stabilitaet, Terminalverhalten oder Portabilitaet betreffen, sollen Linux- und Windows/WSL-Kompatibilitaetschecks nach Moeglichkeit mitgefuehrt und in CI oder gleichwertigen Nachweisen sichtbar gemacht werden.
 
@@ -419,10 +419,10 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 ## Level-2-Umgebungsregister / Level-2 Environment Registry
 
 - Die zentrale `constitution.md` enthält das verbindliche Level-2 Project Environment Registry.
-- Spec-Kit-Pläne und Gemini-Arbeit in Level-2-Projekten müssen die passende Registry-Zeile als verbindlichen Kontext für Runtime, Build/Test, A11Y, Statistik und Agentenflächen verwenden.
+- Spec-Kit-Pläne und Antigravity-Arbeit in Level-2-Projekten müssen die passende Registry-Zeile als verbindlichen Kontext für Runtime, Build/Test, A11Y, Statistik und Agentenflächen verwenden.
 - Änderungen an einer Level-2-Runtime, Toolchain oder Statistik-Basis müssen `constitution.md`, `.specify/memory/constitution.md` und betroffene KI-Agenten-Dateien gemeinsam prüfen.
 
-*The central `constitution.md` contains the binding Level-2 Project Environment Registry. Spec-Kit plans and Gemini work in Level-2 projects must use the matching registry row as binding context for runtime, build/test, A11Y, statistics, and agent surfaces. Changes to Level-2 runtime, toolchain, or statistics baselines require a joint review of `constitution.md`, `.specify/memory/constitution.md`, and affected AI-agent files.*
+*The central `constitution.md` contains the binding Level-2 Project Environment Registry. Spec-Kit plans and Antigravity work in Level-2 projects must use the matching registry row as binding context for runtime, build/test, A11Y, statistics, and agent surfaces. Changes to Level-2 runtime, toolchain, or statistics baselines require a joint review of `constitution.md`, `.specify/memory/constitution.md`, and affected AI-agent files.*
 ## Memory-Safe Languages (MSL) / Speichersichere Sprachen
 
 - Level-2-Projekte SOLLEN eine speichersichere Sprache (Memory-Safe Language, MSL) als primäre Laufzeit verwenden, wenn die Zielplattform es erlaubt.
@@ -529,7 +529,7 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 
 - `~/scripts/`: Zentrale Automatisierungsskripte (Bootstrap, Secret-Scan, Hook-Installer).
 - `~/`: Weitere Workspace-Verzeichnisse werden per `bootstrap-workspace` angelegt und hier eingetragen.
-- `~/.gemini/`: Globale Gemini-Konfiguration und persistente Erinnerungen.
+- `~/.gemini/antigravity-cli/`: Globale Antigravity-Konfiguration und persistenter lokaler Zustand; der Herstellerpfad bleibt trotz des Befehlsnamens `agy` erhalten.
 
 ## Entwicklungskonventionen / Development Conventions
 
@@ -702,6 +702,9 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 - Optional installiert: `autonomous-run-governance` v0.1.0 prio 70 aus dem öffentlichen Tag-ZIP. Der projektgebundene Codex-Skill `$speckit-autonomous` bleibt am selben eindeutigen Pfad als lokaler Override bestehen, weil er TuiVision-spezifische Nummerierungs-, Build-Zähler-, DocFX-/A11Y- und historische Source-Verträge ergänzt; Preset-Command, Retrospektiv-Skill, Runbook und Adoption-Evidence bleiben die portablen beziehungsweise gemeinsamen Nachweisflächen.
 
 *Optional installed preset: `autonomous-run-governance` v0.1.0 at priority 70 comes from the public tag ZIP. The project-owned Codex `$speckit-autonomous` skill stays at its single path as a local override because it adds TuiVision-specific numbering, build-counter, DocFX/A11Y, and historical-source contracts. The preset command, retrospective skill, runbook, and adoption evidence remain the portable or shared proof surfaces.*
+- Aktive Google-Agentenoberfläche ist Antigravity CLI mit Befehl `agy` und Spec-Kit-Integration `agy`. `GEMINI.md` und `~/.gemini/antigravity-cli/` bleiben Antigravity-kompatible Oberflächen; direkte `gemini`-Befehle sind nur historische oder ausdrücklich benötigte Enterprise-/API-Kompatibilität und keine lokale Pflicht.
+
+*The active Google agent surface is Antigravity CLI through the `agy` command and Spec Kit `agy` integration. `GEMINI.md` and `~/.gemini/antigravity-cli/` remain Antigravity-compatible surfaces; direct `gemini` commands are historical or explicitly required enterprise/API compatibility, not a local requirement.*
 - `a11y-governance` v0.4.0 ergaenzt didaktische Inline-Code-Kommentar-Governance fuer neue oder geaenderte nicht-triviale Logik.
 - `security-governance` v0.6.0 fuehrt `AI-SBOM` weiter als bedingt anwendbare Supply-Chain-Evidenz, ergaenzt sprachspezifische Secure-Coding-Profile und ergaenzt regulatorische Anwendbarkeit fuer NIS2, CRA, EU AI Act und DORA. Reine Entwicklungswerkzeug-Nutzung bleibt `N/A`; KI-Runtime-/Produktkomponenten benoetigen Evidenz nach G7/BSI AI-SBOM-Clustern; private Ausbildungsprojekte dokumentieren regulatorische Nichtanwendbarkeit mit kurzer Begruendung.
 - `architecture-governance` v0.5.0 ergaenzt `BSI C3A` als bedingte Cloud-Autonomie-Evidenz und `BSI C5` als bedingte Cloud-Compliance-Assurance-Evidenz fuer Cloud-Service-Auswahl, Provider-Abhaengigkeiten, Audit-/Nachweisstand, Shared Responsibility und Betriebsnachweise.

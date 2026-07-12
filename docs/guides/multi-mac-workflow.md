@@ -14,7 +14,7 @@ Verwendete Tools:
 - `codex` (Codex CLI, authentifiziert)
 - `claude` (Claude Code CLI, authentifiziert)
 - `copilot` (Copilot CLI, authentifiziert)
-- `gemini` (Antigravity CLI, authentifiziert)
+- `agy` (Antigravity CLI, authentifiziert)
 - `node` 24 LTS und `npm` fuer `tests/web-a11y/`
 - Playwright + `@axe-core/playwright` als lokaler DocFX-A11y-Pruefpfad
 - `lynx` als textbasierter Browser-Gegencheck
@@ -22,7 +22,7 @@ Verwendete Tools:
 ## Voraussetzungen
 
 1. Repository ist lokal auf beiden Systemen ausgecheckt.
-2. Auf beiden Systemen sind `gh`, `specify`, `codex`, `claude`, `copilot` und `gemini` installiert; `gh`, `codex`, `claude`, `copilot` und `gemini` sind authentifiziert.
+2. Auf beiden Systemen sind `gh`, `specify`, `codex`, `claude`, `copilot` und `agy` installiert; `gh`, `codex`, `claude`, `copilot` und `agy` sind authentifiziert.
 3. GitHub-Remote `origin` zeigt auf `https://github.com/hindermath/TuiVision.git`.
 4. .NET SDK 10 ist auf beiden Systemen verfuegbar (`dotnet --info`).
 5. Node `24.x` LTS und `npm` sind auf beiden Systemen verfuegbar.
@@ -39,7 +39,7 @@ specify check
 codex --version || codex --help
 claude --version || claude --help
 copilot --version || copilot --help
-agy --version || gemini --help
+agy --version
 dotnet --version || dotnet --help
 node --version
 npm --version
@@ -57,7 +57,7 @@ Erwartung:
 - `codex --version` (oder alternativ `codex --help`) liefert eine gueltige Ausgabe.
 - `claude --version` (oder alternativ `claude --help`) liefert eine gueltige Ausgabe.
 - `copilot --version` (oder alternativ `copilot --help`) liefert eine gueltige Ausgabe.
-- `agy --version` (oder alternativ `gemini --help`) liefert eine gueltige Ausgabe.
+- `agy --version` liefert eine gueltige Ausgabe.
 - `node --version` liefert eine gueltige LTS-Ausgabe, bevorzugt `24.x`.
 - `npm --version` liefert eine gueltige Ausgabe.
 - `lynx -version` liefert eine gueltige Ausgabe.

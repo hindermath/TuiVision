@@ -71,7 +71,26 @@ integration. The registry lists the enabled preset as version 0.1.0 at priority
 | Copilot `.github/agents/` | 1 | 1 | Beide Agent-Dateien erzeugt |
 | Copilot `.github/prompts/` | 1 | 1 | Beide Legacy-Prompt-Dateien innerhalb ihrer Oberfläche eindeutig |
 | OpenCode `.opencode/command/` | 1 | 1 | Beide Commands erzeugt; Legacy-Pfad-Warnung dokumentiert |
-| Gemini | 1 | 1 | In isolierter Paketvalidierung erzeugt; keine aktive TuiVision-Integration |
+| Antigravity (`agy`) über `.agents/skills/` | 1 | 1 | Reale TuiVision-Adoption; Antigravity und Codex teilen die eindeutigen Skill-Pfade |
+| Gemini-CLI-Kompatibilität | 1 | 1 | In isolierter v0.1.0-Paketvalidierung erzeugt; keine aktive TuiVision-Integration und keine lokale Installationspflicht |
+
+Google hat Free-, Pro- und Ultra-Nutzung von Gemini CLI am 18. Juni 2026 auf
+Antigravity CLI umgestellt; Enterprise-, Cloud- und API-Kompatibilität bleibt
+gesondert bestehen. Spec Kit führt `agy` und `gemini` weiterhin als getrennte
+Integrationen. Diese Evidence behandelt deshalb `agy` als aktives Ziel und
+Gemini CLI nur als Übergangs- beziehungsweise Enterprise-Kompatibilität. Die
+historische v0.1.0-Paketvalidierung bleibt unverändert wahr.
+
+Google transitioned Free, Pro, and Ultra Gemini CLI usage to Antigravity CLI on
+18 June 2026 while enterprise, Cloud, and API compatibility remains separate.
+Spec Kit still exposes `agy` and `gemini` as distinct integrations. This
+evidence therefore treats `agy` as the active target and Gemini CLI only as a
+transition or enterprise compatibility surface. The historical v0.1.0 package
+validation remains accurate.
+
+Quellen / Sources:
+[Google-Übergangsankündigung](https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/),
+[Spec-Kit-Integrationen](https://github.com/github/spec-kit/blob/main/docs/reference/integrations.md).
 
 Der vorhandene Codex-Skill `$speckit-autonomous` bleibt genau an seinem
 bisherigen Pfad. Sein Preset-Gegenstück ersetzt ihn noch nicht vollständig:
@@ -92,9 +111,10 @@ project-specific evidence also remain in place.
 | Prüfung | Erwartung | Ergebnis |
 |---|---|---|
 | `specify check` | Installation und Projektzustand gültig | Bestanden; Spec Kit 0.12.11 bereit |
+| Antigravity-Übergang | `agy` aktiv, keine lokale Gemini-CLI-Pflicht | Bestanden; `agy` 1.1.1 vorhanden, direkter `gemini`-Befehl nicht installiert, `agy`-Manifest und Preset-Registrierung vorhanden |
 | Preset `list`, `info`, `resolve` | Sieben aktivierte Presets in Priorität 10 bis 70 | Bestanden; Spec-, Plan- und Tasks-Kette enthalten alle sieben Layer |
 | Öffentlicher Payload-Vergleich | Installierter Preset-Inhalt entspricht dem Tag-ZIP | Bestanden; SHA-256 stimmt und `diff -ru` meldet keine Abweichung |
-| Skill- und Command-Eindeutigkeit | Beide Commands je unterstützter Oberfläche genau einmal | Bestanden; Codex/AGY teilen den eindeutigen Skill-Pfad, Claude, Copilot und OpenCode sind je Oberfläche eindeutig |
+| Skill- und Command-Eindeutigkeit | Beide Commands je unterstützter Oberfläche genau einmal | Bestanden; Codex/Antigravity teilen den eindeutigen Skill-Pfad, Claude, Copilot und OpenCode sind je Oberfläche eindeutig |
 | Codex-Override-Integrität | Projekt-Skill entspricht dem Stand vor der Installation | Bestanden; `SKILL.md` bleibt `919ebb6c...d557`, `openai.yaml` bleibt `e6e65ee0...acff0` |
 | Agent-Parität | Gemeinsame Adoption-Regel auf fünf Agent-Flächen synchron | Bestanden; deutsche und englische Regel erscheinen je Datei genau einmal |
 | Template-Auflösung | Autonomie-Addenda sind in den aufgelösten Templates sichtbar | Bestanden für `spec-template`, `plan-template` und `tasks-template` |
