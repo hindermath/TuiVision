@@ -47,4 +47,13 @@
     <ProjectReference Include="..\..\examples\TProgB\TProgB.csproj" />
   </ItemGroup>
 
+  <!-- Wave-3 visible editor/help/resource/compiler examples -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\examples\BHelp\BHelp.csproj" />
+    <ProjectReference Include="..\..\examples\HelpDemo\HelpDemo.csproj" />
+    <ProjectReference Include="..\..\examples\I18n\I18n.csproj" />
+    <ProjectReference Include="..\..\examples\TvEdit\TvEdit.csproj" />
+    <ProjectReference Include="..\..\examples\TvHc\TvHc.csproj" />
+  </ItemGroup>
+
 </Project>

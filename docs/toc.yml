@@ -40,3 +40,13 @@
           href: guides/examples/tcombo.md
         - name: TProgB
           href: guides/examples/tprogb.md
+        - name: TvEdit
+          href: guides/examples/tvedit.md
+        - name: BHelp
+          href: guides/examples/bhelp.md
+        - name: HelpDemo
+          href: guides/examples/helpdemo.md
+        - name: I18n
+          href: guides/examples/i18n.md
+        - name: TvHc
+          href: guides/examples/tvhc.md
