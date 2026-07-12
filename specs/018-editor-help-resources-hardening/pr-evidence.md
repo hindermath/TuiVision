@@ -33,7 +33,7 @@ all edits under `tv203s/`.
 | Analyze | 2 | Pass | 26/26 FR, 13/13 CR, 10/10 SC; zero Critical/High/Medium; zero unmapped | None |
 | Implement | 1 | Pass | T001-T091 | Local implementation complete; delivery tasks remain |
 | Validate | 1 | Pass | Validation and Success Criteria tables | None |
-| Deliver | 1 | Pass | PR #42; merge `271b85b`; remote table | Closeout ledger PR only |
+| Deliver | 1 | Pass | PR #42; merge `271b85b`; closeout PR #43; remote table | None |
 
 `speckit-taskstoissues` is `N/A`: a single dependency-ordered PR is the accepted
 delivery unit; creating 99 remote issues would add state without proof value.
@@ -204,6 +204,7 @@ clear blocks `NoCommentNeeded`, and no `FollowUpHardening`.
 | Admin bypass | Pass, bounded | All checks green and zero threads; bypass applied only to `REVIEW_REQUIRED` human approval, documented in PR comment `#issuecomment-4949243025` |
 | Remote branch | Pass | `origin/018-editor-help-resources-hardening` deleted and fetch-pruned |
 | Local `main` sync | Pass | Clean `main`; `HEAD == origin/main == 271b85bf17b740fe64a739c4c4e4e97567e4b391` |
+| Post-merge closeout | Pass | Non-empty documentation PR #43 records facts that became final only after feature merge; T099 complete |
 
 ## Retrospective
 
@@ -221,6 +222,6 @@ clear blocks `NoCommentNeeded`, and no `FollowUpHardening`.
   generation to batch project-local red boundaries and require every delivery
   task to name its evidence path. The latter already prevented four malformed
   remote tasks during Analyze remediation.
-- **Resume state**: Feature PR #42 is merged and local `main` is synchronized.
-  This closeout branch records the post-merge facts; next is the 018
-  Home-Baseline `PresetFollowUp` workitem.
+- **Resume state**: Feature PR #42 is merged and closeout PR #43 records all
+  post-merge facts. All 99 tasks are complete; next is the 018 retrospective
+  and Home-Baseline `PresetFollowUp` workitem.
