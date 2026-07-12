@@ -115,6 +115,27 @@ smoke with state, view, and buffer proof.
 
 ---
 
+## Wave-4-Beispiele / Wave 4 Examples
+
+Feature `022-wave4-visual-component-porting` macht Terminal-, Charset-, Font-
+und Resource-Zustände sichtbar. Die Beispiele verwenden die kontrollierten
+Verträge aus Feature 021 und verändern keine Host-Terminal-, Font-, Codepage-
+oder Keyboard-Einstellung.
+
+Feature `022-wave4-visual-component-porting` makes terminal, charset, font, and
+resource states visible. The examples use the controlled Feature-021 contracts
+and do not change host terminal, font, codepage, or keyboard settings.
+
+| Verwalteter Name / Managed Name | Startbefehl / Launch Command | Sichtbarer Pfad und Grenze / Visible Path and Boundary |
+|---|---|---|
+| `Terminal` | `dotnet run --project examples/Terminal` | Echte `TTerminalView`, kontrollierte Eingabe, Cursor, Ablehnung/Recovery und `Unsupported`-Fallback; kein Prozess, keine Shell und kein PTY. |
+| `Cyrillic` | `dotnet run --project examples/Cyrillic` | Beschriftete KOI8-R-/Unicode-Zellen und vier Mappingzustände über feste Framework-Tabelle; keine Host-Locale- oder Codepage-Änderung. |
+| `Fonts` | `dotnet run --project examples/Fonts` | Projektkontrollierte rohe 8x16-Fixture, Metadaten, Glyphenraster und sichtbare Fallbackklassen; keine Fontinstallation oder Generatorausführung. |
+| `ETerm` | `dotnet run --project examples/ETerm` | Unveränderliches Manifest aus Menü-, Theme- und Präsentationswerten mit `Unsupported`-Fallback; kein Legacy-Parser, Spawn, Save oder Host-Theme. |
+| `XTerm` | `dotnet run --project examples/XTerm` | Unveränderliches Ressourcen-/Sequenzmanifest mit nativer Resource-Fallbackgrenze; keine X-Datenbank, terminfo-Auswertung oder externe Kommandos. |
+
+---
+
 ## Didaktische Begleitdokumentation / Didactic companion documentation
 
 Die Anleitungen für diese Beispiele befinden sich unter `docs/guides/examples/`:
@@ -141,6 +162,11 @@ Guides for these examples are located under `docs/guides/examples/`:
 - `docs/guides/examples/helpdemo.md`
 - `docs/guides/examples/i18n.md`
 - `docs/guides/examples/tvhc.md`
+- `docs/guides/examples/terminal.md`
+- `docs/guides/examples/cyrillic.md`
+- `docs/guides/examples/fonts.md`
+- `docs/guides/examples/eterm.md`
+- `docs/guides/examples/xterm.md`
 
 ---
 

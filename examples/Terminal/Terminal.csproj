@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TuiVision.Examples.Terminal</RootNamespace>
+    <AssemblyName>Terminal</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Shared\Wave4Runtime.cs" Link="Wave4Runtime.cs" />
+    <ProjectReference Include="..\..\src\TuiVision.Core\TuiVision.Core.csproj" />
+    <ProjectReference Include="..\..\src\TuiVision.Controls\TuiVision.Controls.csproj" />
+    <ProjectReference Include="..\..\src\TuiVision.Drivers.Console\TuiVision.Drivers.Console.csproj" />
+  </ItemGroup>
+</Project>

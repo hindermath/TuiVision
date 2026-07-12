@@ -54,3 +54,13 @@
           href: guides/examples/i18n.md
         - name: TvHc
           href: guides/examples/tvhc.md
+        - name: Terminal
+          href: guides/examples/terminal.md
+        - name: Cyrillic
+          href: guides/examples/cyrillic.md
+        - name: Fonts
+          href: guides/examples/fonts.md
+        - name: ETerm
+          href: guides/examples/eterm.md
+        - name: XTerm
+          href: guides/examples/xterm.md
