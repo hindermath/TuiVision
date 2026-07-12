@@ -188,6 +188,10 @@ retrospective.
 - Jede Remote- oder Delivery-Task nennt den konkreten Repository-Evidence-Pfad,
   der ihr Abnahmeergebnis aufnimmt. Ein nur implizites "Evidence ergänzen"
   reicht für Analyze und Resume nicht aus.
+- Remote-Gate-Fakten werden vor dem Merge tatsächlich geprüft, aber nicht auf
+  denselben Feature-Head committed, wenn dieser Commit den geprüften Head und
+  damit die Aussage sofort entwerten würde. Solche selbstinvalidierenden sowie
+  echte Post-Merge-Fakten erhalten genau einen benannten Closeout-Evidence-Pfad.
 
 - Shape tasks around independently reviewable outcomes, not individual table
   cells.
@@ -211,6 +215,10 @@ retrospective.
 - Every remote or delivery task names the exact repository evidence path that
   records its acceptance result. An implicit "record evidence" is insufficient
   for analysis and resume.
+- Verify remote gates before merge, but do not commit their current-head facts
+  onto that same feature branch when the commit would immediately invalidate
+  the reviewed head and its claim. Route such self-invalidating facts and true
+  post-merge facts to one named closeout evidence path.
 
 ## Validierungsmatrix / Validation Matrix
 
@@ -273,12 +281,14 @@ Ein `MergeAndSync`-Lauf endet mit:
 5. gelöschtem oder bewusst behaltenem Remote-Featurebranch,
 6. lokalem `main` mit `HEAD == origin/main`, sauberem Working Tree und Prune,
 7. einem Evidence-only-Closeout-PR nur dann, wenn Post-Merge-Fakten vorher nicht
-   wahrheitsgemäß dokumentiert werden konnten.
+   wahrheitsgemäß dokumentiert werden konnten oder der Evidence-Commit den
+   geprüften Head und damit seine eigene Aussage sofort entwerten würde.
 
 A `MergeAndSync` run ends with passing required checks, no actionable review
 threads, documented unavailable reviews, an authorized merge, branch cleanup,
 a clean local `main` equal to `origin/main`, and an evidence-only closeout PR
-only when post-merge facts could not truthfully be recorded earlier.
+only when post-merge facts could not truthfully be recorded earlier or the
+evidence commit would invalidate the reviewed head it claims to describe.
 
 ## Laufende Verfeinerung / Continuous Refinement
 

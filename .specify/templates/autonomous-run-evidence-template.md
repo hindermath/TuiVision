@@ -67,8 +67,10 @@ Allowed results are `Pass`, `Fail`, `Accepted`, `Deferred`, and `Open`.
 | Required checks | [Pass/N/A/Open] | [check summary] |
 | Review threads | [Pass/N/A/Open] | [thread count] |
 | Unavailable reviews | [None or limitation] | [quota/provider evidence] |
+| Reviewed head | [hash/N/A/Open] | [head whose checks and threads were verified] |
 | Merge | [Pass/N/A/Open] | [commit or rationale] |
 | Local `main` sync | [Pass/N/A/Open] | [`HEAD` and `origin/main`] |
+| Causal closeout | [Required/N/A/Open] | [exact evidence path and why an earlier commit would be impossible or self-invalidating] |
 
 ## Retrospective
 

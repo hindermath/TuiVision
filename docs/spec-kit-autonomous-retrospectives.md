@@ -73,3 +73,30 @@ Feature 020 verifies that the compile-surface check happens before the first
 red batch and that grouped negative cases still reduce administrative builds
 without hiding failure boundaries or ownership. The linked-source rule is
 triggered only if Feature 020 actually touches such source composition.
+
+## 020 Mouse Support and Interaction
+
+**Feature:** `020-mouse-support-interaction`
+**Feature-PR:** [#48](https://github.com/hindermath/TuiVision/pull/48)
+**Closeout-PR:** [#49](https://github.com/hindermath/TuiVision/pull/49)
+
+| Beobachtung | Entscheidung | Umsetzung oder Grenze |
+|---|---|---|
+| Der Compile-Surface-Check lief vor dem ersten Driver-Red-Batch; Imports, XML-Dokumentation, Harness, Fokus/Ownership und die nicht ausgelöste Linked-Source-Grenze waren vollständig benannt. | `NoPromotion` | Die in 019 korrigierte Regel ist im nächsten Feldlauf bestätigt. Linked Source war `N/A`, weil 020 keine Quelldatei in mehrere Assemblies linkt. |
+| Die vollständige Driver-Red-Matrix hielt malformed, range, phase, recovery und click-boundary als getrennte erwartete Fehler bei gemeinsamer Projekt-Ownership sichtbar. | `NoPromotion` | Die bereits nach 018/019 promovierte Bündelungsregel ist ein drittes Mal bestätigt und benötigt keine weitere lokale Änderung. |
+| Der Commit mit PR-URL und geprüftem Remote-Stand änderte den Feature-Head. Dadurch wurden die gerade dokumentierten Check-/Thread-Fakten sofort historisch und alle Pflichtchecks liefen erneut. | `RunbookClarification`, `SkillCorrection`, `TemplateCorrection`, `AgentPolicyCorrection`, `PresetFollowUp` mit `Promote` | Runbook, Skill, Tasks-/Evidence-Template und alle fünf Agentenflächen verlangen jetzt: Gates vor dem Merge prüfen, aber selbstinvalidierende Reviewed-Head-Fakten in genau einen benannten kausalen Closeout-Pfad legen. |
+| Die aktuelle Session war macOS, aber headless mit `TERM=dumb`; physische Terminal-Evidence wurde als `NotRun` statt als Pass geführt. | `FeatureSpecific` | Host-Vertrag und deterministische Injection sind grün. Physische macOS/Linux/WSL-Diversität bleibt eine ehrliche Host-Evidence-Grenze und wird nicht als allgemeine Automationsleistung behauptet. |
+| Copilot war wegen Nutzerquota erneut nicht verfügbar; Claude und alle Pflichtchecks waren grün, GraphQL meldete null Threads und nur Human Approval blieb offen. | `NoPromotion` | Die bestehende Berechtigungs- und Bypass-Grenze funktionierte bei Feature- und Closeout-PR unverändert. |
+
+### Nächster Prüfschritt / Next Check
+
+Feature 021 muss Remote-Checks und Threads vor dem Merge prüfen, darf deren
+aktuellen Head-Stand aber nicht durch einen weiteren Feature-Commit selbst
+entwerten. Tasks müssen den einen Closeout-Evidence-Pfad bereits vor dem Remote-
+Abschluss benennen. Ein Skript wird erst erwogen, wenn eine stackneutrale,
+deterministische Erkennung dieses Zustands nachgewiesen ist.
+
+Feature 021 must verify remote checks and threads before merge without
+invalidating that reviewed head through another feature commit. Tasks must name
+the single closeout evidence path before remote delivery. A script remains
+deferred until a stack-neutral deterministic detector is proven.

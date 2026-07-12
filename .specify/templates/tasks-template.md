@@ -54,6 +54,10 @@ description: "Task list template for feature implementation"
   review threads, branch cleanup, and proof that local `main` equals
   `origin/main`. Every remote or delivery task must name the exact repository
   evidence path that records its acceptance result.
+- Keep pre-merge gate verification explicit, but route current-head review
+  facts to one named closeout evidence path when committing those facts would
+  change the reviewed head and invalidate the evidence. Do not create repeated
+  evidence commits that each retrigger the same remote gates.
 - End with a short evidence retrospective that proposes concrete workflow
   refinements without silently changing the current feature scope.
 
