@@ -264,12 +264,12 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - After Feature 023 delivery, Wave 5 remains the next fachliche intake; do not start Feature 024 as part of this run.
 
 ### 024-tv203-freevision-conformance-audit
-- Current planning baseline: execute the audit-only feature from `specs/024-tv203-freevision-conformance-audit/` and `Lastenheft_08_TV203-FreeVision-Conformance-Audit.md`.
-- Borland documentation and `tv203s/` are primary historical intent; official Free Vision commit `ffc03b34d8cafb85ddcf0686de1c5551601dacb2` is external secondary evidence only and cannot override Borland.
-- Scope is inventory, contract decisions, source manifest, findings, pre-Wave-5 gate, evidence, and test-only completeness validation. No runtime, API, dependency, example, or historical-source change is permitted.
-- Every historical row, maintained source file, and exported public type gets unique inventory ownership; every contract gets exactly one primary decision and one Free Vision relation.
-- Only `BehavioralDrift` and `EvidenceGap` create findings. Features 025 and 026 exist only for non-empty accepted finding sets; Feature 027 is mandatory closure.
-- The external Free Vision worktree stays outside Git; no source, substantial excerpt, or mechanical translation enters the repository.
+- Current implementation status: audit-only Feature 024 is complete; final evidence is in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`.
+- Borland documentation and `tv203s/` remain primary; official Free Vision commit `ffc03b34d8cafb85ddcf0686de1c5551601dacb2` is external secondary evidence only.
+- The exact inventory is 151 historical `.cc` rows, 119 maintained production `.cs` files, 176 exported public types, 16 domains, and 48 contracts.
+- Decisions are 13 `Aligned`, 34 `IntentionalModernization`, 1 `ConsciouslyOmitted`, 0 `BehavioralDrift`, and 0 `EvidenceGap`; Free Vision relations are recorded independently.
+- `Core025` and `ComponentData026` owner sets are empty, so no Feature 025 or 026 branch or PR may be created. `027-pre-wave5-conformance-closure` is the mandatory next intake and Wave 5 remains blocked.
+- No runtime, API, dependency, package, example, generated-output, or historical-source change entered 024; the external Free Vision worktree remains outside Git.
 
 
 ### Autonomous Red-Proof Completeness

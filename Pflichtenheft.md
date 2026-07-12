@@ -6,7 +6,7 @@
 - [ ] Offen oder im Repository derzeit nicht belastbar nachweisbar
 
 Hinweis:
-Die Statusmarken in diesem Dokument basieren auf dem lokalen Repository-Stand vom 2026-03-23.
+Die Statusmarken in diesem Dokument basieren auf dem lokalen Repository-Stand vom 2026-07-12.
 Externe GitHub-Einstellungen oder nicht versionierte Nachweisartefakte sind nur dann als erledigt markiert, wenn sie im Repository direkt belegbar sind.
 
 ## 1. Zweck und Geltungsbereich
@@ -264,8 +264,8 @@ Statuscheckliste Beispielwellen:
   Reihenfolgehinweis: abgeschlossen (Branch `021-terminal-charset-hardening`); kontrollierte Terminal-Session, begrenztes Emulations-Subset, KOI8-R-/Unicode-Mapping, rohe 8x16-Fixture, geschlossene Profile und App-Loop-/Cell-Proof sind frameworkweit nachgewiesen.
 - [x] **Welle 4 - Visual Component Porting**
   Reihenfolgehinweis: abgeschlossen (Branch `022-wave4-visual-component-porting`); `terminal`, `cyrillic`, `fonts`, `eterm` und `xterm` sind sichtbare Drei-Schichten-Demos mit App-Loop-, Zustands-, View- und Buffer-/Cell-Proof sowie ehrlichen Host-Fallbacks.
-- [ ] **Pre-Wave-5 Framework-Konformitätsaudit und Findings-Härtung**
-  Reihenfolgehinweis: Feature `024-tv203-freevision-conformance-audit` prüft zuerst das vollständige Framework ohne Runtime-Änderung gegen Borland/`tv203s` und sekundär gegen einen gepinnten Free-Vision-Stand. Nur nicht leere akzeptierte Findings dürfen 025 oder 026 erzeugen; Feature 027 schließt das Gate.
+- [-] **Pre-Wave-5 Framework-Konformitätsaudit und Findings-Härtung**
+  Reihenfolgehinweis: Feature `024-tv203-freevision-conformance-audit` hat 48 Framework-Verträge ohne `BehavioralDrift`- oder `EvidenceGap`-Finding geprüft. Die findings-basierten Features 025 und 026 werden deshalb nicht angelegt. Feature `027-pre-wave5-conformance-closure` bleibt als nächster verpflichtender Gate-Abschluss offen; bis dahin bleibt Welle 5 gesperrt. Der Nachweis liegt in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`.
 - [ ] **Welle 5 - Turbo-Pascal-Demos aus TP7 (`TVDEMOS/`)**
   Reihenfolgehinweis: erst nach Abschluss der MUSS-Wellen 1 bis 4 und bestandenem `027-pre-wave5-conformance-closure`; bevorzugt nach stabilen Portierungen von `tvdemo`, `tvedit`, Hilfesystem und Dialogschicht.
 - [ ] **Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`**
