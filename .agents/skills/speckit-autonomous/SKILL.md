@@ -116,7 +116,15 @@ Use a closeout PR only when post-merge facts cannot truthfully be recorded
 before the main merge or when committing current review/check facts would
 change the reviewed head and immediately invalidate those facts. Verify every
 gate before merge, name one exact closeout evidence path in advance, keep the
-closeout evidence-only, and state why it was causally necessary.
+closeout evidence-only, and state why it was causally necessary. Keep it
+single-commit-capable by omitting any requirement to write its own PR URL,
+reviewed-head result, or merge commit back into the same repository file;
+verify those terminal facts externally without a recursive closeout.
+
+If push and pull-request events start equivalent workflow sets, use the
+pull-request-context checks as the delivery gate and record the duplicate runs
+as operational noise. Do not cancel them unless the repository has an explicit
+safe workflow or concurrency contract.
 
 ## Finish
 

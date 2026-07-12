@@ -57,7 +57,12 @@ description: "Task list template for feature implementation"
 - Keep pre-merge gate verification explicit, but route current-head review
   facts to one named closeout evidence path when committing those facts would
   change the reviewed head and invalidate the evidence. Do not create repeated
-  evidence commits that each retrigger the same remote gates.
+  evidence commits that each retrigger the same remote gates. A closeout task
+  must not require its own PR URL, reviewed-head result, or merge commit inside
+  the same repository file; those terminal facts are verified externally.
+- If push and pull-request events can start equivalent checks, add one task to
+  identify the pull-request-context gate and record duplicate runs without
+  cancelling them unless an explicit safe concurrency contract exists.
 - End with a short evidence retrospective that proposes concrete workflow
   refinements without silently changing the current feature scope.
 

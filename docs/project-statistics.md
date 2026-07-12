@@ -19,6 +19,10 @@ sichtbare Drei-Schichten-Demos. Deterministische In-Process-Evidence bleibt von
 physischer Hostbeobachtung getrennt; native Ressourcen erhalten ehrliche
 textorientierte Fallbacks.
 
+Der 022-Closeout und die anschließende Retrospektive härten den autonomen
+Remote-Abschluss: ein Evidence-Closeout bleibt ohne Selbstreferenz ein Commit,
+und doppelte Push-/PR-Workflow-Sätze werden als operatives Rauschen klassifiziert.
+
 ## Zweck und Pflege
 
 Diese Datei ist das fortlaufende Statistik-Register fuer TuiVision. Sie wird
@@ -648,6 +652,7 @@ fortgeschrieben.
 | 2026-07-12 | Lernende Nacharbeit nach autonomem Feature 020 | Der dritte Feldlauf bestätigt Compile-Surface-Check und projektlokale Red-Matrix. Neu korrigiert wird eine Evidence-Schleife: Ein Commit mit aktuellem Check-/Thread-Stand ändert den geprüften Head und entwertet seine eigene Aussage. Runbook, `$speckit-autonomous`, Tasks-/Evidence-Template und alle fünf Agentenflächen prüfen die Gates deshalb weiter vor dem Merge, legen selbstinvalidierende Reviewed-Head- und echte Post-Merge-Fakten aber in genau einen benannten kausalen Closeout-Pfad. Änderungsvolumen vor dieser Statistikzeile: `+65/-14` reine Dokumentations-, Skill-, Template-, Guidance- und Feature-Evidence-Zeilen, kein Produktions- oder Testcode. Konservative Manualreferenz: `0,8` Tage beziehungsweise `6,3` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `0,5` Tage beziehungsweise `4,1` Stunden bei 125 Zeilen/Tag. Validierung: Skill-Schema, `specify check`, sechs Presets, 5/5 Agentenparität, 31 eindeutige numerische Template-Task-IDs, Diff- und Secret-Prüfung, DocFX zweimal mit 0 Warnungen/0 Fehlern, Playwright/axe 2/2 und UTF-8-`lynx`-Review bestanden. Kein .NET-Build, Test oder Coverage-Lauf wurde ausgelöst, weil keine ausführbare Logik betroffen ist. Ein stackneutraler Detektor ist noch nicht belegt; deshalb wird kein neues Skript eingeführt. |
 | 2026-07-12 | `/speckit-autonomous` für `021-terminal-charset-hardening` | Feature 021 liefert `TerminalSession` mit begrenztem C0-/CSI-Subset, 4.096-Zellen-FIFO, atomarer Recovery und Lifecycle, eine feste KOI8-R-Tabelle mit U+FFFD, die exakte rohe 8x16/256/4.096-Byte-Fixture, geschlossene `System.Text.Json`-Profile und ein `TTerminalView` mit Profil-/Capability-Status, Cursor und App-Loop-/Cell-Proof. Der Vor-Commit-Snapshot ohne diese Statistikzeile umfasst `+1580/-6` Produktionscode, `+933/-6` Tests, `+2120/-4` Dokumentation/Evidence/Guidance und `+4/-4` Metadaten, zusammen `+4637/-20` beziehungsweise `4617` Nettozeilen. Konservative Manualreferenz für 4637 hinzugefügte oder aktualisierte Zeilen: `58,0` Tage beziehungsweise `452,1` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `37,1` Tage beziehungsweise `289,3` Stunden bei 125 Zeilen/Tag. Sichtbares Arbeitsfenster ist der autonome Lauf am 2026-07-12; `58,0x` und `37,1x` beschreiben Lieferdichte, keine Stoppuhrzeit. Lokale Abnahme: 51/51 Driver-, 314/314 Controls- und 18/18 Compatibility-Targeted-Tests, 640/640 Volltests, Coverage Core 89,78 %, Controls 83,42 %, Serialization 89,50 %, Compatibility 80,55 % und Drivers.Console 89,18 %, DocFX 0 Warnungen/0 Fehler, Playwright/axe 2/2 sowie UTF-8-`lynx`-Review. Die lokale Umgebung ist Darwin arm64 mit `TERM=dumb`; physische Host-Evidence bleibt deshalb ehrlich `NotRun`. Nächster Intake ist `Lastenheft_Wave4-Visual-Component-Porting.md`. |
 | 2026-07-12 | `/speckit-autonomous` für `022-wave4-visual-component-porting` | Feature 022 liefert `Terminal`, `Cyrillic`, `Fonts`, `ETerm` und `XTerm` als sichtbare Hauptkomponente mit echter `TStatusLine`, `Help -> Description`, kontrollierter Operation, Fallback sowie Zustands-, View- und Buffer-/Cell-Proof. Der Vor-Statistik-Snapshot umfasst `+962/-0` Produktionscode, `+588/-0` Tests, `+2007/-4` Markdown/Evidence/Guidance und `+166/-6` Projekt-/Tooling-Metadaten, zusammen `+3723/-10` beziehungsweise `3713` Nettozeilen. Konservative Manualreferenz für 3723 hinzugefügte oder aktualisierte Zeilen: `46,5` Tage beziehungsweise `362,9` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `29,8` Tage beziehungsweise `232,3` Stunden bei 125 Zeilen/Tag. Sichtbares Arbeitsfenster ist der autonome Lauf am 2026-07-12; `46,5x` und `29,8x` beschreiben Lieferdichte, keine Stoppuhrzeit. Lokale Abnahme: 137/137 vollständige Beispiel-Smokes, 662/662 Volltests, Coverage Core 89,78 %, Controls 83,42 %, Serialization 89,50 %, Compatibility 80,55 % und Drivers.Console 89,18 %, DocFX 0 Warnungen/0 Fehler, Playwright/axe 2/2 sowie UTF-8-`lynx` für alle fünf Guides. Die lokale Umgebung ist Darwin arm64 mit `TERM=dumb`; physische macOS-/Linux-/Windows-/WSL-Evidence bleibt ehrlich `NotRun`. Nächster Intake ist `Lastenheft_06_A11Y_Framework.md`. |
+| 2026-07-12 | Closeout und autonome Retrospektive nach Feature 022 | Der kausale Closeout-PR #54 blieb mit 75 Evidence-Zeilen genau ein Commit und schrieb seine eigene URL nicht zurück. Die anschließende Retro-Änderung umfasst vor Statistikpflege `+61/-3` Runbook-, Skill-, Template-, Agent- und Retrospektivzeilen, also 58 Nettozeilen. Zusammen sind dies `+136/-3` beziehungsweise 133 Nettozeilen ohne Runtime- oder Testcode. Konservative Manualreferenz: `1,7` Tage beziehungsweise `13,3` Stunden bei 80 Zeilen/Tag; Thorsten-Solo `1,1` Tage beziehungsweise `8,5` Stunden bei 125 Zeilen/Tag. Promoviert wurden der nicht rekursive Single-Commit-Closeout und die Klassifikation doppelter Push-/PR-Checks; Coverage-argv und Primary-Proof-Marker bleiben `ObserveAgain`. |
 
 ## Gesamtstatistik
 
@@ -657,19 +662,19 @@ nächsten Statistiklauf eine dokumentierte Momentaufnahme.
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | 234363 Zeilen |
+| Artefaktbasis gesamt | 234528 Zeilen |
 | Produktions- und Testcode zusammen | 44486 Zeilen (19.0 %) |
-| Dokumentationsanteil | 189877 Zeilen (81.0 %) |
-| Spec-Kit-Anteil innerhalb der Doku | 49465 Zeilen (26.1 %) |
-| Zentrale Governance-/Agent-Dateien | 2633 Zeilen (1.4 % der Doku) |
-| Projektgebundene Agent-Skills | 2415 Zeilen (1.3 % der Doku) |
+| Dokumentationsanteil | 190042 Zeilen (81.0 %) |
+| Spec-Kit-Anteil innerhalb der Doku | 49565 Zeilen (26.1 %) |
+| Zentrale Governance-/Agent-Dateien | 2648 Zeilen (1.4 % der Doku) |
+| Projektgebundene Agent-Skills | 2425 Zeilen (1.3 % der Doku) |
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-12 |
-| Git-Commits / sichtbare Aktivtage | 460 / 69 |
-| Gesamtzeilen pro sichtbarem Aktivtag | 3396.6 |
-| Gesamtzeilen pro Commit | 509.5 |
-| Konservative Einzelentwickler-Untergrenze | 2929.5 Arbeitstage / 22850.4 Stunden |
-| Thorsten-Solo-Untergrenze | 1874.9 Arbeitstage / 14624.3 Stunden |
-| Kleines 3er-Team mit Koordinationsaufschlag | 1171.8 Arbeitstage |
+| Git-Commits / sichtbare Aktivtage | 464 / 69 |
+| Gesamtzeilen pro sichtbarem Aktivtag | 3399.0 |
+| Gesamtzeilen pro Commit | 505.4 |
+| Konservative Einzelentwickler-Untergrenze | 2931.6 Arbeitstage / 22866.5 Stunden |
+| Thorsten-Solo-Untergrenze | 1876.2 Arbeitstage / 14634.5 Stunden |
+| Kleines 3er-Team mit Koordinationsaufschlag | 1172.6 Arbeitstage |
 | Repo-Speedup gegen 80-Zeilen-Referenz | 42.5x |
 | Repo-Speedup gegen Thorsten-Referenz | 27.2x |
 
@@ -692,7 +697,7 @@ compare visible scope with Git active days and do not measure personal time.
 Artefaktmix nach Snapshot (Zeilen)
 Produktion     | ####                          |  26663 | 11.4 %
 Tests          | ###                           |  17823 |  7.6 %
-Dokumentation  | ##############################| 189877 | 81.0 %
+Dokumentation  | ##############################| 190042 | 81.0 %
 ```
 
 Die Balken verwenden dieselbe Skala. Die Zahlen bleiben der genaue,
@@ -729,6 +734,8 @@ Branch-/Phasenvolumen nach dokumentierter Netto-Basis (Zeilen)
 23 020i | #####                |  3584
 24 021i | #######              |  4617
 25 022i | ######               |  3713
+26 022c | #                    |    75
+27 022r | #                    |    58
 ```
 
 Feature 017 kombiniert einen kleinen beispielinternen Runtime-Anteil mit einer
@@ -786,6 +793,8 @@ Konservative Handarbeits-Referenz je dokumentierter Phase
 23 020i | #####                |  44.8 d
 24 021i | #######              |  57.7 d
 25 022i | ######               |  46.4 d
+26 022c | #                    |   0.9 d
+27 022r | #                    |   0.7 d
 ```
 
 Die Referenz rechnet den Netto-Phasenumfang mit 80 Zeilen pro Arbeitstag. Für
@@ -820,6 +829,10 @@ AUTO125 | ###                            |  5.0x
 021i125 | ###################            | 37.1x
 022i-80 | ########################       | 46.5x
 022i125 | ###############                | 29.8x
+022c-80 | #                              |  0.9x
+022c125 | #                              |  0.6x
+022r-80 | #                              |  0.8x
+022r125 | #                              |  0.5x
 ```
 
 Die 017-, AUTO-, 018-, 019-, 020-, 021- und 022-Werte beziehen sich jeweils auf einen sichtbaren autonomen
@@ -832,8 +845,8 @@ waiting phases.
 
 ```text
 Vergleich Gesamtaufwand / sichtbares KI-Lieferfenster
-Erfahren    | ############################## | 2929.5 d
-Thorsten    | ###################            | 1874.9 d
+Erfahren    | ############################## | 2931.6 d
+Thorsten    | ###################            | 1876.2 d
 KI sichtbar | #                              |   69.0 d
 ```
 
@@ -872,7 +885,7 @@ X/Y: Phasenvolumen 16..31 (Y ungefähr in Zeilen)
 1500 |                                |
  600 |*       *                       |
  300 |  *                             |
-   0 |                                |
+   0 |                    * *         |
      +--------------------------------+
       G H I J K L M N O P Q R S T U V
       16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
@@ -881,10 +894,10 @@ X/Y: Phasenvolumen 16..31 (Y ungefähr in Zeilen)
 Die beiden Blöcke zeigen den Verlauf ohne eine zu breite Zeile. G bis J stehen
 für die Phasen 16 bis 19, K für die autonome Standardisierung, L für Feature
 018, M für Feature 019, N für Feature 020, O für Feature 021 und P für Feature
-022; alle späteren Slots sind bewusst leer.
+022, Q für den Closeout und R für die Retrospektive; alle späteren Slots sind bewusst leer.
 
 The two blocks show progression without an overly wide line. G through J
 represent phases 16 through 19, K represents autonomous standardization, L
 represents Feature 018, M represents Feature 019, N represents Feature 020, O
-represents Feature 021, and P represents Feature 022; all later slots are
-intentionally empty.
+represents Feature 021, P represents Feature 022, Q represents closeout, and R
+represents the retrospective; all later slots are intentionally empty.

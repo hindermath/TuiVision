@@ -70,7 +70,8 @@ Allowed results are `Pass`, `Fail`, `Accepted`, `Deferred`, and `Open`.
 | Reviewed head | [hash/N/A/Open] | [head whose checks and threads were verified] |
 | Merge | [Pass/N/A/Open] | [commit or rationale] |
 | Local `main` sync | [Pass/N/A/Open] | [`HEAD` and `origin/main`] |
-| Causal closeout | [Required/N/A/Open] | [exact evidence path and why an earlier commit would be impossible or self-invalidating] |
+| Causal closeout | [Required/N/A/Open] | [exact evidence path and why an earlier commit would be impossible or self-invalidating; omit the closeout's own URL/head/merge from that file and verify terminal facts externally] |
+| Duplicate workflow events | [Observed/N/A] | [identify the pull-request-context gate; record equivalent push runs as noise unless a safe repository concurrency contract exists] |
 
 ## Retrospective
 
