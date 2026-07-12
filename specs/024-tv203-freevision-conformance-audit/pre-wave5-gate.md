@@ -4,16 +4,17 @@
 
 | Gate | State | Rationale / Begründung |
 |---|---|---|
-| Feature 024 audit | Pass pending final local and remote delivery gates | Inventory, decisions, second opinion, and finding cardinality are complete |
-| Wave 5 | Blocked | Mandatory Feature 027 closure has not yet rerun integration and release gates |
+| Feature 024 audit | Pass | Inventory, decisions, second opinion, and finding cardinality are complete |
+| Feature 027 local closure | Pass pending remote delivery | Exact audit revalidation and all local release gates passed |
+| Wave 5 | Blocked pending Feature 027 merge | No technical local blocker remains; the reviewed merge is the final release boundary |
 
 Deutsch: Das Audit findet keine bestätigte Runtime-Abweichung und keine
-Nachweislücke. Wave 5 bleibt trotzdem gesperrt, bis Feature 027 die vollständige
-Integration auf dem gemergten Stand erneut prüft und formell freigibt.
+Nachweislücke. Feature 027 hat die vollständige Integration lokal erneut
+geprüft. Wave 5 bleibt bis zum reviewten Merge von Feature 027 gesperrt.
 
-English: The audit finds no confirmed runtime drift and no evidence gap. Wave 5
-still remains blocked until Feature 027 reruns complete integration on the
-merged baseline and grants formal release.
+English: The audit finds no confirmed runtime drift and no evidence gap.
+Feature 027 has rerun complete integration locally. Wave 5 remains blocked
+until the reviewed Feature-027 merge grants formal release.
 
 ## Eigentümermengen / Owner Sets
 

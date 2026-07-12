@@ -46,7 +46,7 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 18 | `Lastenheft_04_MouseSupportAndInteraction.020-mouse-support-interaction.md` | Weitere Anforderungen | archiviert oder abgeschlossen / archived or completed |
 | 19 | `Lastenheft_05_TerminalCharsetAndEmulation.021-terminal-charset-hardening.md` | Weitere Anforderungen | archiviert oder abgeschlossen / archived or completed |
 | 20 | `Lastenheft_08_TV203-FreeVision-Conformance-Audit.024-tv203-freevision-conformance-audit.md` | Framework-Konformitätsaudit | archiviert oder abgeschlossen / archived or completed |
-| 21 | `Lastenheft_09_Pre-Wave5-Conformance-Closure.md` | Pre-Wave-5-Konformitätsabschluss | nächster Intake / next intake |
+| 21 | `Lastenheft_09_Pre-Wave5-Conformance-Closure.027-pre-wave5-conformance-closure.md` | Pre-Wave-5-Konformitätsabschluss | archiviert oder abgeschlossen / archived or completed |
 <!-- secure-development-hardening-order:end -->
 
 ## Verbindliche Folge vor Wave 5 / Binding Sequence Before Wave 5
@@ -57,11 +57,11 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
    akzeptierte Core-Finding-Menge leer ist.
 3. `026-component-data-conformance-hardening` wird nicht angelegt, weil die
    akzeptierte Component-/Data-Finding-Menge leer ist.
-4. `027-pre-wave5-conformance-closure` ist der nächste verpflichtende Intake
-   und prüft Audit, Integration und Gates erneut.
-5. Wave 5 beginnt erst nach bestandenem Feature 027, voraussichtlich als
-   Feature 028.
+4. `027-pre-wave5-conformance-closure` hat Audit, Integration und lokale Gates
+   erneut bestanden; sein reviewter Merge ist die letzte Freigabegrenze.
+5. Wave 5 ist danach der nächste fachliche Intake, voraussichtlich als Feature
+   028.
 
 *Feature 024 completed 48 contract decisions without a drift or evidence-gap
-finding. Features 025 and 026 are therefore suppressed. Feature 027 is the next
-mandatory closure gate, and Wave 5 starts only afterwards.*
+finding. Features 025 and 026 are therefore suppressed. Feature 027 passed its
+local closure gates; after its reviewed merge, Wave 5 is the next intake.*

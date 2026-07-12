@@ -264,8 +264,8 @@ Statuscheckliste Beispielwellen:
   Reihenfolgehinweis: abgeschlossen (Branch `021-terminal-charset-hardening`); kontrollierte Terminal-Session, begrenztes Emulations-Subset, KOI8-R-/Unicode-Mapping, rohe 8x16-Fixture, geschlossene Profile und App-Loop-/Cell-Proof sind frameworkweit nachgewiesen.
 - [x] **Welle 4 - Visual Component Porting**
   Reihenfolgehinweis: abgeschlossen (Branch `022-wave4-visual-component-porting`); `terminal`, `cyrillic`, `fonts`, `eterm` und `xterm` sind sichtbare Drei-Schichten-Demos mit App-Loop-, Zustands-, View- und Buffer-/Cell-Proof sowie ehrlichen Host-Fallbacks.
-- [-] **Pre-Wave-5 Framework-Konformitätsaudit und Findings-Härtung**
-  Reihenfolgehinweis: Feature `024-tv203-freevision-conformance-audit` hat 48 Framework-Verträge ohne `BehavioralDrift`- oder `EvidenceGap`-Finding geprüft. Die findings-basierten Features 025 und 026 werden deshalb nicht angelegt. Feature `027-pre-wave5-conformance-closure` bleibt als nächster verpflichtender Gate-Abschluss offen; bis dahin bleibt Welle 5 gesperrt. Der Nachweis liegt in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`.
+- [x] **Pre-Wave-5 Framework-Konformitätsaudit und Findings-Härtung**
+  Reihenfolgehinweis: Feature `024-tv203-freevision-conformance-audit` hat 48 Framework-Verträge ohne `BehavioralDrift`- oder `EvidenceGap`-Finding geprüft; die findings-basierten Features 025 und 026 wurden deshalb nicht angelegt. Feature `027-pre-wave5-conformance-closure` hat die exakten Audit-Mengen und alle lokalen Release-Gates erneut bestanden. Welle 5 wird mit dem reviewten 027-Merge als nächster Intake freigegeben. Die Nachweise liegen unter `specs/024-tv203-freevision-conformance-audit/` und `specs/027-pre-wave5-conformance-closure/`.
 - [ ] **Welle 5 - Turbo-Pascal-Demos aus TP7 (`TVDEMOS/`)**
   Reihenfolgehinweis: erst nach Abschluss der MUSS-Wellen 1 bis 4 und bestandenem `027-pre-wave5-conformance-closure`; bevorzugt nach stabilen Portierungen von `tvdemo`, `tvedit`, Hilfesystem und Dialogschicht.
 - [ ] **Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`**
@@ -675,12 +675,12 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
      - **PF-A11Y-004**: Jede inventarisierte fokussierbare Control-Familie besitzt für Tab, Shift+Tab, Pfeile, Enter und Direkt-Shortcut einen automatisierten Proof oder ein begründetes `N/A`.
      - **PF-A11Y-005**: `TColorScheme.HighContrast` ist explizit aktivierbar; der aktive Modus bleibt zusätzlich textbasiert erkennbar.
      - **PF-A11Y-006**: DocFX-Seiten werden im vorhandenen Pages-Workflow bei `main` und Pull Requests mit Playwright/Axe geprüft; Fehler blockieren den Nachweis.
-   - `3.6` = TV203-/Free-Vision-Konformitätsaudit — NÄCHSTER SCHRITT (Feature `024-tv203-freevision-conformance-audit`)
-   - `3.6a` = Core-Runtime-Konformitätshärtung — nur bei nicht leeren Findings aus 024 (Feature 025)
-   - `3.6b` = Component-/Data-Konformitätshärtung — nur bei nicht leeren Findings aus 024 (Feature 026)
-   - `3.6c` = Pre-Wave-5-Konformitätsabschluss — verpflichtendes Gate (Feature 027)
+   - `3.6` = TV203-/Free-Vision-Konformitätsaudit — ✓ ABGESCHLOSSEN (Feature `024-tv203-freevision-conformance-audit`)
+   - `3.6a` = Core-Runtime-Konformitätshärtung — ENTFÄLLT, Finding-Menge leer (Feature 025 nicht angelegt)
+   - `3.6b` = Component-/Data-Konformitätshärtung — ENTFÄLLT, Finding-Menge leer (Feature 026 nicht angelegt)
+   - `3.6c` = Pre-Wave-5-Konformitätsabschluss — ✓ LOKAL BESTANDEN, Merge-Gate offen (Feature 027)
 
->>> NAECHSTER SCHRITT <<< Feature 024 als reines Framework-Konformitätsaudit ausführen. Wave 5 beginnt erst nach dem findings-basierten Hardening und bestandenem Feature 027.
+>>> NAECHSTER SCHRITT <<< Feature 027 reviewen und mergen; danach Wave 5 als nächsten fachlichen Intake beginnen.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

@@ -263,6 +263,13 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - `Core025` and `ComponentData026` owner sets are empty, so no Feature 025 or 026 branch or PR may be created. `027-pre-wave5-conformance-closure` is the mandatory next intake and Wave 5 remains blocked.
 - No runtime, API, dependency, package, example, generated-output, or historical-source change entered 024; the external Free Vision worktree remains outside Git.
 
+### 027-pre-wave5-conformance-closure
+- Current implementation status: the mandatory local closure is complete; final evidence is in `specs/027-pre-wave5-conformance-closure/closure-evidence.md`.
+- The merged Feature-024 baseline revalidated exactly: 16 domains, 48 contracts, inventories 151/119/176, 15 external source records, 94 proof references, decisions 13/34/1/0/0, and zero findings.
+- Features 025 and 026 remain suppressed because their accepted owner sets are empty. Any later drift or evidence gap requires a reviewed audit revision rather than an implicit runtime repair.
+- Focused audit, 698/698 full Release tests, all five coverage gates, format, DocFX/Axe/Lynx, secret, and protected-scope checks passed locally.
+- No runtime, public API, dependency, package, example behavior, historical source, or Wave-5 implementation change entered 027. Wave 5 is the next fachliche intake after the reviewed 027 merge.
+
 
 ### Autonomous Red-Proof Completeness
 - Before the first red test batch, review imports, public XML docs, harness helpers, focus/ownership assertions, and linked-source assembly identity.
