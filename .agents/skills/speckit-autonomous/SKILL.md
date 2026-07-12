@@ -94,8 +94,16 @@ DocFX plus web-A11Y path for triggered documentation surfaces, script parity
 for scripts, and app-loop plus state/view/rendering proof for visual UI work.
 
 Perform static review before test batches. Increment the manual build counter
-before every `dotnet build` or `dotnet test`, but batch related tests so repeated
+before every `dotnet build` or `dotnet test`. One increment authorizes exactly
+one explicit build or test invocation; do not chain multiple invocations behind
+one counter update. Batch related tests inside that invocation so repeated
 commands add evidence rather than administrative churn.
+
+Invoke repository validation helpers with an explicit repository root. Accept a
+helper result only when its exit status has the required value and its error
+channel contains no PowerShell error record, shell command-not-found message, or
+equivalent fatal signature. A nominal zero exit status does not override such an
+error; record the helper as failed and route the defect to bounded remediation.
 
 ## Deliver
 

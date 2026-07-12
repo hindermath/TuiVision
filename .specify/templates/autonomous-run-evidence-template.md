@@ -58,6 +58,15 @@ Allowed results are `Pass`, `Fail`, `Accepted`, `Deferred`, and `Open`.
 | `git diff --check` | Always | Open | [output summary] |
 | [command] | [scope trigger] | [Pass/Fail/N/A] | [summary and path] |
 
+For every repository validation helper, record the explicit repository root,
+exit status, and error-channel review. A zero exit status with a PowerShell
+error record, command-not-found message, or equivalent fatal signature is a
+failure, not a pass.
+
+For every explicit `dotnet build` or `dotnet test`, record the immediately
+preceding manual build-counter value. One counter increment covers exactly one
+invocation.
+
 ## Remote Delivery
 
 | Item | Result | Evidence |

@@ -49,6 +49,12 @@ description: "Task list template for feature implementation"
   agent-guidance, or the same source/test file. Do not mark them `[P]`.
 - Add trigger-based validation tasks and an explicit rationale for every
   conditional gate that is not run.
+- Give every explicit `dotnet build` or `dotnet test` invocation its own prior
+  manual build-counter increment. Do not place multiple invocations behind one
+  increment, including through shell chaining.
+- Invoke repository validation helpers with an explicit repository root. Their
+  acceptance task must inspect both exit status and the error channel for
+  PowerShell error records, command-not-found messages, or fatal signatures.
 - Add remote delivery tasks only when `plan.md` delegates `PublishPR` or
   `MergeAndSync`. Merge-and-sync tasks must include required checks, actionable
   review threads, branch cleanup, and proof that local `main` equals

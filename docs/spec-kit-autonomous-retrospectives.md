@@ -126,3 +126,31 @@ Feature 023 verifies that closeout remains one commit without self-reference
 and that duplicate workflow sets are classified correctly. Coverage argv and
 the primary-proof marker remain observations until a second field run justifies
 promotion.
+
+## 023 A11Y Framework
+
+**Feature:** `023-a11y-framework`
+**Feature-PR:** [#56](https://github.com/hindermath/TuiVision/pull/56)
+**Closeout-PR:** [#57](https://github.com/hindermath/TuiVision/pull/57)
+
+| Beobachtung | Entscheidung | Umsetzung oder Grenze |
+|---|---|---|
+| Ein Shell-Schritt führte zwei explizite `dotnet test`-Aufrufe nach nur einer Build-Zählererhöhung aus. Beide Tests waren fachlich korrekt, die Versions-Evidence verletzte aber den Repository-Vertrag. | `RunbookClarification`, `SkillCorrection`, `TemplateCorrection`, `AgentPolicyCorrection`, `PresetFollowUp` mit `Promote` | Eine Erhöhung autorisiert jetzt genau einen expliziten Build- oder Testaufruf. Fachlich zusammengehörige Tests werden innerhalb dieses einen Aufrufs gebündelt; Shell-Verkettung mehrerer Aufrufe ist unzulässig. |
+| `check-homogeneity.ps1` und die Bash-Variante fanden ihre `scripts/lib/hg-*`-Helfer nicht, meldeten Fehler im Fehlerkanal, liefen aber mit Exitcode 0 weiter. Der PowerShell-Aufruf verwendete außerdem den HOME-Default statt eines expliziten Repository-Roots. | `ValidationAutomation`, `SkillCorrection`, `TemplateCorrection`, `AgentPolicyCorrection`, `PresetFollowUp` mit `Promote` | Beide Wrapper brechen bei fehlenden Helfern jetzt mit Exitcode 2 ab. Der autonome Vertrag verlangt expliziten Repo-Root sowie Prüfung von Exitcode und Fehlerkanal; Exitcode 0 darf ErrorRecords oder `command not found` nicht verdecken. Die vollständigen Helfer bleiben Paket-/Deployment-Eigentum der Home Baseline. |
+| Der A11Y-Referenz-Slice brauchte für Popup-Menüs eine eigene Auswahlrolle, damit High Contrast die Auswahl semantisch ersetzt, während die historische Default-Palette unverändert bleibt. | `FeatureSpecific` | Die Rolle und Regressionstests bleiben im Feature. Daraus entsteht keine allgemeine autonome Ablaufregel. |
+| Der Closeout blieb erneut genau ein Evidence-Commit ohne eigene PR-URL, Reviewed-Head-Aussage oder Merge-Commit in seiner Datei. Push- und PR-Kontexte liefen doppelt; der PR-Kontext blieb der Delivery-Gate-Satz. | `NoPromotion` | Die in 020 bis 022 gehärteten Closeout- und Workflow-Duplikatregeln sind erneut bestätigt. |
+| Copilot war wegen Nutzerquota nicht verfügbar; Claude, Pflichtchecks und null GraphQL-Threads ließen ausschließlich Human Approval offen. | `NoPromotion` | Der enge, ausdrücklich autorisierte Admin-Bypass blieb auf diese eine Branch-Protection-Regel begrenzt. |
+
+### Paketübergabe / Package Handoff
+
+Die beiden promovierten Regeln werden mit Skill-, Runbook-, Tasks-, Evidence-
+und Agent-Metadaten an das Home-Baseline-Workitem `023-a11y-framework`
+übergeben. Der Homogeneity-Deploymentvertrag muss dort zusätzlich beweisen,
+dass Wrapper und Helper-Bibliotheken gemeinsam installiert werden und dass
+Bash und PowerShell bei fehlenden Helfern identisch fail-closed reagieren.
+
+The two promoted rules are handed to the Home Baseline work item
+`023-a11y-framework` together with skill, runbook, tasks, evidence, and agent
+metadata. The homogeneity deployment contract must also prove that wrappers
+and helper libraries are installed together and that Bash and PowerShell both
+fail closed when helpers are missing.

@@ -21,6 +21,24 @@ for _lib in "${LIB_DIR}"/hg-*.sh; do
   [ -f "$_lib" ] && . "$_lib"
 done
 
+_required_helpers=(
+  hg_scan
+  hg_scan_file_secrets
+  hg_check_a11y
+  hg_check_bilingual
+  hg_check_deps
+  hg_check_hook
+  hg_check_speckit
+  hg_generate_patch
+  hg_write_stats
+)
+for _helper in "${_required_helpers[@]}"; do
+  if ! declare -F "$_helper" >/dev/null; then
+    echo "FATAL: required homogeneity helper is unavailable: $_helper (${LIB_DIR}/hg-*.sh)" >&2
+    exit 2
+  fi
+done
+
 # ─── Argument Parsing ────────────────────────────────────────────────────────
 
 OPT_VERBOSE=false

@@ -242,13 +242,30 @@ retrospective.
 | Historisch abgeleitetes Verhalten | Relevante `.c`/`.cc`- und bei Bedarf Header-Prüfung unter `tv203s/` |
 
 Vor jedem `dotnet build` oder `dotnet test` wird der manuelle Build-Zähler
-erhöht. Statische Prüfungen laufen zuerst; fachlich zusammengehörige Tests
-werden gebündelt, damit weitere Befehle neue Evidence statt nur Zähler-Churn
-erzeugen.
+erhöht. Eine Erhöhung autorisiert genau einen expliziten Build- oder Testaufruf;
+mehrere Aufrufe dürfen nicht hinter derselben Erhöhung verkettet werden.
+Statische Prüfungen laufen zuerst; fachlich zusammengehörige Tests werden
+innerhalb eines Aufrufs gebündelt, damit weitere Befehle neue Evidence statt
+nur Zähler-Churn erzeugen.
+
+Repository-Prüfhelfer erhalten den Repository-Root immer als expliziten
+Parameter. Ein Ergebnis gilt nur dann als erfolgreich, wenn der erwartete
+Exitcode vorliegt und der Fehlerkanal weder einen PowerShell-ErrorRecord noch
+`command not found` oder eine gleichwertige fatale Signatur enthält. Ein
+Exitcode 0 darf einen solchen Fehler nicht verdecken; der Helfer gilt dann als
+fehlgeschlagen und wird begrenzt nachgehärtet.
 
 Increment the manual build counter before every `dotnet build` or `dotnet test`.
-Run static checks first and batch related tests so additional commands produce
+One increment authorizes exactly one explicit build or test invocation; do not
+chain multiple invocations behind the same increment. Run static checks first
+and batch related tests inside one invocation so additional commands produce
 new evidence rather than counter churn.
+
+Pass the repository root explicitly to repository validation helpers. Accept a
+result only when the expected exit code is present and the error channel has no
+PowerShell error record, `command not found` message, or equivalent fatal
+signature. A zero exit code cannot hide such an error; treat the helper as
+failed and route it to bounded remediation.
 
 ## Unterbrechung und Wiederaufnahme / Interruption and Resume
 

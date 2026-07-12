@@ -21,6 +21,22 @@ Get-ChildItem -Path $LibDir -Filter 'hg-*.ps1' -ErrorAction SilentlyContinue | F
     . $_.FullName
 }
 
+$RequiredHelpers = @(
+    'Invoke-HgScan',
+    'Invoke-HgScanFileSecrets',
+    'Invoke-HgCheckA11y',
+    'Invoke-HgCheckBilingual',
+    'Invoke-HgCheckDeps',
+    'Invoke-HgCheckHook',
+    'Invoke-HgCheckSpeckit'
+)
+foreach ($helper in $RequiredHelpers) {
+    if (-not (Get-Command $helper -CommandType Function -ErrorAction SilentlyContinue)) {
+        Write-Error "FATAL: required homogeneity helper is unavailable: $helper ($LibDir/hg-*.ps1)"
+        exit 2
+    }
+}
+
 # --json takes precedence
 if ($Json) { $VerbosePreference = 'SilentlyContinue' }
 
