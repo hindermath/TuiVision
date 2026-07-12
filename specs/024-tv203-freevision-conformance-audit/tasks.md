@@ -202,10 +202,10 @@
 - [X] T124 Reconcile final domain, inventory, decision, Free Vision, finding, governance, validation, review, and scope counts and complete the PR summary in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
 - [X] T125 Rerun `git diff --check`, `dotnet format --verify-no-changes`, checklist completeness, and placeholder checks after final evidence edits and record the results in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
 - [X] T126 Align `Directory.Build.props` to the final pre-commit `1.24.<patch>.<build>` version without incrementing the build counter and commit the completed feature with the Constitution-required `Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>` trailer
-- [ ] T127 Push `024-tv203-freevision-conformance-audit`, open the feature PR, and record the immutable PR URL outside self-invalidating evidence fields
-- [ ] T128 Monitor required PR-context checks, Claude/Copilot availability, and GraphQL review threads to convergence; remediate actionable feedback and rerun affected gates
-- [ ] T129 Merge with the approved merge strategy, using the narrow human-approval bypass only when all technical gates are green and no actionable thread remains
-- [ ] T130 Delete the remote feature branch, switch locally to `main`, fetch/prune/pull fast-forward, and prove a clean `HEAD == origin/main`
+- [X] T127 Push `024-tv203-freevision-conformance-audit`, open the feature PR, and record the immutable PR URL outside self-invalidating evidence fields
+- [X] T128 Monitor required PR-context checks, Claude/Copilot availability, and GraphQL review threads to convergence; remediate actionable feedback and rerun affected gates
+- [X] T129 Merge with the approved merge strategy, using the narrow human-approval bypass only when all technical gates are green and no actionable thread remains
+- [X] T130 Delete the remote feature branch, switch locally to `main`, fetch/prune/pull fast-forward, and prove a clean `HEAD == origin/main`
 - [ ] T131 Run `$speckit-autonomous-retrospective` for Feature 024 and classify project changes, preset follow-ups, and no-promotion observations in the accepted retrospective surface
 - [ ] T132 Fetch `origin/main`, rebase or merge the current package branch safely, then commit and push the reusable homogeneity evidence-integrity workitem on `codex/autonomous-run-governance-package` in `/Users/thorstenhindermann/home-baseline-tmp/specs/autonomous-run-governance/workitems/024-tv203-freevision-conformance-audit.md`
 
