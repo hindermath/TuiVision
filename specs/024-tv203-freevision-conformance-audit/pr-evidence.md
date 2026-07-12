@@ -168,30 +168,38 @@ presets separately from the optional autonomous preset; no hard-coded
 | Free Vision second opinion | 48/48 contracts have exactly one relation; 22 original, 10 modernization, 3 divergence, 13 not applicable; 15 pinned source hashes |
 | Findings and downstream routing | 0 findings; `Core025` 0 and suppressed; `ComponentData026` 0 and suppressed; `Closure027` required; Wave 5 blocked |
 | Proof | 94 concrete `path::method` references plus historical intent, observed behavior, C# rationale, risk, and source relationships on every contract |
-| Governance | 8 checkpoint rows: 7 Pass and 1 Open pending autonomous remote delivery; 3 rows have trigger-based `N/A` applicability with rationale and re-evaluation trigger |
+| Governance | 8 checkpoint rows: 7 Pass and 1 Open pending retrospective/handoff completion; 3 rows have trigger-based `N/A` applicability with rationale and re-evaluation trigger |
 | Agent parity | completed Feature-024 block is byte-identical across 5/5 maintained agent surfaces |
 | Local validation | focused audit 11/11; full Release 698/698; five coverage gates above 70%; DocFX 0/0; Playwright/Axe 2/2; three UTF-8 Lynx pages; high-severity secret findings 0 |
 | Hard scope | no product runtime, public API, package, example, generated output, external source, or historical source change |
-| Residual risk | remote checks/reviews/merge remain; later source, API, dependency, or contract changes require Feature-027 re-evaluation |
+| Residual risk | retrospective and reusable handoff remain; later source, API, dependency, or contract changes require Feature-027 re-evaluation |
 
 ## Remote-Lieferung / Remote Delivery
 
 | Item | Result | Evidence |
 |---|---|---|
-| Push | Open | not attempted |
-| Pull request | Open | not created |
-| Required checks | Open | pending PR |
-| Actionable threads | Open | pending PR |
-| Unavailable reviews | None observed | pending PR |
-| Merge | Open | pending convergence |
-| Default-branch sync | Open | pending merge |
-| Narrow bypass | Not used | only allowed for sole Human Approval blocker after all technical gates |
+| Push | Pass | feature head `acfb17866031e75546f46834363a1dec8b17237a` pushed to the numbered branch |
+| Pull request | Pass | Feature PR [#62](https://github.com/hindermath/TuiVision/pull/62) |
+| Required checks | Pass | 15 PR-context checks succeeded; Pages deploy was the expected pull-request skip; duplicate push checks were operational noise |
+| Actionable threads | Pass | GraphQL returned 0 review threads and the PR had 0 conversation comments |
+| Unavailable reviews | Recorded | Copilot reported user quota exhaustion and is not represented as a successful review; Claude check passed |
+| Merge | Pass | merge commit `5c0a4d7cd0dfc633b8d30bd416c0cbf183c84d39` on 2026-07-12 |
+| Default-branch sync | Pass | remote feature branch deleted; local `main` clean and equal to `origin/main` after fetch/prune and fast-forward pull |
+| Narrow bypass | Used | all technical checks were green and no actionable thread remained; only the Human Approval rule blocked the merge |
+
+### Kausaler Closeout / Causal Closeout
+
+The review, merge, deletion, and synchronized-main facts could not be written
+truthfully before the feature merge. Committing them to the reviewed feature
+head would also have invalidated that head. This evidence-only closeout is
+therefore intentionally one commit and omits its own pull-request URL, reviewed
+head, and merge result to prevent recursive closeout.
 
 ## Fortsetzung / Resume
 
-- Last passing gate: T125 final diff, format, checklist, and placeholder checks passed.
-- Next exact action: T126 align `1.24.6.209` and commit the completed local implementation.
-- Residual risk: remote checks, reviews, merge, retrospective, and preset handoff remain open.
+- Last passing gate: T130 Feature PR #62 merged and clean local `main` equals `origin/main`.
+- Next exact action: T131 run the autonomous retrospective for Feature 024.
+- Residual risk: reusable retrospective classification and Home-Baseline handoff remain open.
 - Stop boundaries: unreachable pin, public product decision, material governance conflict, required-check failure, or runtime implementation pressure.
 
 ## Foundation-Scopeprüfung / Foundation Scope Check
