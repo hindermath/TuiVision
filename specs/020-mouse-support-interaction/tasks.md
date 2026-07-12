@@ -159,8 +159,8 @@ are used where ownership could overlap.
 - [X] T120 Create a ready feature PR from `pr-evidence.md`, record its URL, and push the bounded PR-reference evidence update
 - [X] T121 Monitor required CI, Claude/Copilot availability, review comments, and GraphQL threads to convergence; record each state
 - [X] T122 Remediate every actionable remote finding with focused validation and record response/thread resolution
-- [ ] T123 Use the authorized narrow admin bypass only after green required checks, zero actionable threads, and a sole human-approval block; record exact boundary
-- [ ] T124 Merge with a merge commit, delete the remote feature branch, switch to local `main`, fetch/prune/pull fast-forward, and prove clean `HEAD == origin/main`
+- [X] T123 Use the authorized narrow admin bypass only after green required checks, zero actionable threads, and a sole human-approval block; record exact boundary
+- [X] T124 Merge with a merge commit, delete the remote feature branch, switch to local `main`, fetch/prune/pull fast-forward, and prove clean `HEAD == origin/main`
 - [ ] T125 Record post-merge facts through a non-empty evidence-only closeout PR only when causally impossible before merge; otherwise document why none is needed
 - [ ] T126 Finish with synchronized clean `main` and a complete Feature-020 evidence record, ready for the separate retrospective decision
 
