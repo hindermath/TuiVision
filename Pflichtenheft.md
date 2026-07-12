@@ -654,10 +654,10 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.2a` = Welle 2: Interaktive Showcase-Stufe — ✓ ABGESCHLOSSEN (Branch `012-interactive-wave2-demos`)
    - `3.2b` = Welle 2: Sichtbarer Komponenten-Nachweis — ✓ ABGESCHLOSSEN (Branch `013-wave2-visual-component-remediation`)
    - `3.3a` = Welle 3: Editor-/Hilfe-/Ressourcen-Vorhaertung — ✓ ABGESCHLOSSEN (Branch `018-editor-help-resources-hardening`)
-   - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams — NAECHSTER SCHRITT: Visual Component Porting
+   - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams — ✓ ABGESCHLOSSEN (Branch `019-wave3-visual-component-porting`)
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze
 
->>> NAECHSTER SCHRITT <<< Wave-3 Visual Component Porting starten: `Lastenheft_Wave3-Visual-Component-Porting.md` umsetzen. Danach folgt `Lastenheft_04_MouseSupportAndInteraction.md`.
+>>> NAECHSTER SCHRITT <<< Mouse Support and Interaction starten: `Lastenheft_04_MouseSupportAndInteraction.md` umsetzen. Danach folgt `Lastenheft_05_TerminalCharsetAndEmulation.md`.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

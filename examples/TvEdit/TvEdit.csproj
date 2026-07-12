@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TuiVision.Examples.TvEdit</RootNamespace>
+    <AssemblyName>TvEdit</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Shared\Wave3Runtime.cs" Link="Wave3Runtime.cs" />
+    <ProjectReference Include="..\..\src\TuiVision.Core\TuiVision.Core.csproj" />
+    <ProjectReference Include="..\..\src\TuiVision.Controls\TuiVision.Controls.csproj" />
+    <ProjectReference Include="..\..\src\TuiVision.Serialization\TuiVision.Serialization.csproj" />
+    <ProjectReference Include="..\..\src\TuiVision.Drivers.Console\TuiVision.Drivers.Console.csproj" />
+  </ItemGroup>
+</Project>

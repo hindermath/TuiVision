@@ -24,6 +24,8 @@ Auto-generated from all feature plans. Last updated: 2026-07-11
 - Runtime example state remains in-process and session-only; proof and governance use source-controlled Markdown, with no database, external service, persistent user history, arbitrary user-file proof, or runtime/product AI (017-wave1-visual-component-remediation)
 - C# `latest` / C# 14 on .NET 10 (`net10.0`) + existing Controls/Serialization modules, MSTest/Coverlet, DocFX, and Playwright/axe; no new package (018-editor-help-resources-hardening)
 - Runtime state is bounded to managed editor/help/resource models and deterministic temporary test files; no example port, database, external service, ambient locale dependency, arbitrary user-file proof, or runtime/product AI (018-editor-help-resources-hardening)
+- C# 14 on .NET 10 + Existing `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, and `TuiVision.Drivers.Console`; no new packages (019-wave3-visual-component-porting)
+- Embedded/source-controlled learning content and test-owned temporary files only (019-wave3-visual-component-porting)
 
 - C# `latest` on .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, `TuiVision.Compatibility`; MSTest; Coverlet; docfx; wave-1 example projects under `examples/` (007-port-wave1-examples — Wave 1 delivered)
 
@@ -56,10 +58,9 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ## Recent Changes
+- 019-wave3-visual-component-porting: Added C# 14 on .NET 10 + Existing `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, and `TuiVision.Drivers.Console`; no new packages
 - 018-editor-help-resources-hardening: Added bounded Help source compilation, language-aware exact resource lookup, malformed persistence rejection, and coherent editor/help proof; next is `Lastenheft_Wave3-Visual-Component-Porting.md`
 - 017-wave1-visual-component-remediation: Added C# 14 on .NET 10 + Existing `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Drivers.Console`; no new packages
-- 016-secure-development-hardening: Implemented the 157-control secure-development baseline, bounded persistence/script/workflow/supply-chain remediation, and local Release/coverage proof; next is `Lastenheft_Wave1-Visual-Component-Remediation.md`.
-- 015-didactic-comment-hardening: Implemented selective didactic comments and audit-ready evidence without runtime, API, dependency, or example-scope changes; next is `Lastenheft_Secure-Development-Hardening.md`.
 
 
 <!-- MANUAL ADDITIONS START -->
@@ -90,6 +91,15 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - Resource and Help deserialization reject duplicate/negative structures and invalid reference graphs before publication.
 - Historical `tv203s/` sources remain read-only; Wave-3 examples, mouse, terminal/charset, broad redesign, and dependencies remain out of scope.
 - The next prioritized intake is `Lastenheft_Wave3-Visual-Component-Porting.md`.
+
+### 019-wave3-visual-component-porting
+- Current implementation status: Wave-3 visual component porting is implemented locally; final evidence is in `specs/019-wave3-visual-component-porting/pr-evidence.md`.
+- `BHelp`, `HelpDemo`, `I18n`, `TvEdit`, and `TvHc` use visible main components, a real `TStatusLine`, and keyboard-reachable `Help -> Description`.
+- Primary proof runs through `app.Run()` and combines concrete state, view-tree identity, rendered buffer/cell evidence, status, and description. The Wave-3 matrix passes 14/14 locally, including five constrained `48x16` layouts.
+- Framework decisions are `UseExistingFramework` for TvEdit, HelpDemo, I18n, and TvHc, and bounded `IntentionalDeviation` for BHelp because the proprietary unchecked Borland `.tch` decoder is omitted.
+- Embedded/source-controlled learning content and test-owned temporary paths are the only data boundaries. Historical sources remain read-only.
+- Mouse interaction, terminal/charset/font work, Wave 4, broad redesign, services, new dependencies, and runtime/product AI remain outside 019.
+- The next prioritized intake is `Lastenheft_04_MouseSupportAndInteraction.md`.
 
   Groessere verpflichtende Beispielwellen sollen als zweistufiges Spec-Kit-
   Liefermuster geplant werden, wenn funktionale Portierung und interaktive

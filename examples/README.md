@@ -93,6 +93,28 @@ buffer regions.
 
 ---
 
+## Wave-3-Beispiele / Wave 3 Examples
+
+Feature `019-wave3-visual-component-porting` macht die fünf Editor-, Hilfe-,
+Ressourcen- und Compilerbeispiele sichtbar. Jedes Beispiel besitzt eine reale
+Hauptkomponente, eine echte `TStatusLine`, `Help -> Description` und einen
+primären App-Loop-Smoke mit Zustands-, View- und Buffer-Proof.
+
+Feature `019-wave3-visual-component-porting` makes the five editor, help,
+resource, and compiler examples visible. Every example has a real main
+component, a real `TStatusLine`, `Help -> Description`, and a primary app-loop
+smoke with state, view, and buffer proof.
+
+| Verwalteter Name / Managed Name | Startbefehl / Launch Command | Sichtbarer Pfad und Grenze / Visible Path and Boundary |
+|---|---|---|
+| `TvEdit` | `dotnet run --project examples/TvEdit` | Echter `TFileEditor`, Modified-/Safe-Close-Status; Datei-Proof nur im Test-Temp-Ordner. |
+| `BHelp` | `dotnet run --project examples/BHelp` | `THelpWindow`, Navigation und Fallback; proprietärer `.tch`-Decoder bewusst ausgelassen. |
+| `HelpDemo` | `dotnet run --project examples/HelpDemo` | Fokus, Kontext, Hinweis und Help-Fallback; vollständiger Tastaturpfad, Maus folgt in Feature 020. |
+| `I18n` | `dotnet run --project examples/I18n` | Explizite Sprache, Schlüssel- und Sprachfallback; unabhängig von Host-Locale und `gettext`. |
+| `TvHc` | `dotnet run --project examples/TvHc` | Kontrollierte `.topic`-Kompilierung und Diagnose; Ausgabe-Proof nur im Test-Temp-Ordner. |
+
+---
+
 ## Didaktische Begleitdokumentation / Didactic companion documentation
 
 Die Anleitungen für diese Beispiele befinden sich unter `docs/guides/examples/`:
@@ -114,6 +136,11 @@ Guides for these examples are located under `docs/guides/examples/`:
 - `docs/guides/examples/sdlg2.md`
 - `docs/guides/examples/tcombo.md`
 - `docs/guides/examples/tprogb.md`
+- `docs/guides/examples/tvedit.md`
+- `docs/guides/examples/bhelp.md`
+- `docs/guides/examples/helpdemo.md`
+- `docs/guides/examples/i18n.md`
+- `docs/guides/examples/tvhc.md`
 
 ---
 
@@ -128,5 +155,6 @@ dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~De
 dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~MsgCls"
 dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Tutorial"
 dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Videomode"
+dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Wave3"
 dotnet test tests/TuiVision.Examples.SmokeTests/
 ```

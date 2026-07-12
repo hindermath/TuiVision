@@ -218,6 +218,15 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Wave-3 examples, mouse, terminal/charset/font work, TP7, broad redesign, services, and dependencies remain outside 018.
 - The next prioritized intake is `Lastenheft_Wave3-Visual-Component-Porting.md` for `bhelp`, `helpdemo`, `i18n`, `tvedit`, and `tvhc`.
 
+### 019-wave3-visual-component-porting
+- Current implementation status: Wave-3 visual component porting is implemented locally; final evidence is in `specs/019-wave3-visual-component-porting/pr-evidence.md`.
+- `BHelp`, `HelpDemo`, `I18n`, `TvEdit`, and `TvHc` use visible main components, a real `TStatusLine`, and keyboard-reachable `Help -> Description`.
+- Primary proof runs through `app.Run()` and combines concrete state, view-tree identity, rendered buffer/cell evidence, status, and description. The Wave-3 matrix passes 14/14 locally, including five constrained `48x16` layouts.
+- Framework decisions are `UseExistingFramework` for TvEdit, HelpDemo, I18n, and TvHc, and bounded `IntentionalDeviation` for BHelp because the proprietary unchecked Borland `.tch` decoder is omitted.
+- Embedded/source-controlled learning content and test-owned temporary paths are the only data boundaries. Historical sources remain read-only.
+- Mouse interaction, terminal/charset/font work, Wave 4, broad redesign, services, new dependencies, and runtime/product AI remain outside 019.
+- The next prioritized intake is `Lastenheft_04_MouseSupportAndInteraction.md`.
+
 ## Agent File Synchronization Policy
 
 - When active feature context, plan-derived implementation guidance, or other shared AI-agent instructions change, review and update these files together when affected:
