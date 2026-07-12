@@ -7,7 +7,7 @@
     the five framework modules listed under <Include> below: TuiVision.Core,
     TuiVision.Controls, TuiVision.Serialization, TuiVision.Compatibility, and
     TuiVision.Drivers.Console.
-  - Example application assemblies (4 wave-1 + 11 wave-2) and every *.Tests
+  - Example application assemblies (4 wave-1 + 11 wave-2 + 5 wave-3 + 5 wave-4) and every *.Tests
     project are intentionally excluded from the gate aggregation. Smoke tests
     remain required proof of behaviour but do not replace per-module coverage.
   - The >=80% target documented in plan.md is informational tracking only and
@@ -24,7 +24,7 @@
         <Configuration>
           <Format>cobertura</Format>
           <Include>[TuiVision.Core]*,[TuiVision.Controls]*,[TuiVision.Serialization]*,[TuiVision.Compatibility]*,[TuiVision.Drivers.Console]*</Include>
-          <Exclude>[Desklogo]*,[MsgCls]*,[Tutorial]*,[Videomode]*,[Clipboard]*,[Demo]*,[DlgDsn]*,[DynTxt]*,[InpLis]*,[ListVi]*,[ProgBa]*,[Sdlg]*,[Sdlg2]*,[TCombo]*,[TProgB]*,[TuiVision.Core.Tests]*,[TuiVision.Controls.Tests]*,[TuiVision.Serialization.Tests]*,[TuiVision.Compatibility.Tests]*,[TuiVision.Drivers.Tests]*,[TuiVision.Examples.SmokeTests]*</Exclude>
+          <Exclude>[Desklogo]*,[MsgCls]*,[Tutorial]*,[Videomode]*,[Clipboard]*,[Demo]*,[DlgDsn]*,[DynTxt]*,[InpLis]*,[ListVi]*,[ProgBa]*,[Sdlg]*,[Sdlg2]*,[TCombo]*,[TProgB]*,[BHelp]*,[HelpDemo]*,[I18n]*,[TvEdit]*,[TvHc]*,[Cyrillic]*,[ETerm]*,[Fonts]*,[Terminal]*,[XTerm]*,[TuiVision.Core.Tests]*,[TuiVision.Controls.Tests]*,[TuiVision.Serialization.Tests]*,[TuiVision.Compatibility.Tests]*,[TuiVision.Drivers.Tests]*,[TuiVision.Examples.SmokeTests]*</Exclude>
           <ExcludeByAttribute>Obsolete,GeneratedCodeAttribute,CompilerGeneratedAttribute</ExcludeByAttribute>
           <SingleHit>false</SingleHit>
           <UseSourceLink>true</UseSourceLink>

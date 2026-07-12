@@ -167,3 +167,32 @@ English: Drivers.Console owns session, parser, mapping, fixture, and profile.
 Core remains the cell/buffer contract. Controls only projects validated state
 and adds no second terminal or key parser. Physical host observation remains
 separate from deterministic in-process proof.
+
+## 022 Wave-4 Visual Component Addendum
+
+```text
+Feature-021 contracts or immutable source-controlled manifest
+  |
+  | controlled command through app.Run()
+  v
+Terminal | Cyrillic | Fonts | ETerm | XTerm
+  |
+  | visible main component + TStatusLine + Help -> Description
+  v
+State + exact view identity + buffer/cell proof + text-first fallback
+  |
+  v
+Deterministic host classification; physical host evidence remains separate
+```
+
+Deutsch: Terminal, Cyrillic und Fonts projizieren bestehende 021-Verträge.
+ETerm und XTerm zeigen nur exakte unveränderliche Ressourcenmanifeste und führen
+keinen historischen Parser aus. Die verlinkte Präsentationsquelle wird pro
+Beispiel-Assembly kompiliert; Querschnittstests teilen deshalb neutrale DTOs und
+Delegates statt eine gemeinsame CLR-Typidentität anzunehmen.
+
+English: Terminal, Cyrillic, and Fonts project existing 021 contracts. ETerm
+and XTerm show only exact immutable resource manifests and execute no historical
+parser. Linked presentation source is compiled into each example assembly, so
+cross-project tests share neutral DTOs and delegates instead of assuming one CLR
+type identity.

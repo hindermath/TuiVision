@@ -56,4 +56,13 @@
     <ProjectReference Include="..\..\examples\TvHc\TvHc.csproj" />
   </ItemGroup>
 
+  <!-- Wave-4 visible terminal/charset/font/resource examples -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\examples\Cyrillic\Cyrillic.csproj" />
+    <ProjectReference Include="..\..\examples\ETerm\ETerm.csproj" />
+    <ProjectReference Include="..\..\examples\Fonts\Fonts.csproj" />
+    <ProjectReference Include="..\..\examples\Terminal\Terminal.csproj" />
+    <ProjectReference Include="..\..\examples\XTerm\XTerm.csproj" />
+  </ItemGroup>
+
 </Project>
