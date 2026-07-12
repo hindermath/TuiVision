@@ -216,7 +216,7 @@ the narrow T107 approval-rule bypass is considered.
 | Merge | Pass with narrow bypass | PR #45 merged by merge commit `60f59511f0e546f9ddde169bb3cee87c27dc6b30`; admin bypass applied only to the remaining human-approval rule after all checks passed and GraphQL showed 0 threads |
 | Remote branch | Pass | `origin/019-wave3-visual-component-porting` deleted and fetch/prune confirmed removal |
 | Local `main` sync | Pass | Clean local `main` equals `origin/main` at `60f59511f0e546f9ddde169bb3cee87c27dc6b30` after fast-forward pull |
-| Post-merge closeout | Required | This non-empty Evidence/Tasks/Statistics PR records T107/T108 facts that could not truthfully exist before merge; final URL is recorded by T109 |
+| Post-merge closeout | Pass | Non-empty evidence-only PR [#46](https://github.com/hindermath/TuiVision/pull/46) records T107/T108 facts that could not truthfully exist before merge; T109 closes all 109 tasks |
 
 ## Generated Output Hygiene
 
