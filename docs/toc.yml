@@ -12,6 +12,8 @@
       href: guides/mouse-support.md
     - name: Terminal- und Charset-Härtung
       href: guides/terminal-charset-hardening.md
+    - name: A11Y-Framework
+      href: guides/a11y-framework.md
     - name: Beispiel-Guides
       items:
         - name: Desklogo

@@ -65,4 +65,9 @@
     <ProjectReference Include="..\..\examples\XTerm\XTerm.csproj" />
   </ItemGroup>
 
+  <!-- Feature-023 A11Y framework reference application -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\examples\A11yFramework\A11yFramework.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -24,7 +24,7 @@
         <Configuration>
           <Format>cobertura</Format>
           <Include>[TuiVision.Core]*,[TuiVision.Controls]*,[TuiVision.Serialization]*,[TuiVision.Compatibility]*,[TuiVision.Drivers.Console]*</Include>
-          <Exclude>[Desklogo]*,[MsgCls]*,[Tutorial]*,[Videomode]*,[Clipboard]*,[Demo]*,[DlgDsn]*,[DynTxt]*,[InpLis]*,[ListVi]*,[ProgBa]*,[Sdlg]*,[Sdlg2]*,[TCombo]*,[TProgB]*,[BHelp]*,[HelpDemo]*,[I18n]*,[TvEdit]*,[TvHc]*,[Cyrillic]*,[ETerm]*,[Fonts]*,[Terminal]*,[XTerm]*,[TuiVision.Core.Tests]*,[TuiVision.Controls.Tests]*,[TuiVision.Serialization.Tests]*,[TuiVision.Compatibility.Tests]*,[TuiVision.Drivers.Tests]*,[TuiVision.Examples.SmokeTests]*</Exclude>
+          <Exclude>[Desklogo]*,[MsgCls]*,[Tutorial]*,[Videomode]*,[Clipboard]*,[Demo]*,[DlgDsn]*,[DynTxt]*,[InpLis]*,[ListVi]*,[ProgBa]*,[Sdlg]*,[Sdlg2]*,[TCombo]*,[TProgB]*,[BHelp]*,[HelpDemo]*,[I18n]*,[TvEdit]*,[TvHc]*,[Cyrillic]*,[ETerm]*,[Fonts]*,[Terminal]*,[XTerm]*,[A11yFramework]*,[TuiVision.Core.Tests]*,[TuiVision.Controls.Tests]*,[TuiVision.Serialization.Tests]*,[TuiVision.Compatibility.Tests]*,[TuiVision.Drivers.Tests]*,[TuiVision.Examples.SmokeTests]*</Exclude>
           <ExcludeByAttribute>Obsolete,GeneratedCodeAttribute,CompilerGeneratedAttribute</ExcludeByAttribute>
           <SingleHit>false</SingleHit>
           <UseSourceLink>true</UseSourceLink>

@@ -29,7 +29,7 @@ public enum TButtonFlags : byte
 ///
 /// Interactive button with command ID, hotkey support, and default state.
 /// </summary>
-public class TButton : TView
+public class TButton : TView, IAccessibleWidget
 {
     private const ushort AltShiftState = 0x0004;
     private const byte ScanEnter = 0x1C;
@@ -79,6 +79,17 @@ public class TButton : TView
     /// The configured button flags.
     /// </summary>
     public TButtonFlags Flags { get; }
+
+    /// <summary>Die stabile Beschriftung ohne Hotkey-Marker. / The stable label without hotkey markers.</summary>
+    public string AccessibleLabel => Title;
+
+    /// <summary>Eine optionale zusätzliche Beschreibung. / An optional additional description.</summary>
+    public string? AccessibleDescription => null;
+
+    /// <summary>Gibt die aktuelle Fokusfähigkeit wieder. / Reflects the current focus capability.</summary>
+    public bool CanReceiveFocus => Options.HasFlag(TViewOptions.Selectable)
+        && GetState(TViewState.Visible)
+        && !GetState(TViewState.Disabled);
 
     /// <summary>
     /// Gibt an, ob die Schaltfläche aktuell als Default gilt.

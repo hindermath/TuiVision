@@ -342,7 +342,23 @@ public class TProgram : TGroup
     protected override void CurrentChanged()
     {
         base.CurrentChanged();
-        HandleEvent(TEvent.CreateBroadcast(ShellCommandIds.cmFocusChanged, Current));
+        if (Current != null)
+        {
+            BroadcastFocusChanged(Current);
+        }
+    }
+
+    /// <inheritdoc />
+    protected override void DescendantFocusChanged(TView view)
+    {
+        BroadcastFocusChanged(view);
+    }
+
+    private void BroadcastFocusChanged(TView view)
+    {
+        // Ein Fokuswechsel bleibt ein Broadcast; der Snapshot ergänzt Semantik, ohne einen konkurrierenden Eventpfad zu schaffen.
+        // A focus change remains one broadcast; the snapshot adds semantics without creating a competing event path.
+        HandleEvent(TEvent.CreateBroadcast(ShellCommandIds.cmFocusChanged, TFocusAnnouncement.Create(view)));
     }
 
     private void StartMouseInput()

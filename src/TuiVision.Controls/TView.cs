@@ -188,6 +188,26 @@ public class TView : TObject
     public TViewOptions Options { get; set; }
 
     /// <summary>
+    /// Das aktuell auf diese View angewendete Farbschema.
+    ///
+    /// The colour scheme currently applied to this view.
+    /// </summary>
+    public TColorScheme ColorScheme { get; private set; } = TColorScheme.Default;
+
+    /// <summary>
+    /// Wendet ein Farbschema explizit auf diese View an.
+    ///
+    /// Explicitly applies a colour scheme to this view.
+    /// </summary>
+    /// <param name="colorScheme">Das anzuwendende Schema. / The scheme to apply.</param>
+    public virtual void ApplyColorScheme(TColorScheme colorScheme)
+    {
+        ArgumentNullException.ThrowIfNull(colorScheme);
+        ColorScheme = colorScheme;
+        DrawView();
+    }
+
+    /// <summary>
     /// Bitmaske der Ereignistypen, auf die diese Ansicht reagiert.
     ///
     /// Bit mask of event types that this view responds to.

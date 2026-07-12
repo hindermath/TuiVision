@@ -22,7 +22,7 @@ namespace TuiVision.Controls;
 /// Without a <see cref="TStatusDef"/> the compatibility fallback uses
 /// <see cref="TView.GetStatusHints"/> from the focused view.
 /// </summary>
-public class TStatusLine : TView
+public class TStatusLine : TView, IAccessibleShortcutProvider
 {
     /// <summary>
     /// Die aktuell angezeigten Status-Einträge. / The currently displayed status items.
@@ -77,13 +77,13 @@ public class TStatusLine : TView
         // Statuszeilen-Hintergrund füllen / Fill status line background
         for (int x = 0; x < Size.X; x++)
         {
-            buffer.TrySetCell(Origin.X + x, Origin.Y, new TConsoleCell(' ', ConsoleColor.Black, ConsoleColor.Cyan));
+            buffer.TrySetCell(Origin.X + x, Origin.Y, new TConsoleCell(' ', ColorScheme.StatusText, ColorScheme.StatusBackground));
         }
 
         // Quit-Hinweis: ^Q = Ctrl+Q (universell); Alt+X wenn Terminal Meta-Key aktiviert hat.
         // Quit hint: ^Q = Ctrl+Q (universal); Alt+X when terminal has Meta key enabled.
         const string hint = " ^Q Beenden / Quit  Alt+X ";
-        buffer.WriteText(Origin.X, Origin.Y, hint.AsSpan(), ConsoleColor.Yellow, ConsoleColor.Cyan);
+        buffer.WriteText(Origin.X, Origin.Y, hint.AsSpan(), ColorScheme.StatusText, ColorScheme.StatusBackground);
     }
 
     /// <summary>
@@ -98,9 +98,58 @@ public class TStatusLine : TView
 
         if (@event.What == TEventKind.Broadcast && @event.Message.Command == ShellCommandIds.cmFocusChanged)
         {
-            UpdateHints(@event.Message.Info as TView);
+            // Der Übergang akzeptiert alte raw-TView-Payloads, aber neue Produzenten liefern den typisierten Snapshot.
+            // The transition accepts legacy raw-view payloads, while new producers provide the typed snapshot.
+            TView? focusedView = @event.Message.Info switch
+            {
+                TFocusAnnouncement announcement => announcement.Target,
+                TView legacyView => legacyView,
+                _ => null
+            };
+            UpdateHints(focusedView);
         }
     }
+
+    /// <summary>
+    /// Gibt explizit registrierte, aktive Statuszeilen-Shortcuts zurück.
+    ///
+    /// Returns explicitly registered, active status-line shortcuts.
+    /// </summary>
+    /// <returns>Eine schreibgeschützte Momentaufnahme. / A read-only snapshot.</returns>
+    public IReadOnlyList<TAccessibleShortcut> GetAccessibleShortcuts()
+    {
+        List<TAccessibleShortcut> result = [];
+        if (_defs != null)
+        {
+            for (TStatusDef? definition = _defs; definition != null; definition = definition.Next)
+            {
+                CollectShortcuts(definition.Items, result);
+            }
+        }
+        else
+        {
+            CollectShortcuts(Items, result);
+        }
+
+        return result.AsReadOnly();
+    }
+
+    private static void CollectShortcuts(TStatusItem? item, List<TAccessibleShortcut> result)
+    {
+        for (TStatusItem? current = item; current != null; current = current.Next)
+        {
+            if (!current.Disabled && current.KeyCode != 0 && current.Command is > 0 and <= ushort.MaxValue)
+            {
+                result.Add(new TAccessibleShortcut(
+                    current.KeyCode,
+                    StripMarkers(current.Name),
+                    (ushort)current.Command,
+                    nameof(TStatusLine)));
+            }
+        }
+    }
+
+    private static string StripMarkers(string text) => text.Replace("~", string.Empty, StringComparison.Ordinal);
 
     /// <summary>
     /// Aktualisiert <see cref="Items"/> basierend auf der fokussierten View.

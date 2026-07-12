@@ -47,7 +47,7 @@ internal readonly record struct MenuTextLayout(string Text, IReadOnlySet<int> Ho
 /// Displays the main menu of the application and supports full keyboard navigation:
 /// arrow keys, Enter, Escape, mnemonic shortcuts, and wrap-around.
 /// </summary>
-public class TMenuBar : TView
+public class TMenuBar : TView, IAccessibleShortcutProvider
 {
     // Scan-Codes für Navigationstasten / Scan codes for navigation keys
     private const byte ScanLeft = 0x4B;
@@ -133,7 +133,7 @@ public class TMenuBar : TView
         // Menüleisten-Hintergrund füllen / Fill menu bar background
         for (int x = 0; x < Size.X; x++)
         {
-            buffer.TrySetCell(Origin.X + x, Origin.Y, new TConsoleCell(' ', ConsoleColor.Black, ConsoleColor.Cyan));
+            buffer.TrySetCell(Origin.X + x, Origin.Y, new TConsoleCell(' ', ColorScheme.Text, ColorScheme.Background));
         }
 
         if (Menu != null)
@@ -148,8 +148,8 @@ public class TMenuBar : TView
             foreach (MenuLayoutSlot slot in _layoutSlots)
             {
                 bool isSelected = IsMenuActive && ReferenceEquals(slot.Item, SelectedTopLevel);
-                ConsoleColor bg = isSelected ? ConsoleColor.Blue : ConsoleColor.Cyan;
-                ConsoleColor defaultFg = isSelected ? ConsoleColor.White : ConsoleColor.Black;
+                ConsoleColor bg = isSelected ? ColorScheme.SelectionBackground : ColorScheme.Background;
+                ConsoleColor defaultFg = isSelected ? ColorScheme.SelectionText : ColorScheme.Text;
 
                 MenuTextLayout layout = ParseMenuText(slot.Item.Name);
                 string display = " " + layout.Text + " ";
@@ -160,7 +160,7 @@ public class TMenuBar : TView
                 {
                     if (col >= Size.X) break;
                     bool isHot = textIndex >= 0 && layout.HotKeyPositions.Contains(textIndex);
-                    ConsoleColor fg = isHot ? ConsoleColor.Yellow : defaultFg;
+                    ConsoleColor fg = isHot ? ColorScheme.Emphasis : defaultFg;
                     buffer.TrySetCell(Origin.X + col, Origin.Y, new TConsoleCell(ch, fg, bg));
                     col++;
                     textIndex++;
@@ -170,12 +170,42 @@ public class TMenuBar : TView
         else
         {
             // Kein Menü – Standardbezeichnung anzeigen / No menu – show default label
-            buffer.WriteText(Origin.X, Origin.Y, " TuiVision ".AsSpan(), ConsoleColor.Black, ConsoleColor.Cyan);
+            buffer.WriteText(Origin.X, Origin.Y, " TuiVision ".AsSpan(), ColorScheme.Text, ColorScheme.Background);
         }
 
         // Untermenü-Popup in denselben Puffer zeichnen (falls ein Untermenü offen ist).
         // Draw the submenu popup into the same buffer (when a submenu is open).
         DrawSubMenuOverlay(buffer);
+    }
+
+    /// <summary>
+    /// Gibt ausführbare Menü-Mnemoniken als strukturierte Shortcuts zurück.
+    ///
+    /// Returns executable menu mnemonics as structured shortcuts.
+    /// </summary>
+    /// <returns>Eine schreibgeschützte Momentaufnahme. / A read-only snapshot.</returns>
+    public IReadOnlyList<TAccessibleShortcut> GetAccessibleShortcuts()
+    {
+        List<TAccessibleShortcut> result = [];
+        CollectShortcuts(Menu, result);
+        return result.AsReadOnly();
+    }
+
+    private static void CollectShortcuts(TMenuItem? item, List<TAccessibleShortcut> result)
+    {
+        for (TMenuItem? current = item; current != null; current = current.Next)
+        {
+            if (!current.Disabled && !current.IsSeparator && current.Command is > 0 and <= ushort.MaxValue && current.Mnemonic != '\0')
+            {
+                result.Add(new TAccessibleShortcut(
+                    char.ToUpperInvariant(current.Mnemonic),
+                    StripHotKeys(current.Name),
+                    (ushort)current.Command,
+                    nameof(TMenuBar)));
+            }
+
+            CollectShortcuts(current.SubMenuDef?.Items ?? current.SubMenu, result);
+        }
     }
 
     /// <summary>
@@ -404,10 +434,10 @@ public class TMenuBar : TView
         int py = Origin.Y + 1;
 
         // Oberer Rahmen / Top border
-        buffer.TrySetCell(px, py, new TConsoleCell('┌', ConsoleColor.Black, ConsoleColor.Cyan));
+        buffer.TrySetCell(px, py, new TConsoleCell('┌', ColorScheme.Text, ColorScheme.Background));
         for (int x = 1; x < popupW - 1; x++)
-            buffer.TrySetCell(px + x, py, new TConsoleCell('─', ConsoleColor.Black, ConsoleColor.Cyan));
-        buffer.TrySetCell(px + popupW - 1, py, new TConsoleCell('┐', ConsoleColor.Black, ConsoleColor.Cyan));
+            buffer.TrySetCell(px + x, py, new TConsoleCell('─', ColorScheme.Text, ColorScheme.Background));
+        buffer.TrySetCell(px + popupW - 1, py, new TConsoleCell('┐', ColorScheme.Text, ColorScheme.Background));
 
         // Einträge / Items
         cur = _openSubMenu;
@@ -415,18 +445,18 @@ public class TMenuBar : TView
         {
             int ry = py + 1 + row;
             bool isHighlighted = ReferenceEquals(cur, SelectedSubMenuItem);
-            ConsoleColor entryBg = isHighlighted ? ConsoleColor.DarkBlue : ConsoleColor.Cyan;
-            ConsoleColor entryFg = isHighlighted ? ConsoleColor.White : ConsoleColor.Black;
+            ConsoleColor entryBg = isHighlighted ? ColorScheme.PopupSelectionBackground : ColorScheme.Background;
+            ConsoleColor entryFg = isHighlighted ? ColorScheme.SelectionText : ColorScheme.Text;
 
-            buffer.TrySetCell(px, ry, new TConsoleCell('│', ConsoleColor.Black, ConsoleColor.Cyan));
+            buffer.TrySetCell(px, ry, new TConsoleCell('│', ColorScheme.Text, ColorScheme.Background));
 
             if (cur!.IsSeparator)
             {
                 // Trennzeile / Separator row
-                buffer.TrySetCell(px + 1, ry, new TConsoleCell('├', ConsoleColor.Black, ConsoleColor.Cyan));
+                buffer.TrySetCell(px + 1, ry, new TConsoleCell('├', ColorScheme.Text, ColorScheme.Background));
                 for (int si = 2; si < popupW - 2; si++)
-                    buffer.TrySetCell(px + si, ry, new TConsoleCell('─', ConsoleColor.Black, ConsoleColor.Cyan));
-                buffer.TrySetCell(px + popupW - 2, ry, new TConsoleCell('┤', ConsoleColor.Black, ConsoleColor.Cyan));
+                    buffer.TrySetCell(px + si, ry, new TConsoleCell('─', ColorScheme.Text, ColorScheme.Background));
+                buffer.TrySetCell(px + popupW - 2, ry, new TConsoleCell('┤', ColorScheme.Text, ColorScheme.Background));
             }
             else
             {
@@ -440,7 +470,7 @@ public class TMenuBar : TView
                 {
                     char drawCh = ci < layout.Text.Length ? layout.Text[ci] : ' ';
                     bool isHot = layout.HotKeyPositions.Contains(ci);
-                    ConsoleColor fg = isHot ? ConsoleColor.Yellow : entryFg;
+                    ConsoleColor fg = isHot ? ColorScheme.Emphasis : entryFg;
                     buffer.TrySetCell(px + 2 + ci, ry, new TConsoleCell(drawCh, fg, entryBg));
                 }
 
@@ -448,17 +478,17 @@ public class TMenuBar : TView
                 buffer.TrySetCell(px + 2 + maxLen, ry, new TConsoleCell(' ', entryFg, entryBg));
             }
 
-            buffer.TrySetCell(px + popupW - 1, ry, new TConsoleCell('│', ConsoleColor.Black, ConsoleColor.Cyan));
+            buffer.TrySetCell(px + popupW - 1, ry, new TConsoleCell('│', ColorScheme.Text, ColorScheme.Background));
 
             cur = cur.Next;
         }
 
         // Unterer Rahmen / Bottom border
         int by = py + 1 + itemCount;
-        buffer.TrySetCell(px, by, new TConsoleCell('└', ConsoleColor.Black, ConsoleColor.Cyan));
+        buffer.TrySetCell(px, by, new TConsoleCell('└', ColorScheme.Text, ColorScheme.Background));
         for (int x = 1; x < popupW - 1; x++)
-            buffer.TrySetCell(px + x, by, new TConsoleCell('─', ConsoleColor.Black, ConsoleColor.Cyan));
-        buffer.TrySetCell(px + popupW - 1, by, new TConsoleCell('┘', ConsoleColor.Black, ConsoleColor.Cyan));
+            buffer.TrySetCell(px + x, by, new TConsoleCell('─', ColorScheme.Text, ColorScheme.Background));
+        buffer.TrySetCell(px + popupW - 1, by, new TConsoleCell('┘', ColorScheme.Text, ColorScheme.Background));
     }
 
     /// <summary>
