@@ -157,8 +157,8 @@ are used where ownership could overlap.
 - [X] T118 Recalculate branch commit count, align version/evidence, and create a bounded follow-up commit only if required
 - [X] T119 Push `020-mouse-support-interaction`, record observed branch/commit, align and commit truthful evidence if needed, and push again
 - [X] T120 Create a ready feature PR from `pr-evidence.md`, record its URL, and push the bounded PR-reference evidence update
-- [ ] T121 Monitor required CI, Claude/Copilot availability, review comments, and GraphQL threads to convergence; record each state
-- [ ] T122 Remediate every actionable remote finding with focused validation and record response/thread resolution
+- [X] T121 Monitor required CI, Claude/Copilot availability, review comments, and GraphQL threads to convergence; record each state
+- [X] T122 Remediate every actionable remote finding with focused validation and record response/thread resolution
 - [ ] T123 Use the authorized narrow admin bypass only after green required checks, zero actionable threads, and a sole human-approval block; record exact boundary
 - [ ] T124 Merge with a merge commit, delete the remote feature branch, switch to local `main`, fetch/prune/pull fast-forward, and prove clean `HEAD == origin/main`
 - [ ] T125 Record post-merge facts through a non-empty evidence-only closeout PR only when causally impossible before merge; otherwise document why none is needed
