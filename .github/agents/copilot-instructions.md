@@ -22,6 +22,8 @@ Auto-generated from all feature plans. Last updated: 2026-07-11
 - Source-controlled Markdown, YAML, shell/PowerShell scripts, a local .NET tool manifest, and test fixtures. Generated evidence is written to temporary or ignored directories. No database, service, credential, runtime AI, or user-data store is introduced. (016-secure-development-hardening)
 - C# `latest` / C# 14 on .NET 10 (`net10.0`) + existing TuiVision modules, shared Wave-1 example composition, MSTest/Coverlet, DocFX, and Playwright/axe; no new package (017-wave1-visual-component-remediation)
 - Runtime example state remains in-process and session-only; proof and governance use source-controlled Markdown, with no database, external service, persistent user history, arbitrary user-file proof, or runtime/product AI (017-wave1-visual-component-remediation)
+- C# `latest` / C# 14 on .NET 10 (`net10.0`) + existing Controls/Serialization modules, MSTest/Coverlet, DocFX, and Playwright/axe; no new package (018-editor-help-resources-hardening)
+- Runtime state is bounded to managed editor/help/resource models and deterministic temporary test files; no example port, database, external service, ambient locale dependency, arbitrary user-file proof, or runtime/product AI (018-editor-help-resources-hardening)
 
 - C# `latest` on .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, `TuiVision.Compatibility`; MSTest; Coverlet; docfx; wave-1 example projects under `examples/` (007-port-wave1-examples — Wave 1 delivered)
 
@@ -54,6 +56,7 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ## Recent Changes
+- 018-editor-help-resources-hardening: Added bounded Help source compilation, language-aware exact resource lookup, malformed persistence rejection, and coherent editor/help proof; next is `Lastenheft_Wave3-Visual-Component-Porting.md`
 - 017-wave1-visual-component-remediation: Added C# 14 on .NET 10 + Existing `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Drivers.Console`; no new packages
 - 016-secure-development-hardening: Implemented the 157-control secure-development baseline, bounded persistence/script/workflow/supply-chain remediation, and local Release/coverage proof; next is `Lastenheft_Wave1-Visual-Component-Remediation.md`.
 - 015-didactic-comment-hardening: Implemented selective didactic comments and audit-ready evidence without runtime, API, dependency, or example-scope changes; next is `Lastenheft_Secure-Development-Hardening.md`.
@@ -76,7 +79,17 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - `examples/Shared/Wave1Runtime.cs` composes existing controls. Desklogo and MsgCls use `UseExistingFramework`; Tutorial and Videomode use bounded `IntentionalDeviation` decisions.
 - Historical `tv203s/` sources remain read-only. No cross-wave behavior, broad framework redesign, new dependency, persistence, external service, or runtime/product AI entered scope.
 - The complete example-smoke suite passes 101/101 locally; repository, coverage, DocFX, A11Y, and remote checks remain delivery gates until recorded.
-- The next prioritized intake is `Lastenheft_03_EditorHelpAndResourcesHardening.md` before Wave-3 visual porting.
+- Feature 018 closes the editor/help/resources intake; the next prioritized intake is `Lastenheft_Wave3-Visual-Component-Porting.md`.
+
+## 018 Editor, Help, and Resources Hardening Delivery Context
+
+- Final evidence is in `specs/018-editor-help-resources-hardening/pr-evidence.md`.
+- Existing editor/file and runtime-help controls are retained and proven through coherent application paths.
+- `THelpSourceCompiler` supports bounded `.topic` source, strict UTF-8, deterministic symbols, forward references, stable diagnostics, and atomic failure.
+- `TLocalizedResourceLookup` uses exact language, caller-ordered fallbacks, and neutral exact keys without ambient locale or gettext dependencies.
+- Resource and Help deserialization reject duplicate/negative structures and invalid reference graphs before publication.
+- Historical `tv203s/` sources remain read-only; Wave-3 examples, mouse, terminal/charset, broad redesign, and dependencies remain out of scope.
+- The next prioritized intake is `Lastenheft_Wave3-Visual-Component-Porting.md`.
 
   Groessere verpflichtende Beispielwellen sollen als zweistufiges Spec-Kit-
   Liefermuster geplant werden, wenn funktionale Portierung und interaktive

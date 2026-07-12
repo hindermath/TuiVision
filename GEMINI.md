@@ -225,7 +225,17 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 *   Shared composition in `examples/Shared/Wave1Runtime.cs` uses existing framework controls. Desklogo and MsgCls are `UseExistingFramework`; Tutorial and Videomode are bounded `IntentionalDeviation` decisions.
 *   Historical sources under `tv203s/` remain read-only. No functional re-port, Wave-2/3/4 behavior, broad framework redesign, new dependency, persistence, external service, or runtime/product AI entered scope.
 *   The complete example-smoke suite passes 101/101 locally; final repository, coverage, DocFX, A11Y, and remote checks remain delivery gates until recorded in feature evidence.
-*   The next prioritized intake is `Lastenheft_03_EditorHelpAndResourcesHardening.md` before Wave-3 visual porting.
+*   Feature 018 closes the editor/help/resources intake; the next prioritized intake is `Lastenheft_Wave3-Visual-Component-Porting.md`.
+
+### 018-editor-help-resources-hardening
+*   Current implementation status: Wave-3 editor/help/resources hardening is implemented; final evidence is in `specs/018-editor-help-resources-hardening/pr-evidence.md`.
+*   Existing `TEditor`, `TFileEditor`, `TEditWindow`, `THelpViewer`, and `THelpWindow` flows are retained and proven as coherent open/edit/search/replace/save, safe-close/conflict, persisted navigation, back, and fallback paths.
+*   `THelpSourceCompiler` provides a bounded `.topic` and `{text[:alias]}` source contract with strict UTF-8, deterministic contexts, forward-reference resolution, stable diagnostics, and atomic no-partial-model failure.
+*   `TLocalizedResourceLookup` uses explicit exact-language, caller-ordered fallback, then neutral keys over case-sensitive `TResourceFile` storage without ambient locale, gettext, codepage, or new dependency scope.
+*   Persisted resources reject duplicate keys and negative payload lengths; persisted help rejects negative counts and unresolved or invalid reference ranges before presentation.
+*   Framework decisions are `UseExistingFramework` for editor/file, and bounded `SmallFrameworkFix` for help graph validation, compiler, resources, and i18n. Historical sources remain read-only.
+*   Wave-3 examples, mouse, terminal/charset/font work, TP7, broad redesign, services, and dependencies remain outside 018.
+*   The next prioritized intake is `Lastenheft_Wave3-Visual-Component-Porting.md` for `bhelp`, `helpdemo`, `i18n`, `tvedit`, and `tvhc`.
 
 ## 🔄 Synchronisationsregel für KI-Agenten-Dateien
 
@@ -649,7 +659,7 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read
-`specs/017-wave1-visual-component-remediation/plan.md`.
+`specs/018-editor-help-resources-hardening/plan.md`.
 <!-- SPECKIT END -->
 
 ## Hinweise / Notes

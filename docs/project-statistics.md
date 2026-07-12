@@ -624,50 +624,52 @@ fortgeschrieben.
 | 2026-07-11 | Post-Merge-Ledger-Abschluss für `017-wave1-visual-component-remediation` | PR #39 wurde nach vollständig grünen Ubuntu-/macOS-/Windows-, DocFX-, SBOM-, Secret- und Claude-Checks ohne actionable Review-Thread gemergt. Copilot konnte wegen Nutzerquota keinen Code-Review erzeugen. Ausschließlich die nicht automatisierbare Human-Approval-Regel erforderte den autorisierten Admin-Bypass. Merge-Commit ist `7e14a49`; der Remote-Featurebranch wurde gelöscht und lokales `main` entsprach danach exakt `origin/main`. Der Closeout markiert 144/144 Tasks und ändert nur Ledger, Evidence und Statistik. |
 | 2026-07-11 | GSDB-Preflight-Archivnachweis und Reihenfolgekorrektur | Das vermeintlich fehlende Hardening-Intake wurde als korrekt archivierte Datei `Lastenheft_Secure-Development-Hardening.016-secure-development-hardening.md` samt abgeschlossener Feature-Evidenz nachgewiesen. Die automatisch verwaltete Lastenheft-Reihenfolge wurde neu erzeugt und verweist nun auch fuer die abgeschlossenen Features 015, 016 und 017 auf die tatsaechlichen branch-suffigierten Dateien statt auf nicht mehr vorhandene aktive Namen. Der korrigierte zentrale Bash- und PowerShell-GSDB-Preflight bewertet TuiVision danach mit `Open=0`; kein neues Intake und kein Spec-Kit-Lauf wurden erzeugt. Reine Dokumentationskorrektur, daher keine Build-, Test-, Coverage- oder DocFX-Ausfuehrung. |
 | 2026-07-11 | Autonome Spec-Kit-Ausführung standardisiert | Die Erkenntnisse aus den autonomen Läufen 016 und 017 wurden projektgebunden umgesetzt: `docs/spec-kit-autonomous-runbook.md` definiert Delivery-Modi, Evidence-first, Konvergenzkriterien, vertikalen Referenz-Slice, test-first Proof, Scope-Firewall, Single-writer-Flächen, triggerbasierte Validierung, Resume und Remote-Closeout. Der neue Skill `$speckit-autonomous` orchestriert die bestehenden Einzel-Skills; eine Evidence-Vorlage sowie Spec-, Plan-, Task-, Command- und Agent-Datei-Templates tragen die Regeln in künftige Features. Alle fünf Agent-Oberflächen sind synchronisiert. Änderungsvolumen vor Statistikpflege: `+620/-25` Dokumentations-, Skill-, Template- und Guidance-Zeilen, kein Produktions- oder Testcode. Manualreferenz: `7,8` Tage beziehungsweise `60,5` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `5,0` Tage beziehungsweise `38,7` Stunden bei 125 Zeilen/Tag. Validierung: Skill-Schema grün über isoliertes `uv` plus `PyYAML`, `specify check` bereit, sechs Presets in den erwarteten Versionen, 5/5 autonome Agent-Abschnitte hashgleich, 29/29 numerische Template-Task-IDs eindeutig, `git diff --check` sauber, DocFX mit 0 Warnungen/0 Fehlern, Playwright/axe 2/2 und UTF-8-`lynx`-Prüfung der neuen Seite erfolgreich. Keine `dotnet build`-/`dotnet test`- oder Coverage-Ausführung, weil keine ausführbare Logik betroffen ist. Der bestehende Homogeneity-Scanner blieb als nicht belastbarer Zusatznachweis außen vor, da die lokal fehlende `Invoke-HgScan`-Bibliothek einen Score von 0 trotz Exitcode 0 erzeugt; die betroffene Agent-Parität wurde stattdessen gezielt nachgewiesen. |
+| 2026-07-12 | `/speckit-autonomous` fuer `018-editor-help-resources-hardening` | Der Wave-3-Vorhaertungslauf bindet Feature 004 weiter als Basis und schliesst zwei wiederverwendbare Luecken: `THelpSourceCompiler` uebersetzt begrenzte `.topic`-/Querverweis-Quellen mit striktem UTF-8, deterministischen Kontexten, stabilen Diagnosen und atomarer Fehlergrenze; `TLocalizedResourceLookup` waehlt exakte, geordnete Fallback- und neutrale Ressourcen ohne Host-Locale oder neue Abhaengigkeit. Ressourcen- und Help-Deserialisierung lehnen doppelte Keys, negative Laengen/Zaehler und ungueltige Referenzgraphen ab. Editor/Datei bleiben `UseExistingFramework`; Help, Compiler, Resources und i18n sind begrenzte `SmallFrameworkFix`-Entscheidungen. Der Vorvalidierungs-Snapshot ohne diese Statistikzeile umfasst `+756/-12` Produktions-C#, `+603` Tests, `+1586/-21` Spec-Kit-/Evidence-/Guidance-Dokumentation sowie nur ausgleichende Versions-/Feature-Metadaten, zusammen `+2948/-36` beziehungsweise `2912` Nettozeilen. Die hinzugefuegten oder aktualisierten 2948 Zeilen entsprechen konservativ `36,9` Tagen beziehungsweise `287,4` Stunden bei 80 Zeilen/Tag und `23,6` Tagen beziehungsweise `184,0` Stunden bei 125 Zeilen/Tag. Sichtbares Arbeitsfenster ist der autonome Lauf am 2026-07-12; `36,9x` und `23,6x` beschreiben Lieferdichte, keine Stoppuhrzeit. Lokale Zwischenvalidierung: Serialization 44/44 und Controls 292/292 gruen; voller Release-, Coverage-, DocFX-/A11Y- und Remote-Abschluss folgen in derselben Feature-Evidence. Das Lastenheft ist als `Lastenheft_03_EditorHelpAndResourcesHardening.018-editor-help-resources-hardening.md` archiviert; naechster Intake ist Wave-3 Visual Component Porting. |
 
 ## Gesamtstatistik
 
-Basis dieses Schlussblocks ist der Repository-Snapshot vom 2026-07-11. Die
+Basis dieses Schlussblocks ist der Repository-Snapshot vom 2026-07-12. Die
 Werte schließen den aktuellen Working Tree ein und bleiben deshalb bis zum
 nächsten Statistiklauf eine dokumentierte Momentaufnahme.
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | 215962 Zeilen |
-| Produktions- und Testcode zusammen | 35898 Zeilen (16.6 %) |
-| Dokumentationsanteil | 180064 Zeilen (83.4 %) |
-| Spec-Kit-Anteil innerhalb der Doku | 41204 Zeilen (22.9 %) |
-| Zentrale Governance-/Agent-Dateien | 2350 Zeilen (1.3 % der Doku) |
+| Artefaktbasis gesamt | 218874 Zeilen |
+| Produktions- und Testcode zusammen | 37245 Zeilen (17.0 %) |
+| Dokumentationsanteil | 181629 Zeilen (83.0 %) |
+| Spec-Kit-Anteil innerhalb der Doku | 42717 Zeilen (23.5 %) |
+| Zentrale Governance-/Agent-Dateien | 2403 Zeilen (1.3 % der Doku) |
 | Projektgebundene Agent-Skills | 2404 Zeilen (1.3 % der Doku) |
-| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-11 |
-| Git-Commits / sichtbare Aktivtage | 421 / 68 |
-| Gesamtzeilen pro sichtbarem Aktivtag | 3175.9 |
-| Gesamtzeilen pro Commit | 513.0 |
-| Konservative Einzelentwickler-Untergrenze | 2699.5 Arbeitstage / 21056.3 Stunden |
-| Thorsten-Solo-Untergrenze | 1727.7 Arbeitstage / 13476.0 Stunden |
-| Kleines 3er-Team mit Koordinationsaufschlag | 1079.8 Arbeitstage |
+| Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-12 |
+| Git-Commits / sichtbare Aktivtage | 423 / 69 |
+| Gesamtzeilen pro sichtbarem Aktivtag | 3172.1 |
+| Gesamtzeilen pro Commit | 517.4 |
+| Konservative Einzelentwickler-Untergrenze | 2735.9 Arbeitstage / 21339.6 Stunden |
+| Thorsten-Solo-Untergrenze | 1751.0 Arbeitstage / 13657.7 Stunden |
+| Kleines 3er-Team mit Koordinationsaufschlag | 1094.4 Arbeitstage |
 | Repo-Speedup gegen 80-Zeilen-Referenz | 39.7x |
 | Repo-Speedup gegen Thorsten-Referenz | 25.4x |
 
 Die hohe Dokumentationsquote enthält die umfangreiche Secure-Development-,
 Governance- und Spec-Kit-Basis. Das autonome Runbook und der neue
-Orchestrierungs-Skill machen die in 016 und 017 erprobten Abläufe für weitere
-Features reproduzierbar. Die Speedups vergleichen sichtbaren Umfang mit
+Orchestrierungs-Skill machten den in 018 wiederholten Ablauf reproduzierbar;
+die neuen Parser-, Persistenz- und Integrationsnachweise bleiben dabei eng am
+Feature-Scope. Die Speedups vergleichen sichtbaren Umfang mit
 Git-Aktivtagen und sind keine Messung persönlicher Arbeitszeit.
 
 The high documentation share includes the extensive secure-development,
 governance, and Spec-Kit baseline. The autonomous runbook and orchestration
-skill make the workflows proven in 016 and 017 reproducible for later features.
-Speedups compare visible scope with Git active days and do not measure personal
-working time.
+skill made the workflow repeated in 018 reproducible, while the new parser,
+persistence, and integration proofs remain bounded to feature scope. Speedups
+compare visible scope with Git active days and do not measure personal time.
 
 ### ASCII-Diagramme
 
 ```text
 Artefaktmix nach Snapshot (Zeilen)
-Produktion     | ###                           |  21491 | 10.0 %
-Tests          | ##                            |  14407 |  6.7 %
-Dokumentation  | ##############################| 180064 | 83.4 %
+Produktion     | ####                          |  22235 | 10.2 %
+Tests          | ###                           |  15010 |  6.9 %
+Dokumentation  | ##############################| 181629 | 83.0 %
 ```
 
 Die Balken verwenden dieselbe Skala. Die Zahlen bleiben der genaue,
@@ -699,6 +701,7 @@ Branch-/Phasenvolumen nach dokumentierter Netto-Basis (Zeilen)
 18 016i | ####                 |  2659
 19 017i | #####                |  3493
 20 auto | #                    |   595
+21 018i | #####                |  2912
 ```
 
 Feature 017 kombiniert einen kleinen beispielinternen Runtime-Anteil mit einer
@@ -706,9 +709,15 @@ vergleichbar großen Spec-Kit-, Evidence-, Test- und Guide-Fläche. Der
 anschließende `auto`-Block standardisiert den dabei erprobten Ablauf ohne
 Runtime- oder Testcodeänderung.
 
+Feature 018 kombiniert einen begrenzten Framework-Fix mit test-first Parser-,
+Persistenz- und Integrationsnachweisen sowie vollständiger Spec-Kit-Evidence.
+
 Feature 017 combines a small example-internal runtime part with a similarly
 large Spec-Kit, evidence, test, and guide surface. The following `auto` block
 standardizes the proven workflow without runtime or test-code changes.
+
+Feature 018 combines a bounded framework fix with test-first parser,
+persistence, and integration proof plus complete Spec-Kit evidence.
 
 ```text
 Konservative Handarbeits-Referenz je dokumentierter Phase
@@ -733,6 +742,7 @@ Konservative Handarbeits-Referenz je dokumentierter Phase
 18 016i | ####                 |  33.2 d
 19 017i | #####                |  43.7 d
 20 auto | #                    |   7.4 d
+21 018i | #####                |  36.4 d
 ```
 
 Die Referenz rechnet den Netto-Phasenumfang mit 80 Zeilen pro Arbeitstag. Für
@@ -757,21 +767,23 @@ Repo125 | ###################            | 25.4x
 017i125 | ###################            | 29.4x
 AUTO-80 | #####                          |  7.8x
 AUTO125 | ###                            |  5.0x
+018i-80 | #########################      | 36.9x
+018i125 | ################               | 23.6x
 ```
 
-Die 017- und AUTO-Werte beziehen sich jeweils auf einen sichtbaren autonomen
+Die 017-, AUTO- und 018-Werte beziehen sich jeweils auf einen sichtbaren autonomen
 Arbeitstag. Sie beschreiben Lieferdichte, nicht die Dauer einzelner Denk-,
 Review-, CI- oder Wartephasen.
 
-The 017 and AUTO values each use one visible autonomous workday. They describe
+The 017, AUTO, and 018 values each use one visible autonomous workday. They describe
 delivery density, not the duration of individual thinking, review, CI, or
 waiting phases.
 
 ```text
 Vergleich Gesamtaufwand / sichtbares KI-Lieferfenster
-Erfahren    | ############################## | 2699.5 d
-Thorsten    | ###################            | 1727.7 d
-KI sichtbar | #                              |   68.0 d
+Erfahren    | ############################## | 2735.9 d
+Thorsten    | ###################            | 1751.0 d
+KI sichtbar | #                              |   69.0 d
 ```
 
 Der Direktvergleich stellt die konservative 80-Zeilen-Basis, die
@@ -803,7 +815,7 @@ X/Y: Phasenvolumen 0..15 (Y ungefähr in Zeilen)
 
 ```text
 X/Y: Phasenvolumen 16..31 (Y ungefähr in Zeilen)
-3500 |      *                         |
+3500 |      *   *                     |
 3000 |    *                           |
 1500 |                                |
  600 |*       *                       |
@@ -815,9 +827,9 @@ X/Y: Phasenvolumen 16..31 (Y ungefähr in Zeilen)
 ```
 
 Die beiden Blöcke zeigen den Verlauf ohne eine zu breite Zeile. G bis J stehen
-für die Phasen 16 bis 19, K für die autonome Standardisierung; alle späteren
-Slots sind bewusst leer.
+für die Phasen 16 bis 19, K für die autonome Standardisierung und L fuer
+Feature 018; alle späteren Slots sind bewusst leer.
 
 The two blocks show progression without an overly wide line. G through J
-represent phases 16 through 19, and K represents autonomous standardization;
-all later slots are intentionally empty.
+represent phases 16 through 19, K represents autonomous standardization, and L
+represents feature 018; all later slots are intentionally empty.
