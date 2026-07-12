@@ -206,8 +206,8 @@
 - [X] T128 Monitor required PR-context checks, Claude/Copilot availability, and GraphQL review threads to convergence; remediate actionable feedback and rerun affected gates
 - [X] T129 Merge with the approved merge strategy, using the narrow human-approval bypass only when all technical gates are green and no actionable thread remains
 - [X] T130 Delete the remote feature branch, switch locally to `main`, fetch/prune/pull fast-forward, and prove a clean `HEAD == origin/main`
-- [ ] T131 Run `$speckit-autonomous-retrospective` for Feature 024 and classify project changes, preset follow-ups, and no-promotion observations in the accepted retrospective surface
-- [ ] T132 Fetch `origin/main`, rebase or merge the current package branch safely, then commit and push the reusable homogeneity evidence-integrity workitem on `codex/autonomous-run-governance-package` in `/Users/thorstenhindermann/home-baseline-tmp/specs/autonomous-run-governance/workitems/024-tv203-freevision-conformance-audit.md`
+- [X] T131 Run `$speckit-autonomous-retrospective` for Feature 024 and classify project changes, preset follow-ups, and no-promotion observations in the accepted retrospective surface
+- [X] T132 Fetch `origin/main`, rebase or merge the current package branch safely, then commit and push the reusable homogeneity evidence-integrity workitem on `codex/autonomous-run-governance-package` in `/Users/thorstenhindermann/home-baseline-tmp/specs/autonomous-run-governance/workitems/024-tv203-freevision-conformance-audit.md`
 
 ---
 
