@@ -134,8 +134,8 @@ Every checkbox is marked only after its acceptance condition is satisfied.
 ## Phase 9: Authorized GitHub Delivery
 
 - [X] T100 Align `Directory.Build.props` to the required `1.19.<branch-commit-count>.<build>` value without incrementing build, stage only intentional files, and record scope in `specs/019-wave3-visual-component-porting/pr-evidence.md`
-- [ ] T101 Commit the complete 019 implementation and capture its commit/version for the next evidence update in `specs/019-wave3-visual-component-porting/pr-evidence.md`
-- [ ] T102 Recalculate branch commit count, update `specs/019-wave3-visual-component-porting/pr-evidence.md` with the T101 commit/version, align and commit version/evidence only if required, and record the result
+- [X] T101 Commit the complete 019 implementation and capture its commit/version for the next evidence update in `specs/019-wave3-visual-component-porting/pr-evidence.md`
+- [X] T102 Recalculate branch commit count, update `specs/019-wave3-visual-component-porting/pr-evidence.md` with the T101 commit/version, align and commit version/evidence only if required, and record the result
 - [ ] T103 Re-align `Directory.Build.props` without a build increment, push `019-wave3-visual-component-porting`, record the observed branch/commit in `specs/019-wave3-visual-component-porting/pr-evidence.md`, commit that evidence update with aligned version, and push it
 - [ ] T104 Create a ready feature PR from `specs/019-wave3-visual-component-porting/pr-evidence.md`, record the URL in that evidence file, re-align version, commit the PR-reference update, and push it
 - [ ] T105 Monitor required CI, Claude/Copilot availability, review comments, and GraphQL threads to convergence; record each state in `specs/019-wave3-visual-component-porting/pr-evidence.md`
