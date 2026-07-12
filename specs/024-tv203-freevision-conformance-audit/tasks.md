@@ -173,7 +173,7 @@
 **Purpose**: Reconcile all evidence, prove the scope firewall, archive the intake, deliver the PR, and capture reusable workflow learning.
 
 - [ ] T103 Complete all six base-preset and optional autonomous-governance applicability rows with owner, reviewer, date, evidence, result, residual risk, follow-up, and re-evaluation trigger in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
-- [ ] T104 Record the PowerShell homogeneity `PropertyNotFoundException` as a separate portable `PresetFollowUp`, not a TuiVision finding, in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
+- [ ] T104 Record the PowerShell homogeneity `PropertyNotFoundException` as a separate portable `PresetFollowUp`, not a TuiVision finding, and forbid an upstream issue update until a reusable fix is published and independently revalidated in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
 - [ ] T105 Verify `specify check`, required prerequisites, zero incomplete feature checklists, and no placeholder markers; record results in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
 - [ ] T106 Run `git diff --check` and record the exact result in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
 - [ ] T107 Run `dotnet format --verify-no-changes` and record the exact result in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
@@ -183,24 +183,31 @@
 - [ ] T111 Run the full Release test suite and record total pass/fail/skip counts in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
 - [ ] T112 Validate `coverlet.runsettings`, align `Directory.Build.props`, and increment the manual build counter once before the canonical coverage command
 - [ ] T113 Run the canonical Coverlet gate and record per-assembly line coverage in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
-- [ ] T114 Run `docfx docfx.json`, keep generated output untracked, and record warnings/errors in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
-- [ ] T115 Run the matching `tests/web-a11y` Playwright/Axe DocFX smoke and record page/test results in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
-- [ ] T116 Review representative generated evidence with UTF-8 Lynx and record the text-first result in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
-- [ ] T117 Run secret, generated-output, external-source, dependency, runtime, API, example, and `tv203s/` diff checks and record exact path evidence in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
-- [ ] T118 Update the chronological Feature-024 ledger entry, artifact counts, trends, CEFR-B2 explanations, and final `Gesamtstatistik` in `docs/project-statistics.md`
-- [ ] T119 Archive the completed intake as `Lastenheft_08_TV203-FreeVision-Conformance-Audit.024-tv203-freevision-conformance-audit.md`
-- [ ] T120 Update the post-audit order and findings-driven 025/026 plus mandatory 027 markers in `Lastenheft_Abarbeitungsreihenfolge.md`
-- [ ] T121 Update the pre-Wave-5 audit result and next accepted intake in `Pflichtenheft.md`
-- [ ] T122 Synchronize completed Feature-024 context and the evidence-derived next feature across `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and `.github/agents/copilot-instructions.md`
-- [ ] T123 Reconcile final domain, inventory, decision, Free Vision, finding, governance, validation, and scope counts in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
-- [ ] T124 Prepare the bilingual PR summary, validation section, review truth, residual risks, and downstream boundaries in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
-- [ ] T125 Align `Directory.Build.props` to the final pre-commit `1.24.<patch>.<build>` version without incrementing the build counter and commit the completed feature
-- [ ] T126 Push `024-tv203-freevision-conformance-audit`, open the feature PR, and record the immutable PR URL outside self-invalidating evidence fields
-- [ ] T127 Monitor required PR-context checks, Claude/Copilot availability, and GraphQL review threads to convergence; remediate actionable feedback and rerun affected gates
-- [ ] T128 Merge with the approved merge strategy, using the narrow human-approval bypass only when all technical gates are green and no actionable thread remains
-- [ ] T129 Delete the remote feature branch, switch locally to `main`, fetch/prune/pull fast-forward, and prove a clean `HEAD == origin/main`
-- [ ] T130 Run `$speckit-autonomous-retrospective` for Feature 024 and classify project changes, preset follow-ups, and no-promotion observations in the accepted retrospective surface
-- [ ] T131 Commit and push the reusable homogeneity evidence-integrity workitem on `codex/autonomous-run-governance-package` in `/Users/thorstenhindermann/home-baseline-tmp/specs/autonomous-run-governance/workitems/024-tv203-freevision-conformance-audit.md`
+
+### Final repository content and last Polish step
+
+- [ ] T114 Update the post-audit order and findings-driven 025/026 plus mandatory 027 markers in `Lastenheft_Abarbeitungsreihenfolge.md`
+- [ ] T115 Update the pre-Wave-5 audit result and next accepted intake in `Pflichtenheft.md`
+- [ ] T116 Synchronize completed Feature-024 context and the evidence-derived next feature across `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, and `.github/agents/copilot-instructions.md`
+- [ ] T117 Update the chronological Feature-024 ledger entry, final artifact counts, trends, CEFR-B2 explanations, and last `Gesamtstatistik` section in `docs/project-statistics.md`
+- [ ] T118 Prepare the provisional bilingual PR summary, final dataset counts, residual risks, and downstream boundaries in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
+- [ ] T119 As the last Polish step, archive the completed intake with `bash scripts/rename-lastenheft.sh Lastenheft_08_TV203-FreeVision-Conformance-Audit.md 024-tv203-freevision-conformance-audit` and verify `Lastenheft_08_TV203-FreeVision-Conformance-Audit.024-tv203-freevision-conformance-audit.md`
+
+### Final validation and remote delivery
+
+- [ ] T120 Run `docfx docfx.json` after all published documentation changes, keep generated output untracked, and record warnings/errors in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
+- [ ] T121 Run the matching `tests/web-a11y` Playwright/Axe DocFX smoke and record page/test results in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
+- [ ] T122 Review representative generated evidence with UTF-8 Lynx and record the text-first result in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
+- [ ] T123 Run `scripts/scan-agent-secrets.sh --fail-on-high` plus generated-output, external-source, dependency, runtime, API, example, and `tv203s/` diff checks and record exact path evidence in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
+- [ ] T124 Reconcile final domain, inventory, decision, Free Vision, finding, governance, validation, review, and scope counts and complete the PR summary in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
+- [ ] T125 Rerun `git diff --check`, `dotnet format --verify-no-changes`, checklist completeness, and placeholder checks after final evidence edits and record the results in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`
+- [ ] T126 Align `Directory.Build.props` to the final pre-commit `1.24.<patch>.<build>` version without incrementing the build counter and commit the completed feature with the Constitution-required `Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>` trailer
+- [ ] T127 Push `024-tv203-freevision-conformance-audit`, open the feature PR, and record the immutable PR URL outside self-invalidating evidence fields
+- [ ] T128 Monitor required PR-context checks, Claude/Copilot availability, and GraphQL review threads to convergence; remediate actionable feedback and rerun affected gates
+- [ ] T129 Merge with the approved merge strategy, using the narrow human-approval bypass only when all technical gates are green and no actionable thread remains
+- [ ] T130 Delete the remote feature branch, switch locally to `main`, fetch/prune/pull fast-forward, and prove a clean `HEAD == origin/main`
+- [ ] T131 Run `$speckit-autonomous-retrospective` for Feature 024 and classify project changes, preset follow-ups, and no-promotion observations in the accepted retrospective surface
+- [ ] T132 Fetch `origin/main`, rebase or merge the current package branch safely, then commit and push the reusable homogeneity evidence-integrity workitem on `codex/autonomous-run-governance-package` in `/Users/thorstenhindermann/home-baseline-tmp/specs/autonomous-run-governance/workitems/024-tv203-freevision-conformance-audit.md`
 
 ---
 
