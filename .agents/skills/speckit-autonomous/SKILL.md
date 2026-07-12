@@ -113,8 +113,10 @@ logs, or test results.
   `main`, pull/prune, and prove `HEAD == origin/main` with a clean tree.
 
 Use a closeout PR only when post-merge facts cannot truthfully be recorded
-before the main merge. Keep that closeout evidence-only and state why it was
-causally necessary.
+before the main merge or when committing current review/check facts would
+change the reviewed head and immediately invalidate those facts. Verify every
+gate before merge, name one exact closeout evidence path in advance, keep the
+closeout evidence-only, and state why it was causally necessary.
 
 ## Finish
 
