@@ -678,9 +678,9 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.6` = TV203-/Free-Vision-Konformitätsaudit — ✓ ABGESCHLOSSEN (Feature `024-tv203-freevision-conformance-audit`)
    - `3.6a` = Core-Runtime-Konformitätshärtung — ENTFÄLLT, Finding-Menge leer (Feature 025 nicht angelegt)
    - `3.6b` = Component-/Data-Konformitätshärtung — ENTFÄLLT, Finding-Menge leer (Feature 026 nicht angelegt)
-   - `3.6c` = Pre-Wave-5-Konformitätsabschluss — ✓ LOKAL BESTANDEN, Merge-Gate offen (Feature 027)
+   - `3.6c` = Pre-Wave-5-Konformitätsabschluss — ✓ ABGESCHLOSSEN (Feature 027, Merge `35414af`)
 
->>> NAECHSTER SCHRITT <<< Feature 027 reviewen und mergen; danach Wave 5 als nächsten fachlichen Intake beginnen.
+>>> NAECHSTER SCHRITT <<< Wave 5 als nächsten fachlichen Intake spezifizieren; Feature 027 ist vollständig gemergt.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

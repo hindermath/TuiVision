@@ -302,7 +302,8 @@ public sealed class ConformanceAuditEvidenceTests
         StringAssert.Contains(gate, "`Core025` | 0 | Suppressed");
         StringAssert.Contains(gate, "`ComponentData026` | 0 | Suppressed");
         StringAssert.Contains(gate, "`Closure027` | Required");
-        StringAssert.Contains(gate, "Wave 5 | Blocked");
+        StringAssert.Contains(gate, "Wave 5 | Eligible");
+        StringAssert.Contains(gate, "Feature-027 merge `35414af`");
     }
 
     /// <summary>
