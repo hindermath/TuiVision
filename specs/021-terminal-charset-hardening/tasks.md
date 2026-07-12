@@ -196,14 +196,14 @@ are used where ownership could overlap.
 ## Phase 11: Authorized GitHub Delivery
 
 - [X] T156 Align `Directory.Build.props` to `1.21.<branch-commit-count>.<build>` without incrementing Build, stage intentional files, and record scope
-- [ ] T157 Commit the complete 021 implementation after recording the planned version and staged-tree scope in `specs/021-terminal-charset-hardening/pr-evidence.md`; defer the observed commit hash to `specs/021-terminal-charset-hardening/closeout-evidence.md`
-- [ ] T158 Recalculate branch commit count, align version/evidence, and create a bounded follow-up commit only when required
-- [ ] T159 Push `021-terminal-charset-hardening` and record the observed branch/head in `specs/021-terminal-charset-hardening/closeout-evidence.md` without committing it onto the reviewed feature head
-- [ ] T160 Create a ready feature PR from `specs/021-terminal-charset-hardening/pr-evidence.md` and record its URL in `specs/021-terminal-charset-hardening/closeout-evidence.md` without invalidating reviewed-head claims
-- [ ] T161 Monitor required CI, Claude/Copilot availability, review comments, and GraphQL threads to convergence; record current-head state in `specs/021-terminal-charset-hardening/closeout-evidence.md`
-- [ ] T162 Remediate every actionable remote finding with focused validation and record response/thread resolution
-- [ ] T163 Use the authorized narrow admin bypass only after green required checks, zero actionable threads, and a sole human-approval block; record exact boundary
-- [ ] T164 Merge with a merge commit, delete the remote feature branch, switch to local `main`, fetch/prune/pull fast-forward, and prove clean `HEAD == origin/main`
+- [X] T157 Commit the complete 021 implementation after recording the planned version and staged-tree scope in `specs/021-terminal-charset-hardening/pr-evidence.md`; defer the observed commit hash to `specs/021-terminal-charset-hardening/closeout-evidence.md`
+- [X] T158 Recalculate branch commit count, align version/evidence, and create a bounded follow-up commit only when required
+- [X] T159 Push `021-terminal-charset-hardening` and record the observed branch/head in `specs/021-terminal-charset-hardening/closeout-evidence.md` without committing it onto the reviewed feature head
+- [X] T160 Create a ready feature PR from `specs/021-terminal-charset-hardening/pr-evidence.md` and record its URL in `specs/021-terminal-charset-hardening/closeout-evidence.md` without invalidating reviewed-head claims
+- [X] T161 Monitor required CI, Claude/Copilot availability, review comments, and GraphQL threads to convergence; record current-head state in `specs/021-terminal-charset-hardening/closeout-evidence.md`
+- [X] T162 Remediate every actionable remote finding with focused validation and record response/thread resolution
+- [X] T163 Use the authorized narrow admin bypass only after green required checks, zero actionable threads, and a sole human-approval block; record exact boundary
+- [X] T164 Merge with a merge commit, delete the remote feature branch, switch to local `main`, fetch/prune/pull fast-forward, and prove clean `HEAD == origin/main`
 - [ ] T165 Record post-merge facts through a non-empty evidence-only closeout PR using `specs/021-terminal-charset-hardening/closeout-evidence.md` only when causally necessary; otherwise document in the pre-merge ledger why none is needed
 - [ ] T166 Finish with synchronized clean `main` and a complete Feature-021 evidence record, ready for the separate retrospective and Home-Baseline handoff
 

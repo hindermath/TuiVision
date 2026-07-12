@@ -281,15 +281,15 @@ sizes. It is not a broad fuzzing claim and adds no dependency.
 
 | Item | Result | Evidence |
 |---|---|---|
-| Push | Open | Authorized after local completion |
-| Pull request | Open | Ready feature PR required |
-| Required checks | Open | Verify on final reviewed head |
-| Review threads | Open | GraphQL-aware zero-actionable requirement |
-| Unavailable reviews | None observed yet | Quota/provider limitations will be recorded as missing review |
-| Reviewed head | Open | Recorded only after remote verification |
-| Merge | Open | Merge commit after convergence |
-| Local `main` sync | Open | Require clean `HEAD == origin/main` |
-| Causal closeout | Pre-named | `specs/021-terminal-charset-hardening/closeout-evidence.md`; used only for self-invalidating reviewed-head and post-merge facts |
+| Push | Pass | Feature commit `bc4da7d`; exact observation in `closeout-evidence.md` |
+| Pull request | Pass | Ready PR #51; exact URL in `closeout-evidence.md` |
+| Required checks | Pass | All executed checks green; Pages deployment conditionally skipped |
+| Review threads | Pass | Zero actionable GraphQL review threads on the unchanged reviewed head |
+| Unavailable reviews | Recorded | Copilot quota exhausted; missing review was not represented as success |
+| Reviewed head | Pass | `bc4da7d`; Claude succeeded without comments and no remediation was required |
+| Merge | Pass | Merge commit `8f50c07` via authorized narrow human-approval bypass |
+| Local `main` sync | Pass | Fetch/prune/fast-forward proved `HEAD == origin/main == 8f50c07`; feature remote branch deleted |
+| Causal closeout | Required | `closeout-evidence.md` carries reviewed-head and post-merge facts in one evidence-only closeout PR |
 
 ## Retrospective
 
