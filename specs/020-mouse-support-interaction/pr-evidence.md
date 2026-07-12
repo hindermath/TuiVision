@@ -227,7 +227,7 @@ test file. No cross-project ownership or hidden aggregate assertion was used.
 
 ## Local Completion
 
-- Tasks T001-T118 are complete; only authorized GitHub delivery T119-T126 remains.
+- Tasks T001-T119 are complete; only authorized GitHub delivery T120-T126 remains.
 - Binding intake archived by the repository PowerShell workflow as
   `Lastenheft_04_MouseSupportAndInteraction.020-mouse-support-interaction.md` in commit `cfdd0bf`.
 - Changed runtime scope is limited to Driver ingress/capability, Program lifecycle,
@@ -244,7 +244,7 @@ test file. No cross-project ownership or hidden aggregate assertion was used.
 | Staged scope | Pass | Intentional 020 source, tests, feature artifacts, docs, governance, metadata, statistics, and version only; `git diff --cached --check` and generated/sensitive path scan pass at `1.20.2.143` |
 | Implementation commit | Pass | `f76a0bf` (`feat: harden mouse support and interaction`) at version `1.20.2.143`; 39 files, 3,678 insertions, 69 deletions |
 | Evidence/version alignment | Pass | Bounded follow-up required because the implementation hash cannot be known inside its own commit; aligned to prospective third branch commit `1.20.3.143` without running another build/test |
-| Push | Open | Pending branch/commit |
+| Push | Pass | Initial and evidence-aligned pushes succeeded; remote branch `020-mouse-support-interaction` first observed at `0d99df0b37ef66fe2af2a077cc24a25e6a7183b4`; pre-push tracked-secret scan passed |
 | Pull request | Open | Pending URL |
 | Required checks | Open | Pending check summary |
 | Review threads | Open | Pending GraphQL count |
