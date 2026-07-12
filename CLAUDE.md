@@ -219,6 +219,11 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - Mouse interaction, terminal/charset/font work, Wave 4, broad redesign, services, new dependencies, and runtime/product AI remain outside 019.
 - The next prioritized intake is `Lastenheft_04_MouseSupportAndInteraction.md`.
 
+### Autonomous Red-Proof Completeness
+- Before the first red test batch, review imports, public XML docs, harness helpers, focus/ownership assertions, and linked-source assembly identity.
+- Group independent negative cases only as a bounded project-local red matrix with explicit failure boundaries and shared ownership.
+- When source is linked into multiple assemblies, cross-project proof uses public contracts or state delegates and does not assume one CLR type identity.
+
 ## Example Wave Delivery Pattern
 
 - Larger mandatory example waves should use a deliberate two-stage Spec-Kit delivery model when framework gaps, porting logic, and interactive runtime polish would otherwise be mixed in one feature.

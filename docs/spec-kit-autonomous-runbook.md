@@ -174,6 +174,16 @@ retrospective.
   seriell. Ein `[P]`-Marker ist dann unzulässig.
 - Testaufgaben stehen vor der zugehörigen Implementierung, wenn ein roter oder
   fehlender Vertrag beobachtbar ist.
+- Vor dem ersten roten Testlauf wird die geplante Compile-Oberfläche vollständig
+  geprüft: Imports, öffentliche XML-Dokumentation, Test-Harness-Helfer,
+  Fokus-/Ownership-Assertionen und die Assembly-Identität gelinkter Quellen.
+- Unabhängige negative Fälle dürfen als vollständige projektlokale Red-Matrix
+  gebündelt werden, wenn jede erwartete Fehlergrenze einzeln benannt bleibt und
+  keine Datei- oder Evidence-Ownership vermischt wird.
+- Wird dieselbe Quelldatei in mehrere Assemblies gelinkt, darf ein
+  Cross-Projekt-Test keine gemeinsame CLR-Typidentität annehmen. Er nutzt
+  öffentliche Verträge, Zustandsdelegaten oder eine bewusst gemeinsame
+  kompilierte Assembly, sofern die Architektur das erlaubt.
 - Remote-Tasks werden nur für `PublishPR` oder `MergeAndSync` erzeugt.
 - Jede Remote- oder Delivery-Task nennt den konkreten Repository-Evidence-Pfad,
   der ihr Abnahmeergebnis aufnimmt. Ein nur implizites "Evidence ergänzen"
@@ -188,6 +198,15 @@ retrospective.
   tasks must not use `[P]`.
 - Put test tasks before implementation when a failing or missing contract is
   observable.
+- Before the first red test batch, review the complete compile surface:
+  imports, public XML documentation, test-harness helpers, focus/ownership
+  assertions, and the assembly identity of linked sources.
+- Independent negative cases may form one complete project-local red matrix
+  when every expected failure boundary remains explicit and file/evidence
+  ownership is not mixed.
+- When one source file is linked into several assemblies, cross-project proof
+  must not assume one CLR type identity. Use public contracts, state delegates,
+  or an intentionally shared compiled assembly when architecture permits.
 - Generate remote tasks only for `PublishPR` or `MergeAndSync`.
 - Every remote or delivery task names the exact repository evidence path that
   records its acceptance result. An implicit "record evidence" is insufficient
