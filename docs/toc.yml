@@ -4,6 +4,8 @@
   items:
     - name: Autonome Spec-Kit-Läufe
       href: spec-kit-autonomous-runbook.md
+    - name: Retrospektiven autonomer Spec-Kit-Läufe
+      href: spec-kit-autonomous-retrospectives.md
     - name: Multi-Mac-Workflow
       href: guides/multi-mac-workflow.md
     - name: Beispiel-Guides

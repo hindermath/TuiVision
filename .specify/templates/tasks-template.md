@@ -42,7 +42,8 @@ description: "Task list template for feature implementation"
 - Add remote delivery tasks only when `plan.md` delegates `PublishPR` or
   `MergeAndSync`. Merge-and-sync tasks must include required checks, actionable
   review threads, branch cleanup, and proof that local `main` equals
-  `origin/main`.
+  `origin/main`. Every remote or delivery task must name the exact repository
+  evidence path that records its acceptance result.
 - End with a short evidence retrospective that proposes concrete workflow
   refinements without silently changing the current feature scope.
 

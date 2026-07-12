@@ -68,6 +68,9 @@ triggers, residual risks, review state, and follow-ups current during the run.
 - Use test-first proof where a contract can fail observably.
 - Group tasks by independently reviewable outcome. Do not create one task per
   evidence cell when one bounded task can update a complete matrix slice.
+- Require every remote or delivery task to name the exact repository evidence
+  path that records its acceptance result; an implicit "record evidence" is
+  not sufficient for analysis or resume.
 - Serialize writes to shared evidence, version, statistics, workflow, and
   agent-guidance files.
 - Protect scope. Route discovered runtime, design, parity, or proof work outside
