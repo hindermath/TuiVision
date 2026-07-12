@@ -290,6 +290,13 @@ Das Projekt folgt einer modularen Struktur gemäß .NET Best Practices:
 - `Core025` and `ComponentData026` owner sets are empty, so no Feature 025 or 026 branch or PR may be created. `027-pre-wave5-conformance-closure` is the mandatory next intake and Wave 5 remains blocked.
 - No runtime, API, dependency, package, example, generated-output, or historical-source change entered 024; the external Free Vision worktree remains outside Git.
 
+### 027-pre-wave5-conformance-closure
+- Current planning baseline: execute the mandatory closure from `specs/027-pre-wave5-conformance-closure/` and `Lastenheft_09_Pre-Wave5-Conformance-Closure.md`.
+- Revalidate the merged Feature-024 baseline exactly: 16 domains, 48 contracts, inventories 151/119/176, 15 external source records, 94 proof references, decisions 13/34/1/0/0, and zero findings.
+- Features 025 and 026 remain suppressed while their accepted owner sets are empty. Any new drift or evidence gap stops 027 and requires a reviewed audit revision; do not repair runtime behavior inside closure.
+- Run focused audit, full Release, five assembly coverage gates, format, DocFX/Axe/Lynx, secret, scope, and remote checks before releasing Wave 5.
+- No runtime, public API, dependency, package, example behavior, historical source, or Wave-5 implementation change is permitted. Wave 5 becomes the next intake only after 027 merges.
+
 
 ### Autonomous Red-Proof Completeness
 - Before the first red test batch, review imports, public XML docs, harness helpers, focus/ownership assertions, and linked-source assembly identity.
