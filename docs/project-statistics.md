@@ -679,7 +679,7 @@ fortgeschrieben.
 | 2026-07-12 | Antigravity-Folgeabgleich nach Preset-Adoption | Die aktiven Betriebsflächen verwenden jetzt `agy` statt direkter Gemini-CLI-Aufrufe: Installationspflicht, Agent-Kontextpflege, Multi-Mac-Guide und `agy/**`-CI-Branchfilter sind ausgerichtet; `gemini/**` bleibt ausdrücklich legacy-kompatibel. Alle fünf Agent-Dateien tragen dieselbe Übergangsregel. `GEMINI.md`, `~/.gemini/antigravity-cli/`, historische Specs und Ledger-Einträge sowie Enterprise-/Cloud-/API-Kompatibilität bleiben erhalten. Die Adoption-Evidence trennt reales Antigravity-Dogfooding von der historisch wahren v0.1.0-Gemini-Kompatibilitätsprüfung. Der Vor-Statistik-Snapshot umfasst `+75/-24`, also 51 Nettozeilen, davon 50 Markdown- und eine Workflow-Zeile; Runtime, Tests, Pakete, Beispiele, Preset-Payload und `tv203s/` bleiben unverändert. Konservative Manualreferenz für 75 hinzugefügte oder aktualisierte Zeilen: `0,9` Tage beziehungsweise `7,3` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `0,6` Tage beziehungsweise `4,7` Stunden bei 125 Zeilen/Tag. |
 | 2026-07-12 | Intake-Vorbereitung für `024-tv203-freevision-conformance-audit` | Das neue Lastenheft verankert ein reines Pre-Wave-5-Konformitätsaudit mit Borland/`tv203s` als Primärreferenz und dem gepinnten offiziellen Free-Vision-Commit nur als sekundärer Gegenprüfung. Die Reihenfolge wird auf 024, ausschließlich findings-basierte 025/026, das verpflichtende Closure 027 und danach Wave 5 ausgerichtet; veraltete aktive Verweise auf bereits archivierte 018–023-Lastenhefte werden korrigiert. Der Vor-Statistik-Snapshot umfasst `+402/-12`, also 390 Netto-Dokumentzeilen ohne Produktions-, Test-, Paket-, Beispiel-, Agent-, Preset- oder historische Source-Änderung. Konservative Manualreferenz für 402 hinzugefügte oder aktualisierte Zeilen: `5,0` Tage beziehungsweise `39,2` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `3,2` Tage beziehungsweise `25,1` Stunden bei 125 Zeilen/Tag. |
 | 2026-07-12 | `/speckit-autonomous` für `024-tv203-freevision-conformance-audit` | Feature 024 inventarisiert 151 historische `.cc`-Dateien, 119 gepflegte Produktionsdateien, 176 exportierte öffentliche Typen und 48 Verträge in 16 Domänen. Die Primärentscheidungen sind 13 `Aligned`, 34 `IntentionalModernization`, 1 `ConsciouslyOmitted`, 0 `BehavioralDrift` und 0 `EvidenceGap`; 15 gepinnte Free-Vision-Quellen bleiben unabhängige Sekundärevidence. Damit sind die Finding-Mengen für 025 und 026 leer, während 027 als verpflichtender Closure-Lauf offen bleibt. Der Vor-Statistik-Snapshot umfasst `+0/-0` Produktionscode, `+528/-0` Tests und Testprojekt, `+9352/-17` Dokumentation/Evidence/Guidance sowie `+4/-4` Metadaten, zusammen `+9884/-21` beziehungsweise 9863 Nettozeilen. Konservative Manualreferenz für 9884 hinzugefügte oder aktualisierte Zeilen: `123,6` Tage beziehungsweise `963,7` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `79,1` Tage beziehungsweise `616,8` Stunden bei 125 Zeilen/Tag. Lokale Abnahme: Audit-Tests 11/11, Volltests 698/698, Coverage Core 90,45 %, Controls 83,89 %, Serialization 89,50 %, Compatibility 80,55 % und Drivers.Console 89,18 %. Produktcode, öffentliche API, Pakete, Beispiele, historische Quellen und der externe Free-Vision-Worktree bleiben unverändert. |
-| 2026-07-12 | Closeout und autonome Retrospektive nach Feature 024 | Feature-PR #62 wurde als `5c0a4d7` gemergt; der kausale Closeout-PR #63 blieb genau ein Evidence-Commit und wurde als `f3fd98f` gemergt. Beide PRs bestanden alle technischen Gates und Claude, Copilot blieb wegen Nutzerquota ein fehlender Review, GraphQL meldete null Threads und nur Human Approval erforderte den eng autorisierten Bypass. Der Closeout und diese Retrospektive umfassen zusammen `+75/-25`, also 50 Netto-Dokumentzeilen. Konservative Manualreferenz: `0,9` Tage beziehungsweise `7,3` Stunden bei 80 hinzugefügten Zeilen/Tag; Thorsten-Solo: `0,6` Tage beziehungsweise `4,7` Stunden bei 125 Zeilen/Tag. Home-Baseline-Commit `db2bd86` korrigiert den reproduzierten PowerShell-Error-Channel-Defekt; die portable Preset-Regel war bereits vorhanden. 132/132 Tasks sind abgeschlossen, 025/026 bleiben unterdrückt und 027 ist der nächste verpflichtende Intake. |
+| 2026-07-12 | Closeout und autonome Retrospektive nach Feature 024 | Feature-PR #62 wurde als `5c0a4d7` gemergt; der kausale Closeout-PR #63 blieb genau ein Evidence-Commit und wurde als `f3fd98f` gemergt. Beide PRs bestanden alle technischen Gates und Claude, Copilot blieb wegen Nutzerquota ein fehlender Review, GraphQL meldete null Threads und nur Human Approval erforderte den eng autorisierten Bypass. Der Closeout und diese Retrospektive umfassen einschließlich Statistikpflege `+113/-46`, also 67 Netto-Dokumentzeilen. Konservative Manualreferenz: `1,4` Tage beziehungsweise `11,0` Stunden bei 80 hinzugefügten Zeilen/Tag; Thorsten-Solo: `0,9` Tage beziehungsweise `7,1` Stunden bei 125 Zeilen/Tag. Home-Baseline-Commit `db2bd86` korrigiert den reproduzierten PowerShell-Error-Channel-Defekt; die portable Preset-Regel war bereits vorhanden. 132/132 Tasks sind abgeschlossen, 025/026 bleiben unterdrückt und 027 ist der nächste verpflichtende Intake. |
 
 ## Gesamtstatistik
 
@@ -689,19 +689,19 @@ nächsten Statistiklauf eine dokumentierte Momentaufnahme.
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | 248562 Zeilen |
+| Artefaktbasis gesamt | 248579 Zeilen |
 | Produktions- und Testcode zusammen | 46318 Zeilen (18.6 %) |
-| Dokumentationsanteil | 202244 Zeilen (81.4 %) |
+| Dokumentationsanteil | 202261 Zeilen (81.4 %) |
 | Spec-Kit-Anteil innerhalb der Doku | 49785 Zeilen (24.6 %) |
 | Zentrale Governance-/Agent-Dateien | 3669 Zeilen (1.8 % der Doku) |
 | Projektgebundene Agent-Skills | 2485 Zeilen (1.2 % der Doku) |
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-12 |
-| Git-Commits / sichtbare Aktivtage | 490 / 69 |
-| Gesamtzeilen pro sichtbarem Aktivtag | 3602.3 |
-| Gesamtzeilen pro Commit | 507.3 |
-| Konservative Einzelentwickler-Untergrenze | 3107.0 Arbeitstage / 24234.8 Stunden |
-| Thorsten-Solo-Untergrenze | 1988.5 Arbeitstage / 15510.3 Stunden |
-| Kleines 3er-Team mit Koordinationsaufschlag | 1242.8 Arbeitstage |
+| Git-Commits / sichtbare Aktivtage | 491 / 69 |
+| Gesamtzeilen pro sichtbarem Aktivtag | 3602.6 |
+| Gesamtzeilen pro Commit | 506.3 |
+| Konservative Einzelentwickler-Untergrenze | 3107.2 Arbeitstage / 24236.5 Stunden |
+| Thorsten-Solo-Untergrenze | 1988.6 Arbeitstage / 15511.3 Stunden |
+| Kleines 3er-Team mit Koordinationsaufschlag | 1242.9 Arbeitstage |
 | Repo-Speedup gegen 80-Zeilen-Referenz | 45.0x |
 | Repo-Speedup gegen Thorsten-Referenz | 28.8x |
 
@@ -728,7 +728,7 @@ personal time.
 Artefaktmix nach Snapshot (Zeilen)
 Produktion     | ####                          |  27449 | 11.0 %
 Tests          | ###                           |  18869 |  7.6 %
-Dokumentation  | ##############################| 202244 | 81.4 %
+Dokumentation  | ##############################| 202261 | 81.4 %
 ```
 
 Die Balken verwenden dieselbe Skala. Die Zahlen bleiben der genaue,
@@ -775,7 +775,7 @@ Branch-/Phasenvolumen nach dokumentierter Netto-Basis (Zeilen)
 33 024p | #                    |   390
 34 024i | ################     |  9863
 35 024c | #                    |     8
-36 024r | #                    |    42
+36 024r | #                    |    59
 ```
 
 Feature 017 kombiniert einen kleinen beispielinternen Runtime-Anteil mit einer
@@ -882,7 +882,7 @@ Konservative Handarbeits-Referenz je dokumentierter Phase
 33 024p | #                    |   4.9 d
 34 024i | #################### | 123.3 d
 35 024c | #                    |   0.1 d
-36 024r | #                    |   0.5 d
+36 024r | #                    |   0.7 d
 ```
 
 Die Referenz rechnet den Netto-Phasenumfang mit 80 Zeilen pro Arbeitstag. Für
@@ -953,8 +953,8 @@ of individual thinking, review, CI, or waiting phases.
 
 ```text
 Vergleich Gesamtaufwand / sichtbares KI-Lieferfenster
-Erfahren    | ############################## | 3107.0 d
-Thorsten    | ###################            | 1988.5 d
+Erfahren    | ############################## | 3107.2 d
+Thorsten    | ###################            | 1988.6 d
 KI sichtbar | #                              |   69.0 d
 ```
 
