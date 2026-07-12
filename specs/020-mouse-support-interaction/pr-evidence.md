@@ -227,8 +227,8 @@ test file. No cross-project ownership or hidden aggregate assertion was used.
 
 ## Local Completion
 
-- Tasks T001-T124 are complete; T125-T126 are completed by the authorized
-  non-empty evidence-only closeout PR.
+- Tasks T001-T125 are complete; T126 closes only after the authorized non-empty
+  evidence-only closeout PR is merged and local `main` is synchronized again.
 - Binding intake archived by the repository PowerShell workflow as
   `Lastenheft_04_MouseSupportAndInteraction.020-mouse-support-interaction.md` in commit `cfdd0bf`.
 - Changed runtime scope is limited to Driver ingress/capability, Program lifecycle,
@@ -254,6 +254,7 @@ test file. No cross-project ownership or hidden aggregate assertion was used.
 | Merge | Pass | PR #48 merged with merge commit `b52d90f1e6a57ac090e124fa4ba1014a7cddc1dc` at 2026-07-12T02:25:27Z; remote feature branch deleted |
 | Local `main` sync | Pass | Fetch/prune plus fast-forward pull completed; clean local `main` and `origin/main` both resolved to `b52d90f1e6a57ac090e124fa4ba1014a7cddc1dc` before creating the closeout branch |
 | Closeout rationale | Required | Recording the final review, bypass, merge, deletion, and synchronized-main facts on the feature head was causally impossible: the evidence commit would have invalidated the reviewed head, while merge/sync facts did not yet exist |
+| Evidence closeout | In progress | Non-empty evidence-only PR [#49](https://github.com/hindermath/TuiVision/pull/49); final merge and second `main` synchronization remain T126 |
 
 ## Retrospective
 

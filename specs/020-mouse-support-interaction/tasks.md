@@ -161,7 +161,7 @@ are used where ownership could overlap.
 - [X] T122 Remediate every actionable remote finding with focused validation and record response/thread resolution
 - [X] T123 Use the authorized narrow admin bypass only after green required checks, zero actionable threads, and a sole human-approval block; record exact boundary
 - [X] T124 Merge with a merge commit, delete the remote feature branch, switch to local `main`, fetch/prune/pull fast-forward, and prove clean `HEAD == origin/main`
-- [ ] T125 Record post-merge facts through a non-empty evidence-only closeout PR only when causally impossible before merge; otherwise document why none is needed
+- [X] T125 Record post-merge facts through a non-empty evidence-only closeout PR only when causally impossible before merge; otherwise document why none is needed
 - [ ] T126 Finish with synchronized clean `main` and a complete Feature-020 evidence record, ready for the separate retrospective decision
 
 ## Dependencies and Execution Order
