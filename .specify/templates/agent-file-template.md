@@ -54,5 +54,20 @@ is documented: `security-governance`, `architecture-governance`,
 `isaqb-architecture-governance`, `a11y-governance`,
 `cross-platform-governance`, and `agent-parity-governance`.
 
+`autonomous-run-governance` v0.1.0 mit Priorität 70 ist aus dem öffentlichen
+Tag-ZIP installiert. Der projektgebundene Codex-Skill `$speckit-autonomous`
+bleibt an seinem einzelnen Pfad als bewusster lokaler Override bestehen, weil
+er TuiVision-spezifische Nummerierungs-, Build-Zähler-, DocFX-/A11Y- und
+historische Source-Verträge ergänzt. Preset-Command, Retrospektiv-Skill,
+Projekt-Runbook und Adoption-Evidence bleiben die portablen und gemeinsamen
+Nachweisflächen.
+
+*`autonomous-run-governance` v0.1.0 at priority 70 is installed from the public
+tag ZIP. Keep the project-owned Codex `$speckit-autonomous` skill at its single
+path as an intentional local override because it adds TuiVision numbering,
+build-counter, DocFX/A11Y, and historical-source contracts. The preset command,
+retrospective skill, project runbook, and adoption evidence remain the portable
+and shared proof surfaces.*
+
 <!-- MANUAL ADDITIONS START -->
 <!-- MANUAL ADDITIONS END -->

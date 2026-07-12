@@ -270,6 +270,44 @@
         "speckit-tasks"
       ],
       "installed_at": "2026-06-14T14:52:13.912681+00:00"
+    },
+    "autonomous-run-governance": {
+      "version": "0.1.0",
+      "source": "local",
+      "manifest_hash": "sha256:6c88344a9b7b2306f70db9a27bc824dba761b51557a1fc573ab8ac583d405210",
+      "enabled": true,
+      "priority": 70,
+      "registered_commands": {
+        "agy": [
+          "speckit.autonomous",
+          "speckit.autonomous-retrospective"
+        ],
+        "claude": [
+          "speckit.autonomous",
+          "speckit.autonomous-retrospective"
+        ],
+        "codex": [
+          "speckit.autonomous",
+          "speckit.autonomous-retrospective"
+        ],
+        "copilot": [
+          "speckit.autonomous",
+          "speckit.autonomous-retrospective"
+        ],
+        "opencode": [
+          "speckit.autonomous",
+          "speckit.autonomous-retrospective"
+        ],
+        "zed": [
+          "speckit.autonomous",
+          "speckit.autonomous-retrospective"
+        ]
+      },
+      "registered_skills": [
+        "speckit-autonomous",
+        "speckit-autonomous-retrospective"
+      ],
+      "installed_at": "2026-07-12T10:07:32.826542+00:00"
     }
   }
 }
