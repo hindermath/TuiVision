@@ -175,6 +175,9 @@ retrospective.
 - Testaufgaben stehen vor der zugehörigen Implementierung, wenn ein roter oder
   fehlender Vertrag beobachtbar ist.
 - Remote-Tasks werden nur für `PublishPR` oder `MergeAndSync` erzeugt.
+- Jede Remote- oder Delivery-Task nennt den konkreten Repository-Evidence-Pfad,
+  der ihr Abnahmeergebnis aufnimmt. Ein nur implizites "Evidence ergänzen"
+  reicht für Analyze und Resume nicht aus.
 
 - Shape tasks around independently reviewable outcomes, not individual table
   cells.
@@ -186,6 +189,9 @@ retrospective.
 - Put test tasks before implementation when a failing or missing contract is
   observable.
 - Generate remote tasks only for `PublishPR` or `MergeAndSync`.
+- Every remote or delivery task names the exact repository evidence path that
+  records its acceptance result. An implicit "record evidence" is insufficient
+  for analysis and resume.
 
 ## Validierungsmatrix / Validation Matrix
 
