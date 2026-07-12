@@ -10,6 +10,8 @@
       href: guides/multi-mac-workflow.md
     - name: Maussupport und Interaktion
       href: guides/mouse-support.md
+    - name: Terminal- und Charset-Härtung
+      href: guides/terminal-charset-hardening.md
     - name: Beispiel-Guides
       items:
         - name: Desklogo

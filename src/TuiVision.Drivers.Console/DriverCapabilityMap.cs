@@ -94,14 +94,17 @@ public static class DriverCapabilityMap
             "they remain explicit unsupported or follow-up boundaries.",
 
         DriverCapabilityBucket.DisplayAdaptation =>
-            "Managed Unicode and System.Text.Encoding APIs on .NET 10. Codepage and font selection " +
-            "are handled transparently by the runtime and the host terminal. Replaces historical " +
-            "codepage.cc, fontcoll.cc, vga.cc, and vesa.cc native hardware-level configuration.",
+            "TerminalCharsetMapper provides host-independent Unicode and KOI8-R mapping with U+FFFD " +
+            "replacement. BitmapFontFixture validates raw 8x16 metadata, and TerminalProfile applies " +
+            "closed-schema safe defaults without installing host fonts or changing codepages. These " +
+            "managed contracts replace the historical codepage.cc, fontcoll.cc, vga.cc, and vesa.cc " +
+            "configuration intent without reproducing hardware-level mutation.",
 
         DriverCapabilityBucket.TerminalModeControl =>
-            "System.Console.TreatControlCAsInput and related Console API properties on .NET 10. " +
-            "Terminal raw/cooked mode setup is managed by the runtime. Replaces historical screen.cc, " +
-            "sescreen.cc, rhscreen.cc, and platform-specific termios/ioctl sequences.",
+            "TerminalSession provides a bounded in-process transcript, cursor, attributes, history, " +
+            "reset, and lifecycle contract. TProgram retains managed System.Console cleanup for the " +
+            "visible application shell. No shell, PTY, raw/cooked termios, host font, codepage, or " +
+            "terminal-profile mutation is part of the session contract.",
 
         _ => throw new ArgumentOutOfRangeException(nameof(bucket), bucket, "No managed replacement defined for this bucket."),
     };

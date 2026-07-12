@@ -137,3 +137,33 @@ English: Driver owns protocol and host state, Core remains the canonical event
 contract, and Controls own focus plus the sole title-row drag. Invalid raw data
 never reaches the view tree. Native Windows Console, wheel, hover, touch, and
 additional drag targets remain outside 020.
+
+## 021 Terminal and Charset Addendum
+
+```text
+Controlled text, C0 action, CSI sequence, profile JSON, or font fixture
+  |
+  | complete validation within fixed limits
+  v
+TuiVision.Drivers.Console
+  | TerminalSession -> TConsoleBuffer/TConsoleCell
+  | TerminalCharsetMapper -> Unicode or KOI8-R
+  | BitmapFontFixture -> raw 8x16 metadata
+  | TerminalProfile -> requested/effective values and fallback
+  v
+TTerminalView in TuiVision.Controls
+  |
+  | existing app loop, keyboard dispatch, view identity, status and cells
+  v
+Deterministic quit; no host process, PTY, font, codepage, or profile mutation
+```
+
+Deutsch: Drivers.Console besitzt Session, Parser, Mapping, Fixture und Profil.
+Core bleibt der Cell-/Buffer-Vertrag. Controls projiziert nur den validierten
+Zustand und fügt keinen zweiten Terminal- oder Key-Parser hinzu. Physische
+Hostbeobachtung bleibt von deterministischem In-Process-Proof getrennt.
+
+English: Drivers.Console owns session, parser, mapping, fixture, and profile.
+Core remains the cell/buffer contract. Controls only projects validated state
+and adds no second terminal or key parser. Physical host observation remains
+separate from deterministic in-process proof.

@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-07-12 (aktualisiert einschließlich Feature 020 mit begrenztem SGR-1006-Ingress, App-Loop-Proof und vollständigem Tastaturfallback)
+Stand: 2026-07-12 (aktualisiert einschließlich Feature 021 mit kontrollierter Terminal-Session, KOI8-R-/Font-/Profil-Verträgen und App-Loop-/Cell-Proof)
 
 Aktueller Zusatz: Feature 016 dokumentiert 157/157 Secure-Development-
 Kontrollen, sechs behobene Medium-Funde, 498/498 grüne Release-Tests und eine
@@ -9,6 +9,10 @@ Coverage von mindestens 80,55 % in allen fünf Gate-Assemblies.
 Feature 020 ergänzt einen atomar validierten Host-Mauseingang, Topmost-Fokus,
 Exactly-once-Aktivierung, Doppelklick und genau einen begrenzten Titelzeilen-
 Drag. Physische Host-Prüfung und deterministische CI-Evidence bleiben getrennt.
+
+Feature 021 ergänzt eine rein in-process arbeitende Terminal-Session, ein
+begrenztes C0-/CSI-Subset, hostunabhängiges KOI8-R-/Unicode-Mapping, eine rohe
+8x16-Fixture, geschlossene Profile und ein sichtbares `TTerminalView`.
 
 ## Zweck und Pflege
 
@@ -637,6 +641,7 @@ fortgeschrieben.
 | 2026-07-12 | `/speckit-autonomous` für `020-mouse-support-interaction` | Feature 020 liefert einen begrenzten SGR-1006-Ingress in `TuiVision.Drivers.Console`, rekursive globale View-Koordinaten, Topmost-Hit/Fokus, Exactly-once-Control-Aktivierung, deterministische 500-ms-Doppelklickklassifikation und genau einen `TWindow`-Titelzeilen-Drag mit vollständigen Abbruch- und Tastaturfallbackpfaden. Die lokale Umgebung ist macOS, aber headless mit `TERM=dumb`; physische Host-Evidence bleibt deshalb ehrlich `NotRun`. Der Vorvalidierungs-Snapshot ohne diese Statistikzeile umfasst `+986/-12` Produktionscode, `+933` Tests, `+1681/-4` Dokumentation/Evidence/Guidance und `+4/-4` Metadaten, zusammen `+3604/-20` beziehungsweise `3584` Nettozeilen. Konservative Manualreferenz für 3604 hinzugefügte oder aktualisierte Zeilen: `45,1` Tage beziehungsweise `351,4` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `28,8` Tage beziehungsweise `224,9` Stunden bei 125 Zeilen/Tag. Sichtbares Arbeitsfenster ist der autonome Lauf am 2026-07-12; `45,1x` und `28,8x` beschreiben Lieferdichte, keine Stoppuhrzeit. Lokale Slice-Abnahme: Driver 54/54, Fokusregressionen 81/81, Drag 6/6 und App-Loop 5/5; voller Release-, Coverage-, DocFX-/A11Y- und Remote-Abschluss folgt in derselben Feature-Evidence. Nächster Intake ist `Lastenheft_05_TerminalCharsetAndEmulation.md`. |
 | 2026-07-12 | Post-Merge-Ledger-Abschluss für `020-mouse-support-interaction` | PR #48 bestand Ubuntu-/macOS-CI, macOS-/Linux-/Windows-Homogeneity, DocFX, Supply Chain, Gitleaks, Agent-Secret-Scan und Claude Review auf dem finalen Head `6944719`. GraphQL meldete null Review-Threads und null Konversationskommentare; Copilot blieb wegen Nutzerquota ein fehlender Review. Nur Human Approval erforderte den autorisierten engen Admin-Bypass. Feature-Merge `b52d90f` und Evidence-Closeout #49 mit Merge `5aca8c1` löschten ihre Remote-Branches; lokales sauberes `main` entsprach danach jeweils `origin/main`. Feature 020 schließt mit 126/126 Tasks. |
 | 2026-07-12 | Lernende Nacharbeit nach autonomem Feature 020 | Der dritte Feldlauf bestätigt Compile-Surface-Check und projektlokale Red-Matrix. Neu korrigiert wird eine Evidence-Schleife: Ein Commit mit aktuellem Check-/Thread-Stand ändert den geprüften Head und entwertet seine eigene Aussage. Runbook, `$speckit-autonomous`, Tasks-/Evidence-Template und alle fünf Agentenflächen prüfen die Gates deshalb weiter vor dem Merge, legen selbstinvalidierende Reviewed-Head- und echte Post-Merge-Fakten aber in genau einen benannten kausalen Closeout-Pfad. Änderungsvolumen vor dieser Statistikzeile: `+65/-14` reine Dokumentations-, Skill-, Template-, Guidance- und Feature-Evidence-Zeilen, kein Produktions- oder Testcode. Konservative Manualreferenz: `0,8` Tage beziehungsweise `6,3` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `0,5` Tage beziehungsweise `4,1` Stunden bei 125 Zeilen/Tag. Validierung: Skill-Schema, `specify check`, sechs Presets, 5/5 Agentenparität, 31 eindeutige numerische Template-Task-IDs, Diff- und Secret-Prüfung, DocFX zweimal mit 0 Warnungen/0 Fehlern, Playwright/axe 2/2 und UTF-8-`lynx`-Review bestanden. Kein .NET-Build, Test oder Coverage-Lauf wurde ausgelöst, weil keine ausführbare Logik betroffen ist. Ein stackneutraler Detektor ist noch nicht belegt; deshalb wird kein neues Skript eingeführt. |
+| 2026-07-12 | `/speckit-autonomous` für `021-terminal-charset-hardening` | Feature 021 liefert `TerminalSession` mit begrenztem C0-/CSI-Subset, 4.096-Zellen-FIFO, atomarer Recovery und Lifecycle, eine feste KOI8-R-Tabelle mit U+FFFD, die exakte rohe 8x16/256/4.096-Byte-Fixture, geschlossene `System.Text.Json`-Profile und ein `TTerminalView` mit Profil-/Capability-Status, Cursor und App-Loop-/Cell-Proof. Der Vor-Commit-Snapshot ohne diese Statistikzeile umfasst `+1580/-6` Produktionscode, `+933/-6` Tests, `+2120/-4` Dokumentation/Evidence/Guidance und `+4/-4` Metadaten, zusammen `+4637/-20` beziehungsweise `4617` Nettozeilen. Konservative Manualreferenz für 4637 hinzugefügte oder aktualisierte Zeilen: `58,0` Tage beziehungsweise `452,1` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `37,1` Tage beziehungsweise `289,3` Stunden bei 125 Zeilen/Tag. Sichtbares Arbeitsfenster ist der autonome Lauf am 2026-07-12; `58,0x` und `37,1x` beschreiben Lieferdichte, keine Stoppuhrzeit. Lokale Abnahme: 51/51 Driver-, 314/314 Controls- und 18/18 Compatibility-Targeted-Tests, 640/640 Volltests, Coverage Core 89,78 %, Controls 83,42 %, Serialization 89,50 %, Compatibility 80,55 % und Drivers.Console 89,18 %, DocFX 0 Warnungen/0 Fehler, Playwright/axe 2/2 sowie UTF-8-`lynx`-Review. Die lokale Umgebung ist Darwin arm64 mit `TERM=dumb`; physische Host-Evidence bleibt deshalb ehrlich `NotRun`. Nächster Intake ist `Lastenheft_Wave4-Visual-Component-Porting.md`. |
 
 ## Gesamtstatistik
 
@@ -646,21 +651,21 @@ nächsten Statistiklauf eine dokumentierte Momentaufnahme.
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | 227036 Zeilen |
-| Produktions- und Testcode zusammen | 40439 Zeilen (17.8 %) |
-| Dokumentationsanteil | 186597 Zeilen (82.2 %) |
-| Spec-Kit-Anteil innerhalb der Doku | 45859 Zeilen (24.6 %) |
-| Zentrale Governance-/Agent-Dateien | 2535 Zeilen (1.4 % der Doku) |
+| Artefaktbasis gesamt | 231653 Zeilen |
+| Produktions- und Testcode zusammen | 42936 Zeilen (18.5 %) |
+| Dokumentationsanteil | 188717 Zeilen (81.5 %) |
+| Spec-Kit-Anteil innerhalb der Doku | 47659 Zeilen (25.3 %) |
+| Zentrale Governance-/Agent-Dateien | 2588 Zeilen (1.4 % der Doku) |
 | Projektgebundene Agent-Skills | 2415 Zeilen (1.3 % der Doku) |
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-12 |
 | Git-Commits / sichtbare Aktivtage | 432 / 69 |
-| Gesamtzeilen pro sichtbarem Aktivtag | 3290.4 |
-| Gesamtzeilen pro Commit | 525.5 |
-| Konservative Einzelentwickler-Untergrenze | 2838.0 Arbeitstage / 22136.0 Stunden |
-| Thorsten-Solo-Untergrenze | 1816.3 Arbeitstage / 14167.0 Stunden |
-| Kleines 3er-Team mit Koordinationsaufschlag | 1135.2 Arbeitstage |
-| Repo-Speedup gegen 80-Zeilen-Referenz | 41.1x |
-| Repo-Speedup gegen Thorsten-Referenz | 26.3x |
+| Gesamtzeilen pro sichtbarem Aktivtag | 3357.3 |
+| Gesamtzeilen pro Commit | 536.2 |
+| Konservative Einzelentwickler-Untergrenze | 2895.7 Arbeitstage / 22586.0 Stunden |
+| Thorsten-Solo-Untergrenze | 1853.2 Arbeitstage / 14455.0 Stunden |
+| Kleines 3er-Team mit Koordinationsaufschlag | 1158.3 Arbeitstage |
+| Repo-Speedup gegen 80-Zeilen-Referenz | 42.0x |
+| Repo-Speedup gegen Thorsten-Referenz | 26.9x |
 
 Die hohe Dokumentationsquote enthält die umfangreiche Secure-Development-,
 Governance- und Spec-Kit-Basis. Das autonome Runbook und der neue
@@ -679,9 +684,9 @@ compare visible scope with Git active days and do not measure personal time.
 
 ```text
 Artefaktmix nach Snapshot (Zeilen)
-Produktion     | ####                          |  24127 | 10.6 %
-Tests          | ###                           |  16312 |  7.2 %
-Dokumentation  | ##############################| 186597 | 82.2 %
+Produktion     | ####                          |  25701 | 11.1 %
+Tests          | ###                           |  17235 |  7.4 %
+Dokumentation  | ##############################| 188717 | 81.5 %
 ```
 
 Die Balken verwenden dieselbe Skala. Die Zahlen bleiben der genaue,
@@ -716,6 +721,7 @@ Branch-/Phasenvolumen nach dokumentierter Netto-Basis (Zeilen)
 21 018i | #####                |  2912
 22 019i | #####                |  3392
 23 020i | #####                |  3584
+24 021i | #######              |  4617
 ```
 
 Feature 017 kombiniert einen kleinen beispielinternen Runtime-Anteil mit einer
@@ -738,6 +744,9 @@ status, description, controlled-I/O, and constrained-viewport proof.
 
 Feature 020 combines bounded host input, focus/activation, double-click and one
 window drag with deterministic Driver, Controls, and app-loop proof.
+
+Feature 021 combines bounded terminal state and parser recovery with KOI8-R,
+raw-font metadata, closed profiles, and deterministic view/cell proof.
 
 ```text
 Konservative Handarbeits-Referenz je dokumentierter Phase
@@ -765,6 +774,7 @@ Konservative Handarbeits-Referenz je dokumentierter Phase
 21 018i | #####                |  36.4 d
 22 019i | #####                |  42.4 d
 23 020i | #####                |  44.8 d
+24 021i | #######              |  57.7 d
 ```
 
 Die Referenz rechnet den Netto-Phasenumfang mit 80 Zeilen pro Arbeitstag. Für
@@ -795,20 +805,22 @@ AUTO125 | ###                            |  5.0x
 019i125 | ###################            | 27.4x
 020i-80 | ############################## | 45.1x
 020i125 | ###################            | 28.8x
+021i-80 | ############################## | 58.0x
+021i125 | ###################            | 37.1x
 ```
 
-Die 017-, AUTO-, 018-, 019- und 020-Werte beziehen sich jeweils auf einen sichtbaren autonomen
+Die 017-, AUTO-, 018-, 019-, 020- und 021-Werte beziehen sich jeweils auf einen sichtbaren autonomen
 Arbeitstag. Sie beschreiben Lieferdichte, nicht die Dauer einzelner Denk-,
 Review-, CI- oder Wartephasen.
 
-The 017, AUTO, 018, 019, and 020 values each use one visible autonomous workday. They describe
+The 017, AUTO, 018, 019, 020, and 021 values each use one visible autonomous workday. They describe
 delivery density, not the duration of individual thinking, review, CI, or
 waiting phases.
 
 ```text
 Vergleich Gesamtaufwand / sichtbares KI-Lieferfenster
-Erfahren    | ############################## | 2838.0 d
-Thorsten    | ###################            | 1816.3 d
+Erfahren    | ############################## | 2895.7 d
+Thorsten    | ###################            | 1853.2 d
 KI sichtbar | #                              |   69.0 d
 ```
 
@@ -841,6 +853,7 @@ X/Y: Phasenvolumen 0..15 (Y ungefähr in Zeilen)
 
 ```text
 X/Y: Phasenvolumen 16..31 (Y ungefähr in Zeilen)
+5000 |                *               |
 3500 |      *   *     * *             |
 3000 |    *                           |
 1500 |                                |
@@ -854,9 +867,9 @@ X/Y: Phasenvolumen 16..31 (Y ungefähr in Zeilen)
 
 Die beiden Blöcke zeigen den Verlauf ohne eine zu breite Zeile. G bis J stehen
 für die Phasen 16 bis 19, K für die autonome Standardisierung, L für Feature
-018, M für Feature 019 und N für Feature 020; alle späteren Slots sind bewusst leer.
+018, M für Feature 019, N für Feature 020 und O für Feature 021; alle späteren Slots sind bewusst leer.
 
 The two blocks show progression without an overly wide line. G through J
 represent phases 16 through 19, K represents autonomous standardization, L
-represents Feature 018, M represents Feature 019, and N represents Feature 020; all later slots are
+represents Feature 018, M represents Feature 019, N represents Feature 020, and O represents Feature 021; all later slots are
 intentionally empty.
