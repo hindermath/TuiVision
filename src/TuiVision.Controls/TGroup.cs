@@ -336,6 +336,21 @@ public class TGroup : TView
     /// </summary>
     protected virtual void CurrentChanged()
     {
+        if (Current != null)
+        {
+            Owner?.DescendantFocusChanged(Current);
+        }
+    }
+
+    /// <summary>
+    /// Reicht einen Fokuswechsel aus einer untergeordneten Gruppe bis zur Shell weiter.
+    ///
+    /// Propagates a focus transition from a descendant group to the shell.
+    /// </summary>
+    /// <param name="view">Das neue Fokusziel. / The new focus target.</param>
+    protected virtual void DescendantFocusChanged(TView view)
+    {
+        Owner?.DescendantFocusChanged(view);
     }
 
     /// <summary>
@@ -509,6 +524,18 @@ public class TGroup : TView
         {
             ForEach(v => v.SetState(state, enable));
         }
+    }
+
+    /// <summary>
+    /// Wendet ein Farbschema auf die Gruppe und ihre aktuellen Kinder an.
+    ///
+    /// Applies a colour scheme to the group and its current children.
+    /// </summary>
+    /// <param name="colorScheme">Das anzuwendende Schema. / The scheme to apply.</param>
+    public override void ApplyColorScheme(TColorScheme colorScheme)
+    {
+        base.ApplyColorScheme(colorScheme);
+        ForEach(view => view.ApplyColorScheme(colorScheme));
     }
 
     /// <summary>

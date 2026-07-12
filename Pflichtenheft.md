@@ -661,7 +661,15 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.3c` = Terminal-/Charset-/Plattform-Vorhärtung — ✓ ABGESCHLOSSEN (Branch `021-terminal-charset-hardening`)
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze — ✓ ABGESCHLOSSEN (Branch `022-wave4-visual-component-porting`)
 
->>> NAECHSTER SCHRITT <<< A11Y-Framework über `Lastenheft_06_A11Y_Framework.md` umsetzen. Wave 5 bleibt bis zu diesem Abschluss zurückgestellt.
+   - `3.5` = A11Y-Framework — Umsetzung in Branch `023-a11y-framework`
+     - **PF-A11Y-001**: `IAccessibleWidget` stellt opt-in Bezeichnung, Beschreibung und aktuelle Fokusfähigkeit bereit.
+     - **PF-A11Y-002**: Echte Fokuswechsel liefern genau einen typisierten `cmFocusChanged`-Payload; nicht migrierte Views erhalten kein erfundenes Label.
+     - **PF-A11Y-003**: `TMenuBar` und `TStatusLine` stellen ausführbare Shortcuts mit Taste, Text, Befehl und Quelle strukturiert bereit.
+     - **PF-A11Y-004**: Jede inventarisierte fokussierbare Control-Familie besitzt für Tab, Shift+Tab, Pfeile, Enter und Direkt-Shortcut einen automatisierten Proof oder ein begründetes `N/A`.
+     - **PF-A11Y-005**: `TColorScheme.HighContrast` ist explizit aktivierbar; der aktive Modus bleibt zusätzlich textbasiert erkennbar.
+     - **PF-A11Y-006**: DocFX-Seiten werden im vorhandenen Pages-Workflow bei `main` und Pull Requests mit Playwright/Axe geprüft; Fehler blockieren den Nachweis.
+
+>>> NAECHSTER SCHRITT <<< Feature 023 abschliessen; danach bleibt Wave 5 der nächste fachliche Intake. Feature 024 wird in diesem Lauf nicht begonnen.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

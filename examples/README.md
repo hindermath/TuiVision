@@ -136,6 +136,22 @@ and do not change host terminal, font, codepage, or keyboard settings.
 
 ---
 
+## A11Y-Referenz / Accessibility Reference
+
+Feature `023-a11y-framework` liefert eine kleine Referenz-App für opt-in
+Widget-Texte, Fokusankündigungen, strukturierte Shortcuts, vollständige
+Tastatur-Proofs und explizites High Contrast.
+
+Feature `023-a11y-framework` provides a small reference app for opt-in widget
+text, focus announcements, structured shortcuts, complete keyboard proof and
+explicit high contrast.
+
+| Name | Startbefehl / Launch Command | Sichtbarer Pfad und Grenze / Visible Path and Boundary |
+|---|---|---|
+| `A11yFramework` | `dotnet run --project examples/A11yFramework` | Zwei fokussierbare Widgets, Menü-/Status-Shortcuts, High-Contrast-Text, `Help -> Description` und ehrlicher `native bridge unavailable`-Fallback. |
+
+---
+
 ## Didaktische Begleitdokumentation / Didactic companion documentation
 
 Die Anleitungen für diese Beispiele befinden sich unter `docs/guides/examples/`:
@@ -167,6 +183,7 @@ Guides for these examples are located under `docs/guides/examples/`:
 - `docs/guides/examples/fonts.md`
 - `docs/guides/examples/eterm.md`
 - `docs/guides/examples/xterm.md`
+- `docs/guides/a11y-framework.md`
 
 ---
 

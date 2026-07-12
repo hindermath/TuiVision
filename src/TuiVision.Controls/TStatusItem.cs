@@ -18,11 +18,13 @@ public sealed class TStatusItem
     /// <param name="name">Der Anzeigename des Eintrags. / The display name of the item.</param>
     /// <param name="command">Die zugehörige Befehl-ID. / The associated command ID.</param>
     /// <param name="next">Der nächste Eintrag in der Statuszeile. / The next item in the status line.</param>
-    public TStatusItem(string name, int command, TStatusItem? next = null)
+    /// <param name="keyCode">Der explizite Tastencode oder 0. / The explicit key code or zero.</param>
+    public TStatusItem(string name, int command, TStatusItem? next = null, ushort keyCode = 0)
     {
         Name = name;
         Command = command;
         Next = next;
+        KeyCode = keyCode;
     }
 
     /// <summary>
@@ -34,6 +36,15 @@ public sealed class TStatusItem
     /// Die Befehl-ID. / The command ID.
     /// </summary>
     public int Command { get; }
+
+    /// <summary>
+    /// Der explizite Tastencode für eine strukturierte A11Y-Abfrage oder 0,
+    /// wenn der historische Eintrag nur einen Anzeigehinweis enthält.
+    ///
+    /// The explicit key code for a structured accessibility query, or zero
+    /// when the historical item only contains a display hint.
+    /// </summary>
+    public ushort KeyCode { get; }
 
     /// <summary>
     /// Der nächste Status-Eintrag. / The next status item.
