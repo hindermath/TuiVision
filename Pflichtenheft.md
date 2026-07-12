@@ -256,8 +256,10 @@ Statuscheckliste Beispielwellen:
   Reihenfolgehinweis: abgeschlossen (Branch `013-wave2-visual-component-remediation`); die elf Wave-2-Beispiele besitzen echte sichtbare Hauptkomponenten, echte `TStatusLine`-Rueckmeldung, `Help -> Description` und primaere App-Loop-Smokes mit View-Baum- plus Buffer-/Cell-Nachweis.
 - [x] **Welle 3 - Editor-/Hilfe-/Ressourcen-Vorhaertung**
   Reihenfolgehinweis: abgeschlossen (Branch `018-editor-help-resources-hardening`); Editor-/Datei- und Runtime-Help-Flows sind zusammenhaengend nachgewiesen, der Help-Source-Compiler und sprachabhaengige Resource-Lookup sind wiederverwendbar gehaertet.
-- [ ] **Welle 3 - Visual Component Porting**
-  Reihenfolgehinweis: nach der Wave-3-Vorhaertung ueber `Lastenheft_Wave3-Visual-Component-Porting.md`; `tvedit`, `bhelp`, `helpdemo`, `tvhc` und `i18n` muessen direkt als sichtbare Drei-Schichten-Demos portiert werden.
+- [x] **Welle 3 - Visual Component Porting**
+  Reihenfolgehinweis: abgeschlossen (Branch `019-wave3-visual-component-porting`); `tvedit`, `bhelp`, `helpdemo`, `tvhc` und `i18n` sind sichtbare Drei-Schichten-Demos mit App-Loop- und Buffer-/Cell-Proof.
+- [x] **Maussupport und Interaktions-Härtung**
+  Reihenfolgehinweis: abgeschlossen (Branch `020-mouse-support-interaction`); begrenzter SGR-1006-Ingress, Fokus/Aktivierung, Doppelklick, ein Titelzeilen-Drag und vollständige Tastaturfallbacks sind frameworkweit nachgewiesen.
 - [ ] **Welle 4 - Terminal-/Charset-/Plattform-Vorhaertung**
   Reihenfolgehinweis: nach Welle 3 ueber `Lastenheft_05_TerminalCharsetAndEmulation.md`; haertet Terminal-Session, Buffer-/Cell-Proof, Charset-/Font-Mapping, Resource-/Config-Fallbacks und Plattformgrenzen vor dem sichtbaren Wave-4-Port.
 - [ ] **Welle 4 - Visual Component Porting**
@@ -655,9 +657,10 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.2b` = Welle 2: Sichtbarer Komponenten-Nachweis — ✓ ABGESCHLOSSEN (Branch `013-wave2-visual-component-remediation`)
    - `3.3a` = Welle 3: Editor-/Hilfe-/Ressourcen-Vorhaertung — ✓ ABGESCHLOSSEN (Branch `018-editor-help-resources-hardening`)
    - `3.3` = Welle 3: Editor, Dateien, Hilfe und Streams — ✓ ABGESCHLOSSEN (Branch `019-wave3-visual-component-porting`)
+   - `3.3b` = Maussupport und Interaktions-Härtung — ✓ ABGESCHLOSSEN (Branch `020-mouse-support-interaction`)
    - `3.4` = Welle 4: Terminal-Emulation und erweiterte Zeichensaetze
 
->>> NAECHSTER SCHRITT <<< Mouse Support and Interaction starten: `Lastenheft_04_MouseSupportAndInteraction.md` umsetzen. Danach folgt `Lastenheft_05_TerminalCharsetAndEmulation.md`.
+>>> NAECHSTER SCHRITT <<< Terminal-/Charset-Härtung starten: `Lastenheft_05_TerminalCharsetAndEmulation.md` umsetzen. Danach folgt `Lastenheft_Wave4-Visual-Component-Porting.md`.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

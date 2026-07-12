@@ -87,11 +87,11 @@ public static class DriverCapabilityMap
             "Win32 ReadConsoleInput).",
 
         DriverCapabilityBucket.MouseInput =>
-            "The managed .NET 10 console baseline does not recreate a dedicated cross-platform " +
-            "raw mouse-driver layer. Mouse payloads remain represented by TuiVision.Core.TEvent " +
-            "and TMouseEvent for UI-level handling, while the historical per-platform *mouse.cc " +
-            "drivers (INT 33h, GPM, Win32 input records, Xterm mouse protocols) are consciously " +
-            "not reproduced one-to-one.",
+            "ConsoleMouseIngress and TConsoleDriver provide a bounded managed SGR 1006 path for " +
+            "interactive macOS/Linux terminals and WSL. Mouse payloads remain represented by " +
+            "TuiVision.Core.TEvent and TMouseEvent. Native Windows Console, X10, wheel, hover, " +
+            "touch, and the historical per-platform *mouse.cc matrix are not reproduced one-to-one; " +
+            "they remain explicit unsupported or follow-up boundaries.",
 
         DriverCapabilityBucket.DisplayAdaptation =>
             "Managed Unicode and System.Text.Encoding APIs on .NET 10. Codepage and font selection " +

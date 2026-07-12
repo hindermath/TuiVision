@@ -235,6 +235,11 @@ public class TGroup : TView
             throw new ArgumentException("The view does not belong to this group.", nameof(view));
         }
 
+        if (view is IMouseInteractionSession mouseInteraction)
+        {
+            mouseInteraction.CancelMouseInteraction();
+        }
+
         // Vorgänger suchen (O(n)) / Find predecessor (O(n))
         TView prev = FindPrev(view);
 
@@ -528,7 +533,18 @@ public class TGroup : TView
     {
         // Vor- und Nachverarbeitung rahmen den fokussierten Empfänger ein; ein geleertes Ereignis beendet die Kette.
         // Pre- and post-processing surround the focused receiver; a cleared event stops the chain.
-        base.HandleEvent(@event);
+        if (GetState(TViewState.Disabled))
+        {
+            return;
+        }
+
+        // Der Owner fokussiert die Gruppe; innerhalb des Containers muss derselbe MouseDown bis zum Kind weiterlaufen.
+        // The owner focuses the group; inside the container the same mouse down must continue to the child.
+        if ((@event.What & TEventKind.Mouse) == 0)
+        {
+            base.HandleEvent(@event);
+        }
+
         if (@event.What == TEventKind.Nothing)
         {
             return;
@@ -549,7 +565,24 @@ public class TGroup : TView
         {
             Phase = DrawPhase.Focused;
 
-            if ((@event.What & (TEventKind.KeyDown | TEventKind.Command)) != 0)
+            if ((@event.What & TEventKind.Mouse) != 0)
+            {
+                TView? target = @event.What == TEventKind.MouseDown
+                    ? FindTopmostMouseTarget(@event.Mouse.Where)
+                    : Current;
+
+                if (@event.What == TEventKind.MouseDown
+                    && target is not null
+                    && target.Options.HasFlag(TViewOptions.Selectable))
+                {
+                    // Fokus folgt demselben Topmost-Ziel wie der Dispatch; so kann keine verdeckte View Commands auslösen.
+                    // Focus follows the same topmost target as dispatch, so a covered view cannot invoke commands.
+                    SetFocus(target);
+                }
+
+                target?.HandleEvent(@event);
+            }
+            else if ((@event.What & (TEventKind.KeyDown | TEventKind.Command)) != 0)
             {
                 Current?.HandleEvent(@event);
             }
@@ -611,6 +644,29 @@ public class TGroup : TView
     /// <returns>Das erste Kind oder <c>null</c>. / The first child or <c>null</c>.</returns>
     protected internal TView? GetFirstChild() => First();
 
+    /// <summary>
+    /// Liefert einen stabilen laufzeitlokalen Schlüssel für das tiefste sichtbare
+    /// Mausziel an einer globalen Position.
+    ///
+    /// Returns a stable process-local key for the deepest visible mouse target
+    /// at a global position.
+    /// </summary>
+    /// <param name="where">Globale Position. / Global position.</param>
+    /// <returns>Zielschlüssel oder <c>null</c>. / Target key or <c>null</c>.</returns>
+    protected internal string? ResolveMouseTargetKey(TPoint where)
+    {
+        TView? target = FindTopmostMouseTarget(where);
+        if (target is TGroup group)
+        {
+            return group.ResolveMouseTargetKey(where)
+                ?? $"{target.GetType().FullName}:{System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(target)}";
+        }
+
+        return target is null
+            ? null
+            : $"{target.GetType().FullName}:{System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(target)}";
+    }
+
     // -------------------------------------------------------------------------
     // Private Hilfsmethoden / Private helper methods
     // -------------------------------------------------------------------------
@@ -629,6 +685,23 @@ public class TGroup : TView
     /// The first child element, or <c>null</c>.
     /// </returns>
     private TView? First() => _last?.Next;
+
+    private TView? FindTopmostMouseTarget(TPoint where)
+    {
+        TView? target = null;
+        ForEach(view =>
+        {
+            // Die Zeichenreihenfolge macht den letzten sichtbaren Treffer zum obersten Empfänger.
+            // Draw order makes the last visible hit the topmost receiver.
+            if (view.GetState(TViewState.Visible)
+                && !view.GetState(TViewState.Disabled)
+                && view.MouseInView(where))
+            {
+                target = view;
+            }
+        });
+        return target;
+    }
 
     /// <summary>
     /// Iteriert über alle Kind-Views und ruft <paramref name="action"/> auf.

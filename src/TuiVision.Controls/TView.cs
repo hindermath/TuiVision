@@ -374,7 +374,8 @@ public class TView : TObject
     /// Der Punkt in globalen Koordinaten.
     /// The point in global coordinates.
     /// </returns>
-    public TPoint MakeGlobal(TPoint source) => source + Origin;
+    public TPoint MakeGlobal(TPoint source) =>
+        Owner is null ? source + Origin : Owner.MakeGlobal(source + Origin);
 
     /// <summary>
     /// Wandelt einen globalen Punkt in lokale Ansichtskoordinaten um.
@@ -386,7 +387,7 @@ public class TView : TObject
     /// Der Punkt in lokalen Koordinaten.
     /// The point in local coordinates.
     /// </returns>
-    public TPoint MakeLocal(TPoint source) => source - Origin;
+    public TPoint MakeLocal(TPoint source) => source - MakeGlobal(new TPoint(0, 0));
 
     /// <summary>
     /// Prüft, ob eine globale Mausposition innerhalb dieser Ansicht liegt.

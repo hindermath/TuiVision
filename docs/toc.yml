@@ -8,6 +8,8 @@
       href: spec-kit-autonomous-retrospectives.md
     - name: Multi-Mac-Workflow
       href: guides/multi-mac-workflow.md
+    - name: Maussupport und Interaktion
+      href: guides/mouse-support.md
     - name: Beispiel-Guides
       items:
         - name: Desklogo

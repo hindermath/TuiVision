@@ -15,6 +15,8 @@ namespace TuiVision.Controls;
 /// </summary>
 public class TProgram : TGroup
 {
+    private const string EnableMouseReporting = "\x1b[?1000h\x1b[?1006h";
+    private const string DisableMouseReporting = "\x1b[?1006l\x1b[?1000l";
     /// <summary>
     /// Der Standard-Treiber für die Konsolenausgabe.
     ///
@@ -39,6 +41,8 @@ public class TProgram : TGroup
 
     private bool _shouldQuit;
     private readonly TuiVision.Drivers.Console.SystemConsolePresenter _presenter = new();
+    private readonly Queue<ConsoleKeyInfo> _pendingConsoleKeys = new();
+    private bool _mouseCapabilityConfigured;
 
     /// <summary>
     /// Initialisiert eine neue Instanz der <see cref="TProgram"/>-Klasse.
@@ -76,6 +80,7 @@ public class TProgram : TGroup
         // Clear screen before first draw so no residual prompt content shows through.
         try { Console.Clear(); } catch { }
         try { Console.CursorVisible = false; } catch { }
+        StartMouseInput();
 
         // Initialer Zeichenvorgang und Ausgabe / Initial draw and present
         Draw();
@@ -116,8 +121,9 @@ public class TProgram : TGroup
     /// Clears the TUI content and restores the default console state so that the
     /// shell prompt appears after the application exits.
     /// </summary>
-    private static void CleanupConsole()
+    private void CleanupConsole()
     {
+        StopMouseInput();
         try { Console.TreatControlCAsInput = false; } catch { }
         try { Console.Clear(); } catch { }
         try { Console.ResetColor(); } catch { }
@@ -189,7 +195,19 @@ public class TProgram : TGroup
     {
         try
         {
-            ConsoleKeyInfo key = Console.ReadKey(intercept: true);
+            if (Driver.HasPendingMouseObservation)
+            {
+                Driver.TryGetMouseEvent(ResolveMouseTargetKey, out @event, out _);
+                return;
+            }
+
+            ConsoleKeyInfo key = ReadConsoleKey();
+            if (key.KeyChar == '\x1b' && TryCollectSgrObservation(key, out string sequence))
+            {
+                Driver.QueueMouseObservation(new ConsoleMouseObservation(sequence, Environment.TickCount64));
+                Driver.TryGetMouseEvent(ResolveMouseTargetKey, out @event, out _);
+                return;
+            }
 
             bool isAlt = (key.Modifiers & ConsoleModifiers.Alt) != 0;
             bool isCtrl = (key.Modifiers & ConsoleModifiers.Control) != 0;
@@ -228,6 +246,20 @@ public class TProgram : TGroup
             // No console available (e.g. redirected I/O).
             @event = TEvent.CreateNone();
         }
+    }
+
+    /// <summary>
+    /// Setzt einen kontrollierten Capability-Zustand für deterministische
+    /// Integrationstests oder einen expliziten Host-Adapter.
+    ///
+    /// Sets a controlled capability state for deterministic integration tests
+    /// or an explicit host adapter.
+    /// </summary>
+    /// <param name="capability">Zu verwendender Zustand. / Capability state to use.</param>
+    public void ConfigureMouseCapability(ConsoleMouseCapability capability)
+    {
+        _mouseCapabilityConfigured = true;
+        ApplyMouseCapability(capability);
     }
 
     /// <summary>
@@ -311,5 +343,164 @@ public class TProgram : TGroup
     {
         base.CurrentChanged();
         HandleEvent(TEvent.CreateBroadcast(ShellCommandIds.cmFocusChanged, Current));
+    }
+
+    private void StartMouseInput()
+    {
+        if (_mouseCapabilityConfigured)
+        {
+            return;
+        }
+
+        ConsoleMouseCapability detected = ConsoleMouseCapabilityDetector.DetectCurrent();
+        if (detected.State == ConsoleMouseCapabilityState.Disabled
+            && detected.Protocol == ConsoleMouseProtocol.Sgr1006)
+        {
+            try
+            {
+                Console.Out.Write(EnableMouseReporting);
+                Console.Out.Flush();
+                detected = detected with
+                {
+                    State = ConsoleMouseCapabilityState.Enabled,
+                    Reason = "SGR 1006 mouse reporting is enabled for this interactive terminal."
+                };
+            }
+            catch
+            {
+                detected = detected with
+                {
+                    State = ConsoleMouseCapabilityState.Disabled,
+                    Reason = "SGR 1006 activation failed; keyboard input remains available."
+                };
+            }
+        }
+
+        ApplyMouseCapability(detected);
+    }
+
+    private void StopMouseInput()
+    {
+        ConsoleMouseCapability current = Driver.MouseIngress.Capability;
+        if (current.State == ConsoleMouseCapabilityState.Enabled && !_mouseCapabilityConfigured)
+        {
+            try
+            {
+                Console.Out.Write(DisableMouseReporting);
+                Console.Out.Flush();
+            }
+            catch
+            {
+                // Cleanup is best effort; state reset below still prevents a stale interaction.
+            }
+        }
+
+        if (current.Protocol == ConsoleMouseProtocol.Sgr1006)
+        {
+            ApplyMouseCapability(current with
+            {
+                State = ConsoleMouseCapabilityState.Disabled,
+                Reason = "Mouse reporting is disabled after application shutdown."
+            });
+        }
+        else
+        {
+            ApplyMouseCapability(current);
+        }
+    }
+
+    private void ApplyMouseCapability(ConsoleMouseCapability capability)
+    {
+        Driver.MouseIngress.SetCapability(capability);
+        HandleEvent(TEvent.CreateBroadcast(ShellCommandIds.cmMouseCapabilityChanged, capability.State));
+    }
+
+    private ConsoleKeyInfo ReadConsoleKey() =>
+        _pendingConsoleKeys.Count > 0
+            ? _pendingConsoleKeys.Dequeue()
+            : Console.ReadKey(intercept: true);
+
+    private bool TryCollectSgrObservation(ConsoleKeyInfo escape, out string sequence)
+    {
+        sequence = string.Empty;
+        List<ConsoleKeyInfo> consumed = new();
+        if (!TryReadSequenceKey(out ConsoleKeyInfo bracket) || bracket.KeyChar != '[')
+        {
+            if (bracket.KeyChar != '\0')
+            {
+                _pendingConsoleKeys.Enqueue(bracket);
+            }
+
+            return false;
+        }
+
+        consumed.Add(bracket);
+        if (!TryReadSequenceKey(out ConsoleKeyInfo marker) || marker.KeyChar != '<')
+        {
+            if (marker.KeyChar != '\0')
+            {
+                consumed.Add(marker);
+            }
+
+            RestoreConsumedKeys(consumed);
+            return false;
+        }
+
+        consumed.Add(marker);
+        System.Text.StringBuilder builder = new(ConsoleMouseIngress.MaximumSequenceLength);
+        builder.Append(escape.KeyChar);
+        builder.Append(bracket.KeyChar);
+        builder.Append(marker.KeyChar);
+
+        while (builder.Length < ConsoleMouseIngress.MaximumSequenceLength
+               && TryReadSequenceKey(out ConsoleKeyInfo next))
+        {
+            consumed.Add(next);
+            builder.Append(next.KeyChar);
+            if (next.KeyChar is 'M' or 'm')
+            {
+                sequence = builder.ToString();
+                return true;
+            }
+        }
+
+        RestoreConsumedKeys(consumed);
+        return false;
+    }
+
+    private static bool TryReadSequenceKey(out ConsoleKeyInfo key)
+    {
+        long deadline = Environment.TickCount64 + 20;
+        do
+        {
+            try
+            {
+                if (Console.KeyAvailable)
+                {
+                    key = Console.ReadKey(intercept: true);
+                    return true;
+                }
+            }
+            catch
+            {
+                break;
+            }
+
+            Thread.SpinWait(64);
+        }
+        while (Environment.TickCount64 <= deadline);
+
+        key = default;
+        return false;
+    }
+
+    private void RestoreConsumedKeys(IEnumerable<ConsoleKeyInfo> consumed)
+    {
+        // Nicht als Maus erkannte Bytes bleiben in Reihenfolge als Tastatureingabe erhalten.
+        // Bytes not recognized as mouse input remain available as keyboard input in order.
+        foreach (ConsoleKeyInfo key in consumed)
+        {
+            _pendingConsoleKeys.Enqueue(key);
+        }
     }
 }

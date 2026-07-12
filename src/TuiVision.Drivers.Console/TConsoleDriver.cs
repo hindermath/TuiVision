@@ -37,6 +37,8 @@ public interface IConsolePresenter
 /// </summary>
 public sealed class TConsoleDriver
 {
+    private readonly Queue<ConsoleMouseObservation> _mouseObservations = new();
+
     /// <summary>
     /// Erstellt einen neuen Treiber mit einem Hinterpuffer der angegebenen Größe.
     ///
@@ -53,6 +55,11 @@ public sealed class TConsoleDriver
     public TConsoleDriver(int width, int height)
     {
         BackBuffer = new TConsoleBuffer(width, height);
+        MouseIngress = new ConsoleMouseIngress(new ConsoleMouseCapability(
+            ConsoleMouseCapabilityState.Disabled,
+            ConsoleMouseHostFamily.Unknown,
+            ConsoleMouseProtocol.None,
+            "Mouse ingress has not been enabled."));
     }
 
     /// <summary>
@@ -61,6 +68,66 @@ public sealed class TConsoleDriver
     /// The current back buffer into which views write their output.
     /// </summary>
     public TConsoleBuffer BackBuffer { get; private set; }
+
+    /// <summary>
+    /// Der begrenzte Host-Mauseingang dieses Treibers.
+    ///
+    /// The bounded host mouse ingress owned by this driver.
+    /// </summary>
+    public ConsoleMouseIngress MouseIngress { get; }
+
+    /// <summary>
+    /// Gibt an, ob eine kontrollierte Host-Beobachtung auf Verarbeitung wartet.
+    ///
+    /// Indicates whether a controlled host observation is waiting to be processed.
+    /// </summary>
+    public bool HasPendingMouseObservation => _mouseObservations.Count > 0;
+
+    /// <summary>
+    /// Reiht eine vollständige kontrollierte Host-Beobachtung für den nächsten
+    /// Ereignisabruf ein.
+    ///
+    /// Queues one complete controlled host observation for the next event retrieval.
+    /// </summary>
+    /// <param name="observation">Einzureihende Beobachtung. / Observation to queue.</param>
+    public void QueueMouseObservation(ConsoleMouseObservation observation)
+    {
+        ArgumentNullException.ThrowIfNull(observation.Sequence);
+        _mouseObservations.Enqueue(observation);
+    }
+
+    /// <summary>
+    /// Verarbeitet die nächste kontrollierte Beobachtung gegen die aktuelle
+    /// Puffergröße.
+    ///
+    /// Processes the next controlled observation against the current buffer size.
+    /// </summary>
+    /// <param name="targetResolver">Optionaler Zielschlüssel-Auflöser. / Optional target-key resolver.</param>
+    /// <param name="event">Kanonisches Ereignis oder `Nothing`. / Canonical event or `Nothing`.</param>
+    /// <param name="rejectionReason">Ablehnungsgrund. / Rejection reason.</param>
+    /// <returns><c>true</c>, wenn ein Ereignis veröffentlicht wurde. / <c>true</c> when an event was published.</returns>
+    public bool TryGetMouseEvent(
+        Func<TPoint, string?>? targetResolver,
+        out TEvent @event,
+        out ConsoleMouseRejectionReason rejectionReason)
+    {
+        if (_mouseObservations.Count == 0)
+        {
+            @event = TEvent.CreateNone();
+            rejectionReason = ConsoleMouseRejectionReason.None;
+            return false;
+        }
+
+        ConsoleMouseObservation observation = _mouseObservations.Dequeue();
+        return MouseIngress.TryAccept(
+            observation.Sequence,
+            observation.TimestampMilliseconds,
+            BackBuffer.Width,
+            BackBuffer.Height,
+            targetResolver,
+            out @event,
+            out rejectionReason);
+    }
 
     /// <summary>
     /// Ändert die Größe des Hinterpuffers und kopiert den sichtbaren Inhalt des alten Puffers.
