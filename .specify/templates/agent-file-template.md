@@ -43,7 +43,7 @@ Auto-generated from all feature plans. Last updated: [DATE]
 - Evidence entsteht vor der Implementierung. Iterative Stufen laufen bis zur definierten Konvergenz, ein vertikaler Slice kommt vor breiter Wiederholung und gemeinsame Schreiber bleiben serialisiert.
 - Scope-Firewall, triggerbasierte Validierung und eine kurze Retrospektive sind Pflichtbestandteile jedes autonomen Laufs.
 
-*Fully delegated Spec-Kit runs follow `docs/spec-kit-autonomous-runbook.md` and use the repository-local `$speckit-autonomous` skill. The current user request determines `LocalImplementation`, `PublishPR`, or `MergeAndSync`; general autonomy does not grant implicit remote write or merge authority. Create evidence before implementation, iterate to defined convergence, prove a vertical slice before broad rollout, serialize shared writers, protect scope, validate by trigger, and record a short retrospective.*
+*Fully delegated Spec-Kit runs follow `docs/spec-kit-autonomous-runbook.md` and use the repository-local `$speckit-autonomous` skill. The current user request determines `LocalImplementation`, `PublishPR`, or `MergeAndSync`; general autonomy does not grant implicit remote write or merge authority. Create evidence before implementation, iterate to defined convergence, prove a vertical slice before broad rollout, serialize shared writers, protect scope, validate by trigger, and record a short retrospective. One manual build-counter increment covers exactly one explicit build or test invocation. Validation helpers receive an explicit repository root and pass only when both exit status and error channel are clean.*
 
 ## Spec-Kit Governance Presets
 
