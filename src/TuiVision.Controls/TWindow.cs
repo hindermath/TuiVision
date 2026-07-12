@@ -2,6 +2,7 @@
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
 using TuiVision.Core;
+using TuiVision.Drivers.Console;
 
 namespace TuiVision.Controls;
 
@@ -14,7 +15,7 @@ namespace TuiVision.Controls;
 /// Supports optional close affordance (×), Ctrl+W, guarded Escape, and a reversible
 /// move mode via Ctrl+F5.
 /// </summary>
-public class TWindow : TGroup
+public class TWindow : TGroup, IMouseInteractionSession
 {
     // Scan-Codes / Scan codes
     private const byte ScanEscape = 0x01;
@@ -33,6 +34,9 @@ public class TWindow : TGroup
     // Verschiebe-Modus / Move mode
     private bool _moveMode;
     private TRect _moveModeOriginalBounds;
+    private bool _mouseDragging;
+    private TPoint _mouseDragStart;
+    private TRect _mouseDragOriginalBounds;
 
     /// <summary>
     /// Initialisiert ein Fenster mit Titel und Begrenzungsrahmen.
@@ -69,6 +73,7 @@ public class TWindow : TGroup
         ArgumentNullException.ThrowIfNull(title);
         Title = title;
         Flags = flags;
+        EventMask |= TEventKind.MouseMove | TEventKind.MouseUp;
     }
 
     /// <summary>
@@ -98,6 +103,15 @@ public class TWindow : TGroup
     /// Indicates whether the window is currently in move mode.
     /// </summary>
     public bool IsInMoveMode => _moveMode;
+
+    /// <summary>
+    /// Gibt an, ob dieses Fenster gerade durch den begrenzten Titelzeilen-Pfad
+    /// mit der Maus verschoben wird.
+    ///
+    /// Indicates whether this window is currently being moved through the
+    /// bounded title-row mouse path.
+    /// </summary>
+    public bool IsMouseDragging => _mouseDragging;
 
     /// <summary>
     /// Zeichnet den Fensterrahmen mit Titel und füllt den Innenbereich mit der Hintergrundfarbe.
@@ -175,12 +189,33 @@ public class TWindow : TGroup
     /// <param name="event">Das zu verarbeitende Ereignis. / The event to process.</param>
     public override void HandleEvent(TEvent @event)
     {
+        if (@event.What == TEventKind.Broadcast
+            && @event.Message.Command == ShellCommandIds.cmMouseCapabilityChanged
+            && @event.Message.Info is ConsoleMouseCapabilityState state
+            && state != ConsoleMouseCapabilityState.Enabled)
+        {
+            CancelMouseDrag(restore: true);
+            return;
+        }
+
+        if ((@event.What & TEventKind.Mouse) != 0 && HandleMouseDrag(@event))
+        {
+            return;
+        }
+
         if (@event.What == TEventKind.KeyDown)
         {
             byte scan = @event.KeyDown.ScanCode;
             char ch = @event.KeyDown.CharCode;
             ushort shift = @event.KeyDown.ShiftState;
             bool isCtrl = (shift & ShiftCtrl) != 0;
+
+            if (_mouseDragging && (scan == ScanEscape || ch == '\x1b'))
+            {
+                CancelMouseDrag(restore: true);
+                @event.Clear(this);
+                return;
+            }
 
             // ---- Verschiebe-Modus aktiv / Move mode active ----
             if (_moveMode)
@@ -251,6 +286,107 @@ public class TWindow : TGroup
         {
             Owner?.HandleEvent(TEvent.CreateCommand(ShellCommandIds.cmClose));
             @event.Clear();
+        }
+    }
+
+    /// <summary>
+    /// Beendet einen aktiven Maus-Drag, bevor der Disabled-Zustand propagiert wird.
+    ///
+    /// Ends an active mouse drag before the disabled state is propagated.
+    /// </summary>
+    /// <param name="state">Zu ändernder Zustand. / State to change.</param>
+    /// <param name="enable">Zustand setzen oder löschen. / Whether to set or clear the state.</param>
+    public override void SetState(TViewState state, bool enable)
+    {
+        if (enable && (state & TViewState.Disabled) != 0)
+        {
+            CancelMouseDrag(restore: true);
+        }
+
+        base.SetState(state, enable);
+    }
+
+    /// <summary>
+    /// Beendet transiente Mausinteraktion vor dem normalen Gruppen-Shutdown.
+    ///
+    /// Ends transient mouse interaction before normal group shutdown.
+    /// </summary>
+    public override void ShutDown()
+    {
+        CancelMouseDrag(restore: true);
+        base.ShutDown();
+    }
+
+    void IMouseInteractionSession.CancelMouseInteraction() => CancelMouseDrag(restore: true);
+
+    private bool HandleMouseDrag(TEvent @event)
+    {
+        if (@event.What == TEventKind.MouseDown)
+        {
+            TPoint local = MakeLocal(@event.Mouse.Where);
+            if (!_mouseDragging
+                && Flags.HasFlag(WindowFlags.Move)
+                && @event.Mouse.Buttons == TMouseButtons.Left
+                && local.Y == 0
+                && local.X >= 0
+                && local.X < Size.X)
+            {
+                _mouseDragging = true;
+                _mouseDragStart = @event.Mouse.Where;
+                _mouseDragOriginalBounds = GetBounds();
+                @event.Clear(this);
+                return true;
+            }
+
+            return false;
+        }
+
+        if (!_mouseDragging)
+        {
+            return false;
+        }
+
+        if (@event.What == TEventKind.MouseMove)
+        {
+            if (Owner is null)
+            {
+                CancelMouseDrag(restore: true);
+                return true;
+            }
+
+            TPoint delta = @event.Mouse.Where - _mouseDragStart;
+            TPoint size = _mouseDragOriginalBounds.B - _mouseDragOriginalBounds.A;
+            TRect ownerExtent = Owner.GetExtent();
+            int x = Math.Clamp(_mouseDragOriginalBounds.A.X + delta.X, ownerExtent.A.X, Math.Max(ownerExtent.A.X, ownerExtent.B.X - size.X));
+            int y = Math.Clamp(_mouseDragOriginalBounds.A.Y + delta.Y, ownerExtent.A.Y, Math.Max(ownerExtent.A.Y, ownerExtent.B.Y - size.Y));
+            Locate(new TRect(x, y, x + size.X, y + size.Y));
+            @event.Clear(this);
+            return true;
+        }
+
+        if (@event.What == TEventKind.MouseUp)
+        {
+            // Release schreibt die bereits begrenzte Vorschau fest; alle anderen Abbrüche stellen den Start wieder her.
+            // Release commits the already clamped preview; every other cancellation restores the start.
+            _mouseDragging = false;
+            @event.Clear(this);
+            return true;
+        }
+
+        return false;
+    }
+
+    private void CancelMouseDrag(bool restore)
+    {
+        if (!_mouseDragging)
+        {
+            return;
+        }
+
+        _mouseDragging = false;
+        if (restore)
+        {
+            Locate(_mouseDragOriginalBounds);
         }
     }
 }

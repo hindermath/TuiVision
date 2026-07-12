@@ -89,4 +89,12 @@ public static class ShellCommandIds
     /// Oeffnet die Hilfe. / Opens help.
     /// </summary>
     public const ushort cmHelp = 112;
+
+    /// <summary>
+    /// Meldet eine Änderung der Runtime-Maus-Capability, damit aktive
+    /// Interaktionen fail-safe beendet werden.
+    ///
+    /// Reports a runtime mouse-capability change so active interactions can end fail-safe.
+    /// </summary>
+    public const ushort cmMouseCapabilityChanged = 113;
 }

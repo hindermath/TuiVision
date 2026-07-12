@@ -103,3 +103,37 @@ smokes inject commands into `app.Run()` and verify concrete state values,
 view-tree types, and back-buffer regions. The new helper file under
 `examples/Shared/` remains example-internal and creates no new runtime
 dependency.
+
+## 020 Mouse Ingress Addendum
+
+```text
+Interactive SGR terminal or controlled observation
+  |
+  | complete bounded SGR 1006 report
+  v
+ConsoleMouseIngress in TuiVision.Drivers.Console
+  |
+  | syntax, range, capability, phase and monotonic click validation
+  | zero or one existing TEvent
+  v
+TProgram.GetEvent
+  |
+  | point-to-target-key delegate, no Driver-to-Controls reference
+  v
+TGroup topmost hit and focus -> existing control command or TWindow title drag
+  |
+  | visible status, view identity and buffer/cell proof
+  v
+Keyboard-complete application; shutdown disables SGR and clears transient state
+```
+
+Deutsch: Der Driver besitzt Protokoll und Hostzustand, Core bleibt der
+kanonische Eventvertrag, und Controls besitzen Fokus sowie den einzigen
+Titelzeilen-Drag. Ungültige Rohdaten erreichen den View-Baum nicht. Native
+Windows Console, Wheel, Hover, Touch und weitere Drag-Ziele bleiben außerhalb
+von 020.
+
+English: Driver owns protocol and host state, Core remains the canonical event
+contract, and Controls own focus plus the sole title-row drag. Invalid raw data
+never reaches the view tree. Native Windows Console, wheel, hover, touch, and
+additional drag targets remain outside 020.

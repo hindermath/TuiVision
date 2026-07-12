@@ -1,6 +1,6 @@
 # Bedrohungsmodell / Threat Model: TuiVision
 
-**Stand / Current as of**: 2026-07-11
+**Stand / Current as of**: 2026-07-12
 **Methode / Method**: STRIDE with CIA impact and selected CAPEC patterns
 **Scope**: Local terminal UI framework, tests, examples, repository tooling, CI
 
@@ -38,6 +38,7 @@ Security-`N/A`.
 | Bereich / Area | STRIDE/CIA | Relevante Angriffsmuster / Relevant patterns | Mitigation und Evidenz / Mitigation and evidence | Restrisiko / Residual risk |
 |---|---|---|---|---|
 | Terminal-/Eventeingabe | Tampering, DoS; I/A | CAPEC-10 Buffer Overflow, CAPEC-20 Input Data Manipulation | Begrenzte managed Buffer, Eventvalidierung, Tests in Core/Controls/Drivers | Low |
+| SGR-1006-Mauseingang | Spoofing, Tampering, DoS; I/A | CAPEC-20 Input Data Manipulation, CAPEC-130 Excessive Allocation | Feste Sequenz-/Zahlengrenzen, atomare Syntax-/Koordinaten-/Phasenprüfung, genau null oder ein Event, Capability-Reset und Driver-/App-Loop-Tests | Low; physische Terminalvarianten bleiben Host-Evidence |
 | Datei-/Ressourcenpfade | Tampering, Information Disclosure; C/I/A | CAPEC-126 Path Traversal, CAPEC-153 Input Data Manipulation | Pfadvalidierung, kontrollierte Fixtures, sichere Ablehnung, keine beliebigen Dateiinhalte als Proof | Low |
 | Serialisierte Daten | Tampering, DoS; I/A | CAPEC-130 Excessive Allocation, CAPEC-153 | Truncated/trailing/unknown/cyclic rejection tests, Typregistrierung | Low |
 | Fehlermeldungen/Output | Information Disclosure; C | CAPEC-215 Fuzzing for sensitive output | Keine Secrets/Stack-Traces in nutzerseitiger Ausgabe, Secret-Scans | Low |

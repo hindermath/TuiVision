@@ -16,6 +16,8 @@ Agentic-AI workflows. It is not an official Turbo Vision continuation.
 
 - Multi-Mac workflow (MacBook Air M2 + Mac mini M4 Pro) with `gh` and `codex`:
   [`docs/guides/multi-mac-workflow.md`](docs/guides/multi-mac-workflow.md)
+- Bounded SGR-1006 mouse support, host boundaries, keyboard fallback, and proof:
+  [`docs/guides/mouse-support.md`](docs/guides/mouse-support.md)
 
 ## Documentation Accessibility Checks
 
