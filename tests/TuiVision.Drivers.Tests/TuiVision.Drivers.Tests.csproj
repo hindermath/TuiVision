@@ -24,4 +24,8 @@
     <ProjectReference Include="..\..\src\TuiVision.Drivers.Console\TuiVision.Drivers.Console.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Fixtures\terminal-font-8x16.bin" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

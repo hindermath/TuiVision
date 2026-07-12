@@ -129,13 +129,13 @@ public sealed class TConsoleDriverCompatibilityTests
 
     /// <summary>
     /// Prüft, dass <see cref="DriverCapabilityBucket.DisplayAdaptation"/> den verwalteten
-    /// Unicode-/Encoding-Ersatz für historische Codepage-Verwaltung explizit benennt.
+    /// Unicode-/KOI8-R-/Font-Fixture-Ersatz für historische Codepage-Verwaltung explizit benennt.
     ///
     /// Verifies that <see cref="DriverCapabilityBucket.DisplayAdaptation"/> explicitly names the
-    /// managed Unicode/encoding replacement for historical codepage management.
+    /// managed Unicode/KOI8-R/font-fixture replacement for historical codepage management.
     /// </summary>
     [TestMethod]
-    public void CapabilityMap_DisplayAdaptationBucket_ReferencesUnicodeAndEncoding()
+    public void CapabilityMap_DisplayAdaptationBucket_ReferencesManagedCharsetAndFontContracts()
     {
         string replacement = DriverCapabilityMap.GetManagedReplacement(DriverCapabilityBucket.DisplayAdaptation);
 
@@ -144,9 +144,11 @@ public sealed class TConsoleDriverCompatibilityTests
             $"DisplayAdaptation-Ersatz muss Unicode erwähnen. " +
             $"DisplayAdaptation replacement must mention Unicode.\n{replacement}");
         Assert.IsTrue(
-            replacement.Contains("System.Text.Encoding", StringComparison.Ordinal),
-            $"DisplayAdaptation-Ersatz muss System.Text.Encoding erwähnen. " +
-            $"DisplayAdaptation replacement must mention System.Text.Encoding.\n{replacement}");
+            replacement.Contains("TerminalCharsetMapper", StringComparison.Ordinal)
+            && replacement.Contains("BitmapFontFixture", StringComparison.Ordinal)
+            && replacement.Contains("TerminalProfile", StringComparison.Ordinal),
+            $"DisplayAdaptation-Ersatz muss Mapper, Fixture und Profil erwähnen. " +
+            $"DisplayAdaptation replacement must mention mapper, fixture, and profile.\n{replacement}");
     }
 
     /// <summary>

@@ -18,6 +18,8 @@ Agentic-AI workflows. It is not an official Turbo Vision continuation.
   [`docs/guides/multi-mac-workflow.md`](docs/guides/multi-mac-workflow.md)
 - Bounded SGR-1006 mouse support, host boundaries, keyboard fallback, and proof:
   [`docs/guides/mouse-support.md`](docs/guides/mouse-support.md)
+- Bounded terminal session, KOI8-R, raw 8x16 fixture, profiles, and cell proof:
+  [`docs/guides/terminal-charset-hardening.md`](docs/guides/terminal-charset-hardening.md)
 
 ## Documentation Accessibility Checks
 
