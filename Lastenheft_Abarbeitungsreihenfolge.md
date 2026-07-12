@@ -47,21 +47,45 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 19 | `Lastenheft_05_TerminalCharsetAndEmulation.021-terminal-charset-hardening.md` | Weitere Anforderungen | archiviert oder abgeschlossen / archived or completed |
 | 20 | `Lastenheft_08_TV203-FreeVision-Conformance-Audit.024-tv203-freevision-conformance-audit.md` | Framework-Konformitätsaudit | archiviert oder abgeschlossen / archived or completed |
 | 21 | `Lastenheft_09_Pre-Wave5-Conformance-Closure.027-pre-wave5-conformance-closure.md` | Pre-Wave-5-Konformitätsabschluss | archiviert oder abgeschlossen / archived or completed |
+| 22 | `Lastenheft_10_Core-Runtime-Conformance-Hardening.md` | Core-Runtime-Konformität | **nächster Intake / next intake** |
+| 23 | `Lastenheft_11_Component-Data-Conformance-Hardening.md` | Komponenten-/Daten-Konformität | aktiv nach 025 / active after 025 |
+| 24 | `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` | Pre-Wave-5-/Wave-6-Abschluss | aktiv nach 025 und 026 / active after 025 and 026 |
 <!-- secure-development-hardening-order:end -->
 
-## Verbindliche Folge vor Wave 5 / Binding Sequence Before Wave 5
+## Fortsetzungsmarke / Resume Marker
 
-1. `024-tv203-freevision-conformance-audit` ist mit 48 geprüften Verträgen und
-   ohne `BehavioralDrift`- oder `EvidenceGap`-Finding abgeschlossen.
-2. `025-core-runtime-conformance-hardening` wird nicht angelegt, weil die
-   akzeptierte Core-Finding-Menge leer ist.
-3. `026-component-data-conformance-hardening` wird nicht angelegt, weil die
-   akzeptierte Component-/Data-Finding-Menge leer ist.
-4. `027-pre-wave5-conformance-closure` hat Audit, Integration, lokale und
-   remote Gates erneut bestanden und ist als Merge `35414af` abgeschlossen.
-5. Wave 5 ist jetzt der nächste fachliche Intake, voraussichtlich als Feature
-   028.
+> **NÄCHSTER SPEC-KIT-INTAKE: `Lastenheft_10_Core-Runtime-Conformance-Hardening.md` -> `025-core-runtime-conformance-hardening`.**
+>
+> **NEXT SPEC KIT INTAKE: `Lastenheft_10_Core-Runtime-Conformance-Hardening.md` -> `025-core-runtime-conformance-hardening`.**
 
-*Feature 024 completed 48 contract decisions without a drift or evidence-gap
-finding. Features 025 and 026 are therefore suppressed. Feature 027 passed and
-merged after its closure gates; Wave 5 is now the next intake.*
+Heute wird kein autonomer Lauf für 025, 026 oder 028 gestartet. Die beauftragte
+Vorbereitung endet nach Erstellung von Lastenheft 12 und dieser Reihenfolge.
+
+*No autonomous run for 025, 026, or 028 starts today. The requested preparation
+ends after creating requirements document 12 and recording this sequence.*
+
+## Verbindliche Folge vor Wave 5 und Wave 6 / Binding Sequence Before Wave 5 and Wave 6
+
+1. Feature 024 bleibt als ursprünglicher Auditlauf historisch abgeschlossen.
+   Die kombinierte Consumer-Review-Revision 2 hat seine Zukunftsentscheidung
+   mit 13 Findings superseded: neun `Core025`, vier `ComponentData026`.
+2. **Zuerst** läuft `025-core-runtime-conformance-hardening` mit
+   `Lastenheft_10_Core-Runtime-Conformance-Hardening.md`.
+3. Erst nach Merge, Branch-Löschung und sauberem Main-Sync von 025 läuft
+   `026-component-data-conformance-hardening` mit
+   `Lastenheft_11_Component-Data-Conformance-Hardening.md`.
+4. Erst nach Merge und Main-Sync von 025 und 026 läuft
+   `028-pre-wave5-wave6-conformance-closure` mit
+   `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md`.
+5. Feature 028 muss alle 13 Findings, die Consumer-Verträge beider Waves und
+   alle Pflichtgates unabhängig schließen. Innerhalb 028 wird keine Wave
+   gestartet.
+6. Wave 5 wird nur nach erfolgreichem Merge von 028 freigegeben und erhält
+   voraussichtlich die nächste freie Feature-Nummer 029.
+7. Wave 6 folgt erst nach Wave 5 und einer erneuten Prüfung der tatsächlichen
+   Wave-5-Deltas gegen die gemeinsame Consumer-Matrix.
+
+*Revision 2 routes nine findings to Feature 025 and four to Feature 026. Feature
+025 runs first, Feature 026 only after 025 is merged, and Feature 028 only after
+both are merged. Wave 5 remains blocked until 028 passes; Wave 6 additionally
+requires a post-Wave-5 delta review.*

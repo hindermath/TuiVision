@@ -131,12 +131,12 @@ remain absent, and Wave 5 is named as the next eligible intake.
 - [X] T082 Record feature PR, checks, unavailable reviews, threads, bypass, merge SHA, branch deletion, and synchronized main in `closure-evidence.md`
 - [X] T083 Mark post-feature-merge delivery tasks T073-T082 and matching `closure-evidence.md` rows complete in the single closeout commit; leave later retrospective/handoff and self-referential closeout-provider facts to their actual boundaries
 - [X] T084 Push and open the non-empty closeout PR without writing its own PR URL or merge result into repository evidence
-- [ ] T085 Converge closeout technical checks and threads, merge under the same narrow authority, delete branch, and synchronize main
+- [X] T085 Converge closeout technical checks and threads, merge under the same narrow authority, delete branch, and synchronize main
 - [X] T086 Run `$speckit-autonomous-retrospective` and classify every observation; create no TuiVision branch if no non-empty local improvement exists
 - [X] T087 Re-run Home-Baseline PowerShell and Bash homogeneity JSON/error-channel proof from its current package branch and record result
 - [X] T088 Update the Home-Baseline Feature-027 workitem/field input only for a real reproducible portable observation; otherwise record `NoPromotion`
 - [X] T089 Update `github/spec-kit#3479` only if a published/revalidated preset improvement now exists; otherwise leave the issue unchanged with rationale
-- [ ] T090 Finish with T001-T090 status, changed files, exact counts, validation, review, PR/merge identifiers, preset decision, and clean synchronized `main`; do not start Wave 5
+- [X] T090 Finish with T001-T090 status, changed files, exact counts, validation, review, PR/merge identifiers, preset decision, and clean synchronized `main`; do not start Wave 5
 
 ## Dependencies and Execution Order
 

@@ -267,3 +267,94 @@ blocked until that closure passes. Residual risk is limited to documentation
 and remote-delivery gates plus future drift after the audited snapshot; no
 runtime, API, dependency, package, example, or historical-source remediation
 is part of 024.
+
+## Revision 2: Kombinierte Verbraucherprüfung / Combined Consumer Review
+
+### Autorität und Grenze / Authority and Boundary
+
+| Field | Value |
+|---|---|
+| Date | 2026-07-12 |
+| Branch | `codex/reopen-024-wave5-wave6-conformance` |
+| Authority | User-requested critical Wave-5/Wave-6 foundation review and requirements preparation |
+| Consumer roots | `TVDEMOS/` and `TVFM/`, read-only |
+| Historical sources | relevant `tv203s/` implementation and headers, read-only |
+| Second opinion | pinned Free Vision commit `ffc03b34d8cafb85ddcf0686de1c5551601dacb2`, external and untracked |
+| Runtime scope | None; audit, validator, evidence, ordering, and future Lastenhefte only |
+| Autonomous execution | Explicitly not started for 025, 026, or 028 |
+
+Deutsch: Die vorangehenden Null-Finding- und Feature-027-Aussagen bleiben als
+historische Run-Evidence erhalten. Revision 2 superseded ausschließlich ihre
+Zukunftswirkung. Der Anlass ist kein neuer Runtime-Regression-Commit, sondern
+eine strengere Proof-Frage: Trägt der vorhandene Nachweis die realen Verbraucher
+aus beiden noch offenen Beispielwellen?
+
+English: The preceding zero-finding and Feature-027 statements remain as
+historical run evidence. Revision 2 supersedes only their forward effect. The
+trigger is not a new runtime regression commit but a stricter proof question:
+does the existing evidence support the real consumers in both remaining
+example waves?
+
+### Findings und Routing / Findings and Routing
+
+| Measure | Revision-2 result |
+|---|---:|
+| Contracts | 48 |
+| `Aligned` | 7 |
+| `IntentionalModernization` | 27 |
+| `ConsciouslyOmitted` | 1 |
+| `BehavioralDrift` | 8 |
+| `EvidenceGap` | 5 |
+| Total findings | 13 |
+| High / Medium | 9 / 4 |
+| `Core025` / `ComponentData026` | 9 / 4 |
+
+The binding source-level mapping is
+`consumer-readiness-review.md`. Every finding includes consumer scope,
+reproduction, impact, owner, source evidence, acceptance boundary, non-goals,
+and one downstream disposition in `conformance-audit.json`.
+
+### Integritätskorrektur / Integrity Correction
+
+- D02 item-to-contract links now reference actual event, command, and dispatch
+  items instead of unrelated file-decision public types.
+- The validator checks both directions of every historical, modern-source, and
+  public-contract relation.
+- Finding contract IDs are unique and reciprocal.
+- Finding severity, consumer scope, disposition, required text fields, and
+  repository source-evidence paths are closed and machine-checked.
+- Existing tests are classified as partial proof when they bypass real input,
+  stop at a signal, or invoke a non-production test hook.
+
+### Gate-Folge / Gate Sequence
+
+1. `Lastenheft_10_Core-Runtime-Conformance-Hardening.md` defines Feature 025.
+2. `Lastenheft_11_Component-Data-Conformance-Hardening.md` defines Feature 026.
+3. `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` defines Feature
+   028 after both remediation features.
+4. Wave 5 and Wave 6 remain blocked until Feature 028 passes and merges.
+5. The next intake is Lastenheft 10 / Feature 025; this preparation change does
+   not start that run.
+
+### Revision-2-Validierung / Revision 2 Validation
+
+| Check | Result | Boundary |
+|---|---|---|
+| JSON parse and decision counts | Pass | 48 contracts: 7/27/1/8/5; findings 13 |
+| Finding routing | Pass | `Core025` 9; `ComponentData026` 4 |
+| Reciprocal inventory links | Pass | zero one-sided historical, modern-source, or public-contract links |
+| Finding source paths | Pass | every listed repository path is tracked |
+| Checklist completeness | Pass | zero incomplete Feature-024/027 checklist or closure-task items |
+| Resume marker | Pass | Lastenheft 10 / Feature 025 is the unique next intake |
+| `git diff --check` | Pass | current audit and requirements diff |
+| `dotnet format --verify-no-changes --no-restore` | Pass | repository formatting |
+| targeted `ConformanceAuditEvidenceTests` | Pass | version `1.27.4.214`; 11 passed, 0 failed, 0 skipped |
+| `docfx docfx.json` | Pass | 0 warnings, 0 errors |
+| `tests/web-a11y`: `npm run test:docfx` | Pass | DocFX 0/0 and Playwright/Axe 2 passed |
+
+The manual build counter advanced exactly once from 213 to 214 before the one
+targeted `dotnet test` invocation. Full Release, coverage, and remote
+implementation gates are not triggered by this preparation because it
+changes no runtime/API/XML behavior and starts no autonomous feature
+implementation. The documentation path still ran because
+`docs/project-statistics.md` is published DocFX content.

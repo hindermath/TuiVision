@@ -264,12 +264,14 @@ Statuscheckliste Beispielwellen:
   Reihenfolgehinweis: abgeschlossen (Branch `021-terminal-charset-hardening`); kontrollierte Terminal-Session, begrenztes Emulations-Subset, KOI8-R-/Unicode-Mapping, rohe 8x16-Fixture, geschlossene Profile und App-Loop-/Cell-Proof sind frameworkweit nachgewiesen.
 - [x] **Welle 4 - Visual Component Porting**
   Reihenfolgehinweis: abgeschlossen (Branch `022-wave4-visual-component-porting`); `terminal`, `cyrillic`, `fonts`, `eterm` und `xterm` sind sichtbare Drei-Schichten-Demos mit App-Loop-, Zustands-, View- und Buffer-/Cell-Proof sowie ehrlichen Host-Fallbacks.
-- [x] **Pre-Wave-5 Framework-Konformitätsaudit und Findings-Härtung**
-  Reihenfolgehinweis: Feature `024-tv203-freevision-conformance-audit` hat 48 Framework-Verträge ohne `BehavioralDrift`- oder `EvidenceGap`-Finding geprüft; die findings-basierten Features 025 und 026 wurden deshalb nicht angelegt. Feature `027-pre-wave5-conformance-closure` hat die exakten Audit-Mengen und alle lokalen Release-Gates erneut bestanden. Welle 5 wird mit dem reviewten 027-Merge als nächster Intake freigegeben. Die Nachweise liegen unter `specs/024-tv203-freevision-conformance-audit/` und `specs/027-pre-wave5-conformance-closure/`.
+- [x] **Ursprüngliches Pre-Wave-5 Framework-Konformitätsaudit und Closure**
+  Reihenfolgehinweis: Feature `024-tv203-freevision-conformance-audit` und der damalige Abschluss `027-pre-wave5-conformance-closure` bleiben als historische, vollständig gemergte Evidence erhalten. Die spätere kombinierte Consumer-Review-Revision 2 superseded jedoch die Zukunftsentscheidung des Null-Finding-Stands.
+- [ ] **Revision-2 Findings-Härtung und erneuter Pre-Wave-5-/Wave-6-Abschluss**
+  Reihenfolgehinweis: Die Prüfung gegen `TVDEMOS/` und `TVFM/` hat 13 Findings bestätigt. Zuerst folgt Feature 025 aus `Lastenheft_10_Core-Runtime-Conformance-Hardening.md`, danach Feature 026 aus `Lastenheft_11_Component-Data-Conformance-Hardening.md` und zuletzt Feature 028 aus `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md`. Kein Beispiel wird innerhalb dieser drei Features portiert.
 - [ ] **Welle 5 - Turbo-Pascal-Demos aus TP7 (`TVDEMOS/`)**
-  Reihenfolgehinweis: erst nach Abschluss der MUSS-Wellen 1 bis 4 und bestandenem `027-pre-wave5-conformance-closure`; bevorzugt nach stabilen Portierungen von `tvdemo`, `tvedit`, Hilfesystem und Dialogschicht.
+  Reihenfolgehinweis: erst nach Merge und sauberem Main-Sync von Feature `028-pre-wave5-wave6-conformance-closure`; bevorzugt nach stabilen Portierungen von `tvdemo`, `tvedit`, Hilfesystem und Dialogschicht.
 - [ ] **Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`**
-  Reihenfolgehinweis: zuletzt; setzt die Erkenntnisse aus Welle 5, Datei-/Verzeichnisdialoge, Drag/Drop-Analoga und eine robuste Event-/Fensterintegration voraus.
+  Reihenfolgehinweis: zuletzt; setzt das Feature-028-Gate, die tatsächlichen Erkenntnisse aus Welle 5, eine erneute Delta-Prüfung, Datei-/Verzeichnisdialoge, Drag/Drop-Analoga und eine robuste Event-/Fensterintegration voraus.
 - [ ] Beispiel-Guides unter `docs/guides/examples/`
   Reihenfolgehinweis: jedes portierte Beispiel im selben Arbeitsgang mit eigenem Guide dokumentieren.
 
@@ -675,12 +677,13 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
      - **PF-A11Y-004**: Jede inventarisierte fokussierbare Control-Familie besitzt für Tab, Shift+Tab, Pfeile, Enter und Direkt-Shortcut einen automatisierten Proof oder ein begründetes `N/A`.
      - **PF-A11Y-005**: `TColorScheme.HighContrast` ist explizit aktivierbar; der aktive Modus bleibt zusätzlich textbasiert erkennbar.
      - **PF-A11Y-006**: DocFX-Seiten werden im vorhandenen Pages-Workflow bei `main` und Pull Requests mit Playwright/Axe geprüft; Fehler blockieren den Nachweis.
-   - `3.6` = TV203-/Free-Vision-Konformitätsaudit — ✓ ABGESCHLOSSEN (Feature `024-tv203-freevision-conformance-audit`)
-   - `3.6a` = Core-Runtime-Konformitätshärtung — ENTFÄLLT, Finding-Menge leer (Feature 025 nicht angelegt)
-   - `3.6b` = Component-/Data-Konformitätshärtung — ENTFÄLLT, Finding-Menge leer (Feature 026 nicht angelegt)
-   - `3.6c` = Pre-Wave-5-Konformitätsabschluss — ✓ ABGESCHLOSSEN (Feature 027, Merge `35414af`)
+   - `3.6` = TV203-/Free-Vision-Konformitätsaudit — ✓ HISTORISCH ABGESCHLOSSEN; Consumer-Review-Revision 2 mit 13 Findings aktiv (Feature 024)
+   - `3.6a` = Core-Runtime-Konformitätshärtung — OFFEN, 9 Findings (Feature 025, Lastenheft 10)
+   - `3.6b` = Component-/Data-Konformitätshärtung — OFFEN NACH 025, 4 Findings (Feature 026, Lastenheft 11)
+   - `3.6c` = Ursprünglicher Pre-Wave-5-Konformitätsabschluss — ✓ HISTORISCH ABGESCHLOSSEN UND FÜR ZUKUNFTSPLANUNG SUPERSEDED (Feature 027, Merge `35414af`)
+   - `3.6d` = Kombinierter Pre-Wave-5-/Wave-6-Konformitätsabschluss — OFFEN NACH 025 UND 026 (Feature 028, Lastenheft 12)
 
->>> NAECHSTER SCHRITT <<< Wave 5 als nächsten fachlichen Intake spezifizieren; Feature 027 ist vollständig gemergt.
+>>> NÄCHSTER SCHRITT <<< `Lastenheft_10_Core-Runtime-Conformance-Hardening.md` als Feature 025 ausführen; heute wird kein autonomer Lauf gestartet.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

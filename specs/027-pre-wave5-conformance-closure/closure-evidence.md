@@ -150,9 +150,24 @@ and statistics. Any protected product-path change blocks closure.
 | Required checks | Pass | macOS/Linux CI, DocFX, SBOM, tooling, gitleaks, secret scan, and Claude green; Pages deploy expected skip |
 | Review threads | Pass | GraphQL returned zero threads; Copilot quota recorded as unavailable review |
 | Merge/main sync | Pass | merge `35414af`; feature branch deleted; local `main == origin/main` and clean |
-| Causal closeout | In progress | `codex/closeout-027-conformance`; one amended causal commit without self-reference; initial CI rejected stale gate-validator expectation |
+| Causal closeout | Pass | PR [#67](https://github.com/hindermath/TuiVision/pull/67), merge `1da2b211e84221db87ab9f959b7b40d3ae2b01f0`; non-recursive terminal facts verified from the provider |
 | Retrospective/handoff | Pass | Home-Baseline PR #60 merged; v0.1.1 released and ZIP-tested; issue #3479 comment `4951808691` published |
 
 - Last passing boundary: targeted validator 1/1, Home-Baseline PR #60, public v0.1.1 ZIP smoke, and issue #3479 update passed.
-- Next exact action: amend the single closeout commit and reconverge PR #67; keep its own terminal facts external.
+- Next exact action at historical completion: none; PR #67 is merged and its own terminal facts remain provider evidence.
 - Stop if any protected count, finding set, proof, or product path drifts.
+
+## Spätere Revision-2-Supersession / Later Revision 2 Supersession
+
+Deutsch: Diese Closure bleibt ein wahrheitsgetreuer Nachweis des damaligen
+Auditstands und der gemergten Remote-Gates. Eine spätere kombinierte
+Verbraucherprüfung gegen `TVDEMOS/` und `TVFM/` hat die Zukunftsentscheidung
+jedoch mit 13 Findings geordnet wieder geöffnet. Für neue Arbeit gelten deshalb
+die Lastenhefte 025, 026 und 028; Wave 5 und Wave 6 bleiben bis zum Merge von
+Feature 028 blockiert.
+
+English: This closure remains truthful evidence of the then-current audit and
+merged remote gates. A later combined consumer review against `TVDEMOS/` and
+`TVFM/` reopened the forward decision in a controlled way with 13 findings.
+New work therefore follows requirements documents 025, 026, and 028; Wave 5
+and Wave 6 remain blocked until Feature 028 merges.
