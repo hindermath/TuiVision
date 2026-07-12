@@ -227,7 +227,7 @@ test file. No cross-project ownership or hidden aggregate assertion was used.
 
 ## Local Completion
 
-- Tasks T001-T119 are complete; only authorized GitHub delivery T120-T126 remains.
+- Tasks T001-T120 are complete; only authorized GitHub delivery T121-T126 remains.
 - Binding intake archived by the repository PowerShell workflow as
   `Lastenheft_04_MouseSupportAndInteraction.020-mouse-support-interaction.md` in commit `cfdd0bf`.
 - Changed runtime scope is limited to Driver ingress/capability, Program lifecycle,
@@ -245,7 +245,7 @@ test file. No cross-project ownership or hidden aggregate assertion was used.
 | Implementation commit | Pass | `f76a0bf` (`feat: harden mouse support and interaction`) at version `1.20.2.143`; 39 files, 3,678 insertions, 69 deletions |
 | Evidence/version alignment | Pass | Bounded follow-up required because the implementation hash cannot be known inside its own commit; aligned to prospective third branch commit `1.20.3.143` without running another build/test |
 | Push | Pass | Initial and evidence-aligned pushes succeeded; remote branch `020-mouse-support-interaction` first observed at `0d99df0b37ef66fe2af2a077cc24a25e6a7183b4`; pre-push tracked-secret scan passed |
-| Pull request | Open | Pending URL |
+| Pull request | Pass | Ready PR [#48](https://github.com/hindermath/TuiVision/pull/48), created from the evidence-derived scope and validation summary |
 | Required checks | Open | Pending check summary |
 | Review threads | Open | Pending GraphQL count |
 | Unavailable reviews | None observed yet | Record provider/quota facts if present |
