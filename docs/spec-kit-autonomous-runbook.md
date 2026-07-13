@@ -233,6 +233,7 @@ retrospective.
 | Änderung | Pflichtnachweis |
 |---|---|
 | Jede Änderung | `git diff --check`, Scope-Diff, Platzhalter- und Generated-Output-Prüfung |
+| Finaler Lieferkandidat | Beabsichtigte Dateien stage'n, `git diff --cached --check` ausführen und Staging-Inventar gegen den Repository-Status prüfen; keine beabsichtigte ungetrackte oder unstaged Datei darf außerhalb des Kandidaten bleiben |
 | Formatierbarer Code | Repository-Formatprüfung |
 | Begrenzter Quell- oder Testcode | Gezielte Release-Tests |
 | Gemeinsame Runtime- oder breite Proof-Logik | Voller Release-Testlauf und kanonisches Coverage Gate |
@@ -255,6 +256,14 @@ Exitcode vorliegt und der Fehlerkanal weder einen PowerShell-ErrorRecord noch
 Exitcode 0 darf einen solchen Fehler nicht verdecken; der Helfer gilt dann als
 fehlgeschlagen und wird begrenzt nachgehärtet.
 
+`git diff --check` allein prüft keine ungetrackten Dateien. Vor einem Commit
+wird deshalb nur der beabsichtigte Lieferkandidat gestaged, mit
+`git diff --cached --check` geprüft und sein Pfadinventar mit dem Repository-
+Status verglichen. Fremde Änderungen werden nicht aufgenommen. Im Modus
+`LocalImplementation` muss eine gleichwertige Einzeldatei- oder temporäre
+Indexprüfung alle neuen Dateien erfassen und den vorherigen Indexzustand
+wiederherstellen.
+
 Increment the manual build counter before every `dotnet build` or `dotnet test`.
 One increment authorizes exactly one explicit build or test invocation; do not
 chain multiple invocations behind the same increment. Run static checks first
@@ -266,6 +275,12 @@ result only when the expected exit code is present and the error channel has no
 PowerShell error record, `command not found` message, or equivalent fatal
 signature. A zero exit code cannot hide such an error; treat the helper as
 failed and route it to bounded remediation.
+
+`git diff --check` alone does not inspect untracked files. Before a commit,
+stage only the intended delivery candidate, run `git diff --cached --check`,
+and compare its path inventory with repository status. Do not include unrelated
+changes. For `LocalImplementation`, use an equivalent per-file or temporary-
+index check that covers new files and restores the prior index state.
 
 ## Unterbrechung und Wiederaufnahme / Interruption and Resume
 

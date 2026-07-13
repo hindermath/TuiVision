@@ -180,6 +180,44 @@ preflight and determines whether command, checklist, or template language is
 actually missing from the preset. Only such evidence justifies a new preset
 version or another upstream contribution.
 
+## 025 Core Runtime Conformance Hardening
+
+**Feature:** `025-core-runtime-conformance-hardening`
+**Feature-PR:** [#69](https://github.com/hindermath/TuiVision/pull/69)
+**Closeout-PR:** Pending until the causal evidence-only closeout
+
+| Beobachtung | Entscheidung | Umsetzung oder Grenze |
+|---|---|---|
+| `git diff --check` meldete den getrackten Arbeitsbaum als sauber, prüfte aber die neuen ungetrackten Spec- und Checklisten-Dateien nicht. Erst `git diff --cached --check` stoppte den Kandidaten wegen nachgestellter Leerzeichen. | `ValidationAutomation`, `SkillCorrection`, `TemplateCorrection`, `AgentPolicyCorrection`, `PresetFollowUp` mit `Promote` | Skill, Runbook, Tasks-/Evidence-Template und alle fünf Agentenflächen verlangen jetzt die Prüfung des exakt gestagten Lieferkandidaten. Der Pfadvergleich schützt zugleich fremde Änderungen. |
+| Der erste Green-Lauf des Feature-024-Validators fand zwei veraltete Proof-Methodennamen, bevor die neun Findings geschlossen wurden. | `NoPromotion` | Die in Feature 027 promovierte Regel für ausführbare status- und evidence-lesende Validatoren funktionierte bereits wie vorgesehen. |
+| Eine lokale Abschluss-Schleife zählte T139 versehentlich in die Prüfung T001-T138 ein. Die exakte Einzel-ID-Prüfung korrigierte den Harness vor der Evidence-Abnahme. | `FeatureSpecific`, `NoPromotion` | Das war kein Fehler in Skill, Template oder erzeugter Taskliste. Eine allgemeine Task-ID-Skriptregel wäre nach einem einmaligen lokalen Hilfsbefehl unverhältnismäßig. |
+| Alle PR-Kontext-Checks und Claude waren grün, GraphQL meldete null Threads, Copilot blieb quota-bedingt nicht verfügbar und nur Human Approval blockierte. | `NoPromotion` | Der genehmigte enge Admin-Bypass blieb bei PR #69 auf genau diese Ruleset-Regel begrenzt. Push-Duplikate blieben operatives Rauschen. |
+
+### Promotion Evidence
+
+| Feld | Nachweis |
+|---|---|
+| Quelle | Feature-Commit `ef0887b`, `specs/025-core-runtime-conformance-hardening/pr-evidence.md`, PR #69 und dieser Retrospektiv-Eintrag |
+| Artefaktart | Skill, Runbook, Tasks-Template, Evidence-Template, Agent-Guidance und portables Preset-Follow-up |
+| Projektspezifischer Ausschluss | Keine TuiVision-Build-, .NET-, DocFX- oder Branchnummerierungsregel wird verallgemeinert. |
+| Provider-neutrale Zielregel | Der finale Lieferkandidat muss neue und geänderte Dateien umfassen. Vor Commit wird nur der beabsichtigte Kandidat gestaged, mit `git diff --cached --check` geprüft und sein Pfadinventar gegen den Repository-Status abgeglichen. |
+| Auftreten und Vertrauen | Ein deterministisches Auftreten; hohe Sicherheit, weil Git ungetrackte Dateien definitionsgemäß nicht in `git diff --check` einbezieht. Evidence-Integritätsfehler dürfen nach einem reproduzierbaren Fund sofort korrigiert werden. |
+| Berechtigungs- und Evidence-Risiko | Fremde Änderungen dürfen nicht gestaged werden. `LocalImplementation` verwendet eine Einzeldatei- oder temporäre Indexprüfung und stellt den vorherigen Indexzustand wieder her. |
+| Reproduzierbarer Test | In einem temporären Repository eine neue Datei mit nachgestellten Leerzeichen anlegen: `git diff --check` bleibt erfolgreich; nach dem gezielten Staging muss `git diff --cached --check` fehlschlagen. Nach Bereinigung müssen beide Kandidateninventare übereinstimmen und der Cached-Check bestehen. |
+| Portable Entscheidung | `Promote`; Übergabe als `PresetFollowUp` an das Feature-025-Workitem der Home Baseline. |
+
+### Nächster Prüfschritt / Next Check
+
+Feature 026 muss den neuen Candidate-Integrity-Gate vor seinem ersten Commit
+anwenden und belegen, dass neue Dateien erfasst werden, ohne fremde Änderungen
+zu stage'n. Die Home Baseline entscheidet separat über Preset-Versionierung und
+Veröffentlichung; diese lokale Korrektur erteilt keine Remote-Autorität.
+
+Feature 026 must apply the new candidate-integrity gate before its first commit
+and prove that new files are covered without staging unrelated changes. Home
+Baseline separately owns preset versioning and publication; this local
+correction grants no remote authority.
+
 ## 027 Pre-Wave-5 Conformance Closure
 
 **Feature:** `027-pre-wave5-conformance-closure`

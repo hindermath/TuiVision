@@ -49,6 +49,11 @@ description: "Task list template for feature implementation"
   agent-guidance, or the same source/test file. Do not mark them `[P]`.
 - Add trigger-based validation tasks and an explicit rationale for every
   conditional gate that is not run.
+- Add a final candidate-integrity task. For `PublishPR` or `MergeAndSync`, stage
+  only the intended files, run `git diff --cached --check`, and compare staged
+  paths with repository status so no intended untracked or unstaged file remains
+  outside the commit. For `LocalImplementation`, use an equivalent per-file or
+  temporary-index check and preserve the prior index state.
 - Give every explicit `dotnet build` or `dotnet test` invocation its own prior
   manual build-counter increment. Do not place multiple invocations behind one
   increment, including through shell chaining.

@@ -93,6 +93,13 @@ code, the full Release and coverage gates for shared executable behavior, the
 DocFX plus web-A11Y path for triggered documentation surfaces, script parity
 for scripts, and app-loop plus state/view/rendering proof for visual UI work.
 
+Validate the exact delivery candidate, not only tracked working-tree changes.
+Before a commit, stage only the intended files, run `git diff --cached --check`,
+and compare the staged path inventory with repository status so no intended
+untracked or unstaged file sits outside the candidate. Preserve unrelated user
+changes. In `LocalImplementation`, use an equivalent per-file or temporary-index
+check and restore the original index state.
+
 Perform static review before test batches. Increment the manual build counter
 before every `dotnet build` or `dotnet test`. One increment authorizes exactly
 one explicit build or test invocation; do not chain multiple invocations behind
