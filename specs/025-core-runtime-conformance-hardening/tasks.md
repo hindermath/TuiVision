@@ -268,15 +268,15 @@
 **Purpose**: Deliver the explicitly authorized `MergeAndSync` closeout while preserving reviewed-head integrity.
 
 - [X] T141 Align `Version`, `AssemblyVersion`, and `FileVersion` to `1.25.<new-commit-count>.<current-build>` before the planning/implementation commit in `Directory.Build.props`
-- [ ] T142 Commit the complete validated Feature-025 change with the repository co-author trailer, verify the commit externally, and preserve the non-recursive boundary already declared in `specs/025-core-runtime-conformance-hardening/pr-evidence.md`
-- [ ] T143 Push the already version-aligned `025-core-runtime-conformance-hardening` commit and verify remote head parity without a post-commit version edit; use `specs/025-core-runtime-conformance-hardening/pr-evidence.md` as the declared closeout evidence path
-- [ ] T144 Create a ready Feature-025 PR from the prepared description and verify base `main`, branch, labels, and no-empty diff; use `specs/025-core-runtime-conformance-hardening/pr-evidence.md` as the declared closeout evidence path
-- [ ] T145 Identify pull-request-context required checks, record push-trigger duplicates as noise, and do not cancel runs without a safe concurrency contract; use `specs/025-core-runtime-conformance-hardening/pr-evidence.md` as the declared closeout evidence path
-- [ ] T146 Wait for required PR-context checks and verify Linux/macOS plus Windows/WSL evidence are green on the final reviewed head; use `specs/025-core-runtime-conformance-hardening/pr-evidence.md` as the declared closeout evidence path
-- [ ] T147 Query Copilot, Claude, and GraphQL review threads; address every actionable finding and repeat validation/review until zero actionable threads remain against `specs/025-core-runtime-conformance-hardening/pr-evidence.md`
-- [ ] T148 Record unavailable/quota-limited reviewers against `specs/025-core-runtime-conformance-hardening/pr-evidence.md` and use the approved narrow admin bypass only if green required checks plus zero actionable threads leave human approval as the sole rule
-- [ ] T149 Merge the Feature-025 PR using a merge commit, delete the remote feature branch, and verify terminal facts externally from the boundary declared in `specs/025-core-runtime-conformance-hardening/pr-evidence.md`
-- [ ] T150 Switch locally to `main`, fetch/prune, fast-forward pull, and prove clean `HEAD == origin/main` externally from the boundary declared in `specs/025-core-runtime-conformance-hardening/pr-evidence.md`
+- [X] T142 Commit the complete validated Feature-025 change with the repository co-author trailer, verify the commit externally, and preserve the non-recursive boundary already declared in `specs/025-core-runtime-conformance-hardening/pr-evidence.md`
+- [X] T143 Push the already version-aligned `025-core-runtime-conformance-hardening` commit and verify remote head parity without a post-commit version edit; use `specs/025-core-runtime-conformance-hardening/pr-evidence.md` as the declared closeout evidence path
+- [X] T144 Create a ready Feature-025 PR from the prepared description and verify base `main`, branch, labels, and no-empty diff; use `specs/025-core-runtime-conformance-hardening/pr-evidence.md` as the declared closeout evidence path
+- [X] T145 Identify pull-request-context required checks, record push-trigger duplicates as noise, and do not cancel runs without a safe concurrency contract; use `specs/025-core-runtime-conformance-hardening/pr-evidence.md` as the declared closeout evidence path
+- [X] T146 Wait for required PR-context checks and verify Linux/macOS plus Windows/WSL evidence are green on the final reviewed head; use `specs/025-core-runtime-conformance-hardening/pr-evidence.md` as the declared closeout evidence path
+- [X] T147 Query Copilot, Claude, and GraphQL review threads; address every actionable finding and repeat validation/review until zero actionable threads remain against `specs/025-core-runtime-conformance-hardening/pr-evidence.md`
+- [X] T148 Record unavailable/quota-limited reviewers against `specs/025-core-runtime-conformance-hardening/pr-evidence.md` and use the approved narrow admin bypass only if green required checks plus zero actionable threads leave human approval as the sole rule
+- [X] T149 Merge the Feature-025 PR using a merge commit, delete the remote feature branch, and verify terminal facts externally from the boundary declared in `specs/025-core-runtime-conformance-hardening/pr-evidence.md`
+- [X] T150 Switch locally to `main`, fetch/prune, fast-forward pull, and prove clean `HEAD == origin/main` externally from the boundary declared in `specs/025-core-runtime-conformance-hardening/pr-evidence.md`
 
 Terminal PR URL, final reviewed-head result, merge commit, and synchronized-main facts are verified externally after the last repository commit so the evidence file does not invalidate its own reviewed head.
 
@@ -291,10 +291,10 @@ or merge commit in the same file; its own terminal facts remain external.
 
 **Purpose**: Classify reusable learning after delivery without creating an empty PR or changing Feature-025 scope.
 
-- [ ] T151 Evaluate task shape, red-proof completeness, validator triggers, evidence quality, CI duplication, build-counter use, review convergence, resume behavior, and remote closeout against `.agents/skills/speckit-autonomous-retrospective/SKILL.md`
-- [ ] T152 Classify each observation in `docs/spec-kit-autonomous-retrospectives.md` as `FeatureSpecific`, `RunbookClarification`, `SkillCorrection`, `TemplateCorrection`, `AgentPolicyCorrection`, `ValidationAutomation`, `PresetFollowUp`, or `NoPromotion`
-- [ ] T153 Create a TuiVision retrospective branch/PR only for a concrete non-empty correction recorded in `docs/spec-kit-autonomous-retrospectives.md`; otherwise record `NoPromotion` there and keep clean synchronized `main`
-- [ ] T154 Hand off any evidence-backed portable insight to `~/home-baseline-tmp/specs/autonomous-run-governance/workitems/025-core-runtime-conformance-hardening.md` only when it satisfies the promotion threshold; do not delay Feature-025 completion for speculative upstream work
+- [X] T151 Evaluate task shape, red-proof completeness, validator triggers, evidence quality, CI duplication, build-counter use, review convergence, resume behavior, and remote closeout against `.agents/skills/speckit-autonomous-retrospective/SKILL.md`
+- [X] T152 Classify each observation in `docs/spec-kit-autonomous-retrospectives.md` as `FeatureSpecific`, `RunbookClarification`, `SkillCorrection`, `TemplateCorrection`, `AgentPolicyCorrection`, `ValidationAutomation`, `PresetFollowUp`, or `NoPromotion`
+- [X] T153 Create a TuiVision retrospective branch/PR only for a concrete non-empty correction recorded in `docs/spec-kit-autonomous-retrospectives.md`; otherwise record `NoPromotion` there and keep clean synchronized `main`
+- [X] T154 Hand off any evidence-backed portable insight to `~/home-baseline-tmp/specs/autonomous-run-governance/workitems/025-core-runtime-conformance-hardening.md` only when it satisfies the promotion threshold; do not delay Feature-025 completion for speculative upstream work
 
 ---
 

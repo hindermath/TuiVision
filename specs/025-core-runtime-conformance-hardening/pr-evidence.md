@@ -29,8 +29,8 @@
 | Tasks | 1 | Pass | `tasks.md`; 154 sequential tasks | Execute T001-T154 |
 | Analyze | 3 | Pass | Final pass: 62/62 normative items covered; 9x6 Finding traceability; no Critical, High, or Medium issue | None |
 | Implement | 1 | Pass | T001-T107; all nine runtime findings and Feature-024 resolution validators passed | Complete documentation, governance, archive, and final validation |
-| Validate | 1 | Open | Validation table below | Run triggered gates after implementation |
-| Deliver | 1 | Open | Remote Delivery table below | Commit, PR, review, merge, sync |
+| Validate | 1 | Pass | Validation table below, including Windows run 29282485680 | None |
+| Deliver | 1 | Pass | Feature PR #69, correction PRs #70/#71, Remote Delivery table, and causal closeout | Verify this closeout's terminal facts externally without recursive repository edits |
 
 Allowed results are `Pass`, `Fail`, `Accepted`, `Deferred`, and `Open`.
 
@@ -89,11 +89,11 @@ Allowed results are `Pass`, `Fail`, `Accepted`, `Deferred`, and `Open`.
 | `025-G08` | architecture-governance | 0.5.0 | Zero Trust / SAMM / BSI C3A / BSI C5 | N/A | No distributed, cloud, provider, deployment, or remotely managed service boundary | This file | Maintainer | Codex | 2026-07-13 | Pass | None | None | Cloud/provider/distributed operation enters scope |
 | `025-G09` | isaqb-architecture-governance | 0.2.0 | Quality scenarios / risks / modernization | Applicable | Determinism, usability, compatibility, accessibility, and maintainability are proven by explicit results, immutable snapshots, bounded lifecycle, keyboard parity, and historical deviation records | Spec; plan; Finding rows; guide; tests | Maintainer | Codex | 2026-07-13 | Pass | Additive APIs increase maintenance surface | Feature-028 revalidation | New architecture layer or trade-off appears |
 | `025-G10` | a11y-governance | 0.4.0 | Keyboard / focus / text-first / docs | Applicable | Focus, command, close, modal, and drag expose keyboard-equivalent state; guide, XML, Axe, and Lynx prove text-first access | Tests; guide; XML; DocFX/Axe/Lynx rows | Maintainer | Codex | 2026-07-13 | Pass | Low: later controls can omit opt-in command or drag semantics | Revalidate in Feature 028 and Wave consumers | Interaction or learner docs change |
-| `025-G11` | cross-platform-governance | 0.2.0 | Keyboard/terminal platform proof | Applicable | Real keyboard and modifier ingress changes | Local tests and remote CI | Maintainer | Codex | 2026-07-13 | Open | Local host cannot prove Windows/WSL | Require CI | Platform adapter changes |
+| `025-G11` | cross-platform-governance | 0.2.0 | Keyboard/terminal platform proof | Applicable | Real keyboard and modifier ingress changes | Local tests; PR #69 macOS/Linux CI; Actions run 29282485680 on `windows-latest` | Maintainer | Codex | 2026-07-13 | Pass | Low: physical terminal diversity remains outside deterministic `ConsoleKeyInfo` proof | Revalidate in Feature 028 | Platform adapter or host-terminal contract changes |
 | `025-G12` | cross-platform-governance | 0.2.0 | Script parity | N/A | Product scripts are not edited; archive scripts are invoked under their existing parity contract | T117; this file | Maintainer | Codex | 2026-07-13 | Pass | Invocation mismatch | Dry-run/error-channel comparison | Script source changes |
 | `025-G13` | agent-parity-governance | 0.3.0 | Five maintained surfaces | Applicable | Completed 025 state, nine closures, preserved gates, and next 026 intake are synchronized together | Five agent files | Maintainer | Codex | 2026-07-13 | Pass | Generated context metadata can drift in later runs | Final parity scan | Shared guidance or active status changes |
 | `025-G14` | agent-parity-governance | 0.3.0 | `.specify/templates/` | N/A | Feature uses templates but does not change repository-owned templates | This file | Maintainer | Codex | 2026-07-13 | Pass | None | None | A reusable template correction is proven |
-| `025-G15` | autonomous-run-governance | 0.1.0 | Evidence / convergence / MergeAndSync | Applicable | User authorized full autonomous delivery; validators and causal closeout are explicit | All 025 artifacts; this file | Maintainer | Codex | 2026-07-13 | Open | Remote reviewer availability | Complete T001-T154 | Permission, gate, or reusable workflow rule changes |
+| `025-G15` | autonomous-run-governance | 0.1.0 | Evidence / convergence / MergeAndSync | Applicable | User authorized full autonomous delivery; validators, causal closeout, two non-empty workflow corrections, and portable handoff are explicit | All 025 artifacts; PRs #69-#71; Home-Baseline branch commit `9bd3e1d`; this file | Maintainer | Codex | 2026-07-13 | Pass | Low: Copilot review remained quota-limited | Revalidate both promoted rules in Feature 026 | Permission, gate, or reusable workflow rule changes |
 
 ## Validation
 
@@ -144,12 +144,16 @@ Allowed results are `Pass`, `Fail`, `Accepted`, `Deferred`, and `Open`.
 | `npm ci`; `npx playwright install chromium` | Reproducible local A11Y dependencies | Pass with environment note | 7 packages audited with 0 vulnerabilities and Chromium available. Local Node 26.5.0 is newer than the declared 20/22/24 range and emitted `EBADENGINE`; no lockfile or package changed, and the full suite passed. CI remains on a supported Node line. |
 | `npm run test:docfx` | WCAG 2.2 AA smoke path | Pass | DocFX repeated with 0 warnings/errors; Playwright/Axe passed 2/2. Node 26 emitted only deprecation/color warnings. |
 | UTF-8 Lynx review | Guide and representative public API pages | Pass | Guide, `TDragSession`, `TCommandContext`, and `TDesktop` expose skip links first, one clear main heading, German-first/English-second summaries, parameters/exceptions, and readable table/property order. |
-| Local and remote platform boundary | Real keyboard/modifier semantics | Open for remote | Darwin arm64 with .NET 10.0.301 proves managed/raw `ConsoleKeyInfo` mapping locally. Windows/WSL must preserve the same printable, navigation, function, Alt/Ctrl/Shift, unknown-fallback, Ctrl+W, and Ctrl+F5 results; final PR CI is the authoritative unavailable-host proof. |
+| Local and remote platform boundary | Real keyboard/modifier semantics | Pass | Darwin arm64 with .NET 10.0.301 plus PR #69 macOS/Ubuntu CI prove the managed matrix. Supplemental Actions run 29282485680 executed the unchanged Feature-025 runtime tree on `windows-latest`: build succeeded, all six suites passed 725/725, and DocFX completed with 0 warnings/errors. The temporary proof branch was deleted without merge. |
 | Scope and secret scan | Packages, generated output, examples, consumers, historical/external sources, credentials | Pass | 61 tracked/untracked change paths contained no `_site`, API YAML, TestResults, cache, examples, `TVDEMOS/`, `TVFM/`, `tv203s/`, or external worktree content. The only project-file change is an in-repo project reference with no PackageReference. Gitleaks current-diff scan reports high=0; local `.claude/settings.local.json` remains an unchanged medium configuration note. |
 | Filtered red/green tests | Each finding | Pass | Builds 215-239 record a red-first proof and final green result for every accepted finding plus the Feature-024 closure validator. |
 | Targeted/full/coverage | Shared runtime | Pass | Builds 240-245 passed targeted, full, and canonical five-assembly coverage validation. |
 | DocFX/Axe/Lynx | Public XML and guide | Pass | DocFX completed with zero warnings/errors, Playwright/Axe passed 2/2, and representative UTF-8 Lynx output preserved semantic reading order. |
 | Scope/secret/generated scan | Always | Pass | No prohibited scope or generated output is present; the current-diff secret scan reports zero high findings. |
+| Feature PR #69 acceptance map | Remote delivery | Pass | PR head `ef0887b`: CI executed the 725-test runtime suite on macOS/Ubuntu; DocFX Pages executed DocFX and Axe; Homogeneity executed repository tooling on macOS/Ubuntu/Windows; Supply Chain, Gitleaks, secret scan, and Claude completed. The Windows tooling job was not counted as runtime evidence. |
+| Supplemental Windows runtime run 29282485680 | FR-030 / T146 | Pass | Temporary head `81fa09d` changed only the CI matrix to `windows-latest`; Restore/Build/Test passed all six suites (725 tests) and DocFX 0/0. All companion branch checks passed, and the branch was deleted without PR or merge. |
+| Evidence-only validator dependency search | Before test skip in causal closeout | Pass / N/A | No executable test, script, or workflow under `tests/`, `scripts/`, `.github/`, or `.specify/` reads the changed 025 `tasks.md`, `pr-evidence.md`, or retrospective ledger. Runtime tests were therefore not retriggered for this evidence-only closeout. |
+| Autonomous retrospective corrections | Workflow integrity | Pass | PR #70 added exact staged-candidate validation; PR #71 added workflow/job/platform/command acceptance mapping. Both had green technical checks, Claude with no findings, zero GraphQL threads, and narrow Human-Approval-only bypass. |
 
 For every repository validation helper, the explicit repository root, exit status, and error-channel review are recorded. Exit code zero with PowerShell ErrorRecords, command-not-found text, or a fatal signature is a failure.
 
@@ -159,23 +163,24 @@ For every explicit `dotnet build` or `dotnet test`, the immediately preceding ma
 
 | Item | Result | Evidence |
 |---|---|---|
-| Push | Open | Branch `025-core-runtime-conformance-hardening` |
-| Pull request | Open | Prepared from this evidence; final URL is terminal external fact |
-| Required checks | Open | Pull-request-context gate on final reviewed head |
-| Review threads | Open | Copilot, Claude, and GraphQL query |
-| Unavailable reviews | None yet | Record provider/quota limitation honestly |
-| Reviewed head | Open | Verified externally to avoid self-invalidating commit |
-| Merge | Open | Merge commit and branch deletion verified externally |
-| Local `main` sync | Open | `HEAD == origin/main`, clean tree, verified externally |
-| Causal closeout | Required | This file and `tasks.md`; one post-merge Evidence-only PR may record Feature-025 terminal facts and task/retrospective completion. Its own URL/head/merge stay external. |
-| Duplicate workflow events | Open | PR-context checks are delivery gate; equivalent push runs are noise unless safe concurrency exists |
+| Push | Pass | `025-core-runtime-conformance-hardening` local and remote heads matched `ef0887b7fe6fcf9714b922e079efe3bc2ee6355f` before PR creation. |
+| Pull request | Pass | Feature PR [#69](https://github.com/hindermath/TuiVision/pull/69), base `main`, ready, one commit, 62 files, non-empty. |
+| Required checks | Pass | Ten PR-context technical gates passed on `ef0887b`; five equivalent push checks were classified as noise and not cancelled. The separate Windows runtime gate passed in run 29282485680. |
+| Acceptance-gate mapping | Pass | Runtime: PR #69 macOS/Ubuntu CI plus run 29282485680 Windows; docs/A11Y: DocFX Pages; repository tooling: three-OS Homogeneity; supply chain, secrets, and review: their named workflows and executed steps. |
+| Review threads | Pass | Claude completed with no buffered findings; GraphQL returned zero review threads. |
+| Unavailable reviews | Copilot quota limitation | Copilot reported that the requesting user had reached the review quota; it is recorded as unavailable, not successful. |
+| Reviewed head | Pass | `ef0887b7fe6fcf9714b922e079efe3bc2ee6355f` for Feature PR #69. |
+| Merge | Pass | PR #69 merged with merge commit `3c0af04d7d462e4c9bfc3770934d9e8810646ed3`; the remote feature branch was deleted. Admin bypass covered only the sole Human Approval rule after green checks and zero actionable threads. |
+| Local `main` sync | Pass | Immediately after Feature PR merge, local `main` and `origin/main` both equaled `3c0af04`; after workflow correction PRs #70/#71 they both equal `015cc6064fa860f337faaac07df946bec1eba95b`, with clean tree and prune. |
+| Causal closeout | Pass | This file, `tasks.md`, and the retrospective ledger form the one evidence-only closeout. Its own PR URL, reviewed head, and merge commit are intentionally verified externally and are not written recursively here. |
+| Duplicate workflow events | Observed | Pull-request-context checks were the delivery gates; equivalent push runs were retained as operational noise because no safe concurrency contract authorizes cancellation. |
 
 ## Retrospective
 
-- **Effective**: Evidence-first planning found task-order and closeout recursion defects before implementation.
-- **Waste**: Open until delivery.
-- **Recurring blocker**: Open until remote review.
-- **Recommended refinement**: Classify after Feature-025 and closeout merge; promote only repeated or correctness-relevant evidence.
+- **Effective**: Nine bounded red/green slices, the Feature-024 executable validator, and the final acceptance map prevented documentation-only closure and supplied exact historical/runtime proof.
+- **Waste**: A tracked-only diff check omitted new files, and a green Windows tooling job was initially mistaken for runtime evidence. Both integrity gaps were corrected through non-empty PRs #70 and #71.
+- **Recurring blocker**: Copilot review remained quota-limited; the standard runtime CI matrix has no Windows runner, so Feature 025 used one temporary, unmerged proof branch and immutable Actions run 29282485680.
+- **Recommended refinement**: Feature 026 must revalidate exact staged-candidate coverage and workflow/job/platform/command acceptance mapping. Portable follow-up is committed on Home-Baseline branch `codex/autonomous-run-governance-package` at `9bd3e1d` without premature preset versioning.
 
 ## Prepared Pull Request Description
 
