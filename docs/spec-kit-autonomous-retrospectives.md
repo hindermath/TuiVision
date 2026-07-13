@@ -261,3 +261,29 @@ trigger gap for executable tests that read status evidence. Home-Baseline PR
 #60 delivers the follow-up as public preset v0.1.1, verified through its
 versioned GitHub ZIP. Issue `github/spec-kit#3479` carries the non-blocking
 upstream update. Wave 5 is the next domain intake.
+
+## 026 Component and Data Conformance Hardening
+
+**Feature:** `026-component-data-conformance-hardening`
+**Feature-PR:** [#74](https://github.com/hindermath/TuiVision/pull/74)
+**Closeout-PR:** Causal single-commit closeout; its own URL, reviewed head, and merge are verified externally
+
+| Beobachtung | Entscheidung | Umsetzung oder Grenze |
+|---|---|---|
+| Der exakte Kandidatencheck fand Leerzeichenfehler in zuvor ungetrackten Spec-Kit-Dateien, obwohl der normale Arbeitsbaum-Check sie nicht sehen konnte. | `NoPromotion` | Die mit v0.1.2 eingeführte Staging-Regel funktionierte: Der Commit entstand erst nach Bereinigung, erneutem Staging, Pfadabgleich und grünem Cached-Check. |
+| Der akzeptierte Vertrag verlangte Linux-, macOS- und Windows/WSL-Proof. Vor Merge wurden die grünen Checks zwar aufgelistet, aber der Windows-Homogeneity-Job fälschlich als ausreichender Plattformnachweis behandelt, obwohl er keine Runtime-Tests ausführte. | `ValidationAutomation`, `PresetFollowUp` mit `Promote` | Supplemental Run 29291308306 schloss die Lücke mit 748/748 Tests und DocFX 0/0 auf `windows-latest`. Nach demselben Fehler in 025 zeigt das zweite Auftreten, dass die richtige v0.1.2-Prosa allein nicht genügt. Home-Baseline-Workitem `AR-026-01` fordert eine maschinenprüfbare Applicable-Gate-Matrix. |
+| Drei F013-Green-Versuche stoppten an fehlender oder falsch platzierter öffentlicher Test-XML-Dokumentation. | `NoPromotion` | Der vorhandene Compile-Surface-Vertrag nennt diese Prüfung bereits. Der Lauf hat eine bekannte Regel nicht früh genug angewendet; es fehlt keine neue Preset-Regel. |
+| Zwei einmalige Shell-Prüfkommandos scheiterten durch `rg -q` plus `pipefail` beziehungsweise zshs spezielle Variable `path`. | `RejectProjectSpecific`, `NoPromotion` | Beide Kommandos wurden ohne Repository-Schreibwirkung korrigiert und als Fehlergrenze dokumentiert. Es gibt keinen betroffenen gepflegten Repository-Helper und keine belastbare portable Skriptänderung. |
+| Claude und alle PR-Kontext-Gates waren grün, GraphQL meldete null Threads, Copilot blieb quota-bedingt nicht verfügbar und nur Human Approval erforderte den engen Bypass. | `NoPromotion` | Review-, Missing-Reviewer-, Duplicate-Run- und Berechtigungsgrenzen funktionierten unverändert. Der Bypass ersetzte den fehlenden Windows-Proof ausdrücklich nicht. |
+
+### Nächster Prüfschritt / Next Check
+
+Feature 028 darf vor dem Merge keine Applicable-Plattformzeile nur aus einem
+grünen Jobnamen ableiten. Solange eine spätere Preset-Version noch keinen
+deterministischen Validator liefert, wird die vollständige Gate-Matrix manuell
+gegen Workflow, Job, Runner, ausgeführten Befehl, Head-SHA und Run-ID geprüft.
+
+Feature 028 must not infer any Applicable platform row from a green job name.
+Until a later preset version provides a deterministic validator, its complete
+gate matrix is manually reconciled against workflow, job, runner, executed
+command, head SHA, and run ID before merge.
