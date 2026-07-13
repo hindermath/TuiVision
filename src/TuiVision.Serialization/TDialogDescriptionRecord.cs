@@ -230,6 +230,123 @@ public sealed record TDialogDescriptionRecord : ITStreamSerializable
         registry.Register(PersistedDialogRepresentation.TypeId, LoadFrom);
     }
 
+    internal static void RegisterResourceStream(TRecordRegistry registry)
+    {
+        registry.RegisterStream(
+            PersistedDialogRepresentation.TypeId,
+            stream =>
+            {
+                int version = stream.ReadInt32();
+                string descriptionId = stream.ReadString();
+                int modelVersion = stream.ReadInt32();
+                string title = stream.ReadString();
+                bool runtimeState = stream.ReadBoolean();
+                int controlCount = ReadStreamCount(stream, "control");
+                List<TDialogControlDescriptionRecord> controls = new(controlCount);
+                for (int index = 0; index < controlCount; index++)
+                {
+                    controls.Add(new TDialogControlDescriptionRecord(
+                        stream.ReadString(),
+                        stream.ReadString(),
+                        stream.ReadString(),
+                        stream.ReadBoolean() ? stream.ReadString() : null,
+                        stream.ReadBoolean()));
+                }
+
+                int navigationCount = ReadStreamCount(stream, "navigation");
+                List<string> navigation = new(navigationCount);
+                for (int index = 0; index < navigationCount; index++)
+                {
+                    navigation.Add(stream.ReadString());
+                }
+
+                int commandCount = ReadStreamCount(stream, "command");
+                List<TDialogCommandBindingRecord> commands = new(commandCount);
+                for (int index = 0; index < commandCount; index++)
+                {
+                    int command = stream.ReadInt32();
+                    if (command is < 0 or > ushort.MaxValue)
+                    {
+                        throw new InvalidDataException("Dialog command is outside UInt16 range.");
+                    }
+
+                    commands.Add(new TDialogCommandBindingRecord(
+                        (ushort)command,
+                        stream.ReadBoolean() ? stream.ReadString() : null,
+                        stream.ReadString(),
+                        stream.ReadString()));
+                }
+
+                TDialogDescriptionRecord record = new(version, descriptionId, modelVersion, title, controls, navigation, commands, runtimeState);
+                ValidateResourceRecord(record);
+                return record;
+            },
+            (stream, record) =>
+            {
+                ValidateResourceRecord(record);
+                stream.WriteInt32(record.FormatVersion);
+                stream.WriteString(record.DescriptionId);
+                stream.WriteInt32(record.ModelVersion);
+                stream.WriteString(record.Title);
+                stream.WriteBoolean(record.RuntimeStateIncluded);
+                stream.WriteInt32(record.Controls.Count);
+                foreach (TDialogControlDescriptionRecord control in record.Controls)
+                {
+                    stream.WriteString(control.ControlId);
+                    stream.WriteString(control.Role);
+                    stream.WriteString(control.Label);
+                    stream.WriteBoolean(control.InitialValue is not null);
+                    if (control.InitialValue is not null)
+                    {
+                        stream.WriteString(control.InitialValue);
+                    }
+                    stream.WriteBoolean(control.CanFocus);
+                }
+
+                stream.WriteInt32(record.NavigationOrder.Count);
+                foreach (string item in record.NavigationOrder)
+                {
+                    stream.WriteString(item);
+                }
+
+                stream.WriteInt32(record.CommandBindings.Count);
+                foreach (TDialogCommandBindingRecord command in record.CommandBindings)
+                {
+                    stream.WriteInt32(command.CommandId);
+                    stream.WriteBoolean(command.TargetControlId is not null);
+                    if (command.TargetControlId is not null)
+                    {
+                        stream.WriteString(command.TargetControlId);
+                    }
+                    stream.WriteString(command.Meaning);
+                    stream.WriteString(command.KeyboardTrigger);
+                }
+            });
+    }
+
+    private static void ValidateResourceRecord(TDialogDescriptionRecord record)
+    {
+        if (record.FormatVersion != PersistedDialogRepresentation.CurrentFormatVersion || record.RuntimeStateIncluded)
+        {
+            throw new InvalidDataException("Dialog resource version or runtime-state flag is invalid.");
+        }
+
+        if (record.Controls.Count > MaxItems || record.NavigationOrder.Count > MaxItems || record.CommandBindings.Count > MaxItems)
+        {
+            throw new InvalidDataException("Dialog resource item limit exceeded.");
+        }
+    }
+
+    private static int ReadStreamCount(ipstream stream, string name)
+    {
+        int count = stream.ReadInt32();
+        if (count is < 0 or > MaxItems)
+        {
+            throw new InvalidDataException($"Invalid dialog {name} count '{count}'.");
+        }
+        return count;
+    }
+
     private static int ReadCount(TBinaryArchiveReader reader, string name)
     {
         int count = reader.ReadInt32();

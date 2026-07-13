@@ -21,6 +21,14 @@ public class TDialog : TGroup
     private bool _running;
 
     /// <summary>
+    /// Das letzte Ergebnis einer bestätigenden Inhaltsvalidierung.
+    ///
+    /// The latest result of affirmative content validation.
+    /// </summary>
+    public TValidationResult LastValidationResult { get; private set; } =
+        TValidationResult.Accepted(TValidationPhase.Acceptance);
+
+    /// <summary>
     /// Erstellt einen neuen Dialog.
     ///
     /// Creates a new dialog.
@@ -89,6 +97,11 @@ public class TDialog : TGroup
     /// <param name="command">Die Rückgabe-Command-ID. / The command ID to return.</param>
     public void CloseDialog(ushort command)
     {
+        if (!IsCompletionCommand(command))
+        {
+            return;
+        }
+
         if (!Valid(command))
         {
             return;
@@ -120,19 +133,55 @@ public class TDialog : TGroup
 
     /// <summary>
     /// Validierungshook: Gibt <c>true</c> zurück, wenn der Dialog mit der angegebenen Befehl-ID
-    /// geschlossen werden darf. Abgeleitete Klassen überschreiben diese Methode, um ungültige
-    /// Zustände zu verhindern. Die Standardimplementierung erlaubt immer das Schließen.
+    /// geschlossen werden darf. Cancel überspringt die Inhaltsvalidierung; bestätigende
+    /// Commands prüfen Kinder in stabiler Reihenfolge und fokussieren das erste ablehnende Ziel.
     ///
     /// Validation hook: returns <c>true</c> when the dialog may be closed with the given command ID.
     /// Derived classes override this method to prevent invalid state closure.
-    /// The default implementation always allows closing.
+    /// The default implementation bypasses content validation for Cancel and validates
+    /// children in stable order for affirmative commands, focusing the first rejection.
     /// </summary>
     /// <param name="command">Die Befehl-ID, mit der der Dialog geschlossen werden soll. / The command ID used to close the dialog.</param>
     /// <returns>
     /// <c>true</c>, wenn das Schließen erlaubt ist; <c>false</c>, um es zu verhindern.
     /// <c>true</c> to allow closing; <c>false</c> to prevent it.
     /// </returns>
-    protected virtual bool Valid(ushort command) => true;
+    protected virtual bool Valid(ushort command)
+    {
+        if (command == ShellCommandIds.cmCancel)
+        {
+            LastValidationResult = TValidationResult.Accepted(TValidationPhase.Acceptance);
+            return true;
+        }
+
+        LastValidationResult = base.Validate(TValidationPhase.Acceptance);
+        if (LastValidationResult.IsValid)
+        {
+            return true;
+        }
+
+        if (LastValidationResult.Target is not null)
+        {
+            _ = TryFocusDescendant(LastValidationResult.Target);
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Bestimmt, ob ein Command den Dialog beenden darf. Abgeleitete Dialoge
+    /// können den begrenzten Satz explizit erweitern.
+    ///
+    /// Determines whether a command may complete the dialog. Derived dialogs may
+    /// explicitly extend the bounded set.
+    /// </summary>
+    /// <param name="command">Die zu prüfende Command-ID. / The command ID to classify.</param>
+    /// <returns><c>true</c> für einen Completion-Command; andernfalls <c>false</c>. / <c>true</c> for a completion command; otherwise <c>false</c>.</returns>
+    protected virtual bool IsCompletionCommand(ushort command) =>
+        command is ShellCommandIds.cmOK
+            or ShellCommandIds.cmCancel
+            or ShellCommandIds.cmYes
+            or ShellCommandIds.cmNo;
 
     /// <summary>
     /// Zeichnet Rahmen, Titel und Kind-Controls und kopiert den Dialog in den Owner-Puffer.
@@ -225,8 +274,11 @@ public class TDialog : TGroup
 
         if (@event.What == TEventKind.Command)
         {
-            CloseDialog(@event.Message.Command);
-            @event.Clear(this);
+            if (IsCompletionCommand(@event.Message.Command))
+            {
+                CloseDialog(@event.Message.Command);
+                @event.Clear(this);
+            }
         }
     }
 

@@ -32,6 +32,8 @@ Auto-generated from all feature plans. Last updated: 2026-07-13
 - repository-owned JSON and Markdown evidence; external Free Vision worktree under `/tmp`, never tracked (024-tv203-freevision-conformance-audit)
 - C# / .NET 10 + existing `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, MSTest; no new package (025-core-runtime-conformance-hardening)
 - in-process state only; audit JSON and Markdown evidence are repository-owned documentation (025-core-runtime-conformance-hardening)
+- C# with latest language version on .NET 10 + Existing `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization`; no new package or runtime dependency (026-component-data-conformance-hardening)
+- Existing bounded binary archive and `TResourceFile`; controlled temporary filesystem metadata for file-dialog proofs (026-component-data-conformance-hardening)
 
 - C# `latest` on .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, `TuiVision.Compatibility`; MSTest; Coverlet; docfx; wave-1 example projects under `examples/` (007-port-wave1-examples — Wave 1 delivered)
 
@@ -64,9 +66,9 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ## Recent Changes
+- 026-component-data-conformance-hardening: Added C# with latest language version on .NET 10 + Existing `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization`; no new package or runtime dependency
 - 025-core-runtime-conformance-hardening: Added C# / .NET 10 + existing `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, MSTest; no new package
 - 024-tv203-freevision-conformance-audit: Added C# / .NET 10 for durable test-only validation; Markdown and JSON for evidence + existing framework assemblies, MSTest, `System.Text.Json`, Git, official pinned FPC source checkout
-- 021-terminal-charset-hardening: Added C# 14 on .NET 10 + Existing `TuiVision.Core`, `TuiVision.Drivers.Console`, `TuiVision.Controls`, and reviewed `TuiVision.Compatibility` key translation; no new packages
 
 
 <!-- MANUAL ADDITIONS START -->
@@ -159,12 +161,13 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 ### 025-core-runtime-conformance-hardening
 - Current implementation status: all nine `Core025` findings are implemented and proven; final evidence is in `specs/025-core-runtime-conformance-hardening/pr-evidence.md`.
 - `F001`-`F009` close concrete event kinds, focus and group state, idle lifecycle, desktop stack, modal/close, shared command state, real keyboard ingress, and bounded generic drag through real-path red/green proof.
-- Feature-024 resolution metadata records exactly nine non-documentation-only closures while preserving `F010`-`F013`, Feature 026/028, and Wave-5/Wave-6 gates.
-- The next prioritized intake after merge and synchronized `main` is `Lastenheft_11_Component-Data-Conformance-Hardening.md` for Feature 026.
+- Feature-024 resolution metadata records exactly 13 non-documentation-only closures from Features 025 and 026 while preserving the Feature-028 and Wave-5/Wave-6 gates.
+- The next prioritized intake after Feature 026 merges and `main` is synchronized is `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` for Feature 028.
 
 ### 026-component-data-conformance-hardening
-- This intake starts only after Feature 025 merges and main is synchronized, using `Lastenheft_11_Component-Data-Conformance-Hardening.md`.
-- Scope is exactly `F010`-`F013`: dialog completion and child validation, input-line validator integration, mode-aware file selection, and safe named UI-resource composition.
+- Current implementation status: all four `ComponentData026` findings are implemented and proven; final evidence is in `specs/026-component-data-conformance-hardening/pr-evidence.md`.
+- `F010`-`F013` close dialog completion/child validation, phase-aware input validation, mode-aware typed file outcomes, and allowlisted named UI-resource composition through real-path red/green proof.
+- Feature-024 metadata now contains 139 maintained source files, 211 exported public types, and exactly 13 closed finding resolutions; Wave 5 and Wave 6 remain blocked through Feature 028.
 
 ### 028-pre-wave5-wave6-conformance-closure
 - This evidence-only closure starts only after Features 025 and 026 merge, using `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md`.

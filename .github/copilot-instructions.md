@@ -279,12 +279,13 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 ### 025-core-runtime-conformance-hardening
 - Current implementation status: all nine `Core025` findings are implemented and proven; final evidence is in `specs/025-core-runtime-conformance-hardening/pr-evidence.md`.
 - `F001`-`F009` close concrete event kinds, focus and group state, idle lifecycle, desktop stack, modal/close, shared command state, real keyboard ingress, and bounded generic drag through real-path red/green proof.
-- Feature-024 resolution metadata records exactly nine non-documentation-only closures while preserving `F010`-`F013`, Feature 026/028, and Wave-5/Wave-6 gates.
-- The next prioritized intake after merge and synchronized `main` is `Lastenheft_11_Component-Data-Conformance-Hardening.md` for Feature 026.
+- Feature-024 resolution metadata records exactly 13 non-documentation-only closures from Features 025 and 026 while preserving the Feature-028 and Wave-5/Wave-6 gates.
+- The next prioritized intake after Feature 026 merges and `main` is synchronized is `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` for Feature 028.
 
 ### 026-component-data-conformance-hardening
-- This intake starts only after Feature 025 merges and main is synchronized, using `Lastenheft_11_Component-Data-Conformance-Hardening.md`.
-- Scope is exactly `F010`-`F013`: dialog completion and child validation, input-line validator integration, mode-aware file selection, and safe named UI-resource composition.
+- Current implementation status: all four `ComponentData026` findings are implemented and proven; final evidence is in `specs/026-component-data-conformance-hardening/pr-evidence.md`.
+- `F010`-`F013` close dialog completion/child validation, phase-aware input validation, mode-aware typed file outcomes, and allowlisted named UI-resource composition through real-path red/green proof.
+- Feature-024 metadata now contains 139 maintained source files, 211 exported public types, and exactly 13 closed finding resolutions; Wave 5 and Wave 6 remain blocked through Feature 028.
 
 ### 028-pre-wave5-wave6-conformance-closure
 - This evidence-only closure starts only after Features 025 and 026 merge, using `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md`.
@@ -561,8 +562,7 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 *Standard preset set: `security-governance` v0.6.0 prio 10, `architecture-governance` v0.5.0 prio 20, `isaqb-architecture-governance` v0.2.0 prio 30, `a11y-governance` v0.4.0 prio 40, `cross-platform-governance` v0.2.0 prio 50, and `agent-parity-governance` v0.3.0 prio 60. `a11y-governance` v0.4.0 adds didactic inline-code-comment governance for new or changed non-trivial logic. `architecture-governance` v0.5.0 adds conditional `BSI C3A` cloud-autonomy evidence and `BSI C5` cloud-compliance assurance evidence for cloud-service selection, provider dependencies, audit/assurance status, shared responsibility, and operational evidence. `security-governance` v0.6.0 keeps conditional `AI-SBOM` evidence, language-specific secure-coding profiles, and regulatory applicability screening for NIS2, CRA, EU AI Act, and DORA: development-tool-only AI usage is `N/A`, AI runtime/product components require G7/BSI AI-SBOM cluster evidence, and private training projects record regulatory `N/A` when no regulated scope exists. All six presets now include audit-ready Spec-Kit run evidence: `Applicable` / `N/A` / `Open`, rationale, evidence path, reviewer, residual risk, and follow-up must be documented for the current Spec-Kit run. All six presets are in the `github/spec-kit` community catalog as of 2026-05-04 and are also published under `https://github.com/hindermath/spec-kit-preset-*`. New Level-2 projects should install the applicable subset; C#/.NET Level-2 projects default to all six unless a justified exception is documented. Commit `.specify/presets/` and generated agent command updates when presets are project policy, but never commit `.specify/presets/.cache/`. Verify installs with `specify preset list`, `specify preset info`, and where relevant `specify preset resolve`. Improve presets in the home-baseline scaffold first, propagate to standalone preset repos, then commit, push, and smoke-test via GitHub ZIP URL. Preset-rule changes and preset version/priority changes require reviewing constitution, README tables/install snippets, all agent guidance files, and relevant templates together. Community/catalog coordination happens in `github/spec-kit#2362`.*
 
 <!-- SPECKIT START -->
-For additional context about technologies to be used, project structure,
-shell commands, and other important information, read
-`Lastenheft_Abarbeitungsreihenfolge.md` and the next binding intake
-`Lastenheft_10_Core-Runtime-Conformance-Hardening.md`.
+For the next feature context, read the binding intake
+`Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` and the Feature-024
+pre-wave gate before starting Feature 028.
 <!-- SPECKIT END -->

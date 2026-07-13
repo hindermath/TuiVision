@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-07-13 (aktualisiert einschließlich Feature 025 und Preset v0.1.2)
+Stand: 2026-07-13 (aktualisiert einschließlich Feature 026 und Preset v0.1.2)
 
 Aktueller Zusatz: Feature 016 dokumentiert 157/157 Secure-Development-
 Kontrollen, sechs behobene Medium-Funde, 498/498 grüne Release-Tests und eine
@@ -43,9 +43,10 @@ Feature 024 bleibt als ursprünglicher Auditlauf abgeschlossen. Eine spätere
 Verbraucherprüfung gegen `TVDEMOS/` und `TVFM/` hat die Zukunftsentscheidung als
 Revision 2 mit 13 Findings superseded. Borland und `tv203s/` bleiben primär;
 Free Vision bleibt die gepinnte sekundäre Gegenprüfung. Feature 025 schließt
-seine neun Core-Findings durch reale Red-/Green-Pfade. Der nächste Intake ist
-Lastenheft 11 / Feature 026; Feature 028 bleibt der unabhängige Abschluss vor
-Wave 5 und Wave 6.
+seine neun Core-Findings durch reale Red-/Green-Pfade. Feature 026 schließt die
+vier Component-/Data-Findings mit hierarchischer Validierung, sicheren Datei-
+entscheidungen und allowlist-basierter UI-Persistenz. Feature 028 bleibt der
+unabhängige Abschluss vor Wave 5 und Wave 6 und ist der nächste Intake.
 
 ## Zweck und Pflege
 
@@ -690,6 +691,7 @@ fortgeschrieben.
 | 2026-07-12 | Audit-Revision 2 und Intake-Vorbereitung für 025, 026 und 028 | Eine kritische Verbraucherprüfung gegen die read-only Quellen `TVDEMOS/` und `TVFM/` korrigiert die Zukunftsentscheidung, ohne die historischen 024-/027-Läufe umzuschreiben. Die 48 Verträge stehen nun bei 7 `Aligned`, 27 `IntentionalModernization`, 1 `ConsciouslyOmitted`, 8 `BehavioralDrift` und 5 `EvidenceGap`; neun Findings gehören verbindlich zu `Core025`, vier zu `ComponentData026`. Der Validator prüft beidseitige Inventarrelationen, geschlossene Finding-Felder und existierende Source-Evidence. Drei neue Lastenhefte schreiben 025 -> 026 -> 028 fest; nächster Intake ist Lastenheft 10, heute wurde kein autonomer Lauf gestartet. Der Vor-Statistik-Snapshot umfasst `+0/-0` Produktionscode, `+138/-12` Testvalidator, `+1852/-277` Dokumentation/Evidence/Guidance und nur ausgleichende Versionsmetadaten, insgesamt `+1993/-292` beziehungsweise 1701 Nettozeilen. Konservative Manualreferenz für 1993 hinzugefügte oder aktualisierte Zeilen: `24,9` Tage beziehungsweise `194,3` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `15,9` Tage beziehungsweise `124,4` Stunden bei 125 Zeilen/Tag. Statische Integrität, Format und targeted Auditvalidator 11/11 sind grün; DocFX besteht mit 0 Warnungen/0 Fehlern und Playwright/Axe mit 2/2. |
 | 2026-07-13 | `/speckit-autonomous` für `025-core-runtime-conformance-hardening` | Feature 025 schließt `F001` bis `F009` test-first: konkrete Event-Kinds, validator-eigenes Fokus-Veto, zustandsspezifische Group-Propagation, ein Pending-Slot mit Idle/CPU-Freigabe, Desktop-Stack-Operationen, sichtbares Close und owner-lokale Modalität, gemeinsamer Command-Kontext, kanonischer realer Keyboard-Ingress sowie eine begrenzte Pointer-/Tastatur-Drag-Session. Feature 024 enthält nun 127 moderne Source-Dateien, 192 öffentliche Typen und exakt neun nicht dokumentationsbasierte `Closed`-Resolutionen; `F010` bis `F013`, Feature 026/028 und beide Wave-Gates bleiben offen. Der Vor-Statistik-Snapshot umfasst `+1641/-150` Produktionscode, `+1237/-33` Tests, `+2598/-46` Dokumentation/Evidence/Guidance und `+5/-4` Metadaten, zusammen `+5481/-233` beziehungsweise 5248 Nettozeilen. Konservative Manualreferenz für 5481 hinzugefügte oder aktualisierte Zeilen: `68,5` Tage beziehungsweise `534,4` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `43,8` Tage beziehungsweise `342,0` Stunden bei 125 Zeilen/Tag. Das sichtbare Arbeitsfenster ist der autonome Lauf am 2026-07-13; `68,5x` und `43,8x` beschreiben überprüfbare Lieferdichte, keine Stoppuhrzeit. Lokale Abschlussgates und Remote-Evidence werden nach dieser Statistikzeile in derselben Feature-Evidence ergänzt. |
 | 2026-07-13 | `autonomous-run-governance` v0.1.2 veröffentlicht und adoptiert | Die zwei Feature-025-Erkenntnisse zur exakten Staging-Kandidatenprüfung und zur Zuordnung jedes Acceptance-Gates zu wirklich ausgeführtem Workflow, Job, Runner beziehungsweise Plattform und Befehl sind portabel produktisiert. Home-Baseline-PR #61 und öffentlicher Preset-PR #2 wurden gemergt; Tag/Release v0.1.2 und das GitHub-ZIP mit SHA-256 `6e401289...e2d0` sind geprüft. TuiVision installiert die Version aus dem Tag-ZIP bei Priorität 70; alle sieben Presets bleiben aufgelöst, Codex/Antigravity, Claude, Copilot und OpenCode zeigen beide Commands je Oberfläche genau einmal, und der TuiVision-Codex-Override bleibt bytegleich. Der Vor-Statistik-Snapshot umfasst `+292/-29`, also 263 Nettozeilen in Preset, Registry, generierten Agent-Flächen, Guidance, Template und Evidence ohne Runtime-, Test-, Paket-, Beispiel- oder `tv203s/`-Änderung. Konservative Manualreferenz für 292 hinzugefügte oder aktualisierte Zeilen: `3,7` Tage beziehungsweise `28,5` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `2,3` Tage beziehungsweise `18,2` Stunden bei 125 Zeilen/Tag. `specify check`, Tag-ZIP-/Payload-/Resolve-/Eindeutigkeits-/Override- und Agentenparitätsprüfung sind grün; DocFX, Playwright/Axe, Lynx, Diff und Secrets schließen den Adoptions-PR ab. |
+| 2026-07-13 | `/speckit-autonomous` für `026-component-data-conformance-hardening` | Feature 026 schließt `F010` bis `F013` test-first: Dialoge klassifizieren nur echte Abschlussbefehle und validieren hierarchisch; `TInputLine` erhält phasenbezogene, zustandserhaltende Validierung; Dateidialoge liefern mode-spezifische, atomare Entscheidungen ohne versteckte Datei-I/O; Menü-, StatusLine- und Dialogbeschreibungen werden ausschließlich über geschlossene primitive Records und allowlist-basierte Factories rekonstruiert. Feature 024 enthält nun 139 moderne Source-Dateien, 211 öffentliche Typen und exakt 13 eindeutige Resolutionen; Wave 5 und Wave 6 bleiben bis Feature 028 blockiert. Der Vor-Statistik-Snapshot umfasst `+1761/-97` Produktionscode, `+802/-26` Tests, `+2539/-60` Dokumentation/Evidence/Guidance und `+4/-4` Metadaten, zusammen `+5106/-187` beziehungsweise 4919 Nettozeilen. Konservative Manualreferenz für 5106 hinzugefügte oder aktualisierte Zeilen: `63,8` Tage beziehungsweise `497,8` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `40,8` Tage beziehungsweise `318,6` Stunden bei 125 Zeilen/Tag. Lokale Abnahme: 748/748 Release- und Coverage-Tests; Coverage Core 92,96 %, Controls 86,66 %, Serialization 90,01 %, Compatibility 80,55 % und Drivers.Console 89,18 %; DocFX, Playwright/Axe und UTF-8-Lynx werden auf dem finalen Dokumentstand nachgewiesen. Der nächste Intake ist ausschließlich `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md`. |
 
 ## Gesamtstatistik
 
@@ -699,21 +701,21 @@ nächsten Statistiklauf eine dokumentierte Momentaufnahme.
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | 256961 Zeilen |
-| Produktions- und Testcode zusammen | 49140 Zeilen (19.1 %) |
-| Dokumentationsanteil | 207820 Zeilen (80.9 %) |
-| Spec-Kit-Anteil innerhalb der Doku | 53857 Zeilen (25.9 %) |
-| Zentrale Governance-/Agent-Dateien | 3844 Zeilen (1.8 % der Doku) |
+| Artefaktbasis gesamt | 261879 Zeilen |
+| Produktions- und Testcode zusammen | 51580 Zeilen (19.7 %) |
+| Dokumentationsanteil | 210299 Zeilen (80.3 %) |
+| Spec-Kit-Anteil innerhalb der Doku | 56143 Zeilen (26.7 %) |
+| Zentrale Governance-/Agent-Dateien | 3853 Zeilen (1.8 % der Doku) |
 | Projektgebundene Agent-Skills | 2485 Zeilen (1.2 % der Doku) |
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-13 |
-| Git-Commits / sichtbare Aktivtage | 506 / 70 |
-| Gesamtzeilen pro sichtbarem Aktivtag | 3670.9 |
-| Gesamtzeilen pro Commit | 507.8 |
-| Konservative Einzelentwickler-Untergrenze | 3212.0 Arbeitstage / 25053.7 Stunden |
-| Thorsten-Solo-Untergrenze | 2055.7 Arbeitstage / 16034.4 Stunden |
-| Kleines 3er-Team mit Koordinationsaufschlag | 1284.8 Arbeitstage |
-| Repo-Speedup gegen 80-Zeilen-Referenz | 45.9x |
-| Repo-Speedup gegen Thorsten-Referenz | 29.4x |
+| Git-Commits / sichtbare Aktivtage | 516 / 70 |
+| Gesamtzeilen pro sichtbarem Aktivtag | 3741.1 |
+| Gesamtzeilen pro Commit | 507.5 |
+| Konservative Einzelentwickler-Untergrenze | 3273.5 Arbeitstage / 25533.2 Stunden |
+| Thorsten-Solo-Untergrenze | 2095.0 Arbeitstage / 16341.2 Stunden |
+| Kleines 3er-Team mit Koordinationsaufschlag | 1309.4 Arbeitstage |
+| Repo-Speedup gegen 80-Zeilen-Referenz | 46.8x |
+| Repo-Speedup gegen Thorsten-Referenz | 29.9x |
 
 Die hohe Dokumentationsquote enthält die umfangreiche Secure-Development-,
 Governance- und Spec-Kit-Basis. Das autonome Runbook und der neue
@@ -735,16 +737,17 @@ personal time.
 Feature 027 remains valid historical closure evidence. Consumer Review Revision
 2 adds stronger real-path and consumer-completeness criteria, routes 13 findings
 to Features 025 and 026, and requires Feature 028 before Wave 5 or Wave 6.
-Feature 025 now closes its nine core findings while retaining Feature 026 and
-the independent Feature-028 gate.
+Feature 025 closes its nine core findings. Feature 026 closes the four
+component/data findings while retaining the independent Feature-028 gate as
+the sole next intake before either example wave.
 
 ### ASCII-Diagramme
 
 ```text
 Artefaktmix nach Snapshot (Zeilen)
-Produktion     | ####                          |  28940 | 11.3 %
-Tests          | ###                           |  20200 |  7.9 %
-Dokumentation  | ##############################| 207820 | 80.9 %
+Produktion     | ####                          |  30604 | 11.7 %
+Tests          | ###                           |  20976 |  8.0 %
+Dokumentation  | ##############################| 210299 | 80.3 %
 ```
 
 Die Balken verwenden dieselbe Skala. Die Zahlen bleiben der genaue,
@@ -797,6 +800,7 @@ Branch-/Phasenvolumen nach dokumentierter Netto-Basis (Zeilen)
 39 027c | #                    |    31
 40 024v2| ###                  |  1701
 41 025i | ######               |  5248
+42 026i | ######               |  4919
 ```
 
 Feature 017 kombiniert einen kleinen beispielinternen Runtime-Anteil mit einer
@@ -879,6 +883,10 @@ Feature 025 combines bounded runtime contracts, real-path red/green tests,
 machine-readable audit closure, public API documentation, and learner evidence
 without starting either example wave.
 
+Feature 026 combines hierarchical validation, state-preserving rejection,
+mode-aware file decisions, allowlisted UI-description persistence, and
+real-path red/green tests without starting either example wave.
+
 ```text
 Konservative Handarbeits-Referenz je dokumentierter Phase
 0 main  | #################    | 127.6 d
@@ -923,6 +931,7 @@ Konservative Handarbeits-Referenz je dokumentierter Phase
 39 027c | #                    |   0.3 d
 40 024v2| ###                  |  21.3 d
 41 025i | #########            |  65.6 d
+42 026i | ########             |  61.5 d
 ```
 
 Die Referenz rechnet den Netto-Phasenumfang mit 80 Zeilen pro Arbeitstag. Für
@@ -985,22 +994,24 @@ AGY125  | #                              |  0.6x
 024V2125| ###########                    | 15.9x
 025I-80 | ############################## | 68.5x
 025I125 | ###################            | 43.8x
+026I-80 | ############################   | 63.8x
+026I125 | ##################             | 40.8x
 ```
 
 Die 017-, AUTO-, 018-, 019-, 020-, 021-, 022-, 023-, ADOPT-, AGY- und
-024P-, 024I-, 024C-, 024R-, 027P-, 024V2- und 025I-Werte
+024P-, 024I-, 024C-, 024R-, 027P-, 024V2-, 025I- und 026I-Werte
 beziehen sich jeweils auf einen sichtbaren autonomen Arbeitstag. Sie
 beschreiben Lieferdichte, nicht die Dauer einzelner Denk-, Review-, CI- oder
 Wartephasen.
 
-The 017, AUTO, 018, 019, 020, 021, 022, 023, ADOPT, AGY, 024P, 024I, 024C, 024R, 027P, 024V2, and 025I values each use one
+The 017, AUTO, 018, 019, 020, 021, 022, 023, ADOPT, AGY, 024P, 024I, 024C, 024R, 027P, 024V2, 025I, and 026I values each use one
 visible autonomous workday. They describe delivery density, not the duration
 of individual thinking, review, CI, or waiting phases.
 
 ```text
 Vergleich Gesamtaufwand / sichtbares KI-Lieferfenster
-Erfahren    | ############################## | 3212.0 d
-Thorsten    | ###################            | 2055.7 d
+Erfahren    | ############################## | 3273.5 d
+Thorsten    | ###################            | 2095.0 d
 KI sichtbar | #                              |   70.0 d
 ```
 
@@ -1064,7 +1075,7 @@ adoption.
 ```text
 X/Y: Phasenvolumen 32..47 (Y ungefähr in Zeilen)
 10000 |    *                           |
- 5000 |                  *             |
+ 5000 |                  * *           |
  2000 |                *               |
  1000 |            *                   |
   400 |  *                             |
@@ -1081,11 +1092,11 @@ W steht für den Antigravity-Folgeabgleich, X für die Intake-Vorbereitung, Y f�
 die Implementierung, Z für den Closeout, a für die Retrospektive des
 Konformitätsaudits, b für die 027-Intake-Vorbereitung, c für die 027-Ausführung,
 d für deren Closeout, e für Audit-Revision 2 samt 025-/026-/028-Intake-
-Vorbereitung und f für Feature 025; die übrigen Slots bleiben für spätere
-Phasen frei.
+Vorbereitung, f für Feature 025 und g für Feature 026; die übrigen Slots
+bleiben für spätere Phasen frei.
 
 W represents the Antigravity follow-up, X the conformance-audit intake, Y its
 implementation, Z its closeout, a its retrospective, b the 027 intake
 preparation, c the 027 run, d its closeout, e Audit Revision 2 plus the
-025/026/028 intake preparation, and f Feature 025. The remaining slots stay
-free for later documented phases.
+025/026/028 intake preparation, f Feature 025, and g Feature 026. The remaining
+slots stay free for later documented phases.

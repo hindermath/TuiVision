@@ -93,6 +93,21 @@ public sealed class TFileList : TListBox
     public IReadOnlyList<string> Entries => _entries.AsReadOnly();
 
     /// <summary>
+    /// Gibt an, ob der letzte Refresh oder die letzte Pfadklassifikation
+    /// vollständig erfolgreich war.
+    ///
+    /// Indicates whether the latest refresh or path classification completed
+    /// successfully.
+    /// </summary>
+    public bool LastRefreshSucceeded { get; private set; } = true;
+
+    /// <summary>Der stabile Fehlercode des letzten Refresh. / The stable error code of the latest refresh.</summary>
+    public string? LastErrorCode { get; private set; }
+
+    /// <summary>Die text-first Fehlermeldung des letzten Refresh. / The text-first error message of the latest refresh.</summary>
+    public string? LastErrorMessage { get; private set; }
+
+    /// <summary>
     /// Laedt die Dateieintraege fuer einen Ordner und ein Filtermuster.
     ///
     /// Loads the file entries for a directory and a filter pattern.
@@ -101,27 +116,38 @@ public sealed class TFileList : TListBox
     /// <param name="wildcard">Das Wildcard-Muster. / The wildcard pattern.</param>
     public void Refresh(string directory, string wildcard)
     {
-        CurrentDirectory = Path.GetFullPath(directory);
-        Wildcard = string.IsNullOrWhiteSpace(wildcard) ? "*" : wildcard;
-        _entries.Clear();
-        List!.Clear();
-
-        IEnumerable<string> files;
+        string candidateDirectory;
+        string candidateWildcard = string.IsNullOrWhiteSpace(wildcard) ? "*" : wildcard;
+        string[] files;
         try
         {
-            files = Directory.EnumerateFiles(CurrentDirectory, Wildcard).OrderBy(path => path, StringComparer.Ordinal).ToArray();
+            candidateDirectory = Path.GetFullPath(directory);
+            files = Directory.EnumerateFiles(candidateDirectory, candidateWildcard)
+                .OrderBy(path => path, StringComparer.Ordinal)
+                .ToArray();
         }
-        catch (Exception exception) when (exception is IOException or UnauthorizedAccessException or DirectoryNotFoundException)
+        catch (Exception exception) when (IsPathFailure(exception))
         {
+            LastRefreshSucceeded = false;
+            LastErrorCode = exception is ArgumentException or NotSupportedException ? "invalid-filter" : "directory-unavailable";
+            LastErrorMessage = $"Dateiliste nicht verfügbar: {exception.GetType().Name}. / File list unavailable: {exception.GetType().Name}.";
             CurrentInfo = new TFileSelectionInfo(
-                CurrentDirectory,
+                directory,
                 TFileEntryKind.Missing,
                 false,
                 null,
                 null,
-                $"File list could not be read: {exception.GetType().Name}.");
+                LastErrorMessage);
             return;
         }
+
+        CurrentDirectory = candidateDirectory;
+        Wildcard = candidateWildcard;
+        LastRefreshSucceeded = true;
+        LastErrorCode = null;
+        LastErrorMessage = null;
+        _entries.Clear();
+        List!.Clear();
 
         foreach (string path in files)
         {
@@ -168,10 +194,23 @@ public sealed class TFileList : TListBox
     /// <param name="path">Der zu pruefende Pfad. / The path to inspect.</param>
     public void SetTypedPath(string path)
     {
-        string resolved = Path.IsPathRooted(path)
-            ? Path.GetFullPath(path)
-            : Path.GetFullPath(Path.Combine(CurrentDirectory, path));
-        UpdateCurrentInfo(resolved);
+        try
+        {
+            string resolved = Path.IsPathRooted(path)
+                ? Path.GetFullPath(path)
+                : Path.GetFullPath(Path.Combine(CurrentDirectory, path));
+            LastRefreshSucceeded = true;
+            LastErrorCode = null;
+            LastErrorMessage = null;
+            UpdateCurrentInfo(resolved);
+        }
+        catch (Exception exception) when (IsPathFailure(exception))
+        {
+            LastRefreshSucceeded = false;
+            LastErrorCode = "invalid-path";
+            LastErrorMessage = $"Pfad ist ungültig: {exception.GetType().Name}. / Path is invalid: {exception.GetType().Name}.";
+            CurrentInfo = new TFileSelectionInfo(path, TFileEntryKind.Missing, false, null, null, LastErrorMessage);
+        }
     }
 
     /// <summary>
@@ -226,4 +265,10 @@ public sealed class TFileList : TListBox
             return new TFileSelectionInfo(path, TFileEntryKind.Directory, Directory.Exists(path), null, null, $"Directory metadata could not be read: {exception.GetType().Name}.");
         }
     }
+
+    private static bool IsPathFailure(Exception exception) =>
+        exception is IOException
+            or UnauthorizedAccessException
+            or ArgumentException
+            or NotSupportedException;
 }

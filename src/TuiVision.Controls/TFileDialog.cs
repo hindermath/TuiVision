@@ -83,6 +83,15 @@ public sealed class TFileDialog : TDialog
     public TFileDecisionResult LastDecision { get; private set; } = TFileDecisionResult.Canceled();
 
     /// <summary>
+    /// Das letzte mode-abhängige Ergebnis, einschließlich Navigation, Filter und
+    /// text-first Ablehnung.
+    ///
+    /// The latest mode-aware outcome, including navigation, filter, and text-first
+    /// rejection.
+    /// </summary>
+    public TFileDialogOutcome LastOutcome { get; private set; }
+
+    /// <summary>
     /// Der synchronisierte Flow-Zustand.
     ///
     /// The synchronized flow state.
@@ -126,9 +135,38 @@ public sealed class TFileDialog : TDialog
     /// <param name="directory">Der Zielordner. / The target directory.</param>
     public void ChangeDirectory(string directory)
     {
-        Directories.Refresh(directory);
-        Files.Refresh(directory, Files.Wildcard);
-        SyncFlow(StandardDialogInteractionState.Active);
+        try
+        {
+            string normalized = Path.GetFullPath(directory);
+            if (!Directory.Exists(normalized))
+            {
+                SetRejected("directory-missing", "Verzeichnis ist nicht verfügbar. / Directory is unavailable.", normalized);
+                return;
+            }
+
+            Directories.Refresh(normalized);
+            Files.Refresh(normalized, Files.Wildcard);
+            if (!Files.LastRefreshSucceeded)
+            {
+                SetRejected(Files.LastErrorCode!, Files.LastErrorMessage!, normalized);
+                return;
+            }
+
+            LastOutcome = new TFileDialogOutcome(
+                TFileDialogOutcomeKind.Navigation,
+                Mode,
+                normalized,
+                Files.Wildcard,
+                Files.CurrentInfo,
+                null,
+                null,
+                false);
+            SyncFlow(StandardDialogInteractionState.Active);
+        }
+        catch (Exception exception) when (IsPathFailure(exception))
+        {
+            SetRejected("invalid-path", $"Pfad ist ungültig: {exception.GetType().Name}. / Path is invalid: {exception.GetType().Name}.", directory);
+        }
     }
 
     /// <summary>
@@ -140,6 +178,21 @@ public sealed class TFileDialog : TDialog
     public void ChangeFilter(string wildcard)
     {
         Files.Refresh(Files.CurrentDirectory, wildcard);
+        if (!Files.LastRefreshSucceeded)
+        {
+            SetRejected(Files.LastErrorCode!, Files.LastErrorMessage!, Files.CurrentDirectory);
+            return;
+        }
+
+        LastOutcome = new TFileDialogOutcome(
+            TFileDialogOutcomeKind.Filter,
+            Mode,
+            Files.CurrentDirectory,
+            Files.Wildcard,
+            Files.CurrentInfo,
+            null,
+            null,
+            false);
         SyncFlow(StandardDialogInteractionState.Active);
     }
 
@@ -153,6 +206,12 @@ public sealed class TFileDialog : TDialog
     {
         PathInput.Data = path;
         Files.SetTypedPath(path);
+        if (!Files.LastRefreshSucceeded)
+        {
+            SetRejected(Files.LastErrorCode!, Files.LastErrorMessage!, path);
+            return;
+        }
+
         SyncFlow(StandardDialogInteractionState.Validated);
     }
 
@@ -179,6 +238,15 @@ public sealed class TFileDialog : TDialog
         string newDirectory = Directories.NavigateToFocusedDirectory();
         Files.Refresh(newDirectory, Files.Wildcard);
         PathInput.Data = newDirectory;
+        LastOutcome = new TFileDialogOutcome(
+            TFileDialogOutcomeKind.Navigation,
+            Mode,
+            newDirectory,
+            Files.Wildcard,
+            Files.CurrentInfo,
+            null,
+            null,
+            false);
         SyncFlow(StandardDialogInteractionState.Validated);
     }
 
@@ -220,16 +288,26 @@ public sealed class TFileDialog : TDialog
     /// <returns>Das Dialogergebnis. / The dialog result.</returns>
     public TFileDecisionResult ConfirmDecision()
     {
-        string target = string.IsNullOrWhiteSpace(PathInput.Data)
-            ? Files.CurrentInfo.ResolvedPath
-            : PathInput.ResolvePath(Files.CurrentDirectory) ?? Files.CurrentInfo.ResolvedPath;
-        PathInput.Data = target;
-        Files.SetTypedPath(target);
-        PathInput.CommitToHistory();
-        LastDecision = CreateDecision(target);
-        SyncFlow(StandardDialogInteractionState.Confirmed);
-        CloseDialog(ShellCommandIds.cmOK);
+        _ = ConfirmOutcome();
         return LastDecision;
+    }
+
+    /// <summary>
+    /// Klassifiziert und bestätigt das aktuelle Ziel ohne Dateiinhalt zu lesen
+    /// oder eine Dateioperation auszuführen.
+    ///
+    /// Classifies and confirms the current target without reading file content or
+    /// executing a file operation.
+    /// </summary>
+    /// <returns>Das mode-abhängige Ergebnis. / The mode-aware outcome.</returns>
+    public TFileDialogOutcome ConfirmOutcome()
+    {
+        string rawTarget = string.IsNullOrWhiteSpace(PathInput.Data)
+            ? Files.CurrentInfo.ResolvedPath
+            : PathInput.Data;
+        TFileDialogOutcome outcome = ClassifyTarget(rawTarget, forceDirectory: false);
+        PublishConfirmation(outcome);
+        return LastOutcome;
     }
 
     /// <summary>
@@ -240,10 +318,31 @@ public sealed class TFileDialog : TDialog
     /// <returns>Das Abbruchergebnis. / The cancellation result.</returns>
     public TFileDecisionResult CancelDecision()
     {
+        _ = CancelOutcome();
+        return LastDecision;
+    }
+
+    /// <summary>
+    /// Bricht die Auswahl mit einem typisierten Ergebnis ab.
+    ///
+    /// Cancels selection with a typed outcome.
+    /// </summary>
+    /// <returns>Das Abbruchergebnis. / The cancellation outcome.</returns>
+    public TFileDialogOutcome CancelOutcome()
+    {
+        LastOutcome = new TFileDialogOutcome(
+            TFileDialogOutcomeKind.Canceled,
+            Mode,
+            null,
+            Files.Wildcard,
+            default,
+            null,
+            null,
+            false);
         LastDecision = TFileDecisionResult.Canceled();
         SyncFlow(StandardDialogInteractionState.Canceled);
         CloseDialog(ShellCommandIds.cmCancel);
-        return LastDecision;
+        return LastOutcome;
     }
 
     /// <summary>
@@ -255,36 +354,143 @@ public sealed class TFileDialog : TDialog
     public TFileDecisionResult ConfirmDirectorySelection()
     {
         string target = Directories.SelectedDirectory;
-        PathInput.Data = target;
-        Files.SetTypedPath(target);
-        PathInput.CommitToHistory();
-        LastDecision = new TFileDecisionResult(
-            FileDecisionKind.Select,
-            FileSelectionTargetKind.Directory,
-            target,
-            Files.Wildcard,
-            Files.CurrentInfo,
-            false);
-        SyncFlow(StandardDialogInteractionState.Confirmed);
-        CloseDialog(ShellCommandIds.cmOK);
+        TFileDialogOutcome outcome = ClassifyTarget(target, forceDirectory: true);
+        PublishConfirmation(outcome);
         return LastDecision;
     }
 
-    private TFileDecisionResult CreateDecision(string target)
+    private TFileDialogOutcome ClassifyTarget(string rawTarget, bool forceDirectory)
     {
-        TFileSelectionInfo info = Files.CurrentInfo;
-        FileDecisionKind kind = Mode switch
+        string? target;
+        try
         {
-            TFileDialogMode.Open => FileDecisionKind.Open,
-            TFileDialogMode.Save or TFileDialogMode.SaveTarget => FileDecisionKind.SaveTarget,
-            _ => FileDecisionKind.Select
+            target = PathInput.ResolvePath(Files.CurrentDirectory);
+            if (!string.Equals(rawTarget, PathInput.Data, StringComparison.Ordinal))
+            {
+                target = Path.GetFullPath(rawTarget);
+            }
+        }
+        catch (Exception exception) when (IsPathFailure(exception))
+        {
+            return Rejected("invalid-path", $"Pfad ist ungültig: {exception.GetType().Name}. / Path is invalid: {exception.GetType().Name}.", rawTarget, default);
+        }
+
+        if (string.IsNullOrWhiteSpace(target))
+        {
+            return Rejected("invalid-path", "Pfad ist ungültig. / Path is invalid.", rawTarget, default);
+        }
+
+        Files.SetTypedPath(target);
+        TFileSelectionInfo info = Files.CurrentInfo;
+        if (!Files.LastRefreshSucceeded)
+        {
+            return Rejected(Files.LastErrorCode!, Files.LastErrorMessage!, target, info);
+        }
+
+        if (forceDirectory || Mode == TFileDialogMode.SelectDirectory)
+        {
+            return info.Kind == TFileEntryKind.Directory
+                ? Accepted(TFileDialogOutcomeKind.SelectionAccepted, target, info, false)
+                : Rejected("directory-required", "Ein vorhandenes Verzeichnis ist erforderlich. / An existing directory is required.", target, info);
+        }
+
+        return Mode switch
+        {
+            TFileDialogMode.Open => info.Kind == TFileEntryKind.File
+                ? Accepted(TFileDialogOutcomeKind.OpenAccepted, target, info, false)
+                : Rejected("open-target-missing", "Eine vorhandene Datei ist zum Öffnen erforderlich. / An existing file is required for opening.", target, info),
+            TFileDialogMode.Save or TFileDialogMode.SaveTarget => ClassifySaveTarget(target, info),
+            TFileDialogMode.Select => info.Exists
+                ? Accepted(TFileDialogOutcomeKind.SelectionAccepted, target, info, false)
+                : Rejected("selection-missing", "Das Auswahlziel ist nicht vorhanden. / The selection target does not exist.", target, info),
+            _ => Rejected("mode-unsupported", "Der Dateidialogmodus wird nicht unterstützt. / The file-dialog mode is unsupported.", target, info)
         };
-        FileSelectionTargetKind targetKind = Mode == TFileDialogMode.SelectDirectory || info.Kind == TFileEntryKind.Directory
-            ? FileSelectionTargetKind.Directory
-            : FileSelectionTargetKind.File;
-        bool requiresCallerDecision = kind == FileDecisionKind.SaveTarget && File.Exists(target);
-        return new TFileDecisionResult(kind, targetKind, target, Files.Wildcard, info, requiresCallerDecision);
     }
+
+    private TFileDialogOutcome ClassifySaveTarget(string target, TFileSelectionInfo info)
+    {
+        if (info.Kind == TFileEntryKind.Directory)
+        {
+            return Rejected("file-required", "Ein Dateiziel ist erforderlich. / A file target is required.", target, info);
+        }
+
+        if (info.Kind == TFileEntryKind.File)
+        {
+            return Accepted(TFileDialogOutcomeKind.OverwriteDecisionRequired, target, info, true);
+        }
+
+        string? parent = Path.GetDirectoryName(target);
+        return !string.IsNullOrWhiteSpace(parent) && Directory.Exists(parent)
+            ? Accepted(TFileDialogOutcomeKind.SaveAccepted, target, info, false)
+            : Rejected("save-parent-missing", "Der Elternordner des Speicherziels fehlt. / The save target parent directory is missing.", target, info);
+    }
+
+    private void PublishConfirmation(TFileDialogOutcome outcome)
+    {
+        // Erst ein vollständig klassifiziertes Ergebnis darf History, Dialogzustand und Close-Pfad verändern.
+        // Only a fully classified outcome may change history, dialog state, and the close path.
+        LastOutcome = outcome;
+        LastDecision = ProjectDecision(outcome);
+        if (outcome.Kind == TFileDialogOutcomeKind.Rejected)
+        {
+            SyncFlow(StandardDialogInteractionState.Rejected);
+            return;
+        }
+
+        if (outcome.Path is not null)
+        {
+            PathInput.Data = outcome.Path;
+            PathInput.CommitToHistory();
+        }
+
+        SyncFlow(outcome.Kind == TFileDialogOutcomeKind.Canceled
+            ? StandardDialogInteractionState.Canceled
+            : StandardDialogInteractionState.Confirmed);
+        CloseDialog(outcome.Kind == TFileDialogOutcomeKind.Canceled
+            ? ShellCommandIds.cmCancel
+            : ShellCommandIds.cmOK);
+    }
+
+    private TFileDecisionResult ProjectDecision(TFileDialogOutcome outcome)
+    {
+        FileDecisionKind kind = outcome.Kind switch
+        {
+            TFileDialogOutcomeKind.OpenAccepted => FileDecisionKind.Open,
+            TFileDialogOutcomeKind.SaveAccepted or TFileDialogOutcomeKind.OverwriteDecisionRequired => FileDecisionKind.SaveTarget,
+            TFileDialogOutcomeKind.SelectionAccepted => FileDecisionKind.Select,
+            TFileDialogOutcomeKind.Rejected => FileDecisionKind.Rejected,
+            _ => FileDecisionKind.Canceled
+        };
+        FileSelectionTargetKind targetKind = outcome.MetadataSnapshot.Kind == TFileEntryKind.Directory
+            ? FileSelectionTargetKind.Directory
+            : outcome.Path is null ? FileSelectionTargetKind.None : FileSelectionTargetKind.File;
+        return new TFileDecisionResult(
+            kind,
+            targetKind,
+            outcome.Path,
+            outcome.Filter,
+            outcome.MetadataSnapshot,
+            outcome.RequiresCallerDecision);
+    }
+
+    private TFileDialogOutcome Accepted(TFileDialogOutcomeKind kind, string target, TFileSelectionInfo info, bool callerDecision) =>
+        new(kind, Mode, target, Files.Wildcard, info, null, null, callerDecision);
+
+    private TFileDialogOutcome Rejected(string code, string message, string? target, TFileSelectionInfo info) =>
+        new(TFileDialogOutcomeKind.Rejected, Mode, target, Files.Wildcard, info, code, message, false);
+
+    private void SetRejected(string code, string message, string? target)
+    {
+        LastOutcome = Rejected(code, message, target, Files.CurrentInfo);
+        LastDecision = ProjectDecision(LastOutcome);
+        SyncFlow(StandardDialogInteractionState.Rejected);
+    }
+
+    private static bool IsPathFailure(Exception exception) =>
+        exception is IOException
+            or UnauthorizedAccessException
+            or ArgumentException
+            or NotSupportedException;
 
     private void SyncFlow(StandardDialogInteractionState state)
     {

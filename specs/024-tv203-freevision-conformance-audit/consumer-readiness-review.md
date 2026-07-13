@@ -112,6 +112,20 @@ Feature 025 must run before 026. Feature 028 must run after both. Wave 5 and
 Wave 6 remain blocked until 028 passes; no autonomous run is started by this
 document.
 
+## Remediation Status Before Feature 028
+
+Deutsch: Feature 025 hat `F001` bis `F009` und Feature 026 hat `F010` bis
+`F013` mit nicht dokumentationsbasierten Red-/Green-Nachweisen geschlossen.
+Diese Schließungen sind Eingabe für Feature 028, aber noch keine Freigabe von
+Wave 5 oder Wave 6. Die Consumer-Zuordnung in diesem Dokument bleibt die
+unveränderte unabhängige Prüfbasis.
+
+English: Feature 025 closed `F001` through `F009`, and Feature 026 closed
+`F010` through `F013`, using non-documentation-only red/green proof. These
+closures are input to Feature 028 but do not yet release Wave 5 or Wave 6. The
+consumer mapping in this document remains the unchanged independent review
+baseline.
+
 ## Review-Schluss / Review Conclusion
 
 Deutsch: Die C#-Basis ist strukturell brauchbar und in vielen Bereichen bewusst

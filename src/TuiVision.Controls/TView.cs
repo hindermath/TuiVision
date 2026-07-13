@@ -311,6 +311,19 @@ public class TView : TObject
     public virtual bool CanReleaseFocus() => true;
 
     /// <summary>
+    /// Prüft den View-Zustand für die angegebene Validierungsphase.
+    /// Die Basisklasse akzeptiert, damit bestehende Views ohne Datenvertrag
+    /// unverändert an einer hierarchischen Prüfung teilnehmen können.
+    ///
+    /// Validates view state for the specified phase. The base class accepts so
+    /// existing views without a data contract can participate unchanged.
+    /// </summary>
+    /// <param name="phase">Die Validierungsphase. / The validation phase.</param>
+    /// <returns>Das Validierungsergebnis. / The validation result.</returns>
+    public virtual TValidationResult Validate(TValidationPhase phase) =>
+        TValidationResult.Accepted(phase);
+
+    /// <summary>
     /// Gibt die minimale und maximale Größe zurück, auf die diese Ansicht skaliert werden darf.
     /// Abgeleitete Klassen überschreiben diese Methode, um Größenbeschränkungen festzulegen.
     ///

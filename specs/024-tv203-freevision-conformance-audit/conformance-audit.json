@@ -5,7 +5,7 @@
     "auditDate": "2026-07-12",
     "historicalLedgerPath": "docs/porting-status.md",
     "historicalRowCount": 151,
-    "modernSourceCount": 127,
+    "modernSourceCount": 139,
     "freeVisionRepository": "https://gitlab.com/freepascal.org/fpc/source.git",
     "freeVisionCommit": "ffc03b34d8cafb85ddcf0686de1c5551601dacb2",
     "consumerScope": [
@@ -289,7 +289,9 @@
         "M063",
         "M064",
         "M068",
-        "M071"
+        "M071",
+        "M135",
+        "M136"
       ],
       "publicContractItemIds": [
         "P043",
@@ -335,7 +337,9 @@
         "P167",
         "P168",
         "P169",
-        "P170"
+        "P170",
+        "P204",
+        "P205"
       ],
       "contractIds": [
         "C019",
@@ -380,7 +384,8 @@
         "M035",
         "M036",
         "M043",
-        "M049"
+        "M049",
+        "M134"
       ],
       "publicContractItemIds": [
         "P097",
@@ -403,7 +408,9 @@
         "P158",
         "P165",
         "P166",
-        "P171"
+        "P171",
+        "P202",
+        "P203"
       ],
       "contractIds": [
         "C022",
@@ -440,7 +447,16 @@
         "M113",
         "M114",
         "M118",
-        "M119"
+        "M119",
+        "M128",
+        "M129",
+        "M130",
+        "M131",
+        "M132",
+        "M133",
+        "M137",
+        "M138",
+        "M139"
       ],
       "publicContractItemIds": [
         "P025",
@@ -458,7 +474,22 @@
         "P162",
         "P164",
         "P175",
-        "P176"
+        "P176",
+        "P193",
+        "P194",
+        "P195",
+        "P196",
+        "P197",
+        "P198",
+        "P199",
+        "P200",
+        "P201",
+        "P206",
+        "P207",
+        "P208",
+        "P209",
+        "P210",
+        "P211"
       ],
       "contractIds": [
         "C025",
@@ -3565,6 +3596,116 @@
       "contractIds": [
         "C008"
       ]
+    },
+    {
+      "itemId": "M128",
+      "path": "src/TuiVision.Controls/MenuDescription.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "M129",
+      "path": "src/TuiVision.Controls/MenuDescriptionFactory.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "M130",
+      "path": "src/TuiVision.Controls/MenuDescriptionValidator.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "M131",
+      "path": "src/TuiVision.Controls/StatusLineDescription.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "M132",
+      "path": "src/TuiVision.Controls/StatusLineDescriptionFactory.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "M133",
+      "path": "src/TuiVision.Controls/StatusLineDescriptionValidator.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "M134",
+      "path": "src/TuiVision.Controls/TFileDialogOutcome.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D08",
+      "contractIds": [
+        "C023"
+      ]
+    },
+    {
+      "itemId": "M135",
+      "path": "src/TuiVision.Controls/TValidationPhase.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D07",
+      "contractIds": [
+        "C019",
+        "C021"
+      ]
+    },
+    {
+      "itemId": "M136",
+      "path": "src/TuiVision.Controls/TValidationResult.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D07",
+      "contractIds": [
+        "C019",
+        "C021"
+      ]
+    },
+    {
+      "itemId": "M137",
+      "path": "src/TuiVision.Controls/UiDescriptionPersistenceAdapter.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "M138",
+      "path": "src/TuiVision.Serialization/TMenuDescriptionRecord.cs",
+      "assembly": "TuiVision.Serialization",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "M139",
+      "path": "src/TuiVision.Serialization/TStatusLineDescriptionRecord.cs",
+      "assembly": "TuiVision.Serialization",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
     }
   ],
   "publicContractItems": [
@@ -5299,6 +5440,179 @@
       "contractIds": [
         "C008"
       ]
+    },
+    {
+      "itemId": "P193",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.MenuDescription",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "P194",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.MenuDescriptionFactory",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "P195",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.MenuDescriptionValidator",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "P196",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.MenuItemDescription",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "P197",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.StatusDefinitionDescription",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "P198",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.StatusItemDescription",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "P199",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.StatusLineDescription",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "P200",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.StatusLineDescriptionFactory",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "P201",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.StatusLineDescriptionValidator",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "P202",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.TFileDialogOutcome",
+      "domainId": "D08",
+      "contractIds": [
+        "C023"
+      ]
+    },
+    {
+      "itemId": "P203",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.TFileDialogOutcomeKind",
+      "domainId": "D08",
+      "contractIds": [
+        "C023"
+      ]
+    },
+    {
+      "itemId": "P204",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.TValidationPhase",
+      "domainId": "D07",
+      "contractIds": [
+        "C019",
+        "C021"
+      ]
+    },
+    {
+      "itemId": "P205",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.TValidationResult",
+      "domainId": "D07",
+      "contractIds": [
+        "C019",
+        "C021"
+      ]
+    },
+    {
+      "itemId": "P206",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.UiDescriptionPersistenceAdapter",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "P207",
+      "assembly": "TuiVision.Serialization",
+      "fullTypeName": "TuiVision.Serialization.TMenuDescriptionRecord",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "P208",
+      "assembly": "TuiVision.Serialization",
+      "fullTypeName": "TuiVision.Serialization.TMenuItemDescriptionRecord",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "P209",
+      "assembly": "TuiVision.Serialization",
+      "fullTypeName": "TuiVision.Serialization.TStatusDefinitionDescriptionRecord",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "P210",
+      "assembly": "TuiVision.Serialization",
+      "fullTypeName": "TuiVision.Serialization.TStatusItemDescriptionRecord",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
+    },
+    {
+      "itemId": "P211",
+      "assembly": "TuiVision.Serialization",
+      "fullTypeName": "TuiVision.Serialization.TStatusLineDescriptionRecord",
+      "domainId": "D09",
+      "contractIds": [
+        "C026"
+      ]
     }
   ],
   "contracts": [
@@ -5981,7 +6295,9 @@
         "M053",
         "M057",
         "M063",
-        "M071"
+        "M071",
+        "M135",
+        "M136"
       ],
       "publicContractItemIds": [
         "P043",
@@ -5998,7 +6314,9 @@
         "P146",
         "P153",
         "P159",
-        "P169"
+        "P169",
+        "P204",
+        "P205"
       ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/tbutton.cc",
@@ -6015,7 +6333,7 @@
       "primaryDecision": "BehavioralDrift",
       "freeVisionRelation": "CorroboratesOriginal",
       "modernCSharpRationale": "None",
-      "proof": "tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_Valid_RejectsCloseWhenValidReturnsFalse; tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_Valid_AcceptsCloseWhenValidReturnsTrue",
+      "proof": "tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_F010_NonCompletionCommandsRemainOpenAndUnconsumed; tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_F010_AcceptanceStopsAtFirstRejectionAndFocusesTarget; tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_F010_CancelBypassesContentValidation",
       "risk": "Unrelated commands can terminate a dialog and invalid child state can be accepted without a visible rejection boundary.",
       "findingId": "F010",
       "downstreamDisposition": "ComponentData026"
@@ -6106,7 +6424,9 @@
         "M052",
         "M056",
         "M062",
-        "M068"
+        "M068",
+        "M135",
+        "M136"
       ],
       "publicContractItemIds": [
         "P088",
@@ -6122,7 +6442,9 @@
         "P145",
         "P152",
         "P155",
-        "P168"
+        "P168",
+        "P204",
+        "P205"
       ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/tclrdisp.cc",
@@ -6139,7 +6461,7 @@
       "primaryDecision": "BehavioralDrift",
       "freeVisionRelation": "CorroboratesModernization",
       "modernCSharpRationale": "Managed state and explicit validator objects remain the intended design; they need a real input-control integration boundary.",
-      "proof": "tests/TuiVision.Controls.Tests/TInputLineTests.cs::TInputLine_HandleEvent_MaxLenZeroRejectsInput; tests/TuiVision.Controls.Tests/TColorDialogTests.cs::TColorDialog_CancelSelection_RestoresCommittedValue",
+      "proof": "tests/TuiVision.Controls.Tests/TInputLineTests.cs::TInputLine_F011_EditFocusAndAcceptanceUseDistinctValidatorPhases; tests/TuiVision.Controls.Tests/TInputLineTests.cs::TInputLine_F011_RejectedEditsPreserveNonEmptySelectionAndState; tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_F011_InputValidationRejectsAcceptanceWithAccessibleEvidence",
       "risk": "Validation helpers can exist while user input bypasses them during focus transfer and dialog acceptance.",
       "findingId": "F011",
       "downstreamDisposition": "ComponentData026"
@@ -6209,7 +6531,8 @@
         "M028",
         "M031",
         "M034",
-        "M043"
+        "M043",
+        "M134"
       ],
       "publicContractItemIds": [
         "P099",
@@ -6218,7 +6541,9 @@
         "P111",
         "P132",
         "P157",
-        "P166"
+        "P166",
+        "P202",
+        "P203"
       ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/tchdirdi.cc",
@@ -6234,7 +6559,7 @@
       "primaryDecision": "EvidenceGap",
       "freeVisionRelation": "CorroboratesModernization",
       "modernCSharpRationale": "Managed strings, isolated clipboard state, explicit file decisions, and conflict snapshots prevent implicit data loss.",
-      "proof": "tests/TuiVision.Controls.Tests/TFileEditorTests.cs::TFileEditor_Save_RequiresExplicitDecisionAfterExternalChange; tests/TuiVision.Controls.Tests/TStandardDialogFlowTests.cs::TFileDialog_SaveTargetExistingFile_RequiresCallerDecision",
+      "proof": "tests/TuiVision.Controls.Tests/TFileDialogTests.cs::TFileDialog_F012_OutcomeMatrixDistinguishesEveryOperationMode; tests/TuiVision.Controls.Tests/TFileDialogTests.cs::TFileDialog_F012_RejectionIsTypedAtomicAndDoesNotCommitHistory; tests/TuiVision.Controls.Tests/TFileDialogTests.cs::TFileDialog_F012_InvalidPathAndWildcardBecomeTextFirstRejection",
       "risk": "A consumer can receive a completed selection whose path is invalid for the requested operation.",
       "findingId": "F012",
       "downstreamDisposition": "ComponentData026"
@@ -6344,14 +6669,38 @@
         "M040",
         "M044",
         "M111",
-        "M114"
+        "M114",
+        "M128",
+        "M129",
+        "M130",
+        "M131",
+        "M132",
+        "M133",
+        "M137",
+        "M138",
+        "M139"
       ],
       "publicContractItemIds": [
         "P050",
         "P053",
         "P057",
         "P060",
-        "P164"
+        "P164",
+        "P193",
+        "P194",
+        "P195",
+        "P196",
+        "P197",
+        "P198",
+        "P199",
+        "P200",
+        "P201",
+        "P206",
+        "P207",
+        "P208",
+        "P209",
+        "P210",
+        "P211"
       ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/help.cc",
@@ -6367,7 +6716,7 @@
       "primaryDecision": "EvidenceGap",
       "freeVisionRelation": "CorroboratesOriginal",
       "modernCSharpRationale": "UTF-8 help compilation and ordered locale fallback replace code-page and pointer-based resource assumptions.",
-      "proof": "tests/TuiVision.Serialization.Tests/TLocalizedResourceLookupTests.cs::Find_Fallbacks_UseCallerOrderWithoutDuplicates; tests/TuiVision.Serialization.Tests/TResourceFileTests.cs::TResourceFile_SaveLoad_PreservesExactKeySemantics",
+      "proof": "tests/TuiVision.Serialization.Tests/TUiDescriptionRecordTests.cs::TUiDescriptionRecord_F013_BuiltInsRoundtripDialogMenuAndStatusWithExactKeys; tests/TuiVision.Controls.Tests/MenuDescriptionTests.cs::MenuDescription_F013_ValidModelReconstructsIdentityOrderCommandAndCells; tests/TuiVision.Controls.Tests/StatusLineDescriptionTests.cs::StatusLineDescription_F013_ValidModelReconstructsContextOrderAndShortcut; tests/TuiVision.Serialization.Tests/TResourceFileTests.cs::TResourceFile_F013_TruncationTrailingUnknownTypeAndDuplicateKeysAreRejected",
       "risk": "Wave applications may re-create persisted UI composition as local hard-coded structures or fail to round-trip named resources.",
       "findingId": "F013",
       "downstreamDisposition": "ComponentData026"
@@ -7778,6 +8127,110 @@
       "evidencePath": "specs/025-core-runtime-conformance-hardening/pr-evidence.md#finding-decisions-and-follow-ups",
       "resolvedDate": "2026-07-13",
       "reevaluationTrigger": "Drag capture, threshold, target negotiation, keyboard parity, or lifecycle cancellation changes."
+    },
+    {
+      "resolutionId": "R026-F010",
+      "findingId": "F010",
+      "featureId": "026-component-data-conformance-hardening",
+      "status": "Closed",
+      "implementationDecision": "Implemented",
+      "documentationOnly": false,
+      "redProof": "Build 246 failed because explicit validation phases/results and a bounded completion classifier were absent.",
+      "greenProof": "Build 247 passed the real dialog completion and ordered child-validation matrix 19/19.",
+      "changeEvidence": [
+        "src/TuiVision.Controls/TValidationPhase.cs",
+        "src/TuiVision.Controls/TValidationResult.cs",
+        "src/TuiVision.Controls/TView.cs",
+        "src/TuiVision.Controls/TGroup.cs",
+        "src/TuiVision.Controls/TDialog.cs"
+      ],
+      "testEvidence": [
+        "tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_F010_NonCompletionCommandsRemainOpenAndUnconsumed",
+        "tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_F010_AcceptanceStopsAtFirstRejectionAndFocusesTarget",
+        "tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_F010_CancelBypassesContentValidation",
+        "tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_F010_DerivedClassifierExtendsCompletionSet"
+      ],
+      "evidencePath": "specs/026-component-data-conformance-hardening/pr-evidence.md#finding-decisions-and-follow-ups",
+      "resolvedDate": "2026-07-13",
+      "reevaluationTrigger": "Dialog completion classification, validation order, rejection focus, or cancellation policy changes."
+    },
+    {
+      "resolutionId": "R026-F011",
+      "findingId": "F011",
+      "featureId": "026-component-data-conformance-hardening",
+      "status": "Closed",
+      "implementationDecision": "Implemented",
+      "documentationOnly": false,
+      "redProof": "Build 248 failed because TInputLine had no phase-aware validator, selection, or observable result contract.",
+      "greenProof": "Build 249 passed the edit, focus-loss, acceptance, and exact state-preservation matrix 12/12.",
+      "changeEvidence": [
+        "src/TuiVision.Controls/TValidator.cs",
+        "src/TuiVision.Controls/TInputLine.cs",
+        "src/TuiVision.Controls/TFilterValidator.cs"
+      ],
+      "testEvidence": [
+        "tests/TuiVision.Controls.Tests/TInputLineTests.cs::TInputLine_F011_EditFocusAndAcceptanceUseDistinctValidatorPhases",
+        "tests/TuiVision.Controls.Tests/TInputLineTests.cs::TInputLine_F011_RejectedEditsPreserveNonEmptySelectionAndState",
+        "tests/TuiVision.Controls.Tests/TInputLineTests.cs::TInputLine_F011_FocusAndDialogAcceptancePreserveInvalidInput",
+        "tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_F011_InputValidationRejectsAcceptanceWithAccessibleEvidence"
+      ],
+      "evidencePath": "specs/026-component-data-conformance-hardening/pr-evidence.md#finding-decisions-and-follow-ups",
+      "resolvedDate": "2026-07-13",
+      "reevaluationTrigger": "Input mutation, selection, focus release, validator phase, or acceptance integration changes."
+    },
+    {
+      "resolutionId": "R026-F012",
+      "findingId": "F012",
+      "featureId": "026-component-data-conformance-hardening",
+      "status": "Closed",
+      "implementationDecision": "Implemented",
+      "documentationOnly": false,
+      "redProof": "Build 250 failed because the closed mode-aware outcome and observable rejection contracts were absent.",
+      "greenProof": "Build 251 passed navigation, filter, open, save, overwrite, selection, cancel, rejection, and no-hidden-I/O proof 8/8.",
+      "changeEvidence": [
+        "src/TuiVision.Controls/TFileDialogOutcome.cs",
+        "src/TuiVision.Controls/TFileDecisionResult.cs",
+        "src/TuiVision.Controls/TFileDialog.cs",
+        "src/TuiVision.Controls/TFileInputLine.cs",
+        "src/TuiVision.Controls/TFileList.cs"
+      ],
+      "testEvidence": [
+        "tests/TuiVision.Controls.Tests/TFileDialogTests.cs::TFileDialog_F012_OutcomeMatrixDistinguishesEveryOperationMode",
+        "tests/TuiVision.Controls.Tests/TFileDialogTests.cs::TFileDialog_F012_RejectionIsTypedAtomicAndDoesNotCommitHistory",
+        "tests/TuiVision.Controls.Tests/TFileDialogTests.cs::TFileDialog_F012_InvalidPathAndWildcardBecomeTextFirstRejection"
+      ],
+      "evidencePath": "specs/026-component-data-conformance-hardening/pr-evidence.md#finding-decisions-and-follow-ups",
+      "resolvedDate": "2026-07-13",
+      "reevaluationTrigger": "File-dialog mode, metadata classification, history publication, or caller I/O ownership changes."
+    },
+    {
+      "resolutionId": "R026-F013",
+      "findingId": "F013",
+      "featureId": "026-component-data-conformance-hardening",
+      "status": "Closed",
+      "implementationDecision": "Implemented",
+      "documentationOnly": false,
+      "redProof": "Builds 252 and 253 failed because menu/status models, primitive records, factories, and built-in registrations were absent.",
+      "greenProof": "Build 255 passed Controls reconstruction 12/12 and Build 258 passed allowlisted resource persistence 22/22.",
+      "changeEvidence": [
+        "src/TuiVision.Serialization/TMenuDescriptionRecord.cs",
+        "src/TuiVision.Serialization/TStatusLineDescriptionRecord.cs",
+        "src/TuiVision.Serialization/TResourceFile.cs",
+        "src/TuiVision.Controls/MenuDescription.cs",
+        "src/TuiVision.Controls/MenuDescriptionFactory.cs",
+        "src/TuiVision.Controls/StatusLineDescription.cs",
+        "src/TuiVision.Controls/StatusLineDescriptionFactory.cs",
+        "src/TuiVision.Controls/UiDescriptionPersistenceAdapter.cs"
+      ],
+      "testEvidence": [
+        "tests/TuiVision.Serialization.Tests/TUiDescriptionRecordTests.cs::TUiDescriptionRecord_F013_BuiltInsRoundtripDialogMenuAndStatusWithExactKeys",
+        "tests/TuiVision.Controls.Tests/MenuDescriptionTests.cs::MenuDescription_F013_ValidModelReconstructsIdentityOrderCommandAndCells",
+        "tests/TuiVision.Controls.Tests/StatusLineDescriptionTests.cs::StatusLineDescription_F013_ValidModelReconstructsContextOrderAndShortcut",
+        "tests/TuiVision.Serialization.Tests/TResourceFileTests.cs::TResourceFile_F013_TruncationTrailingUnknownTypeAndDuplicateKeysAreRejected"
+      ],
+      "evidencePath": "specs/026-component-data-conformance-hardening/pr-evidence.md#finding-decisions-and-follow-ups",
+      "resolvedDate": "2026-07-13",
+      "reevaluationTrigger": "Resource registry, description format, parser limits, semantic validation, or runtime reconstruction changes."
     }
   ],
   "presetObservations": [

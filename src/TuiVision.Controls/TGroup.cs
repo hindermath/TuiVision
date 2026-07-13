@@ -330,6 +330,52 @@ public class TGroup : TView
     public TFocusTransitionResult TrySetFocus(TView view) =>
         TrySetFocusCore(view, requireSelectable: true);
 
+    /// <summary>
+    /// Versucht, ein beliebig tiefes Kind über jeden vorhandenen Owner-Schritt
+    /// zu fokussieren, ohne den Fokus-Veto-Vertrag zu umgehen.
+    ///
+    /// Attempts to focus a descendant through every existing owner step without
+    /// bypassing the focus-veto contract.
+    /// </summary>
+    /// <param name="view">Das Fokusziel im Teilbaum. / The focus target in the subtree.</param>
+    /// <returns><c>true</c>, wenn das Ziel fokussiert ist; andernfalls <c>false</c>. / <c>true</c> when the target is focused; otherwise <c>false</c>.</returns>
+    protected bool TryFocusDescendant(TView view)
+    {
+        ArgumentNullException.ThrowIfNull(view);
+
+        List<TView> path = [];
+        TView current = view;
+        while (!ReferenceEquals(current.Owner, this))
+        {
+            if (current.Owner is null)
+            {
+                return false;
+            }
+
+            path.Add(current);
+            current = current.Owner;
+        }
+
+        path.Add(current);
+        TGroup group = this;
+        for (int index = path.Count - 1; index >= 0; index--)
+        {
+            TView target = path[index];
+            TFocusTransitionResult result = group.TrySetFocus(target);
+            if (result == TFocusTransitionResult.Rejected)
+            {
+                return false;
+            }
+
+            if (index > 0)
+            {
+                group = (TGroup)target;
+            }
+        }
+
+        return true;
+    }
+
     private TFocusTransitionResult TrySetFocusCore(TView view, bool requireSelectable)
     {
         ArgumentNullException.ThrowIfNull(view);
@@ -802,6 +848,31 @@ public class TGroup : TView
         List<TView> children = [];
         ForEach(children.Add);
         return children.AsReadOnly();
+    }
+
+    /// <summary>
+    /// Validiert eine stabile Momentaufnahme der Kinder in Owner-Reihenfolge und
+    /// gibt die erste Ablehnung zurück.
+    ///
+    /// Validates a stable child snapshot in owner order and returns the first
+    /// rejection.
+    /// </summary>
+    /// <param name="phase">Die Validierungsphase. / The validation phase.</param>
+    /// <returns>Die erste Ablehnung oder ein erfolgreiches Ergebnis. / The first rejection or a successful result.</returns>
+    public override TValidationResult Validate(TValidationPhase phase)
+    {
+        // Die Momentaufnahme verhindert, dass eine Validierung die zirkuläre Liste während derselben Prüfung umsortiert.
+        // The snapshot prevents validation from reordering the circular list during the same pass.
+        foreach (TView child in GetChildrenSnapshot())
+        {
+            TValidationResult result = child.Validate(phase);
+            if (!result.IsValid)
+            {
+                return result;
+            }
+        }
+
+        return TValidationResult.Accepted(phase);
     }
 
     /// <summary>

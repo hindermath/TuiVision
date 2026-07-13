@@ -335,25 +335,24 @@ public sealed class ConformanceAuditEvidenceTests
         StringAssert.Contains(findings, $"Total findings | {actualContractIds.Length}");
         string gate = ReadFeatureFile("pre-wave5-gate.md");
         StringAssert.Contains(gate, "`Core025` | 9 | Closed");
-        StringAssert.Contains(gate, "`ComponentData026` | 4 | Required");
+        StringAssert.Contains(gate, "`ComponentData026` | 4 | Closed");
         StringAssert.Contains(gate, "`Closure028` | Required");
         StringAssert.Contains(gate, "Wave 5 | Blocked");
         StringAssert.Contains(gate, "Feature 028");
     }
 
     /// <summary>
-    /// Prüft, dass Feature 025 genau seine neun Findings durch reale Red-/Green-Nachweise schließt.
+    /// Prüft, dass Features 025 und 026 genau alle Findings durch reale Red-/Green-Nachweise schließen.
     ///
-    /// Validates that Feature 025 closes exactly its nine findings through real red/green evidence.
+    /// Validates that Features 025 and 026 close exactly all findings through real red/green evidence.
     /// </summary>
     [TestMethod]
-    public void Test_Core025ResolutionsAreExactAndRealPathBacked()
+    public void Test_FindingResolutionsAreExactAndRealPathBacked()
     {
         JsonObject root = LoadAuditObject();
         JsonObject[] findings = RequiredArray(root, "findings").OfType<JsonObject>().ToArray();
         JsonObject[] resolutions = RequiredArray(root, "resolutions").OfType<JsonObject>().ToArray();
         string[] expectedFindingIds = findings
-            .Where(finding => RequiredString(finding, "disposition") == "Core025")
             .Select(finding => RequiredString(finding, "findingId"))
             .OrderBy(id => id, StringComparer.Ordinal)
             .ToArray();
@@ -363,14 +362,20 @@ public sealed class ConformanceAuditEvidenceTests
             .ToArray();
 
         CollectionAssert.AreEqual(expectedFindingIds, actualFindingIds);
-        Assert.HasCount(9, resolutions);
+        Assert.HasCount(13, resolutions);
 
         string repoRoot = Phase7DriverTestContext.FindRepoRoot();
         foreach (JsonObject resolution in resolutions)
         {
             string findingId = RequiredString(resolution, "findingId");
-            Assert.AreEqual($"R025-{findingId}", RequiredString(resolution, "resolutionId"));
-            Assert.AreEqual("025-core-runtime-conformance-hardening", RequiredString(resolution, "featureId"));
+            JsonObject finding = findings.Single(item => RequiredString(item, "findingId") == findingId);
+            bool isCore = RequiredString(finding, "disposition") == "Core025";
+            string featureNumber = isCore ? "025" : "026";
+            string featureId = isCore
+                ? "025-core-runtime-conformance-hardening"
+                : "026-component-data-conformance-hardening";
+            Assert.AreEqual($"R{featureNumber}-{findingId}", RequiredString(resolution, "resolutionId"));
+            Assert.AreEqual(featureId, RequiredString(resolution, "featureId"));
             Assert.AreEqual("Closed", RequiredString(resolution, "status"));
             Assert.AreEqual("Implemented", RequiredString(resolution, "implementationDecision"));
             Assert.IsFalse(RequiredBoolean(resolution, "documentationOnly"));
@@ -406,7 +411,8 @@ public sealed class ConformanceAuditEvidenceTests
         string gate = ReadFeatureFile("pre-wave5-gate.md");
         StringAssert.Contains(gate, "Feature 025 | Closed");
         StringAssert.Contains(gate, "`Core025` | 9 | Closed");
-        StringAssert.Contains(gate, "Feature 026 | Required");
+        StringAssert.Contains(gate, "Feature 026 | Closed");
+        StringAssert.Contains(gate, "`ComponentData026` | 4 | Closed");
         StringAssert.Contains(gate, "Feature 028 | Required");
         StringAssert.Contains(gate, "Wave 5 | Blocked");
         StringAssert.Contains(gate, "Wave 6 | Blocked");

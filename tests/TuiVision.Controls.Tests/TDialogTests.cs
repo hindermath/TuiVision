@@ -236,8 +236,8 @@ public sealed class TDialogTests
         TEvent okCmd = ControlEventFactory.CreateCommand(ShellCommandIds.cmOK);
         dialog.HandleEvent(okCmd);
 
-        Assert.AreEqual(0, dialog.CloseDialogCallCount,
-            "Dialog must not call CloseDialog when Valid() returns false.");
+        Assert.AreEqual(1, dialog.ValidCallCount,
+            "The real completion path must invoke the overridable validation hook once.");
     }
 
     /// <summary>
@@ -283,6 +283,126 @@ public sealed class TDialogTests
             "Existing Escape→cmCancel behavior must not be regressed by Valid() hook introduction.");
     }
 
+    /// <summary>
+    /// Prüft, dass Hilfe-, Anwendungs- und unbekannte Commands nicht als
+    /// Dialogabschluss konsumiert werden.
+    ///
+    /// Verifies that help, application, and unknown commands are not consumed as
+    /// dialog completion.
+    /// </summary>
+    [TestMethod]
+    public void TDialog_F010_NonCompletionCommandsRemainOpenAndUnconsumed()
+    {
+        TDialog dialog = new(new TRect(0, 0, 20, 6), "Commands");
+        ushort[] commands = [ShellCommandIds.cmHelp, 0x7001, ushort.MaxValue];
+
+        foreach (ushort command in commands)
+        {
+            TEvent @event = ControlEventFactory.CreateCommand(command);
+
+            dialog.HandleEvent(@event);
+
+            Assert.AreEqual(TEventKind.Command, @event.What, $"Command {command} must remain available to its owner.");
+        }
+    }
+
+    /// <summary>
+    /// Prüft die stabile Kindreihenfolge, die erste Ablehnung und den Fokuspfad
+    /// über den echten Completion-Command.
+    ///
+    /// Verifies stable child order, first rejection, and focus routing through the
+    /// real completion command.
+    /// </summary>
+    [TestMethod]
+    public void TDialog_F010_AcceptanceStopsAtFirstRejectionAndFocusesTarget()
+    {
+        TDialog dialog = new(new TRect(0, 0, 30, 8), "Validate");
+        ValidationProbe first = new(new TRect(1, 1, 8, 2), isValid: true, "first");
+        ValidationProbe rejected = new(new TRect(1, 2, 8, 3), isValid: false, "invalid value");
+        ValidationProbe skipped = new(new TRect(1, 3, 8, 4), isValid: true, "skipped");
+        dialog.Insert(first);
+        dialog.Insert(rejected);
+        dialog.Insert(skipped);
+        dialog.SetFocus(first);
+
+        TEvent @event = ControlEventFactory.CreateCommand(ShellCommandIds.cmOK);
+        dialog.HandleEvent(@event);
+
+        Assert.AreEqual(1, first.ValidationCount);
+        Assert.AreEqual(1, rejected.ValidationCount);
+        Assert.AreEqual(0, skipped.ValidationCount);
+        Assert.AreSame(rejected, dialog.Current);
+        Assert.IsFalse(dialog.LastValidationResult.IsValid);
+        Assert.AreEqual("invalid value", dialog.LastValidationResult.Message);
+        Assert.AreSame(rejected, dialog.LastValidationResult.Target);
+        Assert.AreEqual(TEventKind.Nothing, @event.What);
+    }
+
+    /// <summary>
+    /// Prüft, dass Cancel keine Inhaltsvalidierung auslöst.
+    ///
+    /// Verifies that Cancel does not invoke content validation.
+    /// </summary>
+    [TestMethod]
+    public void TDialog_F010_CancelBypassesContentValidation()
+    {
+        TestDialog dialog = new(new TRect(0, 0, 20, 6), "Cancel");
+        ValidationProbe rejected = new(new TRect(1, 1, 8, 2), isValid: false, "invalid value");
+        dialog.Insert(rejected);
+        dialog.Enqueue(ControlEventFactory.CreateCommand(ShellCommandIds.cmCancel));
+
+        ushort result = dialog.Run();
+
+        Assert.AreEqual(ShellCommandIds.cmCancel, result);
+        Assert.AreEqual(0, rejected.ValidationCount);
+    }
+
+    /// <summary>
+    /// Prüft einen begrenzten abgeleiteten Completion-Command ohne versteckte
+    /// Event-Loop-Überschreibung.
+    ///
+    /// Verifies one bounded derived completion command without a hidden event-loop
+    /// override.
+    /// </summary>
+    [TestMethod]
+    public void TDialog_F010_DerivedClassifierExtendsCompletionSet()
+    {
+        const ushort customCompletion = 0x7100;
+        ExtendedCompletionDialog dialog = new(new TRect(0, 0, 20, 6), customCompletion);
+        dialog.Enqueue(ControlEventFactory.CreateCommand(customCompletion));
+
+        ushort result = dialog.Run();
+
+        Assert.AreEqual(customCompletion, result);
+    }
+
+    /// <summary>
+    /// Prüft die Validator-Ablehnung einer Eingabe über den echten Dialogpfad
+    /// einschließlich Fokus und text-first Meldung.
+    ///
+    /// Verifies input-validator rejection through the real dialog path, including
+    /// focus and a text-first message.
+    /// </summary>
+    [TestMethod]
+    public void TDialog_F011_InputValidationRejectsAcceptanceWithAccessibleEvidence()
+    {
+        TDialog dialog = new(new TRect(0, 0, 24, 7), "Range");
+        TInputLine input = new(new TRect(1, 1, 8, 2), 8)
+        {
+            Data = "5",
+            Validator = new TRangeValidator(10, 20)
+        };
+        dialog.Insert(input);
+        dialog.SetFocus(input);
+
+        dialog.HandleEvent(ControlEventFactory.CreateCommand(ShellCommandIds.cmOK));
+
+        Assert.AreSame(input, dialog.Current);
+        Assert.AreSame(input, dialog.LastValidationResult.Target);
+        Assert.AreEqual(TValidationPhase.Acceptance, dialog.LastValidationResult.Phase);
+        StringAssert.Contains(dialog.LastValidationResult.Message!, "ungültig");
+    }
+
     private static TestDialog CreateDialogWithTwoButtons(out TButton okButton, out TButton cancelButton)
     {
         TestDialog dialog = new(new TRect(0, 0, 30, 8), "Test");
@@ -310,19 +430,59 @@ public sealed class TDialogTests
         }
     }
 
+    private sealed class ExtendedCompletionDialog : TDialog
+    {
+        private readonly Queue<TEvent> _events = new();
+        private readonly ushort _customCompletion;
+
+        public ExtendedCompletionDialog(TRect bounds, ushort customCompletion) : base(bounds, "Extended") =>
+            _customCompletion = customCompletion;
+
+        public void Enqueue(TEvent @event) => _events.Enqueue(@event);
+
+        protected override bool IsCompletionCommand(ushort command) =>
+            command == _customCompletion || base.IsCompletionCommand(command);
+
+        protected override void GetEvent(out TEvent @event) =>
+            @event = _events.Count > 0 ? _events.Dequeue() : TEvent.CreateCommand(ShellCommandIds.cmCancel);
+    }
+
+    private sealed class ValidationProbe : TView
+    {
+        private readonly bool _isValid;
+        private readonly string _message;
+
+        public ValidationProbe(TRect bounds, bool isValid, string message) : base(bounds)
+        {
+            _isValid = isValid;
+            _message = message;
+            Options |= TViewOptions.Selectable;
+        }
+
+        public int ValidationCount { get; private set; }
+
+        public override TValidationResult Validate(TValidationPhase phase)
+        {
+            ValidationCount++;
+            return _isValid
+                ? TValidationResult.Accepted(phase)
+                : TValidationResult.Rejected(phase, _message, this);
+        }
+    }
+
     /// <summary>
-    /// Dialog, dessen Valid()-Methode stets <c>false</c> zurückgibt und der CloseDialog-Aufrufe zählt.
+    /// Dialog, dessen Valid()-Methode stets <c>false</c> zurückgibt und Aufrufe zählt.
     ///
-    /// Dialog whose Valid() method always returns <c>false</c> and counts CloseDialog calls.
+    /// Dialog whose Valid() method always returns <c>false</c> and counts calls.
     /// </summary>
     private sealed class RejectingDialog : TDialog
     {
         public RejectingDialog(TRect bounds, string? title) : base(bounds, title) { }
 
         /// <summary>
-        /// Anzahl der CloseDialog-Aufrufe. / Number of CloseDialog call invocations.
+        /// Anzahl der Valid-Aufrufe. / Number of Valid invocations.
         /// </summary>
-        public int CloseDialogCallCount { get; private set; }
+        public int ValidCallCount { get; private set; }
 
         /// <summary>
         /// Gibt stets <c>false</c> zurück, um das Schließen zu verhindern.
@@ -331,18 +491,10 @@ public sealed class TDialogTests
         /// </summary>
         /// <param name="command">Die Befehl-ID. / The command ID.</param>
         /// <returns><c>false</c></returns>
-        protected override bool Valid(ushort command) => false;
-
-        /// <summary>
-        /// Zählt CloseDialog-Aufrufe mit.
-        ///
-        /// Counts CloseDialog calls.
-        /// </summary>
-        /// <param name="command">Die Rückgabe-Command-ID. / The command ID to return.</param>
-        public new void CloseDialog(ushort command)
+        protected override bool Valid(ushort command)
         {
-            CloseDialogCallCount++;
-            base.CloseDialog(command);
+            ValidCallCount++;
+            return false;
         }
     }
 

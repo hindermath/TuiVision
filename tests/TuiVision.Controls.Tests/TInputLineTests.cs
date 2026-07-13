@@ -135,4 +135,176 @@ public sealed class TInputLineTests
 
         Assert.AreEqual("World", inputLine.Data);
     }
+
+    /// <summary>
+    /// Prüft die optionale Validatorbindung und das unveränderte Verhalten ohne
+    /// Validator.
+    ///
+    /// Verifies optional validator attachment and unchanged behavior without a
+    /// validator.
+    /// </summary>
+    [TestMethod]
+    public void TInputLine_F011_ValidatorIsOptionalAndNoValidatorRemainsCompatible()
+    {
+        TInputLine inputLine = new(new TRect(0, 0, 8, 1), 8);
+
+        inputLine.HandleEvent(ControlEventFactory.CreateKeyDown(charCode: 'A'));
+
+        Assert.AreEqual("A", inputLine.Data);
+        Assert.IsNull(inputLine.Validator);
+        Assert.IsTrue(inputLine.Validate(TValidationPhase.Acceptance).IsValid);
+    }
+
+    /// <summary>
+    /// Prüft permissive Bereichs-Zwischeneingabe, strikte Syntaxprüfung und die
+    /// getrennten finalen Phasen.
+    ///
+    /// Verifies permissive range intermediate input, strict syntax checking, and
+    /// distinct final phases.
+    /// </summary>
+    [TestMethod]
+    public void TInputLine_F011_EditFocusAndAcceptanceUseDistinctValidatorPhases()
+    {
+        TInputLine rangeInput = new(new TRect(0, 0, 8, 1), 8)
+        {
+            Validator = new TRangeValidator(10, 20)
+        };
+
+        rangeInput.HandleEvent(ControlEventFactory.CreateKeyDown(charCode: '1'));
+
+        Assert.AreEqual("1", rangeInput.Data);
+        Assert.IsTrue(rangeInput.LastValidationResult.IsValid);
+        Assert.AreEqual(TValidationPhase.Edit, rangeInput.LastValidationResult.Phase);
+        Assert.IsFalse(rangeInput.Validate(TValidationPhase.FocusLoss).IsValid);
+
+        rangeInput.HandleEvent(ControlEventFactory.CreateKeyDown(charCode: '0'));
+        Assert.IsTrue(rangeInput.Validate(TValidationPhase.Acceptance).IsValid);
+
+        TInputLine syntaxInput = new(new TRect(0, 0, 8, 1), 8)
+        {
+            Validator = new TFilterValidator("0123456789")
+        };
+        syntaxInput.HandleEvent(ControlEventFactory.CreateKeyDown(charCode: 'x'));
+
+        Assert.AreEqual(string.Empty, syntaxInput.Data);
+        Assert.IsFalse(syntaxInput.LastValidationResult.IsValid);
+        Assert.AreEqual(TValidationPhase.Edit, syntaxInput.LastValidationResult.Phase);
+        StringAssert.Contains(syntaxInput.LastValidationResult.Message!, "ungültig");
+    }
+
+    /// <summary>
+    /// Prüft, dass alle abgelehnten Editvarianten den vollständigen Zustand und
+    /// eine nichtleere Auswahl erhalten.
+    ///
+    /// Verifies that every rejected edit variant preserves complete state and a
+    /// non-empty selection.
+    /// </summary>
+    [TestMethod]
+    public void TInputLine_F011_RejectedEditsPreserveNonEmptySelectionAndState()
+    {
+        ManagedClipboard.SetText("ZZ");
+        TEvent[] edits =
+        [
+            ControlEventFactory.CreateKeyDown(charCode: 'X'),
+            ControlEventFactory.CreateCtrlV(),
+            ControlEventFactory.CreateCtrlX(),
+            ControlEventFactory.CreateKeyDown(scanCode: 0x53),
+            ControlEventFactory.CreateKeyDown(scanCode: 0x0E)
+        ];
+
+        foreach (TEvent edit in edits)
+        {
+            TInputLine input = CreateRejectingInput(selectionStart: 1, selectionEnd: 4);
+            AssertRejectedEditPreserves(input, edit, 1, 4);
+        }
+    }
+
+    /// <summary>
+    /// Prüft den gleichen atomaren Vertrag für eine kollabierte Auswahl.
+    ///
+    /// Verifies the same atomic contract for a collapsed selection.
+    /// </summary>
+    [TestMethod]
+    public void TInputLine_F011_RejectedEditsPreserveCollapsedSelectionAndState()
+    {
+        TInputLine input = CreateRejectingInput(selectionStart: 3, selectionEnd: 3);
+
+        AssertRejectedEditPreserves(input, ControlEventFactory.CreateKeyDown(scanCode: 0x0E), 3, 3);
+    }
+
+    /// <summary>
+    /// Prüft Fokus-Veto und bestätigende Dialogvalidierung über die realen
+    /// Produktionspfade.
+    ///
+    /// Verifies focus veto and affirmative dialog validation through real
+    /// production paths.
+    /// </summary>
+    [TestMethod]
+    public void TInputLine_F011_FocusAndDialogAcceptancePreserveInvalidInput()
+    {
+        TDialog dialog = new(new TRect(0, 0, 24, 7), "Input");
+        TInputLine input = new(new TRect(1, 1, 8, 2), 8)
+        {
+            Data = "5",
+            Validator = new TRangeValidator(10, 20)
+        };
+        TButton other = new(new TRect(1, 3, 9, 4), "Other", 0x7200, TButtonFlags.bfNormal);
+        dialog.Insert(input);
+        dialog.Insert(other);
+        dialog.SetFocus(input);
+
+        Assert.AreEqual(TFocusTransitionResult.Rejected, dialog.TrySetFocus(other));
+        Assert.AreSame(input, dialog.Current);
+        Assert.AreEqual(TValidationPhase.FocusLoss, input.LastValidationResult.Phase);
+
+        TEvent accept = ControlEventFactory.CreateCommand(ShellCommandIds.cmOK);
+        dialog.HandleEvent(accept);
+
+        Assert.AreSame(input, dialog.Current);
+        Assert.AreEqual("5", input.Data);
+        Assert.AreEqual(TValidationPhase.Acceptance, input.LastValidationResult.Phase);
+        Assert.AreSame(input, dialog.LastValidationResult.Target);
+        Assert.IsFalse(dialog.LastValidationResult.IsValid);
+    }
+
+    private static TInputLine CreateRejectingInput(int selectionStart, int selectionEnd)
+    {
+        TInputLine input = new(new TRect(0, 0, 3, 1), 12)
+        {
+            Data = "ABCDE",
+            Validator = new RejectEditValidator()
+        };
+        input.HandleEvent(ControlEventFactory.CreateKeyDown(scanCode: 0x4F));
+        input.HandleEvent(ControlEventFactory.CreateKeyDown(scanCode: 0x52));
+        input.SetSelection(selectionStart, selectionEnd);
+        return input;
+    }
+
+    private static void AssertRejectedEditPreserves(TInputLine input, TEvent edit, int selectionStart, int selectionEnd)
+    {
+        string data = input.Data;
+        int cursor = input.CurPos;
+        int viewport = input.FirstPos;
+        bool insertMode = input.InsertMode;
+
+        input.HandleEvent(edit);
+
+        Assert.AreEqual(data, input.Data);
+        Assert.AreEqual(cursor, input.CurPos);
+        Assert.AreEqual(viewport, input.FirstPos);
+        Assert.AreEqual(insertMode, input.InsertMode);
+        Assert.AreEqual(selectionStart, input.SelectionStart);
+        Assert.AreEqual(selectionEnd, input.SelectionEnd);
+        Assert.IsFalse(input.LastValidationResult.IsValid);
+    }
+
+    private sealed class RejectEditValidator : TValidator
+    {
+        public override bool IsValid(string input) => true;
+
+        public override TValidationResult Validate(string input, TValidationPhase phase, TView target) =>
+            phase == TValidationPhase.Edit
+                ? TValidationResult.Rejected(phase, "Edit ungültig. / Edit invalid.", target)
+                : TValidationResult.Accepted(phase);
+    }
 }

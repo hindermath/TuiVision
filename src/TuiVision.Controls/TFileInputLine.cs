@@ -83,6 +83,13 @@ public sealed class TFileInputLine : TInputLine
         }
 
         string basePath = string.IsNullOrWhiteSpace(baseDirectory) ? Directory.GetCurrentDirectory() : baseDirectory;
-        return Path.GetFullPath(Path.IsPathRooted(Data) ? Data : Path.Combine(basePath, Data));
+        try
+        {
+            return Path.GetFullPath(Path.IsPathRooted(Data) ? Data : Path.Combine(basePath, Data));
+        }
+        catch (Exception exception) when (exception is IOException or UnauthorizedAccessException or ArgumentException or NotSupportedException)
+        {
+            return null;
+        }
     }
 }
