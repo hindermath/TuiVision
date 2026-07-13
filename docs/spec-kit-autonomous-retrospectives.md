@@ -184,7 +184,8 @@ version or another upstream contribution.
 
 **Feature:** `025-core-runtime-conformance-hardening`
 **Feature-PR:** [#69](https://github.com/hindermath/TuiVision/pull/69)
-**Closeout-PR:** Pending until the causal evidence-only closeout
+**Workflow-correction PRs:** [#70](https://github.com/hindermath/TuiVision/pull/70), [#71](https://github.com/hindermath/TuiVision/pull/71)
+**Closeout-PR:** Causal evidence-only closeout; its own URL, reviewed head, and merge are verified externally to avoid recursion
 
 | Beobachtung | Entscheidung | Umsetzung oder Grenze |
 |---|---|---|
