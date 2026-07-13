@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-07-05",
+  "description": "Minimum VS Code extension registry for the six Secure CaseTracker memory-safe language paths plus container tooling.",
+  "policy": {
+    "extensionSource": "Visual Studio Marketplace via code --install-extension",
+    "defaultInstallScope": "required",
+    "dependencyPolicy": "Only list the official primary extension or official extension pack for each MSL path and the official primary container tooling extension; extension-managed dependencies are not listed separately.",
+    "deprecatedPolicy": "Deprecated extensions are reported when installed, but not removed automatically."
+  },
+  "extensions": [
+    { "id": "ms-dotnettools.csdevkit", "scope": "required", "language": "C#", "purpose": "Official C# Dev Kit for VS Code" },
+    { "id": "golang.Go", "scope": "required", "language": "Go", "purpose": "Official Go extension for VS Code" },
+    { "id": "vscjava.vscode-java-pack", "scope": "required", "language": "Java", "purpose": "Official Java extension pack for VS Code" },
+    { "id": "ms-python.python", "scope": "required", "language": "Python", "purpose": "Official Python extension for VS Code" },
+    { "id": "rust-lang.rust-analyzer", "scope": "required", "language": "Rust", "purpose": "Official Rust analyzer extension for VS Code" },
+    { "id": "swiftlang.swift-vscode", "scope": "required", "language": "Swift", "purpose": "Official Swift extension for VS Code" },
+    { "id": "ms-azuretools.vscode-containers", "scope": "required", "language": "Containers", "purpose": "Official Microsoft Container Tools extension for Docker/Podman container workflows in VS Code" }
+  ],
+  "deprecatedExtensions": [
+    { "id": "sswg.swift-lang", "replacement": "swiftlang.swift-vscode", "purpose": "Deprecated Swift extension; report only when installed" }
+  ]
+}

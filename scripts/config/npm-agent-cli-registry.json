@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-07-11",
+  "description": "Global npm CLI package registry for required agent command-line tools that are not maintained through Brew or WinGet on every platform.",
+  "policy": {
+    "packageSource": "npm install -g <package>",
+    "defaultInstallScope": "required",
+    "dependencyPolicy": "Do not list transitive npm dependencies.",
+    "platformPolicy": "Codex, Claude Code, and the standalone GitHub Copilot CLI use npm as the common fallback on macOS, Linux, and Windows when the command remains missing after package-manager maintenance. Google Antigravity is maintained through Brew on macOS, the verified official installer on Linux, and WinGet on Windows."
+  },
+  "tools": [
+    {
+      "id": "codex",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "package": "@openai/codex",
+      "command": "codex",
+      "args": ["--version"],
+      "purpose": "OpenAI Codex command-line agent"
+    },
+    {
+      "id": "claude",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "package": "@anthropic-ai/claude-code",
+      "command": "claude",
+      "args": ["--version"],
+      "purpose": "Anthropic Claude Code command-line agent"
+    },
+    {
+      "id": "copilot",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "package": "@github/copilot",
+      "command": "copilot",
+      "args": ["--version"],
+      "purpose": "Standalone GitHub Copilot command-line agent"
+    }
+  ]
+}

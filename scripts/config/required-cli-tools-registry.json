@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-07-11",
+  "description": "Required CLI command checks for the learning-series MSL toolchains, SBOM tooling, GitHub Spec Kit, and required agent CLI surfaces.",
+  "policy": {
+    "defaultScope": "required",
+    "specKitInstallCommand": "uv tool install specify-cli --from git+https://github.com/github/spec-kit.git",
+    "npmAgentRegistry": "scripts/config/npm-agent-cli-registry.json",
+    "agentCliPolicy": "codex, claude, the standalone GitHub Copilot CLI, and Google Antigravity CLI are required cross-platform CLI surfaces. Google Antigravity replaces Gemini CLI. macOS uses Homebrew, Windows uses WinGet, and Linux uses the checksum-verified official vendor installer. npm fallback installations are maintained through npm-agent-cli-registry.json.",
+    "hostingAccountPolicy": "Learners need an account on the selected institutional Git hosting system. A GitHub account is required only for the direct GitHub profile or optional GitHub Copilot sign-in.",
+    "forgejoClientPolicy": "No additional Forgejo client CLI is required. Bootstrap automation uses normal git, HTTPS credentials from a secure Git credential helper, and the Forgejo REST API.",
+    "linuxWithoutBrew": "Linux without Homebrew uses distro packages where available. .NET, Swift, Syft, and GitHub Spec Kit may require external package sources or uv-based installation. Antigravity CLI uses its checksum-verified official vendor installer."
+  },
+  "tools": [
+    {
+      "id": "dotnet",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "dotnet",
+      "args": ["--version"],
+      "purpose": "C#/.NET MSL CLI toolchain for learning-series repositories"
+    },
+    {
+      "id": "go",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "go",
+      "args": ["version"],
+      "purpose": "Go MSL CLI toolchain for learning-series repositories"
+    },
+    {
+      "id": "java",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "java",
+      "args": ["-version"],
+      "purpose": "Java runtime command from the required JDK"
+    },
+    {
+      "id": "javac",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "javac",
+      "args": ["-version"],
+      "purpose": "Java compiler command from the required JDK"
+    },
+    {
+      "id": "python3",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux"],
+      "command": "python3",
+      "args": ["--version"],
+      "purpose": "Python MSL CLI toolchain for learning-series repositories"
+    },
+    {
+      "id": "python",
+      "scope": "required",
+      "platforms": ["Windows"],
+      "command": "python",
+      "args": ["--version"],
+      "purpose": "Python MSL CLI toolchain for learning-series repositories"
+    },
+    {
+      "id": "cargo",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "cargo",
+      "args": ["--version"],
+      "purpose": "Rust package/build command from the required Rust toolchain"
+    },
+    {
+      "id": "rustc",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "rustc",
+      "args": ["--version"],
+      "purpose": "Rust compiler command from the required Rust toolchain"
+    },
+    {
+      "id": "swift",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "swift",
+      "args": ["--version"],
+      "purpose": "Swift MSL CLI toolchain; macOS uses the Apple toolchain, Windows uses WinGet Swift.Toolchain, and Linux requires a separately configured Swift toolchain"
+    },
+    {
+      "id": "syft",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "syft",
+      "args": ["version"],
+      "purpose": "SBOM generation for supply-chain evidence"
+    },
+    {
+      "id": "specify",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "specify",
+      "args": ["--version"],
+      "install": {
+        "manager": "uv",
+        "arguments": ["tool", "install", "specify-cli", "--from", "git+https://github.com/github/spec-kit.git"]
+      },
+      "purpose": "GitHub Spec Kit CLI for specification-driven development"
+    },
+    {
+      "id": "codex",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "codex",
+      "args": ["--version"],
+      "purpose": "OpenAI Codex command-line agent for AI-assisted development"
+    },
+    {
+      "id": "claude",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "claude",
+      "args": ["--version"],
+      "purpose": "Claude Code command-line agent for AI-assisted development"
+    },
+    {
+      "id": "antigravity",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "agy",
+      "args": ["--version"],
+      "install": {
+        "manager": "vendor-script",
+        "platforms": ["Linux"],
+        "url": "https://antigravity.google/cli/install.sh",
+        "sha256": "ee1ea43ce4e9e56356c4ab6dad907ef357ae4bdfcaadb682735909fb57c9c640",
+        "interpreter": "bash"
+      },
+      "purpose": "Google Antigravity command-line agent for AI-assisted development; replaces Gemini CLI"
+    },
+    {
+      "id": "copilot",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "copilot",
+      "args": ["--version"],
+      "purpose": "Standalone GitHub Copilot command-line agent for AI-assisted development"
+    }
+  ]
+}
