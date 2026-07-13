@@ -55,7 +55,8 @@ Allowed results are `Pass`, `Fail`, `Accepted`, `Deferred`, and `Open`.
 
 | Command or review | Trigger | Result | Evidence or failure boundary |
 |---|---|---|---|
-| `git diff --check` | Always | Open | [output summary] |
+| `git diff --check` | Always for tracked working-tree changes | Open | [output summary] |
+| `git diff --cached --check` plus candidate-path inventory | Before `PublishPR`/`MergeAndSync` commit; equivalent new-file check for `LocalImplementation` | Open | [staged paths, untracked/unstaged boundary, and prior-index preservation] |
 | [command] | [scope trigger] | [Pass/Fail/N/A] | [summary and path] |
 
 For every repository validation helper, record the explicit repository root,
