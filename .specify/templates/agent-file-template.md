@@ -54,20 +54,26 @@ is documented: `security-governance`, `architecture-governance`,
 `isaqb-architecture-governance`, `a11y-governance`,
 `cross-platform-governance`, and `agent-parity-governance`.
 
-`autonomous-run-governance` v0.1.0 mit Priorität 70 ist aus dem öffentlichen
+`autonomous-run-governance` v0.1.2 mit Priorität 70 ist aus dem öffentlichen
 Tag-ZIP installiert. Der projektgebundene Codex-Skill `$speckit-autonomous`
 bleibt an seinem einzelnen Pfad als bewusster lokaler Override bestehen, weil
 er TuiVision-spezifische Nummerierungs-, Build-Zähler-, DocFX-/A11Y- und
 historische Source-Verträge ergänzt. Preset-Command, Retrospektiv-Skill,
 Projekt-Runbook und Adoption-Evidence bleiben die portablen und gemeinsamen
-Nachweisflächen.
+Nachweisflächen. Version 0.1.2 prüft zusätzlich den exakt beabsichtigten
+Staging-Kandidaten und ordnet jedes Acceptance-Gate dem wirklich ausgeführten
+Workflow, Job, Runner beziehungsweise der Plattform und dem Befehl zu; grüne
+Namen und Bypass ersetzen keinen technischen Nachweis.
 
-*`autonomous-run-governance` v0.1.0 at priority 70 is installed from the public
+*`autonomous-run-governance` v0.1.2 at priority 70 is installed from the public
 tag ZIP. Keep the project-owned Codex `$speckit-autonomous` skill at its single
 path as an intentional local override because it adds TuiVision numbering,
 build-counter, DocFX/A11Y, and historical-source contracts. The preset command,
 retrospective skill, project runbook, and adoption evidence remain the portable
-and shared proof surfaces.*
+and shared proof surfaces. Version 0.1.2 additionally validates the exact
+intended staged candidate and maps every acceptance gate to the workflow, job,
+runner or platform, and command that actually executed it; green names and
+bypass do not replace technical proof.*
 
 ## Antigravity-CLI-Übergang / Antigravity CLI Transition
 

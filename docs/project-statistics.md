@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-07-13 (aktualisiert einschließlich Feature 025 vor Remote-Abschluss)
+Stand: 2026-07-13 (aktualisiert einschließlich Feature 025 und Preset v0.1.2)
 
 Aktueller Zusatz: Feature 016 dokumentiert 157/157 Secure-Development-
 Kontrollen, sechs behobene Medium-Funde, 498/498 grüne Release-Tests und eine
@@ -27,10 +27,12 @@ Feature 023 ergänzt die opt-in A11Y-Schicht. Die anschließende Retrospektive
 bindet jede Build-Zählererhöhung an genau einen Build-/Testaufruf und lässt
 Repository-Prüfhelfer bei fehlenden Abhängigkeiten fail-closed abbrechen.
 
-Das aus sechs Feldläufen entstandene `autonomous-run-governance` v0.1.0 ist
-jetzt zusätzlich zu den sechs Standard-Presets aus dem öffentlichen Tag-ZIP
-installiert. Der TuiVision-spezifische Codex-Skill bleibt bis zur vollständigen
-portablen Parität als einzelner lokaler Override erhalten.
+Das aus den Feldläufen entstandene `autonomous-run-governance` ist jetzt als
+v0.1.2 zusätzlich zu den sechs Standard-Presets aus dem öffentlichen Tag-ZIP
+installiert. Die Version prüft den exakten Delivery-Kandidaten und bindet
+Acceptance-Gates an tatsächlich ausgeführte Nachweise. Der TuiVision-spezifische
+Codex-Skill bleibt bis zur vollständigen portablen Parität als einzelner lokaler
+Override erhalten.
 
 Der begrenzte Folgeabgleich führt Antigravity CLI mit `agy` als aktive
 Google-Agentenoberfläche. Gemini CLI bleibt nur als historische oder ausdrücklich
@@ -687,6 +689,7 @@ fortgeschrieben.
 | 2026-07-12 | Closeout und autonome Retrospektive nach Feature 027 | Feature-PR #66 wurde nach vollständig grünen technischen Gates und null GraphQL-Threads als Merge `35414af` geliefert; Copilot blieb quota-bedingt nicht verfügbar und der eng autorisierte Bypass betraf nur Human Approval. Der nicht rekursive Closeout richtet Gate, Pflichtenheft, Intake-Reihenfolge und Agent-Kontexte auf Wave 5 aus. Die Retrospektive fand eine portable Trigger-Lücke: ein Audit-Test erwartete noch `Blocked`, nachdem der Closeout korrekt auf `Eligible` wechselte. CI stoppte, der Validator wurde mit 1/1 Tests korrigiert. Home-Baseline-PR #60 lieferte die Regel als öffentliches Preset v0.1.1; Tag-ZIP und Upstream-Issue #3479 wurden nachgewiesen. Der Vor-Statistik-Diff umfasst `+94/-63`, also 31 Nettozeilen. Konservative Manualreferenz: `1,2` Tage beziehungsweise `9,2` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `0,8` Tage beziehungsweise `5,9` Stunden bei 125 Zeilen/Tag. |
 | 2026-07-12 | Audit-Revision 2 und Intake-Vorbereitung für 025, 026 und 028 | Eine kritische Verbraucherprüfung gegen die read-only Quellen `TVDEMOS/` und `TVFM/` korrigiert die Zukunftsentscheidung, ohne die historischen 024-/027-Läufe umzuschreiben. Die 48 Verträge stehen nun bei 7 `Aligned`, 27 `IntentionalModernization`, 1 `ConsciouslyOmitted`, 8 `BehavioralDrift` und 5 `EvidenceGap`; neun Findings gehören verbindlich zu `Core025`, vier zu `ComponentData026`. Der Validator prüft beidseitige Inventarrelationen, geschlossene Finding-Felder und existierende Source-Evidence. Drei neue Lastenhefte schreiben 025 -> 026 -> 028 fest; nächster Intake ist Lastenheft 10, heute wurde kein autonomer Lauf gestartet. Der Vor-Statistik-Snapshot umfasst `+0/-0` Produktionscode, `+138/-12` Testvalidator, `+1852/-277` Dokumentation/Evidence/Guidance und nur ausgleichende Versionsmetadaten, insgesamt `+1993/-292` beziehungsweise 1701 Nettozeilen. Konservative Manualreferenz für 1993 hinzugefügte oder aktualisierte Zeilen: `24,9` Tage beziehungsweise `194,3` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `15,9` Tage beziehungsweise `124,4` Stunden bei 125 Zeilen/Tag. Statische Integrität, Format und targeted Auditvalidator 11/11 sind grün; DocFX besteht mit 0 Warnungen/0 Fehlern und Playwright/Axe mit 2/2. |
 | 2026-07-13 | `/speckit-autonomous` für `025-core-runtime-conformance-hardening` | Feature 025 schließt `F001` bis `F009` test-first: konkrete Event-Kinds, validator-eigenes Fokus-Veto, zustandsspezifische Group-Propagation, ein Pending-Slot mit Idle/CPU-Freigabe, Desktop-Stack-Operationen, sichtbares Close und owner-lokale Modalität, gemeinsamer Command-Kontext, kanonischer realer Keyboard-Ingress sowie eine begrenzte Pointer-/Tastatur-Drag-Session. Feature 024 enthält nun 127 moderne Source-Dateien, 192 öffentliche Typen und exakt neun nicht dokumentationsbasierte `Closed`-Resolutionen; `F010` bis `F013`, Feature 026/028 und beide Wave-Gates bleiben offen. Der Vor-Statistik-Snapshot umfasst `+1641/-150` Produktionscode, `+1237/-33` Tests, `+2598/-46` Dokumentation/Evidence/Guidance und `+5/-4` Metadaten, zusammen `+5481/-233` beziehungsweise 5248 Nettozeilen. Konservative Manualreferenz für 5481 hinzugefügte oder aktualisierte Zeilen: `68,5` Tage beziehungsweise `534,4` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `43,8` Tage beziehungsweise `342,0` Stunden bei 125 Zeilen/Tag. Das sichtbare Arbeitsfenster ist der autonome Lauf am 2026-07-13; `68,5x` und `43,8x` beschreiben überprüfbare Lieferdichte, keine Stoppuhrzeit. Lokale Abschlussgates und Remote-Evidence werden nach dieser Statistikzeile in derselben Feature-Evidence ergänzt. |
+| 2026-07-13 | `autonomous-run-governance` v0.1.2 veröffentlicht und adoptiert | Die zwei Feature-025-Erkenntnisse zur exakten Staging-Kandidatenprüfung und zur Zuordnung jedes Acceptance-Gates zu wirklich ausgeführtem Workflow, Job, Runner beziehungsweise Plattform und Befehl sind portabel produktisiert. Home-Baseline-PR #61 und öffentlicher Preset-PR #2 wurden gemergt; Tag/Release v0.1.2 und das GitHub-ZIP mit SHA-256 `6e401289...e2d0` sind geprüft. TuiVision installiert die Version aus dem Tag-ZIP bei Priorität 70; alle sieben Presets bleiben aufgelöst, Codex/Antigravity, Claude, Copilot und OpenCode zeigen beide Commands je Oberfläche genau einmal, und der TuiVision-Codex-Override bleibt bytegleich. Der Vor-Statistik-Snapshot umfasst `+292/-29`, also 263 Nettozeilen in Preset, Registry, generierten Agent-Flächen, Guidance, Template und Evidence ohne Runtime-, Test-, Paket-, Beispiel- oder `tv203s/`-Änderung. Konservative Manualreferenz für 292 hinzugefügte oder aktualisierte Zeilen: `3,7` Tage beziehungsweise `28,5` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `2,3` Tage beziehungsweise `18,2` Stunden bei 125 Zeilen/Tag. `specify check`, Tag-ZIP-/Payload-/Resolve-/Eindeutigkeits-/Override- und Agentenparitätsprüfung sind grün; DocFX, Playwright/Axe, Lynx, Diff und Secrets schließen den Adoptions-PR ab. |
 
 ## Gesamtstatistik
 

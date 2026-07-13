@@ -48,7 +48,17 @@ authority from general autonomy.
    exactly one explicit invocation.
 7. Pass repository roots explicitly to validation helpers. A pass needs the
    expected exit status, required output, and a clean structured/error channel.
-8. Route out-of-scope findings to named follow-up evidence instead of silently
+8. Before classifying a change as documentation- or evidence-only and skipping
+   executable tests, search for validators that read the changed paths, markers,
+   schemas, or status values. Update and run every affected validator in the
+   same change.
+9. Validate the exact delivery candidate before every authorized commit. Stage
+   only intended paths, run `git diff --cached --check`, and reconcile the
+   staged path inventory with repository status so intended untracked or
+   unstaged files cannot escape validation. Preserve unrelated work. In
+   `LocalImplementation`, use a per-file or temporary-index equivalent and
+   restore the original index state.
+10. Route out-of-scope findings to named follow-up evidence instead of silently
    expanding the feature.
 
 ## Remote Closeout
@@ -57,6 +67,11 @@ Remote review converges only when required checks pass and no actionable thread
 remains. An unavailable reviewer is missing, never approval. Equivalent push
 and review-request check sets may be classified as duplicate noise, but must
 not be cancelled without an explicit safe concurrency contract.
+
+Before merge, map every acceptance-specific gate to the workflow, job, runner
+or platform, and command that actually executed it. A green aggregate or a
+platform-named job proves only its executed scope. Missing required proof
+blocks merge and cannot be replaced by a permission or ruleset bypass.
 
 Use one pre-named causal closeout only when current-head or post-merge facts
 cannot be committed without invalidating themselves. Keep it evidence-only and
