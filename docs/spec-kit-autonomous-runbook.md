@@ -241,6 +241,7 @@ retrospective.
 | Bash-/PowerShell-Skript | Syntax, Vertragsparität und relevante OS-Matrix |
 | Sichtbare TUI | Echter App-Loop, konkreter Zustand, View-Tree und Buffer-/Cell-Proof |
 | Historisch abgeleitetes Verhalten | Relevante `.c`/`.cc`- und bei Bedarf Header-Prüfung unter `tv203s/` |
+| Remote Acceptance-Gate | Workflow, Job, Plattform und tatsächlich ausgeführter Command müssen den geforderten Proof abdecken; ein grüner Name oder Aggregatstatus genügt nicht |
 
 Vor jedem `dotnet build` oder `dotnet test` wird der manuelle Build-Zähler
 erhöht. Eine Erhöhung autorisiert genau einen expliziten Build- oder Testaufruf;
@@ -315,20 +316,24 @@ and agent parity.
 Ein `MergeAndSync`-Lauf endet mit:
 
 1. grünen verpflichtenden Checks,
-2. null offenen actionable Review-Threads,
-3. dokumentierten fehlenden oder nicht verfügbaren Reviews,
-4. autorisiertem Merge und dokumentiertem Bypass, falls erforderlich,
-5. gelöschtem oder bewusst behaltenem Remote-Featurebranch,
-6. lokalem `main` mit `HEAD == origin/main`, sauberem Working Tree und Prune,
-7. einem Evidence-only-Closeout-PR nur dann, wenn Post-Merge-Fakten vorher nicht
+2. einer Acceptance-Gate-Zuordnung, die für jeden geforderten Proof den
+   tatsächlichen Workflow, Job, Plattform und ausgeführten Command belegt,
+3. null offenen actionable Review-Threads,
+4. dokumentierten fehlenden oder nicht verfügbaren Reviews,
+5. autorisiertem Merge und dokumentiertem Bypass, falls erforderlich,
+6. gelöschtem oder bewusst behaltenem Remote-Featurebranch,
+7. lokalem `main` mit `HEAD == origin/main`, sauberem Working Tree und Prune,
+8. einem Evidence-only-Closeout-PR nur dann, wenn Post-Merge-Fakten vorher nicht
    wahrheitsgemäß dokumentiert werden konnten oder der Evidence-Commit den
    geprüften Head und damit seine eigene Aussage sofort entwerten würde.
 
-A `MergeAndSync` run ends with passing required checks, no actionable review
-threads, documented unavailable reviews, an authorized merge, branch cleanup,
-a clean local `main` equal to `origin/main`, and an evidence-only closeout PR
-only when post-merge facts could not truthfully be recorded earlier or the
-evidence commit would invalidate the reviewed head it claims to describe.
+A `MergeAndSync` run ends with passing required checks, an acceptance-gate map
+that identifies the actual workflow, job, platform, and command for every
+required proof, no actionable review threads, documented unavailable reviews,
+an authorized merge, branch cleanup, a clean local `main` equal to
+`origin/main`, and an evidence-only closeout PR only when post-merge facts could
+not truthfully be recorded earlier or the evidence commit would invalidate the
+reviewed head it claims to describe.
 
 ## Laufende Verfeinerung / Continuous Refinement
 

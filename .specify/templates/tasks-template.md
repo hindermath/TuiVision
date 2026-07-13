@@ -65,6 +65,10 @@ description: "Task list template for feature implementation"
   review threads, branch cleanup, and proof that local `main` equals
   `origin/main`. Every remote or delivery task must name the exact repository
   evidence path that records its acceptance result.
+- Before a merge task, add an acceptance-gate mapping task that verifies the
+  actual workflow, job, platform, and executed command for every required proof.
+  A green aggregate or platform-named tooling job must not satisfy a runtime,
+  platform, documentation, security, or other gate it did not execute.
 - Keep pre-merge gate verification explicit, but route current-head review
   facts to one named closeout evidence path when committing those facts would
   change the reviewed head and invalidate the evidence. Do not create repeated

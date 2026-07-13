@@ -59,6 +59,10 @@ triggers, residual risks, review state, and follow-ups current during the run.
 - Remote review converges when required checks pass and no actionable review
   thread remains. Record unavailable reviewers or quota failures as evidence;
   never represent them as successful reviews.
+- Before merge, map every acceptance-specific gate to the actual workflow, job,
+  platform, and command that produced its evidence. A green aggregate or an OS
+  name is insufficient when the job did not execute the required runtime,
+  platform, documentation, security, or other proof. Missing scope blocks merge.
 
 ## Shape Work
 

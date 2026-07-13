@@ -192,6 +192,7 @@ version or another upstream contribution.
 | Der erste Green-Lauf des Feature-024-Validators fand zwei veraltete Proof-Methodennamen, bevor die neun Findings geschlossen wurden. | `NoPromotion` | Die in Feature 027 promovierte Regel für ausführbare status- und evidence-lesende Validatoren funktionierte bereits wie vorgesehen. |
 | Eine lokale Abschluss-Schleife zählte T139 versehentlich in die Prüfung T001-T138 ein. Die exakte Einzel-ID-Prüfung korrigierte den Harness vor der Evidence-Abnahme. | `FeatureSpecific`, `NoPromotion` | Das war kein Fehler in Skill, Template oder erzeugter Taskliste. Eine allgemeine Task-ID-Skriptregel wäre nach einem einmaligen lokalen Hilfsbefehl unverhältnismäßig. |
 | Alle PR-Kontext-Checks und Claude waren grün, GraphQL meldete null Threads, Copilot blieb quota-bedingt nicht verfügbar und nur Human Approval blockierte. | `NoPromotion` | Der genehmigte enge Admin-Bypass blieb bei PR #69 auf genau diese Ruleset-Regel begrenzt. Push-Duplikate blieben operatives Rauschen. |
+| Der grüne Windows-Job von PR #69 hieß `Repository Tooling (windows-2022)`, führte aber keinen .NET-Runtime-Test aus. Die fehlende FR-030-Plattform-Evidence wurde erst beim kausalen Closeout erkannt und durch Actions-Run 29282485680 mit 725/725 Tests auf `windows-latest` geschlossen. | `ValidationAutomation`, `SkillCorrection`, `TemplateCorrection`, `AgentPolicyCorrection`, `PresetFollowUp` mit `Promote` | Vor Merge muss jedes Acceptance-Gate dem tatsächlichen Workflow, Job, Betriebssystem und ausgeführten Command zugeordnet werden. Grüne Namen oder Aggregatstatus dürfen keinen nicht ausgeführten Proof ersetzen. |
 
 ### Promotion Evidence
 
@@ -205,6 +206,19 @@ version or another upstream contribution.
 | Berechtigungs- und Evidence-Risiko | Fremde Änderungen dürfen nicht gestaged werden. `LocalImplementation` verwendet eine Einzeldatei- oder temporäre Indexprüfung und stellt den vorherigen Indexzustand wieder her. |
 | Reproduzierbarer Test | In einem temporären Repository eine neue Datei mit nachgestellten Leerzeichen anlegen: `git diff --check` bleibt erfolgreich; nach dem gezielten Staging muss `git diff --cached --check` fehlschlagen. Nach Bereinigung müssen beide Kandidateninventare übereinstimmen und der Cached-Check bestehen. |
 | Portable Entscheidung | `Promote`; Übergabe als `PresetFollowUp` an das Feature-025-Workitem der Home Baseline. |
+
+### Promotion Evidence: Remote Gate Scope
+
+| Feld | Nachweis |
+|---|---|
+| Quelle | PR #69, `.github/workflows/ci.yml`, `.github/workflows/homogeneity-check.yml` und erfolgreicher Windows-Runtime-Run 29282485680 auf dem temporären, danach gelöschten Proof-Branch |
+| Artefaktart | Skill, Runbook, Tasks-Template, Evidence-Template, Agent-Guidance und portables Preset-Follow-up |
+| Projektspezifischer Ausschluss | Keine konkrete GitHub-Actions-Matrix, kein TuiVision-Testname und keine Windows-Pflicht wird pauschal auf andere Projekte übertragen. |
+| Provider-neutrale Zielregel | Jeder verpflichtende Acceptance-Proof wird vor Merge auf den tatsächlichen Workflow, Job, Runner beziehungsweise Plattform und ausgeführten Command zurückgeführt. Ein grüner Check gilt nur für den nachweislich ausgeführten Scope. |
+| Auftreten und Vertrauen | Ein deterministischer Evidence-Integritätsfehler; hohe Sicherheit, weil Workflow und Log objektiv zeigten, dass der grüne Windows-Tooling-Job keine Runtime ausführte. |
+| Berechtigungs- und Evidence-Risiko | Hoch: Ein Merge trotz fehlendem Pflichtproof verletzt den akzeptierten Vertrag. Ein Bypass darf fehlende fachliche Evidence niemals ersetzen. |
+| Reproduzierbarer Test | Zwei grüne Jobs mit demselben Plattformnamen bereitstellen, von denen nur einer die geforderte Runtime ausführt. Der Readiness-Gate muss den Tooling-only-Job ablehnen und erst den Log-/Command-belegten Runtime-Job akzeptieren. |
+| Portable Entscheidung | `Promote`; als zweites Feature-025-Workitem-Delta an Home Baseline übergeben. |
 
 ### Nächster Prüfschritt / Next Check
 
