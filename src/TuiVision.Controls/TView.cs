@@ -297,6 +297,20 @@ public class TView : TObject
         State = enable ? State | state : State & ~state;
 
     /// <summary>
+    /// Prüft vor einem Fokuswechsel, ob diese View ihren aktuellen Fokus freigeben darf.
+    /// Abgeleitete Eingabe-Views können hier unbestätigte Daten ablehnen, ohne den
+    /// Fokuszustand bereits zu verändern.
+    ///
+    /// Checks before a focus transition whether this view may release its current focus.
+    /// Derived input views can reject unconfirmed data here without changing focus state first.
+    /// </summary>
+    /// <returns>
+    /// <c>true</c>, wenn der Wechsel fortgesetzt werden darf; andernfalls <c>false</c>.
+    /// <c>true</c> when the transition may continue; otherwise <c>false</c>.
+    /// </returns>
+    public virtual bool CanReleaseFocus() => true;
+
+    /// <summary>
     /// Gibt die minimale und maximale Größe zurück, auf die diese Ansicht skaliert werden darf.
     /// Abgeleitete Klassen überschreiben diese Methode, um Größenbeschränkungen festzulegen.
     ///

@@ -6,7 +6,7 @@
 - [ ] Offen oder im Repository derzeit nicht belastbar nachweisbar
 
 Hinweis:
-Die Statusmarken in diesem Dokument basieren auf dem lokalen Repository-Stand vom 2026-07-12.
+Die Statusmarken in diesem Dokument basieren auf dem lokalen Repository-Stand vom 2026-07-13.
 Externe GitHub-Einstellungen oder nicht versionierte Nachweisartefakte sind nur dann als erledigt markiert, wenn sie im Repository direkt belegbar sind.
 
 ## 1. Zweck und Geltungsbereich
@@ -678,12 +678,12 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
      - **PF-A11Y-005**: `TColorScheme.HighContrast` ist explizit aktivierbar; der aktive Modus bleibt zusätzlich textbasiert erkennbar.
      - **PF-A11Y-006**: DocFX-Seiten werden im vorhandenen Pages-Workflow bei `main` und Pull Requests mit Playwright/Axe geprüft; Fehler blockieren den Nachweis.
    - `3.6` = TV203-/Free-Vision-Konformitätsaudit — ✓ HISTORISCH ABGESCHLOSSEN; Consumer-Review-Revision 2 mit 13 Findings aktiv (Feature 024)
-   - `3.6a` = Core-Runtime-Konformitätshärtung — OFFEN, 9 Findings (Feature 025, Lastenheft 10)
-   - `3.6b` = Component-/Data-Konformitätshärtung — OFFEN NACH 025, 4 Findings (Feature 026, Lastenheft 11)
+   - `3.6a` = Core-Runtime-Konformitätshärtung — ✓ ABGESCHLOSSEN, 9 Findings mit realem Red-/Green-Proof (Feature 025)
+   - `3.6b` = Component-/Data-Konformitätshärtung — OFFEN, 4 Findings (Feature 026, Lastenheft 11)
    - `3.6c` = Ursprünglicher Pre-Wave-5-Konformitätsabschluss — ✓ HISTORISCH ABGESCHLOSSEN UND FÜR ZUKUNFTSPLANUNG SUPERSEDED (Feature 027, Merge `35414af`)
    - `3.6d` = Kombinierter Pre-Wave-5-/Wave-6-Konformitätsabschluss — OFFEN NACH 025 UND 026 (Feature 028, Lastenheft 12)
 
->>> NÄCHSTER SCHRITT <<< `Lastenheft_10_Core-Runtime-Conformance-Hardening.md` als Feature 025 ausführen; heute wird kein autonomer Lauf gestartet.
+>>> NÄCHSTER SCHRITT <<< `Lastenheft_11_Component-Data-Conformance-Hardening.md` als Feature 026 ausführen; Wave 5 und Wave 6 bleiben bis zum Abschluss von Feature 028 blockiert.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

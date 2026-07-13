@@ -159,6 +159,47 @@ public sealed class CorePortTests
     }
 
     /// <summary>
+    /// Prüft, dass die Factory nur konkrete Mausarten akzeptiert und Filtermasken,
+    /// gemischte Kanäle sowie unbekannte Bits vor der Erzeugung verwirft.
+    ///
+    /// Verifies that the factory accepts only concrete mouse kinds and rejects
+    /// filter masks, mixed channels, and unknown bits before construction.
+    /// </summary>
+    [TestMethod]
+    public void TEvent_CreateMouse_AcceptsConcreteKindsAndRejectsMasksOrComposites()
+    {
+        TEventKind[] concreteKinds =
+        [
+            TEventKind.MouseDown,
+            TEventKind.MouseUp,
+            TEventKind.MouseMove,
+            TEventKind.MouseAuto
+        ];
+
+        foreach (TEventKind kind in concreteKinds)
+        {
+            Assert.AreEqual(
+                kind,
+                TEvent.CreateMouse(kind, TMouseButtons.Left, false, new TPoint(3, 4)).What);
+        }
+
+        TEventKind[] invalidKinds =
+        [
+            TEventKind.Mouse,
+            TEventKind.MouseDown | TEventKind.MouseMove,
+            TEventKind.MouseDown | TEventKind.Command,
+            TEventKind.MouseDown | (TEventKind)0x4000
+        ];
+
+        foreach (TEventKind kind in invalidKinds)
+        {
+            Assert.ThrowsExactly<ArgumentOutOfRangeException>(
+                () => TEvent.CreateMouse(kind, TMouseButtons.Left, false, new TPoint(3, 4)),
+                $"Kind {kind} must be rejected before an event is created.");
+        }
+    }
+
+    /// <summary>
     /// Prüft, dass <see cref="TEvent"/> Tastatur-, Broadcast- und None-Kanäle korrekt initialisiert.
     ///
     /// Verifies that <see cref="TEvent"/> correctly initializes keyboard, broadcast, and none channels.

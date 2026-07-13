@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TuiVision.Compatibility\TuiVision.Compatibility.csproj" />
     <ProjectReference Include="..\TuiVision.Core\TuiVision.Core.csproj" />
     <ProjectReference Include="..\TuiVision.Drivers.Console\TuiVision.Drivers.Console.csproj" />
     <ProjectReference Include="..\TuiVision.Serialization\TuiVision.Serialization.csproj" />

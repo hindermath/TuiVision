@@ -5,7 +5,7 @@
     "auditDate": "2026-07-12",
     "historicalLedgerPath": "docs/porting-status.md",
     "historicalRowCount": 151,
-    "modernSourceCount": 119,
+    "modernSourceCount": 127,
     "freeVisionRepository": "https://gitlab.com/freepascal.org/fpc/source.git",
     "freeVisionCommit": "ffc03b34d8cafb85ddcf0686de1c5551601dacb2",
     "consumerScope": [
@@ -103,12 +103,14 @@
       "modernSourceItemIds": [
         "M005",
         "M039",
-        "M072"
+        "M072",
+        "M127"
       ],
       "publicContractItemIds": [
         "P024",
         "P028",
-        "P161"
+        "P161",
+        "P192"
       ],
       "contractIds": [
         "C007",
@@ -160,7 +162,9 @@
         "M021",
         "M055",
         "M074",
-        "M075"
+        "M075",
+        "M120",
+        "M123"
       ],
       "publicContractItemIds": [
         "P026",
@@ -169,7 +173,13 @@
         "P116",
         "P120",
         "P142",
-        "P163"
+        "P163",
+        "P179",
+        "P181",
+        "P182",
+        "P183",
+        "P185",
+        "P186"
       ],
       "contractIds": [
         "C013",
@@ -197,7 +207,9 @@
         "M065",
         "M066",
         "M067",
-        "M069"
+        "M069",
+        "M121",
+        "M124"
       ],
       "publicContractItemIds": [
         "P115",
@@ -207,7 +219,10 @@
         "P151",
         "P172",
         "P173",
-        "P174"
+        "P174",
+        "P177",
+        "P178",
+        "P184"
       ],
       "contractIds": [
         "C016",
@@ -572,7 +587,10 @@
         "M001",
         "M002",
         "M004",
-        "M094"
+        "M094",
+        "M122",
+        "M125",
+        "M126"
       ],
       "publicContractItemIds": [
         "P001",
@@ -585,7 +603,13 @@
         "P017",
         "P020",
         "P112",
-        "P113"
+        "P113",
+        "P180",
+        "P187",
+        "P188",
+        "P189",
+        "P190",
+        "P191"
       ],
       "contractIds": [
         "C034",
@@ -3469,6 +3493,78 @@
       "contractIds": [
         "C025"
       ]
+    },
+    {
+      "itemId": "M120",
+      "path": "src/TuiVision.Controls/ICloseableView.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D05",
+      "contractIds": [
+        "C015"
+      ]
+    },
+    {
+      "itemId": "M121",
+      "path": "src/TuiVision.Controls/ICommandStateProvider.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D06",
+      "contractIds": [
+        "C017"
+      ]
+    },
+    {
+      "itemId": "M122",
+      "path": "src/TuiVision.Controls/IDragTarget.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D12",
+      "contractIds": [
+        "C036"
+      ]
+    },
+    {
+      "itemId": "M123",
+      "path": "src/TuiVision.Controls/TCloseResult.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D05",
+      "contractIds": [
+        "C015"
+      ]
+    },
+    {
+      "itemId": "M124",
+      "path": "src/TuiVision.Controls/TCommandContext.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D06",
+      "contractIds": [
+        "C017"
+      ]
+    },
+    {
+      "itemId": "M125",
+      "path": "src/TuiVision.Controls/TDragResult.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D12",
+      "contractIds": [
+        "C036"
+      ]
+    },
+    {
+      "itemId": "M126",
+      "path": "src/TuiVision.Controls/TDragSession.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D12",
+      "contractIds": [
+        "C036"
+      ]
+    },
+    {
+      "itemId": "M127",
+      "path": "src/TuiVision.Controls/TFocusTransitionResult.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D03",
+      "contractIds": [
+        "C008"
+      ]
     }
   ],
   "publicContractItems": [
@@ -5059,6 +5155,150 @@
       "contractIds": [
         "C025"
       ]
+    },
+    {
+      "itemId": "P177",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.CommandContextRefreshTrigger",
+      "domainId": "D06",
+      "contractIds": [
+        "C017"
+      ]
+    },
+    {
+      "itemId": "P178",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.ICommandStateProvider",
+      "domainId": "D06",
+      "contractIds": [
+        "C017"
+      ]
+    },
+    {
+      "itemId": "P179",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.ICloseableView",
+      "domainId": "D05",
+      "contractIds": [
+        "C015"
+      ]
+    },
+    {
+      "itemId": "P180",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.IDragTarget",
+      "domainId": "D12",
+      "contractIds": [
+        "C036"
+      ]
+    },
+    {
+      "itemId": "P181",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.TCloseDecision",
+      "domainId": "D05",
+      "contractIds": [
+        "C015"
+      ]
+    },
+    {
+      "itemId": "P182",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.TCloseResult",
+      "domainId": "D05",
+      "contractIds": [
+        "C015"
+      ]
+    },
+    {
+      "itemId": "P183",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.TCloseTrigger",
+      "domainId": "D05",
+      "contractIds": [
+        "C015"
+      ]
+    },
+    {
+      "itemId": "P184",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.TCommandContext",
+      "domainId": "D06",
+      "contractIds": [
+        "C017"
+      ]
+    },
+    {
+      "itemId": "P185",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.TDesktopOperationKind",
+      "domainId": "D05",
+      "contractIds": [
+        "C014"
+      ]
+    },
+    {
+      "itemId": "P186",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.TDesktopOperationResult",
+      "domainId": "D05",
+      "contractIds": [
+        "C014"
+      ]
+    },
+    {
+      "itemId": "P187",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.TDragCompletionReason",
+      "domainId": "D12",
+      "contractIds": [
+        "C036"
+      ]
+    },
+    {
+      "itemId": "P188",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.TDragInputMode",
+      "domainId": "D12",
+      "contractIds": [
+        "C036"
+      ]
+    },
+    {
+      "itemId": "P189",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.TDragResult",
+      "domainId": "D12",
+      "contractIds": [
+        "C036"
+      ]
+    },
+    {
+      "itemId": "P190",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.TDragSession",
+      "domainId": "D12",
+      "contractIds": [
+        "C036"
+      ]
+    },
+    {
+      "itemId": "P191",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.TDragSessionState",
+      "domainId": "D12",
+      "contractIds": [
+        "C036"
+      ]
+    },
+    {
+      "itemId": "P192",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.TFocusTransitionResult",
+      "domainId": "D03",
+      "contractIds": [
+        "C008"
+      ]
     }
   ],
   "contracts": [
@@ -5329,10 +5569,12 @@
         "H094"
       ],
       "modernSourceItemIds": [
-        "M039"
+        "M039",
+        "M127"
       ],
       "publicContractItemIds": [
-        "P028"
+        "P028",
+        "P192"
       ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/tpwobj.cc",
@@ -5379,7 +5621,7 @@
       "primaryDecision": "BehavioralDrift",
       "freeVisionRelation": "CorroboratesOriginal",
       "modernCSharpRationale": "None",
-      "proof": "tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_SetState_Focused_PropagatesDirectChildren; tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_Draw_CallsDrawViewOnVisibleChildrenInInsertionOrder",
+      "proof": "tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_SetState_Focused_AppliesOnlyToCurrent; tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_Draw_CallsDrawViewOnVisibleChildrenInInsertionOrder",
       "risk": "Several children can appear focused or disabled through group state even though only one current child owns focus.",
       "findingId": "F003",
       "downstreamDisposition": "Core025"
@@ -5533,7 +5775,9 @@
       ],
       "publicContractItemIds": [
         "P027",
-        "P120"
+        "P120",
+        "P185",
+        "P186"
       ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/tbackgro.cc",
@@ -5565,11 +5809,17 @@
         "H126"
       ],
       "modernSourceItemIds": [
-        "M055"
+        "M055",
+        "M120",
+        "M123"
       ],
       "publicContractItemIds": [
         "P108",
-        "P142"
+        "P142",
+        "P179",
+        "P181",
+        "P182",
+        "P183"
       ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/tdesktop.cc",
@@ -5640,12 +5890,17 @@
       ],
       "modernSourceItemIds": [
         "M050",
-        "M066"
+        "M066",
+        "M121",
+        "M124"
       ],
       "publicContractItemIds": [
         "P147",
         "P151",
-        "P174"
+        "P174",
+        "P177",
+        "P178",
+        "P184"
       ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/tmenubox.cc",
@@ -6488,12 +6743,21 @@
         "H146"
       ],
       "modernSourceItemIds": [
-        "M004"
+        "M004",
+        "M122",
+        "M125",
+        "M126"
       ],
       "publicContractItemIds": [
         "P012",
         "P015",
-        "P020"
+        "P020",
+        "P180",
+        "P187",
+        "P188",
+        "P189",
+        "P190",
+        "P191"
       ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/linux/linuxkey.cc",
@@ -6509,7 +6773,7 @@
       "primaryDecision": "EvidenceGap",
       "freeVisionRelation": "CorroboratesOriginal",
       "modernCSharpRationale": "None",
-      "proof": "tests/TuiVision.Controls.Tests/TProgramMouseIntegrationTests.cs::AppLoop_TitleDrag_ChangesWindowAndRenderedRegion; tests/TuiVision.Controls.Tests/TWindowMouseDragTests.cs::KeyboardMoveMode_RemainsCompleteFallback",
+      "proof": "tests/TuiVision.Controls.Tests/TProgramMouseIntegrationTests.cs::AppLoop_TitleDrag_ChangesWindowAndRenderedRegion; tests/TuiVision.Controls.Tests/TWindowMouseDragTests.cs::KeyboardMoveMode_F009_RemainsCompleteFallback",
       "risk": "Consumer code would need pointer-only local loops that bypass shared capture, cancellation, keyboard fallback, and A11Y policy.",
       "findingId": "F009",
       "downstreamDisposition": "Core025"
@@ -7324,6 +7588,196 @@
       "acceptanceBoundary": "Choose and prove an explicit modern description or registration model for named menu, status-line, and dialog resources with strict malformed-input rejection.",
       "nonGoals": "No binary compatibility with historical resource files and no arbitrary runtime type activation.",
       "disposition": "ComponentData026"
+    }
+  ],
+  "resolutions": [
+    {
+      "resolutionId": "R025-F001",
+      "findingId": "F001",
+      "featureId": "025-core-runtime-conformance-hardening",
+      "status": "Closed",
+      "implementationDecision": "Implemented",
+      "documentationOnly": false,
+      "redProof": "Build 215 rejected the pre-fix composite-kind behavior.",
+      "greenProof": "Build 216 passed the concrete-kind and invalid-mask matrix 1/1.",
+      "changeEvidence": [
+        "src/TuiVision.Core/TEvent.cs"
+      ],
+      "testEvidence": [
+        "tests/TuiVision.Core.Tests/Test1.cs::TEvent_CreateMouse_AcceptsConcreteKindsAndRejectsMasksOrComposites"
+      ],
+      "evidencePath": "specs/025-core-runtime-conformance-hardening/pr-evidence.md#finding-decisions-and-follow-ups",
+      "resolvedDate": "2026-07-13",
+      "reevaluationTrigger": "A public event factory or concrete event-kind set changes."
+    },
+    {
+      "resolutionId": "R025-F002",
+      "findingId": "F002",
+      "featureId": "025-core-runtime-conformance-hardening",
+      "status": "Closed",
+      "implementationDecision": "Implemented",
+      "documentationOnly": false,
+      "redProof": "Build 219 failed because no validator-owned focus-release contract existed.",
+      "greenProof": "Build 220 passed the accepted, rejected, no-op, eligibility, and state-preservation matrix 6/6.",
+      "changeEvidence": [
+        "src/TuiVision.Controls/TView.cs",
+        "src/TuiVision.Controls/TGroup.cs",
+        "src/TuiVision.Controls/TFocusTransitionResult.cs"
+      ],
+      "testEvidence": [
+        "tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_TrySetFocus_VetoAndEligibilityAreAtomic"
+      ],
+      "evidencePath": "specs/025-core-runtime-conformance-hardening/pr-evidence.md#finding-decisions-and-follow-ups",
+      "resolvedDate": "2026-07-13",
+      "reevaluationTrigger": "Focus ownership, eligibility, validation, or announcement ordering changes."
+    },
+    {
+      "resolutionId": "R025-F003",
+      "findingId": "F003",
+      "featureId": "025-core-runtime-conformance-hardening",
+      "status": "Closed",
+      "implementationDecision": "Implemented",
+      "documentationOnly": false,
+      "redProof": "Build 221 exposed uniform Focused and Disabled propagation plus missing Dragging inheritance.",
+      "greenProof": "Build 222 passed the state-responsibility matrix 7/7.",
+      "changeEvidence": [
+        "src/TuiVision.Controls/TGroup.cs"
+      ],
+      "testEvidence": [
+        "tests/TuiVision.Controls.Tests/TGroupTests.cs"
+      ],
+      "evidencePath": "specs/025-core-runtime-conformance-hardening/pr-evidence.md#finding-decisions-and-follow-ups",
+      "resolvedDate": "2026-07-13",
+      "reevaluationTrigger": "Group state propagation or insertion inheritance changes."
+    },
+    {
+      "resolutionId": "R025-F004",
+      "findingId": "F004",
+      "featureId": "025-core-runtime-conformance-hardening",
+      "status": "Closed",
+      "implementationDecision": "Implemented",
+      "documentationOnly": false,
+      "redProof": "Build 223 failed because pending-event, idle, CPU-release, and nonblocking input seams were absent.",
+      "greenProof": "Build 225 passed the real Run and GetEvent lifecycle matrix 4/4.",
+      "changeEvidence": [
+        "src/TuiVision.Controls/TProgram.cs"
+      ],
+      "testEvidence": [
+        "tests/TuiVision.Controls.Tests/TProgramTests.cs::TProgram_Run_IdleAndPendingOrdering_IsDeterministic"
+      ],
+      "evidencePath": "specs/025-core-runtime-conformance-hardening/pr-evidence.md#finding-decisions-and-follow-ups",
+      "resolvedDate": "2026-07-13",
+      "reevaluationTrigger": "Event polling, pending storage, idle scheduling, or shutdown changes."
+    },
+    {
+      "resolutionId": "R025-F005",
+      "findingId": "F005",
+      "featureId": "025-core-runtime-conformance-hardening",
+      "status": "Closed",
+      "implementationDecision": "Implemented",
+      "documentationOnly": false,
+      "redProof": "Build 228 failed because the coherent Desktop stack and operation-result API was absent.",
+      "greenProof": "Build 229 passed insertion, selection, tile, cascade, and close-all proof 4/4.",
+      "changeEvidence": [
+        "src/TuiVision.Controls/TDesktop.cs",
+        "src/TuiVision.Controls/TGroup.cs"
+      ],
+      "testEvidence": [
+        "tests/TuiVision.Controls.Tests/TDesktopTests.cs::TDesktop_F005_TileAndCascadeStayInsideBoundsForMixedChildren"
+      ],
+      "evidencePath": "specs/025-core-runtime-conformance-hardening/pr-evidence.md#finding-decisions-and-follow-ups",
+      "resolvedDate": "2026-07-13",
+      "reevaluationTrigger": "Desktop Z-order, focus, geometry, or close-all policy changes."
+    },
+    {
+      "resolutionId": "R025-F006",
+      "findingId": "F006",
+      "featureId": "025-core-runtime-conformance-hardening",
+      "status": "Closed",
+      "implementationDecision": "Implemented",
+      "documentationOnly": false,
+      "redProof": "Build 230 failed because explicit close decisions and owner-scoped modal execution were absent.",
+      "greenProof": "Builds 232 and 233 passed focused and integrated close/modal lifecycle proof 10/10.",
+      "changeEvidence": [
+        "src/TuiVision.Controls/ICloseableView.cs",
+        "src/TuiVision.Controls/TCloseResult.cs",
+        "src/TuiVision.Controls/TDialog.cs",
+        "src/TuiVision.Controls/TWindow.cs"
+      ],
+      "testEvidence": [
+        "tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_F006_ExecuteModalIsolatesAndRestoresOwnershipAndFocus",
+        "tests/TuiVision.Controls.Tests/TWindowTests.cs"
+      ],
+      "evidencePath": "specs/025-core-runtime-conformance-hardening/pr-evidence.md#finding-decisions-and-follow-ups",
+      "resolvedDate": "2026-07-13",
+      "reevaluationTrigger": "Close validation, modal ownership, result, cleanup, or focus restoration changes."
+    },
+    {
+      "resolutionId": "R025-F007",
+      "findingId": "F007",
+      "featureId": "025-core-runtime-conformance-hardening",
+      "status": "Closed",
+      "implementationDecision": "Implemented",
+      "documentationOnly": false,
+      "redProof": "Build 226 failed because no shared opt-in command-state provider or immutable context existed.",
+      "greenProof": "Build 227 passed focus, handled-event, idle, pre-dispatch, menu, status, and editor proof 4/4.",
+      "changeEvidence": [
+        "src/TuiVision.Controls/ICommandStateProvider.cs",
+        "src/TuiVision.Controls/TCommandContext.cs",
+        "src/TuiVision.Controls/TProgram.cs"
+      ],
+      "testEvidence": [
+        "tests/TuiVision.Controls.Tests/TProgramTests.cs::TProgram_CommandContext_RefreshesAllTriggersAndRejectsStaleDispatch",
+        "tests/TuiVision.Controls.Tests/TMenuBarTests.cs",
+        "tests/TuiVision.Controls.Tests/TStatusLineTests.cs"
+      ],
+      "evidencePath": "specs/025-core-runtime-conformance-hardening/pr-evidence.md#finding-decisions-and-follow-ups",
+      "resolvedDate": "2026-07-13",
+      "reevaluationTrigger": "Command providers, refresh triggers, presentation overlays, or dispatch policy changes."
+    },
+    {
+      "resolutionId": "R025-F008",
+      "findingId": "F008",
+      "featureId": "025-core-runtime-conformance-hardening",
+      "status": "Closed",
+      "implementationDecision": "Implemented",
+      "documentationOnly": false,
+      "redProof": "Build 217 proved raw printable and Ctrl input diverged from the canonical translator.",
+      "greenProof": "Build 218 passed the real keyboard-ingress and Window modifier matrix 5/5.",
+      "changeEvidence": [
+        "src/TuiVision.Controls/TProgram.cs",
+        "src/TuiVision.Controls/TWindow.cs",
+        "src/TuiVision.Controls/TuiVision.Controls.csproj"
+      ],
+      "testEvidence": [
+        "tests/TuiVision.Controls.Tests/TProgramTests.cs::TProgram_GetEvent_UsesCanonicalTranslationForRawConsoleKeys",
+        "tests/TuiVision.Controls.Tests/TWindowTests.cs"
+      ],
+      "evidencePath": "specs/025-core-runtime-conformance-hardening/pr-evidence.md#finding-decisions-and-follow-ups",
+      "resolvedDate": "2026-07-13",
+      "reevaluationTrigger": "Console ingress, key translation, modifier bits, or platform adapters change."
+    },
+    {
+      "resolutionId": "R025-F009",
+      "findingId": "F009",
+      "featureId": "025-core-runtime-conformance-hardening",
+      "status": "Closed",
+      "implementationDecision": "Implemented",
+      "documentationOnly": false,
+      "redProof": "Build 234 failed because generic drag target, state, session, and result contracts were absent.",
+      "greenProof": "Build 236 passed pointer and keyboard Run-loop, target, threshold, bounds, rendering, and cancellation proof 9/9 without warnings.",
+      "changeEvidence": [
+        "src/TuiVision.Controls/IDragTarget.cs",
+        "src/TuiVision.Controls/TDragResult.cs",
+        "src/TuiVision.Controls/TDragSession.cs",
+        "src/TuiVision.Controls/TWindow.cs"
+      ],
+      "testEvidence": [
+        "tests/TuiVision.Controls.Tests/TWindowMouseDragTests.cs"
+      ],
+      "evidencePath": "specs/025-core-runtime-conformance-hardening/pr-evidence.md#finding-decisions-and-follow-ups",
+      "resolvedDate": "2026-07-13",
+      "reevaluationTrigger": "Drag capture, threshold, target negotiation, keyboard parity, or lifecycle cancellation changes."
     }
   ],
   "presetObservations": [

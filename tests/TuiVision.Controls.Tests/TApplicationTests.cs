@@ -78,6 +78,23 @@ public sealed class TApplicationTests
         Assert.IsInstanceOfType<CustomStatusLine>(app.StatusLine, "InitStatusLine should return the custom status line.");
     }
 
+    /// <summary>
+    /// Prüft im tatsächlichen Application-Loop, dass cmClose das aktive Fenster
+    /// vor dem nachfolgenden Shutdown sichtbar aus dem Desktop entfernt.
+    ///
+    /// Verifies in the actual application loop that cmClose visibly removes the
+    /// active window from the desktop before subsequent shutdown.
+    /// </summary>
+    [TestMethod]
+    public void TApplication_F006_RunCompletesWindowCloseBeforeShutdown()
+    {
+        CloseLoopApplication app = new();
+
+        app.Run();
+
+        Assert.IsTrue(app.ClosedDuringLoop);
+    }
+
     private sealed class CustomMenuBar(TRect bounds) : TMenuBar(bounds);
     private sealed class CustomDesktop(TRect bounds) : TDesktop(bounds);
     private sealed class CustomStatusLine(TRect bounds) : TStatusLine(bounds);
@@ -87,5 +104,37 @@ public sealed class TApplicationTests
         protected override TMenuBar InitMenuBar(TRect b) => new CustomMenuBar(b);
         protected override TDesktop InitDesktop(TRect b) => new CustomDesktop(b);
         protected override TStatusLine InitStatusLine(TRect b) => new CustomStatusLine(b);
+    }
+
+    private sealed class CloseLoopApplication : TApplication
+    {
+        private int _eventIndex;
+
+        public CloseLoopApplication() : base(new TRect(0, 0, 40, 12))
+        {
+            Window = new TWindow("Loop", 0, 0, 18, 7, WindowFlags.Close);
+            Desktop!.InsertWindow(Window);
+        }
+
+        public TWindow Window { get; }
+
+        public bool ClosedDuringLoop { get; private set; }
+
+        public override void GetEvent(out TEvent @event)
+        {
+            @event = _eventIndex++ == 0
+                ? TEvent.CreateCommand(ShellCommandIds.cmClose)
+                : TEvent.CreateCommand(ShellCommandIds.cmQuit);
+        }
+
+        public override void HandleEvent(TEvent @event)
+        {
+            bool close = @event.What == TEventKind.Command && @event.Message.Command == ShellCommandIds.cmClose;
+            base.HandleEvent(@event);
+            if (close)
+            {
+                ClosedDuringLoop = Window.Owner is null;
+            }
+        }
     }
 }

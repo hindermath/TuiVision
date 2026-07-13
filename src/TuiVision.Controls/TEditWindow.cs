@@ -11,7 +11,7 @@ namespace TuiVision.Controls;
 ///
 /// Non-modal editor host with frame, title, and safe-close coordination.
 /// </summary>
-public class TEditWindow : FramedHostView
+public class TEditWindow : FramedHostView, ICommandStateProvider
 {
     /// <summary>
     /// Initialisiert ein neues Editorfenster.
@@ -84,6 +84,23 @@ public class TEditWindow : FramedHostView
     /// </summary>
     /// <returns>Die Hint-Kette. / The hint chain.</returns>
     public override TStatusItem? GetStatusHints() => Editor.GetStatusHints();
+
+    /// <summary>
+    /// Ergänzt den Editor-Snapshot um den hostbezogenen Close-Befehl.
+    /// Ein möglicher Safe-Close-Dialog wird erst beim Dispatch ausgewertet.
+    ///
+    /// Extends the editor snapshot with the host-level close command.
+    /// A possible safe-close prompt is evaluated only during dispatch.
+    /// </summary>
+    /// <returns>Eine aktuelle Command-Zustandsabbildung. / A current command-state mapping.</returns>
+    public virtual IReadOnlyDictionary<ushort, bool> GetCommandStates()
+    {
+        Dictionary<ushort, bool> states = new(Editor.GetCommandStates())
+        {
+            [ShellCommandIds.cmClose] = true
+        };
+        return states;
+    }
 
     /// <summary>
     /// Aktualisiert das Layout nach Groessenaenderungen.

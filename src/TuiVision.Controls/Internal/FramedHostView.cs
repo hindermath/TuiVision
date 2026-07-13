@@ -10,7 +10,7 @@ namespace TuiVision.Controls.Internal;
 ///
 /// Narrow non-modal host with frame and title for desktop children.
 /// </summary>
-public abstract class FramedHostView : TGroup
+public abstract class FramedHostView : TGroup, ICloseableView
 {
     /// <summary>
     /// Initialisiert einen neuen gerahmten Host.
@@ -94,17 +94,30 @@ public abstract class FramedHostView : TGroup
     /// <returns><c>true</c>, wenn der Host geschlossen wurde. / <c>true</c> if the host was closed.</returns>
     public bool RequestClose()
     {
+        return RequestClose(TCloseTrigger.Command).Decision == TCloseDecision.Closed;
+    }
+
+    /// <summary>
+    /// Fordert den sichtbaren Abschluss des Hosts mit explizitem Ergebnis an.
+    ///
+    /// Requests visible host completion with an explicit result.
+    /// </summary>
+    /// <param name="trigger">Der auslösende Pfad. / The triggering path.</param>
+    /// <returns>Das eindeutige Close-Ergebnis. / The unambiguous close result.</returns>
+    public virtual TCloseResult RequestClose(TCloseTrigger trigger)
+    {
+        if (Owner is not TGroup owner)
+        {
+            return new TCloseResult(this, trigger, TCloseDecision.AlreadyDetached, null);
+        }
+
         if (!CanClose())
         {
-            return false;
+            return new TCloseResult(this, trigger, TCloseDecision.Vetoed, owner);
         }
 
-        if (Owner is TGroup group)
-        {
-            group.Remove(this);
-        }
-
-        return true;
+        owner.Remove(this);
+        return new TCloseResult(this, trigger, TCloseDecision.Closed, null);
     }
 
     /// <summary>

@@ -55,4 +55,20 @@ public sealed class TStatusItem
     /// Gibt an, ob der Eintrag aktiviert ist. / Indicates whether the item is enabled.
     /// </summary>
     public bool Disabled { get; set; }
+
+    /// <summary>
+    /// Gibt an, ob der aktuelle Command-Kontext den Eintrag deaktiviert.
+    /// Der manuelle <see cref="Disabled"/>-Wert bleibt davon unberührt.
+    ///
+    /// Indicates whether the current command context disables the item.
+    /// The manual <see cref="Disabled"/> value remains unchanged.
+    /// </summary>
+    public bool ContextDisabled { get; internal set; }
+
+    /// <summary>
+    /// Gibt die wirksame Sperre aus manueller und kontextabhängiger Vorgabe zurück.
+    ///
+    /// Returns the effective disablement from manual and context constraints.
+    /// </summary>
+    public bool IsEffectivelyDisabled => Disabled || ContextDisabled;
 }

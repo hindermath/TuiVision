@@ -15,6 +15,38 @@ namespace TuiVision.Controls.Tests;
 public sealed class TStatusLineTests
 {
     /// <summary>
+    /// Prüft, dass der Command-Kontext Status-Aktionen sperrt, ohne ihre manuelle
+    /// Konfiguration als zweite Wahrheitsquelle zu überschreiben.
+    ///
+    /// Verifies that command context disables status actions without overwriting
+    /// their manual configuration as a second source of truth.
+    /// </summary>
+    [TestMethod]
+    public void TStatusLine_CommandContext_PreservesManualDisablementAndAddsOverlay()
+    {
+        TStatusItem contextual = new("~C~opy", ShellCommandIds.cmCopy, keyCode: 0x2E00);
+        TStatusItem manual = new("~S~ave", ShellCommandIds.cmSave, contextual, 0x3C00) { Disabled = true };
+        TStatusLine statusLine = new(new TRect(0, 24, 80, 25), new TStatusDef(0, int.MaxValue, manual));
+
+        statusLine.ApplyCommandContext(new TCommandContext(
+            1,
+            null,
+            new Dictionary<ushort, bool>
+            {
+                [ShellCommandIds.cmSave] = true,
+                [ShellCommandIds.cmCopy] = false
+            },
+            CommandContextRefreshTrigger.EventHandled));
+
+        Assert.IsTrue(manual.Disabled);
+        Assert.IsFalse(manual.ContextDisabled);
+        Assert.IsTrue(manual.IsEffectivelyDisabled);
+        Assert.IsFalse(contextual.Disabled);
+        Assert.IsTrue(contextual.ContextDisabled);
+        Assert.IsTrue(contextual.IsEffectivelyDisabled);
+    }
+
+    /// <summary>
     /// Prüft, ob Status-Hinweise korrekt von einer fokussierten View gelesen werden.
     ///
     /// Verifies that status hints are correctly read from a focused view.

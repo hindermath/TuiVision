@@ -54,6 +54,70 @@ public sealed class TProgramTests
     }
 
     /// <summary>
+    /// Prüft den einzelnen Pending-Slot und seine Priorität vor physischer Eingabe.
+    ///
+    /// Verifies the single pending slot and its priority over physical input.
+    /// </summary>
+    [TestMethod]
+    public void TProgram_PendingEvent_IsBoundedAndDrainedBeforeInput()
+    {
+        LifecycleProgram program = new();
+        TEvent pending = TEvent.CreateCommand(0x9001);
+        program.PutEvent(pending);
+
+        Assert.IsTrue(program.HasPendingEvent);
+        Assert.ThrowsExactly<InvalidOperationException>(() => program.PutEvent(TEvent.CreateCommand(0x9002)));
+
+        program.GetEvent(out TEvent received);
+
+        Assert.AreSame(pending, received);
+        Assert.IsFalse(program.HasPendingEvent);
+        Assert.AreEqual(0, program.RawInputPolls, "Pending input must be drained before the host is polled.");
+    }
+
+    /// <summary>
+    /// Prüft die tatsächliche Run-Reihenfolge für leere Polls, Pending-Ereignisse,
+    /// wiederholtes Idle, CPU-Freigabe und kontrollierten Shutdown.
+    ///
+    /// Verifies actual Run ordering for empty polls, pending events, repeated idle,
+    /// CPU release, and controlled shutdown.
+    /// </summary>
+    [TestMethod]
+    public void TProgram_Run_IdleAndPendingOrdering_IsDeterministic()
+    {
+        LifecycleProgram program = new();
+
+        program.Run();
+
+        CollectionAssert.AreEqual(
+            new[] { "poll", "idle-1", "release", "pending", "poll", "idle-2", "release", "quit" },
+            program.Order);
+        Assert.AreEqual(2, program.IdleCalls);
+        Assert.AreEqual(2, program.CpuReleaseCalls);
+    }
+
+    /// <summary>
+    /// Prüft, dass reale Eingabe vor Idle verarbeitet wird und ein Shutdown aus
+    /// dem Idle-Hook keine weitere CPU-Freigabe oder Poll-Runde startet.
+    ///
+    /// Verifies that real input is processed before idle and that shutdown from
+    /// the idle hook starts no further CPU release or poll cycle.
+    /// </summary>
+    [TestMethod]
+    public void TProgram_Run_InputPrecedesIdleAndIdleShutdownStopsWork()
+    {
+        LifecycleProgram inputProgram = new(new ConsoleKeyInfo('a', ConsoleKey.A, false, false, false));
+        inputProgram.Run();
+        CollectionAssert.AreEqual(new[] { "poll", "key", "quit" }, inputProgram.Order);
+        Assert.AreEqual(0, inputProgram.IdleCalls);
+
+        LifecycleProgram idleShutdown = new(shutdownInsideIdle: true);
+        idleShutdown.Run();
+        CollectionAssert.AreEqual(new[] { "poll", "idle-1", "quit" }, idleShutdown.Order);
+        Assert.AreEqual(0, idleShutdown.CpuReleaseCalls);
+    }
+
+    /// <summary>
     /// Prüft, ob ein bereits konsumiertes Ereignis nicht ein zweites Mal geroutet wird.
     ///
     /// Verifies that an already-consumed event is not routed a second time.
@@ -89,6 +153,276 @@ public sealed class TProgramTests
 
         bool relayoutTriggered = program.GetBounds() == newBounds;
         Assert.IsTrue(relayoutTriggered, "Terminal resize re-layout logic not yet implemented.");
+    }
+
+    /// <summary>
+    /// Prüft die kanonische Scan-Code-, Key-Code- und Modifier-Übersetzung am
+    /// öffentlichen Produktionsrand von <see cref="TProgram.GetEvent"/>.
+    ///
+    /// Verifies canonical scan-code, key-code, and modifier translation at the
+    /// public production boundary of <see cref="TProgram.GetEvent"/>.
+    /// </summary>
+    [TestMethod]
+    public void TProgram_GetEvent_UsesCanonicalTranslationForRawConsoleKeys()
+    {
+        (ConsoleKeyInfo Raw, char Char, byte Scan, ushort Key, ushort Shift)[] cases =
+        [
+            (new ConsoleKeyInfo('a', ConsoleKey.A, false, false, false), 'a', 0x00, 0x0061, 0x0000),
+            (new ConsoleKeyInfo('\0', ConsoleKey.LeftArrow, false, false, false), '\0', 0x4B, 0x4B00, 0x0000),
+            (new ConsoleKeyInfo('\0', ConsoleKey.F5, false, false, true), '\0', 0x3F, 0x3F00, 0x0002),
+            (new ConsoleKeyInfo('\0', ConsoleKey.F10, true, true, false), '\0', 0x44, 0x4400, 0x0005),
+            (new ConsoleKeyInfo('?', (ConsoleKey)0xFE, false, false, false), '?', 0x00, 0x003F, 0x0000)
+        ];
+
+        foreach ((ConsoleKeyInfo raw, char character, byte scan, ushort key, ushort shift) in cases)
+        {
+            RawKeyProgram program = new(raw);
+
+            program.GetEvent(out TEvent @event);
+
+            Assert.AreEqual(TEventKind.KeyDown, @event.What);
+            Assert.AreEqual(character, @event.KeyDown.CharCode);
+            Assert.AreEqual(scan, @event.KeyDown.ScanCode);
+            Assert.AreEqual(key, @event.KeyDown.KeyCode);
+            Assert.AreEqual(shift, @event.KeyDown.ShiftState);
+        }
+
+        RawKeyProgram quitProgram = new(new ConsoleKeyInfo('x', ConsoleKey.X, false, true, false));
+        quitProgram.GetEvent(out TEvent quit);
+        Assert.AreEqual(TEventKind.Command, quit.What);
+        Assert.AreEqual(ShellCommandIds.cmQuit, quit.Message.Command);
+    }
+
+    /// <summary>
+    /// Prüft den gemeinsamen Command-Snapshot über Fokus, Event, Idle und den
+    /// erneuten Dispatch-Check im tatsächlichen Program-Loop.
+    ///
+    /// Verifies the shared command snapshot across focus, event, idle, and the
+    /// immediate dispatch recheck in the actual program loop.
+    /// </summary>
+    [TestMethod]
+    public void TProgram_CommandContext_RefreshesAllTriggersAndRejectsStaleDispatch()
+    {
+        CommandContextProgram program = new();
+
+        Assert.AreSame(program.Provider, program.CommandContext.ActiveView);
+        Assert.AreEqual(CommandContextRefreshTrigger.Focus, program.CommandContext.Trigger);
+        Assert.IsFalse(program.CommandContext.IsEnabled(ShellCommandIds.cmCopy));
+        Assert.IsTrue(program.CopyMenuItem.IsEffectivelyDisabled);
+        Assert.IsTrue(program.CopyStatusItem.IsEffectivelyDisabled);
+
+        program.Provider.CopyEnabled = true;
+        long focusGeneration = program.CommandContext.Generation;
+        program.HandleEvent(TEvent.CreateBroadcast(0x9200));
+
+        Assert.IsGreaterThan(focusGeneration, program.CommandContext.Generation);
+        Assert.AreEqual(CommandContextRefreshTrigger.EventHandled, program.CommandContext.Trigger);
+        Assert.IsFalse(program.CopyMenuItem.IsEffectivelyDisabled);
+        Assert.IsFalse(program.CopyStatusItem.IsEffectivelyDisabled);
+
+        program.Provider.CopyEnabled = false;
+        program.HandleEvent(TEvent.CreateCommand(ShellCommandIds.cmCopy));
+        Assert.AreEqual(0, program.Provider.CopyExecutions, "Pre-dispatch refresh must reject stale enabled state.");
+
+        program.Run();
+        Assert.IsTrue(program.IdleRefreshObserved, "The real Run loop must refresh command state after Idle.");
+    }
+
+    /// <summary>
+    /// Prüft, dass ein verschachtelter Editor als tiefste Fokusquelle dient und
+    /// seine Command-Zustände nach realem Event-Routing aktualisiert werden.
+    ///
+    /// Verifies that a nested editor is the deepest focus source and that its
+    /// command states refresh after real event routing.
+    /// </summary>
+    [TestMethod]
+    public void TProgram_CommandContext_UsesFocusedEditorStateAfterHandledInput()
+    {
+        EditorContextProgram program = new();
+
+        Assert.AreSame(program.Editor, program.CommandContext.ActiveView);
+        Assert.IsFalse(program.CommandContext.IsEnabled(ShellCommandIds.cmUndo));
+
+        program.HandleEvent(ControlEventFactory.CreateKeyDown('a'));
+
+        Assert.AreEqual("a", program.Editor.GetText());
+        Assert.IsTrue(program.CommandContext.IsEnabled(ShellCommandIds.cmUndo));
+        Assert.AreEqual(CommandContextRefreshTrigger.EventHandled, program.CommandContext.Trigger);
+    }
+
+    private sealed class RawKeyProgram : TProgram
+    {
+        private readonly ConsoleKeyInfo _key;
+
+        public RawKeyProgram(ConsoleKeyInfo key) : base(ShellTestSupport.CreateStandardBounds()) => _key = key;
+
+        protected override bool TryReadConsoleKey(out ConsoleKeyInfo key)
+        {
+            key = _key;
+            return true;
+        }
+    }
+
+    private sealed class CommandContextProgram : TProgram
+    {
+        private int _poll;
+
+        public CommandContextProgram() : base(new TRect(0, 0, 40, 10))
+        {
+            CopyMenuItem = new TMenuItem("~C~opy", ShellCommandIds.cmCopy);
+            MenuBar = new TMenuBar(new TRect(0, 0, 40, 1)) { Menu = CopyMenuItem };
+            CopyStatusItem = new TStatusItem("~C~opy", ShellCommandIds.cmCopy, keyCode: 0x2E00);
+            StatusLine = new TStatusLine(new TRect(0, 9, 40, 10), new TStatusDef(0, int.MaxValue, CopyStatusItem));
+            Provider = new CommandProviderView(new TRect(0, 1, 40, 9));
+            Insert(MenuBar);
+            Insert(StatusLine);
+            Insert(Provider);
+            SetFocus(Provider);
+        }
+
+        public CommandProviderView Provider { get; }
+
+        public TMenuItem CopyMenuItem { get; }
+
+        public TStatusItem CopyStatusItem { get; }
+
+        public bool IdleRefreshObserved { get; private set; }
+
+        public override void GetEvent(out TEvent @event)
+        {
+            @event = _poll++ switch
+            {
+                0 => TEvent.CreateBroadcast(0x9201),
+                1 => TEvent.CreateNone(),
+                _ => TEvent.CreateCommand(ShellCommandIds.cmQuit)
+            };
+        }
+
+        protected override void Idle() => Provider.CopyEnabled = true;
+
+        protected override void ReleaseCpu() =>
+            IdleRefreshObserved = CommandContext.Trigger == CommandContextRefreshTrigger.Idle
+                && CommandContext.IsEnabled(ShellCommandIds.cmCopy);
+    }
+
+    private sealed class CommandProviderView : TView, ICommandStateProvider
+    {
+        public CommandProviderView(TRect bounds) : base(bounds) => Options |= TViewOptions.Selectable;
+
+        public bool CopyEnabled { get; set; }
+
+        public int CopyExecutions { get; private set; }
+
+        public IReadOnlyDictionary<ushort, bool> GetCommandStates() =>
+            new Dictionary<ushort, bool> { [ShellCommandIds.cmCopy] = CopyEnabled };
+
+        public override void HandleEvent(TEvent @event)
+        {
+            if (@event.What == TEventKind.Command && @event.Message.Command == ShellCommandIds.cmCopy)
+            {
+                CopyExecutions++;
+                @event.Clear(this);
+                return;
+            }
+
+            base.HandleEvent(@event);
+        }
+    }
+
+    private sealed class EditorContextProgram : TProgram
+    {
+        public EditorContextProgram() : base(new TRect(0, 0, 40, 10))
+        {
+            Editor = new TEditor(new TRect(1, 1, 38, 7));
+            Window = new TEditWindow(new TRect(0, 0, 40, 9), Editor);
+            Insert(Window);
+            SetFocus(Window);
+        }
+
+        public TEditor Editor { get; }
+
+        public TEditWindow Window { get; }
+    }
+
+    private sealed class LifecycleProgram : TProgram
+    {
+        private readonly Queue<ConsoleKeyInfo> _keys = new();
+        private readonly bool _shutdownInsideIdle;
+
+        public LifecycleProgram(ConsoleKeyInfo? key = null, bool shutdownInsideIdle = false)
+            : base(new TRect(0, 0, 20, 8))
+        {
+            if (key.HasValue)
+            {
+                _keys.Enqueue(key.Value);
+            }
+
+            _shutdownInsideIdle = shutdownInsideIdle;
+        }
+
+        public List<string> Order { get; } = new();
+
+        public int IdleCalls { get; private set; }
+
+        public int CpuReleaseCalls { get; private set; }
+
+        public int RawInputPolls { get; private set; }
+
+        protected override bool TryReadConsoleKey(out ConsoleKeyInfo key)
+        {
+            RawInputPolls++;
+            Order.Add("poll");
+            return _keys.TryDequeue(out key);
+        }
+
+        protected override void Idle()
+        {
+            IdleCalls++;
+            Order.Add($"idle-{IdleCalls}");
+            if (_shutdownInsideIdle)
+            {
+                HandleEvent(TEvent.CreateCommand(ShellCommandIds.cmQuit));
+            }
+            else if (IdleCalls == 1)
+            {
+                PutEvent(TEvent.CreateCommand(0x9001));
+            }
+            else
+            {
+                PutEvent(TEvent.CreateCommand(ShellCommandIds.cmQuit));
+            }
+        }
+
+        protected override void ReleaseCpu()
+        {
+            CpuReleaseCalls++;
+            Order.Add("release");
+        }
+
+        public override void HandleEvent(TEvent @event)
+        {
+            if (@event.What == TEventKind.KeyDown)
+            {
+                Order.Add("key");
+                @event.Clear(this);
+                PutEvent(TEvent.CreateCommand(ShellCommandIds.cmQuit));
+                return;
+            }
+
+            if (@event.What == TEventKind.Command && @event.Message.Command == 0x9001)
+            {
+                Order.Add("pending");
+                @event.Clear(this);
+                return;
+            }
+
+            if (@event.What == TEventKind.Command && @event.Message.Command == ShellCommandIds.cmQuit)
+            {
+                Order.Add("quit");
+            }
+
+            base.HandleEvent(@event);
+        }
     }
 
     // -----------------------------------------------------------------------

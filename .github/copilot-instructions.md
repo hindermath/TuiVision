@@ -277,9 +277,10 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Final evidence is in `specs/027-pre-wave5-conformance-closure/closure-evidence.md`; all 90 historical tasks are complete.
 
 ### 025-core-runtime-conformance-hardening
-- This is the next Spec Kit intake, from `Lastenheft_10_Core-Runtime-Conformance-Hardening.md`; no autonomous run has started.
-- Scope is exactly `F001`-`F009`: concrete event kinds, focus and group state, idle lifecycle, desktop stack, modal/close, shared command state, real keyboard ingress, and bounded generic drag.
-- Do not port Wave 5 or Wave 6 and do not implement the component/data findings owned by 026.
+- Current implementation status: all nine `Core025` findings are implemented and proven; final evidence is in `specs/025-core-runtime-conformance-hardening/pr-evidence.md`.
+- `F001`-`F009` close concrete event kinds, focus and group state, idle lifecycle, desktop stack, modal/close, shared command state, real keyboard ingress, and bounded generic drag through real-path red/green proof.
+- Feature-024 resolution metadata records exactly nine non-documentation-only closures while preserving `F010`-`F013`, Feature 026/028, and Wave-5/Wave-6 gates.
+- The next prioritized intake after merge and synchronized `main` is `Lastenheft_11_Component-Data-Conformance-Hardening.md` for Feature 026.
 
 ### 026-component-data-conformance-hardening
 - This intake starts only after Feature 025 merges and main is synchronized, using `Lastenheft_11_Component-Data-Conformance-Hardening.md`.
