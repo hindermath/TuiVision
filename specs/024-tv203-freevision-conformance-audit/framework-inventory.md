@@ -70,13 +70,18 @@ Contracts may reference several inventory items without duplicating ownership.
 - Modern source items use `M001` through `M119` in ordinal path order.
 - Exported types use `P001` through `P176` in ordinal full-name order.
 - Every item has one `D01` through `D16` owner and at least one valid `C###` link.
+- Every listed item-to-contract link has a matching contract-to-item link and
+  vice versa; cross-domain links are permitted when one behavioral contract
+  depends on a type owned by another primary inventory domain.
 - The canonical complete rows live in `conformance-audit.json`; this readable
   view summarizes them without duplicating hundreds of rows.
 
 ## Inventarstatus / Inventory Status
 
-Deutsch: Alle drei Live-Mengen sind vollständig zugeordnet. Fachliche
-Entscheidungen und Free-Vision-Relationen folgen in den nächsten Phasen.
+Deutsch: Alle drei Live-Mengen sind vollständig und beidseitig zugeordnet.
+Revision 2 ergänzt die semantische Verbraucherprüfung und 13 Findings, ohne die
+primäre Inventareigentümerschaft zu verändern.
 
-English: All three live sets are assigned completely. Behavioral decisions and
-Free Vision relations follow in the next phases.
+English: All three live sets are completely and reciprocally assigned. Revision
+2 adds semantic consumer review and 13 findings without changing primary
+inventory ownership.

@@ -40,6 +40,33 @@ public sealed class ConformanceAuditEvidenceTests
             "NotApplicable",
         };
 
+    private static readonly IReadOnlySet<string> AllowedFindingSeverities =
+        new HashSet<string>(StringComparer.Ordinal)
+        {
+            "Critical",
+            "High",
+            "Medium",
+            "Low",
+        };
+
+    private static readonly IReadOnlySet<string> AllowedConsumerScopes =
+        new HashSet<string>(StringComparer.Ordinal)
+        {
+            "Wave5",
+            "Wave6",
+            "Both",
+        };
+
+    private static readonly IReadOnlySet<string> AllowedFindingDispositions =
+        new HashSet<string>(StringComparer.Ordinal)
+        {
+            "Core025",
+            "ComponentData026",
+            "Closure028",
+            "AcceptedFollowUp",
+            "ProductDecision",
+        };
+
     /// <summary>
     /// Stellt sicher, dass der kanonische Auditdatensatz vor jeder weiteren Prüfung vorhanden ist.
     ///
@@ -53,6 +80,14 @@ public sealed class ConformanceAuditEvidenceTests
         Assert.IsTrue(
             File.Exists(path),
             $"Canonical conformance audit dataset is missing: {path}");
+
+        JsonObject root = LoadAuditObject();
+        JsonObject run = root["run"]?.AsObject()
+            ?? throw new JsonException("Required object is missing: run");
+        Assert.AreEqual(2, run["auditRevision"]?.GetValue<int>() ?? -1);
+        CollectionAssert.AreEqual(
+            new[] { "TVDEMOS", "TVFM" },
+            StringValues(RequiredArray(run, "consumerScope")));
     }
 
     /// <summary>
@@ -299,11 +334,11 @@ public sealed class ConformanceAuditEvidenceTests
         string findings = ReadFeatureFile("findings.md");
         StringAssert.Contains(findings, $"Total findings | {actualContractIds.Length}");
         string gate = ReadFeatureFile("pre-wave5-gate.md");
-        StringAssert.Contains(gate, "`Core025` | 0 | Suppressed");
-        StringAssert.Contains(gate, "`ComponentData026` | 0 | Suppressed");
-        StringAssert.Contains(gate, "`Closure027` | Required");
-        StringAssert.Contains(gate, "Wave 5 | Eligible");
-        StringAssert.Contains(gate, "Feature-027 merge `35414af`");
+        StringAssert.Contains(gate, "`Core025` | 9 | Required");
+        StringAssert.Contains(gate, "`ComponentData026` | 4 | Required");
+        StringAssert.Contains(gate, "`Closure028` | Required");
+        StringAssert.Contains(gate, "Wave 5 | Blocked");
+        StringAssert.Contains(gate, "Feature 028");
     }
 
     /// <summary>
@@ -387,19 +422,61 @@ public sealed class ConformanceAuditEvidenceTests
             yield return error;
         foreach (string error in DuplicateErrors(findings, "findingId", "findingId"))
             yield return error;
+        foreach (string error in DuplicateErrors(findings, "contractId", "finding contractId"))
+            yield return error;
 
         var validDomainIds = domainIds.ToHashSet(StringComparer.Ordinal);
         var validContractIds = contracts.Select(item => RequiredString(item, "contractId")).ToHashSet(StringComparer.Ordinal);
         var validSourceIds = sources.Select(item => RequiredString(item, "sourceId")).ToHashSet(StringComparer.Ordinal);
 
-        foreach (JsonObject item in historical.Concat(modern).Concat(publicTypes))
+        foreach (var (items, contractProperty) in new[]
+                 {
+                     (historical, "historicalItemIds"),
+                     (modern, "modernSourceItemIds"),
+                     (publicTypes, "publicContractItemIds"),
+                 })
         {
-            string itemId = RequiredString(item, "itemId");
-            if (!validDomainIds.Contains(RequiredString(item, "domainId")))
-                yield return $"{itemId} has an unknown domain";
-            string[] links = StringValues(RequiredArray(item, "contractIds"));
-            if (links.Length == 0 || links.Any(link => !validContractIds.Contains(link)))
-                yield return $"{itemId} has missing or unknown contract links";
+            foreach (JsonObject item in items)
+            {
+                string itemId = RequiredString(item, "itemId");
+                if (!validDomainIds.Contains(RequiredString(item, "domainId")))
+                    yield return $"{itemId} has an unknown domain";
+                string[] links = StringValues(RequiredArray(item, "contractIds"));
+                if (links.Length == 0 || links.Any(link => !validContractIds.Contains(link)))
+                    yield return $"{itemId} has missing or unknown contract links";
+
+                foreach (string link in links.Where(validContractIds.Contains))
+                {
+                    JsonObject contract = contracts.Single(candidate => RequiredString(candidate, "contractId") == link);
+                    if (!StringValues(RequiredArray(contract, contractProperty)).Contains(itemId, StringComparer.Ordinal))
+                        yield return $"{itemId} -> {link} has no reciprocal {contractProperty} link";
+                }
+            }
+        }
+
+        foreach (var (items, contractProperty) in new[]
+                 {
+                     (historical, "historicalItemIds"),
+                     (modern, "modernSourceItemIds"),
+                     (publicTypes, "publicContractItemIds"),
+                 })
+        {
+            var itemById = items.ToDictionary(item => RequiredString(item, "itemId"), StringComparer.Ordinal);
+            foreach (JsonObject contract in contracts)
+            {
+                string contractId = RequiredString(contract, "contractId");
+                foreach (string itemId in StringValues(RequiredArray(contract, contractProperty)))
+                {
+                    if (!itemById.TryGetValue(itemId, out JsonObject? item))
+                    {
+                        yield return $"{contractId} references unknown {contractProperty} item {itemId}";
+                        continue;
+                    }
+
+                    if (!StringValues(RequiredArray(item, "contractIds")).Contains(contractId, StringComparer.Ordinal))
+                        yield return $"{contractId} -> {itemId} has no reciprocal item contract link";
+                }
+            }
         }
 
         foreach (JsonObject contract in contracts)
@@ -421,6 +498,12 @@ public sealed class ConformanceAuditEvidenceTests
             bool needsFinding = decision is "BehavioralDrift" or "EvidenceGap";
             if (needsFinding != !string.Equals(findingId, "None", StringComparison.Ordinal))
                 yield return $"{contractId} violates finding cardinality";
+
+            string disposition = RequiredString(contract, "downstreamDisposition");
+            if (!needsFinding && disposition != "None")
+                yield return $"{contractId} has a downstream disposition without a finding";
+            if (needsFinding && !AllowedFindingDispositions.Contains(disposition))
+                yield return $"{contractId} has an invalid finding disposition";
         }
 
         foreach (JsonObject source in sources)
@@ -440,6 +523,49 @@ public sealed class ConformanceAuditEvidenceTests
             JsonObject? contract = contracts.SingleOrDefault(item => RequiredString(item, "contractId") == contractId);
             if (contract is null || RequiredString(contract, "findingId") != findingId)
                 yield return $"{findingId} has no reciprocal contract link";
+
+            string severity = RequiredString(finding, "severity");
+            if (!AllowedFindingSeverities.Contains(severity))
+                yield return $"{findingId} has an invalid severity";
+
+            string consumerScope = RequiredString(finding, "consumerScope");
+            if (!AllowedConsumerScopes.Contains(consumerScope))
+                yield return $"{findingId} has an invalid consumer scope";
+
+            string disposition = RequiredString(finding, "disposition");
+            if (!AllowedFindingDispositions.Contains(disposition))
+                yield return $"{findingId} has an invalid disposition";
+            if (contract is not null && RequiredString(contract, "downstreamDisposition") != disposition)
+                yield return $"{findingId} disagrees with its contract disposition";
+
+            foreach (string property in new[]
+                     {
+                         "observation",
+                         "reproduction",
+                         "impact",
+                         "owner",
+                         "acceptanceBoundary",
+                         "nonGoals",
+                     })
+            {
+                if (string.IsNullOrWhiteSpace(RequiredString(finding, property)))
+                    yield return $"{findingId} has an empty {property}";
+            }
+
+            string[] sourceEvidence = StringValues(RequiredArray(finding, "sourceEvidence"));
+            if (sourceEvidence.Length == 0)
+            {
+                yield return $"{findingId} has no source evidence";
+            }
+            else
+            {
+                string repoRoot = Phase7DriverTestContext.FindRepoRoot();
+                foreach (string source in sourceEvidence)
+                {
+                    if (!File.Exists(Path.Combine(repoRoot, source)))
+                        yield return $"{findingId} references missing source evidence {source}";
+                }
+            }
         }
 
         foreach (JsonObject domain in domains)

@@ -5,12 +5,14 @@
 | Field | Rule |
 |---|---|
 | `runId` | Stable feature-scoped identifier, exactly one for 024 |
+| `auditRevision` | Positive revision number; Revision 2 adds Wave-5 and Wave-6 consumer validation |
 | `auditDate` | ISO date |
 | `historicalLedgerPath` | Repository-relative canonical ledger path |
 | `historicalRowCount` | Must equal current filesystem and ledger count; planning baseline 151 |
 | `modernSourceCount` | Must equal maintained source inventory at validation time; planning baseline 119 |
 | `freeVisionRepository` | Exact official upstream URL |
 | `freeVisionCommit` | Exact 40-character approved commit |
+| `consumerScope` | Exact reviewed consumer roots; Revision 2 requires `TVDEMOS` and `TVFM` |
 | `deliveryMode` | `MergeAndSync` |
 
 ## AuditDomain
@@ -32,7 +34,7 @@
 | `itemId` | Stable `H###` identifier, unique |
 | `ledgerPath` | Exact repository-relative `.cc` path |
 | `domainId` | Exactly one valid domain |
-| `contractIds` | At least one valid contract |
+| `contractIds` | At least one valid contract; every link is reciprocal in the matching contract array |
 | `ledgerStatus` | Current canonical M-07 status |
 | `omissionRationale` | Required for consciously omitted rows |
 | `reevaluationTrigger` | Required for consciously omitted rows |
@@ -45,7 +47,7 @@
 | `path` | Exact repository-relative maintained `.cs` path |
 | `assembly` | One of the five framework assemblies |
 | `domainId` | Exactly one valid domain |
-| `contractIds` | At least one valid contract |
+| `contractIds` | At least one valid contract; every link is reciprocal in the matching contract array |
 
 ## PublicContractItem
 
@@ -55,7 +57,7 @@
 | `assembly` | One of the five framework assemblies |
 | `fullTypeName` | Exact exported type name discovered by reflection |
 | `domainId` | Exactly one valid domain |
-| `contractIds` | At least one valid contract |
+| `contractIds` | At least one valid contract; every link is reciprocal in the matching contract array |
 
 ## FrameworkContract
 
@@ -64,9 +66,9 @@
 | `contractId` | Stable `C###` identifier, unique |
 | `domainId` | Exactly one owning domain |
 | `nameDe` / `nameEn` | Non-empty bilingual contract name |
-| `historicalItemIds` | One or more unless historical direct-equivalent absence is explicit |
-| `modernSourceItemIds` | One or more unless consciously omitted |
-| `publicContractItemIds` | Zero or more |
+| `historicalItemIds` | One or more unless historical direct-equivalent absence is explicit; every listed link is reciprocal |
+| `modernSourceItemIds` | One or more unless consciously omitted; every listed link is reciprocal |
+| `publicContractItemIds` | Zero or more; every listed link is reciprocal |
 | `borlandSources` | Concrete docs and/or `tv203s` paths |
 | `freeVisionSourceIds` | Concrete external source records or justified no-match record |
 | `historicalIntent` | Own-word behavioral summary |
@@ -99,12 +101,15 @@
 | `findingId` | Stable `F###` identifier, unique |
 | `contractId` | Exactly one drift/gap contract |
 | `severity` | `Critical`, `High`, `Medium`, or `Low` |
+| `consumerScope` | `Wave5`, `Wave6`, or `Both` |
 | `observation` | Reproducible behavior or proof gap |
+| `reproduction` | Concrete path that demonstrates the behavior or missing proof |
 | `impact` | User/API/data/security/A11Y/platform impact |
 | `owner` | Named role or maintainer |
+| `sourceEvidence` | One or more existing TuiVision, historical, or consumer-source paths |
 | `acceptanceBoundary` | Concrete later proof |
 | `nonGoals` | Explicit excluded work |
-| `disposition` | Exactly one allowed downstream term |
+| `disposition` | Exactly one of `Core025`, `ComponentData026`, `Closure028`, `AcceptedFollowUp`, or `ProductDecision` |
 
 ## PresetObservation
 
@@ -143,5 +148,8 @@ PreWave5Gate: Open -> Blocked | Conditional -> Pass
 PresetObservation: Observed -> Promote | ObserveAgain | RejectProjectSpecific | Superseded | NoPromotion
 ```
 
-No contract may reach `Validated` with an unknown decision, missing relation,
-invalid inventory link, or unresolved finding requirement.
+No contract may reach `Validated` with an unknown decision, a one-sided
+inventory relation, a missing source-evidence path, or an unresolved finding
+requirement. Contract inventory arrays are supporting evidence links rather
+than an exhaustive dependency graph; consumer-specific semantic evidence lives
+on the finding when a reviewed Wave-5 or Wave-6 flow exposes the gap.

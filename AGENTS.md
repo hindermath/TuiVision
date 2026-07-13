@@ -310,19 +310,31 @@ npm run test:docfx
 - After Feature 023 delivery, Wave 5 remains the next fachliche intake; do not start Feature 024 as part of this run.
 
 ### 024-tv203-freevision-conformance-audit
-- Current implementation status: audit-only Feature 024 is complete; final evidence is in `specs/024-tv203-freevision-conformance-audit/pr-evidence.md`.
-- Borland documentation and `tv203s/` remain primary; official Free Vision commit `ffc03b34d8cafb85ddcf0686de1c5551601dacb2` is external secondary evidence only.
-- The exact inventory is 151 historical `.cc` rows, 119 maintained production `.cs` files, 176 exported public types, 16 domains, and 48 contracts.
-- Decisions are 13 `Aligned`, 34 `IntentionalModernization`, 1 `ConsciouslyOmitted`, 0 `BehavioralDrift`, and 0 `EvidenceGap`; Free Vision relations are recorded independently.
-- `Core025` and `ComponentData026` owner sets are empty, so no Feature 025 or 026 branch or PR was created. Feature 027 completed the mandatory closure; Wave 5 is now eligible.
-- No runtime, API, dependency, package, example, generated-output, or historical-source change entered 024; the external Free Vision worktree remains outside Git.
+- Current planning baseline: the original audit and merge remain complete, but consumer-review Revision 2 in `specs/024-tv203-freevision-conformance-audit/consumer-readiness-review.md` supersedes the zero-finding forward decision.
+- Borland documentation and `tv203s/` remain primary; official Free Vision commit `ffc03b34d8cafb85ddcf0686de1c5551601dacb2` is external secondary evidence only. `TVDEMOS/` and `TVFM/` are read-only consumer evidence.
+- The inventory remains 151 historical `.cc` rows, 119 maintained production `.cs` files, 176 exported public types, 16 domains, and 48 contracts.
+- Revision-2 decisions are 7 `Aligned`, 27 `IntentionalModernization`, 1 `ConsciouslyOmitted`, 8 `BehavioralDrift`, and 5 `EvidenceGap`.
+- The 13 accepted findings route exactly nine items `F001`-`F009` to `Core025` and four items `F010`-`F013` to `ComponentData026`; Wave 5 and Wave 6 remain blocked through Feature 028.
+- Revision 2 changes audit data, validation, evidence, requirements, and ordering only; it does not implement runtime behavior or port examples.
 
 ### 027-pre-wave5-conformance-closure
-- Current implementation status: the mandatory closure is complete and merged as `35414af`; final evidence is in `specs/027-pre-wave5-conformance-closure/closure-evidence.md`.
-- The merged Feature-024 baseline revalidated exactly: 16 domains, 48 contracts, inventories 151/119/176, 15 external source records, 94 proof references, decisions 13/34/1/0/0, and zero findings.
-- Features 025 and 026 remain suppressed because their accepted owner sets are empty. Any later drift or evidence gap requires a reviewed audit revision rather than an implicit runtime repair.
-- Focused audit, 698/698 full Release tests, all five coverage gates, format, DocFX/Axe/Lynx, secret, and protected-scope checks passed locally.
-- No runtime, public API, dependency, package, example behavior, historical source, or Wave-5 implementation change entered 027. Merge `35414af` completed the gate; Wave 5 is now the next fachliche intake.
+- Feature 027 remains valid historical closure evidence: feature merge `35414af` and causal closeout PR #67 merge `1da2b211e84221db87ab9f959b7b40d3ae2b01f0` are complete.
+- Its original 13/34/1/0/0 decision set and zero-finding Wave-5 release statement are superseded for forward planning by Feature-024 Revision 2, not rewritten retroactively.
+- Final evidence is in `specs/027-pre-wave5-conformance-closure/closure-evidence.md`; all 90 historical tasks are complete.
+
+### 025-core-runtime-conformance-hardening
+- This is the next Spec Kit intake, from `Lastenheft_10_Core-Runtime-Conformance-Hardening.md`; no autonomous run has started.
+- Scope is exactly `F001`-`F009`: concrete event kinds, focus and group state, idle lifecycle, desktop stack, modal/close, shared command state, real keyboard ingress, and bounded generic drag.
+- Do not port Wave 5 or Wave 6 and do not implement the component/data findings owned by 026.
+
+### 026-component-data-conformance-hardening
+- This intake starts only after Feature 025 merges and main is synchronized, using `Lastenheft_11_Component-Data-Conformance-Hardening.md`.
+- Scope is exactly `F010`-`F013`: dialog completion and child validation, input-line validator integration, mode-aware file selection, and safe named UI-resource composition.
+
+### 028-pre-wave5-wave6-conformance-closure
+- This evidence-only closure starts only after Features 025 and 026 merge, using `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md`.
+- It independently revalidates all 13 findings and both consumer families; it fixes no product finding and starts no example wave.
+- A full pass may release Wave 5 and mark Wave 6 only `ConditionallyReady`, with mandatory re-evaluation after actual Wave-5 deltas.
 
 
 ### Autonomous Red-Proof Completeness
@@ -634,7 +646,8 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read
-`specs/024-tv203-freevision-conformance-audit/plan.md`.
+`Lastenheft_Abarbeitungsreihenfolge.md` and the next binding intake
+`Lastenheft_10_Core-Runtime-Conformance-Hardening.md`.
 <!-- SPECKIT END -->
 
 ## Hinweise / Notes

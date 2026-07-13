@@ -2,8 +2,24 @@
 
 **Feature Branch**: `024-tv203-freevision-conformance-audit`
 **Created**: 2026-07-12
-**Status**: Draft
-**Input**: Binding requirements from `Lastenheft_08_TV203-FreeVision-Conformance-Audit.md`
+**Status**: Completed audit, amended by consumer-review Revision 2
+**Input**: Binding requirements from `Lastenheft_08_TV203-FreeVision-Conformance-Audit.024-tv203-freevision-conformance-audit.md`
+
+## Revision 2: Wave-5-/Wave-6-Verbraucherprüfung
+
+Deutsch: Eine spätere kritische Prüfung hat die Frameworkverträge nicht nur
+isoliert, sondern gegen die realen Verbraucher unter `TVDEMOS/` und `TVFM/`
+gelesen. Diese Revision ändert keinen Runtime-Code und widerruft nicht die
+damals korrekt protokollierte Ausführung von Feature 027. Sie ersetzt jedoch
+dessen Zukunftsaussage: 13 reproduzierbare Findings blockieren Wave 5 und Wave
+6, bis die Features 025, 026 und der neue Abschluss 028 geliefert sind.
+
+English: A later critical review read the framework contracts against the real
+consumers under `TVDEMOS/` and `TVFM/`, rather than only in isolation. This
+revision changes no runtime code and does not rewrite the execution history of
+Feature 027. It does supersede its forward-looking gate decision: 13
+reproducible findings block Wave 5 and Wave 6 until Features 025, 026, and the
+new closure Feature 028 are delivered.
 
 ## User Scenarios & Testing
 
@@ -227,7 +243,7 @@ and downstream disposition, while all other decisions create no finding.
   non-goals, and exactly one downstream disposition.
 - **FR-024**: Finding severity MUST use `Critical`, `High`, `Medium`, or `Low`.
 - **FR-025**: Finding disposition MUST use `Core025`, `ComponentData026`,
-  `Closure027`, `AcceptedFollowUp`, or `ProductDecision`.
+  `Closure028`, `AcceptedFollowUp`, or `ProductDecision`.
 - **FR-026**: A `Critical` or `High` finding MUST block the pre-Wave-5 gate until
   resolved or explicitly converted into a human product decision.
 - **FR-027**: A potential breaking public-contract conflict MUST be classified
@@ -244,8 +260,8 @@ and downstream disposition, while all other decisions create no finding.
   025 or 026.
 - **FR-032**: A 025 or 026 intake MUST be created only after 024 is final and only
   from a non-empty accepted finding set owned by that feature.
-- **FR-033**: The audit MUST define feature 027 as a mandatory closure gate even
-  when one or both remediation features are unnecessary.
+- **FR-033**: Revision 2 MUST define feature 028 as the mandatory closure gate
+  after the accepted 025 and 026 finding sets are remediated.
 - **FR-034**: The audit MUST record no-current-scope rationales for every
   conditional validation or governance checkpoint that is not triggered.
 - **FR-035**: Any reusable autonomous-workflow observation MUST be classified
@@ -339,7 +355,8 @@ and downstream disposition, while all other decisions create no finding.
 - **SC-010**: All triggered local and remote quality gates pass, all unavailable
   reviews are reported honestly, and no actionable review thread remains.
 - **SC-011**: Feature 025 and 026 intake creation is prevented for an empty
-  finding set, while feature 027 always has a measurable closure contract.
+  finding set, while Revision 2 requires feature 028 to have a measurable
+  closure contract for the non-empty accepted sets.
 - **SC-012**: A maintainer can trace any contract from historical source through
   current behavior, proof, decision, finding, and downstream boundary using the
   delivered evidence without undocumented session context.
@@ -398,7 +415,7 @@ and downstream disposition, while all other decisions create no finding.
 - Free Vision relations are exactly `CorroboratesOriginal`,
   `CorroboratesModernization`, `DivergesFromOriginal`, and `NotApplicable`.
 - Finding severities are exactly `Critical`, `High`, `Medium`, and `Low`.
-- Finding dispositions are exactly `Core025`, `ComponentData026`, `Closure027`,
+- Finding dispositions are exactly `Core025`, `ComponentData026`, `Closure028`,
   `AcceptedFollowUp`, and `ProductDecision`.
 - Governance applicability remains exactly `Applicable`, `N/A`, or `Open` and
   is never substituted for a contract decision.

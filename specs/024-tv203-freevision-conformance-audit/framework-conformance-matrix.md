@@ -20,9 +20,11 @@ Free Vision relation. `Aligned` preserves observable historical intent.
 
 | Decision | Count |
 |---|---:|
-| `Aligned` | 13 |
+| `Aligned` | 7 |
 | `ConsciouslyOmitted` | 1 |
-| `IntentionalModernization` | 34 |
+| `IntentionalModernization` | 27 |
+| `BehavioralDrift` | 8 |
+| `EvidenceGap` | 5 |
 
 ### Free-Vision-Relationen / Free Vision Relations
 
@@ -60,7 +62,7 @@ relation explains the second opinion without replacing the primary decision.
 
 | ID | Vertrag / Contract | Primary decision | Free Vision relation | Concrete proof | Risk |
 |---|---|---|---|---|---|
-| `C004` | Typisierte Ereigniskanäle / Typed event channels | `IntentionalModernization` | `CorroboratesOriginal` | tests/TuiVision.Core.Tests/Test1.cs::TEvent_CreateAndClear_UpdatesEventChannels; tests/TuiVision.Core.Tests/Test1.cs::TEvent_CreateKeyBroadcastAndNone_InitializeChannels; tests/TuiVision.Core.Tests/Test1.cs::TEvent_CreateMouse_RejectsNonMouseEventKind | A shared numeric command namespace and incorrect event clearing can misroute input. |
+| `C004` | Typisierte Ereigniskanäle / Typed event channels | `BehavioralDrift` (`F001`) | `CorroboratesOriginal` | tests/TuiVision.Core.Tests/Test1.cs::TEvent_CreateAndClear_UpdatesEventChannels; tests/TuiVision.Core.Tests/Test1.cs::TEvent_CreateKeyBroadcastAndNone_InitializeChannels; tests/TuiVision.Core.Tests/Test1.cs::TEvent_CreateMouse_RejectsNonMouseEventKind | Composite mouse masks can make one event enter several semantic channels. |
 | `C005` | Befehlsidentität / Command identity | `IntentionalModernization` | `CorroboratesOriginal` | tests/TuiVision.Core.Tests/Test1.cs::TEvent_CreateAndClear_UpdatesEventChannels; tests/TuiVision.Controls.Tests/TProgramTests.cs::TProgram_CommandRouting_ExecutesExactlyOnce | A shared numeric command namespace and incorrect event clearing can misroute input. |
 | `C006` | Geordneter Dispatch / Ordered dispatch | `Aligned` | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_HandleEvent_PreProcess_ReceivesBeforeFocused; tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_HandleEvent_PreProcess_ConsumedEvent_StopsAllSubsequentPhases | A shared numeric command namespace and incorrect event clearing can misroute input. |
 ## D03 - View-Hierarchie, Fokus und Lebenszyklus / View hierarchy, focus, and lifecycle
@@ -76,8 +78,8 @@ relation explains the second opinion without replacing the primary decision.
 | ID | Vertrag / Contract | Primary decision | Free Vision relation | Concrete proof | Risk |
 |---|---|---|---|---|---|
 | `C007` | Eigentum und Lebenszyklus / Ownership and lifecycle | `IntentionalModernization` | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_Insert_AddsViewToList_AndSetsOwner; tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_ShutDown_CallsShutDownOnAllChildren_InLIFOOrder | Incorrect owner or focus state can orphan views or deliver events to the wrong target. |
-| `C008` | Fokusübergang / Focus transition | `Aligned` | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_SetFocus_TransfersFocusedState; tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_SelectNext_SkipsDisabledViews | Incorrect owner or focus state can orphan views or deliver events to the wrong target. |
-| `C009` | Hierarchie und Zustandsweitergabe / Hierarchy and state propagation | `Aligned` | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_SetState_Focused_PropagatesDirectChildren; tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_Draw_CallsDrawViewOnVisibleChildrenInInsertionOrder | Incorrect owner or focus state can orphan views or deliver events to the wrong target. |
+| `C008` | Fokusübergang / Focus transition | `BehavioralDrift` (`F002`) | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_SetFocus_TransfersFocusedState; tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_SelectNext_SkipsDisabledViews | Invalid input cannot veto focus loss through the production path. |
+| `C009` | Hierarchie und Zustandsweitergabe / Hierarchy and state propagation | `BehavioralDrift` (`F003`) | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_SetState_Focused_PropagatesDirectChildren; tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_Draw_CallsDrawViewOnVisibleChildrenInInsertionOrder | Uniform state propagation can mark several children focused. |
 ## D04 - Koordinaten, Clipping und Größenänderung / Coordinates, clipping, and resizing
 
 Deutsch: Historische Absicht, aktuelles Verhalten, Modernisierungsgrund und
@@ -105,9 +107,9 @@ relation explains the second opinion without replacing the primary decision.
 
 | ID | Vertrag / Contract | Primary decision | Free Vision relation | Concrete proof | Risk |
 |---|---|---|---|---|---|
-| `C013` | Anwendungsschleife / Application loop | `Aligned` | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TProgramTests.cs::TProgram_Run_ShutsDownCleanly; tests/TuiVision.Controls.Tests/TProgramTests.cs::TProgram_Command_RoutedOnlyOnce | Queue, modal, or close regressions can hang the application or lose state. |
-| `C014` | Desktop und Fensterstapel / Desktop and window stack | `Aligned` | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TApplicationTests.cs::TApplication_Constructor_SetsFocusToDesktop; tests/TuiVision.Controls.Tests/TDesktopTests.cs::TDesktop_FocusFallback_SelectsNextEligibleChild | Queue, modal, or close regressions can hang the application or lose state. |
-| `C015` | Modalität und Fensterabschluss / Modality and window close | `IntentionalModernization` | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_ExistingModalBehavior_NotRegressed; tests/TuiVision.Controls.Tests/TWindowTests.cs::TWindow_Escape_DoesNotCloseWhenConsumedByChild | Queue, modal, or close regressions can hang the application or lose state. |
+| `C013` | Anwendungsschleife / Application loop | `BehavioralDrift` (`F004`) | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TProgramTests.cs::TProgram_Run_ShutsDownCleanly; tests/TuiVision.Controls.Tests/TProgramTests.cs::TProgram_Command_RoutedOnlyOnce | No bounded idle lifecycle exists for consumer refresh work. |
+| `C014` | Desktop und Fensterstapel / Desktop and window stack | `EvidenceGap` (`F005`) | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TApplicationTests.cs::TApplication_Constructor_SetsFocusToDesktop; tests/TuiVision.Controls.Tests/TDesktopTests.cs::TDesktop_FocusFallback_SelectsNextEligibleChild | Required stack operations are absent or unproved. |
+| `C015` | Modalität und Fensterabschluss / Modality and window close | `BehavioralDrift` (`F006`) | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_ExistingModalBehavior_NotRegressed; tests/TuiVision.Controls.Tests/TWindowTests.cs::TWindow_Escape_DoesNotCloseWhenConsumedByChild | Close can stop at a signal and modal lifecycle is incomplete. |
 ## D06 - Menüs, Statuszeile und Hilfe / Menus, status line, and help
 
 Deutsch: Historische Absicht, aktuelles Verhalten, Modernisierungsgrund und
@@ -121,7 +123,7 @@ relation explains the second opinion without replacing the primary decision.
 | ID | Vertrag / Contract | Primary decision | Free Vision relation | Concrete proof | Risk |
 |---|---|---|---|---|---|
 | `C016` | Menünavigation / Menu navigation | `Aligned` | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TMenuBarTests.cs::TMenuBar_TopLevel_ArrowRightWrapsAround; tests/TuiVision.Controls.Tests/TMenuBarTests.cs::TMenuBar_EnterKey_DispatchesCommand | Disabled commands or shortcut drift can expose unavailable actions or break keyboard access. |
-| `C017` | Status und Befehlsfreigabe / Status and command enablement | `IntentionalModernization` | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TStatusLineTests.cs::TStatusLine_DisabledItems_VisibleButNotExecutable; tests/TuiVision.Controls.Tests/TStatusLineTests.cs::TStatusLine_ContextChange_RefreshesOnFocusChange | Disabled commands or shortcut drift can expose unavailable actions or break keyboard access. |
+| `C017` | Status und Befehlsfreigabe / Status and command enablement | `EvidenceGap` (`F007`) | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TStatusLineTests.cs::TStatusLine_DisabledItems_VisibleButNotExecutable; tests/TuiVision.Controls.Tests/TStatusLineTests.cs::TStatusLine_ContextChange_RefreshesOnFocusChange | Command surfaces can disagree without one shared context state. |
 | `C018` | Shortcuts und Hilfe-Beschreibung / Shortcuts and help description | `IntentionalModernization` | `NotApplicable` | tests/TuiVision.Controls.Tests/KeyboardAccessibilityMatrixTests.cs::MenuBar_F10ArrowsAndEnter_DispatchStructuredCommand; tests/TuiVision.Controls.Tests/AccessibilityFrameworkTests.cs::StatusLine_GetAccessibleShortcuts_UsesExplicitKeysAndPreservesSources | Disabled commands or shortcut drift can expose unavailable actions or break keyboard access. |
 ## D07 - Dialoge, Controls und Validierung / Dialogs, controls, and validation
 
@@ -135,9 +137,9 @@ relation explains the second opinion without replacing the primary decision.
 
 | ID | Vertrag / Contract | Primary decision | Free Vision relation | Concrete proof | Risk |
 |---|---|---|---|---|---|
-| `C019` | Dialogzustand und Validierung / Dialog state and validation | `Aligned` | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_Valid_RejectsCloseWhenValidReturnsFalse; tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_Valid_AcceptsCloseWhenValidReturnsTrue | Partial validation or state mutation can accept invalid data or discard user input. |
+| `C019` | Dialogzustand und Validierung / Dialog state and validation | `BehavioralDrift` (`F010`) | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_Valid_RejectsCloseWhenValidReturnsFalse; tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_Valid_AcceptsCloseWhenValidReturnsTrue | Unrelated commands can close dialogs and child validation is skipped. |
 | `C020` | Control-Aktivierung / Control activation | `Aligned` | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TButtonTests.cs::TButton_HandleEvent_EnterDispatchesCommand; tests/TuiVision.Controls.Tests/TButtonTests.cs::TButton_SelectNext_DisabledButtonIsSkipped | Partial validation or state mutation can accept invalid data or discard user input. |
-| `C021` | Auswahl, Eingabe und Farbe / Selection, input, and color | `IntentionalModernization` | `CorroboratesModernization` | tests/TuiVision.Controls.Tests/TInputLineTests.cs::TInputLine_HandleEvent_MaxLenZeroRejectsInput; tests/TuiVision.Controls.Tests/TColorDialogTests.cs::TColorDialog_CancelSelection_RestoresCommittedValue | Partial validation or state mutation can accept invalid data or discard user input. |
+| `C021` | Auswahl, Eingabe und Farbe / Selection, input, and color | `BehavioralDrift` (`F011`) | `CorroboratesModernization` | tests/TuiVision.Controls.Tests/TInputLineTests.cs::TInputLine_HandleEvent_MaxLenZeroRejectsInput; tests/TuiVision.Controls.Tests/TColorDialogTests.cs::TColorDialog_CancelSelection_RestoresCommittedValue | Input controls cannot invoke the existing validator model. |
 ## D08 - Editor, Zwischenablage und Dateien / Editor, clipboard, and files
 
 Deutsch: Historische Absicht, aktuelles Verhalten, Modernisierungsgrund und
@@ -151,7 +153,7 @@ relation explains the second opinion without replacing the primary decision.
 | ID | Vertrag / Contract | Primary decision | Free Vision relation | Concrete proof | Risk |
 |---|---|---|---|---|---|
 | `C022` | Editor und Zwischenablage / Editor and clipboard | `IntentionalModernization` | `CorroboratesModernization` | tests/TuiVision.Controls.Tests/TEditorCommandTests.cs::TEditor_ClipboardAndUndo_CutPasteAndUndoRoundTrip; tests/TuiVision.Controls.Tests/TEditorTests.cs::TEditor_Editing_SupportsOverwriteAndSelectionReplacement | Incorrect close, conflict, or file decisions can lose edited content. |
-| `C023` | Dateiauswahl und Konflikte / File selection and conflicts | `IntentionalModernization` | `CorroboratesModernization` | tests/TuiVision.Controls.Tests/TFileEditorTests.cs::TFileEditor_Save_RequiresExplicitDecisionAfterExternalChange; tests/TuiVision.Controls.Tests/TStandardDialogFlowTests.cs::TFileDialog_SaveTargetExistingFile_RequiresCallerDecision | Incorrect close, conflict, or file decisions can lose edited content. |
+| `C023` | Dateiauswahl und Konflikte / File selection and conflicts | `EvidenceGap` (`F012`) | `CorroboratesModernization` | tests/TuiVision.Controls.Tests/TFileEditorTests.cs::TFileEditor_Save_RequiresExplicitDecisionAfterExternalChange; tests/TuiVision.Controls.Tests/TStandardDialogFlowTests.cs::TFileDialog_SaveTargetExistingFile_RequiresCallerDecision | Mode-aware path rejection is not proved. |
 | `C024` | Schließen, Suchen und Ersetzen / Close, search, and replace | `IntentionalModernization` | `CorroboratesModernization` | tests/TuiVision.Controls.Tests/TEditorCommandTests.cs::TEditor_SearchReplace_FindsAndReplacesSelection; tests/TuiVision.Controls.Tests/TEditWindowTests.cs::TEditWindow_Close_ModifiedDocumentRequiresExplicitDecision | Incorrect close, conflict, or file decisions can lose edited content. |
 ## D09 - Hilfe, Ressourcen und Lokalisierung / Help, resources, and localization
 
@@ -166,7 +168,7 @@ relation explains the second opinion without replacing the primary decision.
 | ID | Vertrag / Contract | Primary decision | Free Vision relation | Concrete proof | Risk |
 |---|---|---|---|---|---|
 | `C025` | Hilfethemen und Compiler / Help topics and compiler | `IntentionalModernization` | `CorroboratesOriginal` | tests/TuiVision.Serialization.Tests/THelpSourceCompilerTests.cs::Compile_ValidForwardReference_CreatesRuntimeHelpModel; tests/TuiVision.Serialization.Tests/THelpSourceCompilerTests.cs::Compile_InvalidReference_ReturnsDiagnosticWithoutModel | Broken references, locale fallback, or resource identity can show incorrect help or text. |
-| `C026` | Ressourcen und Lokalisierung / Resources and localization | `IntentionalModernization` | `CorroboratesOriginal` | tests/TuiVision.Serialization.Tests/TLocalizedResourceLookupTests.cs::Find_Fallbacks_UseCallerOrderWithoutDuplicates; tests/TuiVision.Serialization.Tests/TResourceFileTests.cs::TResourceFile_SaveLoad_PreservesExactKeySemantics | Broken references, locale fallback, or resource identity can show incorrect help or text. |
+| `C026` | Ressourcen und Lokalisierung / Resources and localization | `EvidenceGap` (`F013`) | `CorroboratesOriginal` | tests/TuiVision.Serialization.Tests/TLocalizedResourceLookupTests.cs::Find_Fallbacks_UseCallerOrderWithoutDuplicates; tests/TuiVision.Serialization.Tests/TResourceFileTests.cs::TResourceFile_SaveLoad_PreservesExactKeySemantics | Resource-driven UI composition is absent or unproved. |
 | `C027` | History und Konfiguration / History and configuration | `IntentionalModernization` | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/THistoryTests.cs::THistory_Add_DuplicateValue_MovedToFront; tests/TuiVision.Controls.Tests/ControlsProofTests.cs::TConfigFile_SetAndGet_ReturnsStoredValue | Broken references, locale fallback, or resource identity can show incorrect help or text. |
 ## D10 - Streams, Registrierung und Persistenz / Streams, registry, and persistence
 
@@ -210,9 +212,9 @@ relation explains the second opinion without replacing the primary decision.
 
 | ID | Vertrag / Contract | Primary decision | Free Vision relation | Concrete proof | Risk |
 |---|---|---|---|---|---|
-| `C034` | Tastaturübersetzung / Keyboard translation | `IntentionalModernization` | `CorroboratesOriginal` | tests/TuiVision.Compatibility.Tests/TKeyCodeTranslatorTests.cs::FromConsoleKey_WithCtrlModifier_SetsCtrlInShiftState; tests/TuiVision.Compatibility.Tests/TKeyCodeTranslatorTests.cs::FromConsoleKey_FunctionKeys_ProduceExpectedScanCodes | Input normalization or timing drift can duplicate actions or remove keyboard fallback. |
+| `C034` | Tastaturübersetzung / Keyboard translation | `BehavioralDrift` (`F008`) | `CorroboratesOriginal` | tests/TuiVision.Compatibility.Tests/TKeyCodeTranslatorTests.cs::FromConsoleKey_WithCtrlModifier_SetsCtrlInShiftState; tests/TuiVision.Compatibility.Tests/TKeyCodeTranslatorTests.cs::FromConsoleKey_FunctionKeys_ProduceExpectedScanCodes | Real console ingress bypasses the tested canonical translator. |
 | `C035` | Maus-Ingress und Doppelklick / Mouse ingress and double-click | `IntentionalModernization` | `CorroboratesModernization` | tests/TuiVision.Drivers.Tests/ConsoleMouseIngressTests.cs::TryAccept_SecondMatchingPressWithin500Milliseconds_IsDoubleClick; tests/TuiVision.Drivers.Tests/ConsoleMouseIngressTests.cs::TryAccept_InvalidObservation_RejectsWithoutPartialEvent | Input normalization or timing drift can duplicate actions or remove keyboard fallback. |
-| `C036` | Aktivierung, Drag und Fallback / Activation, drag, and fallback | `Aligned` | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TProgramMouseIntegrationTests.cs::AppLoop_TitleDrag_ChangesWindowAndRenderedRegion; tests/TuiVision.Controls.Tests/TWindowMouseDragTests.cs::KeyboardMoveMode_RemainsCompleteFallback | Input normalization or timing drift can duplicate actions or remove keyboard fallback. |
+| `C036` | Aktivierung, Drag und Fallback / Activation, drag, and fallback | `EvidenceGap` (`F009`) | `CorroboratesOriginal` | tests/TuiVision.Controls.Tests/TProgramMouseIntegrationTests.cs::AppLoop_TitleDrag_ChangesWindowAndRenderedRegion; tests/TuiVision.Controls.Tests/TWindowMouseDragTests.cs::KeyboardMoveMode_RemainsCompleteFallback | Generic tracked drag and keyboard-equivalent drop are unproved. |
 ## D13 - Zeichensatz, Fonts und Terminal / Charset, fonts, and terminal
 
 Deutsch: Historische Absicht, aktuelles Verhalten, Modernisierungsgrund und

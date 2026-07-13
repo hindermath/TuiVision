@@ -1,12 +1,17 @@
 {
   "run": {
     "runId": "024-tv203-freevision-conformance-audit",
+    "auditRevision": 2,
     "auditDate": "2026-07-12",
     "historicalLedgerPath": "docs/porting-status.md",
     "historicalRowCount": 151,
     "modernSourceCount": 119,
     "freeVisionRepository": "https://gitlab.com/freepascal.org/fpc/source.git",
     "freeVisionCommit": "ffc03b34d8cafb85ddcf0686de1c5551601dacb2",
+    "consumerScope": [
+      "TVDEMOS",
+      "TVFM"
+    ],
     "deliveryMode": "MergeAndSync"
   },
   "domains": [
@@ -1270,7 +1275,7 @@
       "ledgerPath": "tv203s/contrib/tvision/classes/tcommand.cc",
       "domainId": "D02",
       "contractIds": [
-        "C004"
+        "C005"
       ],
       "ledgerStatus": "portiert + getestet",
       "omissionRationale": "None",
@@ -1380,7 +1385,9 @@
       "ledgerPath": "tv203s/contrib/tvision/classes/tevent.cc",
       "domainId": "D02",
       "contractIds": [
-        "C005"
+        "C004",
+        "C005",
+        "C006"
       ],
       "ledgerStatus": "portiert + getestet",
       "omissionRationale": "None",
@@ -2449,6 +2456,7 @@
       "assembly": "TuiVision.Controls",
       "domainId": "D06",
       "contractIds": [
+        "C005",
         "C016"
       ]
     },
@@ -2737,6 +2745,7 @@
       "assembly": "TuiVision.Controls",
       "domainId": "D03",
       "contractIds": [
+        "C006",
         "C008"
       ]
     },
@@ -3115,7 +3124,8 @@
       "assembly": "TuiVision.Core",
       "domainId": "D02",
       "contractIds": [
-        "C004"
+        "C004",
+        "C005"
       ]
     },
     {
@@ -3774,7 +3784,8 @@
       "fullTypeName": "TuiVision.Core.TEventKind",
       "domainId": "D02",
       "contractIds": [
-        "C004"
+        "C004",
+        "C005"
       ]
     },
     {
@@ -3783,7 +3794,7 @@
       "fullTypeName": "TuiVision.Core.TMouseButtons",
       "domainId": "D02",
       "contractIds": [
-        "C005"
+        "C004"
       ]
     },
     {
@@ -3792,7 +3803,7 @@
       "fullTypeName": "TuiVision.Core.TMouseEvent",
       "domainId": "D02",
       "contractIds": [
-        "C006"
+        "C004"
       ]
     },
     {
@@ -3810,6 +3821,7 @@
       "fullTypeName": "TuiVision.Core.TMessageEvent",
       "domainId": "D02",
       "contractIds": [
+        "C004",
         "C005"
       ]
     },
@@ -3819,6 +3831,8 @@
       "fullTypeName": "TuiVision.Core.TEvent",
       "domainId": "D02",
       "contractIds": [
+        "C004",
+        "C005",
         "C006"
       ]
     },
@@ -5180,12 +5194,12 @@
         "M081"
       ],
       "publicContractItemIds": [
-        "P102",
-        "P103",
-        "P104",
-        "P105",
-        "P106",
-        "P107"
+        "P035",
+        "P036",
+        "P037",
+        "P038",
+        "P039",
+        "P040"
       ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/tevent.cc",
@@ -5196,14 +5210,14 @@
         "FV001"
       ],
       "historicalIntent": "Typed event channels: Events carry one active channel, numeric commands keep stable identity, and dispatch stops after explicit consumption.",
-      "observedBehavior": "Typed event channels: Typed event factories, named command constants, and ordered group handling preserve event and command semantics.",
-      "primaryDecision": "IntentionalModernization",
+      "observedBehavior": "Typed factories usually keep one active channel, but CreateMouse accepts composite mouse masks and therefore permits an event value that is not one concrete dispatch kind.",
+      "primaryDecision": "BehavioralDrift",
       "freeVisionRelation": "CorroboratesOriginal",
-      "modernCSharpRationale": "Factories, records, and managed payloads replace unions and raw information pointers.",
+      "modernCSharpRationale": "Managed factories remain the intended modernization; their input validation must still preserve the one-concrete-kind invariant.",
       "proof": "tests/TuiVision.Core.Tests/Test1.cs::TEvent_CreateAndClear_UpdatesEventChannels; tests/TuiVision.Core.Tests/Test1.cs::TEvent_CreateKeyBroadcastAndNone_InitializeChannels; tests/TuiVision.Core.Tests/Test1.cs::TEvent_CreateMouse_RejectsNonMouseEventKind",
-      "risk": "A shared numeric command namespace and incorrect event clearing can misroute input.",
-      "findingId": "None",
-      "downstreamDisposition": "None"
+      "risk": "A composite kind can enter more than one dispatch channel and makes event consumption ambiguous.",
+      "findingId": "F001",
+      "downstreamDisposition": "Core025"
     },
     {
       "contractId": "C005",
@@ -5219,8 +5233,9 @@
         "M081"
       ],
       "publicContractItemIds": [
-        "P102",
-        "P105"
+        "P035",
+        "P039",
+        "P040"
       ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/tcommand.cc",
@@ -5252,7 +5267,9 @@
       "modernSourceItemIds": [
         "M039"
       ],
-      "publicContractItemIds": [],
+      "publicContractItemIds": [
+        "P040"
+      ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/tevent.cc",
         "tv203s/contrib/tvision/include/tv/event.h",
@@ -5326,14 +5343,14 @@
         "FV001"
       ],
       "historicalIntent": "Focus transition: Groups own children, maintain one current view, propagate state, and release children in defined order.",
-      "observedBehavior": "Focus transition: TGroup and TView enforce owner membership, focus transfer, state propagation, and managed shutdown invariants.",
-      "primaryDecision": "Aligned",
+      "observedBehavior": "TGroup transfers Current and Focused state, but the current focus path does not integrate child validation as a veto before focus leaves an invalid input control.",
+      "primaryDecision": "BehavioralDrift",
       "freeVisionRelation": "CorroboratesOriginal",
       "modernCSharpRationale": "None",
       "proof": "tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_SetFocus_TransfersFocusedState; tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_SelectNext_SkipsDisabledViews",
-      "risk": "Incorrect owner or focus state can orphan views or deliver events to the wrong target.",
-      "findingId": "None",
-      "downstreamDisposition": "None"
+      "risk": "Focus can leave invalid input and move command delivery to a target that should not yet become current.",
+      "findingId": "F002",
+      "downstreamDisposition": "Core025"
     },
     {
       "contractId": "C009",
@@ -5358,14 +5375,14 @@
         "FV001"
       ],
       "historicalIntent": "Hierarchy and state propagation: Groups own children, maintain one current view, propagate state, and release children in defined order.",
-      "observedBehavior": "Hierarchy and state propagation: TGroup and TView enforce owner membership, focus transfer, state propagation, and managed shutdown invariants.",
-      "primaryDecision": "Aligned",
+      "observedBehavior": "TGroup propagates Focused and Disabled to all direct children, while the historical contract limits Focused to Current and applies state-specific propagation rules.",
+      "primaryDecision": "BehavioralDrift",
       "freeVisionRelation": "CorroboratesOriginal",
       "modernCSharpRationale": "None",
       "proof": "tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_SetState_Focused_PropagatesDirectChildren; tests/TuiVision.Controls.Tests/TGroupTests.cs::TGroup_Draw_CallsDrawViewOnVisibleChildrenInInsertionOrder",
-      "risk": "Incorrect owner or focus state can orphan views or deliver events to the wrong target.",
-      "findingId": "None",
-      "downstreamDisposition": "None"
+      "risk": "Several children can appear focused or disabled through group state even though only one current child owns focus.",
+      "findingId": "F003",
+      "downstreamDisposition": "Core025"
     },
     {
       "contractId": "C010",
@@ -5492,14 +5509,14 @@
         "FV003"
       ],
       "historicalIntent": "Application loop: The program loop obtains and dispatches events, the desktop owns windows, and modal execution returns one command result.",
-      "observedBehavior": "Application loop: TProgram, TApplication, TDesktop, TDialog, and TWindow provide a deterministic queue, stack, modal, and close model.",
-      "primaryDecision": "Aligned",
+      "observedBehavior": "TProgram provides a deterministic queue and dispatch loop, but it has no pending-event or Idle lifecycle hook required by both reviewed demo families for background refresh and command-state updates.",
+      "primaryDecision": "BehavioralDrift",
       "freeVisionRelation": "CorroboratesOriginal",
       "modernCSharpRationale": "None",
       "proof": "tests/TuiVision.Controls.Tests/TProgramTests.cs::TProgram_Run_ShutsDownCleanly; tests/TuiVision.Controls.Tests/TProgramTests.cs::TProgram_Command_RoutedOnlyOnce",
-      "risk": "Queue, modal, or close regressions can hang the application or lose state.",
-      "findingId": "None",
-      "downstreamDisposition": "None"
+      "risk": "Applications must emulate idle work outside the framework, which can starve refresh work or duplicate event-loop policy.",
+      "findingId": "F004",
+      "downstreamDisposition": "Core025"
     },
     {
       "contractId": "C014",
@@ -5529,14 +5546,14 @@
         "FV003"
       ],
       "historicalIntent": "Desktop and window stack: The program loop obtains and dispatches events, the desktop owns windows, and modal execution returns one command result.",
-      "observedBehavior": "Desktop and window stack: TProgram, TApplication, TDesktop, TDialog, and TWindow provide a deterministic queue, stack, modal, and close model.",
-      "primaryDecision": "Aligned",
+      "observedBehavior": "TDesktop owns child views, but current APIs and proofs do not establish insertion, top-window selection, tiling, cascading, and close-all behavior used by the reviewed Wave-5 and Wave-6 applications.",
+      "primaryDecision": "EvidenceGap",
       "freeVisionRelation": "CorroboratesOriginal",
       "modernCSharpRationale": "None",
       "proof": "tests/TuiVision.Controls.Tests/TApplicationTests.cs::TApplication_Constructor_SetsFocusToDesktop; tests/TuiVision.Controls.Tests/TDesktopTests.cs::TDesktop_FocusFallback_SelectsNextEligibleChild",
-      "risk": "Queue, modal, or close regressions can hang the application or lose state.",
-      "findingId": "None",
-      "downstreamDisposition": "None"
+      "risk": "Later examples could add local window-stack substitutes or expose inconsistent focus and geometry behavior.",
+      "findingId": "F005",
+      "downstreamDisposition": "Core025"
     },
     {
       "contractId": "C015",
@@ -5565,14 +5582,14 @@
         "FV003"
       ],
       "historicalIntent": "Modality and window close: The program loop obtains and dispatches events, the desktop owns windows, and modal execution returns one command result.",
-      "observedBehavior": "Modality and window close: TProgram, TApplication, TDesktop, TDialog, and TWindow provide a deterministic queue, stack, modal, and close model.",
-      "primaryDecision": "IntentionalModernization",
+      "observedBehavior": "TWindow emits cmClose to its owner for Ctrl+W or Escape, but the default desktop path does not remove the window, and there is no complete ExecView or ExecuteDialog modal lifecycle with focus restoration.",
+      "primaryDecision": "BehavioralDrift",
       "freeVisionRelation": "CorroboratesOriginal",
-      "modernCSharpRationale": "A deterministic in-process queue and explicit close decisions replace platform-owned loop details.",
+      "modernCSharpRationale": "Explicit close decisions and a managed event loop remain valid modernization goals, but the observable lifecycle must complete rather than stop at a signal.",
       "proof": "tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_ExistingModalBehavior_NotRegressed; tests/TuiVision.Controls.Tests/TWindowTests.cs::TWindow_Escape_DoesNotCloseWhenConsumedByChild",
-      "risk": "Queue, modal, or close regressions can hang the application or lose state.",
-      "findingId": "None",
-      "downstreamDisposition": "None"
+      "risk": "Keyboard close can appear successful while the window remains active, and modal callers lack a stable result and focus boundary.",
+      "findingId": "F006",
+      "downstreamDisposition": "Core025"
     },
     {
       "contractId": "C016",
@@ -5641,14 +5658,14 @@
         "FV005"
       ],
       "historicalIntent": "Status and command enablement: Menus navigate enabled entries, status definitions expose executable commands, and keyboard shortcuts remain visible.",
-      "observedBehavior": "Status and command enablement: TMenuBar and TStatusLine expose keyboard navigation, command execution, disabled-state truth, and structured shortcuts.",
-      "primaryDecision": "IntentionalModernization",
+      "observedBehavior": "Menu and status items expose local Enabled state, but the framework has no shared command-state set and no event-loop refresh contract for enabling actions from the active window and selection state.",
+      "primaryDecision": "EvidenceGap",
       "freeVisionRelation": "CorroboratesOriginal",
       "modernCSharpRationale": "Structured shortcut queries and explicit enabled state make command truth immutable and accessible.",
       "proof": "tests/TuiVision.Controls.Tests/TStatusLineTests.cs::TStatusLine_DisabledItems_VisibleButNotExecutable; tests/TuiVision.Controls.Tests/TStatusLineTests.cs::TStatusLine_ContextChange_RefreshesOnFocusChange",
-      "risk": "Disabled commands or shortcut drift can expose unavailable actions or break keyboard access.",
-      "findingId": "None",
-      "downstreamDisposition": "None"
+      "risk": "Menus, status lines, and focused views can disagree about whether one command is currently executable.",
+      "findingId": "F007",
+      "downstreamDisposition": "Core025"
     },
     {
       "contractId": "C018",
@@ -5739,14 +5756,14 @@
         "FV007"
       ],
       "historicalIntent": "Dialog state and validation: Dialogs preserve control state, validate before acceptance, and controls consume activation and editing input predictably.",
-      "observedBehavior": "Dialog state and validation: Dialogs and controls preserve state through validation, rejection, activation, input, selection, and explicit fallback.",
-      "primaryDecision": "Aligned",
+      "observedBehavior": "TDialog closes for every command event, and its standard Valid path does not walk child controls before accepting a completion command.",
+      "primaryDecision": "BehavioralDrift",
       "freeVisionRelation": "CorroboratesOriginal",
       "modernCSharpRationale": "None",
       "proof": "tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_Valid_RejectsCloseWhenValidReturnsFalse; tests/TuiVision.Controls.Tests/TDialogTests.cs::TDialog_Valid_AcceptsCloseWhenValidReturnsTrue",
-      "risk": "Partial validation or state mutation can accept invalid data or discard user input.",
-      "findingId": "None",
-      "downstreamDisposition": "None"
+      "risk": "Unrelated commands can terminate a dialog and invalid child state can be accepted without a visible rejection boundary.",
+      "findingId": "F010",
+      "downstreamDisposition": "ComponentData026"
     },
     {
       "contractId": "C020",
@@ -5863,14 +5880,14 @@
         "FV008"
       ],
       "historicalIntent": "Selection, input, and color: Dialogs preserve control state, validate before acceptance, and controls consume activation and editing input predictably.",
-      "observedBehavior": "Selection, input, and color: Dialogs and controls preserve state through validation, rejection, activation, input, selection, and explicit fallback.",
-      "primaryDecision": "IntentionalModernization",
+      "observedBehavior": "TInputLine edits managed text, but it has no validator attachment or focus-loss rejection path even though validator types and dialog-level validation exist separately.",
+      "primaryDecision": "BehavioralDrift",
       "freeVisionRelation": "CorroboratesModernization",
-      "modernCSharpRationale": "Managed state models and fail-safe validation reject invalid transitions without partial mutation.",
+      "modernCSharpRationale": "Managed state and explicit validator objects remain the intended design; they need a real input-control integration boundary.",
       "proof": "tests/TuiVision.Controls.Tests/TInputLineTests.cs::TInputLine_HandleEvent_MaxLenZeroRejectsInput; tests/TuiVision.Controls.Tests/TColorDialogTests.cs::TColorDialog_CancelSelection_RestoresCommittedValue",
-      "risk": "Partial validation or state mutation can accept invalid data or discard user input.",
-      "findingId": "None",
-      "downstreamDisposition": "None"
+      "risk": "Validation helpers can exist while user input bypasses them during focus transfer and dialog acceptance.",
+      "findingId": "F011",
+      "downstreamDisposition": "ComponentData026"
     },
     {
       "contractId": "C022",
@@ -5958,14 +5975,14 @@
         "FV010"
       ],
       "historicalIntent": "File selection and conflicts: Editors mutate buffers, clipboard commands preserve text, file dialogs separate selection from I/O, and close paths protect modified data.",
-      "observedBehavior": "File selection and conflicts: Managed editor, clipboard, file, search, save-conflict, and safe-close flows keep user data until an explicit decision.",
-      "primaryDecision": "IntentionalModernization",
+      "observedBehavior": "File conflict decisions are explicit, but the current dialog flow can mark typed or missing paths valid without proving mode-aware wildcard, directory, open-file, and save-target rejection semantics.",
+      "primaryDecision": "EvidenceGap",
       "freeVisionRelation": "CorroboratesModernization",
       "modernCSharpRationale": "Managed strings, isolated clipboard state, explicit file decisions, and conflict snapshots prevent implicit data loss.",
       "proof": "tests/TuiVision.Controls.Tests/TFileEditorTests.cs::TFileEditor_Save_RequiresExplicitDecisionAfterExternalChange; tests/TuiVision.Controls.Tests/TStandardDialogFlowTests.cs::TFileDialog_SaveTargetExistingFile_RequiresCallerDecision",
-      "risk": "Incorrect close, conflict, or file decisions can lose edited content.",
-      "findingId": "None",
-      "downstreamDisposition": "None"
+      "risk": "A consumer can receive a completed selection whose path is invalid for the requested operation.",
+      "findingId": "F012",
+      "downstreamDisposition": "ComponentData026"
     },
     {
       "contractId": "C024",
@@ -6091,14 +6108,14 @@
         "FV012"
       ],
       "historicalIntent": "Resources and localization: Help resolves contexts and references, resources use named lookup, history is ordered, and localized text has explicit fallback.",
-      "observedBehavior": "Resources and localization: Compiled help, named resources, locale fallback, history, configuration, and missing-context behavior are explicitly tested.",
-      "primaryDecision": "IntentionalModernization",
+      "observedBehavior": "Named lookup and help resources are proven, but current registration and tests do not prove reconstructible menu, status-line, and dialog composition required by the reviewed resource-driven consumers.",
+      "primaryDecision": "EvidenceGap",
       "freeVisionRelation": "CorroboratesOriginal",
       "modernCSharpRationale": "UTF-8 help compilation and ordered locale fallback replace code-page and pointer-based resource assumptions.",
       "proof": "tests/TuiVision.Serialization.Tests/TLocalizedResourceLookupTests.cs::Find_Fallbacks_UseCallerOrderWithoutDuplicates; tests/TuiVision.Serialization.Tests/TResourceFileTests.cs::TResourceFile_SaveLoad_PreservesExactKeySemantics",
-      "risk": "Broken references, locale fallback, or resource identity can show incorrect help or text.",
-      "findingId": "None",
-      "downstreamDisposition": "None"
+      "risk": "Wave applications may re-create persisted UI composition as local hard-coded structures or fail to round-trip named resources.",
+      "findingId": "F013",
+      "downstreamDisposition": "ComponentData026"
     },
     {
       "contractId": "C027",
@@ -6404,14 +6421,14 @@
         "FV014"
       ],
       "historicalIntent": "Keyboard translation: Keyboard and mouse input are normalized into events; click, double-click, drag, and fallback paths remain ordered.",
-      "observedBehavior": "Keyboard translation: Console translation and bounded mouse ingress publish canonical events; app-loop proofs cover focus, activation, double-click, drag, and keyboard fallback.",
-      "primaryDecision": "IntentionalModernization",
+      "observedBehavior": "A canonical TKeyCodeTranslator exists, but TProgram.GetEvent casts most ConsoleKey values directly, maps only F10 explicitly, and uses modifier values that disagree with TWindow's Ctrl check.",
+      "primaryDecision": "BehavioralDrift",
       "freeVisionRelation": "CorroboratesOriginal",
-      "modernCSharpRationale": "Managed console adapters and bounded parsers replace direct hardware and OS event records.",
+      "modernCSharpRationale": "Managed console adapters remain the intended modernization; all real ingress paths must use one canonical translation and modifier model.",
       "proof": "tests/TuiVision.Compatibility.Tests/TKeyCodeTranslatorTests.cs::FromConsoleKey_WithCtrlModifier_SetsCtrlInShiftState; tests/TuiVision.Compatibility.Tests/TKeyCodeTranslatorTests.cs::FromConsoleKey_FunctionKeys_ProduceExpectedScanCodes",
-      "risk": "Input normalization or timing drift can duplicate actions or remove keyboard fallback.",
-      "findingId": "None",
-      "downstreamDisposition": "None"
+      "risk": "Keys can work in injected tests yet fail or trigger the wrong command in a real console session.",
+      "findingId": "F008",
+      "downstreamDisposition": "Core025"
     },
     {
       "contractId": "C035",
@@ -6488,14 +6505,14 @@
         "FV014"
       ],
       "historicalIntent": "Activation, drag, and fallback: Keyboard and mouse input are normalized into events; click, double-click, drag, and fallback paths remain ordered.",
-      "observedBehavior": "Activation, drag, and fallback: Console translation and bounded mouse ingress publish canonical events; app-loop proofs cover focus, activation, double-click, drag, and keyboard fallback.",
-      "primaryDecision": "Aligned",
+      "observedBehavior": "Window-title dragging and keyboard fallback are proven, but no generic mouse tracking and DragView contract is available for Wave-6 list and file drag-and-drop consumers.",
+      "primaryDecision": "EvidenceGap",
       "freeVisionRelation": "CorroboratesOriginal",
       "modernCSharpRationale": "None",
       "proof": "tests/TuiVision.Controls.Tests/TProgramMouseIntegrationTests.cs::AppLoop_TitleDrag_ChangesWindowAndRenderedRegion; tests/TuiVision.Controls.Tests/TWindowMouseDragTests.cs::KeyboardMoveMode_RemainsCompleteFallback",
-      "risk": "Input normalization or timing drift can duplicate actions or remove keyboard fallback.",
-      "findingId": "None",
-      "downstreamDisposition": "None"
+      "risk": "Consumer code would need pointer-only local loops that bypass shared capture, cancellation, keyboard fallback, and A11Y policy.",
+      "findingId": "F009",
+      "downstreamDisposition": "Core025"
     },
     {
       "contractId": "C037",
@@ -7049,7 +7066,266 @@
       "provenanceNote": "Own-word summary only; external source remains untracked."
     }
   ],
-  "findings": [],
+  "findings": [
+    {
+      "findingId": "F001",
+      "contractId": "C004",
+      "severity": "Medium",
+      "consumerScope": "Both",
+      "observation": "CreateMouse accepts composite mouse masks instead of requiring one concrete mouse event kind.",
+      "reproduction": "Call TEvent.CreateMouse with a bitwise combination of MouseDown and MouseMove and observe that the factory accepts the ambiguous kind.",
+      "impact": "Dispatch and consumption can no longer rely on one active event channel.",
+      "owner": "TuiVision Maintainer",
+      "sourceEvidence": [
+        "src/TuiVision.Core/TEvent.cs",
+        "tv203s/contrib/tvision/include/tv/event.h",
+        "TVDEMOS/TVDEMO.PAS",
+        "TVFM/TVFM.PAS"
+      ],
+      "acceptanceBoundary": "Reject masks and mixed channels at construction while preserving every supported concrete event factory.",
+      "nonGoals": "No command-number redesign and no native event-union recreation.",
+      "disposition": "Core025"
+    },
+    {
+      "findingId": "F002",
+      "contractId": "C008",
+      "severity": "High",
+      "consumerScope": "Both",
+      "observation": "Focus transfer is not coupled to child validation, so an invalid input can lose focus without a rejection boundary.",
+      "reproduction": "Attach an invalid input scenario to a dialog, request focus on another selectable child, and observe that TGroup completes the transition without validator-owned veto.",
+      "impact": "Dialog and file workflows can move command focus away from invalid state and later accept it.",
+      "owner": "TuiVision Maintainer",
+      "sourceEvidence": [
+        "src/TuiVision.Controls/TGroup.cs",
+        "src/TuiVision.Controls/TInputLine.cs",
+        "tv203s/contrib/tvision/classes/tgroup.cc",
+        "tv203s/contrib/tvision/classes/tinputli.cc",
+        "TVDEMOS/TVDEMO.PAS",
+        "TVFM/GLOBALS.PAS"
+      ],
+      "acceptanceBoundary": "Prove one current child, ordered focus broadcasts, and a validator-owned veto that preserves focus and input state.",
+      "nonGoals": "No visual redesign and no pointer-only focus interaction.",
+      "disposition": "Core025"
+    },
+    {
+      "findingId": "F003",
+      "contractId": "C009",
+      "severity": "High",
+      "consumerScope": "Both",
+      "observation": "TGroup propagates Focused and Disabled uniformly to every child instead of applying state-specific hierarchy rules.",
+      "reproduction": "Set Focused on a group with multiple children and observe that all direct children receive Focused rather than only Current.",
+      "impact": "View state, rendering, focus announcements, and command routing can report several focused children.",
+      "owner": "TuiVision Maintainer",
+      "sourceEvidence": [
+        "src/TuiVision.Controls/TGroup.cs",
+        "tv203s/contrib/tvision/classes/tgroup.cc",
+        "TVDEMOS/TVDEMO.PAS",
+        "TVFM/TREEWIN.PAS"
+      ],
+      "acceptanceBoundary": "Implement and test state-specific propagation for Focused, Disabled, Active, Dragging, Exposed, and Current without changing ownership semantics.",
+      "nonGoals": "No mechanical C++ layout port and no new view-tree abstraction.",
+      "disposition": "Core025"
+    },
+    {
+      "findingId": "F004",
+      "contractId": "C013",
+      "severity": "High",
+      "consumerScope": "Both",
+      "observation": "The application loop has no bounded pending-event and Idle lifecycle contract.",
+      "reproduction": "Compare TProgram.GetEvent and Run with the clock, heap, command-state, and incremental directory refresh work in the reviewed consumers; no framework hook can schedule that work when the queue is empty.",
+      "impact": "Wave applications would need local polling loops or would omit required background refresh behavior.",
+      "owner": "TuiVision Maintainer",
+      "sourceEvidence": [
+        "src/TuiVision.Controls/TProgram.cs",
+        "tv203s/contrib/tvision/classes/tprogram.cc",
+        "TVDEMOS/TVDEMO.PAS",
+        "TVFM/TVFM.PAS",
+        "TVFM/FILEVIEW.PAS"
+      ],
+      "acceptanceBoundary": "Provide deterministic idle invocation only when no event is pending, with non-busy proof and testable scheduling boundaries.",
+      "nonGoals": "No background thread requirement and no platform-specific message pump.",
+      "disposition": "Core025"
+    },
+    {
+      "findingId": "F005",
+      "contractId": "C014",
+      "severity": "High",
+      "consumerScope": "Both",
+      "observation": "Desktop ownership exists, but insertion, top-window, tile, cascade, and close-all contracts are not available or proven as one coherent stack model.",
+      "reproduction": "Map TVDEMO and TVFM window commands to current TDesktop APIs; the required operations cannot be expressed and proven without consumer-local orchestration.",
+      "impact": "Wave ports risk duplicating stack, focus, geometry, and close policy in application code.",
+      "owner": "TuiVision Maintainer",
+      "sourceEvidence": [
+        "src/TuiVision.Controls/TDesktop.cs",
+        "tv203s/contrib/tvision/classes/tdesktop.cc",
+        "TVDEMOS/TVDEMO.PAS",
+        "TVFM/TVFM.PAS",
+        "TVFM/TREEWIN.PAS"
+      ],
+      "acceptanceBoundary": "Define a bounded desktop stack API and prove focus-preserving insert, select-next, tile, cascade, and safe close-all behavior.",
+      "nonGoals": "No reproduction of DOS memory management and no application-specific window classes.",
+      "disposition": "Core025"
+    },
+    {
+      "findingId": "F006",
+      "contractId": "C015",
+      "severity": "High",
+      "consumerScope": "Both",
+      "observation": "Default keyboard close stops at a cmClose signal and the framework lacks a complete modal execution lifecycle with result and focus restoration.",
+      "reproduction": "Run a TWindow under the default desktop, send Ctrl+W or Escape, and observe that the owner receives cmClose while the window remains; no ExecView or ExecuteDialog equivalent completes a modal child lifecycle.",
+      "impact": "Visible windows can fail to close and dialogs cannot offer a reusable deterministic result boundary.",
+      "owner": "TuiVision Maintainer",
+      "sourceEvidence": [
+        "src/TuiVision.Controls/TWindow.cs",
+        "src/TuiVision.Controls/TDialog.cs",
+        "tv203s/contrib/tvision/classes/twindow.cc",
+        "tv203s/contrib/tvision/classes/tdialog.cc",
+        "TVDEMOS/TVEDIT.PAS",
+        "TVFM/TVFM.PAS"
+      ],
+      "acceptanceBoundary": "Prove default close removal, safe-close veto, modal result propagation, event isolation, and previous-focus restoration through the real application loop.",
+      "nonGoals": "No nested native message loop and no silent discard of modified data.",
+      "disposition": "Core025"
+    },
+    {
+      "findingId": "F007",
+      "contractId": "C017",
+      "severity": "Medium",
+      "consumerScope": "Both",
+      "observation": "Commands have per-item Enabled flags but no shared command-state contract refreshed from active context.",
+      "reproduction": "Model TVDEMO or TVFM selection-dependent commands with current menus and status lines; each surface must be updated separately and no idle or focus notification proves consistency.",
+      "impact": "Keyboard, menu, status-line, and focused-view command availability can disagree.",
+      "owner": "TuiVision Maintainer",
+      "sourceEvidence": [
+        "src/TuiVision.Controls/TMenuBar.cs",
+        "src/TuiVision.Controls/TStatusLine.cs",
+        "tv203s/contrib/tvision/classes/tprogram.cc",
+        "TVDEMOS/TVDEMO.PAS",
+        "TVFM/TVFM.PAS"
+      ],
+      "acceptanceBoundary": "Provide one testable command-state source and prove synchronized menu, status, keyboard, and active-view behavior after focus and selection changes.",
+      "nonGoals": "No application command catalog and no removal of explicit Enabled state.",
+      "disposition": "Core025"
+    },
+    {
+      "findingId": "F008",
+      "contractId": "C034",
+      "severity": "High",
+      "consumerScope": "Both",
+      "observation": "The real TProgram console path bypasses TKeyCodeTranslator for most keys and disagrees with TWindow about modifier bit values.",
+      "reproduction": "Feed ConsoleKeyInfo through TProgram.GetEvent for a non-F10 function key or Ctrl+W and compare the result with TKeyCodeTranslator and TShiftState; injected normalized event tests do not cover this path.",
+      "impact": "Keyboard commands can pass unit tests and still fail in an interactive terminal.",
+      "owner": "TuiVision Maintainer",
+      "sourceEvidence": [
+        "src/TuiVision.Controls/TProgram.cs",
+        "src/TuiVision.Controls/TWindow.cs",
+        "src/TuiVision.Compatibility/Class1.cs",
+        "src/TuiVision.Compatibility/TConsoleInputAdapter.cs",
+        "TVDEMOS/TVDEMO.PAS",
+        "TVFM/TVFM.PAS"
+      ],
+      "acceptanceBoundary": "Route real ingress through one translator and prove printable, navigation, function, Alt, Ctrl, Shift, and fallback keys end to end.",
+      "nonGoals": "No platform-specific scan-code table outside the compatibility boundary.",
+      "disposition": "Core025"
+    },
+    {
+      "findingId": "F009",
+      "contractId": "C036",
+      "severity": "High",
+      "consumerScope": "Wave6",
+      "observation": "The framework proves title-bar drag only and has no generic tracked drag session for list and file drag-and-drop.",
+      "reproduction": "Map TVFM DragDrop and FileView flows to current mouse APIs; there is no shared capture, movement threshold, cancellation, target negotiation, or keyboard fallback contract.",
+      "impact": "Wave 6 would need pointer-only local behavior that is difficult to test and inaccessible from the keyboard.",
+      "owner": "TuiVision Maintainer",
+      "sourceEvidence": [
+        "src/TuiVision.Controls/TWindow.cs",
+        "tv203s/contrib/tvision/classes/tview.cc",
+        "TVFM/DRAGDROP.PAS",
+        "TVFM/FILEVIEW.PAS"
+      ],
+      "acceptanceBoundary": "Deliver a bounded generic drag session with capture, threshold, cancel, drop result, keyboard-equivalent command, and app-loop proof.",
+      "nonGoals": "No mandatory mouse-only workflow and no full desktop drag-and-drop protocol.",
+      "disposition": "Core025"
+    },
+    {
+      "findingId": "F010",
+      "contractId": "C019",
+      "severity": "High",
+      "consumerScope": "Both",
+      "observation": "TDialog handles every command as a completion request and standard Valid does not validate child controls.",
+      "reproduction": "Send an unrelated command to a dialog and observe completion, then use a standard dialog with invalid child state and observe that no child-validation walk blocks acceptance.",
+      "impact": "Dialogs can close unexpectedly and accept invalid data.",
+      "owner": "TuiVision Maintainer",
+      "sourceEvidence": [
+        "src/TuiVision.Controls/TDialog.cs",
+        "tv203s/contrib/tvision/classes/tdialog.cc",
+        "TVDEMOS/TVDEMO.PAS",
+        "TVFM/GLOBALS.PAS",
+        "TVFM/COLORS.PAS"
+      ],
+      "acceptanceBoundary": "Only explicit completion commands may close, and acceptance must prove child validation, rejection state preservation, and focus on the failing control.",
+      "nonGoals": "No application-specific dialog command list and no visual redesign.",
+      "disposition": "ComponentData026"
+    },
+    {
+      "findingId": "F011",
+      "contractId": "C021",
+      "severity": "High",
+      "consumerScope": "Both",
+      "observation": "TInputLine and TValidator are separate APIs without an attachment, transfer, focus-loss, or acceptance integration contract.",
+      "reproduction": "Create a validator and an input line, then attempt to bind them using public APIs; no path exists for validator-owned edit, transfer, or focus-loss rejection.",
+      "impact": "Consumer validators can be defined but cannot reliably guard actual user input.",
+      "owner": "TuiVision Maintainer",
+      "sourceEvidence": [
+        "src/TuiVision.Controls/TInputLine.cs",
+        "src/TuiVision.Controls/TValidator.cs",
+        "tv203s/contrib/tvision/classes/tinputli.cc",
+        "TVFM/GLOBALS.PAS",
+        "TVFM/COLORS.PAS"
+      ],
+      "acceptanceBoundary": "Expose a modern validator attachment and prove edit, transfer, focus-loss, dialog acceptance, error indication, and state-preserving rejection.",
+      "nonGoals": "No raw-pointer transfer model and no requirement to copy every historical validator subclass.",
+      "disposition": "ComponentData026"
+    },
+    {
+      "findingId": "F012",
+      "contractId": "C023",
+      "severity": "Medium",
+      "consumerScope": "Both",
+      "observation": "File-dialog completion does not prove mode-aware validation for wildcard, directory, missing open target, and save target cases.",
+      "reproduction": "Confirm a typed missing path through the current standard dialog flow and observe a valid decision without an operation-specific rejection boundary.",
+      "impact": "Callers can receive invalid selections and must duplicate path policy.",
+      "owner": "TuiVision Maintainer",
+      "sourceEvidence": [
+        "src/TuiVision.Controls/TFileDialog.cs",
+        "tv203s/contrib/tvision/classes/tfiledia.cc",
+        "TVDEMOS/TVEDIT.PAS",
+        "TVFM/TVFM.PAS"
+      ],
+      "acceptanceBoundary": "Prove explicit mode-aware results for navigation, wildcard expansion, existing open targets, new save targets, conflicts, cancellation, and invalid manual paths.",
+      "nonGoals": "No arbitrary user-file reads in tests and no destructive file operation.",
+      "disposition": "ComponentData026"
+    },
+    {
+      "findingId": "F013",
+      "contractId": "C026",
+      "severity": "Medium",
+      "consumerScope": "Both",
+      "observation": "Named resources are proven for help and dialog descriptions, but not for reconstructible menu, status-line, and dialog composition.",
+      "reproduction": "Attempt to express the TVRDEMO, GENRDEMO, and TVFM named UI-resource flows with registered resource types and round-trip tests; required composition contracts are absent or unproven.",
+      "impact": "Consumers may hard-code reusable UI resources or persist unsupported object graphs.",
+      "owner": "TuiVision Maintainer",
+      "sourceEvidence": [
+        "src/TuiVision.Serialization/TResourceFile.cs",
+        "TVDEMOS/TVRDEMO.PAS",
+        "TVDEMOS/GENRDEMO.PAS",
+        "TVFM/TVFM.PAS"
+      ],
+      "acceptanceBoundary": "Choose and prove an explicit modern description or registration model for named menu, status-line, and dialog resources with strict malformed-input rejection.",
+      "nonGoals": "No binary compatibility with historical resource files and no arbitrary runtime type activation.",
+      "disposition": "ComponentData026"
+    }
+  ],
   "presetObservations": [
     {
       "observationId": "PO-024-001",

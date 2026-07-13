@@ -1,44 +1,84 @@
 # Audit-Findings / Audit Findings
 
-## Ergebnis / Result
+## Revision-2-Ergebnis / Revision 2 Result
 
-Deutsch: Alle 48 Verträge besitzen konkrete historische Quellen, aktuelles
-Verhalten und benannte Proof-Methoden. Keine Entscheidung lautet
-`BehavioralDrift` oder `EvidenceGap`. Deshalb ist die exakte Finding-Menge leer.
-Das ist ein geprüftes Ergebnis und kein ausgelassener Review-Schritt.
+Deutsch: Die isolierte Vertragsprüfung von Feature 024 war formal vollständig,
+hat aber mehrere vorhandene Proofs zu stark bewertet. Die zusätzliche
+Verbraucherprüfung gegen `TVDEMOS/` und `TVFM/` zeigt acht bestätigte
+Verhaltensabweichungen und fünf Nachweislücken. Die 13 Findings sind
+reproduzierbar, genau einem Vertrag zugeordnet und bilden die verbindliche
+Quelle für die Lastenhefte 025 und 026.
 
-English: All 48 contracts have concrete historical sources, current behavior,
-and named proof methods. No decision is `BehavioralDrift` or `EvidenceGap`.
-The exact finding set is therefore empty. This is a validated result, not an
-omitted review step.
+English: Feature 024's isolated contract review was formally complete but gave
+several existing proofs too much weight. The additional consumer review against
+`TVDEMOS/` and `TVFM/` identifies eight confirmed behavioral drifts and five
+evidence gaps. The 13 findings are reproducible, map to exactly one contract,
+and are the binding source for requirements documents 025 and 026.
 
 | Measure | Count |
 |---|---:|
 | Total contracts | 48 |
-| `BehavioralDrift` | 0 |
-| `EvidenceGap` | 0 |
-| Total findings | 0 |
+| `Aligned` | 7 |
+| `IntentionalModernization` | 27 |
+| `ConsciouslyOmitted` | 1 |
+| `BehavioralDrift` | 8 |
+| `EvidenceGap` | 5 |
+| Total findings | 13 |
 | Critical | 0 |
-| High | 0 |
-| Medium | 0 |
+| High | 9 |
+| Medium | 4 |
 | Low | 0 |
+| `Core025` | 9 |
+| `ComponentData026` | 4 |
 
-## Finding-Vertrag / Finding Contract
+## Finding-Ledger
 
-If a later audit revision creates a drift or gap, each row must contain a stable
-finding ID, one contract ID, severity, reproducible observation, impact, owner,
-acceptance boundary, non-goals, and exactly one downstream disposition.
+Die vollständigen Reproduktionen, Quellpfade, Akzeptanzgrenzen und Nicht-Ziele
+stehen maschinenprüfbar in `conformance-audit.json`. Diese Tabelle ist die
+lesbare Review-Sicht.
 
-| Finding ID | Contract | Severity | Observation | Impact | Owner | Acceptance boundary | Non-goals | Disposition |
-|---|---|---|---|---|---|---|---|---|
+*Complete reproductions, source paths, acceptance boundaries, and non-goals are
+machine-checkable in `conformance-audit.json`. This table is the readable review
+view.*
+
+| Finding | Contract | Decision | Severity | Scope | Kurzbeobachtung / Short observation | Disposition |
+|---|---|---|---|---|---|---|
+| `F001` | `C004` | `BehavioralDrift` | Medium | Both | `CreateMouse` accepts composite event masks | `Core025` |
+| `F002` | `C008` | `BehavioralDrift` | High | Both | Focus loss has no validator-owned veto | `Core025` |
+| `F003` | `C009` | `BehavioralDrift` | High | Both | Group state propagation marks all children focused or disabled | `Core025` |
+| `F004` | `C013` | `BehavioralDrift` | High | Both | Application loop lacks bounded pending-event and idle lifecycle | `Core025` |
+| `F005` | `C014` | `EvidenceGap` | High | Both | Desktop stack operations needed by consumers are absent or unproved | `Core025` |
+| `F006` | `C015` | `BehavioralDrift` | High | Both | Default close and modal execution do not complete the lifecycle | `Core025` |
+| `F007` | `C017` | `EvidenceGap` | Medium | Both | Command enablement has no shared context-refresh contract | `Core025` |
+| `F008` | `C034` | `BehavioralDrift` | High | Both | Real keyboard ingress bypasses canonical translation | `Core025` |
+| `F009` | `C036` | `EvidenceGap` | High | Wave6 | Generic tracked drag and keyboard-equivalent drop proof are missing | `Core025` |
+| `F010` | `C019` | `BehavioralDrift` | High | Both | Dialogs close on unrelated commands and skip child validation | `ComponentData026` |
+| `F011` | `C021` | `BehavioralDrift` | High | Both | Input lines cannot integrate validators | `ComponentData026` |
+| `F012` | `C023` | `EvidenceGap` | Medium | Both | File-dialog results lack mode-aware path validation proof | `ComponentData026` |
+| `F013` | `C026` | `EvidenceGap` | Medium | Both | Named UI-resource composition is absent or unproved | `ComponentData026` |
+
+## Proof-Grenze / Proof Boundary
+
+Deutsch: Vorhandene Tests bleiben nützliche Teilnachweise. Sie schließen ein
+Finding jedoch nicht, wenn sie normalisierte Ereignisse direkt einspeisen,
+nur ein Signal statt des sichtbaren Endzustands prüfen oder einen abgeleiteten
+Test-Hook aufrufen, den der Produktionspfad nicht verwendet. Ein Finding wird
+erst durch den in 025 oder 026 geforderten realen Pfad und Feature 028 erneut
+geschlossen.
+
+English: Existing tests remain useful partial evidence. They do not close a
+finding when they inject normalized events directly, assert only a signal
+rather than the visible final state, or invoke a derived test hook that the
+production path does not use. A finding closes only through the real path
+required by 025 or 026 and the independent Feature-028 revalidation.
 
 ## Re-Evaluierungsgrenze / Re-evaluation Boundary
 
-Deutsch: Neue oder geänderte Produktlogik, neue öffentliche Verträge, geänderte
-historische Interpretation oder ein fehlschlagender Proof-Test öffnen die
-betroffenen Verträge erneut. Ein späteres Finding darf nicht rückwirkend als
-bereits durch 024 behoben gelten.
+Deutsch: Die ursprüngliche Null-Finding-Entscheidung bleibt als historische
+Ausführungsevidence nachvollziehbar, ist aber für die Zukunftsplanung
+superseded. Neue Produktlogik, API-Änderungen, Consumer-Funde oder ein
+fehlschlagender Proof öffnen den betroffenen Vertrag erneut.
 
-English: New or changed product logic, new public contracts, changed historical
-interpretation, or a failing proof test reopens the affected contracts. A later
-finding cannot be treated as already remediated by 024.
+English: The original zero-finding decision remains traceable execution
+history, but it is superseded for forward planning. New product logic, API
+changes, consumer findings, or a failing proof reopen the affected contract.
