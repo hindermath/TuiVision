@@ -75,6 +75,7 @@ invocation.
 | Push | [Pass/N/A/Open] | [branch or rationale] |
 | Pull request | [Pass/N/A/Open] | [URL or rationale] |
 | Required checks | [Pass/N/A/Open] | [check summary] |
+| Acceptance-gate mapping | [Pass/N/A/Open] | [required proof -> workflow/job/platform/executed command; missing scope blocks merge] |
 | Review threads | [Pass/N/A/Open] | [thread count] |
 | Unavailable reviews | [None or limitation] | [quota/provider evidence] |
 | Reviewed head | [hash/N/A/Open] | [head whose checks and threads were verified] |
