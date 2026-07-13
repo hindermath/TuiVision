@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-07-13",
+  "description": "Homebrew top-level package registry for agentic development across the Level-0, Level-1, and Level-2 repositories.",
+  "policy": {
+    "formulaSource": "brew leaves --installed-on-request",
+    "caskSource": "brew list --cask",
+    "dependencyPolicy": "Do not list transitive Homebrew dependencies.",
+    "defaultInstallScope": "required"
+  },
+  "formulae": [
+    { "name": "acme", "scope": "optional", "purpose": "Plan 9 toolchain experiments" },
+    { "name": "antlr", "scope": "optional", "purpose": "Parser and language tooling" },
+    { "name": "cc65", "scope": "optional", "purpose": "C64 and 6502 development" },
+    { "name": "cmake", "scope": "required", "apt": "cmake", "purpose": "Native build orchestration" },
+    { "name": "cmake-docs", "scope": "optional", "purpose": "CMake documentation" },
+    { "name": "dotnet", "scope": "required", "purpose": "Memory-safe C#/.NET SDK toolchain" },
+    { "name": "gh", "scope": "required", "purpose": "GitHub CLI binary; provider sign-in is required only for the direct GitHub profile" },
+    { "name": "gitleaks", "scope": "required", "purpose": "Secret scanning for hooks and manual scans" },
+    { "name": "glab", "scope": "required", "purpose": "GitLab CLI binary; provider sign-in is required only for a GitLab profile" },
+    { "name": "go", "scope": "required", "purpose": "Memory-safe Go toolchain" },
+    { "name": "helix", "scope": "required", "apt": "helix", "purpose": "Terminal-native A11Y editor with language-server support" },
+    { "name": "lynx", "scope": "optional", "apt": "lynx", "purpose": "Text browser for accessibility-oriented checks" },
+    { "name": "midnight-commander", "scope": "optional", "apt": "mc", "purpose": "Terminal file manager" },
+    { "name": "mongodb/brew/mongodb-community", "scope": "optional", "purpose": "MongoDB local database for compatible projects" },
+    { "name": "msedit", "scope": "optional", "purpose": "Terminal editor" },
+    { "name": "node", "scope": "required", "apt": "nodejs", "purpose": "Node.js and npm runtime for npm-based agent CLI packages" },
+    { "name": "oh-my-posh", "scope": "optional", "purpose": "Shell prompt consistency" },
+    { "name": "openjdk", "scope": "required", "apt": "default-jdk", "purpose": "Java/Javac MSL toolchain for learning-series repositories" },
+    { "name": "opencode", "scope": "required", "purpose": "OpenCode command-line agent" },
+    { "name": "pandoc", "scope": "required", "apt": "pandoc", "purpose": "Documentation conversion" },
+    { "name": "pnpm", "scope": "required", "purpose": "Node package management for agent/tooling packages" },
+    { "name": "podman", "scope": "required", "apt": "podman", "purpose": "Podman CLI for the required Secure Trader sandbox runtime" },
+    { "name": "podman-compose", "scope": "required", "apt": "podman-compose", "purpose": "Container compose support for sandbox workflows" },
+    { "name": "postgresql@18", "scope": "optional", "purpose": "PostgreSQL local database for compatible projects" },
+    { "name": "powershell", "scope": "required", "purpose": "PowerShell 7 parity scripts" },
+    { "name": "python@3.14", "scope": "required", "apt": "python3", "purpose": "Python MSL CLI toolchain for learning-series repositories" },
+    { "name": "rust", "scope": "required", "purpose": "Memory-safe Rust toolchain" },
+    { "name": "syft", "scope": "required", "purpose": "SBOM generation for supply-chain evidence" },
+    { "name": "uv", "scope": "required", "purpose": "Python package/tool runner and Spec Kit installation support" },
+    { "name": "vice", "scope": "optional", "purpose": "C64 emulator for retro projects" }
+  ],
+  "casks": [
+    { "name": "antigravity-cli", "scope": "required", "purpose": "Google Antigravity command-line agent; maintained Homebrew replacement for the deprecated Gemini CLI formula" },
+    { "name": "claude-code", "scope": "required", "purpose": "Claude Code command-line agent" },
+    { "name": "copilot-cli", "scope": "required", "purpose": "GitHub Copilot CLI" },
+    { "name": "ollama-app", "scope": "optional", "purpose": "Local model runtime app" },
+    { "name": "pgadmin4", "scope": "optional", "purpose": "PostgreSQL GUI administration" },
+    { "name": "podman-desktop", "scope": "optional", "purpose": "Podman GUI and machine management" },
+    { "name": "powershell", "scope": "optional", "purpose": "PowerShell app bundle; formula remains the scripted baseline" },
+    { "name": "visual-studio-code", "scope": "required", "purpose": "Minimum graphical editor and quasi-IDE for apprentice development" }
+  ],
+  "aptFallback": {
+    "description": "Linux fallback packages for machines without Homebrew. Only explicit mappings are installed.",
+    "packages": [
+      { "name": "git", "scope": "required", "purpose": "Source control" },
+      { "name": "ripgrep", "scope": "required", "purpose": "Fast repository search" },
+      { "name": "python3", "scope": "required", "purpose": "Python runtime for scripts and validation" },
+      { "name": "nodejs", "scope": "required", "purpose": "Node.js runtime where distro package is acceptable" },
+      { "name": "npm", "scope": "required", "purpose": "npm package manager for npm-based agent CLI packages" },
+      { "name": "golang-go", "scope": "required", "purpose": "Go MSL CLI toolchain when available in configured apt sources" },
+      { "name": "cmake", "scope": "required", "purpose": "Native build orchestration" },
+      { "name": "default-jdk", "scope": "required", "purpose": "Java/Javac MSL toolchain from configured apt sources" },
+      { "name": "pandoc", "scope": "required", "purpose": "Documentation conversion" },
+      { "name": "podman", "scope": "required", "purpose": "Podman CLI for the required Secure Trader sandbox runtime" },
+      { "name": "podman-compose", "scope": "required", "purpose": "Container compose support" },
+      { "name": "rustc", "scope": "required", "purpose": "Rust compiler when available in configured apt sources" },
+      { "name": "cargo", "scope": "required", "purpose": "Rust package/build tool when available in configured apt sources" },
+      { "name": "helix", "scope": "required", "purpose": "Terminal-native A11Y editor when available in the configured apt sources" },
+      { "name": "code", "scope": "required", "purpose": "VS Code package when available in the configured apt sources" }
+    ]
+  }
+}

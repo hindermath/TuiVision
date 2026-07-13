@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-07-11",
+  "description": "WinGet package registry for agentic development across the Level-0, Level-1, and Level-2 repositories.",
+  "policy": {
+    "packageSource": "winget list / winget search --id --exact",
+    "defaultInstallScope": "required",
+    "fallbackSourceRefresh": "winget source update when winget update is unavailable"
+  },
+  "packages": [
+    { "id": "Git.Git", "scope": "required", "purpose": "Source control" },
+    { "id": "GitHub.cli", "scope": "required", "purpose": "GitHub CLI binary; provider sign-in is required only for the direct GitHub profile" },
+    { "id": "GLab.GLab", "scope": "required", "purpose": "GitLab CLI binary; provider sign-in is required only for a GitLab profile" },
+    { "id": "BurntSushi.ripgrep.MSVC", "scope": "required", "purpose": "Fast repository search" },
+    { "id": "Microsoft.PowerShell", "scope": "required", "purpose": "PowerShell 7 parity scripts" },
+    { "id": "OpenJS.NodeJS.LTS", "scope": "required", "purpose": "Node.js LTS runtime for npm-based tools and agent CLI packages" },
+    { "id": "astral-sh.uv", "scope": "required", "purpose": "Python package/tool runner and Spec Kit installation support" },
+    { "id": "Gitleaks.Gitleaks", "scope": "required", "purpose": "Secret scanning for hooks and manual scans" },
+    { "id": "Microsoft.DotNet.SDK.10", "scope": "required", "purpose": "Memory-safe .NET SDK toolchain" },
+    { "id": "GoLang.Go", "scope": "required", "purpose": "Memory-safe Go toolchain" },
+    { "id": "Python.Python.3.14", "scope": "required", "purpose": "Python MSL CLI toolchain for learning-series repositories" },
+    { "id": "EclipseAdoptium.Temurin.26.JDK", "scope": "required", "purpose": "Java/Javac MSL toolchain for learning-series repositories" },
+    { "id": "Rustlang.Rustup", "scope": "required", "purpose": "Memory-safe Rust toolchain manager" },
+    { "id": "Swift.Toolchain", "scope": "required", "purpose": "Swift MSL CLI toolchain for learning-series repositories" },
+    { "id": "Anchore.Syft", "scope": "required", "purpose": "SBOM generation for supply-chain evidence" },
+    { "id": "Anthropic.ClaudeCode", "scope": "required", "purpose": "Claude Code command-line agent" },
+    { "id": "GitHub.Copilot", "scope": "required", "purpose": "GitHub Copilot CLI" },
+    { "id": "Google.AntigravityCLI", "scope": "required", "purpose": "Google Antigravity command-line agent providing the required agy command" },
+    { "id": "Microsoft.VisualStudioCode", "scope": "required", "purpose": "Minimum graphical editor and quasi-IDE for apprentice development" },
+    { "id": "Helix.Helix", "scope": "required", "purpose": "Terminal-native A11Y editor with language-server support" },
+    { "id": "Podman.CLI", "scope": "required", "purpose": "Podman CLI for the required Secure Trader sandbox runtime" },
+    { "id": "PostgreSQL.pgAdmin", "scope": "optional", "purpose": "PostgreSQL GUI administration when available through WinGet" }
+  ]
+}
