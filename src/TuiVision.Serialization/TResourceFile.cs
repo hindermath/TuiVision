@@ -10,6 +10,8 @@ namespace TuiVision.Serialization;
 /// </summary>
 public sealed class TResourceFile
 {
+    private const int MaxEntries = 4096;
+    private const int MaxPayloadBytes = 4 * 1024 * 1024;
     private readonly TRecordRegistry _registry;
 
     /// <summary>
@@ -41,6 +43,10 @@ public sealed class TResourceFile
     {
         ArgumentNullException.ThrowIfNull(registry);
         THelpFile.RegisterRecords(registry);
+        TDialogDescriptionRecord.Register(registry);
+        TDialogDescriptionRecord.RegisterResourceStream(registry);
+        TMenuDescriptionRecord.Register(registry);
+        TStatusLineDescriptionRecord.Register(registry);
     }
 
     /// <summary>
@@ -89,6 +95,11 @@ public sealed class TResourceFile
     {
         using TBinaryArchiveWriter writer = new(stream, leaveOpen: true);
         List<KeyValuePair<string, object>> entries = Resources.Enumerate().OrderBy(pair => pair.Key, StringComparer.Ordinal).ToList();
+        if (entries.Count > MaxEntries)
+        {
+            throw new InvalidDataException($"Resource entry count exceeds {MaxEntries}.");
+        }
+
         writer.WriteInt32(entries.Count);
         foreach (KeyValuePair<string, object> entry in entries)
         {
@@ -100,6 +111,11 @@ public sealed class TResourceFile
             }
 
             byte[] bytes = payload.ToArray();
+            if (bytes.Length > MaxPayloadBytes)
+            {
+                throw new InvalidDataException($"Resource payload exceeds {MaxPayloadBytes} bytes.");
+            }
+
             writer.WriteInt32(bytes.Length);
             writer.WriteBytes(bytes);
         }
@@ -115,12 +131,24 @@ public sealed class TResourceFile
     /// <returns>Die geladene Ressourcen-Datei. / The loaded resource file.</returns>
     public static TResourceFile Load(Stream stream, TRecordRegistry registry)
     {
+        try
+        {
+            return LoadCore(stream, registry);
+        }
+        catch (EndOfStreamException exception)
+        {
+            throw new InvalidDataException("Resource file is truncated.", exception);
+        }
+    }
+
+    private static TResourceFile LoadCore(Stream stream, TRecordRegistry registry)
+    {
         TResourceFile resourceFile = new(registry);
         using TBinaryArchiveReader reader = new(stream, leaveOpen: true);
         int count = reader.ReadInt32();
         // Negative Zähler würden sonst wie eine gültige leere Ressourcendatei wirken.
         // Negative counts would otherwise look like a valid empty resource file.
-        if (count < 0)
+        if (count is < 0 or > MaxEntries)
         {
             throw new InvalidDataException("Resource entry count must be non-negative.");
         }
@@ -136,7 +164,7 @@ public sealed class TResourceFile
             }
 
             int payloadLength = reader.ReadInt32();
-            if (payloadLength < 0)
+            if (payloadLength is < 0 or > MaxPayloadBytes)
             {
                 throw new InvalidDataException("Resource payload length must be non-negative.");
             }

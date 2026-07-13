@@ -32,4 +32,18 @@ public sealed class TFilterValidator : TValidator
         ArgumentNullException.ThrowIfNull(input);
         return input.All(_allowedCharacters.Contains);
     }
+
+    /// <inheritdoc />
+    public override TValidationResult Validate(string input, TValidationPhase phase, TView target)
+    {
+        ArgumentNullException.ThrowIfNull(input);
+        ArgumentNullException.ThrowIfNull(target);
+
+        return IsValid(input)
+            ? TValidationResult.Accepted(phase)
+            : TValidationResult.Rejected(
+                phase,
+                "Die Eingabe enthält ein ungültiges Zeichen. / The input contains an invalid character.",
+                target);
+    }
 }

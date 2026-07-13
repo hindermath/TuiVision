@@ -37,7 +37,10 @@ public enum FileDecisionKind
     Select,
 
     /// <summary>Speicherziel, ohne Dateiinhalt zu schreiben. / Save target without writing file content.</summary>
-    SaveTarget
+    SaveTarget,
+
+    /// <summary>Abgelehnte Pfad- oder Modusentscheidung. / Rejected path or mode decision.</summary>
+    Rejected
 }
 
 /// <summary>

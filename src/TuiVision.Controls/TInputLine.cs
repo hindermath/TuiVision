@@ -21,6 +21,8 @@ public class TInputLine : TView
     private const byte ScanDelete = 0x53;
 
     private string _data = string.Empty;
+    private int _selectionStart;
+    private int _selectionEnd;
 
     /// <summary>
     /// Erstellt eine neue Eingabezeile.
@@ -59,6 +61,8 @@ public class TInputLine : TView
             }
 
             CurPos = Math.Clamp(CurPos, 0, _data.Length);
+            _selectionStart = Math.Clamp(_selectionStart, 0, _data.Length);
+            _selectionEnd = Math.Clamp(_selectionEnd, _selectionStart, _data.Length);
             SyncViewport();
         }
     }
@@ -90,6 +94,66 @@ public class TInputLine : TView
     /// Indicates whether insert mode is active.
     /// </summary>
     public bool InsertMode { get; private set; } = true;
+
+    /// <summary>
+    /// Der optionale Validator. <c>null</c> bewahrt das bisherige freie
+    /// Eingabeverhalten.
+    ///
+    /// The optional validator. <c>null</c> preserves the previous unrestricted
+    /// input behavior.
+    /// </summary>
+    public TValidator? Validator { get; set; }
+
+    /// <summary>
+    /// Das zuletzt beobachtbare Validierungsergebnis.
+    ///
+    /// The latest observable validation result.
+    /// </summary>
+    public TValidationResult LastValidationResult { get; private set; } =
+        TValidationResult.Accepted(TValidationPhase.Edit);
+
+    /// <summary>
+    /// Der inklusive Startindex der aktuellen Auswahl.
+    ///
+    /// The inclusive start index of the current selection.
+    /// </summary>
+    public int SelectionStart => _selectionStart;
+
+    /// <summary>
+    /// Der exklusive Endindex der aktuellen Auswahl.
+    ///
+    /// The exclusive end index of the current selection.
+    /// </summary>
+    public int SelectionEnd => _selectionEnd;
+
+    /// <summary>
+    /// Setzt eine begrenzte Auswahl und stellt den Cursor an ihr Ende.
+    ///
+    /// Sets a bounded selection and places the cursor at its end.
+    /// </summary>
+    /// <param name="start">Der inklusive Startindex. / The inclusive start index.</param>
+    /// <param name="end">Der exklusive Endindex. / The exclusive end index.</param>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// Wird für einen Bereich außerhalb des Texts oder für <c>end &lt; start</c> ausgelöst.
+    /// Thrown for a range outside the text or for <c>end &lt; start</c>.
+    /// </exception>
+    public void SetSelection(int start, int end)
+    {
+        if (start < 0 || start > Data.Length)
+        {
+            throw new ArgumentOutOfRangeException(nameof(start));
+        }
+
+        if (end < start || end > Data.Length)
+        {
+            throw new ArgumentOutOfRangeException(nameof(end));
+        }
+
+        _selectionStart = start;
+        _selectionEnd = end;
+        CurPos = end;
+        SyncViewport();
+    }
 
     /// <summary>
     /// Zeichnet den aktuell sichtbaren Textausschnitt.
@@ -129,9 +193,12 @@ public class TInputLine : TView
         // Clipboard handling: Ctrl+C (copy), Ctrl+X (cut), Ctrl+V (paste)
         if (@event.KeyDown.CharCode == '\x03') // Ctrl+C: copy
         {
-            if (!string.IsNullOrEmpty(Data))
+            string text = HasSelection
+                ? Data[_selectionStart.._selectionEnd]
+                : Data;
+            if (!string.IsNullOrEmpty(text))
             {
-                ManagedClipboard.SetText(Data);
+                ManagedClipboard.SetText(text);
             }
 
             @event.Clear(this);
@@ -140,14 +207,14 @@ public class TInputLine : TView
 
         if (@event.KeyDown.CharCode == '\x18') // Ctrl+X: cut
         {
-            if (!string.IsNullOrEmpty(Data))
+            int start = HasSelection ? _selectionStart : 0;
+            int end = HasSelection ? _selectionEnd : Data.Length;
+            string removed = Data[start..end];
+            string candidate = Data.Remove(start, end - start);
+            if (TryApplyCandidate(candidate, start) && removed.Length > 0)
             {
-                ManagedClipboard.SetText(Data);
+                ManagedClipboard.SetText(removed);
             }
-
-            _data = string.Empty;
-            CurPos = 0;
-            FirstPos = 0;
             @event.Clear(this);
             return;
         }
@@ -155,16 +222,17 @@ public class TInputLine : TView
         if (@event.KeyDown.CharCode == '\x16') // Ctrl+V: paste
         {
             string? clip = ManagedClipboard.GetText();
-            if (!string.IsNullOrEmpty(clip) && Data.Length < MaxLen)
+            if (!string.IsNullOrEmpty(clip))
             {
-                int space = MaxLen - Data.Length;
+                int selectedLength = _selectionEnd - _selectionStart;
+                int space = MaxLen - (Data.Length - selectedLength);
                 string toInsert = clip.Length <= space ? clip : clip[..space];
                 toInsert = new string(toInsert.Where(c => c >= ' ').ToArray());
                 if (toInsert.Length > 0)
                 {
-                    _data = Data.Insert(CurPos, toInsert);
-                    CurPos = Math.Min(Data.Length, CurPos + toInsert.Length);
-                    SyncViewport();
+                    int start = HasSelection ? _selectionStart : CurPos;
+                    string candidate = Data.Remove(start, selectedLength).Insert(start, toInsert);
+                    _ = TryApplyCandidate(candidate, start + toInsert.Length);
                 }
             }
 
@@ -175,23 +243,19 @@ public class TInputLine : TView
         switch (@event.KeyDown.ScanCode)
         {
             case ScanLeft:
-                CurPos = Math.Max(0, CurPos - 1);
-                SyncViewport();
+                MoveCursor(Math.Max(0, HasSelection ? _selectionStart : CurPos - 1));
                 @event.Clear(this);
                 return;
             case ScanRight:
-                CurPos = Math.Min(Data.Length, CurPos + 1);
-                SyncViewport();
+                MoveCursor(Math.Min(Data.Length, HasSelection ? _selectionEnd : CurPos + 1));
                 @event.Clear(this);
                 return;
             case ScanHome:
-                CurPos = 0;
-                SyncViewport();
+                MoveCursor(0);
                 @event.Clear(this);
                 return;
             case ScanEnd:
-                CurPos = Data.Length;
-                SyncViewport();
+                MoveCursor(Data.Length);
                 @event.Clear(this);
                 return;
             case ScanInsert:
@@ -200,20 +264,29 @@ public class TInputLine : TView
                 @event.Clear(this);
                 return;
             case ScanDelete:
-                if (CurPos < Data.Length)
+                if (HasSelection)
                 {
-                    _data = Data.Remove(CurPos, 1);
-                    SyncViewport();
+                    _ = TryApplyCandidate(
+                        Data.Remove(_selectionStart, _selectionEnd - _selectionStart),
+                        _selectionStart);
+                }
+                else if (CurPos < Data.Length)
+                {
+                    _ = TryApplyCandidate(Data.Remove(CurPos, 1), CurPos);
                 }
 
                 @event.Clear(this);
                 return;
             case ScanBackspace:
-                if (CurPos > 0)
+                if (HasSelection)
                 {
-                    _data = Data.Remove(CurPos - 1, 1);
-                    CurPos--;
-                    SyncViewport();
+                    _ = TryApplyCandidate(
+                        Data.Remove(_selectionStart, _selectionEnd - _selectionStart),
+                        _selectionStart);
+                }
+                else if (CurPos > 0)
+                {
+                    _ = TryApplyCandidate(Data.Remove(CurPos - 1, 1), CurPos - 1);
                 }
 
                 @event.Clear(this);
@@ -234,6 +307,19 @@ public class TInputLine : TView
             return;
         }
 
+        if (HasSelection)
+        {
+            int available = MaxLen - (Data.Length - (_selectionEnd - _selectionStart));
+            if (available > 0)
+            {
+                string candidate = Data.Remove(_selectionStart, _selectionEnd - _selectionStart)
+                    .Insert(_selectionStart, character.ToString());
+                _ = TryApplyCandidate(candidate, _selectionStart + 1);
+            }
+
+            return;
+        }
+
         if (InsertMode)
         {
             if (Data.Length >= MaxLen)
@@ -241,28 +327,62 @@ public class TInputLine : TView
                 return;
             }
 
-            _data = Data.Insert(CurPos, character.ToString());
-            CurPos++;
-            SyncViewport();
+            _ = TryApplyCandidate(Data.Insert(CurPos, character.ToString()), CurPos + 1);
             return;
         }
 
         if (CurPos < Data.Length)
         {
-            char[] chars = Data.ToCharArray();
-            chars[CurPos] = character;
-            _data = new string(chars);
-            CurPos++;
-            SyncViewport();
+            string candidate = Data.Remove(CurPos, 1).Insert(CurPos, character.ToString());
+            _ = TryApplyCandidate(candidate, CurPos + 1);
             return;
         }
 
         if (Data.Length < MaxLen)
         {
-            _data = Data + character;
-            CurPos++;
-            SyncViewport();
+            _ = TryApplyCandidate(Data + character, CurPos + 1);
         }
+    }
+
+    /// <inheritdoc />
+    public override bool CanReleaseFocus() =>
+        Validate(TValidationPhase.FocusLoss).IsValid;
+
+    /// <inheritdoc />
+    public override TValidationResult Validate(TValidationPhase phase)
+    {
+        LastValidationResult = Validator?.Validate(Data, phase, this)
+            ?? TValidationResult.Accepted(phase);
+        return LastValidationResult;
+    }
+
+    private bool HasSelection => _selectionEnd > _selectionStart;
+
+    private bool TryApplyCandidate(string candidate, int newCursor)
+    {
+        // Erst der vollständige Kandidat wird geprüft; dadurch bleibt bei Ablehnung jeder sichtbare Zustand atomar erhalten.
+        // The complete candidate is validated first, preserving all visible state atomically on rejection.
+        LastValidationResult = Validator?.Validate(candidate, TValidationPhase.Edit, this)
+            ?? TValidationResult.Accepted(TValidationPhase.Edit);
+        if (!LastValidationResult.IsValid)
+        {
+            return false;
+        }
+
+        _data = candidate;
+        CurPos = Math.Clamp(newCursor, 0, _data.Length);
+        _selectionStart = CurPos;
+        _selectionEnd = CurPos;
+        SyncViewport();
+        return true;
+    }
+
+    private void MoveCursor(int position)
+    {
+        CurPos = Math.Clamp(position, 0, Data.Length);
+        _selectionStart = CurPos;
+        _selectionEnd = CurPos;
+        SyncViewport();
     }
 
     private void SyncViewport()

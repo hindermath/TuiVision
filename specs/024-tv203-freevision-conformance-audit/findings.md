@@ -81,6 +81,25 @@ observations remain unchanged for Feature 028 revalidation.
 | `F008` | `Closed` | Build 217 red; Build 218 green; canonical console ingress | No |
 | `F009` | `Closed` | Build 234 red; Build 236 green; pointer/keyboard drag session | No |
 
+## Feature-026-Schließung / Feature 026 Closure
+
+Deutsch: Feature 026 schließt `F010` bis `F013` durch dokumentierte rote
+Compile-Grenzen, additive moderne C#-Verträge und grüne Tests über reale Dialog-,
+Input-, Datei- und Ressourcenpfade. Die ursprünglichen Beobachtungen bleiben
+für die unabhängige Feature-028-Prüfung erhalten.
+
+English: Feature 026 closes `F010` through `F013` with documented red compile
+boundaries, additive modern C# contracts, and green tests through real dialog,
+input, file, and resource paths. The original observations remain available for
+independent Feature-028 revalidation.
+
+| Finding | State | Evidence | Documentation-only |
+|---|---|---|---|
+| `F010` | `Closed` | Build 246 red; Build 247 green; completion classifier and ordered child validation | No |
+| `F011` | `Closed` | Build 248 red; Build 249 green; edit/focus/acceptance validator lifecycle | No |
+| `F012` | `Closed` | Build 250 red; Build 251 green; mode-aware typed file outcomes | No |
+| `F013` | `Closed` | Builds 252-253 red; Builds 255/258 green; allowlisted named UI descriptions | No |
+
 ## Proof-Grenze / Proof Boundary
 
 Deutsch: Vorhandene Tests bleiben nützliche Teilnachweise. Sie schließen ein

@@ -14,6 +14,8 @@
       href: guides/terminal-charset-hardening.md
     - name: Core-Runtime-Konformität
       href: guides/core-runtime-conformance-hardening.md
+    - name: Komponenten- und Datenkonformität
+      href: guides/component-data-conformance-hardening.md
     - name: A11Y-Framework
       href: guides/a11y-framework.md
     - name: Beispiel-Guides
