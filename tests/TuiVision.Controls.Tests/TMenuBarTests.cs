@@ -15,6 +15,32 @@ namespace TuiVision.Controls.Tests;
 public sealed class TMenuBarTests
 {
     /// <summary>
+    /// Prüft, dass manuelle Sperren und kontextabhängige Sperren getrennt bleiben.
+    ///
+    /// Verifies that manual and context-dependent disablement remain separate.
+    /// </summary>
+    [TestMethod]
+    public void TMenuBar_CommandContext_PreservesManualDisablementAndAddsOverlay()
+    {
+        TMenuItem contextual = new("~C~ontext", 202);
+        TMenuItem manual = new("~M~anual", 201, contextual) { Disabled = true };
+        TMenuBar menuBar = new(new TRect(0, 0, 40, 1)) { Menu = manual };
+
+        menuBar.ApplyCommandContext(new TCommandContext(
+            1,
+            null,
+            new Dictionary<ushort, bool> { [201] = true, [202] = false },
+            CommandContextRefreshTrigger.EventHandled));
+
+        Assert.IsTrue(manual.Disabled);
+        Assert.IsFalse(manual.ContextDisabled);
+        Assert.IsTrue(manual.IsEffectivelyDisabled);
+        Assert.IsFalse(contextual.Disabled);
+        Assert.IsTrue(contextual.ContextDisabled);
+        Assert.IsTrue(contextual.IsEffectivelyDisabled);
+    }
+
+    /// <summary>
     /// Prüft, ob ein Menüpunkt durch Tastatureingabe aktiviert werden kann.
     ///
     /// Verifies that a menu item can be activated via keyboard input.

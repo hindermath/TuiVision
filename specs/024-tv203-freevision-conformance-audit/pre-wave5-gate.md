@@ -6,7 +6,7 @@
 |---|---|---|
 | Feature 024 Revision 2 | Pass | `TVDEMOS/` and `TVFM/` consumer review produced 13 reproducible findings |
 | Feature 027 historical closure | Superseded | Merge `35414af` remains valid execution history, but its zero-finding premise no longer governs future work |
-| Feature 025 | Required | Nine `Core025` findings must be remediated and proven |
+| Feature 025 | Closed | Nine `Core025` findings are remediated through real-path red/green proof; Feature 028 must revalidate them |
 | Feature 026 | Required | Four `ComponentData026` findings must be remediated and proven |
 | Feature 028 | Required | Independent combined closure after 025 and 026 |
 | Wave 5 | Blocked | Do not start until Feature 028 passes and merges |
@@ -28,7 +28,7 @@ findings.
 
 | Downstream owner | Accepted findings | Decision | Binding intake |
 |---|---:|---|---|
-| `Core025` | 9 | Required | `Lastenheft_10_Core-Runtime-Conformance-Hardening.md` |
+| `Core025` | 9 | Closed | `specs/025-core-runtime-conformance-hardening/pr-evidence.md` |
 | `ComponentData026` | 4 | Required | `Lastenheft_11_Component-Data-Conformance-Hardening.md` |
 | `Closure028` | Required | Mandatory | `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` |
 | `AcceptedFollowUp` | 0 | None | No unowned framework follow-up |

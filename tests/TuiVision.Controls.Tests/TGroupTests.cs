@@ -632,6 +632,55 @@ public sealed class TGroupTests
     }
 
     /// <summary>
+    /// Prüft die typisierten Fokusresultate, das genau einmal aufgerufene Veto und
+    /// die unveränderte Fokus-/Daten-/Ankündigungsgrenze bei Ablehnung.
+    ///
+    /// Verifies typed focus results, the exactly-once veto, and the unchanged
+    /// focus/data/announcement boundary when a transition is rejected.
+    /// </summary>
+    [TestMethod]
+    public void TGroup_TrySetFocus_VetoAndEligibilityAreAtomic()
+    {
+        FocusTrackingGroup group = new(new TRect(0, 0, 20, 10));
+        FocusVetoView previous = new(new TRect(0, 0, 5, 5), "draft") { Options = TViewOptions.Selectable };
+        FocusVetoView requested = new(new TRect(5, 0, 10, 5), "target") { Options = TViewOptions.Selectable };
+        group.Insert(previous);
+        group.Insert(requested);
+
+        Assert.AreEqual(TFocusTransitionResult.Accepted, group.TrySetFocus(previous));
+        int announcementsAfterInitialFocus = group.CurrentChangedCalls;
+
+        previous.AllowRelease = false;
+        Assert.AreEqual(TFocusTransitionResult.Rejected, group.TrySetFocus(requested));
+        Assert.AreEqual(1, previous.ReleaseChecks);
+        Assert.AreSame(previous, group.Current);
+        Assert.IsTrue(previous.GetState(TViewState.Focused));
+        Assert.IsFalse(requested.GetState(TViewState.Focused));
+        Assert.AreEqual("draft", previous.Data);
+        Assert.AreEqual(announcementsAfterInitialFocus, group.CurrentChangedCalls);
+
+        previous.AllowRelease = true;
+        Assert.AreEqual(TFocusTransitionResult.Accepted, group.TrySetFocus(requested));
+        Assert.AreEqual(2, previous.ReleaseChecks);
+        Assert.AreEqual(TFocusTransitionResult.NoOp, group.TrySetFocus(requested));
+        Assert.AreEqual(0, requested.ReleaseChecks, "A no-op must not ask the current target to release focus.");
+
+        TView disabled = new(new TRect(10, 0, 15, 5)) { Options = TViewOptions.Selectable };
+        group.Insert(disabled);
+        disabled.SetState(TViewState.Disabled, true);
+        Assert.AreEqual(TFocusTransitionResult.Rejected, group.TrySetFocus(disabled));
+        Assert.AreSame(requested, group.Current);
+
+        TView notSelectable = new(new TRect(15, 0, 20, 5));
+        group.Insert(notSelectable);
+        Assert.AreEqual(TFocusTransitionResult.Rejected, group.TrySetFocus(notSelectable));
+        notSelectable.Options = TViewOptions.Selectable;
+        notSelectable.Hide();
+        Assert.AreEqual(TFocusTransitionResult.Rejected, group.TrySetFocus(notSelectable));
+        Assert.AreSame(requested, group.Current);
+    }
+
+    /// <summary>
     /// Prüft, dass <see cref="TGroup.SetFocus"/> eine <see cref="ArgumentNullException"/>
     /// auslöst, wenn <c>null</c> übergeben wird.
     ///
@@ -875,14 +924,14 @@ public sealed class TGroupTests
     }
 
     /// <summary>
-    /// Prüft, dass <see cref="TGroup.SetState"/> den Disabled-State an alle direkten
-    /// Kind-Views propagiert.
+    /// Prüft, dass der Disabled-State der Gruppe lokale Disabled-Zustände ihrer
+    /// direkten Kind-Views nicht überschreibt.
     ///
-    /// Verifies that <see cref="TGroup.SetState"/> propagates the Disabled state to all
-    /// direct child views.
+    /// Verifies that the group's Disabled state does not overwrite local Disabled
+    /// states of its direct child views.
     /// </summary>
     [TestMethod]
-    public void TGroup_SetState_Disabled_PropagatesDirectChildren()
+    public void TGroup_SetState_Disabled_RemainsOwnerLocal()
     {
         TGroup group = new(new TRect(0, 0, 20, 10));
         TView childA = new(new TRect(0, 0, 5, 5));
@@ -890,32 +939,83 @@ public sealed class TGroupTests
         group.Insert(childA);
         group.Insert(childB);
 
+        childA.SetState(TViewState.Disabled, true);
         group.SetState(TViewState.Disabled, true);
 
         Assert.IsTrue(childA.GetState(TViewState.Disabled));
-        Assert.IsTrue(childB.GetState(TViewState.Disabled));
+        Assert.IsFalse(childB.GetState(TViewState.Disabled));
+
+        group.SetState(TViewState.Disabled, false);
+        Assert.IsTrue(childA.GetState(TViewState.Disabled), "Clearing the owner must preserve a child's local disablement.");
     }
 
     /// <summary>
-    /// Prüft, dass <see cref="TGroup.SetState"/> den Focused-State an alle direkten
-    /// Kind-Views propagiert.
+    /// Prüft, dass der Focused-State nur dem aktuellen direkten Kind zugeordnet wird.
     ///
-    /// Verifies that <see cref="TGroup.SetState"/> propagates the Focused state to all
-    /// direct child views.
+    /// Verifies that the Focused state is assigned only to the current direct child.
     /// </summary>
     [TestMethod]
-    public void TGroup_SetState_Focused_PropagatesDirectChildren()
+    public void TGroup_SetState_Focused_AppliesOnlyToCurrent()
     {
         TGroup group = new(new TRect(0, 0, 20, 10));
         TView childA = new(new TRect(0, 0, 5, 5));
         TView childB = new(new TRect(5, 0, 10, 5));
         group.Insert(childA);
         group.Insert(childB);
+        group.SetFocus(childA);
 
         group.SetState(TViewState.Focused, true);
 
         Assert.IsTrue(childA.GetState(TViewState.Focused));
-        Assert.IsTrue(childB.GetState(TViewState.Focused));
+        Assert.IsFalse(childB.GetState(TViewState.Focused));
+    }
+
+    /// <summary>
+    /// Prüft, dass Dragging alle direkten Kinder erreicht, Exposed aber nur sichtbare.
+    ///
+    /// Verifies that Dragging reaches every direct child while Exposed reaches only visible children.
+    /// </summary>
+    [TestMethod]
+    public void TGroup_SetState_DraggingAndExposed_UseDistinctChildRules()
+    {
+        TGroup group = new(new TRect(0, 0, 20, 10));
+        TView visible = new(new TRect(0, 0, 5, 5));
+        TView hidden = new(new TRect(5, 0, 10, 5));
+        hidden.Hide();
+        group.Insert(visible);
+        group.Insert(hidden);
+
+        group.SetState(TViewState.Dragging, true);
+        group.SetState(TViewState.Exposed, true);
+
+        Assert.IsTrue(visible.GetState(TViewState.Dragging));
+        Assert.IsTrue(hidden.GetState(TViewState.Dragging));
+        Assert.IsTrue(visible.GetState(TViewState.Exposed));
+        Assert.IsFalse(hidden.GetState(TViewState.Exposed));
+    }
+
+    /// <summary>
+    /// Prüft, dass neu eingefügte Kinder dieselbe Zustandsmatrix wie bestehende Kinder erhalten.
+    ///
+    /// Verifies that newly inserted children receive the same state matrix as existing children.
+    /// </summary>
+    [TestMethod]
+    public void TGroup_Insert_AppliesStateSpecificInheritance()
+    {
+        TGroup group = new(new TRect(0, 0, 20, 10));
+        group.SetState(TViewState.Active | TViewState.Dragging | TViewState.Exposed | TViewState.Disabled | TViewState.Focused, true);
+
+        TView visible = new(new TRect(0, 0, 5, 5));
+        TView hidden = new(new TRect(5, 0, 10, 5));
+        hidden.Hide();
+        group.Insert(visible);
+        group.Insert(hidden);
+
+        Assert.IsTrue(visible.GetState(TViewState.Active | TViewState.Dragging | TViewState.Exposed));
+        Assert.IsFalse(visible.GetState(TViewState.Disabled));
+        Assert.IsFalse(visible.GetState(TViewState.Focused));
+        Assert.IsTrue(hidden.GetState(TViewState.Active | TViewState.Dragging));
+        Assert.IsFalse(hidden.GetState(TViewState.Exposed));
     }
 
     /// <summary>
@@ -976,6 +1076,36 @@ public sealed class TGroupTests
 
         /// <summary>Erhöht den Zähler. / Increments the counter.</summary>
         public override void HandleEvent(TEvent @event) => HandleEventCount++;
+    }
+
+    private sealed class FocusVetoView : TView
+    {
+        public FocusVetoView(TRect bounds, string data) : base(bounds) => Data = data;
+
+        public string Data { get; }
+
+        public bool AllowRelease { get; set; } = true;
+
+        public int ReleaseChecks { get; private set; }
+
+        public override bool CanReleaseFocus()
+        {
+            ReleaseChecks++;
+            return AllowRelease;
+        }
+    }
+
+    private sealed class FocusTrackingGroup : TGroup
+    {
+        public FocusTrackingGroup(TRect bounds) : base(bounds) { }
+
+        public int CurrentChangedCalls { get; private set; }
+
+        protected override void CurrentChanged()
+        {
+            CurrentChangedCalls++;
+            base.CurrentChanged();
+        }
     }
 
     /// <summary>

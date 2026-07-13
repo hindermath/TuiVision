@@ -15,6 +15,84 @@ namespace TuiVision.Controls.Tests;
 public sealed class TDialogTests
 {
     /// <summary>
+    /// Prüft owner-gebundene modale Ausführung, Ergebnis, temporäre Einfügung,
+    /// Event-Isolation, Cleanup und Fokuswiederherstellung.
+    ///
+    /// Verifies owner-scoped modal execution, result, temporary insertion,
+    /// event isolation, cleanup, and focus restoration.
+    /// </summary>
+    [TestMethod]
+    public void TDialog_F006_ExecuteModalIsolatesAndRestoresOwnershipAndFocus()
+    {
+        TGroup owner = new(new TRect(0, 0, 40, 12));
+        CountingView previous = new(new TRect(0, 0, 8, 2));
+        owner.Insert(previous);
+        owner.SetFocus(previous);
+        TestDialog dialog = new(new TRect(5, 2, 25, 8), "Modal");
+        dialog.Enqueue(ControlEventFactory.CreateCommand(ShellCommandIds.cmOK));
+
+        ushort result = owner.ExecuteModal(dialog);
+
+        Assert.AreEqual(ShellCommandIds.cmOK, result);
+        Assert.AreEqual(0, previous.CommandCount, "Modal events must not escape to owner siblings.");
+        Assert.IsNull(dialog.Owner);
+        Assert.IsFalse(dialog.GetState(TViewState.Modal));
+        Assert.AreSame(previous, owner.Current);
+    }
+
+    /// <summary>
+    /// Prüft erlaubte Verschachtelung unter dem aktiven Dialog und die Ablehnung
+    /// eines zweiten direkten modalen Kinds desselben Owners.
+    ///
+    /// Verifies allowed nesting below the active dialog and rejection of a second
+    /// direct modal child on the same owner.
+    /// </summary>
+    [TestMethod]
+    public void TDialog_F006_NestingIsChildScopedAndSameOwnerReentryIsRejected()
+    {
+        TGroup owner = new(new TRect(0, 0, 40, 12));
+        TestDialog child = new(new TRect(2, 1, 18, 7), "Child");
+        child.Enqueue(ControlEventFactory.CreateCommand(ShellCommandIds.cmOK));
+        NestedDialog parent = new(new TRect(1, 1, 30, 10), child);
+
+        ushort result = owner.ExecuteModal(parent);
+
+        Assert.AreEqual(ShellCommandIds.cmCancel, result);
+        Assert.AreEqual(ShellCommandIds.cmOK, parent.NestedResult);
+        Assert.IsTrue(parent.SameOwnerRejected);
+        Assert.IsNull(parent.Owner);
+        Assert.IsNull(child.Owner);
+    }
+
+    /// <summary>
+    /// Prüft Cleanup und Fokusrestaurierung bei Exception sowie kontrollierten
+    /// Abbruch, wenn der Owner während der modalen Ausführung herunterfährt.
+    ///
+    /// Verifies cleanup and focus restoration on exception plus controlled abort
+    /// when the owner shuts down during modal execution.
+    /// </summary>
+    [TestMethod]
+    public void TDialog_F006_ExceptionAndShutdownAlwaysCleanModalState()
+    {
+        TGroup owner = new(new TRect(0, 0, 40, 12));
+        CountingView previous = new(new TRect(0, 0, 8, 2));
+        owner.Insert(previous);
+        owner.SetFocus(previous);
+        ThrowingDialog throwing = new(new TRect(1, 1, 20, 8), "Throw");
+
+        Assert.ThrowsExactly<InvalidOperationException>(() => owner.ExecuteModal(throwing));
+        Assert.IsNull(throwing.Owner);
+        Assert.IsFalse(throwing.GetState(TViewState.Modal));
+        Assert.AreSame(previous, owner.Current);
+
+        ShutdownDialog shutdown = new(new TRect(1, 1, 20, 8), "Shutdown");
+        ushort result = owner.ExecuteModal(shutdown);
+        Assert.AreEqual(ShellCommandIds.cmCancel, result);
+        Assert.IsNull(shutdown.Owner);
+        Assert.IsFalse(shutdown.GetState(TViewState.Modal));
+        Assert.IsNull(previous.Owner);
+    }
+    /// <summary>
     /// Prüft, dass Escape den Dialog mit <c>cmCancel</c> beendet und ein Dialog ohne fokussierbares Kind stabil bleibt.
     ///
     /// Verifies that Escape closes the dialog with <c>cmCancel</c> and that a dialog without a focusable child stays stable.
@@ -285,6 +363,76 @@ public sealed class TDialogTests
                 EnterCount++;
                 @event.Clear(this);
             }
+        }
+    }
+
+    private sealed class CountingView : TView
+    {
+        public CountingView(TRect bounds) : base(bounds) => Options |= TViewOptions.Selectable;
+
+        public int CommandCount { get; private set; }
+
+        public override void HandleEvent(TEvent @event)
+        {
+            if (@event.What == TEventKind.Command)
+            {
+                CommandCount++;
+            }
+
+            base.HandleEvent(@event);
+        }
+    }
+
+    private sealed class NestedDialog : TDialog
+    {
+        private readonly TestDialog _child;
+        private bool _handled;
+
+        public NestedDialog(TRect bounds, TestDialog child) : base(bounds, "Parent") => _child = child;
+
+        public ushort NestedResult { get; private set; }
+
+        public bool SameOwnerRejected { get; private set; }
+
+        protected override void GetEvent(out TEvent @event)
+        {
+            if (!_handled)
+            {
+                _handled = true;
+                NestedResult = ExecuteModal(_child);
+                try
+                {
+                    Owner!.ExecuteModal(new TestDialog(new TRect(2, 2, 12, 6), "Peer"));
+                }
+                catch (InvalidOperationException)
+                {
+                    SameOwnerRejected = true;
+                }
+            }
+
+            @event = TEvent.CreateCommand(ShellCommandIds.cmCancel);
+        }
+    }
+
+    private sealed class ThrowingDialog(TRect bounds, string title) : TDialog(bounds, title)
+    {
+        protected override void GetEvent(out TEvent @event) =>
+            throw new InvalidOperationException("Deterministic modal failure.");
+    }
+
+    private sealed class ShutdownDialog(TRect bounds, string title) : TDialog(bounds, title)
+    {
+        private bool _shutdown;
+
+        protected override void GetEvent(out TEvent @event)
+        {
+            if (!_shutdown)
+            {
+                _shutdown = true;
+                Owner!.ShutDown();
+            }
+
+            @event = TEvent.CreateNone();
         }
     }
 }

@@ -149,7 +149,9 @@ public class TMenuBar : TView, IAccessibleShortcutProvider
             {
                 bool isSelected = IsMenuActive && ReferenceEquals(slot.Item, SelectedTopLevel);
                 ConsoleColor bg = isSelected ? ColorScheme.SelectionBackground : ColorScheme.Background;
-                ConsoleColor defaultFg = isSelected ? ColorScheme.SelectionText : ColorScheme.Text;
+                ConsoleColor defaultFg = slot.Item.IsEffectivelyDisabled
+                    ? ConsoleColor.DarkGray
+                    : isSelected ? ColorScheme.SelectionText : ColorScheme.Text;
 
                 MenuTextLayout layout = ParseMenuText(slot.Item.Name);
                 string display = " " + layout.Text + " ";
@@ -195,7 +197,7 @@ public class TMenuBar : TView, IAccessibleShortcutProvider
     {
         for (TMenuItem? current = item; current != null; current = current.Next)
         {
-            if (!current.Disabled && !current.IsSeparator && current.Command is > 0 and <= ushort.MaxValue && current.Mnemonic != '\0')
+            if (!current.IsEffectivelyDisabled && !current.IsSeparator && current.Command is > 0 and <= ushort.MaxValue && current.Mnemonic != '\0')
             {
                 result.Add(new TAccessibleShortcut(
                     char.ToUpperInvariant(current.Mnemonic),
@@ -205,6 +207,53 @@ public class TMenuBar : TView, IAccessibleShortcutProvider
             }
 
             CollectShortcuts(current.SubMenuDef?.Items ?? current.SubMenu, result);
+        }
+    }
+
+    /// <summary>
+    /// Wendet einen Command-Snapshot als getrennten Kontext-Overlay auf alle Menüeinträge an.
+    ///
+    /// Applies a command snapshot as a separate context overlay to all menu items.
+    /// </summary>
+    /// <param name="context">Die unveränderliche Momentaufnahme. / The immutable snapshot.</param>
+    /// <exception cref="ArgumentNullException">Wird bei <c>null</c> ausgelöst. / Thrown for <c>null</c>.</exception>
+    public void ApplyCommandContext(TCommandContext context)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        ApplyCommandContext(Menu, context);
+    }
+
+    internal IEnumerable<ushort> EnumerateCommandIds()
+    {
+        foreach (ushort command in EnumerateCommandIds(Menu))
+        {
+            yield return command;
+        }
+    }
+
+    private static void ApplyCommandContext(TMenuItem? item, TCommandContext context)
+    {
+        for (TMenuItem? current = item; current != null; current = current.Next)
+        {
+            current.ContextDisabled = current.Command is > 0 and <= ushort.MaxValue
+                && !context.IsEnabled((ushort)current.Command);
+            ApplyCommandContext(current.SubMenuDef?.Items ?? current.SubMenu, context);
+        }
+    }
+
+    private static IEnumerable<ushort> EnumerateCommandIds(TMenuItem? item)
+    {
+        for (TMenuItem? current = item; current != null; current = current.Next)
+        {
+            if (current.Command is > 0 and <= ushort.MaxValue)
+            {
+                yield return (ushort)current.Command;
+            }
+
+            foreach (ushort command in EnumerateCommandIds(current.SubMenuDef?.Items ?? current.SubMenu))
+            {
+                yield return command;
+            }
         }
     }
 
@@ -304,7 +353,7 @@ public class TMenuBar : TView, IAccessibleShortcutProvider
                 {
                     string display = " " + StripHotKeys(item.Name) + " ";
                     HashSet<char> hotKeys = ExtractHotKeys(item.Name);
-                    if (hotKeys.Contains(pressed))
+                    if (!item.IsEffectivelyDisabled && hotKeys.Contains(pressed))
                     {
                         SelectedTopLevel = item;
                         if (item.SubMenu != null)
@@ -358,7 +407,7 @@ public class TMenuBar : TView, IAccessibleShortcutProvider
                 // Befehl des ausgewählten Untermenü-Eintrags ausführen.
                 // Execute the command of the selected submenu entry.
                 TMenuItem? selected = SelectedSubMenuItem;
-                if (selected != null && !selected.Disabled && !selected.IsSeparator)
+                if (selected != null && !selected.IsEffectivelyDisabled && !selected.IsSeparator)
                 {
                     _openSubMenu = null;
                     SelectedSubMenuItem = null;
@@ -378,7 +427,7 @@ public class TMenuBar : TView, IAccessibleShortcutProvider
                 TMenuItem? sub = _openSubMenu;
                 while (sub != null)
                 {
-                    if (!sub.IsSeparator && !sub.Disabled && sub.Mnemonic == pressed)
+                    if (!sub.IsSeparator && !sub.IsEffectivelyDisabled && sub.Mnemonic == pressed)
                     {
                         _openSubMenu = null;
                         SelectedSubMenuItem = null;
@@ -446,7 +495,9 @@ public class TMenuBar : TView, IAccessibleShortcutProvider
             int ry = py + 1 + row;
             bool isHighlighted = ReferenceEquals(cur, SelectedSubMenuItem);
             ConsoleColor entryBg = isHighlighted ? ColorScheme.PopupSelectionBackground : ColorScheme.Background;
-            ConsoleColor entryFg = isHighlighted ? ColorScheme.SelectionText : ColorScheme.Text;
+            ConsoleColor entryFg = cur!.IsEffectivelyDisabled
+                ? ConsoleColor.DarkGray
+                : isHighlighted ? ColorScheme.SelectionText : ColorScheme.Text;
 
             buffer.TrySetCell(px, ry, new TConsoleCell('│', ColorScheme.Text, ColorScheme.Background));
 
@@ -587,7 +638,7 @@ public class TMenuBar : TView, IAccessibleShortcutProvider
                 ? (next + 1) % count
                 : (next - 1 + count) % count;
 
-            if (!_layoutSlots[next].Item.Disabled)
+            if (!_layoutSlots[next].Item.IsEffectivelyDisabled)
             {
                 SelectedTopLevel = _layoutSlots[next].Item;
                 break;
@@ -602,7 +653,7 @@ public class TMenuBar : TView, IAccessibleShortcutProvider
     /// </summary>
     private void OpenSubMenuForSelected()
     {
-        if (SelectedTopLevel == null) return;
+        if (SelectedTopLevel == null || SelectedTopLevel.IsEffectivelyDisabled) return;
 
         TMenuItem? items = SelectedTopLevel.SubMenu;
         if (items == null) return;
@@ -651,7 +702,7 @@ public class TMenuBar : TView, IAccessibleShortcutProvider
                 : (next - 1 + count) % count;
 
             TMenuItem candidate = items[next];
-            if (!candidate.IsSeparator && !candidate.Disabled)
+            if (!candidate.IsSeparator && !candidate.IsEffectivelyDisabled)
             {
                 SelectedSubMenuItem = candidate;
                 return;
@@ -670,7 +721,7 @@ public class TMenuBar : TView, IAccessibleShortcutProvider
         TMenuItem? item = Menu;
         while (item != null)
         {
-            if (!item.Disabled) return item;
+            if (!item.IsEffectivelyDisabled) return item;
             item = item.Next;
         }
 
@@ -689,7 +740,7 @@ public class TMenuBar : TView, IAccessibleShortcutProvider
         TMenuItem? item = first;
         while (item != null)
         {
-            if (!item.IsSeparator && !item.Disabled) return item;
+            if (!item.IsSeparator && !item.IsEffectivelyDisabled) return item;
             item = item.Next;
         }
 

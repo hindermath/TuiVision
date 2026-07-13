@@ -73,6 +73,22 @@ public sealed class TMenuItem
     public bool Disabled { get; set; }
 
     /// <summary>
+    /// Gibt an, ob der aktuelle Command-Kontext den Eintrag deaktiviert.
+    /// Der manuelle <see cref="Disabled"/>-Wert bleibt davon unberührt.
+    ///
+    /// Indicates whether the current command context disables the item.
+    /// The manual <see cref="Disabled"/> value remains unchanged.
+    /// </summary>
+    public bool ContextDisabled { get; internal set; }
+
+    /// <summary>
+    /// Gibt die wirksame Sperre aus manueller und kontextabhängiger Vorgabe zurück.
+    ///
+    /// Returns the effective disablement from manual and context constraints.
+    /// </summary>
+    public bool IsEffectivelyDisabled => Disabled || ContextDisabled;
+
+    /// <summary>
     /// Gibt an, ob dieser Menüpunkt eine Trennzeile ist.
     /// Trennzeilen werden durch den Namen <c>"---"</c> erkannt oder explizit über <see cref="Separator"/> erzeugt.
     ///

@@ -138,13 +138,77 @@ public class TStatusLine : TView, IAccessibleShortcutProvider
     {
         for (TStatusItem? current = item; current != null; current = current.Next)
         {
-            if (!current.Disabled && current.KeyCode != 0 && current.Command is > 0 and <= ushort.MaxValue)
+            if (!current.IsEffectivelyDisabled && current.KeyCode != 0 && current.Command is > 0 and <= ushort.MaxValue)
             {
                 result.Add(new TAccessibleShortcut(
                     current.KeyCode,
                     StripMarkers(current.Name),
                     (ushort)current.Command,
                     nameof(TStatusLine)));
+            }
+        }
+    }
+
+    /// <summary>
+    /// Wendet einen Command-Snapshot als getrennten Kontext-Overlay auf alle Status-Aktionen an.
+    ///
+    /// Applies a command snapshot as a separate context overlay to all status actions.
+    /// </summary>
+    /// <param name="context">Die unveränderliche Momentaufnahme. / The immutable snapshot.</param>
+    /// <exception cref="ArgumentNullException">Wird bei <c>null</c> ausgelöst. / Thrown for <c>null</c>.</exception>
+    public void ApplyCommandContext(TCommandContext context)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        if (_defs != null)
+        {
+            for (TStatusDef? definition = _defs; definition != null; definition = definition.Next)
+            {
+                ApplyCommandContext(definition.Items, context);
+            }
+
+            return;
+        }
+
+        ApplyCommandContext(Items, context);
+    }
+
+    internal IEnumerable<ushort> EnumerateCommandIds()
+    {
+        if (_defs != null)
+        {
+            for (TStatusDef? definition = _defs; definition != null; definition = definition.Next)
+            {
+                foreach (ushort command in EnumerateCommandIds(definition.Items))
+                {
+                    yield return command;
+                }
+            }
+
+            yield break;
+        }
+
+        foreach (ushort command in EnumerateCommandIds(Items))
+        {
+            yield return command;
+        }
+    }
+
+    private static void ApplyCommandContext(TStatusItem? item, TCommandContext context)
+    {
+        for (TStatusItem? current = item; current != null; current = current.Next)
+        {
+            current.ContextDisabled = current.Command is > 0 and <= ushort.MaxValue
+                && !context.IsEnabled((ushort)current.Command);
+        }
+    }
+
+    private static IEnumerable<ushort> EnumerateCommandIds(TStatusItem? item)
+    {
+        for (TStatusItem? current = item; current != null; current = current.Next)
+        {
+            if (current.Command is > 0 and <= ushort.MaxValue)
+            {
+                yield return (ushort)current.Command;
             }
         }
     }

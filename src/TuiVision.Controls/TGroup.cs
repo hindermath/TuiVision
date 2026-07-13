@@ -65,6 +65,7 @@ public class TGroup : TView
     /// Updated in the constructor and in <see cref="OnBoundsChanged"/>.
     /// </summary>
     private TRect _clip;
+    private TDialog? _activeModalChild;
 
     // -------------------------------------------------------------------------
     // Konstruktor / Constructor
@@ -191,14 +192,9 @@ public class TGroup : TView
             _last = view;
         }
 
-        // Zustandsflags von der Eigentümergruppe auf die neue View übertragen (Exposed, Active, Focused).
-        // Propagate state flags from the owner group to the newly inserted view (Exposed, Active, Focused).
-        TViewState inherited = TViewState.Exposed | TViewState.Active | TViewState.Focused;
-        TViewState ownerState = State & inherited;
-        if (ownerState != 0)
-        {
-            view.SetState(ownerState, true);
-        }
+        // Insert und spätere Propagierung verwenden dieselbe Matrix; lokale Disabled-/Focus-Zustände bleiben Eigentum des Kinds.
+        // Insert and later propagation use one matrix; local disabled/focus state remains owned by the child.
+        InheritStateOnInsert(view);
     }
 
     /// <summary>
@@ -275,6 +271,9 @@ public class TGroup : TView
     /// </summary>
     public override void ShutDown()
     {
+        _activeModalChild?.AbortModal(ShellCommandIds.cmCancel);
+        _activeModalChild = null;
+
         // LIFO-Traversal: rückwärts von _last bis First() / LIFO traversal: backwards from _last to First()
         while (_last != null)
         {
@@ -309,6 +308,30 @@ public class TGroup : TView
     /// </exception>
     public void SetFocus(TView view)
     {
+        _ = TrySetFocusCore(view, requireSelectable: false);
+    }
+
+    /// <summary>
+    /// Versucht, den Fokus atomar auf eine sichtbare, aktive und auswählbare Kind-View zu übertragen.
+    /// Das bisherige Ziel darf den Wechsel vor jeder Mutation ablehnen.
+    ///
+    /// Attempts to transfer focus atomically to a visible, enabled, selectable child view.
+    /// The previous target may reject the transition before any mutation.
+    /// </summary>
+    /// <param name="view">Die anzufordernde direkte Kind-View. / The direct child view to request.</param>
+    /// <returns>Das eindeutige Ergebnis des Fokuswechsels. / The unambiguous focus-transition result.</returns>
+    /// <exception cref="ArgumentNullException">
+    /// Wird bei einem leeren Ziel ausgelöst. / Thrown for a null target.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Wird ausgelöst, wenn das Ziel nicht direkt zu dieser Gruppe gehört.
+    /// Thrown when the target is not a direct child of this group.
+    /// </exception>
+    public TFocusTransitionResult TrySetFocus(TView view) =>
+        TrySetFocusCore(view, requireSelectable: true);
+
+    private TFocusTransitionResult TrySetFocusCore(TView view, bool requireSelectable)
+    {
         ArgumentNullException.ThrowIfNull(view);
 
         if (view.Owner != this)
@@ -318,13 +341,28 @@ public class TGroup : TView
 
         if (Current == view)
         {
-            return;
+            return TFocusTransitionResult.NoOp;
+        }
+
+        if (!view.GetState(TViewState.Visible)
+            || view.GetState(TViewState.Disabled)
+            || (requireSelectable && !view.Options.HasFlag(TViewOptions.Selectable)))
+        {
+            return TFocusTransitionResult.Rejected;
+        }
+
+        // Das bisherige Ziel entscheidet genau einmal vor jeder Mutation; ein Veto lässt den Baum unverändert.
+        // The previous target decides exactly once before mutation; a veto leaves the tree unchanged.
+        if (Current != null && !Current.CanReleaseFocus())
+        {
+            return TFocusTransitionResult.Rejected;
         }
 
         Current?.SetState(TViewState.Focused, false);
         Current = view;
         Current.SetState(TViewState.Focused, true);
         CurrentChanged();
+        return TFocusTransitionResult.Accepted;
     }
 
     /// <summary>
@@ -396,6 +434,74 @@ public class TGroup : TView
             if (candidate == start)
             {
                 break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Führt genau ein direktes Dialogkind modal aus. Ein unattached Dialog wird
+    /// temporär eingefügt; Cleanup und Fokuswiederherstellung laufen immer in <c>finally</c>.
+    ///
+    /// Executes exactly one direct dialog child modally. An unattached dialog is
+    /// inserted temporarily; cleanup and focus restoration always run in <c>finally</c>.
+    /// </summary>
+    /// <param name="dialog">Der auszuführende Dialog. / The dialog to execute.</param>
+    /// <returns>Die abschließende Command-ID. / The completing command identifier.</returns>
+    /// <exception cref="ArgumentNullException">Wird bei <c>null</c> ausgelöst. / Thrown for <c>null</c>.</exception>
+    /// <exception cref="ArgumentException">Wird für einen fremden Owner ausgelöst. / Thrown for a foreign owner.</exception>
+    /// <exception cref="InvalidOperationException">
+    /// Wird bei einem zweiten direkten Modal-Kind oder abgelehntem Fokuswechsel ausgelöst.
+    /// Thrown for a second direct modal child or a rejected focus transition.
+    /// </exception>
+    public ushort ExecuteModal(TDialog dialog)
+    {
+        ArgumentNullException.ThrowIfNull(dialog);
+        if (_activeModalChild != null)
+        {
+            throw new InvalidOperationException("This owner already has an active direct modal child.");
+        }
+
+        if (dialog.Owner != null && dialog.Owner != this)
+        {
+            throw new ArgumentException("The dialog belongs to another owner.", nameof(dialog));
+        }
+
+        bool temporary = dialog.Owner is null;
+        TView? previousFocus = Current;
+        if (temporary)
+        {
+            Insert(dialog);
+        }
+
+        _activeModalChild = dialog;
+        try
+        {
+            if (!ReferenceEquals(Current, dialog)
+                && TrySetFocus(dialog) == TFocusTransitionResult.Rejected)
+            {
+                throw new InvalidOperationException("The active view rejected the modal focus transition.");
+            }
+
+            return dialog.Run();
+        }
+        finally
+        {
+            _activeModalChild = null;
+            if (temporary && dialog.Owner == this)
+            {
+                Remove(dialog);
+            }
+
+            if (previousFocus?.Owner == this
+                && previousFocus.GetState(TViewState.Visible)
+                && !previousFocus.GetState(TViewState.Disabled)
+                && previousFocus.Options.HasFlag(TViewOptions.Selectable))
+            {
+                TrySetFocus(previousFocus);
+            }
+            else if (Current is null)
+            {
+                SelectNext(true);
             }
         }
     }
@@ -500,16 +606,13 @@ public class TGroup : TView
     }
 
     /// <summary>
-    /// Setzt oder löscht Zustandsbits und propagiert den neuen Zustand an alle Kind-Views,
-    /// wenn das Bit <see cref="TViewState.Active"/>, <see cref="TViewState.Focused"/> oder
-    /// <see cref="TViewState.Disabled"/> betroffen ist.
-    /// Verschachtelte Gruppen erhalten den State als eine Kind-View und propagieren ihn
-    /// intern eigenständig.
+    /// Setzt oder löscht Zustandsbits und propagiert sie nach ihrer Verantwortung:
+    /// Active und Dragging an alle direkten Kinder, Focused nur an Current und
+    /// Exposed nur an sichtbare Kinder. Disabled bleibt eine Dispatch-Grenze der Gruppe.
     ///
-    /// Sets or clears state bits and propagates the new state to all child views
-    /// when the bit is <see cref="TViewState.Active"/>, <see cref="TViewState.Focused"/>, or
-    /// <see cref="TViewState.Disabled"/>.
-    /// Nested groups receive the state as a child view and propagate it internally on their own.
+    /// Sets or clears state bits and propagates them by responsibility: Active and
+    /// Dragging to all direct children, Focused only to Current, and Exposed only to
+    /// visible children. Disabled remains a dispatch boundary of the group.
     /// </summary>
     /// <param name="state">Die zu ändernden Zustandsbits. / The state bits to change.</param>
     /// <param name="enable">
@@ -520,9 +623,24 @@ public class TGroup : TView
     {
         base.SetState(state, enable);
 
-        if ((state & (TViewState.Active | TViewState.Focused | TViewState.Disabled | TViewState.Exposed)) != 0)
+        if ((state & TViewState.Active) != 0)
         {
-            ForEach(v => v.SetState(state, enable));
+            ForEach(view => view.SetState(TViewState.Active, enable));
+        }
+
+        if ((state & TViewState.Dragging) != 0)
+        {
+            ForEach(view => view.SetState(TViewState.Dragging, enable));
+        }
+
+        if ((state & TViewState.Focused) != 0)
+        {
+            ForEach(view => view.SetState(TViewState.Focused, enable && ReferenceEquals(view, Current)));
+        }
+
+        if ((state & TViewState.Exposed) != 0)
+        {
+            ForEach(view => view.SetState(TViewState.Exposed, enable && view.GetState(TViewState.Visible)));
         }
     }
 
@@ -672,6 +790,51 @@ public class TGroup : TView
     protected internal TView? GetFirstChild() => First();
 
     /// <summary>
+    /// Erstellt eine stabile owner-lokale Momentaufnahme der Kind-Reihenfolge
+    /// von unten nach oben, ohne die zirkuläre Liste offenzulegen.
+    ///
+    /// Creates a stable owner-local snapshot of child order from bottom to top
+    /// without exposing the circular list.
+    /// </summary>
+    /// <returns>Eine schreibgeschützte Kind-Momentaufnahme. / A read-only child snapshot.</returns>
+    protected internal IReadOnlyList<TView> GetChildrenSnapshot()
+    {
+        List<TView> children = [];
+        ForEach(children.Add);
+        return children.AsReadOnly();
+    }
+
+    /// <summary>
+    /// Verschiebt ein direktes Kind an die oberste Z-Position, ohne Fokus oder
+    /// Ownership zwischenzeitlich zu entfernen.
+    ///
+    /// Moves a direct child to the top Z position without temporarily removing
+    /// focus or ownership.
+    /// </summary>
+    /// <param name="view">Das direkte Kind. / The direct child.</param>
+    /// <exception cref="ArgumentNullException">Wird bei <c>null</c> ausgelöst. / Thrown for <c>null</c>.</exception>
+    /// <exception cref="ArgumentException">Wird für ein fremdes Kind ausgelöst. / Thrown for a foreign child.</exception>
+    protected internal void BringChildToFront(TView view)
+    {
+        ArgumentNullException.ThrowIfNull(view);
+        if (view.Owner != this)
+        {
+            throw new ArgumentException("The view does not belong to this group.", nameof(view));
+        }
+
+        if (_last == view)
+        {
+            return;
+        }
+
+        TView previous = FindPrev(view);
+        previous.Next = view.Next;
+        view.Next = _last!.Next;
+        _last.Next = view;
+        _last = view;
+    }
+
+    /// <summary>
     /// Liefert einen stabilen laufzeitlokalen Schlüssel für das tiefste sichtbare
     /// Mausziel an einer globalen Position.
     ///
@@ -712,6 +875,18 @@ public class TGroup : TView
     /// The first child element, or <c>null</c>.
     /// </returns>
     private TView? First() => _last?.Next;
+
+    private void InheritStateOnInsert(TView view)
+    {
+        view.SetState(TViewState.Active, GetState(TViewState.Active));
+        view.SetState(TViewState.Dragging, GetState(TViewState.Dragging));
+        view.SetState(
+            TViewState.Exposed,
+            GetState(TViewState.Exposed) && view.GetState(TViewState.Visible));
+        view.SetState(
+            TViewState.Focused,
+            GetState(TViewState.Focused) && ReferenceEquals(view, Current));
+    }
 
     private TView? FindTopmostMouseTarget(TPoint where)
     {

@@ -2,6 +2,7 @@
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
 using TuiVision.Core;
+using TuiVision.Compatibility;
 using TuiVision.Drivers.Console;
 
 namespace TuiVision.Controls;
@@ -15,7 +16,7 @@ namespace TuiVision.Controls;
 /// Supports optional close affordance (×), Ctrl+W, guarded Escape, and a reversible
 /// move mode via Ctrl+F5.
 /// </summary>
-public class TWindow : TGroup, IMouseInteractionSession
+public class TWindow : TGroup, IMouseInteractionSession, ICloseableView
 {
     // Scan-Codes / Scan codes
     private const byte ScanEscape = 0x01;
@@ -28,15 +29,12 @@ public class TWindow : TGroup, IMouseInteractionSession
 
     // Ctrl+W: CharCode '\x17' (ASCII 23)
     private const char CharCtrlW = '\x17';
-    // Ctrl-Modifier-Bit im ShiftState
-    private const ushort ShiftCtrl = 0x0004;
+    // Die zentrale Compatibility-Definition verhindert, dass Alt und Ctrl an UI-Rändern auseinanderlaufen.
+    // The central Compatibility definition prevents Alt and Ctrl from drifting at UI boundaries.
+    private const ushort ShiftCtrl = (ushort)TShiftState.Ctrl;
 
-    // Verschiebe-Modus / Move mode
-    private bool _moveMode;
-    private TRect _moveModeOriginalBounds;
-    private bool _mouseDragging;
-    private TPoint _mouseDragStart;
-    private TRect _mouseDragOriginalBounds;
+    private TDragSession? _activeDragSession;
+    private TDragResult? _lastDragResult;
 
     /// <summary>
     /// Initialisiert ein Fenster mit Titel und Begrenzungsrahmen.
@@ -102,7 +100,8 @@ public class TWindow : TGroup, IMouseInteractionSession
     ///
     /// Indicates whether the window is currently in move mode.
     /// </summary>
-    public bool IsInMoveMode => _moveMode;
+    public bool IsInMoveMode =>
+        _activeDragSession is { IsActive: true, Mode: TDragInputMode.Keyboard };
 
     /// <summary>
     /// Gibt an, ob dieses Fenster gerade durch den begrenzten Titelzeilen-Pfad
@@ -111,7 +110,22 @@ public class TWindow : TGroup, IMouseInteractionSession
     /// Indicates whether this window is currently being moved through the
     /// bounded title-row mouse path.
     /// </summary>
-    public bool IsMouseDragging => _mouseDragging;
+    public bool IsMouseDragging =>
+        _activeDragSession is { IsActive: true, Mode: TDragInputMode.Pointer };
+
+    /// <summary>
+    /// Die aktive gemeinsame Drag-Session oder <c>null</c>.
+    ///
+    /// The active shared drag session or <c>null</c>.
+    /// </summary>
+    public TDragSession? ActiveDragSession => _activeDragSession;
+
+    /// <summary>
+    /// Das letzte terminale Drag-Ergebnis oder <c>null</c>.
+    ///
+    /// The last terminal drag result or <c>null</c>.
+    /// </summary>
+    public TDragResult? LastDragResult => _lastDragResult;
 
     /// <summary>
     /// Zeichnet den Fensterrahmen mit Titel und füllt den Innenbereich mit der Hintergrundfarbe.
@@ -194,7 +208,14 @@ public class TWindow : TGroup, IMouseInteractionSession
             && @event.Message.Info is ConsoleMouseCapabilityState state
             && state != ConsoleMouseCapabilityState.Enabled)
         {
-            CancelMouseDrag(restore: true);
+            CancelDrag(TDragCompletionReason.CapabilityLost, restore: true);
+            return;
+        }
+
+        if (@event.What == TEventKind.Command && @event.Message.Command == ShellCommandIds.cmClose)
+        {
+            RequestClose(TCloseTrigger.Command);
+            @event.Clear(this);
             return;
         }
 
@@ -210,66 +231,52 @@ public class TWindow : TGroup, IMouseInteractionSession
             ushort shift = @event.KeyDown.ShiftState;
             bool isCtrl = (shift & ShiftCtrl) != 0;
 
-            if (_mouseDragging && (scan == ScanEscape || ch == '\x1b'))
+            if (_activeDragSession is { IsActive: true } && (scan == ScanEscape || ch == '\x1b'))
             {
-                CancelMouseDrag(restore: true);
+                CancelDrag(TDragCompletionReason.Cancelled, restore: true);
                 @event.Clear(this);
                 return;
             }
 
             // ---- Verschiebe-Modus aktiv / Move mode active ----
-            if (_moveMode)
+            if (_activeDragSession is { IsActive: true, Mode: TDragInputMode.Keyboard } keyboardSession)
             {
                 if (scan == ScanLeft || scan == ScanRight || scan == ScanUp || scan == ScanDown)
                 {
-                    TRect current = GetBounds();
-                    TPoint origin = current.A;
-                    TPoint size = current.B - current.A;
-
                     int dx = scan == ScanRight ? 1 : scan == ScanLeft ? -1 : 0;
                     int dy = scan == ScanDown ? 1 : scan == ScanUp ? -1 : 0;
 
-                    int nx = origin.X + dx;
-                    int ny = origin.Y + dy;
-                    Locate(new TRect(nx, ny, nx + size.X, ny + size.Y));
-                    @event.Clear();
+                    keyboardSession.MoveBy(new TPoint(dx, dy));
+                    ApplyDragPosition(keyboardSession.Current);
+                    @event.Clear(this);
                     return;
                 }
 
                 if (scan == ScanEnter || ch == '\r')
                 {
-                    // Position übernehmen und Verschiebe-Modus beenden.
-                    // Commit position and exit move mode.
-                    _moveMode = false;
-                    @event.Clear();
-                    return;
-                }
-
-                if (scan == ScanEscape || ch == '\x1b')
-                {
-                    // Ursprüngliche Position wiederherstellen und Verschiebe-Modus beenden.
-                    // Restore original position and exit move mode.
-                    _moveMode = false;
-                    Locate(_moveModeOriginalBounds);
-                    @event.Clear();
+                    CompleteDrag();
+                    @event.Clear(this);
                     return;
                 }
             }
 
             // ---- Ctrl+F5: Verschiebe-Modus starten / Start move mode ----
-            if (isCtrl && scan == ScanF5 && Flags.HasFlag(WindowFlags.Move))
+            if (_activeDragSession is null
+                && isCtrl
+                && scan == ScanF5
+                && Flags.HasFlag(WindowFlags.Move)
+                && Owner != null)
             {
-                _moveMode = true;
-                _moveModeOriginalBounds = GetBounds();
-                @event.Clear();
+                _activeDragSession = CreateDragSession(TDragInputMode.Keyboard);
+                @event.Clear(this);
                 return;
             }
 
             // ---- Ctrl+W: Schließen / Close ----
             if (ch == CharCtrlW && Flags.HasFlag(WindowFlags.Close))
             {
-                Owner?.HandleEvent(TEvent.CreateCommand(ShellCommandIds.cmClose));
-                @event.Clear();
+                RequestClose(TCloseTrigger.CtrlW);
+                @event.Clear(this);
                 return;
             }
         }
@@ -284,10 +291,48 @@ public class TWindow : TGroup, IMouseInteractionSession
             && @event.KeyDown.ScanCode == ScanEscape
             && Flags.HasFlag(WindowFlags.Close))
         {
-            Owner?.HandleEvent(TEvent.CreateCommand(ShellCommandIds.cmClose));
-            @event.Clear();
+            RequestClose(TCloseTrigger.Escape);
+            @event.Clear(this);
         }
     }
+
+    /// <summary>
+    /// Fordert den sichtbaren Abschluss des Fensters an und entfernt es nur nach
+    /// einer positiven Safe-Close-Entscheidung aus seinem Owner.
+    ///
+    /// Requests visible window completion and removes it from its owner only after
+    /// a positive safe-close decision.
+    /// </summary>
+    /// <param name="trigger">Der auslösende Pfad. / The triggering path.</param>
+    /// <returns>Das eindeutige Close-Ergebnis. / The unambiguous close result.</returns>
+    public virtual TCloseResult RequestClose(TCloseTrigger trigger)
+    {
+        if (Owner is not TGroup owner)
+        {
+            return new TCloseResult(this, trigger, TCloseDecision.AlreadyDetached, null);
+        }
+
+        if (!Flags.HasFlag(WindowFlags.Close))
+        {
+            return new TCloseResult(this, trigger, TCloseDecision.NotCloseable, owner);
+        }
+
+        if (!CanClose())
+        {
+            return new TCloseResult(this, trigger, TCloseDecision.Vetoed, owner);
+        }
+
+        owner.Remove(this);
+        return new TCloseResult(this, trigger, TCloseDecision.Closed, null);
+    }
+
+    /// <summary>
+    /// Bestimmt, ob eine Close-Anfrage ohne Datenverlust abgeschlossen werden darf.
+    ///
+    /// Determines whether a close request may complete without data loss.
+    /// </summary>
+    /// <returns><c>true</c>, wenn der Abschluss erlaubt ist. / <c>true</c> when completion is allowed.</returns>
+    protected virtual bool CanClose() => true;
 
     /// <summary>
     /// Beendet einen aktiven Maus-Drag, bevor der Disabled-Zustand propagiert wird.
@@ -300,7 +345,7 @@ public class TWindow : TGroup, IMouseInteractionSession
     {
         if (enable && (state & TViewState.Disabled) != 0)
         {
-            CancelMouseDrag(restore: true);
+            CancelDrag(TDragCompletionReason.Disabled, restore: true);
         }
 
         base.SetState(state, enable);
@@ -313,27 +358,27 @@ public class TWindow : TGroup, IMouseInteractionSession
     /// </summary>
     public override void ShutDown()
     {
-        CancelMouseDrag(restore: true);
+        CancelDrag(TDragCompletionReason.Shutdown, restore: true);
         base.ShutDown();
     }
 
-    void IMouseInteractionSession.CancelMouseInteraction() => CancelMouseDrag(restore: true);
+    void IMouseInteractionSession.CancelMouseInteraction() =>
+        CancelDrag(TDragCompletionReason.Removed, restore: true);
 
     private bool HandleMouseDrag(TEvent @event)
     {
         if (@event.What == TEventKind.MouseDown)
         {
             TPoint local = MakeLocal(@event.Mouse.Where);
-            if (!_mouseDragging
+            if (_activeDragSession is null
                 && Flags.HasFlag(WindowFlags.Move)
+                && Owner != null
                 && @event.Mouse.Buttons == TMouseButtons.Left
                 && local.Y == 0
                 && local.X >= 0
                 && local.X < Size.X)
             {
-                _mouseDragging = true;
-                _mouseDragStart = @event.Mouse.Where;
-                _mouseDragOriginalBounds = GetBounds();
+                _activeDragSession = CreateDragSession(TDragInputMode.Pointer, @event.Mouse.Where);
                 @event.Clear(this);
                 return true;
             }
@@ -341,7 +386,7 @@ public class TWindow : TGroup, IMouseInteractionSession
             return false;
         }
 
-        if (!_mouseDragging)
+        if (_activeDragSession is not { IsActive: true, Mode: TDragInputMode.Pointer } pointerSession)
         {
             return false;
         }
@@ -350,25 +395,19 @@ public class TWindow : TGroup, IMouseInteractionSession
         {
             if (Owner is null)
             {
-                CancelMouseDrag(restore: true);
+                CancelDrag(TDragCompletionReason.OwnerLost, restore: true);
                 return true;
             }
 
-            TPoint delta = @event.Mouse.Where - _mouseDragStart;
-            TPoint size = _mouseDragOriginalBounds.B - _mouseDragOriginalBounds.A;
-            TRect ownerExtent = Owner.GetExtent();
-            int x = Math.Clamp(_mouseDragOriginalBounds.A.X + delta.X, ownerExtent.A.X, Math.Max(ownerExtent.A.X, ownerExtent.B.X - size.X));
-            int y = Math.Clamp(_mouseDragOriginalBounds.A.Y + delta.Y, ownerExtent.A.Y, Math.Max(ownerExtent.A.Y, ownerExtent.B.Y - size.Y));
-            Locate(new TRect(x, y, x + size.X, y + size.Y));
+            pointerSession.UpdatePointer(@event.Mouse.Where);
+            ApplyDragPosition(pointerSession.Current);
             @event.Clear(this);
             return true;
         }
 
         if (@event.What == TEventKind.MouseUp)
         {
-            // Release schreibt die bereits begrenzte Vorschau fest; alle anderen Abbrüche stellen den Start wieder her.
-            // Release commits the already clamped preview; every other cancellation restores the start.
-            _mouseDragging = false;
+            CompleteDrag();
             @event.Clear(this);
             return true;
         }
@@ -376,17 +415,47 @@ public class TWindow : TGroup, IMouseInteractionSession
         return false;
     }
 
-    private void CancelMouseDrag(bool restore)
+    private TDragSession CreateDragSession(TDragInputMode mode, TPoint? pointerAnchor = null)
     {
-        if (!_mouseDragging)
+        TRect bounds = GetBounds();
+        TRect ownerExtent = Owner!.GetExtent();
+        int maxX = Math.Max(ownerExtent.A.X, ownerExtent.B.X - bounds.Width);
+        int maxY = Math.Max(ownerExtent.A.Y, ownerExtent.B.Y - bounds.Height);
+        TRect allowedOrigins = new(ownerExtent.A.X, ownerExtent.A.Y, maxX + 1, maxY + 1);
+        return new TDragSession(this, null, bounds.A, allowedOrigins, mode, pointerAnchor);
+    }
+
+    private void ApplyDragPosition(TPoint position)
+    {
+        TPoint size = Size;
+        Locate(new TRect(position, position + size));
+    }
+
+    private void CompleteDrag()
+    {
+        if (_activeDragSession is null)
         {
             return;
         }
 
-        _mouseDragging = false;
+        _lastDragResult = _activeDragSession.Drop();
+        ApplyDragPosition(_lastDragResult.Position);
+        _activeDragSession = null;
+    }
+
+    private void CancelDrag(TDragCompletionReason reason, bool restore)
+    {
+        if (_activeDragSession is null)
+        {
+            return;
+        }
+
+        _lastDragResult = _activeDragSession.Cancel(reason);
         if (restore)
         {
-            Locate(_mouseDragOriginalBounds);
+            ApplyDragPosition(_activeDragSession.Start);
         }
+
+        _activeDragSession = null;
     }
 }

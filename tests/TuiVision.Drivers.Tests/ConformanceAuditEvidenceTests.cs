@@ -334,11 +334,82 @@ public sealed class ConformanceAuditEvidenceTests
         string findings = ReadFeatureFile("findings.md");
         StringAssert.Contains(findings, $"Total findings | {actualContractIds.Length}");
         string gate = ReadFeatureFile("pre-wave5-gate.md");
-        StringAssert.Contains(gate, "`Core025` | 9 | Required");
+        StringAssert.Contains(gate, "`Core025` | 9 | Closed");
         StringAssert.Contains(gate, "`ComponentData026` | 4 | Required");
         StringAssert.Contains(gate, "`Closure028` | Required");
         StringAssert.Contains(gate, "Wave 5 | Blocked");
         StringAssert.Contains(gate, "Feature 028");
+    }
+
+    /// <summary>
+    /// Prüft, dass Feature 025 genau seine neun Findings durch reale Red-/Green-Nachweise schließt.
+    ///
+    /// Validates that Feature 025 closes exactly its nine findings through real red/green evidence.
+    /// </summary>
+    [TestMethod]
+    public void Test_Core025ResolutionsAreExactAndRealPathBacked()
+    {
+        JsonObject root = LoadAuditObject();
+        JsonObject[] findings = RequiredArray(root, "findings").OfType<JsonObject>().ToArray();
+        JsonObject[] resolutions = RequiredArray(root, "resolutions").OfType<JsonObject>().ToArray();
+        string[] expectedFindingIds = findings
+            .Where(finding => RequiredString(finding, "disposition") == "Core025")
+            .Select(finding => RequiredString(finding, "findingId"))
+            .OrderBy(id => id, StringComparer.Ordinal)
+            .ToArray();
+        string[] actualFindingIds = resolutions
+            .Select(resolution => RequiredString(resolution, "findingId"))
+            .OrderBy(id => id, StringComparer.Ordinal)
+            .ToArray();
+
+        CollectionAssert.AreEqual(expectedFindingIds, actualFindingIds);
+        Assert.HasCount(9, resolutions);
+
+        string repoRoot = Phase7DriverTestContext.FindRepoRoot();
+        foreach (JsonObject resolution in resolutions)
+        {
+            string findingId = RequiredString(resolution, "findingId");
+            Assert.AreEqual($"R025-{findingId}", RequiredString(resolution, "resolutionId"));
+            Assert.AreEqual("025-core-runtime-conformance-hardening", RequiredString(resolution, "featureId"));
+            Assert.AreEqual("Closed", RequiredString(resolution, "status"));
+            Assert.AreEqual("Implemented", RequiredString(resolution, "implementationDecision"));
+            Assert.IsFalse(RequiredBoolean(resolution, "documentationOnly"));
+
+            foreach (string property in new[]
+                     {
+                         "redProof",
+                         "greenProof",
+                         "evidencePath",
+                         "resolvedDate",
+                         "reevaluationTrigger",
+                     })
+            {
+                Assert.IsFalse(string.IsNullOrWhiteSpace(RequiredString(resolution, property)), $"{findingId} has an empty {property}.");
+            }
+
+            foreach (string property in new[] { "changeEvidence", "testEvidence" })
+            {
+                string[] paths = StringValues(RequiredArray(resolution, property));
+                Assert.IsNotEmpty(paths, $"{findingId} has no {property} paths.");
+                foreach (string path in paths)
+                {
+                    string filePath = path.Split("::", 2, StringSplitOptions.None)[0];
+                    Assert.IsTrue(File.Exists(Path.Combine(repoRoot, filePath)), $"{findingId} references missing {property} path {filePath}.");
+                }
+            }
+        }
+
+        string findingsDocument = ReadFeatureFile("findings.md");
+        foreach (string findingId in expectedFindingIds)
+            StringAssert.Contains(findingsDocument, $"| `{findingId}` | `Closed` |", $"{findingId} lacks readable closure state.");
+
+        string gate = ReadFeatureFile("pre-wave5-gate.md");
+        StringAssert.Contains(gate, "Feature 025 | Closed");
+        StringAssert.Contains(gate, "`Core025` | 9 | Closed");
+        StringAssert.Contains(gate, "Feature 026 | Required");
+        StringAssert.Contains(gate, "Feature 028 | Required");
+        StringAssert.Contains(gate, "Wave 5 | Blocked");
+        StringAssert.Contains(gate, "Wave 6 | Blocked");
     }
 
     /// <summary>
@@ -646,6 +717,10 @@ public sealed class ConformanceAuditEvidenceTests
     private static string RequiredString(JsonObject owner, string propertyName)
         => owner[propertyName]?.GetValue<string>()
             ?? throw new JsonException($"Required string is missing: {propertyName}");
+
+    private static bool RequiredBoolean(JsonObject owner, string propertyName)
+        => owner[propertyName]?.GetValue<bool>()
+            ?? throw new JsonException($"Required boolean is missing: {propertyName}");
 
     private static string[] StringValues(JsonArray values)
         => values.Select(value => value?.GetValue<string>() ?? string.Empty).ToArray();

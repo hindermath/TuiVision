@@ -10,7 +10,7 @@ namespace TuiVision.Controls;
 ///
 /// Reusable multi-line text editor with cursor, selection, and search behaviour.
 /// </summary>
-public class TEditor : TScroller
+public class TEditor : TScroller, ICommandStateProvider
 {
     private const byte ScanBackspace = 0x0E;
     private const byte ScanEnter = 0x1C;
@@ -376,6 +376,23 @@ public class TEditor : TScroller
             _ => true
         };
     }
+
+    /// <summary>
+    /// Liefert die editorbezogenen Command-Zustände für den gemeinsamen Shell-Snapshot.
+    ///
+    /// Returns editor command states for the shared shell snapshot.
+    /// </summary>
+    /// <returns>Eine aktuelle Command-Zustandsabbildung. / A current command-state mapping.</returns>
+    public virtual IReadOnlyDictionary<ushort, bool> GetCommandStates() => new Dictionary<ushort, bool>
+    {
+        [ShellCommandIds.cmSave] = IsCommandEnabled(ShellCommandIds.cmSave),
+        [ShellCommandIds.cmUndo] = IsCommandEnabled(ShellCommandIds.cmUndo),
+        [ShellCommandIds.cmCopy] = IsCommandEnabled(ShellCommandIds.cmCopy),
+        [ShellCommandIds.cmCut] = IsCommandEnabled(ShellCommandIds.cmCut),
+        [ShellCommandIds.cmPaste] = IsCommandEnabled(ShellCommandIds.cmPaste),
+        [ShellCommandIds.cmFind] = IsCommandEnabled(ShellCommandIds.cmFind),
+        [ShellCommandIds.cmReplace] = IsCommandEnabled(ShellCommandIds.cmReplace)
+    };
 
     /// <summary>
     /// Prueft, ob das Dokument ohne Datenverlust geschlossen werden darf.

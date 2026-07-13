@@ -2,6 +2,7 @@
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
 using TuiVision.Core;
+using TuiVision.Compatibility;
 using TuiVision.Drivers.Console;
 
 namespace TuiVision.Controls;
@@ -40,9 +41,22 @@ public class TProgram : TGroup
     public TStatusLine? StatusLine { get; protected set; }
 
     private bool _shouldQuit;
+    private TEvent? _pendingEvent;
     private readonly TuiVision.Drivers.Console.SystemConsolePresenter _presenter = new();
     private readonly Queue<ConsoleKeyInfo> _pendingConsoleKeys = new();
     private bool _mouseCapabilityConfigured;
+    private long _commandContextGeneration;
+
+    /// <summary>
+    /// Die aktuelle unveränderliche Command-Momentaufnahme der Anwendung.
+    ///
+    /// The application's current immutable command snapshot.
+    /// </summary>
+    public TCommandContext CommandContext { get; private set; } = new(
+        0,
+        null,
+        new Dictionary<ushort, bool>(),
+        CommandContextRefreshTrigger.EventHandled);
 
     /// <summary>
     /// Initialisiert eine neue Instanz der <see cref="TProgram"/>-Klasse.
@@ -81,6 +95,7 @@ public class TProgram : TGroup
         try { Console.Clear(); } catch { }
         try { Console.CursorVisible = false; } catch { }
         StartMouseInput();
+        RefreshCommandContext(CommandContextRefreshTrigger.Focus);
 
         // Initialer Zeichenvorgang und Ausgabe / Initial draw and present
         Draw();
@@ -89,16 +104,27 @@ public class TProgram : TGroup
         while (!_shouldQuit)
         {
             GetEvent(out TEvent @event);
-            if (@event.What != TEventKind.Nothing)
+            if (@event.What == TEventKind.Nothing)
             {
-                HandleEvent(@event);
+                Idle();
+                RefreshCommandContext(CommandContextRefreshTrigger.Idle);
                 if (!_shouldQuit)
                 {
-                    Draw();
-                    PresentScreen();
+                    ReleaseCpu();
                 }
+
+                continue;
+            }
+
+            HandleEvent(@event);
+            if (!_shouldQuit)
+            {
+                Draw();
+                PresentScreen();
             }
         }
+
+        _pendingEvent = null;
 
         // Shutdown-Orchestrierung: alle Kind-Views in LIFO-Reihenfolge herunterfahren
         // (FR-007), danach Shell-Referenzen freigeben (data-model §Shell Lifecycle).
@@ -172,7 +198,7 @@ public class TProgram : TGroup
     }
 
     /// <summary>
-    /// Ruft das nächste Tastatureingabe-Ereignis ab. Blockiert bis zu einem Tastendruck.
+    /// Ruft das nächste Pending-, Maus- oder Tastaturereignis ohne blockierendes Warten ab.
     /// Folgende Tastenkombinationen lösen <c>cmQuit</c> aus:
     /// <list type="bullet">
     /// <item><description>Ctrl+Q — zuverlässig in macOS Terminal.app und anderen Terminals</description></item>
@@ -181,7 +207,7 @@ public class TProgram : TGroup
     /// </list>
     /// In Umgebungen ohne Konsole (z. B. umgeleitete E/A) wird <see cref="TEventKind.Nothing"/> zurückgegeben.
     ///
-    /// Retrieves the next keyboard event. Blocks until a key is pressed.
+    /// Retrieves the next pending, mouse, or keyboard event without blocking.
     /// The following key combinations trigger <c>cmQuit</c>:
     /// <list type="bullet">
     /// <item><description>Ctrl+Q — reliable in macOS Terminal.app and other terminals</description></item>
@@ -195,13 +221,25 @@ public class TProgram : TGroup
     {
         try
         {
+            if (_pendingEvent != null)
+            {
+                @event = _pendingEvent;
+                _pendingEvent = null;
+                return;
+            }
+
             if (Driver.HasPendingMouseObservation)
             {
                 Driver.TryGetMouseEvent(ResolveMouseTargetKey, out @event, out _);
                 return;
             }
 
-            ConsoleKeyInfo key = ReadConsoleKey();
+            if (!TryReadConsoleKey(out ConsoleKeyInfo key))
+            {
+                @event = TEvent.CreateNone();
+                return;
+            }
+
             if (key.KeyChar == '\x1b' && TryCollectSgrObservation(key, out string sequence))
             {
                 Driver.QueueMouseObservation(new ConsoleMouseObservation(sequence, Environment.TickCount64));
@@ -228,17 +266,9 @@ public class TProgram : TGroup
                 return;
             }
 
-            // Alle anderen Tasten als KeyDown-Ereignis in den View-Tree weiterleiten.
-            // F10 erhält den IBM-PC-ScanCode 0x44 damit TMenuBar es erkennt.
-            // Forward all other keys as KeyDown events into the view tree.
-            // F10 receives IBM-PC scan code 0x44 so TMenuBar can detect it.
-            byte scanCode = key.Key == ConsoleKey.F10 ? (byte)0x44 : (byte)0;
-            ushort shiftState = 0;
-            if (isAlt) shiftState |= 0x0004;
-            if (isCtrl) shiftState |= 0x0002;
-            if ((key.Modifiers & ConsoleModifiers.Shift) != 0) shiftState |= 0x0001;
-
-            @event = TEvent.CreateKeyDown(new TKeyDownEvent(key.KeyChar, scanCode, (ushort)key.Key, shiftState, scanCode));
+            // Der reale Rand nutzt dieselbe Tabelle wie Compatibility-Proofs; eine lokale Teilmenge würde still abweichen.
+            // The real boundary uses the same table as Compatibility proofs; a local subset would drift silently.
+            @event = TConsoleInputAdapter.CreateKeyDownEvent(key);
         }
         catch
         {
@@ -247,6 +277,54 @@ public class TProgram : TGroup
             @event = TEvent.CreateNone();
         }
     }
+
+    /// <summary>
+    /// Gibt an, ob genau ein von der Anwendung bereitgestelltes Ereignis auf die
+    /// nächste Schleifenrunde wartet.
+    ///
+    /// Indicates whether one application-provided event is waiting for the next loop iteration.
+    /// </summary>
+    public bool HasPendingEvent => _pendingEvent != null;
+
+    /// <summary>
+    /// Stellt genau ein Ereignis für die nächste Schleifenrunde bereit. Ein bereits
+    /// belegter Slot wird nicht überschrieben.
+    ///
+    /// Provides exactly one event for the next loop iteration. An occupied slot is not overwritten.
+    /// </summary>
+    /// <param name="event">Das bereitzustellende Ereignis. / The event to provide.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Wird bei einem leeren Ereignis ausgelöst. / Thrown for a null event.
+    /// </exception>
+    /// <exception cref="InvalidOperationException">
+    /// Wird ausgelöst, wenn bereits ein Ereignis wartet. / Thrown when an event is already pending.
+    /// </exception>
+    public void PutEvent(TEvent @event)
+    {
+        ArgumentNullException.ThrowIfNull(@event);
+        if (_pendingEvent != null)
+        {
+            throw new InvalidOperationException("Only one pending event is supported.");
+        }
+
+        _pendingEvent = @event;
+    }
+
+    /// <summary>
+    /// Führt begrenzte Leerlaufarbeit aus, nachdem Pending-, Maus- und Tastatureingabe leer waren.
+    ///
+    /// Performs bounded idle work after pending, mouse, and keyboard input were empty.
+    /// </summary>
+    protected virtual void Idle()
+    {
+    }
+
+    /// <summary>
+    /// Gibt nach einer leeren Schleifenrunde Rechenzeit frei, damit kein Busy Loop entsteht.
+    ///
+    /// Releases CPU time after an empty loop iteration so that no busy loop is created.
+    /// </summary>
+    protected virtual void ReleaseCpu() => Thread.Sleep(1);
 
     /// <summary>
     /// Setzt einen kontrollierten Capability-Zustand für deterministische
@@ -270,24 +348,115 @@ public class TProgram : TGroup
     /// <param name="event">Das zu verarbeitende Ereignis. / The event to process.</param>
     public override void HandleEvent(TEvent @event)
     {
-        if (@event.What == TEventKind.Command)
+        CommandContextRefreshTrigger completedTrigger =
+            @event.What == TEventKind.Broadcast && @event.Message.Command == ShellCommandIds.cmFocusChanged
+                ? CommandContextRefreshTrigger.Focus
+                : CommandContextRefreshTrigger.EventHandled;
+
+        try
         {
-            if (IsCommandDisabled(@event.Message.Command))
+            if (@event.What == TEventKind.Command)
             {
-                // Deaktivierte Befehle werden nicht weiterverarbeitet
-                @event.Clear();
-                return;
+                ushort command = @event.Message.Command;
+                RefreshCommandContext(CommandContextRefreshTrigger.PreDispatch, command);
+                if (!CommandContext.IsEnabled(command))
+                {
+                    // Der unmittelbar erneuerte Snapshot verhindert Dispatch mit einem veralteten sichtbaren Zustand.
+                    // The immediately refreshed snapshot prevents dispatch with stale visible state.
+                    @event.Clear();
+                    return;
+                }
+
+                if (command == ShellCommandIds.cmQuit)
+                {
+                    _shouldQuit = true;
+                    @event.Clear();
+                    return;
+                }
             }
 
-            if (@event.Message.Command == ShellCommandIds.cmQuit)
+            base.HandleEvent(@event);
+        }
+        finally
+        {
+            RefreshCommandContext(completedTrigger);
+        }
+    }
+
+    /// <summary>
+    /// Ermittelt die Command-Zustände aus der aktiven View-Kette, Shell-Aktionen
+    /// und dem kompatiblen Program-Override und veröffentlicht einen neuen Snapshot.
+    ///
+    /// Resolves command states from the active view chain, shell actions, and the
+    /// compatible program override, then publishes a new snapshot.
+    /// </summary>
+    /// <param name="trigger">Der Aktualisierungsauslöser. / The refresh trigger.</param>
+    /// <param name="dispatchCommand">Ein zusätzlich unmittelbar zu prüfender Befehl. / An additional command to check immediately.</param>
+    public void RefreshCommandContext(CommandContextRefreshTrigger trigger, ushort? dispatchCommand = null)
+    {
+        TView? activeView = ResolveDeepestFocusedView();
+        Dictionary<ushort, bool> states = [];
+
+        // Der tiefste Provider gewinnt; Owner ergänzen nur noch nicht beantwortete Host-Befehle.
+        // The deepest provider wins; owners only add unanswered host commands.
+        for (TView? view = activeView; view != null && !ReferenceEquals(view, this); view = view.Owner)
+        {
+            if (view is not ICommandStateProvider provider)
             {
-                _shouldQuit = true;
-                @event.Clear();
-                return;
+                continue;
+            }
+
+            IReadOnlyDictionary<ushort, bool> provided = provider.GetCommandStates();
+            foreach ((ushort command, bool enabled) in provided)
+            {
+                states.TryAdd(command, enabled);
             }
         }
 
-        base.HandleEvent(@event);
+        if (MenuBar != null)
+        {
+            foreach (ushort command in MenuBar.EnumerateCommandIds())
+            {
+                states.TryAdd(command, true);
+            }
+        }
+
+        if (StatusLine != null)
+        {
+            foreach (ushort command in StatusLine.EnumerateCommandIds())
+            {
+                states.TryAdd(command, true);
+            }
+        }
+
+        if (dispatchCommand.HasValue)
+        {
+            states.TryAdd(dispatchCommand.Value, true);
+        }
+
+        foreach (ushort command in states.Keys.ToArray())
+        {
+            states[command] = states[command] && !IsCommandDisabled(command);
+        }
+
+        CommandContext = new TCommandContext(
+            ++_commandContextGeneration,
+            activeView,
+            states,
+            trigger);
+        MenuBar?.ApplyCommandContext(CommandContext);
+        StatusLine?.ApplyCommandContext(CommandContext);
+    }
+
+    private TView? ResolveDeepestFocusedView()
+    {
+        TView? active = Current;
+        while (active is TGroup group && group.Current != null)
+        {
+            active = group.Current;
+        }
+
+        return active;
     }
 
     /// <summary>
@@ -431,10 +600,51 @@ public class TProgram : TGroup
         HandleEvent(TEvent.CreateBroadcast(ShellCommandIds.cmMouseCapabilityChanged, capability.State));
     }
 
-    private ConsoleKeyInfo ReadConsoleKey() =>
+    /// <summary>
+    /// Liest die nächste rohe Konsolentaste oder einen bereits gepufferten Teil einer Eingabesequenz.
+    /// Abgeleitete Testprogramme dürfen diese Hostkante deterministisch ersetzen.
+    ///
+    /// Reads the next raw console key or a buffered remainder of an input sequence.
+    /// Derived test programs may replace this host boundary deterministically.
+    /// </summary>
+    /// <returns>Die nächste rohe Konsolentaste. / The next raw console key.</returns>
+    protected virtual ConsoleKeyInfo ReadConsoleKey() =>
         _pendingConsoleKeys.Count > 0
             ? _pendingConsoleKeys.Dequeue()
             : Console.ReadKey(intercept: true);
+
+    /// <summary>
+    /// Versucht, eine rohe Konsolentaste ohne blockierendes Warten zu lesen.
+    ///
+    /// Attempts to read a raw console key without blocking.
+    /// </summary>
+    /// <param name="key">Die gelesene Taste oder der Standardwert. / The key read or the default value.</param>
+    /// <returns><c>true</c>, wenn eine Taste vorlag; andernfalls <c>false</c>. / <c>true</c> when a key was available; otherwise <c>false</c>.</returns>
+    protected virtual bool TryReadConsoleKey(out ConsoleKeyInfo key)
+    {
+        if (_pendingConsoleKeys.Count > 0)
+        {
+            key = _pendingConsoleKeys.Dequeue();
+            return true;
+        }
+
+        try
+        {
+            if (Console.IsInputRedirected || !Console.KeyAvailable)
+            {
+                key = default;
+                return false;
+            }
+
+            key = ReadConsoleKey();
+            return true;
+        }
+        catch
+        {
+            key = default;
+            return false;
+        }
+    }
 
     private bool TryCollectSgrObservation(ConsoleKeyInfo escape, out string sequence)
     {

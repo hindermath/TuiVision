@@ -1,6 +1,6 @@
 # TuiVision Development Guidelines
 
-Auto-generated from all feature plans. Last updated: 2026-07-11
+Auto-generated from all feature plans. Last updated: 2026-07-13
 
 ## Active Technologies
 - C# `latest` on .NET 10 (`net10.0`) + Existing `TuiVision.Core` geometry/event/buffer types; existing `TuiVision.Controls` shell foundation (`TView`, `TGroup`, `TProgram`, `TApplication`, `TMenuItem`, `TStatusItem`, `ShellCommandIds`); MSTest; Coverlet via `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings`; conditional `docfx docfx.json`; GitHub Actions for existing CI validation (008-controls-revision)
@@ -30,6 +30,8 @@ Auto-generated from all feature plans. Last updated: 2026-07-11
 - In-memory session/history state plus source-controlled JSON and raw 8x16 fixtures (021-terminal-charset-hardening)
 - C# / .NET 10 for durable test-only validation; Markdown and JSON for evidence + existing framework assemblies, MSTest, `System.Text.Json`, Git, official pinned FPC source checkout (024-tv203-freevision-conformance-audit)
 - repository-owned JSON and Markdown evidence; external Free Vision worktree under `/tmp`, never tracked (024-tv203-freevision-conformance-audit)
+- C# / .NET 10 + existing `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, MSTest; no new package (025-core-runtime-conformance-hardening)
+- in-process state only; audit JSON and Markdown evidence are repository-owned documentation (025-core-runtime-conformance-hardening)
 
 - C# `latest` on .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, `TuiVision.Compatibility`; MSTest; Coverlet; docfx; wave-1 example projects under `examples/` (007-port-wave1-examples — Wave 1 delivered)
 
@@ -62,9 +64,9 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ## Recent Changes
+- 025-core-runtime-conformance-hardening: Added C# / .NET 10 + existing `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, MSTest; no new package
 - 024-tv203-freevision-conformance-audit: Added C# / .NET 10 for durable test-only validation; Markdown and JSON for evidence + existing framework assemblies, MSTest, `System.Text.Json`, Git, official pinned FPC source checkout
 - 021-terminal-charset-hardening: Added C# 14 on .NET 10 + Existing `TuiVision.Core`, `TuiVision.Drivers.Console`, `TuiVision.Controls`, and reviewed `TuiVision.Compatibility` key translation; no new packages
-- 019-wave3-visual-component-porting: Added C# 14 on .NET 10 + Existing `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, and `TuiVision.Drivers.Console`; no new packages
 
 
 <!-- MANUAL ADDITIONS START -->
@@ -155,9 +157,10 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - Final evidence is in `specs/027-pre-wave5-conformance-closure/closure-evidence.md`; all 90 historical tasks are complete.
 
 ### 025-core-runtime-conformance-hardening
-- This is the next Spec Kit intake, from `Lastenheft_10_Core-Runtime-Conformance-Hardening.md`; no autonomous run has started.
-- Scope is exactly `F001`-`F009`: concrete event kinds, focus and group state, idle lifecycle, desktop stack, modal/close, shared command state, real keyboard ingress, and bounded generic drag.
-- Do not port Wave 5 or Wave 6 and do not implement the component/data findings owned by 026.
+- Current implementation status: all nine `Core025` findings are implemented and proven; final evidence is in `specs/025-core-runtime-conformance-hardening/pr-evidence.md`.
+- `F001`-`F009` close concrete event kinds, focus and group state, idle lifecycle, desktop stack, modal/close, shared command state, real keyboard ingress, and bounded generic drag through real-path red/green proof.
+- Feature-024 resolution metadata records exactly nine non-documentation-only closures while preserving `F010`-`F013`, Feature 026/028, and Wave-5/Wave-6 gates.
+- The next prioritized intake after merge and synchronized `main` is `Lastenheft_11_Component-Data-Conformance-Hardening.md` for Feature 026.
 
 ### 026-component-data-conformance-hardening
 - This intake starts only after Feature 025 merges and main is synchronized, using `Lastenheft_11_Component-Data-Conformance-Hardening.md`.

@@ -269,9 +269,10 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - Final evidence is in `specs/027-pre-wave5-conformance-closure/closure-evidence.md`; all 90 historical tasks are complete.
 
 ### 025-core-runtime-conformance-hardening
-- This is the next Spec Kit intake, from `Lastenheft_10_Core-Runtime-Conformance-Hardening.md`; no autonomous run has started.
-- Scope is exactly `F001`-`F009`: concrete event kinds, focus and group state, idle lifecycle, desktop stack, modal/close, shared command state, real keyboard ingress, and bounded generic drag.
-- Do not port Wave 5 or Wave 6 and do not implement the component/data findings owned by 026.
+- Current implementation status: all nine `Core025` findings are implemented and proven; final evidence is in `specs/025-core-runtime-conformance-hardening/pr-evidence.md`.
+- `F001`-`F009` close concrete event kinds, focus and group state, idle lifecycle, desktop stack, modal/close, shared command state, real keyboard ingress, and bounded generic drag through real-path red/green proof.
+- Feature-024 resolution metadata records exactly nine non-documentation-only closures while preserving `F010`-`F013`, Feature 026/028, and Wave-5/Wave-6 gates.
+- The next prioritized intake after merge and synchronized `main` is `Lastenheft_11_Component-Data-Conformance-Hardening.md` for Feature 026.
 
 ### 026-component-data-conformance-hardening
 - This intake starts only after Feature 025 merges and main is synchronized, using `Lastenheft_11_Component-Data-Conformance-Hardening.md`.
@@ -341,6 +342,8 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - In-memory session/history state plus source-controlled JSON and raw 8x16 fixtures (021-terminal-charset-hardening)
 - C# / .NET 10 for durable test-only validation; Markdown and JSON for evidence + existing framework assemblies, MSTest, `System.Text.Json`, Git, official pinned FPC source checkout (024-tv203-freevision-conformance-audit)
 - repository-owned JSON and Markdown evidence; external Free Vision worktree under `/tmp`, never tracked (024-tv203-freevision-conformance-audit)
+- C# / .NET 10 + existing `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, MSTest; no new package (025-core-runtime-conformance-hardening)
+- in-process state only; audit JSON and Markdown evidence are repository-owned documentation (025-core-runtime-conformance-hardening)
 
 ### 007-port-wave1-examples
 - Current status: Wave 1 delivered (2026-03-28). `desklogo`, `msgcls`, `tutorial` (16 steps), `videomode` are ported, smoke-tested, and guide-documented.

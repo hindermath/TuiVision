@@ -58,19 +58,26 @@ public class TDialog : TGroup
             FocusFirstSelectableChild();
         }
 
-        DrawView();
-
-        while (_running)
+        try
         {
-            GetEvent(out TEvent @event);
-            if (@event.What != TEventKind.Nothing)
+            DrawView();
+
+            while (_running)
             {
-                HandleEvent(@event);
-                DrawView();
+                GetEvent(out TEvent @event);
+                if (@event.What != TEventKind.Nothing)
+                {
+                    HandleEvent(@event);
+                    DrawView();
+                }
             }
         }
+        finally
+        {
+            _running = false;
+            SetState(TViewState.Modal, false);
+        }
 
-        SetState(TViewState.Modal, false);
         return _result;
     }
 
@@ -89,6 +96,26 @@ public class TDialog : TGroup
 
         _result = command;
         _running = false;
+    }
+
+    internal void AbortModal(ushort command)
+    {
+        _result = command;
+        _running = false;
+        SetState(TViewState.Modal, false);
+    }
+
+    /// <summary>
+    /// Bricht eine laufende modale Session kontrolliert ab und fährt danach die
+    /// normale Kind-Hierarchie herunter.
+    ///
+    /// Aborts a running modal session in a controlled way and then shuts down the
+    /// normal child hierarchy.
+    /// </summary>
+    public override void ShutDown()
+    {
+        AbortModal(ShellCommandIds.cmCancel);
+        base.ShutDown();
     }
 
     /// <summary>

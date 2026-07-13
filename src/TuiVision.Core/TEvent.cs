@@ -194,8 +194,8 @@ public sealed class TEvent
     /// Creates a mouse event with the specified payload.
     /// </summary>
     /// <param name="kind">
-    /// Der Mausereignistyp. Muss ein Maus-Flag enthalten (siehe <see cref="TEventKind.Mouse"/>).
-    /// The mouse event type. Must contain a mouse flag (see <see cref="TEventKind.Mouse"/>).
+    /// Ein konkreter Mausereignistyp: Down, Up, Move oder Auto.
+    /// A concrete mouse event type: down, up, move, or auto.
     /// </param>
     /// <param name="buttons">Die gedrückten Maustasten. / The pressed mouse buttons.</param>
     /// <param name="doubleClick">Gibt an, ob ein Doppelklick vorliegt. / Indicates whether this is a double-click.</param>
@@ -205,14 +205,18 @@ public sealed class TEvent
     /// A new <see cref="TEvent"/> with the specified mouse payload.
     /// </returns>
     /// <exception cref="ArgumentOutOfRangeException">
-    /// Wird ausgelöst, wenn <paramref name="kind"/> kein Mausereignis-Flag enthält.
-    /// Thrown when <paramref name="kind"/> does not contain a mouse event flag.
+    /// Wird ausgelöst, wenn <paramref name="kind"/> eine Filtermaske, eine Kombination
+    /// oder einen unbekannten Ereignistyp enthält.
+    /// Thrown when <paramref name="kind"/> contains a filter mask, a combination,
+    /// or an unknown event type.
     /// </exception>
     public static TEvent CreateMouse(TEventKind kind, TMouseButtons buttons, bool doubleClick, TPoint where)
     {
-        if ((kind & TEventKind.Mouse) == 0)
+        // Filtermasken bleiben für Abfragen gültig, dürfen aber keinen mehrdeutigen Nutzdatenkanal erzeugen.
+        // Filter masks remain valid for queries, but must not create an ambiguous payload channel.
+        if (kind is not (TEventKind.MouseDown or TEventKind.MouseUp or TEventKind.MouseMove or TEventKind.MouseAuto))
         {
-            throw new ArgumentOutOfRangeException(nameof(kind), "Mouse events require a mouse event kind.");
+            throw new ArgumentOutOfRangeException(nameof(kind), kind, "Mouse events require one concrete mouse event kind.");
         }
 
         return new TEvent
