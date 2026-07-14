@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-07-14 (aktualisiert einschließlich Feature 026 und Preset v0.1.4)
+Stand: 2026-07-14 (aktualisiert einschließlich Feature 026 und Preset v0.2.0)
 
 Aktueller Zusatz: Feature 016 dokumentiert 157/157 Secure-Development-
 Kontrollen, sechs behobene Medium-Funde, 498/498 grüne Release-Tests und eine
@@ -28,11 +28,11 @@ bindet jede Build-Zählererhöhung an genau einen Build-/Testaufruf und lässt
 Repository-Prüfhelfer bei fehlenden Abhängigkeiten fail-closed abbrechen.
 
 Das aus den Feldläufen entstandene `autonomous-run-governance` ist jetzt als
-v0.1.4 zusätzlich zu den sechs Standard-Presets aus dem öffentlichen Tag-ZIP
+v0.2.0 zusätzlich zu den sechs Standard-Presets aus dem öffentlichen Tag-ZIP
 installiert. Maschinenlesbare Gate-Requirements und exakte HEAD-Evidence
-schließen die False-Readiness-Grenze; explizite Bash-/PowerShell-Aufrufe bleiben
-auch ohne erhaltenes Ausführungsbit portabel. Der TuiVision-spezifische
-Codex-Skill bleibt als einzelner lokaler Override erhalten.
+schließen die False-Readiness-Grenze; Status, kooperativer Stopp, geschützte
+Wiederaufnahme und validierter Laufzustand härten Unterbrechungen. Der
+TuiVision-spezifische Codex-Skill bleibt als einzelner lokaler Override erhalten.
 
 Der begrenzte Folgeabgleich führt Antigravity CLI mit `agy` als aktive
 Google-Agentenoberfläche. Gemini CLI bleibt nur als historische oder ausdrücklich
@@ -695,6 +695,7 @@ fortgeschrieben.
 | 2026-07-13 | Closeout und autonome Retrospektive nach Feature 026 | Feature-PR #74 wurde als Merge `f3586aa` geliefert. Alle PR-Kontext-Gates und Claude waren grün, GraphQL meldete null Threads, Copilot blieb quota-bedingt ein fehlender Review und der enge Admin-Bypass betraf nur Human Approval. Die Retrospektive erkannte danach, dass der grüne Windows-Homogeneity-Job keine Runtime ausführte, obwohl der Contract Windows/WSL-Proof verlangte. Der temporäre, nicht gemergte Run 29291308306 schloss die Lücke mit 748/748 Tests und DocFX 0/0 auf `windows-latest`. Der Vor-Statistik-Diff für kausalen Closeout und Retrospektive umfasst `+134/-0` Dokumentzeilen. Konservative Manualreferenz: `1,7` Tage beziehungsweise `13,1` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `1,1` Tage beziehungsweise `8,4` Stunden bei 125 Zeilen/Tag. Home-Baseline-Commit `046b65a` klassifiziert das zweite Auftreten als `PresetFollowUp` mit `Promote`: Eine spätere Paketversion muss Applicable Gate, exakten Head, Workflow, Job, Runner und ausgeführten Befehl maschinenprüfbar binden. Feature 028 bleibt der einzige nächste Intake. |
 | 2026-07-14 | `autonomous-run-governance` v0.1.4 veröffentlicht und adoptiert | Die zwei unabhängigen False-Readiness-Feldfunde aus Feature 025 und 026 sind über v0.1.3/v0.1.4 als deklarierte Gate-Requirements, temporäre exakte HEAD-Evidence und read-only Bash-/PowerShell-Validatoren produktisiert. Home-Baseline-PRs #62/#63 und öffentliche Preset-PRs #3/#4 wurden gemergt; Release v0.1.4 und der GitHub-ZIP mit SHA-256 `da667e2f...967e0` sind geprüft. TuiVision installiert den exakten Tag-ZIP bei Priorität 70. Alle sieben Presets bleiben aufgelöst und beide autonomen Commands erscheinen je Agent-Oberfläche genau einmal. Der installierte Bash-Modus `0644` reproduziert die Paketgrenze; `bash <validator.sh>` und `pwsh -NoProfile -File <validator.ps1>` bestehen dieselbe Fixture. Der Vor-Statistik-Snapshot umfasst `+1086/-38`, also 1048 Nettozeilen in Preset, Validatoren, Agent-Flächen, Guidance, Template und Evidence ohne Runtime-, API-, Test-, Abhängigkeits-, Beispiel-, Projekt- oder `tv203s/`-Änderung. Konservative Manualreferenz: `13,6` Tage beziehungsweise `105,9` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `8,7` Tage beziehungsweise `67,8` Stunden bei 125 Zeilen/Tag. DocFX, Playwright/Axe, Lynx, Diff und Secrets schließen den Adoptions-PR ab; Feature 028 bleibt der einzige nächste Intake. |
 | 2026-07-14 | Intake-Vorbereitung für 028 und `029-tv203-freevision-terminalgui-conformance-audit` | Lastenheft 12 schließt nach 028 nur das bestehende TV203-/Free-Vision-Gate; beide Waves bleiben bis zur zusätzlichen Terminal.GUI-v1.9.0-Prüfung, allen real findings-basierten Hardening-Läufen und einem neuen unabhängigen Closure blockiert. Lastenheft 13 pinnt das offizielle `tui-cs/Terminal.Gui`-Tag v1.9.0 mit Tag-Objekt und Commit, erweitert alle 48 Verträge um eine dritte Relation und verbietet Runtime-, API-, Dependency-, Beispiel- oder Fremdquellenänderungen. Nicht leere Folgefeatures werden dynamisch ab 030 nummeriert. Der Vor-Statistik-Snapshot umfasst `+471/-76`, also 395 Netto-Dokumentzeilen. Konservative Manualreferenz: `5,9` Tage beziehungsweise `45,9` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `3,8` Tage beziehungsweise `29,4` Stunden bei 125 Zeilen/Tag. |
+| 2026-07-14 | `autonomous-run-governance` v0.2.0 veröffentlicht und adoptiert | Die unterbrochene 028-Vorbereitung wird als produktiver Feldfall genutzt, ohne den Feature-Lauf fortzusetzen: v0.2.0 ergänzt lesenden Status, kooperatives Stoppen, geschützte Wiederaufnahme und einen validierten feature-lokalen Laufzustand. Home-Baseline-PR #65 und öffentlicher Preset-PR #5 sind gemergt; Release v0.2.0 und das Tag-ZIP mit SHA-256 `7cde2b22...7237` sind geprüft. TuiVision installiert den bytegleichen Payload bei Priorität 70. Alle sieben Presets bleiben aufgelöst und fünf autonome Commands erscheinen auf Codex/Antigravity, Claude, beiden Copilot-Flächen und OpenCode jeweils genau einmal. Eine temporäre `PausedByUser`-Fixture für den unveränderten 028-Commit besteht Bash und PowerShell; die widersprüchliche `Interrupted`-Variante wird von beiden verworfen. Der Vor-Statistik-Snapshot umfasst `+1605/-63`, also 1542 Nettozeilen ausschließlich in Preset, Validatoren, Skills, Agent-Flächen, Guidance, Runbook und Adoption-Evidence. Runtime, API, Tests, Abhängigkeiten, Beispiele, Feature-028-Artefakte und `tv203s/` bleiben unverändert. Konservative Manualreferenz: `20,1` Tage beziehungsweise `156,5` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `12,8` Tage beziehungsweise `100,2` Stunden bei 125 Zeilen/Tag. Skill-/YAML-, Diff-, Format- und Secret-Prüfung (`high=0`), DocFX 0/0, Playwright/Axe 2/2 und UTF-8-`lynx` schließen die lokale Adoption ab. Ein realer Resume-Feldnachweis bleibt bis zur ausdrücklichen Freigabe von Feature 028 zurückgestellt. |
 
 ## Gesamtstatistik
 
@@ -806,6 +807,9 @@ Branch-/Phasenvolumen nach dokumentierter Netto-Basis (Zeilen)
 41 025i | ######               |  5248
 42 026i | ######               |  4919
 43 026c | #                    |   134
+44 v014 | ##                   |  1048
+45 intake| #                   |   395
+46 v020 | ###                  |  1542
 ```
 
 Feature 017 kombiniert einen kleinen beispielinternen Runtime-Anteil mit einer
@@ -1089,9 +1093,9 @@ adoption.
 X/Y: Phasenvolumen 32..47 (Y ungefähr in Zeilen)
 10000 |    *                           |
  5000 |                  * *           |
- 2000 |                *               |
+ 2000 |                *           *   |
  1000 |            *           *       |
-  400 |  *                             |
+  400 |  *                       *     |
   200 |          *                     |
    50 |*       *                       |
    10 |      *                         |
@@ -1106,12 +1110,13 @@ die Implementierung, Z für den Closeout, a für die Retrospektive des
 Konformitätsaudits, b für die 027-Intake-Vorbereitung, c für die 027-Ausführung,
 d für deren Closeout, e für Audit-Revision 2 samt 025-/026-/028-Intake-
 Vorbereitung, f für Feature 025, g für Feature 026, h für dessen Closeout, i
-für die v0.1.4-Preset-Adoption und j für die 028-/029-Terminal.GUI-Intake-
-Vorbereitung; k und l bleiben für spätere Phasen frei.
+für die v0.1.4-Preset-Adoption, j für die 028-/029-Terminal.GUI-Intake-
+Vorbereitung und k für die v0.2.0-Preset-Adoption; l bleibt für eine spätere
+Phase frei.
 
 W represents the Antigravity follow-up, X the conformance-audit intake, Y its
 implementation, Z its closeout, a its retrospective, b the 027 intake
 preparation, c the 027 run, d its closeout, e Audit Revision 2 plus the
 025/026/028 intake preparation, f Feature 025, g Feature 026, h its closeout,
-i the v0.1.4 preset adoption, and j the 028/029 Terminal.GUI intake preparation.
-Slots k and l stay free for later phases.
+i the v0.1.4 preset adoption, j the 028/029 Terminal.GUI intake preparation,
+and k the v0.2.0 preset adoption. Slot l stays free for a later phase.

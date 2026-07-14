@@ -20,11 +20,16 @@ stages; this skill only orchestrates them and enforces cross-stage gates.
    write or merge authority from general autonomy alone.
 4. Confirm intake ordering, branch identity, clean ownership boundaries, the
    six baseline governance presets, and optional `autonomous-run-governance`
-   v0.1.4. Stop only for a material conflict, missing required authority,
+   v0.2.0. Stop only for a material conflict, missing required authority,
    destructive ambiguity, or an unmet hard gate.
-5. Create the numbered feature branch through `speckit-git-feature` when a new
-   feature is required. Resume the existing branch and feature directory when
-   the run already exists.
+5. Before creating a feature, inspect repository metadata and
+   `specs/<feature>/autonomous-run-state.json`. Never overwrite an active run.
+   The general command MUST refuse `PausedByUser` and direct the user to
+   `speckit-autonomous-resume`; an `Interrupted` run requires full drift,
+   operation, governance, and authority revalidation.
+6. Create the numbered feature branch through `speckit-git-feature` only when no
+   active run exists. Resume an existing branch from its next exact action
+   without regenerating accepted phases unless drift is proven.
 
 ## Orchestrate
 
@@ -45,6 +50,11 @@ Create `specs/NNN-feature/pr-evidence.md` from
 `.specify/templates/autonomous-run-evidence-template.md` before the first
 implementation edit. Keep scope, decisions, commands, results, skipped
 triggers, residual risks, review state, and follow-ups current during the run.
+
+Create `specs/NNN-feature/autonomous-run-state.json` from the installed state
+template and validate it at logical phase boundaries, graceful stops, hard
+gates, and completion. Tasks, evidence, and Git remain authoritative over a
+stale state index.
 
 Before implementation, resolve
 `autonomous-run-gate-requirements-template` and create the reviewed
@@ -160,6 +170,23 @@ If push and pull-request events start equivalent workflow sets, use the
 pull-request-context checks as the delivery gate and record the duplicate runs
 as operational noise. Do not cancel them unless the repository has an explicit
 safe workflow or concurrency contract.
+
+## Stop and Resume
+
+- `speckit-autonomous-status` is read-only and starts no work.
+- A user stop or pause request has priority. `speckit-autonomous-stop`
+  checkpoints `PausedByUser` at the next safe agent or command boundary,
+  preserves all work, and performs no implicit rollback, commit, push, PR,
+  merge, or process kill.
+- An external operation without a trustworthy terminal result is
+  `NeedsRevalidation`, never an inferred pass.
+- `speckit-autonomous-resume` is mandatory for `PausedByUser`. Reconcile branch,
+  feature metadata, checkpoint history, accepted-artifact hashes, tasks,
+  evidence, governance, dirty-state ownership, and current authority before any
+  mutation. A recorded delivery mode is historical evidence, not permission.
+- Material conflict, unknown dirty changes, missing checkpoint, or ambiguous
+  feature identity sets `Blocked` and stops. Never start the next feature
+  implicitly.
 
 ## Finish
 

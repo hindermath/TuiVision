@@ -29,6 +29,9 @@ expanding feature scope, governance decisions, or remote authority.
    Prüftiefe; nicht ausgelöste Gates werden mit Begründung dokumentiert.
 8. **Lokaler und remoter Nachweis**: Ein Delivery-Lauf ist erst nach dem
    vereinbarten lokalen oder remoten Abschluss fertig.
+9. **Geschützter Laufzustand**: Ein feature-lokaler, validierter Checkpoint
+   unterscheidet aktiven Lauf, bewusste Pause, unerwartete Unterbrechung,
+   Blockade und Abschluss.
 
 1. **Evidence first**: Create `pr-evidence.md` before the first implementation
    change and maintain it throughout the run.
@@ -46,6 +49,9 @@ expanding feature scope, governance decisions, or remote authority.
    justify every gate that is not triggered.
 8. **Local and remote proof**: Delivery is complete only after the agreed local
    or remote closeout.
+9. **Protected run state**: A validated feature-local checkpoint distinguishes
+   active work, deliberate pause, unexpected interruption, blocked state, and
+   completion.
 
 ## Delivery-Modi / Delivery Modes
 
@@ -285,15 +291,43 @@ index check that covers new files and restores the prior index state.
 
 ## Unterbrechung und Wiederaufnahme / Interruption and Resume
 
-Vor einer Unterbrechung werden Task-Checkboxen, Evidence, letzter bestandener
-Gate-Zustand und nächster konkreter Schritt aktualisiert. Bei Wiederaufnahme
-werden Git-Stand, `.specify/feature.json`, Branch, Checklisten und Governance
-erneut geprüft; bestandene Phasen werden nicht ohne Drift-Hinweis neu erzeugt.
+Jeder Lauf pflegt `specs/<feature>/autonomous-run-state.json` an logischen
+Phasengrenzen, bei Graceful Stop, Hard Gate und Abschluss. Task-Checkboxen,
+Evidence und Git bleiben gegenüber einem veralteten Zustandsindex maßgeblich.
+`$speckit-autonomous-status` liest den Zustand ohne Änderungen.
 
-Before an interruption, update task checkboxes, evidence, the last passing gate,
-and the next concrete action. On resume, recheck Git state,
-`.specify/feature.json`, branch, checklists, and governance. Do not regenerate
-completed phases unless drift is found.
+Ein bewusster Stopp hat Vorrang vor weiterer Arbeit.
+`$speckit-autonomous-stop` hält am nächsten sicheren Agenten- oder
+Befehlsgrenzpunkt mit `PausedByUser`; er ist kein atomarer Prozess-Kill und
+führt weder Rollback, Commit, Push, PR noch Merge aus. Fehlt für eine laufende
+Operation ein vertrauenswürdiges Endergebnis, wird sie als
+`NeedsRevalidation` dokumentiert.
+
+`PausedByUser` darf nur mit `$speckit-autonomous-resume` fortgesetzt werden.
+Vor jeder Mutation werden Branch, `.specify/feature.json`, Checkpoint-Historie,
+Artefakt- und Task-Hashes, Evidence, Governance, lokale Ownership und aktuelle
+Berechtigung abgeglichen. Der gespeicherte Delivery-Modus ist keine aktuelle
+Berechtigung. Bei materiellem Drift, unbekannten Änderungen oder unklarer
+Feature-Identität gilt `Blocked`; bestandene Phasen werden nicht ohne
+nachgewiesenen Drift neu erzeugt.
+
+Each run maintains `specs/<feature>/autonomous-run-state.json` at logical phase
+boundaries, graceful stop, hard gate, and completion. Task checkboxes, evidence,
+and Git remain authoritative over a stale state index.
+`$speckit-autonomous-status` reads the state without changes.
+
+A deliberate stop has priority over further work.
+`$speckit-autonomous-stop` pauses with `PausedByUser` at the next safe agent or
+command boundary; it is not an atomic process kill and performs no rollback,
+commit, push, pull request, or merge. An operation without a trustworthy
+terminal result is recorded as `NeedsRevalidation`.
+
+Only `$speckit-autonomous-resume` may continue `PausedByUser`. Before mutation,
+reconcile branch, `.specify/feature.json`, checkpoint history, artifact and task
+hashes, evidence, governance, local ownership, and current authority. Recorded
+delivery mode is not current authority. Material drift, unknown changes, or
+ambiguous feature identity sets `Blocked`; do not regenerate completed phases
+without proven drift.
 
 ## Lokale Ownership und Updates / Local Ownership and Updates
 
