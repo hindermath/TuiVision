@@ -9,7 +9,7 @@
 ## Synopsis
 
 ```powershell
-pwsh -NoProfile -File scripts/maintain-agentic-winget-apps.ps1 [-WhatIf] [-CompareOnly] [-SkipUpgrade] [-SkipVSCodeExtensions] [-IncludeOptional] [-NpmAgentRegistry PATH]
+pwsh -NoProfile -File scripts/maintain-agentic-winget-apps.ps1 [-WhatIf] [-CompareOnly] [-SkipUpgrade] [-SkipVSCodeExtensions] [-IncludeOptional] [-NpmAgentRegistry PATH] [-PowerShellModuleRegistry PATH]
 ```
 
 ## Beschreibung / Description
@@ -25,6 +25,9 @@ Tools fuer die sechs MSL-Pfade, `syft`, GitHub Spec Kit (`specify`) und die
 Agenten-CLIs `codex`, `claude` und `copilot` sowie das Required-Paket
 `Google.AntigravityCLI`. npm-basierte Fallbacks fuer Codex, Claude und Copilot werden ueber
 `scripts/config/npm-agent-cli-registry.json` installiert, wenn ihre CLI fehlt.
+Erforderliche PowerShell-Module werden aus
+`scripts/config/powershell-modules-registry.json` durch den gemeinsamen
+PowerShell-Modulpfleger installiert und geprueft.
 Ein normaler Lauf aktualisiert WinGet-Quellen, fuehrt `winget upgrade --all`
 aus und installiert fehlende Required-Pakete per `winget install --id <Id>
 --exact`.
@@ -39,8 +42,10 @@ plus Microsoft Container Tools for Podman workflows. It then reads
 `scripts/config/required-cli-tools-registry.json` and checks the required CLI
 tools for the six MSL paths, `syft`, GitHub Spec Kit (`specify`), and the
 agent CLIs `codex`, `claude`, and `copilot` plus required package `Google.AntigravityCLI`. npm-based fallbacks for Codex, Claude, and Copilot are installed from
-`scripts/config/npm-agent-cli-registry.json` when their CLI is missing. A
-normal run refreshes WinGet sources, runs `winget upgrade --all`, and installs
+`scripts/config/npm-agent-cli-registry.json` when their CLI is missing.
+Required PowerShell modules are installed and checked from
+`scripts/config/powershell-modules-registry.json` by the shared PowerShell
+module maintainer. A normal run refreshes WinGet sources, runs `winget upgrade --all`, and installs
 missing required packages via `winget install --id <Id> --exact`. CLI version
 probes stop after five seconds so interactive or stuck agent CLIs cannot block
 maintenance.*
@@ -64,6 +69,7 @@ installation.*
 | `-Registry PATH` | Alternative Registry-Datei verwenden |
 | `-VSCodeRegistry PATH` | Alternative VS-Code-Extension-Registry verwenden |
 | `-NpmAgentRegistry PATH` | Alternative npm-Agent-CLI-Registry verwenden |
+| `-PowerShellModuleRegistry PATH` | Alternative PowerShell-Modul-Registry verwenden |
 | `-SkipUpgrade` | WinGet-Update und `winget upgrade --all` ueberspringen |
 | `-SkipVSCodeExtensions` | VS-Code-Extensions weder installieren noch vergleichen |
 | `-IncludeOptional` | Auch optionale Registry-Eintraege installieren |
@@ -89,6 +95,8 @@ pwsh -NoProfile -File scripts/maintain-agentic-winget-apps.ps1
 - `python3 -m json.tool scripts/config/vscode-extensions-registry.json` ist erfolgreich.
 - `python3 -m json.tool scripts/config/required-cli-tools-registry.json` ist erfolgreich.
 - `python3 -m json.tool scripts/config/npm-agent-cli-registry.json` ist erfolgreich.
+- `python3 -m json.tool scripts/config/powershell-modules-registry.json` ist erfolgreich.
+- PSScriptAnalyzer `1.25.0` ist vorhanden und der repositoryweite Analyselauf ist gruen.
 - Neue bewusst installierte WinGet-Top-Level-Tools werden in der Registry
   nachgetragen.
 

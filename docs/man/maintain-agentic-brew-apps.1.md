@@ -9,7 +9,7 @@
 ## Synopsis
 
 ```bash
-bash scripts/maintain-agentic-brew-apps.sh [--dry-run] [--compare-only] [--skip-upgrade] [--skip-vscode-extensions] [--include-optional] [--npm-agent-registry PATH]
+bash scripts/maintain-agentic-brew-apps.sh [--dry-run] [--compare-only] [--skip-upgrade] [--skip-vscode-extensions] [--include-optional] [--npm-agent-registry PATH] [--powershell-module-registry PATH]
 ```
 
 ## Beschreibung / Description
@@ -25,6 +25,9 @@ Tools fuer die sechs MSL-Pfade, `syft`, GitHub Spec Kit (`specify`) und die
 Agenten-CLIs `codex`, `claude`, `agy` und `copilot`. npm-basierte
 Fallbacks fuer Codex, Claude und Copilot werden ueber
 `scripts/config/npm-agent-cli-registry.json` installiert, wenn ihre CLI fehlt.
+Erforderliche PowerShell-Module werden aus
+`scripts/config/powershell-modules-registry.json` durch den gemeinsamen
+PowerShell-Modulpfleger installiert und geprueft.
 Auf Systemen mit Homebrew fuehrt ein normaler Lauf `brew update`,
 `brew upgrade` und die Installation fehlender Required-Formulae aus. Auf macOS
 werden zusaetzlich Required-Casks gepflegt.
@@ -45,8 +48,10 @@ plus Microsoft Container Tools for Podman workflows. It then reads
 `scripts/config/required-cli-tools-registry.json` and checks the required CLI
 tools for the six MSL paths, `syft`, GitHub Spec Kit (`specify`), and the
 agent CLIs `codex`, `claude`, `agy`, and `copilot`. npm-based fallbacks for Codex, Claude, and Copilot are installed from
-`scripts/config/npm-agent-cli-registry.json` when their CLI is missing. On
-systems with Homebrew, a normal run executes `brew update`, `brew upgrade`, and
+`scripts/config/npm-agent-cli-registry.json` when their CLI is missing.
+Required PowerShell modules are installed and checked from
+`scripts/config/powershell-modules-registry.json` by the shared PowerShell
+module maintainer. On systems with Homebrew, a normal run executes `brew update`, `brew upgrade`, and
 installs missing required formulae. On macOS it also maintains required casks.
 When `agy` is missing on Linux, the official installer runs only after its
 SHA-256 digest matches the required CLI registry.
@@ -81,6 +86,7 @@ dependencies. `xquartz` is intentionally excluded.*
 | `--registry PATH` | Alternative Registry-Datei verwenden |
 | `--vscode-registry PATH` | Alternative VS-Code-Extension-Registry verwenden |
 | `--npm-agent-registry PATH` | Alternative npm-Agent-CLI-Registry verwenden |
+| `--powershell-module-registry PATH` | Alternative PowerShell-Modul-Registry verwenden |
 | `--skip-upgrade` | `brew update`/`brew upgrade` bzw. apt-Update/Upgrade ueberspringen |
 | `--skip-vscode-extensions` | VS-Code-Extensions weder installieren noch vergleichen |
 | `--include-optional` | Auch optionale Registry-Eintraege installieren |
@@ -108,6 +114,8 @@ bash scripts/maintain-agentic-brew-apps.sh
 - `python3 -m json.tool scripts/config/vscode-extensions-registry.json` ist erfolgreich.
 - `python3 -m json.tool scripts/config/required-cli-tools-registry.json` ist erfolgreich.
 - `python3 -m json.tool scripts/config/npm-agent-cli-registry.json` ist erfolgreich.
+- `python3 -m json.tool scripts/config/powershell-modules-registry.json` ist erfolgreich.
+- PSScriptAnalyzer `1.25.0` ist vorhanden und der repositoryweite Analyselauf ist gruen.
 - Neue bewusst installierte Top-Level-Tools werden in der Registry nachgetragen.
 
 *`gitleaks version`, `syft version`, `specify --version`, `codex --version`,

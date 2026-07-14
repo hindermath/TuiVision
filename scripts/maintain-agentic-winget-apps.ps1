@@ -17,6 +17,9 @@
 .PARAMETER NpmAgentRegistry
     Alternative npm agent CLI registry JSON path.
 
+.PARAMETER PowerShellModuleRegistry
+    Alternative PowerShell module registry JSON path.
+
 .PARAMETER CompareOnly
     Only compare installed packages with the registry.
 
@@ -38,6 +41,7 @@ param(
     [string] $Registry = '',
     [string] $VSCodeRegistry = '',
     [string] $NpmAgentRegistry = '',
+    [string] $PowerShellModuleRegistry = '',
     [switch] $CompareOnly,
     [switch] $SkipUpgrade,
     [switch] $SkipVSCodeExtensions,
@@ -58,6 +62,9 @@ $cliRegistry = Join-Path $repoRoot 'scripts/config/required-cli-tools-registry.j
 if (-not $NpmAgentRegistry) {
     $NpmAgentRegistry = Join-Path $repoRoot 'scripts/config/npm-agent-cli-registry.json'
 }
+if (-not $PowerShellModuleRegistry) {
+    $PowerShellModuleRegistry = Join-Path $repoRoot 'scripts/config/powershell-modules-registry.json'
+}
 
 if (-not (Test-Path -Path $Registry -PathType Leaf)) {
     Write-Error "Registry nicht gefunden: $Registry"
@@ -70,6 +77,9 @@ if (-not (Test-Path -Path $cliRegistry -PathType Leaf)) {
 }
 if (-not (Test-Path -Path $NpmAgentRegistry -PathType Leaf)) {
     Write-Error "npm-Agent-CLI-Registry nicht gefunden: $NpmAgentRegistry"
+}
+if (-not (Test-Path -Path $PowerShellModuleRegistry -PathType Leaf)) {
+    Write-Error "PowerShell-Modul-Registry nicht gefunden: $PowerShellModuleRegistry"
 }
 
 if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
@@ -154,8 +164,8 @@ function Get-HBWingetInstalledIds {
 
     $ids = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
     foreach ($line in $output) {
-        $matches = [regex]::Matches($line, '\s([A-Za-z0-9][A-Za-z0-9._-]+(?:\.[A-Za-z0-9][A-Za-z0-9._-]+)+)\s+([0-9][^\s]*)')
-        foreach ($match in $matches) {
+        $packageMatches = [regex]::Matches($line, '\s([A-Za-z0-9][A-Za-z0-9._-]+(?:\.[A-Za-z0-9][A-Za-z0-9._-]+)+)\s+([0-9][^\s]*)')
+        foreach ($match in $packageMatches) {
             [void]$ids.Add($match.Groups[1].Value)
         }
     }
@@ -573,3 +583,13 @@ if ($missingFromRegistry.Count -gt 0) {
 Compare-HBVSCodeRegistry
 Compare-HBCLIRegistry
 Compare-HBNpmAgentRegistry
+
+$moduleMaintainer = Join-Path $repoRoot 'scripts/maintain-powershell-modules.ps1'
+if (-not (Test-Path -LiteralPath $moduleMaintainer -PathType Leaf)) {
+    Write-Error "PowerShell-Modulpfleger nicht gefunden: $moduleMaintainer"
+}
+$moduleParameters = @{ Registry = $PowerShellModuleRegistry }
+if ($CompareOnly) { $moduleParameters.CompareOnly = $true }
+if ($IncludeOptional) { $moduleParameters.IncludeOptional = $true }
+if ($WhatIfPreference) { $moduleParameters.WhatIf = $true }
+& $moduleMaintainer @moduleParameters

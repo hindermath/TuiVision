@@ -1,0 +1,31 @@
+name: PowerShell Static Analysis
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    name: PSScriptAnalyzer (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, macos-14, windows-2022]
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Install required PowerShell modules
+        shell: pwsh
+        run: ./scripts/maintain-powershell-modules.ps1
+
+      - name: Analyze tracked PowerShell files
+        shell: pwsh
+        run: ./scripts/invoke-psscriptanalyzer.ps1

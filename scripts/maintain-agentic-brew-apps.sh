@@ -8,6 +8,7 @@ REGISTRY="$REPO_ROOT/scripts/config/brew-apps-registry.json"
 VSCODE_REGISTRY="$REPO_ROOT/scripts/config/vscode-extensions-registry.json"
 CLI_REGISTRY="$REPO_ROOT/scripts/config/required-cli-tools-registry.json"
 NPM_AGENT_REGISTRY="$REPO_ROOT/scripts/config/npm-agent-cli-registry.json"
+POWERSHELL_MODULE_REGISTRY="$REPO_ROOT/scripts/config/powershell-modules-registry.json"
 DRY_RUN=0
 COMPARE_ONLY=0
 SKIP_UPGRADE=0
@@ -26,6 +27,8 @@ Options:
                         Use an alternative VS Code extensions registry JSON
   --npm-agent-registry PATH
                         Use an alternative npm agent CLI registry JSON
+  --powershell-module-registry PATH
+                        Use an alternative PowerShell module registry JSON
   --skip-upgrade        Skip brew/apt update+upgrade
   --skip-vscode-extensions
                         Skip VS Code extension install and comparison
@@ -69,6 +72,15 @@ while [ "$#" -gt 0 ]; do
       NPM_AGENT_REGISTRY="${2:-}"
       shift
       ;;
+    --powershell-module-registry)
+      if [ "$#" -lt 2 ] || [ -z "${2:-}" ]; then
+        echo "Fehler: --powershell-module-registry benoetigt einen Pfad." >&2
+        usage >&2
+        exit 1
+      fi
+      POWERSHELL_MODULE_REGISTRY="${2:-}"
+      shift
+      ;;
     --skip-upgrade)
       SKIP_UPGRADE=1
       ;;
@@ -108,6 +120,11 @@ fi
 
 if [ ! -f "$NPM_AGENT_REGISTRY" ]; then
   echo "Fehler: npm-Agent-CLI-Registry nicht gefunden: $NPM_AGENT_REGISTRY" >&2
+  exit 1
+fi
+
+if [ ! -f "$POWERSHELL_MODULE_REGISTRY" ]; then
+  echo "Fehler: PowerShell-Modul-Registry nicht gefunden: $POWERSHELL_MODULE_REGISTRY" >&2
   exit 1
 fi
 
@@ -564,6 +581,29 @@ compare_npm_agent_registry() {
   compare_npm_agent_scope optional "missing_on_machine.optional.npm_agent_cli_tools"
 }
 
+maintain_powershell_modules() {
+  local maintainer="$REPO_ROOT/scripts/maintain-powershell-modules.ps1"
+  local -a arguments
+
+  if [ ! -f "$maintainer" ]; then
+    log "MISSING powershell module maintainer: $maintainer"
+    return 0
+  fi
+
+  arguments=(-NoProfile -File "$maintainer" -Registry "$POWERSHELL_MODULE_REGISTRY")
+  [ "$COMPARE_ONLY" -eq 1 ] && arguments+=(-CompareOnly)
+  [ "$DRY_RUN" -eq 1 ] && arguments+=(-WhatIf)
+  [ "$INCLUDE_OPTIONAL" -eq 1 ] && arguments+=(-IncludeOptional)
+
+  if [ "$DRY_RUN" -eq 1 ]; then
+    run_cmd pwsh "${arguments[@]}"
+  elif command -v pwsh >/dev/null 2>&1; then
+    pwsh "${arguments[@]}"
+  else
+    log "MISSING powershell module runtime: pwsh"
+  fi
+}
+
 compare_brew_registry() {
   local tmp_dir installed_f installed_requested_f registry_f registry_required_f registry_optional_f
   local installed_c registry_c registry_required_c registry_optional_c excluded_c
@@ -796,3 +836,5 @@ else
   compare_cli_registry
   compare_npm_agent_registry
 fi
+
+maintain_powershell_modules
