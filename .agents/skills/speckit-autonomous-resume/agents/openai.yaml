@@ -1,0 +1,4 @@
+interface:
+  display_name: "Spec Kit Autonomous Resume"
+  short_description: "Audit and resume a paused autonomous run"
+  default_prompt: "Audit drift and current authority, then resume the paused autonomous Spec-Kit run from its next exact action."
