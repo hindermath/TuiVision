@@ -5,18 +5,20 @@
 **Vorgesehener Spec-Kit-Branch:** `028-pre-wave5-wave6-conformance-closure`
 
 **Verbindliche Reihenfolge:** nach vollständig gemergten Features 025 und 026,
-vor Wave 5 und Wave 6
+vor Feature `029-tv203-freevision-terminalgui-conformance-audit`, Wave 5 und
+Wave 6
 
 **Lieferart:** unabhängiger Evidence-, Integrations- und Release-Gate-Lauf;
 keine neue fachliche Runtime-Implementierung
 
-**Startgrenze:** Dieses Lastenheft darf heute nicht autonom ausgeführt werden.
-Mit seiner Erstellung endet die heute beauftragte Vorbereitung.
+**Folgegrenze:** Ein vollständiger Pass schließt das bisherige TV203-/Free-
+Vision-Gate, gibt Wave 5 oder Wave 6 aber noch nicht frei. Der nächste
+verbindliche Intake ist Lastenheft 13 für Feature 029.
 
 *Feature 028 runs only after Features 025 and 026 are merged. It is an
 independent evidence, integration, and release-gate run without new product
-behavior. This requirements document must not be executed autonomously today;
-its creation ends the preparation requested for today.*
+behavior. A pass closes the existing TV203/Free Vision gate but keeps both
+waves blocked through the mandatory Terminal.GUI audit and its follow-ups.*
 
 ---
 
@@ -61,11 +63,11 @@ shared framework is ready for Wave 5 and conditionally ready for Wave 6.*
 3. Die wichtigsten Verträge durch Consumer-nahe, aber nicht portierende
    Integrationsslices prüfen.
 4. Vollständige lokale und remote Release-Gates ausführen.
-5. Wave 5 nur bei vollständigem Pass freigeben.
-6. Wave 6 als `ConditionallyReady` markieren, wenn dieselbe Basis trägt, aber
-   eine erneute Prüfung nach den tatsächlichen Wave-5-Deltas verpflichtend
-   bleibt.
-7. Einen eindeutigen nächsten Intake nach Abschluss benennen, ohne ihn zu
+5. Das bisherige TV203-/Free-Vision-Gate bei vollständigem Pass als
+   `ReadyForTerminalGuiAudit` schließen.
+6. Wave 5 und Wave 6 unabhängig vom Pass weiterhin
+   `BlockedPendingTerminalGuiAudit` halten.
+7. Lastenheft 13 als eindeutigen nächsten Intake benennen, ohne Feature 029 zu
    starten.
 
 ## 4. Scope
@@ -93,6 +95,7 @@ shared framework is ready for Wave 5 and conditionally ready for Wave 6.*
 - ein Finding ohne real-path Proof als geschlossen markieren
 - Feature 027 löschen oder dessen historische Evidence umschreiben
 - einen späteren Wave-Lauf im selben Feature starten
+- Terminal.GUI analysieren oder Feature-029-Findings vorwegnehmen
 
 ## 5. Finding-Closure-Vertrag
 
@@ -221,19 +224,21 @@ sondern auf dem finalen 028-Stand erneut ausgeführt.
 
 ## 10. Gate-Entscheidung
 
-### Wave 5
+### Bestehendes TV203-/Free-Vision-Gate
 
-`Eligible` ist nur zulässig, wenn alle 13 Findings geschlossen, alle
-Integrationsslices grün, keine unerlaubte lokale Consumer-Sonderlogik nötig und
-alle Pflichtgates bestanden sind. Andernfalls bleibt Wave 5 `Blocked`.
+`ReadyForTerminalGuiAudit` ist nur zulässig, wenn alle 13 Findings geschlossen,
+alle Integrationsslices grün, keine unerlaubte lokale Consumer-Sonderlogik
+nötig und alle Pflichtgates bestanden sind. Andernfalls bleibt die Entscheidung
+`Blocked` und wird an 025, 026 oder einen Product Owner zurückgegeben.
 
-### Wave 6
+### Wave 5 und Wave 6
 
-Nach erfolgreichem Abschluss erhält Wave 6 `ConditionallyReady`, nicht
-`Eligible`. Vor dem späteren Wave-6-Start müssen die tatsächlichen Wave-5-
-Runtime-, API-, Test- und Evidence-Deltas erneut gegen die 13 Verträge und
-TVFM-Consumer gelesen werden. Ein neuer gemeinsamer Gap erzeugt ein eigenes
-Finding statt lokaler TVFM-Sonderlogik.
+Beide Waves bleiben auch bei `ReadyForTerminalGuiAudit` auf
+`BlockedPendingTerminalGuiAudit`. Feature 029 prüft anschließend die
+Frameworkbasis zusätzlich gegen Terminal.GUI v1.9.0. Nur der nach allen daraus
+entstehenden Hardening-Läufen ausgeführte neue Closure-Lauf darf Wave 5
+`Eligible` setzen. Wave 6 bleibt danach höchstens `ConditionallyReady` und
+benötigt weiterhin die Post-Wave-5-Delta-Prüfung.
 
 ## 11. Abschluss- und Archivregeln
 
@@ -242,8 +247,8 @@ Nach vollständigem Pass:
 1. Lastenhefte 10, 11 und 12 nach dem Repository-Rename-Workflow archivieren.
 2. Feature-024-Gate, Pflichtenheft, Abarbeitungsreihenfolge, Agent-Kontexte und
    Projektstatistik auf den finalen Zustand aktualisieren.
-3. Einen eindeutigen Wave-5-Intake als nächsten Schritt benennen, aber nicht in
-   Feature 028 starten.
+3. `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md` als
+   nächsten Schritt benennen, aber Feature 029 nicht in Feature 028 starten.
 4. PR-Checks und Review-Threads konvergieren, mergen, Branch löschen und lokalen
    `main` synchronisieren.
 5. Autonome Retrospektive ausführen; wiederverwendbare Preset-Erkenntnisse nur
@@ -261,10 +266,11 @@ Nach vollständigem Pass:
    auf dem finalen Stand grün.
 7. Kein Runtime-, API-, Dependency-, Example- oder Historical-Source-Fix wird
    innerhalb 028 versteckt.
-8. Wave 5 ist entweder nachvollziehbar `Eligible` oder bleibt mit konkreter
-   Reopen-Grenze `Blocked`.
-9. Wave 6 ist höchstens `ConditionallyReady` und besitzt den verpflichtenden
-   Post-Wave-5-Reevaluation-Trigger.
+8. Das bestehende Gate ist entweder nachvollziehbar
+   `ReadyForTerminalGuiAudit` oder bleibt mit konkreter Reopen-Grenze
+   `Blocked`.
+9. Wave 5 und Wave 6 sind in jedem Fall
+   `BlockedPendingTerminalGuiAudit`; der nächste Intake ist Feature 029.
 10. Nach Merge sind Working Tree und lokaler `main` sauber und identisch zu
     `origin/main`; der nächste Intake ist sichtbar, aber nicht gestartet.
 
@@ -297,7 +303,9 @@ checklist, plan-review, task-review, and repeated Analyze passes to convergence.
 Execute the seven required real-path integration slices, complete Release and
 coverage gates, conditional documentation/A11Y, security, platform and remote
 review gates, exact evidence, version/build-counter rules, merge/main sync, and
-retrospective. Release Wave 5 only on full pass; mark Wave 6 no higher than
-ConditionallyReady with mandatory post-Wave-5 re-evaluation. Name the next
-Wave-5 intake but do not start it.
+retrospective. On full pass, close only the existing TV203/Free Vision gate as
+ReadyForTerminalGuiAudit. Keep Wave 5 and Wave 6
+BlockedPendingTerminalGuiAudit. Name
+`Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md` as the next
+intake, but do not start Feature 029 in this run.
 ```

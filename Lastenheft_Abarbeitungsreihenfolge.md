@@ -47,45 +47,49 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 19 | `Lastenheft_05_TerminalCharsetAndEmulation.021-terminal-charset-hardening.md` | Weitere Anforderungen | archiviert oder abgeschlossen / archived or completed |
 | 20 | `Lastenheft_08_TV203-FreeVision-Conformance-Audit.024-tv203-freevision-conformance-audit.md` | Framework-Konformitätsaudit | archiviert oder abgeschlossen / archived or completed |
 | 21 | `Lastenheft_09_Pre-Wave5-Conformance-Closure.027-pre-wave5-conformance-closure.md` | Pre-Wave-5-Konformitätsabschluss | archiviert oder abgeschlossen / archived or completed |
-| 22 | `Lastenheft_10_Core-Runtime-Conformance-Hardening.md` | Core-Runtime-Konformität | **nächster Intake / next intake** |
-| 23 | `Lastenheft_11_Component-Data-Conformance-Hardening.md` | Komponenten-/Daten-Konformität | aktiv nach 025 / active after 025 |
-| 24 | `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` | Pre-Wave-5-/Wave-6-Abschluss | aktiv nach 025 und 026 / active after 025 and 026 |
+| 22 | `Lastenheft_10_Core-Runtime-Conformance-Hardening.025-core-runtime-conformance-hardening.md` | Core-Runtime-Konformität | archiviert oder abgeschlossen / archived or completed |
+| 23 | `Lastenheft_11_Component-Data-Conformance-Hardening.026-component-data-conformance-hardening.md` | Komponenten-/Daten-Konformität | archiviert oder abgeschlossen / archived or completed |
+| 24 | `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` | Pre-Wave-5-/Wave-6-Abschluss | **nächster Intake / next intake** |
+| 25 | `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md` | Framework-Konformitätsaudit | aktiv nach 028 / active after 028 |
 <!-- secure-development-hardening-order:end -->
 
 ## Fortsetzungsmarke / Resume Marker
 
-> **NÄCHSTER SPEC-KIT-INTAKE: `Lastenheft_10_Core-Runtime-Conformance-Hardening.md` -> `025-core-runtime-conformance-hardening`.**
+> **NÄCHSTER SPEC-KIT-INTAKE: `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` -> `028-pre-wave5-wave6-conformance-closure`.**
 >
-> **NEXT SPEC KIT INTAKE: `Lastenheft_10_Core-Runtime-Conformance-Hardening.md` -> `025-core-runtime-conformance-hardening`.**
+> **NEXT SPEC KIT INTAKE: `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` -> `028-pre-wave5-wave6-conformance-closure`.**
 
-Heute wird kein autonomer Lauf für 025, 026 oder 028 gestartet. Die beauftragte
-Vorbereitung endet nach Erstellung von Lastenheft 12 und dieser Reihenfolge.
+Features 025 und 026 sind abgeschlossen. Feature 028 ist der nächste autonome
+Lauf. Es schließt das bisherige Gate, hält beide Waves aber bis Feature 029 und
+dessen findings-basierten Folge-Lastenheften blockiert.
 
-*No autonomous run for 025, 026, or 028 starts today. The requested preparation
-ends after creating requirements document 12 and recording this sequence.*
+*Features 025 and 026 are complete. Feature 028 is next. It closes the existing
+gate but keeps both waves blocked through Feature 029 and its finding-derived
+follow-up requirements.*
 
 ## Verbindliche Folge vor Wave 5 und Wave 6 / Binding Sequence Before Wave 5 and Wave 6
 
 1. Feature 024 bleibt als ursprünglicher Auditlauf historisch abgeschlossen.
    Die kombinierte Consumer-Review-Revision 2 hat seine Zukunftsentscheidung
    mit 13 Findings superseded: neun `Core025`, vier `ComponentData026`.
-2. **Zuerst** läuft `025-core-runtime-conformance-hardening` mit
-   `Lastenheft_10_Core-Runtime-Conformance-Hardening.md`.
-3. Erst nach Merge, Branch-Löschung und sauberem Main-Sync von 025 läuft
-   `026-component-data-conformance-hardening` mit
-   `Lastenheft_11_Component-Data-Conformance-Hardening.md`.
-4. Erst nach Merge und Main-Sync von 025 und 026 läuft
+2. `025-core-runtime-conformance-hardening` und
+   `026-component-data-conformance-hardening` sind vollständig gemergt und
+   schließen die 13 Revision-2-Findings mit realen Red-/Green-Proofs.
+3. Als nächster Lauf folgt
    `028-pre-wave5-wave6-conformance-closure` mit
    `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md`.
-5. Feature 028 muss alle 13 Findings, die Consumer-Verträge beider Waves und
+4. Feature 028 muss alle 13 Findings, die Consumer-Verträge beider Waves und
    alle Pflichtgates unabhängig schließen. Innerhalb 028 wird keine Wave
-   gestartet.
-6. Wave 5 wird nur nach erfolgreichem Merge von 028 freigegeben und erhält
-   voraussichtlich die nächste freie Feature-Nummer 029.
-7. Wave 6 folgt erst nach Wave 5 und einer erneuten Prüfung der tatsächlichen
-   Wave-5-Deltas gegen die gemeinsame Consumer-Matrix.
+   gestartet oder freigegeben.
+5. Nach Merge und Main-Sync von 028 folgt
+   `029-tv203-freevision-terminalgui-conformance-audit` mit Lastenheft 13.
+6. Feature 029 erzeugt nur aus realen Findings nicht leere Hardening-
+   Lastenhefte ab Nummer 030 sowie danach immer einen unabhängigen Closure-
+   Lauf.
+7. Wave 5 bleibt bis zu diesem Closure-Merge blockiert. Wave 6 folgt erst nach
+   Wave 5 und einer erneuten Prüfung der tatsächlichen Wave-5-Deltas.
 
-*Revision 2 routes nine findings to Feature 025 and four to Feature 026. Feature
-025 runs first, Feature 026 only after 025 is merged, and Feature 028 only after
-both are merged. Wave 5 remains blocked until 028 passes; Wave 6 additionally
-requires a post-Wave-5 delta review.*
+*Revision 2 routed nine findings to Feature 025 and four to Feature 026; both
+are complete. Feature 028 closes that gate, Feature 029 adds the pinned
+Terminal.GUI v1.9.0 comparison, and only the final finding-derived closure may
+release Wave 5. Wave 6 additionally requires a post-Wave-5 delta review.*
