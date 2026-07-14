@@ -266,12 +266,12 @@ Statuscheckliste Beispielwellen:
   Reihenfolgehinweis: abgeschlossen (Branch `022-wave4-visual-component-porting`); `terminal`, `cyrillic`, `fonts`, `eterm` und `xterm` sind sichtbare Drei-Schichten-Demos mit App-Loop-, Zustands-, View- und Buffer-/Cell-Proof sowie ehrlichen Host-Fallbacks.
 - [x] **Ursprüngliches Pre-Wave-5 Framework-Konformitätsaudit und Closure**
   Reihenfolgehinweis: Feature `024-tv203-freevision-conformance-audit` und der damalige Abschluss `027-pre-wave5-conformance-closure` bleiben als historische, vollständig gemergte Evidence erhalten. Die spätere kombinierte Consumer-Review-Revision 2 superseded jedoch die Zukunftsentscheidung des Null-Finding-Stands.
-- [ ] **Revision-2 Findings-Härtung und erneuter Pre-Wave-5-/Wave-6-Abschluss**
-  Reihenfolgehinweis: Die Prüfung gegen `TVDEMOS/` und `TVFM/` hat 13 Findings bestätigt. Zuerst folgt Feature 025 aus `Lastenheft_10_Core-Runtime-Conformance-Hardening.md`, danach Feature 026 aus `Lastenheft_11_Component-Data-Conformance-Hardening.md` und zuletzt Feature 028 aus `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md`. Kein Beispiel wird innerhalb dieser drei Features portiert.
+- [ ] **Revision-2-Abschluss und Terminal.GUI-Konformitätsrevision**
+  Reihenfolgehinweis: Features 025 und 026 haben die 13 Findings aus `TVDEMOS/` und `TVFM/` geschlossen. Feature 028 revalidiert diese Schließung, hält beide Waves aber blockiert. Danach prüft Feature 029 die 48 bestehenden Verträge zusätzlich gegen das gepinnte Terminal.GUI v1.9.0. Nur reale neue Findings erzeugen nicht leere Hardening-Lastenhefte ab Feature 030; ein unabhängiger Abschlusslauf bleibt immer Pflicht.
 - [ ] **Welle 5 - Turbo-Pascal-Demos aus TP7 (`TVDEMOS/`)**
-  Reihenfolgehinweis: erst nach Merge und sauberem Main-Sync von Feature `028-pre-wave5-wave6-conformance-closure`; bevorzugt nach stabilen Portierungen von `tvdemo`, `tvedit`, Hilfesystem und Dialogschicht.
+  Reihenfolgehinweis: erst nach Merge und sauberem Main-Sync von Feature 028, Feature 029, allen findings-basierten Hardening-Läufen und dem danach verpflichtenden Closure-Lauf; bevorzugt nach stabilen Portierungen von `tvdemo`, `tvedit`, Hilfesystem und Dialogschicht.
 - [ ] **Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`**
-  Reihenfolgehinweis: zuletzt; setzt das Feature-028-Gate, die tatsächlichen Erkenntnisse aus Welle 5, eine erneute Delta-Prüfung, Datei-/Verzeichnisdialoge, Drag/Drop-Analoga und eine robuste Event-/Fensterintegration voraus.
+  Reihenfolgehinweis: zuletzt; setzt den neuen Terminal.GUI-gestützten Closure-Lauf, die tatsächlichen Erkenntnisse aus Welle 5, eine erneute Delta-Prüfung, Datei-/Verzeichnisdialoge, Drag/Drop-Analoga und eine robuste Event-/Fensterintegration voraus.
 - [ ] Beispiel-Guides unter `docs/guides/examples/`
   Reihenfolgehinweis: jedes portierte Beispiel im selben Arbeitsgang mit eigenem Guide dokumentieren.
 
@@ -681,9 +681,11 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.6a` = Core-Runtime-Konformitätshärtung — ✓ ABGESCHLOSSEN, 9 Findings mit realem Red-/Green-Proof (Feature 025)
    - `3.6b` = Component-/Data-Konformitätshärtung — ✓ ABGESCHLOSSEN, 4 Findings mit realem Red-/Green-Proof (Feature 026)
    - `3.6c` = Ursprünglicher Pre-Wave-5-Konformitätsabschluss — ✓ HISTORISCH ABGESCHLOSSEN UND FÜR ZUKUNFTSPLANUNG SUPERSEDED (Feature 027, Merge `35414af`)
-   - `3.6d` = Kombinierter Pre-Wave-5-/Wave-6-Konformitätsabschluss — OFFEN NACH 025 UND 026 (Feature 028, Lastenheft 12)
+   - `3.6d` = Kombinierter TV203-/Free-Vision-Konformitätsabschluss — NÄCHSTER LAUF (Feature 028, Lastenheft 12); gibt die Waves noch nicht frei
+   - `3.6e` = TV203-/Free-Vision-/Terminal.GUI-v1.9.0-Konformitätsaudit — OFFEN NACH 028 (Feature 029, Lastenheft 13)
+   - `3.6f` = Findings-basierte Hardening-Läufe und unabhängiger Abschluss — DYNAMISCH AB 030; keine leeren Features
 
->>> NÄCHSTER SCHRITT <<< `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` als Feature 028 ausführen; Wave 5 und Wave 6 bleiben bis zu dessen bestandenem Merge blockiert.
+>>> NÄCHSTER SCHRITT <<< `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` als Feature 028 ausführen; danach folgt Lastenheft 13 als Feature 029. Wave 5 und Wave 6 bleiben bis zum neuen findings-basierten Closure-Merge blockiert.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

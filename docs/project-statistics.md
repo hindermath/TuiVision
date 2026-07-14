@@ -694,6 +694,7 @@ fortgeschrieben.
 | 2026-07-13 | `/speckit-autonomous` für `026-component-data-conformance-hardening` | Feature 026 schließt `F010` bis `F013` test-first: Dialoge klassifizieren nur echte Abschlussbefehle und validieren hierarchisch; `TInputLine` erhält phasenbezogene, zustandserhaltende Validierung; Dateidialoge liefern mode-spezifische, atomare Entscheidungen ohne versteckte Datei-I/O; Menü-, StatusLine- und Dialogbeschreibungen werden ausschließlich über geschlossene primitive Records und allowlist-basierte Factories rekonstruiert. Feature 024 enthält nun 139 moderne Source-Dateien, 211 öffentliche Typen und exakt 13 eindeutige Resolutionen; Wave 5 und Wave 6 bleiben bis Feature 028 blockiert. Der Vor-Statistik-Snapshot umfasst `+1761/-97` Produktionscode, `+802/-26` Tests, `+2539/-60` Dokumentation/Evidence/Guidance und `+4/-4` Metadaten, zusammen `+5106/-187` beziehungsweise 4919 Nettozeilen. Konservative Manualreferenz für 5106 hinzugefügte oder aktualisierte Zeilen: `63,8` Tage beziehungsweise `497,8` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `40,8` Tage beziehungsweise `318,6` Stunden bei 125 Zeilen/Tag. Lokale Abnahme: 748/748 Release- und Coverage-Tests; Coverage Core 92,96 %, Controls 86,66 %, Serialization 90,01 %, Compatibility 80,55 % und Drivers.Console 89,18 %; DocFX, Playwright/Axe und UTF-8-Lynx werden auf dem finalen Dokumentstand nachgewiesen. Der nächste Intake ist ausschließlich `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md`. |
 | 2026-07-13 | Closeout und autonome Retrospektive nach Feature 026 | Feature-PR #74 wurde als Merge `f3586aa` geliefert. Alle PR-Kontext-Gates und Claude waren grün, GraphQL meldete null Threads, Copilot blieb quota-bedingt ein fehlender Review und der enge Admin-Bypass betraf nur Human Approval. Die Retrospektive erkannte danach, dass der grüne Windows-Homogeneity-Job keine Runtime ausführte, obwohl der Contract Windows/WSL-Proof verlangte. Der temporäre, nicht gemergte Run 29291308306 schloss die Lücke mit 748/748 Tests und DocFX 0/0 auf `windows-latest`. Der Vor-Statistik-Diff für kausalen Closeout und Retrospektive umfasst `+134/-0` Dokumentzeilen. Konservative Manualreferenz: `1,7` Tage beziehungsweise `13,1` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `1,1` Tage beziehungsweise `8,4` Stunden bei 125 Zeilen/Tag. Home-Baseline-Commit `046b65a` klassifiziert das zweite Auftreten als `PresetFollowUp` mit `Promote`: Eine spätere Paketversion muss Applicable Gate, exakten Head, Workflow, Job, Runner und ausgeführten Befehl maschinenprüfbar binden. Feature 028 bleibt der einzige nächste Intake. |
 | 2026-07-14 | `autonomous-run-governance` v0.1.4 veröffentlicht und adoptiert | Die zwei unabhängigen False-Readiness-Feldfunde aus Feature 025 und 026 sind über v0.1.3/v0.1.4 als deklarierte Gate-Requirements, temporäre exakte HEAD-Evidence und read-only Bash-/PowerShell-Validatoren produktisiert. Home-Baseline-PRs #62/#63 und öffentliche Preset-PRs #3/#4 wurden gemergt; Release v0.1.4 und der GitHub-ZIP mit SHA-256 `da667e2f...967e0` sind geprüft. TuiVision installiert den exakten Tag-ZIP bei Priorität 70. Alle sieben Presets bleiben aufgelöst und beide autonomen Commands erscheinen je Agent-Oberfläche genau einmal. Der installierte Bash-Modus `0644` reproduziert die Paketgrenze; `bash <validator.sh>` und `pwsh -NoProfile -File <validator.ps1>` bestehen dieselbe Fixture. Der Vor-Statistik-Snapshot umfasst `+1086/-38`, also 1048 Nettozeilen in Preset, Validatoren, Agent-Flächen, Guidance, Template und Evidence ohne Runtime-, API-, Test-, Abhängigkeits-, Beispiel-, Projekt- oder `tv203s/`-Änderung. Konservative Manualreferenz: `13,6` Tage beziehungsweise `105,9` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `8,7` Tage beziehungsweise `67,8` Stunden bei 125 Zeilen/Tag. DocFX, Playwright/Axe, Lynx, Diff und Secrets schließen den Adoptions-PR ab; Feature 028 bleibt der einzige nächste Intake. |
+| 2026-07-14 | Intake-Vorbereitung für 028 und `029-tv203-freevision-terminalgui-conformance-audit` | Lastenheft 12 schließt nach 028 nur das bestehende TV203-/Free-Vision-Gate; beide Waves bleiben bis zur zusätzlichen Terminal.GUI-v1.9.0-Prüfung, allen real findings-basierten Hardening-Läufen und einem neuen unabhängigen Closure blockiert. Lastenheft 13 pinnt das offizielle `tui-cs/Terminal.Gui`-Tag v1.9.0 mit Tag-Objekt und Commit, erweitert alle 48 Verträge um eine dritte Relation und verbietet Runtime-, API-, Dependency-, Beispiel- oder Fremdquellenänderungen. Nicht leere Folgefeatures werden dynamisch ab 030 nummeriert. Der Vor-Statistik-Snapshot umfasst `+471/-76`, also 395 Netto-Dokumentzeilen. Konservative Manualreferenz: `5,9` Tage beziehungsweise `45,9` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `3,8` Tage beziehungsweise `29,4` Stunden bei 125 Zeilen/Tag. |
 
 ## Gesamtstatistik
 
@@ -703,21 +704,21 @@ nächsten Statistiklauf eine dokumentierte Momentaufnahme.
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | 263072 Zeilen |
-| Produktions- und Testcode zusammen | 51580 Zeilen (19.6 %) |
-| Dokumentationsanteil | 211492 Zeilen (80.4 %) |
-| Spec-Kit-Anteil innerhalb der Doku | 57302 Zeilen (27.1 %) |
-| Zentrale Governance-/Agent-Dateien | 3917 Zeilen (1.9 % der Doku) |
+| Artefaktbasis gesamt | 264000 Zeilen |
+| Produktions- und Testcode zusammen | 51580 Zeilen (19.5 %) |
+| Dokumentationsanteil | 212420 Zeilen (80.5 %) |
+| Spec-Kit-Anteil innerhalb der Doku | 57302 Zeilen (27.0 %) |
+| Zentrale Governance-/Agent-Dateien | 3952 Zeilen (1.9 % der Doku) |
 | Projektgebundene Agent-Skills | 2512 Zeilen (1.2 % der Doku) |
 | Beobachtbarer Projektzeitraum | 2026-02-08 bis 2026-07-14 |
-| Git-Commits / sichtbare Aktivtage | 521 / 71 |
-| Gesamtzeilen pro sichtbarem Aktivtag | 3705.2 |
-| Gesamtzeilen pro Commit | 504.9 |
-| Konservative Einzelentwickler-Untergrenze | 3288.4 Arbeitstage / 25649.5 Stunden |
-| Thorsten-Solo-Untergrenze | 2104.6 Arbeitstage / 16415.7 Stunden |
-| Kleines 3er-Team mit Koordinationsaufschlag | 1315.4 Arbeitstage |
-| Repo-Speedup gegen 80-Zeilen-Referenz | 46.3x |
-| Repo-Speedup gegen Thorsten-Referenz | 29.6x |
+| Git-Commits / sichtbare Aktivtage | 524 / 71 |
+| Gesamtzeilen pro sichtbarem Aktivtag | 3718.3 |
+| Gesamtzeilen pro Commit | 503.8 |
+| Konservative Einzelentwickler-Untergrenze | 3300.0 Arbeitstage / 25740.0 Stunden |
+| Thorsten-Solo-Untergrenze | 2112.0 Arbeitstage / 16473.6 Stunden |
+| Kleines 3er-Team mit Koordinationsaufschlag | 1320.0 Arbeitstage |
+| Repo-Speedup gegen 80-Zeilen-Referenz | 46.5x |
+| Repo-Speedup gegen Thorsten-Referenz | 29.7x |
 
 Die hohe Dokumentationsquote enthält die umfangreiche Secure-Development-,
 Governance- und Spec-Kit-Basis. Das autonome Runbook und der neue
@@ -741,7 +742,8 @@ Feature 027 remains valid historical closure evidence. Consumer Review Revision
 to Features 025 and 026, and requires Feature 028 before Wave 5 or Wave 6.
 Feature 025 closes its nine core findings. Feature 026 closes the four
 component/data findings while retaining the independent Feature-028 gate as
-the sole next intake before either example wave.
+the sole next intake. Feature 028 now closes only the existing gate; Feature
+029 adds the pinned Terminal.GUI v1.9.0 comparison before either example wave.
 
 ### ASCII-Diagramme
 
@@ -1103,11 +1105,13 @@ W steht für den Antigravity-Folgeabgleich, X für die Intake-Vorbereitung, Y f�
 die Implementierung, Z für den Closeout, a für die Retrospektive des
 Konformitätsaudits, b für die 027-Intake-Vorbereitung, c für die 027-Ausführung,
 d für deren Closeout, e für Audit-Revision 2 samt 025-/026-/028-Intake-
-Vorbereitung, f für Feature 025, g für Feature 026, h für dessen Closeout und i
-für die v0.1.4-Preset-Adoption; die übrigen Slots bleiben für spätere Phasen frei.
+Vorbereitung, f für Feature 025, g für Feature 026, h für dessen Closeout, i
+für die v0.1.4-Preset-Adoption und j für die 028-/029-Terminal.GUI-Intake-
+Vorbereitung; k und l bleiben für spätere Phasen frei.
 
 W represents the Antigravity follow-up, X the conformance-audit intake, Y its
 implementation, Z its closeout, a its retrospective, b the 027 intake
 preparation, c the 027 run, d its closeout, e Audit Revision 2 plus the
 025/026/028 intake preparation, f Feature 025, g Feature 026, h its closeout,
-and i the v0.1.4 preset adoption. The remaining slots stay free for later phases.
+i the v0.1.4 preset adoption, and j the 028/029 Terminal.GUI intake preparation.
+Slots k and l stay free for later phases.
