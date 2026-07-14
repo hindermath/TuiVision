@@ -18,9 +18,10 @@ stages; this skill only orchestrates them and enforces cross-stage gates.
 3. Determine the delegated delivery mode from the user's request:
    `LocalImplementation`, `PublishPR`, or `MergeAndSync`. Never infer remote
    write or merge authority from general autonomy alone.
-4. Confirm intake ordering, branch identity, clean ownership boundaries, and
-   the six installed governance presets. Stop only for a material conflict,
-   missing required authority, destructive ambiguity, or an unmet hard gate.
+4. Confirm intake ordering, branch identity, clean ownership boundaries, the
+   six baseline governance presets, and optional `autonomous-run-governance`
+   v0.1.4. Stop only for a material conflict, missing required authority,
+   destructive ambiguity, or an unmet hard gate.
 5. Create the numbered feature branch through `speckit-git-feature` when a new
    feature is required. Resume the existing branch and feature directory when
    the run already exists.
@@ -45,6 +46,12 @@ Create `specs/NNN-feature/pr-evidence.md` from
 implementation edit. Keep scope, decisions, commands, results, skipped
 triggers, residual risks, review state, and follow-ups current during the run.
 
+Before implementation, resolve
+`autonomous-run-gate-requirements-template` and create the reviewed
+`specs/NNN-feature/autonomous-gate-requirements.json`. Give every acceptance
+gate a stable ID, required scope, command tokens, optional runner/platform
+tokens, and either `Applicable` or a justified `N/A` with re-evaluation trigger.
+
 ## Converge
 
 - Clarification converges when no remaining question would materially change
@@ -59,10 +66,12 @@ triggers, residual risks, review state, and follow-ups current during the run.
 - Remote review converges when required checks pass and no actionable review
   thread remains. Record unavailable reviewers or quota failures as evidence;
   never represent them as successful reviews.
-- Before merge, map every acceptance-specific gate to the actual workflow, job,
-  platform, and command that produced its evidence. A green aggregate or an OS
-  name is insufficient when the job did not execute the required runtime,
-  platform, documentation, security, or other proof. Missing scope blocks merge.
+- Before merge, derive every acceptance-specific gate's command and runner from
+  workflow definitions or job logs, never from a green aggregate, workflow,
+  job, or OS-shaped name. Create temporary provider-neutral exact-head evidence
+  from `autonomous-run-gate-evidence-template` and run the installed Bash or
+  PowerShell validator. Missing, stale, contradictory, empty, duplicate-Primary,
+  or token-mismatched evidence blocks merge; bypass supplies no proof.
 
 ## Shape Work
 
@@ -115,6 +124,13 @@ helper result only when its exit status has the required value and its error
 channel contains no PowerShell error record, shell command-not-found message, or
 equivalent fatal signature. A nominal zero exit status does not override such an
 error; record the helper as failed and route the defect to bounded remediation.
+
+For `PublishPR` or `MergeAndSync`, validate the final reviewed head with
+`bash .specify/presets/autonomous-run-governance/scripts/validate-autonomous-gate-evidence.sh`
+on macOS/Linux or `pwsh -NoProfile -File` with the matching `.ps1` on Windows;
+installed mode bits are not a portable contract. The validator is read-only and
+grants no remote authority. Keep the provider evidence snapshot temporary before
+merge; committing it creates a new head and self-invalidates its reviewed-head claim.
 
 ## Deliver
 
