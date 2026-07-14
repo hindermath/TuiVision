@@ -34,6 +34,8 @@ Auto-generated from all feature plans. Last updated: 2026-07-13
 - in-process state only; audit JSON and Markdown evidence are repository-owned documentation (025-core-runtime-conformance-hardening)
 - C# with latest language version on .NET 10 + Existing `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization`; no new package or runtime dependency (026-component-data-conformance-hardening)
 - Existing bounded binary archive and `TResourceFile`; controlled temporary filesystem metadata for file-dialog proofs (026-component-data-conformance-hardening)
+- C# / .NET 10 for test-only validation; JSON, Markdown, YAML, Bash and PowerShell evidence tooling + existing MSTest 4.0.1, Coverlet 6.0.4, DocFX, Playwright/Axe, Lynx, jq, xmllint, Git and GitHub Actions (028-pre-wave5-wave6-conformance-closure)
+- repository-owned JSON and Markdown only; historical, consumer, and Free Vision sources remain read-only (028-pre-wave5-wave6-conformance-closure)
 
 - C# `latest` on .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, `TuiVision.Compatibility`; MSTest; Coverlet; docfx; wave-1 example projects under `examples/` (007-port-wave1-examples — Wave 1 delivered)
 
@@ -66,9 +68,9 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ## Recent Changes
+- 028-pre-wave5-wave6-conformance-closure: Added C# / .NET 10 for test-only validation; JSON, Markdown, YAML, Bash and PowerShell evidence tooling + existing MSTest 4.0.1, Coverlet 6.0.4, DocFX, Playwright/Axe, Lynx, jq, xmllint, Git and GitHub Actions
 - 026-component-data-conformance-hardening: Added C# with latest language version on .NET 10 + Existing `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization`; no new package or runtime dependency
 - 025-core-runtime-conformance-hardening: Added C# / .NET 10 + existing `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, MSTest; no new package
-- 024-tv203-freevision-conformance-audit: Added C# / .NET 10 for durable test-only validation; Markdown and JSON for evidence + existing framework assemblies, MSTest, `System.Text.Json`, Git, official pinned FPC source checkout
 
 
 <!-- MANUAL ADDITIONS START -->

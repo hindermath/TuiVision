@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "1.0",
+  "gates": [
+    {
+      "gateId": "GATE-028-LINUX-RUNTIME",
+      "applicability": "Applicable",
+      "requiredScope": "The reviewed pull-request head executes restore, Release build, the complete test solution, and DocFX on Linux.",
+      "requiredCommandTokens": [
+        "dotnet restore",
+        "dotnet build",
+        "dotnet test",
+        "--configuration Release",
+        "docfx docfx.json"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "ubuntu"
+      ],
+      "rationale": "Linux is a supported runtime and documentation platform.",
+      "reevaluationTrigger": "The CI command body, supported runtime matrix, solution, or documentation build changes."
+    },
+    {
+      "gateId": "GATE-028-MACOS-RUNTIME",
+      "applicability": "Applicable",
+      "requiredScope": "The reviewed pull-request head executes restore, Release build, the complete test solution, and DocFX on macOS.",
+      "requiredCommandTokens": [
+        "dotnet restore",
+        "dotnet build",
+        "dotnet test",
+        "--configuration Release",
+        "docfx docfx.json"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "macos"
+      ],
+      "rationale": "macOS is a supported runtime and the local development platform.",
+      "reevaluationTrigger": "The CI command body, supported runtime matrix, solution, or documentation build changes."
+    },
+    {
+      "gateId": "GATE-028-WINDOWS-RUNTIME",
+      "applicability": "Applicable",
+      "requiredScope": "The reviewed pull-request head executes restore, Release build, the complete test solution, and DocFX on Windows, including keyboard, path, and terminal-fallback tests.",
+      "requiredCommandTokens": [
+        "dotnet restore",
+        "dotnet build",
+        "dotnet test",
+        "--configuration Release",
+        "docfx docfx.json"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "windows"
+      ],
+      "rationale": "A tooling-only Windows job cannot prove the accepted runtime boundary.",
+      "reevaluationTrigger": "The Windows runner, CI command body, keyboard adapter, path behavior, or terminal fallback changes."
+    },
+    {
+      "gateId": "GATE-028-DOCFX-A11Y",
+      "applicability": "Applicable",
+      "requiredScope": "The reviewed pull-request head builds DocFX and executes the Playwright and Axe documentation smoke path.",
+      "requiredCommandTokens": [
+        "docfx docfx.json",
+        "npm ci",
+        "npm test"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "ubuntu"
+      ],
+      "rationale": "Feature 028 changes learner-facing status and evidence documentation.",
+      "reevaluationTrigger": "DocFX configuration, navigation, generated API, A11Y tests, or user-facing documentation changes."
+    },
+    {
+      "gateId": "GATE-028-HOMOGENEITY",
+      "applicability": "Applicable",
+      "requiredScope": "Repository secret scanning and Lastenheft rename-contract tests execute on Ubuntu, macOS, and Windows for the reviewed head.",
+      "requiredCommandTokens": [
+        "scan-agent-secrets.sh",
+        "rename-lastenheft-tests.sh"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "ubuntu-22.04",
+        "macos-14",
+        "windows-2022"
+      ],
+      "rationale": "The feature archives three Lastenhefte and changes maintained agent guidance.",
+      "reevaluationTrigger": "Rename rules, secret scanner behavior, agent paths, or supported repository platforms change."
+    },
+    {
+      "gateId": "GATE-028-SUPPLY-CHAIN",
+      "applicability": "Applicable",
+      "requiredScope": "The reviewed pull-request head completes vulnerable and deprecated package review plus temporary CycloneDX validation.",
+      "requiredCommandTokens": [
+        "dotnet list",
+        "--vulnerable",
+        "--deprecated",
+        "dotnet-CycloneDX"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "ubuntu"
+      ],
+      "rationale": "Existing supply-chain validation remains a required repository gate even though the feature adds no dependency.",
+      "reevaluationTrigger": "Dependencies, lock files, package tooling, distribution, or SBOM policy changes."
+    },
+    {
+      "gateId": "GATE-028-AGENT-SECRETS",
+      "applicability": "Applicable",
+      "requiredScope": "The reviewed pull-request head passes the agent-surface secret scan.",
+      "requiredCommandTokens": [
+        "scan-agent-secrets.sh"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "ubuntu"
+      ],
+      "rationale": "Maintained agent guidance and evidence files change in this feature, so the repository-owned agent scanner remains independently reviewable.",
+      "reevaluationTrigger": "Agent surfaces, agent-secret rules, scanner commands, or tracked credential boundaries change."
+    },
+    {
+      "gateId": "GATE-028-GITLEAKS",
+      "applicability": "Applicable",
+      "requiredScope": "The reviewed pull-request head passes the repository Gitleaks review.",
+      "requiredCommandTokens": [
+        "gitleaks"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "ubuntu"
+      ],
+      "rationale": "Gitleaks is a separate required workflow run and must not be represented as part of the agent-secret scanner's Primary evidence.",
+      "reevaluationTrigger": "The Gitleaks workflow, action, secret rules, or tracked credential boundaries change."
+    },
+    {
+      "gateId": "GATE-028-WSL-RUNTIME",
+      "applicability": "N/A",
+      "requiredScope": "A dedicated WSL runtime command is not available in the repository workflow; Windows proof is not relabeled as WSL proof.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "No managed WSL runner or accepted WSL command exists for this repository at planning time.",
+      "reevaluationTrigger": "A WSL runner, workflow job, or reproducible WSL acceptance command becomes available."
+    }
+  ]
+}
