@@ -54,39 +54,36 @@ is documented: `security-governance`, `architecture-governance`,
 `isaqb-architecture-governance`, `a11y-governance`,
 `cross-platform-governance`, and `agent-parity-governance`.
 
-`autonomous-run-governance` v0.2.0 mit Priorität 70 ist aus dem öffentlichen
+`autonomous-run-governance` v0.2.1 mit Priorität 70 ist aus dem öffentlichen
 Tag-ZIP installiert. Der projektgebundene Codex-Skill `$speckit-autonomous`
 bleibt an seinem einzelnen Pfad als bewusster lokaler Override bestehen, weil
 er TuiVision-spezifische Nummerierungs-, Build-Zähler-, DocFX-/A11Y- und
 historische Source-Verträge ergänzt. Preset-Command, Retrospektiv-Skill,
 Projekt-Runbook und Adoption-Evidence bleiben die portablen und gemeinsamen
-Nachweisflächen. Version 0.2.0 verlangt vor der Implementierung deklarierte
-Acceptance-Gates und prüft vor dem Merge temporäre Evidence für den exakten
-HEAD. Der Validator gleicht Requirements-Hash, HEAD, Command-/Runner-Tokens und
-genau einen `Primary`-Nachweis mit echten Workflow-Definitionen oder Job-Logs
-ab; grüne Namen, Validator und Bypass ersetzen weder technischen Nachweis noch
-Remote- oder Merge-Berechtigung.
-Version 0.2.0 ergänzt `speckit.autonomous-status`, den kooperativen
-`speckit.autonomous-stop`, den geschützten `speckit.autonomous-resume` und
-validierten feature-lokalen Laufzustand. `PausedByUser` wird nie
-stillschweigend fortgesetzt; unsicher beendete Operationen bleiben
-`NeedsRevalidation`.
+Nachweisflächen. Version 0.2.1 behält deklarierte Acceptance-Gates, exakte
+HEAD-Evidence, Status, Stop, Resume und validierten Laufzustand bei. Nach
+Preset- oder Governance-Drift gleicht Resume neue zwingende Korrektheits-,
+Sicherheits-, Berechtigungs- und Evidenzregeln mit akzeptierten Plan-, Task- und
+Checklist-Artefakten ab; nur anwendbare fehlende Regeln werden in-place ergänzt
+und erneut analysiert, reine Effizienzpräferenzen bleiben retrospektiv. Grüne
+Namen, Validator und Bypass ersetzen weder technischen Nachweis noch Remote-
+oder Merge-Berechtigung. `PausedByUser` wird nie stillschweigend fortgesetzt;
+unsicher beendete Operationen bleiben `NeedsRevalidation`.
 
-*`autonomous-run-governance` v0.2.0 at priority 70 is installed from the public
+*`autonomous-run-governance` v0.2.1 at priority 70 is installed from the public
 tag ZIP. Keep the project-owned Codex `$speckit-autonomous` skill at its single
 path as an intentional local override because it adds TuiVision numbering,
 build-counter, DocFX/A11Y, and historical-source contracts. The preset command,
 retrospective skill, project runbook, and adoption evidence remain the portable
-and shared proof surfaces. Version 0.2.0 requires acceptance gates to be
-declared before implementation and validates temporary exact-HEAD evidence
-before merge. The validator checks the requirements hash, HEAD, command and
-runner tokens, and exactly one `Primary` proof against actual workflow
-definitions or job logs; green names, the validator, and bypass grant neither
-technical proof nor remote or merge authority. Version 0.2.0 adds
-`speckit.autonomous-status`, cooperative `speckit.autonomous-stop`, protected
-`speckit.autonomous-resume`, and validated feature-local run state;
-`PausedByUser` is never resumed silently, and uncertain operations remain
-`NeedsRevalidation`.*
+and shared proof surfaces. Version 0.2.1 retains declared acceptance gates,
+exact-HEAD evidence, status, stop, resume, and validated run state. After preset
+or governance drift, resume compares new mandatory correctness, security,
+permission, and evidence rules with accepted Plan, Tasks, and checklist
+artifacts; only applicable missing rules are amended in place and analyzed
+again, while efficiency-only guidance stays retrospective. Green names, the
+validator, and bypass grant neither technical proof nor remote or merge
+authority. `PausedByUser` is never resumed silently, and uncertain operations
+remain `NeedsRevalidation`.*
 
 ## Antigravity-CLI-Übergang / Antigravity CLI Transition
 
