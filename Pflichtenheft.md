@@ -266,12 +266,12 @@ Statuscheckliste Beispielwellen:
   Reihenfolgehinweis: abgeschlossen (Branch `022-wave4-visual-component-porting`); `terminal`, `cyrillic`, `fonts`, `eterm` und `xterm` sind sichtbare Drei-Schichten-Demos mit App-Loop-, Zustands-, View- und Buffer-/Cell-Proof sowie ehrlichen Host-Fallbacks.
 - [x] **Ursprüngliches Pre-Wave-5 Framework-Konformitätsaudit und Closure**
   Reihenfolgehinweis: Feature `024-tv203-freevision-conformance-audit` und der damalige Abschluss `027-pre-wave5-conformance-closure` bleiben als historische, vollständig gemergte Evidence erhalten. Die spätere kombinierte Consumer-Review-Revision 2 superseded jedoch die Zukunftsentscheidung des Null-Finding-Stands.
-- [ ] **Revision-2-Abschluss und Terminal.GUI-Konformitätsrevision**
-  Reihenfolgehinweis: Features 025 und 026 haben die 13 Findings aus `TVDEMOS/` und `TVFM/` geschlossen. Feature 028 revalidiert diese Schließung, hält beide Waves aber blockiert. Danach prüft Feature 029 die 48 bestehenden Verträge zusätzlich gegen das gepinnte Terminal.GUI v1.9.0. Nur reale neue Findings erzeugen nicht leere Hardening-Lastenhefte ab Feature 030; ein unabhängiger Abschlusslauf bleibt immer Pflicht.
+- [ ] **Revision-2-Abschluss und moderne Konformitätsrevisionen**
+  Reihenfolgehinweis: Features 025 und 026 haben die 13 Findings aus `TVDEMOS/` und `TVFM/` geschlossen. Feature 028 revalidiert diese Schließung, hält beide Waves aber blockiert. Feature 029 prüft die akzeptierten Verträge gegen Terminal.GUI v1.9.0; Feature 030 prüft danach separat den gepinnten direkten C++-Modernisierungszeugen `magiblot/tvision`. Erst die gemeinsame TG-/MB-Deduplizierung erzeugt nicht leere Hardening-Lastenhefte ab Feature 031; ein unabhängiger Abschlusslauf bleibt immer Pflicht.
 - [ ] **Welle 5 - Turbo-Pascal-Demos aus TP7 (`TVDEMOS/`)**
-  Reihenfolgehinweis: erst nach Merge und sauberem Main-Sync von Feature 028, Feature 029, allen findings-basierten Hardening-Läufen und dem danach verpflichtenden Closure-Lauf; bevorzugt nach stabilen Portierungen von `tvdemo`, `tvedit`, Hilfesystem und Dialogschicht.
+  Reihenfolgehinweis: erst nach Merge und sauberem Main-Sync von Feature 028, Feature 029, Feature 030, allen gemeinsam findings-basierten Hardening-Läufen und dem danach verpflichtenden Closure-Lauf; bevorzugt nach stabilen Portierungen von `tvdemo`, `tvedit`, Hilfesystem und Dialogschicht.
 - [ ] **Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`**
-  Reihenfolgehinweis: zuletzt; setzt den neuen Terminal.GUI-gestützten Closure-Lauf, die tatsächlichen Erkenntnisse aus Welle 5, eine erneute Delta-Prüfung, Datei-/Verzeichnisdialoge, Drag/Drop-Analoga und eine robuste Event-/Fensterintegration voraus.
+  Reihenfolgehinweis: zuletzt; setzt den gemeinsamen Terminal.GUI-/magiblot-gestützten Closure-Lauf, die tatsächlichen Erkenntnisse aus Welle 5, eine erneute Delta-Prüfung, Datei-/Verzeichnisdialoge, Drag/Drop-Analoga und eine robuste Event-/Fensterintegration voraus.
 - [ ] Beispiel-Guides unter `docs/guides/examples/`
   Reihenfolgehinweis: jedes portierte Beispiel im selben Arbeitsgang mit eigenem Guide dokumentieren.
 
@@ -683,9 +683,10 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.6c` = Ursprünglicher Pre-Wave-5-Konformitätsabschluss — ✓ HISTORISCH ABGESCHLOSSEN UND FÜR ZUKUNFTSPLANUNG SUPERSEDED (Feature 027, Merge `35414af`)
    - `3.6d` = Kombinierter TV203-/Free-Vision-Konformitätsabschluss — ✓ ABGESCHLOSSEN, `ReadyForTerminalGuiAudit` (Feature 028, Lastenheft 12); gibt die Waves noch nicht frei
    - `3.6e` = TV203-/Free-Vision-/Terminal.GUI-v1.9.0-Konformitätsaudit — NÄCHSTER LAUF (Feature 029, Lastenheft 13)
-   - `3.6f` = Findings-basierte Hardening-Läufe und unabhängiger Abschluss — DYNAMISCH AB 030; keine leeren Features
+   - `3.6f` = TV203-/magiblot-tvision-Evolutionsaudit und gemeinsame TG-/MB-Deduplizierung — VERBINDLICH DANACH (Feature 030, Lastenheft 14)
+   - `3.6g` = Findings-basierte Hardening-Läufe und unabhängiger Abschluss — DYNAMISCH AB 031; keine leeren Features
 
->>> NÄCHSTER SCHRITT <<< `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md` als Feature 029 ausführen. Feature 028 ist `ReadyForTerminalGuiAudit`; Wave 5 und Wave 6 bleiben bis zum neuen findings-basierten Closure-Merge blockiert.
+>>> NÄCHSTER SCHRITT <<< `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md` als Feature 029 ausführen. Danach ist `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md` als Feature 030 verbindlich. Feature 028 ist `ReadyForTerminalGuiAudit`; Wave 5 und Wave 6 bleiben bis zum gemeinsamen findings-basierten Closure-Merge blockiert.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.
