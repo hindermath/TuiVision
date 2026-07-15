@@ -49,23 +49,23 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 21 | `Lastenheft_09_Pre-Wave5-Conformance-Closure.027-pre-wave5-conformance-closure.md` | Pre-Wave-5-Konformitätsabschluss | archiviert oder abgeschlossen / archived or completed |
 | 22 | `Lastenheft_10_Core-Runtime-Conformance-Hardening.025-core-runtime-conformance-hardening.md` | Core-Runtime-Konformität | archiviert oder abgeschlossen / archived or completed |
 | 23 | `Lastenheft_11_Component-Data-Conformance-Hardening.026-component-data-conformance-hardening.md` | Komponenten-/Daten-Konformität | archiviert oder abgeschlossen / archived or completed |
-| 24 | `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` | Pre-Wave-5-/Wave-6-Abschluss | **nächster Intake / next intake** |
-| 25 | `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md` | Framework-Konformitätsaudit | aktiv nach 028 / active after 028 |
+| 24 | `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.028-pre-wave5-wave6-conformance-closure.md` | Pre-Wave-5-/Wave-6-Abschluss | archiviert oder abgeschlossen / archived or completed |
+| 25 | `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md` | Framework-Konformitätsaudit | **nächster Intake / next intake** |
 <!-- secure-development-hardening-order:end -->
 
 ## Fortsetzungsmarke / Resume Marker
 
-> **NÄCHSTER SPEC-KIT-INTAKE: `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` -> `028-pre-wave5-wave6-conformance-closure`.**
+> **NÄCHSTER SPEC-KIT-INTAKE: `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md` -> `029-tv203-freevision-terminalgui-conformance-audit`.**
 >
-> **NEXT SPEC KIT INTAKE: `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` -> `028-pre-wave5-wave6-conformance-closure`.**
+> **NEXT SPEC KIT INTAKE: `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md` -> `029-tv203-freevision-terminalgui-conformance-audit`.**
 
-Features 025 und 026 sind abgeschlossen. Feature 028 ist der nächste autonome
-Lauf. Es schließt das bisherige Gate, hält beide Waves aber bis Feature 029 und
-dessen findings-basierten Folge-Lastenheften blockiert.
+Features 025, 026 und 028 sind abgeschlossen. Feature 028 setzt den bestehenden
+Gate auf `ReadyForTerminalGuiAudit`. Feature 029 ist der naechste autonome Lauf;
+beide Waves bleiben bis zu dessen findings-basiertem Closure blockiert.
 
-*Features 025 and 026 are complete. Feature 028 is next. It closes the existing
-gate but keeps both waves blocked through Feature 029 and its finding-derived
-follow-up requirements.*
+*Features 025, 026, and 028 are complete. Feature 028 sets the existing gate to
+`ReadyForTerminalGuiAudit`. Feature 029 is next; both Waves remain blocked
+through its finding-derived closure.*
 
 ## Verbindliche Folge vor Wave 5 und Wave 6 / Binding Sequence Before Wave 5 and Wave 6
 
@@ -75,21 +75,18 @@ follow-up requirements.*
 2. `025-core-runtime-conformance-hardening` und
    `026-component-data-conformance-hardening` sind vollständig gemergt und
    schließen die 13 Revision-2-Findings mit realen Red-/Green-Proofs.
-3. Als nächster Lauf folgt
-   `028-pre-wave5-wave6-conformance-closure` mit
-   `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md`.
-4. Feature 028 muss alle 13 Findings, die Consumer-Verträge beider Waves und
-   alle Pflichtgates unabhängig schließen. Innerhalb 028 wird keine Wave
-   gestartet oder freigegeben.
-5. Nach Merge und Main-Sync von 028 folgt
+3. `028-pre-wave5-wave6-conformance-closure` hat alle 13 Findings, sieben
+   Integrations-Slices, 13 Consumer-Gruppen und Pflichtgates unabhaengig
+   geschlossen; keine Wave wurde gestartet oder freigegeben.
+4. Als naechster Lauf folgt
    `029-tv203-freevision-terminalgui-conformance-audit` mit Lastenheft 13.
-6. Feature 029 erzeugt nur aus realen Findings nicht leere Hardening-
+5. Feature 029 erzeugt nur aus realen Findings nicht leere Hardening-
    Lastenhefte ab Nummer 030 sowie danach immer einen unabhängigen Closure-
    Lauf.
-7. Wave 5 bleibt bis zu diesem Closure-Merge blockiert. Wave 6 folgt erst nach
+6. Wave 5 bleibt bis zu diesem Closure-Merge blockiert. Wave 6 folgt erst nach
    Wave 5 und einer erneuten Prüfung der tatsächlichen Wave-5-Deltas.
 
 *Revision 2 routed nine findings to Feature 025 and four to Feature 026; both
-are complete. Feature 028 closes that gate, Feature 029 adds the pinned
+are complete. Feature 028 closed that gate, Feature 029 adds the pinned
 Terminal.GUI v1.9.0 comparison, and only the final finding-derived closure may
 release Wave 5. Wave 6 additionally requires a post-Wave-5 delta review.*

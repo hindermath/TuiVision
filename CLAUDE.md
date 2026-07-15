@@ -253,7 +253,7 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - Keyboard acceptance requires behavioral proof or a concrete `N/A` for Tab, Shift+Tab, arrows, Enter, and direct shortcuts across every inventoried selectable control family.
 - Native AT-SPI, NSAccessibility, UI Automation, speech, full-control migration, terminal-wide WCAG claims, Wave 1-4 remediation, and Feature 024 are out of scope.
 - Historical Turbo Vision has no direct equivalent for the modern semantic A11Y contracts; relevant focus/menu/status sources are read-only intent context only.
-- The former post-023 Wave-5 statement is historical; Features 024-028 supersede it, and the current next intake is Feature 028 followed by the mandatory Feature-029 Terminal.GUI audit.
+- The former post-023 Wave-5 statement is historical; Feature 028 completed the TV203/Free Vision closure, and the current sole next intake is the mandatory Feature-029 Terminal.GUI audit.
 
 ### 024-tv203-freevision-conformance-audit
 - Current planning baseline: the original audit and merge remain complete, but consumer-review Revision 2 in `specs/024-tv203-freevision-conformance-audit/consumer-readiness-review.md` supersedes the zero-finding forward decision.
@@ -272,7 +272,7 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - Current implementation status: all nine `Core025` findings are implemented and proven; final evidence is in `specs/025-core-runtime-conformance-hardening/pr-evidence.md`.
 - `F001`-`F009` close concrete event kinds, focus and group state, idle lifecycle, desktop stack, modal/close, shared command state, real keyboard ingress, and bounded generic drag through real-path red/green proof.
 - Feature-024 resolution metadata records exactly 13 non-documentation-only closures from Features 025 and 026 while preserving the Feature-028 and Wave-5/Wave-6 gates.
-- The next prioritized intake after Feature 026 merges and `main` is synchronized is `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` for Feature 028.
+- Feature 028 completed the independent closure after Feature 026; its archived intake is `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.028-pre-wave5-wave6-conformance-closure.md`.
 
 ### 026-component-data-conformance-hardening
 - Current implementation status: all four `ComponentData026` findings are implemented and proven; final evidence is in `specs/026-component-data-conformance-hardening/pr-evidence.md`.
@@ -280,9 +280,9 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - Feature-024 metadata now contains 139 maintained source files, 211 exported public types, and exactly 13 closed finding resolutions; Wave 5 and Wave 6 remain blocked through the new Terminal.GUI-derived closure after Feature 029.
 
 ### 028-pre-wave5-wave6-conformance-closure
-- This evidence-only closure starts only after Features 025 and 026 merge, using `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md`.
-- It independently revalidates all 13 findings and both consumer families; it fixes no product finding and starts no example wave.
-- A full pass closes only the existing TV203/Free Vision gate as `ReadyForTerminalGuiAudit`; both waves remain `BlockedPendingTerminalGuiAudit`, and Feature 029 is the mandatory next intake.
+- Current implementation status: the evidence-only closure independently revalidated all 13 findings, seven real-path slices, and 13 protected consumer groups without a product, API, dependency, example, or protected-source change.
+- The existing TV203/Free Vision gate is `ReadyForTerminalGuiAudit`; 12 consumer groups use the existing framework and destructive Wave-6 policy remains one bounded `FollowUpHardening`.
+- Both waves remain `BlockedPendingTerminalGuiAudit`, and Feature 029 is the sole mandatory next intake.
 
 ### 029-tv203-freevision-terminalgui-conformance-audit
 - This read-only audit starts only after Feature 028 merges and uses `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md`.
@@ -354,6 +354,8 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - in-process state only; audit JSON and Markdown evidence are repository-owned documentation (025-core-runtime-conformance-hardening)
 - C# with latest language version on .NET 10 + Existing `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization`; no new package or runtime dependency (026-component-data-conformance-hardening)
 - Existing bounded binary archive and `TResourceFile`; controlled temporary filesystem metadata for file-dialog proofs (026-component-data-conformance-hardening)
+- C# / .NET 10 for test-only validation; JSON, Markdown, YAML, Bash and PowerShell evidence tooling + existing MSTest 4.0.1, Coverlet 6.0.4, DocFX, Playwright/Axe, Lynx, jq, xmllint, Git and GitHub Actions (028-pre-wave5-wave6-conformance-closure)
+- repository-owned JSON and Markdown only; historical, consumer, and Free Vision sources remain read-only (028-pre-wave5-wave6-conformance-closure)
 
 ### 007-port-wave1-examples
 - Current status: Wave 1 delivered (2026-03-28). `desklogo`, `msgcls`, `tutorial` (16 steps), `videomode` are ported, smoke-tested, and guide-documented.
@@ -610,9 +612,10 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 *Standard preset set: `security-governance` v0.6.0 prio 10, `architecture-governance` v0.5.0 prio 20, `isaqb-architecture-governance` v0.2.0 prio 30, `a11y-governance` v0.4.0 prio 40, `cross-platform-governance` v0.2.0 prio 50, and `agent-parity-governance` v0.3.0 prio 60. `a11y-governance` v0.4.0 adds didactic inline-code-comment governance for new or changed non-trivial logic. `architecture-governance` v0.5.0 adds conditional `BSI C3A` cloud-autonomy evidence and `BSI C5` cloud-compliance assurance evidence for cloud-service selection, provider dependencies, audit/assurance status, shared responsibility, and operational evidence. `security-governance` v0.6.0 keeps conditional `AI-SBOM` evidence, language-specific secure-coding profiles, and regulatory applicability screening for NIS2, CRA, EU AI Act, and DORA: development-tool-only AI usage is `N/A`, AI runtime/product components require G7/BSI AI-SBOM cluster evidence, and private training projects record regulatory `N/A` when no regulated scope exists. All six presets now include audit-ready Spec-Kit run evidence: `Applicable` / `N/A` / `Open`, rationale, evidence path, reviewer, residual risk, and follow-up must be documented for the current Spec-Kit run. All six presets are in the `github/spec-kit` community catalog as of 2026-05-04 and are also published under `https://github.com/hindermath/spec-kit-preset-*`. New Level-2 projects should install the applicable subset; C#/.NET Level-2 projects default to all six unless a justified exception is documented. Commit `.specify/presets/` and generated agent command updates when presets are project policy, but never commit `.specify/presets/.cache/`. Verify installs with `specify preset list`, `specify preset info`, and where relevant `specify preset resolve`. Improve presets in the home-baseline scaffold first, propagate to standalone preset repos, then commit, push, and smoke-test via GitHub ZIP URL. Preset-rule changes and preset version/priority changes require reviewing constitution, README tables/install snippets, all agent guidance files, and relevant templates together. Community/catalog coordination happens in `github/spec-kit#2362`.*
 
 <!-- SPECKIT START -->
-For the next feature context, read the binding intake
-`Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` and the Feature-024
-pre-wave gate before starting Feature 028.
+Feature 028 is locally complete with final evidence under
+`specs/028-pre-wave5-wave6-conformance-closure/`. After its merge and main
+sync, use only `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md`
+for Feature 029. Keep Wave 5 and Wave 6 blocked.
 <!-- SPECKIT END -->
 
 ## Hinweise / Notes

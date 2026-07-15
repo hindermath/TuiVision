@@ -140,3 +140,18 @@ many areas. It is not yet sufficiently proven for Wave 5 and Wave 6. The 13
 findings are bounded and remediable; they do not justify a broad framework
 rewrite. The correct sequence is a focused core hardening 025, a dependent
 component/data hardening 026, and an independent closure 028.
+
+## Feature-028-Reassessment / Feature 028 Reassessment
+
+Deutsch: Der unabhaengige Abschluss bestaetigt die sechs Wave-5- und sieben
+Wave-6-Gruppen ohne neue Consumer-ID. Zwoelf Entscheidungen sind
+`UseExistingFramework`; `W6-007` bleibt `FollowUpHardening`, weil destruktive
+Dateioperationen eine ausdrueckliche Produktpolitik benoetigen. Keine
+Consumer-Quelle wurde veraendert. Feature 029 ist der einzige naechste Intake,
+und beide Waves bleiben bis zum danach findings-basierten Closure blockiert.
+
+English: The independent closure confirms all six Wave-5 and seven Wave-6
+groups without a new consumer ID. Twelve decisions are `UseExistingFramework`;
+`W6-007` remains `FollowUpHardening` because destructive file operations need
+an explicit product policy. No consumer source changed. Feature 029 is the sole
+next intake, and both Waves remain blocked through its finding-derived closure.

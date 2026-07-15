@@ -336,9 +336,10 @@ public sealed class ConformanceAuditEvidenceTests
         string gate = ReadFeatureFile("pre-wave5-gate.md");
         StringAssert.Contains(gate, "`Core025` | 9 | Closed");
         StringAssert.Contains(gate, "`ComponentData026` | 4 | Closed");
-        StringAssert.Contains(gate, "`Closure028` | Required");
-        StringAssert.Contains(gate, "Wave 5 | Blocked");
-        StringAssert.Contains(gate, "Feature 028");
+        StringAssert.Contains(gate, "`Closure028` | 13 findings / 7 slices / 13 consumers | ReadyForTerminalGuiAudit");
+        StringAssert.Contains(gate, "Feature 029 | Required");
+        StringAssert.Contains(gate, "Wave 5 | BlockedPendingTerminalGuiAudit");
+        StringAssert.Contains(gate, "Wave 6 | BlockedPendingTerminalGuiAudit");
     }
 
     /// <summary>
@@ -413,9 +414,10 @@ public sealed class ConformanceAuditEvidenceTests
         StringAssert.Contains(gate, "`Core025` | 9 | Closed");
         StringAssert.Contains(gate, "Feature 026 | Closed");
         StringAssert.Contains(gate, "`ComponentData026` | 4 | Closed");
-        StringAssert.Contains(gate, "Feature 028 | Required");
-        StringAssert.Contains(gate, "Wave 5 | Blocked");
-        StringAssert.Contains(gate, "Wave 6 | Blocked");
+        StringAssert.Contains(gate, "Feature 028 | ReadyForTerminalGuiAudit");
+        StringAssert.Contains(gate, "Feature 029 | Required");
+        StringAssert.Contains(gate, "Wave 5 | BlockedPendingTerminalGuiAudit");
+        StringAssert.Contains(gate, "Wave 6 | BlockedPendingTerminalGuiAudit");
     }
 
     /// <summary>

@@ -681,11 +681,11 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.6a` = Core-Runtime-Konformitätshärtung — ✓ ABGESCHLOSSEN, 9 Findings mit realem Red-/Green-Proof (Feature 025)
    - `3.6b` = Component-/Data-Konformitätshärtung — ✓ ABGESCHLOSSEN, 4 Findings mit realem Red-/Green-Proof (Feature 026)
    - `3.6c` = Ursprünglicher Pre-Wave-5-Konformitätsabschluss — ✓ HISTORISCH ABGESCHLOSSEN UND FÜR ZUKUNFTSPLANUNG SUPERSEDED (Feature 027, Merge `35414af`)
-   - `3.6d` = Kombinierter TV203-/Free-Vision-Konformitätsabschluss — NÄCHSTER LAUF (Feature 028, Lastenheft 12); gibt die Waves noch nicht frei
-   - `3.6e` = TV203-/Free-Vision-/Terminal.GUI-v1.9.0-Konformitätsaudit — OFFEN NACH 028 (Feature 029, Lastenheft 13)
+   - `3.6d` = Kombinierter TV203-/Free-Vision-Konformitätsabschluss — ✓ ABGESCHLOSSEN, `ReadyForTerminalGuiAudit` (Feature 028, Lastenheft 12); gibt die Waves noch nicht frei
+   - `3.6e` = TV203-/Free-Vision-/Terminal.GUI-v1.9.0-Konformitätsaudit — NÄCHSTER LAUF (Feature 029, Lastenheft 13)
    - `3.6f` = Findings-basierte Hardening-Läufe und unabhängiger Abschluss — DYNAMISCH AB 030; keine leeren Features
 
->>> NÄCHSTER SCHRITT <<< `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` als Feature 028 ausführen; danach folgt Lastenheft 13 als Feature 029. Wave 5 und Wave 6 bleiben bis zum neuen findings-basierten Closure-Merge blockiert.
+>>> NÄCHSTER SCHRITT <<< `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md` als Feature 029 ausführen. Feature 028 ist `ReadyForTerminalGuiAudit`; Wave 5 und Wave 6 bleiben bis zum neuen findings-basierten Closure-Merge blockiert.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.
