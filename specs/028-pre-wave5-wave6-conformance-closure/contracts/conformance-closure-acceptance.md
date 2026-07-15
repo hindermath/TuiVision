@@ -7,7 +7,9 @@
 - Finding identities, observations, ownership, source relations, and accepted
   boundaries are immutable during Feature 028.
 - `tv203s/`, `TVDEMOS/`, `TVFM/`, and pinned Free Vision remain read-only.
-- The six baseline presets and `autonomous-run-governance` v0.1.4 are active.
+- The six baseline presets and `autonomous-run-governance` v0.2.0 are active.
+- A valid feature-local autonomous run state binds the resumed branch,
+  accepted artifacts, current authority, task counts, and next exact action.
 
 ## Finding Closure Contract
 

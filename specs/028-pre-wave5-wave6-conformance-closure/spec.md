@@ -304,7 +304,7 @@ while both example waves remain `BlockedPendingTerminalGuiAudit` and Feature
   architecture evidence or provide an explicit equivalent feature-local
   rationale; it MUST NOT claim a control from an aggregate green check alone.
 - **CR-012**: The six baseline governance presets and optional
-  `autonomous-run-governance` v0.1.4 MUST be evaluated separately at their
+  `autonomous-run-governance` v0.2.0 MUST be evaluated separately at their
   installed local versions.
 - **CR-013**: Product scope, stop boundaries, and decision vocabularies MUST
   remain separate from operational remote authority, which belongs only in
@@ -336,10 +336,11 @@ while both example waves remain `BlockedPendingTerminalGuiAudit` and Feature
 - **Agent Parity Governance v0.3.0**: All five maintained agent guidance
   surfaces are reviewed together. They change only for shared status or
   guidance; `.specify/templates/` remain `N/A` unless deliberately affected.
-- **Autonomous Run Governance v0.1.4**: Evidence-first execution, convergence,
+- **Autonomous Run Governance v0.2.0**: Evidence-first execution, convergence,
   complete gate requirements, exact staged-candidate validation, exact-head
-  remote proof, no-empty-PR behavior, permission boundaries, closeout, resume,
-  and retrospective learning are `Applicable`.
+  remote proof, no-empty-PR behavior, permission boundaries, validated
+  feature-local run state, protected stop/resume, closeout, and retrospective
+  learning are `Applicable`.
 
 ### Key Entities
 

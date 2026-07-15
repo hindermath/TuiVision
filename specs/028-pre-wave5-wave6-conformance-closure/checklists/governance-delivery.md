@@ -7,7 +7,7 @@
 
 ## Governance Applicability
 
-- [x] CHK001 Are all six baseline presets and autonomous-run-governance v0.1.4 evaluated separately? [Completeness, Spec §CR-012]
+- [x] CHK001 Are all six baseline presets and autonomous-run-governance v0.2.0 evaluated separately, including validated stop/resume state? [Completeness, Spec §CR-012]
 - [x] CHK002 Are NIST SSDF, CWE Top 25, evidence integrity, secrets, dependencies, and exact-head proof explicitly applicable? [Security, Spec §Governance Applicability]
 - [x] CHK003 Do ASVS, supply-chain, AI-SBOM, and regulatory `N/A` decisions include concrete scope-change triggers? [Governance, Spec §CR-007-CR-009]
 - [x] CHK004 Are STRIDE, CIA, CAPEC, quality, and consumer traceability distinguished from trigger-based cloud and provider controls? [Architecture, Spec §CR-010]

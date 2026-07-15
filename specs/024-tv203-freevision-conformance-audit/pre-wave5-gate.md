@@ -8,9 +8,10 @@
 | Feature 027 historical closure | Superseded | Merge `35414af` remains valid execution history, but its zero-finding premise no longer governs future work |
 | Feature 025 | Closed | Nine `Core025` findings are remediated through real-path red/green proof; Feature 028 must revalidate them |
 | Feature 026 | Closed | Four `ComponentData026` findings are remediated through real-path red/green proof; Feature 028 must revalidate them |
-| Feature 028 | Required | Independent combined closure after 025 and 026 |
-| Wave 5 | Blocked | Do not start until Feature 028 passes and merges |
-| Wave 6 | Blocked | Do not start before Wave 5; reuse the combined closure evidence and re-evaluate Wave-5 deltas |
+| Feature 028 | ReadyForTerminalGuiAudit | All 13 findings, seven integrated slices, 13 consumer groups, governance, local validation, and the three-platform CI definition are independently reconciled |
+| Feature 029 | Required | Audit all 48 contracts against pinned Terminal.GUI v1.9.0 before any Wave release |
+| Wave 5 | BlockedPendingTerminalGuiAudit | Do not start until Feature 029, any finding-derived hardening, and its independent closure merge |
+| Wave 6 | BlockedPendingTerminalGuiAudit | Do not start before Wave 5; reuse both audit layers and re-evaluate actual Wave-5 deltas |
 
 Deutsch: Feature 027 wurde auf seiner damaligen Datenbasis korrekt ausgeführt.
 Die spätere Verbraucherprüfung zeigt jedoch, dass normalisierte Testereignisse,
@@ -30,7 +31,7 @@ findings.
 |---|---:|---|---|
 | `Core025` | 9 | Closed | `specs/025-core-runtime-conformance-hardening/pr-evidence.md` |
 | `ComponentData026` | 4 | Closed | `specs/026-component-data-conformance-hardening/pr-evidence.md` |
-| `Closure028` | Required | Mandatory | `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` |
+| `Closure028` | 13 findings / 7 slices / 13 consumers | ReadyForTerminalGuiAudit | `specs/028-pre-wave5-wave6-conformance-closure/closure-evidence.json` |
 | `AcceptedFollowUp` | 0 | None | No unowned framework follow-up |
 | `ProductDecision` | 0 | None | No unresolved breaking-contract decision in Revision 2 |
 
@@ -66,6 +67,22 @@ Feature 028 must:
 5. release Wave 5 only after every accepted finding is `Closed` or a reviewed
    `ProductDecision`; record Wave 6 as conditionally ready and require
    re-evaluation after Wave-5 implementation deltas.
+
+## Feature-028-Abschluss / Feature 028 Closure
+
+Deutsch: Feature 028 hat alle 13 Findings unveraendert mit den gemergten
+Features 025/026 abgeglichen, sieben reale Integrationspfade erneut ausgefuehrt
+und sechs Wave-5- sowie sieben Wave-6-Consumer-Gruppen read-only bewertet.
+Zwoelf Gruppen verwenden das bestehende Framework. Nur die destruktive
+`FILECOPY.PAS`-/`TRASH.PAS`-Politik bleibt als nicht blockierendes
+`FollowUpHardening` fuer Wave 6. Der Gate-Zustand ist daher
+`ReadyForTerminalGuiAudit`, nicht `WaveReady`.
+
+English: Feature 028 reconciled all 13 findings with merged Features 025/026,
+re-executed seven real integration paths, and reviewed six Wave-5 plus seven
+Wave-6 consumer groups read-only. Twelve groups use the existing framework.
+Only destructive `FILECOPY.PAS`/`TRASH.PAS` policy remains a non-blocking Wave-6
+follow-up. The gate is therefore `ReadyForTerminalGuiAudit`, not `WaveReady`.
 
 ## Restrestrisiko / Residual Risk
 

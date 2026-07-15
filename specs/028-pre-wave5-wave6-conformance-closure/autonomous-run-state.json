@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0",
+  "runId": "a25c500a-a8cb-4177-a3b7-f73c36b182c9",
+  "featurePath": "specs/028-pre-wave5-wave6-conformance-closure",
+  "branch": "028-pre-wave5-wave6-conformance-closure",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Publish",
+  "status": "Active",
+  "checkpointCommit": "c2cf9d3067b9299308d029e27edfca1240829d52",
+  "acceptedArtifacts": [
+    {
+      "path": "specs/028-pre-wave5-wave6-conformance-closure/autonomous-gate-requirements.json",
+      "sha256": "62c0a68f5aad09717b0912f720b3b5678ce76514fdbffd9ff98580230bf3e3a4"
+    },
+    {
+      "path": "specs/028-pre-wave5-wave6-conformance-closure/checklists/closure-readiness.md",
+      "sha256": "6c82ae495bf1d46b28f1ab13903fd8f0a39ed9718c8abba0e6eeb592456a6cb5"
+    },
+    {
+      "path": "specs/028-pre-wave5-wave6-conformance-closure/checklists/finding-closure.md",
+      "sha256": "0bd271e2c67e2aa5b730064a8c38278deb4f56f3088182a2981d418f6b31c22e"
+    },
+    {
+      "path": "specs/028-pre-wave5-wave6-conformance-closure/checklists/governance-delivery.md",
+      "sha256": "80b85afda0a65e2291691a95041afe64bed1f490c56a5f69d43581b526d8402f"
+    },
+    {
+      "path": "specs/028-pre-wave5-wave6-conformance-closure/checklists/integration-consumer.md",
+      "sha256": "d44e483322189d9fa12f4bec03085c92b666494e10be266236905e547cad049f"
+    },
+    {
+      "path": "specs/028-pre-wave5-wave6-conformance-closure/checklists/plan-quality.md",
+      "sha256": "368695f2bc8af17ad8453ca16c5a384054ef92f3677bd487db424a51e5237b32"
+    },
+    {
+      "path": "specs/028-pre-wave5-wave6-conformance-closure/checklists/plan-review.md",
+      "sha256": "a69f7c3e63799a4ce0deedd2090c3c24cd0e6bc85003d58c76ecaff8a74d598d"
+    },
+    {
+      "path": "specs/028-pre-wave5-wave6-conformance-closure/checklists/requirements.md",
+      "sha256": "b9ac050322b16c1cfa196e512635e00ba5831f4cb554a4d01138037b574da531"
+    },
+    {
+      "path": "specs/028-pre-wave5-wave6-conformance-closure/contracts/conformance-closure-acceptance.md",
+      "sha256": "59b0529ace3b6597f0ba110b5dfa7e642c58d5f556bc62526da49ed0256221b7"
+    },
+    {
+      "path": "specs/028-pre-wave5-wave6-conformance-closure/data-model.md",
+      "sha256": "396d2fffd4eb837adb7c924ae2a6dfdc866b84150db99b0d93010aaf0aa98f91"
+    },
+    {
+      "path": "specs/028-pre-wave5-wave6-conformance-closure/plan.md",
+      "sha256": "f681b58f8fb872fad5ab7f7c8b1b616405e5a4070438d76d8773c2180b2414ac"
+    },
+    {
+      "path": "specs/028-pre-wave5-wave6-conformance-closure/quickstart.md",
+      "sha256": "06fe30d0e7f23a67aba4719e110f6166f99916c98a0e78ff1f8609a9e1df3d98"
+    },
+    {
+      "path": "specs/028-pre-wave5-wave6-conformance-closure/research.md",
+      "sha256": "0d9f62f7751e97c093e1288d22d05cd3911b800c0c92fd84ca01ac640e8847c1"
+    },
+    {
+      "path": "specs/028-pre-wave5-wave6-conformance-closure/spec.md",
+      "sha256": "76d4076cc744b7bdfe62b68865caa1822da00a5ad4fa58ed28e9ba755fef8ed4"
+    },
+    {
+      "path": "specs/028-pre-wave5-wave6-conformance-closure/tasks.md",
+      "sha256": "ae27ca18c33350ae37d920514f319fe92c80b7b4ae0a71d89bbb59052f091a75"
+    }
+  ],
+  "tasks": {
+    "path": "specs/028-pre-wave5-wave6-conformance-closure/tasks.md",
+    "sha256": "ae27ca18c33350ae37d920514f319fe92c80b7b4ae0a71d89bbb59052f091a75",
+    "completed": 130,
+    "total": 146
+  },
+  "lastPassingGate": "T001-T130 complete: the exact 25-path staged candidate passed diff, status, secret, state, and version reconciliation.",
+  "nextExactAction": "Execute T131: commit the exact staged candidate, push the numbered branch, and create the authorized feature PR.",
+  "lastOperation": {
+    "kind": "DeliveryCandidateFreeze",
+    "state": "Completed",
+    "summary": "Completed T001-T130; the gate is ReadyForTerminalGuiAudit, both waves remain blocked, and the exact staged candidate is frozen for authorized remote delivery."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "updatedAt": "2026-07-15T18:24:05Z"
+}

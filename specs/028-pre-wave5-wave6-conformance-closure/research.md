@@ -57,7 +57,7 @@ acceptance from `Repository Tooling (windows-2022)`.
 
 **Rationale**: Feature-026 evidence already proved the same CI body passes on
 `windows-latest`. The recurring missing-command defect is now blocked by
-autonomous-run-governance v0.1.4; the smallest project correction is to execute
+autonomous-run-governance v0.2.0; the smallest project correction is to execute
 the accepted command on the reviewed PR head.
 
 **Alternatives rejected**: tooling-job inference; a supplemental head after

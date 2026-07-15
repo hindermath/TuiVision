@@ -145,7 +145,7 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - Keyboard acceptance requires behavioral proof or a concrete `N/A` for Tab, Shift+Tab, arrows, Enter, and direct shortcuts across every inventoried selectable control family.
 - Native AT-SPI, NSAccessibility, UI Automation, speech, full-control migration, terminal-wide WCAG claims, Wave 1-4 remediation, and Feature 024 are out of scope.
 - Historical Turbo Vision has no direct equivalent for the modern semantic A11Y contracts; relevant focus/menu/status sources are read-only intent context only.
-- The former post-023 Wave-5 statement is historical; Features 024-028 supersede it, and the current next intake is Feature 028 followed by the mandatory Feature-029 Terminal.GUI audit.
+- The former post-023 Wave-5 statement is historical; Feature 028 completed the TV203/Free Vision closure, and the current sole next intake is the mandatory Feature-029 Terminal.GUI audit.
 
 ### 024-tv203-freevision-conformance-audit
 - Current planning baseline: the original audit and merge remain complete, but consumer-review Revision 2 in `specs/024-tv203-freevision-conformance-audit/consumer-readiness-review.md` supersedes the zero-finding forward decision.
@@ -164,7 +164,7 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - Current implementation status: all nine `Core025` findings are implemented and proven; final evidence is in `specs/025-core-runtime-conformance-hardening/pr-evidence.md`.
 - `F001`-`F009` close concrete event kinds, focus and group state, idle lifecycle, desktop stack, modal/close, shared command state, real keyboard ingress, and bounded generic drag through real-path red/green proof.
 - Feature-024 resolution metadata records exactly 13 non-documentation-only closures from Features 025 and 026 while preserving the Feature-028 and Wave-5/Wave-6 gates.
-- The next prioritized intake after Feature 026 merges and `main` is synchronized is `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md` for Feature 028.
+- Feature 028 completed the independent closure after Feature 026; its archived intake is `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.028-pre-wave5-wave6-conformance-closure.md`.
 
 ### 026-component-data-conformance-hardening
 - Current implementation status: all four `ComponentData026` findings are implemented and proven; final evidence is in `specs/026-component-data-conformance-hardening/pr-evidence.md`.
@@ -172,9 +172,9 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - Feature-024 metadata now contains 139 maintained source files, 211 exported public types, and exactly 13 closed finding resolutions; Wave 5 and Wave 6 remain blocked through the new Terminal.GUI-derived closure after Feature 029.
 
 ### 028-pre-wave5-wave6-conformance-closure
-- This evidence-only closure starts only after Features 025 and 026 merge, using `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.md`.
-- It independently revalidates all 13 findings and both consumer families; it fixes no product finding and starts no example wave.
-- A full pass closes only the existing TV203/Free Vision gate as `ReadyForTerminalGuiAudit`; both waves remain `BlockedPendingTerminalGuiAudit`, and Feature 029 is the mandatory next intake.
+- Current implementation status: the evidence-only closure independently revalidated all 13 findings, seven real-path slices, and 13 protected consumer groups without a product, API, dependency, example, or protected-source change.
+- The existing TV203/Free Vision gate is `ReadyForTerminalGuiAudit`; 12 consumer groups use the existing framework and destructive Wave-6 policy remains one bounded `FollowUpHardening`.
+- Both waves remain `BlockedPendingTerminalGuiAudit`, and Feature 029 is the sole mandatory next intake.
 
 ### 029-tv203-freevision-terminalgui-conformance-audit
 - This read-only audit starts only after Feature 028 merges and uses `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md`.

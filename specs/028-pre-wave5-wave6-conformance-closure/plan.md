@@ -47,7 +47,7 @@ existing TV203/Free Vision gate as `ReadyForTerminalGuiAudit`; both Waves remain
 | A11Y | Applicable to keyboard ingress, focus, keyboard-equivalent drag, rejection, modal restoration, bilingual docs, and text-first proof |
 | Cross-platform | Applicable: actual Ubuntu/macOS/Windows runtime commands, path behavior, and terminal fallbacks are required; no new paired script is planned |
 | Agent parity | Applicable: five maintained guidance files move together only for the shared Feature-028 completion state |
-| Autonomous governance | Applicable: v0.1.4 gate requirements, exact staged candidate, exact-head provider evidence, permissions, closeout, and retrospective |
+| Autonomous governance | Applicable: v0.2.0 gate requirements, validated run state, protected resume, exact staged candidate, exact-head provider evidence, permissions, closeout, and retrospective |
 | Statistics | Applicable: update `docs/project-statistics.md` after the final diff and validation counts are stable |
 | Security-first tracking | Pass: no credentials, agent state, logs, histories, SQLite, generated docs, test output, or temporary exact-head JSON will be committed |
 
@@ -286,7 +286,8 @@ new product fix inside 028.
 | Workflow | YAML parse, immutable action pins, PR-head CI matrix | Ubuntu/macOS/Windows execute restore, build, test, and DocFX |
 | Security/supply chain | repository secret scan, Gitleaks, dependency and SBOM workflow | zero High secrets and no unresolved dependency finding |
 | Remote review | required PR-context checks, Claude/Copilot state, GraphQL threads | technical green; unavailable review honest; actionable threads 0 |
-| Exact-head gates | temporary provider-neutral evidence plus both v0.1.4 validators | requirements hash/head/tokens/one-primary all pass |
+| Exact-head gates | temporary provider-neutral evidence plus both v0.2.0 gate-evidence validators | requirements hash/head/tokens/one-primary all pass |
+| Resume state | both v0.2.0 run-state validators at logical phase boundaries | branch, feature, hashes, task counts, authority, stage, and next action agree |
 
 ## Version and Build-Counter Strategy
 

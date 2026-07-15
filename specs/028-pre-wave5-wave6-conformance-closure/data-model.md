@@ -111,7 +111,7 @@ row.
 
 ## AutonomousGateRequirement
 
-The committed `autonomous-gate-requirements.json` follows the installed v0.1.4
+The committed `autonomous-gate-requirements.json` follows the installed v0.2.0
 schema. Each row has one stable gate ID, applicability, exact required scope,
 command tokens, optional runner tokens, rationale, and re-evaluation trigger.
 It is committed before implementation and is not rewritten to match later
@@ -135,12 +135,22 @@ provider output.
 
 ## TemporaryGateEvidence
 
-The untracked provider-neutral evidence follows the installed v0.1.4 evidence
+The untracked provider-neutral evidence follows the installed v0.2.0 evidence
 schema. It stores the SHA-256 of the committed requirements, exact reviewed
 head, exactly one Primary row per gate, optional supplemental rows, provider,
 immutable run ID, workflow, job, runner/platform, executed command, result, and
 reference. Both Bash and PowerShell validators must pass. The file is deleted
 or kept outside Git after merge.
+
+## AutonomousRunState
+
+The feature-local `autonomous-run-state.json` follows the installed v0.2.0
+state schema. It binds the run ID, feature path, branch, current delivery
+authority, accepted-artifact hashes, task hash and counts, stage, status,
+checkpoint commit, last passing gate, last operation, and exact next action.
+Both installed state validators must accept every persisted transition. The
+state is an execution index; Git history, task checkboxes, and evidence remain
+authoritative if they disagree with a stale index.
 
 ## State Transitions
 
