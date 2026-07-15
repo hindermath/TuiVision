@@ -5,9 +5,9 @@
   "branch": "028-pre-wave5-wave6-conformance-closure",
   "deliveryMode": "MergeAndSync",
   "authorityRevalidationRequired": false,
-  "stage": "Review",
-  "status": "Active",
-  "checkpointCommit": "f97f1cd70a4d14c84af62ab42d1d210d43d0c9d2",
+  "stage": "Retrospective",
+  "status": "Completed",
+  "checkpointCommit": "a09b741712d35e2faa7f7de35301143515b9ea39",
   "acceptedArtifacts": [
     {
       "path": "specs/028-pre-wave5-wave6-conformance-closure/autonomous-gate-requirements.json",
@@ -67,26 +67,26 @@
     },
     {
       "path": "specs/028-pre-wave5-wave6-conformance-closure/tasks.md",
-      "sha256": "ae27ca18c33350ae37d920514f319fe92c80b7b4ae0a71d89bbb59052f091a75"
+      "sha256": "fc846de62a218cd299260c139535676c1f3481bbd8c60ef1f8cfa7b17b33eea2"
     }
   ],
   "tasks": {
     "path": "specs/028-pre-wave5-wave6-conformance-closure/tasks.md",
-    "sha256": "ae27ca18c33350ae37d920514f319fe92c80b7b4ae0a71d89bbb59052f091a75",
-    "completed": 130,
+    "sha256": "fc846de62a218cd299260c139535676c1f3481bbd8c60ef1f8cfa7b17b33eea2",
+    "completed": 146,
     "total": 146
   },
-  "lastPassingGate": "Exact-head CI red was reproduced locally and corrected through two test-only gate assertions; build 281 passed all 756 Release tests.",
-  "nextExactAction": "Commit and push the bounded CI remediation, then require all exact-head remote gates and review threads to converge.",
+  "lastPassingGate": "Feature PR #79, exact-head gates, gate evidence, review convergence, merge, v0.2.1 retrospective promotion, tag-ZIP adoption, and both repository sync boundaries are complete.",
+  "nextExactAction": "N/A",
   "lastOperation": {
-    "kind": "RemoteGateRemediation",
+    "kind": "CausalCloseout",
     "state": "Completed",
-    "summary": "PR run 29440455237 exposed two stale Feature-024 test expectations on all three operating systems; only those assertions changed and build 281 passed 756/756 locally."
+    "summary": "T131-T145 have immutable dispositions in delivery-closeout.md; this non-recursive commit completes T146 atomically when it reaches main."
   },
   "stop": {
     "reason": "N/A",
     "requestedAt": "N/A",
     "safeBoundary": "N/A"
   },
-  "updatedAt": "2026-07-15T18:30:00Z"
+  "updatedAt": "2026-07-15T19:49:58Z"
 }
