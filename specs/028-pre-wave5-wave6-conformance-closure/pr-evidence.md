@@ -304,6 +304,7 @@ Runtime-, API-, Dependency-, Beispiel- oder historische Quellen.
 | `dotnet format --verify-no-changes --no-restore` | N/A | Pass, Exit 0 | complete solution |
 | Full Release tests | 277 | Expected validator red: 2 failed, 754 passed | two test-only assumptions, no product defect |
 | Full Release tests repeat | 278 | Pass: 756/756, 0 skipped | Core 52, Compatibility 18, Serialization 48, Drivers 125, Controls 373, Examples 140 |
+| Remote-gate remediation repeat | 281 | Pass: 756/756, 0 skipped | only two stale Feature-024 gate assertions changed after exact-head CI red |
 | `xmllint` | N/A | Pass | canonical `coverlet.runsettings` |
 | Coverage | 279 | Pass | Core 92.96%, Controls 86.66%, Serialization 90.01%, Compatibility 80.55%, Drivers 89.18% |
 | Ready-state validator | 280 | Pass: 3/3 | complete gate, complete relations, and exactly 13 consumer rows |
@@ -329,6 +330,22 @@ ueber den vorhandenen Rename-Workflow archiviert; dessen Script-Suite bestand
 *The final status surfaces agree on the bounded gate state and next intake. The
 archival workflow passed 18/18 tests, while shared templates and generated
 command surfaces remain unchanged.*
+
+### Exact-Head CI Red/Green
+
+PR run `29440455237` built successfully but failed the full test command on
+Ubuntu, macOS, and Windows because two existing
+`ConformanceAuditEvidenceTests` assertions still required the historical
+pre-closure strings `Feature 028 | Required` and ``Closure028 | Required``.
+The maintained gate document correctly contained the new bounded state, so the
+failure was a stale test expectation rather than a product or gate defect.
+
+Die Korrektur aendert nur diese beiden testseitigen Vertragspruefungen: Sie
+fordern nun `ReadyForTerminalGuiAudit`, Feature 029 als `Required` und beide
+Waves als `BlockedPendingTerminalGuiAudit`. Der vollstaendige lokale
+Release-Lauf bestand danach in Build 281 erneut mit 756/756 Tests. Der naechste
+Remote-Lauf muss denselben exakten Head auf allen drei Betriebssystemen
+bestaetigen.
 
 Der TV203/Free-Vision-Gate wird damit lokal auf
 `ReadyForTerminalGuiAudit` gesetzt. Das ist keine Wave-Freigabe: Wave 5 und
@@ -377,7 +394,7 @@ are outside Feature 028.
 |---|---|---|
 | Beabsichtigte Pfade / Intended paths | Pass | 25 Pfade: Feature-Evidence/Planung, ein test-only Validator, eine CI-Matrixzeile, synchronisierte Status-/Agent-Flächen, Statistik, Version und Lastenheft-Archivierung |
 | Tracked worktree diff | Pass | Final `git diff --check` exited 0 after all local edits |
-| Exact staged candidate | Pass | 25 paths, `+2730/-249`, net `+2481`; `git diff --cached --check` exited 0 |
+| Final PR candidate | Pass | 35 paths, `+4641/-111`, net `+4530`; full branch diff and staged remediation both passed `git diff --check` |
 | Status reconciliation | Pass | No unstaged or untracked path remains after exact staging |
 | Index preservation | N/A | Sauberer Index am Resume-Checkpoint |
 

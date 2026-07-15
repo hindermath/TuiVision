@@ -5,9 +5,9 @@
   "branch": "028-pre-wave5-wave6-conformance-closure",
   "deliveryMode": "MergeAndSync",
   "authorityRevalidationRequired": false,
-  "stage": "Publish",
+  "stage": "Review",
   "status": "Active",
-  "checkpointCommit": "c2cf9d3067b9299308d029e27edfca1240829d52",
+  "checkpointCommit": "f97f1cd70a4d14c84af62ab42d1d210d43d0c9d2",
   "acceptedArtifacts": [
     {
       "path": "specs/028-pre-wave5-wave6-conformance-closure/autonomous-gate-requirements.json",
@@ -76,17 +76,17 @@
     "completed": 130,
     "total": 146
   },
-  "lastPassingGate": "T001-T130 complete: the exact 25-path staged candidate passed diff, status, secret, state, and version reconciliation.",
-  "nextExactAction": "Execute T131: commit the exact staged candidate, push the numbered branch, and create the authorized feature PR.",
+  "lastPassingGate": "Exact-head CI red was reproduced locally and corrected through two test-only gate assertions; build 281 passed all 756 Release tests.",
+  "nextExactAction": "Commit and push the bounded CI remediation, then require all exact-head remote gates and review threads to converge.",
   "lastOperation": {
-    "kind": "DeliveryCandidateFreeze",
+    "kind": "RemoteGateRemediation",
     "state": "Completed",
-    "summary": "Completed T001-T130; the gate is ReadyForTerminalGuiAudit, both waves remain blocked, and the exact staged candidate is frozen for authorized remote delivery."
+    "summary": "PR run 29440455237 exposed two stale Feature-024 test expectations on all three operating systems; only those assertions changed and build 281 passed 756/756 locally."
   },
   "stop": {
     "reason": "N/A",
     "requestedAt": "N/A",
     "safeBoundary": "N/A"
   },
-  "updatedAt": "2026-07-15T18:24:05Z"
+  "updatedAt": "2026-07-15T18:30:00Z"
 }
