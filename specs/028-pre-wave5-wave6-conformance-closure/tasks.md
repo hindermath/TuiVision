@@ -249,28 +249,27 @@ and staged without an unstaged or untracked remainder.
 **Purpose**: Deliver under authorized `MergeAndSync`, validate every exact-head
 gate, and record terminal facts without invalidating the reviewed head.
 
-Tasks T131-T146 cannot truthfully mark their own checkboxes on the already
-reviewed feature head. Their final dispositions belong in
-`specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`; unchecked
-boxes on the historical feature commit do not mean those terminal tasks were
-skipped.
+Tasks T131-T146 could not truthfully mark their own checkboxes on the reviewed
+feature head. Their immutable dispositions now live in
+`specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`; the
+checkboxes become authoritative atomically when that closeout reaches `main`.
 
-- [ ] T131 Commit the exact staged Feature-028 candidate, push `028-pre-wave5-wave6-conformance-closure`, create the feature PR, and retain PR/head identifiers outside self-invalidating `pr-evidence.md`
-- [ ] T132 Identify pull-request-context gates, retain duplicate push/PR runs as uncancelled noise unless safely deduplicated, and record the authoritative run set in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
-- [ ] T133 Verify exact-head Linux, macOS, and Windows runtime runs execute restore, Release build, full tests, and DocFX and record immutable run/job URLs in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
-- [ ] T134 Verify the exact-head DocFX Pages Playwright/Axe gate and record immutable run/job evidence in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
-- [ ] T135 Verify exact-head Ubuntu/macOS/Windows homogeneity jobs execute agent-secret and Lastenheft rename checks and record immutable evidence in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
-- [ ] T136 Verify exact-head vulnerable/deprecated package and CycloneDX supply-chain workflow and record immutable evidence in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
-- [ ] T137 Verify exact-head Agent Secret Scan and Gitleaks as independent Primary gates and record both immutable runs in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
-- [ ] T138 Generate untracked provider-neutral evidence with eight applicable Primary rows plus the WSL `N/A` Primary row, exact requirements hash, and exact reviewed head at `/tmp/028-autonomous-gate-evidence.json`
-- [ ] T139 Run both installed v0.2.0 gate-evidence validators against `/tmp/028-autonomous-gate-evidence.json`, prove a tampered head fails, validate the final run state with both v0.2.0 state validators, and record results without committing the temporary file in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
-- [ ] T140 Monitor all required checks plus Claude, Copilot, and GraphQL review surfaces; record missing/quota-limited review as missing rather than passed in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
-- [ ] T141 Address every actionable review or CI finding through local edits, one build-counter increment before each new build/test command, complete revalidation, version realignment, commit, push, and a new exact-head evidence cycle recorded in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
-- [ ] T142 Verify the final reviewed head has every technical gate green, both evidence validators passing, zero actionable threads, no scope violation, and no unavailable reviewer mislabeled as approval in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
-- [ ] T143 Use the expressly authorized narrow admin bypass only if Human Approval is the sole remaining rule, merge with a merge commit, and delete the remote feature branch with the external terminal result destined for `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
-- [ ] T144 Switch locally to `main`, fetch/prune, fast-forward pull, and prove a clean `HEAD == origin/main` for `/Users/thorstenhindermann/RiderProjects/TuiVision`
-- [ ] T145 Run `speckit-autonomous-retrospective`; for a deterministic provider-neutral defect publish the non-empty Home-Baseline patch release and install its exact tag ZIP in TuiVision before Feature 029, otherwise record `NoPromotion` and create no empty branch/PR/release in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
-- [ ] T146 Create the single non-recursive causal closeout containing T131-T145 dispositions on a non-empty closeout branch, validate/review/merge it, return TuiVision and any touched Home-Baseline repository to clean synchronized `main`, and report Feature 029 as the sole next autonomous intake in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
+- [X] T131 Commit the exact staged Feature-028 candidate, push `028-pre-wave5-wave6-conformance-closure`, create the feature PR, and retain PR/head identifiers outside self-invalidating `pr-evidence.md`
+- [X] T132 Identify pull-request-context gates, retain duplicate push/PR runs as uncancelled noise unless safely deduplicated, and record the authoritative run set in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
+- [X] T133 Verify exact-head Linux, macOS, and Windows runtime runs execute restore, Release build, full tests, and DocFX and record immutable run/job URLs in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
+- [X] T134 Verify the exact-head DocFX Pages Playwright/Axe gate and record immutable run/job evidence in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
+- [X] T135 Verify exact-head Ubuntu/macOS/Windows homogeneity jobs execute agent-secret and Lastenheft rename checks and record immutable evidence in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
+- [X] T136 Verify exact-head vulnerable/deprecated package and CycloneDX supply-chain workflow and record immutable evidence in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
+- [X] T137 Verify exact-head Agent Secret Scan and Gitleaks as independent Primary gates and record both immutable runs in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
+- [X] T138 Generate untracked provider-neutral evidence with eight applicable Primary rows plus the WSL `N/A` Primary row, exact requirements hash, and exact reviewed head at `/tmp/028-autonomous-gate-evidence.json`
+- [X] T139 Run both installed v0.2.0 gate-evidence validators against `/tmp/028-autonomous-gate-evidence.json`, prove a tampered head fails, validate the final run state with both v0.2.0 state validators, and record results without committing the temporary file in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
+- [X] T140 Monitor all required checks plus Claude, Copilot, and GraphQL review surfaces; record missing/quota-limited review as missing rather than passed in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
+- [X] T141 Address every actionable review or CI finding through local edits, one build-counter increment before each new build/test command, complete revalidation, version realignment, commit, push, and a new exact-head evidence cycle recorded in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
+- [X] T142 Verify the final reviewed head has every technical gate green, both evidence validators passing, zero actionable threads, no scope violation, and no unavailable reviewer mislabeled as approval in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
+- [X] T143 Use the expressly authorized narrow admin bypass only if Human Approval is the sole remaining rule, merge with a merge commit, and delete the remote feature branch with the external terminal result destined for `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
+- [X] T144 Switch locally to `main`, fetch/prune, fast-forward pull, and prove a clean `HEAD == origin/main` for `/Users/thorstenhindermann/RiderProjects/TuiVision`
+- [X] T145 Run `speckit-autonomous-retrospective`; for a deterministic provider-neutral defect publish the non-empty Home-Baseline patch release and install its exact tag ZIP in TuiVision before Feature 029, otherwise record `NoPromotion` and create no empty branch/PR/release in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
+- [X] T146 Create the single non-recursive causal closeout containing T131-T145 dispositions on a non-empty closeout branch, validate/review/merge it, return TuiVision and any touched Home-Baseline repository to clean synchronized `main`, and report Feature 029 as the sole next autonomous intake in `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md`
 
 ---
 

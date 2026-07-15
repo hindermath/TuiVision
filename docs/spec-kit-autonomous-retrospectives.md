@@ -287,3 +287,45 @@ Feature 028 must not infer any Applicable platform row from a green job name.
 Until a later preset version provides a deterministic validator, its complete
 gate matrix is manually reconciled against workflow, job, runner, executed
 command, head SHA, and run ID before merge.
+
+## 028 Pre-Wave-5 and Wave-6 Conformance Closure
+
+**Feature:** `028-pre-wave5-wave6-conformance-closure`
+
+**Feature-PR:** [#79](https://github.com/hindermath/TuiVision/pull/79)
+
+**Closeout-PR:** Kausaler Einzel-Commit; eigene URL, reviewter Head und Merge
+werden zur Vermeidung von Rekursion extern geprüft.
+
+| Beobachtung | Entscheidung | Umsetzung oder Grenze |
+|---|---|---|
+| Der echte Resume unter v0.2.0 rekonstruierte Zustand und Autorität korrekt und führte Analyze erneut aus. Die akzeptierten Tasks entstanden jedoch vor der inzwischen zwingenden Marker-Consumer-Suche und wurden wegen unveränderter Hashes nicht ergänzt. Erst Remote-CI fand zwei veraltete Assertions. | `ValidationAutomation`, `SkillCorrection`, `TemplateCorrection`, `AgentPolicyCorrection`, `PresetFollowUp` mit `Promote` | v0.2.1 vergleicht nach Preset-/Governance-Drift aktuelle zwingende Korrektheits-, Sicherheits-, Berechtigungs- und Evidence-Regeln mit Plan, Tasks und Checklists. Nur anwendbare Lücken werden in-place ergänzt und erneut analysiert; reine Effizienzpräferenzen bleiben retrospektiv. |
+| Die erste CI-Runde stoppte auf Ubuntu, macOS und Windows an denselben zwei Evidence-Assertions; die Produktassemblies bauten. | `NoPromotion` | Die vorhandenen Exact-Head- und Remediation-Regeln funktionierten. Der Fix blieb bei zwei Test-Assertions, Build-Zähler, Evidence und Versionierung; danach bestanden 756/756 Tests und alle Remote-Gates. |
+| Acht anwendbare Primary-Gates und WSL `N/A` wurden an Requirements-Hash, exakten Head, Workflow, Job, Plattform und Befehl gebunden; beide Validatorimplementierungen akzeptierten die Evidence und lehnten Manipulation ab. | `NoPromotion` | Die v0.1.3/v0.1.4-Gate-Automation verhindert den zuvor beobachteten grünen-Jobnamen-Fehlschluss. Es fehlt keine weitere Preset-Regel. |
+| Push-/PR-Duplikate blieben ungekündigtes Rauschen. Claude und alle technischen Gates waren grün, GraphQL meldete null Threads, Copilot blieb quota-bedingt nicht verfügbar und nur Human Approval blockierte. | `NoPromotion` | Duplicate-, Missing-Reviewer-, Review- und Bypass-Grenzen funktionierten unverändert. Der enge Admin-Bypass ersetzte keinen technischen Proof. |
+| Die v0.2.1-Paketprüfung zeigte, dass Spec Kit 0.12.11 Custom-Preset-Commands im Copilot-Legacy-Modus, aber noch nicht im neuen Copilot-Skills-Modus erzeugt; der aktuelle Codex-Quick-Validator akzeptiert das von Spec Kit erzeugte `compatibility`-Feld nicht. | `ObserveAgain` | Beide Punkte sind externe CLI-/Validator-Grenzen. Die funktionsfähigen Legacy- und installierten Skill-Flächen bleiben erhalten; ohne zweite unabhängige Beobachtung oder Upstream-Entscheidung entsteht keine weitere Preset-Version. |
+
+### Promotion Evidence
+
+| Feld | Nachweis |
+|---|---|
+| Quelle | PR #79, erster CI-Run `29440455237`, finaler CI-Run `29440943486`, `specs/028-pre-wave5-wave6-conformance-closure/delivery-closeout.md` und Home-Baseline-Workitem `AR-028-03` |
+| Artefaktart | Resume-Command und Skill, Runbook, Readiness-Checklist, Agent-Addendum, Field-Validation und Preset-Follow-up |
+| Projektspezifischer Ausschluss | Keine Feature-Nummer, kein TuiVision-Marker, Testpfad, Build-Zähler, Gate-State, Provider-Run oder Wave-Reihenfolge wird verallgemeinert. |
+| Provider-neutrale Zielregel | Nach Preset- oder Governance-Drift werden neue zwingende Regeln mit akzeptierten Plan-, Task- und Checklist-Artefakten abgeglichen. Anwendbare fehlende Regeln erhalten eine minimale In-place-Ergänzung und einen erneuten Readiness-/Analyze-Lauf. Scope und frühere Entscheidungen bleiben erhalten. |
+| Auftreten und Vertrauen | Zwei verbundene deterministische Findings: Feature 027 etablierte die Consumer-Suche; Feature 028 bewies die fehlende Migrationsstufe beim Resume. Hohe Sicherheit. |
+| Berechtigungs- und Evidence-Risiko | Niedrig für Berechtigungen, hoch für Evidence-Integrität. Die Regel erweitert keine Implementierungs- oder Remote-Autorität. |
+| Reproduzierbarer Test | Eine ältere Task-Fixture ohne inzwischen zwingende Consumer-Suche unter einer neueren Preset-Version wiederaufnehmen: Pflichtregel führt zu `AmendAffectedArtifactsAndAnalyze`; eine reine Effizienzregel führt zu `RetrospectiveOnly`. |
+| Portable Entscheidung | `Promote` als `autonomous-run-governance` v0.2.1; Home-Baseline-PR #67, öffentliches Preset-PR #6, Release-ZIP, TuiVision-PR #81 und Home-Closeout-PR #69 sind abgeschlossen. |
+
+### Nächster Prüfschritt / Next Check
+
+Feature 029 prüft als einziger nächster Intake die Terminal.GUI-v1.9.x-
+Konformität. Wave 5 und Wave 6 bleiben bis zu diesem Audit und seinen realen
+Findings-basierten Folgearbeiten gesperrt. Ein Community-Catalog-Update wird
+erst am vereinbarten gebündelten Pre-Wave-5-Punkt veröffentlicht.
+
+*Feature 029 is the sole next intake and audits Terminal.GUI v1.9.x
+conformance. Wave 5 and Wave 6 remain blocked until that audit and its real
+finding-driven follow-ups complete. The community catalog update remains
+deferred to the agreed bundled pre-Wave-5 point.*
