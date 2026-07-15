@@ -307,14 +307,14 @@ npm run test:docfx
 - Keyboard acceptance requires behavioral proof or a concrete `N/A` for Tab, Shift+Tab, arrows, Enter, and direct shortcuts across every inventoried selectable control family.
 - Native AT-SPI, NSAccessibility, UI Automation, speech, full-control migration, terminal-wide WCAG claims, Wave 1-4 remediation, and Feature 024 are out of scope.
 - Historical Turbo Vision has no direct equivalent for the modern semantic A11Y contracts; relevant focus/menu/status sources are read-only intent context only.
-- The former post-023 Wave-5 statement is historical; Feature 028 completed the TV203/Free Vision closure, and the current sole next intake is the mandatory Feature-029 Terminal.GUI audit.
+- The former post-023 Wave-5 statement is historical; Feature 028 completed the TV203/Free Vision closure, Feature 029 is the sole immediate intake, and the separate mandatory Feature-030 magiblot evolution audit follows before any finding-derived hardening.
 
 ### 024-tv203-freevision-conformance-audit
 - Current planning baseline: the original audit and merge remain complete, but consumer-review Revision 2 in `specs/024-tv203-freevision-conformance-audit/consumer-readiness-review.md` supersedes the zero-finding forward decision.
 - Borland documentation and `tv203s/` remain primary; official Free Vision commit `ffc03b34d8cafb85ddcf0686de1c5551601dacb2` is external secondary evidence only. `TVDEMOS/` and `TVFM/` are read-only consumer evidence.
 - The inventory remains 151 historical `.cc` rows, 119 maintained production `.cs` files, 176 exported public types, 16 domains, and 48 contracts.
 - Revision-2 decisions are 7 `Aligned`, 27 `IntentionalModernization`, 1 `ConsciouslyOmitted`, 8 `BehavioralDrift`, and 5 `EvidenceGap`.
-- The 13 accepted findings route exactly nine items `F001`-`F009` to `Core025` and four items `F010`-`F013` to `ComponentData026`; both are closed, while Wave 5 and Wave 6 remain blocked through Feature 028, Feature 029, all finding-derived hardening, and the new independent closure.
+- The 13 accepted findings route exactly nine items `F001`-`F009` to `Core025` and four items `F010`-`F013` to `ComponentData026`; both are closed, while Wave 5 and Wave 6 remain blocked through Feature 028, Feature 029, Feature 030, all combined finding-derived hardening, and the new independent closure.
 - Revision 2 changes audit data, validation, evidence, requirements, and ordering only; it does not implement runtime behavior or port examples.
 
 ### 027-pre-wave5-conformance-closure
@@ -331,19 +331,25 @@ npm run test:docfx
 ### 026-component-data-conformance-hardening
 - Current implementation status: all four `ComponentData026` findings are implemented and proven; final evidence is in `specs/026-component-data-conformance-hardening/pr-evidence.md`.
 - `F010`-`F013` close dialog completion/child validation, phase-aware input validation, mode-aware typed file outcomes, and allowlisted named UI-resource composition through real-path red/green proof.
-- Feature-024 metadata now contains 139 maintained source files, 211 exported public types, and exactly 13 closed finding resolutions; Wave 5 and Wave 6 remain blocked through the new Terminal.GUI-derived closure after Feature 029.
+- Feature-024 metadata now contains 139 maintained source files, 211 exported public types, and exactly 13 closed finding resolutions; Wave 5 and Wave 6 remain blocked through the combined Terminal.GUI/magiblot-derived closure after Features 029 and 030.
 
 ### 028-pre-wave5-wave6-conformance-closure
 - Current implementation status: the evidence-only closure independently revalidated all 13 findings, seven real-path slices, and 13 protected consumer groups without a product, API, dependency, example, or protected-source change.
 - The existing TV203/Free Vision gate is `ReadyForTerminalGuiAudit`; 12 consumer groups use the existing framework and destructive Wave-6 policy remains one bounded `FollowUpHardening`.
-- Both waves remain `BlockedPendingTerminalGuiAudit`, and Feature 029 is the sole mandatory next intake.
+- Both waves remain `BlockedPendingTerminalGuiAudit`; Feature 029 is the sole immediate intake and Feature 030 is the mandatory successor before hardening or closure.
 
 ### 029-tv203-freevision-terminalgui-conformance-audit
 - This read-only audit starts only after Feature 028 merges and uses `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md`.
 - Turbo Vision 2.0.3 remains authoritative; pinned Free Vision remains secondary evidence, and Terminal.GUI v1.9.0 at commit `d5abc2001fb2c5be4d16b23bbf34dfd99e752ea3` is an additional modern C# implementation opinion.
 - Review every existing contract `C001`-`C048`; create `C049+` only for a material uncovered consumer responsibility and `TG001+` only for a reproducible TuiVision contract, consumer, safety, A11Y, platform, or real-path proof gap.
-- The audit changes no runtime, API, dependency, example, historical, consumer, Free Vision, or Terminal.GUI source. It creates only non-empty finding-derived hardening Lastenhefte followed by one mandatory independent closure.
+- The audit changes no runtime, API, dependency, example, historical, consumer, Free Vision, or Terminal.GUI source. It hands all `TG*` observations to Feature 030 and creates no hardening or closure Lastenheft itself.
 - After every autonomous run, promote only reproducible provider-neutral preset learning through a Home-Baseline patch release and exact tag-ZIP adoption before the next run; record `NoPromotion` without an empty branch or PR. Open one consolidated upstream preset issue only immediately before Wave 5.
+
+### 030-tv203-magiblot-evolution-audit
+- This separate read-only audit starts only after Feature 029 merges and uses `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md`.
+- Pin `magiblot/tvision` at commit `57b6f56b38e0ee75240a80a10ee0e11470c24693` and tree `96dd03873955689ff0a79f6c8107a8148fe1ebd6`; treat its direct C++ lineage as a modernization witness, never a normative source.
+- Compare observable API and architecture responsibilities, not names, inheritance, layout, or source shape. Record `MB*` observations, deduplicate them with the Feature-029 `TG*` handoff into canonical `CF*` findings, and generate only non-empty owner-group Lastenhefte from Feature 031 followed by one closure.
+- Do not modify or copy external sources. Wave 5 and Wave 6 remain blocked through the combined findings and independent closure.
 
 
 ### Autonomous Red-Proof Completeness
@@ -664,7 +670,8 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 Feature 028 is locally complete with final evidence under
 `specs/028-pre-wave5-wave6-conformance-closure/`. After its merge and main
 sync, use only `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md`
-for Feature 029. Keep Wave 5 and Wave 6 blocked.
+for Feature 029, then use `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md`
+for Feature 030. Keep Wave 5 and Wave 6 blocked.
 <!-- SPECKIT END -->
 
 ## Hinweise / Notes

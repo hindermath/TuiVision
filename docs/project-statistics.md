@@ -50,7 +50,9 @@ entscheidungen und allowlist-basierter UI-Persistenz. Feature 028 schließt alle
 Consumer-Gruppen: zwölfmal `UseExistingFramework`, einmal
 `FollowUpHardening`. Der TV203-/Free-Vision-Gate ist
 `ReadyForTerminalGuiAudit`; Feature 029 ist der einzige nächste Intake, Wave 5
-und Wave 6 bleiben blockiert.
+und Wave 6 bleiben blockiert. Feature 030 ist als separater anschließender
+`magiblot/tvision`-Evolutionsaudit verbindlich reserviert; erst danach beginnen
+gemeinsam deduplizierte Hardening-Läufe ab 031 und der unabhängige Closure.
 
 ## Zweck und Pflege
 
@@ -703,6 +705,7 @@ fortgeschrieben.
 | 2026-07-15 | Echter Resume-Feldnachweis und autonome Umsetzung von Feature 028 | Der unterbrochene Lauf wurde aus dem validierten v0.2.0-Run-State wiederaufgenommen, mit `main` abgeglichen und ab T001 fortgesetzt. 13 Findings, sieben reale Integrations-Slices und 13 read-only Consumer-Gruppen sind vollständig geschlossen; zwölf Consumer nutzen das vorhandene Framework, `W6-007` bleibt als destruktive Produktpolitik `FollowUpHardening`. Sieben Governance-Presets und neun provider-neutrale Gates sind explizit belegt; Windows ergänzt die unveränderte CI-Runtime-Matrix. Der Vor-Statistik-Snapshot umfasst 25 Pfade: `+2086/-202` Dokumentation/Evidence/Guidance, `+538/-0` test-only Validatoren, eine Workflow-Zeile und ausgleichende Versionsmetadaten, insgesamt `+2628/-206` beziehungsweise 2422 Nettozeilen. Lokale Abnahme: 756/756 Release-Tests; Coverage Core 92,96 %, Controls 86,66 %, Serialization 90,01 %, Compatibility 80,55 %, Drivers.Console 89,18 %; DocFX 0/0, Playwright/Axe 2/2, UTF-8-Lynx, 0 vulnerable packages, CycloneDX 1.7 mit 21 Komponenten, Secrets high 0 und Gitleaks 0/456 Commits. Produktcode, API, Dependencies, Beispiele, `tv203s/`, `TVDEMOS/` und `TVFM/` bleiben unverändert. Feature 029 ist der einzige nächste Intake; beide Waves bleiben blockiert. |
 | 2026-07-15 | `autonomous-run-governance` v0.2.1 veröffentlicht und adoptiert | Der echte 028-Resume-Feldfund wird als begrenzter Pflichtregel-Delta-Audit produktisiert: nach Preset- oder Governance-Drift werden neue zwingende Korrektheits-, Sicherheits-, Berechtigungs- und Evidenzregeln mit akzeptierten Plan-, Task- und Checklist-Artefakten abgeglichen; nur anwendbare fehlende Regeln werden in-place ergänzt und erneut analysiert, Effizienzpräferenzen bleiben retrospektiv. Home-Baseline-PR #67 und öffentlicher Preset-PR #6 sind gemergt; Release v0.2.1 und Tag-ZIP-SHA-256 `799cc189...cf75` sind geprüft. TuiVision installiert den bytegleichen Payload bei Priorität 70, erhält den projektgebundenen Codex-Override und fünf UI-YAML-Dateien und zeigt fünf Commands je gepflegter Oberfläche genau einmal. Der Vor-Statistik-Snapshot umfasst `+326/-97`, also 229 Nettozeilen in Preset, Skills, Agent-Flächen, Template, Runbook, Adoption-Evidence und Statistik ohne Runtime-, API-, Test-, Dependency-, Beispiel- oder Fremdquellenänderung. Konservative Manualreferenz: `4,1` Tage beziehungsweise `32,6` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `2,6` Tage beziehungsweise `20,9` Stunden bei 125 Zeilen/Tag. Format, Diff, Secrets high 0, DocFX 0/0, Playwright/Axe 2/2 und UTF-8-Lynx sind grün. Copilot Legacy-Agent/Prompt bleibt belegt; fehlende Custom-Preset-Commands im neuen Copilot-Skills-Modus und das `compatibility`-Schema-Mismatch des aktuellen Codex-Quick-Validators sind externe Toolgrenzen. Feature 029 bleibt ungestartet und beide Waves bleiben blockiert. |
 | 2026-07-15 | Kausaler Closeout des echten Feature-028-Resume-Feldlaufs | Feature-PR #79 wurde nach einer auf zwei veraltete Evidence-Assertions begrenzten CI-Korrektur als `28f23cc` gemergt. Der finale Head `75889b8` bestand 756/756 Tests auf Ubuntu, macOS und Windows, DocFX/A11Y, Homogeneity, Supply Chain, PowerShell, Agent Secrets, Gitleaks und Claude; GraphQL meldete null Threads, Copilot blieb quota-bedingt ein fehlender Review und nur Human Approval erforderte den engen Bypass. Neun Primary-Gate-Zeilen sind an Requirements-Hash, Head, Workflow, Job, Plattform und Befehl gebunden; Bash und PowerShell akzeptieren die Evidence und lehnen die manipulierte Kopie ab. Home-Baseline-PRs #67/#69, öffentliches Preset-PR #6, Release v0.2.1 und TuiVision-Adoptions-PR #81 schließen den promovierten Pflichtregel-Delta-Audit ab. Der nicht rekursive Closeout umfasst fünf reine Evidence-/State-/Task-/Statistikpfade mit `+263/-33`, also 230 Nettozeilen; konservative Manualreferenz `3,3` Tage beziehungsweise `25,5` Stunden bei 80 Zeilen/Tag, Thorsten-Solo `2,1` Tage beziehungsweise `16,3` Stunden bei 125 Zeilen/Tag. State- und Gate-Validatoren, Diff, Secrets high 0, DocFX 0/0, Playwright/Axe 2/2 und UTF-8-Lynx sind grün; .NET wird mangels ausführbarer Closeout-Änderung nicht erneut ausgelöst. Der Run-State steht auf `Completed` mit 146/146 Aufgaben. Feature 029 bleibt einziger nächster Intake; beide Waves bleiben blockiert. |
+| 2026-07-15 | Separaten `magiblot/tvision`-Evolutionsaudit als Feature 030 vorbereitet | Lastenheft 13 bleibt auf Terminal.GUI v1.9.0 begrenzt und liefert `TG*`-Candidate-Findings nur als maschinenlesbaren Handoff. Das neue Lastenheft 14 pinnt den direkten C++-Modernisierungszeugen auf Commit `57b6f56b38e0ee75240a80a10ee0e11470c24693`, Tree `96dd03873955689ff0a79f6c8107a8148fe1ebd6` und den mehrteiligen `COPYRIGHT`-Hash `66220bae...548`; es vergleicht beobachtbare Verantwortungen statt C++-Form oder Namensparität. Erst Feature 030 dedupliziert `TG*` und `MB*` zu kanonischen `CF*`-Findings; nicht leere Hardening-Läufe beginnen ab 031 und ein unabhängiger Closure folgt zuletzt. Der Vor-Statistik-Snapshot umfasst acht reine Intake-/Guidance-Pfade mit `+535/-70`, also 465 Nettozeilen. Konservative Manualreferenz: `6,7` Tage beziehungsweise `52,2` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `4,3` Tage beziehungsweise `33,4` Stunden bei 125 Zeilen/Tag. `specify check`, Pin-/Tree-/Lizenzhash, fünf Agentenflächen, Diff, Format, Bash-/PowerShell-Homogeneity 100 %, DocFX 0/0, Playwright/Axe 2/2, UTF-8-Lynx und Secrets high 0 sind grün. Runtime, API, Dependencies, Tests, Beispiele und historische oder externe Quellen bleiben unverändert; Feature 029 bleibt der einzige unmittelbare nächste Lauf und beide Waves bleiben blockiert. |
 
 ## Gesamtstatistik
 
@@ -712,8 +715,8 @@ nächsten Statistiklauf eine dokumentierte Momentaufnahme.
 
 | Kennzahl | Verdichteter Gesamtblick |
 |---|---:|
-| Artefaktbasis gesamt | 266428 Zeilen |
-| Produktions- und Testcode zusammen | 52118 Zeilen (19.6 %) |
+| Artefaktbasis gesamt | 266898 Zeilen |
+| Produktions- und Testcode zusammen | 52118 Zeilen (19.5 %) |
 | Dokumentationsanteil | 214310 Zeilen (80.4 %) |
 | Spec-Kit-Anteil innerhalb der Doku | 59189 Zeilen (27.6 %) |
 | Zentrale Governance-/Agent-Dateien | 3952 Zeilen (1.8 % der Doku) |
@@ -751,8 +754,10 @@ to Features 025 and 026, and requires Feature 028 before Wave 5 or Wave 6.
 Feature 025 closes its nine core findings. Feature 026 closes the four
 component/data findings. Feature 028 independently closes the existing
 TV203/Free Vision gate as `ReadyForTerminalGuiAudit`; Feature 029 is now the sole
-next intake and adds the pinned Terminal.GUI v1.9.0 comparison before either
-example wave.
+immediate intake and adds the pinned Terminal.GUI v1.9.0 comparison. Feature
+030 then audits pinned magiblot/tvision as a direct-lineage modernization
+witness, deduplicates both observation sets, and reserves finding-derived work
+from Feature 031 before either example wave.
 
 ### ASCII-Diagramme
 
@@ -760,7 +765,7 @@ example wave.
 Artefaktmix nach Snapshot (Zeilen)
 Produktion     | ####                          |  30604 | 11.5 %
 Tests          | ###                           |  21514 |  8.1 %
-Dokumentation  | ##############################| 214310 | 80.4 %
+Dokumentation  | ##############################| 214780 | 80.5 %
 ```
 
 Die Balken verwenden dieselbe Skala. Die Zahlen bleiben der genaue,

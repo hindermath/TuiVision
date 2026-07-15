@@ -6,7 +6,8 @@
 `029-tv203-freevision-terminalgui-conformance-audit`
 
 **Verbindliche Reihenfolge:** nach dem vollständig gemergten Feature
-`028-pre-wave5-wave6-conformance-closure`, vor Wave 5 und Wave 6
+`028-pre-wave5-wave6-conformance-closure`, vor
+`030-tv203-magiblot-evolution-audit`, Wave 5 und Wave 6
 
 **Lieferart:** reines Framework-, Consumer- und Proof-Audit ohne Runtime-,
 API-, Dependency- oder Beispieländerung
@@ -17,10 +18,11 @@ API-, Dependency- oder Beispieländerung
 **Unabhängige Implementierungsmeinungen:** gepinntes Free Vision sowie
 Terminal.GUI v1.9.0
 
-*Feature 029 runs after the merged Feature 028 and before Wave 5 or Wave 6. It
-is a read-only framework, consumer, and proof audit. Borland Turbo Vision 2.0.3
-remains authoritative; pinned Free Vision and Terminal.GUI v1.9.0 are
-independent implementation opinions.*
+*Feature 029 runs after the merged Feature 028 and before the separate Feature
+030 magiblot/tvision evolution audit, Wave 5, or Wave 6. It is a read-only
+framework, consumer, and proof audit. Borland Turbo Vision 2.0.3 remains
+authoritative; pinned Free Vision and Terminal.GUI v1.9.0 are independent
+implementation opinions for this feature.*
 
 ---
 
@@ -83,9 +85,11 @@ nicht Teil der Vergleichsbasis.
    nicht abgedeckte Frameworkverantwortung anlegen.
 6. Reproduzierbare neue Findings als `TG001+` erfassen und genau einem
    späteren Eigentümerlauf zuordnen.
-7. Ausschließlich aus realen Findings nicht leere Hardening-Lastenhefte sowie
-   immer ein unabhängiges Closure-Lastenheft erzeugen.
-8. Wave 5 und Wave 6 bis zum Merge dieses Closure-Laufs blockiert halten.
+7. Reale Findings als geprüfte vorläufige Owner- und Abhängigkeitsdaten für
+   den separaten Feature-030-Audit bereitstellen, ohne bereits Hardening- oder
+   Closure-Lastenhefte zu erzeugen.
+8. Feature 030 als einzigen nächsten Intake festhalten und Wave 5 sowie Wave 6
+   bis zum späteren gemeinsamen Closure-Merge blockiert halten.
 
 ## 4. Scope
 
@@ -97,7 +101,9 @@ nicht Teil der Vergleichsbasis.
   Verhaltenszusammenfassung und No-Copy-Grenze
 - erweiterte Framework-Konformitätsmatrix
 - Consumer-Readiness-Review für `TVDEMOS/` und `TVFM/`
-- Findings-, Ownership-, Abhängigkeits- und Folge-Lastenheft-Matrix
+- Findings-, Ownership-, Abhängigkeits- und Feature-030-Handoff-Matrix
+- maschinenlesbarer Feature-030-Handoff mit Terminal.GUI-Findings,
+  Nicht-Findings, Owner-Vorschlägen und Deduplizierungskennzeichen
 - formelles Pre-Wave-Gate, Reihenfolge, Agent-Parität und Projektstatistik
 - Teständerungen nur für die Integrität der Auditdaten und Relationen
 
@@ -113,6 +119,9 @@ nicht Teil der Vergleichsbasis.
 - sofortige Reparatur eines gefundenen Produkt- oder Proof-Problems
 - breite Framework-Neuschreibung oder visuelle Remediation
 - Terminal.GUI-v2- oder Latest-Branch-Empfehlungen
+- Analyse, Pinning, Vergleich oder Vorwegnahme von `magiblot/tvision`
+- Erzeugung findings-basierter Hardening- oder Closure-Lastenhefte; diese
+  Entscheidung folgt erst nach dem separaten Feature-030-Audit
 
 ## 5. Quellen- und Kopiergrenze
 
@@ -189,13 +198,13 @@ Neue Findings beginnen bei `TG001` und enthalten:
 `Risk`, `PrimaryOwner`, `Dependencies`, `RequiredRedProof`,
 `RequiredRealPathGreenProof`, `APIImpact`, `A11YImpact`, `PlatformImpact`,
 `SuggestedBoundary`, `Decision`, `EvidencePath`, `Owner`, `Reviewer`,
-`ReviewDate`, `ResidualRisk` und `ReevaluationTrigger`.
+`ReviewDate`, `ResidualRisk`, `ReevaluationTrigger` und `DeduplicationKey`.
 
 Erlaubte Entscheidungen:
 
 | Decision | Bedeutung |
 |---|---|
-| `HardeningRequired` | reproduzierbare Produkt- oder Proof-Lücke mit späterem Eigentümerlauf |
+| `CandidateFinding` | reproduzierbare Produkt- oder Proof-Lücke; vor einem Eigentümerlauf mit Feature-030-Evidence deduplizieren |
 | `IntentionalDeviation` | bewusste Abweichung mit Consumer-, Nutzer- und Proof-Begründung |
 | `AlreadySatisfiedWithNewEvidence` | kein Produktfix, aber stärkere Evidence schließt die Beobachtung |
 | `ProductDecision` | breaking oder destruktive Owner-Entscheidung erforderlich; autonome Folge stoppt |
@@ -205,19 +214,26 @@ Ein Finding darf nicht allein aus anderem Typnamen, anderer Vererbung,
 statischer versus instanzbasierter API, anderem Renderingmodell oder einer
 zusätzlichen Terminal.GUI-Funktion entstehen.
 
-## 9. Folge-Lastenhefte und Nummerierung
+## 9. Handoff an Feature 030 und spätere Nummerierung
 
-Feature 029 erzeugt nach Review der Findings:
+Feature 029 erzeugt keine Hardening- oder Closure-Lastenhefte. Es liefert
+stattdessen einen vollständigen maschinenlesbaren Handoff an das bereits
+reservierte Feature `030-tv203-magiblot-evolution-audit`. Jede `TG*`-
+Beobachtung enthält ihre Finding-Entscheidung, vorgeschlagenen Primary Owner,
+Abhängigkeiten, erforderlichen Proof und einen stabilen Deduplizierungsschlüssel.
+
+Feature 030 prüft danach die direkte moderne Turbo-Vision-Evolution
+`magiblot/tvision` an einem gepinnten Commit. Erst nach gemeinsamer Review und
+Deduplizierung der Terminal.GUI- und magiblot-Beobachtungen erzeugt Feature 030:
 
 1. für jede nicht leere Eigentümergruppe genau ein Hardening-Lastenheft,
 2. die Gruppen in topologisch sortierter Abhängigkeitsreihenfolge und
 3. danach immer genau ein unabhängiges Closure-Lastenheft.
 
-Die Nummerierung beginnt mit der nächsten freien Nummer 030:
-
-- bei null Findings ist 030 der Closure-Lauf;
-- bei einer Hardening-Gruppe ist 030 Hardening und 031 Closure;
-- bei zwei Gruppen sind 030 und 031 Hardening, 032 ist Closure.
+Die dynamische Nummerierung beginnt deshalb frühestens mit Feature 031. Bei
+null gemeinsamen Findings ist 031 der Closure-Lauf; bei einer Hardening-Gruppe
+ist 031 Hardening und 032 Closure. Leere Gruppen, spekulative Lastenhefte und
+leere PRs bleiben verboten.
 
 Mögliche Eigentümergrenzen sind:
 
@@ -234,12 +250,15 @@ Kanten erfasst.
 
 ## 10. Wave-Gate
 
-Feature 029 und alle Hardening-Läufe halten beide Waves `Blocked`.
+Feature 029, Feature 030 und alle daraus entstehenden Hardening-Läufe halten
+beide Waves `Blocked`.
 
 Der spätere Closure-Lauf darf Wave 5 nur `Eligible` setzen, wenn:
 
 - alle alten Findings `F001` bis `F013` geschlossen bleiben,
-- alle neuen `TG*`-Findings geschlossen oder akzeptiert abweichend sind,
+- alle `TG*`- und `MB*`-Beobachtungen genau einem kanonischen `CF*`-Finding
+  oder einer begründeten Nicht-Finding-Entscheidung zugeordnet sind,
+- alle kanonischen `CF*`-Findings geschlossen oder akzeptiert abweichend sind,
 - alle Verträge und Consumer-Zeilen vollständig sind,
 - kein ProductDecision offen ist und
 - alle lokalen, Plattform-, Remote-, Security-, A11Y- und Review-Gates passen.
@@ -249,7 +268,7 @@ einer erneuten Delta-Prüfung blockiert.
 
 ## 11. Preset-Lernzyklus
 
-Nach Feature 029 und jedem daraus entstehenden Lauf wird die autonome
+Nach Feature 029, Feature 030 und jedem daraus entstehenden Lauf wird die autonome
 Retrospektive ausgeführt. Reproduzierbare providerneutrale Verbesserungen
 werden in Home Baseline als `PresetFollowUp` implementiert, als neue
 Patch-Version validiert und veröffentlicht und vor dem nächsten Lauf aus der
@@ -270,15 +289,17 @@ Feature 029 muss mindestens nachweisen:
 4. maschinenlesbare JSON-/Schema-/Relationstests
 5. genau eine Terminal.GUI-Relation je Vertrag
 6. bidirektionale Quellen-, Contract-, Finding- und Consumer-Relationen
-7. exakte Tag-/Commit-/Hash-Prüfung des externen Manifests
-8. kein getracktes externes, generiertes oder geschütztes Source-Artefakt
-9. targeted Auditvalidator-Tests und vollständige Release-Tests
-10. kanonisches Coverage-Gate, sofern Auditvalidator oder gemeinsame
+7. vollständigen maschinenlesbaren Feature-030-Handoff ohne vorzeitig erzeugtes
+   Hardening- oder Closure-Lastenheft
+8. exakte Tag-/Commit-/Hash-Prüfung des externen Manifests
+9. kein getracktes externes, generiertes oder geschütztes Source-Artefakt
+10. targeted Auditvalidator-Tests und vollständige Release-Tests
+11. kanonisches Coverage-Gate, sofern Auditvalidator oder gemeinsame
     Testinfrastruktur geändert werden
-11. DocFX, Playwright/Axe und UTF-8-Lynx für die umfangreiche
+12. DocFX, Playwright/Axe und UTF-8-Lynx für die umfangreiche
     learner-facing Dokumentation
-12. Secret-, Dependency-, Agent-Paritäts- und Generated-Output-Scans
-13. exakte Reviewed-HEAD-Evidence vor PR-Merge
+13. Secret-, Dependency-, Agent-Paritäts- und Generated-Output-Scans
+14. exakte Reviewed-HEAD-Evidence vor PR-Merge
 
 Vor jedem Build oder Test gilt die Build-Counter-Regel.
 
@@ -293,11 +314,14 @@ Vor jedem Build oder Test gilt die Build-Counter-Regel.
    beschriebenes `TG*`-Finding.
 5. Kein Finding fordert mechanische Terminal.GUI-Parität.
 6. Die Consumer-Matrix für Wave 5 und Wave 6 ist vollständig.
-7. Aus Findings entstehen nur nicht leere, dependency-geordnete Lastenhefte.
-8. Ein unabhängiges Closure-Lastenheft existiert immer.
+7. Findings und Nicht-Findings sind vollständig an Feature 030 übergeben;
+   Feature 029 erzeugt noch keine Hardening- oder Closure-Lastenhefte.
+8. `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md` ist der einzige nächste
+   Intake und reserviert Feature 030.
 9. Keine Runtime-, API-, Paket-, Beispiel- oder externe Source-Änderung ist im
    Audit-Diff enthalten.
-10. Wave 5 und Wave 6 bleiben nach Feature 029 blockiert.
+10. Wave 5 und Wave 6 bleiben nach Feature 029 mindestens bis zum gemeinsamen
+    findings-basierten Closure-Merge blockiert.
 11. Nach Merge sind lokales `main` und `origin/main` sauber und identisch.
 
 ## 14. Stop-Grenzen
@@ -306,7 +330,8 @@ Der Lauf stoppt bei notwendigem Sofort-Fix, Breaking/ProductDecision,
 unverifizierbarem Terminal.GUI-Pin, Lizenz- oder Provenance-Konflikt,
 veränderter externer Quelle, unvollständiger Consumer-Zuordnung,
 nicht behebbarer Auditintegrität oder dem Versuch, Wave 5 im selben Feature zu
-starten.
+starten. Der Versuch, `magiblot/tvision` in Feature 029 zu analysieren oder
+Feature 030 implizit zu starten, stoppt den Lauf ebenfalls.
 
 ## 15. Kopierbarer autonomer Intake-Prompt
 
@@ -334,9 +359,11 @@ finding.
 
 Run the complete autonomous Spec Kit lifecycle and all useful optional passes
 to convergence. Produce the pinned source manifest, machine-readable relation
-matrix, consumer review, findings and dependency DAG. Create only non-empty
-finding-derived hardening Lastenhefte starting at Feature 030, followed by one
-mandatory independent closure Lastenheft. Keep Wave 5 and Wave 6 blocked.
+matrix, consumer review, findings, dependency DAG, and the complete
+machine-readable handoff for Feature 030. Do not inspect magiblot/tvision and
+do not create finding-derived hardening or closure Lastenhefte in Feature 029.
+Keep `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md` as the sole next intake
+and keep Wave 5 and Wave 6 blocked.
 
 Complete local and remote validation, exact reviewed-head evidence, PR review,
 merge, branch cleanup, main synchronization, and the autonomous retrospective.
