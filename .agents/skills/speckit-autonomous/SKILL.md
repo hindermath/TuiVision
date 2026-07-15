@@ -20,7 +20,7 @@ stages; this skill only orchestrates them and enforces cross-stage gates.
    write or merge authority from general autonomy alone.
 4. Confirm intake ordering, branch identity, clean ownership boundaries, the
    six baseline governance presets, and optional `autonomous-run-governance`
-   v0.2.0. Stop only for a material conflict, missing required authority,
+   v0.2.1. Stop only for a material conflict, missing required authority,
    destructive ambiguity, or an unmet hard gate.
 5. Before creating a feature, inspect repository metadata and
    `specs/<feature>/autonomous-run-state.json`. Never overwrite an active run.
@@ -183,7 +183,11 @@ safe workflow or concurrency contract.
 - `speckit-autonomous-resume` is mandatory for `PausedByUser`. Reconcile branch,
   feature metadata, checkpoint history, accepted-artifact hashes, tasks,
   evidence, governance, dirty-state ownership, and current authority before any
-  mutation. A recorded delivery mode is historical evidence, not permission.
+  mutation. After preset or governance drift, compare current mandatory
+  correctness, security, permission, and evidence-integrity rules with accepted
+  Plan, Tasks, and checklists. Add only applicable missing rules in place and
+  rerun readiness plus Analyze; efficiency-only guidance stays retrospective.
+  A recorded delivery mode is historical evidence, not permission.
 - Material conflict, unknown dirty changes, missing checkpoint, or ambiguous
   feature identity sets `Blocked` and stops. Never start the next feature
   implicitly.

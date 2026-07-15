@@ -306,10 +306,14 @@ Operation ein vertrauenswürdiges Endergebnis, wird sie als
 `PausedByUser` darf nur mit `$speckit-autonomous-resume` fortgesetzt werden.
 Vor jeder Mutation werden Branch, `.specify/feature.json`, Checkpoint-Historie,
 Artefakt- und Task-Hashes, Evidence, Governance, lokale Ownership und aktuelle
-Berechtigung abgeglichen. Der gespeicherte Delivery-Modus ist keine aktuelle
-Berechtigung. Bei materiellem Drift, unbekannten Änderungen oder unklarer
-Feature-Identität gilt `Blocked`; bestandene Phasen werden nicht ohne
-nachgewiesenen Drift neu erzeugt.
+Berechtigung abgeglichen. Nach Preset- oder Governance-Drift werden aktuelle
+zwingende Korrektheits-, Sicherheits-, Berechtigungs- und Evidenzregeln mit den
+akzeptierten Plan-, Task- und Checklist-Artefakten verglichen. Fehlt eine
+anwendbare Pflicht, werden nur die betroffenen Einträge in-place ergänzt und
+Readiness sowie Analyze erneut ausgeführt. Reine Effizienzpräferenzen bleiben
+Retrospektiv-Input und erzeugen akzeptierte Phasen nicht rückwirkend neu. Der
+gespeicherte Delivery-Modus ist keine aktuelle Berechtigung. Bei materiellem
+Drift, unbekannten Änderungen oder unklarer Feature-Identität gilt `Blocked`.
 
 Each run maintains `specs/<feature>/autonomous-run-state.json` at logical phase
 boundaries, graceful stop, hard gate, and completion. Task checkboxes, evidence,
@@ -324,10 +328,14 @@ terminal result is recorded as `NeedsRevalidation`.
 
 Only `$speckit-autonomous-resume` may continue `PausedByUser`. Before mutation,
 reconcile branch, `.specify/feature.json`, checkpoint history, artifact and task
-hashes, evidence, governance, local ownership, and current authority. Recorded
-delivery mode is not current authority. Material drift, unknown changes, or
-ambiguous feature identity sets `Blocked`; do not regenerate completed phases
-without proven drift.
+hashes, evidence, governance, local ownership, and current authority. After
+preset or governance drift, compare current mandatory correctness, security,
+permission, and evidence-integrity rules with accepted Plan, Tasks, and
+checklist artifacts. If an applicable requirement is missing, amend only the
+affected entries in place and rerun readiness plus Analyze. Efficiency-only
+preferences remain retrospective input and do not regenerate accepted phases.
+Recorded delivery mode is not current authority. Material drift, unknown
+changes, or ambiguous feature identity sets `Blocked`.
 
 ## Lokale Ownership und Updates / Local Ownership and Updates
 
