@@ -325,8 +325,8 @@ Allowed results are `Pass`, `Fail`, `Accepted`, `Deferred`, and `Open`.
 
 | Item | Result | Evidence |
 |---|---|---|
-| Push | Open | `032-wave5-tp7-functional-porting` |
-| Pull request | Open | URL after publication |
+| Push | Pass | `origin/032-wave5-tp7-functional-porting` |
+| Pull request | Pass | `https://github.com/hindermath/TuiVision/pull/93` |
 | Required checks | Open | PR-context exact head |
 | Acceptance-gate mapping | Open | temporary provider evidence |
 | Review threads | Open | GraphQL query |
@@ -339,6 +339,11 @@ Allowed results are `Pass`, `Fail`, `Accepted`, `Deferred`, and `Open`.
 
 Candidate implementation commit:
 `8a1de2d47506aa9d2a8bb59151b40ed9ce0cb39f`.
+
+Initial delivery checkpoint:
+`279b4b9` pushed successfully. The first PR command failed only because `gh`
+was absent from the app shell `PATH`; explicit `/opt/homebrew/bin/gh` created
+PR #93.
 
 ## Retrospective
 

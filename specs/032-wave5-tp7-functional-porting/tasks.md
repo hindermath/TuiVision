@@ -257,7 +257,7 @@ synchronized `main`.
 - [X] T161 Align `Directory.Build.props` to final `1.32.<patch>.<build>` without extra counter increment
 - [X] T162 Stage only intended files and run `git diff --cached --check` plus staged/untracked/unstaged inventory; record in `specs/032-wave5-tp7-functional-porting/pr-evidence.md`
 - [X] T163 Commit the Feature-032 candidate and record commit identity externally and in mutable run evidence where non-self-invalidating
-- [ ] T164 Push `032-wave5-tp7-functional-porting` and create a non-empty PR; record URL in `specs/032-wave5-tp7-functional-porting/pr-evidence.md`
+- [X] T164 Push `032-wave5-tp7-functional-porting` and create a non-empty PR; record URL in `specs/032-wave5-tp7-functional-porting/pr-evidence.md`
 - [ ] T165 Monitor PR-context Linux, macOS, Windows, Release, coverage, docs/A11Y, supply-chain and parity checks
 - [ ] T166 Map every declared gate to actual workflow, job, runner and executed command in temporary provider evidence
 - [ ] T167 Validate temporary exact-head provider evidence with the installed autonomous gate validator
