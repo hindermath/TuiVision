@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0",
+  "runId": "dcf3e131-dab6-480c-a97b-0b4538a73747",
+  "featurePath": "specs/030-tv203-magiblot-evolution-audit",
+  "branch": "030-tv203-magiblot-evolution-audit",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Publish",
+  "status": "Active",
+  "checkpointCommit": "b303f4b349ab591dd6609078c207b243f4f6cdcd",
+  "acceptedArtifacts": [
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/spec.md",
+      "sha256": "1dea245fbbbc974c9f84aa2443b4447a41c68cf57fed501a787241ffceb7ea9d"
+    },
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/checklists/requirements.md",
+      "sha256": "39a61b7d420bb9b4afd35fd904ba60dc36dd3b16683ba0a697ef9c5c0819fbc9"
+    },
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/checklists/source-provenance.md",
+      "sha256": "73c19ce64c860afb16decd3abfa3a5af7472e20250a54df1e65035b55c69b9b2"
+    },
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/checklists/contract-consumer.md",
+      "sha256": "ccb1f3cbb0ae4947f8c8a9a905eb61ad62782fde0ac3b8fd275ece7d84eb110e"
+    },
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/checklists/deduplication-followup.md",
+      "sha256": "d7f5cdf63bbdeba00a914e976ea727daf92f4b6265a7e73ae394b7332855db6d"
+    },
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/checklists/governance-readiness.md",
+      "sha256": "1404dfa24066e6c14093c6163471d18704a46dcea46b9e27385a28cdcc6d7e70"
+    },
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/checklists/autonomous-readiness.md",
+      "sha256": "bc11258bbc8788961ac0f6198c66ebb532f2834dffdde23001578026337453cb"
+    },
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/plan.md",
+      "sha256": "4b2441c3e465c3779851a5631bf4d0ddc9591b2737c0c6dc1f320ea82d6cd891"
+    },
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/research.md",
+      "sha256": "e0623a1f185650d1773290cd964eab7817656301eb76a7068e8bac655a5c79f7"
+    },
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/data-model.md",
+      "sha256": "27023caaadcea644b4fd3bd56e5df821bc4aef400bd0f842a531dc397b4fe16c"
+    },
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/quickstart.md",
+      "sha256": "a7aa561d8f84f070cfc24de9a57c36dbecdbdb1392e6f5cd8db2b638ffd96c7f"
+    },
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/contracts/magiblot-evolution-acceptance.md",
+      "sha256": "21872f827ac8c011b9ee2042e8529fab81a2e1bec0df446fd3055a36ee3b1e2b"
+    },
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/checklists/plan-quality.md",
+      "sha256": "bfdc8f5b59ab6aed222646e2d6c2fbedea06be6112dc21e58d3707cecbe29452"
+    },
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/checklists/plan-review.md",
+      "sha256": "a4aabd101e41ca271ab6d04fa09c0f54204e074643b334ea8bb81832164454a0"
+    },
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/tasks.md",
+      "sha256": "39caa64b671d44d89bea99a388d05f3f44a6aadf46068b2644cb518de0a46015"
+    },
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/checklists/implementation-readiness.md",
+      "sha256": "3698625141b089668e8b6faf9a0e0c8cc0df020ffc5504b457f99975261f3a19"
+    },
+    {
+      "path": "specs/030-tv203-magiblot-evolution-audit/autonomous-gate-requirements.json",
+      "sha256": "19feef3cf9d50d9a792a78a3779a07ed666a278d5d5891c325eabcf5d2c66cff"
+    }
+  ],
+  "tasks": {
+    "path": "specs/030-tv203-magiblot-evolution-audit/tasks.md",
+    "sha256": "39caa64b671d44d89bea99a388d05f3f44a6aadf46068b2644cb518de0a46015",
+    "completed": 138,
+    "total": 165
+  },
+  "lastPassingGate": "Initial commit b997deb was pushed exactly and PR #88 was created; 138/165 tasks are complete.",
+  "nextExactAction": "Commit and push the stable PR identity as the final review candidate, then poll required checks and reviews.",
+  "lastOperation": {
+    "kind": "CreatePullRequest",
+    "state": "Completed",
+    "summary": "Created https://github.com/hindermath/TuiVision/pull/88 for initial head b997debecf6d22be8a86dfcf028e59eeb10e7b01."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "updatedAt": "2026-07-16T16:28:31Z"
+}

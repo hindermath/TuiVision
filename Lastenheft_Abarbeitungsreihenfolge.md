@@ -51,26 +51,29 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 23 | `Lastenheft_11_Component-Data-Conformance-Hardening.026-component-data-conformance-hardening.md` | Komponenten-/Daten-Konformität | archiviert oder abgeschlossen / archived or completed |
 | 24 | `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.028-pre-wave5-wave6-conformance-closure.md` | Pre-Wave-5-/Wave-6-Abschluss | archiviert oder abgeschlossen / archived or completed |
 | 25 | `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.029-tv203-freevision-terminalgui-conformance-audit.md` | Framework-Konformitätsaudit | archiviert oder abgeschlossen / archived or completed |
-| 26 | `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md` | Framework-Evolutionsaudit | **nächster Intake / next intake** |
-| 27 | `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` | Beispielportfolio-Konformitätsaudit | verbindlich nach Wave-6-Closeout, Feature-Nummer später / binding after Wave-6 closeout, feature number deferred |
+| 26 | `Lastenheft_14_TV203-Magiblot-Evolution-Audit.030-tv203-magiblot-evolution-audit.md` | Framework-Evolutionsaudit | archiviert oder abgeschlossen / archived or completed |
+| 27 | `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.md` | Gemeinsamer Pre-Wave-5-/Wave-6-Abschluss | **nächster Intake / next intake** |
+| 28 | `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` | Beispielportfolio-Konformitätsaudit | verbindlich nach Wave-6-Closeout, Feature-Nummer später / binding after Wave-6 closeout, feature number deferred |
 <!-- secure-development-hardening-order:end -->
 
 ## Fortsetzungsmarke / Resume Marker
 
-> **NÄCHSTER SPEC-KIT-INTAKE: `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md` -> `030-tv203-magiblot-evolution-audit`.**
+> **NÄCHSTER SPEC-KIT-INTAKE: `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.md` -> `031-combined-conformance-closure`.**
 >
-> **NEXT SPEC KIT INTAKE: `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md` -> `030-tv203-magiblot-evolution-audit`.**
+> **NEXT SPEC KIT INTAKE: `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.md` -> `031-combined-conformance-closure`.**
 
-Features 025, 026, 028 und 029 sind abgeschlossen. Feature 029 uebergibt 48
-explizite Terminal.GUI-Beobachtungen ohne neues Candidate Finding an Feature
-030. Feature 030 ist der naechste autonome Lauf; beide Waves bleiben bis zur
-gemeinsamen TG-/MB-Deduplizierung, nicht leeren Hardening-Läufen und dem
-unabhaengigen Closure blockiert.
+Features 025, 026, 028 und 029 sind abgeschlossen. Feature 030 hat lokal 50
+gepinnt-hashgebundene magiblot-Quellen, 48 Relationen und 48 `MB*`-
+Beobachtungen geprüft. Zusammen mit 48 `TGO*`-Beobachtungen ergeben sich 96
+vollständige Nicht-Finding-Dispositionen, null `CF*`-Findings und null
+Hardening-Intakes. Feature 031 ist der nächste autonome Closure-Lauf; beide
+Waves bleiben bis zu dessen Merge blockiert.
 
-*Features 025, 026, 028, and 029 are complete. Feature 029 hands 48 explicit
-Terminal.GUI observations with no new candidate finding to Feature 030.
-Feature 030 is next; both Waves remain blocked through combined TG/MB
-deduplication, non-empty hardening runs, and independent closure.*
+*Features 025, 026, 028, and 029 are complete. Feature 030 locally reviewed 50
+pinned and hash-bound magiblot sources, 48 relations, and 48 MB observations.
+Together with 48 TGO observations, the result is 96 complete non-finding
+dispositions, zero CF findings, and zero hardening intakes. Feature 031 is the
+next independent closure run; both Waves remain blocked through its merge.*
 
 ## Verbindliche Folge vor Wave 5 und Wave 6 / Binding Sequence Before Wave 5 and Wave 6
 
@@ -86,36 +89,36 @@ deduplication, non-empty hardening runs, and independent closure.*
 4. `029-tv203-freevision-terminalgui-conformance-audit` hat alle 48 Verträge
    gegen Terminal.GUI v1.9.0 geprüft und 48 Beobachtungen ohne neues
    Candidate Finding an Feature 030 übergeben.
-5. Als nächster Lauf folgt `030-tv203-magiblot-evolution-audit` mit Lastenheft
-   14. Erst dessen gemeinsame TG-/MB-Deduplizierung darf nicht leere
-   Hardening-Lastenhefte ab Nummer 031 sowie danach den unabhängigen
-   Closure-Lauf erzeugen.
-6. Wave 5 bleibt bis zu diesem Closure-Merge blockiert. Wave 6 folgt erst nach
+5. `030-tv203-magiblot-evolution-audit` hat alle 48 Verträge gegen 50
+   magiblot-Quellen geprüft und 96 TG-/MB-Beobachtungen ohne `CF*`-Finding
+   dedupliziert. Daher entstehen keine Hardening-Läufe.
+6. Als nächster Lauf folgt `031-combined-conformance-closure` mit Lastenheft
+   16 als unabhängiger Abschluss.
+7. Wave 5 bleibt bis zu diesem Closure-Merge blockiert. Wave 6 folgt erst nach
    Wave 5 und einer erneuten Prüfung der tatsächlichen Wave-5-Deltas.
-7. Nach dem vollständig gemergten Wave-6-Closeout folgt das in Lastenheft 15
+8. Nach dem vollständig gemergten Wave-6-Closeout folgt das in Lastenheft 15
    vorgemerkte Example-Portfolio-Audit. Seine Feature-Nummer wird erst dann
    aus der nächsten freien Nummer gebildet; es erzeugt nur aus realen Findings
    nicht leere Remediation-Lastenhefte und danach einen unabhängigen Closure.
 
 *Revision 2 routed nine findings to Feature 025 and four to Feature 026; both
-are complete. Feature 028 closed that gate and Feature 029 completed the pinned
-Terminal.GUI v1.9.0 comparison. Feature 030 now performs the magiblot comparison
-and combined deduplication; only the final finding-derived closure may release
-Wave 5. Wave 6 additionally requires a post-Wave-5 delta review.*
+are complete. Feature 028 closed that gate, Feature 029 completed the pinned
+Terminal.GUI comparison, and Feature 030 completed the magiblot comparison
+with zero canonical findings. Feature 031 now independently closes the
+combined gate before Wave 5. Wave 6 additionally requires a post-Wave-5 delta
+review.*
 
 ## Verbindlicher Folgeaudit nach Wave 6 / Binding Post-Wave-6 Audit
 
 `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` ist bereits
 als späterer Intake festgelegt, wird aber weder nummeriert noch gestartet,
-solange Feature 030, seine findings-basierten Folgearbeiten, der Pre-Wave-5-
-Closure sowie Wave 5 und Wave 6 mit ihren Closeouts nicht vollständig gemergt
-sind.
+solange Feature 030, Feature 031 sowie Wave 5 und Wave 6 mit ihren Closeouts
+nicht vollständig gemergt sind.
 
 Der spätere Audit prüft alle 25 Originalbeispiele, alle tatsächlich gelieferten
 Wave-5-/Wave-6-Beispiele und `A11yFramework` als projektspezifische
-Vergleichskontrolle. Feature 030 bleibt unverändert der einzige nächste
-Spec-Kit-Intake.
+Vergleichskontrolle. Feature 031 ist der einzige nächste Spec-Kit-Intake.
 
 *Lastenheft 15 reserves one read-only portfolio audit after the complete
 Wave-6 closeout. It does not assign a feature number, start a run, or change
-the current Feature-030 continuation marker.*
+the current Feature-031 continuation marker.*
