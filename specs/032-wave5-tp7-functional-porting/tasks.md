@@ -258,22 +258,22 @@ synchronized `main`.
 - [X] T162 Stage only intended files and run `git diff --cached --check` plus staged/untracked/unstaged inventory; record in `specs/032-wave5-tp7-functional-porting/pr-evidence.md`
 - [X] T163 Commit the Feature-032 candidate and record commit identity externally and in mutable run evidence where non-self-invalidating
 - [X] T164 Push `032-wave5-tp7-functional-porting` and create a non-empty PR; record URL in `specs/032-wave5-tp7-functional-porting/pr-evidence.md`
-- [ ] T165 Monitor PR-context Linux, macOS, Windows, Release, coverage, docs/A11Y, supply-chain and parity checks
-- [ ] T166 Map every declared gate to actual workflow, job, runner and executed command in temporary provider evidence
-- [ ] T167 Validate temporary exact-head provider evidence with the installed autonomous gate validator
-- [ ] T168 Inspect Claude, Copilot and other review results and GraphQL thread state; record unavailable reviews as missing
-- [ ] T169 Resolve every actionable review thread with scoped fixes, rerun affected gates and refresh exact-head evidence
-- [ ] T170 Use the authorized narrow admin bypass only if Human Approval is the sole open rule and all technical gates plus threads are green
-- [ ] T171 Merge the Feature-032 PR with a merge commit and delete the remote feature branch
-- [ ] T172 Switch locally to `main`, fetch/prune, fast-forward pull and prove clean `HEAD == origin/main`
-- [ ] T173 Decide whether post-merge facts require `specs/032-wave5-tp7-functional-porting/delivery-closeout.md`; do not create an empty closeout
-- [ ] T174 If required, create one evidence-only closeout PR that records merge, final Stage-1 status and terminal run facts without recursive self-reference
-- [ ] T175 Converge and merge the closeout PR under the same technical-gate and Human-Approval-only policy
-- [ ] T176 Return locally to clean synchronized `main` and verify no obsolete 032 branch remains
-- [ ] T177 Complete `specs/032-wave5-tp7-functional-porting/retrospective.md` with `FeatureSpecific`, `PresetFollowUp` or `NoPromotion`
-- [ ] T178 Promote no preset release unless a reproducible provider-neutral defect is proven; never create an empty retrospective PR
-- [ ] T179 Set the final autonomous state to `Retrospective`, `Completed`, all tasks complete and `nextExactAction: N/A`
-- [ ] T180 Record final task counts, source/consumer/proof/delta counts, validation, review, PR/merge IDs and main-sync proof in the completion report
+- [X] T165 Monitor PR-context Linux, macOS, Windows, Release, coverage, docs/A11Y, supply-chain and parity checks
+- [X] T166 Map every declared gate to actual workflow, job, runner and executed command in temporary provider evidence
+- [X] T167 Validate temporary exact-head provider evidence with the installed autonomous gate validator
+- [X] T168 Inspect Claude, Copilot and other review results and GraphQL thread state; record unavailable reviews as missing
+- [X] T169 Resolve every actionable review thread with scoped fixes, rerun affected gates and refresh exact-head evidence
+- [X] T170 Use the authorized narrow admin bypass only if Human Approval is the sole open rule and all technical gates plus threads are green
+- [X] T171 Merge the Feature-032 PR with a merge commit and delete the remote feature branch
+- [X] T172 Switch locally to `main`, fetch/prune, fast-forward pull and prove clean `HEAD == origin/main`
+- [X] T173 Decide whether post-merge facts require `specs/032-wave5-tp7-functional-porting/delivery-closeout.md`; do not create an empty closeout
+- [X] T174 If required, create one evidence-only closeout PR that records merge, final Stage-1 status and terminal run facts without recursive self-reference
+- [X] T175 Converge and merge the closeout PR under the same technical-gate and Human-Approval-only policy
+- [X] T176 Return locally to clean synchronized `main` and verify no obsolete 032 branch remains
+- [X] T177 Complete `specs/032-wave5-tp7-functional-porting/retrospective.md` with `FeatureSpecific`, `PresetFollowUp` or `NoPromotion`
+- [X] T178 Promote no preset release unless a reproducible provider-neutral defect is proven; never create an empty retrospective PR
+- [X] T179 Set the final autonomous state to `Retrospective`, `Completed`, all tasks complete and `nextExactAction: N/A`
+- [X] T180 Record final task counts, source/consumer/proof/delta counts, validation, review, PR/merge IDs and main-sync proof in the completion report
 
 ## Dependencies and Execution Order
 
