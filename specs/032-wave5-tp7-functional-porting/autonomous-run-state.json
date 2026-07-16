@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0",
+  "runId": "558972a0-9189-45a3-8d18-9478c891c04e",
+  "featurePath": "specs/032-wave5-tp7-functional-porting",
+  "branch": "032-wave5-tp7-functional-porting",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Review",
+  "status": "Active",
+  "checkpointCommit": "ba7accc0fe6ecae5f00187eea1ddbb767d710b98",
+  "acceptedArtifacts": [
+    {
+      "path": "Lastenheft_17_Wave5-TP7-Functional-Porting.032-wave5-tp7-functional-porting.md",
+      "sha256": "db48c7e6cd497f56137951457e689ede9b0416989a9c0072567f3bcb0cd5595a"
+    },
+    {
+      "path": "specs/032-wave5-tp7-functional-porting/spec.md",
+      "sha256": "999ae46e2d116655c79d759a13988d1dfe55d4fca1bbb36e0d8c34fe9c4277e6"
+    },
+    {
+      "path": "specs/032-wave5-tp7-functional-porting/checklists/requirements.md",
+      "sha256": "13f79984527a966d9d20cd7db69a10b3eab2ca081078a542e33c2e2f527e94d3"
+    },
+    {
+      "path": "specs/032-wave5-tp7-functional-porting/checklists/source-consumer.md",
+      "sha256": "240e81790d0afa563ec19011a76cebb1d0e64c2d63760e12bd244c6fdbbdd3c3"
+    },
+    {
+      "path": "specs/032-wave5-tp7-functional-porting/checklists/functional-proof.md",
+      "sha256": "ff600da483619b97c56798e02581a7eb34823f1d493ba497818209388a1064bf"
+    },
+    {
+      "path": "specs/032-wave5-tp7-functional-porting/checklists/security-a11y.md",
+      "sha256": "b56f947ff869aad06cd1ef9a27720e7f3078b06ac6977cdcd4c4cfe5992d2839"
+    },
+    {
+      "path": "specs/032-wave5-tp7-functional-porting/checklists/two-stage-boundary.md",
+      "sha256": "6e417c6c98640d61b041650fb1dcd3238d807804d079f1b0b06131f653f85aa8"
+    },
+    {
+      "path": "specs/032-wave5-tp7-functional-porting/plan.md",
+      "sha256": "1148da05a3214741addffd4f1c3bb26ba073a99aeaa8c471835744682648f185"
+    },
+    {
+      "path": "specs/032-wave5-tp7-functional-porting/research.md",
+      "sha256": "b872262940a4465819403c89ad5415301b347b8572a11f4fbd66fc23be07a9e7"
+    },
+    {
+      "path": "specs/032-wave5-tp7-functional-porting/data-model.md",
+      "sha256": "34d0fc9f5ce98f755627efba91e935a99e52f7c31bf0bd44fcea4c630fa46b0c"
+    },
+    {
+      "path": "specs/032-wave5-tp7-functional-porting/quickstart.md",
+      "sha256": "5c607edefbf488f4338015e908ab8b8ccdd9bef6ba372490052eb655ff93c4cb"
+    },
+    {
+      "path": "specs/032-wave5-tp7-functional-porting/contracts/wave5-functional-acceptance.md",
+      "sha256": "681c52c9ebdf2714fd85f839a0da2711dc5f4619648195b67a9ec7926b6f88a8"
+    },
+    {
+      "path": "specs/032-wave5-tp7-functional-porting/checklists/plan-quality.md",
+      "sha256": "bf4ef1080b931f410a35c43a9f6685aa7c56f6cd4303ac8e03063b8271e63ebf"
+    },
+    {
+      "path": "specs/032-wave5-tp7-functional-porting/checklists/plan-review.md",
+      "sha256": "dcf03d03993f5149cf7fcec08a71e4b8c855d280b95b9c1d32f60b49b538d3e3"
+    },
+    {
+      "path": "specs/032-wave5-tp7-functional-porting/autonomous-gate-requirements.json",
+      "sha256": "2fd078889248640813ed4c2cf135ce839cbcb01c518fedc2ef13ae0dca01470c"
+    }
+  ],
+  "tasks": {
+    "path": "specs/032-wave5-tp7-functional-porting/tasks.md",
+    "sha256": "bc4e4dcb52953687333550aca2cbf615e0957058b6b71f124faa441fd4ed3035",
+    "completed": 164,
+    "total": 180
+  },
+  "lastPassingGate": "The Windows-only CRLF evidence-parser defect is reproduced, corrected test-only, and verified locally by 4/4 matrix tests.",
+  "nextExactAction": "Commit and push the bounded CRLF remediation, then rerun and monitor all PR-context checks and review threads on the resulting exact head.",
+  "lastOperation": {
+    "kind": "ResolveReview",
+    "state": "Completed",
+    "summary": "Normalized Markdown line endings in the Wave-5 evidence parser and added explicit LF/CRLF parity proof without product changes."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "updatedAt": "2026-07-16T20:27:15Z"
+}

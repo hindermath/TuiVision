@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><RootNamespace>TuiVision.Examples.Tp7Demo</RootNamespace><AssemblyName>Tp7Demo</AssemblyName></PropertyGroup>
+  <ItemGroup><ProjectReference Include="..\Shared\TuiVision.Examples.Wave5\TuiVision.Examples.Wave5.csproj" /></ItemGroup>
+</Project>
