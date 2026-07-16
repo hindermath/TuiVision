@@ -343,15 +343,16 @@ npm run test:docfx
 - Turbo Vision 2.0.3 remains authoritative; pinned Free Vision remains secondary evidence, and Terminal.GUI v1.9.0 at commit `d5abc2001fb2c5be4d16b23bbf34dfd99e752ea3` is an additional modern C# implementation opinion.
 - All `C001`-`C048`, 16 domains, 25 pinned sources, and 13 Wave consumer groups are covered. No `C049+`, `CandidateFinding`, or `ProductDecision` was admitted.
 - The audit changes no runtime, API, dependency, example, historical, consumer, Free Vision, or Terminal.GUI source. It hands 48 `TGO###` observations to Feature 030 and creates no hardening or closure Lastenheft itself.
-- Feature 030 is the sole next intake; Wave 5 and Wave 6 remain blocked through combined TG/MB deduplication, non-empty finding-derived hardening, and independent closure.
+- Feature 030 completed the combined TG/MB audit locally; Feature 031 is the sole next intake after merge, and Wave 5 plus Wave 6 remain blocked through its independent closure.
 - After every autonomous run, promote only reproducible provider-neutral preset learning through a Home-Baseline patch release and exact tag-ZIP adoption before the next run; record `NoPromotion` without an empty branch or PR. Open one consolidated upstream preset issue only immediately before Wave 5.
 
 ### 030-tv203-magiblot-evolution-audit
-- This separate read-only audit starts only after Feature 029 merges and uses `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md`.
-- Pin `magiblot/tvision` at commit `57b6f56b38e0ee75240a80a10ee0e11470c24693` and tree `96dd03873955689ff0a79f6c8107a8148fe1ebd6`; treat its direct C++ lineage as a modernization witness, never a normative source.
-- Compare observable API and architecture responsibilities, not names, inheritance, layout, or source shape. Record `MB*` observations, deduplicate them with the Feature-029 `TG*` handoff into canonical `CF*` findings, and generate only non-empty owner-group Lastenhefte from Feature 031 followed by one closure.
-- Do not modify or copy external sources. Wave 5 and Wave 6 remain blocked through the combined findings and independent closure.
-- `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` is a binding deferred intake only after the complete Wave-6 closeout. Assign its feature number then, audit all delivered historical examples plus `A11yFramework` as a supplemental control, and keep Feature 030 as the sole immediate intake.
+- Current implementation status: the read-only audit data and targeted validator are locally complete; final repository, documentation, coverage, remote review, and delivery gates remain.
+- The exact magiblot pin is commit `57b6f56b38e0ee75240a80a10ee0e11470c24693`, tree `96dd03873955689ff0a79f6c8107a8148fe1ebd6`, with the multipart COPYRIGHT hash `66220bae...548`; its direct C++ lineage remains a modernization witness, never a normative source.
+- Fifty selected source records support 48 relations: 27 `CorroboratesOriginal`, 12 `CorroboratesModernization`, 6 `AlternativeModernization`, and 3 `NotApplicable`. The 48 `MB*` decisions are 39 `AlreadySatisfiedWithNewEvidence`, 6 `IntentionalDeviation`, and 3 `RejectedComparison`.
+- All 48 `TGO*` and 48 `MB*` observations have one combined disposition. No reproducible `CF*` finding or `ProductDecision` exists, so no hardening intake is generated; `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.md` defines Feature 031 as the sole next intake.
+- Runtime, API, dependency, example, consumer, historical, and external sources remain unchanged. Wave 5 and Wave 6 stay `BlockedPendingCombinedConformanceClosure`.
+- `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` remains a binding deferred intake only after the complete Wave-6 closeout and receives its feature number then.
 
 
 ### Autonomous Red-Proof Completeness
@@ -671,14 +672,13 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 *Standard preset set: `security-governance` v0.6.0 prio 10, `architecture-governance` v0.5.0 prio 20, `isaqb-architecture-governance` v0.2.0 prio 30, `a11y-governance` v0.4.0 prio 40, `cross-platform-governance` v0.2.0 prio 50, and `agent-parity-governance` v0.3.0 prio 60. `a11y-governance` v0.4.0 adds didactic inline-code-comment governance for new or changed non-trivial logic. `architecture-governance` v0.5.0 adds conditional `BSI C3A` cloud-autonomy evidence and `BSI C5` cloud-compliance assurance evidence for cloud-service selection, provider dependencies, audit/assurance status, shared responsibility, and operational evidence. `security-governance` v0.6.0 keeps conditional `AI-SBOM` evidence, language-specific secure-coding profiles, and regulatory applicability screening for NIS2, CRA, EU AI Act, and DORA: development-tool-only AI usage is `N/A`, AI runtime/product components require G7/BSI AI-SBOM cluster evidence, and private training projects record regulatory `N/A` when no regulated scope exists. All six presets now include audit-ready Spec-Kit run evidence: `Applicable` / `N/A` / `Open`, rationale, evidence path, reviewer, residual risk, and follow-up must be documented for the current Spec-Kit run. All six presets are in the `github/spec-kit` community catalog as of 2026-05-04 and are also published under `https://github.com/hindermath/spec-kit-preset-*`. New Level-2 projects should install the applicable subset; C#/.NET Level-2 projects default to all six unless a justified exception is documented. Commit `.specify/presets/` and generated agent command updates when presets are project policy, but never commit `.specify/presets/.cache/`. Verify installs with `specify preset list`, `specify preset info`, and where relevant `specify preset resolve`. Improve presets in the home-baseline scaffold first, propagate to standalone preset repos, then commit, push, and smoke-test via GitHub ZIP URL. Preset-rule changes and preset version/priority changes require reviewing constitution, README tables/install snippets, all agent guidance files, and relevant templates together. Community/catalog coordination happens in `github/spec-kit#2362`.*
 
 <!-- SPECKIT START -->
-Feature 029 is locally complete with final evidence under
-`specs/029-tv203-freevision-terminalgui-conformance-audit/`. After its merge
-and main sync, use only
-`Lastenheft_14_TV203-Magiblot-Evolution-Audit.md` for Feature 030. Keep Wave 5
-and Wave 6 blocked through combined TG/MB deduplication, non-empty
-finding-derived hardening, and independent closure. Lastenheft 15 reserves a
-read-only example-portfolio audit after the complete Wave-6 closeout; it has
-no feature number and does not start before then.
+Feature 030 has locally completed the pinned magiblot comparison and combined
+TG/MB deduplication with zero canonical findings. After its merge and main
+sync, use only
+`Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.md` for Feature
+031. Keep Wave 5 and Wave 6 blocked through that independent closure.
+Lastenheft 15 reserves a read-only example-portfolio audit after the complete
+Wave-6 closeout; it has no feature number and does not start before then.
 <!-- SPECKIT END -->
 
 ## Hinweise / Notes
