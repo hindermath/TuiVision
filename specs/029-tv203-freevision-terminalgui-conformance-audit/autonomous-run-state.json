@@ -5,9 +5,9 @@
   "branch": "029-tv203-freevision-terminalgui-conformance-audit",
   "deliveryMode": "MergeAndSync",
   "authorityRevalidationRequired": false,
-  "stage": "Deliver",
-  "status": "Active",
-  "checkpointCommit": "74ad633040d8bb9637cfd0daedfdaceea1ef1a7f",
+  "stage": "Retrospective",
+  "status": "Completed",
+  "checkpointCommit": "a2606892dc0f204176a8f32e4e79458b1e8aab9e",
   "acceptedArtifacts": [
     {
       "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/spec.md",
@@ -63,7 +63,7 @@
     },
     {
       "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/tasks.md",
-      "sha256": "2770c75429b1c44ea3a4914a2dcbf1e9ca18613e1acca0a765e14855f55876e9"
+      "sha256": "b30733025ca3e90cc224799e6e16d469ff9ce2434bdbbad0466dc2a8f5aea0b4"
     },
     {
       "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/checklists/implementation-readiness.md",
@@ -72,21 +72,21 @@
   ],
   "tasks": {
     "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/tasks.md",
-    "sha256": "2770c75429b1c44ea3a4914a2dcbf1e9ca18613e1acca0a765e14855f55876e9",
-    "completed": 126,
+    "sha256": "b30733025ca3e90cc224799e6e16d469ff9ce2434bdbbad0466dc2a8f5aea0b4",
+    "completed": 130,
     "total": 130
   },
-  "lastPassingGate": "Feature branch pushed with local/remote parity and ready non-empty PR #84 created against main.",
-  "nextExactAction": "Push the delivery checkpoint, wait for PR-context checks on the new exact head, validate gate evidence, and converge reviews.",
+  "lastPassingGate": "Feature PR #84, ten exact-head gates, review convergence, merge, v0.2.2 retrospective promotion, tag-ZIP adoption, and Home Baseline closeout are complete.",
+  "nextExactAction": "N/A",
   "lastOperation": {
-    "kind": "PublishPR",
+    "kind": "CausalCloseout",
     "state": "Completed",
-    "summary": "T001-T126 complete; PR #84 exists and the next commit records its delivery checkpoint."
+    "summary": "T127-T130 have immutable dispositions in delivery-closeout.md; this non-recursive commit completes the run atomically when it reaches main."
   },
   "stop": {
     "reason": "N/A",
     "requestedAt": "N/A",
     "safeBoundary": "N/A"
   },
-  "updatedAt": "2026-07-16T10:43:00Z"
+  "updatedAt": "2026-07-16T11:44:00Z"
 }
