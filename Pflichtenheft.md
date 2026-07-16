@@ -272,6 +272,8 @@ Statuscheckliste Beispielwellen:
   Reihenfolgehinweis: erst nach Merge und sauberem Main-Sync von Feature 028, Feature 029, Feature 030, allen gemeinsam findings-basierten Hardening-Läufen und dem danach verpflichtenden Closure-Lauf; bevorzugt nach stabilen Portierungen von `tvdemo`, `tvedit`, Hilfesystem und Dialogschicht.
 - [ ] **Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`**
   Reihenfolgehinweis: zuletzt; setzt den gemeinsamen Terminal.GUI-/magiblot-gestützten Closure-Lauf, die tatsächlichen Erkenntnisse aus Welle 5, eine erneute Delta-Prüfung, Datei-/Verzeichnisdialoge, Drag/Drop-Analoga und eine robuste Event-/Fensterintegration voraus.
+- [ ] **Post-Wave-6 Example Portfolio Conformance Audit**
+  Reihenfolgehinweis: nach dem vollständig gemergten Wave-6-Closeout gemäß `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md`; prüft alle 25 Originalbeispiele, alle tatsächlich gelieferten Wave-5-/Wave-6-Beispiele und `A11yFramework` als Kontrollbeispiel, ohne im Audit selbst Runtime- oder Beispieländerungen vorzunehmen.
 - [ ] Beispiel-Guides unter `docs/guides/examples/`
   Reihenfolgehinweis: jedes portierte Beispiel im selben Arbeitsgang mit eigenem Guide dokumentieren.
 
@@ -369,6 +371,21 @@ Checkliste Welle 6:
 - [ ] `FILECOPY.PAS`, `FILEFIND.PAS`, `DRAGDROP.PAS`, `TRASH.PAS` - Dateioperationen und Interaktionsfluesse
 - [ ] `COLORS.PAS`, `EDITPAL.PAS`, `GAUGES.PAS`, `TOOLS.PAS`, `GLOBALS.PAS`, `ASSOC.PAS`, `EQU.PAS` - Hilfs- und Konfigurationsmodule
 - [ ] Ressourcen- und Build-Begleitdateien (`MAKERES.PAS`, `MAKETVFM.BAT`, `.PAL`, `.TVR`) dokumentiert sichten und als C#-kompatible Assets/Generatoren neu zuschneiden
+
+**Post-Wave-6 Example Portfolio Conformance Audit**
+
+Nach dem vollständig gemergten Wave-6-Closeout wird das gesamte gelieferte
+Beispielportfolio noch einmal read-only gegen historischen Zweck,
+Framework-Nutzung, sichtbare Bedienung, Real-Path-Proof, Dokumentation,
+Accessibility und Plattformgrenzen geprüft. TV203 beziehungsweise die
+passenden TP7-Quellen bleiben historisch maßgeblich; Free Vision,
+Terminal.GUI v1.9.0 und das in Feature 030 gepinnte `magiblot/tvision` dienen
+als zusätzliche Implementierungsmeinungen.
+
+Das Audit erhält erst zu diesem Zeitpunkt die nächste freie Feature-Nummer.
+Nur reproduzierbare Findings erzeugen nicht leere, dependency-geordnete
+Remediation-Lastenhefte; danach folgt genau ein unabhängiger
+Example-Portfolio-Closure. Moderner, idiomatischer C#-Code bleibt verbindlich.
 
 ## 9. Test- und Qualitaetskonzept
 
@@ -685,6 +702,7 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.6e` = TV203-/Free-Vision-/Terminal.GUI-v1.9.0-Konformitätsaudit — ✓ IMPLEMENTIERT, 48 Verträge/25 Quellen/0 neue Findings (Feature 029, Lastenheft 13)
    - `3.6f` = TV203-/magiblot-tvision-Evolutionsaudit und gemeinsame TG-/MB-Deduplizierung — NÄCHSTER LAUF (Feature 030, Lastenheft 14)
    - `3.6g` = Findings-basierte Hardening-Läufe und unabhängiger Abschluss — DYNAMISCH AB 031; keine leeren Features
+   - Post-Wave-6 = Example-Portfolio-Konformitätsaudit — VERBINDLICH VORGEMERKT (Lastenheft 15); Feature-Nummer erst nach Wave-6-Closeout
 
 >>> NÄCHSTER SCHRITT <<< `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md` als Feature 030 ausführen. Feature 029 hat alle 48 Verträge gegen 25 gepinnte Terminal.GUI-v1.9.0-Quellen geprüft, 0 neue Candidate Findings reproduziert und 48 Beobachtungen an Feature 030 übergeben. Wave 5 und Wave 6 bleiben bis zum gemeinsamen findings-basierten Closure-Merge blockiert.
 

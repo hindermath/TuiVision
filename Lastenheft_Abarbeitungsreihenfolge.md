@@ -52,6 +52,7 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 24 | `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.028-pre-wave5-wave6-conformance-closure.md` | Pre-Wave-5-/Wave-6-Abschluss | archiviert oder abgeschlossen / archived or completed |
 | 25 | `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.029-tv203-freevision-terminalgui-conformance-audit.md` | Framework-Konformitätsaudit | archiviert oder abgeschlossen / archived or completed |
 | 26 | `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md` | Framework-Evolutionsaudit | **nächster Intake / next intake** |
+| 27 | `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` | Beispielportfolio-Konformitätsaudit | verbindlich nach Wave-6-Closeout, Feature-Nummer später / binding after Wave-6 closeout, feature number deferred |
 <!-- secure-development-hardening-order:end -->
 
 ## Fortsetzungsmarke / Resume Marker
@@ -91,9 +92,30 @@ deduplication, non-empty hardening runs, and independent closure.*
    Closure-Lauf erzeugen.
 6. Wave 5 bleibt bis zu diesem Closure-Merge blockiert. Wave 6 folgt erst nach
    Wave 5 und einer erneuten Prüfung der tatsächlichen Wave-5-Deltas.
+7. Nach dem vollständig gemergten Wave-6-Closeout folgt das in Lastenheft 15
+   vorgemerkte Example-Portfolio-Audit. Seine Feature-Nummer wird erst dann
+   aus der nächsten freien Nummer gebildet; es erzeugt nur aus realen Findings
+   nicht leere Remediation-Lastenhefte und danach einen unabhängigen Closure.
 
 *Revision 2 routed nine findings to Feature 025 and four to Feature 026; both
 are complete. Feature 028 closed that gate and Feature 029 completed the pinned
 Terminal.GUI v1.9.0 comparison. Feature 030 now performs the magiblot comparison
 and combined deduplication; only the final finding-derived closure may release
 Wave 5. Wave 6 additionally requires a post-Wave-5 delta review.*
+
+## Verbindlicher Folgeaudit nach Wave 6 / Binding Post-Wave-6 Audit
+
+`Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` ist bereits
+als späterer Intake festgelegt, wird aber weder nummeriert noch gestartet,
+solange Feature 030, seine findings-basierten Folgearbeiten, der Pre-Wave-5-
+Closure sowie Wave 5 und Wave 6 mit ihren Closeouts nicht vollständig gemergt
+sind.
+
+Der spätere Audit prüft alle 25 Originalbeispiele, alle tatsächlich gelieferten
+Wave-5-/Wave-6-Beispiele und `A11yFramework` als projektspezifische
+Vergleichskontrolle. Feature 030 bleibt unverändert der einzige nächste
+Spec-Kit-Intake.
+
+*Lastenheft 15 reserves one read-only portfolio audit after the complete
+Wave-6 closeout. It does not assign a feature number, start a run, or change
+the current Feature-030 continuation marker.*

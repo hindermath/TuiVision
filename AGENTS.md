@@ -351,6 +351,7 @@ npm run test:docfx
 - Pin `magiblot/tvision` at commit `57b6f56b38e0ee75240a80a10ee0e11470c24693` and tree `96dd03873955689ff0a79f6c8107a8148fe1ebd6`; treat its direct C++ lineage as a modernization witness, never a normative source.
 - Compare observable API and architecture responsibilities, not names, inheritance, layout, or source shape. Record `MB*` observations, deduplicate them with the Feature-029 `TG*` handoff into canonical `CF*` findings, and generate only non-empty owner-group Lastenhefte from Feature 031 followed by one closure.
 - Do not modify or copy external sources. Wave 5 and Wave 6 remain blocked through the combined findings and independent closure.
+- `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` is a binding deferred intake only after the complete Wave-6 closeout. Assign its feature number then, audit all delivered historical examples plus `A11yFramework` as a supplemental control, and keep Feature 030 as the sole immediate intake.
 
 
 ### Autonomous Red-Proof Completeness
@@ -675,7 +676,9 @@ Feature 029 is locally complete with final evidence under
 and main sync, use only
 `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md` for Feature 030. Keep Wave 5
 and Wave 6 blocked through combined TG/MB deduplication, non-empty
-finding-derived hardening, and independent closure.
+finding-derived hardening, and independent closure. Lastenheft 15 reserves a
+read-only example-portfolio audit after the complete Wave-6 closeout; it has
+no feature number and does not start before then.
 <!-- SPECKIT END -->
 
 ## Hinweise / Notes
