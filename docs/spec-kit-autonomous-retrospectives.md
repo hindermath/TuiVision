@@ -329,3 +329,43 @@ erst am vereinbarten gebündelten Pre-Wave-5-Punkt veröffentlicht.
 conformance. Wave 5 and Wave 6 remain blocked until that audit and its real
 finding-driven follow-ups complete. The community catalog update remains
 deferred to the agreed bundled pre-Wave-5 point.*
+
+## 029 Terminal.GUI v1.9.0 Conformance Audit
+
+**Feature:** `029-tv203-freevision-terminalgui-conformance-audit`
+
+**Feature-PR:** [#84](https://github.com/hindermath/TuiVision/pull/84)
+
+**Closeout-PR:** Kausaler Einzel-Commit; eigene URL, reviewter Head und Merge
+werden zur Vermeidung von Rekursion extern geprüft.
+
+| Beobachtung | Entscheidung | Umsetzung oder Grenze |
+|---|---|---|
+| Der echte Stop/Resume-Feldlauf bewahrte Scope, Artefakte und Remote-Autorität; die v0.2.1-Pflichtregel-Delta-Prüfung fand keine weitere Scope-Lücke. | `NoPromotion` | Stop-, Resume-, Drift- und Authority-Verträge funktionieren. |
+| Zehn exakte Gate-Zeilen banden Requirements-Hash, finalen Head, Workflow, Job, Plattform und ausgeführten Scope; Bash und PowerShell akzeptierten die Evidence. | `NoPromotion` | Die vorhandene Exact-Head-Automation verhinderte grüne-Jobnamen-Abkürzungen. |
+| Die kurze Preset-README setzte Vorwissen zu Delivery-Modi, Konvergenz, Stop, Resume, Evidence und Berechtigungsgrenzen voraus. | `RunbookClarification`, `TemplateCorrection`, `PresetFollowUp` mit `Promote` | v0.2.2 liefert ein bilinguales CEFR-B2-Bedien- und Lernhandbuch mit vollständigen Beispielen. |
+| Die lesbare Skill-Überschrift `Deliver` wurde im Feature-Run-State als Stage gespeichert, obwohl beide Validatoren nur `Publish`, `Review` und `MergeAndSync` erlauben. | `SkillCorrection`, `AgentPolicyCorrection`, `ValidationAutomation`, `PresetFollowUp` mit `Promote` | v0.2.2 trennt menschliche Abschnittsnamen strikt von Maschinenzuständen; die Validatoren bleiben fail-closed und lehnen `Deliver` ab. |
+| Claude und alle technischen Gates waren grün, GraphQL meldete null Threads, Copilot blieb quota-bedingt nicht verfügbar und nur Human Approval blockierte. | `NoPromotion` | Review-, Missing-Reviewer- und Bypass-Grenzen funktionierten unverändert. |
+
+### Promotion Evidence
+
+| Feld | Nachweis |
+|---|---|
+| Quelle | PR #84, finaler Head `50b715e`, `specs/029-tv203-freevision-terminalgui-conformance-audit/delivery-closeout.md` und Home-Baseline-Workitems AR-029-01 bis AR-029-03 |
+| Artefaktart | README, Command/Skill-Klarstellung, Runbook, Agent-Addendum, Field-Validation und Preset-Follow-up |
+| Projektspezifischer Ausschluss | Keine TuiVision-Feature-Nummer, .NET-Regel, Terminal.GUI-Relation, Wave-Reihenfolge, Build-Version oder Repository-Bypassregel wird verallgemeinert. |
+| Provider-neutrale Zielregel | Ein autonomes Preset erklärt seinen vollständigen sicheren Bedienpfad. Lesbare Überschriften definieren keine persistierbaren Zustandswerte; jede Transition nutzt und validiert das kanonische Schema. |
+| Auftreten und Vertrauen | Eine explizite Dokumentationslücke und ein von beiden Validatoren reproduzierter Zustandsfehler; hohe Sicherheit. |
+| Berechtigungs- und Evidence-Risiko | Niedrig für Berechtigungen, mittel für Resume-Evidence. Die Korrektur erweitert keine Remote-Autorität. |
+| Reproduzierbarer Test | Ein neuer Benutzer muss LocalImplementation, Delivery-Modi, Status, Stop, Resume und Exact-Head-Evidence aus der README erklären können. Beide Validatoren müssen `Deliver` ablehnen und die drei kanonischen Remote-Stages akzeptieren. |
+| Portable Entscheidung | `Promote` als `autonomous-run-governance` v0.2.2; Home-Baseline-PRs #70/#71, öffentliches Preset-PR #7, Release-ZIP und TuiVision-PR #85 sind abgeschlossen. |
+
+### Nächster Prüfschritt / Next Check
+
+Feature 030 ist der einzige nächste Intake und prüft `magiblot/tvision` als
+separaten Modernisierungszeugen. Der autonome Lauf wird durch diesen Closeout
+nicht gestartet. Wave 5 und Wave 6 bleiben blockiert.
+
+*Feature 030 is the sole next intake and reviews `magiblot/tvision` as a
+separate modernization witness. This closeout does not start the autonomous
+run. Wave 5 and Wave 6 remain blocked.*
