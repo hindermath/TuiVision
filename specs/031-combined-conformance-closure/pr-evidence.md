@@ -39,7 +39,7 @@ local main synchronization.
 | Analyze | 1 | Pass | 55/55 requirements covered by 172 tasks; zero Critical/High and no undisposed Medium after bounded task remediation | Begin implementation |
 | Implement | 1 | Pass | T001-T128; complete closure dataset, validator, provenance, readable evidence, blocked markers, synchronized guidance, statistics snapshot, and archived intake | Run final local validation |
 | Validate | 1 | Pass locally | Targeted 45/45; full 781/781; coverage 92.96/86.66/90.01/80.55/89.18; format; DocFX 0/0; Axe 2/2; UTF-8 Lynx 3/3; secrets High 0; vulnerable packages 0; scope clean; Homogeneity 100% | Stage exact candidate and complete remote gates |
-| Deliver | 1 | Open | Feature PR and causal closeout if required | Merge and synchronize |
+| Deliver | 1 | Pass | Feature PR #90, reviewed head `4e6a974`, merge `3d64a36`, first main sync, and causal closeout | Complete |
 
 Allowed results are `Pass`, `Fail`, `Accepted`, `Deferred`, and `Open`.
 
@@ -102,7 +102,7 @@ commands used `/usr/bin/shasum`, `/usr/bin/awk`, `/usr/bin/jq`, and
 | Prior findings | 13 `Closed` | Reconciled |
 | Owner schema rows | 3 empty | Reconciled |
 | Canonical findings, product decisions, edges, hardening intakes | 0 / 0 / 0 / 0 | Reconciled |
-| Governance checkpoints | 16 across seven presets | Complete metadata; applicable results remain open until their validation gate runs |
+| Governance checkpoints | 16 across seven presets | 8 `Applicable` Pass, 8 `N/A`, 0 Open |
 
 The zero-hardening result is not inferred from empty output. Missing,
 duplicate, unknown, reopened, non-empty-owner, finding, product-decision,
@@ -116,10 +116,10 @@ Feature-031 validator.
 |---|---|---|
 | Marker inventory | Pass | Active Pflichtenheft, processing order, statistics, Feature-031 gate/evidence, tests, and five agent surfaces use the causal dual-state contract |
 | Historical feature evidence | Preserved | Features 024, 028, 029, and 030 retain their historical blocked states and are not rewritten as current status |
-| Feature-031 sections | Pass | All five maintained sections have SHA-256 `742b7624cc73e3fa39bc06cc3e2ab2ccb992fb78103f605ce4400cd0cbb72973` |
+| Feature-031 sections | Pass | All five maintained sections have SHA-256 `f52ad9bd0a5064f3783eb655a9a370e3e60b2015cbbb3f7cd0615f0472b37bfd` |
 | Homogeneity | Pass | Home-Baseline validator against the explicit TuiVision root reports score 100, failures 0, warnings 0 |
 | Repository-local wrapper | Fail, not accepted | `scripts/check-homogeneity.sh` exits 2 because `scripts/lib/hg-*.sh` is absent; no result from that invocation is represented as Pass |
-| Rename workflow | Pass | Dry run resolves the exact `.031-combined-conformance-closure.md` target; real rename remains deferred to T128 with `--no-commit` |
+| Rename workflow | Pass | The binding intake is archived at the exact `.031-combined-conformance-closure.md` target through the repository workflow |
 | Forbidden successor | Pass | Zero `032*`, Wave-5, or Wave-6 branches; zero Feature-032 directories; zero runtime or package/project diffs |
 
 ## Decisions and Follow-ups
@@ -128,9 +128,9 @@ Feature-031 validator.
 |---|---|---|---|---|---|---|
 | Product scope | EvidenceOnlyClosure | The intake forbids product changes | `spec.md` | A real regression would block closure | Feature maintainer | Re-evaluate on any reproduced finding |
 | External sources | ReadOnlyPinnedEvidence | Comparison sources are evidence, not dependencies | Source manifests | Upstream availability can change | Feature maintainer | Re-evaluate on pin or hash drift |
-| Wave 5 | BlockedPendingClosure | Eligibility is causal after all gates and merge | `spec.md` | Premature marker update | Project owner | Set `Eligible` only after truthful closure |
-| Wave 6 | BlockedPendingWave5 | Wave-5 delta remains unknown | `spec.md` | Wave-5 changes can alter readiness | Project owner | Re-evaluate after Wave 5 and delta review |
-| Preset learning | Open | Requires completed retrospective | `retrospective.md` when created | Overgeneralization | Workflow maintainer | Promote only reproducible portable defects |
+| Wave 5 | Eligible | All gates and the feature merge are causally proven | `delivery-closeout.md` | The separate Wave has not started | Project owner | Start only after explicit authorization |
+| Wave 6 | ConditionallyReady | The common basis is closed, but the Wave-5 delta remains unknown | `delivery-closeout.md` | Wave-5 changes can alter readiness | Project owner | Re-evaluate after Wave 5 and delta review |
+| Preset learning | NoPromotion | No provider-neutral autonomous defect was reproduced | `retrospective.md` | Project-specific validation lessons remain local | Workflow maintainer | Re-evaluate on a reproducible portable defect |
 
 The planned archive target is
 `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md`.
@@ -149,28 +149,28 @@ feature-head implementation is complete and before final candidate validation.
 
 | Preset | Version | Checkpoint | Applicability | Rationale | Evidence path | Owner | Reviewer | Result | Residual risk | Follow-up | Re-evaluation trigger |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| security-governance | 0.6.0 | Evidence integrity and secure validation | Applicable | Closed data, fail-closed validation, secrets, exact-head proof | `spec.md`, future closure evidence | Feature maintainer | Codex | Open | Invalid evidence could release a Wave | Complete security rows | Schema, scope, or finding change |
-| architecture-governance | 0.5.0 | Contract, consumer, STRIDE/CIA/CAPEC traceability | Applicable | Closure verifies architecture responsibilities and risks | `spec.md`, future contract matrix | Feature maintainer | Codex | Open | Missing relation can conceal a gap | Complete architecture rows | Contract or consumer change |
-| isaqb-architecture-governance | 0.2.0 | Quality scenarios and debt | Applicable | Closure is a quality and risk gate | `spec.md`, future plan | Feature maintainer | Codex | Open | Aggregate proof may hide weak evidence | Complete iSAQB rows | Proof boundary change |
-| a11y-governance | 0.4.0 | Bilingual and text-first evidence | Applicable | Learner-facing closure documents require inclusive structure | `spec.md`, generated docs | Documentation owner | Codex | Open | Dense matrices can be hard to navigate | Run A11Y path | Documentation surface change |
-| cross-platform-governance | 0.2.0 | Platform proof | Applicable | Linux, macOS, and Windows acceptance is required | Future validation evidence | Feature maintainer | Codex | Open | A green job may lack the required command | Map exact job commands | Platform or script change |
-| agent-parity-governance | 0.3.0 | Maintained guidance parity | Applicable | Final Wave status must agree across five surfaces | Agent files if changed | Workflow maintainer | Codex | Open | Stale status can start the wrong intake | Run homogeneity gate | Shared guidance change |
-| autonomous-run-governance | 0.2.2 | State, authority, gates, review, closeout | Applicable | Full MergeAndSync run | Run state and gate files | Workflow maintainer | Codex | Open | Stale state or self-invalidating evidence | Validate every boundary | Interruption or governance drift |
+| security-governance | 0.6.0 | Evidence integrity and secure validation | Applicable | Closed data, fail-closed validation, secrets, exact-head proof | `delivery-closeout.md` | Feature maintainer | Codex | Pass | Future evidence drift | Re-evaluate on trigger | Schema, scope, or finding change |
+| architecture-governance | 0.5.0 | Contract, consumer, STRIDE/CIA/CAPEC traceability | Applicable | Closure verifies architecture responsibilities and risks | `closure-evidence.json` | Feature maintainer | Codex | Pass | Future relation drift | Re-evaluate on trigger | Contract or consumer change |
+| isaqb-architecture-governance | 0.2.0 | Quality scenarios and debt | Applicable | Closure is a quality and risk gate | `closure-evidence.json` | Feature maintainer | Codex | Pass | Later source changes | Re-evaluate on trigger | Proof boundary change |
+| a11y-governance | 0.4.0 | Bilingual and text-first evidence | Applicable | Learner-facing closure documents require inclusive structure | `delivery-closeout.md` | Documentation owner | Codex | Pass | Future rendering drift | Re-evaluate on trigger | Documentation surface change |
+| cross-platform-governance | 0.2.0 | Platform proof | Applicable | Linux, macOS, and Windows acceptance is required | `delivery-closeout.md` | Feature maintainer | Codex | Pass | Future runner changes | Re-evaluate on trigger | Platform or script change |
+| agent-parity-governance | 0.3.0 | Maintained guidance parity | Applicable | Final Wave status agrees across five surfaces | Agent files and `delivery-closeout.md` | Workflow maintainer | Codex | Pass | Future guidance drift | Re-evaluate on trigger | Shared guidance change |
+| autonomous-run-governance | 0.2.2 | State, authority, gates, review, closeout | Applicable | Full MergeAndSync run | Run state and `delivery-closeout.md` | Workflow maintainer | Codex | Pass | Terminal closeout identity is external | NoPromotion | State, authority, provider, or closeout change |
 
 ## Validation
 
 | Command or review | Trigger | Result | Evidence or failure boundary |
 |---|---|---|---|
 | `git diff --check` | Every change | Pass | Whitespace, JSON, Markdown fences, UTF-8, placeholders, and closed vocabularies pass |
-| `git diff --cached --check` plus candidate inventory | Before commit | Open | Stage intended paths only |
+| `git diff --cached --check` plus candidate inventory | Before commit | Pass | Exact feature and remediation candidates were staged and reconciled without remaining paths |
 | Targeted closure validator | Closure dataset and tests | Pass | Build 307: 45/45 across Features 024, 028, 029, 030, and 031 |
 | Full Release tests | Binding intake | Pass | Build 308: 781/781 across Core 52, Serialization 48, Compatibility 18, Drivers 150, Controls 373, and example smokes 140 |
 | Canonical coverage gate | Binding intake | Pass | Build 309: Core 92.96%, Controls 86.66%, Serialization 90.01%, Compatibility 80.55%, Drivers.Console 89.18%; the non-gate Example-Smoke project reported no collector |
 | `dotnet format --verify-no-changes` | Test-only C# change | Pass | Exit 0 on the archived-input candidate |
 | `docfx docfx.json` | Learner-facing docs and marker changes | Pass | First invocation failed 255 because child `dotnet` was absent from App PATH; explicit `/Users/thorstenhindermann/.dotnet` PATH passed with 0 warnings and 0 errors |
 | Playwright/Axe and UTF-8 text review | Documentation output | Pass | Playwright/Axe 2/2; package Lynx routes returned 393/727/4184 lines in local ISO-8859-1, and explicit UTF-8 display mode passed strict decoding with 388/723/4180 readable lines |
-| Secrets, scope, generated-output review | Every delivery candidate | Pass locally | Secrets High 0; one known untracked local `.claude/settings.local.json` Medium; 0 vulnerable packages; Homogeneity 100%; protected/runtime/dependency/project/generated-output inventory clean; provider Gitleaks and supply-chain jobs remain remote gates |
-| Exact-head gate validator | `MergeAndSync` | Open | Temporary provider-neutral evidence |
+| Secrets, scope, generated-output review | Every delivery candidate | Pass | Secrets High 0; Gitleaks and Supply Chain passed; 0 vulnerable packages; Homogeneity 100%; protected/runtime/dependency/project/generated-output inventory clean |
+| Exact-head gate validator | `MergeAndSync` | Pass | 12 requirements, 12 Primary rows, 0 supplemental rows for head `4e6a974` |
 
 For every explicit `dotnet build` or `dotnet test`, the immediately preceding
 manual build-counter value will be recorded. One increment covers one command.
@@ -202,7 +202,7 @@ manual build-counter value will be recorded. One increment covers one command.
 | Bounded test-only fix | Pass locally | Accepted repository text is normalized to LF before SHA-256; a new direct test proves identical LF and CRLF hashes |
 | Build 310 targeted Release validation | Pass: 9/9 | All `CombinedConformanceClosureEvidenceTests`, including the line-ending parity proof, pass |
 | `dotnet format TuiVision.sln --verify-no-changes --no-restore` | Pass | No formatting drift after the bounded test-only fix |
-| Exact-head Windows rerun | Open | A new reviewed head must pass Ubuntu, macOS, and Windows before gate mapping |
+| Exact-head Windows rerun | Pass | CI run `29523357603` passed 782/782 on Ubuntu, macOS, and Windows |
 
 ## Remote Delivery
 
@@ -210,19 +210,19 @@ manual build-counter value will be recorded. One increment covers one command.
 |---|---|---|
 | Push | Pass for initial candidate | Branch `031-combined-conformance-closure`; remote head `63dac1c91c5ae7cd71cf056700ece65d363b7fa9` verified exactly |
 | Pull request | Pass | [PR #90](https://github.com/hindermath/TuiVision/pull/90), non-empty against `main` |
-| Required checks | Remediation running | First final-head matrix exposed one Windows-only canonical-text hash defect; bounded test-only fix awaits a new exact-head matrix |
-| Acceptance-gate mapping | Open | Temporary exact-head evidence |
-| Review threads | Open | GraphQL thread state |
-| Unavailable reviews | None yet | Provider evidence if applicable |
-| Reviewed head | Open | Final PR-identity commit must be pushed before gate mapping |
-| Merge | Open | Merge commit |
-| Local `main` sync | Open | `HEAD == origin/main` |
-| Causal closeout | Required when Wave eligibility is post-merge-only | `delivery-closeout.md`; terminal closeout facts verified externally |
-| Duplicate workflow events | Open | PR-context checks are authoritative |
+| Required checks | Pass | 22 successful; PR-only Pages deploy skipped as designed |
+| Acceptance-gate mapping | Pass | Temporary 12-row exact-head evidence validated for `4e6a974` |
+| Review threads | Pass | GraphQL: 0 threads, 0 comments |
+| Unavailable reviews | Missing, not Pass | Copilot quota exhausted on all three heads |
+| Reviewed head | Pass | `4e6a974e29cea743d17302ccdeedf5af3cafe122` |
+| Merge | Pass | Merge commit `3d64a36f212146d8a0ce68515a7923806bc73c81`; bypass only Human Approval |
+| Local `main` sync | Pass | First post-merge `HEAD == origin/main == 3d64a36` |
+| Causal closeout | In progress | This evidence-only branch completes the post-merge Wave transition |
+| Duplicate workflow events | Recorded | PR-context checks authoritative; four push runs retained as operational noise |
 
 ## Retrospective
 
-- **Effective**: Pending
-- **Waste**: Pending
-- **Recurring blocker**: None at preflight
-- **Recommended refinement**: Pending completed run evidence
+- **Effective**: Closed data, test-first proof, exact-head mapping, full replacement matrix after remediation, and non-recursive closeout
+- **Waste**: Restricted desktop `PATH`, unavailable local PowerShell/Gitleaks, duplicate push workflows, and quota-limited Copilot
+- **Recurring blocker**: Human Approval remains the sole protected-branch rule requiring the authorized narrow bypass
+- **Recommended refinement**: `NoPromotion`; keep the LF/CRLF hash correction local to the TuiVision evidence validator

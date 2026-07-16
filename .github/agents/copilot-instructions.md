@@ -197,11 +197,11 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` remains a binding deferred intake only after the complete Wave-6 closeout and receives its feature number then.
 
 ### 031-combined-conformance-closure
-- Current planning baseline: follow `specs/031-combined-conformance-closure/plan.md` for an evidence-only independent closure of Features 024, 025, 026, 028, 029, and 030.
-- Revalidate exactly 48 contracts, 13 consumers, 48 TGO and 48 MB observations, 96 dispositions, all accepted external pins and source hashes, and the closed `F001`-`F013` set.
-- Product runtime, public APIs, dependencies, packages, projects, examples, consumers, historical sources, and external sources remain unchanged. Any reproduced product defect blocks 031 and becomes a separate reviewed intake.
-- The reviewed feature head keeps both Waves blocked. Only a complete causal evidence closeout after exact-head gates and the feature merge may mark Wave 5 `Eligible` and Wave 6 `ConditionallyReady`.
-- Do not start Wave 5, Wave 6, or Feature 032 in this run.
+- Current implementation status: the evidence-only independent closure is complete; final evidence is in `specs/031-combined-conformance-closure/delivery-closeout.md`.
+- Exactly 48 contracts, 13 consumers, 48 TGO and 48 MB observations, 96 dispositions, all accepted source pins and hashes, and the closed `F001`-`F013` set are revalidated.
+- Product runtime, public APIs, dependencies, packages, projects, examples, consumers, historical sources, and external sources remain unchanged.
+- Wave 5 is `Eligible` but not started. Wave 6 is only `ConditionallyReady` and still requires completed Wave 5 plus review of its actual delta.
+- No Feature 032 exists. A new explicit user instruction is required before the next autonomous run.
 
 
 ### Autonomous Red-Proof Completeness

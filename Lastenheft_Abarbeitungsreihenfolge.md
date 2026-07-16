@@ -52,28 +52,27 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 24 | `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.028-pre-wave5-wave6-conformance-closure.md` | Pre-Wave-5-/Wave-6-Abschluss | archiviert oder abgeschlossen / archived or completed |
 | 25 | `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.029-tv203-freevision-terminalgui-conformance-audit.md` | Framework-Konformitätsaudit | archiviert oder abgeschlossen / archived or completed |
 | 26 | `Lastenheft_14_TV203-Magiblot-Evolution-Audit.030-tv203-magiblot-evolution-audit.md` | Framework-Evolutionsaudit | archiviert oder abgeschlossen / archived or completed |
-| 27 | `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md` | Gemeinsamer Pre-Wave-5-/Wave-6-Abschluss | **aktiver Abschluss / active closure** |
+| 27 | `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md` | Gemeinsamer Pre-Wave-5-/Wave-6-Abschluss | archiviert oder abgeschlossen / archived or completed |
 | 28 | `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` | Beispielportfolio-Konformitätsaudit | verbindlich nach Wave-6-Closeout, Feature-Nummer später / binding after Wave-6 closeout, feature number deferred |
 <!-- secure-development-hardening-order:end -->
 
 ## Fortsetzungsmarke / Resume Marker
 
-> **AKTIVER SPEC-KIT-INTAKE: `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md` -> `031-combined-conformance-closure`.**
+> **NÄCHSTER FACHLICHER INTAKE: Welle 5 ist `Eligible`, aber nicht gestartet; Feature-Nummer und Lastenheft werden erst durch einen neuen expliziten Auftrag festgelegt.**
 >
-> **ACTIVE SPEC KIT INTAKE: `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md` -> `031-combined-conformance-closure`.**
+> **NEXT DOMAIN INTAKE: Wave 5 is `Eligible` but not started; its feature number and intake are assigned only by a new explicit instruction.**
 
-Features 025, 026, 028 und 029 sind abgeschlossen. Feature 030 hat lokal 50
-gepinnt-hashgebundene magiblot-Quellen, 48 Relationen und 48 `MB*`-
-Beobachtungen geprüft. Zusammen mit 48 `TGO*`-Beobachtungen ergeben sich 96
-vollständige Nicht-Finding-Dispositionen, null `CF*`-Findings und null
-Hardening-Intakes. Feature 031 ist der nächste autonome Closure-Lauf; beide
-Waves bleiben bis zu dessen Merge blockiert.
+Features 025, 026, 028, 029, 030 und 031 sind abgeschlossen. Der unabhängige
+Closure bestätigt 48 Verträge, 13 Consumer-Gruppen, 96 vollständige
+Nicht-Finding-Dispositionen, null `CF*`-Findings und null Hardening-Intakes.
+Wave 5 ist `Eligible`, wird aber nicht automatisch gestartet. Wave 6 bleibt
+`ConditionallyReady`.
 
-*Features 025, 026, 028, and 029 are complete. Feature 030 locally reviewed 50
-pinned and hash-bound magiblot sources, 48 relations, and 48 MB observations.
-Together with 48 TGO observations, the result is 96 complete non-finding
-dispositions, zero CF findings, and zero hardening intakes. Feature 031 is the
-next independent closure run; both Waves remain blocked through its merge.*
+*Features 025, 026, 028, 029, 030, and 031 are complete. The independent
+closure confirms 48 contracts, 13 consumer groups, 96 complete non-finding
+dispositions, zero CF findings, and zero hardening intakes. Wave 5 is
+eligible but is not started automatically. Wave 6 remains conditionally
+ready.*
 
 ## Verbindliche Folge vor Wave 5 und Wave 6 / Binding Sequence Before Wave 5 and Wave 6
 
@@ -92,11 +91,11 @@ next independent closure run; both Waves remain blocked through its merge.*
 5. `030-tv203-magiblot-evolution-audit` hat alle 48 Verträge gegen 50
    magiblot-Quellen geprüft und 96 TG-/MB-Beobachtungen ohne `CF*`-Finding
    dedupliziert. Daher entstehen keine Hardening-Läufe.
-6. `031-combined-conformance-closure` mit Lastenheft 16 ist der aktive
-   unabhängige Abschluss. Sein reviewter Feature-Head hält beide Waves
-   `BlockedPendingCausalClosure`.
-7. Wave 5 bleibt bis zu diesem Closure-Merge blockiert. Wave 6 folgt erst nach
-   Wave 5 und einer erneuten Prüfung der tatsächlichen Wave-5-Deltas.
+6. `031-combined-conformance-closure` mit Lastenheft 16 ist vollständig
+   gemergt. Sein kausaler Closeout setzt Wave 5 auf `Eligible` und Wave 6 nur
+   auf `ConditionallyReady`.
+7. Wave 5 beginnt nur nach einem neuen expliziten Auftrag. Wave 6 folgt erst
+   nach Wave 5 und einer erneuten Prüfung der tatsächlichen Wave-5-Deltas.
 8. Nach dem vollständig gemergten Wave-6-Closeout folgt das in Lastenheft 15
    vorgemerkte Example-Portfolio-Audit. Seine Feature-Nummer wird erst dann
    aus der nächsten freien Nummer gebildet; es erzeugt nur aus realen Findings
@@ -105,21 +104,21 @@ next independent closure run; both Waves remain blocked through its merge.*
 *Revision 2 routed nine findings to Feature 025 and four to Feature 026; both
 are complete. Feature 028 closed that gate, Feature 029 completed the pinned
 Terminal.GUI comparison, and Feature 030 completed the magiblot comparison
-with zero canonical findings. Feature 031 is the active independent closure
-before Wave 5 and keeps both Waves blocked on its reviewed feature head. Wave
-6 additionally requires a post-Wave-5 delta review.*
+with zero canonical findings. Feature 031 is complete. Wave 5 is eligible but
+not started; Wave 6 additionally requires a post-Wave-5 delta review.*
 
 ## Verbindlicher Folgeaudit nach Wave 6 / Binding Post-Wave-6 Audit
 
 `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` ist bereits
 als späterer Intake festgelegt, wird aber weder nummeriert noch gestartet,
-solange Feature 030, Feature 031 sowie Wave 5 und Wave 6 mit ihren Closeouts
+solange Wave 5 und Wave 6 mit ihren Closeouts
 nicht vollständig gemergt sind.
 
 Der spätere Audit prüft alle 25 Originalbeispiele, alle tatsächlich gelieferten
 Wave-5-/Wave-6-Beispiele und `A11yFramework` als projektspezifische
-Vergleichskontrolle. Feature 031 ist der einzige nächste Spec-Kit-Intake.
+Vergleichskontrolle. Der nächste fachliche Schritt ist Wave 5, jedoch erst nach
+einem neuen expliziten Benutzerauftrag.
 
 *Lastenheft 15 reserves one read-only portfolio audit after the complete
 Wave-6 closeout. It does not assign a feature number, start a run, or change
-the current Feature-031 continuation marker.*
+the current Wave-5 eligibility marker.*

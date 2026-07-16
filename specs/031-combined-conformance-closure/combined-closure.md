@@ -1,14 +1,17 @@
 # Gemeinsamer Konformitätsabschluss / Combined Conformance Closure
 
-## Ergebnis auf dem Feature-Head / Feature-Head Result
+## Feature-Head und kausaler Abschluss / Feature Head and Causal Closeout
 
 Der unabhängige Datensatz bestätigt die akzeptierten Ergebnisse der Features
-024, 025, 026, 028, 029 und 030. Der reviewte Feature-Head bleibt
-`BlockedPendingCausalClosure`; er darf Wave 5 noch nicht freigeben.
+024, 025, 026, 028, 029 und 030. Der reviewte Feature-Head blieb korrekt
+`BlockedPendingCausalClosure`. PR #90 wurde danach als Merge `3d64a36`
+geliefert; dieser kausale Closeout setzt Wave 5 auf `Eligible` und Wave 6 nur
+auf `ConditionallyReady`.
 
 *The independent dataset confirms the accepted results from Features 024,
-025, 026, 028, 029, and 030. The reviewed feature head remains
-`BlockedPendingCausalClosure` and may not release Wave 5 yet.*
+025, 026, 028, 029, and 030. The reviewed feature head correctly remained
+`BlockedPendingCausalClosure`. PR #90 then merged as `3d64a36`; this causal
+closeout sets Wave 5 to `Eligible` and Wave 6 only to `ConditionallyReady`.*
 
 | Menge / Set | Erwartet / Expected | Ergebnis / Result |
 |---|---:|---|
@@ -104,11 +107,11 @@ decision, dependency edge, or hardening file makes the validator fail closed.*
 
 ## Kausale Freigabe / Causal Release
 
-Der Feature-Head kann nur `ReadyForMerge` erreichen. Erst der nachgewiesene
-Feature-Merge und ein einzelner evidence-only Closeout dürfen Wave 5 auf
-`Eligible` und Wave 6 höchstens auf `ConditionallyReady` setzen. Wave 5 und
-Wave 6 werden durch Feature 031 nicht gestartet.
+Der Feature-Head erreichte nur `ReadyForMerge`. Der nachgewiesene Feature-Merge
+und dieser einzelne evidence-only Closeout setzen Wave 5 nun auf `Eligible`
+und Wave 6 höchstens auf `ConditionallyReady`. Wave 5 und Wave 6 werden durch
+Feature 031 weiterhin nicht gestartet.
 
-*The feature head can reach only `ReadyForMerge`. Only the proven feature merge
-and one evidence-only closeout may set Wave 5 to `Eligible` and Wave 6 no
-further than `ConditionallyReady`. Feature 031 does not start either Wave.*
+*The feature head reached only `ReadyForMerge`. The proven feature merge and
+this single evidence-only closeout now set Wave 5 to `Eligible` and Wave 6 no
+further than `ConditionallyReady`. Feature 031 still starts neither Wave.*

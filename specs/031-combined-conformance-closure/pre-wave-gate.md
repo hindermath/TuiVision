@@ -1,16 +1,16 @@
 # Pre-Wave-Gate für Feature 031 / Feature 031 Pre-Wave Gate
 
-## Feature-Head
+## Kausaler Abschluss / Causal Closeout
 
 | Ziel / Target | Zustand / State | Begründung / Rationale |
 |---|---|---|
-| Feature 031 | `Blocked` | Lokale, remote, Review- und Exact-Head-Gates sind noch nicht vollständig kausal bewiesen |
-| Wave 5 | `BlockedPendingCausalClosure` | Der reviewte Feature-Head darf seinen eigenen späteren Merge nicht vorwegnehmen |
-| Wave 6 | `BlockedPendingCausalClosure` | Wave 6 benötigt zusätzlich die abgeschlossene Wave 5 und deren echten Delta-Review |
+| Feature 031 | `Completed` | PR #90, Head `4e6a974`, zwölf Exact-Head-Gates, 22 grüne Checks, Merge `3d64a36` und dieser Closeout sind bewiesen |
+| Wave 5 | `Eligible` | Alle kombinierten Konformitäts- und Delivery-Gates sind kausal geschlossen; die Wave wird nicht automatisch gestartet |
+| Wave 6 | `ConditionallyReady` | Wave 6 benötigt weiterhin die abgeschlossene Wave 5 und deren echten Delta-Review |
 
-*Feature 031 remains blocked until every local, remote, review, and exact-head
-gate is causally proven. The reviewed feature head cannot anticipate its own
-future merge.*
+*Feature 031 is complete after all local, remote, review, exact-head, merge,
+and closeout facts were proven. Wave 5 is eligible but not automatically
+started. Wave 6 remains conditional on the completed Wave-5 delta.*
 
 ## Verpflichtende Feature-Head-Gates / Mandatory Feature-Head Gates
 
@@ -27,15 +27,15 @@ future merge.*
 
 | Ziel / Target | Höchster zulässiger Zustand / Maximum Allowed State |
 |---|---|
-| Wave 5 | `Eligible` |
-| Wave 6 | `ConditionallyReady` |
+| Wave 5 | `Eligible` - achieved |
+| Wave 6 | `ConditionallyReady` - achieved |
 
-Der Übergang benötigt `delivery-closeout.md` mit exaktem reviewtem Head,
-vollständiger Gate-Evidence und Feature-Merge. Die Closeout-Datei darf ihre
-eigene PR-, Head- oder Merge-Identität nicht rekursiv verlangen.
+Der Übergang ist durch `delivery-closeout.md`, den exakten reviewten Head,
+vollständige Gate-Evidence und den Feature-Merge belegt. Die Closeout-Datei
+verlangt ihre eigene PR-, Head- oder Merge-Identität nicht rekursiv.
 
-*The transition requires `delivery-closeout.md` with the exact reviewed head,
-complete gate evidence, and the feature merge. The closeout file must not
+*The transition is proven by `delivery-closeout.md`, the exact reviewed head,
+complete gate evidence, and the feature merge. The closeout file does not
 recursively require its own PR, head, or merge identity.*
 
 ## Stop-Grenzen / Stop Boundaries

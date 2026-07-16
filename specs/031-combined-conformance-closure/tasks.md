@@ -249,12 +249,12 @@ facts for the named closeout evidence.
 - [X] T152 Push branch `031-combined-conformance-closure`, verify the remote head, and reserve the result for `specs/031-combined-conformance-closure/delivery-closeout.md`
 - [X] T153 Create the non-empty Feature-031 pull request and reserve its stable identity for `specs/031-combined-conformance-closure/delivery-closeout.md`
 - [X] T154 If stable PR identity must enter `pr-evidence.md`, align version, stage/check, commit, and push one final review candidate before gate mapping
-- [ ] T155 Identify pull-request-context checks as authoritative, record duplicate push runs as operational noise, and preserve evidence for `specs/031-combined-conformance-closure/delivery-closeout.md`
-- [ ] T156 Map every applicable gate to the actual reviewed head, workflow, job, platform, and executed command in temporary provider-neutral evidence and reserve the mapping summary for `specs/031-combined-conformance-closure/delivery-closeout.md`
-- [ ] T157 Validate temporary exact-head evidence with the installed autonomous gate validator and preserve only its terminal result for `specs/031-combined-conformance-closure/delivery-closeout.md`
-- [ ] T158 Inspect Claude, Copilot, Human Approval, comments, and GraphQL review threads; record unavailable reviewers as missing and reserve results for `specs/031-combined-conformance-closure/delivery-closeout.md`
-- [ ] T159 Address every actionable review or CI finding, resolve its thread, re-run affected gates, rebuild exact-head evidence, and reserve remediation results for `specs/031-combined-conformance-closure/delivery-closeout.md`
-- [ ] T160 Merge the feature PR with a merge commit only after all technical gates pass, zero actionable threads remain, and any narrow bypass affects Human Approval alone; then delete the feature branch, synchronize clean local `main`, and reserve all terminal facts for `specs/031-combined-conformance-closure/delivery-closeout.md`
+- [X] T155 Identify pull-request-context checks as authoritative, record duplicate push runs as operational noise, and preserve evidence for `specs/031-combined-conformance-closure/delivery-closeout.md`
+- [X] T156 Map every applicable gate to the actual reviewed head, workflow, job, platform, and executed command in temporary provider-neutral evidence and reserve the mapping summary for `specs/031-combined-conformance-closure/delivery-closeout.md`
+- [X] T157 Validate temporary exact-head evidence with the installed autonomous gate validator and preserve only its terminal result for `specs/031-combined-conformance-closure/delivery-closeout.md`
+- [X] T158 Inspect Claude, Copilot, Human Approval, comments, and GraphQL review threads; record unavailable reviewers as missing and reserve results for `specs/031-combined-conformance-closure/delivery-closeout.md`
+- [X] T159 Address every actionable review or CI finding, resolve its thread, re-run affected gates, rebuild exact-head evidence, and reserve remediation results for `specs/031-combined-conformance-closure/delivery-closeout.md`
+- [X] T160 Merge the feature PR with a merge commit only after all technical gates pass, zero actionable threads remain, and any narrow bypass affects Human Approval alone; then delete the feature branch, synchronize clean local `main`, and reserve all terminal facts for `specs/031-combined-conformance-closure/delivery-closeout.md`
 
 ---
 
@@ -263,18 +263,18 @@ facts for the named closeout evidence.
 **Purpose**: Record facts that could not truthfully exist on the reviewed
 feature head, release Wave 5 without recursion, and end on synchronized `main`.
 
-- [ ] T161 Create `specs/031-combined-conformance-closure/delivery-closeout.md` with feature PR, reviewed head, gate, review, merge, first main-sync, and causal Wave-transition facts but no self-referential closeout identity
-- [ ] T162 Update `specs/031-combined-conformance-closure/closure-evidence.json`, `specs/031-combined-conformance-closure/combined-closure.md`, `specs/031-combined-conformance-closure/pre-wave-gate.md`, `specs/031-combined-conformance-closure/pr-evidence.md`, and `Pflichtenheft.md` so Wave 5 is `Eligible` and Wave 6 is only `ConditionallyReady`
-- [ ] T163 Synchronize the final causal Wave state in `Lastenheft_Abarbeitungsreihenfolge.md`, all five agent surfaces, and `docs/project-statistics.md`
-- [ ] T164 Create `specs/031-combined-conformance-closure/retrospective.md` and classify every reusable learning as `FeatureSpecific`, `RunbookClarification`, `SkillCorrection`, `TemplateCorrection`, `AgentPolicyCorrection`, `ValidationAutomation`, `PresetFollowUp`, or `NoPromotion`
-- [ ] T165 For `NoPromotion`, create no Home-Baseline branch, preset release, or empty PR; for a reproduced provider-neutral defect, complete the documented PresetFollowUp cycle before Wave 5
-- [ ] T166 Prepare the terminal `172/172`, `Retrospective`, `Completed`, and `nextExactAction: N/A` state plus immutable causal dispositions for T167-T172 in `specs/031-combined-conformance-closure/delivery-closeout.md`; make them effective only when the closeout commit reaches `main`
-- [ ] T167 Create one evidence-only closeout branch and verify that it changes no runtime, API, dependency, project, test logic, example, consumer, historical, or external source
-- [ ] T168 Run closeout-proportional state, diff, JSON, secret, agent-parity, DocFX, A11Y, and UTF-8 checks and record them in `specs/031-combined-conformance-closure/delivery-closeout.md`
-- [ ] T169 Commit, push, and create the non-empty causal closeout PR defined by `specs/031-combined-conformance-closure/delivery-closeout.md`
-- [ ] T170 Converge closeout checks and actionable review threads without writing the closeout PR's own head or merge identity back into `specs/031-combined-conformance-closure/delivery-closeout.md`
-- [ ] T171 Merge the closeout PR under the authorized policy, delete obsolete closeout branches, switch to `main`, fetch/prune, pull fast-forward only, and verify the terminal fact externally against `specs/031-combined-conformance-closure/delivery-closeout.md`
-- [ ] T172 Prove clean `HEAD == origin/main`, externally verify the completed causal contract in `specs/031-combined-conformance-closure/delivery-closeout.md`, confirm Wave 5 `Eligible`, Wave 6 `ConditionallyReady`, and do not start either Wave or Feature 032
+- [X] T161 Create `specs/031-combined-conformance-closure/delivery-closeout.md` with feature PR, reviewed head, gate, review, merge, first main-sync, and causal Wave-transition facts but no self-referential closeout identity
+- [X] T162 Update `specs/031-combined-conformance-closure/closure-evidence.json`, `specs/031-combined-conformance-closure/combined-closure.md`, `specs/031-combined-conformance-closure/pre-wave-gate.md`, `specs/031-combined-conformance-closure/pr-evidence.md`, and `Pflichtenheft.md` so Wave 5 is `Eligible` and Wave 6 is only `ConditionallyReady`
+- [X] T163 Synchronize the final causal Wave state in `Lastenheft_Abarbeitungsreihenfolge.md`, all five agent surfaces, and `docs/project-statistics.md`
+- [X] T164 Create `specs/031-combined-conformance-closure/retrospective.md` and classify every reusable learning as `FeatureSpecific`, `RunbookClarification`, `SkillCorrection`, `TemplateCorrection`, `AgentPolicyCorrection`, `ValidationAutomation`, `PresetFollowUp`, or `NoPromotion`
+- [X] T165 For `NoPromotion`, create no Home-Baseline branch, preset release, or empty PR; for a reproduced provider-neutral defect, complete the documented PresetFollowUp cycle before Wave 5
+- [X] T166 Prepare the terminal `172/172`, `Retrospective`, `Completed`, and `nextExactAction: N/A` state plus immutable causal dispositions for T167-T172 in `specs/031-combined-conformance-closure/delivery-closeout.md`; make them effective only when the closeout commit reaches `main`
+- [X] T167 Create one evidence-only closeout branch and verify that it changes no runtime, API, dependency, project, test logic, example, consumer, historical, or external source
+- [X] T168 Run closeout-proportional state, diff, JSON, secret, agent-parity, DocFX, A11Y, and UTF-8 checks and record them in `specs/031-combined-conformance-closure/delivery-closeout.md`
+- [X] T169 Commit, push, and create the non-empty causal closeout PR defined by `specs/031-combined-conformance-closure/delivery-closeout.md`
+- [X] T170 Converge closeout checks and actionable review threads without writing the closeout PR's own head or merge identity back into `specs/031-combined-conformance-closure/delivery-closeout.md`
+- [X] T171 Merge the closeout PR under the authorized policy, delete obsolete closeout branches, switch to `main`, fetch/prune, pull fast-forward only, and verify the terminal fact externally against `specs/031-combined-conformance-closure/delivery-closeout.md`
+- [X] T172 Prove clean `HEAD == origin/main`, externally verify the completed causal contract in `specs/031-combined-conformance-closure/delivery-closeout.md`, confirm Wave 5 `Eligible`, Wave 6 `ConditionallyReady`, and do not start either Wave or Feature 032
 
 ## Dependencies
 
