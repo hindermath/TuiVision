@@ -337,6 +337,9 @@ Allowed results are `Pass`, `Fail`, `Accepted`, `Deferred`, and `Open`.
 | Causal closeout | Open | `specs/032-wave5-tp7-functional-porting/delivery-closeout.md` only if required |
 | Duplicate workflow events | Open | PR-context gates are primary |
 
+Candidate implementation commit:
+`8a1de2d47506aa9d2a8bb59151b40ed9ce0cb39f`.
+
 ## Retrospective
 
 - **Effective**: Pending.
