@@ -7,7 +7,7 @@
   "authorityRevalidationRequired": false,
   "stage": "Deliver",
   "status": "Active",
-  "checkpointCommit": "f7c7cc04cd2f216d06a533b8c8b6411c96e693ea",
+  "checkpointCommit": "74ad633040d8bb9637cfd0daedfdaceea1ef1a7f",
   "acceptedArtifacts": [
     {
       "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/spec.md",
@@ -63,7 +63,7 @@
     },
     {
       "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/tasks.md",
-      "sha256": "70b2bbf9b8e1fe4d4e8bdb5370c8afbb9eee1b1e6f24b44c1a1c93a9ed5a3c19"
+      "sha256": "2770c75429b1c44ea3a4914a2dcbf1e9ca18613e1acca0a765e14855f55876e9"
     },
     {
       "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/checklists/implementation-readiness.md",
@@ -72,21 +72,21 @@
   ],
   "tasks": {
     "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/tasks.md",
-    "sha256": "70b2bbf9b8e1fe4d4e8bdb5370c8afbb9eee1b1e6f24b44c1a1c93a9ed5a3c19",
-    "completed": 124,
+    "sha256": "2770c75429b1c44ea3a4914a2dcbf1e9ca18613e1acca0a765e14855f55876e9",
+    "completed": 126,
     "total": 130
   },
-  "lastPassingGate": "Validated Feature-029 candidate committed with repository trailer policy; commit verification is external to avoid self-reference.",
-  "nextExactAction": "Push the numbered branch, verify remote head parity, and create the ready Feature-029 pull request.",
+  "lastPassingGate": "Feature branch pushed with local/remote parity and ready non-empty PR #84 created against main.",
+  "nextExactAction": "Push the delivery checkpoint, wait for PR-context checks on the new exact head, validate gate evidence, and converge reviews.",
   "lastOperation": {
-    "kind": "CommitCandidate",
+    "kind": "PublishPR",
     "state": "Completed",
-    "summary": "T001-T124 complete; single Feature-029 implementation commit prepared for push."
+    "summary": "T001-T126 complete; PR #84 exists and the next commit records its delivery checkpoint."
   },
   "stop": {
     "reason": "N/A",
     "requestedAt": "N/A",
     "safeBoundary": "N/A"
   },
-  "updatedAt": "2026-07-16T10:40:00Z"
+  "updatedAt": "2026-07-16T10:43:00Z"
 }

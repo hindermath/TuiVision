@@ -170,8 +170,8 @@
 - [X] T122 Align `Directory.Build.props` to the pre-commit `1.29.<patch>.<build>` values without incrementing build and stage only intended Feature-029 files
 - [X] T123 Run `git diff --cached --check`, compare staged inventory with repository status, and prove no intended untracked or unstaged file remains outside the candidate
 - [X] T124 Commit the validated Feature-029 candidate with repository trailer policy and verify the commit externally
-- [ ] T125 Push the version-aligned `029-tv203-freevision-terminalgui-conformance-audit` commit and verify local/remote head parity
-- [ ] T126 Create a ready Feature-029 PR, verify base/head/no-empty diff, and use `pr-evidence.md` as the declared remote evidence path
+- [X] T125 Push the version-aligned `029-tv203-freevision-terminalgui-conformance-audit` commit and verify local/remote head parity
+- [X] T126 Create a ready Feature-029 PR, verify base/head/no-empty diff, and use `pr-evidence.md` as the declared remote evidence path
 - [ ] T127 Wait for required PR-context checks, map each gate to actual workflow/job/platform/executed command, and validate temporary exact-head evidence with both installed validators
 - [ ] T128 Query Claude, Copilot, PR comments, and GraphQL review threads; remediate every actionable finding and repeat affected validation until convergence
 - [ ] T129 Merge with a merge commit using the narrow admin bypass only under the authorized conditions, delete the remote branch, switch to `main`, pull/prune, and prove clean `HEAD == origin/main`

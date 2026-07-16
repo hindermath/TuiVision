@@ -361,8 +361,8 @@ records the immediately preceding manual build-counter value.
 
 | Item | Result | Evidence |
 |---|---|---|
-| Push | Open | feature branch after validated commit |
-| Pull request | Open | ready PR, base `main` |
+| Push | Pass | branch head `74ad633040d8bb9637cfd0daedfdaceea1ef1a7f` matched remote before the delivery checkpoint |
+| Pull request | Pass | ready PR [#84](https://github.com/hindermath/TuiVision/pull/84), base `main`, non-empty Feature-029 diff |
 | Required checks | Open | pull-request-context checks |
 | Acceptance-gate mapping | Open | temporary exact-head provider evidence |
 | Review threads | Open | GraphQL unresolved actionable count |
@@ -372,6 +372,10 @@ records the immediately preceding manual build-counter value.
 | Local `main` sync | Open | clean `HEAD == origin/main` |
 | Causal closeout | N/A unless required | create only for unavoidable post-merge truth |
 | Duplicate workflow events | Open | PR-context result is primary |
+
+The PR creation command was first attempted through the reduced Desktop
+`PATH`, where `gh` was not resolvable; it made no remote change. The absolute
+Homebrew `gh` path created PR #84 successfully.
 
 ## Pull Request Draft
 
