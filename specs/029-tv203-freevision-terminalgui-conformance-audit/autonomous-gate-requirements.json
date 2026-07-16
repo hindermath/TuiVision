@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "1.0",
+  "gates": [
+    {
+      "gateId": "G029-STATIC-CANDIDATE",
+      "applicability": "Applicable",
+      "requiredScope": "Final intended Feature-029 candidate has no whitespace error, missing intended file, placeholder, or forbidden path.",
+      "requiredCommandTokens": [
+        "git diff --cached --check"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The staged candidate, including new files, is the delivery unit.",
+      "reevaluationTrigger": "The staged candidate changes."
+    },
+    {
+      "gateId": "G029-TARGETED-EVIDENCE",
+      "applicability": "Applicable",
+      "requiredScope": "Feature-024, Feature-028, and Feature-029 evidence validators pass on the reviewed head.",
+      "requiredCommandTokens": [
+        "dotnet test",
+        "TuiVision.Drivers.Tests",
+        "Release"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The new validator extends shared audit evidence infrastructure.",
+      "reevaluationTrigger": "Audit datasets, validator code, or proof paths change."
+    },
+    {
+      "gateId": "G029-FULL-RELEASE",
+      "applicability": "Applicable",
+      "requiredScope": "The full TuiVision solution passes in Release configuration.",
+      "requiredCommandTokens": [
+        "dotnet test",
+        "TuiVision.sln",
+        "Release"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Shared test infrastructure and project-wide evidence references change.",
+      "reevaluationTrigger": "Any executable or project file changes."
+    },
+    {
+      "gateId": "G029-COVERAGE",
+      "applicability": "Applicable",
+      "requiredScope": "Core, Controls, Serialization, Compatibility, and Drivers.Console each retain at least 70 percent line coverage.",
+      "requiredCommandTokens": [
+        "dotnet test",
+        "XPlat Code Coverage",
+        "coverlet.runsettings"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The repository Constitution forbids merge below the five-assembly gate.",
+      "reevaluationTrigger": "Coverage configuration, tests, or gate assemblies change."
+    },
+    {
+      "gateId": "G029-DOCFX",
+      "applicability": "Applicable",
+      "requiredScope": "Generated documentation builds with zero warning or error for the learner-facing audit guide and status changes.",
+      "requiredCommandTokens": [
+        "docfx",
+        "docfx.json"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Feature 029 adds learner-facing Markdown and navigation-visible content.",
+      "reevaluationTrigger": "Documentation or DocFX configuration changes."
+    },
+    {
+      "gateId": "G029-WEB-A11Y",
+      "applicability": "Applicable",
+      "requiredScope": "The generated DocFX site passes the Playwright and Axe accessibility smoke path.",
+      "requiredCommandTokens": [
+        "npm run test:docfx"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "DocFX completion requires the matching A11Y path.",
+      "reevaluationTrigger": "Generated pages, navigation, templates, or A11Y tests change."
+    },
+    {
+      "gateId": "G029-SECURITY-SCOPE",
+      "applicability": "Applicable",
+      "requiredScope": "Secrets, dependencies, generated output, protected source roots, external checkout, and runtime/API/package/example scope remain clean.",
+      "requiredCommandTokens": [
+        "scan-agent-secrets",
+        "fail-on-high"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The audit must remain publishable and read-only toward protected inputs.",
+      "reevaluationTrigger": "Candidate paths or dependency manifests change."
+    },
+    {
+      "gateId": "G029-AGENT-ORDERING",
+      "applicability": "Applicable",
+      "requiredScope": "Five maintained agent surfaces agree that Feature 029 is complete, Feature 030 is next, and both Waves remain blocked.",
+      "requiredCommandTokens": [
+        "check-homogeneity"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Shared agent and ordering guidance is a completion surface.",
+      "reevaluationTrigger": "Agent guidance, Pflichtenheft, or processing order changes."
+    },
+    {
+      "gateId": "G029-PLATFORM-RUNTIME",
+      "applicability": "Applicable",
+      "requiredScope": "The reviewed head executes the repository Release test command on Ubuntu, macOS, and Windows.",
+      "requiredCommandTokens": [
+        "dotnet test",
+        "Release"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "ubuntu",
+        "macos",
+        "windows"
+      ],
+      "rationale": "Portable audit paths and the existing project gate require real multi-platform execution.",
+      "reevaluationTrigger": "Workflow matrix or test command changes."
+    },
+    {
+      "gateId": "G029-REVIEW-CONVERGENCE",
+      "applicability": "N/A",
+      "requiredScope": "Review and thread convergence is tracked directly in PR evidence rather than as executed-command evidence.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The gate-evidence schema validates executed technical commands; review state is verified through GitHub APIs.",
+      "reevaluationTrigger": "A future provider-neutral review-evidence schema is adopted."
+    }
+  ]
+}

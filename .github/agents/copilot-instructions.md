@@ -36,6 +36,8 @@ Auto-generated from all feature plans. Last updated: 2026-07-13
 - Existing bounded binary archive and `TResourceFile`; controlled temporary filesystem metadata for file-dialog proofs (026-component-data-conformance-hardening)
 - C# / .NET 10 for test-only validation; JSON, Markdown, YAML, Bash and PowerShell evidence tooling + existing MSTest 4.0.1, Coverlet 6.0.4, DocFX, Playwright/Axe, Lynx, jq, xmllint, Git and GitHub Actions (028-pre-wave5-wave6-conformance-closure)
 - repository-owned JSON and Markdown only; historical, consumer, and Free Vision sources remain read-only (028-pre-wave5-wave6-conformance-closure)
+- C# / .NET 10 for test-only validation; JSON and Markdown for audit evidence + existing MSTest 4.0.1, System.Text.Json, Coverlet 6.0.4, DocFX, Playwright/Axe, Lynx, Git and GitHub Actions (029-tv203-freevision-terminalgui-conformance-audit)
+- repository-owned Feature-029 JSON and Markdown; external Terminal.GUI checkout remains untracked under a temporary directory (029-tv203-freevision-terminalgui-conformance-audit)
 
 - C# `latest` on .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, `TuiVision.Compatibility`; MSTest; Coverlet; docfx; wave-1 example projects under `examples/` (007-port-wave1-examples — Wave 1 delivered)
 
@@ -68,9 +70,9 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ## Recent Changes
+- 029-tv203-freevision-terminalgui-conformance-audit: Added C# / .NET 10 for test-only validation; JSON and Markdown for audit evidence + existing MSTest 4.0.1, System.Text.Json, Coverlet 6.0.4, DocFX, Playwright/Axe, Lynx, Git and GitHub Actions
 - 028-pre-wave5-wave6-conformance-closure: Added C# / .NET 10 for test-only validation; JSON, Markdown, YAML, Bash and PowerShell evidence tooling + existing MSTest 4.0.1, Coverlet 6.0.4, DocFX, Playwright/Axe, Lynx, jq, xmllint, Git and GitHub Actions
 - 026-component-data-conformance-hardening: Added C# with latest language version on .NET 10 + Existing `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization`; no new package or runtime dependency
-- 025-core-runtime-conformance-hardening: Added C# / .NET 10 + existing `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, MSTest; no new package
 
 
 <!-- MANUAL ADDITIONS START -->
@@ -177,10 +179,11 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - Both waves remain `BlockedPendingTerminalGuiAudit`; Feature 029 is the sole immediate intake and Feature 030 is the mandatory successor before hardening or closure.
 
 ### 029-tv203-freevision-terminalgui-conformance-audit
-- This read-only audit starts only after Feature 028 merges and uses `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md`.
+- Current implementation status: the read-only audit is complete locally; final evidence is in `specs/029-tv203-freevision-terminalgui-conformance-audit/pr-evidence.md`.
 - Turbo Vision 2.0.3 remains authoritative; pinned Free Vision remains secondary evidence, and Terminal.GUI v1.9.0 at commit `d5abc2001fb2c5be4d16b23bbf34dfd99e752ea3` is an additional modern C# implementation opinion.
-- Review every existing contract `C001`-`C048`; create `C049+` only for a material uncovered consumer responsibility and `TG001+` only for a reproducible TuiVision contract, consumer, safety, A11Y, platform, or real-path proof gap.
-- The audit changes no runtime, API, dependency, example, historical, consumer, Free Vision, or Terminal.GUI source. It hands all `TG*` observations to Feature 030 and creates no hardening or closure Lastenheft itself.
+- All `C001`-`C048`, 16 domains, 25 pinned sources, and 13 Wave consumer groups are covered. No `C049+`, `CandidateFinding`, or `ProductDecision` was admitted.
+- The audit changes no runtime, API, dependency, example, historical, consumer, Free Vision, or Terminal.GUI source. It hands 48 `TGO###` observations to Feature 030 and creates no hardening or closure Lastenheft itself.
+- Feature 030 is the sole next intake; Wave 5 and Wave 6 remain blocked through combined TG/MB deduplication, non-empty finding-derived hardening, and independent closure.
 - After every autonomous run, promote only reproducible provider-neutral preset learning through a Home-Baseline patch release and exact tag-ZIP adoption before the next run; record `NoPromotion` without an empty branch or PR. Open one consolidated upstream preset issue only immediately before Wave 5.
 
 ### 030-tv203-magiblot-evolution-audit
