@@ -1,6 +1,6 @@
 # TuiVision Development Guidelines
 
-Auto-generated from all feature plans. Last updated: 2026-07-13
+Auto-generated from all feature plans. Last updated: 2026-07-16
 
 ## Active Technologies
 - C# `latest` on .NET 10 (`net10.0`) + Existing `TuiVision.Core` geometry/event/buffer types; existing `TuiVision.Controls` shell foundation (`TView`, `TGroup`, `TProgram`, `TApplication`, `TMenuItem`, `TStatusItem`, `ShellCommandIds`); MSTest; Coverlet via `dotnet test --collect:"XPlat Code Coverage" --settings coverlet.runsettings`; conditional `docfx docfx.json`; GitHub Actions for existing CI validation (008-controls-revision)
@@ -38,6 +38,8 @@ Auto-generated from all feature plans. Last updated: 2026-07-13
 - repository-owned JSON and Markdown only; historical, consumer, and Free Vision sources remain read-only (028-pre-wave5-wave6-conformance-closure)
 - C# / .NET 10 for test-only validation; JSON and Markdown for audit evidence + existing MSTest 4.0.1, System.Text.Json, Coverlet 6.0.4, DocFX, Playwright/Axe, Lynx, Git and GitHub Actions (029-tv203-freevision-terminalgui-conformance-audit)
 - repository-owned Feature-029 JSON and Markdown; external Terminal.GUI checkout remains untracked under a temporary directory (029-tv203-freevision-terminalgui-conformance-audit)
+- C# 14 / .NET 10 for test-only validation; JSON and Markdown for evidence + Existing BCL `System.Text.Json`, MSTest 4.0.1, existing repository scripts and workflows; no new package (031-combined-conformance-closure)
+- Source-controlled closed JSON and Markdown evidence; temporary external checkouts under `/tmp` only (031-combined-conformance-closure)
 
 - C# `latest` on .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, `TuiVision.Compatibility`; MSTest; Coverlet; docfx; wave-1 example projects under `examples/` (007-port-wave1-examples — Wave 1 delivered)
 
@@ -70,9 +72,9 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ## Recent Changes
+- 031-combined-conformance-closure: Added C# 14 / .NET 10 for test-only validation; JSON and Markdown for evidence + Existing BCL `System.Text.Json`, MSTest 4.0.1, existing repository scripts and workflows; no new package
 - 029-tv203-freevision-terminalgui-conformance-audit: Added C# / .NET 10 for test-only validation; JSON and Markdown for audit evidence + existing MSTest 4.0.1, System.Text.Json, Coverlet 6.0.4, DocFX, Playwright/Axe, Lynx, Git and GitHub Actions
 - 028-pre-wave5-wave6-conformance-closure: Added C# / .NET 10 for test-only validation; JSON, Markdown, YAML, Bash and PowerShell evidence tooling + existing MSTest 4.0.1, Coverlet 6.0.4, DocFX, Playwright/Axe, Lynx, jq, xmllint, Git and GitHub Actions
-- 026-component-data-conformance-hardening: Added C# with latest language version on .NET 10 + Existing `TuiVision.Core`, `TuiVision.Controls`, and `TuiVision.Serialization`; no new package or runtime dependency
 
 
 <!-- MANUAL ADDITIONS START -->
@@ -190,9 +192,16 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - Current implementation status: the read-only audit data and targeted validator are locally complete; final repository, documentation, coverage, remote review, and delivery gates remain.
 - The exact magiblot pin is commit `57b6f56b38e0ee75240a80a10ee0e11470c24693`, tree `96dd03873955689ff0a79f6c8107a8148fe1ebd6`, with the multipart COPYRIGHT hash `66220bae...548`; its direct C++ lineage remains a modernization witness, never a normative source.
 - Fifty selected source records support 48 relations: 27 `CorroboratesOriginal`, 12 `CorroboratesModernization`, 6 `AlternativeModernization`, and 3 `NotApplicable`. The 48 `MB*` decisions are 39 `AlreadySatisfiedWithNewEvidence`, 6 `IntentionalDeviation`, and 3 `RejectedComparison`.
-- All 48 `TGO*` and 48 `MB*` observations have one combined disposition. No reproducible `CF*` finding or `ProductDecision` exists, so no hardening intake is generated; `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.md` defines Feature 031 as the sole next intake.
+- All 48 `TGO*` and 48 `MB*` observations have one combined disposition. No reproducible `CF*` finding or `ProductDecision` exists, so no hardening intake is generated; `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md` defines Feature 031 as the active closure intake.
 - Runtime, API, dependency, example, consumer, historical, and external sources remain unchanged. Wave 5 and Wave 6 stay `BlockedPendingCombinedConformanceClosure`.
 - `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` remains a binding deferred intake only after the complete Wave-6 closeout and receives its feature number then.
+
+### 031-combined-conformance-closure
+- Current planning baseline: follow `specs/031-combined-conformance-closure/plan.md` for an evidence-only independent closure of Features 024, 025, 026, 028, 029, and 030.
+- Revalidate exactly 48 contracts, 13 consumers, 48 TGO and 48 MB observations, 96 dispositions, all accepted external pins and source hashes, and the closed `F001`-`F013` set.
+- Product runtime, public APIs, dependencies, packages, projects, examples, consumers, historical sources, and external sources remain unchanged. Any reproduced product defect blocks 031 and becomes a separate reviewed intake.
+- The reviewed feature head keeps both Waves blocked. Only a complete causal evidence closeout after exact-head gates and the feature merge may mark Wave 5 `Eligible` and Wave 6 `ConditionallyReady`.
+- Do not start Wave 5, Wave 6, or Feature 032 in this run.
 
 
 ### Autonomous Red-Proof Completeness

@@ -52,15 +52,15 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 24 | `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.028-pre-wave5-wave6-conformance-closure.md` | Pre-Wave-5-/Wave-6-Abschluss | archiviert oder abgeschlossen / archived or completed |
 | 25 | `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.029-tv203-freevision-terminalgui-conformance-audit.md` | Framework-Konformitätsaudit | archiviert oder abgeschlossen / archived or completed |
 | 26 | `Lastenheft_14_TV203-Magiblot-Evolution-Audit.030-tv203-magiblot-evolution-audit.md` | Framework-Evolutionsaudit | archiviert oder abgeschlossen / archived or completed |
-| 27 | `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.md` | Gemeinsamer Pre-Wave-5-/Wave-6-Abschluss | **nächster Intake / next intake** |
+| 27 | `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md` | Gemeinsamer Pre-Wave-5-/Wave-6-Abschluss | **aktiver Abschluss / active closure** |
 | 28 | `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` | Beispielportfolio-Konformitätsaudit | verbindlich nach Wave-6-Closeout, Feature-Nummer später / binding after Wave-6 closeout, feature number deferred |
 <!-- secure-development-hardening-order:end -->
 
 ## Fortsetzungsmarke / Resume Marker
 
-> **NÄCHSTER SPEC-KIT-INTAKE: `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.md` -> `031-combined-conformance-closure`.**
+> **AKTIVER SPEC-KIT-INTAKE: `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md` -> `031-combined-conformance-closure`.**
 >
-> **NEXT SPEC KIT INTAKE: `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.md` -> `031-combined-conformance-closure`.**
+> **ACTIVE SPEC KIT INTAKE: `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md` -> `031-combined-conformance-closure`.**
 
 Features 025, 026, 028 und 029 sind abgeschlossen. Feature 030 hat lokal 50
 gepinnt-hashgebundene magiblot-Quellen, 48 Relationen und 48 `MB*`-
@@ -92,8 +92,9 @@ next independent closure run; both Waves remain blocked through its merge.*
 5. `030-tv203-magiblot-evolution-audit` hat alle 48 Verträge gegen 50
    magiblot-Quellen geprüft und 96 TG-/MB-Beobachtungen ohne `CF*`-Finding
    dedupliziert. Daher entstehen keine Hardening-Läufe.
-6. Als nächster Lauf folgt `031-combined-conformance-closure` mit Lastenheft
-   16 als unabhängiger Abschluss.
+6. `031-combined-conformance-closure` mit Lastenheft 16 ist der aktive
+   unabhängige Abschluss. Sein reviewter Feature-Head hält beide Waves
+   `BlockedPendingCausalClosure`.
 7. Wave 5 bleibt bis zu diesem Closure-Merge blockiert. Wave 6 folgt erst nach
    Wave 5 und einer erneuten Prüfung der tatsächlichen Wave-5-Deltas.
 8. Nach dem vollständig gemergten Wave-6-Closeout folgt das in Lastenheft 15
@@ -104,9 +105,9 @@ next independent closure run; both Waves remain blocked through its merge.*
 *Revision 2 routed nine findings to Feature 025 and four to Feature 026; both
 are complete. Feature 028 closed that gate, Feature 029 completed the pinned
 Terminal.GUI comparison, and Feature 030 completed the magiblot comparison
-with zero canonical findings. Feature 031 now independently closes the
-combined gate before Wave 5. Wave 6 additionally requires a post-Wave-5 delta
-review.*
+with zero canonical findings. Feature 031 is the active independent closure
+before Wave 5 and keeps both Waves blocked on its reviewed feature head. Wave
+6 additionally requires a post-Wave-5 delta review.*
 
 ## Verbindlicher Folgeaudit nach Wave 6 / Binding Post-Wave-6 Audit
 

@@ -228,7 +228,17 @@ public sealed class MagiblotEvolutionAuditEvidenceTests
             Assert.AreEqual(31, RequiredInt32(closure, "featureNumber"));
             Assert.HasCount(0, RequiredArray(combined, "hardeningIntakes"));
         }
-        Assert.IsTrue(File.Exists(Path.Combine(Phase7DriverTestContext.FindRepoRoot(), RequiredString(closure, "fileName"))));
+        string repoRoot = Phase7DriverTestContext.FindRepoRoot();
+        string intakePath = Path.Combine(repoRoot, RequiredString(closure, "fileName"));
+        if (!File.Exists(intakePath))
+        {
+            // Der akzeptierte Handoff behält den ursprünglichen Namen; der Abschluss archiviert ihn mit dem Branch-Suffix.
+            // The accepted handoff keeps the original name; closure archives it with the branch suffix.
+            string archivedFileName = $"{Path.GetFileNameWithoutExtension(RequiredString(closure, "fileName"))}.{RequiredString(closure, "featureBranch")}.md";
+            intakePath = Path.Combine(repoRoot, archivedFileName);
+        }
+
+        Assert.IsTrue(File.Exists(intakePath), $"Missing current or archived closure intake: {intakePath}");
     }
 
     /// <summary>
