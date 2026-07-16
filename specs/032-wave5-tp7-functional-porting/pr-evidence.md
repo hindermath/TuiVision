@@ -77,9 +77,9 @@
 | Plan | 1 | Pass | `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, contract | Generate tasks |
 | Tasks | 1 | Pass | `tasks.md`, 180 dependency-ordered tasks, no unsafe parallel writers | Run Analyze |
 | Analyze | 2 | Pass | 73/73 requirement and success/governance keys mapped; 180/180 tasks valid; first pass medium entry-point, Demo/Editor/Mouse gaps remediated; repeated pass has no Critical, High or Medium finding | Implement |
-| Implement | 1 | Open | task and diff evidence | Execute after Analyze |
-| Validate | 1 | Open | commands below | Run triggered gates |
-| Deliver | 1 | Open | PR and exact-head evidence | MergeAndSync |
+| Implement | 1 | Pass | ten runnable examples, shared assembly, tests, guides and exact matrices | None |
+| Validate | 1 | Pass | local, remote and exact-head commands below | None |
+| Deliver | 1 | Pass | PR #93, exact-head evidence and merge `e74c33d` | Causal closeout only |
 
 Allowed results are `Pass`, `Fail`, `Accepted`, `Deferred`, and `Open`.
 
@@ -148,16 +148,16 @@ Allowed results are `Pass`, `Fail`, `Accepted`, `Deferred`, and `Open`.
 
 | Preset | Version | Checkpoint | Applicability | Rationale | Evidence path | Owner | Reviewer | Result | Residual risk | Follow-up | Re-evaluation trigger |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| security-governance | 0.6.0 | NIST SSDF, CWE, parser/file boundaries, supply chain | Applicable | Executable examples and controlled data boundaries change | `plan.md`, tests, this file | Thorsten | Codex | Open | Input/evidence defects | Complete validation | Scope change |
+| security-governance | 0.6.0 | NIST SSDF, CWE, parser/file boundaries, supply chain | Applicable | Executable examples and controlled data boundaries change | `plan.md`, tests, this file | Thorsten | Codex | Pass | None in accepted scope | Stage-2 review | Scope change |
 | security-governance | 0.6.0 | ASVS, AI-SBOM, NIS2, CRA, EU AI Act, DORA | N/A | No web/runtime AI/regulated service trigger | this file | Thorsten | Codex | Accepted | Trigger drift | Re-evaluate | Any web, AI or regulated role |
-| architecture-governance | 0.5.0 | STRIDE/CIA/CAPEC | Applicable | Paths, parsers, commands, capability and evidence are trust boundaries | `plan.md` | Thorsten | Codex | Open | Incorrect boundary claim | Review tests | Boundary change |
+| architecture-governance | 0.5.0 | STRIDE/CIA/CAPEC | Applicable | Paths, parsers, commands, capability and evidence are trust boundaries | `plan.md` | Thorsten | Codex | Pass | Stage-2 visual delta only | Re-evaluate in Feature 033 | Boundary change |
 | architecture-governance | 0.5.0 | Zero Trust, BSI C3A, BSI C5 | N/A | No identity, network, cloud or provider scope | this file | Thorsten | Codex | Accepted | Trigger drift | Re-evaluate | Cloud/service change |
 | isaqb-architecture-governance | 0.2.0 | Quality, runtime and building-block views | Applicable | Shared example assembly and ten app composition need traceability | `plan.md`, `data-model.md` | Thorsten | Codex | Pass | None | None | Architecture change |
-| a11y-governance | 0.4.0 | Keyboard, focus, text-first, guides, comments | Applicable | Ten learner-facing TUI examples and guides | tests, guides, DocFX/Axe | Thorsten | Codex | Open | Missing showcase polish | Stage-2 delta | Visible scope change |
-| cross-platform-governance | 0.2.0 | Linux/macOS/Windows runtime | Applicable | Ten runnable examples | CI evidence | Thorsten | Codex | Open | Platform variance | Remote gates | Project change |
+| a11y-governance | 0.4.0 | Keyboard, focus, text-first, guides, comments | Applicable | Ten learner-facing TUI examples and guides | tests, guides, DocFX/Axe | Thorsten | Codex | Pass | Showcase polish is explicitly deferred | Feature 033 | Visible scope change |
+| cross-platform-governance | 0.2.0 | Linux/macOS/Windows runtime | Applicable | Ten runnable examples | CI evidence | Thorsten | Codex | Pass | Honest host capability fallback remains | Stage-2 proof | Project change |
 | cross-platform-governance | 0.2.0 | Script parity | N/A | No script is planned | gate requirements | Thorsten | Codex | Accepted | Trigger drift | Re-evaluate | Script change |
-| agent-parity-governance | 0.3.0 | Five maintained surfaces | Applicable | Active feature and next intake markers change | five agent files | Thorsten | Codex | Open | Stale fifth surface | Homogeneity check | Shared guidance change |
-| autonomous-run-governance | 0.2.2 | State, authority, exact head, review, closeout | Applicable | MergeAndSync autonomous delivery | run state, gates, this file | Thorsten | Codex | Open | Provider timing | Validate exact head | Delivery mode change |
+| agent-parity-governance | 0.3.0 | Five maintained surfaces | Applicable | Active feature and next intake markers change | five agent files | Thorsten | Codex | Pass | None | None | Shared guidance change |
+| autonomous-run-governance | 0.2.2 | State, authority, exact head, review, closeout | Applicable | MergeAndSync autonomous delivery | run state, gates, this file | Thorsten | Codex | Pass | External reviewer availability | Record missing review | Delivery mode change |
 
 ## Validation
 
@@ -327,15 +327,15 @@ Allowed results are `Pass`, `Fail`, `Accepted`, `Deferred`, and `Open`.
 |---|---|---|
 | Push | Pass | `origin/032-wave5-tp7-functional-porting` |
 | Pull request | Pass | `https://github.com/hindermath/TuiVision/pull/93` |
-| Required checks | Open | Linux/macOS/docs/supply-chain/parity pass; Windows exposed a CRLF-only evidence-parser defect on reviewed head `ba7accc` |
-| Acceptance-gate mapping | Open | temporary provider evidence |
-| Review threads | Open | GraphQL query |
-| Unavailable reviews | Open | Provider/quota evidence |
-| Reviewed head | Open | Exact commit hash |
-| Merge | Open | Merge commit |
-| Local `main` sync | Open | `HEAD == origin/main`, clean tree |
-| Causal closeout | Open | `specs/032-wave5-tp7-functional-porting/delivery-closeout.md` only if required |
-| Duplicate workflow events | Open | PR-context gates are primary |
+| Required checks | Pass | 22 successful; PR-only Pages deploy skipped |
+| Acceptance-gate mapping | Pass | 11 Primary rows validated for exact head `cf274c6` |
+| Review threads | Pass | GraphQL: 0 threads; PR comments: 0 |
+| Unavailable reviews | Accepted | Copilot quota exhausted on three heads; recorded as missing |
+| Reviewed head | Pass | `cf274c61968fdc5422d3c1cf16ed5488ad5d37ad` |
+| Merge | Pass | Merge commit `e74c33d256ebbf2cf8e6a78f2548ee6e3f6cf3d6` |
+| Local `main` sync | Pass | clean `HEAD == origin/main == e74c33d` after feature merge |
+| Causal closeout | Pass by causal contract | `delivery-closeout.md` records terminal facts without self-reference |
+| Duplicate workflow events | Accepted | PR-context gates are primary; push duplicates were retained |
 
 Candidate implementation commit:
 `8a1de2d47506aa9d2a8bb59151b40ed9ce0cb39f`.
@@ -366,7 +366,11 @@ PR #93.
 
 ## Retrospective
 
-- **Effective**: Pending.
-- **Waste**: Pending.
-- **Recurring blocker**: Pending.
-- **Recommended refinement**: Pending.
+- **Effective**: Test-first vertical slices, exact 15/6/10/10 matrices,
+  controlled boundaries, three-OS CI and exact-head gate validation.
+- **Waste**: Duplicate push/PR workflow events and three quota-only Copilot
+  attempts added provider noise without changing acceptance.
+- **Recurring blocker**: A test-local Markdown parser assumed LF until Windows
+  exposed the CRLF boundary.
+- **Recommended refinement**: `NoPromotion`; retain the local line-ending
+  parity test and use the existing autonomous replacement-head workflow.
