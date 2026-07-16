@@ -266,10 +266,10 @@ Statuscheckliste Beispielwellen:
   Reihenfolgehinweis: abgeschlossen (Branch `022-wave4-visual-component-porting`); `terminal`, `cyrillic`, `fonts`, `eterm` und `xterm` sind sichtbare Drei-Schichten-Demos mit App-Loop-, Zustands-, View- und Buffer-/Cell-Proof sowie ehrlichen Host-Fallbacks.
 - [x] **Ursprüngliches Pre-Wave-5 Framework-Konformitätsaudit und Closure**
   Reihenfolgehinweis: Feature `024-tv203-freevision-conformance-audit` und der damalige Abschluss `027-pre-wave5-conformance-closure` bleiben als historische, vollständig gemergte Evidence erhalten. Die spätere kombinierte Consumer-Review-Revision 2 superseded jedoch die Zukunftsentscheidung des Null-Finding-Stands.
-- [ ] **Revision-2-Abschluss und moderne Konformitätsrevisionen**
-  Reihenfolgehinweis: Features 025 und 026 haben die 13 Findings aus `TVDEMOS/` und `TVFM/` geschlossen. Feature 028 revalidiert diese Schließung, hält beide Waves aber blockiert. Feature 029 prüft die akzeptierten Verträge gegen Terminal.GUI v1.9.0; Feature 030 prüft danach separat den gepinnten direkten C++-Modernisierungszeugen `magiblot/tvision`. Erst die gemeinsame TG-/MB-Deduplizierung erzeugt nicht leere Hardening-Lastenhefte ab Feature 031; ein unabhängiger Abschlusslauf bleibt immer Pflicht.
+- [x] **Revision-2-Abschluss und moderne Konformitätsrevisionen**
+  Reihenfolgehinweis: Features 025 und 026 haben die 13 Findings aus `TVDEMOS/` und `TVFM/` geschlossen. Features 028 bis 030 revalidieren die Schließung und ergänzen Terminal.GUI v1.9.0 sowie den gepinnten C++-Modernisierungszeugen `magiblot/tvision`. Feature 031 schließt 48 Verträge, 13 Consumer-Gruppen, 96 Dispositionen und alle Delivery-Gates unabhängig; Wave 5 ist `Eligible`, Wave 6 nur `ConditionallyReady`.
 - [ ] **Welle 5 - Turbo-Pascal-Demos aus TP7 (`TVDEMOS/`)**
-  Reihenfolgehinweis: erst nach Merge und sauberem Main-Sync von Feature 028, Feature 029, Feature 030, allen gemeinsam findings-basierten Hardening-Läufen und dem danach verpflichtenden Closure-Lauf; bevorzugt nach stabilen Portierungen von `tvdemo`, `tvedit`, Hilfesystem und Dialogschicht.
+  Reihenfolgehinweis: nach dem gemergten Feature-031-Closeout fachlich `Eligible`, aber noch nicht gestartet; ein neuer expliziter Auftrag muss Scope, Nummer und Delivery-Modus festlegen.
 - [ ] **Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`**
   Reihenfolgehinweis: zuletzt; setzt den gemeinsamen Terminal.GUI-/magiblot-gestützten Closure-Lauf, die tatsächlichen Erkenntnisse aus Welle 5, eine erneute Delta-Prüfung, Datei-/Verzeichnisdialoge, Drag/Drop-Analoga und eine robuste Event-/Fensterintegration voraus.
 - [ ] **Post-Wave-6 Example Portfolio Conformance Audit**
@@ -701,15 +701,14 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.6d` = Kombinierter TV203-/Free-Vision-Konformitätsabschluss — ✓ ABGESCHLOSSEN, `ReadyForTerminalGuiAudit` (Feature 028, Lastenheft 12); gibt die Waves noch nicht frei
    - `3.6e` = TV203-/Free-Vision-/Terminal.GUI-v1.9.0-Konformitätsaudit — ✓ ABGESCHLOSSEN, 48 Verträge/25 Quellen/0 neue Findings (Feature 029, Lastenheft 13)
    - `3.6f` = TV203-/magiblot-tvision-Evolutionsaudit und gemeinsame TG-/MB-Deduplizierung — ✓ ABGESCHLOSSEN, 50 Quellen/48 Relationen/96 Dispositionen/0 Findings (Feature 030, Lastenheft 14)
-   - `3.6g` = Unabhängiger gemeinsamer Konformitätsabschluss — IN ARBEIT (Feature 031, Lastenheft 16); Feature-Head hält beide Waves `BlockedPendingCausalClosure`
+   - `3.6g` = Unabhängiger gemeinsamer Konformitätsabschluss — ✓ ABGESCHLOSSEN (Feature 031, Lastenheft 16, Feature-Merge `3d64a36`); Wave 5 `Eligible`, Wave 6 `ConditionallyReady`
    - Post-Wave-6 = Example-Portfolio-Konformitätsaudit — VERBINDLICH VORGEMERKT (Lastenheft 15); Feature-Nummer erst nach Wave-6-Closeout
 
->>> AKTIVER SCHRITT <<< Feature 031 revalidiert unabhängig 48 Verträge, 13
-Consumer-Gruppen, 96 Beobachtungen, die drei gepinnten Vergleichsquellen und
-`F001`-`F013`. Der reviewte Feature-Head hält Wave 5 und Wave 6
-`BlockedPendingCausalClosure`. Erst der nachgewiesene Merge und ein einzelner
-evidence-only Closeout dürfen Wave 5 auf `Eligible` und Wave 6 höchstens auf
-`ConditionallyReady` setzen; keine Wave wird in Feature 031 gestartet.
+>>> NÄCHSTER FACHLICHER SCHRITT <<< Wave 5 ist nach Feature 031 `Eligible`,
+wurde aber nicht gestartet. Der nächste autonome Spec-Kit-Lauf benötigt einen
+neuen expliziten Benutzerauftrag und darf Wave 6 noch nicht freigeben. Wave 6
+bleibt `ConditionallyReady`, bis Wave 5 vollständig geliefert und ihr
+tatsächlicher Delta erneut geprüft ist. Feature 032 wurde nicht angelegt.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

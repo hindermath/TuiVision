@@ -5,9 +5,9 @@
   "branch": "031-combined-conformance-closure",
   "deliveryMode": "MergeAndSync",
   "authorityRevalidationRequired": false,
-  "stage": "Review",
-  "status": "Active",
-  "checkpointCommit": "63dac1c91c5ae7cd71cf056700ece65d363b7fa9",
+  "stage": "Retrospective",
+  "status": "Completed",
+  "checkpointCommit": "3d64a36f212146d8a0ce68515a7923806bc73c81",
   "acceptedArtifacts": [
     {
       "path": "Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md",
@@ -67,19 +67,19 @@
     },
     {
       "path": "specs/031-combined-conformance-closure/tasks.md",
-      "sha256": "4793fbd5792415e30f98914ae2f1779629b4360d261d82fcef85ab0aceb0ffd0"
+      "sha256": "cbe933580c1d671bc2927ad661bf5784c589d8124d4e791b8635864d01310043"
     },
     {
       "path": "specs/031-combined-conformance-closure/closure-evidence.json",
-      "sha256": "fe572c6e8086ad8aa6a47e264c83e35b23064947e531a4c108ebb5b3ccd31001"
+      "sha256": "72778f464818934b65fe8f24d076f68e789fc58934561b4c29c7e86a8d954a03"
     },
     {
       "path": "specs/031-combined-conformance-closure/combined-closure.md",
-      "sha256": "66452150648cec6bf9c5a128a428ddada1a1518030019475e9ee1e9e0024638d"
+      "sha256": "ba29b9fb26eb137d24d8db04540c6154d7a6f618d9cdfb611c9d3479403bd71b"
     },
     {
       "path": "specs/031-combined-conformance-closure/pre-wave-gate.md",
-      "sha256": "017582af969f2991a1ae77a7636a535280ebc2a63857394319bec5ec14364d43"
+      "sha256": "1843ecec6dd46dbac1bf8f5a768bbb412cd75da3a58cc86b12cc7f8e8a326aa6"
     },
     {
       "path": "tests/TuiVision.Drivers.Tests/CombinedConformanceClosureEvidenceTests.cs",
@@ -88,21 +88,21 @@
   ],
   "tasks": {
     "path": "specs/031-combined-conformance-closure/tasks.md",
-    "sha256": "4793fbd5792415e30f98914ae2f1779629b4360d261d82fcef85ab0aceb0ffd0",
-    "completed": 154,
+    "sha256": "cbe933580c1d671bc2927ad661bf5784c589d8124d4e791b8635864d01310043",
+    "completed": 172,
     "total": 172
   },
-  "lastPassingGate": "WindowsCiRemediationLocal",
-  "nextExactAction": "Commit and push the bounded canonical-text hash fix, then require a fully green exact-head pull-request matrix before gate mapping.",
+  "lastPassingGate": "Feature PR #90, twelve exact-head gates, 22 technical checks, zero review threads, merge, first main synchronization, causal Wave transition, and NoPromotion retrospective are complete.",
+  "nextExactAction": "N/A",
   "lastOperation": {
-    "kind": "Review",
+    "kind": "CausalCloseout",
     "state": "Completed",
-    "summary": "The first Windows matrix exposed CRLF-sensitive test-only hashing. Canonical LF hashing and a direct LF/CRLF parity test pass locally 9/9 at build 310; remote exact-head revalidation remains required."
+    "summary": "T151-T172 have immutable dispositions in delivery-closeout.md; this non-recursive commit completes the run atomically when it reaches main."
   },
   "stop": {
     "reason": "N/A",
     "requestedAt": "N/A",
     "safeBoundary": "N/A"
   },
-  "updatedAt": "2026-07-16T18:16:27Z"
+  "updatedAt": "2026-07-16T18:31:18Z"
 }

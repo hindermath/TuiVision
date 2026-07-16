@@ -301,11 +301,11 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` remains a binding deferred intake only after the complete Wave-6 closeout and receives its feature number then.
 
 ### 031-combined-conformance-closure
-- Current planning baseline: follow `specs/031-combined-conformance-closure/plan.md` for an evidence-only independent closure of Features 024, 025, 026, 028, 029, and 030.
-- Revalidate exactly 48 contracts, 13 consumers, 48 TGO and 48 MB observations, 96 dispositions, all accepted external pins and source hashes, and the closed `F001`-`F013` set.
-- Product runtime, public APIs, dependencies, packages, projects, examples, consumers, historical sources, and external sources remain unchanged. Any reproduced product defect blocks 031 and becomes a separate reviewed intake.
-- The reviewed feature head keeps both Waves blocked. Only a complete causal evidence closeout after exact-head gates and the feature merge may mark Wave 5 `Eligible` and Wave 6 `ConditionallyReady`.
-- Do not start Wave 5, Wave 6, or Feature 032 in this run.
+- Current implementation status: the evidence-only independent closure is complete; final evidence is in `specs/031-combined-conformance-closure/delivery-closeout.md`.
+- Exactly 48 contracts, 13 consumers, 48 TGO and 48 MB observations, 96 dispositions, all accepted source pins and hashes, and the closed `F001`-`F013` set are revalidated.
+- Product runtime, public APIs, dependencies, packages, projects, examples, consumers, historical sources, and external sources remain unchanged.
+- Wave 5 is `Eligible` but not started. Wave 6 is only `ConditionallyReady` and still requires completed Wave 5 plus review of its actual delta.
+- No Feature 032 exists. A new explicit user instruction is required before the next autonomous run.
 
 
 ### Autonomous Red-Proof Completeness
@@ -632,14 +632,12 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 *Standard preset set: `security-governance` v0.6.0 prio 10, `architecture-governance` v0.5.0 prio 20, `isaqb-architecture-governance` v0.2.0 prio 30, `a11y-governance` v0.4.0 prio 40, `cross-platform-governance` v0.2.0 prio 50, and `agent-parity-governance` v0.3.0 prio 60. `a11y-governance` v0.4.0 adds didactic inline-code-comment governance for new or changed non-trivial logic. `architecture-governance` v0.5.0 adds conditional `BSI C3A` cloud-autonomy evidence and `BSI C5` cloud-compliance assurance evidence for cloud-service selection, provider dependencies, audit/assurance status, shared responsibility, and operational evidence. `security-governance` v0.6.0 keeps conditional `AI-SBOM` evidence, language-specific secure-coding profiles, and regulatory applicability screening for NIS2, CRA, EU AI Act, and DORA: development-tool-only AI usage is `N/A`, AI runtime/product components require G7/BSI AI-SBOM cluster evidence, and private training projects record regulatory `N/A` when no regulated scope exists. All six presets now include audit-ready Spec-Kit run evidence: `Applicable` / `N/A` / `Open`, rationale, evidence path, reviewer, residual risk, and follow-up must be documented for the current Spec-Kit run. All six presets are in the `github/spec-kit` community catalog as of 2026-05-04 and are also published under `https://github.com/hindermath/spec-kit-preset-*`. New Level-2 projects should install the applicable subset; C#/.NET Level-2 projects default to all six unless a justified exception is documented. Commit `.specify/presets/` and generated agent command updates when presets are project policy, but never commit `.specify/presets/.cache/`. Verify installs with `specify preset list`, `specify preset info`, and where relevant `specify preset resolve`. Improve presets in the home-baseline scaffold first, propagate to standalone preset repos, then commit, push, and smoke-test via GitHub ZIP URL. Preset-rule changes and preset version/priority changes require reviewing constitution, README tables/install snippets, all agent guidance files, and relevant templates together. Community/catalog coordination happens in `github/spec-kit#2362`.*
 
 <!-- SPECKIT START -->
-Feature 031 is the active independent combined closure. Follow
-`specs/031-combined-conformance-closure/plan.md` and the binding Lastenheft.
-The feature revalidates 48 contracts, 13 consumers, 48 TGO and 48 MB
-observations, 96 dispositions, all accepted source pins, and the closed
-`F001`-`F013` set without changing product behavior. Keep Wave 5 and Wave 6
-blocked on the reviewed feature head. Only the causal evidence closeout after
-all gates and the feature merge may mark Wave 5 `Eligible` and Wave 6
-`ConditionallyReady`. Do not start either Wave or Feature 032 in this run.
+Feature 031 is complete; follow
+`specs/031-combined-conformance-closure/delivery-closeout.md` for its final
+evidence. Wave 5 is `Eligible` but has not started. Wave 6 is only
+`ConditionallyReady` and still requires completed Wave 5 plus review of its
+actual delta. No Feature 032 exists. Start no new autonomous run without a new
+explicit user instruction.
 Lastenheft 15 reserves a read-only example-portfolio audit after the complete
 Wave-6 closeout; it has no feature number and does not start before then.
 <!-- SPECKIT END -->
