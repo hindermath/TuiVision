@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-07-11",
+  "updated": "2026-07-16",
   "description": "Required CLI command checks for the learning-series MSL toolchains, SBOM tooling, GitHub Spec Kit, and required agent CLI surfaces.",
   "policy": {
     "defaultScope": "required",
@@ -91,6 +91,14 @@
       "command": "syft",
       "args": ["version"],
       "purpose": "SBOM generation for supply-chain evidence"
+    },
+    {
+      "id": "lychee",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "lychee",
+      "args": ["--version"],
+      "purpose": "Local Markdown/HTML link and anchor checker matching the CI documentation gate"
     },
     {
       "id": "specify",

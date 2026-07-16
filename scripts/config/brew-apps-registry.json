@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-07-13",
+  "updated": "2026-07-16",
   "description": "Homebrew top-level package registry for agentic development across the Level-0, Level-1, and Level-2 repositories.",
   "policy": {
     "formulaSource": "brew leaves --installed-on-request",
@@ -20,6 +20,7 @@
     { "name": "glab", "scope": "required", "purpose": "GitLab CLI binary; provider sign-in is required only for a GitLab profile" },
     { "name": "go", "scope": "required", "purpose": "Memory-safe Go toolchain" },
     { "name": "helix", "scope": "required", "apt": "helix", "purpose": "Terminal-native A11Y editor with language-server support" },
+    { "name": "lychee", "scope": "required", "purpose": "Local Markdown/HTML link and anchor checker matching the CI documentation gate" },
     { "name": "lynx", "scope": "optional", "apt": "lynx", "purpose": "Text browser for accessibility-oriented checks" },
     { "name": "midnight-commander", "scope": "optional", "apt": "mc", "purpose": "Terminal file manager" },
     { "name": "mongodb/brew/mongodb-community", "scope": "optional", "purpose": "MongoDB local database for compatible projects" },
