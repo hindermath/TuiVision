@@ -171,36 +171,36 @@
 - [X] T136 Commit the reviewed local candidate, capture its hash in temporary operation evidence, and reserve terminal proof for `delivery-closeout.md`
 - [X] T137 Push the exact Feature-030 branch, verify the remote head, and reserve terminal proof for `delivery-closeout.md`
 - [X] T138 Create the Feature-030 PR, capture its stable identity in temporary operation evidence, and reserve terminal proof for `delivery-closeout.md`
-- [ ] T139 Reconcile stable PR identity into `pr-evidence.md`, align version, stage/check, commit, and push the final review candidate
-- [ ] T140 Poll required PR checks, map actual workflow/job/platform/commands, and reserve terminal proof for `delivery-closeout.md`
-- [ ] T141 Inspect Claude, Copilot, and GraphQL review state and reserve terminal proof for `delivery-closeout.md`
-- [ ] T142 Address every actionable review finding, resolve its thread, and record remediation in `pr-evidence.md`
-- [ ] T143 Revalidate the final reviewed head after remediation and reserve terminal proof for `delivery-closeout.md`
-- [ ] T144 Create temporary exact-head gate evidence, run the installed validator, and reserve its terminal result for `delivery-closeout.md`
-- [ ] T145 Confirm zero actionable review threads, document unavailable reviews, and reserve terminal proof for `delivery-closeout.md`
-- [ ] T146 Apply the narrow human-approval-only bypass only if it is the sole blocker and record it in `delivery-closeout.md`
-- [ ] T147 Merge the feature PR with the authorized repository policy and record the merge in `delivery-closeout.md`
-- [ ] T148 Delete obsolete feature branch refs, fetch/prune, and record cleanup in `delivery-closeout.md`
-- [ ] T149 Switch locally to `main`, pull fast-forward, and record synchronization in `delivery-closeout.md`
-- [ ] T150 Prove clean tree and `HEAD == origin/main` after the feature merge in `delivery-closeout.md`
+- [X] T139 Reconcile stable PR identity into `pr-evidence.md`, align version, stage/check, commit, and push the final review candidate
+- [X] T140 Poll required PR checks, map actual workflow/job/platform/commands, and reserve terminal proof for `delivery-closeout.md`
+- [X] T141 Inspect Claude, Copilot, and GraphQL review state and reserve terminal proof for `delivery-closeout.md`
+- [X] T142 Address every actionable review finding, resolve its thread, and record remediation in `pr-evidence.md`
+- [X] T143 Revalidate the final reviewed head after remediation and reserve terminal proof for `delivery-closeout.md`
+- [X] T144 Create temporary exact-head gate evidence, run the installed validator, and reserve its terminal result for `delivery-closeout.md`
+- [X] T145 Confirm zero actionable review threads, document unavailable reviews, and reserve terminal proof for `delivery-closeout.md`
+- [X] T146 Apply the narrow human-approval-only bypass only if it is the sole blocker and record it in `delivery-closeout.md`
+- [X] T147 Merge the feature PR with the authorized repository policy and record the merge in `delivery-closeout.md`
+- [X] T148 Delete obsolete feature branch refs, fetch/prune, and record cleanup in `delivery-closeout.md`
+- [X] T149 Switch locally to `main`, pull fast-forward, and record synchronization in `delivery-closeout.md`
+- [X] T150 Prove clean tree and `HEAD == origin/main` after the feature merge in `delivery-closeout.md`
 
 ## Phase 11: Retrospective and Closeout
 
-- [ ] T151 Reveal and verify the original random-selection commitment as superseded by the actual user-timed abort
-- [ ] T152 Record interruption timing, stale state, operation reconstruction, and invocation counts
-- [ ] T153 Confirm no second intentional interruption is scheduled
-- [ ] T154 Classify the run learning as `NoPromotion` or a concrete `PresetFollowUp`
-- [ ] T155 Create no Home-Baseline branch or PR for `NoPromotion`
-- [ ] T156 If promotion is required, complete the documented patch-release and exact ZIP adoption cycle before closeout
-- [ ] T157 Create `delivery-closeout.md` with feature-merge and first main-sync facts but no recursive closeout identity fields
-- [ ] T158 Complete feature retrospective, all task dispositions, and final run state with `nextExactAction: N/A`
-- [ ] T159 Create a single-commit evidence-only closeout branch and candidate
-- [ ] T160 Run closeout-proportional state, diff, secret, documentation, and A11Y gates
-- [ ] T161 Commit, push, and create the causal closeout PR whose acceptance is defined by `delivery-closeout.md`
-- [ ] T162 Converge closeout checks and review threads against `delivery-closeout.md` without writing the closeout's own remote facts into it
-- [ ] T163 Merge the closeout PR under the authorized policy and verify the terminal fact externally against `delivery-closeout.md`
-- [ ] T164 Delete closeout branch refs, switch to `main`, pull, and prune while preserving `delivery-closeout.md` as the repository record
-- [ ] T165 Verify TuiVision ends clean with `HEAD == origin/main`; compare externally with the completed state and `delivery-closeout.md`
+- [X] T151 Reveal and verify the original random-selection commitment as superseded by the actual user-timed abort
+- [X] T152 Record interruption timing, stale state, operation reconstruction, and invocation counts
+- [X] T153 Confirm no second intentional interruption is scheduled
+- [X] T154 Classify the run learning as `NoPromotion` or a concrete `PresetFollowUp`
+- [X] T155 Create no Home-Baseline branch or PR for `NoPromotion`
+- [X] T156 If promotion is required, complete the documented patch-release and exact ZIP adoption cycle before closeout
+- [X] T157 Create `delivery-closeout.md` with feature-merge and first main-sync facts but no recursive closeout identity fields
+- [X] T158 Complete feature retrospective, all task dispositions, and final run state with `nextExactAction: N/A`
+- [X] T159 Create a single-commit evidence-only closeout branch and candidate
+- [X] T160 Run closeout-proportional state, diff, secret, documentation, and A11Y gates
+- [X] T161 Commit, push, and create the causal closeout PR whose acceptance is defined by `delivery-closeout.md`
+- [X] T162 Converge closeout checks and review threads against `delivery-closeout.md` without writing the closeout's own remote facts into it
+- [X] T163 Merge the closeout PR under the authorized policy and verify the terminal fact externally against `delivery-closeout.md`
+- [X] T164 Delete closeout branch refs, switch to `main`, pull, and prune while preserving `delivery-closeout.md` as the repository record
+- [X] T165 Verify TuiVision ends clean with `HEAD == origin/main`; compare externally with the completed state and `delivery-closeout.md`
 
 ## Dependencies
 
