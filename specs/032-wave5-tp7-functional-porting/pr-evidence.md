@@ -327,7 +327,7 @@ Allowed results are `Pass`, `Fail`, `Accepted`, `Deferred`, and `Open`.
 |---|---|---|
 | Push | Pass | `origin/032-wave5-tp7-functional-porting` |
 | Pull request | Pass | `https://github.com/hindermath/TuiVision/pull/93` |
-| Required checks | Open | PR-context exact head |
+| Required checks | Open | Linux/macOS/docs/supply-chain/parity pass; Windows exposed a CRLF-only evidence-parser defect on reviewed head `ba7accc` |
 | Acceptance-gate mapping | Open | temporary provider evidence |
 | Review threads | Open | GraphQL query |
 | Unavailable reviews | Open | Provider/quota evidence |
@@ -344,6 +344,25 @@ Initial delivery checkpoint:
 `279b4b9` pushed successfully. The first PR command failed only because `gh`
 was absent from the app shell `PATH`; explicit `/opt/homebrew/bin/gh` created
 PR #93.
+
+### Windows CRLF Remediation
+
+- The Windows PR run for reviewed head `ba7accc` passed 160/161 example smoke
+  tests and failed only
+  `Wave5Evidence_Has_Exact_Source_Consumer_Proof_And_Delta_Cardinality`.
+- Windows checked the Markdown evidence out with CRLF. Splitting a row ending
+  in `|\r` after `Trim('|')` retained the final pipe and produced a tenth,
+  empty cell. The strict showcase-delta validator correctly rejected that
+  empty field.
+- The bounded test-only correction normalizes CRLF and lone CR to LF before
+  parsing evidence tables. A dedicated parity test now evaluates the complete
+  matrices once with LF and once with CRLF.
+- Local targeted verification at version `1.32.3.326` passed 4/4
+  `Wave5FunctionalSmokeMatrixTests`; `dotnet format --verify-no-changes`,
+  `git diff --check` and the independent LF/CRLF table simulation also passed.
+- No product, example, API, dependency, workflow or historical-source behavior
+  changed. The affected targeted and remote Windows gates must pass again
+  before exact-head acceptance evidence is created.
 
 ## Retrospective
 

@@ -51,6 +51,23 @@ public sealed class Wave5FunctionalSmokeMatrixTests
     public void Wave5Evidence_Has_Exact_Source_Consumer_Proof_And_Delta_Cardinality()
     {
         string evidence = File.ReadAllText(Path.Combine(RepositoryRoot(), "specs", "032-wave5-tp7-functional-porting", "pr-evidence.md"));
+        ValidateEvidenceMatrices(evidence);
+    }
+
+    /// <summary>Prüft identische Evidence-Auswertung für LF und CRLF. / Verifies identical evidence evaluation for LF and CRLF.</summary>
+    [TestMethod]
+    public void Wave5Evidence_Parses_Lf_And_Crlf_Identically()
+    {
+        string evidence = File.ReadAllText(Path.Combine(RepositoryRoot(), "specs", "032-wave5-tp7-functional-porting", "pr-evidence.md"));
+        string lfEvidence = NormalizeLineEndings(evidence);
+        string crlfEvidence = lfEvidence.Replace("\n", "\r\n", StringComparison.Ordinal);
+
+        ValidateEvidenceMatrices(lfEvidence);
+        ValidateEvidenceMatrices(crlfEvidence);
+    }
+
+    private static void ValidateEvidenceMatrices(string evidence)
+    {
         string[][] sourceRows = ParseTable(evidence, "## Historical Source Matrix");
         string[][] consumerRows = ParseTable(evidence, "## Consumer Decisions");
         string[][] proofRows = ParseTable(evidence, "## Primary Proof Matrix");
@@ -120,6 +137,7 @@ public sealed class Wave5FunctionalSmokeMatrixTests
 
     private static string[][] ParseTable(string document, string heading)
     {
+        document = NormalizeLineEndings(document);
         int start = document.IndexOf(heading, StringComparison.Ordinal);
         if (start < 0)
         {
@@ -135,6 +153,9 @@ public sealed class Wave5FunctionalSmokeMatrixTests
             .Select(line => line.Trim('|').Split('|').Select(cell => cell.Trim()).ToArray())
             .ToArray();
     }
+
+    private static string NormalizeLineEndings(string document) =>
+        document.Replace("\r\n", "\n", StringComparison.Ordinal).Replace('\r', '\n');
 
     private static void ValidateExactRows(
         IEnumerable<string[]> rows,

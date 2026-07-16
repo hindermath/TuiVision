@@ -7,7 +7,7 @@
   "authorityRevalidationRequired": false,
   "stage": "Review",
   "status": "Active",
-  "checkpointCommit": "279b4b9186a9cff3442f6e5856596a6dece78470",
+  "checkpointCommit": "ba7accc0fe6ecae5f00187eea1ddbb767d710b98",
   "acceptedArtifacts": [
     {
       "path": "Lastenheft_17_Wave5-TP7-Functional-Porting.032-wave5-tp7-functional-porting.md",
@@ -76,17 +76,17 @@
     "completed": 164,
     "total": 180
   },
-  "lastPassingGate": "Feature-032 candidate and delivery checkpoint are pushed; non-empty PR #93 exists and local validation remains green.",
-  "nextExactAction": "Commit and push the PR-record bookkeeping, then monitor all PR-context checks and review threads on the resulting exact head.",
+  "lastPassingGate": "The Windows-only CRLF evidence-parser defect is reproduced, corrected test-only, and verified locally by 4/4 matrix tests.",
+  "nextExactAction": "Commit and push the bounded CRLF remediation, then rerun and monitor all PR-context checks and review threads on the resulting exact head.",
   "lastOperation": {
-    "kind": "PublishPR",
+    "kind": "ResolveReview",
     "state": "Completed",
-    "summary": "Pushed the numbered branch and created non-empty PR #93; final review-head bookkeeping is ready for commit."
+    "summary": "Normalized Markdown line endings in the Wave-5 evidence parser and added explicit LF/CRLF parity proof without product changes."
   },
   "stop": {
     "reason": "N/A",
     "requestedAt": "N/A",
     "safeBoundary": "N/A"
   },
-  "updatedAt": "2026-07-16T20:18:41Z"
+  "updatedAt": "2026-07-16T20:27:15Z"
 }
