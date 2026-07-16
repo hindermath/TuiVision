@@ -293,10 +293,11 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Both waves remain `BlockedPendingTerminalGuiAudit`; Feature 029 is the sole immediate intake and Feature 030 is the mandatory successor before hardening or closure.
 
 ### 029-tv203-freevision-terminalgui-conformance-audit
-- This read-only audit starts only after Feature 028 merges and uses `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md`.
+- Current implementation status: the read-only audit is complete locally; final evidence is in `specs/029-tv203-freevision-terminalgui-conformance-audit/pr-evidence.md`.
 - Turbo Vision 2.0.3 remains authoritative; pinned Free Vision remains secondary evidence, and Terminal.GUI v1.9.0 at commit `d5abc2001fb2c5be4d16b23bbf34dfd99e752ea3` is an additional modern C# implementation opinion.
-- Review every existing contract `C001`-`C048`; create `C049+` only for a material uncovered consumer responsibility and `TG001+` only for a reproducible TuiVision contract, consumer, safety, A11Y, platform, or real-path proof gap.
-- The audit changes no runtime, API, dependency, example, historical, consumer, Free Vision, or Terminal.GUI source. It hands all `TG*` observations to Feature 030 and creates no hardening or closure Lastenheft itself.
+- All `C001`-`C048`, 16 domains, 25 pinned sources, and 13 Wave consumer groups are covered. No `C049+`, `CandidateFinding`, or `ProductDecision` was admitted.
+- The audit changes no runtime, API, dependency, example, historical, consumer, Free Vision, or Terminal.GUI source. It hands 48 `TGO###` observations to Feature 030 and creates no hardening or closure Lastenheft itself.
+- Feature 030 is the sole next intake; Wave 5 and Wave 6 remain blocked through combined TG/MB deduplication, non-empty finding-derived hardening, and independent closure.
 - After every autonomous run, promote only reproducible provider-neutral preset learning through a Home-Baseline patch release and exact tag-ZIP adoption before the next run; record `NoPromotion` without an empty branch or PR. Open one consolidated upstream preset issue only immediately before Wave 5.
 
 ### 030-tv203-magiblot-evolution-audit
@@ -575,9 +576,10 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 *Standard preset set: `security-governance` v0.6.0 prio 10, `architecture-governance` v0.5.0 prio 20, `isaqb-architecture-governance` v0.2.0 prio 30, `a11y-governance` v0.4.0 prio 40, `cross-platform-governance` v0.2.0 prio 50, and `agent-parity-governance` v0.3.0 prio 60. `a11y-governance` v0.4.0 adds didactic inline-code-comment governance for new or changed non-trivial logic. `architecture-governance` v0.5.0 adds conditional `BSI C3A` cloud-autonomy evidence and `BSI C5` cloud-compliance assurance evidence for cloud-service selection, provider dependencies, audit/assurance status, shared responsibility, and operational evidence. `security-governance` v0.6.0 keeps conditional `AI-SBOM` evidence, language-specific secure-coding profiles, and regulatory applicability screening for NIS2, CRA, EU AI Act, and DORA: development-tool-only AI usage is `N/A`, AI runtime/product components require G7/BSI AI-SBOM cluster evidence, and private training projects record regulatory `N/A` when no regulated scope exists. All six presets now include audit-ready Spec-Kit run evidence: `Applicable` / `N/A` / `Open`, rationale, evidence path, reviewer, residual risk, and follow-up must be documented for the current Spec-Kit run. All six presets are in the `github/spec-kit` community catalog as of 2026-05-04 and are also published under `https://github.com/hindermath/spec-kit-preset-*`. New Level-2 projects should install the applicable subset; C#/.NET Level-2 projects default to all six unless a justified exception is documented. Commit `.specify/presets/` and generated agent command updates when presets are project policy, but never commit `.specify/presets/.cache/`. Verify installs with `specify preset list`, `specify preset info`, and where relevant `specify preset resolve`. Improve presets in the home-baseline scaffold first, propagate to standalone preset repos, then commit, push, and smoke-test via GitHub ZIP URL. Preset-rule changes and preset version/priority changes require reviewing constitution, README tables/install snippets, all agent guidance files, and relevant templates together. Community/catalog coordination happens in `github/spec-kit#2362`.*
 
 <!-- SPECKIT START -->
-Feature 028 is locally complete with final evidence under
-`specs/028-pre-wave5-wave6-conformance-closure/`. After its merge and main
-sync, use only `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md`
-for Feature 029, then use `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md`
-for Feature 030. Keep Wave 5 and Wave 6 blocked.
+Feature 029 is locally complete with final evidence under
+`specs/029-tv203-freevision-terminalgui-conformance-audit/`. After its merge
+and main sync, use only
+`Lastenheft_14_TV203-Magiblot-Evolution-Audit.md` for Feature 030. Keep Wave 5
+and Wave 6 blocked through combined TG/MB deduplication, non-empty
+finding-derived hardening, and independent closure.
 <!-- SPECKIT END -->

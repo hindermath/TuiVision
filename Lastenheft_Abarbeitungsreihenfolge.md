@@ -50,22 +50,26 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 22 | `Lastenheft_10_Core-Runtime-Conformance-Hardening.025-core-runtime-conformance-hardening.md` | Core-Runtime-Konformität | archiviert oder abgeschlossen / archived or completed |
 | 23 | `Lastenheft_11_Component-Data-Conformance-Hardening.026-component-data-conformance-hardening.md` | Komponenten-/Daten-Konformität | archiviert oder abgeschlossen / archived or completed |
 | 24 | `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.028-pre-wave5-wave6-conformance-closure.md` | Pre-Wave-5-/Wave-6-Abschluss | archiviert oder abgeschlossen / archived or completed |
-| 25 | `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md` | Framework-Konformitätsaudit | **nächster Intake / next intake** |
+| 25 | `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.029-tv203-freevision-terminalgui-conformance-audit.md` | Framework-Konformitätsaudit | archiviert oder abgeschlossen / archived or completed |
+| 26 | `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md` | Framework-Evolutionsaudit | **nächster Intake / next intake** |
 <!-- secure-development-hardening-order:end -->
 
 ## Fortsetzungsmarke / Resume Marker
 
-> **NÄCHSTER SPEC-KIT-INTAKE: `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md` -> `029-tv203-freevision-terminalgui-conformance-audit`.**
+> **NÄCHSTER SPEC-KIT-INTAKE: `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md` -> `030-tv203-magiblot-evolution-audit`.**
 >
-> **NEXT SPEC KIT INTAKE: `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md` -> `029-tv203-freevision-terminalgui-conformance-audit`.**
+> **NEXT SPEC KIT INTAKE: `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md` -> `030-tv203-magiblot-evolution-audit`.**
 
-Features 025, 026 und 028 sind abgeschlossen. Feature 028 setzt den bestehenden
-Gate auf `ReadyForTerminalGuiAudit`. Feature 029 ist der naechste autonome Lauf;
-beide Waves bleiben bis zu dessen findings-basiertem Closure blockiert.
+Features 025, 026, 028 und 029 sind abgeschlossen. Feature 029 uebergibt 48
+explizite Terminal.GUI-Beobachtungen ohne neues Candidate Finding an Feature
+030. Feature 030 ist der naechste autonome Lauf; beide Waves bleiben bis zur
+gemeinsamen TG-/MB-Deduplizierung, nicht leeren Hardening-Läufen und dem
+unabhaengigen Closure blockiert.
 
-*Features 025, 026, and 028 are complete. Feature 028 sets the existing gate to
-`ReadyForTerminalGuiAudit`. Feature 029 is next; both Waves remain blocked
-through its finding-derived closure.*
+*Features 025, 026, 028, and 029 are complete. Feature 029 hands 48 explicit
+Terminal.GUI observations with no new candidate finding to Feature 030.
+Feature 030 is next; both Waves remain blocked through combined TG/MB
+deduplication, non-empty hardening runs, and independent closure.*
 
 ## Verbindliche Folge vor Wave 5 und Wave 6 / Binding Sequence Before Wave 5 and Wave 6
 
@@ -78,15 +82,18 @@ through its finding-derived closure.*
 3. `028-pre-wave5-wave6-conformance-closure` hat alle 13 Findings, sieben
    Integrations-Slices, 13 Consumer-Gruppen und Pflichtgates unabhaengig
    geschlossen; keine Wave wurde gestartet oder freigegeben.
-4. Als naechster Lauf folgt
-   `029-tv203-freevision-terminalgui-conformance-audit` mit Lastenheft 13.
-5. Feature 029 erzeugt nur aus realen Findings nicht leere Hardening-
-   Lastenhefte ab Nummer 030 sowie danach immer einen unabhängigen Closure-
-   Lauf.
+4. `029-tv203-freevision-terminalgui-conformance-audit` hat alle 48 Verträge
+   gegen Terminal.GUI v1.9.0 geprüft und 48 Beobachtungen ohne neues
+   Candidate Finding an Feature 030 übergeben.
+5. Als nächster Lauf folgt `030-tv203-magiblot-evolution-audit` mit Lastenheft
+   14. Erst dessen gemeinsame TG-/MB-Deduplizierung darf nicht leere
+   Hardening-Lastenhefte ab Nummer 031 sowie danach den unabhängigen
+   Closure-Lauf erzeugen.
 6. Wave 5 bleibt bis zu diesem Closure-Merge blockiert. Wave 6 folgt erst nach
    Wave 5 und einer erneuten Prüfung der tatsächlichen Wave-5-Deltas.
 
 *Revision 2 routed nine findings to Feature 025 and four to Feature 026; both
-are complete. Feature 028 closed that gate, Feature 029 adds the pinned
-Terminal.GUI v1.9.0 comparison, and only the final finding-derived closure may
-release Wave 5. Wave 6 additionally requires a post-Wave-5 delta review.*
+are complete. Feature 028 closed that gate and Feature 029 completed the pinned
+Terminal.GUI v1.9.0 comparison. Feature 030 now performs the magiblot comparison
+and combined deduplication; only the final finding-derived closure may release
+Wave 5. Wave 6 additionally requires a post-Wave-5 delta review.*

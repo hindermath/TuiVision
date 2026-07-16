@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0",
+  "runId": "00e480ee-192f-4f6f-baf7-ad748111717c",
+  "featurePath": "specs/029-tv203-freevision-terminalgui-conformance-audit",
+  "branch": "029-tv203-freevision-terminalgui-conformance-audit",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Deliver",
+  "status": "Active",
+  "checkpointCommit": "74ad633040d8bb9637cfd0daedfdaceea1ef1a7f",
+  "acceptedArtifacts": [
+    {
+      "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/spec.md",
+      "sha256": "8a74bce41e8e46ebadbdbe6096bbcc6f4ec681d9b8aec350ebbaf04db83aaaa3"
+    },
+    {
+      "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/checklists/requirements.md",
+      "sha256": "e55d819d60dfa20365f555641868675463806833bdd36a178ecc82fdd54c48ea"
+    },
+    {
+      "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/checklists/source-provenance.md",
+      "sha256": "4fbfbff6aa6512dd8c10b758764296e2c5fca0bd4986ea2dc8fb3c612c3ff7ae"
+    },
+    {
+      "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/checklists/contract-consumer.md",
+      "sha256": "96c99476659fcb2cfd4330cccd0209ead976f0f34c7a2716eadb512f16432dc5"
+    },
+    {
+      "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/checklists/finding-handoff.md",
+      "sha256": "f8642e7100da7674e6e89faa7d5c08cabb1ca6d3a040e75fc1ff97317be91e48"
+    },
+    {
+      "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/checklists/governance-readiness.md",
+      "sha256": "0f8cfd8783aefbd970b6166dbde0dc62d869c44dd8cfd4ae5e71e0086e8d915a"
+    },
+    {
+      "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/plan.md",
+      "sha256": "d0bc12237616e09aad20254182d14d0985f852e8287ae46b8f94ac3a2f4e9818"
+    },
+    {
+      "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/research.md",
+      "sha256": "95d1541ae8a1c0318d986b53544af18655b54db00a1c282f3febee6af58401bb"
+    },
+    {
+      "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/data-model.md",
+      "sha256": "a280162b1f7a98d0b57955fe71b315087ec570dcd226d1c3ddb2d980fcf9a4a4"
+    },
+    {
+      "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/quickstart.md",
+      "sha256": "d136f705cc61ac48c57c34bae8c9007c1982547ce93a27b55d8e8b737ebb4656"
+    },
+    {
+      "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/contracts/terminalgui-conformance-acceptance.md",
+      "sha256": "42bece118d760ad54afb8f8acb99f66405977dcd34416c73c90b01b4f3f5aa2b"
+    },
+    {
+      "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/checklists/plan-quality.md",
+      "sha256": "74798cb24ddef8b587c13baba8c81a91ed72004048f64af487e72f947b6e9ae6"
+    },
+    {
+      "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/checklists/plan-review.md",
+      "sha256": "c04895d3ac3cd647556ab10c7b1392bebff5a328b60dd443135da9cca6bd4a3b"
+    },
+    {
+      "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/tasks.md",
+      "sha256": "2770c75429b1c44ea3a4914a2dcbf1e9ca18613e1acca0a765e14855f55876e9"
+    },
+    {
+      "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/checklists/implementation-readiness.md",
+      "sha256": "97ee28563dec010221ec3ffa97f3916d8e66b5ffcd70b865fca4b1cfd12d7e2b"
+    }
+  ],
+  "tasks": {
+    "path": "specs/029-tv203-freevision-terminalgui-conformance-audit/tasks.md",
+    "sha256": "2770c75429b1c44ea3a4914a2dcbf1e9ca18613e1acca0a765e14855f55876e9",
+    "completed": 126,
+    "total": 130
+  },
+  "lastPassingGate": "Feature branch pushed with local/remote parity and ready non-empty PR #84 created against main.",
+  "nextExactAction": "Push the delivery checkpoint, wait for PR-context checks on the new exact head, validate gate evidence, and converge reviews.",
+  "lastOperation": {
+    "kind": "PublishPR",
+    "state": "Completed",
+    "summary": "T001-T126 complete; PR #84 exists and the next commit records its delivery checkpoint."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "updatedAt": "2026-07-16T10:43:00Z"
+}

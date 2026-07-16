@@ -682,11 +682,11 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.6b` = Component-/Data-Konformitätshärtung — ✓ ABGESCHLOSSEN, 4 Findings mit realem Red-/Green-Proof (Feature 026)
    - `3.6c` = Ursprünglicher Pre-Wave-5-Konformitätsabschluss — ✓ HISTORISCH ABGESCHLOSSEN UND FÜR ZUKUNFTSPLANUNG SUPERSEDED (Feature 027, Merge `35414af`)
    - `3.6d` = Kombinierter TV203-/Free-Vision-Konformitätsabschluss — ✓ ABGESCHLOSSEN, `ReadyForTerminalGuiAudit` (Feature 028, Lastenheft 12); gibt die Waves noch nicht frei
-   - `3.6e` = TV203-/Free-Vision-/Terminal.GUI-v1.9.0-Konformitätsaudit — NÄCHSTER LAUF (Feature 029, Lastenheft 13)
-   - `3.6f` = TV203-/magiblot-tvision-Evolutionsaudit und gemeinsame TG-/MB-Deduplizierung — VERBINDLICH DANACH (Feature 030, Lastenheft 14)
+   - `3.6e` = TV203-/Free-Vision-/Terminal.GUI-v1.9.0-Konformitätsaudit — ✓ IMPLEMENTIERT, 48 Verträge/25 Quellen/0 neue Findings (Feature 029, Lastenheft 13)
+   - `3.6f` = TV203-/magiblot-tvision-Evolutionsaudit und gemeinsame TG-/MB-Deduplizierung — NÄCHSTER LAUF (Feature 030, Lastenheft 14)
    - `3.6g` = Findings-basierte Hardening-Läufe und unabhängiger Abschluss — DYNAMISCH AB 031; keine leeren Features
 
->>> NÄCHSTER SCHRITT <<< `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.md` als Feature 029 ausführen. Danach ist `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md` als Feature 030 verbindlich. Feature 028 ist `ReadyForTerminalGuiAudit`; Wave 5 und Wave 6 bleiben bis zum gemeinsamen findings-basierten Closure-Merge blockiert.
+>>> NÄCHSTER SCHRITT <<< `Lastenheft_14_TV203-Magiblot-Evolution-Audit.md` als Feature 030 ausführen. Feature 029 hat alle 48 Verträge gegen 25 gepinnte Terminal.GUI-v1.9.0-Quellen geprüft, 0 neue Candidate Findings reproduziert und 48 Beobachtungen an Feature 030 übergeben. Wave 5 und Wave 6 bleiben bis zum gemeinsamen findings-basierten Closure-Merge blockiert.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.
