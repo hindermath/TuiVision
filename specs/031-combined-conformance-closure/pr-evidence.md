@@ -198,13 +198,13 @@ manual build-counter value will be recorded. One increment covers one command.
 
 | Item | Result | Evidence |
 |---|---|---|
-| Push | Open | `031-combined-conformance-closure` |
-| Pull request | Open | Feature PR |
+| Push | Pass for initial candidate | Branch `031-combined-conformance-closure`; remote head `63dac1c91c5ae7cd71cf056700ece65d363b7fa9` verified exactly |
+| Pull request | Pass | [PR #90](https://github.com/hindermath/TuiVision/pull/90), non-empty against `main` |
 | Required checks | Open | Exact workflow/job evidence |
 | Acceptance-gate mapping | Open | Temporary exact-head evidence |
 | Review threads | Open | GraphQL thread state |
 | Unavailable reviews | None yet | Provider evidence if applicable |
-| Reviewed head | Open | Final feature head |
+| Reviewed head | Open | Final PR-identity commit must be pushed before gate mapping |
 | Merge | Open | Merge commit |
 | Local `main` sync | Open | `HEAD == origin/main` |
 | Causal closeout | Required when Wave eligibility is post-merge-only | `delivery-closeout.md`; terminal closeout facts verified externally |

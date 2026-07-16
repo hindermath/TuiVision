@@ -5,9 +5,9 @@
   "branch": "031-combined-conformance-closure",
   "deliveryMode": "MergeAndSync",
   "authorityRevalidationRequired": false,
-  "stage": "Publish",
+  "stage": "Review",
   "status": "Active",
-  "checkpointCommit": "eb1712b543bd7b989c8efd9584f459520daa3e4e",
+  "checkpointCommit": "63dac1c91c5ae7cd71cf056700ece65d363b7fa9",
   "acceptedArtifacts": [
     {
       "path": "Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md",
@@ -67,7 +67,7 @@
     },
     {
       "path": "specs/031-combined-conformance-closure/tasks.md",
-      "sha256": "48540db7e0f19f339bdfea1c622a9bd8fbbda9d4534125fd0281da3a3a9c5ebd"
+      "sha256": "4793fbd5792415e30f98914ae2f1779629b4360d261d82fcef85ab0aceb0ffd0"
     },
     {
       "path": "specs/031-combined-conformance-closure/closure-evidence.json",
@@ -88,21 +88,21 @@
   ],
   "tasks": {
     "path": "specs/031-combined-conformance-closure/tasks.md",
-    "sha256": "48540db7e0f19f339bdfea1c622a9bd8fbbda9d4534125fd0281da3a3a9c5ebd",
-    "completed": 150,
+    "sha256": "4793fbd5792415e30f98914ae2f1779629b4360d261d82fcef85ab0aceb0ffd0",
+    "completed": 154,
     "total": 172
   },
-  "lastPassingGate": "CandidateIntegrity",
-  "nextExactAction": "Commit the exact Feature-031 candidate, push the branch, and create the non-empty feature pull request.",
+  "lastPassingGate": "FeaturePullRequestCreated",
+  "nextExactAction": "Push the final PR-identity candidate, map pull-request-context checks to the reviewed head, and validate temporary exact-head evidence.",
   "lastOperation": {
     "kind": "Publish",
     "state": "Completed",
-    "summary": "Completed T001-T150: local validation passed and the exact 32-path commit candidate has zero unstaged, untracked, generated-output, or cached-diff findings."
+    "summary": "Completed T001-T154: initial candidate 63dac1c91c5ae7cd71cf056700ece65d363b7fa9 was pushed, PR #90 was created, and the final PR-identity candidate is prepared."
   },
   "stop": {
     "reason": "N/A",
     "requestedAt": "N/A",
     "safeBoundary": "N/A"
   },
-  "updatedAt": "2026-07-16T18:09:34Z"
+  "updatedAt": "2026-07-16T18:11:54Z"
 }

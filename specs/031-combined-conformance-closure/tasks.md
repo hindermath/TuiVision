@@ -245,10 +245,10 @@ facts for the named closeout evidence.
 - [X] T148 Align `Version`, `AssemblyVersion`, and `FileVersion` in `Directory.Build.props` to the current `1.31.<patch>.<build>` candidate without an extra build increment
 - [X] T149 Stage only intended Feature-031 paths and inventory them in `specs/031-combined-conformance-closure/pr-evidence.md`
 - [X] T150 Run `git diff --cached --check` and compare staged, unstaged, and untracked inventories in `specs/031-combined-conformance-closure/pr-evidence.md`
-- [ ] T151 Commit the exact feature candidate and reserve the commit hash for `specs/031-combined-conformance-closure/delivery-closeout.md`
-- [ ] T152 Push branch `031-combined-conformance-closure`, verify the remote head, and reserve the result for `specs/031-combined-conformance-closure/delivery-closeout.md`
-- [ ] T153 Create the non-empty Feature-031 pull request and reserve its stable identity for `specs/031-combined-conformance-closure/delivery-closeout.md`
-- [ ] T154 If stable PR identity must enter `pr-evidence.md`, align version, stage/check, commit, and push one final review candidate before gate mapping
+- [X] T151 Commit the exact feature candidate and reserve the commit hash for `specs/031-combined-conformance-closure/delivery-closeout.md`
+- [X] T152 Push branch `031-combined-conformance-closure`, verify the remote head, and reserve the result for `specs/031-combined-conformance-closure/delivery-closeout.md`
+- [X] T153 Create the non-empty Feature-031 pull request and reserve its stable identity for `specs/031-combined-conformance-closure/delivery-closeout.md`
+- [X] T154 If stable PR identity must enter `pr-evidence.md`, align version, stage/check, commit, and push one final review candidate before gate mapping
 - [ ] T155 Identify pull-request-context checks as authoritative, record duplicate push runs as operational noise, and preserve evidence for `specs/031-combined-conformance-closure/delivery-closeout.md`
 - [ ] T156 Map every applicable gate to the actual reviewed head, workflow, job, platform, and executed command in temporary provider-neutral evidence and reserve the mapping summary for `specs/031-combined-conformance-closure/delivery-closeout.md`
 - [ ] T157 Validate temporary exact-head evidence with the installed autonomous gate validator and preserve only its terminal result for `specs/031-combined-conformance-closure/delivery-closeout.md`
