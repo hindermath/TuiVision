@@ -20,7 +20,7 @@ stages; this skill only orchestrates them and enforces cross-stage gates.
    write or merge authority from general autonomy alone.
 4. Confirm intake ordering, branch identity, clean ownership boundaries, the
    six baseline governance presets, and optional `autonomous-run-governance`
-   v0.2.1. Stop only for a material conflict, missing required authority,
+   v0.2.2. Stop only for a material conflict, missing required authority,
    destructive ambiguity, or an unmet hard gate.
 5. Before creating a feature, inspect repository metadata and
    `specs/<feature>/autonomous-run-state.json`. Never overwrite an active run.
@@ -55,6 +55,11 @@ Create `specs/NNN-feature/autonomous-run-state.json` from the installed state
 template and validate it at logical phase boundaries, graceful stops, hard
 gates, and completion. Tasks, evidence, and Git remain authoritative over a
 stale state index.
+
+The `## Deliver` heading below is an orchestration label, not a valid
+machine-state value. Persist `Publish`, `Review`, or `MergeAndSync` according to
+the current remote-closeout operation and validate every transition; never
+persist `Deliver`.
 
 Before implementation, resolve
 `autonomous-run-gate-requirements-template` and create the reviewed
