@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "1.0",
+  "gates": [
+    {
+      "gateId": "G031-STATIC-CANDIDATE",
+      "applicability": "Applicable",
+      "requiredScope": "The exact intended Feature-031 candidate has no whitespace, missing-file, placeholder, generated-output, protected-source, dependency, package, external-checkout, or unintended Wave implementation defect.",
+      "requiredCommandTokens": [
+        "git diff --cached --check"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The staged candidate, including every new evidence file, is the delivery unit.",
+      "reevaluationTrigger": "The staged candidate changes."
+    },
+    {
+      "gateId": "G031-TARGETED-CLOSURE",
+      "applicability": "Applicable",
+      "requiredScope": "Feature-024, Feature-028, Feature-029, Feature-030, and Feature-031 evidence validators pass together on the reviewed head.",
+      "requiredCommandTokens": [
+        "dotnet test",
+        "TuiVision.Drivers.Tests",
+        "Release"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Feature 031 composes all accepted conformance evidence and adds a test-only closure validator.",
+      "reevaluationTrigger": "A closure dataset, validator, accepted input, or proof path changes."
+    },
+    {
+      "gateId": "G031-FULL-RELEASE",
+      "applicability": "Applicable",
+      "requiredScope": "The full TuiVision solution passes in Release configuration.",
+      "requiredCommandTokens": [
+        "dotnet test",
+        "TuiVision.sln",
+        "Release"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Wave-5 eligibility is a repository-wide release decision.",
+      "reevaluationTrigger": "Any test, project, status, or acceptance input changes."
+    },
+    {
+      "gateId": "G031-COVERAGE",
+      "applicability": "Applicable",
+      "requiredScope": "Core, Controls, Serialization, Compatibility, and Drivers.Console each retain at least 70 percent line coverage.",
+      "requiredCommandTokens": [
+        "dotnet test",
+        "XPlat Code Coverage",
+        "coverlet.runsettings"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The repository Constitution forbids merge below the five-assembly coverage gate.",
+      "reevaluationTrigger": "Tests, coverage configuration, or gate assemblies change."
+    },
+    {
+      "gateId": "G031-DOCFX",
+      "applicability": "Applicable",
+      "requiredScope": "Generated documentation builds without warning or error for learner-facing closure, status, and ordering changes.",
+      "requiredCommandTokens": [
+        "docfx",
+        "docfx.json"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Feature 031 changes learner-facing evidence and release status.",
+      "reevaluationTrigger": "Documentation, navigation, or DocFX configuration changes."
+    },
+    {
+      "gateId": "G031-WEB-A11Y",
+      "applicability": "Applicable",
+      "requiredScope": "The generated DocFX site passes the Playwright and Axe accessibility smoke path.",
+      "requiredCommandTokens": [
+        "npm run test:docfx"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "DocFX completion requires the matching accessibility proof.",
+      "reevaluationTrigger": "Generated pages, navigation, templates, or A11Y tests change."
+    },
+    {
+      "gateId": "G031-SECURITY-SCOPE",
+      "applicability": "Applicable",
+      "requiredScope": "Secrets, dependencies, generated output, protected roots, external checkouts, evidence hashes, and evidence-only scope remain clean.",
+      "requiredCommandTokens": [
+        "scan-agent-secrets",
+        "fail-on-high"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "A false or contaminated closure could release Wave 5 incorrectly.",
+      "reevaluationTrigger": "Candidate paths, dependencies, external inputs, or security workflow change."
+    },
+    {
+      "gateId": "G031-AGENT-ORDERING",
+      "applicability": "Applicable",
+      "requiredScope": "All maintained agent, Pflichtenheft, processing-order, gate, and evidence surfaces agree on active Feature 031 and the causal Wave transition.",
+      "requiredCommandTokens": [
+        "check-homogeneity"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Divergent ordering can start Wave 5 before closure.",
+      "reevaluationTrigger": "Agent guidance, Pflichtenheft, processing order, or Wave marker changes."
+    },
+    {
+      "gateId": "G031-PLATFORM-RUNTIME",
+      "applicability": "Applicable",
+      "requiredScope": "The reviewed head executes the repository Release test body on Ubuntu, macOS, and Windows.",
+      "requiredCommandTokens": [
+        "dotnet test",
+        "Release"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "ubuntu",
+        "macos",
+        "windows"
+      ],
+      "rationale": "Cross-platform repository readiness is part of the Wave-5 gate.",
+      "reevaluationTrigger": "Workflow matrix, runner, or test command changes."
+    },
+    {
+      "gateId": "G031-STATE-INTEGRITY",
+      "applicability": "Applicable",
+      "requiredScope": "The Feature-031 run state validates at logical boundaries and completes with accurate artefact hashes, tasks, authority, stage, status, and next action.",
+      "requiredCommandTokens": [
+        "validate-autonomous-run-state"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "A stale or invalid state makes autonomous delivery and closeout untrustworthy.",
+      "reevaluationTrigger": "Run state, task file, accepted artifacts, authority, or lifecycle changes."
+    },
+    {
+      "gateId": "G031-REVIEW-CONVERGENCE",
+      "applicability": "N/A",
+      "requiredScope": "Review threads, comments, reviewer availability, and Human Approval are verified directly through provider APIs.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The command gate schema validates executable technical proof; review state is a separate provider fact.",
+      "reevaluationTrigger": "A provider-neutral review-evidence command contract is adopted."
+    },
+    {
+      "gateId": "G031-CAUSAL-WAVE-CLOSEOUT",
+      "applicability": "N/A",
+      "requiredScope": "Wave eligibility and terminal merge/synchronization facts exist only after the reviewed feature merge and are verified through the evidence-only closeout plus provider facts.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "A command executed on the feature head cannot prove its own future merge.",
+      "reevaluationTrigger": "The repository adopts an external immutable delivery ledger that can replace the causal closeout."
+    }
+  ]
+}

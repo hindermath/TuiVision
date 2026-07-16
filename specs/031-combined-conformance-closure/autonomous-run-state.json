@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.0",
+  "runId": "2ad9cf1a-5791-4787-9b76-d791adb2ab9a",
+  "featurePath": "specs/031-combined-conformance-closure",
+  "branch": "031-combined-conformance-closure",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Publish",
+  "status": "Active",
+  "checkpointCommit": "eb1712b543bd7b989c8efd9584f459520daa3e4e",
+  "acceptedArtifacts": [
+    {
+      "path": "Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md",
+      "sha256": "3dfa493a842c923fe8b92bd78a2d42d94beaf9125c7e2f33b03fb7f16c484eee"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/spec.md",
+      "sha256": "776758051f22ff09439695607fd996a1c145829674cfae8a46893032cf0c2cba"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/checklists/requirements.md",
+      "sha256": "47df2ed192630a8052c5a090bfff7dad28d801596374ec69a5ebfa5ee75c681e"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/checklists/closure-evidence.md",
+      "sha256": "ec51dccf2faf54cff30314f646073d08d529c2a0499a42cf05dea77b3fe34704"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/checklists/stop-and-scope.md",
+      "sha256": "1341d556088ffdb581b0c6187a707bbcdc02add224ab7a1d3194c234c8fba82b"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/checklists/wave-delivery.md",
+      "sha256": "9b3f1fd7181d034030c103fd48a38c150913f924a99a758777ae5d82a3328631"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/plan.md",
+      "sha256": "90c8e1860e8a825ea857de4e437ea3a2679eb6483c8ac742e37eb5606c7658ce"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/research.md",
+      "sha256": "83c3e105622e62a19f79457d1647d4e7845ffe9433b8c7166078afdd80d6e900"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/data-model.md",
+      "sha256": "0af1a4a8a80ed176ef31bc4b7ce40b08b91ae8a708f5222392d4e65669fa40dd"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/quickstart.md",
+      "sha256": "8066e01ca63ec14a73657e74dd7f1c4f93267504a879c317ef3a0acf29fe2021"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/contracts/combined-conformance-closure-acceptance.md",
+      "sha256": "866ab3f47976f69945fc83b88668cf44bc420f9d7161691d0f8aae68289c77ec"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/autonomous-gate-requirements.json",
+      "sha256": "3b354bd2b6ab9afd9e9ae5ac76ff277d8d3aa841b7377cb8e2bfad3b79a0c04f"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/checklists/plan-quality.md",
+      "sha256": "5584d808cc664125e0060f4b374e25313f92294839d42b5d91ef644ad6a8e3bc"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/checklists/plan-review.md",
+      "sha256": "8648c43f322c36d3a33b2d93b17a4ecf84c31dff6d6e71c60ff8632857b85f23"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/tasks.md",
+      "sha256": "48540db7e0f19f339bdfea1c622a9bd8fbbda9d4534125fd0281da3a3a9c5ebd"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/closure-evidence.json",
+      "sha256": "fe572c6e8086ad8aa6a47e264c83e35b23064947e531a4c108ebb5b3ccd31001"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/combined-closure.md",
+      "sha256": "66452150648cec6bf9c5a128a428ddada1a1518030019475e9ee1e9e0024638d"
+    },
+    {
+      "path": "specs/031-combined-conformance-closure/pre-wave-gate.md",
+      "sha256": "017582af969f2991a1ae77a7636a535280ebc2a63857394319bec5ec14364d43"
+    },
+    {
+      "path": "tests/TuiVision.Drivers.Tests/CombinedConformanceClosureEvidenceTests.cs",
+      "sha256": "36787da46eeb8b209531cba60207380256077b147583206bad0d34fa6bf58d7b"
+    }
+  ],
+  "tasks": {
+    "path": "specs/031-combined-conformance-closure/tasks.md",
+    "sha256": "48540db7e0f19f339bdfea1c622a9bd8fbbda9d4534125fd0281da3a3a9c5ebd",
+    "completed": 150,
+    "total": 172
+  },
+  "lastPassingGate": "CandidateIntegrity",
+  "nextExactAction": "Commit the exact Feature-031 candidate, push the branch, and create the non-empty feature pull request.",
+  "lastOperation": {
+    "kind": "Publish",
+    "state": "Completed",
+    "summary": "Completed T001-T150: local validation passed and the exact 32-path commit candidate has zero unstaged, untracked, generated-output, or cached-diff findings."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "updatedAt": "2026-07-16T18:09:34Z"
+}

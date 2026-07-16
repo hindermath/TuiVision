@@ -699,17 +699,17 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.6b` = Component-/Data-Konformitätshärtung — ✓ ABGESCHLOSSEN, 4 Findings mit realem Red-/Green-Proof (Feature 026)
    - `3.6c` = Ursprünglicher Pre-Wave-5-Konformitätsabschluss — ✓ HISTORISCH ABGESCHLOSSEN UND FÜR ZUKUNFTSPLANUNG SUPERSEDED (Feature 027, Merge `35414af`)
    - `3.6d` = Kombinierter TV203-/Free-Vision-Konformitätsabschluss — ✓ ABGESCHLOSSEN, `ReadyForTerminalGuiAudit` (Feature 028, Lastenheft 12); gibt die Waves noch nicht frei
-   - `3.6e` = TV203-/Free-Vision-/Terminal.GUI-v1.9.0-Konformitätsaudit — ✓ IMPLEMENTIERT, 48 Verträge/25 Quellen/0 neue Findings (Feature 029, Lastenheft 13)
-   - `3.6f` = TV203-/magiblot-tvision-Evolutionsaudit und gemeinsame TG-/MB-Deduplizierung — LOKAL IMPLEMENTIERT, 50 Quellen/48 Relationen/96 Dispositionen/0 Findings (Feature 030, Lastenheft 14)
-   - `3.6g` = Unabhängiger gemeinsamer Konformitätsabschluss — NÄCHSTER LAUF (Feature 031, Lastenheft 16); keine Hardening-Läufe erforderlich
+   - `3.6e` = TV203-/Free-Vision-/Terminal.GUI-v1.9.0-Konformitätsaudit — ✓ ABGESCHLOSSEN, 48 Verträge/25 Quellen/0 neue Findings (Feature 029, Lastenheft 13)
+   - `3.6f` = TV203-/magiblot-tvision-Evolutionsaudit und gemeinsame TG-/MB-Deduplizierung — ✓ ABGESCHLOSSEN, 50 Quellen/48 Relationen/96 Dispositionen/0 Findings (Feature 030, Lastenheft 14)
+   - `3.6g` = Unabhängiger gemeinsamer Konformitätsabschluss — IN ARBEIT (Feature 031, Lastenheft 16); Feature-Head hält beide Waves `BlockedPendingCausalClosure`
    - Post-Wave-6 = Example-Portfolio-Konformitätsaudit — VERBINDLICH VORGEMERKT (Lastenheft 15); Feature-Nummer erst nach Wave-6-Closeout
 
->>> NÄCHSTER SCHRITT <<< Nach dem Merge von Feature 030
-`Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.md` als Feature
-031 ausführen. Feature 030 hat 48 Verträge gegen 50 gepinnte
-magiblot/tvision-Quellen geprüft und alle 48 `TGO*`- sowie 48 `MB*`-
-Beobachtungen ohne kanonisches `CF*`-Finding dedupliziert. Wave 5 und Wave 6
-bleiben bis zum unabhängigen Closure-Merge blockiert.
+>>> AKTIVER SCHRITT <<< Feature 031 revalidiert unabhängig 48 Verträge, 13
+Consumer-Gruppen, 96 Beobachtungen, die drei gepinnten Vergleichsquellen und
+`F001`-`F013`. Der reviewte Feature-Head hält Wave 5 und Wave 6
+`BlockedPendingCausalClosure`. Erst der nachgewiesene Merge und ein einzelner
+evidence-only Closeout dürfen Wave 5 auf `Eligible` und Wave 6 höchstens auf
+`ConditionallyReady` setzen; keine Wave wird in Feature 031 gestartet.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.
