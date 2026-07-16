@@ -482,7 +482,7 @@ Ein solcher Fund wird nicht als lokale Beispielsonderlogik umgangen.
 
 ```text
 $speckit-autonomous Execute the complete autonomous Spec Kit run for Feature
-032 using `Lastenheft_17_Wave5-TP7-Functional-Porting.md` as the binding
+032 using `Lastenheft_17_Wave5-TP7-Functional-Porting.032-wave5-tp7-functional-porting.md` as the binding
 intake.
 
 Delivery mode: MergeAndSync.

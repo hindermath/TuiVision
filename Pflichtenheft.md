@@ -268,8 +268,10 @@ Statuscheckliste Beispielwellen:
   Reihenfolgehinweis: Feature `024-tv203-freevision-conformance-audit` und der damalige Abschluss `027-pre-wave5-conformance-closure` bleiben als historische, vollständig gemergte Evidence erhalten. Die spätere kombinierte Consumer-Review-Revision 2 superseded jedoch die Zukunftsentscheidung des Null-Finding-Stands.
 - [x] **Revision-2-Abschluss und moderne Konformitätsrevisionen**
   Reihenfolgehinweis: Features 025 und 026 haben die 13 Findings aus `TVDEMOS/` und `TVFM/` geschlossen. Features 028 bis 030 revalidieren die Schließung und ergänzen Terminal.GUI v1.9.0 sowie den gepinnten C++-Modernisierungszeugen `magiblot/tvision`. Feature 031 schließt 48 Verträge, 13 Consumer-Gruppen, 96 Dispositionen und alle Delivery-Gates unabhängig; Wave 5 ist `Eligible`, Wave 6 nur `ConditionallyReady`.
-- [ ] **Welle 5 - Turbo-Pascal-Demos aus TP7 (`TVDEMOS/`)**
-  Reihenfolgehinweis: nach dem gemergten Feature-031-Closeout fachlich `Eligible`. `Lastenheft_17_Wave5-TP7-Functional-Porting.md` reserviert Feature 032 als erste von zwei Stufen fuer funktionale Portierung und Real-Path-Proof. Die Showcase-Stufe entsteht erst aus der tatsaechlichen 032-Delta-Matrix.
+- [x] **Welle 5 - Funktionale TP7-Portierung und Real-Path-Proof**
+  Reihenfolgehinweis: Feature 032 liefert zehn startbare `Tp7*`-Beispiele, 15 eindeutige Quellenrollen, sechs Consumer-Entscheidungen und reale App-Loop-/Zustands-/View-/Cell-Proofs. Datei-, Resource-, Help-, Generator- und Mausgrenzen bleiben kontrolliert.
+- [ ] **Welle 5 - TP7-Showcase-Stufe**
+  Reihenfolgehinweis: nächster Intake ist `Lastenheft_18_Wave5-TP7-Showcase-Remediation.md` für Feature 033. Er ergänzt ausschließlich die zehn aus Feature 032 abgeleiteten Visual-, Interaktions-, Layout- und A11Y-Deltas.
 - [ ] **Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`**
   Reihenfolgehinweis: zuletzt; setzt den gemeinsamen Terminal.GUI-/magiblot-gestützten Closure-Lauf, die tatsächlichen Erkenntnisse aus Welle 5, eine erneute Delta-Prüfung, Datei-/Verzeichnisdialoge, Drag/Drop-Analoga und eine robuste Event-/Fensterintegration voraus.
 - [ ] **Post-Wave-6 Example Portfolio Conformance Audit**
@@ -702,15 +704,16 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.6e` = TV203-/Free-Vision-/Terminal.GUI-v1.9.0-Konformitätsaudit — ✓ ABGESCHLOSSEN, 48 Verträge/25 Quellen/0 neue Findings (Feature 029, Lastenheft 13)
    - `3.6f` = TV203-/magiblot-tvision-Evolutionsaudit und gemeinsame TG-/MB-Deduplizierung — ✓ ABGESCHLOSSEN, 50 Quellen/48 Relationen/96 Dispositionen/0 Findings (Feature 030, Lastenheft 14)
    - `3.6g` = Unabhängiger gemeinsamer Konformitätsabschluss — ✓ ABGESCHLOSSEN (Feature 031, Lastenheft 16, Feature-Merge `3d64a36`); Wave 5 `Eligible`, Wave 6 `ConditionallyReady`
+   - `3.7a` = Wave-5 TP7 Functional Porting — ✓ FUNKTIONAL GELIEFERT (Feature 032, Lastenheft 17); 15 Quellen, 6 Consumer, 10 Beispiele und 10 reale Proof-Zeilen
+   - `3.7b` = Wave-5 TP7 Showcase Remediation — NÄCHSTER INTAKE (Lastenheft 18, vorgesehenes Feature 033); Wave 6 bleibt blockiert
    - Post-Wave-6 = Example-Portfolio-Konformitätsaudit — VERBINDLICH VORGEMERKT (Lastenheft 15); Feature-Nummer erst nach Wave-6-Closeout
 
->>> NÄCHSTER FACHLICHER SCHRITT <<< Feature 032 aus
-`Lastenheft_17_Wave5-TP7-Functional-Porting.md` startet die erste
-Wave-5-Stufe mit funktionaler TP7-Portierung und Real-Path-Proof. Die spaetere
-Showcase-Stufe entsteht erst aus der tatsaechlichen 032-Delta-Matrix. Wave 6
-bleibt `ConditionallyReady`, bis beide Wave-5-Stufen vollständig geliefert
-und ihr tatsächlicher Delta erneut geprüft sind. Feature 032 ist reserviert,
-aber in diesem Vorbereitungsschritt noch nicht angelegt.
+>>> NÄCHSTER FACHLICHER SCHRITT <<< Nach dem Merge von Feature 032 startet
+Feature 033 aus `Lastenheft_18_Wave5-TP7-Showcase-Remediation.md` die zweite
+Wave-5-Stufe. Sie schließt ausschließlich die zehn evidenzbasierten
+Showcase-Deltas. Wave 6 bleibt `ConditionallyReady` und fachlich blockiert, bis
+Feature 033 vollständig geliefert und der tatsächliche Wave-5-Delta erneut
+geprüft ist. Feature 033 wurde noch nicht angelegt.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

@@ -70,4 +70,9 @@
     <ProjectReference Include="..\..\examples\A11yFramework\A11yFramework.csproj" />
   </ItemGroup>
 
+  <!-- Wave-5 functional TP7 examples share one compiled composition assembly -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\examples\Shared\TuiVision.Examples.Wave5\TuiVision.Examples.Wave5.csproj" />
+  </ItemGroup>
+
 </Project>

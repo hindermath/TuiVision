@@ -40,6 +40,8 @@ Auto-generated from all feature plans. Last updated: 2026-07-16
 - repository-owned Feature-029 JSON and Markdown; external Terminal.GUI checkout remains untracked under a temporary directory (029-tv203-freevision-terminalgui-conformance-audit)
 - C# 14 / .NET 10 for test-only validation; JSON and Markdown for evidence + Existing BCL `System.Text.Json`, MSTest 4.0.1, existing repository scripts and workflows; no new package (031-combined-conformance-closure)
 - Source-controlled closed JSON and Markdown evidence; temporary external checkouts under `/tmp` only (031-combined-conformance-closure)
+- C# 14 / .NET 10 + Existing TuiVision.Core, TuiVision.Controls, TuiVision.Serialization, TuiVision.Compatibility, TuiVision.Drivers.Console, MSTest 4.0.1 and BCL System.Text.Json; no new package (032-wave5-tp7-functional-porting)
+- Embedded UTF-8 fixtures, controlled test-temporary files, existing THelpFile and TResourceFile; no database or service (032-wave5-tp7-functional-porting)
 
 - C# `latest` on .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, `TuiVision.Compatibility`; MSTest; Coverlet; docfx; wave-1 example projects under `examples/` (007-port-wave1-examples — Wave 1 delivered)
 
@@ -72,9 +74,8 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ## Recent Changes
+- 032-wave5-tp7-functional-porting: Added C# 14 / .NET 10 + Existing TuiVision.Core, TuiVision.Controls, TuiVision.Serialization, TuiVision.Compatibility, TuiVision.Drivers.Console, MSTest 4.0.1 and BCL System.Text.Json; no new package
 - 031-combined-conformance-closure: Added C# 14 / .NET 10 for test-only validation; JSON and Markdown for evidence + Existing BCL `System.Text.Json`, MSTest 4.0.1, existing repository scripts and workflows; no new package
-- 029-tv203-freevision-terminalgui-conformance-audit: Added C# / .NET 10 for test-only validation; JSON and Markdown for audit evidence + existing MSTest 4.0.1, System.Text.Json, Coverlet 6.0.4, DocFX, Playwright/Axe, Lynx, Git and GitHub Actions
-- 028-pre-wave5-wave6-conformance-closure: Added C# / .NET 10 for test-only validation; JSON, Markdown, YAML, Bash and PowerShell evidence tooling + existing MSTest 4.0.1, Coverlet 6.0.4, DocFX, Playwright/Axe, Lynx, jq, xmllint, Git and GitHub Actions
 
 
 <!-- MANUAL ADDITIONS START -->
@@ -200,8 +201,13 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - Current implementation status: the evidence-only independent closure is complete; final evidence is in `specs/031-combined-conformance-closure/delivery-closeout.md`.
 - Exactly 48 contracts, 13 consumers, 48 TGO and 48 MB observations, 96 dispositions, all accepted source pins and hashes, and the closed `F001`-`F013` set are revalidated.
 - Product runtime, public APIs, dependencies, packages, projects, examples, consumers, historical sources, and external sources remain unchanged.
-- Wave 5 is `Eligible` but not started. Wave 6 is only `ConditionallyReady` and still requires completed Wave 5 plus review of its actual delta.
-- No Feature 032 exists. A new explicit user instruction is required before the next autonomous run.
+- Wave 5 Stage 1 is the active Feature-032 candidate. Wave 6 remains only `ConditionallyReady` and requires both Wave-5 stages plus review of the actual delta.
+
+### 032-wave5-tp7-functional-porting
+- Current implementation candidate: all 15 read-only `TVDEMOS/*.PAS` sources have one role, all six consumers use the existing framework, and ten `Tp7*` projects provide normal plus controlled-smoke entry points.
+- Primary proof covers calculator, central apps, resources, deterministic domain state, mouse capability/fallback, and exact 15/6/10/10 traceability through real app loops, state, view, and rendered cells.
+- File, resource, help, generator, and mouse boundaries remain controlled; no host state, arbitrary user data, dependency, historical source, or broad framework behavior is changed.
+- `Lastenheft_18_Wave5-TP7-Showcase-Remediation.md` is derived from the ten concrete Stage-2 deltas and becomes the next intake only after Feature 032 merges. Feature 033 and Wave 6 are not started.
 
 
 ### Autonomous Red-Proof Completeness

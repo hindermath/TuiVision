@@ -136,6 +136,45 @@ and do not change host terminal, font, codepage, or keyboard settings.
 
 ---
 
+## Wave-5-Beispiele, funktionale Stufe / Wave 5 Examples, Functional Stage
+
+Feature `032-wave5-tp7-functional-porting` liefert die erste von zwei
+Wave-5-Stufen. Die zehn modernen C#-Beispiele übernehmen die Lern- und
+Nutzerabsicht aus den 15 read-only Quellen unter `TVDEMOS/`, verwenden aber
+die vorhandenen TuiVision-Verträge und keine Pascal-, DOS- oder
+Beispiel-Ersatzframeworks.
+
+Feature `032-wave5-tp7-functional-porting` delivers the first of two Wave-5
+stages. The ten modern C# examples retain the learning and user intent from
+the 15 read-only sources under `TVDEMOS/`, while using existing TuiVision
+contracts rather than Pascal, DOS, or examples-only substitute frameworks.
+
+Jeder Stage-1-Pfad startet normal, besitzt einen kontrollierten `--smoke`-Pfad
+und wird über `app.Run()`, konkreten Zustand, View-Identität und gerenderte
+Zellen bewiesen. Die vollständige sichtbare Showcase-Stufe ist in
+`Lastenheft_18_Wave5-TP7-Showcase-Remediation.md` aus den tatsächlichen
+Feature-032-Deltas abgeleitet.
+
+Each Stage-1 path starts normally, has a controlled `--smoke` path, and is
+proven through `app.Run()`, concrete state, view identity, and rendered cells.
+The complete visible showcase stage is derived from the actual Feature-032
+deltas in `Lastenheft_18_Wave5-TP7-Showcase-Remediation.md`.
+
+| Verwalteter Name / Managed Name | Startbefehl / Launch Command | Funktionaler Pfad und Grenze / Functional Path and Boundary |
+|---|---|---|
+| `Tp7Demo` | `dotnet run --project examples/Tp7Demo` | Menü, Commands, Help, Fenster und zwei begrenzte Idle-Zyklen; vollständige Fensterkomposition folgt in Stage 2. |
+| `Tp7Edit` | `dotnet run --project examples/Tp7Edit` | Echter Editor, Modified/Safe-Close, Konfliktentscheidung und kontrollierter Zielpfad; beliebige Benutzerdaten bleiben ausgeschlossen. |
+| `Tp7Help` | `dotnet run --project examples/Tp7Help` | Kontrollierte Help-Kompilierung, bekannte Kontexte und sichtbarer Fallback ohne Teilmodell bei Fehlern. |
+| `Tp7ResourceDemo` | `dotnet run --project examples/Tp7ResourceDemo` | Exakte `Dialog`-/`Menu`-/`Status`-Records und atomare Ablehnung ungültiger Ressourcen. |
+| `Tp7ResourceGenerator` | `dotnet run --project examples/Tp7ResourceGenerator` | Allowlist-basierte Bytes und kontrolliertes test-eigenes Ziel; absolute Pfade und Traversal werden abgelehnt. |
+| `Tp7AsciiTable` | `dotnet run --project examples/Tp7AsciiTable` | Begrenzte Werte `0..255` mit Dezimal-, Hex- und textorientiertem Kontrolllabel. |
+| `Tp7Calculator` | `dotnet run --project examples/Tp7Calculator` | Invariante Grundrechenarten, Clear, Backspace, Vorzeichen und atomare Division-durch-null-Ablehnung. |
+| `Tp7Calendar` | `dotnet run --project examples/Tp7Calendar` | Feste Monats-Fixture und reproduzierbarer Jahreswechsel ohne Systemdatum oder Locale. |
+| `Tp7Puzzle` | `dotnet run --project examples/Tp7Puzzle` | Festes 4x4-Board, benachbarter Zug und zustandserhaltende Ablehnung. |
+| `Tp7MouseDialog` | `dotnet run --project examples/Tp7MouseDialog` | Lokale Einstellungen, ehrliche Capability, Doppelklick, Verlustabbruch und vollständiger Tastaturfallback ohne Host-Mutation. |
+
+---
+
 ## A11Y-Referenz / Accessibility Reference
 
 Feature `023-a11y-framework` liefert eine kleine Referenz-App für opt-in
@@ -183,6 +222,16 @@ Guides for these examples are located under `docs/guides/examples/`:
 - `docs/guides/examples/fonts.md`
 - `docs/guides/examples/eterm.md`
 - `docs/guides/examples/xterm.md`
+- `docs/guides/examples/tp7-demo.md`
+- `docs/guides/examples/tp7-edit.md`
+- `docs/guides/examples/tp7-help.md`
+- `docs/guides/examples/tp7-resource-demo.md`
+- `docs/guides/examples/tp7-resource-generator.md`
+- `docs/guides/examples/tp7-ascii-table.md`
+- `docs/guides/examples/tp7-calculator.md`
+- `docs/guides/examples/tp7-calendar.md`
+- `docs/guides/examples/tp7-puzzle.md`
+- `docs/guides/examples/tp7-mouse-dialog.md`
 - `docs/guides/a11y-framework.md`
 
 ---
@@ -199,5 +248,7 @@ dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Ms
 dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Tutorial"
 dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Videomode"
 dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Wave3"
+dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Tp7"
+dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Wave5Functional"
 dotnet test tests/TuiVision.Examples.SmokeTests/
 ```

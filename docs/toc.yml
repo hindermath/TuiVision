@@ -70,3 +70,23 @@
           href: guides/examples/eterm.md
         - name: XTerm
           href: guides/examples/xterm.md
+        - name: TP7 Demo
+          href: guides/examples/tp7-demo.md
+        - name: TP7 Edit
+          href: guides/examples/tp7-edit.md
+        - name: TP7 Help
+          href: guides/examples/tp7-help.md
+        - name: TP7 Resource Demo
+          href: guides/examples/tp7-resource-demo.md
+        - name: TP7 Resource Generator
+          href: guides/examples/tp7-resource-generator.md
+        - name: TP7 ASCII Table
+          href: guides/examples/tp7-ascii-table.md
+        - name: TP7 Calculator
+          href: guides/examples/tp7-calculator.md
+        - name: TP7 Calendar
+          href: guides/examples/tp7-calendar.md
+        - name: TP7 Puzzle
+          href: guides/examples/tp7-puzzle.md
+        - name: TP7 Mouse Dialog
+          href: guides/examples/tp7-mouse-dialog.md

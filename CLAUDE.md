@@ -307,10 +307,10 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - Wave 5 is `Eligible`; the explicit user instruction reserves Feature 032 as its first functional stage. Wave 6 is only `ConditionallyReady` and still requires both Wave-5 stages plus review of the actual delta.
 
 ### 032-wave5-tp7-functional-porting
-- Binding intake: `Lastenheft_17_Wave5-TP7-Functional-Porting.md`; create exactly branch `032-wave5-tp7-functional-porting`.
-- Scope is Wave-5 stage 1: assign all 15 read-only `TVDEMOS/*.PAS` sources one primary role and deliver functional ports plus real app-loop, state, view, buffer/cell, keyboard, A11Y, guide, and evidence proof for `W5-001` through `W5-006`.
-- Use the existing framework as the baseline. Do not hide a shared defect in local example code; a material contradiction to Feature 031 becomes `FollowUpHardening`.
-- Do not start the showcase stage, Feature 033, Wave 6, or the post-Wave-6 portfolio audit. The later showcase intake is derived from the delivered 032 delta matrix.
+- Current implementation candidate: all 15 read-only `TVDEMOS/*.PAS` sources have one role, all six consumers use the existing framework, and ten `Tp7*` projects provide normal plus controlled-smoke entry points.
+- Primary proof covers calculator, central apps, resources, deterministic domain state, mouse capability/fallback, and exact 15/6/10/10 traceability through real app loops, state, view, and rendered cells.
+- File, resource, help, generator, and mouse boundaries remain controlled; no host state, arbitrary user data, dependency, historical source, or broad framework behavior is changed.
+- `Lastenheft_18_Wave5-TP7-Showcase-Remediation.md` is derived from the ten concrete Stage-2 deltas and becomes the next intake only after Feature 032 merges. Feature 033 and Wave 6 are not started.
 
 
 ### Autonomous Red-Proof Completeness
@@ -381,6 +381,8 @@ When a dedicated feature branch has implemented the requirements of a Lastenheft
 - repository-owned Feature-029 JSON and Markdown; external Terminal.GUI checkout remains untracked under a temporary directory (029-tv203-freevision-terminalgui-conformance-audit)
 - C# 14 / .NET 10 for test-only validation; JSON and Markdown for evidence + Existing BCL `System.Text.Json`, MSTest 4.0.1, existing repository scripts and workflows; no new package (031-combined-conformance-closure)
 - Source-controlled closed JSON and Markdown evidence; temporary external checkouts under `/tmp` only (031-combined-conformance-closure)
+- C# 14 / .NET 10 + Existing TuiVision.Core, TuiVision.Controls, TuiVision.Serialization, TuiVision.Compatibility, TuiVision.Drivers.Console, MSTest 4.0.1 and BCL System.Text.Json; no new package (032-wave5-tp7-functional-porting)
+- Embedded UTF-8 fixtures, controlled test-temporary files, existing THelpFile and TResourceFile; no database or service (032-wave5-tp7-functional-porting)
 
 ### 007-port-wave1-examples
 - Current status: Wave 1 delivered (2026-03-28). `desklogo`, `msgcls`, `tutorial` (16 steps), `videomode` are ported, smoke-tested, and guide-documented.
@@ -639,13 +641,13 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 <!-- SPECKIT START -->
 Feature 031 is complete; follow
 `specs/031-combined-conformance-closure/delivery-closeout.md` for its final
-evidence. The next authorized intake is
-`Lastenheft_17_Wave5-TP7-Functional-Porting.md` on exactly
-`032-wave5-tp7-functional-porting`. Feature 032 is the first of two Wave-5
-stages and delivers functional TP7 ports plus real app-loop, state, view, and
-buffer/cell proof. The later showcase intake is derived from the actual 032
-delta and is not created in advance. Wave 6 remains `ConditionallyReady` until
-both Wave-5 stages and the actual delta review complete.
+evidence. Feature 032 now supplies the functional Wave-5 candidate with 15
+source roles, six consumer decisions, ten runnable `Tp7*` examples, and exact
+state/view/cell plus 15/6/10/10 matrix proof. After Feature 032 merges, the
+next authorized intake is
+`Lastenheft_18_Wave5-TP7-Showcase-Remediation.md` on Feature 033. Feature 033
+is not started. Wave 6 remains `ConditionallyReady` until both Wave-5 stages
+and a review of the actual showcase delta complete.
 Lastenheft 15 reserves a read-only example-portfolio audit after the complete
 Wave-6 closeout; it has no feature number and does not start before then.
 <!-- SPECKIT END -->
