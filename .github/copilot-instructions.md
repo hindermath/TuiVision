@@ -298,7 +298,7 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - All `C001`-`C048`, 16 domains, 25 pinned sources, and 13 Wave consumer groups are covered. No `C049+`, `CandidateFinding`, or `ProductDecision` was admitted.
 - The audit changes no runtime, API, dependency, example, historical, consumer, Free Vision, or Terminal.GUI source. It hands 48 `TGO###` observations to Feature 030 and creates no hardening or closure Lastenheft itself.
 - Feature 030 completed the combined TG/MB audit locally; Feature 031 is the sole next intake after merge, and Wave 5 plus Wave 6 remain blocked through its independent closure.
-- After every autonomous run, promote only reproducible provider-neutral preset learning through a Home-Baseline patch release and exact tag-ZIP adoption before the next run; record `NoPromotion` without an empty branch or PR. Open one consolidated upstream preset issue only immediately before Wave 5.
+- After every autonomous run, promote only reproducible provider-neutral preset learning through a Home-Baseline patch release and exact tag-ZIP adoption before the next run; record `NoPromotion` without an empty branch or PR. The consolidated pre-Wave-5 catalog update is submitted as `github/spec-kit#3569`; its external processing does not grant authority and does not indefinitely block the already installed v0.2.2 field run.
 
 ### 030-tv203-magiblot-evolution-audit
 - Current implementation status: the read-only audit data and targeted validator are locally complete; final repository, documentation, coverage, remote review, and delivery gates remain.
@@ -312,8 +312,13 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Current implementation status: the evidence-only independent closure is complete; final evidence is in `specs/031-combined-conformance-closure/delivery-closeout.md`.
 - Exactly 48 contracts, 13 consumers, 48 TGO and 48 MB observations, 96 dispositions, all accepted source pins and hashes, and the closed `F001`-`F013` set are revalidated.
 - Product runtime, public APIs, dependencies, packages, projects, examples, consumers, historical sources, and external sources remain unchanged.
-- Wave 5 is `Eligible` but not started. Wave 6 is only `ConditionallyReady` and still requires completed Wave 5 plus review of its actual delta.
-- No Feature 032 exists. A new explicit user instruction is required before the next autonomous run.
+- Wave 5 is `Eligible`; the explicit user instruction reserves Feature 032 as its first functional stage. Wave 6 is only `ConditionallyReady` and still requires both Wave-5 stages plus review of the actual delta.
+
+### 032-wave5-tp7-functional-porting
+- Binding intake: `Lastenheft_17_Wave5-TP7-Functional-Porting.md`; create exactly branch `032-wave5-tp7-functional-porting`.
+- Scope is Wave-5 stage 1: assign all 15 read-only `TVDEMOS/*.PAS` sources one primary role and deliver functional ports plus real app-loop, state, view, buffer/cell, keyboard, A11Y, guide, and evidence proof for `W5-001` through `W5-006`.
+- Use the existing framework as the baseline. Do not hide a shared defect in local example code; a material contradiction to Feature 031 becomes `FollowUpHardening`.
+- Do not start the showcase stage, Feature 033, Wave 6, or the post-Wave-6 portfolio audit. The later showcase intake is derived from the delivered 032 delta matrix.
 
 
 ### Autonomous Red-Proof Completeness
@@ -587,10 +592,13 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 <!-- SPECKIT START -->
 Feature 031 is complete; follow
 `specs/031-combined-conformance-closure/delivery-closeout.md` for its final
-evidence. Wave 5 is `Eligible` but has not started. Wave 6 is only
-`ConditionallyReady` and still requires completed Wave 5 plus review of its
-actual delta. No Feature 032 exists. Start no new autonomous run without a new
-explicit user instruction.
+evidence. The next authorized intake is
+`Lastenheft_17_Wave5-TP7-Functional-Porting.md` on exactly
+`032-wave5-tp7-functional-porting`. Feature 032 is the first of two Wave-5
+stages and delivers functional TP7 ports plus real app-loop, state, view, and
+buffer/cell proof. The later showcase intake is derived from the actual 032
+delta and is not created in advance. Wave 6 remains `ConditionallyReady` until
+both Wave-5 stages and the actual delta review complete.
 Lastenheft 15 reserves a read-only example-portfolio audit after the complete
 Wave-6 closeout; it has no feature number and does not start before then.
 <!-- SPECKIT END -->

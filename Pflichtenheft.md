@@ -269,7 +269,7 @@ Statuscheckliste Beispielwellen:
 - [x] **Revision-2-Abschluss und moderne Konformitätsrevisionen**
   Reihenfolgehinweis: Features 025 und 026 haben die 13 Findings aus `TVDEMOS/` und `TVFM/` geschlossen. Features 028 bis 030 revalidieren die Schließung und ergänzen Terminal.GUI v1.9.0 sowie den gepinnten C++-Modernisierungszeugen `magiblot/tvision`. Feature 031 schließt 48 Verträge, 13 Consumer-Gruppen, 96 Dispositionen und alle Delivery-Gates unabhängig; Wave 5 ist `Eligible`, Wave 6 nur `ConditionallyReady`.
 - [ ] **Welle 5 - Turbo-Pascal-Demos aus TP7 (`TVDEMOS/`)**
-  Reihenfolgehinweis: nach dem gemergten Feature-031-Closeout fachlich `Eligible`, aber noch nicht gestartet; ein neuer expliziter Auftrag muss Scope, Nummer und Delivery-Modus festlegen.
+  Reihenfolgehinweis: nach dem gemergten Feature-031-Closeout fachlich `Eligible`. `Lastenheft_17_Wave5-TP7-Functional-Porting.md` reserviert Feature 032 als erste von zwei Stufen fuer funktionale Portierung und Real-Path-Proof. Die Showcase-Stufe entsteht erst aus der tatsaechlichen 032-Delta-Matrix.
 - [ ] **Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`**
   Reihenfolgehinweis: zuletzt; setzt den gemeinsamen Terminal.GUI-/magiblot-gestützten Closure-Lauf, die tatsächlichen Erkenntnisse aus Welle 5, eine erneute Delta-Prüfung, Datei-/Verzeichnisdialoge, Drag/Drop-Analoga und eine robuste Event-/Fensterintegration voraus.
 - [ ] **Post-Wave-6 Example Portfolio Conformance Audit**
@@ -704,11 +704,13 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.6g` = Unabhängiger gemeinsamer Konformitätsabschluss — ✓ ABGESCHLOSSEN (Feature 031, Lastenheft 16, Feature-Merge `3d64a36`); Wave 5 `Eligible`, Wave 6 `ConditionallyReady`
    - Post-Wave-6 = Example-Portfolio-Konformitätsaudit — VERBINDLICH VORGEMERKT (Lastenheft 15); Feature-Nummer erst nach Wave-6-Closeout
 
->>> NÄCHSTER FACHLICHER SCHRITT <<< Wave 5 ist nach Feature 031 `Eligible`,
-wurde aber nicht gestartet. Der nächste autonome Spec-Kit-Lauf benötigt einen
-neuen expliziten Benutzerauftrag und darf Wave 6 noch nicht freigeben. Wave 6
-bleibt `ConditionallyReady`, bis Wave 5 vollständig geliefert und ihr
-tatsächlicher Delta erneut geprüft ist. Feature 032 wurde nicht angelegt.
+>>> NÄCHSTER FACHLICHER SCHRITT <<< Feature 032 aus
+`Lastenheft_17_Wave5-TP7-Functional-Porting.md` startet die erste
+Wave-5-Stufe mit funktionaler TP7-Portierung und Real-Path-Proof. Die spaetere
+Showcase-Stufe entsteht erst aus der tatsaechlichen 032-Delta-Matrix. Wave 6
+bleibt `ConditionallyReady`, bis beide Wave-5-Stufen vollständig geliefert
+und ihr tatsächlicher Delta erneut geprüft sind. Feature 032 ist reserviert,
+aber in diesem Vorbereitungsschritt noch nicht angelegt.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.

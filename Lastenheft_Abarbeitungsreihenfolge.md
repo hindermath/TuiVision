@@ -53,26 +53,30 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 25 | `Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.029-tv203-freevision-terminalgui-conformance-audit.md` | Framework-Konformitätsaudit | archiviert oder abgeschlossen / archived or completed |
 | 26 | `Lastenheft_14_TV203-Magiblot-Evolution-Audit.030-tv203-magiblot-evolution-audit.md` | Framework-Evolutionsaudit | archiviert oder abgeschlossen / archived or completed |
 | 27 | `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md` | Gemeinsamer Pre-Wave-5-/Wave-6-Abschluss | archiviert oder abgeschlossen / archived or completed |
-| 28 | `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` | Beispielportfolio-Konformitätsaudit | verbindlich nach Wave-6-Closeout, Feature-Nummer später / binding after Wave-6 closeout, feature number deferred |
+| 28 | `Lastenheft_17_Wave5-TP7-Functional-Porting.md` | Wave-5 TP7 Functional Porting | nächster Intake, Feature 032 / next intake, Feature 032 |
+| 29 | `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` | Beispielportfolio-Konformitätsaudit | verbindlich nach Wave-6-Closeout, Feature-Nummer später / binding after Wave-6 closeout, feature number deferred |
 <!-- secure-development-hardening-order:end -->
 
 ## Fortsetzungsmarke / Resume Marker
 
-> **NÄCHSTER FACHLICHER INTAKE: Welle 5 ist `Eligible`, aber nicht gestartet; Feature-Nummer und Lastenheft werden erst durch einen neuen expliziten Auftrag festgelegt.**
+> **NÄCHSTER FACHLICHER INTAKE: Feature 032 aus `Lastenheft_17_Wave5-TP7-Functional-Porting.md`; Welle 5 startet zweistufig mit funktionaler Portierung und Real-Path-Proof.**
 >
-> **NEXT DOMAIN INTAKE: Wave 5 is `Eligible` but not started; its feature number and intake are assigned only by a new explicit instruction.**
+> **NEXT DOMAIN INTAKE: Feature 032 from `Lastenheft_17_Wave5-TP7-Functional-Porting.md`; Wave 5 starts with functional porting and real-path proof in the first of two stages.**
 
 Features 025, 026, 028, 029, 030 und 031 sind abgeschlossen. Der unabhängige
 Closure bestätigt 48 Verträge, 13 Consumer-Gruppen, 96 vollständige
 Nicht-Finding-Dispositionen, null `CF*`-Findings und null Hardening-Intakes.
-Wave 5 ist `Eligible`, wird aber nicht automatisch gestartet. Wave 6 bleibt
+Wave 5 ist `Eligible`. Der explizite Auftrag vom 2026-07-16 reserviert
+Feature 032 fuer die funktionale TP7-Portierung. Die spaetere Showcase-Stufe
+wird erst aus der tatsaechlichen 032-Delta-Matrix erstellt. Wave 6 bleibt
 `ConditionallyReady`.
 
 *Features 025, 026, 028, 029, 030, and 031 are complete. The independent
 closure confirms 48 contracts, 13 consumer groups, 96 complete non-finding
 dispositions, zero CF findings, and zero hardening intakes. Wave 5 is
-eligible but is not started automatically. Wave 6 remains conditionally
-ready.*
+eligible. The explicit 2026-07-16 instruction reserves Feature 032 for the
+functional TP7 port. The later showcase stage is created only from the actual
+032 delta matrix. Wave 6 remains conditionally ready.*
 
 ## Verbindliche Folge vor Wave 5 und Wave 6 / Binding Sequence Before Wave 5 and Wave 6
 
@@ -94,9 +98,12 @@ ready.*
 6. `031-combined-conformance-closure` mit Lastenheft 16 ist vollständig
    gemergt. Sein kausaler Closeout setzt Wave 5 auf `Eligible` und Wave 6 nur
    auf `ConditionallyReady`.
-7. Wave 5 beginnt nur nach einem neuen expliziten Auftrag. Wave 6 folgt erst
-   nach Wave 5 und einer erneuten Prüfung der tatsächlichen Wave-5-Deltas.
-8. Nach dem vollständig gemergten Wave-6-Closeout folgt das in Lastenheft 15
+7. `Lastenheft_17_Wave5-TP7-Functional-Porting.md` reserviert Feature 032 als
+   erste Wave-5-Stufe. Sie liefert funktionale Ports und Real-Path-Proof. Die
+   Showcase-Stufe wird erst danach aus den tatsaechlichen Deltas erstellt.
+8. Wave 6 folgt erst nach beiden Wave-5-Stufen und einer erneuten Pruefung der
+   tatsaechlichen Wave-5-Deltas.
+9. Nach dem vollständig gemergten Wave-6-Closeout folgt das in Lastenheft 15
    vorgemerkte Example-Portfolio-Audit. Seine Feature-Nummer wird erst dann
    aus der nächsten freien Nummer gebildet; es erzeugt nur aus realen Findings
    nicht leere Remediation-Lastenhefte und danach einen unabhängigen Closure.
@@ -104,8 +111,10 @@ ready.*
 *Revision 2 routed nine findings to Feature 025 and four to Feature 026; both
 are complete. Feature 028 closed that gate, Feature 029 completed the pinned
 Terminal.GUI comparison, and Feature 030 completed the magiblot comparison
-with zero canonical findings. Feature 031 is complete. Wave 5 is eligible but
-not started; Wave 6 additionally requires a post-Wave-5 delta review.*
+with zero canonical findings. Feature 031 is complete. Feature 032 is the
+first Wave-5 stage and delivers functional TP7 ports plus real-path proof. The
+later showcase stage is derived from its actual delta. Wave 6 additionally
+requires both stages and a post-Wave-5 delta review.*
 
 ## Verbindlicher Folgeaudit nach Wave 6 / Binding Post-Wave-6 Audit
 
@@ -116,9 +125,9 @@ nicht vollständig gemergt sind.
 
 Der spätere Audit prüft alle 25 Originalbeispiele, alle tatsächlich gelieferten
 Wave-5-/Wave-6-Beispiele und `A11yFramework` als projektspezifische
-Vergleichskontrolle. Der nächste fachliche Schritt ist Wave 5, jedoch erst nach
-einem neuen expliziten Benutzerauftrag.
+Vergleichskontrolle. Der naechste fachliche Schritt ist Feature 032 aus
+Lastenheft 17.
 
 *Lastenheft 15 reserves one read-only portfolio audit after the complete
-Wave-6 closeout. It does not assign a feature number, start a run, or change
-the current Wave-5 eligibility marker.*
+Wave-6 closeout. It does not assign a feature number or start a run. The
+current next intake is Feature 032 from Lastenheft 17.*
