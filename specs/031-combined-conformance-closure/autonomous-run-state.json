@@ -83,7 +83,7 @@
     },
     {
       "path": "tests/TuiVision.Drivers.Tests/CombinedConformanceClosureEvidenceTests.cs",
-      "sha256": "36787da46eeb8b209531cba60207380256077b147583206bad0d34fa6bf58d7b"
+      "sha256": "1a71ed1fd4f0c03d9195e662608f9d16516b2a6bee5849a5ac37250f82041e94"
     }
   ],
   "tasks": {
@@ -92,17 +92,17 @@
     "completed": 154,
     "total": 172
   },
-  "lastPassingGate": "FeaturePullRequestCreated",
-  "nextExactAction": "Push the final PR-identity candidate, map pull-request-context checks to the reviewed head, and validate temporary exact-head evidence.",
+  "lastPassingGate": "WindowsCiRemediationLocal",
+  "nextExactAction": "Commit and push the bounded canonical-text hash fix, then require a fully green exact-head pull-request matrix before gate mapping.",
   "lastOperation": {
-    "kind": "Publish",
+    "kind": "Review",
     "state": "Completed",
-    "summary": "Completed T001-T154: initial candidate 63dac1c91c5ae7cd71cf056700ece65d363b7fa9 was pushed, PR #90 was created, and the final PR-identity candidate is prepared."
+    "summary": "The first Windows matrix exposed CRLF-sensitive test-only hashing. Canonical LF hashing and a direct LF/CRLF parity test pass locally 9/9 at build 310; remote exact-head revalidation remains required."
   },
   "stop": {
     "reason": "N/A",
     "requestedAt": "N/A",
     "safeBoundary": "N/A"
   },
-  "updatedAt": "2026-07-16T18:11:54Z"
+  "updatedAt": "2026-07-16T18:16:27Z"
 }

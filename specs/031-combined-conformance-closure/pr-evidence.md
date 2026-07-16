@@ -194,13 +194,23 @@ manual build-counter value will be recorded. One increment covers one command.
 | 306 | Same complete targeted validator filter after the two bounded fixes | Fail: 44/45 | Consumer rows preserved `followUpBoundary` but lacked the general closure metadata alias `followUp`; the value is derived without changing the accepted boundary |
 | 307 | Same complete targeted validator filter after metadata reconciliation | Pass: 45/45 | Features 024, 028, 029, 030, and 031 validate together on the archived-input candidate |
 
+### Windows CI Remediation
+
+| Evidence | Result | Boundary |
+|---|---|---|
+| PR run `29522997636`, Windows job `87704332104` | Fail: 1/782 while Ubuntu and macOS passed | `Test_AcceptedInputHashesAreExact` compared checkout bytes; Windows CRLF conversion changed the archived Markdown byte hash without changing canonical repository text |
+| Bounded test-only fix | Pass locally | Accepted repository text is normalized to LF before SHA-256; a new direct test proves identical LF and CRLF hashes |
+| Build 310 targeted Release validation | Pass: 9/9 | All `CombinedConformanceClosureEvidenceTests`, including the line-ending parity proof, pass |
+| `dotnet format TuiVision.sln --verify-no-changes --no-restore` | Pass | No formatting drift after the bounded test-only fix |
+| Exact-head Windows rerun | Open | A new reviewed head must pass Ubuntu, macOS, and Windows before gate mapping |
+
 ## Remote Delivery
 
 | Item | Result | Evidence |
 |---|---|---|
 | Push | Pass for initial candidate | Branch `031-combined-conformance-closure`; remote head `63dac1c91c5ae7cd71cf056700ece65d363b7fa9` verified exactly |
 | Pull request | Pass | [PR #90](https://github.com/hindermath/TuiVision/pull/90), non-empty against `main` |
-| Required checks | Open | Exact workflow/job evidence |
+| Required checks | Remediation running | First final-head matrix exposed one Windows-only canonical-text hash defect; bounded test-only fix awaits a new exact-head matrix |
 | Acceptance-gate mapping | Open | Temporary exact-head evidence |
 | Review threads | Open | GraphQL thread state |
 | Unavailable reviews | None yet | Provider evidence if applicable |

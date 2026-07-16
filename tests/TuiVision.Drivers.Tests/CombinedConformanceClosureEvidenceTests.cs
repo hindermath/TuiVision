@@ -2,6 +2,7 @@
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
 using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
@@ -78,6 +79,20 @@ public sealed class CombinedConformanceClosureEvidenceTests
             Assert.IsNotEmpty(RequiredString(input, "role"));
             Assert.IsNotEmpty(RequiredString(input, "reevaluationTrigger"));
         }
+    }
+
+    /// <summary>
+    /// Beweist identische Repository-Text-Hashes für LF- und CRLF-Checkouts.
+    ///
+    /// Proves identical repository-text hashes for LF and CRLF checkouts.
+    /// </summary>
+    [TestMethod]
+    public void Test_CanonicalRepositoryTextHashIgnoresCheckoutLineEndings()
+    {
+        string lfHash = ComputeCanonicalTextHash("Zeile 1\nLine 2\n");
+        string crlfHash = ComputeCanonicalTextHash("Zeile 1\r\nLine 2\r\n");
+
+        Assert.AreEqual(lfHash, crlfHash);
     }
 
     /// <summary>
@@ -624,8 +639,17 @@ public sealed class CombinedConformanceClosureEvidenceTests
     {
         string path = Path.Combine(repoRoot, relativePath);
         Assert.IsTrue(File.Exists(path), $"Accepted input is missing: {relativePath}");
-        string actualHash = Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
+        string actualHash = ComputeCanonicalTextHash(File.ReadAllText(path));
         Assert.AreEqual(expectedHash, actualHash, $"Accepted input hash drift: {relativePath}");
+    }
+
+    private static string ComputeCanonicalTextHash(string content)
+    {
+        // Git darf Text je nach Runner mit CRLF auschecken; die Evidence bindet
+        // Git may check out text as CRLF per runner; evidence binds canonical LF content.
+        string canonicalContent = content.Replace("\r\n", "\n", StringComparison.Ordinal)
+            .Replace("\r", "\n", StringComparison.Ordinal);
+        return Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(canonicalContent))).ToLowerInvariant();
     }
 
     private static void AssertProofReferences(string references)
