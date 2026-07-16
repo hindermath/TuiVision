@@ -168,9 +168,9 @@
 - [X] T133 Align `Directory.Build.props` to the current Feature-030 branch version
 - [X] T134 Stage only the intended candidate and inventory every path
 - [X] T135 Run `git diff --cached --check` and compare staged/unstaged/untracked status
-- [ ] T136 Commit the reviewed local candidate, capture its hash in temporary operation evidence, and reserve terminal proof for `delivery-closeout.md`
-- [ ] T137 Push the exact Feature-030 branch, verify the remote head, and reserve terminal proof for `delivery-closeout.md`
-- [ ] T138 Create the Feature-030 PR, capture its stable identity in temporary operation evidence, and reserve terminal proof for `delivery-closeout.md`
+- [X] T136 Commit the reviewed local candidate, capture its hash in temporary operation evidence, and reserve terminal proof for `delivery-closeout.md`
+- [X] T137 Push the exact Feature-030 branch, verify the remote head, and reserve terminal proof for `delivery-closeout.md`
+- [X] T138 Create the Feature-030 PR, capture its stable identity in temporary operation evidence, and reserve terminal proof for `delivery-closeout.md`
 - [ ] T139 Reconcile stable PR identity into `pr-evidence.md`, align version, stage/check, commit, and push the final review candidate
 - [ ] T140 Poll required PR checks, map actual workflow/job/platform/commands, and reserve terminal proof for `delivery-closeout.md`
 - [ ] T141 Inspect Claude, Copilot, and GraphQL review state and reserve terminal proof for `delivery-closeout.md`

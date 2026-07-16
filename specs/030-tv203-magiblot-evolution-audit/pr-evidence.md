@@ -40,7 +40,7 @@
 | Analyze | 2 | Pass | bounded Plan/Contract/Tasks remediation; implementation-readiness checklist; zero Critical/High/Medium remains | Begin implementation |
 | Implement | 1 | Pass | accepted audit datasets, validator, ordering, archive, guidance, and Feature-031 intake | None |
 | Validate | 1 | Pass locally | commands and metrics below | Re-run the targeted validator after final evidence normalization |
-| Deliver | 1 | Ready | local candidate and exact-head gate requirements | Commit, push, PR, review, merge, and causal closeout |
+| Deliver | 1 | Active | PR #88 and exact-head gate requirements | Final candidate push, review, merge, and causal closeout |
 
 ## Decisions and Follow-ups
 
@@ -216,8 +216,8 @@ invocation.
 
 | Item | Result | Evidence |
 |---|---|---|
-| Push | Ready | Feature branch has a validated local candidate |
-| Pull request | Ready | Stable identity is added after creation |
+| Push | Pass | Initial candidate `b997debecf6d22be8a86dfcf028e59eeb10e7b01` equals the remote branch head |
+| Pull request | Pass | [#88](https://github.com/hindermath/TuiVision/pull/88), `feat: audit TuiVision against magiblot/tvision` |
 | Required checks | TrackedExternally | Exact workflow/job/platform/command mapping goes to `delivery-closeout.md` |
 | Acceptance-gate mapping | TrackedExternally | Temporary exact-head provider evidence |
 | Review threads | TrackedExternally | GraphQL thread count |
