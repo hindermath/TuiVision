@@ -277,7 +277,7 @@ Statuscheckliste Beispielwellen:
 - [x] **Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`, funktionale Stufe**
   Reihenfolgehinweis: Feature 035 liefert den kontrollierten Root-, Listen-, Preview-, Such- und Dateioperationsvertrag mit realen App-Loop-Proofs über PR #101 und Merge `52f77fa`.
 - [x] **Welle 6 - TVFM Showcase-Stufe**
-  Reihenfolgehinweis: Feature 036 ist lokal vollständig implementiert und validiert; Remote-Delivery bleibt ausstehend. Sichtbare Menüs, fokussierbare Controls, sichere Dialoge, StatusLine, F1-Description, Tastatur, begrenztes Drag-/Drop und constrained Layout verwenden die unveränderten Feature-035-Dateisystemverträge.
+  Reihenfolgehinweis: Feature 036 ist über PR #104, Head `a0d5062` und Merge `559bffb` vollständig geliefert. Sichtbare Menüs, fokussierbare Controls, sichere Dialoge, StatusLine, F1-Description, Tastatur, begrenztes Drag-/Drop und constrained Layout verwenden die unveränderten Feature-035-Dateisystemverträge.
 - [ ] **Post-Wave-6 Example Portfolio Conformance Audit**
   Reihenfolgehinweis: nach Feature 036 und dem vollständig gemergten unabhängigen Wave-6-Closeout gemäß `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md`; prüft alle 25 Originalbeispiele, alle tatsächlich gelieferten Wave-5-/Wave-6-Beispiele und `A11yFramework` als Kontrollbeispiel, ohne im Audit selbst Runtime- oder Beispieländerungen vorzunehmen.
 - [ ] Beispiel-Guides unter `docs/guides/examples/`
@@ -376,8 +376,8 @@ Feature 035 hat die funktionale Stage 1 als kontrollierten
 Stage 2 und verwendet die bewiesenen Funktionsverträge erneut. Sechs
 Menügruppen, fokussierbare Dialoge, Tastaturpfade, StatusLine, Description,
 begrenzte Mausparität und constrained-layout Proof sind lokal geschlossen.
-Ein unabhängiger Wave-6-Abschluss bleibt nach der Remote-Delivery
-Voraussetzung für den Portfolio-Audit.
+Feature-PR #104 und Merge `559bffb` liefern diese Stage 2 vollständig. Ein
+unabhängiger Wave-6-Abschluss bleibt Voraussetzung für den Portfolio-Audit.
 
 Checkliste Welle 6:
 - [x] `TVFM.PAS` - Hauptanwendung des Dateimanagers
@@ -720,7 +720,7 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.7b` = Wave-5 TP7 Showcase Remediation — ✓ ABGESCHLOSSEN (Feature 033, Lastenheft 18, PR #96, Merge `d476e63`); tatsächliche kombinierte Delta-Prüfung bleibt Voraussetzung für Wave 6
    - `3.7c` = Wave-5 Combined Delta Closure — ✓ ABGESCHLOSSEN (Feature 034, Lastenheft 19, PR #99, Merge `7fb52e2`); Wave 5 `Closed`, Wave 6 `EligibleForIntake`
    - `3.8a` = Wave-6 TVFM Functional Porting — ✓ FUNKTIONAL GELIEFERT (Feature 035, Lastenheft 20, PR #101, Merge `52f77fa`); Stage-2-Showcase-Delta separat abzuleiten
-   - `3.8b` = Wave-6 TVFM Showcase Remediation — ✓ LOKAL IMPLEMENTIERT UND VALIDIERUNG LÄUFT (Feature 036, Lastenheft 21); Remote-Delivery ausstehend
+   - `3.8b` = Wave-6 TVFM Showcase Remediation — ✓ VOLLSTÄNDIG GELIEFERT (Feature 036, Lastenheft 21, PR #104, Head `a0d5062`, Merge `559bffb`)
    - Post-Wave-6 = Example-Portfolio-Konformitätsaudit — VERBINDLICH VORGEMERKT (Lastenheft 15); Feature-Nummer erst nach Feature 036 und unabhängigem Wave-6-Closeout
 
 >>> FORTSETZUNGSMARKE <<< Nach der vollständig gemergten Feature-036-Delivery

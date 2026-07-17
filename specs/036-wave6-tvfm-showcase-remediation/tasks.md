@@ -281,23 +281,23 @@ behavioral, documentation, security, and state gates.
 **Purpose**: Deliver only the reviewed candidate and finish on clean,
 synchronized `main`.
 
-- [ ] T171 Commit the exact Feature-036 candidate and record commit identity without self-invalidating evidence in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
-- [ ] T172 Push `036-wave6-tvfm-showcase-remediation`, create a non-empty feature PR, and record both identities in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
-- [ ] T173 Identify PR-context required checks and record duplicate push runs without unsafe cancellation in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
-- [ ] T174 Monitor Ubuntu, macOS, Windows, docs/A11Y, supply-chain, parity, and full-test gates to terminal state and record results in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
-- [ ] T175 Map every Applicable gate to the actual workflow, job, platform, and executed command in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
-- [ ] T176 Validate temporary exact-head provider evidence against `specs/036-wave6-tvfm-showcase-remediation/autonomous-gate-requirements.json` and record the result in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
-- [ ] T177 Inspect Copilot, Claude, PR comments, and GraphQL review threads, resolve every actionable finding, and record review state in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
-- [ ] T178 Re-run affected validation after any review correction and record refreshed exact-head evidence in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
-- [ ] T179 Use the narrow admin bypass only if all technical gates are green and Human Approval is the sole open rule, recording the decision in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
-- [ ] T180 Merge the feature PR with a merge commit, delete the remote feature branch, and record externally verified merge facts for `specs/036-wave6-tvfm-showcase-remediation/delivery-closeout.md`
-- [ ] T181 If truthful post-merge facts require it, create one causal evidence-only closeout PR containing `delivery-closeout.md`, completed `retrospective.md`, final task/state facts, and no recursive self-claim
-- [ ] T182 Switch locally to `main`, fetch/prune, fast-forward pull, and record the external synchronization proof in `specs/036-wave6-tvfm-showcase-remediation/delivery-closeout.md`
-- [ ] T183 Prove a clean working tree and `HEAD == origin/main` against the merged feature or closeout head
-- [ ] T184 Verify the merged `specs/036-wave6-tvfm-showcase-remediation/retrospective.md` contains the established promotion classification
-- [ ] T185 Verify a reproducible provider-neutral defect has one bounded `PresetFollowUp`; otherwise verify `NoPromotion` without an empty branch or PR
-- [ ] T186 Verify the merged run state is `Retrospective`, `Completed`, `187/187`, and `nextExactAction: N/A`
-- [ ] T187 Report final 1/10 decisions, validation, PR/merge, follow-ups, and main-sync proof without starting Feature 037
+- [X] T171 Commit the exact Feature-036 candidate and record commit identity without self-invalidating evidence in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
+- [X] T172 Push `036-wave6-tvfm-showcase-remediation`, create a non-empty feature PR, and record both identities in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
+- [X] T173 Identify PR-context required checks and record duplicate push runs without unsafe cancellation in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
+- [X] T174 Monitor Ubuntu, macOS, Windows, docs/A11Y, supply-chain, parity, and full-test gates to terminal state and record results in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
+- [X] T175 Map every Applicable gate to the actual workflow, job, platform, and executed command in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
+- [X] T176 Validate temporary exact-head provider evidence against `specs/036-wave6-tvfm-showcase-remediation/autonomous-gate-requirements.json` and record the result in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
+- [X] T177 Inspect Copilot, Claude, PR comments, and GraphQL review threads, resolve every actionable finding, and record review state in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
+- [X] T178 Re-run affected validation after any review correction and record refreshed exact-head evidence in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
+- [X] T179 Use the narrow admin bypass only if all technical gates are green and Human Approval is the sole open rule, recording the decision in `specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md`
+- [X] T180 Merge the feature PR with a merge commit, delete the remote feature branch, and record externally verified merge facts for `specs/036-wave6-tvfm-showcase-remediation/delivery-closeout.md`
+- [X] T181 If truthful post-merge facts require it, create one causal evidence-only closeout PR containing `delivery-closeout.md`, completed `retrospective.md`, final task/state facts, and no recursive self-claim
+- [X] T182 Switch locally to `main`, fetch/prune, fast-forward pull, and record the external synchronization proof in `specs/036-wave6-tvfm-showcase-remediation/delivery-closeout.md`
+- [X] T183 Prove a clean working tree and `HEAD == origin/main` against the merged feature or closeout head
+- [X] T184 Verify the merged `specs/036-wave6-tvfm-showcase-remediation/retrospective.md` contains the established promotion classification
+- [X] T185 Verify a reproducible provider-neutral defect has one bounded `PresetFollowUp`; otherwise verify `NoPromotion` without an empty branch or PR
+- [X] T186 Verify the merged run state is `Retrospective`, `Completed`, `187/187`, and `nextExactAction: N/A`
+- [X] T187 Report final 1/10 decisions, validation, PR/merge, follow-ups, and main-sync proof without starting Feature 037
 
 ## Dependencies and Execution Order
 

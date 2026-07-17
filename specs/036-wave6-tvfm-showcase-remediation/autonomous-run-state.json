@@ -5,9 +5,9 @@
   "branch": "036-wave6-tvfm-showcase-remediation",
   "deliveryMode": "MergeAndSync",
   "authorityRevalidationRequired": false,
-  "stage": "Review",
-  "status": "Active",
-  "checkpointCommit": "c34a65848dd1e06af7b998d43b92945aec6fb469",
+  "stage": "Retrospective",
+  "status": "Completed",
+  "checkpointCommit": "a0d506297c101104fd0e15911a7d21e1c5a21caa",
   "acceptedArtifacts": [
     {"path": "Lastenheft_21_Wave6-TVFM-Showcase-Remediation.036-wave6-tvfm-showcase-remediation.md", "sha256": "bc16dc3d32f03bf2c12fa5c33105adaf70341e88c62b6afd14fa7adb893fa473"},
     {"path": "specs/036-wave6-tvfm-showcase-remediation/spec.md", "sha256": "ea7c6fab54cb2eda7a60262ac77cdb9025aabdaab6ceebf18f9fc49d9492da45"},
@@ -28,21 +28,21 @@
   ],
   "tasks": {
     "path": "specs/036-wave6-tvfm-showcase-remediation/tasks.md",
-    "sha256": "8b94a484da823fbb3d7a8436b5245fb9c2df6bf17cfc6e4902079e6c0fb42f38",
-    "completed": 170,
+    "sha256": "4928cc01c96cfa8d84771e23f5e1e43a850438ea670b3ff0b439f8408bb4790f",
+    "completed": 187,
     "total": 187
   },
-  "lastPassingGate": "The actionable Windows CRLF hash finding is corrected test-only; 35/35 affected and 880/880 full Release tests pass locally.",
-  "nextExactAction": "Commit and push the platform-neutral hash correction, then require all PR checks and reviews on the new exact head.",
+  "lastPassingGate": "Feature PR #104 merged at head a0d5062 with 22 technical checks green, 12/12 exact-head requirements validated, zero actionable threads and causal closeout recorded.",
+  "nextExactAction": "N/A",
   "lastOperation": {
-    "kind": "Review",
+    "kind": "MergeAndSync",
     "state": "Completed",
-    "summary": "PR #104 exposed one Windows-only historical text hash mismatch; the bounded test validator correction and full local regression are green."
+    "summary": "Merged Feature 036 through PR #104, recorded non-recursive closeout evidence, classified retrospective as NoPromotion and left Feature 037, independent Wave-6 closure and portfolio audit unstarted."
   },
   "stop": {
     "reason": "N/A",
     "requestedAt": "N/A",
     "safeBoundary": "N/A"
   },
-  "updatedAt": "2026-07-17T19:09:26Z"
+  "updatedAt": "2026-07-17T19:21:35Z"
 }

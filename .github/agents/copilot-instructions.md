@@ -220,10 +220,10 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - Wave 5 is `Closed`. Feature 035 is delivered through PR #101, final head `207e807`, and merge `52f77fa`; it provides Wave-6 Stage 1.
 
 ### 036-wave6-tvfm-showcase-remediation
-- Feature 036 is active on `036-wave6-tvfm-showcase-remediation` from `Lastenheft_21_Wave6-TVFM-Showcase-Remediation.036-wave6-tvfm-showcase-remediation.md`.
-- Scope is limited to the one accepted Feature-035 `ShowcaseDelta`: visible menu/control access, safe focusable file-operation dialogs, bounded drag/drop intent, constrained layout, StatusLine, F1 Description, keyboard, A11Y, and real app-loop/view/cell proof for `Tp7FileManager`.
+- Feature 036 is fully delivered through PR #104, final head `a0d5062`, and merge `559bffb`.
+- The exact closure contains ten `W6S` showcase decisions, one `ShowcaseComplete` entry-point decision, and 24 validated read-only `TVFM/` source hashes. The Windows provider correction makes historical `.PAS`/`.BAT` text hashes checkout-neutral while preserving byte-exact resource hashes.
 - Feature-035 controlled-root, path, search, preview, viewer, one-shot intent, mutation, dependency, process, shell, host, and arbitrary-user-data boundaries remain unchanged. `TVFM/`, `TVDEMOS/`, and `tv203s/` stay read-only.
-- Feature 037, an independent Wave-6 closure, and the post-Wave-6 portfolio audit are not started by this intake.
+- The next action is to define the independent Wave-6 closure as a separate intake. Feature 037 and the post-Wave-6 portfolio audit have not started.
 
 ### Autonomous Red-Proof Completeness
 - Before the first red test batch, review imports, public XML docs, harness helpers, focus/ownership assertions, and linked-source assembly identity.
