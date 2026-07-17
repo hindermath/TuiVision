@@ -55,14 +55,15 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 27 | `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md` | Gemeinsamer Pre-Wave-5-/Wave-6-Abschluss | archiviert oder abgeschlossen / archived or completed |
 | 28 | `Lastenheft_17_Wave5-TP7-Functional-Porting.032-wave5-tp7-functional-porting.md` | Wave-5 TP7 Functional Porting | archiviert oder abgeschlossen / archived or completed |
 | 29 | `Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md` | Wave-5 TP7 Showcase Remediation | archiviert oder abgeschlossen / archived or completed |
-| 30 | `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` | Beispielportfolio-Konformitätsaudit | verbindlich nach Wave-6-Closeout, Feature-Nummer später / binding after Wave-6 closeout, feature number deferred |
+| 30 | `Lastenheft_19_Wave5-Combined-Delta-Closure.md` | Wave-5 Combined Delta Closure | nächster Intake, Feature 034 / next intake, Feature 034 |
+| 31 | `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` | Beispielportfolio-Konformitätsaudit | verbindlich nach Wave-6-Closeout, Feature-Nummer später / binding after Wave-6 closeout, feature number deferred |
 <!-- secure-development-hardening-order:end -->
 
 ## Fortsetzungsmarke / Resume Marker
 
-> **NÄCHSTER FACHLICHER SCHRITT: Nach dem vollständig gelieferten Feature 033 folgt eine separate Prüfung des tatsächlichen kombinierten Wave-5-Deltas; Welle 6 und Feature 034 bleiben bis dahin blockiert.**
+> **NÄCHSTER FACHLICHER INTAKE: Feature 034 aus `Lastenheft_19_Wave5-Combined-Delta-Closure.md` prüft den tatsächlichen kombinierten Wave-5-Delta read-only; Wave 6 bleibt bis zum belegten Abschluss blockiert.**
 >
-> **NEXT DOMAIN STEP: After the fully delivered Feature 033, separately review the actual combined Wave-5 delta; Wave 6 and Feature 034 remain blocked until then.**
+> **NEXT DOMAIN INTAKE: Feature 034 from `Lastenheft_19_Wave5-Combined-Delta-Closure.md` reviews the actual combined Wave-5 delta read-only; Wave 6 remains blocked until the evidenced closure.**
 
 Features 025, 026, 028, 029, 030 und 031 sind abgeschlossen. Der unabhängige
 Closure bestätigt 48 Verträge, 13 Consumer-Gruppen, 96 vollständige
@@ -70,8 +71,9 @@ Nicht-Finding-Dispositionen, null `CF*`-Findings und null Hardening-Intakes.
 Wave-5-Stage 1 ist als Feature 032 vollständig geliefert. Feature 033 ergänzt
 die zweite Stufe mit zehn sichtbaren Hauptkomponenten, echten Statuszeilen,
 per Tastatur erreichbaren Beschreibungen, begrenzten Layout-Proofs und
-synchronisierten Guides. Feature 033 ist vollständig gemergt; Wave 6 bleibt
-bis zur Prüfung des tatsächlichen kombinierten Wave-5-Deltas
+synchronisierten Guides. Feature 033 ist vollständig gemergt. Der explizite
+Auftrag reserviert Feature 034 für den read-only Combined-Delta-Closure aus
+Lastenheft 19. Wave 6 bleibt bis zu dessen belegtem Abschluss
 `ConditionallyReady` und blockiert.
 
 *Features 025, 026, 028, 029, 030, and 031 are complete. The independent
@@ -80,8 +82,9 @@ dispositions, zero CF findings, and zero hardening intakes. Wave 5 is
 eligible. Feature 032 supplies Stage 1. Feature 033 adds the complete Stage 2
 with ten visible main components, real status lines,
 keyboard-reachable descriptions, constrained-layout proof, and synchronized
-guides. Feature 033 is fully merged. Wave 6 remains conditionally ready and
-blocked until the actual combined Wave-5 delta is reviewed.*
+guides. Feature 033 is fully merged. The explicit instruction reserves
+Feature 034 for the read-only combined-delta closure from Lastenheft 19. Wave
+6 remains conditionally ready and blocked until that closure is evidenced.*
 
 ## Verbindliche Folge vor Wave 5 und Wave 6 / Binding Sequence Before Wave 5 and Wave 6
 
@@ -108,9 +111,13 @@ blocked until the actual combined Wave-5 delta is reviewed.*
    erzeugen `Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md`.
 8. Feature 033 liefert die zweite Wave-5-Stufe aus Lastenheft 18 und ist über
    PR #96 mit Merge `d476e63` vollständig abgeschlossen.
-9. Wave 6 folgt erst nach einer erneuten Prüfung des tatsächlichen
-   kombinierten Wave-5-Deltas. Feature 034 wurde nicht gestartet.
-10. Nach dem vollständig gemergten Wave-6-Closeout folgt das in Lastenheft 15
+9. `Lastenheft_19_Wave5-Combined-Delta-Closure.md` reserviert Feature 034 als
+   read-only Audit des tatsächlichen kombinierten Produktdeltas aus PR #93
+   und PR #96. Der Lauf behebt keine Produktfindings und startet Wave 6 nicht.
+10. Wave 6 folgt erst nach einem belegten Feature-034-Abschluss. Bei null
+    Findings darf der Lauf einen späteren Feature-035-Intake ableiten; bei
+    Findings entstehen nur nicht leere, ownerbezogene Hardening-Intakes.
+11. Nach dem vollständig gemergten Wave-6-Closeout folgt das in Lastenheft 15
    vorgemerkte Example-Portfolio-Audit. Seine Feature-Nummer wird erst dann
    aus der nächsten freien Nummer gebildet; es erzeugt nur aus realen Findings
    nicht leere Remediation-Lastenhefte und danach einen unabhängigen Closure.
@@ -121,7 +128,7 @@ Terminal.GUI comparison, and Feature 030 completed the magiblot comparison
 with zero canonical findings. Feature 031 is complete. Feature 032 delivers
 the functional Wave-5 stage and its real-path proof. Feature 033 completes
 and merges the evidence-derived showcase stage. Wave 6 remains blocked until
-a post-Wave-5 delta review.*
+the read-only Feature-034 audit has evidenced the actual combined delta.*
 
 ## Verbindlicher Folgeaudit nach Wave 6 / Binding Post-Wave-6 Audit
 
@@ -132,10 +139,10 @@ nicht vollständig gemergt sind.
 
 Der spätere Audit prüft alle 25 Originalbeispiele, alle tatsächlich gelieferten
 Wave-5-/Wave-6-Beispiele und `A11yFramework` als projektspezifische
-Vergleichskontrolle. Der nächste fachliche Schritt nach dem Merge von Feature
-033 ist die separate Prüfung des tatsächlichen kombinierten Wave-5-Deltas.
+Vergleichskontrolle. Der nächste fachliche Schritt ist Feature 034 aus
+Lastenheft 19. Der Post-Wave-6-Audit bleibt davon getrennt.
 
 *Lastenheft 15 reserves one read-only portfolio audit after the complete
 Wave-6 closeout. It does not assign a feature number or start a run. The
-current next step after the Feature-033 merge is a separate review of the
-actual combined Wave-5 delta.*
+current next step is Feature 034 from Lastenheft 19. The post-Wave-6 audit
+remains separate.*
