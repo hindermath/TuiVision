@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0",
+  "runId": "e58ee3be-40c3-4b51-9a9b-d9f80df2c58b",
+  "featurePath": "specs/035-wave6-tvfm-functional-porting",
+  "branch": "035-wave6-tvfm-functional-porting",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Publish",
+  "status": "Active",
+  "checkpointCommit": "4b32762dfc60e18655de35d816ff1d4ede0185eb",
+  "acceptedArtifacts": [
+    {"path": "Lastenheft_20_Wave6-TVFM-Functional-Porting.035-wave6-tvfm-functional-porting.md", "sha256": "f19e29e9d0ea4eb7ec1229c54769c308e1db9b9943cd60ed15a7f6968b87b7c5"},
+    {"path": "specs/035-wave6-tvfm-functional-porting/spec.md", "sha256": "8fa69c770ba0d1aaeebc861871e3029f9913b4ebae4834828c63c4352f502eca"},
+    {"path": "specs/035-wave6-tvfm-functional-porting/plan.md", "sha256": "fb3da3a015451ec2e22d496d58550ce29919f7808f3763eb1802b447decbca3b"},
+    {"path": "specs/035-wave6-tvfm-functional-porting/research.md", "sha256": "32aa30f37bf47ad96e39bd6cc54b42574f9e0f591bccf7596f6f7d2323ba84d1"},
+    {"path": "specs/035-wave6-tvfm-functional-porting/data-model.md", "sha256": "baad2a3ec30b3a19cd7baa0459e60257cbb83e594a402af6df88b5e490bc3b9a"},
+    {"path": "specs/035-wave6-tvfm-functional-porting/quickstart.md", "sha256": "d63aa737ce873637a2abe3fcc0d01c4bff50d2e34d5d53ccf57896c612da9de2"},
+    {"path": "specs/035-wave6-tvfm-functional-porting/contracts/wave6-functional-acceptance.md", "sha256": "ece84fb96f7f1f113a794f56b13d35aceeadc23f820f8fd67aca143b88011b0b"},
+    {"path": "specs/035-wave6-tvfm-functional-porting/checklists/requirements.md", "sha256": "849b4fb9fa891f8884e28e95f4dc5020caee5971b9777ff189bb7aeee5395ab1"},
+    {"path": "specs/035-wave6-tvfm-functional-porting/checklists/filesystem-safety.md", "sha256": "93446e3f85db3e9c1521941a37d99550336587f8e828a7d42863f4ad60bfd400"},
+    {"path": "specs/035-wave6-tvfm-functional-porting/checklists/historical-framework.md", "sha256": "5f77dbbda5b5154b5cc0eb78d0670c5336d88d49dbb58e5f342a470e9913ac65"},
+    {"path": "specs/035-wave6-tvfm-functional-porting/checklists/proof-a11y-governance.md", "sha256": "1c30ff035bac3871edb547daaef7708a61a0f2faa0f02f913e21e280e1b52110"},
+    {"path": "specs/035-wave6-tvfm-functional-porting/checklists/plan-quality.md", "sha256": "cbe2fc233f4a210b1eeb9f37eb05ee93eab0e01ad4cd40d33cbc787fa8b63122"},
+    {"path": "specs/035-wave6-tvfm-functional-porting/checklists/plan-review.md", "sha256": "aa63362272590fa6f44af04230a04dd064aa56241ffd82d0cb7f7ca293d50901"},
+    {"path": "specs/035-wave6-tvfm-functional-porting/autonomous-gate-requirements.json", "sha256": "f159cb7728b25d970799b41706630d8dbdb3315d8d2dc3f330b64914095809f4"}
+  ],
+  "tasks": {
+    "path": "specs/035-wave6-tvfm-functional-porting/tasks.md",
+    "sha256": "801f89890679985f9eb33b6834cda0f8e6e711364a5e7c045e3718c415247fa8",
+    "completed": 146,
+    "total": 163
+  },
+  "lastPassingGate": "Local validation, scope, supply-chain, agent, UTF-8, historical hash, evidence-cardinality and staged-diff gates passed through T146.",
+  "nextExactAction": "Execute T147 by committing the exact Feature-035 candidate.",
+  "lastOperation": {
+    "kind": "PreCommitStaging",
+    "state": "Completed",
+    "summary": "Local validation is complete, version is aligned to 1.35.1.370 and the exact candidate is staged for commit. Stage uses schema-valid Publish for commit/push/PR delivery."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "updatedAt": "2026-07-17T15:54:39Z"
+}

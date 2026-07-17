@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TuiVision.Examples.Tp7FileManager</RootNamespace>
+    <AssemblyName>Tp7FileManager</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\TuiVision.Examples.Wave6\TuiVision.Examples.Wave6.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fixtures\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

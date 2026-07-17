@@ -75,4 +75,9 @@
     <ProjectReference Include="..\..\examples\Shared\TuiVision.Examples.Wave5\TuiVision.Examples.Wave5.csproj" />
   </ItemGroup>
 
+  <!-- Wave-6 TVFM functional example uses one controlled workspace assembly -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\examples\Shared\TuiVision.Examples.Wave6\TuiVision.Examples.Wave6.csproj" />
+  </ItemGroup>
+
 </Project>

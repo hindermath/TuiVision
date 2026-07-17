@@ -178,6 +178,28 @@ layout paths.
 
 ---
 
+## Wave-6-Dateimanager, funktionale Stufe / Wave-6 File Manager, Functional Stage
+
+Feature `035-wave6-tvfm-functional-porting` liefert einen kontrollierten
+modernen C#-Dateimanager als erste Wave-6-Stufe. Er arbeitet ausschließlich in
+einer kopierten Fixture-Wurzel und führt keine Shell oder externen Viewer aus.
+
+Feature `035-wave6-tvfm-functional-porting` delivers a controlled modern C#
+file manager as the first Wave-6 stage. It operates only inside a copied
+fixture root and launches neither a shell nor an external viewer.
+
+| Name | Startbefehl / Launch Command | Deterministischer Proof / Deterministic Proof |
+|---|---|---|
+| `Tp7FileManager` | `dotnet run --project examples/Tp7FileManager` | `dotnet run --project examples/Tp7FileManager -- --smoke` |
+
+Die vollständige sichtbare Menü- und Dialogführung bleibt ein aus Feature 035
+abzuleitendes Stage-2-Delta.
+
+The complete visible menu and dialog workflow remains a Stage-2 delta derived
+from Feature 035.
+
+---
+
 ## A11Y-Referenz / Accessibility Reference
 
 Feature `023-a11y-framework` liefert eine kleine Referenz-App für opt-in
@@ -235,6 +257,7 @@ Guides for these examples are located under `docs/guides/examples/`:
 - `docs/guides/examples/tp7-calendar.md`
 - `docs/guides/examples/tp7-puzzle.md`
 - `docs/guides/examples/tp7-mouse-dialog.md`
+- `docs/guides/examples/tp7-file-manager.md`
 - `docs/guides/a11y-framework.md`
 
 ---
@@ -253,5 +276,6 @@ dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Vi
 dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Wave3"
 dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Tp7"
 dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Wave5Functional"
+dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Wave6"
 dotnet test tests/TuiVision.Examples.SmokeTests/
 ```
