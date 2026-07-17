@@ -54,15 +54,15 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 26 | `Lastenheft_14_TV203-Magiblot-Evolution-Audit.030-tv203-magiblot-evolution-audit.md` | Framework-Evolutionsaudit | archiviert oder abgeschlossen / archived or completed |
 | 27 | `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md` | Gemeinsamer Pre-Wave-5-/Wave-6-Abschluss | archiviert oder abgeschlossen / archived or completed |
 | 28 | `Lastenheft_17_Wave5-TP7-Functional-Porting.032-wave5-tp7-functional-porting.md` | Wave-5 TP7 Functional Porting | archiviert oder abgeschlossen / archived or completed |
-| 29 | `Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md` | Wave-5 TP7 Showcase Remediation | Umsetzungskandidat abgeschlossen, Lieferung läuft / implementation candidate complete, delivery in progress |
+| 29 | `Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md` | Wave-5 TP7 Showcase Remediation | archiviert oder abgeschlossen / archived or completed |
 | 30 | `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` | Beispielportfolio-Konformitätsaudit | verbindlich nach Wave-6-Closeout, Feature-Nummer später / binding after Wave-6 closeout, feature number deferred |
 <!-- secure-development-hardening-order:end -->
 
 ## Fortsetzungsmarke / Resume Marker
 
-> **NÄCHSTER FACHLICHER SCHRITT: Nach dem Merge von Feature 033 folgt eine separate Prüfung des tatsächlichen kombinierten Wave-5-Deltas; Welle 6 und Feature 034 bleiben bis dahin blockiert.**
+> **NÄCHSTER FACHLICHER SCHRITT: Nach dem vollständig gelieferten Feature 033 folgt eine separate Prüfung des tatsächlichen kombinierten Wave-5-Deltas; Welle 6 und Feature 034 bleiben bis dahin blockiert.**
 >
-> **NEXT DOMAIN STEP: After Feature 033 merges, separately review the actual combined Wave-5 delta; Wave 6 and Feature 034 remain blocked until then.**
+> **NEXT DOMAIN STEP: After the fully delivered Feature 033, separately review the actual combined Wave-5 delta; Wave 6 and Feature 034 remain blocked until then.**
 
 Features 025, 026, 028, 029, 030 und 031 sind abgeschlossen. Der unabhängige
 Closure bestätigt 48 Verträge, 13 Consumer-Gruppen, 96 vollständige
@@ -70,18 +70,18 @@ Nicht-Finding-Dispositionen, null `CF*`-Findings und null Hardening-Intakes.
 Wave-5-Stage 1 ist als Feature 032 vollständig geliefert. Feature 033 ergänzt
 die zweite Stufe mit zehn sichtbaren Hauptkomponenten, echten Statuszeilen,
 per Tastatur erreichbaren Beschreibungen, begrenzten Layout-Proofs und
-synchronisierten Guides. Der Umsetzungskandidat ist vollständig; Wave 6
-bleibt bis zum Merge und zur Prüfung des tatsächlichen kombinierten
-Wave-5-Deltas `ConditionallyReady` und blockiert.
+synchronisierten Guides. Feature 033 ist vollständig gemergt; Wave 6 bleibt
+bis zur Prüfung des tatsächlichen kombinierten Wave-5-Deltas
+`ConditionallyReady` und blockiert.
 
 *Features 025, 026, 028, 029, 030, and 031 are complete. The independent
 closure confirms 48 contracts, 13 consumer groups, 96 complete non-finding
 dispositions, zero CF findings, and zero hardening intakes. Wave 5 is
-eligible. Feature 032 supplies Stage 1. Feature 033 adds the complete Stage-2
-candidate with ten visible main components, real status lines,
+eligible. Feature 032 supplies Stage 1. Feature 033 adds the complete Stage 2
+with ten visible main components, real status lines,
 keyboard-reachable descriptions, constrained-layout proof, and synchronized
-guides. Wave 6 remains conditionally ready and blocked until Feature 033 is
-merged and the actual combined Wave-5 delta is reviewed.*
+guides. Feature 033 is fully merged. Wave 6 remains conditionally ready and
+blocked until the actual combined Wave-5 delta is reviewed.*
 
 ## Verbindliche Folge vor Wave 5 und Wave 6 / Binding Sequence Before Wave 5 and Wave 6
 
@@ -106,10 +106,10 @@ merged and the actual combined Wave-5 delta is reviewed.*
 7. `Lastenheft_17_Wave5-TP7-Functional-Porting.032-wave5-tp7-functional-porting.md` ist als Feature 032
    funktional geliefert und archiviert. Seine zehn konkreten Delta-Zeilen
    erzeugen `Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md`.
-8. Feature 033 liefert die zweite Wave-5-Stufe aus Lastenheft 18. Der
-   Umsetzungskandidat ist vollständig; Merge und Closeout bleiben offen.
-9. Wave 6 folgt erst nach dem Feature-033-Merge und einer erneuten Prüfung des
-   tatsächlichen kombinierten Wave-5-Deltas. Feature 034 wurde nicht gestartet.
+8. Feature 033 liefert die zweite Wave-5-Stufe aus Lastenheft 18 und ist über
+   PR #96 mit Merge `d476e63` vollständig abgeschlossen.
+9. Wave 6 folgt erst nach einer erneuten Prüfung des tatsächlichen
+   kombinierten Wave-5-Deltas. Feature 034 wurde nicht gestartet.
 10. Nach dem vollständig gemergten Wave-6-Closeout folgt das in Lastenheft 15
    vorgemerkte Example-Portfolio-Audit. Seine Feature-Nummer wird erst dann
    aus der nächsten freien Nummer gebildet; es erzeugt nur aus realen Findings
@@ -120,8 +120,8 @@ are complete. Feature 028 closed that gate, Feature 029 completed the pinned
 Terminal.GUI comparison, and Feature 030 completed the magiblot comparison
 with zero canonical findings. Feature 031 is complete. Feature 032 delivers
 the functional Wave-5 stage and its real-path proof. Feature 033 completes
-the evidence-derived showcase candidate. Wave 6 remains blocked until its
-merge and a post-Wave-5 delta review.*
+and merges the evidence-derived showcase stage. Wave 6 remains blocked until
+a post-Wave-5 delta review.*
 
 ## Verbindlicher Folgeaudit nach Wave 6 / Binding Post-Wave-6 Audit
 

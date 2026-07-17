@@ -74,7 +74,7 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ## Recent Changes
-- 033-wave5-tp7-showcase-remediation: Completed the ten-example Wave-5 showcase candidate; Wave 6 remains blocked pending merge and actual-delta review
+- 033-wave5-tp7-showcase-remediation: Completed and merged the ten-example Wave-5 showcase; Wave 6 remains blocked pending actual-delta review
 - 032-wave5-tp7-functional-porting: Added C# 14 / .NET 10 + Existing TuiVision.Core, TuiVision.Controls, TuiVision.Serialization, TuiVision.Compatibility, TuiVision.Drivers.Console, MSTest 4.0.1 and BCL System.Text.Json; no new package
 - 031-combined-conformance-closure: Added C# 14 / .NET 10 for test-only validation; JSON and Markdown for evidence + Existing BCL `System.Text.Json`, MSTest 4.0.1, existing repository scripts and workflows; no new package
 
@@ -202,13 +202,13 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - Current implementation status: the evidence-only independent closure is complete; final evidence is in `specs/031-combined-conformance-closure/delivery-closeout.md`.
 - Exactly 48 contracts, 13 consumers, 48 TGO and 48 MB observations, 96 dispositions, all accepted source pins and hashes, and the closed `F001`-`F013` set are revalidated.
 - Product runtime, public APIs, dependencies, packages, projects, examples, consumers, historical sources, and external sources remain unchanged.
-- Wave 5 Stage 1 is the active Feature-032 candidate. Wave 6 remains only `ConditionallyReady` and requires both Wave-5 stages plus review of the actual delta.
+- Feature 031 made Wave 5 `Eligible`; Features 032 and 033 have since delivered both stages. Wave 6 remains only `ConditionallyReady` and still requires review of the actual combined Wave-5 delta.
 
 ### 032-wave5-tp7-functional-porting
-- Current implementation candidate: all 15 read-only `TVDEMOS/*.PAS` sources have one role, all six consumers use the existing framework, and ten `Tp7*` projects provide normal plus controlled-smoke entry points.
+- Current implementation status: the functional Wave-5 stage is delivered; all 15 read-only `TVDEMOS/*.PAS` sources have one role, all six consumers use the existing framework, and ten `Tp7*` projects provide normal plus controlled-smoke entry points.
 - Primary proof covers calculator, central apps, resources, deterministic domain state, mouse capability/fallback, and exact 15/6/10/10 traceability through real app loops, state, view, and rendered cells.
 - File, resource, help, generator, and mouse boundaries remain controlled; no host state, arbitrary user data, dependency, historical source, or broad framework behavior is changed.
-- `Lastenheft_18_Wave5-TP7-Showcase-Remediation.md` is derived from the ten concrete Stage-2 deltas and becomes the next intake only after Feature 032 merges. Feature 033 and Wave 6 are not started.
+- `Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md` is the archived intake derived from the ten concrete Stage-2 deltas. Feature 033 is fully delivered through PR #96 and merge `d476e63`; Wave 6 remains blocked pending the actual combined Wave-5 delta review.
 
 
 ### Autonomous Red-Proof Completeness

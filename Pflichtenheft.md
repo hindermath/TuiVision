@@ -271,9 +271,9 @@ Statuscheckliste Beispielwellen:
 - [x] **Welle 5 - Funktionale TP7-Portierung und Real-Path-Proof**
   Reihenfolgehinweis: Feature 032 liefert zehn startbare `Tp7*`-Beispiele, 15 eindeutige Quellenrollen, sechs Consumer-Entscheidungen und reale App-Loop-/Zustands-/View-/Cell-Proofs. Datei-, Resource-, Help-, Generator- und Mausgrenzen bleiben kontrolliert.
 - [x] **Welle 5 - TP7-Showcase-Stufe**
-  Reihenfolgehinweis: Feature 033 liefert die zehn aus Feature 032 abgeleiteten Visual-, Interaktions-, Layout- und A11Y-Deltas als vollständigen Showcase-Kandidaten. Nach dem Merge folgt ausschließlich die Prüfung des tatsächlichen kombinierten Wave-5-Deltas; Feature 034 und Wave 6 wurden nicht gestartet.
+  Reihenfolgehinweis: Feature 033 ist über PR #96 und Merge `d476e63` vollständig geliefert. Die zehn aus Feature 032 abgeleiteten Visual-, Interaktions-, Layout- und A11Y-Deltas sind geschlossen. Als nächstes folgt ausschließlich die Prüfung des tatsächlichen kombinierten Wave-5-Deltas; Feature 034 und Wave 6 wurden nicht gestartet.
 - [ ] **Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`**
-  Reihenfolgehinweis: zuletzt; bleibt bis zum Feature-033-Merge und zur erneuten Prüfung des tatsächlichen kombinierten Wave-5-Deltas blockiert. Erst danach dürfen Umfang und Feature-Nummer aus den realen Erkenntnissen abgeleitet werden.
+  Reihenfolgehinweis: zuletzt; bleibt bis zur erneuten Prüfung des tatsächlichen kombinierten Wave-5-Deltas blockiert. Erst danach dürfen Umfang und Feature-Nummer aus den realen Erkenntnissen abgeleitet werden.
 - [ ] **Post-Wave-6 Example Portfolio Conformance Audit**
   Reihenfolgehinweis: nach dem vollständig gemergten Wave-6-Closeout gemäß `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md`; prüft alle 25 Originalbeispiele, alle tatsächlich gelieferten Wave-5-/Wave-6-Beispiele und `A11yFramework` als Kontrollbeispiel, ohne im Audit selbst Runtime- oder Beispieländerungen vorzunehmen.
 - [ ] Beispiel-Guides unter `docs/guides/examples/`
@@ -705,13 +705,12 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.6f` = TV203-/magiblot-tvision-Evolutionsaudit und gemeinsame TG-/MB-Deduplizierung — ✓ ABGESCHLOSSEN, 50 Quellen/48 Relationen/96 Dispositionen/0 Findings (Feature 030, Lastenheft 14)
    - `3.6g` = Unabhängiger gemeinsamer Konformitätsabschluss — ✓ ABGESCHLOSSEN (Feature 031, Lastenheft 16, Feature-Merge `3d64a36`); Wave 5 `Eligible`, Wave 6 `ConditionallyReady`
    - `3.7a` = Wave-5 TP7 Functional Porting — ✓ FUNKTIONAL GELIEFERT (Feature 032, Lastenheft 17); 15 Quellen, 6 Consumer, 10 Beispiele und 10 reale Proof-Zeilen
-   - `3.7b` = Wave-5 TP7 Showcase Remediation — ✓ UMSETZUNGSKANDIDAT ABGESCHLOSSEN (Feature 033, Lastenheft 18); Merge und anschließende tatsächliche Delta-Prüfung bleiben Voraussetzung für Wave 6
+   - `3.7b` = Wave-5 TP7 Showcase Remediation — ✓ ABGESCHLOSSEN (Feature 033, Lastenheft 18, PR #96, Merge `d476e63`); tatsächliche kombinierte Delta-Prüfung bleibt Voraussetzung für Wave 6
    - Post-Wave-6 = Example-Portfolio-Konformitätsaudit — VERBINDLICH VORGEMERKT (Lastenheft 15); Feature-Nummer erst nach Wave-6-Closeout
 
->>> NÄCHSTER FACHLICHER SCHRITT <<< Feature 033 schließt mit
-`Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md`
-die zweite Wave-5-Stufe. Nach seinem Merge wird der tatsächliche kombinierte
-Wave-5-Delta separat geprüft. Wave 6 bleibt bis zu dieser Prüfung
+>>> NÄCHSTER FACHLICHER SCHRITT <<< Feature 033 und beide Wave-5-Stufen sind
+vollständig gemergt. Jetzt wird der tatsächliche kombinierte Delta aus
+Features 032 und 033 separat geprüft. Wave 6 bleibt bis zu dieser Prüfung
 `ConditionallyReady` und fachlich blockiert; Feature 034 wurde nicht angelegt.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
