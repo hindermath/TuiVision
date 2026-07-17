@@ -216,8 +216,13 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - Current implementation status: Feature 034 is fully delivered through PR #99, final head `016692d`, merge `7fb52e2`, and its causal closeout.
 - The read-only audit proves exact 15 source, 6 consumer, 10 example, 10 functional-proof, 10 showcase-closure, and 10 guide/launch cardinalities. All ten decisions are `AcceptedIntentionalDeviation`; there are zero open `Gap` dimensions, Candidate Findings, Product Decisions, owner groups, or hardening intakes.
 - Product runtime, APIs, dependencies, projects, examples, framework code, `TVDEMOS/`, `TVFM/`, `tv203s/`, and external comparison sources remain unchanged. The final 22-check matrix and 13 exact-head gates passed; checkout-neutral SHA-256 and Git-blob proof passed on Ubuntu, macOS, and Windows.
-- Wave 5 is `Closed`. Feature 035 is delivered through PR #101, final head `207e807`, and merge `52f77fa`; it provides Wave-6 Stage 1. Feature 036, Stage-2 showcase remediation, and the post-Wave-6 audit remain separate and are not started.
+- Wave 5 is `Closed`. Feature 035 is delivered through PR #101, final head `207e807`, and merge `52f77fa`; it provides Wave-6 Stage 1.
 
+### 036-wave6-tvfm-showcase-remediation
+- `Lastenheft_21_Wave6-TVFM-Showcase-Remediation.md` is the next binding intake and reserves Feature 036; no Spec Kit run has started.
+- Scope is limited to the one accepted Feature-035 `ShowcaseDelta`: visible menu/control access, safe focusable file-operation dialogs, bounded drag/drop intent, constrained layout, StatusLine, F1 Description, keyboard, A11Y, and real app-loop/view/cell proof for `Tp7FileManager`.
+- Feature-035 controlled-root, path, search, preview, viewer, one-shot intent, mutation, dependency, process, shell, host, and arbitrary-user-data boundaries remain unchanged. `TVFM/`, `TVDEMOS/`, and `tv203s/` stay read-only.
+- Feature 037, an independent Wave-6 closure, and the post-Wave-6 portfolio audit are not started by this intake.
 
 ### Autonomous Red-Proof Completeness
 - Before the first red test batch, review imports, public XML docs, harness helpers, focus/ownership assertions, and linked-source assembly identity.

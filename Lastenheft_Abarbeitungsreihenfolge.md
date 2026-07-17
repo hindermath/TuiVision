@@ -57,14 +57,15 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 29 | `Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md` | Wave-5 TP7 Showcase Remediation | archiviert oder abgeschlossen / archived or completed |
 | 30 | `Lastenheft_19_Wave5-Combined-Delta-Closure.034-wave5-combined-delta-closure.md` | Wave-5 Combined Delta Closure | archiviert oder abgeschlossen / archived or completed |
 | 31 | `Lastenheft_20_Wave6-TVFM-Functional-Porting.035-wave6-tvfm-functional-porting.md` | Wave-6 TVFM Functional Porting | archiviert oder abgeschlossen / archived or completed |
-| 32 | `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` | Beispielportfolio-Konformitätsaudit | verbindlich nach Wave-6-Closeout, Feature-Nummer später / binding after Wave-6 closeout, feature number deferred |
+| 32 | `Lastenheft_21_Wave6-TVFM-Showcase-Remediation.md` | Wave-6 TVFM Showcase Remediation | nächster Intake, Feature 036 reserviert / next intake, Feature 036 reserved |
+| 33 | `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` | Beispielportfolio-Konformitätsaudit | verbindlich nach unabhängigem Wave-6-Closeout, Feature-Nummer später / binding after independent Wave-6 closeout, feature number deferred |
 <!-- secure-development-hardening-order:end -->
 
 ## Fortsetzungsmarke / Resume Marker
 
-> **FORTSETZUNGSMARKE: Feature 035 hat die funktionale erste Wave-6-Stufe geliefert; Feature 036 ist nicht gestartet.**
+> **FORTSETZUNGSMARKE: Lastenheft 21 ist der nächste verbindliche Intake für Feature 036; der Spec-Kit-Lauf wurde nicht gestartet.**
 >
-> **RESUME MARKER: Feature 035 delivered the functional first Wave-6 stage; Feature 036 is not started.**
+> **RESUME MARKER: Lastenheft 21 is the next binding intake for Feature 036; the Spec Kit run has not started.**
 
 Features 025, 026, 028, 029, 030 und 031 sind abgeschlossen. Der unabhängige
 Closure bestätigt 48 Verträge, 13 Consumer-Gruppen, 96 vollständige
@@ -79,8 +80,11 @@ Findings und null Product Decisions. Feature-PR #99 und der kausale Closeout
 setzen Wave 5 auf `Closed` und Wave 6 auf `EligibleForIntake`.
 Feature 035 ist durch PR #101 mit Merge `52f77fa` geliefert. Es liefert die
 kontrollierte funktionale Stage-1-Basis fuer `Tp7FileManager` mit Root-,
-Listen-, Preview-, Such- und expliziten Dateioperationsnachweisen. Feature 036,
-eine Stage-2-Showcase-Remediation und der Post-Wave-6-Audit wurden nicht
+Listen-, Preview-, Such- und expliziten Dateioperationsnachweisen.
+`Lastenheft_21_Wave6-TVFM-Showcase-Remediation.md` leitet daraus genau die
+belegte Stage-2-Lücke für sichtbare Menü-/Dialogzugänge, begrenztes
+Drag-/Drop, constrained Layout und A11Y-Proof ab. Feature 036, ein
+unabhängiger Wave-6-Abschluss und der Post-Wave-6-Audit wurden nicht
 gestartet.
 
 *Features 025, 026, 028, 029, 030, and 031 are complete. The independent
@@ -94,8 +98,10 @@ combined-delta closure from Lastenheft 19 with zero findings and zero product
 decisions. Feature PR #99 and the causal closeout set Wave 5 to closed and
 Wave 6 to eligible for intake. Feature 035 is delivered through PR #101 and
 merge `52f77fa`; it provides the controlled functional Stage-1 baseline for
-`Tp7FileManager`. Feature 036, Stage-2 showcase remediation, and the
-post-Wave-6 audit were not started by this run.*
+`Tp7FileManager`. Lastenheft 21 derives exactly the evidenced Stage-2 gap for
+visible menus and dialogs, bounded drag/drop, constrained layout, and A11Y
+proof. Feature 036, an independent Wave-6 closure, and the post-Wave-6 audit
+were not started by this intake preparation.*
 
 ## Verbindliche Folge vor Wave 5 und Wave 6 / Binding Sequence Before Wave 5 and Wave 6
 
@@ -129,11 +135,16 @@ post-Wave-6 audit were not started by this run.*
 10. Feature 035 aus `Lastenheft_20_Wave6-TVFM-Functional-Porting.035-wave6-tvfm-functional-porting.md` ist
     durch PR #101 und Merge `52f77fa` vollständig geliefert. Eine spätere
     Showcase-Remediation entsteht ausschließlich aus tatsächlichen
-    Feature-035-Deltas und wird hier nicht angelegt oder gestartet.
-11. Nach dem vollständig gemergten Wave-6-Closeout folgt das in Lastenheft 15
-   vorgemerkte Example-Portfolio-Audit. Seine Feature-Nummer wird erst dann
-   aus der nächsten freien Nummer gebildet; es erzeugt nur aus realen Findings
-   nicht leere Remediation-Lastenhefte und danach einen unabhängigen Closure.
+    Feature-035-Deltas.
+11. `Lastenheft_21_Wave6-TVFM-Showcase-Remediation.md` ist der nächste
+    verbindliche Intake und reserviert Feature 036. Es schließt nur die eine
+    belegte `ShowcaseDelta`-Zeile, startet aber weder Feature 037 noch den
+    Post-Wave-6-Audit.
+12. Nach Feature 036 wird ein unabhängiger Wave-6-Abschluss separat
+    festgelegt. Erst nach seinem vollständigen Merge folgt das in Lastenheft 15
+    vorgemerkte Example-Portfolio-Audit. Seine Feature-Nummer wird erst dann
+    aus der nächsten freien Nummer gebildet; es erzeugt nur aus realen Findings
+    nicht leere Remediation-Lastenhefte und danach einen unabhängigen Closure.
 
 *Revision 2 routed nine findings to Feature 025 and four to Feature 026; both
 are complete. Feature 028 closed that gate, Feature 029 completed the pinned
@@ -142,22 +153,25 @@ with zero canonical findings. Feature 031 is complete. Feature 032 delivers
 the functional Wave-5 stage and its real-path proof. Feature 033 completes
 the evidence-derived showcase stage. Feature 034 closes the combined delta
 with zero findings. Feature 035 is delivered through PR #101 and merge
-`52f77fa`. A later showcase remediation may only be derived from actual
-Feature-035 deltas and is not created here.*
+`52f77fa`. Lastenheft 21 is the next binding intake and reserves Feature 036
+for the actual Feature-035 ShowcaseDelta. It starts neither Feature 037 nor
+the post-Wave-6 audit. An independent Wave-6 closure remains required before
+the portfolio audit.*
 
 ## Verbindlicher Folgeaudit nach Wave 6 / Binding Post-Wave-6 Audit
 
 `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` ist bereits
 als späterer Intake festgelegt, wird aber weder nummeriert noch gestartet,
-solange Wave 6 mit ihrem unabhängigen Closeout nicht vollständig gemergt ist.
+solange Feature 036 und der danach separat festzulegende unabhängige
+Wave-6-Closeout nicht vollständig gemergt sind.
 
 Der spätere Audit prüft alle 25 Originalbeispiele, alle tatsächlich gelieferten
 Wave-5-/Wave-6-Beispiele und `A11yFramework` als projektspezifische
-Vergleichskontrolle. Feature 035 ist funktional geliefert; eine spätere
-Stage-2-Showcase-Remediation muss aus dem tatsächlichen Delta abgeleitet
-werden. Der Post-Wave-6-Audit bleibt davon getrennt.
+Vergleichskontrolle. Feature 035 ist funktional geliefert; Lastenheft 21
+bildet das tatsächliche Stage-2-Delta als Feature-036-Intake ab. Der
+Post-Wave-6-Audit bleibt davon und vom unabhängigen Wave-6-Abschluss getrennt.
 
 *Lastenheft 15 reserves one read-only portfolio audit after the complete
 Wave-6 closeout. It does not assign a feature number or start a run. Feature
-035 is functionally delivered; a later Stage-2 showcase remediation must be
-derived from the actual delta. The post-Wave-6 audit remains separate.*
+035 is functionally delivered; Lastenheft 21 captures the actual Stage-2
+delta as the Feature-036 intake. The post-Wave-6 audit remains separate.*
