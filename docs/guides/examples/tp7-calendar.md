@@ -19,22 +19,24 @@ dotnet run --no-build --configuration Release \
   --project examples/Tp7Calendar -- --smoke
 ```
 
-## Determinismus und Proof / Determinism and Proof
+## Determinismus und Tastatur / Determinism and Keyboard
 
-Die funktionale Stufe startet bewusst mit Dezember 2026. Dadurch belegt der
-Smoke den Übergang nach Januar 2027 ohne Abhängigkeit von Systemdatum, Locale
-oder Zeitzone. `app.Run()` verbindet Monatszustand, Fenster und gerenderte
-`yyyy-MM`-Zellen.
+Das sichtbare Monatsraster startet bewusst mit Dezember 2026. Pfeiltasten
+wählen einen Tag; PageUp und PageDown wechseln den Monat. Dadurch ist der
+Übergang nach Januar 2027 ohne Abhängigkeit von Systemdatum, Locale oder
+Zeitzone nachvollziehbar. F1 öffnet die app-spezifische Description.
 
-The functional stage intentionally starts in December 2026. This lets the
-smoke prove the transition to January 2027 without depending on system date,
-locale, or time zone. `app.Run()` combines month state, window, and rendered
-`yyyy-MM` cells.
+The visible month grid intentionally starts in December 2026. Arrow keys
+select a day; PageUp and PageDown change the month. This makes the transition
+to January 2027 understandable without depending on system date, locale, or
+time zone. F1 opens the app-specific Description.
 
-## Showcase-Grenze / Showcase Boundary
+## Proof
 
-Die spätere Stufe ergänzt ein sichtbares Monatsraster, Tagesfokus,
-Navigations-Shortcuts und `Help -> Description`.
+Der primäre Smoke führt `app.Run()` aus und verbindet feste Fixture,
+Tagesfokus, Monatswechsel, Statuszeile und gerenderte Zellen. Die
+`42x16`-Fixture beweist Identität, Monat und Description in enger Darstellung.
 
-The later stage adds a visible month grid, day focus, navigation shortcuts,
-and `Help -> Description`.
+The primary smoke runs `app.Run()` and combines the fixed fixture, day focus,
+month transition, status line, and rendered cells. The `42x16` fixture proves
+identity, month, and Description in a constrained layout.

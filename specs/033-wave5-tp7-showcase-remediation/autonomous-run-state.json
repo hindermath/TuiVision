@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "1.0",
+  "runId": "401d4b96-8db6-4bae-a018-260036838892",
+  "featurePath": "specs/033-wave5-tp7-showcase-remediation",
+  "branch": "033-wave5-tp7-showcase-remediation",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Validate",
+  "status": "Active",
+  "checkpointCommit": "5df2ec3cef5dd0e534abe630a8d472e0e5bc0236",
+  "acceptedArtifacts": [
+    {
+      "path": "Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md",
+      "sha256": "7349787aa957eb63e167216524a34436e10c8b07956d64d8ea6456a2e8013067"
+    },
+    {
+      "path": "specs/033-wave5-tp7-showcase-remediation/spec.md",
+      "sha256": "14ba0b2bade11797cfea8b502c9ac3d43b4e7eda745d046989e6ffd9afa0e6fc"
+    },
+    {
+      "path": "specs/033-wave5-tp7-showcase-remediation/checklists/requirements.md",
+      "sha256": "5c08c9db4c161b93e5aa9c7b4675bb27756bd90f577978d163afc869356b2c92"
+    },
+    {
+      "path": "specs/033-wave5-tp7-showcase-remediation/checklists/showcase-contract.md",
+      "sha256": "e9f4c9e1fcc6b1a3ef61397d4667a0b1154835afcec7ac97b30a121e9f2d1731"
+    },
+    {
+      "path": "specs/033-wave5-tp7-showcase-remediation/checklists/security-a11y.md",
+      "sha256": "356ec1de40c2f6d8fac9860260e62c8a9e85b249fabd0729ac952c4ba5003f27"
+    },
+    {
+      "path": "specs/033-wave5-tp7-showcase-remediation/checklists/historical-scope.md",
+      "sha256": "594551978a42b856be3d9570ef3415916ae9205c2af20399892138838881c2ad"
+    },
+    {
+      "path": "specs/033-wave5-tp7-showcase-remediation/plan.md",
+      "sha256": "fe016cd8f6acfb90ef78490412cdd654c988772bf94229394dfff8cd197306c8"
+    },
+    {
+      "path": "specs/033-wave5-tp7-showcase-remediation/research.md",
+      "sha256": "346c49d17c3f483805f062f66bcd969eeb6f767d33ad643b9830947eb2d07b22"
+    },
+    {
+      "path": "specs/033-wave5-tp7-showcase-remediation/data-model.md",
+      "sha256": "ae69a83d8aebc872dae017422c0a1406a04cc20c9e70e9012420fb43bec8b99c"
+    },
+    {
+      "path": "specs/033-wave5-tp7-showcase-remediation/quickstart.md",
+      "sha256": "2a5eec42d9b2f47211cd6d038bdd05bb3695968651113e12cca183a6efc3231a"
+    },
+    {
+      "path": "specs/033-wave5-tp7-showcase-remediation/contracts/wave5-showcase-acceptance.md",
+      "sha256": "1010231974f368e2fe346b867da9c8b1697cb4bbdc6eb102f2c6f31af30d2a52"
+    },
+    {
+      "path": "specs/033-wave5-tp7-showcase-remediation/checklists/plan-quality.md",
+      "sha256": "e8de0f38677cd51bc9bd3f95bf2253a40ca7ac431c25258d906c348114d362ef"
+    },
+    {
+      "path": "specs/033-wave5-tp7-showcase-remediation/checklists/plan-review.md",
+      "sha256": "6d9e04b95bd1d7478639029194753d9327d05acf2f65bc9bfa7c46e200556b33"
+    },
+    {
+      "path": "specs/033-wave5-tp7-showcase-remediation/autonomous-gate-requirements.json",
+      "sha256": "90cbcd1bc2947cba2900e8c2f9cfaee22a25fb98feab44054237b73447397ea8"
+    }
+  ],
+  "tasks": {
+    "path": "specs/033-wave5-tp7-showcase-remediation/tasks.md",
+    "sha256": "efe287d1e6c91df45528ffda670faa996a87e23021fac49300a2a9b8ae6a53dc",
+    "completed": 177,
+    "total": 196
+  },
+  "lastPassingGate": "Local validation passes: 40/40 targeted, 826/826 full and coverage, five assemblies above 70%, DocFX 0/0, Axe 2/2, UTF-8 and supply-chain review.",
+  "nextExactAction": "Commit the exact staged Feature-033 candidate.",
+  "lastOperation": {
+    "kind": "Validate",
+    "state": "Completed",
+    "summary": "Completed all local gates and validated the exact 50-path staged candidate with no unstaged or untracked files."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "updatedAt": "2026-07-17T11:55:55Z"
+}

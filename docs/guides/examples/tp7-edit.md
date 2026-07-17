@@ -27,12 +27,22 @@ targets or external changes require an explicit conflict decision.
 
 ## A11Y und Proof / A11Y and Proof
 
-Der echte Editor erhält Tastaturereignisse über `app.Run()`. Modified-State,
-Safe-Close-Ablehnung, Konflikt und Traversal-Rejection sind textorientiert.
-Stage 2 ergänzt vollständige Datei-Menüs, Dialoge, Shortcut-Hinweise und
-`Help -> Description`.
+Der echte `TFileEditor` ist im `TEditWindow` fokussiert. File, Edit, Search und
+Help stellen ihre aktuell ausführbaren Mnemoniken über die vorhandene
+Command-Context-Logik bereit. Modified-State, Safe-Close-Ablehnung, Konflikt
+und Traversal-Rejection sind textorientiert. F1 oder
+`Help -> Description` erklärt Bedienung, Root-Grenze und Proof-Umfang.
 
-The real editor receives keyboard events through `app.Run()`. Modified state,
-safe-close rejection, conflict, and traversal rejection are text-first. Stage
-2 adds complete file menus, dialogs, shortcut hints, and
-`Help -> Description`.
+The real `TFileEditor` is focused inside `TEditWindow`. File, Edit, Search,
+and Help expose their currently executable mnemonics through the existing
+command-context logic. Modified state, safe-close rejection, conflict, and
+traversal rejection are text-first. F1 or `Help -> Description` explains
+operation, the root boundary, and proof scope.
+
+Der primäre Smoke führt `app.Run()` aus und verbindet Editorzustand, Fokus,
+Menü-Shortcuts, kontrollierte Dateientscheidungen, Status und Zellen. Die
+enge `48x16`-Ansicht verwendet denselben echten Editor.
+
+The primary smoke runs `app.Run()` and combines editor state, focus, menu
+shortcuts, controlled file decisions, status, and cells. The constrained
+`48x16` view uses the same real editor.

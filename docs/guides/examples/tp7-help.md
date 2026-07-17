@@ -19,20 +19,26 @@ dotnet run --project examples/Tp7Help
 
 Bekannte Kontexte öffnen ein echtes `THelpWindow`. Ein unbekannter Kontext
 zeigt den vorhandenen Fallback „Help not found“. Proprietäre historische
-Binärformate werden nicht dekodiert.
+Binärformate werden nicht dekodiert. Das Topics-Menü öffnet Kontexte, aktiviert
+den ausgewählten Querverweis und führt mit Back zum vorherigen Thema zurück.
+Das Compiler-Menü zeigt die atomare Diagnose einer ungültigen Quelle.
 
 Known contexts open a real `THelpWindow`. An unknown context shows the existing
 “Help not found” fallback. Proprietary historical binary formats are not
-decoded.
+decoded. The Topics menu opens contexts, activates the selected
+cross-reference, and returns to the previous topic with Back. The Compiler
+menu shows the atomic diagnostic for an invalid source.
 
 ## A11Y und Proof / A11Y and Proof
 
-Kompilierung, Diagnose, Kontext und Fallback sind über Commands und
-Tastaturpfade erreichbar. Der primäre Smoke kombiniert Compilerzustand,
-`THelpWindow`-Identität und gerenderte Topic-/Fallback-Zellen. Stage 2 ergänzt
-vollständige Navigation, Cross-Reference-Bedienung und `Help -> Description`.
+Kompilierung, Diagnose, Kontext, Cross-Reference, Back, Fallback und F1 sind
+per Tastatur erreichbar. Der primäre Smoke kombiniert Compilerzustand,
+fokussierten `THelpViewer`, `THelpWindow`-Identität, Navigation, Status,
+Description und gerenderte Topic-/Fallback-Zellen. Die enge `48x16`-Ansicht
+bleibt textorientiert bedienbar.
 
-Compilation, diagnostics, context, and fallback are reachable through commands
-and keyboard paths. The primary smoke combines compiler state,
-`THelpWindow` identity, and rendered topic/fallback cells. Stage 2 adds
-complete navigation, cross-reference operation, and `Help -> Description`.
+Compilation, diagnostics, context, cross-reference navigation, Back, fallback,
+and F1 are keyboard reachable. The primary smoke combines compiler state, a
+focused `THelpViewer`, `THelpWindow` identity, navigation, status,
+Description, and rendered topic/fallback cells. The constrained `48x16` view
+remains operable through text.

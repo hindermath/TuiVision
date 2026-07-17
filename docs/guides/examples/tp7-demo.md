@@ -1,4 +1,4 @@
-# TP7 Demo: funktionale Anwendungsshell / Functional Application Shell
+# TP7 Demo: sichtbare Anwendungsshell / Visible Application Shell
 
 ## Zweck / Purpose
 
@@ -16,22 +16,30 @@ bounded idle gadgets.
 dotnet run --project examples/Tp7Demo
 ```
 
-Der App-Loop verarbeitet typisierte Demo- und Help-Commands genau einmal.
-Leere Ereignisrunden führen nur einen begrenzten Gadget-Schritt aus. Der
-sichtbare Heap-Hinweis ist bewusst keine Host-Speichermessung.
+Der erste Frame zeigt eine reale Familie schließbarer und verschiebbarer
+`TWindow`-Instanzen. Das Demo-Menü öffnet weitere Fenster. Das Windows-Menü
+bietet Tile, Cascade, Next und Close über die vorhandenen `TDesktop`-Verträge.
+F1 oder `Help -> Description` öffnet die vollständige Beschreibung. Leere
+Ereignisrunden führen nur einen begrenzten Gadget-Schritt aus; der
+Heap-Hinweis ist keine Host-Speichermessung.
 
-The app loop processes typed demo and help commands exactly once. Empty event
-rounds perform one bounded gadget step only. The visible heap note is
-intentionally not a host-memory measurement.
+The first frame shows a real family of closeable and movable `TWindow`
+instances. The Demo menu opens more windows. The Windows menu offers Tile,
+Cascade, Next, and Close through the existing `TDesktop` contracts. F1 or
+`Help -> Description` opens the complete description. Empty event rounds
+perform one bounded gadget step only; the heap note is not a host-memory
+measurement.
 
 ## A11Y und Proof / A11Y and Proof
 
-Menü, Status und Help sind tastaturerreichbar und textorientiert. Der primäre
-Smoke verbindet Command-/Idle-Zustand, `TWindow`-Identität und gerenderte
-Zellen. Stage 2 ergänzt vollständige Fensteranordnung, Shortcut-Hinweise und
-`Help -> Description`.
+Menü, Fensteroperationen, Status und Help sind tastaturerreichbar und
+textorientiert. Der primäre Smoke verbindet Command-/Idle-Zustand, reale
+Fensterzahl, Fokus, strukturierte Desktop-Ergebnisse, `TWindow`-Identität,
+Description und gerenderte Zellen. Die enge `48x16`-Ansicht bewahrt Zweck,
+Fenster und F1-Pfad.
 
-Menu, status, and help are keyboard reachable and text-first. The primary
-smoke combines command/idle state, `TWindow` identity, and rendered cells.
-Stage 2 adds complete window arrangement, shortcut hints, and
-`Help -> Description`.
+Menu, window operations, status, and Help are keyboard reachable and
+text-first. The primary smoke combines command/idle state, real window count,
+focus, structured desktop results, `TWindow` identity, Description, and
+rendered cells. The constrained `48x16` view preserves purpose, windows, and
+the F1 path.

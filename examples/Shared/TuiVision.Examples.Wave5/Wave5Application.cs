@@ -43,6 +43,9 @@ internal sealed class Wave5StatusLine : TStatusLine
 /// </summary>
 public abstract class Wave5Application : TApplication
 {
+    /// <summary>Öffnet die beispielspezifische Beschreibung. / Opens the example-specific description.</summary>
+    public const ushort CmDescription = 32990;
+
     private readonly bool _headless;
     private readonly Queue<TEvent> _scriptedEvents = [];
     private TView? _visibleView;
@@ -50,7 +53,11 @@ public abstract class Wave5Application : TApplication
     /// <summary>Initialisiert die gemeinsame Anwendungsshell. / Initializes the shared application shell.</summary>
     /// <param name="bounds">Anwendungsgrenzen. / Application bounds.</param>
     /// <param name="headless">Aktiviert den kontrollierten Smoke-Pfad. / Enables the controlled smoke path.</param>
-    protected Wave5Application(TRect bounds, bool headless) : base(bounds) => _headless = headless;
+    protected Wave5Application(TRect bounds, bool headless) : base(bounds)
+    {
+        _headless = headless;
+        HasRealStatusLine = StatusLine is TStatusLine;
+    }
 
     /// <summary>Letzter sichtbarer Haupttyp. / Last visible main view type.</summary>
     public string LastVisibleComponentKind { get; protected set; } = string.Empty;
@@ -66,6 +73,35 @@ public abstract class Wave5Application : TApplication
 
     /// <summary>Ob der kontrollierte Quit erzeugt wurde. / Whether controlled quit was issued.</summary>
     public bool QuitIssued { get; private set; }
+
+    /// <summary>Ob die Anwendung eine echte Statuszeile erstellt hat. / Whether the application created a real status line.</summary>
+    public bool HasRealStatusLine { get; }
+
+    /// <summary>Ob die Description über den Ereignispfad geöffnet wurde. / Whether Description was opened through the event path.</summary>
+    public bool DescriptionOpened { get; private set; }
+
+    /// <summary>Letzter beispielspezifischer Description-Text. / Last example-specific Description text.</summary>
+    public string LastDescriptionText { get; private set; } = string.Empty;
+
+    /// <summary>
+    /// Liefert den zweisprachigen, beispielspezifischen Description-Inhalt.
+    ///
+    /// Returns the bilingual, example-specific Description content.
+    /// </summary>
+    /// <returns>Der textorientierte Description-Inhalt. / The text-first Description content.</returns>
+    protected virtual string BuildDescriptionText() =>
+        "Beschreibung noch nicht implementiert.\nDescription not implemented yet.";
+
+    /// <inheritdoc />
+    protected override TMenuBar InitMenuBar(TRect bounds) =>
+        new(bounds)
+        {
+            Menu = new TMenuItem(
+                "~H~ilfe / ~H~elp",
+                0,
+                null,
+                new TMenuItem("~B~eschreibung / ~D~escription", CmDescription))
+        };
 
     /// <summary>Fügt deterministische Ereignisse hinzu. / Adds deterministic events.</summary>
     /// <param name="events">Ereignisse für den App-Loop. / Events for the app loop.</param>
@@ -98,7 +134,27 @@ public abstract class Wave5Application : TApplication
 
     /// <inheritdoc />
     protected override TStatusLine InitStatusLine(TRect bounds) =>
-        new Wave5StatusLine(bounds, "Wave 5 Stage 1 | Ctrl+Q Quit");
+        new Wave5StatusLine(bounds, "Wave 5 Showcase | F1 Description | Ctrl+Q Quit");
+
+    /// <inheritdoc />
+    public override void HandleEvent(TEvent @event)
+    {
+        bool isDescriptionKey = @event.What == TEventKind.KeyDown
+            && @event.KeyDown.ScanCode == 0x3B;
+        bool isDescriptionCommand = @event.What == TEventKind.Command
+            && @event.Message.Command == CmDescription;
+        if (isDescriptionKey || isDescriptionCommand)
+        {
+            LastDescriptionText = BuildDescriptionText();
+            DescriptionOpened = true;
+            ShowContent("Help -> Description", LastDescriptionText);
+            SetStatus(GetType().Name.Replace("App", string.Empty, StringComparison.Ordinal), "Description visible");
+            @event.Clear();
+            return;
+        }
+
+        base.HandleEvent(@event);
+    }
 
     /// <summary>
     /// Ersetzt den sichtbaren Hauptinhalt und hält seine Bildschirmregion als
@@ -169,7 +225,7 @@ public abstract class Wave5Application : TApplication
     /// <param name="state">Kurzer Zustand. / Short state.</param>
     protected void SetStatus(string example, string state)
     {
-        LastStatusMessage = $"{example}: {state} | Ctrl+Q Quit";
+        LastStatusMessage = $"{example}: {state} | F1 Description | Ctrl+Q Quit";
         if (StatusLine is Wave5StatusLine statusLine)
         {
             statusLine.SetMessage(LastStatusMessage);

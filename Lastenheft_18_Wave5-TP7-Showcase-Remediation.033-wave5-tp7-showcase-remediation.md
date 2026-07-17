@@ -277,7 +277,7 @@ separate post-Wave-5 delta decision before Wave 6.*
 
 ```text
 $speckit-specify Use
-`Lastenheft_18_Wave5-TP7-Showcase-Remediation.md` as the binding intake for
+`Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md` as the binding intake for
 Feature 033.
 
 Create exactly `specs/033-wave5-tp7-showcase-remediation` on branch
@@ -303,7 +303,7 @@ exact-head gates in `MergeAndSync` mode.
 
 ```text
 $speckit-autonomous Execute the complete autonomous Spec Kit run for Feature
-033 using `Lastenheft_18_Wave5-TP7-Showcase-Remediation.md` as the binding
+033 using `Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md` as the binding
 intake. Delivery mode: MergeAndSync.
 
 Start from clean synchronized main after Feature 032 and its causal closeout

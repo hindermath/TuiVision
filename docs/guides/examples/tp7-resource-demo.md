@@ -26,31 +26,32 @@ dotnet run --no-build --configuration Release \
 
 ## Ressourcenvertrag / Resource Contract
 
-Die funktionale erste Stufe lädt ausschließlich die exakten,
+Die Anwendung lädt ausschließlich die exakten,
 groß-/kleinschreibungssensitiven Schlüssel `Dialog`, `Menu` und `Status`.
 Sichtbarer Zustand wird erst veröffentlicht, wenn alle drei Records vollständig
 und typkorrekt gelesen wurden.
 
-The functional first stage loads only the exact, case-sensitive keys `Dialog`,
+The application loads only the exact, case-sensitive keys `Dialog`,
 `Menu`, and `Status`. Visible state is published only after all three records
 have been read completely with the expected types.
 
 ## Ablehnung und Proof / Rejection and Proof
 
 Doppelte Schlüssel, unbekannte Typen und ungültige Payload-Längen werden ohne
-Teilmodell abgelehnt. Der primäre Smoke führt `app.Run()` aus und verbindet
-Load-Zustand, sichtbares Fenster und gerenderte Dialog-, Menü- und Statuszellen.
+Teilmodell abgelehnt. Nach erfolgreicher Auflösung zeigt ein reales `TDialog`
+die Dialog-, Menü- und Statuswerte mit fokussierbarem Select-Button. Tab,
+Enter und F1 beziehungsweise `Help -> Description` bleiben textorientiert
+erreichbar.
 
 Duplicate keys, unknown types, and invalid payload lengths are rejected without
-a partial model. The primary smoke runs `app.Run()` and combines load state,
-the visible window, and rendered dialog, menu, and status cells.
+a partial model. After successful resolution, a real `TDialog` shows the
+dialog, menu, and status values with a focusable Select button. Tab, Enter,
+and F1 or `Help -> Description` remain text-first and reachable.
 
-## Grenze zur Showcase-Stufe / Showcase-Stage Boundary
+Der primäre Smoke führt `app.Run()` aus und verbindet atomaren Load-Zustand,
+`TDialog`-/`TButton`-Fokus, echte Statuszeile, Description und gerenderte
+Zellen in normaler sowie `48x16`-Ansicht.
 
-Feature 032 liefert die sichere Rekonstruktion. Die Showcase-Stufe ergänzt
-sichtbare Resource-Auswahl, vollständige Dialogkomposition, Shortcuts und
-`Help -> Description`.
-
-Feature 032 delivers safe reconstruction. The showcase stage adds visible
-resource selection, complete dialog composition, shortcuts, and
-`Help -> Description`.
+The primary smoke runs `app.Run()` and combines atomic load state,
+`TDialog`/`TButton` focus, a real status line, Description, and rendered cells
+in normal and `48x16` views.

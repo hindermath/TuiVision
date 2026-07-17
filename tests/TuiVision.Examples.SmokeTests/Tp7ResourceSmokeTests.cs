@@ -2,6 +2,7 @@
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
 using System.Text;
+using TuiVision.Controls;
 using TuiVision.Core;
 using TuiVision.Examples.Wave5;
 
@@ -31,6 +32,10 @@ public sealed class Tp7ResourceSmokeTests : ExampleTestBase
             Assert.IsFalse(generator.GenerationRejected);
             Assert.IsNotNull(generator.GeneratedBytes);
             Assert.IsTrue(File.Exists(Path.Combine(root, "tp7.tvr")));
+            AssertViewTreeProofFromAppLoop(generator.LastVisibleComponentKind, nameof(TDialog), "TP7 generator dialog");
+            Assert.AreEqual(nameof(TInputLine), generator.FocusedControlKind);
+            Assert.IsGreaterThanOrEqualTo(3, generator.VisibleControlCount);
+            Assert.AreEqual(100, generator.ProgressPercent);
             AssertRenderedRegionContainsFromAppLoop(generator.Driver.BackBuffer, generator.LastVisibleRegion, "generated", "TP7 generator cells");
 
             Tp7ResourceDemoApp demo = new(DefaultBounds(), headless: true);
@@ -41,6 +46,8 @@ public sealed class Tp7ResourceSmokeTests : ExampleTestBase
             Assert.AreEqual("TP7 Resource Dialog", demo.DialogTitle);
             Assert.AreEqual("~D~emo", demo.MenuLabel);
             Assert.AreEqual("~F1~ Help", demo.StatusLabel);
+            AssertViewTreeProofFromAppLoop(demo.LastVisibleComponentKind, nameof(TDialog), "TP7 resource dialog");
+            Assert.AreEqual(nameof(TButton), demo.FocusedControlKind);
             AssertRenderedRegionContainsFromAppLoop(demo.Driver.BackBuffer, demo.LastVisibleRegion, "TP7 Resource Dialog", "TP7 resource dialog cells");
             AssertPrimaryAssertionUsedAppLoop();
         }
@@ -104,6 +111,27 @@ public sealed class Tp7ResourceSmokeTests : ExampleTestBase
         AssertPrimaryAssertionUsedAppLoop();
     }
 
+    /// <summary>
+    /// Prüft beide app-spezifischen Descriptions und enge Dialoglayouts.
+    ///
+    /// Verifies both app-specific Descriptions and constrained dialog layouts.
+    /// </summary>
+    [TestMethod]
+    public void Tp7Resources_AppLoops_Show_Descriptions_In_Constrained_Viewport()
+    {
+        Tp7ResourceDemoApp demo = new(DefaultBounds(48, 16), headless: true);
+        demo.QueueEvents([DescriptionKey()]);
+        AssertSmokeRunCompletes(() => demo.Run());
+        AssertVisibleContainsFromAppLoop(demo.LastDescriptionText, "exakten Namen", "Resource Demo Description key boundary");
+        AssertRenderedContainsFromAppLoop(demo.Driver.BackBuffer, "Help -> Description", "Resource Demo constrained Description");
+
+        Tp7ResourceGeneratorApp generator = new(DefaultBounds(48, 16), headless: true);
+        generator.QueueEvents([DescriptionKey()]);
+        AssertSmokeRunCompletes(() => generator.Run());
+        AssertVisibleContainsFromAppLoop(generator.LastDescriptionText, "kontrollierten Root", "Resource Generator Description root boundary");
+        AssertRenderedContainsFromAppLoop(generator.Driver.BackBuffer, "Help -> Description", "Resource Generator constrained Description");
+    }
+
     private static string CreateRoot()
     {
         string root = Path.Combine(Path.GetTempPath(), $"tuivision-tp7resources-{Guid.NewGuid():N}");
@@ -152,4 +180,7 @@ public sealed class Tp7ResourceSmokeTests : ExampleTestBase
         writer.Write(length);
         return result;
     }
+
+    private static TEvent DescriptionKey() =>
+        TEvent.CreateKeyDown(new TKeyDownEvent('\0', 0x3B, 0x3B00, 0, 0x3B));
 }

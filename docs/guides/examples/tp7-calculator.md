@@ -1,4 +1,4 @@
-# TP7 Calculator: funktionaler Rechner / Functional Calculator
+# TP7 Calculator: sichtbarer Rechner / Visible Calculator
 
 ## Zweck / Purpose
 
@@ -27,14 +27,17 @@ dotnet run --no-build --configuration Release \
 
 ## Bedienung / Operation
 
-Die funktionale erste Stufe führt Rechnerfolgen über typisierte
-Anwendungsbefehle aus. Der echte App-Loop aktualisiert das sichtbare Fenster
-und die Statuszeile. `C` löscht, `B` führt den Rückschritt aus und `S` wechselt
-das Vorzeichen.
+Der Rechner zeigt ein echtes `TDialog` mit Display und 20 fokussierbaren
+Tasten. Ziffern, Dezimalpunkt, `+`, `-`, `*`, `/` und `=` wirken direkt.
+Enter führt `=` aus, `C` löscht, Backspace führt den Rückschritt aus, `S`
+wechselt das Vorzeichen und Tab bewegt den Fokus durch das Tastenraster.
+F1 oder `Help -> Description` öffnet die vollständige Beschreibung.
 
-The functional first stage executes calculator sequences through typed
-application commands. The real app loop updates the visible window and status
-line. `C` clears, `B` performs backspace, and `S` toggles the sign.
+The calculator shows a real `TDialog` with a display and 20 focusable buttons.
+Digits, decimal point, `+`, `-`, `*`, `/`, and `=` act directly. Enter
+executes `=`, `C` clears, Backspace removes the last digit, `S` toggles the
+sign, and Tab moves focus through the button grid. F1 or
+`Help -> Description` opens the complete description.
 
 ## Moderne Abweichung / Modern Deviation
 
@@ -53,19 +56,24 @@ visible.
 Der Kernpfad ist vollständig per Tastatur erreichbar. Status und Ablehnung
 sind textorientiert und nicht nur über Farbe erkennbar. Der primäre Smoke in
 `Tp7CalculatorSmokeTests` führt `app.Run()` aus und verbindet Rechnerzustand,
-`TWindow`-Identität und gerenderte Zellen.
+`TDialog`-/`TButton`-Identität, Fokus, echte Statuszeile, Description und
+gerenderte Zellen. Die enge `40x12`-Ansicht hält Display, Pflichtbuttons,
+F1-Hinweis und Status getrennt sichtbar.
 
 The core path is fully keyboard reachable. Status and rejection are text-first
 and do not rely on colour alone. The primary smoke in
 `Tp7CalculatorSmokeTests` runs `app.Run()` and combines calculator state,
-`TWindow` identity, and rendered cells.
+`TDialog`/`TButton` identity, focus, a real status line, Description, and
+rendered cells. The constrained `40x12` view keeps the display, required
+buttons, F1 hint, and status visibly separate.
 
-## Grenze zur Showcase-Stufe / Showcase-Stage Boundary
+## Proof-Grenze / Proof Boundary
 
-Feature 032 liefert den funktionalen Command- und Proof-Pfad. Die spätere
-Showcase-Stufe ergänzt direkte, sichtbare Rechner-Controls, vollständige
-Shortcut-Hinweise und das einheitliche `Help -> Description`-Erlebnis.
+Feature 032 liefert die unveränderte Fachlogik. Feature 033 ergänzt nur die
+sichtbare Komposition und deren App-Loop-, Fokus-, Status- und Cell-Proofs.
+Der Headless-Smoke beweist nicht die Darstellung eines konkreten
+Host-Terminals.
 
-Feature 032 delivers the functional command and proof path. The later showcase
-stage adds direct visible calculator controls, complete shortcut hints, and
-the shared `Help -> Description` experience.
+Feature 032 supplies the unchanged domain logic. Feature 033 adds only the
+visible composition and its app-loop, focus, status, and cell proofs. The
+headless smoke does not prove rendering by a specific host terminal.
