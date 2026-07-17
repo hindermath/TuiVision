@@ -90,3 +90,5 @@
           href: guides/examples/tp7-puzzle.md
         - name: TP7 Mouse Dialog
           href: guides/examples/tp7-mouse-dialog.md
+        - name: TP7 File Manager
+          href: guides/examples/tp7-file-manager.md

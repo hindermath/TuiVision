@@ -42,6 +42,8 @@ Auto-generated from all feature plans. Last updated: 2026-07-17
 - Source-controlled closed JSON and Markdown evidence; temporary external checkouts under `/tmp` only (031-combined-conformance-closure)
 - C# 14 / .NET 10 + Existing TuiVision.Core, TuiVision.Controls, TuiVision.Serialization, TuiVision.Compatibility, TuiVision.Drivers.Console, MSTest 4.0.1 and BCL System.Text.Json; no new package (032-wave5-tp7-functional-porting)
 - Embedded UTF-8 fixtures, controlled test-temporary files, existing THelpFile and TResourceFile; no database or service (032-wave5-tp7-functional-porting)
+- C# 14 / .NET 10 + Existing `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, MSTest, Coverlet, DocFX and Playwright/Axe; no new package (035-wave6-tvfm-functional-porting)
+- Source-controlled UTF-8/binary fixtures copied into test-owned temporary roots; controlled local filesystem only; no arbitrary user data, shell/external viewer, database or service (035-wave6-tvfm-functional-porting)
 
 - C# `latest` on .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, `TuiVision.Compatibility`; MSTest; Coverlet; docfx; wave-1 example projects under `examples/` (007-port-wave1-examples — Wave 1 delivered)
 
@@ -74,10 +76,9 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ## Recent Changes
-- 034-wave5-combined-delta-closure: Closed Wave 5 with exact 15/6/10/10/10 evidence and zero findings; Lastenheft 20 reserves Feature 035 without starting Wave 6
+- 035-wave6-tvfm-functional-porting: Active Wave-6 functional stage adds `Tp7FileManager`, controlled-root file proofs, bounded preview/search, explicit one-shot mutation intents, keyboard parity and app-loop smokes; Stage-2 visible polish remains separate.
+- 034-wave5-combined-delta-closure: Closed Wave 5 with exact 15/6/10/10/10 evidence and zero findings; Lastenheft 20 made Wave 6 eligible for Feature 035.
 - 033-wave5-tp7-showcase-remediation: Completed and merged the ten-example Wave-5 showcase; Wave 6 remains blocked pending actual-delta review
-- 032-wave5-tp7-functional-porting: Added C# 14 / .NET 10 + Existing TuiVision.Core, TuiVision.Controls, TuiVision.Serialization, TuiVision.Compatibility, TuiVision.Drivers.Console, MSTest 4.0.1 and BCL System.Text.Json; no new package
-- 031-combined-conformance-closure: Added C# 14 / .NET 10 for test-only validation; JSON and Markdown for evidence + Existing BCL `System.Text.Json`, MSTest 4.0.1, existing repository scripts and workflows; no new package
 
 
 <!-- MANUAL ADDITIONS START -->
@@ -215,7 +216,7 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - Current implementation status: Feature 034 is fully delivered through PR #99, final head `016692d`, merge `7fb52e2`, and its causal closeout.
 - The read-only audit proves exact 15 source, 6 consumer, 10 example, 10 functional-proof, 10 showcase-closure, and 10 guide/launch cardinalities. All ten decisions are `AcceptedIntentionalDeviation`; there are zero open `Gap` dimensions, Candidate Findings, Product Decisions, owner groups, or hardening intakes.
 - Product runtime, APIs, dependencies, projects, examples, framework code, `TVDEMOS/`, `TVFM/`, `tv203s/`, and external comparison sources remain unchanged. The final 22-check matrix and 13 exact-head gates passed; checkout-neutral SHA-256 and Git-blob proof passed on Ubuntu, macOS, and Windows.
-- Wave 5 is `Closed`. Wave 6 is `EligibleForIntake`; `Lastenheft_20_Wave6-TVFM-Functional-Porting.md` reserves Feature 035, but neither Feature 035 nor Wave 6 has started.
+- Wave 5 is `Closed`. Feature 035 is the active Wave-6 functional stage; Feature 036, Stage-2 showcase remediation and the post-Wave-6 audit remain blocked until this run closes.
 
 
 ### Autonomous Red-Proof Completeness
