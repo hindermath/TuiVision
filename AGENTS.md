@@ -370,7 +370,7 @@ npm run test:docfx
 - Current implementation status: Feature 034 is fully delivered through PR #99, final head `016692d`, merge `7fb52e2`, and its causal closeout.
 - The read-only audit proves exact 15 source, 6 consumer, 10 example, 10 functional-proof, 10 showcase-closure, and 10 guide/launch cardinalities. All ten decisions are `AcceptedIntentionalDeviation`; there are zero open `Gap` dimensions, Candidate Findings, Product Decisions, owner groups, or hardening intakes.
 - Product runtime, APIs, dependencies, projects, examples, framework code, `TVDEMOS/`, `TVFM/`, `tv203s/`, and external comparison sources remain unchanged. The final 22-check matrix and 13 exact-head gates passed; checkout-neutral SHA-256 and Git-blob proof passed on Ubuntu, macOS, and Windows.
-- Wave 5 is `Closed`. Feature 035 is the active Wave-6 functional stage; Feature 036, Stage-2 showcase remediation and the post-Wave-6 audit remain blocked until this run closes.
+- Wave 5 is `Closed`. Feature 035 is delivered through PR #101, final head `207e807`, and merge `52f77fa`; it provides Wave-6 Stage 1. Feature 036, Stage-2 showcase remediation, and the post-Wave-6 audit remain separate and are not started.
 
 
 ### Autonomous Red-Proof Completeness
@@ -696,14 +696,13 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 *Standard preset set: `security-governance` v0.6.0 prio 10, `architecture-governance` v0.5.0 prio 20, `isaqb-architecture-governance` v0.2.0 prio 30, `a11y-governance` v0.4.0 prio 40, `cross-platform-governance` v0.2.0 prio 50, and `agent-parity-governance` v0.3.0 prio 60. `a11y-governance` v0.4.0 adds didactic inline-code-comment governance for new or changed non-trivial logic. `architecture-governance` v0.5.0 adds conditional `BSI C3A` cloud-autonomy evidence and `BSI C5` cloud-compliance assurance evidence for cloud-service selection, provider dependencies, audit/assurance status, shared responsibility, and operational evidence. `security-governance` v0.6.0 keeps conditional `AI-SBOM` evidence, language-specific secure-coding profiles, and regulatory applicability screening for NIS2, CRA, EU AI Act, and DORA: development-tool-only AI usage is `N/A`, AI runtime/product components require G7/BSI AI-SBOM cluster evidence, and private training projects record regulatory `N/A` when no regulated scope exists. All six presets now include audit-ready Spec-Kit run evidence: `Applicable` / `N/A` / `Open`, rationale, evidence path, reviewer, residual risk, and follow-up must be documented for the current Spec-Kit run. All six presets are in the `github/spec-kit` community catalog as of 2026-05-04 and are also published under `https://github.com/hindermath/spec-kit-preset-*`. New Level-2 projects should install the applicable subset; C#/.NET Level-2 projects default to all six unless a justified exception is documented. Commit `.specify/presets/` and generated agent command updates when presets are project policy, but never commit `.specify/presets/.cache/`. Verify installs with `specify preset list`, `specify preset info`, and where relevant `specify preset resolve`. Improve presets in the home-baseline scaffold first, propagate to standalone preset repos, then commit, push, and smoke-test via GitHub ZIP URL. Preset-rule changes and preset version/priority changes require reviewing constitution, README tables/install snippets, all agent guidance files, and relevant templates together. Community/catalog coordination happens in `github/spec-kit#2362`.*
 
 <!-- SPECKIT START -->
-Feature 035 is the active Wave-6 functional stage from
-`Lastenheft_20_Wave6-TVFM-Functional-Porting.035-wave6-tvfm-functional-porting.md`. It introduces the
-`Tp7FileManager` example and shared Wave-6 runtime support with controlled
-root navigation, bounded text/hex preview, bounded search, explicit one-shot
-file-operation intents, keyboard parity and app-loop smoke proof. It must not
-start Feature 036 or the later showcase/audit work. The full visible
-menu/dialog polish remains an evidence-derived Stage-2 delta. Lastenheft 15
-still reserves the read-only example-portfolio audit after the complete
+Feature 035 delivered the Wave-6 functional stage through PR #101 and merge
+`52f77fa`. It introduces the `Tp7FileManager` example and shared Wave-6
+runtime support with controlled root navigation, bounded text/hex preview,
+bounded search, explicit one-shot file-operation intents, keyboard parity and
+app-loop smoke proof. Feature 036 was not created or started. The full visible
+menu/dialog polish remains an evidence-derived Stage-2 delta, and Lastenheft
+15 still reserves the read-only example-portfolio audit after the complete
 Wave-6 closeout.
 <!-- SPECKIT END -->
 
