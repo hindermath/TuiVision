@@ -802,6 +802,25 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
         Assert.ThrowsExactly<InvalidDataException>(() => ValidateHistoricalSourceRows(changedPath));
     }
 
+    /// <summary>
+    /// Prüft plattformneutrale Text-Hashes bei unveränderten binären Quellen.
+    ///
+    /// Verifies platform-neutral text hashes while binary sources remain exact.
+    /// </summary>
+    [TestMethod]
+    public void Wave6Showcase_Historical_Text_Hashes_Are_LineEndingNeutral_But_Binary_Hashes_Are_Exact()
+    {
+        byte[] lf = System.Text.Encoding.ASCII.GetBytes("first\nsecond\n");
+        byte[] crlf = System.Text.Encoding.ASCII.GetBytes("first\r\nsecond\r\n");
+
+        Assert.AreEqual(
+            HashHistoricalSource("TVFM/ASSOC.PAS", lf),
+            HashHistoricalSource("TVFM/ASSOC.PAS", crlf));
+        Assert.AreNotEqual(
+            HashHistoricalSource("TVFM/CYAN.PAL", lf),
+            HashHistoricalSource("TVFM/CYAN.PAL", crlf));
+    }
+
     private static IEnumerable<TMenuItem> EnumerateSiblings(TMenuItem? first)
     {
         for (TMenuItem? item = first; item is not null; item = item.Next)
@@ -877,13 +896,47 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
         {
             string relativePath = Unquote(row[0]);
             string expectedHash = Unquote(row[1]);
-            using FileStream stream = File.OpenRead(Path.Combine(repositoryRoot, relativePath));
-            string actualHash = Convert.ToHexString(SHA256.HashData(stream)).ToLowerInvariant();
+            byte[] content = File.ReadAllBytes(Path.Combine(repositoryRoot, relativePath));
+            string actualHash = HashHistoricalSource(relativePath, content);
             if (!actualHash.Equals(expectedHash, StringComparison.Ordinal))
             {
                 throw new InvalidDataException($"Historical source hash drift: {relativePath}");
             }
         }
+    }
+
+    private static string HashHistoricalSource(string relativePath, byte[] content)
+    {
+        string extension = Path.GetExtension(relativePath);
+        byte[] canonical = extension.Equals(".PAS", StringComparison.OrdinalIgnoreCase)
+            || extension.Equals(".BAT", StringComparison.OrdinalIgnoreCase)
+                ? NormalizeHistoricalTextBytes(content)
+                : content;
+        return Convert.ToHexString(SHA256.HashData(canonical)).ToLowerInvariant();
+    }
+
+    private static byte[] NormalizeHistoricalTextBytes(byte[] content)
+    {
+        List<byte> normalized = new(content.Length);
+        for (int index = 0; index < content.Length; index++)
+        {
+            if (content[index] != (byte)'\r')
+            {
+                normalized.Add(content[index]);
+                continue;
+            }
+
+            // Git darf historische Textquellen je Plattform als CRLF auschecken; der Inhaltsbeweis bleibt LF-kanonisch.
+            // Git may check out historical text sources as CRLF per platform; the content proof remains LF-canonical.
+            if (index + 1 < content.Length && content[index + 1] == (byte)'\n')
+            {
+                index++;
+            }
+
+            normalized.Add((byte)'\n');
+        }
+
+        return normalized.ToArray();
     }
 
     private static void ValidateOrderedRows(string[][] rows, string[] expectedIds, int exactColumns)

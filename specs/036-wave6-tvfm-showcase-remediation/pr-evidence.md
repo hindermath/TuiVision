@@ -195,11 +195,25 @@ All 24 read-only files match the accepted Feature-035 hashes.
 | agent context block hashes and generated context review | Agent parity | Pass | Four maintained full `SPECKIT` blocks share SHA-256 `e2397e24b44568e60fc87d1e2197c9f645d58dbb2964b745311c766c028eb4f4`; compact Copilot-agent and Antigravity surfaces contain matching Feature-036 identity and scope |
 | Bash and PowerShell autonomous state validators | Local state schema parity | Pass | Both exit 0 against run `4f84dab9-293f-45f9-b491-a5fe4693270b`, stage `Validate`, status `Active`; final hashes are revalidated at T168 |
 | exact evidence and scope inventory | 1/10/24 closure and scope firewall | Pass | Exactly 10 ordered `W6S` rows, one entry decision, and 24 TVFM hashes; no `CandidateFinding`, `ProductDecision`, framework follow-up, protected-root, dependency/project, Feature-037, or portfolio-audit path |
+| Windows CI full test on `c34a65848dd1e06af7b998d43b92945aec6fb469` | First provider acceptance | Fail, actionable | 236/237 example smokes passed; the showcase source-hash validator compared a CRLF checkout of `TVFM/ASSOC.PAS` with the accepted LF content hash. Product behavior and the other five test assemblies passed |
+| corrected Wave-6 showcase, functional, workspace, and operation filter, `1.36.1.397` | Platform-neutral historical-hash correction | Pass | 35/35 passed, including a new proof that `.PAS`/`.BAT` hashes are LF-canonical while `.PAL`/`.TVR` hashes remain byte-exact |
+| `dotnet format TuiVision.sln --verify-no-changes --no-restore` after Windows correction | Corrected candidate format | Pass | Exit 0 |
+| `dotnet test TuiVision.sln --configuration Release --no-restore`, `1.36.1.398` | Corrected full Release solution | Pass | 880/880 passed: Core 52, Compatibility 18, Serialization 48, Controls 373, Drivers 151, Examples 238 |
 | Ubuntu/macOS/Windows | Remote acceptance | Planned | Actual required commands mapped to jobs |
 | exact-head gate evidence | Before merge | Planned | Both gate validators pass |
 | reviewer/thread convergence | Before merge | Planned | No actionable unresolved thread |
 
 ## PR and Merge Evidence
 
-Planned. Post-merge facts, if self-invalidating on the reviewed feature head,
-will be recorded once in a non-recursive causal closeout.
+- Initial candidate commit:
+  `c34a65848dd1e06af7b998d43b92945aec6fb469`.
+- Feature PR: [#104](https://github.com/hindermath/TuiVision/pull/104).
+- First provider pass: 21 successful, one skipped, one actionable Windows
+  failure. Ubuntu, macOS, DocFX, supply chain, secret, homogeneity,
+  PowerShell, and Claude checks passed. Copilot was unavailable because the
+  requesting account had reached its quota and is not counted as a review.
+- Windows failure boundary: historical text line-ending conversion in the
+  test-only source-hash validator. The correction canonicalizes only
+  `.PAS`/`.BAT` text bytes and preserves exact binary hashing.
+- Post-merge facts, if self-invalidating on the reviewed feature head, will be
+  recorded once in a non-recursive causal closeout.

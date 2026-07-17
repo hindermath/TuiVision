@@ -5,9 +5,9 @@
   "branch": "036-wave6-tvfm-showcase-remediation",
   "deliveryMode": "MergeAndSync",
   "authorityRevalidationRequired": false,
-  "stage": "Validate",
+  "stage": "Review",
   "status": "Active",
-  "checkpointCommit": "42a842fb63a0695a618a0f87ffec543e9bc3b6c8",
+  "checkpointCommit": "c34a65848dd1e06af7b998d43b92945aec6fb469",
   "acceptedArtifacts": [
     {"path": "Lastenheft_21_Wave6-TVFM-Showcase-Remediation.036-wave6-tvfm-showcase-remediation.md", "sha256": "bc16dc3d32f03bf2c12fa5c33105adaf70341e88c62b6afd14fa7adb893fa473"},
     {"path": "specs/036-wave6-tvfm-showcase-remediation/spec.md", "sha256": "ea7c6fab54cb2eda7a60262ac77cdb9025aabdaab6ceebf18f9fc49d9492da45"},
@@ -32,17 +32,17 @@
     "completed": 170,
     "total": 187
   },
-  "lastPassingGate": "The exact 35-file Feature-036 candidate is staged with clean whitespace, no unstaged or untracked residue, and all local gates complete through T170.",
-  "nextExactAction": "Commit the exact Feature-036 candidate for T171.",
+  "lastPassingGate": "The actionable Windows CRLF hash finding is corrected test-only; 35/35 affected and 880/880 full Release tests pass locally.",
+  "nextExactAction": "Commit and push the platform-neutral hash correction, then require all PR checks and reviews on the new exact head.",
   "lastOperation": {
-    "kind": "Commit",
+    "kind": "Review",
     "state": "Completed",
-    "summary": "Completed T170: the exact staged candidate contains only intended text files and passes staged whitespace and scope checks."
+    "summary": "PR #104 exposed one Windows-only historical text hash mismatch; the bounded test validator correction and full local regression are green."
   },
   "stop": {
     "reason": "N/A",
     "requestedAt": "N/A",
     "safeBoundary": "N/A"
   },
-  "updatedAt": "2026-07-17T19:03:52Z"
+  "updatedAt": "2026-07-17T19:09:26Z"
 }
