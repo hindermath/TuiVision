@@ -112,10 +112,42 @@ Im spaeteren Prueflauf werden insbesondere behandelt:
 ## 10. Optimaler Specify-Prompt / Optimal Specify Prompt
 
 ```text
-/speckit-specify
+$speckit-specify
 Nutze Lastenheft_RL-SE-Checklist-Selbstpruefung.md als verbindlichen Intake fuer einen separaten RL-SE-/Checklist-Selbstpruefungslauf in TuiVision.
 Starte keinen Sammellauf ueber mehrere Repositories, erzeuge keine automatische Haertung und befuelle keine docs/security/-Nachweise ohne konkrete Spec-Kit-Aufgabe.
 Erstelle eine fokussierte Feature-Spezifikation, die docs/secure-development/, Richtlinie_Sichere-Entwicklung.md, Checklistensammelband_Sichere-Entwicklung.md, CL_01 bis CL_12, mitgeltende Dokumente, Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md, constitution.md, .specify/memory/constitution.md und installierte Governance-Presets als Pruefgrundlagen beruecksichtigt.
 Dokumentiere jeden relevanten Pruefpunkt als Applicable, AlreadySatisfied, N/A, Open oder FollowUp mit Begruendung, Evidenzpfad, Owner, Follow-up, Re-Evaluation-Trigger und Restrisiko.
 Behandle sichere Entwicklung als Must-have. MSL-Status ist ein Pruefpunkt, aber keine Voraussetzung fuer diesen Selbstpruefungslauf.
+```
+
+## 11. Optimaler Autonomous-Prompt / Optimal Autonomous Prompt
+
+```text
+$speckit-autonomous Use `Lastenheft_RL-SE-Checklist-Selbstpruefung.md` as the
+binding intake for a complete autonomous RL-SE and checklist self-review in
+MergeAndSync mode.
+
+Start only from clean synchronized main and determine the next free Spec Kit
+feature number. Execute Specify, repeated Clarify, all useful security and
+governance checklists, Plan, plan review, Tasks, repeated Analyze, Implement,
+validation, repository delivery, and retrospective to convergence.
+
+Use the secure-development policy, checklist collection, CL_01 through CL_12,
+all governing documents, the policy-to-checklist-to-preset mapping,
+constitution, installed presets, existing specs, tests, CI, and repository
+evidence as binding review sources. Classify every relevant checkpoint as
+Applicable, AlreadySatisfied, N/A, Open, or FollowUp. Record rationale,
+evidence path, owner, concrete follow-up, priority, residual risk, and
+re-evaluation trigger. Positive claims require concrete evidence.
+
+Keep the run audit-focused. Do not perform broad automatic hardening, combine
+multiple repositories, configure provider settings, expose private paths or
+tokens, or claim human-only approval. Generate only non-empty,
+finding-derived follow-up intakes and stop on destructive or policy-level
+ambiguity.
+
+Run all validation triggered by the resulting evidence and documentation.
+Use remote authority only for this repository's non-empty feature delivery.
+Merge only after applicable checks and reviews converge, then return to clean
+synchronized main.
 ```

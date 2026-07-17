@@ -298,3 +298,57 @@ example. Route broader runtime defects to `FollowUpHardening`. Run all required
 local, remote, coverage, DocFX/Axe, platform, parity, security, review, and
 exact-head gates in `MergeAndSync` mode.
 ```
+
+## 14. Optimaler Autonomous-Prompt / Recommended Autonomous Prompt
+
+```text
+$speckit-autonomous Execute the complete autonomous Spec Kit run for Feature
+033 using `Lastenheft_18_Wave5-TP7-Showcase-Remediation.md` as the binding
+intake. Delivery mode: MergeAndSync.
+
+Start from clean synchronized main after Feature 032 and its causal closeout
+are fully merged. Create exactly branch
+`033-wave5-tp7-showcase-remediation` and feature directory
+`specs/033-wave5-tp7-showcase-remediation`. Do not create Feature 034, start
+Wave 6, or start the post-Wave-6 portfolio audit.
+
+Run Specify, repeated Clarify, all useful requirements and showcase
+checklists, Plan, plan-review remediation, Tasks, repeated Analyze, Implement,
+validation, delivery, and retrospective to convergence. Create run state,
+gate requirements, and feature evidence before implementation changes. Keep
+accepted-artifact hashes, tasks, evidence, and run state synchronized at every
+logical checkpoint.
+
+Preserve all functional behavior and fail-closed boundaries delivered by
+Feature 032. Remediate exactly the ten evidence-derived showcase rows for
+Tp7Demo, Tp7Edit, Tp7Help, Tp7ResourceDemo, Tp7ResourceGenerator,
+Tp7AsciiTable, Tp7Calculator, Tp7Calendar, Tp7Puzzle, and Tp7MouseDialog.
+Each example requires a real visible main component, real TStatusLine,
+keyboard-reachable Help -> Description, complete keyboard paths, constrained
+layout, and primary app-loop/state/view/cell proof.
+
+Review the matching TVDEMOS sources read-only for historical purpose and user
+flow. Keep the implementation modern idiomatic C#. Give every example exactly
+one UseExistingFramework, SmallFrameworkFix, IntentionalDeviation, or
+FollowUpHardening decision. Use SmallFrameworkFix only for a bounded defect
+with its own red/green proof; route broader runtime work to FollowUpHardening.
+Do not add dependencies, re-port Pascal logic, create a second examples-only
+framework, access arbitrary user files, mutate host mouse/terminal/font/locale
+state, or weaken resource, help, path, capability, security, or A11Y
+boundaries.
+
+Validate targeted showcase smokes, all ten normal Release entry points, full
+Release tests, canonical five-assembly coverage, formatting, DocFX,
+Playwright/Axe, constrained layouts, Linux/macOS/Windows gates, agent parity,
+secrets, supply chain, reviews, and temporary exact-head gate evidence.
+Increment the manual build counter before every individual dotnet build or
+dotnet test command.
+
+Commit, push, create the non-empty feature PR, converge all mandatory checks
+and actionable review threads, and merge only under the repository's narrow
+authorized policy. Use one evidence-only causal closeout PR only when terminal
+merge facts cannot truthfully exist on the reviewed feature head. Delete
+obsolete branches, return to clean synchronized main, and record the
+retrospective. Do not start Wave 6; leave its next action dependent on a
+separate review of the actual Feature-033 delta.
+```

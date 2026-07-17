@@ -177,7 +177,7 @@ make this path visible for learners.
 ## 5. Kopierbarer Specify-Prompt / Copyable Specify Prompt
 
 ```text
-/speckit-specify Nutze Lastenheft_Constitution_Change.md als verbindliche Eingabe. Erstelle die Feature-Spezifikation fuer eine Governance-Aenderung zu didaktischer und sprachlicher Klarheit in TuiVision.
+$speckit-specify Nutze Lastenheft_Constitution_Change.md als verbindliche Eingabe. Erstelle die Feature-Spezifikation fuer eine Governance-Aenderung zu didaktischer und sprachlicher Klarheit in TuiVision.
 
 Ziel: Constitution, Spec-Kit-Templates und betroffene Agent-Guidance sollen konsistent festlegen, dass user-facing Dokumentation und Public-API-Dokumentation Deutsch zuerst und Englisch danach liefern, ungefaehr CEFR-B2 erreichen und text-first A11Y als Completion-Kriterium behandeln.
 
@@ -193,6 +193,49 @@ Pflicht:
 
 ## Spec-Kit-Intake-Reife / Spec Kit Intake Readiness
 
-Dieses Lastenheft enthaelt bereits einen kopierbaren `/speckit-specify`-Prompt. Vor dem Start muss der aktuelle Repository-Stand trotzdem geprueft werden. Bereits erledigte oder branch-suffig archivierte Punkte werden nicht erneut umgesetzt; offene Punkte werden als `Applicable`, `AlreadySatisfied`, `N/A`, `Open` oder `FollowUp` klassifiziert.
+Dieses Lastenheft enthaelt kopierbare `$speckit-specify`- und
+`$speckit-autonomous`-Prompts. Vor dem Start muss der aktuelle Repository-Stand
+trotzdem geprueft werden. Bereits erledigte oder branch-suffig archivierte
+Punkte werden nicht erneut umgesetzt; offene Punkte werden als `Applicable`,
+`AlreadySatisfied`, `N/A`, `Open` oder `FollowUp` klassifiziert.
 
-*This requirements document already contains a copyable `/speckit-specify` prompt. Before starting, still check the current repository state. Completed or branch-suffixed archived items are not implemented again; open items are classified as `Applicable`, `AlreadySatisfied`, `N/A`, `Open`, or `FollowUp`.*
+*This requirements document contains copyable `$speckit-specify` and
+`$speckit-autonomous` prompts. Before starting, still check the current
+repository state. Completed or branch-suffixed archived items are not
+implemented again; open items are classified as `Applicable`,
+`AlreadySatisfied`, `N/A`, `Open`, or `FollowUp`.*
+
+---
+
+## 6. Kopierbarer Autonomous-Prompt / Copyable Autonomous Prompt
+
+```text
+$speckit-autonomous Use `Lastenheft_Constitution_Change.md` as the binding
+intake for a complete autonomous governance review in MergeAndSync mode.
+
+Start only from clean synchronized main. Determine the next free Spec Kit
+feature number without reusing an archived feature. First classify every
+requirement as Applicable, AlreadySatisfied, N/A, Open, or FollowUp. Do not
+create an empty feature, branch, commit, or pull request if the current
+constitution, templates, and maintained agent guidance already satisfy the
+complete intake.
+
+Run Specify, repeated Clarify, requirements and governance checklists, Plan,
+plan review, Tasks, repeated Analyze, Implement, validation, delivery, and
+retrospective to convergence. Keep the scope limited to constitution,
+repository-owned Spec Kit templates, maintained agent guidance, and directly
+triggered documentation evidence.
+
+Require German-first/English-second CEFR-B2 documentation, text-first WCAG
+2.2 AA guidance, complete public-API XML documentation rules, selective
+didactic inline comments, and test-first evidence where it improves learner
+understanding. Run DocFX and web-A11Y validation when their trigger surfaces
+change. Do not port framework behavior, start an example wave, lower existing
+gates, or commit generated DocFX output.
+
+Treat provider settings, branch protection, credentials, legal approval, and
+other human-only decisions as Open or N/A with owner and re-evaluation
+trigger. Use remote authority only for this repository's non-empty feature
+delivery. Merge only after all applicable checks and reviews converge, then
+return to clean synchronized main.
+```
