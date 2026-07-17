@@ -347,6 +347,20 @@ public sealed class Wave5CombinedDeltaClosureTests
         ValidateCombinedRows(Parse(crlf));
     }
 
+    /// <summary>
+    /// Prüft plattformneutrale Hashes für textuelle Vorgänger-Evidence.
+    ///
+    /// Verifies platform-neutral hashes for textual predecessor evidence.
+    /// </summary>
+    [TestMethod]
+    public void Test_AcceptedInputHashesAreLineEndingNeutral()
+    {
+        const string lf = "erste Zeile\nsecond line\n";
+        string crlf = lf.Replace("\n", "\r\n", StringComparison.Ordinal);
+
+        Assert.AreEqual(CanonicalTextSha256(lf), CanonicalTextSha256(crlf));
+    }
+
     private static void ValidateProductDeltas(JsonObject root)
     {
         JsonArray deltas = Array(root, "productDeltas");
@@ -393,7 +407,7 @@ public sealed class Wave5CombinedDeltaClosureTests
             string path = Path.Combine(repositoryRoot, relativePath);
             if (!File.Exists(path)
                 || Text(input, "sha256") != ExpectedInputHashes[relativePath]
-                || Sha256(File.ReadAllBytes(path)) != ExpectedInputHashes[relativePath]
+                || CanonicalTextSha256(File.ReadAllText(path)) != ExpectedInputHashes[relativePath]
                 || string.IsNullOrWhiteSpace(Text(input, "role"))
                 || string.IsNullOrWhiteSpace(Text(input, "reevaluationTrigger")))
             {
@@ -708,6 +722,9 @@ public sealed class Wave5CombinedDeltaClosureTests
 
     private static string Sha256(byte[] bytes) =>
         Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant();
+
+    private static string CanonicalTextSha256(string document) =>
+        Sha256(Encoding.UTF8.GetBytes(NormalizeLineEndings(document)));
 
     private static string GitBlobId(byte[] bytes)
     {
