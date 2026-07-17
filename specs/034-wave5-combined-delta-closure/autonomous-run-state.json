@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0",
+  "runId": "9beccdb7-7c58-4e5e-a7df-40ec427aac50",
+  "featurePath": "specs/034-wave5-combined-delta-closure",
+  "branch": "034-wave5-combined-delta-closure",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Implement",
+  "status": "Active",
+  "checkpointCommit": "4dbfa39511f774af5b0c79ac6c5518dd058f664c",
+  "acceptedArtifacts": [
+    {
+      "path": "Lastenheft_19_Wave5-Combined-Delta-Closure.md",
+      "sha256": "23ef5b6da529f917f6e2c058038372b100e70fc1182d54047e2295ed88f9da05"
+    },
+    {
+      "path": "specs/034-wave5-combined-delta-closure/spec.md",
+      "sha256": "67832196a681213daf465dbdd5b85f9adf3b08f93562509cd4e88c02f30505e7"
+    },
+    {
+      "path": "specs/034-wave5-combined-delta-closure/checklists/requirements.md",
+      "sha256": "c011fd836c2c1999bacb036f14025fbc479a5c2b7064d809563c2b8a30d1899d"
+    },
+    {
+      "path": "specs/034-wave5-combined-delta-closure/checklists/provenance-cardinality.md",
+      "sha256": "69a66055842318cc9355d99e1b1e04f17aed52237d7c1569b6e5462e1cd2daf6"
+    },
+    {
+      "path": "specs/034-wave5-combined-delta-closure/checklists/decision-followup.md",
+      "sha256": "602bce571b3e655521ea5db4a59c2519fb0727bb29da2822f9121159a73907c6"
+    },
+    {
+      "path": "specs/034-wave5-combined-delta-closure/checklists/framework-proof.md",
+      "sha256": "10904613ab781aa2d24bf7fe554514e5ef7fdda27ddd9b147ca782118f0fa8e3"
+    },
+    {
+      "path": "specs/034-wave5-combined-delta-closure/checklists/governance-a11y.md",
+      "sha256": "b64e2173380e61f93a20a1a3d48a50f361bbe4a9b2396bd09fea561ba3d357f5"
+    },
+    {
+      "path": "specs/034-wave5-combined-delta-closure/plan.md",
+      "sha256": "22a1b3ef44e81497764781d204eeb33e5a0266ecb3b08c160d101ce6dc549426"
+    },
+    {
+      "path": "specs/034-wave5-combined-delta-closure/research.md",
+      "sha256": "697261d9bd3681b669d07c9ca824982995c2f555525863d70d75fd16d46d1e7f"
+    },
+    {
+      "path": "specs/034-wave5-combined-delta-closure/data-model.md",
+      "sha256": "b8ca1262fb4d2642c0eaed438299352890cc26675f288cb7db2b571d69a5a171"
+    },
+    {
+      "path": "specs/034-wave5-combined-delta-closure/quickstart.md",
+      "sha256": "115f4909443ccb61b3fe85953ae8879a2263b3189487349b3a296d27470ec4e9"
+    },
+    {
+      "path": "specs/034-wave5-combined-delta-closure/contracts/wave5-combined-delta-acceptance.md",
+      "sha256": "39d3f77ab3a50e561f697e32ff1eedb94f2bb6606a8b3720b12950fe9026cf5a"
+    },
+    {
+      "path": "specs/034-wave5-combined-delta-closure/checklists/plan-quality.md",
+      "sha256": "4a28e4bf43fff3e4d83abacea063d4d9168e04a3613dd16312046d69aadf738b"
+    },
+    {
+      "path": "specs/034-wave5-combined-delta-closure/checklists/plan-review.md",
+      "sha256": "7a52584babe5ff3bfe7c80408a68aa732be27aa50835f5fe303bf0d86665c480"
+    },
+    {
+      "path": "specs/034-wave5-combined-delta-closure/autonomous-gate-requirements.json",
+      "sha256": "f4810ce8d736a7317b72d2b9d94346405b35ea910efee49630a73fdc1d1a438e"
+    }
+  ],
+  "tasks": {
+    "path": "specs/034-wave5-combined-delta-closure/tasks.md",
+    "sha256": "c9ef4e80e1338f1c0f3ed7095ec090e3c1464d40646e57abd8527936384910a5",
+    "completed": 16,
+    "total": 164
+  },
+  "lastPassingGate": "Repeated Analyze converged with 73/73 requirements and success criteria covered, zero unmapped tasks, zero Critical/High/Medium findings, and zero Constitution conflicts.",
+  "nextExactAction": "Create the closed provenance dataset and test-only validation harness before the first Red invocation.",
+  "lastOperation": {
+    "kind": "Analyze",
+    "state": "Completed",
+    "summary": "Remediated three task precisions and completed a second read-only Analyze pass with no material findings."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "updatedAt": "2026-07-17T13:12:08Z"
+}

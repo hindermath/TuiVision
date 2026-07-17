@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "1.0",
+  "gates": [
+    {
+      "gateId": "GATE-STATIC-CANDIDATE",
+      "applicability": "Applicable",
+      "requiredScope": "Exact intended candidate has clean whitespace, complete path inventory, no protected or generated output, and no placeholders.",
+      "requiredCommandTokens": ["git", "diff", "--cached", "--check"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Every delivery candidate requires exact staged-scope proof.",
+      "reevaluationTrigger": "Never while this feature changes tracked files."
+    },
+    {
+      "gateId": "GATE-WAVE5-CLOSURE",
+      "applicability": "Applicable",
+      "requiredScope": "Feature-034 positive and negative closure validation proves exact PR provenance and 15/6/10/10/10 cardinalities.",
+      "requiredCommandTokens": ["dotnet", "test", "TuiVision.Examples.SmokeTests", "Release", "Wave5CombinedDeltaClosure"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Wave closure requires deterministic fail-closed evidence.",
+      "reevaluationTrigger": "Never while Feature 034 is the Wave-5 closure gate."
+    },
+    {
+      "gateId": "GATE-WAVE5-TP7",
+      "applicability": "Applicable",
+      "requiredScope": "All Tp7, Wave5Functional, and Wave5Showcase real app-loop tests pass in Release.",
+      "requiredCommandTokens": ["dotnet", "test", "TuiVision.Examples.SmokeTests", "Release", "Tp7"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The combined audit must execute both delivered quality layers.",
+      "reevaluationTrigger": "Never while the ten Wave-5 examples are audited."
+    },
+    {
+      "gateId": "GATE-WAVE5-ENTRYPOINTS",
+      "applicability": "Applicable",
+      "requiredScope": "All ten projects pass controlled smoke and normal PTY keyboard paths with primary action, F1, and Ctrl+Q.",
+      "requiredCommandTokens": ["dotnet", "run", "--no-build", "Release", "Tp7", "--smoke"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Test construction does not replace runnable entry-point proof.",
+      "reevaluationTrigger": "Never while runnable examples form the closure scope."
+    },
+    {
+      "gateId": "GATE-FULL-RELEASE",
+      "applicability": "Applicable",
+      "requiredScope": "The complete solution Release test suite passes.",
+      "requiredCommandTokens": ["dotnet", "test", "TuiVision.sln", "Release"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Wave eligibility is a repository-wide release claim.",
+      "reevaluationTrigger": "Only if the binding intake is formally changed."
+    },
+    {
+      "gateId": "GATE-COVERAGE",
+      "applicability": "Applicable",
+      "requiredScope": "Canonical Coverlet collection keeps all five required framework assemblies at or above 70 percent line coverage.",
+      "requiredCommandTokens": ["dotnet", "test", "XPlat Code Coverage", "coverlet.runsettings"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Repository merge policy requires the five-assembly coverage gate.",
+      "reevaluationTrigger": "Only if the Constitution and repository gate change."
+    },
+    {
+      "gateId": "GATE-DOCFX-A11Y",
+      "applicability": "Applicable",
+      "requiredScope": "DocFX builds without warnings or errors and Playwright/Axe documentation smoke passes.",
+      "requiredCommandTokens": ["docfx", "docfx.json", "playwright", "axe"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Learner-facing closure and Wave-6 intake documentation change.",
+      "reevaluationTrigger": "Only if no learner-facing or DocFX surface changes."
+    },
+    {
+      "gateId": "GATE-PLATFORM-LINUX",
+      "applicability": "Applicable",
+      "requiredScope": "Ubuntu executes the actual repository Release and Wave-5 acceptance body.",
+      "requiredCommandTokens": ["dotnet", "test", "Release"],
+      "requiredRunnerOrPlatformTokens": ["ubuntu"],
+      "rationale": "Wave closure requires a Linux result.",
+      "reevaluationTrigger": "Never for this closure."
+    },
+    {
+      "gateId": "GATE-PLATFORM-MACOS",
+      "applicability": "Applicable",
+      "requiredScope": "macOS executes the actual repository Release and Wave-5 acceptance body.",
+      "requiredCommandTokens": ["dotnet", "test", "Release"],
+      "requiredRunnerOrPlatformTokens": ["macos"],
+      "rationale": "macOS is a primary development and runtime platform.",
+      "reevaluationTrigger": "Never for this closure."
+    },
+    {
+      "gateId": "GATE-PLATFORM-WINDOWS",
+      "applicability": "Applicable",
+      "requiredScope": "Windows executes the actual repository Release and Wave-5 acceptance body plus PowerShell state parity.",
+      "requiredCommandTokens": ["dotnet", "test", "Release"],
+      "requiredRunnerOrPlatformTokens": ["windows"],
+      "rationale": "Windows and PowerShell parity are repository requirements.",
+      "reevaluationTrigger": "Never for this closure."
+    },
+    {
+      "gateId": "GATE-SUPPLY-CHAIN",
+      "applicability": "Applicable",
+      "requiredScope": "Repository dependency, secret, and supply-chain checks pass on the reviewed head.",
+      "requiredCommandTokens": ["supply-chain"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "NIST SSDF and MergeAndSync delivery governance remain applicable.",
+      "reevaluationTrigger": "Never for a MergeAndSync delivery."
+    },
+    {
+      "gateId": "GATE-AGENT-PARITY",
+      "applicability": "Applicable",
+      "requiredScope": "All five maintained agent guidance surfaces are semantically synchronized.",
+      "requiredCommandTokens": ["agent", "parity"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Active feature and Wave outcome affect maintained context.",
+      "reevaluationTrigger": "Only if no shared guidance or marker changes."
+    },
+    {
+      "gateId": "GATE-SCRIPT-PARITY",
+      "applicability": "N/A",
+      "requiredScope": "No new or changed repository script requires Bash and PowerShell parity.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Feature 034 plans no script change.",
+      "reevaluationTrigger": "Any added or changed .sh or .ps1 file."
+    }
+  ]
+}
