@@ -55,15 +55,15 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 27 | `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md` | Gemeinsamer Pre-Wave-5-/Wave-6-Abschluss | archiviert oder abgeschlossen / archived or completed |
 | 28 | `Lastenheft_17_Wave5-TP7-Functional-Porting.032-wave5-tp7-functional-porting.md` | Wave-5 TP7 Functional Porting | archiviert oder abgeschlossen / archived or completed |
 | 29 | `Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md` | Wave-5 TP7 Showcase Remediation | archiviert oder abgeschlossen / archived or completed |
-| 30 | `Lastenheft_19_Wave5-Combined-Delta-Closure.md` | Wave-5 Combined Delta Closure | nächster Intake, Feature 034 / next intake, Feature 034 |
+| 30 | `Lastenheft_19_Wave5-Combined-Delta-Closure.034-wave5-combined-delta-closure.md` | Wave-5 Combined Delta Closure | archiviert im aktiven Feature 034 / archived in active Feature 034 |
 | 31 | `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` | Beispielportfolio-Konformitätsaudit | verbindlich nach Wave-6-Closeout, Feature-Nummer später / binding after Wave-6 closeout, feature number deferred |
 <!-- secure-development-hardening-order:end -->
 
 ## Fortsetzungsmarke / Resume Marker
 
-> **NÄCHSTER FACHLICHER INTAKE: Feature 034 aus `Lastenheft_19_Wave5-Combined-Delta-Closure.md` prüft den tatsächlichen kombinierten Wave-5-Delta read-only; Wave 6 bleibt bis zum belegten Abschluss blockiert.**
+> **AKTIVER FACHLICHER SCHRITT: Feature 034 prüft den tatsächlichen kombinierten Wave-5-Delta read-only; die lokale Matrix ist sauber, Wave 6 bleibt bis zum Remote-, Review-, Merge- und kausalen Abschluss blockiert.**
 >
-> **NEXT DOMAIN INTAKE: Feature 034 from `Lastenheft_19_Wave5-Combined-Delta-Closure.md` reviews the actual combined Wave-5 delta read-only; Wave 6 remains blocked until the evidenced closure.**
+> **ACTIVE DOMAIN STEP: Feature 034 reviews the actual combined Wave-5 delta read-only; the local matrix is clean, and Wave 6 remains blocked until remote, review, merge, and causal closure complete.**
 
 Features 025, 026, 028, 029, 030 und 031 sind abgeschlossen. Der unabhängige
 Closure bestätigt 48 Verträge, 13 Consumer-Gruppen, 96 vollständige
@@ -72,8 +72,9 @@ Wave-5-Stage 1 ist als Feature 032 vollständig geliefert. Feature 033 ergänzt
 die zweite Stufe mit zehn sichtbaren Hauptkomponenten, echten Statuszeilen,
 per Tastatur erreichbaren Beschreibungen, begrenzten Layout-Proofs und
 synchronisierten Guides. Feature 033 ist vollständig gemergt. Der explizite
-Auftrag reserviert Feature 034 für den read-only Combined-Delta-Closure aus
-Lastenheft 19. Wave 6 bleibt bis zu dessen belegtem Abschluss
+Auftrag führt Feature 034 als read-only Combined-Delta-Closure aus
+Lastenheft 19 aus. Die lokale 15/6/10/10/10-Matrix enthält null Findings und
+null Product Decisions. Wave 6 bleibt bis zum vollständigen belegten Abschluss
 `ConditionallyReady` und blockiert.
 
 *Features 025, 026, 028, 029, 030, and 031 are complete. The independent
@@ -83,8 +84,10 @@ eligible. Feature 032 supplies Stage 1. Feature 033 adds the complete Stage 2
 with ten visible main components, real status lines,
 keyboard-reachable descriptions, constrained-layout proof, and synchronized
 guides. Feature 033 is fully merged. The explicit instruction reserves
-Feature 034 for the read-only combined-delta closure from Lastenheft 19. Wave
-6 remains conditionally ready and blocked until that closure is evidenced.*
+Feature 034 is active for the read-only combined-delta closure from Lastenheft
+19. The local 15/6/10/10/10 matrix contains zero findings and zero product
+decisions. Wave 6 remains conditionally ready and blocked until that closure
+is fully evidenced.*
 
 ## Verbindliche Folge vor Wave 5 und Wave 6 / Binding Sequence Before Wave 5 and Wave 6
 
