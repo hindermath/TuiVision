@@ -275,7 +275,7 @@ Statuscheckliste Beispielwellen:
 - [x] **Welle 5 - Kombinierter Delta-Abschluss**
   Reihenfolgehinweis: Feature 034 ist über PR #99 und Merge `7fb52e2` vollständig geliefert. Der read-only Audit bestätigt exakt 15 Quellen, sechs Consumer, zehn Beispiele, zehn Funktionsproofs, zehn Showcase-Abschlüsse und zehn Guide-/Startpfade mit null Findings und null Product Decisions. Wave 5 ist `Closed`.
 - [x] **Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`, funktionale Stufe**
-  Reihenfolgehinweis: Feature 035 liefert den kontrollierten Root-, Listen-, Preview-, Such- und Dateioperationsvertrag mit realen App-Loop-Proofs. Die vollständige sichtbare Menü-/Dialogführung bleibt ein belegtes Stage-2-Delta; Feature 036 wird in diesem Lauf nicht angelegt oder gestartet.
+  Reihenfolgehinweis: Feature 035 liefert den kontrollierten Root-, Listen-, Preview-, Such- und Dateioperationsvertrag mit realen App-Loop-Proofs über PR #101 und Merge `52f77fa`. Die vollständige sichtbare Menü-/Dialogführung bleibt ein belegtes Stage-2-Delta; Feature 036 wurde nicht angelegt oder gestartet.
 - [ ] **Post-Wave-6 Example Portfolio Conformance Audit**
   Reihenfolgehinweis: nach dem vollständig gemergten Wave-6-Closeout gemäß `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md`; prüft alle 25 Originalbeispiele, alle tatsächlich gelieferten Wave-5-/Wave-6-Beispiele und `A11yFramework` als Kontrollbeispiel, ohne im Audit selbst Runtime- oder Beispieländerungen vorzunehmen.
 - [ ] Beispiel-Guides unter `docs/guides/examples/`
@@ -709,11 +709,11 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.7a` = Wave-5 TP7 Functional Porting — ✓ FUNKTIONAL GELIEFERT (Feature 032, Lastenheft 17); 15 Quellen, 6 Consumer, 10 Beispiele und 10 reale Proof-Zeilen
    - `3.7b` = Wave-5 TP7 Showcase Remediation — ✓ ABGESCHLOSSEN (Feature 033, Lastenheft 18, PR #96, Merge `d476e63`); tatsächliche kombinierte Delta-Prüfung bleibt Voraussetzung für Wave 6
    - `3.7c` = Wave-5 Combined Delta Closure — ✓ ABGESCHLOSSEN (Feature 034, Lastenheft 19, PR #99, Merge `7fb52e2`); Wave 5 `Closed`, Wave 6 `EligibleForIntake`
-   - `3.8a` = Wave-6 TVFM Functional Porting — FUNKTIONAL GELIEFERT (Feature 035, Lastenheft 20); Stage-2-Showcase-Delta separat abzuleiten
+   - `3.8a` = Wave-6 TVFM Functional Porting — ✓ FUNKTIONAL GELIEFERT (Feature 035, Lastenheft 20, PR #101, Merge `52f77fa`); Stage-2-Showcase-Delta separat abzuleiten
    - Post-Wave-6 = Example-Portfolio-Konformitätsaudit — VERBINDLICH VORGEMERKT (Lastenheft 15); Feature-Nummer erst nach Wave-6-Closeout
 
->>> AKTIVER FACHLICHER SCHRITT <<< Feature 035 liefert die funktionale
-Wave-6-Stufe. Eine spätere Showcase-Stufe wird ausschließlich aus dem
+>>> FORTSETZUNGSMARKE <<< Feature 035 hat die funktionale Wave-6-Stufe
+geliefert. Eine spätere Showcase-Stufe wird ausschließlich aus dem
 tatsächlichen Feature-035-Delta abgeleitet und bleibt bis zu einem getrennten
 Intake ungestartet. Der Post-Wave-6-Audit bleibt weiterhin gesperrt.
 

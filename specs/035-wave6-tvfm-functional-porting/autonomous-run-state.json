@@ -5,9 +5,9 @@
   "branch": "035-wave6-tvfm-functional-porting",
   "deliveryMode": "MergeAndSync",
   "authorityRevalidationRequired": false,
-  "stage": "Publish",
-  "status": "Active",
-  "checkpointCommit": "4b32762dfc60e18655de35d816ff1d4ede0185eb",
+  "stage": "Retrospective",
+  "status": "Completed",
+  "checkpointCommit": "207e807ee8835779b9b8641f91868a6a5e80f938",
   "acceptedArtifacts": [
     {"path": "Lastenheft_20_Wave6-TVFM-Functional-Porting.035-wave6-tvfm-functional-porting.md", "sha256": "f19e29e9d0ea4eb7ec1229c54769c308e1db9b9943cd60ed15a7f6968b87b7c5"},
     {"path": "specs/035-wave6-tvfm-functional-porting/spec.md", "sha256": "8fa69c770ba0d1aaeebc861871e3029f9913b4ebae4834828c63c4352f502eca"},
@@ -26,21 +26,21 @@
   ],
   "tasks": {
     "path": "specs/035-wave6-tvfm-functional-porting/tasks.md",
-    "sha256": "801f89890679985f9eb33b6834cda0f8e6e711364a5e7c045e3718c415247fa8",
-    "completed": 146,
+    "sha256": "061eae108352d36713bdad339559d097b3926983b8525d3e3562dedb3f92eab2",
+    "completed": 163,
     "total": 163
   },
-  "lastPassingGate": "Local validation, scope, supply-chain, agent, UTF-8, historical hash, evidence-cardinality and staged-diff gates passed through T146.",
-  "nextExactAction": "Execute T147 by committing the exact Feature-035 candidate.",
+  "lastPassingGate": "Feature PR #101 merged at head 207e807 with all technical gates green, exact-head evidence validated and causal closeout recorded; Feature 036 was not started.",
+  "nextExactAction": "N/A",
   "lastOperation": {
-    "kind": "PreCommitStaging",
+    "kind": "MergeAndSync",
     "state": "Completed",
-    "summary": "Local validation is complete, version is aligned to 1.35.1.370 and the exact candidate is staged for commit. Stage uses schema-valid Publish for commit/push/PR delivery."
+    "summary": "Merged Feature 035 through PR #101, recorded non-recursive closeout evidence, classified retrospective as NoPromotion and left Stage-2 showcase remediation plus Feature 036 unstarted."
   },
   "stop": {
     "reason": "N/A",
     "requestedAt": "N/A",
     "safeBoundary": "N/A"
   },
-  "updatedAt": "2026-07-17T15:54:39Z"
+  "updatedAt": "2026-07-17T16:10:35Z"
 }

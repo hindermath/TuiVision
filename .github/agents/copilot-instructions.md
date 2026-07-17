@@ -76,7 +76,7 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ## Recent Changes
-- 035-wave6-tvfm-functional-porting: Active Wave-6 functional stage adds `Tp7FileManager`, controlled-root file proofs, bounded preview/search, explicit one-shot mutation intents, keyboard parity and app-loop smokes; Stage-2 visible polish remains separate.
+- 035-wave6-tvfm-functional-porting: Delivered Wave-6 functional stage through PR #101; `Tp7FileManager` now has controlled-root file proofs, bounded preview/search, explicit one-shot mutation intents, keyboard parity and app-loop smokes. Stage-2 visible polish remains separate.
 - 034-wave5-combined-delta-closure: Closed Wave 5 with exact 15/6/10/10/10 evidence and zero findings; Lastenheft 20 made Wave 6 eligible for Feature 035.
 - 033-wave5-tp7-showcase-remediation: Completed and merged the ten-example Wave-5 showcase; Wave 6 remains blocked pending actual-delta review
 
@@ -216,7 +216,7 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - Current implementation status: Feature 034 is fully delivered through PR #99, final head `016692d`, merge `7fb52e2`, and its causal closeout.
 - The read-only audit proves exact 15 source, 6 consumer, 10 example, 10 functional-proof, 10 showcase-closure, and 10 guide/launch cardinalities. All ten decisions are `AcceptedIntentionalDeviation`; there are zero open `Gap` dimensions, Candidate Findings, Product Decisions, owner groups, or hardening intakes.
 - Product runtime, APIs, dependencies, projects, examples, framework code, `TVDEMOS/`, `TVFM/`, `tv203s/`, and external comparison sources remain unchanged. The final 22-check matrix and 13 exact-head gates passed; checkout-neutral SHA-256 and Git-blob proof passed on Ubuntu, macOS, and Windows.
-- Wave 5 is `Closed`. Feature 035 is the active Wave-6 functional stage; Feature 036, Stage-2 showcase remediation and the post-Wave-6 audit remain blocked until this run closes.
+- Wave 5 is `Closed`. Feature 035 is delivered through PR #101, final head `207e807`, and merge `52f77fa`; it provides Wave-6 Stage 1. Feature 036, Stage-2 showcase remediation, and the post-Wave-6 audit remain separate and are not started.
 
 
 ### Autonomous Red-Proof Completeness

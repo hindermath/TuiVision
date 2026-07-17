@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-07-17 (aktualisiert einschließlich Feature-035-Kandidat und Preset v0.2.2)
+Stand: 2026-07-17 (aktualisiert einschließlich Feature-035-Delivery und Preset v0.2.2)
 
 Aktueller Zusatz: Feature 016 dokumentiert 157/157 Secure-Development-
 Kontrollen, sechs behobene Medium-Funde, 498/498 grüne Release-Tests und eine
@@ -70,7 +70,8 @@ die exakten Produktdateien der PRs #93 und #96. Wave 6 bleibt bis zum belegten
 Abschluss blockiert.
 
 Feature 035 liefert die funktionale erste Wave-6-Stufe aus dem archivierten
-Lastenheft 20 als modernen, kontrollierten `Tp7FileManager`. Die Stage-1-Basis
+Lastenheft 20 als modernen, kontrollierten `Tp7FileManager` über PR #101 und
+Merge `52f77fa`. Die Stage-1-Basis
 umfasst eine kopierte Lernwurzel, stabile Listen, begrenzte Text-/Hexvorschau,
 begrenzte Suche, geschlossene Viewerwahl, explizite Einmal-Intents fuer
 Kopieren, Umbenennen, Loeschen und Schreibschutz sowie echte App-Loop-, View-,

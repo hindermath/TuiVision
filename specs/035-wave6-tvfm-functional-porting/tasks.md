@@ -250,23 +250,23 @@ gates.
 **Purpose**: Deliver only the reviewed candidate and finish on clean,
 synchronized `main`.
 
-- [ ] T147 Commit the exact Feature-035 candidate and record commit identity without self-invalidating evidence
-- [ ] T148 Push `035-wave6-tvfm-functional-porting` and create a non-empty feature PR
-- [ ] T149 Identify PR-context required checks and record duplicate push runs without unsafe cancellation
-- [ ] T150 Monitor Ubuntu, macOS, Windows, docs/A11Y, supply-chain, parity and full-test gates to terminal state
-- [ ] T151 Map every Applicable gate to actual workflow, job, platform and executed command
-- [ ] T152 Validate temporary exact-head provider evidence against `autonomous-gate-requirements.json`
-- [ ] T153 Inspect Copilot, Claude and GraphQL review threads; resolve every actionable finding
-- [ ] T154 Re-run affected validation and refresh exact-head evidence after any review correction
-- [ ] T155 Use narrow admin bypass only if all technical gates are green and Human Approval is the sole open rule
-- [ ] T156 Merge the feature PR with a merge commit and delete the remote feature branch
-- [ ] T157 Create one causal evidence-only closeout PR only if truthful post-merge facts require it
-- [ ] T158 Switch locally to `main`, fetch/prune and fast-forward pull
-- [ ] T159 Prove clean working tree and `HEAD == origin/main`
-- [ ] T160 Complete `specs/035-wave6-tvfm-functional-porting/retrospective.md` with promotion classification
-- [ ] T161 If a provider-neutral preset defect exists, hand off one bounded `PresetFollowUp`; otherwise record `NoPromotion` without an empty branch or PR
-- [ ] T162 Set run state to `Retrospective`, `Completed`, `163/163`, `nextExactAction: N/A`
-- [ ] T163 Report final matrices, validation, PR/merge, Stage-2 decision, follow-ups and main-sync proof without starting Feature 036
+- [X] T147 Commit the exact Feature-035 candidate and record commit identity without self-invalidating evidence
+- [X] T148 Push `035-wave6-tvfm-functional-porting` and create a non-empty feature PR
+- [X] T149 Identify PR-context required checks and record duplicate push runs without unsafe cancellation
+- [X] T150 Monitor Ubuntu, macOS, Windows, docs/A11Y, supply-chain, parity and full-test gates to terminal state
+- [X] T151 Map every Applicable gate to actual workflow, job, platform and executed command
+- [X] T152 Validate temporary exact-head provider evidence against `autonomous-gate-requirements.json`
+- [X] T153 Inspect Copilot, Claude and GraphQL review threads; resolve every actionable finding
+- [X] T154 Re-run affected validation and refresh exact-head evidence after any review correction
+- [X] T155 Use narrow admin bypass only if all technical gates are green and Human Approval is the sole open rule
+- [X] T156 Merge the feature PR with a merge commit and delete the remote feature branch
+- [X] T157 Create one causal evidence-only closeout PR only if truthful post-merge facts require it
+- [X] T158 Switch locally to `main`, fetch/prune and fast-forward pull
+- [X] T159 Prove clean working tree and `HEAD == origin/main`
+- [X] T160 Complete `specs/035-wave6-tvfm-functional-porting/retrospective.md` with promotion classification
+- [X] T161 If a provider-neutral preset defect exists, hand off one bounded `PresetFollowUp`; otherwise record `NoPromotion` without an empty branch or PR
+- [X] T162 Set run state to `Retrospective`, `Completed`, `163/163`, `nextExactAction: N/A`
+- [X] T163 Report final matrices, validation, PR/merge, Stage-2 decision, follow-ups and main-sync proof without starting Feature 036
 
 ## Dependencies and Execution Order
 

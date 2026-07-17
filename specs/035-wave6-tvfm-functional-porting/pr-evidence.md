@@ -51,11 +51,14 @@
 | Checklists | 1 | Pass | six files, zero incomplete items | None |
 | Plan | 2 | Pass | plan plus design artifacts; link and recursive-mutation boundaries sharpened | None |
 | Tasks | 1 | Pass | 163 dependency-ordered tasks, no unsafe parallel marker | None |
-| Analyze | 2 | Pass | one `162/162` typo remediated; no Critical, High or Medium finding | Implement |
-| Resume audit | 1 | Pass | explicit `$speckit-autonomous-resume`; state schema valid; task drift 20/163 -> 42/163 is feature-owned and non-material | Sync state and continue |
-| Implement | 1 | Active | foundation, read/search/mutation code and targeted proof expansion implemented | T114 |
-| Validate | 0 | Open | candidate not yet complete | Later |
-| Deliver | 0 | Open | no commit, push or PR yet | Later |
+| Analyze | 2 | Pass | one `162/162` typo remediated; no Critical, High or Medium finding | None |
+| Resume audit | 1 | Pass | explicit `$speckit-autonomous-resume`; state schema valid; task drift 20/163 -> 42/163 was feature-owned and non-material | None |
+| Implement | 1 | Pass | all five user-story slices implemented with exact 24/10/1/1 evidence and Stage-2 disposition | None |
+| Validate | 1 | Pass | local targeted, full, coverage, DocFX/A11Y, supply-chain, UTF-8, scope and state gates passed | None |
+| Publish | 1 | Pass | feature commit `207e807ee8835779b9b8641f91868a6a5e80f938`, pushed branch and PR #101 | None |
+| Review | 1 | Pass | PR #101 technical checks green; Claude passed; Copilot quota comment had no actionable finding; GraphQL review threads empty | None |
+| MergeAndSync | 1 | Pass | PR #101 merged with merge commit `52f77facc518e3084f897148b44ec19e62b3dde6`; feature branch deleted and pruned | None |
+| Retrospective | 1 | Pass | `retrospective.md` records `NoPromotion`; causal closeout is evidence-only and non-recursive | None |
 
 ## Historical Source Matrix
 
@@ -159,8 +162,33 @@
 | autonomous state refresh | T144 | Pass | Accepted artifact hashes refreshed for the archived Lastenheft/spec path; task hash and count refreshed to 143/163; Bash and PowerShell state validators pass. A final task-hash refresh follows after T145-T146. |
 | final pre-commit version alignment | T145 | Pass | `Directory.Build.props` aligned to `1.35.1.370`; patch anticipates the single Feature-035 candidate commit and build counter was not incremented. |
 | staged candidate inventory | T146 | Pass | Intended Feature-035 files staged only; `git diff --cached --check` passes after final T146/state refresh. State stage corrected to schema-valid `Publish` after validators rejected non-schema `Deliver`. |
-| Linux/macOS/Windows | Filesystem/app behavior | Open | PR gates |
-| exact-head evidence | Before merge | Open | PR head not yet available |
+| feature commit | T147 | Pass | Candidate commit `207e807ee8835779b9b8641f91868a6a5e80f938` (`feat: deliver wave6 tvfm functional stage`) created from the exact staged candidate. |
+| PR publication | T148-T149 | Pass | Branch `035-wave6-tvfm-functional-porting` pushed and PR #101 opened. Duplicate push-context runs were observed and left uncancelled; PR-context runs were used for merge gates. |
+| Linux/macOS/Windows | T150-T151 | Pass | PR #101 CI `Build and Test` passed on `ubuntu-latest`, `macos-latest` and `windows-latest`; Homogeneity and PowerShell Static Analysis also passed on Ubuntu, macOS and Windows. |
+| docs/A11Y, supply-chain and secret gates | T150-T151 | Pass | PR #101 passed DocFX Pages build, Security Supply Chain, Gitleaks and Agent Secret Scan. DocFX deploy was skipped because the event was a PR, as expected. |
+| exact-head evidence | T152 | Pass | Temporary local exact-head provider evidence for head `207e807ee8835779b9b8641f91868a6a5e80f938` covered 11 requirements and passed both Bash and PowerShell gate validators before merge. |
+| reviewer and thread review | T153-T154 | Pass | Claude Code Review passed. Copilot returned a quota-limit comment and no actionable code review. GitHub comments were empty and review-thread inspection found zero unresolved actionable findings, so no correction commit was required. |
+| narrow admin bypass | T155 | Pass | Used only after all technical gates were green, exact-head evidence was valid and the remaining branch-protection blocker was Human Approval/review. |
+| feature merge and branch cleanup | T156 | Pass | PR #101 merged at `2026-07-17T16:03:07Z` with merge commit `52f77facc518e3084f897148b44ec19e62b3dde6`; `git fetch --prune` removed the stale remote-tracking feature branch and `git ls-remote --heads origin '035*'` returned no feature head. |
+| causal closeout | T157-T163 | Pass | `delivery-closeout.md`, `retrospective.md`, final task state and project status record post-merge facts. The closeout does not require another closeout and does not start Feature 036. |
+
+## PR and Merge Evidence
+
+- Feature commit:
+  `207e807ee8835779b9b8641f91868a6a5e80f938`.
+- Feature PR: <https://github.com/hindermath/TuiVision/pull/101>.
+- Feature merge commit:
+  `52f77facc518e3084f897148b44ec19e62b3dde6`.
+- PR-context technical checks: all required build/test, documentation,
+  supply-chain, secret, parity and review automation checks reached success.
+- Review state: Claude passed; Copilot quota exhaustion was documented as a
+  missing non-actionable review, not as a positive review. No actionable
+  GitHub review thread remained before merge.
+- Delivery authority: narrow admin bypass was used only for the remaining
+  Human-Approval/review rule after technical gates and exact-head evidence
+  were green.
+- Final branch cleanup: `035-wave6-tvfm-functional-porting` was deleted
+  remotely and pruned locally before the closeout branch was created.
 
 ## Delivery Closeout Boundary
 
