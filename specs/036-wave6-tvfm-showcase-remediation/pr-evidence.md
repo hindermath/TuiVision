@@ -95,8 +95,8 @@ All 24 read-only files match the accepted Feature-035 hashes.
 | Analyze | 2 | Pass | 70/70 requirements and 187/187 tasks mapped; no Critical, High, Medium, Constitution, or unmapped finding remains | None |
 | Implement | 5 | Pass | T031-T151; all five stories, 10/1 closure, documentation, governance, guidance, status, statistics, and archived intake are complete | Final local validation |
 | Validate | 1 | Pass | T152-T167 local static, behavioral, coverage, documentation, A11Y, supply-chain, parity, text, scope, and state gates | Refresh exact candidate hashes, stage, then obtain remote and exact-head evidence |
-| MergeAndSync | 0 | Planned | authorized non-empty PR delivery | Complete |
-| Retrospective | 0 | Planned | reusable learning classification | Complete |
+| MergeAndSync | 2 | Pass | PR #104, final head `a0d5062`, 22 successful checks, 12/12 exact-head gates, zero actionable threads, authorized Human-Approval-only bypass, merge `559bffb` | None |
+| Retrospective | 1 | Pass | `NoPromotion`; one repository test-design correction and no provider-neutral preset defect | None |
 
 ## Showcase Area Evidence
 
@@ -138,7 +138,7 @@ All 24 read-only files match the accepted Feature-035 hashes.
 | cross-platform-governance | 0.2.0 | Filesystem, input, terminal, and layout | Applicable | Paths, attributes, keyboard, optional mouse, and terminal dimensions vary | platform-aware tests, local/remote gates, W6S boundaries | Pass | Physical terminal behavior remains provider evidence; re-evaluate on platform-specific code |
 | cross-platform-governance | 0.2.0 | Bash and PowerShell script parity | N/A | No repository script is added or changed | final path inventory | Accepted | Re-evaluate on `.sh`, `.ps1`, or workflow-script change |
 | agent-parity-governance | 0.3.0 | Maintained and generated surfaces | Applicable | Active feature context is synchronized across five maintained files and generated Antigravity context | agent files, `.agent/rules/specify-rules.md`, homogeneity checks | Pass | `.specify/templates/` is unchanged; re-evaluate on shared guidance or template change |
-| autonomous-run-governance | 0.2.2 | State, authority, exact head, review, and MergeAndSync | Applicable | The feature uses autonomous remote delivery | run state, gate requirements, this file, provider evidence | Pass pending remote | Re-evaluate on interruption, authority drift, changed head, review finding, or delivery failure |
+| autonomous-run-governance | 0.2.2 | State, authority, exact head, review, and MergeAndSync | Applicable | The feature uses autonomous remote delivery | run state, gate requirements, this file, provider evidence, `delivery-closeout.md` | Pass | Re-evaluate on interruption, authority drift, changed head, review finding, or delivery failure |
 
 ## Validation
 
@@ -199,9 +199,13 @@ All 24 read-only files match the accepted Feature-035 hashes.
 | corrected Wave-6 showcase, functional, workspace, and operation filter, `1.36.1.397` | Platform-neutral historical-hash correction | Pass | 35/35 passed, including a new proof that `.PAS`/`.BAT` hashes are LF-canonical while `.PAL`/`.TVR` hashes remain byte-exact |
 | `dotnet format TuiVision.sln --verify-no-changes --no-restore` after Windows correction | Corrected candidate format | Pass | Exit 0 |
 | `dotnet test TuiVision.sln --configuration Release --no-restore`, `1.36.1.398` | Corrected full Release solution | Pass | 880/880 passed: Core 52, Compatibility 18, Serialization 48, Controls 373, Drivers 151, Examples 238 |
-| Ubuntu/macOS/Windows | Remote acceptance | Planned | Actual required commands mapped to jobs |
-| exact-head gate evidence | Before merge | Planned | Both gate validators pass |
-| reviewer/thread convergence | Before merge | Planned | No actionable unresolved thread |
+| Ubuntu/macOS/Windows | Remote acceptance | Pass | CI run `29606533761`: Ubuntu job `87971004497`, macOS job `87971004520`, Windows job `87971004496`; corrected exact head passed |
+| DocFX Pages build | Remote documentation acceptance | Pass | Run `29606533887`, job `87971005330`; PR Pages deployment skipped as expected |
+| supply-chain workflow | Remote dependency/SBOM acceptance | Pass | Run `29606534116`, job `87971005518` |
+| homogeneity and agent parity | Remote maintained-surface acceptance | Pass | Run `29606533859`; all required platform jobs succeeded |
+| Claude review | Remote review acceptance | Pass | Run `29606534614`, job `87971007187` |
+| exact-head gate evidence | Before merge | Pass | Both validators accepted 12/12 primary requirements for `a0d5062` |
+| reviewer/thread convergence | Before merge | Pass with missing Copilot review | Claude passed; Copilot quota exhausted; zero issue comments, PR review comments, or GraphQL threads |
 
 ## PR and Merge Evidence
 
@@ -215,5 +219,21 @@ All 24 read-only files match the accepted Feature-035 hashes.
 - Windows failure boundary: historical text line-ending conversion in the
   test-only source-hash validator. The correction canonicalizes only
   `.PAS`/`.BAT` text bytes and preserves exact binary hashing.
-- Post-merge facts, if self-invalidating on the reviewed feature head, will be
-  recorded once in a non-recursive causal closeout.
+- Corrected feature head:
+  `a0d506297c101104fd0e15911a7d21e1c5a21caa`.
+- Final PR result: 22 successful checks and one expected skipped Pages
+  deployment. The final Ubuntu, macOS, Windows, DocFX, supply-chain,
+  homogeneity, secret, PowerShell and Claude gates passed.
+- Temporary provider evidence covered 12/12 primary requirements on the exact
+  corrected head. Bash and PowerShell gate validators both passed.
+- Review convergence: zero issue comments, zero PR review comments and zero
+  GraphQL review threads. Copilot quota exhaustion remained a missing review,
+  not Pass.
+- Admin bypass: used only after every technical and exact-head gate was green,
+  no actionable thread remained and Human Approval was the sole open rule.
+- Merge: PR #104 was merged with merge commit
+  `559bffbfbb94699a33cfe1ad8b01d5ac9b86641d` at
+  `2026-07-17T19:16:21Z`; the remote feature branch was deleted and pruned.
+- Post-merge facts are recorded once in
+  `specs/036-wave6-tvfm-showcase-remediation/delivery-closeout.md`; the
+  closeout does not recursively claim its own delivery identity.

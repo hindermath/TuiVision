@@ -57,7 +57,7 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 29 | `Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md` | Wave-5 TP7 Showcase Remediation | archiviert oder abgeschlossen / archived or completed |
 | 30 | `Lastenheft_19_Wave5-Combined-Delta-Closure.034-wave5-combined-delta-closure.md` | Wave-5 Combined Delta Closure | archiviert oder abgeschlossen / archived or completed |
 | 31 | `Lastenheft_20_Wave6-TVFM-Functional-Porting.035-wave6-tvfm-functional-porting.md` | Wave-6 TVFM Functional Porting | archiviert oder abgeschlossen / archived or completed |
-| 32 | `Lastenheft_21_Wave6-TVFM-Showcase-Remediation.036-wave6-tvfm-showcase-remediation.md` | Wave-6 TVFM Showcase Remediation | lokal implementiert, Remote-Delivery ausstehend / implemented locally, remote delivery pending |
+| 32 | `Lastenheft_21_Wave6-TVFM-Showcase-Remediation.036-wave6-tvfm-showcase-remediation.md` | Wave-6 TVFM Showcase Remediation | archiviert oder abgeschlossen / archived or completed |
 | 33 | `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` | Beispielportfolio-Konformitätsaudit | verbindlich nach unabhängigem Wave-6-Closeout, Feature-Nummer später / binding after independent Wave-6 closeout, feature number deferred |
 <!-- secure-development-hardening-order:end -->
 
@@ -81,9 +81,9 @@ setzen Wave 5 auf `Closed` und Wave 6 auf `EligibleForIntake`.
 Feature 035 ist durch PR #101 mit Merge `52f77fa` geliefert. Es liefert die
 kontrollierte funktionale Stage-1-Basis fuer `Tp7FileManager` mit Root-,
 Listen-, Preview-, Such- und expliziten Dateioperationsnachweisen.
-Feature 036 schließt die belegte Stage-2-Lücke lokal mit sichtbaren
-Menü-/Dialogzugängen, begrenztem Drag-/Drop, constrained Layout und A11Y-Proof.
-Die Remote-Delivery, ein unabhängiger Wave-6-Abschluss und der
+Feature 036 schließt die belegte Stage-2-Lücke über PR #104, Head `a0d5062`
+und Merge `559bffb` mit sichtbaren Menü-/Dialogzugängen, begrenztem Drag-/Drop,
+constrained Layout und A11Y-Proof. Ein unabhängiger Wave-6-Abschluss und der
 Post-Wave-6-Audit bleiben getrennt; Feature 037 wurde nicht gestartet.
 
 *Features 025, 026, 028, 029, 030, and 031 are complete. The independent
@@ -97,10 +97,11 @@ combined-delta closure from Lastenheft 19 with zero findings and zero product
 decisions. Feature PR #99 and the causal closeout set Wave 5 to closed and
 Wave 6 to eligible for intake. Feature 035 is delivered through PR #101 and
 merge `52f77fa`; it provides the controlled functional Stage-1 baseline for
-`Tp7FileManager`. Feature 036 closes the evidenced Stage-2 gap locally with
-visible menus and dialogs, bounded drag/drop, constrained layout, and A11Y
-proof. Remote delivery, an independent Wave-6 closure, and the post-Wave-6
-audit remain separate; Feature 037 was not started.*
+`Tp7FileManager`. Feature 036 closes the evidenced Stage-2 gap through PR
+#104, head `a0d5062`, and merge `559bffb` with visible menus and dialogs,
+bounded drag/drop, constrained layout, and A11Y proof. An independent Wave-6
+closure and the post-Wave-6 audit remain separate; Feature 037 was not
+started.*
 
 ## Verbindliche Folge vor Wave 5 und Wave 6 / Binding Sequence Before Wave 5 and Wave 6
 
@@ -137,9 +138,9 @@ audit remain separate; Feature 037 was not started.*
     Feature-035-Deltas.
 11. Feature 036 aus
     `Lastenheft_21_Wave6-TVFM-Showcase-Remediation.036-wave6-tvfm-showcase-remediation.md`
-    schließt lokal die eine belegte `ShowcaseDelta`-Zeile. Remote-Delivery ist
-    noch ausstehend; Feature 037 und der Post-Wave-6-Audit wurden nicht
-    gestartet.
+    schließt die eine belegte `ShowcaseDelta`-Zeile über PR #104, Head
+    `a0d5062` und Merge `559bffb`. Feature 037 und der Post-Wave-6-Audit
+    wurden nicht gestartet.
 12. Nach Feature 036 wird ein unabhängiger Wave-6-Abschluss separat
     festgelegt. Erst nach seinem vollständigen Merge folgt das in Lastenheft 15
     vorgemerkte Example-Portfolio-Audit. Seine Feature-Nummer wird erst dann
@@ -153,10 +154,10 @@ with zero canonical findings. Feature 031 is complete. Feature 032 delivers
 the functional Wave-5 stage and its real-path proof. Feature 033 completes
 the evidence-derived showcase stage. Feature 034 closes the combined delta
 with zero findings. Feature 035 is delivered through PR #101 and merge
-`52f77fa`. Feature 036 locally closes the actual Feature-035 ShowcaseDelta.
-Remote delivery is pending. It starts neither Feature 037 nor the post-Wave-6
-audit. An independent Wave-6 closure remains required before the portfolio
-audit.*
+`52f77fa`. Feature 036 closes the actual Feature-035 ShowcaseDelta through PR
+#104, head `a0d5062`, and merge `559bffb`. It starts neither Feature 037 nor
+the post-Wave-6 audit. An independent Wave-6 closure remains required before
+the portfolio audit.*
 
 ## Verbindlicher Folgeaudit nach Wave 6 / Binding Post-Wave-6 Audit
 

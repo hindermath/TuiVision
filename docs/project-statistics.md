@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-07-17 (aktualisiert einschließlich Feature-036-Kandidat und Preset v0.2.2)
+Stand: 2026-07-17 (aktualisiert einschließlich Feature-036-Delivery und Preset v0.2.2)
 
 Aktueller Zusatz: Feature 016 dokumentiert 157/157 Secure-Development-
 Kontrollen, sechs behobene Medium-Funde, 498/498 grüne Release-Tests und eine
@@ -71,14 +71,15 @@ Abschluss blockiert.
 
 Feature 035 liefert die funktionale erste Wave-6-Stufe aus dem archivierten
 Lastenheft 20 als modernen, kontrollierten `Tp7FileManager` über PR #101 und
-Merge `52f77fa`. Feature 036 schließt das belegte Stage-2-Delta lokal:
+Merge `52f77fa`. Feature 036 schließt das belegte Stage-2-Delta über PR #104,
+Head `a0d5062` und Merge `559bffb`:
 persistentes Hauptfenster, sechs Menügruppen, fokussierbare sichere Dialoge,
 StatusLine, F1-Description, vollständige Tastaturpfade, begrenzte
 Mouse-Intent-Parität und `48x16`-Proof verwenden die unveränderten
 Feature-035-Dateisystemverträge. Die exakte Evidence umfasst zehn
 Showcase-Bereiche, einen Einstiegspunkt und 24 hashgeprüfte read-only
-TVFM-Quellen. Remote-Delivery, unabhängiger Wave-6-Abschluss,
-Post-Wave-6-Audit und beliebige Benutzerdaten bleiben getrennt.
+TVFM-Quellen. Der unabhängige Wave-6-Abschluss, Post-Wave-6-Audit und beliebige
+Benutzerdaten bleiben getrennt; Feature 037 wurde nicht gestartet.
 
 ## Zweck und Pflege
 
@@ -751,6 +752,7 @@ fortgeschrieben.
 | 2026-07-17 | `/speckit-autonomous` für `035-wave6-tvfm-functional-porting` | Die funktionale Wave-6-Stage 1 liefert `Tp7FileManager` und die gemeinsame `TuiVision.Examples.Wave6`-Schicht. Alle 24 read-only `TVFM/`-Quellen sind einer modernen Rolle zugeordnet; zehn Funktionsbereiche decken Navigation, Liste, Filter, Sortierung, Tagging, Text-/Hexvorschau, Suche, interne Viewerwahl, Dateioperationen, Drag-/Drop-Intent und geschlossene Paletten ab. Der Workspace bindet alle Pfade an eine kanonische kopierte Lernwurzel, lehnt absolute Pfade, `..`, Links und Reparse-Segmente ab, begrenzt Vorschau auf 4 KiB/80 Zeilen sowie Suche auf Tiefe 8, 256 Dateien und 100 Treffer. Mutierende Pfade verwenden Einmal-Intents, explizite Bestätigung und Revalidierung; Maus bereitet nur dieselbe bestätigungspflichtige Absicht wie die Tastatur vor. Der aktuelle Kandidaten-Snapshot umfasst 42 Pfade mit etwa `+4382/-68`: Produktions-/Beispielcode `+1195`, Tests `+793`, Dokumentation/Evidence/Guidance `+2179` und Metadaten `+215/-4`. Konservative Manualreferenz für 4382 hinzugefügte oder aktualisierte Zeilen: `54,8` Tage beziehungsweise `427,2` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `35,1` Tage beziehungsweise `273,4` Stunden bei 125 Zeilen/Tag. Frühe lokale Abnahme: Wave-6-Zieltests 22/22 bei Version `1.35.0.367`. Vollständige Release-, Coverage-, DocFX-/A11Y-, Supply-Chain-, Secret-, Plattform-, Review- und Exact-Head-Gates folgen auf dem finalen Kandidaten. Feature 036, Stage-2-Showcase-Remediation und Post-Wave-6-Audit werden nicht gestartet. |
 | 2026-07-17 | Wave-6 TVFM Showcase Remediation als Feature 036 vorbereitet | `Lastenheft_21_Wave6-TVFM-Showcase-Remediation.036-wave6-tvfm-showcase-remediation.md` leitet den nächsten Intake ausschließlich aus der einen akzeptierten Feature-035-`ShowcaseDelta`-Zeile ab. Genau ein Einstiegspunkt und zehn Showcase-Bereiche erhalten sichtbare Menü-/Control-Zugänge, sichere fokussierbare Dateioperationsdialoge, echte StatusLine, F1-Description, vollständige Tastaturpfade, begrenzte Mausparität, normale sowie constrained App-Loop-/View-/Cell-Proofs und ein geschlossenes Evidence-Modell. Die in Feature 035 bewiesenen Root-, Pfad-, Such-, Vorschau-, Viewer-, Intent- und Mutationsverträge bleiben unverändert; `TVFM/`, `TVDEMOS/` und `tv203s/` bleiben read-only. Das Lastenheft enthält kopierbare Specify- und Autonomous-Prompts, reserviert Branch `036-wave6-tvfm-showcase-remediation` und startet weder Feature 036 noch Feature 037, den unabhängigen Wave-6-Abschluss oder den Post-Wave-6-Audit. |
 | 2026-07-17 | `/speckit-autonomous` für `036-wave6-tvfm-showcase-remediation` | Die sichtbare Wave-6-Stage 2 verwendet den bestehenden Feature-035-Workspace unverändert. Ein persistentes `TWindow` mit fokussierbarer `TListBox`, sechs Menügruppen, begrenzten Preview-/Such-/Palette-Pfaden, echten Copy-/Rename-/Delete-/Read-only-Dialogen, StatusLine, F1-Description, Tastatur und optionalem nicht mutierendem Mouse-Intent ist in normaler und `48x16`-Komposition belegt. Die exakte Evidence schließt zehn `W6S`-Zeilen und einen `ShowcaseComplete`-Einstiegspunkt; alle 24 read-only TVFM-Dateien stimmen per SHA-256. Frühe lokale Abnahme: 23/23 Showcase-/Funktions-Smokes und 4/4 Evidence-Validatoren bei Version `1.36.0.392`. Der vorläufige Kandidatenumfang umfasst etwa 694 hinzugefügte oder wesentlich aktualisierte Beispielcodezeilen, 996 Testzeilen und 2637 Dokumentations-/Evidence-/Guidance-Zeilen, zusammen etwa 4327 Zeilen. Konservative Manualreferenz: rund `54,1` Tage beziehungsweise `421,9` Stunden bei 80 Zeilen/Tag; Thorsten-Solo rund `34,6` Tage beziehungsweise `270,0` Stunden bei 125 Zeilen/Tag. Vollständige Release-, Coverage-, DocFX-/A11Y-, Plattform-, Review- und Exact-Head-Gates folgen. Feature 037, unabhängiger Wave-6-Abschluss und Post-Wave-6-Audit wurden nicht gestartet. |
+| 2026-07-17 | Kausaler Closeout der Wave-6-Showcase-Stufe Feature 036 | Feature-PR #104 wurde nach der Windows-Korrektur auf dem finalen Head `a0d5062` als Merge `559bffb` geliefert. Der erste Windows-Lauf fand eine checkout-abhängige CRLF-Abweichung im test-only Hashnachweis historischer `.PAS`-/`.BAT`-Texte; die begrenzte Kanonisierung bewahrt `.PAL`-/`.TVR`-Ressourcen bytegenau und bestand anschließend 35/35 betroffene sowie 880/880 vollständige Release-Tests. Die lokale Coverage lag mit 92,96 %, 86,66 %, 90,01 %, 80,55 % und 89,18 % über allen fünf 70-%-Gates; DocFX 0/0 und Playwright/Axe 2/2 bestanden. Der exakte Head erreichte 22 erfolgreiche technische Checks bei einem erwarteten übersprungenen Pages-Deploy. Zwölf Primary-Gate-Zeilen wurden von Bash und PowerShell akzeptiert; Claude war grün, GraphQL meldete null Threads und Kommentare, Copilot blieb quota-bedingt ein fehlender Review, und ausschließlich Human Approval benötigte den autorisierten engen Bypass. Der Run-State endet mit `Retrospective`, `Completed`, 187/187 und `nextExactAction: N/A`; die Retrospektive ist `NoPromotion`. Der Evidence-only Closeout löst keine erneute .NET-Validierung aus. Feature 037, unabhängiger Wave-6-Abschluss und Post-Wave-6-Audit wurden nicht gestartet. |
 
 ## Gesamtstatistik
 

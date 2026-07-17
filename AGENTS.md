@@ -373,10 +373,10 @@ npm run test:docfx
 - Wave 5 is `Closed`. Feature 035 is delivered through PR #101, final head `207e807`, and merge `52f77fa`; it provides Wave-6 Stage 1.
 
 ### 036-wave6-tvfm-showcase-remediation
-- Feature 036 is active on `036-wave6-tvfm-showcase-remediation` from `Lastenheft_21_Wave6-TVFM-Showcase-Remediation.036-wave6-tvfm-showcase-remediation.md`.
-- Scope is limited to the one accepted Feature-035 `ShowcaseDelta`: visible menu/control access, safe focusable file-operation dialogs, bounded drag/drop intent, constrained layout, StatusLine, F1 Description, keyboard, A11Y, and real app-loop/view/cell proof for `Tp7FileManager`.
+- Feature 036 is fully delivered through PR #104, final head `a0d5062`, and merge `559bffb`.
+- The exact closure contains ten `W6S` showcase decisions, one `ShowcaseComplete` entry-point decision, and 24 validated read-only `TVFM/` source hashes. The Windows provider correction makes historical `.PAS`/`.BAT` text hashes checkout-neutral while preserving byte-exact resource hashes.
 - Feature-035 controlled-root, path, search, preview, viewer, one-shot intent, mutation, dependency, process, shell, host, and arbitrary-user-data boundaries remain unchanged. `TVFM/`, `TVDEMOS/`, and `tv203s/` stay read-only.
-- Feature 037, an independent Wave-6 closure, and the post-Wave-6 portfolio audit are not started by this intake.
+- The next action is to define the independent Wave-6 closure as a separate intake. Feature 037 and the post-Wave-6 portfolio audit have not started.
 
 ### Autonomous Red-Proof Completeness
 - Before the first red test batch, review imports, public XML docs, harness helpers, focus/ownership assertions, and linked-source assembly identity.
@@ -703,14 +703,15 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 *Standard preset set: `security-governance` v0.6.0 prio 10, `architecture-governance` v0.5.0 prio 20, `isaqb-architecture-governance` v0.2.0 prio 30, `a11y-governance` v0.4.0 prio 40, `cross-platform-governance` v0.2.0 prio 50, and `agent-parity-governance` v0.3.0 prio 60. `a11y-governance` v0.4.0 adds didactic inline-code-comment governance for new or changed non-trivial logic. `architecture-governance` v0.5.0 adds conditional `BSI C3A` cloud-autonomy evidence and `BSI C5` cloud-compliance assurance evidence for cloud-service selection, provider dependencies, audit/assurance status, shared responsibility, and operational evidence. `security-governance` v0.6.0 keeps conditional `AI-SBOM` evidence, language-specific secure-coding profiles, and regulatory applicability screening for NIS2, CRA, EU AI Act, and DORA: development-tool-only AI usage is `N/A`, AI runtime/product components require G7/BSI AI-SBOM cluster evidence, and private training projects record regulatory `N/A` when no regulated scope exists. All six presets now include audit-ready Spec-Kit run evidence: `Applicable` / `N/A` / `Open`, rationale, evidence path, reviewer, residual risk, and follow-up must be documented for the current Spec-Kit run. All six presets are in the `github/spec-kit` community catalog as of 2026-05-04 and are also published under `https://github.com/hindermath/spec-kit-preset-*`. New Level-2 projects should install the applicable subset; C#/.NET Level-2 projects default to all six unless a justified exception is documented. Commit `.specify/presets/` and generated agent command updates when presets are project policy, but never commit `.specify/presets/.cache/`. Verify installs with `specify preset list`, `specify preset info`, and where relevant `specify preset resolve`. Improve presets in the home-baseline scaffold first, propagate to standalone preset repos, then commit, push, and smoke-test via GitHub ZIP URL. Preset-rule changes and preset version/priority changes require reviewing constitution, README tables/install snippets, all agent guidance files, and relevant templates together. Community/catalog coordination happens in `github/spec-kit#2362`.*
 
 <!-- SPECKIT START -->
-Feature 036 is active on `036-wave6-tvfm-showcase-remediation` from
-`Lastenheft_21_Wave6-TVFM-Showcase-Remediation.036-wave6-tvfm-showcase-remediation.md`. It reuses the completed
-Feature-035 `ControlledFileWorkspace` authority and adds only the evidenced
-Stage-2 presentation delta: persistent menus and controls, safe dialogs,
-keyboard-equivalent bounded drag intent, normal and `48x16` layouts, status,
-Description, A11Y and real app-loop/view/cell proof. No domain re-port, wider
-filesystem authority, public API, dependency, new project, Feature 037,
-independent closure or portfolio audit is in scope.
+Feature 036 is delivered through PR #104, final head `a0d5062`, and merge
+`559bffb`. It closes the Feature-035 `ShowcaseDelta` with ten `W6S`
+decisions, one `ShowcaseComplete` entry-point decision, 24 validated read-only
+`TVFM/` hashes, persistent menus and controls, safe dialogs, bounded mouse
+intent, normal and `48x16` layouts, StatusLine, Description, A11Y and real
+app-loop/view/cell proof. All local, provider and exact-head gates passed after
+the checkout-neutral Windows hash correction. Feature 037, the independent
+Wave-6 closure and the portfolio audit remain unstarted; the next action is to
+define the independent closure intake.
 <!-- SPECKIT END -->
 
 ## Hinweise / Notes
