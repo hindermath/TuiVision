@@ -27,6 +27,13 @@ commit.*
 | Feature-Branch | Remote gelöscht; lokal nicht mehr vorhanden |
 | Erster Zustand nach Feature-Merge | Sauberer `main`; `HEAD == origin/main == 7fb52e25b582ca709ec3677584e0d40c981255e3` |
 
+Maschinenlesbare Vertragsmarker / Machine-readable contract markers:
+
+- Reviewed feature head: `016692d6f3c79e61973b9059fdeeac2e2e3574fd`
+- Feature merge: `7fb52e25b582ca709ec3677584e0d40c981255e3`
+- Wave 5: `Closed`
+- Wave 6: `EligibleForIntake`
+
 ## Audit-Ergebnis / Audit Outcome
 
 | Menge oder Entscheidung | Ergebnis |
