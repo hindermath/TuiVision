@@ -421,7 +421,7 @@ Der autonome Lauf stoppt bei:
 
 ```text
 $speckit-specify Use
-`Lastenheft_21_Wave6-TVFM-Showcase-Remediation.md` as the binding intake for
+`Lastenheft_21_Wave6-TVFM-Showcase-Remediation.036-wave6-tvfm-showcase-remediation.md` as the binding intake for
 Feature 036.
 
 Create exactly `specs/036-wave6-tvfm-showcase-remediation` on branch
@@ -461,7 +461,7 @@ and exact-head evidence. Do not start the next feature.
 
 ```text
 $speckit-autonomous Execute the complete autonomous Spec Kit run for Feature
-036 using `Lastenheft_21_Wave6-TVFM-Showcase-Remediation.md` as the binding
+036 using `Lastenheft_21_Wave6-TVFM-Showcase-Remediation.036-wave6-tvfm-showcase-remediation.md` as the binding
 intake. Delivery mode: MergeAndSync.
 
 Start from clean synchronized main after Feature 035 PR #101 and closeout PR

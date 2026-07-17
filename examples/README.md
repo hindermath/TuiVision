@@ -178,25 +178,34 @@ layout paths.
 
 ---
 
-## Wave-6-Dateimanager, funktionale Stufe / Wave-6 File Manager, Functional Stage
+## Wave-6-Dateimanager, vollständige Showcase-Stufe / Wave-6 File Manager, Complete Showcase Stage
 
-Feature `035-wave6-tvfm-functional-porting` liefert einen kontrollierten
-modernen C#-Dateimanager als erste Wave-6-Stufe. Er arbeitet ausschließlich in
-einer kopierten Fixture-Wurzel und führt keine Shell oder externen Viewer aus.
+Features `035-wave6-tvfm-functional-porting` und
+`036-wave6-tvfm-showcase-remediation` liefern gemeinsam den kontrollierten
+modernen C#-Dateimanager. Er arbeitet ausschließlich in einer kopierten
+Fixture-Wurzel und führt keine Shell oder externen Viewer aus.
 
-Feature `035-wave6-tvfm-functional-porting` delivers a controlled modern C#
-file manager as the first Wave-6 stage. It operates only inside a copied
-fixture root and launches neither a shell nor an external viewer.
+Features `035-wave6-tvfm-functional-porting` and
+`036-wave6-tvfm-showcase-remediation` jointly deliver the controlled modern
+C# file manager. It operates only inside a copied fixture root and launches
+neither a shell nor an external viewer.
 
 | Name | Startbefehl / Launch Command | Deterministischer Proof / Deterministic Proof |
 |---|---|---|
 | `Tp7FileManager` | `dotnet run --project examples/Tp7FileManager` | `dotnet run --project examples/Tp7FileManager -- --smoke` |
 
-Die vollständige sichtbare Menü- und Dialogführung bleibt ein aus Feature 035
-abzuleitendes Stage-2-Delta.
+Beim normalen Start stehen sechs Menügruppen, eine fokussierbare Liste,
+begrenzte Text-/Hexvorschau, Suche, geschlossene Paletten und echte modale
+Copy-/Rename-/Delete-/Read-only-Dialoge bereit. `F1` öffnet Description;
+`Ctrl+Q` beendet die Anwendung. Die primäre Aktion kann über die File- oder
+View-Menüs ausgeführt werden. Maus-Drag bereitet nur eine bestätigungspflichtige
+Absicht vor; die Tastatur bleibt vollständig.
 
-The complete visible menu and dialog workflow remains a Stage-2 delta derived
-from Feature 035.
+The normal launch exposes six menu groups, a focusable list, bounded text and
+hex previews, search, closed palettes, and real modal copy, rename, delete,
+and read-only dialogs. `F1` opens Description and `Ctrl+Q` quits. Primary
+actions are available through the File and View menus. Mouse drag only
+prepares a confirmable intent; the keyboard path remains complete.
 
 ---
 

@@ -275,9 +275,9 @@ Statuscheckliste Beispielwellen:
 - [x] **Welle 5 - Kombinierter Delta-Abschluss**
   Reihenfolgehinweis: Feature 034 ist über PR #99 und Merge `7fb52e2` vollständig geliefert. Der read-only Audit bestätigt exakt 15 Quellen, sechs Consumer, zehn Beispiele, zehn Funktionsproofs, zehn Showcase-Abschlüsse und zehn Guide-/Startpfade mit null Findings und null Product Decisions. Wave 5 ist `Closed`.
 - [x] **Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`, funktionale Stufe**
-  Reihenfolgehinweis: Feature 035 liefert den kontrollierten Root-, Listen-, Preview-, Such- und Dateioperationsvertrag mit realen App-Loop-Proofs über PR #101 und Merge `52f77fa`. Die vollständige sichtbare Menü-/Dialogführung bleibt ein belegtes Stage-2-Delta; Feature 036 wurde nicht angelegt oder gestartet.
-- [ ] **Welle 6 - TVFM Showcase-Stufe**
-  Reihenfolgehinweis: `Lastenheft_21_Wave6-TVFM-Showcase-Remediation.md` ist der nächste verbindliche Intake und reserviert Feature 036. Der Lauf macht die in Feature 035 bewiesenen Pfade über sichtbare Menüs, fokussierbare Controls, sichere Dialoge, StatusLine, F1-Description, Tastatur, begrenztes Drag-/Drop und constrained Layout erreichbar, ohne die Dateisystemverträge zu erweitern.
+  Reihenfolgehinweis: Feature 035 liefert den kontrollierten Root-, Listen-, Preview-, Such- und Dateioperationsvertrag mit realen App-Loop-Proofs über PR #101 und Merge `52f77fa`.
+- [x] **Welle 6 - TVFM Showcase-Stufe**
+  Reihenfolgehinweis: Feature 036 ist lokal vollständig implementiert und validiert; Remote-Delivery bleibt ausstehend. Sichtbare Menüs, fokussierbare Controls, sichere Dialoge, StatusLine, F1-Description, Tastatur, begrenztes Drag-/Drop und constrained Layout verwenden die unveränderten Feature-035-Dateisystemverträge.
 - [ ] **Post-Wave-6 Example Portfolio Conformance Audit**
   Reihenfolgehinweis: nach Feature 036 und dem vollständig gemergten unabhängigen Wave-6-Closeout gemäß `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md`; prüft alle 25 Originalbeispiele, alle tatsächlich gelieferten Wave-5-/Wave-6-Beispiele und `A11yFramework` als Kontrollbeispiel, ohne im Audit selbst Runtime- oder Beispieländerungen vorzunehmen.
 - [ ] Beispiel-Guides unter `docs/guides/examples/`
@@ -372,19 +372,19 @@ Checkliste Welle 5:
 Benoetigt: robuste Datei-/Verzeichnisnavigation, View-/Window-Komposition, Ressourcenverwaltung, zusaetzliche Portierungsentscheidungen fuer Dateimanager-spezifische Arbeitsablaeufe.
 
 Feature 035 hat die funktionale Stage 1 als kontrollierten
-`Tp7FileManager` geliefert. `Lastenheft_21_Wave6-TVFM-Showcase-Remediation.md`
-definiert Feature 036 als getrennte sichtbare Stage 2. Sie verwendet die
-bewiesenen Funktionsverträge erneut und ergänzt Menü-/Dialogzugänge,
-Tastaturpfade, StatusLine, Description, begrenzte Mausparität und
-constrained-layout Proof. Ein unabhängiger Wave-6-Abschluss bleibt danach
+`Tp7FileManager` geliefert. Feature 036 implementiert die getrennte sichtbare
+Stage 2 und verwendet die bewiesenen Funktionsverträge erneut. Sechs
+Menügruppen, fokussierbare Dialoge, Tastaturpfade, StatusLine, Description,
+begrenzte Mausparität und constrained-layout Proof sind lokal geschlossen.
+Ein unabhängiger Wave-6-Abschluss bleibt nach der Remote-Delivery
 Voraussetzung für den Portfolio-Audit.
 
 Checkliste Welle 6:
-- [ ] `TVFM.PAS` - Hauptanwendung des Dateimanagers
-- [ ] `DIRVIEW.PAS`, `TREEWIN.PAS`, `FILEVIEW.PAS`, `VIEWTEXT.PAS`, `VIEWHEX.PAS`, `INFOVIEW.PAS` - Navigations- und Viewer-Komponenten
-- [ ] `FILECOPY.PAS`, `FILEFIND.PAS`, `DRAGDROP.PAS`, `TRASH.PAS` - Dateioperationen und Interaktionsfluesse
-- [ ] `COLORS.PAS`, `EDITPAL.PAS`, `GAUGES.PAS`, `TOOLS.PAS`, `GLOBALS.PAS`, `ASSOC.PAS`, `EQU.PAS` - Hilfs- und Konfigurationsmodule
-- [ ] Ressourcen- und Build-Begleitdateien (`MAKERES.PAS`, `MAKETVFM.BAT`, `.PAL`, `.TVR`) dokumentiert sichten und als C#-kompatible Assets/Generatoren neu zuschneiden
+- [x] `TVFM.PAS` - Hauptanwendung des Dateimanagers
+- [x] `DIRVIEW.PAS`, `TREEWIN.PAS`, `FILEVIEW.PAS`, `VIEWTEXT.PAS`, `VIEWHEX.PAS`, `INFOVIEW.PAS` - Navigations- und Viewer-Komponenten
+- [x] `FILECOPY.PAS`, `FILEFIND.PAS`, `DRAGDROP.PAS`, `TRASH.PAS` - Dateioperationen und Interaktionsfluesse
+- [x] `COLORS.PAS`, `EDITPAL.PAS`, `GAUGES.PAS`, `TOOLS.PAS`, `GLOBALS.PAS`, `ASSOC.PAS`, `EQU.PAS` - Hilfs- und Konfigurationsmodule
+- [x] Ressourcen- und Build-Begleitdateien (`MAKERES.PAS`, `MAKETVFM.BAT`, `.PAL`, `.TVR`) dokumentiert sichten und als C#-kompatible Assets/Generatoren neu zuschneiden
 
 **Post-Wave-6 Example Portfolio Conformance Audit**
 
@@ -720,13 +720,12 @@ Dieser Marker ist bei jeder wesentlichen Fortschreibung des Pflichtenhefts auf d
    - `3.7b` = Wave-5 TP7 Showcase Remediation — ✓ ABGESCHLOSSEN (Feature 033, Lastenheft 18, PR #96, Merge `d476e63`); tatsächliche kombinierte Delta-Prüfung bleibt Voraussetzung für Wave 6
    - `3.7c` = Wave-5 Combined Delta Closure — ✓ ABGESCHLOSSEN (Feature 034, Lastenheft 19, PR #99, Merge `7fb52e2`); Wave 5 `Closed`, Wave 6 `EligibleForIntake`
    - `3.8a` = Wave-6 TVFM Functional Porting — ✓ FUNKTIONAL GELIEFERT (Feature 035, Lastenheft 20, PR #101, Merge `52f77fa`); Stage-2-Showcase-Delta separat abzuleiten
-   - `3.8b` = Wave-6 TVFM Showcase Remediation — NÄCHSTER INTAKE (Feature 036, Lastenheft 21); Lauf nicht gestartet
+   - `3.8b` = Wave-6 TVFM Showcase Remediation — ✓ LOKAL IMPLEMENTIERT UND VALIDIERUNG LÄUFT (Feature 036, Lastenheft 21); Remote-Delivery ausstehend
    - Post-Wave-6 = Example-Portfolio-Konformitätsaudit — VERBINDLICH VORGEMERKT (Lastenheft 15); Feature-Nummer erst nach Feature 036 und unabhängigem Wave-6-Closeout
 
->>> FORTSETZUNGSMARKE <<< `Lastenheft_21_Wave6-TVFM-Showcase-Remediation.md`
-ist der nächste verbindliche Intake und reserviert Feature 036. Der
-Spec-Kit-Lauf, ein unabhängiger Wave-6-Abschluss und der Post-Wave-6-Audit
-wurden nicht gestartet.
+>>> FORTSETZUNGSMARKE <<< Nach der vollständig gemergten Feature-036-Delivery
+ist ein unabhängiger Wave-6-Abschluss als eigener Intake festzulegen. Feature
+037, dieser Abschluss und der Post-Wave-6-Audit wurden nicht gestartet.
 
 4. **MUSS-Testumfang und Beispiel-Smoke-Tests schliessen**
    - Fuer alle 25 portierten Originalbeispiele automatisierte Smoke-Tests in CI bereitstellen.
