@@ -74,6 +74,7 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ## Recent Changes
+- 034-wave5-combined-delta-closure: Closed Wave 5 with exact 15/6/10/10/10 evidence and zero findings; Lastenheft 20 reserves Feature 035 without starting Wave 6
 - 033-wave5-tp7-showcase-remediation: Completed and merged the ten-example Wave-5 showcase; Wave 6 remains blocked pending actual-delta review
 - 032-wave5-tp7-functional-porting: Added C# 14 / .NET 10 + Existing TuiVision.Core, TuiVision.Controls, TuiVision.Serialization, TuiVision.Compatibility, TuiVision.Drivers.Console, MSTest 4.0.1 and BCL System.Text.Json; no new package
 - 031-combined-conformance-closure: Added C# 14 / .NET 10 for test-only validation; JSON and Markdown for evidence + Existing BCL `System.Text.Json`, MSTest 4.0.1, existing repository scripts and workflows; no new package
@@ -211,10 +212,10 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - `Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md` is the archived intake derived from the ten concrete Stage-2 deltas. Feature 033 is fully delivered through PR #96 and merge `d476e63`; Wave 6 remains blocked pending the actual combined Wave-5 delta review.
 
 ### 034-wave5-combined-delta-closure
-- Current implementation status: Feature 034 is active on `034-wave5-combined-delta-closure`; the local 15/6/10/10/10 matrix contains zero Candidate Findings and zero Product Decisions, while remote, review, merge, and causal closeout gates remain.
-- Scope is a read-only audit of the exact product file sets from PR #93 at `cf274c6` and PR #96 at `8921bd3`, with exact 15 source, 6 consumer, 10 example, 10 functional-proof, 10 showcase-closure, and 10 guide/launch cardinalities.
-- Product runtime, APIs, dependencies, projects, examples, framework code, `TVDEMOS/`, `TVFM/`, `tv203s/`, and external comparison sources remain unchanged. Only feature artifacts, evidence, status updates, and deterministic test-only closure validation are allowed.
-- Each example has exactly one `AcceptedIntentionalDeviation`; there are no open `Gap` dimensions. Wave 6 remains blocked; a clean causal closeout may derive a later Feature-035 intake but must not start it.
+- Current implementation status: Feature 034 is fully delivered through PR #99, final head `016692d`, merge `7fb52e2`, and its causal closeout.
+- The read-only audit proves exact 15 source, 6 consumer, 10 example, 10 functional-proof, 10 showcase-closure, and 10 guide/launch cardinalities. All ten decisions are `AcceptedIntentionalDeviation`; there are zero open `Gap` dimensions, Candidate Findings, Product Decisions, owner groups, or hardening intakes.
+- Product runtime, APIs, dependencies, projects, examples, framework code, `TVDEMOS/`, `TVFM/`, `tv203s/`, and external comparison sources remain unchanged. The final 22-check matrix and 13 exact-head gates passed; checkout-neutral SHA-256 and Git-blob proof passed on Ubuntu, macOS, and Windows.
+- Wave 5 is `Closed`. Wave 6 is `EligibleForIntake`; `Lastenheft_20_Wave6-TVFM-Functional-Porting.md` reserves Feature 035, but neither Feature 035 nor Wave 6 has started.
 
 
 ### Autonomous Red-Proof Completeness

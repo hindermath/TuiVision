@@ -242,16 +242,16 @@ Post-Merge-Fakten für einen benannten Closeout bewahren.
 - [X] T142 Align `Version`, `AssemblyVersion`, and `FileVersion` in `Directory.Build.props` to the current `1.34.<patch>.<build>` candidate without an extra build increment
 - [X] T143 Stage only intended Feature-034 paths and inventory them in `specs/034-wave5-combined-delta-closure/pr-evidence.md`
 - [X] T144 Run `git diff --cached --check` and compare staged, unstaged, and untracked inventories in `specs/034-wave5-combined-delta-closure/pr-evidence.md`
-- [ ] T145 Commit the exact feature candidate and reserve its hash for `specs/034-wave5-combined-delta-closure/delivery-closeout.md`
-- [ ] T146 Push branch `034-wave5-combined-delta-closure`, verify the remote head, and reserve the result for `specs/034-wave5-combined-delta-closure/delivery-closeout.md`
-- [ ] T147 Create the non-empty Feature-034 PR and reserve its stable identity for `specs/034-wave5-combined-delta-closure/delivery-closeout.md`
-- [ ] T148 Identify pull-request-context checks as authoritative and record duplicate push runs as operational noise
-- [ ] T149 Map every acceptance gate to the actual reviewed head, workflow, job, platform, and executed command in temporary exact-head evidence
-- [ ] T150 Validate temporary exact-head evidence with the installed autonomous gate validator and reserve its result for `specs/034-wave5-combined-delta-closure/delivery-closeout.md`
-- [ ] T151 Inspect Claude, Copilot, Human Approval, comments, and GraphQL threads; record unavailable reviewers as missing
-- [ ] T152 Address every actionable review or CI finding, resolve its thread, re-run affected gates, and rebuild exact-head evidence
-- [ ] T153 Merge the feature PR with a merge commit only after all technical gates pass, zero actionable threads remain, and any bypass affects Human Approval alone
-- [ ] T154 Delete the feature branch, switch locally to `main`, fetch/prune, pull fast-forward only, and prove clean `HEAD == origin/main`
+- [X] T145 Commit the exact feature candidate and reserve its hash for `specs/034-wave5-combined-delta-closure/delivery-closeout.md`
+- [X] T146 Push branch `034-wave5-combined-delta-closure`, verify the remote head, and reserve the result for `specs/034-wave5-combined-delta-closure/delivery-closeout.md`
+- [X] T147 Create the non-empty Feature-034 PR and reserve its stable identity for `specs/034-wave5-combined-delta-closure/delivery-closeout.md`
+- [X] T148 Identify pull-request-context checks as authoritative and record duplicate push runs as operational noise
+- [X] T149 Map every acceptance gate to the actual reviewed head, workflow, job, platform, and executed command in temporary exact-head evidence
+- [X] T150 Validate temporary exact-head evidence with the installed autonomous gate validator and reserve its result for `specs/034-wave5-combined-delta-closure/delivery-closeout.md`
+- [X] T151 Inspect Claude, Copilot, Human Approval, comments, and GraphQL threads; record unavailable reviewers as missing
+- [X] T152 Address every actionable review or CI finding, resolve its thread, re-run affected gates, and rebuild exact-head evidence
+- [X] T153 Merge the feature PR with a merge commit only after all technical gates pass, zero actionable threads remain, and any bypass affects Human Approval alone
+- [X] T154 Delete the feature branch, switch locally to `main`, fetch/prune, pull fast-forward only, and prove clean `HEAD == origin/main`
 
 ---
 
@@ -260,16 +260,16 @@ Post-Merge-Fakten für einen benannten Closeout bewahren.
 **Zweck**: Nicht im Feature-Head behauptbare Merge-Fakten abschließen, ohne
 einen weiteren fachlichen Lauf zu starten.
 
-- [ ] T155 Create `specs/034-wave5-combined-delta-closure/delivery-closeout.md` only if required, recording reviewed feature head, passing gates, feature merge, final decisions, and causal boundary
-- [ ] T156 If zero Candidate Findings and zero Product Decisions are proven, set Wave 5 `Closed` and Wave 6 `EligibleForIntake` in status and evidence files without starting Wave 6
-- [ ] T157 If clean, create `Lastenheft_20_Wave6-TVFM-Functional-Porting.md`, reserve Feature 035 in processing order, require any later Showcase remediation to be derived from the actual Feature-035 delta, and add copyable Specify/Autonomous prompts without creating a branch or feature directory
-- [ ] T158 If findings exist, create only non-empty deduplicated owner-specific hardening intakes and keep Wave 6 blocked
-- [ ] T159 If a Product Decision exists, record the stop boundary and create no Wave-6 intake
-- [ ] T160 Complete `specs/034-wave5-combined-delta-closure/retrospective.md` with `NoPromotion` unless a reproducible provider-neutral preset defect exists
-- [ ] T161 Update final task, run-state, statistics, agent, Pflichtenheft, and ordering surfaces as one serialized closeout candidate
-- [ ] T162 Validate the closeout as evidence-only with no test, product, example, dependency, historical, or generated-output change
-- [ ] T163 Create, review, and merge a non-empty causal closeout PR only when T155 is genuinely required
-- [ ] T164 Finish with `Retrospective`, `Completed`, all tasks terminal, `nextExactAction: N/A`, clean local `main`, and `HEAD == origin/main`
+- [X] T155 Create `specs/034-wave5-combined-delta-closure/delivery-closeout.md` only if required, recording reviewed feature head, passing gates, feature merge, final decisions, and causal boundary
+- [X] T156 If zero Candidate Findings and zero Product Decisions are proven, set Wave 5 `Closed` and Wave 6 `EligibleForIntake` in status and evidence files without starting Wave 6
+- [X] T157 If clean, create `Lastenheft_20_Wave6-TVFM-Functional-Porting.md`, reserve Feature 035 in processing order, require any later Showcase remediation to be derived from the actual Feature-035 delta, and add copyable Specify/Autonomous prompts without creating a branch or feature directory
+- [X] T158 If findings exist, create only non-empty deduplicated owner-specific hardening intakes and keep Wave 6 blocked
+- [X] T159 If a Product Decision exists, record the stop boundary and create no Wave-6 intake
+- [X] T160 Complete `specs/034-wave5-combined-delta-closure/retrospective.md` with `NoPromotion` unless a reproducible provider-neutral preset defect exists
+- [X] T161 Update final task, run-state, statistics, agent, Pflichtenheft, and ordering surfaces as one serialized closeout candidate
+- [X] T162 Validate the closeout as evidence-only with no test, product, example, dependency, historical, or generated-output change
+- [X] T163 Create, review, and merge a non-empty causal closeout PR only when T155 is genuinely required
+- [X] T164 Finish with `Retrospective`, `Completed`, all tasks terminal, `nextExactAction: N/A`, clean local `main`, and `HEAD == origin/main`
 
 ---
 
