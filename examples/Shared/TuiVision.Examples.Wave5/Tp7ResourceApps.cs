@@ -1,6 +1,7 @@
 // Copyright (c) 2026 Thorsten Hindermann / TuiVision Contributors.
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
+using TuiVision.Controls;
 using TuiVision.Core;
 using TuiVision.Serialization;
 
@@ -17,7 +18,7 @@ public sealed class Tp7ResourceDemoApp : Wave5Application
     /// <param name="headless">Kontrollierter Smoke-Modus. / Controlled smoke mode.</param>
     public Tp7ResourceDemoApp(TRect bounds, bool headless = false) : base(bounds, headless)
     {
-        ShowContent("TP7 Resource Demo", "TP7 Resource Demo\nExact named menu, status and dialog records");
+        ShowResourceDialog("TP7 Resource Demo", "Exact named menu, status and dialog records", "Ready");
         SetStatus("Tp7ResourceDemo", "ready");
     }
 
@@ -35,6 +36,9 @@ public sealed class Tp7ResourceDemoApp : Wave5Application
 
     /// <summary>Geladenes Statuslabel. / Loaded status label.</summary>
     public string StatusLabel { get; private set; } = string.Empty;
+
+    /// <summary>Typ des fokussierten Dialogcontrols. / Type of the focused dialog control.</summary>
+    public string FocusedControlKind { get; private set; } = string.Empty;
 
     /// <inheritdoc />
     public override void HandleEvent(TEvent @event)
@@ -76,9 +80,10 @@ public sealed class Tp7ResourceDemoApp : Wave5Application
             MenuLabel = menu.Items.Single(item => item.Id == "demo").Label;
             StatusLabel = status.Definitions[0].Items[0].Label;
             LoadSucceeded = true;
-            ShowContent(
-                "TP7 Resource Demo",
-                $"TP7 Resource Dialog: {DialogTitle}\nMenu: {MenuLabel}\nStatus: {StatusLabel}\nExact keys: Dialog, Menu, Status");
+            ShowResourceDialog(
+                DialogTitle,
+                $"Menu: {MenuLabel}\nStatus: {StatusLabel}\nExact keys: Dialog, Menu, Status",
+                "Select");
             SetStatus("Tp7ResourceDemo", "loaded exact records");
         }
         catch (Exception exception) when (exception is InvalidDataException or EndOfStreamException or KeyNotFoundException)
@@ -87,12 +92,48 @@ public sealed class Tp7ResourceDemoApp : Wave5Application
             MenuLabel = string.Empty;
             StatusLabel = string.Empty;
             RejectedWithoutPartialModel = true;
-            ShowContent(
+            ShowResourceDialog(
                 "TP7 Resource Rejection",
-                $"TP7 resources rejected\nReason: {exception.GetType().Name}\nNo partial model: true");
+                $"Resources rejected\nReason: {exception.GetType().Name}\nNo partial model: true",
+                "Close");
             SetStatus("Tp7ResourceDemo", "rejected atomically");
         }
     }
+
+    /// <inheritdoc />
+    protected override string BuildDescriptionText() =>
+        """
+        Historischer Lernzweck: Benannte Dialog-, Menü- und Status-Ressourcen werden als echte Controls rekonstruiert.
+        Historical learning purpose: named dialog, menu, and status resources are reconstructed as real controls.
+        Tastatur: Load öffnet die Komposition, Tab wechselt den Fokus, Enter wählt und F1 öffnet diese Beschreibung.
+        Keyboard: Load opens the composition, Tab changes focus, Enter selects, and F1 opens this description.
+        Modernes C# verwendet typisierte allowlist-basierte Records statt Pascal-Overlays.
+        Modern C# uses typed allowlisted records instead of Pascal overlays.
+        Erst nach vollständiger Auflösung der exakten Namen Dialog, Menu und Status wird ein Modell veröffentlicht.
+        A model is published only after complete resolution of the exact names Dialog, Menu, and Status.
+        Der App-Loop-Smoke beweist atomare Auflösung, Fokus, Status und Zellen, nicht beliebige persistierte Typen.
+        The app-loop smoke proves atomic resolution, focus, status, and cells, not arbitrary persisted types.
+        """;
+
+    private void ShowResourceDialog(string title, string text, string buttonLabel)
+    {
+        TDialog dialog = CreateDialog(title);
+        dialog.Insert(new TStaticText(
+            new TRect(2, 2, Math.Max(3, dialog.Size.X - 2), Math.Max(4, dialog.Size.Y - 3)),
+            $"TP7 Resource Dialog: {title}\n{text}"));
+        TButton button = new(
+            new TRect(2, Math.Max(3, dialog.Size.Y - 2), Math.Min(dialog.Size.X - 2, 14), Math.Max(4, dialog.Size.Y - 1)),
+            buttonLabel,
+            ShellCommandIds.cmOK,
+            TButtonFlags.bfDefault);
+        dialog.Insert(button);
+        ShowView(dialog, nameof(TDialog), text);
+        dialog.SetFocus(button);
+        FocusedControlKind = dialog.Current?.GetType().Name ?? string.Empty;
+    }
+
+    private TDialog CreateDialog(string title) =>
+        new(new TRect(1, 0, Math.Max(18, Desktop!.Size.X - 1), Math.Max(8, Desktop.Size.Y)), title);
 
     internal static TRecordRegistry CreateRegistry()
     {
@@ -105,6 +146,8 @@ public sealed class Tp7ResourceDemoApp : Wave5Application
 /// <summary>Funktionales TP7-Ressourcengeneratorbeispiel. / Functional TP7 resource generator example.</summary>
 public sealed class Tp7ResourceGeneratorApp : Wave5Application
 {
+    private TInputLine? _targetInput;
+
     /// <summary>Erzeugt eine allowlist-basierte Ressource. / Generates an allowlist-based resource.</summary>
     public const ushort CmGenerate = 32402;
 
@@ -115,7 +158,7 @@ public sealed class Tp7ResourceGeneratorApp : Wave5Application
     public Tp7ResourceGeneratorApp(TRect bounds, bool headless = false, string? allowedOutputDirectory = null) : base(bounds, headless)
     {
         AllowedOutputDirectory = allowedOutputDirectory is null ? null : Path.GetFullPath(allowedOutputDirectory);
-        ShowContent("TP7 Resource Generator", "TP7 Resource Generator\nAllowlisted records and controlled output");
+        ShowGeneratorDialog("Ready", 0, "tp7.tvr");
         SetStatus("Tp7ResourceGenerator", "ready");
     }
 
@@ -131,6 +174,15 @@ public sealed class Tp7ResourceGeneratorApp : Wave5Application
     /// <summary>Ob die letzte Anforderung abgelehnt wurde. / Whether the last request was rejected.</summary>
     public bool GenerationRejected { get; private set; }
 
+    /// <summary>Typ des fokussierten Generatorcontrols. / Type of the focused generator control.</summary>
+    public string FocusedControlKind { get; private set; } = string.Empty;
+
+    /// <summary>Zahl sichtbarer Generatorcontrols. / Number of visible generator controls.</summary>
+    public int VisibleControlCount { get; private set; }
+
+    /// <summary>Sichtbarer Fortschritt von 0 bis 100. / Visible progress from 0 through 100.</summary>
+    public int ProgressPercent { get; private set; }
+
     /// <summary>Beschreibt einen kontrollierten Generatoraufruf. / Describes a controlled generator request.</summary>
     /// <param name="RelativePath">Relativer Zielpfad. / Relative target path.</param>
     public readonly record struct GenerateRequest(string RelativePath);
@@ -140,7 +192,9 @@ public sealed class Tp7ResourceGeneratorApp : Wave5Application
     {
         if (@event.What == TEventKind.Command && @event.Message.Command == CmGenerate)
         {
-            Generate(@event.Message.Info is GenerateRequest request ? request : default);
+            Generate(@event.Message.Info is GenerateRequest request
+                ? request
+                : new GenerateRequest(_targetInput?.Data ?? string.Empty));
             @event.Clear();
             return;
         }
@@ -157,6 +211,7 @@ public sealed class Tp7ResourceGeneratorApp : Wave5Application
             || string.IsNullOrWhiteSpace(request.RelativePath)
             || Path.IsPathRooted(request.RelativePath))
         {
+            ShowGeneratorDialog("Rejected", 0, request.RelativePath);
             SetStatus("Tp7ResourceGenerator", "generation rejected: no controlled target");
             return;
         }
@@ -166,6 +221,7 @@ public sealed class Tp7ResourceGeneratorApp : Wave5Application
         string prefix = root + Path.DirectorySeparatorChar;
         if (!candidate.StartsWith(prefix, StringComparison.Ordinal))
         {
+            ShowGeneratorDialog("Rejected outside controlled root", 0, request.RelativePath);
             SetStatus("Tp7ResourceGenerator", "generation rejected: outside controlled root");
             return;
         }
@@ -176,10 +232,51 @@ public sealed class Tp7ResourceGeneratorApp : Wave5Application
         GeneratedBytes = bytes;
         GeneratedPath = candidate;
         GenerationRejected = false;
-        ShowContent(
-            "TP7 Resource Generator",
-            $"TP7 resources generated\nFile: {Path.GetFileName(candidate)}\nRecords: Dialog, Menu, Status\nAllowlist only");
+        ShowGeneratorDialog("generated: Dialog, Menu, Status", 100, request.RelativePath);
         SetStatus("Tp7ResourceGenerator", $"generated={Path.GetFileName(candidate)}");
+    }
+
+    /// <inheritdoc />
+    protected override string BuildDescriptionText() =>
+        """
+        Historischer Lernzweck: Ziel, Generate-Aktion, Fortschritt und Ergebnis zeigen die Resource-Erzeugung.
+        Historical learning purpose: target, Generate action, progress, and result show resource generation.
+        Tastatur: Tab fokussiert Ziel und Generate, Alt+G oder Enter erzeugt, F1 öffnet diese Beschreibung.
+        Keyboard: Tab focuses target and Generate, Alt+G or Enter generates, and F1 opens this description.
+        Modernes C# schreibt nur typisierte allowlist-basierte Records statt Objekt-Overlays.
+        Modern C# writes only typed allowlisted records instead of object overlays.
+        Ein Ziel muss relativ sein und unter dem kontrollierten Root bleiben; Traversal wird vor dem Schreiben abgelehnt.
+        A target must be relative and remain below the controlled root; traversal is rejected before writing.
+        Der App-Loop-Smoke beweist Controls, Root-Grenze, Fortschritt, Ergebnis und Zellen, nicht Benutzerverzeichnisse.
+        The app-loop smoke proves controls, root boundary, progress, result, and cells, not user directories.
+        """;
+
+    private void ShowGeneratorDialog(string result, int progress, string? target)
+    {
+        TDialog dialog = new(
+            new TRect(1, 0, Math.Max(22, Desktop!.Size.X - 1), Math.Max(9, Desktop.Size.Y)),
+            "TP7 Resource Generator");
+        TInputLine input = new(new TRect(2, 2, Math.Max(12, dialog.Size.X - 2), 3), 80)
+        {
+            Data = target ?? string.Empty
+        };
+        TButton generate = new(
+            new TRect(2, 4, Math.Min(dialog.Size.X - 2, 16), 5),
+            "~G~enerate",
+            CmGenerate,
+            TButtonFlags.bfDefault);
+        TStaticText progressText = new(
+            new TRect(2, 6, Math.Max(12, dialog.Size.X - 2), Math.Max(7, dialog.Size.Y - 1)),
+            $"Progress: {progress}%\nResult: {result}");
+        dialog.Insert(input);
+        dialog.Insert(generate);
+        dialog.Insert(progressText);
+        _targetInput = input;
+        ProgressPercent = progress;
+        VisibleControlCount = 3;
+        ShowView(dialog, nameof(TDialog), $"Target: {input.Data}\nProgress: {progress}%\nResult: {result}");
+        dialog.SetFocus(input);
+        FocusedControlKind = dialog.Current?.GetType().Name ?? string.Empty;
     }
 
     private static byte[] CreateValidResourceBytes()

@@ -19,22 +19,23 @@ dotnet run --no-build --configuration Release \
   --project examples/Tp7Puzzle -- --smoke
 ```
 
-## Verhalten und Proof / Behavior and Proof
+## Verhalten und Tastatur / Behavior and Keyboard
 
-Das feste 4x4-Board beginnt mit Stein `15` neben dem Leerfeld. Der primäre
-Smoke akzeptiert diesen Zug, lehnt danach einen nicht benachbarten Stein ab und
-beweist, dass das gültige Board erhalten bleibt. `app.Run()` verbindet
-Move-Zähler, Boardzustand, Fenster und gerenderte Zellen.
+Das fokussierbare 4x4-Board beginnt mit Stein `15` neben dem Leerfeld.
+Pfeiltasten wählen einen Stein; Enter versucht den Zug. Nur ein benachbarter
+Stein darf sich bewegen, eine Ablehnung bewahrt das vollständige Board. F1
+öffnet die app-spezifische Description.
 
-The fixed 4x4 board starts with tile `15` next to the blank. The primary smoke
-accepts this move, then rejects a non-adjacent tile and proves that the valid
-board remains intact. `app.Run()` combines move count, board state, window,
-and rendered cells.
+The focusable 4x4 board starts with tile `15` next to the blank. Arrow keys
+select a tile; Enter attempts the move. Only an adjacent tile may move, and a
+rejection preserves the complete board. F1 opens the app-specific Description.
 
-## Showcase-Grenze / Showcase Boundary
+## Proof
 
-Die spätere Stufe ergänzt auswählbare Kacheln, Fokusreihenfolge,
-Tastaturhinweise, Layout-Proof und `Help -> Description`.
+Der primäre Smoke führt `app.Run()` aus und verbindet Fokus, gültigen Zug,
+atomare Ablehnung, Move-Zähler, Statuszeile und gerenderte Zellen. Die
+`38x15`-Fixture zeigt Identität, vollständiges Board und Description.
 
-The later stage adds selectable tiles, focus order, keyboard hints, layout
-proof, and `Help -> Description`.
+The primary smoke runs `app.Run()` and combines focus, a valid move, atomic
+rejection, move count, status line, and rendered cells. The `38x15` fixture
+shows identity, the complete board, and Description.

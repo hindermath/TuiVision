@@ -1,6 +1,6 @@
 # Projektstatistik TuiVision
 
-Stand: 2026-07-16 (aktualisiert einschließlich Feature 030 und Preset v0.2.2)
+Stand: 2026-07-17 (aktualisiert einschließlich Feature 033 und Preset v0.2.2)
 
 Aktueller Zusatz: Feature 016 dokumentiert 157/157 Secure-Development-
 Kontrollen, sechs behobene Medium-Funde, 498/498 grüne Release-Tests und eine
@@ -28,7 +28,7 @@ bindet jede Build-Zählererhöhung an genau einen Build-/Testaufruf und lässt
 Repository-Prüfhelfer bei fehlenden Abhängigkeiten fail-closed abbrechen.
 
 Das aus den Feldläufen entstandene `autonomous-run-governance` ist jetzt als
-v0.2.0 zusätzlich zu den sechs Standard-Presets aus dem öffentlichen Tag-ZIP
+v0.2.2 zusätzlich zu den sechs Standard-Presets aus dem öffentlichen Tag-ZIP
 installiert. Maschinenlesbare Gate-Requirements und exakte HEAD-Evidence
 schließen die False-Readiness-Grenze; Status, kooperativer Stopp, geschützte
 Wiederaufnahme und validierter Laufzustand härten Unterbrechungen. Der
@@ -62,8 +62,11 @@ geliefert und ihr tatsächlicher Delta erneut geprüft ist.
 Feature 032 liefert die funktionale erste Wave-5-Stufe als zehn startbare
 `Tp7*`-Beispiele. Die vollständige Evidence umfasst 15 Quellenrollen, sechs
 Consumer-Entscheidungen, zehn primäre Proof-Zeilen und zehn konkrete
-Showcase-Deltas. Lastenheft 18 ist daraus als nächster Intake für Feature 033
-abgeleitet; Wave 6 bleibt bis zur Showcase-Stufe und Delta-Prüfung blockiert.
+Showcase-Deltas. Feature 033 schließt diese Deltas mit zehn sichtbaren
+Hauptkomponenten, echten Statuszeilen, per Tastatur erreichbaren
+Beschreibungen, begrenzten Layout-Proofs und synchronisierten Guides. Wave 6
+bleibt bis zum Feature-033-Merge und zur Prüfung des tatsächlichen kombinierten
+Wave-5-Deltas blockiert; Feature 034 wurde nicht gestartet.
 
 ## Zweck und Pflege
 
@@ -728,6 +731,7 @@ fortgeschrieben.
 | 2026-07-16 | Wave-5-Intake und gebündelte Community-Preset-Submission vorbereitet | Den zurückgestellten Community-Katalogabgleich als einzelnen englischen Folgeissue [github/spec-kit#3569](https://github.com/github/spec-kit/issues/3569) für `autonomous-run-governance` v0.2.2 eingereicht: 13 Templates, fünf Commands, vier Bash-/PowerShell-Validatoren sowie synthetische und reale Hard-Abort-/Resume-, Exact-Head- und Closeout-Feldnachweise. Das repository-eigene Trigger-Label bleibt wegen externer Contributor-Berechtigung eine nicht blockierende Maintainer-Aktion; kein doppelter Issue und kein künstliches v0.2.3-Release entstehen. `Lastenheft_17_Wave5-TP7-Functional-Porting.032-wave5-tp7-functional-porting.md` reserviert anschließend Feature 032 als erste von zwei Wave-5-Stufen: 15 read-only Pascal-Quellen, sechs geschlossene Consumer-Gruppen, vorhandene Framework-Verträge, startbare moderne C#-Beispiele sowie reale App-Loop-, Zustands-, View-, Buffer-/Cell-, Keyboard-, A11Y-, Guide- und Evidence-Proofs. Die spätere Showcase-Stufe entsteht ausschließlich aus der gelieferten 032-Delta-Matrix; Wave 6 bleibt `ConditionallyReady`. Der Vor-Statistik-Snapshot umfasst `+608/-49`, also 559 Nettozeilen in Lastenheft, Reihenfolge, Pflichtenheft und vier synchronen Agentenflächen ohne Runtime-, API-, Dependency-, Projekt-, Beispiel-, Test- oder historische Source-Änderung. Konservative Manualreferenz: `7,6` Tage beziehungsweise `59,3` Stunden bei 80 Zeilen/Tag; Thorsten-Solo `4,9` Tage beziehungsweise `37,9` Stunden bei 125 Zeilen/Tag. |
 | 2026-07-16 | `/speckit-autonomous` für `032-wave5-tp7-functional-porting` | Die funktionale erste Wave-5-Stufe ordnet alle 15 read-only `TVDEMOS/*.PAS`-Quellen genau einer Rolle zu und liefert sechs `UseExistingFramework`-Consumer über zehn startbare moderne C#-Beispiele. Calculator, Demo/Editor/Help, Resource-Generator/-Load, ASCII, Calendar, Puzzle und Mouse Capability/Fallback werden test-first beziehungsweise mit realen `app.Run()`-, Zustands-, View- und Cell-Proofs belegt. Datei-, Resource-, Help-, Generator- und Mausgrenzen bleiben kontrolliert; Hostzustand, beliebige Benutzerdaten, Dependencies, historische Quellen und breite Framework-Verträge bleiben unverändert. Die exakte 15/6/10/10-Matrix erzeugt `Lastenheft_18_Wave5-TP7-Showcase-Remediation.md` als nächsten Intake, ohne Feature 033 oder Wave 6 zu starten. Der Vor-Statistik-Snapshot ohne diese Statistikzeile umfasst `+1402/-0` Produktions-/Beispielcode, `+680/-0` Tests, `+3234/-81` Dokumentation/Evidence/Guidance und `+227/-4` Metadaten, zusammen `+5543/-85` beziehungsweise 5458 Nettozeilen. Konservative Manualreferenz für 5543 hinzugefügte oder aktualisierte Zeilen: `69,3` Tage beziehungsweise `540,4` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `44,3` Tage beziehungsweise `345,9` Stunden bei 125 Zeilen/Tag. Frühe Abnahme: Calculator 3/3, zentrale Apps 6/6, Resources 3/3, Domain/Mouse 6/6 und vollständige Wave-5-Matrix 3/3, zusammen 21/21. Vollständige Release-, Coverage-, DocFX-/A11Y-, Plattform-, Review- und Exact-Head-Gates folgen auf dem finalen Kandidaten. |
 | 2026-07-16 | Kausaler Closeout der funktionalen Wave-5-Stufe Feature 032 | Feature-PR #93 wurde auf dem finalen Head `cf274c6` als Merge `e74c33d` geliefert. Elf Primary-Gate-Zeilen banden Requirements-Hash, Head, Workflow, Job, Plattform und Befehl; der installierte Bash-Validator akzeptierte die temporäre Evidence. Der erste Windows-Lauf fand eine CRLF-abhängige zusätzliche Leerzelle im neuen Markdown-Matrixparser. Die begrenzte Zeilenendenkanonisierung plus LF-/CRLF-Test bestand lokal 4/4, im vollständigen Wave-5-Filter 22/22 und anschließend als Teil von 804/804 Tests auf Ubuntu, macOS und Windows. Coverage blieb mit 92,96 %, 86,66 %, 90,01 %, 80,55 % und 89,18 % grün; DocFX/A11Y, Homogeneity, Supply Chain, PowerShell, Agent Secrets, Gitleaks und Claude bestanden. GraphQL meldete null Threads und Kommentare, Copilot blieb quota-bedingt ein fehlender Review und nur Human Approval erforderte den engen Bypass. Die Retrospektive ist `NoPromotion`, weil kein provider-neutraler Preset-Defekt reproduziert wurde. Der Closeout ändert ausschließlich Evidence-, State-, Task-, Statistik- und Retrospektivflächen, schließt 180/180 Aufgaben und lässt Feature 033 als nächsten Intake sowie Wave 6 blockiert. |
+| 2026-07-17 | `/speckit-autonomous` für `033-wave5-tp7-showcase-remediation` | Die zweite Wave-5-Stufe schließt alle zehn aus Feature 032 abgeleiteten Showcase-Deltas mit vorhandenen Framework-Komponenten. Demo, Editor, Help, Resource Demo und Generator, ASCII-Tabelle, Calculator, Calendar, Puzzle und Mouse Dialog besitzen eine sichtbare Hauptkomponente, echte `TStatusLine`, per `F1` erreichbare zweisprachige Description, vollständige Tastaturpfade und reproduzierbare Normal-/Constrained-App-Loop-/View-/Cell-Proofs. Alle zehn Entscheidungen lauten `UseExistingFramework`; `TVDEMOS/` bleibt 15/15 blob-identisch, Hostzustand und beliebige Benutzerdaten bleiben geschützt, und es entstehen weder neue Dependency noch breiter Framework-Fix. Der Vorvalidierungs-Snapshot ohne diese Statistikzeile umfasst `+1067/-44` Produktions-/Beispielcode, `+768/-1` Tests, `+2326/-252` Dokumentation/Evidence/Guidance und `+3/-3` Metadaten, zusammen `+4164/-300` beziehungsweise 3864 Nettozeilen. Konservative Manualreferenz für 4164 hinzugefügte oder aktualisierte Zeilen: `52,1` Tage beziehungsweise `416,4` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `33,3` Tage beziehungsweise `266,5` Stunden bei 125 Zeilen/Tag. Frühe Abnahme: Calculator 6/6, zentrale Apps 10/10, Resources 4/4, Domain/Mouse 14/14 und exakte Showcase-Matrix 6/6. Vollständige Release-, Coverage-, DocFX-/A11Y-, Plattform-, Review- und Exact-Head-Gates folgen auf dem finalen Kandidaten. Wave 6 und Feature 034 bleiben bis zum Merge und zur Prüfung des tatsächlichen kombinierten Wave-5-Deltas blockiert. |
 
 ## Gesamtstatistik
 

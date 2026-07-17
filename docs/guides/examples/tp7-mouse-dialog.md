@@ -32,19 +32,28 @@ remain honestly visible; capability loss ends an active local interaction.
 
 ## Tastatur und Proof / Keyboard and Proof
 
-Jede Aktivierung besitzt einen vollständigen Tastaturfallback. Der primäre
-Smoke führt `app.Run()` aus und prüft unterstützten Doppelklick, Unsupported,
-Capability-Verlust, lokale Einstellungen, sichtbare Zellen und
-`HostMutationPerformed == false`.
+Der reale `TDialog` enthält `TCheckBoxes`, eine `TScrollBar` und einen
+Aktivierungsbutton. Tab wechselt Controls, Space dreht die lokale
+Button-Reihenfolge, Pfeiltasten ändern die Verzögerungsstufe und Enter
+aktiviert den vollständigen Tastaturfallback. F1 öffnet die app-spezifische
+Description.
 
-Every activation has a complete keyboard fallback. The primary smoke runs
-`app.Run()` and verifies supported double click, Unsupported, capability loss,
-local settings, visible cells, and `HostMutationPerformed == false`.
+The real `TDialog` contains `TCheckBoxes`, a `TScrollBar`, and an activation
+button. Tab changes controls, Space reverses the local button order, arrow keys
+change the delay step, and Enter activates the complete keyboard fallback. F1
+opens the app-specific Description.
 
-## Showcase-Grenze / Showcase Boundary
+Der primäre Smoke führt `app.Run()` aus und prüft Controls, Fokus,
+unterstützten Doppelklick, Unsupported, Capability-Verlust, lokale
+Einstellungen, Status und sichtbare Zellen. `HostMutationPerformed == false`
+bleibt dabei eine verbindliche Grenze.
 
-Die spätere Stufe ergänzt reale fokussierbare Controls, sichtbare
-Capability-Auswahl, Shortcut-Hinweise und `Help -> Description`.
+The primary smoke runs `app.Run()` and verifies controls, focus, supported
+double click, Unsupported, capability loss, local settings, status, and
+visible cells. `HostMutationPerformed == false` remains a binding boundary.
 
-The later stage adds real focusable controls, visible capability selection,
-shortcut hints, and `Help -> Description`.
+Die `46x16`-Fixture beweist Dialogidentität, Tastaturhinweis und Description
+ohne eine Host-Konfiguration zu verändern.
+
+The `46x16` fixture proves dialog identity, keyboard guidance, and Description
+without changing host configuration.

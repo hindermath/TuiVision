@@ -9,6 +9,12 @@ namespace TuiVision.Examples.Wave5;
 /// <summary>Funktionales TP7-Editorbeispiel. / Functional TP7 editor example.</summary>
 public sealed class Tp7EditApp : Wave5Application
 {
+    /// <summary>Zeigt einen begrenzten Edit-Aktionsstatus. / Shows a bounded edit-action status.</summary>
+    public const ushort CmEditAction = 32203;
+
+    /// <summary>Zeigt einen begrenzten Search-Aktionsstatus. / Shows a bounded search-action status.</summary>
+    public const ushort CmSearchAction = 32204;
+
     /// <summary>Fordert Safe-Close an. / Requests safe close.</summary>
     public const ushort CmRequestClose = 32201;
 
@@ -28,7 +34,9 @@ public sealed class Tp7EditApp : Wave5Application
         EditWindow = new TEditWindow(region, Editor, "TP7 Edit");
         Desktop.Insert(EditWindow);
         Desktop.SetFocus(EditWindow);
+        EditWindow.SetFocus(Editor);
         TrackVisibleView(EditWindow, nameof(TEditWindow));
+        FocusedControlKind = EditWindow.Current?.GetType().Name ?? string.Empty;
         SetStatus("Tp7Edit", "ready");
         Editor.Changed += (_, _) => SetStatus("Tp7Edit", Editor.Modified ? "modified" : "clean");
     }
@@ -41,6 +49,9 @@ public sealed class Tp7EditApp : Wave5Application
 
     /// <summary>Sichtbares Editorfenster. / Visible editor window.</summary>
     public TEditWindow EditWindow { get; }
+
+    /// <summary>Typ des initial fokussierten Editorcontrols. / Type of the initially focused editor control.</summary>
+    public string FocusedControlKind { get; }
 
     /// <summary>Letztes Safe-Close-Ergebnis. / Last safe-close result.</summary>
     public bool CloseAccepted { get; private set; }
@@ -58,6 +69,41 @@ public sealed class Tp7EditApp : Wave5Application
     /// <param name="RelativePath">Relativer Pfad. / Relative path.</param>
     /// <param name="AcceptConflict">Konflikt akzeptieren. / Accept conflict.</param>
     public readonly record struct SaveRequest(string RelativePath, bool AcceptConflict);
+
+    /// <inheritdoc />
+    protected override TMenuBar InitMenuBar(TRect bounds) =>
+        new(bounds)
+        {
+            Menu = new TMenuItem(
+                "~F~ile",
+                0,
+                new TMenuItem(
+                    "~E~dit",
+                    0,
+                    new TMenuItem(
+                        "~S~earch",
+                        0,
+                        new TMenuItem(
+                            "~H~elp",
+                            0,
+                            null,
+                            new TMenuItem("~D~escription", CmDescription)),
+                        new TMenuItem(
+                            "~F~ind",
+                            CmSearchAction,
+                            new TMenuItem("~R~eplace", ShellCommandIds.cmReplace))),
+                    new TMenuItem(
+                        "~U~ndo",
+                        CmEditAction,
+                        new TMenuItem(
+                            "~C~opy",
+                            ShellCommandIds.cmCopy,
+                            new TMenuItem("~P~aste", ShellCommandIds.cmPaste)))),
+                new TMenuItem(
+                    "~S~ave",
+                    CmSaveOwned,
+                    new TMenuItem("~C~lose", CmRequestClose)))
+        };
 
     /// <inheritdoc />
     public override void HandleEvent(TEvent @event)
@@ -80,8 +126,37 @@ public sealed class Tp7EditApp : Wave5Application
             return;
         }
 
+        if (@event.What == TEventKind.Command && @event.Message.Command == CmEditAction)
+        {
+            SetStatus("Tp7Edit", "Edit menu action");
+            @event.Clear();
+            return;
+        }
+
+        if (@event.What == TEventKind.Command && @event.Message.Command == CmSearchAction)
+        {
+            SetStatus("Tp7Edit", "Search menu action");
+            @event.Clear();
+            return;
+        }
+
         base.HandleEvent(@event);
     }
+
+    /// <inheritdoc />
+    protected override string BuildDescriptionText() =>
+        """
+        Historischer Lernzweck: Der Editor verbindet File-, Edit- und Search-Menüs mit einem fokussierten Textpuffer.
+        Historical learning purpose: the editor connects File, Edit, and Search menus with a focused text buffer.
+        Tastatur: Menümnemoniken, Texttasten, Save, Close, Find, Replace, Tab und F1 sind erreichbar.
+        Keyboard: menu mnemonics, text keys, Save, Close, Find, Replace, Tab, and F1 are reachable.
+        Modernes C# nutzt TFileEditor und ausdrückliche Safe-Close- sowie Konfliktentscheidungen.
+        Modern C# uses TFileEditor and explicit safe-close and conflict decisions.
+        Speichern ist nur unter dem kontrollierten Root erlaubt; Traversal und implizites Überschreiben werden abgelehnt.
+        Saving is allowed only below the controlled root; traversal and implicit overwrite are rejected.
+        Der App-Loop-Smoke beweist Fokus, Änderung, Entscheidung, Status und Zellen, nicht beliebige Benutzerdateien.
+        The app-loop smoke proves focus, editing, decisions, status, and cells, not arbitrary user files.
+        """;
 
     private void SaveOwned(SaveRequest request)
     {

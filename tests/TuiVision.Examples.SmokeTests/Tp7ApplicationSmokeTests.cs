@@ -2,6 +2,7 @@
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
 using TuiVision.Compatibility;
+using TuiVision.Controls;
 using TuiVision.Core;
 using TuiVision.Examples.Wave5;
 
@@ -15,6 +16,47 @@ namespace TuiVision.Examples.SmokeTests;
 [TestClass]
 public sealed class Tp7ApplicationSmokeTests : ExampleTestBase
 {
+    /// <summary>
+    /// Prüft echte Desktop-Fenster und die Operationen Tile, Cascade, Next und Close.
+    ///
+    /// Verifies real desktop windows and the Tile, Cascade, Next, and Close operations.
+    /// </summary>
+    [TestMethod]
+    public void Tp7Demo_AppLoop_Operates_Real_Window_Family()
+    {
+        Tp7DemoApp app = new(DefaultBounds(), headless: true);
+        app.QueueEvents([
+            TEvent.CreateCommand(Tp7DemoApp.CmOpenWindow),
+            TEvent.CreateCommand(Tp7DemoApp.CmTile),
+            TEvent.CreateCommand(Tp7DemoApp.CmCascade),
+            TEvent.CreateCommand(Tp7DemoApp.CmNextWindow),
+            TEvent.CreateCommand(Tp7DemoApp.CmCloseWindow)
+        ]);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        Assert.IsGreaterThanOrEqualTo(2, app.LastWindowCount);
+        Assert.AreEqual(TDesktopOperationKind.Next, app.LastDesktopOperation);
+        Assert.IsFalse(string.IsNullOrWhiteSpace(app.LastFocusedWindowTitle));
+        AssertViewTreeProofFromAppLoop(app.LastVisibleComponentKind, nameof(TWindow), "TP7 Demo real window");
+        AssertVisibleContainsFromAppLoop(app.LastStatusMessage, "closed", "TP7 Demo close status");
+    }
+
+    /// <summary>Prüft die vollständige Demo-Description in enger Ansicht. / Verifies the complete Demo Description in a narrow view.</summary>
+    [TestMethod]
+    public void Tp7Demo_AppLoop_Shows_Complete_Description_In_Constrained_Viewport()
+    {
+        Tp7DemoApp app = new(DefaultBounds(48, 16), headless: true);
+        app.QueueEvents([DescriptionKey()]);
+
+        AssertSmokeRunCompletes(() => app.Run());
+
+        Assert.IsTrue(app.DescriptionOpened);
+        AssertVisibleContainsFromAppLoop(app.LastDescriptionText, "Fensterfamilie", "TP7 Demo Description purpose");
+        AssertVisibleContainsFromAppLoop(app.LastDescriptionText, "Tile", "TP7 Demo Description keyboard");
+        AssertRenderedContainsFromAppLoop(app.Driver.BackBuffer, "Help -> Description", "TP7 Demo constrained Description");
+    }
+
     /// <summary>Prüft Menü, genau einen Command und begrenzte Idle-Zyklen. / Verifies menu, exactly one command, and bounded idle cycles.</summary>
     [TestMethod]
     public void Tp7Demo_AppLoop_Processes_Command_Once_And_Bounds_Idle()
@@ -104,6 +146,29 @@ public sealed class Tp7ApplicationSmokeTests : ExampleTestBase
         }
     }
 
+    /// <summary>
+    /// Prüft reale File/Edit/Search-Menüs, Editorfokus und Description.
+    ///
+    /// Verifies real File/Edit/Search menus, editor focus, and Description.
+    /// </summary>
+    [TestMethod]
+    public void Tp7Edit_AppLoop_Exposes_Menu_Chrome_Focus_And_Description()
+    {
+        Tp7EditApp chrome = new(DefaultBounds(48, 16), headless: true);
+        Assert.IsNotNull(chrome.MenuBar);
+        IReadOnlyList<TAccessibleShortcut> shortcuts = chrome.MenuBar.GetAccessibleShortcuts();
+        Assert.IsGreaterThanOrEqualTo(5, shortcuts.Count);
+        Assert.AreEqual(nameof(TFileEditor), chrome.FocusedControlKind);
+        AssertSmokeRunCompletes(() => chrome.Run());
+        AssertRenderedContainsFromAppLoop(chrome.Driver.BackBuffer, "TP7 Edit", "TP7 Edit constrained chrome");
+
+        Tp7EditApp description = new(DefaultBounds(48, 16), headless: true);
+        description.QueueEvents([DescriptionKey()]);
+        AssertSmokeRunCompletes(() => description.Run());
+        Assert.IsTrue(description.DescriptionOpened);
+        AssertVisibleContainsFromAppLoop(description.LastDescriptionText, "kontrollierten Root", "TP7 Edit Description boundary");
+    }
+
     /// <summary>Prüft atomare Ablehnung einer ungültigen Help-Quelle. / Verifies atomic rejection of invalid help source.</summary>
     [TestMethod]
     public void Tp7Help_AppLoop_Rejects_Invalid_Source_Without_Partial_Model()
@@ -135,4 +200,33 @@ public sealed class Tp7ApplicationSmokeTests : ExampleTestBase
         Assert.AreEqual(999, unknown.CurrentContext);
         AssertRenderedRegionContainsFromAppLoop(unknown.Driver.BackBuffer, unknown.LastVisibleRegion, "No help topic is available", "TP7 Help fallback cells");
     }
+
+    /// <summary>
+    /// Prüft Cross-Reference, Back, fokussierten Viewer und Description.
+    ///
+    /// Verifies cross-reference navigation, Back, focused viewer, and Description.
+    /// </summary>
+    [TestMethod]
+    public void Tp7Help_AppLoop_Navigates_Reference_Back_And_Description()
+    {
+        Tp7HelpApp navigation = new(DefaultBounds(), headless: true);
+        navigation.QueueEvents([
+            TEvent.CreateCommand(Tp7HelpApp.CmActivateReference),
+            TEvent.CreateCommand(Tp7HelpApp.CmBack)
+        ]);
+        AssertSmokeRunCompletes(() => navigation.Run());
+        Assert.AreEqual(101, navigation.CurrentContext);
+        Assert.AreEqual(1, navigation.ReferenceActivationCount);
+        Assert.AreEqual(1, navigation.BackNavigationCount);
+        Assert.AreEqual(nameof(THelpViewer), navigation.FocusedControlKind);
+        AssertRenderedRegionContainsFromAppLoop(navigation.Driver.BackBuffer, navigation.LastVisibleRegion, "Welcome", "TP7 Help Back cells");
+
+        Tp7HelpApp description = new(DefaultBounds(48, 16), headless: true);
+        description.QueueEvents([DescriptionKey()]);
+        AssertSmokeRunCompletes(() => description.Run());
+        AssertVisibleContainsFromAppLoop(description.LastDescriptionText, "Teilmodell", "TP7 Help Description boundary");
+    }
+
+    private static TEvent DescriptionKey() =>
+        TEvent.CreateKeyDown(new TKeyDownEvent('\0', 0x3B, 0x3B00, 0, 0x3B));
 }

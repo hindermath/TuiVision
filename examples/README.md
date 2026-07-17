@@ -136,42 +136,45 @@ and do not change host terminal, font, codepage, or keyboard settings.
 
 ---
 
-## Wave-5-Beispiele, funktionale Stufe / Wave 5 Examples, Functional Stage
+## Wave-5-Beispiele, vollständige Showcase-Stufe / Wave 5 Examples, Complete Showcase Stage
 
-Feature `032-wave5-tp7-functional-porting` liefert die erste von zwei
-Wave-5-Stufen. Die zehn modernen C#-Beispiele übernehmen die Lern- und
-Nutzerabsicht aus den 15 read-only Quellen unter `TVDEMOS/`, verwenden aber
-die vorhandenen TuiVision-Verträge und keine Pascal-, DOS- oder
+Features `032-wave5-tp7-functional-porting` und
+`033-wave5-tp7-showcase-remediation` liefern gemeinsam die vollständige
+Wave-5-Stufe. Die zehn modernen C#-Beispiele übernehmen die Lern- und
+Nutzerabsicht aus 15 read-only Quellen unter `TVDEMOS/`, verwenden aber
+vorhandene TuiVision-Verträge statt Pascal-, DOS- oder
 Beispiel-Ersatzframeworks.
 
-Feature `032-wave5-tp7-functional-porting` delivers the first of two Wave-5
-stages. The ten modern C# examples retain the learning and user intent from
-the 15 read-only sources under `TVDEMOS/`, while using existing TuiVision
-contracts rather than Pascal, DOS, or examples-only substitute frameworks.
+Features `032-wave5-tp7-functional-porting` and
+`033-wave5-tp7-showcase-remediation` jointly deliver the complete Wave-5
+stage. The ten modern C# examples retain the learning and user intent from 15
+read-only sources under `TVDEMOS/`, while using existing TuiVision contracts
+instead of Pascal, DOS, or examples-only substitute frameworks.
 
-Jeder Stage-1-Pfad startet normal, besitzt einen kontrollierten `--smoke`-Pfad
-und wird über `app.Run()`, konkreten Zustand, View-Identität und gerenderte
-Zellen bewiesen. Die vollständige sichtbare Showcase-Stufe ist in
-`Lastenheft_18_Wave5-TP7-Showcase-Remediation.md` aus den tatsächlichen
-Feature-032-Deltas abgeleitet.
+Jeder Pfad startet normal, besitzt einen kontrollierten `--smoke`-Pfad und
+wird über `app.Run()`, konkreten Zustand, View-Identität und gerenderte Zellen
+bewiesen. Zusätzlich bietet jedes Beispiel eine sichtbare Hauptkomponente,
+eine echte `TStatusLine`, eine per `F1` erreichbare zweisprachige Beschreibung
+und stabile Tastatur- sowie begrenzte Layoutpfade.
 
-Each Stage-1 path starts normally, has a controlled `--smoke` path, and is
-proven through `app.Run()`, concrete state, view identity, and rendered cells.
-The complete visible showcase stage is derived from the actual Feature-032
-deltas in `Lastenheft_18_Wave5-TP7-Showcase-Remediation.md`.
+Each path starts normally, has a controlled `--smoke` path, and is proven
+through `app.Run()`, concrete state, view identity, and rendered cells. Every
+example also provides a visible main component, a real `TStatusLine`, an
+`F1`-reachable bilingual description, and stable keyboard and constrained
+layout paths.
 
-| Verwalteter Name / Managed Name | Startbefehl / Launch Command | Funktionaler Pfad und Grenze / Functional Path and Boundary |
+| Verwalteter Name / Managed Name | Startbefehl / Launch Command | Sichtbarer Pfad und Grenze / Visible Path and Boundary |
 |---|---|---|
-| `Tp7Demo` | `dotnet run --project examples/Tp7Demo` | Menü, Commands, Help, Fenster und zwei begrenzte Idle-Zyklen; vollständige Fensterkomposition folgt in Stage 2. |
-| `Tp7Edit` | `dotnet run --project examples/Tp7Edit` | Echter Editor, Modified/Safe-Close, Konfliktentscheidung und kontrollierter Zielpfad; beliebige Benutzerdaten bleiben ausgeschlossen. |
-| `Tp7Help` | `dotnet run --project examples/Tp7Help` | Kontrollierte Help-Kompilierung, bekannte Kontexte und sichtbarer Fallback ohne Teilmodell bei Fehlern. |
-| `Tp7ResourceDemo` | `dotnet run --project examples/Tp7ResourceDemo` | Exakte `Dialog`-/`Menu`-/`Status`-Records und atomare Ablehnung ungültiger Ressourcen. |
-| `Tp7ResourceGenerator` | `dotnet run --project examples/Tp7ResourceGenerator` | Allowlist-basierte Bytes und kontrolliertes test-eigenes Ziel; absolute Pfade und Traversal werden abgelehnt. |
-| `Tp7AsciiTable` | `dotnet run --project examples/Tp7AsciiTable` | Begrenzte Werte `0..255` mit Dezimal-, Hex- und textorientiertem Kontrolllabel. |
-| `Tp7Calculator` | `dotnet run --project examples/Tp7Calculator` | Invariante Grundrechenarten, Clear, Backspace, Vorzeichen und atomare Division-durch-null-Ablehnung. |
-| `Tp7Calendar` | `dotnet run --project examples/Tp7Calendar` | Feste Monats-Fixture und reproduzierbarer Jahreswechsel ohne Systemdatum oder Locale. |
-| `Tp7Puzzle` | `dotnet run --project examples/Tp7Puzzle` | Festes 4x4-Board, benachbarter Zug und zustandserhaltende Ablehnung. |
-| `Tp7MouseDialog` | `dotnet run --project examples/Tp7MouseDialog` | Lokale Einstellungen, ehrliche Capability, Doppelklick, Verlustabbruch und vollständiger Tastaturfallback ohne Host-Mutation. |
+| `Tp7Demo` | `dotnet run --project examples/Tp7Demo` | Desktop-Fenster, Menü-Commands, Status und Beschreibung; zwei begrenzte Idle-Zyklen bleiben der reproduzierbare Hintergrundpfad. |
+| `Tp7Edit` | `dotnet run --project examples/Tp7Edit` | Echtes `TEditWindow`, Modified/Safe-Close, Konfliktentscheidung, Status und Beschreibung; beliebige Benutzerdaten bleiben ausgeschlossen. |
+| `Tp7Help` | `dotnet run --project examples/Tp7Help` | Echtes Help-Fenster mit Querverweis, Zurück, Status, Beschreibung und atomarem Fallback ohne Teilmodell. |
+| `Tp7ResourceDemo` | `dotnet run --project examples/Tp7ResourceDemo` | Rekonstruiertes Dialog-, Menü- und Statusmodell mit Auswahl, Beschreibung und atomarer Ablehnung ungültiger Ressourcen. |
+| `Tp7ResourceGenerator` | `dotnet run --project examples/Tp7ResourceGenerator` | Ziel-Eingabe, Generate-Button, Fortschritt, Ergebnis und Beschreibung; absolute Pfade und Traversal werden abgelehnt. |
+| `Tp7AsciiTable` | `dotnet run --project examples/Tp7AsciiTable` | Fokussierbare 16x16-Matrix für `0..255`, Tastaturnavigation, Auswahlstatus und textorientierte Beschreibung. |
+| `Tp7Calculator` | `dotnet run --project examples/Tp7Calculator` | Echter Dialog mit 20 Buttons, Grundrechenarten, Status, Beschreibung und atomarer Division-durch-null-Ablehnung. |
+| `Tp7Calendar` | `dotnet run --project examples/Tp7Calendar` | Fokussierbare Monatsmatrix, Tag-/Monatsnavigation, Status und feste reproduzierbare Fixture ohne Systemdatum oder Locale. |
+| `Tp7Puzzle` | `dotnet run --project examples/Tp7Puzzle` | Fokussierbares 4x4-Board, Tastaturzug, Status, Beschreibung und zustandserhaltende Ablehnung. |
+| `Tp7MouseDialog` | `dotnet run --project examples/Tp7MouseDialog` | Echte Controls, lokale Einstellungen, ehrliche Capability, Aktivierung und vollständiger Tastaturfallback ohne Host-Mutation. |
 
 ---
 

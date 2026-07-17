@@ -21,17 +21,25 @@ dotnet run --no-build --configuration Release \
   --project examples/Tp7AsciiTable -- --smoke
 ```
 
-## Verhalten und Proof / Behavior and Proof
+## Showcase und Tastatur / Showcase and Keyboard
 
-Typisierte Commands bewegen die Auswahl oder wählen direkt einen Wert von
-`0` bis `255`. Eine ungültige direkte Auswahl wird sichtbar abgelehnt und
-verändert den letzten gültigen Wert nicht. Der primäre Smoke führt `app.Run()`
-aus und prüft Zustand, Fenster und gerenderte Dezimal-/Hex-Zellen.
+Eine fokussierbare 16x16-Tabelle zeigt jeden Bytewert als zweistellige
+Hexadezimalzahl. Pfeiltasten bewegen die Auswahl um eine Zelle, PageUp und
+PageDown um vier Zeilen, Home und End an die Grenzen. F1 beziehungsweise
+`Help -> Description` erklärt Zweck und Proof-Grenze.
 
-Typed commands move the selection or directly select a value from `0` through
-`255`. An invalid direct selection is visibly rejected and does not change the
-last valid value. The primary smoke runs `app.Run()` and verifies state,
-window, and rendered decimal/hex cells.
+A focusable 16x16 table shows every byte as a two-digit hexadecimal value.
+Arrow keys move the selection by one cell, PageUp and PageDown by four rows,
+and Home and End to the boundaries. F1 or `Help -> Description` explains the
+purpose and proof boundary.
+
+Typisierte Commands können weiterhin direkt einen Wert von `0` bis `255`
+wählen. Eine ungültige direkte Auswahl wird sichtbar abgelehnt und verändert
+den letzten gültigen Wert nicht.
+
+Typed commands can still select a value from `0` through `255` directly. An
+invalid direct selection is visibly rejected and does not change the last
+valid value.
 
 ## Moderne Abweichung / Modern Deviation
 
@@ -41,10 +49,12 @@ Umsetzung übernimmt keine historische Codepage oder Host-Zeichensatztabelle.
 Non-printable values receive a text-first `CTRL-nnn` label. The implementation
 does not retain a historical code page or host character table.
 
-## Showcase-Grenze / Showcase Boundary
+## Proof
 
-Die spätere Stufe ergänzt ein sichtbares Tabellenraster, direkte Tastaturnavigation,
-Fokusnachweis und `Help -> Description`.
+Der primäre Smoke führt `app.Run()` aus und verbindet Zustand, Grid-Fokus,
+Statuszeile und gerenderte Zellen. Die enge `52x22`-Fixture zeigt Identität,
+erste und letzte Tabellenzelle sowie den Description-Pfad ohne Host-Codepage.
 
-The later stage adds a visible table grid, direct keyboard navigation, focus
-proof, and `Help -> Description`.
+The primary smoke runs `app.Run()` and combines state, grid focus, status line,
+and rendered cells. The constrained `52x22` fixture shows identity, first and
+last table cells, and the Description path without a host code page.

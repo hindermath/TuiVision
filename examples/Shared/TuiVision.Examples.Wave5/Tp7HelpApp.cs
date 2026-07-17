@@ -16,6 +16,7 @@ public sealed class Tp7HelpApp : Wave5Application
         ".topic Broken=101\nOpen {Missing:Missing}.";
     private readonly THelpSourceCompiler _compiler = new();
     private readonly THelpFile _helpFile;
+    private THelpWindow? _helpWindow;
 
     /// <summary>Kompiliert eine ungültige Quelle. / Compiles an invalid source.</summary>
     public const ushort CmCompileInvalid = 32301;
@@ -26,6 +27,12 @@ public sealed class Tp7HelpApp : Wave5Application
     /// <summary>Zeigt einen unbekannten Kontext. / Shows an unknown context.</summary>
     public const ushort CmShowUnknownContext = 32303;
 
+    /// <summary>Aktiviert den ausgewählten Querverweis. / Activates the selected cross-reference.</summary>
+    public const ushort CmActivateReference = 32304;
+
+    /// <summary>Navigiert zum vorherigen Hilfethema. / Navigates to the previous help topic.</summary>
+    public const ushort CmBack = 32305;
+
     /// <summary>Initialisiert das Hilfebeispiel. / Initializes the help example.</summary>
     /// <param name="bounds">Anwendungsgrenzen. / Application bounds.</param>
     /// <param name="headless">Kontrollierter Smoke-Modus. / Controlled smoke mode.</param>
@@ -34,8 +41,7 @@ public sealed class Tp7HelpApp : Wave5Application
         LastCompilation = _compiler.Compile(ValidSource, "tp7-valid.topic");
         _helpFile = LastCompilation.HelpFile
             ?? throw new InvalidOperationException("The built-in TP7 help source must compile.");
-        ShowContent("TP7 Help", "TP7 Help\nCompiled topics: 2\nContext: 101 Welcome");
-        SetStatus("Tp7Help", "compiled valid source");
+        ShowContext(101);
     }
 
     /// <summary>Letztes Compilerergebnis. / Last compiler result.</summary>
@@ -46,6 +52,43 @@ public sealed class Tp7HelpApp : Wave5Application
 
     /// <summary>Letzter sichtbarer Kontext. / Last visible context.</summary>
     public int CurrentContext { get; private set; } = 101;
+
+    /// <summary>Zahl aktivierter Querverweise. / Number of activated cross-references.</summary>
+    public int ReferenceActivationCount { get; private set; }
+
+    /// <summary>Zahl erfolgreicher Back-Navigationen. / Number of successful Back navigations.</summary>
+    public int BackNavigationCount { get; private set; }
+
+    /// <summary>Typ des fokussierten Help-Controls. / Type of the focused Help control.</summary>
+    public string FocusedControlKind { get; private set; } = string.Empty;
+
+    /// <inheritdoc />
+    protected override TMenuBar InitMenuBar(TRect bounds) =>
+        new(bounds)
+        {
+            Menu = new TMenuItem(
+                "~H~elp topics",
+                0,
+                new TMenuItem(
+                    "~C~ompiler",
+                    0,
+                    new TMenuItem(
+                        "~A~bout",
+                        0,
+                        null,
+                        new TMenuItem("~D~escription", CmDescription)),
+                    new TMenuItem("~I~nvalid source", CmCompileInvalid)),
+                new TMenuItem(
+                    "~W~elcome",
+                    CmShowKnownContext,
+                    new TMenuItem(
+                        "~U~nknown",
+                        CmShowUnknownContext,
+                        new TMenuItem(
+                            "~F~ollow reference",
+                            CmActivateReference,
+                            new TMenuItem("~B~ack", CmBack)))))
+        };
 
     /// <inheritdoc />
     public override void HandleEvent(TEvent @event)
@@ -81,8 +124,49 @@ public sealed class Tp7HelpApp : Wave5Application
             return;
         }
 
+        if (@event.What == TEventKind.Command && @event.Message.Command == CmActivateReference)
+        {
+            if (_helpWindow?.Viewer.ActivateSelectedReference() == true)
+            {
+                ReferenceActivationCount++;
+                CurrentContext = _helpWindow.Viewer.CurrentTopic?.Context ?? CurrentContext;
+                SetStatus("Tp7Help", $"reference context={CurrentContext}");
+            }
+
+            @event.Clear();
+            return;
+        }
+
+        if (@event.What == TEventKind.Command && @event.Message.Command == CmBack)
+        {
+            if (_helpWindow?.Viewer.GoBack() == true)
+            {
+                BackNavigationCount++;
+                CurrentContext = _helpWindow.Viewer.CurrentTopic?.Context ?? CurrentContext;
+                SetStatus("Tp7Help", $"back context={CurrentContext}");
+            }
+
+            @event.Clear();
+            return;
+        }
+
         base.HandleEvent(@event);
     }
+
+    /// <inheritdoc />
+    protected override string BuildDescriptionText() =>
+        """
+        Historischer Lernzweck: Compiler, Themen, Querverweise und Back zeigen einen vollständigen Hilfe-Workflow.
+        Historical learning purpose: compiler, topics, cross-references, and Back show a complete help workflow.
+        Tastatur: Menüs öffnen bekannte oder unbekannte Kontexte, folgen einem Verweis, gehen zurück und öffnen F1.
+        Keyboard: menus open known or unknown contexts, follow a reference, go Back, and open F1.
+        Modernes C# verwendet eine begrenzte UTF-8-Grammatik und ein typisiertes Help-Modell.
+        Modern C# uses a bounded UTF-8 grammar and a typed Help model.
+        Ungültige Quellen veröffentlichen kein Teilmodell; unbekannte Kontexte erhalten sichtbaren Fallback-Text.
+        Invalid sources publish no partial model; unknown contexts receive visible fallback text.
+        Der App-Loop-Smoke beweist Diagnose, Viewer, Fokus, Navigation, Status und Zellen, nicht historische Binärdateien.
+        The app-loop smoke proves diagnostics, viewer, focus, navigation, status, and cells, not historical binaries.
+        """;
 
     private void ShowContext(int context)
     {
@@ -90,7 +174,9 @@ public sealed class Tp7HelpApp : Wave5Application
         int width = Math.Clamp(62, 14, Math.Max(14, Desktop!.Size.X - 4));
         int height = Math.Clamp(15, 7, Math.Max(7, Desktop.Size.Y - 3));
         THelpWindow window = new(new TRect(2, 1, 2 + width, 1 + height), _helpFile, context);
+        _helpWindow = window;
         ShowView(window, nameof(THelpWindow), $"context={context}");
+        FocusedControlKind = window.Current?.GetType().Name ?? string.Empty;
         string title = window.Viewer.CurrentTopic?.Title ?? "No help available";
         SetStatus("Tp7Help", $"context={context} topic={title}");
     }
