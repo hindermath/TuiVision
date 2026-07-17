@@ -68,7 +68,7 @@ Dieses Lastenheft beschreibt einen spaeteren Spec-Kit-Lauf, der prueft, wie dies
 ## Optimaler Spec-Kit Specify Prompt
 
 ```text
-/speckit-specify Nutze Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md als verbindliche Eingabedatei. Erstelle die Feature-Spezifikation fuer einen Sandbox-gestuetzten Secure-Development-Haertungslauf im Repository TuiVision.
+$speckit-specify Nutze Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md als verbindliche Eingabedatei. Erstelle die Feature-Spezifikation fuer einen Sandbox-gestuetzten Secure-Development-Haertungslauf im Repository TuiVision.
 
 Ziel: Pruefe, wie TuiVision sicher, nachvollziehbar und ausbildungsgeeignet in oder mit der absdd-image-sandbox bearbeitet werden kann. Starte keine Implementierung und fuehre keine technische Haertung aus.
 
@@ -82,4 +82,38 @@ Beruecksichtige:
 - Build/Test-Baseline: dotnet restore/build/test; MSTest suites; Coverlet coverage gates for core assemblies; dotnet format where configured.
 - Dokumentations- und A11Y-Basis: DocFX regeneration requires Playwright + axe and lynx-oriented A11Y smoke review.
 - Keine Secrets, privaten Host-Pfade oder lokalen Nutzerprofile in versionierte Dateien uebernehmen.
+```
+
+## Optimaler Autonomous-Prompt / Optimal Autonomous Prompt
+
+```text
+$speckit-autonomous Use
+`Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md` as the binding
+intake for a complete autonomous sandbox applicability review in
+MergeAndSync mode.
+
+Start only from clean synchronized main and determine the next free Spec Kit
+feature number. Run Specify, repeated Clarify, sandbox and secure-development
+checklists, Plan, plan review, Tasks, repeated Analyze, Implement, validation,
+repository delivery, and retrospective to convergence.
+
+Assess repository mounts, write boundaries, agent configuration, build and
+test feasibility, documentation checks, SBOM and dependency evidence, secret
+boundaries, caches, user profiles, and the split between sandbox, local, and
+CI work. Use the secure-development policy, CL_12, the sandbox guideline, the
+existing secure-development hardening evidence, and all installed governance
+presets. Record every checkpoint as Applicable, AlreadySatisfied, N/A, Open,
+or FollowUp with rationale, evidence path, owner, follow-up, residual risk,
+and re-evaluation trigger.
+
+Keep the run evidence-focused. Do not modify the sandbox image, perform broad
+technical hardening, populate security claims without evidence, expose
+credentials or private host paths, or claim unavailable toolchains. Produce
+German-first/English-second CEFR-B2 and text-first WCAG 2.2 AA documentation.
+Create only non-empty finding-derived follow-up intakes.
+
+Run all checks triggered by the resulting documentation, scripts, or evidence.
+Use remote authority only for this repository's non-empty feature delivery.
+Merge only after applicable checks and reviews converge, then return to clean
+synchronized main.
 ```

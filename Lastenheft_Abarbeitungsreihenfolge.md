@@ -7,12 +7,12 @@ Diese Datei haelt die sichtbare Abarbeitungsreihenfolge der vorhandenen Lastenhe
 ## Spec-Kit-Intake-Regel / Spec Kit Intake Rule
 
 - Diese Datei ist ein Ordnungsdokument und selbst kein Spec-Kit-Intake.
-- Aktive Lastenhefte ohne Feature-Branch-Suffix koennen als Intake dienen, wenn sie Scope, Nicht-Ziele, Anforderungen, Akzeptanzkriterien und einen kopierbaren `/speckit-specify`-Prompt enthalten.
+- Aktive Lastenhefte ohne Feature-Branch-Suffix koennen als Intake dienen, wenn sie Scope, Nicht-Ziele, Anforderungen, Akzeptanzkriterien sowie kopierbare `$speckit-specify`- und `$speckit-autonomous`-Prompts enthalten.
 - Lastenhefte mit Feature-Branch-Suffix wie `.001-*` oder `.009-*` gelten als historisch oder abgeschlossen und werden nicht erneut gestartet.
 - Vor jedem neuen Lauf wird zuerst der aktuelle Repository-Stand geprueft; erledigte Punkte werden als `AlreadySatisfied` oder `N/A` dokumentiert, nicht neu implementiert.
 
 - This file is an ordering document and not itself a Spec Kit intake.
-- Active Lastenhefte without a feature-branch suffix can be used as intake when they include scope, non-goals, requirements, acceptance criteria, and a copyable `/speckit-specify` prompt.
+- Active Lastenhefte without a feature-branch suffix can be used as intake when they include scope, non-goals, requirements, acceptance criteria, and copyable `$speckit-specify` and `$speckit-autonomous` prompts.
 - Lastenhefte with a feature-branch suffix such as `.001-*` or `.009-*` are historical or completed and are not started again.
 - Before every new run, first check the current repository state; completed items are documented as `AlreadySatisfied` or `N/A`, not reimplemented.
 
