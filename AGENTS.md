@@ -366,6 +366,12 @@ npm run test:docfx
 - File, resource, help, generator, and mouse boundaries remain controlled; no host state, arbitrary user data, dependency, historical source, or broad framework behavior is changed.
 - `Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md` is the archived intake derived from the ten concrete Stage-2 deltas. Feature 033 is fully delivered through PR #96 and merge `d476e63`; Wave 6 remains blocked pending the actual combined Wave-5 delta review.
 
+### 034-wave5-combined-delta-closure
+- Binding intake: `Lastenheft_19_Wave5-Combined-Delta-Closure.md`; create exactly branch `034-wave5-combined-delta-closure`.
+- Scope is a read-only audit of the exact product file sets from PR #93 at `cf274c6` and PR #96 at `8921bd3`, with exact 15 source, 6 consumer, 10 example, 10 functional-proof, 10 showcase-closure, and 10 guide/launch cardinalities.
+- Product runtime, APIs, dependencies, projects, examples, framework code, `TVDEMOS/`, `TVFM/`, `tv203s/`, and external comparison sources remain unchanged. Only feature artifacts, evidence, status updates, and deterministic test-only closure validation are allowed.
+- Each example receives exactly one `AcceptedAsIs`, `AcceptedIntentionalDeviation`, `CandidateFinding`, or `ProductDecision`. Wave 6 remains blocked; a clean result may derive a later Feature-035 intake but must not start it.
+
 
 ### Autonomous Red-Proof Completeness
 - Before the first red test batch, review imports, public XML docs, harness helpers, focus/ownership assertions, and linked-source assembly identity.
@@ -691,8 +697,11 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 Features 031 through 033 are complete. Wave 5 now contains both the functional
 and showcase stages: all ten `Tp7*` examples provide a visible main component,
 real status, keyboard-reachable Description, constrained-layout proof, and
-synchronized guides. The next action is a separate review of the actual
-combined Wave-5 delta. Wave 6 and Feature 034 remain blocked until that review.
+synchronized guides. The next authorized intake is
+`Lastenheft_19_Wave5-Combined-Delta-Closure.md` on exactly
+`034-wave5-combined-delta-closure`. Feature 034 audits the exact PR #93 and
+PR #96 product delta read-only and does not remediate findings. Wave 6 remains
+blocked; a clean audit may derive but not start a later Feature-035 intake.
 Lastenheft 15 reserves a read-only example-portfolio audit after the complete
 Wave-6 closeout; it has no feature number and does not start before then.
 <!-- SPECKIT END -->
