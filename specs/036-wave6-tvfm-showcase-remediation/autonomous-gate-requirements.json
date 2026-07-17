@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "1.0",
+  "gates": [
+    {
+      "gateId": "GATE-STATIC-CANDIDATE",
+      "applicability": "Applicable",
+      "requiredScope": "The exact staged candidate has clean whitespace, complete path inventory, no protected/generated output, no placeholders, and no Feature-037 path.",
+      "requiredCommandTokens": ["git", "diff", "--cached", "--check"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Every MergeAndSync candidate requires exact staged-scope proof.",
+      "reevaluationTrigger": "Never while this feature changes tracked files."
+    },
+    {
+      "gateId": "GATE-WAVE6-SHOWCASE",
+      "applicability": "Applicable",
+      "requiredScope": "Real app-loop showcase tests cover one entry point, ten areas, visible commands, dialogs, focus, status, Description, cells, constrained layout, and mouse/keyboard parity in Release.",
+      "requiredCommandTokens": ["dotnet", "test", "TuiVision.Examples.SmokeTests", "Release", "Wave6Showcase"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Visible and interactive proof is the primary Feature-036 contract.",
+      "reevaluationTrigger": "Never while showcase behavior remains in scope."
+    },
+    {
+      "gateId": "GATE-WAVE6-FILESYSTEM",
+      "applicability": "Applicable",
+      "requiredScope": "Controlled-root, path, link, mutation, cancellation, conflict, revalidation, and recovery tests remain green.",
+      "requiredCommandTokens": ["dotnet", "test", "TuiVision.Examples.SmokeTests", "Release", "Wave6"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Showcase access must not weaken Feature-035 filesystem safety.",
+      "reevaluationTrigger": "Never while file-operation dialogs or drag intent change."
+    },
+    {
+      "gateId": "GATE-FULL-RELEASE",
+      "applicability": "Applicable",
+      "requiredScope": "The complete solution Release test suite passes.",
+      "requiredCommandTokens": ["dotnet", "test", "TuiVision.sln", "Release"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Shared example composition and broad UI proof can affect repository behavior.",
+      "reevaluationTrigger": "Never while shared executable code or broad proof changes."
+    },
+    {
+      "gateId": "GATE-COVERAGE",
+      "applicability": "Applicable",
+      "requiredScope": "Canonical Coverlet collection keeps all five required framework assemblies at or above 70 percent line coverage.",
+      "requiredCommandTokens": ["dotnet", "test", "XPlat Code Coverage", "coverlet.runsettings"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Repository merge policy requires the five-assembly coverage gate.",
+      "reevaluationTrigger": "Only if the Constitution and repository gate are formally changed."
+    },
+    {
+      "gateId": "GATE-DOCFX-A11Y",
+      "applicability": "Applicable",
+      "requiredScope": "DocFX builds with zero warnings/errors and Playwright/Axe documentation smoke passes.",
+      "requiredCommandTokens": ["docfx", "docfx.json", "playwright", "axe"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The learner-facing guide and documentation navigation change.",
+      "reevaluationTrigger": "Only if no learner-facing or DocFX surface changes."
+    },
+    {
+      "gateId": "GATE-PLATFORM-LINUX",
+      "applicability": "Applicable",
+      "requiredScope": "Ubuntu executes the Wave-6 showcase and controlled-filesystem acceptance body.",
+      "requiredCommandTokens": ["dotnet", "test", "Release", "Wave6"],
+      "requiredRunnerOrPlatformTokens": ["ubuntu"],
+      "rationale": "Path, terminal, keyboard, mouse fallback, and attribute behavior need Linux evidence.",
+      "reevaluationTrigger": "Never while showcase or filesystem behavior changes."
+    },
+    {
+      "gateId": "GATE-PLATFORM-MACOS",
+      "applicability": "Applicable",
+      "requiredScope": "macOS executes the Wave-6 showcase and controlled-filesystem acceptance body.",
+      "requiredCommandTokens": ["dotnet", "test", "Release", "Wave6"],
+      "requiredRunnerOrPlatformTokens": ["macos"],
+      "rationale": "macOS is a primary development and runtime platform.",
+      "reevaluationTrigger": "Never while showcase or filesystem behavior changes."
+    },
+    {
+      "gateId": "GATE-PLATFORM-WINDOWS",
+      "applicability": "Applicable",
+      "requiredScope": "Windows executes Wave-6 showcase, controlled-filesystem acceptance, and PowerShell state parity.",
+      "requiredCommandTokens": ["dotnet", "test", "Release", "Wave6"],
+      "requiredRunnerOrPlatformTokens": ["windows"],
+      "rationale": "Casing, attributes, console interaction, and validator parity need Windows proof.",
+      "reevaluationTrigger": "Never while showcase, filesystem, or autonomous state is delivered."
+    },
+    {
+      "gateId": "GATE-SUPPLY-CHAIN",
+      "applicability": "Applicable",
+      "requiredScope": "Repository dependency, secret, and supply-chain checks pass on the reviewed head.",
+      "requiredCommandTokens": ["supply-chain"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "NIST SSDF and MergeAndSync governance remain applicable.",
+      "reevaluationTrigger": "Never for this delivery mode."
+    },
+    {
+      "gateId": "GATE-AGENT-PARITY",
+      "applicability": "Applicable",
+      "requiredScope": "All five maintained guidance surfaces describe the same active Feature-036 context.",
+      "requiredCommandTokens": ["agent", "parity"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Active feature and next-intake markers change.",
+      "reevaluationTrigger": "Only if no shared guidance or active-feature marker changes."
+    },
+    {
+      "gateId": "GATE-SCRIPT-PARITY",
+      "applicability": "N/A",
+      "requiredScope": "No new or changed repository script requires Bash/PowerShell parity.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Feature 036 plans no script change.",
+      "reevaluationTrigger": "Any added or changed .sh or .ps1 file."
+    }
+  ]
+}

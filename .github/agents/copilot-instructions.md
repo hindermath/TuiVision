@@ -44,6 +44,8 @@ Auto-generated from all feature plans. Last updated: 2026-07-17
 - Embedded UTF-8 fixtures, controlled test-temporary files, existing THelpFile and TResourceFile; no database or service (032-wave5-tp7-functional-porting)
 - C# 14 / .NET 10 + Existing `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, MSTest, Coverlet, DocFX and Playwright/Axe; no new package (035-wave6-tvfm-functional-porting)
 - Source-controlled UTF-8/binary fixtures copied into test-owned temporary roots; controlled local filesystem only; no arbitrary user data, shell/external viewer, database or service (035-wave6-tvfm-functional-porting)
+- C# 14 / .NET 10 + Existing `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, MSTest 4.0.1 and .NET BCL; no new package (036-wave6-tvfm-showcase-remediation)
+- Existing source-controlled fixtures copied into process- or test-owned temporary controlled roots; no database, service, host profile, shell, process, PTY, network, or arbitrary-user storage (036-wave6-tvfm-showcase-remediation)
 
 - C# `latest` on .NET 10 (`net10.0`) + `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Drivers.Console`, `TuiVision.Serialization`, `TuiVision.Compatibility`; MSTest; Coverlet; docfx; wave-1 example projects under `examples/` (007-port-wave1-examples — Wave 1 delivered)
 
@@ -76,9 +78,8 @@ C# `latest` on .NET 10 (`net10.0`): Follow standard conventions. All XML docs an
 GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.json`, run the `tests/web-a11y/` Playwright + axe smoke path, upload `_site/` as a Pages artifact, and keep `_site/` plus generated `api/*.yml` files out of Git.
 
 ## Recent Changes
+- 036-wave6-tvfm-showcase-remediation: Added C# 14 / .NET 10 + Existing `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility`, `TuiVision.Drivers.Console`, MSTest 4.0.1 and .NET BCL; no new package
 - 035-wave6-tvfm-functional-porting: Delivered Wave-6 functional stage through PR #101; `Tp7FileManager` now has controlled-root file proofs, bounded preview/search, explicit one-shot mutation intents, keyboard parity and app-loop smokes. Stage-2 visible polish remains separate.
-- 034-wave5-combined-delta-closure: Closed Wave 5 with exact 15/6/10/10/10 evidence and zero findings; Lastenheft 20 made Wave 6 eligible for Feature 035.
-- 033-wave5-tp7-showcase-remediation: Completed and merged the ten-example Wave-5 showcase; Wave 6 remains blocked pending actual-delta review
 
 
 <!-- MANUAL ADDITIONS START -->
@@ -219,7 +220,7 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
 - Wave 5 is `Closed`. Feature 035 is delivered through PR #101, final head `207e807`, and merge `52f77fa`; it provides Wave-6 Stage 1.
 
 ### 036-wave6-tvfm-showcase-remediation
-- `Lastenheft_21_Wave6-TVFM-Showcase-Remediation.md` is the next binding intake and reserves Feature 036; no Spec Kit run has started.
+- Feature 036 is active on `036-wave6-tvfm-showcase-remediation` from `Lastenheft_21_Wave6-TVFM-Showcase-Remediation.036-wave6-tvfm-showcase-remediation.md`.
 - Scope is limited to the one accepted Feature-035 `ShowcaseDelta`: visible menu/control access, safe focusable file-operation dialogs, bounded drag/drop intent, constrained layout, StatusLine, F1 Description, keyboard, A11Y, and real app-loop/view/cell proof for `Tp7FileManager`.
 - Feature-035 controlled-root, path, search, preview, viewer, one-shot intent, mutation, dependency, process, shell, host, and arbitrary-user-data boundaries remain unchanged. `TVFM/`, `TVDEMOS/`, and `tv203s/` stay read-only.
 - Feature 037, an independent Wave-6 closure, and the post-Wave-6 portfolio audit are not started by this intake.

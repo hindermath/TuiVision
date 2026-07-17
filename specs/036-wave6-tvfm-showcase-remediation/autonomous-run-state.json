@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0",
+  "runId": "4f84dab9-293f-45f9-b491-a5fe4693270b",
+  "featurePath": "specs/036-wave6-tvfm-showcase-remediation",
+  "branch": "036-wave6-tvfm-showcase-remediation",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Validate",
+  "status": "Active",
+  "checkpointCommit": "42a842fb63a0695a618a0f87ffec543e9bc3b6c8",
+  "acceptedArtifacts": [
+    {"path": "Lastenheft_21_Wave6-TVFM-Showcase-Remediation.036-wave6-tvfm-showcase-remediation.md", "sha256": "bc16dc3d32f03bf2c12fa5c33105adaf70341e88c62b6afd14fa7adb893fa473"},
+    {"path": "specs/036-wave6-tvfm-showcase-remediation/spec.md", "sha256": "ea7c6fab54cb2eda7a60262ac77cdb9025aabdaab6ceebf18f9fc49d9492da45"},
+    {"path": "specs/036-wave6-tvfm-showcase-remediation/plan.md", "sha256": "d3bf0f482d8628010e4635529d56c60e80040b58b821fc3ff9d2cde78ce4db11"},
+    {"path": "specs/036-wave6-tvfm-showcase-remediation/research.md", "sha256": "aaedba11131bef4a4ddde8fee316c34eb89db66f12ee02700df3b57c56add9cb"},
+    {"path": "specs/036-wave6-tvfm-showcase-remediation/data-model.md", "sha256": "38fafd42080b164cf6ff1a2e51321cf6980bea1ab40a20bc1007b7440a13b6a8"},
+    {"path": "specs/036-wave6-tvfm-showcase-remediation/quickstart.md", "sha256": "6031017a57218400aa20e4503268db0cb662efe2411c38dba8c2a74ac63756df"},
+    {"path": "specs/036-wave6-tvfm-showcase-remediation/contracts/wave6-showcase-acceptance.md", "sha256": "2cad34ed4bee09e8ed606e5416919651a0187e92120e9291ee18067ad5fd149f"},
+    {"path": "specs/036-wave6-tvfm-showcase-remediation/checklists/requirements.md", "sha256": "5b6deb8dc4a6f1f296a7749889ff86c511fe567ba753d22e59eaf41da5265097"},
+    {"path": "specs/036-wave6-tvfm-showcase-remediation/checklists/showcase-ux.md", "sha256": "7714d7e589a49eb7edf20c072895ab56e482743abc6e922cfc5055327924febf"},
+    {"path": "specs/036-wave6-tvfm-showcase-remediation/checklists/filesystem-safety.md", "sha256": "b31229d60ae4e66820e64fe6d2a844ae7051c1bc7e3ba2f7c795736fafe95053"},
+    {"path": "specs/036-wave6-tvfm-showcase-remediation/checklists/historical-framework.md", "sha256": "b1d47ddef149c6f12be173ff88aa4174242a9af74976efc4bc158ec51da8d8c2"},
+    {"path": "specs/036-wave6-tvfm-showcase-remediation/checklists/proof-a11y-governance.md", "sha256": "4b570a16610510c9b502f94fbe3f6b72774ee06b6936e2c7c0de2356a376fdd3"},
+    {"path": "specs/036-wave6-tvfm-showcase-remediation/checklists/autonomous-readiness.md", "sha256": "0769f4c6e7b122aa576b106687e3d27fe72bacca7923e2b6262977f2f0b3e1ed"},
+    {"path": "specs/036-wave6-tvfm-showcase-remediation/checklists/plan-quality.md", "sha256": "a9d731fd97fec7122f7d80648256c07b299f5dc979b36f32077c21a70ffaa753"},
+    {"path": "specs/036-wave6-tvfm-showcase-remediation/checklists/plan-review.md", "sha256": "f6b0d823eadef7f31de4aa3af2fcc924e6c13f69ee1af221ac26ba7280b01f9e"},
+    {"path": "specs/036-wave6-tvfm-showcase-remediation/autonomous-gate-requirements.json", "sha256": "42097f8fa5a16a933fad89974a8ab90c8a90ba502516f2ac84275a03a0ffcbb2"}
+  ],
+  "tasks": {
+    "path": "specs/036-wave6-tvfm-showcase-remediation/tasks.md",
+    "sha256": "8b94a484da823fbb3d7a8436b5245fb9c2df6bf17cfc6e4902079e6c0fb42f38",
+    "completed": 170,
+    "total": 187
+  },
+  "lastPassingGate": "The exact 35-file Feature-036 candidate is staged with clean whitespace, no unstaged or untracked residue, and all local gates complete through T170.",
+  "nextExactAction": "Commit the exact Feature-036 candidate for T171.",
+  "lastOperation": {
+    "kind": "Commit",
+    "state": "Completed",
+    "summary": "Completed T170: the exact staged candidate contains only intended text files and passes staged whitespace and scope checks."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "updatedAt": "2026-07-17T19:03:52Z"
+}
