@@ -266,25 +266,25 @@ clean synchronized `main`.
 - [X] T175 Validate final evidence cardinality, both run-state validators, accepted artifact/task hashes, and all checklist completion in `specs/033-wave5-tp7-showcase-remediation/pr-evidence.md`
 - [X] T176 Align `Directory.Build.props` to final `1.33.<patch>.<build>` without an extra counter increment
 - [X] T177 Stage only intended files and run `git diff --cached --check` plus staged/untracked/unstaged inventory recorded in `specs/033-wave5-tp7-showcase-remediation/pr-evidence.md`
-- [ ] T178 Commit the Feature-033 candidate and record the immutable commit identity in `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md` only if causal closeout is required
-- [ ] T179 Push `033-wave5-tp7-showcase-remediation`, create a non-empty feature PR, and record it in `specs/033-wave5-tp7-showcase-remediation/pr-evidence.md`
-- [ ] T180 Monitor PR-context Linux, macOS, Windows, Release, coverage, docs/A11Y, supply-chain, and parity checks in temporary provider evidence under `/tmp`
-- [ ] T181 Map every declared gate to actual workflow, job, runner, and executed command in temporary provider evidence under `/tmp`
-- [ ] T182 Validate temporary exact-head provider evidence under `/tmp` with the installed autonomous gate validator
-- [ ] T183 Inspect Claude, Copilot, other review results, PR comments, and GraphQL threads and record unavailable review in `specs/033-wave5-tp7-showcase-remediation/pr-evidence.md`
-- [ ] T184 Resolve every actionable review thread with scoped fixes, affected gate reruns, and refreshed evidence in `specs/033-wave5-tp7-showcase-remediation/pr-evidence.md`
-- [ ] T185 Use the authorized narrow admin bypass only if Human Approval is the sole open rule and record the decision in `specs/033-wave5-tp7-showcase-remediation/pr-evidence.md`
-- [ ] T186 Merge the Feature-033 PR with a merge commit, delete the remote branch, and record it in `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md`
-- [ ] T187 Switch locally to `main`, fetch/prune, fast-forward pull, and prove clean `HEAD == origin/main`
-- [ ] T188 Decide whether post-merge facts require `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md`; do not create an empty closeout
-- [ ] T189 If closeout is required, create its branch and complete `specs/033-wave5-tp7-showcase-remediation/retrospective.md` with a justified promotion decision
-- [ ] T190 Prepare the evidence-only closeout with merge facts, terminal T186-T196 dispositions, final `196/196` run state, Wave-5 completion, and Wave-6 block in `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md`
-- [ ] T191 Create, converge, and merge the closeout PR under the same technical-gate and Human-Approval-only policy recorded in `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md`
-- [ ] T192 Return locally to clean synchronized `main` and record the proof in `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md`
-- [ ] T193 Verify no obsolete local or remote 033 branch remains and record it in `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md`
-- [ ] T194 Promote no preset release unless a reproducible provider-neutral defect is proven; record `NoPromotion` or the owned follow-up in `specs/033-wave5-tp7-showcase-remediation/retrospective.md`
-- [ ] T195 Record final cardinalities, validation, review, PR/merge IDs, Wave-5 state, Wave-6 block, and main-sync proof in `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md`
-- [ ] T196 Confirm Feature 034 and Wave 6 were not started in `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md`
+- [X] T178 Commit the Feature-033 candidate and record the immutable commit identity in `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md` only if causal closeout is required
+- [X] T179 Push `033-wave5-tp7-showcase-remediation`, create a non-empty feature PR, and record it in `specs/033-wave5-tp7-showcase-remediation/pr-evidence.md`
+- [X] T180 Monitor PR-context Linux, macOS, Windows, Release, coverage, docs/A11Y, supply-chain, and parity checks in temporary provider evidence under `/tmp`
+- [X] T181 Map every declared gate to actual workflow, job, runner, and executed command in temporary provider evidence under `/tmp`
+- [X] T182 Validate temporary exact-head provider evidence under `/tmp` with the installed autonomous gate validator
+- [X] T183 Inspect Claude, Copilot, other review results, PR comments, and GraphQL threads and record unavailable review in `specs/033-wave5-tp7-showcase-remediation/pr-evidence.md`
+- [X] T184 Resolve every actionable review thread with scoped fixes, affected gate reruns, and refreshed evidence in `specs/033-wave5-tp7-showcase-remediation/pr-evidence.md`
+- [X] T185 Use the authorized narrow admin bypass only if Human Approval is the sole open rule and record the decision in `specs/033-wave5-tp7-showcase-remediation/pr-evidence.md`
+- [X] T186 Merge the Feature-033 PR with a merge commit, delete the remote branch, and record it in `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md`
+- [X] T187 Switch locally to `main`, fetch/prune, fast-forward pull, and prove clean `HEAD == origin/main`
+- [X] T188 Decide whether post-merge facts require `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md`; do not create an empty closeout
+- [X] T189 If closeout is required, create its branch and complete `specs/033-wave5-tp7-showcase-remediation/retrospective.md` with a justified promotion decision
+- [X] T190 Prepare the evidence-only closeout with merge facts, terminal T186-T196 dispositions, final `196/196` run state, Wave-5 completion, and Wave-6 block in `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md`
+- [X] T191 Create, converge, and merge the closeout PR under the same technical-gate and Human-Approval-only policy recorded in `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md`
+- [X] T192 Return locally to clean synchronized `main` and record the proof in `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md`
+- [X] T193 Verify no obsolete local or remote 033 branch remains and record it in `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md`
+- [X] T194 Promote no preset release unless a reproducible provider-neutral defect is proven; record `NoPromotion` or the owned follow-up in `specs/033-wave5-tp7-showcase-remediation/retrospective.md`
+- [X] T195 Record final cardinalities, validation, review, PR/merge IDs, Wave-5 state, Wave-6 block, and main-sync proof in `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md`
+- [X] T196 Confirm Feature 034 and Wave 6 were not started in `specs/033-wave5-tp7-showcase-remediation/delivery-closeout.md`
 
 ## Dependencies and Execution Order
 
