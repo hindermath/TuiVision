@@ -84,7 +84,7 @@
   equivalent governance location, state that path explicitly and justify the
   deviation.
 - **Spec-Kit presets**: List installed governance presets and confirm their
-  applicability. For C#/.NET Level-2 projects, default to all six
+  applicability. For C#/.NET Level-2 projects, default to all seven
   home-baseline presets (`security-governance`, `architecture-governance`,
   `isaqb-architecture-governance`, `a11y-governance`,
   `cross-platform-governance`, `agent-parity-governance`) unless a justified

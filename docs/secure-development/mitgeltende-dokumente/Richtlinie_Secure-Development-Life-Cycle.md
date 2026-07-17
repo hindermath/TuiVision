@@ -1,8 +1,8 @@
 # Richtlinie Secure Development Life Cycle / Secure Development Life Cycle Policy
 
-**Stand / Date:** 2026-07-10
-**Version / Version:** 1.0.0
-**Baseline-Version / Baseline version:** 3.0.0
+**Stand / Date:** 2026-07-17
+**Version / Version:** 1.1.0
+**Baseline-Version / Baseline version:** 3.1.0
 **Verantwortliche Rolle / Responsible role:** Projekt- oder Ausbildungsverantwortung mit Security-Review / Project or training owner with security review
 **Review-Zyklus / Review cycle:** jährlich und bei wesentlichen Änderungen / annually and after material changes
 
@@ -27,8 +27,8 @@
 
 - **DE:** Spec-Kit-Artefakte duerfen Sicherheitsstandards nicht stillschweigend auslassen.
 - **EN:** Spec Kit artifacts must not silently omit security standards.
-- **DE:** Die sechs Governance-Presets werden als pruefbarer Rahmen verwendet, wenn sie installiert oder projektseitig verbindlich sind.
-- **EN:** The six governance presets are used as a review framework when installed or binding for the project.
+- **DE:** Die sieben Governance-Presets werden als pruefbarer Rahmen verwendet, wenn sie installiert oder projektseitig verbindlich sind.
+- **EN:** The seven governance presets are used as a review framework when installed or binding for the project.
 - **DE:** Die Verzahnungsdatei ordnet SDLC-Prüfbereiche den mitgeltenden Dokumenten, Checklisten und Presets zu.
 - **EN:** The alignment file maps SDLC review areas to related documents, checklists, and presets.
 
@@ -72,3 +72,4 @@ Eine Ausnahme nennt Regel, Grund, Risiko, Ersatzmaßnahme, Owner, Ablaufdatum un
 | Version | Datum / Date | Änderung / Change |
 |---|---|---|
 | 1.0.0 | 2026-07-10 | Erstes kontrolliertes Release als mitgeltendes Dokument der sichere-Entwicklung-Basis 3.0.0. / First controlled release as a related document of secure-development baseline 3.0.0. |
+| 1.1.0 | 2026-07-17 | Spec-Kit-Rahmen auf das verbindliche Siebenerprofil einschließlich `autonomous-run-governance` erweitert; synchron mit sichere-Entwicklung-Basis 3.1.0. / Extended the Spec Kit framework to the binding seven-preset profile including `autonomous-run-governance`; synchronized with secure-development baseline 3.1.0. |

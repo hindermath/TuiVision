@@ -56,7 +56,7 @@ C# 14 / .NET 10: Follow standard conventions
 
 If this project installs governance presets, keep this section synchronized
 with `.specify/presets/` and generated agent command files. C#/.NET Level-2
-projects default to all six home-baseline presets unless a justified exception
+projects default to all seven home-baseline presets unless a justified exception
 is documented: `security-governance`, `architecture-governance`,
 `isaqb-architecture-governance`, `a11y-governance`,
 `cross-platform-governance`, and `agent-parity-governance`.

@@ -1,8 +1,8 @@
 # Verzahnung Richtlinie, Checklisten und Spec-Kit-Presets
 
-**Stand / Date:** 2026-07-10
-**Version / Version:** 1.0.0
-**Baseline-Version / Baseline version:** 3.0.0
+**Stand / Date:** 2026-07-17
+**Version / Version:** 1.1.0
+**Baseline-Version / Baseline version:** 3.1.0
 **Verantwortliche Rolle / Responsible role:** Projekt- oder Ausbildungsverantwortung mit Security-Review / Project or training owner with security review
 **Review-Zyklus / Review cycle:** jährlich und bei wesentlichen Änderungen / annually and after material changes
 **Zielgruppe / Audience:** Fachinformatiker*innen in Ausbildung, Entwickler*innen, Reviewer und KI-Agenten / IT specialist apprentices, developers, reviewers, and AI agents
@@ -44,8 +44,8 @@ Eine Statusangabe ohne Begründung und Evidenzpfad ist kein Auditnachweis. / A s
 | `Kompetenzprofile_und_Schulungsplan_Sichere-Entwicklung.md` | Qualifikation, Schulung, didaktische Nachvollziehbarkeit | CL_08, CL_09, CL_10, CL_12 | `a11y-governance`, `agent-parity-governance`, `security-governance` | Lernzielnotiz, Review-Protokoll, Aufgabenliste, Schulungsnachweis |
 | `Leitlinie_Sichere-Programmierung.md` | Secure Coding, MSL, Fehlerbehandlung, Eingaben, Abhängigkeiten | CL_01, CL_05, CL_08, CL_09 | `security-governance` | Secure-Coding-Check, Sprachprofil, Dependency-Audit, MSL-Entscheidung |
 | `Leitlinie_Sichere-Entwicklungs-Sandbox.md` | Sandbox-Freigabe, MSL-Toolchains, KI-Agenten, Mounts, Netzwerk, Public-Readiness | CL_05, CL_09, CL_10, CL_12 | `security-governance`, `architecture-governance`, `a11y-governance`, `cross-platform-governance`, `agent-parity-governance` | Sandbox-Freigabe, Isolationsnachweis, MSL-Support-Matrix, SBOM/Scan, Netzwerkentscheidung, Lastenheft |
-| `Richtlinie_Secure-Development-Life-Cycle.md` | SDLC, Spezifikation, Planung, Umsetzung, Freigabe | CL_01 bis CL_12 | alle sechs Presets | `spec.md`, `plan.md`, `tasks.md`, Review- und Abschlussnotiz |
-| `Checkliste_Secure-Development-Life-Cycle.md` | Kompakter SDLC-Review | CL_01 bis CL_12 | alle sechs Presets | Ausgefüllte SDLC-Kurzprüfung mit Status und Evidenzpfad |
+| `Richtlinie_Secure-Development-Life-Cycle.md` | SDLC, Spezifikation, Planung, Umsetzung, Freigabe | CL_01 bis CL_12 | alle sieben Presets | `spec.md`, `plan.md`, `tasks.md`, Review- und Abschlussnotiz |
+| `Checkliste_Secure-Development-Life-Cycle.md` | Kompakter SDLC-Review | CL_01 bis CL_12 | alle sieben Presets | Ausgefüllte SDLC-Kurzprüfung mit Status und Evidenzpfad |
 | `Richtlinie_Changemanagement.md` | Nachvollziehbare Änderungen, Freigaben, Tests | CL_06, CL_08, CL_10, CL_12 | `agent-parity-governance`, `cross-platform-governance`, `security-governance` | Commit, PR/MR, Review, Testlauf, Änderungsnotiz |
 | `Richtlinie_Dienstleister-und-Lieferantenbeziehungen.md` | Dependencies, Dienste, Lieferkette, Cloud-/Provider-Abhängigkeiten | CL_01, CL_05, CL_07 | `security-governance`, `architecture-governance` | Dependency-Audit, SBOM, VEX, C3A/C5-Entscheidung, Lieferantenbewertung |
 | `Richtlinie_Testmanagement.md` | Teststrategie, Sicherheits- und A11Y-Tests | CL_02, CL_04, CL_08, CL_10 | `security-governance`, `a11y-governance`, `cross-platform-governance` | Testplan, CI-Ergebnis, Coverage, A11Y-Smoke-Test, `N/A`-Begründung |
@@ -53,8 +53,8 @@ Eine Statusangabe ohne Begründung und Evidenzpfad ist kein Auditnachweis. / A s
 | `Datenschutzleitlinie.md` | Datenschutz, Testdaten, Logs, DPIA | CL_01, CL_08, CL_11 | `security-governance`, `architecture-governance`, `a11y-governance` | Datenflussnotiz, DPIA, Logging-Review, Testdatenkonzept |
 | `Leitlinie_Sicheres-Softwaredesign.md` | Trust Boundaries, Defense in Depth, S-ADR, sichere Konfiguration | CL_02, CL_04, CL_08 | `architecture-governance`, `isaqb-architecture-governance`, `security-governance` | S-ADR, arc42 Abschnitt 8, Threat Model, Qualitäts- oder Risikoszenario |
 | `BCM-Notfallhandbuch.md` | Wiederanlauf, Abhängigkeiten, Betriebsstabilität | CL_02, CL_05, CL_10 | `architecture-governance`, `isaqb-architecture-governance`, `security-governance` | Backup-/Restore-Notiz, CI/CD-Wiederanlauf, Provider-Risiko, Runbook |
-| `Standardsregister_Sichere-Entwicklung.md` | Einheitliche Fassungen und Primärquellen | CL_01 bis CL_12 | alle sechs Presets als Referenzrahmen | Standardfassung, Prüftag, Quelle, Migrationsentscheidung |
-| `../Lernpfad_Sichere-Entwicklung_Lehrjahr-1-bis-3.md` | Sicherheit ab dem ersten Lern- und Entwicklungsauftrag | CL_01 bis CL_12 | alle sechs Presets nach Anwendbarkeit | Lernstufe, Übung, Review, Reflexion, Folgeaufgabe |
+| `Standardsregister_Sichere-Entwicklung.md` | Einheitliche Fassungen und Primärquellen | CL_01 bis CL_12 | alle sieben Presets als Referenzrahmen | Standardfassung, Prüftag, Quelle, Migrationsentscheidung |
+| `../Lernpfad_Sichere-Entwicklung_Lehrjahr-1-bis-3.md` | Sicherheit ab dem ersten Lern- und Entwicklungsauftrag | CL_01 bis CL_12 | alle sieben Presets nach Anwendbarkeit | Lernstufe, Übung, Review, Reflexion, Folgeaufgabe |
 | `THE-CASE-FOR-MEMORY-SAFE-ROADMAPS-TLP-CLEAR.*` | MSL-Präferenz, sichere Sprachwahl, Migrationsplanung | CL_01, CL_05, CL_08, CL_09 | `security-governance`, `architecture-governance`, `a11y-governance` | MSL-Entscheidung, Nicht-MSL-Begründung, Roadmap, Lernnotiz |
 
 ## Swift und Memory-Safe Languages / Swift and Memory-Safe Languages
@@ -92,3 +92,4 @@ Eine Statusangabe ohne Begründung und Evidenzpfad ist kein Auditnachweis. / A s
 | Version | Datum / Date | Änderung / Change |
 |---|---|---|
 | 1.0.0 | 2026-07-10 | Erstes kontrolliertes Release als mitgeltendes Dokument der sichere-Entwicklung-Basis 3.0.0. / First controlled release as a related document of secure-development baseline 3.0.0. |
+| 1.1.0 | 2026-07-17 | Preset-Verzahnung auf das verbindliche Siebenerprofil einschließlich `autonomous-run-governance` erweitert. / Extended preset alignment to the binding seven-preset profile including `autonomous-run-governance`. |

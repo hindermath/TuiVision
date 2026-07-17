@@ -1,8 +1,8 @@
 # Mitgeltende Dokumente / Related Documents
 
-**Stand / Date:** 2026-07-10
+**Stand / Date:** 2026-07-17
 **Zielgruppe / Audience:** Fachinformatiker*innen in Ausbildung, Entwickler*innen, Reviewer und KI-Agenten / IT specialist apprentices, developers, reviewers, and AI agents
-**Baseline-Version / Baseline version:** 3.0.0
+**Baseline-Version / Baseline version:** 3.1.0
 
 ## Zweck / Purpose
 
@@ -37,9 +37,9 @@
 
 ## Abgleich mit Spec-Kit-Presets / Alignment With Spec Kit Presets
 
-**DE:** Die Dokumente duerfen den sechs Governance-Presets nicht widersprechen. Bei neuen Spec-Kit-Laeufen gelten sie als fachliche Eingabe. Jeder Prüfpunkt erhält getrennt eine Anwendbarkeit (`Applicable`, `N/A`, `Open`) und einen Umsetzungsstatus (`Fulfilled`, `Partly Fulfilled`, `Not Fulfilled`, `Not Assessed`). Nicht anwendbare Punkte werden als `N/A` mit kurzer Begründung dokumentiert.
+**DE:** Die Dokumente duerfen den sieben Governance-Presets nicht widersprechen. Bei neuen Spec-Kit-Laeufen gelten sie als fachliche Eingabe. Jeder Prüfpunkt erhält getrennt eine Anwendbarkeit (`Applicable`, `N/A`, `Open`) und einen Umsetzungsstatus (`Fulfilled`, `Partly Fulfilled`, `Not Fulfilled`, `Not Assessed`). Nicht anwendbare Punkte werden als `N/A` mit kurzer Begründung dokumentiert.
 
-**EN:** The documents must not conflict with the six governance presets. In new Spec Kit runs, they are technical input. Each item receives a separate applicability and implementation status. Non-applicable items are recorded as `N/A` with a short rationale.
+**EN:** The documents must not conflict with the seven governance presets. In new Spec Kit runs, they are technical input. Each item receives a separate applicability and implementation status. Non-applicable items are recorded as `N/A` with a short rationale.
 
 **DE:** Die Datei [Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md](Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md) ist die zentrale Lesefuehrung. Sie zeigt fuer jedes mitgeltende Dokument den Richtlinienbezug, die passenden Checklisten, die betroffenen Presets und typische Evidenzpfade. Nutze sie zuerst, wenn ein Spec-Kit-Lauf oder Review vorbereitet wird.
 
@@ -53,6 +53,7 @@
 | `a11y-governance` | Alle Markdown-Dokumente: DE/EN, CEFR B2, WCAG 2.2 AA |
 | `agent-parity-governance` | Agenten-Dateien, Sandbox-Guidance, Templates und Skript-Hinweise synchron halten |
 | `cross-platform-governance` | Bash-/PowerShell-Paritaet, Sandbox-Bedienbarkeit und dokumentierte Bedienbarkeit |
+| `autonomous-run-governance` | Ausdrücklich delegierte autonome Läufe mit Zustands-, Berechtigungs-, Gate- und Evidenznachweisen; Installation allein erteilt keine Ausführungs- oder Remote-Berechtigung |
 
 ## Didaktische Mindeststruktur / Teaching Minimum Structure
 

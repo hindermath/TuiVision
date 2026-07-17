@@ -897,31 +897,58 @@ workspace family consists of:
 | `a11y-governance` | `v0.4.0` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts, didactic inline-code-comment review |
 | `cross-platform-governance` | `v0.2.0` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
 | `agent-parity-governance` | `v0.3.0` | `60` | synchronized agent guidance and agent-neutral Spec-Kit model routing across declared AI-agent files |
+| `autonomous-run-governance` | `v0.2.2` | `70` | permission-bounded, evidence-first governance for explicitly delegated autonomous Spec Kit runs |
 
-All six governance presets MUST produce or require audit-ready Spec-Kit run evidence for applicable checks. Each relevant checkpoint is recorded as `Applicable`, `N/A`, or `Open` with rationale, evidence path, reviewer, residual risk, and follow-up for the current Spec-Kit run.
+`autonomous-run-governance` is installed as part of the mandatory seven-preset
+governance matrix. Installation does not authorize an autonomous run.
+`LocalImplementation` is its safe default; installation grants no remote write, merge, bypass,
+cancellation, secret, or provider-administration authority.
+Its feature-local run state is validated at phase boundaries. A deliberate
+`PausedByUser` state requires `speckit.autonomous-resume`; a cooperative stop
+grants no process-kill or delivery authority, and interrupted operations must be
+revalidated before continuation. After preset or governance drift, resume must
+compare current mandatory correctness, security, permission, and
+evidence-integrity rules with accepted Plan, Tasks, and checklists. Applicable
+missing rules receive only a minimal in-place amendment plus readiness and
+Analyze reruns; accepted scope and efficiency-only guidance remain unchanged.
+The readable generated-skill heading `Deliver` is not a run-state value;
+remote closeout persists only `Publish`, `Review`, or `MergeAndSync`.
 
-This matrix is the authoritative source for preset IDs, versions, priorities,
-and scope. Any preset version or priority change MUST update the matching
-compact overview and installation snippets in `README.md`,
-`.specify/memory/constitution.md`, the four agent guidance files,
-`scripts/templates/speckit-workflow-section.md`, and the matching agent
-templates under `scripts/templates/` in the same change.
+All seven governance presets MUST produce or require audit-ready Spec-Kit run evidence for applicable checks. Each relevant checkpoint records applicability as `Applicable`, `N/A`, or `Open` and implementation separately as `Fulfilled`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`, plus rationale, evidence path, owner, reviewer, residual risk, re-evaluation trigger, and follow-up. `N/A` keeps implementation at `Not Assessed` and always needs a rationale.
 
-All six presets are published as standalone repositories under
+The central secure-development baseline is versioned by `docs/secure-development/baseline-manifest.json`. Its twelve individual checklists and 157 stable CL IDs are canonical; the compendium is generated and MUST pass `build-secure-development-docs.*` check mode. Reusable templates are separate from project evidence under `docs/security/secure-development/<date>-<scope>/`. Secure-development teaching starts with the first repository access and coding task and follows the year 1 to year 3 learning path. Registry-based baseline-only propagation MUST NOT modify Lastenhefte, project evidence, or start Spec Kit.
+
+The executable source of truth for preset installation is
+`scripts/config/spec-kit-governance-presets.json`. This constitution mirrors the
+same preset IDs, versions, priorities, and scope for governance review. Any
+preset version or priority change MUST update the central matrix first, then the
+matching compact overview in `README.md`, `.specify/memory/constitution.md`, the
+four agent guidance files, `scripts/templates/speckit-workflow-section.md`, and
+the matching agent templates under `scripts/templates/` in the same change.
+The deprecated compatibility matrix
+`scripts/config/spec-kit-autonomous-governance-presets.json` MUST remain
+identical to the canonical seven-preset matrix until it is removed in a later
+breaking cleanup.
+
+All seven presets are published as standalone repositories under
 `https://github.com/hindermath/spec-kit-preset-*` and are included in the
-`github/spec-kit` community preset catalog as of 2026-05-04. New Level-2
-projects SHOULD install the applicable subset during Spec-Kit initialization.
-For C#/.NET Level-2 projects, the default subset is all six presets unless the
-project documents a narrow reason to omit one. Existing C# Level-2 projects
+`github/spec-kit` community preset catalog. The original six have been listed
+since 2026-05-04; `autonomous-run-governance` v0.2.2 was verified in the catalog
+on 2026-07-17. New MSL Level-2
+projects SHOULD install presets from the central matrix during Spec-Kit
+initialization. For C#/.NET and learning Level-2 projects, the default subset is
+all seven presets unless the project documents a narrow reason to omit one.
+Existing C# Level-2 projects
 `RiderProjects/TinyPl0`, `RiderProjects/TinyCalc`, `RiderProjects/TuiVision`,
 and `RiderProjects/InventarWorkerService` are the reference rollout set for
-all-six installation.
+all-seven installation.
 
-Use the community catalog when supported by the local `specify` CLI. Use
-versioned GitHub ZIP URLs when a reproducible release pin is required. Commit
+Use `install-spec-kit-governance-presets.*` for normal installation so versions
+and priorities stay centralized in the matrix. Community catalog and direct
+single ZIP installs remain valid for diagnostics or smoke tests. Commit
 `.specify/presets/` and all generated agent-command updates when presets are
-project policy. Do not commit `.specify/presets/.cache/`. Preset updates MUST
-be verified with `specify preset list`, at least one `specify preset info`, and
+project policy. Do not commit `.specify/presets/.cache/`. Preset updates MUST be
+verified with `specify preset list`, at least one `specify preset info`, and
 where relevant `specify preset resolve`.
 
 Local working clones of the published preset repositories live under
@@ -939,7 +966,7 @@ Community/catalog coordination is tracked in `github/spec-kit#2362`.
 `.github/copilot-instructions.md` for per-agent operational guidance. This
 constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.14.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-05-22
+**Version**: 1.15.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-07-17
 
 ## Level-2 Project Environment Addendum / Level-2-Projektumgebung
 

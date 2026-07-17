@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "baselineVersion": "3.0.0",
-  "releaseDate": "2026-07-10",
+  "baselineVersion": "3.1.0",
+  "releaseDate": "2026-07-17",
   "checklistItemCount": 157,
   "guideline": {
     "path": "Richtlinie_Sichere-Entwicklung.md",
-    "version": "3.0.0"
+    "version": "3.1.0"
   },
   "compendium": {
     "path": "Checklistensammelband_Sichere-Entwicklung.md",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "generated": true
   },
   "statusModel": {
@@ -25,10 +25,10 @@
     { "id": "CL-06", "path": "checklisten/CL_06_Schwachstellenoffenlegung.md", "version": "2.0.0" },
     { "id": "CL-07", "path": "checklisten/CL_07_CRA-Anwendbarkeit.md", "version": "2.0.0" },
     { "id": "CL-08", "path": "checklisten/CL_08_Sicherheits-Code-Review.md", "version": "2.0.0" },
-    { "id": "CL-09", "path": "checklisten/CL_09_KI-Codeerzeugung.md", "version": "2.0.0" },
+    { "id": "CL-09", "path": "checklisten/CL_09_KI-Codeerzeugung.md", "version": "2.1.0" },
     { "id": "CL-10", "path": "checklisten/CL_10_Sichere-Entwicklungsumgebung.md", "version": "2.0.0" },
     { "id": "CL-11", "path": "checklisten/CL_11_Datenschutz-Folgenabschaetzung.md", "version": "2.0.0" },
-    { "id": "CL-12", "path": "checklisten/CL_12_Agentische-KI-Sandbox.md", "version": "2.0.0" }
+    { "id": "CL-12", "path": "checklisten/CL_12_Agentische-KI-Sandbox.md", "version": "2.1.0" }
   ],
   "relatedDocuments": [
     { "path": "mitgeltende-dokumente/BCM-Notfallhandbuch.md", "version": "1.0.0" },
@@ -41,11 +41,11 @@
     { "path": "mitgeltende-dokumente/Leitlinie_Sicheres-Softwaredesign.md", "version": "1.0.0" },
     { "path": "mitgeltende-dokumente/Richtlinie_Changemanagement.md", "version": "1.0.0" },
     { "path": "mitgeltende-dokumente/Richtlinie_Dienstleister-und-Lieferantenbeziehungen.md", "version": "1.0.0" },
-    { "path": "mitgeltende-dokumente/Richtlinie_Secure-Development-Life-Cycle.md", "version": "1.0.0" },
+    { "path": "mitgeltende-dokumente/Richtlinie_Secure-Development-Life-Cycle.md", "version": "1.1.0" },
     { "path": "mitgeltende-dokumente/Richtlinie_Testmanagement.md", "version": "1.0.0" },
     { "path": "mitgeltende-dokumente/Richtlinie_Zugangssteuerung.md", "version": "1.0.0" },
     { "path": "mitgeltende-dokumente/Standardsregister_Sichere-Entwicklung.md", "version": "1.0.0" },
-    { "path": "mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md", "version": "1.0.0" }
+    { "path": "mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md", "version": "1.1.0" }
   ],
   "learningDocuments": [
     { "path": "Lernpfad_Sichere-Entwicklung_Lehrjahr-1-bis-3.md", "version": "1.0.0" }

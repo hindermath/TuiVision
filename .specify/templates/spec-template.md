@@ -135,7 +135,7 @@
   `regulatory-applicability.md`) or an explicitly justified equivalent
   governance location.
 - **CR-012**: The feature MUST state which installed Spec-Kit governance
-  presets apply. C#/.NET Level-2 projects default to all six home-baseline
+  presets apply. C#/.NET Level-2 projects default to all seven home-baseline
   presets unless a justified exception is documented.
 - **CR-013**: The feature MUST define explicit in-scope and out-of-scope
   boundaries plus any controlled decision vocabulary needed to route discovered
