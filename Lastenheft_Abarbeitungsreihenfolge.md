@@ -55,15 +55,16 @@ Diese Tabelle wird aus `Lastenheft*.md` im Repository-Root erzeugt. Sie ist eine
 | 27 | `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md` | Gemeinsamer Pre-Wave-5-/Wave-6-Abschluss | archiviert oder abgeschlossen / archived or completed |
 | 28 | `Lastenheft_17_Wave5-TP7-Functional-Porting.032-wave5-tp7-functional-porting.md` | Wave-5 TP7 Functional Porting | archiviert oder abgeschlossen / archived or completed |
 | 29 | `Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md` | Wave-5 TP7 Showcase Remediation | archiviert oder abgeschlossen / archived or completed |
-| 30 | `Lastenheft_19_Wave5-Combined-Delta-Closure.034-wave5-combined-delta-closure.md` | Wave-5 Combined Delta Closure | archiviert im aktiven Feature 034 / archived in active Feature 034 |
-| 31 | `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` | Beispielportfolio-Konformitätsaudit | verbindlich nach Wave-6-Closeout, Feature-Nummer später / binding after Wave-6 closeout, feature number deferred |
+| 30 | `Lastenheft_19_Wave5-Combined-Delta-Closure.034-wave5-combined-delta-closure.md` | Wave-5 Combined Delta Closure | archiviert oder abgeschlossen / archived or completed |
+| 31 | `Lastenheft_20_Wave6-TVFM-Functional-Porting.md` | Wave-6 TVFM Functional Porting | nächster Intake; Feature 035 reserviert, nicht gestartet / next intake; Feature 035 reserved, not started |
+| 32 | `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` | Beispielportfolio-Konformitätsaudit | verbindlich nach Wave-6-Closeout, Feature-Nummer später / binding after Wave-6 closeout, feature number deferred |
 <!-- secure-development-hardening-order:end -->
 
 ## Fortsetzungsmarke / Resume Marker
 
-> **AKTIVER FACHLICHER SCHRITT: Feature 034 prüft den tatsächlichen kombinierten Wave-5-Delta read-only; die lokale Matrix ist sauber, Wave 6 bleibt bis zum Remote-, Review-, Merge- und kausalen Abschluss blockiert.**
+> **AKTIVER FACHLICHER SCHRITT: Lastenheft 20 ist der nächste verbindliche Intake; Feature 035 ist reserviert, aber Wave 6 wurde nicht gestartet.**
 >
-> **ACTIVE DOMAIN STEP: Feature 034 reviews the actual combined Wave-5 delta read-only; the local matrix is clean, and Wave 6 remains blocked until remote, review, merge, and causal closure complete.**
+> **ACTIVE DOMAIN STEP: Lastenheft 20 is the next binding intake; Feature 035 is reserved, but Wave 6 has not started.**
 
 Features 025, 026, 028, 029, 030 und 031 sind abgeschlossen. Der unabhängige
 Closure bestätigt 48 Verträge, 13 Consumer-Gruppen, 96 vollständige
@@ -72,10 +73,12 @@ Wave-5-Stage 1 ist als Feature 032 vollständig geliefert. Feature 033 ergänzt
 die zweite Stufe mit zehn sichtbaren Hauptkomponenten, echten Statuszeilen,
 per Tastatur erreichbaren Beschreibungen, begrenzten Layout-Proofs und
 synchronisierten Guides. Feature 033 ist vollständig gemergt. Der explizite
-Auftrag führt Feature 034 als read-only Combined-Delta-Closure aus
-Lastenheft 19 aus. Die lokale 15/6/10/10/10-Matrix enthält null Findings und
-null Product Decisions. Wave 6 bleibt bis zum vollständigen belegten Abschluss
-`ConditionallyReady` und blockiert.
+Auftrag hat Feature 034 als read-only Combined-Delta-Closure aus
+Lastenheft 19 vollständig geliefert. Die 15/6/10/10/10-Matrix enthält null
+Findings und null Product Decisions. Feature-PR #99 und der kausale Closeout
+setzen Wave 5 auf `Closed` und Wave 6 auf `EligibleForIntake`.
+`Lastenheft_20_Wave6-TVFM-Functional-Porting.md` reserviert Feature 035 als
+nächsten Lauf, startet ihn aber nicht.
 
 *Features 025, 026, 028, 029, 030, and 031 are complete. The independent
 closure confirms 48 contracts, 13 consumer groups, 96 complete non-finding
@@ -83,11 +86,11 @@ dispositions, zero CF findings, and zero hardening intakes. Wave 5 is
 eligible. Feature 032 supplies Stage 1. Feature 033 adds the complete Stage 2
 with ten visible main components, real status lines,
 keyboard-reachable descriptions, constrained-layout proof, and synchronized
-guides. Feature 033 is fully merged. The explicit instruction reserves
-Feature 034 is active for the read-only combined-delta closure from Lastenheft
-19. The local 15/6/10/10/10 matrix contains zero findings and zero product
-decisions. Wave 6 remains conditionally ready and blocked until that closure
-is fully evidenced.*
+guides. Feature 033 is fully merged. Feature 034 completed the read-only
+combined-delta closure from Lastenheft 19 with zero findings and zero product
+decisions. Feature PR #99 and the causal closeout set Wave 5 to closed and
+Wave 6 to eligible for intake. Lastenheft 20 reserves Feature 035 as the next
+run without starting it.*
 
 ## Verbindliche Folge vor Wave 5 und Wave 6 / Binding Sequence Before Wave 5 and Wave 6
 
@@ -114,12 +117,14 @@ is fully evidenced.*
    erzeugen `Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md`.
 8. Feature 033 liefert die zweite Wave-5-Stufe aus Lastenheft 18 und ist über
    PR #96 mit Merge `d476e63` vollständig abgeschlossen.
-9. `Lastenheft_19_Wave5-Combined-Delta-Closure.md` reserviert Feature 034 als
-   read-only Audit des tatsächlichen kombinierten Produktdeltas aus PR #93
-   und PR #96. Der Lauf behebt keine Produktfindings und startet Wave 6 nicht.
-10. Wave 6 folgt erst nach einem belegten Feature-034-Abschluss. Bei null
-    Findings darf der Lauf einen späteren Feature-035-Intake ableiten; bei
-    Findings entstehen nur nicht leere, ownerbezogene Hardening-Intakes.
+9. Feature 034 hat den read-only Audit des tatsächlichen kombinierten
+   Produktdeltas aus PR #93 und PR #96 über Feature-PR #99 vollständig
+   geliefert. Die exakte Matrix enthält null Findings und null
+   Produktentscheidungen; Wave 5 ist `Closed`.
+10. `Lastenheft_20_Wave6-TVFM-Functional-Porting.md` ist der nächste
+    verbindliche Intake und reserviert Feature 035. Der Lauf wurde nicht
+    gestartet. Eine spätere Showcase-Remediation entsteht ausschließlich aus
+    tatsächlichen Feature-035-Deltas.
 11. Nach dem vollständig gemergten Wave-6-Closeout folgt das in Lastenheft 15
    vorgemerkte Example-Portfolio-Audit. Seine Feature-Nummer wird erst dann
    aus der nächsten freien Nummer gebildet; es erzeugt nur aus realen Findings
@@ -130,22 +135,22 @@ are complete. Feature 028 closed that gate, Feature 029 completed the pinned
 Terminal.GUI comparison, and Feature 030 completed the magiblot comparison
 with zero canonical findings. Feature 031 is complete. Feature 032 delivers
 the functional Wave-5 stage and its real-path proof. Feature 033 completes
-and merges the evidence-derived showcase stage. Wave 6 remains blocked until
-the read-only Feature-034 audit has evidenced the actual combined delta.*
+the evidence-derived showcase stage. Feature 034 closes the combined delta
+with zero findings. Wave 6 is eligible for intake through Lastenheft 20, while
+Feature 035 remains unstarted.*
 
 ## Verbindlicher Folgeaudit nach Wave 6 / Binding Post-Wave-6 Audit
 
 `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` ist bereits
 als späterer Intake festgelegt, wird aber weder nummeriert noch gestartet,
-solange Wave 5 und Wave 6 mit ihren Closeouts
-nicht vollständig gemergt sind.
+solange Wave 6 mit ihrem unabhängigen Closeout nicht vollständig gemergt ist.
 
 Der spätere Audit prüft alle 25 Originalbeispiele, alle tatsächlich gelieferten
 Wave-5-/Wave-6-Beispiele und `A11yFramework` als projektspezifische
-Vergleichskontrolle. Der nächste fachliche Schritt ist Feature 034 aus
-Lastenheft 19. Der Post-Wave-6-Audit bleibt davon getrennt.
+Vergleichskontrolle. Der nächste fachliche Schritt ist Feature 035 aus
+Lastenheft 20. Der Post-Wave-6-Audit bleibt davon getrennt.
 
 *Lastenheft 15 reserves one read-only portfolio audit after the complete
 Wave-6 closeout. It does not assign a feature number or start a run. The
-current next step is Feature 034 from Lastenheft 19. The post-Wave-6 audit
+current next step is Feature 035 from Lastenheft 20. The post-Wave-6 audit
 remains separate.*

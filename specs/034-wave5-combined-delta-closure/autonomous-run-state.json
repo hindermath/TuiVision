@@ -5,9 +5,9 @@
   "branch": "034-wave5-combined-delta-closure",
   "deliveryMode": "MergeAndSync",
   "authorityRevalidationRequired": false,
-  "stage": "Publish",
-  "status": "Active",
-  "checkpointCommit": "7a07b7cdc3047c36cce4b15ae56798f365c7db26",
+  "stage": "Retrospective",
+  "status": "Completed",
+  "checkpointCommit": "016692d6f3c79e61973b9059fdeeac2e2e3574fd",
   "acceptedArtifacts": [
     {
       "path": "Lastenheft_19_Wave5-Combined-Delta-Closure.034-wave5-combined-delta-closure.md",
@@ -72,21 +72,21 @@
   ],
   "tasks": {
     "path": "specs/034-wave5-combined-delta-closure/tasks.md",
-    "sha256": "e99dc1efcd0519a33f86550a34fa2a118200a24bc605ce26c4ed6c8c7a26f2b6",
-    "completed": 144,
+    "sha256": "3fc22bdc8ba37adb31616b10418b49dbc084008372c029e867700a85896b2098",
+    "completed": 164,
     "total": 164
   },
-  "lastPassingGate": "The complete checkout-neutral provenance correction passed 11/11 Feature-034 tests at build 357 and 837/837 full Release tests at build 358; both prior remote matrices are invalidated.",
-  "nextExactAction": "Validate and commit the final replacement candidate at version 1.34.4.358, push it to PR 99, and require a complete fresh gate matrix.",
+  "lastPassingGate": "PR 99 merged final head 016692d after 22 successful checks and 13 validated exact-head gate rows; the causal closeout proves Wave 5 Closed and Wave 6 EligibleForIntake.",
+  "nextExactAction": "N/A",
   "lastOperation": {
-    "kind": "Remediation",
+    "kind": "MergeAndSync",
     "state": "Completed",
-    "summary": "Canonicalized textual predecessor SHA-256 and historical Git-blob reconstruction to LF after two Windows checkout failures, retaining all exact pins and product boundaries."
+    "summary": "Merged Feature 034, synchronized main, completed the non-recursive causal closeout, and reserved Feature 035 through Lastenheft 20 without starting it."
   },
   "stop": {
     "reason": "N/A",
     "requestedAt": "N/A",
     "safeBoundary": "N/A"
   },
-  "updatedAt": "2026-07-17T14:06:37Z"
+  "updatedAt": "2026-07-17T14:24:10Z"
 }
