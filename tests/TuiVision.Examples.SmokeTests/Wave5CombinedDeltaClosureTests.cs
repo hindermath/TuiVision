@@ -359,6 +359,7 @@ public sealed class Wave5CombinedDeltaClosureTests
         string crlf = lf.Replace("\n", "\r\n", StringComparison.Ordinal);
 
         Assert.AreEqual(CanonicalTextSha256(lf), CanonicalTextSha256(crlf));
+        Assert.AreEqual(CanonicalTextGitBlobId(lf), CanonicalTextGitBlobId(crlf));
     }
 
     private static void ValidateProductDeltas(JsonObject root)
@@ -428,7 +429,7 @@ public sealed class Wave5CombinedDeltaClosureTests
             string fullPath = Path.Combine(repositoryRoot, path);
             if (!File.Exists(fullPath)
                 || Text(source, "gitBlob") != ExpectedSourceBlobs[path]
-                || GitBlobId(File.ReadAllBytes(fullPath)) != ExpectedSourceBlobs[path]
+                || CanonicalTextGitBlobId(File.ReadAllText(fullPath)) != ExpectedSourceBlobs[path]
                 || Array(source, "consumerIds").Count == 0
                 || Array(source, "exampleIds").Count == 0)
             {
@@ -725,6 +726,9 @@ public sealed class Wave5CombinedDeltaClosureTests
 
     private static string CanonicalTextSha256(string document) =>
         Sha256(Encoding.UTF8.GetBytes(NormalizeLineEndings(document)));
+
+    private static string CanonicalTextGitBlobId(string document) =>
+        GitBlobId(Encoding.UTF8.GetBytes(NormalizeLineEndings(document)));
 
     private static string GitBlobId(byte[] bytes)
     {

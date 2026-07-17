@@ -284,11 +284,11 @@ Planungsgrenze lautet:
 | Gate | Ergebnis | Command / Evidence |
 |---|---|---|
 | Static candidate | Pass | 16 beabsichtigte Pfade; `git diff --cached --check`, JSON-, Markdown-, UTF-8-, Scope-, Placeholder- und Zeilenendenscans bestanden; keine unstaged oder unversionierten Pfade |
-| Feature-034 closure | Pass | nach Windows-Korrektur 11/11 bei `1.34.2.355`; zuvor gehärtet 10/10 bei `.350`, Red 0/1 bei `.348`, Green 9/9 bei `.349` |
+| Feature-034 closure | Pass | nach vollständiger Windows-Korrektur 11/11 bei `1.34.3.357`; zuvor 11/11 bei `.355`, gehärtet 10/10 bei `.350`, Red 0/1 bei `.348`, Green 9/9 bei `.349` |
 | Wave-5 TP7 | Pass | Feature 034 plus `Tp7*`, `Wave5Functional` und `Wave5Showcase`: 54/54 bei `1.34.1.351` |
 | zehn controlled smokes | Pass | 10/10 mit `dotnet run --no-build --configuration Release --project examples/Tp7* -- --smoke` |
 | zehn normale PTY-Pfade | Pass | 10/10 mit erstem Frame, primärer Aktion, F1-Description und `Ctrl+Q`; Transkripte nur unter `/tmp` |
-| Full Release | Pass | Build 0 Warnungen/0 Fehler bei `1.34.1.352`; vor Korrektur 836/836 bei `.353`, nach Korrektur 837/837 bei `1.34.2.356` |
+| Full Release | Pass | Build 0 Warnungen/0 Fehler bei `1.34.1.352`; vor Korrektur 836/836 bei `.353`, nach erster Korrektur 837/837 bei `.356`, nach vollständiger Korrektur 837/837 bei `1.34.3.358` |
 | Coverage | Pass | bei `1.34.1.354`: Core 92,96 %, Controls 86,66 %, Serialization 90,01 %, Compatibility 80,55 %, Drivers.Console 89,18 % |
 | Format | Pass | `dotnet format TuiVision.sln --verify-no-changes`, Exit 0 |
 | DocFX / A11Y | Pass | 341 Modelle, 0 Warnungen/0 Fehler; Playwright/Axe 2/2 |
@@ -325,18 +325,26 @@ bestand Ubuntu und macOS, aber Windows-Run `29585893974`, Job
 akzeptierten Markdown-Eingaben. Der Fehler lag ausschließlich im neuen
 Feature-034-Test `Test_ProvenanceSourcesAndConsumersAreExact`.
 
-Die begrenzte Korrektur normalisiert nur diese textuelle Vorgänger-Evidence
-vor SHA-256 auf LF und ergänzt
-`Test_AcceptedInputHashesAreLineEndingNeutral`. Historische
-`TVDEMOS/*.PAS`-Git-Blobs bleiben absichtlich Rohbyte-Prüfungen, weil ihre
-Git-Objekt-IDs genau diese Bytes binden. Produktcode, API, Beispiele,
+Die erste begrenzte Korrektur normalisierte diese textuelle
+Vorgänger-Evidence vor SHA-256 auf LF und ergänzte
+`Test_AcceptedInputHashesAreLineEndingNeutral`. Der Ersatz-Head `7a07b7c`
+zeigte im Windows-Run `29586364184`, Job `87904238870`, anschließend dieselbe
+Checkout-Zeilenendendrift bei den 15 historischen Pascal-Quellen. Die zweite
+begrenzte Korrektur rekonstruiert deren weiterhin unveränderte und exakte
+Git-Blob-IDs aus kanonischem LF-Text. Der direkte Zeilenendentest deckt nun
+sowohl SHA-256 als auch Git-Blob-IDs ab. Produktcode, API, Beispiele,
 Dependencies und der Closure-Datensatz bleiben unverändert.
 
-Der korrigierte lokale Stand bestand 11/11 Feature-034-Tests bei
+Der erste korrigierte lokale Stand bestand 11/11 Feature-034-Tests bei
 `1.34.2.355` und anschließend 837/837 vollständige Release-Tests bei
-`1.34.2.356`. Alle grünen Provider-Ergebnisse des ersten Heads werden für die
-Merge-Entscheidung verworfen; der Ersatz-Head benötigt eine vollständig neue
-PR-Kontext-Matrix und erneute Exact-Head-Validierung.
+`1.34.2.356`. Beide bisherigen Provider-Heads und ihre grünen Teilergebnisse
+werden für die Merge-Entscheidung verworfen; der endgültige Ersatz-Head
+benötigt eine vollständig neue PR-Kontext-Matrix und erneute
+Exact-Head-Validierung.
+
+Der vollständig korrigierte lokale Stand bestand erneut 11/11
+Feature-034-Tests bei `1.34.3.357` und 837/837 vollständige Release-Tests bei
+`1.34.3.358`.
 
 ## Exakter Kandidat / Exact Candidate
 
