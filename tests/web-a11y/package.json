@@ -18,7 +18,7 @@
     "lynx:stats": "lynx -dump http://127.0.0.1:8123/docs/project-statistics.html"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.10.2",
-    "@playwright/test": "^1.54.2"
+    "@axe-core/playwright": "^4.12.1",
+    "@playwright/test": "^1.61.1"
   }
 }
