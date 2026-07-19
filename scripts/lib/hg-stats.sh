@@ -42,7 +42,9 @@ _hg_count_entries() {
     echo 0
     return 0
   fi
-  grep -c '^## Run ' "$stats_file" 2>/dev/null || echo 0
+  local count
+  count=$(grep -c '^## Run ' "$stats_file" 2>/dev/null || true)
+  printf '%s\n' "${count:-0}"
 }
 
 # Archive STATS.md if >= 500 entries
