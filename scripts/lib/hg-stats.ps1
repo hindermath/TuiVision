@@ -63,7 +63,7 @@ function Invoke-HgWriteStats {
         if ($entryCount -ge 500) {
             $year = (Get-Date).Year
             $archiveFile = $StatsFile -replace 'STATS\.md', "STATS-archive-$year.md"
-            Copy-Item $StatsFile $archiveFile
+            Copy-Item -LiteralPath $StatsFile -Destination $archiveFile -Force
             $content = @(Get-Content -LiteralPath $StatsFile -Encoding UTF8)
             $entries = @(Select-String -LiteralPath $StatsFile -Pattern '^## Run ')
             $firstEntryIndex = $entries[0].LineNumber - 1

@@ -630,12 +630,17 @@ function ConvertTo-GeneratedBlock {
         $daily[$key] += [long]$entry.Lines
     }
 
-    $activeDates = @($daily.Keys | ForEach-Object {
+    $allActiveDates = @($daily.Keys | ForEach-Object {
             [datetime]::ParseExact($_, 'yyyy-MM-dd', $script:Invariant)
         } | Sort-Object)
-    $activeDays = $activeDates.Count
-    $firstDate = $(if ($activeDays -gt 0) { $activeDates[0] } else { $null })
-    $lastDate = $(if ($activeDays -gt 0) { $activeDates[-1] } else { $null })
+
+    $currentWeekStart = Get-WeekStart -Date $asOf
+    $windowWeeks = [int]$Configuration.activityWindowWeeks
+    $windowStart = $currentWeekStart.AddDays(-7 * ($windowWeeks - 1))
+    $windowActiveDates = @($allActiveDates | Where-Object {
+            $_ -ge $windowStart -and $_ -le $asOf
+        })
+    $activeDays = $windowActiveDates.Count
     $deliveryRate = $(if ($activeDays -gt 0) {
             [double]$Snapshot.TotalLines / $activeDays
         } else { 0.0 })
@@ -643,10 +648,6 @@ function ConvertTo-GeneratedBlock {
     $thorsten = [double]$Configuration.references.thorstenLinesPerDay
     $speedConservative = $(if ($activeDays -gt 0) { $deliveryRate / $conservative } else { 0.0 })
     $speedThorsten = $(if ($activeDays -gt 0) { $deliveryRate / $thorsten } else { 0.0 })
-
-    $currentWeekStart = Get-WeekStart -Date $asOf
-    $windowWeeks = [int]$Configuration.activityWindowWeeks
-    $windowStart = $currentWeekStart.AddDays(-7 * ($windowWeeks - 1))
     $weeks = [Collections.Generic.List[object]]::new()
     for ($index = 0; $index -lt $windowWeeks; $index++) {
         $start = $windowStart.AddDays(7 * $index)
@@ -676,14 +677,12 @@ function ConvertTo-GeneratedBlock {
         }
     }
     $peakWeek = $weeks | Sort-Object Value -Descending | Select-Object -First 1
-    $streak = Get-LongestStreak -Dates @(
-        $activeDates | Where-Object { $_ -ge $windowStart -and $_ -le $asOf }
-    )
+    $streak = Get-LongestStreak -Dates $windowActiveDates
 
-    $historyCommitCount = $History.Count
-    $period = $(if ($activeDays -gt 0) {
-            '{0:yyyy-MM-dd}..{1:yyyy-MM-dd}' -f $firstDate, $lastDate
-        } else { 'N/A' })
+    $historyCommitCount = @($History | Where-Object {
+            $_.Date -ge $windowStart -and $_.Date -le $asOf
+        }).Count
+    $period = '{0:yyyy-MM-dd}..{1:yyyy-MM-dd}' -f $windowStart, $asOf
     $peakDay = $(if ($null -ne $peakDayKey) {
             "$peakDayKey / $(Format-Integer -Value $peakDayLines)"
         } else { 'N/A' })
@@ -979,9 +978,6 @@ function ConvertTo-GeneratedBlock {
         'It does not attribute Git activity to a person or AI by default.*'
     )
 
-    $windowActiveDates = @(
-        $activeDates | Where-Object { $_ -ge $windowStart -and $_ -le $asOf }
-    )
     $elapsedWindowDays = ($asOf - $windowStart).Days + 1
     $inactiveDays = [Math]::Max(0, $elapsedWindowDays - $windowActiveDates.Count)
     $streakTextDe = $(if ($streak.Days -gt 0) {
@@ -1208,8 +1204,14 @@ try {
     $updated = Get-UpdatedLedger -Existing $existing -Generated $generated
     Assert-LedgerContract -LedgerText $updated
     $changed = (ConvertTo-NormalizedText $existing) -cne $updated
-    $activeDays = @($history | ForEach-Object { $_.Date } |
-        Sort-Object -Unique).Count
+    $timeZone = [TimeZoneInfo]::FindSystemTimeZoneById([string]$configuration.timeZone)
+    $asOf = Get-AsOfDate -TimeZone $timeZone
+    $windowStart = (Get-WeekStart -Date $asOf).AddDays(
+        -7 * ([int]$configuration.activityWindowWeeks - 1)
+    )
+    $activeDays = @($history | Where-Object {
+            $_.Date -ge $windowStart -and $_.Date -le $asOf
+        } | ForEach-Object { $_.Date } | Sort-Object -Unique).Count
 
     if ($CheckOnly) {
         if ($changed) {

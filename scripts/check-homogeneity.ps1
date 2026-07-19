@@ -3,6 +3,7 @@
 
 [CmdletBinding()]
 param(
+    [Alias('WorkspaceName')]
     [string]$TargetDir = $(if ($env:HOME) { $env:HOME } else { $env:USERPROFILE }),
     [switch]$Json,
     [switch]$DryRun,
@@ -283,9 +284,17 @@ function Check-AntigravityIntegration {
         Emit-Result 'FAIL' '.specify/integrations/agy.manifest.json' 'Antigravity Spec-Kit integration missing' $Dir
     }
 
-    if ((Test-Path (Join-Path $Dir '.specify/integrations/gemini.manifest.json')) -or
-        (Test-Path (Join-Path $Dir '.gemini/commands'))) {
-        Emit-Result 'FAIL' '.gemini/commands' 'legacy Gemini Spec-Kit integration present' $Dir
+    $legacyManifest = Join-Path $Dir '.specify/integrations/gemini.manifest.json'
+    $legacyCommands = Join-Path $Dir '.gemini/commands'
+    $legacyGeminiPath = if (Test-Path $legacyManifest) {
+        '.specify/integrations/gemini.manifest.json'
+    } elseif (Test-Path $legacyCommands) {
+        '.gemini/commands'
+    } else {
+        $null
+    }
+    if ($legacyGeminiPath) {
+        Emit-Result 'FAIL' $legacyGeminiPath 'legacy Gemini Spec-Kit integration present' $Dir
     } else {
         Emit-Result 'PASS' '.gemini/commands' 'legacy Gemini Spec-Kit integration absent' $Dir
     }
@@ -501,6 +510,8 @@ if ($Json) {
     Write-Host ""
     if ($fc -gt 0) {
         Write-Host "Exit code: 1 ($fc FAIL, $wc WARN)"
+    } elseif ($wc -gt 0) {
+        Write-Host "Exit code: 0 (0 FAIL, $wc WARN)"
     } else {
         Write-Host "Exit code: 0 (all checks passed)"
     }

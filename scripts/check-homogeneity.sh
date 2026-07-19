@@ -349,8 +349,14 @@ check_antigravity_integration() {
   else
     emit_result "FAIL" ".specify/integrations/agy.manifest.json" "Antigravity Spec-Kit integration missing" "$dir"
   fi
-  if [ -e "${dir}/.specify/integrations/gemini.manifest.json" ] || [ -e "${dir}/.gemini/commands" ]; then
-    emit_result "FAIL" ".gemini/commands" "legacy Gemini Spec-Kit integration present" "$dir"
+  local legacy_gemini_path=""
+  if [ -e "${dir}/.specify/integrations/gemini.manifest.json" ]; then
+    legacy_gemini_path=".specify/integrations/gemini.manifest.json"
+  elif [ -e "${dir}/.gemini/commands" ]; then
+    legacy_gemini_path=".gemini/commands"
+  fi
+  if [ -n "$legacy_gemini_path" ]; then
+    emit_result "FAIL" "$legacy_gemini_path" "legacy Gemini Spec-Kit integration present" "$dir"
   else
     emit_result "PASS" ".gemini/commands" "legacy Gemini Spec-Kit integration absent" "$dir"
   fi

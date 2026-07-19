@@ -1,6 +1,5 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/hindermath/home-baseline/raw/main/scripts/config/project-statistics.schema.json",
   "title": "ASCII Statistics Profile 2 repository configuration",
   "type": "object",
   "additionalProperties": false,

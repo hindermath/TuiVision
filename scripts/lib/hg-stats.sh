@@ -22,7 +22,7 @@ _hg_release_lock() {
   rmdir "$1" 2>/dev/null || true
 }
 
-# Build ASCII bar (max 40 chars)
+# Build ASCII bar (20 chars)
 _hg_bar() {
   local score="$1" width=20
   local filled=$(( score * width / 100 ))
@@ -73,7 +73,7 @@ _hg_maybe_archive() {
 
 # Main: Write a STATS run entry
 # Usage: hg_write_stats <stats_file> <score> [dir1 dir2 ...]
-hg_write_stats() {
+hg_write_stats() (
   local stats_file="$1"
   local score="$2"
   shift 2
@@ -109,7 +109,11 @@ hg_write_stats() {
 
     local i=0
     for dir in "${dirs[@]+"${dirs[@]}"}"; do
-      printf '| %s | `%s` | — |\n' "$i" "${dir/#$HOME/\~}"
+      local short_dir="$dir"
+      if [[ "$dir" == "$HOME"* ]]; then
+        short_dir="~${dir#"$HOME"}"
+      fi
+      printf '| %s | `%s` | — |\n' "$i" "$short_dir"
       i=$((i + 1))
     done
 
@@ -123,4 +127,4 @@ hg_write_stats() {
 
   _hg_release_lock "$lockdir"
   trap - EXIT INT TERM
-}
+)
