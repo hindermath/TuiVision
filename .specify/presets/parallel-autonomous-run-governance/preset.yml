@@ -3,7 +3,7 @@ schema_version: "1.0"
 preset:
   id: "parallel-autonomous-run-governance"
   name: "Parallel Autonomous Run Governance"
-  version: "0.2.1"
+  version: "0.2.2"
   description: "Coordinates isolated autonomous Spec Kit campaigns with bounded concurrency, mixed runner profiles, cooperative stop and resume, provider-gated resumable consolidation, and declared post-merge closeout."
   author: "Thorsten Hindermann"
   repository: "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance"

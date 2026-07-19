@@ -46,17 +46,17 @@
     },
     {
       "id": "autonomous-run-governance",
-      "version": "v0.3.0",
+      "version": "v0.3.1",
       "priority": 70,
       "repository": "https://github.com/hindermath/spec-kit-preset-autonomous-run-governance",
-      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-autonomous-run-governance/archive/refs/tags/v0.3.0.zip"
+      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-autonomous-run-governance/archive/refs/tags/v0.3.1.zip"
     },
     {
       "id": "parallel-autonomous-run-governance",
-      "version": "v0.2.1",
+      "version": "v0.2.2",
       "priority": 80,
       "repository": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance",
-      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/archive/refs/tags/v0.2.1.zip"
+      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/archive/refs/tags/v0.2.2.zip"
     }
   ]
 }
