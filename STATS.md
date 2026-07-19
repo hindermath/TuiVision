@@ -2,13 +2,13 @@
 
 ## Überblick / Overview
 
-Compliance-Historie — Compliance History
+Compliance-Historie -- Compliance History
 
 ## Verwendung / Usage
 
-Jeder check-homogeneity.sh-Aufruf fuegt hier einen Eintrag hinzu.
+Jeder check-homogeneity.*-Aufruf fuegt hier einen Eintrag hinzu.
 
-Each check-homogeneity.sh run appends an entry here.
+Each check-homogeneity.* run appends an entry here.
 
 | 2026-04-03 00:14 | 40% | ########............ 40% |
 | 2026-04-03 00:18 | 57% | ###########......... 57% |

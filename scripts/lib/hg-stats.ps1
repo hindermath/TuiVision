@@ -20,7 +20,7 @@ function Invoke-HgWriteStats {
     while (-not (New-Item -ItemType Directory -Path $lockDir -ErrorAction SilentlyContinue)) {
         Start-Sleep -Seconds 1; $elapsed++
         if ($elapsed -ge 5) {
-            throw "stats file locked -- try again later"
+            throw "Statistikdatei gesperrt -- spaeter erneut versuchen / stats file locked -- try again later"
         }
     }
 

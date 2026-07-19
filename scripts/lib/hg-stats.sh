@@ -11,7 +11,7 @@ _hg_acquire_lock() {
     sleep 1
     elapsed=$((elapsed + 1))
     if [ "$elapsed" -ge "$timeout" ]; then
-      echo "WARN: stats file locked — try again later" >&2
+      echo "WARN: Statistikdatei gesperrt -- spaeter erneut versuchen / stats file locked -- try again later" >&2
       return 1
     fi
   done
@@ -115,7 +115,7 @@ hg_write_stats() (
       if [[ "$dir" == "$HOME"* ]]; then
         short_dir="~${dir#"$HOME"}"
       fi
-      printf '| %s | `%s` | — |\n' "$i" "$short_dir"
+      printf '| %s | `%s` | -- |\n' "$i" "$short_dir"
       i=$((i + 1))
     done
 
