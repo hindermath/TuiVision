@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/hindermath/home-baseline/raw/main/scripts/config/project-statistics.schema.json",
+  "title": "ASCII Statistics Profile 2 repository configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "methodologyVersion",
+    "repositoryName",
+    "timeZone",
+    "activityWindowWeeks",
+    "references",
+    "phases",
+    "excludedPaths",
+    "categoryOverrides"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "methodologyVersion": {
+      "const": 2
+    },
+    "repositoryName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timeZone": {
+      "type": "string",
+      "minLength": 1,
+      "default": "Europe/Berlin"
+    },
+    "activityWindowWeeks": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 104,
+      "default": 52
+    },
+    "references": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "conservativeLinesPerDay",
+        "thorstenLinesPerDay"
+      ],
+      "properties": {
+        "conservativeLinesPerDay": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "default": 80
+        },
+        "thorstenLinesPerDay": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "phases": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "slot",
+          "id",
+          "labelDe",
+          "labelEn",
+          "netLines"
+        ],
+        "properties": {
+          "slot": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9._-]*$"
+          },
+          "labelDe": {
+            "type": "string",
+            "minLength": 1
+          },
+          "labelEn": {
+            "type": "string",
+            "minLength": 1
+          },
+          "netLines": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "activeDays": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "excludedPaths": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "categoryOverrides": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "pattern",
+          "category"
+        ],
+        "properties": {
+          "pattern": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category": {
+            "enum": [
+              "Production",
+              "Tests",
+              "Documentation",
+              "Scripts",
+              "Configuration",
+              "DataMedia",
+              "Other"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

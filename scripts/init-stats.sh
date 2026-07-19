@@ -2,7 +2,7 @@
 # init-stats.sh — STATS.md Baseline-Generator v1.0
 # FR-REV-B04; Contract: init-stats-cli.md
 #
-# Usage: init-stats.sh [workspace-name]
+# Usage: init-stats.sh [workspace-name-or-path]
 # Exit codes: 0=success, 1=error
 set -euo pipefail
 
@@ -11,8 +11,14 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # ─── Argument Parsing ────────────────────────────────────────────────────────
 
 WORKSPACE_NAME=""
+TARGET_DIR=""
 while [ $# -gt 0 ]; do
   case "$1" in
+    -h|--help) echo "USAGE: init-stats.sh [workspace-name]" >&2; exit 0 ;;
+    --)
+      shift
+      if [ $# -gt 0 ] && [ -z "$WORKSPACE_NAME" ]; then WORKSPACE_NAME="$1"; shift; fi
+      continue ;;
     --*) echo "ERROR: unknown option $1" >&2; exit 1 ;;
     *) WORKSPACE_NAME="$1" ;;
   esac
@@ -42,9 +48,9 @@ make_bar() {
   local empty=$(( 20 - filled ))
   local bar=""
   local i=0
-  while [ $i -lt $filled ]; do bar="${bar}█"; i=$((i+1)); done
+  while [ $i -lt $filled ]; do bar="${bar}#"; i=$((i+1)); done
   i=0
-  while [ $i -lt $empty ]; do bar="${bar}░"; i=$((i+1)); done
+  while [ $i -lt $empty ]; do bar="${bar}."; i=$((i+1)); done
   printf '%s %d%%' "$bar" "$score"
 }
 
@@ -91,25 +97,41 @@ get_score_for() {
   printf '%s' "${score:-0}"
 }
 
+resolve_target_dir() {
+  local input="$1"
+
+  if [ -d "$input" ]; then
+    printf '%s' "${input%/}"
+    return 0
+  fi
+
+  if [ -d "${HOME}/${input}" ]; then
+    printf '%s' "${HOME}/${input}"
+    return 0
+  fi
+
+  return 1
+}
+
 # ─── Main ────────────────────────────────────────────────────────────────────
 
 if [ -n "$WORKSPACE_NAME" ]; then
-  # Scoped mode: only the specified Level-1 workspace and its Level-2 projects
-  ws_dir="${HOME}/${WORKSPACE_NAME}"
-  if ! [ -d "$ws_dir" ]; then
-    echo "ERROR: Workspace nicht gefunden: ${ws_dir}" >&2
+  # Scoped mode: support either a workspace name or an absolute path
+  TARGET_DIR="$(resolve_target_dir "$WORKSPACE_NAME" || true)"
+  if ! [ -d "$TARGET_DIR" ]; then
+    echo "ERROR: Workspace/Pfad nicht gefunden: ${WORKSPACE_NAME}" >&2
     exit 1
   fi
 
-  ws_score=$(get_score_for "$ws_dir")
-  write_stats_entry "${ws_dir}/STATS.md" "$ws_score"
+  ws_score=$(get_score_for "$TARGET_DIR")
+  write_stats_entry "${TARGET_DIR}/STATS.md" "$ws_score"
 
-  # Level-2 projects within workspace
+  # Level-2 projects within the target directory
   while IFS= read -r proj_dir; do
     [ -d "${proj_dir}/.git" ] || continue
     proj_score=$(get_score_for "$proj_dir")
     write_stats_entry "${proj_dir}/STATS.md" "$proj_score"
-  done < <(find "$ws_dir" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | sort)
+  done < <(find "$TARGET_DIR" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | sort)
 
 else
   # Full mode: Level 0, all Level-1 workspaces, all Level-2 projects
