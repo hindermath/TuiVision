@@ -97,7 +97,7 @@ hg_write_stats() (
 
   # Ensure file exists with header
   if ! [ -f "$stats_file" ]; then
-    printf '# STATS.md\n\n## Überblick / Overview\n\nCompliance-Historie — Compliance History\n\n## Verwendung / Usage\n\nJeder `check-homogeneity.sh`-Aufruf fügt hier einen Eintrag hinzu.\n\nEach `check-homogeneity.sh` run appends an entry here.\n\n' > "$stats_file"
+    printf '# STATS.md\n\n## Überblick / Overview\n\nCompliance-Historie -- Compliance History\n\n## Verwendung / Usage\n\nJeder `check-homogeneity.sh`-Aufruf fuegt hier einen Eintrag hinzu.\n\nEach `check-homogeneity.sh` run appends an entry here.\n\n' > "$stats_file"
   fi
 
   # Append entry

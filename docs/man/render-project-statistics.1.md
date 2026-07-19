@@ -68,4 +68,7 @@ uses the current date in the configured time zone.*
 
 ## SEE ALSO
 
-`init-stats(1)`, `check-homogeneity(1)`, `maintain-agentic-workspace(1)`
+`scripts/init-stats.sh`, `scripts/init-stats.ps1`,
+`scripts/check-homogeneity.sh`, `scripts/check-homogeneity.ps1`,
+`scripts/maintain-agentic-workspace.sh`,
+`scripts/maintain-agentic-workspace.ps1`

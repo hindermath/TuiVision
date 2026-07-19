@@ -26,15 +26,15 @@ function Invoke-HgWriteStats {
     }
 
     try {
-        if (-not (Test-Path $StatsFile)) {
+        if (-not (Test-Path -LiteralPath $StatsFile)) {
             @("# STATS.md", "", "## Überblick / Overview", "", "Compliance-Historie -- Compliance History", "", "## Verwendung / Usage", "", "Jeder ``check-homogeneity.sh``-Aufruf fuegt hier einen Eintrag hinzu.", "", "Each ``check-homogeneity.sh`` run appends an entry here.", "") |
-                Set-Content $StatsFile -Encoding UTF8
+                Set-Content -LiteralPath $StatsFile -Encoding UTF8
         }
 
         $ts = Get-Date -Format 'yyyy-MM-dd HH:mm'
         $suffix = ''
         $collision = 2
-        while (Select-String -Path $StatsFile -Pattern "^## Run ${ts}${suffix}" -Quiet) {
+        while (Select-String -LiteralPath $StatsFile -Pattern "^## Run ${ts}${suffix}" -Quiet) {
             $suffix = ":${collision}"; $collision++
         }
 
@@ -56,10 +56,10 @@ function Invoke-HgWriteStats {
         $bar = Get-HgBar -Score $Score
         $lines += @("", "ASCII Bar: [$bar] $Score %", "")
 
-        $lines | Add-Content $StatsFile -Encoding UTF8
+        $lines | Add-Content -LiteralPath $StatsFile -Encoding UTF8
 
         # Archive if >= 500 entries
-        $entryCount = (Select-String -Path $StatsFile -Pattern '^## Run ').Count
+        $entryCount = (Select-String -LiteralPath $StatsFile -Pattern '^## Run ').Count
         if ($entryCount -ge 500) {
             $year = (Get-Date).Year
             $archiveFile = $StatsFile -replace 'STATS\.md', "STATS-archive-$year.md"
@@ -77,6 +77,6 @@ function Invoke-HgWriteStats {
             Write-Warning "STATS.md archived to: $archiveFile"
         }
     } finally {
-        Remove-Item -Path $lockDir -Force -ErrorAction SilentlyContinue
+        Remove-Item -LiteralPath $lockDir -Force -ErrorAction SilentlyContinue
     }
 }
