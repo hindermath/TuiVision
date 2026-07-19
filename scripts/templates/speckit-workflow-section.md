@@ -30,8 +30,8 @@ Workspace-Familie ist:
 | `a11y-governance` | A11Y Governance | `v0.4.1` | `40` |
 | `cross-platform-governance` | Cross-Platform Governance | `v0.2.1` | `50` |
 | `agent-parity-governance` | Agent Parity Governance | `v0.4.0` | `60` |
-| `autonomous-run-governance` | Autonomous Run Governance | `v0.3.0` | `70` |
-| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.1` | `80` |
+| `autonomous-run-governance` | Autonomous Run Governance | `v0.3.1` | `70` |
+| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.2` | `80` |
 
 `autonomous-run-governance` ist Teil der Standard-Achtermatrix. Vollständige
 autonome Läufe bleiben ausdrücklich delegationspflichtig. `LocalImplementation` ist der
@@ -50,7 +50,13 @@ Kampagne. Ausdruecklich delegierte Kampagnen verwenden getrennte Worktrees,
 maximal drei gleichzeitig aktive Worker, optionale agentenneutrale
 Runner-Metadaten, kooperatives Stop/Resume und eine providergebundene,
 fortsetzbare Konsolidierung. `Completed` folgt erst nach Synchronisation,
-manifestdeklarierten Post-Merge-Aktionen und Abschlussvalidierung.
+manifestdeklarierten Post-Merge-Aktionen und Abschlussvalidierung. Reale
+Kampagnen setzen in jedem Worker-Repository ein installiertes und aktiviertes
+`autonomous-run-governance >=0.2.2` voraus. Preset 7 mit Prioritaet `70`
+liefert den Worker-Lebenszyklus; Preset 8 mit Prioritaet `80` koordiniert die
+Kampagne. Ein fehlendes, deaktiviertes oder zu altes Preset 7 beendet den
+Preflight vor dem Worker-Start. `requireAutonomousPreset: false` ist nur fuer
+isolierte interne Fixtures zulaessig und kein Produktionsmodus.
 
 Die ursprünglichen sechs Presets sind seit 2026-05-04 und
 `autonomous-run-governance` v0.2.2 ist seit 2026-07-17 im `github/spec-kit`
@@ -62,7 +68,7 @@ begründete Ausnahme dokumentiert ist. Nach Installation oder Update prüfen:
 `specify preset info <id>` und bei Template-Fragen `specify preset resolve
 <template>`. `.specify/presets/` wird committed, `.specify/presets/.cache/`
 nicht. Alle acht Presets erzeugen oder verlangen audit-ready Spec-Kit-Run-Evidenz mit `Applicable` / `N/A` / `Open`, Begruendung, Evidenzpfad, Reviewer, Restrisiko und Follow-up.
-`parallel-autonomous-run-governance` v0.2.1 ist eigenstaendig veroeffentlicht
+`parallel-autonomous-run-governance` v0.2.2 ist eigenstaendig veroeffentlicht
 und wurde mit `github/spec-kit#3591` fuer den Community-Katalog eingereicht.
 Bei jeder Preset-Version oder Prioritätsänderung zuerst die zentrale Matrix
 aktualisieren und danach README-Tabellen, Constitution, Agenten-Dateien und
@@ -102,8 +108,8 @@ workspace family is:
 | `a11y-governance` | A11Y Governance | `v0.4.1` | `40` |
 | `cross-platform-governance` | Cross-Platform Governance | `v0.2.1` | `50` |
 | `agent-parity-governance` | Agent Parity Governance | `v0.4.0` | `60` |
-| `autonomous-run-governance` | Autonomous Run Governance | `v0.3.0` | `70` |
-| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.1` | `80` |
+| `autonomous-run-governance` | Autonomous Run Governance | `v0.3.1` | `70` |
+| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.2` | `80` |
 
 `autonomous-run-governance` is part of the standard eight-preset matrix.
 Complete autonomous runs still require explicit delegation. `LocalImplementation` is the safe default;
@@ -122,6 +128,12 @@ Explicitly delegated campaigns use separate worktrees, at most three active
 workers, optional agent-neutral runner metadata, cooperative stop/resume, and
 provider-gated resumable consolidation. `Completed` follows only after
 synchronization, manifest-declared post-merge actions, and final validation.
+Real campaigns require installed and enabled
+`autonomous-run-governance >=0.2.2` in every worker repository. Preset 7 at
+priority `70` supplies the worker lifecycle; Preset 8 at priority `80`
+coordinates the campaign. A missing, disabled, or outdated Preset 7 fails
+preflight before any worker starts. `requireAutonomousPreset: false` is valid
+only for isolated internal fixtures and is not a production mode.
 
 The original six presets have been in the `github/spec-kit` community catalog
 since 2026-05-04, and `autonomous-run-governance` v0.2.2 was verified there on
@@ -131,7 +143,7 @@ update, verify with `install-spec-kit-governance-presets.* --check-only` /
 `-CheckOnly`, `specify preset list`, `specify preset info <id>`, and for template questions
 `specify preset resolve <template>`. Commit `.specify/presets/`, but not
 `.specify/presets/.cache/`. All eight presets produce or require audit-ready Spec-Kit run evidence with `Applicable` / `N/A` / `Open`, rationale, evidence path, reviewer, residual risk, and follow-up.
-`parallel-autonomous-run-governance` v0.2.1 is published independently and was
+`parallel-autonomous-run-governance` v0.2.2 is published independently and was
 submitted to the community catalog as `github/spec-kit#3591`.
 For every preset version or priority change, update the central matrix first,
 then review README tables, constitution, agent guidance files, and templates

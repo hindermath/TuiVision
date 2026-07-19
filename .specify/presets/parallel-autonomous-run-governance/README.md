@@ -1,167 +1,170 @@
-# Parallel Autonomous Run Governance Preset
+# Parallel Autonomous Run Governance
 
-Version: `0.2.1`
-Status: validiertes achtes Standard-Preset; Kampagnenstart bleibt delegationspflichtig
-Priority: `80`
-Requires: Spec Kit `>=0.8.3` and `autonomous-run-governance >=0.2.2`
+Permission-bounded coordination for several isolated autonomous Spec Kit runs.
 
-## Zweck / Purpose
+Version `0.2.2` | Priority `80` | Spec Kit `>=0.8.3`
+Required worker preset: `autonomous-run-governance >=0.2.2`
 
-Dieses Preset koordiniert mehrere isolierte autonome Spec-Kit-Laeufe. Es
-unterstuetzt replizierte Ziele, unabhaengige Features, menschlich ausgewaehlte
-Alternativen und abhaengigkeitsgeordnete Pipelines. Es ersetzt nicht den
-Einzellauf-Lebenszyklus und erteilt keine Ausfuehrungs- oder Remote-Berechtigung.
+## Deutsch
 
-*This preset coordinates several isolated autonomous Spec Kit runs. It supports
-replicated targets, independent features, human-selected alternatives, and
-dependency-ordered pipelines. It does not replace the single-run lifecycle and
-does not grant execution or remote authority.*
+### Wofuer ist dieses Preset gedacht?
 
-## Installation / Installation
+Preset 8 koordiniert mehrere autonome Worker als eine nachvollziehbare
+Kampagne. Es stellt Isolation, begrenzte Parallelitaet, dauerhaften Zustand,
+Stop/Status/Resume, Handoffs und geordnete Konsolidierung bereit.
 
-```bash
-specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/archive/refs/tags/v0.2.1.zip \
-  --priority 80
-specify preset add --dev /path/to/parallel-autonomous-run-governance --priority 80
-specify preset info parallel-autonomous-run-governance
+Es fuehrt nicht selbst den Spec-Kit-Einzellauf aus. Jeder reale Worker
+verwendet dafuer Preset 7. Installation startet keine Kampagne und erteilt
+keine Commit-, Push-, Merge-, Bypass-, Secret- oder Provider-Rechte.
+
+### Abhaengigkeit zu Preset 7
+
+```mermaid
+flowchart TD
+    O["Ausdruecklicher Kampagnenauftrag"] --> P8["Preset 8: Koordinator"]
+    P8 --> W1["Worker 1: eigener Branch und Worktree"]
+    P8 --> W2["Worker 2: eigener Branch und Worktree"]
+    P8 --> W3["Worker 3: eigener Branch und Worktree"]
+    W1 --> P7A["Preset 7: autonomer Einzellauf"]
+    W2 --> P7B["Preset 7: autonomer Einzellauf"]
+    W3 --> P7C["Preset 7: autonomer Einzellauf"]
+    P7A --> R["Worker-Ergebnisse und Evidence"]
+    P7B --> R
+    P7C --> R
+    R --> C["Preset 8: Konsolidierung und Closeout"]
 ```
 
-Version `0.2.1` gehoert zur installierten Standard-Achtermatrix. Das Starten
-einer parallelen autonomen Kampagne bleibt eine ausdruecklich zu delegierende
-Aktion. Die 13-Worker-Entwicklungsprobe und der 24-Worker-Feldtest mit sechs
-MSL-Sprachen sind abgeschlossen.
+**Textalternative DE:** Preset 8 nimmt einen ausdruecklichen Kampagnenauftrag
+an und erstellt fuer jeden Worker einen eigenen Branch und Worktree. Jeder
+Worker fuehrt seinen autonomen Einzellauf unter Preset 7 aus. Preset 8 sammelt
+nur validierte Worker-Ergebnisse und fuehrt danach die deklarierte
+Konsolidierung und den Closeout aus.
 
-*Version `0.2.1` is part of the installed standard eight-preset matrix. Starting
-a parallel autonomous campaign still requires explicit delegation. The
-13-worker development smoke and the 24-worker field test across six MSL
-languages are complete.*
+**Text alternative EN:** Preset 8 accepts an explicit campaign instruction and
+creates one branch and worktree per worker. Each worker executes its autonomous
+single run under Preset 7. Preset 8 collects validated worker results and then
+performs declared consolidation and closeout.
 
-Nachweise / Evidence:
+### Verbindliche Voraussetzung
 
-- [`docs/field-evidence/native-macos-smoke-2026-07-18.md`](docs/field-evidence/native-macos-smoke-2026-07-18.md)
-- [`docs/field-evidence/native-multi-agent-smoke-2026-07-19.md`](docs/field-evidence/native-multi-agent-smoke-2026-07-19.md)
-- [`docs/field-evidence/secure-casetracker-native-field-2026-07-18.md`](docs/field-evidence/secure-casetracker-native-field-2026-07-18.md)
-- [`docs/field-evidence/secure-casetracker-native-field-retrospective-2026-07-19.md`](docs/field-evidence/secure-casetracker-native-field-retrospective-2026-07-19.md)
+Fuer regulaere Kampagnen gilt:
 
-## Schema und Kompatibilitaet / Schema and Compatibility
+- Preset 7 ist in **jedem** Worker-Repository installiert und aktiviert.
+- Mindestversion ist `autonomous-run-governance >=0.2.2`.
+- Der Standardmanifestwert ist `requireAutonomousPreset: true`.
+- Fehlende, deaktivierte oder zu alte Installationen stoppen den Preflight,
+  bevor ein Worker startet.
+- `requireAutonomousPreset: false` ist nur fuer interne isolierte
+  Test-Fixtures vorgesehen und kein unterstuetzter Produktionsmodus.
 
-Neue Templates verwenden Schema `1.1`. Der Koordinator liest weiterhin
-Kampagnen-, Runner-, State- und Worker-Result-Artefakte in Schema `1.0`.
-Schema `1.1` ergaenzt Worker-spezifische Runner-Profile, nicht geheime
-Statusmetadaten, Provider-Preflights, Versuchshistorie und Post-Merge-Aktionen.
-Ein historisches Schema-1.0-`MergeAndSync`-Manifest bleibt lesbar und kann bis
-`ReadyForConsolidation` fortgefuehrt werden. Ein echter Merge erfordert jedoch
-die explizite Migration auf den providergebundenen Preflight-Vertrag und die
-Post-Merge-Aktionen aus Schema `1.1`; die unsichere Legacy-Mergeform wird nicht
-automatisch ausgefuehrt.
+### In fuenf Minuten vorbereiten
 
-*New templates emit schema `1.1`. The coordinator continues to read schema
-`1.0` campaign, runner, state, and worker-result artifacts. Schema `1.1` adds
-per-worker runner profiles, non-secret status metadata, provider preflights,
-attempt history, and post-merge actions. A historical schema `1.0`
-`MergeAndSync` manifest remains readable and may advance to
-`ReadyForConsolidation`. Performing a merge requires explicit migration to the
-schema `1.1` provider-preflight contract and post-merge actions; the unsafe
-legacy merge shape is never executed automatically.*
+1. Preset 7, danach Preset 8 installieren:
 
-## Entwicklungs-Override / Development Override
+   ```bash
+   specify preset add \
+     --from https://github.com/hindermath/spec-kit-preset-autonomous-run-governance/archive/refs/tags/v0.3.1.zip \
+     --priority 70
+   specify preset add \
+     --from https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/archive/refs/tags/v0.2.2.zip \
+     --priority 80
+   ```
 
-Der Repository-Eigentuemer hat die Smoke- und Secure-CaseTracker-Feldkampagnen
-vom 2026-07-18 ausdruecklich fuer eine native Ausfuehrung auf dem
-Entwicklungs-Mac freigegeben. Diese temporaere, kampagnenspezifische Ausnahme
-ist mit dem Closeout abgelaufen. Container-First gilt wieder fuer regulaere
-Secure-Trader-, Lernenden-, Produktions-, Wartungs- und spaetere Kampagnen.
+2. Beide Presets pruefen:
 
-*The repository owner explicitly authorized the 2026-07-18 smoke and Secure
-CaseTracker field campaigns to run natively on the development Mac. This
-temporary campaign-specific exception expired with the closeout. Container-
-First again applies to routine Secure Trader, learner, production, maintenance,
-and later campaigns.*
+   ```bash
+   specify preset info autonomous-run-governance
+   specify preset info parallel-autonomous-run-governance
+   specify preset resolve parallel-campaign-template
+   ```
 
-## Koordinator / Coordinator
+3. Manifest und lokale Runner-Konfiguration aus den Templates ableiten.
 
-```bash
-bash .specify/presets/parallel-autonomous-run-governance/scripts/orchestrate-parallel-autonomous-runs.sh \
-  -Action Validate \
-  -Manifest specs/NNN-campaign/parallel-campaign.json \
-  -RunnerConfig ~/.config/spec-kit/parallel-runner-profiles.json
-```
+4. Kampagne vor jedem Start validieren:
 
-```powershell
-pwsh -NoProfile -File .specify/presets/parallel-autonomous-run-governance/scripts/orchestrate-parallel-autonomous-runs.ps1 `
-  -Action Status `
-  -Manifest specs/NNN-campaign/parallel-campaign.json `
-  -State specs/NNN-campaign/parallel-campaign-state.json `
-  -OutputFormat Text
-```
+   ```bash
+   bash .specify/presets/parallel-autonomous-run-governance/scripts/orchestrate-parallel-autonomous-runs.sh \
+     -Action Validate \
+     -Manifest specs/NNN-campaign/parallel-campaign.json \
+     -RunnerConfig ~/.config/spec-kit/parallel-runner-profiles.json
+   ```
 
-Runner-Profile enthalten ausfuehrbare Namen und Argument-Arrays, keine Secrets.
-Ein Worker darf `runnerProfile` setzen; fehlt der Wert, gilt das
-Kampagnenprofil. `agentFamily` ist Statusmetadatum. `model` und
-`reasoningEffort` sind optional und werden nie erraten. Ohne ausdrueckliche
-Angabe zeigt Status `Agent-Standard/nicht deklariert`.
+5. Erst danach den Start ausdruecklich delegieren.
 
-*Runner profiles contain executable names and argument arrays, not secrets. A
-worker may set `runnerProfile`; otherwise the campaign profile is the fallback.
-`agentFamily` is status metadata. `model` and `reasoningEffort` are optional
-and are never guessed. Status shows `Agent-Standard/nicht deklariert` when they
-are not explicitly declared.*
+### Handbuch
 
-[`templates/parallel-runner-profiles-examples.json`](templates/parallel-runner-profiles-examples.json)
-zeigt lokale Profile fuer Codex, Claude Code, GitHub Copilot CLI, Google
-Antigravity, OpenCode und Junie. Die Beispiele geben kein Modell vor und
-erteilen keine pauschale Netzwerkfreigabe. Nicht interaktive Schreibrechte
-muessen lokal so eng wie moeglich fuer das isolierte Worker-Worktree
-konfiguriert werden.
+| Kapitel | Inhalt |
+|---|---|
+| [Dokumentationsstart](docs/README.md) | Rollenbasierter Wegweiser |
+| [Erste Kampagne](docs/getting-started.md) | Installation, Preflight und sicherer Start |
+| [Topologien und Scheduling](docs/topologies-and-scheduling.md) | Vier Topologien, DAG, Handoffs und Parallelitaet |
+| [Manifest und Runner](docs/manifest-and-runners.md) | Schema, Profile, Agenten und Isolation |
+| [Lebenszyklus und Operationen](docs/lifecycle-and-operations.md) | Status, Stop und Resume |
+| [Konsolidierung und Recovery](docs/consolidation-and-recovery.md) | Provider-Gates, Teil-Merge und Fortsetzung |
+| [Post-Merge-Closeout](docs/post-merge-closeout.md) | Sync, Aktionen und `Completed` |
+| [Fehlersuche](docs/troubleshooting.md) | Blocker und sichere Reaktion |
+| [Kompatibilitaet](docs/compatibility.md) | Versionen, Schemas und Upgrade |
+| [Feldnachweise](docs/field-evidence/README.md) | Smoke- und 24-Worker-Feldtest |
 
-*[`templates/parallel-runner-profiles-examples.json`](templates/parallel-runner-profiles-examples.json)
-shows local profiles for Codex, Claude Code, GitHub Copilot CLI, Google
-Antigravity, OpenCode, and Junie. The examples prescribe no model and grant no
-blanket network access. Non-interactive write permissions must be configured
-locally and scoped as narrowly as possible to the isolated worker worktree.*
+## English
 
-## Konsolidierung und Closeout / Consolidation and Closeout
+### What is this preset for?
 
-Der lokale Provider-Adapter schreibt vor jedem Merge einen standardisierten
-Preflight-Vertrag: PR offen oder exakt gemergt, kein Draft, exakter Head,
-mergebar, keine aktuelle Change Request, keine aktuellen ungeloesten Threads
-und erfuellte Check-Policy ohne technische Fehler. Bereits verifizierte Merges
-werden bei Resume uebersprungen; extern gemergte exakte Heads werden
-uebernommen. Abweichungen werden `NeedsRevalidation`.
+Preset 8 coordinates several autonomous workers as one auditable campaign. It
+provides isolation, bounded concurrency, durable state, stop/status/resume,
+handoffs, and ordered consolidation.
 
-*Before every merge, the local provider adapter writes a standard preflight
-contract: PR open or exactly merged, not draft, exact head, mergeable, no
-current change request, no current unresolved threads, and a satisfied check
-policy without technical failures. Resume skips verified merges and adopts an
-externally merged exact head. Drift becomes `NeedsRevalidation`.*
+It does not execute the single Spec Kit run itself. Every real worker uses
+Preset 7 for that lifecycle. Installation starts no campaign and grants no
+commit, push, merge, bypass, secret, or provider authority.
 
-`postMergeActions` stammen ausschliesslich aus dem geprueften Manifest. Ihre
-lokalen Profile muessen idempotent sein und die Phasen `Synchronize`,
-`PostMerge` und `Validate` abbilden. `Completed` wird erst nach Merge,
-Synchronisation, Post-Merge-Aktionen und Abschlussvalidierung gesetzt.
+### Binding prerequisite
 
-*`postMergeActions` come only from the reviewed manifest. Their local profiles
-must be idempotent and cover `Synchronize`, `PostMerge`, and `Validate`.
-`Completed` is written only after merge, synchronization, post-merge actions,
-and final validation.*
+For regular campaigns:
 
-## Sicherheit / Safety
+- Preset 7 is installed and enabled in **every** worker repository.
+- The minimum is `autonomous-run-governance >=0.2.2`.
+- The default manifest sets `requireAutonomousPreset: true`.
+- Missing, disabled, or outdated installations fail preflight before any
+  worker starts.
+- `requireAutonomousPreset: false` is reserved for isolated internal fixtures
+  and is not a supported production mode.
+
+### Five-minute preparation
+
+Install Preset 7 at priority `70`, then Preset 8 at priority `80`. Verify both
+with `specify preset info`, derive the campaign and local runner files from the
+templates, and run coordinator action `Validate` before explicitly delegating
+`Start`.
+
+### Manual
+
+| Chapter | Subject |
+|---|---|
+| [Documentation home](docs/README.md) | Role-based documentation map |
+| [First campaign](docs/getting-started.md) | Installation, preflight, and safe start |
+| [Topologies and scheduling](docs/topologies-and-scheduling.md) | Four topologies, DAG, handoffs, and concurrency |
+| [Manifest and runners](docs/manifest-and-runners.md) | Schema, profiles, agents, and isolation |
+| [Lifecycle and operations](docs/lifecycle-and-operations.md) | Status, stop, and resume |
+| [Consolidation and recovery](docs/consolidation-and-recovery.md) | Provider gates, partial merge, and continuation |
+| [Post-merge closeout](docs/post-merge-closeout.md) | Sync, actions, and `Completed` |
+| [Troubleshooting](docs/troubleshooting.md) | Blockers and safe response |
+| [Compatibility](docs/compatibility.md) | Versions, schemas, and upgrade |
+| [Field evidence](docs/field-evidence/README.md) | Smoke and 24-worker field test |
+
+## Safety summary
 
 - Maximum supported concurrency is three.
 - Every worker owns a separate branch and worktree.
-- Every worker is instructed to remain on its assigned branch.
-- A dependent worker may branch from a validated direct predecessor through
-  `baseWorkerId`, preserving sequential feature history without sharing a
-  worktree.
+- Runner arguments execute as arrays without shell evaluation.
+- Status exposes no secrets, environment values, or executable arguments.
 - Stop is cooperative and grants no process-kill authority.
-- Alternative consolidation requires explicit human selection.
-- Merge-and-sync uses an all-ready barrier and resumable per-merge checkpoints.
-- Remaining direct and stacked PR bases are revalidated after each merge.
-- Child workers in a `MergeAndSync` campaign stop at `PublishPR`; only the
-  coordinator may execute the ordered merge profile after every result is
-  ready.
-- State events include timestamps and attempt counters without executable
-  arguments, secrets, or undeclared provider configuration.
-- Installation grants no remote, merge, bypass, cancellation, secret, or
-  provider-administration rights.
+- Alternative solutions require named human selection.
+- `MergeAndSync` uses an all-ready barrier and resumable checkpoints.
+- Child workers publish; only the coordinator performs ordered consolidation.
+- `Completed` requires merge, synchronization, post-merge actions, and final
+  validation.
+
+## License
+
+MIT
