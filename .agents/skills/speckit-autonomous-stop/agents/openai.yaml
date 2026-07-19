@@ -1,4 +1,0 @@
-interface:
-  display_name: "Spec Kit Autonomous Stop"
-  short_description: "Pause an autonomous run at a safe boundary"
-  default_prompt: "Gracefully checkpoint and pause the current autonomous Spec-Kit run without remote actions."

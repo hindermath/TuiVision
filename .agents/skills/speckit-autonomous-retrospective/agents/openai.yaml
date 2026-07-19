@@ -1,4 +1,0 @@
-interface:
-  display_name: "Spec Kit Autonomous Retrospective"
-  short_description: "Extract reusable learning from a completed run"
-  default_prompt: "Review a completed autonomous Spec-Kit run and classify only evidence-backed reusable improvements."

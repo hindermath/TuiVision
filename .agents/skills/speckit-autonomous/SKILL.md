@@ -1,206 +1,141 @@
 ---
 name: speckit-autonomous
-description: Orchestrate a complete repository-local Spec-Kit feature from intake through specification, repeated clarification, planning, checklists, tasks, repeated analysis, implementation, validation, and an explicitly authorized GitHub delivery closeout. Use when the user delegates an entire autonomous Spec-Kit run or asks to continue one without manual prompts between normal phases.
+description: Execute a complete Spec Kit feature under explicit delivery authority
+  and convergence gates.
+compatibility: Requires spec-kit project structure with .specify/ directory
+metadata:
+  author: github-spec-kit
+  source: preset:autonomous-run-governance
 ---
 
-# Autonomous Spec-Kit Run
+# Speckit Autonomous Skill
 
-Follow `docs/spec-kit-autonomous-runbook.md` as the binding repository workflow.
-Use the existing `speckit-*` and `speckit-git-*` skills for their individual
-stages; this skill only orchestrates them and enforces cross-stage gates.
+## User Input
 
-## Start
+```text
+$ARGUMENTS
+```
 
-1. Read `AGENTS.md`, `.specify/memory/constitution.md`, the selected intake,
-   `.specify/feature.json`, and the current Git state.
-2. Run `specify check`. Prefer the matching PowerShell 7 repository script on
-   this project when both Bash and PowerShell variants exist.
-3. Determine the delegated delivery mode from the user's request:
-   `LocalImplementation`, `PublishPR`, or `MergeAndSync`. Never infer remote
-   write or merge authority from general autonomy alone.
-4. Confirm intake ordering, branch identity, clean ownership boundaries, the
-   six baseline governance presets, and optional `autonomous-run-governance`
-   v0.2.2. Stop only for a material conflict, missing required authority,
-   destructive ambiguity, or an unmet hard gate.
-5. Before creating a feature, inspect repository metadata and
-   `specs/<feature>/autonomous-run-state.json`. Never overwrite an active run.
-   The general command MUST refuse `PausedByUser` and direct the user to
-   `speckit-autonomous-resume`; an `Interrupted` run requires full drift,
-   operation, governance, and authority revalidation.
-6. Create the numbered feature branch through `speckit-git-feature` only when no
-   active run exists. Resume an existing branch from its next exact action
-   without regenerating accepted phases unless drift is proven.
+Use the request, repository constitution, agent guidance, current feature
+metadata, and accepted feature artifacts as binding input.
 
-## Orchestrate
+Before creating a feature, inspect repository metadata and
+`specs/<feature>/autonomous-run-state.json`. A valid `PausedByUser` state MUST
+stop this command and direct the user to `speckit.autonomous-resume`. A valid
+`Interrupted` state may resume only after the full drift, operation, governance,
+and authority audit defined by that command. Never overwrite an active run with
+a new feature.
 
-Execute these stages in order:
+## Authority Gate
 
-1. `speckit-specify`
-2. `speckit-clarify` until clarification convergence
-3. requirements and feature-specific `speckit-checklist` passes
-4. `speckit-plan`
-5. plan-review checklists, followed by applying every actionable instruction
-6. `speckit-tasks`
-7. `speckit-analyze` and remediation until analysis convergence
-8. `speckit-implement`
-9. local validation and evidence completion
-10. authorized Git and GitHub delivery closeout
+Determine exactly one delivery mode from explicit current authority:
 
-Create `specs/NNN-feature/pr-evidence.md` from
-`.specify/templates/autonomous-run-evidence-template.md` before the first
-implementation edit. Keep scope, decisions, commands, results, skipped
-triggers, residual risks, review state, and follow-ups current during the run.
+- `LocalImplementation`: implement and validate locally; no remote writes.
+- `PublishPR`: additionally commit, push, and create or update a pull request.
+- `MergeAndSync`: additionally converge remote checks/reviews, merge under the
+  repository policy, clean branches, and synchronize local default branch.
 
-Create `specs/NNN-feature/autonomous-run-state.json` from the installed state
-template and validate it at logical phase boundaries, graceful stops, hard
-gates, and completion. Tasks, evidence, and Git remain authoritative over a
-stale state index.
+Default to `LocalImplementation` when remote authority is absent or ambiguous.
+Never infer merge, bypass, cancellation, secret access, or provider-admin
+authority from general autonomy.
 
-The `## Deliver` heading below is an orchestration label, not a valid
-machine-state value. Persist `Publish`, `Review`, or `MergeAndSync` according to
-the current remote-closeout operation and validate every transition; never
-persist `Deliver`.
+## Orchestration
 
-Before implementation, resolve
-`autonomous-run-gate-requirements-template` and create the reviewed
-`specs/NNN-feature/autonomous-gate-requirements.json`. Give every acceptance
-gate a stable ID, required scope, command tokens, optional runner/platform
-tokens, and either `Applicable` or a justified `N/A` with re-evaluation trigger.
+1. Preflight repository state, feature identity, governance, prerequisites, and
+   checklists. Stop for a material conflict, destructive ambiguity, missing
+   required authority, or failed hard gate.
+2. Execute Specify, repeated Clarify, requirements checklists, Plan,
+   plan-review remediation, Tasks, repeated Analyze, Implement, validation, and
+   the authorized delivery closeout in dependency order.
+3. Converge by outcome, not repetition count. Clarification has no material
+   planning ambiguity; checklists pass or carry accepted dispositions; Analyze
+   has no Critical/High finding and every Medium is fixed or accepted with an
+   owner; implementation tasks are complete or conditionally evidenced.
+4. Create evidence before the first implementation edit. Name exact evidence
+   paths for remote and delivery tasks. Keep scope, decisions, commands,
+   results, skipped triggers, residual risk, permissions, and resume state
+   current.
+   Create `specs/<feature>/autonomous-run-state.json` from the installed state
+   template and update it at logical phase boundaries, graceful stops, hard
+   gates, and completion. Validate every persisted transition.
+   The generated skill heading `Deliver` is a workflow section, not a valid
+   machine-state stage. During remote closeout record `Publish`, `Review`, or
+   `MergeAndSync` according to the current operation; never persist `Deliver`.
+   Schema `1.1` records merge or publication, default-branch synchronization,
+   manifest-declared post-merge actions, and final validation separately.
+5. Prove one representative vertical slice and its failing/green contract
+   before broad repetition. Group negative cases only when every expected
+   failure and ownership boundary remains explicit.
+6. Serialize shared evidence, version, workflow, statistics, and agent-guidance
+   writers. If a mutable validation token is required, one transition covers
+   exactly one explicit invocation.
+7. Pass repository roots explicitly to validation helpers. A pass needs the
+   expected exit status, required output, and a clean structured/error channel.
+8. Before classifying a change as documentation- or evidence-only and skipping
+   executable tests, search for validators that read the changed paths, markers,
+   schemas, or status values. Update and run every affected validator in the
+   same change.
+9. Validate the exact delivery candidate before every authorized commit. Stage
+   only intended paths, run `git diff --cached --check`, and reconcile the
+   staged path inventory with repository status so intended untracked or
+   unstaged files cannot escape validation. Preserve unrelated work. In
+   `LocalImplementation`, use a per-file or temporary-index equivalent and
+   restore the original index state.
+10. Route out-of-scope findings to named follow-up evidence instead of silently
+   expanding the feature.
+11. Before implementation, resolve the preset's gate-requirements template and
+   declare every acceptance gate in a reviewed feature artifact. Applicable
+   gates name required command tokens and any runner or platform tokens; `N/A`
+   gates name their rationale and re-evaluation trigger.
+12. Before merge, generate provider-neutral gate evidence for the exact current
+   reviewed head in a temporary location and run the installed validator through
+   `bash <validator.sh>` or `pwsh -NoProfile -File <validator.ps1>`; installers
+   may not preserve executable mode bits. Every gate needs exactly one Primary row;
+   supplemental rows must point to that primary evidence. Missing, stale,
+   contradictory, empty, or token-mismatched evidence blocks merge.
 
-## Converge
+## Remote Closeout
 
-- Clarification converges when no remaining question would materially change
-  plan, task decomposition, validation, acceptance, or scope.
-- Checklist convergence requires every item to pass or carry an explicit
-  accepted disposition. Apply checklist instructions before rechecking.
-- Analysis converges when no `CRITICAL` or `HIGH` finding remains and every
-  `MEDIUM` finding is remediated or explicitly accepted with rationale and
-  owner. Do not recycle accepted low-style findings.
-- Implementation converges when every task is complete or has an allowed,
-  evidenced conditional outcome and all triggered validation passes.
-- Remote review converges when required checks pass and no actionable review
-  thread remains. Record unavailable reviewers or quota failures as evidence;
-  never represent them as successful reviews.
-- Before merge, derive every acceptance-specific gate's command and runner from
-  workflow definitions or job logs, never from a green aggregate, workflow,
-  job, or OS-shaped name. Create temporary provider-neutral exact-head evidence
-  from `autonomous-run-gate-evidence-template` and run the installed Bash or
-  PowerShell validator. Missing, stale, contradictory, empty, duplicate-Primary,
-  or token-mismatched evidence blocks merge; bypass supplies no proof.
+Remote review converges only when required checks pass and no actionable thread
+remains. An unavailable reviewer is missing, never approval. Equivalent push
+and review-request check sets may be classified as duplicate noise, but must
+not be cancelled without an explicit safe concurrency contract.
 
-## Shape Work
+Before merge, map every acceptance-specific gate to the workflow, job, runner
+or platform, and command that actually executed it. A green aggregate or a
+platform-named job proves only its executed scope. Missing required proof
+blocks merge and cannot be replaced by a permission or ruleset bypass.
 
-- Establish evidence before implementation.
-- Deliver one representative vertical slice with its test and proof before
-  spreading a repeated pattern.
-- Use test-first proof where a contract can fail observably.
-- Before the first red batch, check the complete compile surface: imports,
-  public XML docs, harness helpers, focus/ownership assertions, and linked-source
-  assembly identity.
-- Group independent negative cases into one bounded project-local red matrix
-  only when every expected failure remains explicit and ownership stays local.
-- Do not assume shared CLR type identity when one source file is linked into
-  multiple assemblies; prove through public contracts or state delegates, or
-  use one intentionally shared compiled assembly when the architecture allows.
-- Group tasks by independently reviewable outcome. Do not create one task per
-  evidence cell when one bounded task can update a complete matrix slice.
-- Require every remote or delivery task to name the exact repository evidence
-  path that records its acceptance result; an implicit "record evidence" is
-  not sufficient for analysis or resume.
-- Serialize writes to shared evidence, version, statistics, workflow, and
-  agent-guidance files.
-- Protect scope. Route discovered runtime, design, parity, or proof work outside
-  the accepted feature to a named follow-up instead of silently expanding it.
-- Treat historical sources as read-only intent evidence, never as a mechanical
-  line-by-line port target.
+Derive `executedCommand` and `runnerOrPlatform` from the workflow definition or
+job log, not from a check, workflow, or job name. The read-only validator checks
+the accepted requirements hash, full reviewed head, gate completeness,
+Applicable/N/A boundaries, required command and runner tokens, and Primary versus
+Supplemental evidence. Its successful exit grants no remote authority.
 
-## Validate
+Keep exact-head provider evidence temporary during the merge decision. Committing
+that evidence would create a new head and invalidate its own reviewed-head claim.
+Use the existing causal-closeout boundary for post-delivery facts.
 
-Always run repository-required static checks. Add targeted tests for touched
-code, the full Release and coverage gates for shared executable behavior, the
-DocFX plus web-A11Y path for triggered documentation surfaces, script parity
-for scripts, and app-loop plus state/view/rendering proof for visual UI work.
+Use one pre-named causal closeout only when current-head or post-merge facts
+cannot be committed without invalidating themselves. Keep it evidence-only and
+single-commit-capable; verify its own terminal provider facts externally.
+Never create an empty feature, retrospective, or closeout pull request. If no
+eligible diff exists, record that no remote delivery action is required.
 
-Validate the exact delivery candidate, not only tracked working-tree changes.
-Before a commit, stage only the intended files, run `git diff --cached --check`,
-and compare the staged path inventory with repository status so no intended
-untracked or unstaged file sits outside the candidate. Preserve unrelated user
-changes. In `LocalImplementation`, use an equivalent per-file or temporary-index
-check and restore the original index state.
+On unexpected interruption, reconstruct the run from state, Git, tasks, and
+evidence. Mark an operation without a trustworthy result `NeedsRevalidation`.
+Recheck repository state, feature identity, governance, current authority,
+completed tasks, evidence, and the last passing gate. Continue from the next
+exact action without regenerating accepted phases unless drift exists. A
+deliberate `PausedByUser` state never resumes through this command; it requires
+`speckit.autonomous-resume`.
 
-Perform static review before test batches. Increment the manual build counter
-before every `dotnet build` or `dotnet test`. One increment authorizes exactly
-one explicit build or test invocation; do not chain multiple invocations behind
-one counter update. Batch related tests inside that invocation so repeated
-commands add evidence rather than administrative churn.
+A user stop or pause request has priority over orchestration. Do not start new
+work after it. At the next safe boundary, follow `speckit.autonomous-stop`; do
+not treat a prompt command as an atomic external-process kill.
 
-Invoke repository validation helpers with an explicit repository root. Accept a
-helper result only when its exit status has the required value and its error
-channel contains no PowerShell error record, shell command-not-found message, or
-equivalent fatal signature. A nominal zero exit status does not override such an
-error; record the helper as failed and route the defect to bounded remediation.
-
-For `PublishPR` or `MergeAndSync`, validate the final reviewed head with
-`bash .specify/presets/autonomous-run-governance/scripts/validate-autonomous-gate-evidence.sh`
-on macOS/Linux or `pwsh -NoProfile -File` with the matching `.ps1` on Windows;
-installed mode bits are not a portable contract. The validator is read-only and
-grants no remote authority. Keep the provider evidence snapshot temporary before
-merge; committing it creates a new head and self-invalidates its reviewed-head claim.
-
-## Deliver
-
-Use logical Git checkpoints only after their acceptance gates pass. On numbered
-branches, align `Directory.Build.props` before commit or push as required by
-repository policy. Never commit generated DocFX output, caches, credentials,
-logs, or test results.
-
-- `LocalImplementation`: stop after complete local evidence; do not push or
-  create a PR.
-- `PublishPR`: commit, push, create or update the PR, and process authorized
-  review/CI fixes; do not merge.
-- `MergeAndSync`: complete `PublishPR`, converge checks and reviews, merge only
-  under the delegated policy, delete obsolete remote branches, switch to local
-  `main`, pull/prune, and prove `HEAD == origin/main` with a clean tree.
-
-Use a closeout PR only when post-merge facts cannot truthfully be recorded
-before the main merge or when committing current review/check facts would
-change the reviewed head and immediately invalidate those facts. Verify every
-gate before merge, name one exact closeout evidence path in advance, keep the
-closeout evidence-only, and state why it was causally necessary. Keep it
-single-commit-capable by omitting any requirement to write its own PR URL,
-reviewed-head result, or merge commit back into the same repository file;
-verify those terminal facts externally without a recursive closeout.
-
-If push and pull-request events start equivalent workflow sets, use the
-pull-request-context checks as the delivery gate and record the duplicate runs
-as operational noise. Do not cancel them unless the repository has an explicit
-safe workflow or concurrency contract.
-
-## Stop and Resume
-
-- `speckit-autonomous-status` is read-only and starts no work.
-- A user stop or pause request has priority. `speckit-autonomous-stop`
-  checkpoints `PausedByUser` at the next safe agent or command boundary,
-  preserves all work, and performs no implicit rollback, commit, push, PR,
-  merge, or process kill.
-- An external operation without a trustworthy terminal result is
-  `NeedsRevalidation`, never an inferred pass.
-- `speckit-autonomous-resume` is mandatory for `PausedByUser`. Reconcile branch,
-  feature metadata, checkpoint history, accepted-artifact hashes, tasks,
-  evidence, governance, dirty-state ownership, and current authority before any
-  mutation. After preset or governance drift, compare current mandatory
-  correctness, security, permission, and evidence-integrity rules with accepted
-  Plan, Tasks, and checklists. Add only applicable missing rules in place and
-  rerun readiness plus Analyze; efficiency-only guidance stays retrospective.
-  A recorded delivery mode is historical evidence, not permission.
-- Material conflict, unknown dirty changes, missing checkpoint, or ambiguous
-  feature identity sets `Blocked` and stops. Never start the next feature
-  implicitly.
-
-## Finish
-
-Report artifact and task counts, changed files, validation results, skipped
-conditional checks, review state, follow-ups, PR/merge identifiers when
-applicable, and the exact local/remote synchronization state. Record one brief
-run-retrospective entry in the feature evidence so this workflow can be refined
-after future autonomous runs.
+Finish with task and artifact counts, validation, skipped conditions, review
+state, follow-ups, remote identifiers when authorized, and exact local/remote
+synchronization. Set `Completed` only when every applicable schema-1.1 closeout
+field is terminal and final validation is `Completed`. Do not start the next
+feature implicitly.

@@ -12,8 +12,8 @@ This document is organization-neutral and written as a generic training and revi
 ## Checkliste 09 – KI-gestuetzte Codeerzeugung / AI-Assisted Code Generation
 
 **Dokument-ID / Document ID:** CL-09
-**Version / Version:** 2.1.0
-**Baseline-Version / Baseline version:** 3.1.0
+**Version / Version:** 2.2.0
+**Baseline-Version / Baseline version:** 3.2.0
 **Dokumenttyp / Document type:** Kanonische, wiederverwendbare Pruefvorlage / Canonical reusable review template
 
 ### Nachweisinstanz / Evidence Instance
@@ -103,9 +103,9 @@ whose output flows into production code or production-near scripts.
 
 **EN:** Write short and clear explanations. Avoid unexplained abbreviations. If an item is technically difficult, describe the current state, the risk, and the next feasible step.
 
-**DE:** Wenn agentische KI eine wesentliche Feature-Implementierung übernimmt, gilt zusätzlich `CL_12_Agentische-KI-Sandbox`. Das Feature soll über GitHub Spec Kit im Spec-Driven-Development-Ablauf (SDD) gesteuert werden. Dazu gehören Spezifikation, Klärung, Plan, Checkliste, Aufgaben, Analyse und Implementierung sowie die sieben Governance-Presets. Installation, Nachweis, Aktualität und inhaltliche Abdeckung der Governance-Presets werden in `CL_12_Agentische-KI-Sandbox` bewertet. Wenn die Spec-Kit-Artefakte die anwendbaren Prüfpunkte vollständig über eine Nachweis-Matrix abdecken, kann die separate manuelle Ausfüllung dieser Checkliste entfallen.
+**DE:** Wenn agentische KI eine wesentliche Feature-Implementierung übernimmt, gilt zusätzlich `CL_12_Agentische-KI-Sandbox`. Das Feature soll über GitHub Spec Kit im Spec-Driven-Development-Ablauf (SDD) gesteuert werden. Dazu gehören Spezifikation, Klärung, Plan, Checkliste, Aufgaben, Analyse und Implementierung sowie die acht Governance-Presets. Installation, Nachweis, Aktualität und inhaltliche Abdeckung der Governance-Presets werden in `CL_12_Agentische-KI-Sandbox` bewertet. Wenn die Spec-Kit-Artefakte die anwendbaren Prüfpunkte vollständig über eine Nachweis-Matrix abdecken, kann die separate manuelle Ausfüllung dieser Checkliste entfallen.
 
-**EN:** If agentic AI performs a material feature implementation, `CL_12_Agentische-KI-Sandbox` also applies. The feature should be controlled through GitHub Spec Kit in the spec-driven development (SDD) flow. This includes specification, clarification, plan, checklist, tasks, analysis, implementation, and the seven governance presets. Installation, evidence, currency, and content coverage of the governance presets are assessed in `CL_12_Agentische-KI-Sandbox`. If the Spec Kit artefacts fully cover the applicable review points through an evidence matrix, separate manual completion of this checklist may be omitted.
+**EN:** If agentic AI performs a material feature implementation, `CL_12_Agentische-KI-Sandbox` also applies. The feature should be controlled through GitHub Spec Kit in the spec-driven development (SDD) flow. This includes specification, clarification, plan, checklist, tasks, analysis, implementation, and the eight governance presets. Installation, evidence, currency, and content coverage of the governance presets are assessed in `CL_12_Agentische-KI-Sandbox`. If the Spec Kit artefacts fully cover the applicable review points through an evidence matrix, separate manual completion of this checklist may be omitted.
 
 **DE:** Jeder Prüfpunkt muss deshalb drei Fragen beantworten: Was bedeutet die Anforderung im Projektalltag? Was ist konkret zu tun oder zu entscheiden? Welcher Nachweis zeigt das Ergebnis? Verwende Standard-IDs, Toolnamen und Abkürzungen nur zusammen mit einer kurzen Erklärung in Alltagssprache. Wenn ein Punkt für Auszubildende oder neue Teammitglieder nicht selbsterklärend ist, ergänze eine kurze Erklärung in der Begründung.
 
@@ -1966,3 +1966,4 @@ justified as not applicable.
 
 - **Version 2.0.0 (2026-07-10):** Einheitliches zweiachsiges Statusmodell, stabile CL-IDs, Lernstufe, Rollen-, Evidenz-, Restrisiko- und Neubewertungsfelder sowie klare Trennung zwischen Vorlage und Projektnachweis eingeführt; synchron mit sichere-Entwicklung-Basis 3.0.0. / Added the unified two-axis status model, stable CL IDs, learning-stage, role, evidence, residual-risk, and re-evaluation fields, plus clear separation between template and project evidence; synchronized with secure-development baseline 3.0.0.
 - **Version 2.1.0 (2026-07-17):** Nachweisrahmen auf das verbindliche Siebenerprofil einschließlich `autonomous-run-governance` erweitert; autonome Ausführung bleibt ausdrücklich delegationspflichtig; synchron mit sichere-Entwicklung-Basis 3.1.0. / Extended the evidence framework to the binding seven-preset profile including `autonomous-run-governance`; autonomous execution still requires explicit delegation; synchronized with secure-development baseline 3.1.0.
+- **Version 2.2.0 (2026-07-19):** Nachweisrahmen auf das verbindliche Achterprofil einschließlich `parallel-autonomous-run-governance` erweitert; parallele autonome Kampagnen bleiben ausdrücklich delegationspflichtig; synchron mit sichere-Entwicklung-Basis 3.2.0. / Extended the evidence framework to the binding eight-preset profile including `parallel-autonomous-run-governance`; parallel autonomous campaigns still require explicit delegation; synchronized with secure-development baseline 3.2.0.

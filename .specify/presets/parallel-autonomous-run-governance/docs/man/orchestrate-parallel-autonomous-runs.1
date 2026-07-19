@@ -1,0 +1,34 @@
+.TH ORCHESTRATE-PARALLEL-AUTONOMOUS-RUNS 1 "2026-07-19" "v0.2.0"
+.SH NAME
+orchestrate-parallel-autonomous-runs \- validate and coordinate isolated autonomous Spec Kit campaigns
+.SH SYNOPSIS
+.B orchestrate-parallel-autonomous-runs.sh
+-Action ACTION -Manifest PATH [-RunnerConfig PATH] [OPTIONS]
+.SH BESCHREIBUNG / DESCRIPTION
+Validiert Kampagnenidentitaet, Repositories, Worker-DAG, Runner-Profile und
+Konsolidierungsregeln. Start erzeugt je Worker einen Branch und verknuepften
+Worktree, fuehrt hoechstens drei Runner gleichzeitig aus und speichert einen
+fortsetzbaren Gesamtzustand.
+.PP
+Validates campaign identity, repositories, worker DAG, runner profiles, and
+consolidation policy. Start creates one branch and linked worktree per worker,
+executes no more than three runner processes, and stores resumable aggregate
+state.
+.SH AKTIONEN / ACTIONS
+Validate, Start, Status, Stop, Resume, and Consolidate.
+.PP
+-RunnerConfig is required for Validate, Start, Resume, and Consolidate. Status
+and Stop validate campaign identity directly from Manifest and State and do not
+require runner configuration.
+.SH STATUS
+Status supports machine-readable JSON and accessible text with
+-OutputFormat Json or -OutputFormat Text.
+.SH SICHERHEIT / SAFETY
+Runner arguments are passed as an executable argument array without shell
+evaluation. Installation grants no autonomous execution or remote authority.
+Alternative solutions require human selection. Merge-and-sync requires an
+all-ready barrier, provider preflights, resumable merge checkpoints, and
+manifest-declared idempotent post-merge actions. Completed is written only
+after synchronization and final validation.
+.SH SEE ALSO
+speckit.parallel-autonomous, speckit.autonomous

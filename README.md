@@ -108,27 +108,37 @@ copyright notices.
 
 ## Spec-Kit-Governance-Presets / Spec Kit Governance Presets
 
-Alle sieben Governance-Presets sind seit 2026-05-04 im `github/spec-kit`
-Community-Katalog enthalten. Für C#/.NET-Level-2-Projekte ist die
-Standardentscheidung in dieser Workspace-Familie: alle sieben Presets
-installieren, sofern das Projekt keine begründete Ausnahme dokumentiert.
+Das registrierte Standardprofil dieser Workspace-Familie umfasst auf Level 0,
+Level 1 und Level 2 alle acht Governance-Presets. Eine Teilmenge ist nur als
+begründete, dokumentierte Projektausnahme zulässig.
 
 Standard-Preset-Set:
 
-- `security-governance` v0.6.0, Priority 10
-- `architecture-governance` v0.5.0, Priority 20
-- `isaqb-architecture-governance` v0.2.0, Priority 30
-- `a11y-governance` v0.4.0, Priority 40
-- `cross-platform-governance` v0.2.0, Priority 50
-- `agent-parity-governance` v0.3.0, Priority 60
+- `security-governance` v0.6.1, Priority 10
+- `architecture-governance` v0.5.1, Priority 20
+- `isaqb-architecture-governance` v0.2.1, Priority 30
+- `a11y-governance` v0.4.1, Priority 40
+- `cross-platform-governance` v0.2.1, Priority 50
+- `agent-parity-governance` v0.4.0, Priority 60
+- `autonomous-run-governance` v0.3.0, Priority 70
+- `parallel-autonomous-run-governance` v0.2.0, Priority 80
 
-`architecture-governance` v0.5.0 ergänzt `BSI C3A` als bedingte Cloud-Autonomie-Evidenz und `BSI C5` als bedingte Cloud-Compliance-Assurance-Evidenz. `security-governance` v0.6.0 führt `AI-SBOM` weiter als bedingt anwendbare Supply-Chain-Evidenz, ergänzt sprachspezifische Secure-Coding-Profile und ergänzt regulatorische Anwendbarkeit für NIS2, CRA, EU AI Act und DORA. `a11y-governance` v0.4.0 ergänzt didaktische Inline-Code-Kommentar-Governance. Alle sieben Presets erzeugen oder verlangen audit-ready Spec-Kit-Run-Evidenz mit `Applicable` / `N/A` / `Open`, Begründung, Evidenzpfad, Reviewer, Restrisiko und Follow-up.
+Die ursprünglichen sechs Presets sind seit 2026-05-04 im `github/spec-kit`
+Community-Katalog enthalten; `autonomous-run-governance` v0.2.2 wurde dort am
+2026-07-17 verifiziert. `parallel-autonomous-run-governance` v0.2.0 wurde mit
+`github/spec-kit#3591` für den Katalog eingereicht. Installation startet keinen
+autonomen oder parallelen Lauf und erteilt keine zusätzlichen Rechte.
 
-*`architecture-governance` v0.5.0 adds conditional `BSI C3A` cloud-autonomy evidence and `BSI C5` cloud-compliance assurance evidence. `security-governance` v0.6.0 keeps conditional `AI-SBOM` evidence, adds language-specific secure-coding profiles, and adds regulatory applicability screening for NIS2, CRA, EU AI Act, and DORA. `a11y-governance` v0.4.0 adds didactic inline-code-comment governance. All seven presets produce or require audit-ready Spec-Kit run evidence with `Applicable` / `N/A` / `Open`, rationale, evidence path, reviewer, residual risk, and follow-up.*
+Alle acht Presets erzeugen oder verlangen audit-ready Spec-Kit-Run-Evidenz mit
+`Applicable` / `N/A` / `Open`, Begründung, Evidenzpfad, Reviewer, Restrisiko und
+Follow-up. Die Feldtesterkenntnisse ergänzen exakte Head-/Review-/Check-Gates,
+fortsetzbare Closeouts, barrierearme Statusausgabe und geheimnisfreie,
+agentenneutrale Runner-Metadaten.
 
 Nach Installation oder Update prüfen:
 
 ```bash
+bash scripts/install-spec-kit-governance-presets.sh --check-only --repo .
 specify preset list
 specify preset info security-governance
 specify preset resolve constitution-template.md
@@ -137,11 +147,15 @@ specify preset resolve constitution-template.md
 Wenn Presets Projekt-Policy sind, `.specify/presets/` und erzeugte
 Agenten-/Command-Dateien committen; `.specify/presets/.cache/` nicht committen.
 
-*All seven governance presets are included in the `github/spec-kit` community
-catalog as of 2026-05-04. C#/.NET Level-2 projects default to all seven presets
-unless a justified exception is documented. Commit `.specify/presets/` and
-generated agent/command files when presets are project policy; do not commit
-`.specify/presets/.cache/`.*
+*The registered standard profile for this workspace family includes all eight
+governance presets at level 0, level 1, and level 2. A subset requires a
+justified, documented project exception. Installation starts no autonomous or
+parallel run and grants no additional authority. Verify the exact matrix with
+`install-spec-kit-governance-presets.* --check-only` / `-CheckOnly`, then use
+`specify preset list`, `info`, and `resolve` as applicable. Commit
+`.specify/presets/` and generated agent/command files when presets are project
+policy; do not commit `.specify/presets/.cache/`.*
+
 ## Barrierefreiheit / Accessibility (A11Y)
 
 Dieses Projekt folgt grundlegenden Barrierefreiheitsstandards für alle

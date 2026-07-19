@@ -891,15 +891,16 @@ workspace family consists of:
 
 | Preset | Version | Priority | Scope |
 |---|---:|---:|---|
-| `security-governance` | `v0.6.0` | `10` | secure development, MSL, language-specific secure coding, SSDF, ASVS, SBOM/VEX/SLSA, AI-SBOM, CRA/regulatory applicability |
-| `architecture-governance` | `v0.5.0` | `20` | secure architecture, STRIDE/CAPEC, Zero Trust, SAMM, S-ADR, BSI C3A cloud autonomy, BSI C5 cloud assurance |
-| `isaqb-architecture-governance` | `v0.2.0` | `30` | general iSAQB/arc42 architecture governance |
-| `a11y-governance` | `v0.4.0` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts, didactic inline-code-comment review |
-| `cross-platform-governance` | `v0.2.0` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
-| `agent-parity-governance` | `v0.3.0` | `60` | synchronized agent guidance and agent-neutral Spec-Kit model routing across declared AI-agent files |
-| `autonomous-run-governance` | `v0.2.2` | `70` | permission-bounded, evidence-first governance for explicitly delegated autonomous Spec Kit runs |
+| `security-governance` | `v0.6.1` | `10` | secure development, MSL, language-specific secure coding, SSDF, ASVS, SBOM/VEX/SLSA, AI-SBOM, CRA/regulatory applicability |
+| `architecture-governance` | `v0.5.1` | `20` | secure architecture, STRIDE/CAPEC, Zero Trust, SAMM, S-ADR, BSI C3A cloud autonomy, BSI C5 cloud assurance |
+| `isaqb-architecture-governance` | `v0.2.1` | `30` | general iSAQB/arc42 architecture governance |
+| `a11y-governance` | `v0.4.1` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts, didactic inline-code-comment review |
+| `cross-platform-governance` | `v0.2.1` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
+| `agent-parity-governance` | `v0.4.0` | `60` | synchronized agent guidance, fleet-completion evidence, and agent-neutral Spec-Kit model routing |
+| `autonomous-run-governance` | `v0.3.0` | `70` | permission-bounded, evidence-first governance with resumable, validated closeout |
+| `parallel-autonomous-run-governance` | `v0.2.0` | `80` | isolated bounded campaigns, mixed runner profiles, cooperative stop/resume, provider-gated resumable consolidation, and declared post-merge closeout |
 
-`autonomous-run-governance` is installed as part of the mandatory seven-preset
+`autonomous-run-governance` is installed as part of the mandatory eight-preset
 governance matrix. Installation does not authorize an autonomous run.
 `LocalImplementation` is its safe default; installation grants no remote write, merge, bypass,
 cancellation, secret, or provider-administration authority.
@@ -914,7 +915,17 @@ Analyze reruns; accepted scope and efficiency-only guidance remain unchanged.
 The readable generated-skill heading `Deliver` is not a run-state value;
 remote closeout persists only `Publish`, `Review`, or `MergeAndSync`.
 
-All seven governance presets MUST produce or require audit-ready Spec-Kit run evidence for applicable checks. Each relevant checkpoint records applicability as `Applicable`, `N/A`, or `Open` and implementation separately as `Fulfilled`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`, plus rationale, evidence path, owner, reviewer, residual risk, re-evaluation trigger, and follow-up. `N/A` keeps implementation at `Not Assessed` and always needs a rationale.
+`parallel-autonomous-run-governance` is also installed by default, but starting
+a campaign remains explicitly delegable work. It grants no worker additional
+remote, merge, bypass, cancellation, secret, or provider-administration
+authority. Its validated concurrency ceiling is three. Schema `1.1` supports
+per-worker runner profiles with agent-neutral model metadata, exact-head and
+review-aware provider preflights, resumable partial consolidation, cooperative
+stop during consolidation, and manifest-declared idempotent post-merge actions.
+Schema `1.0` artifacts remain readable, but their legacy merge form is not
+executed without migration to the provider-gated `1.1` contract.
+
+All eight governance presets MUST produce or require audit-ready Spec-Kit run evidence for applicable checks. Each relevant checkpoint records applicability as `Applicable`, `N/A`, or `Open` and implementation separately as `Fulfilled`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`, plus rationale, evidence path, owner, reviewer, residual risk, re-evaluation trigger, and follow-up. `N/A` keeps implementation at `Not Assessed` and always needs a rationale.
 
 The central secure-development baseline is versioned by `docs/secure-development/baseline-manifest.json`. Its twelve individual checklists and 157 stable CL IDs are canonical; the compendium is generated and MUST pass `build-secure-development-docs.*` check mode. Reusable templates are separate from project evidence under `docs/security/secure-development/<date>-<scope>/`. Secure-development teaching starts with the first repository access and coding task and follows the year 1 to year 3 learning path. Registry-based baseline-only propagation MUST NOT modify Lastenhefte, project evidence, or start Spec Kit.
 
@@ -927,21 +938,19 @@ four agent guidance files, `scripts/templates/speckit-workflow-section.md`, and
 the matching agent templates under `scripts/templates/` in the same change.
 The deprecated compatibility matrix
 `scripts/config/spec-kit-autonomous-governance-presets.json` MUST remain
-identical to the canonical seven-preset matrix until it is removed in a later
+identical to the canonical eight-preset matrix until it is removed in a later
 breaking cleanup.
 
-All seven presets are published as standalone repositories under
-`https://github.com/hindermath/spec-kit-preset-*` and are included in the
-`github/spec-kit` community preset catalog. The original six have been listed
-since 2026-05-04; `autonomous-run-governance` v0.2.2 was verified in the catalog
-on 2026-07-17. New MSL Level-2
-projects SHOULD install presets from the central matrix during Spec-Kit
-initialization. For C#/.NET and learning Level-2 projects, the default subset is
-all seven presets unless the project documents a narrow reason to omit one.
-Existing C# Level-2 projects
-`RiderProjects/TinyPl0`, `RiderProjects/TinyCalc`, `RiderProjects/TuiVision`,
-and `RiderProjects/InventarWorkerService` are the reference rollout set for
-all-seven installation.
+All eight presets are published as standalone repositories under
+`https://github.com/hindermath/spec-kit-preset-*`. The original six have been
+listed in the `github/spec-kit` community preset catalog since 2026-05-04;
+`autonomous-run-governance` v0.2.2 was verified there on 2026-07-17.
+`parallel-autonomous-run-governance` v0.2.0 was submitted to the community
+catalog as `github/spec-kit#3591`. Registered Level-0, Level-1, and Level-2
+repositories with Spec Kit SHOULD install all eight presets from the central
+matrix unless the repository documents a narrow exception. Fleet evidence MUST
+cover installation, exact matrix validation, commit, push, and remote
+synchronization for every target repository.
 
 Use `install-spec-kit-governance-presets.*` for normal installation so versions
 and priorities stay centralized in the matrix. Community catalog and direct

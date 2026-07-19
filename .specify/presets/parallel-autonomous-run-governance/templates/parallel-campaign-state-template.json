@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.1",
+  "sourceSchemaVersion": "1.1",
+  "campaignId": "00000000-0000-0000-0000-000000000000",
+  "manifestSha256": "replace-with-sha256",
+  "status": "Prepared",
+  "phase": "Preflight",
+  "deliveryMode": "LocalImplementation",
+  "stopRequested": false,
+  "selectedWorkerId": null,
+  "maximumObservedConcurrency": 0,
+  "attempts": {
+    "execute": 0,
+    "consolidation": 0,
+    "postMerge": 0
+  },
+  "completion": {
+    "mergeComplete": false,
+    "synchronizationComplete": false,
+    "postMergeComplete": false,
+    "validationComplete": false
+  },
+  "workers": [
+    {
+      "workerId": "worker-01",
+      "runId": "00000000-0000-0000-0000-000000000001",
+      "status": "Pending",
+      "worktree": "N/A",
+      "processId": null,
+      "exitCode": null,
+      "headSha": "N/A",
+      "autonomousStatePath": "N/A",
+      "autonomousStateSha256": "N/A",
+      "resultPath": "N/A",
+      "prUrl": null,
+      "mergeCommitSha": null,
+      "providerState": "NotChecked",
+      "baseRefName": null,
+      "handoffs": [],
+      "runnerProfile": "default-agent",
+      "agentFamily": "Codex",
+      "model": "Agent-Standard/nicht deklariert",
+      "reasoningEffort": "Agent-Standard/nicht deklariert",
+      "executionAttempt": 0,
+      "mergeAttempt": 0,
+      "lastPreflightAt": null,
+      "summary": "Not started."
+    }
+  ],
+  "postMergeActions": [
+    {
+      "actionId": "sync-worker-01",
+      "workerId": "worker-01",
+      "phase": "Synchronize",
+      "profile": "git-sync-main",
+      "status": "Pending",
+      "attemptCount": 0,
+      "exitCode": null,
+      "startedAt": null,
+      "completedAt": null,
+      "summary": "Not started."
+    }
+  ],
+  "eventSequence": 0,
+  "events": [],
+  "updatedAt": "1970-01-01T00:00:00Z"
+}

@@ -84,11 +84,9 @@
   equivalent governance location, state that path explicitly and justify the
   deviation.
 - **Spec-Kit presets**: List installed governance presets and confirm their
-  applicability. For C#/.NET Level-2 projects, default to all seven
-  home-baseline presets (`security-governance`, `architecture-governance`,
-  `isaqb-architecture-governance`, `a11y-governance`,
-  `cross-platform-governance`, `agent-parity-governance`) unless a justified
-  exception is documented.
+  applicability. Registered Level-0, Level-1, and Level-2 repositories default
+  to the exact eight-preset home-baseline matrix unless a justified exception
+  is documented.
 - **Security-first**: Confirm no credential files, agent state, logs, history,
   or SQLite state are planned for tracking.
 - **Inclusion/A11Y**: Identify affected user-facing artefacts and the WCAG 2.2
@@ -98,27 +96,6 @@
   and which manual/Thorsten-Solo baseline applies.
 - **Agent guidance parity**: State whether `AGENTS.md`, `CLAUDE.md`,
   `GEMINI.md`, and `.github/copilot-instructions.md` are affected together.
-
-## Autonomous Execution Contract
-
-<!--
-  Complete this section for autonomous or partially autonomous delivery. Keep
-  operational authority out of user-facing feature requirements.
--->
-
-**Delivery mode**: [LocalImplementation | PublishPR | MergeAndSync]
-**Authority source**: [Current user instruction or N/A]
-**Evidence path**: `specs/[###-feature]/pr-evidence.md`
-**Representative vertical slice**: [First end-to-end slice with test and proof]
-**Convergence gates**: [Clarify, checklist, Analyze, implementation, and remote-review stop criteria]
-**Shared single-writer files**: [Evidence, version, statistics, workflow, and agent files]
-**Validation triggers**: [Always, targeted, full coverage, DocFX/A11Y, scripts, visual UI]
-**Scope firewall**: [How discoveries outside accepted scope become named follow-ups]
-**Remote closeout**: [N/A or required checks, review state, merge policy, branch cleanup, local main sync]
-
-Create the evidence file before implementation edits. Plan one representative
-slice before repeated rollout, test-first proof for observable contracts, and
-batched validation that respects the repository build-counter policy.
 
 ## Project Structure
 

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.1",
+  "campaignId": "00000000-0000-0000-0000-000000000000",
+  "name": "replace-with-campaign-name",
+  "topology": "ReplicatedTargets",
+  "deliveryMode": "LocalImplementation",
+  "maxConcurrency": 3,
+  "runnerProfile": "default-agent",
+  "requireAutonomousPreset": true,
+  "operatorInstructions": "Optional, explicitly authorized campaign-specific context. Do not include secrets.",
+  "workers": [
+    {
+      "workerId": "worker-01",
+      "runId": "00000000-0000-0000-0000-000000000001",
+      "repository": "/absolute/or/runtime-bound/repository",
+      "baseRef": "origin/main",
+      "baseWorkerId": null,
+      "branch": "parallel/campaign/worker-01",
+      "featureInput": "path/to/intake.md",
+      "runnerProfile": null,
+      "dependsOn": [],
+      "handoffs": [
+        {
+          "consumerWorkerId": "worker-02",
+          "path": "specs/NNN-feature/handoffs/worker-01-to-worker-02.json"
+        }
+      ]
+    }
+  ],
+  "consolidation": {
+    "allReadyBarrier": true,
+    "mergeOrder": [
+      "worker-01"
+    ],
+    "humanSelectionRequired": false,
+    "mergeProfile": "github-pr"
+  },
+  "postMergeActions": [
+    {
+      "actionId": "sync-worker-01",
+      "workerId": "worker-01",
+      "phase": "Synchronize",
+      "profile": "git-sync-main"
+    },
+    {
+      "actionId": "validate-worker-01",
+      "workerId": "worker-01",
+      "phase": "Validate",
+      "profile": "validate-main"
+    }
+  ]
+}
