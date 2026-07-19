@@ -14,7 +14,7 @@ WORKSPACE_NAME=""
 TARGET_DIR=""
 while [ $# -gt 0 ]; do
   case "$1" in
-    -h|--help) echo "USAGE: init-stats.sh [workspace-name]" >&2; exit 0 ;;
+    -h|--help) echo "USAGE: init-stats.sh [workspace-name-or-path]" >&2; exit 0 ;;
     --)
       shift
       if [ $# -gt 0 ] && [ -z "$WORKSPACE_NAME" ]; then WORKSPACE_NAME="$1"; shift; fi

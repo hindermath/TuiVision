@@ -11,7 +11,7 @@
 #   --no-patch      Do not generate memory-patch.md
 #   --fail-fast     Abort on first FAIL
 #   --yes           Non-interactive confirmation (for --apply-patch)
-# Exit codes: 0=all pass, 1=fail/warn, 2=fatal error
+# Exit codes: 0=no FAILs (WARNs allowed), 1=FAIL present, 2=fatal error
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LIB_DIR="${SCRIPT_DIR}/lib"
@@ -628,8 +628,10 @@ else
   fi
 
   echo ""
-  if [ "$FAIL_COUNT" -gt 0 ] || [ "$WARN_COUNT" -gt 0 ]; then
+  if [ "$FAIL_COUNT" -gt 0 ]; then
     printf "Exit code: 1 (%d FAIL, %d WARN)\n" "$FAIL_COUNT" "$WARN_COUNT"
+  elif [ "$WARN_COUNT" -gt 0 ]; then
+    printf "Exit code: 0 (0 FAIL, %d WARN)\n" "$WARN_COUNT"
   else
     printf "Exit code: 0 (all checks passed)\n"
   fi

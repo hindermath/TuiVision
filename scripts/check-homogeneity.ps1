@@ -198,7 +198,7 @@ function Check-AnsiInScripts {
 
 function Check-EditorconfigCsharp {
     param([string]$Dir)
-    $slnFiles = Get-ChildItem -Path $Dir -Filter '*.sln' -Depth 0 -ErrorAction SilentlyContinue
+    $slnFiles = @(Get-ChildItem -Path $Dir -Filter '*.sln' -Depth 0 -ErrorAction SilentlyContinue)
     if ($slnFiles.Count -gt 0) {
         if (Test-Path (Join-Path $Dir '.editorconfig')) {
             Emit-Result 'PASS' '.editorconfig' '.editorconfig present (C# project)' $Dir

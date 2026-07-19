@@ -64,6 +64,16 @@ function Invoke-HgWriteStats {
             $year = (Get-Date).Year
             $archiveFile = $StatsFile -replace 'STATS\.md', "STATS-archive-$year.md"
             Copy-Item $StatsFile $archiveFile
+            $content = @(Get-Content -LiteralPath $StatsFile -Encoding UTF8)
+            $entries = @(Select-String -LiteralPath $StatsFile -Pattern '^## Run ')
+            $firstEntryIndex = $entries[0].LineNumber - 1
+            $keepEntryIndex = $entries[$entries.Count - 50].LineNumber - 1
+            $kept = [Collections.Generic.List[string]]::new()
+            if ($firstEntryIndex -gt 0) {
+                $kept.AddRange([string[]]$content[0..($firstEntryIndex - 1)])
+            }
+            $kept.AddRange([string[]]$content[$keepEntryIndex..($content.Count - 1)])
+            Set-Content -LiteralPath $StatsFile -Value $kept -Encoding UTF8
             Write-Warning "STATS.md archived to: $archiveFile"
         }
     } finally {

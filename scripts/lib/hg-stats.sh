@@ -38,7 +38,10 @@ _hg_bar() {
 # Count entries in STATS.md (## Run headings)
 _hg_count_entries() {
   local stats_file="$1"
-  [ -f "$stats_file" ] || echo 0
+  if ! [ -f "$stats_file" ]; then
+    echo 0
+    return 0
+  fi
   grep -c '^## Run ' "$stats_file" 2>/dev/null || echo 0
 }
 
@@ -54,10 +57,14 @@ _hg_maybe_archive() {
     archive_file="${stats_file%STATS.md}STATS-archive-${year}.md"
     cp "$stats_file" "$archive_file"
     # Keep header + last 50 entries
-    local header_lines
-    header_lines=$(grep -n '^## Run ' "$stats_file" | head -51 | tail -1 | cut -d: -f1)
-    if [ -n "$header_lines" ]; then
-      head -n "$((header_lines - 1))" "$stats_file" > "${stats_file}.new"
+    local first_entry_line keep_entry_line
+    first_entry_line=$(grep -n '^## Run ' "$stats_file" | head -1 | cut -d: -f1)
+    keep_entry_line=$(grep -n '^## Run ' "$stats_file" | tail -50 | head -1 | cut -d: -f1)
+    if [ -n "$first_entry_line" ] && [ -n "$keep_entry_line" ]; then
+      {
+        head -n "$((first_entry_line - 1))" "$stats_file"
+        tail -n "+${keep_entry_line}" "$stats_file"
+      } > "${stats_file}.new"
       mv "${stats_file}.new" "$stats_file"
     fi
     echo "STATS.md archived to: ${archive_file}" >&2

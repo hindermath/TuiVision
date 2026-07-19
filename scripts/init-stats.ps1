@@ -77,12 +77,12 @@ function Get-ScoreFor {
 function Resolve-TargetDir {
     param([string]$InputPath)
 
-    if (Test-Path $InputPath) {
+    if (Test-Path -LiteralPath $InputPath -PathType Container) {
         return (Resolve-Path $InputPath).Path
     }
 
     $homeCandidate = Join-Path $HomeDir $InputPath
-    if (Test-Path $homeCandidate) {
+    if (Test-Path -LiteralPath $homeCandidate -PathType Container) {
         return (Resolve-Path $homeCandidate).Path
     }
 
