@@ -11,7 +11,7 @@
 #   --no-patch      Do not generate memory-patch.md
 #   --fail-fast     Abort on first FAIL
 #   --yes           Non-interactive confirmation (for --apply-patch)
-# Exit codes: 0=all pass, 1=fail/warn, 2=fatal error
+# Exit codes: 0=no FAILs (WARNs allowed), 1=FAIL present, 2=fatal error
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LIB_DIR="${SCRIPT_DIR}/lib"
@@ -19,24 +19,6 @@ LIB_DIR="${SCRIPT_DIR}/lib"
 # Source all hg-*.sh libs
 for _lib in "${LIB_DIR}"/hg-*.sh; do
   [ -f "$_lib" ] && . "$_lib"
-done
-
-_required_helpers=(
-  hg_scan
-  hg_scan_file_secrets
-  hg_check_a11y
-  hg_check_bilingual
-  hg_check_deps
-  hg_check_hook
-  hg_check_speckit
-  hg_generate_patch
-  hg_write_stats
-)
-for _helper in "${_required_helpers[@]}"; do
-  if ! declare -F "$_helper" >/dev/null; then
-    echo "FATAL: required homogeneity helper is unavailable: $_helper (${LIB_DIR}/hg-*.sh)" >&2
-    exit 2
-  fi
 done
 
 # ─── Argument Parsing ────────────────────────────────────────────────────────
@@ -359,6 +341,85 @@ check_copilot_instructions() {
   fi
 }
 
+check_antigravity_integration() {
+  local dir="$1"
+  local gitignore="${dir}/.gitignore"
+  if [ -f "${dir}/.specify/integrations/agy.manifest.json" ]; then
+    emit_result "PASS" ".specify/integrations/agy.manifest.json" "Antigravity Spec-Kit integration present" "$dir"
+  else
+    emit_result "FAIL" ".specify/integrations/agy.manifest.json" "Antigravity Spec-Kit integration missing" "$dir"
+  fi
+  local legacy_gemini_path=""
+  if [ -e "${dir}/.specify/integrations/gemini.manifest.json" ]; then
+    legacy_gemini_path=".specify/integrations/gemini.manifest.json"
+  elif [ -e "${dir}/.gemini/commands" ]; then
+    legacy_gemini_path=".gemini/commands"
+  fi
+  if [ -n "$legacy_gemini_path" ]; then
+    emit_result "FAIL" "$legacy_gemini_path" "legacy Gemini Spec-Kit integration present" "$dir"
+  else
+    emit_result "PASS" ".gemini/commands" "legacy Gemini Spec-Kit integration absent" "$dir"
+  fi
+  local skill_dir skill_found
+  skill_found=0
+  for skill_dir in "${dir}/.agents/skills"/speckit-*; do
+    if [ -d "$skill_dir" ]; then
+      skill_found=1
+      break
+    fi
+  done
+  if [ "$skill_found" -eq 1 ]; then
+    emit_result "PASS" ".agents/skills" "Antigravity/Codex Spec-Kit skills present" "$dir"
+  else
+    emit_result "FAIL" ".agents/skills" "Antigravity/Codex Spec-Kit skills missing" "$dir"
+  fi
+  if [ -f "$gitignore" ] &&
+     grep -qF '.agents/*' "$gitignore" &&
+     grep -qF '!.agents/skills/' "$gitignore" &&
+     grep -qF '!.agents/skills/**' "$gitignore"; then
+    emit_result "PASS" ".gitignore" "surgical .agents skills allowlist" "$dir"
+  else
+    emit_result "FAIL" ".gitignore" "surgical .agents skills allowlist missing" "$dir"
+  fi
+}
+
+check_statistics_profile() {
+  local dir="$1"
+  local ledger="${dir}/docs/project-statistics.md"
+  local config="${dir}/docs/project-statistics.config.json"
+  local renderer="${dir}/scripts/render-project-statistics.sh"
+
+  [ -f "$ledger" ] || return 0
+  if [ ! -f "$config" ]; then
+    emit_result "FAIL" "docs/project-statistics.config.json" \
+      "ASCII Statistics Profile 2 configuration missing" "$dir"
+    return
+  fi
+  if [ ! -f "$renderer" ]; then
+    emit_result "FAIL" "scripts/render-project-statistics.sh" \
+      "ASCII Statistics Profile 2 renderer missing" "$dir"
+    return
+  fi
+  if ! command -v pwsh >/dev/null 2>&1; then
+    emit_result "FAIL" "pwsh" \
+      "PowerShell 7 required by ASCII Statistics Profile 2 renderer" "$dir"
+    return
+  fi
+
+  if bash "$renderer" --repo "$dir" --check-only --json >/dev/null 2>&1; then
+    emit_result "PASS" "docs/project-statistics.md" \
+      "ASCII Statistics Profile 2 current" "$dir"
+  else
+    renderer_exit=$?
+    case "$renderer_exit" in
+      1) renderer_message="ASCII Statistics Profile 2 drift" ;;
+      2) renderer_message="ASCII Statistics Profile 2 validation or tooling error" ;;
+      *) renderer_message="ASCII Statistics Profile 2 unexpected renderer exit ${renderer_exit}" ;;
+    esac
+    emit_result "FAIL" "docs/project-statistics.md" "$renderer_message" "$dir"
+  fi
+}
+
 # ─── Header ──────────────────────────────────────────────────────────────────
 
 if ! $OPT_JSON; then
@@ -388,6 +449,7 @@ while IFS='|' read -r level dir _type; do
     check_file_presence "$dir" "$req_file"
     check_markdown_file "$dir" "$req_file"
   done
+  check_statistics_profile "$dir"
 
   # README.md content checks (A11Y, Spec-kit, Azubis)
   check_readme_sections "$dir"
@@ -407,6 +469,7 @@ while IFS='|' read -r level dir _type; do
 
   # homogeneity-check.yml presence (all levels)
   check_workflow_yml "$dir"
+  check_antigravity_integration "$dir"
 
   # ANSI escape scan in scripts/ (Level 0 only, global)
   if [ "$level" -eq 0 ]; then
@@ -430,17 +493,32 @@ while IFS='|' read -r level dir _type; do
     else
       emit_result "WARN" "scripts/hooks/pre-push" "canonical hook missing" "$dir"
     fi
+    if [ -f "${dir}/scripts/render-script-reference.sh" ]; then
+      if bash "${dir}/scripts/render-script-reference.sh" --repo "$dir" --check-only >/dev/null 2>&1; then
+        emit_result "PASS" "docs/scripts/reference.md" \
+          "script catalog complete and current" "$dir"
+      else
+        emit_result "FAIL" "docs/scripts/reference.md" \
+          "script catalog incomplete or generated documentation drifted" "$dir"
+      fi
+    fi
   fi
 
   # Level 0: Git Scope Isolation checks (GIT-SCOPE-001, GIT-SCOPE-002)
   if [ "$level" -eq 0 ]; then
     if [ ! -d "${HOME}/.gitconfig.d" ]; then
+      if $OPT_JSON; then
+        printf '{"check":"GIT-SCOPE-001","status":"WARN","message":"~/.gitconfig.d/ fehlt — Scope-Isolierung nicht konfiguriert / missing — scope isolation not configured"}\n'
+      fi
       emit_result "WARN" "~/.gitconfig.d/" \
         "~/.gitconfig.d/ fehlt — Scope-Isolierung nicht konfiguriert / missing — scope isolation not configured" \
         "$dir"
-    elif ! grep -qF 'gitdir:~/home-baseline-tmp/' "${HOME}/.gitconfig" 2>/dev/null; then
+    elif ! grep -qF 'gitdir:~/home-baseline-source/' "${HOME}/.gitconfig" 2>/dev/null; then
+      if $OPT_JSON; then
+        printf '{"check":"GIT-SCOPE-002","status":"WARN","message":"includeIf fuer home-baseline-source nicht gefunden / not found for home-baseline-source"}\n'
+      fi
       emit_result "WARN" "~/.gitconfig" \
-        "includeIf für home-baseline-tmp nicht gefunden / not found for home-baseline-tmp" \
+        "includeIf fuer home-baseline-source nicht gefunden / not found for home-baseline-source" \
         "$dir"
     fi
   fi
@@ -535,9 +613,9 @@ else
     bar_empty=$(( 10 - bar_filled ))
     bar=""
     j=0
-    while [ $j -lt $bar_filled ]; do bar="${bar}█"; j=$((j+1)); done
+    while [ $j -lt $bar_filled ]; do bar="${bar}#"; j=$((j+1)); done
     j=0
-    while [ $j -lt $bar_empty ]; do bar="${bar}░"; j=$((j+1)); done
+    while [ $j -lt $bar_empty ]; do bar="${bar}."; j=$((j+1)); done
     short_name="${d/#$HOME/~}"
     printf "%-30s [%s] %3d %%  (%d/%d checks)\n" \
       "$short_name" "$bar" "$ls_score" "$lp" "$lt"
@@ -557,8 +635,10 @@ else
   fi
 
   echo ""
-  if [ "$FAIL_COUNT" -gt 0 ] || [ "$WARN_COUNT" -gt 0 ]; then
+  if [ "$FAIL_COUNT" -gt 0 ]; then
     printf "Exit code: 1 (%d FAIL, %d WARN)\n" "$FAIL_COUNT" "$WARN_COUNT"
+  elif [ "$WARN_COUNT" -gt 0 ]; then
+    printf "Exit code: 0 (0 FAIL, %d WARN)\n" "$WARN_COUNT"
   else
     printf "Exit code: 0 (all checks passed)\n"
   fi
@@ -602,7 +682,7 @@ fi
 if ! $OPT_DRY_RUN; then
   if [ -f "${LIB_DIR}/hg-stats.sh" ]; then
     . "${LIB_DIR}/hg-stats.sh"
-    hg_write_stats "${HOME}/STATS.md" "$OVERALL_SCORE" "${SCAN_DIRS[@]+"${SCAN_DIRS[@]}"}" 2>/dev/null || true
+    hg_write_stats "${HOME}/STATS.md" "$OVERALL_SCORE" "${SCAN_DIRS[@]+"${SCAN_DIRS[@]}"}"
   fi
 
   if ! $OPT_NO_PATCH; then

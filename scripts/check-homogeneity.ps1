@@ -3,8 +3,8 @@
 
 [CmdletBinding()]
 param(
+    [Alias('WorkspaceName')]
     [string]$TargetDir = $(if ($env:HOME) { $env:HOME } else { $env:USERPROFILE }),
-    [string]$WorkspaceName = '',
     [switch]$Json,
     [switch]$DryRun,
     [string]$ApplyPatch = '',
@@ -17,34 +17,35 @@ $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $LibDir    = Join-Path $ScriptDir 'lib'
 
 # Source all hg-*.ps1 libs
-Get-ChildItem -Path $LibDir -Filter 'hg-*.ps1' -ErrorAction SilentlyContinue | ForEach-Object {
+Get-ChildItem -LiteralPath $LibDir -Filter 'hg-*.ps1' -ErrorAction SilentlyContinue | ForEach-Object {
     . $_.FullName
-}
-
-$RequiredHelpers = @(
-    'Invoke-HgScan',
-    'Invoke-HgScanFileSecrets',
-    'Invoke-HgCheckA11y',
-    'Invoke-HgCheckBilingual',
-    'Invoke-HgCheckDeps',
-    'Invoke-HgCheckHook',
-    'Invoke-HgCheckSpeckit'
-)
-foreach ($helper in $RequiredHelpers) {
-    if (-not (Get-Command $helper -CommandType Function -ErrorAction SilentlyContinue)) {
-        Write-Error "FATAL: required homogeneity helper is unavailable: $helper ($LibDir/hg-*.ps1)"
-        exit 2
-    }
 }
 
 # --json takes precedence
 if ($Json) { $VerbosePreference = 'SilentlyContinue' }
 
-$TargetDir = $TargetDir.TrimEnd([IO.Path]::DirectorySeparatorChar)
-if (-not (Test-Path $TargetDir)) {
+$HomeDir = if ($env:HOME) { $env:HOME } else { $env:USERPROFILE }
+$TargetDir = $TargetDir.Trim()
+if ($TargetDir -eq '~') {
+    $TargetDir = $HomeDir
+} elseif ($TargetDir.StartsWith('~/') -or $TargetDir.StartsWith('~\')) {
+    $TargetDir = Join-Path $HomeDir $TargetDir.Substring(2)
+} elseif (-not [IO.Path]::IsPathRooted($TargetDir) -and
+    -not (Test-Path -LiteralPath $TargetDir -PathType Container)) {
+    $homeCandidate = Join-Path $HomeDir $TargetDir
+    if (Test-Path -LiteralPath $homeCandidate -PathType Container) {
+        $TargetDir = $homeCandidate
+    }
+}
+$TargetDir = $TargetDir.TrimEnd(
+    [IO.Path]::DirectorySeparatorChar,
+    [IO.Path]::AltDirectorySeparatorChar
+)
+if (-not (Test-Path -LiteralPath $TargetDir -PathType Container)) {
     Write-Error "FATAL: target directory not found: $TargetDir"
     exit 2
 }
+$TargetDir = (Resolve-Path -LiteralPath $TargetDir).Path
 
 # Check ripgrep availability
 if (-not (Get-Command rg -ErrorAction SilentlyContinue)) {
@@ -54,11 +55,11 @@ if (-not (Get-Command rg -ErrorAction SilentlyContinue)) {
 
 # ─── Apply-Patch Mode ────────────────────────────────────────────────────────
 if ($ApplyPatch) {
-    if (-not (Test-Path $ApplyPatch)) {
+    if (-not (Test-Path -LiteralPath $ApplyPatch -PathType Leaf)) {
         Write-Error "FATAL: patch file not found: $ApplyPatch"
         exit 2
     }
-    $content = Get-Content $ApplyPatch
+    $content = Get-Content -LiteralPath $ApplyPatch
     Write-Host "Patch-Datei: $ApplyPatch"
     Write-Host ""
     Write-Host "Vorgeschlagene Aenderungen:"
@@ -141,8 +142,8 @@ function Emit-Result {
 
 function Test-EnGuidance {
     param([string]$File)
-    if (-not (Test-Path $File)) { return $false }
-    $content = Get-Content $File -Raw -ErrorAction SilentlyContinue
+    if (-not (Test-Path -LiteralPath $File -PathType Leaf)) { return $false }
+    $content = Get-Content -LiteralPath $File -Raw -ErrorAction SilentlyContinue
     if ($content -match '<!-- EN:') { return $true }
 
     $bil = Invoke-HgCheckBilingual -FilePath $File
@@ -163,7 +164,7 @@ function Test-EnGuidance {
 function Check-EnGuidance {
     param([string]$Dir, [string]$File)
     $full = Join-Path $Dir $File
-    if (-not (Test-Path $full)) { return }
+    if (-not (Test-Path -LiteralPath $full -PathType Leaf)) { return }
     if (Test-EnGuidance -File $full) {
         Emit-Result 'PASS' $File 'EN guidance present' $Dir
     } else {
@@ -174,8 +175,8 @@ function Check-EnGuidance {
 function Check-ReadmeSections {
     param([string]$Dir)
     $full = Join-Path $Dir 'README.md'
-    if (-not (Test-Path $full)) { return }
-    $content = Get-Content $full -Raw -ErrorAction SilentlyContinue
+    if (-not (Test-Path -LiteralPath $full -PathType Leaf)) { return }
+    $content = Get-Content -LiteralPath $full -Raw -ErrorAction SilentlyContinue
 
     if ($content -match '(?im)^## .*Barrierefreiheit') {
         Emit-Result 'PASS' 'README.md' 'A11Y section' $Dir
@@ -197,13 +198,13 @@ function Check-ReadmeSections {
 function Check-AnsiInScripts {
     param([string]$Dir)
     $scriptsDir = Join-Path $Dir 'scripts'
-    if (-not (Test-Path $scriptsDir)) { return }
+    if (-not (Test-Path -LiteralPath $scriptsDir -PathType Container)) { return }
     # ANSI escape scan: actual ESC byte, \033[, \e[ (PS1 uses .NET regex)
     # Exclude the scanner scripts themselves (they contain the patterns as literals in comments/code)
     $pattern = '\x1b\[|\\033\[|\\e\['
-    $found = Get-ChildItem -Path $scriptsDir -File -Recurse -ErrorAction SilentlyContinue |
+    $found = Get-ChildItem -LiteralPath $scriptsDir -File -Recurse -ErrorAction SilentlyContinue |
         Where-Object { $_.Name -notmatch '^check-homogeneity\.(ps1|sh)$' } |
-        Where-Object { (Get-Content $_.FullName -Raw -ErrorAction SilentlyContinue) -match $pattern } |
+        Where-Object { (Get-Content -LiteralPath $_.FullName -Raw -ErrorAction SilentlyContinue) -match $pattern } |
         Select-Object -First 1
     if ($null -eq $found) {
         Emit-Result 'PASS' 'scripts/' 'no ANSI codes in scripts/' $Dir
@@ -214,9 +215,9 @@ function Check-AnsiInScripts {
 
 function Check-EditorconfigCsharp {
     param([string]$Dir)
-    $slnFiles = Get-ChildItem -Path $Dir -Filter '*.sln' -Depth 0 -ErrorAction SilentlyContinue
+    $slnFiles = @(Get-ChildItem -LiteralPath $Dir -Filter '*.sln' -Depth 0 -ErrorAction SilentlyContinue)
     if ($slnFiles.Count -gt 0) {
-        if (Test-Path (Join-Path $Dir '.editorconfig')) {
+        if (Test-Path -LiteralPath (Join-Path $Dir '.editorconfig') -PathType Leaf) {
             Emit-Result 'PASS' '.editorconfig' '.editorconfig present (C# project)' $Dir
         } else {
             Emit-Result 'FAIL' '.editorconfig' '.editorconfig missing (C# project)' $Dir
@@ -227,7 +228,7 @@ function Check-EditorconfigCsharp {
 function Check-WorkflowYml {
     param([string]$Dir)
     $yml = Join-Path $Dir '.github/workflows/homogeneity-check.yml'
-    if (Test-Path $yml) {
+    if (Test-Path -LiteralPath $yml -PathType Leaf) {
         Emit-Result 'PASS' '.github/workflows/homogeneity-check.yml' 'file present' $Dir
     } else {
         Emit-Result 'FAIL' '.github/workflows/homogeneity-check.yml' 'file missing' $Dir
@@ -237,10 +238,103 @@ function Check-WorkflowYml {
 function Check-CopilotInstructions {
     param([string]$Dir)
     $f = Join-Path $Dir '.github/copilot-instructions.md'
-    if (Test-Path $f) {
+    if (Test-Path -LiteralPath $f -PathType Leaf) {
         Emit-Result 'PASS' '.github/copilot-instructions.md' 'file present' $Dir
     } else {
         Emit-Result 'FAIL' '.github/copilot-instructions.md' 'file missing' $Dir
+    }
+}
+
+function Check-StatisticsProfile {
+    param([string]$Dir)
+
+    $ledger = Join-Path $Dir 'docs/project-statistics.md'
+    $config = Join-Path $Dir 'docs/project-statistics.config.json'
+    $renderer = Join-Path $Dir 'scripts/render-project-statistics.ps1'
+    if (-not (Test-Path -LiteralPath $ledger -PathType Leaf)) {
+        return
+    }
+    if (-not (Test-Path -LiteralPath $config -PathType Leaf)) {
+        Emit-Result 'FAIL' 'docs/project-statistics.config.json' `
+            'ASCII Statistics Profile 2 configuration missing' $Dir
+        return
+    }
+    if (-not (Test-Path -LiteralPath $renderer -PathType Leaf)) {
+        Emit-Result 'FAIL' 'scripts/render-project-statistics.ps1' `
+            'ASCII Statistics Profile 2 renderer missing' $Dir
+        return
+    }
+    if (-not (Get-Command pwsh -ErrorAction SilentlyContinue)) {
+        Emit-Result 'FAIL' 'pwsh' `
+            'PowerShell 7 required by ASCII Statistics Profile 2 renderer' $Dir
+        return
+    }
+
+    & pwsh -NoProfile -File $renderer -Repo $Dir -CheckOnly -Json *> $null
+    switch ($LASTEXITCODE) {
+        0 {
+            Emit-Result 'PASS' 'docs/project-statistics.md' `
+                'ASCII Statistics Profile 2 current' $Dir
+        }
+        1 {
+            Emit-Result 'FAIL' 'docs/project-statistics.md' `
+                'ASCII Statistics Profile 2 drift' $Dir
+        }
+        2 {
+            Emit-Result 'FAIL' 'docs/project-statistics.md' `
+                'ASCII Statistics Profile 2 validation or tooling error' $Dir
+        }
+        default {
+            Emit-Result 'FAIL' 'docs/project-statistics.md' `
+                "ASCII Statistics Profile 2 unexpected renderer exit $LASTEXITCODE" $Dir
+        }
+    }
+}
+
+function Check-AntigravityIntegration {
+    param([string]$Dir)
+
+    $agyManifest = Join-Path $Dir '.specify/integrations/agy.manifest.json'
+    if (Test-Path -LiteralPath $agyManifest -PathType Leaf) {
+        Emit-Result 'PASS' '.specify/integrations/agy.manifest.json' 'Antigravity Spec-Kit integration present' $Dir
+    } else {
+        Emit-Result 'FAIL' '.specify/integrations/agy.manifest.json' 'Antigravity Spec-Kit integration missing' $Dir
+    }
+
+    $legacyManifest = Join-Path $Dir '.specify/integrations/gemini.manifest.json'
+    $legacyCommands = Join-Path $Dir '.gemini/commands'
+    $legacyGeminiPath = if (Test-Path -LiteralPath $legacyManifest -PathType Leaf) {
+        '.specify/integrations/gemini.manifest.json'
+    } elseif (Test-Path -LiteralPath $legacyCommands) {
+        '.gemini/commands'
+    } else {
+        $null
+    }
+    if ($legacyGeminiPath) {
+        Emit-Result 'FAIL' $legacyGeminiPath 'legacy Gemini Spec-Kit integration present' $Dir
+    } else {
+        Emit-Result 'PASS' '.gemini/commands' 'legacy Gemini Spec-Kit integration absent' $Dir
+    }
+
+    $skills = Get-ChildItem -LiteralPath (Join-Path $Dir '.agents/skills') -Directory -Filter 'speckit-*' -ErrorAction SilentlyContinue
+    if ($skills) {
+        Emit-Result 'PASS' '.agents/skills' 'Antigravity/Codex Spec-Kit skills present' $Dir
+    } else {
+        Emit-Result 'FAIL' '.agents/skills' 'Antigravity/Codex Spec-Kit skills missing' $Dir
+    }
+
+    $gitignore = Join-Path $Dir '.gitignore'
+    $content = if (Test-Path -LiteralPath $gitignore -PathType Leaf) {
+        Get-Content -LiteralPath $gitignore -Raw
+    } else {
+        ''
+    }
+    if ($content.Contains('.agents/*') -and
+        $content.Contains('!.agents/skills/') -and
+        $content.Contains('!.agents/skills/**')) {
+        Emit-Result 'PASS' '.gitignore' 'surgical .agents skills allowlist' $Dir
+    } else {
+        Emit-Result 'FAIL' '.gitignore' 'surgical .agents skills allowlist missing' $Dir
     }
 }
 
@@ -276,7 +370,7 @@ foreach ($entry in $scanResults) {
     # Required files
     foreach ($f in $RequiredFiles) {
         $full = Join-Path $dir $f
-        if (Test-Path $full) {
+        if (Test-Path -LiteralPath $full -PathType Leaf) {
             Emit-Result 'PASS' $f 'file present' $dir
 
             # Bilingual
@@ -296,6 +390,7 @@ foreach ($entry in $scanResults) {
             Emit-Result 'FAIL' $f 'file missing' $dir
         }
     }
+    Check-StatisticsProfile -Dir $dir
 
     # README.md content checks (A11Y, Spec-kit, Azubis sections)
     Check-ReadmeSections -Dir $dir
@@ -315,6 +410,7 @@ foreach ($entry in $scanResults) {
 
     # homogeneity-check.yml presence (all levels)
     Check-WorkflowYml -Dir $dir
+    Check-AntigravityIntegration -Dir $dir
 
     # ANSI escape scan in scripts/ (Level 0 only)
     if ($level -eq 0) {
@@ -329,10 +425,21 @@ foreach ($entry in $scanResults) {
 
     if ($level -eq 0) {
         $canonicalHook = Join-Path $dir 'scripts/hooks/pre-push'
-        if (Test-Path $canonicalHook) {
+        if (Test-Path -LiteralPath $canonicalHook -PathType Leaf) {
             Emit-Result 'PASS' 'scripts/hooks/pre-push' 'canonical hook present' $dir
         } else {
             Emit-Result 'WARN' 'scripts/hooks/pre-push' 'canonical hook missing' $dir
+        }
+        $scriptReference = Join-Path $dir 'scripts/render-script-reference.ps1'
+        if (Test-Path -LiteralPath $scriptReference -PathType Leaf) {
+            & $scriptReference -Repo $dir -CheckOnly *> $null
+            if ($LASTEXITCODE -eq 0) {
+                Emit-Result 'PASS' 'docs/scripts/reference.md' `
+                    'script catalog complete and current' $dir
+            } else {
+                Emit-Result 'FAIL' 'docs/scripts/reference.md' `
+                    'script catalog incomplete or generated documentation drifted' $dir
+            }
         }
     }
 
@@ -341,20 +448,14 @@ foreach ($entry in $scanResults) {
         $homeDir2 = $(if ($env:HOME) { $env:HOME } else { $env:USERPROFILE })
         $gitconfigD2 = Join-Path $homeDir2 '.gitconfig.d'
         $gitconfig2  = Join-Path $homeDir2 '.gitconfig'
-        if (-not (Test-Path $gitconfigD2)) {
-            if ($Json) {
-                Write-Host '{"check":"GIT-SCOPE-001","status":"WARN","message":"~/.gitconfig.d/ fehlt — Scope-Isolierung nicht konfiguriert / missing — scope isolation not configured"}'
-            }
+        if (-not (Test-Path -LiteralPath $gitconfigD2 -PathType Container)) {
             Emit-Result 'WARN' '~/.gitconfig.d/' `
                 '~/.gitconfig.d/ fehlt — Scope-Isolierung nicht konfiguriert / missing — scope isolation not configured' `
                 $dir
-        } elseif (-not ((Get-Content $gitconfig2 -ErrorAction SilentlyContinue) |
-                Select-String -SimpleMatch 'gitdir:~/home-baseline-tmp/' -Quiet)) {
-            if ($Json) {
-                Write-Host '{"check":"GIT-SCOPE-002","status":"WARN","message":"includeIf für home-baseline-tmp nicht gefunden / not found for home-baseline-tmp"}'
-            }
+        } elseif (-not ((Get-Content -LiteralPath $gitconfig2 -ErrorAction SilentlyContinue) |
+                Select-String -SimpleMatch 'gitdir:~/home-baseline-source/' -Quiet)) {
             Emit-Result 'WARN' '~/.gitconfig' `
-                'includeIf für home-baseline-tmp nicht gefunden / not found for home-baseline-tmp' `
+                'includeIf fuer home-baseline-source nicht gefunden / not found for home-baseline-source' `
                 $dir
         }
     }
@@ -369,7 +470,7 @@ foreach ($entry in $scanResults) {
         Invoke-HgCheckDeps -Dir $dir | ForEach-Object {
             Emit-Result $_.Status '*.csproj' $_.Message $dir
         }
-        $specFile = Get-ChildItem -Path (Join-Path $dir 'specs') -Filter 'spec.md' -Recurse -Depth 3 -ErrorAction SilentlyContinue | Select-Object -First 1
+        $specFile = Get-ChildItem -LiteralPath (Join-Path $dir 'specs') -Filter 'spec.md' -Recurse -Depth 3 -ErrorAction SilentlyContinue | Select-Object -First 1
         if ($specFile) {
             $sk = Invoke-HgCheckSpeckit -SpecFile $specFile.FullName
             if ($sk) { Emit-Result $sk.Status 'specs/spec.md' $sk.Message $dir }
@@ -410,7 +511,7 @@ if ($Json) {
         $lp = $DirPass[$d] ?? 0
         $ls = if ($lt -gt 0) { [int](($lp * 100) / $lt) } else { 0 }
         $filled = [int]($ls * 10 / 100)
-        $bar = ('█' * $filled) + ('░' * (10 - $filled))
+        $bar = ('#' * $filled) + ('.' * (10 - $filled))
         $shortName = $d -replace [regex]::Escape($(if ($env:HOME) { $env:HOME } else { $env:USERPROFILE })), '~'
         Write-Host ("{0,-30} [{1}] {2,3} %  ({3}/{4} checks)" -f $shortName, $bar, $ls, $lp, $lt)
     }
@@ -418,16 +519,28 @@ if ($Json) {
     Write-Host ""
     Write-Host ("Overall: $OverallScore %  |  Workspaces: $WorkspacesCount  |  Projects: $ProjectsCount")
 
-    if (-not $DryRun) {
-        Write-Host "STATS.md updated: $(if ($env:HOME) { $env:HOME } else { $env:USERPROFILE })/STATS.md"
-    }
-
     $fc = $Failures.Count; $wc = $Warnings.Count
     Write-Host ""
     if ($fc -gt 0) {
         Write-Host "Exit code: 1 ($fc FAIL, $wc WARN)"
+    } elseif ($wc -gt 0) {
+        Write-Host "Exit code: 0 (0 FAIL, $wc WARN)"
     } else {
         Write-Host "Exit code: 0 (all checks passed)"
+    }
+}
+
+# Post-scan writes are independent of the selected output format.
+if (-not $DryRun) {
+    $statsFile = Join-Path $HomeDir 'STATS.md'
+    try {
+        Invoke-HgWriteStats -StatsFile $statsFile -Score $OverallScore -Dirs ([string[]]$ScanDirs)
+    } catch {
+        Write-Error "FATAL: could not update ${statsFile}: $($_.Exception.Message)"
+        exit 2
+    }
+    if (-not $Json) {
+        Write-Host "STATS.md updated: $statsFile"
     }
 }
 

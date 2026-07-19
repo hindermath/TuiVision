@@ -1,0 +1,352 @@
+{
+  "$schema": "../scripts/config/project-statistics.schema.json",
+  "schemaVersion": 1,
+  "methodologyVersion": 2,
+  "repositoryName": "TuiVision",
+  "timeZone": "Europe/Berlin",
+  "activityWindowWeeks": 52,
+  "references": {
+    "conservativeLinesPerDay": 80,
+    "thorstenLinesPerDay": 125
+  },
+  "phases": [
+    {
+      "slot": 0,
+      "id": "main",
+      "labelDe": "main",
+      "labelEn": "main",
+      "netLines": 10211
+    },
+    {
+      "slot": 1,
+      "id": "001",
+      "labelDe": "001",
+      "labelEn": "001",
+      "netLines": 4353
+    },
+    {
+      "slot": 2,
+      "id": "002",
+      "labelDe": "002",
+      "labelEn": "002",
+      "netLines": 2274
+    },
+    {
+      "slot": 3,
+      "id": "003",
+      "labelDe": "003",
+      "labelEn": "003",
+      "netLines": 3572
+    },
+    {
+      "slot": 4,
+      "id": "004",
+      "labelDe": "004",
+      "labelEn": "004",
+      "netLines": 4747
+    },
+    {
+      "slot": 5,
+      "id": "005",
+      "labelDe": "005",
+      "labelEn": "005",
+      "netLines": 9659
+    },
+    {
+      "slot": 6,
+      "id": "006",
+      "labelDe": "006",
+      "labelEn": "006",
+      "netLines": 5796
+    },
+    {
+      "slot": 7,
+      "id": "007v",
+      "labelDe": "007v",
+      "labelEn": "007v",
+      "netLines": 35
+    },
+    {
+      "slot": 8,
+      "id": "007ex",
+      "labelDe": "007ex",
+      "labelEn": "007ex",
+      "netLines": 6778
+    },
+    {
+      "slot": 9,
+      "id": "008",
+      "labelDe": "008",
+      "labelEn": "008",
+      "netLines": 1550
+    },
+    {
+      "slot": 10,
+      "id": "009",
+      "labelDe": "009",
+      "labelEn": "009",
+      "netLines": 231
+    },
+    {
+      "slot": 11,
+      "id": "010",
+      "labelDe": "010",
+      "labelEn": "010",
+      "netLines": 12169
+    },
+    {
+      "slot": 12,
+      "id": "011",
+      "labelDe": "011",
+      "labelEn": "011",
+      "netLines": 3303
+    },
+    {
+      "slot": 13,
+      "id": "012p",
+      "labelDe": "012p",
+      "labelEn": "012p",
+      "netLines": 1604
+    },
+    {
+      "slot": 14,
+      "id": "012i",
+      "labelDe": "012i",
+      "labelEn": "012i",
+      "netLines": 2219
+    },
+    {
+      "slot": 15,
+      "id": "013i",
+      "labelDe": "013i",
+      "labelEn": "013i",
+      "netLines": 2105
+    },
+    {
+      "slot": 16,
+      "id": "014i",
+      "labelDe": "014i",
+      "labelEn": "014i",
+      "netLines": 556
+    },
+    {
+      "slot": 17,
+      "id": "015i",
+      "labelDe": "015i",
+      "labelEn": "015i",
+      "netLines": 283
+    },
+    {
+      "slot": 18,
+      "id": "016i",
+      "labelDe": "016i",
+      "labelEn": "016i",
+      "netLines": 2659
+    },
+    {
+      "slot": 19,
+      "id": "017i",
+      "labelDe": "017i",
+      "labelEn": "017i",
+      "netLines": 3493
+    },
+    {
+      "slot": 20,
+      "id": "auto",
+      "labelDe": "auto",
+      "labelEn": "auto",
+      "netLines": 595
+    },
+    {
+      "slot": 21,
+      "id": "018i",
+      "labelDe": "018i",
+      "labelEn": "018i",
+      "netLines": 2912
+    },
+    {
+      "slot": 22,
+      "id": "019i",
+      "labelDe": "019i",
+      "labelEn": "019i",
+      "netLines": 3392
+    },
+    {
+      "slot": 23,
+      "id": "020i",
+      "labelDe": "020i",
+      "labelEn": "020i",
+      "netLines": 3584
+    },
+    {
+      "slot": 24,
+      "id": "021i",
+      "labelDe": "021i",
+      "labelEn": "021i",
+      "netLines": 4617
+    },
+    {
+      "slot": 25,
+      "id": "022i",
+      "labelDe": "022i",
+      "labelEn": "022i",
+      "netLines": 3713
+    },
+    {
+      "slot": 26,
+      "id": "022c",
+      "labelDe": "022c",
+      "labelEn": "022c",
+      "netLines": 75
+    },
+    {
+      "slot": 27,
+      "id": "022r",
+      "labelDe": "022r",
+      "labelEn": "022r",
+      "netLines": 58
+    },
+    {
+      "slot": 28,
+      "id": "023i",
+      "labelDe": "023i",
+      "labelEn": "023i",
+      "netLines": 2370
+    },
+    {
+      "slot": 29,
+      "id": "023c",
+      "labelDe": "023c",
+      "labelEn": "023c",
+      "netLines": 72
+    },
+    {
+      "slot": 30,
+      "id": "023r",
+      "labelDe": "023r",
+      "labelEn": "023r",
+      "netLines": 112
+    },
+    {
+      "slot": 31,
+      "id": "adopt",
+      "labelDe": "adopt",
+      "labelEn": "adopt",
+      "netLines": 1212
+    },
+    {
+      "slot": 32,
+      "id": "agy",
+      "labelDe": "agy",
+      "labelEn": "agy",
+      "netLines": 51
+    },
+    {
+      "slot": 33,
+      "id": "024p",
+      "labelDe": "024p",
+      "labelEn": "024p",
+      "netLines": 390
+    },
+    {
+      "slot": 34,
+      "id": "024i",
+      "labelDe": "024i",
+      "labelEn": "024i",
+      "netLines": 9863
+    },
+    {
+      "slot": 35,
+      "id": "024c",
+      "labelDe": "024c",
+      "labelEn": "024c",
+      "netLines": 8
+    },
+    {
+      "slot": 36,
+      "id": "024r",
+      "labelDe": "024r",
+      "labelEn": "024r",
+      "netLines": 59
+    },
+    {
+      "slot": 37,
+      "id": "027p",
+      "labelDe": "027p",
+      "labelEn": "027p",
+      "netLines": 243
+    },
+    {
+      "slot": 38,
+      "id": "027i",
+      "labelDe": "027i",
+      "labelEn": "027i",
+      "netLines": 1130
+    },
+    {
+      "slot": 39,
+      "id": "027c",
+      "labelDe": "027c",
+      "labelEn": "027c",
+      "netLines": 31
+    },
+    {
+      "slot": 40,
+      "id": "024v2",
+      "labelDe": "024v2",
+      "labelEn": "024v2",
+      "netLines": 1701
+    },
+    {
+      "slot": 41,
+      "id": "025i",
+      "labelDe": "025i",
+      "labelEn": "025i",
+      "netLines": 5248
+    },
+    {
+      "slot": 42,
+      "id": "026i",
+      "labelDe": "026i",
+      "labelEn": "026i",
+      "netLines": 4919
+    },
+    {
+      "slot": 43,
+      "id": "026c",
+      "labelDe": "026c",
+      "labelEn": "026c",
+      "netLines": 134
+    },
+    {
+      "slot": 44,
+      "id": "v014",
+      "labelDe": "v014",
+      "labelEn": "v014",
+      "netLines": 1048
+    },
+    {
+      "slot": 45,
+      "id": "intake",
+      "labelDe": "intake",
+      "labelEn": "intake",
+      "netLines": 395
+    },
+    {
+      "slot": 46,
+      "id": "v020",
+      "labelDe": "v020",
+      "labelEn": "v020",
+      "netLines": 1542
+    },
+    {
+      "slot": 47,
+      "id": "028i",
+      "labelDe": "028i",
+      "labelEn": "028i",
+      "netLines": 2422
+    }
+  ],
+  "excludedPaths": [],
+  "categoryOverrides": []
+}
