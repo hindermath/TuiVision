@@ -68,7 +68,13 @@ uses the current date in the configured time zone.*
 
 ## SEE ALSO
 
-`scripts/init-stats.sh`, `scripts/init-stats.ps1`,
-`scripts/check-homogeneity.sh`, `scripts/check-homogeneity.ps1`,
-`scripts/maintain-agentic-workspace.sh`,
-`scripts/maintain-agentic-workspace.ps1`
+`init-stats(1)`, `check-homogeneity(1)` und
+`maintain-agentic-workspace(1)`, sofern die Manpages installiert sind.
+Direkte Repository-Einstiegspunkte:
+`scripts/init-stats.*`, `scripts/check-homogeneity.*` und
+`scripts/maintain-agentic-workspace.*`.
+
+*See `init-stats(1)`, `check-homogeneity(1)`, and
+`maintain-agentic-workspace(1)` when the manpages are installed. Direct
+repository entry points are `scripts/init-stats.*`,
+`scripts/check-homogeneity.*`, and `scripts/maintain-agentic-workspace.*`.*

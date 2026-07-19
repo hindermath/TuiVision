@@ -24,11 +24,28 @@ Get-ChildItem -Path $LibDir -Filter 'hg-*.ps1' -ErrorAction SilentlyContinue | F
 # --json takes precedence
 if ($Json) { $VerbosePreference = 'SilentlyContinue' }
 
-$TargetDir = $TargetDir.TrimEnd([IO.Path]::DirectorySeparatorChar)
-if (-not (Test-Path $TargetDir)) {
+$HomeDir = if ($env:HOME) { $env:HOME } else { $env:USERPROFILE }
+$TargetDir = $TargetDir.Trim()
+if ($TargetDir -eq '~') {
+    $TargetDir = $HomeDir
+} elseif ($TargetDir.StartsWith('~/') -or $TargetDir.StartsWith('~\')) {
+    $TargetDir = Join-Path $HomeDir $TargetDir.Substring(2)
+} elseif (-not [IO.Path]::IsPathRooted($TargetDir) -and
+    -not (Test-Path -LiteralPath $TargetDir -PathType Container)) {
+    $homeCandidate = Join-Path $HomeDir $TargetDir
+    if (Test-Path -LiteralPath $homeCandidate -PathType Container) {
+        $TargetDir = $homeCandidate
+    }
+}
+$TargetDir = $TargetDir.TrimEnd(
+    [IO.Path]::DirectorySeparatorChar,
+    [IO.Path]::AltDirectorySeparatorChar
+)
+if (-not (Test-Path -LiteralPath $TargetDir -PathType Container)) {
     Write-Error "FATAL: target directory not found: $TargetDir"
     exit 2
 }
+$TargetDir = (Resolve-Path -LiteralPath $TargetDir).Path
 
 # Check ripgrep availability
 if (-not (Get-Command rg -ErrorAction SilentlyContinue)) {
@@ -308,7 +325,9 @@ function Check-AntigravityIntegration {
 
     $gitignore = Join-Path $Dir '.gitignore'
     $content = if (Test-Path $gitignore) { Get-Content $gitignore -Raw } else { '' }
-    if ($content.Contains('.agents/*') -and $content.Contains('!.agents/skills/')) {
+    if ($content.Contains('.agents/*') -and
+        $content.Contains('!.agents/skills/') -and
+        $content.Contains('!.agents/skills/**')) {
         Emit-Result 'PASS' '.gitignore' 'surgical .agents skills allowlist' $Dir
     } else {
         Emit-Result 'FAIL' '.gitignore' 'surgical .agents skills allowlist missing' $Dir
@@ -426,17 +445,11 @@ foreach ($entry in $scanResults) {
         $gitconfigD2 = Join-Path $homeDir2 '.gitconfig.d'
         $gitconfig2  = Join-Path $homeDir2 '.gitconfig'
         if (-not (Test-Path $gitconfigD2)) {
-            if ($Json) {
-                Write-Host '{"check":"GIT-SCOPE-001","status":"WARN","message":"~/.gitconfig.d/ fehlt — Scope-Isolierung nicht konfiguriert / missing — scope isolation not configured"}'
-            }
             Emit-Result 'WARN' '~/.gitconfig.d/' `
                 '~/.gitconfig.d/ fehlt — Scope-Isolierung nicht konfiguriert / missing — scope isolation not configured' `
                 $dir
         } elseif (-not ((Get-Content $gitconfig2 -ErrorAction SilentlyContinue) |
                 Select-String -SimpleMatch 'gitdir:~/home-baseline-source/' -Quiet)) {
-            if ($Json) {
-                Write-Host '{"check":"GIT-SCOPE-002","status":"WARN","message":"includeIf fuer home-baseline-source nicht gefunden / not found for home-baseline-source"}'
-            }
             Emit-Result 'WARN' '~/.gitconfig' `
                 'includeIf fuer home-baseline-source nicht gefunden / not found for home-baseline-source' `
                 $dir
@@ -502,10 +515,6 @@ if ($Json) {
     Write-Host ""
     Write-Host ("Overall: $OverallScore %  |  Workspaces: $WorkspacesCount  |  Projects: $ProjectsCount")
 
-    if (-not $DryRun) {
-        Write-Host "STATS.md updated: $(if ($env:HOME) { $env:HOME } else { $env:USERPROFILE })/STATS.md"
-    }
-
     $fc = $Failures.Count; $wc = $Warnings.Count
     Write-Host ""
     if ($fc -gt 0) {
@@ -514,6 +523,20 @@ if ($Json) {
         Write-Host "Exit code: 0 (0 FAIL, $wc WARN)"
     } else {
         Write-Host "Exit code: 0 (all checks passed)"
+    }
+}
+
+# Post-scan writes are independent of the selected output format.
+if (-not $DryRun) {
+    $statsFile = Join-Path $HomeDir 'STATS.md'
+    try {
+        Invoke-HgWriteStats -StatsFile $statsFile -Score $OverallScore -Dirs ([string[]]$ScanDirs)
+    } catch {
+        Write-Error "FATAL: could not update ${statsFile}: $($_.Exception.Message)"
+        exit 2
+    }
+    if (-not $Json) {
+        Write-Host "STATS.md updated: $statsFile"
     }
 }
 

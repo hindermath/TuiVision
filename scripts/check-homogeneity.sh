@@ -375,7 +375,8 @@ check_antigravity_integration() {
   fi
   if [ -f "$gitignore" ] &&
      grep -qF '.agents/*' "$gitignore" &&
-     grep -qF '!.agents/skills/' "$gitignore"; then
+     grep -qF '!.agents/skills/' "$gitignore" &&
+     grep -qF '!.agents/skills/**' "$gitignore"; then
     emit_result "PASS" ".gitignore" "surgical .agents skills allowlist" "$dir"
   else
     emit_result "FAIL" ".gitignore" "surgical .agents skills allowlist missing" "$dir"
@@ -681,7 +682,7 @@ fi
 if ! $OPT_DRY_RUN; then
   if [ -f "${LIB_DIR}/hg-stats.sh" ]; then
     . "${LIB_DIR}/hg-stats.sh"
-    hg_write_stats "${HOME}/STATS.md" "$OVERALL_SCORE" "${SCAN_DIRS[@]+"${SCAN_DIRS[@]}"}" 2>/dev/null || true
+    hg_write_stats "${HOME}/STATS.md" "$OVERALL_SCORE" "${SCAN_DIRS[@]+"${SCAN_DIRS[@]}"}"
   fi
 
   if ! $OPT_NO_PATCH; then

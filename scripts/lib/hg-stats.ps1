@@ -20,8 +20,7 @@ function Invoke-HgWriteStats {
     while (-not (New-Item -ItemType Directory -Path $lockDir -ErrorAction SilentlyContinue)) {
         Start-Sleep -Seconds 1; $elapsed++
         if ($elapsed -ge 5) {
-            Write-Warning "stats file locked — try again later"
-            return
+            throw "stats file locked -- try again later"
         }
     }
 
@@ -59,7 +58,7 @@ function Invoke-HgWriteStats {
         $lines | Add-Content -LiteralPath $StatsFile -Encoding UTF8
 
         # Archive if >= 500 entries
-        $entryCount = (Select-String -LiteralPath $StatsFile -Pattern '^## Run ').Count
+        $entryCount = @(Select-String -LiteralPath $StatsFile -Pattern '^## Run ').Count
         if ($entryCount -ge 500) {
             $year = (Get-Date).Year
             $archiveFile = $StatsFile -replace 'STATS\.md', "STATS-archive-$year.md"
