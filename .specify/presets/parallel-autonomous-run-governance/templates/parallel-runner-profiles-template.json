@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.1",
+  "profiles": {
+    "default-agent": {
+      "agentFamily": "Codex",
+      "model": null,
+      "reasoningEffort": null,
+      "executable": "codex",
+      "arguments": [
+        "exec",
+        "--cd",
+        "{worktree}",
+        "--add-dir",
+        "{resultDirectory}",
+        "--sandbox",
+        "workspace-write",
+        "{prompt}"
+      ]
+    }
+  },
+  "mergeProfiles": {
+    "github-pr": {
+      "provider": "GitHub",
+      "preflight": {
+        "executable": "replace-with-provider-preflight-adapter",
+        "arguments": [
+          "--pr",
+          "{prUrl}",
+          "--expected-head",
+          "{headSha}",
+          "--output",
+          "{preflightResultFile}"
+        ]
+      },
+      "merge": {
+        "executable": "gh",
+        "arguments": [
+          "pr",
+          "merge",
+          "{prUrl}",
+          "--merge"
+        ]
+      }
+    }
+  },
+  "postMergeProfiles": {
+    "git-sync-main": {
+      "idempotent": true,
+      "executable": "git",
+      "arguments": [
+        "-C",
+        "{repository}",
+        "pull",
+        "--ff-only",
+        "origin",
+        "main"
+      ]
+    },
+    "validate-main": {
+      "idempotent": true,
+      "executable": "replace-with-project-validation-command",
+      "arguments": [
+        "--repository",
+        "{repository}",
+        "--expected-merge",
+        "{mergeCommitSha}"
+      ]
+    }
+  }
+}

@@ -43,6 +43,27 @@
 - Document every `N/A` decision with rationale; never silently omit.
 - Use `agent-parity-checklist-template` as the standard verification
   artefact for shared-guidance changes.
+- For repository-fleet changes, enumerate every level and remote explicitly.
+  Do not infer complete coverage from a level-2-only registry.
+- A propagated rule is complete only after every target records installation,
+  validation, commit, push, and remote synchronization or a named blocker.
+- Separate generated files from unrelated working-tree changes with an
+  explicit path inventory before staging.
+- Treat current normative guidance separately from historical statistics,
+  changelogs, archived feature evidence, and compatibility aliases.
+- Validate equivalent command meaning across generated skills, prompts,
+  commands, and instruction files; matching filenames alone are insufficient.
+
+## Runner and Status Metadata
+
+- Runner profiles may identify an agent family and may record an explicitly
+  selected model or reasoning effort.
+- Never infer an undeclared model or effort from another agent's local
+  configuration. Report `agent default / not declared` instead.
+- Do not persist credentials, tokens, secret environment variables, or personal
+  identifiers in runner or status metadata.
+- Per-worker runner metadata may override a campaign fallback, but permission
+  and remote authority remain separate and explicit.
 
 ## Spec-Kit Model Routing
 

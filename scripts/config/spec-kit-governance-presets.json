@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "description": "Standard eight-preset GitHub Spec Kit governance profile for registered level-0, level-1, and level-2 repositories.",
+  "presets": [
+    {
+      "id": "security-governance",
+      "version": "v0.6.1",
+      "priority": 10,
+      "repository": "https://github.com/hindermath/spec-kit-preset-security-governance",
+      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-security-governance/archive/refs/tags/v0.6.1.zip"
+    },
+    {
+      "id": "architecture-governance",
+      "version": "v0.5.1",
+      "priority": 20,
+      "repository": "https://github.com/hindermath/spec-kit-preset-architecture-governance",
+      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-architecture-governance/archive/refs/tags/v0.5.1.zip"
+    },
+    {
+      "id": "isaqb-architecture-governance",
+      "version": "v0.2.1",
+      "priority": 30,
+      "repository": "https://github.com/hindermath/spec-kit-preset-isaqb-architecture-governance",
+      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-isaqb-architecture-governance/archive/refs/tags/v0.2.1.zip"
+    },
+    {
+      "id": "a11y-governance",
+      "version": "v0.4.1",
+      "priority": 40,
+      "repository": "https://github.com/hindermath/spec-kit-preset-a11y-governance",
+      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-a11y-governance/archive/refs/tags/v0.4.1.zip"
+    },
+    {
+      "id": "cross-platform-governance",
+      "version": "v0.2.1",
+      "priority": 50,
+      "repository": "https://github.com/hindermath/spec-kit-preset-cross-platform-governance",
+      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-cross-platform-governance/archive/refs/tags/v0.2.1.zip"
+    },
+    {
+      "id": "agent-parity-governance",
+      "version": "v0.4.0",
+      "priority": 60,
+      "repository": "https://github.com/hindermath/spec-kit-preset-agent-parity-governance",
+      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-agent-parity-governance/archive/refs/tags/v0.4.0.zip"
+    },
+    {
+      "id": "autonomous-run-governance",
+      "version": "v0.3.0",
+      "priority": 70,
+      "repository": "https://github.com/hindermath/spec-kit-preset-autonomous-run-governance",
+      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-autonomous-run-governance/archive/refs/tags/v0.3.0.zip"
+    },
+    {
+      "id": "parallel-autonomous-run-governance",
+      "version": "v0.2.1",
+      "priority": 80,
+      "repository": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance",
+      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/archive/refs/tags/v0.2.1.zip"
+    }
+  ]
+}

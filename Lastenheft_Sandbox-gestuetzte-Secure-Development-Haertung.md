@@ -27,7 +27,7 @@ Dieses Lastenheft beschreibt einen spaeteren Spec-Kit-Lauf, der prueft, wie dies
 - `docs/secure-development/checklisten/CL_12_Agentische-KI-Sandbox.md`.
 - `docs/secure-development/mitgeltende-dokumente/Leitlinie_Sichere-Entwicklungs-Sandbox.md`.
 - Vorhandenes `Lastenheft_Secure-Development-Hardening.md` dieses Repositories.
-- Die sieben Governance-Presets: `security-governance`, `architecture-governance`, `isaqb-architecture-governance`, `a11y-governance`, `cross-platform-governance`, `agent-parity-governance`.
+- Die acht Governance-Presets: `security-governance`, `architecture-governance`, `isaqb-architecture-governance`, `a11y-governance`, `cross-platform-governance`, `agent-parity-governance`, `autonomous-run-governance`, `parallel-autonomous-run-governance`.
 - Sandbox-Kontext `container-images/absdd-image-sandbox`.
 
 ## Scope
@@ -77,7 +77,7 @@ Beruecksichtige:
 - CL_12 Agentische KI in Sandbox-Umgebungen.
 - Leitlinie_Sichere-Entwicklungs-Sandbox.md.
 - Lastenheft_Secure-Development-Hardening.md dieses Repositories.
-- Alle sieben Governance-Presets mit auditfaehigen Applicable/N/A/Open-Entscheidungen.
+- Alle acht Governance-Presets mit auditfaehigen Applicable/N/A/Open-Entscheidungen.
 - Projektkontext: .NET 10 / C# terminal UI framework and Turbo Vision port.
 - Build/Test-Baseline: dotnet restore/build/test; MSTest suites; Coverlet coverage gates for core assemblies; dotnet format where configured.
 - Dokumentations- und A11Y-Basis: DocFX regeneration requires Playwright + axe and lynx-oriented A11Y smoke review.

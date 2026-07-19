@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.1",
+  "campaignId": "00000000-0000-0000-0000-000000000000",
+  "workerId": "worker-01",
+  "runId": "00000000-0000-0000-0000-000000000001",
+  "status": "Completed",
+  "headSha": "replace-with-full-git-sha",
+  "autonomousStatePath": "specs/NNN-feature/autonomous-run-state.json",
+  "autonomousStateSha256": "replace-with-sha256",
+  "evidencePath": "specs/NNN-feature/parallel-worker-evidence.md",
+  "prUrl": null,
+  "handoffs": [
+    {
+      "consumerWorkerId": "worker-02",
+      "path": "specs/NNN-feature/handoffs/worker-01-to-worker-02.json",
+      "sha256": "replace-with-sha256"
+    }
+  ],
+  "summary": "Replace with a concise result."
+}

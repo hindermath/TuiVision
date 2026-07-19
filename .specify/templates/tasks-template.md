@@ -25,62 +25,6 @@ description: "Task list template for feature implementation"
 - **Mobile**: `api/src/`, `ios/src/` or `android/src/`
 - Paths shown below assume single project - adjust based on plan.md structure
 
-## Autonomous Task-Shaping Rules
-
-- Start with preflight and evidence-foundation tasks. Create
-  `specs/[###-feature]/pr-evidence.md` before implementation edits.
-- Complete one representative vertical slice with its test and proof before
-  spreading a repeated pattern.
-- Shape tasks around independently reviewable outcomes. Do not create one task
-  per evidence cell when a bounded task can complete a coherent matrix slice.
-- Put a failing or missing proof before implementation when the contract is
-  observable.
-- Before the first red test command, add a compile-surface review task covering
-  imports, public XML docs, harness helpers, focus/ownership assertions, and
-  linked-source assembly identity.
-- Group independent negative cases into a bounded project-local red matrix only
-  when each expected failure remains explicit and file/evidence ownership does
-  not cross the group boundary.
-- When source is linked into multiple assemblies, shape cross-project proof
-  around public contracts or state delegates instead of assuming shared CLR
-  type identity; use a shared compiled assembly only when the plan owns that
-  architecture decision.
-- Serialize tasks that write shared evidence, version, statistics, workflow,
-  agent-guidance, or the same source/test file. Do not mark them `[P]`.
-- Add trigger-based validation tasks and an explicit rationale for every
-  conditional gate that is not run.
-- Add a final candidate-integrity task. For `PublishPR` or `MergeAndSync`, stage
-  only the intended files, run `git diff --cached --check`, and compare staged
-  paths with repository status so no intended untracked or unstaged file remains
-  outside the commit. For `LocalImplementation`, use an equivalent per-file or
-  temporary-index check and preserve the prior index state.
-- Give every explicit `dotnet build` or `dotnet test` invocation its own prior
-  manual build-counter increment. Do not place multiple invocations behind one
-  increment, including through shell chaining.
-- Invoke repository validation helpers with an explicit repository root. Their
-  acceptance task must inspect both exit status and the error channel for
-  PowerShell error records, command-not-found messages, or fatal signatures.
-- Add remote delivery tasks only when `plan.md` delegates `PublishPR` or
-  `MergeAndSync`. Merge-and-sync tasks must include required checks, actionable
-  review threads, branch cleanup, and proof that local `main` equals
-  `origin/main`. Every remote or delivery task must name the exact repository
-  evidence path that records its acceptance result.
-- Before a merge task, add an acceptance-gate mapping task that verifies the
-  actual workflow, job, platform, and executed command for every required proof.
-  A green aggregate or platform-named tooling job must not satisfy a runtime,
-  platform, documentation, security, or other gate it did not execute.
-- Keep pre-merge gate verification explicit, but route current-head review
-  facts to one named closeout evidence path when committing those facts would
-  change the reviewed head and invalidate the evidence. Do not create repeated
-  evidence commits that each retrigger the same remote gates. A closeout task
-  must not require its own PR URL, reviewed-head result, or merge commit inside
-  the same repository file; those terminal facts are verified externally.
-- If push and pull-request events can start equivalent checks, add one task to
-  identify the pull-request-context gate and record duplicate runs without
-  cancelling them unless an explicit safe concurrency contract exists.
-- End with a short evidence retrospective that proposes concrete workflow
-  refinements without silently changing the current feature scope.
-
 <!--
   ============================================================================
   IMPORTANT: The tasks below are SAMPLE TASKS for illustration purposes only.
@@ -107,7 +51,6 @@ description: "Task list template for feature implementation"
 - [ ] T001 Create project structure per implementation plan
 - [ ] T002 Initialize [language] project with [framework] dependencies
 - [ ] T003 [P] Configure linting and formatting tools
-- [ ] T004 Create the run evidence from `.specify/templates/autonomous-run-evidence-template.md` and record delivery authority, scope boundaries, and convergence gates
 
 ---
 
@@ -119,12 +62,12 @@ description: "Task list template for feature implementation"
 
 Examples of foundational tasks (adjust based on your project):
 
-- [ ] T005 Setup database schema and migrations framework
-- [ ] T006 [P] Implement authentication/authorization framework
-- [ ] T007 [P] Setup API routing and middleware structure
-- [ ] T008 Create base models/entities that all stories depend on
-- [ ] T009 Configure error handling and logging infrastructure
-- [ ] T010 Setup environment configuration management
+- [ ] T004 Setup database schema and migrations framework
+- [ ] T005 [P] Implement authentication/authorization framework
+- [ ] T006 [P] Setup API routing and middleware structure
+- [ ] T007 Create base models/entities that all stories depend on
+- [ ] T008 Configure error handling and logging infrastructure
+- [ ] T009 Setup environment configuration management
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -140,17 +83,17 @@ Examples of foundational tasks (adjust based on your project):
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T011 [P] [US1] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T012 [P] [US1] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T010 [P] [US1] Contract test for [endpoint] in tests/contract/test_[name].py
+- [ ] T011 [P] [US1] Integration test for [user journey] in tests/integration/test_[name].py
 
 ### Implementation for User Story 1
 
-- [ ] T013 [P] [US1] Create [Entity1] model in src/models/[entity1].py
-- [ ] T014 [P] [US1] Create [Entity2] model in src/models/[entity2].py
-- [ ] T015 [US1] Implement [Service] in src/services/[service].py (depends on T013, T014)
-- [ ] T016 [US1] Implement [endpoint/feature] in src/[location]/[file].py
-- [ ] T017 [US1] Add validation and error handling
-- [ ] T018 [US1] Add logging for user story 1 operations
+- [ ] T012 [P] [US1] Create [Entity1] model in src/models/[entity1].py
+- [ ] T013 [P] [US1] Create [Entity2] model in src/models/[entity2].py
+- [ ] T014 [US1] Implement [Service] in src/services/[service].py (depends on T012, T013)
+- [ ] T015 [US1] Implement [endpoint/feature] in src/[location]/[file].py
+- [ ] T016 [US1] Add validation and error handling
+- [ ] T017 [US1] Add logging for user story 1 operations
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
@@ -164,15 +107,15 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Tests for User Story 2 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T019 [P] [US2] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T020 [P] [US2] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T018 [P] [US2] Contract test for [endpoint] in tests/contract/test_[name].py
+- [ ] T019 [P] [US2] Integration test for [user journey] in tests/integration/test_[name].py
 
 ### Implementation for User Story 2
 
-- [ ] T021 [P] [US2] Create [Entity] model in src/models/[entity].py
-- [ ] T022 [US2] Implement [Service] in src/services/[service].py
-- [ ] T023 [US2] Implement [endpoint/feature] in src/[location]/[file].py
-- [ ] T024 [US2] Integrate with User Story 1 components (if needed)
+- [ ] T020 [P] [US2] Create [Entity] model in src/models/[entity].py
+- [ ] T021 [US2] Implement [Service] in src/services/[service].py
+- [ ] T022 [US2] Implement [endpoint/feature] in src/[location]/[file].py
+- [ ] T023 [US2] Integrate with User Story 1 components (if needed)
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 
@@ -186,14 +129,14 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Tests for User Story 3 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T025 [P] [US3] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T026 [P] [US3] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T024 [P] [US3] Contract test for [endpoint] in tests/contract/test_[name].py
+- [ ] T025 [P] [US3] Integration test for [user journey] in tests/integration/test_[name].py
 
 ### Implementation for User Story 3
 
-- [ ] T027 [P] [US3] Create [Entity] model in src/models/[entity].py
-- [ ] T028 [US3] Implement [Service] in src/services/[service].py
-- [ ] T029 [US3] Implement [endpoint/feature] in src/[location]/[file].py
+- [ ] T026 [P] [US3] Create [Entity] model in src/models/[entity].py
+- [ ] T027 [US3] Implement [Service] in src/services/[service].py
+- [ ] T028 [US3] Implement [endpoint/feature] in src/[location]/[file].py
 
 **Checkpoint**: All user stories should now be independently functional
 
@@ -209,7 +152,7 @@ Examples of foundational tasks (adjust based on your project):
 
 - [ ] TXXX [P] Documentation updates in docs/
 - [ ] TXXX [P] Verify the implementation against the matching Level-2 Project Environment Registry row in `constitution.md`
-- [ ] TXXX [P] Verify installed Spec-Kit governance presets with `specify preset list`; for C#/.NET Level-2 projects confirm the all-six default or document the justified exception
+- [ ] TXXX [P] Verify the exact eight-preset matrix with `install-spec-kit-governance-presets.* --check-only` / `-CheckOnly`; document any justified repository exception
 - [ ] TXXX [P] Verify primary implementation language against the MSL allow-list in `constitution.md`, Principle XI; cite the Level-2 non-MSL justification if applicable
 - [ ] TXXX [P] Run the required A11Y/text-first review path for affected user-facing artefacts
 - [ ] TXXX [P] Update `docs/project-statistics.md` when the feature changes statistics-relevant artefacts or delivery evidence

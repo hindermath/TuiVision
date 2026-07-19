@@ -45,6 +45,7 @@
 - Same arguments accepted and same defaults applied:
 - Same exit codes and error messages:
 - Same dry-run behaviour (`--dry-run` ↔ `-WhatIf`):
+- Same check-only behaviour is strictly read-only on every platform:
 - Same output format (where applicable):
 - Same side-effects (files written, network calls, registry/keychain
   access):
@@ -76,6 +77,12 @@
 - PowerShell: no `Invoke-Expression` on untrusted input:
 - PowerShell subprocess calls use `-NoProfile`:
 - Windows: `$env:HOME` empty-string handling explicit:
+- Repository-root and root-level relative file arguments were tested with and
+  without an explicit `./` or `.\` prefix where the CLI accepts both:
+- Native-host exceptions are explicitly scoped and do not silently weaken a
+  project-wide container or sandbox policy:
+- Evidence distinguishes an operating-system result from a provider,
+  workflow-name, or runner-label assumption:
 
 ## Cross-References
 

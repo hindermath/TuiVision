@@ -2,9 +2,9 @@
 
 > **GENERATED FILE / GENERIERTE DATEI:** Nicht manuell bearbeiten. Der Sammelband wird aus den zwölf Dateien unter `checklisten/` erzeugt. / Do not edit manually. This compendium is generated from the twelve files under `checklisten/`.
 
-**Baseline-Version / Baseline version:** 3.1.0
-**Dokumentversion / Document version:** 2.1.0
-**Stand / Date:** 2026-07-17
+**Baseline-Version / Baseline version:** 3.2.0
+**Dokumentversion / Document version:** 2.2.0
+**Stand / Date:** 2026-07-19
 **Quelle / Source:** `baseline-manifest.json` und / and `checklisten/`
 
 ## Zweck / Purpose
@@ -9399,8 +9399,8 @@ This document is organization-neutral and written as a generic training and revi
 ## Checkliste 09 – KI-gestuetzte Codeerzeugung / AI-Assisted Code Generation
 
 **Dokument-ID / Document ID:** CL-09
-**Version / Version:** 2.1.0
-**Baseline-Version / Baseline version:** 3.1.0
+**Version / Version:** 2.2.0
+**Baseline-Version / Baseline version:** 3.2.0
 **Dokumenttyp / Document type:** Kanonische, wiederverwendbare Pruefvorlage / Canonical reusable review template
 
 ### Nachweisinstanz / Evidence Instance
@@ -9490,9 +9490,9 @@ whose output flows into production code or production-near scripts.
 
 **EN:** Write short and clear explanations. Avoid unexplained abbreviations. If an item is technically difficult, describe the current state, the risk, and the next feasible step.
 
-**DE:** Wenn agentische KI eine wesentliche Feature-Implementierung übernimmt, gilt zusätzlich `CL_12_Agentische-KI-Sandbox`. Das Feature soll über GitHub Spec Kit im Spec-Driven-Development-Ablauf (SDD) gesteuert werden. Dazu gehören Spezifikation, Klärung, Plan, Checkliste, Aufgaben, Analyse und Implementierung sowie die sieben Governance-Presets. Installation, Nachweis, Aktualität und inhaltliche Abdeckung der Governance-Presets werden in `CL_12_Agentische-KI-Sandbox` bewertet. Wenn die Spec-Kit-Artefakte die anwendbaren Prüfpunkte vollständig über eine Nachweis-Matrix abdecken, kann die separate manuelle Ausfüllung dieser Checkliste entfallen.
+**DE:** Wenn agentische KI eine wesentliche Feature-Implementierung übernimmt, gilt zusätzlich `CL_12_Agentische-KI-Sandbox`. Das Feature soll über GitHub Spec Kit im Spec-Driven-Development-Ablauf (SDD) gesteuert werden. Dazu gehören Spezifikation, Klärung, Plan, Checkliste, Aufgaben, Analyse und Implementierung sowie die acht Governance-Presets. Installation, Nachweis, Aktualität und inhaltliche Abdeckung der Governance-Presets werden in `CL_12_Agentische-KI-Sandbox` bewertet. Wenn die Spec-Kit-Artefakte die anwendbaren Prüfpunkte vollständig über eine Nachweis-Matrix abdecken, kann die separate manuelle Ausfüllung dieser Checkliste entfallen.
 
-**EN:** If agentic AI performs a material feature implementation, `CL_12_Agentische-KI-Sandbox` also applies. The feature should be controlled through GitHub Spec Kit in the spec-driven development (SDD) flow. This includes specification, clarification, plan, checklist, tasks, analysis, implementation, and the seven governance presets. Installation, evidence, currency, and content coverage of the governance presets are assessed in `CL_12_Agentische-KI-Sandbox`. If the Spec Kit artefacts fully cover the applicable review points through an evidence matrix, separate manual completion of this checklist may be omitted.
+**EN:** If agentic AI performs a material feature implementation, `CL_12_Agentische-KI-Sandbox` also applies. The feature should be controlled through GitHub Spec Kit in the spec-driven development (SDD) flow. This includes specification, clarification, plan, checklist, tasks, analysis, implementation, and the eight governance presets. Installation, evidence, currency, and content coverage of the governance presets are assessed in `CL_12_Agentische-KI-Sandbox`. If the Spec Kit artefacts fully cover the applicable review points through an evidence matrix, separate manual completion of this checklist may be omitted.
 
 **DE:** Jeder Prüfpunkt muss deshalb drei Fragen beantworten: Was bedeutet die Anforderung im Projektalltag? Was ist konkret zu tun oder zu entscheiden? Welcher Nachweis zeigt das Ergebnis? Verwende Standard-IDs, Toolnamen und Abkürzungen nur zusammen mit einer kurzen Erklärung in Alltagssprache. Wenn ein Punkt für Auszubildende oder neue Teammitglieder nicht selbsterklärend ist, ergänze eine kurze Erklärung in der Begründung.
 
@@ -11353,6 +11353,7 @@ justified as not applicable.
 
 - **Version 2.0.0 (2026-07-10):** Einheitliches zweiachsiges Statusmodell, stabile CL-IDs, Lernstufe, Rollen-, Evidenz-, Restrisiko- und Neubewertungsfelder sowie klare Trennung zwischen Vorlage und Projektnachweis eingeführt; synchron mit sichere-Entwicklung-Basis 3.0.0. / Added the unified two-axis status model, stable CL IDs, learning-stage, role, evidence, residual-risk, and re-evaluation fields, plus clear separation between template and project evidence; synchronized with secure-development baseline 3.0.0.
 - **Version 2.1.0 (2026-07-17):** Nachweisrahmen auf das verbindliche Siebenerprofil einschließlich `autonomous-run-governance` erweitert; autonome Ausführung bleibt ausdrücklich delegationspflichtig; synchron mit sichere-Entwicklung-Basis 3.1.0. / Extended the evidence framework to the binding seven-preset profile including `autonomous-run-governance`; autonomous execution still requires explicit delegation; synchronized with secure-development baseline 3.1.0.
+- **Version 2.2.0 (2026-07-19):** Nachweisrahmen auf das verbindliche Achterprofil einschließlich `parallel-autonomous-run-governance` erweitert; parallele autonome Kampagnen bleiben ausdrücklich delegationspflichtig; synchron mit sichere-Entwicklung-Basis 3.2.0. / Extended the evidence framework to the binding eight-preset profile including `parallel-autonomous-run-governance`; parallel autonomous campaigns still require explicit delegation; synchronized with secure-development baseline 3.2.0.
 
 ---
 
@@ -13878,8 +13879,8 @@ This document is organization-neutral and written as a generic training and revi
 ## Checkliste 12 – Agentische KI in Sandbox-Umgebungen / Agentic AI in Sandbox Environments
 
 **Dokument-ID / Document ID:** CL-12
-**Version / Version:** 2.1.0
-**Baseline-Version / Baseline version:** 3.1.0
+**Version / Version:** 2.2.0
+**Baseline-Version / Baseline version:** 3.2.0
 **Dokumenttyp / Document type:** Kanonische, wiederverwendbare Pruefvorlage / Canonical reusable review template
 
 ### Nachweisinstanz / Evidence Instance
@@ -13947,9 +13948,9 @@ Diese Datei ist eine wiederverwendbare Vorlage. Ausgefüllte Projektnachweise we
 
 ### Beispiel / Example
 
-**DE:** Ein Projekt nutzt OpenCode oder Codex in einer Container-Sandbox. Das Projektverzeichnis ist als Host-Mount eingebunden. Agentendaten, Caches und Zugangsdaten liegen in getrennten Sandbox-Speichern. Spec Kit ist im Projekt initialisiert, alle sieben Governance-Presets sind installiert, und der Pull Request enthält menschliches Review.
+**DE:** Ein Projekt nutzt OpenCode oder Codex in einer Container-Sandbox. Das Projektverzeichnis ist als Host-Mount eingebunden. Agentendaten, Caches und Zugangsdaten liegen in getrennten Sandbox-Speichern. Spec Kit ist im Projekt initialisiert, alle acht Governance-Presets sind installiert, und der Pull Request enthält menschliches Review.
 
-**EN:** A project uses OpenCode or Codex in a container sandbox. The project directory is mounted from the host. Agent data, caches, and credentials are stored in separate sandbox storage. Spec Kit is initialized in the project, all seven governance presets are installed, and the pull request contains human review.
+**EN:** A project uses OpenCode or Codex in a container sandbox. The project directory is mounted from the host. Agent data, caches, and credentials are stored in separate sandbox storage. Spec Kit is initialized in the project, all eight governance presets are installed, and the pull request contains human review.
 
 ### A11Y-Hinweise / A11Y Notes
 
@@ -14097,8 +14098,8 @@ Diese Datei ist eine wiederverwendbare Vorlage. Ausgefüllte Projektnachweise we
 
 #### CL-12-06: GitHub Spec Kit und Governance-Presets / GitHub Spec Kit and Governance Presets
 
-- **DE:** Wenn agentische KI Feature-Implementierungen oder andere strukturierte Entwicklungsarbeit übernimmt, ist GitHub Spec Kit im Projekt initialisiert. Feature-Implementierungen folgen dem Spec-Driven-Development-Ablauf (SDD): `/speckit.constitution`, `/speckit.specify`, `/speckit.clarify`, `/speckit.plan`, `/speckit.checklist`, `/speckit.tasks`, `/speckit.analyze`, `/speckit.implement`. Die sieben Governance-Presets sind installiert oder eine begründete Ausnahme ist dokumentiert. Bei dauerhafter Nutzung ist `.specify/presets/` Teil der Projekt-Policy; lokale Caches wie `.specify/presets/.cache/` werden nicht versioniert. Wenn die Spec-Kit-Artefakte die anwendbaren Prüfpunkte vollständig abdecken, gelten sie als gleichwertige Nachweisführung zur separaten manuellen Ausfüllung.
-- **EN:** If agentic AI performs feature implementations or other structured development work, GitHub Spec Kit is initialized in the project. Feature implementations follow the spec-driven development (SDD) flow: `/speckit.constitution`, `/speckit.specify`, `/speckit.clarify`, `/speckit.plan`, `/speckit.checklist`, `/speckit.tasks`, `/speckit.analyze`, `/speckit.implement`. The seven governance presets are installed or a justified exception is documented. For permanent use, `.specify/presets/` is part of the project policy; local caches such as `.specify/presets/.cache/` are not versioned. If the Spec Kit artefacts fully cover the applicable review points, they count as equivalent evidence instead of separate manual completion.
+- **DE:** Wenn agentische KI Feature-Implementierungen oder andere strukturierte Entwicklungsarbeit übernimmt, ist GitHub Spec Kit im Projekt initialisiert. Feature-Implementierungen folgen dem Spec-Driven-Development-Ablauf (SDD): `/speckit.constitution`, `/speckit.specify`, `/speckit.clarify`, `/speckit.plan`, `/speckit.checklist`, `/speckit.tasks`, `/speckit.analyze`, `/speckit.implement`. Die acht Governance-Presets sind installiert oder eine begründete Ausnahme ist dokumentiert. Bei dauerhafter Nutzung ist `.specify/presets/` Teil der Projekt-Policy; lokale Caches wie `.specify/presets/.cache/` werden nicht versioniert. Wenn die Spec-Kit-Artefakte die anwendbaren Prüfpunkte vollständig abdecken, gelten sie als gleichwertige Nachweisführung zur separaten manuellen Ausfüllung. Die Installation der Autonomous-Presets startet keinen Lauf und erteilt keine Remote-, Merge-, Bypass-, Secret- oder Provider-Rechte.
+- **EN:** If agentic AI performs feature implementations or other structured development work, GitHub Spec Kit is initialized in the project. Feature implementations follow the spec-driven development (SDD) flow: `/speckit.constitution`, `/speckit.specify`, `/speckit.clarify`, `/speckit.plan`, `/speckit.checklist`, `/speckit.tasks`, `/speckit.analyze`, `/speckit.implement`. The eight governance presets are installed or a justified exception is documented. For permanent use, `.specify/presets/` is part of the project policy; local caches such as `.specify/presets/.cache/` are not versioned. If the Spec Kit artefacts fully cover the applicable review points, they count as equivalent evidence instead of separate manual completion. Installing the autonomous presets starts no run and grants no remote, merge, bypass, secret, or provider authority.
 - **Akzeptanz / Acceptance:** Spec-Kit-Artefakte zum Feature (`specs/<feature>/spec.md`, `plan.md`, `tasks.md`), Checklisten- oder Analyseergebnis, Preset-Liste (zum Beispiel `specify preset list`) sowie dokumentierte Preset-Versionen und Prioritäten sind vorhanden; alternativ liegt ein genehmigtes Ausnahme-Ticket vor. Detailprüfungen wie `specify preset info ...` oder `specify preset resolve ...` liegen bei Prüfbedarf vor. Eine Nachweis-Matrix oder ein eindeutiger Verweis ordnet die anwendbaren CL-Prüfpunkte den Spec-Kit-Artefakten, Review-Nachweisen und Preset-Nachweisen zu. / Spec Kit artefacts for the feature (`specs/<feature>/spec.md`, `plan.md`, `tasks.md`), checklist or analysis result, preset list (for example `specify preset list`), and documented preset versions and priorities are available; alternatively an approved exception ticket exists. Detail checks such as `specify preset info ...` or `specify preset resolve ...` are available when needed for audit. An evidence matrix or clear reference maps the applicable CL review points to the Spec Kit artefacts, review evidence, and preset evidence.
 - **Lernstufe / Learning stage:** _Grundlage, Aufbau oder Vertiefung gemaess Lernpfad dokumentieren. / Record foundation, intermediate, or advanced according to the learning path._
 - **Verantwortliche Rolle / Responsible role:** _Lernende Person, ausbildende Person, Projektverantwortung oder Security-Rolle benennen. / Name learner, instructor, project owner, or security role._
@@ -14229,9 +14230,9 @@ Diese Datei ist eine wiederverwendbare Vorlage. Ausgefüllte Projektnachweise we
 
 #### CL-12-12: Preset-Aktualisierung und Inhaltsabdeckung / Preset Updates and Content Coverage
 
-- **DE:** Die sechs Spec-Kit-Governance-Presets werden mindestens quartalsweise und anlassbezogen auf Aktualität geprüft. Anlassbezogen ist die Prüfung nötig, wenn sich Preset-Kataloge, Preset-Inhalte, Prioritäten, projektlokale Overrides oder RL-/CL-Dokumentation zu Spec Kit ändern. Preset-Änderungen werden nicht automatisch übernommen, sondern mit Quelle, Version, Priorität, wirksamer Auflösung und Review-Ergebnis dokumentiert.
-- **EN:** The six Spec Kit governance presets are checked for currency at least quarterly and when triggered by a relevant change. A triggered check is required when preset catalogs, preset contents, priorities, project-local overrides, or RL/CL documentation about Spec Kit change. Preset changes are not applied automatically; they are documented with source, version, priority, effective resolution, and review result.
-- **Preset-zu-CL-Mapping / Preset-to-CL mapping:** `security-governance` -> CL_01, CL_05, CL_06, CL_07, CL_08, CL_09; `architecture-governance` -> CL_02, CL_04; `isaqb-architecture-governance` -> CL_02; `a11y-governance` -> A11Y-Hinweise im Sammelband, CL_06 bei Advisories, CL_09 bei didaktischen Kommentaren, CL_10 bei CLI-/Tooling-Artefakten; `cross-platform-governance` -> CL_08 und CL_10; `agent-parity-governance` -> CL_12, AGENTS.md und Spec-Kit-Templates.
+- **DE:** Die acht Spec-Kit-Governance-Presets werden mindestens quartalsweise und anlassbezogen auf Aktualität geprüft. Anlassbezogen ist die Prüfung nötig, wenn sich Preset-Kataloge, Preset-Inhalte, Prioritäten, projektlokale Overrides oder RL-/CL-Dokumentation zu Spec Kit ändern. Preset-Änderungen werden nicht automatisch übernommen, sondern mit Quelle, Version, Priorität, wirksamer Auflösung und Review-Ergebnis dokumentiert.
+- **EN:** The eight Spec Kit governance presets are checked for currency at least quarterly and when triggered by a relevant change. A triggered check is required when preset catalogs, preset contents, priorities, project-local overrides, or RL/CL documentation about Spec Kit change. Preset changes are not applied automatically; they are documented with source, version, priority, effective resolution, and review result.
+- **Preset-zu-CL-Mapping / Preset-to-CL mapping:** `security-governance` -> CL_01, CL_05, CL_06, CL_07, CL_08, CL_09; `architecture-governance` -> CL_02, CL_04; `isaqb-architecture-governance` -> CL_02; `a11y-governance` -> A11Y-Hinweise im Sammelband, CL_06 bei Advisories, CL_09 bei didaktischen Kommentaren, CL_10 bei CLI-/Tooling-Artefakten; `cross-platform-governance` -> CL_08 und CL_10; `agent-parity-governance` -> CL_12, AGENTS.md und Spec-Kit-Templates; `autonomous-run-governance` -> CL_09 und CL_12; `parallel-autonomous-run-governance` -> CL_09 und CL_12.
 - **Akzeptanz / Acceptance:** `specify preset list`, `specify preset info ...` und relevante `specify preset resolve ...`-Nachweise liegen vor; Preset-Quelle oder Katalogeintrag wurde vor Installation oder Aktualisierung geprüft; Update- oder Ausnahme-Ticket nennt Review-Datum, verantwortliche Person und betroffene RL-/CL-Prüfpunkte. Die Mapping-Prüfung nennt Preset-Versionen, Prioritäten, wirksame Auflösung, Evidence-Matrix, offene Mapping-Lücken und begründete N/A-Entscheidungen. Sie zeigt, ob die Spec-Kit-Dokumentation die separate Checklisten-Ausfüllung vollständig ersetzt oder welche Prüfpunkte separat nachzudokumentieren sind. / `specify preset list`, `specify preset info ...`, and relevant `specify preset resolve ...` evidence are available; the preset source or catalog entry was reviewed before installation or update; the update or exception ticket names the review date, responsible person, and affected RL/CL review points. The mapping check names preset versions, priorities, effective resolution, evidence matrix, open mapping gaps, and justified N/A decisions. It shows whether the Spec Kit documentation fully replaces separate checklist completion or which review points need separate follow-up documentation.
 - **Lernstufe / Learning stage:** _Grundlage, Aufbau oder Vertiefung gemaess Lernpfad dokumentieren. / Record foundation, intermediate, or advanced according to the learning path._
 - **Verantwortliche Rolle / Responsible role:** _Lernende Person, ausbildende Person, Projektverantwortung oder Security-Rolle benennen. / Name learner, instructor, project owner, or security role._
@@ -14415,6 +14416,7 @@ Diese Datei ist eine wiederverwendbare Vorlage. Ausgefüllte Projektnachweise we
 
 - **Version 2.0.0 (2026-07-10):** Einheitliches zweiachsiges Statusmodell, stabile CL-IDs, Lernstufe, Rollen-, Evidenz-, Restrisiko- und Neubewertungsfelder sowie klare Trennung zwischen Vorlage und Projektnachweis eingeführt; synchron mit sichere-Entwicklung-Basis 3.0.0. / Added the unified two-axis status model, stable CL IDs, learning-stage, role, evidence, residual-risk, and re-evaluation fields, plus clear separation between template and project evidence; synchronized with secure-development baseline 3.0.0.
 - **Version 2.1.0 (2026-07-17):** Verbindliches Siebenerprofil einschließlich `autonomous-run-governance` aufgenommen; Installation von autonomer Ausführung und Remote-Berechtigungen abgegrenzt; synchron mit sichere-Entwicklung-Basis 3.1.0. / Added the binding seven-preset profile including `autonomous-run-governance`; separated installation from autonomous execution and remote authority; synchronized with secure-development baseline 3.1.0.
+- **Version 2.2.0 (2026-07-19):** Verbindliches Achterprofil einschließlich `parallel-autonomous-run-governance` aufgenommen; Installation von Kampagnenstart und Remote-Berechtigungen abgegrenzt; synchron mit sichere-Entwicklung-Basis 3.2.0. / Added the binding eight-preset profile including `parallel-autonomous-run-governance`; separated installation from campaign start and remote authority; synchronized with secure-development baseline 3.2.0.
 
 ---
 
@@ -14422,4 +14424,4 @@ Diese Datei ist eine wiederverwendbare Vorlage. Ausgefüllte Projektnachweise we
 
 | Version | Datum / Date | Änderung / Change |
 |---|---|---|
-| 2.1.0 | 2026-07-17 | Aus den zwölf kanonischen Einzelchecklisten der sicheren-Entwicklung-Basis 3.1.0 erzeugt; einheitliches zweiachsiges Statusmodell und klare Trennung zwischen Vorlage und Projektnachweis. / Generated from the twelve canonical individual checklists of secure-development baseline 3.1.0; unified two-axis status model and clear separation between template and project evidence. |
+| 2.2.0 | 2026-07-19 | Aus den zwölf kanonischen Einzelchecklisten der sicheren-Entwicklung-Basis 3.2.0 erzeugt; einheitliches zweiachsiges Statusmodell und klare Trennung zwischen Vorlage und Projektnachweis. / Generated from the twelve canonical individual checklists of secure-development baseline 3.2.0; unified two-axis status model and clear separation between template and project evidence. |

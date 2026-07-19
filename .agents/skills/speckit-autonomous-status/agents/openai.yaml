@@ -1,4 +1,0 @@
-interface:
-  display_name: "Spec Kit Autonomous Status"
-  short_description: "Inspect a paused or active autonomous run"
-  default_prompt: "Inspect the current autonomous Spec-Kit run read-only and report its exact resume boundary."

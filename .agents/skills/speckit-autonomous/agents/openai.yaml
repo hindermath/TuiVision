@@ -1,4 +1,0 @@
-interface:
-  display_name: "Spec Kit Autonomous"
-  short_description: "Run a complete Spec-Kit feature to verified delivery"
-  default_prompt: "Execute the complete autonomous Spec-Kit workflow for the next accepted feature and stop only at a defined blocker."
