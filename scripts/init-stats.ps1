@@ -52,7 +52,7 @@ function Write-StatsEntry {
 
     $dir = Split-Path $StatsFile -Parent
     if (-not (Test-Path -LiteralPath $dir)) {
-        New-Item -ItemType Directory -Path $dir -Force | Out-Null
+        [IO.Directory]::CreateDirectory($dir) | Out-Null
     }
 
     if (Test-Path -LiteralPath $StatsFile) {

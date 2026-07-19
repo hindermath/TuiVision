@@ -27,7 +27,7 @@ function Invoke-HgWriteStats {
 
     try {
         if (-not (Test-Path -LiteralPath $StatsFile)) {
-            @("# STATS.md", "", "## Überblick / Overview", "", "Compliance-Historie -- Compliance History", "", "## Verwendung / Usage", "", "Jeder ``check-homogeneity.sh``-Aufruf fuegt hier einen Eintrag hinzu.", "", "Each ``check-homogeneity.sh`` run appends an entry here.", "") |
+            @("# STATS.md", "", "## Überblick / Overview", "", "Compliance-Historie -- Compliance History", "", "## Verwendung / Usage", "", "Jeder ``check-homogeneity.*``-Aufruf fuegt hier einen Eintrag hinzu.", "", "Each ``check-homogeneity.*`` run appends an entry here.", "") |
                 Set-Content -LiteralPath $StatsFile -Encoding UTF8
         }
 
