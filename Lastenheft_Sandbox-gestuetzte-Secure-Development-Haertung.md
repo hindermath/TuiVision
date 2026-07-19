@@ -27,7 +27,7 @@ Dieses Lastenheft beschreibt einen spaeteren Spec-Kit-Lauf, der prueft, wie dies
 - `docs/secure-development/checklisten/CL_12_Agentische-KI-Sandbox.md`.
 - `docs/secure-development/mitgeltende-dokumente/Leitlinie_Sichere-Entwicklungs-Sandbox.md`.
 - Vorhandenes `Lastenheft_Secure-Development-Hardening.md` dieses Repositories.
-- Die acht Governance-Presets: `security-governance`, `architecture-governance`, `isaqb-architecture-governance`, `a11y-governance`, `cross-platform-governance`, `agent-parity-governance`.
+- Die acht Governance-Presets: `security-governance`, `architecture-governance`, `isaqb-architecture-governance`, `a11y-governance`, `cross-platform-governance`, `agent-parity-governance`, `autonomous-run-governance`, `parallel-autonomous-run-governance`.
 - Sandbox-Kontext `container-images/absdd-image-sandbox`.
 
 ## Scope

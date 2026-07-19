@@ -53,10 +53,10 @@
     },
     {
       "id": "parallel-autonomous-run-governance",
-      "version": "v0.2.0",
+      "version": "v0.2.1",
       "priority": 80,
       "repository": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance",
-      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/archive/refs/tags/v0.2.0.zip"
+      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/archive/refs/tags/v0.2.1.zip"
     }
   ]
 }

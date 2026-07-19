@@ -331,9 +331,9 @@
       "installed_at": "2026-07-19T13:32:55.294899+00:00"
     },
     "parallel-autonomous-run-governance": {
-      "version": "0.2.0",
+      "version": "0.2.1",
       "source": "local",
-      "manifest_hash": "sha256:35347a7d87da0255a3135a1395973995a8ec55c573a92c0a4412a6e56d808a89",
+      "manifest_hash": "sha256:64a10bc72bd2d905c1604ca1c216b67174b3c27fbecb2682c203de3ef453550a",
       "enabled": true,
       "priority": 80,
       "registered_commands": {
@@ -387,7 +387,7 @@
         "speckit-parallel-autonomous-resume",
         "speckit-parallel-autonomous-consolidate"
       ],
-      "installed_at": "2026-07-19T13:32:56.756357+00:00"
+      "installed_at": "2026-07-19T14:10:30.393666+00:00"
     }
   }
 }

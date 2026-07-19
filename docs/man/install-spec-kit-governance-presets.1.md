@@ -55,6 +55,12 @@ blocking local Git hooks; semantic content remains unchanged.*
 | `--force` | `-Force` | Vorhandene Presets entfernen und aus der Matrix neu installieren |
 | `--dry-run` | `-WhatIf` | Nur anzeigen, keine Schreiboperationen |
 
+`--check-only` / `-CheckOnly` ist ein ausschliesslich lesender Modus und kann
+nicht mit `--force` / `-Force` oder `--dry-run` / `-WhatIf` kombiniert werden.
+
+*`--check-only` / `-CheckOnly` is an exclusively read-only mode and cannot be
+combined with `--force` / `-Force` or `--dry-run` / `-WhatIf`.*
+
 ## Beispiele / Examples
 
 ```bash

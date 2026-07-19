@@ -1,6 +1,6 @@
 # Parallel Autonomous Run Governance Preset
 
-Version: `0.2.0`
+Version: `0.2.1`
 Status: validiertes achtes Standard-Preset; Kampagnenstart bleibt delegationspflichtig
 Priority: `80`
 Requires: Spec Kit `>=0.8.3` and `autonomous-run-governance >=0.2.2`
@@ -21,18 +21,18 @@ does not grant execution or remote authority.*
 
 ```bash
 specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/archive/refs/tags/v0.2.0.zip \
+  --from https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/archive/refs/tags/v0.2.1.zip \
   --priority 80
 specify preset add --dev /path/to/parallel-autonomous-run-governance --priority 80
 specify preset info parallel-autonomous-run-governance
 ```
 
-Version `0.2.0` gehoert zur installierten Standard-Achtermatrix. Das Starten
+Version `0.2.1` gehoert zur installierten Standard-Achtermatrix. Das Starten
 einer parallelen autonomen Kampagne bleibt eine ausdruecklich zu delegierende
 Aktion. Die 13-Worker-Entwicklungsprobe und der 24-Worker-Feldtest mit sechs
 MSL-Sprachen sind abgeschlossen.
 
-*Version `0.2.0` is part of the installed standard eight-preset matrix. Starting
+*Version `0.2.1` is part of the installed standard eight-preset matrix. Starting
 a parallel autonomous campaign still requires explicit delegation. The
 13-worker development smoke and the 24-worker field test across six MSL
 languages are complete.*

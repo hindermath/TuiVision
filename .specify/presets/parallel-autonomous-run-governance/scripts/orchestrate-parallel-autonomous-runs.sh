@@ -2,6 +2,7 @@
 set -euo pipefail
 
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+preset_root="$(cd -- "$script_dir/.." && pwd)"
 
 case "${1:-}" in
   -h|--help)
@@ -21,8 +22,8 @@ Status output:
   -OutputFormat Json|Text
 
 Documentation:
-  docs/man/orchestrate-parallel-autonomous-runs.1
 EOF
+    printf '  %s/docs/man/orchestrate-parallel-autonomous-runs.1\n' "$preset_root"
     exit 0
     ;;
 esac

@@ -10,7 +10,8 @@ Schritte für ein neues Feature:
 3. **Implementierungsplan** — `speckit plan` → `specs/{branch}/plan.md`
 4. **Aufgabenliste** — `speckit tasks` → `specs/{branch}/tasks.md`
 5. **Implementieren** — `speckit implement` → Aufgaben aus `tasks.md` abarbeiten
-6. **Validieren** — `bash scripts/check-homogeneity.sh` → Compliance-Score prüfen
+6. **Validieren** — `bash ~/scripts/check-homogeneity.sh "$PWD"` oder
+   `pwsh ~/scripts/check-homogeneity.ps1 -TargetDir "$PWD"` → Compliance-Score prüfen
 
 Alle Spec-Artefakte werden im Branch-Verzeichnis `specs/{branch}/` gespeichert und versioniert.
 
@@ -30,7 +31,7 @@ Workspace-Familie ist:
 | `cross-platform-governance` | Cross-Platform Governance | `v0.2.1` | `50` |
 | `agent-parity-governance` | Agent Parity Governance | `v0.4.0` | `60` |
 | `autonomous-run-governance` | Autonomous Run Governance | `v0.3.0` | `70` |
-| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.0` | `80` |
+| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.1` | `80` |
 
 `autonomous-run-governance` ist Teil der Standard-Achtermatrix. Vollständige
 autonome Läufe bleiben ausdrücklich delegationspflichtig. `LocalImplementation` ist der
@@ -61,7 +62,7 @@ begründete Ausnahme dokumentiert ist. Nach Installation oder Update prüfen:
 `specify preset info <id>` und bei Template-Fragen `specify preset resolve
 <template>`. `.specify/presets/` wird committed, `.specify/presets/.cache/`
 nicht. Alle acht Presets erzeugen oder verlangen audit-ready Spec-Kit-Run-Evidenz mit `Applicable` / `N/A` / `Open`, Begruendung, Evidenzpfad, Reviewer, Restrisiko und Follow-up.
-`parallel-autonomous-run-governance` v0.2.0 ist eigenstaendig veroeffentlicht
+`parallel-autonomous-run-governance` v0.2.1 ist eigenstaendig veroeffentlicht
 und wurde mit `github/spec-kit#3591` fuer den Community-Katalog eingereicht.
 Bei jeder Preset-Version oder Prioritätsänderung zuerst die zentrale Matrix
 aktualisieren und danach README-Tabellen, Constitution, Agenten-Dateien und
@@ -81,7 +82,8 @@ Steps for a new feature:
 3. **Implementation plan** — `speckit plan` → `specs/{branch}/plan.md`
 4. **Task list** — `speckit tasks` → `specs/{branch}/tasks.md`
 5. **Implement** — `speckit implement` → work through tasks in `tasks.md`
-6. **Validate** — `bash scripts/check-homogeneity.sh` → check compliance score
+6. **Validate** — `bash ~/scripts/check-homogeneity.sh "$PWD"` or
+   `pwsh ~/scripts/check-homogeneity.ps1 -TargetDir "$PWD"` → check compliance score
 
 All spec artefacts are stored and versioned in the branch directory `specs/{branch}/`.
 
@@ -101,7 +103,7 @@ workspace family is:
 | `cross-platform-governance` | Cross-Platform Governance | `v0.2.1` | `50` |
 | `agent-parity-governance` | Agent Parity Governance | `v0.4.0` | `60` |
 | `autonomous-run-governance` | Autonomous Run Governance | `v0.3.0` | `70` |
-| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.0` | `80` |
+| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.1` | `80` |
 
 `autonomous-run-governance` is part of the standard eight-preset matrix.
 Complete autonomous runs still require explicit delegation. `LocalImplementation` is the safe default;
@@ -129,7 +131,7 @@ update, verify with `install-spec-kit-governance-presets.* --check-only` /
 `-CheckOnly`, `specify preset list`, `specify preset info <id>`, and for template questions
 `specify preset resolve <template>`. Commit `.specify/presets/`, but not
 `.specify/presets/.cache/`. All eight presets produce or require audit-ready Spec-Kit run evidence with `Applicable` / `N/A` / `Open`, rationale, evidence path, reviewer, residual risk, and follow-up.
-`parallel-autonomous-run-governance` v0.2.0 is published independently and was
+`parallel-autonomous-run-governance` v0.2.1 is published independently and was
 submitted to the community catalog as `github/spec-kit#3591`.
 For every preset version or priority change, update the central matrix first,
 then review README tables, constitution, agent guidance files, and templates

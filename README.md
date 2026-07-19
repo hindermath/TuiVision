@@ -121,11 +121,11 @@ Standard-Preset-Set:
 - `cross-platform-governance` v0.2.1, Priority 50
 - `agent-parity-governance` v0.4.0, Priority 60
 - `autonomous-run-governance` v0.3.0, Priority 70
-- `parallel-autonomous-run-governance` v0.2.0, Priority 80
+- `parallel-autonomous-run-governance` v0.2.1, Priority 80
 
 Die ursprünglichen sechs Presets sind seit 2026-05-04 im `github/spec-kit`
 Community-Katalog enthalten; `autonomous-run-governance` v0.2.2 wurde dort am
-2026-07-17 verifiziert. `parallel-autonomous-run-governance` v0.2.0 wurde mit
+2026-07-17 verifiziert. `parallel-autonomous-run-governance` v0.2.1 wurde mit
 `github/spec-kit#3591` für den Katalog eingereicht. Installation startet keinen
 autonomen oder parallelen Lauf und erteilt keine zusätzlichen Rechte.
 
