@@ -2,7 +2,7 @@
 # init-stats.ps1 — STATS.md Baseline-Generator v1.0 (PowerShell)
 # FR-REV-B04; Contract: init-stats-cli.md
 #
-# Usage: pwsh scripts/init-stats.ps1 [-WorkspaceName <string>]
+# Usage: pwsh scripts/init-stats.ps1 [-WorkspaceName <name-or-path>]
 # Exit codes: 0=success, 1=error
 [CmdletBinding()]
 param(
@@ -51,13 +51,15 @@ function Write-StatsEntry {
     $entry     = "| $timestamp | $Score% | $bar |"
 
     $dir = Split-Path $StatsFile -Parent
-    if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
+    if (-not (Test-Path -LiteralPath $dir)) {
+        New-Item -ItemType Directory -Path $dir -Force | Out-Null
+    }
 
-    if (Test-Path $StatsFile) {
-        Add-Content -Path $StatsFile -Value $entry
+    if (Test-Path -LiteralPath $StatsFile) {
+        Add-Content -LiteralPath $StatsFile -Value $entry
     } else {
-        $StatsHeader | Set-Content -Path $StatsFile
-        Add-Content -Path $StatsFile -Value $entry
+        $StatsHeader | Set-Content -LiteralPath $StatsFile
+        Add-Content -LiteralPath $StatsFile -Value $entry
     }
     Write-Host "✓ STATS.md updated at $StatsFile"
 }
@@ -78,12 +80,12 @@ function Resolve-TargetDir {
     param([string]$InputPath)
 
     if (Test-Path -LiteralPath $InputPath -PathType Container) {
-        return (Resolve-Path $InputPath).Path
+        return (Resolve-Path -LiteralPath $InputPath).Path
     }
 
     $homeCandidate = Join-Path $HomeDir $InputPath
     if (Test-Path -LiteralPath $homeCandidate -PathType Container) {
-        return (Resolve-Path $homeCandidate).Path
+        return (Resolve-Path -LiteralPath $homeCandidate).Path
     }
 
     return $null
