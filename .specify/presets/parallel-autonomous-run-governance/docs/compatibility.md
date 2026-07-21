@@ -8,15 +8,15 @@
 
 | Ebene | Aktueller Wert | Bedeutung |
 |---|---|---|
-| Preset-Release | `v0.2.2` | Veroeffentlichtes Preset-Paket |
+| Preset-Release | `v0.2.3` | Veroeffentlichtes Preset-Paket |
 | `preset.yml`-Schema | `schema_version: "1.0"` | Spec-Kit-Presetmanifest |
-| Kampagnenvertrag | `schemaVersion: "1.1"` | Manifest, State, Runner und Results |
+| Kampagnenvertrag | `schemaVersion: "1.2"` | Manifest mit optionalem Intake-Review; State/Runner/Results bleiben 1.1 |
 
 ### Preset-7-Abhaengigkeit
 
 Regulaere Kampagnen benoetigen
 `autonomous-run-governance >=0.2.2` in jedem Worker-Repository. Die gemeinsam
-getestete aktuelle Kombination ist Preset 7 `v0.3.1` mit Preset 8 `v0.2.2`.
+getestete aktuelle Kombination ist Preset 7 `v0.3.2` mit Preset 8 `v0.2.3`.
 
 `requireAutonomousPreset: false` existiert fuer isolierte interne
 Koordinator-Fixtures. Es ist kein dokumentierter Produktionsmodus und hebt die
@@ -40,11 +40,10 @@ Schema `1.1` ergaenzt:
 - deklarierte idempotente Post-Merge-Aktionen,
 - getrennte Completion-Felder.
 
-### Upgrade auf `v0.2.2`
+### Upgrade auf `v0.2.3`
 
-`v0.2.2` ist ein Dokumentations-Patch. Es aendert keine Koordinator-,
-Lifecycle-, Merge-, Runner-, Berechtigungs- oder Schema-Semantik gegenueber
-`v0.2.1`.
+`v0.2.3` ergaenzt Kampagnenschema 1.2 und das optionale Intake-Review-Gate.
+Schema 1.0/1.1 und Kampagnen ohne aktive Pflicht bleiben kompatibel.
 
 ## English
 
@@ -52,15 +51,15 @@ Lifecycle-, Merge-, Runner-, Berechtigungs- oder Schema-Semantik gegenueber
 
 | Layer | Current value | Meaning |
 |---|---|---|
-| Preset release | `v0.2.2` | Published preset package |
+| Preset release | `v0.2.3` | Published preset package |
 | `preset.yml` schema | `schema_version: "1.0"` | Spec Kit preset manifest |
-| Campaign contract | `schemaVersion: "1.1"` | Manifest, state, runners, and results |
+| Campaign contract | `schemaVersion: "1.2"` | Optional intake review in manifests; state/runners/results remain 1.1 |
 
 ### Preset 7 dependency
 
 Regular campaigns require `autonomous-run-governance >=0.2.2` in every worker
-repository. The currently tested pair is Preset 7 `v0.3.1` with Preset 8
-`v0.2.2`.
+repository. The currently tested pair is Preset 7 `v0.3.2` with Preset 8
+`v0.2.3`.
 
 `requireAutonomousPreset: false` exists for isolated internal coordinator
 fixtures. It is not a documented production mode and does not replace Preset 7
@@ -77,5 +76,5 @@ Schema `1.1` adds per-worker runners, non-secret metadata, attempts and events,
 provider preflight, resumable merge checkpoints, declared idempotent
 post-merge actions, and separate completion fields.
 
-`v0.2.2` is a documentation patch and changes no coordinator, lifecycle,
-merge, runner, authority, or schema semantics from `v0.2.1`.
+`v0.2.3` adds campaign schema 1.2 and the optional intake-review gate. Schema
+1.0/1.1 and campaigns without an active requirement remain compatible.

@@ -14,6 +14,14 @@ Require an accepted campaign manifest, local runner-profile binding, explicit
 delivery authority, and `autonomous-run-governance >= 0.2.2` in every worker
 repository.
 
+Campaign schemas `1.0`, `1.1`, and `1.2` are supported. Schema `1.2` may
+declare `intakeReview.required`. When true, validate the result before any
+worktree or worker process is created. Require one semantic review per unique
+intake content, one applicability row per worker, agreement with the manifest
+DAG, and separately owned operator exceptions with reason, date, and expiry.
+Store the accepted result hash in campaign state. A missing, stale, blocking,
+or incomplete result schedules zero workers.
+
 1. Validate campaign identity, topology, worker IDs, UUIDs, concurrency, DAG,
    branches, repository state, campaign and optional worker runner profiles,
    and consolidation policy.

@@ -325,7 +325,8 @@ Evidence-Pfade werden bidirektional geprüft.
 
 ## 12. Governance und Preset-Lernzyklus
 
-Der Audit bewertet die dann installierte Sieben-Preset-Matrix proportional.
+Der Audit bewertet die installierte Acht-Preset-Standardmatrix und das aktive
+optionale Intake-Review-Preset proportional.
 Runtime-, Dependency-, Cloud-, verteilte System- und Supply-Chain-Trigger
 bleiben `N/A`, solange der tatsächliche Diff rein auditbezogen bleibt.
 

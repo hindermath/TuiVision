@@ -3,6 +3,11 @@
   "sourceSchemaVersion": "1.1",
   "campaignId": "00000000-0000-0000-0000-000000000000",
   "manifestSha256": "replace-with-sha256",
+  "intakeReview": {
+    "required": false,
+    "path": "N/A",
+    "sha256": "N/A"
+  },
   "status": "Prepared",
   "phase": "Preflight",
   "deliveryMode": "LocalImplementation",

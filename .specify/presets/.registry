@@ -44,7 +44,7 @@
         "speckit-plan",
         "speckit-tasks"
       ],
-      "installed_at": "2026-07-19T23:21:42.087702+00:00"
+      "installed_at": "2026-07-21T11:33:51.172615+00:00"
     },
     "architecture-governance": {
       "version": "0.5.1",
@@ -89,7 +89,7 @@
         "speckit-plan",
         "speckit-tasks"
       ],
-      "installed_at": "2026-07-19T23:21:43.612475+00:00"
+      "installed_at": "2026-07-21T11:33:53.343646+00:00"
     },
     "isaqb-architecture-governance": {
       "version": "0.2.1",
@@ -134,7 +134,7 @@
         "speckit-plan",
         "speckit-tasks"
       ],
-      "installed_at": "2026-07-19T23:21:45.136292+00:00"
+      "installed_at": "2026-07-21T11:33:55.171234+00:00"
     },
     "a11y-governance": {
       "version": "0.4.1",
@@ -179,7 +179,7 @@
         "speckit-plan",
         "speckit-tasks"
       ],
-      "installed_at": "2026-07-19T23:21:46.566884+00:00"
+      "installed_at": "2026-07-21T11:33:56.986171+00:00"
     },
     "cross-platform-governance": {
       "version": "0.2.1",
@@ -224,7 +224,7 @@
         "speckit-plan",
         "speckit-tasks"
       ],
-      "installed_at": "2026-07-19T23:21:48.069122+00:00"
+      "installed_at": "2026-07-21T11:33:58.748544+00:00"
     },
     "agent-parity-governance": {
       "version": "0.4.0",
@@ -269,12 +269,57 @@
         "speckit-plan",
         "speckit-tasks"
       ],
-      "installed_at": "2026-07-19T23:21:49.559759+00:00"
+      "installed_at": "2026-07-21T11:34:00.468472+00:00"
+    },
+    "intake-review-governance": {
+      "version": "0.1.0",
+      "source": "local",
+      "manifest_hash": "sha256:2f3d325882dff24249cf0160c1b7dfa98d1053ac2ad10c7ca6045a107d8138ed",
+      "enabled": true,
+      "priority": 65,
+      "registered_commands": {
+        "agy": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ],
+        "claude": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ],
+        "codex": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ],
+        "copilot": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ],
+        "opencode": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ],
+        "zed": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ]
+      },
+      "registered_skills": [
+        "speckit-intake-review",
+        "speckit-intake-repair",
+        "speckit-intake-review-status"
+      ],
+      "installed_at": "2026-07-21T11:34:01.870862+00:00"
     },
     "autonomous-run-governance": {
-      "version": "0.3.1",
+      "version": "0.3.2",
       "source": "local",
-      "manifest_hash": "sha256:8607f274aafcfc2cf510c5a26b02db48bf69ececf5fdfbecb91352d5d81cdec1",
+      "manifest_hash": "sha256:738af513e3e4c4345d2d3f7061e24d6d9a670d3b8546c254e5afe4ea2196b410",
       "enabled": true,
       "priority": 70,
       "registered_commands": {
@@ -328,12 +373,12 @@
         "speckit-autonomous-stop",
         "speckit-autonomous-resume"
       ],
-      "installed_at": "2026-07-19T23:21:51.448376+00:00"
+      "installed_at": "2026-07-21T11:34:03.327173+00:00"
     },
     "parallel-autonomous-run-governance": {
-      "version": "0.2.2",
+      "version": "0.2.3",
       "source": "local",
-      "manifest_hash": "sha256:8c99569befd1fb6e7ca57841057337ff3cd92e4af40440b5c6fdf3f0e08a53e8",
+      "manifest_hash": "sha256:c06d28abc580458ddd69b33023f2a45951d59ca1f31305cc6b1d03299e5f3509",
       "enabled": true,
       "priority": 80,
       "registered_commands": {
@@ -387,7 +432,7 @@
         "speckit-parallel-autonomous-resume",
         "speckit-parallel-autonomous-consolidate"
       ],
-      "installed_at": "2026-07-19T23:21:52.949168+00:00"
+      "installed_at": "2026-07-21T11:34:04.852284+00:00"
     }
   }
 }
