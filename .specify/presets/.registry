@@ -433,6 +433,44 @@
         "speckit-parallel-autonomous-consolidate"
       ],
       "installed_at": "2026-07-21T19:20:00.622564+00:00"
+    },
+    "intake-authoring-governance": {
+      "version": "0.1.0",
+      "source": "local",
+      "manifest_hash": "sha256:396b6e170cfc689aa88a47869364e2c660d027b54724d98534b6c64e6688effe",
+      "enabled": true,
+      "priority": 64,
+      "registered_commands": {
+        "agy": [
+          "speckit.intake-create",
+          "speckit.intake-create-status"
+        ],
+        "claude": [
+          "speckit.intake-create",
+          "speckit.intake-create-status"
+        ],
+        "codex": [
+          "speckit.intake-create",
+          "speckit.intake-create-status"
+        ],
+        "copilot": [
+          "speckit.intake-create",
+          "speckit.intake-create-status"
+        ],
+        "opencode": [
+          "speckit.intake-create",
+          "speckit.intake-create-status"
+        ],
+        "zed": [
+          "speckit.intake-create",
+          "speckit.intake-create-status"
+        ]
+      },
+      "registered_skills": [
+        "speckit-intake-create",
+        "speckit-intake-create-status"
+      ],
+      "installed_at": "2026-07-21T21:23:04.611451+00:00"
     }
   }
 }

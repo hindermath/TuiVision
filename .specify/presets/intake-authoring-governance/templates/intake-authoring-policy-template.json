@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0",
+  "enabled": true,
+  "defaultTargetDirectory": "intakes",
+  "receiptDirectory": "specs/intake-authoring-receipts",
+  "defaultProfile": "generic-markdown",
+  "profiles": {},
+  "languagePolicy": "RepositoryPolicyOrDominantSource",
+  "defaultDeliveryAuthority": "LocalImplementation",
+  "maximumQuestionsPerPass": 5,
+  "allowExternalSources": true,
+  "allowOverwrite": false,
+  "nextAction": "speckit.intake-review"
+}
