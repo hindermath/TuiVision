@@ -41,6 +41,15 @@ jobs:
         shell: bash
         run: bash scripts/scan-agent-secrets.sh --fail-on-high .
 
+      - name: Run Homogeneity Check (Bash)
+        if: runner.os != 'Windows'
+        run: bash scripts/check-homogeneity.sh --dry-run --no-patch "$GITHUB_WORKSPACE"
+
+      - name: Run Homogeneity Check (PowerShell)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: pwsh -NoProfile -File scripts/check-homogeneity.ps1 -TargetDir $env:GITHUB_WORKSPACE -DryRun -NoPatch
+
       - name: Run Lastenheft Rename Contract
         shell: bash
         run: bash tests/scripts/rename-lastenheft-tests.sh
