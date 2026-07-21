@@ -33,14 +33,15 @@ Workspace-Familie ist:
 | `autonomous-run-governance` | Autonomous Run Governance | `v0.3.2` | `70` |
 | `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.3` | `80` |
 
-Optional kann `intake-review-governance` v0.1.0 mit Prioritaet `65` zwischen
-Agent Parity und Preset 7 installiert werden. Es bleibt ausserhalb der
-Standard-Achtermatrix. Bei aktiver Policy prueft es einzelne Intakes, Reihen
-oder Kampagnen hashgebunden vor Feature-Erstellung beziehungsweise Worker-Start.
-Review und Status sind read-only; Repair benoetigt ausdrueckliche Autoritaet.
-Das Registry-Profil `intake-review-nine-governance-presets` waehlt diese
-Neunermatrix fuer eine verwaltete Flotte, ohne den oeffentlichen Default zu
-aendern. Lernendenlaeufe bleiben separat beauftragungspflichtig.
+Optional koennen `intake-authoring-governance` v0.1.0 mit Prioritaet `64` und
+`intake-review-governance` v0.1.0 mit Prioritaet `65` zwischen Agent Parity und
+Preset 7 installiert werden. Beide bleiben ausserhalb der Standard-Achtermatrix.
+Authoring erzeugt aus ausdruecklich benannten geordneten UTF-8-Quellen genau
+einen Intake und ein Receipt, startet aber keine Folgeaktion. Review prueft den
+gespeicherten Intake unabhaengig. Das Registry-Profil
+`intake-authoring-ten-governance-presets` waehlt beide; das bisherige
+Neunerprofil bleibt kompatibel. Lernendenlaeufe bleiben separat
+beauftragungspflichtig.
 
 `autonomous-run-governance` ist Teil der Standard-Achtermatrix. Vollständige
 autonome Läufe bleiben ausdrücklich delegationspflichtig. `LocalImplementation` ist der
@@ -120,14 +121,13 @@ workspace family is:
 | `autonomous-run-governance` | Autonomous Run Governance | `v0.3.2` | `70` |
 | `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.3` | `80` |
 
-Optionally install `intake-review-governance` v0.1.0 at priority `65` between
-Agent Parity and Preset 7. It remains outside the standard eight. An active
-policy performs hash-bound review of single intakes, series, or campaigns
-before feature creation or worker scheduling. Review and status are read-only;
-repair requires explicit authority.
-Registry profile `intake-review-nine-governance-presets` selects this matrix
-for a managed fleet without changing the public default. Learner runs still
-require separate explicit authorization.
+Optionally install `intake-authoring-governance` v0.1.0 at priority `64` and
+`intake-review-governance` v0.1.0 at priority `65` between Agent Parity and
+Preset 7. Both remain outside the standard eight. Authoring creates one intake
+and receipt from explicit ordered UTF-8 sources without starting a downstream
+command. Review evaluates that intake independently. Registry profile
+`intake-authoring-ten-governance-presets` selects both; the prior nine-preset
+profile remains compatible. Learner runs still require explicit authorization.
 
 `autonomous-run-governance` is part of the standard eight-preset matrix.
 Complete autonomous runs still require explicit delegation. `LocalImplementation` is the safe default;

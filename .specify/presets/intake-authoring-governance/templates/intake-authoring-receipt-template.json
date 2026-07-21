@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0",
+  "receiptId": "00000000-0000-0000-0000-000000000000",
+  "generator": {
+    "preset": "intake-authoring-governance",
+    "version": "0.1.0"
+  },
+  "createdAt": "1970-01-01T00:00:00Z",
+  "status": "NeedsClarification",
+  "target": {
+    "path": "intakes/example.md",
+    "normalizedSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "sources": [
+    {
+      "order": 1,
+      "kind": "Inline",
+      "label": "User prompt",
+      "location": "SnapshotOnly",
+      "path": "N/A",
+      "normalizedSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "gitBlob": "N/A"
+    }
+  ],
+  "profile": "generic-markdown",
+  "languagePolicy": "RepositoryPolicyOrDominantSource",
+  "decisions": [],
+  "openDecisionIds": ["IAD001"],
+  "questionCount": 0,
+  "agentSurface": {
+    "specifyCanonicalId": "speckit.specify",
+    "specifyInvocation": "$speckit-specify",
+    "autonomousCanonicalId": "speckit.autonomous",
+    "autonomousInvocation": "$speckit-autonomous"
+  },
+  "deliveryAuthority": "LocalImplementation",
+  "authorityEvidence": "Default: no explicit remote authority",
+  "promptState": "Blocked",
+  "supersedes": {
+    "receiptPath": "N/A",
+    "targetNormalizedSha256": "N/A"
+  },
+  "updateAuthorized": false,
+  "nextAction": "Resolve open intake-authoring decisions"
+}

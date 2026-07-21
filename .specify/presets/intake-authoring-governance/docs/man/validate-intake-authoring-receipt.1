@@ -1,0 +1,33 @@
+.TH VALIDATE-INTAKE-AUTHORING-RECEIPT 1 "July 2026" "intake-authoring-governance 0.1.0"
+.SH NAME
+validate-intake-authoring-receipt \- validate intake source and output provenance read-only
+.SH SYNOPSIS
+.B validate-intake-authoring-receipt.sh
+--receipt FILE [--repo PATH]
+.SH DESCRIPTION
+Validates one schema-1.0 intake-authoring receipt, the normalized SHA-256 of
+its generated Markdown target, every repository-local source, clarification
+state, rendered command markers, delivery authority, and supersession fields.
+Inline and external sources remain snapshot-only.
+.PP
+The command writes no file and grants no authoring, review, implementation, or
+remote authority.
+.SH OPTIONS
+.TP
+.B --receipt FILE
+Path to the JSON receipt.
+.TP
+.B --repo PATH
+Repository root used to resolve relative target and source paths. Defaults to
+the current directory.
+.TP
+.B -h, --help
+Print usage.
+.SH EXIT STATUS
+0 for a current valid receipt, 2 for invalid arguments, schema violations,
+source or target drift, unsafe content, or a broken prompt contract.
+.SH EXAMPLE
+.nf
+bash scripts/validate-intake-authoring-receipt.sh \
+  --receipt specs/intake-authoring-receipts/example.json --repo .
+.fi
