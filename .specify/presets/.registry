@@ -44,7 +44,7 @@
         "speckit-plan",
         "speckit-tasks"
       ],
-      "installed_at": "2026-07-21T19:13:06.179709+00:00"
+      "installed_at": "2026-07-21T19:19:45.830158+00:00"
     },
     "architecture-governance": {
       "version": "0.5.1",
@@ -89,7 +89,7 @@
         "speckit-plan",
         "speckit-tasks"
       ],
-      "installed_at": "2026-07-21T19:13:07.638384+00:00"
+      "installed_at": "2026-07-21T19:19:47.723798+00:00"
     },
     "isaqb-architecture-governance": {
       "version": "0.2.1",
@@ -134,7 +134,7 @@
         "speckit-plan",
         "speckit-tasks"
       ],
-      "installed_at": "2026-07-21T19:13:09.066976+00:00"
+      "installed_at": "2026-07-21T19:19:49.896748+00:00"
     },
     "a11y-governance": {
       "version": "0.4.1",
@@ -179,7 +179,7 @@
         "speckit-plan",
         "speckit-tasks"
       ],
-      "installed_at": "2026-07-21T19:13:10.493228+00:00"
+      "installed_at": "2026-07-21T19:19:51.611760+00:00"
     },
     "cross-platform-governance": {
       "version": "0.2.1",
@@ -224,7 +224,7 @@
         "speckit-plan",
         "speckit-tasks"
       ],
-      "installed_at": "2026-07-21T19:13:11.898400+00:00"
+      "installed_at": "2026-07-21T19:19:53.701875+00:00"
     },
     "agent-parity-governance": {
       "version": "0.4.0",
@@ -269,7 +269,7 @@
         "speckit-plan",
         "speckit-tasks"
       ],
-      "installed_at": "2026-07-21T19:13:13.439639+00:00"
+      "installed_at": "2026-07-21T19:19:55.255625+00:00"
     },
     "intake-review-governance": {
       "version": "0.1.0",
@@ -314,7 +314,7 @@
         "speckit-intake-repair",
         "speckit-intake-review-status"
       ],
-      "installed_at": "2026-07-21T19:13:14.897911+00:00"
+      "installed_at": "2026-07-21T19:19:56.839420+00:00"
     },
     "autonomous-run-governance": {
       "version": "0.3.2",
@@ -373,7 +373,7 @@
         "speckit-autonomous-stop",
         "speckit-autonomous-resume"
       ],
-      "installed_at": "2026-07-21T19:13:16.307720+00:00"
+      "installed_at": "2026-07-21T19:19:58.487799+00:00"
     },
     "parallel-autonomous-run-governance": {
       "version": "0.2.3",
@@ -432,7 +432,7 @@
         "speckit-parallel-autonomous-resume",
         "speckit-parallel-autonomous-consolidate"
       ],
-      "installed_at": "2026-07-21T19:13:17.739877+00:00"
+      "installed_at": "2026-07-21T19:20:00.622564+00:00"
     }
   }
 }
