@@ -21,6 +21,29 @@ for _lib in "${LIB_DIR}"/hg-*.sh; do
   [ -f "$_lib" ] && . "$_lib"
 done
 
+required_hg_functions=(
+  hg_check_a11y
+  hg_check_bilingual
+  hg_check_deps
+  hg_check_hook
+  hg_check_speckit
+  hg_generate_patch
+  hg_scan
+  hg_scan_file_secrets
+  hg_write_stats
+)
+missing_hg_functions=()
+for required_function in "${required_hg_functions[@]}"; do
+  if ! declare -F "$required_function" >/dev/null 2>&1; then
+    missing_hg_functions+=("$required_function")
+  fi
+done
+if [ "${#missing_hg_functions[@]}" -gt 0 ]; then
+  printf 'FATAL: Homogeneity-Hilfspaket unvollstaendig / incomplete helper package: %s\n' \
+    "${missing_hg_functions[*]}" >&2
+  exit 2
+fi
+
 # ─── Argument Parsing ────────────────────────────────────────────────────────
 
 OPT_VERBOSE=false

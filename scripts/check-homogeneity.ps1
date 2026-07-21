@@ -21,6 +21,29 @@ Get-ChildItem -LiteralPath $LibDir -Filter 'hg-*.ps1' -ErrorAction SilentlyConti
     . $_.FullName
 }
 
+$requiredHgFunctions = @(
+    'Invoke-HgCheckA11y',
+    'Invoke-HgCheckBilingual',
+    'Invoke-HgCheckDeps',
+    'Invoke-HgCheckHook',
+    'Invoke-HgCheckSpeckit',
+    'Invoke-HgScan',
+    'Invoke-HgScanFileSecrets',
+    'Invoke-HgWriteStats'
+)
+$missingHgFunctions = @(
+    $requiredHgFunctions | Where-Object {
+        -not (Get-Command -Name $_ -CommandType Function -ErrorAction SilentlyContinue)
+    }
+)
+if ($missingHgFunctions.Count -gt 0) {
+    Write-Error (
+        'FATAL: Homogeneity-Hilfspaket unvollstaendig / incomplete helper package: {0}' -f
+        ($missingHgFunctions -join ' ')
+    )
+    exit 2
+}
+
 # --json takes precedence
 if ($Json) { $VerbosePreference = 'SilentlyContinue' }
 
