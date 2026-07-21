@@ -30,8 +30,14 @@ Workspace-Familie ist:
 | `a11y-governance` | A11Y Governance | `v0.4.1` | `40` |
 | `cross-platform-governance` | Cross-Platform Governance | `v0.2.1` | `50` |
 | `agent-parity-governance` | Agent Parity Governance | `v0.4.0` | `60` |
-| `autonomous-run-governance` | Autonomous Run Governance | `v0.3.1` | `70` |
-| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.2` | `80` |
+| `autonomous-run-governance` | Autonomous Run Governance | `v0.3.2` | `70` |
+| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.3` | `80` |
+
+Optional kann `intake-review-governance` v0.1.0 mit Prioritaet `65` zwischen
+Agent Parity und Preset 7 installiert werden. Es bleibt ausserhalb der
+Standard-Achtermatrix. Bei aktiver Policy prueft es einzelne Intakes, Reihen
+oder Kampagnen hashgebunden vor Feature-Erstellung beziehungsweise Worker-Start.
+Review und Status sind read-only; Repair benoetigt ausdrueckliche Autoritaet.
 
 `autonomous-run-governance` ist Teil der Standard-Achtermatrix. Vollständige
 autonome Läufe bleiben ausdrücklich delegationspflichtig. `LocalImplementation` ist der
@@ -68,8 +74,8 @@ begründete Ausnahme dokumentiert ist. Nach Installation oder Update prüfen:
 `specify preset info <id>` und bei Template-Fragen `specify preset resolve
 <template>`. `.specify/presets/` wird committed, `.specify/presets/.cache/`
 nicht. Alle acht Presets erzeugen oder verlangen audit-ready Spec-Kit-Run-Evidenz mit `Applicable` / `N/A` / `Open`, Begruendung, Evidenzpfad, Reviewer, Restrisiko und Follow-up.
-`parallel-autonomous-run-governance` v0.2.2 ist eigenstaendig veroeffentlicht
-und wurde mit `github/spec-kit#3591` fuer den Community-Katalog eingereicht.
+`parallel-autonomous-run-governance` v0.2.3 ist eigenstaendig veroeffentlicht;
+v0.2.2 wurde mit `github/spec-kit#3591` fuer den Community-Katalog eingereicht.
 Bei jeder Preset-Version oder Prioritätsänderung zuerst die zentrale Matrix
 aktualisieren und danach README-Tabellen, Constitution, Agenten-Dateien und
 Templates gemeinsam prüfen.
@@ -108,8 +114,14 @@ workspace family is:
 | `a11y-governance` | A11Y Governance | `v0.4.1` | `40` |
 | `cross-platform-governance` | Cross-Platform Governance | `v0.2.1` | `50` |
 | `agent-parity-governance` | Agent Parity Governance | `v0.4.0` | `60` |
-| `autonomous-run-governance` | Autonomous Run Governance | `v0.3.1` | `70` |
-| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.2` | `80` |
+| `autonomous-run-governance` | Autonomous Run Governance | `v0.3.2` | `70` |
+| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.3` | `80` |
+
+Optionally install `intake-review-governance` v0.1.0 at priority `65` between
+Agent Parity and Preset 7. It remains outside the standard eight. An active
+policy performs hash-bound review of single intakes, series, or campaigns
+before feature creation or worker scheduling. Review and status are read-only;
+repair requires explicit authority.
 
 `autonomous-run-governance` is part of the standard eight-preset matrix.
 Complete autonomous runs still require explicit delegation. `LocalImplementation` is the safe default;
@@ -143,8 +155,8 @@ update, verify with `install-spec-kit-governance-presets.* --check-only` /
 `-CheckOnly`, `specify preset list`, `specify preset info <id>`, and for template questions
 `specify preset resolve <template>`. Commit `.specify/presets/`, but not
 `.specify/presets/.cache/`. All eight presets produce or require audit-ready Spec-Kit run evidence with `Applicable` / `N/A` / `Open`, rationale, evidence path, reviewer, residual risk, and follow-up.
-`parallel-autonomous-run-governance` v0.2.2 is published independently and was
-submitted to the community catalog as `github/spec-kit#3591`.
+`parallel-autonomous-run-governance` v0.2.3 is published independently;
+v0.2.2 was submitted to the community catalog as `github/spec-kit#3591`.
 For every preset version or priority change, update the central matrix first,
 then review README tables, constitution, agent guidance files, and templates
 together.

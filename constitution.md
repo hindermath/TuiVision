@@ -1,10 +1,8 @@
 <!--
 Sync Impact Report
-Version change: 1.13.0 -> 1.14.0
+Version change: 1.15.0 -> 1.16.0
 Modified principles:
-- XIV. Secure Development Standards & Applicability Matrix (add AI-SBOM)
-- XVI. Supply-Chain Transparency & Build Integrity (add G7/BSI AI-SBOM applicability)
-- XIX. EU Cyber Resilience Act (CRA) Compliance Awareness (add AI Act / AI-SBOM awareness)
+- Spec Kit preset governance (activate optional hash-bound intake review)
 Added sections:
 - None
 Removed sections:
@@ -897,8 +895,13 @@ workspace family consists of:
 | `a11y-governance` | `v0.4.1` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts, didactic inline-code-comment review |
 | `cross-platform-governance` | `v0.2.1` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
 | `agent-parity-governance` | `v0.4.0` | `60` | synchronized agent guidance, fleet-completion evidence, and agent-neutral Spec-Kit model routing |
-| `autonomous-run-governance` | `v0.3.0` | `70` | permission-bounded, evidence-first governance with resumable, validated closeout |
-| `parallel-autonomous-run-governance` | `v0.2.1` | `80` | isolated bounded campaigns, mixed runner profiles, cooperative stop/resume, provider-gated resumable consolidation, and declared post-merge closeout |
+| `autonomous-run-governance` | `v0.3.2` | `70` | permission-bounded, evidence-first governance with optional intake gate and resumable, validated closeout |
+| `parallel-autonomous-run-governance` | `v0.2.3` | `80` | isolated bounded campaigns, optional schema-1.2 intake gate, cooperative stop/resume, provider-gated resumable consolidation, and declared post-merge closeout |
+
+TuiVision additionally activates optional `intake-review-governance` v0.1.0
+at priority `65`. Before feature creation, the current intake must have a
+hash-matching `Ready` result or a human-owned `ReadyWithAcceptedRisks` result.
+Review and status are read-only; repair requires explicit mutation authority.
 
 `autonomous-run-governance` is installed as part of the mandatory eight-preset
 governance matrix. Installation does not authorize an autonomous run.
@@ -914,6 +917,9 @@ missing rules receive only a minimal in-place amendment plus readiness and
 Analyze reruns; accepted scope and efficiency-only guidance remain unchanged.
 The readable generated-skill heading `Deliver` is not a run-state value;
 remote closeout persists only `Publish`, `Review`, or `MergeAndSync`.
+When the optional intake policy is active, preflight validates the accepted
+result before feature creation and resume revalidates it after content or
+governance drift.
 
 `parallel-autonomous-run-governance` is also installed by default, but starting
 a campaign remains explicitly delegable work. It grants no worker additional
@@ -923,7 +929,9 @@ per-worker runner profiles with agent-neutral model metadata, exact-head and
 review-aware provider preflights, resumable partial consolidation, cooperative
 stop during consolidation, and manifest-declared idempotent post-merge actions.
 Schema `1.0` artifacts remain readable, but their legacy merge form is not
-executed without migration to the provider-gated `1.1` contract.
+executed without migration to the provider-gated `1.1` contract. Schema `1.2`
+can require one current campaign review per unique intake plus complete worker,
+DAG, and operator-exception coverage before any worktree is created.
 
 All eight governance presets MUST produce or require audit-ready Spec-Kit run evidence for applicable checks. Each relevant checkpoint records applicability as `Applicable`, `N/A`, or `Open` and implementation separately as `Fulfilled`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`, plus rationale, evidence path, owner, reviewer, residual risk, re-evaluation trigger, and follow-up. `N/A` keeps implementation at `Not Assessed` and always needs a rationale.
 
@@ -932,6 +940,9 @@ The central secure-development baseline is versioned by `docs/secure-development
 The executable source of truth for preset installation is
 `scripts/config/spec-kit-governance-presets.json`. This constitution mirrors the
 same preset IDs, versions, priorities, and scope for governance review. Any
+preset profile that activates intake review uses
+`scripts/config/spec-kit-intake-review-governance-presets.json`; this optional
+profile does not redefine the standard eight-preset matrix. Any
 preset version or priority change MUST update the central matrix first, then the
 matching compact overview in `README.md`, `.specify/memory/constitution.md`, the
 four agent guidance files, `scripts/templates/speckit-workflow-section.md`, and
@@ -945,7 +956,7 @@ All eight presets are published as standalone repositories under
 `https://github.com/hindermath/spec-kit-preset-*`. The original six have been
 listed in the `github/spec-kit` community preset catalog since 2026-05-04;
 `autonomous-run-governance` v0.2.2 was verified there on 2026-07-17.
-`parallel-autonomous-run-governance` v0.2.1 was submitted to the community
+`parallel-autonomous-run-governance` v0.2.2 was submitted to the community
 catalog as `github/spec-kit#3591`. Registered Level-0, Level-1, and Level-2
 repositories with Spec Kit SHOULD install all eight presets from the central
 matrix unless the repository documents a narrow exception. Fleet evidence MUST
@@ -975,7 +986,7 @@ Community/catalog coordination is tracked in `github/spec-kit#2362`.
 `.github/copilot-instructions.md` for per-agent operational guidance. This
 constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.15.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-07-17
+**Version**: 1.16.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-07-21
 
 ## Level-2 Project Environment Addendum / Level-2-Projektumgebung
 

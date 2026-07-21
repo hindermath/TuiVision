@@ -158,7 +158,7 @@ try {
     Assert-DependencyTest ($minimum.ExitCode -eq 0) `
         "Minimum supported autonomous preset failed validation: $($minimum.Output)"
 
-    Set-AutonomousRegistry $repository '0.3.1' $true
+    Set-AutonomousRegistry $repository '0.3.2' $true
     $current = Invoke-DependencyValidation $manifest $runnerConfig
     Assert-DependencyTest ($current.ExitCode -eq 0) `
         "Current autonomous preset failed validation: $($current.Output)"

@@ -8,7 +8,7 @@
 
 1. Spec Kit `>=0.8.3` ist installiert.
 2. Preset 7 `>=0.2.2` ist in jedem Worker-Repository aktiv.
-3. Preset 8 `>=0.2.2` ist im Koordinatorprojekt aktiv.
+3. Preset 8 `>=0.2.3` ist im Koordinatorprojekt aktiv.
 4. Jedes Repository ist ein Git-Worktree mit bekanntem sauberem Ausgangsstand.
 5. Manifest und Runner-Konfiguration enthalten keine Secrets.
 6. Delivery-Modus und Remote-Berechtigungen sind ausdruecklich delegiert.
@@ -18,10 +18,10 @@
 
 ```bash
 specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-autonomous-run-governance/archive/refs/tags/v0.3.1.zip \
+  --from https://github.com/hindermath/spec-kit-preset-autonomous-run-governance/archive/refs/tags/v0.3.2.zip \
   --priority 70
 specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/archive/refs/tags/v0.2.2.zip \
+  --from https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/archive/refs/tags/v0.2.3.zip \
   --priority 80
 ```
 
@@ -96,7 +96,7 @@ Parallelitaet, Runner-Familien, Stop-Status und naechsten exakten Schritt.
 ### Prerequisites
 
 Spec Kit `>=0.8.3`, Preset 7 `>=0.2.2` in every worker repository, and Preset
-8 `>=0.2.2` in the coordinator project are required. Repositories have known
+8 `>=0.2.3` in the coordinator project are required. Repositories have known
 clean bases, manifest and local runners contain no secrets, authority is
 explicit, and `maxConcurrency` is between `1` and `3`.
 

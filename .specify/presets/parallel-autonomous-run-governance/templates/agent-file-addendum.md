@@ -1,5 +1,9 @@
 ## Parallele autonome Lauf-Governance / Parallel Autonomous Run Governance
 
+For schema-1.2 campaigns, enforce an active `intakeReview` gate before creating
+worktrees. One semantic target review may cover byte-equivalent repeated worker
+inputs, but every worker still needs an applicability row.
+
 ### Deutsch / German
 
 - Eine Kampagne koordiniert bestehende autonome Einzellaeufe und ersetzt nicht

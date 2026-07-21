@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0",
+  "reviewId": "00000000-0000-0000-0000-000000000000",
+  "mode": "Single",
+  "policy": "generic-markdown",
+  "targets": [
+    { "path": "path/to/intake.md", "role": "Primary" }
+  ],
+  "series": { "orderedTargetPaths": [], "dependencies": [] },
+  "campaign": {
+    "manifestPath": "N/A",
+    "workers": [],
+    "operatorExceptions": []
+  }
+}

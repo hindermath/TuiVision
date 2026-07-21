@@ -62,7 +62,7 @@ param(
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
-$script:SupportedSchemaVersions = @('1.0', '1.1')
+$script:SupportedSchemaVersions = @('1.0', '1.1', '1.2')
 $script:UndeclaredRunnerMetadata = 'Agent-Standard/nicht deklariert'
 
 function Assert-PARCondition {
@@ -91,7 +91,7 @@ function Assert-PARSchemaVersion {
 
     Assert-PARCondition $Data.ContainsKey('schemaVersion') "$ContractName schemaVersion fehlt."
     Assert-PARCondition ($script:SupportedSchemaVersions -contains [string] $Data.schemaVersion) `
-        "$ContractName schemaVersion muss 1.0 oder 1.1 sein."
+        "$ContractName schemaVersion muss 1.0, 1.1 oder 1.2 sein."
 }
 
 function Write-PARJsonAtomic {
@@ -217,6 +217,19 @@ function Exit-PARCampaignLock {
 function Get-PARSha256 {
     param([Parameter(Mandatory)][string] $Path)
     return (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash.ToLowerInvariant()
+}
+
+function Get-PARNormalizedTextSha256 {
+    param([Parameter(Mandatory)][string] $Path)
+    $bytes = [IO.File]::ReadAllBytes($Path)
+    $offset = if ($bytes.Length -ge 3 -and $bytes[0] -eq 0xEF -and
+        $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF) { 3 } else { 0 }
+    $utf8 = [Text.UTF8Encoding]::new($false, $true)
+    $text = $utf8.GetString($bytes, $offset, $bytes.Length - $offset)
+    Assert-PARCondition (-not $text.Contains([char] 0)) "Intake ist binaer: $Path"
+    $normalized = $text.Replace("`r`n", "`n").Replace("`r", "`n")
+    $hash = [Security.Cryptography.SHA256]::HashData($utf8.GetBytes($normalized))
+    return [Convert]::ToHexString($hash).ToLowerInvariant()
 }
 
 function Test-PARUuid {
@@ -456,6 +469,126 @@ function Test-PARDag {
     Assert-PARCondition ($visited -eq $Workers.Count) 'Die Worker-Abhaengigkeiten enthalten einen Zyklus.'
 }
 
+function Test-PARIntakeReview {
+    param(
+        [Parameter(Mandatory)][hashtable] $Campaign,
+        [Parameter(Mandatory)][string] $ManifestDirectory
+    )
+
+    $notApplicable = [ordered]@{ required = $false; path = 'N/A'; sha256 = 'N/A' }
+    if ([string] $Campaign.schemaVersion -ne '1.2') { return $notApplicable }
+    Assert-PARCondition $Campaign.ContainsKey('intakeReview') `
+        'Schema 1.2 benoetigt intakeReview.'
+    $gate = $Campaign.intakeReview
+    Assert-PARCondition ($gate -is [hashtable] -and $gate.ContainsKey('required') -and
+        $gate.required -is [bool]) 'intakeReview.required muss boolesch sein.'
+    if (-not [bool] $gate.required) { return $notApplicable }
+    Assert-PARCondition (-not [string]::IsNullOrWhiteSpace([string] $gate.resultPath)) `
+        'Erforderliches intakeReview benoetigt resultPath.'
+
+    $resultPath = [IO.Path]::GetFullPath((Join-Path $ManifestDirectory ([string] $gate.resultPath)))
+    $manifestPrefix = [IO.Path]::GetFullPath($ManifestDirectory).TrimEnd(
+        [IO.Path]::DirectorySeparatorChar) + [IO.Path]::DirectorySeparatorChar
+    Assert-PARCondition $resultPath.StartsWith($manifestPrefix, [StringComparison]::Ordinal) `
+        'intakeReview.resultPath muss unterhalb des Manifestverzeichnisses liegen.'
+    Assert-PARCondition (Test-Path -LiteralPath $resultPath -PathType Leaf) `
+        "Intake-Review-Ergebnis fehlt: $resultPath"
+    $result = Read-PARJson $resultPath
+    Assert-PARCondition ([string] $result.schemaVersion -eq '1.0') `
+        'Intake-Review-Ergebnis benoetigt Schema 1.0.'
+    Assert-PARCondition ([string] $result.mode -eq 'Campaign') `
+        'Kampagnen-Gate benoetigt ein Campaign-Review.'
+    Assert-PARCondition (@('Ready', 'ReadyWithAcceptedRisks') -contains [string] $result.status) `
+        "Intake-Review blockiert Worker: $($result.status)"
+    Assert-PARCondition (@($result.questions | Where-Object status -ne 'Answered').Count -eq 0) `
+        'Akzeptiertes Intake-Review enthaelt offene Fragen.'
+    Assert-PARCondition (@($result.findings | Where-Object severity -in @('Critical', 'High')).Count -eq 0) `
+        'Critical/High Intake-Findings blockieren die Kampagne.'
+    if ([string] $result.status -eq 'ReadyWithAcceptedRisks') {
+        Assert-PARCondition (@($result.acceptedRisks).Count -gt 0) `
+            'ReadyWithAcceptedRisks benoetigt akzeptierte Risiken.'
+        foreach ($risk in @($result.acceptedRisks)) {
+            Assert-PARCondition ([string] $risk.acceptedByType -eq 'Human') `
+                'Nur Menschen duerfen Intake-Risiken akzeptieren.'
+        }
+    }
+
+    $targetByPath = @{}
+    foreach ($target in @($result.targets)) {
+        $path = [string] $target.path
+        Assert-PARCondition (-not [string]::IsNullOrWhiteSpace($path) -and
+            -not $targetByPath.ContainsKey($path)) 'Review-Zielpfade muessen eindeutig sein.'
+        Assert-PARCondition ([string] $target.normalizedSha256 -match '^[0-9a-f]{64}$') `
+            "Ungueltiger normalisierter Intake-Hash: $path"
+        $targetByPath[$path] = [string] $target.normalizedSha256
+    }
+    $coverage = @($result.coverage.workers)
+    Assert-PARCondition ($coverage.Count -eq @($Campaign.workers).Count) `
+        'Intake-Review benoetigt genau eine Applicability-Zeile je Worker.'
+    Assert-PARCondition (@($coverage.workerId | Sort-Object -Unique).Count -eq $coverage.Count) `
+        'Worker-Applicability darf keine Duplikate enthalten.'
+    $containerOverrideWorkers = [Collections.Generic.List[string]]::new()
+    foreach ($worker in @($Campaign.workers)) {
+        $rows = @($coverage | Where-Object workerId -eq $worker.workerId)
+        Assert-PARCondition ($rows.Count -eq 1) `
+            "Worker '$($worker.workerId)' benoetigt genau eine Intake-Applicability-Zeile."
+        $targetPath = [string] $rows[0].targetPath
+        Assert-PARCondition $targetByPath.ContainsKey($targetPath) `
+            "Worker '$($worker.workerId)' verweist auf ein ungeprueftes Intake."
+        Assert-PARCondition (-not [string]::IsNullOrWhiteSpace([string] $rows[0].applicability)) `
+            "Worker '$($worker.workerId)' benoetigt eine Applicability-Entscheidung."
+        $repository = Resolve-PARRepository ([string] $worker.repository) $ManifestDirectory
+        $featureInput = [IO.Path]::GetFullPath((Join-Path $repository ([string] $worker.featureInput)))
+        Assert-PARCondition (Test-Path -LiteralPath $featureInput -PathType Leaf) `
+            "featureInput fehlt: $featureInput"
+        Assert-PARCondition ((Get-PARNormalizedTextSha256 $featureInput) -eq $targetByPath[$targetPath]) `
+            "featureInput-Hash stimmt nicht mit Review ueberein: $($worker.workerId)"
+        $inputText = [IO.File]::ReadAllText($featureInput, [Text.UTF8Encoding]::new($false, $true))
+        if ($inputText -match '(?i)container-first' -and
+            [string] $Campaign.operatorInstructions -match '(?is)\bnativ(?:e|ely)?\b.*\b(?:override|overriding|ausnahme)\b') {
+            $containerOverrideWorkers.Add([string] $worker.workerId)
+        }
+    }
+
+    $expectedEdges = @($Campaign.workers | ForEach-Object {
+        $consumer = [string] $_.workerId
+        @($_.dependsOn) | ForEach-Object { "${_}->${consumer}" }
+    } | Sort-Object -Unique)
+    $reviewEdges = @($result.coverage.series | ForEach-Object {
+        "$([string] $_.from)->$([string] $_.to)"
+    } | Sort-Object -Unique)
+    Assert-PARCondition (($expectedEdges -join '|') -eq ($reviewEdges -join '|')) `
+        'Review-Series-Coverage stimmt nicht mit dem Manifest-DAG ueberein.'
+
+    $exceptionWorkers = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+    foreach ($exception in @($result.operatorExceptions)) {
+        foreach ($field in @('author', 'reason', 'date', 'expiry')) {
+            Assert-PARCondition (-not [string]::IsNullOrWhiteSpace([string] $exception[$field])) `
+                "Operator-Ausnahme benoetigt $field."
+        }
+        $expiry = if ($exception.expiry -is [DateTime]) {
+            [DateTimeOffset]::new(([DateTime] $exception.expiry).ToUniversalTime())
+        } else {
+            $parsedExpiry = [DateTimeOffset]::MinValue
+            Assert-PARCondition ([DateTimeOffset]::TryParse(
+                [string] $exception.expiry,
+                [Globalization.CultureInfo]::InvariantCulture,
+                [Globalization.DateTimeStyles]::AssumeUniversal,
+                [ref] $parsedExpiry
+            )) 'Operator-Ausnahme enthaelt kein gueltiges Ablaufdatum.'
+            $parsedExpiry
+        }
+        Assert-PARCondition ($expiry -gt [DateTimeOffset]::UtcNow) `
+            'Operator-Ausnahme ist abgelaufen.'
+        foreach ($workerId in @($exception.workerIds)) { [void] $exceptionWorkers.Add([string] $workerId) }
+    }
+    foreach ($workerId in $containerOverrideWorkers) {
+        Assert-PARCondition $exceptionWorkers.Contains($workerId) `
+            "Container-First/native Override benoetigt eine gueltige Operator-Ausnahme: $workerId"
+    }
+    return [ordered]@{ required = $true; path = [string] $gate.resultPath; sha256 = Get-PARSha256 $resultPath }
+}
+
 function Test-PARCampaign {
     param(
         [Parameter(Mandatory)][hashtable] $Campaign,
@@ -481,6 +614,10 @@ function Test-PARCampaign {
         Assert-PARCondition (([string] $Campaign.operatorInstructions).Length -le 8000) 'operatorInstructions ist laenger als 8000 Zeichen.'
     }
 
+    if ($null -eq $script:CurrentIntakeReview) {
+        $script:CurrentIntakeReview = Test-PARIntakeReview $Campaign $ManifestDirectory
+    }
+
     $workerIds = @($Campaign.workers | ForEach-Object { [string] $_.workerId })
     $runIds = @($Campaign.workers | ForEach-Object { [string] $_.runId })
     $branches = @($Campaign.workers | ForEach-Object { [string] $_.branch })
@@ -497,7 +634,7 @@ function Test-PARCampaign {
         $runnerProfileData = $Profiles.profiles[$runnerProfileName]
         Assert-PARCondition (-not [string]::IsNullOrWhiteSpace([string] $runnerProfileData.executable)) "Runner executable fehlt: $runnerProfileName"
         Assert-PARCondition ($runnerProfileData.arguments -is [object[]]) "Runner arguments muss ein Array sein: $runnerProfileName"
-        if ([string] $Campaign.schemaVersion -eq '1.1') {
+        if ([string] $Campaign.schemaVersion -in @('1.1', '1.2')) {
             Assert-PARCondition ($runnerProfileData.ContainsKey('agentFamily') -and
                 -not [string]::IsNullOrWhiteSpace([string] $runnerProfileData.agentFamily)) `
                 "Runner-Profil '$runnerProfileName' benoetigt agentFamily."
@@ -540,7 +677,7 @@ function Test-PARCampaign {
     }
 
     if ($Campaign.deliveryMode -eq 'MergeAndSync') {
-        if ([string] $Campaign.schemaVersion -eq '1.1') {
+        if ([string] $Campaign.schemaVersion -in @('1.1', '1.2')) {
             Assert-PARCondition $Campaign.consolidation.ContainsKey('mergeProfile') 'consolidation.mergeProfile fehlt.'
         }
         if ($Campaign.consolidation.ContainsKey('mergeProfile')) {
@@ -548,7 +685,7 @@ function Test-PARCampaign {
             Assert-PARCondition ($Profiles.ContainsKey('mergeProfiles') -and
                 $Profiles.mergeProfiles.ContainsKey($mergeProfileName)) "Merge-Profil '$mergeProfileName' fehlt."
         }
-        if ([string] $Campaign.schemaVersion -eq '1.1') {
+        if ([string] $Campaign.schemaVersion -in @('1.1', '1.2')) {
             $mergeProfile = $Profiles.mergeProfiles[$mergeProfileName]
             Assert-PARCondition (-not [string]::IsNullOrWhiteSpace([string] $mergeProfile.provider)) `
                 "Merge-Profil '$mergeProfileName' benoetigt provider."
@@ -643,6 +780,7 @@ function Get-PARInitialCampaignState {
         sourceSchemaVersion = [string] $Campaign.schemaVersion
         campaignId = [string] $Campaign.campaignId
         manifestSha256 = Get-PARSha256 $ManifestPath
+        intakeReview = $script:CurrentIntakeReview
         status = 'Prepared'
         phase = 'Preflight'
         deliveryMode = [string] $Campaign.deliveryMode
@@ -682,6 +820,15 @@ function Initialize-PARStateShape {
     if (-not $CampaignState.ContainsKey('sourceSchemaVersion')) {
         $CampaignState.sourceSchemaVersion = '1.0'
     }
+    if (-not $CampaignState.ContainsKey('intakeReview')) {
+        $CampaignState.intakeReview = [ordered]@{ required = $false; path = 'N/A'; sha256 = 'N/A' }
+    }
+    Assert-PARCondition ([bool] $CampaignState.intakeReview.required -eq
+        [bool] $script:CurrentIntakeReview.required) 'Intake-Review-Pflicht hat sich seit dem Checkpoint geaendert.'
+    Assert-PARCondition ([string] $CampaignState.intakeReview.path -eq
+        [string] $script:CurrentIntakeReview.path) 'Intake-Review-Pfad hat sich seit dem Checkpoint geaendert.'
+    Assert-PARCondition ([string] $CampaignState.intakeReview.sha256 -eq
+        [string] $script:CurrentIntakeReview.sha256) 'Intake-Review-Ergebnis ist seit dem Checkpoint gedriftet.'
     if (-not $CampaignState.ContainsKey('attempts')) {
         $CampaignState.attempts = [ordered]@{ execute = 0; consolidation = 0; postMerge = 0 }
     }
@@ -1726,6 +1873,7 @@ $manifestPath = [IO.Path]::GetFullPath($Manifest)
 $manifestDirectory = Split-Path -Parent $manifestPath
 $campaign = Read-PARJson $manifestPath
 Assert-PARSchemaVersion $campaign 'Campaign'
+$script:CurrentIntakeReview = Test-PARIntakeReview $campaign $manifestDirectory
 
 if (-not $State) {
     $State = Join-Path $manifestDirectory 'parallel-campaign-state.json'

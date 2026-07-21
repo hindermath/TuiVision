@@ -2,8 +2,11 @@
 
 Permission-bounded coordination for several isolated autonomous Spec Kit runs.
 
-Version `0.2.2` | Priority `80` | Spec Kit `>=0.8.3`
+Version `0.2.3` | Priority `80` | Spec Kit `>=0.8.3`
 Required worker preset: `autonomous-run-governance >=0.2.2`
+
+Schema 1.2 optionally binds worker scheduling to a current campaign intake
+review. Older schemas and `required: false` retain the prior behavior.
 
 ## Deutsch
 
@@ -63,10 +66,10 @@ Fuer regulaere Kampagnen gilt:
 
    ```bash
    specify preset add \
-     --from https://github.com/hindermath/spec-kit-preset-autonomous-run-governance/archive/refs/tags/v0.3.1.zip \
+     --from https://github.com/hindermath/spec-kit-preset-autonomous-run-governance/archive/refs/tags/v0.3.2.zip \
      --priority 70
    specify preset add \
-     --from https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/archive/refs/tags/v0.2.2.zip \
+     --from https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/archive/refs/tags/v0.2.3.zip \
      --priority 80
    ```
 

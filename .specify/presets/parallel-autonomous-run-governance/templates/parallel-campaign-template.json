@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.1",
+  "schemaVersion": "1.2",
   "campaignId": "00000000-0000-0000-0000-000000000000",
   "name": "replace-with-campaign-name",
   "topology": "ReplicatedTargets",
@@ -8,6 +8,10 @@
   "runnerProfile": "default-agent",
   "requireAutonomousPreset": true,
   "operatorInstructions": "Optional, explicitly authorized campaign-specific context. Do not include secrets.",
+  "intakeReview": {
+    "required": false,
+    "resultPath": "specs/campaign/intake-review-result.json"
+  },
   "workers": [
     {
       "workerId": "worker-01",

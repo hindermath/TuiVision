@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0",
+  "reviewId": "e204a332-64f3-4680-a3ff-3738e0eab256",
+  "mode": "Single",
+  "status": "Ready",
+  "policy": "tui-vision-lastenheft",
+  "reviewedAt": "2026-07-21T11:34:25Z",
+  "repository": {
+    "root": ".",
+    "head": "bb53aab6b76e9688364be8a2438fd8d524d6a633"
+  },
+  "targets": [
+    {
+      "path": "Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "role": "Primary",
+      "normalizedSha256": "530207c4a46f47fe844106ae310487c1e6688a1cf16ec0cc4dbfa1b61b5f4eb6",
+      "gitBlob": "c615758b177ac1d3ee6b267103e28cd5b29c8702"
+    }
+  ],
+  "findings": [
+    {
+      "id": "IR001",
+      "severity": "Medium",
+      "category": "GovernanceMatrixFreshness",
+      "target": "Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "disposition": "Resolved",
+      "owner": "Thorsten Hindermann",
+      "evidence": "Section 12 now distinguishes the standard eight-preset matrix from the active optional intake-review preset.",
+      "reevaluationTrigger": "The intake, standard matrix, optional policy, or installed preset versions change."
+    }
+  ],
+  "questions": [],
+  "acceptedRisks": [],
+  "operatorExceptions": [],
+  "coverage": {
+    "individual": [
+      "Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md"
+    ],
+    "series": [],
+    "workers": []
+  },
+  "summary": {
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 0
+  },
+  "supersedes": "N/A"
+}

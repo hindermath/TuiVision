@@ -1,5 +1,24 @@
 # Manifest und Runner-Profile / Manifest and Runner Profiles
 
+## Optionales Intake-Review in Schema 1.2 / Optional intake review in schema 1.2
+
+```json
+"intakeReview": {
+  "required": true,
+  "resultPath": "specs/campaign/intake-review-result.json"
+}
+```
+
+Bei aktiver Pflicht muss das Ergebnis vor der Worktree-Erstellung aktuell
+sein. Jedes eindeutige Intake wird einmal semantisch geprüft; jeder Worker
+erhält trotzdem eine eigene Applicability-Zeile. Review und Manifest müssen
+DAG-Kanten und Ausnahmen mit Autor, Grund, Datum, Ablauf und Workern abgleichen.
+
+When required, the result must be current before worktree creation. Review
+each unique intake once, retain one applicability row per worker, reproduce the
+manifest DAG, and separately govern operator exceptions. Resume revalidates
+the stored result hash.
+
 [Handbuch / Manual](README.md) | [Lebenszyklus / Lifecycle](lifecycle-and-operations.md)
 
 ## Kampagnenarchitektur / Campaign architecture
