@@ -1196,18 +1196,18 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 562742 lines |
+| Textbasis / Text base | 562744 lines |
 | Textdateien / Text files | 2611 |
 | Beobachtbarer Zeitraum / Observable period | 2025-07-27..2026-07-21 |
 | Aktivtage / Active days | 75 |
-| Relevante Commits / Relevant commits | 497 |
-| Zeilen je Aktivtag / Lines per active day | 7503.2 |
+| Relevante Commits / Relevant commits | 498 |
+| Zeilen je Aktivtag / Lines per active day | 7503.3 |
 | Peak-Tag im Fenster / Peak day in window | 2026-03-22 / 321183 |
 | Peak-Woche im Fenster / Peak week in window | 2026-03-22 / 373633 |
 | Laengste Serie / Longest streak | 12 days |
 | Speedup vs. 80 lines/day | 93.8x |
 | Speedup vs. 125 lines/day | 60.0x |
-| Methodik / Methodology | v2; source `4245f8ceaf0e` |
+| Methodik / Methodology | v2; source `276fe6440645` |
 
 ### Artefaktmix / Artifact Mix
 
@@ -1216,7 +1216,7 @@ Produktiv / Production          [#####...............]  24.4% | 137243
 Tests                           [##..................]   7.5% | 42379
 Dokumentation / Documentation   [#########...........]  43.4% | 244169
 Skripte / Scripts               [#...................]   1.7% | 9648
-Konfiguration / Configuration   [#...................]   5.2% | 29470
+Konfiguration / Configuration   [#...................]   5.2% | 29472
 Daten und Medien / Data and media [#...................]   0.0% | 1
 Sonstiger Text / Other text     [####................]  17.7% | 99832
 ```
@@ -1408,7 +1408,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..10000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [###############.....] 7503.2
+Visible repository [###############.....] 7503.3
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -1434,6 +1434,6 @@ DE: Das Fenster beginnt am 2025-07-27 und endet am 2026-07-21. Es enthaelt 75 ak
 | 2026-04 | 18953 |
 | 2026-05 | 274123 |
 | 2026-06 | 42308 |
-| 2026-07 | 171363 |
+| 2026-07 | 171365 |
 
 <!-- project-statistics-v2:end -->
