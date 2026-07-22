@@ -30,7 +30,9 @@ Erforderliche PowerShell-Module werden aus
 PowerShell-Modulpfleger installiert und geprueft.
 Auf Systemen mit Homebrew fuehrt ein normaler Lauf `brew update`,
 `brew upgrade` und die Installation fehlender Required-Formulae aus. Auf macOS
-werden zusaetzlich Required-Casks gepflegt.
+werden zusaetzlich Required-Casks gepflegt. Formulae mit `ensureLinked: true`
+werden nach dem Upgrade idempotent verlinkt; `--compare-only` meldet einen
+abweichend aufgeloesten Befehl als `LINK-DRIFT`, ohne ihn zu veraendern.
 Fehlt `agy` auf Linux, wird der offizielle Installer nur nach erfolgreicher
 SHA-256-Pruefung gegen die Required-CLI-Registry ausgefuehrt.
 CLI-Versionsproben werden nach fuenf Sekunden beendet, damit interaktive oder
@@ -53,6 +55,8 @@ Required PowerShell modules are installed and checked from
 `scripts/config/powershell-modules-registry.json` by the shared PowerShell
 module maintainer. On systems with Homebrew, a normal run executes `brew update`, `brew upgrade`, and
 installs missing required formulae. On macOS it also maintains required casks.
+Formulae marked with `ensureLinked: true` are linked idempotently after the
+upgrade; `--compare-only` reports command-resolution drift without changing it.
 When `agy` is missing on Linux, the official installer runs only after its
 SHA-256 digest matches the required CLI registry.
 CLI version probes stop after five seconds so interactive or stuck agent CLIs
@@ -110,6 +114,7 @@ bash scripts/maintain-agentic-brew-apps.sh
   soweit die Plattform den jeweiligen Pfad unterstuetzt.
 - `code --version` und `hx --version` funktionieren, sofern die Plattform die grafische bzw. TUI-Editor-Basis installieren konnte.
 - `--compare-only` meldet `missing_on_machine.required.*: none`.
+- `--compare-only` meldet fuer erforderliche verlinkte Formulae keinen `LINK-DRIFT`.
 - `python3 -m json.tool scripts/config/brew-apps-registry.json` ist erfolgreich.
 - `python3 -m json.tool scripts/config/vscode-extensions-registry.json` ist erfolgreich.
 - `python3 -m json.tool scripts/config/required-cli-tools-registry.json` ist erfolgreich.

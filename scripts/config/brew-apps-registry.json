@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-07-16",
+  "updated": "2026-07-22",
   "description": "Homebrew top-level package registry for agentic development across the Level-0, Level-1, and Level-2 repositories.",
   "policy": {
     "formulaSource": "brew leaves --installed-on-request",
@@ -23,7 +23,8 @@
     { "name": "lychee", "scope": "required", "purpose": "Local Markdown/HTML link and anchor checker matching the CI documentation gate" },
     { "name": "lynx", "scope": "optional", "apt": "lynx", "purpose": "Text browser for accessibility-oriented checks" },
     { "name": "midnight-commander", "scope": "optional", "apt": "mc", "purpose": "Terminal file manager" },
-    { "name": "mongodb/brew/mongodb-community", "scope": "optional", "purpose": "MongoDB local database for compatible projects" },
+    { "name": "mongodb/brew/mongodb-community@8.0", "scope": "optional", "purpose": "Pinned MongoDB 8.0 local database for compatible projects" },
+    { "name": "mono", "scope": "optional", "purpose": "Legacy .NET and Mono compatibility; use dotnet msbuild when standalone msbuild is absent" },
     { "name": "msedit", "scope": "optional", "purpose": "Terminal editor" },
     { "name": "node", "scope": "required", "apt": "nodejs", "purpose": "Node.js and npm runtime for npm-based agent CLI packages" },
     { "name": "oh-my-posh", "scope": "optional", "purpose": "Shell prompt consistency" },
@@ -34,10 +35,12 @@
     { "name": "podman", "scope": "required", "apt": "podman", "purpose": "Podman CLI for the required Secure Trader sandbox runtime" },
     { "name": "podman-compose", "scope": "required", "apt": "podman-compose", "purpose": "Container compose support for sandbox workflows" },
     { "name": "postgresql@18", "scope": "optional", "purpose": "PostgreSQL local database for compatible projects" },
-    { "name": "powershell", "scope": "required", "purpose": "PowerShell 7 parity scripts" },
+    { "name": "powershell", "scope": "required", "ensureLinked": true, "linkCommands": ["pwsh"], "purpose": "PowerShell 7 parity scripts" },
     { "name": "python@3.14", "scope": "required", "apt": "python3", "purpose": "Python MSL CLI toolchain for learning-series repositories" },
     { "name": "rust", "scope": "required", "purpose": "Memory-safe Rust toolchain" },
+    { "name": "sqlite", "scope": "optional", "purpose": "SQLite CLI and library for local database inspection" },
     { "name": "syft", "scope": "required", "purpose": "SBOM generation for supply-chain evidence" },
+    { "name": "telnet", "scope": "optional", "purpose": "Legacy plaintext protocol diagnostics on trusted networks only" },
     { "name": "uv", "scope": "required", "purpose": "Python package/tool runner and Spec Kit installation support" },
     { "name": "vice", "scope": "optional", "purpose": "C64 emulator for retro projects" }
   ],
@@ -48,7 +51,6 @@
     { "name": "ollama-app", "scope": "optional", "purpose": "Local model runtime app" },
     { "name": "pgadmin4", "scope": "optional", "purpose": "PostgreSQL GUI administration" },
     { "name": "podman-desktop", "scope": "optional", "purpose": "Podman GUI and machine management" },
-    { "name": "powershell", "scope": "optional", "purpose": "PowerShell app bundle; formula remains the scripted baseline" },
     { "name": "visual-studio-code", "scope": "required", "purpose": "Minimum graphical editor and quasi-IDE for apprentice development" }
   ],
   "aptFallback": {

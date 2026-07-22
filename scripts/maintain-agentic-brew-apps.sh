@@ -173,6 +173,36 @@ for item in items:
 PY
 }
 
+registry_linked_formulae() {
+  python3 - "$REGISTRY" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], encoding="utf-8") as handle:
+    data = json.load(handle)
+for item in data.get("formulae", []):
+    if item.get("ensureLinked") is True and item.get("name"):
+        print(item["name"])
+PY
+}
+
+registry_link_commands() {
+  local formula="$1"
+  python3 - "$REGISTRY" "$formula" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], encoding="utf-8") as handle:
+    data = json.load(handle)
+for item in data.get("formulae", []):
+    if item.get("name") == sys.argv[2]:
+        for command in item.get("linkCommands", []):
+            if command:
+                print(command)
+        break
+PY
+}
+
 vscode_registry_items() {
   local section="$1"
   local scope="${2:-all}"
@@ -732,6 +762,55 @@ install_brew_items() {
   fi
 }
 
+ensure_brew_formula_links() {
+  local formula command resolved brew_prefix link_drift
+  brew_prefix="$(brew --prefix)"
+
+  while IFS= read -r formula; do
+    [ -n "$formula" ] || continue
+    if ! brew list --formula --versions "$formula" >/dev/null 2>&1; then
+      log "MISSING linked formula: $formula"
+      continue
+    fi
+
+    link_drift=0
+    while IFS= read -r command; do
+      [ -n "$command" ] || continue
+      resolved="$(command -v "$command" 2>/dev/null || true)"
+      case "$resolved" in
+        "$brew_prefix"/bin/*|"$brew_prefix"/sbin/*) ;;
+        *) link_drift=1 ;;
+      esac
+    done < <(registry_link_commands "$formula")
+
+    if [ "$link_drift" -eq 0 ]; then
+      log "OK linked formula: $formula"
+      continue
+    fi
+    if [ "$COMPARE_ONLY" -eq 1 ]; then
+      log "LINK-DRIFT formula: $formula"
+      continue
+    fi
+
+    log "LINK formula: $formula"
+    run_cmd brew link "$formula"
+    if [ "$DRY_RUN" -eq 1 ]; then
+      continue
+    fi
+    while IFS= read -r command; do
+      [ -n "$command" ] || continue
+      resolved="$(command -v "$command" 2>/dev/null || true)"
+      case "$resolved" in
+        "$brew_prefix"/bin/*|"$brew_prefix"/sbin/*) ;;
+        *)
+          echo "Fehler: $command wird nach dem Linken nicht aus Homebrew aufgeloest: ${resolved:-missing}" >&2
+          exit 1
+          ;;
+      esac
+    done < <(registry_link_commands "$formula")
+  done < <(registry_linked_formulae)
+}
+
 install_vscode_extensions() {
   [ "$SKIP_VSCODE_EXTENSIONS" -eq 0 ] || return 0
 
@@ -820,6 +899,8 @@ if command -v brew >/dev/null 2>&1; then
     install_cli_tools
     install_npm_agent_tools
   fi
+
+  ensure_brew_formula_links
 
   compare_brew_registry
   compare_vscode_registry
