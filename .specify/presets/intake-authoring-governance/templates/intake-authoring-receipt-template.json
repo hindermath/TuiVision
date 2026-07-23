@@ -1,9 +1,9 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "1.1",
   "receiptId": "00000000-0000-0000-0000-000000000000",
   "generator": {
     "preset": "intake-authoring-governance",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "createdAt": "1970-01-01T00:00:00Z",
   "status": "NeedsClarification",
@@ -36,10 +36,17 @@
   "deliveryAuthority": "LocalImplementation",
   "authorityEvidence": "Default: no explicit remote authority",
   "promptState": "Blocked",
+  "provenanceMode": "New",
   "supersedes": {
     "receiptPath": "N/A",
     "targetNormalizedSha256": "N/A"
   },
+  "legacyAdoption": {
+    "evidenceType": "N/A",
+    "priorTargetNormalizedSha256": "N/A",
+    "priorGitBlob": "N/A"
+  },
   "updateAuthorized": false,
+  "updateAuthorityEvidence": "N/A",
   "nextAction": "Resolve open intake-authoring decisions"
 }

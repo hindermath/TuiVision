@@ -3,7 +3,7 @@ schema_version: "1.0"
 preset:
   id: "intake-authoring-governance"
   name: "Intake Authoring Governance"
-  version: "0.1.0"
+  version: "0.1.1"
   description: "Turns ordered UTF-8 planning sources into one traceable Spec Kit intake with safe copy-ready Specify and Autonomous prompts."
   author: "Thorsten Hindermann"
   repository: "https://github.com/hindermath/spec-kit-preset-intake-authoring-governance"

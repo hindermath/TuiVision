@@ -21,12 +21,15 @@ This command is strictly read-only.
 2. Hash the receipt before inspection. Run the installed Bash or PowerShell
    validator with the repository root passed explicitly.
 3. Recheck every repository-local source, target hash, status, decisions,
-   authority, prompt markers, rendered invocations, and supersession fields.
+   authority, prompt markers, rendered invocations, and provenance fields.
    Inline and external sources are snapshot-only; report that limit without
    treating an unverifiable path as current evidence.
-4. Hash the receipt again and verify Git status for the inspected paths. Any
+4. For schema 1.1, verify `New`, `Supersession`, or `LegacyAdoption`.
+   A legacy Git blob must resolve to the recorded normalized prior-target hash;
+   snapshot-only adoption reports its explicit proof limit.
+5. Hash the receipt again and verify Git status for the inspected paths. Any
    mutation makes the status check fail.
-5. Classify the result as `Current`, `SourceDrift`, `TargetDrift`,
+6. Classify the result as `Current`, `SourceDrift`, `TargetDrift`,
    `NeedsClarification`, `InvalidReceipt`, or `Missing`.
 
 Finish with classification, target, receipt, source freshness, prompt state,

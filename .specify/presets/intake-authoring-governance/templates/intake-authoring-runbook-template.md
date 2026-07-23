@@ -44,3 +44,10 @@ follow-on feature execution are never inferred.
 An existing target is immutable by default. An authorized update records the
 old target hash, superseded receipt, current authority, and new source set. Do
 not reuse an old receipt after target or source drift.
+
+For a pre-preset target without a receipt, use `LegacyAdoption` instead of
+inventing a superseded receipt. Record the prior normalized target hash,
+explicit current update authority, and either the exact Git blob or an honest
+snapshot-only proof boundary. The prior target hash must also occur in the
+ordered source inventory. `LegacyAdoption` preserves the target path and does
+not grant implementation or remote-delivery authority.
