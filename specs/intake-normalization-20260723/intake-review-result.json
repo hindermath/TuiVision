@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0",
+  "reviewId": "4fb47eb3-f510-42d0-a031-fefcf1f30781",
+  "mode": "Series",
+  "status": "Ready",
+  "policy": "tui-vision-active-lastenhefte-v2",
+  "reviewedAt": "2026-07-23T14:36:06Z",
+  "repository": {
+    "root": ".",
+    "head": "49678aadb478d4df8700492693238af5ae721df2"
+  },
+  "targets": [
+    {
+      "path": "Lastenheft_Constitution_Change.md",
+      "role": "Primary",
+      "normalizedSha256": "448884c87b2d3ae44792b77a73b91d61384039563a944d1857c2eb66cbc99381",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "9ccdac18a9fe52b759a70e34764d611463f59d11ca24011cf1780be10228a512",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "0f8d1e60bf62d749e39d0a6b932115c1fa0b45d2f4ac6d83d8799372d98bedae",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "571eb13bc61ecd28d2e36be5a59ece0bdd3c2b3d14ddae7fe4b2386e6552c763",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "2ef3611ff653f6d66b4bdef2ac1275bfb34dd46ac081957f75d10e15f95c7b83",
+      "gitBlob": "N/A"
+    }
+  ],
+  "findings": [],
+  "questions": [],
+  "acceptedRisks": [],
+  "operatorExceptions": [],
+  "coverage": {
+    "individual": [
+      "Lastenheft_Constitution_Change.md",
+      "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md"
+    ],
+    "series": [
+      "All 5 active paths and their exact order",
+      "Repository ordering, predecessor gates, overlap, terminology, authority, and no-auto-start boundaries",
+      "Excluded archive and overview classifications from target-manifest.json"
+    ],
+    "workers": []
+  },
+  "summary": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "supersedes": "e204a332-64f3-4680-a3ff-3738e0eab256"
+}

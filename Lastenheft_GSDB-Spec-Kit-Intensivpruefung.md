@@ -1,3 +1,4 @@
+<!-- intake-authoring:begin -->
 <!-- gsdb-spec-kit-intensivpruefung:start -->
 # Lastenheft GSDB-Spec-Kit-Intensivpruefung fuer TuiVision
 
@@ -59,13 +60,13 @@ governance presets, and project-specific evidence.
 ## Kopierbarer Spec-Kit Specify Prompt
 
 ```text
-$speckit-specify Fuehre eine intensive GSDB-Pruefung fuer dieses Repository durch. Nutze docs/secure-development/, constitution.md, .specify/memory/constitution.md, docs/security/, Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md und die installierten Governance-Presets als Pruefgrundlagen. Starte keine formale Freigabe und behaupte keine Human-only-Punkte als erledigt. Erstelle eine Feature-Spezifikation, die alle relevanten GSDB-Pruefpunkte mit Applicable, N/A oder Open behandelt. Dokumentiere je Pruefpunkt Begruendung, Evidenzpfad, Owner, Follow-up, Re-Evaluation-Trigger und Restrisiko. Wenn ein Punkt nicht anwendbar ist, dokumentiere N/A mit kurzer Begruendung. Wenn Evidenz fehlt, dokumentiere Open mit konkreter Nacharbeit.
+Ersetzter Alt-Prompt: speckit-specify Fuehre eine intensive GSDB-Pruefung fuer dieses Repository durch. Nutze docs/secure-development/, constitution.md, .specify/memory/constitution.md, docs/security/, Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md und die installierten Governance-Presets als Pruefgrundlagen. Starte keine formale Freigabe und behaupte keine Human-only-Punkte als erledigt. Erstelle eine Feature-Spezifikation, die alle relevanten GSDB-Pruefpunkte mit Applicable, N/A oder Open behandelt. Dokumentiere je Pruefpunkt Begruendung, Evidenzpfad, Owner, Follow-up, Re-Evaluation-Trigger und Restrisiko. Wenn ein Punkt nicht anwendbar ist, dokumentiere N/A mit kurzer Begruendung. Wenn Evidenz fehlt, dokumentiere Open mit konkreter Nacharbeit.
 ```
 
 ## Kopierbarer Autonomous-Prompt / Copyable Autonomous Prompt
 
 ```text
-$speckit-autonomous Use `Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md` as the
+Ersetzter Alt-Prompt: speckit-autonomous Use `Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md` as the
 binding intake for a complete autonomous GSDB evidence review in
 MergeAndSync mode.
 
@@ -94,3 +95,28 @@ feature delivery. Merge only after applicable checks and reviews converge,
 then return to clean synchronized main.
 ```
 <!-- gsdb-spec-kit-intensivpruefung:end -->
+<!-- intake-authoring:prompts -->
+## Kopierbare Spec-Kit-Prompts / Copy-Ready Spec Kit Prompts
+
+Die folgenden Alternativen starten keinen Lauf automatisch. Der autonome
+Prompt ist auf `LocalImplementation` begrenzt und erteilt keine Remote-,
+PR-, Merge-, Bypass-, Secret- oder Provider-Berechtigung.
+
+*The alternatives below do not start a run automatically. The autonomous
+prompt is limited to `LocalImplementation` and grants no remote,
+pull-request, merge, bypass, secret, or provider authority.*
+
+### Specify
+
+<!-- spec-kit-command-id: speckit.specify -->
+```text
+$speckit-specify Use Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md as the binding intake. Preserve its scope, non-goals, ordering, governance, evidence, and acceptance criteria. Create or update only the matching feature specification. Do not implement, commit, push, create a pull request, merge, or start another feature.
+```
+
+### Autonomous
+
+<!-- spec-kit-command-id: speckit.autonomous -->
+```text
+$speckit-autonomous Execute one complete autonomous Spec Kit run using Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md as the binding intake. Delivery mode: LocalImplementation. Preserve all scope, ordering, security, accessibility, evidence, and acceptance boundaries. Do not push, create or merge a pull request, use bypass authority, expose secrets, or start a follow-up feature.
+```
+<!-- intake-authoring:end -->

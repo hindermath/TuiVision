@@ -1,3 +1,4 @@
+<!-- intake-authoring:begin -->
 # Lastenheft: Sandbox-gestuetzte Secure-Development-Haertung
 
 **Dokumenttyp:** Spec-Kit Intake / Lastenheft  
@@ -68,7 +69,7 @@ Dieses Lastenheft beschreibt einen spaeteren Spec-Kit-Lauf, der prueft, wie dies
 ## Optimaler Spec-Kit Specify Prompt
 
 ```text
-$speckit-specify Nutze Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md als verbindliche Eingabedatei. Erstelle die Feature-Spezifikation fuer einen Sandbox-gestuetzten Secure-Development-Haertungslauf im Repository TuiVision.
+Ersetzter Alt-Prompt: speckit-specify Nutze Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md als verbindliche Eingabedatei. Erstelle die Feature-Spezifikation fuer einen Sandbox-gestuetzten Secure-Development-Haertungslauf im Repository TuiVision.
 
 Ziel: Pruefe, wie TuiVision sicher, nachvollziehbar und ausbildungsgeeignet in oder mit der absdd-image-sandbox bearbeitet werden kann. Starte keine Implementierung und fuehre keine technische Haertung aus.
 
@@ -87,7 +88,7 @@ Beruecksichtige:
 ## Optimaler Autonomous-Prompt / Optimal Autonomous Prompt
 
 ```text
-$speckit-autonomous Use
+Ersetzter Alt-Prompt: speckit-autonomous Use
 `Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md` as the binding
 intake for a complete autonomous sandbox applicability review in
 MergeAndSync mode.
@@ -117,3 +118,28 @@ Use remote authority only for this repository's non-empty feature delivery.
 Merge only after applicable checks and reviews converge, then return to clean
 synchronized main.
 ```
+<!-- intake-authoring:prompts -->
+## Kopierbare Spec-Kit-Prompts / Copy-Ready Spec Kit Prompts
+
+Die folgenden Alternativen starten keinen Lauf automatisch. Der autonome
+Prompt ist auf `LocalImplementation` begrenzt und erteilt keine Remote-,
+PR-, Merge-, Bypass-, Secret- oder Provider-Berechtigung.
+
+*The alternatives below do not start a run automatically. The autonomous
+prompt is limited to `LocalImplementation` and grants no remote,
+pull-request, merge, bypass, secret, or provider authority.*
+
+### Specify
+
+<!-- spec-kit-command-id: speckit.specify -->
+```text
+$speckit-specify Use Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md as the binding intake. Preserve its scope, non-goals, ordering, governance, evidence, and acceptance criteria. Create or update only the matching feature specification. Do not implement, commit, push, create a pull request, merge, or start another feature.
+```
+
+### Autonomous
+
+<!-- spec-kit-command-id: speckit.autonomous -->
+```text
+$speckit-autonomous Execute one complete autonomous Spec Kit run using Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md as the binding intake. Delivery mode: LocalImplementation. Preserve all scope, ordering, security, accessibility, evidence, and acceptance boundaries. Do not push, create or merge a pull request, use bypass authority, expose secrets, or start a follow-up feature.
+```
+<!-- intake-authoring:end -->
