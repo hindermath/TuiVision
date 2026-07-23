@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "enabled": true,
+  "defaultTargetDirectory": ".",
+  "receiptDirectory": "specs/intake-authoring-receipts",
+  "defaultProfile": "level2-lastenheft",
+  "profiles": {
+    "level2-lastenheft": ".specify/templates/intake-authoring-level2-lastenheft-profile.md",
+    "generic-markdown": ".specify/presets/intake-authoring-governance/templates/project-profile-template.md"
+  },
+  "languagePolicy": "GermanFirstEnglishSecond",
+  "defaultDeliveryAuthority": "LocalImplementation",
+  "maximumQuestionsPerPass": 5,
+  "allowExternalSources": true,
+  "allowOverwrite": false,
+  "nextAction": "speckit.intake-review"
+}

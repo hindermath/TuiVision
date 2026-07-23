@@ -1,3 +1,4 @@
+<!-- intake-authoring:begin -->
 # Lastenheft 15: Post-Wave-6 Example Portfolio Conformance Audit
 
 ## 0. Dokumentstatus
@@ -397,7 +398,7 @@ Der Lauf stoppt bei:
 ## 16. Kopierbarer `/speckit-specify`-Prompt
 
 ```text
-$speckit-specify Create the feature specification for the binding intake
+Ersetzter Alt-Prompt: speckit-specify Create the feature specification for the binding intake
 `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md`.
 
 Start only after Wave 6 and its independent closeout are fully merged and
@@ -436,7 +437,7 @@ followed by exactly one independent portfolio closure.
 ## 17. Kopierbarer autonomer Intake-Prompt
 
 ```text
-$speckit-autonomous Use
+Ersetzter Alt-Prompt: speckit-autonomous Use
 `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` as the
 binding intake in MergeAndSync mode.
 
@@ -467,3 +468,28 @@ branch cleanup, main synchronization, and the autonomous retrospective under
 current explicit remote authority. Promote reusable preset learning only
 through the documented Home Baseline release and exact tag-ZIP adoption cycle.
 ```
+<!-- intake-authoring:prompts -->
+## Kopierbare Spec-Kit-Prompts / Copy-Ready Spec Kit Prompts
+
+Die folgenden Alternativen starten keinen Lauf automatisch. Der autonome
+Prompt ist auf `LocalImplementation` begrenzt und erteilt keine Remote-,
+PR-, Merge-, Bypass-, Secret- oder Provider-Berechtigung.
+
+*The alternatives below do not start a run automatically. The autonomous
+prompt is limited to `LocalImplementation` and grants no remote,
+pull-request, merge, bypass, secret, or provider authority.*
+
+### Specify
+
+<!-- spec-kit-command-id: speckit.specify -->
+```text
+$speckit-specify Use Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md as the binding intake. Preserve its scope, non-goals, ordering, governance, evidence, and acceptance criteria. Create or update only the matching feature specification. Do not implement, commit, push, create a pull request, merge, or start another feature.
+```
+
+### Autonomous
+
+<!-- spec-kit-command-id: speckit.autonomous -->
+```text
+$speckit-autonomous Execute one complete autonomous Spec Kit run using Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md as the binding intake. Delivery mode: LocalImplementation. Preserve all scope, ordering, security, accessibility, evidence, and acceptance boundaries. Do not push, create or merge a pull request, use bypass authority, expose secrets, or start a follow-up feature.
+```
+<!-- intake-authoring:end -->

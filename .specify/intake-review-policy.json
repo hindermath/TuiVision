@@ -1,8 +1,14 @@
 {
   "schemaVersion": "1.0",
   "required": true,
-  "acceptedStatuses": ["Ready", "ReadyWithAcceptedRisks"],
-  "resultPath": "specs/intake-review-result.json",
-  "profiles": ["tui-vision-lastenheft", "generic-markdown"],
+  "acceptedStatuses": [
+    "Ready",
+    "ReadyWithAcceptedRisks"
+  ],
+  "resultPath": "specs/intake-normalization-20260723/intake-review-result.json",
+  "profiles": [
+    "level2-lastenheft",
+    "generic-markdown"
+  ],
   "requireHumanRiskAcceptance": true
 }

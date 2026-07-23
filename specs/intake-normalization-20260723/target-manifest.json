@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.0",
+  "repository": "hindermath/TuiVision",
+  "baseBranch": "main",
+  "selectionRule": "Active executable intakes only",
+  "targets": [
+    {
+      "path": "Lastenheft_Constitution_Change.md",
+      "profile": "level2-lastenheft"
+    },
+    {
+      "path": "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "profile": "level2-lastenheft"
+    },
+    {
+      "path": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "profile": "level2-lastenheft"
+    },
+    {
+      "path": "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "profile": "level2-lastenheft"
+    },
+    {
+      "path": "Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "profile": "level2-lastenheft"
+    }
+  ],
+  "excluded": [
+    {
+      "path": "Lastenheft_Abarbeitungsreihenfolge.md",
+      "reason": "Ordering document"
+    },
+    {
+      "path": "28 feature-suffixed Lastenhefte",
+      "reason": "Archived or completed feature evidence"
+    }
+  ]
+}

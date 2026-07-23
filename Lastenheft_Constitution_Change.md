@@ -1,3 +1,4 @@
+<!-- intake-authoring:begin -->
 # Lastenheft: Constitution Change fuer didaktische und sprachliche Klarheit
 
 **Dokument-Status:** Spec-Kit-Eingabedatei, bereit fuer `/speckit-specify`
@@ -177,7 +178,7 @@ make this path visible for learners.
 ## 5. Kopierbarer Specify-Prompt / Copyable Specify Prompt
 
 ```text
-$speckit-specify Nutze Lastenheft_Constitution_Change.md als verbindliche Eingabe. Erstelle die Feature-Spezifikation fuer eine Governance-Aenderung zu didaktischer und sprachlicher Klarheit in TuiVision.
+Ersetzter Alt-Prompt: speckit-specify Nutze Lastenheft_Constitution_Change.md als verbindliche Eingabe. Erstelle die Feature-Spezifikation fuer eine Governance-Aenderung zu didaktischer und sprachlicher Klarheit in TuiVision.
 
 Ziel: Constitution, Spec-Kit-Templates und betroffene Agent-Guidance sollen konsistent festlegen, dass user-facing Dokumentation und Public-API-Dokumentation Deutsch zuerst und Englisch danach liefern, ungefaehr CEFR-B2 erreichen und text-first A11Y als Completion-Kriterium behandeln.
 
@@ -210,7 +211,7 @@ implemented again; open items are classified as `Applicable`,
 ## 6. Kopierbarer Autonomous-Prompt / Copyable Autonomous Prompt
 
 ```text
-$speckit-autonomous Use `Lastenheft_Constitution_Change.md` as the binding
+Ersetzter Alt-Prompt: speckit-autonomous Use `Lastenheft_Constitution_Change.md` as the binding
 intake for a complete autonomous governance review in MergeAndSync mode.
 
 Start only from clean synchronized main. Determine the next free Spec Kit
@@ -239,3 +240,28 @@ trigger. Use remote authority only for this repository's non-empty feature
 delivery. Merge only after all applicable checks and reviews converge, then
 return to clean synchronized main.
 ```
+<!-- intake-authoring:prompts -->
+## Kopierbare Spec-Kit-Prompts / Copy-Ready Spec Kit Prompts
+
+Die folgenden Alternativen starten keinen Lauf automatisch. Der autonome
+Prompt ist auf `LocalImplementation` begrenzt und erteilt keine Remote-,
+PR-, Merge-, Bypass-, Secret- oder Provider-Berechtigung.
+
+*The alternatives below do not start a run automatically. The autonomous
+prompt is limited to `LocalImplementation` and grants no remote,
+pull-request, merge, bypass, secret, or provider authority.*
+
+### Specify
+
+<!-- spec-kit-command-id: speckit.specify -->
+```text
+$speckit-specify Use Lastenheft_Constitution_Change.md as the binding intake. Preserve its scope, non-goals, ordering, governance, evidence, and acceptance criteria. Create or update only the matching feature specification. Do not implement, commit, push, create a pull request, merge, or start another feature.
+```
+
+### Autonomous
+
+<!-- spec-kit-command-id: speckit.autonomous -->
+```text
+$speckit-autonomous Execute one complete autonomous Spec Kit run using Lastenheft_Constitution_Change.md as the binding intake. Delivery mode: LocalImplementation. Preserve all scope, ordering, security, accessibility, evidence, and acceptance boundaries. Do not push, create or merge a pull request, use bypass authority, expose secrets, or start a follow-up feature.
+```
+<!-- intake-authoring:end -->

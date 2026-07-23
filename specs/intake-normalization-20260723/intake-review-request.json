@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "reviewId": "4fb47eb3-f510-42d0-a031-fefcf1f30781",
+  "mode": "Series",
+  "policy": "tui-vision-active-lastenhefte-v2",
+  "targets": [
+    {
+      "path": "Lastenheft_Constitution_Change.md",
+      "role": "Primary"
+    },
+    {
+      "path": "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "role": "OrderedMember"
+    }
+  ],
+  "series": {
+    "orderedTargetPaths": [
+      "Lastenheft_Constitution_Change.md",
+      "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md"
+    ],
+    "dependencies": []
+  },
+  "campaign": {
+    "manifestPath": "N/A",
+    "workers": [],
+    "operatorExceptions": []
+  }
+}
