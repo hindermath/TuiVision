@@ -1,4 +1,4 @@
-.TH VALIDATE-INTAKE-REVIEW-RESULT 1 "July 2026" "intake-review-governance 0.1.0"
+.TH VALIDATE-INTAKE-REVIEW-RESULT 1 "July 2026" "intake-review-governance 0.1.1"
 .SH NAME
 validate-intake-review-result \- validate a current intake review result
 .SH SYNOPSIS
@@ -7,5 +7,10 @@ validate-intake-review-result \- validate a current intake review result
 Validates schema, outcome, coverage, risk ownership, and normalized SHA-256
 hashes without modifying the repository. Text normalization removes one UTF-8
 BOM and converts CRLF or CR to LF; it performs no trimming.
+.PP
+Series schema 1.1 results bind their request through requestEvidence. The
+validator checks request identity, target and role parity, exact ordering,
+roots, edge references, duplicate edges, order consistency, and acyclicity.
+Single and Campaign schema 1.0 results remain supported.
 .SH EXIT STATUS
 Returns 0 for a valid current result and 2 for invalid input or drift.

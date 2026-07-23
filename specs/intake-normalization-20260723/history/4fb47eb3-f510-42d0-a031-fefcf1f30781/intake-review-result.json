@@ -1,13 +1,13 @@
 {
-  "schemaVersion": "1.1",
-  "reviewId": "b1b901aa-c523-4f35-ba64-0dddd99c6072",
+  "schemaVersion": "1.0",
+  "reviewId": "4fb47eb3-f510-42d0-a031-fefcf1f30781",
   "mode": "Series",
   "status": "Ready",
   "policy": "tui-vision-active-lastenhefte-v2",
-  "reviewedAt": "2026-07-23T17:48:46Z",
+  "reviewedAt": "2026-07-23T14:36:06Z",
   "repository": {
     "root": ".",
-    "head": "0f4014d406b1943eec6d35ab479e98061fe6a883"
+    "head": "49678aadb478d4df8700492693238af5ae721df2"
   },
   "targets": [
     {
@@ -66,9 +66,5 @@
     "medium": 0,
     "low": 0
   },
-  "supersedes": "4fb47eb3-f510-42d0-a031-fefcf1f30781",
-  "requestEvidence": {
-    "path": "specs/intake-normalization-20260723/intake-review-request.json",
-    "normalizedSha256": "298a1f8923350f670000ad90fdfb5cecf2af505bf7551d9f92f3aac2a82d8a71"
-  }
+  "supersedes": "e204a332-64f3-4680-a3ff-3738e0eab256"
 }

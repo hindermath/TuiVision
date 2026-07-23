@@ -35,6 +35,20 @@ not trim spaces or final lines. Hash the resulting bytes with SHA-256. Binary or
 non-UTF-8 input is rejected. This normalization makes equivalent text portable
 without hiding meaningful edits.
 
+## Series Graph Contract
+
+Series requests and results use schema 1.1. The result binds the
+repository-relative request path and its normalized SHA-256 through
+`requestEvidence`. Target paths are the canonical identities. Request and
+result review ID, mode, policy, target set, and roles must match.
+
+`orderedTargetPaths` contains every target exactly once. `roots` equals the
+zero-indegree target set. Every non-root has an incoming dependency. Each edge
+has `from`, `to`, and `kind`, references known distinct targets, occurs once
+per `from/to` pair, follows the declared order, and participates in an acyclic
+graph. Never invent a predecessor when repository evidence is ambiguous;
+return `NeedsClarification`.
+
 ## Consumer Contract
 
 Preset 7 and Preset 8 remain usable without this optional preset. When the
