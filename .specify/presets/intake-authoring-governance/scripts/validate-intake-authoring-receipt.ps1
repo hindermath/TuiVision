@@ -4,13 +4,13 @@ Prueft ein Intake-Authoring-Receipt, sein Ziel und lokale Quellen read-only.
 
 Validates an intake-authoring receipt, its target, and local sources read-only.
 .DESCRIPTION
-Prueft Schema 1.0, normalisierte SHA-256-Werte, striktes UTF-8,
+Prueft Schema 1.0 und 1.1, normalisierte SHA-256-Werte, striktes UTF-8,
 Entscheidungen, Prompt-Zustand, Delivery Authority und Update-Provenienz.
 Die Pruefung veraendert keine Datei und erteilt keine weitere Berechtigung.
 
-Validates schema 1.0, normalized SHA-256 values, strict UTF-8, decisions,
-prompt state, delivery authority, and update provenance. It changes no file and
-grants no additional authority.
+Validates schemas 1.0 and 1.1, normalized SHA-256 values, strict UTF-8,
+decisions, prompt state, delivery authority, and update provenance. It changes
+no file and grants no additional authority.
 .PARAMETER Receipt
 Pfad zum JSON-Receipt. Path to the JSON receipt.
 .PARAMETER Repo
@@ -79,6 +79,43 @@ function Test-IntakeAuthoringReceipt {
         return [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($Bytes)).ToLowerInvariant()
     }
 
+    function Get-HBNormalizedHashFromBytes([byte[]]$Bytes) {
+        $Offset = if ($Bytes.Length -ge 3 -and $Bytes[0] -eq 0xEF -and $Bytes[1] -eq 0xBB -and $Bytes[2] -eq 0xBF) { 3 } else { 0 }
+        $Utf8Strict = [Text.UTF8Encoding]::new($false, $true)
+        $Text = $Utf8Strict.GetString($Bytes, $Offset, $Bytes.Length - $Offset)
+        if ($Text.Contains([char]0)) { throw 'binary NUL detected' }
+        $Normalized = $Text.Replace("`r`n", "`n").Replace("`r", "`n")
+        $Utf8 = [Text.UTF8Encoding]::new($false, $true)
+        return [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($Utf8.GetBytes($Normalized))).ToLowerInvariant()
+    }
+
+    function Get-HBGitBlobNormalizedHash([string]$ObjectId) {
+        $StartInfo = [Diagnostics.ProcessStartInfo]::new()
+        $StartInfo.FileName = 'git'
+        $StartInfo.UseShellExecute = $false
+        $StartInfo.RedirectStandardOutput = $true
+        $StartInfo.RedirectStandardError = $true
+        foreach ($Argument in @('-C', $RepoRoot, 'cat-file', 'blob', $ObjectId)) {
+            [void]$StartInfo.ArgumentList.Add($Argument)
+        }
+        $Process = [Diagnostics.Process]::new()
+        $Process.StartInfo = $StartInfo
+        [void]$Process.Start()
+        $Buffer = [IO.MemoryStream]::new()
+        try {
+            $Process.StandardOutput.BaseStream.CopyTo($Buffer)
+            $ErrorText = $Process.StandardError.ReadToEnd()
+            $Process.WaitForExit()
+            if ($Process.ExitCode -ne 0) {
+                throw "git cat-file failed: $ErrorText"
+            }
+            return Get-HBNormalizedHashFromBytes $Buffer.ToArray()
+        } finally {
+            $Buffer.Dispose()
+            $Process.Dispose()
+        }
+    }
+
     function Test-HBDigest([string]$Value, [string]$Label) {
         if ($Value -notmatch '^[0-9a-f]{64}$') {
             $Errors.Add("${Label} must be a lowercase SHA-256")
@@ -111,8 +148,9 @@ function Test-IntakeAuthoringReceipt {
         $Errors.Add('receipt contains a credential or private key pattern')
     }
 
-    if ((Get-HBProperty $Data 'schemaVersion') -ne '1.0') {
-        $Errors.Add('schemaVersion must be 1.0')
+    $SchemaVersion = Get-HBProperty $Data 'schemaVersion'
+    if ($SchemaVersion -notin @('1.0', '1.1')) {
+        $Errors.Add('schemaVersion must be 1.0 or 1.1')
     }
     $ReceiptId = Get-HBText $Data 'receiptId' 'receipt'
     $Guid = [Guid]::Empty
@@ -128,8 +166,10 @@ function Test-IntakeAuthoringReceipt {
     if ((Get-HBText $Generator 'preset' 'generator') -ne 'intake-authoring-governance') {
         $Errors.Add('generator.preset is invalid')
     }
-    if ((Get-HBText $Generator 'version' 'generator') -ne '0.1.0') {
-        $Errors.Add('generator.version must be 0.1.0')
+    $GeneratorVersion = Get-HBText $Generator 'version' 'generator'
+    $ExpectedGenerator = if ($SchemaVersion -eq '1.0') { '0.1.0' } elseif ($SchemaVersion -eq '1.1') { '0.1.1' } else { '' }
+    if ($ExpectedGenerator -and $GeneratorVersion -ne $ExpectedGenerator) {
+        $Errors.Add("generator.version must be $ExpectedGenerator for schema $SchemaVersion")
     }
 
     $CreatedAt = Get-HBText $Data 'createdAt' 'receipt'
@@ -326,16 +366,93 @@ function Test-IntakeAuthoringReceipt {
     if (($OldReceipt -eq 'N/A') -ne ($OldTargetHash -eq 'N/A')) {
         $Errors.Add('supersedes fields must both be N/A or both be populated')
     }
-    if ($OldReceipt -eq 'N/A') {
-        if ($UpdateAuthorized -eq $true) { $Errors.Add('new intake cannot claim updateAuthorized') }
-    } else {
-        if ($UpdateAuthorized -ne $true) { $Errors.Add('supersession requires updateAuthorized') }
-        if (-not (Test-HBRelativePath $OldReceipt)) {
-            $Errors.Add('supersedes.receiptPath must be repository-relative')
-        } elseif (-not (Test-Path -LiteralPath (Join-Path $RepoRoot $OldReceipt) -PathType Leaf)) {
-            $Errors.Add("superseded receipt missing: $OldReceipt")
+    if ($SchemaVersion -eq '1.0') {
+        if ($OldReceipt -eq 'N/A') {
+            if ($UpdateAuthorized -eq $true) { $Errors.Add('new intake cannot claim updateAuthorized') }
+        } else {
+            if ($UpdateAuthorized -ne $true) { $Errors.Add('supersession requires updateAuthorized') }
+            if (-not (Test-HBRelativePath $OldReceipt)) {
+                $Errors.Add('supersedes.receiptPath must be repository-relative')
+            } elseif (-not (Test-Path -LiteralPath (Join-Path $RepoRoot $OldReceipt) -PathType Leaf)) {
+                $Errors.Add("superseded receipt missing: $OldReceipt")
+            }
+            Test-HBDigest $OldTargetHash 'supersedes.targetNormalizedSha256'
         }
-        Test-HBDigest $OldTargetHash 'supersedes.targetNormalizedSha256'
+    } else {
+        $ProvenanceMode = Get-HBText $Data 'provenanceMode' 'receipt'
+        if ($ProvenanceMode -notin @('New', 'Supersession', 'LegacyAdoption')) {
+            $Errors.Add('provenanceMode is invalid')
+        }
+        $UpdateEvidence = Get-HBText $Data 'updateAuthorityEvidence' 'receipt'
+        $Legacy = Get-HBProperty $Data 'legacyAdoption'
+        if ($null -eq $Legacy) {
+            $Errors.Add('legacyAdoption must be an object')
+            $Legacy = [pscustomobject]@{}
+        }
+        $LegacyType = Get-HBText $Legacy 'evidenceType' 'legacyAdoption'
+        $LegacyHash = Get-HBText $Legacy 'priorTargetNormalizedSha256' 'legacyAdoption'
+        $LegacyBlob = Get-HBText $Legacy 'priorGitBlob' 'legacyAdoption'
+
+        switch ($ProvenanceMode) {
+            'New' {
+                if ($UpdateAuthorized -eq $true) { $Errors.Add('new intake cannot claim updateAuthorized') }
+                if ($OldReceipt -ne 'N/A' -or $OldTargetHash -ne 'N/A') {
+                    $Errors.Add('New provenance cannot supersede an intake')
+                }
+                if ($LegacyType -ne 'N/A' -or $LegacyHash -ne 'N/A' -or $LegacyBlob -ne 'N/A') {
+                    $Errors.Add('New provenance cannot contain legacy-adoption evidence')
+                }
+                if ($UpdateEvidence -ne 'N/A') {
+                    $Errors.Add('New provenance requires updateAuthorityEvidence N/A')
+                }
+            }
+            'Supersession' {
+                if ($UpdateAuthorized -ne $true) { $Errors.Add('supersession requires updateAuthorized') }
+                if ($UpdateEvidence -eq 'N/A') { $Errors.Add('supersession requires updateAuthorityEvidence') }
+                if ($OldReceipt -eq 'N/A') {
+                    $Errors.Add('Supersession requires a prior receipt')
+                } elseif (-not (Test-HBRelativePath $OldReceipt)) {
+                    $Errors.Add('supersedes.receiptPath must be repository-relative')
+                } elseif (-not (Test-Path -LiteralPath (Join-Path $RepoRoot $OldReceipt) -PathType Leaf)) {
+                    $Errors.Add("superseded receipt missing: $OldReceipt")
+                }
+                Test-HBDigest $OldTargetHash 'supersedes.targetNormalizedSha256'
+                if ($LegacyType -ne 'N/A' -or $LegacyHash -ne 'N/A' -or $LegacyBlob -ne 'N/A') {
+                    $Errors.Add('Supersession cannot contain legacy-adoption evidence')
+                }
+            }
+            'LegacyAdoption' {
+                if ($UpdateAuthorized -ne $true) { $Errors.Add('legacy adoption requires updateAuthorized') }
+                if ($UpdateEvidence -eq 'N/A') { $Errors.Add('legacy adoption requires updateAuthorityEvidence') }
+                if ($OldReceipt -ne 'N/A' -or $OldTargetHash -ne 'N/A') {
+                    $Errors.Add('LegacyAdoption cannot invent a superseded receipt')
+                }
+                if ($LegacyType -notin @('GitBlob', 'SnapshotOnly')) {
+                    $Errors.Add('legacyAdoption.evidenceType is invalid')
+                }
+                Test-HBDigest $LegacyHash 'legacyAdoption.priorTargetNormalizedSha256'
+                $SourceHashes = @($Sources | ForEach-Object { Get-HBProperty $_ 'normalizedSha256' })
+                if ($LegacyHash -notin $SourceHashes) {
+                    $Errors.Add('legacy target hash must occur in the source inventory')
+                }
+                if ($LegacyType -eq 'SnapshotOnly' -and $LegacyBlob -ne 'N/A') {
+                    $Errors.Add('SnapshotOnly legacy adoption requires priorGitBlob N/A')
+                } elseif ($LegacyType -eq 'GitBlob') {
+                    if ($LegacyBlob -notmatch '^(?:[0-9a-f]{40}|[0-9a-f]{64})$') {
+                        $Errors.Add('legacyAdoption.priorGitBlob must be a Git object id')
+                    } else {
+                        try {
+                            $BlobHash = Get-HBGitBlobNormalizedHash $LegacyBlob
+                            if ($BlobHash -ne $LegacyHash) {
+                                $Errors.Add('legacy Git blob does not match prior target hash')
+                            }
+                        } catch {
+                            $Errors.Add("legacy Git blob cannot be verified: $($_.Exception.Message)")
+                        }
+                    }
+                }
+            }
+        }
     }
 
     $NextAction = Get-HBText $Data 'nextAction' 'receipt'

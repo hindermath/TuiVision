@@ -1,11 +1,11 @@
 # Intake Authoring Governance Preset
 
 Optional, stackable intake-authoring governance for GitHub Spec Kit. Version
-`0.1.0` turns prompts, pasted planning text, and explicitly ordered UTF-8 text
+`0.1.1` turns prompts, pasted planning text, and explicitly ordered UTF-8 text
 files into exactly one traceable Markdown intake plus one JSON receipt.
 
 *Optional, stackable intake-authoring governance for GitHub Spec Kit. Version
-`0.1.0` turns prompts, pasted plans, and ordered UTF-8 text files into one
+`0.1.1` turns prompts, pasted plans, and ordered UTF-8 text files into one
 traceable Markdown intake plus one JSON receipt.*
 
 Recommended priority: `64`, after Agent Parity (`60`) and before Intake Review
@@ -43,7 +43,7 @@ writing.*
 
 ```bash
 specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/archive/refs/tags/v0.1.0.zip \
+  --from https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/archive/refs/tags/v0.1.1.zip \
   --priority 64
 specify preset list
 specify preset info intake-authoring-governance
@@ -142,6 +142,21 @@ $speckit-intake-create Aktualisiere intakes/order-import-validation.md ausdrueck
 
 General autonomy, an earlier delivery mode, or write permission elsewhere is
 not update authority for an intake.
+
+### Legacy adoption / Uebernahme bestehender Intakes
+
+An existing intake created before this preset has no truthful receipt to
+supersede. With explicit current update authority, use provenance mode
+`LegacyAdoption`. Record the prior normalized target hash as an ordered source,
+plus either its exact Git blob or a clearly bounded snapshot-only proof. Keep
+the same target path and never fabricate an earlier receipt.
+
+Ein bestehender Intake aus der Zeit vor diesem Preset besitzt kein
+wahrheitsgemaesses Vorgänger-Receipt. Mit ausdruecklicher aktueller
+Update-Autoritaet wird `LegacyAdoption` verwendet. Der vorherige normalisierte
+Zielhash wird als geordnete Quelle und zusammen mit dem exakten Git-Blob oder
+einer klar begrenzten Snapshot-Evidence festgehalten. Der Zielpfad bleibt
+unveraendert; ein frueheres Receipt wird nicht erfunden.
 
 ## Source Contract / Quellenvertrag
 

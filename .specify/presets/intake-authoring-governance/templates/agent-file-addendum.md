@@ -9,3 +9,8 @@ delivery authority. Existing targets require explicit update authority. A
 `speckit.intake-review` as the next action without starting it. A
 `NeedsClarification` draft keeps non-runnable blocked prompt sections. Intake
 creation alone grants no implementation or remote authority.
+
+For a pre-preset target without a receipt, require `LegacyAdoption` with the
+prior normalized target hash and a Git-blob or snapshot proof boundary. Never
+invent a superseded receipt or treat general write permission as current
+update authority.

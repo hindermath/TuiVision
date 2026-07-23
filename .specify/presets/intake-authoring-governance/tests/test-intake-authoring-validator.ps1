@@ -293,8 +293,62 @@ try {
     Write-Utf8Text -Path $ReceiptPath -Text ($Receipt | ConvertTo-Json -Depth 20)
     Invoke-ReceiptValidators -Receipt $ReceiptPath -Repo $TempRoot -ExpectedExit 2 -Case 'unauthorized supersession'
 
+    $LegacyText = "Legacy intake before preset installation.`n"
+    $LegacyPath = Join-Path $TempRoot 'legacy/original.md'
+    Write-Utf8Text -Path $LegacyPath -Text $LegacyText
+    & git -C $TempRoot init --quiet
+    $LegacyBlob = (& git -C $TempRoot hash-object -w -- $LegacyPath).Trim()
+    if ($LASTEXITCODE -ne 0 -or -not $LegacyBlob) { throw 'Could not create legacy Git blob fixture' }
+    $LegacyHash = Get-NormalizedHash $LegacyPath
+
+    Write-Utf8Text -Path $TargetPath -Text (New-ReadyIntake -TargetPath 'intakes/example.md')
+    $Receipt.schemaVersion = '1.1'
+    $Receipt.generator.version = '0.1.1'
+    $Receipt.status = 'ReadyForReview'
+    $Receipt.target.normalizedSha256 = Get-NormalizedHash $TargetPath
+    $Receipt.sources = @([ordered]@{
+        order = 1
+        kind = 'Pasted'
+        label = 'Legacy target before creator adoption'
+        location = 'SnapshotOnly'
+        path = 'N/A'
+        normalizedSha256 = $LegacyHash
+        gitBlob = $LegacyBlob
+    })
+    $Receipt.decisions = @()
+    $Receipt.openDecisionIds = @()
+    $Receipt.questionCount = 0
+    $Receipt.promptState = 'Enabled'
+    $Receipt.provenanceMode = 'LegacyAdoption'
+    $Receipt.supersedes = [ordered]@{ receiptPath = 'N/A'; targetNormalizedSha256 = 'N/A' }
+    $Receipt.legacyAdoption = [ordered]@{
+        evidenceType = 'GitBlob'
+        priorTargetNormalizedSha256 = $LegacyHash
+        priorGitBlob = $LegacyBlob
+    }
+    $Receipt.updateAuthorized = $true
+    $Receipt.updateAuthorityEvidence = 'Explicit current authority in the migration request'
+    $Receipt.nextAction = '$speckit-intake-review intakes/example.md'
+    Write-Utf8Text -Path $ReceiptPath -Text ($Receipt | ConvertTo-Json -Depth 20)
+    Invoke-ReceiptValidators -Receipt $ReceiptPath -Repo $TempRoot -ExpectedExit 0 -Case 'legacy Git-blob adoption'
+
+    $Receipt.updateAuthorized = $false
+    Write-Utf8Text -Path $ReceiptPath -Text ($Receipt | ConvertTo-Json -Depth 20)
+    Invoke-ReceiptValidators -Receipt $ReceiptPath -Repo $TempRoot -ExpectedExit 2 -Case 'unauthorized legacy adoption'
+
+    $Receipt.updateAuthorized = $true
+    $Receipt.legacyAdoption.priorTargetNormalizedSha256 = ('0' * 64)
+    Write-Utf8Text -Path $ReceiptPath -Text ($Receipt | ConvertTo-Json -Depth 20)
+    Invoke-ReceiptValidators -Receipt $ReceiptPath -Repo $TempRoot -ExpectedExit 2 -Case 'legacy hash mismatch'
+
+    $Receipt.legacyAdoption.evidenceType = 'SnapshotOnly'
+    $Receipt.legacyAdoption.priorTargetNormalizedSha256 = $LegacyHash
+    $Receipt.legacyAdoption.priorGitBlob = 'N/A'
+    Write-Utf8Text -Path $ReceiptPath -Text ($Receipt | ConvertTo-Json -Depth 20)
+    Invoke-ReceiptValidators -Receipt $ReceiptPath -Repo $TempRoot -ExpectedExit 0 -Case 'legacy snapshot adoption'
+
     $CreateCommand = Get-Content -LiteralPath (Join-Path $PresetRoot 'commands/speckit.intake-create.md') -Raw
-    foreach ($Required in @('exactly one', 'at most five', 'BLOCKED - DO NOT RUN', 'LocalImplementation', '$speckit-intake-review')) {
+    foreach ($Required in @('exactly one', 'at most five', 'BLOCKED - DO NOT RUN', 'LocalImplementation', 'LegacyAdoption', '$speckit-intake-review')) {
         if (-not $CreateCommand.Contains($Required)) { throw "Command contract missing: $Required" }
     }
     if ($CreateCommand -notmatch 'never starts Intake Review, Specify, Autonomous, or Parallel') {

@@ -33,7 +33,7 @@ Workspace-Familie ist:
 | `autonomous-run-governance` | Autonomous Run Governance | `v0.3.2` | `70` |
 | `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.3` | `80` |
 
-Optional koennen `intake-authoring-governance` v0.1.0 mit Prioritaet `64` und
+Optional koennen `intake-authoring-governance` v0.1.1 mit Prioritaet `64` und
 `intake-review-governance` v0.1.0 mit Prioritaet `65` zwischen Agent Parity und
 Preset 7 installiert werden. Beide bleiben ausserhalb der Standard-Achtermatrix.
 Authoring erzeugt aus ausdruecklich benannten geordneten UTF-8-Quellen genau
@@ -121,7 +121,7 @@ workspace family is:
 | `autonomous-run-governance` | Autonomous Run Governance | `v0.3.2` | `70` |
 | `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.3` | `80` |
 
-Optionally install `intake-authoring-governance` v0.1.0 at priority `64` and
+Optionally install `intake-authoring-governance` v0.1.1 at priority `64` and
 `intake-review-governance` v0.1.0 at priority `65` between Agent Parity and
 Preset 7. Both remain outside the standard eight. Authoring creates one intake
 and receipt from explicit ordered UTF-8 sources without starting a downstream

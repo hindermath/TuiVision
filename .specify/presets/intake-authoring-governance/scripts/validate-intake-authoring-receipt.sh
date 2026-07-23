@@ -22,6 +22,7 @@ python3 - "$receipt" "$repo" <<'PY'
 import hashlib
 import json
 import re
+import subprocess
 import sys
 import uuid
 from datetime import datetime
@@ -57,6 +58,18 @@ def normalized_bytes(path):
 def digest(path):
     return hashlib.sha256(normalized_bytes(path)).hexdigest()
 
+def normalized_digest_bytes(raw):
+    if raw.startswith(b"\xef\xbb\xbf"):
+        raw = raw[3:]
+    try:
+        text = raw.decode("utf-8", errors="strict")
+    except UnicodeDecodeError as exc:
+        raise ValueError(f"not strict UTF-8: {exc}") from exc
+    if "\x00" in text:
+        raise ValueError("binary NUL detected")
+    normalized = text.replace("\r\n", "\n").replace("\r", "\n").encode("utf-8")
+    return hashlib.sha256(normalized).hexdigest()
+
 def check_digest(value, label):
     if not re.fullmatch(r"[0-9a-f]{64}", value):
         errors.append(f"{label} must be a lowercase SHA-256")
@@ -83,8 +96,9 @@ if not isinstance(data, dict):
 if has_secret(receipt_text):
     errors.append("receipt contains a credential or private key pattern")
 
-if data.get("schemaVersion") != "1.0":
-    errors.append("schemaVersion must be 1.0")
+schema_version = data.get("schemaVersion")
+if schema_version not in ("1.0", "1.1"):
+    errors.append("schemaVersion must be 1.0 or 1.1")
 receipt_id = required_text(data, "receiptId", "receipt")
 try:
     if uuid.UUID(receipt_id).int == 0:
@@ -98,8 +112,10 @@ if not isinstance(generator, dict):
     generator = {}
 if required_text(generator, "preset", "generator") != "intake-authoring-governance":
     errors.append("generator.preset is invalid")
-if required_text(generator, "version", "generator") != "0.1.0":
-    errors.append("generator.version must be 0.1.0")
+generator_version = required_text(generator, "version", "generator")
+expected_generator = {"1.0": "0.1.0", "1.1": "0.1.1"}.get(schema_version)
+if expected_generator and generator_version != expected_generator:
+    errors.append(f"generator.version must be {expected_generator} for schema {schema_version}")
 
 created_at = required_text(data, "createdAt", "receipt")
 try:
@@ -280,17 +296,94 @@ if not isinstance(update_authorized, bool):
     errors.append("updateAuthorized must be boolean")
 if (old_receipt == "N/A") != (old_target_hash == "N/A"):
     errors.append("supersedes fields must both be N/A or both be populated")
-if old_receipt == "N/A":
-    if update_authorized is True:
-        errors.append("new intake cannot claim updateAuthorized")
+
+if schema_version == "1.0":
+    if old_receipt == "N/A":
+        if update_authorized is True:
+            errors.append("new intake cannot claim updateAuthorized")
+    else:
+        if not update_authorized:
+            errors.append("supersession requires updateAuthorized")
+        if not relative(old_receipt):
+            errors.append("supersedes.receiptPath must be repository-relative")
+        elif not (repo / old_receipt).is_file():
+            errors.append(f"superseded receipt missing: {old_receipt}")
+        check_digest(old_target_hash, "supersedes.targetNormalizedSha256")
 else:
-    if not update_authorized:
-        errors.append("supersession requires updateAuthorized")
-    if not relative(old_receipt):
-        errors.append("supersedes.receiptPath must be repository-relative")
-    elif not (repo / old_receipt).is_file():
-        errors.append(f"superseded receipt missing: {old_receipt}")
-    check_digest(old_target_hash, "supersedes.targetNormalizedSha256")
+    provenance_mode = required_text(data, "provenanceMode", "receipt")
+    if provenance_mode not in ("New", "Supersession", "LegacyAdoption"):
+        errors.append("provenanceMode is invalid")
+    update_evidence = required_text(data, "updateAuthorityEvidence", "receipt")
+    legacy = data.get("legacyAdoption")
+    if not isinstance(legacy, dict):
+        errors.append("legacyAdoption must be an object")
+        legacy = {}
+    legacy_type = required_text(legacy, "evidenceType", "legacyAdoption")
+    legacy_hash = required_text(
+        legacy, "priorTargetNormalizedSha256", "legacyAdoption"
+    )
+    legacy_blob = required_text(legacy, "priorGitBlob", "legacyAdoption")
+
+    if provenance_mode == "New":
+        if update_authorized is True:
+            errors.append("new intake cannot claim updateAuthorized")
+        if old_receipt != "N/A" or old_target_hash != "N/A":
+            errors.append("New provenance cannot supersede an intake")
+        if (legacy_type, legacy_hash, legacy_blob) != ("N/A", "N/A", "N/A"):
+            errors.append("New provenance cannot contain legacy-adoption evidence")
+        if update_evidence != "N/A":
+            errors.append("New provenance requires updateAuthorityEvidence N/A")
+    elif provenance_mode == "Supersession":
+        if not update_authorized:
+            errors.append("supersession requires updateAuthorized")
+        if update_evidence == "N/A":
+            errors.append("supersession requires updateAuthorityEvidence")
+        if old_receipt == "N/A":
+            errors.append("Supersession requires a prior receipt")
+        elif not relative(old_receipt):
+            errors.append("supersedes.receiptPath must be repository-relative")
+        elif not (repo / old_receipt).is_file():
+            errors.append(f"superseded receipt missing: {old_receipt}")
+        check_digest(old_target_hash, "supersedes.targetNormalizedSha256")
+        if (legacy_type, legacy_hash, legacy_blob) != ("N/A", "N/A", "N/A"):
+            errors.append("Supersession cannot contain legacy-adoption evidence")
+    elif provenance_mode == "LegacyAdoption":
+        if not update_authorized:
+            errors.append("legacy adoption requires updateAuthorized")
+        if update_evidence == "N/A":
+            errors.append("legacy adoption requires updateAuthorityEvidence")
+        if old_receipt != "N/A" or old_target_hash != "N/A":
+            errors.append("LegacyAdoption cannot invent a superseded receipt")
+        if legacy_type not in ("GitBlob", "SnapshotOnly"):
+            errors.append("legacyAdoption.evidenceType is invalid")
+        check_digest(
+            legacy_hash, "legacyAdoption.priorTargetNormalizedSha256"
+        )
+        if legacy_hash not in {
+            source.get("normalizedSha256")
+            for source in sources
+            if isinstance(source, dict)
+        }:
+            errors.append("legacy target hash must occur in the source inventory")
+        if legacy_type == "SnapshotOnly":
+            if legacy_blob != "N/A":
+                errors.append("SnapshotOnly legacy adoption requires priorGitBlob N/A")
+        elif legacy_type == "GitBlob":
+            if not re.fullmatch(r"(?:[0-9a-f]{40}|[0-9a-f]{64})", legacy_blob):
+                errors.append("legacyAdoption.priorGitBlob must be a Git object id")
+            else:
+                try:
+                    completed = subprocess.run(
+                        ["git", "-C", str(repo), "cat-file", "blob", legacy_blob],
+                        check=True,
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE,
+                    )
+                    blob_hash = normalized_digest_bytes(completed.stdout)
+                    if blob_hash != legacy_hash:
+                        errors.append("legacy Git blob does not match prior target hash")
+                except (OSError, subprocess.CalledProcessError, ValueError) as exc:
+                    errors.append(f"legacy Git blob cannot be verified: {exc}")
 
 next_action = required_text(data, "nextAction", "receipt")
 if status == "ReadyForReview":

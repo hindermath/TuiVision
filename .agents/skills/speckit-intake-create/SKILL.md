@@ -46,8 +46,11 @@ Autonomous.
    expected artifacts, evidence, measurable acceptance, assumptions, and open
    questions. Follow repository language policy and applicable WCAG 2.2 AA.
 8. Do not overwrite an existing target or receipt without explicit current
-   update authority. Before an authorized update, hash both existing artifacts
-   and record the superseded receipt plus target hash.
+   update authority. Use provenance mode `Supersession` when a prior receipt
+   exists. Use `LegacyAdoption` only for an existing pre-preset target without
+   a receipt; record its prior normalized hash, a Git-blob or snapshot proof
+   boundary, and the current update-authority evidence. Never invent a prior
+   receipt. New targets use provenance mode `New`.
 9. If all material decisions are resolved, write status `ReadyForReview`,
    prompt state `Enabled`, and two fenced copy-ready prompts. The Specify prompt
    binds the exact intake and forbids implementation or remote writes. The
@@ -61,7 +64,8 @@ Autonomous.
 11. Store the active rendered invocations and canonical IDs
     `speckit.specify` and `speckit.autonomous` in the receipt. Store ordered
     source hashes, target hash, profile, language policy, authority evidence,
-    decisions, question count, supersession, and exact next action.
+    decisions, question count, provenance mode, supersession or legacy
+    adoption evidence, and exact next action.
 12. Run the installed Bash or PowerShell receipt validator. A successful write
     without a successful validator is not complete.
 
