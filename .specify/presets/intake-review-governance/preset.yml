@@ -3,7 +3,7 @@ schema_version: "1.0"
 preset:
   id: "intake-review-governance"
   name: "Intake Review Governance"
-  version: "0.1.0"
+  version: "0.1.1"
   description: "Reviews single, series, and campaign intake files before Spec Kit execution and binds accepted outcomes to normalized content hashes."
   author: "Thorsten Hindermann"
   repository: "https://github.com/hindermath/spec-kit-preset-intake-review-governance"

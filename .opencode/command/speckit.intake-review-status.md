@@ -18,6 +18,7 @@ invoke the installed validator with the repository root, and report:
 - target paths, normalized hashes, optional Git blobs, and drift;
 - findings, questions, accepted-risk ownership, and re-evaluation triggers;
 - series and campaign coverage, including unique intake and worker counts;
+- for Series mode, request hash, root set, target order, edge count, and DAG validity;
 - whether Preset 7 or Preset 8 may consume the result under current policy;
 - the exact next command.
 

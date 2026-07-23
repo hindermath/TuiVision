@@ -36,19 +36,3 @@ user authorization.*
 ## Supersession / Ablösung
 
 Dieser Serienreview löst den früheren Einzelreview `e204a332-64f3-4680-a3ff-3738e0eab256` ab; dessen Artefakte unter `specs/intake-review-*` bleiben unverändert als historische Evidence erhalten.
-## Schema-1.1-Graphbindung / Schema 1.1 graph binding
-
-- Neuer Review / New review: `b1b901aa-c523-4f35-ba64-0dddd99c6072`
-- Ersetzt / Supersedes: `4fb47eb3-f510-42d0-a031-fefcf1f30781`
-- Gebundene Ziele / Bound targets: 5
-- Wurzeln / Roots: 1
-- Abhaengigkeitskanten / Dependency edges: 4
-- Request-Bindung / Request binding: repository-relativer Pfad und normalisierter SHA-256
-
-Die Reihenfolge und der azyklische Request-Graph wurden gegen die
-repository-eigenen Reihenfolge- und Lernreihendokumente neu geprueft. Der
-Review startet keinen nachgelagerten Spec-Kit-Lauf.
-
-*The order and acyclic request graph were revalidated against the repository's
-own ordering and learning-series documents. This review starts no downstream
-Spec Kit command.*

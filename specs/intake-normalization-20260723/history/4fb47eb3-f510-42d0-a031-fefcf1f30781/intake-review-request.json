@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "1.1",
-  "reviewId": "b1b901aa-c523-4f35-ba64-0dddd99c6072",
+  "schemaVersion": "1.0",
+  "reviewId": "4fb47eb3-f510-42d0-a031-fefcf1f30781",
   "mode": "Series",
   "policy": "tui-vision-active-lastenhefte-v2",
   "targets": [
@@ -33,31 +33,7 @@
       "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
       "Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md"
     ],
-    "roots": [
-      "Lastenheft_Constitution_Change.md"
-    ],
-    "dependencies": [
-      {
-        "from": "Lastenheft_Constitution_Change.md",
-        "to": "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
-        "kind": "Precedes"
-      },
-      {
-        "from": "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
-        "to": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
-        "kind": "Precedes"
-      },
-      {
-        "from": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
-        "to": "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
-        "kind": "Precedes"
-      },
-      {
-        "from": "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
-        "to": "Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
-        "kind": "Precedes"
-      }
-    ]
+    "dependencies": []
   },
   "campaign": {
     "manifestPath": "N/A",

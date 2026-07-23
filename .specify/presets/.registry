@@ -271,51 +271,6 @@
       ],
       "installed_at": "2026-07-21T19:19:55.255625+00:00"
     },
-    "intake-review-governance": {
-      "version": "0.1.0",
-      "source": "local",
-      "manifest_hash": "sha256:2f3d325882dff24249cf0160c1b7dfa98d1053ac2ad10c7ca6045a107d8138ed",
-      "enabled": true,
-      "priority": 65,
-      "registered_commands": {
-        "agy": [
-          "speckit.intake-review",
-          "speckit.intake-repair",
-          "speckit.intake-review-status"
-        ],
-        "claude": [
-          "speckit.intake-review",
-          "speckit.intake-repair",
-          "speckit.intake-review-status"
-        ],
-        "codex": [
-          "speckit.intake-review",
-          "speckit.intake-repair",
-          "speckit.intake-review-status"
-        ],
-        "copilot": [
-          "speckit.intake-review",
-          "speckit.intake-repair",
-          "speckit.intake-review-status"
-        ],
-        "opencode": [
-          "speckit.intake-review",
-          "speckit.intake-repair",
-          "speckit.intake-review-status"
-        ],
-        "zed": [
-          "speckit.intake-review",
-          "speckit.intake-repair",
-          "speckit.intake-review-status"
-        ]
-      },
-      "registered_skills": [
-        "speckit-intake-review",
-        "speckit-intake-repair",
-        "speckit-intake-review-status"
-      ],
-      "installed_at": "2026-07-21T19:19:56.839420+00:00"
-    },
     "autonomous-run-governance": {
       "version": "0.3.2",
       "source": "local",
@@ -471,6 +426,51 @@
         "speckit-intake-create-status"
       ],
       "installed_at": "2026-07-23T13:17:19.112405+00:00"
+    },
+    "intake-review-governance": {
+      "version": "0.1.1",
+      "source": "local",
+      "manifest_hash": "sha256:b85a75202be58d1f17b0450124beb5a1f941dfab6828e436ed0e382c8fcb7cd2",
+      "enabled": true,
+      "priority": 65,
+      "registered_commands": {
+        "agy": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ],
+        "claude": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ],
+        "codex": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ],
+        "copilot": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ],
+        "opencode": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ],
+        "zed": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ]
+      },
+      "registered_skills": [
+        "speckit-intake-review",
+        "speckit-intake-repair",
+        "speckit-intake-review-status"
+      ],
+      "installed_at": "2026-07-23T17:48:46.519083+00:00"
     }
   }
 }

@@ -34,7 +34,7 @@ Workspace-Familie ist:
 | `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.3` | `80` |
 
 Optional koennen `intake-authoring-governance` v0.1.1 mit Prioritaet `64` und
-`intake-review-governance` v0.1.0 mit Prioritaet `65` zwischen Agent Parity und
+`intake-review-governance` v0.1.1 mit Prioritaet `65` zwischen Agent Parity und
 Preset 7 installiert werden. Beide bleiben ausserhalb der Standard-Achtermatrix.
 Authoring erzeugt aus ausdruecklich benannten geordneten UTF-8-Quellen genau
 einen Intake und ein Receipt, startet aber keine Folgeaktion. Review prueft den
@@ -42,6 +42,10 @@ gespeicherten Intake unabhaengig. Das Registry-Profil
 `intake-authoring-ten-governance-presets` waehlt beide; das bisherige
 Neunerprofil bleibt kompatibel. Lernendenlaeufe bleiben separat
 beauftragungspflichtig.
+Series-Reviews verwenden Request und Result nach Schema 1.1. Der normalisierte
+Request-Hash, Zielrollen, exakte Reihenfolge, Roots und der azyklische
+Vorgaengergraph werden gemeinsam validiert; unklare Beziehungen fuehren zu
+`NeedsClarification`.
 
 `autonomous-run-governance` ist Teil der Standard-Achtermatrix. Vollständige
 autonome Läufe bleiben ausdrücklich delegationspflichtig. `LocalImplementation` ist der
@@ -122,12 +126,15 @@ workspace family is:
 | `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.3` | `80` |
 
 Optionally install `intake-authoring-governance` v0.1.1 at priority `64` and
-`intake-review-governance` v0.1.0 at priority `65` between Agent Parity and
+`intake-review-governance` v0.1.1 at priority `65` between Agent Parity and
 Preset 7. Both remain outside the standard eight. Authoring creates one intake
 and receipt from explicit ordered UTF-8 sources without starting a downstream
 command. Review evaluates that intake independently. Registry profile
 `intake-authoring-ten-governance-presets` selects both; the prior nine-preset
 profile remains compatible. Learner runs still require explicit authorization.
+Series reviews use schema 1.1 for request and result. They jointly validate the
+normalized request hash, target roles, exact order, roots, and the acyclic
+predecessor graph; ambiguous relations result in `NeedsClarification`.
 
 `autonomous-run-governance` is part of the standard eight-preset matrix.
 Complete autonomous runs still require explicit delegation. `LocalImplementation` is the safe default;

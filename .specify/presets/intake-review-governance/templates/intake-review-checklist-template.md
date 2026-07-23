@@ -13,6 +13,10 @@
 ## Series
 
 - [ ] IDs, order, dependency graph, handoffs, and future-scope boundaries are consistent.
+- [ ] Schema 1.1 binds the repository-relative request path and normalized SHA-256.
+- [ ] Every target occurs exactly once in `orderedTargetPaths`.
+- [ ] Declared roots equal the graph's zero-indegree targets.
+- [ ] Every non-root has an incoming edge; edges are unique, known, ordered, and acyclic.
 - [ ] No unexplained gap, overlap, duplicate ownership, or terminology drift remains.
 - [ ] Shared invariants are stated once and consumed consistently.
 

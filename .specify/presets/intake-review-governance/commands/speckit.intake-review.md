@@ -20,7 +20,9 @@ exist. Use the installed policy and checklist.
    evidence, delivery authority, risks, references, prompt alignment, and
    secret or unnecessary-personal-data exposure.
 3. For a series, additionally review IDs, DAG, gaps, overlap, terminology,
-   invariants, handoffs, future scope, and authority.
+   invariants, handoffs, future scope, and authority. Use schema 1.1, declare
+   every root, order every target exactly once, and bind the request path and
+   normalized hash in the result.
 4. For a campaign, prove every `featureInput`, one semantic review per unique
    intake, every worker applicability row, repository/language/stack fit,
    manifest DAG/base/handoff agreement, and separately governed operator
