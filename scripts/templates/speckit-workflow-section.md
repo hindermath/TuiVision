@@ -33,7 +33,7 @@ Workspace-Familie ist:
 | `autonomous-run-governance` | Autonomous Run Governance | `v0.3.2` | `70` |
 | `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.3` | `80` |
 
-Optional koennen `intake-authoring-governance` v0.1.1 mit Prioritaet `64` und
+Optional koennen `intake-authoring-governance` v0.2.0 mit Prioritaet `64` und
 `intake-review-governance` v0.1.1 mit Prioritaet `65` zwischen Agent Parity und
 Preset 7 installiert werden. Beide bleiben ausserhalb der Standard-Achtermatrix.
 Authoring erzeugt aus ausdruecklich benannten geordneten UTF-8-Quellen genau
@@ -46,6 +46,50 @@ Series-Reviews verwenden Request und Result nach Schema 1.1. Der normalisierte
 Request-Hash, Zielrollen, exakte Reihenfolge, Roots und der azyklische
 Vorgaengergraph werden gemeinsam validiert; unklare Beziehungen fuehren zu
 `NeedsClarification`.
+
+#### Preset-Prioritäten lesen
+
+Kleinere Zahlen haben bei Spec Kit die höhere Auflösungspriorität. Die Zahl
+entscheidet nur bei gleichnamigen Templates, Befehlen oder Addenda, welche
+Preset-Schicht zuerst berücksichtigt wird. `replace` lässt die höchste Schicht
+gewinnen; `prepend`, `append` und `wrap` kombinieren geordnete Schichten.
+Projektlokale Overrides stehen vor installierten Presets. Gleiche Zahlen werden
+nach Preset-ID sortiert, sollten für eine verständliche Policy aber vermieden
+werden.
+
+Priorität installiert, aktiviert oder startet nichts und erteilt keine
+Remote- oder Admin-Rechte. `64 → 65 → 70 → 80` beschreibt die fachliche
+Schichtung von Authoring, Review, autonomem Einzel-Lauf und paralleler
+Koordination, nicht eine automatische Befehlskette. Die wirksame Auflösung wird
+mit `specify preset list`, `specify preset info <id>` und
+`specify preset resolve <template>` geprüft.
+
+#### Zusammenspiel von Intake und autonomen Läufen
+
+Die vier Workflow-Presets können eine kontrollierte, hashgebundene Kette
+bilden:
+
+```text
+Quellen
+  -> speckit.intake-create
+  -> Intake + Receipt (`ReadyForReview`)
+  -> speckit.intake-review
+  -> `Ready` oder menschlich akzeptiertes `ReadyWithAcceptedRisks`
+  -> speckit.autonomous oder speckit.parallel-autonomous
+```
+
+Die Pfeile sind manuelle Übergaben. `ReadyForReview` ist noch keine
+Review-Freigabe. Wenn die Repository-Policy Intake Review verlangt, prüft
+Preset 7 das aktuelle Ergebnis und den normalisierten Intake-Hash vor Branch,
+Feature und Specify. Preset 8 prüft ein verpflichtendes Campaign-Review vor
+der Worktree-Erstellung, ordnet jeden eindeutigen Intake und jeden Worker zu,
+gleicht den Kampagnen-DAG ab und validiert den Review-Hash bei Resume erneut.
+Preset 8 koordiniert; Preset 7 steuert weiterhin jeden Worker-Lebenszyklus.
+
+Fehlende Evidence, Hashdrift, offene materielle Fragen, Critical-/High-Findings
+oder nicht menschlich akzeptierte Risiken blockieren ein aktiviertes Gate.
+Kein Receipt, Review-Ergebnis oder Prioritätswert erteilt Delivery- oder
+Admin-Rechte.
 
 `autonomous-run-governance` ist Teil der Standard-Achtermatrix. Vollständige
 autonome Läufe bleiben ausdrücklich delegationspflichtig. `LocalImplementation` ist der
@@ -125,7 +169,7 @@ workspace family is:
 | `autonomous-run-governance` | Autonomous Run Governance | `v0.3.2` | `70` |
 | `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.3` | `80` |
 
-Optionally install `intake-authoring-governance` v0.1.1 at priority `64` and
+Optionally install `intake-authoring-governance` v0.2.0 at priority `64` and
 `intake-review-governance` v0.1.1 at priority `65` between Agent Parity and
 Preset 7. Both remain outside the standard eight. Authoring creates one intake
 and receipt from explicit ordered UTF-8 sources without starting a downstream
@@ -135,6 +179,46 @@ profile remains compatible. Learner runs still require explicit authorization.
 Series reviews use schema 1.1 for request and result. They jointly validate the
 normalized request hash, target roles, exact order, roots, and the acyclic
 predecessor graph; ambiguous relations result in `NeedsClarification`.
+
+#### Reading preset priorities
+
+Lower numbers have higher resolution precedence in Spec Kit. Priority matters
+only when templates, commands, or addenda share a name. `replace` lets the
+highest-precedence layer win; `prepend`, `append`, and `wrap` compose ordered
+layers. Project-local overrides come before installed presets. Equal numbers
+are ordered by preset ID, but distinct values communicate policy more clearly.
+
+Priority installs, enables, and starts nothing, and it grants no remote or
+administrative authority. `64 → 65 → 70 → 80` describes the conceptual
+layering of Authoring, Review, one autonomous run, and parallel coordination;
+it is not an automatic command chain. Verify effective resolution with
+`specify preset list`, `specify preset info <id>`, and
+`specify preset resolve <template>`.
+
+#### How intake and autonomous runs work together
+
+The four workflow presets can form a controlled, hash-bound chain:
+
+```text
+Sources
+  -> speckit.intake-create
+  -> intake + receipt (`ReadyForReview`)
+  -> speckit.intake-review
+  -> `Ready` or human-approved `ReadyWithAcceptedRisks`
+  -> speckit.autonomous or speckit.parallel-autonomous
+```
+
+The arrows are manual handoffs. `ReadyForReview` is not review acceptance.
+When repository policy requires Intake Review, Preset 7 validates the current
+result and normalized intake hash before branch, feature, and Specify. Preset
+8 validates required campaign review before worktree creation, maps each
+unique intake and worker, aligns the campaign DAG, and revalidates the review
+hash on resume. Preset 8 coordinates while Preset 7 continues to govern every
+worker lifecycle.
+
+Missing evidence, hash drift, unanswered material questions, Critical/High
+findings, or risks without human acceptance block an enabled gate. No receipt,
+review result, or priority value grants delivery or administrative authority.
 
 `autonomous-run-governance` is part of the standard eight-preset matrix.
 Complete autonomous runs still require explicit delegation. `LocalImplementation` is the safe default;
