@@ -25,8 +25,10 @@ import re
 import subprocess
 import sys
 import uuid
+import ipaddress
 from datetime import datetime
 from pathlib import Path, PurePosixPath
+from urllib.parse import urlsplit
 
 receipt_path = Path(sys.argv[1])
 repo = Path(sys.argv[2]).resolve()
@@ -74,6 +76,32 @@ def check_digest(value, label):
     if not re.fullmatch(r"[0-9a-f]{64}", value):
         errors.append(f"{label} must be a lowercase SHA-256")
 
+def check_uuid(value, label):
+    try:
+        if uuid.UUID(value).int == 0:
+            raise ValueError()
+    except (ValueError, AttributeError):
+        errors.append(f"{label} must be a non-zero UUID")
+
+def check_https_url(value, label):
+    try:
+        parsed = urlsplit(value)
+        if parsed.scheme != "https" or not parsed.hostname:
+            raise ValueError("HTTPS and a host are required")
+        if parsed.username or parsed.password or parsed.fragment:
+            raise ValueError("credentials and fragments are forbidden")
+        host = parsed.hostname.lower().rstrip(".")
+        if host == "localhost" or host.endswith(".localhost"):
+            raise ValueError("localhost is forbidden")
+        try:
+            address = ipaddress.ip_address(host)
+        except ValueError:
+            address = None
+        if address and not address.is_global:
+            raise ValueError("non-public IP addresses are forbidden")
+    except ValueError as exc:
+        errors.append(f"{label} is not an allowed public HTTPS URL: {exc}")
+
 def has_secret(text):
     patterns = (
         r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----",
@@ -97,14 +125,26 @@ if has_secret(receipt_text):
     errors.append("receipt contains a credential or private key pattern")
 
 schema_version = data.get("schemaVersion")
-if schema_version not in ("1.0", "1.1"):
-    errors.append("schemaVersion must be 1.0 or 1.1")
+if schema_version not in ("1.0", "1.1", "2.0"):
+    errors.append("schemaVersion must be 1.0, 1.1, or 2.0")
 receipt_id = required_text(data, "receiptId", "receipt")
-try:
-    if uuid.UUID(receipt_id).int == 0:
-        errors.append("receiptId must not be the starter UUID")
-except ValueError:
-    errors.append("receiptId must be a UUID")
+check_uuid(receipt_id, "receiptId")
+
+if schema_version == "2.0":
+    if required_text(data, "documentType", "receipt") != "IntakeReceipt":
+        errors.append("documentType must be IntakeReceipt")
+    check_uuid(required_text(data, "intakeId", "receipt"), "intakeId")
+    operation = data.get("operation")
+    if not isinstance(operation, dict):
+        errors.append("operation must be an object")
+        operation = {}
+    check_uuid(required_text(operation, "operationId", "operation"), "operation.operationId")
+    operation_type = required_text(operation, "type", "operation")
+    if operation_type not in ("Create", "Update"):
+        errors.append("operation.type must be Create or Update")
+    required_text(operation, "authorityEvidence", "operation")
+else:
+    operation_type = ""
 
 generator = data.get("generator")
 if not isinstance(generator, dict):
@@ -113,7 +153,7 @@ if not isinstance(generator, dict):
 if required_text(generator, "preset", "generator") != "intake-authoring-governance":
     errors.append("generator.preset is invalid")
 generator_version = required_text(generator, "version", "generator")
-expected_generator = {"1.0": "0.1.0", "1.1": "0.1.1"}.get(schema_version)
+expected_generator = {"1.0": "0.1.0", "1.1": "0.1.1", "2.0": "0.2.0"}.get(schema_version)
 if expected_generator and generator_version != expected_generator:
     errors.append(f"generator.version must be {expected_generator} for schema {schema_version}")
 
@@ -169,18 +209,72 @@ for index, source in enumerate(sources):
         continue
     if source.get("order") != index + 1:
         errors.append(f"{label}.order must be {index + 1}")
+    if schema_version == "2.0":
+        source_id = required_text(source, "sourceId", label)
+        if not re.fullmatch(r"SRC[0-9]{3,}", source_id):
+            errors.append(f"{label}.sourceId must be SRC###")
+        if source_id in {
+            item.get("sourceId") for item in sources[:index] if isinstance(item, dict)
+        }:
+            errors.append(f"{label}.sourceId must be unique")
     kind = required_text(source, "kind", label)
-    if kind not in ("Inline", "Pasted", "File"):
+    allowed_kinds = ("Inline", "Pasted", "File", "Url") if schema_version == "2.0" else ("Inline", "Pasted", "File")
+    if kind not in allowed_kinds:
         errors.append(f"{label}.kind is invalid")
     required_text(source, "label", label)
     location = required_text(source, "location", label)
-    if location not in ("Repository", "SnapshotOnly", "ExternalSnapshot"):
+    allowed_locations = ("Repository", "SnapshotOnly", "ExternalSnapshot", "RemoteSnapshot") if schema_version == "2.0" else ("Repository", "SnapshotOnly", "ExternalSnapshot")
+    if location not in allowed_locations:
         errors.append(f"{label}.location is invalid")
     path_text = required_text(source, "path", label)
     source_hash = required_text(source, "normalizedSha256", label)
     check_digest(source_hash, f"{label}.normalizedSha256")
     required_text(source, "gitBlob", label)
-    if location == "Repository":
+    if schema_version == "2.0" and kind == "Url":
+        if location != "RemoteSnapshot":
+            errors.append(f"{label}: Url requires RemoteSnapshot")
+        if path_text != "N/A":
+            errors.append(f"{label}.path must be N/A for URL sources")
+        requested_url = required_text(source, "requestedUrl", label)
+        final_url = required_text(source, "finalUrl", label)
+        check_https_url(requested_url, f"{label}.requestedUrl")
+        check_https_url(final_url, f"{label}.finalUrl")
+        retrieved_at = required_text(source, "retrievedAt", label)
+        try:
+            if not retrieved_at.endswith("Z"):
+                raise ValueError()
+            datetime.fromisoformat(retrieved_at[:-1] + "+00:00")
+        except ValueError:
+            errors.append(f"{label}.retrievedAt must be an ISO-8601 UTC timestamp")
+        http_status = source.get("httpStatus")
+        if not isinstance(http_status, int) or isinstance(http_status, bool) or not 200 <= http_status <= 299:
+            errors.append(f"{label}.httpStatus must be an integer from 200 through 299")
+        content_type = required_text(source, "contentType", label).split(";", 1)[0].lower()
+        allowed_types = {
+            "text/plain", "text/markdown", "text/html", "application/xhtml+xml",
+            "application/json", "application/yaml", "text/yaml"
+        }
+        if content_type not in allowed_types:
+            errors.append(f"{label}.contentType is not allowed")
+        content_length = source.get("contentLength")
+        if not isinstance(content_length, int) or isinstance(content_length, bool) or not 0 <= content_length <= 2097152:
+            errors.append(f"{label}.contentLength must be 0 through 2097152")
+        chain = source.get("redirectChain")
+        if not isinstance(chain, list) or len(chain) > 5:
+            errors.append(f"{label}.redirectChain must be an array with at most five entries")
+        else:
+            for redirect_index, redirect in enumerate(chain):
+                if not isinstance(redirect, str):
+                    errors.append(f"{label}.redirectChain[{redirect_index}] must be a string")
+                else:
+                    check_https_url(redirect, f"{label}.redirectChain[{redirect_index}]")
+        raw_hash = required_text(source, "rawSha256", label)
+        check_digest(raw_hash, f"{label}.rawSha256")
+        if required_text(source, "gitBlob", label) != "N/A":
+            errors.append(f"{label}.gitBlob must be N/A for URL sources")
+        if required_text(source, "proofBoundary", label) not in ("SnapshotOnly", "RemoteSnapshot"):
+            errors.append(f"{label}.proofBoundary is invalid")
+    elif location == "Repository":
         if kind != "File":
             errors.append(f"{label}: Repository location requires File kind")
         if path_text == "N/A" or not relative(path_text):
@@ -211,6 +305,13 @@ for index, source in enumerate(sources):
             errors.append(f"{label}: external File must use ExternalSnapshot")
         if kind in ("Inline", "Pasted") and location != "SnapshotOnly":
             errors.append(f"{label}: inline or pasted source must use SnapshotOnly")
+    if schema_version == "2.0" and kind != "Url":
+        for field in ("requestedUrl", "finalUrl", "retrievedAt", "httpStatus", "contentType", "contentLength", "rawSha256"):
+            if source.get(field) != "N/A":
+                errors.append(f"{label}.{field} must be N/A for non-URL sources")
+        if not isinstance(source.get("redirectChain"), list) or source.get("redirectChain"):
+            errors.append(f"{label}.redirectChain must be empty for non-URL sources")
+        required_text(source, "proofBoundary", label)
 
 required_text(data, "profile", "receipt")
 required_text(data, "languagePolicy", "receipt")
@@ -384,6 +485,52 @@ else:
                         errors.append("legacy Git blob does not match prior target hash")
                 except (OSError, subprocess.CalledProcessError, ValueError) as exc:
                     errors.append(f"legacy Git blob cannot be verified: {exc}")
+
+    if schema_version == "2.0":
+        archive_target = required_text(supersedes, "archiveTargetPath", "supersedes")
+        archive_receipt = required_text(supersedes, "archiveReceiptPath", "supersedes")
+        if operation_type == "Create":
+            if provenance_mode != "New" or update_authorized is not False:
+                errors.append("Create operation requires New provenance without update authority")
+            if archive_target != "N/A" or archive_receipt != "N/A":
+                errors.append("Create operation cannot name archive paths")
+        elif operation_type == "Update":
+            if provenance_mode not in ("Supersession", "LegacyAdoption") or update_authorized is not True:
+                errors.append("Update operation requires authorized Supersession or LegacyAdoption")
+            if provenance_mode == "Supersession":
+                for value, label in (
+                    (archive_target, "supersedes.archiveTargetPath"),
+                    (archive_receipt, "supersedes.archiveReceiptPath"),
+                ):
+                    if value == "N/A" or not relative(value):
+                        errors.append(f"{label} must be repository-relative")
+                    elif not (repo / value).is_file():
+                        errors.append(f"archived supersession evidence missing: {value}")
+        series = data.get("series")
+        if not isinstance(series, dict):
+            errors.append("series must be an object")
+            series = {}
+        series_id = required_text(series, "seriesId", "series")
+        manifest_path = required_text(series, "manifestPath", "series")
+        series_order = series.get("order")
+        series_role = required_text(series, "role", "series")
+        predecessor_ids = series.get("supersedesIntakeIds")
+        if not isinstance(predecessor_ids, list):
+            errors.append("series.supersedesIntakeIds must be an array")
+            predecessor_ids = []
+        for predecessor_id in predecessor_ids:
+            check_uuid(predecessor_id, "series.supersedesIntakeIds[]")
+        if series_id == "N/A":
+            if manifest_path != "N/A" or series_order != "N/A" or series_role != "N/A" or predecessor_ids:
+                errors.append("standalone intake requires an entirely N/A series binding")
+        else:
+            check_uuid(series_id, "series.seriesId")
+            if not relative(manifest_path) or not (repo / manifest_path).is_file():
+                errors.append("series.manifestPath must identify an existing repository-relative manifest")
+            if not isinstance(series_order, int) or isinstance(series_order, bool) or series_order < 1:
+                errors.append("series.order must be a positive integer")
+            if series_role == "N/A":
+                errors.append("series.role must describe the member role")
 
 next_action = required_text(data, "nextAction", "receipt")
 if status == "ReadyForReview":

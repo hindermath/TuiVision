@@ -1,11 +1,18 @@
 {
-  "schemaVersion": "1.1",
+  "schemaVersion": "2.0",
+  "documentType": "IntakeReceipt",
   "receiptId": "00000000-0000-0000-0000-000000000000",
+  "intakeId": "00000000-0000-0000-0000-000000000000",
   "generator": {
     "preset": "intake-authoring-governance",
-    "version": "0.1.1"
+    "version": "0.2.0"
   },
   "createdAt": "1970-01-01T00:00:00Z",
+  "operation": {
+    "operationId": "00000000-0000-0000-0000-000000000000",
+    "type": "Create",
+    "authorityEvidence": "Explicit current create or update request"
+  },
   "status": "NeedsClarification",
   "target": {
     "path": "intakes/example.md",
@@ -13,13 +20,25 @@
   },
   "sources": [
     {
+      "sourceId": "SRC001",
       "order": 1,
       "kind": "Inline",
       "label": "User prompt",
       "location": "SnapshotOnly",
       "path": "N/A",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
       "normalizedSha256": "0000000000000000000000000000000000000000000000000000000000000000",
-      "gitBlob": "N/A"
+      "gitBlob": "N/A",
+      "proofBoundary": "SnapshotOnly"
     }
   ],
   "profile": "generic-markdown",
@@ -39,7 +58,9 @@
   "provenanceMode": "New",
   "supersedes": {
     "receiptPath": "N/A",
-    "targetNormalizedSha256": "N/A"
+    "targetNormalizedSha256": "N/A",
+    "archiveTargetPath": "N/A",
+    "archiveReceiptPath": "N/A"
   },
   "legacyAdoption": {
     "evidenceType": "N/A",
@@ -48,5 +69,12 @@
   },
   "updateAuthorized": false,
   "updateAuthorityEvidence": "N/A",
+  "series": {
+    "seriesId": "N/A",
+    "manifestPath": "N/A",
+    "order": "N/A",
+    "role": "N/A",
+    "supersedesIntakeIds": []
+  },
   "nextAction": "Resolve open intake-authoring decisions"
 }

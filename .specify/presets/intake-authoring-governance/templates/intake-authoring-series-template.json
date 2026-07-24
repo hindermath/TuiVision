@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeries",
+  "seriesId": "00000000-0000-0000-0000-000000000000",
+  "version": 1,
+  "status": "Proposed",
+  "operationId": "00000000-0000-0000-0000-000000000000",
+  "proposalNormalizedSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "approval": {
+    "approved": false,
+    "approvedBy": "N/A",
+    "approvedAt": "N/A",
+    "evidence": "N/A"
+  },
+  "orderedIntakeIds": ["00000000-0000-0000-0000-000000000001"],
+  "roots": ["00000000-0000-0000-0000-000000000001"],
+  "members": [
+    {
+      "intakeId": "00000000-0000-0000-0000-000000000001",
+      "path": "intakes/example.md",
+      "receiptPath": "specs/intake-authoring-receipts/example.json",
+      "title": "Example",
+      "role": "Root",
+      "order": 1,
+      "normalizedSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "supersedesIntakeIds": []
+    }
+  ],
+  "edges": [],
+  "coverage": [
+    {
+      "sourceId": "SRC001",
+      "topic": "Example topic",
+      "intakeIds": ["00000000-0000-0000-0000-000000000001"],
+      "disposition": "Covered"
+    }
+  ],
+  "overlapDecisions": [],
+  "reviewRequestPath": "specs/intake-authoring-series/example/intake-review-request.json",
+  "nextAction": "Approve the proposal before writing active members"
+}
