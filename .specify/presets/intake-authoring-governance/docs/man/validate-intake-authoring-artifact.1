@@ -1,0 +1,30 @@
+.TH VALIDATE-INTAKE-AUTHORING-ARTIFACT 1 "July 2026" "intake-authoring-governance 0.2.0"
+.SH NAME
+validate-intake-authoring-artifact \- validate intake series, operations, and tombstones
+.SH SYNOPSIS
+.B validate-intake-authoring-artifact.sh
+--artifact FILE [--repo PATH]
+.SH DESCRIPTION
+Validates one IntakeSeries, IntakeOperation, or IntakeTombstone JSON artifact.
+Series validation covers explicit approval, member hashes, order, roots,
+acyclic edges, coverage, and review handoff. Operation validation rejects
+partial publication. Tombstone validation proves removal of active paths and
+byte-equivalent archived evidence.
+.PP
+The command is read-only and grants no create, update, delete, review, or
+remote authority.
+.SH OPTIONS
+.TP
+.B --artifact FILE
+Path to the JSON lifecycle artifact.
+.TP
+.B --repo PATH
+Repository root used to resolve repository-relative paths.
+.SH EXIT STATUS
+0 for a valid artifact and 2 for invalid arguments, schema violations,
+graph errors, partial publication, or archive drift.
+.SH EXAMPLE
+.nf
+bash scripts/validate-intake-authoring-artifact.sh \
+  --artifact specs/intake-authoring-series/example/series.json --repo .
+.fi

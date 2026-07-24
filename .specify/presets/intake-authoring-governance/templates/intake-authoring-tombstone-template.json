@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeTombstone",
+  "tombstoneId": "00000000-0000-0000-0000-000000000000",
+  "intakeId": "00000000-0000-0000-0000-000000000000",
+  "operationId": "00000000-0000-0000-0000-000000000000",
+  "deletedAt": "1970-01-01T00:00:00Z",
+  "reason": "Explicit reason",
+  "deleteAuthorityEvidence": "Explicit current delete request",
+  "original": {
+    "targetPath": "intakes/example.md",
+    "targetNormalizedSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "receiptPath": "specs/intake-authoring-receipts/example.json",
+    "receiptNormalizedSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "archive": {
+    "targetPath": "specs/intake-authoring-archive/00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/target.md",
+    "targetNormalizedSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "receiptPath": "specs/intake-authoring-archive/00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/receipt.json",
+    "receiptNormalizedSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "seriesImpact": {
+    "seriesId": "N/A",
+    "migrationOperationId": "N/A"
+  },
+  "reactivationBoundary": "Create a new explicitly authorized Update from archived evidence",
+  "nextAction": "N/A"
+}

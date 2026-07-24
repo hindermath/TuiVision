@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeOperation",
+  "operationId": "00000000-0000-0000-0000-000000000000",
+  "type": "CreateSeries",
+  "status": "Proposed",
+  "createdAt": "1970-01-01T00:00:00Z",
+  "authorityEvidence": "Explicit current request",
+  "proposalPath": "specs/intake-authoring-operations/00000000-0000-0000-0000-000000000000/proposal.json",
+  "proposalNormalizedSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "approval": {
+    "approved": false,
+    "approvedBy": "N/A",
+    "approvedAt": "N/A",
+    "evidence": "N/A"
+  },
+  "stagingDirectory": "specs/intake-authoring-operations/00000000-0000-0000-0000-000000000000/staging",
+  "intendedTargets": [],
+  "validatedTargets": [],
+  "publishedTargets": [],
+  "rollbackBoundary": "No active target changes before all validations pass",
+  "failure": {
+    "class": "N/A",
+    "message": "N/A"
+  },
+  "nextAction": "Approve or reject the proposal"
+}

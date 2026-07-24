@@ -8,11 +8,16 @@
   rejection, authority limits, supersession, and blocked-prompt enforcement.
 - Schema 1.1 legacy adoption: Git-blob and snapshot-only evidence passed in
   both validators; missing update authority and mismatching hashes failed.
+- Schema 2.0 lifecycle proof: public-HTTPS evidence, stable intake identity,
+  approved two-member series, acyclic graph, transactional publication, and
+  archive-and-tombstone deletion passed in Bash and PowerShell. Private URL
+  targets, invalid roots, partial publication, and active targets after delete
+  failed as required.
 - Ten-preset development stack: installation, `list`, `info`, `resolve`,
   disable, enable, remove, and reinstall passed with priorities `10` through
   `80` and Authoring at `64`.
 - Agent parity: Claude, OpenCode, Antigravity, Copilot, and Codex each expose
-  exactly one Create and one Create Status entry.
+  exactly one Create, Read, Update, Delete, and Create Status entry.
 - Mixed-source proof: one inline source, one pasted planning source, and one
   explicitly named repository file produced one `ReadyForReview` intake and
   receipt accepted by both authoring validators.
@@ -24,11 +29,12 @@
 - Downstream isolation: the proof repository has no Git remote and no
   Autonomous or Parallel Autonomous run state; authoring started neither run.
 
-*Der Bootstrap-Review, beide Validatorvarianten, die Git-Blob- und
-Snapshot-Altuebernahme, der Zehn-Preset-Stack, alle fuenf gepflegten
-Agentenoberflaechen und die unabhaengige Uebergabe von 14 aktiven Intakes an
-Intake Review v0.1.0 sind erfolgreich geprueft. Der Test startete keinen
-nachgelagerten Lauf und besass kein Git-Remote.*
+*Der Bootstrap-Review, beide Validatorfamilien, die Git-Blob- und
+Snapshot-Altuebernahme, Schema 2.0 mit URL-, Series-, Transaktions- und
+Tombstone-Nachweis, der Zehn-Preset-Stack, alle fuenf gepflegten
+Agentenoberflaechen und die unabhaengige Uebergabe an Intake Review sind
+erfolgreich geprueft. Der Test startete keinen nachgelagerten Lauf und besass
+kein Git-Remote.*
 
 ## Publication And Fleet Evidence / Veroeffentlichungs- und Flottennachweis
 

@@ -6,6 +6,9 @@
 - Applies when:
 - Target path rule:
 - Language rule:
+- URL-source rule:
+- Series target and ordering rule:
+- Archive and tombstone rule:
 
 ## Required Sections
 
@@ -16,7 +19,9 @@ acceptance, assumptions, or copy-ready prompt sections.
 ## Naming And Ordering
 
 Define title, filename, identifier, predecessor, and series-order rules. State
-how ambiguity blocks authoring.
+how ambiguity blocks authoring. A profile may lower URL and crawl limits but
+cannot enable HTTP, authentication, private targets, cross-origin crawling, or
+physical purge.
 
 ## Quality Gates
 

@@ -4,11 +4,11 @@ Prueft ein Intake-Authoring-Receipt, sein Ziel und lokale Quellen read-only.
 
 Validates an intake-authoring receipt, its target, and local sources read-only.
 .DESCRIPTION
-Prueft Schema 1.0 und 1.1, normalisierte SHA-256-Werte, striktes UTF-8,
+Prueft Schema 1.0, 1.1 und 2.0, normalisierte SHA-256-Werte, striktes UTF-8,
 Entscheidungen, Prompt-Zustand, Delivery Authority und Update-Provenienz.
 Die Pruefung veraendert keine Datei und erteilt keine weitere Berechtigung.
 
-Validates schemas 1.0 and 1.1, normalized SHA-256 values, strict UTF-8,
+Validates schemas 1.0, 1.1, and 2.0, normalized SHA-256 values, strict UTF-8,
 decisions, prompt state, delivery authority, and update provenance. It changes
 no file and grants no additional authority.
 .PARAMETER Receipt
@@ -122,6 +122,40 @@ function Test-IntakeAuthoringReceipt {
         }
     }
 
+    function Test-HBUuid([string]$Value, [string]$Label) {
+        $Parsed = [Guid]::Empty
+        if (-not [Guid]::TryParse($Value, [ref]$Parsed) -or $Parsed -eq [Guid]::Empty) {
+            $Errors.Add("${Label} must be a non-zero UUID")
+        }
+    }
+
+    function Test-HBPublicHttpsUrl([string]$Value, [string]$Label) {
+        $Uri = $null
+        if (-not [Uri]::TryCreate($Value, [UriKind]::Absolute, [ref]$Uri) -or
+            $Uri.Scheme -ne 'https' -or -not $Uri.Host -or $Uri.UserInfo -or $Uri.Fragment) {
+            $Errors.Add("${Label} is not an allowed public HTTPS URL")
+            return
+        }
+        if ($Uri.Host -eq 'localhost' -or $Uri.Host.EndsWith('.localhost')) {
+            $Errors.Add("${Label} is not an allowed public HTTPS URL")
+            return
+        }
+        $Address = $null
+        if ([Net.IPAddress]::TryParse($Uri.Host, [ref]$Address)) {
+            $Bytes = $Address.GetAddressBytes()
+            $Private = [Net.IPAddress]::IsLoopback($Address) -or
+                ($Address.AddressFamily -eq [Net.Sockets.AddressFamily]::InterNetwork -and (
+                    $Bytes[0] -eq 10 -or
+                    ($Bytes[0] -eq 172 -and $Bytes[1] -ge 16 -and $Bytes[1] -le 31) -or
+                    ($Bytes[0] -eq 192 -and $Bytes[1] -eq 168) -or
+                    ($Bytes[0] -eq 169 -and $Bytes[1] -eq 254)
+                )) -or
+                ($Address.AddressFamily -eq [Net.Sockets.AddressFamily]::InterNetworkV6 -and
+                    (($Bytes[0] -band 0xFE) -eq 0xFC -or ($Bytes[0] -eq 0xFE -and ($Bytes[1] -band 0xC0) -eq 0x80)))
+            if ($Private) { $Errors.Add("${Label} is not an allowed public HTTPS URL") }
+        }
+    }
+
     function Test-HBSecret([string]$Text) {
         $Patterns = @(
             '-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----',
@@ -149,13 +183,32 @@ function Test-IntakeAuthoringReceipt {
     }
 
     $SchemaVersion = Get-HBProperty $Data 'schemaVersion'
-    if ($SchemaVersion -notin @('1.0', '1.1')) {
-        $Errors.Add('schemaVersion must be 1.0 or 1.1')
+    if ($SchemaVersion -notin @('1.0', '1.1', '2.0')) {
+        $Errors.Add('schemaVersion must be 1.0, 1.1, or 2.0')
     }
     $ReceiptId = Get-HBText $Data 'receiptId' 'receipt'
     $Guid = [Guid]::Empty
     if (-not [Guid]::TryParse($ReceiptId, [ref]$Guid) -or $Guid -eq [Guid]::Empty) {
         $Errors.Add('receiptId must be a non-zero UUID')
+    }
+    if ($SchemaVersion -eq '2.0') {
+        if ((Get-HBText $Data 'documentType' 'receipt') -ne 'IntakeReceipt') {
+            $Errors.Add('documentType must be IntakeReceipt')
+        }
+        Test-HBUuid (Get-HBText $Data 'intakeId' 'receipt') 'intakeId'
+        $Operation = Get-HBProperty $Data 'operation'
+        if ($null -eq $Operation) {
+            $Errors.Add('operation must be an object')
+            $Operation = [pscustomobject]@{}
+        }
+        Test-HBUuid (Get-HBText $Operation 'operationId' 'operation') 'operation.operationId'
+        $OperationType = Get-HBText $Operation 'type' 'operation'
+        if ($OperationType -notin @('Create', 'Update')) {
+            $Errors.Add('operation.type must be Create or Update')
+        }
+        [void](Get-HBText $Operation 'authorityEvidence' 'operation')
+    } else {
+        $OperationType = ''
     }
 
     $Generator = Get-HBProperty $Data 'generator'
@@ -167,7 +220,7 @@ function Test-IntakeAuthoringReceipt {
         $Errors.Add('generator.preset is invalid')
     }
     $GeneratorVersion = Get-HBText $Generator 'version' 'generator'
-    $ExpectedGenerator = if ($SchemaVersion -eq '1.0') { '0.1.0' } elseif ($SchemaVersion -eq '1.1') { '0.1.1' } else { '' }
+    $ExpectedGenerator = if ($SchemaVersion -eq '1.0') { '0.1.0' } elseif ($SchemaVersion -eq '1.1') { '0.1.1' } elseif ($SchemaVersion -eq '2.0') { '0.2.0' } else { '' }
     if ($ExpectedGenerator -and $GeneratorVersion -ne $ExpectedGenerator) {
         $Errors.Add("generator.version must be $ExpectedGenerator for schema $SchemaVersion")
     }
@@ -223,18 +276,59 @@ function Test-IntakeAuthoringReceipt {
         if ((Get-HBProperty $Source 'order') -ne ($Index + 1)) {
             $Errors.Add("${Label}.order must be $($Index + 1)")
         }
+        if ($SchemaVersion -eq '2.0') {
+            $SourceId = Get-HBText $Source 'sourceId' $Label
+            if ($SourceId -notmatch '^SRC[0-9]{3,}$') { $Errors.Add("${Label}.sourceId must be SRC###") }
+            if (@($Sources[0..([Math]::Max(0, $Index - 1))] | Where-Object { $Index -gt 0 -and (Get-HBProperty $_ 'sourceId') -eq $SourceId }).Count) {
+                $Errors.Add("${Label}.sourceId must be unique")
+            }
+        }
         $Kind = Get-HBText $Source 'kind' $Label
-        if ($Kind -notin @('Inline', 'Pasted', 'File')) { $Errors.Add("${Label}.kind is invalid") }
+        $AllowedKinds = if ($SchemaVersion -eq '2.0') { @('Inline', 'Pasted', 'File', 'Url') } else { @('Inline', 'Pasted', 'File') }
+        if ($Kind -notin $AllowedKinds) { $Errors.Add("${Label}.kind is invalid") }
         [void](Get-HBText $Source 'label' $Label)
         $Location = Get-HBText $Source 'location' $Label
-        if ($Location -notin @('Repository', 'SnapshotOnly', 'ExternalSnapshot')) {
+        $AllowedLocations = if ($SchemaVersion -eq '2.0') { @('Repository', 'SnapshotOnly', 'ExternalSnapshot', 'RemoteSnapshot') } else { @('Repository', 'SnapshotOnly', 'ExternalSnapshot') }
+        if ($Location -notin $AllowedLocations) {
             $Errors.Add("${Label}.location is invalid")
         }
         $PathText = Get-HBText $Source 'path' $Label
         $SourceHash = Get-HBText $Source 'normalizedSha256' $Label
         Test-HBDigest $SourceHash "${Label}.normalizedSha256"
         [void](Get-HBText $Source 'gitBlob' $Label)
-        if ($Location -eq 'Repository') {
+        if ($SchemaVersion -eq '2.0' -and $Kind -eq 'Url') {
+            if ($Location -ne 'RemoteSnapshot') { $Errors.Add("${Label}: Url requires RemoteSnapshot") }
+            if ($PathText -ne 'N/A') { $Errors.Add("${Label}.path must be N/A for URL sources") }
+            Test-HBPublicHttpsUrl (Get-HBText $Source 'requestedUrl' $Label) "${Label}.requestedUrl"
+            Test-HBPublicHttpsUrl (Get-HBText $Source 'finalUrl' $Label) "${Label}.finalUrl"
+            $RetrievedAt = Get-HBText $Source 'retrievedAt' $Label
+            $RetrievedTimestamp = [DateTimeOffset]::MinValue
+            if (-not $RetrievedAt.EndsWith('Z') -or -not [DateTimeOffset]::TryParse($RetrievedAt, [ref]$RetrievedTimestamp)) {
+                $Errors.Add("${Label}.retrievedAt must be an ISO-8601 UTC timestamp")
+            }
+            $HttpStatus = Get-HBProperty $Source 'httpStatus'
+            $HttpStatusValue = 0L
+            if ($HttpStatus -is [bool] -or -not [long]::TryParse([string]$HttpStatus, [ref]$HttpStatusValue) -or $HttpStatusValue -lt 200 -or $HttpStatusValue -gt 299) {
+                $Errors.Add("${Label}.httpStatus must be an integer from 200 through 299")
+            }
+            $ContentType = (Get-HBText $Source 'contentType' $Label).Split(';')[0].ToLowerInvariant()
+            if ($ContentType -notin @('text/plain', 'text/markdown', 'text/html', 'application/xhtml+xml', 'application/json', 'application/yaml', 'text/yaml')) {
+                $Errors.Add("${Label}.contentType is not allowed")
+            }
+            $ContentLength = Get-HBProperty $Source 'contentLength'
+            $ContentLengthValue = 0L
+            if ($ContentLength -is [bool] -or -not [long]::TryParse([string]$ContentLength, [ref]$ContentLengthValue) -or $ContentLengthValue -lt 0 -or $ContentLengthValue -gt 2097152) {
+                $Errors.Add("${Label}.contentLength must be 0 through 2097152")
+            }
+            $RedirectChain = @(Get-HBProperty $Source 'redirectChain')
+            if ($RedirectChain.Count -gt 5) { $Errors.Add("${Label}.redirectChain must contain at most five entries") }
+            foreach ($Redirect in $RedirectChain) { Test-HBPublicHttpsUrl ([string]$Redirect) "${Label}.redirectChain[]" }
+            Test-HBDigest (Get-HBText $Source 'rawSha256' $Label) "${Label}.rawSha256"
+            if ((Get-HBText $Source 'gitBlob' $Label) -ne 'N/A') { $Errors.Add("${Label}.gitBlob must be N/A for URL sources") }
+            if ((Get-HBText $Source 'proofBoundary' $Label) -notin @('SnapshotOnly', 'RemoteSnapshot')) {
+                $Errors.Add("${Label}.proofBoundary is invalid")
+            }
+        } elseif ($Location -eq 'Repository') {
             if ($Kind -ne 'File') { $Errors.Add("${Label}: Repository location requires File kind") }
             if ($PathText -eq 'N/A' -or -not (Test-HBRelativePath $PathText)) {
                 $Errors.Add("${Label}.path must be repository-relative")
@@ -273,6 +367,13 @@ function Test-IntakeAuthoringReceipt {
             if ($Kind -in @('Inline', 'Pasted') -and $Location -ne 'SnapshotOnly') {
                 $Errors.Add("${Label}: inline or pasted source must use SnapshotOnly")
             }
+        }
+        if ($SchemaVersion -eq '2.0' -and $Kind -ne 'Url') {
+            foreach ($Field in @('requestedUrl', 'finalUrl', 'retrievedAt', 'httpStatus', 'contentType', 'contentLength', 'rawSha256')) {
+                if ((Get-HBProperty $Source $Field) -ne 'N/A') { $Errors.Add("${Label}.${Field} must be N/A for non-URL sources") }
+            }
+            if (@(Get-HBProperty $Source 'redirectChain').Count) { $Errors.Add("${Label}.redirectChain must be empty for non-URL sources") }
+            [void](Get-HBText $Source 'proofBoundary' $Label)
         }
     }
 
@@ -451,6 +552,56 @@ function Test-IntakeAuthoringReceipt {
                         }
                     }
                 }
+            }
+        }
+        if ($SchemaVersion -eq '2.0') {
+            $ArchiveTarget = Get-HBText $Supersedes 'archiveTargetPath' 'supersedes'
+            $ArchiveReceipt = Get-HBText $Supersedes 'archiveReceiptPath' 'supersedes'
+            if ($OperationType -eq 'Create') {
+                if ($ProvenanceMode -ne 'New' -or $UpdateAuthorized -ne $false) {
+                    $Errors.Add('Create operation requires New provenance without update authority')
+                }
+                if ($ArchiveTarget -ne 'N/A' -or $ArchiveReceipt -ne 'N/A') {
+                    $Errors.Add('Create operation cannot name archive paths')
+                }
+            } elseif ($OperationType -eq 'Update') {
+                if ($ProvenanceMode -notin @('Supersession', 'LegacyAdoption') -or $UpdateAuthorized -ne $true) {
+                    $Errors.Add('Update operation requires authorized Supersession or LegacyAdoption')
+                }
+                if ($ProvenanceMode -eq 'Supersession') {
+                    foreach ($ArchivePath in @($ArchiveTarget, $ArchiveReceipt)) {
+                        if ($ArchivePath -eq 'N/A' -or -not (Test-HBRelativePath $ArchivePath) -or
+                            -not (Test-Path -LiteralPath (Join-Path $RepoRoot $ArchivePath) -PathType Leaf)) {
+                            $Errors.Add("archived supersession evidence missing or invalid: $ArchivePath")
+                        }
+                    }
+                }
+            }
+            $Series = Get-HBProperty $Data 'series'
+            if ($null -eq $Series) {
+                $Errors.Add('series must be an object')
+                $Series = [pscustomobject]@{}
+            }
+            $SeriesId = Get-HBText $Series 'seriesId' 'series'
+            $ManifestPath = Get-HBText $Series 'manifestPath' 'series'
+            $SeriesOrder = Get-HBProperty $Series 'order'
+            $SeriesRole = Get-HBText $Series 'role' 'series'
+            $PredecessorIds = @(Get-HBProperty $Series 'supersedesIntakeIds')
+            foreach ($PredecessorId in $PredecessorIds) { Test-HBUuid ([string]$PredecessorId) 'series.supersedesIntakeIds[]' }
+            if ($SeriesId -eq 'N/A') {
+                if ($ManifestPath -ne 'N/A' -or $SeriesOrder -ne 'N/A' -or $SeriesRole -ne 'N/A' -or $PredecessorIds.Count) {
+                    $Errors.Add('standalone intake requires an entirely N/A series binding')
+                }
+            } else {
+                Test-HBUuid $SeriesId 'series.seriesId'
+                if (-not (Test-HBRelativePath $ManifestPath) -or -not (Test-Path -LiteralPath (Join-Path $RepoRoot $ManifestPath) -PathType Leaf)) {
+                    $Errors.Add('series.manifestPath must identify an existing repository-relative manifest')
+                }
+                $SeriesOrderValue = 0L
+                if ($SeriesOrder -is [bool] -or -not [long]::TryParse([string]$SeriesOrder, [ref]$SeriesOrderValue) -or $SeriesOrderValue -lt 1) {
+                    $Errors.Add('series.order must be a positive integer')
+                }
+                if ($SeriesRole -eq 'N/A') { $Errors.Add('series.role must describe the member role') }
             }
         }
     }

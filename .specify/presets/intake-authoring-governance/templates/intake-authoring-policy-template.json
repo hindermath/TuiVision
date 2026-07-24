@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "1.1",
   "enabled": true,
   "defaultTargetDirectory": "intakes",
   "receiptDirectory": "specs/intake-authoring-receipts",
@@ -9,6 +9,25 @@
   "defaultDeliveryAuthority": "LocalImplementation",
   "maximumQuestionsPerPass": 5,
   "allowExternalSources": true,
+  "allowPublicHttpsSources": true,
+  "allowSameOriginCrawl": true,
+  "urlPolicy": {
+    "allowedSchemes": ["https"],
+    "allowAuthentication": false,
+    "allowJavaScript": false,
+    "allowCrossOriginCrawl": false,
+    "defaultCrawlDepth": 1,
+    "defaultMaximumPages": 25,
+    "maximumResponseBytes": 2097152,
+    "maximumAggregateBytes": 20971520,
+    "maximumRedirects": 5
+  },
+  "seriesDirectory": "specs/intake-authoring-series",
+  "operationDirectory": "specs/intake-authoring-operations",
+  "archiveDirectory": "specs/intake-authoring-archive",
+  "tombstoneDirectory": "specs/intake-authoring-tombstones",
+  "requireSeriesProposalApproval": true,
+  "deleteMode": "ArchiveAndTombstone",
   "allowOverwrite": false,
   "nextAction": "speckit.intake-review"
 }
