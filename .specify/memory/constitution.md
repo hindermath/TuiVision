@@ -1,8 +1,9 @@
 <!--
 Sync Impact Report
-Version change: 1.15.0 -> 1.16.0
+Version change: 1.16.0 -> 1.17.0
 Modified principles:
-- Spec Kit preset governance (activate optional hash-bound intake review)
+- VII. Inclusion & Accessibility By Default (bind first-year learner audiences and text-first dependency evidence)
+- VIII. DE-First / EN-Second Bilingual Delivery (explain first-use terms and require no prior Spec Kit experience)
 Added sections:
 - None
 Removed sections:
@@ -23,7 +24,7 @@ Follow-up TODOs:
 - None
 -->
 
-# Constitution v1.14.0
+# Constitution v1.17.0
 
 # home-baseline Constitution
 
@@ -208,6 +209,13 @@ Mandatory rules:
 - WCAG 2.2 Level AA is the default accessibility baseline wherever the criteria are applicable.
 - User-facing artefacts MUST remain usable with keyboard-only interaction, screen readers, Braille displays, and text browsers.
 - Text-first fallbacks MUST be preferred for status reporting, diagrams, and operational guidance.
+- Learning, usage, governance, and Spec Kit content in Home Baseline, the
+  ABS-DD sandbox, TuiVision, TinyPl0, TinyCalc, and InventarWorkerService MUST
+  be understandable from the first training year for IT specialist
+  apprentices, management assistants for IT system management, and management
+  assistants for digitalisation management.
+- Dependencies, states, and decisions MUST have a complete textual explanation;
+  diagrams, colour, and spatial arrangement may supplement but never replace it.
 - Accessibility review is part of completion, not post-processing.
 
 **Rationale**: Inclusive delivery improves quality for everyone, reduces retrofit work, and makes the repositories usable in real assistive-technology workflows from the start.
@@ -219,6 +227,9 @@ German is the canonical first language for user-facing documentation and governa
 Mandatory rules:
 - Headings MUST follow the `DE / EN` pattern unless the heading is a proper noun or tool name.
 - Learner-facing and user-facing documentation MUST be maintained bilingually at approximately CEFR-B2 readability.
+- Technical terms MUST be explained briefly in context when they first appear.
+- Prior Spec Kit experience MUST NOT be assumed. Commands, artefacts, status
+  values, and transitions MUST be introduced when first used.
 - Large normative documents MAY use a synchronized `.EN.md` companion file when inline bilingual maintenance would become unreadable.
 - Changes that materially affect user-facing guidance MUST update both language tracks in the same change.
 
@@ -986,7 +997,7 @@ Community/catalog coordination is tracked in `github/spec-kit#2362`.
 `.github/copilot-instructions.md` for per-agent operational guidance. This
 constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.16.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-07-21
+**Version**: 1.17.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-07-25
 
 ## Level-2 Project Environment Addendum / Level-2-Projektumgebung
 

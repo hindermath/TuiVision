@@ -155,6 +155,7 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX [P] Verify the exact eight-preset matrix with `install-spec-kit-governance-presets.* --check-only` / `-CheckOnly`; document any justified repository exception
 - [ ] TXXX [P] Verify primary implementation language against the MSL allow-list in `constitution.md`, Principle XI; cite the Level-2 non-MSL justification if applicable
 - [ ] TXXX [P] Run the required A11Y/text-first review path for affected user-facing artefacts
+- [ ] TXXX [P] Verify learner-facing content is DE-first/EN-second at CEFR B2, explains technical terms at first use, assumes no prior Spec Kit experience, and provides text-first explanations for dependencies, states, and decisions
 - [ ] TXXX [P] Update `docs/project-statistics.md` when the feature changes statistics-relevant artefacts or delivery evidence
 - [ ] TXXX [P] Review and synchronize affected AI-agent guidance files: `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`
 - [ ] TXXX Code cleanup and refactoring
