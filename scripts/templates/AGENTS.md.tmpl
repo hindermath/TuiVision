@@ -235,4 +235,22 @@ Neue Lernreihen fuer Fachinformatiker*innen und weitere IT-Ausbildungsberufe wer
 
 *The original six governance presets and `autonomous-run-governance` v0.2.2 are available through the `github/spec-kit` community catalog. `parallel-autonomous-run-governance` v0.2.3 is published independently; v0.2.2 was submitted to the community catalog as `github/spec-kit#3591`. `architecture-governance` v0.5.1 adds conditional `BSI C3A` cloud-autonomy evidence and `BSI C5` cloud-compliance assurance evidence for cloud-service selection, provider dependencies, audit/assurance status, shared responsibility, and operational evidence. All eight presets now include audit-ready Spec-Kit run evidence: `Applicable` / `N/A` / `Open`, rationale, evidence path, reviewer, residual risk, and follow-up are documented for the current Spec-Kit run. `security-governance` v0.6.1 keeps conditional `AI-SBOM` evidence, language-specific secure-coding profiles, and regulatory applicability screening for NIS2, CRA, EU AI Act, and DORA: development-tool-only AI usage is `N/A`, AI runtime/product components require G7/BSI AI-SBOM cluster evidence, and private training projects record regulatory `N/A` when no regulated scope exists. Registered level-0, level-1, and level-2 repositories with Spec Kit default to all eight presets from `scripts/config/spec-kit-governance-presets.json` unless a justified exception is documented. Use `install-spec-kit-governance-presets.*` so preset versions stay centralized in the matrix. Commit `.specify/presets/` and generated agent command files when presets are project policy, but never commit `.specify/presets/.cache/`. Verify installs with `specify preset list`, `specify preset info`, and where relevant `specify preset resolve`. For every preset version or priority change, update the central matrix, README tables/install snippets, constitution, agent guidance files, `scripts/templates/speckit-workflow-section.md`, and agent templates together.*
 
+<!-- learner-a11y-baseline:start -->
+## Lernenden- und A11Y-Basis / Learner and A11Y Baseline
+
+- Inhalte richten sich ab dem ersten Ausbildungsjahr an Fachinformatiker*innen,
+  Kaufleute für IT-System-Management und Kaufleute für
+  Digitalisierungsmanagement.
+- Sie müssen Deutsch zuerst und Englisch danach, ohne Spec-Kit-Vorkenntnisse,
+  auf CEFR-B2-Niveau und ohne ausschließlich visuelle
+  Abhängigkeitsdarstellung verständlich sein. Fachbegriffe werden beim ersten
+  Auftreten erklärt; WCAG 2.2 Level AA ist die anwendbare Prüfbasis.
+
+*Content targets IT specialist apprentices and both IT management occupations
+from their first training year. It is German-first/English-second at CEFR B2,
+explains technical terms at first use, assumes no prior Spec Kit experience,
+never relies on visual-only dependency information, and uses WCAG 2.2 Level AA
+as the applicable review baseline.*
+<!-- learner-a11y-baseline:end -->
+
 <!-- EN: AGENTS.md contains bilingual agent guidance for this level-2 project. -->

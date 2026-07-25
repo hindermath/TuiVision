@@ -40,6 +40,17 @@
 [SECTION_3_CONTENT]
 <!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
 
+## Lernenden- und A11Y-Basis / Learner and A11Y Baseline
+
+Learner-facing and user-facing work MUST name its audience and review path.
+For Home Baseline, the ABS-DD sandbox, TuiVision, TinyPl0, TinyCalc, and
+InventarWorkerService, content MUST be understandable from the first training
+year for IT specialist apprentices and both IT management occupations. It MUST
+be German-first/English-second at approximately CEFR B2, explain technical
+terms at first use, assume no prior Spec Kit experience, provide text-first
+dependency/state/decision information, and apply WCAG 2.2 Level AA wherever
+the criteria are applicable.
+
 ## Governance
 <!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 

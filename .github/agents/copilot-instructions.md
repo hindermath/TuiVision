@@ -394,3 +394,30 @@ and passing evidence are distinct; bypass is not technical proof.*
 
 *Profile 2 is governed by the JSON configuration and generated marker block. Use ASCII `0..4`, `-`, and `#`/`.`, exact values, German-first bilingual CEFR-B2 alternatives, and a 100-character chart limit. Methodology v2 excludes the ledger, `STATS.md`, and binaries. This repository uses manual references of `80` and `125` lines per workday. Speedup describes delivery density, not stopwatch or personal performance. This contract supersedes older visualization rules while retaining historical entries and archived Profile 1 charts.*
 <!-- statistics-profile-2-guidance:end -->
+
+
+<!-- learner-a11y-baseline:start -->
+## Lernenden- und A11Y-Basis / Learner and A11Y Baseline
+
+- Verbindliche Zielgruppen ab dem ersten Ausbildungsjahr sind
+  Fachinformatiker*innen, Kaufleute für IT-System-Management und Kaufleute für
+  Digitalisierungsmanagement.
+- Lern-, Bedien-, Governance- und Spec-Kit-Inhalte stehen auf Deutsch zuerst
+  und Englisch danach, verwenden ungefähr CEFR B2 und erklären Fachbegriffe
+  beim ersten Auftreten.
+- Spec-Kit-Erfahrung wird nicht vorausgesetzt. Befehle, Artefakte, Zustände und
+  Übergänge werden beim ersten Gebrauch verständlich eingeführt.
+- Abhängigkeiten, Zustände und Entscheidungen erhalten eine vollständige
+  textorientierte Erklärung; eine ausschließlich visuelle Darstellung genügt
+  nicht.
+- `Programmierung #include<everyone>` und WCAG 2.2 Level AA gelten als
+  verbindliche Prüfbasis, soweit die Kriterien auf das Artefakt anwendbar sind.
+
+*The binding audience starts in the first training year and includes IT
+specialist apprentices and both IT management occupations. Learner, usage,
+governance, and Spec Kit content is German-first/English-second at about CEFR
+B2, explains technical terms at first use, assumes no prior Spec Kit
+experience, and never relies on visual-only dependency, state, or decision
+information. `Programmierung #include<everyone>` and WCAG 2.2 Level AA are the
+review baseline wherever applicable.*
+<!-- learner-a11y-baseline:end -->

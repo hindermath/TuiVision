@@ -90,8 +90,12 @@
 - **Security-first**: Confirm no credential files, agent state, logs, history,
   or SQLite state are planned for tracking.
 - **Inclusion/A11Y**: Identify affected user-facing artefacts and the WCAG 2.2
-  Level AA or text-first review path.
+  Level AA or text-first review path. Confirm that dependencies, states, and
+  decisions do not rely on a visual-only representation.
 - **Bilingual delivery**: State how DE-first/EN-second requirements apply.
+- **Learner baseline**: State how CEFR B2, first-use explanations of technical
+  terms, no assumed Spec Kit experience, and first-training-year comprehension
+  for IT specialist apprentices and the two IT management occupations apply.
 - **Statistics**: State whether `docs/project-statistics.md` needs an update
   and which manual/Thorsten-Solo baseline applies.
 - **Agent guidance parity**: State whether `AGENTS.md`, `CLAUDE.md`,

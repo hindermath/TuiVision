@@ -102,8 +102,13 @@
   `constitution.md` as binding project context.
 - **CR-002**: User-facing artefacts MUST identify their A11Y review path
   (WCAG 2.2 Level AA where applicable, text-first fallback otherwise).
+  Dependencies, states, and decisions MUST remain understandable without a
+  visual-only representation.
 - **CR-003**: Learner-facing or shared guidance content MUST be DE-first,
   EN-second unless a synchronized `.EN.md` companion is explicitly chosen.
+  It MUST target CEFR B2, explain technical terms at first use, assume no prior
+  Spec Kit experience, and be understandable from the first training year for
+  IT specialist apprentices and the two IT management occupations.
 - **CR-004**: The feature MUST state whether statistics and AI-agent guidance
   files require synchronized updates.
 - **CR-005**: The feature MUST name its primary implementation language and
