@@ -53,6 +53,11 @@
   changelogs, archived feature evidence, and compatibility aliases.
 - Validate equivalent command meaning across generated skills, prompts,
   commands, and instruction files; matching filenames alone are insufficient.
+- When project policy declares learner audiences, language order, readability,
+  first-use terminology, prior-knowledge limits, or text-first accessibility,
+  propagate that complete policy across every maintained agent surface and
+  repository-owned Spec Kit template. Do not reduce it to an agent-specific
+  summary.
 
 ## Runner and Status Metadata
 

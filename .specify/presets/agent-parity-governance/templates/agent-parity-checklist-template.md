@@ -77,6 +77,8 @@ confirm whether the shared rule landed.
 
 - Diffs across all surfaces compared side-by-side:
 - Bilingual delivery preserved (DE first, EN second) where applicable:
+- Declared audience, prior knowledge, CEFR target, first-use terminology, and
+  text-first accessibility are equivalent across all maintained surfaces:
 - Wording consistent (no contradictory directives):
 - Cross-references valid (paths, anchor links, file names):
 

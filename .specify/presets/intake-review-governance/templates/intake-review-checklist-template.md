@@ -3,6 +3,12 @@
 ## Single Intake
 
 - [ ] Identity, audience, goal, scope, and non-goals are explicit.
+- [ ] Assumed prior knowledge is explicit; Spec Kit experience is not silently
+      assumed for first-time learner audiences.
+- [ ] Technical and workflow terms are explained on first use at the declared
+      readability level and in the project language order.
+- [ ] Dependencies, status, decisions, and next actions are understandable as
+      ordered text and do not rely only on colour, diagrams, or visual position.
 - [ ] Requirements are atomic, testable, and free of conflicting modal terms.
 - [ ] Acceptance criteria and validation evidence are measurable.
 - [ ] Dependencies, ordering, authority, delivery, risks, and follow-ups are explicit.

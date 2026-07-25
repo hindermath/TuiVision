@@ -3,7 +3,7 @@
   "documentType": "IntakeSeriesReceipt",
   "receiptId": "00000000-0000-0000-0000-000000000000",
   "seriesId": "00000000-0000-0000-0000-000000000000",
-  "generator": {"preset": "intake-sequencing-governance", "version": "0.1.0"},
+  "generator": {"preset": "intake-sequencing-governance", "version": "0.1.1"},
   "createdAt": "1970-01-01T00:00:00Z",
   "operation": {
     "operationId": "00000000-0000-0000-0000-000000000000",

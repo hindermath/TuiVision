@@ -38,6 +38,10 @@ series. This command never updates or deletes an active intake. It never starts 
    requirements, quality and governance boundaries, dependencies, risks,
    expected artifacts, evidence, measurable acceptance, assumptions, and open
    questions. Follow repository language policy and applicable WCAG 2.2 AA.
+   For learner-facing material, preserve the profile's declared audience,
+   assumed prior knowledge, first-use terminology rule, and text-first
+   dependency/status/decision/next-action rule. Never silently assume Spec Kit
+   experience.
 8. Refuse an existing target or active receipt without writing anything.
    Report `$speckit-intake-update <target>` as the exact safe command. New
    targets use provenance mode `New`; Create never claims update authority,

@@ -153,7 +153,7 @@ if not isinstance(generator, dict):
 if required_text(generator, "preset", "generator") != "intake-authoring-governance":
     errors.append("generator.preset is invalid")
 generator_version = required_text(generator, "version", "generator")
-expected_generator = {"1.0": "0.1.0", "1.1": "0.1.1", "2.0": "0.2.0"}.get(schema_version)
+expected_generator = {"1.0": "0.1.0", "1.1": "0.1.1", "2.0": "0.2.1"}.get(schema_version)
 if expected_generator and generator_version != expected_generator:
     errors.append(f"generator.version must be {expected_generator} for schema {schema_version}")
 

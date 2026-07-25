@@ -1,11 +1,16 @@
 # Intake Authoring Governance Preset
 
 Optional, stackable intake-authoring governance for GitHub Spec Kit. Version
-`0.2.0` governs traceable intake Create, Read, Update, logical Delete, bounded
+`0.2.1` governs traceable intake Create, Read, Update, logical Delete, bounded
 public HTTPS sources, and explicitly approved intake series.
 
+Version `0.2.1` carries a project-profile learner contract into new or updated
+intakes: declared audience, assumed prior knowledge, first-use terminology, and
+text-first dependencies, status, decisions, and next actions. It does not
+hard-code a country, occupation, or language into the portable preset.
+
 *Optional, stackable intake-authoring governance for GitHub Spec Kit. Version
-`0.2.0` governs traceable intake Create, Read, Update, logical Delete, bounded
+`0.2.1` governs traceable intake Create, Read, Update, logical Delete, bounded
 public HTTPS sources, and explicitly approved intake series.*
 
 Recommended priority: `64`, after Agent Parity (`60`) and before Intake Review
@@ -37,7 +42,7 @@ push, pull request, or merge.
 - `$speckit-intake-update`: aktualisiert ausdrücklich einen aktiven Intake oder
   migriert eine freigegebene Serie.
 - `$speckit-intake-delete`: archiviert aktive Artefakte und erzeugt einen
-  Tombstone; v0.2.0 besitzt keinen Purge.
+  Tombstone; v0.2.1 besitzt keinen Purge.
 - `$speckit-intake-create-status`: prueft Receipt, Ziel, lokale Quellen und
   Prompt-Zustand read-only.
 
@@ -49,7 +54,7 @@ and freshness without writing.*
 
 ```bash
 specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/archive/refs/tags/v0.2.0.zip \
+  --from https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/archive/refs/tags/v0.2.1.zip \
   --priority 64
 specify preset list
 specify preset info intake-authoring-governance
@@ -183,7 +188,7 @@ Lösch-Evidence gespeichert. Historie, Archive und Tombstones werden nie
 gepurgt.
 
 *Delete is logical. It archives target and receipt byte-for-byte before
-removing active files and writes a validated tombstone. v0.2.0 has no purge.*
+removing active files and writes a validated tombstone. v0.2.1 has no purge.*
 
 ### Legacy adoption / Uebernahme bestehender Intakes
 

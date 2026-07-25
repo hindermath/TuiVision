@@ -220,7 +220,7 @@ function Test-IntakeAuthoringReceipt {
         $Errors.Add('generator.preset is invalid')
     }
     $GeneratorVersion = Get-HBText $Generator 'version' 'generator'
-    $ExpectedGenerator = if ($SchemaVersion -eq '1.0') { '0.1.0' } elseif ($SchemaVersion -eq '1.1') { '0.1.1' } elseif ($SchemaVersion -eq '2.0') { '0.2.0' } else { '' }
+    $ExpectedGenerator = if ($SchemaVersion -eq '1.0') { '0.1.0' } elseif ($SchemaVersion -eq '1.1') { '0.1.1' } elseif ($SchemaVersion -eq '2.0') { '0.2.1' } else { '' }
     if ($ExpectedGenerator -and $GeneratorVersion -ne $ExpectedGenerator) {
         $Errors.Add("generator.version must be $ExpectedGenerator for schema $SchemaVersion")
     }
