@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeriesTombstone",
+  "seriesId": "00000000-0000-0000-0000-000000000000",
+  "deletedAt": "1970-01-01T00:00:00Z",
+  "authorityEvidence": "Explicit current delete authority",
+  "reason": "Series no longer active",
+  "archiveManifestPath": "specs/intake-series-archive/example/manifest.json",
+  "archiveManifestSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "intakeDocumentsDeleted": false
+}

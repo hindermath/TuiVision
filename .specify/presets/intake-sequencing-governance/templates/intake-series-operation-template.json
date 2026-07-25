@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeriesOperation",
+  "operationId": "00000000-0000-0000-0000-000000000000",
+  "seriesId": "00000000-0000-0000-0000-000000000000",
+  "type": "Create",
+  "status": "Prepared",
+  "authorityEvidence": "Explicit current user authority",
+  "proposalNormalizedSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "preparedPaths": [],
+  "validation": {"bash": "Pending", "powerShell": "Pending"},
+  "publication": {"status": "NotPublished", "publishedPaths": []}
+}

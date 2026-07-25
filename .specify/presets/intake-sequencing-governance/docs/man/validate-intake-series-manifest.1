@@ -1,0 +1,12 @@
+.TH VALIDATE-INTAKE-SERIES-MANIFEST 1 "2026-07-25" "0.1.0"
+.SH NAME
+validate-intake-series-manifest.sh \- validate an intake-series manifest
+.SH SYNOPSIS
+.B validate-intake-series-manifest.sh
+--file FILE [--repo PATH] [--json]
+.SH DESCRIPTION
+Validates strict UTF-8, repository-relative target paths, normalized hashes,
+lifecycle states, roots, typed edges, declared order, and acyclicity without
+modifying files.
+.SH EXIT STATUS
+Returns 0 for valid evidence and 2 for invalid input or drift.
