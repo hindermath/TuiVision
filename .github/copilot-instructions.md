@@ -626,7 +626,7 @@ and passing evidence are distinct; bypass is not technical proof.*
 
 
 <!-- learner-a11y-baseline:start -->
-## Lernenden- und A11Y-Basis / Learner and A11Y Baseline
+## Hinweise zur Lernenden- und A11Y-Basis / Notes on the Learner and A11Y Baseline
 
 - Verbindliche Zielgruppen ab dem ersten Ausbildungsjahr sind
   Fachinformatiker*innen, Kaufleute für IT-System-Management und Kaufleute für
