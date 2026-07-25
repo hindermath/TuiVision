@@ -1,0 +1,12 @@
+.TH VALIDATE-INTAKE-SERIES-RECEIPT 1 "2026-07-25" "0.1.0"
+.SH NAME
+validate-intake-series-receipt.sh \- validate an intake-series receipt
+.SH SYNOPSIS
+.B validate-intake-series-receipt.sh
+--file FILE [--repo PATH] [--json]
+.SH DESCRIPTION
+Validates receipt identity, operation authority, manifest hash binding,
+supersession archives, deletion tombstones, and the referenced series manifest
+without modifying files.
+.SH EXIT STATUS
+Returns 0 for valid evidence and 2 for invalid input or drift.

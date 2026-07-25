@@ -33,14 +33,17 @@ Workspace-Familie ist:
 | `autonomous-run-governance` | Autonomous Run Governance | `v0.3.2` | `70` |
 | `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.3` | `80` |
 
-Optional koennen `intake-authoring-governance` v0.2.0 mit Prioritaet `64` und
-`intake-review-governance` v0.1.1 mit Prioritaet `65` zwischen Agent Parity und
-Preset 7 installiert werden. Beide bleiben ausserhalb der Standard-Achtermatrix.
+Optional koennen `intake-authoring-governance` v0.2.0 mit Prioritaet `64`,
+`intake-review-governance` v0.1.1 mit Prioritaet `65` und
+`intake-sequencing-governance` v0.1.0 mit Prioritaet `66` zwischen Agent Parity
+und Preset 7 installiert werden. Alle drei bleiben ausserhalb der
+Standard-Achtermatrix.
 Authoring erzeugt aus ausdruecklich benannten geordneten UTF-8-Quellen genau
 einen Intake und ein Receipt, startet aber keine Folgeaktion. Review prueft den
-gespeicherten Intake unabhaengig. Das Registry-Profil
-`intake-authoring-ten-governance-presets` waehlt beide; das bisherige
-Neunerprofil bleibt kompatibel. Lernendenlaeufe bleiben separat
+gespeicherten Intake unabhaengig. Sequencing verwaltet Reihenfolge, bindende
+Abhaengigkeiten und naechste Kandidaten, startet aber keine Arbeit. Das
+Registry-Profil `intake-sequencing-eleven-governance-presets` waehlt alle drei;
+Neun- und Zehn-Preset-Profile bleiben kompatibel. Lernendenlaeufe bleiben separat
 beauftragungspflichtig.
 Series-Reviews verwenden Request und Result nach Schema 1.1. Der normalisierte
 Request-Hash, Zielrollen, exakte Reihenfolge, Roots und der azyklische
@@ -169,13 +172,16 @@ workspace family is:
 | `autonomous-run-governance` | Autonomous Run Governance | `v0.3.2` | `70` |
 | `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.3` | `80` |
 
-Optionally install `intake-authoring-governance` v0.2.0 at priority `64` and
-`intake-review-governance` v0.1.1 at priority `65` between Agent Parity and
-Preset 7. Both remain outside the standard eight. Authoring creates one intake
+Optionally install `intake-authoring-governance` v0.2.0 at priority `64`,
+`intake-review-governance` v0.1.1 at priority `65`, and
+`intake-sequencing-governance` v0.1.0 at priority `66` between Agent Parity and
+Preset 7. All three remain outside the standard eight. Authoring creates one intake
 and receipt from explicit ordered UTF-8 sources without starting a downstream
-command. Review evaluates that intake independently. Registry profile
-`intake-authoring-ten-governance-presets` selects both; the prior nine-preset
-profile remains compatible. Learner runs still require explicit authorization.
+command. Review evaluates that intake independently. Sequencing manages order,
+binding dependencies, and next candidates without starting work. Registry
+profile `intake-sequencing-eleven-governance-presets` selects all three; prior
+nine- and ten-preset profiles remain compatible. Learner runs still require
+explicit authorization.
 Series reviews use schema 1.1 for request and result. They jointly validate the
 normalized request hash, target roles, exact order, roots, and the acyclic
 predecessor graph; ambiguous relations result in `NeedsClarification`.
