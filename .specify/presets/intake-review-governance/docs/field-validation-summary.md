@@ -1,4 +1,4 @@
-# Field Validation Summary: v0.1.1
+# Field Validation Summary: v0.1.2
 
 Date: 2026-07-23
 
@@ -23,7 +23,7 @@ cycles, and root sets that differ from the graph's zero-indegree targets.
 
 The field observation from `SecureServiceHarvester-CSharp` contained 66
 targets and 64 predecessor edges. An independent graph audit found an
-intermediate request error that v0.1.0 could not reject. Version 0.1.1 makes
+intermediate request error that v0.1.0 could not reject. Version 0.1.2 makes
 that class of accepted Series evidence impossible without a current,
 structurally valid request binding.
 
@@ -31,7 +31,7 @@ structurally valid request binding.
 
 A temporary Spec Kit 0.12.11 project accepted all ten presets at priorities
 10 through 80. `add`, `list`, `info`, `resolve`, `disable`, `enable`, `remove`,
-and reinstall completed successfully with Intake Review v0.1.1 at priority 65.
+and reinstall completed successfully with Intake Review v0.1.2 at priority 65.
 
 Separate temporary Codex, Claude, Copilot Skills, and Antigravity projects each
 contained exactly one generated surface for `speckit.intake-review`,
@@ -70,7 +70,7 @@ row failed before worker scheduling.
 ## Disposition
 
 The tested behavior is provider-neutral and supports publication as
-`intake-review-governance` v0.1.1, `autonomous-run-governance` v0.3.2, and
+`intake-review-governance` v0.1.2, `autonomous-run-governance` v0.3.2, and
 `parallel-autonomous-run-governance` v0.2.3. The standard eight-preset profile
 remains unchanged; the optional authoring-and-review profile contains ten
 presets.

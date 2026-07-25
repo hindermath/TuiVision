@@ -1,7 +1,7 @@
 # Intake Sequencing Governance
 
 Optional Spec Kit preset for managing the order and lifecycle of existing
-intakes. Version `0.1.0` uses priority `66`: after Intake Review at `65` and
+intakes. Version `0.1.1` uses priority `66`: after Intake Review at `65` and
 before Autonomous Run at `70`.
 
 ## Why This Preset Exists
@@ -11,11 +11,16 @@ delivery order. This preset stores both a learner-readable order and a
 machine-checkable typed graph. It never writes intake content and never starts
 the work it selects.
 
+Version `0.1.1` preserves the project-declared learner contract in the readable
+order: audience, prior knowledge, language and readability, first-use terms,
+and a normative text representation of dependencies, blockers, status,
+decisions, and next actions.
+
 ## Installation
 
 ```bash
 specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/archive/refs/tags/v0.1.0.zip \
+  --from https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/archive/refs/tags/v0.1.1.zip \
   --priority 66
 ```
 

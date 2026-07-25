@@ -21,6 +21,10 @@ exist. Use the installed policy and checklist.
    measurable acceptance, dependencies, order, security/privacy/A11Y/platform,
    evidence, delivery authority, risks, references, prompt alignment, and
    secret or unnecessary-personal-data exposure.
+   When project policy declares learner-facing material, also verify assumed
+   prior knowledge, first-use explanations for technical and Spec Kit terms,
+   the language/readability contract, and text-first dependencies, status,
+   decisions, and next actions.
 3. For a series, additionally review IDs, DAG, gaps, overlap, terminology,
    invariants, handoffs, future scope, and authority. Use schema 1.1, declare
    every root, order every target exactly once, and bind the request path and

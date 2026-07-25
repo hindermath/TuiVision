@@ -3,7 +3,7 @@ schema_version: "1.0"
 preset:
   id: "intake-authoring-governance"
   name: "Intake Authoring Governance"
-  version: "0.2.0"
+  version: "0.2.1"
   description: "Governs traceable intake CRUD, bounded public HTTPS sources, and explicitly approved single or series authoring."
   author: "Thorsten Hindermann"
   repository: "https://github.com/hindermath/spec-kit-preset-intake-authoring-governance"

@@ -3,7 +3,7 @@ schema_version: "1.0"
 preset:
   id: "intake-sequencing-governance"
   name: "Intake Sequencing Governance"
-  version: "0.1.0"
+  version: "0.1.1"
   description: "Manages traceable intake-series order, typed dependencies, lifecycle, and next-candidate selection without executing downstream workflows."
   author: "Thorsten Hindermann"
   repository: "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance"

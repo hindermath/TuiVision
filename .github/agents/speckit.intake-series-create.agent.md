@@ -22,6 +22,10 @@ review or feature workflow.
    completion fact, or delivery authority.
 5. Prepare manifest, receipt, operation journal, and learner-readable order
    document under repository-owned paths.
+   Preserve the project's declared audience, language order, readability,
+   first-use terminology, and prior-knowledge boundary. The order document
+   must state dependencies, blockers, status, decisions, and next actions as
+   text even when it also contains a diagram.
 6. Validate paths, hashes, graph, lifecycle, and receipts in Bash and
    PowerShell before publishing any active file.
 7. Publish all prepared files atomically. A failure leaves an explicit

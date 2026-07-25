@@ -1,6 +1,6 @@
 # Field Validation Summary
 
-Version `0.1.0` is validated with:
+Version `0.1.1` is validated with:
 
 - a synthetic three-target, one-root, two-edge series;
 - malformed path, type, binding, order, root, lifecycle, and hash fixtures;

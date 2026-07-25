@@ -17,6 +17,12 @@ Require an accepted campaign manifest, local runner-profile binding, explicit
 delivery authority, and `autonomous-run-governance >= 0.2.2` in every worker
 repository.
 
+Resolve the shared project learner and accessibility policy before scheduling.
+Every worker and the final consolidation must preserve the declared audience,
+language order, readability, first-use terminology, prior-knowledge boundary,
+and text-first dependency/status/decision/next-action contract. Provider or
+runner defaults cannot weaken that policy.
+
 Campaign schemas `1.0`, `1.1`, and `1.2` are supported. Schema `1.2` may
 declare `intakeReview.required`. When true, validate the result before any
 worktree or worker process is created. Require one semantic review per unique

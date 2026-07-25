@@ -48,3 +48,8 @@ inputs, but every worker still needs an applicability row.
   campaign manifest.
 - Installation grants no autonomous execution, remote write, merge, bypass,
   cancellation, secret, or provider-administration authority.
+- Every worker inherits the accepted project's learner and accessibility
+  policy. Consolidation must prove that audience, language order, readability,
+  first-use terminology, prior-knowledge limits, and text-first dependency,
+  status, decision, and next-action information were preserved. Campaign
+  coordination must not replace these rules with provider-specific defaults.

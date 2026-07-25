@@ -1,12 +1,17 @@
 # Intake Review Governance Preset
 
 Optional, stackable intake-quality governance for GitHub Spec Kit. Version
-`0.1.1` provides three commands, eight templates, and read-only
+`0.1.2` provides three commands, eight templates, and read-only
 Bash/PowerShell validators. Series reviews use a schema-1.1 request binding
 with normalized SHA-256, explicit roots, complete target ordering, and
 validated acyclic dependency edges. Single and Campaign schema 1.0 results
 remain compatible. Recommended priority: `65`, between Agent Parity (`60`) and
 Autonomous Run Governance (`70`). Spec Kit `>=0.8.3` is required.
+
+Version `0.1.2` also reviews a project-declared learner contract. It verifies
+audience and prior knowledge, first-use explanations, language and readability,
+and text-first dependencies, status, decisions, and next actions without
+making those project choices itself.
 
 ## Commands
 
@@ -19,7 +24,7 @@ Autonomous Run Governance (`70`). Spec Kit `>=0.8.3` is required.
 ## Install
 
 ```bash
-specify preset add --from https://github.com/hindermath/spec-kit-preset-intake-review-governance/archive/refs/tags/v0.1.1.zip --priority 65
+specify preset add --from https://github.com/hindermath/spec-kit-preset-intake-review-governance/archive/refs/tags/v0.1.2.zip --priority 65
 specify preset list
 specify preset resolve
 ```

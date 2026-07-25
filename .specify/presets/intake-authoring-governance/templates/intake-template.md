@@ -3,6 +3,7 @@
 
 **Status:** [Ready for review or blocked draft]
 **Audience:** [Primary audience]
+**Assumed prior knowledge:** [Explicit boundary; do not assume Spec Kit experience]
 **Profile:** [Resolved project profile]
 
 ## Purpose
@@ -33,6 +34,10 @@
 
 [Security, privacy, accessibility, platform, supply-chain, language, and
 evidence applicability.]
+
+For learner-facing intakes, state how technical and Spec Kit terms are
+explained on first use and how dependencies, status, decisions, and next
+actions remain available as ordered text.
 
 ## Dependencies And Risks
 
