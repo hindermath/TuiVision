@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeriesReceipt",
+  "receiptId": "480738b1-1a65-47f5-8c2a-2a6c062b4589",
+  "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
+  "generator": {
+    "preset": "intake-sequencing-governance",
+    "version": "0.1.1"
+  },
+  "createdAt": "2026-07-26T20:00:00Z",
+  "operation": {
+    "operationId": "52f0da46-7d12-4039-a450-14d518d55a1c",
+    "type": "Create",
+    "authorityEvidence": "User-approved two-PR Pflichtenheft and intake consolidation plan"
+  },
+  "status": "Ready",
+  "manifest": {
+    "path": "requirements/intakes/series/tui-vision-delivery/manifest.json",
+    "normalizedSha256": "c5434625bbefe764ef4f205451f7867d391d4cd67c1be7e682f6bbca62ed3930"
+  },
+  "supersedes": {
+    "receiptPath": "N/A",
+    "receiptNormalizedSha256": "N/A",
+    "manifestArchivePath": "N/A",
+    "manifestArchiveSha256": "N/A"
+  },
+  "tombstone": {
+    "path": "N/A",
+    "normalizedSha256": "N/A"
+  },
+  "nextAction": "$speckit-intake-series-status"
+}

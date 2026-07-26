@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "enabled": true,
-  "defaultTargetDirectory": ".",
+  "defaultTargetDirectory": "requirements/intakes/active",
   "receiptDirectory": "specs/intake-authoring-receipts",
   "defaultProfile": "level2-lastenheft",
   "profiles": {

@@ -179,7 +179,7 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Helper or headless paths may be `PrimaryProof` only when they execute real example or application logic through public commands, events, application methods, or stable public state with concrete assertions; 014 added `PrimaryProof`, `SupplementalProof`, `SetupOnly`, and `LegacyOrTemporary` helper taxonomy.
 - Historical C/C++ sources under `tv203s/` remain read-only intent references. `set-logo.cc` and `tv_logo.cc` are Desklogo asset/generator boundary context only.
 - Validation baseline: targeted Wave-1 smokes 38/38 passed, full example smokes 91/91 passed, full Release tests 496/496 passed, coverage gate exceeded 70% for all required assemblies, `docfx docfx.json` passed with 0 warnings/errors, and Playwright/axe DocFX smoke passed 2/2 via explicit local-server workaround when sandboxed webserver startup is blocked.
-- Feature 015 completed the didactic comment pass; the next open cross-cutting step is `Lastenheft_Secure-Development-Hardening.md` before Wave-1 visual remediation.
+- Feature 015 completed the didactic comment pass; the next open cross-cutting step is `requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.016-secure-development-hardening.md` before Wave-1 visual remediation.
 - Wave-1 visual remediation, Wave 2/3/4 behavior, broad framework redesign, mouse-only operation, arbitrary user-file proof, external proof paths, persistent user history, databases, external services, new runtime dependencies, and runtime/product AI are out of scope.
 
 ### 015-didactic-comment-hardening
@@ -197,7 +197,7 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Delivered remediation is bounded to explicit malformed persistence rejection, immutable workflow dependencies, supply-chain automation, root disclosure guidance, and safe Bash/PowerShell archive-script parity.
 - Local acceptance is 498/498 Release tests plus line coverage above 70% for Core, Controls, Serialization, Compatibility, and Drivers.Console; DocFX/axe and remote OS/CI proof remain delivery gates.
 - Human legal, provider, organization, and agent-platform decisions remain `Open`; release provenance, reproducible-build/lock maturity, and RFC 9116 remain named follow-ups rather than implicit claims.
-- The next open prioritized intake is `Lastenheft_03_EditorHelpAndResourcesHardening.md` before Wave-3 visual porting.
+- The next open prioritized intake is `requirements/intakes/archive/Lastenheft_03_EditorHelpAndResourcesHardening.018-editor-help-resources-hardening.md` before Wave-3 visual porting.
 
 ### 017-wave1-visual-component-remediation
 - Current implementation status: Wave-1 visual component remediation is implemented; final evidence is in `specs/017-wave1-visual-component-remediation/pr-evidence.md`.
@@ -206,7 +206,7 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Shared composition in `examples/Shared/Wave1Runtime.cs` uses existing framework controls. Desklogo and MsgCls are `UseExistingFramework`; Tutorial and Videomode are bounded `IntentionalDeviation` decisions.
 - Historical sources under `tv203s/` remain read-only. No functional re-port, Wave-2/3/4 behavior, broad framework redesign, new dependency, persistence, external service, or runtime/product AI entered scope.
 - The complete example-smoke suite passes 101/101 locally; final repository, coverage, DocFX, A11Y, and remote checks remain delivery gates until recorded in feature evidence.
-- Feature 018 closes the editor/help/resources intake; the next prioritized intake is `Lastenheft_Wave3-Visual-Component-Porting.md`.
+- Feature 018 closes the editor/help/resources intake; the next prioritized intake is `requirements/intakes/archive/Lastenheft_Wave3-Visual-Component-Porting.019-wave3-visual-component-porting.md`.
 
 ### 018-editor-help-resources-hardening
 - Current implementation status: Wave-3 editor/help/resources hardening is implemented; final evidence is in `specs/018-editor-help-resources-hardening/pr-evidence.md`.
@@ -216,7 +216,7 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Persisted resources reject duplicate keys and negative payload lengths; persisted help rejects negative counts and unresolved or invalid reference ranges before presentation.
 - Framework decisions are `UseExistingFramework` for editor/file, and bounded `SmallFrameworkFix` for help graph validation, compiler, resources, and i18n. Historical sources remain read-only.
 - Wave-3 examples, mouse, terminal/charset/font work, TP7, broad redesign, services, and dependencies remain outside 018.
-- The next prioritized intake is `Lastenheft_Wave3-Visual-Component-Porting.md` for `bhelp`, `helpdemo`, `i18n`, `tvedit`, and `tvhc`.
+- The next prioritized intake is `requirements/intakes/archive/Lastenheft_Wave3-Visual-Component-Porting.019-wave3-visual-component-porting.md` for `bhelp`, `helpdemo`, `i18n`, `tvedit`, and `tvhc`.
 
 ### 019-wave3-visual-component-porting
 - Current implementation status: Wave-3 visual component porting is implemented locally; final evidence is in `specs/019-wave3-visual-component-porting/pr-evidence.md`.
@@ -225,7 +225,7 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Framework decisions are `UseExistingFramework` for TvEdit, HelpDemo, I18n, and TvHc, and bounded `IntentionalDeviation` for BHelp because the proprietary unchecked Borland `.tch` decoder is omitted.
 - Embedded/source-controlled learning content and test-owned temporary paths are the only data boundaries. Historical sources remain read-only.
 - Mouse interaction, terminal/charset/font work, Wave 4, broad redesign, services, new dependencies, and runtime/product AI remain outside 019.
-- The next prioritized intake is `Lastenheft_04_MouseSupportAndInteraction.md`.
+- The next prioritized intake is `requirements/intakes/archive/Lastenheft_04_MouseSupportAndInteraction.020-mouse-support-interaction.md`.
 
 ### 020-mouse-support-interaction
 - Current implementation status: bounded mouse support and interaction hardening is implemented locally; final evidence is in `specs/020-mouse-support-interaction/pr-evidence.md`.
@@ -234,7 +234,7 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - The only mouse drag contract is moving a `TWindow` from its title row. Owner bounds, release, Escape, capability loss, disable, removal, shutdown, and the existing `Ctrl+F5` keyboard fallback are proven.
 - Interactive macOS/Linux terminals and WSL use the SGR capability contract; native Windows Console and redirected/headless I/O remain honest `Unsupported` boundaries. Wheel, hover, touch, extra buttons, full protocol parity, and additional drag targets remain out of scope.
 - Primary proof runs through `TProgram.GetEvent` and `app.Run()` and combines concrete focus/command/drag state, target identity, visible text, and rendered buffer/cell assertions. Historical sources remain read-only.
-- The next prioritized intake is `Lastenheft_05_TerminalCharsetAndEmulation.md`.
+- The next prioritized intake is `requirements/intakes/archive/Lastenheft_05_TerminalCharsetAndEmulation.021-terminal-charset-hardening.md`.
 
 ### 021-terminal-charset-hardening
 - Current implementation status: terminal and charset hardening is implemented locally; final evidence is in `specs/021-terminal-charset-hardening/pr-evidence.md`.
@@ -243,7 +243,7 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - `TerminalProfile` uses a closed `System.Text.Json` schema. Invalid schema is rejected as a whole; unavailable font/host capability uses an observable safe default and `Unsupported` status.
 - `TTerminalView` reuses the Driver-owned session and existing Controls app loop. Primary proof combines session/profile state, concrete view identity, text status, cursor, rendered cells, controlled keyboard input, and deterministic quit.
 - Historical terminal, Cyrillic, font, Eterm, and XTerm sources remain read-only intent. Full ANSI/VT/XTerm parity, visible Wave-4 examples, host mutation, new dependencies, services, persistence, and runtime/product AI remain outside 021.
-- The next prioritized intake is `Lastenheft_Wave4-Visual-Component-Porting.md`.
+- The next prioritized intake is `requirements/intakes/archive/Lastenheft_Wave4-Visual-Component-Porting.022-wave4-visual-component-porting.md`.
 
 ### 022-wave4-visual-component-porting
 - Current implementation status: Wave-4 visual component porting is implemented locally; final evidence is in `specs/022-wave4-visual-component-porting/pr-evidence.md`.
@@ -252,10 +252,10 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Terminal, Cyrillic, and Fonts are `UseExistingFramework`; ETerm and XTerm are bounded `IntentionalDeviation` immutable manifests that do not parse or execute historical configuration.
 - The copied raw 8x16 fixture is byte-identical to historical `font.016`; historical sources remain read-only. No process, shell, PTY, host font/codepage/locale/keyboard mutation, X resource database, terminfo, external command, or new dependency entered scope.
 - Physical host observation remains separate from deterministic in-process and remote-CI evidence. Unsupported capabilities use text-first fallbacks and never claim unavailable native behavior.
-- The next prioritized intake is `Lastenheft_06_A11Y_Framework.md`.
+- The next prioritized intake is `requirements/intakes/archive/Lastenheft_06_A11Y_Framework.023-a11y-framework.md`.
 
 ### 023-a11y-framework
-- Current implementation baseline: deliver the managed accessibility layer from `specs/023-a11y-framework/` and `Lastenheft_06_A11Y_Framework.md`.
+- Current implementation baseline: deliver the managed accessibility layer from `specs/023-a11y-framework/` and `requirements/intakes/archive/Lastenheft_06_A11Y_Framework.023-a11y-framework.md`.
 - Scope is limited to opt-in `IAccessibleWidget` text, typed `cmFocusChanged` announcements, immutable shortcut queries for `TMenuBar`/`TStatusLine`, explicit `TColorScheme.HighContrast`, keyboard coverage inventory, the `A11yFramework` reference app, and DocFX/Axe evidence.
 - Focus announcements reuse one existing broadcast and propagate descendant focus to the shell; non-migrated views remain compatible without fabricated labels.
 - Keyboard acceptance requires behavioral proof or a concrete `N/A` for Tab, Shift+Tab, arrows, Enter, and direct shortcuts across every inventoried selectable control family.
@@ -280,7 +280,7 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Current implementation status: all nine `Core025` findings are implemented and proven; final evidence is in `specs/025-core-runtime-conformance-hardening/pr-evidence.md`.
 - `F001`-`F009` close concrete event kinds, focus and group state, idle lifecycle, desktop stack, modal/close, shared command state, real keyboard ingress, and bounded generic drag through real-path red/green proof.
 - Feature-024 resolution metadata records exactly 13 non-documentation-only closures from Features 025 and 026 while preserving the Feature-028 and Wave-5/Wave-6 gates.
-- Feature 028 completed the independent closure after Feature 026; its archived intake is `Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.028-pre-wave5-wave6-conformance-closure.md`.
+- Feature 028 completed the independent closure after Feature 026; its archived intake is `requirements/intakes/archive/Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.028-pre-wave5-wave6-conformance-closure.md`.
 
 ### 026-component-data-conformance-hardening
 - Current implementation status: all four `ComponentData026` findings are implemented and proven; final evidence is in `specs/026-component-data-conformance-hardening/pr-evidence.md`.
@@ -304,9 +304,9 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Current implementation status: the read-only audit data and targeted validator are locally complete; final repository, documentation, coverage, remote review, and delivery gates remain.
 - The exact magiblot pin is commit `57b6f56b38e0ee75240a80a10ee0e11470c24693`, tree `96dd03873955689ff0a79f6c8107a8148fe1ebd6`, with the multipart COPYRIGHT hash `66220bae...548`; its direct C++ lineage remains a modernization witness, never a normative source.
 - Fifty selected source records support 48 relations: 27 `CorroboratesOriginal`, 12 `CorroboratesModernization`, 6 `AlternativeModernization`, and 3 `NotApplicable`. The 48 `MB*` decisions are 39 `AlreadySatisfiedWithNewEvidence`, 6 `IntentionalDeviation`, and 3 `RejectedComparison`.
-- All 48 `TGO*` and 48 `MB*` observations have one combined disposition. No reproducible `CF*` finding or `ProductDecision` exists, so no hardening intake is generated; `Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md` defines Feature 031 as the active closure intake.
+- All 48 `TGO*` and 48 `MB*` observations have one combined disposition. No reproducible `CF*` finding or `ProductDecision` exists, so no hardening intake is generated; `requirements/intakes/archive/Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md` defines Feature 031 as the active closure intake.
 - Runtime, API, dependency, example, consumer, historical, and external sources remain unchanged. Wave 5 and Wave 6 stay `BlockedPendingCombinedConformanceClosure`.
-- `Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` remains a binding deferred intake only after the complete Wave-6 closeout and receives its feature number then.
+- `requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md` remains a binding deferred intake only after the complete Wave-6 closeout and receives its feature number then.
 
 ### 031-combined-conformance-closure
 - Current implementation status: the evidence-only independent closure is complete; final evidence is in `specs/031-combined-conformance-closure/delivery-closeout.md`.
@@ -318,7 +318,7 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Current implementation status: the functional Wave-5 stage is delivered; all 15 read-only `TVDEMOS/*.PAS` sources have one role, all six consumers use the existing framework, and ten `Tp7*` projects provide normal plus controlled-smoke entry points.
 - Primary proof covers calculator, central apps, resources, deterministic domain state, mouse capability/fallback, and exact 15/6/10/10 traceability through real app loops, state, view, and rendered cells.
 - File, resource, help, generator, and mouse boundaries remain controlled; no host state, arbitrary user data, dependency, historical source, or broad framework behavior is changed.
-- `Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md` is the archived intake derived from the ten concrete Stage-2 deltas. Feature 033 is fully delivered through PR #96 and merge `d476e63`; Wave 6 remains blocked pending the actual combined Wave-5 delta review.
+- `requirements/intakes/archive/Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md` is the archived intake derived from the ten concrete Stage-2 deltas. Feature 033 is fully delivered through PR #96 and merge `d476e63`; Wave 6 remains blocked pending the actual combined Wave-5 delta review.
 
 ### 034-wave5-combined-delta-closure
 - Current implementation status: Feature 034 is fully delivered through PR #99, final head `016692d`, merge `7fb52e2`, and its causal closeout.
@@ -330,7 +330,7 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 - Feature 036 is fully delivered through PR #104, final head `a0d5062`, and merge `559bffb`.
 - The exact closure contains ten `W6S` showcase decisions, one `ShowcaseComplete` entry-point decision, and 24 validated read-only `TVFM/` source hashes. The Windows provider correction makes historical `.PAS`/`.BAT` text hashes checkout-neutral while preserving byte-exact resource hashes.
 - Feature-035 controlled-root, path, search, preview, viewer, one-shot intent, mutation, dependency, process, shell, host, and arbitrary-user-data boundaries remain unchanged. `TVFM/`, `TVDEMOS/`, and `tv203s/` stay read-only.
-- The next action is to define the independent Wave-6 closure as a separate intake. Feature 037 and the post-Wave-6 portfolio audit have not started.
+- The independent Wave-6 closure is now the preferred active intake at `requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md`; it reserves Feature 037 without starting it. The post-Wave-6 portfolio audit remains blocked by that closure.
 
 ### Autonomous Red-Proof Completeness
 - Before the first red test batch, review imports, public XML docs, harness helpers, focus/ownership assertions, and linked-source assembly identity.

@@ -637,10 +637,19 @@ public sealed class CombinedConformanceClosureEvidenceTests
 
     private static void AssertFileHash(string repoRoot, string relativePath, string expectedHash)
     {
-        string path = Path.Combine(repoRoot, relativePath);
+        string path = ResolveCurrentOrArchivedIntake(repoRoot, relativePath);
         Assert.IsTrue(File.Exists(path), $"Accepted input is missing: {relativePath}");
         string actualHash = ComputeCanonicalTextHash(File.ReadAllText(path));
         Assert.AreEqual(expectedHash, actualHash, $"Accepted input hash drift: {relativePath}");
+    }
+
+    private static string ResolveCurrentOrArchivedIntake(string repoRoot, string relativePath)
+    {
+        string path = Path.Combine(repoRoot, relativePath);
+        if (File.Exists(path) || !Path.GetFileName(relativePath).StartsWith("Lastenheft_", StringComparison.Ordinal))
+            return path;
+
+        return Path.Combine(repoRoot, "requirements", "intakes", "archive", Path.GetFileName(relativePath));
     }
 
     private static string ComputeCanonicalTextHash(string content)

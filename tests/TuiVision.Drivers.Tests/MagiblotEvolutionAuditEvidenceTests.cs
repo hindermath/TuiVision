@@ -235,7 +235,7 @@ public sealed class MagiblotEvolutionAuditEvidenceTests
             // Der akzeptierte Handoff behält den ursprünglichen Namen; der Abschluss archiviert ihn mit dem Branch-Suffix.
             // The accepted handoff keeps the original name; closure archives it with the branch suffix.
             string archivedFileName = $"{Path.GetFileNameWithoutExtension(RequiredString(closure, "fileName"))}.{RequiredString(closure, "featureBranch")}.md";
-            intakePath = Path.Combine(repoRoot, archivedFileName);
+            intakePath = Path.Combine(repoRoot, "requirements", "intakes", "archive", archivedFileName);
         }
 
         Assert.IsTrue(File.Exists(intakePath), $"Missing current or archived closure intake: {intakePath}");
