@@ -1,0 +1,3212 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "PflichtenheftRequirementsCoverage",
+  "generatedAt": "2026-07-26T00:00:00Z",
+  "source": {
+    "path": "Pflichtenheft.md",
+    "normalizedSha256": "bdc24929f231926b291c3423d6455f20fbef331e626f7878c7e7901bfb454eb7"
+  },
+  "allowedStatuses": [
+    "AlreadySatisfied",
+    "PartiallySatisfied",
+    "Open",
+    "N/A",
+    "Superseded",
+    "DeferredOptional"
+  ],
+  "requirements": [
+    {
+      "requirementId": "PF-LS-001",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 49,
+        "section": "4",
+        "normalizedTextSha256": "594c6bd5c08c82fe00288ad7b4b21908201c9d1ec8c1b6ba6d86537f5d2ec6c8"
+      },
+      "statement": "C#-Portierung des Frameworks als Loesung mit klarer Projektstruktur",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 4",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-LS-002",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 50,
+        "section": "4",
+        "normalizedTextSha256": "c5956b57950f7d50d7943b7f2b419b232be261f68c98450690bf316d919b8bab"
+      },
+      "statement": "Unit-Tests mit MSTest fuer portierte Klassen/Methoden",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 4",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-LS-003",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 51,
+        "section": "4",
+        "normalizedTextSha256": "5bfb0f71a746e0a0f2b67a4c460b85dd7c2d4abead956afb80e9f7a2dc1fdba4"
+      },
+      "statement": "API-Dokumentation mit docfx",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 4",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-LS-004",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 52,
+        "section": "4",
+        "normalizedTextSha256": "23d5435a5bd5712f8cee8a8ab5e1ec221aeba24a94c02f81bed535f7cc0fe9d2"
+      },
+      "statement": "Portierung der vorhandenen Beispielprogramme aus `tv203s/contrib/tvision/examples`",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 4",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-LS-005",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 53,
+        "section": "4",
+        "normalizedTextSha256": "a81751a025eb1c38276f98b6e53edb24ab1a05f6735fe9f904bc7be6b9d7fcf5"
+      },
+      "statement": "Build- und Qualitaetssicherungsprozesse",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 4",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-LS-006",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 54,
+        "section": "4",
+        "normalizedTextSha256": "c0dca6d3ada4c51a82b4fe7ad36bda3633df4b9822b222e535895f6e0da1026a"
+      },
+      "statement": "CI/CD-Workflow mit automatischem Build und Test auf GitHub Actions",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 4",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-LS-007",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 55,
+        "section": "4",
+        "normalizedTextSha256": "74716a35a229e846185bf5180b84bca8d9d29f8468a3ccb9556f760f3dbfad7a"
+      },
+      "statement": "Nutzerdokumentation (Leitfaeden fuer Einstieg und Verwendung)",
+      "status": "PartiallySatisfied",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 4",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "Nutzerdokumentation (Leitfaeden fuer Einstieg und Verwendung)",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-LS-008",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 56,
+        "section": "4",
+        "normalizedTextSha256": "52c7ce6bc988afe2497fd2299741b216b65bb86947828d0af00b33456cf76f58"
+      },
+      "statement": "Ausfuehrliche Dokumentation aller portierten Beispielprogramme",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 4",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-LS-009",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 57,
+        "section": "4",
+        "normalizedTextSha256": "664b2dae69f1cf7cf22f917e8fee19fef37c81b5af59d407a1e410a73541d179"
+      },
+      "statement": "Ausreichende Quellcode-Dokumentation fuer Lern- und Wartungszwecke",
+      "status": "PartiallySatisfied",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 4",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "Ausreichende Quellcode-Dokumentation fuer Lern- und Wartungszwecke",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-LS-010",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 58,
+        "section": "4",
+        "normalizedTextSha256": "6cd4f70a8558568092e7b4daee084ecaec8cee7d32612528c1f22a802d4d073f"
+      },
+      "statement": "Dokumentierter lokaler Workflow fuer `gh`, `codex`, `claude`, `copilot` und `gemini` auf beiden macOS-Systemen einschliesslich GitHub Spec-Kit in allen vier KI-Agenten; optionale Zusatzwerkzeuge `glab`, `opencode` und `junie` sind bei Nutzung ebenfalls dokumentiert",
+      "status": "PartiallySatisfied",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 4",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "Dokumentierter lokaler Workflow fuer `gh`, `codex`, `claude`, `copilot` und `gemini` auf beiden macOS-Systemen einschliesslich GitHub Spec-Kit in allen vier KI-Agenten; optionale Zusatzwerkzeuge `glab`, `opencode` und `junie` sind bei Nutzung ebenfalls dokumentiert",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "M-01",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 63,
+        "section": "5",
+        "normalizedTextSha256": "d91c103473b760aba326240b69ec7124d6e693a22262069707e5785897f8a339"
+      },
+      "statement": "`M-01` Lokales Git-Repository erstellen",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        ".git",
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "M-01",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-02",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 64,
+        "section": "5",
+        "normalizedTextSha256": "20c181d61707bff7e0f6bf671e0eca5ebfe4a28675d69adfc932a7cad9aa2b3b"
+      },
+      "statement": "`M-02` `.gitignore` fuer JetBrains, C#/.NET, VS Code, Visual Studio",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        ".gitignore"
+      ],
+      "existingOwner": "M-02",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-03",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 65,
+        "section": "5",
+        "normalizedTextSha256": "87670d15e20ee370bb09a723197774fb278a0a4db18162f8c6fedfd224ad9ece"
+      },
+      "statement": "`M-03` Remote auf GitHub unter `https://github.com/hindermath/TuiVision.git`",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        ".git/config",
+        "README.md"
+      ],
+      "existingOwner": "M-03",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-04",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 66,
+        "section": "5",
+        "normalizedTextSha256": "e4585607e950facf9c042c5db1f4efd25818b92276482b628cefc5483aed7668"
+      },
+      "statement": "`M-04` Verwendung von C#/.NET 10 (.NET Core)",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "Directory.Build.props",
+        "TuiVision.slnx"
+      ],
+      "existingOwner": "M-04",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-05",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 67,
+        "section": "5",
+        "normalizedTextSha256": "f06ec1449338ec595d69baed206902093cb27cfc3c6a3c8eeee7fdadbf42ef19"
+      },
+      "statement": "`M-05` Projektstruktur nach .NET-Best-Practices",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "src/",
+        "tests/",
+        "examples/",
+        "docs/"
+      ],
+      "existingOwner": "M-05",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-06",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 68,
+        "section": "5",
+        "normalizedTextSha256": "20628dd40fa01a834607065aeb4dd162d8cfe4dd4e619c9368c19af707fae870"
+      },
+      "statement": "`M-06` Portierung des Framework-Kerns aus `tv203s`",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/porting-status.md",
+        "specs/028-pre-wave5-wave6-conformance-closure/closure-evidence.md"
+      ],
+      "existingOwner": "M-06",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-07",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 70,
+        "section": "5",
+        "normalizedTextSha256": "4be3e3492baf73cd4e563a43a9d6c34d8a1efa6e059e2d391733239d385f0290"
+      },
+      "statement": "`M-07` Portierung der Implementierungsdateien aus `tv203s/contrib/tvision/classes`",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/porting-status.md",
+        "specs/006-close-phase8-gate/pr-evidence.md"
+      ],
+      "existingOwner": "M-07",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-08",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 72,
+        "section": "5",
+        "normalizedTextSha256": "5311dcd80a716a6d6312eb952d28bca1abd1ee631789474144329629aecb1099"
+      },
+      "statement": "`M-08` Unit-Tests fuer portierte Klassen/Methoden mit MSTest",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "tests/",
+        ".github/workflows/ci.yml"
+      ],
+      "existingOwner": "M-08",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-09",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 73,
+        "section": "5",
+        "normalizedTextSha256": "fc29b48bc84e37bc56d3312f175d6b30d51ec0c4694754653150b0bd54b49411"
+      },
+      "statement": "`M-09` API-Dokumentation mit docfx",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docfx.json",
+        ".github/workflows/pages.yml"
+      ],
+      "existingOwner": "M-09",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-10",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 74,
+        "section": "5",
+        "normalizedTextSha256": "2fe4095f3808190e7d9a383b21255da7e881f2022186a343f26581f722f30555"
+      },
+      "statement": "`M-10` Portierung der vorhandenen Beispiele",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "specs/034-wave5-combined-delta-closure/wave5-combined-delta.json",
+        "docs/guides/examples/"
+      ],
+      "existingOwner": "M-10",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-11",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 76,
+        "section": "5",
+        "normalizedTextSha256": "3337651aa53ddfb338ed83bedae0a10b89a0f030147c591dcff8894958a2d89d"
+      },
+      "statement": "`M-11` Qualitaetssicherung zusaetzlich zu Unit-Tests",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        ".github/workflows/",
+        "coverlet.runsettings"
+      ],
+      "existingOwner": "M-11",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-12",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 77,
+        "section": "5",
+        "normalizedTextSha256": "e3e214e86fe7ceae421536989fe0fa6df3b0cf9e8e5a5edf5f00e5b1a481ddb4"
+      },
+      "statement": "`M-12` Keine nativen OS-Abhaengigkeiten",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "specs/031-combined-conformance-closure/pr-evidence.md"
+      ],
+      "existingOwner": "M-12",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-13",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 78,
+        "section": "5",
+        "normalizedTextSha256": "3d95c012112cfb2ad4f7eb3c58eb1cc5101c88430ed8eb041626ef8dbc9e2302"
+      },
+      "statement": "`M-13` Lizenz-Disclaimer fuer Beispielcharakter",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "LICENSE",
+        "README.md"
+      ],
+      "existingOwner": "M-13",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-14",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 79,
+        "section": "5",
+        "normalizedTextSha256": "b0ea616b876d47634a6f24b2bb065317c0dde33ab30bab2d4ca237b109313d2e"
+      },
+      "statement": "`M-14` CI/CD mit GitHub Actions",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        ".github/workflows/ci.yml",
+        ".github/workflows/pages.yml"
+      ],
+      "existingOwner": "M-14",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-15",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 81,
+        "section": "5",
+        "normalizedTextSha256": "7a84a562320252ea4fa9d2ec1fa9c506a2f0d7b9a4afa03205e02cac4ed7c862"
+      },
+      "statement": "`M-15` Nutzerdokumentation",
+      "status": "PartiallySatisfied",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "docs/guides/"
+      ],
+      "existingOwner": "M-15",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "`M-15` Nutzerdokumentation",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "M-16",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 82,
+        "section": "5",
+        "normalizedTextSha256": "c991a8ccc5164468464485a4e09054d67dfbe542b1f208d57427e891243a356c"
+      },
+      "statement": "`M-16` Vollstaendige XML-Kommentierung der oeffentlichen API",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "Directory.Build.props",
+        "docfx.json"
+      ],
+      "existingOwner": "M-16",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-17",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 83,
+        "section": "5",
+        "normalizedTextSha256": "ba9f25d7dda71f4485660eb3d007bb36879f91b2a52f8720fe046ab048b76744"
+      },
+      "statement": "`M-17` Einheitlicher didaktischer Dokumentationsstil",
+      "status": "PartiallySatisfied",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "AGENTS.md",
+        "docs/guides/"
+      ],
+      "existingOwner": "M-17",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "`M-17` Einheitlicher didaktischer Dokumentationsstil",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "M-18",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 84,
+        "section": "5",
+        "normalizedTextSha256": "839ab2150f56d6f62689e88edab2d4e8c176226f3ec4e60c4972aca14cbbc2c5"
+      },
+      "statement": "`M-18` Ausfuehrliche Dokumentation der Beispielprogramme",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/guides/examples/"
+      ],
+      "existingOwner": "M-18",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-19",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 85,
+        "section": "5",
+        "normalizedTextSha256": "b8fdcd4bc33af51e0d2e1eb20dc06c908e5f94400d00e3af169b96c353d6cbee"
+      },
+      "statement": "`M-19` Ausreichende Quellcode-Dokumentation im gesamten TuiVision-Code",
+      "status": "PartiallySatisfied",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "specs/015-didactic-comment-hardening/pr-evidence.md",
+        "AGENTS.md"
+      ],
+      "existingOwner": "M-19",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "`M-19` Ausreichende Quellcode-Dokumentation im gesamten TuiVision-Code",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "M-20",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 86,
+        "section": "5",
+        "normalizedTextSha256": "fd5874ab12fd8d2c10539ce53897bc097be925a5498ee85852e6ec213c1c7278"
+      },
+      "statement": "`M-20` Messbarer Mindest-Testumfang (MUSS-Tests)",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "coverlet.runsettings",
+        "tests/TuiVision.Examples.SmokeTests/"
+      ],
+      "existingOwner": "M-20",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "M-21",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 87,
+        "section": "5",
+        "normalizedTextSha256": "cae434c3aec5a11802476e60d21836f918b58a2efb59433e8f8985d2ce925d08"
+      },
+      "statement": "`M-21` Reproduzierbarer Multi-Mac-Entwicklungsworkflow",
+      "status": "PartiallySatisfied",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "docs/guides/multi-mac-workflow.md",
+        "AGENTS.md"
+      ],
+      "existingOwner": "M-21",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "`M-21` Reproduzierbarer Multi-Mac-Entwicklungsworkflow",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "M-22",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 88,
+        "section": "5",
+        "normalizedTextSha256": "201e755297ff28b0ed5c2e5da3272fb0bcb12a60fca5a9fa7ad0262ffc6886aa"
+      },
+      "statement": "`M-22` Automatische Veroeffentlichung der Dokumentation auf GitHub Pages",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        ".github/workflows/pages.yml",
+        "tests/web-a11y/"
+      ],
+      "existingOwner": "M-22",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "O-01",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 118,
+        "section": "6",
+        "normalizedTextSha256": "c0412f115110353437d3b5bc09a47bf86f5eed69eb661073cd797fc80eb0b91a"
+      },
+      "statement": "`O-01` NuGet-Paketierung",
+      "status": "DeferredOptional",
+      "rationale": "Die KANN-Anforderung ist nicht Teil des verbindlichen Lieferpfads und wird nur nach ausdruecklicher Aktivierung ausgefuehrt.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "O-01",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Explizite Aktivierung durch einen autorisierten Intake-Update- oder Create-Auftrag."
+    },
+    {
+      "requirementId": "PF-PH-001",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 161,
+        "section": "8",
+        "normalizedTextSha256": "b8ce085f1fe3869f0029a5ccfc9056aa85410dd90005d9a2389a477fdfe3fec0"
+      },
+      "statement": "**1. Basisinfrastruktur**: Loesung, Build, Tests, Doku-Pipeline",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-002",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 163,
+        "section": "8",
+        "normalizedTextSha256": "faa637c6cecdf2330e8ce41abfceb753638719fcf1c0b3a31a51166814dd9f22"
+      },
+      "statement": "**2. Kernobjekte**: `TObject`, Collections, Geometrie (`TPoint`, `TRect`), Events",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-003",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 165,
+        "section": "8",
+        "normalizedTextSha256": "505d1340ef03679569acea7e8b99b1ddc6fbb6b44b0fa49773ef0a3d66e6d92c"
+      },
+      "statement": "**3. View-System**: `TView`, `TGroup`, Zeichenpuffer, Fokus/States",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-004",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 167,
+        "section": "8",
+        "normalizedTextSha256": "c676f397a7e45cbe40c320340353cc8b673997dd0a0155f24b9b9e61441037ba"
+      },
+      "statement": "**4. Anwendungsrahmen**: `TProgram`, `TApplication`, Menues, Statuszeile, Desktop",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-005",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 169,
+        "section": "8",
+        "normalizedTextSha256": "0e690e17a7c34b9eb15efa5fa36607921facf9ecfc6467a45392164409a9cefd"
+      },
+      "statement": "**5. Dialog-/Control-Schicht**: Eingabezeilen, Listen, Scrollbars, Buttons, usw.",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-006",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 171,
+        "section": "8",
+        "normalizedTextSha256": "b9bd163ad531ba9d8e35092887e6ac78e79057d04d41fa7c5533c04dfd8eeab1"
+      },
+      "statement": "**6. Editor/Datei/Hilfe/Streams**: Editor, Resource-, Stream- und Help-Komponenten",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-007",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 173,
+        "section": "8",
+        "normalizedTextSha256": "7b57c0210167f904ed9563d3d75804021c538f63cec0bc9f7c8283093ef95234"
+      },
+      "statement": "**7. Treiberkonsolidierung**: Managed Console-Treiber unter .NET Core ohne native OS-Bindings",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-008",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 175,
+        "section": "8",
+        "normalizedTextSha256": "1e2ddb99572f7d8c9da0b960ee30d7f46c98039eec17021273c30fb5f322370b"
+      },
+      "statement": "**8. Beispiele**: Portierung aller 25 MUSS-Beispiele in vier thematisch-technischen Wellen; anschliessend optionale Anschlusswellen 5 und 6 fuer die zusaetzlich im Repository abgelegten TP7-Beispiele aus `TVDEMOS/` und `TVFM/`; jede Welle wird erst begonnen, wenn die zugehoerigen Framework-Phasen abgeschlossen sind (Abhaengigkeitsprinzip); **vor Welle 1 ist das Eingangstor gemaess Abschnitt 8.2 vollstaendig zu bestehen**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-009",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 183,
+        "section": "8",
+        "normalizedTextSha256": "342f2823a6a56284eaf5b088cd794d12ff0313eb912f4e9169fdd7cb8ada9faf"
+      },
+      "statement": "Kriterium 1 - M-07-Vollstaendigkeitsnachweis (Mapping-Tabelle)",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-010",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 185,
+        "section": "8",
+        "normalizedTextSha256": "deb2ffdd1c765a244cdf79ad4cfc801874a8afff2716bb2980a85e350c189652"
+      },
+      "statement": "Kriterium 2 - Keine portierten Luecken ohne Begruendung",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-011",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 187,
+        "section": "8",
+        "normalizedTextSha256": "4396efbc94d23ba43728875ff552ae65298be6728244f394906bb9d15c67c632"
+      },
+      "statement": "Kriterium 3 - Build-Gate",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-012",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 188,
+        "section": "8",
+        "normalizedTextSha256": "a453b59c2bc1e8b803cf882020eb14ce4cdf5d6c250273923d116c518406cdf6"
+      },
+      "statement": "Kriterium 4 - Test-Gate",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-013",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 190,
+        "section": "8",
+        "normalizedTextSha256": "1e68dd37556c213878783f02b71bc7fceb473630b29f5d9cdd643a7e1eb16767"
+      },
+      "statement": "Kriterium 5 - Coverage-Gate",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-014",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 192,
+        "section": "8",
+        "normalizedTextSha256": "3a653be198a0fb62ef613640c13f29b5f53af59a1c7a6d2626fd8f8fef7cb5de"
+      },
+      "statement": "Kriterium 6 - API-Doku-Gate",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-015",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 194,
+        "section": "8",
+        "normalizedTextSha256": "bee1e923a5ddc3eaae451d8eeb36f6218d8088581fbf0f716d1005a9a3aad228"
+      },
+      "statement": "Nachweisdokument",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-016",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 241,
+        "section": "8",
+        "normalizedTextSha256": "9fab44f46ed954fcee72a406df4314269ffe9794b276dec66182a37dcfe4e0cc"
+      },
+      "statement": "**Welle 1 - Grundlegende Anwendungsstruktur**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-017",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 243,
+        "section": "8",
+        "normalizedTextSha256": "59a8320925383fb174ee386b881fe61882a481728cea8be8f2211bced22d40cb"
+      },
+      "statement": "**Welle 1 - Funktionaler Nachweisnachlauf**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-018",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 245,
+        "section": "8",
+        "normalizedTextSha256": "5c11ce73c5517748cd94b3c2fc6a0db861fe266ad9085f6f7ecc5f8040838d2f"
+      },
+      "statement": "**Didaktische Inline-Code-Kommentar-Haertung**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-019",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 247,
+        "section": "8",
+        "normalizedTextSha256": "ec3bfce3ca0103ace6b891dbfe5f32a56eeaad630d32f3317de240478a927eb5"
+      },
+      "statement": "**Secure-Development-Hardening**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-020",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 249,
+        "section": "8",
+        "normalizedTextSha256": "56ebc5d1cbd78681b0c34d8e41c4ec7ded423cfee69df7edd62cd6dcbc0bba65"
+      },
+      "statement": "**Welle 1 - Sichtbarer Komponenten-Nachweis**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-021",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 251,
+        "section": "8",
+        "normalizedTextSha256": "b808e383f462187dac6daa936d50c6475a4670968454b799dfeecac1f269f1ee"
+      },
+      "statement": "**Welle 2 - Controls und Dialoge**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-022",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 253,
+        "section": "8",
+        "normalizedTextSha256": "6805835010d5e31a057dd3e576ef535d92120aaeae6bb7f8bbb2e1af620e7220"
+      },
+      "statement": "**Welle 2 - Interaktive Showcase-Stufe**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-023",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 255,
+        "section": "8",
+        "normalizedTextSha256": "94b8807d0fd3659aea0ec28e502cbaf3453fab811169fd457292965309d2598e"
+      },
+      "statement": "**Welle 2 - Sichtbarer Komponenten-Nachweis**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-024",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 257,
+        "section": "8",
+        "normalizedTextSha256": "eaac75defcecf9b2757f89dd82dc6f2af5c8f1aec065182c21d761f852b84043"
+      },
+      "statement": "**Welle 3 - Editor-/Hilfe-/Ressourcen-Vorhaertung**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-025",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 259,
+        "section": "8",
+        "normalizedTextSha256": "9fa527885ba76cfa5c199d251117939b218d6084f18349e40d717a384f269a45"
+      },
+      "statement": "**Welle 3 - Visual Component Porting**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-026",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 261,
+        "section": "8",
+        "normalizedTextSha256": "1d1f46bf45a712d584161b5c4ac023509f1210761f4264bf3a9e740ca5141f53"
+      },
+      "statement": "**Maussupport und Interaktions-Härtung**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-027",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 263,
+        "section": "8",
+        "normalizedTextSha256": "26902d61090882b5ff4dc037ff5582b0309e13d6bf6f1c66d58c6e40e839a01f"
+      },
+      "statement": "**Welle 4 - Terminal-/Charset-/Plattform-Vorhaertung**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-028",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 265,
+        "section": "8",
+        "normalizedTextSha256": "6fb79e2a89aa7a9622f3e9c5f8e4a2e01042612ea5ba7f1301aa4c7a2e5f33c3"
+      },
+      "statement": "**Welle 4 - Visual Component Porting**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-029",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 267,
+        "section": "8",
+        "normalizedTextSha256": "79cef6f8aa23336bdb29a3746d03c840bbdc6f27092c415a415fbe9d61e75e87"
+      },
+      "statement": "**Ursprüngliches Pre-Wave-5 Framework-Konformitätsaudit und Closure**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-030",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 269,
+        "section": "8",
+        "normalizedTextSha256": "6bce85c46eaef892d530a3d7a749edac5b1dd2e61de60b2b681c19306cba074b"
+      },
+      "statement": "**Revision-2-Abschluss und moderne Konformitätsrevisionen**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-031",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 271,
+        "section": "8",
+        "normalizedTextSha256": "589c6edaa1de79a8b6798deb9436e32d979b23b10ab65abbda191971467adc05"
+      },
+      "statement": "**Welle 5 - Funktionale TP7-Portierung und Real-Path-Proof**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-032",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 273,
+        "section": "8",
+        "normalizedTextSha256": "25581750d3cfde97f7e93c2e45ac5ad1524ca1609a773da78f823011b1cfb987"
+      },
+      "statement": "**Welle 5 - TP7-Showcase-Stufe**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-033",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 275,
+        "section": "8",
+        "normalizedTextSha256": "abb06fb087c9fc0dbb9742827e14e024ed9d7d6c1bcf3fdb503d71d680339149"
+      },
+      "statement": "**Welle 5 - Kombinierter Delta-Abschluss**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-034",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 277,
+        "section": "8",
+        "normalizedTextSha256": "76d097e05653d0be100ad6a4d7bd18278507d543bc36f72f6f7a2d21ce419408"
+      },
+      "statement": "**Welle 6 - Turbo-Pascal-Dateimanager `TVFM/`, funktionale Stufe**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-035",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 279,
+        "section": "8",
+        "normalizedTextSha256": "37f49edaca254346533670f1347ede681d92ce84563b35c906f221ac5be9e9b0"
+      },
+      "statement": "**Welle 6 - TVFM Showcase-Stufe**",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-036",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 281,
+        "section": "8",
+        "normalizedTextSha256": "82423bc951bc0cb3a46edd5a2b3d0d87f7d1462920122eaee35096bb3871db23"
+      },
+      "statement": "**Post-Wave-6 Example Portfolio Conformance Audit**",
+      "status": "Open",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "ExamplePortfolio",
+      "residualGap": "**Post-Wave-6 Example Portfolio Conformance Audit**",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-PH-037",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 283,
+        "section": "8",
+        "normalizedTextSha256": "fa17c247072c680e927f4e2328b6b91b7b798d1aa9b1e0ad339e0aae8634e445"
+      },
+      "statement": "Beispiel-Guides unter `docs/guides/examples/`",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-038",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 292,
+        "section": "8",
+        "normalizedTextSha256": "977925fc37f91f959184979705a42552336f68c1a8403edb08e9e4686bd0b95a"
+      },
+      "statement": "`desklogo` - Minimale App: statisches Logo auf dem Desktop",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-039",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 293,
+        "section": "8",
+        "normalizedTextSha256": "7b4f728ed1028026d6af58faea681b8fab5f3b73e3bd9cba4d59470456c9303a"
+      },
+      "statement": "`msgcls` - Benutzerdefinierte Ereignisklassen und Nachrichtenverarbeitung",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-040",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 294,
+        "section": "8",
+        "normalizedTextSha256": "f6ef2a360e44221c622da1667d0b8f2dbc55e2f6b25854a0e296a11e8616f5db"
+      },
+      "statement": "`tutorial` - Schrittweise Einfuehrung in die TuiVision-Grundkonzepte (16 Schritte, token-basiert)",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-041",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 295,
+        "section": "8",
+        "normalizedTextSha256": "59db74a3741c668161f194d20f4f666f2dda4368e479dabe3c51ff3c9e6110ac"
+      },
+      "statement": "`videomode` - Wechsel von Anzeigemodi (Pufferbreite/-hoehe)",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-042",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 304,
+        "section": "8",
+        "normalizedTextSha256": "1e855ece2eb89c31efe80bea02dd89ecc5ae44317f3b1f28fde4695252826cbb"
+      },
+      "statement": "`clipboard` - Zwischenablage-Integration in Controls",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-043",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 305,
+        "section": "8",
+        "normalizedTextSha256": "69081693b2bb60f69ba467ba3d24d41e88479f33b60a0763f930b3f0ad645158"
+      },
+      "statement": "`demo` - Vollstaendige Turbo-Vision-Kerndemo (zeigt alle Basis-Controls)",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-044",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 306,
+        "section": "8",
+        "normalizedTextSha256": "3b45c3513e454262c8cbf328fa5c62eb74ff651cb69828b525d75d75606d0e67"
+      },
+      "statement": "`dlgdsn` - Dialog-Designer: dynamisch zusammengesetzte Dialoge",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-045",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 307,
+        "section": "8",
+        "normalizedTextSha256": "3ca5eae2ef86baa957fec0ee6dc25eacab09ab35deef518597729317e8812e89"
+      },
+      "statement": "`dyntxt` - Dynamisch erzeugter Text in Views",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-046",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 308,
+        "section": "8",
+        "normalizedTextSha256": "481e4f409462587c64248c2d66b38428a555cc28169c7e0d1273f868cdaf2c13"
+      },
+      "statement": "`inplis` - Eingabelisten mit `TInputLine`",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-047",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 309,
+        "section": "8",
+        "normalizedTextSha256": "0a7dcfea3661830ed7c3b80a1ff68cc551c7e11c7a47c5ec6e90c195537ce6f7"
+      },
+      "statement": "`listvi` - Listenansichten mit `TListViewer`",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-048",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 310,
+        "section": "8",
+        "normalizedTextSha256": "475f9d18aabbf676158e23912a35833781de1a987c38303ea0ba245d148f8723"
+      },
+      "statement": "`progba` - Einfacher Fortschrittsbalken",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-049",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 311,
+        "section": "8",
+        "normalizedTextSha256": "9e7968f3d434121e70b96aeebb35724ceaff1b9d3e11b13c0178992754a8232e"
+      },
+      "statement": "`sdlg` - Scrollbarer Dialog mit `ScrollDialog`/`ScrollGroup` und vertikalem Scrollen",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-050",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 312,
+        "section": "8",
+        "normalizedTextSha256": "85a4ca44eaa27eaac1fca97dd36eec86c6718f7d55eba690c846d51ad18617af"
+      },
+      "statement": "`sdlg2` - Erweiterter scrollbarer Dialog mit horizontalem und vertikalem Scrollen",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-051",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 313,
+        "section": "8",
+        "normalizedTextSha256": "4075dbc3e4121dc00aa941b9cf69cd5ecaff8ab3e2fddda1f479b58928552c92"
+      },
+      "statement": "`tcombo` - Kombinationsfelder (`TComboBox`)",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-052",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 314,
+        "section": "8",
+        "normalizedTextSha256": "53a4ac7d59fe41024a8b03c9f40600e416951f2ecefe481dfb48adaacce8c344"
+      },
+      "statement": "`tprogb` - Erweiterter Fortschrittsbalken mit Abbruch",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-053",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 329,
+        "section": "8",
+        "normalizedTextSha256": "c9fa4066a3ad0704751263b07bb99f2c52d180f7773db536b921ee5709e12797"
+      },
+      "statement": "`bhelp` - Grundlegendes Hilfesystem mit kontextsensitiven Themen",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-054",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 330,
+        "section": "8",
+        "normalizedTextSha256": "ca96db6b20a432b004e670b584df3336b18b28fbe7a49dc336eac5ab8148a322"
+      },
+      "statement": "`helpdemo` - Interaktive Demonstration des Hilfesystems",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-055",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 331,
+        "section": "8",
+        "normalizedTextSha256": "23c16038219adc9a97db2aa161cde86779c40d6c760d88a67cfbcaffc90329d4"
+      },
+      "statement": "`i18n` - Internationalisierung: mehrsprachige Texte und Ressourcen",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-056",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 332,
+        "section": "8",
+        "normalizedTextSha256": "e213dd457edf36e8a715e4fbe49926d5e3382e3abbb6564eb5beee46176bc29e"
+      },
+      "statement": "`tvedit` - Vollstaendiger Texteditor (Datei oeffnen, bearbeiten, speichern)",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-057",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 333,
+        "section": "8",
+        "normalizedTextSha256": "91ad28c0fecdfab483a908140dc825153c477862b30d2e9208e8c9fca35f1fdb"
+      },
+      "statement": "`tvhc` - Hilfe-Compiler: Konvertierung von Quelltext in binaere Hilfedatei",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-058",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 350,
+        "section": "8",
+        "normalizedTextSha256": "7e59f605f669e4cbb0064728b0e3bc32b681e638745e07d952987970f2680615"
+      },
+      "statement": "`cyrillic` - Kyrillische Zeichensatz-Unterstuetzung im Textpuffer",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-059",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 351,
+        "section": "8",
+        "normalizedTextSha256": "7795a7365366fbbd7942019170c5dd70afcf171fea359170e799dc0f8eb041b3"
+      },
+      "statement": "`eterm` - Erweiterter Terminal-Emulator",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-060",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 352,
+        "section": "8",
+        "normalizedTextSha256": "dea204b54a4e0654a89769a7ed57391607e27b744d529548348ba87484287676"
+      },
+      "statement": "`fonts` - Zeichensatz-Verwaltung und Darstellung alternativer Fonts",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-061",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 353,
+        "section": "8",
+        "normalizedTextSha256": "5a50cf450aa5b274543fa7241dc79eb129a2f242d3a8bacbfa51be5007ed14c0"
+      },
+      "statement": "`terminal` - Einfache Terminal-Integration",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-062",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 354,
+        "section": "8",
+        "normalizedTextSha256": "d102f62347f81338b59c0a91cfcdb3373487784ff394521c88b9d2138edf266b"
+      },
+      "statement": "`xterm` - XTerm-Protokoll-Emulation",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-063",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 364,
+        "section": "8",
+        "normalizedTextSha256": "5b89b31f9322639872e895023b3a9c408a868e9ccec6334ffc5f31fe91c1a6f6"
+      },
+      "statement": "`TVDEMO.PAS` - grosse Turbo-Vision-Gesamtdemo als Pascal-Gegenstueck zu `demo`",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-064",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 365,
+        "section": "8",
+        "normalizedTextSha256": "12cd1d8e75e45f9b26afe53a97adb68b16bbb64cb667cd48eaf78a2a82839117"
+      },
+      "statement": "`TVEDIT.PAS` - Pascal-Editorbeispiel als zusaetzlicher Validierer fuer den Editor-Stack",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-065",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 366,
+        "section": "8",
+        "normalizedTextSha256": "3544312082c492d4bfdd3e9d4b1b0ba55d47f6a50a115a33439de252d980275c"
+      },
+      "statement": "`TVHC.PAS`, `HELPFILE.PAS`, `DEMOHELP.PAS` - Pascal-Hilfesystem und Hilfe-Compiler-Flows",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-066",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 367,
+        "section": "8",
+        "normalizedTextSha256": "fedef3530f1dc6247ddfc3606c69254325ba0211b589c9b96b2590b4f1ea1632"
+      },
+      "statement": "`CALC.PAS`, `CALENDAR.PAS`, `ASCIITAB.PAS`, `PUZZLE.PAS` - in sich geschlossene Fach-/Widget-Demos",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-067",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 368,
+        "section": "8",
+        "normalizedTextSha256": "bea38a67c7bc18133a724e35fe44da5c2454e3c3edab2244e65be11aa428655e"
+      },
+      "statement": "`GADGETS.PAS`, `MOUSEDLG.PAS`, `TVRDEMO.PAS`, `GENRDEMO.PAS` - Interaktions-, Maus- und Ressourcen-Demos",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-068",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 383,
+        "section": "8",
+        "normalizedTextSha256": "5692794fe221557f44ae1481f197b38e118d8b62e38aed32610e19034cc1d3ea"
+      },
+      "statement": "`TVFM.PAS` - Hauptanwendung des Dateimanagers",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-069",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 384,
+        "section": "8",
+        "normalizedTextSha256": "a29ef66eec6f52e564c43cbf15b2387419348324dcb0a487e4caac15e3ad0add"
+      },
+      "statement": "`DIRVIEW.PAS`, `TREEWIN.PAS`, `FILEVIEW.PAS`, `VIEWTEXT.PAS`, `VIEWHEX.PAS`, `INFOVIEW.PAS` - Navigations- und Viewer-Komponenten",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-070",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 385,
+        "section": "8",
+        "normalizedTextSha256": "450271268370e93deea20a7dbed21dd40d68638d9283d48a56e08e6ad4d8c2c2"
+      },
+      "statement": "`FILECOPY.PAS`, `FILEFIND.PAS`, `DRAGDROP.PAS`, `TRASH.PAS` - Dateioperationen und Interaktionsfluesse",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-071",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 386,
+        "section": "8",
+        "normalizedTextSha256": "c5a5a316cfe49a07d778a8b428eab6520148e94a2eb33ddb69f7a8dca7161892"
+      },
+      "statement": "`COLORS.PAS`, `EDITPAL.PAS`, `GAUGES.PAS`, `TOOLS.PAS`, `GLOBALS.PAS`, `ASSOC.PAS`, `EQU.PAS` - Hilfs- und Konfigurationsmodule",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-PH-072",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 387,
+        "section": "8",
+        "normalizedTextSha256": "7eb04075a3424dec569f28296a0f9072fe55e467607b6c4851474c037963a10b"
+      },
+      "statement": "Ressourcen- und Build-Begleitdateien (`MAKERES.PAS`, `MAKETVFM.BAT`, `.PAL`, `.TVR`) dokumentiert sichten und als C#-kompatible Assets/Generatoren neu zuschneiden",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 8",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-001",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 407,
+        "section": "9",
+        "normalizedTextSha256": "df1cd09f67c243fe9158c4d4c06b18fea6ebe9c233f3324de4e9130a5997c948"
+      },
+      "statement": "**Unit-Tests (MSTest)** fuer alle portierten Klassen/Methoden",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-002",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 408,
+        "section": "9",
+        "normalizedTextSha256": "1b3d448a6bfbc980be8582cc9399419d55255cdcd505eb6b8bfc6edee9682427"
+      },
+      "statement": "**Integrations-/Verhaltenstests** fuer Event-Loop, Fokus, Menue-/Dialogfluss",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-003",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 409,
+        "section": "9",
+        "normalizedTextSha256": "dac30b3c55c0da55c076c6de79607549c2b55af471d65ea1fdddeef9a3a94dc4"
+      },
+      "statement": "**Snapshot-/Golden-Tests** fuer Render-/Zeichenpuffer-Verhalten",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-004",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 410,
+        "section": "9",
+        "normalizedTextSha256": "663254d499a69ac762c7a3da28ed0925eb730a36d241d6663be8c3e42161c651"
+      },
+      "statement": "**Smoke-Tests** fuer alle portierten Beispiele",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-005",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 411,
+        "section": "9",
+        "normalizedTextSha256": "95d44b77e5a85f3b25d256008dfae8efa51b9b6b85f9a55a9c885e794d840576"
+      },
+      "statement": "**Runtime-Kompatibilitaetstests** fuer .NET 10 (net10.0) ohne native Zusatzkomponenten auf macOS, Linux sowie ergaenzend Windows/WSL",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-006",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 412,
+        "section": "9",
+        "normalizedTextSha256": "28083d5abd59b59c47341181c31cd906c375305caaf921889c9df5a0a49db55c"
+      },
+      "statement": "**MUSS-Tests**: Sammelbegriff fuer alle in Abschnitt 9.4 als verpflichtend markierten Tests und Kennzahlen",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-007",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 413,
+        "section": "9",
+        "normalizedTextSha256": "059ad9e16638a7198a33f1b92c0c5a62be9083e7acc06aab68fc6c110eae629c"
+      },
+      "statement": "**Umgebungs-/Workflow-Checks** fuer lokale Arbeit auf `MacBook Air M2` und `Mac mini M4 Pro` sowie fuer ergaenzende Kompatibilitaetspruefungen auf Linux und Windows/WSL",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-008",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 416,
+        "section": "9",
+        "normalizedTextSha256": "1266b41fcbdb964b672221824fe1e501ce7d4f31e1134281f2cec56646f771a7"
+      },
+      "statement": "Build ohne Warnungsfehler fuer freigegebene Konfiguration",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-009",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 417,
+        "section": "9",
+        "normalizedTextSha256": "fcfa8fdf32638125f8211278d5753eb9d8b3e2e60fa0d6048696b064594ecd73"
+      },
+      "statement": "Alle MUSS-Tests erfolgreich",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-010",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 418,
+        "section": "9",
+        "normalizedTextSha256": "df4073aee653cdd6a26cf8f1ecfde9c2d906336ae05b5ad4d4bfd7ffe9c61070"
+      },
+      "statement": "API-Doku erfolgreich generierbar",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-011",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 419,
+        "section": "9",
+        "normalizedTextSha256": "32a1cd18461d96c1252017924b92907557f41618a575a62c8b407f6696525486"
+      },
+      "statement": "Bei Aenderungen an oeffentlicher API oder XML-Kommentaren wird die docfx-Dokumentation im selben Arbeitsgang neu erzeugt",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-012",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 420,
+        "section": "9",
+        "normalizedTextSha256": "5943def5239ce2e2fc95494fbd60e0d7c82efface7709e388aa614c25d21972b"
+      },
+      "statement": "Einheitliche Formatierung/Analyzer-Regeln aktiv",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-013",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 421,
+        "section": "9",
+        "normalizedTextSha256": "57694e144571c6ffea437e01b40a9b8385832a6a92a8f5d3815fa7e3940d4918"
+      },
+      "statement": "Fehlende XML-Kommentare fuer oeffentliche API werden als Qualitaetsverstoss behandelt (z. B. CS1591 nicht ignoriert)",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-014",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 422,
+        "section": "9",
+        "normalizedTextSha256": "4f0771009cc32d827afefdfe77a4d5281a478a7e27b7ce2c36c56f6a012587d1"
+      },
+      "statement": "Dokumentations-Review gegen den didaktischen Standard gemaess Abschnitt 10.3 ist fuer Releases verpflichtend",
+      "status": "Open",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "Dokumentations-Review gegen den didaktischen Standard gemaess Abschnitt 10.3 ist fuer Releases verpflichtend",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-QA-015",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 423,
+        "section": "9",
+        "normalizedTextSha256": "2252efe3bd3a259857fe297c5c72ae5296d81e40e5728b84c058b7a7def59cfb"
+      },
+      "statement": "Beispielprogramme gelten erst als abgeschlossen, wenn die zugehoerigen Guides gemaess Abschnitt 10.4 vorliegen",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-016",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 424,
+        "section": "9",
+        "normalizedTextSha256": "73197e330a09097ae5b37440faf7170f7d62af8b87a003f15d8b77b8e50ee847"
+      },
+      "statement": "Quellcode-Review gegen den Standard gemaess Abschnitt 10.5 ist fuer Releases verpflichtend",
+      "status": "Open",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "Quellcode-Review gegen den Standard gemaess Abschnitt 10.5 ist fuer Releases verpflichtend",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-QA-017",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 425,
+        "section": "9",
+        "normalizedTextSha256": "f86eda95d04f14161768c30931c5fc4b5eea5eec2476d9c3e3362773d3650cf0"
+      },
+      "statement": "GitHub-Pages-Deployment der docfx-Dokumentation ist nach jedem Merge auf `main` mit Aenderungen an `docs/`, `src/` oder `docfx.json` automatisch erfolgreich abgeschlossen (M-22)",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-018",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 433,
+        "section": "9",
+        "normalizedTextSha256": "d1f5162ef6dc4058afcdf983733be847612a131707b9d02c909036d43a14a2ff"
+      },
+      "statement": "Unit-Test-Abdeckung (Line Coverage) von mindestens 70% in `TuiVision.Core`, `TuiVision.Controls`, `TuiVision.Serialization`, `TuiVision.Compatibility` und `TuiVision.Drivers.Console`.",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-019",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 435,
+        "section": "9",
+        "normalizedTextSha256": "084cc0be0e99337c994503feda0fdbe72cec56e4c9570c9716c930f1ace01100"
+      },
+      "statement": "Fuer jede portierte Kernkomponente existieren mindestens ein Positivtest und ein Negativ-/Fehlerfalltest (sofern fachlich sinnvoll).",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-020",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 436,
+        "section": "9",
+        "normalizedTextSha256": "41f9ad0f409d73a4928ce64e36bb507bf77c4250ee0b1fe9eac207c756042ed4"
+      },
+      "statement": "Integrations-/Verhaltenstests decken mindestens Event-Loop, Fokuswechsel, Menueausfuehrung und Dialoginteraktion ab.",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-021",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 437,
+        "section": "9",
+        "normalizedTextSha256": "7adc300a1aaed3562ce51f250a6aa78d75b8661bacdaf142cd2015312b127f06"
+      },
+      "statement": "Smoke-Tests laufen fuer alle 25 portierten Beispielprogramme automatisiert in CI.",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-022",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 438,
+        "section": "9",
+        "normalizedTextSha256": "733cdd4abd88e9a5c1ed25d565aa58e42aa352a6f0c15dd7b04e1fd9a6b2bdfc"
+      },
+      "statement": "Alle MUSS-Tests laufen in GitHub Actions auf jedem Pull Request und auf dem Hauptbranch.",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-QA-023",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 439,
+        "section": "9",
+        "normalizedTextSha256": "2807ddb5ab2714f414197b0b83b351561bece7ced88539aa97311ff9ac4ff3bd"
+      },
+      "statement": "Die dokumentierten lokalen Schluesselablaeufe mit `gh`, `codex`, `claude`, `copilot` und `gemini` sind auf `MacBook Air M2` und `Mac mini M4 Pro` nachvollziehbar und reproduzierbar; GitHub Spec-Kit ist dabei in allen vier KI-Agenten installiert und Bestandteil der nachgewiesenen Agentenablaeufe. Falls `glab`, `opencode` oder `junie` genutzt werden, sind auch diese Ablaeufe dokumentiert; fuer `opencode` und `junie` ebenfalls mit installiertem Spec-Kit. Linux- und Windows/WSL-Kompatibilitaetschecks sind als zusaetzliche Validierung nachgewiesen oder eingeplant.",
+      "status": "PartiallySatisfied",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "Die dokumentierten lokalen Schluesselablaeufe mit `gh`, `codex`, `claude`, `copilot` und `gemini` sind auf `MacBook Air M2` und `Mac mini M4 Pro` nachvollziehbar und reproduzierbar; GitHub Spec-Kit ist dabei in allen vier KI-Agenten installiert und Bestandteil der nachgewiesenen Agentenablaeufe. Falls `glab`, `opencode` oder `junie` genutzt werden, sind auch diese Ablaeufe dokumentiert; fuer `opencode` und `junie` ebenfalls mit installiertem Spec-Kit. Linux- und Windows/WSL-Kompatibilitaetschecks sind als zusaetzliche Validierung nachgewiesen oder eingeplant.",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-QA-024",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 440,
+        "section": "9",
+        "normalizedTextSha256": "c447877450dad58a514cd41e5447343fbb52b4da1451622825e830552147e90a"
+      },
+      "statement": "Bei API-/XML-Kommentar-Aenderungen ist die erfolgreiche docfx-Erzeugung als Nachweisartefakt vorhanden.",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 9",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-DOC-001",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 443,
+        "section": "10",
+        "normalizedTextSha256": "62177e6872aad1d981124a426668726b60860304fcb904848c9f1dacb9a80acc"
+      },
+      "statement": "API-Dokumentation mit docfx aus dem Code",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-DOC-002",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 444,
+        "section": "10",
+        "normalizedTextSha256": "50479a8e757980d387ed4b315e1a20c0efdf05e54c92d9ddceb5a9c5f70b05b7"
+      },
+      "statement": "Architektur- und Migrationsdokumentation in `docs/guides`",
+      "status": "PartiallySatisfied",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "Architektur- und Migrationsdokumentation in `docs/guides`",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-DOC-003",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 445,
+        "section": "10",
+        "normalizedTextSha256": "dfff3c20984025f037c1d99376ddbfcb040e7109c9ef947c52afe370dba4fd29"
+      },
+      "statement": "Changelog fuer Portierungsfortschritt und Abweichungen vom Originalverhalten",
+      "status": "PartiallySatisfied",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "Changelog fuer Portierungsfortschritt und Abweichungen vom Originalverhalten",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-DOC-004",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 446,
+        "section": "10",
+        "normalizedTextSha256": "f6c127c6a132d19d95d731c18df1d637dd8ea83a9ec1ee612f950053561bb8e2"
+      },
+      "statement": "Saemtliche Projektdokumentation folgt einem einheitlichen didaktischen Lehr-/Beispielstandard",
+      "status": "Open",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "Saemtliche Projektdokumentation folgt einem einheitlichen didaktischen Lehr-/Beispielstandard",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-DOC-005",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 447,
+        "section": "10",
+        "normalizedTextSha256": "ff928f326b8d8f41c9b981bdff32de26a8f9da9194ade5a475c64c3c38a9a2fb"
+      },
+      "statement": "Der Quellcode selbst ist didaktisch und wartungsorientiert dokumentiert",
+      "status": "PartiallySatisfied",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "Der Quellcode selbst ist didaktisch und wartungsorientiert dokumentiert",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-DOC-006",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 448,
+        "section": "10",
+        "normalizedTextSha256": "1732b73edd50e47ce3f54f8f9c088e731df71d31742971faab74e4777fda9818"
+      },
+      "statement": "Lokale Arbeitsablaeufe mit `gh`, `codex`, `claude`, `copilot` und `gemini` sind fuer beide macOS-Systeme dokumentiert; GitHub Spec-Kit ist als Pflichtbestandteil in allen vier KI-Agenten beruecksichtigt. Optionale Zusatzwerkzeuge `glab`, `opencode` und `junie` sind bei Nutzung ebenfalls dokumentiert; fuer `opencode` und `junie` mit Spec-Kit.",
+      "status": "PartiallySatisfied",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "Lokale Arbeitsablaeufe mit `gh`, `codex`, `claude`, `copilot` und `gemini` sind fuer beide macOS-Systeme dokumentiert; GitHub Spec-Kit ist als Pflichtbestandteil in allen vier KI-Agenten beruecksichtigt. Optionale Zusatzwerkzeuge `glab`, `opencode` und `junie` sind bei Nutzung ebenfalls dokumentiert; fuer `opencode` und `junie` mit Spec-Kit.",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-DOC-007",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 522,
+        "section": "10",
+        "normalizedTextSha256": "08e2e412f2eb0e3304fe0d4f1735597bcba87757023c4f0a9d8a55a7265d4f1e"
+      },
+      "statement": "`docs/guides/getting-started.md`",
+      "status": "Open",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "`docs/guides/getting-started.md`",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-DOC-008",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 523,
+        "section": "10",
+        "normalizedTextSha256": "fe23c6115c2d4be68b081cc2b77c96e9b845c1973c7a73c36cb64bad8f59ba56"
+      },
+      "statement": "`docs/guides/architecture.md`",
+      "status": "Open",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "`docs/guides/architecture.md`",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-DOC-009",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 524,
+        "section": "10",
+        "normalizedTextSha256": "aee5dd21316493c1b790397d3497417ffea21957af59cf5095d95807262e4705"
+      },
+      "statement": "`docs/guides/concepts/event-loop.md`",
+      "status": "Open",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "`docs/guides/concepts/event-loop.md`",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-DOC-010",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 525,
+        "section": "10",
+        "normalizedTextSha256": "17f59ab473c1f44e202a49517e346120ff5687ccc6337bb77915e9d83a79961d"
+      },
+      "statement": "`docs/guides/concepts/view-hierarchy.md`",
+      "status": "Open",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "`docs/guides/concepts/view-hierarchy.md`",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-DOC-011",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 526,
+        "section": "10",
+        "normalizedTextSha256": "aabb894a48574f503b5ce098df6985c1002235c921aa9fa04bd12a09f9c92bac"
+      },
+      "statement": "`docs/guides/concepts/coordinate-system.md`",
+      "status": "Open",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "`docs/guides/concepts/coordinate-system.md`",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-DOC-012",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 527,
+        "section": "10",
+        "normalizedTextSha256": "6f67d3235a29d79cb34ddf1c63b004552e01f0df8b36f7edd1a5258aedc34b88"
+      },
+      "statement": "`docs/guides/concepts/serialization.md`",
+      "status": "Open",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "`docs/guides/concepts/serialization.md`",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-DOC-013",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 528,
+        "section": "10",
+        "normalizedTextSha256": "70c144bae76886cf2ca4b888ffb43ddd303a6eca9eb76befbbb66f0b5ba4aaf7"
+      },
+      "statement": "`docs/guides/tutorials/first-dialog.md`",
+      "status": "Open",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "`docs/guides/tutorials/first-dialog.md`",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-DOC-014",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 529,
+        "section": "10",
+        "normalizedTextSha256": "8096292490a4995508e1f689bbc05f8a96f072c3b611dba518dbd43e5189dd9d"
+      },
+      "statement": "`docs/guides/examples/` mit einer Seite pro portiertem Beispielprogramm",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-DOC-015",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 530,
+        "section": "10",
+        "normalizedTextSha256": "fe7162299df37f30237e41ef4263950236409225c9543082ff810275b7f6471b"
+      },
+      "statement": "Reihenfolgehinweis: zuerst die allgemeinen Guides (`getting-started`, `architecture`, `concepts/*`) aufbauen, danach Tutorials, danach die Beispiel-Guides parallel zu den Beispielportierungen pflegen.",
+      "status": "PartiallySatisfied",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "Reihenfolgehinweis: zuerst die allgemeinen Guides (`getting-started`, `architecture`, `concepts/*`) aufbauen, danach Tutorials, danach die Beispiel-Guides parallel zu den Beispielportierungen pflegen.",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-DOC-016",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 589,
+        "section": "10",
+        "normalizedTextSha256": "52f912d6816e70b5007007e2846a5623aa7e2b41babd439c02d7f305ee9967b2"
+      },
+      "statement": "Repository-Einstellung `Settings -> Pages -> Source = GitHub Actions`",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-DOC-017",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 590,
+        "section": "10",
+        "normalizedTextSha256": "195a632ebcf3e26c8b1114b0a85f3bc038d1b768bb7db65e96a4fa1ce044fdca"
+      },
+      "statement": "Workflow-Datei `.github/workflows/docs-deploy.yml`",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-DOC-018",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 591,
+        "section": "10",
+        "normalizedTextSha256": "248465000fe4f7b5575b4a4dd5d8b2c0aaedf64679119cdf514f3a7aeeee1993"
+      },
+      "statement": "Trigger auf `main` fuer `docs/**`, `src/**`, `docfx.json`",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-DOC-019",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 592,
+        "section": "10",
+        "normalizedTextSha256": "b451bbbf1448309df7ba9212bec0e2dae061739cab6c4f4b179e720d76ef1cd2"
+      },
+      "statement": "Schritte `checkout`, `setup-dotnet`, `restore/build`, `docfx`, `upload-pages-artifact`, `deploy-pages`",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-DOC-020",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 593,
+        "section": "10",
+        "normalizedTextSha256": "6dd50dbf7af9b984b72bb5f6124f6857fff1712f5687447eeb8eae3bed928450"
+      },
+      "statement": "Berechtigungen `pages: write`, `id-token: write`, `contents: read`",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-DOC-021",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 594,
+        "section": "10",
+        "normalizedTextSha256": "1a92d8b96e6bbad85c9eba90d70deef85405e364f2e8fdc527bbb303568cf48d"
+      },
+      "statement": "Erfolgreicher Deployment-Nachweis nach relevantem Merge auf `main`",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-DOC-022",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 595,
+        "section": "10",
+        "normalizedTextSha256": "14cda88726059e9c6c28acb86721ea6ed10f2de16a648ec1c118edf49b3ae947"
+      },
+      "statement": "Veroeffentlichte GitHub-Pages-URL liefert die aktuelle docfx-Ausgabe aus",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 10",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-AC-001",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 747,
+        "section": "12",
+        "normalizedTextSha256": "98d63b15620be58e92c7bb5ca164141df0be68ef7461bef2e4e811d2b03b04a7"
+      },
+      "statement": "Alle MUSS-Anforderungen M-01 bis M-22 nachweisbar erfuellt sind.",
+      "status": "Open",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 12",
+      "proposedOwnerGroup": "ProductClosure",
+      "residualGap": "Alle MUSS-Anforderungen M-01 bis M-22 nachweisbar erfuellt sind.",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-AC-002",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 748,
+        "section": "12",
+        "normalizedTextSha256": "0c536d6e69ea90f83fe45bf24ac9ac17d320e06747cc44f14769897dee0bf77a"
+      },
+      "statement": "Das Framework in C#/.NET 10 (net10.0) buildbar ist und die definierten Tests durchlaufen.",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 12",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-AC-003",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 749,
+        "section": "12",
+        "normalizedTextSha256": "3e7ae2aa668500229ece74b95e3c4508fe6d6b8e1ce4234801cffb463ec61b79"
+      },
+      "statement": "Die API-Dokumentation mit docfx erzeugt wird.",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 12",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-AC-004",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 750,
+        "section": "12",
+        "normalizedTextSha256": "ed58935cf10be30dafd43c88519304bd42d82310090894ac47fa4b71bdeb6dd1"
+      },
+      "statement": "Alle 25 identifizierten Original-Beispielprogramme in portierter Form vorliegen und mindestens per Smoke-Test validiert sind; TP7-Anschlussbeispiele werden zusaetzlich und getrennt nachverfolgt.",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 12",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-AC-005",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 751,
+        "section": "12",
+        "normalizedTextSha256": "b0a8153470d852639e2817a94022ebce5b46a689a0ae027cf36b36daf8af8266"
+      },
+      "statement": "Interaktiv gedachte Beispielprogramme zeigen beim normalen Start ueber `dotnet run --project examples/<Name>` einen sichtbaren Bedienpfad mit Rueckmeldung; reine Headless-Seams oder direkte Testmethoden reichen fuer die finale Lern- und Review-Reife nicht aus.",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 12",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-AC-006",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 752,
+        "section": "12",
+        "normalizedTextSha256": "32e187b4db0fd8205f426b12edd23136e21ed63daeebb1d7e25338cde51ad844"
+      },
+      "statement": "Das Projekt im GitHub-Repository `https://github.com/hindermath/TuiVision.git` nachvollziehbar versioniert ist.",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 12",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-AC-007",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 753,
+        "section": "12",
+        "normalizedTextSha256": "d6d06978aacd43186e24ce199eda7f9fe087b69a733d2192f008a5babe46b85c"
+      },
+      "statement": "Der verbindliche Lizenz-/Disclaimer-Hinweis gemaess Abschnitt 10.2 sichtbar enthalten ist.",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 12",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-AC-008",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 754,
+        "section": "12",
+        "normalizedTextSha256": "5c3deac658e03755f760fcf215d23175f67c59eec5e444c6d5ec3b864247f577"
+      },
+      "statement": "Die Gesamtdokumentation den didaktischen Standard gemaess Abschnitt 10.3 nachweisbar einhaelt.",
+      "status": "PartiallySatisfied",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 12",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "Die Gesamtdokumentation den didaktischen Standard gemaess Abschnitt 10.3 nachweisbar einhaelt.",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-AC-009",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 755,
+        "section": "12",
+        "normalizedTextSha256": "1bb931d9d353e241bd5306d5fafdc698c55ffc21af33a7fc47eac3783fca35ad"
+      },
+      "statement": "Alle lernrelevanten Dokumente, Guides sowie die aktiven `Pflichtenheft`-/`Lastenheft`-Artefakte liegen fuer Auszubildende nachvollziehbar in Deutsch und Englisch auf CEFR-B2-Niveau vor; grosse normative Dokumente duerfen dafuer als synchron gepflegte `.EN.md`-Parallelfassung statt als inline zweisprachiger Block bereitgestellt werden.",
+      "status": "Open",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 12",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "Alle lernrelevanten Dokumente, Guides sowie die aktiven `Pflichtenheft`-/`Lastenheft`-Artefakte liegen fuer Auszubildende nachvollziehbar in Deutsch und Englisch auf CEFR-B2-Niveau vor; grosse normative Dokumente duerfen dafuer als synchron gepflegte `.EN.md`-Parallelfassung statt als inline zweisprachiger Block bereitgestellt werden.",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-AC-010",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 756,
+        "section": "12",
+        "normalizedTextSha256": "08cccef9826776a2d459680edbe0aef18e0a5e339f03486329db99ebe6efbf00"
+      },
+      "statement": "Fuer alle 25 portierten Original-Beispielprogramme liegt eine Dokumentation gemaess Abschnitt 10.4 vor; fuer TP7-Anschlussbeispiele gilt derselbe Dokumentationsstandard, sobald sie portiert werden.",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 12",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-AC-011",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 757,
+        "section": "12",
+        "normalizedTextSha256": "0eb82617c89f2c0ed0d5ba9891cdc7c1f18f1df6a887a2d81a9e9bb30c9b0e86"
+      },
+      "statement": "Der Quellcode erfuellt den Dokumentationsstandard gemaess Abschnitt 10.5 nachweisbar.",
+      "status": "PartiallySatisfied",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 12",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "Der Quellcode erfuellt den Dokumentationsstandard gemaess Abschnitt 10.5 nachweisbar.",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-AC-012",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 758,
+        "section": "12",
+        "normalizedTextSha256": "f3b7ff0c5a62aad303ae8480862cbf7d1e4a07631030e0d1424ff28c23f7c4be"
+      },
+      "statement": "Der Mindest-Testumfang gemaess Abschnitt 9.4 ist nachweisbar vollstaendig erfuellt.",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 12",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-AC-013",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 759,
+        "section": "12",
+        "normalizedTextSha256": "690769db0db881c8c12a2a2f9cfde8bf20a4f1a0ff02e41a9875ca093e39b5a1"
+      },
+      "statement": "Der lokale Workflow mit `gh`, `codex`, `claude`, `copilot` und `gemini` gemaess Abschnitt 10.6 ist auf beiden macOS-Systemen nachweisbar anwendbar; GitHub Spec-Kit ist in allen vier KI-Agenten installiert und in den dokumentierten Ablaeufen nutzbar. Optionale Werkzeuge `glab`, `opencode` und `junie` sind bei Nutzung ebenfalls erfasst; fuer `opencode` und `junie` mit installierter Spec-Kit-Unterstuetzung.",
+      "status": "PartiallySatisfied",
+      "rationale": "Die Anforderung ist noch nicht vollstaendig durch aktuelle, zusammenhaengende Evidence geschlossen.",
+      "evidencePaths": [
+        "Pflichtenheft.md"
+      ],
+      "existingOwner": "Pflichtenheft section 12",
+      "proposedOwnerGroup": "DocumentationAndPublishing",
+      "residualGap": "Der lokale Workflow mit `gh`, `codex`, `claude`, `copilot` und `gemini` gemaess Abschnitt 10.6 ist auf beiden macOS-Systemen nachweisbar anwendbar; GitHub Spec-Kit ist in allen vier KI-Agenten installiert und in den dokumentierten Ablaeufen nutzbar. Optionale Werkzeuge `glab`, `opencode` und `junie` sind bei Nutzung ebenfalls erfasst; fuer `opencode` und `junie` mit installierter Spec-Kit-Unterstuetzung.",
+      "reevaluationTrigger": "Abschluss und Review des zugeordneten aktiven Intakes."
+    },
+    {
+      "requirementId": "PF-AC-014",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 760,
+        "section": "12",
+        "normalizedTextSha256": "a40930144d5b32ce83e85b60fd9ba82eb9f72279c896ecc7cb5f780eb8a4d6c1"
+      },
+      "statement": "Bei API-/XML-Kommentar-Aenderungen ist die docfx-Dokumentation nachweisbar neu erzeugt worden.",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 12",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-AC-015",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 761,
+        "section": "12",
+        "normalizedTextSha256": "6ee01dc271bd2faa6db866e5a86ea48625cc5e18473eede75baa778b52fb10f6"
+      },
+      "statement": "Fuer erzeugte HTML-Dokumentation und textorientierte Review-Pfade liegt ein nachvollziehbarer A11Y-Nachweis gemaess `Programmierung #include<everyone>` vor: WCAG 2.2 AA als Baseline, textorientierter Review nach DocFX-Neubau sowie Nutzbarkeit fuer Braille-Zeile, Screenreader und Textbrowser.",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 12",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    },
+    {
+      "requirementId": "PF-AC-016",
+      "source": {
+        "path": "Pflichtenheft.md",
+        "line": 762,
+        "section": "12",
+        "normalizedTextSha256": "28bad329819882736296d1d37f66819b77330247b631ce16c1482d665f10ef3f"
+      },
+      "statement": "Die docfx-Dokumentation ist ueber GitHub Pages des Repositories `hindermath/TuiVision` erreichbar und wird bei jedem Merge auf `main` mit Doku-relevanten Aenderungen automatisch aktualisiert (M-22).",
+      "status": "AlreadySatisfied",
+      "rationale": "Aktuelle Repository-Evidence widerspricht einer gegebenenfalls veralteten offenen Statusmarke und belegt den Abschluss.",
+      "evidencePaths": [
+        "docs/project-statistics.md"
+      ],
+      "existingOwner": "Pflichtenheft section 12",
+      "proposedOwnerGroup": "N/A",
+      "residualGap": "N/A",
+      "reevaluationTrigger": "Aenderung an der referenzierten Implementierung, Evidence oder Governance."
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "RequirementsIntakeMigrationProposal",
+  "sourceCoveragePath": "specs/requirements-reconciliation-20260726/requirements-coverage.json",
+  "targetModel": "SplitPflichtenheftWithActiveArchiveBacklogAndSeries",
+  "migrationAuthority": "User-approved two-PR consolidation plan",
+  "decisions": [
+    {
+      "sourcePath": "Lastenheft_01_ControlsWidgetsAndCollections.009-controls-widgets-and-collections.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_01_ControlsWidgetsAndCollections.009-controls-widgets-and-collections.md"
+    },
+    {
+      "sourcePath": "Lastenheft_02_StandardDialogsAndDesigner.010-standard-dialogs-designer.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_02_StandardDialogsAndDesigner.010-standard-dialogs-designer.md"
+    },
+    {
+      "sourcePath": "Lastenheft_03_EditorHelpAndResourcesHardening.018-editor-help-resources-hardening.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_03_EditorHelpAndResourcesHardening.018-editor-help-resources-hardening.md"
+    },
+    {
+      "sourcePath": "Lastenheft_04_MouseSupportAndInteraction.020-mouse-support-interaction.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_04_MouseSupportAndInteraction.020-mouse-support-interaction.md"
+    },
+    {
+      "sourcePath": "Lastenheft_05_TerminalCharsetAndEmulation.021-terminal-charset-hardening.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_05_TerminalCharsetAndEmulation.021-terminal-charset-hardening.md"
+    },
+    {
+      "sourcePath": "Lastenheft_06_A11Y_Framework.023-a11y-framework.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_06_A11Y_Framework.023-a11y-framework.md"
+    },
+    {
+      "sourcePath": "Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.015-didactic-comment-hardening.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_07_Didactic-Inline-Code-Comment-Hardening.015-didactic-comment-hardening.md"
+    },
+    {
+      "sourcePath": "Lastenheft_08_TV203-FreeVision-Conformance-Audit.024-tv203-freevision-conformance-audit.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_08_TV203-FreeVision-Conformance-Audit.024-tv203-freevision-conformance-audit.md"
+    },
+    {
+      "sourcePath": "Lastenheft_09_Pre-Wave5-Conformance-Closure.027-pre-wave5-conformance-closure.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_09_Pre-Wave5-Conformance-Closure.027-pre-wave5-conformance-closure.md"
+    },
+    {
+      "sourcePath": "Lastenheft_10_Core-Runtime-Conformance-Hardening.025-core-runtime-conformance-hardening.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_10_Core-Runtime-Conformance-Hardening.025-core-runtime-conformance-hardening.md"
+    },
+    {
+      "sourcePath": "Lastenheft_11_Component-Data-Conformance-Hardening.026-component-data-conformance-hardening.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_11_Component-Data-Conformance-Hardening.026-component-data-conformance-hardening.md"
+    },
+    {
+      "sourcePath": "Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.028-pre-wave5-wave6-conformance-closure.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_12_Pre-Wave5-and-Wave6-Conformance-Closure.028-pre-wave5-wave6-conformance-closure.md"
+    },
+    {
+      "sourcePath": "Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.029-tv203-freevision-terminalgui-conformance-audit.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_13_TV203-FreeVision-TerminalGUI-Conformance-Audit.029-tv203-freevision-terminalgui-conformance-audit.md"
+    },
+    {
+      "sourcePath": "Lastenheft_14_TV203-Magiblot-Evolution-Audit.030-tv203-magiblot-evolution-audit.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_14_TV203-Magiblot-Evolution-Audit.030-tv203-magiblot-evolution-audit.md"
+    },
+    {
+      "sourcePath": "Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "decision": "UpdateActive",
+      "proposedTargetPath": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md"
+    },
+    {
+      "sourcePath": "Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_16_Pre-Wave5-Wave6-Combined-Conformance-Closure.031-combined-conformance-closure.md"
+    },
+    {
+      "sourcePath": "Lastenheft_17_Wave5-TP7-Functional-Porting.032-wave5-tp7-functional-porting.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_17_Wave5-TP7-Functional-Porting.032-wave5-tp7-functional-porting.md"
+    },
+    {
+      "sourcePath": "Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_18_Wave5-TP7-Showcase-Remediation.033-wave5-tp7-showcase-remediation.md"
+    },
+    {
+      "sourcePath": "Lastenheft_19_Wave5-Combined-Delta-Closure.034-wave5-combined-delta-closure.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_19_Wave5-Combined-Delta-Closure.034-wave5-combined-delta-closure.md"
+    },
+    {
+      "sourcePath": "Lastenheft_20_Wave6-TVFM-Functional-Porting.035-wave6-tvfm-functional-porting.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_20_Wave6-TVFM-Functional-Porting.035-wave6-tvfm-functional-porting.md"
+    },
+    {
+      "sourcePath": "Lastenheft_21_Wave6-TVFM-Showcase-Remediation.036-wave6-tvfm-showcase-remediation.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_21_Wave6-TVFM-Showcase-Remediation.036-wave6-tvfm-showcase-remediation.md"
+    },
+    {
+      "sourcePath": "Lastenheft_Abarbeitungsreihenfolge.md",
+      "decision": "SupersedeCandidate",
+      "proposedTargetPath": "Lastenheft_Abarbeitungsreihenfolge.md"
+    },
+    {
+      "sourcePath": "Lastenheft_Constitution_Change.md",
+      "decision": "RetainActive",
+      "proposedTargetPath": "requirements/intakes/active/Lastenheft_Constitution_Change.md"
+    },
+    {
+      "sourcePath": "Lastenheft_ControlsRevision.008-controls-revision.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_ControlsRevision.008-controls-revision.md"
+    },
+    {
+      "sourcePath": "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "decision": "RetainActive",
+      "proposedTargetPath": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+    },
+    {
+      "sourcePath": "Lastenheft_Interactive-Wave2-Demos.012-interactive-wave2-demos.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_Interactive-Wave2-Demos.012-interactive-wave2-demos.md"
+    },
+    {
+      "sourcePath": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "decision": "RetainActive",
+      "proposedTargetPath": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md"
+    },
+    {
+      "sourcePath": "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "decision": "RetainActive",
+      "proposedTargetPath": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md"
+    },
+    {
+      "sourcePath": "Lastenheft_Secure-Development-Hardening.016-secure-development-hardening.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_Secure-Development-Hardening.016-secure-development-hardening.md"
+    },
+    {
+      "sourcePath": "Lastenheft_Wave1-Functional-Hardening.014-wave1-functional-hardening.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_Wave1-Functional-Hardening.014-wave1-functional-hardening.md"
+    },
+    {
+      "sourcePath": "Lastenheft_Wave1-Visual-Component-Remediation.017-wave1-visual-component-remediation.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_Wave1-Visual-Component-Remediation.017-wave1-visual-component-remediation.md"
+    },
+    {
+      "sourcePath": "Lastenheft_Wave2-Visual-Component-Remediation.013-wave2-visual-component-remediation.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_Wave2-Visual-Component-Remediation.013-wave2-visual-component-remediation.md"
+    },
+    {
+      "sourcePath": "Lastenheft_Wave3-Visual-Component-Porting.019-wave3-visual-component-porting.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_Wave3-Visual-Component-Porting.019-wave3-visual-component-porting.md"
+    },
+    {
+      "sourcePath": "Lastenheft_Wave4-Visual-Component-Porting.022-wave4-visual-component-porting.md",
+      "decision": "ArchiveCompleted",
+      "proposedTargetPath": "requirements/intakes/archive/Lastenheft_Wave4-Visual-Component-Porting.022-wave4-visual-component-porting.md"
+    }
+  ],
+  "residualIntakes": [
+    {
+      "action": "CreateFromGap",
+      "group": "ProductClosure",
+      "targetPath": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+      "reservedFeature": "037-wave6-combined-delta-closure",
+      "preferredOrder": 1
+    },
+    {
+      "action": "UpdateActive",
+      "group": "ExamplePortfolio",
+      "targetPath": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "dependsOn": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+      "preferredOrder": 2
+    },
+    {
+      "action": "CreateFromGap",
+      "group": "DocumentationAndPublishing",
+      "targetPath": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+      "reservedFeature": "Deferred until intake selection",
+      "preferredOrder": 3
+    },
+    {
+      "action": "BacklogOptional",
+      "group": "OptionalPackaging",
+      "targetPath": "requirements/intakes/backlog/Lastenheft_Optional-NuGet-Package.md",
+      "lifecycle": "DeferredOptional"
+    }
+  ],
+  "existingActiveIntakes": [
+    {
+      "action": "UpdateActive",
+      "sourcePath": "Lastenheft_Constitution_Change.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "relation": "Independent governance root; no invented dependency"
+    },
+    {
+      "action": "UpdateActive",
+      "sourcePath": "Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "relation": "Independent governance root; no invented dependency"
+    },
+    {
+      "action": "UpdateActive",
+      "sourcePath": "Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "relation": "Independent governance root; no invented dependency"
+    },
+    {
+      "action": "UpdateActive",
+      "sourcePath": "Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "targetPath": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "relation": "Independent governance root; no invented dependency"
+    }
+  ],
+  "series": {
+    "id": "tui-vision-delivery",
+    "preferredNext": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+    "hardEdges": [
+      {
+        "from": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+        "to": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+        "type": "HardCompletionGate"
+      }
+    ]
+  },
+  "stopConditions": [
+    "Uncovered normative statement",
+    "Positive claim without evidence",
+    "Open or partial requirement without owner",
+    "Duplicate semantic ownership",
+    "Unexplained source or receipt drift"
+  ]
+}
