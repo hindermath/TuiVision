@@ -4,7 +4,6 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
-import childProcess from "node:child_process";
 
 const root = process.cwd();
 const write = process.argv.includes("--write");
@@ -21,7 +20,7 @@ const hashText = (value) => crypto.createHash("sha256").update(normalize(value))
 const hashFile = (relativePath) => hashText(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const readJson = (relativePath) => JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const json = (value) => JSON.stringify(value, null, 2) + "\n";
-const head = childProcess.execFileSync("git", ["rev-parse", "HEAD"], {cwd: root, encoding: "utf8"}).trim();
+const reviewHead = "cee86bd254b847e79b0b19755e61d61c032a5f78";
 
 const members = [
   {
@@ -305,7 +304,7 @@ const result = {
   status: "Ready",
   policy: "tui-vision-delivery-v1",
   reviewedAt: createdAt,
-  repository: {root: ".", head},
+  repository: {root: ".", head: reviewHead},
   targets: members.map((member) => ({
     path: member.path,
     role: member.role,
