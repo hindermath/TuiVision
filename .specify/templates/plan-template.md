@@ -100,6 +100,11 @@
   and which manual/Thorsten-Solo baseline applies.
 - **Agent guidance parity**: State whether `AGENTS.md`, `CLAUDE.md`,
   `GEMINI.md`, and `.github/copilot-instructions.md` are affected together.
+- **Documentation Impact**: Select exactly one of `UpdateRequired`,
+  `NoUpdateRequired`, `GeneratedUpdate`, or `FollowUp`. Identify source of
+  truth, owner, affected documents, generated derivations, validation, and
+  review evidence. A `FollowUp` needs owner, risk, due date, trigger, evidence,
+  and scope rationale.
 
 ## Project Structure
 

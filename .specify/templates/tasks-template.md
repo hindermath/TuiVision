@@ -158,6 +158,11 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX [P] Verify learner-facing content is DE-first/EN-second at CEFR B2, explains technical terms at first use, assumes no prior Spec Kit experience, and provides text-first explanations for dependencies, states, and decisions
 - [ ] TXXX [P] Update `docs/project-statistics.md` when the feature changes statistics-relevant artefacts or delivery evidence
 - [ ] TXXX [P] Review and synchronize affected AI-agent guidance files: `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`
+- [ ] TXXX Record exactly one Documentation Impact decision and complete its
+  required update, generated render, no-change rationale, or bounded follow-up
+  evidence
+- [ ] TXXX Validate Documentation Impact evidence with
+  `validate-documentation-impact.*` when the repository provides that contract
 - [ ] TXXX Code cleanup and refactoring
 - [ ] TXXX Performance optimization across all stories
 - [ ] TXXX [P] Additional unit tests (if requested) in tests/unit/

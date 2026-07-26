@@ -143,6 +143,11 @@
   presets apply. Registered Level-0, Level-1, and Level-2 repositories default
   to the exact eight-preset home-baseline matrix unless a justified exception
   is documented.
+- **CR-013**: The feature MUST record exactly one Documentation Impact
+  decision: `UpdateRequired`, `NoUpdateRequired`, `GeneratedUpdate`, or
+  `FollowUp`. It MUST name affected audiences and documentation families.
+  `FollowUp` also requires owner, risk, due date, re-evaluation trigger,
+  evidence, and scope rationale.
 
 ### Key Entities *(include if feature involves data)*
 
