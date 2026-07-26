@@ -126,6 +126,17 @@ ermitteln und nicht als absoluten Pfad fest eincodieren.
 *The script inventory lives under `docs/scripts/`. Read help and preview before
 writing. Resolve Level 0 through the shared contract; do not hard-code it.*
 
+## Dokumentationsauswirkung / Documentation Impact
+
+Jede Änderung erhält genau eine Entscheidung: `UpdateRequired`,
+`NoUpdateRequired`, `GeneratedUpdate` oder `FollowUp`. Quelle, Owner,
+Dokumente und Evidence richten sich nach `docs/documentation-governance.md`.
+`FollowUp` benötigt Owner, Risiko, Frist, Trigger, Evidence und Scope-Grund.
+
+*Every change records exactly one Documentation Impact decision. Follow the
+source, ownership, generated-output, and evidence contract in
+`docs/documentation-governance.md`.*
+
 ## Lernreihen-Governance / Learning Series Governance
 
 Neue Lernreihen fuer Fachinformatiker*innen und weitere IT-Ausbildungsberufe werden zuerst in `docs/learning-units/` als Level-0-Quelle vorbereitet. Der `Lernreihen-Blueprint`, das `Lernreihen-Register`, das IT-Berufe-Mapping und die Vorlagen unter `docs/learning-units/templates/` sind verbindlich, bevor eine konkrete Level-1-/Level-2-Struktur gespiegelt wird. KI-Agenten duerfen Lernreihen, Lastenhefte, Berufsbild-Mappings, Reihenfolgen und ZIP-Paketierung vorbereiten, starten aber keine Spec-Kit-Laeufe fuer Lernende ohne ausdruecklichen Auftrag. Spec-Kit-Laeufe sind begleitende SDD-Aufgaben und ersetzen nicht Berufsschule, betriebliche Ausbildung, Rahmenlehrplan, Ausbilderentscheidung oder Pruefungsvorbereitung.
