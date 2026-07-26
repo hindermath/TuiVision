@@ -350,7 +350,9 @@ Es bestehen keine offenen Review-Findings. Der optionale NuGet-Backlog ist
 nicht Teil der ausführbaren Serie.
 `;
 
-const orderDocument = fs.readFileSync(path.join(root, "Lastenheft_Abarbeitungsreihenfolge.md"), "utf8");
+const orderDocument = normalize(
+  fs.readFileSync(path.join(root, "Lastenheft_Abarbeitungsreihenfolge.md"), "utf8"),
+);
 const outputs = [
   [manifestPath, json(manifest)],
   [`${seriesRoot}/receipt.json`, json(seriesReceipt)],
@@ -367,7 +369,8 @@ for (const [relativePath, content] of outputs) {
   if (write) {
     fs.mkdirSync(path.dirname(fullPath), {recursive: true});
     fs.writeFileSync(fullPath, content);
-  } else if (!fs.existsSync(fullPath) || fs.readFileSync(fullPath, "utf8") !== content) {
+  } else if (!fs.existsSync(fullPath) ||
+             normalize(fs.readFileSync(fullPath, "utf8")) !== normalize(content)) {
     console.error(`stale generated intake-governance artifact: ${relativePath}`);
     process.exit(1);
   }
