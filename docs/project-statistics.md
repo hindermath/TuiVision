@@ -1197,18 +1197,18 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 579292 lines |
+| Textbasis / Text base | 579291 lines |
 | Textdateien / Text files | 2788 |
 | Beobachtbarer Zeitraum / Observable period | 2025-08-03..2026-07-26 |
 | Aktivtage / Active days | 80 |
-| Relevante Commits / Relevant commits | 516 |
-| Zeilen je Aktivtag / Lines per active day | 7241.2 |
+| Relevante Commits / Relevant commits | 517 |
+| Zeilen je Aktivtag / Lines per active day | 7241.1 |
 | Peak-Tag im Fenster / Peak day in window | 2026-03-22 / 321183 |
 | Peak-Woche im Fenster / Peak week in window | 2026-03-22 / 373633 |
 | Laengste Serie / Longest streak | 17 days |
 | Speedup vs. 80 lines/day | 90.5x |
 | Speedup vs. 125 lines/day | 57.9x |
-| Methodik / Methodology | v2; source `cee86bd254b8` |
+| Methodik / Methodology | v2; source `ab8d570b3208` |
 
 ### Artefaktmix / Artifact Mix
 
@@ -1216,7 +1216,7 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 Produktiv / Production          [#####...............]  23.7% | 137243
 Tests                           [#...................]   7.3% | 42573
 Dokumentation / Documentation   [#########...........]  43.8% | 253934
-Skripte / Scripts               [#...................]   1.9% | 11072
+Skripte / Scripts               [#...................]   1.9% | 11071
 Konfiguration / Configuration   [#...................]   6.0% | 34637
 Daten und Medien / Data and media [#...................]   0.0% | 1
 Sonstiger Text / Other text     [###.................]  17.2% | 99832
@@ -1409,7 +1409,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..10000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [##############......] 7241.2
+Visible repository [##############......] 7241.1
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -1435,6 +1435,6 @@ DE: Das Fenster beginnt am 2025-08-03 und endet am 2026-07-26. Es enthaelt 80 ak
 | 2026-04 | 18953 |
 | 2026-05 | 274123 |
 | 2026-06 | 42308 |
-| 2026-07 | 192051 |
+| 2026-07 | 192058 |
 
 <!-- project-statistics-v2:end -->
