@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0",
+  "manifestRoot": "requirements/intakes/series",
+  "archiveRoot": "requirements/intakes/series-archive",
+  "requireExplicitWriteAuthority": true,
+  "allowPhysicalPurge": false,
+  "allowedEdgeTypes": [
+    "HardCompletionGate",
+    "AssessmentBaseline",
+    "SandboxBaseline",
+    "DocumentationSurfaceBaseline",
+    "CommentSurfaceBaseline",
+    "FinalAuditInput",
+    "PreferredSerialOrder",
+    "SharedWriterSerialization"
+  ],
+  "nextCommandStartsWork": false,
+  "languagePolicy": "RepositoryPolicy",
+  "accessibilityBaseline": "WCAG22AAWhereApplicable"
+}

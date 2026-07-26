@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeriesOperation",
+  "operationId": "52f0da46-7d12-4039-a450-14d518d55a1c",
+  "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
+  "type": "Create",
+  "status": "Published",
+  "authorityEvidence": "User-approved two-PR Pflichtenheft and intake consolidation plan",
+  "proposalNormalizedSha256": "4ca37ea06d49918abf02f927859d267bc595e42a996d0d38ec0acbf9eee4925d",
+  "preparedPaths": [
+    "requirements/intakes/series/tui-vision-delivery/manifest.json",
+    "requirements/intakes/series/tui-vision-delivery/receipt.json",
+    "requirements/intakes/series/tui-vision-delivery/order.md"
+  ],
+  "validation": {
+    "bash": "Pass",
+    "powerShell": "Pass"
+  },
+  "publication": {
+    "status": "Published",
+    "publishedPaths": [
+      "requirements/intakes/series/tui-vision-delivery/manifest.json",
+      "requirements/intakes/series/tui-vision-delivery/receipt.json",
+      "requirements/intakes/series/tui-vision-delivery/order.md"
+    ]
+  }
+}

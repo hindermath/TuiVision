@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "1.1",
+  "reviewId": "e320135f-b9d9-469e-bef2-510a00c8446f",
+  "mode": "Series",
+  "status": "Ready",
+  "policy": "tui-vision-delivery-v1",
+  "reviewedAt": "2026-07-26T20:00:00Z",
+  "repository": {
+    "root": ".",
+    "head": "664304a89b85b8d7c8f119bd2867580d51759852"
+  },
+  "targets": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+      "role": "Primary",
+      "normalizedSha256": "1b8ac280514c3415dfa51f2807f2b9183e51cd46b446d59980974cdce0ac70ad",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "f46be28ad27bb2dd5644390a7d50bed4912b514ce924e58bfd304135b33c0ad2",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "df5f1876c781632c13594e9ec60c3cc8f9408c586ac03aeb48aa87442987878c",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "b7dbf455ff4e84b336ffe3cca3ff184e1897860592d4f53fb52f1776e7eb9e91",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "d1f6a20535f90b78d00f7f6974a32156d7c08eeb77ebad9961a41ffbe3f84858",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "62fadb9f571f6c6e5fb81badd103f5ca5087c7219698fdec7be708196d6d6863",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "97d31e6eac5c2e5defeae1dd29bc5c97ddb8ba43b75106768dfe4b703c6d802d",
+      "gitBlob": "N/A"
+    }
+  ],
+  "findings": [],
+  "questions": [],
+  "acceptedRisks": [],
+  "operatorExceptions": [],
+  "coverage": {
+    "individual": [
+      "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+      "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+      "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+    ],
+    "series": [
+      "All seven active intake paths, exact hashes, lifecycle states, roots, and the Wave-6 hard completion gate",
+      "Independent governance and documentation roots without invented product dependencies",
+      "DeferredOptional backlog excluded from executable targets"
+    ],
+    "workers": []
+  },
+  "summary": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "supersedes": "b1b901aa-c523-4f35-ba64-0dddd99c6072",
+  "requestEvidence": {
+    "path": "requirements/intakes/series/tui-vision-delivery/intake-review-request.json",
+    "normalizedSha256": "662739d8bfa66818d54f50a7fccf9e78203524c7e4ea5846815e5e408fd577f0"
+  }
+}

@@ -7,8 +7,12 @@ import process from "node:process";
 
 const root = process.cwd();
 const sourcePath = "Pflichtenheft.md";
+const archivedSourcePath = "requirements/baseline/Pflichtenheft.pre-intake-split.2026-07-26.md";
 const outputRoot = "specs/requirements-reconciliation-20260726";
-const source = fs.readFileSync(path.join(root, sourcePath), "utf8");
+const sourceReadPath = fs.existsSync(path.join(root, archivedSourcePath))
+  ? archivedSourcePath
+  : sourcePath;
+const source = fs.readFileSync(path.join(root, sourceReadPath), "utf8");
 const normalized = source.replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n");
 const sha256 = (value) => crypto.createHash("sha256").update(value).digest("hex");
 
@@ -214,9 +218,14 @@ for (const [index, line] of normalized.split("\n").entries()) {
   });
 }
 
-const rootFiles = fs.readdirSync(root)
-  .filter((name) => /^Lastenheft.*\.md$/.test(name))
-  .sort();
+const rootFiles = sourceReadPath === sourcePath
+  ? fs.readdirSync(root).filter((name) => /^Lastenheft.*\.md$/.test(name)).sort()
+  : [
+      ...fs.readdirSync(path.join(root, "requirements/intakes/archive")),
+      ...fs.readdirSync(path.join(root, "requirements/intakes/history"))
+        .flatMap((directory) => fs.readdirSync(path.join(root, "requirements/intakes/history", directory))),
+      "Lastenheft_Abarbeitungsreihenfolge.md",
+    ].filter((name) => /^Lastenheft.*\.md$/.test(name)).sort();
 
 const migrationDecisions = rootFiles.map((name) => {
   let decision = "RetainActive";

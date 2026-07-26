@@ -1,0 +1,52 @@
+name: Requirements Intake Governance
+
+on:
+  pull_request:
+    paths:
+      - "Pflichtenheft.md"
+      - "Lastenheft_Abarbeitungsreihenfolge.md"
+      - "requirements/**"
+      - "specs/intake-authoring-receipts/**"
+      - "specs/requirements-reconciliation-20260726/**"
+      - ".specify/intake-*.json"
+      - "scripts/*requirements-intake*"
+      - "scripts/tests/requirements-intake-alignment-tests.mjs"
+      - ".github/workflows/requirements-intake-governance.yml"
+  push:
+    branches:
+      - main
+      - "codex/**"
+      - "claude/**"
+      - "agy/**"
+      - "gemini/**"
+      - "copilot/**"
+      - "opencode/**"
+    paths:
+      - "Pflichtenheft.md"
+      - "Lastenheft_Abarbeitungsreihenfolge.md"
+      - "requirements/**"
+      - "specs/intake-authoring-receipts/**"
+      - "specs/requirements-reconciliation-20260726/**"
+      - ".specify/intake-*.json"
+      - "scripts/*requirements-intake*"
+      - "scripts/tests/requirements-intake-alignment-tests.mjs"
+      - ".github/workflows/requirements-intake-governance.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate requirements and intake alignment
+        shell: pwsh
+        run: ./scripts/validate-requirements-intake-alignment.ps1
+      - name: Run negative fixtures
+        shell: pwsh
+        run: node scripts/tests/requirements-intake-alignment-tests.mjs

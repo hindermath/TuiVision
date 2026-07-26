@@ -1,31 +1,31 @@
 {
   "schemaVersion": "2.0",
   "documentType": "IntakeReceipt",
-  "receiptId": "296b0258-7d42-45bf-aa28-e269e9776a5d",
-  "intakeId": "87920239-1e36-4c94-8410-acd0069023df",
+  "receiptId": "028491da-160a-4dd6-be84-46345e775ae6",
+  "intakeId": "8e875037-f400-4a87-866b-424ecdb89f9c",
   "generator": {
     "preset": "intake-authoring-governance",
     "version": "0.2.1"
   },
   "createdAt": "2026-07-26T20:00:00Z",
   "operation": {
-    "operationId": "31ee816a-3617-49da-b3f8-a28969f1f265",
-    "type": "Update",
+    "operationId": "0979ac20-946c-4634-9f4b-91745e2cb968",
+    "type": "Create",
     "authorityEvidence": "User-approved two-PR Pflichtenheft and intake consolidation plan"
   },
   "status": "ReadyForReview",
   "target": {
-    "path": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
-    "normalizedSha256": "f46be28ad27bb2dd5644390a7d50bed4912b514ce924e58bfd304135b33c0ad2"
+    "path": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+    "normalizedSha256": "df5f1876c781632c13594e9ec60c3cc8f9408c586ac03aeb48aa87442987878c"
   },
   "sources": [
     {
       "sourceId": "SRC001",
       "order": 1,
       "kind": "File",
-      "label": "Archived predecessor intake",
+      "label": "Approved requirements migration proposal",
       "location": "Repository",
-      "path": "requirements/intakes/history/lastenheft-15-post-wave6-example-portfolio-conformance-audit/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "path": "specs/requirements-reconciliation-20260726/migration-proposal.json",
       "requestedUrl": "N/A",
       "finalUrl": "N/A",
       "retrievedAt": "N/A",
@@ -36,7 +36,7 @@
       "lastModified": "N/A",
       "redirectChain": [],
       "rawSha256": "N/A",
-      "normalizedSha256": "2ef3611ff653f6d66b4bdef2ac1275bfb34dd46ac081957f75d10e15f95c7b83",
+      "normalizedSha256": "4ca37ea06d49918abf02f927859d267bc595e42a996d0d38ec0acbf9eee4925d",
       "gitBlob": "N/A",
       "proofBoundary": "Repository file and normalized SHA-256"
     }
@@ -48,7 +48,7 @@
       "id": "IAD001",
       "status": "Answered",
       "question": "Welcher Zielpfad ist nach der Konsolidierung verbindlich?",
-      "answer": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "answer": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
       "evidence": "specs/requirements-reconciliation-20260726/migration-proposal.json"
     },
     {
@@ -70,26 +70,26 @@
   "deliveryAuthority": "LocalImplementation",
   "authorityEvidence": "Default: this migration grants no remote delivery authority.",
   "promptState": "Enabled",
-  "provenanceMode": "Supersession",
+  "provenanceMode": "New",
   "supersedes": {
-    "receiptPath": "specs/intake-authoring-receipts/history/15-post-wave6-example-portfolio-conformance-audit.schema-1.1.json",
-    "targetNormalizedSha256": "2ef3611ff653f6d66b4bdef2ac1275bfb34dd46ac081957f75d10e15f95c7b83",
-    "archiveTargetPath": "requirements/intakes/history/lastenheft-15-post-wave6-example-portfolio-conformance-audit/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
-    "archiveReceiptPath": "specs/intake-authoring-receipts/history/15-post-wave6-example-portfolio-conformance-audit.schema-1.1.json"
+    "receiptPath": "N/A",
+    "targetNormalizedSha256": "N/A",
+    "archiveTargetPath": "N/A",
+    "archiveReceiptPath": "N/A"
   },
   "legacyAdoption": {
     "evidenceType": "N/A",
     "priorTargetNormalizedSha256": "N/A",
     "priorGitBlob": "N/A"
   },
-  "updateAuthorized": true,
-  "updateAuthorityEvidence": "User-approved migration preserves the existing intake identity and predecessor evidence.",
+  "updateAuthorized": false,
+  "updateAuthorityEvidence": "N/A",
   "series": {
     "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
     "manifestPath": "requirements/intakes/series/tui-vision-delivery/manifest.json",
-    "order": 2,
+    "order": 3,
     "role": "OrderedMember",
     "supersedesIntakeIds": []
   },
-  "nextAction": "$speckit-intake-review requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md"
+  "nextAction": "$speckit-intake-review requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md"
 }

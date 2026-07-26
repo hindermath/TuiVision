@@ -5,7 +5,7 @@
     "Ready",
     "ReadyWithAcceptedRisks"
   ],
-  "resultPath": "specs/intake-normalization-20260723/intake-review-result.json",
+  "resultPath": "requirements/intakes/series/tui-vision-delivery/intake-review-result.json",
   "profiles": [
     "level2-lastenheft",
     "generic-markdown"
