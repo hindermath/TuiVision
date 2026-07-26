@@ -69,3 +69,16 @@ Review und ausführbare Nachweise erforderlich.
 *Deterministic validators check structure, paths, hashes, and required fields.
 They cannot prove that a statement is professionally true; review and
 executable evidence remain necessary.*
+
+## Portable Testdaten / Portable Test Data
+
+Die positiven und negativen Vertragsbeispiele liegen unter
+`scripts/tests/documentation-impact/fixtures/`. Dieser Pfad ist Bestandteil
+des kanonischen Wartungspakets. Dadurch bleiben die kopierten Test-Runner in
+Level-1-/Level-2-Repositories ausfuehrbar und haengen nicht von einem
+historischen Feature-Verzeichnis der Level-0-Quelle ab.
+
+*Positive and negative contract fixtures live under
+`scripts/tests/documentation-impact/fixtures/`. The canonical maintenance
+package includes this path, so copied test runners remain executable without
+depending on a historical Level-0 feature directory.*

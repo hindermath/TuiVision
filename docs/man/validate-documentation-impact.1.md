@@ -29,3 +29,8 @@ structure and proof boundaries, not the semantic truth of documentation.*
 - `0`: gültig / valid
 - `1`: Evidence ungültig / invalid evidence
 - `2`: Aufruf- oder Toolingfehler / usage or tooling error
+
+## Files
+
+`scripts/tests/documentation-impact/fixtures/`
+: Portable positive and negative contract fixtures for both test runners.

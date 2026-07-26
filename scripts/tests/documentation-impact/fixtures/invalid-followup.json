@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "feature": "fixture",
+  "entries": [
+    {
+      "changeId": "CHG001",
+      "scope": "Guide",
+      "decision": "FollowUp",
+      "rationale": "The fields required for a bounded follow-up are missing.",
+      "documents": ["docs/guide.md"],
+      "owner": "Maintainer",
+      "evidence": "specs/fixture/evidence.md",
+      "risk": "Open",
+      "criticality": "Normal"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0",
+  "feature": "fixture",
+  "entries": [
+    {
+      "changeId": "CHG001",
+      "scope": "Security guide",
+      "decision": "FollowUp",
+      "rationale": "Security documentation cannot be deferred without accepted risk evidence.",
+      "documents": ["docs/security/guide.md"],
+      "owner": "Security owner",
+      "evidence": "specs/fixture/evidence.md",
+      "risk": "Users may follow unsafe guidance.",
+      "criticality": "Security",
+      "dueDate": "2026-08-31",
+      "reevaluationTrigger": "Before release",
+      "scopeReason": "Separate approved security update.",
+      "acceptedRiskEvidence": ""
+    }
+  ]
+}

@@ -13,7 +13,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path $PSScriptRoot -Parent
 $validator = Join-Path $PSScriptRoot 'validate-documentation-impact.ps1'
-$fixtures = Join-Path $repo 'specs/012-documentation-impact-governance/tests/fixtures'
+$fixtures = Join-Path $repo 'scripts/tests/documentation-impact/fixtures'
 
 $cases = @(
     @{ Name = 'valid.json'; Expected = 0 },

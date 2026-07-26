@@ -4,7 +4,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 REPO="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
-FIXTURES="${REPO}/specs/012-documentation-impact-governance/tests/fixtures"
+FIXTURES="${REPO}/scripts/tests/documentation-impact/fixtures"
 
 run_case() {
   local file="$1"

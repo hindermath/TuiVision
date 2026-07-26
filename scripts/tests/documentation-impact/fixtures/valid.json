@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "feature": "fixture",
+  "entries": [
+    {
+      "changeId": "CHG001",
+      "scope": "README",
+      "decision": "NoUpdateRequired",
+      "rationale": "The command and public behavior are unchanged.",
+      "documents": [],
+      "owner": "Maintainer",
+      "evidence": "specs/fixture/evidence.md",
+      "risk": "N/A",
+      "criticality": "Normal"
+    }
+  ]
+}

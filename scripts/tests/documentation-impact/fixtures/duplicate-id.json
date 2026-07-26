@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0",
+  "feature": "fixture",
+  "entries": [
+    {
+      "changeId": "CHG001",
+      "scope": "README",
+      "decision": "NoUpdateRequired",
+      "rationale": "First row.",
+      "documents": [],
+      "owner": "Maintainer",
+      "evidence": "specs/fixture/evidence.md",
+      "risk": "N/A",
+      "criticality": "Normal"
+    },
+    {
+      "changeId": "CHG001",
+      "scope": "Guide",
+      "decision": "UpdateRequired",
+      "rationale": "Duplicate identifier must fail.",
+      "documents": ["docs/guide.md"],
+      "owner": "Maintainer",
+      "evidence": "specs/fixture/evidence.md",
+      "risk": "N/A",
+      "criticality": "Normal"
+    }
+  ]
+}
