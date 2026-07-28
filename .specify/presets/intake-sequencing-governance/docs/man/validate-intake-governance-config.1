@@ -1,4 +1,4 @@
-.TH VALIDATE-INTAKE-GOVERNANCE-CONFIG 1 "2026-07-28" "0.2.0"
+.TH VALIDATE-INTAKE-GOVERNANCE-CONFIG 1 "2026-07-28" "0.2.2"
 .SH NAME
 validate-intake-governance-config \- validate language-aware requirements governance
 .SH SYNOPSIS
@@ -17,6 +17,12 @@ repository.
 .SH OUTCOMES
 Configured collections report Aligned, MigrationRequired, NeedsClarification,
 or Blocked. Eligibility is an ordering result and grants no delivery authority.
+An Idle series is Aligned only when it contains no targets, roots, or
+dependencies and therefore has no eligible candidate.
+.PP
+Canonical-index uniqueness follows Git repository boundaries. An index in a
+nested Git checkout belongs to that checkout; an ordinary duplicate index
+inside the current repository remains invalid.
 .SH EXIT STATUS
 Zero means Aligned or a valid journal. One means migration or clarification is
 required. Two means blocked or invalid input.

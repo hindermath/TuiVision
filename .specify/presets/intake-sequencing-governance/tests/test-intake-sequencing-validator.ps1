@@ -73,7 +73,7 @@ function Reset-Fixture {
         documentType = 'IntakeSeriesReceipt'
         receiptId = '22222222-2222-4222-8222-222222222222'
         seriesId = $script:Manifest.seriesId
-        generator = [ordered]@{ preset = 'intake-sequencing-governance'; version = '0.2.0' }
+        generator = [ordered]@{ preset = 'intake-sequencing-governance'; version = '0.2.2' }
         createdAt = '2026-07-25T00:00:00Z'
         operation = [ordered]@{
             operationId = '33333333-3333-4333-8333-333333333333'
@@ -110,6 +110,28 @@ try {
         Invoke-Validator $Shell manifest 0
         Invoke-Validator $Shell receipt 0
     }
+
+    Reset-Fixture
+    $script:Manifest.status = 'Idle'
+    $script:Manifest.orderedTargets = @()
+    $script:Manifest.roots = @()
+    $script:Manifest.dependencies = @()
+    Save-Json $script:Manifest (Join-Path $TempRoot 'manifest.json')
+    foreach ($Shell in @('Bash', 'PowerShell')) {
+        Invoke-Validator $Shell manifest 0
+    }
+
+    Invoke-NegativeCase {
+        param($M)
+        $M.status = 'Idle'
+    } 'ISG009'
+    Invoke-NegativeCase {
+        param($M)
+        $M.status = 'Ready'
+        $M.orderedTargets = @()
+        $M.roots = @()
+        $M.dependencies = @()
+    } 'ISG003'
 
     Invoke-NegativeCase { param($M) $M.orderedTargets[1].path = '../escape.md' } 'ISG003'
     Invoke-NegativeCase { param($M) $M.orderedTargets[1].path = 'intakes/a.md' } 'ISG003'

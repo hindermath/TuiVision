@@ -1,4 +1,4 @@
-.TH VALIDATE-INTAKE-SERIES-MANIFEST 1 "2026-07-25" "0.2.0"
+.TH VALIDATE-INTAKE-SERIES-MANIFEST 1 "2026-07-25" "0.2.2"
 .SH NAME
 validate-intake-series-manifest.sh \- validate an intake-series manifest
 .SH SYNOPSIS
@@ -8,5 +8,8 @@ validate-intake-series-manifest.sh \- validate an intake-series manifest
 Validates strict UTF-8, repository-relative target paths, normalized hashes,
 lifecycle states, roots, typed edges, declared order, and acyclicity without
 modifying files.
+.PP
+The explicit state Idle is valid only with zero targets, roots, and
+dependencies. Every other active lifecycle state requires a non-empty series.
 .SH EXIT STATUS
 Returns 0 for valid evidence and 2 for invalid input or drift.

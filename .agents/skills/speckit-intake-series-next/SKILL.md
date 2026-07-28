@@ -26,7 +26,8 @@ Select candidates only from a valid, current named series.
    evidence only and grants no implementation, push, PR, merge, bypass, or
    provider authority.
 4. Report all eligible targets in visible order. If none are eligible, report
-   each exact blocker and evidence path.
+   each exact blocker and evidence path. For a valid `Idle` series, report that
+   no active intake exists and do not treat this as an error.
 5. Distinguish preferred order and shared-writer serialization from binding
    functional dependencies.
 6. Revalidate downstream review freshness and user authority only when a later

@@ -15,3 +15,7 @@ When schema 2.0 is configured, resolve target paths through portable roles and
 collection paths before validating order. `RequirementsGovernanceGate` is a
 binding predecessor. Exactly one evidenced `Eligible` candidate may be
 preferred; eligibility never grants implementation or remote authority.
+
+Represent a repository without an active intake as `Idle` with zero targets,
+roots, and dependencies. Do not create a placeholder intake. Explain the idle
+state and the condition that will require a new series in text.

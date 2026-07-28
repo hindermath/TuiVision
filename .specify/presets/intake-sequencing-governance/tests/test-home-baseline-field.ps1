@@ -14,9 +14,9 @@ $Result = Get-Content -LiteralPath $ResultPath -Raw | ConvertFrom-Json -Depth 50
 if ($Request.mode -ne 'Series' -or $Result.status -ne 'Ready') {
     throw 'The accepted Home Baseline Series evidence is not Ready.'
 }
-if ($Request.targets.Count -ne 18 -or $Request.series.roots.Count -ne 1 -or
-    $Request.series.dependencies.Count -ne 28) {
-    throw 'Expected current cardinality is 18 targets, 1 root, and 28 dependencies.'
+if ($Request.targets.Count -ne 17 -or $Request.series.roots.Count -ne 6 -or
+    $Request.series.dependencies.Count -ne 22) {
+    throw 'Expected current cardinality is 17 targets, 6 roots, and 22 dependencies.'
 }
 
 $ResultByPath = @{}
@@ -66,7 +66,7 @@ try {
     & pwsh -NoProfile -File (Join-Path $PresetRoot 'scripts/validate-intake-series-manifest.ps1') `
         -File $ManifestPath -Repo $RepositoryRoot
     if ($LASTEXITCODE -ne 0) { throw 'PowerShell LegacyAdoption validation failed.' }
-    Write-Output 'PASS: Home Baseline Series (18 targets, 1 root, 28 dependencies)'
+    Write-Output 'PASS: Home Baseline Series (17 targets, 6 roots, 22 dependencies)'
 } finally {
     Remove-Item -LiteralPath $TempRoot -Recurse -Force -ErrorAction SilentlyContinue
 }
