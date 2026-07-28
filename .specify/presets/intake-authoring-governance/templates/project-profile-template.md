@@ -12,6 +12,9 @@
 - Text-first dependency, status, decision, and next-action rule:
 - URL-source rule:
 - Series target and ordering rule:
+- Requirements-governance configuration and portable role rule:
+- Active-inventory rule: `DirectoryStrict` or `SeriesManifest`
+- Existing-name and legacy-alias preservation rule:
 - Archive and tombstone rule:
 
 ## Required Sections
@@ -26,6 +29,17 @@ Define title, filename, identifier, predecessor, and series-order rules. State
 how ambiguity blocks authoring. A profile may lower URL and crawl limits but
 cannot enable HTTP, authentication, private targets, cross-origin crawling, or
 physical purge.
+
+For a consolidated requirements collection, declare one BCP-47 documentation
+language independently of implementation language and operating-system locale.
+Resolve the four portable roles, six collection paths, canonical index, order
+view, intake pattern, and bounded legacy aliases. Existing names remain unless
+separate, current rename authority is present.
+
+Use `DirectoryStrict` when the active directory contains only active intakes.
+Use `SeriesManifest` for an established flat or mixed layout whose
+hash-validated Series manifest is the authoritative active inventory. Neither
+mode permits manually maintained counts as evidence.
 
 ## Quality Gates
 

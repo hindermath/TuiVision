@@ -25,3 +25,15 @@ For a pre-preset target without a receipt, require `LegacyAdoption` with the
 prior normalized target hash and a Git-blob or snapshot proof boundary. Never
 invent a superseded receipt or treat general write permission as current
 update authority.
+# Requirements Collection Governance
+
+Use `requirements/intake-governance-config.json` schema 2.0 when a repository
+consolidates requirements. Documentation language is an explicit BCP-47 value,
+not the implementation language or operating-system locale. Resolve portable
+roles before localized names. Status is read-only; migration requires current
+explicit authority and a hash-bound operation journal. `Eligible` selects the
+next intake but grants no implementation or remote authority.
+
+*Use schema 2.0 for consolidated requirements collections. Resolve explicit
+documentation language and portable roles before names. Migration is atomic
+and authority-bound; eligibility grants no delivery permission.*

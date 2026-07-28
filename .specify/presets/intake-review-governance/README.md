@@ -1,14 +1,14 @@
 # Intake Review Governance Preset
 
 Optional, stackable intake-quality governance for GitHub Spec Kit. Version
-`0.1.2` provides three commands, eight templates, and read-only
+`0.2.0` provides three commands, eight templates, and read-only
 Bash/PowerShell validators. Series reviews use a schema-1.1 request binding
 with normalized SHA-256, explicit roots, complete target ordering, and
 validated acyclic dependency edges. Single and Campaign schema 1.0 results
 remain compatible. Recommended priority: `65`, between Agent Parity (`60`) and
 Autonomous Run Governance (`70`). Spec Kit `>=0.8.3` is required.
 
-Version `0.1.2` also reviews a project-declared learner contract. It verifies
+Version `0.2.0` also reviews a project-declared learner contract. It verifies
 audience and prior knowledge, first-use explanations, language and readability,
 and text-first dependencies, status, decisions, and next actions without
 making those project choices itself.
@@ -24,7 +24,7 @@ making those project choices itself.
 ## Install
 
 ```bash
-specify preset add --from https://github.com/hindermath/spec-kit-preset-intake-review-governance/archive/refs/tags/v0.1.2.zip --priority 65
+specify preset add --from https://github.com/hindermath/spec-kit-preset-intake-review-governance/archive/refs/tags/v0.2.0.zip --priority 65
 specify preset list
 specify preset resolve
 ```
@@ -43,3 +43,15 @@ An accepted Series result must use schema 1.1 and bind its repository-relative
 request through `requestEvidence`. The validators reject request drift,
 identity or role mismatch, incomplete ordering, unknown or duplicate edges,
 cycles, and roots that differ from the graph's zero-indegree targets.
+## Requirements Collections / Requirements-Sammlungen
+
+Version 0.2.0 reviews `requirements/intake-governance-config.json` schema 2.0
+together with the selected intake or Series. It validates BCP-47 documentation
+language, naming profile, portable artifact roles, resolved paths, computed
+inventory, canonical index, hashes, receipts, references, and eligibility.
+Implementation language and locale are not language evidence. `Ready` and
+`Eligible` grant no implementation or remote permission.
+
+*Version 0.2.0 prüft sprachbewusste Requirements-Sammlungen zusammen mit Intake
+oder Series. Dokumentationssprache, Rollen, Pfade, Hashes, Referenzen und
+Eligibility bleiben nachvollziehbar; Review-Erfolg ist keine Lieferfreigabe.*

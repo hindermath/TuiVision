@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "2.0",
+  "documentType": "IntakeGovernanceMigrationJournal",
+  "operationId": "00000000-0000-0000-0000-000000000000",
+  "state": "Proposed",
+  "authorityEvidence": "N/A",
+  "beforeSha256": "N/A",
+  "afterSha256": "N/A",
+  "moves": [],
+  "updatedReferences": [],
+  "validation": [],
+  "rollback": "N/A",
+  "repairBoundary": "N/A"
+}

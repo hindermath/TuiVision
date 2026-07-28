@@ -12,9 +12,13 @@ import uuid
 from pathlib import Path, PurePosixPath
 
 EDGE_TYPES = {
+    "RequirementsGovernanceGate",
     "HardCompletionGate",
     "AssessmentBaseline",
+    "AssuranceAuditBaseline",
+    "PublishedPresetBaseline",
     "SandboxBaseline",
+    "SecureDevelopmentBaseline",
     "DocumentationSurfaceBaseline",
     "CommentSurfaceBaseline",
     "FinalAuditInput",
@@ -199,6 +203,15 @@ def validate_manifest(path: Path, repo: Path) -> tuple[dict, dict]:
         else:
             eligible.append(target_path)
 
+    declared_eligible = [
+        target_path for target_path, target_status in target_states.items()
+        if target_status == "Eligible"
+    ]
+    if len(declared_eligible) > 1:
+        fail("ISG009", "at most one target may declare Eligible")
+    if declared_eligible and declared_eligible[0] not in eligible:
+        fail("ISG009", "declared Eligible target still has a binding blocker")
+
     summary = {
         "seriesId": series_id,
         "status": status,
@@ -206,6 +219,7 @@ def validate_manifest(path: Path, repo: Path) -> tuple[dict, dict]:
         "roots": len(roots),
         "dependencies": len(dependencies),
         "eligible": eligible,
+        "declaredEligible": declared_eligible,
         "blockers": blockers,
     }
     return data, summary

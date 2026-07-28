@@ -14,9 +14,9 @@ $Result = Get-Content -LiteralPath $ResultPath -Raw | ConvertFrom-Json -Depth 50
 if ($Request.mode -ne 'Series' -or $Result.status -ne 'Ready') {
     throw 'The accepted Home Baseline Series evidence is not Ready.'
 }
-if ($Request.targets.Count -ne 13 -or $Request.series.roots.Count -ne 6 -or
-    $Request.series.dependencies.Count -ne 15) {
-    throw 'Expected LegacyAdoption cardinality is 13 targets, 6 roots, and 15 dependencies.'
+if ($Request.targets.Count -ne 18 -or $Request.series.roots.Count -ne 1 -or
+    $Request.series.dependencies.Count -ne 28) {
+    throw 'Expected current cardinality is 18 targets, 1 root, and 28 dependencies.'
 }
 
 $ResultByPath = @{}
@@ -27,7 +27,7 @@ $Targets = foreach ($Path in $Request.series.orderedTargetPaths) {
         path = $Path
         role = $RequestTarget.role
         normalizedSha256 = $ResultByPath[$Path].normalizedSha256
-        status = 'Pending'
+        status = if ($Path -eq $Request.series.orderedTargetPaths[0]) { 'Eligible' } else { 'Blocked' }
     }
 }
 $Dependencies = foreach ($Dependency in $Request.series.dependencies) {
@@ -42,7 +42,7 @@ $Manifest = [ordered]@{
     schemaVersion = '1.0'
     documentType = 'IntakeSeriesManifest'
     seriesId = $Request.reviewId
-    title = 'Home Baseline active intake LegacyAdoption'
+    title = 'Home Baseline active requirements-governance series'
     policy = $Request.policy
     status = 'Ready'
     orderedTargets = @($Targets)
@@ -66,7 +66,7 @@ try {
     & pwsh -NoProfile -File (Join-Path $PresetRoot 'scripts/validate-intake-series-manifest.ps1') `
         -File $ManifestPath -Repo $RepositoryRoot
     if ($LASTEXITCODE -ne 0) { throw 'PowerShell LegacyAdoption validation failed.' }
-    Write-Output 'PASS: Home Baseline LegacyAdoption (13 targets, 6 roots, 15 dependencies)'
+    Write-Output 'PASS: Home Baseline Series (18 targets, 1 root, 28 dependencies)'
 } finally {
     Remove-Item -LiteralPath $TempRoot -Recurse -Force -ErrorAction SilentlyContinue
 }

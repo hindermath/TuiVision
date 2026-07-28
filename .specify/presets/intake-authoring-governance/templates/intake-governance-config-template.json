@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "2.0",
+  "documentationLanguage": "de-DE",
+  "artifactNaming": {
+    "profile": "de",
+    "canonicalIndex": "Pflichtenheft.md",
+    "intakePattern": "Lastenheft_<slug>.md",
+    "orderView": "Lastenheft_Abarbeitungsreihenfolge.md"
+  },
+  "roles": {
+    "requirements-index": "Pflichtenheft.md",
+    "requirements-intake": "requirements/intakes/active",
+    "intake-order": "Lastenheft_Abarbeitungsreihenfolge.md",
+    "requirements-baseline": "requirements/baseline"
+  },
+  "collections": {
+    "baseline": "requirements/baseline",
+    "active": "requirements/intakes/active",
+    "archive": "requirements/intakes/archive",
+    "backlog": "requirements/intakes/backlog",
+    "history": "requirements/intakes/history",
+    "seriesManifest": "requirements/intakes/series/manifest.json"
+  },
+  "legacyArtifactNames": [],
+  "inventoryMode": "DirectoryStrict"
+}

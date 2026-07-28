@@ -21,12 +21,16 @@ Select candidates only from a valid, current named series.
 1. Run the read-only status contract first.
 2. A target is eligible only when its lifecycle permits selection and every
    binding predecessor is `Completed`.
-3. Report all eligible targets in visible order. If none are eligible, report
+3. Require exactly one `Eligible` target when the manifest declares a preferred
+   next intake. More than one is invalid. An eligible result is ordering
+   evidence only and grants no implementation, push, PR, merge, bypass, or
+   provider authority.
+4. Report all eligible targets in visible order. If none are eligible, report
    each exact blocker and evidence path.
-4. Distinguish preferred order and shared-writer serialization from binding
+5. Distinguish preferred order and shared-writer serialization from binding
    functional dependencies.
-5. Revalidate downstream review freshness and user authority only when a later
+6. Revalidate downstream review freshness and user authority only when a later
    command is separately invoked.
-6. Never start Intake Review, Specify, Autonomous, or Parallel Autonomous.
+7. Never start Intake Review, Specify, Autonomous, or Parallel Autonomous.
 
 Finish with a copy-ready suggested command only; do not execute it.

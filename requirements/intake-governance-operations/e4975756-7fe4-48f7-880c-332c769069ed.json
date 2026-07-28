@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "2.0",
+  "documentType": "IntakeGovernanceMigrationJournal",
+  "operationId": "e4975756-7fe4-48f7-880c-332c769069ed",
+  "state": "Completed",
+  "authorityEvidence": "Feature 014 MergeAndSync pilot authority",
+  "beforeSha256": "N/A",
+  "afterSha256": "133fc3f461d08d8aec42f7505ed1878bc4c5672a116d4fc98ef748c5367e2836",
+  "moves": [],
+  "updatedReferences": [],
+  "validation": [
+    "Existing seven-target Series and all intake content hashes preserved",
+    "Bash and PowerShell schema-2.0 validators passed"
+  ],
+  "rollback": "Remove the new configuration and this journal; no intake content moved.",
+  "repairBoundary": "N/A"
+}

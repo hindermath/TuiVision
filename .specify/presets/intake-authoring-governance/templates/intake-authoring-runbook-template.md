@@ -74,3 +74,20 @@ Multi-target Create, Update, and Delete operations are prepared in an operation
 directory. Every target, receipt, coverage row, lineage relation, root, and edge
 must validate before any active member changes. Failure leaves prior active
 state untouched and an explicit incomplete operation boundary.
+
+## Requirements Collection Migration
+
+Use `requirements/intake-governance-config.json` schema 2.0 as the portable
+source of documentation language, naming, roles, collection paths, aliases, and
+the active Series manifest. Status reports `Aligned`, `MigrationRequired`,
+`NeedsClarification`, or `Blocked` without writes.
+
+`DirectoryStrict` requires every matching file in the active directory to occur
+exactly once in the Series. `SeriesManifest` preserves an established flat or
+mixed layout and treats the validated Series target set as the active inventory.
+Both modes compute counts and hashes; neither trusts hand-maintained totals.
+
+An authorized migration records before/after hashes, moves, reference updates,
+validation, rollback, and any repair boundary in an operation journal. Publish
+the configuration, index, manifest, receipts, prompts, guidance, and links as
+one transaction. A partial failure must roll back or end as `NeedsRepair`.

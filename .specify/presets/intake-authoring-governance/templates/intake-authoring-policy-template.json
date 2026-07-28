@@ -7,6 +7,13 @@
   "profiles": {},
   "languagePolicy": "RepositoryPolicyOrDominantSource",
   "defaultDeliveryAuthority": "LocalImplementation",
+  "requirementsGovernance": {
+    "configPath": "requirements/intake-governance-config.json",
+    "schemaVersion": "2.0",
+    "migrationJournalDirectory": "requirements/intake-governance-operations",
+    "preserveExistingNamesWithoutRenameAuthority": true,
+    "requireExactlyOneEligibleCandidate": true
+  },
   "maximumQuestionsPerPass": 5,
   "allowExternalSources": true,
   "allowPublicHttpsSources": true,

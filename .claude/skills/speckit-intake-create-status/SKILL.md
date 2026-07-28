@@ -36,9 +36,17 @@ This command is strictly read-only.
    response hash.
 7. Hash the receipt again and verify Git status for the inspected paths. Any
    mutation makes the status check fail.
-8. Classify the result as `Current`, `SourceDrift`, `TargetDrift`, `UrlDrift`,
-   `NeedsClarification`, `InvalidReceipt`, or `Missing`.
+8. If `requirements/intake-governance-config.json` exists, run the installed
+   configuration validator read-only. Resolve BCP-47 documentation language,
+   naming profile, four portable roles, collection paths, legacy aliases,
+   computed inventory, canonical index, and Series evidence. Do not infer
+   documentation language from implementation language or locale.
+9. Classify a requirements collection as exactly `Aligned`,
+   `MigrationRequired`, `NeedsClarification`, or `Blocked`. Preserve the
+   existing receipt-level classifications when no requirements collection is
+   selected.
 
 Finish with classification, target, receipt, source freshness, prompt state,
-delivery authority, validation exit, and exact next action. Never repair,
-review, run Specify, or start an autonomous command implicitly.
+delivery authority, resolved requirements roles when applicable, validation
+exit, and exact next action. Never repair, review, run Specify, or start an
+autonomous command implicitly.

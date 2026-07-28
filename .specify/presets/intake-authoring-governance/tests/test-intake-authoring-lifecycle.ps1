@@ -102,7 +102,7 @@ try {
     Write-HBText $Target (New-HBIntake $TargetRelative)
     $Receipt = [ordered]@{
         schemaVersion = '2.0'; documentType = 'IntakeReceipt'; receiptId = $ReceiptId; intakeId = $IntakeId
-        generator = [ordered]@{ preset = 'intake-authoring-governance'; version = '0.2.1' }
+        generator = [ordered]@{ preset = 'intake-authoring-governance'; version = '0.3.0' }
         createdAt = [DateTimeOffset]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')
         operation = [ordered]@{ operationId = $OperationId; type = 'Create'; authorityEvidence = 'Explicit fixture create' }
         status = 'ReadyForReview'

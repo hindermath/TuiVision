@@ -1,16 +1,16 @@
 # Intake Authoring Governance Preset
 
 Optional, stackable intake-authoring governance for GitHub Spec Kit. Version
-`0.2.1` governs traceable intake Create, Read, Update, logical Delete, bounded
+`0.3.0` governs traceable intake Create, Read, Update, logical Delete, bounded
 public HTTPS sources, and explicitly approved intake series.
 
-Version `0.2.1` carries a project-profile learner contract into new or updated
+Version `0.3.0` carries a project-profile learner contract into new or updated
 intakes: declared audience, assumed prior knowledge, first-use terminology, and
 text-first dependencies, status, decisions, and next actions. It does not
 hard-code a country, occupation, or language into the portable preset.
 
 *Optional, stackable intake-authoring governance for GitHub Spec Kit. Version
-`0.2.1` governs traceable intake Create, Read, Update, logical Delete, bounded
+`0.3.0` governs traceable intake Create, Read, Update, logical Delete, bounded
 public HTTPS sources, and explicitly approved intake series.*
 
 Recommended priority: `64`, after Agent Parity (`60`) and before Intake Review
@@ -42,7 +42,7 @@ push, pull request, or merge.
 - `$speckit-intake-update`: aktualisiert ausdrücklich einen aktiven Intake oder
   migriert eine freigegebene Serie.
 - `$speckit-intake-delete`: archiviert aktive Artefakte und erzeugt einen
-  Tombstone; v0.2.1 besitzt keinen Purge.
+  Tombstone; v0.3.0 besitzt keinen Purge.
 - `$speckit-intake-create-status`: prueft Receipt, Ziel, lokale Quellen und
   Prompt-Zustand read-only.
 
@@ -54,7 +54,7 @@ and freshness without writing.*
 
 ```bash
 specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/archive/refs/tags/v0.2.1.zip \
+  --from https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/archive/refs/tags/v0.3.0.zip \
   --priority 64
 specify preset list
 specify preset info intake-authoring-governance
@@ -188,7 +188,7 @@ Lösch-Evidence gespeichert. Historie, Archive und Tombstones werden nie
 gepurgt.
 
 *Delete is logical. It archives target and receipt byte-for-byte before
-removing active files and writes a validated tombstone. v0.2.1 has no purge.*
+removing active files and writes a validated tombstone. v0.3.0 has no purge.*
 
 ### Legacy adoption / Uebernahme bestehender Intakes
 
@@ -299,6 +299,41 @@ and migrate only on an explicit update.
 an Intake Review result. `NeedsClarification` means the saved document is a
 blocked draft.
 
+## Sprachbewusste Requirements-Sammlungen / Language-Aware Requirements Collections
+
+Version 0.3.0 beschreibt bestehende Requirements-Sammlungen mit
+`requirements/intake-governance-config.json` Schema 2.0. Die
+**Dokumentationssprache** ist die Sprache der fachlichen Dokumente. Sie wird als
+BCP-47-Wert wie `de-DE` oder `en` angegeben und bleibt unabhängig von
+Programmiersprache und Betriebssystem.
+
+Vier stabile Rollen vermeiden fest eingebaute deutsche Dateinamen:
+
+- `requirements-index`: kanonischer Einstieg;
+- `requirements-intake`: aktiver, begrenzter Arbeitsauftrag;
+- `intake-order`: lesbare Reihenfolge;
+- `requirements-baseline`: unveränderliche historische Grundlage.
+
+Die Profile `de` und `en` liefern deterministische Namen. Ein explizites Profil
+muss alle sichtbaren Namen angeben. Status meldet read-only `Aligned`,
+`MigrationRequired`, `NeedsClarification` oder `Blocked`. Eine Migration läuft
+nur über `$speckit-intake-update`, benötigt aktuelle Autorität und ein
+Operationsjournal. Sie aktualisiert Referenzen atomar oder endet nach Rollback
+beziehungsweise als `NeedsRepair`.
+
+`DirectoryStrict` prueft ein Verzeichnis, das nur aktive Intakes enthaelt.
+`SeriesManifest` bewahrt vorhandene flache oder gemischte Ablagen und verwendet
+die hashgebundene Zielmenge des Serienmanifests als aktiven Bestand. Beide Modi
+berechnen Bestandszahlen; handgepflegte Zaehler sind keine Evidence.
+
+*Version 0.3.0 describes requirements collections with schema 2.0.
+Documentation language is explicit and independent from implementation
+language and locale. Portable roles resolve localized names. Migration is
+authority-bound, hash-bound, and atomic. `Eligible` selects order but grants no
+implementation or remote authority. `DirectoryStrict` validates a dedicated
+active directory; `SeriesManifest` supports established flat or mixed layouts
+without trusting manual counts.*
+
 ## Status / Statuspruefung
 
 ```text
@@ -313,6 +348,9 @@ Status is read-only and reports one of:
 - `NeedsClarification`
 - `InvalidReceipt`
 - `Missing`
+
+For a configured requirements collection it instead reports exactly
+`Aligned`, `MigrationRequired`, `NeedsClarification`, or `Blocked`.
 
 Inline and external sources are snapshot-only after creation. Status reports
 that proof boundary rather than pretending to re-read an unavailable path.

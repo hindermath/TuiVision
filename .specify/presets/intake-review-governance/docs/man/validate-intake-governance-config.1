@@ -1,0 +1,22 @@
+.TH VALIDATE-INTAKE-GOVERNANCE-CONFIG 1 "2026-07-28" "0.2.0"
+.SH NAME
+validate-intake-governance-config \- validate language-aware requirements governance
+.SH SYNOPSIS
+.B validate-intake-governance-config.sh
+.BI --config " FILE"
+.RI [ --repo " PATH" ]
+.RI [ --json ]
+.PP
+.B validate-intake-governance-config.sh
+.BI --journal " FILE"
+.RI [ --json ]
+.SH DESCRIPTION
+Validates schema 2.0 documentation language, naming profiles, portable roles,
+collection paths, legacy aliases, and migration journals without modifying the
+repository.
+.SH OUTCOMES
+Configured collections report Aligned, MigrationRequired, NeedsClarification,
+or Blocked. Eligibility is an ordering result and grants no delivery authority.
+.SH EXIT STATUS
+Zero means Aligned or a valid journal. One means migration or clarification is
+required. Two means blocked or invalid input.
