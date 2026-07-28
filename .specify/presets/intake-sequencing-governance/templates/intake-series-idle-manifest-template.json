@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeriesManifest",
+  "seriesId": "00000000-0000-4000-8000-000000000000",
+  "title": "Idle intake series",
+  "policy": "repository-policy",
+  "status": "Idle",
+  "orderedTargets": [],
+  "roots": [],
+  "dependencies": [],
+  "evidencePaths": [
+    "Pflichtenheft.md",
+    "Lastenheft_Abarbeitungsreihenfolge.md"
+  ]
+}

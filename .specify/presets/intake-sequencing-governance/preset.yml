@@ -3,7 +3,7 @@ schema_version: "1.0"
 preset:
   id: "intake-sequencing-governance"
   name: "Intake Sequencing Governance"
-  version: "0.2.0"
+  version: "0.2.2"
   description: "Manages language-aware intake-series order, typed dependencies, lifecycle, and authority-neutral next-candidate selection."
   author: "Thorsten Hindermann"
   repository: "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance"
@@ -16,6 +16,7 @@ provides:
   templates:
     - {type: "template", name: "intake-series-policy-template", file: "templates/intake-series-policy-template.json", description: "Project policy for series paths, edge types, lifecycle, and authority"}
     - {type: "template", name: "intake-series-manifest-template", file: "templates/intake-series-manifest-template.json", description: "Ordered targets, roots, typed dependencies, and lifecycle"}
+    - {type: "template", name: "intake-series-idle-manifest-template", file: "templates/intake-series-idle-manifest-template.json", description: "Explicit empty-series state for repositories without an active intake"}
     - {type: "template", name: "intake-series-receipt-template", file: "templates/intake-series-receipt-template.json", description: "Manifest hash, operation authority, lineage, and validation outcome"}
     - {type: "template", name: "intake-series-operation-template", file: "templates/intake-series-operation-template.json", description: "Transactional multi-file operation journal"}
     - {type: "template", name: "intake-series-tombstone-template", file: "templates/intake-series-tombstone-template.json", description: "Logical deletion and archive proof"}

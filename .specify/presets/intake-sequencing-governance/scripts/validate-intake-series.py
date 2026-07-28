@@ -26,7 +26,7 @@ EDGE_TYPES = {
     "SharedWriterSerialization",
 }
 BINDING_TYPES = EDGE_TYPES - {"PreferredSerialOrder", "SharedWriterSerialization"}
-SERIES_STATES = {"Draft", "NeedsClarification", "Ready", "Active", "Completed", "Deleted"}
+SERIES_STATES = {"Draft", "NeedsClarification", "Ready", "Active", "Idle", "Completed", "Deleted"}
 TARGET_STATES = {"Pending", "Blocked", "Eligible", "Active", "Completed", "Withdrawn"}
 
 
@@ -102,7 +102,24 @@ def validate_manifest(path: Path, repo: Path) -> tuple[dict, dict]:
         fail("ISG009", f"unknown series status: {status}")
 
     targets = data.get("orderedTargets")
-    if not isinstance(targets, list) or not targets:
+    if not isinstance(targets, list):
+        fail("ISG003", "orderedTargets must be an array")
+    roots = data.get("roots")
+    dependencies = data.get("dependencies")
+    if status == "Idle":
+        if targets or roots != [] or dependencies != []:
+            fail("ISG009", "Idle requires zero targets, roots, and dependencies")
+        return data, {
+            "seriesId": series_id,
+            "status": status,
+            "targets": 0,
+            "roots": 0,
+            "dependencies": 0,
+            "eligible": [],
+            "declaredEligible": [],
+            "blockers": {},
+        }
+    if not targets:
         fail("ISG003", "orderedTargets must be a non-empty array")
     paths: list[str] = []
     target_states: dict[str, str] = {}
@@ -127,13 +144,11 @@ def validate_manifest(path: Path, repo: Path) -> tuple[dict, dict]:
         paths.append(target_path)
         target_states[target_path] = target_status
 
-    roots = data.get("roots")
     if not isinstance(roots, list) or len(roots) != len(set(roots)):
         fail("ISG008", "roots must be a unique string array")
     if any(not isinstance(root, str) or root not in paths for root in roots):
         fail("ISG008", "roots contain an unknown target")
 
-    dependencies = data.get("dependencies")
     if not isinstance(dependencies, list):
         fail("ISG005", "dependencies must be an array")
     order = {target_path: index for index, target_path in enumerate(paths)}

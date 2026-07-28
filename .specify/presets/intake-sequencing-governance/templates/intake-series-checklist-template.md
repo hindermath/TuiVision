@@ -8,7 +8,10 @@
 - [ ] Every edge uses an accepted type and correct binding flag.
 - [ ] `RequirementsGovernanceGate` is used only for a binding predecessor that
       must complete before the dependent intake becomes eligible.
-- [ ] Exactly one current target is `Eligible`; eligibility grants no delivery authority.
+- [ ] A non-idle series has exactly one current `Eligible` target; eligibility
+      grants no delivery authority.
+- [ ] An `Idle` series has zero targets, roots, dependencies, and eligible
+      candidates.
 - [ ] The graph is order-consistent and acyclic.
 - [ ] Material ambiguity is recorded as `NeedsClarification`.
 - [ ] Write authority is current and bounded.
