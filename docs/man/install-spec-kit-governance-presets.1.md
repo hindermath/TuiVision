@@ -66,15 +66,15 @@ combined with `--force` / `-Force` or `--dry-run` / `-WhatIf`.*
 ```bash
 bash scripts/install-spec-kit-governance-presets.sh --dry-run
 bash scripts/install-spec-kit-governance-presets.sh --check-only
-bash scripts/install-spec-kit-governance-presets.sh --repo ~/SecureCaseTrackerProjects/SecureCaseTracker-CSharp
-bash scripts/install-spec-kit-governance-presets.sh --repo ~/SecureCaseTrackerProjects/SecureCaseTracker-CSharp --force
+bash scripts/install-spec-kit-governance-presets.sh --repo ~/secure-casetracker-baseline/securecasetracker-csharp
+bash scripts/install-spec-kit-governance-presets.sh --repo ~/secure-casetracker-baseline/securecasetracker-csharp --force
 ```
 
 ```powershell
 pwsh -NoProfile -File scripts/install-spec-kit-governance-presets.ps1 -WhatIf
 pwsh -NoProfile -File scripts/install-spec-kit-governance-presets.ps1 -CheckOnly
-pwsh -NoProfile -File scripts/install-spec-kit-governance-presets.ps1 -Repo ~/SecureCaseTrackerProjects/SecureCaseTracker-CSharp
-pwsh -NoProfile -File scripts/install-spec-kit-governance-presets.ps1 -Repo ~/SecureCaseTrackerProjects/SecureCaseTracker-CSharp -Force
+pwsh -NoProfile -File scripts/install-spec-kit-governance-presets.ps1 -Repo ~/secure-casetracker-baseline/securecasetracker-csharp
+pwsh -NoProfile -File scripts/install-spec-kit-governance-presets.ps1 -Repo ~/secure-casetracker-baseline/securecasetracker-csharp -Force
 ```
 
 ## Nachweis / Evidence

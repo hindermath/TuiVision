@@ -51,7 +51,7 @@ pwsh -NoProfile -File scripts/install-spec-kit-governance-presets.ps1 -WhatIf
 pwsh -NoProfile -File scripts/install-spec-kit-governance-presets.ps1 -CheckOnly
 
 .EXAMPLE
-pwsh -NoProfile -File scripts/install-spec-kit-governance-presets.ps1 -Repo ~/SecureCaseTrackerProjects/SecureCaseTracker-CSharp -Force
+pwsh -NoProfile -File scripts/install-spec-kit-governance-presets.ps1 -Repo ~/secure-casetracker-baseline/securecasetracker-csharp -Force
 #>
 [CmdletBinding(SupportsShouldProcess)]
 param(
