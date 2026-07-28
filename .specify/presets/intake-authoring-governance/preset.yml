@@ -3,8 +3,8 @@ schema_version: "1.0"
 preset:
   id: "intake-authoring-governance"
   name: "Intake Authoring Governance"
-  version: "0.2.1"
-  description: "Governs traceable intake CRUD, bounded public HTTPS sources, and explicitly approved single or series authoring."
+  version: "0.3.0"
+  description: "Governs traceable intake CRUD, language-aware requirements collections, bounded public HTTPS sources, and explicitly approved single or series authoring."
   author: "Thorsten Hindermann"
   repository: "https://github.com/hindermath/spec-kit-preset-intake-authoring-governance"
   license: "MIT"
@@ -14,6 +14,14 @@ requires:
 
 provides:
   templates:
+    - type: "template"
+      name: "intake-governance-config-template"
+      file: "templates/intake-governance-config-template.json"
+      description: "Schema-2.0 language, naming, role, collection, and legacy-alias contract"
+    - type: "template"
+      name: "intake-governance-migration-journal-template"
+      file: "templates/intake-governance-migration-journal-template.json"
+      description: "Hash-bound atomic migration, rollback, and repair evidence"
     - type: "template"
       name: "intake-authoring-policy-template"
       file: "templates/intake-authoring-policy-template.json"

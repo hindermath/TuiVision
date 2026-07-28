@@ -1,7 +1,7 @@
 # Intake Sequencing Governance
 
 Optional Spec Kit preset for managing the order and lifecycle of existing
-intakes. Version `0.1.1` uses priority `66`: after Intake Review at `65` and
+intakes. Version `0.2.0` uses priority `66`: after Intake Review at `65` and
 before Autonomous Run at `70`.
 
 ## Why This Preset Exists
@@ -11,7 +11,7 @@ delivery order. This preset stores both a learner-readable order and a
 machine-checkable typed graph. It never writes intake content and never starts
 the work it selects.
 
-Version `0.1.1` preserves the project-declared learner contract in the readable
+Version `0.2.0` preserves the project-declared learner contract in the readable
 order: audience, prior knowledge, language and readability, first-use terms,
 and a normative text representation of dependencies, blockers, status,
 decisions, and next actions.
@@ -20,7 +20,7 @@ decisions, and next actions.
 
 ```bash
 specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/archive/refs/tags/v0.1.1.zip \
+  --from https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/archive/refs/tags/v0.2.0.zip \
   --priority 66
 ```
 
@@ -70,3 +70,12 @@ text. Color or a graphical diagram is never the only information carrier.
 The preset composes with Intake Authoring `64`, Intake Review `65`, Autonomous
 Run `70`, and Parallel Autonomous `80`. Priority controls merge order only; it
 does not grant execution or remote authority.
+`RequirementsGovernanceGate` is a binding predecessor used when one shared
+requirements migration must finish before existing roots are released. Under
+schema 2.0, target paths are resolved from portable roles and collection paths.
+At most one target may explicitly declare `Eligible`; that state selects order
+only and grants no implementation or remote authority.
+
+*`RequirementsGovernanceGate` sperrt bestehende Roots bis zum gemeinsamen
+Requirements-Abschluss. Schema 2.0 löst Pfade über Rollen auf. Höchstens ein
+Ziel darf `Eligible` sein; daraus entstehen keine Lieferrechte.*

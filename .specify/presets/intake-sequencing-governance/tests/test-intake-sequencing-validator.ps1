@@ -62,7 +62,7 @@ function Reset-Fixture {
         )
         roots = @('intakes/a.md')
         dependencies = @(
-            [ordered]@{ from = 'intakes/a.md'; to = 'intakes/b.md'; kind = 'HardCompletionGate'; binding = $true }
+            [ordered]@{ from = 'intakes/a.md'; to = 'intakes/b.md'; kind = 'RequirementsGovernanceGate'; binding = $true }
             [ordered]@{ from = 'intakes/b.md'; to = 'intakes/c.md'; kind = 'AssessmentBaseline'; binding = $true }
         )
         evidencePaths = @()
@@ -73,7 +73,7 @@ function Reset-Fixture {
         documentType = 'IntakeSeriesReceipt'
         receiptId = '22222222-2222-4222-8222-222222222222'
         seriesId = $script:Manifest.seriesId
-        generator = [ordered]@{ preset = 'intake-sequencing-governance'; version = '0.1.1' }
+        generator = [ordered]@{ preset = 'intake-sequencing-governance'; version = '0.2.0' }
         createdAt = '2026-07-25T00:00:00Z'
         operation = [ordered]@{
             operationId = '33333333-3333-4333-8333-333333333333'
@@ -137,6 +137,11 @@ try {
     Invoke-NegativeCase { param($M) $M.roots = @('intakes/a.md', 'intakes/b.md') } 'ISG008'
     Invoke-NegativeCase { param($M) $M.roots = @('intakes/a.md', 'intakes/a.md') } 'ISG008'
     Invoke-NegativeCase { param($M) $M.orderedTargets[0].status = 'Unknown' } 'ISG009'
+    Invoke-NegativeCase {
+        param($M)
+        $M.orderedTargets[0].status = 'Eligible'
+        $M.orderedTargets[1].status = 'Eligible'
+    } 'ISG009'
 
     Reset-Fixture
     $script:Receipt.manifest.normalizedSha256 = '0' * 64

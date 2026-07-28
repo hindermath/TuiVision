@@ -24,6 +24,9 @@ invoke the installed validator with the repository root, and report:
 - findings, questions, accepted-risk ownership, and re-evaluation triggers;
 - series and campaign coverage, including unique intake and worker counts;
 - for Series mode, request hash, root set, target order, edge count, and DAG validity;
+- for schema-2.0 requirements collections, language, profile, portable roles,
+  resolved paths, computed inventory, canonical index count, and eligible
+  candidate;
 - whether Preset 7 or Preset 8 may consume the result under current policy;
 - the exact next command.
 

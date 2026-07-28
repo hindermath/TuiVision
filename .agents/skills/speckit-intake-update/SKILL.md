@@ -42,9 +42,18 @@ Update is the only normal command that changes an active intake.
    crawl, temporary-source, prompt-safety, and context-limit rules as Create.
 9. Prepare and validate all outputs transactionally before publishing active
    changes. A failure leaves prior active artifacts unchanged.
-10. Supersede any old Intake Review result explicitly. Never report an old
-    review as current after target or series drift.
-11. Run both installed validators before completion.
+10. A requirements-collection migration uses
+    `requirements/intake-governance-config.json` schema 2.0 and an operation
+    journal. Resolve language, names, roles, collection paths, and legacy
+    aliases before mutation. Record before/after hashes, moves, reference
+    updates, validations, rollback, and repair boundary. Existing names remain
+    unchanged without separate rename authority.
+11. Publish configuration, index, manifest, receipts, prompts, agent guidance,
+    and links atomically. A partial failure must roll back completely or end as
+    `NeedsRepair`; never report a mixed state as success.
+12. Supersede any old Intake Review result explicitly. Never report an old
+   review as current after target or series drift.
+13. Run both installed validators before completion.
 
 Finish with updated identities, old/new hashes, lineage, archive paths,
 validation, review invalidation, and exactly one Intake Review next action.

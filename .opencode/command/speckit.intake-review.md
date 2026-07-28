@@ -33,16 +33,21 @@ exist. Use the installed policy and checklist.
    intake, every worker applicability row, repository/language/stack fit,
    manifest DAG/base/handoff agreement, and separately governed operator
    exceptions.
-5. In interactive mode ask at most five material questions per pass, exactly
+5. When `requirements/intake-governance-config.json` is in scope, validate
+   schema 2.0 first. Review explicit BCP-47 documentation language, resolved
+   naming profile, four portable roles, collection paths, bounded legacy
+   aliases, computed inventory, canonical index, hashes, receipts, references,
+   and the distinction between `Eligible` and delivery authority.
+6. In interactive mode ask at most five material questions per pass, exactly
    one at a time. In batch mode record blockers and do not guess.
-6. Assign stable finding IDs, severity, category, owner, evidence, disposition,
+7. Assign stable finding IDs, severity, category, owner, evidence, disposition,
    and re-evaluation trigger. Outcomes are exactly `Ready`,
    `ReadyWithAcceptedRisks`, `NeedsClarification`, `NeedsRemediation`, or
    `Rejected`.
-7. Critical or High findings block. `ReadyWithAcceptedRisks` permits only
+8. Critical or High findings block. `ReadyWithAcceptedRisks` permits only
    Medium/Low risks with human owner, rationale, acceptance date, evidence, and
    re-evaluation trigger. An autonomous agent never accepts risk.
-8. Write the machine-readable result and readable report outside the reviewed
+9. Write the machine-readable result and readable report outside the reviewed
    target files, then validate the result with the installed Bash or PowerShell
    validator. Supersede older results explicitly; never silently overwrite
    their audit meaning.

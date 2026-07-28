@@ -49,6 +49,15 @@ per `from/to` pair, follows the declared order, and participates in an acyclic
 graph. Never invent a predecessor when repository evidence is ambiguous;
 return `NeedsClarification`.
 
+## Requirements Collection Contract
+
+When `requirements/intake-governance-config.json` exists, validate schema 2.0
+before semantic review. The explicit BCP-47 documentation language, naming
+profile, four portable roles, collection paths, bounded aliases, canonical
+index, current hashes, active Series inventory, and exactly one evidenced
+`Eligible` candidate must agree. Eligibility selects the next intake but grants
+no implementation or remote-delivery authority.
+
 ## Consumer Contract
 
 Preset 7 and Preset 8 remain usable without this optional preset. When the

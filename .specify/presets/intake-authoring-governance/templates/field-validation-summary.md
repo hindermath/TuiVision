@@ -1,5 +1,7 @@
 # Field Validation Summary
 
+Version: `0.3.0`
+
 ## Package Validation / Paketvalidierung
 
 - Bootstrap intake review: `Ready`, with no open finding or question.
@@ -13,7 +15,13 @@
   archive-and-tombstone deletion passed in Bash and PowerShell. Private URL
   targets, invalid roots, partial publication, and active targets after delete
   failed as required.
-- Ten-preset development stack: installation, `list`, `info`, `resolve`,
+- Requirements-collection proof: German, bilingual, and explicit naming
+  profiles passed with four portable roles, six collection paths, one
+  canonical index, complete active inventory, current normalized hashes, and
+  exactly one `Eligible` candidate. Schema 1.0, ambiguous language, path
+  traversal, duplicate collections, empty manifests, hash drift, and multiple
+  eligible candidates failed with stable error classes.
+- Eleven-preset development stack: installation, `list`, `info`, `resolve`,
   disable, enable, remove, and reinstall passed with priorities `10` through
   `80` and Authoring at `64`.
 - Agent parity: Claude, OpenCode, Antigravity, Copilot, and Codex each expose
@@ -30,8 +38,8 @@
   Autonomous or Parallel Autonomous run state; authoring started neither run.
 
 *Der Bootstrap-Review, beide Validatorfamilien, die Git-Blob- und
-Snapshot-Altuebernahme, Schema 2.0 mit URL-, Series-, Transaktions- und
-Tombstone-Nachweis, der Zehn-Preset-Stack, alle fuenf gepflegten
+Snapshot-Altuebernahme, Schema 2.0 mit URL-, Requirements-, Series-,
+Transaktions- und Tombstone-Nachweis, der Elf-Preset-Stack, alle fuenf gepflegten
 Agentenoberflaechen und die unabhaengige Uebergabe an Intake Review sind
 erfolgreich geprueft. Der Test startete keinen nachgelagerten Lauf und besass
 kein Git-Remote.*

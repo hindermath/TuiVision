@@ -5,9 +5,13 @@
   "requireExplicitWriteAuthority": true,
   "allowPhysicalPurge": false,
   "allowedEdgeTypes": [
+    "RequirementsGovernanceGate",
     "HardCompletionGate",
     "AssessmentBaseline",
+    "AssuranceAuditBaseline",
+    "PublishedPresetBaseline",
     "SandboxBaseline",
+    "SecureDevelopmentBaseline",
     "DocumentationSurfaceBaseline",
     "CommentSurfaceBaseline",
     "FinalAuditInput",

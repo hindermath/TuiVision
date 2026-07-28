@@ -18,6 +18,12 @@
 
 ## Series
 
+- [ ] Schema-2.0 documentation language is explicit and independent of
+      implementation language and locale.
+- [ ] Naming profile, four portable roles, six collection paths, canonical
+      index, bounded aliases, and computed inventory agree.
+- [ ] Every active intake occurs once in the configured Series with a current
+      normalized SHA-256; exactly one candidate is `Eligible`.
 - [ ] IDs, order, dependency graph, handoffs, and future-scope boundaries are consistent.
 - [ ] Schema 1.1 binds the repository-relative request path and normalized SHA-256.
 - [ ] Every target occurs exactly once in `orderedTargetPaths`.
