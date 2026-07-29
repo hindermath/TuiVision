@@ -1,0 +1,80 @@
+name: Maintenance TUI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Maintenance TUI (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, macos-14, windows-2022]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - name: Install .NET 10 SDK
+        uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d # v5.0.0
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Install Python
+        uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0
+        with:
+          python-version: "3.13"
+
+      - name: Restore locked projects
+        shell: pwsh
+        run: |
+          dotnet restore scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/HomeBaseline.MaintenanceTui.csproj --locked-mode
+          dotnet restore scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/HomeBaseline.MaintenanceTui.Tests.csproj --locked-mode
+
+      - name: Build maintenance TUI
+        shell: pwsh
+        run: dotnet build scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/HomeBaseline.MaintenanceTui.csproj --configuration Release --no-restore
+
+      - name: Test maintenance TUI
+        shell: pwsh
+        run: dotnet test scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/HomeBaseline.MaintenanceTui.Tests.csproj --configuration Release --no-restore
+
+      - name: test-maintenance-tui-wrappers (macOS and Ubuntu)
+        if: runner.os != 'Windows'
+        shell: bash
+        run: python3 -m unittest scripts.tests.test_maintenance_tui_wrappers -v
+
+      - name: test-maintenance-tui-wrappers (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: python -m unittest scripts.tests.test_maintenance_tui_wrappers -v
+
+      - name: Run full maintenance regressions (macOS and Ubuntu)
+        if: runner.os != 'Windows'
+        shell: bash
+        run: python3 -m unittest discover -s scripts/tests -p 'test_*.py'
+
+      - name: Run full maintenance regressions (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: python -m unittest discover -s scripts/tests -p 'test_*.py'
+
+      - name: Validate Bash syntax
+        if: runner.os != 'Windows'
+        shell: bash
+        run: bash -n scripts/maintain-agentic-workspace.sh
+
+      - name: Inventory packages
+        shell: pwsh
+        run: dotnet list scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/HomeBaseline.MaintenanceTui.Tests.csproj package --include-transitive
+
+      - name: Audit vulnerable packages
+        shell: pwsh
+        run: dotnet list scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/HomeBaseline.MaintenanceTui.Tests.csproj package --vulnerable --include-transitive

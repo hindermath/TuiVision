@@ -9,31 +9,51 @@ VSCODE_REGISTRY="$REPO_ROOT/scripts/config/vscode-extensions-registry.json"
 CLI_REGISTRY="$REPO_ROOT/scripts/config/required-cli-tools-registry.json"
 NPM_AGENT_REGISTRY="$REPO_ROOT/scripts/config/npm-agent-cli-registry.json"
 POWERSHELL_MODULE_REGISTRY="$REPO_ROOT/scripts/config/powershell-modules-registry.json"
+LINUX_HARDENING="$REPO_ROOT/scripts/lib/linux-maintenance-hardening.py"
 DRY_RUN=0
 COMPARE_ONLY=0
 SKIP_UPGRADE=0
 INCLUDE_OPTIONAL=0
 SKIP_VSCODE_EXTENSIONS=0
+ALLOW_ADMIN_PROMPTS=0
+RESULT_FILE=""
+WORK_DIR=""
+RESULT_ROWS=""
+ATTEMPTS_FILE=""
+FAILED_ATTEMPTS_FILE=""
+RESULT_SEQUENCE=0
+CURRENT_PROBE_JSON=""
+CURRENT_PROBE_STATUS=""
 
 usage() {
   cat <<'USAGE'
-Usage: maintain-agentic-brew-apps.sh [OPTIONS]
+Verwendung / Usage: maintain-agentic-brew-apps.sh [OPTIONEN / OPTIONS]
 
-Options:
-  --dry-run             Show package-manager actions without executing them
-  --compare-only        Only compare installed packages with the registry
-  --registry PATH       Use an alternative registry JSON
+Optionen / Options:
+  --dry-run             Paketaktionen nur anzeigen / preview package actions
+  --compare-only        Nur Registry vergleichen / compare registry only
+  --registry PATH       Alternative Paket-Registry / alternative package registry
+  --cli-registry PATH   Alternative Required-CLI-Registry
   --vscode-registry PATH
-                        Use an alternative VS Code extensions registry JSON
+                        Alternative VS-Code-Extension-Registry
   --npm-agent-registry PATH
-                        Use an alternative npm agent CLI registry JSON
+                        Alternative npm-Agent-CLI-Registry
   --powershell-module-registry PATH
-                        Use an alternative PowerShell module registry JSON
-  --skip-upgrade        Skip brew/apt update+upgrade
+                        Alternative PowerShell-Modul-Registry
+  --skip-upgrade        brew/apt update+upgrade ueberspringen / skip
   --skip-vscode-extensions
-                        Skip VS Code extension install and comparison
-  --include-optional    Also install optional registry entries
-  -h, --help            Show this help
+                        VS-Code-Extensions ueberspringen / skip
+  --include-optional    Optionale Eintraege installieren / install optional items
+  --allow-admin-prompts
+                        Sichtbare Admin-Prompts nur fuer diesen Lauf erlauben
+                        Allow visible administrator prompts for this run only
+  --result-file PATH    Atomaren JSON-Abschluss schreiben / write atomic result
+  -h, --help            Hilfe anzeigen / show this help
+
+Exit-Codes / Exit codes:
+  0  Required-Sollzustand erreicht / required desired state reached
+  1  Required-Drift oder Installationsfehler / required drift or install failure
+  2  Ungueltiger Aufruf oder Betriebsvertrag / invalid invocation or contract
 USAGE
 }
 
@@ -52,6 +72,15 @@ while [ "$#" -gt 0 ]; do
         exit 1
       fi
       REGISTRY="${2:-}"
+      shift
+      ;;
+    --cli-registry)
+      if [ "$#" -lt 2 ] || [ -z "${2:-}" ]; then
+        echo "Fehler: --cli-registry benoetigt einen Pfad." >&2
+        usage >&2
+        exit 2
+      fi
+      CLI_REGISTRY="${2:-}"
       shift
       ;;
     --vscode-registry)
@@ -89,6 +118,18 @@ while [ "$#" -gt 0 ]; do
       ;;
     --include-optional)
       INCLUDE_OPTIONAL=1
+      ;;
+    --allow-admin-prompts)
+      ALLOW_ADMIN_PROMPTS=1
+      ;;
+    --result-file)
+      if [ "$#" -lt 2 ] || [ -z "${2:-}" ]; then
+        echo "Fehler: --result-file benoetigt einen Pfad." >&2
+        usage >&2
+        exit 2
+      fi
+      RESULT_FILE="${2:-}"
+      shift
       ;;
     -h|--help)
       usage
@@ -133,7 +174,38 @@ if ! command -v python3 >/dev/null 2>&1; then
   exit 1
 fi
 
+[ -f "$LINUX_HARDENING" ] || {
+  echo "Fehler: Linux-Haertungsvertrag nicht gefunden: $LINUX_HARDENING" >&2
+  exit 2
+}
+
 OS_NAME="$(uname -s)"
+WORK_DIR="$(mktemp -d)"
+RESULT_ROWS="$WORK_DIR/registry-item-results.tsv"
+ATTEMPTS_FILE="$WORK_DIR/attempts.tsv"
+FAILED_ATTEMPTS_FILE="$WORK_DIR/failed-attempts.tsv"
+: > "$RESULT_ROWS"
+: > "$ATTEMPTS_FILE"
+: > "$FAILED_ATTEMPTS_FILE"
+
+cleanup() {
+  if [ -n "$WORK_DIR" ] && [ -d "$WORK_DIR" ]; then
+    rm -rf -- "$WORK_DIR"
+  fi
+}
+handle_signal() {
+  local exit_code="$1"
+  trap - EXIT INT TERM
+  cleanup
+  exit "$exit_code"
+}
+trap cleanup EXIT
+trap 'handle_signal 130' INT
+trap 'handle_signal 143' TERM
+
+if [ -z "$RESULT_FILE" ]; then
+  RESULT_FILE="$WORK_DIR/toolchain-result.json"
+fi
 
 log() { printf '%s\n' "$*"; }
 run_cmd() {
@@ -143,6 +215,52 @@ run_cmd() {
     printf '\n'
   else
     "$@"
+  fi
+}
+
+snapshot_registry() {
+  local name="$1"
+  shift
+  local destination="$WORK_DIR/$name"
+  "$@" > "$destination"
+  printf '%s\n' "$destination"
+}
+
+mark_attempt() {
+  printf '%s\t%s\n' "$1" "$2" >> "$ATTEMPTS_FILE"
+}
+
+mark_failed_attempt() {
+  printf '%s\t%s\n' "$1" "$2" >> "$FAILED_ATTEMPTS_FILE"
+}
+
+was_attempted() {
+  grep -Fqx -- "$1"$'\t'"$2" "$ATTEMPTS_FILE"
+}
+
+attempt_failed() {
+  grep -Fqx -- "$1"$'\t'"$2" "$FAILED_ATTEMPTS_FILE"
+}
+
+record_result() {
+  local kind="$1" item_id="$2" scope="$3" attempted="$4" final_status="$5"
+  local probe_status="$6" evidence="$7" next_action="$8"
+  evidence="${evidence//$'\t'/ }"
+  evidence="${evidence//$'\n'/ }"
+  next_action="${next_action//$'\t'/ }"
+  next_action="${next_action//$'\n'/ }"
+  RESULT_SEQUENCE=$((RESULT_SEQUENCE + 1))
+  printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' \
+    "$RESULT_SEQUENCE" "$kind" "$item_id" "$scope" "$attempted" \
+    "$final_status" "$probe_status" "${evidence:-N/A}" "${next_action:-N/A}" \
+    >> "$RESULT_ROWS"
+}
+
+validate_item_id() {
+  local item_id="$1"
+  if [[ ! "$item_id" =~ ^[A-Za-z0-9@._/+:-]+$ ]]; then
+    echo "Fehler: Ungueltige Registry-ID / invalid registry id: $item_id" >&2
+    exit 2
   fi
 }
 
@@ -170,6 +288,28 @@ for item in items:
     value = item.get(key)
     if value:
         print(value)
+PY
+}
+
+registry_scoped_items() {
+  local section="$1"
+  python3 - "$REGISTRY" "$section" <<'PY'
+import json
+import sys
+
+registry_path, section = sys.argv[1:3]
+with open(registry_path, encoding="utf-8") as handle:
+    data = json.load(handle)
+items = (
+    data.get("aptFallback", {}).get("packages", [])
+    if section == "aptFallback"
+    else data.get(section, [])
+)
+for item in items:
+    value = item.get("name")
+    scope = item.get("scope", "required")
+    if value and scope in {"required", "optional"}:
+        print(f"{value}\t{scope}")
 PY
 }
 
@@ -220,6 +360,21 @@ for item in data.get(section, []):
     value = item.get("id")
     if value:
         print(value)
+PY
+}
+
+vscode_registry_scoped_items() {
+  python3 - "$VSCODE_REGISTRY" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], encoding="utf-8") as handle:
+    data = json.load(handle)
+for item in data.get("extensions", []):
+    value = item.get("id")
+    scope = item.get("scope", "required")
+    if value and scope in {"required", "optional"}:
+        print(f"{value}\t{scope}")
 PY
 }
 
@@ -299,8 +454,15 @@ for item in data.get("policy", {}).get("excludedCasks", []):
 PY
 }
 
-installed_formulae() {
-  brew list --formula --full-name 2>/dev/null | sort -u
+installed_registry_formulae() {
+  local formula snapshot
+  snapshot="$(snapshot_registry installed-registry-formulae.tsv registry_items formulae all)"
+  while IFS= read -r -u 3 formula; do
+    [ -n "$formula" ] || continue
+    if brew list --formula --versions "$formula" >/dev/null 2>&1; then
+      printf '%s\n' "$formula"
+    fi
+  done 3< "$snapshot"
 }
 
 installed_requested_formulae() {
@@ -361,21 +523,23 @@ code_candidates() {
 }
 
 find_vscode_cli() {
-  local candidate seen
+  local candidate seen candidate_snapshot
   seen=""
-  while IFS= read -r candidate; do
+  candidate_snapshot="$(snapshot_registry vscode-candidates.tsv code_candidates)"
+  while IFS= read -r -u 3 candidate; do
     [ -n "$candidate" ] || continue
     case "$seen" in
       *"|$candidate|"*) continue ;;
     esac
     seen="$seen|$candidate|"
     [ -x "$candidate" ] || continue
-    if "$candidate" --version >/dev/null 2>&1 && "$candidate" --list-extensions >/dev/null 2>&1; then
+    if "$candidate" --version </dev/null >/dev/null 2>&1 \
+        && "$candidate" --list-extensions </dev/null >/dev/null 2>&1; then
       printf '%s\n' "$candidate"
       return 0
     fi
     printf 'WARN: VS-Code-CLI nicht nutzbar: %s\n' "$candidate" >&2
-  done < <(code_candidates)
+  done 3< "$candidate_snapshot"
   return 1
 }
 
@@ -409,47 +573,183 @@ for value in json.loads(sys.argv[1] or "[]"):
 PY
 }
 
-run_probe_with_timeout() {
-  python3 - "$@" <<'PY'
-import os
-import signal
-import subprocess
-import sys
+probe_cli_tool() {
+  local tool_id="$1" command_name="$2" args_json="$3"
+  local probe_output probe_exit expected_swift arg
+  local -a args=()
 
-try:
-    process = subprocess.Popen(
-        sys.argv[1:],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-        start_new_session=True,
-    )
-except OSError:
-    raise SystemExit(127)
-
-try:
-    raise SystemExit(process.wait(timeout=5))
-except subprocess.TimeoutExpired:
-    os.killpg(process.pid, signal.SIGTERM)
-    try:
-        process.wait(timeout=0.5)
-    except subprocess.TimeoutExpired:
-        os.killpg(process.pid, signal.SIGKILL)
-        process.wait()
-    raise SystemExit(124)
-PY
-}
-
-cli_tool_available() {
-  local command_name="$1"
-  local args_json="$2"
-  local -a args
-  local arg
-
-  command -v "$command_name" >/dev/null 2>&1 || return 1
   while IFS= read -r arg; do
     args+=("$arg")
   done < <(json_array_items "$args_json")
-  run_probe_with_timeout "$command_name" "${args[@]}"
+  probe_exit=0
+  probe_output="$(
+    python3 "$LINUX_HARDENING" probe \
+      --tool-id "$tool_id" \
+      --timeout-seconds 5 \
+      --redact "$HOME" \
+      -- "$command_name" "${args[@]}"
+  )" || probe_exit=$?
+  CURRENT_PROBE_JSON="$probe_output"
+  CURRENT_PROBE_STATUS="$(
+    python3 -c 'import json,sys; print(json.load(sys.stdin).get("status", "Unusable"))' \
+      <<< "$probe_output"
+  )"
+  CURRENT_PROBE_EVIDENCE="$(
+    python3 -c 'import json,sys; print(json.load(sys.stdin).get("sanitizedEvidence", "N/A"))' \
+      <<< "$probe_output"
+  )"
+  CURRENT_PROBE_NEXT_ACTION="$(
+    python3 -c 'import json,sys; print(json.load(sys.stdin).get("nextAction", "N/A"))' \
+      <<< "$probe_output"
+  )"
+  if [ "$tool_id" = "swift" ] && [ "$OS_NAME" = "Linux" ] \
+      && [ "$CURRENT_PROBE_STATUS" = "Available" ]; then
+    expected_swift="$(
+      python3 - "$CLI_REGISTRY" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], encoding="utf-8") as handle:
+    registry = json.load(handle)
+for item in registry.get("tools", []):
+    if item.get("id") == "swift":
+        print(item.get("install", {}).get("linux", {}).get("swiftVersion", ""))
+        break
+PY
+    )"
+    if [ -n "$expected_swift" ] \
+        && [[ "$CURRENT_PROBE_EVIDENCE" != *"Swift version ${expected_swift}"* ]] \
+        && [[ "$CURRENT_PROBE_EVIDENCE" != *"Swift ${expected_swift}"* ]]; then
+      CURRENT_PROBE_STATUS="Unusable"
+      CURRENT_PROBE_NEXT_ACTION="Swift ${expected_swift} aktivieren / activate the pinned Swift version."
+      return 1
+    fi
+  fi
+  [ "$probe_exit" -eq 0 ] && [ "$CURRENT_PROBE_STATUS" = "Available" ]
+}
+
+cli_tool_available() {
+  probe_cli_tool "$1" "$2" "$3"
+}
+
+install_swift_tool() {
+  local id="$1" contract_json contract_status archive extracted post_install
+  local swift_env swiftly_command swift_version swiftly_platform url digest
+  local contract_exit=0
+
+  if [ "$OS_NAME" != "Linux" ]; then
+    return 0
+  fi
+  mark_attempt cli "$id"
+  if [ "$ALLOW_ADMIN_PROMPTS" -ne 1 ]; then
+    log "DEFERRED_ADMIN_REQUIRED: Swift-Bereitstellung benoetigt aktuelle Admin-Prompt-Autoritaet."
+    log "DEFERRED_ADMIN_REQUIRED: Swift provisioning requires current admin-prompt authority."
+    mark_failed_attempt cli "$id"
+    return 0
+  fi
+
+  contract_json="$(
+    python3 "$LINUX_HARDENING" swift-contract \
+      --registry "$CLI_REGISTRY" \
+      --os-release /etc/os-release \
+      --architecture "$(uname -m)"
+  )" || contract_exit=$?
+  contract_status="$(
+    python3 -c 'import json,sys; print(json.load(sys.stdin).get("status", "InvalidContract"))' \
+      <<< "$contract_json"
+  )"
+  if [ "$contract_exit" -ne 0 ] || [ "$contract_status" != "Supported" ]; then
+    log "SWIFT CONTRACT: $contract_json"
+    mark_failed_attempt cli "$id"
+    return 0
+  fi
+  IFS=$'\t' read -r swift_version swiftly_platform url digest <<< "$(
+    python3 -c '
+import json, sys
+value = json.load(sys.stdin)
+print("\t".join(value[key] for key in ("swiftVersion", "swiftlyPlatform", "url", "sha256")))
+' <<< "$contract_json"
+  )"
+
+  if [ "$DRY_RUN" -eq 1 ]; then
+    log "DRY-RUN: Swiftly aus gepinntem offiziellen Archiv installieren / install from pinned official archive"
+    log "DRY-RUN: Swift ${swift_version} fuer ${swiftly_platform} installieren / install Swift for platform"
+    return 0
+  fi
+  if ! command -v curl >/dev/null 2>&1; then
+    log "SWIFT FAILED: curl fehlt / curl is missing"
+    mark_failed_attempt cli "$id"
+    return 0
+  fi
+
+  archive="$WORK_DIR/swiftly.tar.gz"
+  extracted="$WORK_DIR/swiftly"
+  post_install="$WORK_DIR/swift-post-install.sh"
+  if ! curl --proto '=https' --tlsv1.2 -fsSL "$url" -o "$archive" </dev/null; then
+    log "SWIFT FAILED: offizieller Download fehlgeschlagen / official download failed"
+    mark_failed_attempt cli "$id"
+    return 0
+  fi
+  if ! python3 "$LINUX_HARDENING" verify-sha256 \
+      --path "$archive" --expected "$digest" >/dev/null; then
+    log "SWIFT FAILED: SHA-256-Integritaet nicht bestaetigt / integrity not verified"
+    mark_failed_attempt cli "$id"
+    return 0
+  fi
+  if ! python3 "$LINUX_HARDENING" extract-swiftly \
+      --archive "$archive" --output "$extracted" >/dev/null; then
+    log "SWIFT FAILED: Archiv konnte nicht sicher extrahiert werden / safe extraction failed"
+    mark_failed_attempt cli "$id"
+    return 0
+  fi
+  if ! "$extracted" init --verbose --assume-yes --skip-install \
+      --no-modify-profile --platform "$swiftly_platform" </dev/null; then
+    log "SWIFT FAILED: Swiftly-Initialisierung fehlgeschlagen / initialization failed"
+    mark_failed_attempt cli "$id"
+    return 0
+  fi
+
+  swift_env="${SWIFTLY_HOME_DIR:-$HOME/.local/share/swiftly}/env.sh"
+  if [ ! -f "$swift_env" ] || [ -L "$swift_env" ]; then
+    log "SWIFT FAILED: erwartete Swiftly-Umgebung fehlt / expected environment is missing"
+    mark_failed_attempt cli "$id"
+    return 0
+  fi
+  # Swiftly erzeugt diese begrenzte Datei aus dem zuvor verifizierten Binary.
+  # shellcheck disable=SC1090
+  source "$swift_env"
+  swiftly_command="$(command -v swiftly 2>/dev/null || true)"
+  if [ -z "$swiftly_command" ]; then
+    log "SWIFT FAILED: Swiftly ist im aktuellen Prozess nicht aktiv / not active in this process"
+    mark_failed_attempt cli "$id"
+    return 0
+  fi
+  if ! "$swiftly_command" use "$swift_version" --assume-yes </dev/null; then
+    if ! "$swiftly_command" install "$swift_version" --use --assume-yes \
+        --post-install-file "$post_install" </dev/null; then
+      log "SWIFT FAILED: Toolchain-Installation fehlgeschlagen / toolchain installation failed"
+      mark_failed_attempt cli "$id"
+      return 0
+    fi
+  fi
+  if [ -s "$post_install" ]; then
+    if [ ! -f "$post_install" ] || [ -L "$post_install" ]; then
+      log "SWIFT FAILED: unzulaessiges Post-Install-Artefakt / invalid post-install artifact"
+      mark_failed_attempt cli "$id"
+      return 0
+    fi
+    if ! sudo -- bash "$post_install" </dev/null; then
+      log "SWIFT FAILED: autorisierte Systemnacharbeit fehlgeschlagen / authorized post-install failed"
+      mark_failed_attempt cli "$id"
+      return 0
+    fi
+  fi
+  hash -r
+  if ! probe_cli_tool "$id" swift '["--version"]'; then
+    log "SWIFT FAILED: Swift ist nach Installation nicht nutzbar / unavailable after install"
+    log "  $CURRENT_PROBE_EVIDENCE"
+    mark_failed_attempt cli "$id"
+  fi
 }
 
 install_cli_tool() {
@@ -468,10 +768,14 @@ install_cli_tool() {
         install_args+=("$arg")
       done < <(json_array_items "$install_args_json")
       log "INSTALL cli tool: $id"
+      mark_attempt cli "$id"
       if [ "$DRY_RUN" -eq 1 ] || command -v uv >/dev/null 2>&1; then
-        run_cmd uv "${install_args[@]}"
+        if ! run_cmd uv "${install_args[@]}" </dev/null; then
+          mark_failed_attempt cli "$id"
+        fi
       else
         log "SKIP cli tool install: $id (uv fehlt)"
+        mark_failed_attempt cli "$id"
       fi
       ;;
     vendor-script)
@@ -484,19 +788,22 @@ install_cli_tool() {
         return 0
       fi
       log "INSTALL cli tool: $id (verified vendor script)"
+      mark_attempt cli "$id"
       if [ "$DRY_RUN" -eq 1 ]; then
         log "DRY-RUN: download $install_url, verify sha256=$install_sha256, execute with bash"
         return 0
       fi
       command -v curl >/dev/null 2>&1 || {
         log "SKIP cli tool install: $id (curl fehlt)"
+        mark_failed_attempt cli "$id"
         return 0
       }
       local installer actual_sha256
-      installer="$(mktemp)"
-      if ! curl -fsSL "$install_url" -o "$installer"; then
+      installer="$(mktemp "$WORK_DIR/vendor-installer.XXXXXX")"
+      if ! curl --proto '=https' --tlsv1.2 -fsSL "$install_url" -o "$installer" </dev/null; then
         rm -f -- "$installer"
         log "SKIP cli tool install: $id (Download fehlgeschlagen)"
+        mark_failed_attempt cli "$id"
         return 0
       fi
       if command -v sha256sum >/dev/null 2>&1; then
@@ -506,15 +813,22 @@ install_cli_tool() {
       else
         rm -f -- "$installer"
         log "SKIP cli tool install: $id (SHA-256-Werkzeug fehlt)"
+        mark_failed_attempt cli "$id"
         return 0
       fi
       if [ "$actual_sha256" != "$install_sha256" ]; then
         rm -f -- "$installer"
         log "SKIP cli tool install: $id (Installer-Pruefsumme geaendert; Registry zuerst pruefen)"
+        mark_failed_attempt cli "$id"
         return 0
       fi
-      bash "$installer"
+      if ! bash "$installer" </dev/null; then
+        mark_failed_attempt cli "$id"
+      fi
       rm -f -- "$installer"
+      ;;
+    swiftly)
+      install_swift_tool "$id"
       ;;
     *)
       log "MISSING cli tool: $id"
@@ -523,51 +837,70 @@ install_cli_tool() {
 }
 
 install_cli_tools() {
-  local scope id command_name args_json manager install_args_json install_url install_sha256 interpreter
+  local scope id command_name args_json manager install_args_json install_url install_sha256 interpreter snapshot
   scope="required"
   [ "$INCLUDE_OPTIONAL" -eq 1 ] && scope="all"
+  snapshot="$(snapshot_registry cli-install.tsv cli_registry_items "$scope")"
 
-  while IFS=$'\t' read -r id command_name args_json manager install_args_json install_url install_sha256 interpreter; do
+  while IFS=$'\t' read -r -u 3 id command_name args_json manager install_args_json install_url install_sha256 interpreter; do
     [ -n "$id" ] || continue
-    if cli_tool_available "$command_name" "$args_json"; then
+    validate_item_id "$id"
+    if cli_tool_available "$id" "$command_name" "$args_json"; then
       log "OK cli tool: $id"
     else
       install_cli_tool "$id" "$manager" "$install_args_json" "$install_url" "$install_sha256" "$interpreter"
     fi
-  done < <(cli_registry_items "$scope")
+  done 3< "$snapshot"
 }
 
 install_npm_agent_tools() {
-  local scope id package_name command_name args_json
+  local scope id package_name command_name args_json snapshot
   scope="required"
   [ "$INCLUDE_OPTIONAL" -eq 1 ] && scope="all"
+  snapshot="$(snapshot_registry npm-install.tsv npm_agent_registry_items "$scope")"
 
-  while IFS=$'\t' read -r id package_name command_name args_json; do
+  while IFS=$'\t' read -r -u 3 id package_name command_name args_json; do
     [ -n "$id" ] || continue
-    if cli_tool_available "$command_name" "$args_json"; then
+    validate_item_id "$id"
+    validate_item_id "$package_name"
+    if cli_tool_available "$id" "$command_name" "$args_json"; then
       log "OK npm agent cli: $id"
     elif [ "$DRY_RUN" -eq 1 ] || command -v npm >/dev/null 2>&1; then
       log "INSTALL npm agent cli: $id ($package_name)"
-      run_cmd npm install -g "$package_name"
+      mark_attempt npm-cli "$id"
+      if ! run_cmd npm install -g "$package_name" </dev/null; then
+        mark_failed_attempt npm-cli "$id"
+      fi
     else
       log "MISSING npm agent cli: $id (npm fehlt)"
     fi
-  done < <(npm_agent_registry_items "$scope")
+  done 3< "$snapshot"
 }
 
 compare_cli_scope() {
   local scope="$1"
   local label="$2"
   local id command_name args_json manager install_args_json install_url install_sha256 interpreter
-  local missing
+  local missing snapshot attempted final_status
   missing=""
+  snapshot="$(snapshot_registry "cli-compare-${scope}.tsv" cli_registry_items "$scope")"
 
-  while IFS=$'\t' read -r id command_name args_json manager install_args_json install_url install_sha256 interpreter; do
+  while IFS=$'\t' read -r -u 3 id command_name args_json manager install_args_json install_url install_sha256 interpreter; do
     [ -n "$id" ] || continue
-    if ! cli_tool_available "$command_name" "$args_json"; then
+    attempted=false
+    was_attempted cli "$id" && attempted=true
+    if cli_tool_available "$id" "$command_name" "$args_json"; then
+      final_status="Present"
+      [ "$attempted" = true ] && final_status="Installed"
+    else
       missing="${missing}${id}"$'\n'
+      final_status="StillMissing"
+      [ "$DRY_RUN" -eq 1 ] && [ "$attempted" = true ] && final_status="Planned"
+      attempt_failed cli "$id" && final_status="Failed"
     fi
-  done < <(cli_registry_items "$scope")
+    record_result cli "$id" "$scope" "$attempted" "$final_status" \
+      "$CURRENT_PROBE_STATUS" "$CURRENT_PROBE_EVIDENCE" "$CURRENT_PROBE_NEXT_ACTION"
+  done 3< "$snapshot"
 
   if [ -n "$missing" ]; then
     log "$label"
@@ -587,15 +920,26 @@ compare_npm_agent_scope() {
   local scope="$1"
   local label="$2"
   local id package_name command_name args_json
-  local missing
+  local missing snapshot attempted final_status
   missing=""
+  snapshot="$(snapshot_registry "npm-compare-${scope}.tsv" npm_agent_registry_items "$scope")"
 
-  while IFS=$'\t' read -r id package_name command_name args_json; do
+  while IFS=$'\t' read -r -u 3 id package_name command_name args_json; do
     [ -n "$id" ] || continue
-    if ! cli_tool_available "$command_name" "$args_json"; then
+    attempted=false
+    was_attempted npm-cli "$id" && attempted=true
+    if cli_tool_available "$id" "$command_name" "$args_json"; then
+      final_status="Present"
+      [ "$attempted" = true ] && final_status="Installed"
+    else
       missing="${missing}${id}"$'\n'
+      final_status="StillMissing"
+      [ "$DRY_RUN" -eq 1 ] && [ "$attempted" = true ] && final_status="Planned"
+      attempt_failed npm-cli "$id" && final_status="Failed"
     fi
-  done < <(npm_agent_registry_items "$scope")
+    record_result npm-cli "$id" "$scope" "$attempted" "$final_status" \
+      "$CURRENT_PROBE_STATUS" "$CURRENT_PROBE_EVIDENCE" "$CURRENT_PROBE_NEXT_ACTION"
+  done 3< "$snapshot"
 
   if [ -n "$missing" ]; then
     log "$label"
@@ -613,6 +957,7 @@ compare_npm_agent_registry() {
 
 maintain_powershell_modules() {
   local maintainer="$REPO_ROOT/scripts/maintain-powershell-modules.ps1"
+  local probe_output probe_exit=0 final_status="Present"
   local -a arguments
 
   if [ ! -f "$maintainer" ]; then
@@ -627,11 +972,34 @@ maintain_powershell_modules() {
 
   if [ "$DRY_RUN" -eq 1 ]; then
     run_cmd pwsh "${arguments[@]}"
-  elif command -v pwsh >/dev/null 2>&1; then
-    pwsh "${arguments[@]}"
-  else
-    log "MISSING powershell module runtime: pwsh"
+    return 0
   fi
+  probe_output="$(
+    python3 "$LINUX_HARDENING" probe \
+      --tool-id powershell-modules \
+      --timeout-seconds 300 \
+      --redact "$HOME" \
+      -- pwsh "${arguments[@]}"
+  )" || probe_exit=$?
+  CURRENT_PROBE_STATUS="$(
+    python3 -c 'import json,sys; print(json.load(sys.stdin).get("status", "Unusable"))' \
+      <<< "$probe_output"
+  )"
+  CURRENT_PROBE_EVIDENCE="$(
+    python3 -c 'import json,sys; print(json.load(sys.stdin).get("sanitizedEvidence", "N/A"))' \
+      <<< "$probe_output"
+  )"
+  CURRENT_PROBE_NEXT_ACTION="$(
+    python3 -c 'import json,sys; print(json.load(sys.stdin).get("nextAction", "N/A"))' \
+      <<< "$probe_output"
+  )"
+  if [ "$probe_exit" -ne 0 ]; then
+    final_status="$([ "$CURRENT_PROBE_STATUS" = "Missing" ] && printf 'StillMissing' || printf 'Failed')"
+    log "WARN powershell module follow-up: $CURRENT_PROBE_STATUS"
+    log "  $CURRENT_PROBE_EVIDENCE"
+  fi
+  [ "$final_status" = "Present" ] \
+    || log "WARN: PowerShell-Modul-Follow-up bleibt optional und nicht fatal / remains optional and non-fatal."
 }
 
 compare_brew_registry() {
@@ -649,7 +1017,7 @@ compare_brew_registry() {
   registry_optional_c="$tmp_dir/registry-casks-optional"
   excluded_c="$tmp_dir/excluded-casks"
 
-  installed_formulae > "$installed_f"
+  installed_registry_formulae | sort -u > "$installed_f"
   installed_requested_formulae > "$installed_requested_f"
   registry_items formulae all | sort -u > "$registry_f"
   registry_items formulae required | sort -u > "$registry_required_f"
@@ -678,10 +1046,49 @@ compare_brew_registry() {
   rm -rf "$tmp_dir"
 }
 
+collect_brew_results() {
+  local formula scope attempted final_status snapshot cask
+  snapshot="$(snapshot_registry brew-result.tsv registry_scoped_items formulae)"
+  while IFS=$'\t' read -r -u 3 formula scope; do
+    [ -n "$formula" ] || continue
+    attempted=false
+    was_attempted formula "$formula" && attempted=true
+    if brew list --formula --versions "$formula" >/dev/null 2>&1; then
+      final_status="Present"
+      [ "$attempted" = true ] && final_status="Installed"
+    else
+      final_status="StillMissing"
+      [ "$DRY_RUN" -eq 1 ] && [ "$attempted" = true ] && final_status="Planned"
+      attempt_failed formula "$formula" && final_status="Failed"
+    fi
+    record_result formula "$formula" "$scope" "$attempted" "$final_status" \
+      "N/A" "N/A" "$([ "$final_status" = "StillMissing" ] && printf 'Formel installieren / install formula.' || printf 'N/A')"
+  done 3< "$snapshot"
+
+  [ "$OS_NAME" = "Darwin" ] || return 0
+  snapshot="$(snapshot_registry cask-result.tsv registry_scoped_items casks)"
+  while IFS=$'\t' read -r -u 3 cask scope; do
+    [ -n "$cask" ] || continue
+    attempted=false
+    was_attempted cask "$cask" && attempted=true
+    if cask_present "$cask"; then
+      final_status="Present"
+      [ "$attempted" = true ] && final_status="Installed"
+    else
+      final_status="StillMissing"
+      [ "$DRY_RUN" -eq 1 ] && [ "$attempted" = true ] && final_status="Planned"
+      attempt_failed cask "$cask" && final_status="Failed"
+    fi
+    record_result cask "$cask" "$scope" "$attempted" "$final_status" \
+      "N/A" "N/A" "$([ "$final_status" = "StillMissing" ] && printf 'Cask installieren / install cask.' || printf 'N/A')"
+  done 3< "$snapshot"
+}
+
 compare_vscode_registry() {
   [ "$SKIP_VSCODE_EXTENSIONS" -eq 0 ] || return 0
 
   local code_cli tmp_dir installed_ext registry_ext registry_required_ext registry_optional_ext deprecated_report
+  local extension scope attempted final_status snapshot
   log "VS Code extension registry: $VSCODE_REGISTRY"
   if ! code_cli="$(find_vscode_cli)"; then
     log "vscode_cli: unavailable"
@@ -689,6 +1096,18 @@ compare_vscode_registry() {
     vscode_registry_items extensions required | sed 's/^/  - /'
     log "missing_on_machine.optional.vscode_extensions"
     vscode_registry_items extensions optional | sed 's/^/  - /'
+    snapshot="$(snapshot_registry vscode-result-unavailable.tsv vscode_registry_scoped_items)"
+    while IFS=$'\t' read -r -u 3 extension scope; do
+      [ -n "$extension" ] || continue
+      attempted=false
+      was_attempted vscode-extension "$extension" && attempted=true
+      final_status="StillMissing"
+      [ "$DRY_RUN" -eq 1 ] && [ "$attempted" = true ] && final_status="Planned"
+      attempt_failed vscode-extension "$extension" && final_status="Failed"
+      record_result vscode-extension "$extension" "$scope" "$attempted" "$final_status" \
+        "Missing" "VS-Code-CLI nicht verfügbar / unavailable." \
+        "VS-Code-CLI und Extension installieren / install VS Code CLI and extension."
+    done 3< "$snapshot"
     return 0
   fi
 
@@ -704,6 +1123,22 @@ compare_vscode_registry() {
 
   print_missing "missing_on_machine.required.vscode_extensions" "$installed_ext" "$registry_required_ext"
   print_missing "missing_on_machine.optional.vscode_extensions" "$installed_ext" "$registry_optional_ext"
+  snapshot="$(snapshot_registry vscode-result.tsv vscode_registry_scoped_items)"
+  while IFS=$'\t' read -r -u 3 extension scope; do
+    [ -n "$extension" ] || continue
+    attempted=false
+    was_attempted vscode-extension "$extension" && attempted=true
+    if grep -Fxiq -- "$extension" "$installed_ext"; then
+      final_status="Present"
+      [ "$attempted" = true ] && final_status="Installed"
+    else
+      final_status="StillMissing"
+      [ "$DRY_RUN" -eq 1 ] && [ "$attempted" = true ] && final_status="Planned"
+      attempt_failed vscode-extension "$extension" && final_status="Failed"
+    fi
+    record_result vscode-extension "$extension" "$scope" "$attempted" "$final_status" \
+      "N/A" "N/A" "$([ "$final_status" = "StillMissing" ] && printf 'Extension installieren / install extension.' || printf 'N/A')"
+  done 3< "$snapshot"
 
   deprecated_report="$(python3 - "$VSCODE_REGISTRY" "$installed_ext" <<'PY'
 import json
@@ -735,53 +1170,66 @@ PY
 }
 
 install_brew_items() {
-  local scope formula cask
+  local scope formula cask snapshot
   scope="required"
   [ "$INCLUDE_OPTIONAL" -eq 1 ] && scope="all"
+  snapshot="$(snapshot_registry brew-install.tsv registry_items formulae "$scope")"
 
-  while IFS= read -r formula; do
+  while IFS= read -r -u 3 formula; do
     [ -z "$formula" ] && continue
+    validate_item_id "$formula"
     if brew list --formula --versions "$formula" >/dev/null 2>&1; then
       log "OK formula: $formula"
     else
       log "INSTALL formula: $formula"
-      run_cmd brew install "$formula"
+      mark_attempt formula "$formula"
+      if ! run_cmd brew install "$formula" </dev/null; then
+        mark_failed_attempt formula "$formula"
+      fi
     fi
-  done < <(registry_items formulae "$scope")
+  done 3< "$snapshot"
 
   if [ "$OS_NAME" = "Darwin" ]; then
-    while IFS= read -r cask; do
+    snapshot="$(snapshot_registry cask-install.tsv registry_items casks "$scope")"
+    while IFS= read -r -u 3 cask; do
       [ -z "$cask" ] && continue
+      validate_item_id "$cask"
       if cask_present "$cask"; then
         log "OK cask: $cask"
       else
         log "INSTALL cask: $cask"
-        run_cmd brew install --cask "$cask"
+        mark_attempt cask "$cask"
+        if ! run_cmd brew install --cask "$cask" </dev/null; then
+          mark_failed_attempt cask "$cask"
+        fi
       fi
-    done < <(registry_items casks "$scope")
+    done 3< "$snapshot"
   fi
 }
 
 ensure_brew_formula_links() {
-  local formula command resolved brew_prefix link_drift
+  local formula command resolved brew_prefix link_drift formula_snapshot command_snapshot
   brew_prefix="$(brew --prefix)"
+  formula_snapshot="$(snapshot_registry linked-formulae.tsv registry_linked_formulae)"
 
-  while IFS= read -r formula; do
+  while IFS= read -r -u 3 formula; do
     [ -n "$formula" ] || continue
+    validate_item_id "$formula"
     if ! brew list --formula --versions "$formula" >/dev/null 2>&1; then
       log "MISSING linked formula: $formula"
       continue
     fi
 
     link_drift=0
-    while IFS= read -r command; do
+    command_snapshot="$(snapshot_registry "link-commands-${formula//\//_}.tsv" registry_link_commands "$formula")"
+    while IFS= read -r -u 4 command; do
       [ -n "$command" ] || continue
       resolved="$(command -v "$command" 2>/dev/null || true)"
       case "$resolved" in
         "$brew_prefix"/bin/*|"$brew_prefix"/sbin/*) ;;
         *) link_drift=1 ;;
       esac
-    done < <(registry_link_commands "$formula")
+    done 4< "$command_snapshot"
 
     if [ "$link_drift" -eq 0 ]; then
       log "OK linked formula: $formula"
@@ -793,11 +1241,11 @@ ensure_brew_formula_links() {
     fi
 
     log "LINK formula: $formula"
-    run_cmd brew link "$formula"
+    run_cmd brew link "$formula" </dev/null
     if [ "$DRY_RUN" -eq 1 ]; then
       continue
     fi
-    while IFS= read -r command; do
+    while IFS= read -r -u 4 command; do
       [ -n "$command" ] || continue
       resolved="$(command -v "$command" 2>/dev/null || true)"
       case "$resolved" in
@@ -807,14 +1255,14 @@ ensure_brew_formula_links() {
           exit 1
           ;;
       esac
-    done < <(registry_link_commands "$formula")
-  done < <(registry_linked_formulae)
+    done 4< "$command_snapshot"
+  done 3< "$formula_snapshot"
 }
 
 install_vscode_extensions() {
   [ "$SKIP_VSCODE_EXTENSIONS" -eq 0 ] || return 0
 
-  local scope code_cli extension installed_lc extension_lc
+  local scope code_cli extension installed_lc extension_lc snapshot
   scope="required"
   [ "$INCLUDE_OPTIONAL" -eq 1 ] && scope="all"
 
@@ -833,16 +1281,21 @@ install_vscode_extensions() {
     installed_lc="$(installed_vscode_extensions "$code_cli" || true)"
   fi
 
-  while IFS= read -r extension; do
+  snapshot="$(snapshot_registry vscode-install.tsv vscode_registry_items extensions "$scope")"
+  while IFS= read -r -u 3 extension; do
     [ -z "$extension" ] && continue
+    validate_item_id "$extension"
     extension_lc="$(printf '%s\n' "$extension" | tr '[:upper:]' '[:lower:]')"
     if [ -n "$installed_lc" ] && printf '%s\n' "$installed_lc" | grep -Fxq "$extension_lc"; then
       log "OK vscode extension: $extension"
     else
       log "INSTALL vscode extension: $extension"
-      run_cmd "$code_cli" --install-extension "$extension"
+      mark_attempt vscode-extension "$extension"
+      if ! run_cmd "$code_cli" --install-extension "$extension" </dev/null; then
+        mark_failed_attempt vscode-extension "$extension"
+      fi
     fi
-  done < <(vscode_registry_items extensions "$scope")
+  done 3< "$snapshot"
 }
 
 apt_package_available() {
@@ -863,24 +1316,65 @@ run_apt_fallback() {
   fi
 
   if [ "$SKIP_UPGRADE" -eq 0 ]; then
-    run_cmd sudo apt update
-    run_cmd sudo apt upgrade
+    if [ "$ALLOW_ADMIN_PROMPTS" -eq 1 ]; then
+      run_cmd sudo -- apt update </dev/null
+      run_cmd sudo -- apt upgrade </dev/null
+    else
+      log "DEFERRED_ADMIN_REQUIRED: apt update/upgrade wurde nicht gestartet."
+      log "DEFERRED_ADMIN_REQUIRED: apt update/upgrade was not started."
+    fi
   fi
 
-  local scope pkg
+  local scope pkg snapshot
   scope="required"
   [ "$INCLUDE_OPTIONAL" -eq 1 ] && scope="all"
-  while IFS= read -r pkg; do
+  snapshot="$(snapshot_registry apt-install.tsv registry_items aptFallback "$scope")"
+  while IFS= read -r -u 3 pkg; do
     [ -z "$pkg" ] && continue
+    validate_item_id "$pkg"
     if dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q 'install ok installed'; then
       log "OK apt: $pkg"
     elif apt_package_available "$pkg"; then
-      log "INSTALL apt: $pkg"
-      run_cmd sudo apt install -y "$pkg"
+      mark_attempt apt "$pkg"
+      if [ "$ALLOW_ADMIN_PROMPTS" -ne 1 ] && [ "$DRY_RUN" -eq 0 ]; then
+        log "DEFERRED_ADMIN_REQUIRED apt: $pkg"
+        mark_failed_attempt apt "$pkg"
+      else
+        log "INSTALL apt: $pkg"
+        if ! run_cmd sudo -- apt install -y "$pkg" </dev/null; then
+          mark_failed_attempt apt "$pkg"
+        fi
+      fi
     else
       log "SKIP apt unavailable: $pkg"
     fi
-  done < <(registry_items aptFallback "$scope")
+  done 3< "$snapshot"
+}
+
+collect_apt_results() {
+  local pkg scope attempted final_status snapshot
+  snapshot="$(snapshot_registry apt-result.tsv registry_scoped_items aptFallback)"
+  while IFS=$'\t' read -r -u 3 pkg scope; do
+    [ -n "$pkg" ] || continue
+    attempted=false
+    was_attempted apt "$pkg" && attempted=true
+    if dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q 'install ok installed'; then
+      final_status="Present"
+      [ "$attempted" = true ] && final_status="Installed"
+    else
+      final_status="StillMissing"
+      [ "$DRY_RUN" -eq 1 ] && [ "$attempted" = true ] && final_status="Planned"
+      attempt_failed apt "$pkg" && final_status="Failed"
+    fi
+    record_result apt "$pkg" "$scope" "$attempted" "$final_status" \
+      "N/A" "N/A" "$(
+        if [ "$final_status" = "StillMissing" ] || [ "$final_status" = "Failed" ]; then
+          printf 'Mit --allow-admin-prompts erneut ausführen / rerun with current authority.'
+        else
+          printf 'N/A'
+        fi
+      )"
+  done 3< "$snapshot"
 }
 
 log "Agentic Homebrew registry maintenance"
@@ -903,6 +1397,7 @@ if command -v brew >/dev/null 2>&1; then
   ensure_brew_formula_links
 
   compare_brew_registry
+  collect_brew_results
   compare_vscode_registry
   compare_cli_registry
   compare_npm_agent_registry
@@ -916,6 +1411,40 @@ else
   compare_vscode_registry
   compare_cli_registry
   compare_npm_agent_registry
+  collect_apt_results
 fi
 
 maintain_powershell_modules
+
+result_mode="update"
+[ "$DRY_RUN" -eq 1 ] && result_mode="dry-run"
+[ "$COMPARE_ONLY" -eq 1 ] && result_mode="compare-only"
+result_status=0
+summary_output="$WORK_DIR/toolchain-summary.json"
+python3 "$LINUX_HARDENING" summarize-results \
+  --input "$RESULT_ROWS" \
+  --output "$RESULT_FILE" \
+  --platform "$OS_NAME" \
+  --mode "$result_mode" > "$summary_output" || result_status=$?
+if [ -f "$RESULT_FILE" ]; then
+  python3 - "$RESULT_FILE" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], encoding="utf-8") as handle:
+    result = json.load(handle)
+print(
+    "TOOLCHAIN RESULT\t"
+    f"{result['overallStatus']}\t{result['exitCode']}\t"
+    f"required={len(result['remainingRequired'])}\t"
+    f"optional={len(result['optionalDrift'])}"
+)
+for item in result["remainingRequired"]:
+    print(f"REQUIRED DRIFT\t{item}")
+for item in result["optionalDrift"]:
+    print(f"OPTIONAL DRIFT\t{item}")
+PY
+  [ "$RESULT_FILE" = "$WORK_DIR/toolchain-result.json" ] \
+    || log "Toolchain report / Bericht: $RESULT_FILE"
+fi
+exit "$result_status"
