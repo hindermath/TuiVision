@@ -33,6 +33,11 @@ aus und installiert fehlende Required-Pakete per `winget install --id <Id>
 --exact`.
 CLI-Versionsproben werden nach fuenf Sekunden beendet, damit interaktive oder
 festhaengende Agenten-CLIs den Wartungslauf nicht blockieren.
+Jeder WinGet-Unterprozess besitzt ebenfalls eine harte Zeitgrenze. Leseproben
+verwenden hoechstens 30 Sekunden. Bei einem Timeout wird der vollstaendige
+Prozessbaum beendet und begrenzt abgewartet. Upgrade- und Installationsschritte
+ohne aktuelle Admin-Prompt-Autoritaet werden nicht gestartet und als
+`DEFERRED_ADMIN_REQUIRED` gemeldet; UAC wird nicht umgangen.
 
 *The tool reads `scripts/config/winget-apps-registry.json` and reconciles the
 Windows toolchain for agentic development. It additionally reads
@@ -48,7 +53,11 @@ Required PowerShell modules are installed and checked from
 module maintainer. A normal run refreshes WinGet sources, runs `winget upgrade --all`, and installs
 missing required packages via `winget install --id <Id> --exact`. CLI version
 probes stop after five seconds so interactive or stuck agent CLIs cannot block
-maintenance.*
+maintenance. Every WinGet subprocess also has a hard timeout, with read probes
+capped at 30 seconds. On timeout, the complete process tree is terminated and
+awaited for a bounded interval. Upgrade and install steps without current
+administrator-prompt authority are not started and are reported as
+`DEFERRED_ADMIN_REQUIRED`; UAC is never bypassed.*
 
 Das Skript versucht zuerst `winget update`. Wenn diese Unterfunktion auf der
 installierten WinGet-Version nicht verfuegbar ist, nutzt es
@@ -73,14 +82,25 @@ installation.*
 | `-SkipUpgrade` | WinGet-Update und `winget upgrade --all` ueberspringen |
 | `-SkipVSCodeExtensions` | VS-Code-Extensions weder installieren noch vergleichen |
 | `-IncludeOptional` | Auch optionale Registry-Eintraege installieren |
+| `-ProcessTimeoutSeconds N` | Harte Zeitgrenze je WinGet-Unterprozess; Standard 1800 Sekunden / Hard timeout per WinGet subprocess; default 1800 seconds |
+| `-ProcessCleanupSeconds N` | Frist zum Beenden und Abwarten des Prozessbaums; Standard 10 Sekunden / Process-tree cleanup interval; default 10 seconds |
 
 ## Beispiele / Examples
 
 ```powershell
 pwsh -NoProfile -File scripts/maintain-agentic-winget-apps.ps1 -WhatIf
 pwsh -NoProfile -File scripts/maintain-agentic-winget-apps.ps1 -CompareOnly
+pwsh -NoProfile -File scripts/maintain-agentic-winget-apps.ps1 -WhatIf -ProcessTimeoutSeconds 1800 -ProcessCleanupSeconds 10
 pwsh -NoProfile -File scripts/maintain-agentic-winget-apps.ps1
 ```
+
+## Exitstatus / Exit Status
+
+| Code | Bedeutung / Meaning |
+|---:|---|
+| `0` | Aktuell oder erfolgreich / Current or successful |
+| `2` | Betriebsfehler oder widerspruechlicher Paketstatus / Operational error or contradictory package status |
+| `75` | `DEFERRED_ADMIN_REQUIRED`; sicher erneut mit aktueller Autoritaet ausfuehren / safely rerun with current authority |
 
 ## Abschlusskriterien / Closeout Criteria
 
@@ -110,8 +130,12 @@ JSON; and intentional new WinGet top-level tools are added to the registry.*
 
 Die Registry enthaelt nur Paket-IDs und Zwecke, keine Secrets, lokalen Tokens
 oder privaten Pfade. WinGet-Laeufe schreiben ausserhalb des Repositories und
-sollen vorab mit `-WhatIf` geprueft werden.
+sollen vorab mit `-WhatIf` geprueft werden. Administratorautoritaet gilt nur
+fuer den aktuellen Elternprozess und ersetzt kein UAC-, Timeout-, Sicherheits-
+oder Test-Gate.
 
 *The registry contains only package IDs and purposes, not secrets, local tokens,
 or private paths. WinGet runs write outside the repository and should be
-previewed with `-WhatIf` first.*
+previewed with `-WhatIf` first. Administrator authority is scoped to the
+current parent process and does not replace UAC, timeout, security, or test
+gates.*

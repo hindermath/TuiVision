@@ -57,7 +57,21 @@ if [ "$CHECK_ONLY" -eq 1 ] && [ "$DRY_RUN" -eq 1 ]; then
   echo "Fehler / Error: --check-only und / and --dry-run sind nicht kombinierbar." >&2
   exit 2
 fi
-if ! command -v pwsh >/dev/null 2>&1; then
+ENGINE_ARGUMENT="$ENGINE"
+REPO_ARGUMENT="$REPO"
+PWSH_BIN="$(command -v pwsh 2>/dev/null || true)"
+if [ -r /proc/version ] && grep -qi microsoft /proc/version 2>/dev/null &&
+   command -v pwsh.exe >/dev/null 2>&1 && command -v wslpath >/dev/null 2>&1; then
+  # A Windows-hosted parity run must use the same filesystem and newline
+  # semantics as the native PowerShell entrypoint.
+  PWSH_BIN="$(command -v pwsh.exe)"
+  ENGINE_ARGUMENT="$(wslpath -w "$ENGINE")"
+  REPO_ARGUMENT="$(wslpath -w "$REPO")"
+elif [ -z "$PWSH_BIN" ] && [ -x /snap/bin/pwsh ]; then
+  # Non-login WSL processes do not always inherit /snap/bin in PATH.
+  PWSH_BIN=/snap/bin/pwsh
+fi
+if [ -z "$PWSH_BIN" ]; then
   echo "Fehler / Error: PowerShell 7 (pwsh) ist erforderlich / is required." >&2
   exit 2
 fi
@@ -66,9 +80,9 @@ if [ ! -f "$ENGINE" ]; then
   exit 2
 fi
 
-arguments=(-NoProfile -File "$ENGINE" -Repo "$REPO")
+arguments=(-NoProfile -File "$ENGINE_ARGUMENT" -Repo "$REPO_ARGUMENT")
 [ "$CHECK_ONLY" -eq 1 ] && arguments+=(-CheckOnly)
 [ "$DRY_RUN" -eq 1 ] && arguments+=(-WhatIf)
 [ "$JSON" -eq 1 ] && arguments+=(-Json)
 
-exec pwsh "${arguments[@]}"
+exec "$PWSH_BIN" "${arguments[@]}"

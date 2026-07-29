@@ -27,15 +27,15 @@ Workspace-Familie ist:
 | `security-governance` | Security Governance | `v0.6.1` | `10` |
 | `architecture-governance` | Architecture Governance | `v0.5.1` | `20` |
 | `isaqb-architecture-governance` | iSAQB Architecture Governance | `v0.2.1` | `30` |
-| `a11y-governance` | A11Y Governance | `v0.4.1` | `40` |
+| `a11y-governance` | A11Y Governance | `v0.4.2` | `40` |
 | `cross-platform-governance` | Cross-Platform Governance | `v0.2.1` | `50` |
-| `agent-parity-governance` | Agent Parity Governance | `v0.4.0` | `60` |
-| `autonomous-run-governance` | Autonomous Run Governance | `v0.3.2` | `70` |
-| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.3` | `80` |
+| `agent-parity-governance` | Agent Parity Governance | `v0.4.1` | `60` |
+| `autonomous-run-governance` | Autonomous Run Governance | `v0.3.3` | `70` |
+| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.4` | `80` |
 
-Optional koennen `intake-authoring-governance` v0.2.0 mit Prioritaet `64`,
-`intake-review-governance` v0.1.1 mit Prioritaet `65` und
-`intake-sequencing-governance` v0.1.0 mit Prioritaet `66` zwischen Agent Parity
+Optional koennen `intake-authoring-governance` v0.3.0 mit Prioritaet `64`,
+`intake-review-governance` v0.2.0 mit Prioritaet `65` und
+`intake-sequencing-governance` v0.2.2 mit Prioritaet `66` zwischen Agent Parity
 und Preset 7 installiert werden. Alle drei bleiben ausserhalb der
 Standard-Achtermatrix.
 Authoring erzeugt aus ausdruecklich benannten geordneten UTF-8-Quellen genau
@@ -129,7 +129,7 @@ begründete Ausnahme dokumentiert ist. Nach Installation oder Update prüfen:
 `specify preset info <id>` und bei Template-Fragen `specify preset resolve
 <template>`. `.specify/presets/` wird committed, `.specify/presets/.cache/`
 nicht. Alle acht Presets erzeugen oder verlangen audit-ready Spec-Kit-Run-Evidenz mit `Applicable` / `N/A` / `Open`, Begruendung, Evidenzpfad, Reviewer, Restrisiko und Follow-up.
-`parallel-autonomous-run-governance` v0.2.3 ist eigenstaendig veroeffentlicht
+`parallel-autonomous-run-governance` v0.2.4 ist eigenstaendig veroeffentlicht
 und wurde mit `github/spec-kit#3591` fuer den Community-Katalog eingereicht.
 Bei jeder Preset-Version oder Prioritätsänderung zuerst die zentrale Matrix
 aktualisieren und danach README-Tabellen, Constitution, Agenten-Dateien und
@@ -166,15 +166,15 @@ workspace family is:
 | `security-governance` | Security Governance | `v0.6.1` | `10` |
 | `architecture-governance` | Architecture Governance | `v0.5.1` | `20` |
 | `isaqb-architecture-governance` | iSAQB Architecture Governance | `v0.2.1` | `30` |
-| `a11y-governance` | A11Y Governance | `v0.4.1` | `40` |
+| `a11y-governance` | A11Y Governance | `v0.4.2` | `40` |
 | `cross-platform-governance` | Cross-Platform Governance | `v0.2.1` | `50` |
-| `agent-parity-governance` | Agent Parity Governance | `v0.4.0` | `60` |
-| `autonomous-run-governance` | Autonomous Run Governance | `v0.3.2` | `70` |
-| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.3` | `80` |
+| `agent-parity-governance` | Agent Parity Governance | `v0.4.1` | `60` |
+| `autonomous-run-governance` | Autonomous Run Governance | `v0.3.3` | `70` |
+| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.4` | `80` |
 
-Optionally install `intake-authoring-governance` v0.2.0 at priority `64`,
-`intake-review-governance` v0.1.1 at priority `65`, and
-`intake-sequencing-governance` v0.1.0 at priority `66` between Agent Parity and
+Optionally install `intake-authoring-governance` v0.3.0 at priority `64`,
+`intake-review-governance` v0.2.0 at priority `65`, and
+`intake-sequencing-governance` v0.2.2 at priority `66` between Agent Parity and
 Preset 7. All three remain outside the standard eight. Authoring creates one intake
 and receipt from explicit ordered UTF-8 sources without starting a downstream
 command. Review evaluates that intake independently. Sequencing manages order,
@@ -258,7 +258,7 @@ update, verify with `install-spec-kit-governance-presets.* --check-only` /
 `-CheckOnly`, `specify preset list`, `specify preset info <id>`, and for template questions
 `specify preset resolve <template>`. Commit `.specify/presets/`, but not
 `.specify/presets/.cache/`. All eight presets produce or require audit-ready Spec-Kit run evidence with `Applicable` / `N/A` / `Open`, rationale, evidence path, reviewer, residual risk, and follow-up.
-`parallel-autonomous-run-governance` v0.2.3 is published independently and was
+`parallel-autonomous-run-governance` v0.2.4 is published independently and was
 submitted to the community catalog as `github/spec-kit#3591`.
 For every preset version or priority change, update the central matrix first,
 then review README tables, constitution, agent guidance files, and templates

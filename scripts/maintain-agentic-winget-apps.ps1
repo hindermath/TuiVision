@@ -6,7 +6,10 @@
 .DESCRIPTION
     Reads scripts/config/winget-apps-registry.json, updates WinGet metadata,
     upgrades installed packages, installs missing required packages, and reports
-    drift between installed WinGet packages and the registry.
+    drift between installed WinGet packages and the registry. Every WinGet
+    subprocess has a hard timeout and complete process-tree cleanup. Upgrade or
+    install work without current administrator-prompt authority is not started
+    and exits as DEFERRED_ADMIN_REQUIRED. UAC is never bypassed.
 
 .PARAMETER Registry
     Alternative registry JSON path.
@@ -29,12 +32,28 @@
 .PARAMETER SkipVSCodeExtensions
     Skip VS Code extension install and comparison.
 
+.PARAMETER ProcessTimeoutSeconds
+    Harte Zeitgrenze fuer jeden WinGet-Unterprozess. Leseproben verwenden
+    hoechstens 30 Sekunden.
+
+    Hard timeout for each WinGet subprocess. Read probes use at most 30 seconds.
+
+.PARAMETER ProcessCleanupSeconds
+    Begrenzte Frist zum Beenden und Abwarten des gesamten Prozessbaums.
+
+    Bounded interval for terminating and awaiting a timed-out process tree.
+
 .PARAMETER IncludeOptional
     Also install optional registry entries.
 
 .EXAMPLE
     pwsh -NoProfile -File scripts/maintain-agentic-winget-apps.ps1 -WhatIf
     pwsh -NoProfile -File scripts/maintain-agentic-winget-apps.ps1 -CompareOnly
+
+.NOTES
+    Exit codes: 0 = current/success, 2 = operational or contradictory package
+    status, 75 = DEFERRED_ADMIN_REQUIRED. Package detection and summary reduce
+    observations to exactly one final status per canonical package ID.
 #>
 [CmdletBinding(SupportsShouldProcess = $true)]
 param(
@@ -45,13 +64,20 @@ param(
     [switch] $CompareOnly,
     [switch] $SkipUpgrade,
     [switch] $SkipVSCodeExtensions,
-    [switch] $IncludeOptional
+    [switch] $IncludeOptional,
+    [ValidateRange(5, 86400)][int] $ProcessTimeoutSeconds = 1800,
+    [ValidateRange(1, 60)][int] $ProcessCleanupSeconds = 10
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 $repoRoot = Split-Path -Parent $PSScriptRoot
+$hardeningModule = Join-Path $repoRoot 'scripts/lib/windows-maintenance-hardening.psm1'
+if (-not (Test-Path -LiteralPath $hardeningModule -PathType Leaf)) {
+    Write-Error "Windows-Wartungsmodul fehlt / Windows maintenance module missing: ${hardeningModule}"
+}
+Import-Module $hardeningModule -Force
 if (-not $Registry) {
     $Registry = Join-Path $repoRoot 'scripts/config/winget-apps-registry.json'
 }
@@ -82,9 +108,13 @@ if (-not (Test-Path -Path $PowerShellModuleRegistry -PathType Leaf)) {
     Write-Error "PowerShell-Modul-Registry nicht gefunden: $PowerShellModuleRegistry"
 }
 
-if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+$wingetCommand = Get-Command winget -ErrorAction SilentlyContinue
+if (-not $wingetCommand) {
     Write-Error 'winget ist nicht installiert oder nicht im PATH.'
 }
+$script:WingetDeferred = $false
+$script:WingetFailed = $false
+$script:PackageObservations = [Collections.Generic.List[object]]::new()
 
 $registryData = Get-Content -Path $Registry -Raw | ConvertFrom-Json
 $vscodeRegistryData = if ($SkipVSCodeExtensions) { $null } else { Get-Content -Path $VSCodeRegistry -Raw | ConvertFrom-Json }
@@ -134,39 +164,77 @@ function Invoke-HBWinget {
 
     $display = "winget $($Arguments -join ' ')"
     if ($PSCmdlet.ShouldProcess($display, $Action)) {
-        & winget @Arguments
-        return $LASTEXITCODE
+        $result = Invoke-HBBoundedProcess -FilePath $wingetCommand.Source `
+            -Arguments $Arguments `
+            -TimeoutMilliseconds ($ProcessTimeoutSeconds * 1000) `
+            -CleanupMilliseconds ($ProcessCleanupSeconds * 1000) `
+            -CommandLabel $Action
+        if ($result.StandardOutput) { Write-Host $result.StandardOutput }
+        if ($result.StandardError) { Write-Warning $result.StandardError }
+        if ($result.Status -eq 'TimedOut') {
+            if (-not $result.ProcessTreeCleaned) {
+                $script:WingetFailed = $true
+                Write-Warning "WinGet-Prozessbaum konnte nicht vollstaendig beendet werden / process tree cleanup failed: ${Action}"
+                return 124
+            }
+            if ($Arguments[0] -in @('upgrade', 'install')) {
+                $script:WingetDeferred = $true
+                Write-Warning "DEFERRED_ADMIN_REQUIRED: Zeitgrenze erreicht / timeout reached: ${Action}"
+                return 75
+            }
+            $script:WingetFailed = $true
+            return 124
+        }
+        return [int]$result.ExitCode
     }
 
     Write-Host "WHATIF: $display"
     return 0
 }
 
+function Invoke-HBWingetRead {
+    param([Parameter(Mandatory)][string[]]$Arguments)
+
+    return Invoke-HBBoundedProcess -FilePath $wingetCommand.Source `
+        -Arguments $Arguments `
+        -TimeoutMilliseconds ([Math]::Min($ProcessTimeoutSeconds, 30) * 1000) `
+        -CleanupMilliseconds ($ProcessCleanupSeconds * 1000) `
+        -CommandLabel "winget $($Arguments[0])"
+}
+
 function Test-HBWingetSearchId {
     param([Parameter(Mandatory)][string] $Id)
 
-    $output = & winget search --id $Id --exact --accept-source-agreements 2>$null
-    if ($LASTEXITCODE -ne 0) { return $false }
-    return (($output -join "`n") -match [regex]::Escape($Id))
+    $result = Invoke-HBWingetRead -Arguments @('search', '--id', $Id, '--exact', '--accept-source-agreements')
+    if (-not $result.Succeeded) { return $false }
+    return ($result.StandardOutput -match [regex]::Escape($Id))
 }
 
 function Test-HBWingetInstalledId {
     param([Parameter(Mandatory)][string] $Id)
 
-    $output = & winget list --id $Id --exact --accept-source-agreements 2>$null
-    if ($LASTEXITCODE -ne 0) { return $false }
-    return (($output -join "`n") -match [regex]::Escape($Id))
+    $result = Invoke-HBWingetRead -Arguments @('list', '--id', $Id, '--exact', '--accept-source-agreements')
+    if (-not $result.Succeeded) { return $false }
+    return ($result.StandardOutput -match [regex]::Escape($Id))
 }
 
 function Get-HBWingetInstalledIds {
-    $output = & winget list --accept-source-agreements 2>$null
-    if ($LASTEXITCODE -ne 0) { return @() }
+    $result = Invoke-HBWingetRead -Arguments @('list', '--accept-source-agreements')
+    if (-not $result.Succeeded) { return @() }
+    $output = $result.StandardOutput -split '\r?\n'
 
     $ids = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
     foreach ($line in $output) {
         $packageMatches = [regex]::Matches($line, '\s([A-Za-z0-9][A-Za-z0-9._-]+(?:\.[A-Za-z0-9][A-Za-z0-9._-]+)+)\s+([0-9][^\s]*)')
         foreach ($match in $packageMatches) {
             [void]$ids.Add($match.Groups[1].Value)
+        }
+    }
+    # Exact registry probes use the same canonical IDs as install decisions and
+    # close locale/column-width gaps in the bulk WinGet table parser.
+    foreach ($id in $allRegistryIds) {
+        if (Test-HBWingetInstalledId -Id $id) {
+            [void]$ids.Add($id)
         }
     }
 
@@ -542,15 +610,26 @@ if (-not $CompareOnly -and -not $SkipUpgrade) {
     $updateStatus = Invoke-HBWinget -Arguments @('update') -Action 'WinGet package metadata update'
     if ($updateStatus -ne 0) {
         Write-Warning 'winget update ist nicht verfuegbar oder fehlgeschlagen; nutze winget source update als Fallback.'
-        [void](Invoke-HBWinget -Arguments @('source', 'update') -Action 'WinGet source update')
+        $sourceStatus = Invoke-HBWinget -Arguments @('source', 'update') -Action 'WinGet source update'
+        if ($sourceStatus -ne 0) { $script:WingetFailed = $true }
     }
-    [void](Invoke-HBWinget -Arguments @('upgrade', '--all', '--accept-package-agreements', '--accept-source-agreements') -Action 'WinGet package upgrade')
+    if ($WhatIfPreference) {
+        $upgradeStatus = Invoke-HBWinget -Arguments @('upgrade', '--all', '--accept-package-agreements', '--accept-source-agreements') -Action 'WinGet package upgrade'
+    } elseif ($env:HB_ALLOW_ADMIN_PROMPTS -eq '1') {
+        $upgradeStatus = Invoke-HBWinget -Arguments @('upgrade', '--all', '--accept-package-agreements', '--accept-source-agreements') -Action 'WinGet package upgrade'
+    } else {
+        $script:WingetDeferred = $true
+        Write-Warning 'DEFERRED_ADMIN_REQUIRED: winget upgrade --all wurde ohne aktuelle Admin-Prompt-Autoritaet nicht gestartet / was not started without current authority.'
+        $upgradeStatus = 75
+    }
+    if ($upgradeStatus -notin @(0, 75)) { $script:WingetFailed = $true }
 }
 
 if (-not $CompareOnly) {
     foreach ($id in $installIds) {
         if (Test-HBWingetInstalledId -Id $id) {
             Write-Host "OK package: $id"
+            $script:PackageObservations.Add([pscustomobject]@{ Id = $id; Status = 'OK'; Evidence = 'exact-list-before-install' })
             continue
         }
 
@@ -558,8 +637,20 @@ if (-not $CompareOnly) {
             Write-Error "WinGet-ID nicht gefunden: $id"
         }
 
+        if (-not $WhatIfPreference -and $env:HB_ALLOW_ADMIN_PROMPTS -ne '1') {
+            $script:WingetDeferred = $true
+            $script:PackageObservations.Add([pscustomobject]@{ Id = $id; Status = 'DEFERRED_ADMIN_REQUIRED'; Evidence = 'admin-authority-not-granted' })
+            Write-Warning "DEFERRED_ADMIN_REQUIRED package: ${id}"
+            continue
+        }
+
         Write-Host "INSTALL package: $id"
-        [void](Invoke-HBWinget -Arguments @('install', '--id', $id, '--exact', '--accept-package-agreements', '--accept-source-agreements') -Action "Install $id")
+        $installStatus = Invoke-HBWinget -Arguments @('install', '--id', $id, '--exact', '--accept-package-agreements', '--accept-source-agreements') -Action "Install $id"
+        if ($installStatus -eq 75) {
+            $script:PackageObservations.Add([pscustomobject]@{ Id = $id; Status = 'DEFERRED_ADMIN_REQUIRED'; Evidence = 'bounded-install' })
+        } elseif ($installStatus -ne 0) {
+            $script:PackageObservations.Add([pscustomobject]@{ Id = $id; Status = 'FAILED'; Evidence = 'bounded-install' })
+        }
     }
 
     Install-HBVSCodeExtensions
@@ -570,8 +661,37 @@ if (-not $CompareOnly) {
 $installedIds = @(Get-HBWingetInstalledIds)
 $missingFromRegistry = @($installedIds | Where-Object { $allRegistryIds -notcontains $_ })
 
-Compare-HBPackageScope -RegistryIds $requiredRegistryIds -InstalledIds $installedIds -Label 'missing_on_machine.required.packages'
-Compare-HBPackageScope -RegistryIds $optionalRegistryIds -InstalledIds $installedIds -Label 'missing_on_machine.optional.packages'
+foreach ($id in $allRegistryIds) {
+    $status = if ($installedIds -contains $id) { 'OK' } else { 'MISSING' }
+    $script:PackageObservations.Add([pscustomobject]@{ Id = $id; Status = $status; Evidence = 'canonical-final-installed-set' })
+}
+$packageResults = @(Get-HBPackageResults -Observations $script:PackageObservations)
+$requiredMissing = @(
+    $packageResults |
+        Where-Object { $_.CanonicalId -in @($requiredRegistryIds | ForEach-Object { $_.ToLowerInvariant() }) -and $_.FinalStatus -ne 'OK' } |
+        ForEach-Object { $_.CanonicalId }
+)
+$optionalMissing = @(
+    $packageResults |
+        Where-Object { $_.CanonicalId -in @($optionalRegistryIds | ForEach-Object { $_.ToLowerInvariant() }) -and $_.FinalStatus -ne 'OK' } |
+        ForEach-Object { $_.CanonicalId }
+)
+if ($requiredMissing.Count -gt 0) {
+    Write-Host 'missing_on_machine.required.packages'
+    $requiredMissing | ForEach-Object { Write-Host "  - $_" }
+} else {
+    Write-Host 'missing_on_machine.required.packages: none'
+}
+if ($optionalMissing.Count -gt 0) {
+    Write-Host 'missing_on_machine.optional.packages'
+    $optionalMissing | ForEach-Object { Write-Host "  - $_" }
+} else {
+    Write-Host 'missing_on_machine.optional.packages: none'
+}
+foreach ($result in $packageResults | Where-Object { $_.FinalStatus -eq 'CONFLICT' }) {
+    $script:WingetFailed = $true
+    Write-Warning "CONFLICT package status: $($result.CanonicalId)"
+}
 
 if ($missingFromRegistry.Count -gt 0) {
     Write-Host 'missing_from_registry.packages'
@@ -593,3 +713,8 @@ if ($CompareOnly) { $moduleParameters.CompareOnly = $true }
 if ($IncludeOptional) { $moduleParameters.IncludeOptional = $true }
 if ($WhatIfPreference) { $moduleParameters.WhatIf = $true }
 & $moduleMaintainer @moduleParameters
+if ($LASTEXITCODE -notin @(0, $null)) { $script:WingetFailed = $true }
+
+if ($script:WingetFailed) { exit 2 }
+if ($script:WingetDeferred) { exit 75 }
+exit 0
