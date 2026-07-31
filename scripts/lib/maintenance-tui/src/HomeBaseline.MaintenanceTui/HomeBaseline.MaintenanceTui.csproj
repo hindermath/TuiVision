@@ -6,6 +6,9 @@
     <Nullable>enable</Nullable>
     <LangVersion>14.0</LangVersion>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <!-- Das verteilte Wartungsprogramm ist kein Bestandteil der oeffentlichen TuiVision-API. -->
+    <!-- The distributed maintenance app is not part of TuiVision's public API contract. -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
