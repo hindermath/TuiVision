@@ -7,6 +7,9 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <!-- Die verteilten Wartungstests sind kein Bestandteil der oeffentlichen TuiVision-API. -->
+    <!-- The distributed maintenance tests are not part of TuiVision's public API contract. -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
