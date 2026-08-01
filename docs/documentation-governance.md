@@ -95,7 +95,7 @@ semantically equivalent and link to each other.*
 
 Jedes Repository benennt seine eigene kanonische Quelle und den zugehörigen
 Default-Branch. Eine getrennte Runtime-, Installations- oder Deployment-Kopie
-gilt nur, wenn der repository-eigene Vertrag sie ausdrücklich definiert.
+gilt nur, wenn der Repository-eigene Vertrag sie ausdrücklich definiert.
 Dokumentation darf weder Level-0-Pfade noch Distributionsklassen allein wegen
 ähnlicher Dateinamen auf andere Repositories übertragen.
 
@@ -106,16 +106,19 @@ Für die Home Baseline gelten zusätzlich diese lokalen Klassen:
 - `sourceOnly`: direkt aus der Level-0-Quelle lesen; kein Home-Sync;
 - `machineLocal`: nur lokal halten; keine implizite Remote-Autorität.
 
-Konkrete Home-Runtime-Mitglieder werden ausschließlich aus
-`scripts/config/home-sync-manifest.json` in Level 0 abgeleitet. Andere
-Repositories behalten ihre eigenen Begriffe sowie Build-, Installations-,
-Deployment- oder Lernreihenverträge. Eine Dokumentationsänderung erweitert
-keine technische Propagations- oder Runtime-Zielmenge.
+Konkrete Home-Runtime-Mitglieder werden ausschließlich im Level-0-Repository
+Home Baseline aus `scripts/config/home-sync-manifest.json` abgeleitet. Dieser
+Pfad ist in anderen Repositories keine lokale Datei. Andere Repositories
+behalten ihre eigenen Begriffe sowie Build-, Installations-, Deployment- oder
+Lernreihenverträge. Eine Dokumentationsänderung erweitert keine technische
+Propagations- oder Runtime-Zielmenge.
 
 *Each repository names its own canonical source and default branch. A separate
 runtime, installation, or deployment copy exists only when the repository's
 own contract defines it. The Home Baseline additionally uses `homeRuntime`,
 `sourceOnly`, and `machineLocal`; these terms and its paths are not universal.
+Its `scripts/config/home-sync-manifest.json` path belongs to the Level 0 Home
+Baseline repository and is not a local path in other repositories.
 Documentation changes do not expand technical propagation or runtime targets.*
 
 Deterministische Validatoren prüfen Struktur, Pfade, Hashes und Pflichtfelder.
