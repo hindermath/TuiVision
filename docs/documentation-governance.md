@@ -55,21 +55,25 @@ or are generated deterministically.*
 ## Durchführung / Procedure
 
 1. Geänderte Pfade und benannte Flows erfassen.
-2. Zielgruppen und mindestens einen betroffenen Leserpfad bestimmen:
-   Lernende, tägliche Nutzende, Maintainer/KI-Agenten oder Prüfung/Fehleranalyse.
+2. Zielgruppen bestimmen: Lernende, tägliche Nutzende,
+   Maintainer/KI-Agenten oder Prüfung/Fehleranalyse. Zusätzlich mindestens einen
+   betroffenen Leserpfad benennen, zum Beispiel Einstieg, Voraussetzungen,
+   Vertiefung und nächste sichere Aktion.
 3. Kanonische Quelle, Owner, Dokumentklasse und Navigationseinfluss bestimmen.
 4. Genau eine der vier Entscheidungen wählen.
 5. Sprachstrategie, Sprachpartner, Plattform- und Beispielnachweis ergänzen.
-6. Distributionsklasse (`homeRuntime`, `sourceOnly`, `machineLocal`) und
-   Home-Sync-Bedarf festhalten.
+6. Repository-spezifische Distributionsklasse und Sync-Bedarf festhalten. Die
+   Home Baseline verwendet beispielsweise `homeRuntime`, `sourceOnly` und
+   `machineLocal`; andere Repositories behalten ihren eigenen Vertrag.
 7. Quellen statt generierter Ableitungen ändern.
 8. Link-, Renderer-, A11Y-, Plattform- und Fachprüfungen ausführen.
 9. Evidence und Re-Evaluation-Trigger festhalten und im Pull Request prüfen.
 
-*Record the affected audience and reader path, canonical source and owner,
-navigation impact, document class, language strategy and partner, platform and
-example proof, distribution class, Home-sync need, evidence, and reevaluation
-trigger. Keep semantic review separate from deterministic validation.*
+*Record the affected audience and at least one concrete reader path, canonical
+source and owner, navigation impact, document class, language strategy and
+partner, platform and example proof, repository-specific distribution and sync
+need, evidence, and reevaluation trigger. Keep semantic review separate from
+deterministic validation.*
 
 ## Leserpfade und Progressive Disclosure / Reader Paths and Progressive Disclosure
 
@@ -81,15 +85,20 @@ Voraussetzungen, Reihenfolge, tiefe Referenzen und nächste Aktion nennen.
 Große Dokumente werden nach Aufgabe und Zielgruppe getrennt, wenn eine
 gemeinsame Datei Orientierung oder Sprachpflege erschwert. In diesem Fall
 bleibt Deutsch der primäre Einstieg und eine nach Repository-Regel benannte
-englische Partnerdatei, zum Beispiel `.EN.md`, bietet einen inhaltlich
+englische Partnerdatei, zum Beispiel `README.EN.md`, bietet einen inhaltlich
 gleichwertigen Pfad. Beide Dateien verlinken gegenseitig.
 Kurze Dokumente dürfen Deutsch zuerst und Englisch danach enthalten.
+Repository-eigene Homogeneity-Prüfungen müssen deklarierte Partnerdateien als
+Paar erkennen. Können sie das noch nicht, entsteht ein Tooling-Follow-up statt
+einer künstlichen Sprachduplizierung innerhalb jeder Partnerdatei.
 
 *Progressive disclosure keeps purpose, prerequisites, safety boundaries, and
 one safe next action at the first entry. Detailed explanation follows through
 descriptive links. Split large documents by task and audience when one file
 harms orientation or language maintenance; paired language files remain
-semantically equivalent and link to each other.*
+semantically equivalent and link to each other. Repository homogeneity checks
+must recognize declared language pairs; otherwise record a tooling follow-up
+instead of duplicating both languages inside every partner file.*
 
 ## Source und Distribution / Source and Distribution
 
@@ -101,7 +110,7 @@ Dokumentation darf weder Level-0-Pfade noch Distributionsklassen allein wegen
 
 Für die Home Baseline gelten zusätzlich diese lokalen Klassen:
 
-- `homeRuntime`: kanonisch in Level 0 ändern und nach Lieferung
+- `homeRuntime`: kanonisch in Level-0 ändern und nach Lieferung
   manifestgesteuert nach `~/` synchronisieren;
 - `sourceOnly`: direkt aus der Level-0-Quelle lesen; kein Home-Sync;
 - `machineLocal`: nur lokal halten; keine implizite Remote-Autorität.
@@ -117,7 +126,7 @@ Propagations- oder Runtime-Zielmenge.
 runtime, installation, or deployment copy exists only when the repository's
 own contract defines it. The Home Baseline additionally uses `homeRuntime`,
 `sourceOnly`, and `machineLocal`; these terms and its paths are not universal.
-Its `scripts/config/home-sync-manifest.json` path belongs to the Level 0 Home
+Its `scripts/config/home-sync-manifest.json` path belongs to the Level-0 Home
 Baseline repository and is not a local path in other repositories.
 Documentation changes do not expand technical propagation or runtime targets.*
 

@@ -6,7 +6,7 @@
       "changeId": "CHG023",
       "scope": "docs/documentation-governance.md",
       "decision": "UpdateRequired",
-      "rationale": "Adopt the portable D6 reader-path, complete Documentation Impact, and repository-specific source/runtime decision contract without changing product or runtime behavior.",
+      "rationale": "Adopt the portable reader-path, complete Documentation Impact, and repository-specific source/runtime decision contract without changing product or runtime behavior.",
       "documents": [
         "docs/documentation-governance.md"
       ],
