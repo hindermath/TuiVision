@@ -55,12 +55,68 @@ or are generated deterministically.*
 ## Durchführung / Procedure
 
 1. Geänderte Pfade und benannte Flows erfassen.
-2. Zielgruppen und Dokumentfamilien bestimmen.
-3. Genau eine der vier Entscheidungen wählen.
-4. Pflichtfelder und Evidence ergänzen.
-5. Quellen statt generierter Ableitungen ändern.
-6. Passende Link-, Renderer-, A11Y-, Plattform- und Fachprüfungen ausführen.
-7. Entscheidung im Pull Request erneut prüfen.
+2. Zielgruppen und mindestens einen betroffenen Leserpfad bestimmen:
+   Lernende, tägliche Nutzende, Maintainer/KI-Agenten oder Prüfung/Fehleranalyse.
+3. Kanonische Quelle, Owner, Dokumentklasse und Navigationseinfluss bestimmen.
+4. Genau eine der vier Entscheidungen wählen.
+5. Sprachstrategie, Sprachpartner, Plattform- und Beispielnachweis ergänzen.
+6. Distributionsklasse (`homeRuntime`, `sourceOnly`, `machineLocal`) und
+   Home-Sync-Bedarf festhalten.
+7. Quellen statt generierter Ableitungen ändern.
+8. Link-, Renderer-, A11Y-, Plattform- und Fachprüfungen ausführen.
+9. Evidence und Re-Evaluation-Trigger festhalten und im Pull Request prüfen.
+
+*Record the affected audience and reader path, canonical source and owner,
+navigation impact, document class, language strategy and partner, platform and
+example proof, distribution class, Home-sync need, evidence, and reevaluation
+trigger. Keep semantic review separate from deterministic validation.*
+
+## Leserpfade und Progressive Disclosure / Reader Paths and Progressive Disclosure
+
+**Progressive Disclosure** bedeutet: Der erste Einstieg zeigt Zweck,
+Voraussetzungen, Sicherheitsgrenzen und genau eine sichere nächste Aktion.
+Vertiefende Erklärungen folgen über beschreibende Links. Ein Leserpfad muss
+Voraussetzungen, Reihenfolge, tiefe Referenzen und nächste Aktion nennen.
+
+Große Dokumente werden nach Aufgabe und Zielgruppe getrennt, wenn eine
+gemeinsame Datei Orientierung oder Sprachpflege erschwert. In diesem Fall
+bleibt Deutsch der primäre Einstieg und eine nach Repository-Regel benannte
+englische Partnerdatei, zum Beispiel `.EN.md`, bietet einen inhaltlich
+gleichwertigen Pfad. Beide Dateien verlinken gegenseitig.
+Kurze Dokumente dürfen Deutsch zuerst und Englisch danach enthalten.
+
+*Progressive disclosure keeps purpose, prerequisites, safety boundaries, and
+one safe next action at the first entry. Detailed explanation follows through
+descriptive links. Split large documents by task and audience when one file
+harms orientation or language maintenance; paired language files remain
+semantically equivalent and link to each other.*
+
+## Source und Distribution / Source and Distribution
+
+Jedes Repository benennt seine eigene kanonische Quelle und den zugehörigen
+Default-Branch. Eine getrennte Runtime-, Installations- oder Deployment-Kopie
+gilt nur, wenn der repository-eigene Vertrag sie ausdrücklich definiert.
+Dokumentation darf weder Level-0-Pfade noch Distributionsklassen allein wegen
+ähnlicher Dateinamen auf andere Repositories übertragen.
+
+Für die Home Baseline gelten zusätzlich diese lokalen Klassen:
+
+- `homeRuntime`: kanonisch in Level 0 ändern und nach Lieferung
+  manifestgesteuert nach `~/` synchronisieren;
+- `sourceOnly`: direkt aus der Level-0-Quelle lesen; kein Home-Sync;
+- `machineLocal`: nur lokal halten; keine implizite Remote-Autorität.
+
+Konkrete Home-Runtime-Mitglieder werden ausschließlich aus
+`scripts/config/home-sync-manifest.json` in Level 0 abgeleitet. Andere
+Repositories behalten ihre eigenen Begriffe sowie Build-, Installations-,
+Deployment- oder Lernreihenverträge. Eine Dokumentationsänderung erweitert
+keine technische Propagations- oder Runtime-Zielmenge.
+
+*Each repository names its own canonical source and default branch. A separate
+runtime, installation, or deployment copy exists only when the repository's
+own contract defines it. The Home Baseline additionally uses `homeRuntime`,
+`sourceOnly`, and `machineLocal`; these terms and its paths are not universal.
+Documentation changes do not expand technical propagation or runtime targets.*
 
 Deterministische Validatoren prüfen Struktur, Pfade, Hashes und Pflichtfelder.
 Sie können nicht beweisen, dass ein Satz fachlich wahr ist. Dafür bleiben
