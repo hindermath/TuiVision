@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0",
+  "feature": "023-registered-doc-architecture-adoption",
+  "entries": [
+    {
+      "changeId": "CHG023",
+      "scope": "docs/documentation-governance.md",
+      "decision": "UpdateRequired",
+      "rationale": "Adopt the portable reader-path, complete Documentation Impact, and repository-specific source/runtime decision contract without changing product or runtime behavior.",
+      "documents": [
+        "docs/documentation-governance.md"
+      ],
+      "owner": "Repository Maintainer",
+      "audiences": [
+        "Learners",
+        "Repository users",
+        "Maintainers and AI agents",
+        "Reviewers"
+      ],
+      "readerPaths": [
+        "Repository entry",
+        "Documentation governance",
+        "Maintainer and agent handoff",
+        "Audit and troubleshooting"
+      ],
+      "canonicalSource": "docs/documentation-governance.md",
+      "navigationImpact": "No new portal; the existing governance reference gains portable decision fields.",
+      "documentClass": "ActiveSemantic",
+      "languageStrategy": "German first and English second in one synchronized file.",
+      "languagePartners": [],
+      "platformAndExampleProof": "Text-first and platform-neutral; product examples remain unchanged.",
+      "distributionClass": "sourceOnly",
+      "homeSyncRequired": false,
+      "evidence": "docs/documentation-impact/feature-023-documentation-architecture-adoption.json",
+      "risk": "Low; repository-specific build, runtime, deployment and learning contracts remain authoritative.",
+      "criticality": "Normal",
+      "reevaluationTrigger": "The documentation architecture, reader paths, or repository source/runtime contract changes."
+    }
+  ]
+}
