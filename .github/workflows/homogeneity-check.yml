@@ -30,9 +30,37 @@ jobs:
         if: runner.os == 'macOS'
         run: brew install ripgrep
 
-      - name: Install ripgrep (Windows)
+      - name: Install pinned ripgrep (Windows)
         if: runner.os == 'Windows'
-        run: choco install ripgrep -y
+        shell: pwsh
+        run: |
+          $version = '15.2.0'
+          $archive = "ripgrep-${version}-x86_64-pc-windows-msvc.zip"
+          $release = "https://github.com/BurntSushi/ripgrep/releases/download/${version}"
+          $archivePath = Join-Path $env:RUNNER_TEMP $archive
+          $checksumPath = "${archivePath}.sha256"
+          $extractRoot = Join-Path $env:RUNNER_TEMP 'ripgrep'
+
+          Invoke-WebRequest -Uri "${release}/${archive}" -OutFile $archivePath
+          Invoke-WebRequest -Uri "${release}/${archive}.sha256" -OutFile $checksumPath
+
+          $expected = Get-Content -LiteralPath $checksumPath |
+            Where-Object { $_ -match '^[0-9a-fA-F]{64}$' } |
+            Select-Object -First 1
+          if ([string]::IsNullOrWhiteSpace($expected)) {
+              throw 'The published ripgrep checksum file contains no SHA-256 hash.'
+          }
+          $expected = $expected.ToLowerInvariant()
+          $actual = (Get-FileHash -LiteralPath $archivePath -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actual -ne $expected) {
+              throw "ripgrep checksum mismatch: expected ${expected}, received ${actual}."
+          }
+
+          Expand-Archive -LiteralPath $archivePath -DestinationPath $extractRoot -Force
+          $binPath = Join-Path $extractRoot "ripgrep-${version}-x86_64-pc-windows-msvc"
+          $binPath | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          $env:PATH = "${binPath};${env:PATH}"
+          rg --version
 
       - name: Run Agent Secret Scan (Bash)
         if: runner.os != 'Windows'

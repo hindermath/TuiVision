@@ -754,6 +754,7 @@ fortgeschrieben.
 | 2026-07-17 | `/speckit-autonomous` für `036-wave6-tvfm-showcase-remediation` | Die sichtbare Wave-6-Stage 2 verwendet den bestehenden Feature-035-Workspace unverändert. Ein persistentes `TWindow` mit fokussierbarer `TListBox`, sechs Menügruppen, begrenzten Preview-/Such-/Palette-Pfaden, echten Copy-/Rename-/Delete-/Read-only-Dialogen, StatusLine, F1-Description, Tastatur und optionalem nicht mutierendem Mouse-Intent ist in normaler und `48x16`-Komposition belegt. Die exakte Evidence schließt zehn `W6S`-Zeilen und einen `ShowcaseComplete`-Einstiegspunkt; alle 24 read-only TVFM-Dateien stimmen per SHA-256. Frühe lokale Abnahme: 23/23 Showcase-/Funktions-Smokes und 4/4 Evidence-Validatoren bei Version `1.36.0.392`. Der vorläufige Kandidatenumfang umfasst etwa 694 hinzugefügte oder wesentlich aktualisierte Beispielcodezeilen, 996 Testzeilen und 2637 Dokumentations-/Evidence-/Guidance-Zeilen, zusammen etwa 4327 Zeilen. Konservative Manualreferenz: rund `54,1` Tage beziehungsweise `421,9` Stunden bei 80 Zeilen/Tag; Thorsten-Solo rund `34,6` Tage beziehungsweise `270,0` Stunden bei 125 Zeilen/Tag. Vollständige Release-, Coverage-, DocFX-/A11Y-, Plattform-, Review- und Exact-Head-Gates folgen. Feature 037, unabhängiger Wave-6-Abschluss und Post-Wave-6-Audit wurden nicht gestartet. |
 | 2026-07-17 | Kausaler Closeout der Wave-6-Showcase-Stufe Feature 036 | Feature-PR #104 wurde nach der Windows-Korrektur auf dem finalen Head `a0d5062` als Merge `559bffb` geliefert. Der erste Windows-Lauf fand eine checkout-abhängige CRLF-Abweichung im test-only Hashnachweis historischer `.PAS`-/`.BAT`-Texte; die begrenzte Kanonisierung bewahrt `.PAL`-/`.TVR`-Ressourcen bytegenau und bestand anschließend 35/35 betroffene sowie 880/880 vollständige Release-Tests. Die lokale Coverage lag mit 92,96 %, 86,66 %, 90,01 %, 80,55 % und 89,18 % über allen fünf 70-%-Gates; DocFX 0/0 und Playwright/Axe 2/2 bestanden. Der exakte Head erreichte 22 erfolgreiche technische Checks bei einem erwarteten übersprungenen Pages-Deploy. Zwölf Primary-Gate-Zeilen wurden von Bash und PowerShell akzeptiert; Claude war grün, GraphQL meldete null Threads und Kommentare, Copilot blieb quota-bedingt ein fehlender Review, und ausschließlich Human Approval benötigte den autorisierten engen Bypass. Der Run-State endet mit `Retrospective`, `Completed`, 187/187 und `nextExactAction: N/A`; die Retrospektive ist `NoPromotion`. Der Evidence-only Closeout löst keine erneute .NET-Validierung aus. Feature 037, unabhängiger Wave-6-Abschluss und Post-Wave-6-Audit wurden nicht gestartet. |
 | 2026-07-23 | Intake Authoring und Review | Fünf aktive Lastenhefte als hashgebundene Legacy-Intakes normalisiert; der frühere Post-Wave-6-Einzelreview bleibt als supersedierte Evidence erhalten, der Serienreview endet `Ready` ohne offene Findings. |
+| 2026-08-02 | Runnerprofil und Windows-ripgrep gehärtet | Documentation Impact `GeneratedUpdate`: TuiVision bleibt als öffentliches Referenz-Repository vollständiger Linux-/macOS-/Windows-Canary der generisch verteilten Wartungsworkflows. Der Windows-Homogeneity-Check ersetzt den fehlertoleranten Chocolatey-Bezug durch das offizielle, auf Version 15.2.0 fixierte ripgrep-Archiv mit SHA-256-Prüfung und explizitem `rg --version`. Produktcode, öffentliche API, Bedienung und Produktdokumentation bleiben unverändert; die Projektstatistik wird aus Git-Historie und Konfiguration neu erzeugt. |
 
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 Basis dieses Schlussblocks ist der Repository-Snapshot vom 2026-07-15. Die
@@ -1197,18 +1198,18 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 591994 lines |
+| Textbasis / Text base | 592026 lines |
 | Textdateien / Text files | 2864 |
 | Beobachtbarer Zeitraum / Observable period | 2025-08-10..2026-08-02 |
 | Aktivtage / Active days | 85 |
-| Relevante Commits / Relevant commits | 529 |
-| Zeilen je Aktivtag / Lines per active day | 6964.6 |
+| Relevante Commits / Relevant commits | 531 |
+| Zeilen je Aktivtag / Lines per active day | 6965.0 |
 | Peak-Tag im Fenster / Peak day in window | 2026-03-22 / 321183 |
 | Peak-Woche im Fenster / Peak week in window | 2026-03-22 / 373633 |
 | Laengste Serie / Longest streak | 17 days |
 | Speedup vs. 80 lines/day | 87.1x |
 | Speedup vs. 125 lines/day | 55.7x |
-| Methodik / Methodology | v2; source `bcce5f44ac29` |
+| Methodik / Methodology | v2; source `97b0e62c1b46` |
 
 ### Artefaktmix / Artifact Mix
 
@@ -1217,7 +1218,7 @@ Produktiv / Production          [#####...............]  23.2% | 137243
 Tests                           [#...................]   7.4% | 44057
 Dokumentation / Documentation   [#########...........]  43.4% | 257114
 Skripte / Scripts               [#...................]   3.2% | 18988
-Konfiguration / Configuration   [#...................]   5.9% | 34759
+Konfiguration / Configuration   [#...................]   5.9% | 34791
 Daten und Medien / Data and media [#...................]   0.0% | 1
 Sonstiger Text / Other text     [###.................]  16.9% | 99832
 ```
@@ -1409,7 +1410,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..10000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [##############......] 6964.6
+Visible repository [##############......] 6965.0
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -1435,6 +1436,6 @@ DE: Das Fenster beginnt am 2025-08-10 und endet am 2026-08-02. Es enthaelt 85 ak
 | 2026-05 | 274123 |
 | 2026-06 | 42308 |
 | 2026-07 | 206029 |
-| 2026-08 | 158 |
+| 2026-08 | 200 |
 
 <!-- project-statistics-v2:end -->
