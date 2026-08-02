@@ -44,7 +44,13 @@ jobs:
           Invoke-WebRequest -Uri "${release}/${archive}" -OutFile $archivePath
           Invoke-WebRequest -Uri "${release}/${archive}.sha256" -OutFile $checksumPath
 
-          $expected = ((Get-Content -LiteralPath $checksumPath -Raw).Trim() -split '\s+')[0].ToLowerInvariant()
+          $expected = Get-Content -LiteralPath $checksumPath |
+            Where-Object { $_ -match '^[0-9a-fA-F]{64}$' } |
+            Select-Object -First 1
+          if ([string]::IsNullOrWhiteSpace($expected)) {
+              throw 'The published ripgrep checksum file contains no SHA-256 hash.'
+          }
+          $expected = $expected.ToLowerInvariant()
           $actual = (Get-FileHash -LiteralPath $archivePath -Algorithm SHA256).Hash.ToLowerInvariant()
           if ($actual -ne $expected) {
               throw "ripgrep checksum mismatch: expected ${expected}, received ${actual}."
