@@ -1387,7 +1387,7 @@
       "platform": "macOS local",
       "candidate": "working tree",
       "result": "Pass",
-      "metric": "8/8 at 1.37.0.409",
+      "metric": "8/8 feature-head proof at 1.37.0.409 and 8/8 causal-pair proof at 1.37.8.410",
       "evidencePath": "pr-evidence validation ledger",
       "failureBoundary": "Any failing positive or negative fixture.",
       "reevaluationTrigger": "Closure data or validator change."

@@ -25,6 +25,7 @@ consolidation validator.
 | Der Statistics-Renderer zählte die bei jedem Commit zwingend geänderte Versionsdatei und konnte dadurch keinen stabilen Abschluss erzeugen. | `ValidationAutomation` | `Directory.Build.props` projektspezifisch aus der Historienstatistik ausschließen; Produkt-, Test- und Dokumentationsmetriken bleiben vollständig. |
 | Copilot konnte trotz mehrerer Versuche keinen Review erzeugen. | `NoPromotion` | Fehlenden Review weiterhin als fehlend und nicht als Pass dokumentieren. |
 | Der Merge benötigte den genehmigten Human-Approval-only Admin-Bypass erst nach vollständig grünen technischen und Exact-Head-Gates. | `NoPromotion` | Bestehende enge Bypass-Grenze unverändert beibehalten. |
+| Der test-only Closure-Validator modellierte zunächst nur den absichtlich blockierten Feature-Head und wies den später kausal zulässigen Closeout-Zustand zurück. | `FeatureSpecific` | Genau die Paare `BlockedPendingDelivery`/`BlockedPendingWave6Closure` und `Closed`/`Eligible` akzeptieren; Mischzustände weiter ablehnen. |
 
 ## Abschlussgrenze / Completion boundary
 

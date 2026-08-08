@@ -47,7 +47,7 @@
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/pr-evidence.md",
-      "sha256": "f2575967f220478683e1f5746cd9a575b9f9a54a2ffeebc939d96f079d251031"
+      "sha256": "23c2f8b86a3642018b7425d32fc46de4b25e9728c3fbc5053aba076c4e47daf8"
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/autonomous-gate-requirements.json",
@@ -55,7 +55,7 @@
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/wave6-combined-delta.json",
-      "sha256": "ab771588b057f975c8d6327207e48b61090ef595ac9c19196320524ed81ea803"
+      "sha256": "64d1eb57171453706a20c8948741c0344476366ab4e1f78978e8433a6e957af7"
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/wave6-closure.md",
@@ -63,11 +63,11 @@
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/retrospective.md",
-      "sha256": "e88c1ff10f103f6a79e75a6198bae1f17ac666142426952e88078be0666e31b0"
+      "sha256": "83dd4d49372b8e92ada5c86e95ea0df4004844506890bd0a164707b6c6b53b70"
     },
     {
       "path": "tests/TuiVision.Examples.SmokeTests/Wave6CombinedDeltaClosureTests.cs",
-      "sha256": "92c86b56bbb376ebe4c6ba24ac828fca205df924ac7c0ed14c38b6b16530258e"
+      "sha256": "e3fe4df8ee10d3edd53960c97c9fbd6fac2ff4da369a91adddf6b308f39fff1a"
     },
     {
       "path": "scripts/validate-requirements-intake-alignment.mjs",
@@ -87,7 +87,7 @@
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/delivery-closeout.md",
-      "sha256": "9b4c07f069004ca37ae1dd873fd3c5b971352c0769b1e421ccebdbd2bce4394c"
+      "sha256": "c2b3e3836b13082d696361220aeaaccda2cbd11e02fef832e6ab54d6c97df806"
     },
     {
       "path": "requirements/intakes/series/tui-vision-delivery/manifest.json",

@@ -40,6 +40,12 @@ head contains the exact fingerprint exception and excludes only the mandatory
 version file from statistics history. Current Gitleaks, Bash/PowerShell
 statistics checks and all three homogeneity jobs passed.
 
+The first causal-closeout CI matrix then rejected the newly recorded
+`Closed`/`Eligible` pair because the test-only validator intentionally knew
+only the pre-merge blocked pair. The bounded correction accepts exactly those
+two complete causal pairs and rejects mixed states. Its focused 8/8 proof
+passed at version `1.37.8.410`; no product code changed.
+
 ## Review and Bypass Boundary
 
 The sole review thread was the outdated Gitleaks report and was resolved after
