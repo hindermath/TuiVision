@@ -15,6 +15,7 @@ export function validate(options = {}) {
     "requirements/intakes/series/tui-vision-delivery/manifest.json";
   const coveragePath = options.coveragePath ??
     "specs/requirements-reconciliation-20260726/requirements-coverage.json";
+  const featurePath = options.featurePath ?? ".specify/feature.json";
   const errors = [];
   const resolve = (candidate) => path.isAbsolute(candidate) ? candidate : path.join(root, candidate);
   const read = (relativePath) => fs.readFileSync(resolve(relativePath), "utf8");
@@ -130,9 +131,13 @@ export function validate(options = {}) {
   if (!index.includes(manifestPath)) errors.push("Pflichtenheft index omits canonical manifest");
   if (/\[[ xX-]\]/.test(index)) errors.push("slim Pflichtenheft must not contain progress checkboxes");
 
-  const feature = parse(".specify/feature.json");
-  if (feature.feature_directory !== "specs/036-wave6-tvfm-showcase-remediation") {
-    errors.push("requirements migration must not start Feature 037");
+  const feature = parse(featurePath);
+  const allowedFeatureDirectories = new Set([
+    "specs/036-wave6-tvfm-showcase-remediation",
+    "specs/037-wave6-combined-delta-closure",
+  ]);
+  if (!allowedFeatureDirectories.has(feature.feature_directory)) {
+    errors.push("feature metadata must reference the completed predecessor or the explicitly eligible Wave-6 closure");
   }
 
   const optional = "requirements/intakes/backlog/Lastenheft_Optional-NuGet-Package.md";

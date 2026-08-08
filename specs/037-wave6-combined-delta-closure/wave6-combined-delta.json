@@ -1,0 +1,1540 @@
+{
+  "schemaVersion": "1.0",
+  "runId": "037-wave6-combined-delta-closure",
+  "baselineCommit": "faa42883d4a1cbe1b7b07e4e0b7f2b07e34e4c76",
+  "deliveryMode": "MergeAndSync",
+  "candidateDecision": "ReadyForDelivery",
+  "wave6State": "BlockedPendingDelivery",
+  "portfolioAuditState": "BlockedPendingWave6Closure",
+  "owner": "Thorsten Hindermann",
+  "reviewer": "Codex",
+  "reviewDate": "2026-08-08",
+  "result": "Pass",
+  "residualRisk": "Current exact-head Ubuntu and Windows provider evidence, remote review and merge remain pending; the reviewed feature head therefore keeps Wave 6 and the portfolio audit causally blocked.",
+  "reevaluationTrigger": "Any closure evidence, predecessor, or validation change.",
+  "productDeltas": [
+    {
+      "prNumber": 101,
+      "role": "FunctionalProduct",
+      "baseCommit": "4b32762dfc60e18655de35d816ff1d4ede0185eb",
+      "headCommit": "207e807ee8835779b9b8641f91868a6a5e80f938",
+      "mergeCommit": "52f77facc518e3084f897148b44ec19e62b3dde6",
+      "changedFileCount": 44,
+      "changedFileSetSha256": "d9cf20ce76e07e7e4d8c3064589fea670fc049fe083e293091ea86df9a82e902",
+      "changedFiles": [
+        ".github/agents/copilot-instructions.md",
+        ".github/copilot-instructions.md",
+        ".specify/feature.json",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "Directory.Build.props",
+        "GEMINI.md",
+        "Lastenheft_20_Wave6-TVFM-Functional-Porting.035-wave6-tvfm-functional-porting.md",
+        "Lastenheft_Abarbeitungsreihenfolge.md",
+        "Pflichtenheft.md",
+        "TuiVision.sln",
+        "docs/guides/examples/tp7-file-manager.md",
+        "docs/project-statistics.md",
+        "docs/toc.yml",
+        "examples/README.md",
+        "examples/Shared/TuiVision.Examples.Wave6/ControlledFileWorkspace.cs",
+        "examples/Shared/TuiVision.Examples.Wave6/Tp7FileManagerApp.cs",
+        "examples/Shared/TuiVision.Examples.Wave6/TuiVision.Examples.Wave6.csproj",
+        "examples/Shared/TuiVision.Examples.Wave6/Wave6FileModels.cs",
+        "examples/Tp7FileManager/Fixtures/README.txt",
+        "examples/Tp7FileManager/Fixtures/data/sample.bin",
+        "examples/Tp7FileManager/Fixtures/docs/lesson.txt",
+        "examples/Tp7FileManager/Program.cs",
+        "examples/Tp7FileManager/Tp7FileManager.csproj",
+        "specs/035-wave6-tvfm-functional-porting/autonomous-gate-requirements.json",
+        "specs/035-wave6-tvfm-functional-porting/autonomous-run-state.json",
+        "specs/035-wave6-tvfm-functional-porting/checklists/filesystem-safety.md",
+        "specs/035-wave6-tvfm-functional-porting/checklists/historical-framework.md",
+        "specs/035-wave6-tvfm-functional-porting/checklists/plan-quality.md",
+        "specs/035-wave6-tvfm-functional-porting/checklists/plan-review.md",
+        "specs/035-wave6-tvfm-functional-porting/checklists/proof-a11y-governance.md",
+        "specs/035-wave6-tvfm-functional-porting/checklists/requirements.md",
+        "specs/035-wave6-tvfm-functional-porting/contracts/wave6-functional-acceptance.md",
+        "specs/035-wave6-tvfm-functional-porting/data-model.md",
+        "specs/035-wave6-tvfm-functional-porting/plan.md",
+        "specs/035-wave6-tvfm-functional-porting/pr-evidence.md",
+        "specs/035-wave6-tvfm-functional-porting/quickstart.md",
+        "specs/035-wave6-tvfm-functional-porting/research.md",
+        "specs/035-wave6-tvfm-functional-porting/spec.md",
+        "specs/035-wave6-tvfm-functional-porting/tasks.md",
+        "tests/TuiVision.Examples.SmokeTests/TuiVision.Examples.SmokeTests.csproj",
+        "tests/TuiVision.Examples.SmokeTests/Wave6ControlledWorkspaceTests.cs",
+        "tests/TuiVision.Examples.SmokeTests/Wave6FileOperationTests.cs",
+        "tests/TuiVision.Examples.SmokeTests/Wave6FunctionalSmokeMatrixTests.cs"
+      ],
+      "productPaths": [
+        "TuiVision.sln",
+        "docs/guides/examples/tp7-file-manager.md",
+        "docs/toc.yml",
+        "examples/README.md",
+        "examples/Shared/TuiVision.Examples.Wave6/ControlledFileWorkspace.cs",
+        "examples/Shared/TuiVision.Examples.Wave6/Tp7FileManagerApp.cs",
+        "examples/Shared/TuiVision.Examples.Wave6/TuiVision.Examples.Wave6.csproj",
+        "examples/Shared/TuiVision.Examples.Wave6/Wave6FileModels.cs",
+        "examples/Tp7FileManager/Fixtures/README.txt",
+        "examples/Tp7FileManager/Fixtures/data/sample.bin",
+        "examples/Tp7FileManager/Fixtures/docs/lesson.txt",
+        "examples/Tp7FileManager/Program.cs",
+        "examples/Tp7FileManager/Tp7FileManager.csproj",
+        "tests/TuiVision.Examples.SmokeTests/TuiVision.Examples.SmokeTests.csproj",
+        "tests/TuiVision.Examples.SmokeTests/Wave6ControlledWorkspaceTests.cs",
+        "tests/TuiVision.Examples.SmokeTests/Wave6FileOperationTests.cs",
+        "tests/TuiVision.Examples.SmokeTests/Wave6FunctionalSmokeMatrixTests.cs"
+      ]
+    },
+    {
+      "prNumber": 102,
+      "role": "FunctionalCloseout",
+      "baseCommit": "52f77facc518e3084f897148b44ec19e62b3dde6",
+      "headCommit": "e6d5b07ef91ac8770ab03a1c4b9830a17bf334ad",
+      "mergeCommit": "b0d99052b66f3f575f8343fa291761ec3f65779d",
+      "changedFileCount": 14,
+      "changedFileSetSha256": "cc60e928453e596aa86afd30d1918d51b44a532fa7dfb4f8ebfa9d5a97eb9841",
+      "changedFiles": [
+        ".github/agents/copilot-instructions.md",
+        ".github/copilot-instructions.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "Directory.Build.props",
+        "GEMINI.md",
+        "Lastenheft_Abarbeitungsreihenfolge.md",
+        "Pflichtenheft.md",
+        "docs/project-statistics.md",
+        "specs/035-wave6-tvfm-functional-porting/autonomous-run-state.json",
+        "specs/035-wave6-tvfm-functional-porting/delivery-closeout.md",
+        "specs/035-wave6-tvfm-functional-porting/pr-evidence.md",
+        "specs/035-wave6-tvfm-functional-porting/retrospective.md",
+        "specs/035-wave6-tvfm-functional-porting/tasks.md"
+      ],
+      "productPaths": []
+    },
+    {
+      "prNumber": 103,
+      "role": "PromptMetadata",
+      "baseCommit": "b0d99052b66f3f575f8343fa291761ec3f65779d",
+      "headCommit": "3d1ee66b6eb7c54e8663430a57945d47a8d63845",
+      "mergeCommit": "42a842fb63a0695a618a0f87ffec543e9bc3b6c8",
+      "changedFileCount": 9,
+      "changedFileSetSha256": "d38454d7882446d97839e60a38f4977b02b474a9d4929f0b854cf5e718f80848",
+      "changedFiles": [
+        ".github/agents/copilot-instructions.md",
+        ".github/copilot-instructions.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "GEMINI.md",
+        "Lastenheft_21_Wave6-TVFM-Showcase-Remediation.md",
+        "Lastenheft_Abarbeitungsreihenfolge.md",
+        "Pflichtenheft.md",
+        "docs/project-statistics.md"
+      ],
+      "productPaths": []
+    },
+    {
+      "prNumber": 104,
+      "role": "ShowcaseProduct",
+      "baseCommit": "42a842fb63a0695a618a0f87ffec543e9bc3b6c8",
+      "headCommit": "a0d506297c101104fd0e15911a7d21e1c5a21caa",
+      "mergeCommit": "559bffbfbb94699a33cfe1ad8b01d5ac9b86641d",
+      "changedFileCount": 35,
+      "changedFileSetSha256": "2130ffa53ec34bbb23f9d64b040d3922a89238c2bcd7d36af44f9329bdc8a6aa",
+      "changedFiles": [
+        ".agent/rules/specify-rules.md",
+        ".github/agents/copilot-instructions.md",
+        ".github/copilot-instructions.md",
+        ".specify/feature.json",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "Directory.Build.props",
+        "GEMINI.md",
+        "Lastenheft_21_Wave6-TVFM-Showcase-Remediation.036-wave6-tvfm-showcase-remediation.md",
+        "Lastenheft_Abarbeitungsreihenfolge.md",
+        "Pflichtenheft.md",
+        "docs/guides/examples/tp7-file-manager.md",
+        "docs/project-statistics.md",
+        "examples/README.md",
+        "examples/Shared/TuiVision.Examples.Wave6/Tp7FileManagerApp.cs",
+        "examples/Shared/TuiVision.Examples.Wave6/Wave6ShowcaseViews.cs",
+        "specs/036-wave6-tvfm-showcase-remediation/autonomous-gate-requirements.json",
+        "specs/036-wave6-tvfm-showcase-remediation/autonomous-run-state.json",
+        "specs/036-wave6-tvfm-showcase-remediation/checklists/autonomous-readiness.md",
+        "specs/036-wave6-tvfm-showcase-remediation/checklists/filesystem-safety.md",
+        "specs/036-wave6-tvfm-showcase-remediation/checklists/historical-framework.md",
+        "specs/036-wave6-tvfm-showcase-remediation/checklists/plan-quality.md",
+        "specs/036-wave6-tvfm-showcase-remediation/checklists/plan-review.md",
+        "specs/036-wave6-tvfm-showcase-remediation/checklists/proof-a11y-governance.md",
+        "specs/036-wave6-tvfm-showcase-remediation/checklists/requirements.md",
+        "specs/036-wave6-tvfm-showcase-remediation/checklists/showcase-ux.md",
+        "specs/036-wave6-tvfm-showcase-remediation/contracts/wave6-showcase-acceptance.md",
+        "specs/036-wave6-tvfm-showcase-remediation/data-model.md",
+        "specs/036-wave6-tvfm-showcase-remediation/plan.md",
+        "specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md",
+        "specs/036-wave6-tvfm-showcase-remediation/quickstart.md",
+        "specs/036-wave6-tvfm-showcase-remediation/research.md",
+        "specs/036-wave6-tvfm-showcase-remediation/spec.md",
+        "specs/036-wave6-tvfm-showcase-remediation/tasks.md",
+        "tests/TuiVision.Examples.SmokeTests/Wave6ShowcaseSmokeMatrixTests.cs"
+      ],
+      "productPaths": [
+        "docs/guides/examples/tp7-file-manager.md",
+        "examples/README.md",
+        "examples/Shared/TuiVision.Examples.Wave6/Tp7FileManagerApp.cs",
+        "examples/Shared/TuiVision.Examples.Wave6/Wave6ShowcaseViews.cs",
+        "tests/TuiVision.Examples.SmokeTests/Wave6ShowcaseSmokeMatrixTests.cs"
+      ]
+    },
+    {
+      "prNumber": 105,
+      "role": "ShowcaseCloseout",
+      "baseCommit": "559bffbfbb94699a33cfe1ad8b01d5ac9b86641d",
+      "headCommit": "50a8f4dfab64de6a042555f8e304f01ac6b8596f",
+      "mergeCommit": "371af97ff1741313ab808c87c2827655073cff2c",
+      "changedFileCount": 14,
+      "changedFileSetSha256": "5fea3e2b0e8f988a7f6307ed98045ffa0d071ec29ab70567faebace961e72503",
+      "changedFiles": [
+        ".github/agents/copilot-instructions.md",
+        ".github/copilot-instructions.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "Directory.Build.props",
+        "GEMINI.md",
+        "Lastenheft_Abarbeitungsreihenfolge.md",
+        "Pflichtenheft.md",
+        "docs/project-statistics.md",
+        "specs/036-wave6-tvfm-showcase-remediation/autonomous-run-state.json",
+        "specs/036-wave6-tvfm-showcase-remediation/delivery-closeout.md",
+        "specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md",
+        "specs/036-wave6-tvfm-showcase-remediation/retrospective.md",
+        "specs/036-wave6-tvfm-showcase-remediation/tasks.md"
+      ],
+      "productPaths": []
+    }
+  ],
+  "acceptedInputs": [
+    {
+      "path": "specs/035-wave6-tvfm-functional-porting/pr-evidence.md",
+      "sha256": "0a44474af9e700a9e4000c1f7141e32eb3097e43450d9953964e1a1d6939e29c",
+      "role": "FunctionalEvidence",
+      "result": "Pass",
+      "reevaluationTrigger": "Path or content change."
+    },
+    {
+      "path": "specs/035-wave6-tvfm-functional-porting/delivery-closeout.md",
+      "sha256": "55e1663260d6248b67ce3cb057d252b3adecc5d2c6fe5c8d88bc447969b120e9",
+      "role": "FunctionalCloseout",
+      "result": "Pass",
+      "reevaluationTrigger": "Path or content change."
+    },
+    {
+      "path": "specs/035-wave6-tvfm-functional-porting/retrospective.md",
+      "sha256": "22fdeda63fce7b5e11c2fe220804748b4536bdf7ecc258455df1700fd82819e6",
+      "role": "FunctionalRetrospective",
+      "result": "Pass",
+      "reevaluationTrigger": "Path or content change."
+    },
+    {
+      "path": "specs/035-wave6-tvfm-functional-porting/plan.md",
+      "sha256": "fb3da3a015451ec2e22d496d58550ce29919f7808f3763eb1802b447decbca3b",
+      "role": "FunctionalPlan",
+      "result": "Pass",
+      "reevaluationTrigger": "Path or content change."
+    },
+    {
+      "path": "specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md",
+      "sha256": "e2ba63f09efe707be79294538bcbaa98b733264f9bf40dc78021f40013069d9d",
+      "role": "ShowcaseEvidence",
+      "result": "Pass",
+      "reevaluationTrigger": "Path or content change."
+    },
+    {
+      "path": "specs/036-wave6-tvfm-showcase-remediation/delivery-closeout.md",
+      "sha256": "3daed913d02a496da4bd9f9063de8a84149c39ccffbe5956204bbde377988432",
+      "role": "ShowcaseCloseout",
+      "result": "Pass",
+      "reevaluationTrigger": "Path or content change."
+    },
+    {
+      "path": "specs/036-wave6-tvfm-showcase-remediation/retrospective.md",
+      "sha256": "bb3dbdf1cd4759d98b7b508b6efb29a6823879b222f849f8b76f576f3d201e21",
+      "role": "ShowcaseRetrospective",
+      "result": "Pass",
+      "reevaluationTrigger": "Path or content change."
+    },
+    {
+      "path": "specs/036-wave6-tvfm-showcase-remediation/plan.md",
+      "sha256": "d3bf0f482d8628010e4635529d56c60e80040b58b821fc3ff9d2cde78ce4db11",
+      "role": "ShowcasePlan",
+      "result": "Pass",
+      "reevaluationTrigger": "Path or content change."
+    }
+  ],
+  "historicalSources": [
+    {
+      "path": "TVFM/ASSOC.PAS",
+      "gitBlob": "8e58e8cade4d59ea7886ce561ebddeda42a67055",
+      "sha256": "6f063ce05767a5759d8e010f439ada682db9855108e09abe0657a79769b330d6",
+      "hashMode": "CanonicalText",
+      "role": "ViewOrInteraction",
+      "historicalPurpose": "Extension associations",
+      "combinedIds": [
+        "W6C-008"
+      ],
+      "reevaluationTrigger": "Source or association-boundary change."
+    },
+    {
+      "path": "TVFM/COLORS.PAS",
+      "gitBlob": "6e12a7360061f644947b78556b9c6afb22cb696c",
+      "sha256": "70a5304e75fdff06bb5042b65b3e9126796235c05f7027c9b0482af6c80f724f",
+      "hashMode": "CanonicalText",
+      "role": "ViewOrInteraction",
+      "historicalPurpose": "Palette selection",
+      "combinedIds": [
+        "W6C-010"
+      ],
+      "reevaluationTrigger": "Source or palette-boundary change."
+    },
+    {
+      "path": "TVFM/CYAN.PAL",
+      "gitBlob": "287f247aadce23737d439d8218d1da679e74a29a",
+      "sha256": "7e76ad41b91f79bbd94271e0918b35c1d110a2dee0a2c50c4396ae9305b06b22",
+      "hashMode": "ByteExact",
+      "role": "ResourceOrPalette",
+      "historicalPurpose": "Cyan palette fixture",
+      "combinedIds": [
+        "W6C-010"
+      ],
+      "reevaluationTrigger": "Source or palette-boundary change."
+    },
+    {
+      "path": "TVFM/DEFAULT.PAL",
+      "gitBlob": "3cd91ee343d6d3ee1d6d8417406004a78257ea3b",
+      "sha256": "ea7964e4f88681a12009326e90cc4c75ac35a89bbcd35c61b400e1791988941f",
+      "hashMode": "ByteExact",
+      "role": "ResourceOrPalette",
+      "historicalPurpose": "Default palette fixture",
+      "combinedIds": [
+        "W6C-010"
+      ],
+      "reevaluationTrigger": "Source or palette-boundary change."
+    },
+    {
+      "path": "TVFM/DIRVIEW.PAS",
+      "gitBlob": "433c79fdea675514f15f175d4286ca3c9be600ee",
+      "sha256": "dd443d44d4d414607f857d570aaa186671e55eafc24f14f536ab12af5a55f0ba",
+      "hashMode": "CanonicalText",
+      "role": "ViewOrInteraction",
+      "historicalPurpose": "Directory tree",
+      "combinedIds": [
+        "W6C-002"
+      ],
+      "reevaluationTrigger": "Source or navigation change."
+    },
+    {
+      "path": "TVFM/DRAGDROP.PAS",
+      "gitBlob": "4a89b891f95e04d03f1b7b9456bf5b091c2e3bcd",
+      "sha256": "48d2303a068d023ab1ed4d33a408500a14e98124b1d4748b128827ea1dc7ded7",
+      "hashMode": "CanonicalText",
+      "role": "FileOperation",
+      "historicalPurpose": "Drag and drop intent",
+      "combinedIds": [
+        "W6C-007"
+      ],
+      "reevaluationTrigger": "Source or drag-boundary change."
+    },
+    {
+      "path": "TVFM/EDITPAL.PAS",
+      "gitBlob": "dbd7422e260bb8387a29ff8c403267121b72d425",
+      "sha256": "0cd9ae275d4bcc53a348be511892b65755df28fed535f0c58696eef74b753cbf",
+      "hashMode": "CanonicalText",
+      "role": "ViewOrInteraction",
+      "historicalPurpose": "Palette editing",
+      "combinedIds": [
+        "W6C-010"
+      ],
+      "reevaluationTrigger": "Source or palette-boundary change."
+    },
+    {
+      "path": "TVFM/EQU.PAS",
+      "gitBlob": "dfc5579094189919418264e5b95e67872571c556",
+      "sha256": "0d576743ffd297cfeee5181b07ad2958c9028bf270893be669ceb48c75c7dc71",
+      "hashMode": "CanonicalText",
+      "role": "ApplicationSupport",
+      "historicalPurpose": "Command constants",
+      "combinedIds": [
+        "W6C-001"
+      ],
+      "reevaluationTrigger": "Source or command change."
+    },
+    {
+      "path": "TVFM/FILECOPY.PAS",
+      "gitBlob": "ee897434c618478c21bcbfda5f2a86ecf6a0bcf5",
+      "sha256": "7811657673bd12839a227e490ee98525c61371f292713c221f281f8d84ba308d",
+      "hashMode": "CanonicalText",
+      "role": "FileOperation",
+      "historicalPurpose": "Copy engine",
+      "combinedIds": [
+        "W6C-006"
+      ],
+      "reevaluationTrigger": "Source or mutation-boundary change."
+    },
+    {
+      "path": "TVFM/FILEFIND.PAS",
+      "gitBlob": "3ad5cc3ce472872d1b0c179279d1390728b9e0ec",
+      "sha256": "224a627877b40b54673a103721b7728dd8eb122fc570760d461e016772a95b75",
+      "hashMode": "CanonicalText",
+      "role": "ViewOrInteraction",
+      "historicalPurpose": "Recursive search",
+      "combinedIds": [
+        "W6C-005"
+      ],
+      "reevaluationTrigger": "Source or search-boundary change."
+    },
+    {
+      "path": "TVFM/FILEVIEW.PAS",
+      "gitBlob": "b5a91ef20e4aff23b02bd5aa97577dcbd3997818",
+      "sha256": "343dee0bddbc869eff7e4729f6f3decbafeb0ba50ee1da137d67ebe8d72fd479",
+      "hashMode": "CanonicalText",
+      "role": "ViewOrInteraction",
+      "historicalPurpose": "File list and tags",
+      "combinedIds": [
+        "W6C-002",
+        "W6C-003"
+      ],
+      "reevaluationTrigger": "Source, list or tag change."
+    },
+    {
+      "path": "TVFM/GAUGES.PAS",
+      "gitBlob": "d856f32e8ce00e0a4a6c4a6d93a1b80908ed7635",
+      "sha256": "7478ac17cd21f65245f00b2a5d53ea8d6207fd6192e12f644c10e39609eefc39",
+      "hashMode": "CanonicalText",
+      "role": "ViewOrInteraction",
+      "historicalPurpose": "Operation progress",
+      "combinedIds": [
+        "W6C-009"
+      ],
+      "reevaluationTrigger": "Source or progress-state change."
+    },
+    {
+      "path": "TVFM/GLOBALS.PAS",
+      "gitBlob": "17fc4ec2718cea01e27280d37b0a7be8d1aaa94f",
+      "sha256": "f593e95784b1c38b5aa899f43fa299c9297c1bf7fe33d3c0edcf3c3462d107f2",
+      "hashMode": "CanonicalText",
+      "role": "ApplicationSupport",
+      "historicalPurpose": "Shared application state",
+      "combinedIds": [
+        "W6C-001"
+      ],
+      "reevaluationTrigger": "Source or application-state change."
+    },
+    {
+      "path": "TVFM/INFOVIEW.PAS",
+      "gitBlob": "3c2f241d9865ea430929b01fe799e418f76afabd",
+      "sha256": "f644b0e7b0369a18b49f5d70cb1c07935911c0cd87b4076fb44920a6d7c2067d",
+      "hashMode": "CanonicalText",
+      "role": "ViewOrInteraction",
+      "historicalPurpose": "File information",
+      "combinedIds": [
+        "W6C-003"
+      ],
+      "reevaluationTrigger": "Source or metadata change."
+    },
+    {
+      "path": "TVFM/MAKERES.PAS",
+      "gitBlob": "5d43cede68b0b287657338e85d4fc99b91831959",
+      "sha256": "7543c7a0f471893b208e5ab46dcacbff5f4a175d267ae55519386f3d228e2197",
+      "hashMode": "CanonicalText",
+      "role": "ResourceOrPalette",
+      "historicalPurpose": "Resource generation",
+      "combinedIds": [
+        "W6C-010"
+      ],
+      "reevaluationTrigger": "Source or resource-boundary change."
+    },
+    {
+      "path": "TVFM/MAKETVFM.BAT",
+      "gitBlob": "89e02a63f61d70df37d526961c0de316cfcc675a",
+      "sha256": "4231a8f3b888ad3ca8f1b23a1f4d1810cee4565cef30a45d94f4566eda568285",
+      "hashMode": "CanonicalText",
+      "role": "BuildIntent",
+      "historicalPurpose": "DOS build orchestration",
+      "combinedIds": [
+        "W6C-010"
+      ],
+      "reevaluationTrigger": "Source or build-provenance change."
+    },
+    {
+      "path": "TVFM/ROSE.PAL",
+      "gitBlob": "f68b7fc915689a9615e04eae237f640a2274ac23",
+      "sha256": "d557882668638308c2fe1e1157acaf43da87bbb2ae55c59d6c5e812772beb0d6",
+      "hashMode": "ByteExact",
+      "role": "ResourceOrPalette",
+      "historicalPurpose": "Rose palette fixture",
+      "combinedIds": [
+        "W6C-010"
+      ],
+      "reevaluationTrigger": "Source or palette-boundary change."
+    },
+    {
+      "path": "TVFM/TOOLS.PAS",
+      "gitBlob": "d9e8c4ca6834f052eb9ffb28cd69e77953ec36a2",
+      "sha256": "a8800797bca0ed45a780086601a8ba04a3ff7f9846376477f7851cf0bf72807e",
+      "hashMode": "CanonicalText",
+      "role": "ApplicationSupport",
+      "historicalPurpose": "Formatting helpers",
+      "combinedIds": [
+        "W6C-004",
+        "W6C-010"
+      ],
+      "reevaluationTrigger": "Source, preview or resource change."
+    },
+    {
+      "path": "TVFM/TRASH.PAS",
+      "gitBlob": "fb0e380ca6dc0d6a3cd7d6290e9fbab5f6bac7df",
+      "sha256": "115b64620483df2b54641f41352819caf80f9c8fcef67c8f1bbb527a225b78e0",
+      "hashMode": "CanonicalText",
+      "role": "FileOperation",
+      "historicalPurpose": "Confirmed delete target",
+      "combinedIds": [
+        "W6C-006",
+        "W6C-009"
+      ],
+      "reevaluationTrigger": "Source, mutation or recovery change."
+    },
+    {
+      "path": "TVFM/TREEWIN.PAS",
+      "gitBlob": "d88ed66b39ad911c827a00004942c48146f81424",
+      "sha256": "54b7ef2d03655040e24c0b75843d4b679b658aba04785f13355241a89c6fff40",
+      "hashMode": "CanonicalText",
+      "role": "ViewOrInteraction",
+      "historicalPurpose": "Tree and file-window integration",
+      "combinedIds": [
+        "W6C-002",
+        "W6C-009"
+      ],
+      "reevaluationTrigger": "Source, navigation or layout change."
+    },
+    {
+      "path": "TVFM/TVFM.PAS",
+      "gitBlob": "663cbfdf227a2cef1257494191e7a2402f2fc3e3",
+      "sha256": "8e8da1b47d1d43e8835c98d82a9bc4cfc461d56d934080d75b60985703b15d0a",
+      "hashMode": "CanonicalText",
+      "role": "EntryPoint",
+      "historicalPurpose": "Integrated file-manager application",
+      "combinedIds": [
+        "W6C-001"
+      ],
+      "reevaluationTrigger": "Source or entry-point change."
+    },
+    {
+      "path": "TVFM/TVFM.TVR",
+      "gitBlob": "2b5237af63e50782c189b7e0fa471f70fd380761",
+      "sha256": "0e0f359e852a5e640355ca2748605f3565254c814e4b61b0a910aaf59821122c",
+      "hashMode": "ByteExact",
+      "role": "ResourceOrPalette",
+      "historicalPurpose": "Binary UI resources",
+      "combinedIds": [
+        "W6C-010"
+      ],
+      "reevaluationTrigger": "Source or resource-boundary change."
+    },
+    {
+      "path": "TVFM/VIEWHEX.PAS",
+      "gitBlob": "e51c35a3ffbff2316d372cd0b918812508d0f371",
+      "sha256": "e478bc15a0b6dd663e9da4e976bf3656b86e78e2c6237f6f90c4bd7148b80cb2",
+      "hashMode": "CanonicalText",
+      "role": "ViewOrInteraction",
+      "historicalPurpose": "Hex viewer",
+      "combinedIds": [
+        "W6C-004"
+      ],
+      "reevaluationTrigger": "Source or preview-boundary change."
+    },
+    {
+      "path": "TVFM/VIEWTEXT.PAS",
+      "gitBlob": "309e67560f32976f3eb64c466e069d6fe10b569d",
+      "sha256": "15f1a7335d68b0e71536b9da1a36039e7231100932d4023b46c1098710920c64",
+      "hashMode": "CanonicalText",
+      "role": "ViewOrInteraction",
+      "historicalPurpose": "Text viewer",
+      "combinedIds": [
+        "W6C-004"
+      ],
+      "reevaluationTrigger": "Source or preview-boundary change."
+    }
+  ],
+  "functionalProofs": [
+    {
+      "functionalId": "W6-001",
+      "scope": "Application, desktop, menu, commands, status and help",
+      "frameworkDecision": "UseExistingFramework",
+      "proof": "Wave6FileManager_AppLoop_Navigates_Previews_And_Renders_State; Wave6FileManager_AppLoop_Opens_Description",
+      "evidencePath": "specs/035-wave6-tvfm-functional-porting/pr-evidence.md",
+      "residualRisk": "None.",
+      "reevaluationTrigger": "Application-shell change."
+    },
+    {
+      "functionalId": "W6-002",
+      "scope": "Directory tree, root and navigation",
+      "frameworkDecision": "UseExistingFramework",
+      "proof": "Wave6Workspace_Lists_And_Navigates_Only_Below_Root; Wave6Workspace_Rejects_Linked_Path_Segments",
+      "evidencePath": "specs/035-wave6-tvfm-functional-porting/pr-evidence.md",
+      "residualRisk": "Links intentionally rejected.",
+      "reevaluationTrigger": "Navigation or link-policy change."
+    },
+    {
+      "functionalId": "W6-003",
+      "scope": "File list, sort, filter, tags and information",
+      "frameworkDecision": "UseExistingFramework",
+      "proof": "Wave6Workspace_Filters_Sorts_And_Reports_Metadata",
+      "evidencePath": "specs/035-wave6-tvfm-functional-porting/pr-evidence.md",
+      "residualRisk": "Tags are session-local.",
+      "reevaluationTrigger": "List or metadata change."
+    },
+    {
+      "functionalId": "W6-004",
+      "scope": "Text and hex viewing",
+      "frameworkDecision": "UseExistingFramework",
+      "proof": "Wave6Workspace_TextPreview_Is_Bounded_And_Explicit; Wave6Workspace_HexPreview_Is_Bounded_And_TextFirst",
+      "evidencePath": "specs/035-wave6-tvfm-functional-porting/pr-evidence.md",
+      "residualRisk": "4-KiB educational limit.",
+      "reevaluationTrigger": "Preview limit or format change."
+    },
+    {
+      "functionalId": "W6-005",
+      "scope": "Controlled search",
+      "frameworkDecision": "UseExistingFramework",
+      "proof": "Wave6Workspace_Search_Enforces_Depth_File_And_Result_Limits",
+      "evidencePath": "specs/035-wave6-tvfm-functional-porting/pr-evidence.md",
+      "residualRisk": "Synchronous bounded search.",
+      "reevaluationTrigger": "Search or cancellation change."
+    },
+    {
+      "functionalId": "W6-006",
+      "scope": "Copy, rename, delete and attributes",
+      "frameworkDecision": "UseExistingFramework",
+      "proof": "Wave6Operation_Copy_And_Rename_Are_Confirmed_And_OneShot; Wave6Operation_Deletes_And_Toggles_ReadOnly",
+      "evidencePath": "specs/035-wave6-tvfm-functional-porting/pr-evidence.md",
+      "residualRisk": "File-only mutation.",
+      "reevaluationTrigger": "Mutation-authority change."
+    },
+    {
+      "functionalId": "W6-007",
+      "scope": "Drag intent and fallback",
+      "frameworkDecision": "UseExistingFramework",
+      "proof": "Wave6FileManager_AppLoop_Mouse_Only_Prepares_The_Keyboard_Intent",
+      "evidencePath": "specs/035-wave6-tvfm-functional-porting/pr-evidence.md",
+      "residualRisk": "No pointer-exclusive action.",
+      "reevaluationTrigger": "Mouse or drag change."
+    },
+    {
+      "functionalId": "W6-008",
+      "scope": "Associations and viewer decision",
+      "frameworkDecision": "IntentionalDeviation",
+      "proof": "Wave6Workspace_Searches_And_Selects_Only_Internal_Viewers",
+      "evidencePath": "specs/035-wave6-tvfm-functional-porting/pr-evidence.md",
+      "residualRisk": "External launch intentionally absent.",
+      "reevaluationTrigger": "Viewer or process-boundary change."
+    },
+    {
+      "functionalId": "W6-009",
+      "scope": "Progress, abort, error and recovery",
+      "frameworkDecision": "UseExistingFramework",
+      "proof": "Wave6Operation_Cancel_And_Foreign_Intent_Do_Not_Mutate; Wave6Operation_Revalidates_Target_Link_Before_Mutation",
+      "evidencePath": "specs/035-wave6-tvfm-functional-porting/pr-evidence.md",
+      "residualRisk": "No transactional rollback.",
+      "reevaluationTrigger": "Failure or recovery change."
+    },
+    {
+      "functionalId": "W6-010",
+      "scope": "Palette, configuration and resources",
+      "frameworkDecision": "IntentionalDeviation",
+      "proof": "Wave6FileManager_AppLoop_Exposes_Read_And_Resource_Commands",
+      "evidencePath": "specs/035-wave6-tvfm-functional-porting/pr-evidence.md",
+      "residualRisk": "No legacy binary editor.",
+      "reevaluationTrigger": "Palette or resource change."
+    }
+  ],
+  "showcaseProofs": [
+    {
+      "showcaseId": "W6S-001",
+      "scope": "Navigation and list",
+      "visibleAccess": "Persistent list and Navigate command.",
+      "layoutProof": "Normal and 48x16 cells pass.",
+      "focusStatusDescriptionKeyboard": "List focus, path status, F1 and Ctrl+Q.",
+      "cellProof": "Path, entries and selection cells.",
+      "evidencePath": "specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md",
+      "residualRisk": "No reusable tree control required.",
+      "reevaluationTrigger": "Navigation or layout change."
+    },
+    {
+      "showcaseId": "W6S-002",
+      "scope": "Text and hex preview",
+      "visibleAccess": "View commands and focused selection.",
+      "layoutProof": "Bounded normal and constrained details.",
+      "focusStatusDescriptionKeyboard": "Selection and status retain path.",
+      "cellProof": "Text, offsets, bytes and truncation cells.",
+      "evidencePath": "specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md",
+      "residualRisk": "No shared scrolling viewer.",
+      "reevaluationTrigger": "Preview or view change."
+    },
+    {
+      "showcaseId": "W6S-003",
+      "scope": "Filter, sort and tags",
+      "visibleAccess": "Search and Options commands.",
+      "layoutProof": "Filter, empty result and tag marker cells.",
+      "focusStatusDescriptionKeyboard": "Selection remains stable where possible.",
+      "cellProof": "Header and ordered list state.",
+      "evidencePath": "specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md",
+      "residualRisk": "Tags are not persisted.",
+      "reevaluationTrigger": "Filter, sort or tag change."
+    },
+    {
+      "showcaseId": "W6S-004",
+      "scope": "Search and cancellation",
+      "visibleAccess": "Search menu and payload.",
+      "layoutProof": "Match, cancel, limit and partial status cells.",
+      "focusStatusDescriptionKeyboard": "Status exposes terminal search state.",
+      "cellProof": "Search result and bounded status cells.",
+      "evidencePath": "specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md",
+      "residualRisk": "No background worker.",
+      "reevaluationTrigger": "Search presentation change."
+    },
+    {
+      "showcaseId": "W6S-005",
+      "scope": "Association and internal viewer",
+      "visibleAccess": "View Associated command.",
+      "layoutProof": "Text, hex and unknown fallback cells.",
+      "focusStatusDescriptionKeyboard": "Focused file drives the choice.",
+      "cellProof": "Viewer decision remains visible.",
+      "evidencePath": "specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md",
+      "residualRisk": "External launch omitted.",
+      "reevaluationTrigger": "Association presentation change."
+    },
+    {
+      "showcaseId": "W6S-006",
+      "scope": "File-operation dialogs",
+      "visibleAccess": "File menu and real modal requests.",
+      "layoutProof": "Preview, confirm, cancel and recovery cells.",
+      "focusStatusDescriptionKeyboard": "Stable input/button focus and keyboard navigation.",
+      "cellProof": "Dialog, validation and terminal result cells.",
+      "evidencePath": "specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md",
+      "residualRisk": "No directory mutation.",
+      "reevaluationTrigger": "Dialog or mutation change."
+    },
+    {
+      "showcaseId": "W6S-007",
+      "scope": "Drag intent",
+      "visibleAccess": "Bounded left-button down/move/up region.",
+      "layoutProof": "Normal and 48x16 cancellation boundaries.",
+      "focusStatusDescriptionKeyboard": "Status and complete keyboard path.",
+      "cellProof": "Prepared intent and cancellation cells.",
+      "evidencePath": "specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md",
+      "residualRisk": "No direct drop execution.",
+      "reevaluationTrigger": "Mouse or drag presentation change."
+    },
+    {
+      "showcaseId": "W6S-008",
+      "scope": "Palette and resources",
+      "visibleAccess": "Options Palette command.",
+      "layoutProof": "Four choices and unknown fallback.",
+      "focusStatusDescriptionKeyboard": "Text labels expose state.",
+      "cellProof": "Palette name and fallback cells.",
+      "evidencePath": "specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md",
+      "residualRisk": "No host palette mutation.",
+      "reevaluationTrigger": "Palette presentation change."
+    },
+    {
+      "showcaseId": "W6S-009",
+      "scope": "Help and Description",
+      "visibleAccess": "F1 and Help Description.",
+      "layoutProof": "Persistent bounded detail in both layouts.",
+      "focusStatusDescriptionKeyboard": "F1, focus, status and Ctrl+Q.",
+      "cellProof": "Purpose, safety and modernization text.",
+      "evidencePath": "specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md",
+      "residualRisk": "No public help-topic integration.",
+      "reevaluationTrigger": "Help or Description change."
+    },
+    {
+      "showcaseId": "W6S-010",
+      "scope": "Status, focus and layout",
+      "visibleAccess": "Persistent first frame and modal state.",
+      "layoutProof": "80-column split and 48x16 stacked layouts.",
+      "focusStatusDescriptionKeyboard": "Stable list/dialog focus and prioritized status.",
+      "cellProof": "First-frame, focus, result and StatusLine cells.",
+      "evidencePath": "specs/036-wave6-tvfm-showcase-remediation/pr-evidence.md",
+      "residualRisk": "Example-local responsive panels.",
+      "reevaluationTrigger": "Layout, focus or status change."
+    }
+  ],
+  "combinedAreas": [
+    {
+      "combinedId": "W6C-001",
+      "functionalId": "W6-001",
+      "showcaseId": "W6S-009",
+      "entryPoint": "Tp7FileManager",
+      "scope": "Application, menu, status and help shell",
+      "sourcePaths": [
+        "TVFM/TVFM.PAS",
+        "TVFM/EQU.PAS",
+        "TVFM/GLOBALS.PAS"
+      ],
+      "firstVisibleState": "Persistent TVFM window with path, list, detail and status.",
+      "primaryAction": "Open Help Description through the real event loop.",
+      "appLoopProof": "Wave6FileManager_AppLoop_Opens_Description",
+      "viewProof": "Concrete persistent TWindow.",
+      "focusProof": "Selectable list keeps keyboard focus.",
+      "statusProof": "Real TStatusLine exposes F1 and Ctrl+Q.",
+      "descriptionProof": "Bilingual purpose and safety text remains visible.",
+      "keyboardExitProof": "F1 and Ctrl+Q execute through app.Run.",
+      "cellProof": "Header, Description and StatusLine cells.",
+      "frameworkContracts": "TApplication, TWindow, TListBox, TStatusLine and dispatch.",
+      "localComposition": "Example-local text and command mapping.",
+      "safetyBoundary": "No host discovery, shell or mutation.",
+      "a11yBoundary": "Keyboard-first and text-first.",
+      "platformBoundary": "Managed proof with honest terminal fallback.",
+      "dimensions": {
+        "behavior": "Pass",
+        "interaction": "Pass",
+        "layout": "Pass",
+        "proof": "Pass",
+        "documentation": "Pass",
+        "a11y": "Pass",
+        "platform": "Pass",
+        "security": "Pass",
+        "frameworkReuse": "Pass"
+      },
+      "primaryDecision": "AcceptedAsIs",
+      "evidencePath": "Feature 035 and 036 PR evidence.",
+      "residualRisk": "None.",
+      "reevaluationTrigger": "Application-shell change."
+    },
+    {
+      "combinedId": "W6C-002",
+      "functionalId": "W6-002",
+      "showcaseId": "W6S-001",
+      "entryPoint": "Tp7FileManager",
+      "scope": "Controlled navigation and list",
+      "sourcePaths": [
+        "TVFM/DIRVIEW.PAS",
+        "TVFM/FILEVIEW.PAS",
+        "TVFM/TREEWIN.PAS"
+      ],
+      "firstVisibleState": "Controlled-root entries are visible.",
+      "primaryAction": "Navigate to a fixture directory.",
+      "appLoopProof": "Wave6FileManager_AppLoop_Navigates_Previews_And_Renders_State",
+      "viewProof": "TListBox in persistent Wave6ShowcaseWindow.",
+      "focusProof": "Selection and focus remain on the list.",
+      "statusProof": "Status reports the relative path.",
+      "descriptionProof": "F1 preserves the main navigation context.",
+      "keyboardExitProof": "Navigate and Ctrl+Q are keyboard reachable.",
+      "cellProof": "Path, entries and selection cells.",
+      "frameworkContracts": "TWindow, TListBox, TStringList and group dispatch.",
+      "localComposition": "Immutable workspace snapshots mapped to views.",
+      "safetyBoundary": "Controlled root and linked segments rejected.",
+      "a11yBoundary": "Selection and path are text visible.",
+      "platformBoundary": "Relative paths avoid drive assumptions.",
+      "dimensions": {
+        "behavior": "Pass",
+        "interaction": "Pass",
+        "layout": "Pass",
+        "proof": "Pass",
+        "documentation": "Pass",
+        "a11y": "Pass",
+        "platform": "Pass",
+        "security": "Pass",
+        "frameworkReuse": "Pass"
+      },
+      "primaryDecision": "AcceptedAsIs",
+      "evidencePath": "Feature 035 and 036 PR evidence.",
+      "residualRisk": "Links intentionally rejected.",
+      "reevaluationTrigger": "Navigation or link-policy change."
+    },
+    {
+      "combinedId": "W6C-003",
+      "functionalId": "W6-003",
+      "showcaseId": "W6S-003",
+      "entryPoint": "Tp7FileManager",
+      "scope": "Filter, sort, tags and metadata",
+      "sourcePaths": [
+        "TVFM/FILEVIEW.PAS",
+        "TVFM/INFOVIEW.PAS"
+      ],
+      "firstVisibleState": "Deterministically sorted entries and metadata.",
+      "primaryAction": "Apply filter, sort or tag state.",
+      "appLoopProof": "Wave6FileManager_AppLoop_Exposes_Read_And_Resource_Commands",
+      "viewProof": "Header and list reflect immutable snapshot state.",
+      "focusProof": "Selection persists when the path remains.",
+      "statusProof": "Status reports filter and selection outcomes.",
+      "descriptionProof": "Description states session-local boundaries.",
+      "keyboardExitProof": "All commands and Ctrl+Q are keyboard reachable.",
+      "cellProof": "Filter, empty-state, tag and metadata cells.",
+      "frameworkContracts": "TListBox, status and command dispatch.",
+      "localComposition": "Session-local tags and deterministic ordering.",
+      "safetyBoundary": "No ambient locale or persisted history.",
+      "a11yBoundary": "Tags and metadata are text labels.",
+      "platformBoundary": "Ordinal ordering is deterministic.",
+      "dimensions": {
+        "behavior": "Pass",
+        "interaction": "Pass",
+        "layout": "Pass",
+        "proof": "Pass",
+        "documentation": "Pass",
+        "a11y": "Pass",
+        "platform": "Pass",
+        "security": "Pass",
+        "frameworkReuse": "Pass"
+      },
+      "primaryDecision": "AcceptedAsIs",
+      "evidencePath": "Feature 035 and 036 PR evidence.",
+      "residualRisk": "Tags are intentionally session-local.",
+      "reevaluationTrigger": "List, filter or tag change."
+    },
+    {
+      "combinedId": "W6C-004",
+      "functionalId": "W6-004",
+      "showcaseId": "W6S-002",
+      "entryPoint": "Tp7FileManager",
+      "scope": "Bounded text and hex preview",
+      "sourcePaths": [
+        "TVFM/VIEWTEXT.PAS",
+        "TVFM/VIEWHEX.PAS",
+        "TVFM/TOOLS.PAS"
+      ],
+      "firstVisibleState": "Focused file has a bounded detail region.",
+      "primaryAction": "Open text or hex preview.",
+      "appLoopProof": "Wave6FileManager_AppLoop_Navigates_Previews_And_Renders_State",
+      "viewProof": "Detail panel renders existing preview results.",
+      "focusProof": "List focus and selected relative path remain stable.",
+      "statusProof": "Status reports type, truncation or invalid UTF-8.",
+      "descriptionProof": "Description explains bounded internal viewers.",
+      "keyboardExitProof": "View commands and Ctrl+Q are keyboard reachable.",
+      "cellProof": "Offsets, bytes, printable text and truncation cells.",
+      "frameworkContracts": "TWindow, static text rendering and buffer cells.",
+      "localComposition": "Line wrapping only; domain output is reused.",
+      "safetyBoundary": "4-KiB maximum and no external viewer.",
+      "a11yBoundary": "Hex and invalid bytes are text-first.",
+      "platformBoundary": "UTF-8 handling is explicit and deterministic.",
+      "dimensions": {
+        "behavior": "Pass",
+        "interaction": "Pass",
+        "layout": "Pass",
+        "proof": "Pass",
+        "documentation": "Pass",
+        "a11y": "Pass",
+        "platform": "Pass",
+        "security": "Pass",
+        "frameworkReuse": "Pass"
+      },
+      "primaryDecision": "AcceptedAsIs",
+      "evidencePath": "Feature 035 and 036 PR evidence.",
+      "residualRisk": "Scrolling viewer remains outside scope.",
+      "reevaluationTrigger": "Preview or limit change."
+    },
+    {
+      "combinedId": "W6C-005",
+      "functionalId": "W6-005",
+      "showcaseId": "W6S-004",
+      "entryPoint": "Tp7FileManager",
+      "scope": "Controlled search and cancellation",
+      "sourcePaths": [
+        "TVFM/FILEFIND.PAS"
+      ],
+      "firstVisibleState": "Search command is visible without host indexing.",
+      "primaryAction": "Run a bounded search or pre-cancel it.",
+      "appLoopProof": "Wave6FileManager_AppLoop_Exposes_Read_And_Resource_Commands",
+      "viewProof": "Search results map into the existing list/detail views.",
+      "focusProof": "List focus remains deterministic after results.",
+      "statusProof": "Complete, canceled, limited and partial states are explicit.",
+      "descriptionProof": "Description states depth, file and result limits.",
+      "keyboardExitProof": "Search, cancellation and Ctrl+Q are keyboard reachable.",
+      "cellProof": "Result and terminal status cells.",
+      "frameworkContracts": "Command dispatch, status and cancellation token.",
+      "localComposition": "Supplies only requested cancellation state.",
+      "safetyBoundary": "Controlled root and bounded breadth-first traversal.",
+      "a11yBoundary": "Progress and terminal state are text visible.",
+      "platformBoundary": "No host index, locale or time dependency.",
+      "dimensions": {
+        "behavior": "Pass",
+        "interaction": "Pass",
+        "layout": "Pass",
+        "proof": "Pass",
+        "documentation": "Pass",
+        "a11y": "Pass",
+        "platform": "Pass",
+        "security": "Pass",
+        "frameworkReuse": "Pass"
+      },
+      "primaryDecision": "AcceptedAsIs",
+      "evidencePath": "Feature 035 and 036 PR evidence.",
+      "residualRisk": "Synchronous bounded search.",
+      "reevaluationTrigger": "Search or cancellation change."
+    },
+    {
+      "combinedId": "W6C-006",
+      "functionalId": "W6-006",
+      "showcaseId": "W6S-006",
+      "entryPoint": "Tp7FileManager",
+      "scope": "Confirmed operations and dialogs",
+      "sourcePaths": [
+        "TVFM/FILECOPY.PAS",
+        "TVFM/TRASH.PAS"
+      ],
+      "firstVisibleState": "File commands open explicit modal requests.",
+      "primaryAction": "Preview, confirm or cancel one operation.",
+      "appLoopProof": "Wave6FileManager_AppLoop_Requires_Explicit_Mutation_Decision",
+      "viewProof": "Real TDialog, TInputLine and TButton views.",
+      "focusProof": "Tab, Shift+Tab, Enter and Escape preserve stable focus.",
+      "statusProof": "Validation, cancel and terminal results are visible.",
+      "descriptionProof": "F1 explains controlled-root and no-overwrite policy.",
+      "keyboardExitProof": "All operation choices and Ctrl+Q are keyboard reachable.",
+      "cellProof": "Dialog, validation and result cells.",
+      "frameworkContracts": "TDialog, TInputLine, TButton and validators.",
+      "localComposition": "Dialog state creates no filesystem authority.",
+      "safetyBoundary": "Confirmed, one-shot, no overwrite and TOCTOU revalidation.",
+      "a11yBoundary": "No pointer-only mutation and text-first errors.",
+      "platformBoundary": "Root-relative paths and explicit attribute variance.",
+      "dimensions": {
+        "behavior": "Pass",
+        "interaction": "Pass",
+        "layout": "Pass",
+        "proof": "Pass",
+        "documentation": "Pass",
+        "a11y": "Pass",
+        "platform": "IntentionalDeviation",
+        "security": "Pass",
+        "frameworkReuse": "Pass"
+      },
+      "primaryDecision": "AcceptedIntentionalDeviation",
+      "evidencePath": "Feature 035 and 036 PR evidence.",
+      "residualRisk": "Read-only attribute semantics vary by platform.",
+      "reevaluationTrigger": "Operation, dialog or attribute change."
+    },
+    {
+      "combinedId": "W6C-007",
+      "functionalId": "W6-007",
+      "showcaseId": "W6S-007",
+      "entryPoint": "Tp7FileManager",
+      "scope": "Drag intent and keyboard parity",
+      "sourcePaths": [
+        "TVFM/DRAGDROP.PAS"
+      ],
+      "firstVisibleState": "A bounded list region can prepare copy intent.",
+      "primaryAction": "Prepare equivalent intent by mouse or keyboard.",
+      "appLoopProof": "Wave6FileManager_AppLoop_Mouse_Only_Prepares_The_Keyboard_Intent",
+      "viewProof": "Events route through the real group/view hierarchy.",
+      "focusProof": "Keyboard focus remains complete throughout drag state.",
+      "statusProof": "Release and cancellation state are text visible.",
+      "descriptionProof": "Description states that release never mutates.",
+      "keyboardExitProof": "Keyboard operation and Ctrl+Q remain complete.",
+      "cellProof": "Prepared intent and cancellation cells.",
+      "frameworkContracts": "Existing mouse/key events, groups and commands.",
+      "localComposition": "Bounded example-local drag preparation state.",
+      "safetyBoundary": "Release, Escape, capability loss and shutdown never execute.",
+      "a11yBoundary": "Mouse is optional and keyboard is equivalent.",
+      "platformBoundary": "Unsupported mouse still has complete keyboard fallback.",
+      "dimensions": {
+        "behavior": "Pass",
+        "interaction": "IntentionalDeviation",
+        "layout": "Pass",
+        "proof": "Pass",
+        "documentation": "Pass",
+        "a11y": "Pass",
+        "platform": "IntentionalDeviation",
+        "security": "Pass",
+        "frameworkReuse": "Pass"
+      },
+      "primaryDecision": "AcceptedIntentionalDeviation",
+      "evidencePath": "Feature 035 and 036 PR evidence.",
+      "residualRisk": "No direct filesystem drop by design.",
+      "reevaluationTrigger": "Drag target or mouse capability change."
+    },
+    {
+      "combinedId": "W6C-008",
+      "functionalId": "W6-008",
+      "showcaseId": "W6S-005",
+      "entryPoint": "Tp7FileManager",
+      "scope": "Internal association and viewer choice",
+      "sourcePaths": [
+        "TVFM/ASSOC.PAS"
+      ],
+      "firstVisibleState": "Focused extension has a visible internal decision.",
+      "primaryAction": "Choose associated internal preview.",
+      "appLoopProof": "Wave6Workspace_Searches_And_Selects_Only_Internal_Viewers",
+      "viewProof": "Existing text or hex detail panel is reused.",
+      "focusProof": "Focused list item drives the decision.",
+      "statusProof": "Unknown extensions request a visible manual choice.",
+      "descriptionProof": "Description states that external launch is omitted.",
+      "keyboardExitProof": "Association command and Ctrl+Q are keyboard reachable.",
+      "cellProof": "Text, hex and unknown fallback cells.",
+      "frameworkContracts": "Commands and internal views.",
+      "localComposition": "Closed extension-to-preview mapping.",
+      "safetyBoundary": "No shell, process or external viewer.",
+      "a11yBoundary": "Decision and fallback are text visible.",
+      "platformBoundary": "No host association lookup.",
+      "dimensions": {
+        "behavior": "IntentionalDeviation",
+        "interaction": "Pass",
+        "layout": "Pass",
+        "proof": "Pass",
+        "documentation": "Pass",
+        "a11y": "Pass",
+        "platform": "Pass",
+        "security": "Pass",
+        "frameworkReuse": "Pass"
+      },
+      "primaryDecision": "AcceptedIntentionalDeviation",
+      "evidencePath": "Feature 035 and 036 PR evidence.",
+      "residualRisk": "Historical external launch intentionally absent.",
+      "reevaluationTrigger": "Viewer or process-boundary change."
+    },
+    {
+      "combinedId": "W6C-009",
+      "functionalId": "W6-009",
+      "showcaseId": "W6S-010",
+      "entryPoint": "Tp7FileManager",
+      "scope": "Progress, failure, recovery and layout",
+      "sourcePaths": [
+        "TVFM/GAUGES.PAS",
+        "TVFM/TRASH.PAS",
+        "TVFM/TREEWIN.PAS"
+      ],
+      "firstVisibleState": "Persistent status and responsive main layout.",
+      "primaryAction": "Observe cancel, rejection or terminal operation result.",
+      "appLoopProof": "Wave6Operation_Cancel_And_Foreign_Intent_Do_Not_Mutate",
+      "viewProof": "Persistent split or stacked window composition.",
+      "focusProof": "List and modal focus recover after terminal states.",
+      "statusProof": "Failure, cancel, limit and recovery remain explicit.",
+      "descriptionProof": "Description states no transactional rollback.",
+      "keyboardExitProof": "Recovery and Ctrl+Q are keyboard reachable.",
+      "cellProof": "Status, result, focus and constrained-layout cells.",
+      "frameworkContracts": "TStatusLine, focus routing, modal dispatch and cells.",
+      "localComposition": "Responsive panels and terminal result formatting.",
+      "safetyBoundary": "Foreign, canceled and stale intents do not mutate.",
+      "a11yBoundary": "Progress and errors are not color-only.",
+      "platformBoundary": "48x16 and normal layouts are proven.",
+      "dimensions": {
+        "behavior": "Pass",
+        "interaction": "Pass",
+        "layout": "Pass",
+        "proof": "Pass",
+        "documentation": "Pass",
+        "a11y": "Pass",
+        "platform": "Pass",
+        "security": "Pass",
+        "frameworkReuse": "Pass"
+      },
+      "primaryDecision": "AcceptedAsIs",
+      "evidencePath": "Feature 035 and 036 PR evidence.",
+      "residualRisk": "No transactional rollback by design.",
+      "reevaluationTrigger": "Recovery, status or layout change."
+    },
+    {
+      "combinedId": "W6C-010",
+      "functionalId": "W6-010",
+      "showcaseId": "W6S-008",
+      "entryPoint": "Tp7FileManager",
+      "scope": "Palettes, resources and configuration",
+      "sourcePaths": [
+        "TVFM/COLORS.PAS",
+        "TVFM/CYAN.PAL",
+        "TVFM/DEFAULT.PAL",
+        "TVFM/EDITPAL.PAS",
+        "TVFM/MAKERES.PAS",
+        "TVFM/MAKETVFM.BAT",
+        "TVFM/ROSE.PAL",
+        "TVFM/TOOLS.PAS",
+        "TVFM/TVFM.TVR"
+      ],
+      "firstVisibleState": "Closed palette choices are available by name.",
+      "primaryAction": "Select Default, Cyan, Rose or HighContrast.",
+      "appLoopProof": "Wave6FileManager_AppLoop_Exposes_Read_And_Resource_Commands",
+      "viewProof": "Existing command/status views expose palette state.",
+      "focusProof": "Palette command does not disturb list focus.",
+      "statusProof": "Selected or fallback palette is text visible.",
+      "descriptionProof": "Description states managed-resource deviation.",
+      "keyboardExitProof": "Palette command and Ctrl+Q are keyboard reachable.",
+      "cellProof": "Palette name and unknown fallback cells.",
+      "frameworkContracts": "Commands, status and existing color/resource concepts.",
+      "localComposition": "Closed enum and deterministic fallback.",
+      "safetyBoundary": "No binary decoder, generator execution or host mutation.",
+      "a11yBoundary": "HighContrast and names avoid color-only meaning.",
+      "platformBoundary": "No ambient theme or terminal palette lookup.",
+      "dimensions": {
+        "behavior": "IntentionalDeviation",
+        "interaction": "Pass",
+        "layout": "Pass",
+        "proof": "Pass",
+        "documentation": "Pass",
+        "a11y": "Pass",
+        "platform": "Pass",
+        "security": "Pass",
+        "frameworkReuse": "Pass"
+      },
+      "primaryDecision": "AcceptedIntentionalDeviation",
+      "evidencePath": "Feature 035 and 036 PR evidence.",
+      "residualRisk": "Legacy resource editor intentionally absent.",
+      "reevaluationTrigger": "Palette, resource or contrast change."
+    }
+  ],
+  "entryPoints": [
+    {
+      "entryPoint": "Tp7FileManager",
+      "projectPath": "examples/Tp7FileManager/Tp7FileManager.csproj",
+      "guidePath": "docs/guides/examples/tp7-file-manager.md",
+      "normalCommand": "dotnet run --project examples/Tp7FileManager --configuration Release --no-build",
+      "smokeCommand": "dotnet run --project examples/Tp7FileManager --configuration Release --no-build -- --smoke",
+      "firstVisibleState": "Persistent controlled-root window with list, detail and StatusLine.",
+      "primaryAction": "Navigate and preview a source-controlled fixture.",
+      "descriptionPath": "F1 or Help -> Description",
+      "exitPath": "Ctrl+Q",
+      "appLoopProof": "Real app.Run dispatch for keyboard, commands, modal and optional mouse events.",
+      "viewFocusStatusCellProof": "Concrete window/list/dialog focus, StatusLine and rendered cells in normal and 48x16 layouts.",
+      "platformBoundary": "Managed macOS proof; predecessor Linux/Windows evidence is supplemental until current provider delivery.",
+      "result": "Pass",
+      "reevaluationTrigger": "Entry-point, guide, app-loop or platform change."
+    }
+  ],
+  "candidateFindings": [],
+  "productDecisions": [],
+  "governance": [
+    {
+      "presetName": "security-governance",
+      "presetVersion": "0.6.1",
+      "checkpoint": "NIST SSDF, CWE Top 25, evidence integrity, secrets; trigger-based ASVS/supply-chain/AI/regulatory N/A",
+      "applicability": "Applicable",
+      "rationale": "Hash-bound fail-closed closure evidence is security-relevant; non-triggered controls are documented.",
+      "evidencePath": "spec, plan, tests and pr-evidence",
+      "owner": "Thorsten Hindermann",
+      "reviewer": "Codex",
+      "reviewDate": "2026-08-08",
+      "result": "Pass",
+      "residualRisk": "One pre-existing medium secret-scan advisory for .claude/settings.local.json remains outside the Feature-037 diff; no high finding or dependency vulnerability exists.",
+      "followUp": "None unless a gate fails.",
+      "reevaluationTrigger": "Evidence, dependency, web, AI, release or regulated-service change."
+    },
+    {
+      "presetName": "architecture-governance",
+      "presetVersion": "0.5.1",
+      "checkpoint": "STRIDE/CIA/CAPEC evidence trust; S-ADR/arc42/Zero Trust/SAMM/BSI C3A/C5 triggers",
+      "applicability": "Applicable",
+      "rationale": "Provenance and filesystem proof are trust boundaries; no new architecture/cloud boundary exists.",
+      "evidencePath": "plan, combined matrix and pr-evidence",
+      "owner": "Thorsten Hindermann",
+      "reviewer": "Codex",
+      "reviewDate": "2026-08-08",
+      "result": "Pass",
+      "residualRisk": "No reusable framework replacement was found; bounded example composition remains intentionally local.",
+      "followUp": "None unless a reproducible gap appears.",
+      "reevaluationTrigger": "Architecture, identity, network, cloud or ownership change."
+    },
+    {
+      "presetName": "isaqb-architecture-governance",
+      "presetVersion": "0.2.1",
+      "checkpoint": "Quality, decision, runtime and building-block views",
+      "applicability": "Applicable",
+      "rationale": "Combined ownership and proof views are central to closure.",
+      "evidencePath": "plan, data model and combined matrix",
+      "owner": "Thorsten Hindermann",
+      "reviewer": "Codex",
+      "reviewDate": "2026-08-08",
+      "result": "Pass",
+      "residualRisk": "None within the read-only local audit boundary.",
+      "followUp": "None unless ownership changes.",
+      "reevaluationTrigger": "Mapping or framework-ownership change."
+    },
+    {
+      "presetName": "a11y-governance",
+      "presetVersion": "0.4.2",
+      "checkpoint": "WCAG 2.2 AA, keyboard, focus, text-first, bilingual CEFR-B2 and comment review",
+      "applicability": "Applicable",
+      "rationale": "The audit revalidates learner-facing and keyboard-first proof.",
+      "evidencePath": "combined matrix, guide, DocFX and Axe results",
+      "owner": "Thorsten Hindermann",
+      "reviewer": "Codex",
+      "reviewDate": "2026-08-08",
+      "result": "Pass",
+      "residualRisk": "DocFX retains two pre-existing warnings in an unchanged secure-development guide; Axe passed 2/2 through the documented explicit-server fallback.",
+      "followUp": "None unless a gate fails.",
+      "reevaluationTrigger": "Documentation, control, focus, color or input change."
+    },
+    {
+      "presetName": "cross-platform-governance",
+      "presetVersion": "0.2.1",
+      "checkpoint": "CRLF-neutral hashing, honest macOS/Linux/Windows evidence and shared Node wrapper parity",
+      "applicability": "Applicable",
+      "rationale": "Text hashes and filesystem behavior are platform-sensitive; no script changes.",
+      "evidencePath": "validator, predecessor evidence and local validation",
+      "owner": "Thorsten Hindermann",
+      "reviewer": "Codex",
+      "reviewDate": "2026-08-08",
+      "result": "Pass",
+      "residualRisk": "Current Linux/Windows exact-head runs are not authorized.",
+      "followUp": "Provider gates on later delivery.",
+      "reevaluationTrigger": "Platform, script or delivery-authority change."
+    },
+    {
+      "presetName": "agent-parity-governance",
+      "presetVersion": "0.4.1",
+      "checkpoint": "Maintained and generated guidance homogeneity",
+      "applicability": "Applicable",
+      "rationale": "Existing agent guidance must remain homogeneous without Feature-037 edits.",
+      "evidencePath": "agent parity validation",
+      "owner": "Thorsten Hindermann",
+      "reviewer": "Codex",
+      "reviewDate": "2026-08-08",
+      "result": "Pass",
+      "residualRisk": "Homogeneity guidance checks passed; the wrappers continue to report only a pre-existing docs/project-statistics.md profile drift outside Feature 037.",
+      "followUp": "None unless drift exists.",
+      "reevaluationTrigger": "Agent, template or guidance change."
+    },
+    {
+      "presetName": "intake-authoring-governance",
+      "presetVersion": "0.3.0",
+      "checkpoint": "Binding intake and current authoring receipt",
+      "applicability": "Applicable",
+      "rationale": "Lastenheft 22 is the binding authored intake.",
+      "evidencePath": "intake and authoring receipt",
+      "owner": "Thorsten Hindermann",
+      "reviewer": "Codex",
+      "reviewDate": "2026-08-08",
+      "result": "Pass",
+      "residualRisk": "None.",
+      "followUp": "None.",
+      "reevaluationTrigger": "Intake or receipt change."
+    },
+    {
+      "presetName": "intake-review-governance",
+      "presetVersion": "0.2.0",
+      "checkpoint": "Current Ready series review",
+      "applicability": "Applicable",
+      "rationale": "Feature execution requires a current successful intake review.",
+      "evidencePath": "tui-vision-delivery intake-review-result.json",
+      "owner": "Thorsten Hindermann",
+      "reviewer": "Codex",
+      "reviewDate": "2026-08-08",
+      "result": "Pass",
+      "residualRisk": "None.",
+      "followUp": "None.",
+      "reevaluationTrigger": "Review or intake hash change."
+    },
+    {
+      "presetName": "intake-sequencing-governance",
+      "presetVersion": "0.2.2",
+      "checkpoint": "Exactly one eligible preferred target without implicit authority",
+      "applicability": "Applicable",
+      "rationale": "Feature 037 was the selected eligible series target.",
+      "evidencePath": "series manifest, review and alignment validator",
+      "owner": "Thorsten Hindermann",
+      "reviewer": "Codex",
+      "reviewDate": "2026-08-08",
+      "result": "Pass",
+      "residualRisk": "Feature 038 remains blocked.",
+      "followUp": "Do not start another intake.",
+      "reevaluationTrigger": "Series or eligibility change."
+    },
+    {
+      "presetName": "autonomous-run-governance",
+      "presetVersion": "0.3.3",
+      "checkpoint": "State, gates, tasks, renewed authority and MergeAndSync closeout",
+      "applicability": "Applicable",
+      "rationale": "The feature is an autonomous local run.",
+      "evidencePath": "run state, gate requirements, tasks and pr-evidence",
+      "owner": "Thorsten Hindermann",
+      "reviewer": "Codex",
+      "reviewDate": "2026-08-08",
+      "result": "Pass",
+      "residualRisk": "The stale Feature-036-only guard was corrected and both wrappers pass; exact-head provider, review, merge and closeout evidence remain pending.",
+      "followUp": "Complete local terminal state only.",
+      "reevaluationTrigger": "Interruption, authority, state or artifact drift."
+    },
+    {
+      "presetName": "parallel-autonomous-governance",
+      "presetVersion": "0.2.4",
+      "checkpoint": "Parallel campaign orchestration",
+      "applicability": "N/A",
+      "rationale": "Feature 037 is one serial autonomous run.",
+      "evidencePath": "tasks and run state",
+      "owner": "Thorsten Hindermann",
+      "reviewer": "Codex",
+      "reviewDate": "2026-08-08",
+      "result": "Accepted",
+      "residualRisk": "None.",
+      "followUp": "N/A",
+      "reevaluationTrigger": "Any campaign or worker scope."
+    }
+  ],
+  "validations": [
+    {
+      "gateId": "GATE-STATIC-CANDIDATE",
+      "scope": "Whitespace, path inventory and protected roots",
+      "command": "git diff --check and exact scope review",
+      "platform": "macOS local",
+      "candidate": "working tree",
+      "result": "Pass",
+      "metric": "0 whitespace or protected-path findings",
+      "evidencePath": "pr-evidence validation ledger",
+      "failureBoundary": "Any runtime, API, dependency, project, example, historical or generated-output change.",
+      "reevaluationTrigger": "Any tracked-file change."
+    },
+    {
+      "gateId": "GATE-WAVE6-CLOSURE",
+      "scope": "Deterministic closure validator",
+      "command": "dotnet test --configuration Release --no-restore --filter FullyQualifiedName~Wave6CombinedDeltaClosureTests",
+      "platform": "macOS local",
+      "candidate": "working tree",
+      "result": "Pass",
+      "metric": "8/8 at 1.37.0.409",
+      "evidencePath": "pr-evidence validation ledger",
+      "failureBoundary": "Any failing positive or negative fixture.",
+      "reevaluationTrigger": "Closure data or validator change."
+    },
+    {
+      "gateId": "GATE-WAVE6-PREDECESSORS",
+      "scope": "Wave-6 functional and showcase predecessor proof",
+      "command": "dotnet test tests/TuiVision.Examples.SmokeTests --configuration Release --no-restore --filter Wave6 and not Wave6CombinedDeltaClosureTests",
+      "platform": "macOS local",
+      "candidate": "working tree",
+      "result": "Pass",
+      "metric": "43/43",
+      "evidencePath": "pr-evidence validation ledger",
+      "failureBoundary": "Any predecessor behavior or proof regression.",
+      "reevaluationTrigger": "Wave-6 evidence or test change."
+    },
+    {
+      "gateId": "GATE-ENTRYPOINT",
+      "scope": "Controlled smoke and bounded normal PTY paths",
+      "command": "dotnet run Tp7FileManager --no-build -- --smoke; normal PTY with F1 and Ctrl+Q",
+      "platform": "macOS local",
+      "candidate": "working tree",
+      "result": "Pass",
+      "metric": "smoke exit 0; PTY exit 0 with Description and controlled exit",
+      "evidencePath": "pr-evidence validation ledger",
+      "failureBoundary": "Missing first frame, primary action, Description or keyboard exit.",
+      "reevaluationTrigger": "Entry-point, guide, app-loop or platform change."
+    },
+    {
+      "gateId": "GATE-FULL-RELEASE",
+      "scope": "Complete solution Release tests",
+      "command": "dotnet test TuiVision.sln --configuration Release --no-restore",
+      "platform": "macOS local",
+      "candidate": "working tree",
+      "result": "Pass",
+      "metric": "888/888",
+      "evidencePath": "pr-evidence validation ledger",
+      "failureBoundary": "Any failing project test.",
+      "reevaluationTrigger": "Tracked validation-code change."
+    },
+    {
+      "gateId": "GATE-COVERAGE",
+      "scope": "Canonical five-assembly line coverage",
+      "command": "dotnet test --configuration Release --no-restore --collect:XPlat Code Coverage --settings coverlet.runsettings",
+      "platform": "macOS local",
+      "candidate": "working tree",
+      "result": "Pass",
+      "metric": "Core 92.96%; Controls 86.74%; Serialization 90.01%; Compatibility 80.55%; Drivers.Console 89.18%",
+      "evidencePath": "pr-evidence validation ledger",
+      "failureBoundary": "Any required assembly below 70 percent.",
+      "reevaluationTrigger": "Coverage policy, code or test change."
+    },
+    {
+      "gateId": "GATE-DOCFX-A11Y",
+      "scope": "DocFX and Playwright/Axe documentation smoke",
+      "command": "docfx docfx.json; PLAYWRIGHT_SKIP_WEBSERVER=1 PLAYWRIGHT_BASE_URL=http://127.0.0.1:8124 npm test",
+      "platform": "macOS local",
+      "candidate": "working tree",
+      "result": "Pass",
+      "metric": "DocFX 0 errors and 2 pre-existing warnings; Axe 2/2",
+      "evidencePath": "pr-evidence validation ledger",
+      "failureBoundary": "New documentation error or accessibility violation.",
+      "reevaluationTrigger": "Documentation, navigation or accessibility change."
+    },
+    {
+      "gateId": "GATE-PLATFORM-MACOS",
+      "scope": "Current local Wave-6 and closure execution",
+      "command": "local Release, coverage, DocFX, Axe, smoke and PTY commands",
+      "platform": "macOS local",
+      "candidate": "working tree",
+      "result": "Pass",
+      "metric": "All applicable local gates passed",
+      "evidencePath": "pr-evidence validation ledger",
+      "failureBoundary": "Any current macOS gate failure.",
+      "reevaluationTrigger": "Platform-sensitive change."
+    },
+    {
+      "gateId": "GATE-PLATFORM-LINUX",
+      "scope": "Current exact-head Ubuntu provider evidence",
+      "command": "N/A",
+      "platform": "Ubuntu provider",
+      "candidate": "working tree",
+      "result": "NotTriggered",
+      "metric": "Pending exact-head pull-request execution",
+      "evidencePath": "autonomous-gate-requirements.json",
+      "failureBoundary": "Must not be represented as Pass without provider execution.",
+      "reevaluationTrigger": "Candidate commit or provider result change."
+    },
+    {
+      "gateId": "GATE-PLATFORM-WINDOWS",
+      "scope": "Current exact-head Windows provider evidence",
+      "command": "N/A",
+      "platform": "Windows provider",
+      "candidate": "working tree",
+      "result": "NotTriggered",
+      "metric": "Pending exact-head pull-request execution",
+      "evidencePath": "autonomous-gate-requirements.json",
+      "failureBoundary": "Must not be represented as Pass without provider execution.",
+      "reevaluationTrigger": "Candidate commit or provider result change."
+    },
+    {
+      "gateId": "GATE-SUPPLY-CHAIN",
+      "scope": "Secrets and vulnerable package review",
+      "command": "scan-agent-secrets --fail-on-high; dotnet list TuiVision.sln package --vulnerable --include-transitive",
+      "platform": "macOS local",
+      "candidate": "working tree",
+      "result": "Pass",
+      "metric": "0 high secret findings; 0 vulnerable packages",
+      "evidencePath": "pr-evidence validation ledger",
+      "failureBoundary": "High-confidence secret or vulnerable package.",
+      "reevaluationTrigger": "Dependency, workflow, evidence or credential change."
+    },
+    {
+      "gateId": "GATE-AGENT-PARITY",
+      "scope": "Maintained and generated guidance homogeneity",
+      "command": "check-homogeneity Bash and PowerShell dry runs",
+      "platform": "macOS local",
+      "candidate": "working tree",
+      "result": "Pass",
+      "metric": "No agent-guidance finding; one pre-existing statistics-profile finding outside Feature 037",
+      "evidencePath": "pr-evidence validation ledger",
+      "failureBoundary": "Any Feature-037 agent or template drift.",
+      "reevaluationTrigger": "Agent, template or guidance change."
+    },
+    {
+      "gateId": "GATE-SCRIPT-PARITY",
+      "scope": "Shared Node alignment correction through Bash and PowerShell wrappers",
+      "command": "node scripts/tests/requirements-intake-alignment-tests.mjs; Bash and PowerShell alignment wrappers",
+      "platform": "local diff",
+      "candidate": "working tree",
+      "result": "Pass",
+      "metric": "2 positive and 10 negative fixtures; both wrappers pass",
+      "evidencePath": "pr-evidence validation ledger",
+      "failureBoundary": "Any accepted Feature-036/037 state rejected, unauthorized feature accepted or wrapper divergence.",
+      "reevaluationTrigger": "Alignment script, fixture, feature metadata or series change."
+    },
+    {
+      "gateId": "GATE-REMOTE-DELIVERY",
+      "scope": "Commit, push, PR, review, merge, bounded bypass and exact-head delivery",
+      "command": "GitHub pull-request delivery after exact-head gate validation",
+      "platform": "remote",
+      "candidate": "working tree",
+      "result": "NotTriggered",
+      "metric": "Pending publication of the exact local candidate",
+      "evidencePath": "run state and pr-evidence",
+      "failureBoundary": "Any remote write or bypass action.",
+      "reevaluationTrigger": "Candidate commit or remote state change."
+    }
+  ]
+}

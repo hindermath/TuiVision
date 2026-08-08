@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "1.1",
+  "runId": "f5cfa88c-3235-469d-a543-a8c098fd37ab",
+  "featurePath": "specs/037-wave6-combined-delta-closure",
+  "branch": "037-wave6-combined-delta-closure",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Publish",
+  "status": "Active",
+  "checkpointCommit": "faa42883d4a1cbe1b7b07e4e0b7f2b07e34e4c76",
+  "acceptedArtifacts": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+      "sha256": "1b8ac280514c3415dfa51f2807f2b9183e51cd46b446d59980974cdce0ac70ad"
+    },
+    {
+      "path": "requirements/intakes/series/tui-vision-delivery/intake-review-result.json",
+      "sha256": "89d1f4e8cc849f8c2fe19c7b7761648b76708a4fd70ad435998bde50c5059cba"
+    },
+    {
+      "path": "specs/intake-authoring-receipts/wave6-combined-delta-closure.json",
+      "sha256": "9296030ac95d65ac76e0ed161ffbc6e57d6d70ecce9f19e558ba5dd9ba18a0ec"
+    },
+    {
+      "path": "specs/037-wave6-combined-delta-closure/spec.md",
+      "sha256": "29b2708910e720dc007c268c2668087b5b70a26c2d6eb09d9b5c6b41bd82f0c8"
+    },
+    {
+      "path": "specs/037-wave6-combined-delta-closure/plan.md",
+      "sha256": "8d82e6d6ddb263236420656a9e84ac86e11ca13095651977133cca2de50e45a7"
+    },
+    {
+      "path": "specs/037-wave6-combined-delta-closure/research.md",
+      "sha256": "24eb5f1ddc8604bb06036f5f228e70eb5a19c049ea8e4253b32a3f2a3e63efaa"
+    },
+    {
+      "path": "specs/037-wave6-combined-delta-closure/data-model.md",
+      "sha256": "ff4f556af0d55bc0d16323c998280751d600290a9e720ca3212fee0dfa2754d3"
+    },
+    {
+      "path": "specs/037-wave6-combined-delta-closure/quickstart.md",
+      "sha256": "0b6fd103b0f209f40a88cd0fcd72525348604ebf37ef7eb193ea0147d9093dde"
+    },
+    {
+      "path": "specs/037-wave6-combined-delta-closure/contracts/wave6-combined-delta-acceptance.md",
+      "sha256": "210a96e4317e82c5f7b7ea7c4b46d43a19e8250582963d145c333cd407a714db"
+    },
+    {
+      "path": "specs/037-wave6-combined-delta-closure/pr-evidence.md",
+      "sha256": "29ee6d5500d32fe476549d9be9e2b5ac3795741af8c2e0e7108e557c2fdde065"
+    },
+    {
+      "path": "specs/037-wave6-combined-delta-closure/autonomous-gate-requirements.json",
+      "sha256": "c2f35bde061315c769dd7da0095e76b7f5f8a5755322b6ff3f14d81b6791ff19"
+    },
+    {
+      "path": "specs/037-wave6-combined-delta-closure/wave6-combined-delta.json",
+      "sha256": "a6d7f3cc061fd5c2f4aeb66fc8555c421a4afb1e78551251b43d8945f74aaf8e"
+    },
+    {
+      "path": "specs/037-wave6-combined-delta-closure/wave6-closure.md",
+      "sha256": "71722ad31ec9521a2afa53f12b5d6fdb4f92ebb20dbcc3e6b8fe8f3e3ce9e680"
+    },
+    {
+      "path": "specs/037-wave6-combined-delta-closure/retrospective.md",
+      "sha256": "7abc4b48c0e1786ebbe04446d209c81bf50512428db31533f2b1fc43b2d57c6b"
+    },
+    {
+      "path": "tests/TuiVision.Examples.SmokeTests/Wave6CombinedDeltaClosureTests.cs",
+      "sha256": "92c86b56bbb376ebe4c6ba24ac828fca205df924ac7c0ed14c38b6b16530258e"
+    },
+    {
+      "path": "scripts/validate-requirements-intake-alignment.mjs",
+      "sha256": "ed57d5f1fa087ccd75868fb2992b40f8d8a90b1a6cfdafa12d17d642bea8be66"
+    },
+    {
+      "path": "scripts/tests/requirements-intake-alignment-tests.mjs",
+      "sha256": "2759a4cdcb6b114a555e04cd679eb43eee0df8d9222c4e40599a72ba697228a5"
+    }
+  ],
+  "tasks": {
+    "path": "specs/037-wave6-combined-delta-closure/tasks.md",
+    "sha256": "01427c796827c776ffaafa0120484bee4d8433e2cf5856d39e2d50c87e7c7775",
+    "completed": 150,
+    "total": 169
+  },
+  "lastPassingGate": "Final local candidate validation and Analyze passed: closure 8/8, exact 24/10/10/10/1 records, 90 dimensions, zero findings or product decisions and 169 dependency-ordered tasks.",
+  "nextExactAction": "Align the existing 1.37.0.409 version for the current commit count without a build increment, stage only intended paths and validate the exact staged candidate.",
+  "lastOperation": {
+    "kind": "LocalCandidateValidation",
+    "state": "Completed",
+    "summary": "Completed the authority-delta Analyze remediation, final 8/8 closure validation, evidence, causal feature-head report and preliminary NoPromotion retrospective."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "closeout": {
+    "mergeOrPublication": "Pending",
+    "defaultBranchSync": "Pending",
+    "postMergeActions": "Pending",
+    "finalValidation": "Pending"
+  },
+  "updatedAt": "2026-08-08T16:51:24Z"
+}

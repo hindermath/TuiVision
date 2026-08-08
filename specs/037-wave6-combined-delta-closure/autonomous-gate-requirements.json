@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "1.0",
+  "gates": [
+    {
+      "gateId": "GATE-STATIC-CANDIDATE",
+      "applicability": "Applicable",
+      "requiredScope": "Whitespace, exact path inventory, protected roots and generated-output exclusions are clean.",
+      "requiredCommandTokens": ["git", "diff", "--check"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Every local candidate needs an exact scope proof.",
+      "reevaluationTrigger": "Any tracked-file change."
+    },
+    {
+      "gateId": "GATE-WAVE6-CLOSURE",
+      "applicability": "Applicable",
+      "requiredScope": "The deterministic closure validator proves exact 24/10/10/10/1 cardinalities and negative fixtures.",
+      "requiredCommandTokens": ["dotnet", "test", "Release", "Wave6CombinedDeltaClosureTests"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Structured closure evidence is the primary Feature-037 deliverable.",
+      "reevaluationTrigger": "Never while Feature 037 is active."
+    },
+    {
+      "gateId": "GATE-WAVE6-PREDECESSORS",
+      "applicability": "Applicable",
+      "requiredScope": "Functional, showcase, filesystem, app-loop, focus, status, Description, cell and no-mutation tests remain green.",
+      "requiredCommandTokens": ["dotnet", "test", "Release", "Wave6"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The closure cannot accept stale predecessor behavior.",
+      "reevaluationTrigger": "Any Wave-6 evidence or test change."
+    },
+    {
+      "gateId": "GATE-ENTRYPOINT",
+      "applicability": "Applicable",
+      "requiredScope": "Tp7FileManager controlled smoke and bounded normal PTY paths remain operable.",
+      "requiredCommandTokens": ["dotnet", "run", "Tp7FileManager", "--smoke"],
+      "requiredRunnerOrPlatformTokens": ["macos"],
+      "rationale": "The one accepted entry point needs current local runtime proof.",
+      "reevaluationTrigger": "Any entry-point or output change."
+    },
+    {
+      "gateId": "GATE-FULL-RELEASE",
+      "applicability": "Applicable",
+      "requiredScope": "The complete solution Release test suite passes.",
+      "requiredCommandTokens": ["dotnet", "test", "TuiVision.sln", "Release"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Repository-wide regression proof remains mandatory.",
+      "reevaluationTrigger": "Never while tracked validation code changes."
+    },
+    {
+      "gateId": "GATE-COVERAGE",
+      "applicability": "Applicable",
+      "requiredScope": "Canonical Coverlet collection keeps all five required assemblies at or above 70 percent line coverage.",
+      "requiredCommandTokens": ["dotnet", "test", "XPlat Code Coverage", "coverlet.runsettings"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The Constitution and merge policy require this gate.",
+      "reevaluationTrigger": "Only a formal policy change."
+    },
+    {
+      "gateId": "GATE-DOCFX-A11Y",
+      "applicability": "Applicable",
+      "requiredScope": "DocFX and Playwright/Axe documentation smoke pass.",
+      "requiredCommandTokens": ["docfx", "docfx.json", "playwright", "axe"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The binding intake explicitly requires the full closure gate.",
+      "reevaluationTrigger": "A formally revised intake."
+    },
+    {
+      "gateId": "GATE-PLATFORM-MACOS",
+      "applicability": "Applicable",
+      "requiredScope": "macOS executes the actual local Wave-6 closure and predecessor scope.",
+      "requiredCommandTokens": ["dotnet", "test", "Release", "Wave6"],
+      "requiredRunnerOrPlatformTokens": ["macos"],
+      "rationale": "macOS is the current authorized local platform.",
+      "reevaluationTrigger": "Any platform-sensitive change."
+    },
+    {
+      "gateId": "GATE-PLATFORM-LINUX",
+      "applicability": "Applicable",
+      "requiredScope": "Ubuntu executes the current exact-head Release and Wave-6 acceptance body.",
+      "requiredCommandTokens": ["dotnet", "test", "Release"],
+      "requiredRunnerOrPlatformTokens": ["ubuntu"],
+      "rationale": "The renewed MergeAndSync authority requires current Linux provider evidence.",
+      "reevaluationTrigger": "Never while Feature 037 is delivered."
+    },
+    {
+      "gateId": "GATE-PLATFORM-WINDOWS",
+      "applicability": "Applicable",
+      "requiredScope": "Windows executes the current exact-head Release, Wave-6 acceptance and PowerShell governance paths.",
+      "requiredCommandTokens": ["dotnet", "test", "Release"],
+      "requiredRunnerOrPlatformTokens": ["windows"],
+      "rationale": "The renewed MergeAndSync authority requires current Windows provider evidence.",
+      "reevaluationTrigger": "Never while Feature 037 is delivered."
+    },
+    {
+      "gateId": "GATE-SUPPLY-CHAIN",
+      "applicability": "Applicable",
+      "requiredScope": "Dependency, secret and supply-chain configuration checks pass without package changes.",
+      "requiredCommandTokens": ["supply-chain"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "NIST SSDF and evidence integrity remain applicable.",
+      "reevaluationTrigger": "Any dependency, workflow or evidence change."
+    },
+    {
+      "gateId": "GATE-AGENT-PARITY",
+      "applicability": "Applicable",
+      "requiredScope": "Maintained and generated guidance remains homogeneous without Feature-037 edits.",
+      "requiredCommandTokens": ["agent", "parity"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The audit must not leave unrelated guidance drift.",
+      "reevaluationTrigger": "Any agent, template or guidance change."
+    },
+    {
+      "gateId": "GATE-SCRIPT-PARITY",
+      "applicability": "Applicable",
+      "requiredScope": "The shared Node alignment correction and its positive/negative fixtures pass through Bash and PowerShell wrappers.",
+      "requiredCommandTokens": ["node", "requirements-intake-alignment-tests.mjs"],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Feature 037 changes a cross-platform repository validation script after the fail-closed T128 finding.",
+      "reevaluationTrigger": "Never while the alignment correction is delivered."
+    },
+    {
+      "gateId": "GATE-REMOTE-DELIVERY",
+      "applicability": "Applicable",
+      "requiredScope": "The exact reviewed head passes mandatory provider checks before review convergence and merge.",
+      "requiredCommandTokens": ["dotnet", "test", "Release"],
+      "requiredRunnerOrPlatformTokens": ["ubuntu"],
+      "rationale": "The user explicitly renewed authority as MergeAndSync.",
+      "reevaluationTrigger": "Never while Feature 037 is delivered."
+    }
+  ]
+}
