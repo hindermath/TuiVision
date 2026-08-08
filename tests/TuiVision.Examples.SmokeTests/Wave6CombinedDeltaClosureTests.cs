@@ -220,7 +220,7 @@ public sealed class Wave6CombinedDeltaClosureTests
         Assert.ThrowsExactly<InvalidDataException>(() => ValidateLocalBoundary(finding));
 
         JsonObject falseClosure = Clone(valid);
-        falseClosure["wave6State"] = "Closed";
+        falseClosure["portfolioAuditState"] = "BlockedPendingWave6Closure";
         Assert.ThrowsExactly<InvalidDataException>(() => ValidateLocalBoundary(falseClosure));
     }
 
@@ -422,8 +422,17 @@ public sealed class Wave6CombinedDeltaClosureTests
             throw new InvalidDataException($"Candidate decision '{candidateDecision}' is invalid.");
         }
 
-        RequireEqual("BlockedPendingDelivery", Text(root, "wave6State"), "Wave 6 state");
-        RequireEqual("BlockedPendingWave6Closure", Text(root, "portfolioAuditState"), "portfolio audit state");
+        string wave6State = Text(root, "wave6State");
+        string portfolioAuditState = Text(root, "portfolioAuditState");
+        bool featureHeadBoundary = wave6State == "BlockedPendingDelivery"
+                                   && portfolioAuditState == "BlockedPendingWave6Closure";
+        bool causalCloseoutBoundary = wave6State == "Closed"
+                                      && portfolioAuditState == "Eligible";
+        if (!featureHeadBoundary && !causalCloseoutBoundary)
+        {
+            throw new InvalidDataException(
+                $"Wave 6 and portfolio states are not a valid causal pair: '{wave6State}' / '{portfolioAuditState}'.");
+        }
         JsonArray findings = Array(root, "candidateFindings");
         foreach (JsonObject finding in findings.Select(Object))
         {

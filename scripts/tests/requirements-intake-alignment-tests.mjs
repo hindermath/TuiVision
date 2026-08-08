@@ -28,18 +28,17 @@ function expectFailure(name, options, pattern) {
 
 if (validate({root}).length !== 0) throw new Error("positive fixture failed");
 
-const predecessorFeature = fixture("predecessor-feature", ".specify/feature.json", (value) => {
-  value.feature_directory = "specs/036-wave6-tvfm-showcase-remediation";
-});
-if (validate({root, featurePath: predecessorFeature}).length !== 0) {
-  throw new Error("completed predecessor fixture failed");
-}
-
 expectFailure("unauthorized feature", {
   featurePath: fixture("unauthorized-feature", ".specify/feature.json", (value) => {
     value.feature_directory = "specs/038-post-wave6-portfolio-audit";
   }),
-}, /completed predecessor or the explicitly eligible Wave-6 closure/);
+}, /completed Wave-6 closure until a new feature is explicitly authorized/);
+
+expectFailure("stale predecessor feature", {
+  featurePath: fixture("stale-predecessor-feature", ".specify/feature.json", (value) => {
+    value.feature_directory = "specs/036-wave6-tvfm-showcase-remediation";
+  }),
+}, /completed Wave-6 closure until a new feature is explicitly authorized/);
 
 expectFailure("duplicate target", {
   manifestPath: fixture("duplicate-target", manifestSource, (value) => {
@@ -56,9 +55,15 @@ expectFailure("backlog target", {
 
 expectFailure("missing eligible", {
   manifestPath: fixture("missing-eligible", manifestSource, (value) => {
-    value.orderedTargets[0].status = "Pending";
+    value.orderedTargets[1].status = "Pending";
   }),
 }, /single explicitly Eligible/);
+
+expectFailure("incomplete Wave-6 closure", {
+  manifestPath: fixture("incomplete-wave6", manifestSource, (value) => {
+    value.orderedTargets[0].status = "Pending";
+  }),
+}, /Wave-6 closure must remain Completed|declared Eligible target still has a binding blocker/);
 
 expectFailure("stale target hash", {
   manifestPath: fixture("stale-hash", manifestSource, (value) => {
@@ -105,5 +110,5 @@ expectFailure("positive without evidence", {
 }, /lacks evidence/);
 
 fs.rmSync(temp, {recursive: true, force: true});
-console.log("requirements/intake positive fixtures PASS (2 cases)");
-console.log("requirements/intake negative fixtures PASS (10 cases)");
+console.log("requirements/intake positive fixtures PASS (1 case)");
+console.log("requirements/intake negative fixtures PASS (12 cases)");

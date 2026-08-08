@@ -9,25 +9,31 @@ const root = process.cwd();
 const write = process.argv.includes("--write");
 const seriesRoot = "requirements/intakes/series/tui-vision-delivery";
 const seriesId = "a73dda7c-163b-4530-97f2-fd9eea5e8986";
-const seriesReceiptId = "480738b1-1a65-47f5-8c2a-2a6c062b4589";
-const seriesOperationId = "52f0da46-7d12-4039-a450-14d518d55a1c";
-const reviewId = "e320135f-b9d9-469e-bef2-510a00c8446f";
+const seriesReceiptId = "f7c22e54-ff1b-4646-9a41-ce8d7683e201";
+const seriesOperationId = "42a4aa44-a0ba-4e17-a141-ca0f56427786";
+const reviewId = "a1051008-6a1e-40bb-9066-a50ae099513e";
 const migrationProposal = "specs/requirements-reconciliation-20260726/migration-proposal.json";
 const createdAt = "2026-07-26T20:00:00Z";
+const seriesUpdatedAt = "2026-08-08T17:17:31Z";
+const archiveRoot =
+  `specs/intake-series-archive/${seriesId}/${seriesOperationId}`;
+const priorManifestHash = "c5434625bbefe764ef4f205451f7867d391d4cd67c1be7e682f6bbca62ed3930";
+const priorReceiptHash = "287731818f69f07d617f5eda5e37240a945d938cde0deb1d818e87ce4d7fb61a";
 
 const normalize = (value) => value.replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n");
 const hashText = (value) => crypto.createHash("sha256").update(normalize(value)).digest("hex");
 const hashFile = (relativePath) => hashText(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const readJson = (relativePath) => JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const json = (value) => JSON.stringify(value, null, 2) + "\n";
-const reviewHead = "cee86bd254b847e79b0b19755e61d61c032a5f78";
+const reviewHead = "889f2424812b03df9d4c322c0a06834e75fe8a2a";
 
 const members = [
   {
     slug: "wave6-combined-delta-closure",
     path: "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
-    role: "Primary",
-    status: "Eligible",
+    role: "OrderedMember",
+    receiptRole: "Primary",
+    status: "Completed",
     intakeId: "23b841f9-f5ce-49c2-ac97-71493b316c5b",
     receiptId: "cf80a015-877a-442c-a811-81d529489a1a",
     operationId: "099ddab3-4f16-48ff-9f12-d5084782e4b3",
@@ -36,8 +42,9 @@ const members = [
   {
     slug: "15-post-wave6-example-portfolio-conformance-audit",
     path: "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
-    role: "OrderedMember",
-    status: "Blocked",
+    role: "Primary",
+    receiptRole: "OrderedMember",
+    status: "Eligible",
     receiptId: "296b0258-7d42-45bf-aa28-e269e9776a5d",
     operationId: "31ee816a-3617-49da-b3f8-a28969f1f265",
     priorReceipt: "specs/intake-authoring-receipts/history/15-post-wave6-example-portfolio-conformance-audit.schema-1.1.json",
@@ -109,7 +116,9 @@ const manifest = {
     normalizedSha256: hashFile(member.path),
     status: member.status,
   })),
-  roots: members.filter((member) => member.status !== "Blocked").map((member) => member.path),
+  roots: members
+    .filter((member) => member.slug !== "15-post-wave6-example-portfolio-conformance-audit")
+    .map((member) => member.path),
   dependencies: [
     {
       from: members[0].path,
@@ -225,7 +234,7 @@ function receiptFor(member, order) {
       seriesId,
       manifestPath,
       order,
-      role: member.role,
+      role: member.receiptRole ?? member.role,
       supersedesIntakeIds: [],
     },
     nextAction: `$speckit-intake-review ${member.path}`,
@@ -243,19 +252,19 @@ const seriesReceipt = {
   receiptId: seriesReceiptId,
   seriesId,
   generator: {preset: "intake-sequencing-governance", version: "0.1.1"},
-  createdAt,
+  createdAt: seriesUpdatedAt,
   operation: {
     operationId: seriesOperationId,
-    type: "Create",
-    authorityEvidence: "User-approved two-PR Pflichtenheft and intake consolidation plan",
+    type: "Update",
+    authorityEvidence: "Feature 037 causal closeout after PR #139 merged with all technical gates green",
   },
   status: "Ready",
   manifest: {path: manifestPath, normalizedSha256: manifestHash},
   supersedes: {
-    receiptPath: "N/A",
-    receiptNormalizedSha256: "N/A",
-    manifestArchivePath: "N/A",
-    manifestArchiveSha256: "N/A",
+    receiptPath: `${archiveRoot}/receipt.json`,
+    receiptNormalizedSha256: priorReceiptHash,
+    manifestArchivePath: `${archiveRoot}/manifest.json`,
+    manifestArchiveSha256: priorManifestHash,
   },
   tombstone: {path: "N/A", normalizedSha256: "N/A"},
   nextAction: "$speckit-intake-series-status",
@@ -266,15 +275,27 @@ const operation = {
   documentType: "IntakeSeriesOperation",
   operationId: seriesOperationId,
   seriesId,
-  type: "Create",
+  type: "Update",
   status: "Published",
-  authorityEvidence: "User-approved two-PR Pflichtenheft and intake consolidation plan",
+  authorityEvidence: "Feature 037 causal closeout after PR #139 merged with all technical gates green",
   proposalNormalizedSha256: hashFile(migrationProposal),
-  preparedPaths: [manifestPath, `${seriesRoot}/receipt.json`, `${seriesRoot}/order.md`],
+  preparedPaths: [
+    `${archiveRoot}/manifest.json`,
+    `${archiveRoot}/receipt.json`,
+    manifestPath,
+    `${seriesRoot}/receipt.json`,
+    `${seriesRoot}/order.md`,
+  ],
   validation: {bash: "Pass", powerShell: "Pass"},
   publication: {
     status: "Published",
-    publishedPaths: [manifestPath, `${seriesRoot}/receipt.json`, `${seriesRoot}/order.md`],
+    publishedPaths: [
+      `${archiveRoot}/manifest.json`,
+      `${archiveRoot}/receipt.json`,
+      manifestPath,
+      `${seriesRoot}/receipt.json`,
+      `${seriesRoot}/order.md`,
+    ],
   },
 };
 
@@ -303,7 +324,7 @@ const result = {
   mode: "Series",
   status: "Ready",
   policy: "tui-vision-delivery-v1",
-  reviewedAt: createdAt,
+  reviewedAt: seriesUpdatedAt,
   repository: {root: ".", head: reviewHead},
   targets: members.map((member) => ({
     path: member.path,
@@ -318,14 +339,14 @@ const result = {
   coverage: {
     individual: memberPaths,
     series: [
-      "All seven active intake paths, exact hashes, lifecycle states, roots, and the Wave-6 hard completion gate",
+      "All seven series intake paths, exact hashes, lifecycle states, roots, and the completed Wave-6 hard completion gate",
       "Independent governance and documentation roots without invented product dependencies",
       "DeferredOptional backlog excluded from executable targets",
     ],
     workers: [],
   },
   summary: {critical: 0, high: 0, medium: 0, low: 0},
-  supersedes: readJson("specs/intake-normalization-20260723/intake-review-result.json").reviewId,
+  supersedes: "e320135f-b9d9-469e-bef2-510a00c8446f",
   requestEvidence: {path: requestPath, normalizedSha256: hashText(json(request))},
 };
 
@@ -335,16 +356,16 @@ const report = `# Intake Review: TuiVision Delivery Series
 
 Status: \`Ready\`
 
-Alle sieben aktiven Intakes, ihre aktuellen Hashes, Receipt-Lineage,
+Alle sieben Serien-Intakes, ihre aktuellen Hashes, Receipt-Lineage,
 Lifecycle-Zustände und die einzige harte Abhängigkeit wurden geprüft. Der
-Wave-6-Closeout ist der bevorzugte nächste Intake. Der Portfolioaudit bleibt
-bis zu dessen Abschluss blockiert. Dokumentations- und Governance-Intakes
+Wave-6-Closeout ist abgeschlossen. Der Portfolioaudit ist der einzige
+explizit berechtigte nächste Intake. Dokumentations- und Governance-Intakes
 bleiben unabhängige Wurzeln.
 
-*All seven active intakes, current hashes, receipt lineage, lifecycle states,
-and the single hard dependency were reviewed. Wave-6 closure is preferred
-next. The portfolio audit remains blocked until completion. Documentation and
-governance intakes remain independent roots.*
+*All seven series intakes, current hashes, receipt lineage, lifecycle states,
+and the single hard dependency were reviewed. Wave-6 closure is complete. The
+portfolio audit is the only explicitly eligible next intake. Documentation
+and governance intakes remain independent roots.*
 
 Es bestehen keine offenen Review-Findings. Der optionale NuGet-Backlog ist
 nicht Teil der ausführbaren Serie.
@@ -376,4 +397,4 @@ for (const [relativePath, content] of outputs) {
   }
 }
 
-console.log(`requirements intake governance PASS (${members.length} active targets, 1 binding edge)`);
+console.log(`requirements intake governance PASS (${members.length} series targets, 1 binding edge)`);

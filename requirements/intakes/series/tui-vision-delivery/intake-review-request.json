@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.1",
-  "reviewId": "e320135f-b9d9-469e-bef2-510a00c8446f",
+  "reviewId": "a1051008-6a1e-40bb-9066-a50ae099513e",
   "mode": "Series",
   "policy": "tui-vision-delivery-v1",
   "targets": [
     {
       "path": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
-      "role": "Primary"
+      "role": "OrderedMember"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
-      "role": "OrderedMember"
+      "role": "Primary"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",

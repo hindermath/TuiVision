@@ -79,22 +79,27 @@ export function validate(options = {}) {
 
   const eligible = targets.filter((target) => target.status === "Eligible");
   if (eligible.length !== 1 ||
-      !eligible[0].path.endsWith("requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md")) {
-    errors.push("Wave-6 closure must be the single explicitly Eligible target");
+      !eligible[0].path.endsWith("requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md")) {
+    errors.push("post-Wave-6 portfolio audit must be the single explicitly Eligible target");
+  }
+  const wave6Closure = targets.find((target) =>
+    target.path.endsWith("requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md"));
+  if (!wave6Closure || wave6Closure.status !== "Completed") {
+    errors.push("Wave-6 closure must remain Completed");
   }
   const portfolio = targets.find((target) =>
     target.path.endsWith("requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md"));
-  if (!portfolio || portfolio.status !== "Blocked") {
-    errors.push("post-Wave-6 portfolio audit must remain Blocked");
+  if (!portfolio || portfolio.status !== "Eligible") {
+    errors.push("post-Wave-6 portfolio audit must remain Eligible");
   }
 
   const dependencies = manifest.dependencies ?? [];
   if (dependencies.length !== 1 ||
       dependencies[0].kind !== "HardCompletionGate" ||
       dependencies[0].binding !== true ||
-      dependencies[0].from !== eligible[0]?.path ||
+      dependencies[0].from !== wave6Closure?.path ||
       dependencies[0].to !== portfolio?.path) {
-    errors.push("series must contain exactly the Wave-6-to-portfolio hard gate");
+    errors.push("series must contain exactly the completed Wave-6-to-portfolio hard gate");
   }
   const indegree = new Map(targetPaths.map((target) => [target, 0]));
   const adjacency = new Map(targetPaths.map((target) => [target, []]));
@@ -133,11 +138,10 @@ export function validate(options = {}) {
 
   const feature = parse(featurePath);
   const allowedFeatureDirectories = new Set([
-    "specs/036-wave6-tvfm-showcase-remediation",
     "specs/037-wave6-combined-delta-closure",
   ]);
   if (!allowedFeatureDirectories.has(feature.feature_directory)) {
-    errors.push("feature metadata must reference the completed predecessor or the explicitly eligible Wave-6 closure");
+    errors.push("feature metadata must reference the completed Wave-6 closure until a new feature is explicitly authorized");
   }
 
   const optional = "requirements/intakes/backlog/Lastenheft_Optional-NuGet-Package.md";

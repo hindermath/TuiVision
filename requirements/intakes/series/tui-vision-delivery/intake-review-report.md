@@ -4,16 +4,16 @@
 
 Status: `Ready`
 
-Alle sieben aktiven Intakes, ihre aktuellen Hashes, Receipt-Lineage,
+Alle sieben Serien-Intakes, ihre aktuellen Hashes, Receipt-Lineage,
 Lifecycle-Zustände und die einzige harte Abhängigkeit wurden geprüft. Der
-Wave-6-Closeout ist der bevorzugte nächste Intake. Der Portfolioaudit bleibt
-bis zu dessen Abschluss blockiert. Dokumentations- und Governance-Intakes
+Wave-6-Closeout ist abgeschlossen. Der Portfolioaudit ist der einzige
+explizit berechtigte nächste Intake. Dokumentations- und Governance-Intakes
 bleiben unabhängige Wurzeln.
 
-*All seven active intakes, current hashes, receipt lineage, lifecycle states,
-and the single hard dependency were reviewed. Wave-6 closure is preferred
-next. The portfolio audit remains blocked until completion. Documentation and
-governance intakes remain independent roots.*
+*All seven series intakes, current hashes, receipt lineage, lifecycle states,
+and the single hard dependency were reviewed. Wave-6 closure is complete. The
+portfolio audit is the only explicitly eligible next intake. Documentation
+and governance intakes remain independent roots.*
 
 Es bestehen keine offenen Review-Findings. Der optionale NuGet-Backlog ist
 nicht Teil der ausführbaren Serie.

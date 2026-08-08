@@ -56,3 +56,26 @@ portfolio audit as `Eligible`.
 
 Feature 038 wird dabei weder erstellt noch gestartet. / Feature 038 is neither
 created nor started by that transition.
+
+## Kausaler Abschluss / Causal Closeout
+
+PR #139 wurde am 8. August 2026 mit dem geprüften Head `246d9dd` als
+Merge-Commit `889f242` abgeschlossen. Alle 14 Exact-Head-Gates wurden von
+beiden installierten Validatoren akzeptiert, 31 technische Checks waren grün,
+der Pages-Deploy war im PR-Kontext erwartungsgemäß übersprungen und es bestand
+kein umsetzbarer Review-Thread. Der eng begrenzte Admin-Bypass galt nur für die
+offene Human-Approval-Regel.
+
+Damit gilt Wave 6 als `Closed`. Der Post-Wave-6-Portfolioaudit ist der einzige
+`Eligible`-Eintrag der Intake-Serie. Feature 038 bleibt unangelegt und benötigt
+einen neuen ausdrücklichen Startauftrag.
+
+*PR #139 merged on 8 August 2026 with reviewed head `246d9dd` as merge commit
+`889f242`. Both installed validators accepted all 14 exact-head gates, 31
+technical checks were green, Pages deployment was expectedly skipped in pull
+request context, and no actionable review thread remained. The narrow admin
+bypass applied only to the open Human Approval rule.*
+
+*Wave 6 is therefore `Closed`. The post-Wave-6 portfolio audit is the intake
+series' only `Eligible` entry. Feature 038 remains uncreated and requires a new
+explicit start instruction.*

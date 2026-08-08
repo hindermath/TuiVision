@@ -52,11 +52,13 @@ Intake-Receipts und dem Serien-Lifecycle.
 - Abgeschlossene Intakes: `requirements/intakes/archive/`
 - Nicht blockierender Backlog: `requirements/intakes/backlog/`
 
-Bevorzugter nächster fachlicher Intake ist der unabhängige Wave-6-Closeout
-für Feature 037. Dieses Dokument startet keinen Feature-Lauf.
+Wave 6 ist durch Feature 037 und PR #139 geschlossen. Bevorzugter nächster
+fachlicher Intake ist der Post-Wave-6-Beispielportfolio-Audit. Dieses Dokument
+reserviert oder startet Feature 038 nicht.
 
-*The preferred next product intake is the independent Wave-6 closure reserved
-for Feature 037. This document does not start a feature run.*
+*Wave 6 is closed by Feature 037 and PR #139. The preferred next product intake
+is the post-Wave-6 example-portfolio audit. This document neither reserves nor
+starts Feature 038.*
 
 ## Änderungskontrolle / Change Control
 

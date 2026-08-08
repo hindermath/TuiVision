@@ -5,9 +5,9 @@
   "branch": "037-wave6-combined-delta-closure",
   "deliveryMode": "MergeAndSync",
   "authorityRevalidationRequired": false,
-  "stage": "Review",
-  "status": "Active",
-  "checkpointCommit": "f50fe072a43ed9f32806fdb82a1e0a9eb1528047",
+  "stage": "Retrospective",
+  "status": "Completed",
+  "checkpointCommit": "246d9ddf7f63c8429f0ad1c61ab9452cfd59bfab",
   "acceptedArtifacts": [
     {
       "path": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
@@ -15,7 +15,7 @@
     },
     {
       "path": "requirements/intakes/series/tui-vision-delivery/intake-review-result.json",
-      "sha256": "89d1f4e8cc849f8c2fe19c7b7761648b76708a4fd70ad435998bde50c5059cba"
+      "sha256": "5f9a48cf8276f6a5239ae06208e7f0a808de6b42fcc61161b43e282d2f602981"
     },
     {
       "path": "specs/intake-authoring-receipts/wave6-combined-delta-closure.json",
@@ -47,7 +47,7 @@
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/pr-evidence.md",
-      "sha256": "b0ae0648d81b5f34da6ae02193a118ff10379129784ffd045ccedf975b394bf0"
+      "sha256": "23c2f8b86a3642018b7425d32fc46de4b25e9728c3fbc5053aba076c4e47daf8"
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/autonomous-gate-requirements.json",
@@ -55,27 +55,27 @@
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/wave6-combined-delta.json",
-      "sha256": "a6d7f3cc061fd5c2f4aeb66fc8555c421a4afb1e78551251b43d8945f74aaf8e"
+      "sha256": "64d1eb57171453706a20c8948741c0344476366ab4e1f78978e8433a6e957af7"
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/wave6-closure.md",
-      "sha256": "71722ad31ec9521a2afa53f12b5d6fdb4f92ebb20dbcc3e6b8fe8f3e3ce9e680"
+      "sha256": "cf7627f6b81db22e41fd3100f1e659fda28c46a70ea80373c933401776b129f2"
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/retrospective.md",
-      "sha256": "7abc4b48c0e1786ebbe04446d209c81bf50512428db31533f2b1fc43b2d57c6b"
+      "sha256": "83dd4d49372b8e92ada5c86e95ea0df4004844506890bd0a164707b6c6b53b70"
     },
     {
       "path": "tests/TuiVision.Examples.SmokeTests/Wave6CombinedDeltaClosureTests.cs",
-      "sha256": "92c86b56bbb376ebe4c6ba24ac828fca205df924ac7c0ed14c38b6b16530258e"
+      "sha256": "e3fe4df8ee10d3edd53960c97c9fbd6fac2ff4da369a91adddf6b308f39fff1a"
     },
     {
       "path": "scripts/validate-requirements-intake-alignment.mjs",
-      "sha256": "ed57d5f1fa087ccd75868fb2992b40f8d8a90b1a6cfdafa12d17d642bea8be66"
+      "sha256": "f736ebfd4f0c2890ef2f2b21c671a0708e5de109e7f13a08f6ec1aa3f0b00d12"
     },
     {
       "path": "scripts/tests/requirements-intake-alignment-tests.mjs",
-      "sha256": "2759a4cdcb6b114a555e04cd679eb43eee0df8d9222c4e40599a72ba697228a5"
+      "sha256": "3c64ceaf991f6c5cb57accc534418dffa1490cf440751516bd39874e0f516c26"
     },
     {
       "path": ".gitleaksignore",
@@ -84,20 +84,44 @@
     {
       "path": "docs/project-statistics.config.json",
       "sha256": "2f967daa0f8886eaac7b027ae8f8dfb8585badd8cdc0490727653672e07ac30e"
+    },
+    {
+      "path": "specs/037-wave6-combined-delta-closure/delivery-closeout.md",
+      "sha256": "c2b3e3836b13082d696361220aeaaccda2cbd11e02fef832e6ab54d6c97df806"
+    },
+    {
+      "path": "requirements/intakes/series/tui-vision-delivery/manifest.json",
+      "sha256": "9b90486d9b432a529d90d8a2a8df7cf08a15acf5a974baedb7780742d4be5314"
+    },
+    {
+      "path": "requirements/intakes/series/tui-vision-delivery/receipt.json",
+      "sha256": "69d0d90563131b2abc69da82a9fdbc5c428b45c39e517cc261821046ce0af5b9"
+    },
+    {
+      "path": "Lastenheft_Abarbeitungsreihenfolge.md",
+      "sha256": "8aebb516d629afd9513f30b8fb0f0ea5a17f1599abdf2cb5306773db934fc9bf"
+    },
+    {
+      "path": "Pflichtenheft.md",
+      "sha256": "5a2417b90c9c8118a0c3a504031b9054b82cf9fe3428003058d878b49e78ba96"
+    },
+    {
+      "path": "scripts/render-requirements-intake-governance.mjs",
+      "sha256": "1f13048323e86740ec601f9aad7683decf28d5e0120c03ada578675851d0610a"
     }
   ],
   "tasks": {
     "path": "specs/037-wave6-combined-delta-closure/tasks.md",
-    "sha256": "b4dd97dde7f7ab0b0a03b6836932a60d12e079355f8f0d7c3a4fc77c2b1b38d4",
-    "completed": 153,
+    "sha256": "b93ed6717e4883c3bfaed73d41ddb497d35f86f6904f3e94cfc90b7c82ecc0d5",
+    "completed": 169,
     "total": 169
   },
-  "lastPassingGate": "The statistics self-reference was reduced to the mandatory version file; the configuration now excludes that non-product churn while keeping all source, test and documentation delivery metrics.",
-  "nextExactAction": "Commit the statistics configuration correction, render the profile from that commit, then create a final commit containing only the two excluded statistics/version files before push.",
+  "lastPassingGate": "Feature PR #139 merged at head 246d9dd with 31 successful technical checks, 14/14 exact-head gates, zero actionable threads and the causal Wave-6/intake closeout recorded.",
+  "nextExactAction": "N/A",
   "lastOperation": {
-    "kind": "StatisticsDeterminismRemediation",
+    "kind": "CausalCloseout",
     "state": "Completed",
-    "summary": "Excluded mandatory Directory.Build.props version churn from Statistics Profile 2 so a final generated-ledger commit can be stable and cross-platform reproducible."
+    "summary": "Recorded PR #139 delivery, closed Wave 6, made the portfolio audit Eligible, preserved series lineage and did not create Feature 038."
   },
   "stop": {
     "reason": "N/A",
@@ -105,10 +129,10 @@
     "safeBoundary": "N/A"
   },
   "closeout": {
-    "mergeOrPublication": "Pending",
-    "defaultBranchSync": "Pending",
-    "postMergeActions": "Pending",
-    "finalValidation": "Pending"
+    "mergeOrPublication": "Completed",
+    "defaultBranchSync": "Completed",
+    "postMergeActions": "Completed",
+    "finalValidation": "Completed"
   },
-  "updatedAt": "2026-08-08T17:02:45Z"
+  "updatedAt": "2026-08-08T17:17:31Z"
 }

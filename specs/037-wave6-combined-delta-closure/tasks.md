@@ -187,22 +187,22 @@ the shared smoke-test project are single-writer surfaces.
 - [X] T151 Commit the exact non-empty feature candidate and record its full head.
 - [X] T152 Push branch `037-wave6-combined-delta-closure` and verify the remote head.
 - [X] T153 Create the non-empty Feature-037 pull request with evidence-backed description.
-- [ ] T154 Map every applicable gate to the actual pull-request head, workflow, job, platform and executed command.
-- [ ] T155 Generate temporary exact-head provider evidence and validate it with both installed gate validators.
-- [ ] T156 Inspect required checks, Claude/Copilot results, comments and GraphQL review threads; unavailable reviewers remain missing.
-- [ ] T157 Address every actionable review or CI finding, rerun affected gates and rebuild exact-head evidence.
-- [ ] T158 Use the authorized narrow admin bypass only if every technical gate is green, no actionable thread remains and Human Approval alone is open.
-- [ ] T159 Merge the feature PR with a merge commit and delete the remote feature branch.
-- [ ] T160 Switch locally to `main`, fetch/prune, pull fast-forward only and prove clean `HEAD == origin/main`.
+- [X] T154 Map every applicable gate to the actual pull-request head, workflow, job, platform and executed command.
+- [X] T155 Generate temporary exact-head provider evidence and validate it with both installed gate validators.
+- [X] T156 Inspect required checks, Claude/Copilot results, comments and GraphQL review threads; unavailable reviewers remain missing.
+- [X] T157 Address every actionable review or CI finding, rerun affected gates and rebuild exact-head evidence.
+- [X] T158 Use the authorized narrow admin bypass only if every technical gate is green, no actionable thread remains and Human Approval alone is open.
+- [X] T159 Merge the feature PR with a merge commit and delete the remote feature branch.
+- [X] T160 Switch locally to `main`, fetch/prune, pull fast-forward only and prove clean `HEAD == origin/main`.
 
 ## Phase 11 - Causal closeout and terminal state
 
-- [ ] T161 Create one non-recursive evidence-only closeout only because reviewed-head merge facts cannot exist on the feature head.
-- [ ] T162 Record the feature PR, reviewed head, merge commit, terminal provider checks and review state in `delivery-closeout.md`.
-- [ ] T163 Set Wave 6 to `Closed` and the portfolio-audit intake to `Eligible` without creating or starting Feature 038.
-- [ ] T164 Reconcile intake manifest, receipts, generated order/index views, validators and statistics with the causal state transition.
-- [ ] T165 Complete `retrospective.md` with `NoPromotion` unless the completed run proves a provider-neutral preset defect.
-- [ ] T166 Validate the closeout as evidence-only, run intake/agent/static gates and update all task/state hashes.
-- [ ] T167 Commit, push, review and merge the non-empty closeout PR under the same technical-gate and narrow-bypass boundary.
-- [ ] T168 Return to clean synchronized `main`, set `Retrospective`, `Completed`, `169/169`, `nextExactAction: N/A`, and validate both state implementations.
-- [ ] T169 Report exact audit cardinalities, validation, PR/merge identities, final Wave-6/portfolio states and no Feature-038 start.
+- [X] T161 Create one non-recursive evidence-only closeout only because reviewed-head merge facts cannot exist on the feature head.
+- [X] T162 Record the feature PR, reviewed head, merge commit, terminal provider checks and review state in `delivery-closeout.md`.
+- [X] T163 Set Wave 6 to `Closed` and the portfolio-audit intake to `Eligible` without creating or starting Feature 038.
+- [X] T164 Reconcile intake manifest, receipts, generated order/index views, validators and statistics with the causal state transition.
+- [X] T165 Complete `retrospective.md` with `NoPromotion` unless the completed run proves a provider-neutral preset defect.
+- [X] T166 Validate the closeout as evidence-only, run intake/agent/static gates and update all task/state hashes.
+- [X] T167 Commit, push, review and merge the non-empty closeout PR under the same technical-gate and narrow-bypass boundary.
+- [X] T168 Return to clean synchronized `main`, set `Retrospective`, `Completed`, `169/169`, `nextExactAction: N/A`, and validate both state implementations.
+- [X] T169 Report exact audit cardinalities, validation, PR/merge identities, final Wave-6/portfolio states and no Feature-038 start.
