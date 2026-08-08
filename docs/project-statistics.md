@@ -1198,29 +1198,29 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 592026 lines |
-| Textdateien / Text files | 2864 |
-| Beobachtbarer Zeitraum / Observable period | 2025-08-10..2026-08-02 |
-| Aktivtage / Active days | 85 |
-| Relevante Commits / Relevant commits | 530 |
-| Zeilen je Aktivtag / Lines per active day | 6965.0 |
+| Textbasis / Text base | 595831 lines |
+| Textdateien / Text files | 2884 |
+| Beobachtbarer Zeitraum / Observable period | 2025-08-10..2026-08-08 |
+| Aktivtage / Active days | 86 |
+| Relevante Commits / Relevant commits | 533 |
+| Zeilen je Aktivtag / Lines per active day | 6928.3 |
 | Peak-Tag im Fenster / Peak day in window | 2026-03-22 / 321183 |
-| Peak-Woche im Fenster / Peak week in window | 2026-03-22 / 373633 |
+| Peak-Woche im Fenster / Peak week in window | 2026-03-22 / 373576 |
 | Laengste Serie / Longest streak | 17 days |
-| Speedup vs. 80 lines/day | 87.1x |
-| Speedup vs. 125 lines/day | 55.7x |
-| Methodik / Methodology | v2; source `31eede664a79` |
+| Speedup vs. 80 lines/day | 86.6x |
+| Speedup vs. 125 lines/day | 55.4x |
+| Methodik / Methodology | v2; source `d7996923b5f8` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
-Produktiv / Production          [#####...............]  23.2% | 137243
-Tests                           [#...................]   7.4% | 44057
-Dokumentation / Documentation   [#########...........]  43.4% | 257114
-Skripte / Scripts               [#...................]   3.2% | 18988
-Konfiguration / Configuration   [#...................]   5.9% | 34791
+Produktiv / Production          [#####...............]  23.0% | 137243
+Tests                           [##..................]   7.5% | 44919
+Dokumentation / Documentation   [#########...........]  43.3% | 258281
+Skripte / Scripts               [#...................]   3.2% | 18993
+Konfiguration / Configuration   [#...................]   6.1% | 36561
 Daten und Medien / Data and media [#...................]   0.0% | 1
-Sonstiger Text / Other text     [###.................]  16.9% | 99832
+Sonstiger Text / Other text     [###.................]  16.8% | 99833
 ```
 
 Die Balken teilen die aktuelle getrackte Textbasis in stabile Kategorien. Prozent und Zeilenwert sind die genaue, textorientierte Aussage.
@@ -1243,12 +1243,12 @@ Sa/Sa  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 ```text
 Wochen / Weeks 27..52 | 2026-02-08..2026-08-08
 So/Su  4 0 0 4 4 0 4 4 0 4 0 0 4 4 0 0 4 0 4 0 0 0 4 4 4 1
-Mo/Mo  0 0 0 0 0 4 4 4 0 1 4 0 4 0 0 0 1 0 2 0 3 1 4 4 0 -
-Di/Tu  0 0 0 0 0 3 3 4 0 0 0 0 3 4 0 3 2 0 0 0 2 0 4 4 4 -
-Mi/We  0 0 0 0 0 1 4 0 0 0 3 0 4 1 0 0 2 0 4 0 2 0 4 2 4 -
-Do/Th  0 0 0 0 0 0 0 0 0 0 0 4 0 0 3 3 3 4 2 0 0 0 4 4 0 -
-Fr/Fr  0 0 0 4 0 4 4 4 0 2 4 0 3 1 4 3 0 0 3 2 3 4 4 4 1 -
-Sa/Sa  0 0 0 0 0 4 4 0 0 0 0 4 4 0 0 4 0 4 4 0 4 4 2 4 2 -
+Mo/Mo  0 0 0 0 0 4 4 4 0 1 4 0 4 0 0 0 1 0 2 0 3 1 4 4 0 0
+Di/Tu  0 0 0 0 0 3 3 4 0 0 0 0 3 4 0 3 2 0 0 0 2 0 4 4 4 0
+Mi/We  0 0 0 0 0 1 4 0 0 0 3 0 4 1 0 0 2 0 4 0 2 0 4 2 4 0
+Do/Th  0 0 0 0 0 0 0 0 0 0 0 4 0 0 3 3 3 4 2 0 0 0 4 4 0 0
+Fr/Fr  0 0 0 4 0 4 4 4 0 2 4 0 3 1 4 3 0 0 3 2 3 4 4 4 1 0
+Sa/Sa  0 0 0 0 0 4 4 0 0 0 0 4 4 0 0 4 0 4 4 0 4 4 2 4 2 4
 ```
 
 DE: 0 = keine Aenderung; 1 = 1..79; 2 = 80..399; 3 = 400..1599; 4 = 1600+ geaenderte Textzeilen; - = noch nicht abgelaufen.
@@ -1396,8 +1396,8 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 
 ```text
 Scale: 0..100x
-80 lines/day       [#################...] 87.1x
-125 lines/day      [###########.........] 55.7x
+80 lines/day       [#################...] 86.6x
+125 lines/day      [###########.........] 55.4x
 ```
 
 Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen Referenzen. Sie messen keine Arbeitszeit.
@@ -1410,7 +1410,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..10000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [##############......] 6965.0
+Visible repository [##############......] 6928.3
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -1419,9 +1419,9 @@ Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schre
 
 ### Textalternative / Text Alternative
 
-DE: Das Fenster beginnt am 2025-08-10 und endet am 2026-08-02. Es enthaelt 85 aktive und 273 inaktive vergangene Tage. Peak-Tag: 2026-03-22 / 321183. Peak-Woche: 2026-03-22 / 373633. Laengste Serie: 17 Tage (2026-07-10..2026-07-26).
+DE: Das Fenster beginnt am 2025-08-10 und endet am 2026-08-08. Es enthaelt 86 aktive und 278 inaktive vergangene Tage. Peak-Tag: 2026-03-22 / 321183. Peak-Woche: 2026-03-22 / 373576. Laengste Serie: 17 Tage (2026-07-10..2026-07-26).
 
-*EN: The window starts on 2025-08-10 and ends on 2026-08-02. It contains 85 active and 273 inactive elapsed days. Peak day: 2026-03-22 / 321183. Peak week: 2026-03-22 / 373633. Longest streak: 17 days (2026-07-10..2026-07-26).*
+*EN: The window starts on 2025-08-10 and ends on 2026-08-08. It contains 86 active and 278 inactive elapsed days. Peak day: 2026-03-22 / 321183. Peak week: 2026-03-22 / 373576. Longest streak: 17 days (2026-07-10..2026-07-26).*
 
 | Monat / Month | Geaenderte Textzeilen / Changed text lines |
 |---|---:|
@@ -1430,12 +1430,12 @@ DE: Das Fenster beginnt am 2025-08-10 und endet am 2026-08-02. Es enthaelt 85 ak
 | 2025-11 | 0 |
 | 2025-12 | 0 |
 | 2026-01 | 0 |
-| 2026-02 | 139113 |
-| 2026-03 | 532598 |
+| 2026-02 | 139105 |
+| 2026-03 | 532483 |
 | 2026-04 | 18953 |
-| 2026-05 | 274123 |
-| 2026-06 | 42308 |
-| 2026-07 | 206029 |
-| 2026-08 | 198 |
+| 2026-05 | 273853 |
+| 2026-06 | 42176 |
+| 2026-07 | 205615 |
+| 2026-08 | 4112 |
 
 <!-- project-statistics-v2:end -->

@@ -28,6 +28,19 @@ function expectFailure(name, options, pattern) {
 
 if (validate({root}).length !== 0) throw new Error("positive fixture failed");
 
+const predecessorFeature = fixture("predecessor-feature", ".specify/feature.json", (value) => {
+  value.feature_directory = "specs/036-wave6-tvfm-showcase-remediation";
+});
+if (validate({root, featurePath: predecessorFeature}).length !== 0) {
+  throw new Error("completed predecessor fixture failed");
+}
+
+expectFailure("unauthorized feature", {
+  featurePath: fixture("unauthorized-feature", ".specify/feature.json", (value) => {
+    value.feature_directory = "specs/038-post-wave6-portfolio-audit";
+  }),
+}, /completed predecessor or the explicitly eligible Wave-6 closure/);
+
 expectFailure("duplicate target", {
   manifestPath: fixture("duplicate-target", manifestSource, (value) => {
     value.orderedTargets.push({...value.orderedTargets[0]});
@@ -92,4 +105,5 @@ expectFailure("positive without evidence", {
 }, /lacks evidence/);
 
 fs.rmSync(temp, {recursive: true, force: true});
-console.log("requirements/intake negative fixtures PASS (9 cases)");
+console.log("requirements/intake positive fixtures PASS (2 cases)");
+console.log("requirements/intake negative fixtures PASS (10 cases)");

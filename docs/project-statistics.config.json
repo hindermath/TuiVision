@@ -347,6 +347,8 @@
       "netLines": 2422
     }
   ],
-  "excludedPaths": [],
+  "excludedPaths": [
+    "Directory.Build.props"
+  ],
   "categoryOverrides": []
 }
