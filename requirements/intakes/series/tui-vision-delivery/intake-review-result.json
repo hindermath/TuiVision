@@ -1,24 +1,24 @@
 {
   "schemaVersion": "1.1",
-  "reviewId": "e320135f-b9d9-469e-bef2-510a00c8446f",
+  "reviewId": "a1051008-6a1e-40bb-9066-a50ae099513e",
   "mode": "Series",
   "status": "Ready",
   "policy": "tui-vision-delivery-v1",
-  "reviewedAt": "2026-07-26T20:00:00Z",
+  "reviewedAt": "2026-08-08T17:17:31Z",
   "repository": {
     "root": ".",
-    "head": "cee86bd254b847e79b0b19755e61d61c032a5f78"
+    "head": "889f2424812b03df9d4c322c0a06834e75fe8a2a"
   },
   "targets": [
     {
       "path": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
-      "role": "Primary",
+      "role": "OrderedMember",
       "normalizedSha256": "1b8ac280514c3415dfa51f2807f2b9183e51cd46b446d59980974cdce0ac70ad",
       "gitBlob": "N/A"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
-      "role": "OrderedMember",
+      "role": "Primary",
       "normalizedSha256": "f46be28ad27bb2dd5644390a7d50bed4912b514ce924e58bfd304135b33c0ad2",
       "gitBlob": "N/A"
     },
@@ -68,7 +68,7 @@
       "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
     ],
     "series": [
-      "All seven active intake paths, exact hashes, lifecycle states, roots, and the Wave-6 hard completion gate",
+      "All seven series intake paths, exact hashes, lifecycle states, roots, and the completed Wave-6 hard completion gate",
       "Independent governance and documentation roots without invented product dependencies",
       "DeferredOptional backlog excluded from executable targets"
     ],
@@ -80,9 +80,9 @@
     "medium": 0,
     "low": 0
   },
-  "supersedes": "b1b901aa-c523-4f35-ba64-0dddd99c6072",
+  "supersedes": "e320135f-b9d9-469e-bef2-510a00c8446f",
   "requestEvidence": {
     "path": "requirements/intakes/series/tui-vision-delivery/intake-review-request.json",
-    "normalizedSha256": "662739d8bfa66818d54f50a7fccf9e78203524c7e4ea5846815e5e408fd577f0"
+    "normalizedSha256": "a042ca4048d2d630adaf3a1e425442c561e06b945ec880d2057168aaae1eb8b0"
   }
 }

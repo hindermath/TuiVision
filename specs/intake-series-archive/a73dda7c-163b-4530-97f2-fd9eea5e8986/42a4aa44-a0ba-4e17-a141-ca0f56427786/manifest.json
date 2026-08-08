@@ -8,15 +8,15 @@
   "orderedTargets": [
     {
       "path": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
-      "role": "OrderedMember",
+      "role": "Primary",
       "normalizedSha256": "1b8ac280514c3415dfa51f2807f2b9183e51cd46b446d59980974cdce0ac70ad",
-      "status": "Completed"
+      "status": "Eligible"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
-      "role": "Primary",
+      "role": "OrderedMember",
       "normalizedSha256": "f46be28ad27bb2dd5644390a7d50bed4912b514ce924e58bfd304135b33c0ad2",
-      "status": "Eligible"
+      "status": "Blocked"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",

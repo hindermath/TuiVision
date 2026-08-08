@@ -201,4 +201,12 @@ convergence and feature merge must occur before one causal closeout may record
 | Statistics remediation | Canonical PowerShell renderer updated only the marked block; PowerShell and Bash `CheckOnly` plus both full homogeneity wrappers pass at 100% |
 | Statistics determinism | The renderer already excludes its own ledger; `Directory.Build.props` is now also excluded because its mandatory per-commit version change otherwise makes a final statistics-only commit self-invalidating |
 | Final statistics boundary | After the configuration commit, one commit may contain only `Directory.Build.props` and the generated ledger; both are excluded from the statistics history and the profile remains stable |
-| Review and merge | Pending corrected exact-head convergence |
+| Final reviewed head | `246d9ddf7f63c8429f0ad1c61ab9452cfd59bfab` |
+| Exact-head evidence | 14/14 Primary gates passed in Bash and PowerShell |
+| Provider checks | 31 successful, one expected skipped Pages deploy |
+| Review | Zero actionable threads; Copilot unavailable and not counted as Pass |
+| Merge | PR #139 merged as `889f2424812b03df9d4c322c0a06834e75fe8a2a` |
+| Admin bypass | Used only for the remaining Human Approval rule after all technical gates passed |
+
+The causal delivery facts and the final Wave-6/intake transition are recorded
+non-recursively in `delivery-closeout.md`.
