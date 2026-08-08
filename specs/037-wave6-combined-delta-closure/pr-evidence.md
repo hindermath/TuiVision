@@ -197,4 +197,6 @@ convergence and feature merge must occur before one causal closeout may record
 | Initial Gitleaks result | Push-context failure on a false-positive documentation phrase in `data-model.md`; no credential existed |
 | Correction boundary | Rewrite the ShowcaseProof sentence and add only the exact historical fingerprint to `.gitleaksignore`; no path or rule is allowlisted, and all future findings remain active |
 | Local range reproduction | The current file scan has zero findings; the exact PR-range scan must pass with the fingerprint before push |
+| Windows Homogeneity result | Failed on the pre-existing generated Statistics Profile 2 drift; no agent-guidance defect |
+| Statistics remediation | Canonical PowerShell renderer updated only the marked block; PowerShell and Bash `CheckOnly` plus both full homogeneity wrappers pass at 100% |
 | Review and merge | Pending corrected exact-head convergence |
