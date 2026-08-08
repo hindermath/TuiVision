@@ -7,7 +7,7 @@
   "authorityRevalidationRequired": false,
   "stage": "Review",
   "status": "Active",
-  "checkpointCommit": "d2898936fe4547ead330c518df08e4a5fc95c84c",
+  "checkpointCommit": "6389cb571eb28e2ca9a2446752a798d011c523f0",
   "acceptedArtifacts": [
     {
       "path": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
@@ -47,7 +47,7 @@
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/pr-evidence.md",
-      "sha256": "375f28544bc3d03fb956c18401ac8d61211e8ec064a1af30dad4b88c5f207591"
+      "sha256": "fbcc43b0784ddfc691cfed7f8415d4c2dde42b64684edc9e6c28b059876fdbf2"
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/autonomous-gate-requirements.json",
@@ -76,6 +76,10 @@
     {
       "path": "scripts/tests/requirements-intake-alignment-tests.mjs",
       "sha256": "2759a4cdcb6b114a555e04cd679eb43eee0df8d9222c4e40599a72ba697228a5"
+    },
+    {
+      "path": ".gitleaksignore",
+      "sha256": "95d3aabb06b3a052fb07ec94eda32cad6bf365ee898e7aee9d2b321bc2902f64"
     }
   ],
   "tasks": {
@@ -84,12 +88,12 @@
     "completed": 153,
     "total": 169
   },
-  "lastPassingGate": "Final local candidate validation and Analyze passed: closure 8/8, exact 24/10/10/10/1 records, 90 dimensions, zero findings or product decisions and 169 dependency-ordered tasks.",
-  "nextExactAction": "Commit and push the documentation-only Gitleaks false-positive correction, then converge all checks and reviews on the new exact PR head.",
+  "lastPassingGate": "The exact two-commit PR range passes local Gitleaks after one commit-specific false-positive fingerprint; no rule or path allowlist was added.",
+  "nextExactAction": "Commit and push the exact-fingerprint Gitleaks correction, then converge all checks and reviews on the new exact PR head.",
   "lastOperation": {
-    "kind": "RemoteGitleaks",
-    "state": "Failed",
-    "summary": "The initial PR head was published as PR #139; push-context Gitleaks misclassified a ShowcaseProof documentation phrase, so the wording is corrected without changing security policy."
+    "kind": "GitleaksFalsePositiveRemediation",
+    "state": "Completed",
+    "summary": "Reproduced the PR-range false positive, kept the safer wording and added only the exact historical fingerprint; the same local range now reports no leak."
   },
   "stop": {
     "reason": "N/A",
@@ -102,5 +106,5 @@
     "postMergeActions": "Pending",
     "finalValidation": "Pending"
   },
-  "updatedAt": "2026-08-08T16:53:13Z"
+  "updatedAt": "2026-08-08T16:55:35Z"
 }

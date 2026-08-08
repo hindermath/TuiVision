@@ -195,5 +195,6 @@ convergence and feature merge must occur before one causal closeout may record
 | Feature PR | <https://github.com/hindermath/TuiVision/pull/139> |
 | Initial reviewed head | `d2898936fe4547ead330c518df08e4a5fc95c84c` |
 | Initial Gitleaks result | Push-context failure on a false-positive documentation phrase in `data-model.md`; no credential existed |
-| Correction boundary | Rewrite the ShowcaseProof sentence, keep Gitleaks policy unchanged, align version to `1.37.2.409`, and rerun all PR-head checks |
+| Correction boundary | Rewrite the ShowcaseProof sentence and add only the exact historical fingerprint to `.gitleaksignore`; no path or rule is allowlisted, and all future findings remain active |
+| Local range reproduction | The current file scan has zero findings; the exact PR-range scan must pass with the fingerprint before push |
 | Review and merge | Pending corrected exact-head convergence |
