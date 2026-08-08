@@ -199,4 +199,6 @@ convergence and feature merge must occur before one causal closeout may record
 | Local range reproduction | The current file scan has zero findings; the exact PR-range scan must pass with the fingerprint before push |
 | Windows Homogeneity result | Failed on the pre-existing generated Statistics Profile 2 drift; no agent-guidance defect |
 | Statistics remediation | Canonical PowerShell renderer updated only the marked block; PowerShell and Bash `CheckOnly` plus both full homogeneity wrappers pass at 100% |
+| Statistics determinism | The renderer already excludes its own ledger; `Directory.Build.props` is now also excluded because its mandatory per-commit version change otherwise makes a final statistics-only commit self-invalidating |
+| Final statistics boundary | After the configuration commit, one commit may contain only `Directory.Build.props` and the generated ledger; both are excluded from the statistics history and the profile remains stable |
 | Review and merge | Pending corrected exact-head convergence |

@@ -7,7 +7,7 @@
   "authorityRevalidationRequired": false,
   "stage": "Review",
   "status": "Active",
-  "checkpointCommit": "b2ef2c9ad95c7e7c11107508a030b1bfafec09cc",
+  "checkpointCommit": "f50fe072a43ed9f32806fdb82a1e0a9eb1528047",
   "acceptedArtifacts": [
     {
       "path": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
@@ -47,7 +47,7 @@
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/pr-evidence.md",
-      "sha256": "0420abb4dab0317d01013766c0646540f5e96de0a04b7bd3a205d56cdcf1eca8"
+      "sha256": "b0ae0648d81b5f34da6ae02193a118ff10379129784ffd045ccedf975b394bf0"
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/autonomous-gate-requirements.json",
@@ -82,8 +82,8 @@
       "sha256": "95d3aabb06b3a052fb07ec94eda32cad6bf365ee898e7aee9d2b321bc2902f64"
     },
     {
-      "path": "docs/project-statistics.md",
-      "sha256": "37ad10d8abbcc7d72f9ff4d4ed5fcedc62f21d32c2c953ac14609ce10e7a1969"
+      "path": "docs/project-statistics.config.json",
+      "sha256": "2f967daa0f8886eaac7b027ae8f8dfb8585badd8cdc0490727653672e07ac30e"
     }
   ],
   "tasks": {
@@ -92,12 +92,12 @@
     "completed": 153,
     "total": 169
   },
-  "lastPassingGate": "Canonical statistics rendering and both Bash/PowerShell homogeneity wrappers pass at 100 percent after the Windows provider exposed baseline drift.",
-  "nextExactAction": "Commit and push the generated statistics correction, then converge all checks and reviews on the new exact PR head.",
+  "lastPassingGate": "The statistics self-reference was reduced to the mandatory version file; the configuration now excludes that non-product churn while keeping all source, test and documentation delivery metrics.",
+  "nextExactAction": "Commit the statistics configuration correction, render the profile from that commit, then create a final commit containing only the two excluded statistics/version files before push.",
   "lastOperation": {
-    "kind": "StatisticsHomogeneityRemediation",
+    "kind": "StatisticsDeterminismRemediation",
     "state": "Completed",
-    "summary": "Updated only the canonical generated Statistics Profile 2 block and proved current output plus 100 percent Bash and PowerShell homogeneity."
+    "summary": "Excluded mandatory Directory.Build.props version churn from Statistics Profile 2 so a final generated-ledger commit can be stable and cross-platform reproducible."
   },
   "stop": {
     "reason": "N/A",
@@ -110,5 +110,5 @@
     "postMergeActions": "Pending",
     "finalValidation": "Pending"
   },
-  "updatedAt": "2026-08-08T16:58:24Z"
+  "updatedAt": "2026-08-08T17:02:45Z"
 }
