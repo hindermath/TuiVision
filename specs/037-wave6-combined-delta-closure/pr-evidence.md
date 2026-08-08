@@ -187,3 +187,13 @@ portfolio audit `BlockedPendingWave6Closure`. Under the renewed
 `MergeAndSync` authority, current Ubuntu/Windows provider checks, review
 convergence and feature merge must occur before one causal closeout may record
 `Closed` and portfolio `Eligible`. Feature 038 is not created or started.
+
+## Remote Delivery
+
+| Fact | Evidence |
+|---|---|
+| Feature PR | <https://github.com/hindermath/TuiVision/pull/139> |
+| Initial reviewed head | `d2898936fe4547ead330c518df08e4a5fc95c84c` |
+| Initial Gitleaks result | Push-context failure on a false-positive documentation phrase in `data-model.md`; no credential existed |
+| Correction boundary | Rewrite the ShowcaseProof sentence, keep Gitleaks policy unchanged, align version to `1.37.2.409`, and rerun all PR-head checks |
+| Review and merge | Pending corrected exact-head convergence |

@@ -36,8 +36,9 @@ proof names, framework decisions and evidence paths.
 
 ## ShowcaseProof
 
-Exactly ten records bind `W6S-001` through `W6S-010` to visible access,
-normal/constrained layout, focus/status/Description/keyboard and cell proof.
+The set `W6S-001` through `W6S-010` contains exactly ten records. Each record
+describes how users reach the surface and proves layout, focus, status,
+Description, keyboard, and cells.
 
 ## CombinedArea
 

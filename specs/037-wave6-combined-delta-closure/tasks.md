@@ -184,9 +184,9 @@ the shared smoke-test project are single-writer surfaces.
 - [X] T148 Align `Directory.Build.props` to the current `1.37.<patch>.<build>` candidate without another build increment.
 - [X] T149 Stage only the intended Feature-037, alignment-validator and version paths.
 - [X] T150 Run `git diff --cached --check` and reconcile staged, unstaged and untracked inventories.
-- [ ] T151 Commit the exact non-empty feature candidate and record its full head.
-- [ ] T152 Push branch `037-wave6-combined-delta-closure` and verify the remote head.
-- [ ] T153 Create the non-empty Feature-037 pull request with evidence-backed description.
+- [X] T151 Commit the exact non-empty feature candidate and record its full head.
+- [X] T152 Push branch `037-wave6-combined-delta-closure` and verify the remote head.
+- [X] T153 Create the non-empty Feature-037 pull request with evidence-backed description.
 - [ ] T154 Map every applicable gate to the actual pull-request head, workflow, job, platform and executed command.
 - [ ] T155 Generate temporary exact-head provider evidence and validate it with both installed gate validators.
 - [ ] T156 Inspect required checks, Claude/Copilot results, comments and GraphQL review threads; unavailable reviewers remain missing.

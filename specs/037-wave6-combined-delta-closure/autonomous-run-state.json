@@ -5,9 +5,9 @@
   "branch": "037-wave6-combined-delta-closure",
   "deliveryMode": "MergeAndSync",
   "authorityRevalidationRequired": false,
-  "stage": "Publish",
+  "stage": "Review",
   "status": "Active",
-  "checkpointCommit": "faa42883d4a1cbe1b7b07e4e0b7f2b07e34e4c76",
+  "checkpointCommit": "d2898936fe4547ead330c518df08e4a5fc95c84c",
   "acceptedArtifacts": [
     {
       "path": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
@@ -35,7 +35,7 @@
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/data-model.md",
-      "sha256": "ff4f556af0d55bc0d16323c998280751d600290a9e720ca3212fee0dfa2754d3"
+      "sha256": "6f1b37a6731f4cba260f58c8deedf306072ffe6927394d3b49df11e865592938"
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/quickstart.md",
@@ -47,7 +47,7 @@
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/pr-evidence.md",
-      "sha256": "29ee6d5500d32fe476549d9be9e2b5ac3795741af8c2e0e7108e557c2fdde065"
+      "sha256": "375f28544bc3d03fb956c18401ac8d61211e8ec064a1af30dad4b88c5f207591"
     },
     {
       "path": "specs/037-wave6-combined-delta-closure/autonomous-gate-requirements.json",
@@ -80,16 +80,16 @@
   ],
   "tasks": {
     "path": "specs/037-wave6-combined-delta-closure/tasks.md",
-    "sha256": "01427c796827c776ffaafa0120484bee4d8433e2cf5856d39e2d50c87e7c7775",
-    "completed": 150,
+    "sha256": "b4dd97dde7f7ab0b0a03b6836932a60d12e079355f8f0d7c3a4fc77c2b1b38d4",
+    "completed": 153,
     "total": 169
   },
   "lastPassingGate": "Final local candidate validation and Analyze passed: closure 8/8, exact 24/10/10/10/1 records, 90 dimensions, zero findings or product decisions and 169 dependency-ordered tasks.",
-  "nextExactAction": "Align the existing 1.37.0.409 version for the current commit count without a build increment, stage only intended paths and validate the exact staged candidate.",
+  "nextExactAction": "Commit and push the documentation-only Gitleaks false-positive correction, then converge all checks and reviews on the new exact PR head.",
   "lastOperation": {
-    "kind": "LocalCandidateValidation",
-    "state": "Completed",
-    "summary": "Completed the authority-delta Analyze remediation, final 8/8 closure validation, evidence, causal feature-head report and preliminary NoPromotion retrospective."
+    "kind": "RemoteGitleaks",
+    "state": "Failed",
+    "summary": "The initial PR head was published as PR #139; push-context Gitleaks misclassified a ShowcaseProof documentation phrase, so the wording is corrected without changing security policy."
   },
   "stop": {
     "reason": "N/A",
@@ -102,5 +102,5 @@
     "postMergeActions": "Pending",
     "finalValidation": "Pending"
   },
-  "updatedAt": "2026-08-08T16:51:24Z"
+  "updatedAt": "2026-08-08T16:53:13Z"
 }
