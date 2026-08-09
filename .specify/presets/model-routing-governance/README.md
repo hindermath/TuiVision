@@ -1,8 +1,9 @@
 # Model Routing Governance
 
-Version `0.1.2` validates PowerShell 7 before Bash wrappers delegate to it and
-reports missing or outdated installations as a bilingual `Blocked` result.
-Routing, discovery, and authority semantics are unchanged.
+Version `0.1.4` removes a stale version-specific diagnostic from an unsupported
+harness path. Generated agent instructions, bilingual documentation,
+PowerShell 7 validation, and all routing and authority semantics remain
+unchanged from 0.1.3.
 
 ## Deutsch
 
@@ -43,8 +44,11 @@ Fallback und keinen automatischen Anbieterwechsel.
 
 ```text
 $speckit-model-routing-status
-$speckit-model-routing-refresh Refresh the local Codex binding.
+$speckit-model-routing-refresh
 ```
+
+Der zweite Befehl aktualisiert beispielsweise eine lokale Codex-Bindung erst
+nach ausdrücklicher Autorisierung.
 
 Das Statuskommando ist read-only. Refresh schreibt ausschließlich die lokale
 Konfigurationsdatei. Beide Commands erteilen keine Spec-Kit-, Git- oder
@@ -63,10 +67,13 @@ Structured enumeration, name-only enumeration, candidate validation, and
 configured-only adapters are reported honestly. Unknown or ambiguous mappings
 fail closed, and no provider switch happens silently.
 
+The second command in the invocation block refreshes, for example, a local
+Codex binding only after explicit authorization.
+
 ## Installation
 
 ```bash
-specify preset add --from https://github.com/hindermath/spec-kit-preset-model-routing-governance/archive/refs/tags/v0.1.2.zip --priority 61
+specify preset add --from https://github.com/hindermath/spec-kit-preset-model-routing-governance/archive/refs/tags/v0.1.4.zip --priority 61
 ```
 
 License: MIT.

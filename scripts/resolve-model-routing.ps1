@@ -269,7 +269,7 @@ function Select-MRModels {
         Assert-MRCondition ($frontier.Count -eq 1) 'Antigravity Frontier-Zuordnung ist nicht eindeutig.'
         Assert-MRCondition ($fast.Count -eq 1) 'Antigravity Fast-Zuordnung ist nicht eindeutig.'
     } else {
-        throw "$Family unterstuetzt in v0.1.2 keine sichere automatische Zuordnung."
+        throw "$Family unterstuetzt in diesem Preset-Release keine sichere automatische Zuordnung."
     }
     $frontierModel = [hashtable] $frontier[0]
     $fastModel = [hashtable] $fast[0]

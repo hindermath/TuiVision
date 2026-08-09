@@ -7,7 +7,8 @@ description: Refresh the local harness model-to-role binding
 # Model Routing Refresh
 
 Refresh exactly one local, non-versioned model-routing profile under current
-explicit authority. Resolve the script from repository `.specify/scripts/` first and
+explicit authority. Resolve the script from the repository's top-level
+`scripts` directory first and
 otherwise from `.specify/presets/model-routing-governance/scripts/`. Detect the
 active harness, enumerate models where the
 harness supports it, and otherwise validate only configured candidates.

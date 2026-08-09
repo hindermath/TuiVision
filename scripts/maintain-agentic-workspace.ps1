@@ -1547,7 +1547,7 @@ try {
                 -EvidencePath $routingResult
         } else {
             $script:Findings++
-            Add-HBReportStage -StageId 'model-routing' -Status Blocked -ExitCode 1 `
+            Add-HBReportStage -StageId 'model-routing' -Status Blocked -ExitCode $routingExit `
                 -Summary 'Lokales Modell-Routing benötigt eine ausdrückliche Aktualisierung / local model routing requires explicit refresh' `
                 -NextAction 'speckit.model-routing-refresh mit lokaler Autorität ausführen / run with local authority' `
                 -EvidencePath $routingResult
