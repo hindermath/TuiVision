@@ -1,0 +1,1 @@
+{"base":"valid-vertical-slice.json","mutation":"MultiplePrimaryOwner","path":"findings[0].primaryOwner","value":"FrameworkReuse,ProofPlatform"}

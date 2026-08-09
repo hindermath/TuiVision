@@ -755,6 +755,7 @@ fortgeschrieben.
 | 2026-07-17 | Kausaler Closeout der Wave-6-Showcase-Stufe Feature 036 | Feature-PR #104 wurde nach der Windows-Korrektur auf dem finalen Head `a0d5062` als Merge `559bffb` geliefert. Der erste Windows-Lauf fand eine checkout-abhängige CRLF-Abweichung im test-only Hashnachweis historischer `.PAS`-/`.BAT`-Texte; die begrenzte Kanonisierung bewahrt `.PAL`-/`.TVR`-Ressourcen bytegenau und bestand anschließend 35/35 betroffene sowie 880/880 vollständige Release-Tests. Die lokale Coverage lag mit 92,96 %, 86,66 %, 90,01 %, 80,55 % und 89,18 % über allen fünf 70-%-Gates; DocFX 0/0 und Playwright/Axe 2/2 bestanden. Der exakte Head erreichte 22 erfolgreiche technische Checks bei einem erwarteten übersprungenen Pages-Deploy. Zwölf Primary-Gate-Zeilen wurden von Bash und PowerShell akzeptiert; Claude war grün, GraphQL meldete null Threads und Kommentare, Copilot blieb quota-bedingt ein fehlender Review, und ausschließlich Human Approval benötigte den autorisierten engen Bypass. Der Run-State endet mit `Retrospective`, `Completed`, 187/187 und `nextExactAction: N/A`; die Retrospektive ist `NoPromotion`. Der Evidence-only Closeout löst keine erneute .NET-Validierung aus. Feature 037, unabhängiger Wave-6-Abschluss und Post-Wave-6-Audit wurden nicht gestartet. |
 | 2026-07-23 | Intake Authoring und Review | Fünf aktive Lastenhefte als hashgebundene Legacy-Intakes normalisiert; der frühere Post-Wave-6-Einzelreview bleibt als supersedierte Evidence erhalten, der Serienreview endet `Ready` ohne offene Findings. |
 | 2026-08-02 | Runnerprofil und Windows-ripgrep gehärtet | Documentation Impact `GeneratedUpdate`: TuiVision bleibt als öffentliches Referenz-Repository vollständiger Linux-/macOS-/Windows-Canary der generisch verteilten Wartungsworkflows. Der Windows-Homogeneity-Check ersetzt den fehlertoleranten Chocolatey-Bezug durch das offizielle, auf Version 15.2.0 fixierte ripgrep-Archiv mit SHA-256-Prüfung und explizitem `rg --version`. Produktcode, öffentliche API, Bedienung und Produktdokumentation bleiben unverändert; die Projektstatistik wird aus Git-Historie und Konfiguration neu erzeugt. |
+| 2026-08-09 | `/speckit.implement` für `038-example-portfolio-conformance-audit` | Der strikt read-only Produktaudit erfasst exakt 37 Beispielzeilen, 138 hashgebundene Quellen, 128 reziproke Evidence-Knoten, zehn Dimensionen je Beispiel und 24 vollständige Governance-/Standardsentscheidungen. Ein test-only C#-Validator verwirft exakt 46 kanonische Ein-Ursachen-Fixtures mit stabilen EPA-Codes; die eingefrorene Finding-Menge ist leer, alle vier Owner-Gruppen sind unterdrückt, und genau ein unnummerierter Closure-Intake besitzt ein beidseitig validiertes Schema-2.0-Receipt, ohne ein Folgefeature zu starten. Der Vor-Statistik-Snapshot umfasst 848 Testzeilen, 5041 Dokumentations-/Evidence-/Intake-Zeilen und vier ausgleichende Metadatenänderungen, zusammen 5893 hinzugefügte oder aktualisierte Zeilen bei 5889 Nettozeilen; Runtime-Routing-Ausgaben und generierte Test-/Coverage-/DocFX-Artefakte sind ausgeschlossen. Konservative Manualreferenz: `73,7` Tage beziehungsweise `574,6` Stunden bei 80 Zeilen/Tag; Thorsten-Solo: `47,1` Tage beziehungsweise `367,7` Stunden bei 125 Zeilen/Tag. Lokale Abnahme: Audit 52/52, Example Smokes 298/298, vollständige Regression 940/940, null Skips und Coverage Core 92,85 %, Controls 85,54 %, Serialization 87,74 %, Compatibility 80,95 % sowie Drivers.Console 88,78 %. Produktcode, öffentliche API, Dependencies, Projekte, Pakete, Beispiele und historische Quellen bleiben unverändert; Remote-Delivery, Merge und Retrospektive folgen getrennt. |
 
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 Basis dieses Schlussblocks ist der Repository-Snapshot vom 2026-07-15. Die
@@ -1198,29 +1199,29 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 600512 lines |
-| Textdateien / Text files | 2943 |
+| Textbasis / Text base | 606623 lines |
+| Textdateien / Text files | 3018 |
 | Beobachtbarer Zeitraum / Observable period | 2025-08-17..2026-08-09 |
 | Aktivtage / Active days | 87 |
-| Relevante Commits / Relevant commits | 543 |
-| Zeilen je Aktivtag / Lines per active day | 6902.4 |
+| Relevante Commits / Relevant commits | 545 |
+| Zeilen je Aktivtag / Lines per active day | 6972.7 |
 | Peak-Tag im Fenster / Peak day in window | 2026-03-22 / 321183 |
 | Peak-Woche im Fenster / Peak week in window | 2026-03-22 / 373576 |
 | Laengste Serie / Longest streak | 17 days |
-| Speedup vs. 80 lines/day | 86.3x |
-| Speedup vs. 125 lines/day | 55.2x |
-| Methodik / Methodology | v2; source `40167e6ea943` |
+| Speedup vs. 80 lines/day | 87.2x |
+| Speedup vs. 125 lines/day | 55.8x |
+| Methodik / Methodology | v2; source `fadc646afd41` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
-Produktiv / Production          [#####...............]  22.9% | 137243
-Tests                           [##..................]   7.6% | 45438
-Dokumentation / Documentation   [#########...........]  43.5% | 261315
+Produktiv / Production          [#####...............]  22.6% | 137243
+Tests                           [##..................]   7.8% | 47069
+Dokumentation / Documentation   [#########...........]  43.6% | 264768
 Skripte / Scripts               [#...................]   3.3% | 19988
-Konfiguration / Configuration   [#...................]   6.1% | 36694
+Konfiguration / Configuration   [#...................]   6.2% | 37721
 Daten und Medien / Data and media [#...................]   0.0% | 1
-Sonstiger Text / Other text     [###.................]  16.6% | 99833
+Sonstiger Text / Other text     [###.................]  16.5% | 99833
 ```
 
 Die Balken teilen die aktuelle getrackte Textbasis in stabile Kategorien. Prozent und Zeilenwert sind die genaue, textorientierte Aussage.
@@ -1408,8 +1409,8 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 
 ```text
 Scale: 0..100x
-80 lines/day       [#################...] 86.3x
-125 lines/day      [###########.........] 55.2x
+80 lines/day       [#################...] 87.2x
+125 lines/day      [###########.........] 55.8x
 ```
 
 Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen Referenzen. Sie messen keine Arbeitszeit.
@@ -1422,7 +1423,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..10000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [##############......] 6902.4
+Visible repository [##############......] 6972.7
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -1448,6 +1449,6 @@ DE: Das Fenster beginnt am 2025-08-17 und endet am 2026-08-09. Es enthaelt 87 ak
 | 2026-05 | 273853 |
 | 2026-06 | 42176 |
 | 2026-07 | 205615 |
-| 2026-08 | 10633 |
+| 2026-08 | 16754 |
 
 <!-- project-statistics-v2:end -->

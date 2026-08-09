@@ -1,0 +1,1 @@
+{"base":"valid-vertical-slice.json","mutation":"ProtectedEvidencePath","path":"evidence[0].relativePath","value":"src/forbidden.json"}
