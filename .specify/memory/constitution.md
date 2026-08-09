@@ -900,16 +900,16 @@ workspace family consists of:
 
 | Preset | Version | Priority | Scope |
 |---|---:|---:|---|
-| `security-governance` | `v0.6.1` | `10` | secure development, MSL, language-specific secure coding, SSDF, ASVS, SBOM/VEX/SLSA, AI-SBOM, CRA/regulatory applicability |
-| `architecture-governance` | `v0.5.1` | `20` | secure architecture, STRIDE/CAPEC, Zero Trust, SAMM, S-ADR, BSI C3A cloud autonomy, BSI C5 cloud assurance |
-| `isaqb-architecture-governance` | `v0.2.1` | `30` | general iSAQB/arc42 architecture governance |
-| `a11y-governance` | `v0.4.1` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts, didactic inline-code-comment review |
-| `cross-platform-governance` | `v0.2.1` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
-| `agent-parity-governance` | `v0.4.0` | `60` | synchronized agent guidance, fleet-completion evidence, and agent-neutral Spec-Kit model routing |
-| `autonomous-run-governance` | `v0.3.2` | `70` | permission-bounded, evidence-first governance with optional intake gate and resumable, validated closeout |
-| `parallel-autonomous-run-governance` | `v0.2.3` | `80` | isolated bounded campaigns, optional schema-1.2 intake gate, cooperative stop/resume, provider-gated resumable consolidation, and declared post-merge closeout |
+| `security-governance` | `v0.6.2` | `10` | secure development, MSL, language-specific secure coding, SSDF, ASVS, SBOM/VEX/SLSA, AI-SBOM, CRA/regulatory applicability |
+| `architecture-governance` | `v0.5.2` | `20` | secure architecture, STRIDE/CAPEC, Zero Trust, SAMM, S-ADR, BSI C3A cloud autonomy, BSI C5 cloud assurance |
+| `isaqb-architecture-governance` | `v0.2.2` | `30` | general iSAQB/arc42 architecture governance |
+| `a11y-governance` | `v0.4.3` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts, didactic inline-code-comment review |
+| `cross-platform-governance` | `v0.2.2` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
+| `agent-parity-governance` | `v0.4.2` | `60` | synchronized agent guidance, fleet-completion evidence, and agent-neutral Spec-Kit model routing |
+| `autonomous-run-governance` | `v0.3.6` | `70` | permission-bounded, evidence-first governance with optional intake gate and resumable, validated closeout |
+| `parallel-autonomous-run-governance` | `v0.2.6` | `80` | isolated bounded campaigns, optional schema-1.2 intake gate, cooperative stop/resume, provider-gated resumable consolidation, and declared post-merge closeout |
 
-TuiVision additionally activates optional `intake-review-governance` v0.1.0
+TuiVision additionally activates optional `intake-review-governance` v0.2.1
 at priority `65`. Before feature creation, the current intake must have a
 hash-matching `Ready` result or a human-owned `ReadyWithAcceptedRisks` result.
 Review and status are read-only; repair requires explicit mutation authority.

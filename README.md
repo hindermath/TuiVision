@@ -134,16 +134,16 @@ begründete, dokumentierte Projektausnahme zulässig.
 
 Standard-Preset-Set:
 
-- `security-governance` v0.6.1, Priority 10
-- `architecture-governance` v0.5.1, Priority 20
-- `isaqb-architecture-governance` v0.2.1, Priority 30
-- `a11y-governance` v0.4.1, Priority 40
-- `cross-platform-governance` v0.2.1, Priority 50
-- `agent-parity-governance` v0.4.0, Priority 60
-- `autonomous-run-governance` v0.3.2, Priority 70
-- `parallel-autonomous-run-governance` v0.2.3, Priority 80
+- `security-governance` v0.6.2, Priority 10
+- `architecture-governance` v0.5.2, Priority 20
+- `isaqb-architecture-governance` v0.2.2, Priority 30
+- `a11y-governance` v0.4.3, Priority 40
+- `cross-platform-governance` v0.2.2, Priority 50
+- `agent-parity-governance` v0.4.2, Priority 60
+- `autonomous-run-governance` v0.3.6, Priority 70
+- `parallel-autonomous-run-governance` v0.2.6, Priority 80
 
-TuiVision aktiviert zusätzlich `intake-review-governance` v0.1.0 mit Priority
+TuiVision aktiviert zusätzlich `intake-review-governance` v0.2.1 mit Priority
 65. Das Preset bleibt außerhalb der Standard-Achtermatrix und bindet den
 nächsten Intake vor der Feature-Erstellung an ein aktuelles Review-Ergebnis.
 

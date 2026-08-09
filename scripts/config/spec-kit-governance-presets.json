@@ -18,10 +18,10 @@
     },
     {
       "id": "isaqb-architecture-governance",
-      "version": "v0.2.3",
+      "version": "v0.2.2",
       "priority": 30,
       "repository": "https://github.com/hindermath/spec-kit-preset-isaqb-architecture-governance",
-      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-isaqb-architecture-governance/archive/refs/tags/v0.2.3.zip"
+      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-isaqb-architecture-governance/archive/refs/tags/v0.2.2.zip"
     },
     {
       "id": "a11y-governance",
@@ -32,17 +32,17 @@
     },
     {
       "id": "cross-platform-governance",
-      "version": "v0.2.3",
+      "version": "v0.2.2",
       "priority": 50,
       "repository": "https://github.com/hindermath/spec-kit-preset-cross-platform-governance",
-      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-cross-platform-governance/archive/refs/tags/v0.2.3.zip"
+      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-cross-platform-governance/archive/refs/tags/v0.2.2.zip"
     },
     {
       "id": "agent-parity-governance",
-      "version": "v0.4.3",
+      "version": "v0.4.2",
       "priority": 60,
       "repository": "https://github.com/hindermath/spec-kit-preset-agent-parity-governance",
-      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-agent-parity-governance/archive/refs/tags/v0.4.3.zip"
+      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-agent-parity-governance/archive/refs/tags/v0.4.2.zip"
     },
     {
       "id": "autonomous-run-governance",
