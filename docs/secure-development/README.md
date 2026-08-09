@@ -28,11 +28,11 @@
 | Dokument / Document | Zweck / Purpose |
 |---|---|
 | [Richtlinie_Sichere-Entwicklung.md](Richtlinie_Sichere-Entwicklung.md) | Richtlinienaehnliche Grundlage fuer sichere Entwicklung / Policy-like secure-development baseline |
-| [checklisten/](checklisten/) | Zwoelf Einzelchecklisten fuer fokussierte Pruefungen / Twelve individual checklists for focused reviews |
+| `checklisten/` | Zwoelf Einzelchecklisten fuer fokussierte Pruefungen / Twelve individual checklists for focused reviews |
 | [Checklistensammelband_Sichere-Entwicklung.md](Checklistensammelband_Sichere-Entwicklung.md) | Zusammengefuehrter Sammelband fuer vollstaendige Reviews / Combined compendium for full reviews |
 | [baseline-manifest.json](baseline-manifest.json) | Kanonische Dateiliste, Versionen, Statusmodell und erwartete 157 CL-IDs / Canonical file list, versions, status model, and expected 157 CL IDs |
 | [Lernpfad_Sichere-Entwicklung_Lehrjahr-1-bis-3.md](Lernpfad_Sichere-Entwicklung_Lehrjahr-1-bis-3.md) | Sicherheit ab dem ersten Lehrjahr mit wachsender Selbstständigkeit / Security from training year one with increasing independence |
-| [mitgeltende-dokumente/](mitgeltende-dokumente/) | Mitgeltende Leitlinien, Richtlinien und externe Referenzen / Related guidelines, policies, and external references |
+| [mitgeltende-dokumente/](mitgeltende-dokumente/README.md) | Mitgeltende Leitlinien, Richtlinien und externe Referenzen / Related guidelines, policies, and external references |
 | [mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md](mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md) | Zentrale Mapping-Datei fuer Richtlinie, Checklisten, mitgeltende Dokumente und Governance-Presets / Central mapping file for guideline, checklists, related documents, and governance presets |
 
 ## Entwicklungs-Sandbox / Development Sandbox
