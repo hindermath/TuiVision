@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0",
+  "featureId": "038-example-portfolio-conformance-audit",
+  "deliveryMode": "MergeAndSync",
+  "baseline": {
+    "intakeHash": "f46be28ad27bb2dd5644390a7d50bed4912b514ce924e58bfd304135b33c0ad2",
+    "projectSetHash": "cb2f6568b70f2a62cd529250777e849dd2cd026c05732df81733b2fc3d177333",
+    "feature037DatasetHash": "64d1eb57171453706a20c8948741c0344476366ab4e1f78978e8433a6e957af7",
+    "feature037CloseoutHash": "c2b3e3836b13082d696361220aeaaccda2cbd11e02fef832e6ab54d6c97df806"
+  },
+  "slice": {
+    "exampleId": "EX036",
+    "name": "Tp7FileManager",
+    "historicalSourceCount": 24,
+    "entryPoint": "examples/Tp7FileManager/Program.cs",
+    "guide": "docs/guides/examples/tp7-file-manager.md",
+    "controlledPathBoundary": "Source-controlled fixture root and test-owned temporary directories only.",
+    "applicationLoop": "app.Run()",
+    "proof": ["state", "view", "focus", "status", "description", "cell", "small-terminal", "platform-fallback"]
+  }
+}

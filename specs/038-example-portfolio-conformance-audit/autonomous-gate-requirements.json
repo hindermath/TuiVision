@@ -1,0 +1,192 @@
+{
+  "schemaVersion": "1.0",
+  "gates": [
+    {
+      "gateId": "GATE-038-01",
+      "applicability": "Applicable",
+      "requiredScope": "The four accepted intake/review/series hashes, Ready review, Eligible series status, Feature-037 Closed/Eligible evidence, feature identity, branch, current MergeAndSync authority, and routing metadata remain aligned.",
+      "requiredCommandTokens": [
+        "specify check",
+        "check-prerequisites.sh --json"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "local"
+      ],
+      "rationale": "The audit may proceed only from its accepted immutable lineage and current fail-closed delivery authority.",
+      "reevaluationTrigger": "Any intake, review, series, Feature-037, branch, authority, routing, or run-state drift."
+    },
+    {
+      "gateId": "GATE-038-02",
+      "applicability": "Applicable",
+      "requiredScope": "The canonical dataset contains exactly EX001 through EX037: 25 Wave-1-to-Wave-4 historical examples, ten Wave-5 examples, one Wave-6 example, and A11yFramework exactly once as SupplementalControl; the direct project-path set hash matches the accepted baseline.",
+      "requiredCommandTokens": [
+        "dotnet test",
+        "Release",
+        "ExamplePortfolioAuditIntegrityTests",
+        "Portfolio"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "local",
+        "platform-neutral"
+      ],
+      "rationale": "Every decision and finding depends on a drift-free exact population.",
+      "reevaluationTrigger": "Any direct examples/*/*.csproj path change or inventory contract change."
+    },
+    {
+      "gateId": "GATE-038-03",
+      "applicability": "Applicable",
+      "requiredScope": "All required row fields, closed status values, N/A rationales and triggers, source/evidence/finding reciprocal relations, paths, hashes, review fields, and Markdown projections are complete and non-orphaned.",
+      "requiredCommandTokens": [
+        "dotnet test",
+        "Release",
+        "ExamplePortfolioAuditIntegrityTests",
+        "Relations"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "local",
+        "platform-neutral"
+      ],
+      "rationale": "A readable matrix is not trustworthy unless every machine-readable relation is complete and reciprocal.",
+      "reevaluationTrigger": "Any schema, source, evidence, row, finding, or projection change."
+    },
+    {
+      "gateId": "GATE-038-04",
+      "applicability": "Applicable",
+      "requiredScope": "Every Gap maps to one reproducible deduplicated EF001+ finding or a blocking ProductDecision; IDs are contiguous, root-cause keys are unique, each finding has exactly one primary owner, and all Red/real-path-Green, risk, review, and trigger fields are complete.",
+      "requiredCommandTokens": [
+        "dotnet test",
+        "Release",
+        "ExamplePortfolioAuditIntegrityTests",
+        "Findings"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "local",
+        "platform-neutral"
+      ],
+      "rationale": "Only reproducible root-cause findings may create later remediation work.",
+      "reevaluationTrigger": "Any dimension, observation, deduplication key, finding, owner, dependency, or proof requirement change."
+    },
+    {
+      "gateId": "GATE-038-05",
+      "applicability": "Applicable",
+      "requiredScope": "Only non-empty owner groups emit one unnumbered remediation intake each, the owner DAG and intake order are acyclic, empty groups are suppressed, exactly one unnumbered independent closure is last, and no follow-up feature is started.",
+      "requiredCommandTokens": [
+        "dotnet test",
+        "Release",
+        "ExamplePortfolioAuditIntegrityTests",
+        "Handoff"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "local",
+        "platform-neutral"
+      ],
+      "rationale": "The audit must create complete necessary follow-up without empty work or premature feature authority.",
+      "reevaluationTrigger": "Any final finding, primary owner, dependency edge, intake path, suppression decision, or closure contract change."
+    },
+    {
+      "gateId": "GATE-038-06",
+      "applicability": "Applicable",
+      "requiredScope": "The candidate has no whitespace defect and zero runtime, example, historical-source, public-API, project, package, dependency, external-checkout, or generated-output delta; only the planned feature, test-only validator/fixtures, allowed intake outputs, version line, and statistics surfaces change.",
+      "requiredCommandTokens": [
+        "git diff --check",
+        "protected-root",
+        "dependency",
+        "public-api"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "local"
+      ],
+      "rationale": "Feature 038 is a read-only product audit with an explicit scope firewall.",
+      "reevaluationTrigger": "Any tracked candidate-path, API, package, dependency, or generated-output change."
+    },
+    {
+      "gateId": "GATE-038-07",
+      "applicability": "Applicable",
+      "requiredScope": "The targeted audit validator and malformed fixtures, complete example smoke project, full TuiVision.sln Release suite, canonical five-assembly Coverlet gate, and dotnet format verification pass with a fresh build-counter increment before every dotnet build or test command.",
+      "requiredCommandTokens": [
+        "dotnet test",
+        "Release",
+        "ExamplePortfolioAuditIntegrityTests",
+        "TuiVision.sln",
+        "XPlat Code Coverage",
+        "coverlet.runsettings",
+        "dotnet format --verify-no-changes"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "local",
+        "macos"
+      ],
+      "rationale": "The test-only validator changes shared test infrastructure and the binding repository policy requires complete local regression and coverage evidence.",
+      "reevaluationTrigger": "Any validator, fixture, test, coverage, format, version, or repository-validation change."
+    },
+    {
+      "gateId": "GATE-038-08",
+      "applicability": "Applicable",
+      "requiredScope": "German-first/English-second CEFR-B2 text-first evidence is complete; the documentation trigger from project statistics is followed by DocFX, Playwright/Axe, and UTF-8 Lynx evidence with no inaccessible status or decision path.",
+      "requiredCommandTokens": [
+        "docfx docfx.json",
+        "npm run test:docfx",
+        "lynx",
+        "UTF-8"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "local"
+      ],
+      "rationale": "Learner-facing audit evidence and the required statistics update trigger the complete documentation accessibility path.",
+      "reevaluationTrigger": "Any documentation, navigation, generated API, language, accessibility, or statistics scope change."
+    },
+    {
+      "gateId": "GATE-038-09",
+      "applicability": "Applicable",
+      "requiredScope": "Security/standards, secret, dependency, supply-chain status, agent parity, model-routing preservation, generated-output, governance, review, residual-risk, and reevaluation evidence is current or explicitly N/A with rationale and trigger.",
+      "requiredCommandTokens": [
+        "scan-agent-secrets",
+        "dependency",
+        "agent-parity",
+        "generated-output",
+        "governance"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "local"
+      ],
+      "rationale": "NIST SSDF, CWE Top 25, evidence integrity, and the twelve-preset matrix remain applicable even without product or dependency changes.",
+      "reevaluationTrigger": "Any security, dependency, supply-chain, agent, template, routing, governance, or generated-output change."
+    },
+    {
+      "gateId": "GATE-038-10",
+      "applicability": "Applicable",
+      "requiredScope": "The exact reviewed feature head is pushed, checked on every required remote runner, reviewed with zero actionable threads, and validated against provider-neutral exact-head gate evidence before merge. A narrow admin bypass is allowed only when all technical gates pass and Human Approval is the sole remaining rule.",
+      "requiredCommandTokens": [
+        "gh pr checks",
+        "validate-autonomous-gate-evidence",
+        "git rev-parse HEAD"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "github",
+        "ubuntu",
+        "macos",
+        "windows"
+      ],
+      "rationale": "The resumed run has explicit MergeAndSync authority and therefore requires exact-head remote proof rather than a local success claim.",
+      "reevaluationTrigger": "Any reviewed-head change, rerun, workflow change, review thread, failed check, or authority change."
+    },
+    {
+      "gateId": "GATE-038-11",
+      "applicability": "Applicable",
+      "requiredScope": "The feature PR is merged with a merge commit, the obsolete feature branch is removed, local main is fast-forwarded to the identical origin/main head, and at most one evidence-only causal closeout records genuinely unavailable post-merge facts without claiming final portfolio conformance or starting the independent closure intake.",
+      "requiredCommandTokens": [
+        "gh pr merge --merge --delete-branch",
+        "git fetch --prune origin",
+        "git pull --ff-only origin main",
+        "git rev-parse origin/main"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "github",
+        "local",
+        "main"
+      ],
+      "rationale": "MergeAndSync requires terminal merge and default-branch synchronization evidence; the independent portfolio closure remains a separate unstarted intake.",
+      "reevaluationTrigger": "Any merge failure, post-merge evidence gap, default-branch drift, branch-cleanup failure, or attempt to start the independent closure."
+    }
+  ]
+}

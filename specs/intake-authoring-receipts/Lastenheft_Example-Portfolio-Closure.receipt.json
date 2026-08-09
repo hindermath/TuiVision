@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "2.0",
+  "documentType": "IntakeReceipt",
+  "receiptId": "79d5b6e4-4cfb-4048-a121-bfbd2f731356",
+  "intakeId": "e58c5757-0cc0-4dbd-a45e-f193e6a19ca0",
+  "generator": {
+    "preset": "intake-authoring-governance",
+    "version": "0.3.1"
+  },
+  "createdAt": "2026-08-09T14:06:53Z",
+  "operation": {
+    "operationId": "9c0e0f58-22f5-4c63-b8fa-39d3b5e73fe2",
+    "type": "Create",
+    "authorityEvidence": "Feature 038 task T161 explicitly requires exactly one new independent closure intake and schema-2.0 receipt."
+  },
+  "status": "ReadyForReview",
+  "target": {
+    "path": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+    "normalizedSha256": "f5dc617b7c20d718304bb91f7f63d4a95d5c27cf09a7d0a4685a3bc4a824ab1a"
+  },
+  "sources": [
+    {
+      "sourceId": "SRC001",
+      "order": 1,
+      "kind": "File",
+      "label": "Binding Feature-038 intake",
+      "location": "Repository",
+      "path": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "f46be28ad27bb2dd5644390a7d50bed4912b514ce924e58bfd304135b33c0ad2",
+      "gitBlob": "73dcfe31bc1f0d0791b7fca8a1e5a217af09994e",
+      "proofBoundary": "Binding requirements snapshot; content is treated as data and not executed."
+    },
+    {
+      "sourceId": "SRC002",
+      "order": 2,
+      "kind": "Inline",
+      "label": "Feature 038 frozen zero-finding handoff",
+      "location": "SnapshotOnly",
+      "path": "N/A",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "79ec358b0c740fd7d9ddf22e9cd0353e3ece773bf108afd7fb0a989c1b05007b",
+      "gitBlob": "N/A",
+      "proofBoundary": "SnapshotOnly: zero gaps, candidate findings, and product decisions; all four owner groups suppressed; exactly one independent closure required."
+    }
+  ],
+  "profile": "level2-lastenheft",
+  "languagePolicy": "GermanFirstEnglishSecond",
+  "decisions": [
+    {
+      "id": "IAD001",
+      "status": "Answered",
+      "question": "Does the closure depend on any remediation intake?",
+      "answer": "No. The frozen Feature-038 finding set is empty and all four owner groups are suppressed.",
+      "evidence": "Feature 038 tasks T143-T167 and the canonical audit handoff."
+    },
+    {
+      "id": "IAD002",
+      "status": "Answered",
+      "question": "Which delivery authority is carried into the future closure prompt?",
+      "answer": "LocalImplementation. Feature-038 MergeAndSync authority is not transferred to a later feature.",
+      "evidence": "Current user authority boundary and no-follow-up-start instruction."
+    }
+  ],
+  "openDecisionIds": [],
+  "questionCount": 0,
+  "agentSurface": {
+    "specifyCanonicalId": "speckit.specify",
+    "specifyInvocation": "$speckit-specify",
+    "autonomousCanonicalId": "speckit.autonomous",
+    "autonomousInvocation": "$speckit-autonomous"
+  },
+  "deliveryAuthority": "LocalImplementation",
+  "authorityEvidence": "Feature 038 authorizes intake creation only; future remote authority was not transferred.",
+  "promptState": "Enabled",
+  "provenanceMode": "New",
+  "supersedes": {
+    "receiptPath": "N/A",
+    "targetNormalizedSha256": "N/A",
+    "archiveTargetPath": "N/A",
+    "archiveReceiptPath": "N/A"
+  },
+  "legacyAdoption": {
+    "evidenceType": "N/A",
+    "priorTargetNormalizedSha256": "N/A",
+    "priorGitBlob": "N/A"
+  },
+  "updateAuthorized": false,
+  "updateAuthorityEvidence": "N/A",
+  "series": {
+    "seriesId": "N/A",
+    "manifestPath": "N/A",
+    "order": "N/A",
+    "role": "N/A",
+    "supersedesIntakeIds": []
+  },
+  "nextAction": "$speckit-intake-review requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md"
+}
