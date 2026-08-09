@@ -5,6 +5,8 @@
   "topology": "ReplicatedTargets",
   "deliveryMode": "LocalImplementation",
   "maxConcurrency": 3,
+  "routingRole": "frontier-reasoning",
+  "fallbackPolicy": "fail-closed",
   "runnerProfile": "default-agent",
   "requireAutonomousPreset": true,
   "operatorInstructions": "Optional, explicitly authorized campaign-specific context. Do not include secrets.",
@@ -21,6 +23,7 @@
       "baseWorkerId": null,
       "branch": "parallel/campaign/worker-01",
       "featureInput": "path/to/intake.md",
+      "routingRole": null,
       "runnerProfile": null,
       "dependsOn": [],
       "handoffs": [

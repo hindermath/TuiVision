@@ -25,6 +25,30 @@ hg_check_bilingual() {
   if [ "$has_de" -gt 0 ] && [ "$has_en" -gt 0 ]; then
     echo "PASS|${file}|bilingual-ok"
   else
+    local partner base_name partner_name lower_file pair_root candidate
+    lower_file="$(printf '%s' "$file" | tr '[:upper:]' '[:lower:]')"
+    local -a candidates
+    if [[ "$lower_file" == *.en.md ]]; then
+      pair_root="$(printf '%s' "$file" | sed -E 's/[.][eE][nN][.][mM][dD]$//')"
+      candidates=("${pair_root}.md" "${pair_root}.MD")
+    else
+      pair_root="$(printf '%s' "$file" | sed -E 's/[.][mM][dD]$//')"
+      candidates=(
+        "${pair_root}.en.md" "${pair_root}.EN.md" \
+        "${pair_root}.en.MD" "${pair_root}.EN.MD"
+      )
+    fi
+    base_name="${file##*/}"
+    for candidate in "${candidates[@]}"; do
+      partner_name="${candidate##*/}"
+      # Link text also selects the intended casing on case-insensitive hosts.
+      if [ -f "$candidate" ] &&
+         rg -Fq "(${partner_name})" "$file" 2>/dev/null &&
+         rg -Fq "(${base_name})" "$candidate" 2>/dev/null; then
+        echo "PASS|${file}|bilingual-language-pair"
+        return 0
+      fi
+    done
     echo "WARN|${file}|bilingual-section-missing"
   fi
 }

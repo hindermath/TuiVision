@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "defaultProfile": "standard-eight-governance-presets",
+  "description": "Supported registry profile names and their exact Spec Kit preset matrices.",
+  "profiles": {
+    "standard-eight-governance-presets": {
+      "presetConfig": "scripts/config/spec-kit-governance-presets.json"
+    },
+    "intake-review-nine-governance-presets": {
+      "presetConfig": "scripts/config/spec-kit-intake-review-governance-presets.json"
+    },
+    "intake-authoring-ten-governance-presets": {
+      "presetConfig": "scripts/config/spec-kit-intake-authoring-governance-presets.json"
+    },
+    "intake-sequencing-eleven-governance-presets": {
+      "presetConfig": "scripts/config/spec-kit-intake-sequencing-governance-presets.json"
+    },
+    "model-routing-twelve-governance-presets": {
+      "presetConfig": "scripts/config/spec-kit-model-routing-governance-presets.json"
+    },
+    "none": {
+      "presetConfig": null
+    }
+  }
+}

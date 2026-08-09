@@ -1,0 +1,24 @@
+{
+  "models": [
+    {
+      "id": "fixture-frontier-a",
+      "model": "fixture-frontier-a",
+      "displayName": "Fixture Frontier A",
+      "description": "Frontier model.",
+      "hidden": false,
+      "isDefault": false,
+      "defaultReasoningEffort": "high",
+      "supportedReasoningEfforts": [{"reasoningEffort": "high", "description": "High"}]
+    },
+    {
+      "id": "fixture-frontier-b",
+      "model": "fixture-frontier-b",
+      "displayName": "Fixture Frontier B",
+      "description": "Frontier model.",
+      "hidden": false,
+      "isDefault": false,
+      "defaultReasoningEffort": "high",
+      "supportedReasoningEfforts": [{"reasoningEffort": "high", "description": "High"}]
+    }
+  ]
+}

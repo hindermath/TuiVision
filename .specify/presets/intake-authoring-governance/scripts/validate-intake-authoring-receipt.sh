@@ -156,7 +156,7 @@ generator_version = required_text(generator, "version", "generator")
 accepted_generators = {
     "1.0": {"0.1.0"},
     "1.1": {"0.1.1"},
-    "2.0": {"0.2.0", "0.2.1", "0.3.0"},
+    "2.0": {"0.2.0", "0.2.1", "0.3.0", "0.3.1"},
 }.get(schema_version, set())
 if accepted_generators and generator_version not in accepted_generators:
     errors.append(

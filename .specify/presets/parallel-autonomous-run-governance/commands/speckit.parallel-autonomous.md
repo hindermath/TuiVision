@@ -28,7 +28,10 @@ or incomplete result schedules zero workers.
 
 1. Validate campaign identity, topology, worker IDs, UUIDs, concurrency, DAG,
    branches, repository state, campaign and optional worker runner profiles,
-   and consolidation policy.
+   stable routing roles, fallback policy, and consolidation policy. Under
+   `fail-closed`, require an exact role match plus explicit model, reasoning
+   effort, executable, and successful read-only preflight before a worker
+   process starts.
 2. Default ambiguous authority to `LocalImplementation`.
 3. Create one isolated branch and worktree per worker without switching or
    resetting normal checkouts.
@@ -44,7 +47,10 @@ or incomplete result schedules zero workers.
    the all-ready consolidation boundary; never infer merge authority.
 9. Persist only declared non-secret runner metadata. Never guess a model or
    reasoning level from another agent's configuration.
+10. Never replace a missing, ambiguous, or failed routed profile with another
+    model. Mark the affected worker and campaign `Blocked`.
 
 *DE: Worker-spezifische Runner-Profile duerfen das Kampagnenprofil
-ueberschreiben. Modell und Reasoning nur bei ausdruecklicher Deklaration
-anzeigen; keine fremde Agentenkonfiguration erraten.*
+ueberschreiben. Die stabile Routing-Rolle muss passen; bei `fail-closed` sind
+Modell, Reasoning und erfolgreicher Preflight verbindlich. Keine fremde
+Agentenkonfiguration erraten.*

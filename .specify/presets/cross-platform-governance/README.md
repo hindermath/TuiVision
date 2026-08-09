@@ -1,6 +1,6 @@
 # Cross-Platform Governance Preset
 
-Version: `0.2.1`
+Version: `0.2.2`
 Status: published, standard governance preset
 Priority: `50`
 Requires: Spec-Kit `>=0.8.0` (uses the `wrap` and `append` composition
@@ -86,7 +86,7 @@ platforms and supported shells, and clear documentation locations.*
 
 ```bash
 specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-cross-platform-governance/archive/refs/tags/v0.2.1.zip \
+  --from https://github.com/hindermath/spec-kit-preset-cross-platform-governance/archive/refs/tags/v0.2.2.zip \
   --priority 50
 specify preset info cross-platform-governance
 ```
@@ -195,6 +195,15 @@ Cmdlet-Namen.
 - Cross-platform support claims require actual Bash and PowerShell evidence.
 - The preset does not grant repository, remote, merge, deployment, or
   provider-administration authority.
+
+## Version 0.2.2 / Version 0.2.2
+
+`v0.2.2` veröffentlicht den agentenneutralen `model-routing.json`-Vertrag für
+die Komposition mit Model Routing Governance; Plattformregeln bleiben
+unverändert.
+
+*`v0.2.2` publishes the agent-neutral `model-routing.json` contract for
+composition with Model Routing Governance; platform rules are unchanged.*
 
 ## Version 0.2.1 / Version 0.2.1
 

@@ -76,7 +76,10 @@ public sealed class MaintenanceProcessRunner : IMaintenanceProcessRunner
             await eventTask;
             var cancelledEvent = eventTask.Result.LastOrDefault(
                 item => item.EventType == MaintenanceEventTypes.RunCompleted);
-            var cancelledReport = ReadReport(cancelledEvent, invocation.RunId);
+            var cancelledReport = ReadReport(
+                cancelledEvent,
+                invocation.ReportPath,
+                invocation.RunId);
             return new ProcessExecutionResult(
                 130,
                 await stdout,
@@ -88,7 +91,10 @@ public sealed class MaintenanceProcessRunner : IMaintenanceProcessRunner
         var events = await eventTask;
         var completionEvent = events.LastOrDefault(
             item => item.EventType == MaintenanceEventTypes.RunCompleted);
-        var report = ReadReport(completionEvent, invocation.RunId);
+        var report = ReadReport(
+            completionEvent,
+            invocation.ReportPath,
+            invocation.RunId);
         return new ProcessExecutionResult(
             process.ExitCode,
             await stdout,
@@ -157,24 +163,32 @@ public sealed class MaintenanceProcessRunner : IMaintenanceProcessRunner
 
     private static AtomicRunReport? ReadReport(
         MaintenanceEvent? completionEvent,
+        string expectedReportPath,
         Guid expectedRunId)
     {
-        if (completionEvent is null ||
-            !completionEvent.Details.TryGetProperty("reportPath", out var reportProperty) ||
-            reportProperty.ValueKind != JsonValueKind.String)
+        var reportPath = expectedReportPath;
+        if (completionEvent is not null &&
+            completionEvent.Details.TryGetProperty("reportPath", out var reportProperty) &&
+            reportProperty.ValueKind == JsonValueKind.String)
         {
-            return null;
+            var eventReportPath = reportProperty.GetString();
+            if (!string.IsNullOrWhiteSpace(eventReportPath) &&
+                PathsEqual(eventReportPath, expectedReportPath))
+            {
+                reportPath = eventReportPath;
+            }
         }
 
-        var path = reportProperty.GetString();
-        if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
+        // Der vor Prozessstart gebundene Pfad verhindert eine racy Suche nach fremden Laufberichten.
+        // The pre-bound path avoids a racy search that could select another run's report.
+        if (string.IsNullOrWhiteSpace(reportPath) || !File.Exists(reportPath))
         {
             return null;
         }
 
         try
         {
-            using var document = JsonDocument.Parse(File.ReadAllText(path));
+            using var document = JsonDocument.Parse(File.ReadAllText(reportPath));
             var root = document.RootElement;
             if (!root.TryGetProperty("runId", out var runProperty) ||
                 !Guid.TryParse(runProperty.GetString(), out var runId) ||
@@ -192,7 +206,7 @@ public sealed class MaintenanceProcessRunner : IMaintenanceProcessRunner
                 ? logProperty.GetString() ?? "N/A"
                 : "N/A";
             return new AtomicRunReport(
-                path,
+                reportPath,
                 runId,
                 finalized,
                 statusProperty.GetString() ?? "UNKNOWN",
@@ -207,6 +221,27 @@ public sealed class MaintenanceProcessRunner : IMaintenanceProcessRunner
             InvalidOperationException)
         {
             return null;
+        }
+    }
+
+    private static bool PathsEqual(string left, string right)
+    {
+        try
+        {
+            var comparison = OperatingSystem.IsWindows()
+                ? StringComparison.OrdinalIgnoreCase
+                : StringComparison.Ordinal;
+            return string.Equals(
+                Path.GetFullPath(left),
+                Path.GetFullPath(right),
+                comparison);
+        }
+        catch (Exception exception) when (
+            exception is ArgumentException or
+            IOException or
+            NotSupportedException)
+        {
+            return false;
         }
     }
 

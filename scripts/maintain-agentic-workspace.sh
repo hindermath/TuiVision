@@ -34,6 +34,7 @@ LOCK_DIR=""
 LOG_FILE=""
 REPORT_FILE=""
 TOOLCHAIN_RESULT_FILE=""
+MODEL_ROUTING_RESULT_FILE=""
 RUN_ID=""
 CURRENT_STAGE="startup"
 FINALIZED=0
@@ -321,15 +322,16 @@ run_enhanced_ui() {
 
 emit_event() {
   local event_type="$1" status="$2" phase_id="$3" target_id="$4"
-  local message_de="$5" message_en="$6" details_json="${7:-{}}"
+  local message_de="$5" message_en="$6" details_json="{}"
+  [ "$#" -lt 7 ] || details_json="$7"
   [ -n "$EVENT_STREAM" ] || return 0
-  EVENT_SEQUENCE=$((EVENT_SEQUENCE + 1))
+  local next_sequence=$((EVENT_SEQUENCE + 1))
   local -a arguments
   arguments=(
     python3 "$FLEET_ENGINE" event
     --event-stream "$EVENT_STREAM"
     --run-id "$RUN_ID"
-    --sequence "$EVENT_SEQUENCE"
+    --sequence "$next_sequence"
     --event-type "$event_type"
     --status "$status"
     --message-de "$message_de"
@@ -338,7 +340,13 @@ emit_event() {
   )
   [ -n "$phase_id" ] && arguments+=(--phase-id "$phase_id")
   [ -n "$target_id" ] && arguments+=(--target-id "$target_id")
-  "${arguments[@]}" || warn "Ereignis konnte nicht geschrieben werden / event could not be written"
+  # Nur persistierte Ereignisse belegen eine Sequenznummer.
+  # Only persisted events consume a sequence number.
+  if "${arguments[@]}"; then
+    EVENT_SEQUENCE="$next_sequence"
+  else
+    warn "Ereignis konnte nicht geschrieben werden / event could not be written"
+  fi
 }
 
 event_status() {
@@ -407,6 +415,36 @@ cleanup_preset_validation_target() {
   return "$status"
 }
 
+completion_event_details() {
+  local report_file="$1" exit_code="$2" fallback_status="$3"
+  python3 - "$report_file" "$exit_code" "$fallback_status" <<'PY'
+import json
+import sys
+
+# Ein frueher Abbruch darf das EXIT-Trap nicht an einem noch fehlenden Report hindern.
+# An early failure must not prevent the EXIT trap when the report is not ready yet.
+try:
+    with open(sys.argv[1], encoding="utf-8") as report_stream:
+        report = json.load(report_stream)
+    if not isinstance(report, dict):
+        report = {}
+except (OSError, UnicodeError, json.JSONDecodeError):
+    report = {}
+artifacts = report.get("artifacts", {})
+log_path = artifacts.get("logPath") if isinstance(artifacts, dict) else None
+print(json.dumps(
+    {
+        "reportPath": sys.argv[1],
+        "logPath": log_path or "N/A",
+        "exitCode": int(sys.argv[2]),
+        "overallStatus": report.get("overallStatus") or sys.argv[3],
+    },
+    ensure_ascii=False,
+    separators=(",", ":"),
+))
+PY
+}
+
 finalize_run() {
   local status="$1" exit_code="$2" summary="$3" next_action="$4"
   local signal_name="${5:-N/A}"
@@ -425,22 +463,7 @@ finalize_run() {
   start_event_phase "final" "Abschlussprüfung gestartet." "Final check started."
   local completion_status completion_details
   completion_status="$(event_status "$status")"
-  completion_details="$(
-    python3 - "$REPORT_FILE" "$exit_code" <<'PY'
-import json
-import sys
-report = json.loads(open(sys.argv[1], encoding="utf-8").read())
-print(json.dumps(
-    {
-        "reportPath": sys.argv[1],
-        "exitCode": int(sys.argv[2]),
-        "overallStatus": report.get("overallStatus"),
-    },
-    ensure_ascii=False,
-    separators=(",", ":"),
-))
-PY
-  )"
+  completion_details="$(completion_event_details "$REPORT_FILE" "$exit_code" "$completion_status")"
   emit_event run-completed "$completion_status" "final" "" \
     "Wartung abgeschlossen." "Maintenance completed." "$completion_details"
   printf 'ABSCHLUSS / FINAL\t%s\t%s\t%s\t%s\n' \
@@ -556,6 +579,11 @@ if [ "$SCRIPT_DIR" = "${HOME_DIR}/scripts" ]; then
   source_repository="$(resolve_hb_source_repository "${BASH_SOURCE[0]}" 1)"
   repo_script="${source_repository}/scripts/maintain-agentic-workspace.sh"
   [ -f "$repo_script" ] || die "Kanonisches Wartungsskript fehlt / canonical maintenance script missing"
+  # Bash 3.2 behandelt eine leere Array-Expansion unter nounset nicht sicher.
+  # Bash 3.2 cannot safely expand an empty array while nounset is active.
+  if [ "$ARGUMENT_COUNT" -eq 0 ]; then
+    exec bash "$repo_script"
+  fi
   exec bash "$repo_script" "${ORIGINAL_ARGS[@]}"
 fi
 
@@ -1139,6 +1167,33 @@ if { { [ "$fleet_ready" -eq 1 ] && [ "$LEASE_RECOVERY_READY" -eq 1 ]; } || [ "$C
   fi
 else
   record_stage "toolchain" "Skipped" 0 "Toolchain durch Modus oder Vorbedingung uebersprungen / skipped by mode or prerequisite"
+fi
+
+if { { [ "$fleet_ready" -eq 1 ] && [ "$LEASE_RECOVERY_READY" -eq 1 ]; } || [ "$CHECK_ONLY" -eq 1 ]; } \
+    && { [ "$FINDINGS" -eq 0 ] || [ "$CHECK_ONLY" -eq 1 ]; } \
+    && [ "$SCRIPTS_ONLY" -eq 0 ]; then
+  CURRENT_STAGE="model-routing"
+  start_event_phase "model-routing" "Lokale Modell-Routing-Prüfung gestartet." "Local model-routing check started."
+  MODEL_ROUTING_RESULT_FILE="${HOME_DIR}/.home-baseline/model-routing-status-${RUN_ID}.json"
+  mkdir -p -- "$(dirname -- "$MODEL_ROUTING_RESULT_FILE")"
+  routing_status=0
+  pwsh -NoLogo -NoProfile -File "${SOURCE_ROOT}/scripts/resolve-model-routing.ps1" \
+    -Action Status -Harness Auto -RoutingRoot "${SOURCE_ROOT}/.specify/presets" \
+    -OutputFormat Json >"$MODEL_ROUTING_RESULT_FILE" || routing_status=$?
+  if [ "$routing_status" -eq 0 ]; then
+    record_stage "model-routing" "Passed" 0 \
+      "Lokale Modellbindungen aktuell / local model bindings current" "N/A" \
+      "$MODEL_ROUTING_RESULT_FILE"
+  else
+    FINDINGS=$((FINDINGS + 1))
+    record_stage "model-routing" "Blocked" 1 \
+      "Lokales Modell-Routing benötigt eine ausdrückliche Aktualisierung / local model routing requires explicit refresh" \
+      "speckit.model-routing-refresh mit lokaler Autorität ausführen / run with local authority" \
+      "$MODEL_ROUTING_RESULT_FILE"
+  fi
+else
+  record_stage "model-routing" "Skipped" 0 \
+    "Modell-Routing durch Modus oder Vorbedingung übersprungen / skipped by mode or prerequisite"
 fi
 
 if [ "$FINDINGS" -eq 0 ]; then

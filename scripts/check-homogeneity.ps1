@@ -200,18 +200,32 @@ function Check-ReadmeSections {
     $full = Join-Path $Dir 'README.md'
     if (-not (Test-Path -LiteralPath $full -PathType Leaf)) { return }
     $content = Get-Content -LiteralPath $full -Raw -ErrorAction SilentlyContinue
+    $portal = Join-Path $Dir 'docs/README.md'
+    $englishRoot = Join-Path $Dir 'README.en.md'
+    $portalMode = (Test-Path -LiteralPath $portal -PathType Leaf) -and
+        (Test-Path -LiteralPath $englishRoot -PathType Leaf)
 
-    if ($content -match '(?im)^## .*Barrierefreiheit') {
+    if (($content -match '(?im)^## .*Barrierefreiheit') -or
+        ($portalMode -and $content -match 'docs/accessibility/.*\.md|WCAG 2\.2 AA')) {
         Emit-Result 'PASS' 'README.md' 'A11Y section' $Dir
     } else {
         Emit-Result 'FAIL' 'README.md' 'A11Y section missing' $Dir
     }
-    if ($content -match '(?im)^## .*Spec-kit') {
+    $gettingStarted = Join-Path $Dir 'docs/getting-started.md'
+    $gettingStartedContent = if (Test-Path -LiteralPath $gettingStarted -PathType Leaf) {
+        Get-Content -LiteralPath $gettingStarted -Raw -ErrorAction SilentlyContinue
+    } else { '' }
+    if (($content -match '(?im)^## .*Spec-kit') -or
+        ($portalMode -and $content -match 'docs/getting-started\.md' -and
+            $gettingStartedContent -match '(?im)^## .*Spec Kit')) {
         Emit-Result 'PASS' 'README.md' 'Spec-kit section' $Dir
     } else {
         Emit-Result 'FAIL' 'README.md' 'Spec-kit section missing' $Dir
     }
-    if ($content -match '(?im)^## .*(Azubis|Auszubildende)') {
+    $learnerStart = Join-Path $Dir 'docs/learning-units/START-HERE-FUER-LERNENDE.md'
+    if (($content -match '(?im)^## .*(Azubis|Auszubildende)') -or
+        ($portalMode -and (Test-Path -LiteralPath $learnerStart -PathType Leaf) -and
+            $content -match 'START-HERE-FUER-LERNENDE\.md')) {
         Emit-Result 'PASS' 'README.md' 'Azubis section' $Dir
     } else {
         Emit-Result 'FAIL' 'README.md' 'Azubis section missing' $Dir

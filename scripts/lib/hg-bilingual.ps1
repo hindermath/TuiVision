@@ -18,6 +18,28 @@ function Invoke-HgCheckBilingual {
     if ($hasDE -gt 0 -and $hasEN -gt 0) {
         [PSCustomObject]@{ Status = 'PASS'; File = $FilePath; Message = 'bilingual-ok' }
     } else {
-        [PSCustomObject]@{ Status = 'WARN'; File = $FilePath; Message = 'bilingual-section-missing' }
+        $partnerCandidates = if ($FilePath -match '(?i)\.en\.md$') {
+            $pairRoot = $FilePath -replace '(?i)\.en\.md$', ''
+            @("${pairRoot}.md", "${pairRoot}.MD")
+        } else {
+            $pairRoot = $FilePath -replace '(?i)\.md$', ''
+            @("${pairRoot}.en.md", "${pairRoot}.EN.md", "${pairRoot}.en.MD", "${pairRoot}.EN.MD")
+        }
+        $baseName = [IO.Path]::GetFileName($FilePath)
+        $paired = $false
+        foreach ($candidate in $partnerCandidates) {
+            $partnerName = [IO.Path]::GetFileName($candidate)
+            if ((Test-Path -LiteralPath $candidate -PathType Leaf) -and
+                ((Get-Content -LiteralPath $FilePath -Raw) -cmatch [regex]::Escape("(${partnerName})")) -and
+                ((Get-Content -LiteralPath $candidate -Raw) -cmatch [regex]::Escape("(${baseName})"))) {
+                $paired = $true
+                break
+            }
+        }
+        if ($paired) {
+            [PSCustomObject]@{ Status = 'PASS'; File = $FilePath; Message = 'bilingual-language-pair' }
+        } else {
+            [PSCustomObject]@{ Status = 'WARN'; File = $FilePath; Message = 'bilingual-section-missing' }
+        }
     }
 }

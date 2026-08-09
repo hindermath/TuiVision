@@ -1,4 +1,4 @@
-.TH ORCHESTRATE-PARALLEL-AUTONOMOUS-RUNS 1 "2026-07-21" "v0.2.4"
+.TH ORCHESTRATE-PARALLEL-AUTONOMOUS-RUNS 1 "2026-08-07" "v0.2.6"
 .SH NAME
 orchestrate-parallel-autonomous-runs \- validate and coordinate isolated autonomous Spec Kit campaigns
 .SH SYNOPSIS
@@ -25,7 +25,10 @@ Status supports machine-readable JSON and accessible text with
 -OutputFormat Json or -OutputFormat Text.
 .SH SICHERHEIT / SAFETY
 Runner arguments are passed as an executable argument array without shell
-evaluation. Installation grants no autonomous execution or remote authority.
+evaluation. Fail-closed routing requires an exact stable-role profile, model,
+reasoning effort, and successful read-only preflight before process start.
+Missing or failed bindings block without fallback. Installation grants no
+autonomous execution or remote authority.
 Alternative solutions require human selection. Merge-and-sync requires an
 all-ready barrier, provider preflights, resumable merge checkpoints, and
 manifest-declared idempotent post-merge actions. Completed is written only

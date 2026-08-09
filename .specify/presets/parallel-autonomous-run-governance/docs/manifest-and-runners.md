@@ -67,6 +67,8 @@ Das Manifest ist der gepruefte Kampagnenvertrag. Wichtige Felder:
 | `deliveryMode` | `LocalImplementation`, `PublishPR` oder `MergeAndSync` |
 | `maxConcurrency` | Ganzzahl `1..3` |
 | `runnerProfile` | Kampagnen-Fallback |
+| `routingRole` | Stabile Standardrolle fuer Worker |
+| `fallbackPolicy` | `fail-closed` fuer verbindliche lokale Bindungen |
 | `requireAutonomousPreset` | Fuer reale Kampagnen immer `true` |
 | `workers` | IDs, Repositories, Basen, Branches, Inputs und Abhaengigkeiten |
 | `consolidation` | All-Ready, Reihenfolge, Auswahl und Merge-Profil |
@@ -80,9 +82,11 @@ akzeptierten Vertrag. Drift wird nicht still uebernommen.
 Runner-Profile bleiben lokal. Ein Profil enthaelt:
 
 - `agentFamily`,
-- optional `model`,
-- optional `reasoningEffort`,
+- `routingRole`,
+- bei `fail-closed` ein ausdrueckliches `model`,
+- bei `fail-closed` ein ausdrueckliches `reasoningEffort`,
 - `executable`,
+- einen read-only `preflight`,
 - ein Argument-Array mit Platzhaltern.
 
 Argumente werden direkt ohne Shell-Evaluation gestartet. Keine Secrets,
@@ -93,11 +97,15 @@ Runner-Beispiele.
 
 `campaign.runnerProfile` ist der Fallback. Ein Worker darf ein eigenes
 `runnerProfile` setzen. Dadurch kann eine Kampagne verschiedene
-Agentenfamilien verwenden. Fehlende Profile blockieren den Preflight.
+Agentenfamilien verwenden. `worker.routingRole` darf die Kampagnenrolle
+praezisieren. Das gewaehlte Profil muss dieselbe stabile Rolle deklarieren.
+Fehlende oder mehrdeutige Profile blockieren den Preflight.
 
-`model` und `reasoningEffort` sind rein optionale, ausdruecklich deklarierte
-Statusmetadaten. Ohne Angabe erscheint
-`Agent-Standard/nicht deklariert`; fremde Agentenkonfiguration wird nie
+Bei `fallbackPolicy: fail-closed` sind `model`, `reasoningEffort` und ein
+erfolgreicher read-only Modell-Preflight verbindlich. Fehlt einer dieser Werte
+oder scheitert der Preflight, wird der Worker `Blocked`, ohne einen
+Arbeitsprozess zu starten. In aelteren nicht-strikten Manifesten bleiben Modell
+und Reasoning optionale Statusmetadaten; fremde Agentenkonfiguration wird nie
 erraten.
 
 ### Unterstuetzte Beispiel-Familien
@@ -125,9 +133,9 @@ contract. Drift is never adopted silently.
 
 ### Runner configuration
 
-Runner profiles stay local. A profile contains `agentFamily`, optional `model`
-and `reasoningEffort`, an executable, and an argument array with placeholders.
-Arguments execute directly without shell evaluation.
+Runner profiles stay local. A profile contains `agentFamily`, `routingRole`,
+model, reasoning effort, an executable, a read-only preflight, and an argument
+array with placeholders. Arguments execute directly without shell evaluation.
 
 Do not put secrets, environment values, or tokens in manifests, status, or
 versioned runner examples.
@@ -135,11 +143,14 @@ versioned runner examples.
 ### Campaign and worker profiles
 
 `campaign.runnerProfile` is the fallback. A worker may select another profile,
-allowing mixed agent families in one campaign. Missing profiles fail preflight.
+allowing mixed agent families in one campaign. A worker role may refine the
+campaign role, and the selected profile must declare that same stable role.
+Missing or ambiguous profiles fail preflight.
 
-Model and reasoning values are optional, explicitly declared status metadata.
-When absent, status reports `Agent-Standard/nicht deklariert` and never guesses
-another agent's configuration.
+With `fallbackPolicy: fail-closed`, model, reasoning effort, and a successful
+read-only model preflight are mandatory. Missing values or a failed preflight
+block the worker before its process starts. Legacy non-strict manifests retain
+optional status metadata and never guess another agent's configuration.
 
 ### Runtime boundary
 

@@ -1,0 +1,31 @@
+{
+  "models": [
+    {
+      "id": "fixture-frontier",
+      "model": "fixture-frontier",
+      "displayName": "Fixture Frontier",
+      "description": "Latest frontier agentic coding model.",
+      "hidden": false,
+      "isDefault": true,
+      "defaultReasoningEffort": "low",
+      "supportedReasoningEfforts": [
+        {"reasoningEffort": "low", "description": "Low"},
+        {"reasoningEffort": "medium", "description": "Medium"},
+        {"reasoningEffort": "high", "description": "High"}
+      ]
+    },
+    {
+      "id": "fixture-fast",
+      "model": "fixture-fast",
+      "displayName": "Fixture Fast",
+      "description": "Fast and affordable agentic coding model.",
+      "hidden": false,
+      "isDefault": false,
+      "defaultReasoningEffort": "medium",
+      "supportedReasoningEfforts": [
+        {"reasoningEffort": "low", "description": "Low"},
+        {"reasoningEffort": "medium", "description": "Medium"}
+      ]
+    }
+  ]
+}

@@ -13,7 +13,9 @@ inputs, but every worker still needs an applicability row.
 - Das deklarierte Parallelitaetslimit niemals ueberschreiten.
 - Runner als Executable plus Argument-Array ohne Shell-Auswertung ausfuehren.
 - Worker-spezifische Runner-Profile duerfen das Kampagnenprofil ueberschreiben.
-  Modell und Reasoning nur anzeigen, wenn sie ausdruecklich deklariert sind.
+- Ihre stabile Routing-Rolle muss zur Worker- oder Kampagnenrolle passen.
+- Bei `fail-closed` Modell, Reasoning-Aufwand und read-only Preflight
+  verbindlich pruefen. Bei Abweichung den Worker vor Prozessstart blockieren.
 - Bei normalen Worker-Fehlern unabhaengige Worker bis zur sicheren Grenze
   weiterlaufen lassen; abhaengige Nachfolger ohne Handoff blockieren.
 - Alternative Loesungen brauchen vor der Konsolidierung eine menschliche
@@ -41,7 +43,10 @@ inputs, but every worker still needs an applicability row.
 - `MergeAndSync` campaigns publish workers first, then cross the all-ready
   barrier before the first merge.
 - Allow per-worker runner profiles with campaign fallback. Report model and
-  reasoning only when explicitly declared.
+  reasoning only when explicitly declared. Require the profile's stable routing
+  role to match the worker or campaign role.
+- For `fail-closed`, require model, reasoning effort, and a successful read-only
+  preflight before starting the worker. Never select a silent fallback profile.
 - Before every merge, validate provider state, exact head, current reviews, and
   check policy. Checkpoint partial merges and do not repeat verified merges.
 - Execute post-merge actions only when they are declared in the reviewed

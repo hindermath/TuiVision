@@ -90,6 +90,15 @@
 - For focused review or CI fixes, prefer a coding-optimized model.
 - For trivial cleanup, formatting, or low-risk mechanical edits, a fast
   small coding model is acceptable.
+- Use the stable roles `frontier-reasoning`,
+  `long-running-implementation`, `coding-review`, `fast-mechanical`, and
+  `script-only`. Resolve command roles from installed `model-routing.json`
+  files; the strongest applicable wrapper role wins.
+- Change models in non-parallel autonomous runs only at a validated phase
+  boundary through a new process and SHA-256-bound handoff.
+- Local runner profiles must fail closed. Missing profile, model, reasoning
+  effort, or successful preflight results in `Blocked`, never a silent
+  fallback.
 
 ## Audit-Ready Spec-Kit Evidence
 

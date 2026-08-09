@@ -3,7 +3,7 @@ schema_version: "1.0"
 preset:
   id: "intake-authoring-governance"
   name: "Intake Authoring Governance"
-  version: "0.3.0"
+  version: "0.3.1"
   description: "Governs traceable intake CRUD, language-aware requirements collections, bounded public HTTPS sources, and explicitly approved single or series authoring."
   author: "Thorsten Hindermann"
   repository: "https://github.com/hindermath/spec-kit-preset-intake-authoring-governance"
@@ -14,6 +14,11 @@ requires:
 
 provides:
   templates:
+    - type: "template"
+      name: "intake-authoring-governance-model-routing"
+      file: "model-routing.json"
+      description: "Agent-neutral command-to-role routing contract"
+
     - type: "template"
       name: "intake-governance-config-template"
       file: "templates/intake-governance-config-template.json"

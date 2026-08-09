@@ -3,7 +3,7 @@ schema_version: "1.0"
 preset:
   id: "intake-review-governance"
   name: "Intake Review Governance"
-  version: "0.2.0"
+  version: "0.2.1"
   description: "Reviews single, series, campaign, and language-aware requirements collections before Spec Kit execution."
   author: "Thorsten Hindermann"
   repository: "https://github.com/hindermath/spec-kit-preset-intake-review-governance"
@@ -14,6 +14,11 @@ requires:
 
 provides:
   templates:
+    - type: "template"
+      name: "intake-review-governance-model-routing"
+      file: "model-routing.json"
+      description: "Agent-neutral command-to-role routing contract"
+
     - type: "template"
       name: "intake-review-policy-template"
       file: "templates/intake-review-policy-template.json"

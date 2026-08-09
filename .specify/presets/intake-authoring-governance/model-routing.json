@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0",
+  "presetId": "intake-authoring-governance",
+  "fallbackPolicy": "fail-closed",
+  "defaultRole": "frontier-reasoning",
+  "commands": {
+    "speckit.intake-create": "frontier-reasoning",
+    "speckit.intake-read": "fast-mechanical",
+    "speckit.intake-update": "frontier-reasoning",
+    "speckit.intake-delete": "frontier-reasoning",
+    "speckit.intake-create-status": "fast-mechanical"
+  }
+}

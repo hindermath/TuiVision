@@ -21,6 +21,13 @@ public sealed class CommandBuilderTests
         CollectionAssert.Contains(invocation.Arguments.ToArray(), "/tmp/a b;echo no");
         StringAssert.Contains(invocation.DisplayCommand, "'/tmp/a b;echo no'");
         Assert.AreEqual("bash", invocation.Executable);
+        Assert.AreEqual(
+            Path.Combine(
+                "/tmp/a b;echo no",
+                ".home-baseline",
+                "reports",
+                $"agentic-workspace-{runId}.json"),
+            invocation.ReportPath);
     }
 
     [TestMethod]
