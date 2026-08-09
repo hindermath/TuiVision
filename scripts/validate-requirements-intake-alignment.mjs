@@ -16,6 +16,10 @@ export function validate(options = {}) {
   const coveragePath = options.coveragePath ??
     "specs/requirements-reconciliation-20260726/requirements-coverage.json";
   const featurePath = options.featurePath ?? ".specify/feature.json";
+  const reviewPath = options.reviewPath ??
+    "requirements/intakes/series/tui-vision-delivery/intake-review-result.json";
+  const activePath = options.activePath ?? "requirements/intakes/active";
+  const receiptsPath = options.receiptsPath ?? "specs/intake-authoring-receipts";
   const errors = [];
   const resolve = (candidate) => path.isAbsolute(candidate) ? candidate : path.join(root, candidate);
   const read = (relativePath) => fs.readFileSync(resolve(relativePath), "utf8");
@@ -24,6 +28,7 @@ export function validate(options = {}) {
   const baselinePath = "requirements/baseline/Pflichtenheft.pre-intake-split.2026-07-26.md";
   const coverage = parse(coveragePath);
   const manifest = parse(manifestPath);
+  const review = parse(reviewPath);
   const baselineHash = digest(read(baselinePath));
 
   if (baselineHash !== coverage.source?.normalizedSha256) {
@@ -45,12 +50,11 @@ export function validate(options = {}) {
     }
   }
 
-  const activeRoot = path.join(root, "requirements/intakes/active");
+  const activeRoot = resolve(activePath);
   const archiveRoot = path.join(root, "requirements/intakes/archive");
   const active = fs.readdirSync(activeRoot).filter((name) => name.endsWith(".md")).sort();
   const archived = fs.readdirSync(archiveRoot).filter((name) => name.endsWith(".md")).sort();
   const rootLastenhefte = fs.readdirSync(root).filter((name) => /^Lastenheft.*\.md$/.test(name));
-  if (active.length !== 7) errors.push(`expected 7 active intakes, found ${active.length}`);
   if (archived.length !== 28) errors.push(`expected 28 archived intakes, found ${archived.length}`);
   if (rootLastenhefte.join(",") !== "Lastenheft_Abarbeitungsreihenfolge.md") {
     errors.push("only the generated processing-order view may remain as root Lastenheft");
@@ -62,8 +66,51 @@ export function validate(options = {}) {
     errors.push("series must contain exactly 7 unique active targets");
   }
   const expectedActive = active.map((name) => `requirements/intakes/active/${name}`).sort();
-  if (JSON.stringify([...targetPaths].sort()) !== JSON.stringify(expectedActive)) {
-    errors.push("active intake directory and series targets differ");
+  const targetSet = new Set(targetPaths);
+  const missingActiveTargets = targetPaths.filter((target) => !expectedActive.includes(target));
+  if (missingActiveTargets.length > 0) {
+    errors.push(`series targets are missing from the active intake directory: ${missingActiveTargets.join(", ")}`);
+  }
+
+  const reviewedTargets = new Set((review.targets ?? []).map((target) => target.path));
+  const receiptsRoot = resolve(receiptsPath);
+  const receiptFiles = fs.existsSync(receiptsRoot)
+    ? fs.readdirSync(receiptsRoot).filter((name) => name.endsWith(".json"))
+    : [];
+  const receipts = receiptFiles.flatMap((name) => {
+    try {
+      return [{path: path.join(receiptsRoot, name), value: JSON.parse(fs.readFileSync(path.join(receiptsRoot, name), "utf8"))}];
+    } catch {
+      errors.push(`intake receipt is not valid JSON: ${name}`);
+      return [];
+    }
+  });
+  for (const pendingPath of expectedActive.filter((candidate) => !targetSet.has(candidate))) {
+    const matchingReceipts = receipts.filter((receipt) => receipt.value.target?.path === pendingPath);
+    if (matchingReceipts.length !== 1) {
+      errors.push(`active intake outside the series requires exactly one authoring receipt: ${pendingPath}`);
+      continue;
+    }
+    const receipt = matchingReceipts[0].value;
+    const activeFile = path.join(activeRoot, path.basename(pendingPath));
+    const targetHash = digest(fs.readFileSync(activeFile, "utf8"));
+    if (receipt.schemaVersion !== "2.0" || receipt.documentType !== "IntakeReceipt" ||
+        receipt.status !== "ReadyForReview") {
+      errors.push(`active intake outside the series must have a schema-2.0 ReadyForReview receipt: ${pendingPath}`);
+    }
+    if (receipt.target?.normalizedSha256 !== targetHash) {
+      errors.push(`active intake outside the series has stale receipt evidence: ${pendingPath}`);
+    }
+    if (receipt.series?.seriesId !== "N/A" || receipt.series?.manifestPath !== "N/A" ||
+        receipt.series?.role !== "N/A") {
+      errors.push(`active intake outside the series must not claim series membership: ${pendingPath}`);
+    }
+    if (reviewedTargets.has(pendingPath)) {
+      errors.push(`active intake outside the series must remain unreviewed until the series is explicitly updated: ${pendingPath}`);
+    }
+    if (!fs.readFileSync(activeFile, "utf8").includes("**Status:** ReadyForReview")) {
+      errors.push(`active intake outside the series must declare ReadyForReview: ${pendingPath}`);
+    }
   }
   if (targetPaths.some((target) => target.includes("/archive/") || target.includes("/backlog/"))) {
     errors.push("archive or backlog target appears in executable series");
@@ -137,11 +184,38 @@ export function validate(options = {}) {
   if (/\[[ xX-]\]/.test(index)) errors.push("slim Pflichtenheft must not contain progress checkboxes");
 
   const feature = parse(featurePath);
-  const allowedFeatureDirectories = new Set([
-    "specs/037-wave6-combined-delta-closure",
-  ]);
-  if (!allowedFeatureDirectories.has(feature.feature_directory)) {
-    errors.push("feature metadata must reference the completed Wave-6 closure until a new feature is explicitly authorized");
+  const featureDirectory = feature.feature_directory;
+  const physicalFeatureDirectory = options.featureDirectoryPath ??
+    (typeof featureDirectory === "string" ? resolve(featureDirectory) : "");
+  const featurePattern = /^specs\/\d{3}-[a-z0-9][a-z0-9-]*$/;
+  let featureAuthorizationValid = typeof featureDirectory === "string" &&
+    featurePattern.test(featureDirectory) && fs.existsSync(physicalFeatureDirectory);
+  if (featureAuthorizationValid) {
+    try {
+      const spec = fs.readFileSync(path.join(physicalFeatureDirectory, "spec.md"), "utf8");
+      const state = JSON.parse(fs.readFileSync(
+        path.join(physicalFeatureDirectory, "autonomous-run-state.json"), "utf8"));
+      const bindingMatch = /^\*\*Binding Intake\*\*:\s*`([^`]+)`/m.exec(spec);
+      const bindingPath = bindingMatch?.[1];
+      const bindingTarget = targets.find((target) => target.path === bindingPath);
+      const bindingReview = (review.targets ?? []).find((target) => target.path === bindingPath);
+      const bindingArtifact = (state.acceptedArtifacts ?? []).find((artifact) => artifact.path === bindingPath);
+      const bindingHash = bindingPath && fs.existsSync(resolve(bindingPath))
+        ? digest(read(bindingPath))
+        : "N/A";
+      const lifecycleValid = bindingTarget?.status === "Eligible" ||
+        (bindingTarget?.status === "Completed" && state.status === "Completed");
+      featureAuthorizationValid = state.featurePath === featureDirectory &&
+        state.branch === path.basename(featureDirectory) &&
+        Boolean(bindingPath) && lifecycleValid && review.status === "Ready" &&
+        bindingReview?.normalizedSha256 === bindingHash &&
+        bindingArtifact?.sha256 === bindingHash;
+    } catch {
+      featureAuthorizationValid = false;
+    }
+  }
+  if (!featureAuthorizationValid) {
+    errors.push("feature metadata lacks matching series, review, specification, and autonomous-run authorization evidence");
   }
 
   const optional = "requirements/intakes/backlog/Lastenheft_Optional-NuGet-Package.md";
