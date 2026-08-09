@@ -2,9 +2,9 @@
 
 ## NAME / NAME
 
-resolve-model-routing - lokale Spec-Kit-Modellbindungen prüfen oder aktualisieren
+`resolve-model-routing` - lokale Spec-Kit-Modellbindungen prüfen oder aktualisieren
 
-*resolve-model-routing - inspect or refresh local Spec Kit model bindings*
+*Inspects or refreshes local Spec Kit model bindings.*
 
 ## AUFRUF / SYNOPSIS
 
