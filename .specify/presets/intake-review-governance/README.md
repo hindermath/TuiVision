@@ -1,6 +1,7 @@
 # Intake Review Governance Preset
 
 Optional, stackable intake-quality governance for GitHub Spec Kit. Version
+`0.2.1` publishes the agent-neutral `model-routing.json` contract. Version
 `0.2.0` provides three commands, eight templates, and read-only
 Bash/PowerShell validators. Series reviews use a schema-1.1 request binding
 with normalized SHA-256, explicit roots, complete target ordering, and
@@ -24,7 +25,7 @@ making those project choices itself.
 ## Install
 
 ```bash
-specify preset add --from https://github.com/hindermath/spec-kit-preset-intake-review-governance/archive/refs/tags/v0.2.0.zip --priority 65
+specify preset add --from https://github.com/hindermath/spec-kit-preset-intake-review-governance/archive/refs/tags/v0.2.1.zip --priority 65
 specify preset list
 specify preset resolve
 ```
@@ -45,13 +46,13 @@ identity or role mismatch, incomplete ordering, unknown or duplicate edges,
 cycles, and roots that differ from the graph's zero-indegree targets.
 ## Requirements Collections / Requirements-Sammlungen
 
-Version 0.2.0 reviews `requirements/intake-governance-config.json` schema 2.0
+Version 0.2.1 reviews `requirements/intake-governance-config.json` schema 2.0
 together with the selected intake or Series. It validates BCP-47 documentation
 language, naming profile, portable artifact roles, resolved paths, computed
 inventory, canonical index, hashes, receipts, references, and eligibility.
 Implementation language and locale are not language evidence. `Ready` and
 `Eligible` grant no implementation or remote permission.
 
-*Version 0.2.0 prüft sprachbewusste Requirements-Sammlungen zusammen mit Intake
+*Version 0.2.1 prüft sprachbewusste Requirements-Sammlungen zusammen mit Intake
 oder Series. Dokumentationssprache, Rollen, Pfade, Hashes, Referenzen und
 Eligibility bleiben nachvollziehbar; Review-Erfolg ist keine Lieferfreigabe.*

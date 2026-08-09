@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "2.0",
+  "generatedBy": "model-routing-governance/0.1.2",
+  "generatedAt": "replace-with-utc-timestamp",
+  "harness": {
+    "family": "replace-with-agent-family",
+    "version": "replace-with-local-version",
+    "discoveryMode": "Enumerate"
+  },
+  "catalogSha256": "replace-with-catalog-hash",
+  "profiles": {
+    "replace-with-frontier-profile": {
+      "routingRole": "frontier-reasoning",
+      "agentFamily": "replace-with-agent-family",
+      "model": "replace-with-discovered-model",
+      "reasoningEffort": "high",
+      "executable": "replace-with-agent-executable",
+      "preflight": {
+        "executable": "replace-with-agent-executable",
+        "arguments": ["replace-with-read-only-preflight"]
+      },
+      "arguments": ["replace-with-phase-arguments"]
+    }
+  }
+}

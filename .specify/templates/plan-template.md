@@ -103,8 +103,10 @@
 - **Documentation Impact**: Select exactly one of `UpdateRequired`,
   `NoUpdateRequired`, `GeneratedUpdate`, or `FollowUp`. Identify source of
   truth, owner, affected documents, generated derivations, validation, and
-  review evidence. A `FollowUp` needs owner, risk, due date, trigger, evidence,
-  and scope rationale.
+  review evidence. Record audience and reader path, navigation impact, document
+  class, language partner, platform/example proof, distribution class,
+  Home-sync need, and re-evaluation trigger. A `FollowUp` needs owner, risk,
+  due date, trigger, evidence, and scope rationale.
 
 ## Project Structure
 

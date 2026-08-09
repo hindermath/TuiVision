@@ -213,6 +213,15 @@ linearen Modus. Bericht und Exitcode bleiben die Abschlusswahrheit. Die
 Schlussansicht nennt Mutationsbarriere, Repository-Zählung, Preset-Phase,
 Bericht, Log und nächste Aktion als kopierbaren Text.
 
+Der erwartete Berichtspfad wird vor dem Engine-Start aus Home-Verzeichnis und
+Run-ID gebildet. Deshalb bleibt ein finalisierter, laufzugehöriger Bericht auch
+ohne nutzbares `run-completed`-Ereignis auffindbar. Ein vorhandenes
+Abschlussereignis muss mit Bericht und Prozess-Exitcode übereinstimmen.
+
+Eine lokale Home-Runtime delegiert den argumentlosen Aufruf unter
+macOS-System-Bash 3.2 ohne unsichere leere Array-Expansion an genau einen
+Prozess der versionierten Level-0-Quelle.
+
 Ein erstes `Ctrl+C` wird genau einmal an den laufenden Engine-Prozess
 weitergegeben. Weitere Signale starten keinen zweiten Prozess und lösen keine
 automatische Bereinigung aus. Der kontrollierte Abbruch endet mit Exitcode
@@ -227,7 +236,12 @@ permanent linear degradation with `EVENT_STREAM_DEGRADED`, while report and
 process exit remain canonical. The final view keeps the mutation barrier,
 repository counts, preset phase, report, log, and next action copyable. The
 first `Ctrl+C` is forwarded exactly once; later signals cannot start another
-process or trigger automatic cleanup.*
+process or trigger automatic cleanup. The expected report path is bound from
+the home directory and run ID before engine start, so a finalized run-owned
+report remains available without a usable `run-completed` event. A present
+completion event must match the report and process exit. Under macOS system
+Bash 3.2, the Home Runtime delegates an argument-free invocation without an
+unsafe empty-array expansion.*
 
 ## EXIT STATUS
 

@@ -304,6 +304,23 @@ function Get-PARRunnerProfileName {
     return [string] $Campaign.runnerProfile
 }
 
+function Get-PARWorkerRoutingRole {
+    param(
+        [Parameter(Mandatory)][hashtable] $Campaign,
+        [Parameter(Mandatory)][hashtable] $Worker
+    )
+
+    if ($Worker.ContainsKey('routingRole') -and
+        -not [string]::IsNullOrWhiteSpace([string] $Worker.routingRole)) {
+        return [string] $Worker.routingRole
+    }
+    if ($Campaign.ContainsKey('routingRole') -and
+        -not [string]::IsNullOrWhiteSpace([string] $Campaign.routingRole)) {
+        return [string] $Campaign.routingRole
+    }
+    return $script:UndeclaredRunnerMetadata
+}
+
 function Get-PARRunnerMetadata {
     param(
         [Parameter(Mandatory)][string] $ProfileName,
@@ -606,6 +623,17 @@ function Test-PARCampaign {
     Assert-PARCondition (-not [string]::IsNullOrWhiteSpace([string] $Campaign.runnerProfile)) 'Campaign runnerProfile fehlt.'
     Assert-PARCondition ($Profiles.ContainsKey('profiles') -and $Profiles.profiles -is [hashtable]) `
         'RunnerConfig profiles fehlt.'
+    $strictRouting = $Campaign.ContainsKey('fallbackPolicy') -and
+        [string] $Campaign.fallbackPolicy -eq 'fail-closed'
+    if ($Campaign.ContainsKey('fallbackPolicy')) {
+        Assert-PARCondition ([string] $Campaign.fallbackPolicy -eq 'fail-closed') `
+            'fallbackPolicy darf nur fail-closed sein.'
+    }
+    $allowedRoutingRoles = @('fast-mechanical', 'long-running-implementation', 'coding-review', 'frontier-reasoning', 'script-only')
+    if ($strictRouting) {
+        Assert-PARCondition ($allowedRoutingRoles -contains [string] $Campaign.routingRole) `
+            'Campaign routingRole fehlt oder ist ungueltig.'
+    }
     $campaignRunnerProfile = [string] $Campaign.runnerProfile
     Assert-PARCondition $Profiles.profiles.ContainsKey($campaignRunnerProfile) `
         "Campaign-Runner-Fallback '$campaignRunnerProfile' fehlt."
@@ -638,6 +666,23 @@ function Test-PARCampaign {
             Assert-PARCondition ($runnerProfileData.ContainsKey('agentFamily') -and
                 -not [string]::IsNullOrWhiteSpace([string] $runnerProfileData.agentFamily)) `
                 "Runner-Profil '$runnerProfileName' benoetigt agentFamily."
+        }
+        if ($strictRouting) {
+            $workerRoutingRole = Get-PARWorkerRoutingRole $Campaign $worker
+            Assert-PARCondition ($allowedRoutingRoles -contains $workerRoutingRole) `
+                "Worker '$($worker.workerId)' hat keine gueltige routingRole."
+            Assert-PARCondition ([string] $runnerProfileData.routingRole -eq $workerRoutingRole) `
+                "Runner-Profil '$runnerProfileName' passt nicht zur routingRole '$workerRoutingRole'."
+            Assert-PARCondition (-not [string]::IsNullOrWhiteSpace([string] $runnerProfileData.model)) `
+                "Runner-Profil '$runnerProfileName' benoetigt model fuer fail-closed Routing."
+            Assert-PARCondition (-not [string]::IsNullOrWhiteSpace([string] $runnerProfileData.reasoningEffort)) `
+                "Runner-Profil '$runnerProfileName' benoetigt reasoningEffort fuer fail-closed Routing."
+            Assert-PARCondition ($runnerProfileData.ContainsKey('preflight') -and
+                $runnerProfileData.preflight -is [hashtable]) `
+                "Runner-Profil '$runnerProfileName' benoetigt preflight fuer fail-closed Routing."
+            Assert-PARCondition (-not [string]::IsNullOrWhiteSpace([string] $runnerProfileData.preflight.executable) -and
+                $runnerProfileData.preflight.arguments -is [object[]]) `
+                "Runner-Profil '$runnerProfileName' hat keinen gueltigen Preflight-Vertrag."
         }
         $repository = Resolve-PARRepository ([string] $worker.repository) $ManifestDirectory
         Assert-PARCondition (Test-Path -LiteralPath $repository -PathType Container) "Repository fehlt: $repository"
@@ -733,6 +778,12 @@ function Get-PARInitialCampaignState {
     $workerStates = foreach ($worker in $Campaign.workers) {
         $profileName = Get-PARRunnerProfileName $Campaign $worker
         $runnerMetadata = Get-PARRunnerMetadata $profileName $Profiles.profiles[$profileName]
+        $routingRole = Get-PARWorkerRoutingRole $Campaign $worker
+        $fallbackPolicy = if ($Campaign.ContainsKey('fallbackPolicy')) {
+            [string] $Campaign.fallbackPolicy
+        } else {
+            $script:UndeclaredRunnerMetadata
+        }
         [ordered]@{
             workerId = [string] $worker.workerId
             runId = [string] $worker.runId
@@ -749,12 +800,15 @@ function Get-PARInitialCampaignState {
             providerState = 'NotChecked'
             baseRefName = $null
             handoffs = @()
+            routingRole = $routingRole
+            fallbackPolicy = $fallbackPolicy
             runnerProfile = $runnerMetadata.runnerProfile
             agentFamily = $runnerMetadata.agentFamily
             model = $runnerMetadata.model
             reasoningEffort = $runnerMetadata.reasoningEffort
             executionAttempt = 0
             mergeAttempt = 0
+            modelPreflight = if ($fallbackPolicy -eq 'fail-closed') { 'Pending' } else { $script:UndeclaredRunnerMetadata }
             lastPreflightAt = $null
             summary = 'Not started.'
         }
@@ -854,7 +908,15 @@ function Initialize-PARStateShape {
         $workerState = Get-PARWorkerState $CampaignState ([string] $worker.workerId)
         $profileName = Get-PARRunnerProfileName $Campaign $worker
         $metadata = Get-PARRunnerMetadata $profileName $Profiles.profiles[$profileName]
+        $routingRole = Get-PARWorkerRoutingRole $Campaign $worker
+        $fallbackPolicy = if ($Campaign.ContainsKey('fallbackPolicy')) {
+            [string] $Campaign.fallbackPolicy
+        } else {
+            $script:UndeclaredRunnerMetadata
+        }
         foreach ($entry in @{
+            routingRole = $routingRole
+            fallbackPolicy = $fallbackPolicy
             runnerProfile = $metadata.runnerProfile
             agentFamily = $metadata.agentFamily
             model = $metadata.model
@@ -864,6 +926,7 @@ function Initialize-PARStateShape {
             mergeCommitSha = $null
             providerState = 'NotChecked'
             baseRefName = $null
+            modelPreflight = if ($fallbackPolicy -eq 'fail-closed') { 'Pending' } else { $script:UndeclaredRunnerMetadata }
             lastPreflightAt = $null
         }.GetEnumerator()) {
             if (-not $workerState.ContainsKey($entry.Key)) {
@@ -1236,6 +1299,28 @@ Do not infer remote, merge, bypass, cancellation, secret, or provider authority.
                     resultFile = $resultPath
                     resultDirectory = $resultsRoot
                     handoffsJson = $handoffsJson
+                    model = if ($runnerProfileData.ContainsKey('model')) { [string] $runnerProfileData.model } else { '' }
+                    reasoningEffort = if ($runnerProfileData.ContainsKey('reasoningEffort')) { [string] $runnerProfileData.reasoningEffort } else { '' }
+                    routingRole = Get-PARWorkerRoutingRole $Campaign $worker
+                }
+                $strictRouting = $Campaign.ContainsKey('fallbackPolicy') -and
+                    [string] $Campaign.fallbackPolicy -eq 'fail-closed'
+                if ($strictRouting) {
+                    $modelPreflight = Invoke-PARProfileCommand $runnerProfileData.preflight $values $worktree
+                    $workerState.lastPreflightAt = [DateTime]::UtcNow.ToString('o')
+                    if ([int] $modelPreflight.ExitCode -ne 0) {
+                        $workerState.status = 'Blocked'
+                        $workerState.modelPreflight = 'Failed'
+                        $workerState.summary = "Model preflight failed for runner profile '$runnerProfileName' with exit code $($modelPreflight.ExitCode)."
+                        Add-PARStateEvent $campaignState 'ModelPreflightFailed' $workerState.summary `
+                            -WorkerId ([string] $worker.workerId) -Attempt ([int] $workerState.executionAttempt)
+                        $madeProgress = $true
+                        continue
+                    }
+                    $workerState.modelPreflight = 'Completed'
+                    Add-PARStateEvent $campaignState 'ModelPreflightCompleted' `
+                        "Model preflight completed for runner profile '$runnerProfileName'." `
+                        -WorkerId ([string] $worker.workerId) -Attempt ([int] $workerState.executionAttempt)
                 }
                 $arguments = ConvertTo-PARArgumentList @($runnerProfileData.arguments) $values
                 $processInfo = Invoke-PARProcessAsync ([string] $runnerProfileData.executable) $arguments $worktree (Join-Path $logsRoot "$($worker.workerId).out.log") (Join-Path $logsRoot "$($worker.workerId).err.log")
@@ -1302,6 +1387,8 @@ Do not infer remote, merge, bypass, cancellation, secret, or provider authority.
         $campaignState = Read-PARJson $StatePath
         if (@($campaignState.workers | Where-Object { $_.status -eq 'Failed' }).Count -gt 0) {
             $campaignState.status = 'Failed'
+        } elseif (@($campaignState.workers | Where-Object { $_.status -eq 'Blocked' }).Count -gt 0) {
+            $campaignState.status = 'Blocked'
         } elseif ($Campaign.topology -eq 'AlternativeSolutions') {
             $campaignState.status = 'AwaitingSelection'
         } elseif ($Campaign.deliveryMode -eq 'MergeAndSync') {
@@ -1857,8 +1944,20 @@ function Write-PARStatus {
         Write-Output "- $($workerState.workerId): $($workerState.status)"
         Write-Output "  Runner-Profil / Runner profile: $runnerProfileName"
         Write-Output "  Agentenfamilie / Agent family: $agent"
+        $routingRole = if ($workerState.ContainsKey('routingRole')) {
+            [string] $workerState.routingRole
+        } else {
+            $script:UndeclaredRunnerMetadata
+        }
+        $modelPreflight = if ($workerState.ContainsKey('modelPreflight')) {
+            [string] $workerState.modelPreflight
+        } else {
+            $script:UndeclaredRunnerMetadata
+        }
+        Write-Output "  Routing-Rolle / Routing role: $routingRole"
         Write-Output "  Modell / Model: $model"
         Write-Output "  Reasoning / Effort: $reasoning"
+        Write-Output "  Modell-Preflight / Model preflight: $modelPreflight"
     }
     if ($CampaignState.ContainsKey('postMergeActions') -and
         @($CampaignState.postMergeActions).Count -gt 0) {

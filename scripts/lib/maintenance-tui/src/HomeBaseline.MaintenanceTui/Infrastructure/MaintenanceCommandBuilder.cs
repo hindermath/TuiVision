@@ -7,6 +7,7 @@ public sealed record ProcessInvocation(
     IReadOnlyList<string> Arguments,
     string DisplayCommand,
     string EventStreamPath,
+    string ReportPath,
     Guid RunId);
 
 public sealed class MaintenanceCommandBuilder
@@ -20,6 +21,10 @@ public sealed class MaintenanceCommandBuilder
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(scriptPath);
         ArgumentException.ThrowIfNullOrWhiteSpace(eventStreamPath);
+        var homeDirectory = string.IsNullOrWhiteSpace(selection.HomeDirectory)
+            ? context.HomeDirectory
+            : selection.HomeDirectory;
+        ArgumentException.ThrowIfNullOrWhiteSpace(homeDirectory);
 
         var executable = context.Platform == HostPlatform.Windows ? "pwsh" : "bash";
         var arguments = new List<string>();
@@ -47,6 +52,11 @@ public sealed class MaintenanceCommandBuilder
             arguments,
             BuildDisplayCommand(executable, arguments, context.Platform),
             eventStreamPath,
+            Path.Combine(
+                homeDirectory,
+                ".home-baseline",
+                "reports",
+                $"agentic-workspace-{runId}.json"),
             runId);
     }
 

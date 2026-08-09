@@ -5,6 +5,7 @@ runbook template defines modes, outcomes, hash normalization, repair limits,
 risk ownership, and Preset 7/8 consumer gates. The checklist is the normative
 review-dimension inventory.
 
-Version 0.2.0 adds the binding Series graph contract: schema-1.1 request
+Version 0.2.0 added the binding Series graph contract: schema-1.1 request
 evidence, explicit roots, exact target ordering, edge integrity, and cycle
-detection with Bash/PowerShell parity.
+detection with Bash/PowerShell parity. Version 0.2.1 adds the agent-neutral
+`model-routing.json` contract without changing those review semantics.

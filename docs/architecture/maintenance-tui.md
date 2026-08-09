@@ -19,7 +19,7 @@ logic out of Bash, PowerShell, or the shared Python contract core.*
 | Plain-Assistent | Lineare Auswahl bei fehlender TUI-Fähigkeit | Dieselben Kombinationen und Standardwerte |
 | Wartungs-Engine | Freshness, Barrieren, Registry, Propagation, Presets, Toolchain | Keine UI-Abhängigkeit |
 | JSONL-Ereignisse | Advisory Live-Status mit Run-ID und Sequenz | Kein Ersatz für Bericht oder Exitcode |
-| Atomarer Bericht | Kanonischer, finalisierter Laufnachweis | Muss mit Prozess und Abschlussereignis übereinstimmen |
+| Atomarer Bericht | Kanonischer, finalisierter Laufnachweis am vorgebundenen Run-Pfad | Muss mit Prozess und einem vorhandenen Abschlussereignis übereinstimmen |
 | Inhaltsadressierter Cache | Exakten lokalen TUI-Build wiederverwenden | Keine fremde Plattform, Teilpublikation oder Binärdatei in Git |
 
 ## Laufsequenz / Runtime Sequence
@@ -32,7 +32,7 @@ Aufruf / invocation
   -> Standard-Nein-Bestätigung für Update
   -> genau ein interner Headless-Prozess
   -> advisory JSONL-Live-Status
-  -> Bericht + Abschlussereignis + Prozess-Exit abgleichen
+  -> vorgebundenen Bericht + optionales Abschlussereignis + Prozess-Exit abgleichen
   -> kanonischen Exitcode unverändert zurückgeben
 ```
 
@@ -52,8 +52,9 @@ UI never invents a completion percentage.*
    `ProcessStartInfo.ArgumentList`; der sichtbare Befehl ist nur Erklärung.
 3. **Ereignisse:** Jede Zeile wird strikt gegen Schema, Run-ID und Sequenz
    geprüft. Ein Fehler degradiert nur die Darstellung.
-4. **Bericht:** Nur eine passende Run-ID und `finalized: true` sind
-   kanonisch.
+4. **Bericht:** Der erwartete Pfad wird vor Prozessstart aus Home-Verzeichnis
+   und Run-ID gebildet. Nur eine passende Run-ID und `finalized: true` sind
+   kanonisch; es gibt keine Suche nach der neuesten Berichtsdatei.
 5. **Cache:** Quellhash, Plattform, Metadaten und vollständige atomare
    Publikation müssen gemeinsam stimmen.
 6. **Autorität:** Die UI-Bestätigung erlaubt genau einen lokalen
@@ -70,14 +71,20 @@ Engine-Zustand noch Abschlussbewertung.
 Die Schlussansicht wird aus finalisiertem Bericht und Prozess-Exitcode
 abgeleitet. Sie hält Mutationsbarriere, Repository-Zählung, Preset-Phase,
 Lease-Befund, Bericht, Log und nächste Aktion als linearen, kopierbaren Text
-bereit. Nicht berichtete Werte bleiben ausdrücklich unbekannt.
+bereit. Fehlt das optionale Abschlussereignis nach einer Event-Degradierung,
+bleibt ein gültiger vorgebundener Bericht maßgeblich. Widerspricht ein
+vorhandenes Abschlussereignis dem Bericht oder Exitcode, entsteht weiterhin
+`RESULT_MISMATCH`. Nicht berichtete Werte bleiben ausdrücklich unbekannt.
 
 *The first `Ctrl+C` requests exactly one controlled engine interruption. Later
 signals neither start a second process, send a second engine signal, nor trigger
 automatic cleanup. Invalid event input permanently marks the display as
 `EVENT_STREAM_DEGRADED` without changing engine state or result evaluation.
 The final view derives from the finalized report and process exit and keeps all
-reported boundaries and next actions copyable; unknown values remain unknown.*
+reported boundaries and next actions copyable. A missing optional completion
+event does not override a valid pre-bound report after event degradation. A
+present contradictory completion event still produces `RESULT_MISMATCH`;
+unknown values remain unknown.*
 
 ## Plattform und Fallback / Platform and Fallback
 
@@ -101,6 +108,8 @@ engine start.*
 - Fake-Prozesse prüfen Exitcodes `0`, `1`, `2`, `3` und `130` ohne echte
   Wartung.
 - Python-Fixtures prüfen Bash-/PowerShell-Routing und den Eventwriter.
+- Eine isolierte Home-Runtime-Fixture prüft null, ein und mehrere Argumente
+  unter `/bin/bash` einschließlich macOS-System-Bash 3.2.
 - macOS, Ubuntu und Windows führen Locked Restore, Build und Tests gegen den
   exakten PR-Head aus.
 

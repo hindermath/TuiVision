@@ -42,12 +42,15 @@
       "providerState": "NotChecked",
       "baseRefName": null,
       "handoffs": [],
+      "routingRole": "frontier-reasoning",
+      "fallbackPolicy": "fail-closed",
       "runnerProfile": "default-agent",
       "agentFamily": "Codex",
       "model": "Agent-Standard/nicht deklariert",
       "reasoningEffort": "Agent-Standard/nicht deklariert",
       "executionAttempt": 0,
       "mergeAttempt": 0,
+      "modelPreflight": "Pending",
       "lastPreflightAt": null,
       "summary": "Not started."
     }

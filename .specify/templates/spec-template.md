@@ -146,6 +146,10 @@
 - **CR-013**: The feature MUST record exactly one Documentation Impact
   decision: `UpdateRequired`, `NoUpdateRequired`, `GeneratedUpdate`, or
   `FollowUp`. It MUST name affected audiences and documentation families.
+  It MUST also name affected reader paths, canonical source and owner,
+  navigation impact, document class, language strategy and partner,
+  platform/example proof, distribution class, Home-sync need, evidence, and
+  re-evaluation trigger.
   `FollowUp` also requires owner, risk, due date, re-evaluation trigger,
   evidence, and scope rationale.
 

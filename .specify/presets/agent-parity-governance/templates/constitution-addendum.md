@@ -55,6 +55,15 @@ feature artifacts.
 - Focused review and CI fixes SHOULD use a coding-optimized model.
 - Trivial cleanup, formatting, or low-risk mechanical edits MAY use a
   fast small coding model.
+- Stable routing roles are `frontier-reasoning`,
+  `long-running-implementation`, `coding-review`, `fast-mechanical`, and
+  `script-only`. Installed presets MUST declare their command mapping in
+  `model-routing.json`; the strongest applicable wrapper role wins.
+- A non-parallel autonomous run MUST change models only at a validated phase
+  boundary through a new process and SHA-256-bound handoff.
+- Explicit local runner profiles MUST fail closed. Missing profile, model,
+  reasoning effort, or successful preflight MUST result in `Blocked` without automatic
+  fallback.
 
 ### Atomic change discipline
 

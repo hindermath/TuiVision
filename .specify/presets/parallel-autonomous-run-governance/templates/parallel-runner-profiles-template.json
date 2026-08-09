@@ -2,10 +2,17 @@
   "schemaVersion": "1.1",
   "profiles": {
     "default-agent": {
+      "routingRole": "frontier-reasoning",
       "agentFamily": "Codex",
       "model": null,
       "reasoningEffort": null,
       "executable": "codex",
+      "preflight": {
+        "executable": "codex",
+        "arguments": [
+          "replace-with-read-only-model-preflight"
+        ]
+      },
       "arguments": [
         "exec",
         "--cd",

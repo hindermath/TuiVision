@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.1",
+  "feature": "fixture",
+  "entries": [
+    {
+      "changeId": "CHG001",
+      "scope": "README",
+      "decision": "NoUpdateRequired",
+      "rationale": "Language partners must be represented as an array.",
+      "documents": [],
+      "owner": "Maintainer",
+      "audiences": ["Maintainers"],
+      "readerPaths": ["MaintainerAgent"],
+      "canonicalSource": "README.md",
+      "navigationImpact": "No entry point changes.",
+      "documentClass": "ActiveSemantic",
+      "languageStrategy": "German first and English second in one file.",
+      "languagePartners": "README.en.md",
+      "platformAndExampleProof": "No command or platform behavior changed.",
+      "distributionClass": "sourceOnly",
+      "homeSyncRequired": false,
+      "evidence": "specs/fixture/evidence.md",
+      "risk": "N/A",
+      "criticality": "Normal",
+      "reevaluationTrigger": "A public command or reader path changes."
+    }
+  ]
+}

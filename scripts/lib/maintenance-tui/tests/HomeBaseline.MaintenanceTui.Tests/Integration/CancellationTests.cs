@@ -24,7 +24,13 @@ public sealed class CancellationTests
         var application = new HomeBaseline.MaintenanceTui.Application.MaintenanceTuiApplication(
             runner,
             new RunResultReconciler());
-        var invocation = new ProcessInvocation("fake", [], "fake", "events", Guid.NewGuid());
+        var invocation = new ProcessInvocation(
+            "fake",
+            [],
+            "fake",
+            "events",
+            "report.json",
+            Guid.NewGuid());
 
         var result = await application.ExecuteAsync(invocation, CancellationToken.None);
 

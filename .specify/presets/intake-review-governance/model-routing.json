@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1.0",
+  "presetId": "intake-review-governance",
+  "fallbackPolicy": "fail-closed",
+  "defaultRole": "frontier-reasoning",
+  "commands": {
+    "speckit.intake-review": "frontier-reasoning",
+    "speckit.intake-repair": "frontier-reasoning",
+    "speckit.intake-review-status": "fast-mechanical"
+  }
+}

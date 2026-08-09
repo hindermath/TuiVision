@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "presetId": "model-routing-governance",
+  "defaultRole": "frontier-reasoning",
+  "commands": {
+    "speckit.model-routing-status": "fast-mechanical",
+    "speckit.model-routing-refresh": "frontier-reasoning"
+  },
+  "fallbackPolicy": "fail-closed"
+}

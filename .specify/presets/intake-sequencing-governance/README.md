@@ -1,7 +1,7 @@
 # Intake Sequencing Governance
 
 Optional Spec Kit preset for managing the order and lifecycle of existing
-intakes. Version `0.2.2` uses priority `66`: after Intake Review at `65` and
+intakes. Version `0.2.3` uses priority `66`: after Intake Review at `65` and
 before Autonomous Run at `70`.
 
 ## Why This Preset Exists
@@ -10,6 +10,9 @@ An order table alone cannot distinguish a binding predecessor from a preferred
 delivery order. This preset stores both a learner-readable order and a
 machine-checkable typed graph. It never writes intake content and never starts
 the work it selects.
+
+Version `0.2.3` publishes the agent-neutral `model-routing.json` contract for
+composition with Model Routing Governance. Sequencing behavior is unchanged.
 
 Version `0.2.2` preserves the project-declared learner contract in the readable
 order: audience, prior knowledge, language and readability, first-use terms,
@@ -38,7 +41,7 @@ Ein gewöhnlicher zweiter Index im selben Repository bleibt ein Fehler.*
 
 ```bash
 specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/archive/refs/tags/v0.2.2.zip \
+  --from https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/archive/refs/tags/v0.2.3.zip \
   --priority 66
 ```
 

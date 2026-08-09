@@ -73,7 +73,7 @@ function Reset-Fixture {
         documentType = 'IntakeSeriesReceipt'
         receiptId = '22222222-2222-4222-8222-222222222222'
         seriesId = $script:Manifest.seriesId
-        generator = [ordered]@{ preset = 'intake-sequencing-governance'; version = '0.2.2' }
+        generator = [ordered]@{ preset = 'intake-sequencing-governance'; version = '0.2.3' }
         createdAt = '2026-07-25T00:00:00Z'
         operation = [ordered]@{
             operationId = '33333333-3333-4333-8333-333333333333'

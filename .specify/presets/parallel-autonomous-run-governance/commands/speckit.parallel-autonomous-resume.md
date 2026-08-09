@@ -8,6 +8,10 @@ completed handoffs, and the last trustworthy operation. Reuse verified
 completed work. Retry only an unproven or incomplete operation. Reconcile
 current mandatory governance deltas before scheduling.
 
+For fail-closed routing, revalidate the campaign or worker role, exact profile
+match, declared model, reasoning effort, executable, and read-only preflight.
+Profile drift or preflight failure blocks new scheduling without fallback.
+
 For schema `1.2` with required intake review, revalidate the stored result
 hash, every worker input hash and applicability row, series relations, and
 non-expired operator exceptions. Drift blocks new scheduling.

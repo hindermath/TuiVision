@@ -292,22 +292,34 @@ check_readme_sections() {
   local full="${dir}/README.md"
   [ -f "$full" ] || return 0
 
+  local portal_mode=0
+  if [ -f "${dir}/README.en.md" ] && [ -f "${dir}/docs/README.md" ]; then
+    portal_mode=1
+  fi
+
   # A11Y section
-  if rg -qi '^## .*Barrierefreiheit' "$full" 2>/dev/null; then
+  if rg -qi '^## .*Barrierefreiheit' "$full" 2>/dev/null ||
+     { [ "$portal_mode" -eq 1 ] && rg -q 'docs/accessibility/.*\.md|WCAG 2\.2 AA' "$full" 2>/dev/null; }; then
     emit_result "PASS" "README.md" "A11Y section" "$dir"
   else
     emit_result "FAIL" "README.md" "A11Y section missing" "$dir"
   fi
 
   # Spec-kit section
-  if rg -qi '^## .*Spec-kit' "$full" 2>/dev/null; then
+  if rg -qi '^## .*Spec-kit' "$full" 2>/dev/null ||
+     { [ "$portal_mode" -eq 1 ] && [ -f "${dir}/docs/getting-started.md" ] &&
+       rg -q 'docs/getting-started\.md' "$full" 2>/dev/null &&
+       rg -qi '^## .*Spec Kit' "${dir}/docs/getting-started.md" 2>/dev/null; }; then
     emit_result "PASS" "README.md" "Spec-kit section" "$dir"
   else
     emit_result "FAIL" "README.md" "Spec-kit section missing" "$dir"
   fi
 
   # Azubis section
-  if rg -qi '^## .*(Azubis|Auszubildende)' "$full" 2>/dev/null; then
+  if rg -qi '^## .*(Azubis|Auszubildende)' "$full" 2>/dev/null ||
+     { [ "$portal_mode" -eq 1 ] &&
+       [ -f "${dir}/docs/learning-units/START-HERE-FUER-LERNENDE.md" ] &&
+       rg -q 'START-HERE-FUER-LERNENDE\.md' "$full" 2>/dev/null; }; then
     emit_result "PASS" "README.md" "Azubis section" "$dir"
   else
     emit_result "FAIL" "README.md" "Azubis section missing" "$dir"

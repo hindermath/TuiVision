@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0",
+  "presetId": "intake-sequencing-governance",
+  "fallbackPolicy": "fail-closed",
+  "defaultRole": "frontier-reasoning",
+  "commands": {
+    "speckit.intake-series-create": "frontier-reasoning",
+    "speckit.intake-series-read": "fast-mechanical",
+    "speckit.intake-series-update": "frontier-reasoning",
+    "speckit.intake-series-delete": "frontier-reasoning",
+    "speckit.intake-series-status": "fast-mechanical",
+    "speckit.intake-series-next": "fast-mechanical"
+  }
+}

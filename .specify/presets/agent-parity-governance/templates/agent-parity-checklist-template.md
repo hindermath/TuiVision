@@ -66,6 +66,9 @@ confirm whether the shared rule landed.
 | Guidance is agent-neutral and does not require a specific provider or model | | |
 | `spec.md`, `plan.md`, `tasks.md`, and feature specs contain no model-name requirements | | |
 | Routing distinguishes planning/analyze, long-running implementation, focused fixes, and trivial mechanical edits | | |
+| Every installed preset command is covered by exactly one effective role after strongest-role resolution | | |
+| Non-parallel model changes occur only at a validated process boundary with SHA-256-bound handoff | | |
+| Missing local model/profile/preflight evidence blocks without silent fallback | | |
 
 ## Intentional Deviations
 

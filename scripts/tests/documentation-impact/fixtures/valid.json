@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "1.1",
   "feature": "fixture",
   "entries": [
     {
@@ -9,9 +9,20 @@
       "rationale": "The command and public behavior are unchanged.",
       "documents": [],
       "owner": "Maintainer",
+      "audiences": ["Maintainers"],
+      "readerPaths": ["MaintainerAgent"],
+      "canonicalSource": "README.md",
+      "navigationImpact": "No entry point changes.",
+      "documentClass": "ActiveSemantic",
+      "languageStrategy": "German first and English second in one file.",
+      "languagePartners": [],
+      "platformAndExampleProof": "No command or platform behavior changed.",
+      "distributionClass": "sourceOnly",
+      "homeSyncRequired": false,
       "evidence": "specs/fixture/evidence.md",
       "risk": "N/A",
-      "criticality": "Normal"
+      "criticality": "Normal",
+      "reevaluationTrigger": "A public command or reader path changes."
     }
   ]
 }

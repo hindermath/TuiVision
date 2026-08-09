@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0",
+  "presetId": "parallel-autonomous-run-governance",
+  "fallbackPolicy": "fail-closed",
+  "defaultRole": "frontier-reasoning",
+  "commands": {
+    "speckit.parallel-autonomous": "frontier-reasoning",
+    "speckit.parallel-autonomous-status": "fast-mechanical",
+    "speckit.parallel-autonomous-stop": "script-only",
+    "speckit.parallel-autonomous-resume": "frontier-reasoning",
+    "speckit.parallel-autonomous-consolidate": "coding-review"
+  }
+}

@@ -1,6 +1,6 @@
 # Field Validation Summary
 
-Version `0.2.2` is validated with:
+Version `0.2.3` is validated with:
 
 - a synthetic three-target, one-root, two-edge series;
 - an explicit zero-target `Idle` series;

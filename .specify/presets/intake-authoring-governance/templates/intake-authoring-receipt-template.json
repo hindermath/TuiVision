@@ -5,7 +5,7 @@
   "intakeId": "00000000-0000-0000-0000-000000000000",
   "generator": {
     "preset": "intake-authoring-governance",
-    "version": "0.3.0"
+    "version": "0.3.1"
   },
   "createdAt": "1970-01-01T00:00:00Z",
   "operation": {

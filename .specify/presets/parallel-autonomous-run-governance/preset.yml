@@ -3,7 +3,7 @@ schema_version: "1.0"
 preset:
   id: "parallel-autonomous-run-governance"
   name: "Parallel Autonomous Run Governance"
-  version: "0.2.4"
+  version: "0.2.5"
   description: "Coordinates isolated autonomous campaigns and optionally gates worker scheduling on a current campaign intake review."
   author: "Thorsten Hindermann"
   repository: "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance"
@@ -14,6 +14,11 @@ requires:
 
 provides:
   templates:
+    - type: "template"
+      name: "parallel-autonomous-run-governance-model-routing"
+      file: "model-routing.json"
+      description: "Agent-neutral command-to-role routing contract"
+
     - type: "template"
       name: "parallel-campaign-template"
       file: "templates/parallel-campaign-template.json"

@@ -14,7 +14,7 @@ metadata:
 $ARGUMENTS
 ```
 
-Delete is logical and reversible from versioned evidence. v0.3.0 has no purge.
+Delete is logical and reversible from versioned evidence. The current preset has no purge.
 
 1. Resolve exactly one active intake or one complete series. Require the exact
    identity, a deletion reason, and explicit current delete authority.

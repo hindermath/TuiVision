@@ -42,6 +42,20 @@ public sealed class EventReaderTests
     }
 
     [TestMethod]
+    public void DuplicateRecordDegradesAsSequenceGap()
+    {
+        var runId = Guid.NewGuid();
+        var reader = new MaintenanceEventReader(runId);
+        var record = MaintenanceEventTests.EventJson(runId, 1) + "\n";
+
+        reader.Feed(record);
+        reader.Feed(record);
+
+        Assert.AreEqual(EventPresentationMode.Degraded, reader.State.PresentationMode);
+        Assert.AreEqual(EventDegradationReason.SequenceGap, reader.State.DegradationReason);
+    }
+
+    [TestMethod]
     public void RunMismatchDegrades()
     {
         var reader = new MaintenanceEventReader(Guid.NewGuid());

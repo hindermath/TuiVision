@@ -25,6 +25,7 @@ public sealed class VerticalSliceTests
             [],
             "fake",
             "/tmp/events.jsonl",
+            "/tmp/report.json",
             runId);
 
         var result = await application.ExecuteAsync(invocation, CancellationToken.None);

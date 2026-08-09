@@ -1530,6 +1530,33 @@ try {
             -Summary 'Toolchain durch Modus oder Vorbedingung uebersprungen / skipped by mode or prerequisite'
     }
 
+    if ((($fleetReady -and $leaseRecoveryReady) -or $CheckOnly) -and ($script:Findings -eq 0 -or $CheckOnly) -and -not $ScriptsOnly) {
+        Start-HBMaintenanceEventPhase -PhaseId 'model-routing'
+        Write-HBInfo 'Lokale Modell-Routing-Pruefung / Local model-routing check'
+        $routingScript = Join-Path $sourceRoot 'scripts/resolve-model-routing.ps1'
+        $routingRoot = Join-Path $sourceRoot '.specify/presets'
+        $routingResult = Join-Path $HomeDir ".home-baseline/model-routing-status-$RunId.json"
+        $routingParent = Split-Path -Parent $routingResult
+        [void](New-Item -ItemType Directory -Path $routingParent -Force)
+        & $routingScript -Action Status -Harness Auto -RoutingRoot $routingRoot -OutputFormat Json |
+            Set-Content -LiteralPath $routingResult -Encoding utf8NoBOM
+        $routingExit = if ($null -eq $LASTEXITCODE) { 0 } else { $LASTEXITCODE }
+        if ($routingExit -eq 0) {
+            Add-HBReportStage -StageId 'model-routing' -Status Passed -ExitCode 0 `
+                -Summary 'Lokale Modellbindungen aktuell / local model bindings current' `
+                -EvidencePath $routingResult
+        } else {
+            $script:Findings++
+            Add-HBReportStage -StageId 'model-routing' -Status Blocked -ExitCode 1 `
+                -Summary 'Lokales Modell-Routing benötigt eine ausdrückliche Aktualisierung / local model routing requires explicit refresh' `
+                -NextAction 'speckit.model-routing-refresh mit lokaler Autorität ausführen / run with local authority' `
+                -EvidencePath $routingResult
+        }
+    } else {
+        Add-HBReportStage -StageId 'model-routing' -Status Skipped -ExitCode 0 `
+            -Summary 'Modell-Routing durch Modus oder Vorbedingung uebersprungen / skipped by mode or prerequisite'
+    }
+
     if ($script:Findings -eq 0) {
         Start-HBMaintenanceEventPhase -PhaseId 'final'
         Write-HBInfo 'Abschlusspruefung / Final verification'

@@ -161,6 +161,9 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX Record exactly one Documentation Impact decision and complete its
   required update, generated render, no-change rationale, or bounded follow-up
   evidence
+- [ ] TXXX Verify audience/reader path, canonical source/owner, navigation,
+  document class, language partner, platform/example proof, distribution class,
+  Home-sync need, and re-evaluation trigger
 - [ ] TXXX Validate Documentation Impact evidence with
   `validate-documentation-impact.*` when the repository provides that contract
 - [ ] TXXX Code cleanup and refactoring

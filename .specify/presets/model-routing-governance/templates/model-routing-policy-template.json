@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0",
+  "fallbackPolicy": "fail-closed",
+  "selectionPolicy": "safe-automatic",
+  "preferredHarness": "N/A",
+  "roleOrder": [
+    "script-only",
+    "fast-mechanical",
+    "long-running-implementation",
+    "coding-review",
+    "frontier-reasoning"
+  ],
+  "adapters": {
+    "Codex": "Enumerate",
+    "Antigravity": "EnumerateNames",
+    "Claude": "ValidateCandidate",
+    "Copilot": "ValidateCandidate",
+    "OpenCode": "ConfiguredOnly"
+  }
+}

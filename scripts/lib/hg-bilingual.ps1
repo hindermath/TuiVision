@@ -18,6 +18,20 @@ function Invoke-HgCheckBilingual {
     if ($hasDE -gt 0 -and $hasEN -gt 0) {
         [PSCustomObject]@{ Status = 'PASS'; File = $FilePath; Message = 'bilingual-ok' }
     } else {
-        [PSCustomObject]@{ Status = 'WARN'; File = $FilePath; Message = 'bilingual-section-missing' }
+        $partner = if ($FilePath -match '(?i)\.en\.md$') {
+            $FilePath -replace '(?i)\.en\.md$', '.md'
+        } else {
+            $FilePath -replace '(?i)\.md$', '.en.md'
+        }
+        $baseName = [IO.Path]::GetFileName($FilePath)
+        $partnerName = [IO.Path]::GetFileName($partner)
+        $paired = (Test-Path -LiteralPath $partner -PathType Leaf) -and
+            ((Get-Content -LiteralPath $FilePath -Raw) -match [regex]::Escape("(${partnerName})")) -and
+            ((Get-Content -LiteralPath $partner -Raw) -match [regex]::Escape("(${baseName})"))
+        if ($paired) {
+            [PSCustomObject]@{ Status = 'PASS'; File = $FilePath; Message = 'bilingual-language-pair' }
+        } else {
+            [PSCustomObject]@{ Status = 'WARN'; File = $FilePath; Message = 'bilingual-section-missing' }
+        }
     }
 }
