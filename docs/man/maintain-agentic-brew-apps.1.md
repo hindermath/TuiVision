@@ -43,6 +43,11 @@ Prozessgruppe, werden nach fuenf Sekunden beendet und unterscheiden
 Ergebnisbericht ordnet jedem Eintrag genau einen Endstatus zu. Verbleibender
 Required-Drift beendet den Lauf mit Exitcode `1`; rein optionaler Drift bleibt
 sichtbar und nicht fatal.
+Auch bei einem fruehen Producer-Fehler wird eine atomare, schema-gueltige
+Fehlerevidence geschrieben. Consumer unterscheiden stabil zwischen fehlenden,
+leeren, unvollstaendigen, syntaktisch fehlerhaften, nicht als UTF-8 lesbaren
+und schemafremden Ergebnissen. Sie geben dabei weder Stacktraces noch private
+Dateipfade aus.
 
 Auf Ubuntu 22.04/24.04 (`x86_64`/`aarch64`) kann fehlendes oder abweichendes
 Swift ueber den gepinnten offiziellen Vertrag Swiftly `1.1.2` / Swift `6.3.3`
@@ -79,6 +84,10 @@ own process group, stop after five seconds, and distinguish `Missing`,
 `Unusable`, `TimedOut`, and `CapabilityBlocked`. Every selected item receives
 one structured final status. Remaining required drift exits with `1`; optional
 drift remains visible and non-fatal.
+An early producer failure still publishes atomic, schema-valid failure
+evidence. Consumers distinguish missing, empty, truncated, malformed,
+non-UTF-8, and schema-mismatched results without exposing stack traces or
+private file paths.
 
 On Ubuntu 22.04/24.04 (`x86_64`/`aarch64`), missing or mismatched Swift can be
 installed through the pinned official Swiftly `1.1.2` / Swift `6.3.3`

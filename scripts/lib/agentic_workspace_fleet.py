@@ -1000,6 +1000,55 @@ def execute_fleet(args: argparse.Namespace) -> int:
     return exit_code
 
 
+def read_toolchain_result(path: pathlib.Path) -> tuple[dict | None, str | None]:
+    if not path.exists():
+        return None, "ResultMissing"
+    if not path.is_file():
+        return None, "ResultNotFile"
+    try:
+        payload = path.read_bytes()
+    except OSError:
+        return None, "ResultUnreadable"
+    if not payload.strip():
+        return None, "ResultEmpty"
+    try:
+        text = payload.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        return None, "ResultInvalidUtf8"
+    try:
+        result = json.loads(text)
+    except json.JSONDecodeError:
+        failure = "ResultTruncated" if not text.rstrip().endswith("}") else "ResultMalformed"
+        return None, failure
+    if not isinstance(result, dict):
+        return None, "ResultSchemaMismatch"
+    required_types = {
+        "schemaVersion": str,
+        "platform": str,
+        "mode": str,
+        "overallStatus": str,
+        "exitCode": int,
+        "items": list,
+        "remainingRequired": list,
+        "optionalDrift": list,
+        "nextAction": str,
+    }
+    if any(not isinstance(result.get(key), expected) for key, expected in required_types.items()):
+        return None, "ResultSchemaMismatch"
+    expected_exit = 2 if result["overallStatus"] == "FAILED" else 1 if result["overallStatus"] == "PARTIAL" else 0
+    if (
+        result["schemaVersion"] != "1.0"
+        or result["platform"] not in {"Darwin", "Linux"}
+        or result["mode"] not in {"update", "dry-run", "compare-only"}
+        or result["overallStatus"] not in {"SUCCESS", "SUCCESS_WITH_WARNINGS", "PARTIAL", "FAILED"}
+        or result["exitCode"] != expected_exit
+        or any(not isinstance(item, str) for item in result["remainingRequired"])
+        or any(not isinstance(item, str) for item in result["optionalDrift"])
+    ):
+        return None, "ResultSchemaMismatch"
+    return result, None
+
+
 def record_stage(args: argparse.Namespace) -> int:
     try:
         report = json.loads(args.report.read_text(encoding="utf-8"))
@@ -1017,13 +1066,14 @@ def record_stage(args: argparse.Namespace) -> int:
         "nextAction": args.next_action,
     })
     if args.toolchain_results:
-        try:
-            toolchain_result = json.loads(
-                args.toolchain_results.read_text(encoding="utf-8")
+        toolchain_result, failure_class = read_toolchain_result(args.toolchain_results)
+        if failure_class:
+            print(
+                "ERROR\ttoolchain-results\tFAILED\t"
+                f"{failure_class}\tRegenerate the toolchain result atomically."
             )
-        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
-            print(f"ERROR\ttoolchain-results\tFAILED\t{exc}")
             return 2
+        assert toolchain_result is not None
         items = toolchain_result.get("items")
         if (
             toolchain_result.get("schemaVersion") != "1.0"
@@ -1039,6 +1089,8 @@ def record_stage(args: argparse.Namespace) -> int:
             "optionalDrift": toolchain_result.get("optionalDrift", []),
             "nextAction": toolchain_result.get("nextAction", "N/A"),
         }
+        if "failureClass" in toolchain_result:
+            report["toolchainResult"]["failureClass"] = toolchain_result["failureClass"]
     report["completedAt"] = utc_now()
     statuses = {item.get("status") for item in stages}
     if "Interrupted" in statuses:

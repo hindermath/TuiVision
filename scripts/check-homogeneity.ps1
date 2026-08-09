@@ -236,17 +236,22 @@ function Check-AnsiInScripts {
     param([string]$Dir)
     $scriptsDir = Join-Path $Dir 'scripts'
     if (-not (Test-Path -LiteralPath $scriptsDir -PathType Container)) { return }
-    # ANSI escape scan: actual ESC byte, \033[, \e[ (PS1 uses .NET regex)
-    # Exclude the scanner scripts themselves (they contain the patterns as literals in comments/code)
-    $pattern = '\x1b\[|\\033\[|\\e\['
-    $found = Get-ChildItem -LiteralPath $scriptsDir -File -Recurse -ErrorAction SilentlyContinue |
-        Where-Object { $_.Name -notmatch '^check-homogeneity\.(ps1|sh)$' } |
-        Where-Object { (Get-Content -LiteralPath $_.FullName -Raw -ErrorAction SilentlyContinue) -match $pattern } |
-        Select-Object -First 1
-    if ($null -eq $found) {
+    # Match the Bash scanner and let ripgrep honor repository ignore rules.
+    $patterns = @(
+        ([char]27 + '\['),
+        '\\033\[',
+        '\\e\['
+    )
+    $arguments = @('-l', '--glob', '!check-homogeneity.*')
+    foreach ($pattern in $patterns) {
+        $arguments += @('-e', $pattern)
+    }
+    $ansiMatches = @(& rg @arguments -- $scriptsDir 2>$null)
+    if ($ansiMatches.Count -eq 0) {
         Emit-Result 'PASS' 'scripts/' 'no ANSI codes in scripts/' $Dir
     } else {
-        Emit-Result 'FAIL' 'scripts/' "ANSI escape codes found: $($found.Name)" $Dir
+        $relativePath = [IO.Path]::GetRelativePath($scriptsDir, $ansiMatches[0])
+        Emit-Result 'FAIL' 'scripts/' "ANSI escape codes found: $relativePath" $Dir
     }
 }
 

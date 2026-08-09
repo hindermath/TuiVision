@@ -29,6 +29,13 @@ PROBE_STATUSES = {
 }
 FINAL_STATUSES = {"Present", "Installed", "Planned", "Failed", "StillMissing"}
 SCOPES = {"required", "optional"}
+TOOLCHAIN_OVERALL_STATUSES = {
+    "SUCCESS",
+    "SUCCESS_WITH_WARNINGS",
+    "PARTIAL",
+    "FAILED",
+}
+TOOLCHAIN_MODES = {"update", "dry-run", "compare-only"}
 CAPABILITY_PATTERNS = (
     re.compile(r"\bcap_[a-z0-9_]+\b", re.IGNORECASE),
     re.compile(r"snap-confine", re.IGNORECASE),
@@ -261,6 +268,101 @@ def load_json(path: Path) -> dict:
     return value
 
 
+def classify_toolchain_result(path: Path) -> tuple[dict | None, str | None]:
+    """Read a toolchain result without leaking parser or local-path details."""
+    if not path.exists():
+        return None, "ResultMissing"
+    if not path.is_file():
+        return None, "ResultNotFile"
+    try:
+        payload = path.read_bytes()
+    except OSError:
+        return None, "ResultUnreadable"
+    if not payload.strip():
+        return None, "ResultEmpty"
+    try:
+        text = payload.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        return None, "ResultInvalidUtf8"
+    try:
+        value = json.loads(text)
+    except json.JSONDecodeError:
+        failure = "ResultTruncated" if not text.rstrip().endswith("}") else "ResultMalformed"
+        return None, failure
+    if not isinstance(value, dict):
+        return None, "ResultSchemaMismatch"
+    required_types = {
+        "schemaVersion": str,
+        "platform": str,
+        "mode": str,
+        "overallStatus": str,
+        "exitCode": int,
+        "items": list,
+        "remainingRequired": list,
+        "optionalDrift": list,
+        "nextAction": str,
+    }
+    if any(not isinstance(value.get(key), expected) for key, expected in required_types.items()):
+        return None, "ResultSchemaMismatch"
+    if (
+        value["schemaVersion"] != "1.0"
+        or value["platform"] not in {"Darwin", "Linux"}
+        or value["mode"] not in TOOLCHAIN_MODES
+        or value["overallStatus"] not in TOOLCHAIN_OVERALL_STATUSES
+        or value["exitCode"] not in {0, 1, 2}
+        or any(not isinstance(item, str) for item in value["remainingRequired"])
+        or any(not isinstance(item, str) for item in value["optionalDrift"])
+    ):
+        return None, "ResultSchemaMismatch"
+    expected_exit = 2 if value["overallStatus"] == "FAILED" else 1 if value["overallStatus"] == "PARTIAL" else 0
+    if value["exitCode"] != expected_exit:
+        return None, "ResultSchemaMismatch"
+    return value, None
+
+
+def toolchain_result_failure(output_path: Path, platform: str, mode: str, failure_class: str) -> int:
+    if platform not in {"Darwin", "Linux"} or mode not in TOOLCHAIN_MODES:
+        raise ContractError("failure result platform or mode is invalid")
+    if not re.fullmatch(r"Result[A-Za-z0-9]+|Producer[A-Za-z0-9]+", failure_class):
+        raise ContractError("failure result class is invalid")
+    report = {
+        "schemaVersion": "1.0",
+        "platform": platform,
+        "mode": mode,
+        "overallStatus": "FAILED",
+        "exitCode": 2,
+        "items": [],
+        "remainingRequired": [],
+        "optionalDrift": [],
+        "failureClass": failure_class,
+        "nextAction": (
+            "Toolchain-Erzeuger und Ergebnisvertrag pruefen / "
+            "inspect the toolchain producer and result contract."
+        ),
+    }
+    atomic_write_json(output_path, report)
+    emit(report)
+    return 2
+
+
+def inspect_toolchain_result(path: Path) -> int:
+    result, failure_class = classify_toolchain_result(path)
+    if failure_class:
+        emit(
+            {
+                "status": "InvalidToolchainResult",
+                "failureClass": failure_class,
+                "nextAction": (
+                    "Toolchain-Ergebnis erneut atomar erzeugen / "
+                    "regenerate the toolchain result atomically."
+                ),
+            }
+        )
+        return 2
+    emit({"status": "ValidToolchainResult", "result": result})
+    return 0
+
+
 def resolve_swift_contract(
     registry_path: Path,
     os_release_path: Path,
@@ -479,7 +581,7 @@ def parse_result_rows(path: Path) -> list[dict]:
 def summarize_results(input_path: Path, output_path: Path, platform: str, mode: str) -> int:
     if platform not in {"Darwin", "Linux"}:
         raise ContractError("result platform must be Darwin or Linux")
-    if mode not in {"update", "dry-run", "compare-only"}:
+    if mode not in TOOLCHAIN_MODES:
         raise ContractError("result mode is invalid")
     items = parse_result_rows(input_path)
     remaining_required = [
@@ -551,6 +653,15 @@ def build_parser() -> argparse.ArgumentParser:
     summary.add_argument("--output", type=Path, required=True)
     summary.add_argument("--platform", required=True)
     summary.add_argument("--mode", required=True)
+
+    failure_result = commands.add_parser("failure-result")
+    failure_result.add_argument("--output", type=Path, required=True)
+    failure_result.add_argument("--platform", required=True)
+    failure_result.add_argument("--mode", required=True)
+    failure_result.add_argument("--failure-class", required=True)
+
+    inspect_result = commands.add_parser("inspect-result")
+    inspect_result.add_argument("--input", type=Path, required=True)
     return parser
 
 
@@ -593,6 +704,15 @@ def main() -> int:
                 args.platform,
                 args.mode,
             )
+        if args.command == "failure-result":
+            return toolchain_result_failure(
+                args.output,
+                args.platform,
+                args.mode,
+                args.failure_class,
+            )
+        if args.command == "inspect-result":
+            return inspect_toolchain_result(args.input)
     except ContractError as exc:
         fail(str(exc))
     return 2

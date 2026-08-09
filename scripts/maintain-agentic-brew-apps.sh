@@ -24,6 +24,9 @@ FAILED_ATTEMPTS_FILE=""
 RESULT_SEQUENCE=0
 CURRENT_PROBE_JSON=""
 CURRENT_PROBE_STATUS=""
+CURRENT_PROBE_EVIDENCE=""
+CURRENT_PROBE_NEXT_ACTION=""
+RESULT_PUBLISHED=0
 
 usage() {
   cat <<'USAGE'
@@ -188,18 +191,47 @@ FAILED_ATTEMPTS_FILE="$WORK_DIR/failed-attempts.tsv"
 : > "$ATTEMPTS_FILE"
 : > "$FAILED_ATTEMPTS_FILE"
 
+result_mode() {
+  if [ "$COMPARE_ONLY" -eq 1 ]; then
+    printf 'compare-only'
+  elif [ "$DRY_RUN" -eq 1 ]; then
+    printf 'dry-run'
+  else
+    printf 'update'
+  fi
+}
+
+publish_failure_result() {
+  local failure_class="$1"
+  [ -n "$RESULT_FILE" ] || return 0
+  python3 "$LINUX_HARDENING" failure-result \
+    --output "$RESULT_FILE" \
+    --platform "${OS_NAME:-$(uname -s)}" \
+    --mode "$(result_mode)" \
+    --failure-class "$failure_class" >/dev/null 2>&1 || true
+}
+
 cleanup() {
   if [ -n "$WORK_DIR" ] && [ -d "$WORK_DIR" ]; then
     rm -rf -- "$WORK_DIR"
   fi
 }
-handle_signal() {
-  local exit_code="$1"
-  trap - EXIT INT TERM
+finalize_exit() {
+  local exit_code="$?"
+  trap - EXIT
+  if [ "$RESULT_PUBLISHED" -ne 1 ] && [ -n "$RESULT_FILE" ]; then
+    publish_failure_result "ProducerExitedBeforeResult"
+    [ "$exit_code" -ne 0 ] || exit_code=2
+  fi
   cleanup
   exit "$exit_code"
 }
-trap cleanup EXIT
+handle_signal() {
+  local exit_code="$1"
+  trap - INT TERM
+  exit "$exit_code"
+}
+trap finalize_exit EXIT
 trap 'handle_signal 130' INT
 trap 'handle_signal 143' TERM
 
@@ -224,6 +256,36 @@ snapshot_registry() {
   local destination="$WORK_DIR/$name"
   "$@" > "$destination"
   printf '%s\n' "$destination"
+}
+
+parse_probe_fields() {
+  local probe_output="$1" label="$2"
+  local probe_json="$WORK_DIR/${label}.json"
+  local probe_fields="$WORK_DIR/${label}.tsv"
+  printf '%s' "$probe_output" > "$probe_json"
+  python3 - "$probe_json" "$probe_fields" <<'PY'
+import json
+import sys
+
+try:
+    with open(sys.argv[1], encoding="utf-8") as source:
+        value = json.load(source)
+    fields = (
+        str(value.get("status", "Unusable")),
+        str(value.get("sanitizedEvidence", "N/A")),
+        str(value.get("nextAction", "N/A")),
+    )
+except (OSError, UnicodeError, json.JSONDecodeError, TypeError, ValueError):
+    fields = (
+        "Unusable",
+        "Probe lieferte kein gueltiges Ergebnis / probe returned no valid result.",
+        "Probe-Erzeuger und Ergebnisvertrag pruefen / inspect the probe producer and result contract.",
+    )
+with open(sys.argv[2], "w", encoding="utf-8", newline="\n") as handle:
+    handle.write("\t".join(field.replace("\t", " ").replace("\n", " ") for field in fields) + "\n")
+PY
+  IFS=$'\t' read -r CURRENT_PROBE_STATUS CURRENT_PROBE_EVIDENCE CURRENT_PROBE_NEXT_ACTION \
+    < "$probe_fields"
 }
 
 mark_attempt() {
@@ -466,17 +528,20 @@ installed_registry_formulae() {
 }
 
 installed_requested_formulae() {
-  brew info --json=v2 --installed 2>/dev/null \
-    | python3 -c '
+  local inventory
+  inventory="$(brew info --json=v2 --installed 2>/dev/null)" || inventory='{"formulae":[]}'
+  python3 - "$inventory" <<'PY'
 import json
 import sys
 
-data = json.load(sys.stdin)
+try:
+    data = json.loads(sys.argv[1] or '{"formulae":[]}')
+except (json.JSONDecodeError, TypeError):
+    data = {"formulae": []}
 for formula in data.get("formulae", []):
     if any(item.get("installed_on_request") for item in formula.get("installed", [])):
         print(formula["full_name"])
-' \
-    | sort -u
+PY
 }
 
 installed_casks() {
@@ -590,18 +655,7 @@ probe_cli_tool() {
       -- "$command_name" "${args[@]}"
   )" || probe_exit=$?
   CURRENT_PROBE_JSON="$probe_output"
-  CURRENT_PROBE_STATUS="$(
-    python3 -c 'import json,sys; print(json.load(sys.stdin).get("status", "Unusable"))' \
-      <<< "$probe_output"
-  )"
-  CURRENT_PROBE_EVIDENCE="$(
-    python3 -c 'import json,sys; print(json.load(sys.stdin).get("sanitizedEvidence", "N/A"))' \
-      <<< "$probe_output"
-  )"
-  CURRENT_PROBE_NEXT_ACTION="$(
-    python3 -c 'import json,sys; print(json.load(sys.stdin).get("nextAction", "N/A"))' \
-      <<< "$probe_output"
-  )"
+  parse_probe_fields "$probe_output" "cli-probe-${tool_id}"
   if [ "$tool_id" = "swift" ] && [ "$OS_NAME" = "Linux" ] \
       && [ "$CURRENT_PROBE_STATUS" = "Available" ]; then
     expected_swift="$(
@@ -633,7 +687,7 @@ cli_tool_available() {
 }
 
 install_swift_tool() {
-  local id="$1" contract_json contract_status archive extracted post_install
+  local id="$1" contract_json contract_status archive extracted post_install contract_file
   local swift_env swiftly_command swift_version swiftly_platform url digest
   local contract_exit=0
 
@@ -654,9 +708,17 @@ install_swift_tool() {
       --os-release /etc/os-release \
       --architecture "$(uname -m)"
   )" || contract_exit=$?
-  contract_status="$(
-    python3 -c 'import json,sys; print(json.load(sys.stdin).get("status", "InvalidContract"))' \
-      <<< "$contract_json"
+  contract_file="$WORK_DIR/swift-contract.json"
+  printf '%s' "$contract_json" > "$contract_file"
+  contract_status="$(python3 - "$contract_file" <<'PY'
+import json
+import sys
+try:
+    with open(sys.argv[1], encoding="utf-8") as source:
+        print(json.load(source).get("status", "InvalidContract"))
+except (OSError, UnicodeError, json.JSONDecodeError, TypeError):
+    print("InvalidContract")
+PY
   )"
   if [ "$contract_exit" -ne 0 ] || [ "$contract_status" != "Supported" ]; then
     log "SWIFT CONTRACT: $contract_json"
@@ -664,11 +726,12 @@ install_swift_tool() {
     return 0
   fi
   IFS=$'\t' read -r swift_version swiftly_platform url digest <<< "$(
-    python3 -c '
+    python3 - "$contract_file" <<'PY'
 import json, sys
-value = json.load(sys.stdin)
+with open(sys.argv[1], encoding="utf-8") as source:
+    value = json.load(source)
 print("\t".join(value[key] for key in ("swiftVersion", "swiftlyPlatform", "url", "sha256")))
-' <<< "$contract_json"
+PY
   )"
 
   if [ "$DRY_RUN" -eq 1 ]; then
@@ -981,18 +1044,7 @@ maintain_powershell_modules() {
       --redact "$HOME" \
       -- pwsh "${arguments[@]}"
   )" || probe_exit=$?
-  CURRENT_PROBE_STATUS="$(
-    python3 -c 'import json,sys; print(json.load(sys.stdin).get("status", "Unusable"))' \
-      <<< "$probe_output"
-  )"
-  CURRENT_PROBE_EVIDENCE="$(
-    python3 -c 'import json,sys; print(json.load(sys.stdin).get("sanitizedEvidence", "N/A"))' \
-      <<< "$probe_output"
-  )"
-  CURRENT_PROBE_NEXT_ACTION="$(
-    python3 -c 'import json,sys; print(json.load(sys.stdin).get("nextAction", "N/A"))' \
-      <<< "$probe_output"
-  )"
+  parse_probe_fields "$probe_output" "powershell-module-probe"
   if [ "$probe_exit" -ne 0 ]; then
     final_status="$([ "$CURRENT_PROBE_STATUS" = "Missing" ] && printf 'StillMissing' || printf 'Failed')"
     log "WARN powershell module follow-up: $CURRENT_PROBE_STATUS"
@@ -1426,6 +1478,13 @@ python3 "$LINUX_HARDENING" summarize-results \
   --output "$RESULT_FILE" \
   --platform "$OS_NAME" \
   --mode "$result_mode" > "$summary_output" || result_status=$?
+if python3 "$LINUX_HARDENING" inspect-result --input "$RESULT_FILE" >/dev/null; then
+  RESULT_PUBLISHED=1
+else
+  publish_failure_result "ProducerInvalidFinalResult"
+  RESULT_PUBLISHED=1
+  result_status=2
+fi
 if [ -f "$RESULT_FILE" ]; then
   python3 - "$RESULT_FILE" <<'PY'
 import json

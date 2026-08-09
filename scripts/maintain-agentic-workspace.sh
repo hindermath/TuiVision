@@ -1182,14 +1182,12 @@ if { { [ "$fleet_ready" -eq 1 ] && [ "$LEASE_RECOVERY_READY" -eq 1 ]; } || [ "$C
     -OutputFormat Json >"$MODEL_ROUTING_RESULT_FILE" || routing_status=$?
   if [ "$routing_status" -eq 0 ]; then
     record_stage "model-routing" "Passed" 0 \
-      "Lokale Modellbindungen aktuell / local model bindings current" "N/A" \
-      "$MODEL_ROUTING_RESULT_FILE"
+      "Lokale Modellbindungen aktuell / local model bindings current" "N/A"
   else
     FINDINGS=$((FINDINGS + 1))
     record_stage "model-routing" "Blocked" 1 \
       "Lokales Modell-Routing benötigt eine ausdrückliche Aktualisierung / local model routing requires explicit refresh" \
-      "speckit.model-routing-refresh mit lokaler Autorität ausführen / run with local authority" \
-      "$MODEL_ROUTING_RESULT_FILE"
+      "speckit.model-routing-refresh mit lokaler Autorität ausführen / run with local authority"
   fi
 else
   record_stage "model-routing" "Skipped" 0 \
