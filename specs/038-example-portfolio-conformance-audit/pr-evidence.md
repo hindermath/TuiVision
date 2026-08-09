@@ -455,6 +455,44 @@ with 52/52 tests, no failure, and no skip. The mandatory manual counter was
 incremented to `1.38.753.441`; `--no-build --no-restore` reused the already
 green Release binaries while validating the current dataset.*
 
+## Delivery-Voraussetzung: Intake-Alignment / Delivery prerequisite: intake alignment
+
+Der erste PR-#144-Head zeigte einen veralteten Repository-Guard: Er verlangte
+genau sieben aktive Intakes und band Feature-Metadaten fest an Feature 037,
+obwohl der allgemeine Preset-Validator die sieben unveränderten Serienziele und
+den neuen, separat authorisierten `ReadyForReview`-Closure korrekt trennte.
+Die begrenzte Governance-Korrektur wurde in PR #145 mit 3 positiven und 16
+negativen Fixtures geliefert und als Merge-Commit `92efcf6` integriert. Alle
+drei Betriebssystem-Gates, CI-, Security-, DocFX-, Homogeneity- und
+Claude-Review-Checks waren grün; es gab keine Review-Threads. Der enge
+Admin-Bypass galt ausschließlich der offenen Human-Approval-Regel.
+
+*The first PR #144 head exposed a stale repository guard that required exactly
+seven active intakes and pinned feature metadata to Feature 037. The generic
+preset validator already distinguished the unchanged seven reviewed series
+targets from the separately authored `ReadyForReview` closure. PR #145
+delivered the bounded governance correction with 3 positive and 16 negative
+fixtures and merged as `92efcf6`. All three operating-system gates, CI,
+security, DocFX, homogeneity, and Claude review passed with no review thread;
+the narrow admin bypass covered only the remaining human-approval rule.*
+
+Merge-Commit `e2c40db` zog die Korrektur in Feature 038 ein. Der folgende
+Statistik- und Versionscheckpoint `84074f4` richtete den nummerierten Branch
+ohne neuen Build- oder Testaufruf auf `1.38.760.441` aus. Der aktualisierte
+Guard akzeptiert den vollständigen Feature-038-Zustand mit acht aktiven
+Intakes, hält den Closure aber außerhalb der sieben Ziel umfassenden Serie,
+außerhalb der akzeptierten Review-Evidence und ohne Ausführungsautorität.
+GATE-038-10 und GATE-038-11 bleiben bis zum aktualisierten Remote-Head und
+seiner tatsächlichen Delivery offen.
+
+*Merge commit `e2c40db` brought the correction into Feature 038. Statistics
+and version checkpoint `84074f4` aligned the numbered branch to
+`1.38.760.441` without another build or test invocation. The corrected guard
+accepts the complete eight-active-intake state while keeping the closure out
+of the seven-target series, accepted review evidence, and execution authority.
+GATE-038-10 and GATE-038-11 remain open until the updated remote head is
+actually validated and delivered.*
+
 ## Retrospektiv-Eingaben / Retrospective inputs
 
 Die tatsächliche Klassifikation bleibt der getrennten gerouteten
