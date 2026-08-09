@@ -521,3 +521,63 @@ deterministische Resume sind Feldnachweis, aber für sich kein Preset-Follow-up.
 *The original DocFX directory links are project-specific documentation
 maintenance. Their separate PR #143 correction and deterministic resume are
 field evidence, but not by themselves a preset follow-up.*
+
+## Delivery- und kausaler Abschluss / Delivery and causal closeout
+
+Der exakt geprüfte Feature-Head
+`ca0cdf413187efd4710a6bf6436f1863c67bcdcd` wurde durch
+[PR #144](https://github.com/hindermath/TuiVision/pull/144) als Merge-Commit
+`b59a3fe46e3868728be3557df7f367b8ab832db1` geliefert. Dessen Eltern sind der
+separat gelieferte Guard-Merge
+`92efcf6f2db832b33026ef83077c3e6d361abd79` aus PR #145 und der genaue
+Feature-Head. Nach dem Merge wurde der Feature-Branch gelöscht; der erste
+lokale Hauptbranch war sauber und erfüllte
+`HEAD == origin/main == b59a3fe46e3868728be3557df7f367b8ab832db1`.
+
+*The exact reviewed feature head was delivered through PR #144 as merge commit
+`b59a3fe46e3868728be3557df7f367b8ab832db1`. Its parents bind the separately
+delivered PR-145 guard merge and the exact feature head. The feature branch was
+deleted, and the first local default branch was clean and synchronized with
+`origin/main`.*
+
+Der finale PR-Head hatte 31 erfolgreiche technische Check-Einträge, einen für
+Pull Requests erwartungsgemäß übersprungenen Pages-Deploy-Job, null Fehler und
+null offene Checks. GraphQL meldete null Review-Threads und null
+PR-Konversationskommentare. Ein Copilot-Review wurde nicht erzeugt und bleibt
+als fehlender Review dokumentiert. Der eng begrenzte Admin-Bypass ersetzte nur
+die offene Human-Approval-Regel, nachdem alle technischen Gates grün waren.
+
+*The final PR head had 31 successful technical check entries, one expected
+skipped Pages deploy job, no failure, no pending check, no review thread, and
+no PR conversation comment. Copilot did not produce a review and remains
+recorded as missing. The narrow admin bypass replaced only the Human Approval
+rule after every technical gate had passed.*
+
+Die temporäre Exact-Head-Evidence bindet alle elf Primary-Gates, den
+Requirements-Hash
+`f0df0c810c1e041bc3ff3494c52a8a9257e303807ac36c696f218d87ad7f035e` und den
+Feature-Head `ca0cdf4`. Bash und PowerShell akzeptierten 11/11; der SHA-256 der
+nicht versionierten Evidence-Datei lautet
+`1e51f860a7a81ad416665e2fbee2e5545a77f672eb66adc7bbbeb4bf43966481`.
+GATE-038-10 und GATE-038-11 sind damit `Fulfilled`.
+
+*Temporary exact-head evidence binds all eleven primary gates, the accepted
+requirements hash, and feature head `ca0cdf4`. Bash and PowerShell accepted
+11/11, and the untracked evidence file has SHA-256
+`1e51f860a7a81ad416665e2fbee2e5545a77f672eb66adc7bbbeb4bf43966481`.
+GATE-038-10 and GATE-038-11 are therefore fulfilled.*
+
+Die geroutete Retrospektive entschied `Promote` für drei portable
+Evidence-Integritäts-Follow-ups: unversionierte Lieferdateien im
+Whitespace-Gate, semantische Completion-Predicates zusätzlich zu Exitcode 0
+und getrennte kryptografisch gebundene Pre-/Post-Merge-Snapshots. Der
+projektspezifische Guard, die DocFX-Linkkorrektur und alle
+TuiVision-Kardinalitäten werden nicht verallgemeinert. Der Portfolio-Status
+bleibt `AuditCompleteNoFindings`; der unabhängige Closure-Intake ist weiterhin
+nicht reviewt und wurde nicht gestartet.
+
+*The routed retrospective promoted three portable evidence-integrity
+follow-ups while rejecting the project-specific guard, DocFX link repair, and
+TuiVision cardinalities. Portfolio status remains
+`AuditCompleteNoFindings`; the independent closure intake is still unreviewed
+and was not started.*

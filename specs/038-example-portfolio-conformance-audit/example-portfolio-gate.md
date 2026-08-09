@@ -13,12 +13,12 @@ Kanonische Wahrheit: [example-portfolio-audit.json](example-portfolio-audit.json
 | GATE-038-07 Repository | Applicable | Fulfilled | 52/52 Audit, 298/298 Smokes, 940/940 Regression, alle fünf Assemblies über 70 % |
 | GATE-038-08 Documentation/A11Y | Applicable | Fulfilled | DocFX 0/0, Playwright/Axe 2/2 und UTF-8-Lynx bestanden |
 | GATE-038-09 Governance | Applicable | Fulfilled | Secret-, Supply-Chain-, Preset-, Routing-, Homogeneity- und Generated-Output-Scans bestanden |
-| GATE-038-10 Remote exact head | Applicable | DeferredToDelivery | Keine lokale Remote-Behauptung |
-| GATE-038-11 Merge/closeout | Applicable | DeferredToDelivery | Kein Commit/Push/PR/Merge in Implement |
+| GATE-038-10 Remote exact head | Applicable | Fulfilled | PR #144: Head `ca0cdf4`, 31 technische Erfolge, null offene oder fehlerhafte Checks, null Review-Threads; 11/11 Exact-Head-Gates bestanden |
+| GATE-038-11 Merge/closeout | Applicable | Fulfilled | Merge `b59a3fe`, Feature-Branch gelöscht, sauberer synchroner `main`, nicht-rekursiver Evidence-Closeout |
 
-*Portfolio, relation, findings, handoff, repository, documentation, and
-governance gates passed their local checkpoints. Remote and merge claims are
-deferred to delivery.*
+*Portfolio, relation, findings, handoff, repository, documentation, governance,
+remote exact-head, and merge/closeout gates passed their applicable
+checkpoints.*
 
 Die Governance-Entscheidung ist abgeschlossen: 15 anwendbare Zeilen sind
 `Fulfilled`, neun triggerbasierte `N/A`-Zeilen bleiben ehrlich `Not Assessed`,
@@ -40,5 +40,17 @@ Remote-, Merge- oder Post-Merge-Erfolg.
 
 *After the green final Analyze pass, the local `PortfolioGate` is
 `AuditCompleteNoFindings`. This closes Feature 038 as an audit and handoff; it
-does not claim `PortfolioConformantAndLearningReady` or any remote, merge, or
-post-merge success.*
+does not claim `PortfolioConformantAndLearningReady`. Remote exact-head and
+post-merge delivery success are recorded separately in `delivery-closeout.md`.*
+
+Der exakt geprüfte Head `ca0cdf413187efd4710a6bf6436f1863c67bcdcd`
+wurde durch PR #144 als Merge-Commit
+`b59a3fe46e3868728be3557df7f367b8ab832db1` geliefert. Beide installierten
+Gate-Validatoren akzeptierten alle elf Primary-Gates; der Evidence-Hash lautet
+`1e51f860a7a81ad416665e2fbee2e5545a77f672eb66adc7bbbeb4bf43966481`.
+
+*Reviewed head `ca0cdf413187efd4710a6bf6436f1863c67bcdcd` was delivered
+through PR #144 as merge commit
+`b59a3fe46e3868728be3557df7f367b8ab832db1`. Both installed gate validators
+accepted all eleven primary gates; the evidence hash is
+`1e51f860a7a81ad416665e2fbee2e5545a77f672eb66adc7bbbeb4bf43966481`.*
