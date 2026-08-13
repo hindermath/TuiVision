@@ -19,6 +19,11 @@ public static class MaintenanceSelectionValidator
             errors.Add("SCRIPTS_ONLY_OPTIONAL_CONFLICT");
         }
 
+        if (selection.ScriptsOnly && selection.CleanupProfile != StorageCleanupProfile.None)
+        {
+            errors.Add("SCRIPTS_ONLY_STORAGE_CONFLICT");
+        }
+
         if (selection.RepairDrift && selection.Mode != MaintenanceMode.Update)
         {
             errors.Add("REPAIR_REQUIRES_UPDATE");
@@ -27,6 +32,13 @@ public static class MaintenanceSelectionValidator
         if (selection.Mode == MaintenanceMode.Update && !selection.Confirmed)
         {
             errors.Add("UPDATE_CONFIRMATION_REQUIRED");
+        }
+
+        if (selection.Mode == MaintenanceMode.Update &&
+            selection.CleanupProfile == StorageCleanupProfile.Deep &&
+            !selection.ConfirmDeepCleanup)
+        {
+            errors.Add("DEEP_CLEANUP_CONFIRMATION_REQUIRED");
         }
 
         return new SelectionValidationResult(errors.Count == 0, errors);

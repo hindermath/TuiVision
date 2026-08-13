@@ -1049,6 +1049,63 @@ def read_toolchain_result(path: pathlib.Path) -> tuple[dict | None, str | None]:
     return result, None
 
 
+def read_storage_result(path: pathlib.Path) -> tuple[dict | None, str | None]:
+    """Read the atomically published storage result with a fail-closed schema."""
+    if not path.exists():
+        return None, "ResultMissing"
+    if not path.is_file():
+        return None, "ResultNotFile"
+    try:
+        payload = path.read_bytes()
+    except OSError:
+        return None, "ResultUnreadable"
+    if not payload.strip():
+        return None, "ResultEmpty"
+    try:
+        text = payload.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        return None, "ResultInvalidUtf8"
+    try:
+        result = json.loads(text)
+    except json.JSONDecodeError:
+        failure = "ResultTruncated" if not text.rstrip().endswith("}") else "ResultMalformed"
+        return None, failure
+    if not isinstance(result, dict):
+        return None, "ResultSchemaMismatch"
+    required_types = {
+        "schemaVersion": str,
+        "runId": str,
+        "platform": str,
+        "mode": str,
+        "profile": str,
+        "overallStatus": str,
+        "exitCode": int,
+        "repositories": list,
+        "providers": list,
+        "warnings": list,
+        "nextAction": str,
+    }
+    if any(not isinstance(result.get(key), expected) for key, expected in required_types.items()):
+        return None, "ResultSchemaMismatch"
+    expected_exit = 2 if result["overallStatus"] == "FAILED" else 0
+    if (
+        result["schemaVersion"] != "1.0"
+        or result["platform"] not in {"darwin", "linux", "win32"}
+        or result["mode"] not in {"update", "dry-run", "check-only"}
+        or result["profile"] not in {"safe", "deep", "none"}
+        or result["overallStatus"] not in {"SUCCESS", "SUCCESS_WITH_WARNINGS", "FAILED"}
+        or result["exitCode"] != expected_exit
+        or any(not isinstance(item, str) for item in result["warnings"])
+    ):
+        return None, "ResultSchemaMismatch"
+    try:
+        if str(uuid.UUID(result["runId"])) != result["runId"]:
+            return None, "ResultSchemaMismatch"
+    except ValueError:
+        return None, "ResultSchemaMismatch"
+    return result, None
+
+
 def record_stage(args: argparse.Namespace) -> int:
     try:
         report = json.loads(args.report.read_text(encoding="utf-8"))
@@ -1057,14 +1114,17 @@ def record_stage(args: argparse.Namespace) -> int:
         return 2
     stages = report.setdefault("stages", [])
     stages[:] = [item for item in stages if item.get("stageId") != args.stage_id]
-    stages.append({
+    stage = {
         "stageId": args.stage_id,
         "status": args.status,
         "exitCode": args.exit_code,
         "durationMs": args.duration_ms,
         "summary": args.summary,
         "nextAction": args.next_action,
-    })
+    }
+    if args.evidence_path:
+        stage["evidencePath"] = str(args.evidence_path)
+    stages.append(stage)
     if args.toolchain_results:
         toolchain_result, failure_class = read_toolchain_result(args.toolchain_results)
         if failure_class:
@@ -1091,6 +1151,20 @@ def record_stage(args: argparse.Namespace) -> int:
         }
         if "failureClass" in toolchain_result:
             report["toolchainResult"]["failureClass"] = toolchain_result["failureClass"]
+    if args.storage_results:
+        storage_result, failure_class = read_storage_result(args.storage_results)
+        if failure_class:
+            print(
+                "ERROR\tstorage-results\tFAILED\t"
+                f"{failure_class}\tRegenerate the storage result atomically."
+            )
+            return 2
+        assert storage_result is not None
+        if report.get("runId") and storage_result["runId"] != report["runId"]:
+            print("ERROR\tstorage-results\tFAILED\tRunMismatch")
+            return 2
+        report["storageCleanup"] = storage_result
+        report.setdefault("artifacts", {})["storageReportPath"] = str(args.storage_results)
     report["completedAt"] = utc_now()
     statuses = {item.get("status") for item in stages}
     if "Interrupted" in statuses:
@@ -1419,6 +1493,8 @@ def build_parser() -> argparse.ArgumentParser:
     stage.add_argument("--summary", required=True)
     stage.add_argument("--next-action", default="N/A")
     stage.add_argument("--toolchain-results", type=pathlib.Path)
+    stage.add_argument("--storage-results", type=pathlib.Path)
+    stage.add_argument("--evidence-path", type=pathlib.Path)
     stage.set_defaults(handler=record_stage)
     finalize = subparsers.add_parser("finalize")
     finalize.add_argument("--report", type=pathlib.Path, required=True)

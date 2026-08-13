@@ -29,6 +29,8 @@ Die TUI zeigt die typisierte Auswahl und den entsprechenden Shell-Befehl,
 bevor sie genau einen Engine-Prozess startet. Eine echte Mutation benötigt
 eine Bestätigung mit Standard `Nein`. Die Oberfläche erteilt keine
 Repository-, Provider-, Secret- oder Administratorrechte.
+Das Storage-Profil ist sichtbar `Safe` vorausgewählt. `Deep` benötigt bei
+einem echten Lauf eine eigene zweite Bestätigung.
 
 *With no options, a fully interactive terminal first opens the maintenance
 TUI with Dry-run selected. Redirected input or output preserves the previous
@@ -64,7 +66,11 @@ Nach dem Engine-Start gilt folgende Reihenfolge:
    erfordert einen eigenen Branch beziehungsweise PR.
 9. Homebrew/apt oder WinGet, Required-CLI-Tools, VS-Code-Extensions und
    Required-Agenten-CLIs werden gepflegt.
-10. Repository-Paritaet und Wartungspaket werden abschliessend erneut geprueft.
+10. Lokales Modell-Routing wird schreibfrei geprüft.
+11. Die Storage-Stufe inventarisiert und bereinigt nach dem gewählten Profil
+    verifizierte Level-2-Buildausgaben, Caches und ausschließlich dangling
+    Container-Images. `Safe` ist Standard; `scripts-only` verwendet `None`.
+12. Repository-Paritaet und Wartungspaket werden abschliessend erneut geprueft.
 
 *Control evidence is created first. The Remote Freshness Barrier then attempts
 bounded fetches for Level 0 and every active Git target before any domain
@@ -140,7 +146,9 @@ Pro Home-Verzeichnis verhindert ein Lock parallele Wartungslaeufe. Pro Lauf
 entstehen ein vollstaendiges lokales Log unter `~/.home-baseline/logs/` und ein
 JSON-Bericht unter `~/.home-baseline/reports/`. Beide verwenden dieselbe Run-ID.
 Der Toolchain-Kindprozess liefert seine geordneten Einzelresultate an denselben
-Bericht. Normaler Abschluss, ein spaeter Fehler sowie `INT`/`TERM` ersetzen
+Bericht. Die Storage-Stufe bettet ihren privaten atomaren Detailbericht mit
+Profil, Pressure Mode, Kandidaten, Bytes, Non-MSL-Begründungen und Warnungen
+ebenfalls ein. Normaler Abschluss, ein spaeter Fehler sowie `INT`/`TERM` ersetzen
 einen Zwischenstatus genau einmal atomar. Terminal, Log, Reportstatus,
 letzte Stufe und Prozess-Exitcode bleiben dadurch konsistent. Eigene reparierte
 Dirty-Zwischenstaende werden nur mit
@@ -176,6 +184,8 @@ after-hashes; unknown or partial changes block.*
 | `--repair-drift` | `-RepairDrift` | Wartungspaket lokal reparieren; nie committen/pushen / Repair package locally; never commit/push |
 | `--include-optional` | `-IncludeOptional` | Auch optionale Maschinenpakete installieren / Install optional machine packages too |
 | `--allow-admin-prompts` | `-AllowAdminPrompts` | Administratorabfragen nur fuer diesen Lauf erlauben / Allow administrator prompts for this run only |
+| `--cleanup-profile safe\|deep\|none` | `-CleanupProfile Safe\|Deep\|None` | Storage-Profil; Standard Safe / Storage profile; default Safe |
+| `--confirm-deep-cleanup` | `-ConfirmDeepCleanup` | Echten Deep-Lauf zusätzlich bestätigen / Confirm an update Deep run separately |
 | `--manifest PATH` | `-ManifestPath PATH` | Alternatives Fleet-Manifest / Alternative fleet manifest |
 | `--home-dir PATH` | `-HomeDir PATH` | Alternatives Home fuer Tests/Profile / Alternative home for tests/profiles |
 | — | `-GitRetryAttempts N` | Begrenzte Versuche nur fuer transiente Git-Netzwerkfehler / Bounded attempts for transient Git network failures only |
@@ -184,7 +194,9 @@ after-hashes; unknown or partial changes block.*
 
 `--check-only` / `-CheckOnly` und Vorschau sind gegenseitig exklusiv.
 Drift-Reparatur ist nur in einem echten Lauf erlaubt. Optionale Pakete sind im
-`scripts-only`-Modus nicht anwendbar. Administratorinteraktion ist
+`scripts-only`-Modus nicht anwendbar; dieser Modus erzwingt Storage-Profil
+`None`. Ein echter Deep-Lauf erfordert eine eigene Bestätigung.
+Administratorinteraktion ist
 standardmaessig gesperrt. Die Freigabe gilt nur fuer den aktuellen Prozess und
 speichert keine Zugangsdaten.
 
@@ -280,6 +292,8 @@ bash scripts/maintain-agentic-workspace.sh --tui
 bash scripts/maintain-agentic-workspace.sh --plain-ui
 bash scripts/maintain-agentic-workspace.sh --check-only
 bash scripts/maintain-agentic-workspace.sh --dry-run
+bash scripts/maintain-agentic-workspace.sh --dry-run --cleanup-profile safe
+bash scripts/maintain-agentic-workspace.sh --cleanup-profile deep --confirm-deep-cleanup
 bash scripts/maintain-agentic-workspace.sh --manifest /tmp/fleet.json --home-dir /tmp/test-home --dry-run
 bash scripts/maintain-agentic-workspace.sh
 bash scripts/maintain-agentic-workspace.sh --scripts-only --repair-drift
@@ -290,6 +304,8 @@ pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1 -Tui
 pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1 -PlainUi
 pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1 -CheckOnly
 pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1 -WhatIf
+pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1 -WhatIf -CleanupProfile Safe
+pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1 -CleanupProfile Deep -ConfirmDeepCleanup
 pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1 -WhatIf -GitRetryAttempts 3 -GitTimeoutSeconds 300 -WinGetTimeoutSeconds 1800
 pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1 -ManifestPath C:\Temp\fleet.json -HomeDir C:\Temp\TestHome -WhatIf
 pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1
@@ -298,6 +314,7 @@ pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1 -ScriptsOnly -Repai
 
 ## SEE ALSO
 
-`maintain-agentic-brew-apps(1)`, `maintain-agentic-winget-apps(1)`,
+`maintain-workspace-storage(1)`, `maintain-agentic-brew-apps(1)`,
+`maintain-agentic-winget-apps(1)`,
 `propagate-agentic-toolchain-maintenance(1)`, `register-level2-repository(1)`,
 `sync-home(1)`

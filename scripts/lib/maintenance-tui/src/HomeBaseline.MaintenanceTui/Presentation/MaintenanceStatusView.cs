@@ -17,6 +17,7 @@ public static class MaintenanceStatusView
         return
         [
             $"Modus / mode: {selection.Mode}",
+            $"Storage-Profil / cleanup profile: {selection.CleanupProfile}",
             $"Plattform / platform: {context.Platform}-{context.Architecture}",
             $"Quelle / source: {source}",
             $"Home-Verzeichnis / home directory: {context.HomeDirectory}",

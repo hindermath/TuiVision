@@ -641,7 +641,7 @@ fortgeschrieben.
 | 2026-05-10 | `/speckit-analyze`-Remediation fuer `012-interactive-wave2-demos` | Die vier vor `/speckit-implement` relevanten Analysefunde wurden in Plan-/Task-Artefakten bereinigt: Constitution-konformer Lastenheft-Rename ist jetzt per `scripts/rename-lastenheft.*` als letzter Polish-Schritt formuliert, die PR-Beschreibung ist eigener Abschlussnachweis mit betroffenen Artefakten, Validierung, Sample-Output und Sicherheitsrisiko-Aussage, Release-Build und Release-Testbefehle sind explizite Merge-Evidence, und `Directory.Build.props`/Build-Counter-Ausrichtung steht vor Build-/Testlaeufen. Die Aufgabenliste umfasst danach 89 Tasks. Validierung: erneute Aufgabenzaehlung `89`, `git diff --check` sauber; keine Build-/Testausfuehrung, weil nur Planungs- und Nachweisdokumente geaendert wurden. |
 | 2026-05-10 | Wave-1-Folge-Lastenhefte fuer zweistufiges Beispielmuster | Zwei neue Spec-Kit-Intake-Dateien wurden als Folgefeatures nach `012-interactive-wave2-demos` angelegt: `Lastenheft_Wave1-Functional-Hardening.md` prueft und haertet Desklogo, MsgCls, Tutorial und Videomode fachlich gegen die historischen `.cc`-/`.cpp`-/Header-Quellen unter `tv203s/`; das inzwischen umbenannte und geschaerfte `Lastenheft_Wave1-Visual-Component-Remediation.md` baut danach auf den gehaerteten Funktionen sichtbare normale CLI-Demos mit Menue-/Status-/Tastatur-/Command-Pfaden und app-loop-basierten Smoke-Tests. Damit bleibt 012 im Scope geschlossen, waehrend das aus 011/012 gewonnene zweistufige Muster fuer Wave 1 unmittelbar als Specify-Eingabe bereitsteht. Damaliges Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+674` Lastenheft-Dokumentationszeilen. Konservative Manualreferenz: 80 Zeilen/Tag = `8,4` Tage (ca. `65,7` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `5,4` Tage (ca. `42,1` Stunden); sichtbares Arbeitsfenster: kurze Agentennacharbeit am 2026-05-10, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 | 2026-05-10 | PR-#27-Versionserzaehlung und Wave-1-Lastenheft-Commit vorbereitet | Die zwei offenen Copilot-Threads zu PR #27 wurden lokal korrigiert: `Directory.Build.props` steht fuer den naechsten 012-Branch-Commit konsistent auf `1.12.8.27`, die fruehere Statistikzeile behauptet keine veraltete aktuelle Version mehr, und die PR-Beschreibung wird nach dem Push auf denselben Versionsstand aktualisiert. Die beiden neuen Wave-1-Lastenhefte bleiben im selben Commit enthalten, damit die Folgefeature-Intakes gemeinsam mit der Review-Korrektur versioniert werden. Validierung: `git diff --check`; keine Build-/Testausfuehrung, weil nur Dokumentation und Versionsmetadaten geaendert wurden. |
-| 2026-05-10 | Claude-Code-Review-Remediation fuer `012-interactive-wave2-demos`-Tasks | Die von Claude Code reviewten 012-Aufgaben wurden vor dem Implementierungsstart weiter geschaerft: `DirectHelperUsage` ist jetzt als explizite T018-API vor den app-loop-Smokes verankert, legacy direct-helper-only Tests muessen geloescht oder als Setup/Supplemental klassifiziert werden, historische Quellenreviews und Evidence-Matrix-Updates schreiben nicht mehr parallel in dieselben Markdown-Zeilen, Demo-Omissionen werden als PR-Evidence-Abweichung statt als Runtime-UI-State behandelt, und die finale Versionierung ist fuer den neunten 012-Branch-Commit auf `1.12.9.27` ausgerichtet. Validierung: `/speckit-analyze` Read-only-Gegenpruefung mit 100 % Requirements-Abdeckung, `git diff --check`; keine Build-/Testausfuehrung, weil nur Aufgaben- und Statistikdokumentation plus Versionsmetadaten geaendert wurden. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+3` Task-Dokumentationszeilen netto plus diese Statistikfortschreibung; `Directory.Build.props` ist reine Versionsmetadatenpflege. |
+| 2026-05-10 | Claude-Code-Review-Remediation fuer `012-interactive-wave2-demos`-Tasks | Die von Claude Code reviewten 012-Aufgaben wurden vor dem Implementierungsstart weiter geschaerft: `DirectHelperUsage` ist jetzt als explizite T018-API vor den app-loop-Smokes verankert, legacy direct-helper-only Tests muessen geloescht oder als Setup/Supplemental klassifiziert werden, historische Quellenreviews und Evidence-Matrix-Updates schreiben nicht mehr parallel in dieselben Markdown-Zeilen, Demo-Omissionen werden als PR-Evidence-Abweichung statt als Runtime-UI-State behandelt, und die finale Versionierung ist fuer den neunten 012-Branch-Commit auf `1.12.9.27` ausgerichtet. Validierung: `/speckit-analyze` Read-only-Gegenpruefung mit 100 % Requirements-Abdeckung, `git diff --check`; keine Build-/Testausfuehrung, weil nur Aufgaben- und Statistikdokumentation plus Versionsmetadaten geaendert wurden. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+3` Nettozeilen in der Task-Dokumentation plus diese Statistikfortschreibung; `Directory.Build.props` ist reine Versionsmetadatenpflege. |
 | 2026-05-10 | `/speckit-implement` fuer `012-interactive-wave2-demos` | Die interaktive Showcase-Stufe fuer Welle 2 wurde umgesetzt: alle elf Wave-2-Beispiele besitzen sichtbare normale CLI-Startbildschirme, Menue-/Command-Pfade, text-first Rueckmeldungen und app-loop-basierte Smoke-Nachweise; direkte Helfer sind nur noch Setup- oder Supplemental-Proof. Aktualisiert wurden Beispielcode, Example-Smoke-Tests, Guides, README, `Pflichtenheft.md`, Architektur-/Security-Nachweise, Agent-Guidance und das umbenannte Lastenheft `Lastenheft_Interactive-Wave2-Demos.012-interactive-wave2-demos.md`. Validierung: `dotnet build --configuration Release` gruen, Example-Smoke `73/73`, voller Release-Testlauf `478/478`, Coverage-Gate (`Core` `89,78 %`, `Controls` `84,84 %`, `Serialization` `87,95 %`, `Compatibility` `80,55 %`, `Drivers.Console` `81,70 %`), `dotnet format --verify-no-changes`, `docfx docfx.json`, `npm run test:docfx` mit `2/2` Playwright/Axe-Smokes, elf manuelle `dotnet run --project examples/<Name> --configuration Release --no-build`-Startupchecks und `git diff --check`; nach der Commit-Freigabe wurde zusaetzlich der finale Versionierungs-Build auf `1.12.10.35` mit 0 Warnungen und 0 Fehlern ausgefuehrt. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: ca. `+1384` Produktions-/Beispielcode-Zeilen, `+505` Testzeilen inklusive zwei neuer Smoke-Hilfsdateien, ca. `+330` Dokumentations-/Nachweis-/Guidance-Zeilen plus diese Statistikfortschreibung; `Directory.Build.props` steht nach der branchkonformen Commit-Ausrichtung auf `1.12.10.35`. Konservative Manualreferenz fuer rund `2219` fachliche Netto-Zeilen: `27,7` Tage (ca. `216,4` Stunden); Thorsten-Solo-Referenz: `17,8` Tage (ca. `138,5` Stunden); sichtbares Arbeitsfenster: 1 Agentensitzung am 2026-05-10, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 | 2026-05-11 | Lastenheft fuer Wave-2-Visual-Component-Remediation | `Lastenheft_Wave2-Visual-Component-Remediation.md` wurde als direkte Spec-Kit-Eingabedatei fuer `013-wave2-visual-component-remediation` angelegt. Das Dokument haelt die manuelle Review-Erkenntnis fest, dass `012-interactive-wave2-demos` zwar App-Loop-Menues und text-first Rueckmeldungen liefert, aber die historischen sichtbaren Controls, Dialoge, Fenster und View-Gruppen in mehreren Wave-2-Beispielen noch nicht als primaere UI-Komposition zeigt. Es definiert pro Beispiel historische Quellen, sichtbare Hauptidee, aktuelle Luecke, Zielzustand, Acceptance-Kriterien und einen kopierbaren `/speckit-specify`-Prompt; die bisherige `TStaticText`-Rueckmeldung wird dabei als Statuszeilen-/Statusbereichsfeedback erhalten und durch ein Drei-Schichten-Modell aus Hauptkomponente, Statuszeile und Beschreibungspfad eingeordnet. Netto-Aenderungsvolumen vor diesem Ledger-Eintrag: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+539` Lastenheft-Dokumentationszeilen plus diese Statistikfortschreibung. Konservative Manualreferenz: 80 Zeilen/Tag = `6,7` Tage (ca. `52,6` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `4,3` Tage (ca. `33,6` Stunden); sichtbares Arbeitsfenster: kurze Agentennacharbeit am 2026-05-11, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
 | 2026-05-11 | Wave-1-Visual-Component-Remediation-Lastenheft abgenommen | Das fruehere Interactive-Wave1-Lastenheft wurde per `git mv` zu `Lastenheft_Wave1-Visual-Component-Remediation.md` umbenannt und auf den abgenommenen Remediation-Zuschnitt gebracht. Das Dokument spiegelt jetzt die historischen Wave-1-Beispiele `Desklogo`, `MsgCls`, `Tutorial` und `Videomode`, fordert sichtbare Hauptflaechen-, Statuszeilen- und Beschreibungspfad-Nachweise und uebernimmt dieselbe Prueflogik wie das aktuelle Wave-2-Visual-Remediation-Lastenheft. Die vorherige 356-Zeilen-Fassung wurde durch eine 497-Zeilen-Fassung ersetzt; Netto-Aenderungsvolumen gegenueber der Vorfassung: `0` Produktionscode-Zeilen, `0` Testcode-Zeilen, `+141` Lastenheft-Dokumentationszeilen plus Referenz- und Statistikpflege. Konservative Manualreferenz fuer die Netto-Dokumentationsaenderung: 80 Zeilen/Tag = `1,8` Tage (ca. `13,7` Stunden); Thorsten-Solo-Referenz: 125 Zeilen/Tag = `1,1` Tage (ca. `8,8` Stunden); sichtbares Arbeitsfenster: kurze Agentennacharbeit am 2026-05-11, als blended repository speedup und nicht als Stopwatch-Messung zu lesen. |
@@ -1199,29 +1199,29 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 607308 lines |
-| Textdateien / Text files | 3020 |
-| Beobachtbarer Zeitraum / Observable period | 2025-08-17..2026-08-09 |
-| Aktivtage / Active days | 87 |
-| Relevante Commits / Relevant commits | 547 |
-| Zeilen je Aktivtag / Lines per active day | 6980.6 |
+| Textbasis / Text base | 611281 lines |
+| Textdateien / Text files | 3029 |
+| Beobachtbarer Zeitraum / Observable period | 2025-08-17..2026-08-13 |
+| Aktivtage / Active days | 88 |
+| Relevante Commits / Relevant commits | 548 |
+| Zeilen je Aktivtag / Lines per active day | 6946.4 |
 | Peak-Tag im Fenster / Peak day in window | 2026-03-22 / 321183 |
 | Peak-Woche im Fenster / Peak week in window | 2026-03-22 / 373576 |
 | Laengste Serie / Longest streak | 17 days |
-| Speedup vs. 80 lines/day | 87.3x |
-| Speedup vs. 125 lines/day | 55.8x |
-| Methodik / Methodology | v2; source `4e9edcd5dd8e` |
+| Speedup vs. 80 lines/day | 86.8x |
+| Speedup vs. 125 lines/day | 55.6x |
+| Methodik / Methodology | v2; source `71db7dc15436` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
-Produktiv / Production          [#####...............]  22.6% | 137243
-Tests                           [##..................]   7.8% | 47069
-Dokumentation / Documentation   [#########...........]  43.7% | 265211
-Skripte / Scripts               [#...................]   3.3% | 20222
+Produktiv / Production          [####................]  22.5% | 137243
+Tests                           [##..................]   8.0% | 48722
+Dokumentation / Documentation   [#########...........]  43.4% | 265351
+Skripte / Scripts               [#...................]   3.7% | 22402
 Konfiguration / Configuration   [#...................]   6.2% | 37729
 Daten und Medien / Data and media [#...................]   0.0% | 1
-Sonstiger Text / Other text     [###.................]  16.4% | 99833
+Sonstiger Text / Other text     [###.................]  16.3% | 99833
 ```
 
 Die Balken teilen die aktuelle getrackte Textbasis in stabile Kategorien. Prozent und Zeilenwert sind die genaue, textorientierte Aussage.
@@ -1244,10 +1244,10 @@ Sa/Sa  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 ```text
 Wochen / Weeks 27..52 | 2026-02-15..2026-08-15
 So/Su  0 0 4 4 0 4 4 0 4 0 0 4 4 0 0 4 0 4 0 0 0 4 4 4 1 4
-Mo/Mo  0 0 0 0 4 4 4 0 1 4 0 4 0 0 0 1 0 2 0 3 1 4 4 0 0 -
-Di/Tu  0 0 0 0 3 3 4 0 0 0 0 3 4 0 3 2 0 0 0 2 0 4 4 4 0 -
-Mi/We  0 0 0 0 1 4 0 0 0 3 0 4 1 0 0 2 0 4 0 2 0 4 2 4 0 -
-Do/Th  0 0 0 0 0 0 0 0 0 0 4 0 0 3 3 3 4 2 0 0 0 4 4 0 0 -
+Mo/Mo  0 0 0 0 4 4 4 0 1 4 0 4 0 0 0 1 0 2 0 3 1 4 4 0 0 0
+Di/Tu  0 0 0 0 3 3 4 0 0 0 0 3 4 0 3 2 0 0 0 2 0 4 4 4 0 0
+Mi/We  0 0 0 0 1 4 0 0 0 3 0 4 1 0 0 2 0 4 0 2 0 4 2 4 0 0
+Do/Th  0 0 0 0 0 0 0 0 0 0 4 0 0 3 3 3 4 2 0 0 0 4 4 0 0 4
 Fr/Fr  0 0 4 0 4 4 4 0 2 4 0 3 1 4 3 0 0 3 2 3 4 4 4 1 0 -
 Sa/Sa  0 0 0 0 4 4 0 0 0 0 4 4 0 0 4 0 4 4 0 4 4 2 4 2 4 -
 ```
@@ -1409,8 +1409,8 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 
 ```text
 Scale: 0..100x
-80 lines/day       [#################...] 87.3x
-125 lines/day      [###########.........] 55.8x
+80 lines/day       [#################...] 86.8x
+125 lines/day      [###########.........] 55.6x
 ```
 
 Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen Referenzen. Sie messen keine Arbeitszeit.
@@ -1423,7 +1423,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..10000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [##############......] 6980.6
+Visible repository [##############......] 6946.4
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -1432,9 +1432,9 @@ Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schre
 
 ### Textalternative / Text Alternative
 
-DE: Das Fenster beginnt am 2025-08-17 und endet am 2026-08-09. Es enthaelt 87 aktive und 271 inaktive vergangene Tage. Peak-Tag: 2026-03-22 / 321183. Peak-Woche: 2026-03-22 / 373576. Laengste Serie: 17 Tage (2026-07-10..2026-07-26).
+DE: Das Fenster beginnt am 2025-08-17 und endet am 2026-08-13. Es enthaelt 88 aktive und 274 inaktive vergangene Tage. Peak-Tag: 2026-03-22 / 321183. Peak-Woche: 2026-03-22 / 373576. Laengste Serie: 17 Tage (2026-07-10..2026-07-26).
 
-*EN: The window starts on 2025-08-17 and ends on 2026-08-09. It contains 87 active and 271 inactive elapsed days. Peak day: 2026-03-22 / 321183. Peak week: 2026-03-22 / 373576. Longest streak: 17 days (2026-07-10..2026-07-26).*
+*EN: The window starts on 2025-08-17 and ends on 2026-08-13. It contains 88 active and 274 inactive elapsed days. Peak day: 2026-03-22 / 321183. Peak week: 2026-03-22 / 373576. Longest streak: 17 days (2026-07-10..2026-07-26).*
 
 | Monat / Month | Geaenderte Textzeilen / Changed text lines |
 |---|---:|
@@ -1449,6 +1449,6 @@ DE: Das Fenster beginnt am 2025-08-17 und endet am 2026-08-09. Es enthaelt 87 ak
 | 2026-05 | 273853 |
 | 2026-06 | 42176 |
 | 2026-07 | 205615 |
-| 2026-08 | 17601 |
+| 2026-08 | 21644 |
 
 <!-- project-statistics-v2:end -->

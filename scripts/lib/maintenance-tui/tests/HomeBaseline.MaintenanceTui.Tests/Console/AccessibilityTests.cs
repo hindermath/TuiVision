@@ -96,6 +96,7 @@ public sealed class AccessibilityTests
                 "/repo/scripts/maintain-agentic-workspace.sh"));
 
         StringAssert.Contains(output, "Modus / mode: DryRun");
+        StringAssert.Contains(output, "Storage-Profil / cleanup profile: Safe");
         StringAssert.Contains(output, "Plattform / platform: MacOs-Arm64");
         StringAssert.Contains(output, "Quelle / source:");
         StringAssert.Contains(output, "Home-Verzeichnis / home directory:");
@@ -126,6 +127,7 @@ public sealed class AccessibilityTests
         console.Input.PushTextWithEnter(string.Empty);
         console.Input.PushTextWithEnter(string.Empty);
         console.Input.PushTextWithEnter(string.Empty);
+        console.Input.PushTextWithEnter(string.Empty);
 
         var selection = new EnhancedMaintenancePrompt(console).ReadSelection("/tmp/home");
 
@@ -133,9 +135,11 @@ public sealed class AccessibilityTests
         Assert.AreEqual(MaintenanceMode.DryRun, selection.Mode);
         Assert.IsFalse(selection.ScriptsOnly);
         Assert.IsFalse(selection.IncludeOptional);
+        Assert.AreEqual(StorageCleanupProfile.Safe, selection.CleanupProfile);
         StringAssert.Contains(console.Output, "Modus wählen / Select mode");
         StringAssert.Contains(console.Output, "Nur Skripte");
         StringAssert.Contains(console.Output, "Optionale Werkzeuge");
+        StringAssert.Contains(console.Output, "Storage-Bereinigung");
     }
 
     [TestMethod]

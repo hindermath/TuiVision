@@ -34,9 +34,30 @@ public sealed class EnhancedMaintenancePrompt
         var includeOptional = !scriptsOnly && _console.Confirm(
             "Optionale Werkzeuge einbeziehen? / Include optional tools?",
             false);
+        var cleanupProfile = scriptsOnly
+            ? StorageCleanupProfile.None
+            : _console.Prompt(
+                new SelectionPrompt<StorageCleanupProfile>()
+                    .Title("Storage-Bereinigung wählen / Select storage cleanup")
+                    .AddChoices(
+                        StorageCleanupProfile.Safe,
+                        StorageCleanupProfile.None,
+                        StorageCleanupProfile.Deep)
+                    .DefaultValue(StorageCleanupProfile.Safe)
+                    .UseConverter(CleanupProfileLabel));
         var repairDrift = mode == MaintenanceMode.Update && _console.Confirm(
             "Wartungspaket-Drift lokal reparieren? / Repair maintenance-package drift locally?",
             false);
+        var deepConfirmationRequired = mode == MaintenanceMode.Update &&
+                                       cleanupProfile == StorageCleanupProfile.Deep;
+        var confirmDeepCleanup = deepConfirmationRequired && _console.Confirm(
+            "Deep-Bereinigung ausdrücklich bestätigen? / Explicitly confirm deep cleanup?",
+            false);
+        if (deepConfirmationRequired && !confirmDeepCleanup)
+        {
+            _console.MarkupLine(MarkupText.Escape(Messages.Cancelled));
+            return null;
+        }
         var confirmed = mode != MaintenanceMode.Update ||
                         _console.Confirm(Messages.MutationConfirmation, false);
         if (mode == MaintenanceMode.Update && !confirmed)
@@ -51,7 +72,9 @@ public sealed class EnhancedMaintenancePrompt
             includeOptional,
             repairDrift,
             homeDirectory,
-            confirmed);
+            confirmed,
+            cleanupProfile,
+            confirmDeepCleanup);
         var validation = MaintenanceSelectionValidator.Validate(selection);
         if (!validation.IsValid)
         {
@@ -72,5 +95,13 @@ public sealed class EnhancedMaintenancePrompt
         MaintenanceMode.CheckOnly => Messages.CheckOnlyLabel,
         MaintenanceMode.Update => Messages.UpdateLabel,
         _ => mode.ToString(),
+    };
+
+    private static string CleanupProfileLabel(StorageCleanupProfile profile) => profile switch
+    {
+        StorageCleanupProfile.Safe => "Safe (Standard / default)",
+        StorageCleanupProfile.None => "Keine / None",
+        StorageCleanupProfile.Deep => "Deep",
+        _ => profile.ToString(),
     };
 }

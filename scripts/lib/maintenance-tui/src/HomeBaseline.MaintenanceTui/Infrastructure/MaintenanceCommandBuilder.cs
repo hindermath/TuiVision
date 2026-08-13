@@ -74,6 +74,11 @@ public sealed class MaintenanceCommandBuilder
         if (selection.ScriptsOnly) arguments.Add("--scripts-only");
         if (selection.IncludeOptional) arguments.Add("--include-optional");
         if (selection.RepairDrift) arguments.Add("--repair-drift");
+        arguments.AddRange([
+            "--cleanup-profile",
+            CleanupProfileValue(selection.CleanupProfile).ToLowerInvariant(),
+        ]);
+        if (selection.ConfirmDeepCleanup) arguments.Add("--confirm-deep-cleanup");
     }
 
     private static void AddPowerShellSelection(List<string> arguments, MaintenanceSelection selection)
@@ -90,7 +95,17 @@ public sealed class MaintenanceCommandBuilder
         if (selection.ScriptsOnly) arguments.Add("-ScriptsOnly");
         if (selection.IncludeOptional) arguments.Add("-IncludeOptional");
         if (selection.RepairDrift) arguments.Add("-RepairDrift");
+        arguments.AddRange(["-CleanupProfile", CleanupProfileValue(selection.CleanupProfile)]);
+        if (selection.ConfirmDeepCleanup) arguments.Add("-ConfirmDeepCleanup");
     }
+
+    private static string CleanupProfileValue(StorageCleanupProfile profile) => profile switch
+    {
+        StorageCleanupProfile.Safe => "Safe",
+        StorageCleanupProfile.Deep => "Deep",
+        StorageCleanupProfile.None => "None",
+        _ => throw new ArgumentOutOfRangeException(nameof(profile)),
+    };
 
     private static string BuildDisplayCommand(
         string executable,
