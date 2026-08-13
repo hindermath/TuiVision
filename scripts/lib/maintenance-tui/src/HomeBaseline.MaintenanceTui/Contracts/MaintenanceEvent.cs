@@ -48,6 +48,8 @@ public static class MaintenancePhases
         "propagation",
         "preset-profiles",
         "toolchain",
+        "model-routing",
+        "storage-cleanup",
         "final",
     ], StringComparer.Ordinal);
 }

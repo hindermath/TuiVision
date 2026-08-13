@@ -23,6 +23,7 @@ WCAG 2.2 Level AA is applied where its criteria fit a terminal interface.*
 | Zeit | Keine zeitbegrenzte Auswahl; Prozessabbruch bleibt kontrolliert |
 | Sprache | Deutsch zuerst, Englisch danach, CEFR B2; TUI und Dry-run werden beim ersten Auftreten erklärt |
 | Kopierbarkeit | Status, Exitcode, Berichtspfad, Logpfad und nächste Aktion bleiben Text |
+| Löschbestätigung | `Safe`, `Deep`, `None` bleiben als Text sichtbar; ein Deep-Update fragt separat mit Standard Nein |
 
 ## Textmodell / Text Model
 

@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "retentionDays": 7,
+  "pressureFreePercent": 15,
+  "nonMslAdapters": [
+    {
+      "repositoryPath": "C64Projects/cc65",
+      "runtimeClass": "non-msl-c89-6502",
+      "mslStatus": "non-msl",
+      "adapter": "cc65-make",
+      "justificationEvidence": "constitution.md#level-2-project-environment-addendum--level-2-projektumgebung",
+      "justification": "C89 and 6502 assembly are required for the 8-bit targets and historical cc65 toolchain compatibility.",
+      "compensatingControls": [
+        "Secure-C review",
+        "Makefile-chain review",
+        "generated-artefact hygiene",
+        "target and sample validation"
+      ],
+      "safeGroups": [
+        {
+          "id": "host-tools",
+          "makeDirectory": "src",
+          "target": "clean",
+          "paths": ["wrk", "bin"]
+        },
+        {
+          "id": "runtime-libraries",
+          "makeDirectory": "libsrc",
+          "target": "clean",
+          "paths": ["libwrk", "lib", "target"]
+        },
+        {
+          "id": "generated-documentation",
+          "makeDirectory": "doc",
+          "target": "clean",
+          "paths": ["html", "info"]
+        },
+        {
+          "id": "regression-workdirs",
+          "makeDirectory": "test",
+          "target": "clean",
+          "paths": ["testwrk"]
+        }
+      ],
+      "protectedEvidencePatterns": [
+        "*.d64", "*.d71", "*.d81", "*.g64", "*.tap", "*.cas",
+        "*.prg", "*.xex", "*.com", "*.cvt", "*.lnx", "*.bin",
+        "*.map", "*.lbl", "*.lst", "*.dbg"
+      ]
+    },
+    {
+      "repositoryPath": "CLionProjects/tvision",
+      "runtimeClass": "non-msl-cpp14-cmake",
+      "mslStatus": "non-msl",
+      "adapter": "cmake-out-of-source",
+      "justificationEvidence": ".specify/memory/constitution.md#xi-memory-safe-languages-msl-preference-for-level-2-projects",
+      "justification": "C++14 preserves source and ABI compatibility with Turbo Vision and its DOS, Windows, and Unix targets.",
+      "compensatingControls": [
+        "CMake-cache provenance validation",
+        "Git-ignore and tracking validation",
+        "out-of-source build isolation",
+        "cross-platform build and test validation"
+      ],
+      "buildDirectoryPatterns": ["build", "build-*", "cmake-build-*"]
+    }
+  ],
+  "genericBuildAdapters": [
+    {
+      "id": "dotnet",
+      "markers": ["*.sln", "*.slnx", "*.csproj", "*.fsproj", "*.vbproj"],
+      "directoryNames": ["bin", "obj"]
+    },
+    {
+      "id": "cargo",
+      "markers": ["Cargo.toml"],
+      "directoryNames": ["target"]
+    },
+    {
+      "id": "swift-package",
+      "markers": ["Package.swift"],
+      "directoryNames": [".build"]
+    },
+    {
+      "id": "maven",
+      "markers": ["pom.xml"],
+      "directoryNames": ["target"]
+    },
+    {
+      "id": "gradle",
+      "markers": ["build.gradle", "build.gradle.kts", "settings.gradle", "settings.gradle.kts"],
+      "directoryNames": ["build"]
+    },
+    {
+      "id": "python",
+      "markers": ["pyproject.toml", "setup.py", "setup.cfg", "requirements.txt"],
+      "directoryNames": ["__pycache__", ".pytest_cache"]
+    },
+    {
+      "id": "node",
+      "markers": ["package.json"],
+      "directoryNames": ["dist", "build", "out"]
+    }
+  ],
+  "processNames": {
+    "cc65-make": ["make", "gmake", "cl65", "cc65", "ca65", "ld65", "sim65", "x64", "x64sc"],
+    "cmake-out-of-source": ["cmake", "ctest", "ninja", "make", "msbuild", "devenv", "cl", "clang", "gcc", "g++"],
+    "dotnet": ["dotnet", "msbuild", "vstest", "testhost"],
+    "cargo": ["cargo", "rustc"],
+    "swift-package": ["swift", "swiftc"],
+    "maven": ["mvn", "mvnw", "java"],
+    "gradle": ["gradle", "gradlew", "java"],
+    "python": ["python", "python3", "pytest"],
+    "node": ["node", "npm", "npx", "pnpm", "yarn"],
+    "containers": ["podman", "docker", "buildah"]
+  }
+}

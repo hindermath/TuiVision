@@ -17,6 +17,19 @@ public sealed class ConfirmationTests
     }
 
     [TestMethod]
+    public void DeepUpdateRequiresItsOwnConfirmation()
+    {
+        var result = MaintenanceSelectionValidator.Validate(
+            new MaintenanceSelection(
+                MaintenanceMode.Update,
+                Confirmed: true,
+                CleanupProfile: StorageCleanupProfile.Deep));
+
+        Assert.IsFalse(result.IsValid);
+        CollectionAssert.Contains(result.Errors.ToArray(), "DEEP_CLEANUP_CONFIRMATION_REQUIRED");
+    }
+
+    [TestMethod]
     [DataRow(true, 130)]
     [DataRow(false, 0)]
     public void CancellationBeforeStartMapsToCanonicalExit(bool cancelled, int expected)

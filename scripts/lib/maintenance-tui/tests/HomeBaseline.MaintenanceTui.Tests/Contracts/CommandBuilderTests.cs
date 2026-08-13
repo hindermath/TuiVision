@@ -35,7 +35,10 @@ public sealed class CommandBuilderTests
     {
         var invocation = new MaintenanceCommandBuilder().Build(
             Context(HostPlatform.Windows),
-            new MaintenanceSelection(MaintenanceMode.CheckOnly, ScriptsOnly: true),
+            new MaintenanceSelection(
+                MaintenanceMode.CheckOnly,
+                ScriptsOnly: true,
+                CleanupProfile: StorageCleanupProfile.None),
             @"C:\repo\scripts\maintain-agentic-workspace.ps1",
             @"C:\temp\events.jsonl",
             Guid.NewGuid());
@@ -43,6 +46,7 @@ public sealed class CommandBuilderTests
         CollectionAssert.Contains(invocation.Arguments.ToArray(), "-CheckOnly");
         CollectionAssert.Contains(invocation.Arguments.ToArray(), "-ScriptsOnly");
         CollectionAssert.Contains(invocation.Arguments.ToArray(), "-NoTui");
+        CollectionAssert.Contains(invocation.Arguments.ToArray(), "None");
     }
 
     [TestMethod]
@@ -52,7 +56,9 @@ public sealed class CommandBuilderTests
             MaintenanceMode.Update,
             IncludeOptional: true,
             RepairDrift: true,
-            Confirmed: true);
+            Confirmed: true,
+            CleanupProfile: StorageCleanupProfile.Deep,
+            ConfirmDeepCleanup: true);
         var invocation = new MaintenanceCommandBuilder().Build(
             Context(HostPlatform.Linux),
             selection,
@@ -62,6 +68,8 @@ public sealed class CommandBuilderTests
 
         CollectionAssert.Contains(invocation.Arguments.ToArray(), "--include-optional");
         CollectionAssert.Contains(invocation.Arguments.ToArray(), "--repair-drift");
+        CollectionAssert.Contains(invocation.Arguments.ToArray(), "--confirm-deep-cleanup");
+        CollectionAssert.Contains(invocation.Arguments.ToArray(), "deep");
         CollectionAssert.DoesNotContain(invocation.Arguments.ToArray(), "--dry-run");
         CollectionAssert.DoesNotContain(invocation.Arguments.ToArray(), "--check-only");
         StringAssert.StartsWith(invocation.DisplayCommand, "'bash' ");

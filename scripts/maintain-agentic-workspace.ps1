@@ -8,7 +8,9 @@
     before any domain mutation. Only clean canonical behind-only branches are
     fast-forwarded. It then synchronizes the local home baseline, checks the
     GSDB registry, maintenance package and data-driven preset profiles, and
-    maintains the WinGet-based machine toolchain. Lease-owned temporary
+    maintains the WinGet-based machine toolchain. After local model-routing
+    status it runs the selected safe storage profile before final verification.
+    Lease-owned temporary
     worktrees preserve ambiguous evidence instead of deleting user paths.
     The script never commits or pushes target repositories and never switches
     branches.
@@ -35,7 +37,7 @@
 
 .PARAMETER ScriptsOnly
     Maintain repositories, home sync, registry, and propagation only. Skip
-    WinGet and other machine-toolchain changes.
+    WinGet, other machine-toolchain changes, and storage cleanup.
 
 .PARAMETER RepairDrift
     Repair canonical maintenance-package drift in Level-1/Level-2 repositories.
@@ -43,6 +45,15 @@
 
 .PARAMETER IncludeOptional
     Install optional WinGet, VS Code, CLI, and npm registry entries too.
+
+.PARAMETER CleanupProfile
+    Safe inventories and removes only verified recoverable outputs and is the
+    default. Deep also includes dependency caches and requires an explicit
+    ConfirmDeepCleanup switch for an update run. None disables storage work.
+
+.PARAMETER ConfirmDeepCleanup
+    Confirms the additional Deep cleanup for an update run. CheckOnly and
+    WhatIf runs do not require this confirmation.
 
 .PARAMETER AllowAdminPrompts
     Allow administrator prompts for the current run only. No credentials are
@@ -123,6 +134,8 @@ param(
     [switch] $RepairDrift,
     [switch] $IncludeOptional,
     [switch] $AllowAdminPrompts,
+    [ValidateSet('Safe', 'Deep', 'None')][string] $CleanupProfile = 'Safe',
+    [switch] $ConfirmDeepCleanup,
     [string] $ManifestPath,
     [string] $HomeDir = [Environment]::GetFolderPath('UserProfile'),
     [string] $EventStream,
@@ -161,6 +174,8 @@ function Invoke-HBAgenticWorkspaceMaintenance {
         [switch] $RepairDrift,
         [switch] $IncludeOptional,
         [switch] $AllowAdminPrompts,
+        [ValidateSet('Safe', 'Deep', 'None')][string] $CleanupProfile = 'Safe',
+        [switch] $ConfirmDeepCleanup,
         [string] $ManifestPath,
         [string] $HomeDir = [Environment]::GetFolderPath('UserProfile'),
         [string] $EventStream,
@@ -186,6 +201,8 @@ function Invoke-HBAgenticWorkspaceMaintenance {
     if ($EventStream) { $parameters.EventStream = $EventStream }
     if ($RunId) { $parameters.RunId = $RunId }
     if ($ManifestPath) { $parameters.ManifestPath = $ManifestPath }
+    if ($PSBoundParameters.ContainsKey('CleanupProfile')) { $parameters.CleanupProfile = $CleanupProfile }
+    if ($ConfirmDeepCleanup) { $parameters.ConfirmDeepCleanup = $true }
     if ($WhatIfPreference) { $parameters.WhatIf = $true }
     & $script:HBMaintenanceScriptPath @parameters
 }
@@ -205,6 +222,8 @@ $maintenanceParameterNames = @(
     'RepairDrift',
     'IncludeOptional',
     'AllowAdminPrompts',
+    'CleanupProfile',
+    'ConfirmDeepCleanup',
     'ManifestPath',
     'GitRetryAttempts',
     'GitTimeoutSeconds',
@@ -234,12 +253,25 @@ if ($IncludeOptional -and $ScriptsOnly) {
     Write-Host 'Fehler / Error: -IncludeOptional passt nicht zu / cannot be combined with -ScriptsOnly.' -ForegroundColor Red
     exit 2
 }
+if ($ScriptsOnly) {
+    if ($entryBoundParameters.ContainsKey('CleanupProfile') -and $CleanupProfile -ne 'None') {
+        Write-Host 'Fehler / Error: -ScriptsOnly erlaubt nur -CleanupProfile None / only allows profile None.' -ForegroundColor Red
+        exit 2
+    }
+    $CleanupProfile = 'None'
+}
+if ($CleanupProfile -eq 'Deep' -and -not $CheckOnly -and -not $WhatIfPreference -and -not $ConfirmDeepCleanup) {
+    Write-Host 'Fehler / Error: Deep-Bereinigung benötigt -ConfirmDeepCleanup / deep cleanup requires confirmation.' -ForegroundColor Red
+    exit 2
+}
 $maintenanceMode = Get-HBMaintenanceMode -CheckOnly:$CheckOnly -Preview:$WhatIfPreference
 
 $sourceRoot = (Resolve-Path -LiteralPath (Split-Path -Parent $PSScriptRoot)).Path
 $presetProfileCatalog = Join-Path $sourceRoot 'scripts/config/spec-kit-preset-profiles.json'
 $fleetPresetProfile = $null
 $fleetEngine = Join-Path $sourceRoot 'scripts/lib/agentic_workspace_fleet.py'
+$storageMaintainer = Join-Path $sourceRoot 'scripts/maintain-workspace-storage.ps1'
+$storagePolicy = Join-Path $sourceRoot 'scripts/config/workspace-storage-maintenance.json'
 if (-not $ManifestPath) {
     $ManifestPath = Join-Path $sourceRoot 'scripts/config/agentic-workspace-fleet.json'
 }
@@ -262,6 +294,10 @@ if ((Test-Path -LiteralPath $homeScriptsDir -PathType Container) -and
     if ($Tui) { $forward.Tui = $true }
     if ($PlainUi) { $forward.PlainUi = $true }
     if ($NoTui) { $forward.NoTui = $true }
+    if ($ScriptsOnly -or $entryBoundParameters.ContainsKey('CleanupProfile')) {
+        $forward.CleanupProfile = $CleanupProfile
+    }
+    if ($ConfirmDeepCleanup) { $forward.ConfirmDeepCleanup = $true }
     if ($EventStream) { $forward.EventStream = $EventStream }
     if ($requestedRunId) { $forward.RunId = $requestedRunId }
     if ($ManifestPath) { $forward.ManifestPath = $ManifestPath }
@@ -301,9 +337,32 @@ function Invoke-HBPlainMaintenanceUi {
     } elseif (Read-HBPlainYesNo -Prompt 'Optionale Werkzeuge? / Optional tools? [y/N]') {
         $engineArguments.Add('-IncludeOptional')
     }
+    $cleanupProfile = 'None'
+    if (-not $scriptsOnlyChoice) {
+        Write-Host 'Storage-Bereinigung / storage cleanup:'
+        Write-Host '1) Safe [Standard / default]'
+        Write-Host '2) Keine / None'
+        Write-Host '3) Deep'
+        $cleanupChoice = Read-Host 'Auswahl / Selection [1]'
+        $cleanupProfile = switch ($cleanupChoice) {
+            '2' { 'None' }
+            '3' { 'Deep' }
+            default { 'Safe' }
+        }
+    }
+    $engineArguments.Add('-CleanupProfile')
+    $engineArguments.Add($cleanupProfile)
     if ($choice -eq '3') {
         if (Read-HBPlainYesNo -Prompt 'Wartungspaket-Drift lokal reparieren? / Repair maintenance-package drift locally? [y/N]') {
             $engineArguments.Add('-RepairDrift')
+        }
+        if ($cleanupProfile -eq 'Deep') {
+            if (Read-HBPlainYesNo -Prompt 'Deep-Bereinigung ausdrücklich bestätigen? / Explicitly confirm deep cleanup? [y/N]') {
+                $engineArguments.Add('-ConfirmDeepCleanup')
+            } else {
+                Write-Host 'Vor dem Engine-Start abgebrochen. / Cancelled before engine start.'
+                exit 130
+            }
         }
         if (-not (Read-HBPlainYesNo -Prompt 'Schreibenden Lauf einmal starten? / Start one mutating run? [y/N]')) {
             Write-Host 'Vor dem Engine-Start abgebrochen. / Cancelled before engine start.'
@@ -520,6 +579,7 @@ if ($EventStream) {
 $script:Findings = 0
 $script:RepairApplied = $false
 $script:PreviewDrift = $false
+$script:NonBlockingWarnings = 0
 $script:ResumeAllowedPaths = @()
 $exitCode = 0
 $transcriptStarted = $false
@@ -532,12 +592,20 @@ $runId = if ($requestedRunId) {
     [Guid]::NewGuid().ToString()
 }
 $reportFile = Join-Path $reportDir "agentic-workspace-${runId}.json"
+$storageResultFile = Join-Path $reportDir "workspace-storage-${runId}.json"
+$storagePreviewResultFile = Join-Path $reportDir "workspace-storage-preview-${runId}.json"
 $script:MaintenanceEventSequence = 0
 $script:StartedMaintenanceEventPhases = [Collections.Generic.HashSet[string]]::new(
     [StringComparer]::Ordinal
 )
 if (-not (Test-Path -LiteralPath $fleetEngine -PathType Leaf)) {
     throw "Fleet-Vertragskern fehlt / fleet contract engine missing: ${fleetEngine}"
+}
+if (-not (Test-Path -LiteralPath $storageMaintainer -PathType Leaf)) {
+    throw "Storage-Wartung fehlt / storage maintainer missing: ${storageMaintainer}"
+}
+if (-not (Test-Path -LiteralPath $storagePolicy -PathType Leaf)) {
+    throw "Storage-Policy fehlt / storage policy missing: ${storagePolicy}"
 }
 
 function Write-HBEarlyFailureReport {
@@ -683,6 +751,8 @@ function Start-HBMaintenanceEventPhase {
             'propagation',
             'preset-profiles',
             'toolchain',
+            'model-routing',
+            'storage-cleanup',
             'final'
         )][string] $PhaseId
     )
@@ -714,10 +784,12 @@ function Add-HBReportStage {
         [Parameter(Mandatory)][ValidateSet('Passed', 'Warning', 'Blocked', 'Failed', 'Skipped')][string] $Status,
         [Parameter(Mandatory)][int] $ExitCode,
         [Parameter(Mandatory)][string] $Summary,
-        [string] $NextAction = 'N/A'
+        [string] $NextAction = 'N/A',
+        [string] $EvidencePath,
+        [string] $StorageResults
     )
     if (-not (Test-Path -LiteralPath $reportFile -PathType Leaf)) { return }
-    Invoke-HBPythonCommand -Arguments @(
+    $arguments = @(
         $fleetEngine, 'stage',
         '--report', $reportFile,
         '--stage-id', $StageId,
@@ -726,6 +798,9 @@ function Add-HBReportStage {
         '--summary', $Summary,
         '--next-action', $NextAction
     )
+    if ($EvidencePath) { $arguments += @('--evidence-path', $EvidencePath) }
+    if ($StorageResults) { $arguments += @('--storage-results', $StorageResults) }
+    Invoke-HBPythonCommand -Arguments $arguments
     if ($LASTEXITCODE -ne 0) {
         throw "Run-Bericht konnte nicht aktualisiert werden / run report update failed: ${StageId}"
     }
@@ -737,6 +812,8 @@ function Add-HBReportStage {
         'propagation',
         'preset-profiles',
         'toolchain',
+        'model-routing',
+        'storage-cleanup',
         'final'
     )) {
         Start-HBMaintenanceEventPhase -PhaseId $StageId
@@ -1330,6 +1407,7 @@ try {
     Write-Host "Mode / Modus: ${mode}"
     Write-Host "Level-0: ${sourceRoot}"
     Write-Host "Home: ${HomeDir}"
+    Write-Host "Storage-Profil / cleanup profile: ${CleanupProfile}"
     Write-Host "Run-ID: ${runId}"
     Write-HBMaintenanceEvent -EventType 'run-started' -Status 'RUNNING' `
         -MessageDe 'Wartung gestartet.' `
@@ -1557,6 +1635,93 @@ try {
             -Summary 'Modell-Routing durch Modus oder Vorbedingung uebersprungen / skipped by mode or prerequisite'
     }
 
+    # Storage cleanup owns independent Git, path, symlink, process, and
+    # provider barriers. A valid registry is sufficient even when unrelated
+    # maintenance stages reported findings.
+    if ($registrySafe -and -not $ScriptsOnly -and
+        $CleanupProfile -ne 'None') {
+        Start-HBMaintenanceEventPhase -PhaseId 'storage-cleanup'
+        Write-HBInfo 'Workspace-Speicher pflegen / Maintain workspace storage'
+        $storageParameters = @{
+            HomeDir = $HomeDir
+            RegistryPath = $registry
+            PolicyPath = $storagePolicy
+            ResultFile = $storageResultFile
+            RunId = $runId
+            CleanupProfile = $CleanupProfile
+        }
+        if ($CheckOnly) {
+            $storageParameters.CheckOnly = $true
+            & $storageMaintainer @storageParameters
+            $storageExit = if ($null -eq $LASTEXITCODE) { 0 } else { [int]$LASTEXITCODE }
+        } elseif ($WhatIfPreference) {
+            $storageParameters.WhatIf = $true
+            & $storageMaintainer @storageParameters
+            $storageExit = if ($null -eq $LASTEXITCODE) { 0 } else { [int]$LASTEXITCODE }
+        } else {
+            $previewParameters = @{} + $storageParameters
+            $previewParameters.ResultFile = $storagePreviewResultFile
+            $previewParameters.WhatIf = $true
+            & $storageMaintainer @previewParameters
+            $storageExit = if ($null -eq $LASTEXITCODE) { 0 } else { [int]$LASTEXITCODE }
+            if ($storageExit -lt 2) {
+                $storagePreview = Get-Content -LiteralPath $storagePreviewResultFile -Raw -Encoding UTF8 | ConvertFrom-Json
+                $previewDetails = [ordered]@{
+                    profile = $storagePreview.profile
+                    pressureMode = [bool]$storagePreview.pressureMode
+                    eligibleBytes = [long]$storagePreview.eligibleBytes
+                    warningCount = @($storagePreview.warnings).Count
+                    preview = $true
+                }
+                Write-HBMaintenanceEvent -EventType 'phase-progress' -Status 'RUNNING' `
+                    -PhaseId 'storage-cleanup' `
+                    -MessageDe "Storage-Vorschau: Profil $($storagePreview.profile), Pressure $($storagePreview.pressureMode), $($storagePreview.eligibleBytes) Bytes bereinigbar." `
+                    -MessageEn "Storage preview: profile $($storagePreview.profile), pressure $($storagePreview.pressureMode), $($storagePreview.eligibleBytes) reclaimable bytes." `
+                    -DetailsJson ($previewDetails | ConvertTo-Json -Compress)
+                if ($ConfirmDeepCleanup) { $storageParameters.ConfirmDeepCleanup = $true }
+                & $storageMaintainer @storageParameters
+                $storageExit = if ($null -eq $LASTEXITCODE) { 0 } else { [int]$LASTEXITCODE }
+            } else {
+                $storageResultFile = $storagePreviewResultFile
+            }
+        }
+        if ($storageExit -ge 2) {
+            Add-HBReportStage -StageId 'storage-cleanup' -Status Failed -ExitCode 2 `
+                -Summary 'Storage-Vertrag fehlgeschlagen / storage contract failed' `
+                -NextAction 'Storage-Bericht, Policy und Register prüfen / review storage report, policy, and registry' `
+                -StorageResults $storageResultFile
+            throw 'Storage-Wartung fehlgeschlagen / storage maintenance failed.'
+        }
+        $storageResult = Get-Content -LiteralPath $storageResultFile -Raw -Encoding UTF8 | ConvertFrom-Json
+        $storageDetails = [ordered]@{
+            profile = $storageResult.profile
+            pressureMode = [bool]$storageResult.pressureMode
+            eligibleBytes = [long]$storageResult.eligibleBytes
+            freedBytes = [long]$storageResult.freedBytes
+            warningCount = @($storageResult.warnings).Count
+        }
+        Write-HBMaintenanceEvent -EventType 'phase-progress' `
+            -Status $(if ($storageResult.overallStatus -eq 'SUCCESS_WITH_WARNINGS') { 'WARNING' } else { 'RUNNING' }) `
+            -PhaseId 'storage-cleanup' `
+            -MessageDe "Storage abgeschlossen: Profil $($storageResult.profile), Pressure $($storageResult.pressureMode), $($storageResult.eligibleBytes) Bytes Kandidaten, $($storageResult.freedBytes) Bytes freigegeben." `
+            -MessageEn "Storage completed: profile $($storageResult.profile), pressure $($storageResult.pressureMode), $($storageResult.eligibleBytes) candidate bytes, $($storageResult.freedBytes) bytes reclaimed." `
+            -DetailsJson ($storageDetails | ConvertTo-Json -Compress)
+        if ($storageResult.overallStatus -eq 'SUCCESS_WITH_WARNINGS') {
+            $script:NonBlockingWarnings++
+            Add-HBReportStage -StageId 'storage-cleanup' -Status Warning -ExitCode 0 `
+                -Summary 'Storage-Wartung mit Provider-Warnungen / storage maintenance completed with provider warnings' `
+                -NextAction 'Storage-Bericht prüfen / review the storage report' `
+                -StorageResults $storageResultFile
+        } else {
+            Add-HBReportStage -StageId 'storage-cleanup' -Status Passed -ExitCode 0 `
+                -Summary 'Storage-Wartung abgeschlossen / storage maintenance completed' `
+                -StorageResults $storageResultFile
+        }
+    } else {
+        Add-HBReportStage -StageId 'storage-cleanup' -Status Skipped -ExitCode 0 `
+            -Summary 'Storage-Wartung durch Profil, Modus oder Vorbedingung uebersprungen / skipped by profile, mode, or prerequisite'
+    }
+
     if ($script:Findings -eq 0) {
         Start-HBMaintenanceEventPhase -PhaseId 'final'
         Write-HBInfo 'Abschlusspruefung / Final verification'
@@ -1594,6 +1759,11 @@ try {
         Write-HBWarning 'Drift wurde lokal repariert. Betroffene Repositories separat pruefen, committen und pushen.'
         Write-HBWarning 'Drift was repaired locally. Review, commit, and push affected repositories separately.'
         $exitCode = 3
+    } elseif ($script:NonBlockingWarnings -gt 0) {
+        Add-HBReportStage -StageId 'final' -Status Warning -ExitCode 0 `
+            -Summary 'Wartung mit nicht blockierenden Warnungen abgeschlossen / maintenance completed with non-blocking warnings' `
+            -NextAction 'Storage-Bericht prüfen / review the storage report'
+        Write-HBWarning 'Wartung mit nicht blockierenden Storage-Warnungen abgeschlossen / completed with non-blocking storage warnings.'
     } else {
         Add-HBReportStage -StageId 'final' -Status Passed -ExitCode 0 `
             -Summary 'Wartung abgeschlossen / maintenance completed'
@@ -1626,7 +1796,7 @@ try {
             $finalizedProperty = $preFinalReport.PSObject.Properties['finalized']
             if ($null -eq $finalizedProperty -or $finalizedProperty.Value -ne $true) {
                 $finalStatus = switch ($exitCode) {
-                    0 { 'Passed' }
+                    0 { if ($script:NonBlockingWarnings -gt 0) { 'Warning' } else { 'Passed' } }
                     1 { 'Blocked' }
                     2 { 'Failed' }
                     3 { 'Warning' }
@@ -1657,7 +1827,7 @@ try {
             Start-HBMaintenanceEventPhase -PhaseId 'final'
             Write-HBMaintenanceEvent -EventType 'run-completed' `
                 -Status (ConvertTo-HBEventStatus -Status $(switch ($exitCode) {
-                    0 { 'Passed' }
+                    0 { if ($script:NonBlockingWarnings -gt 0) { 'Warning' } else { 'Passed' } }
                     1 { 'Blocked' }
                     2 { 'Failed' }
                     3 { 'Warning' }

@@ -33,8 +33,21 @@ public sealed class PlainMaintenancePrompt
             "Nur Skripte? / Scripts only? [y/N]: ");
         var includeOptional = !scriptsOnly && AskYesNo(
             "Optionale Werkzeuge? / Optional tools? [y/N]: ");
+        var cleanupProfile = scriptsOnly
+            ? StorageCleanupProfile.None
+            : AskCleanupProfile();
         var repair = mode == MaintenanceMode.Update && AskYesNo(
             "Drift lokal reparieren? / Repair drift locally? [y/N]: ");
+        var deepConfirmationRequired = mode == MaintenanceMode.Update &&
+                                       cleanupProfile == StorageCleanupProfile.Deep;
+        var confirmDeepCleanup = deepConfirmationRequired && AskYesNo(
+            "Deep-Bereinigung ausdrücklich bestätigen? / " +
+            "Explicitly confirm deep cleanup? [y/N]: ");
+        if (deepConfirmationRequired && !confirmDeepCleanup)
+        {
+            _output.WriteLine(Messages.Cancelled);
+            return null;
+        }
         var confirmed = mode != MaintenanceMode.Update ||
                         AskYesNo("Schreibenden Lauf starten? / Start mutating run? [y/N]: ");
         if (mode == MaintenanceMode.Update && !confirmed)
@@ -49,8 +62,25 @@ public sealed class PlainMaintenancePrompt
             includeOptional,
             repair,
             homeDirectory,
-            confirmed);
+            confirmed,
+            cleanupProfile,
+            confirmDeepCleanup);
         return MaintenanceSelectionValidator.Validate(selection).IsValid ? selection : null;
+    }
+
+    private StorageCleanupProfile AskCleanupProfile()
+    {
+        _output.WriteLine("Storage-Bereinigung / storage cleanup:");
+        _output.WriteLine("1) Safe [Standard / default]");
+        _output.WriteLine("2) Keine / None");
+        _output.WriteLine("3) Deep");
+        _output.Write("Auswahl / Selection [1]: ");
+        return _input.ReadLine()?.Trim() switch
+        {
+            "2" => StorageCleanupProfile.None,
+            "3" => StorageCleanupProfile.Deep,
+            _ => StorageCleanupProfile.Safe,
+        };
     }
 
     private bool AskYesNo(string prompt)

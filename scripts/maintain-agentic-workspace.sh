@@ -11,6 +11,8 @@ REGISTRY=""
 PRESET_PROFILE_CATALOG="${SOURCE_ROOT}/scripts/config/spec-kit-preset-profiles.json"
 FLEET_ENGINE="${SOURCE_ROOT}/scripts/lib/agentic_workspace_fleet.py"
 FLEET_MANIFEST="${SOURCE_ROOT}/scripts/config/agentic-workspace-fleet.json"
+STORAGE_MAINTAINER="${SOURCE_ROOT}/scripts/maintain-workspace-storage.sh"
+STORAGE_POLICY="${SOURCE_ROOT}/scripts/config/workspace-storage-maintenance.json"
 
 CHECK_ONLY=0
 DRY_RUN=0
@@ -18,6 +20,9 @@ SCRIPTS_ONLY=0
 REPAIR_DRIFT=0
 INCLUDE_OPTIONAL=0
 ALLOW_ADMIN_PROMPTS=0
+CLEANUP_PROFILE="safe"
+CLEANUP_PROFILE_EXPLICIT=0
+CONFIRM_DEEP_CLEANUP=0
 UI_MODE="auto"
 UI_SELECTOR_COUNT=0
 MAINTENANCE_OPTION_SEEN=0
@@ -30,10 +35,13 @@ FINDINGS=0
 REPAIR_APPLIED=0
 PREVIEW_DRIFT=0
 OPERATIONAL_FAILURE=0
+NON_BLOCKING_WARNINGS=0
 LOCK_DIR=""
 LOG_FILE=""
 REPORT_FILE=""
 TOOLCHAIN_RESULT_FILE=""
+STORAGE_RESULT_FILE=""
+STORAGE_PREVIEW_RESULT_FILE=""
 MODEL_ROUTING_RESULT_FILE=""
 RUN_ID=""
 CURRENT_STAGE="startup"
@@ -74,6 +82,12 @@ Freshness Barrier completes every fetch attempt before any mutation.
                      Repair maintenance-package drift locally; never commit/push
   --include-optional Auch optionale Maschinenpakete installieren
                      Install optional machine packages too
+  --cleanup-profile safe|deep|none
+                     Storage-Bereinigung; Standard safe, scripts-only none
+                     Storage cleanup; default safe, scripts-only none
+  --confirm-deep-cleanup
+                     Deep-Bereinigung fuer einen echten Lauf bestaetigen
+                     Confirm deep cleanup for an update run
   --allow-admin-prompts
                      Administratorabfragen nur fuer diesen Lauf erlauben
                      Allow administrator prompts for this run only
@@ -110,6 +124,7 @@ ask_yes_no() {
 
 run_plain_ui() {
   local choice="" mode="dry-run" scripts_only=0 include_optional=0 repair_drift=0
+  local cleanup_profile="safe" confirm_deep_cleanup=0
   local -a engine_args display_args
   printf 'Agentischer Workspace: Wartung / Agentic workspace maintenance\n'
   printf 'Die Vorschau zeigt geplante Änderungen und nimmt keine Änderung vor.\n'
@@ -127,10 +142,31 @@ run_plain_ui() {
   ask_yes_no 'Nur Skripte? / Scripts only? [y/N]: ' && scripts_only=1
   if [ "$scripts_only" -eq 0 ]; then
     ask_yes_no 'Optionale Werkzeuge? / Optional tools? [y/N]: ' && include_optional=1
+    printf 'Storage-Bereinigung / storage cleanup:\n'
+    printf '1) Safe [Standard / default]\n'
+    printf '2) Keine / None\n'
+    printf '3) Deep\n'
+    printf 'Auswahl / Selection [1]: '
+    IFS= read -r choice || choice=""
+    case "$choice" in
+      2) cleanup_profile="none" ;;
+      3) cleanup_profile="deep" ;;
+      *) cleanup_profile="safe" ;;
+    esac
+  else
+    cleanup_profile="none"
   fi
   if [ "$mode" = "update" ]; then
     ask_yes_no 'Wartungspaket-Drift lokal reparieren? / Repair maintenance-package drift locally? [y/N]: ' \
       && repair_drift=1
+    if [ "$cleanup_profile" = "deep" ]; then
+      if ask_yes_no 'Deep-Bereinigung ausdruecklich bestaetigen? / Explicitly confirm deep cleanup? [y/N]: '; then
+        confirm_deep_cleanup=1
+      else
+        printf 'Vor dem Engine-Start abgebrochen. / Cancelled before engine start.\n'
+        return 130
+      fi
+    fi
     if ! ask_yes_no 'Schreibenden Lauf einmal starten? / Start one mutating run? [y/N]: '; then
       printf 'Vor dem Engine-Start abgebrochen. / Cancelled before engine start.\n'
       return 130
@@ -145,6 +181,8 @@ run_plain_ui() {
   [ "$scripts_only" -eq 1 ] && engine_args+=(--scripts-only)
   [ "$include_optional" -eq 1 ] && engine_args+=(--include-optional)
   [ "$repair_drift" -eq 1 ] && engine_args+=(--repair-drift)
+  engine_args+=(--cleanup-profile "$cleanup_profile")
+  [ "$confirm_deep_cleanup" -eq 1 ] && engine_args+=(--confirm-deep-cleanup)
   engine_args+=(--home-dir "$HOME_DIR")
 
   display_args=(bash "$SCRIPT_DIR/maintain-agentic-workspace.sh" "${engine_args[@]}")
@@ -509,6 +547,17 @@ while [ $# -gt 0 ]; do
     --repair-drift) REPAIR_DRIFT=1; MAINTENANCE_OPTION_SEEN=1 ;;
     --include-optional) INCLUDE_OPTIONAL=1; MAINTENANCE_OPTION_SEEN=1 ;;
     --allow-admin-prompts) ALLOW_ADMIN_PROMPTS=1; MAINTENANCE_OPTION_SEEN=1 ;;
+    --cleanup-profile)
+      [ $# -ge 2 ] || die "--cleanup-profile benoetigt einen Wert / requires a value"
+      CLEANUP_PROFILE="$2"
+      CLEANUP_PROFILE_EXPLICIT=1
+      MAINTENANCE_OPTION_SEEN=1
+      shift
+      ;;
+    --confirm-deep-cleanup)
+      CONFIRM_DEEP_CLEANUP=1
+      MAINTENANCE_OPTION_SEEN=1
+      ;;
     --manifest)
       [ $# -ge 2 ] || die "--manifest benoetigt einen Pfad / requires a path"
       FLEET_MANIFEST="$2"
@@ -557,6 +606,20 @@ fi
 if [ "$INCLUDE_OPTIONAL" -eq 1 ] && [ "$SCRIPTS_ONLY" -eq 1 ]; then
   die "--include-optional passt nicht zu / cannot be combined with --scripts-only"
 fi
+case "$CLEANUP_PROFILE" in
+  safe|deep|none) ;;
+  *) die "Unbekanntes Storage-Profil / unknown storage profile: $CLEANUP_PROFILE" ;;
+esac
+if [ "$SCRIPTS_ONLY" -eq 1 ]; then
+  if [ "$CLEANUP_PROFILE_EXPLICIT" -eq 1 ] && [ "$CLEANUP_PROFILE" != "none" ]; then
+    die "--scripts-only erlaubt nur --cleanup-profile none / only allows profile none"
+  fi
+  CLEANUP_PROFILE="none"
+fi
+if [ "$CLEANUP_PROFILE" = "deep" ] && [ "$CHECK_ONLY" -eq 0 ] \
+    && [ "$DRY_RUN" -eq 0 ] && [ "$CONFIRM_DEEP_CLEANUP" -ne 1 ]; then
+  die "Deep-Bereinigung benoetigt --confirm-deep-cleanup / deep cleanup requires confirmation"
+fi
 
 for tool in git python3 tee; do
   command -v "$tool" >/dev/null 2>&1 || die "$tool ist erforderlich / is required"
@@ -597,6 +660,9 @@ if [ "$UI_MODE" = "plain" ]; then
   exit $?
 fi
 
+[ -f "$STORAGE_MAINTAINER" ] || die "Storage-Wartung fehlt / storage maintainer missing: $STORAGE_MAINTAINER"
+[ -f "$STORAGE_POLICY" ] || die "Storage-Policy fehlt / storage policy missing: $STORAGE_POLICY"
+
 STATE_DIR="${HOME_DIR}/.home-baseline"
 PRESET_WORKTREE_LEASE_DIR="${STATE_DIR}/preset-validation-leases"
 PRESET_WORKTREE_STATE_DIR="${STATE_DIR}/preset-validation-worktrees"
@@ -636,6 +702,8 @@ PY
 fi
 REPORT_FILE="${REPORT_DIR}/agentic-workspace-${RUN_ID}.json"
 TOOLCHAIN_RESULT_FILE="${REPORT_DIR}/agentic-toolchain-${RUN_ID}.json"
+STORAGE_RESULT_FILE="${REPORT_DIR}/workspace-storage-${RUN_ID}.json"
+STORAGE_PREVIEW_RESULT_FILE="${REPORT_DIR}/workspace-storage-preview-${RUN_ID}.json"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
 mode="update"
@@ -646,6 +714,7 @@ printf 'Agentic workspace maintenance\n'
 printf 'Mode / Modus: %s\n' "$mode"
 printf 'Level-0: %s\n' "$SOURCE_ROOT"
 printf 'Home: %s\n' "$HOME_DIR"
+printf 'Storage-Profil / cleanup profile: %s\n' "$CLEANUP_PROFILE"
 printf 'Run-ID: %s\n' "$RUN_ID"
 emit_event run-started RUNNING "" "" \
   "Wartung gestartet." "Maintenance started." \
@@ -654,6 +723,7 @@ emit_event run-started RUNNING "" "" \
 record_stage() {
   local stage_id="$1" status="$2" exit_code="$3" summary="$4" next_action="${5:-N/A}"
   local toolchain_results="${6:-}"
+  local storage_results="${7:-}"
   local -a arguments
   [ -f "$REPORT_FILE" ] || return 0
   arguments=(
@@ -666,6 +736,7 @@ record_stage() {
     --next-action "$next_action"
   )
   [ -n "$toolchain_results" ] && arguments+=(--toolchain-results "$toolchain_results")
+  [ -n "$storage_results" ] && arguments+=(--storage-results "$storage_results")
   "${arguments[@]}"
   start_event_phase "$stage_id" \
     "Phase ${stage_id} gestartet." "Phase ${stage_id} started."
@@ -1194,6 +1265,109 @@ else
     "Modell-Routing durch Modus oder Vorbedingung übersprungen / skipped by mode or prerequisite"
 fi
 
+# Storage maintenance has its own Git, path, symlink, process, and provider
+# barriers. Once the registry contract is valid, unrelated fleet/toolchain
+# findings must not prevent this independent disk-safety stage.
+if [ "$registry_safe" -eq 1 ] \
+    && [ "$SCRIPTS_ONLY" -eq 0 ] && [ "$CLEANUP_PROFILE" != "none" ]; then
+  CURRENT_STAGE="storage-cleanup"
+  start_event_phase "storage-cleanup" \
+    "Storage-Inventur gestartet." "Storage inventory started."
+  info "Workspace-Speicher pflegen / Maintain workspace storage"
+  storage_status=0
+  storage_arguments=(
+    bash "$STORAGE_MAINTAINER"
+    --home-dir "$HOME_DIR"
+    --registry "$REGISTRY"
+    --policy "$STORAGE_POLICY"
+    --run-id "$RUN_ID"
+    --profile "$CLEANUP_PROFILE"
+  )
+  if [ "$CHECK_ONLY" -eq 0 ] && [ "$DRY_RUN" -eq 0 ]; then
+    storage_preview_status=0
+    "${storage_arguments[@]}" --result-file "$STORAGE_PREVIEW_RESULT_FILE" --dry-run \
+      || storage_preview_status=$?
+    if [ "$storage_preview_status" -ge 2 ]; then
+      storage_status=2
+      STORAGE_RESULT_FILE="$STORAGE_PREVIEW_RESULT_FILE"
+    else
+      IFS=$'\t' read -r preview_pressure preview_eligible preview_warning_count < <(
+        python3 - "$STORAGE_PREVIEW_RESULT_FILE" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], encoding="utf-8") as stream:
+    report = json.load(stream)
+print(
+    str(bool(report.get("pressureMode", False))).lower(),
+    int(report.get("eligibleBytes", 0)),
+    len(report.get("warnings", [])),
+    sep="\t",
+)
+PY
+      )
+      emit_event phase-progress RUNNING "storage-cleanup" "" \
+        "Storage-Vorschau: Profil ${CLEANUP_PROFILE}, Pressure ${preview_pressure}, ${preview_eligible} Bytes bereinigbar." \
+        "Storage preview: profile ${CLEANUP_PROFILE}, pressure ${preview_pressure}, ${preview_eligible} reclaimable bytes." \
+        "$(printf '{\"profile\":\"%s\",\"pressureMode\":%s,\"eligibleBytes\":%s,\"warningCount\":%s,\"preview\":true}' \
+          "$CLEANUP_PROFILE" "$preview_pressure" "$preview_eligible" "$preview_warning_count")"
+      update_arguments=("${storage_arguments[@]}" --result-file "$STORAGE_RESULT_FILE")
+      [ "$CONFIRM_DEEP_CLEANUP" -eq 1 ] && update_arguments+=(--confirm-deep-cleanup)
+      "${update_arguments[@]}" || storage_status=$?
+    fi
+  else
+    storage_arguments+=(--result-file "$STORAGE_RESULT_FILE")
+    [ "$CHECK_ONLY" -eq 1 ] && storage_arguments+=(--check-only)
+    [ "$DRY_RUN" -eq 1 ] && storage_arguments+=(--dry-run)
+    "${storage_arguments[@]}" || storage_status=$?
+  fi
+  if [ "$storage_status" -ge 2 ]; then
+    OPERATIONAL_FAILURE=1
+    record_stage "storage-cleanup" "Failed" 2 \
+      "Storage-Vertrag fehlgeschlagen / storage contract failed" \
+      "Storage-Bericht, Policy und Register prüfen / review storage report, policy, and registry" \
+      "" "$STORAGE_RESULT_FILE"
+  else
+    IFS=$'\t' read -r storage_overall storage_pressure storage_eligible storage_freed storage_warning_count < <(
+      python3 - "$STORAGE_RESULT_FILE" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], encoding="utf-8") as stream:
+    report = json.load(stream)
+print(
+    report["overallStatus"],
+    str(bool(report.get("pressureMode", False))).lower(),
+    int(report.get("eligibleBytes", 0)),
+    int(report.get("freedBytes", 0)),
+    len(report.get("warnings", [])),
+    sep="\t",
+)
+PY
+    )
+    emit_event phase-progress \
+      "$([ "$storage_overall" = "SUCCESS_WITH_WARNINGS" ] && printf WARNING || printf RUNNING)" \
+      "storage-cleanup" "" \
+      "Storage abgeschlossen: Profil ${CLEANUP_PROFILE}, Pressure ${storage_pressure}, ${storage_eligible} Bytes Kandidaten, ${storage_freed} Bytes freigegeben." \
+      "Storage completed: profile ${CLEANUP_PROFILE}, pressure ${storage_pressure}, ${storage_eligible} candidate bytes, ${storage_freed} bytes reclaimed." \
+      "$(printf '{\"profile\":\"%s\",\"pressureMode\":%s,\"eligibleBytes\":%s,\"freedBytes\":%s,\"warningCount\":%s}' \
+        "$CLEANUP_PROFILE" "$storage_pressure" "$storage_eligible" "$storage_freed" "$storage_warning_count")"
+    if [ "$storage_overall" = "SUCCESS_WITH_WARNINGS" ]; then
+      NON_BLOCKING_WARNINGS=$((NON_BLOCKING_WARNINGS + 1))
+      record_stage "storage-cleanup" "Warning" 0 \
+        "Storage-Wartung mit Provider-Warnungen / storage maintenance completed with provider warnings" \
+        "Storage-Bericht prüfen / review the storage report" "" "$STORAGE_RESULT_FILE"
+    else
+      record_stage "storage-cleanup" "Passed" 0 \
+        "Storage-Wartung abgeschlossen / storage maintenance completed" \
+        "N/A" "" "$STORAGE_RESULT_FILE"
+    fi
+  fi
+else
+  record_stage "storage-cleanup" "Skipped" 0 \
+    "Storage-Wartung durch Profil, Modus oder Vorbedingung übersprungen / skipped by profile, mode, or prerequisite"
+fi
+
 if [ "$FINDINGS" -eq 0 ]; then
   CURRENT_STAGE="verification"
   start_event_phase "final" "Abschlussprüfung gestartet." "Final verification started."
@@ -1243,6 +1417,14 @@ if [ "$REPAIR_APPLIED" -eq 1 ]; then
   warn "Drift wurde lokal repariert. Betroffene Repositories separat pruefen, committen und pushen."
   warn "Drift was repaired locally. Review, commit, and push affected repositories separately."
   exit 3
+fi
+if [ "$NON_BLOCKING_WARNINGS" -gt 0 ]; then
+  finalize_run Warning 0 \
+    "Wartung mit nicht blockierenden Warnungen abgeschlossen / maintenance completed with non-blocking warnings" \
+    "Storage-Bericht prüfen / review the storage report"
+  warn "Wartung mit nicht blockierenden Storage-Warnungen abgeschlossen / completed with non-blocking storage warnings"
+  printf 'Report / Bericht: %s\n' "$REPORT_FILE"
+  exit 0
 fi
 
 finalize_run Passed 0 "Wartung abgeschlossen / maintenance completed" "N/A"

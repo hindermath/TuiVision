@@ -17,7 +17,7 @@ logic out of Bash, PowerShell, or the shared Python contract core.*
 | Bash-/PowerShell-Wrapper | Terminal erkennen, UI auswählen, Cache sicher bereitstellen | Keine zweite Engine nach Prozessstart |
 | .NET-10-TUI | Auswahl, Erklärung, Bestätigung, typisierte Argumente, Live-Anzeige | Keine Git-, Paket-, Sync- oder Providerlogik |
 | Plain-Assistent | Lineare Auswahl bei fehlender TUI-Fähigkeit | Dieselben Kombinationen und Standardwerte |
-| Wartungs-Engine | Freshness, Barrieren, Registry, Propagation, Presets, Toolchain | Keine UI-Abhängigkeit |
+| Wartungs-Engine | Freshness, Barrieren, Registry, Propagation, Presets, Toolchain, Storage | Keine UI-Abhängigkeit |
 | JSONL-Ereignisse | Advisory Live-Status mit Run-ID und Sequenz | Kein Ersatz für Bericht oder Exitcode |
 | Atomarer Bericht | Kanonischer, finalisierter Laufnachweis am vorgebundenen Run-Pfad | Muss mit Prozess und einem vorhandenen Abschlussereignis übereinstimmen |
 | Inhaltsadressierter Cache | Exakten lokalen TUI-Build wiederverwenden | Keine fremde Plattform, Teilpublikation oder Binärdatei in Git |
@@ -30,6 +30,7 @@ Aufruf / invocation
   -> genau eine validierte Auswahl
   -> erklärender, nicht ausgeführter Befehlsstring
   -> Standard-Nein-Bestätigung für Update
+  -> bei Deep-Update eigene Standard-Nein-Bestätigung
   -> genau ein interner Headless-Prozess
   -> advisory JSONL-Live-Status
   -> vorgebundenen Bericht + optionales Abschlussereignis + Prozess-Exit abgleichen
@@ -57,7 +58,9 @@ UI never invents a completion percentage.*
    kanonisch; es gibt keine Suche nach der neuesten Berichtsdatei.
 5. **Cache:** Quellhash, Plattform, Metadaten und vollständige atomare
    Publikation müssen gemeinsam stimmen.
-6. **Autorität:** Die UI-Bestätigung erlaubt genau einen lokalen
+6. **Storage:** `Safe`, `Deep` oder `None` wird typisiert weitergereicht.
+   Nur `Deep` im Update-Modus besitzt eine zusätzliche Bestätigungsgrenze.
+7. **Autorität:** Die UI-Bestätigung erlaubt genau einen lokalen
    Engine-Prozess. Sie erlaubt keine Zielrepository- oder Adminaktion.
 
 ## Abbruch und Abschluss / Interruption and Completion
