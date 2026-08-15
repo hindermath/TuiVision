@@ -59,7 +59,7 @@ Nach dem Engine-Start gilt folgende Reihenfolge:
    `propagate-agentic-toolchain-maintenance.*` geprueft.
 8. Das Registry-Profil jedes Repositories wird gegen die im Profilkatalog
    referenzierte Matrix geprueft. Anzahl und IDs werden aus den Daten gelesen;
-   elf Presets sind der aktuelle Flottennachweis, keine Code-Obergrenze. Liegt
+   zwoelf Presets sind der aktuelle Flottennachweis, keine Code-Obergrenze. Liegt
    der aktive Arbeitsbaum nicht exakt
    auf `origin/HEAD`, erfolgt die schreibfreie Profilpruefung in einem
    kurzlebigen detached Worktree des kanonischen Default-Branches. Drift dort
@@ -91,6 +91,11 @@ Ahead-/Behind-Zustaende fuer beide Einstiegspunkte identisch. Registry-Aufbau
 und Wartungspaket-Propagation werden auf aktive Git-Ziele der Klasse
 `canonical-fleet` begrenzt. Eine Dateisystemsuche darf keine nicht
 deklarierten Legacy-Repositories erneut registrieren oder propagieren.
+Die reine Collection `SpecKitPresetProjects` besitzt selbst weder Remote noch
+Branch. Ihre aktiven, explizit deklarierten Git-Mitglieder entsprechen exakt
+den zwoelf Repository-Quellen des verwalteten Profils
+`model-routing-twelve-governance-presets`; ein Regressionstest bindet beide
+Vertraege aneinander.
 
 *The portable desired state lives in
 `scripts/config/agentic-workspace-fleet.json`. It distinguishes canonical
@@ -99,7 +104,11 @@ shared Python standard-library core validates paths, remotes, branches, and
 ahead/behind states identically for both entry points. Registry maintenance
 and maintenance-package propagation are restricted to active Git targets in
 the `canonical-fleet` class. Filesystem discovery cannot re-register or
-propagate undeclared legacy repositories.*
+propagate undeclared legacy repositories. The directory-only
+`SpecKitPresetProjects` collection has no remote or branch of its own. Its
+active, explicitly declared Git members exactly match the twelve repository
+sources of the managed `model-routing-twelve-governance-presets` profile; a
+regression test binds both contracts together.*
 
 Im Check-only-Modus wird der manifestgesteuerte Home-Sync jetzt ebenfalls
 schreibfrei ausgefuehrt. Nach einem echten Sync wiederholt die

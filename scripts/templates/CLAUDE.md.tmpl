@@ -27,14 +27,19 @@ This document provides Claude Code with instructions for working in this project
   Home-Sync `--check-only` / `-CheckOnly` verwenden und Konflikte nicht ohne
   Prüfung mit `--force` / `-Force` überschreiben.
 - In Containern und insbesondere der ABS-DD-Sandbox die eingebundene
-  Level-0-Referenz direkt verwenden; schreibende Home-Sync-Laeufe gehoeren auf
-  den Host.
+  Level-0-Referenz direkt verwenden. Allgemeine schreibende Home-Sync-Laeufe
+  gehoeren auf den Host; nur ein ausdruecklich angeforderter
+  `--runtime-only`-/`-RuntimeOnly`-Lauf darf manifestgebundene `homeRuntime`
+  ohne Pull, Commit oder Git-Identitaetsaenderung in die Container-Betriebskopie
+  verteilen.
 
 *Keep the personal fork `~/home-baseline-source` as the versioned level-0 source.
 `~/` is only the manifest-managed local runtime copy. Check before syncing and
 use force only after reviewing conflicts. In containers, especially the
-ABS-DD sandbox, use the mounted level-0 reference directly and run writing Home
-sync operations on the host.*
+ABS-DD sandbox, use the mounted level-0 reference directly. General writing
+Home sync remains host-only; an explicitly requested runtime-only run may
+distribute manifest-bound `homeRuntime` without pull, commit, or Git identity
+changes.*
 
 ---
 
