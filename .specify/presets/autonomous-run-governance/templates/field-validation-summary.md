@@ -1,5 +1,16 @@
 # Autonomous Run Governance Field Validation
 
+Record delivery-set immutability, semantic phase-result positive and negative
+fixtures, schema-2.0 PreMerge/PostMerge binding, historical audit-only behavior,
+and Bash/PowerShell parity. A source candidate is not a release until an
+independent field run passes.
+
+Release 0.4.1 adds 15 templates, 11 scripts, five commands, and five portable
+manpages. Feature 027 provided synthetic positive and negative fixtures;
+Feature 028 independently reproduced all three findings, completed the
+cross-shell field proof, and approved publication. The versioned ZIP must still
+be verified independently by each release and rollout workflow.
+
 Version `0.2.2` is based on six consecutive product `MergeAndSync` field runs,
 the Feature-024 audit, Feature-027 closure, and Features 025-026 conformance
 hardening plus the real Feature-028 resume in `hindermath/TuiVision` through
