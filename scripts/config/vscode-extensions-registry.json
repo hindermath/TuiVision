@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-07-05",
-  "description": "Minimum VS Code extension registry for the six Secure CaseTracker memory-safe language paths plus container tooling.",
+  "updated": "2026-08-15",
+  "description": "Minimum VS Code extension registry for the six Secure CaseTracker memory-safe language paths, PowerShell authoring, and container tooling.",
   "policy": {
     "extensionSource": "Visual Studio Marketplace via code --install-extension",
     "defaultInstallScope": "required",
-    "dependencyPolicy": "Only list the official primary extension or official extension pack for each MSL path and the official primary container tooling extension; extension-managed dependencies are not listed separately.",
+    "dependencyPolicy": "Only list the official primary extension or official extension pack for each MSL path, the official PowerShell extension, and the official primary container tooling extension; extension-managed dependencies are not listed separately.",
     "deprecatedPolicy": "Deprecated extensions are reported when installed, but not removed automatically."
   },
   "extensions": [
@@ -15,6 +15,7 @@
     { "id": "ms-python.python", "scope": "required", "language": "Python", "purpose": "Official Python extension for VS Code" },
     { "id": "rust-lang.rust-analyzer", "scope": "required", "language": "Rust", "purpose": "Official Rust analyzer extension for VS Code" },
     { "id": "swiftlang.swift-vscode", "scope": "required", "language": "Swift", "purpose": "Official Swift extension for VS Code" },
+    { "id": "ms-vscode.powershell", "scope": "required", "language": "PowerShell", "purpose": "Official PowerShell language support for authoring and debugging in VS Code" },
     { "id": "ms-azuretools.vscode-containers", "scope": "required", "language": "Containers", "purpose": "Official Microsoft Container Tools extension for Docker/Podman container workflows in VS Code" }
   ],
   "deprecatedExtensions": [

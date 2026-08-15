@@ -18,8 +18,10 @@ Das Werkzeug liest
 `scripts/config/winget-apps-registry.json` und gleicht die Windows-Toolchain fuer
 agentische Entwicklung ab. Zusaetzlich liest es
 `scripts/config/vscode-extensions-registry.json` und pflegt die Required-VS-
-Code-Extensions fuer die sechs MSL-Pfade C#, Go, Java, Python, Rust und Swift
-sowie Microsoft Container Tools fuer Podman-Workflows. Danach liest es
+Code-Extensions fuer die sechs MSL-Pfade C#, Go, Java, Python, Rust und Swift,
+die offizielle PowerShell-Erweiterung `ms-vscode.powershell` fuer das Schreiben
+und Debuggen von PowerShell-Skripten und Cmdlets sowie Microsoft Container Tools
+fuer Podman-Workflows. Danach liest es
 `scripts/config/required-cli-tools-registry.json` und prueft die Required-CLI-
 Tools fuer die sechs MSL-Pfade, `syft`, GitHub Spec Kit (`specify`) und die
 Agenten-CLIs `codex`, `claude` und `copilot` sowie das Required-Paket
@@ -42,8 +44,10 @@ ohne aktuelle Admin-Prompt-Autoritaet werden nicht gestartet und als
 *The tool reads `scripts/config/winget-apps-registry.json` and reconciles the
 Windows toolchain for agentic development. It additionally reads
 `scripts/config/vscode-extensions-registry.json` and maintains the required VS
-Code extensions for the six MSL paths C#, Go, Java, Python, Rust, and Swift
-plus Microsoft Container Tools for Podman workflows. It then reads
+Code extensions for the six MSL paths C#, Go, Java, Python, Rust, and Swift,
+the official PowerShell extension `ms-vscode.powershell` for authoring and
+debugging PowerShell scripts and cmdlets, plus Microsoft Container Tools for
+Podman workflows. It then reads
 `scripts/config/required-cli-tools-registry.json` and checks the required CLI
 tools for the six MSL paths, `syft`, GitHub Spec Kit (`specify`), and the
 agent CLIs `codex`, `claude`, and `copilot` plus required package `Google.AntigravityCLI`. npm-based fallbacks for Codex, Claude, and Copilot are installed from
