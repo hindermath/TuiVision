@@ -479,65 +479,6 @@
       ],
       "installed_at": "2026-08-09T02:13:56.270331+00:00"
     },
-    "autonomous-run-governance": {
-      "version": "0.3.6",
-      "source": "local",
-      "manifest_hash": "sha256:659cb5f9bff8263cb943c0174eaf899e9b962c4a1d91dfee6e04373d37f7af5c",
-      "enabled": true,
-      "priority": 70,
-      "registered_commands": {
-        "agy": [
-          "speckit.autonomous",
-          "speckit.autonomous-retrospective",
-          "speckit.autonomous-status",
-          "speckit.autonomous-stop",
-          "speckit.autonomous-resume"
-        ],
-        "claude": [
-          "speckit.autonomous",
-          "speckit.autonomous-retrospective",
-          "speckit.autonomous-status",
-          "speckit.autonomous-stop",
-          "speckit.autonomous-resume"
-        ],
-        "codex": [
-          "speckit.autonomous",
-          "speckit.autonomous-retrospective",
-          "speckit.autonomous-status",
-          "speckit.autonomous-stop",
-          "speckit.autonomous-resume"
-        ],
-        "copilot": [
-          "speckit.autonomous",
-          "speckit.autonomous-retrospective",
-          "speckit.autonomous-status",
-          "speckit.autonomous-stop",
-          "speckit.autonomous-resume"
-        ],
-        "opencode": [
-          "speckit.autonomous",
-          "speckit.autonomous-retrospective",
-          "speckit.autonomous-status",
-          "speckit.autonomous-stop",
-          "speckit.autonomous-resume"
-        ],
-        "zed": [
-          "speckit.autonomous",
-          "speckit.autonomous-retrospective",
-          "speckit.autonomous-status",
-          "speckit.autonomous-stop",
-          "speckit.autonomous-resume"
-        ]
-      },
-      "registered_skills": [
-        "speckit-autonomous",
-        "speckit-autonomous-retrospective",
-        "speckit-autonomous-status",
-        "speckit-autonomous-stop",
-        "speckit-autonomous-resume"
-      ],
-      "installed_at": "2026-08-09T02:13:57.479401+00:00"
-    },
     "parallel-autonomous-run-governance": {
       "version": "0.2.6",
       "source": "local",
@@ -596,6 +537,65 @@
         "speckit-parallel-autonomous-consolidate"
       ],
       "installed_at": "2026-08-09T02:13:58.772843+00:00"
+    },
+    "autonomous-run-governance": {
+      "version": "0.4.1",
+      "source": "local",
+      "manifest_hash": "sha256:9bdee271462fcecf84cdcf6b25cf70b615d9285c9107e4a30f7d4c00011f4759",
+      "enabled": true,
+      "priority": 70,
+      "registered_commands": {
+        "agy": [
+          "speckit.autonomous",
+          "speckit.autonomous-retrospective",
+          "speckit.autonomous-status",
+          "speckit.autonomous-stop",
+          "speckit.autonomous-resume"
+        ],
+        "claude": [
+          "speckit.autonomous",
+          "speckit.autonomous-retrospective",
+          "speckit.autonomous-status",
+          "speckit.autonomous-stop",
+          "speckit.autonomous-resume"
+        ],
+        "codex": [
+          "speckit.autonomous",
+          "speckit.autonomous-retrospective",
+          "speckit.autonomous-status",
+          "speckit.autonomous-stop",
+          "speckit.autonomous-resume"
+        ],
+        "copilot": [
+          "speckit.autonomous",
+          "speckit.autonomous-retrospective",
+          "speckit.autonomous-status",
+          "speckit.autonomous-stop",
+          "speckit.autonomous-resume"
+        ],
+        "opencode": [
+          "speckit.autonomous",
+          "speckit.autonomous-retrospective",
+          "speckit.autonomous-status",
+          "speckit.autonomous-stop",
+          "speckit.autonomous-resume"
+        ],
+        "zed": [
+          "speckit.autonomous",
+          "speckit.autonomous-retrospective",
+          "speckit.autonomous-status",
+          "speckit.autonomous-stop",
+          "speckit.autonomous-resume"
+        ]
+      },
+      "registered_skills": [
+        "speckit-autonomous",
+        "speckit-autonomous-retrospective",
+        "speckit-autonomous-status",
+        "speckit-autonomous-stop",
+        "speckit-autonomous-resume"
+      ],
+      "installed_at": "2026-08-15T23:13:17.487730+00:00"
     }
   }
 }
