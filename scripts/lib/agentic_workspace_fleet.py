@@ -74,7 +74,7 @@ def is_transient_git_failure(detail: str) -> bool:
         return False
     return bool(
         re.search(
-            r"timed?\s*out|timeout|connection\s+(?:reset|closed|aborted)|temporary failure|"
+            r"timed?\s*out|timeout|connection\s+(?:was\s+)?(?:reset|closed|aborted)|temporary failure|"
             r"could not resolve host|name resolution|http\s+50[234]",
             detail,
             re.IGNORECASE,
@@ -532,13 +532,13 @@ def classify_repository(
             upstream=upstream_name, retryAttempts=pull_attempts,
             resumeAccepted=resume_accepted, freshnessAttempt=freshness,
             defaultBranchEvidence=default_evidence, pullAttempt=pull_evidence,
-            mutationAllowed=not dirty
+            mutationAllowed=not dirty or resume_accepted
         )
     return target_result(
         target, branch=branch_name, upstream=upstream_name,
         retryAttempts=fetch_attempts, resumeAccepted=resume_accepted,
         freshnessAttempt=freshness, defaultBranchEvidence=default_evidence,
-        mutationAllowed=not dirty
+        mutationAllowed=not dirty or resume_accepted
     )
 
 

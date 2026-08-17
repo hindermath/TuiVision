@@ -581,6 +581,7 @@ $script:RepairApplied = $false
 $script:PreviewDrift = $false
 $script:NonBlockingWarnings = 0
 $script:ResumeAllowedPaths = @()
+$script:ResumeEvidenceFiles = @()
 $exitCode = 0
 $transcriptStarted = $false
 $runId = if ($requestedRunId) {
@@ -694,6 +695,8 @@ function Invoke-HBPythonCommand {
     param([Parameter(Mandatory)][string[]]$Arguments)
     $commandArguments = @($script:HBPythonLauncher.PrefixArguments) + @($Arguments)
     & $script:HBPythonLauncher.FilePath @commandArguments
+    $pythonExitCode = $LASTEXITCODE
+    Set-Variable -Name LASTEXITCODE -Value $pythonExitCode -Scope 1
 }
 
 function ConvertTo-HBEventStatus {
@@ -1060,6 +1063,13 @@ function Initialize-HBResumeState {
             throw "Resume-Evidence passt nicht exakt / does not match exactly: $($validation.Reason)"
         }
         $script:ResumeAllowedPaths = @($evidence.files | ForEach-Object { [string]$_.path })
+        $script:ResumeEvidenceFiles = @($evidence.files | ForEach-Object {
+            [pscustomobject]@{
+                Path = [string]$_.path
+                BeforeSha256 = [string]$_.beforeSha256
+                AfterSha256 = [string]$_.afterSha256
+            }
+        })
         $script:RepairApplied = $true
         Write-Host "OK: Resume-Evidence exakt validiert / exact resume evidence validated: $($validation.RunId)"
         return
@@ -1070,10 +1080,20 @@ function Initialize-HBResumeState {
 }
 
 function Get-HBPropagationPlan {
-    $manifestPath = Join-Path $sourceRoot 'scripts/config/agentic-toolchain-maintenance-files.json'
-    $manifest = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
+    $propagationManifestPath = Join-Path $sourceRoot 'scripts/config/agentic-toolchain-maintenance-files.json'
+    $manifest = Get-Content -LiteralPath $propagationManifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
+    $propagationExceptions = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+    $exceptionsProperty = $manifest.PSObject.Properties['exceptions']
+    if ($null -ne $exceptionsProperty) {
+        foreach ($exception in @($exceptionsProperty.Value)) {
+            [void]$propagationExceptions.Add(
+                "$([string]$exception.repositoryPath)`n$([string]$exception.path)"
+            )
+        }
+    }
     $changes = [Collections.Generic.List[object]]::new()
     foreach ($repository in Get-HBManagedRepositories) {
+        $repositoryRelative = [IO.Path]::GetRelativePath($HomeDir, $repository.Path).Replace('\', '/')
         foreach ($file in @($manifest.files)) {
             $source = Join-Path $sourceRoot ([string]$file.path)
             $target = Join-Path $repository.Path ([string]$file.path)
@@ -1086,6 +1106,11 @@ function Get-HBPropagationPlan {
                 $different = $sourceHash -ne $targetHash
             }
             if (-not $different) { continue }
+            if ($propagationExceptions.Contains("${repositoryRelative}`n$([string]$file.path)") -and
+                (Test-Path -LiteralPath $target -PathType Leaf)) {
+                $null = & git -C $repository.Path ls-files --error-unmatch -- ([string]$file.path) 2>$null
+                if ($LASTEXITCODE -eq 0) { continue }
+            }
             $changes.Add([pscustomobject]@{
                 Path = [IO.Path]::GetRelativePath($HomeDir, $target).Replace('\', '/')
                 BeforeSha256 = Get-HBFileSha256 -Path $target
@@ -1178,8 +1203,14 @@ function Invoke-HBPropagation {
             if ($plannedChanges.Count -eq 0) {
                 throw 'Propagation meldet Drift ohne aktionsfaehige Dateien / reported drift without actionable files.'
             }
+            $plannedPaths = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+            foreach ($change in $plannedChanges) { [void]$plannedPaths.Add([string]$change.Path) }
+            $evidenceChanges = @(
+                $script:ResumeEvidenceFiles | Where-Object { -not $plannedPaths.Contains([string]$_.Path) }
+                $plannedChanges
+            )
             $null = Write-HBResumeEvidence -Path $resumeEvidenceFile -RunId $runId `
-                -Phase 'propagation' -Files $plannedChanges -Status Prepared `
+                -Phase 'propagation' -Files $evidenceChanges -Status Prepared `
                 -NextAction 'Propagation ausfuehren und Hashes verifizieren / execute propagation and verify hashes'
             & $propagation -HomeDir $HomeDir -Registry $registry
             if ($LASTEXITCODE -ne 0) { throw 'Propagation fehlgeschlagen / failed.' }
@@ -1190,7 +1221,7 @@ function Invoke-HBPropagation {
                 }
             }
             $null = Write-HBResumeEvidence -Path $resumeEvidenceFile -RunId $runId `
-                -Phase 'propagation' -Files $plannedChanges -Status Applied `
+                -Phase 'propagation' -Files $evidenceChanges -Status Applied `
                 -NextAction 'Geaenderte Ziel-Repositories separat pruefen und liefern / review and deliver changed target repositories separately'
             if ((Invoke-HBPropagationCheck) -ne 0) { throw 'Propagation-Abschlusspruefung fehlgeschlagen / final check failed.' }
             $script:RepairApplied = $true
@@ -1336,6 +1367,21 @@ function Remove-HBPresetValidationTarget {
     }
 }
 
+function Invoke-HBPresetInstallerProcess {
+    param(
+        [Parameter(Mandatory)][string] $Installer,
+        [Parameter(Mandatory)][object[]] $Arguments
+    )
+
+    # The installer deliberately throws when CheckOnly detects drift. A child
+    # process converts that terminating error into the exit-code contract the
+    # orchestrator needs before deciding whether repair is permitted.
+    $output = @(& pwsh -NoProfile -NonInteractive -File $Installer @Arguments 2>&1)
+    $status = if ($null -eq $LASTEXITCODE) { 0 } else { [int]$LASTEXITCODE }
+    $output | ForEach-Object { Write-Host "$_" }
+    return $status
+}
+
 function Invoke-HBPresetProfiles {
     $installer = Join-Path $sourceRoot 'scripts/install-spec-kit-governance-presets.ps1'
     if (-not (Test-Path -LiteralPath $installer -PathType Leaf)) {
@@ -1350,11 +1396,16 @@ function Invoke-HBPresetProfiles {
         try {
             $validationTarget = New-HBPresetValidationTarget -Repository $target.Path
             if ($WhatIfPreference) {
-                & $installer -Repo @($validationTarget.Path) -PresetConfig $config -WhatIf
+                $previewStatus = Invoke-HBPresetInstallerProcess -Installer $installer -Arguments @(
+                    '-Repo', $validationTarget.Path, '-PresetConfig', $config, '-WhatIf'
+                )
+                if ($previewStatus -ne 0) { throw "Preset-Vorschau fehlgeschlagen / preview failed: $($target.Path)" }
                 continue
             }
-            & $installer -Repo @($validationTarget.Path) -PresetConfig $config -CheckOnly
-            if ($LASTEXITCODE -eq 0) { continue }
+            $checkStatus = Invoke-HBPresetInstallerProcess -Installer $installer -Arguments @(
+                '-Repo', $validationTarget.Path, '-PresetConfig', $config, '-CheckOnly'
+            )
+            if ($checkStatus -eq 0) { continue }
             if ($validationTarget.Isolated) {
                 Write-HBWarning "Preset-Profil-Drift auf dem kanonischen Default-Branch erfordert einen eigenen Branch/PR / requires a dedicated branch/PR: $($target.Path)"
                 $script:Findings++
@@ -1365,8 +1416,10 @@ function Invoke-HBPresetProfiles {
                 $script:Findings++
                 continue
             }
-            & $installer -Repo @($target.Path) -PresetConfig $config -Force
-            if ($LASTEXITCODE -ne 0) { throw "Preset-Reparatur fehlgeschlagen / repair failed: $($target.Path)" }
+            $repairStatus = Invoke-HBPresetInstallerProcess -Installer $installer -Arguments @(
+                '-Repo', $target.Path, '-PresetConfig', $config, '-Force'
+            )
+            if ($repairStatus -ne 0) { throw "Preset-Reparatur fehlgeschlagen / repair failed: $($target.Path)" }
             $script:RepairApplied = $true
         } catch {
             Write-HBWarning $_.Exception.Message

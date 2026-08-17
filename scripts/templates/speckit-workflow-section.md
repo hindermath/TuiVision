@@ -30,7 +30,7 @@ Workspace-Familie ist:
 | `a11y-governance` | A11Y Governance | `v0.4.3` | `40` |
 | `cross-platform-governance` | Cross-Platform Governance | `v0.2.2` | `50` |
 | `agent-parity-governance` | Agent Parity Governance | `v0.4.2` | `60` |
-| `autonomous-run-governance` | Autonomous Run Governance | `v0.3.6` | `70` |
+| `autonomous-run-governance` | Autonomous Run Governance | `v0.4.1` | `70` |
 | `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.6` | `80` |
 
 Optional koennen `model-routing-governance` v0.1.4 mit Prioritaet `61`,
@@ -171,7 +171,7 @@ workspace family is:
 | `a11y-governance` | A11Y Governance | `v0.4.3` | `40` |
 | `cross-platform-governance` | Cross-Platform Governance | `v0.2.2` | `50` |
 | `agent-parity-governance` | Agent Parity Governance | `v0.4.2` | `60` |
-| `autonomous-run-governance` | Autonomous Run Governance | `v0.3.6` | `70` |
+| `autonomous-run-governance` | Autonomous Run Governance | `v0.4.1` | `70` |
 | `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.6` | `80` |
 
 Optionally install `model-routing-governance` v0.1.4 at priority `61`,
