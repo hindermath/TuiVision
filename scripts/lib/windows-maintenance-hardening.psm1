@@ -204,7 +204,7 @@ function Test-HBTransientFailure {
     if ($Summary -match '(?i)auth(?:entication|orization)?|permission|forbidden|not found|dirty|ahead|diverged') {
         return $false
     }
-    return $Summary -match '(?i)timed?\s*out|timeout|connection\s+(?:reset|closed|aborted)|temporary failure|could not resolve host|name resolution|http\s+50[234]'
+    return $Summary -match '(?i)timed?\s*out|timeout|connection\s+(?:was\s+)?(?:reset|closed|aborted)|temporary failure|could not resolve host|name resolution|http\s+50[234]'
 }
 
 function Invoke-HBWithRetry {
