@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0",
+  "featureId": "039-example-portfolio-closure",
+  "status": "PortfolioConformantAndLearningReady",
+  "baselineHead": "19450fa383abfbdf71268f09ab6d67395deb98e1",
+  "bindings": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+      "sha256": "f5dc617b7c20d718304bb91f7f63d4a95d5c27cf09a7d0a4685a3bc4a824ab1a"
+    },
+    {
+      "path": "specs/intake-review-result.json",
+      "sha256": "83a0b0f192bf996556ed1b76c9e29e62e1911adf3c38001aeecfcbf92ce83f62"
+    },
+    {
+      "path": "specs/038-example-portfolio-conformance-audit/example-portfolio-audit.json",
+      "sha256": "f197187bbb5be70e028ea4259675869a6a7f4e0171b067ffd120c28e5fd5a984"
+    },
+    {
+      "path": "specs/038-example-portfolio-conformance-audit/pr-evidence.md",
+      "sha256": "04b236547c605cb71d580d64c3aadd1cd2892a5dafb174ca74e7bd24c709d636"
+    },
+    {
+      "path": "specs/038-example-portfolio-conformance-audit/example-conformance-matrix.md",
+      "sha256": "ce287ec1ca913feb349773f87ba9cdf917f3219b6eeada680816dfccf8e998d2"
+    }
+  ],
+  "metrics": {
+    "portfolioEntries": 37,
+    "portfolioRoles": {
+      "originalExamples": 25,
+      "wave5Examples": 10,
+      "wave6Examples": 1,
+      "supplementalControls": 1
+    },
+    "sourceNodes": 138,
+    "evidenceNodes": 128,
+    "malformedFixtures": 46,
+    "findings": 0,
+    "productDecisions": 0,
+    "remediationIntakes": 0
+  },
+  "gates": {
+    "integrity": "Passed",
+    "releaseTests": "Passed",
+    "coverage": "Passed",
+    "format": "Passed",
+    "documentation": "Passed",
+    "accessibility": "Passed",
+    "governanceParity": "Passed",
+    "protectedRoots": "Passed",
+    "remoteExactHead": "NotAuthorized"
+  },
+  "coverage": {
+    "TuiVision.Core": 92.96,
+    "TuiVision.Controls": 86.74,
+    "TuiVision.Serialization": 90.01,
+    "TuiVision.Compatibility": 80.55,
+    "TuiVision.Drivers.Console": 89.18
+  },
+  "decision": "The delivered Feature 038 portfolio baseline remains conformant and learning-ready. AuditCompleteNoFindings is the upstream audit result; this record is the independent portfolio closure."
+}

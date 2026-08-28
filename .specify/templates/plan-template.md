@@ -108,6 +108,21 @@
   Home-sync need, and re-evaluation trigger. A `FollowUp` needs owner, risk,
   due date, trigger, evidence, and scope rationale.
 
+<!-- source-reference-policy:begin -->
+- **Source-reference policy**: Treat current TuiVision contracts as normative.
+  For historically material work, inspect `magiblot/tvision` first at commit
+  `57b6f56b38e0ee75240a80a10ee0e11470c24693`, tree
+  `96dd03873955689ff0a79f6c8107a8148fe1ebd6`, as a non-normative modern
+  design reference; then inspect historical sources and material comparison or
+  consumer evidence. Record exactly `AdoptModernization`,
+  `PreserveHistoricalIntent`, `IntentionalTuiVisionDeviation`, or `N/A`.
+  Source rank alone does not resolve conflicts. Keep external sources untracked
+  and uncopied; record the license boundary as `MultipartNotRepositoryWideMIT`.
+  Apply the policy `Prospective`; re-evaluate only for a changed contract, a
+  new approved pin, or materially new consumer evidence. Never use moving
+  branches as evidence.
+<!-- source-reference-policy:end -->
+
 ## Project Structure
 
 ### Documentation (this feature)

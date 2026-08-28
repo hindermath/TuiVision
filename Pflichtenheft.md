@@ -29,6 +29,30 @@ Die Baseline wird nicht mehr als parallele Fortschrittsliste bearbeitet.
 Produktfortschritt folgt ausschließlich aus Feature-Evidence,
 Intake-Receipts und dem Serien-Lifecycle.
 
+<!-- source-reference-policy:begin -->
+## Drei-Achsen-Quellenpolicy / Three-Axis Source Reference Policy
+
+Aktuelle TuiVision-Anforderungen, Spezifikationen, Public Contracts und Tests
+sind die Produktnorm. Bei historisch berührten Änderungen wird
+`magiblot/tvision` zuerst als moderne, nicht normative Designreferenz am Commit
+`57b6f56b38e0ee75240a80a10ee0e11470c24693` und Tree
+`96dd03873955689ff0a79f6c8107a8148fe1ebd6` geprüft; Borland und `tv203s/`
+bestimmen historische Absicht. Vergleichs- und Consumer-Evidence bleiben
+eigenständige Rollen. Die Entscheidung lautet genau `AdoptModernization`,
+`PreserveHistoricalIntent`, `IntentionalTuiVisionDeviation` oder `N/A`.
+
+Quellenrang allein löst keinen Konflikt. Externe Checkouts und Quellkopien
+bleiben außerhalb des Repositorys; der Lizenzstatus lautet
+`MultipartNotRepositoryWideMIT`. Die Policy gilt `Prospective`; nur geänderte
+TuiVision-Verträge, ein neuer freigegebener Magiblot-Pin oder materiell neue
+Consumer-Evidence lösen eine Re-Evaluation aus. Bewegliche Branches sind keine
+Evidence.
+
+*Current TuiVision contracts remain normative. The exact Magiblot pin is
+reviewed first for modern design without replacing historical or consumer
+evidence. The no-copy policy applies prospectively with three closed triggers.*
+<!-- source-reference-policy:end -->
+
 ## Verbindliche Produktregeln / Binding Product Rules
 
 - C#/.NET 10, idiomatische C#-Architektur und keine native Pflichtabhängigkeit.
@@ -52,13 +76,17 @@ Intake-Receipts und dem Serien-Lifecycle.
 - Abgeschlossene Intakes: `requirements/intakes/archive/`
 - Nicht blockierender Backlog: `requirements/intakes/backlog/`
 
-Wave 6 ist durch Feature 037 und PR #139 geschlossen. Bevorzugter nächster
-fachlicher Intake ist der Post-Wave-6-Beispielportfolio-Audit. Dieses Dokument
-reserviert oder startet Feature 038 nicht.
+Wave 6, Portfolioaudit, unabhängiger Portfolioabschluss, Constitution-
+Revalidation, Quellenpolicy und das Transactional Form Model aus Issue #154
+sind abgeschlossen. Bevorzugter nächster fachlicher Intake ist die
+Documentation-Publishing-Closure. Die Reihenfolge autorisiert keinen
+impliziten Specify-, Implementierungs- oder Remote-Schritt.
 
-*Wave 6 is closed by Feature 037 and PR #139. The preferred next product intake
-is the post-Wave-6 example-portfolio audit. This document neither reserves nor
-starts Feature 038.*
+*Wave 6, the portfolio audit, independent portfolio closure, constitution
+revalidation, source policy, and the Transactional Form Model from Issue #154
+are complete. Documentation Publishing Closure is the preferred next product
+intake. Ordering grants no implicit specification, implementation, or remote
+authority.*
 
 ## Änderungskontrolle / Change Control
 

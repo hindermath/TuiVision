@@ -25,6 +25,22 @@ description: "Task list template for feature implementation"
 - **Mobile**: `api/src/`, `ios/src/` or `android/src/`
 - Paths shown below assume single project - adjust based on plan.md structure
 
+<!-- source-reference-policy:begin -->
+## Quellenreferenz-Aufgaben / Source-reference tasks
+
+For historically material work, tasks MUST read current TuiVision contracts,
+then `magiblot/tvision` at commit
+`57b6f56b38e0ee75240a80a10ee0e11470c24693`, tree
+`96dd03873955689ff0a79f6c8107a8148fe1ebd6`, then historical sources and any
+material consumer evidence. Evidence records exactly `AdoptModernization`,
+`PreserveHistoricalIntent`, `IntentionalTuiVisionDeviation`, or `N/A`.
+Source rank alone never resolves conflicts. External source copy is forbidden;
+the license boundary is `MultipartNotRepositoryWideMIT`. This is a
+`Prospective` policy with re-evaluation only for a changed contract, new
+approved pin, or materially new consumer evidence; moving branches are not
+evidence.
+<!-- source-reference-policy:end -->
+
 <!--
   ============================================================================
   IMPORTANT: The tasks below are SAMPLE TASKS for illustration purposes only.

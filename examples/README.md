@@ -209,6 +209,35 @@ prepares a confirmable intent; the keyboard path remains complete.
 
 ---
 
+## Transactional Form Model
+
+`FormTransaction` ist eine TuiVision-spezifische, additive Lerndemo und kein
+historisches Pflichtbeispiel. Ein Kundenformular mit verschachtelter Adresse
+zeigt Dirty-State, Change-Set, typsicheres POCO-Binding, kultur-explizite
+Konvertierung, synchrone und submit-time asynchrone Validierung, In-memory-
+Persistenz, Accept, Reject, Cancellation und veraltete Async-Ergebnisse. Das
+eingebettete JSON enthält nur sichere symbolische Formsemantik.
+
+`FormTransaction` is a TuiVision-specific additive learning demo, not a
+mandatory historical example. A customer form with a nested address shows
+dirty state, change sets, type-safe POCO binding, explicit-culture conversion,
+synchronous and submit-time asynchronous validation, in-memory persistence,
+accept, reject, cancellation, and stale asynchronous results. Its embedded
+JSON contains only safe symbolic form semantics.
+
+```bash
+dotnet run --project examples/FormTransaction
+dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~FormTransactionSmokeTests"
+```
+
+Der ausführliche zweisprachige Guide liegt in
+`docs/guides/transactional-form-model.md`.
+
+The detailed bilingual guide is in
+`docs/guides/transactional-form-model.md`.
+
+---
+
 ## A11Y-Referenz / Accessibility Reference
 
 Feature `023-a11y-framework` liefert eine kleine Referenz-App für opt-in
@@ -286,5 +315,6 @@ dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Wa
 dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Tp7"
 dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Wave5Functional"
 dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~Wave6"
+dotnet test tests/TuiVision.Examples.SmokeTests/ --filter "FullyQualifiedName~FormTransaction"
 dotnet test tests/TuiVision.Examples.SmokeTests/
 ```

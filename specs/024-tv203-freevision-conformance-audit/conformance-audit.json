@@ -5,7 +5,7 @@
     "auditDate": "2026-07-12",
     "historicalLedgerPath": "docs/porting-status.md",
     "historicalRowCount": 151,
-    "modernSourceCount": 139,
+    "modernSourceCount": 147,
     "freeVisionRepository": "https://gitlab.com/freepascal.org/fpc/source.git",
     "freeVisionCommit": "ffc03b34d8cafb85ddcf0686de1c5551601dacb2",
     "consumerScope": [
@@ -291,7 +291,12 @@
         "M068",
         "M071",
         "M135",
-        "M136"
+        "M136",
+        "M140",
+        "M141",
+        "M142",
+        "M144",
+        "M145"
       ],
       "publicContractItemIds": [
         "P043",
@@ -339,7 +344,22 @@
         "P169",
         "P170",
         "P204",
-        "P205"
+        "P205",
+        "P212",
+        "P213",
+        "P214",
+        "P215",
+        "P216",
+        "P217",
+        "P219",
+        "P220",
+        "P221",
+        "P222",
+        "P223",
+        "P224",
+        "P225",
+        "P226",
+        "P230"
       ],
       "contractIds": [
         "C019",
@@ -529,7 +549,10 @@
         "M109",
         "M115",
         "M116",
-        "M117"
+        "M117",
+        "M143",
+        "M146",
+        "M147"
       ],
       "publicContractItemIds": [
         "P046",
@@ -546,7 +569,16 @@
         "P083",
         "P084",
         "P085",
-        "P094"
+        "P094",
+        "P218",
+        "P227",
+        "P228",
+        "P229",
+        "P231",
+        "P232",
+        "P233",
+        "P234",
+        "P235"
       ],
       "contractIds": [
         "C028",
@@ -3706,6 +3738,78 @@
       "contractIds": [
         "C026"
       ]
+    },
+    {
+      "itemId": "M140",
+      "path": "src/TuiVision.Controls/FormContracts.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D07",
+      "contractIds": [
+        "C019"
+      ]
+    },
+    {
+      "itemId": "M141",
+      "path": "src/TuiVision.Controls/FormField.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D07",
+      "contractIds": [
+        "C019"
+      ]
+    },
+    {
+      "itemId": "M142",
+      "path": "src/TuiVision.Controls/FormInputLineAdapter.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D07",
+      "contractIds": [
+        "C021"
+      ]
+    },
+    {
+      "itemId": "M143",
+      "path": "src/TuiVision.Controls/FormRuntimeRegistry.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D10",
+      "contractIds": [
+        "C030"
+      ]
+    },
+    {
+      "itemId": "M144",
+      "path": "src/TuiVision.Controls/FormSession.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D07",
+      "contractIds": [
+        "C019"
+      ]
+    },
+    {
+      "itemId": "M145",
+      "path": "src/TuiVision.Controls/FormValueConverter.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D07",
+      "contractIds": [
+        "C019"
+      ]
+    },
+    {
+      "itemId": "M146",
+      "path": "src/TuiVision.Serialization/TFormSemanticDocument.cs",
+      "assembly": "TuiVision.Serialization",
+      "domainId": "D10",
+      "contractIds": [
+        "C030"
+      ]
+    },
+    {
+      "itemId": "M147",
+      "path": "src/TuiVision.Serialization/TFormSemanticJson.cs",
+      "assembly": "TuiVision.Serialization",
+      "domainId": "D10",
+      "contractIds": [
+        "C029"
+      ]
     }
   ],
   "publicContractItems": [
@@ -5613,6 +5717,174 @@
       "contractIds": [
         "C026"
       ]
+    },
+    {
+      "itemId": "P212",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.FormBindingCommitException",
+      "domainId": "D07",
+      "contractIds": ["C019"]
+    },
+    {
+      "itemId": "P213",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.FormChange",
+      "domainId": "D07",
+      "contractIds": ["C019"]
+    },
+    {
+      "itemId": "P214",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.FormChangeSet",
+      "domainId": "D07",
+      "contractIds": ["C019"]
+    },
+    {
+      "itemId": "P215",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.FormConversionResult`1",
+      "domainId": "D07",
+      "contractIds": ["C019"]
+    },
+    {
+      "itemId": "P216",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.FormField`1",
+      "domainId": "D07",
+      "contractIds": ["C019"]
+    },
+    {
+      "itemId": "P217",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.FormInputLineAdapter",
+      "domainId": "D07",
+      "contractIds": ["C021"]
+    },
+    {
+      "itemId": "P218",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.FormRuntimeRegistry",
+      "domainId": "D10",
+      "contractIds": ["C030"]
+    },
+    {
+      "itemId": "P219",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.FormSession",
+      "domainId": "D07",
+      "contractIds": ["C019"]
+    },
+    {
+      "itemId": "P220",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.FormSubmitResult",
+      "domainId": "D07",
+      "contractIds": ["C019"]
+    },
+    {
+      "itemId": "P221",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.FormSubmitStatus",
+      "domainId": "D07",
+      "contractIds": ["C019"]
+    },
+    {
+      "itemId": "P222",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.FormValidationError",
+      "domainId": "D07",
+      "contractIds": ["C019"]
+    },
+    {
+      "itemId": "P223",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.IFormControlAdapter",
+      "domainId": "D07",
+      "contractIds": ["C021"]
+    },
+    {
+      "itemId": "P224",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.IFormField",
+      "domainId": "D07",
+      "contractIds": ["C019"]
+    },
+    {
+      "itemId": "P225",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.IFormField`1",
+      "domainId": "D07",
+      "contractIds": ["C019"]
+    },
+    {
+      "itemId": "P226",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.IFormValueConverter`2",
+      "domainId": "D07",
+      "contractIds": ["C019"]
+    },
+    {
+      "itemId": "P227",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.ResolvedFormSemanticDefinition",
+      "domainId": "D10",
+      "contractIds": ["C030"]
+    },
+    {
+      "itemId": "P228",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.ResolvedFormSemanticDocument",
+      "domainId": "D10",
+      "contractIds": ["C030"]
+    },
+    {
+      "itemId": "P229",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.ResolvedFormSemanticField",
+      "domainId": "D10",
+      "contractIds": ["C030"]
+    },
+    {
+      "itemId": "P230",
+      "assembly": "TuiVision.Controls",
+      "fullTypeName": "TuiVision.Controls.FormValueConverter`2",
+      "domainId": "D07",
+      "contractIds": ["C019"]
+    },
+    {
+      "itemId": "P231",
+      "assembly": "TuiVision.Serialization",
+      "fullTypeName": "TuiVision.Serialization.TFormSemanticChild",
+      "domainId": "D10",
+      "contractIds": ["C030"]
+    },
+    {
+      "itemId": "P232",
+      "assembly": "TuiVision.Serialization",
+      "fullTypeName": "TuiVision.Serialization.TFormSemanticDefinition",
+      "domainId": "D10",
+      "contractIds": ["C030"]
+    },
+    {
+      "itemId": "P233",
+      "assembly": "TuiVision.Serialization",
+      "fullTypeName": "TuiVision.Serialization.TFormSemanticDocument",
+      "domainId": "D10",
+      "contractIds": ["C030"]
+    },
+    {
+      "itemId": "P234",
+      "assembly": "TuiVision.Serialization",
+      "fullTypeName": "TuiVision.Serialization.TFormSemanticField",
+      "domainId": "D10",
+      "contractIds": ["C030"]
+    },
+    {
+      "itemId": "P235",
+      "assembly": "TuiVision.Serialization",
+      "fullTypeName": "TuiVision.Serialization.TFormSemanticJson",
+      "domainId": "D10",
+      "contractIds": ["C029"]
     }
   ],
   "contracts": [
@@ -6297,7 +6569,11 @@
         "M063",
         "M071",
         "M135",
-        "M136"
+        "M136",
+        "M140",
+        "M141",
+        "M144",
+        "M145"
       ],
       "publicContractItemIds": [
         "P043",
@@ -6316,7 +6592,20 @@
         "P159",
         "P169",
         "P204",
-        "P205"
+        "P205",
+        "P212",
+        "P213",
+        "P214",
+        "P215",
+        "P216",
+        "P219",
+        "P220",
+        "P221",
+        "P222",
+        "P224",
+        "P225",
+        "P226",
+        "P230"
       ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/tbutton.cc",
@@ -6426,7 +6715,8 @@
         "M062",
         "M068",
         "M135",
-        "M136"
+        "M136",
+        "M142"
       ],
       "publicContractItemIds": [
         "P088",
@@ -6444,7 +6734,9 @@
         "P155",
         "P168",
         "P204",
-        "P205"
+        "P205",
+        "P217",
+        "P223"
       ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/tclrdisp.cc",
@@ -6820,14 +7112,16 @@
         "M101",
         "M104",
         "M107",
-        "M115"
+        "M115",
+        "M147"
       ],
       "publicContractItemIds": [
         "P047",
         "P054",
         "P063",
         "P076",
-        "P085"
+        "P085",
+        "P235"
       ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/fpstream.cc",
@@ -6861,14 +7155,24 @@
         "M102",
         "M105",
         "M108",
-        "M116"
+        "M116",
+        "M143",
+        "M146"
       ],
       "publicContractItemIds": [
         "P048",
         "P061",
         "P066",
         "P083",
-        "P094"
+        "P094",
+        "P218",
+        "P227",
+        "P228",
+        "P229",
+        "P231",
+        "P232",
+        "P233",
+        "P234"
       ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/ifpstrea.cc",

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.1",
+  "runId": "08154703-57ea-49e1-87f5-3fcbfeebb008",
+  "featurePath": "specs/042-transactional-form-model",
+  "branch": "042-transactional-form-model",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Publish",
+  "status": "Active",
+  "checkpointCommit": "19450fa383abfbdf71268f09ab6d67395deb98e1",
+  "acceptedArtifacts": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+      "sha256": "45d8f8b589c3d9fd417f9b8dc9d25d09c0597f02c075b04454bbce95e095a239"
+    },
+    {
+      "path": "specs/intake-review-result.json",
+      "sha256": "4ab92b2d7499b37b68c3d90899144d89fd33c445e7dfda94872243f3f701b770"
+    }
+  ],
+  "tasks": {
+    "path": "specs/042-transactional-form-model/tasks.md",
+    "sha256": "775e4deaeef851357157c60477358e487d7f2ad305a6b9ec9ebe34fef8894cf6",
+    "completed": 19,
+    "total": 19
+  },
+  "lastPassingGate": "Release build 0/0, full tests 965/965, coverage Core 92.96 Controls 86.95 Serialization 90.47 Compatibility 80.55 Drivers 89.18, format 0/583, source and intake governance Bash/PowerShell, DocFX 0/0, Axe 2/2, Lynx, XML and diff validation all passed",
+  "nextExactAction": "Validate and commit the exact Feature 042 delivery set, push the branch, create its pull request, then converge exact-head gates before the explicitly authorized admin-bypass merge.",
+  "lastOperation": {
+    "kind": "AuthorityEscalation",
+    "state": "Completed",
+    "summary": "The user explicitly escalated Feature 042 from LocalImplementation to MergeAndSync and authorized a narrow admin bypass; no technical or evidence gate may be bypassed."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "closeout": {
+    "mergeOrPublication": "Pending",
+    "defaultBranchSync": "Pending",
+    "postMergeActions": "Pending",
+    "finalValidation": "Pending"
+  },
+  "updatedAt": "2026-08-28T23:15:00Z"
+}

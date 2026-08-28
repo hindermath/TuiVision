@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "1.0",
+  "gates": [
+    {
+      "gateId": "GATE-042-01",
+      "applicability": "Applicable",
+      "requiredScope": "The accepted intake, Ready ten-target series review, completed source-reference prerequisite, feature identity, branch and current MergeAndSync authority remain hash-aligned.",
+      "requiredCommandTokens": [
+        "validate-intake-review-result",
+        "validate-intake-series-receipt",
+        "validate-autonomous-run-state"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "local"
+      ],
+      "rationale": "Remote delivery may proceed only from current immutable lineage and explicit authority.",
+      "reevaluationTrigger": "Any intake, review, series, branch, authority or run-state drift."
+    },
+    {
+      "gateId": "GATE-042-02",
+      "applicability": "Applicable",
+      "requiredScope": "Field/session, typed binding, converter, rollback, async snapshot, recursive ownership, strict JSON and trusted registry contracts pass their targeted Release suites.",
+      "requiredCommandTokens": [
+        "dotnet test",
+        "Release",
+        "FormSession",
+        "FormSemanticJson"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "local",
+        "macos"
+      ],
+      "rationale": "Phases 1 through 4 are one product feature and require direct executable proof.",
+      "reevaluationTrigger": "Any Controls, Serialization, binding, validation, transaction or registry change."
+    },
+    {
+      "gateId": "GATE-042-03",
+      "applicability": "Applicable",
+      "requiredScope": "FormTransaction drives the real application loop and proves visible transaction, persistence, reject, cancellation, stale and Help Description behavior.",
+      "requiredCommandTokens": [
+        "dotnet test",
+        "Release",
+        "FormTransaction"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "local",
+        "macos"
+      ],
+      "rationale": "The learner-facing example is the integration acceptance surface.",
+      "reevaluationTrigger": "Any example, adapter, control, status, help or app-loop change."
+    },
+    {
+      "gateId": "GATE-042-04",
+      "applicability": "Applicable",
+      "requiredScope": "Release build, all solution tests, five assembly-specific Coverlet thresholds, XML configuration and format verification pass at the recorded build versions.",
+      "requiredCommandTokens": [
+        "dotnet build",
+        "dotnet test",
+        "Release",
+        "XPlat Code Coverage",
+        "coverlet.runsettings",
+        "dotnet format --verify-no-changes"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "local",
+        "macos"
+      ],
+      "rationale": "Repository policy requires complete regression, coverage and style evidence.",
+      "reevaluationTrigger": "Any product, test, project, solution, coverage, format or version change beyond final version alignment."
+    },
+    {
+      "gateId": "GATE-042-05",
+      "applicability": "Applicable",
+      "requiredScope": "The versioned JSON allowlist, size/depth/item limits, no-partial-model behavior, trusted registry boundary, no-copy provenance and secret scans remain secure.",
+      "requiredCommandTokens": [
+        "scan-agent-secrets",
+        "validate-source-reference-policy",
+        "malformed",
+        "registry"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "local"
+      ],
+      "rationale": "Declarative data and external provenance are explicit trust boundaries.",
+      "reevaluationTrigger": "Any JSON grammar, registry, reflection, external-source, dependency or secret-scan change."
+    },
+    {
+      "gateId": "GATE-042-06",
+      "applicability": "Applicable",
+      "requiredScope": "German-first and English-second CEFR-B2 documentation, generated API pages, text-first output and WCAG-oriented smoke proof remain complete.",
+      "requiredCommandTokens": [
+        "docfx docfx.json",
+        "npm run test:docfx",
+        "lynx",
+        "UTF-8"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "local"
+      ],
+      "rationale": "Public APIs and the learner-facing example require discoverable accessible documentation.",
+      "reevaluationTrigger": "Any public API, guide, navigation, language, accessibility or generated-documentation change."
+    },
+    {
+      "gateId": "GATE-042-07",
+      "applicability": "Applicable",
+      "requiredScope": "Source policy, Bash/PowerShell governance parity, homogeneity, agent parity, project statistics, diff integrity and autonomous task state remain current.",
+      "requiredCommandTokens": [
+        "check-homogeneity",
+        "agent-surface-parity",
+        "render-project-statistics",
+        "git diff --check"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "local"
+      ],
+      "rationale": "The feature changes shared governance and evidence surfaces in addition to product code.",
+      "reevaluationTrigger": "Any policy, agent, template, series, statistics, task or evidence drift."
+    },
+    {
+      "gateId": "GATE-042-08",
+      "applicability": "Applicable",
+      "requiredScope": "The exact reviewed feature head is pushed, every required GitHub technical check passes on Ubuntu, macOS and Windows, no actionable review thread remains, and provider-neutral PreMerge evidence validates.",
+      "requiredCommandTokens": [
+        "gh pr checks",
+        "validate-autonomous-gate-evidence",
+        "git rev-parse HEAD"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "github",
+        "ubuntu",
+        "macos",
+        "windows"
+      ],
+      "rationale": "Admin authority never substitutes for exact-head technical or review convergence.",
+      "reevaluationTrigger": "Any head, workflow, check, rerun, review thread or authority change."
+    },
+    {
+      "gateId": "GATE-042-09",
+      "applicability": "Applicable",
+      "requiredScope": "After all technical gates pass, the explicitly authorized admin bypass covers only the remaining approval rule; the PR uses a merge commit, branches are cleaned and local main is fast-forwarded to origin/main.",
+      "requiredCommandTokens": [
+        "gh pr merge --merge --admin --delete-branch",
+        "git fetch --prune origin",
+        "git pull --ff-only origin main"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "github",
+        "local",
+        "main"
+      ],
+      "rationale": "MergeAndSync and the narrow bypass were explicitly authorized in the current user turn.",
+      "reevaluationTrigger": "Any failed technical gate, actionable review, merge failure, branch-cleanup failure or default-branch drift."
+    }
+  ]
+}

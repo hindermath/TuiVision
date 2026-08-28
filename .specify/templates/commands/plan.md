@@ -23,6 +23,20 @@ Use this command to produce an implementation plan from an approved specificatio
    shared single-writer files, trigger-based validation, scope firewall, and
    remote closeout when delegated.
 
+<!-- source-reference-policy:begin -->
+6. Apply the source-reference policy when history or modernization is material:
+   current TuiVision contracts are normative; inspect `magiblot/tvision` first
+   at commit `57b6f56b38e0ee75240a80a10ee0e11470c24693`, tree
+   `96dd03873955689ff0a79f6c8107a8148fe1ebd6`, as a non-normative modern
+   design reference; then inspect historical and material consumer sources.
+   Record exactly `AdoptModernization`, `PreserveHistoricalIntent`,
+   `IntentionalTuiVisionDeviation`, or `N/A`. Source rank alone never resolves
+   conflicts. Keep external sources uncopied and record
+   `MultipartNotRepositoryWideMIT`. Apply this `Prospective`; re-evaluate only
+   for a changed contract, new approved pin, or materially new consumer
+   evidence. Moving branches are not evidence.
+<!-- source-reference-policy:end -->
+
 ## Validation Checklist
 
 - No gate is left unresolved without rationale.

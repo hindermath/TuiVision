@@ -36,7 +36,7 @@
     {
       "featureId": "024-tv203-freevision-conformance-audit",
       "path": "specs/024-tv203-freevision-conformance-audit/conformance-audit.json",
-      "sha256": "ff4184630820156ca9ed48e53f5b2655200d1d25930c3c6b264e9ecb07e1d986",
+      "sha256": "45449c2d967c193d5035f898c8a0b25e07688056fd818a5677067a77604df46d",
       "role": "contract-finding-resolution-audit",
       "result": "Pass",
       "reevaluationTrigger": "The accepted Feature-024 dataset content or path changes."

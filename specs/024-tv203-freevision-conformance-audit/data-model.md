@@ -9,7 +9,7 @@
 | `auditDate` | ISO date |
 | `historicalLedgerPath` | Repository-relative canonical ledger path |
 | `historicalRowCount` | Must equal current filesystem and ledger count; planning baseline 151 |
-| `modernSourceCount` | Must equal maintained source inventory at validation time; planning baseline 119 |
+| `modernSourceCount` | Must equal maintained source inventory at validation time; current live inventory 147 after Feature 042 |
 | `freeVisionRepository` | Exact official upstream URL |
 | `freeVisionCommit` | Exact 40-character approved commit |
 | `consumerScope` | Exact reviewed consumer roots; Revision 2 requires `TVDEMOS` and `TVFM` |

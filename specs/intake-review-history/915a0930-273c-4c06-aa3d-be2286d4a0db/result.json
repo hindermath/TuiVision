@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0",
+  "reviewId": "915a0930-273c-4c06-aa3d-be2286d4a0db",
+  "mode": "Single",
+  "status": "Ready",
+  "policy": "tui-vision-lastenheft",
+  "reviewedAt": "2026-08-28T22:01:04Z",
+  "repository": { "root": ".", "head": "19450fa383abfbdf71268f09ab6d67395deb98e1" },
+  "targets": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+      "role": "Primary",
+      "normalizedSha256": "801e55636b0ae2467a7a1c82927b84c4d46d151df798af69b3a3a21e477d122a",
+      "gitBlob": "51b5d8ad0381a436329e3e54242c4cd5b81fc5fe"
+    }
+  ],
+  "findings": [],
+  "questions": [],
+  "acceptedRisks": [],
+  "operatorExceptions": [],
+  "coverage": {
+    "individual": ["requirements/intakes/active/Lastenheft_Source-Reference-Policy.md"],
+    "series": [],
+    "workers": []
+  },
+  "summary": { "critical": 0, "high": 0, "medium": 0, "low": 0 },
+  "supersedes": "25e478e4-188a-4cba-9166-5390cd8e168a"
+}

@@ -10,8 +10,8 @@ is generated from the series manifest and is not maintained independently.*
 
 ## Bevorzugter nächster Intake / Preferred Next Intake
 
-1. `requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md`
-   - reserviert noch kein Feature; Feature `038` wird nicht automatisch angelegt
+1. `requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md`
+   - folgt der bevorzugten Reihenfolge nach dem gelieferten Formmodell
    - Status: `Eligible`
    - startet nicht automatisch
 
@@ -22,17 +22,40 @@ is generated from the series manifest and is not maintained independently.*
    - Status: `Completed`
    - erfüllt die harte Voraussetzung des Portfolioaudits
 
+3. `requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md`
+   - geliefert durch Feature `038-example-portfolio-conformance-audit` und PR `#144`
+   - Status: `Completed`
+   - erfüllt die harte Voraussetzung des unabhängigen Portfolio-Closures
+
+4. `requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md`
+   - unabhängig als `PortfolioConformantAndLearningReady` abgeschlossen
+   - Status: `Completed`
+   - erfüllt die Produktvoraussetzung der späteren Formtransaktion
+
+5. `requirements/intakes/active/Lastenheft_Constitution_Change.md`
+   - CC-01 bis CC-07 als vollständig `AlreadySatisfied` revalidiert
+   - Status: `Completed`
+   - gemeinsame Schreibflächen für die Quellenpolicy sind freigegeben
+
+6. `requirements/intakes/active/Lastenheft_Source-Reference-Policy.md`
+   - durch Feature `041-source-reference-policy` lokal vollständig geliefert
+   - Status: `Completed`
+   - harte Policy-Voraussetzung des Transactional Form Model ist erfüllt
+
+7. `requirements/intakes/active/Lastenheft_Transactional-Form-Model.md`
+   - Issue #154 und die genehmigten Phasen 1 bis 4 sind durch Feature
+     `042-transactional-form-model` lokal vollständig geliefert
+   - Status: `Completed`
+
 ## Weitere unabhängige aktive Intakes / Other Independent Active Intakes
 
-3. `requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md`
-4. `requirements/intakes/active/Lastenheft_Constitution_Change.md`
-5. `requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md`
-6. `requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md`
-7. `requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md`
+8. `requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md`
+9. `requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md`
+10. `requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md`
 
-Diese Intakes sind unabhängige Wurzeln. Ihre Reihenfolge ist eine bevorzugte
-Serialisierung gemeinsamer Governance- und Dokumentationsoberflächen, keine
-erfundene fachliche Abhängigkeit.
+Die Sicherheits- und Governance-Intakes bleiben unabhängige Wurzeln. Die
+Documentation-Publishing-Closure besitzt eine nicht bindende bevorzugte
+Reihenfolge nach dem Formmodell; daraus entsteht keine harte Produktabhängigkeit.
 
 ## Nicht ausführbarer Backlog / Non-Executable Backlog
 
@@ -49,6 +72,5 @@ $speckit-intake-series-status
 $speckit-intake-series-next
 ```
 
-Der Portfolioaudit wird erst durch einen ausdrücklichen autonomen oder
-manuellen Spec-Kit-Auftrag gestartet. `.specify/feature.json` bleibt bis dahin
-auf dem abgeschlossenen Feature 037; Feature 038 wird nicht implizit erzeugt.
+Die Documentation-Publishing-Closure ist nur als nächster Intake freigegeben;
+kein Specify-, Implementierungs- oder Remote-Schritt wird implizit autorisiert.

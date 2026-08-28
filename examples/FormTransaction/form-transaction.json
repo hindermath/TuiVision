@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "form": "customer",
+  "forms": [
+    {
+      "form": "customer",
+      "fields": [
+        {"field":"name","control":"input","type":"text","binding":"customer-name","converter":"identity","validators":["required","available"]},
+        {"field":"credit","control":"input","type":"text","binding":"customer-credit","converter":"decimal-de","validators":["required"]}
+      ],
+      "children": [{"child":"address","form":"address"}]
+    },
+    {
+      "form": "address",
+      "fields": [
+        {"field":"city","control":"input","type":"text","binding":"address-city","converter":"identity","validators":["required"]}
+      ],
+      "children": []
+    }
+  ]
+}

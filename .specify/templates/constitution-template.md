@@ -51,6 +51,29 @@ terms at first use, assume no prior Spec Kit experience, provide text-first
 dependency/state/decision information, and apply WCAG 2.2 Level AA wherever
 the criteria are applicable.
 
+<!-- source-reference-policy:begin -->
+## Drei-Achsen-Quellenpolicy / Three-Axis Source Reference Policy
+
+Aktuelle Produktvertraege sind normativ. Bei historisch beruehrten Aenderungen
+wird `magiblot/tvision` zuerst als moderne, nicht normative Designreferenz am
+Commit `57b6f56b38e0ee75240a80a10ee0e11470c24693` und Tree
+`96dd03873955689ff0a79f6c8107a8148fe1ebd6` geprueft; danach folgen die
+historischen Quellen und bei materieller Relevanz Vergleichs- und Consumer-
+Evidence. Genau eine Entscheidung wird dokumentiert: `AdoptModernization`,
+`PreserveHistoricalIntent`, `IntentionalTuiVisionDeviation` oder `N/A`.
+Quellenrang allein loest keinen Konflikt.
+
+Externe Checkouts und Quellkopien bleiben ausserhalb des Repositorys; der
+Lizenzstatus lautet `MultipartNotRepositoryWideMIT`. Die Policy gilt
+`Prospective`; nur ein geaenderter Produktvertrag, ein neuer freigegebener Pin
+oder materiell neue Consumer-Evidence loesen Re-Evaluation aus. Bewegliche
+Branches sind keine Evidence.
+
+*Current product contracts are normative. Review the exact Magiblot pin first
+for modern design, preserve historical and consumer roles, record one closed
+disposition, and enforce the prospective no-copy provenance boundary.*
+<!-- source-reference-policy:end -->
+
 ## Governance
 <!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 

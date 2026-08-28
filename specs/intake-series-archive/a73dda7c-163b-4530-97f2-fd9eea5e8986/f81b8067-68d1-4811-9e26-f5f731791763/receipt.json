@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeriesReceipt",
+  "receiptId": "f7c22e54-ff1b-4646-9a41-ce8d7683e201",
+  "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
+  "generator": {
+    "preset": "intake-sequencing-governance",
+    "version": "0.1.1"
+  },
+  "createdAt": "2026-08-08T17:17:31Z",
+  "operation": {
+    "operationId": "42a4aa44-a0ba-4e17-a141-ca0f56427786",
+    "type": "Update",
+    "authorityEvidence": "Feature 037 causal closeout after PR #139 merged with all technical gates green"
+  },
+  "status": "Ready",
+  "manifest": {
+    "path": "requirements/intakes/series/tui-vision-delivery/manifest.json",
+    "normalizedSha256": "9b90486d9b432a529d90d8a2a8df7cf08a15acf5a974baedb7780742d4be5314"
+  },
+  "supersedes": {
+    "receiptPath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/42a4aa44-a0ba-4e17-a141-ca0f56427786/receipt.json",
+    "receiptNormalizedSha256": "287731818f69f07d617f5eda5e37240a945d938cde0deb1d818e87ce4d7fb61a",
+    "manifestArchivePath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/42a4aa44-a0ba-4e17-a141-ca0f56427786/manifest.json",
+    "manifestArchiveSha256": "c5434625bbefe764ef4f205451f7867d391d4cd67c1be7e682f6bbca62ed3930"
+  },
+  "tombstone": {
+    "path": "N/A",
+    "normalizedSha256": "N/A"
+  },
+  "nextAction": "$speckit-intake-series-status"
+}

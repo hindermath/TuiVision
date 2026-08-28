@@ -1,11 +1,10 @@
 <!--
 Sync Impact Report
-Version change: 1.16.0 -> 1.17.0
+Version change: 1.17.0 -> 1.18.0
 Modified principles:
-- VII. Inclusion & Accessibility By Default (bind first-year learner audiences and text-first dependency evidence)
-- VIII. DE-First / EN-Second Bilingual Delivery (explain first-use terms and require no prior Spec Kit experience)
-Added sections:
 - None
+Added sections:
+- XXI. Three-Axis Source Reference Policy
 Removed sections:
 - None
 Templates requiring updates:
@@ -24,7 +23,7 @@ Follow-up TODOs:
 - None
 -->
 
-# Constitution v1.17.0
+# Constitution v1.18.0
 
 # home-baseline Constitution
 
@@ -794,6 +793,42 @@ attributes, and accepted technical debt. Lightweight iSAQB/arc42 evidence
 keeps these decisions reviewable without forcing heavyweight documentation for
 small changes.
 
+<!-- source-reference-policy:begin -->
+### XXI. Drei-Achsen-Quellenpolicy / Three-Axis Source Reference Policy
+
+Akzeptierte TuiVision-Anforderungen, Spezifikationen, Public Contracts und
+Tests bestimmen die aktuelle Produktsemantik. `magiblot/tvision` MUSS bei
+historisch beruehrten Aenderungen zuerst als moderne, nicht normative
+Designreferenz am Commit `57b6f56b38e0ee75240a80a10ee0e11470c24693`
+und Tree `96dd03873955689ff0a79f6c8107a8148fe1ebd6` geprueft werden. Borland-
+Dokumentation und `tv203s/` bestimmen historische Absicht und
+Kompatibilitaetsgrenzen; Free Vision und Terminal.GUI sind unabhaengige
+Vergleiche, waehrend `TVDEMOS`, `TVFM` und Beispiele Consumer-Evidence sind.
+
+Die Pruefreihenfolge endet mit genau einer Entscheidung:
+`AdoptModernization`, `PreserveHistoricalIntent`,
+`IntentionalTuiVisionDeviation` oder `N/A`. Quellenrang allein loest keinen
+Konflikt. Ein bestehender TuiVision-Vertrag bleibt bis zur genehmigten
+Aenderung bindend; Magiblot erzwingt keine C++-Vererbung, Speicherstruktur oder
+Quelltextform. Materielle historische Abweichungen brauchen sichtbare
+Begruendung.
+
+Externe Checkouts bleiben ausserhalb des verfolgten Repositorys. Quellkopie,
+Uebersetzung und Vendorisierung sind ausgeschlossen; gespeichert werden nur
+Pin, Tree, gepruefte Pfade, Hashes, eigene Kurzfassungen und Permalinks. Der
+Lizenzstatus lautet `MultipartNotRepositoryWideMIT`. Die Policy gilt
+`Prospective`; Re-Evaluation erfolgt nur bei geaendertem TuiVision-
+Produktvertrag, neuem freigegebenem Magiblot-Pin oder materiell neuer Consumer-
+Evidence. Bewegliche Branches sind keine Evidence; ein neuer Pin benoetigt
+einen getrennten read-only Provenienz- und Delta-Review.
+
+*Accepted TuiVision contracts define current product semantics. The exact
+Magiblot pin is reviewed first for modern design but is not normative. Borland
+and `tv203s/` define historical intent. The workflow records one named
+disposition, preserves the external no-copy and multipart-license boundary,
+and applies prospectively with three closed re-evaluation triggers.*
+<!-- source-reference-policy:end -->
+
 ## Level-2 Project Environment Registry / Level-2-Projektumgebungsregister
 
 This registry consolidates the constitution-relevant Level-2 project facts
@@ -997,7 +1032,7 @@ Community/catalog coordination is tracked in `github/spec-kit#2362`.
 `.github/copilot-instructions.md` for per-agent operational guidance. This
 constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.17.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-07-25
+**Version**: 1.18.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-08-29
 
 ## Level-2 Project Environment Addendum / Level-2-Projektumgebung
 

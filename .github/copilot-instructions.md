@@ -57,6 +57,27 @@ On numbered Spec-Kit branches, align those three version fields before pushing.
 | `examples/` | Ported example programs; `TuiVision.Examples.SmokeTests` covers integration-level tests |
 | `tv203s/contrib/tvision/` | Original C/C++ source — **read-only reference, never modify** |
 
+<!-- source-reference-policy:begin -->
+## Drei-Achsen-Quellenpolicy / Three-Axis Source Reference Policy
+
+- Aktuelle TuiVision-Vertraege sind die Produktnorm. `magiblot/tvision` wird
+  zuerst als moderne, nicht normative Designreferenz am Commit
+  `57b6f56b38e0ee75240a80a10ee0e11470c24693` und Tree
+  `96dd03873955689ff0a79f6c8107a8148fe1ebd6` geprueft; Borland und `tv203s/`
+  bestimmen historische Absicht. Die Abschlussentscheidung ist genau eine von
+  `AdoptModernization`, `PreserveHistoricalIntent`,
+  `IntentionalTuiVisionDeviation` oder `N/A`.
+- Quellenrang allein loest keinen Konflikt; externe Checkouts bleiben untracked,
+  Quellkopie ist ausgeschlossen und der Lizenzstatus lautet
+  `MultipartNotRepositoryWideMIT`.
+- Die Policy gilt `Prospective`; nur geaenderte TuiVision-Vertraege, ein neuer
+  freigegebener Pin oder materiell neue Consumer-Evidence loesen Re-Evaluation
+  aus. Bewegliche Branches sind keine Evidence.
+
+*Current contracts are normative; the pinned Magiblot revision is reviewed
+first for modern design without replacing historical or consumer evidence.*
+<!-- source-reference-policy:end -->
+
 > **Note:** `src/TuiVision.Drivers.Console`, `src/TuiVision.Serialization`, and `src/TuiVision.Compatibility` currently store all their code in `Class1.cs` — a scaffold artifact. New types in those modules go in that file until it is split.
 
 ### Key design patterns

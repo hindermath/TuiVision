@@ -152,6 +152,22 @@
   re-evaluation trigger.
   `FollowUp` also requires owner, risk, due date, re-evaluation trigger,
   evidence, and scope rationale.
+- **CR-014**: Apply the source-reference policy below whenever history,
+  compatibility, modernization, or consumer evidence is material.
+
+<!-- source-reference-policy:begin -->
+  Current TuiVision contracts are normative. Review `magiblot/tvision` first
+  as a non-normative modern design reference at commit
+  `57b6f56b38e0ee75240a80a10ee0e11470c24693`, tree
+  `96dd03873955689ff0a79f6c8107a8148fe1ebd6`, then historical sources, then
+  material comparison/consumer evidence. Record exactly one:
+  `AdoptModernization`, `PreserveHistoricalIntent`,
+  `IntentionalTuiVisionDeviation`, or `N/A`. Source rank alone never resolves
+  conflicts. No external source copy is allowed; the license boundary is
+  `MultipartNotRepositoryWideMIT`. The policy is `Prospective`; only a changed
+  product contract, new approved pin, or materially new consumer evidence
+  triggers re-evaluation. Moving branches are not evidence.
+<!-- source-reference-policy:end -->
 
 ### Key Entities *(include if feature involves data)*
 

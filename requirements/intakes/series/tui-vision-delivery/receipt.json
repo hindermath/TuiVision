@@ -1,28 +1,28 @@
 {
   "schemaVersion": "1.0",
   "documentType": "IntakeSeriesReceipt",
-  "receiptId": "f7c22e54-ff1b-4646-9a41-ce8d7683e201",
+  "receiptId": "29849c81-74f5-45a3-90d2-bd7c49bee8cf",
   "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
   "generator": {
     "preset": "intake-sequencing-governance",
-    "version": "0.1.1"
+    "version": "0.2.3"
   },
-  "createdAt": "2026-08-08T17:17:31Z",
+  "createdAt": "2026-08-28T22:59:38Z",
   "operation": {
-    "operationId": "42a4aa44-a0ba-4e17-a141-ca0f56427786",
+    "operationId": "d267b4e9-1acf-4abc-be24-c2f512154c2a",
     "type": "Update",
-    "authorityEvidence": "Feature 037 causal closeout after PR #139 merged with all technical gates green"
+    "authorityEvidence": "User-approved implementation plan for series repair, source-reference policy, and transactional form delivery"
   },
   "status": "Ready",
   "manifest": {
     "path": "requirements/intakes/series/tui-vision-delivery/manifest.json",
-    "normalizedSha256": "9b90486d9b432a529d90d8a2a8df7cf08a15acf5a974baedb7780742d4be5314"
+    "normalizedSha256": "fb889c87f8cae33e20bb826e1dfb926c9e5655dc4d626aabfc8605155fb552b7"
   },
   "supersedes": {
-    "receiptPath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/42a4aa44-a0ba-4e17-a141-ca0f56427786/receipt.json",
-    "receiptNormalizedSha256": "287731818f69f07d617f5eda5e37240a945d938cde0deb1d818e87ce4d7fb61a",
-    "manifestArchivePath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/42a4aa44-a0ba-4e17-a141-ca0f56427786/manifest.json",
-    "manifestArchiveSha256": "c5434625bbefe764ef4f205451f7867d391d4cd67c1be7e682f6bbca62ed3930"
+    "receiptPath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/d267b4e9-1acf-4abc-be24-c2f512154c2a/receipt.json",
+    "receiptNormalizedSha256": "92cd468151051755a950d969a2d90cf12324f8248174b870916f866db5ca8633",
+    "manifestArchivePath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/d267b4e9-1acf-4abc-be24-c2f512154c2a/manifest.json",
+    "manifestArchiveSha256": "a4076abe7932973952eea5114fb31e589a510185b8a9885a52e6ce7c86759359"
   },
   "tombstone": {
     "path": "N/A",
