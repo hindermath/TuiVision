@@ -80,6 +80,15 @@ the generated ten-target review projection, run evidence, version alignment
 and the required final statistics refresh. Product code and product tests are
 unchanged by this remediation.
 
+The second exact-head cycle at `d4f80888ea288372c569ccf6d8cd4616e5a9dbc1`
+confirmed that the canonical ten-target projection and the platform-neutral
+alignment validator now pass. Its three negative-fixture jobs failed because
+their positive authorization case still named completed Feature 038 as if it
+were the sole eligible target and one assertion still expected seven targets.
+The fixture now binds the actually eligible Documentation Publishing Closure,
+uses the ten-target contract and retains the same negative coverage. It passes
+all 3 positive and 16 negative cases locally. The admin bypass remained locked.
+
 ## Security and residual boundaries
 
 The embedded example document has no database, network or arbitrary user-file
