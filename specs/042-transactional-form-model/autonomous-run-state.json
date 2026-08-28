@@ -5,9 +5,9 @@
   "branch": "042-transactional-form-model",
   "deliveryMode": "MergeAndSync",
   "authorityRevalidationRequired": false,
-  "stage": "Publish",
+  "stage": "Review",
   "status": "Active",
-  "checkpointCommit": "19450fa383abfbdf71268f09ab6d67395deb98e1",
+  "checkpointCommit": "ee92d401c113822b73903bed402daa872688836f",
   "acceptedArtifacts": [
     {
       "path": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
@@ -25,11 +25,11 @@
     "total": 19
   },
   "lastPassingGate": "Release build 0/0, full tests 965/965, coverage Core 92.96 Controls 86.95 Serialization 90.47 Compatibility 80.55 Drivers 89.18, format 0/583, source and intake governance Bash/PowerShell, DocFX 0/0, Axe 2/2, Lynx, XML and diff validation all passed",
-  "nextExactAction": "Validate and commit the exact Feature 042 delivery set, push the branch, create its pull request, then converge exact-head gates before the explicitly authorized admin-bypass merge.",
+  "nextExactAction": "Commit and push the bounded generated-governance remediation, then rerun PR #155 checks and refresh exact-head evidence before any merge decision.",
   "lastOperation": {
-    "kind": "AuthorityEscalation",
-    "state": "Completed",
-    "summary": "The user explicitly escalated Feature 042 from LocalImplementation to MergeAndSync and authorized a narrow admin bypass; no technical or evidence gate may be bypassed."
+    "kind": "RemoteGateRun",
+    "state": "Failed",
+    "summary": "PR #155 head ee92d401 failed the generated intake-governance guard on all three platforms and the dependent Windows homogeneity statistics check; admin bypass remained locked while the bounded generator, alignment and statistics remediation was prepared."
   },
   "stop": {
     "reason": "N/A",
@@ -42,5 +42,5 @@
     "postMergeActions": "Pending",
     "finalValidation": "Pending"
   },
-  "updatedAt": "2026-08-28T23:15:00Z"
+  "updatedAt": "2026-08-28T23:50:00Z"
 }

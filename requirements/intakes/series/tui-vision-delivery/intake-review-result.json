@@ -1,13 +1,17 @@
 {
   "schemaVersion": "1.1",
-  "reviewId": "a1051008-6a1e-40bb-9066-a50ae099513e",
+  "reviewId": "6b74e8e5-c605-48c5-b450-1a018b5dd7eb",
   "mode": "Series",
   "status": "Ready",
-  "policy": "tui-vision-delivery-v1",
-  "reviewedAt": "2026-08-08T17:17:31Z",
+  "policy": "tui-vision-lastenheft",
+  "reviewedAt": "2026-08-28T23:46:59Z",
   "repository": {
     "root": ".",
-    "head": "889f2424812b03df9d4c322c0a06834e75fe8a2a"
+    "head": "19450fa383abfbdf71268f09ab6d67395deb98e1"
+  },
+  "requestEvidence": {
+    "path": "requirements/intakes/series/tui-vision-delivery/intake-review-request.json",
+    "normalizedSha256": "0b26ecbb67a738639ef269b81d0bdad60ad999dc5998cdb660c882eb41ddef21"
   },
   "targets": [
     {
@@ -18,20 +22,38 @@
     },
     {
       "path": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
-      "role": "Primary",
+      "role": "OrderedMember",
       "normalizedSha256": "f46be28ad27bb2dd5644390a7d50bed4912b514ce924e58bfd304135b33c0ad2",
       "gitBlob": "N/A"
     },
     {
-      "path": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
-      "role": "OrderedMember",
-      "normalizedSha256": "df5f1876c781632c13594e9ec60c3cc8f9408c586ac03aeb48aa87442987878c",
+      "path": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+      "role": "Primary",
+      "normalizedSha256": "f5dc617b7c20d718304bb91f7f63d4a95d5c27cf09a7d0a4685a3bc4a824ab1a",
       "gitBlob": "N/A"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
       "role": "OrderedMember",
       "normalizedSha256": "b7dbf455ff4e84b336ffe3cca3ff184e1897860592d4f53fb52f1776e7eb9e91",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "a59e9588363e385c19d48c361df9ebb019323cf25865672dd77152292e8d2776",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "45d8f8b589c3d9fd417f9b8dc9d25d09c0597f02c075b04454bbce95e095a239",
+      "gitBlob": "N/A"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "df5f1876c781632c13594e9ec60c3cc8f9408c586ac03aeb48aa87442987878c",
       "gitBlob": "N/A"
     },
     {
@@ -61,16 +83,17 @@
     "individual": [
       "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
       "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
-      "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+      "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
       "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+      "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+      "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
       "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
       "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
       "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
     ],
     "series": [
-      "All seven series intake paths, exact hashes, lifecycle states, roots, and the completed Wave-6 hard completion gate",
-      "Independent governance and documentation roots without invented product dependencies",
-      "DeferredOptional backlog excluded from executable targets"
+      "requirements/intakes/series/tui-vision-delivery/manifest.json"
     ],
     "workers": []
   },
@@ -80,9 +103,5 @@
     "medium": 0,
     "low": 0
   },
-  "supersedes": "e320135f-b9d9-469e-bef2-510a00c8446f",
-  "requestEvidence": {
-    "path": "requirements/intakes/series/tui-vision-delivery/intake-review-request.json",
-    "normalizedSha256": "a042ca4048d2d630adaf3a1e425442c561e06b945ec880d2057168aaae1eb8b0"
-  }
+  "supersedes": "a1051008-6a1e-40bb-9066-a50ae099513e"
 }

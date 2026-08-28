@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.1",
-  "reviewId": "a1051008-6a1e-40bb-9066-a50ae099513e",
+  "reviewId": "6b74e8e5-c605-48c5-b450-1a018b5dd7eb",
   "mode": "Series",
-  "policy": "tui-vision-delivery-v1",
+  "policy": "tui-vision-lastenheft",
   "targets": [
     {
       "path": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
@@ -10,14 +10,26 @@
     },
     {
       "path": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
-      "role": "Primary"
-    },
-    {
-      "path": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
       "role": "OrderedMember"
     },
     {
+      "path": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+      "role": "Primary"
+    },
+    {
       "path": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+      "role": "OrderedMember"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
       "role": "OrderedMember"
     },
     {
@@ -37,15 +49,17 @@
     "orderedTargetPaths": [
       "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
       "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
-      "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+      "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
       "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+      "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+      "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
       "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
       "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
       "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
     ],
     "roots": [
       "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
-      "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
       "requirements/intakes/active/Lastenheft_Constitution_Change.md",
       "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
       "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
@@ -56,6 +70,31 @@
         "from": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
         "to": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
         "kind": "HardCompletionGate"
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+        "to": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+        "kind": "HardCompletionGate"
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+        "to": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+        "kind": "SharedWriterSerialization"
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+        "to": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+        "kind": "HardCompletionGate"
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+        "to": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+        "kind": "HardCompletionGate"
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+        "to": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+        "kind": "PreferredSerialOrder"
       }
     ]
   },

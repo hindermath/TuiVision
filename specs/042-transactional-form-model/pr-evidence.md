@@ -68,6 +68,18 @@ the multipart upstream license as repository-wide MIT.
 | Conformance follow-through | Pass | Inventory is extended to 147 historical sources and 235 public types with reciprocal module, public-type, decision and capability links; feature 031 binds the new accepted audit hash. |
 | Remote delivery authority | Authorized, pending execution | Current user instruction: `DeliveryMode MergeAndSync mit Admin-Bypass`; exact delivery set, PR checks, review state and PreMerge evidence remain mandatory. |
 
+## Remote convergence
+
+PR `#155` was created for exact head
+`ee92d401c113822b73903bed402daa872688836f`. Its first check cycle failed
+closed: the generated requirements/intake guard still encoded the superseded
+seven-target, one-edge series, and Windows homogeneity consequently reported a
+post-commit statistics drift. The admin bypass was not used. The bounded
+remediation updates only the canonical generator, its alignment validator,
+the generated ten-target review projection, run evidence, version alignment
+and the required final statistics refresh. Product code and product tests are
+unchanged by this remediation.
+
 ## Security and residual boundaries
 
 The embedded example document has no database, network or arbitrary user-file
