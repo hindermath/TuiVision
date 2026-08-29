@@ -9,23 +9,23 @@ const root = process.cwd();
 const write = process.argv.includes("--write");
 const seriesRoot = "requirements/intakes/series/tui-vision-delivery";
 const seriesId = "a73dda7c-163b-4530-97f2-fd9eea5e8986";
-const seriesReceiptId = "29849c81-74f5-45a3-90d2-bd7c49bee8cf";
-const seriesOperationId = "d267b4e9-1acf-4abc-be24-c2f512154c2a";
-const reviewId = "6b74e8e5-c605-48c5-b450-1a018b5dd7eb";
+const seriesReceiptId = "ddd6488a-9cf3-4d9f-9b76-8cb301bdb031";
+const seriesOperationId = "7a6a7aa1-2be3-43ff-8359-54f952ecf62d";
+const reviewId = "847bce5c-98b0-4461-b2a7-c1b5bc9d83dc";
 const migrationProposal = "specs/requirements-reconciliation-20260726/migration-proposal.json";
 const createdAt = "2026-07-26T20:00:00Z";
-const seriesUpdatedAt = "2026-08-28T23:46:59Z";
+const seriesUpdatedAt = "2026-08-29T21:23:35Z";
 const archiveRoot =
   `specs/intake-series-archive/${seriesId}/${seriesOperationId}`;
-const priorManifestHash = "a4076abe7932973952eea5114fb31e589a510185b8a9885a52e6ce7c86759359";
-const priorReceiptHash = "92cd468151051755a950d969a2d90cf12324f8248174b870916f866db5ca8633";
+const priorManifestHash = "fb889c87f8cae33e20bb826e1dfb926c9e5655dc4d626aabfc8605155fb552b7";
+const priorReceiptHash = "b6adaa7018e2a5d56baf737f30e8fb2be4b39b8072d265b0047ab0475991ccfb";
 
 const normalize = (value) => value.replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n");
 const hashText = (value) => crypto.createHash("sha256").update(normalize(value)).digest("hex");
 const hashFile = (relativePath) => hashText(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const readJson = (relativePath) => JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const json = (value) => JSON.stringify(value, null, 2) + "\n";
-const reviewHead = "19450fa383abfbdf71268f09ab6d67395deb98e1";
+const reviewHead = "1f5890767063dcebbe363fb8087e4fb89a880af1";
 
 const members = [
   {
@@ -68,13 +68,13 @@ const members = [
     slug: "documentation-publishing-closure",
     path: "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
     role: "OrderedMember",
-    status: "Eligible",
+    status: "Completed",
   },
   {
     slug: "sandbox-gestuetzte-secure-development-haertung",
     path: "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
     role: "OrderedMember",
-    status: "Pending",
+    status: "Eligible",
   },
   {
     slug: "rl-se-checklist-selbstpruefung",
@@ -267,7 +267,7 @@ const seriesReceipt = {
   operation: {
     operationId: seriesOperationId,
     type: "Update",
-    authorityEvidence: "User-approved implementation plan for series repair, source-reference policy, and transactional form delivery",
+    authorityEvidence: "Feature 043 MergeAndSync authority and causal closeout for the completed documentation intake",
   },
   status: "Ready",
   manifest: {path: manifestPath, normalizedSha256: manifestHash},
@@ -288,7 +288,7 @@ const operation = {
   seriesId,
   type: "Update",
   status: "Published",
-  authorityEvidence: "User-approved implementation plan for series repair, source-reference policy, and transactional form delivery",
+  authorityEvidence: "Feature 043 MergeAndSync authority and causal closeout for the completed documentation intake",
   proposalNormalizedSha256: manifestHash,
   preparedPaths: [
     `${archiveRoot}/manifest.json`,
@@ -354,26 +354,25 @@ const result = {
     workers: [],
   },
   summary: {critical: 0, high: 0, medium: 0, low: 0},
-  supersedes: "a1051008-6a1e-40bb-9066-a50ae099513e",
+  supersedes: "6b74e8e5-c605-48c5-b450-1a018b5dd7eb",
 };
 
-const report = `# Intake-Serienreview: TuiVision Delivery nach Formabschluss
+const report = `# Intake-Serienreview: TuiVision Delivery nach Dokumentationsabschluss
 
 ## Ergebnis / Result
 
 Status: \`Ready\`
 
 Alle zehn Serien-Intakes, ihre aktuellen Hashes, Receipt-Lineage, fünf Wurzeln
-und sechs azyklischen Abhängigkeiten wurden geprüft. Wave 6, Portfolioaudit,
-Portfolioabschluss, Constitution, Quellenpolicy und Transactional Form Model
-sind abgeschlossen. Die Documentation-Publishing-Closure ist bevorzugt
-\`Eligible\`; kein Folgefeature wird durch diesen Review gestartet.
+und sechs azyklischen Abhängigkeiten wurden geprüft. Die
+Documentation-Publishing-Closure ist durch Feature 043 abgeschlossen. Der
+unabhängige Sandbox-Security-Intake ist als einziger Eintrag \`Eligible\`;
+kein Folgefeature wird durch diesen Review gestartet.
 
 *All ten series intakes, current hashes, receipt lineage, five roots, and six
-acyclic dependencies were reviewed. Wave 6, the portfolio audit and closure,
-constitution, source policy, and Transactional Form Model are complete.
-Documentation Publishing Closure is the preferred eligible successor; this
-review starts no follow-up feature.*
+acyclic dependencies were reviewed. Documentation Publishing Closure is
+complete through Feature 043. The independent sandbox security intake is the
+only \`Eligible\` entry; this review starts no follow-up feature.*
 
 Es bestehen keine offenen Review-Findings. Der optionale NuGet-Backlog ist
 nicht Teil der ausführbaren Serie.

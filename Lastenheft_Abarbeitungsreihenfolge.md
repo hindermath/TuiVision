@@ -10,8 +10,8 @@ is generated from the series manifest and is not maintained independently.*
 
 ## Bevorzugter nächster Intake / Preferred Next Intake
 
-1. `requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md`
-   - folgt der bevorzugten Reihenfolge nach dem gelieferten Formmodell
+1. `requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md`
+   - unabhängiger Security-Hardening-Intake nach dem Dokumentationsabschluss
    - Status: `Eligible`
    - startet nicht automatisch
 
@@ -47,15 +47,19 @@ is generated from the series manifest and is not maintained independently.*
      `042-transactional-form-model` lokal vollständig geliefert
    - Status: `Completed`
 
+8. `requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md`
+   - geliefert durch Feature `043-documentation-publishing-closure` und PR `#157`
+   - Status: `Completed`
+   - schließt Guides, Publishing-Nachweis und Dokumentations-Reconciliation
+
 ## Weitere unabhängige aktive Intakes / Other Independent Active Intakes
 
-8. `requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md`
 9. `requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md`
 10. `requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md`
 
 Die Sicherheits- und Governance-Intakes bleiben unabhängige Wurzeln. Die
-Documentation-Publishing-Closure besitzt eine nicht bindende bevorzugte
-Reihenfolge nach dem Formmodell; daraus entsteht keine harte Produktabhängigkeit.
+Reihenfolge des Sandbox-Hardenings ist eine Auswahlentscheidung und keine
+neu erfundene harte Produktabhängigkeit.
 
 ## Nicht ausführbarer Backlog / Non-Executable Backlog
 
@@ -72,5 +76,5 @@ $speckit-intake-series-status
 $speckit-intake-series-next
 ```
 
-Die Documentation-Publishing-Closure ist nur als nächster Intake freigegeben;
+Das Sandbox-Security-Hardening ist nur als nächster Intake freigegeben;
 kein Specify-, Implementierungs- oder Remote-Schritt wird implizit autorisiert.
