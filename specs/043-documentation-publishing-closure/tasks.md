@@ -46,7 +46,7 @@
 - [x] T030 Increment the manual build counter and run one Release build for CS1591.
 - [x] T031 Run DocFX, then Playwright/Axe and a representative Lynx text dump.
 - [x] T032 Run homogeneity, agent-parity, intake/state, secret, scope and generated-output checks.
-- [ ] T033 Update project statistics, evidence, task hashes and run state.
+- [x] T033 Update project statistics, evidence, task hashes and run state.
 
 ## Phase 6 - MergeAndSync delivery
 

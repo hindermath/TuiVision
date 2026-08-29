@@ -64,7 +64,8 @@ actionable review thread remains, and Human Approval is the sole open rule.
 | Documentation-impact fixtures | Trigger and evidence contract | Pass | Bash and PowerShell: 10/10 each |
 | Secret scan | Current diff and agent directories | Pass | 0 high; `.claude` medium is expected local permissions metadata and untracked |
 | Full local tests and coverage | Executable regression | Not triggered | No source, test, project, package, API, XML or example change; exact-head CI remains mandatory |
-| Homogeneity | Repository structure and statistics | Pending one expected refresh | Only `docs/project-statistics.md` drift remains; renderer requires a clean committed tree |
+| Project statistics | Canonical generated profile | Pass | Bash and PowerShell `--check-only` agree on source `388895545253`, 621546 text lines and 92 active days |
+| Homogeneity | Repository structure and statistics | Pass | 29/29, 100 percent after canonical statistics refresh |
 | GitHub exact-head checks and review | Remote delivery | Open | PreMerge evidence required |
 
 ## Decision

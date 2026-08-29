@@ -44,8 +44,8 @@
   ],
   "tasks": {
     "path": "specs/043-documentation-publishing-closure/tasks.md",
-    "sha256": "6ea8dc3e1400b075bb41fd13552d7a3e2a282f0014dfa0448fef123e8f96ce7e",
-    "completed": 32,
+    "sha256": "62264664fae79d24a07d3754daaf9372d8fd880f5a6ed46497846ea132590d00",
+    "completed": 33,
     "total": 40
   },
   "routing": {
@@ -53,12 +53,12 @@
     "fallbackPolicy": "fail-closed",
     "phases": []
   },
-  "lastPassingGate": "Documentation implementation and local validation pass at 7/38/27 cardinality, Release CS1591 0/0, DocFX 0/0, Playwright/Axe 2/2, UTF-8 Lynx, format, source-policy, agent-parity, documentation-impact and secret-scan boundaries.",
-  "nextExactAction": "Commit the locally validated documentation closure, refresh generated project statistics from a clean tree, then validate and push the complete delivery set.",
+  "lastPassingGate": "Documentation implementation and local validation pass at 7/38/27 cardinality, Release CS1591 0/0, DocFX 0/0, Playwright/Axe 2/2, UTF-8 Lynx, format, source-policy, agent-parity, documentation-impact, secret scan, current statistics and homogeneity 29/29.",
+  "nextExactAction": "Validate the final local delivery set, commit the statistics and evidence closeout, then push the numbered branch.",
   "lastOperation": {
-    "kind": "LocalValidation",
+    "kind": "StatisticsRefresh",
     "state": "Completed",
-    "summary": "The documentation-only implementation is complete. Homogeneity reports only the expected project-statistics drift whose canonical renderer requires a clean committed tree; no product or validation defect remains."
+    "summary": "The canonical renderer refreshed project statistics from the implementation checkpoint; Bash and PowerShell check-only modes agree and homogeneity now passes 29 of 29 checks."
   },
   "stop": {
     "reason": "N/A",
@@ -71,5 +71,5 @@
     "postMergeActions": "Pending",
     "finalValidation": "Pending"
   },
-  "updatedAt": "2026-08-29T21:05:11Z"
+  "updatedAt": "2026-08-29T21:07:57Z"
 }
