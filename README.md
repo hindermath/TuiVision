@@ -34,6 +34,14 @@ Agentic-AI workflows. It is not an official Turbo Vision continuation.
 
 ## Development Guides
 
+- Einstieg, Build, erste Anwendung und empfohlener Lernpfad:
+  [`docs/guides/getting-started.md`](docs/guides/getting-started.md)
+- Architektur, Event-Loop, View-Hierarchie, Koordinaten und Serialisierung:
+  [`docs/guides/architecture.md`](docs/guides/architecture.md)
+- Vollständige Lernvertragsmatrix für alle 38 Beispielprojekte:
+  [`docs/guides/example-learning-paths.md`](docs/guides/example-learning-paths.md)
+- Auffindbare bewusste Abweichungen von historischen Implementierungen:
+  [`docs/guides/historical-deviations.md`](docs/guides/historical-deviations.md)
 - Multi-Mac workflow (MacBook Air M2 + Mac mini M4 Pro) with `gh` and `codex`:
   [`docs/guides/multi-mac-workflow.md`](docs/guides/multi-mac-workflow.md)
 - Bounded SGR-1006 mouse support, host boundaries, keyboard fallback, and proof:

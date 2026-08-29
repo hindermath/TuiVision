@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "1.0",
+  "gates": [
+    {
+      "gateId": "GATE-043-01",
+      "applicability": "Applicable",
+      "requiredScope": "The eligible intake, Ready series review, feature identity, branch, accepted hashes, run state and current MergeAndSync authority remain aligned.",
+      "requiredCommandTokens": ["validate-intake-review-result", "validate-intake-series-receipt", "validate-autonomous-run-state"],
+      "requiredRunnerOrPlatformTokens": ["local"],
+      "rationale": "Documentation delivery requires immutable intake lineage and current explicit authority.",
+      "reevaluationTrigger": "Any intake, review, series, branch, authority, task or state drift."
+    },
+    {
+      "gateId": "GATE-043-02",
+      "applicability": "Applicable",
+      "requiredScope": "Seven general guide topics, every example guide and every DocumentationAndPublishing reconciliation statement have complete, unique and evidence-backed closure rows.",
+      "requiredCommandTokens": ["documentation", "guide", "reconciliation", "validate"],
+      "requiredRunnerOrPlatformTokens": ["local"],
+      "rationale": "Cardinality and traceability are the feature's primary acceptance contract.",
+      "reevaluationTrigger": "Any guide, example inventory, reconciliation row, evidence path or closure decision change."
+    },
+    {
+      "gateId": "GATE-043-03",
+      "applicability": "Applicable",
+      "requiredScope": "Learner-facing documentation is German-first and English-second at CEFR-B2, semantically structured, UTF-8 clean and usable through text-first assistive tools.",
+      "requiredCommandTokens": ["UTF-8", "lynx", "Markdown", "link"],
+      "requiredRunnerOrPlatformTokens": ["local"],
+      "rationale": "Language and accessibility are formal completion criteria for the new guides.",
+      "reevaluationTrigger": "Any learner-facing text, structure, navigation or accessibility change."
+    },
+    {
+      "gateId": "GATE-043-04",
+      "applicability": "Applicable",
+      "requiredScope": "DocFX, Release CS1591, Playwright/Axe and the existing Pages publishing workflow pass reproducibly without tracked generated output.",
+      "requiredCommandTokens": ["dotnet build", "Release", "docfx docfx.json", "npm run test:docfx"],
+      "requiredRunnerOrPlatformTokens": ["local", "github", "ubuntu", "macos", "windows"],
+      "rationale": "Guide and navigation changes trigger the repository's complete documentation publishing proof path.",
+      "reevaluationTrigger": "Any Markdown, XML comment, API, navigation, DocFX, Pages or accessibility change."
+    },
+    {
+      "gateId": "GATE-043-05",
+      "applicability": "Applicable",
+      "requiredScope": "Operational multi-Mac and agent guidance uses agy, legacy Gemini references are classified, maintained agent surfaces remain homogeneous and repository templates stay unchanged unless explicitly justified.",
+      "requiredCommandTokens": ["agy", "check-homogeneity", "agent-surface-parity"],
+      "requiredRunnerOrPlatformTokens": ["local"],
+      "rationale": "The accepted intake requires current, non-duplicated agent workflow guidance.",
+      "reevaluationTrigger": "Any agent surface, command, skill, workflow, template or compatibility wording change."
+    },
+    {
+      "gateId": "GATE-043-06",
+      "applicability": "Applicable",
+      "requiredScope": "Diff, format, secrets, supply-chain applicability, source-reference boundaries, project statistics and scope exclusions remain valid; no product or generated-output change enters the delivery set.",
+      "requiredCommandTokens": ["git diff --check", "dotnet format --verify-no-changes", "scan-agent-secrets", "render-project-statistics"],
+      "requiredRunnerOrPlatformTokens": ["local"],
+      "rationale": "Documentation-only scope still requires repository integrity and governance evidence.",
+      "reevaluationTrigger": "Any source, test, dependency, project, example, generated output, statistics or governance drift."
+    },
+    {
+      "gateId": "GATE-043-07",
+      "applicability": "Applicable",
+      "requiredScope": "The exact reviewed feature head is pushed, all mandatory GitHub technical checks pass, no actionable review thread remains and provider-neutral PreMerge evidence validates.",
+      "requiredCommandTokens": ["gh pr checks", "validate-autonomous-gate-evidence", "git rev-parse HEAD"],
+      "requiredRunnerOrPlatformTokens": ["github", "ubuntu", "macos", "windows"],
+      "rationale": "Remote delivery requires exact-head technical and review convergence before any bypass decision.",
+      "reevaluationTrigger": "Any head, workflow, check, review thread, comment or authority change."
+    },
+    {
+      "gateId": "GATE-043-08",
+      "applicability": "Applicable",
+      "requiredScope": "Only after every technical gate passes, the authorized admin bypass may cover the sole remaining approval rule; merge commit, branch cleanup, main synchronization and causal PostMerge evidence complete the run.",
+      "requiredCommandTokens": ["gh pr merge --merge --admin --delete-branch", "git fetch --prune origin", "git pull --ff-only origin main"],
+      "requiredRunnerOrPlatformTokens": ["github", "local", "main"],
+      "rationale": "The latest user instruction explicitly grants MergeAndSync and a narrow approval-only bypass.",
+      "reevaluationTrigger": "Any failing technical gate, actionable review, merge failure, cleanup failure or default-branch drift."
+    }
+  ]
+}
