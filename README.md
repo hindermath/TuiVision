@@ -150,7 +150,7 @@ Standard-Preset-Set:
 - `a11y-governance` v0.4.3, Priority 40
 - `cross-platform-governance` v0.2.2, Priority 50
 - `agent-parity-governance` v0.4.2, Priority 60
-- `autonomous-run-governance` v0.3.6, Priority 70
+- `autonomous-run-governance` v0.4.1, Priority 70
 - `parallel-autonomous-run-governance` v0.2.6, Priority 80
 
 TuiVision aktiviert zusätzlich `intake-review-governance` v0.2.1 mit Priority

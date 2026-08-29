@@ -1,10 +1,10 @@
 <!--
 Sync Impact Report
-Version change: 1.17.0 -> 1.18.0
+Version change: 1.18.0 -> 1.18.1
 Modified principles:
 - None
 Added sections:
-- XXI. Three-Axis Source Reference Policy
+- None
 Removed sections:
 - None
 Templates requiring updates:
@@ -23,7 +23,7 @@ Follow-up TODOs:
 - None
 -->
 
-# Constitution v1.18.0
+# Constitution v1.18.1
 
 # home-baseline Constitution
 
@@ -941,7 +941,7 @@ workspace family consists of:
 | `a11y-governance` | `v0.4.3` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts, didactic inline-code-comment review |
 | `cross-platform-governance` | `v0.2.2` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
 | `agent-parity-governance` | `v0.4.2` | `60` | synchronized agent guidance, fleet-completion evidence, and agent-neutral Spec-Kit model routing |
-| `autonomous-run-governance` | `v0.3.6` | `70` | permission-bounded, evidence-first governance with optional intake gate and resumable, validated closeout |
+| `autonomous-run-governance` | `v0.4.1` | `70` | permission-bounded, evidence-first governance with optional intake gate and resumable, validated closeout |
 | `parallel-autonomous-run-governance` | `v0.2.6` | `80` | isolated bounded campaigns, optional schema-1.2 intake gate, cooperative stop/resume, provider-gated resumable consolidation, and declared post-merge closeout |
 
 TuiVision additionally activates optional `intake-review-governance` v0.2.1
@@ -1032,7 +1032,7 @@ Community/catalog coordination is tracked in `github/spec-kit#2362`.
 `.github/copilot-instructions.md` for per-agent operational guidance. This
 constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.18.0 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-08-29
+**Version**: 1.18.1 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-08-30
 
 ## Level-2 Project Environment Addendum / Level-2-Projektumgebung
 
