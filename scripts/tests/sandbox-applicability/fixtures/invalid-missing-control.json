@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0",
+  "project": "TuiVision",
+  "sandboxReference": {
+    "repository": "hindermath/absdd-image-sandbox",
+    "defaultBranch": "main",
+    "commit": "7adaeac18ca259726468a2fe1d1fd028b895e09c",
+    "sourceHashes": [
+      {
+        "path": "Dockerfile",
+        "sha256": "93028759aed4b87cc8989cdf7dc0650515af33ff8b74bbfdcc90989964db57ef"
+      }
+    ]
+  },
+  "reviewDate": "2026-08-29",
+  "recommendation": "ConditionallyUsable",
+  "nextSafeAction": "Confirm local authority before using the sandbox.",
+  "owner": "TuiVision Maintainer",
+  "reviewer": "Security Reviewer",
+  "residualRisk": "Formal approval remains open.",
+  "controls": [
+    {"controlId":"CL-12-01","applicability":"Open","implementationStatus":"Not Assessed","rationale":"Open.","evidence":"Evidence.","owner":"Owner","reviewer":"Reviewer","reviewDate":"2026-08-29","residualRisk":"Risk.","followUp":"Follow up.","reevaluationTrigger":"Trigger."},
+    {"controlId":"CL-12-02","applicability":"Applicable","implementationStatus":"Fulfilled","rationale":"Applies.","evidence":"Evidence.","owner":"Owner","reviewer":"Reviewer","reviewDate":"2026-08-29","residualRisk":"Low.","followUp":"Review later.","reevaluationTrigger":"Trigger."},
+    {"controlId":"CL-12-03","applicability":"Applicable","implementationStatus":"Fulfilled","rationale":"Applies.","evidence":"Evidence.","owner":"Owner","reviewer":"Reviewer","reviewDate":"2026-08-29","residualRisk":"Low.","followUp":"Review later.","reevaluationTrigger":"Trigger."},
+    {"controlId":"CL-12-04","applicability":"Applicable","implementationStatus":"Fulfilled","rationale":"Applies.","evidence":"Evidence.","owner":"Owner","reviewer":"Reviewer","reviewDate":"2026-08-29","residualRisk":"Low.","followUp":"Review later.","reevaluationTrigger":"Trigger."},
+    {"controlId":"CL-12-05","applicability":"Open","implementationStatus":"Not Assessed","rationale":"Open.","evidence":"Evidence.","owner":"Owner","reviewer":"Reviewer","reviewDate":"2026-08-29","residualRisk":"Risk.","followUp":"Follow up.","reevaluationTrigger":"Trigger."},
+    {"controlId":"CL-12-06","applicability":"Applicable","implementationStatus":"Fulfilled","rationale":"Applies.","evidence":"Evidence.","owner":"Owner","reviewer":"Reviewer","reviewDate":"2026-08-29","residualRisk":"Low.","followUp":"Review later.","reevaluationTrigger":"Trigger."},
+    {"controlId":"CL-12-07","applicability":"Open","implementationStatus":"Not Assessed","rationale":"Open.","evidence":"Evidence.","owner":"Owner","reviewer":"Reviewer","reviewDate":"2026-08-29","residualRisk":"Risk.","followUp":"Follow up.","reevaluationTrigger":"Trigger."},
+    {"controlId":"CL-12-08","applicability":"Applicable","implementationStatus":"Fulfilled","rationale":"Applies.","evidence":"Evidence.","owner":"Owner","reviewer":"Reviewer","reviewDate":"2026-08-29","residualRisk":"Low.","followUp":"Review later.","reevaluationTrigger":"Trigger."},
+    {"controlId":"CL-12-09","applicability":"Open","implementationStatus":"Partly Fulfilled","rationale":"Open.","evidence":"Evidence.","owner":"Owner","reviewer":"Reviewer","reviewDate":"2026-08-29","residualRisk":"Risk.","followUp":"Follow up.","reevaluationTrigger":"Trigger."},
+    {"controlId":"CL-12-10","applicability":"Open","implementationStatus":"Partly Fulfilled","rationale":"Open.","evidence":"Evidence.","owner":"Owner","reviewer":"Reviewer","reviewDate":"2026-08-29","residualRisk":"Risk.","followUp":"Follow up.","reevaluationTrigger":"Trigger."},
+    {"controlId":"CL-12-11","applicability":"Open","implementationStatus":"Not Assessed","rationale":"Open.","evidence":"Evidence.","owner":"Owner","reviewer":"Reviewer","reviewDate":"2026-08-29","residualRisk":"Risk.","followUp":"Follow up.","reevaluationTrigger":"Trigger."}
+  ],
+  "mounts": [
+    {"mountRole":"TuiVisionCheckout","containerTarget":"/rider-projects/TuiVision","purpose":"Project work.","access":"ReadWrite","allowedContent":"Repository files.","excludedContent":"Secrets.","evidence":"Evidence.","reevaluationTrigger":"Trigger."},
+    {"mountRole":"AgentStateVolume","containerTarget":"/home/adedev/.agent-state","purpose":"Agent state.","access":"NamedVolume","allowedContent":"Tool state.","excludedContent":"Project files.","evidence":"Evidence.","reevaluationTrigger":"Trigger."},
+    {"mountRole":"BuildCacheVolume","containerTarget":"/dotnet-build","purpose":"Build cache.","access":"NamedVolume","allowedContent":"Build output.","excludedContent":"Source.","evidence":"Evidence.","reevaluationTrigger":"Trigger."},
+    {"mountRole":"AuditMetadataDirectory","containerTarget":"/audit","purpose":"Audit metadata.","access":"ReadWrite","allowedContent":"Metadata.","excludedContent":"Prompts and tokens.","evidence":"Evidence.","reevaluationTrigger":"Trigger."}
+  ],
+  "executions": [
+    {"checkId":"Build","location":"Sandbox","proofLevel":"StaticVerified","platform":"Linux container","command":"dotnet build","evidence":"Evidence.","proofBoundary":"Static only.","reevaluationTrigger":"Trigger."},
+    {"checkId":"Test","location":"Sandbox","proofLevel":"StaticVerified","platform":"Linux container","command":"dotnet test","evidence":"Evidence.","proofBoundary":"Static only.","reevaluationTrigger":"Trigger."},
+    {"checkId":"Format","location":"Sandbox","proofLevel":"StaticVerified","platform":"Linux container","command":"dotnet format --verify-no-changes","evidence":"Evidence.","proofBoundary":"Static only.","reevaluationTrigger":"Trigger."},
+    {"checkId":"DocFX","location":"CI","proofLevel":"PracticallyVerified","platform":"Ubuntu","command":"docfx docfx.json","evidence":"Evidence.","proofBoundary":"CI only.","reevaluationTrigger":"Trigger."},
+    {"checkId":"A11Y","location":"CI","proofLevel":"PracticallyVerified","platform":"Ubuntu","command":"npm test","evidence":"Evidence.","proofBoundary":"CI only.","reevaluationTrigger":"Trigger."},
+    {"checkId":"DependencySBOM","location":"CI","proofLevel":"PracticallyVerified","platform":"Ubuntu","command":"dotnet list package","evidence":"Evidence.","proofBoundary":"CI only.","reevaluationTrigger":"Trigger."},
+    {"checkId":"SecretScan","location":"CI","proofLevel":"PracticallyVerified","platform":"Ubuntu","command":"scan-agent-secrets","evidence":"Evidence.","proofBoundary":"CI only.","reevaluationTrigger":"Trigger."},
+    {"checkId":"AgentParity","location":"LocalHost","proofLevel":"PracticallyVerified","platform":"macOS","command":"python3 parity test","evidence":"Evidence.","proofBoundary":"Local only.","reevaluationTrigger":"Trigger."}
+  ]
+}

@@ -2,6 +2,12 @@
   href: project-statistics.md
 - name: Quellenreferenz-Policy
   href: source-reference-policy.md
+- name: Sicherheitsdokumentation
+  items:
+    - name: Sicherheitsindex
+      href: security/README.md
+    - name: Sandbox-Anwendbarkeit
+      href: security/secure-development/2026-08-29-sandbox-applicability/README.md
 - name: Anleitungen
   items:
     - name: Einstieg in TuiVision

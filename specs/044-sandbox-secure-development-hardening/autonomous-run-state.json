@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1.1",
+  "runId": "2b2743d7-578a-481c-9865-6d69124f923a",
+  "featurePath": "specs/044-sandbox-secure-development-hardening",
+  "branch": "044-sandbox-secure-development-hardening",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Publish",
+  "status": "Active",
+  "checkpointCommit": "db3ffa6efc21818232ea59bacd0889b2b6e6c4b0",
+  "acceptedArtifacts": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "sha256": "d1f6a20535f90b78d00f7f6974a32156d7c08eeb77ebad9961a41ffbe3f84858"
+    },
+    {
+      "path": "requirements/intakes/series/tui-vision-delivery/intake-review-result.json",
+      "sha256": "0e92860b79a77f08ba2213565fcf318a9bbcb300f77271ecd5fd691d9b6850dd"
+    },
+    {
+      "path": "specs/044-sandbox-secure-development-hardening/spec.md",
+      "sha256": "d203b77ae04be1309ebd8905f8365cd7d0b0544f9acf4b21d4f05b9a9574d718"
+    },
+    {
+      "path": "specs/044-sandbox-secure-development-hardening/research.md",
+      "sha256": "7cf411ae1f72526a3d579a035ccbc7b60b93baf48361ddfed8c4d911a7afb437"
+    },
+    {
+      "path": "specs/044-sandbox-secure-development-hardening/plan.md",
+      "sha256": "c6b6a3e962df82fd862cb94503fb2338ae4038b44319c1910b37802446a1e3ef"
+    },
+    {
+      "path": "specs/044-sandbox-secure-development-hardening/data-model.md",
+      "sha256": "86b89291cabea717817bf7d027aec711856931c6f986b75a19e542ba1c9a88af"
+    },
+    {
+      "path": "specs/044-sandbox-secure-development-hardening/quickstart.md",
+      "sha256": "d6252c55b959b8c6bfbf8014bfe8c30701d6a4ebb656a3fd3ffe841041028a75"
+    },
+    {
+      "path": "specs/044-sandbox-secure-development-hardening/contracts/sandbox-applicability-acceptance.md",
+      "sha256": "19dc1f14e89df63ea5cf62f31c565248dedff95e23efb48f32336b8006553a89"
+    }
+  ],
+  "tasks": {
+    "path": "specs/044-sandbox-secure-development-hardening/tasks.md",
+    "sha256": "9f7257f6877658d248b2ca188a7d9b7e6a1d183ca94fd0bcc0c929c28f587ce5",
+    "completed": 65,
+    "total": 75
+  },
+  "routing": {
+    "policy": "balanced-v1",
+    "fallbackPolicy": "fail-closed",
+    "phases": []
+  },
+  "lastPassingGate": "All applicable local gates passed, including 12 CL-12 controls, 7 mount roles, 8 execution decisions, 8/8 validator tests, Bash/PowerShell parity, DocFX, Playwright/Axe, statistics, and 29/29 homogeneity checks.",
+  "nextExactAction": "Commit and push the publication checkpoint, then converge exact-head checks and reviews for PR #159.",
+  "lastOperation": {
+    "kind": "Push",
+    "state": "Completed",
+    "summary": "The locally validated non-empty Feature 044 head was pushed and PR #159 was created without bypass use."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "closeout": {
+    "mergeOrPublication": "Pending",
+    "defaultBranchSync": "Pending",
+    "postMergeActions": "Pending",
+    "finalValidation": "Pending"
+  },
+  "updatedAt": "2026-08-29T22:20:34Z"
+}

@@ -1,9 +1,9 @@
 # Sicherheitsdokumentation / Security Documentation
 
 **Repository**: TuiVision (Level 2)
-**Stand / Current as of**: 2026-07-11
+**Stand / Current as of**: 2026-08-29
 **Owner**: TuiVision Maintainers
-**Review**: Feature `016-secure-development-hardening`
+**Review**: Features `016-secure-development-hardening` and `044-sandbox-secure-development-hardening`
 
 ## Zweck / Purpose
 
@@ -35,6 +35,7 @@ and run details live in the matching `specs/<feature>/pr-evidence.md`.*
 | [cloud-compliance-assurance.md](cloud-compliance-assurance.md) | BSI C5 | Current `N/A` |
 | [regulatory-applicability.md](regulatory-applicability.md) | NIS2, CRA, EU AI Act, DORA, DPIA | Current |
 | [adr/README.md](adr/README.md) | Security-ADR-Index und Trigger / Security ADR index and trigger | Current |
+| [Sandbox-Anwendbarkeit](secure-development/2026-08-29-sandbox-applicability/README.md) | TuiVision-Mounts, CL-12, Toolchain und Proof-Grenzen / TuiVision mounts, CL-12, toolchain, and proof boundaries | `ConditionallyUsable` |
 
 ## Evidenzregeln / Evidence Rules
 

@@ -1,0 +1,337 @@
+{
+  "schemaVersion": "1.0",
+  "project": "TuiVision",
+  "sandboxReference": {
+    "repository": "hindermath/absdd-image-sandbox",
+    "defaultBranch": "main",
+    "commit": "7adaeac18ca259726468a2fe1d1fd028b895e09c",
+    "sourceHashes": [
+      {"path":"Dockerfile","sha256":"93028759aed4b87cc8989cdf7dc0650515af33ff8b74bbfdcc90989964db57ef"},
+      {"path":"compose.yml","sha256":"e54d5335d21b23fd8628ff9a6c184b17e8b9e70b47110c27ce2c75c74b878d3a"},
+      {"path":"README.md","sha256":"5dd0ab7f091eeb7cc9da9129dc692172466b1046a586e7a8dd997eb763396498"},
+      {"path":"scripts/smoke-test-toolchains.sh","sha256":"09c5cd78f6939633366d8fe0f7a27cfa0a520ef13e9b8a8948d3e4023f977072"},
+      {"path":"docs/security/sandbox-freigabe.md","sha256":"2ffa6166ae7b1dde1d34386731a92b654ca1d7bf29d8da46d05ec615a5868935"},
+      {"path":"docs/security/sandbox-isolation.md","sha256":"f58eb62d2e704ffcbc31f837f79b3111ac0d84ae526703b38f2d6723fdb4db71"},
+      {"path":"docs/security/network-decision.md","sha256":"74e733aa8ea4c4e5fd6c68fa8a35f206d7b3dfd9c4b7ce303fea333ad1f4c4d3"},
+      {"path":"docs/security/ai-tools-inventory.md","sha256":"a6d384ba98c1982f2990fe2d8c55506a5f12b3fc2f4fb74fd1e53439dc2f5494"}
+    ]
+  },
+  "reviewDate": "2026-08-29",
+  "recommendation": "ConditionallyUsable",
+  "nextSafeAction": "Before a real sandbox session, select only the TuiVision checkout as the writable project source and obtain the required owner approval for data class, provider use, and current network risk.",
+  "owner": "TuiVision Maintainer",
+  "reviewer": "Feature 044 Security Review",
+  "residualRisk": "The image has useful technical isolation, but formal approval, provider decisions, unrestricted Compose egress, lifecycle dates, and current platform execution remain open.",
+  "controls": [
+    {
+      "controlId": "CL-12-01",
+      "applicability": "Open",
+      "implementationStatus": "Not Assessed",
+      "rationale": "The sandbox repository documents a Podman container and an approval draft, but the responsible human approval and expiry are not complete.",
+      "evidence": "sandbox@7adaeac:docs/security/sandbox-freigabe.md",
+      "owner": "Sandbox Owner or Security Officer",
+      "reviewer": "TuiVision Maintainer",
+      "reviewDate": "2026-08-29",
+      "residualRisk": "Use without formal approval may exceed the accepted data or provider boundary.",
+      "followUp": "Approve the sandbox type, image identifier, tools, models, mount list, data class, and expiry before operational use.",
+      "reevaluationTrigger": "Formal approval is issued, expires, or the image identity changes."
+    },
+    {
+      "controlId": "CL-12-02",
+      "applicability": "Applicable",
+      "implementationStatus": "Partly Fulfilled",
+      "rationale": "Compose exposes explicit mounts, but its project-root variables can be configured too broadly. TuiVision use requires the selected checkout only.",
+      "evidence": "mount-policy.md; sandbox@7adaeac:compose.yml",
+      "owner": "TuiVision Maintainer",
+      "reviewer": "Feature 044 Security Review",
+      "reviewDate": "2026-08-29",
+      "residualRisk": "A broad local environment value could expose unrelated projects.",
+      "followUp": "Review the local Compose environment before each session and bind only the selected TuiVision checkout.",
+      "reevaluationTrigger": "Compose mounts or local project-root configuration changes."
+    },
+    {
+      "controlId": "CL-12-03",
+      "applicability": "Applicable",
+      "implementationStatus": "Fulfilled",
+      "rationale": "Agent and build state use separate named volumes and remain outside the TuiVision repository.",
+      "evidence": "sandbox@7adaeac:compose.yml; mount-policy.md",
+      "owner": "Sandbox Maintainer",
+      "reviewer": "Feature 044 Security Review",
+      "reviewDate": "2026-08-29",
+      "residualRisk": "Volume contents remain local operational data and require normal host protection.",
+      "followUp": "Review after agent-state paths or volume names change.",
+      "reevaluationTrigger": "Agent storage, cache, or Compose volume configuration changes."
+    },
+    {
+      "controlId": "CL-12-04",
+      "applicability": "Applicable",
+      "implementationStatus": "Fulfilled",
+      "rationale": "The sandbox separates local environment input, denies common sensitive reads, and TuiVision runs repository secret scans.",
+      "evidence": "mount-policy.md; scripts/scan-agent-secrets.sh; .github/workflows/gitleaks.yml",
+      "owner": "TuiVision Maintainer",
+      "reviewer": "Feature 044 Security Review",
+      "reviewDate": "2026-08-29",
+      "residualRisk": "An operator can still disclose a secret manually in a prompt or command.",
+      "followUp": "Keep prompts, logs, screenshots, and Evidence free of credentials and sensitive personal data.",
+      "reevaluationTrigger": "Secret injection, scanner, prompt logging, or agent permission rules change."
+    },
+    {
+      "controlId": "CL-12-05",
+      "applicability": "Open",
+      "implementationStatus": "Partly Fulfilled",
+      "rationale": "The image pins tool versions and disables uncontrolled updates, but installation is not provider, account, license, or model approval.",
+      "evidence": "sandbox@7adaeac:Dockerfile; sandbox@7adaeac:docs/security/ai-tools-inventory.md",
+      "owner": "AI Tool and Provider Owner",
+      "reviewer": "TuiVision Maintainer",
+      "reviewDate": "2026-08-29",
+      "residualRisk": "Provider region, retention, training use, account rights, and model approval are not established here.",
+      "followUp": "Approve each selected provider, account, model, region, retention policy, and license before login.",
+      "reevaluationTrigger": "A tool, provider, model, account, contract, or version changes."
+    },
+    {
+      "controlId": "CL-12-06",
+      "applicability": "Applicable",
+      "implementationStatus": "Fulfilled",
+      "rationale": "TuiVision uses Spec Kit with twelve enabled governance presets, current intake review, sequencing, model routing, and autonomous run evidence.",
+      "evidence": ".specify/presets/; specs/044-sandbox-secure-development-hardening/",
+      "owner": "TuiVision Maintainer",
+      "reviewer": "Feature 044 Governance Review",
+      "reviewDate": "2026-08-29",
+      "residualRisk": "Preset drift can invalidate generated agent or template surfaces.",
+      "followUp": "Re-run preset resolution, agent parity, and intake gates after preset changes.",
+      "reevaluationTrigger": "Spec Kit, preset, template, agent, or intake policy changes."
+    },
+    {
+      "controlId": "CL-12-07",
+      "applicability": "Open",
+      "implementationStatus": "Not Assessed",
+      "rationale": "Feature automation and remote checks cannot replace the human approval required by the generic CL-12 control.",
+      "evidence": "specs/044-sandbox-secure-development-hardening/pr-evidence.md",
+      "owner": "Human Security Reviewer",
+      "reviewer": "TuiVision Maintainer",
+      "reviewDate": "2026-08-29",
+      "residualRisk": "A technically green PR may still lack independent human review.",
+      "followUp": "Obtain human review when organizational policy requires it; do not classify an unavailable reviewer as Pass.",
+      "reevaluationTrigger": "A human review is submitted or repository approval policy changes."
+    },
+    {
+      "controlId": "CL-12-08",
+      "applicability": "Applicable",
+      "implementationStatus": "Fulfilled",
+      "rationale": "Feature state, accepted hashes, task completion, PR Evidence, commit provenance, and metadata-only audit boundaries provide traceability.",
+      "evidence": "specs/044-sandbox-secure-development-hardening/autonomous-run-state.json; specs/044-sandbox-secure-development-hardening/pr-evidence.md",
+      "owner": "TuiVision Maintainer",
+      "reviewer": "Feature 044 Security Review",
+      "reviewDate": "2026-08-29",
+      "residualRisk": "Provider session content remains intentionally outside repository evidence.",
+      "followUp": "Keep audit evidence metadata-only and bind final delivery to the exact reviewed head.",
+      "reevaluationTrigger": "Audit schema, run-state schema, or provider evidence changes."
+    },
+    {
+      "controlId": "CL-12-09",
+      "applicability": "Open",
+      "implementationStatus": "Partly Fulfilled",
+      "rationale": "Non-root execution, no-new-privileges, dropped capabilities and explicit mounts are documented, while formal protection-level acceptance remains open.",
+      "evidence": "sandbox@7adaeac:docs/security/sandbox-isolation.md; sandbox@7adaeac:compose.yml",
+      "owner": "Sandbox Owner or Security Officer",
+      "reviewer": "TuiVision Maintainer",
+      "reviewDate": "2026-08-29",
+      "residualRisk": "A container is not a complete VM boundary and writable mounts expose their selected content.",
+      "followUp": "Approve the protection level for the intended data class and repeat practical isolation checks on the current image.",
+      "reevaluationTrigger": "Image, runtime, capability, user, mount, or data classification changes."
+    },
+    {
+      "controlId": "CL-12-10",
+      "applicability": "Open",
+      "implementationStatus": "Partly Fulfilled",
+      "rationale": "Codex workspace-write disables shell network access, but the general Compose environment intentionally retains unrestricted egress.",
+      "evidence": "sandbox@7adaeac:docs/security/network-decision.md; sandbox@7adaeac:codex/config.toml",
+      "owner": "Sandbox Network and Security Owner",
+      "reviewer": "TuiVision Maintainer",
+      "reviewDate": "2026-08-29",
+      "residualRisk": "Other tools and processes can reach destinations outside an explicit allowlist.",
+      "followUp": "Accept the dated egress risk or provide a tested proxy, DNS filter, or equivalent allowlist before sensitive use.",
+      "reevaluationTrigger": "Network policy, endpoints, package sources, providers, or accepted risk date changes."
+    },
+    {
+      "controlId": "CL-12-11",
+      "applicability": "Open",
+      "implementationStatus": "Not Assessed",
+      "rationale": "The technical reference is current, but formal approval expiry and periodic revalidation ownership are incomplete.",
+      "evidence": "sandbox@7adaeac:docs/security/sandbox-freigabe.md; assessment.json",
+      "owner": "Sandbox Owner",
+      "reviewer": "TuiVision Maintainer",
+      "reviewDate": "2026-08-29",
+      "residualRisk": "An undated approval can remain in use after material image or provider drift.",
+      "followUp": "Set an approval date, expiry, review cadence, and evidence owner.",
+      "reevaluationTrigger": "Approval is issued, expires, or any bound source hash changes."
+    },
+    {
+      "controlId": "CL-12-12",
+      "applicability": "Applicable",
+      "implementationStatus": "Fulfilled",
+      "rationale": "The current local preset matrix is enabled, resolved in priority order, and model routing is aligned before Feature 044.",
+      "evidence": "specify preset list; scripts/resolve-model-routing.sh; .specify/presets/",
+      "owner": "TuiVision Maintainer",
+      "reviewer": "Feature 044 Governance Review",
+      "reviewDate": "2026-08-29",
+      "residualRisk": "Future preset updates may change required evidence or generated surfaces.",
+      "followUp": "Repeat preset, routing, generated-surface, and agent-parity checks after updates.",
+      "reevaluationTrigger": "A preset version, priority, template, command, or routing catalog changes."
+    }
+  ],
+  "mounts": [
+    {
+      "mountRole": "TuiVisionCheckout",
+      "containerTarget": "/rider-projects/TuiVision",
+      "purpose": "Read and modify only the selected TuiVision checkout for an authorized task.",
+      "access": "ReadWrite",
+      "allowedContent": "The TuiVision Git checkout and task-owned generated temporary output ignored by Git.",
+      "excludedContent": "The parent project directory, sibling repositories, credentials, personal files, and unrelated worktrees.",
+      "evidence": "sandbox@7adaeac:compose.yml; mount-policy.md",
+      "reevaluationTrigger": "The checkout location, Compose variables, or task authority changes."
+    },
+    {
+      "mountRole": "SandboxCheckout",
+      "containerTarget": "/ade-dev-sandbox",
+      "purpose": "Provide the sandbox's own controlled maintenance files; TuiVision work treats this checkout as read-only reference.",
+      "access": "ReadWrite",
+      "allowedContent": "The separate absdd-image-sandbox checkout only.",
+      "excludedContent": "TuiVision changes, credentials, and unrelated host files.",
+      "evidence": "sandbox@7adaeac:compose.yml",
+      "reevaluationTrigger": "The self-mount access mode or TuiVision task scope changes."
+    },
+    {
+      "mountRole": "AgentStateVolume",
+      "containerTarget": "/home/adedev/.codex",
+      "purpose": "Represent separate tool-specific named volumes for agent sessions and configuration.",
+      "access": "NamedVolume",
+      "allowedContent": "Agent-local state managed by the selected tool.",
+      "excludedContent": "Versioned project files, exported prompts, responses, tokens, and broad home-directory copies.",
+      "evidence": "sandbox@7adaeac:compose.yml; sandbox@7adaeac:docs/security/ai-tools-inventory.md",
+      "reevaluationTrigger": "Agent home, state format, export policy, or volume mapping changes."
+    },
+    {
+      "mountRole": "BuildCacheVolume",
+      "containerTarget": "/dotnet-build",
+      "purpose": "Keep .NET build output outside the source mount.",
+      "access": "NamedVolume",
+      "allowedContent": "Intermediate and generated build output.",
+      "excludedContent": "Source, credentials, permanent Evidence, and release claims.",
+      "evidence": "sandbox@7adaeac:compose.yml; sandbox@7adaeac:dotnet/ContainerBuild.props",
+      "reevaluationTrigger": "Build output paths or volume strategy change."
+    },
+    {
+      "mountRole": "AuditMetadataDirectory",
+      "containerTarget": "/audit",
+      "purpose": "Store narrowly allowed metadata for traceability.",
+      "access": "ReadWrite",
+      "allowedContent": "Tool, version, session identifier, timestamp, project role, and actor metadata.",
+      "excludedContent": "Prompts, responses, source contents, tokens, credentials, and raw session files.",
+      "evidence": "sandbox@7adaeac:scripts/audit-export.sh; mount-policy.md",
+      "reevaluationTrigger": "Audit fields, export paths, or retention rules change."
+    },
+    {
+      "mountRole": "DotnetConfiguration",
+      "containerTarget": "/dotnet-config/ContainerBuild.props",
+      "purpose": "Provide controlled build-output configuration.",
+      "access": "ReadOnly",
+      "allowedContent": "The sandbox-owned ContainerBuild.props file.",
+      "excludedContent": "TuiVision version overrides and other host configuration.",
+      "evidence": "sandbox@7adaeac:compose.yml",
+      "reevaluationTrigger": "The .NET configuration mount changes."
+    },
+    {
+      "mountRole": "UnrelatedHostData",
+      "containerTarget": "/not-mounted",
+      "purpose": "Make the exclusion of unrelated host data explicit.",
+      "access": "NotMounted",
+      "allowedContent": "No content.",
+      "excludedContent": "Home, desktop, downloads, sibling repositories, credential stores, browser profiles, and private user data.",
+      "evidence": "mount-policy.md",
+      "reevaluationTrigger": "A new host bind mount is proposed."
+    }
+  ],
+  "executions": [
+    {
+      "checkId": "Build",
+      "location": "Sandbox",
+      "proofLevel": "StaticVerified",
+      "platform": "Linux container",
+      "command": "dotnet build TuiVision.sln --configuration Release",
+      "evidence": "sandbox@7adaeac:Dockerfile; TuiVision.sln",
+      "proofBoundary": "The pinned .NET 10 SDK and source layout make the command feasible; Feature 044 does not claim a fresh image execution.",
+      "reevaluationTrigger": "SDK, solution, native dependency, or image changes."
+    },
+    {
+      "checkId": "Test",
+      "location": "Sandbox",
+      "proofLevel": "StaticVerified",
+      "platform": "Linux container",
+      "command": "dotnet test TuiVision.sln --configuration Release",
+      "evidence": "sandbox@7adaeac:Dockerfile; TuiVision.sln",
+      "proofBoundary": "The command is structurally feasible; current sandbox execution is not claimed by this audit.",
+      "reevaluationTrigger": "Test runtime, SDK, solution, terminal, or native requirements change."
+    },
+    {
+      "checkId": "Format",
+      "location": "Sandbox",
+      "proofLevel": "StaticVerified",
+      "platform": "Linux container",
+      "command": "dotnet format --verify-no-changes",
+      "evidence": "sandbox@7adaeac:Dockerfile; .editorconfig",
+      "proofBoundary": "The SDK provides the command; no practical sandbox run is claimed.",
+      "reevaluationTrigger": "SDK or formatting configuration changes."
+    },
+    {
+      "checkId": "DocFX",
+      "location": "CI",
+      "proofLevel": "PracticallyVerified",
+      "platform": "Ubuntu",
+      "command": "docfx docfx.json",
+      "evidence": ".github/workflows/pages.yml",
+      "proofBoundary": "GitHub Actions installs DocFX and proves publication input; the base sandbox image does not claim a preinstalled DocFX command.",
+      "reevaluationTrigger": "DocFX installation, workflow, or documentation configuration changes."
+    },
+    {
+      "checkId": "A11Y",
+      "location": "CI",
+      "proofLevel": "PracticallyVerified",
+      "platform": "Ubuntu with system Chrome",
+      "command": "npm test",
+      "evidence": ".github/workflows/pages.yml; tests/web-a11y/",
+      "proofBoundary": "CI proves the DocFX Playwright/Axe path; a generic sandbox browser installation is not assumed.",
+      "reevaluationTrigger": "Browser, Node, Playwright, Axe, or Pages workflow changes."
+    },
+    {
+      "checkId": "DependencySBOM",
+      "location": "CI",
+      "proofLevel": "PracticallyVerified",
+      "platform": "Ubuntu",
+      "command": "dotnet list TuiVision.sln package --vulnerable --include-transitive",
+      "evidence": ".github/workflows/security-supply-chain.yml; .config/dotnet-tools.json",
+      "proofBoundary": "CI reviews packages and creates a temporary CycloneDX SBOM; it does not make a permanent VEX or release provenance claim.",
+      "reevaluationTrigger": "Dependency, package source, release, SBOM, VEX, or workflow scope changes."
+    },
+    {
+      "checkId": "SecretScan",
+      "location": "CI",
+      "proofLevel": "PracticallyVerified",
+      "platform": "Ubuntu",
+      "command": "scripts/scan-agent-secrets.sh --fail-on-high .",
+      "evidence": ".github/workflows/agent-secret-scan.yml; .github/workflows/gitleaks.yml",
+      "proofBoundary": "Scanners cover committed and candidate repository content; they cannot prevent intentional disclosure to a provider prompt.",
+      "reevaluationTrigger": "Scanner rules, agent directories, logging, or secret paths change."
+    },
+    {
+      "checkId": "AgentParity",
+      "location": "LocalHost",
+      "proofLevel": "PracticallyVerified",
+      "platform": "macOS",
+      "command": "python3 scripts/tests/test_spec_kit_agent_surface_parity.py",
+      "evidence": "scripts/tests/test_spec_kit_agent_surface_parity.py; .specify/integrations/",
+      "proofBoundary": "The check proves generated surface parity in this checkout, not provider availability or login.",
+      "reevaluationTrigger": "Agent, integration, skill, prompt, template, or preset changes."
+    }
+  ]
+}
