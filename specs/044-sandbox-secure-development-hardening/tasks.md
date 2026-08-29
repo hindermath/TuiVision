@@ -78,7 +78,7 @@
 - [x] T050 Record NIST SSDF, CWE, ASVS, SBOM, VEX, SLSA, Scorecard, AI-SBOM, and regulatory trigger decisions
 - [x] T051 Record STRIDE/CIA/CAPEC, S-ADR, arc42, Zero Trust, SAMM, BSI C3A, and BSI C5 decisions
 - [x] T052 Record A11Y, script parity, agent parity, intake, routing, autonomous, parallel, and historical-source decisions
-- [ ] T053 Update `docs/project-statistics.md` after implementation completion
+- [x] T053 Update `docs/project-statistics.md` after implementation completion
 - [x] T054 Align `Directory.Build.props` to the numbered-branch version before commit or push without incrementing build counter unless a build/test runs
 
 ## Phase 10 - Local Validation
@@ -88,7 +88,7 @@
 - [x] T057 Run Bash syntax, PowerShell parser/PSScriptAnalyzer, help, and man-page checks
 - [x] T058 Run read-only sandbox commit, hash, diff, and isolated Compose-config checks
 - [x] T059 Run `git diff --check` and `dotnet format --verify-no-changes`
-- [ ] T060 Run homogeneity, maintained-agent parity, secret, dependency, and supply-chain checks
+- [x] T060 Run homogeneity, maintained-agent parity, secret, dependency, and supply-chain checks
 - [x] T061 Run DocFX, Playwright/Axe, and representative Lynx text review
 - [x] T062 Confirm product build/test/coverage is not locally triggered by the final delivery set, or increment once per invocation if scope changes
 - [x] T063 Validate the complete intended delivery set read-only and reconcile staged paths

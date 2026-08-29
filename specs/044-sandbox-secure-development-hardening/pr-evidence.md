@@ -32,7 +32,7 @@
 | Tasks | 1 | Pass | `tasks.md` | 75 eindeutige sequenzielle Aufgaben / unique sequential tasks |
 | Analyze | 1 | Pass | `analysis.md` | null Critical, High oder Medium / zero Critical, High, or Medium |
 | Implement | 1 | Pass | Dokumentation und deterministische Nachweise / documentation and deterministic proof | nur Delivery- und Abschlussaufgaben offen / only delivery and closeout tasks remain |
-| Validate | 1 | In progress | Befehlsledger unten / command ledger below | Statistik nach erstem Commit aktualisieren / refresh statistics after first commit |
+| Validate | 1 | Pass | Befehlsledger unten / command ledger below | None |
 | Deliver | 1 | Open | PR und Merge | Remote-Nachweise konvergieren |
 
 ## Entscheidungen und Folgearbeiten / Decisions and Follow-ups
@@ -90,7 +90,9 @@
 | `npm test` in `tests/web-a11y` | Documentation A11Y trigger | Pass | Playwright/Axe 2/2 passed |
 | UTF-8 `lynx` text dump | Text-first review | Pass | German umlauts and semantic reading order render correctly with explicit UTF-8 locale and charset |
 | Product build, runtime tests and coverage | Final delivery-set trigger review | N/A | No product source, API, project, package, example or executable behavior changed; remote baseline CI remains supplemental |
-| Project statistics and homogeneity | Shared repository evidence | Pending | The canonical renderer requires a clean worktree and runs after the implementation checkpoint commit |
+| `scripts/render-project-statistics.sh --repo .` | Shared repository evidence | Pass | Canonical Profile 2 updated from committed implementation source `1eb79e955566` |
+| `scripts/render-project-statistics.sh --repo . --check-only --json` | Statistics drift | Pass | `CURRENT`, methodology v2 |
+| `scripts/check-homogeneity.sh --dry-run --no-patch .` | Repository homogeneity | Pass | 100%, 29/29 checks |
 
 ## Remote-Lieferung / Remote Delivery
 
