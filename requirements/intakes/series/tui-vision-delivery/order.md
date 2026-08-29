@@ -10,8 +10,8 @@ is generated from the series manifest and is not maintained independently.*
 
 ## Bevorzugter nächster Intake / Preferred Next Intake
 
-1. `requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md`
-   - unabhängiger Security-Hardening-Intake nach dem Dokumentationsabschluss
+1. `requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md`
+   - unabhängige Governance-Selbstprüfung nach dem Sandbox-Abschluss
    - Status: `Eligible`
    - startet nicht automatisch
 
@@ -52,13 +52,17 @@ is generated from the series manifest and is not maintained independently.*
    - Status: `Completed`
    - schließt Guides, Publishing-Nachweis und Dokumentations-Reconciliation
 
+9. `requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md`
+   - geliefert durch Feature `044-sandbox-secure-development-hardening` und PR `#159`
+   - Status: `Completed`
+   - dokumentiert die bedingte Sandbox-Anwendbarkeit und ihre Sicherheitsgrenzen
+
 ## Weitere unabhängige aktive Intakes / Other Independent Active Intakes
 
-9. `requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md`
 10. `requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md`
 
 Die Sicherheits- und Governance-Intakes bleiben unabhängige Wurzeln. Die
-Reihenfolge des Sandbox-Hardenings ist eine Auswahlentscheidung und keine
+Reihenfolge der RL-SE-Selbstprüfung ist eine Auswahlentscheidung und keine
 neu erfundene harte Produktabhängigkeit.
 
 ## Nicht ausführbarer Backlog / Non-Executable Backlog
@@ -76,5 +80,5 @@ $speckit-intake-series-status
 $speckit-intake-series-next
 ```
 
-Das Sandbox-Security-Hardening ist nur als nächster Intake freigegeben;
+Die RL-SE-Checklist-Selbstprüfung ist nur als nächster Intake freigegeben;
 kein Specify-, Implementierungs- oder Remote-Schritt wird implizit autorisiert.

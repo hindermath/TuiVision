@@ -97,19 +97,19 @@
 
 - [x] T064 Commit and push the non-empty Feature 044 delivery after version alignment
 - [x] T065 Create the feature PR from `pr-evidence.md` and monitor required checks and reviews
-- [ ] T066 Map every acceptance gate to exact-head workflow, job, platform, and executed command
-- [ ] T067 Resolve every actionable review thread; unavailable review remains missing, never Pass
-- [ ] T068 Generate and validate temporary schema-2.0 PreMerge evidence for the reviewed head
-- [ ] T069 Use admin bypass only if Human Approval is the sole open rule after all technical gates pass
-- [ ] T070 Merge with a merge commit, delete the feature branch, and synchronize clean local `main`
-- [ ] T071 Create a non-recursive evidence-only closeout only if post-merge facts require it
+- [x] T066 Map every acceptance gate to exact-head workflow, job, platform, and executed command
+- [x] T067 Resolve every actionable review thread; unavailable review remains missing, never Pass
+- [x] T068 Generate and validate temporary schema-2.0 PreMerge evidence for the reviewed head
+- [x] T069 Use admin bypass only if Human Approval is the sole open rule after all technical gates pass
+- [x] T070 Merge with a merge commit, delete the feature branch, and synchronize clean local `main`
+- [x] T071 Create a non-recursive evidence-only closeout only if post-merge facts require it
 
 ## Phase 12 - Lifecycle and Retrospective
 
-- [ ] T072 Mark the sandbox intake `Completed` and advance the existing series without starting the next intake
-- [ ] T073 Update Feature 044 state to terminal `Retrospective`, `Completed`, and `nextExactAction: N/A`
-- [ ] T074 Complete `retrospective.md` with `NoPromotion` unless a reproducible provider-neutral preset defect was found
-- [ ] T075 Verify final task count, clean `HEAD == origin/main`, no product/image/external-repository change, and no next feature
+- [x] T072 Mark the sandbox intake `Completed` and advance the existing series without starting the next intake
+- [x] T073 Update Feature 044 state to terminal `Retrospective`, `Completed`, and `nextExactAction: N/A`
+- [x] T074 Complete `retrospective.md` with `NoPromotion` unless a reproducible provider-neutral preset defect was found
+- [x] T075 Verify final task count, clean `HEAD == origin/main`, no product/image/external-repository change, and no next feature
 
 ## Dependencies
 

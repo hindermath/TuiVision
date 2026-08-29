@@ -9,23 +9,23 @@ const root = process.cwd();
 const write = process.argv.includes("--write");
 const seriesRoot = "requirements/intakes/series/tui-vision-delivery";
 const seriesId = "a73dda7c-163b-4530-97f2-fd9eea5e8986";
-const seriesReceiptId = "ddd6488a-9cf3-4d9f-9b76-8cb301bdb031";
-const seriesOperationId = "7a6a7aa1-2be3-43ff-8359-54f952ecf62d";
-const reviewId = "847bce5c-98b0-4461-b2a7-c1b5bc9d83dc";
+const seriesReceiptId = "7037a4b2-c98a-4dda-9ea0-0ddbf1b90631";
+const seriesOperationId = "25038b08-b3b8-4461-892d-08b75f9c6e11";
+const reviewId = "5e9620e8-9c49-44f9-84a3-fd3aa659facc";
 const migrationProposal = "specs/requirements-reconciliation-20260726/migration-proposal.json";
 const createdAt = "2026-07-26T20:00:00Z";
-const seriesUpdatedAt = "2026-08-29T21:23:35Z";
+const seriesUpdatedAt = "2026-08-29T22:36:58Z";
 const archiveRoot =
   `specs/intake-series-archive/${seriesId}/${seriesOperationId}`;
-const priorManifestHash = "fb889c87f8cae33e20bb826e1dfb926c9e5655dc4d626aabfc8605155fb552b7";
-const priorReceiptHash = "b6adaa7018e2a5d56baf737f30e8fb2be4b39b8072d265b0047ab0475991ccfb";
+const priorManifestHash = "9a7b50fcbfb8f3733f29040a17fdeda4f6e0f83b776affc7e90c4e5154650d20";
+const priorReceiptHash = "ad0fdbc597a1f867de1c549889a4b9d6218b6b2b94d4ef9b887aea29b94763be";
 
 const normalize = (value) => value.replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n");
 const hashText = (value) => crypto.createHash("sha256").update(normalize(value)).digest("hex");
 const hashFile = (relativePath) => hashText(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const readJson = (relativePath) => JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const json = (value) => JSON.stringify(value, null, 2) + "\n";
-const reviewHead = "1f5890767063dcebbe363fb8087e4fb89a880af1";
+const reviewHead = "73e56dce3a7dade7955c01e8659812fb239a55fe";
 
 const members = [
   {
@@ -74,13 +74,13 @@ const members = [
     slug: "sandbox-gestuetzte-secure-development-haertung",
     path: "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
     role: "OrderedMember",
-    status: "Eligible",
+    status: "Completed",
   },
   {
     slug: "rl-se-checklist-selbstpruefung",
     path: "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
     role: "OrderedMember",
-    status: "Pending",
+    status: "Eligible",
   },
   {
     slug: "gsdb-spec-kit-intensivpruefung",
@@ -267,7 +267,7 @@ const seriesReceipt = {
   operation: {
     operationId: seriesOperationId,
     type: "Update",
-    authorityEvidence: "Feature 043 MergeAndSync authority and causal closeout for the completed documentation intake",
+    authorityEvidence: "Feature 044 MergeAndSync authority and causal closeout for the completed sandbox-security intake",
   },
   status: "Ready",
   manifest: {path: manifestPath, normalizedSha256: manifestHash},
@@ -288,7 +288,7 @@ const operation = {
   seriesId,
   type: "Update",
   status: "Published",
-  authorityEvidence: "Feature 043 MergeAndSync authority and causal closeout for the completed documentation intake",
+  authorityEvidence: "Feature 044 MergeAndSync authority and causal closeout for the completed sandbox-security intake",
   proposalNormalizedSha256: manifestHash,
   preparedPaths: [
     `${archiveRoot}/manifest.json`,
@@ -354,25 +354,25 @@ const result = {
     workers: [],
   },
   summary: {critical: 0, high: 0, medium: 0, low: 0},
-  supersedes: "6b74e8e5-c605-48c5-b450-1a018b5dd7eb",
+  supersedes: "847bce5c-98b0-4461-b2a7-c1b5bc9d83dc",
 };
 
-const report = `# Intake-Serienreview: TuiVision Delivery nach Dokumentationsabschluss
+const report = `# Intake-Serienreview: TuiVision Delivery nach Sandbox-Abschluss
 
 ## Ergebnis / Result
 
 Status: \`Ready\`
 
 Alle zehn Serien-Intakes, ihre aktuellen Hashes, Receipt-Lineage, fünf Wurzeln
-und sechs azyklischen Abhängigkeiten wurden geprüft. Die
-Documentation-Publishing-Closure ist durch Feature 043 abgeschlossen. Der
-unabhängige Sandbox-Security-Intake ist als einziger Eintrag \`Eligible\`;
-kein Folgefeature wird durch diesen Review gestartet.
+und sechs azyklischen Abhängigkeiten wurden geprüft. Das
+Sandbox-Security-Hardening ist durch Feature 044 abgeschlossen. Die
+unabhängige RL-SE-Checklist-Selbstprüfung ist als einziger Eintrag
+\`Eligible\`; kein Folgefeature wird durch diesen Review gestartet.
 
 *All ten series intakes, current hashes, receipt lineage, five roots, and six
-acyclic dependencies were reviewed. Documentation Publishing Closure is
-complete through Feature 043. The independent sandbox security intake is the
-only \`Eligible\` entry; this review starts no follow-up feature.*
+acyclic dependencies were reviewed. Sandbox security hardening is complete
+through Feature 044. The independent RL-SE checklist self-review is the only
+\`Eligible\` entry; this review starts no follow-up feature.*
 
 Es bestehen keine offenen Review-Findings. Der optionale NuGet-Backlog ist
 nicht Teil der ausführbaren Serie.

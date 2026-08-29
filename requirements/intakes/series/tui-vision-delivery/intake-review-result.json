@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.1",
-  "reviewId": "847bce5c-98b0-4461-b2a7-c1b5bc9d83dc",
+  "reviewId": "5e9620e8-9c49-44f9-84a3-fd3aa659facc",
   "mode": "Series",
   "status": "Ready",
   "policy": "tui-vision-lastenheft",
-  "reviewedAt": "2026-08-29T21:23:35Z",
+  "reviewedAt": "2026-08-29T22:36:58Z",
   "repository": {
     "root": ".",
-    "head": "1f5890767063dcebbe363fb8087e4fb89a880af1"
+    "head": "73e56dce3a7dade7955c01e8659812fb239a55fe"
   },
   "requestEvidence": {
     "path": "requirements/intakes/series/tui-vision-delivery/intake-review-request.json",
-    "normalizedSha256": "80030d0346443bd06426147f90984073c4e23768abb7f3ad1361933fdc439827"
+    "normalizedSha256": "b7b0b8231f5305d812c89d170ee777ba6a28526b77b5890fe811370d336d44ee"
   },
   "targets": [
     {
@@ -103,5 +103,5 @@
     "medium": 0,
     "low": 0
   },
-  "supersedes": "6b74e8e5-c605-48c5-b450-1a018b5dd7eb"
+  "supersedes": "847bce5c-98b0-4461-b2a7-c1b5bc9d83dc"
 }
