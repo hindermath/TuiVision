@@ -50,7 +50,7 @@
 
 ## Phase 6 - MergeAndSync delivery
 
-- [ ] T034 Align the numbered-branch version, validate the intended delivery set, commit and push.
+- [x] T034 Align the numbered-branch version, validate the intended delivery set, commit and push.
 - [ ] T035 Create the PR and converge mandatory exact-head checks and actionable review threads.
 - [ ] T036 Produce and validate provider-neutral PreMerge evidence for the exact head.
 - [ ] T037 Use admin bypass only if Human Approval is the sole remaining rule; merge with merge commit and delete the feature branch.

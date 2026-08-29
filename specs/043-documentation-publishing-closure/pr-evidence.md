@@ -68,6 +68,11 @@ actionable review thread remains, and Human Approval is the sole open rule.
 | Homogeneity | Repository structure and statistics | Pass | 29/29, 100 percent after canonical statistics refresh |
 | GitHub exact-head checks and review | Remote delivery | Open | PreMerge evidence required |
 
+The initial remote publication pushed checkpoint `c24550a` after both delivery-
+set validators accepted every changed path, zero unrelated untracked paths and
+an unchanged index/worktree during validation. The pre-push secret hook passed.
+No bypass was used for publication.
+
 ## Decision
 
 `InProgress`. Specify through Analyze converged without a critical or high
