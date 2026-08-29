@@ -126,8 +126,8 @@ export function validate(options = {}) {
 
   const eligible = targets.filter((target) => target.status === "Eligible");
   if (eligible.length !== 1 ||
-      !eligible[0].path.endsWith("requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md")) {
-    errors.push("sandbox security hardening must be the single explicitly Eligible target");
+      !eligible[0].path.endsWith("requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md")) {
+    errors.push("RL-SE checklist self-review must be the single explicitly Eligible target");
   }
   const wave6Closure = targets.find((target) =>
     target.path.endsWith("requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md"));
@@ -152,6 +152,8 @@ export function validate(options = {}) {
     target.path.endsWith("requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md"));
   const sandboxHardening = targets.find((target) =>
     target.path.endsWith("requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md"));
+  const rlSeReview = targets.find((target) =>
+    target.path.endsWith("requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md"));
   for (const [label, target] of [
     ["portfolio closure", portfolioClosure],
     ["constitution change", constitution],
@@ -165,8 +167,11 @@ export function validate(options = {}) {
   if (!documentationClosure || documentationClosure.status !== "Completed") {
     errors.push("documentation publishing closure must remain Completed");
   }
-  if (!sandboxHardening || sandboxHardening.status !== "Eligible") {
-    errors.push("sandbox security hardening must remain Eligible");
+  if (!sandboxHardening || sandboxHardening.status !== "Completed") {
+    errors.push("sandbox security hardening must remain Completed");
+  }
+  if (!rlSeReview || rlSeReview.status !== "Eligible") {
+    errors.push("RL-SE checklist self-review must remain Eligible");
   }
 
   const dependencies = manifest.dependencies ?? [];

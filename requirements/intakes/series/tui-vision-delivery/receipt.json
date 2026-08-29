@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "documentType": "IntakeSeriesReceipt",
-  "receiptId": "ddd6488a-9cf3-4d9f-9b76-8cb301bdb031",
+  "receiptId": "7037a4b2-c98a-4dda-9ea0-0ddbf1b90631",
   "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
   "generator": {
     "preset": "intake-sequencing-governance",
@@ -9,20 +9,20 @@
   },
   "createdAt": "2026-08-28T22:59:38Z",
   "operation": {
-    "operationId": "7a6a7aa1-2be3-43ff-8359-54f952ecf62d",
+    "operationId": "25038b08-b3b8-4461-892d-08b75f9c6e11",
     "type": "Update",
-    "authorityEvidence": "Feature 043 MergeAndSync authority and causal closeout for the completed documentation intake"
+    "authorityEvidence": "Feature 044 MergeAndSync authority and causal closeout for the completed sandbox-security intake"
   },
   "status": "Ready",
   "manifest": {
     "path": "requirements/intakes/series/tui-vision-delivery/manifest.json",
-    "normalizedSha256": "9a7b50fcbfb8f3733f29040a17fdeda4f6e0f83b776affc7e90c4e5154650d20"
+    "normalizedSha256": "c2ffdd7e948a5b0f790acb244da1572ba25e29d0075b848016eb45019522fcd6"
   },
   "supersedes": {
-    "receiptPath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/7a6a7aa1-2be3-43ff-8359-54f952ecf62d/receipt.json",
-    "receiptNormalizedSha256": "b6adaa7018e2a5d56baf737f30e8fb2be4b39b8072d265b0047ab0475991ccfb",
-    "manifestArchivePath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/7a6a7aa1-2be3-43ff-8359-54f952ecf62d/manifest.json",
-    "manifestArchiveSha256": "fb889c87f8cae33e20bb826e1dfb926c9e5655dc4d626aabfc8605155fb552b7"
+    "receiptPath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/25038b08-b3b8-4461-892d-08b75f9c6e11/receipt.json",
+    "receiptNormalizedSha256": "ad0fdbc597a1f867de1c549889a4b9d6218b6b2b94d4ef9b887aea29b94763be",
+    "manifestArchivePath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/25038b08-b3b8-4461-892d-08b75f9c6e11/manifest.json",
+    "manifestArchiveSha256": "9a7b50fcbfb8f3733f29040a17fdeda4f6e0f83b776affc7e90c4e5154650d20"
   },
   "tombstone": {
     "path": "N/A",
